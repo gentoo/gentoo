@@ -11055,7 +11055,7 @@ mail-filter/postfwd 1.35-r2: Versatile Postfix policy server with a flexible rul
 mail-filter/postgrey 1.34 1.34-r1 1.34-r2 1.34-r3 1.35 1.35-r1: Postgrey is a Postfix policy server implementing greylisting
 mail-filter/procmail 3.22-r10: Mail delivery agent/filter
 mail-filter/procmail-lib 20081108 20091202: Procmail Module Library is a collection of modules for Procmail
-mail-filter/pypolicyd-spf 1.1 1.1.2 1.2-r1 1.3.1 1.3.2: Python-based policy daemon for Postfix SPF verification
+mail-filter/pypolicyd-spf 1.1 1.3.1 1.3.2: Python-based policy daemon for Postfix SPF verification
 mail-filter/qmail-scanner 1.25-r1 2.05 2.06 2.08: E-Mail virus scanner for qmail
 mail-filter/razor 2.85-r2: Vipul's Razor is a distributed, collaborative spam detection and filtering network
 mail-filter/rblcheck 1.5-r1 1.5-r2: Perform lookups in RBL-styles services
@@ -14773,7 +14773,7 @@ sci-chemistry/chemtool 1.6.13 1.6.14: A GTK program for drawing organic molecule
 sci-chemistry/clashlist 3.17 3.17-r1: Build lists of van der Waals clashes from an input PDB file
 sci-chemistry/cluster 1.3.081231 1.3.081231-r1: Build lists of collections of interacting items
 sci-chemistry/cns 1.2.1-r8 1.3_p7-r1: Crystallography and NMR System
-sci-chemistry/coot 0.7 0.7.1-r1 0.7.2: Crystallographic Object-Oriented Toolkit for model building, completion and validation
+sci-chemistry/coot 0.7 0.7.1-r1 0.7.2 0.8.2: Crystallographic Object-Oriented Toolkit for model building, completion and validation
 sci-chemistry/cyana 2.1: Combined assignment and dynamics algorithm for NMR applications
 sci-chemistry/dssp 2.2.1-r1: The protein secondary structure standard
 sci-chemistry/easychem 0.6-r1: Chemical structure drawing program - focused on presentation
@@ -15030,7 +15030,7 @@ sci-libs/cholmod 2.1.2: Sparse Cholesky factorization and update/downdate librar
 sci-libs/cifparse-obj 7.025-r1: Provides an object-oriented application interface to information in mmCIF format
 sci-libs/clapack 3.2.1-r6 3.2.1-r7 3.2.1-r8: f2c'ed version of LAPACK
 sci-libs/clashscore-db 3.17: Clashscore-db for clashlist
-sci-libs/clipper 2.1_p100511-r1: Object-oriented libraries for crystallographic data and crystallographic computation
+sci-libs/clipper 2.1_p100511-r1 2.1.20140911: Object-oriented libraries for crystallographic data and crystallographic computation
 sci-libs/cln 1.3.3: Class library (C++) for numbers
 sci-libs/cminpack 1.3.2 1.3.4: C implementation of the MINPACK nonlinear optimization library
 sci-libs/cmpfit 1.2: MINPACK-1 Least Squares Fitting Library in C
@@ -15060,7 +15060,7 @@ sci-libs/coinor-utils 2.9.11: COIN-OR Matrix, Vector and other utility classes
 sci-libs/coinor-vol 1.4.4: COIN-OR Volume algorithm linear programming solver
 sci-libs/colamd 2.8.0: Column approximate minimum degree ordering algorithm
 sci-libs/colpack 1.0.6 1.0.8 1.0.9: C++ algorithms for specialized vertex coloring problems
-sci-libs/coot-data 2 2-r1: Data for the Crystallographic Object-Oriented Toolkit
+sci-libs/coot-data 2 2-r1 3: Data for the Crystallographic Object-Oriented Toolkit
 sci-libs/cqrlib 1.1.2-r1: An ANSI C implementation of a utility library for quaternion arithmetic and quaternion rotation math
 sci-libs/cxsparse 2.2.1 2.2.6 3.1.1 3.1.2: Extended sparse matrix package
 sci-libs/deap 0.9.1 1.0.0: Distributed Evolutionary Algorithms in Python
@@ -15105,6 +15105,7 @@ sci-libs/lemon 1.3-r2: C++ template static library of common data structures and
 sci-libs/levmar 2.6: Levenberg-Marquardt nonlinear least squares C library
 sci-libs/libbufr 000387: ECMWF BUFR library - includes both C and Fortran example utilities
 sci-libs/libccd 2.0 9999: Library for collision detection between two convex shapes
+sci-libs/libccp4 6.4.6: The CCP4 C and F77 subroutine library
 sci-libs/libcerf 1.3 1.4: library that provides an efficient and accurate implementation of complex error functions
 sci-libs/libcmatrix 3.11.0: lite version of pNMRsim
 sci-libs/libcore 2.1.1-r1: Robust numerical and geometric computation library
@@ -15146,7 +15147,7 @@ sci-libs/minuit 5.28.00: A C++ physics analysis tool for function minimization
 sci-libs/mkl 10.0.5.025: Intel(R) Math Kernel Library: linear algebra, fft, math functions
 sci-libs/mmdb 1.24 1.25.5 1.25.5-r1 2.0.1: The Coordinate Library, designed to assist CCP4 developers in working with coordinate files
 sci-libs/mmtk 2.7.3 2.7.5 2.7.9: Molecular Modeling ToolKit for Python
-sci-libs/monomer-db 0.090729: Monomer library used for macromolecular structure building and refinement
+sci-libs/monomer-db 0.090729 5.41: Monomer library used for macromolecular structure building and refinement
 sci-libs/mpfi 1.5.1: Multiple precision interval arithmetic library based on MPFR
 sci-libs/mpir 2.6.0-r2: Library for arbitrary precision integer arithmetic (fork of gmp)
 sci-libs/mumps 4.10.0-r1: MUltifrontal Massively Parallel sparse direct matrix Solver
@@ -16101,7 +16102,7 @@ sys-cluster/fake 1.1.10: Fake has been designed to switch in backup servers on a
 sys-cluster/feedbackd-agent 0.4: system for dynamic feedback of server loads in a Linux Virtual Server (LVS)-based cluster
 sys-cluster/feedbackd-master 0.4: Linux Virtual Server (LVS) addon for dynamic server health feedback
 sys-cluster/fence-agents 3.1.5-r1 3.1.5-r2: Cluster Fencing Agents
-sys-cluster/galera 25.3.5 25.3.10: Synchronous multi-master replication engine that provides its service through wsrep API
+sys-cluster/galera 25.3.5 25.3.10 25.3.12: Synchronous multi-master replication engine that provides its service through wsrep API
 sys-cluster/ganglia 3.5.0 3.5.0-r1 3.6.0-r1 3.7.1 3.7.1-r1: A scalable distributed monitoring system for clusters and grids
 sys-cluster/ganglia-web 3.5.8-r1 3.5.10-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gearmand 0.34-r1: Generic framework to farm out work to other machines
@@ -16426,7 +16427,7 @@ sys-kernel/linux-docs 3.4.104 3.10.58 3.12.30 3.14.22 3.16.6 4.1.4: Developer do
 sys-kernel/linux-firmware 20140603 20140809 20140902 20141009 20150206 20150320 20150812 99999999: Linux firmware files
 sys-kernel/linux-headers 2.4.33.3 2.4.36 3.18 3.19 4.0 4.1 4.2: Linux system headers
 sys-kernel/mips-sources 4.1.7 4.2.0-r2: Linux-Mips GIT sources for MIPS-based machines, dated 20150830
-sys-kernel/openvz-sources 2.6.32.108.5 2.6.32.108.8: Kernel sources with OpenVZ patchset
+sys-kernel/openvz-sources 2.6.32.108.5 2.6.32.108.8 2.6.32.111.11: Kernel sources with OpenVZ patchset
 sys-kernel/pf-sources 2.6.31_p9 2.6.32_p16 2.6.33_p4 2.6.34_p7 2.6.35_p11 2.6.36_p6 2.6.37_p6 2.6.38_p8 2.6.39_p4 3.0.7-r2 3.1.6-r2 3.2.7 3.3.6 3.4.6 3.5.4 3.6.12 3.7.5 3.8.2 3.9.5 3.10.1 3.11.4 3.12.4 3.13.3 3.14_p4 3.15_p5 3.16_p4 3.17_p4 3.19_p1 4.0_p6 4.1_p1: Linux kernel fork with new features, including the -ck patchset (BFS), BFQ, TuxOnIce and UKSM
 sys-kernel/raspberrypi-image 3.10.24_pre-r20131212 3.10.38_pre-r20140427 3.10.9999 3.12.36_pre-r20150206 3.18.10_pre-r20150330 3.18.14_pre-r20150520 3.19.3_pre-r20150327 3.19.3_pre-r20150413 4.0.4_pre-r20150523: Raspberry PI precompiled kernel and modules
 sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.9999 3.18.9999 3.19.9999: Raspberry PI kernel sources

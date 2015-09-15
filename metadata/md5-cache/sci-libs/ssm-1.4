@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=>=sci-libs/mmdb-1.23:2 ccp4? ( >=sci-libs/ccp4-libs-6.1.3-r10 )
+DEPEND=sci-libs/mmdb:2 ccp4? ( sci-libs/libccp4 )
 DESCRIPTION=A macromolecular coordinate superposition library
 EAPI=5
 HOMEPAGE=https://launchpad.net/ssm
 IUSE=+ccp4 static-libs
-KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-3 LGPL-2.1
-RDEPEND=>=sci-libs/mmdb-1.23:2 ccp4? ( >=sci-libs/ccp4-libs-6.1.3-r10 )
+RDEPEND=sci-libs/mmdb:2 ccp4? ( sci-libs/libccp4 )
 SLOT=0/2
 SRC_URI=ftp://ftp.ccp4.ac.uk/opensource/ssm-1.4.tar.gz
 _eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=296a4adc5bde79bc80637ac8419fc197
+_md5_=f10698c657c35f94e4e9b86db01ce06e

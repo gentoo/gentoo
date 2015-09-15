@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Data for the Crystallographic Object-Oriented Toolkit
+EAPI=5
+HOMEPAGE=http://www.biop.ox.ac.uk/coot/
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
+LICENSE=GPL-3
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=https://www2.mrc-lmb.cam.ac.uk/Personal/pemsley/coot/dependencies/reference-structures.tar.gz -> coot-data-3.tar.gz
+_md5_=ed3fb77eff66230179bdfdeeb73c4094
