@@ -18,6 +18,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Tobias Klausmann <klausman@gentoo.org> (16 Sep 2015)
+# Move this mask here (from package.use.mask) until rubberband goes stable.
+# Also see commit 0ccb06790085936e2da1832e5bf1d1b637d6c54a
+# Ben de Groot <yngwin@gentoo.org> (03 May 2015)
+# media-libs/rubberband lacks alpha keyword, bug #548446
+media-video/mpv rubberband
+
+# Tobias Klausmann <klausman@gentoo.org> (29 Jul 2015)
+# Mask webkit so the dep can stay ~alpha forever
+>=x11-libs/wxGTK-3.0.2.0-r1 webkit
+
 # Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
 # Mask due Gnome3 not going to be stabilized on this arch
 dev-util/geany-plugins devhelp markdown webkit
@@ -29,7 +40,3 @@ media-plugins/gst-plugins-meta modplug
 net-libs/libproxy webkit
 >=net-libs/webkit-gtk-2.4 geoloc
 x11-libs/gksu gnome
-
-# Tobias Klausmann <klausman@gentoo.org> (29 Jul 2015)
-# Mask webkit so the dep can stay ~alpha forever
->=x11-libs/wxGTK-3.0.2.0-r1 webkit

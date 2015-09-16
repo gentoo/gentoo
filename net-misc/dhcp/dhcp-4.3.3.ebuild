@@ -62,6 +62,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-4.2.4-always-accept-4.patch #437108
 	epatch "${FILESDIR}"/${PN}-4.2.5-iproute2-path.patch #480636
 	epatch "${FILESDIR}"/${PN}-4.2.5-bindtodevice-inet6.patch #471142
+	epatch "${FILESDIR}"/${PN}-4.3.3-ldap-ipv6-client-id.patch #559832
 
 	# Brand the version with Gentoo
 	sed -i \
