@@ -1,0 +1,19 @@
+Title: The default JPEG implementation
+Author: Samuli Suominen <ssuominen@gentoo.org>
+Content-Type: text/plain
+Posted: 2012-04-24
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: =media-libs/jpeg-8*
+
+libjpeg-turbo is a derivative of libjpeg that uses MMX, SSE, SSE2,
+and NEON SIMD instructions to accelerate baseline JPEG
+compression/decompression by about 2-4x on amd64, arm and x86
+platforms. It is based on libjpeg/SIMD but has numerous enhancements.
+
+All users are recommended to migrate:
+
+# emerge --deselect media-libs/jpeg
+# emerge --oneshot media-libs/libjpeg-turbo
+
+media-libs/jpeg:0 will be left in tree as a fallback implementation.

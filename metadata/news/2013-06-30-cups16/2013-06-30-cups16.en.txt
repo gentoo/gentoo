@@ -1,0 +1,21 @@
+Title: Printer browsing in net-print/cups-1.6
+Author: Andreas K. Huettel <dilfridge@gentoo.org>
+Content-Type: text/plain
+Posted: 2013-06-30
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <=net-print/cups-1.6.2-r5
+
+net-print/cups-1.6 no longer supports automatic remote printers or
+implicit classes via the CUPS, LDAP, or SLP protocols, i.e. "network
+browsing".
+
+The browsing functionality can be restored by running cups-browsed
+from net-print/cups-filters as a separate daemon (just add its init
+script to your default runlevel). By default cups-browsed uses the
+net-print/cups-1.5 browse protocol, but it can also utilize zeroconf
+(if the zeroconf use flag is set). See /etc/cups/cups-browsed.conf
+for configuration.
+
+Of course, directly specifying the location of your printers in
+the cups interface works as well.

@@ -1,0 +1,29 @@
+Title: Using default-linux profile is now obsolete
+Author: Samuli Suominen <ssuominen@gentoo.org>
+Content-Type: text/plain
+Posted: 2009-10-22
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Profile: default-linux/alpha
+Display-If-Profile: default-linux/amd64
+Display-If-Profile: default-linux/arm
+Display-If-Profile: default-linux/ia64
+Display-If-Profile: default-linux/m68k
+Display-If-Profile: default-linux/s390
+Display-If-Profile: default-linux/sh
+Display-If-Profile: default-linux/sparc
+Display-If-Profile: default-linux/x86
+
+The profiles in default-linux/ have been deprecated for six weeks.
+Users using these profiles are expected to migrate to a new profile
+before 2009-12-01, at which point the default-linux/ profiles will be
+removed.  The new profiles contain up to date configurations and were
+adopted because they were easier to maintain.  Users can switch to a
+new profile using eselect:
+
+# eselect profile list
+# eselect profile set <target>
+
+If a machine is not migrated to a new valid profile before the deprecated 
+profiles are removed, emerge will have very limited functionality until 
+the migration is done.

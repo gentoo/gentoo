@@ -1,0 +1,26 @@
+Title: Ruby 1.9 removal; Ruby 2.0/2.1 default
+Author: Manuel Rüger <mrueg@gentoo.org>
+Content-Type: text/plain
+Posted: 2015-08-26
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: dev-lang/ruby
+
+Ruby MRI 1.9 has been retired by upstream in February 2015.[1]
+We remove Ruby MRI 1.9 support from the tree now. In parallel Ruby MRI 2.1 
+support will be activated in base profile's RUBY_TARGETS variable by default 
+in conjunction with Ruby MRI 2.0.
+
+If your currently eselected Ruby interpreter is ruby19, our recommendation is 
+to change it to ruby20. At the moment Ruby MRI 2.0 delivers the best possible 
+support of all Ruby interpreters in tree.
+
+Check the current setting via:
+
+	eselect ruby show
+
+Change the current setting to Ruby MRI 2.0 via:
+
+	eselect ruby set ruby20
+
+[1] https://www.ruby-lang.org/en/news/2015/02/23/support-for-ruby-1-9-3-has-ended/

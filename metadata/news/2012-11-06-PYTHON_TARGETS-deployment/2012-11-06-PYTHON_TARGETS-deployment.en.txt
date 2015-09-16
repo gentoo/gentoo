@@ -1,0 +1,41 @@
+Title: PYTHON_TARGETS deployment
+Author: Michał Górny <mgorny@gentoo.org>
+Content-Type: text/plain
+Posted: 2012-11-06
+Revision: 1
+News-Item-Format: 1.0
+
+Recently, a few new Python eclasses have been deployed. As ebuilds
+migrate, the way they support multiple Python implementations will
+change. The previous method built Python modules for Python
+implementations selected through `eselect python'. The new method uses
+the PYTHON_TARGETS USE flags to explicitly name the implementations the
+modules shall be built for.
+
+If you are running a modern system with only Python 2.7 & 3.2 installed,
+then you don't have to do anything. The defaults will simply fit you,
+and let you keep your system up-to-date when new Python versions are
+deployed.
+
+However, if you'd like to use another set of Python implementations, you
+will need to set PYTHON_TARGETS in your make.conf file appropriately.
+This variable names the enabled implementations in the standard way
+common to all USE_EXPAND variables.
+
+For example, a setup enabling all major Python implementations would
+look like:
+
+	PYTHON_TARGETS="python2_7 python3_2 pypy1_9 jython2_5"
+
+The variable should list all Python implementations which are going to
+be used on the system; missing a particular value there will result
+in missing Python modules.
+
+A complete list of all possible values can be obtained using a command
+equivalent to the following:
+
+	emerge -1pv dev-python/python-exec
+
+For more details, please see the python-r1 User's Guide [1].
+
+[1] http://www.gentoo.org/proj/en/Python/python-r1/user-guide.xml

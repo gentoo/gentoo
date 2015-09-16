@@ -1,0 +1,17 @@
+Title: Upgrade to GNOME 2.32
+Author: Pacho Ramos <pacho@gentoo.org>
+Content-Type: text/plain
+Posted: 2011-02-14
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <gnome-base/gnome-2.32.1
+Display-If-Installed: <gnome-base/gnome-light-2.32.1
+Display-If-Installed: <gnome-base/gnome-session-2.32.1
+
+We are pleased to announce the stabilization of GNOME-2.32. Users are
+strongly encouraged to read the GNOME 2.32 Upgrade Guide, to avoid any
+possible issues relating to the upgrade, such as gnome-panel hanging 
+issues, evolution migration problems and others.
+
+Please read the Gnome 2.32 Upgrade Guide:
+http://gnome.gentoo.org/howtos/gnome-2.32-upgrade.xml

@@ -1,0 +1,26 @@
+Title: Ruby 1.8 removal; Ruby 1.9/2.0 default
+Author: Manuel Rüger <mrueg@gentoo.org>
+Content-Type: text/plain
+Posted: 2014-03-16
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: dev-lang/ruby
+
+Ruby MRI 1.8 has been retired by upstream in June 2013.[1]
+We remove Ruby MRI 1.8 support from the tree now. In parallel Ruby MRI 2.0 
+support will be activated in base profile's RUBY_TARGETS variable by default 
+in conjunction with Ruby MRI 1.9.
+
+If your currently eselected Ruby interpreter is ruby18, our recommendation is 
+to change it to ruby19. At the moment Ruby MRI 1.9 delivers the best possible 
+support of all Ruby interpreters in tree.
+
+Check the current setting via:
+
+	eselect ruby show
+
+Change the current setting to Ruby MRI 1.9 via:
+
+	eselect ruby set ruby19
+
+[1] https://www.ruby-lang.org/en/news/2013/06/30/we-retire-1-8-7/

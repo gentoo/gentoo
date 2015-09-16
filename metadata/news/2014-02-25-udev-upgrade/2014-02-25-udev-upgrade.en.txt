@@ -1,0 +1,28 @@
+Title: Upgrade to >=sys-fs/udev-210
+Author: Samuli Suominen <ssuominen@gentoo.org>
+Content-Type: text/plain
+Posted: 2014-02-25
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <sys-fs/udev-210
+
+The options CONFIG_FHANDLE and CONFIG_NET are now required in the kernel.
+You will be warned of them if they are missing while you upgrade to
+>=sys-fs/udev-210 by the package manager.
+See the package's README at /usr/share/doc/udev-210/ for more optional
+kernel options.
+
+The most reliable way of disabling the new network interface scheme is still
+the kernel parameter "net.ifnames=0" since overriding the
+80-net-name-slot.rules in /etc/udev/rules.d/ no longer works since upstream
+renamed the file to /lib/udev/rules.d/80-net-setup-link.rules
+The actual configuration is at /lib/systemd/network/99-default.link, which
+you can override in /etc/systemd/network/
+So, to clarify, you can override the new .rules file or the .link file in /etc
+but using the kernel parameter is the most consistent way.
+
+Since both the systemd-udevd executable and the network configuration is stored
+at /lib/systemd, using a too wide INSTALL_MASK would be a mistake.
+
+[1] https://wiki.gentoo.org/wiki/Udev/upgrade#udev_208_to_210
+[2] http://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames

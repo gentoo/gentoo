@@ -1,0 +1,15 @@
+Title: Migration to X.org Server 1.5
+Author: Remi Cardona <remi@gentoo.org>
+Author: Christian Faulhammer <fauli@gentoo.org>
+Content-Type: text/plain
+Posted: 2009-04-06
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <x11-base/xorg-server-1.5
+
+A lot of changes regarding device recognition and use by the X server
+have been introduced in the 1.5 update.  As that version is going
+stable on all architectures, users should read the upgrade guide [0]
+before actually updating the package.
+
+[0] http://www.gentoo.org/proj/en/desktop/x/x11/xorg-server-1.5-upgrade-guide.xml

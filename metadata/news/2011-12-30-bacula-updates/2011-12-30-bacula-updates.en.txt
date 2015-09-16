@@ -1,0 +1,27 @@
+Title: Bacula-5.2.3 Upgrade
+Author: Thomas Beierlein <tomjbe@gentoo.org>
+Content-Type: text/plain
+Posted: 2011-12-30
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <app-backup/bacula-5.2.0
+
+The 5.2.x release series of Bacula uses a new database catalog format.
+If you're upgrading from a 3.x.x or 5.0.x release, you must upgrade your
+bacula catalog database.
+
+Please read the manual chapter for how to upgrade your database (see
+http://www.bacula.org/5.2.x-manuals/en/main/main/Installing_Bacula.html).
+You can find database upgrade scripts in /usr/libexec/bacula/(updatedb/).
+
+It is strongly recommended that you save a copy of your existing database
+before upgrading. For details how to do it please look into your database
+documentation.
+
+The simplest way to upgrade the database:
+
+1. Stop Bacula from running (at least the director and storage daemons).
+2. Save a copy of your existing database.
+3. Emerge the new version of Bacula.
+4. Run the appropriate upgrade script from /usr/libexec/bacula/updatedb/. 
+5. Start the new Bacula.

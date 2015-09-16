@@ -1,0 +1,17 @@
+Title: Migrating to the new sparc multilib profile
+Author: Friedrich Oslage <bluebird@gentoo.org>
+Content-Type: text/plain
+Posted: 2009-01-04
+Revision: 2
+News-Item-Format: 1.0
+Display-If-Profile: default/linux/sparc/experimental/multilib
+Display-If-Profile: default/linux/sparc/experimental/multilib/desktop
+Display-If-Profile: default/linux/sparc/experimental/multilib/developer
+Display-If-Profile: default/linux/sparc/experimental/multilib/server
+
+When migrating to the new sparc multilib profile please keep in mind that it is
+still in an experimental state. Also note that you need to follow the migration
+guide [0], otherwise important packages such as gcc or glibc will fail to
+compile and most other packages will be installed incorrectly.
+
+[0] http://sparc.gentoo.org/multilib.xml

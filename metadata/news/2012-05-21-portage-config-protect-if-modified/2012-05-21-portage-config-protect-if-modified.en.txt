@@ -1,0 +1,15 @@
+Title: Portage config-protect-if-modified default
+Author: Zac Medico <zmedico@gentoo.org>
+Content-Type: text/plain
+Posted: 2012-05-21
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: >=sys-apps/portage-2.1.10.61
+
+Beginning with sys-apps/portage-2.1.10.61, FEATURES=config-protect-if-modified
+is enabled by default. This causes the CONFIG_PROTECT behavior to be skipped
+for files that have not been modified since they were installed.
+
+If you would like to disable this behavior by default, then set
+FEATURES="-config-protect-if-modified" in make.conf. See the make.conf(5) man
+page for more information about this feature.
