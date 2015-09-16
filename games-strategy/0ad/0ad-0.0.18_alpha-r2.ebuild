@@ -6,7 +6,10 @@ EAPI=5
 
 WX_GTK_VER="2.8"
 
-inherit eutils wxwidgets toolchain-funcs gnome2-utils games
+PYTHON_COMPAT=( python2_7 )
+PYTHON_REQ_USE="threads,ssl"
+
+inherit eutils wxwidgets toolchain-funcs gnome2-utils python-any-r1 games
 
 MY_P=0ad-${PV/_/-}
 DESCRIPTION="A free, real-time strategy game"
@@ -41,10 +44,16 @@ RDEPEND="
 	sound? ( media-libs/libvorbis
 		media-libs/openal )"
 DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
 	virtual/pkgconfig
 	test? ( dev-lang/perl )"
 
 S=${WORKDIR}/${MY_P}
+
+pkg_setup() {
+	games_pkg_setup
+	python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-gentoo.patch
