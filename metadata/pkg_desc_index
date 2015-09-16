@@ -5016,7 +5016,7 @@ dev-ml/labltk 8.06.0: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/lambda-term 1.8 1.9: A cross-platform library for manipulating the terminal
 dev-ml/lwt 2.4.3 2.4.6 2.5.0: Cooperative light-weight thread library for OCaml
 dev-ml/macaque 0.7.2: DSL for SQL Queries in Caml
-dev-ml/menhir 20141215: LR(1) parser generator for the OCaml language
+dev-ml/menhir 20141215 20150914: LR(1) parser generator for the OCaml language
 dev-ml/oasis 0.3.0 0.4.1 0.4.4 0.4.5: OASIS is a tool to integrate a configure, build and install system in OCaml project
 dev-ml/ocaml-augeas 0.5: Ocaml bindings for Augeas
 dev-ml/ocaml-autoconf 1.1: autoconf macros to support configuration of OCaml programs and libraries
