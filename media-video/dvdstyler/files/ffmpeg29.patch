@@ -1,0 +1,31 @@
+Index: DVDStyler-2.9.3/src/mediaenc_ffmpeg.cpp
+===================================================================
+--- DVDStyler-2.9.3.orig/src/mediaenc_ffmpeg.cpp
++++ DVDStyler-2.9.3/src/mediaenc_ffmpeg.cpp
+@@ -178,7 +178,7 @@ bool wxFfmpegMediaEncoder::addVideoStrea
+ 	c->time_base.den = isNTSC(videoFormat) ? 30000 : 25;
+ 	c->time_base.num = isNTSC(videoFormat) ? 1001 : 1;
+ 	c->gop_size = isNTSC(videoFormat) ? 15 : 12;
+-	c->pix_fmt = PIX_FMT_YUV420P;
++	c->pix_fmt = AV_PIX_FMT_YUV420P;
+ 	c->rc_buffer_size = VIDEO_BUF_SIZE;
+ 	c->rc_max_rate = 9000000;
+ 	c->rc_min_rate = 0;
+@@ -279,7 +279,7 @@ void wxFfmpegMediaEncoder::CloseAudioEnc
+ 	m_audioStm = NULL;
+ }
+ 
+-AVFrame* allocPicture(PixelFormat pix_fmt, int width, int height) {
++AVFrame* allocPicture(AVPixelFormat pix_fmt, int width, int height) {
+ 	AVFrame* frame = av_frame_alloc();
+ 	if (!frame)
+ 		return NULL;
+@@ -318,7 +318,7 @@ bool wxFfmpegMediaEncoder::OpenVideoEnco
+ 		return false;
+ 	}
+ 
+-	m_imgConvertCtx = sws_getContext(c->width, c->height, PIX_FMT_RGB24, c->width, c->height, c->pix_fmt, SWS_BICUBIC,
++	m_imgConvertCtx = sws_getContext(c->width, c->height, AV_PIX_FMT_RGB24, c->width, c->height, c->pix_fmt, SWS_BICUBIC,
+ 			NULL, NULL, NULL);
+ 	if (!m_imgConvertCtx) {
+ 		wxLogError(wxT("Cannot initialize the conversion context"));

@@ -7,7 +7,7 @@ EAPI=5
 MY_P=${P/dvds/DVDS}
 WX_GTK_VER=2.8
 
-inherit wxwidgets
+inherit wxwidgets eutils
 
 DESCRIPTION="A cross-platform free DVD authoring application"
 HOMEPAGE="http://www.dvdstyler.org/"
@@ -51,6 +51,7 @@ src_prepare() {
 	sed -i \
 		-e '/Icon/s:.png::' -e '/^Encoding/d' -e '/Categories/s:Application;::' \
 		data/dvdstyler.desktop || die
+	has_version '>=media-video/ffmpeg-2.9' && epatch "${FILESDIR}/ffmpeg29.patch"
 }
 
 src_configure() {
