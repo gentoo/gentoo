@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit cmake-utils
+inherit cmake-utils eutils
 
 DESCRIPTION="Lightweight video thumbnailer that can be used by file managers"
 HOMEPAGE="https://github.com/dirkvdb/ffmpegthumbnailer"
@@ -39,6 +39,7 @@ src_prepare() {
 	rm -rf out* || die
 
 	cmake-utils_src_prepare
+	has_version '>=media-video/ffmpeg-2.9' && epatch "${FILESDIR}/${P}-ffmpeg29.patch"
 }
 
 src_configure() {
