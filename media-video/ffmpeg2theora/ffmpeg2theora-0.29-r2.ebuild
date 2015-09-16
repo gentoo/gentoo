@@ -30,6 +30,7 @@ src_prepare() {
 		"${FILESDIR}"/${P}-swr.patch \
 		"${FILESDIR}"/${P}-ffmpeg2.patch \
 		"${FILESDIR}"/${P}-underlinking.patch
+	has_version '>=media-video/ffmpeg-2.9' && epatch "${FILESDIR}/${P}-ffmpeg29.patch"
 }
 
 src_configure() {
