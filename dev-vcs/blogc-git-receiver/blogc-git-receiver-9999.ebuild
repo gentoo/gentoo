@@ -32,7 +32,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="dev-vcs/git"
-DEPEND="${RDEPEND}"
+DEPEND=""
 
 src_prepare() {
 	[[ ${PV} = *9999* ]] && eautoreconf
