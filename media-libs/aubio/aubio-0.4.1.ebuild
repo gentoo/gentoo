@@ -8,7 +8,7 @@ DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 
-inherit distutils-r1 waf-utils multilib
+inherit distutils-r1 waf-utils multilib eutils
 
 DESCRIPTION="Library for audio labelling"
 HOMEPAGE="http://aubio.org/"
@@ -39,6 +39,7 @@ PYTHON_SRC_DIR="${S}/python"
 src_prepare() {
 	sed -i -e "s:\/lib:\/$(get_libdir):" src/wscript_build || die
 	sed -i -e "s:doxygen:doxygen_disabled:" wscript || die
+	has_version '>=media-video/ffmpeg-2.8' && epatch "${FILESDIR}/${PN}-0.4.1-ffmpeg29.patch"
 }
 
 src_configure() {

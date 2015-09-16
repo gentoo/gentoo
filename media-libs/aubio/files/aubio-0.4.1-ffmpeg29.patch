@@ -1,0 +1,22 @@
+Index: aubio-0.4.1/src/io/source_avcodec.c
+===================================================================
+--- aubio-0.4.1.orig/src/io/source_avcodec.c
++++ aubio-0.4.1/src/io/source_avcodec.c
+@@ -167,7 +167,7 @@ aubio_source_avcodec_t * new_aubio_sourc
+   }
+ 
+   AVFrame *avFrame = s->avFrame;
+-  avFrame = avcodec_alloc_frame();
++  avFrame = av_frame_alloc();
+   if (!avFrame) {
+     AUBIO_ERR("source_avcodec: Could not allocate frame for (%s)\n", s->path);
+   }
+@@ -415,7 +415,7 @@ void del_aubio_source_avcodec(aubio_sour
+   }
+   s->output = NULL;
+   if (s->avFrame != NULL) {
+-    avcodec_free_frame( &(s->avFrame) );
++    av_frame_free( &(s->avFrame) );
+   }
+   s->avFrame = NULL;
+   AUBIO_FREE(s);

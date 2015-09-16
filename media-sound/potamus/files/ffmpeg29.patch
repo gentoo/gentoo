@@ -1,0 +1,22 @@
+Index: potamus-16/src/input-avcodec.c
+===================================================================
+--- potamus-16.orig/src/input-avcodec.c
++++ potamus-16/src/input-avcodec.c
+@@ -41,7 +41,7 @@ static int input_avcodec_open(input *p,
+ 		g_error("out of memory");
+ 	p->data = a;
+ 
+-	a->frame = avcodec_alloc_frame();
++	a->frame = av_frame_alloc();
+ 
+ 	for (int pass = 0; pass < 2; pass++) {
+ 		a->format = NULL;
+@@ -114,7 +114,7 @@ static int input_avcodec_get_audio(input
+ 
+ 		// Decode the packet.
+ 		while (packet.size > 0) {
+-			avcodec_get_frame_defaults(a->frame);
++			av_frame_unref(a->frame);
+ 
+ 			int got_frame = 0;
+ 			int in_used = avcodec_decode_audio4(a->codec_ctx,

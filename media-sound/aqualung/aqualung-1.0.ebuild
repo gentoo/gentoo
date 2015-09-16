@@ -50,6 +50,10 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${PN}-${MY_PV}
 
+src_prepare() {
+	epatch "${FILESDIR}/ffmpeg29.patch"
+}
+
 src_configure() {
 	econf \
 		--enable-nls \
