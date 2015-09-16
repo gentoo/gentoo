@@ -7545,7 +7545,7 @@ dev-python/python-bugzilla 1.1.0: A python module for interacting with Bugzilla 
 dev-python/python-caja 1.8.0: Python bindings for the Caja file manager
 dev-python/python-catcher 0.1.7: Beautiful stack traces for Python
 dev-python/python-cdb 0.34 0.34-r1: A Python extension module for cdb
-dev-python/python-ceilometerclient 1.0.10: This is a client library for Ceilometer built on the Ceilometer API
+dev-python/python-ceilometerclient 1.0.10 1.1.1: This is a client library for Ceilometer built on the Ceilometer API
 dev-python/python-cinderclient 1.0.9 1.1.2 1.2.1 1.2.1-r1 1.3.1: A client for the OpenStack Cinder API
 dev-python/python-cjson 1.1.0: Fast JSON encoder/decoder for Python
 dev-python/python-cluster 1.2.2: Allows grouping a list of arbitrary objects into related groups (clusters)
