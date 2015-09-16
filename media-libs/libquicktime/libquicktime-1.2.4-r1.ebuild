@@ -23,7 +23,7 @@ RDEPEND=">=virtual/libintl-0-r1[${MULTILIB_USEDEP}]
 	dv? ( >=media-libs/libdv-1.0.0-r3[${MULTILIB_USEDEP}] )
 	ffmpeg? ( >=virtual/ffmpeg-9-r1[${MULTILIB_USEDEP}] )
 	gtk? ( x11-libs/gtk+:2 )
-	jpeg? ( >=virtual/jpeg-0-r2[${MULTILIB_USEDEP}] )
+	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
 	lame? ( >=media-sound/lame-3.99.5-r1[${MULTILIB_USEDEP}] )
 	opengl? ( virtual/opengl )
 	png? ( >=media-libs/libpng-1.6.10:0[${MULTILIB_USEDEP}] )
