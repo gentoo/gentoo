@@ -15721,7 +15721,7 @@ sys-apps/fakechroot 2.17.2: Provide a faked chroot environment without requiring
 sys-apps/fakeroot 1.18.4 1.19 1.20 1.20.2: A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery
 sys-apps/fakeroot-ng 0.17 0.18 0.18-r1: A utility to run commands with fake root privileges
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
-sys-apps/file 5.22 5.22-r1 5.23 5.24 9999: identify a file's format by scanning binary data for patterns
+sys-apps/file 5.22 5.22-r1 5.23 5.24 5.25 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.4.2-r1 4.4.2-r2 4.5.12 4.5.14 4.5.14-r1: GNU utilities for finding files
 sys-apps/flashrom 0.9.6.1 0.9.7 0.9.8 9999: Utility for reading, writing, erasing and verifying flash ROM chips
 sys-apps/flock 2.19: Manage locks from shell scripts
