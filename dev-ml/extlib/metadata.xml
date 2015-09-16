@@ -4,5 +4,6 @@
 	<herd>ml</herd>
 	<upstream>
 		<remote-id type="google-code">ocaml-extlib</remote-id>
+		<remote-id type="github">ygrek/ocaml-extlib</remote-id>
 	</upstream>
 </pkgmetadata>
