@@ -1,0 +1,8 @@
+<!ELEMENT gleps (glep+)>
+<!ELEMENT glep  (#PCDATA|uri)*>
+<!ATTLIST glep  id      CDATA #REQUIRED
+                file    CDATA #REQUIRED
+                type    (S|I) "S"
+                status (D|d|A|F|R|W|M) "D">
+<!ELEMENT uri   (#PCDATA)>
+<!ATTLIST uri   link  CDATA #REQUIRED>

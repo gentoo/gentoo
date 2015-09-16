@@ -1,0 +1,102 @@
+<!ELEMENT packages ( pkgmetadata* )>
+
+<!-- Metadata for a category -->
+<!ELEMENT catmetadata ( (longdescription)* )>
+<!ATTLIST catmetadata pkgname CDATA "">
+
+<!-- Metadata for a package -->
+<!ELEMENT pkgmetadata ( (herd|maintainer|natural-name|longdescription|use|upstream)* )>
+<!ATTLIST pkgmetadata pkgname CDATA "">
+
+  <!-- One tag for each herd this package is assigned to. -->
+  <!ELEMENT herd (#PCDATA)>
+
+  <!-- One tag for each maintainer of a package, multiple allowed-->
+  <!ELEMENT maintainer ( email, (description| name)* )>
+
+  <!-- Natural name for package, example: LibreOffice (for app-office/libreoffice) -->
+  <!ELEMENT natural-name (#PCDATA) >
+
+  <!-- A long description of the package in freetext-->
+  <!ELEMENT longdescription (#PCDATA|pkg|cat)* >
+
+  <!-- The changelog of the package-->
+  <!-- Please note that #PCDATA is mentioned only for the upstream changelog
+    element, where the content is a URL. This is due to limitations of the DTD -->
+  <!ELEMENT changelog (#PCDATA|change)* >
+    <!-- The changelog contains various "changes"-->
+    <!ELEMENT change (date,(developer|version|description|file|contributor|bug)*) >
+      <!ELEMENT date (#PCDATA) >
+        <!-- The date of the change, in "YYYY-MM-DD" format -->
+      <!ELEMENT developer (name?,email) >
+        <!-- The developer that made the change. The email is required, name
+	   is optional-->
+      <!ELEMENT version (#PCDATA) >
+        <!--version of the packages involved (one tag per version)-->
+      <!ELEMENT file (#PCDATA) ><!-- one tag per file touched -->
+      <!ELEMENT contributor (name?,email?) >
+        <!-- A reference to a user that helped in causing this change. 
+          There should at least be a name or email address included. 
+          Email is preferred -->
+      <!ELEMENT bug (#PCDATA) >
+        <!-- bug-id of a bug fixed by this change, multiple allowed. The 
+          format of this is a number or alias for a bug. NOT including a 
+          # character -->
+
+  <!-- description of what this USE flag does for this package -->
+  <!ELEMENT use (flag)* >
+    <!ELEMENT flag (#PCDATA|pkg|cat)* >
+      <!-- name attribute holds the name of the USE flag -->
+      <!ATTLIST flag name CDATA #REQUIRED >
+
+  <!-- upstream metadata information (maintainers, upstream docs,..) -->
+  <!ELEMENT upstream (maintainer|changelog|doc|bugs-to|remote-id)* >
+    <!-- Due to the limitation of DTD this will also allow a status
+      attribute for the package maintainer element. Please note that
+      the usage of the status attribute is nevertheless _only_ allowed
+      in the upstream maintainer element. -->
+    <!ATTLIST maintainer status (active|inactive|unknown) "unknown" >
+    <!-- URL where the location of the upstream documentation can be found -->
+    <!ELEMENT doc (#PCDATA)>
+      <!ATTLIST doc lang CDATA "C" >
+    <!-- location where to report bugs
+      (may also be an email address prefixed with mailto:) -->
+    <!ELEMENT bugs-to (#PCDATA)>
+    <!-- specify a type of package identification tracker -->
+    <!ELEMENT remote-id (#PCDATA)>
+      <!ATTLIST remote-id type (bitbucket|cpan|cpan-module|cpe|cran|ctan|freecode|freshmeat|github|gitorious|google-code|launchpad|pear|pecl|pypi|rubyforge|rubygems|sourceforge|sourceforge-jp|vim) #REQUIRED>
+
+  <!-- category/package information for cross-linking in descriptions
+    and useflag descriptions -->
+  <!ELEMENT pkg (#PCDATA) >
+  <!ELEMENT cat (#PCDATA) >
+          
+<!-- Common attributes -->
+
+<!-- the lang attribute, specifies the language of this tag. This is 
+  only useful for descriptions of various kinds. If a tag with this 
+  attribute is included there must be a description in the default 
+  language "C" or "en", which is equivalent -->
+  <!ATTLIST description lang CDATA "C" >
+  <!ATTLIST longdescription lang CDATA "C" >
+  <!ATTLIST use lang CDATA "C" >
+
+<!-- The restrict attribute, this attribute specifies restrictions on 
+  the applicability of tags on versions. The format of this attribute is 
+  equal to the format of DEPEND lines in ebuilds. There is one special 
+  value though: restrict="*". A tag that specifies this only applies if 
+  there are no other tags that apply.
+  
+  For required tags, there must be either an unrestricted version, or a 
+  version that is default restricted. -->
+  <!ATTLIST herd restrict CDATA #IMPLIED >
+  <!ATTLIST maintainer restrict CDATA #IMPLIED >
+  <!ATTLIST longdescription restrict CDATA #IMPLIED >
+  <!ATTLIST flag restrict CDATA #IMPLIED >
+
+
+
+<!-- standard parts -->
+<!ELEMENT email (#PCDATA) ><!-- an email address -->
+<!ELEMENT name (#PCDATA) ><!-- the name of a person (maintainer, contributor)-->
+<!ELEMENT description (#PCDATA) ><!-- A description of a maintainer or change-->

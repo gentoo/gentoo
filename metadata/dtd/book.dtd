@@ -1,0 +1,25 @@
+<!ENTITY % common SYSTEM "common.dtd">
+
+%common;
+
+<!ELEMENT book     (title, values?, author+, abstract, license?, version, date, part+)>
+<!ATTLIST book     link CDATA #IMPLIED
+                   disclaimer (articles|oldbook|draft|obsolete) #IMPLIED
+		   redirect CDATA #IMPLIED
+                   lang CDATA #IMPLIED>
+
+<!ELEMENT part     (title, abstract, chapter+)>
+<!ATTLIST part     id CDATA #IMPLIED>
+
+<!ELEMENT chapter  (title, abstract?, include)>
+<!ATTLIST chapter  id CDATA #IMPLIED>
+
+<!ELEMENT sections   (abstract?, version, date, section+)>
+
+<!ELEMENT section  (include | (title, (body+ | subsection+)) )>
+
+<!ELEMENT subsection (include | (title?, body+))>
+<!ATTLIST subsection id   CDATA #IMPLIED
+                     test CDATA #IMPLIED>
+
+<!ELEMENT body    (include | (%block.class;)+)>

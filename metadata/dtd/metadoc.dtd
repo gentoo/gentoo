@@ -1,0 +1,43 @@
+<!ENTITY % common SYSTEM "common.dtd">
+
+%common;
+
+<!ELEMENT metadoc (version,members,categories,files,docs)>
+<!ATTLIST metadoc lang     CDATA  #REQUIRED
+                  parent   CDATA  #IMPLIED>
+<!ELEMENT members (lead*,member*)>
+<!ELEMENT lead    (#PCDATA)*>     <!-- <lead>nickname</lead> -->
+<!ELEMENT member  (#PCDATA)*>
+<!ATTLIST member  mail     CDATA  #IMPLIED
+                  fullname CDATA  #IMPLIED>
+<!ELEMENT categories       (cat)*>
+<!ELEMENT cat     (#PCDATA)*>
+<!ATTLIST cat     id       CDATA  #REQUIRED
+                  parent   CDATA  #IMPLIED>
+<!ELEMENT files   (file)*>
+<!ELEMENT file    (#PCDATA)*>
+<!ATTLIST file    id       ID #REQUIRED>
+<!ELEMENT docs    (doc)*>
+<!ELEMENT doc     (memberof*,bookref?,bugs?)>
+<!ATTLIST doc     fileid   CDATA  #REQUIRED>
+<!ELEMENT memberof         (#PCDATA)*>
+<!ELEMENT bookref  EMPTY>
+<!ATTLIST bookref vpart    CDATA  #IMPLIED
+                  vchap    CDATA  #IMPLIED>
+<!ELEMENT bugs    (bug*)>
+<!ELEMENT bug     (#PCDATA)*>
+<!ATTLIST bug     stopper  (yes|no) #IMPLIED
+                  arch     CDATA    #IMPLIED>
+
+<!ELEMENT dynamic (version?, title, intro?, (listing|catid*|overview))>
+<!ATTLIST dynamic metadoc  CDATA  #REQUIRED>
+<!ELEMENT intro   (section)*>       <!-- Section stuff copy/pasted from guide.dtd -->
+<!ELEMENT listing (list)*>
+<!ELEMENT list    (#PCDATA)*>
+<!ELEMENT catid   (#PCDATA)*>
+<!ELEMENT overview         EMPTY>
+
+
+<!ELEMENT section   (include | (title?, body+))>
+
+<!ELEMENT body      (include | (%block.class;)+)>
