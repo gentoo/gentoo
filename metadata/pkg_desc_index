@@ -4857,7 +4857,7 @@ dev-libs/rote 0.2.8: simple C library for VT102 terminal emulation
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/safestr 1.0.3: provide a standards compatible yet secure string implementation
 dev-libs/sblim-sfcc 2.2.5: Small Footprint CIM Client Library
-dev-libs/sdformat 2.3.2: Simulation Description Format (SDF) parser
+dev-libs/sdformat 2.3.2 3.1.1: Simulation Description Format (SDF) parser
 dev-libs/serd 0.18.2 0.20.0: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 1.97.9: Library to drive serial/parallel/usb displays with built-in controllers
 dev-libs/shared-desktop-ontologies 0.11.0: Shared OSCAF desktop ontologies
@@ -14891,7 +14891,7 @@ sci-electronics/electronics-menu 1.0 1.0-r1: Creates an "Electronics" desktop me
 sci-electronics/espresso-ab 1.0-r1: POSIX compliant version of the espresso logic minimization tool
 sci-electronics/freehdl 0.0.7: A free VHDL simulator
 sci-electronics/fritzing 0.8.7b 0.9.2b: Electronic Design Automation
-sci-electronics/gazebo 5.1.0: A 3D multiple robot simulator with dynamics
+sci-electronics/gazebo 5.1.0 6.1.0: A 3D multiple robot simulator with dynamics
 sci-electronics/geda 1.8.1 1.8.2 1.9.1: GPL Electronic Design Automation (gEDA):gaf core package
 sci-electronics/geda-suite 20110427: Metapackage which installs all the components required for a full-featured gEDA/gaf system
 sci-electronics/geda-xgsch2pcb 0.1.3-r2: A graphical front-end for the gschem -> pcb workflow
