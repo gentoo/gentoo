@@ -38,8 +38,8 @@ start() {
 
 	# Work around any strange permissions that may be on these files.
 	[ "x${MYTHBACKEND_LOGGING}" = "xfiles" ] && \
-		checkpath --directory --owner mythv:video --mode 0775 /var/log/mythtv
-	checkpath --directory --owner mythv:video --mode 0775 /home/mythtv
+		checkpath --directory --owner mythtv:video --mode 0775 /var/log/mythtv
+	checkpath --directory --owner mythtv:video --mode 0775 /home/mythtv
 
 	ebegin "Starting MythTV Backend"
 	start-stop-daemon --start --quiet --exec /usr/bin/mythbackend \
