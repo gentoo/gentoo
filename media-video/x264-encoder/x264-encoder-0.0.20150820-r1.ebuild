@@ -39,7 +39,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
-	epatch "${FILESDIR}/gpac.patch"
+	epatch "${FILESDIR}/gpac.patch" "${FILESDIR}/ffmpeg29.patch"
 }
 
 src_configure() {
