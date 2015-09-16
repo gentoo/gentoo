@@ -14,7 +14,7 @@ SRC_URI="http://kaizer.se/publicfiles/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86"
 IUSE="+introspection lua python"
 
 RDEPEND=">=x11-libs/gtk+-2.20:2
