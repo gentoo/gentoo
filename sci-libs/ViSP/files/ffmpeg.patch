@@ -1,0 +1,78 @@
+Index: ViSP-2.10.0/src/video/vpFFMPEG.cpp
+===================================================================
+--- ViSP-2.10.0.orig/src/video/vpFFMPEG.cpp
++++ ViSP-2.10.0/src/video/vpFFMPEG.cpp
+@@ -184,7 +184,7 @@ bool vpFFMPEG::openStream(const char *fi
+       if (pFrameRGB == NULL)
+         return false;
+       
+-      numBytes = avpicture_get_size (PIX_FMT_RGB24,pCodecCtx->width,pCodecCtx->height);
++      numBytes = avpicture_get_size (AV_PIX_FMT_RGB24,pCodecCtx->width,pCodecCtx->height);
+     }
+     
+     else if (color_type == vpFFMPEG::GRAY_SCALED)
+@@ -198,7 +198,7 @@ bool vpFFMPEG::openStream(const char *fi
+       if (pFrameGRAY == NULL)
+         return false;
+       
+-      numBytes = avpicture_get_size (PIX_FMT_GRAY8,pCodecCtx->width,pCodecCtx->height);
++      numBytes = avpicture_get_size (AV_PIX_FMT_GRAY8,pCodecCtx->width,pCodecCtx->height);
+     }  
+ 
+     /*
+@@ -215,10 +215,10 @@ bool vpFFMPEG::openStream(const char *fi
+   }
+   
+   if (color_type == vpFFMPEG::COLORED)
+-    avpicture_fill((AVPicture *)pFrameRGB, buffer, PIX_FMT_RGB24, pCodecCtx->width, pCodecCtx->height);
++    avpicture_fill((AVPicture *)pFrameRGB, buffer, AV_PIX_FMT_RGB24, pCodecCtx->width, pCodecCtx->height);
+   
+   else if (color_type == vpFFMPEG::GRAY_SCALED)
+-    avpicture_fill((AVPicture *)pFrameGRAY, buffer, PIX_FMT_GRAY8, pCodecCtx->width, pCodecCtx->height);
++    avpicture_fill((AVPicture *)pFrameGRAY, buffer, AV_PIX_FMT_GRAY8, pCodecCtx->width, pCodecCtx->height);
+   
+   streamWasOpen = true;
+ 
+@@ -235,10 +235,10 @@ bool vpFFMPEG::openStream(const char *fi
+ bool vpFFMPEG::initStream()
+ {
+   if (color_type == vpFFMPEG::COLORED)
+-    img_convert_ctx= sws_getContext(pCodecCtx->width, pCodecCtx->height, pCodecCtx->pix_fmt, pCodecCtx->width,pCodecCtx->height,PIX_FMT_RGB24, SWS_BICUBIC, NULL, NULL, NULL);
++    img_convert_ctx= sws_getContext(pCodecCtx->width, pCodecCtx->height, pCodecCtx->pix_fmt, pCodecCtx->width,pCodecCtx->height,AV_PIX_FMT_RGB24, SWS_BICUBIC, NULL, NULL, NULL);
+   
+   else if (color_type == vpFFMPEG::GRAY_SCALED)
+-    img_convert_ctx= sws_getContext(pCodecCtx->width, pCodecCtx->height, pCodecCtx->pix_fmt, pCodecCtx->width,pCodecCtx->height,PIX_FMT_GRAY8, SWS_BICUBIC, NULL, NULL, NULL);
++    img_convert_ctx= sws_getContext(pCodecCtx->width, pCodecCtx->height, pCodecCtx->pix_fmt, pCodecCtx->width,pCodecCtx->height,AV_PIX_FMT_GRAY8, SWS_BICUBIC, NULL, NULL, NULL);
+ 
+   int ret = av_seek_frame(pFormatCtx, (int)videoStream, 0, AVSEEK_FLAG_ANY) ;
+   if (ret < 0 )
+@@ -707,7 +707,7 @@ bool vpFFMPEG::openEncoder(const char *f
+   pCodecCtx->time_base.den = framerate_encoder;
+   pCodecCtx->gop_size = 10; /* emit one intra frame every ten frames */
+   pCodecCtx->max_b_frames=1;
+-  pCodecCtx->pix_fmt = PIX_FMT_YUV420P;
++  pCodecCtx->pix_fmt = AV_PIX_FMT_YUV420P;
+ 
+   /* open it */
+ #if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(53,35,0) // libavcodec 53.35.0
+@@ -730,15 +730,15 @@ bool vpFFMPEG::openEncoder(const char *f
+   outbuf_size = 100000;
+   outbuf = new uint8_t[outbuf_size];
+ 
+-  numBytes = avpicture_get_size (PIX_FMT_YUV420P,pCodecCtx->width,pCodecCtx->height);
++  numBytes = avpicture_get_size (AV_PIX_FMT_YUV420P,pCodecCtx->width,pCodecCtx->height);
+   picture_buf = new uint8_t[numBytes];
+-  avpicture_fill((AVPicture *)pFrame, picture_buf, PIX_FMT_YUV420P, pCodecCtx->width, pCodecCtx->height);
++  avpicture_fill((AVPicture *)pFrame, picture_buf, AV_PIX_FMT_YUV420P, pCodecCtx->width, pCodecCtx->height);
+ 
+-  numBytes = avpicture_get_size (PIX_FMT_RGB24,pCodecCtx->width,pCodecCtx->height);
++  numBytes = avpicture_get_size (AV_PIX_FMT_RGB24,pCodecCtx->width,pCodecCtx->height);
+   buffer = new uint8_t[numBytes];
+-  avpicture_fill((AVPicture *)pFrameRGB, buffer, PIX_FMT_RGB24, pCodecCtx->width, pCodecCtx->height);
++  avpicture_fill((AVPicture *)pFrameRGB, buffer, AV_PIX_FMT_RGB24, pCodecCtx->width, pCodecCtx->height);
+ 
+-  img_convert_ctx= sws_getContext(pCodecCtx->width, pCodecCtx->height, PIX_FMT_RGB24, pCodecCtx->width,pCodecCtx->height,PIX_FMT_YUV420P, SWS_BICUBIC, NULL, NULL, NULL);
++  img_convert_ctx= sws_getContext(pCodecCtx->width, pCodecCtx->height, AV_PIX_FMT_RGB24, pCodecCtx->width,pCodecCtx->height,AV_PIX_FMT_YUV420P, SWS_BICUBIC, NULL, NULL, NULL);
+   
+   encoderWasOpened = true;
+ 
