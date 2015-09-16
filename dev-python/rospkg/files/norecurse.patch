@@ -1,0 +1,64 @@
+commit c2e06e0ea0b4a1cbb67049ab77a80f53646fb0b2
+Author: Alexis Ballier <aballier@gentoo.org>
+Date:   Tue Dec 23 12:27:19 2014 +0100
+
+    Add support for rospack_norecurse to avoid recursing into all subdirectories when looking for a package.
+    
+    I am installing ros into /usr, hence this searches in /usr/share. I have a lot of directories, not ROS related, into /usr/share (e.g. a full TeX Live install), and I get these timings:
+    
+    Without rospack_norecurse in /usr/share:
+    $ time rosversion rospack
+    2.2.5
+    
+    real    0m2.861s
+    user    0m1.588s
+    sys     0m1.267s
+    
+    With rospack_norecurse in /usr/share:
+    $ time rosversion rospack
+    2.2.5
+    
+    real    0m0.135s
+    user    0m0.100s
+    sys     0m0.034s
+    
+    This is on a desktop with a SSD drive. On an arm board, with much less packages in /usr/share but way much slower I/O I remember hitting the 10 seconds timeout for roscore to start.
+
+diff --git a/src/rospkg/rospack.py b/src/rospkg/rospack.py
+index e55acec..7ed98de 100644
+--- a/src/rospkg/rospack.py
++++ b/src/rospkg/rospack.py
+@@ -42,7 +42,7 @@ from .stack import parse_stack_file, InvalidStack
+ _cache_lock = Lock()
+ 
+ 
+-def list_by_path(manifest_name, path, cache):
++def list_by_path(manifest_name, path, cache, recurse=True):
+     """
+     List ROS stacks or packages within the specified path.
+ 
+@@ -53,6 +53,7 @@ def list_by_path(manifest_name, path, cache):
+     :param manifest_name: MANIFEST_FILE or STACK_FILE, ``str``
+     :param path: path to list resources in, ``str``
+     :param cache: path cache to update. Maps resource name to directory path, ``{str: str}``
++    :param recurse: search recursively in subdirectories ``bool``
+     :returns: complete list of resources in ROS environment, ``[str]``
+     """
+     resources = []
+@@ -89,9 +90,15 @@ def list_by_path(manifest_name, path, cache):
+             # optimization for stacks.
+             del dirs[:]
+             continue #leaf     
+-        elif 'rospack_nosubdirs' in files:
++        elif 'rospack_nosubdirs' in files or not recurse:
+             del dirs[:]
+             continue  #leaf
++        elif 'rospack_norecurse' in files:
++            for sd in dirs:
++                spath = os.path.join(d, sd)
++                resources += list_by_path(manifest_name, spath, cache, False)
++            del dirs[:]
++            continue
+         # remove hidden dirs (esp. .svn/.git)
+         [dirs.remove(di) for di in dirs if di[0] == '.']
+     return resources
