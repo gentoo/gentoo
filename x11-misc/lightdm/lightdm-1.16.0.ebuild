@@ -14,7 +14,7 @@ SRC_URI="https://launchpad.net/${PN}/${TRUNK_VERSION}/${PV}/+download/${P}.tar.x
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
-IUSE="+gtk +introspection kde qt4 +gnome"
+IUSE="+gtk +introspection kde qt4 qt5 +gnome"
 REQUIRED_USE="|| ( gtk kde )"
 
 COMMON_DEPEND=">=dev-libs/glib-2.32.3:2
@@ -28,6 +28,11 @@ COMMON_DEPEND=">=dev-libs/glib-2.32.3:2
 		dev-qt/qtcore:4
 		dev-qt/qtdbus:4
 		dev-qt/qtgui:4
+		)
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtdbus:5
+		dev-qt/qtgui:5
 		)"
 RDEPEND="${COMMON_DEPEND}
 	>=sys-auth/pambase-20101024-r2"
@@ -83,7 +88,7 @@ src_configure() {
 		--disable-tests \
 		$(use_enable introspection) \
 		$(use_enable qt4 liblightdm-qt) \
-		--disable-liblightdm-qt5 \
+		$(use_enable qt5 liblightdm-qt5) \
 		--with-user-session=${_session} \
 		--with-greeter-session=${_greeter} \
 		--with-greeter-user=${_user} \
