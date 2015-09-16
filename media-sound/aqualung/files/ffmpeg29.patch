@@ -1,0 +1,13 @@
+Index: aqualung-1.0/src/decoder/dec_lavc.c
+===================================================================
+--- aqualung-1.0.orig/src/decoder/dec_lavc.c
++++ aqualung-1.0/src/decoder/dec_lavc.c
+@@ -280,7 +280,7 @@ lavc_decoder_open(decoder_t * dec, char
+ 		return DECODER_OPEN_BADLIB;
+ 
+ 	pd->avCodecCtx = pd->avFormatCtx->streams[pd->audioStream]->codec;
+-#if LIBAVCODEC_VERSION_MAJOR >= 53
++#if LIBAVCODEC_VERSION_MAJOR >= 53 && LIBAVCODEC_VERSION_MAJOR < 57
+ 	pd->avCodecCtx->get_buffer = avcodec_default_get_buffer;
+ 	pd->avCodecCtx->release_buffer = avcodec_default_release_buffer;
+ #endif /* LIBAVCODEC_VERSION_MAJOR >= 53 */
