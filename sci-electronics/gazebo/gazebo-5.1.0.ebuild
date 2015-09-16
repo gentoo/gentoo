@@ -45,7 +45,10 @@ DEPEND="${RDEPEND}
 "
 S="${WORKDIR}/${PN}$(get_major_version)_${PV}"
 CMAKE_BUILD_TYPE=RelWithDebInfo
-PATCHES=( "${FILESDIR}/bullet_283.patch" )
+PATCHES=(
+	"${FILESDIR}/bullet_283.patch"
+	"${FILESDIR}/ffmpeg29.patch"
+)
 
 src_configure() {
 	# doesnt build without it
