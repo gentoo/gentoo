@@ -67,6 +67,7 @@ src_prepare() {
 		"${FILESDIR}"/${P}-ffmpeg2.patch \
 		"${FILESDIR}"/${P}-freetype251.patch \
 		"${FILESDIR}"/${P}-ffmpeg24.patch
+	has_version '>=media-video/ffmpeg-2.8' && epatch "${FILESDIR}"/${P}-ffmpeg29.patch
 
 	elibtoolize
 }
