@@ -15091,6 +15091,7 @@ sci-libs/hdf5 1.8.14-r1 1.8.15_p1: General purpose library and file format for s
 sci-libs/htslib 1.0 1.1 1.2.1: C library for high-throughput sequencing data formats
 sci-libs/hypre 2.9.0b: Parallel matrix preconditioners library
 sci-libs/idlmarkwardt 20121110 20130418: Craig Markwardt IDL procedures (MPFIT, CMSVLIB, etc)
+sci-libs/ignition-math 1.0.0 2.2.2: A small, fast, and high performance math library for robot applications
 sci-libs/inchi 1.04: A program and library for generating standard and non-standard InChI and InChIKeys
 sci-libs/indilib 0.9.9 1.0.0: INDI Astronomical Control Protocol library
 sci-libs/io_lib 1.10.1 1.11.2.1 1.12.5 1.13.2: General purpose trace and experiment file reading/writing interface
