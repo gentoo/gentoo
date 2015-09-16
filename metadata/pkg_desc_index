@@ -6776,6 +6776,7 @@ dev-python/cangjie 1.1 1.2: The Python bindings to libcangjie
 dev-python/carbon 0.9.12-r1 0.9.13: Backend data caching and persistence daemon for Graphite
 dev-python/carrot 0.10.7-r1: AMQP Messaging Framework for Python
 dev-python/casuarius 1.1: Cython wrapper for the Cassowary incremental constraint solver
+dev-python/catkin_pkg 0.2.10 9999: Standalone Python library for the catkin package system
 dev-python/cddb-py 1.4 1.4-r1: CDDB Module for Python
 dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation of the ElementTree API
 dev-python/celery 3.1.17 3.1.18 3.1.18-r1: Open source asynchronous task queue/job queue based on distributed message passing
