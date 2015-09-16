@@ -1,0 +1,21 @@
+Index: strigi-0.7.8/libstreamanalyzer/plugins/endplugins/ffmpegendanalyzer.cpp
+===================================================================
+--- strigi-0.7.8.orig/libstreamanalyzer/plugins/endplugins/ffmpegendanalyzer.cpp
++++ strigi-0.7.8/libstreamanalyzer/plugins/endplugins/ffmpegendanalyzer.cpp
+@@ -355,7 +355,7 @@ FFMPEGEndAnalyzer::analyze(AnalysisResul
+ #endif
+ 
+   if(fc->bit_rate)
+-    ar.addValue(factory->bitrateProperty, fc->bit_rate);
++    ar.addValue(factory->bitrateProperty, (int)fc->bit_rate);
+   else if (fc->duration!= no_bitrate && fc->duration > 0) {
+     cout<<"Trying to estimate bitrate\n";
+     int64_t size;
+@@ -486,7 +486,6 @@ FFMPEGEndAnalyzer::analyze(AnalysisResul
+           outs << stream.avg_frame_rate.num / stream.avg_frame_rate.den;
+           ar.addTriplet(streamuri, frameRatePropertyName, outs.str());
+         }
+-        if (codec.pix_fmt != PIX_FMT_NONE) {}//FIXME pixel format
+       }
+       
+     }
