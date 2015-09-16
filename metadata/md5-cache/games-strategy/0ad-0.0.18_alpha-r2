@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEPEND=dev-libs/boost dev-libs/icu:= dev-libs/libxml2 dev-libs/nspr ~games-strategy/0ad-data-0.0.18_alpha media-libs/libpng:0 media-libs/libsdl2[X,opengl,video] net-libs/enet:1.3 net-libs/miniupnpc net-misc/curl sys-libs/zlib virtual/jpeg:62 virtual/opengl x11-libs/libX11 x11-libs/libXcursor editor? ( x11-libs/wxGTK:2.8[X,opengl] ) lobby? ( net-libs/gloox ) nvtt? ( media-gfx/nvidia-texture-tools ) sound? ( media-libs/libvorbis media-libs/openal ) || ( >=dev-lang/python-2.7.5-r2:2.7[threads,ssl] ) virtual/pkgconfig test? ( dev-lang/perl ) >=sys-apps/sed-4
+DESCRIPTION=A free, real-time strategy game
+EAPI=5
+HOMEPAGE=http://play0ad.com/
+IUSE=editor +lobby nvtt pch sound test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 LGPL-2.1 MIT CC-BY-SA-3.0 ZLIB
+RDEPEND=dev-libs/boost dev-libs/icu:= dev-libs/libxml2 dev-libs/nspr ~games-strategy/0ad-data-0.0.18_alpha media-libs/libpng:0 media-libs/libsdl2[X,opengl,video] net-libs/enet:1.3 net-libs/miniupnpc net-misc/curl sys-libs/zlib virtual/jpeg:62 virtual/opengl x11-libs/libX11 x11-libs/libXcursor editor? ( x11-libs/wxGTK:2.8[X,opengl] ) lobby? ( net-libs/gloox ) nvtt? ( media-gfx/nvidia-texture-tools ) sound? ( media-libs/libvorbis media-libs/openal ) games-misc/games-envd
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/zero-ad/0ad-0.0.18-alpha-unix-build.tar.xz
+_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	games	9c0a2dd4a6a25b6b7851fa01019cc809	gnome2-utils	44555579e85afa5c035d2bd5428252da	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	b81ab4852d108e3d9c940fa03bce80e1	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46	wxwidgets	e0c7fd61275cea7156be4143ba8c673a
+_md5_=8bb7fd9ac7e43084728d809d0733cb96
