@@ -5,15 +5,15 @@
 EAPI=5
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
-inherit eutils multilib-build linux-info linux-mod toolchain-funcs versionator pax-utils
+inherit eutils multilib-build linux-info linux-mod systemd toolchain-funcs versionator pax-utils
 
 DESCRIPTION="Ati precompiled drivers for Radeon Evergreen (HD5000 Series) and newer chipsets"
 HOMEPAGE="http://www.amd.com"
-#RUN="${WORKDIR}/fglrx-14.501.1003/amd-driver-installer-14.501.1003-x86.x86_64.run"
+RUN="${WORKDIR}/AMD-Catalyst-15.9-Linux-installer-15.201.1151-x86.x86_64.run"
 SLOT="1"
 # Uses javascript for download YESSSS
 #DRIVERS_URI="http://www2.ati.com/drivers/linux/amd-catalyst-13.12-linux-x86.x86_64.zip"
-DRIVERS_URI="mirror://gentoo/amd-driver-installer-15.20.1046-x86.x86_64.zip"
+DRIVERS_URI="mirror://gentoo/amd-catalyst-${PV}-linux-installer-15.201.1151-x86.x86_64.zip"
 XVBA_SDK_URI="http://developer.amd.com/wordpress/media/2012/10/xvba-sdk-0.74-404001.tar.gz"
 SRC_URI="${DRIVERS_URI} ${XVBA_SDK_URI}"
 FOLDER_PREFIX="common/"
@@ -22,7 +22,7 @@ IUSE="debug +modules qt4 static-libs pax_kernel gdm-hack"
 LICENSE="AMD GPL-2 QPL-1.0"
 KEYWORDS="-* ~amd64 ~x86"
 
-RESTRICT="bindist test"
+RESTRICT="bindist test fetch"
 
 RDEPEND="
 	<=x11-base/xorg-server-1.17.49[-minimal]
@@ -454,6 +454,7 @@ src_install() {
 	newinitd "${FILESDIR}"/atieventsd.init atieventsd
 	echo 'ATIEVENTSDOPTS=""' > "${T}"/atieventsd.conf
 	newconfd "${T}"/atieventsd.conf atieventsd
+	systemd_dounit "${FILESDIR}/atieventsd.service"
 
 	# PowerXpress stuff
 	exeinto /usr/$(get_libdir)/fglrx
@@ -577,9 +578,6 @@ pkg_postinst() {
 	elog "Fully rebooting the system after an ${PN} update is recommended"
 	elog "Stopping Xorg, reloading fglrx kernel module and restart Xorg"
 	elog "might not work"
-	elog
-	elog "Some cards need acpid running to handle events"
-	elog "Please add it to boot runlevel with rc-update add acpid boot"
 	elog
 
 	use modules && linux-mod_pkg_postinst
