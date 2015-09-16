@@ -51,7 +51,7 @@ REQUIRED_USE="
 	qt4? ( coin )
 	motif? ( coin )
 "
-PATCHES=( 
+PATCHES=(
 	"${FILESDIR}/opencv.patch"
 	"${FILESDIR}/opencv3.patch"
 	"${FILESDIR}/ffmpeg.patch"
