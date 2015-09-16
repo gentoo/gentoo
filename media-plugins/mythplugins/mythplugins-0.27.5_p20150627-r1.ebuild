@@ -136,10 +136,6 @@ REQUIRED_USE="
 
 S="${WORKDIR}/mythtv-0.27.5/mythplugins"
 
-pkg_setup() {
-	use mythnetvision && python-single-r1_pkg_setup
-}
-
 src_prepare() {
 	[[ -n ${BACKPORTS} ]] && \
 		EPATCH_FORCE=yes EPATCH_SUFFIX="patch" EPATCH_SOURCE="${WORKDIR}/${MY_P}/patches" \
