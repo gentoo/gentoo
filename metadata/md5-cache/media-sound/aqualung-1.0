@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install
+DEFINED_PHASES=configure install prepare
 DEPEND=sys-libs/zlib app-arch/bzip2 dev-libs/libxml2 x11-libs/gtk+:2 alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) pulseaudio? ( media-sound/pulseaudio ) flac? ( media-libs/flac ) lame? ( media-sound/lame ) ffmpeg? ( >=virtual/ffmpeg-0.6.90 ) mac? ( media-sound/mac ) modplug? ( media-libs/libmodplug ) musepack? ( >=media-sound/musepack-tools-444 ) mp3? ( media-libs/libmad ) sndfile? ( media-libs/libsndfile ) speex? ( media-libs/speex media-libs/liboggz media-libs/libogg ) vorbis? ( media-libs/libvorbis media-libs/libogg ) wavpack? ( media-sound/wavpack ) ladspa? ( media-libs/liblrdf ) libsamplerate? ( media-libs/libsamplerate ) ifp? ( media-libs/libifp ) cdda? ( dev-libs/libcdio-paranoia ) cddb? ( media-libs/libcddb ) lua? ( dev-lang/lua:0= ) sys-devel/gettext virtual/pkgconfig
 DESCRIPTION=Music player for a wide range of formats designed for gapless playback
 EAPI=5
@@ -10,4 +10,4 @@ RDEPEND=sys-libs/zlib app-arch/bzip2 dev-libs/libxml2 x11-libs/gtk+:2 alsa? ( me
 SLOT=0
 SRC_URI=mirror://sourceforge/aqualung/aqualung-1.0.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=5702b619bf1fc9de8e6cd7debd921678
+_md5_=994383a5cf14af4b537f511e531d6a69

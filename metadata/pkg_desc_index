@@ -12473,7 +12473,7 @@ media-sound/mp3unicode 1.2.1: Commandline utility to convert ID3 tags in mp3 fil
 media-sound/mp3wrap 0.5: Command-line utility that wraps quickly two or more mp3 files in one single large playable mp3
 media-sound/mpc 0.25 0.26 0.27: A commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
-media-sound/mpd 0.19.10: The Music Player Daemon (mpd)
+media-sound/mpd 0.19.9-r1 0.19.10: The Music Player Daemon (mpd)
 media-sound/mpdas 0.3.0-r1 0.3.1 0.3.2 0.4.0: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.7-r1 1.3.8.1 1.3.8.1-r1: Music Player For Console
