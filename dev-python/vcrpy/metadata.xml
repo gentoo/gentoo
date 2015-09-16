@@ -8,5 +8,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">kevin1024/vcrpy</remote-id>
+		<remote-id type="pypi">vcrpy</remote-id>
 	</upstream>
 </pkgmetadata>

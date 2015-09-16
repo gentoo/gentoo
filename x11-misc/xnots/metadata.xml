@@ -4,5 +4,6 @@
 	<herd>desktop-misc</herd>
 	<upstream>
 		<remote-id type="sourceforge">xnots</remote-id>
+		<remote-id type="github">thePalindrome/xnots</remote-id>
 	</upstream>
 </pkgmetadata>

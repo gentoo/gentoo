@@ -12,5 +12,6 @@
   <upstream>
     <remote-id type="pypi">nose-exclude</remote-id>
     <remote-id type="bitbucket">kgrandis/nose-exclude</remote-id>
+    <remote-id type="github">kgrandis/nose-exclude</remote-id>
   </upstream>
 </pkgmetadata>

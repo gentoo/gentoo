@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Exclude specific directories from nosetests runs"
-HOMEPAGE="https://bitbucket.org/kgrandis/nose-exclude"
+HOMEPAGE="https://github.com/kgrandis/nose-exclude"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
@@ -20,6 +20,6 @@ RDEPEND="dev-python/nose[${PYTHON_USEDEP}]"
 RESTRICT="test"
 
 python_test() {
-	# https://bitbucket.org/kgrandis/nose-exclude/issue/10/test-failures-with-python-3
+	# https://github.com/kgrandis/nose-exclude/issue/10/test-failures-with-python-3
 	esetup.py test
 }

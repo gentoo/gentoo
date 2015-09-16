@@ -9,5 +9,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">GrahamDumpleton/wrapt</remote-id>
+		<remote-id type="pypi">wrapt</remote-id>
 	</upstream>
 </pkgmetadata>

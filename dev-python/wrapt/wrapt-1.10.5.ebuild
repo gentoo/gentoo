@@ -3,13 +3,14 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
+
+PYTHON_COMPAT=( python2_7 python3_3 python3_4 pypy )
 
 inherit distutils-r1 vcs-snapshot
 
-DESCRIPTION="Module for decorators, wrappers and monkey patching."
+DESCRIPTION="Module for decorators, wrappers and monkey patching"
 HOMEPAGE="https://github.com/GrahamDumpleton/wrapt"
-SRC_URI="https://github.com/GrahamDumpleton/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -36,7 +37,7 @@ python_compile() {
 }
 
 python_test() {
-	py.test || die "tests failed under ${EPYTHON}"
+	py.test -vv || die "tests failed under ${EPYTHON}"
 }
 
 python_install_all() {
