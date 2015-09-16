@@ -11081,7 +11081,7 @@ mail-mta/msmtp 1.4.31-r1 1.4.32 1.6.0 1.6.1 1.6.2: An SMTP client and SMTP plugi
 mail-mta/netqmail 1.06 1.06-r1 1.06-r2: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 5.4.6.201506112227_p1 5.7.1_p1 5.7.1_p1-r1: Lightweight but featured SMTP daemon from OpenBSD
-mail-mta/postfix 2.10.8 2.11.6 3.0.0 3.0.1-r1 3.0.2 3.1_pre20150829: A fast and secure drop-in replacement for sendmail
+mail-mta/postfix 2.10.8 2.11.6 3.0.0 3.0.1-r1 3.0.2 3.1_pre20150913: A fast and secure drop-in replacement for sendmail
 mail-mta/qmail-ldap 1.03-r8: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.14.9: Widely-used Mail Transport Agent (MTA)
