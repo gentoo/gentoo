@@ -4,9 +4,19 @@
 # $Id$
 
 description="MythTV backend recording daemon"
-extra_commands="resched upnprebuild"
+extra_started_commands="resched upnprebuild"
 description_resched="Forces the recording scheduler to update"
 description_upnprebuild="Rebuilds the UPnP media cache"
+
+MYTHBACKEND_OPTS=${MYTHBACKEND_OPTS:-"${MYTHBACKEND_OPTS}"}
+MYTHBACKEND_VERBOSE=${MYTHBACKEND_VERBOSE:-"general"}
+MYTHBACKEND_LOGGING=${MYTHBACKEND_LOGGING:-"files"}
+
+name="MythTV backend"
+command="/usr/bin/mythbackend"
+pidfile="/run/mythtv/mythbackend.pid"
+start_stop_daemon_args="--pidfile ${pidfile} --user mythtv:video"
+command_args="--daemon --pidfile ${pidfile} --verbose ${MYTHBACKEND_VERBOSE} ${MYTHBACKEND_OPTS}"
 
 depend() {
 	# mythbackend doesn't need to run on the same machine that
@@ -14,13 +24,7 @@ depend() {
 	use logger net.lo mysql LCDd
 }
 
-start() {
-	local logging=
-
-	[ -z "${MYTHBACKEND_VERBOSE}" ] && \
-		MYTHBACKEND_VERBOSE="general"
-	[ -z "${MYTHBACKEND_LOGGING}" ] && \
-		MYTHBACKEND_LOGGING="files"
+start_pre() {
 	case "${MYTHBACKEND_LOGGING}" in
 		database) logging="--enable-dblog" ;;
 		syslog\ *) logging="--${MYTHBACKEND_LOGGING}" ;;
@@ -40,31 +44,30 @@ start() {
 	[ "x${MYTHBACKEND_LOGGING}" = "xfiles" ] && \
 		checkpath --directory --owner mythtv:video --mode 0775 /var/log/mythtv
 	checkpath --directory --owner mythtv:video --mode 0775 /home/mythtv
+	checkpath --directory --owner mythtv:video --mode 0750 /run/mythtv
+}
 
-	ebegin "Starting MythTV Backend"
-	start-stop-daemon --start --quiet --exec /usr/bin/mythbackend \
-                --pidfile /var/run/mythbackend.pid --user mythtv:video -- \
-		--daemon --pidfile /var/run/mythbackend.pid \
-		--verbose ${MYTHBACKEND_VERBOSE} \
-		${logging} ${MYTHBACKEND_OPTS}
+start() {
+	ebegin "Starting ${name}"
+	start-stop-daemon --start ${start_stop_daemon_args} --exec ${command} \
+		-- ${command_args} ${logging}
 	eend $?
 }
 
 stop() {
-	ebegin "Stopping MythTV Backend"
-	start-stop-daemon --stop --retry 10 --progress \
-		--pidfile=/var/run/mythbackend.pid
+	ebegin "Stopping ${name}"
+	start-stop-daemon --stop --retry 10 --progress --pidfile ${pidfile}
 	eend $?
 }
 
 resched() {
 	ebegin "Updating the recording scheduler"
-	/usr/bin/mythbackend --resched
+	${command} --resched
 	eend $?
 }
 
 upnprebuild() {
 	ebegin "Rebuilding UPnP media cache"
-	/usr/bin/mythbackend --upnprebuild
+	${command} --upnprebuild
 	eend $?
 }
