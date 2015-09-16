@@ -2188,7 +2188,7 @@ app-text/bibus 1.5.1 1.5.2 1.5.2-r1: Bibliographic and reference management soft
 app-text/bibutils 4.12: Interconverts between various bibliography formats using a common XML intermediate
 app-text/binfind 0.0.3: binfind searches files for a byte sequence specified on the command line
 app-text/blahtexml 0.9: TeX-to-MathML converter
-app-text/blogc 0.1_beta4 9999: A blog compiler
+app-text/blogc 0.1 9999: A blog compiler
 app-text/bogosort 0.4.2-r1: A file sorting program which uses the bogosort algorithm
 app-text/build-docbook-catalog 1.19.1 1.20: DocBook XML catalog auto-updater
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
@@ -9180,7 +9180,7 @@ dev-util/xxdiff 4.0_beta1_p20110426 4.0_beta1_p20110426-r1: A graphical file and
 dev-util/yacc 1.9.1-r4 1.9.1-r5: Yacc: Yet Another Compiler-Compiler
 dev-vcs/archway 0.2.1: A GUI for GNU Arch
 dev-vcs/bfg 1.12.3 1.12.4: a simpler, faster alternative to git-filter-branch for removing bad data from git repos
-dev-vcs/blogc-git-receiver 0.1_beta5 9999: A simple login shell/git hook to deploy blogc websites
+dev-vcs/blogc-git-receiver 0.1 9999: A simple login shell/git hook to deploy blogc websites
 dev-vcs/bzr 2.4.2 2.5.1 2.5.1-r1 2.6.0: Bazaar is a next generation distributed version control system
 dev-vcs/bzr-explorer 1.3.0 1.3.0-r1: A high level interface to all commonly used Bazaar features
 dev-vcs/bzr-fastimport 0.13.0: Plugin providing fast loading of revision control data into Bazaar
