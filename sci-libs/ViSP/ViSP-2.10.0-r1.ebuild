@@ -51,7 +51,11 @@ REQUIRED_USE="
 	qt4? ( coin )
 	motif? ( coin )
 "
-PATCHES=( "${FILESDIR}/opencv.patch" "${FILESDIR}/opencv3.patch" )
+PATCHES=(
+	"${FILESDIR}/opencv.patch"
+	"${FILESDIR}/opencv3.patch"
+	"${FILESDIR}/ffmpeg.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
