@@ -44,7 +44,7 @@ if [[ ${PV} == *_pre* ]] ; then
 else
 	# This is where arch teams should change the KEYWORDS.
 
-	KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
+	KEYWORDS="~alpha amd64 ~arm ~ppc ~ppc64 x86"
 fi
 
 SLOT="0"
