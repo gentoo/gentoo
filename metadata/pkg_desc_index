@@ -17641,7 +17641,7 @@ x11-misc/xaos 3.5-r1 3.6: Very fast real-time fractal zoomer
 x11-misc/xautolock 2.2: An automatic X screen-locker/screen-saver
 x11-misc/xautomation 1.05 1.06 1.09: Control X from command line and find things on screen
 x11-misc/xbatt 1.2.1-r1 1.3_rc1: Notebook battery indicator for X
-x11-misc/xbattbar 1.4.3 1.4.4 1.4.5: Advanced Power Management battery status display for X
+x11-misc/xbattbar 1.4.3 1.4.4 1.4.5 1.4.8: Advanced Power Management battery status display for X
 x11-misc/xbindkeys 1.8.6: Tool for launching commands on keystrokes
 x11-misc/xbitmaps 1.1.1: X.Org bitmaps data
 x11-misc/xcalendar 4.0-r1: A simple interactive calendar program with a notebook capability
