@@ -45,7 +45,7 @@ DEPEND="${RDEPEND}
 "
 S="${WORKDIR}/${PN}$(get_major_version)_${PV}"
 CMAKE_BUILD_TYPE=RelWithDebInfo
-PATCHES=( 
+PATCHES=(
 	"${FILESDIR}/bullet_283.patch"
 	"${FILESDIR}/ffmpeg29.patch"
 )
