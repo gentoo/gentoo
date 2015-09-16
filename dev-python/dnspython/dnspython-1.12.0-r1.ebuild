@@ -12,7 +12,8 @@ P3="${PN3}-${PV}"
 
 DESCRIPTION="DNS toolkit for Python"
 HOMEPAGE="http://www.dnspython.org/ https://pypi.python.org/pypi/dnspython"
-SRC_URI="http://www.dnspython.org/kits/${PV}/${P}.tar.gz
+SRC_URI="
+	http://www.dnspython.org/kits/${PV}/${P}.tar.gz
 	http://www.dnspython.org/kits3/${PV}/${P3}.zip"
 
 LICENSE="ISC"
@@ -30,39 +31,40 @@ S3="${WORKDIR}/${P3}"
 # For testsuite
 DISTUTILS_IN_SOURCE_BUILD=1
 
-python_prepare() {
+s_locator() {
 	if python_is_python3; then
-		cp -r "${WORKDIR}/${P3}" "${BUILD_DIR}" || die
+		einfo "Setting \${S} to ${S3}"
+		S="${S3}" $@
 	else
-		distutils-r1_python_prepare
+		einfo "Setting \${S} to ${S2}"
+		S="${S2}" $@
 	fi
+}
+
+python_prepare() {
+	s_locator distutils-r1_python_prepare
 }
 
 python_compile() {
-	if python_is_python3; then
-		run_in_build_dir distutils-r1_python_compile
-	else
-		distutils-r1_python_compile
-	fi
+	s_locator distutils-r1_python_compile
 }
 
 python_install(){
-	if python_is_python3; then
-		run_in_build_dir distutils-r1_python_install
-	else
-		distutils-r1_python_install
-	fi
+	s_locator distutils-r1_python_install
+}
+
+my_test() {
+	pushd tests &> /dev/null
+	"${PYTHON}" utest.py || die "tests failed under ${EPYTHON}"
+	einfo "Testsuite passed under ${EPYTHON}"
 }
 
 python_test() {
-	if python_is_python3; then
-		pushd "${S3}/tests" &> /dev/null
-	else
-		pushd "${S2}/tests" &> /dev/null
-	fi
-	"${PYTHON}" utest.py || die "tests failed under ${EPYTHON}"
-	einfo "Testsuite passed under ${EPYTHON}"
-	popd &> /dev/null
+	s_locator my_test
+}
+
+python_install() {
+	s_locator distutils-r1_python_install
 }
 
 python_install_all() {
