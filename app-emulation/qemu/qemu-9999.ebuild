@@ -29,11 +29,11 @@ HOMEPAGE="http://www.qemu.org http://www.linux-kvm.org"
 LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
 IUSE="accessibility +aio alsa bluetooth +caps +curl debug +fdt glusterfs \
-gtk gtk2 infiniband iscsi +jpeg \
+gnutls gtk gtk2 infiniband iscsi +jpeg \
 kernel_linux kernel_FreeBSD lzo ncurses nfs nls numa opengl +pin-upstream-blobs
 +png pulseaudio python \
 rbd sasl +seccomp sdl sdl2 selinux smartcard snappy spice ssh static static-softmmu
-static-user systemtap tci test +threads tls usb usbredir +uuid vde +vhost-net \
+static-user systemtap tci test +threads usb usbredir +uuid vde +vhost-net \
 virtfs +vnc vte xattr xen xfs"
 
 COMMON_TARGETS="aarch64 alpha arm cris i386 m68k microblaze microblazeel mips
@@ -65,6 +65,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 # The attr lib isn't always linked in (although the USE flag is always
 # respected).  This is because qemu supports using the C library's API
 # when available rather than always using the extranl library.
+#
+# Older versions of gnutls are supported, but it's simpler to just require
+# the latest versions.  This is also why we require nettle.
 COMMON_LIB_DEPEND=">=dev-libs/glib-2.0[static-libs(+)]
 	sys-libs/zlib[static-libs(+)]
 	xattr? ( sys-apps/attr[static-libs(+)] )"
@@ -78,6 +81,10 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
 	fdt? ( >=sys-apps/dtc-1.4.0[static-libs(+)] )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.0[static-libs(+)] )
+	gnutls? (
+		dev-libs/nettle[static-libs(+)]
+		>=net-libs/gnutls-3.0[static-libs(+)]
+	)
 	gtk? (
 		gtk2? (
 			x11-libs/gtk+:2
@@ -123,7 +130,6 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 		>=app-emulation/spice-0.12.0[static-libs(+)]
 	)
 	ssh? ( >=net-libs/libssh2-1.2.8[static-libs(+)] )
-	tls? ( net-libs/gnutls[static-libs(+)] )
 	usb? ( >=virtual/libusb-1-r2[static-libs(+)] )
 	usbredir? ( >=sys-apps/usbredir-0.6[static-libs(+)] )
 	uuid? ( >=sys-apps/util-linux-2.16.0[static-libs(+)] )
@@ -363,6 +369,7 @@ qemu_src_configure() {
 		$(conf_softmmu curl)
 		$(conf_softmmu fdt)
 		$(conf_softmmu glusterfs)
+		$(conf_softmmu gnutls)
 		$(conf_softmmu gtk)
 		$(conf_softmmu infiniband rdma)
 		$(conf_softmmu iscsi libiscsi)
@@ -382,7 +389,6 @@ qemu_src_configure() {
 		$(conf_softmmu snappy)
 		$(conf_softmmu spice)
 		$(conf_softmmu ssh libssh2)
-		$(conf_softmmu tls vnc-tls)
 		$(conf_softmmu usb libusb)
 		$(conf_softmmu usbredir usb-redir)
 		$(conf_softmmu uuid)
