@@ -107,7 +107,7 @@ src_install() {
 	cat > "${T}"/99cuda <<- EOF
 		PATH=${ecudadir}/bin$(use profiler && echo ":${ecudadir}/libnvvp")
 		ROOTPATH=${ecudadir}/bin
-		LDPATH=${ecudadir}/lib64:${ecudadir}/lib
+		LDPATH=${ecudadir}/lib64:${ecudadir}/lib:${ecudadir}/nvvm/lib64
 	EOF
 	doenvd "${T}"/99cuda
 
