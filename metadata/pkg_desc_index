@@ -1803,7 +1803,7 @@ app-misc/lfm 2.3-r1: Last File Manager is a powerful file manager for the consol
 app-misc/linux-logo 5.11-r3: A utility that displays an ANSI/ASCII logo and some system information
 app-misc/linuxspa 0.7.1 0.7.1-r1: Linux Serial Protocol Analyser
 app-misc/lirc 0.9.0-r2 0.9.0-r3 0.9.0-r4 0.9.0-r5: decode and send infra-red signals of many commonly used remote controls
-app-misc/livecd-tools 2.0.3 2.0.4 9999: Gentoo LiveCD tools for autoconfiguration of hardware
+app-misc/livecd-tools 2.0.4 9999: Gentoo LiveCD tools for autoconfiguration of hardware
 app-misc/lockfile-progs 0.1.16 0.1.17: Programs to safely lock/unlock files and mailboxes
 app-misc/logitech-applet 0.4_pre1-r3: Control utility for some special features of some special Logitech USB mice!
 app-misc/logserial 0.4.2: A tool for logging raw data from a serial device
@@ -14744,7 +14744,7 @@ sci-calculators/speedcrunch 0.10.1 0.11-r1 0.11-r2: Fast and usable calculator f
 sci-calculators/tiemu 3.03: Texas Instruments hand-helds emulator
 sci-calculators/tilp2 1.16-r1 1.17-r1: Communication program for Texas Instruments calculators
 sci-calculators/transcalc 0.14-r1: Microwave and RF transmission line calculator
-sci-calculators/units 2.11 2.11a: Unit conversion program
+sci-calculators/units 2.11 2.11a 2.11d: Unit conversion program
 sci-calculators/wcalc 2.2.1 2.4: A flexible command-line scientific calculator
 sci-chemistry/GromacsWrapper 0.3.1 0.3.2: Python framework for Gromacs
 sci-chemistry/PyMca 4.6.2 4.6.2-r1: X-ray Fluorescence Toolkit
@@ -17002,7 +17002,7 @@ www-client/lynx 2.8.8_p2 2.8.9_pre4 2.8.9_pre6: An excellent console-based web b
 www-client/midori 0.5.8 0.5.8-r1 0.5.10: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.2-r1 3.3-r1: a free, open source web browser
-www-client/opera 12.16_p1860-r1 31.0.1889.174: A fast and secure web browser
+www-client/opera 12.16_p1860-r1 31.0.1889.174 32.0.1948.25: A fast and secure web browser
 www-client/opera-beta 32.0.1948.12 32.0.1948.19: A fast and secure web browser
 www-client/opera-developer 33.0.1967.0 33.0.1982.0: A fast and secure web browser
 www-client/otter 0.9.07 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
@@ -17676,7 +17676,7 @@ x11-misc/xmobar 0.20.1-r1 0.21 0.22.1 0.23 0.23.1: A Minimalistic Text Based Sta
 x11-misc/xmonad-log-applet 2.0.0-r301: Gnome and XFCE applet for displaying XMonad log
 x11-misc/xmountains 2.9: Fractal terrains of snow-capped mountains near water
 x11-misc/xnee 3.19: Program suite to record, replay and distribute user actions
-x11-misc/xnots 0.2.1-r1: A desktop sticky note program for the unix geek
+x11-misc/xnots 0.2.1-r1 9999: A desktop sticky note program for the unix geek
 x11-misc/xoo 0.7: A graphical wrapper around xnest
 x11-misc/xorg-cf-files 1.0.5: Old Imake-related build files
 x11-misc/xosview 1.14 1.15 1.16: X11 operating system viewer
@@ -17702,7 +17702,7 @@ x11-misc/xtoolwait 1.3-r2: Xtoolwait notably decreases the startup time of an X 
 x11-misc/xtrace 1.3.0: X11 protocol trace utility
 x11-misc/xtrlock 2.7: A simplistic screen locking program for X
 x11-misc/xtscal 0.6.3 0.6.3-r1: Touchscreen calibration utility
-x11-misc/xvkbd 3.4a-r1 3.5-r1 3.6: virtual keyboard for X window system
+x11-misc/xvkbd 3.4a-r1 3.6 3.7: virtual keyboard for X window system
 x11-misc/xwinwrap 0_p4: replace a desktop background with a movie or screensaver
 x11-misc/xwit 3.4 3.4-r1: A collection of simple routines to call some of those X11 functions
 x11-misc/xwrits 2.26: Reminds you to take wrist breaks, which will hopefully help you prevent repetitive stress injury
@@ -17949,7 +17949,7 @@ x11-terms/aterm 1.0.1-r2: A terminal emulator with transparency support as well 
 x11-terms/eterm 0.9.5 0.9.6 9999: A vt102 terminal emulator for X
 x11-terms/evilvte 0.5.1 0.5.2_pre1: VTE based, super lightweight terminal emulator
 x11-terms/gnome-terminal 3.14.2-r2 3.14.3 3.16.2-r2: The Gnome Terminal
-x11-terms/guake 0.5.0 0.5.1 0.5.2 0.6.1 0.7.0 0.7.2 0.8.0 9999: Drop-down terminal for GTK+ desktops
+x11-terms/guake 0.5.0 0.5.1 0.5.2 0.6.1 0.7.0 0.7.2 0.8.0 0.8.1 9999: Drop-down terminal for GTK+ desktops
 x11-terms/hanterm 3.1.6-r2 3.1.6-r4: Hanterm -- Korean terminal
 x11-terms/kterm 6.2.0-r5: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4: a terminal emulator based off of libvte that aims to be fast and lightweight

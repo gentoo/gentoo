@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXrender x11-libs/libXrandr x11-libs/pango[X] virtual/pkgconfig x11-proto/xextproto x11-proto/renderproto x11-proto/randrproto >=dev-vcs/git-1.8.2.1
+DESCRIPTION=A desktop sticky note program for the unix geek
+EAPI=5
+HOMEPAGE=http://xnots.sourceforge.net https://github.com/thePalindrome/xnots
+IUSE=vim-syntax
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXrender x11-libs/libXrandr x11-libs/pango[X]
+SLOT=0
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=28a3520366150e4496ea4c7728d1410f
