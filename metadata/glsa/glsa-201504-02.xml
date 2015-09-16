@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201504-02">
+  <title>sudo: Information disclosure</title>
+  <synopsis>A vulnerability in sudo could allow a local attacker to read
+    arbitrary files or bypass security restrictions.
+  </synopsis>
+  <product type="ebuild">sudo</product>
+  <announced>April 11, 2015</announced>
+  <revised>April 11, 2015: 1</revised>
+  <bug>539532</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/sudo" auto="yes" arch="*">
+      <unaffected range="ge">1.8.12</unaffected>
+      <vulnerable range="lt">1.8.12</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>sudo allows a system administrator to give users the ability to run
+      commands as other users. Access to commands may also be granted on a
+      range to hosts. 
+    </p>
+  </background>
+  <description>
+    <p>sudo does not handle the TZ environment variable properly.</p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker may be able to read arbitrary files or information from
+      device special files.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All sudo users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/sudo-1.8.12"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9680">CVE-2014-9680</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 29 Mar 2015 16:50:29 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Sat, 11 Apr 2015 14:50:58 +0000">Zlogene</metadata>
+</glsa>

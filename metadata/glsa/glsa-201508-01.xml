@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201508-01">
+  <title>Adobe Flash Player: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Adobe Flash Player, the
+    worst of which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">flash,ACE,DoS</product>
+  <announced>August 15, 2015</announced>
+  <revised>August 15, 2015: 1</revised>
+  <bug>554882</bug>
+  <bug>557342</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">11.2.202.508</unaffected>
+      <vulnerable range="lt">11.2.202.508</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Adobe Flash Player is a renderer for the SWF file format, which is
+      commonly used to provide interactive websites.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Adobe Flash Player.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, cause a Denial of Service condition, obtain
+      sensitive information, or bypass security restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Adobe Flash Player users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-plugins/adobe-flash-11.2.202.508"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3107">CVE-2015-3107</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5122">CVE-2015-5122</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5123">CVE-2015-5123</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5124">CVE-2015-5124</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5125">CVE-2015-5125</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5127">CVE-2015-5127</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5129">CVE-2015-5129</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5130">CVE-2015-5130</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5131">CVE-2015-5131</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5132">CVE-2015-5132</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5133">CVE-2015-5133</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5134">CVE-2015-5134</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5539">CVE-2015-5539</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5540">CVE-2015-5540</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5541">CVE-2015-5541</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5544">CVE-2015-5544</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5545">CVE-2015-5545</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5546">CVE-2015-5546</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5547">CVE-2015-5547</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5548">CVE-2015-5548</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5549">CVE-2015-5549</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5550">CVE-2015-5550</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5551">CVE-2015-5551</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5552">CVE-2015-5552</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5553">CVE-2015-5553</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5554">CVE-2015-5554</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5555">CVE-2015-5555</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5556">CVE-2015-5556</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5557">CVE-2015-5557</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5558">CVE-2015-5558</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5559">CVE-2015-5559</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5560">CVE-2015-5560</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5561">CVE-2015-5561</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5562">CVE-2015-5562</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5563">CVE-2015-5563</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5564">CVE-2015-5564</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5965">CVE-2015-5965</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 21 Jul 2015 02:44:26 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 15 Aug 2015 04:47:52 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

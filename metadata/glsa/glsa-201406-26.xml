@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201406-26">
+  <title>Django: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found Django, the worst of which
+    may allow a remote attacker to execute code.
+  </synopsis>
+  <product type="ebuild">django</product>
+  <announced>June 26, 2014</announced>
+  <revised>December 03, 2014: 2</revised>
+  <bug>508514</bug>
+  <bug>510382</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-python/django" auto="yes" arch="*">
+      <unaffected range="ge">1.6.5</unaffected>
+      <unaffected range="rge">1.5.8</unaffected>
+      <unaffected range="rge">1.4.13</unaffected>
+      <unaffected range="rge">1.5.10</unaffected>
+      <unaffected range="rge">1.4.15</unaffected>
+      <vulnerable range="lt">1.6.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Django is a Python-based web framework.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Django. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute code with the privileges of the process,
+      modify SQL queries, or disclose sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Django 1.6 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/django-1.6.5"
+    </code>
+    
+    <p>All Django 1.5 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/django-1.5.8"
+    </code>
+    
+    <p>All Django 1.4 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/django-1.4.13"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0472">CVE-2014-0472</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0473">CVE-2014-0473</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0474">CVE-2014-0474</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-1418">CVE-2014-1418</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 02 May 2014 18:37:13 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 03 Dec 2014 01:03:38 +0000">
+    creffett
+  </metadata>
+</glsa>

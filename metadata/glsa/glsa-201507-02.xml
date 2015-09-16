@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201507-02">
+  <title>Tor: Denial of Service</title>
+  <synopsis>Two vulnerabilities have been found in Tor, the worst of which can
+    allow remote attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">tor</product>
+  <announced>July 06, 2015</announced>
+  <revised>July 06, 2015: 1</revised>
+  <bug>545940</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/tor" auto="yes" arch="*">
+      <unaffected range="ge">0.2.6.7</unaffected>
+      <vulnerable range="lt">0.2.6.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Tor is an implementation of second generation Onion Routing, a
+      connection-oriented anonymizing communication service.
+    </p>
+  </background>
+  <description>
+    <p>Tor does not handle data correctly when specifically crafted data is
+      sent, and also fails to properly verify a descriptor provided by a hidden
+      service directory.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause a Denial of Service condition in both a
+      Tor client or a Tor server.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Tor users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/tor-0.2.6.7"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2928">CVE-2015-2928</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2929">CVE-2015-2929</uri>
+    <uri link="https://blog.torproject.org/blog/tor-02512-and-0267-are-released">
+      Upstream announcement
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 30 Jun 2015 22:21:11 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 06 Jul 2015 19:00:59 +0000">stanley</metadata>
+</glsa>

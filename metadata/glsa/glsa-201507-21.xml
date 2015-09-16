@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201507-21">
+  <title>libXfont: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libXfont, the worst of
+    which could result in execution of arbitrary code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">libXfont</product>
+  <announced>July 22, 2015</announced>
+  <revised>July 22, 2015: 1</revised>
+  <bug>543620</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-libs/libXfont" auto="yes" arch="*">
+      <unaffected range="rge">1.4.9</unaffected>
+      <unaffected range="ge">1.5.1</unaffected>
+      <vulnerable range="lt">1.5.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libXfont is an X11 font rasterisation library.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libXfont. Please review
+      the CVE identifiers referenced below for details. 
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code or cause a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libXfont 1.4.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/libXfont-1.4.9"
+    </code>
+    
+    <p>All libXfont 1.5.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/libXfont-1.5.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1802">CVE-2015-1802</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1803">CVE-2015-1803</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1804">CVE-2015-1804</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 04 Apr 2015 15:23:52 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 22 Jul 2015 15:44:59 +0000">Zlogene</metadata>
+</glsa>

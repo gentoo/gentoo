@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201402-02">
+  <title>NVIDIA Drivers: Privilege Escalation</title>
+  <synopsis>A NVIDIA drivers bug allows unprivileged user-mode software to
+    access the GPU inappropriately, allowing for privilege escalation.
+  </synopsis>
+  <product type="ebuild">nvidia-drivers</product>
+  <announced>February 02, 2014</announced>
+  <revised>March 13, 2014: 3</revised>
+  <bug>493448</bug>
+  <access>local</access>
+  <affected>
+    <package name="x11-drivers/nvidia-drivers" auto="yes" arch="*">
+      <unaffected range="ge">331.20</unaffected>
+      <unaffected range="rge">319.76</unaffected>
+      <unaffected range="rge">304.116</unaffected>
+      <unaffected range="rge">304.119</unaffected>
+      <unaffected range="rge">304.121</unaffected>
+      <vulnerable range="lt">331.20</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The NVIDIA drivers provide X11 and GLX support for NVIDIA graphic
+      boards.
+    </p>
+  </background>
+  <description>
+    <p>The vulnerability is caused due to the driver allowing unprivileged
+      user-mode software to access the GPU.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could gain escalated privileges.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All NVIDIA Drivers users using the 331 branch should upgrade to the
+      latest version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=x11-drivers/nvidia-drivers-331.20"
+    </code>
+    
+    <p>All NVIDIA Drivers users using the 319 branch  should upgrade to the
+      latest version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=x11-drivers/nvidia-drivers-319.76"
+    </code>
+    
+    <p>All NVIDIA Drivers users using the 304 branch should upgrade to the
+      latest version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=x11-drivers/nvidia-drivers-304.116"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5986">CVE-2013-5986</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-5987">CVE-2013-5987</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 14 Dec 2013 04:12:07 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 13 Mar 2014 06:49:59 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

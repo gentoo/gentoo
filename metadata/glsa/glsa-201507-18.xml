@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201507-18">
+  <title>Chromium: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Chromium allowing
+    remote attackers to bypass security restrictions.
+  </synopsis>
+  <product type="ebuild">chromium</product>
+  <announced>July 10, 2015</announced>
+  <revised>July 10, 2015: 1</revised>
+  <bug>552904</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">43.0.2357.130</unaffected>
+      <vulnerable range="lt">43.0.2357.130</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open-source web browser project.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could bypass security restrictions.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-43.0.2357.130"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1266">CVE-2015-1266</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1267">CVE-2015-1267</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1268">CVE-2015-1268</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1269">CVE-2015-1269</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 24 Jun 2015 08:59:44 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Fri, 10 Jul 2015 13:19:46 +0000">Zlogene</metadata>
+</glsa>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201507-17">
+  <title>SNMP: Denial of Service</title>
+  <synopsis>A vulnerability in SNMP could lead to a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">net-snmp</product>
+  <announced>July 10, 2015</announced>
+  <revised>July 10, 2015: 2</revised>
+  <bug>522062</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-analyzer/net-snmp" auto="yes" arch="*">
+      <unaffected range="ge">5.7.3_pre5-r1</unaffected>
+      <vulnerable range="lt">5.7.3_pre5-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>SNMP is a widely used protocol for monitoring the health and welfare of
+      network equipment.
+    </p>
+  </background>
+  <description>
+    <p>A specially crafted trap message triggers a conversion to an erroneous
+      variable type when the -OQ option is used.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All SNMP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=net-analyzer/net-snmp-5.7.3_pre5-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3565">CVE-2014-3565</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 11 May 2015 16:23:12 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Fri, 10 Jul 2015 14:05:46 +0000">Zlogene</metadata>
+</glsa>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201401-04">
+  <title>Python: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Python, the worst of
+    which allow remote attackers to cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">python</product>
+  <announced>January 06, 2014</announced>
+  <revised>June 17, 2015: 5</revised>
+  <bug>325593</bug>
+  <bug>355927</bug>
+  <bug>358663</bug>
+  <bug>396329</bug>
+  <bug>403437</bug>
+  <bug>469988</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/python" auto="yes" arch="*">
+      <unaffected range="rge">3.2.5-r1</unaffected>
+      <unaffected range="rge">2.6.8</unaffected>
+      <unaffected range="rge">2.7.3-r1</unaffected>
+      <unaffected range="ge">3.3.2-r1</unaffected>
+      <unaffected range="rge">2.6.9</unaffected>
+      <unaffected range="rge">2.7.4</unaffected>
+      <unaffected range="rge">2.7.5</unaffected>
+      <unaffected range="rge">2.7.6</unaffected>
+      <unaffected range="rge">2.7.7</unaffected>
+      <unaffected range="rge">2.7.8</unaffected>
+      <unaffected range="rge">2.7.9</unaffected>
+      <unaffected range="rge">2.7.10</unaffected>
+      <unaffected range="rge">2.7.11</unaffected>
+      <unaffected range="rge">2.7.12</unaffected>
+      <unaffected range="rge">2.7.13</unaffected>
+      <unaffected range="rge">2.7.14</unaffected>
+      <unaffected range="rge">2.7.15</unaffected>
+      <vulnerable range="lt">3.3.2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Python is an interpreted, interactive, object-oriented programming
+      language. 
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Python. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a Denial of Service condition or
+      perform a man-in-the-middle attack to disclose sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Python 3.3 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-3.3.2-r1"
+    </code>
+    
+    <p>All Python 3.2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-3.2.5-r1"
+    </code>
+    
+    <p>All Python 2.6 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-2.6.8"
+    </code>
+    
+    <p>All Python 2.7 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-2.7.3-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-1634">CVE-2010-1634</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-2089">CVE-2010-2089</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3492">CVE-2010-3492</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-3493">CVE-2010-3493</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1015">CVE-2011-1015</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0845">CVE-2012-0845</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1150">CVE-2012-1150</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2099">CVE-2013-2099</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 18 Sep 2013 03:32:23 +0000">
+    creffett
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 17 Jun 2015 19:34:44 +0000">
+    creffett
+  </metadata>
+</glsa>

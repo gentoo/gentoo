@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201507-15">
+  <title>OpenSSL: Alternate chains certificate forgery</title>
+  <synopsis>Certain checks on untrusted certificates can be bypassed.</synopsis>
+  <product type="ebuild">openssl</product>
+  <announced>July 10, 2015</announced>
+  <revised>July 10, 2015: draft</revised>
+  <bug>554172</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">1.0.1p</unaffected>
+      <unaffected range="rge">0.9.8z_p7</unaffected>
+      <unaffected range="rge">0.9.8z_p6</unaffected>
+      <vulnerable range="lt">1.0.1p</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSL is an Open Source toolkit implementing the Secure Sockets Layer
+      (SSL v2/v3) and Transport Layer Security (TLS v1) as well as a general
+      purpose cryptography library.
+    </p>
+  </background>
+  <description>
+    <p>During certificate verification, OpenSSL attempts to find an alternative
+      certificate chain if the first attempt to build such a chain fails.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause certain checks on untrusted
+      certificates to be bypassed, such as the CA flag, enabling them to use a
+      valid leaf certificate to act as a CA and “issue” an invalid
+      certificate.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-1.0.1p"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1793">CVE-2015-1793</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 08 Jul 2015 09:20:30 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 10 Jul 2015 13:18:57 +0000">
+    keytoaster
+  </metadata>
+</glsa>

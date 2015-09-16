@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201507-07">
+  <title>LibVNCServer: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in LibVNCServer, the worst
+    of which could result in execution of arbitrary code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">libvncserver</product>
+  <announced>July 07, 2015</announced>
+  <revised>July 07, 2015: 1</revised>
+  <bug>523590</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/libvncserver" auto="yes" arch="*">
+      <unaffected range="ge">0.9.10-r1</unaffected>
+      <vulnerable range="lt">0.9.10-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>LibVNCServer is a cross-platform C library that allows you to easily
+      implement VNC server functionality in your program.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in LibVNCServer. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All LibVNCServer users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/libvncserver-0.9.10-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6051">CVE-2014-6051</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6052">CVE-2014-6052</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6053">CVE-2014-6053</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6054">CVE-2014-6054</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6055">CVE-2014-6055</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 06 Jun 2015 14:26:10 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Tue, 07 Jul 2015 07:11:47 +0000">Zlogene</metadata>
+</glsa>

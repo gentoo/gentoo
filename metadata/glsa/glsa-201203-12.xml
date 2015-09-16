@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201203-12">
+  <title>OpenSSL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenSSL, allowing
+    remote attackers to cause a Denial of Service or obtain sensitive
+    information.
+  </synopsis>
+  <product type="ebuild">openssl</product>
+  <announced>March 06, 2012</announced>
+  <revised>June 06, 2015: 9</revised>
+  <bug>397695</bug>
+  <bug>399365</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">1.0.0g</unaffected>
+      <unaffected range="rge">0.9.8t</unaffected>
+      <unaffected range="rge">0.9.8u</unaffected>
+      <unaffected range="rge">0.9.8v</unaffected>
+      <unaffected range="rge">0.9.8w</unaffected>
+      <unaffected range="rge">0.9.8x</unaffected>
+      <unaffected range="rge">0.9.8y</unaffected>
+      <unaffected range="rge">0.9.8z_p1</unaffected>
+      <unaffected range="rge">0.9.8z_p2</unaffected>
+      <unaffected range="rge">0.9.8z_p3</unaffected>
+      <unaffected range="rge">0.9.8z_p4</unaffected>
+      <unaffected range="rge">0.9.8z_p5</unaffected>
+      <unaffected range="rge">0.9.8z_p6</unaffected>
+      <unaffected range="rge">0.9.8z_p7</unaffected>
+      <unaffected range="rge">0.9.8z_p8</unaffected>
+      <unaffected range="rge">0.9.8z_p9</unaffected>
+      <unaffected range="rge">0.9.8z_p10</unaffected>
+      <unaffected range="rge">0.9.8z_p11</unaffected>
+      <unaffected range="rge">0.9.8z_p12</unaffected>
+      <unaffected range="rge">0.9.8z_p13</unaffected>
+      <unaffected range="rge">0.9.8z_p14</unaffected>
+      <unaffected range="rge">0.9.8z_p15</unaffected>
+      <vulnerable range="lt">1.0.0g</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSL is an Open Source toolkit implementing the Secure Sockets Layer
+      (SSL v2/v3) and Transport Layer Security (TLS v1) as well as a general
+      purpose cryptography library.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in OpenSSL:</p>
+    
+    <ul>
+      <li>Timing differences for decryption are exposed by CBC mode encryption
+        in OpenSSL’s implementation of DTLS (CVE-2011-4108).
+      </li>
+      <li>A policy check failure can result in a double-free error when
+        X509_V_FLAG_POLICY_CHECK is set (CVE-2011-4109).
+      </li>
+      <li>Clients and servers using SSL 3.0 handshakes do not clear the block
+        cipher padding, allowing a record to contain up to 15 bytes of
+        uninitialized memory, which could include sensitive information
+        (CVE-2011-4576). 
+      </li>
+      <li>Assertion errors can occur during the handling of malformed X.509
+        certificates when OpenSSL is built with RFC 3779 support
+        (CVE-2011-4577).
+      </li>
+      <li>A resource management error can occur when OpenSSL’s server gated
+        cryptography (SGC) does not properly handle handshake restarts
+        (CVE-2011-4619).
+      </li>
+      <li>Invalid parameters in the GOST block cipher are not properly handled
+        by the GOST ENGINE(CVE-2012-0027).
+      </li>
+      <li>An incorrect fix for CVE-2011-4108 creates an unspecified
+        vulnerability for DTLS applications using OpenSSL (CVE-2012-0050). 
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to cause a Denial of Service or obtain
+      sensitive information, including plaintext passwords. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-1.0.0g"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4108">CVE-2011-4108</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4109">CVE-2011-4109</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4576">CVE-2011-4576</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4577">CVE-2011-4577</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-4619">CVE-2011-4619</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0027">CVE-2012-0027</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0050 ">
+      CVE-2012-0050 
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 16 Jan 2012 19:58:37 +0000">ago</metadata>
+  <metadata tag="submitter" timestamp="Sat, 06 Jun 2015 23:08:28 +0000">ackle</metadata>
+</glsa>

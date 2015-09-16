@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201506-02">
+  <title>OpenSSL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenSSL that can result
+    in either Denial of Service or information disclosure. 
+  </synopsis>
+  <product type="ebuild">dos</product>
+  <announced>June 22, 2015</announced>
+  <revised>June 22, 2015: 1</revised>
+  <bug>551832</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">1.0.1o</unaffected>
+      <unaffected range="ge">0.9.8z_p7</unaffected>
+      <vulnerable range="lt">1.0.1o</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSL is an Open Source toolkit implementing the Secure Sockets Layer
+      and Transport Layer Security as well as a general purpose cryptography
+      library. 
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in OpenSSL. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker can cause Denial of Service and information
+      disclosure.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSL 1.0.1 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-1.0.1o"
+    </code>
+    
+    <p>All OpenSSL 0.9.8 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-0.9.8z_p7"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8176">CVE-2014-8176</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1788">CVE-2015-1788</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1789">CVE-2015-1789</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1790">CVE-2015-1790</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1791">CVE-2015-1791</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1792">CVE-2015-1792</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4000">CVE-2015-4000</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 21 Jun 2015 18:19:42 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Mon, 22 Jun 2015 12:35:08 +0000">K_F</metadata>
+</glsa>

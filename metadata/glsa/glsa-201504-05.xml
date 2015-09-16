@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201504-05">
+  <title>MySQL and MariaDB: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in MySQL and MariaDB, the
+    worst of which can allow remote attackers to cause a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">mysql mariadb</product>
+  <announced>April 11, 2015</announced>
+  <revised>April 11, 2015: 1</revised>
+  <bug>537216</bug>
+  <bug>537262</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/mysql" auto="yes" arch="*">
+      <unaffected range="ge">5.6.22</unaffected>
+      <vulnerable range="lt">5.6.22</vulnerable>
+    </package>
+    <package name="dev-db/mariadb" auto="yes" arch="*">
+      <unaffected range="ge">10.0.16</unaffected>
+      <vulnerable range="lt">10.0.16</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MySQL is a popular multi-threaded, multi-user SQL server. MariaDB is an
+      enhanced, drop-in replacement for MySQL.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in MySQL and MariaDB. 
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could exploit vulnerabilities to possibly cause a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MySQL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/mysql-5.6.22"
+    </code>
+    
+    <p>All MariaDB users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/mariadb-10.0.16"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6568">CVE-2014-6568</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0374">CVE-2015-0374</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0381">CVE-2015-0381</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0382">CVE-2015-0382</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0385">CVE-2015-0385</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0391">CVE-2015-0391</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0409">CVE-2015-0409</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0411">CVE-2015-0411</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0432">CVE-2015-0432</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 16 Feb 2015 14:04:19 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 11 Apr 2015 20:11:58 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

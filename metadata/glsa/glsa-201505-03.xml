@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201505-03">
+  <title>phpMyAdmin: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in phpMyAdmin, the worst
+    of which could lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">phpMyAdmin</product>
+  <announced>May 31, 2015</announced>
+  <revised>May 31, 2015: 1</revised>
+  <bug>517858</bug>
+  <bug>522844</bug>
+  <bug>530054</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/phpmyadmin" auto="yes" arch="*">
+      <unaffected range="ge">4.2.13</unaffected>
+      <unaffected range="rge">4.1.14.7</unaffected>
+      <unaffected range="rge">4.0.10.6</unaffected>
+      <vulnerable range="lt">4.2.13</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>phpMyAdmin is a web-based management tool for MySQL databases.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in phpMyAdmin.  Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="low">
+    <p>A remote authenticated attacker could exploit these vulnerabilities to
+      include and execute arbitrary local files via a crafted parameter, inject
+      SQL code, or to conduct Cross-Site Scripting attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All phpMyAdmin 4.2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/phpmyadmin-4.2.13"
+    </code>
+    
+    <p>All phpMyAdmin 4.1 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/phpmyadmin-4.1.14.7"
+    </code>
+    
+    <p>All phpMyAdmin 4.0 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/phpmyadmin-4.0.10.6"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4986">CVE-2014-4986</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4987">CVE-2014-4987</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-6300">CVE-2014-6300</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8958">CVE-2014-8958</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8959">CVE-2014-8959</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8960">CVE-2014-8960</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8961">CVE-2014-8961</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 14 Mar 2015 15:47:49 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Sun, 31 May 2015 19:18:54 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201503-09">
+  <title>Adobe Flash Player: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Adobe Flash Player, the
+    worst of which allows remote attackers to execute arbitrary code. 
+  </synopsis>
+  <product type="ebuild">flash,ACE,DoS</product>
+  <announced>March 16, 2015</announced>
+  <revised>March 16, 2015: 1</revised>
+  <bug>543112</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">11.2.202.451</unaffected>
+      <vulnerable range="lt">11.2.202.451</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Adobe Flash Player is a renderer for the SWF file format, which is
+      commonly used to provide interactive websites. 
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Adobe Flash Player.
+      Please review the CVE identifiers referenced below for details. 
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, cause a Denial of Service condition, or bypass
+      security restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All adobe-flash users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-plugins/adobe-flash-11.2.202.451"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0332">CVE-2015-0332</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0333">CVE-2015-0333</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0334">CVE-2015-0334</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0335">CVE-2015-0335</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0336">CVE-2015-0336</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0337">CVE-2015-0337</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0338">CVE-2015-0338</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0339">CVE-2015-0339</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0340">CVE-2015-0340</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0341">CVE-2015-0341</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0342">CVE-2015-0342</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 14 Mar 2015 00:47:30 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Mon, 16 Mar 2015 21:01:07 +0000">K_F</metadata>
+</glsa>

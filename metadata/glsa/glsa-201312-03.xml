@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201312-03">
+  <title>OpenSSL: Multiple Vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenSSL allowing remote
+    attackers to determine private keys or cause a Denial of Service.
+  </synopsis>
+  <product type="ebuild">OpenSSL</product>
+  <announced>December 03, 2013</announced>
+  <revised>June 06, 2015: 5</revised>
+  <bug>369753</bug>
+  <bug>406199</bug>
+  <bug>412643</bug>
+  <bug>415435</bug>
+  <bug>455592</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">1.0.0j</unaffected>
+      <unaffected range="rge">0.9.8y</unaffected>
+      <unaffected range="rge">0.9.8z_p1</unaffected>
+      <unaffected range="rge">0.9.8z_p2</unaffected>
+      <unaffected range="rge">0.9.8z_p3</unaffected>
+      <unaffected range="rge">0.9.8z_p4</unaffected>
+      <unaffected range="rge">0.9.8z_p5</unaffected>
+      <unaffected range="rge">0.9.8z_p6</unaffected>
+      <unaffected range="rge">0.9.8z_p7</unaffected>
+      <unaffected range="rge">0.9.8z_p8</unaffected>
+      <unaffected range="rge">0.9.8z_p9</unaffected>
+      <unaffected range="rge">0.9.8z_p10</unaffected>
+      <unaffected range="rge">0.9.8z_p11</unaffected>
+      <unaffected range="rge">0.9.8z_p12</unaffected>
+      <unaffected range="rge">0.9.8z_p13</unaffected>
+      <unaffected range="rge">0.9.8z_p14</unaffected>
+      <unaffected range="rge">0.9.8z_p15</unaffected>
+      <vulnerable range="lt">1.0.0j</vulnerable>
+      <vulnerable range="lt">0.9.8y</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSL is an Open Source toolkit implementing the Secure Sockets Layer
+      (SSL v2/v3) and Transport Layer Security (TLS v1) as well as a general
+      purpose cryptography library.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenSSL. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="low">
+    <p>Remote attackers can determine private keys, decrypt data, cause a
+      Denial of Service or possibly have other unspecified impact.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSL 1.0.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-1.0.0j"
+    </code>
+    
+    <p>All OpenSSL 0.9.8 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-0.9.8y"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2006-7250">CVE-2006-7250</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-1945">CVE-2011-1945</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0884">CVE-2012-0884</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-1165">CVE-2012-1165</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2110">CVE-2012-2110</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2333">CVE-2012-2333</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2686">CVE-2012-2686</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0166">CVE-2013-0166</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-0169">CVE-2013-0169</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 15 Mar 2012 02:30:07 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 06 Jun 2015 23:09:51 +0000">n0idx80</metadata>
+</glsa>
