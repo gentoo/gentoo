@@ -29,7 +29,7 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
-		>=www-servers/tornado-4.2.1[${PYTHON_USEDEP}]
+		>=www-servers/tornado-4.2.1[$(python_gen_usedep 'python*')]
 		>=dev-python/mock-1.3.0[${PYTHON_USEDEP}]
 		>=dev-python/nose-1.3.7[${PYTHON_USEDEP}]
 		>=dev-python/nose-exclude-0.4.1[${PYTHON_USEDEP}]
