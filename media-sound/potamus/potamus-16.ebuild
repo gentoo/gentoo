@@ -4,7 +4,7 @@
 
 EAPI=4
 
-inherit gnome2
+inherit gnome2 eutils
 
 DESCRIPTION="a lightweight audio player with a simple interface and an emphasis on high audio quality"
 HOMEPAGE="http://offog.org/code/potamus.html"
@@ -29,6 +29,11 @@ RDEPEND="x11-libs/gtk+:2
 	jack? ( media-sound/jack-audio-connection-kit )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+src_prepare() {
+	gnome2_src_prepare
+	has_version '>=media-video/ffmpeg-2.8' && epatch "${FILESDIR}/ffmpeg29.patch"
+}
 
 src_configure() {
 	econf \
