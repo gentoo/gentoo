@@ -68,6 +68,10 @@ src_prepare() {
 		epatch "${FILESDIR}"/${PN}-ffmpeg2.patch
 	fi
 
+	if has_version '>=media-video/ffmpeg-2.9' ; then
+		epatch "${FILESDIR}"/${PN}-ffmpeg29.patch
+	fi
+
 	eautoreconf
 }
 

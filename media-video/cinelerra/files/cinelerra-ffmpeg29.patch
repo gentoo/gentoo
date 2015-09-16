@@ -1,0 +1,658 @@
+Index: cinelerra-20140710/cinelerra/ffmpeg.C
+===================================================================
+--- cinelerra-20140710.orig/cinelerra/ffmpeg.C
++++ cinelerra-20140710/cinelerra/ffmpeg.C
+@@ -38,7 +38,7 @@ int FFMPEG::init(char *codec_string) {
+ 		printf("FFMPEG::init avcodec_open() failed\n");
+ 	}
+ 
+-	picture = avcodec_alloc_frame();
++	picture = av_frame_alloc();
+ 
+ 
+ 	return 0;
+@@ -55,62 +55,62 @@ AVCodecID FFMPEG::codec_id(char *codec_s
+ #define CODEC_IS(x) (! strncmp(codec_string, x, 4))
+ 
+ 	if (CODEC_IS(QUICKTIME_DV) ||
+-	    CODEC_IS(QUICKTIME_DVSD)) return CODEC_ID_DVVIDEO;
++	    CODEC_IS(QUICKTIME_DVSD)) return AV_CODEC_ID_DVVIDEO;
+ 	
+ 	if (CODEC_IS(QUICKTIME_MP4V) ||
+-	    CODEC_IS(QUICKTIME_DIVX)) return CODEC_ID_MPEG4;
++	    CODEC_IS(QUICKTIME_DIVX)) return AV_CODEC_ID_MPEG4;
+ 
+-	return CODEC_ID_NONE;
++	return AV_CODEC_ID_NONE;
+ 
+ #undef CODEC_IS
+ }
+ 
+-PixelFormat FFMPEG::color_model_to_pix_fmt(int color_model) {
++AVPixelFormat FFMPEG::color_model_to_pix_fmt(int color_model) {
+ 	switch (color_model) 
+ 		{ 
+ 		case BC_YUV422: 
+-			  return PIX_FMT_YUYV422;
++			  return AV_PIX_FMT_YUYV422;
+ 		case BC_RGB888:
+-			return PIX_FMT_RGB24;
++			return AV_PIX_FMT_RGB24;
+ 		case BC_BGR8888:  // NOTE: order flipped
+-			return PIX_FMT_RGB32;
++			return AV_PIX_FMT_RGB32;
+ 		case BC_BGR888:
+-			return PIX_FMT_BGR24;
++			return AV_PIX_FMT_BGR24;
+ 		case BC_YUV420P: 
+-			return PIX_FMT_YUV420P;
++			return AV_PIX_FMT_YUV420P;
+ 		case BC_YUV422P:
+-			return PIX_FMT_YUV422P;
++			return AV_PIX_FMT_YUV422P;
+ 		case BC_YUV444P:
+-			return PIX_FMT_YUV444P;
++			return AV_PIX_FMT_YUV444P;
+ 		case BC_YUV411P:
+-			return PIX_FMT_YUV411P;
++			return AV_PIX_FMT_YUV411P;
+ 		case BC_RGB565:
+-			return PIX_FMT_RGB565;
++			return AV_PIX_FMT_RGB565;
+ 		};
+ 
+-	return PIX_FMT_NB;
++	return AV_PIX_FMT_NB;
+ }
+ 
+-int FFMPEG::pix_fmt_to_color_model(PixelFormat pix_fmt) {
++int FFMPEG::pix_fmt_to_color_model(AVPixelFormat pix_fmt) {
+ 	switch (pix_fmt) 
+ 		{ 
+-		case PIX_FMT_YUYV422:
++		case AV_PIX_FMT_YUYV422:
+ 			return BC_YUV422;
+-		case PIX_FMT_RGB24:
++		case AV_PIX_FMT_RGB24:
+ 			return BC_RGB888;
+-		case PIX_FMT_RGB32:
++		case AV_PIX_FMT_RGB32:
+ 			return BC_BGR8888;
+-		case PIX_FMT_BGR24:
++		case AV_PIX_FMT_BGR24:
+ 			return BC_BGR888;
+-		case PIX_FMT_YUV420P:
++		case AV_PIX_FMT_YUV420P:
+ 			return BC_YUV420P;
+-		case PIX_FMT_YUV422P:
++		case AV_PIX_FMT_YUV422P:
+ 			return BC_YUV422P;
+-		case PIX_FMT_YUV444P:
++		case AV_PIX_FMT_YUV444P:
+ 			return BC_YUV444P;
+-		case PIX_FMT_YUV411P:
++		case AV_PIX_FMT_YUV411P:
+ 			return BC_YUV411P;
+-		case PIX_FMT_RGB565:
++		case AV_PIX_FMT_RGB565:
+ 			return BC_RGB565;
+ 		};
+ 
+@@ -119,7 +119,7 @@ int FFMPEG::pix_fmt_to_color_model(Pixel
+ 
+ int FFMPEG::init_picture_from_frame(AVPicture *picture, VFrame *frame) {
+ 	int cmodel = frame->get_color_model();
+-	PixelFormat pix_fmt = color_model_to_pix_fmt(cmodel);
++	AVPixelFormat pix_fmt = color_model_to_pix_fmt(cmodel);
+ 
+ 	int size = avpicture_fill(picture, frame->get_data(), pix_fmt, 
+ 				  frame->get_w(), frame->get_h());
+@@ -142,16 +142,16 @@ int FFMPEG::init_picture_from_frame(AVPi
+ 
+ int FFMPEG::convert_cmodel(VFrame *frame_in,  VFrame *frame_out) {
+   
+-	PixelFormat pix_fmt_in = 
++	AVPixelFormat pix_fmt_in = 
+ 		color_model_to_pix_fmt(frame_in->get_color_model());
+-	PixelFormat pix_fmt_out = 
++	AVPixelFormat pix_fmt_out = 
+ 		color_model_to_pix_fmt(frame_out->get_color_model());
+ #ifdef HAVE_SWSCALER
+ 	// We need a context for swscale
+ 	struct SwsContext *convert_ctx;
+ #endif
+ 	// do conversion within libavcodec if possible
+-	if (pix_fmt_in != PIX_FMT_NB && pix_fmt_out != PIX_FMT_NB) {
++	if (pix_fmt_in != AV_PIX_FMT_NB && pix_fmt_out != AV_PIX_FMT_NB) {
+ 		// set up a temporary pictures from frame_in and frame_out
+ 		AVPicture picture_in, picture_out;
+ 		init_picture_from_frame(&picture_in, frame_in);
+@@ -226,14 +226,14 @@ int FFMPEG::convert_cmodel_transfer(VFra
+ }
+ 
+ 
+-int FFMPEG::convert_cmodel(AVPicture *picture_in, PixelFormat pix_fmt_in,
++int FFMPEG::convert_cmodel(AVPicture *picture_in, AVPixelFormat pix_fmt_in,
+ 			  int width_in, int height_in, VFrame *frame_out) {
+ 
+ 	// set up a temporary picture_out from frame_out
+ 	AVPicture picture_out;
+ 	init_picture_from_frame(&picture_out, frame_out);
+ 	int cmodel_out = frame_out->get_color_model();
+-	PixelFormat pix_fmt_out = color_model_to_pix_fmt(cmodel_out);
++	AVPixelFormat pix_fmt_out = color_model_to_pix_fmt(cmodel_out);
+ 
+ #ifdef HAVE_SWSCALER
+ 	// We need a context for swscale
+@@ -242,7 +242,7 @@ int FFMPEG::convert_cmodel(AVPicture *pi
+ 	int result;
+ #ifndef HAVE_SWSCALER
+ 	// do conversion within libavcodec if possible
+-	if (pix_fmt_out != PIX_FMT_NB) {
++	if (pix_fmt_out != AV_PIX_FMT_NB) {
+ 		result = img_convert(&picture_out,
+ 				     pix_fmt_out,
+ 				     picture_in,
+@@ -280,7 +280,7 @@ int FFMPEG::convert_cmodel(AVPicture *pi
+ 	// make an intermediate temp frame only if necessary
+ 	int cmodel_in = pix_fmt_to_color_model(pix_fmt_in);
+ 	if (cmodel_in == BC_TRANSPARENCY) {
+-		if (pix_fmt_in == PIX_FMT_RGB32) {
++		if (pix_fmt_in == AV_PIX_FMT_RGB32) {
+ 			// avoid infinite recursion if things are broken
+ 			printf("FFMPEG::convert_cmodel pix_fmt_in broken!\n");
+ 			return 1;
+Index: cinelerra-20140710/cinelerra/ffmpeg.h
+===================================================================
+--- cinelerra-20140710.orig/cinelerra/ffmpeg.h
++++ cinelerra-20140710/cinelerra/ffmpeg.h
+@@ -18,7 +18,7 @@ class FFMPEG
+ 	int init(char *codec_string);
+ 	int decode(uint8_t *data, long data_size, VFrame *frame_out);
+ 
+-	static int convert_cmodel(AVPicture *picture_in, PixelFormat pix_fmt,
++	static int convert_cmodel(AVPicture *picture_in, AVPixelFormat pix_fmt,
+ 				  int width_in, int height_in, 
+ 				  VFrame *frame_out);
+ 	static int convert_cmodel(VFrame *frame_in, VFrame *frame_out);
+@@ -29,8 +29,8 @@ class FFMPEG
+ 	static AVCodecID codec_id(char *codec_string);
+ 
+  private:
+-	static PixelFormat color_model_to_pix_fmt(int color_model);
+-	static int pix_fmt_to_color_model(PixelFormat pix_fmt);
++	static AVPixelFormat color_model_to_pix_fmt(int color_model);
++	static int pix_fmt_to_color_model(AVPixelFormat pix_fmt);
+ 
+ 	int got_picture;
+ 	Asset *asset;
+Index: cinelerra-20140710/cinelerra/fileac3.C
+===================================================================
+--- cinelerra-20140710.orig/cinelerra/fileac3.C
++++ cinelerra-20140710/cinelerra/fileac3.C
+@@ -85,7 +85,7 @@ int FileAC3::open_file(int rd, int wr)
+ 	if(wr)
+ 	{
+ 		avcodec_register_all();
+-		codec = avcodec_find_encoder(CODEC_ID_AC3);
++		codec = avcodec_find_encoder(AV_CODEC_ID_AC3);
+ 		if(!codec)
+ 		{
+ 			eprintf("codec not found.\n");
+@@ -211,12 +211,56 @@ int FileAC3::write_samples(double **buff
+ 		current_sample + frame_size <= temp_raw_size; 
+ 		current_sample += frame_size)
+ 	{
+-		int compressed_size = avcodec_encode_audio(
+-			codec_context, 
+-			temp_compressed + output_size, 
+-			compressed_allocated - output_size, 
+-            temp_raw + current_sample * asset->channels);
+-		output_size += compressed_size;
++		AVPacket pkt;
++		AVFrame *frame;
++		int ret, samples_size, got_packet;
++		av_init_packet(&pkt);
++		pkt.data = temp_compressed + output_size;
++		pkt.size = compressed_allocated - output_size;
++		frame = av_frame_alloc();
++		if(!frame) return AVERROR(ENOMEM);
++		if(codec_context->frame_size) {
++			frame->nb_samples = codec_context->frame_size;
++		} else {
++			/* if frame_size is not set, the number of samples must be
++			 *              * calculated from the buffer size */
++			int64_t nb_samples;
++			if (!av_get_bits_per_sample(codec_context->codec_id)) {
++				av_frame_free(&frame);
++				return AVERROR(EINVAL);
++			}
++			nb_samples = (int64_t)(compressed_allocated - output_size) * 8 /
++				(av_get_bits_per_sample(codec_context->codec_id) *
++				 codec_context->channels);
++			if (nb_samples >= INT_MAX) {
++				av_frame_free(&frame);
++				return AVERROR(EINVAL);
++			}
++			frame->nb_samples = nb_samples;
++		}
++
++		/* it is assumed that the samples buffer is large enough based on the
++		 *          * relevant parameters */
++		samples_size = av_samples_get_buffer_size(NULL, codec_context->channels,
++				frame->nb_samples,
++				codec_context->sample_fmt, 1);
++		if ((ret = avcodec_fill_audio_frame(frame, codec_context->channels,
++						codec_context->sample_fmt,
++						(const uint8_t *)(temp_raw + current_sample * asset->channels),
++						samples_size, 1)) < 0) {
++			av_frame_free(&frame);
++			return ret;
++		}
++
++		ret = avcodec_encode_audio2(codec_context, &pkt, frame, &got_packet);
++		output_size += pkt.size;
++		/* free any side data since we cannot return it */
++		av_packet_free_side_data(&pkt);
++
++		if (frame && frame->extended_data != frame->data)
++			av_freep(&frame->extended_data);
++
++		av_frame_free(&frame);
+ 	}
+ 
+ // Shift buffer back
+Index: cinelerra-20140710/quicktime/mpeg4.c
+===================================================================
+--- cinelerra-20140710.orig/quicktime/mpeg4.c
++++ cinelerra-20140710/quicktime/mpeg4.c
+@@ -595,7 +595,7 @@ static int encode(quicktime_t *file, uns
+ 	if(!codec->encode_initialized[current_field])
+ 	{
+ // Encore section
+-		if(codec->ffmpeg_id == CODEC_ID_MPEG4 && codec->use_encore)
++		if(codec->ffmpeg_id == AV_CODEC_ID_MPEG4 && codec->use_encore)
+ 		{
+ 			codec->encode_initialized[current_field] = 1;
+ 			codec->encode_handle[current_field] = encode_handle++;
+@@ -647,7 +647,7 @@ static int encode(quicktime_t *file, uns
+ 			context->width = width_i;
+ 			context->height = height_i;
+ 			context->gop_size = codec->gop_size;
+-			context->pix_fmt = PIX_FMT_YUV420P;
++			context->pix_fmt = AV_PIX_FMT_YUV420P;
+ 			context->bit_rate = codec->bitrate / codec->total_fields;
+ 			context->bit_rate_tolerance = codec->bitrate_tolerance;
+ 			context->rc_eq = video_rc_eq;
+@@ -705,19 +705,19 @@ static int encode(quicktime_t *file, uns
+ // All the forbidden settings can be extracted from libavcodec/mpegvideo.c of ffmpeg...
+  			
+ // Copyed from ffmpeg's mpegvideo.c... set 4MV only where it is supported
+-			if(codec->ffmpeg_id == CODEC_ID_MPEG4 ||
+-			   codec->ffmpeg_id == CODEC_ID_H263 ||
+-			   codec->ffmpeg_id == CODEC_ID_H263P ||
+-			   codec->ffmpeg_id == CODEC_ID_FLV1)
++			if(codec->ffmpeg_id == AV_CODEC_ID_MPEG4 ||
++			   codec->ffmpeg_id == AV_CODEC_ID_H263 ||
++			   codec->ffmpeg_id == AV_CODEC_ID_H263P ||
++			   codec->ffmpeg_id == AV_CODEC_ID_FLV1)
+ 				context->flags |= CODEC_FLAG_4MV;
+ // Not compatible with Win
+ //			context->flags |= CODEC_FLAG_QPEL;
+ 
+ 			if(file->cpus > 1 && 
+-				(codec->ffmpeg_id == CODEC_ID_MPEG4 ||
+-			         codec->ffmpeg_id == CODEC_ID_MPEG1VIDEO ||
+-			         codec->ffmpeg_id == CODEC_ID_MPEG2VIDEO ||
+-			         codec->ffmpeg_id == CODEC_ID_H263P ))
++				(codec->ffmpeg_id == AV_CODEC_ID_MPEG4 ||
++			         codec->ffmpeg_id == AV_CODEC_ID_MPEG1VIDEO ||
++			         codec->ffmpeg_id == AV_CODEC_ID_MPEG2VIDEO ||
++			         codec->ffmpeg_id == AV_CODEC_ID_H263P ))
+ 			{
+ 				context->thread_count = file->cpus;
+ 			}
+@@ -740,7 +740,7 @@ static int encode(quicktime_t *file, uns
+  */
+ 			avcodec_open2(context, codec->encoder[current_field], opts);
+ 
+-   			avcodec_get_frame_defaults(&codec->picture[current_field]);
++   			av_frame_unref(&codec->picture[current_field]);
+ 
+ 		}
+ 	}
+@@ -891,10 +891,18 @@ static int encode(quicktime_t *file, uns
+ 		picture->quality = 0;
+ 		picture->pts = vtrack->current_position * quicktime_frame_rate_d(file, track);
+ 		picture->key_frame = 0;
+-		bytes = avcodec_encode_video(context, 
+-			codec->work_buffer, 
+-        	codec->buffer_size, 
+-        	picture);
++
++		AVPacket pkt;
++		int ret, got_pkt;
++		av_init_packet(&pkt);
++		pkt.data = codec->work_buffer;
++		pkt.size = codec->buffer_size;
++		ret = avcodec_encode_video2(context, 
++			&pkt,
++	        	picture, &got_pkt);
++		bytes = pkt.size;
++		if(ret < 0 || !got_pkt) return 1;
++
+ 		is_keyframe = context->coded_frame && context->coded_frame->key_frame;
+ /*
+  * printf("encode current_position=%d is_keyframe=%d\n", 
+@@ -1161,7 +1169,7 @@ void quicktime_init_codec_div3(quicktime
+ 		QUICKTIME_DIV3,
+ 		"DIVX",
+ 		"Mike Row Soft MPEG4 Version 3");
+-	result->ffmpeg_id = CODEC_ID_MSMPEG4V3;
++	result->ffmpeg_id = AV_CODEC_ID_MSMPEG4V3;
+ }
+ 
+ void quicktime_init_codec_div5(quicktime_video_map_t *vtrack)
+@@ -1170,7 +1178,7 @@ void quicktime_init_codec_div5(quicktime
+ 		QUICKTIME_DX50,
+ 		"DIVX",
+ 		"Mike Row Soft MPEG4 Version 5");
+-	result->ffmpeg_id = CODEC_ID_MPEG4;
++	result->ffmpeg_id = AV_CODEC_ID_MPEG4;
+ }
+ 
+ // Mike Rowe Soft MPEG-4
+@@ -1180,7 +1188,7 @@ void quicktime_init_codec_div3lower(quic
+ 		QUICKTIME_DIV3_LOWER,
+ 		"DIVX",
+ 		"Mike Row Soft MPEG4 Version 3");
+-	result->ffmpeg_id = CODEC_ID_MSMPEG4V3;
++	result->ffmpeg_id = AV_CODEC_ID_MSMPEG4V3;
+ }
+ 
+ void quicktime_init_codec_div3v2(quicktime_video_map_t *vtrack)
+@@ -1189,7 +1197,7 @@ void quicktime_init_codec_div3v2(quickti
+ 		QUICKTIME_MP42,
+ 		"MP42",
+ 		"Mike Row Soft MPEG4 Version 2");
+-	result->ffmpeg_id = CODEC_ID_MSMPEG4V2;
++	result->ffmpeg_id = AV_CODEC_ID_MSMPEG4V2;
+ }
+ 
+ // Generic MPEG-4
+@@ -1199,7 +1207,7 @@ void quicktime_init_codec_divx(quicktime
+ 		QUICKTIME_DIVX,
+ 		"MPEG-4",
+ 		"Generic MPEG Four");
+-	result->ffmpeg_id = CODEC_ID_MPEG4;
++	result->ffmpeg_id = AV_CODEC_ID_MPEG4;
+ 	result->use_encore = 1;
+ }
+ 
+@@ -1209,7 +1217,7 @@ void quicktime_init_codec_mpg4(quicktime
+ 		QUICKTIME_MPG4,
+ 		"MPEG-4",
+ 		"FFMPEG (msmpeg4)");
+-	result->ffmpeg_id = CODEC_ID_MSMPEG4V1;
++	result->ffmpeg_id = AV_CODEC_ID_MSMPEG4V1;
+ }
+ 
+ void quicktime_init_codec_dx50(quicktime_video_map_t *vtrack)
+@@ -1218,7 +1226,7 @@ void quicktime_init_codec_dx50(quicktime
+ 		QUICKTIME_DX50,
+ 		"MPEG-4",
+ 		"FFMPEG (mpeg4)");
+-	result->ffmpeg_id = CODEC_ID_MPEG4;
++	result->ffmpeg_id = AV_CODEC_ID_MPEG4;
+ }
+ 
+ // Generic MPEG-4
+@@ -1228,7 +1236,7 @@ void quicktime_init_codec_mp4v(quicktime
+ 		QUICKTIME_MP4V,
+ 		"MPEG4",
+ 		"Generic MPEG Four");
+-	result->ffmpeg_id = CODEC_ID_MPEG4;
++	result->ffmpeg_id = AV_CODEC_ID_MPEG4;
+ //	result->use_encore = 1;
+ }
+ 
+@@ -1240,7 +1248,7 @@ void quicktime_init_codec_svq1(quicktime
+ 		QUICKTIME_SVQ1,
+ 		"Sorenson Version 1",
+ 		"From the chearch of codecs of yesterday's sights");
+-	result->ffmpeg_id = CODEC_ID_SVQ1;
++	result->ffmpeg_id = AV_CODEC_ID_SVQ1;
+ }
+ 
+ void quicktime_init_codec_svq3(quicktime_video_map_t *vtrack)
+@@ -1249,7 +1257,7 @@ void quicktime_init_codec_svq3(quicktime
+ 		QUICKTIME_SVQ3,
+ 		"Sorenson Version 3",
+ 		"From the chearch of codecs of yesterday's sights");
+-	result->ffmpeg_id = CODEC_ID_SVQ3;
++	result->ffmpeg_id = AV_CODEC_ID_SVQ3;
+ }
+ 
+ void quicktime_init_codec_h263(quicktime_video_map_t *vtrack)
+@@ -1258,7 +1266,7 @@ void quicktime_init_codec_h263(quicktime
+         QUICKTIME_H263,
+         "H.263",
+         "H.263");
+-    result->ffmpeg_id = CODEC_ID_H263;
++    result->ffmpeg_id = AV_CODEC_ID_H263;
+ }
+ 
+ void quicktime_init_codec_xvid(quicktime_video_map_t *vtrack)
+@@ -1267,7 +1275,7 @@ void quicktime_init_codec_xvid(quicktime
+         QUICKTIME_XVID,
+         "XVID",
+         "FFmpeg MPEG-4");
+-    result->ffmpeg_id = CODEC_ID_MPEG4;
++    result->ffmpeg_id = AV_CODEC_ID_MPEG4;
+ }
+ 
+ void quicktime_init_codec_dnxhd(quicktime_video_map_t *vtrack)
+@@ -1276,7 +1284,7 @@ void quicktime_init_codec_dnxhd(quicktim
+         QUICKTIME_DNXHD,
+         "DNXHD",
+         "DNXHD");
+-    result->ffmpeg_id = CODEC_ID_DNXHD;
++    result->ffmpeg_id = AV_CODEC_ID_DNXHD;
+ }
+ 
+ // field based MPEG-4
+@@ -1287,7 +1295,7 @@ void quicktime_init_codec_hv60(quicktime
+ 		"Dual MPEG-4",
+ 		"MPEG 4 with alternating streams every other frame.  (Not standardized)");
+ 	result->total_fields = 2;
+-	result->ffmpeg_id = CODEC_ID_MPEG4;
++	result->ffmpeg_id = AV_CODEC_ID_MPEG4;
+ }
+ 
+ 
+Index: cinelerra-20140710/quicktime/qtffmpeg.c
+===================================================================
+--- cinelerra-20140710.orig/quicktime/qtffmpeg.c
++++ cinelerra-20140710/quicktime/qtffmpeg.c
+@@ -39,7 +39,7 @@ quicktime_ffmpeg_t* quicktime_new_ffmpeg
+ 	ptr->height = h;
+ 	ptr->ffmpeg_id = ffmpeg_id;
+ //printf("quicktime_new_ffmpeg 1 %d\n", ptr->ffmpeg_id);
+-	if(ffmpeg_id == CODEC_ID_SVQ1)
++	if(ffmpeg_id == AV_CODEC_ID_SVQ1)
+ 	{
+ 		ptr->width_i = quicktime_quantize32(ptr->width);
+ 		ptr->height_i = quicktime_quantize32(ptr->height);
+@@ -86,10 +86,10 @@ quicktime_ffmpeg_t* quicktime_new_ffmpeg
+ 			context->extradata_size = avcc->data_size;
+ 		}
+ 		if(cpus > 1 && 
+-				(ffmpeg_id == CODEC_ID_MPEG4 ||
+-			         ffmpeg_id == CODEC_ID_MPEG1VIDEO ||
+-			         ffmpeg_id == CODEC_ID_MPEG2VIDEO ||
+-			         ffmpeg_id == CODEC_ID_H263P ))
++				(ffmpeg_id == AV_CODEC_ID_MPEG4 ||
++			         ffmpeg_id == AV_CODEC_ID_MPEG1VIDEO ||
++			         ffmpeg_id == AV_CODEC_ID_MPEG2VIDEO ||
++			         ffmpeg_id == AV_CODEC_ID_H263P ))
+ 		{
+ 			context->thread_count = cpus;
+ 		}
+@@ -224,16 +224,16 @@ static int get_chroma_factor(quicktime_f
+ {
+ 	switch(ffmpeg->decoder_context[current_field]->pix_fmt)
+ 	{
+-		case PIX_FMT_YUV420P:
++		case AV_PIX_FMT_YUV420P:
+ 			return 4;
+ 			break;
+-		case PIX_FMT_YUYV422:
++		case AV_PIX_FMT_YUYV422:
+ 			return 2;
+ 			break;
+-		case PIX_FMT_YUV422P:
++		case AV_PIX_FMT_YUV422P:
+ 			return 2;
+ 			break;
+-		case PIX_FMT_YUV410P:
++		case AV_PIX_FMT_YUV410P:
+ 			return 9;
+ 			break;
+ 		default:
+@@ -277,7 +277,7 @@ int quicktime_ffmpeg_decode(quicktime_ff
+ //printf("quicktime_ffmpeg_decode 1 %d\n", ffmpeg->last_frame[current_field]);
+ 
+ 		if(ffmpeg->last_frame[current_field] == -1 &&
+-			ffmpeg->ffmpeg_id != CODEC_ID_H264)
++			ffmpeg->ffmpeg_id != AV_CODEC_ID_H264)
+ 		{
+ 			int current_frame = vtrack->current_position;
+ // For certain codecs,
+@@ -328,7 +328,7 @@ int quicktime_ffmpeg_decode(quicktime_ff
+ // For MPEG-4, get another keyframe before first keyframe.
+ // The Sanyo tends to glitch with only 1 keyframe.
+ // Not enough memory.
+-			if( 0 /* frame1 > 0 && ffmpeg->ffmpeg_id == CODEC_ID_MPEG4 */)
++			if( 0 /* frame1 > 0 && ffmpeg->ffmpeg_id == AV_CODEC_ID_MPEG4 */)
+ 			{
+ 				do
+ 				{
+@@ -423,16 +423,16 @@ int quicktime_ffmpeg_decode(quicktime_ff
+ // Hopefully this setting will be left over if the cache was used.
+ 	switch(ffmpeg->decoder_context[current_field]->pix_fmt)
+ 	{
+-		case PIX_FMT_YUV420P:
++		case AV_PIX_FMT_YUV420P:
+ 			input_cmodel = BC_YUV420P;
+ 			break;
+-		case PIX_FMT_YUYV422:
++		case AV_PIX_FMT_YUYV422:
+ 			input_cmodel = BC_YUV422;
+ 			break;
+-		case PIX_FMT_YUV422P:
++		case AV_PIX_FMT_YUV422P:
+ 			input_cmodel = BC_YUV422P;
+ 			break;
+-		case PIX_FMT_YUV410P:
++		case AV_PIX_FMT_YUV410P:
+ 			input_cmodel = BC_YUV9P;
+ 			break;
+ 		default:
+Index: cinelerra-20140710/quicktime/qth264.c
+===================================================================
+--- cinelerra-20140710.orig/quicktime/qth264.c
++++ cinelerra-20140710/quicktime/qth264.c
+@@ -370,7 +370,7 @@ static int decode(quicktime_t *file, uns
+ 	if(!codec->decoder) codec->decoder = quicktime_new_ffmpeg(
+ 		file->cpus,
+ 		codec->total_fields,
+-		CODEC_ID_H264,
++		AV_CODEC_ID_H264,
+ 		width,
+ 		height,
+ 		stsd_table);
+Index: cinelerra-20140710/quicktime/wma.c
+===================================================================
+--- cinelerra-20140710.orig/quicktime/wma.c
++++ cinelerra-20140710/quicktime/wma.c
+@@ -193,15 +193,38 @@ printf("decode 2 %x %llx %llx\n", chunk_
+ 			codec->packet_buffer,
+ 			chunk_size);
+ #else
+-		bytes_decoded = AVCODEC_MAX_AUDIO_FRAME_SIZE;
+ 		AVPacket pkt;
+ 		av_init_packet( &pkt );
+ 		pkt.data = codec->packet_buffer;
+ 		pkt.size = chunk_size;
+-		result = avcodec_decode_audio3(codec->decoder_context,
+-			(int16_t*)(codec->work_buffer + codec->output_size * sample_size),
+-			&bytes_decoded,
++		AVFrame *frame = av_frame_alloc();
++		int got_frame = 0;
++
++		result = avcodec_decode_audio4(codec->decoder_context,
++			frame, &got_frame, 
+ 			&pkt);
++
++		if(result >= 0 && got_frame)
++		{
++			int ch, plane_size;
++			int planar    = av_sample_fmt_is_planar(codec->decoder_context->sample_fmt);
++			int data_size = av_samples_get_buffer_size(&plane_size, codec->decoder_context->channels,
++					frame->nb_samples,
++					codec->decoder_context->sample_fmt, 1);
++			memcpy(codec->work_buffer + codec->output_size * sample_size, frame->extended_data[0], plane_size);
++
++			if (planar && codec->decoder_context->channels > 1) {
++				uint8_t *out = ((uint8_t *)(codec->work_buffer + codec->output_size * sample_size)) + plane_size;
++				for (ch = 1; ch < codec->decoder_context->channels; ch++) {
++					memcpy(out, frame->extended_data[ch], plane_size);
++					out += plane_size;
++				}
++			}
++			bytes_decoded = data_size;
++		} else {
++			bytes_decoded = 0;
++		}
++		av_frame_free(&frame);
+ #endif
+ 
+ 		pthread_mutex_unlock(&ffmpeg_lock);
+@@ -298,7 +321,7 @@ void quicktime_init_codec_wmav1(quicktim
+ 	codec_base->title = "Win Media Audio 1";
+ 	codec_base->desc = "Win Media Audio 1";
+ 	codec_base->wav_id = 0x160;
+-	codec->ffmpeg_id = CODEC_ID_WMAV1;
++	codec->ffmpeg_id = AV_CODEC_ID_WMAV1;
+ }
+ 
+ 
+@@ -313,5 +336,5 @@ void quicktime_init_codec_wmav2(quicktim
+ 	codec_base->title = "Win Media Audio 2";
+ 	codec_base->desc = "Win Media Audio 2";
+ 	codec_base->wav_id = 0x161;
+-	codec->ffmpeg_id = CODEC_ID_WMAV2;
++	codec->ffmpeg_id = AV_CODEC_ID_WMAV2;
+ }
+Index: cinelerra-20140710/cinelerra/fileyuv.C
+===================================================================
+--- cinelerra-20140710.orig/cinelerra/fileyuv.C
++++ cinelerra-20140710/cinelerra/fileyuv.C
+@@ -196,7 +196,7 @@ int FileYUV::write_frames(VFrame ***laye
+ 				return stream->write_frame_raw(frame->get_data(), frame_size);
+ 
+ 			// decode and write an encoded frame
+-			if (FFMPEG::codec_id(incoming_asset->vcodec) != CODEC_ID_NONE) 
++			if (FFMPEG::codec_id(incoming_asset->vcodec) != AV_CODEC_ID_NONE) 
+ 			{
+ 				if (! ffmpeg) 
+ 				{
+@@ -306,7 +306,7 @@ int FileYUV::can_copy_from(Edit *edit, i
+ 	if (edit->asset->format == FILE_YUV) return 1;
+ 
+ 	// if FFMPEG can decode it, we'll accept it
+-	if (FFMPEG::codec_id(edit->asset->vcodec) != CODEC_ID_NONE) return 1;
++	if (FFMPEG::codec_id(edit->asset->vcodec) != AV_CODEC_ID_NONE) return 1;
+ 
+ 	incoming_asset = 0;
+ 
