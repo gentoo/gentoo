@@ -14,6 +14,7 @@
 	<flag name="adplug">Enable the AdPlug decoder plugin</flag>
 	<flag name="cdio">Use libcdio for ISO9660 parsing support</flag>
 	<flag name="curl">Support for web stream listening</flag>
+	<flag name="eventfd">Use the eventfd function in MPD's event loop</flag>
 	<flag name="faad">Use external faad library for AAC decoding</flag>
 	<flag name="fifo">Support writing audio to a FIFO</flag>
 	<flag name="fluidsynth">Enables Fluidsynth MIDI software synthesis (discouraged)</flag>
@@ -22,7 +23,6 @@
 	<flag name="id3tag">Support for ID3 tags</flag>
 	<flag name="inotify">Use the Linux kernel inotify subsystem to notice changes to mpd music library</flag>
 	<flag name="lame">Support for MP3 streaming via Icecast2</flag>
-	<flag name="lastfmradio">Support listening to last.fm radio stations</flag>
 	<flag name="libmpdclient">Enable support for remote mpd databases</flag>
 	<flag name="libsoxr">Enable the libsoxr resampler</flag>
 	<flag name="mpg123">Enable support for mp3 decoding over media-sound/mpg123</flag>
@@ -32,8 +32,8 @@
 	<flag name="pipe">Support writing audio to a pipe</flag>
 	<flag name="recorder">Enables output plugin for recording radio streams</flag>
 	<flag name="sid">Build with SID (Commodore 64 Audio) support</flag>
+	<flag name="signalfd">Use the signalfd function in MPD's event loop</flag>
 	<flag name="soundcloud">Build plugin to access soundcloud</flag>
-	<flag name="soup">Use <pkg>net-libs/libsoup</pkg> for HTTP streaming</flag>
 	<flag name="systemd">Enable support for systemd socket activation</flag>
 	<flag name="twolame">Support twolame MPEG-2 encoding</flag>
 	<flag name="wildmidi">Enable MIDI support via wildmidi</flag>
