@@ -64,12 +64,17 @@ my_use() {
 src_prepare() {
 	epatch	"${FILESDIR}"/110_all_implicitdecls.patch \
 			"${FILESDIR}"/${PN}-0.5.2-static-libs.patch \
-			"${FILESDIR}"/${PN}-0.5.2-gf_isom_set_pixel_aspect_ratio.patch
+			"${FILESDIR}"/${PN}-0.5.2-gf_isom_set_pixel_aspect_ratio.patch \
+			"${FILESDIR}"/${PN}-0.5.2-avpixfmt.patch
+	has_version '>=media-video/ffmpeg-2.9' && epatch "${FILESDIR}"/${PN}-0.5.2-ffmpeg29.patch
 	sed -i -e "s:\(--disable-.*\)=\*):\1):" configure || die
 }
 
 src_configure() {
 	tc-export CC CXX AR RANLIB
+	# upstream used this internal define to check whether to use the new API
+	# when it is a guard for deprecating the old one...
+	append-cflags "-DFF_API_AVFRAME_LAVC=1"
 
 	econf \
 		--enable-svg \
