@@ -2160,7 +2160,7 @@ app-shells/smrsh 8.14.5 8.14.6 8.14.7 8.14.8 8.14.9: Sendmail restricted shell, 
 app-shells/soapbox 0.3.1-r2: A preload (sandbox) library to restrict filesystem writes
 app-shells/squirrelsh 1.2.3-r1 1.2.6 1.2.7: An advanced, cross-platform object oriented scripting shell based on the squirrel scripting language
 app-shells/tcsh 6.17-r1 6.17.06 6.18.01 6.18.01-r2 6.18.01-r3 6.18.01-r4: Enhanced version of the Berkeley C shell (csh)
-app-shells/zsh 5.0.5 5.0.7-r1 5.0.7-r2 5.0.8 9999: UNIX Shell similar to the Korn shell
+app-shells/zsh 5.0.5 5.0.7-r1 5.0.7-r2 5.0.8 5.1.1 9999: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.12.0-r2 9999: Additional completion definitions for Zsh
 app-text/7plus 2.25: An encoder for packet radio
 app-text/XML-Schema-learner 1.0.0 1.0.1: Algorithmic inferencing of XML schema definitions and DTDs
