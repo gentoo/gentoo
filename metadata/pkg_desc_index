@@ -2892,7 +2892,7 @@ dev-db/mycli 1.4.0 9999: CLI for MySQL Database with auto-completion and syntax 
 dev-db/mydumper 0.6.2: A high-performance multi-threaded backup (and restore) toolset for MySQL and Drizzle
 dev-db/myodbc 5.2.7-r1 5.2.7-r2: ODBC driver for MySQL
 dev-db/mysql 5.5.44 5.5.45 5.6.26 5.6.26-r1: A fast, multi-threaded, multi-user SQL database server
-dev-db/mysql++ 2.3.2 3.1.0 3.2.1: C++ API interface to the MySQL database
+dev-db/mysql++ 2.3.2 3.1.0 3.2.1 3.2.2: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.19 7.2.20 7.3.8 7.3.9-r1: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql-connector-c 6.1.5 6.1.6-r1 6.1.6-r2: C client library for MariaDB/MySQL
 dev-db/mysql-connector-c++ 1.1.1 1.1.3 1.1.5 1.1.6: MySQL database connector for C++ (mimics JDBC 4.0 API)
@@ -2913,7 +2913,7 @@ dev-db/oracle-instantclient-basic 10.2.0.3-r1 11.2.0.2 11.2.0.3 11.2.0.4: Oracle
 dev-db/oracle-instantclient-jdbc 10.2.0.3 11.2.0.2 11.2.0.3 11.2.0.4: Oracle 11g Instant Client: JDBC supplement
 dev-db/oracle-instantclient-odbc 11.2.0.2-r1 11.2.0.3 11.2.0.4: Oracle 11g Instant Client: ODBC supplement
 dev-db/oracle-instantclient-sqlplus 10.2.0.3 11.2.0.2 11.2.0.3 11.2.0.3-r1 11.2.0.4: Oracle 11g Instant Client: SQL*Plus
-dev-db/percona-server 5.6.24.72.2 5.6.25.73.0 5.6.25.73.0-r1: An enhanced, drop-in replacement for MySQL from the Percona team
+dev-db/percona-server 5.6.25.73.0 5.6.25.73.0-r1 5.6.26.74.0: An enhanced, drop-in replacement for MySQL from the Percona team
 dev-db/percona-toolkit 2.2.7 2.2.11 2.2.15: essential command-line utilities for MySQL
 dev-db/pg_activity 1.2.0: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 3.6.2-r1 3.7.0: 'top' for PostgreSQL
