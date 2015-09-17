@@ -7697,6 +7697,7 @@ dev-python/rope 0.9.4-r1 0.10.2: Python refactoring library
 dev-python/ropeide 1.5.1-r2: Python refactoring IDE
 dev-python/ropemacs 0.7 0.8: Rope in Emacs
 dev-python/ropemode 0.2-r1: A helper for using rope refactoring library in IDEs
+dev-python/rosdistro 0.4.2 9999: Tools to work with catkinized rosdistro files
 dev-python/rospkg 1.0.35 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.1-r1 2.2: A Python re-implementation of Rails routes system, mapping URL's to Controllers/Actions
 dev-python/rply 0.7.3: Pure python parser generator that also works with RPython
@@ -9050,7 +9051,7 @@ dev-util/ninja 1.5.1 1.5.3 1.6.0 9999: A small build system similar to make
 dev-util/ninja-ide 2.3: Ninja-IDE Is Not Just Another IDE
 dev-util/nsis 2.46-r1: Nullsoft Scriptable Install System
 dev-util/nvidia-cuda-sdk 6.5.14 7.5.18: NVIDIA CUDA Software Development Kit
-dev-util/nvidia-cuda-toolkit 6.5.14 7.5.18: NVIDIA CUDA Toolkit (compiler and friends)
+dev-util/nvidia-cuda-toolkit 6.5.14 7.5.18-r1: NVIDIA CUDA Toolkit (compiler and friends)
 dev-util/objconv 2.32_pre20131127: object code file converted (COFF, ELF, OMF, MACHO)
 dev-util/obs-service-cpanspec 20130318: Open Build Service client module - cpanspec service
 dev-util/obs-service-download_files 20130716: Open Build Service client module - download_files service
