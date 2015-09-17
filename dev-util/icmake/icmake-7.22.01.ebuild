@@ -7,7 +7,7 @@ EAPI=5
 inherit multilib toolchain-funcs eutils
 
 DESCRIPTION="Hybrid between a make utility and a shell scripting language"
-HOMEPAGE="http://icmake.sourceforge.net/"
+HOMEPAGE="https://fbb-git.github.io/icmake/ https://github.com/fbb-git/icmake"
 SRC_URI="mirror://sourceforge/${PN}/${P/-/_}.orig.tar.gz"
 
 LICENSE="GPL-3"
