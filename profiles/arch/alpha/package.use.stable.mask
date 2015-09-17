@@ -17,6 +17,12 @@
 #
 
 #--- END OF EXAMPLES ---
+#
+# Tobias Klausmann <klausman@gentoo.org> (17 Sep 2015)
+# Move this mask here (from package.use.mask) until net-fs/libnfs goes stable.
+# Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
+# net-fs/libnfs lacks alpha keyword, bug #551576
+gnome-base/gvfs nfs
 
 # Tobias Klausmann <klausman@gentoo.org> (16 Sep 2015)
 # Move this mask here (from package.use.mask) until rubberband goes stable.
