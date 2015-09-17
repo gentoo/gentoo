@@ -4,6 +4,8 @@
 
 EAPI=5
 
+inherit eutils
+
 DESCRIPTION="The rEFInd UEFI Boot Manager by Rod Smith"
 HOMEPAGE="http://www.rodsbooks.com/refind/index.html"
 SRC_URI="mirror://sourceforge/${PN}/${PN}-src-${PV}.zip"
@@ -13,10 +15,19 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE="btrfs +ext2 +ext4 hfs +iso9660 ntfs reiserfs"
 
-DOCS="NEWS.txt README.txt refind.conf-sample docs/refind docs/Styles"
+DOCS="NEWS.txt README.txt docs/refind docs/Styles"
 
 DEPEND=">=sys-boot/gnu-efi-3.0u"
 RDEPEND=""
+
+src_prepare() {
+	# bug 560280: Relocate the install location of refind.conf-sample
+	local oldstring="\$RefindDir\/refind.conf-sample"
+	local newstring="\/usr\/share\/doc\/${PF}\/refind.conf-sample"
+	sed -e "s/$oldstring/$newstring/" -i install.sh || die
+
+	epatch_user
+}
 
 src_compile() {
 	emake gnuefi
@@ -42,6 +53,9 @@ src_install() {
 	doexe install.sh
 
 	dodoc -r ${DOCS}
+
+	dodoc refind.conf-sample
+	docompress -x /usr/share/doc/${PF}/refind.conf-sample
 
 	insinto "/usr/share/${P}/refind"
 	use x86 && doins refind/refind_ia32.efi
@@ -74,6 +88,6 @@ pkg_postinst() {
 	einfo "package app-crypt/sbsigntool can be installed"
 	einfo ""
 	einfo "A sample configration can be found at"
-	einfo "/usr/share/doc/${P}/refind.conf-sample.bz2"
+	einfo "/usr/share/doc/${PF}/refind.conf-sample"
 	einfo ""
 }
