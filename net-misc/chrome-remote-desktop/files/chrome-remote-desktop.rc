@@ -33,9 +33,6 @@ for_users() {
 	local user ret msg log
 	msg=$1; shift
 
-	set -- -- "$@"
-	[ "${CHROME_REMOTE_DESKTOP_DEFAULT_DESKTOP_SIZES+set}" = "set" ] \
-		&& set -- -e CHROME_REMOTE_DESKTOP_DEFAULT_DESKTOP_SIZES="${CHROME_REMOTE_DESKTOP_DEFAULT_DESKTOP_SIZES}" "$@"
 	: ${CHROME_REMOTE_DESKTOP_LOG_DIR:=/var/log}
 
 	for user in ${CHROME_REMOTING_USERS} ; do
@@ -51,9 +48,11 @@ for_users() {
 			-u "${user}" \
 			-x "${CRD}" \
 			-e "CHROME_REMOTE_DESKTOP_LOG_FILE=${log}" \
+			-- \
+			${OPTIONS} \
 			"$@"
 		eend $?
-		: $(( ret += $? ))
+		: $(( ret |= $? ))
 	done
 
 	return ${ret}
