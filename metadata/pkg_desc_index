@@ -10759,7 +10759,7 @@ kde-frameworks/kplotting 5.13.0 5.14.0: Framework providing easy data-plotting f
 kde-frameworks/kpty 5.13.0 5.14.0: Framework for pseudo terminal devices and running child processes
 kde-frameworks/kross 5.13.0 5.14.0: Framework for embedding scripting into applications
 kde-frameworks/krunner 5.13.0 5.14.0: Framework for providing different actions given a string query
-kde-frameworks/kservice 5.13.0 5.14.0: Framework providing advanced features for plugins, such as file type association and locating
+kde-frameworks/kservice 5.13.0 5.14.0 5.14.2: Framework providing advanced features for plugins, such as file type association and locating
 kde-frameworks/ktexteditor 5.13.0 5.14.0: Framework providing a full text editor component
 kde-frameworks/ktextwidgets 5.13.0 5.14.0: Framework providing an assortment of widgets for displaying and editing text
 kde-frameworks/kunitconversion 5.13.0 5.14.0: Framework for converting units
