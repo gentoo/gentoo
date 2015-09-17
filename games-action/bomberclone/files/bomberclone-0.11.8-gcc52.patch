@@ -1,0 +1,11 @@
+--- src/single.c.old	2015-09-17 09:21:57.826930680 +0200
++++ src/single.c	2015-09-17 09:22:04.315824372 +0200
+@@ -476,7 +476,7 @@
+ };
+ 
+ 
+-inline int
++static inline int
+ ai_checknewpos (_point pos, int d)
+ {
+     _point m;
