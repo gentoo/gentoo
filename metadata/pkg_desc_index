@@ -1298,7 +1298,7 @@ app-emulation/lxd 0.13 0.14 0.16: Fast, dense and secure container management
 app-emulation/open-vm-tools 9.4.0.1280544 9.10.0_p2476743 9.10.2_p2822639: Opensourced tools for VMware guests
 app-emulation/open-vm-tools-kmod 9.4.0.1280544 9.10.0_p2476743: Opensourced tools for VMware guests
 app-emulation/openstack-guest-agents-unix 1.39.0 1.39.0-r1 1.39.0-r2 1.39.1: Openstack Unix Guest Agent
-app-emulation/phpvirtualbox 4.1.7-r2 4.1.11 4.2.3b 4.2.4 4.2.7 4.3.0 5.0.3: Web-based administration for VirtualBox in PHP
+app-emulation/phpvirtualbox 4.1.11 4.2.7 4.3.0 5.0.3: Web-based administration for VirtualBox in PHP
 app-emulation/playonlinux 4.2.4 4.2.6 4.2.8: Set of scripts to easily install and use Windows games and software
 app-emulation/q4wine 1.0-r3 1.1_p2-r1: Qt4 GUI configuration tool for Wine
 app-emulation/qemu 2.3.0-r5 2.3.0-r6 2.3.1 2.4.0-r1 9999: QEMU + Kernel-based Virtual Machine userland tools
