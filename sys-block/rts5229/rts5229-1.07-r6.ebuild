@@ -32,6 +32,7 @@ src_prepare() {
 		&& epatch "${FILESDIR}/${PN}-linux-3.10.patch"
 	sed -e '/__DATE__/d' \
 		-i rtsx.c || die "Sed failed!"
+	epatch "${FILESDIR}/${PN}-vmalloc.patch"
 }
 
 pkg_setup() {

@@ -1,0 +1,33 @@
+diff -Naur rts5229.a/ms.c rts5229.b/ms.c
+--- rts5229.a/ms.c	2012-03-20 21:40:18.000000000 -0400
++++ rts5229.b/ms.c	2015-09-17 01:13:54.830723253 -0400
+@@ -23,6 +23,7 @@
+ #include <linux/blkdev.h>
+ #include <linux/kthread.h>
+ #include <linux/sched.h>
++#include <linux/vmalloc.h>
+ 
+ #include "rtsx.h"
+ #include "rtsx_transport.h"
+diff -Naur rts5229.a/rtsx_chip.c rts5229.b/rtsx_chip.c
+--- rts5229.a/rtsx_chip.c	2012-03-20 21:40:18.000000000 -0400
++++ rts5229.b/rtsx_chip.c	2015-09-17 01:13:29.574133449 -0400
+@@ -24,6 +24,7 @@
+ #include <linux/kthread.h>
+ #include <linux/sched.h>
+ #include <linux/workqueue.h>
++#include <linux/vmalloc.h>
+ 
+ #include "rtsx.h"
+ #include "rtsx_transport.h"
+diff -Naur rts5229.a/rtsx_scsi.c rts5229.b/rtsx_scsi.c
+--- rts5229.a/rtsx_scsi.c	2012-03-20 21:40:18.000000000 -0400
++++ rts5229.b/rtsx_scsi.c	2015-09-17 01:13:44.035898653 -0400
+@@ -23,6 +23,7 @@
+ #include <linux/blkdev.h>
+ #include <linux/kthread.h>
+ #include <linux/sched.h>
++#include <linux/vmalloc.h>
+ 
+ #include "rtsx.h"
+ #include "rtsx_transport.h"
