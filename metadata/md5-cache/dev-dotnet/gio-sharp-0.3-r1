@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile prepare setup unpack
+DEPEND=|| ( >=dev-dotnet/gtk-sharp-2.12.21 >=dev-dotnet/glib-sharp-2.12 ) || ( >=dev-dotnet/gtk-sharp-2.12.21 >=dev-dotnet/gtk-sharp-gapi-2.12 ) >=dev-libs/glib-2.22:2 virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=GIO API C# binding
+EAPI=4
+HOMEPAGE=https://github.com/mono/gio-sharp
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=|| ( >=dev-dotnet/gtk-sharp-2.12.21 >=dev-dotnet/glib-sharp-2.12 ) || ( >=dev-dotnet/gtk-sharp-2.12.21 >=dev-dotnet/gtk-sharp-gapi-2.12 ) >=dev-libs/glib-2.22:2
+SLOT=0
+SRC_URI=https://github.com/mono/gio-sharp/tarball/0.3 -> gio-sharp-0.3.tar.gz
+_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	libtool	7f78cd7d403808a350c9ae23f5821fb4	mono-env	10809200679bcceefebac9e72bebb6e6	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=c076e239280e84af81c24bad069ca1f2

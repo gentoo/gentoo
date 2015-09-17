@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare setup unpack
+DEPEND=|| ( >=dev-dotnet/gtk-sharp-2.12.21 >=dev-dotnet/glib-sharp-2.12.9 ) || ( >=dev-dotnet/gtk-sharp-2.12.21 >=dev-dotnet/gtk-sharp-gapi-1.9 ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=C# binding for gkeyfile
+EAPI=5
+HOMEPAGE=https://launchpad.net/gkeyfile-sharp https://github.com/mono/gkeyfile-sharp
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=|| ( >=dev-dotnet/gtk-sharp-2.12.21 >=dev-dotnet/glib-sharp-2.12.9 ) || ( >=dev-dotnet/gtk-sharp-2.12.21 >=dev-dotnet/gtk-sharp-gapi-1.9 )
+SLOT=0
+SRC_URI=https://github.com/mono/gkeyfile-sharp/tarball/GKEYFILE_SHARP_0_1 -> gkeyfile-sharp-0.1.tar.gz
+_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	libtool	7f78cd7d403808a350c9ae23f5821fb4	mono-env	10809200679bcceefebac9e72bebb6e6	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=f53dfb7d400737887e00bf63d9ef5a90

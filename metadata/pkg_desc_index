@@ -2959,17 +2959,17 @@ dev-db/xbsql 0.11-r2: An SQL Wrapper for the XBase library
 dev-db/xtrabackup-bin 2.1.9 2.2.5 2.2.12: MySQL hot backup software that performs non-blocking backups for InnoDB and XtraDB databases
 dev-dotnet/art-sharp 2.24.2: GtkSharp's art module of the gnome-sharp tarball
 dev-dotnet/atk-sharp 2.12.10: GtkSharp's atk module of the gtk-sharp tarball
-dev-dotnet/dbus-sharp 0.7.0-r1: D-Bus for .NET
-dev-dotnet/dbus-sharp-glib 0.5.0: D-Bus for .NET: GLib integration module
+dev-dotnet/dbus-sharp 0.7.0-r1 0.8.1: D-Bus for .NET
+dev-dotnet/dbus-sharp-glib 0.5.0 0.6.0: D-Bus for .NET: GLib integration module
 dev-dotnet/flickrnet-bin 2.2-r1: A .Net Library for accessing the Flickr API - Binary version
 dev-dotnet/gconf-sharp 2.24.2: GtkSharp's gconf module of the gnome-sharp tarball
 dev-dotnet/gdk-sharp 2.12.10: GtkSharp's gdk module of the gtk-sharp tarball
-dev-dotnet/gio-sharp 0.3: GIO API C# binding
-dev-dotnet/gkeyfile-sharp 0.1: C# binding for gkeyfile
+dev-dotnet/gio-sharp 0.3 0.3-r1: GIO API C# binding
+dev-dotnet/gkeyfile-sharp 0.1 0.1-r1: C# binding for gkeyfile
 dev-dotnet/glade-sharp 2.12.10: GtkSharp's glade module of the gtk-sharp tarball
 dev-dotnet/glib-sharp 2.12.10: GtkSharp's glib module of the gtk-sharp tarball
 dev-dotnet/gnome-desktop-sharp 2.26.0-r1: GtkSharp's gnome-desktop module of the gnome-desktop-sharp tarball
-dev-dotnet/gnome-keyring-sharp 1.0.2 1.0.2-r1: C# implementation of gnome-keyring
+dev-dotnet/gnome-keyring-sharp 1.0.2 1.0.2-r1 1.0.2-r2: C# implementation of gnome-keyring
 dev-dotnet/gnome-sharp 2.24.2 2.24.2-r1: gnome bindings for mono
 dev-dotnet/gnomevfs-sharp 2.24.2: GtkSharp's gnomevfs module of the gnome-sharp tarball
 dev-dotnet/google-gdata-sharp 1.4.0.2-r2: C# bindings for the Google GData API
@@ -10261,7 +10261,7 @@ gnome-extra/cinnamon-settings-daemon 2.4.3 2.6.2 2.6.3: Cinnamon's settings daem
 gnome-extra/cinnamon-translations 2.4.4 2.6.2 2.6.3: Translation data for Cinnamon
 gnome-extra/cjs 2.4.2 2.6.1 2.6.2: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/connman-gnome 0.7: Provides a daemon for managing internet connections
-gnome-extra/docky 2.2.0: Elegant, powerful, clean dock
+gnome-extra/docky 2.2.0 2.2.1.1: Elegant, powerful, clean dock
 gnome-extra/eiciel 0.9.8.2 0.9.9 0.9.10: ACL editor for GNOME, with Nautilus extension
 gnome-extra/evolution-data-server 3.12.11 3.16.4 3.16.5: Evolution groupware backend
 gnome-extra/evolution-ews 3.12.11 3.16.3-r1 3.16.4 3.16.5: Evolution module for connecting to Microsoft Exchange Web Services
