@@ -25,7 +25,7 @@ CDEPEND="
 	dev-java/jaxb:2
 	dev-java/jax-ws:2
 	dev-java/jsr173:0
-	dev-java/jdom:1.0
+	dev-java/jdom:0
 	dev-java/log4j:0
 	dev-java/wsdl4j:0
 	dev-java/xalan:0
