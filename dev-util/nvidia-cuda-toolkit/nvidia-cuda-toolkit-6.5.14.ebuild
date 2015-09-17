@@ -23,13 +23,13 @@ IUSE="debugger doc eclipse profiler"
 DEPEND=""
 RDEPEND="${DEPEND}
 	<sys-devel/gcc-4.9[cxx]
-	>=x11-drivers/nvidia-drivers-340.32[uvm]
 	debugger? (
 		sys-libs/libtermcap-compat
 		sys-libs/ncurses[tinfo]
 		)
 	eclipse? ( >=virtual/jre-1.6 )
 	profiler? ( >=virtual/jre-1.6 )
+	amd64? ( >=x11-drivers/nvidia-drivers-340.32[uvm] )
 	x86? ( <x11-drivers/nvidia-drivers-346.35[uvm] )
 	"
 
