@@ -2,13 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Brian Evans <grknight@gentoo.org> (17 Sep 2015)
+# Mask new USE flags for percona-server which are not available on alpha
+dev-db/percona-server tokudb tokudb-backup-plugin
+
 # Tobias Klausmann <klausman@gentoo.org> (16 Sep 2015)
 # Mask USE=sssd for sudo because sys-auth/sssd is relatively big and doesn't
 # compile on alpha. The version specified does not have the USE flag, but that
 # version of sudo has the optional functionality.
 >=app-admin/sudo-1.8.6 sssd
 
-# Brian Evans <grknight@gentoo.org (14 Sep 2015)
+# Brian Evans <grknight@gentoo.org> (14 Sep 2015)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies
 >=dev-db/mariadb-10.1.0 innodb-snappy
 

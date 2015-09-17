@@ -3,20 +3,26 @@
 # $Id$
 
 EAPI="5"
-MY_EXTRAS_VER="20150113-1853Z"
+MY_EXTRAS_VER="20150717-1707Z"
+HAS_TOOLS_PATCH="1"
+SUBSLOT="18"
 
 inherit toolchain-funcs mysql-multilib
 # only to make repoman happy. it is really set in the eclass
-IUSE="$IUSE"
+IUSE="$IUSE tokudb tokudb-backup-plugin"
 
 # REMEMBER: also update eclass/mysql*.eclass before committing!
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~x86-linux"
 
 # When MY_EXTRAS is bumped, the index should be revised to exclude these.
 EPATCH_EXCLUDE=''
 
-DEPEND="|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )"
+DEPEND="|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
+	tokudb? ( app-arch/snappy )
+	tokudb-backup-plugin? ( dev-util/valgrind )"
 RDEPEND="${RDEPEND}"
+
+REQUIRED_USE="tokudb? ( jemalloc ) tokudb-backup-plugin? ( tokudb )"
 
 # Please do not add a naive src_unpack to this ebuild
 # If you want to add a single patch, copy the ebuild to an overlay
@@ -42,7 +48,7 @@ multilib_src_test() {
 	# localhost. Also causes weird failures.
 	[[ "${HOSTNAME}" == "localhost" ]] && die "Your machine must NOT be named localhost"
 
-	if ! use "minimal" ; then
+	if use server ; then
 
 		if [[ $UID -eq 0 ]]; then
 			die "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
@@ -67,6 +73,13 @@ multilib_src_test() {
 		# create directories because mysqladmin might right out of order
 		mkdir -p "${T}"/var-tests{,/log}
 
+		# Create a symlink to provided binaries so the tests can find them when client-libs is off
+		if ! use client-libs ; then
+			ln -srf /usr/bin/my_print_defaults "${BUILD_DIR}/client/my_print_defaults" || die
+			ln -srf /usr/bin/perror "${BUILD_DIR}/client/perror" || die
+			mysql-multilib_disable_test main.perror "String mismatch due to not building local perror"
+		fi
+
 		# These are failing in Percona 5.6 for now and are believed to be
 		# false positives:
 		#
@@ -90,6 +103,13 @@ multilib_src_test() {
 		#
 		# main.mysqlhotcopy_archive main.mysqlhotcopy_myisam
 		# Called with bad parameters should be reported upstream
+		#
+		# innodb_stress.innodb_stress
+		# innodb_stress.innodb_stress_blob innodb_stress.innodb_stress_blob_nocompress
+		# innodb_stress.innodb_stress_crash innodb_stress.innodb_stress_crash_blob
+		# innodb_stress.innodb_stress_crash_blob_nocompress innodb_stress.innodb_stress_crash_nocompress
+		# innodb_stress.innodb_stress_nocompress
+		# Dependent on python2 being the system python
 
 		for t in main.mysql_client_test \
 			binlog.binlog_statement_insert_delayed main.information_schema \
@@ -104,6 +124,14 @@ multilib_src_test() {
 				mysql-multilib_disable_test  "$t" "False positives in Gentoo"
 		done
 
+		for t in innodb_stress.innodb_stress \
+			innodb_stress.innodb_stress_blob innodb_stress.innodb_stress_blob_nocompress \
+			innodb_stress.innodb_stress_crash innodb_stress.innodb_stress_crash_blob \
+			innodb_stress.innodb_stress_crash_blob_nocompress innodb_stress.innodb_stress_crash_nocompress \
+			innodb_stress.innodb_stress_nocompress ; do
+				mysql-multilib_disable_test "$t" "False positives due to python exception syntax"
+		done
+
 		# Run mysql tests
 		pushd "${TESTDIR}"
 
@@ -112,7 +140,7 @@ multilib_src_test() {
 
 		# run mysql-test tests
 		perl mysql-test-run.pl --force --vardir="${T}/var-tests" \
-			--testcase-timeout=30
+			--testcase-timeout=30 --reorder
 		retstatus_tests=$?
 		[[ $retstatus_tests -eq 0 ]] || eerror "tests failed"
 		has usersandbox $FEATURES && eerror "Some tests may fail with FEATURES=usersandbox"

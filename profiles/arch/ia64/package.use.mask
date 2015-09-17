@@ -2,7 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# Brian Evans <grknight@gentoo.org (14 Sep 2015)
+# Brian Evans <grknight@gentoo.org> (17 Sep 2015)
+# Mask new USE flags for percona-server which are not available on ia64
+dev-db/percona-server tokudb tokudb-backup-plugin
+
+# Brian Evans <grknight@gentoo.org> (14 Sep 2015)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies
 >=dev-db/mariadb-10.1.0 innodb-snappy
 
