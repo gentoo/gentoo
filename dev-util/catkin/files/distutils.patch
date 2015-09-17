@@ -1,0 +1,13 @@
+Allow to install scripts in PYTHON_SCRIPTDIR.
+Needed for Gentoo multi-python support.
+
+Index: catkin-0.6.11/cmake/templates/python_distutils_install.sh.in
+===================================================================
+--- catkin-0.6.11.orig/cmake/templates/python_distutils_install.sh.in
++++ catkin-0.6.11/cmake/templates/python_distutils_install.sh.in
+@@ -25,4 +25,4 @@ cd "@INSTALL_CMD_WORKING_DIRECTORY@"
+     build --build-base "@CMAKE_CURRENT_BINARY_DIR@" \
+     install \
+     $DESTDIR_ARG \
+-    @SETUPTOOLS_ARG_EXTRA@ --prefix="@CMAKE_INSTALL_PREFIX@" --install-scripts="@CMAKE_INSTALL_PREFIX@/@CATKIN_GLOBAL_BIN_DESTINATION@"
++    @SETUPTOOLS_ARG_EXTRA@ --prefix="@CMAKE_INSTALL_PREFIX@" --install-scripts="${PYTHON_SCRIPTDIR:-@CMAKE_INSTALL_PREFIX@/@CATKIN_GLOBAL_BIN_DESTINATION@}"

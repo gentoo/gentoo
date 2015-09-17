@@ -150,27 +150,6 @@ net-misc/guidedog
 >=dev-php/pear-1.10.0_alpha1
 >=dev-php/PEAR-PEAR-1.10.0_alpha1
 
-# Johannes Huber <johu@@gentoo.org> (13 Aug 2015)
-# Nepomuk removal. Announced via portage news item on 2015/08/11.
-# Removal in 30 days. Please switch to the default semantic desktop
-# search engine Baloo by globally enabling semantic-destkop use
-# flag or by using one of the provided kde/plasma desktop profiles.
-dev-db/virtuoso-odbc
-dev-db/virtuoso-jdbc
-dev-db/virtuoso-server
-dev-libs/shared-desktop-ontologies
-dev-libs/soprano
-dev-util/plasmate
-kde-apps/nepomuk
-kde-base/nepomuk-core
-kde-base/nepomuk-widgets
-kde-misc/akonadi-google
-kde-misc/akonadi-social-utils
-kde-misc/ksoprano
-kde-misc/nepomukshell
-kde-misc/pgame
-media-video/bangarang
-
 # Sebastian Pipping <sping@gentoo.org> (8 Aug 2015)
 # Upcoming, too young to go into testing unmasked
 dev-libs/iniparser:4
