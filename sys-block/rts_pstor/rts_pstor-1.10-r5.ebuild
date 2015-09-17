@@ -30,6 +30,7 @@ src_prepare() {
 		&& epatch "${FILESDIR}/${PN}-linux-3.8.patch"
 	([ ${KV_MAJOR} -gt 3 ] || ([ ${KV_MAJOR} -eq 3 ] && [ ${KV_MINOR} -ge 10 ])) \
 		&& epatch "${FILESDIR}/${PN}-linux-3.10.patch"
+	epatch "${FILESDIR}/${PN}-vmalloc.patch"
 }
 
 pkg_setup() {
