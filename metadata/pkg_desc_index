@@ -10620,7 +10620,6 @@ kde-apps/sweeper 4.14.3: KDE Privacy Settings Widget
 kde-apps/thumbnailers 4.14.3: KDE 4 thumbnail generators for PDF/PS files
 kde-apps/umbrello 4.14.3: KDE UML Modeller
 kde-apps/zeroconf-ioslave 4.14.3 15.08.0: A DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
-kde-base/akonadi 4.4.11.1-r1: An extensible cross-desktop storage service for PIM data and meta data
 kde-base/akonadiconsole 4.14.3 4.14.8 4.14.10: Akonadi developer console
 kde-base/akregator 4.4.2015.06 4.14.3 4.14.8 4.14.10: KDE news feed aggregator
 kde-base/baloo 4.14.3: Next generation of the Nepomuk project
@@ -10648,7 +10647,6 @@ kde-base/kdepim-kresources 4.4.2015.06 4.14.3 4.14.8 4.14.10: KDE PIM groupware 
 kde-base/kdepim-l10n 4.4.11.1-r1 4.4.11.1-r2 4.14.3 4.14.3-r1: KDE PIM internationalization package
 kde-base/kdepim-meta 4.4.2015.06 4.14.3 4.14.8 4.14.10: kdepim - merge this to pull in all kdepim-derived packages
 kde-base/kdepim-runtime 4.14.3 4.14.8 4.14.10: KDE PIM runtime plugin collection
-kde-base/kdepim-strigi-analyzer 4.4.11.1-r1: kdepim: strigi plugins
 kde-base/kdepim-wizards 4.4.2015.06: KDE PIM wizards (noakonadi branch)
 kde-base/kdepimlibs 4.14.3 4.14.8 4.14.10: Common library for KDE PIM apps
 kde-base/kdeplasma-addons 4.14.3: Extra Plasma applets and engines
