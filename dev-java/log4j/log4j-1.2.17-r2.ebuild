@@ -19,9 +19,6 @@ CDEPEND="javamail? (
 			dev-java/oracle-javamail:0
 			java-virtuals/jaf:0
 		)
-		jmx? (
-			dev-java/sun-jmx:0
-		)
 		jms? (
 			java-virtuals/jms:0
 		)"
@@ -44,7 +41,7 @@ java_prepare() {
 JAVA_ANT_REWRITE_CLASSPATH="true"
 JAVA_ANT_IGNORE_SYSTEM_CLASSES="true"
 EANT_BUILD_TARGET="log4j.jar"
-EANT_EXTRA_ARGS="-Djaxp-present=true"
+EANT_EXTRA_ARGS="-Djaxp-present=true -Djmx-present=true"
 EANT_DOC_TARGET=""
 
 src_compile() {
@@ -52,16 +49,6 @@ src_compile() {
 		EANT_GENTOO_CLASSPATH+="javamail,jaf"
 		EANT_EXTRA_ARGS+=" -Djavamail-present=true"
 	fi
-
-	if use jmx; then
-		if use javamail; then
-			EANT_GENTOO_CLASSPATH+=","
-		fi
-
-		EANT_GENTOO_CLASSPATH+="sun-jmx"
-		EANT_EXTRA_ARGS+=" -Djmx-present=true"
-	fi
-
 	if use jms; then
 		EANT_EXTRA_ARGS+=" -Djms-present=true -Djms.jar=$(java-pkg_getjars jms)"
 	fi
