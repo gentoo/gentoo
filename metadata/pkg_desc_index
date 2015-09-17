@@ -4319,7 +4319,7 @@ dev-lang/c-intercal 29.0: C-INTERCAL - INTERCAL to binary (via C) compiler
 dev-lang/cfortran 4.4-r2 4.4-r3: Header file allowing to call Fortran routines from C and C++
 dev-lang/cilk 5.4.6-r1: Language for multithreaded parallel programming based on ANSI C
 dev-lang/cll1h 0.6-r1: C<<1 programming language system
-dev-lang/clojure 1.5.1 1.6.0: Clojure is a dynamic programming language that targets the Java Virtual Machine
+dev-lang/clojure 1.5.1 1.6.0 1.7.0: Clojure is a dynamic programming language that targets the Java Virtual Machine
 dev-lang/closure-compiler-bin 20120305 20121212 20130227 20130411 20150126: JavaScript optimizing compiler
 dev-lang/coffee-script 1.9.3-r1: A little language that compiles into javascript
 dev-lang/confluence 0.10.6: Functional programming language for reactive system design (digital logic, hard-real-time software)
@@ -7883,6 +7883,7 @@ dev-python/utidylib 0.2-r2: TidyLib Python wrapper
 dev-python/utmp 0.4: utmp/wtmp reader
 dev-python/vatnumber 1.1: Module to validate VAT numbers
 dev-python/vcrpy 1.5.2 1.7.3: Automatically mock your HTTP interactions to simplify and speed up testing
+dev-python/vcstools 0.1.37 9999: Python library for interacting with various VCS systems
 dev-python/vcversioner 2.14.0.0: Use version control tags to discover version numbers
 dev-python/venusian 1.0_alpha8 1.0: A library for deferring decorator actions
 dev-python/verboselogs 1.0.1: Verbose logging for Python's logging module
@@ -13601,7 +13602,7 @@ net-libs/libnetfilter_log 1.0.1: interface to packets that have been logged by t
 net-libs/libnetfilter_queue 1.0.2: API to packets that have been queued by the kernel packet filter
 net-libs/libnfnetlink 1.0.1: the low-level library for netfilter related kernel/userspace communication
 net-libs/libnfsidmap 0.24 0.25 0.25-r1: NFSv4 ID <-> name mapping library
-net-libs/libnftnl 1.0.3: Netlink API to the in-kernel nf_tables subsystem
+net-libs/libnftnl 1.0.3 1.0.4: Netlink API to the in-kernel nf_tables subsystem
 net-libs/libnice 0.1.8 0.1.10 0.1.13: An implementation of the Interactice Connectivity Establishment standard (ICE)
 net-libs/libnids 1.24-r6: an implementation of an E-component of Network Intrusion Detection System
 net-libs/libnipper 0.12.6-r1: A router configuration security analysis library
@@ -17343,7 +17344,7 @@ x11-libs/libcryptui 3.12.2: User interface components for OpenPGP
 x11-libs/libdesktop-agnostic 0.3.92 0.3.92-r1: A desktop-agnostic library for GLib-based projects
 x11-libs/libdmx 1.1.3: X.Org dmx library
 x11-libs/libdockapp 0.6.1 0.6.4 0.7.0: Window Maker Dock Applet Library
-x11-libs/libdrm 2.4.59 2.4.64 9999: X.Org libdrm library
+x11-libs/libdrm 2.4.59 2.4.64 2.4.65 9999: X.Org libdrm library
 x11-libs/libfakekey 0.1-r1 0.1-r2: Helper library for the x11-misc/matchbox-keyboard package
 x11-libs/libfm 0.1.17-r1 1.1.4 1.2.2.1 1.2.3 1.2.3-r1 9999: A library for file management
 x11-libs/libfm-extra 1.2.3: A library for file management
