@@ -1,0 +1,159 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Id$
+
+extra_started_commands="reload"
+
+depend() {
+	use logger
+	need net
+	before heartbeat
+	after sshd
+}
+
+DEFAULTFILE="/etc/conf.d/drbd"
+DRBDADM="/sbin/drbdadm"
+PROC_DRBD="/proc/drbd"
+MODPROBE="/sbin/modprobe"
+RMMOD="/sbin/rmmod"
+UDEV_TIMEOUT=10
+ADD_MOD_PARAM=""
+PATH=${PATH}:/lib/drbd:/lib64/drbd
+
+if [ -f $DEFAULTFILE ]; then
+  . $DEFAULTFILE
+fi
+
+# Just in case drbdadm want to display any errors in the configuration
+# file, or we need to ask the user about registering this installation
+# at http://usage.drbd.org, we call drbdadm here without any IO
+# redirection.
+$DRBDADM sh-nop
+
+assure_module_is_loaded() {
+	[ -e "$PROC_DRBD" ] && return
+	ebegin "Loading drbd module"
+	ret=0
+
+	$MODPROBE -s drbd `$DRBDADM sh-mod-parms` $ADD_MOD_PARAM || ret=20
+	eend $ret
+	return $ret
+}
+
+adjust_with_progress() {
+	IFS_O=$IFS
+	NEWLINE='
+'
+	IFS=$NEWLINE
+	local D=0
+	local S=0
+	local N=0
+
+	einfon "Setting drbd parameters "
+	COMMANDS=`$DRBDADM -d adjust all` || { 
+		eend 20 "Error executing drbdadm"
+		return 20 
+	}
+	echo -n "[ "
+	
+	for CMD in $COMMANDS; do
+		if echo $CMD | grep -q disk; then echo -n "d$D "; D=$(( D+1 ));
+		elif echo $CMD | grep -q syncer; then echo -n "s$S "; S=$(( S+1 ));
+		elif echo $CMD | grep -q net; then echo -n "n$N "; N=$(( N+1 ));
+		else echo -n ".. ";
+		fi
+		IFS=$IFS_O
+		$CMD || {
+			echo 
+			eend 20 "cmd $CMD failed!"
+			return 20
+		}
+		IFS=$NEWLINE
+	done
+	echo "]"
+	eend 0
+	
+	IFS=$IFS_O
+}
+
+start() {
+	einfo "Starting DRBD resources:"
+	eindent
+	assure_module_is_loaded || return $?
+	adjust_with_progress || return $?
+
+	# make sure udev has time to create the device files
+	ebegin "Waiting for udev device creation ..."
+	for RESOURCE in `$DRBDADM sh-resources`; do
+		for DEVICE in `$DRBDADM sh-dev $RESOURCE`; do
+			UDEV_TIMEOUT_LOCAL=$UDEV_TIMEOUT
+			while [ ! -e $DEVICE ] && [ $UDEV_TIMEOUT_LOCAL -gt 0 ] ; do
+				sleep 1
+				UDEV_TIMEOUT_LOCAL=$(( $UDEV_TIMEOUT_LOCAL-1 ))
+			done
+		done
+	done
+	eend 0
+
+	einfon "Waiting for connection "
+	$DRBDADM wait-con-int
+	ret=$?
+	echo
+
+	sleep 5
+	
+	einfon "Become primary if configured "
+	$DRBDADM sh-b-pri all
+	echo
+
+	eend $ret
+	return $ret
+}
+
+stop() {
+	ebegin "Stopping all DRBD resources"
+	
+	# Check for mounted drbd devices
+	if ! grep -q '^/dev/drbd' /proc/mounts &>/dev/null; then
+		if [ -e ${PROC_DRBD} ]; then
+			${DRBDADM} down all
+			ret=$?
+			sleep 3
+			if [ -e /proc/modules ] && grep -q '^drbd' /proc/modules ; then
+		 	      ${RMMOD} drbd
+         	fi
+		fi
+		eend $ret
+		return $ret
+	else
+		einfo "drbd devices mounted, please umount them before trying to stop drbd!"
+		eend 1
+		return 1
+	fi
+}
+
+status() {
+	# NEEDS to be heartbeat friendly...
+	# so: put some "OK" in the output.
+	
+	if [ -e $PROC_DRBD ]; then
+		ret=0
+		ebegin "drbd driver loaded OK; device status:"
+		eend $ret
+		cat $PROC_DRBD
+	else
+		ebegin "drbd not loaded"
+		ret=3
+		eend $ret
+	fi
+	return $ret
+}
+
+reload() {
+	ebegin "Reloading DRBD"
+	${DRBDADM} adjust all
+	ret=$?
+	eend $ret
+	return $ret
+}
