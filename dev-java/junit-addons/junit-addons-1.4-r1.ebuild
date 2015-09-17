@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=5
+
 JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-ant-2
@@ -17,7 +19,7 @@ KEYWORDS="~amd64 ~x86 ~x86-linux ~x86-macos"
 COMMON_DEP="
 	=dev-java/junit-3.8*
 	dev-java/ant-core
-	~dev-java/jdom-1.0
+	dev-java/jdom:0
 	=dev-java/jaxen-1.1*
 	"
 
