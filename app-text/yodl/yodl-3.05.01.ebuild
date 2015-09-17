@@ -7,7 +7,7 @@ EAPI=5
 inherit toolchain-funcs
 
 DESCRIPTION="Your Own Document Language: a pre-document language and tools to process it"
-HOMEPAGE="http://yodl.sourceforge.net/"
+HOMEPAGE="https://fbb-git.github.io/yodl/ https://github.com/fbb-git/yodl"
 SRC_URI="mirror://sourceforge/${PN}/${P/-/_}.orig.tar.gz"
 
 LICENSE="GPL-3"
