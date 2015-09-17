@@ -9113,6 +9113,8 @@ dev-util/reswrap 3.2.0 4.0.0: Utility to wrap icon resources into C++ code, from
 dev-util/reviewboard 1.7.28: A web-based code review tool that offers developers an easy way to handle code reviews
 dev-util/rootstrap 0.3.24 0.3.24_p5-r1: A tool for building complete Linux filesystem images
 dev-util/rosdep 0.11.2 9999: Command-line tool for installing ROS system dependencies
+dev-util/rosinstall 0.7.6 9999: Command-line tools for maintaining a workspace of projects for ROS
+dev-util/rosinstall_generator 0.1.11 9999: Generates rosinstall files containing information about repositories with ROS packages/stacks
 dev-util/rpmdevtools 8.3 8.3-r1 8.5: Collection of rpm packaging related utilities
 dev-util/sasm 2.2 9999: Simple crossplatform IDE for NASM assembly language
 dev-util/scala-ide 4.1.0 4.1.1: The Scala IDE
@@ -9172,6 +9174,7 @@ dev-util/weblint 1.020: syntax and minimal style checker for HTML by Neil Bowers
 dev-util/webstorm 10.0.4.141.1550: JavaScript IDE for complex client-side development and server-side development with Node.js
 dev-util/weka 3.6.6-r1 3.6.12: A Java data mining package
 dev-util/wiggle 0.9 0.9-r1: program for applying patches that patch cannot apply because of conflicting changes
+dev-util/wstool 0.1.10 9999: Commands to manage several local SCM repositories for ROS
 dev-util/wxglade 0.6.3-r1: Glade-like GUI designer which can generate Python, Perl, C++ or XRC code
 dev-util/xdelta 1.1.4-r1 3.0.5 3.0.6 3.0.8 3.0.10: a binary diff and differential compression tools. VCDIFF (RFC 3284) delta compression
 dev-util/xesam-tools 0.7.0-r1: Development tools and examples for the Xesam desktop search API
