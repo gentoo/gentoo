@@ -190,7 +190,7 @@ if [[ ${PN} == "percona-server" ]]; then
 	DESCRIPTION="An enhanced, drop-in replacement for MySQL from the Percona team"
 fi
 LICENSE="GPL-2"
-SLOT="0/${SUBSLOT:=0}"
+SLOT="0/${SUBSLOT:-0}"
 
 IUSE="+community cluster debug embedded extraengine jemalloc latin1
 	+perl profiling selinux ssl systemtap static static-libs tcmalloc test"
@@ -783,6 +783,27 @@ mysql-multilib_pkg_preinst() {
 	if [[ ${PN} == "mysql-cluster" ]] ; then
 		mysql_version_is_at_least "7.2.9" && java-pkg-opt-2_pkg_preinst
 	fi
+	# Here we need to see if the implementation switched client libraries
+	# First, we check if this is a new instance of the package and a client library already exists
+	# Then, we check if this package is rebuilt but the previous instance did not
+	# have the client-libs USE set.
+	# Instances which do not have a client-libs USE can only be replaced by a different provider
+	local SHOW_ABI_MESSAGE
+	if ! in_iuse client-libs || use_if_iuse client-libs ; then
+	        if [[ -z ${REPLACING_VERSIONS} && -e "${EROOT}usr/$(get_libdir)/libmysqlclient.so" ]] ; then
+			SHOW_ABI_MESSAGE=1
+		elif [[ ${REPLACING_VERSIONS} && -e "${EROOT}usr/$(get_libdir)/libmysqlclient.so" ]] && \
+			in_iuse client-libs && ! built_with_use ${CATEGORY}/${PN} client-libs ; then
+			SHOW_ABI_MESSAGE=1
+		fi
+
+	fi
+	if [[ ${SHOW_ABI_MESSAGE} ]] ; then
+                elog "Due to ABI changes when switching between different client libraries,"
+                elog "revdep-rebuild must find and rebuild all packages linking to libmysqlclient."
+                elog "Please run: revdep-rebuild --library libmysqlclient.so.${SUBSLOT:-18}"
+                ewarn "Failure to run revdep-rebuild may cause issues with other programs or libraries"
+        fi
 }
 
 # @FUNCTION: mysql-multilib_pkg_postinst
