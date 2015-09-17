@@ -12,3 +12,6 @@ pch
 
 # prelink is masked for hardened
 prelink
+
+# profile are incompatible when linking with pie
+profile

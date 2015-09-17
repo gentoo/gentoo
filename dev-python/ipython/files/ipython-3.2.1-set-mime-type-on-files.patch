@@ -1,0 +1,35 @@
+Upstream patch to fix
+"Maliciously crafted text files in IPython/Jupyter editor".
+
+http://seclists.org/oss-sec/2015/q3/558
+https://bugs.gentoo.org/show_bug.cgi?id=560708
+
+
+From d729ce7c2063c0de746a7c2ea39697040d0af5bf Mon Sep 17 00:00:00 2001
+From: Min RK <benjaminrk@gmail.com>
+Date: Mon, 20 Jul 2015 12:10:10 -0700
+Subject: [PATCH 1/4] set mime-type on /files/
+
+---
+ IPython/html/files/handlers.py | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/IPython/html/files/handlers.py b/IPython/html/files/handlers.py
+index 7727d08..b358d94 100644
+--- a/IPython/html/files/handlers.py
++++ b/IPython/html/files/handlers.py
+@@ -40,6 +40,11 @@ def get(self, path):
+             cur_mime = mimetypes.guess_type(name)[0]
+             if cur_mime is not None:
+                 self.set_header('Content-Type', cur_mime)
++            else:
++                if model['format'] == 'base64':
++                    self.set_header('Content-Type', 'application/octet-stream')
++                else:
++                    self.set_header('Content-Type', 'text/plain')
+         
+         if model['format'] == 'base64':
+             b64_bytes = model['content'].encode('ascii')
+-- 
+2.4.6
+
