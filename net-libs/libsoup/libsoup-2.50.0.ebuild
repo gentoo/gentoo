@@ -54,6 +54,10 @@ src_prepare() {
 			|| die "sed failed"
 	fi
 
+	# fix sorting when LC_ALL/LC_COLLATE is set, bug #560258
+	# fixed upstream in 2.52
+	sed -e 's/LANG=C sort/LC_ALL=C sort/' -i libsoup/Makefile.{am,in} || die "sed failed"
+
 	gnome2_src_prepare
 }
 
