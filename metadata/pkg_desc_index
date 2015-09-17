@@ -2299,7 +2299,7 @@ app-text/keepnote 0.7.9-r2: A note taking application
 app-text/kpaste 1.0: Command-line tool to paste to paste.kde.org
 app-text/krop 0.4.7 0.4.8: A tool to crop PDF files
 app-text/landslide 1.1.1 1.1.3: Landslide generates a slideshow using the slides that power the html5-slides presentation
-app-text/lcdf-typetools 2.97 2.104: Font utilities for eg manipulating OTF
+app-text/lcdf-typetools 2.97 2.104 2.105: Font utilities for eg manipulating OTF
 app-text/letterize 1.3: Generate English-plausible alphabetic mnemonics for a phone number
 app-text/libabw 0.0.2 0.1.0 0.1.1: Library parsing abiword documents
 app-text/libebook 0.0.2 0.1.1 0.1.2: Library parsing various ebook formats
@@ -13845,7 +13845,7 @@ net-misc/cfengine 2.2.10-r4 3.3.9 3.4.5 3.5.3 3.6.2: An automated suite of progr
 net-misc/cgminer 4.7.0 4.8.0 4.9.0 4.9.1 4.9.2: Bitcoin CPU/GPU/FPGA/ASIC miner in C
 net-misc/cgterm 1.6: Connect to C64 telnet BBS's with the correct colours and font
 net-misc/charm 1.9.1 1.9.2-r1: A text based livejournal client
-net-misc/chrome-remote-desktop 44.0.2403.44 45.0.2454.17: access remote computers via Chrome!
+net-misc/chrome-remote-desktop 44.0.2403.44 45.0.2454.17-r1: access remote computers via Chrome!
 net-misc/chrony 2.1.1: NTP client and server programs
 net-misc/clamz 0.4 0.5: Command-line downloader for the Amazon.com MP3 music store
 net-misc/clipgrab 3.4.9-r1 3.4.11: Download from various internet video services like Youtube etc.
