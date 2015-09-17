@@ -1,0 +1,22 @@
+Index: wstool-0.1.10/setup.py
+===================================================================
+--- wstool-0.1.10.orig/setup.py
++++ wstool-0.1.10/setup.py
+@@ -23,15 +23,9 @@ def get_version():
+ def _resolve_prefix(prefix, type):
+     osx_system_prefix = '/System/Library/Frameworks/Python.framework/Versions'
+     if type == 'man':
+-        if prefix == '/usr':
+-            return '/usr/share'
+-        if sys.prefix.startswith(osx_system_prefix):
+-            return '/usr/share'
++        return os.path.join(prefix, 'share')
+     elif type == 'bash_comp':
+-        if prefix == '/usr':
+-            return '/'
+-        if sys.prefix.startswith(osx_system_prefix):
+-            return '/'
++        return os.path.join(prefix, '../')
+     elif type == 'zsh_comp':
+         if sys.prefix.startswith(osx_system_prefix):
+             return '/usr'
