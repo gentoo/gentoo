@@ -4089,7 +4089,7 @@ dev-java/libg 2.1.0-r1: Lots of small utilities for bndlib, a swiss army knife f
 dev-java/libmatthew-java 0.7.2-r1: A selection of libraries for Java
 dev-java/libmso 0.1: Java library to detect printers
 dev-java/libreadline-java 0.8.0-r3: A JNI-wrapper to GNU Readline
-dev-java/log4j 1.2.16 1.2.17 1.2.17-r1: A low-overhead robust logging package for Java
+dev-java/log4j 1.2.16 1.2.17-r2: A low-overhead robust logging package for Java
 dev-java/logback 1.0.13-r1: A generic, reliable, fast & flexible logging framework for Java
 dev-java/lucene 1.4.3-r3 1.9.1 2.1.0-r1 2.1.0-r2 2.2.0 2.2.0-r1 2.3.0 2.3.1 2.3.2 2.3.2-r1 2.3.2-r2 2.4.0 2.4.1 2.4.1-r1 2.9.1-r1 2.9.4 3.0.0 3.0.3 3.4.0 3.5.0 3.6.2: High-performance, full-featured text search engine library written entirely in Java
 dev-java/lucene-analyzers 1.9.1-r1 2.3.2: Lucene Analyzers additions
