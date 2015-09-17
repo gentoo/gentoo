@@ -19,12 +19,11 @@ IUSE=""
 
 RDEPEND="
 	dev-lang/php[session,unicode,soap,gd]
+	virtual/httpd-php:*
 "
 DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/${MY_P}"
-
-need_php_httpd
 
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="

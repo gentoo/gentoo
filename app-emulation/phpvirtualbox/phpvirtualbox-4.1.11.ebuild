@@ -19,10 +19,9 @@ IUSE=""
 
 RDEPEND="
 	dev-lang/php[session,unicode,soap,gd]
+	virtual/httpd-php
 "
 DEPEND="app-arch/unzip"
-
-need_php_httpd
 
 src_install() {
 	webapp_src_preinst
