@@ -10640,7 +10640,7 @@ kde-base/kdebase-cursors 4.11.14 4.11.19 4.11.22: oxygen cursors from kdebase
 kde-base/kdebase-pam 9: pam.d files used by several KDE components
 kde-base/kdebase-startkde 4.11.14 4.11.19 4.11.22: Startkde script, which starts a complete KDE session, and associated scripts
 kde-base/kdebindings-meta 4.14.3: KDE bindings - merge this to pull in all kdebindings-derived packages
-kde-base/kdelibs 4.14.3-r1 4.14.8 4.14.10 4.14.11: KDE libraries needed by all KDE programs
+kde-base/kdelibs 4.14.3-r1 4.14.8 4.14.10 4.14.11 4.14.12: KDE libraries needed by all KDE programs
 kde-base/kdepim-common-libs 4.14.3 4.14.8 4.14.10: Common libraries for KDE PIM apps
 kde-base/kdepim-icons 4.4.2015.06 4.14.3 4.14.8 4.14.10: KDE PIM icons
 kde-base/kdepim-kresources 4.4.2015.06 4.14.3 4.14.8 4.14.10: KDE PIM groupware plugin collection
