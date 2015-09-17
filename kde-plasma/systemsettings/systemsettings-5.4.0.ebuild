@@ -8,7 +8,7 @@ KDE_HANDBOOK="true"
 inherit kde5
 
 DESCRIPTION="System settings utility"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="gtk"
 
 DEPEND="

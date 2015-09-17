@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="PolKit agent module for KDE"
 HOMEPAGE="http://www.kde.org"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="

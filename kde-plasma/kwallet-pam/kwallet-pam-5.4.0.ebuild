@@ -10,7 +10,7 @@ inherit kde5
 DESCRIPTION="KWallet PAM module to not enter password again"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="

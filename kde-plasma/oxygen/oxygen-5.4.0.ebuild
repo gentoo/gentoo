@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="KDE window manager theme"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/oxygen"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="

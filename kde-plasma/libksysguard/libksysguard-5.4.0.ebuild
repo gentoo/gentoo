@@ -10,7 +10,7 @@ inherit kde5
 
 DESCRIPTION="Task management and system monitoring library"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+processui X"
 
 COMMON_DEPEND="

@@ -8,7 +8,7 @@ inherit kde5 multibuild
 
 DESCRIPTION="Breeze visual style for the Plasma desktop"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/breeze"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="qt4"
 
 DEPEND="

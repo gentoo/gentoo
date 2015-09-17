@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="The KDE Help Center"
 HOMEPAGE+=" https://userbase.kde.org/KHelpCenter"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
