@@ -2016,7 +2016,7 @@ app-office/taskcoach 1.3.18 1.3.27 1.3.29 1.3.32 1.3.32-r1 1.3.40: Simple person
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
 app-office/texmacs 1.0.7.21 1.99.1 1.99.2 1.99.2-r1: Wysiwyg text processor with high-quality maths
 app-office/texmaker 4.3 4.4.1 4.4.1-r1: A nice LaTeX-IDE
-app-office/texstudio 2.8.8 2.9.4 2.10.0: Free cross-platform LaTeX editor (fork from texmakerX)
+app-office/texstudio 2.8.8 2.9.4 2.10.2: Free cross-platform LaTeX editor (fork from texmakerX)
 app-office/unoconv 0.6 0.6.20131229 0.7 99999999: Convert between document formats supported by Libreoffice
 app-office/upwork 4.0.53.0 4.0.70.0: Project collaboration and tracking software for upwork.com
 app-office/wps-office 9.1.0.4961_alpha18_p1 9.1.0.4975_alpha19_p1: WPS Office is an office productivity suite
