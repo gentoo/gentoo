@@ -10,7 +10,7 @@ DESCRIPTION="Provides integration plugins for various KDE frameworks for Wayland
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/kwayland-integration"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="

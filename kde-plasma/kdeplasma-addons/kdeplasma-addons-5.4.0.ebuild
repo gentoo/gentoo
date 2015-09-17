@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Extra Plasma applets and engines"
 LICENSE="GPL-2 LGPL-2"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="ibus scim"
 
 DEPEND="

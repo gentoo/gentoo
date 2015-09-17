@@ -10,7 +10,7 @@ inherit kde5
 DESCRIPTION="KDE systemsettings kcm to set GTK application look&feel"
 HOMEPAGE="https://projects.kde.org/kde-gtk-config"
 LICENSE="GPL-3"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	$(add_frameworks_dep karchive)

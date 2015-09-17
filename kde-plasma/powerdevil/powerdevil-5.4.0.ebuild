@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Power management for KDE Plasma Shell"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/powerdevil"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="systemd"
 
 DEPEND="
