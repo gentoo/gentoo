@@ -1,13 +1,9 @@
 <!ELEMENT herds ( (herd)* )>
   <!-- One tag for each herd -->
-  <!ELEMENT herd (name, email? , description?, (maintainersof|maintainingproject|maintainer*))>
+  <!ELEMENT herd (name, email? , description?, (maintainersof|maintainer*))>
 
   <!-- One tag for each maintainer of a herd, multiple allowed-->
   <!ELEMENT maintainer ( email, (role| name)* )>
-
-  <!-- Projects that whose members all maintain the herd, the format is the
-       url of the project page starting from the web root-->
-  <!ELEMENT maintainingproject (#PCDATA)>
 
   <!-- Get the maintainers of another herd and make them maintainers of this
        one-->
