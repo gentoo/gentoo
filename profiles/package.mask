@@ -171,12 +171,6 @@ kde-misc/nepomukshell
 kde-misc/pgame
 media-video/bangarang
 
-# Johannes Huber <johu@gentoo.org> (10 Aug 2015)
-# Masked for removal in 30 days. Not needed anymore for
-# KDE Old PIM 4.4.2015.06.
-kde-base/akonadi
-kde-base/kdepim-strigi-analyzer
-
 # Sebastian Pipping <sping@gentoo.org> (8 Aug 2015)
 # Upcoming, too young to go into testing unmasked
 dev-libs/iniparser:4
