@@ -1,0 +1,14 @@
+--- a/src/ip/Intercept.cc       2015-08-01 09:08:17.000000000 +0300
++++ b/src/ip/Intercept.cc       2015-09-12 10:03:37.000000000 +0300
+@@ -88,7 +88,10 @@
+ /* <climits> must be before including netfilter_ipv4.h */
+ #include <climits>
+ #include <linux/if.h>
+-#include <linux/netfilter_ipv4.h>
++//#include <linux/netfilter_ipv4.h>
++#if !defined(SO_ORIGINAL_DST)
++#define SO_ORIGINAL_DST 80
++#endif
+ #if HAVE_LINUX_NETFILTER_IPV6_IP6_TABLES_H
+ /* 2013-07-01: Pablo the Netfilter maintainer is rejecting patches
+  * which will enable C++ compilers to build the Netfilter public headers.
