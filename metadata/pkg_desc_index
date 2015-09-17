@@ -2952,8 +2952,6 @@ dev-db/tokyocabinet 1.4.48: A library of routines for managing a database
 dev-db/tora 3.0.0_pre20140929-r1 9999: TOra - Toolkit For Oracle
 dev-db/unixODBC 2.3.1 2.3.1-r1 2.3.2-r1 2.3.2-r2: A complete ODBC driver manager
 dev-db/vbisam 2.0: replacement for IBM's C-ISAM
-dev-db/virtuoso-odbc 6.1.6 6.1.8: ODBC driver for OpenLink Virtuoso Open-Source Edition
-dev-db/virtuoso-server 6.1.6 6.1.8: Server binaries for Virtuoso, high-performance object-relational SQL database
 dev-db/vsqlite++ 0.3.13-r1: VSQLite++ - A welldesigned and portable SQLite3 Wrapper for C++
 dev-db/wxsqlite3 3.0.6.1-r1: C++ wrapper around the public domain SQLite 3.x database
 dev-db/xbase 3.1.2: xbase (i.e. dBase, FoxPro, etc.) compatible C++ class library
@@ -4860,7 +4858,6 @@ dev-libs/sblim-sfcc 2.2.5: Small Footprint CIM Client Library
 dev-libs/sdformat 2.3.2 3.1.1: Simulation Description Format (SDF) parser
 dev-libs/serd 0.18.2 0.20.0: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 1.97.9: Library to drive serial/parallel/usb displays with built-in controllers
-dev-libs/shared-desktop-ontologies 0.11.0: Shared OSCAF desktop ontologies
 dev-libs/shhopt 1.1.7-r2: library for parsing command line options
 dev-libs/skalibs 2.3.2.0: development files used for building software at skarnet.org: essentially general-purpose libraries
 dev-libs/skyutils 2.8-r2: Library of assorted C utility functions
@@ -4869,7 +4866,6 @@ dev-libs/sni-qt 0.2.6-r1: A Qt plugin which turns all QSystemTrayIcon into Statu
 dev-libs/snowball-stemmer 0.20091122 0.20140325: This contains all you need to include the snowball stemming algorithms into a C project of your own
 dev-libs/socketstream 0.7.0-r1: C++ Streaming sockets library
 dev-libs/softhsm 1.3.5 1.3.6: A software PKCS#11 implementation
-dev-libs/soprano 2.9.4: Library that provides a nice Qt interface to RDF storage solution
 dev-libs/sord 0.12.0 0.12.2: Library for storing RDF data in memory
 dev-libs/starpu 1.1.2 1.1.4: Unified runtime system for heterogeneous multicore architectures
 dev-libs/stfl 0.22-r2 0.23 0.24: A library which implements a curses-based widget set for text terminals
@@ -8871,6 +8867,7 @@ dev-util/bustle 0.4.2-r1 0.4.3 0.4.7-r1 0.5.1: Draw sequence diagrams of D-Bus t
 dev-util/byacc 20140101 20141128 20150711: the best variant of the Yacc parser generator
 dev-util/catalyst 2.0.16 2.0.17 2.0.18 2.0.18-r1 2.0.9999 2.9999 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
+dev-util/catkin 0.6.14 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/ccache 2.4-r9 3.1.9-r4 3.1.10-r1 3.2.1-r1 3.2.2 3.2.3: fast compiler cache
 dev-util/cccc 3.1.4: A code counter for C and C++
 dev-util/ccglue 0.3.1 0.6.0: Produce cross-reference files from cscope and ctags for use with app-vim/cctree
@@ -9089,7 +9086,6 @@ dev-util/pkgconf 0.9.3-r1 0.9.6 0.9.8 0.9.11 9999: pkg-config compatible replace
 dev-util/pkgconfig 0.28-r2 0.28-r3 9999: Package config system that manages compile/link flags
 dev-util/pkgconfig-openbsd 20130507-r1: A perl based version of pkg-config from OpenBSD
 dev-util/plan9port 20130320 20140304 20140306: Port of many Plan 9 programs and libraries
-dev-util/plasmate 1.0: IDE for writing KDE Plasma/KWin components (themes, Plasmoids, runners, data engines)
 dev-util/pmd 4.2.5: A Java source code analyzer
 dev-util/pmk 0.10.4: Aims to be an alternative to GNU autoconf
 dev-util/premake 3.7 4.3-r1: A makefile generation tool
@@ -10596,7 +10592,6 @@ kde-apps/lokalize 4.14.3: KDE4 translation tool
 kde-apps/lskat 4.14.3: Skat game for KDE
 kde-apps/marble 4.14.3: Generic geographical map widget
 kde-apps/mplayerthumbs 4.14.3 15.08.0: A Thumbnail Generator for Video Files on KDE filemanagers
-kde-apps/nepomuk 4.14.3: Nepomuk KDE4 client
 kde-apps/nsplugins 4.14.3 15.08.0: Netscape plugins support for Konqueror
 kde-apps/okteta 4.14.3: KDE hexeditor
 kde-apps/okular 4.14.3: Okular is a universal document viewer based on KPDF for KDE 4
@@ -10692,8 +10687,6 @@ kde-base/liboxygenstyle 4.11.14 4.11.19 4.11.22: Library to support the Oxygen s
 kde-base/libplasmaclock 4.11.14 4.11.19 4.11.22: Libraries for KDE Plasma's clocks
 kde-base/libplasmagenericshell 4.11.14 4.11.19 4.11.22: Libraries for the KDE Plasma shell
 kde-base/libtaskmanager 4.11.14 4.11.19 4.11.22: A library that provides basic taskmanager functionality
-kde-base/nepomuk-core 4.14.3: Nepomuk core libraries
-kde-base/nepomuk-widgets 4.14.3: Widget library for nepomuk
 kde-base/perlkde 4.14.3: KDE Perl bindings
 kde-base/perlqt 4.14.3: Qt Perl bindings
 kde-base/plasma-workspace 4.11.14 4.11.19 4.11.22: Plasma: KDE desktop framework
@@ -10780,8 +10773,6 @@ kde-misc/about-distro 1.1.0: KCM displaying distribution and system information
 kde-misc/adjustableclock 4.1.4: Plasmoid to show date and time in adjustable format using rich text
 kde-misc/akonadi-facebook 0_p20130209: Facebook services integration in Akonadi
 kde-misc/akonadi-git-resource 0_p20131023: Git commit integration in Akonadi
-kde-misc/akonadi-google 20131213: Google services integration in Akonadi
-kde-misc/akonadi-social-utils 0_p20120827: Akonadi library for social communities
 kde-misc/baloo-kcmadv 2014.04.27: Alternative configuration module for the Baloo search framework
 kde-misc/basket 1.81: A DropDrawers clone. Multiple information organizer
 kde-misc/bkodama 0.3.1: A friendly, yet very simple-minded Kodama (Japanese ghost) wandering on your desktop
@@ -10845,7 +10836,6 @@ kde-misc/krunner-kopete-contacts 0.4: A krunner plug-in that allows you to open 
 kde-misc/krusader 2.4.0_beta3-r1 2.4.0_beta3-r2: An advanced twin-panel (commander-style) file-manager for KDE with many extras
 kde-misc/kscreen 1.0.2.1 1.0.71 1.0.71_p20150824: Alternative KDE screen management
 kde-misc/kshutdown 3.2: A shutdown manager for KDE
-kde-misc/ksoprano 0.2-r1: A GUI for querying and manipulating RDF data
 kde-misc/ksplasher 2.0_beta2-r2: A KSplashX engine (KDE4) Splash Screen Creator
 kde-misc/kte-collaborative 0.2.0: Collaborative text editor via kde-telepathy
 kde-misc/ktrafficanalyzer 0.5.4.1: A network traffic visualizer
@@ -10854,12 +10844,10 @@ kde-misc/kwebkitpart 1.3.4-r1: A WebKit KPart for Konqueror
 kde-misc/magneto-kde 254: Entropy Package Manager notification applet KDE frontend
 kde-misc/milou 0.1: Dedicated search application built on top of Baloo
 kde-misc/miniplayer 2.5-r1: Multimedia player plasmoid
-kde-misc/nepomukshell 0.8.0-r1: Browse, query, and edit Nepomuk resources
 kde-misc/networkmanagement 0.9.0.12: KDE frontend for NetworkManager
 kde-misc/nightmode 0.3-r1: kwin plugin that makes the entire screen darker
 kde-misc/nvdevmon 0.1.2: A device monitor for NVIDIA cards
 kde-misc/openofficeorg-thumbnail 1.0.0-r2: KDE thumbnail-plugin that generates thumbnails for ODF files
-kde-misc/pgame 0.4: A plasmoid similar to xgame
 kde-misc/plasma-applet-daisy 0.0.4.26-r1: Simple application launcher for KDE 4's plasma desktop
 kde-misc/plasma-emergelog 0.0.2-r1: KDE4 plasmoid for monitoring emerge progress
 kde-misc/plasma-lionmail 0_p20121020: A Plasma widget displaying new and important email
@@ -12709,7 +12697,6 @@ media-video/atomicparsley-wez 0.9.6: command line program for reading, parsing a
 media-video/avidemux 2.5.6-r2 2.6.2-r1 2.6.3 2.6.4 2.6.5 2.6.5-r1 2.6.7 2.6.8 9999: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/avinfo 1.0_alpha15 1.0_alpha15_p1: Utility for displaying AVI information
 media-video/baka-mplayer 2.0.2 2.0.3: Cross-platform libmpv-based multimedia player with uncluttered design
-media-video/bangarang 2.1-r2: Media player for KDE utilizing Nepomuk for tagging
 media-video/bashnapi 1.1.5: Napiprojekt.pl subtitle downloader in bash
 media-video/bbtools 1.9: bbdmux, bbinfo, bbvinfo and bbainfo from Brent Beyeler
 media-video/bdsup2sub 4.0.0-r1: A tool to convert and tweak bitmap based subtitle streams

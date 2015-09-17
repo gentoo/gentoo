@@ -2069,9 +2069,6 @@ dev-libs/openssl:sctp - Support for Stream Control Transmission Protocol
 dev-libs/openssl:tls-heartbeat - Enable the Heartbeat Extension in TLS and DTLS
 dev-libs/pkcs11-helper:nss - Enable NSS crypto engine
 dev-libs/ppl:lpsol - Build the ppl_lpsol linear programming problem solver
-dev-libs/soprano:raptor - Enables support for media-libs/raptor RDF parser/serializer.
-dev-libs/soprano:redland - Enables support for the dev-libs/redland storage backend (really slow one).
-dev-libs/soprano:virtuoso - Enables support for dev-db/virtuoso storage backend.
 dev-libs/starpu:cuda - Enable NVIDIA CUDA toolkit support
 dev-libs/starpu:gcc-plugin - Enable GCC extension plugin (experimental)
 dev-libs/starpu:opencl - Enable OpenCL support
@@ -3269,8 +3266,6 @@ kde-base/korundum:kate - Compile bindings for KDE Advanced Text Editor
 kde-base/korundum:okular - Compile bindings for kde-base/okular
 kde-base/kwin:gles - Enable support for GLES.
 kde-base/libplasmaclock:kdepim - KDE PIM integration via kde-base/kdepimlibs
-kde-base/nepomuk-core:epub - Adds support for reading EPUB ebook metadata
-kde-base/nepomuk-core:migrator - Installs a kde-base/baloo migration tool
 kde-base/perlkde:akonadi - Compile bindings for Akonadi
 kde-base/perlkde:attica - Compile bindings for dev-libs/libattica
 kde-base/perlkde:kate - Compile bindings for KDE Advanced Text Editor
