@@ -1,3 +1,5 @@
+https://github.com/FreeRDP/FreeRDP/pull/2895
+
 Index: freerdp-1.2.1_pre20150326/channels/tsmf/client/ffmpeg/tsmf_ffmpeg.c
 ===================================================================
 --- freerdp-1.2.1_pre20150326.orig/channels/tsmf/client/ffmpeg/tsmf_ffmpeg.c
