@@ -35,10 +35,6 @@ dev-python/wsgiproxy2 test
 dev-python/urllib3 test
 
 # Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
-# net-fs/libnfs lacks alpha keyword, bug #551576
-gnome-base/gvfs nfs
-
-# Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
 # dev-lang/luajit and dev-lua/lgi and lack alpha keyword, bug #551540
 dev-libs/libpeas lua jit
 
