@@ -1,0 +1,40 @@
+Fix tests.
+Allow them to run even with CATKIN_BUILD_BINARY_PACKAGE set.
+
+Index: catkin-0.6.9/cmake/test/tests.cmake
+===================================================================
+--- catkin-0.6.9.orig/cmake/test/tests.cmake
++++ catkin-0.6.9/cmake/test/tests.cmake
+@@ -40,9 +40,6 @@ if(DEFINED CATKIN_ENABLE_TESTING AND NOT
+   return()
+ endif()
+ 
+-# do not enable ctest's on the farm, since they are automatically executed by the current rules files
+-# and since the tests have not been build rostests would hang forever
+-if(NOT CATKIN_BUILD_BINARY_PACKAGE)
+   # do not enable ctest's for dry packages, since they have a custom test target which must not be overwritten
+   if(NOT ROSBUILD_init_called)
+     message(STATUS "Call enable_testing()")
+@@ -50,9 +47,6 @@ if(NOT CATKIN_BUILD_BINARY_PACKAGE)
+   else()
+     message(STATUS "Skip enable_testing() for dry packages")
+   endif()
+-else()
+-  message(STATUS "Skip enable_testing() when building binary package")
+-endif()
+ 
+ # allow overriding CATKIN_TEST_RESULTS_DIR when explicitly passed to CMake as a command line argument
+ if(DEFINED CATKIN_TEST_RESULTS_DIR)
+Index: catkin-9999/test/utils.py
+===================================================================
+--- catkin-9999.orig/test/utils.py
++++ catkin-9999/test/utils.py
+@@ -189,6 +189,8 @@ class AbstractCatkinWorkspaceTest(unitte
+                 prefix_path = self.installdir
+             args += ["-DCMAKE_PREFIX_PATH=%s" % (prefix_path)]
+ 
++        args += ["-DCMAKE_INSTALL_LIBDIR=lib"]
++
+         if not os.path.isdir(this_builddir):
+             os.makedirs(this_builddir)
+         cmd = ["cmake", this_srcdir] + args
