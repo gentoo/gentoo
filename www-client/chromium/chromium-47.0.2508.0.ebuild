@@ -19,7 +19,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD hotwording? ( no-source-code )"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="cups gnome gnome-keyring hidpi hotwording kerberos neon pic +proprietary-codecs pulseaudio selinux +tcmalloc"
+IUSE="cups gnome gnome-keyring hidpi hotwording kerberos neon pic +proprietary-codecs pulseaudio selinux +tcmalloc widevine"
 RESTRICT="proprietary-codecs? ( bindist )"
 
 # Native Client binaries are compiled with different set of flags, bug #452066.
@@ -101,18 +101,23 @@ RDEPEND+="
 	virtual/opengl
 	virtual/ttf-fonts
 	selinux? ( sec-policy/selinux-chromium )
-	tcmalloc? ( !<x11-drivers/nvidia-drivers-331.20 )"
+	tcmalloc? ( !<x11-drivers/nvidia-drivers-331.20 )
+	widevine? ( www-plugins/chrome-binary-plugins[widevine(-)] )"
 
 # Python dependencies. The DEPEND part needs to be kept in sync
 # with python_check_deps.
 DEPEND+=" $(python_gen_any_dep '
 	dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]
+	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
+	dev-python/html5lib[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/ply[${PYTHON_USEDEP}]
 	dev-python/simplejson[${PYTHON_USEDEP}]
 ')"
 python_check_deps() {
 	has_version "dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]" && \
+		has_version "dev-python/beautifulsoup:4[${PYTHON_USEDEP}]" && \
+		has_version "dev-python/html5lib[${PYTHON_USEDEP}]" && \
 		has_version "dev-python/jinja[${PYTHON_USEDEP}]" && \
 		has_version "dev-python/ply[${PYTHON_USEDEP}]" && \
 		has_version "dev-python/simplejson[${PYTHON_USEDEP}]"
@@ -187,6 +192,7 @@ src_prepare() {
 	# fi
 
 	epatch "${FILESDIR}/${PN}-system-jinja-r7.patch"
+	epatch "${FILESDIR}/chromium-widevine-r1.patch"
 
 	epatch_user
 
@@ -220,7 +226,6 @@ src_prepare() {
 		'third_party/catapult/tracing/third_party/gl-matrix' \
 		'third_party/catapult/tracing/third_party/jszip' \
 		'third_party/catapult/tracing/third_party/tvcm' \
-		'third_party/catapult/tracing/third_party/tvcm/third_party/beautifulsoup/polymer_soup.py' \
 		'third_party/catapult/tracing/third_party/tvcm/third_party/rcssmin' \
 		'third_party/catapult/tracing/third_party/tvcm/third_party/rjsmin' \
 		'third_party/cld_2' \
@@ -367,7 +372,8 @@ src_configure() {
 		$(gyp_use hotwording enable_hotwording)
 		$(gyp_use kerberos)
 		$(gyp_use pulseaudio)
-		$(gyp_use tcmalloc use_allocator tcmalloc none)"
+		$(gyp_use tcmalloc use_allocator tcmalloc none)
+		$(gyp_use widevine enable_widevine)"
 
 	# Use explicit library dependencies instead of dlopen.
 	# This makes breakages easier to detect by revdep-rebuild.
@@ -464,7 +470,7 @@ src_configure() {
 
 		# Prevent libvpx build failures. Bug 530248, 544702, 546984.
 		if [[ ${myarch} == amd64 || ${myarch} == x86 ]]; then
-			filter-flags -mno-mmx -mno-sse2 -mno-ssse3 -mno-sse4.1 -mno-avx2
+			filter-flags -mno-mmx -mno-sse2 -mno-ssse3 -mno-sse4.1 -mno-avx -mno-avx2
 		fi
 	fi
 
@@ -543,6 +549,7 @@ src_install() {
 	fperms 4755 "${CHROMIUM_HOME}/chrome-sandbox"
 
 	doexe out/Release/chromedriver || die
+	use widevine && doexe out/Release/libwidevinecdmadapter.so
 
 	# if ! use arm; then
 	#	doexe out/Release/nacl_helper{,_bootstrap} || die
