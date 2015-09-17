@@ -9049,8 +9049,8 @@ dev-util/netbeans 8.0.2: Netbeans IDE
 dev-util/ninja 1.5.1 1.5.3 1.6.0 9999: A small build system similar to make
 dev-util/ninja-ide 2.3: Ninja-IDE Is Not Just Another IDE
 dev-util/nsis 2.46-r1: Nullsoft Scriptable Install System
-dev-util/nvidia-cuda-sdk 5.5.22 6.5.14 6.5.19 7.0.28 7.5.18: NVIDIA CUDA Software Development Kit
-dev-util/nvidia-cuda-toolkit 5.5.22 6.5.14 6.5.19 6.5.19-r1 7.0.28 7.5.18: NVIDIA CUDA Toolkit (compiler and friends)
+dev-util/nvidia-cuda-sdk 6.5.14 7.5.18: NVIDIA CUDA Software Development Kit
+dev-util/nvidia-cuda-toolkit 6.5.14 7.5.18: NVIDIA CUDA Toolkit (compiler and friends)
 dev-util/objconv 2.32_pre20131127: object code file converted (COFF, ELF, OMF, MACHO)
 dev-util/obs-service-cpanspec 20130318: Open Build Service client module - cpanspec service
 dev-util/obs-service-download_files 20130716: Open Build Service client module - download_files service
@@ -16984,7 +16984,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.2 2.3.3: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.2.4 4.3 4.3.1: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 45.0.2454.85 46.0.2490.13 46.0.2490.22 47.0.2498.0 47.0.2503.0: Open-source version of Google Chrome web browser
+www-client/chromium 45.0.2454.85 46.0.2490.13 46.0.2490.22 47.0.2503.0 47.0.2508.0: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20141005 1.0_pre20150227 1.0_pre20150519: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.4 3.0.4.1 3.0.5: Lean FLTK based web browser
