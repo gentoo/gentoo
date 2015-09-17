@@ -1,0 +1,26 @@
+diff -Naur Firebird-3.0.0.31896-Beta2_orig/builds/posix/make.defaults Firebird-3.0.0.31896-Beta2/builds/posix/make.defaults
+--- Firebird-3.0.0.31896-Beta2_orig/builds/posix/make.defaults	2015-08-03 13:39:45.859127731 -0400
++++ Firebird-3.0.0.31896-Beta2/builds/posix/make.defaults	2015-08-03 13:45:55.260709815 -0400
+@@ -154,7 +154,7 @@
+ AR=			ar @AR_OPTIONS@
+ LN=			@LN_S@
+ RANLIB=			@RANLIB@
+-BTYACC=$(ROOT)/extern/btyacc/btyacc
++BTYACC=/usr/bin/btyacc
+ CLOOP=$(GEN_ROOT)/$(TARGET)/cloop/release/bin/cloop
+ 
+ CC =	@CC@
+diff -Naur Firebird-3.0.0.31896-Beta2_orig/builds/posix/Makefile.in Firebird-3.0.0.31896-Beta2/builds/posix/Makefile.in
+--- Firebird-3.0.0.31896-Beta2_orig/builds/posix/Makefile.in	2015-08-03 13:39:45.859127731 -0400
++++ Firebird-3.0.0.31896-Beta2/builds/posix/Makefile.in	2015-08-03 14:05:26.442316118 -0400
+@@ -99,9 +99,7 @@
+ # build external software
+ #
+ 
+-extern:
+-	$(MAKE) -C $(ROOT)/extern/btyacc
+-	$(MAKE) -C $(ROOT)/extern/cloop TARGET=release WITH_FPC=0 BUILD_DIR=$(TMP_ROOT)/cloop OUT_DIR=$(GEN_ROOT)/$(TARGET)/cloop
++extern: ;
+ 
+ ifeq ($(STD_EDITLINE),false)
+ ifeq ($(EDITLINE_FLG),Y)
