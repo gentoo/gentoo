@@ -2287,7 +2287,7 @@ app-text/info2html 2.0: Converts GNU .info files to HTML
 app-text/iso-codes 3.57 3.59 3.61: ISO language, territory, currency, script codes and their translations
 app-text/itex2mml 1.5.2: A LaTeX into XHTML/MathML converter
 app-text/jabref 2.10-r2 2.10-r3: Java GUI for managing BibTeX and other bibliographies
-app-text/jabref-bin 2.10 2.11_beta_rc2 2.11_beta_rc3 2.11_beta_rc3-r1: Java GUI for managing BibTeX and other bibliographies
+app-text/jabref-bin 2.10 2.11_beta_rc2 2.11_beta_rc3 2.11_beta_rc3-r1 2.11_beta_rc4: Java GUI for managing BibTeX and other bibliographies
 app-text/jadetex 3.13-r6: TeX macros used by Jade TeX output
 app-text/jist 1.5.1: A ruby gem to publish a gist
 app-text/jmupdf 0.3.0 0.4.1 9999: Java library for rendering PDF, XPS and CBZ (Comic Book) documents
@@ -6830,7 +6830,7 @@ dev-python/ctypesgen 0_p72 0_p72-r1: Python wrapper generator for ctypes
 dev-python/curtsies 0.1.18 0.2.3: Curses-like terminal wrapper, with colored strings
 dev-python/cvxopt 1.1.6-r2: Python package for convex optimization
 dev-python/cx_Freeze 4.3.1-r2 4.3.2 4.3.3: Create standalone executables from Python scripts
-dev-python/cython 0.22 0.22.1 0.23 0.23.1 0.23.2: A Python to C compiler
+dev-python/cython 0.22 0.23.2: A Python to C compiler
 dev-python/cytoolz 0.7.1 0.7.2-r2 0.7.3: Cython implementation of Toolz: High performance functional utilities
 dev-python/d2to1 0.2.11 0.2.12: Allows using distutils2-like setup.cfg files for a package metadata
 dev-python/dap 2.2.6.7-r1: Data Access Protocol client and server
@@ -7069,7 +7069,7 @@ dev-python/ipcalc 1.0.0 1.1.1 1.1.2 1.1.3: IP subnet calculator
 dev-python/ipdb 0.8 0.8.1: IPython-enabled pdb
 dev-python/ipdbplugin 1.4 9999: Nose plugin to use iPdb instead of Pdb when tests fail
 dev-python/ipy 0.82a 0.83: Class and tools for handling of IPv4 and IPv6 addresses and networks
-dev-python/ipython 2.2.0-r1 3.2.0 3.2.1: Advanced interactive shell for Python
+dev-python/ipython 2.2.0-r1 3.2.0 3.2.1 3.2.1-r1: Advanced interactive shell for Python
 dev-python/irc 11.0.1: IRC client framework written in Python
 dev-python/irman-python 0.1-r1: A minimal set of Python bindings for libirman
 dev-python/iso8601 0.1.10: Simple module to parse ISO 8601 dates
@@ -9051,7 +9051,7 @@ dev-util/ninja 1.5.1 1.5.3 1.6.0 9999: A small build system similar to make
 dev-util/ninja-ide 2.3: Ninja-IDE Is Not Just Another IDE
 dev-util/nsis 2.46-r1: Nullsoft Scriptable Install System
 dev-util/nvidia-cuda-sdk 6.5.14 7.5.18: NVIDIA CUDA Software Development Kit
-dev-util/nvidia-cuda-toolkit 6.5.14 7.5.18-r1: NVIDIA CUDA Toolkit (compiler and friends)
+dev-util/nvidia-cuda-toolkit 6.5.14 6.5.19-r1 7.5.18-r1: NVIDIA CUDA Toolkit (compiler and friends)
 dev-util/objconv 2.32_pre20131127: object code file converted (COFF, ELF, OMF, MACHO)
 dev-util/obs-service-cpanspec 20130318: Open Build Service client module - cpanspec service
 dev-util/obs-service-download_files 20130716: Open Build Service client module - download_files service
