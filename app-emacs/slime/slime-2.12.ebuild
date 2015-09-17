@@ -54,10 +54,14 @@ src_prepare() {
 	SLIME_CHANGELOG_DATE=$(awk '/^[-0-9]+ / { print $1; exit; }' ChangeLog)
 	[ -n "${SLIME_CHANGELOG_DATE}" ] || die "cannot determine ChangeLog date"
 
-	# SLIME uses the changelog date to make sure that the emacs side and the CL side
-	# are in sync. We hardcode it instead of letting slime determine it at runtime
-	# because ChangeLog doesn't get installed to $EMACSDIR
-	epatch "${FILESDIR}"/2.11/gentoo-changelog-date.patch
+	if [[ "${PV}" == "2.11" ]] || [[ "${PV}" == "2.12" ]]; then
+		# SLIME uses the changelog date to make sure that the emacs side and the CL side
+		# are in sync. We hardcode it instead of letting slime determine it at runtime
+		# because ChangeLog doesn't get installed to $EMACSDIR
+		epatch "${FILESDIR}"/2.11/gentoo-changelog-date.patch
+	else
+		epatch "${FILESDIR}"/2.15/gentoo-changelog-date.patch
+	fi
 
 	# When starting slime in emacs, slime looks for ${S}/swank/backend.lisp as
 	# /usr/share/common-lisp/source/swank/swank-backend.lisp
