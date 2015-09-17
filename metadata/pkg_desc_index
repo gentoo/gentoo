@@ -13713,7 +13713,7 @@ net-mail/cmd5checkpw 0.30-r1: A checkpassword compatible authentication program 
 net-mail/courier-imap 4.15-r1 4.16.0 4.16.2: An IMAP daemon designed specifically for maildirs
 net-mail/courierpassd 1.1.2: Courierpassd is a utility for changing a user's password from across a network
 net-mail/cyrus-imap-admin 2.4.17-r1 2.4.18: Utilities and Perl modules to administer a Cyrus IMAP server
-net-mail/cyrus-imapd 2.4.16 2.4.17 2.4.17-r1 2.4.18 2.5.4 2.5.5: The Cyrus IMAP Server
+net-mail/cyrus-imapd 2.4.16 2.4.17 2.4.17-r1 2.4.18 2.5.4 2.5.5 2.5.6: The Cyrus IMAP Server
 net-mail/dbmail 3.2.2 3.2.3: DBMail is an open-source project that enables storage of mail messages in a relational database
 net-mail/dot-forward 0.71-r2 0.71-r3: reads sendmail's .forward files under qmail
 net-mail/dovecot 2.2.9 2.2.16-r1 2.2.18: An IMAP and POP3 server written with security primarily in mind
