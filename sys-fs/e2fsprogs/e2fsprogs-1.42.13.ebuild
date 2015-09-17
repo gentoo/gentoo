@@ -38,6 +38,7 @@ src_prepare() {
 		epatch "${WORKDIR}"/${PN}-1.42.9-mint-r1.patch
 	fi
 	epatch "${FILESDIR}"/${PN}-1.42.13-fix-build-cflags.patch #516854
+	epatch "${FILESDIR}"/${PN}-1.42.13-subst-perms.patch #550986
 
 	# blargh ... trick e2fsprogs into using e2fsprogs-libs
 	rm -rf doc
