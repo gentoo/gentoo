@@ -6130,27 +6130,27 @@ dev-perl/Test-Memory-Cycle 1.40.0-r1: Check for memory leaks and circular memory
 dev-perl/Test-Mock-LWP-Dispatch 0.60.0: Mocks LWP::UserAgent and dispatches your requests/responses
 dev-perl/Test-MockModule 0.50.0-r1: Override subroutines in a module for unit testing
 dev-perl/Test-MockObject 1.201.203.10-r1: Perl extension for emulating troublesome interfaces
-dev-perl/Test-MockTime 0.120.0-r1 0.130.0: Replaces actual time with simulated time
+dev-perl/Test-MockTime 0.130.0 0.150.0: Replaces actual time with simulated time
 dev-perl/Test-Most 0.310.0-r1 0.340.0: Most commonly needed test functions and features
 dev-perl/Test-NoWarnings 1.40.0-r2: Make sure you didn't emit any warnings while testing
 dev-perl/Test-Number-Delta 1.30.0-r1 1.40.0: Compare the difference between numbers against a given tolerance
 dev-perl/Test-Object 0.70.0-r1: Thoroughly testing objects via registered handlers
 dev-perl/Test-Output 1.10.0-r1 1.30.0: Utilities to test STDOUT and STDERR messages
 dev-perl/Test-Perl-Critic 1.20.0-r1: Use Perl::Critic in test programs
-dev-perl/Test-Pod 1.480.0: check for POD errors in files
+dev-perl/Test-Pod 1.480.0 1.510.0: Check for POD errors in files
 dev-perl/Test-Pod-Coverage 1.80.0-r1: Check for pod coverage in your distribution
 dev-perl/Test-Portability-Files 0.60.0-r1: Check file names portability
 dev-perl/Test-Requires 0.60.0-r1 0.80.0: Checks to see if the module can be loaded
 dev-perl/Test-Script 1.70.0-r1: Cross-platform basic tests for scripts
-dev-perl/Test-SharedFork 0.210.0-r1 0.290.0: fork test
-dev-perl/Test-Spec 0.470.0: Write tests in a declarative specification style
+dev-perl/Test-SharedFork 0.210.0-r1 0.290.0 0.330.0: fork test
+dev-perl/Test-Spec 0.470.0 0.510.0: Write tests in a declarative specification style
 dev-perl/Test-SubCalls 1.90.0-r1: Track the number of times subs are called
 dev-perl/Test-TCP 1.210.0 2.60.0: Testing TCP program
 dev-perl/Test-Taint 1.60.0-r1: Tools to test taintedness
 dev-perl/Test-Tester 0.108.0-r1 0.109.0-r1 0.114.0: Ease testing test modules built with Test::Builder
 dev-perl/Test-Trap 0.2.2-r1 0.3.0 0.3.2: Trap exit codes, exceptions, output, etc
 dev-perl/Test-Unit-Lite 0.120.200-r1: Unit testing without external dependencies
-dev-perl/Test-UseAllModules 0.140.0-r1: do use_ok() for all the MANIFESTed modules
+dev-perl/Test-UseAllModules 0.140.0-r1 0.170.0: do use_ok() for all the MANIFESTed modules
 dev-perl/Test-WWW-Mechanize 1.440.0-r1: Testing-specific WWW::Mechanize subclass
 dev-perl/Test-Warn 0.240.0-r1 0.300.0: Perl extension to test methods for warnings
 dev-perl/Test-Warnings 0.16.0: Test for warnings and the lack of them
