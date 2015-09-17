@@ -136,7 +136,7 @@ case ${GTK_SHARP_MODULE} in
 		add_depend "=dev-dotnet/gtk-sharp-${GTK_SHARP_REQUIRED_VERSION}*"
 		add_depend "=dev-dotnet/gnome-sharp-2.24*"
 		add_depend "gnome-base/gnome-desktop:2"
-		add_bdepend "=dev-dotnet/gtk-sharp-gapi-${GTK_SHARP_REQUIRED_VERSION}*"
+		add_bdepend "|| ( >=dev-dotnet/gtk-sharp-2.12.21 =dev-dotnet/gtk-sharp-gapi-${GTK_SHARP_REQUIRED_VERSION}* )"
 		;;
 	*)
 		eerror "Huh? Sonny boy, looks like your GTK_SHARP_MODULE is not on the approved list. BAILING!"
