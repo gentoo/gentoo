@@ -16024,8 +16024,8 @@ sys-block/partimage 0.6.8 0.6.9: Console-based application to efficiently save r
 sys-block/partitionmanager 1.1.1 1.2.1: KDE utility for management of partitions and file systems
 sys-block/qla-fc-firmware 20071207-r1 20080423 20101015: QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards
 sys-block/raid-check 20140719-r1: Script to do "scrubbing" on software RAID systems
-sys-block/rts5229 1.07-r5: PCIE RTS5229 card reader driver for Linux
-sys-block/rts_pstor 1.10-r4: PCIE RTS5209 card reader driver for Linux
+sys-block/rts5229 1.07-r6: PCIE RTS5229 card reader driver for Linux
+sys-block/rts_pstor 1.10-r5: PCIE RTS5209 card reader driver for Linux
 sys-block/rtsadmin 9999: RTSAdmin Community Edition for target_core_mod/ConfigFS
 sys-block/sas2ircu 19: LSI MPT-SAS2 controller management tool
 sys-block/sas3ircu 5: LSI MPT-SAS3 controller management tool
