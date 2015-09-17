@@ -16096,6 +16096,7 @@ sys-cluster/dlm 2.03.09 2.03.11: General-purpose Distributed Lock Manager
 sys-cluster/dlm-lib 2.03.09 2.03.11: General-purpose Distributed Lock Manager
 sys-cluster/drbd 8.0.16 8.3.7 8.3.8.1 8.3.8.1-r1 8.3.10 8.3.11-r1 8.3.12 8.3.13 8.3.15 8.4.0 8.4.2 8.4.3: mirror/replicate block-devices across a network-connection
 sys-cluster/drbd-kernel 8.0.16 8.3.6 8.3.8.1: mirror/replicate block-devices across a network-connection
+sys-cluster/drbd-utils 8.9.3: mirror/replicate block-devices across a network-connection
 sys-cluster/fake 1.1.10: Fake has been designed to switch in backup servers on a LAN
 sys-cluster/feedbackd-agent 0.4: system for dynamic feedback of server loads in a Linux Virtual Server (LVS)-based cluster
 sys-cluster/feedbackd-master 0.4: Linux Virtual Server (LVS) addon for dynamic server health feedback
