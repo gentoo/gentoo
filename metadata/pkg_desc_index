@@ -4793,7 +4793,7 @@ dev-libs/mdsplib 0.11: METAR Decoder Software Package Library
 dev-libs/mini-xml 2.7-r1 2.8: Small XML parsing library to read XML and XML-like data files
 dev-libs/mm 1.4.2-r1: Shared Memory Abstraction Library
 dev-libs/mongo-c-driver 0.7.1-r1 0.8.1-r1 0.98.2 1.1.2-r1 1.1.10: A high-performance MongoDB driver for C
-dev-libs/mongo-cxx-driver 0.0.2.6.7-r1 1.0.0: C++ Driver for MongoDB
+dev-libs/mongo-cxx-driver 0.0.2.6.7-r1 1.0.0 1.0.5: C++ Driver for MongoDB
 dev-libs/mozldap 6.0.6-r2 6.0.7: Mozilla LDAP C SDK
 dev-libs/mpc 1.0.1 1.0.2 1.0.2-r1 1.0.3: A library for multiprecision complex arithmetic with exact rounding
 dev-libs/mpfr 2.4.2_p3-r1 3.0.0_p3 3.0.1 3.0.1_p4 3.0.1_p4-r1 3.1.0 3.1.0_p7 3.1.1 3.1.1_p2 3.1.2-r1 3.1.2_p5 3.1.2_p10 3.1.3 3.1.3_p4: library for multiple-precision floating-point computations with exact rounding
