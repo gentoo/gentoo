@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Seahorse"
 LICENSE="GPL-2+ LGPL-2.1+ FDL-1.1"
 SLOT="0"
 IUSE="+introspection libnotify"
-KEYWORDS="amd64 ~ppc ~ppc64 x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~ppc ~ppc64 x86 ~x86-fbsd"
 
 # Pull in libnotify-0.7 because it's controlled via an automagic ifdef
 COMMON_DEPEND="
