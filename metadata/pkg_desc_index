@@ -1219,7 +1219,7 @@ app-emacs/scss-mode 20130215 20150107: Major mode for editing SCSS files in Emac
 app-emacs/semi 1.14.6-r2: A library to provide MIME feature for GNU Emacs
 app-emacs/session 2.3a: When you start Emacs, Session restores various variables from your last session
 app-emacs/setnu 1.06: Display line numbers in Emacs buffers
-app-emacs/slime 2.0_p20080731 2.0_p20080731-r1 2.0_p20101103 2.11 2.12: SLIME, the Superior Lisp Interaction Mode (Extended)
+app-emacs/slime 2.0_p20080731 2.0_p20080731-r1 2.0_p20101103 2.11 2.12 2.15: SLIME, the Superior Lisp Interaction Mode (Extended)
 app-emacs/sml-mode 5.0 6.1-r1 6.4: Emacs major mode for editing Standard ML
 app-emacs/sokoban 1.4: Implementation of Sokoban for Emacs
 app-emacs/ssh 20120709: Directory tracking and special character handling support for SSH sessions in Emacs shell buffers
