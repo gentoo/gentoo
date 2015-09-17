@@ -13,7 +13,7 @@ http://git.overlays.gentoo.org/gitweb/?p=proj/repositories-xml-format.git
       Mounir Lamouri <volkmar@gentoo.org>
       Tiziano Müller <dev-zero@gentoo.org>
 
-    Copyright 1999-2009 Gentoo Foundation
+    Copyright 1999-2015 Gentoo Foundation
     Distributed under the terms of the GNU General Public License v2 or later
 -->
 <!ELEMENT repositories (repo)*>
@@ -21,7 +21,7 @@ http://git.overlays.gentoo.org/gitweb/?p=proj/repositories-xml-format.git
   xmlns CDATA #FIXED ''
   version CDATA #FIXED '1.0'>
 
-<!ELEMENT repo (name,(description)+,(longdescription)*,(homepage)?,owner,(source)+,(feed)*)>
+<!ELEMENT repo (name,(description)+,(longdescription)*,(homepage)?,(owner)+,(source)+,(feed)*)>
 <!ATTLIST repo
   xmlns CDATA #FIXED ''
   priority CDATA #IMPLIED
