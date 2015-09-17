@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/flori/tins"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE=""
 
 ruby_add_bdepend "test? ( >=dev-ruby/test-unit-2.5.1-r1 )"
