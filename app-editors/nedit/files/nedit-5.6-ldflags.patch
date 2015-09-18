@@ -1,0 +1,17 @@
+--- source/Makefile.common	2004-03-21 15:25:56.000000000 +0100
++++ source/Makefile.common.new	2009-10-24 10:47:03.667835157 +0200
+@@ -21,12 +21,12 @@
+ # we only want natural rebuilds to regenerate the link date.
+ nedit: $(OBJS) ../util/libNUtil.a $(XMLLIB) $(XLTLIB)
+ 	$(CC) $(CFLAGS) -c linkdate.c
+-	$(CC) $(CFLAGS) $(OBJS) linkdate.o $(XMLLIB) \
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) linkdate.o $(XMLLIB) \
+ 	 $(XLTLIB) ../util/libNUtil.a $(LIBS) -o $@
+ 
+ # Note LIBS isn't quite right here; it links unnecessarily against Motif
+ nc: nc.o server_common.o ../util/libNUtil.a
+-	$(CC) $(CFLAGS) nc.o server_common.o ../util/libNUtil.a $(LIBS) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) nc.o server_common.o ../util/libNUtil.a $(LIBS) -o $@
+ 
+ help.o: help.c
+ 	$(CC) $(CFLAGS) $(BIGGER_STRINGS) -c help.c -o $@
