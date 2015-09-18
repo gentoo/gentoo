@@ -39,7 +39,7 @@ src_unpack() {
 
 	cd "${S}"/lib
 	rm *.jar
-	cp="${cp}:$(java-pkg_getjars jdom-1.0)"
+	cp="${cp}:$(java-pkg_getjars jdom)"
 	cp="${cp}:$(java-pkg_getjars xerces-2)"
 	cp="${cp}:$(java-pkg_getjars xml-commons)"
 	cp="${cp}:$(java-pkg_getjars sax)"
