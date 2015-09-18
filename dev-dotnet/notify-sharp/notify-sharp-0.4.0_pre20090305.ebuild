@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,8 +18,8 @@ IUSE="doc"
 
 RDEPEND=">=dev-lang/mono-1.1.13
 	>=dev-dotnet/gtk-sharp-2.10.1
-	>=dev-dotnet/dbus-sharp-0.6
-	>=dev-dotnet/dbus-sharp-glib-0.4
+	>=dev-dotnet/dbus-sharp-0.6:1.0
+	>=dev-dotnet/dbus-sharp-glib-0.4:1.0
 	>=x11-libs/libnotify-0.4.5"
 DEPEND="${RDEPEND}"
 
