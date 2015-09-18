@@ -33,7 +33,7 @@ src_configure() {
 	fi
 
 	econf
-	emake CFLAGS="${CFLAGS} $("$(tc-getPKG_CONFIG)" --libs ncurses)"
+	emake LIBS="$("$(tc-getPKG_CONFIG)" --libs ncurses)"
 }
 
 src_install() {
