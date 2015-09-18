@@ -15074,7 +15074,7 @@ sci-libs/freesteam 2.0 9999: Open source implementation of IF97 steam tables
 sci-libs/galib 2.4.6 2.4.7: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
 sci-libs/gaul-devel 0.1849-r1 0.1849-r2: Genetic Algorithm Utility Library
-sci-libs/gdal 1.11.1-r3 1.11.2 2.0.0: Translator library for raster geospatial data formats (includes OGR support)
+sci-libs/gdal 1.11.1-r3 1.11.2 2.0.0 2.0.0-r1: Translator library for raster geospatial data formats (includes OGR support)
 sci-libs/geos 3.4.1-r1 3.4.2-r1: Geometry engine library for Geographic Information Systems
 sci-libs/gerris 20120731 20130531 20131206: Gerris Flow Solver
 sci-libs/getdata 0.8.5: Reference implementation of the Dirfile, format for time-ordered binary data
