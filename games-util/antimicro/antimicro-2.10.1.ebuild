@@ -27,5 +27,5 @@ src_configure() {
 		-DUSE_SDL_2=ON
 	)
 
-	cmake-utils_src_configure
+	QT_SELECT=4 cmake-utils_src_configure
 }
