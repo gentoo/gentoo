@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-inherit autotools eutils mono
+EAPI=5
+inherit autotools eutils mono-env
 
 MY_P=${PN}-${PV#*_pre}
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://gentoo/${MY_P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc"
 
 RDEPEND=">=dev-lang/mono-1.1.13
@@ -28,6 +28,7 @@ S=${WORKDIR}/${MY_P}
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-0.4.0_pre20080912-control-docs.patch" \
 		"${FILESDIR}/${P}-dbus-sharp.patch"
+	sed -i -e 's/gmcs/mcs/' configure.ac || die
 	eautoreconf
 }
 

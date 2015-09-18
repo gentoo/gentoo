@@ -20,3 +20,7 @@ slotmove =dev-ruby/packetfu-1.1.10* 0 1.1.10
 slotmove =dev-ruby/packetfu-1.1.11* 0 1.1.11
 move dev-perl/text-autoformat dev-perl/Text-Autoformat
 move dev-perl/text-reform dev-perl/Text-Reform
+slotmove =dev-dotnet/dbus-sharp-0.7* 0 1.0
+slotmove =dev-dotnet/dbus-sharp-0.8* 0 2.0
+slotmove =dev-dotnet/dbus-sharp-glib-0.5* 0 1.0
+slotmove =dev-dotnet/dbus-sharp-glib-0.6* 0 2.0

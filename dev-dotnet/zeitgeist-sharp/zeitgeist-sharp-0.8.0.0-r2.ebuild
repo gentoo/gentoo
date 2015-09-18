@@ -23,8 +23,8 @@ LICENSE="GPL-3"
 IUSE="doc"
 
 RDEPEND="
-	dev-dotnet/dbus-sharp
-	dev-dotnet/dbus-sharp-glib
+	dev-dotnet/dbus-sharp:1.0
+	dev-dotnet/dbus-sharp-glib:1.0
 	dev-dotnet/glib-sharp
 	dev-lang/mono
 	gnome-extra/zeitgeist"
