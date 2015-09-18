@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/mono/dbus-sharp"
 SRC_URI="mirror://github/mono/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="0"
+SLOT="1.0"
 KEYWORDS="amd64 ppc x86"
 IUSE=""
 
