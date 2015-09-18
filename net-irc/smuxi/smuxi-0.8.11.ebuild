@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,8 +19,8 @@ RDEPEND="
 	>=dev-dotnet/smartirc4net-0.4.5.1
 	>=dev-dotnet/nini-1.1.0-r2
 	>=dev-dotnet/log4net-1.2.10-r2
-	dbus? (	dev-dotnet/dbus-sharp
-		dev-dotnet/dbus-sharp-glib
+	dbus? (	dev-dotnet/dbus-sharp:1.0
+		dev-dotnet/dbus-sharp-glib:1.0
 		dev-dotnet/ndesk-dbus
 		dev-dotnet/ndesk-dbus-glib )
 	gtk? ( >=dev-dotnet/gtk-sharp-2.12
