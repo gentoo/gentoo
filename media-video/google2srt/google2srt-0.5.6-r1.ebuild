@@ -43,7 +43,7 @@ java_prepare() {
 	# update library packages
 	cd lib
 	rm -f jdom.jar ../${MY_PN}.jar || die
-	java-pkg_jar-from jdom-1.0
+	java-pkg_jar-from jdom
 	java-pkg_ensure-no-bundled-jars
 }
 
