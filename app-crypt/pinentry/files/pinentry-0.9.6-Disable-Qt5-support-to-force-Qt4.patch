@@ -1,0 +1,27 @@
+From 41aa99a1886fa07aad5716fb4905843ecfcbffb2 Mon Sep 17 00:00:00 2001
+From: Kristian Fiskerstrand <kristian.fiskerstrand@sumptuouscapital.com>
+Date: Fri, 18 Sep 2015 17:22:11 +0200
+Subject: [PATCH] Disable Qt5 support to force Qt4 for now
+
+Automagic applies in detecting Qt5 which makes dependency specification
+difficult. Disabling the auto-detection for Qt5 and keeping Qt4 for now
+---
+ m4/qt.m4 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/m4/qt.m4 b/m4/qt.m4
+index 0a7ea99..e7abfcc 100644
+--- a/m4/qt.m4
++++ b/m4/qt.m4
+@@ -30,7 +30,7 @@ AC_DEFUN([FIND_QT],
+ [
+   PKG_CHECK_MODULES(PINENTRY_QT,
+                     Qt5Core >= 5.0.0 Qt5Gui >= 5.0.0 Qt5Widgets >= 5.0.0,
+-                    [have_qt5_libs="yes"],
++                    [have_qt5_libs="no"],
+                     [have_qt5_libs="no"])
+ 
+   if "$PKG_CONFIG" --variable qt_config Qt5Core | grep -q "reduce_relocations"; then
+-- 
+2.4.6
+
