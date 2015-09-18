@@ -14139,7 +14139,7 @@ net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet 
 net-misc/strongswan 5.3.2 5.3.3: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
 net-misc/stunnel 5.14 5.17 5.18 5.19 5.20 5.22 5.23: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.6 1.2.6-r1 1.2.7: STUNTMAN is an open source implementation of the STUN protocol
-net-misc/suite3270 3.3.14_p11 3.3.15_p4 3.3.15_p7 3.3.15_p9 3.4_p4 3.4_p5 3.4_p6 3.4_p7: Complete 3270 access package
+net-misc/suite3270 3.3.14_p11 3.3.15_p4 3.3.15_p7 3.3.15_p9 3.4_p4 3.4_p5 3.4_p6 3.4_p7 3.4_p8: Complete 3270 access package
 net-misc/switzerland 0.1.0: Network Testing Tool
 net-misc/taptap 1.0: A program to link two /dev/net/tun to form virtual ethernet
 net-misc/taylor-uucp 1.07-r2: Taylor UUCP
