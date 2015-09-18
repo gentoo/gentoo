@@ -795,7 +795,7 @@ mysql-multilib_pkg_preinst() {
 	        if [[ -z ${REPLACING_VERSIONS} && -e "${EROOT}usr/$(get_libdir)/libmysqlclient.so" ]] ; then
 			SHOW_ABI_MESSAGE=1
 		elif [[ ${REPLACING_VERSIONS} && -e "${EROOT}usr/$(get_libdir)/libmysqlclient.so" ]] && \
-			in_iuse client-libs && ! built_with_use ${CATEGORY}/${PN} client-libs ; then
+			in_iuse client-libs && ! built_with_use --missing=true ${CATEGORY}/${PN} client-libs ; then
 			SHOW_ABI_MESSAGE=1
 		fi
 
