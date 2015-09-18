@@ -34,7 +34,7 @@ src_prepare() {
 	java-pkg-2_src_prepare
 }
 
-EANT_GENTOO_CLASSPATH="jdom-1.0,commons-httpclient-3,xml-im-exporter"
+EANT_GENTOO_CLASSPATH="jdom,commons-httpclient-3,xml-im-exporter"
 EANT_BUILD_TARGET="dist-clientlib"
 EANT_DOC_TARGET="javadoc-clientlib"
 
