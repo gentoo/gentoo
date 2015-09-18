@@ -33,7 +33,7 @@ S=${WORKDIR}/${MY_PN}
 
 EANT_BUILD_TARGET="package"
 JAVA_ANT_REWRITE_CLASSPATH="yes"
-EANT_GENTOO_CLASSPATH="antlr,jdom-1.0"
+EANT_GENTOO_CLASSPATH="antlr,jdom"
 
 java_prepare() {
 	# Courtesy of JPackages :)
