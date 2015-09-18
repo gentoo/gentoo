@@ -52,7 +52,7 @@ DEPEND=">=virtual/jdk-1.6
 S="${WORKDIR}/${P}/${PN}"
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
-EANT_GENTOO_CLASSPATH="xpp3,jdom-1.0,xom,dom4j-1,joda-time,cglib-3,xml-commons-external-1.3,jettison,stax-api"
+EANT_GENTOO_CLASSPATH="xpp3,jdom,xom,dom4j-1,joda-time,cglib-3,xml-commons-external-1.3,jettison,stax-api"
 EANT_BUILD_TARGET="benchmark:compile jar"
 EANT_EXTRA_ARGS="-Dversion=${PV} -Djunit.haltonfailure=true"
 
