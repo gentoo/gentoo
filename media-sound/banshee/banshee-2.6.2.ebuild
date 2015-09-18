@@ -37,8 +37,8 @@ RDEPEND="
 		)
 	)
 	media-libs/musicbrainz:3
-	dev-dotnet/dbus-sharp
-	dev-dotnet/dbus-sharp-glib
+	dev-dotnet/dbus-sharp:1.0
+	dev-dotnet/dbus-sharp-glib:1.0
 	>=dev-dotnet/mono-addins-0.6.2[gtk]
 	>=dev-dotnet/taglib-sharp-2.0.3.7
 	>=dev-db/sqlite-3.4:3

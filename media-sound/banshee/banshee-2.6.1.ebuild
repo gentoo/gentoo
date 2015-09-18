@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -35,8 +35,8 @@ RDEPEND="
 		)
 	)
 	media-libs/musicbrainz:3
-	dev-dotnet/dbus-sharp
-	dev-dotnet/dbus-sharp-glib
+	dev-dotnet/dbus-sharp:1.0
+	dev-dotnet/dbus-sharp-glib:1.0
 	>=dev-dotnet/mono-addins-0.6.2[gtk]
 	>=dev-dotnet/taglib-sharp-2.0.3.7
 	>=dev-db/sqlite-3.4:3
