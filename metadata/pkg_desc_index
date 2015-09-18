@@ -11382,7 +11382,7 @@ media-gfx/gif2apng 1.6 1.7 1.8 1.9: create an APNG from a GIF
 media-gfx/gif2png 2.5.8 2.5.9 2.5.10 2.5.11: Converts images from gif format to png format
 media-gfx/gifsicle 1.67 1.70 1.78 1.83 1.86 1.87 1.88: A command-line tool for creating, editing, and getting information about GIF images and animations
 media-gfx/gimageview 0.2.27-r3: Powerful GTK+ based image & movie viewer
-media-gfx/gimmage 0.2.3: A slim GTK-based image browser
+media-gfx/gimmage 0.2.3 0.2.3-r1: A slim GTK-based image browser
 media-gfx/gimp 2.8.10-r1 2.8.10-r2 2.8.14 2.8.14-r1 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20120122: Brushes for GIMP including the styles arrow, handpointer, button arrow and cursor
 media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
