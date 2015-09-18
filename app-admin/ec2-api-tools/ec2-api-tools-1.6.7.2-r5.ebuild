@@ -70,7 +70,7 @@ src_install() {
 	dosym $(java-pkg_getjar jaxb{-2,-api.jar}) ${libs}/jaxb-api.jar
 	dosym $(java-pkg_getjar jaxb{-2,-impl.jar}) ${libs}/jaxb-impl.jar
 	dosym $(java-pkg_getjar jax-ws{-2,.jar}) ${libs}/jaxws-api.jar
-	dosym $(java-pkg_getjar jdom{-1.0,.jar}) ${libs}/jdom.jar
+	dosym $(java-pkg_getjar jdom{,.jar}) ${libs}/jdom.jar
 	dosym $(java-pkg_getjar log4j{,.jar}) ${libs}/log4j-1.2.14.jar
 	dosym $(java-pkg_getjar jsr173{,.jar}) ${libs}/stax2-api-3.0.1.jar
 	dosym $(java-pkg_getjar wsdl4j{,.jar}) ${libs}/wsdl4j.jar
