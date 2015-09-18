@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ IUSE=""
 
 RDEPEND="
 	>=dev-lang/mono-2.6.0
-	dev-dotnet/dbus-sharp-glib
+	dev-dotnet/dbus-sharp-glib:1.0
 	>=dev-dotnet/gtk-sharp-2.12.6
 	>=dev-dotnet/glade-sharp-2.12.6
 	>=dev-dotnet/gconf-sharp-2.8.2
