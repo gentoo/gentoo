@@ -2,19 +2,19 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 MY_PV=${PV/_p/ga}
 MY_P=${PN}-${MY_PV}
 SUB_PV=${PV:0:3}
 
-S=${WORKDIR}
+S=${WORKDIR}/${PN}-${SUB_PV}
 
 # only the x3270 package installs fonts
 FONT_PN="x3270"
-FONT_S=${WORKDIR}/${FONT_PN}-${SUB_PV}
+FONT_S=${WORKDIR}/${FONT_PN}
 
-inherit eutils font multiprocessing
+inherit eutils font
 
 DESCRIPTION="Complete 3270 access package"
 HOMEPAGE="http://x3270.bgp.nu/"
@@ -22,17 +22,20 @@ SRC_URI="mirror://sourceforge/x3270/${MY_P}-src.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc s390 sparc x86"
+KEYWORDS="~amd64 ~ppc ~s390 ~sparc ~x86"
 IUSE="cjk doc ncurses ssl tcl X"
 
-RDEPEND="ssl? ( dev-libs/openssl )
+RDEPEND="ssl? ( dev-libs/openssl:0= )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXaw
 		x11-libs/libXmu
 		x11-libs/libXt
 	)
-	ncurses? ( sys-libs/ncurses sys-libs/readline )
+	ncurses? (
+		sys-libs/ncurses:=
+		sys-libs/readline:0=
+	)
 	tcl? ( dev-lang/tcl:0 )"
 DEPEND="${RDEPEND}
 	X? (
@@ -55,61 +58,42 @@ src_prepare() {
 	# (they have the same contents).  Wrap that in a retry to avoid errors.
 	cat <<-EOF > _install
 	#!/bin/sh
-	for n in {1..5}; do
+	for n in 1 2 3 4 5; do
 		install "\$@" && exit
 		echo "retrying ..."
 	done
+	exit 1
 	EOF
 	chmod a+rx _install
-	sed -i \
-		-e "s:@INSTALL@:${S}/_install:" \
-		*/Makefile.in
-
-	sed -i \
-		-e 's:CPPFunction:rl_completion_func_t:' \
-		c3270-*/c3270.c || die #503364
+	# Can't use the $INSTALL var as top level configure also uses it.
+	# https://sourceforge.net/p/x3270/bugs/15/
+	export ac_cv_path_install="${S}/_install"
 }
 
 src_configure() {
-	local p myconf
-	# Run configures in parallel!
-	multijob_init
-	for p in $(suite3270_makelist) ; do
-		cd "${S}/${p}-${SUB_PV}"
-		if [[ ${p} == "x3270" ]] ; then
-			myconf=(
-				--without-xmkmf
-				$(use_with X x)
-				$(use_with X fontdir "${FONTDIR}")
-			)
-		else
-			myconf=()
-		fi
-		multijob_child_init econf \
-			--cache-file="${S}"/config.cache \
-			$(use_enable cjk dbcs) \
-			$(use_enable ssl) \
-			"${myconf[@]}"
-	done
-	sed \
-		-e "s:@SUBDIRS@:$(suite3270_makelist):" \
-		-e "s:@VER@:${SUB_PV}:" \
-		"${FILESDIR}"/Makefile.in > "${S}"/Makefile || die
-	multijob_finish
+	echo "${INSTALL}"
+	econf \
+		--cache-file="${S}"/config.cache \
+		--enable-s3270 \
+		--enable-pr3287 \
+		$(use_enable ncurses c3270) \
+		$(use_enable tcl tcl3270) \
+		$(use_enable X x3270) \
+		$(use_with X x) \
+		$(use_with X fontdir "${FONTDIR}")
 }
 
 src_install() {
 	use X && dodir "${FONTDIR}"
-	EXTRA_TARGETS='install.man' default
+	emake DESTDIR="${D}" install{,.man}
+
 	local p
 	for p in $(suite3270_makelist) ; do
-		cd "${S}/${p}-${SUB_PV}"
+		cd "${S}/${p}"
 		docinto ${p}
-		local d=$(echo README*)
-		[[ -n ${d} ]] && dodoc ${d}
+		dodoc README*
 		use doc && dohtml html/*
 	done
-	find "${ED}"/usr/share/man/ -type f -perm /1 -exec chmod a-x {} +
 
 	use X && font_src_install
 }
