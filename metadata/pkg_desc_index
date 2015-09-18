@@ -8999,7 +8999,7 @@ dev-util/itstool 1.2.0-r1 2.0.2: Translation tool for XML documents that uses ge
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 1.609.3 1.627 1.628: Extensible continuous integration server
+dev-util/jenkins-bin 1.609.3 1.627 1.628 1.629: Extensible continuous integration server
 dev-util/jif 3.1_rc1: JIF is an IDE for the creation of text adventures based on Graham Nelson's Inform standard
 dev-util/kbuild 0.1.9998_pre20120806 0.1.9998_pre20131130 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.4 2.5.5: A graphical debugger interface
