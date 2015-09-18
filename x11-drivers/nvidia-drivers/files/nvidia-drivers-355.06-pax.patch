@@ -1,0 +1,102 @@
+diff -urp NVIDIA-Linux-x86_64-355.06.orig/kernel/common/inc/nv-linux.h NVIDIA-Linux-x86_64-355.06/kernel/common/inc/nv-linux.h
+--- NVIDIA-Linux-x86_64-355.06.orig/kernel/common/inc/nv-linux.h	2015-07-29 05:13:57.000000000 +0200
++++ NVIDIA-Linux-x86_64-355.06/kernel/common/inc/nv-linux.h	2015-08-21 16:45:55.624336728 +0200
+@@ -1408,11 +1408,11 @@ extern void *nvidia_stack_t_cache;
+ 
+ #if !defined(NV_VMWARE)
+ #if (NV_KMEM_CACHE_CREATE_ARGUMENT_COUNT == 5)
+-#define NV_KMEM_CACHE_CREATE(name, type)    \
+-    kmem_cache_create(name, sizeof(type), 0, 0, NULL)
++#define NV_KMEM_CACHE_CREATE(name, type, flags)    \
++    kmem_cache_create(name, sizeof(type), 0, flags, NULL)
+ #else
+-#define NV_KMEM_CACHE_CREATE(name, type)    \
+-    kmem_cache_create(name, sizeof(type), 0, 0, NULL, \
++#define NV_KMEM_CACHE_CREATE(name, type, flags)    \
++    kmem_cache_create(name, sizeof(type), 0, flags, NULL, \
+                       NULL)
+ #endif
+ #define NV_KMEM_CACHE_DESTROY(kmem_cache)   \
+diff -urp NVIDIA-Linux-x86_64-355.06.orig/kernel/nvidia/nv.c NVIDIA-Linux-x86_64-355.06/kernel/nvidia/nv.c
+--- NVIDIA-Linux-x86_64-355.06.orig/kernel/nvidia/nv.c	2015-07-29 05:13:57.000000000 +0200
++++ NVIDIA-Linux-x86_64-355.06/kernel/nvidia/nv.c	2015-08-21 16:44:51.008340178 +0200
+@@ -719,7 +719,7 @@ int __init nvidia_init_module(void)
+ #endif
+ 
+     nvidia_stack_t_cache = NV_KMEM_CACHE_CREATE(nvidia_stack_cache_name,
+-                                                nvidia_stack_t);
++                                                nvidia_stack_t, SLAB_USERCOPY);
+     if (nvidia_stack_t_cache == NULL)
+     {
+         nv_printf(NV_DBG_ERRORS, "NVRM: stack cache allocation failed!\n");
+@@ -861,7 +861,7 @@ int __init nvidia_init_module(void)
+     nv_state_init_gpu_uuid_cache(nv);
+ 
+     nvidia_pte_t_cache = NV_KMEM_CACHE_CREATE(nvidia_pte_cache_name,
+-                                              nvidia_pte_t);
++                                              nvidia_pte_t, 0);
+     if (nvidia_pte_t_cache == NULL)
+     {
+         rc = -ENOMEM;
+@@ -872,7 +872,7 @@ int __init nvidia_init_module(void)
+     if (!nv_multiple_kernel_modules)
+     {
+         nvidia_p2p_page_t_cache = NV_KMEM_CACHE_CREATE(nvidia_p2p_page_cache_name,
+-                                                       nvidia_p2p_page_t);
++                                                       nvidia_p2p_page_t, 0);
+         if (nvidia_p2p_page_t_cache == NULL)
+         {
+             rc = -ENOMEM;
+diff -urp NVIDIA-Linux-x86_64-355.06.orig/kernel/nvidia/nv-mmap.c NVIDIA-Linux-x86_64-355.06/kernel/nvidia/nv-mmap.c
+--- NVIDIA-Linux-x86_64-355.06.orig/kernel/nvidia/nv-mmap.c	2015-07-29 05:13:57.000000000 +0200
++++ NVIDIA-Linux-x86_64-355.06/kernel/nvidia/nv-mmap.c	2015-08-21 16:58:15.968297199 +0200
+@@ -113,12 +113,12 @@ nvidia_vma_release(struct vm_area_struct
+ }
+ 
+ #if defined(NV_VM_OPERATIONS_STRUCT_HAS_ACCESS)
+-static int
++static ssize_t
+ nvidia_vma_access(
+     struct vm_area_struct *vma,
+     unsigned long addr,
+     void *buffer,
+-    int length,
++    size_t length,
+     int write
+ )
+ {
+diff -urp NVIDIA-Linux-x86_64-355.06.orig/kernel/nvidia-uvm/uvm_common.c NVIDIA-Linux-x86_64-355.06/kernel/nvidia-uvm/uvm_common.c
+--- NVIDIA-Linux-x86_64-355.06.orig/kernel/nvidia-uvm/uvm_common.c	2015-07-29 05:10:08.000000000 +0200
++++ NVIDIA-Linux-x86_64-355.06/kernel/nvidia-uvm/uvm_common.c	2015-08-21 17:00:33.788289841 +0200
+@@ -60,7 +60,7 @@ static void uvmnext_exit(void)
+ {
+ 
+ }
+-static NV_STATUS uvmnext_isr_top_half(void)
++static NV_STATUS uvmnext_isr_top_half(UvmGpuUuid *gpuUuidStruct)
+ {
+     return NV_ERR_NO_INTR_PENDING;
+ }
+@@ -79,7 +79,6 @@ NvBool uvmnext_activated(void)
+ #endif // NVIDIA_UVM_NEXT_ENABLED
+ 
+ static dev_t g_uvmBaseDev;
+-struct UvmOpsUvmEvents g_exportedUvmOps;
+ 
+ // TODO: This would be easier if RM allowed for multiple registrations, since we
+ //       could register UVM-Lite and UVM-Next separately (bug 1372835).
+@@ -112,9 +111,11 @@ static NV_STATUS uvmSetupGpuProvider(voi
+     NV_STATUS status = NV_OK;
+ 
+ #ifdef NVIDIA_UVM_RM_ENABLED
+-    g_exportedUvmOps.startDevice = uvm_gpu_event_start_device;
+-    g_exportedUvmOps.stopDevice  = uvm_gpu_event_stop_device;
+-    g_exportedUvmOps.isrTopHalf  = uvmnext_isr_top_half;
++    static struct UvmOpsUvmEvents g_exportedUvmOps = {
++        .startDevice = uvm_gpu_event_start_device,
++        .stopDevice  = uvm_gpu_event_stop_device,
++        .isrTopHalf  = uvmnext_isr_top_half,
++    };
+ 
+     // call RM to exchange the function pointers.
+     status = nvUvmInterfaceRegisterUvmCallbacks(&g_exportedUvmOps);
