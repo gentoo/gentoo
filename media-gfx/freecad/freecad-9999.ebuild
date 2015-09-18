@@ -21,7 +21,7 @@ COMMON_DEPEND="dev-cpp/eigen:3
 	dev-libs/boost
 	dev-libs/xerces-c[icu]
 	dev-python/matplotlib
-	dev-python/pyside[X]
+	dev-python/pyside[X,svg]
 	dev-python/shiboken
 	dev-qt/designer:4
 	dev-qt/qtgui:4
