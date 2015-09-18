@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 
 inherit autotools eutils
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/project/${PN}.berlios/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="debug"
 
 RDEPEND="
@@ -38,9 +38,4 @@ src_configure() {
 	use debug && myconf="--enable-debug"
 
 	econf ${myconf}
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS ChangeLog NEWS README THANKS TODO
 }
