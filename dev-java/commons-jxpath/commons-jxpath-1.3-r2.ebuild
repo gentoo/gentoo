@@ -38,7 +38,7 @@ src_unpack() {
 	cd "${S}/target/lib"
 	java-pkg_jar-from commons-beanutils-1.7
 	java-pkg_jar-from servlet-api-2.5
-	java-pkg_jar-from jdom-1.0
+	java-pkg_jar-from jdom
 }
 
 src_prepare() {
