@@ -43,7 +43,7 @@ java_prepare() {
 	cd "${S}"/lib || die
 	java-pkg_jar-from jcommon-1.0 jcommon.jar jcommon-1.0.6.jar
 	java-pkg_jar-from jfreechart-1.0 jfreechart.jar jfreechart-1.0.3.jar
-	java-pkg_jar-from jdom-1.0 jdom.jar
+	java-pkg_jar-from jdom jdom.jar
 	java-pkg_jar-from ant-core ant.jar
 }
 
