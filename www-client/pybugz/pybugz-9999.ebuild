@@ -24,7 +24,8 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="zsh-completion"
 
-RDEPEND="${DEPEND}"
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_install_all() {
 	distutils-r1_python_install_all
