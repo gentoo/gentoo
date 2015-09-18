@@ -46,7 +46,7 @@ src_unpack() {
 	rm samples/java/*.class || die
 
 	mkdir lib && cd lib
-	java-pkg_jar-from jdom-1.0
+	java-pkg_jar-from jdom
 	java-pkg_jar-from xom
 	# Is not needed with 1.5 but gets pulled in by deps any way
 	# without this emerging with sun-jdk-1.4 fails with

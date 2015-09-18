@@ -39,7 +39,7 @@ src_unpack() {
 	rm -rf doc/api || die
 	rm samples/java/*.class || die
 	mkdir lib && cd lib
-	java-pkg_jar-from jdom-1.0
+	java-pkg_jar-from jdom
 }
 
 src_compile() {

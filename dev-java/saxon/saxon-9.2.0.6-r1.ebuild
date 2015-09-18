@@ -79,7 +79,7 @@ java_prepare() {
 }
 
 src_compile() {
-	local gcp="$(java-pkg_getjars dom4j-${DOM4J_VER},jdom-${JDOM_VER},xom)"
+	local gcp="$(java-pkg_getjars dom4j-${DOM4J_VER},jdom,xom)"
 	gcp="${gcp}:$(java-pkg_getjars --build-only ant-core)"
 	eant -Dgentoo.classpath="${gcp}" jar $(use_doc)
 }
