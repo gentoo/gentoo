@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">yodl</remote-id>
+		<remote-id type="github">fbb-git/yodl</remote-id>
 	</upstream>
 </pkgmetadata>
