@@ -44,6 +44,7 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.2-python.patch
 	"${FILESDIR}"/${P}-fix-debug-build.patch
+	"${FILESDIR}"/${P}-remove-parse-hash-fails.patch
 )
 
 AUTOTOOLS_IN_SOURCE_BUILD=1
