@@ -46,7 +46,7 @@ EANT_GENTOO_CLASSPATH="
 	commons-collections
 	commons-lang-2.1
 	commons-logging
-	jdom-1.0
+	jdom
 	log4j
 	avalon-logkit-2.0
 	jakarta-oro-2.0
