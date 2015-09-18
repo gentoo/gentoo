@@ -233,7 +233,7 @@ check-reqs_output() {
 	[[ ${EBUILD_PHASE} == "pretend" && -z ${I_KNOW_WHAT_I_AM_DOING} ]] && msg="eerror"
 	if [[ -n ${CHECKREQS_FAILED} ]]; then
 		${msg}
-		${msg} "Space constrains set in the ebuild were not met!"
+		${msg} "Space constraints set in the ebuild were not met!"
 		${msg} "The build will most probably fail, you should enhance the space"
 		${msg} "as per failed tests."
 		${msg}
