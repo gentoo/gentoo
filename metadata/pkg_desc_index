@@ -13441,7 +13441,7 @@ net-irc/epic5 1.1.10 1.1.10-r1: Epic5 IRC Client
 net-irc/hexchat 2.10.2 9999: Graphical IRC client based on XChat
 net-irc/ii 1.6 1.7: A minimalist FIFO and filesystem-based IRC client
 net-irc/iip 1.2: Proxy server for encrypted anonymous IRC-like network
-net-irc/inspircd 2.0.17 2.0.18: Inspire IRCd - The Stable, High-Performance Modular IRCd
+net-irc/inspircd 2.0.18 2.0.20: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/irc-client 2.10.3_p7: A simplistic RFC compliant IRC client
 net-irc/irc-server 2.11.1_p1-r2: RFC compliant IRC server
 net-irc/ircii 20110228 20111115: An IRC and ICB client that runs under most UNIX platforms
