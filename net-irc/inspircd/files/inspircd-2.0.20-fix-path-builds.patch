@@ -1,6 +1,6 @@
 diff -Nuar a/docs/conf/inspircd.conf.example b/docs/conf/inspircd.conf.example
---- a/docs/conf/inspircd.conf.example	2014-07-24 14:24:00.000000000 +0200
-+++ b/docs/conf/inspircd.conf.example	2014-08-09 10:21:01.439999954 +0200
+--- a/docs/conf/inspircd.conf.example	2015-05-10 00:24:10.000000000 -0500
++++ b/docs/conf/inspircd.conf.example	2015-07-27 05:22:26.107849785 -0500
 @@ -412,11 +412,11 @@
  
  # This file has all the information about oper classes, types and o:lines.
@@ -57,8 +57,8 @@ diff -Nuar a/docs/conf/inspircd.conf.example b/docs/conf/inspircd.conf.example
  
  #########################################################################
 diff -Nuar a/make/template/main.mk b/make/template/main.mk
---- a/make/template/main.mk	2014-07-24 14:24:00.000000000 +0200
-+++ b/make/template/main.mk	2014-08-09 10:24:59.039999948 +0200
+--- a/make/template/main.mk	2015-05-10 00:24:10.000000000 -0500
++++ b/make/template/main.mk	2015-07-27 05:22:26.107849785 -0500
 @@ -34,7 +34,7 @@
  SYSTEM = @SYSTEM@
  BUILDPATH = @BUILD_DIR@
@@ -71,7 +71,7 @@ diff -Nuar a/make/template/main.mk b/make/template/main.mk
 @@ -51,9 +51,9 @@
  INSTMODE_LIB = 0644
  
- @IFEQ $(CC) icc
+ @IFEQ $(CC) icpc
 -  CXXFLAGS += -Wshadow
 +  MYCXXFLAGS += -Wshadow
  @ELSE
@@ -106,7 +106,7 @@ diff -Nuar a/make/template/main.mk b/make/template/main.mk
 -  CXXFLAGS += -O2
 +@IFEQ $(DEBUGLEVEL) 0
 +  MYCXXFLAGS += -O2
- @IFEQ $(CC) gcc
+ @IFEQ $(CC) g++
 -    CXXFLAGS += -g1
 +    MYCXXFLAGS += -g1
  @ENDIF
@@ -134,7 +134,7 @@ diff -Nuar a/make/template/main.mk b/make/template/main.mk
  
  @GNU_ONLY MAKEFLAGS += --no-print-directory
  
-@@ -128,10 +128,11 @@
+@@ -129,10 +129,11 @@
  @ENDIF
  
  @IFDEF PURE_STATIC
@@ -148,7 +148,7 @@ diff -Nuar a/make/template/main.mk b/make/template/main.mk
  @DO_EXPORT SOURCEPATH BUILDPATH PURE_STATIC SPLIT_CC
  
  # Default target
-@@ -144,10 +145,10 @@
+@@ -145,10 +146,10 @@
      @GNU_ONLY TARGET = modules/$(M:.so=).so
  @ENDIF
  
@@ -161,7 +161,7 @@ diff -Nuar a/make/template/main.mk b/make/template/main.mk
  @ENDIF
  
  @IFEQ $(DBGOK) 0
-@@ -222,8 +223,8 @@
+@@ -223,8 +224,8 @@
  	@-$(INSTALL) -d -o $(INSTUID) -m $(INSTMODE_DIR) $(BASE)/data
  	@-$(INSTALL) -d -o $(INSTUID) -m $(INSTMODE_DIR) $(BASE)/logs
  	@-$(INSTALL) -d -m $(INSTMODE_DIR) $(BINPATH)
@@ -172,7 +172,7 @@ diff -Nuar a/make/template/main.mk b/make/template/main.mk
  	@-$(INSTALL) -d -m $(INSTMODE_DIR) $(MODPATH)
  	[ $(BUILDPATH)/bin/ -ef $(BINPATH) ] || $(INSTALL) -m $(INSTMODE_BIN) $(BUILDPATH)/bin/inspircd $(BINPATH)
  @IFNDEF PURE_STATIC
-@@ -231,9 +232,9 @@
+@@ -232,9 +233,9 @@
  @ENDIF
  	-$(INSTALL) -m $(INSTMODE_BIN) @STARTSCRIPT@ $(BASE) 2>/dev/null
  	-$(INSTALL) -m $(INSTMODE_LIB) tools/gdbargs $(BASE)/.gdbargs 2>/dev/null
@@ -185,7 +185,7 @@ diff -Nuar a/make/template/main.mk b/make/template/main.mk
  	@echo ""
  	@echo "*************************************"
  	@echo "*        INSTALL COMPLETE!          *"
-@@ -246,7 +247,7 @@
+@@ -247,7 +248,7 @@
  	@echo '  Data:' $(DATPATH)
  	@echo 'To start the ircd, run:' $(BASE)/inspircd start
  	@echo 'Remember to create your config file:' $(CONPATH)/inspircd.conf
@@ -195,9 +195,9 @@ diff -Nuar a/make/template/main.mk b/make/template/main.mk
  @GNU_ONLY RCS_FILES = $(wildcard .git/index src/version.sh)
  @BSD_ONLY RCS_FILES = src/version.sh
 diff -Nuar a/make/unit-cc.pl b/make/unit-cc.pl
---- a/make/unit-cc.pl	2014-07-24 14:24:00.000000000 +0200
-+++ b/make/unit-cc.pl	2014-08-09 10:25:15.089999947 +0200
-@@ -97,7 +97,7 @@
+--- a/make/unit-cc.pl	2015-05-10 00:24:10.000000000 -0500
++++ b/make/unit-cc.pl	2015-07-27 05:22:26.107849785 -0500
+@@ -113,7 +113,7 @@
  	my $libs = '';
  	my $binary = $ENV{RUNCC};
  	if ($do_compile) {
