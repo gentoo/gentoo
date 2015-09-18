@@ -14,7 +14,6 @@ app-emulation/crossover-office-bin
 app-emulation/crossover-office-pro-bin
 app-emulation/playonlinux
 app-emulation/q4wine
-app-emulation/vmware-player
 >=app-i18n/atokx3-3.0.0
 app-office/ooextras
 app-emulation/winetricks
