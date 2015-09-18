@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>longlene@gmail.com</email>
+		<name>Lixiao Chen</name>
+	</maintainer>
+	<longdescription lang="en">
+		Crystal is a programming language that resembles Ruby but compiles to
+		native code and tries to be much more efficient, at the cost of
+		disallowing certain dynamic aspects of Ruby.
+	</longdescription>
+	<use>
+		<flag name="yaml">
+			Use the <pkg>dev-libs/libyaml</pkg> library to enable Crystal yaml
+			module
+		</flag>
+		<flag name="xml">
+			Use the <pkg>dev-libs/libxml2</pkg> library to enable Crystal xml
+			module
+		</flag>
+	</use>
+</pkgmetadata>
