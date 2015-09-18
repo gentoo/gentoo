@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure setup
-DEPEND=>=dev-lang/mono-2.0 >=dev-dotnet/smartirc4net-0.4.5.1 >=dev-dotnet/nini-1.1.0-r2 >=dev-dotnet/log4net-1.2.10-r2 dbus? ( dev-dotnet/dbus-sharp dev-dotnet/dbus-sharp-glib dev-dotnet/ndesk-dbus dev-dotnet/ndesk-dbus-glib ) gtk? ( >=dev-dotnet/gtk-sharp-2.12 >=dev-dotnet/glade-sharp-2.12 >=dev-dotnet/glib-sharp-2.12 ) libnotify? ( dev-dotnet/notify-sharp ) spell? ( >=app-text/gtkspell-2.0.9:2 ) >=dev-util/intltool-0.25 >=sys-devel/gettext-0.17 virtual/pkgconfig
+DEPEND=>=dev-lang/mono-2.0 >=dev-dotnet/smartirc4net-0.4.5.1 >=dev-dotnet/nini-1.1.0-r2 >=dev-dotnet/log4net-1.2.10-r2 dbus? ( dev-dotnet/dbus-sharp:1.0 dev-dotnet/dbus-sharp-glib:1.0 dev-dotnet/ndesk-dbus dev-dotnet/ndesk-dbus-glib ) gtk? ( >=dev-dotnet/gtk-sharp-2.12 >=dev-dotnet/glade-sharp-2.12 >=dev-dotnet/glib-sharp-2.12 ) libnotify? ( dev-dotnet/notify-sharp ) spell? ( >=app-text/gtkspell-2.0.9:2 ) >=dev-util/intltool-0.25 >=sys-devel/gettext-0.17 virtual/pkgconfig
 DESCRIPTION=A flexible, irssi-like and user-friendly IRC client for the Gnome Desktop
 EAPI=5
 HOMEPAGE=http://www.smuxi.org/main/
 IUSE=dbus debug gtk libnotify spell
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( GPL-2 GPL-3 )
-RDEPEND=>=dev-lang/mono-2.0 >=dev-dotnet/smartirc4net-0.4.5.1 >=dev-dotnet/nini-1.1.0-r2 >=dev-dotnet/log4net-1.2.10-r2 dbus? ( dev-dotnet/dbus-sharp dev-dotnet/dbus-sharp-glib dev-dotnet/ndesk-dbus dev-dotnet/ndesk-dbus-glib ) gtk? ( >=dev-dotnet/gtk-sharp-2.12 >=dev-dotnet/glade-sharp-2.12 >=dev-dotnet/glib-sharp-2.12 ) libnotify? ( dev-dotnet/notify-sharp ) spell? ( >=app-text/gtkspell-2.0.9:2 )
+RDEPEND=>=dev-lang/mono-2.0 >=dev-dotnet/smartirc4net-0.4.5.1 >=dev-dotnet/nini-1.1.0-r2 >=dev-dotnet/log4net-1.2.10-r2 dbus? ( dev-dotnet/dbus-sharp:1.0 dev-dotnet/dbus-sharp-glib:1.0 dev-dotnet/ndesk-dbus dev-dotnet/ndesk-dbus-glib ) gtk? ( >=dev-dotnet/gtk-sharp-2.12 >=dev-dotnet/glade-sharp-2.12 >=dev-dotnet/glib-sharp-2.12 ) libnotify? ( dev-dotnet/notify-sharp ) spell? ( >=app-text/gtkspell-2.0.9:2 )
 SLOT=0
 SRC_URI=http://www.smuxi.org/jaws/data/files/smuxi-0.8.11.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	mono-env	10809200679bcceefebac9e72bebb6e6	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=97736031f53a35b8c48855f8c07fd64f
+_md5_=22cc04ea4d2b38c351d891fd70828f50

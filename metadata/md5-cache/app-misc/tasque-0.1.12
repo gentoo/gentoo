@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure install
-DEPEND=>=dev-dotnet/gtk-sharp-2.12.7-r5 >=dev-dotnet/notify-sharp-0.4.0_pre20080912 dev-dotnet/dbus-sharp dev-dotnet/dbus-sharp-glib sqlite? ( dev-db/sqlite:3 ) app-arch/xz-utils
+DEPEND=>=dev-dotnet/gtk-sharp-2.12.7-r5 >=dev-dotnet/notify-sharp-0.4.0_pre20080912 dev-dotnet/dbus-sharp:1.0 dev-dotnet/dbus-sharp-glib:1.0 sqlite? ( dev-db/sqlite:3 ) app-arch/xz-utils
 DESCRIPTION=Simple task management app (TODO list) for the Linux Desktop
 EAPI=5
 HOMEPAGE=https://live.gnome.org/Tasque
 IUSE=+rememberthemilk +sqlite hiveminder debug linguas_ca linguas_ca@valencia linguas_cs linguas_da linguas_de linguas_el linguas_en_GB linguas_eo linguas_es linguas_et linguas_fi linguas_fr linguas_gl linguas_hu linguas_id linguas_it linguas_ja linguas_lv linguas_nb linguas_nds linguas_nl linguas_pl linguas_pt linguas_pt_BR linguas_ro linguas_ru linguas_sl linguas_sr linguas_sr@latin linguas_sv linguas_th linguas_tr linguas_zh_CN linguas_zh_TW
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
-RDEPEND=>=dev-dotnet/gtk-sharp-2.12.7-r5 >=dev-dotnet/notify-sharp-0.4.0_pre20080912 dev-dotnet/dbus-sharp dev-dotnet/dbus-sharp-glib sqlite? ( dev-db/sqlite:3 )
+RDEPEND=>=dev-dotnet/gtk-sharp-2.12.7-r5 >=dev-dotnet/notify-sharp-0.4.0_pre20080912 dev-dotnet/dbus-sharp:1.0 dev-dotnet/dbus-sharp-glib:1.0 sqlite? ( dev-db/sqlite:3 )
 REQUIRED_USE=|| ( rememberthemilk sqlite hiveminder )
 SLOT=0
 SRC_URI=mirror://gnome/sources/tasque/0.1/tasque-0.1.12.tar.xz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	gnome.org	84c1434ce5de42302c744df8431bf1f6	mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=d826545eb7fffa032f0d550c2383a783
+_md5_=93808cb30e97ddc1bc2ffeb1391eb225

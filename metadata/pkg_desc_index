@@ -2959,8 +2959,8 @@ dev-db/xbsql 0.11-r2: An SQL Wrapper for the XBase library
 dev-db/xtrabackup-bin 2.1.9 2.2.5 2.2.12: MySQL hot backup software that performs non-blocking backups for InnoDB and XtraDB databases
 dev-dotnet/art-sharp 2.24.2: GtkSharp's art module of the gnome-sharp tarball
 dev-dotnet/atk-sharp 2.12.10: GtkSharp's atk module of the gtk-sharp tarball
-dev-dotnet/dbus-sharp 0.7.0-r1 0.8.1: D-Bus for .NET
-dev-dotnet/dbus-sharp-glib 0.5.0 0.6.0: D-Bus for .NET: GLib integration module
+dev-dotnet/dbus-sharp 0.7.0-r1 0.7.0-r2 0.8.1: D-Bus for .NET
+dev-dotnet/dbus-sharp-glib 0.5.0 0.5.0-r1 0.6.0: D-Bus for .NET: GLib integration module
 dev-dotnet/flickrnet-bin 2.2-r1: A .Net Library for accessing the Flickr API - Binary version
 dev-dotnet/gconf-sharp 2.24.2: GtkSharp's gconf module of the gnome-sharp tarball
 dev-dotnet/gdk-sharp 2.12.10: GtkSharp's gdk module of the gtk-sharp tarball
@@ -2994,7 +2994,7 @@ dev-dotnet/nant 0.92 0.93_pre20130131: .NET build tool
 dev-dotnet/ndesk-dbus 0.6.1a: Managed D-Bus Implementation for .NET
 dev-dotnet/ndesk-dbus-glib 0.4.1: glib integration for DBus-Sharp
 dev-dotnet/nini 1.1.0-r2: Nini - A configuration library for .NET
-dev-dotnet/notify-sharp 0.4.0_pre20090305: a C# client implementation for Desktop Notifications
+dev-dotnet/notify-sharp 0.4.0_pre20090305 0.4.0_pre20090305-r1: a C# client implementation for Desktop Notifications
 dev-dotnet/nuget 2.8.3: Nuget - .NET Package Manager
 dev-dotnet/pango-sharp 2.12.10: GtkSharp's pango module of the gtk-sharp tarball
 dev-dotnet/pe-format 2.1.2 2.9999: Intelligent PE executable wrapper for binfmt_misc
