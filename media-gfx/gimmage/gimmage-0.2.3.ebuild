@@ -1,20 +1,22 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=2
+
 inherit autotools eutils
 
 DESCRIPTION="A slim GTK-based image browser"
-HOMEPAGE="http://gimmage.berlios.de/"
-SRC_URI="mirror://berlios/${PN}/${P}.tar.gz"
+HOMEPAGE="https://sourceforge.net/projects/gimmage.berlios/"
+SRC_URI="mirror://sourceforge/project/${PN}.berlios/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="debug"
 
-RDEPEND="dev-cpp/cairomm
+RDEPEND="
+	dev-cpp/cairomm
 	>=dev-cpp/gtkmm-2.6.2:2.4
 	net-misc/curl
 	sys-apps/file"
@@ -23,7 +25,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gcc43.patch \
+	epatch \
+		"${FILESDIR}"/${P}-gcc43.patch \
 		"${FILESDIR}"/${P}-as-needed.patch \
 		"${FILESDIR}"/${P}-desktop-entry.patch \
 		"${FILESDIR}"/${P}-gcc47.patch
