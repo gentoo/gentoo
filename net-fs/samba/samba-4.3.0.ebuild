@@ -38,10 +38,10 @@ CDEPEND="${PYTHON_DEPS}
 	>=net-libs/socket_wrapper-1.1.2
 	sys-apps/attr
 	sys-libs/libcap
-	>=sys-libs/ldb-1.1.20
+	>=sys-libs/ldb-1.1.21
 	sys-libs/ncurses:0=
 	>=sys-libs/nss_wrapper-1.0.2
-	>=sys-libs/talloc-2.1.2[python,${PYTHON_USEDEP}]
+	>=sys-libs/talloc-2.1.3[python,${PYTHON_USEDEP}]
 	>=sys-libs/tdb-1.3.6[python,${PYTHON_USEDEP}]
 	>=sys-libs/tevent-0.9.25
 	>=sys-libs/uid_wrapper-1.0.1
