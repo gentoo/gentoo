@@ -26,7 +26,7 @@ IUSE=""
 
 # TODO: sys-cluster/mpijava
 COMMON_DEPS="dev-java/colt:0
-	dev-java/jdom:1.0
+	dev-java/jdom:0
 	dev-java/itext:0
 	dev-java/junit:4
 	dev-java/jebl:0
