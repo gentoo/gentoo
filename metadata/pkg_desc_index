@@ -13925,7 +13925,7 @@ net-misc/htun 0.9.6: Project to tunnel IP traffic over HTTP
 net-misc/hylafaxplus 5.5.4-r1 5.5.5: Enterprise client-server fax package for class 1 and 2 fax modems
 net-misc/i2pd 0.5.0 0.6.0 9999: A C++ daemon for accessing the I2P anonymous network
 net-misc/iaxmodem 1.2.0: Software modem that uses an IAX channel instead of a traditional phone line
-net-misc/icaclient 12.1.0 13.2.0.322243: ICA Client for Citrix Presentation servers
+net-misc/icaclient 12.1.0 13.2.0.322243 13.2.1.328635: ICA Client for Citrix Presentation servers
 net-misc/icecast 2.4.2: An opensource alternative to shoutcast that supports mp3, ogg (vorbis/theora) and aac streaming
 net-misc/ices 2.0.1-r1 2.0.2: Icecast OGG streaming client, supports on the fly re-encoding
 net-misc/identicurse 0.9: A simple Identi.ca client with a curses-based UI
