@@ -1295,7 +1295,7 @@ app-emulation/libvirt-glib 0.2.0 0.2.1 0.2.2: GLib and GObject mappings for libv
 app-emulation/libvirt-snmp 0.0.2-r2 0.0.3: Provides SNMP functionality for libvirt
 app-emulation/lxc 1.0.6-r1 1.0.7 1.1.0-r6 1.1.1-r1 1.1.2 1.1.2-r1 1.1.2-r2 1.1.3: LinuX Containers userspace utilities
 app-emulation/lxd 0.13 0.14 0.16: Fast, dense and secure container management
-app-emulation/open-vm-tools 9.4.0.1280544 9.10.0_p2476743 9.10.2_p2822639: Opensourced tools for VMware guests
+app-emulation/open-vm-tools 9.4.0.1280544 9.10.0_p2476743 9.10.2_p2822639 10.0.0_p3000743: Opensourced tools for VMware guests
 app-emulation/open-vm-tools-kmod 9.4.0.1280544 9.10.0_p2476743: Opensourced tools for VMware guests
 app-emulation/openstack-guest-agents-unix 1.39.0 1.39.0-r1 1.39.0-r2 1.39.1: Openstack Unix Guest Agent
 app-emulation/phpvirtualbox 4.1.11 4.2.7 4.3.0 5.0.3: Web-based administration for VirtualBox in PHP

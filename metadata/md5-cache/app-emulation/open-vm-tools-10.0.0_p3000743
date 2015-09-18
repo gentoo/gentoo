@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=dev-libs/glib:2 dev-libs/libdnet sys-apps/ethtool sys-fs/fuse >=sys-process/procps-3.3.2 grabbitmqproxy? ( dev-libs/openssl:0 ) icu? ( dev-libs/icu:= ) pam? ( virtual/pam ) vgauth? ( dev-libs/openssl:0 dev-libs/xerces-c dev-libs/xml-security-c ) X? ( dev-cpp/gtkmm:2.4 x11-base/xorg-server x11-drivers/xf86-input-vmmouse x11-drivers/xf86-video-vmware x11-libs/gtk+:2 x11-libs/libnotify x11-libs/libX11 x11-libs/libXtst ) xinerama? ( x11-libs/libXinerama ) doc? ( app-doc/doxygen ) virtual/pkgconfig sys-apps/findutils !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=Opensourced tools for VMware guests
+EAPI=5
+HOMEPAGE=https://github.com/vmware/open-vm-tools
+IUSE=X doc grabbitmqproxy icu pam +pic vgauth xinerama
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2
+RDEPEND=dev-libs/glib:2 dev-libs/libdnet sys-apps/ethtool sys-fs/fuse >=sys-process/procps-3.3.2 grabbitmqproxy? ( dev-libs/openssl:0 ) icu? ( dev-libs/icu:= ) pam? ( virtual/pam ) vgauth? ( dev-libs/openssl:0 dev-libs/xerces-c dev-libs/xml-security-c ) X? ( dev-cpp/gtkmm:2.4 x11-base/xorg-server x11-drivers/xf86-input-vmmouse x11-drivers/xf86-video-vmware x11-libs/gtk+:2 x11-libs/libnotify x11-libs/libX11 x11-libs/libXtst ) xinerama? ( x11-libs/libXinerama )
+SLOT=0
+SRC_URI=mirror://sourceforge/open-vm-tools/open-vm-tools-10.0.0-3000743.tar.gz
+_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	05f80e6013406d68612a7493314e3777	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=29e11d9ac5d3e676aae81d990ef9a265
