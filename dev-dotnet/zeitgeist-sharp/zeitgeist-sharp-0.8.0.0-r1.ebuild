@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,8 +23,8 @@ LICENSE="GPL-3"
 IUSE="doc"
 
 RDEPEND="
-	dev-dotnet/dbus-sharp
-	dev-dotnet/dbus-sharp-glib
+	dev-dotnet/dbus-sharp:1.0
+	dev-dotnet/dbus-sharp-glib:1.0
 	dev-dotnet/glib-sharp
 	dev-lang/mono
 	gnome-extra/zeitgeist"
