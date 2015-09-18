@@ -1038,7 +1038,7 @@ app-editors/mousepad 0.3.0 0.4.0: GTK+-based editor for the Xfce Desktop Environ
 app-editors/mp 5.2.2: Minimum Profit: A text editor for programmers
 app-editors/nano 2.3.6 2.4.0 2.4.1 2.4.2: GNU GPL'd Pico clone with more functionality
 app-editors/ne 2.5 3.0.1: the nice editor, easy to use for the beginner and powerful for the wizard
-app-editors/nedit 5.5_p20110116-r2: Multi-purpose text editor for the X Window System
+app-editors/nedit 5.5_p20110116-r2 5.6: Multi-purpose text editor for the X Window System
 app-editors/neovim 0.0.0_pre20150627 0.0.0_pre20150727 0.0.0_pre20150814: Ambitious vim fork focused on extensibility and agility
 app-editors/ng 1.5_beta1 1.5_beta1-r1: Emacs like micro editor Ng -- based on mg2a
 app-editors/nvi 1.81.6-r3 1.81.6-r4 1.81.6-r5: Vi clone
@@ -15185,7 +15185,7 @@ sci-libs/qfits 6.2.0: ESO stand-alone C library offering easy access to FITS fil
 sci-libs/qrupdate 1.1.0 1.1.1 1.1.2: Library for updating of QR and Cholesky decompositions
 sci-libs/rosetta-db 3.4: Essential database for rosetta
 sci-libs/rosetta-fragments 3.1-r1: Fragment library for rosetta
-sci-libs/rtabmap 0.8.2 0.8.3 0.9.0 0.10.5 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
+sci-libs/rtabmap 0.10.5 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
 sci-libs/scalapack 2.0.2: Subset of LAPACK routines redesigned for heterogenous (MPI) computing
 sci-libs/scikits 0.1-r1: Common files for python scikits
 sci-libs/scikits_image 0.9.3 0.10.0 0.10.1: Image processing routines for SciPy
