@@ -13299,7 +13299,7 @@ net-firewall/quicktables 2.3: a quick iptables script generator
 net-firewall/rtsp-conntrack 3.7: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r1: iptables firewall generator (fork of firehol)
 net-firewall/shapecfg 36: configuration tool for setting traffic bandwidth parameters
-net-firewall/shorewall 4.5.21.9 4.5.21.10-r1 4.6.6.2 4.6.10.1 4.6.11: The Shoreline Firewall, commonly known as Shorewall, is a high-level tool for configuring Netfilter
+net-firewall/shorewall 4.5.21.9 4.5.21.10-r1 4.6.10.1 4.6.13: The Shoreline Firewall, commonly known as Shorewall, is a high-level tool for configuring Netfilter
 net-firewall/shorewall-core 4.5.21.9 4.5.21.10-r1: Core libraries of shorewall / shorewall(6)-lite
 net-firewall/shorewall-init 4.5.21.9 4.5.21.10-r1: Component to secure a Shorewall-protected system at boot time prior to bringing up the network
 net-firewall/shorewall-lite 4.5.21.9 4.5.21.10-r1: An iptables-based firewall whose config is handled by a normal Shorewall
