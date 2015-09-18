@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit toolchain-funcs
+inherit eutils toolchain-funcs
 
 DESCRIPTION="A RSS/Atom feed reader for the text console"
 HOMEPAGE="http://www.newsbeuter.org/index.html"
@@ -34,6 +34,7 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-2.9-ncurses6.patch
 	sed -i 's:-ggdb::' Makefile || die
 }
 
