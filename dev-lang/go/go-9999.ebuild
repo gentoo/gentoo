@@ -59,9 +59,9 @@ go_arch()
 go_arm()
 {
 	case "${1:-${CHOST}}" in
-		armv5)	echo 5;;
-		armv6)	echo 6;;
-		armv7)	echo 7;;
+		armv5*)	echo 5;;
+		armv6*)	echo 6;;
+		armv7*)	echo 7;;
 		*)
 			die "unknown GOARM for ${1:-${CHOST}}"
 			;;
