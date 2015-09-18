@@ -575,7 +575,9 @@ mysql-multilib_src_configure() {
 		CXXFLAGS="${CXXFLAGS} -fno-implicit-templates"
 	fi
 	# As of 5.7, exceptions are used!
-	if ! mysql_version_is_at_least "5.7" ; then
+	if [[ ${PN} == "percona-server" ]] && mysql_version_is_at_least "5.6.26" ; then
+                CXXFLAGS="${CXXFLAGS} -fno-rtti"
+        elif ! mysql_version_is_at_least "5.7" ; then
 		CXXFLAGS="${CXXFLAGS} -fno-exceptions -fno-rtti"
 	fi
 	export CXXFLAGS
