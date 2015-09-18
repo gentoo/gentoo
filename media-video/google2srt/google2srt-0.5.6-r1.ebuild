@@ -1,8 +1,8 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI=5
 
 JAVA_PKG_IUSE="doc source"
 
@@ -22,7 +22,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="html"
 
-COMMON_DEP="dev-java/jdom:1.0"
+COMMON_DEP="dev-java/jdom:0"
 
 RDEPEND=">=virtual/jre-1.6
 	${COMMON_DEP}"
