@@ -195,7 +195,6 @@ src_configure() {
 		--with-fd-group=bareos \
 		--with-sbin-perm=0755 \
 		--with-systemd \
-		--enable-smartalloc \
 		--enable-dynamic-cats-backends \
 		--enable-dynamic-storage-backends \
 		--enable-batch-insert \
