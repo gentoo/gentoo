@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,17 +12,17 @@ SRC_URI="https://www.github.com/inspircd/inspircd/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="geoip gnutls ipv6 ldap mysql pcre posix postgres sqlite ssl tre"
 
 RDEPEND="
 	dev-lang/perl
-	ssl? ( dev-libs/openssl )
+	ssl? ( dev-libs/openssl:= )
 	geoip? ( dev-libs/geoip )
 	gnutls? ( net-libs/gnutls dev-libs/libgcrypt:0 )
 	ldap? ( net-nds/openldap )
 	mysql? ( virtual/mysql )
-	postgres? ( dev-db/postgresql[server] )
+	postgres? ( dev-db/postgresql:= )
 	pcre? ( dev-libs/libpcre )
 	sqlite? ( >=dev-db/sqlite-3.0 )
 	tre? ( dev-libs/tre )"
@@ -95,7 +95,7 @@ src_install() {
 	dodir "/var/lib/${PN}"
 	dodir "/var/lib/${PN}/data"
 
-	newinitd "${FILESDIR}/${P}-init" "${PN}"
+	newinitd "${FILESDIR}/${PN}-init" "${PN}"
 	keepdir "/var/log/${PN}"/
 }
 
