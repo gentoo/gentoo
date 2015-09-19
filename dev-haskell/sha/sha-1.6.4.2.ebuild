@@ -19,8 +19,10 @@ SRC_URI="mirror://hackage/packages/archive/${MY_PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 x86 ~amd64-linux"
 IUSE="exe"
+
+RESTRICT=test # fails to build on ghc-7.6, https://ghc.haskell.org/trac/ghc/ticket/8657
 
 RDEPEND=">=dev-haskell/binary-0.7:=[profile?] <dev-haskell/binary-10000:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
@@ -33,6 +35,11 @@ DEPEND="${RDEPEND}
 "
 
 S="${WORKDIR}/${MY_P}"
+
+src_prepare() {
+	cabal_chdeps \
+		' -O2' ' '
+}
 
 src_configure() {
 	haskell-cabal_src_configure \

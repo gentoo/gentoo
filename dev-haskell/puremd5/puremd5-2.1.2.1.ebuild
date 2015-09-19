@@ -18,7 +18,7 @@ SRC_URI="mirror://hackage/packages/archive/${MY_PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~x86"
+KEYWORDS="~alpha amd64 ~ia64 x86"
 IUSE=""
 
 RDEPEND=">=dev-haskell/binary-0.4.0[profile?]

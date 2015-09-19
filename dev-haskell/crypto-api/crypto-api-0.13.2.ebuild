@@ -15,7 +15,7 @@ SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 ~ia64 ~x86"
+KEYWORDS="~alpha amd64 ~ia64 x86"
 IUSE="all_cpolys"
 
 RDEPEND=">=dev-haskell/cereal-0.2:=[profile?]
