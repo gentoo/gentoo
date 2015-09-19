@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/cmusphinx/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="doc python static-libs"
 
 RDEPEND=">=app-accessibility/sphinxbase-0.7[static-libs?,python?,${PYTHON_USEDEP}]
