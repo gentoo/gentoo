@@ -17617,7 +17617,7 @@ x11-misc/urxvt-perls 2.2: Perl extensions for rxvt-unicode
 x11-misc/util-macros 1.17.1 1.18.0 1.19.0: X.Org autotools utility macros
 x11-misc/vdpauinfo 0.0.6 0.1 0.9-r1 1.0: Displays info about your card's VDPAU support
 x11-misc/viewglob 2.0.4-r1: Graphical display of directories and globs referenced at the shell prompt
-x11-misc/virtualgl 2.3.3 2.4.1: Run OpenGL applications remotely with full 3D hardware acceleration
+x11-misc/virtualgl 2.3.3 2.4.1 2.4.1-r1: Run OpenGL applications remotely with full 3D hardware acceleration
 x11-misc/vnc2swf 0.5.0-r1: A tool for recording Flash SWF movies from VNC sessions
 x11-misc/vym 2.3.22 2.3.24: View Your Mind, a mindmap tool
 x11-misc/wayv 0.3-r2: Wayv is hand-writing/gesturing recognition software for X
