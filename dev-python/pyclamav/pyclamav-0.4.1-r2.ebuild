@@ -14,7 +14,7 @@ SRC_URI="http://xael.org/norman/python/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~x86"
+KEYWORDS="amd64 ~ia64 ~ppc ~x86"
 IUSE=""
 
 DEPEND=">=app-antivirus/clamav-0.90"
