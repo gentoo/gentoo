@@ -5,22 +5,23 @@
 EAPI=5
 
 OASIS_BUILD_DOCS=1
+OASIS_BUILD_TESTS=1
 
 inherit oasis
 
 DESCRIPTION="Ocaml implementation of expect to help building unitary testing"
 HOMEPAGE="http://forge.ocamlcore.org/projects/ocaml-expect/"
-SRC_URI="http://forge.ocamlcore.org/frs/download.php/894/${P}.tar.gz"
+SRC_URI="http://forge.ocamlcore.org/frs/download.php/1372/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="test"
 
 RDEPEND="
-	dev-ml/extlib:=
+	dev-ml/batteries:=
 	dev-ml/pcre-ocaml:="
 DEPEND="${RDEPEND}
-	dev-ml/ounit"
+	test? ( >=dev-ml/ounit-2.0.0 )"
 
 DOCS=( "README.txt" "CHANGES.txt" "AUTHORS.txt" )

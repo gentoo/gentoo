@@ -11,7 +11,7 @@ inherit oasis
 MY_P=${PN/-/_}-${PV}
 DESCRIPTION="Jane Street Capital's asynchronous execution library (extra)"
 HOMEPAGE="http://www.janestreet.com/ocaml"
-SRC_URI="http://ocaml.janestreet.com/ocaml-core/${PV%.*}/files/${MY_P%.*}.tar.gz"
+SRC_URI="http://ocaml.janestreet.com/ocaml-core/${PV%.*}/files/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
@@ -31,6 +31,7 @@ DEPEND=">=dev-lang/ocaml-4.00.0:=
 	dev-ml/herelib:=
 	dev-ml/pa_test:=
 	dev-ml/camlp4:=
+	dev-ml/async_rpc_kernel:=
 	"
 RDEPEND="${DEPEND}"
 

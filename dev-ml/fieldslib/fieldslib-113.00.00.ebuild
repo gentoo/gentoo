@@ -9,21 +9,17 @@ OASIS_BUILD_DOCS=1
 inherit oasis
 
 MY_P=${PN/-/_}-${PV}
-DESCRIPTION="OCaml bindings for RE2"
+DESCRIPTION="Folding over record fields"
 HOMEPAGE="http://www.janestreet.com/ocaml"
-SRC_URI="http://ocaml.janestreet.com/ocaml-core/${PV%.*}.00/individual/${MY_P}.tar.gz"
+SRC_URI="http://ocaml.janestreet.com/ocaml-core/${PV%.*}/files/${MY_P}.tar.gz"
 
-LICENSE="Apache-2.0"
+LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND=">=dev-ml/type-conv-${PV}:=
-	dev-ml/core:=
-	dev-ml/bin-prot:=
-	dev-ml/sexplib:=
-	dev-ml/comparelib:=
-	dev-libs/re2:="
+	|| ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )"
 RDEPEND="${DEPEND}"
 
 DOCS=( "README.txt" )
