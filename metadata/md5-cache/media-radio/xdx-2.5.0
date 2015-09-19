@@ -4,10 +4,10 @@ DESCRIPTION=a GTK+ TCP/IP DX-cluster and ON4KST chat client
 EAPI=5
 HOMEPAGE=http://sourceforge.net/projects/xdxclusterclient
 IUSE=nls
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=x11-libs/gtk+-2.12:2
 SLOT=0
 SRC_URI=mirror://sourceforge/xdxclusterclient/xdx-2.5.0.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=54d3790b5ae5070e66bcf6a987b038f7
+_md5_=f24bbec81e91ecd9d750cc4ddba05ec0
