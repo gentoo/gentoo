@@ -19,6 +19,7 @@ RDEPEND="
 	dev-libs/urdfdom
 	dev-libs/tinyxml
 	dev-libs/boost:=
+	sci-libs/ignition-math:2=
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
