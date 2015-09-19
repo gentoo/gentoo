@@ -4,11 +4,11 @@ DESCRIPTION=The Versatile Commodore 8-bit Emulator
 EAPI=5
 HOMEPAGE=http://vice-emu.sourceforge.net/
 IUSE=Xaw3d alsa ethernet ffmpeg fullscreen +gtk2 ipv6 lame nls oss png pulseaudio sdl +sdlsound threads vte zlib
-KEYWORDS=~amd64 ~ppc ~sparc ~x86
+KEYWORDS=amd64 ~ppc ~sparc ~x86
 LICENSE=GPL-2+
 RDEPEND=virtual/jpeg:0 virtual/opengl media-libs/giflib alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio ) sdlsound? ( media-libs/libsdl[sound] ) ethernet? ( >=net-libs/libpcap-0.9.8 >=net-libs/libnet-1.1.2.1:1.1 ) ffmpeg? ( virtual/ffmpeg ) lame? ( media-sound/lame ) nls? ( virtual/libintl ) png? ( media-libs/libpng:0 ) zlib? ( sys-libs/zlib ) sdl? ( media-libs/libsdl[joystick,video] ) !sdl? ( fullscreen? ( x11-libs/libXrandr x11-libs/libXxf86vm ) x11-libs/libX11 x11-libs/libXext sys-libs/readline ) gtk2? ( x11-libs/gtk+:2 vte? ( x11-libs/vte:0 ) x11-libs/gtkglext x11-libs/pango x11-libs/cairo ) !sdl? ( !gtk2? ( x11-libs/libXmu x11-libs/libXpm x11-libs/libXt x11-libs/libXv Xaw3d? ( x11-libs/libXaw3d ) !Xaw3d? ( x11-libs/libXaw ) ) ) games-misc/games-envd
 REQUIRED_USE=?? ( gtk2 sdl )
 SLOT=0
 SRC_URI=mirror://sourceforge/vice-emu/releases/vice-2.4.20.tar.gz
 _eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	games	9c0a2dd4a6a25b6b7851fa01019cc809	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=b1bfce58ecf471ad36806ebf1bc50f50
+_md5_=63be1c14717bd01e74b35fccf8562aa9

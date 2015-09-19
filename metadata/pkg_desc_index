@@ -16861,7 +16861,7 @@ www-apache/mod_umask 0.1.0: Sets the Unix umask of the Apache2 webserver process
 www-apache/mod_vdbh 1.0.3-r1: An Apache2 module for mass virtual hosting using a MySQL database
 www-apache/mod_vhost_ldap 2.4.0: Store and configure Apache virtual hosts using LDAP
 www-apache/mod_whatkilledus 2.01: Debug segmentation faults in Apache threads
-www-apache/mod_wsgi 3.5 4.3.0 4.4.6 4.4.9 4.4.10: An Apache2 module for running Python WSGI applications
+www-apache/mod_wsgi 4.4.9 4.4.10 4.4.13: An Apache2 module for running Python WSGI applications
 www-apache/mod_xml2enc 1.0.3: An Apache2 module to provide libxml2 encoding
 www-apache/mod_xsendfile 1.0_beta1: Apache2 module that processes X-SENDFILE headers registered by the original output handler
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
