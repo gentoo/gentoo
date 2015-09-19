@@ -20,7 +20,7 @@ IUSE=""
 
 RDEPEND=">=dev-haskell/blaze-builder-0.2:=[profile?] <dev-haskell/blaze-builder-0.4:=[profile?]
 	>=dev-haskell/blaze-markup-0.5.1:=[profile?] <dev-haskell/blaze-markup-0.6:=[profile?]
-	>=dev-haskell/text-0.10:=[profile?] <dev-haskell/text-1.1:=[profile?]
+	>=dev-haskell/text-0.10:=[profile?]
 	>=dev-lang/ghc-6.10.4:=
 "
 DEPEND="${RDEPEND}
@@ -34,5 +34,6 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	cabal_chdeps \
-		'QuickCheck                 >= 2.4 && < 2.7' 'QuickCheck                 >= 2.4'
+		'QuickCheck                 >= 2.4 && < 2.7' 'QuickCheck                 >= 2.4' \
+		'text          >= 0.10  && < 1.1' 'text          >= 0.10'
 }
