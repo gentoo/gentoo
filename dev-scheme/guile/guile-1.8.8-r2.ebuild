@@ -16,12 +16,13 @@ RESTRICT="!regex? ( test )"
 
 RDEPEND="
 	>=dev-libs/gmp-4.1:0=
-	>=sys-devel/libtool-1.5.6
+	dev-libs/libltdl:0=
 	sys-devel/gettext
 	sys-libs/ncurses:0=
 	emacs? ( virtual/emacs )"
 DEPEND="${RDEPEND}
-	sys-apps/texinfo"
+	sys-apps/texinfo
+	sys-devel/libtool"
 
 # Guile seems to contain some slotting support, /usr/share/guile/ is slotted,
 # but there are lots of collisions. Most in /usr/share/libguile. Therefore
