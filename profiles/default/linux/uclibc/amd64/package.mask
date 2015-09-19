@@ -17,7 +17,6 @@ app-emulation/q4wine
 app-emulation/virtualbox
 app-emulation/virtualbox-extpack-oracle
 app-emulation/virtualbox-guest-additions
-app-emulation/vmware-player
 >=app-i18n/atokx3-3.0.0
 app-office/lotus-notes
 app-office/ooextras
