@@ -17078,7 +17078,7 @@ www-servers/pshs 0.2.6 9999: Pretty small HTTP server - a command-line tool to s
 www-servers/resin 4.0.44-r3: A fast Servlet and JSP engine
 www-servers/servefile 0.4.2 0.4.3: Serve a single file via HTTP
 www-servers/spawn-fcgi 1.6.3-r1 1.6.3-r2 1.6.4: A FCGI spawner for lighttpd and cherokee and other webservers
-www-servers/thin 1.6.3 1.6.3-r1: A fast and very simple Ruby web server
+www-servers/thin 1.6.3 1.6.3-r1 1.6.4: A fast and very simple Ruby web server
 www-servers/thttpd 2.26.4-r3 2.27.0 9999: Fork of thttpd, a small, fast, multiplexing webserver
 www-servers/tomcat 6.0.44 6.0.44-r2 7.0.59-r2 7.0.64 8.0.23-r2 8.0.26: Tomcat Servlet-3.1/JSP-2.3 Container
 www-servers/tornado 3.1.1 3.1.1-r1 4.0.1 4.0.2 4.1.0 4.1.0-r1 4.2 4.2.0_beta1 4.2.1: Tornado is a Python web framework and asynchronous networking library, ... .
