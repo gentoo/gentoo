@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/scid/${P}.zip
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 
 CDEPEND="dev-lang/tk:0
