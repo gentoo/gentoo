@@ -6,7 +6,7 @@ EAPI=4
 inherit eutils
 
 DESCRIPTION="a graphical music player daemon (MPD) client using GTK+2"
-HOMEPAGE="https://code.google.com/p/gimmix/"
+HOMEPAGE="https://launchpad.net/gimmix"
 SRC_URI="mirror://gentoo/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
