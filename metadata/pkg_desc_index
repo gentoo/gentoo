@@ -4502,7 +4502,7 @@ dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/ecore 1.7.10 9999: Enlightenment's core event abstraction layer and OS abstraction layer
 dev-libs/eet 1.7.8 1.7.9 1.7.10 9999: E file chunk reading/writing library
 dev-libs/eeze 1.7.8 1.7.9 1.7.10 9999: library to simplify the use of devices
-dev-libs/efl 1.12.2 1.13.1 1.15.0 9999: Enlightenment Foundation Libraries all-in-one package
+dev-libs/efl 1.12.2 1.13.1 1.15.0 1.15.1 9999: Enlightenment Foundation Libraries all-in-one package
 dev-libs/efreet 1.7.10 9999: library for handling of freedesktop.org specs (desktop/icon/theme/etc...)
 dev-libs/eina 1.7.9 1.7.10 9999: Enlightenment's data types library (list, hash, etc) in C
 dev-libs/eio 1.7.8 1.7.9 1.7.10 9999: Enlightenment's integration to IO
@@ -11603,7 +11603,7 @@ media-libs/devil 1.7.8-r2: DevIL image library
 media-libs/dssi 1.1.1: Plugin API for software instruments with user interfaces
 media-libs/dumb 0.9.3-r3: IT/XM/S3M/MOD player library with click removal and IT filters
 media-libs/edje 1.7.8 1.7.9 1.7.10 9999: graphical layout and animation library
-media-libs/elementary 1.12.2 1.13.1 1.15.0 9999: Basic widget set, based on EFL for mobile touch-screen devices
+media-libs/elementary 1.12.2 1.13.1 1.15.0 1.15.1 9999: Basic widget set, based on EFL for mobile touch-screen devices
 media-libs/emfengine 0.8: Native vector graphics file format on Windows
 media-libs/emotion 1.7.8 1.7.9 1.7.10 9999: video libraries for e17
 media-libs/esdl 1.0.1 1.2: Erlang bindings for the SDL library
@@ -18122,7 +18122,7 @@ x11-wm/cwm 5.1 5.1_p20130728 5.5 5.6 9999: OpenBSD fork of calmwm, a clean and l
 x11-wm/dwm 6.0: a dynamic window manager for X11
 x11-wm/echinus 0.4.9: A window manager for X in the spirit of dwm
 x11-wm/emerald 0.8.8: Emerald Window Decorator
-x11-wm/enlightenment 0.16.9999 0.17.6 0.17.9999 0.18.7 0.18.8 0.19.4 0.19.8 1.0.2 1.0.6 1.0.7 1.0.8 1.0.9 1.0.10 1.0.11 1.0.13 1.0.14 1.0.15 1.0.16 1.0.17: Enlightenment Window Manager (e16)
+x11-wm/enlightenment 0.16.9999 0.17.6 0.17.9999 0.18.7 0.18.8 0.19.4 0.19.8 0.19.10 1.0.2 1.0.6 1.0.7 1.0.8 1.0.9 1.0.10 1.0.11 1.0.13 1.0.14 1.0.15 1.0.16 1.0.17: Enlightenment Window Manager (e16)
 x11-wm/evilwm 1.0.1 1.1.0 1.1.1: A minimalist, no frills window manager for X
 x11-wm/fluxbox 1.3.2 1.3.5 1.3.5-r1 1.3.6-r1 1.3.7 1.3.7-r1 1.3.7-r2 9999: Fluxbox is an X11 window manager featuring tabs and an iconbar
 x11-wm/fvwm 2.6.5: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
