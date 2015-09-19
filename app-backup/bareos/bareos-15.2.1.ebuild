@@ -17,14 +17,15 @@ RESTRICT="mirror"
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="acl clientonly +director fastlz ipv6 logwatch mysql ndmp postgres python qt4
-		readline scsi-crypto sql-pooling +sqlite ssl static +storage-daemon tcpd
-		vim-syntax X cephfs glusterfs lmdb rados"
+IUSE="X acl cephfs clientonly +director fastlz glusterfs gnutls ipv6 jansson lmdb logwatch
+	mysql ndmp postgres python qt4 rados rados-striper readline scsi-crypto sql-pooling
+	+sqlite ssl static +storage-daemon tcpd vim-syntax"
 
 DEPEND="
 	!app-backup/bacula
 	cephfs? ( sys-cluster/ceph )
 	rados? ( sys-cluster/ceph )
+	rados-striper? ( >=sys-cluster/ceph-0.94.2 )
 	glusterfs? ( sys-cluster/glusterfs )
 	lmdb? ( dev-db/lmdb )
 	dev-libs/gmp:0
@@ -32,7 +33,10 @@ DEPEND="
 		postgres? ( dev-db/postgresql:*[threads] )
 		mysql? ( virtual/mysql )
 		sqlite? ( dev-db/sqlite:3 )
-		director? ( virtual/mta )
+		director? (
+			virtual/mta
+			jansson? ( dev-libs/jansson )
+		)
 	)
 	qt4? (
 		dev-qt/qtsvg:4
@@ -47,12 +51,18 @@ DEPEND="
 		sys-libs/zlib[static-libs]
 		dev-libs/lzo[static-libs]
 		sys-libs/ncurses:=[static-libs]
-		ssl? ( dev-libs/openssl:0[static-libs] )
+		ssl? (
+			!gnutls? ( dev-libs/openssl:0[static-libs] )
+			gnutls? ( net-libs/gnutls[static-libs] )
+		)
 	)
 	!static? (
 		acl? ( virtual/acl )
 		dev-libs/lzo
-		ssl? ( dev-libs/openssl:0 )
+		ssl? (
+			!gnutls? ( dev-libs/openssl:0 )
+			gnutls? ( net-libs/gnutls )
+		)
 		sys-libs/ncurses:=
 		sys-libs/zlib
 	)
@@ -172,7 +182,9 @@ src_configure() {
 		$(use_enable lmdb) \
 		$(use_with glusterfs) \
 		$(use_with rados) \
+		$(use_with rados-striper) \
 		$(use_with cephfs) \
+		$(use_with jansson) \
 		"
 
 	econf \
@@ -180,7 +192,7 @@ src_configure() {
 		--docdir=/usr/share/doc/${PF} \
 		--htmldir=/usr/share/doc/${PF}/html \
 		--with-pid-dir=/run/bareos \
-		--sysconfdir=/etc/bareos \
+		--sysconfdir=/etc \
 		--with-subsys-dir=/run/lock/subsys \
 		--with-working-dir=/var/lib/bareos \
 		--with-logdir=/var/log/bareos \
@@ -195,7 +207,6 @@ src_configure() {
 		--with-fd-group=bareos \
 		--with-sbin-perm=0755 \
 		--with-systemd \
-		--enable-smartalloc \
 		--enable-dynamic-cats-backends \
 		--enable-dynamic-storage-backends \
 		--enable-batch-insert \
