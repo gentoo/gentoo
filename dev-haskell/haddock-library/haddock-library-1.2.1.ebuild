@@ -18,6 +18,8 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
+RESTRICT=test # on ghc-7.6 Prelude collides with base-compat
+
 RDEPEND="dev-haskell/transformers:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
 "
