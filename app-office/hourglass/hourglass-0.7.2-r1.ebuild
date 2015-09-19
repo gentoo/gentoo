@@ -31,7 +31,7 @@ S="${WORKDIR}/${P}-src"
 java_prepare() {
 	echo "jar.log4j=$(java-pkg_getjar log4j log4j.jar)" > conf/local.properties
 	echo "jar.jcommon=$(java-pkg_getjar jcommon:1.0 jcommon.jar)" >> conf/local.properties
-	echo "jar.jdom=$(java-pkg_getjar jdom:0 jdom.jar)" >> conf/local.properties
+	echo "jar.jdom=$(java-pkg_getjar jdom jdom.jar)" >> conf/local.properties
 	echo "jar.ant=$(java-pkg_getjar --build-only ant-core ant.jar)" >> conf/local.properties
 }
 
