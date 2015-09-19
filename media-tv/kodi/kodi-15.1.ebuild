@@ -9,7 +9,7 @@ EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit eutils linux-info python-single-r1 multiprocessing autotools
+inherit eutils linux-info python-single-r1 multiprocessing autotools toolchain-funcs
 
 CODENAME="Isengard"
 case ${PV} in
@@ -172,7 +172,9 @@ src_prepare() {
 	multijob_finish
 	elibtoolize
 
-	[[ ${PV} == "9999" ]] && emake -f codegenerator.mk
+	if [[ ${PV} == "9999" ]] || use java ; then #558798
+		tc-env_build emake -f codegenerator.mk
+	fi
 
 	# Disable internal func checks as our USE/DEPEND
 	# stuff handles this just fine already #408395
