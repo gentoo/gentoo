@@ -6105,33 +6105,33 @@ dev-perl/Term-Screen 1.30.0-r1: A simple Term::Cap based screen positioning modu
 dev-perl/Term-ScreenColor 1.200.0-r1: A Term::Screen based screen positioning and coloring module
 dev-perl/Term-Shell 0.30.0-r1: A simple command-line shell framework
 dev-perl/Term-ShellUI 0.920.0-r1: A fully-featured shell-like command line environment
-dev-perl/TermReadKey 2.300.200-r1: Change terminal modes, and perform non-blocking reads
+dev-perl/TermReadKey 2.300.200-r1 2.330.0: Change terminal modes, and perform non-blocking reads
 dev-perl/Test-Assert 0.50.400-r1: Assertion methods for those who like JUnit
 dev-perl/Test-Base 0.600.0-r1 0.880.0: A Data Driven Testing Framework
 dev-perl/Test-CheckDeps 0.2.0 0.10.0: Check for presence of dependencies
-dev-perl/Test-Class 0.390.0-r1 0.410.0 0.480.0: Easily create test classes in an xUnit/JUnit style
+dev-perl/Test-Class 0.390.0-r1 0.480.0 0.500.0: Easily create test classes in an xUnit/JUnit style
 dev-perl/Test-ClassAPI 1.60.0-r1: Provides basic first-pass API testing for large class trees
 dev-perl/Test-CleanNamespaces 0.180.0: Check for uncleaned imports
 dev-perl/Test-Command 0.80.0-r1: Test routines for external commands
-dev-perl/Test-Command-Simple 0.040.0: Test external commands (nearly) as easily as loaded modules
-dev-perl/Test-Deep 0.110.0-r2 0.115.0-r1: Test::Deep - Extremely flexible deep comparison
+dev-perl/Test-Command-Simple 0.040.0 0.50.0: Test external commands (nearly) as easily as loaded modules
+dev-perl/Test-Deep 0.110.0-r2 0.115.0-r1 0.117.0: Test::Deep - Extremely flexible deep comparison
 dev-perl/Test-Dependencies 0.120.0: Ensure that your Makefile.PL specifies all module dependencies
 dev-perl/Test-Differences 0.610.0-r1 0.630.0: Test strings and data structures and show differences if not ok
 dev-perl/Test-DistManifest 1.12.0-r1 1.14.0: Author test that validates a package MANIFEST
 dev-perl/Test-Distribution 2.0.0-r1: perform tests on all modules of a distribution
-dev-perl/Test-Exception 0.320.0-r1 0.380.0: Test functions for exception based code
+dev-perl/Test-Exception 0.320.0-r1 0.380.0 0.400.0: Test functions for exception based code
 dev-perl/Test-FailWarnings 0.8.0: Add test failures if warnings are caught
 dev-perl/Test-Fatal 0.10.0-r1: Incredibly simple helpers for testing code with exceptions
 dev-perl/Test-File-ShareDir 1.1.1: Create a Fake ShareDir for your modules for testing.
 dev-perl/Test-Inline 2.212.0-r1 2.213.0-r1: Inline test suite support for Perl
 dev-perl/Test-Inter 1.30.0-r1: Framework for more readable interactive test scripts
 dev-perl/Test-LeakTrace 0.150.0: Traces memory leaks
-dev-perl/Test-LongString 0.150.0-r1: A library to test long strings
-dev-perl/Test-Manifest 1.230.0-r1: Interact with a t/test_manifest file
+dev-perl/Test-LongString 0.150.0-r1 0.170.0: A library to test long strings
+dev-perl/Test-Manifest 1.230.0-r1 2.20.0: Interact with a t/test_manifest file
 dev-perl/Test-Memory-Cycle 1.40.0-r1: Check for memory leaks and circular memory references
 dev-perl/Test-Mock-LWP-Dispatch 0.60.0: Mocks LWP::UserAgent and dispatches your requests/responses
 dev-perl/Test-MockModule 0.50.0-r1: Override subroutines in a module for unit testing
-dev-perl/Test-MockObject 1.201.203.10-r1: Perl extension for emulating troublesome interfaces
+dev-perl/Test-MockObject 1.201.203.10-r1 1.201.505.270: Perl extension for emulating troublesome interfaces
 dev-perl/Test-MockTime 0.130.0 0.150.0: Replaces actual time with simulated time
 dev-perl/Test-Most 0.310.0-r1 0.340.0: Most commonly needed test functions and features
 dev-perl/Test-NoWarnings 1.40.0-r2: Make sure you didn't emit any warnings while testing
