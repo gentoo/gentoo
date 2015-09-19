@@ -7228,7 +7228,7 @@ dev-python/numexpr 2.4 2.4.1 2.4.3 2.4.4: Fast numerical array expression evalua
 dev-python/numpy 1.8.0-r1 1.8.1 1.8.2 1.9.0 1.9.0-r1 1.9.1 1.9.2: Fast array and numerical python library
 dev-python/numpydoc 0.4-r1 0.5: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
-dev-python/oauth2 1.5.211-r1: Library for OAuth version 1.0
+dev-python/oauth2 1.5.211-r1 1.9.0_p1: Library for OAuth version 1.0
 dev-python/oauth2client 1.4.6 1.4.11 1.4.12: Library for accessing resources protected by OAuth 2.0
 dev-python/oauthlib 0.7.2 1.0.1: A generic, spec-compliant, thorough implementation of the OAuth request-signing logic
 dev-python/objgraph 1.7.2 1.8.1: Draws Python object reference graphs with graphviz
@@ -10759,7 +10759,7 @@ kde-frameworks/kplotting 5.13.0 5.14.0: Framework providing easy data-plotting f
 kde-frameworks/kpty 5.13.0 5.14.0: Framework for pseudo terminal devices and running child processes
 kde-frameworks/kross 5.13.0 5.14.0: Framework for embedding scripting into applications
 kde-frameworks/krunner 5.13.0 5.14.0: Framework for providing different actions given a string query
-kde-frameworks/kservice 5.13.0 5.14.0 5.14.2: Framework providing advanced features for plugins, such as file type association and locating
+kde-frameworks/kservice 5.13.0 5.14.0 5.14.3: Framework providing advanced features for plugins, such as file type association and locating
 kde-frameworks/ktexteditor 5.13.0 5.14.0: Framework providing a full text editor component
 kde-frameworks/ktextwidgets 5.13.0 5.14.0: Framework providing an assortment of widgets for displaying and editing text
 kde-frameworks/kunitconversion 5.13.0 5.14.0: Framework for converting units
