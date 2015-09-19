@@ -36,6 +36,7 @@ src_prepare() {
 		"${FILESDIR}/${P}-gcc5.patch" \
 		"${FILESDIR}/${P}-makeinfo-5.patch" \
 		"${FILESDIR}/${P}-gtexinfo-5.patch" \
+		"${FILESDIR}/${P}-tinfo.patch" \
 		"${FILESDIR}/${P}-sandbox.patch"
 
 	sed \
