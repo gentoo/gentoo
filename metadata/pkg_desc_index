@@ -17100,7 +17100,7 @@ x11-apps/fstobdf 1.0.5 1.0.6: generate BDF font from X font server
 x11-apps/fusion-icon 0.1-r2 0.1-r3 0.1-r4: Compiz Fusion Tray Icon and Manager
 x11-apps/iceauth 1.0.6 1.0.7: ICE authority file utility
 x11-apps/ico 1.0.4: animate an icosahedron or other polyhedron
-x11-apps/intel-gpu-tools 1.7 1.10 1.11-r1: Intel GPU userland tools
+x11-apps/intel-gpu-tools 1.7 1.10 1.11-r1 1.12: Intel GPU userland tools
 x11-apps/listres 1.0.3: list resources in widgets
 x11-apps/luit 1.1.1: Locale and ISO 2022 support for Unicode terminals
 x11-apps/mesa-progs 8.2.0 9999: Mesa's OpenGL utility and demo programs (glxgears and glxinfo)
