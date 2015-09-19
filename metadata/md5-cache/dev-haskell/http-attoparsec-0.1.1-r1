@@ -4,10 +4,10 @@ DESCRIPTION=Attoparsec parsers for http-types
 EAPI=5
 HOMEPAGE=https://github.com/tlaitinen/http-attoparsec
 IUSE=doc hscolour profile
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=BSD
 RDEPEND=>=dev-haskell/attoparsec-0.10.4.0:=[profile?] <dev-haskell/attoparsec-0.13:=[profile?] >=dev-haskell/http-types-0.8.0:=[profile?] <dev-haskell/http-types-0.9:=[profile?] >=dev-lang/ghc-6.12.1:=
 SLOT=0/0.1.1
 SRC_URI=mirror://hackage/packages/archive/http-attoparsec/0.1.1/http-attoparsec-0.1.1.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	ghc-package	6165faf4ae46df43d5a9b0dd28ec8654	haskell-cabal	844d30b2063d113d41e54823109e4325	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=7475d5c9847c9286ad7722876d1730e0
+_md5_=6f2bc4094cfe27ededc2265fcd457951
