@@ -11,7 +11,8 @@ SRC_URI="mirror://gnu/guile/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="networking +regex discouraged +deprecated emacs nls debug-freelist debug-malloc debug +threads"
+IUSE="debug debug-freelist debug-malloc +deprecated discouraged emacs networking nls readline +regex +threads"
+
 RESTRICT="!regex? ( test )"
 
 RDEPEND="
@@ -19,7 +20,8 @@ RDEPEND="
 	dev-libs/libltdl:0=
 	sys-devel/gettext
 	sys-libs/ncurses:0=
-	emacs? ( virtual/emacs )"
+	emacs? ( virtual/emacs )
+	readline? ( sys-libs/readline:0= )"
 DEPEND="${RDEPEND}
 	sys-apps/texinfo
 	sys-devel/libtool"
@@ -36,6 +38,7 @@ src_prepare() {
 		"${FILESDIR}/${P}-gcc5.patch" \
 		"${FILESDIR}/${P}-makeinfo-5.patch" \
 		"${FILESDIR}/${P}-gtexinfo-5.patch" \
+		"${FILESDIR}/${P}-readline.patch" \
 		"${FILESDIR}/${P}-tinfo.patch" \
 		"${FILESDIR}/${P}-sandbox.patch"
 
@@ -62,6 +65,7 @@ src_configure() {
 		--disable-static \
 		--enable-posix \
 		$(use_enable networking) \
+		$(use_enable readline) \
 		$(use_enable regex) \
 		$(use deprecated || use_enable discouraged) \
 		$(use_enable deprecated) \
