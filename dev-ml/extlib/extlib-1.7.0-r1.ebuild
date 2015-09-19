@@ -12,11 +12,11 @@ SRC_URI="https://github.com/ygrek/ocaml-extlib/archive/${PV}.tar.gz -> ${P}.tar.
 LICENSE="LGPL-2.1"
 DEPEND="
 	>=dev-lang/ocaml-3.10.2:=[ocamlopt?]
-	|| ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )
+	dev-ml/cppo:=
 "
 RDEPEND="${DEPEND}"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc +ocamlopt"
 S="${WORKDIR}/ocaml-${P}"
 
