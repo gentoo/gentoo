@@ -310,10 +310,13 @@ app-backup/bareos:clientonly - Only install file-daemon (client)
 app-backup/bareos:director - Install director
 app-backup/bareos:fastlz - Enable support vor lz4, lz4hc and lzfast using dev-libs/bareos-fastlzlib
 app-backup/bareos:glusterfs - Enable glusterfs storage backend
+app-backup/bareos:gnutls - When ssl is enabled, use GnuTLS instead of OpenSSL
+app-backup/bareos:jansson - JSON API support using JANSSON for director
 app-backup/bareos:lmdb - enable build of LMDB support for faster accurate backup
 app-backup/bareos:logwatch - Install support files for logwatch
 app-backup/bareos:ndmp - Enable support for NDMP (Network Data Management Protocol)
 app-backup/bareos:rados - Enable rados storage backend
+app-backup/bareos:rados-striper - Enable use of rados-striper
 app-backup/bareos:scsi-crypto - Enable low level SCSI crypto support
 app-backup/bareos:sql-pooling - Enable SQL pooling support
 app-backup/bareos:storage-daemon - Install storage daemon (bareos-sd)
