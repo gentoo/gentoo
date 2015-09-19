@@ -8129,7 +8129,7 @@ dev-ruby/dust 0.1.7-r1 0.1.7-r2: Descriptive block syntax definition for Test::U
 dev-ruby/equalizer 0.0.9 0.0.11: Module to define equality, equivalence and inspection methods
 dev-ruby/erubis 2.7.0-r1 2.7.0-r2: Erubis is an implementation of eRuby
 dev-ruby/escape_utils 1.1.0: Faster string escaping routines for your ruby apps
-dev-ruby/ethon 0.7.1 0.7.3 0.7.4: Very lightweight libcurl wrapper
+dev-ruby/ethon 0.7.4 0.8.0: Very lightweight libcurl wrapper
 dev-ruby/evented-spec 0.9.0: A set of helpers to help you test your asynchronous code
 dev-ruby/eventmachine 1.0.3-r1 1.0.3-r2 1.0.7 1.0.8: EventMachine is a fast, simple event-processing library for Ruby programs
 dev-ruby/execjs 1.4.0 2.2.2 2.5.2 2.6.0: ExecJS lets you run JavaScript code from Ruby
