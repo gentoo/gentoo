@@ -27,12 +27,6 @@ RDEPEND=">=app-emulation/dynamips-0.2.12
 		>=www-servers/tornado-3.1.1[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
-python_prepare_all() {
-	# avoid file collisions caused by required tests
-	sed -e "s:find_packages():find_packages(exclude=['tests','tests.*']):" -i setup.py || die
-	distutils-r1_python_prepare_all
-}
-
 pkg_postinst() {
 	ewarn "net-misc/gns3-server has several optional packages that must be merged manually for additional functionality."
 	ewarn ""
