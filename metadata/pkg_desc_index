@@ -13637,7 +13637,7 @@ net-libs/libyahoo2 1.0.1: interface to the new Yahoo! Messenger protocol
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/libzrtpcpp 2.3.4 4.2.4: GNU RTP stack for the zrtp protocol developed by Phil Zimmermann
 net-libs/loudmouth 1.4.3-r2: Lightweight C Jabber library
-net-libs/mbedtls 2.0.0 2.1.0: Cryptographic library for embedded systems
+net-libs/mbedtls 2.0.0 2.1.0 2.1.1: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
 net-libs/miniupnpc 1.6-r1 1.6.20120509 1.7 1.8 1.9.20150427: UPnP client library and a simple UPnP client
 net-libs/nacl 0_p20110221: high-speed software library for network communication, encryption, decryption, signatures
