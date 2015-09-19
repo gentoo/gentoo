@@ -4,11 +4,11 @@ DESCRIPTION=Docker complements kernel namespacing with a high-level API which op
 EAPI=5
 HOMEPAGE=https://www.docker.com
 IUSE=apparmor aufs btrfs +contrib +device-mapper doc experimental lxc overlay vim-syntax
-KEYWORDS=~amd64
+KEYWORDS=amd64
 LICENSE=Apache-2.0
 RDEPEND=>=dev-db/sqlite-3.7.9:3 device-mapper? ( >=sys-fs/lvm2-2.02.89[thin] ) !app-emulation/docker-bin >=net-firewall/iptables-1.4 sys-process/procps >=dev-vcs/git-1.7 >=app-arch/xz-utils-4.9 lxc? ( >=app-emulation/lxc-1.0.7 ) aufs? ( || ( sys-fs/aufs3 sys-fs/aufs4 sys-kernel/aufs-sources ) ) apparmor? ( sys-libs/libapparmor[static-libs] )
 RESTRICT=installsources strip
 SLOT=0
 SRC_URI=https://github.com/docker/docker/archive/v1.7.1.tar.gz -> docker-1.7.1.tar.gz
 _eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	351a78113be5b393c09a2c948701ad36	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	udev	37ef89be271b9ae8aa64be024ddb39b5	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=3114b58365527a016e6ecac4cab049d1
+_md5_=bdfde5fa9e30826ac605df5344c3ecaf
