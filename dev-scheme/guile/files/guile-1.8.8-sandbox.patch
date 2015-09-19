@@ -1,0 +1,15 @@
+Prevent sandbox violation when installing
+
+https://bugs.gentoo.org/521546
+
+--- a/guile-config/Makefile.am
++++ b/guile-config/Makefile.am
+@@ -39,8 +39,3 @@ guile-config: guile-config.in ${top_builddir}/libguile/libpath.h
+ 	    -e s:@-GUILE_VERSION-@:${GUILE_VERSION}:
+ 	chmod +x guile-config.tmp
+ 	mv guile-config.tmp guile-config
+-
+-## Get rid of any copies of the configuration script under the old
+-## name, so people don't end up running ancient copies of it.
+-install-exec-local:
+-	rm -f ${bindir}/build-guile

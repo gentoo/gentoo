@@ -34,7 +34,9 @@ src_prepare() {
 		"${FILESDIR}/${P}-gcc46.patch" \
 		"${FILESDIR}/${P}-gcc5.patch" \
 		"${FILESDIR}/${P}-makeinfo-5.patch" \
-		"${FILESDIR}/${P}-gtexinfo-5.patch"
+		"${FILESDIR}/${P}-gtexinfo-5.patch" \
+		"${FILESDIR}/${P}-sandbox.patch"
+
 	sed \
 		-e "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/g" \
 		-e "/AM_PROG_CC_STDC/d" \
@@ -78,7 +80,7 @@ src_compile()  {
 }
 
 src_install() {
-	einstall
+	emake DESTDIR="${D}" install
 
 	dodoc AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README THANKS
 
