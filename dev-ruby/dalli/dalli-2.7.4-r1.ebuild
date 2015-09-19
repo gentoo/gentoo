@@ -16,7 +16,7 @@ DESCRIPTION="A high performance pure Ruby client for accessing memcached servers
 HOMEPAGE="https://github.com/mperham/dalli"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64 ~x86"
 IUSE=""
 
 DEPEND+="${DEPEND} test? ( >=net-misc/memcached-1.4.0 )"
