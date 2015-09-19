@@ -17964,7 +17964,7 @@ x11-terms/rxvt-unicode 9.21: rxvt clone with xft and unicode support
 x11-terms/sakura 3.2.0 3.2.1 3.3.0: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.5 0.6 0.6-r1 9999: simple terminal implementation for X
 x11-terms/terminator 0.96-r1 0.97-r1 0.98: Multiple GNOME terminals in one window
-x11-terms/terminology 0.4.0 0.5.0 0.5.1 0.6.1 0.7.0 0.8.0 9999: Feature rich terminal emulator using the Enlightenment Foundation Libraries
+x11-terms/terminology 0.7.0 0.8.0 0.9.1 9999: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/terra 9999: Terminal emulator with split-screen support
 x11-terms/tilda 0.9.6: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/valaterm 0.6: A lightweight vala based terminal
@@ -18122,7 +18122,7 @@ x11-wm/cwm 5.1 5.1_p20130728 5.5 5.6 9999: OpenBSD fork of calmwm, a clean and l
 x11-wm/dwm 6.0: a dynamic window manager for X11
 x11-wm/echinus 0.4.9: A window manager for X in the spirit of dwm
 x11-wm/emerald 0.8.8: Emerald Window Decorator
-x11-wm/enlightenment 0.16.9999 0.17.6 0.17.9999 0.18.7 0.18.8 0.19.4 0.19.8 0.19.10 1.0.2 1.0.6 1.0.7 1.0.8 1.0.9 1.0.10 1.0.11 1.0.13 1.0.14 1.0.15 1.0.16 1.0.17: Enlightenment Window Manager (e16)
+x11-wm/enlightenment 0.16.9999 0.17.6 0.17.9999 0.18.7 0.18.8 0.19.4 0.19.8 0.19.10 1.0.11 1.0.13 1.0.14 1.0.15 1.0.16 1.0.17: Enlightenment Window Manager (e16)
 x11-wm/evilwm 1.0.1 1.1.0 1.1.1: A minimalist, no frills window manager for X
 x11-wm/fluxbox 1.3.2 1.3.5 1.3.5-r1 1.3.6-r1 1.3.7 1.3.7-r1 1.3.7-r2 9999: Fluxbox is an X11 window manager featuring tabs and an iconbar
 x11-wm/fvwm 2.6.5: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
