@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Tobias Klausmann <klausman@gentoo.org> (19 Sep 2015)
+# app-portage/g-sorcery pulls in pymongo and a whole host of deps that don't
+# work on alpha. Mask USE flag for layman accordingly
+app-portage/layman -g-sorcery
+
 # Brian Evans <grknight@gentoo.org> (17 Sep 2015)
 # Mask new USE flags for percona-server which are not available on alpha
 dev-db/percona-server tokudb tokudb-backup-plugin
