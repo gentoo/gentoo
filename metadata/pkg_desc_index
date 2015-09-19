@@ -4955,13 +4955,14 @@ dev-lua/luvit 0.7.0 0.8.2 9999: Takes node.js' architecture and dependencies and
 dev-lua/messagepack 0.3.2: A pure Lua implementation of the MessagePack serialization format
 dev-lua/toluapp 1.0.93: A tool to integrate C/C++ code with Lua
 dev-ml/ANSITerminal 0.6.5: Module which offers basic control of ANSI compliant terminals
-dev-ml/async 112.17.00 112.24.00 112.35.00: Jane Street Capital's asynchronous execution library
-dev-ml/async_extra 112.17.00 112.24.00 112.35.00: Jane Street Capital's asynchronous execution library (extra)
-dev-ml/async_kernel 112.17.00 112.24.00 112.35.00: Jane Street Capital's asynchronous execution library (core)
-dev-ml/async_rpc_kernel 112.35.00: Platform-independent core of Async RPC library
-dev-ml/async_unix 112.17.00 112.24.00 112.35.00: Jane Street Capital's asynchronous execution library (unix)
+dev-ml/async 112.35.00 113.00.00: Jane Street Capital's asynchronous execution library
+dev-ml/async_extra 112.35.00 113.00.00: Jane Street Capital's asynchronous execution library (extra)
+dev-ml/async_kernel 112.35.00 113.00.00: Jane Street Capital's asynchronous execution library (core)
+dev-ml/async_rpc_kernel 112.35.00 113.00.00: Platform-independent core of Async RPC library
+dev-ml/async_unix 112.35.00 113.00.00: Jane Street Capital's asynchronous execution library (unix)
 dev-ml/batteries 2.1 2.2 2.3: The community-maintained foundation library for your OCaml projects
-dev-ml/bin-prot 112.17.00 112.24.00 112.35.00: A binary protocol generator
+dev-ml/bignum 113.00.00: Core-flavoured wrapper around zarith's arbitrary-precision rationals
+dev-ml/bin-prot 112.35.00 113.00.00: A binary protocol generator
 dev-ml/biniou 1.0.9: A binary data serialization format inspired by JSON for OCaml
 dev-ml/bolt 1.4: Logging tool for the Objective Caml language
 dev-ml/cairo-ocaml 1.2.0: Ocaml bindings for the cairo vector graphics library
@@ -4976,17 +4977,17 @@ dev-ml/camlpdf 2.1.1: OCaml library for reading, writing, and modifying PDF file
 dev-ml/camlzip 1.05: Compressed file access ML library (ZIP, GZIP and JAR)
 dev-ml/camomile 0.8.4 0.8.5: Camomile is a comprehensive Unicode library for ocaml
 dev-ml/cmdliner 0.9.7: Declarative definition of command line interfaces for OCaml
-dev-ml/comparelib 109.27.00 109.60.00: Camlp4 syntax extension that derives comparison functions from type representations
-dev-ml/core 112.17.00 112.24.00 112.24.01 112.35.00 112.35.01: Jane Street's alternative to the standard library
-dev-ml/core_bench 112.17.00 112.35.00: Micro-benchmarking library for OCaml
-dev-ml/core_extended 112.17.00 112.24.00 112.35.00: Jane Street's alternative to the standard library
-dev-ml/core_kernel 112.35.00: System-independent part of Core
-dev-ml/core_profiler 112.35.00: Jane Street's profiling library
+dev-ml/comparelib 109.60.00 113.00.00: Camlp4 syntax extension that derives comparison functions from type representations
+dev-ml/core 112.35.01 113.00.00: Jane Street's alternative to the standard library
+dev-ml/core_bench 112.35.00: Micro-benchmarking library for OCaml
+dev-ml/core_extended 112.35.00 113.00.00: Jane Street's alternative to the standard library
+dev-ml/core_kernel 112.35.00 113.00.00: System-independent part of Core
+dev-ml/core_profiler 112.35.00 113.00.00: Jane Street's profiling library
 dev-ml/cppo 0.9.3 1.0.1 1.1.2 1.3.0: An equivalent of the C preprocessor for OCaml programs
 dev-ml/cryptokit 1.7 1.9 1.10: Cryptographic primitives library for Objective Caml
 dev-ml/csv 1.3.0 1.3.3 1.4: A pure OCaml library to read and write CSV files
 dev-ml/cudf 0.7 0.8: Library to parse, pretty print, and evaluate CUDF documents
-dev-ml/custom_printf 112.17.00 112.24.00: Syntax extension for printf format strings
+dev-ml/custom_printf 112.24.00 113.00.00: Syntax extension for printf format strings
 dev-ml/deriving 0.6.2 0.7: A deriving library for Ocsigen
 dev-ml/deriving-ocsigen 0.3c: A deriving library for Ocsigen
 dev-ml/dose3 3.3_beta2-r2 3.3 4.0_rc3: Library and a collection of tools to perform la large spectrum of analysis on package repositories
@@ -4996,13 +4997,13 @@ dev-ml/enumerate 111.08.00: Syntax extension to produce a list of all values of 
 dev-ml/extlib 1.5.4 1.6.1 1.7.0: Standard library extensions for O'Caml
 dev-ml/facile 1.1: A constraint programming library on integer and integer set finite domains written in OCaml
 dev-ml/faillib 109.60.00 111.17.00: Syntax extension for inserting the current location
-dev-ml/fieldslib 109.20.00 109.20.02 109.20.03: Folding over record fields
+dev-ml/fieldslib 109.20.03 113.00.00: Folding over record fields
 dev-ml/findlib 1.4 1.5.5 1.5.5-r1: OCaml tool to find/use non-standard packages
 dev-ml/fort 0.4.2: provides an environment for testing programs and Objective Caml modules
 dev-ml/gd4o 1.0_alpha5: OCaml interface to the GD graphics library
 dev-ml/herelib 109.35.00 109.35.02 112.35.00: Syntax extension for inserting the current location
 dev-ml/iTeML 2.0.1: Inline (Unit) Tests for OCaml
-dev-ml/incremental 112.35.00: Library for incremental computations
+dev-ml/incremental 112.35.00 113.00.00: Library for incremental computations
 dev-ml/js_of_ocaml 1.3.2 1.4 2.5 2.5-r1 2.6: A compiler from OCaml bytecode to javascript
 dev-ml/jsonm 0.9.1: Non-blocking streaming JSON codec for OCaml
 dev-ml/kaputt 1.2: Unit testing tool for the Objective Caml language
@@ -5021,7 +5022,7 @@ dev-ml/ocaml-ctypes 0.4.1: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.10 0.0.11: This project uses type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-doc 3.12: Ocaml reference manual (html)
 dev-ml/ocaml-expat 0.9.1: OCaml bindings for expat
-dev-ml/ocaml-expect 0.0.3 0.0.4: Ocaml implementation of expect to help building unitary testing
+dev-ml/ocaml-expect 0.0.4 0.0.5: Ocaml implementation of expect to help building unitary testing
 dev-ml/ocaml-fileutils 0.4.5 0.5.0: Pure OCaml functions to manipulate real file (POSIX like) and filename
 dev-ml/ocaml-gettext 0.3.4 0.3.5: Provides support for internationalization of OCaml program
 dev-ml/ocaml-ipaddr 2.5.0 2.6.1: OCaml library for manipulation of IP (and MAC) address representations
@@ -5049,26 +5050,26 @@ dev-ml/opam 1.2.0 1.2.1 1.2.2: A source-based package manager for OCaml
 dev-ml/optcomp 1.5 1.6: Optional compilation for OCaml with cpp-like directives
 dev-ml/ounit 1.1.2 2.0.0: Unit testing framework for OCaml
 dev-ml/pa_bench 109.55.02 111.28.00 112.06.00: Syntax extension writing inline benchmarks
-dev-ml/pa_ounit 112.17.00 112.24.00 112.35.00: Syntax extension that helps writing in-line test in ocaml
-dev-ml/pa_structural_sexp 112.35.00: Quotation expanders to simplify building s-expressions from ocaml values
+dev-ml/pa_ounit 112.35.00 113.00.00: Syntax extension that helps writing in-line test in ocaml
+dev-ml/pa_structural_sexp 112.35.00 113.00.00: Quotation expanders to simplify building s-expressions from ocaml values
 dev-ml/pa_test 111.08.01 112.24.00: Quotation expanders for assertions
 dev-ml/parmap 1.0_rc6: Library allowing to exploit multicore architectures for OCaml programs with minimal modifications
 dev-ml/pcre-ocaml 6.2.5 7.0.2 7.0.4 7.1.3 7.1.5 7.1.6: Perl Compatibility Regular Expressions for O'Caml
 dev-ml/pgocaml 1.7.1 2.1 2.2: PG'OCaml is a set of OCaml bindings for the PostgreSQL database
-dev-ml/pipebang 109.28.00 109.60.00 110.01.00: Syntax extension to transform x |! f into f x
+dev-ml/pipebang 110.01.00 113.00.00: Syntax extension to transform x |! f into f x
 dev-ml/pomap 3.0.2 3.0.3 3.0.5: Partially Ordered Map ADT for O'Caml
 dev-ml/postgresql-ocaml 2.0.5 2.0.6 3.2.0 3.2.1: A package for ocaml that provides access to PostgreSQL databases
 dev-ml/pxp 1.2.4 1.2.7: validating XML parser library for O'Caml
-dev-ml/re2 109.55.02 109.55.04 111.08.00 112.06.00 112.35.00: OCaml bindings for RE2
+dev-ml/re2 112.35.00 113.00.00: OCaml bindings for RE2
 dev-ml/react 0.9.4 1.2.0: OCaml module for functional reactive programming
 dev-ml/reactiveData 0.1: Functional reactive programming with incremental changes in data structures
 dev-ml/res 4.0.3 4.0.4 4.0.6 4.0.7: Resizable Array and Buffer modules for O'Caml
-dev-ml/sexplib 112.17.00 112.24.00 112.35.00: Library for automated conversion of OCaml-values to and from S-expressions
+dev-ml/sexplib 112.35.00 113.00.00: Library for automated conversion of OCaml-values to and from S-expressions
 dev-ml/textutils 112.17.00: Text output utilities
-dev-ml/type-conv 112.01.00 112.01.01 112.01.02: Mini library required for some other preprocessing libraries
+dev-ml/type-conv 112.01.02 113.00.00: Mini library required for some other preprocessing libraries
 dev-ml/typehashlib 109.15.02: Syntax extension for deriving 'typehash' functions automatically
-dev-ml/typerep 112.17.00 112.24.00 112.35.00: Library for creating runtime representation of OCaml types
-dev-ml/typerep_extended 112.17.00: Runtime types for OCaml (Extended)
+dev-ml/typerep 112.35.00 113.00.00: Library for creating runtime representation of OCaml types
+dev-ml/typerep_extended 112.17.00 113.00.00: Runtime types for OCaml (Extended)
 dev-ml/tyxml 3.5.0: A libary to build xml trees typechecked by OCaml
 dev-ml/ulex 1.1: A lexer generator for unicode
 dev-ml/utop 1.11 1.16 1.18: A new toplevel for OCaml with completion and colorization
@@ -5078,6 +5079,7 @@ dev-ml/xml-light 2.2-r1 2.2-r2 2.2-r3: Minimal Xml parser and printer for OCaml
 dev-ml/xmlm 1.1.1 1.2.0: Ocaml XML manipulation module
 dev-ml/xstr 0.2.1: Thread-safe implementation of string searching/matching/splitting
 dev-ml/yojson 1.2.0 1.2.1 1.2.3: JSON parsing and pretty-printing library for OCaml
+dev-ml/zarith 1.3: Arithmetic and logic operations over arbitrary-precision integers
 dev-ml/zed 1.2 1.4: Zed is an abstract engine for text edition
 dev-perl/Ace 1.920.0-r1: Object-Oriented Access to ACEDB Databases
 dev-perl/Acme-Damn 0.50.0 0.60.0: Module, that 'unblesses' Perl objects

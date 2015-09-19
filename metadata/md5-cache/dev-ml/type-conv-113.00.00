@@ -7,7 +7,7 @@ IUSE=+ocamlopt debug doc
 KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=>=dev-lang/ocaml-4.02[ocamlopt?] dev-ml/camlp4:= >=dev-lang/ocaml-3.12:=[ocamlopt?]
-SLOT=0/112.01.00
-SRC_URI=http://ocaml.janestreet.com/ocaml-core/112.01.00/individual/type_conv-112.01.00.tar.gz
+SLOT=0/113.00.00
+SRC_URI=http://ocaml.janestreet.com/ocaml-core/113.00/files/type_conv-113.00.00.tar.gz
 _eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	oasis	1f8aac15a40bfb39dd98018626248fe1	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=5cda3b492d31ceba747ce9d3e67fb4f6
+_md5_=f840ae5ecf234021421d435c78f26210
