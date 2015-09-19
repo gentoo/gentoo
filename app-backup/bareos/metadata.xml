@@ -11,10 +11,13 @@
     <flag name="director">Install director</flag>
     <flag name="fastlz">Enable support vor lz4, lz4hc and lzfast using dev-libs/bareos-fastlzlib</flag>
     <flag name="glusterfs">Enable glusterfs storage backend</flag>
+    <flag name="gnutls">When ssl is enabled, use GnuTLS instead of OpenSSL</flag>
+    <flag name="jansson">JSON API support using JANSSON for director</flag>
     <flag name="lmdb">enable build of LMDB support for faster accurate backup</flag>
     <flag name="logwatch">Install support files for logwatch</flag>
     <flag name="ndmp">Enable support for NDMP (Network Data Management Protocol)</flag>
     <flag name="rados">Enable rados storage backend</flag>
+    <flag name="rados-striper">Enable use of rados-striper</flag>
     <flag name="scsi-crypto">Enable low level SCSI crypto support</flag>
     <flag name="sql-pooling">Enable SQL pooling support</flag>
     <flag name="storage-daemon">Install storage daemon (bareos-sd)</flag>
