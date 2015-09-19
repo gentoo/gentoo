@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Huettel <dilfridge@gentoo.org> (19 Sep 2015)
+# Masked for security reasons, bugs 516044, 552644
+# Keeping it in the tree for now for users who cannot upgrade
+# (commercial product, separate licenses for major versions)
+=app-emulation/vmware-workstation-9*
+=app-emulation/vmware-modules-271*
+
 # Justin Lecher <jlec@gentoo.org> (15 Sep 2015)
 # Outdated and multiple bugs
 # Use upstream installer for up to version
