@@ -42,6 +42,8 @@ src_prepare() {
 		-e "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/g" \
 		-e "/AM_PROG_CC_STDC/d" \
 		-i guile-readline/configure.in
+
+	epatch_user
 	eautoreconf
 }
 
