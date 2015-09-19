@@ -18,7 +18,9 @@ RDEPEND="${DEPEND}
 	net-wireless/wireless-tools"
 
 PATCHES=( "${FILESDIR}"/${P}-cflags.patch
-	"${FILESDIR}"/${P}-3.14.patch )
+	"${FILESDIR}"/${P}-3.14.patch
+	"${FILESDIR}"/${P}-4.0.patch
+	"${FILESDIR}"/${P}-4.2.patch )
 MODULE_NAMES="ndiswrapper(misc:${S}/driver)"
 BUILD_TARGETS="all"
 MODULESD_NDISWRAPPER_ALIASES=("wlan0 ndiswrapper")
