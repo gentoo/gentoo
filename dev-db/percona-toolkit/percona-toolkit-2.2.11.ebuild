@@ -12,7 +12,7 @@ SRC_URI="http://www.percona.com/downloads/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 Artistic )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 # Package warrants IUSE doc
 IUSE=""
 
