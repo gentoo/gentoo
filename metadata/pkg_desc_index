@@ -13594,7 +13594,7 @@ net-libs/libnetfilter_log 1.0.1: interface to packets that have been logged by t
 net-libs/libnetfilter_queue 1.0.2: API to packets that have been queued by the kernel packet filter
 net-libs/libnfnetlink 1.0.1: the low-level library for netfilter related kernel/userspace communication
 net-libs/libnfsidmap 0.24 0.25 0.25-r1: NFSv4 ID <-> name mapping library
-net-libs/libnftnl 1.0.3 1.0.4: Netlink API to the in-kernel nf_tables subsystem
+net-libs/libnftnl 1.0.3 1.0.4 1.0.5: Netlink API to the in-kernel nf_tables subsystem
 net-libs/libnice 0.1.8 0.1.10 0.1.13: An implementation of the Interactice Connectivity Establishment standard (ICE)
 net-libs/libnids 1.24-r6: an implementation of an E-component of Network Intrusion Detection System
 net-libs/libnipper 0.12.6-r1: A router configuration security analysis library
