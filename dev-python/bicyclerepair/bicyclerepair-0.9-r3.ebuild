@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/bicyclerepair/${P}.tar.gz"
 
 LICENSE="icu GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="emacs"
 
 DEPEND="emacs? (
