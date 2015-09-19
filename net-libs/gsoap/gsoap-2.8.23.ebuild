@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/gsoap2/gsoap_${PV}.zip"
 
 LICENSE="GPL-2 gSOAP"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="doc debug examples ipv6 gnutls +ssl"
 
 DEPEND="app-arch/unzip
