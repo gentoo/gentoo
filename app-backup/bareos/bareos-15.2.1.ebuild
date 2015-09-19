@@ -192,7 +192,7 @@ src_configure() {
 		--docdir=/usr/share/doc/${PF} \
 		--htmldir=/usr/share/doc/${PF}/html \
 		--with-pid-dir=/run/bareos \
-		--sysconfdir=/etc/bareos \
+		--sysconfdir=/etc \
 		--with-subsys-dir=/run/lock/subsys \
 		--with-working-dir=/var/lib/bareos \
 		--with-logdir=/var/log/bareos \
