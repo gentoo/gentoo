@@ -44,6 +44,10 @@ src_prepare() {
 		-i guile-readline/configure.in
 
 	epatch_user
+
+	mv "${S}"/configure.{in,ac} || die
+	mv "${S}"/guile-readline/configure.{in,ac} || die
+
 	eautoreconf
 }
 
