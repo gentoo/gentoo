@@ -20,7 +20,7 @@ SRC_URI="https://dev.gentoo.org/~jlec/distfiles/aufs3-standalone-${PV}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug doc fuse hfs inotify kernel-patch nfs pax_kernel ramfs"
 
 DEPEND="
