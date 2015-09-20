@@ -4327,7 +4327,7 @@ dev-lang/dmd-bin 1.016 2.008-r1: Digital Mars D Compiler
 dev-lang/ekopath 6.0.477_p20150809 6.0.481_p20150811 6.0.521_p20150910: PathScale EKOPath Compiler Suite
 dev-lang/elixir 1.0.5: Elixir programming language
 dev-lang/epic 0.9.2 0.9.3 0.9.3.2 0.9.3.3: Compiler for a simple functional language
-dev-lang/erlang 15.2.3.1 17.3 17.5 18.0: Erlang programming language, runtime environment, and large collection of libraries
+dev-lang/erlang 15.2.3.1 17.3 17.5 18.0 18.0-r1: Erlang programming language, runtime environment, and large collection of libraries
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0: a non-interactive scripting language similar to SH
 dev-lang/f2c 20060507 20100827: Fortran to C converter
@@ -13864,7 +13864,7 @@ net-misc/connect 1.100 1.103: network connection relaying command (proxy)
 net-misc/connman 1.27 1.29 1.30: Provides a daemon for managing internet connections
 net-misc/corkscrew 2.0: a tool for tunneling SSH through HTTP proxies
 net-misc/csync 0.50.0: lightweight file synchronizer utility
-net-misc/curl 7.42.1 7.42.1-r1 7.43.0 7.44.0: A Client that groks URLs
+net-misc/curl 7.42.1 7.42.1-r1 7.43.0 7.44.0 7.44.0-r1: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.0.1-r1 2.10.1 2.10.2-r2: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1 2.10.2: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/datapipe 1.0-r1: bind a local port and connect it to a remote socket
@@ -14188,7 +14188,7 @@ net-misc/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-misc/vrrpd 1.0 1.9: Virtual Router Redundancy Protocol Daemon
 net-misc/vtun 3.0.2-r2 3.0.3: Create virtual tunnels over TCP/IP networks with traffic shaping, encryption, and compression
 net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
-net-misc/wget 1.16 1.16.1 1.16.2 1.16.3 1.16.3-r1: Network utility to retrieve files from the WWW
+net-misc/wget 1.16 1.16.1 1.16.2 1.16.3 1.16.3-r1 1.16.3-r2: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
 net-misc/whois 5.0.25 5.0.26 5.1.5 5.2.9 5.2.10: improved Whois Client
 net-misc/wicd 1.7.3 1.7.3-r2: A lightweight wired and wireless network manager for Linux
