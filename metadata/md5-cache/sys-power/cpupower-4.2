@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=sys-apps/pciutils !<sys-apps/linux-misc-apps-3.6-r2 !sys-power/cpufrequtils virtual/os-headers nls? ( sys-devel/gettext )
+DESCRIPTION=Shows and sets processor power related values
+EAPI=5
+HOMEPAGE=https://www.kernel.org/
+IUSE=cpufreq_bench debug nls
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+RDEPEND=sys-apps/pciutils !<sys-apps/linux-misc-apps-3.6-r2 !sys-power/cpufrequtils
+SLOT=0
+SRC_URI=mirror://kernel/linux/kernel/v3.x/linux-4.2.tar.xz
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_md5_=566624ecee69fdaa0d683697b082e648
