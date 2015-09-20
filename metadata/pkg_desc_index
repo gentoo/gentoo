@@ -2359,7 +2359,7 @@ app-text/pdfsandwich 0.1.4: generator of sandwich OCR pdf files
 app-text/pdfshuffler 0.6.0 0.6.0-r1: GUI app that can merge or split pdfs and rotate, crop and rearrange their pages
 app-text/pdftk 2.02: A tool for manipulating PDF documents
 app-text/peg-markdown 0.4.14: Implementation of markdown in C, using a PEG grammar
-app-text/pelican 3.4.0 3.5.0 3.6.0: A tool to generate a static blog, with restructured text (or markdown) input files
+app-text/pelican 3.6.0 3.6.3: A tool to generate a static blog, with restructured text (or markdown) input files
 app-text/pep 2.8-r1: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.45-r1 0.45-r2: Tools for helping translation of documentation
@@ -9107,7 +9107,7 @@ dev-util/ragel 6.7-r1 6.8 6.9: Compiles finite state machines from regular langu
 dev-util/rats 2.1-r2 2.3: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 0.7.2 0.7.3 0.7.4: Command line tools for use with Review Board
 dev-util/re2c 0.13.5-r1 0.13.6 0.13.7.5 0.14.2 0.14.3: tool for generating C-based recognizers from regular expressions
-dev-util/rebar 2.3.1 2.4.0 2.5.0: A sophisticated build-tool for Erlang projects that follows OTP principles
+dev-util/rebar 2.3.1 2.4.0 2.5.0 2.5.1: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/rec 1.6: Reverse Engineering Compiler
 dev-util/redet 8.26: A regular expression development and execution tool
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
@@ -15861,7 +15861,7 @@ sys-apps/rsbac-admin 1.4.9: Rule Set Based Access Control (RSBAC) Admin Tools
 sys-apps/s390-tools 1.17.0 1.23.1: User space utilities for the zSeries (s390) Linux kernel and device drivers
 sys-apps/s6 2.1.3.0: skarnet.org's small and secure supervision software suite
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
-sys-apps/sandbox 1.6-r2 2.3-r1 2.4 2.5 2.6-r1 2.7: sandbox'd LD_PRELOAD hack
+sys-apps/sandbox 1.6-r2 2.3-r1 2.4 2.5 2.6-r1 2.7 2.8: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.07 1.08-r1 1.09: Utility to output and modify parameters on a SCSI device, like hdparm
 sys-apps/secilc 9999: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.2.1-r1 4.2.2: Super-useful stream editor
@@ -16311,7 +16311,7 @@ sys-fs/gt5 1.4.0-r2: a diff-capable 'du-browser'
 sys-fs/hfsplusutils 1.0.4-r1: HFS+ Filesystem Access Utilities (a PPC filesystem)
 sys-fs/hfsutils 3.2.6-r5: HFS FS Access utils
 sys-fs/inotify-tools 3.13-r1 3.14: a set of command-line programs providing a simple interface to inotify
-sys-fs/iprutils 2.3.9 2.3.13 2.3.18 2.4.7 2.4.8-r1: IBM's tools for support of the ipr SCSI controller
+sys-fs/iprutils 2.4.7 2.4.8-r1: IBM's tools for support of the ipr SCSI controller
 sys-fs/jdiskreport-bin 1.2.5-r1 1.3.0 1.4.1: JDiskReport helps you to understand disk drive usage
 sys-fs/jfsutils 1.1.15: IBM's Journaling Filesystem (JFS) Utilities
 sys-fs/jmtpfs 0.5: A FUSE and libmtp based filesystem for accessing MTP devices
