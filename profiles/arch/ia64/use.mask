@@ -3,6 +3,10 @@
 
 # This is a list of USE flags that should not be used on ia64.
 
+# Julian Ospald <hasufell@gentoo.org> (20 Sep 2015)
+# no LibreSSL support yet
+libressl
+
 # No hardware to test by the team
 3dfx
 bluetooth

@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License, v2
 # $Id$
 
+# Julian Ospald <hasufell@gentoo.org> (20 Sep 2015)
+# no LibreSSL support yet
+libressl
+
 # Unmask the flag which corresponds to ARCH.
 -alpha
 
