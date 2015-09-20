@@ -20,7 +20,7 @@ KEYWORDS="alpha amd64 ppc sparc x86"
 IUSE="+network-uri"
 
 RDEPEND="<dev-haskell/exceptions-0.9:=[profile?]
-	>=dev-haskell/mtl-2.1:=[profile?] <dev-haskell/mtl-2.3:=[profile?]
+	>=dev-haskell/mtl-2.1.3.1:=[profile?] <dev-haskell/mtl-2.3:=[profile?]
 	dev-haskell/mtl-compat:=
 	>=dev-haskell/multipart-0.1.2:=[profile?] <dev-haskell/multipart-0.2:=[profile?]
 	<dev-haskell/old-locale-1.1:=[profile?]
@@ -37,6 +37,12 @@ DEPEND="${RDEPEND}
 "
 
 src_configure() {
+	local mtl_arg=()
+
+	has_version '<dev-haskell/mtl-2.2' && \
+		mtl_arg+=(--flag=old-mtl)
+
 	haskell-cabal_src_configure \
-		$(cabal_flag network-uri network-uri)
+		$(cabal_flag network-uri network-uri) \
+		${mtl_arg}
 }
