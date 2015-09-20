@@ -443,6 +443,9 @@ pkg_postinst() {
 	elog "Otherwise, please look at /usr/share/doc/${PF}/inetd.amanda.sample"
 	elog "as an example of how to configure your inetd."
 	elog
+	elog "systemd-users: enable and start amanda.socket or the relevant services"
+	elog "regarding what auth method you use."
+	elog
 	elog "NOTICE: If you need raw access to partitions you need to add the"
 	elog "amanda user to the 'disk' group."
 	elog
@@ -456,7 +459,7 @@ pkg_postinst() {
 	elog "Please note that this package no longer explicitly depends on"
 	elog "virtual/inetd, as it supports modes where an inetd is not needed"
 	elog "(see bug #506028 for details)."
-
+	elog "The only exception is when you use the authentication method 'local'."
 }
 
 # We have had reports of amanda file permissions getting screwed up.
