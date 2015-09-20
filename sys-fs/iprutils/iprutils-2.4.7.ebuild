@@ -12,7 +12,7 @@ HOMEPAGE="http://sourceforge.net/projects/iprdd/"
 
 SLOT="0"
 LICENSE="IBM"
-KEYWORDS="ppc ~ppc64"
+KEYWORDS="ppc ppc64"
 IUSE="static-libs"
 
 DEPEND="
