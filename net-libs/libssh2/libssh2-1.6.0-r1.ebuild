@@ -5,16 +5,15 @@
 EAPI=5
 
 AUTOTOOLS_AUTORECONF=true
-EGIT_REPO_URI="https://github.com/libssh2/libssh2"
-inherit autotools-multilib git-r3
+inherit autotools-multilib
 
 DESCRIPTION="Library implementing the SSH2 protocol"
 HOMEPAGE="http://www.libssh2.org/"
-SRC_URI=""
+SRC_URI="http://www.${PN}.org/download/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
 IUSE="gcrypt libressl static-libs test zlib"
 
 DEPEND="
@@ -32,7 +31,6 @@ PATCHES=( "${FILESDIR}"/${PN}-1.4.2-pkgconfig.patch )
 
 src_prepare() {
 	sed -i -e 's|mansyntax.sh||g' tests/Makefile.am || die
-	ln -s ../src/libssh2_config.h.in example/libssh2_config.h.in || die
 	autotools-multilib_src_prepare
 }
 
