@@ -16,7 +16,7 @@ SRC_URI="http://4ti2.de/version_${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~x86-macos"
+KEYWORDS="amd64 x86 ~x86-macos"
 IUSE="static-libs"
 
 DEPEND="
