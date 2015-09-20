@@ -10,5 +10,5 @@ RDEPEND=dev-libs/expat dev-libs/glib:2 dev-libs/nspr dev-libs/nss >=dev-libs/ope
 RESTRICT=bindist mirror
 SLOT=0
 SRC_URI=amd64? ( http://vivaldi.com/download/snapshot/vivaldi-snapshot_1.0.279.3-1_amd64.deb -> vivaldi-1.0.279.3_p1-amd64.deb ) x86? ( http://vivaldi.com/download/snapshot/vivaldi-snapshot_1.0.279.3-1_i386.deb -> vivaldi-1.0.279.3_p1-i386.deb )
-_eclasses_=chromium	464678910f514bebadf0a05ae36441e8	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	44555579e85afa5c035d2bd5428252da	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=chromium	26562f63af97a55545e3c0f891d2aab0	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	44555579e85afa5c035d2bd5428252da	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=18d88d1535936271a7d351c23dab638e
