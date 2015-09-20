@@ -4,7 +4,6 @@
 
 EAPI="5"
 GCONF_DEBUG="yes"
-VALA_MIN_API_VERSION="0.20"
 VALA_USE_DEPEND="vapigen"
 
 inherit gnome2 vala
@@ -15,8 +14,9 @@ HOMEPAGE="https://wiki.gnome.org/Projects/libgdata"
 LICENSE="LGPL-2.1+"
 SLOT="0/22" # subslot = libgdata soname version
 IUSE="gnome +introspection static-libs test vala"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 REQUIRED_IUSE="vala? ( introspection )"
+
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 # gtk+ is needed for gdk
 # configure checks for gtk:3, but only uses it for demos which are not installed
@@ -30,14 +30,13 @@ RDEPEND="
 	gnome? (
 		app-crypt/gcr:=
 		>=net-libs/gnome-online-accounts-3.8 )
-	introspection? ( >=dev-libs/gobject-introspection-0.9.7 )
+	introspection? ( >=dev-libs/gobject-introspection-0.9.7:= )
 "
 DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.14
 	>=dev-util/intltool-0.40
-	>=gnome-base/gnome-common-3.6
 	virtual/pkgconfig
-	test? ( net-libs/uhttpmock )
+	test? ( >=net-libs/uhttpmock-0.5 )
 	vala? ( $(vala_depend) )
 "
 
@@ -54,7 +53,7 @@ src_configure() {
 		$(use_enable introspection) \
 		$(use_enable vala) \
 		$(use_enable static-libs static) \
-		$(use_enable test tests)
+		$(use_enable test always-build-tests)
 }
 
 src_test() {
