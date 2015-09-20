@@ -4,8 +4,9 @@
 
 EAPI="5"
 GCONF_DEBUG="yes"
+GNOME2_LA_PUNT="yes"
 
-inherit gnome2
+inherit autotools eutils gnome2
 
 DESCRIPTION="GNOME framework for accessing online accounts"
 HOMEPAGE="https://wiki.gnome.org/Projects/GnomeOnlineAccounts"
@@ -32,7 +33,7 @@ RDEPEND="
 	>=x11-libs/gtk+-3.11.1:3
 	x11-libs/pango
 
-	introspection? ( >=dev-libs/gobject-introspection-0.6.2 )
+	introspection? ( >=dev-libs/gobject-introspection-0.6.2:= )
 	kerberos? (
 		app-crypt/gcr:0=
 		app-crypt/mit-krb5 )
@@ -48,10 +49,21 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.50.1
 	sys-devel/gettext
 	virtual/pkgconfig
+
+	dev-libs/gobject-introspection-common
+	gnome-base/gnome-common
 "
+# eautoreconf needs gobject-introspection-common, gnome-common
 
 # Due to sub-configure
 QA_CONFIGURE_OPTIONS=".*"
+
+src_prepare() {
+	# https://bugzilla.gnome.org/show_bug.cgi?id=750897
+	epatch "${FILESDIR}"/${PN}-3.16.3-parallel-make.patch
+	eautoreconf
+	gnome2_src_prepare
+}
 
 src_configure() {
 	# TODO: Give users a way to set the G/FB/Windows Live secrets
