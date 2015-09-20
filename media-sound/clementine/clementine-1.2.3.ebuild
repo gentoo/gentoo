@@ -19,7 +19,7 @@ SRC_URI="https://github.com/clementine-player/Clementine/archive/${PV}.tar.gz ->
 LICENSE="GPL-3"
 SLOT="0"
 [[ ${PV} == *9999* ]] || \
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="ayatana box cdda +dbus debug dropbox googledrive ipod lastfm mms moodbar mtp projectm skydrive system-sqlite test ubuntu-one +udisks wiimote"
 IUSE+="${LANGS// / linguas_}"
 
