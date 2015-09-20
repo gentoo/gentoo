@@ -2,8 +2,8 @@ DEFINED_PHASES=-
 DESCRIPTION=CLI designed to validate AppData descriptions for standards compliance and to the style guide
 EAPI=5
 HOMEPAGE=https://github.com/hughsie/appdata-tools/
-KEYWORDS=amd64 arm hppa ~ia64 ppc ppc64 ~sparc x86
+KEYWORDS=~alpha amd64 arm hppa ~ia64 ppc ppc64 ~sparc x86
 LICENSE=metapackage
 RDEPEND=>=dev-libs/appstream-glib-0.3.2
 SLOT=0
-_md5_=81e2e8b7937ce5cc7c1cdc57a29d4eb0
+_md5_=a1b763436695376df35933012f538888
