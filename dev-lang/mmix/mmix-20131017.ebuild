@@ -25,6 +25,7 @@ S="${WORKDIR}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-20110420-makefile.patch
+	epatch "${FILESDIR}"/${PN}-20131017-format-security.patch
 }
 
 src_compile() {
