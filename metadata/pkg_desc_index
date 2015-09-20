@@ -4378,7 +4378,6 @@ dev-lang/mono-basic 2.10: Visual Basic .NET Runtime and Class Libraries
 dev-lang/mozart 1.4.0-r2 1.4.0-r3: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 1.4.0-r1: The Mozart Standard Library
 dev-lang/mujs 0_p20150202: lightweight Javascript interpreter
-dev-lang/nacl-toolchain-newlib 0_p9093 0_p10520 0_p10915 0_p11846: Native Client newlib-based toolchain (only for compiling IRT)
 dev-lang/nasm 2.11.08: groovy little assembler
 dev-lang/niecza 19 21 22 24 9999: A Perl 6 compiler targetting the CLR with an experimental focus on optimizations
 dev-lang/niecza-bin 20 21 22 24: A Perl 6 compiler targetting the CLR with an experimental focus on optimizations
