@@ -4484,7 +4484,7 @@ dev-libs/cxxtools 1.4.8 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p03-r1 3.99.5_p05: REINER SCT cyberJack pinpad/e-com USB user space driver library
 dev-libs/cygwin 1.5.25.15: Linux-like environment for Windows
 dev-libs/cyrus-imap-dev 2.4.16 2.4.17: Developer support for the Cyrus IMAP Server
-dev-libs/cyrus-sasl 2.1.26-r9: The Cyrus SASL (Simple Authentication and Security Layer)
+dev-libs/cyrus-sasl 2.1.26-r9 2.1.26-r10: The Cyrus SASL (Simple Authentication and Security Layer)
 dev-libs/d0_blind_id 0.5: Blind-ID library for user identification using RSA blind signatures
 dev-libs/darts 0.32: A C++ template library that implements Double-Array
 dev-libs/dbus-c++ 0.9.0-r2: Provides a C++ API for D-BUS
@@ -5283,17 +5283,17 @@ dev-perl/Crypt-Cracklib 1.700.0-r1: Perl interface to Alec Muffett's Cracklib
 dev-perl/Crypt-DES 2.70.0: Crypt::DES module for perl
 dev-perl/Crypt-Eksblowfish 0.9.0-r2: the Eksblowfish block cipher
 dev-perl/Crypt-OpenPGP 1.60.0-r1 1.70.0: Pure-Perl OpenPGP-compatible PGP implementation
-dev-perl/Crypt-OpenSSL-Bignum 0.40.0-r1: OpenSSL's multiprecision integer arithmetic
-dev-perl/Crypt-OpenSSL-DSA 0.150.0: Digital Signature Algorithm using OpenSSL
-dev-perl/Crypt-OpenSSL-RSA 0.280.0-r1: Crypt::OpenSSL::RSA module for perl
-dev-perl/Crypt-OpenSSL-Random 0.40.0-r1: Crypt::OpenSSL::Random module for perl
+dev-perl/Crypt-OpenSSL-Bignum 0.40.0-r1 0.40.0-r2: OpenSSL's multiprecision integer arithmetic
+dev-perl/Crypt-OpenSSL-DSA 0.150.0 0.150.0-r1: Digital Signature Algorithm using OpenSSL
+dev-perl/Crypt-OpenSSL-RSA 0.280.0-r1 0.280.0-r2: Crypt::OpenSSL::RSA module for perl
+dev-perl/Crypt-OpenSSL-Random 0.40.0-r1 0.40.0-r2: Crypt::OpenSSL::Random module for perl
 dev-perl/Crypt-PasswdMD5 1.300.0-r1 1.400.0: Provides interoperable MD5-based crypt() functions
 dev-perl/Crypt-RC4 2.020.0-r1: Implements the RC4 encryption algorithm
 dev-perl/Crypt-RIPEMD160 0.50.0-r1: Crypt::RIPEMD160 module for perl
 dev-perl/Crypt-Random-Source 0.70.0-r1: Get weak or strong random data from pluggable sources
 dev-perl/Crypt-Rijndael 1.110.0-r1 1.120.0 1.130.0: Crypt::CBC compliant Rijndael encryption module
-dev-perl/Crypt-SMIME 0.100.0-r1 0.150.0: S/MIME message signing, verification, encryption and decryption
-dev-perl/Crypt-SSLeay 0.640.0 0.720.0: OpenSSL support for LWP
+dev-perl/Crypt-SMIME 0.100.0-r1 0.150.0 0.150.0-r1: S/MIME message signing, verification, encryption and decryption
+dev-perl/Crypt-SSLeay 0.640.0 0.720.0 0.720.0-r1: OpenSSL support for LWP
 dev-perl/Crypt-Simple 0.60.0-r1: Crypt::Simple - encrypt stuff simply
 dev-perl/Crypt-SmbHash 0.120.0-r1: LM/NT hashing, for Samba's smbpasswd entries
 dev-perl/Crypt-Twofish 2.170.0-r1: The Twofish Encryption Algorithm
@@ -5869,7 +5869,7 @@ dev-perl/Net-SMTPS 0.30.0-r1: SSL/STARTTLS support for Net::SMTP
 dev-perl/Net-SNMP 6.0.1-r1: A SNMP Perl Module
 dev-perl/Net-SNPP 1.170.0-r1: libnet SNPP component
 dev-perl/Net-SSH-AuthorizedKeysFile 0.160.0-r1 0.170.0: Read and modify ssh's authorized_keys files
-dev-perl/Net-SSH2 0.460.0 0.470.0 0.480.0 0.520.0 0.530.0: Net::SSH2 - Support for the SSH 2 protocol via libssh2
+dev-perl/Net-SSH2 0.460.0 0.470.0 0.480.0 0.520.0 0.530.0 0.530.0-r1: Net::SSH2 - Support for the SSH 2 protocol via libssh2
 dev-perl/Net-SSLeay 1.650.0-r1: Net::SSLeay module for perl
 dev-perl/Net-Server-Coro 1.300.0-r1: A co-operative multithreaded server using Coro
 dev-perl/Net-Server-Mail 0.210.0-r1: Class to easily create a mail server
@@ -10279,7 +10279,7 @@ gnome-extra/gnome-builder 3.16.3: Builder attempts to be an IDE for writing soft
 gnome-extra/gnome-calculator 3.14.1 3.16.1 3.16.2: A calculator application for GNOME
 gnome-extra/gnome-calendar 3.16.2: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-characters 3.16.2: Unicode character map viewer and library
-gnome-extra/gnome-clocks 3.14.1 3.16.1: Clocks application for GNOME
+gnome-extra/gnome-clocks 3.16.1 3.16.2: Clocks application for GNOME
 gnome-extra/gnome-color-chooser 0.2.5: GTK+/GNOME color customization tool
 gnome-extra/gnome-color-manager 3.12.3 3.14.2 3.16.0: Color profile manager for the GNOME desktop
 gnome-extra/gnome-commander 1.4.2 1.4.6 1.4.7: A graphical, full featured, twin-panel file manager
@@ -13630,7 +13630,7 @@ net-libs/libsoup 2.46.0-r1 2.48.1 2.50.0: An HTTP library implementation in C
 net-libs/libsoup-gnome 2.46.0 2.46.0-r1 2.48.1 2.50.0: GNOME plugin for libsoup
 net-libs/libsrtp 1.4.4-r1 1.4.4-r2 1.4.4_p20121108 1.4.4_p20121108-r1 1.5.2 1.5.2-r1: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/libssh 0.6.5 0.7.0-r1 0.7.1 9999: Access a working SSH implementation by means of a library
-net-libs/libssh2 1.5.0 1.6.0 9999: Library implementing the SSH2 protocol
+net-libs/libssh2 1.5.0 1.6.0 1.6.0-r1 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 0.1.10 0.2.4-r1 0.2.4-r2 0.2.5 0.3.1: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.3 0.13.4: BitTorrent library written in C++ for *nix
@@ -13653,7 +13653,7 @@ net-libs/net6 1.3.14: Network access framework for IPv4/IPv6 written in C++
 net-libs/netembryo 0.1.1: a network abstraction library
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
 net-libs/nfqueue-bindings 0.5: High-level language bindings for libnetfilter_queue
-net-libs/nghttp2 1.0.5 1.2.1 9999: HTTP/2 C Library
+net-libs/nghttp2 1.0.5 1.2.1 1.2.1-r1 9999: HTTP/2 C Library
 net-libs/nodejs 0.12.6 0.12.7: Evented IO for V8 Javascript
 net-libs/obby 0.4.8: Library for collaborative text editing
 net-libs/opal 3.10.11 3.12.4: C++ class library normalising numerous telephony protocols
@@ -14219,7 +14219,7 @@ net-nds/lat 1.2.3: LDAP Administration Tool, allows you to browse LDAP-based dir
 net-nds/ldapvi 1.7-r1 1.7_p20101214: Manage LDAP entries with a text editor
 net-nds/led 1.111: led is a general purpose LDAP editor
 net-nds/nsscache 0.23: commandline tool to sync directory services to local cache
-net-nds/openldap 2.3.43-r3 2.3.43-r4 2.4.38-r2 2.4.39 2.4.40 2.4.40-r2 2.4.40-r4 2.4.42: LDAP suite of application and development tools
+net-nds/openldap 2.3.43-r3 2.3.43-r4 2.4.38-r2 2.4.39 2.4.40 2.4.40-r2 2.4.40-r4 2.4.42 2.4.42-r1: LDAP suite of application and development tools
 net-nds/phpldapadmin 1.2.3 1.2.3-r1: phpLDAPadmin is a web-based tool for managing all aspects of your LDAP server
 net-nds/portmap 6.0 9999: Netkit - portmapper
 net-nds/rpcbind 0.2.0-r1 0.2.1-r1 0.2.2-r1 0.2.3 9999: portmap replacement which supports RPC over various protocols
