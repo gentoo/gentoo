@@ -18,10 +18,10 @@ KEYWORDS="amd64 x86"
 IUSE="abi_x86_x32"
 
 RDEPEND=">=app-eselect/eselect-emacs-1.16
-	sys-libs/ncurses
+	sys-libs/ncurses:0
 	amd64? (
-		abi_x86_x32? ( >=sys-libs/ncurses-5.9-r3[abi_x86_x32(-)?] )
-		!abi_x86_x32? ( >=sys-libs/ncurses-5.9-r3[abi_x86_32(-)] )
+		abi_x86_x32? ( >=sys-libs/ncurses-5.9-r3:0[abi_x86_x32(-)?] )
+		!abi_x86_x32? ( >=sys-libs/ncurses-5.9-r3:0[abi_x86_32(-)] )
 	)"
 #	X? ( x11-libs/libX11[-xcb] )
 DEPEND="${RDEPEND}
