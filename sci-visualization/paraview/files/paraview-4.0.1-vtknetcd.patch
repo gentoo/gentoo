@@ -1,0 +1,79 @@
+adapted from debian patch need to be applied after paraview-3.14.1-removesqlite.patch
+
+--- ParaView-3.98.0-src/VTK/ThirdParty/netcdf/CMakeLists.txt
++++ ParaView-3.98.0-src/VTK/ThirdParty/netcdf/CMakeLists.txt
+@@ -1,8 +1,8 @@
+-set(vtknetcdf_THIRD_PARTY 1)
+-set(vtknetcdf_LIBRARIES vtkNetCDF vtkNetCDF_cxx)
+-set(vtknetcdf_INCLUDE_DIRS
+-  ${vtknetcdf_SOURCE_DIR}/vtknetcdf/include
+-  ${vtknetcdf_BINARY_DIR}/vtknetcdf
+-  )
++#set(vtknetcdf_THIRD_PARTY 1)
++set(vtknetcdf_LIBRARIES netcdf netcdf_c++)
++#set(vtknetcdf_INCLUDE_DIRS
++#  ${vtknetcdf_SOURCE_DIR}/vtknetcdf/include
++#  ${vtknetcdf_BINARY_DIR}/vtknetcdf
++#  )
+ vtk_module_export_info()
+-add_subdirectory(vtknetcdf)
++#add_subdirectory(vtknetcdf)
+--- ParaView-3.98.0-src/VTK/ThirdParty/netcdf/vtk_netcdf.h
++++ ParaView-3.98.0-src/VTK/ThirdParty/netcdf/vtk_netcdf.h
+@@ -16,6 +16,6 @@
+ #define __vtk_netcdf_h
+ 
+ /* Use the netcdf library configured for VTK.  */
+-#include <vtknetcdf/include/netcdf.h>
++#include <netcdf.h>
+ 
+ #endif
+--- ParaView-3.98.0-src/VTK/ThirdParty/netcdf/vtk_netcdfcpp.h
++++ ParaView-3.98.0-src/VTK/ThirdParty/netcdf/vtk_netcdfcpp.h
+@@ -16,6 +16,6 @@
+ #define __vtk_netcdfcpp_h
+ 
+ /* Use the netcdf library configured for VTK.  */
+-#include <vtknetcdf/cxx/netcdfcpp.h>
++#include <netcdfcpp.h>
+ 
+ #endif
+--- ParaView-3.98.0-src/VTK/ThirdParty/exodusII/vtkexodusII/test/CMakeLists.txt
++++ ParaView-3.98.0-src/VTK/ThirdParty/exodusII/vtkexodusII/test/CMakeLists.txt
+@@ -21,7 +21,7 @@
+   )
+ 
+ add_executable(ExoIICTests ${ExoIICTests})
+-target_link_libraries(ExoIICTests vtkCommon vtkexoIIc vtkNetCDF)
++target_link_libraries(ExoIICTests vtkCommon vtkexoIIc netcdf)
+ 
+ set(TestsToRun ${ExoIICTests})
+ remove(TestsToRun ExoIICTests.cxx)
+--- ParaView-3.98.0-src/VTK/ThirdParty/exodusII/vtkexodusII/CMakeLists.txt
++++ ParaView-3.98.0-src/VTK/ThirdParty/exodusII/vtkexodusII/CMakeLists.txt
+@@ -241,7 +241,7 @@
+ 
+ 
+ VTK_ADD_LIBRARY(vtkexoIIc ${cbind_SRCS})
+-TARGET_LINK_LIBRARIES(vtkexoIIc vtkNetCDF)
++TARGET_LINK_LIBRARIES(vtkexoIIc netcdf)
+ 
+ IF(NOT VTK_INSTALL_NO_DEVELOPMENT)
+ #  INSTALL_FILES(${VTK_INSTALL_INCLUDE_DIR}/vtkexodus2 .h
+--- ParaView-3.98.0-src/VTK/IO/NetCDF/CMakeLists.txt
++++ ParaView-3.98.0-src/VTK/IO/NetCDF/CMakeLists.txt
+@@ -10,5 +10,5 @@
+ 
+ vtk_module_library(vtkIONetCDF ${Module_SRCS})
+ 
+-target_link_libraries(vtkIONetCDF vtkNetCDF_cxx)
++target_link_libraries(vtkIONetCDF netcdf netcdf_c++)
+ set_target_properties(vtkIONetCDF PROPERTIES LINK_INTERFACE_LIBRARIES "")
+--- ParaView-3.98.0-src/VTK/IO/ParallelNetCDF/CMakeLists.txt
++++ ParaView-3.98.0-src/VTK/IO/ParallelNetCDF/CMakeLists.txt
+@@ -8,4 +8,4 @@
+ 
+ vtk_module_library(vtkIOParallelNetCDF ${Module_SRCS})
+ 
+-target_link_libraries(vtkIOParallelNetCDF vtkNetCDF_cxx)
++target_link_libraries(vtkIOParallelNetCDF netcdf netcdf_c++)
