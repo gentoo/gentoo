@@ -11,7 +11,7 @@ SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ppc64 x86"
 IUSE="debug keybinder libnotify"
 
 RDEPEND=">=dev-libs/glib-2.24.0:=
