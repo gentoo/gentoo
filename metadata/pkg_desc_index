@@ -4472,7 +4472,6 @@ dev-libs/chmlib 0.40-r1: Library for MS CHM (compressed html) file format
 dev-libs/cityhash 1.0.3 1.1.0 1.1.1: Google's CityHash family of hash functions
 dev-libs/clearsilver 0.10.5-r2: Clearsilver is a fast, powerful, and language-neutral HTML template system
 dev-libs/cloog 0.18.0 0.18.1 0.18.3 0.18.4 9999: A loop generator for scanning polyhedra
-dev-libs/cloog-ppl 0.15.10: Port of CLooG (Chunky LOOp Generator) to PPL (Parma Polyhedra Library)
 dev-libs/collada-dom 2.4.0 2.4.3_pre20150112 9999: COLLADA Document Object Model (DOM) C++ Library
 dev-libs/confuse 2.7: a configuration file parser library
 dev-libs/console_bridge 0.2.7 9999: A ROS-independent package for logging into rosconsole/rosout for ROS-dependent packages.
