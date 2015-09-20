@@ -8,6 +8,7 @@
 axtls - Use axTLS
 gnutls - Use GnuTLS
 nss - Use Mozilla's Network Security Services 
+libressl - Use LibreSSL
 openssl - Use OpenSSL
 polarssl - Use Polar SSL
 winssl - Use WinSSL (only with elibc_Winnt) 
