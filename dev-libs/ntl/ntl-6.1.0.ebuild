@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
+
 inherit toolchain-funcs eutils multilib flag-o-matic
 
 DESCRIPTION="High-performance and portable Number Theory C++ library"
@@ -14,7 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-macos"
 IUSE="doc static-libs test"
 
-RDEPEND=">=dev-libs/gmp-4.3
+RDEPEND="
+	>=dev-libs/gmp-4.3:0=
 	>=dev-libs/gf2x-0.9"
 DEPEND="${RDEPEND}
 	dev-lang/perl"
@@ -24,7 +26,7 @@ S="${WORKDIR}/${P}/src"
 src_prepare() {
 	# fix parallel make
 	sed -i -e "s/make/make ${MAKEOPTS}/g" WizardAux || die
-	cd ..
+	cd .. || die
 	# enable compatibility with singular
 	epatch "$FILESDIR/${PN}-6.0.0-singular.patch"
 	# implement a call back framework (submitted upstream)
@@ -46,30 +48,30 @@ src_configure() {
 
 src_compile() {
 	# split the targets to allow parallel make to run properly
-	emake setup1 setup2 || die "emake setup failed"
-	emake setup3 || die "emake setup failed"
+	emake setup1 setup2
+	emake setup3
 	sh Wizard on || die "Tuning wizard failed"
 	if use static-libs || use test; then
-		emake ntl.a  || die "emake static failed"
+		emake ntl.a
 	fi
 	local trg=so
 	[[ ${CHOST} == *-darwin* ]] && trg=dylib
-	emake shared${trg} || die "emake shared failed"
+	emake shared${trg}
 }
 
 src_install() {
 	if use static-libs; then
-		newlib.a ntl.a libntl.a || die "installation of static library failed"
+		newlib.a ntl.a libntl.a
 	fi
-	dolib.so lib*$(get_libname) || die "installation of shared library failed"
+	dolib.so lib*$(get_libname)
 
-	cd ..
+	cd .. || die
 	insinto /usr/include
-	doins -r include/NTL || die "installation of the headers failed"
+	doins -r include/NTL
 
 	dodoc README
 	if use doc ; then
-		dodoc doc/*.txt || die
-		dohtml doc/* || die
+		dodoc doc/*.txt
+		dohtml doc/*
 	fi
 }
