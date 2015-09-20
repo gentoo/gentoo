@@ -25,3 +25,17 @@ RDEPEND=">=dev-haskell/mtl-2.1:=[profile?] <dev-haskell/mtl-2.3:=[profile?]
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.8
 "
+
+src_configure() {
+	local mtl_arg=()
+
+	has_version '>=dev-haskell/mtl-2.0.1' && \
+		has_version '<dev-haskell/mtl-2.2' && \
+		mtl_arg+=(--flag=two-point-one)
+	has_version '>=dev-haskell/mtl-2.2.0.1' && \
+		has_version '<dev-haskell/mtl-2.2.1' && \
+		mtl_arg+=(--flag=two-point-two)
+
+	haskell-cabal_src_configure \
+		${mtl_arg}
+}
