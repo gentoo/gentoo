@@ -1854,7 +1854,7 @@ app-misc/regex-markup 0.10.0: A tool to color syslog files as well
 app-misc/regionset 0.1-r1 0.2: Sets the region on DVD drives
 app-misc/relevation 1.3: a command-line searcher for the Revelation password manager
 app-misc/remind 03.01.15: Ridiculously functional reminder program
-app-misc/reptyr 0.5 0.6.2: A utility to attach a running program to a new terminal
+app-misc/reptyr 0.6.2: A utility to attach a running program to a new terminal
 app-misc/resolve-march-native 0.9: Resolve GCC flag -march=native
 app-misc/rioutil 1.5.0-r2: Command line tool for transfering mp3s to and from a Rio 600, 800, Rio Riot, and Nike PSA/Play
 app-misc/rl 0.2.7: Randomize lines from text files or stdin
@@ -6738,7 +6738,7 @@ dev-python/bandit 0.12.0 0.13.0 0.13.1 0.13.2 0.13.2-r1: A security linter from 
 dev-python/basemap 1.0.7-r1: matplotlib toolkit to plot map projections
 dev-python/bashate 0.3.1: A pep8 equivalent for bash scripts
 dev-python/bcolz 0.8.1 0.9.0 0.10.0: Provides columnar and compressed data containers
-dev-python/bcrypt 1.0.2-r1 1.1.1 2.0.0: Modern password hashing for software and servers
+dev-python/bcrypt 1.1.1 2.0.0: Modern password hashing for software and servers
 dev-python/beaker 1.6.4-r1 1.7.0-r1: A Session and Caching library with WSGI Middleware
 dev-python/beanstalkc 0.4.0 0.4.0-r1: A simple beanstalkd client library
 dev-python/beautifulsoup 3.1.0.1-r2 3.2.1-r1 4.1.3 4.1.3-r1 4.2.0 4.3.2 4.4.0: Provides pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
@@ -7227,7 +7227,7 @@ dev-python/nosexcover 1.0.10: Extends nose.plugins.cover to add Cobertura-style 
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
 dev-python/numba 0.18.2 0.19.2 0.20.0: NumPy aware dynamic Python compiler using LLVM
 dev-python/numdisplay 1.6.0-r1: Python package for interactively displaying FITS arrays
-dev-python/numexpr 2.4 2.4.1 2.4.3 2.4.4: Fast numerical array expression evaluator for Python and NumPy
+dev-python/numexpr 2.4.3 2.4.4: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.8.0-r1 1.8.1 1.8.2 1.9.0 1.9.0-r1 1.9.1 1.9.2: Fast array and numerical python library
 dev-python/numpydoc 0.4-r1 0.5: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
@@ -9220,7 +9220,7 @@ dev-vcs/git 1.8.5.6 1.9.5 2.0.5 2.1.4 2.2.3 2.3.8 2.3.9 2.4.6 2.4.8 2.4.9 2.5.2 
 dev-vcs/git-annex 5.20140927 5.20141125 5.20141203 5.20141231 5.20150219 5.20150327 5.20150617 5.20150710 5.20150731: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.12.04.26 0.12.12.15 9999: Bugzilla subcommand for git
 dev-vcs/git-bzr-ng 0_pre20120130 0_pre20120822: Git subcommand providing a bidirectional bridge to Bazaar repositories
-dev-vcs/git-cola 2.1.2 2.2.1 2.3: The highly caffeinated git GUI
+dev-vcs/git-cola 2.2.1 2.3: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.3 0.4 0.5.0: transparent file encryption in git
 dev-vcs/git-deploy 6.0.1_p20131024: make deployments so easy that you'll let new hires do them on their first day
 dev-vcs/git-flow 0.4.1 1.8.0-r1: Git extensions to provide high-level repository operations for Vincent Driessen's branching model
@@ -11386,7 +11386,7 @@ media-gfx/gif2apng 1.6 1.7 1.8 1.9: create an APNG from a GIF
 media-gfx/gif2png 2.5.8 2.5.9 2.5.10 2.5.11: Converts images from gif format to png format
 media-gfx/gifsicle 1.67 1.70 1.78 1.83 1.86 1.87 1.88: A command-line tool for creating, editing, and getting information about GIF images and animations
 media-gfx/gimageview 0.2.27-r3: Powerful GTK+ based image & movie viewer
-media-gfx/gimmage 0.2.3 0.2.3-r1: A slim GTK-based image browser
+media-gfx/gimmage 0.2.3-r1: A slim GTK-based image browser
 media-gfx/gimp 2.8.10-r1 2.8.10-r2 2.8.14 2.8.14-r1 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20120122: Brushes for GIMP including the styles arrow, handpointer, button arrow and cursor
 media-gfx/gliv 1.9.6 1.9.7: An image viewer that uses OpenGL
@@ -14998,7 +14998,7 @@ sci-libs/Shapely 1.3.0 1.3.2 9999: Geometric objects, predicates, and operations
 sci-libs/ViSP 2.10.0-r1: Visual Servoing Platform: visual tracking and visual servoing library
 sci-libs/acml 4.1.0-r2: AMD Core Math Library for x86 and amd64 CPUs
 sci-libs/adolc 2.4.1 2.5.0 2.5.2: Automatic differentiation system for C/C++
-sci-libs/alglib 3.7.0 3.8.2 3.10.0: Numerical analysis and data processing library
+sci-libs/alglib 3.8.2 3.10.0: Numerical analysis and data processing library
 sci-libs/amd 2.3.1: Library to order a sparse matrix prior to Cholesky factorization
 sci-libs/armadillo 3.4.4 3.6.2 4.650.4 5.400.2 5.500.2: Streamlined C++ linear algebra library
 sci-libs/arpack 3.1.3-r1 3.1.5: Arnoldi package library to solve large scale eigenvalue problems
@@ -17967,7 +17967,7 @@ x11-terms/rxvt 2.7.10-r4: A nice small x11 terminal
 x11-terms/rxvt-unicode 9.21: rxvt clone with xft and unicode support
 x11-terms/sakura 3.2.0 3.2.1 3.3.0: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.5 0.6 0.6-r1 9999: simple terminal implementation for X
-x11-terms/terminator 0.96-r1 0.97-r1 0.98: Multiple GNOME terminals in one window
+x11-terms/terminator 0.97-r1 0.98: Multiple GNOME terminals in one window
 x11-terms/terminology 0.7.0 0.8.0 0.9.1 9999: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/terra 9999: Terminal emulator with split-screen support
 x11-terms/tilda 0.9.6: A drop down terminal, similar to the consoles found in first person shooters
