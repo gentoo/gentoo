@@ -20,7 +20,7 @@ IUSE=""
 RDEPEND="
 	app-text/gv
 	dev-libs/libxml2:2
-	media-libs/libpng
+	media-libs/libpng:0
 	sci-libs/cfitsio
 	sci-libs/fftw:3.0
 	sci-libs/gsl
