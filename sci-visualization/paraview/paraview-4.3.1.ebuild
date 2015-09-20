@@ -90,12 +90,13 @@ pkg_setup() {
 src_prepare() {
 	# see patch headers for description
 	epatch "${FILESDIR}"/${PN}-4.0.1-xdmf-cstring.patch \
-		"${FILESDIR}"/${PN}-4.2.0-removesqlite.patch \
 		"${FILESDIR}"/${PN}-4.0.1-gcc-4.7.patch \
-		"${FILESDIR}"/${PN}-4.2.0-protobuf.patch \
-		"${FILESDIR}"/${P}-protobuf-2.6.patch \
 		"${FILESDIR}"/${PN}-4.1.0-no-fatal-warnings.patch \
-		"${FILESDIR}"/${PN}-4.2.0-vtk-freetype.patch
+		"${FILESDIR}"/${PN}-4.2.0-protobuf.patch \
+		"${FILESDIR}"/${PN}-4.2.0-removesqlite.patch \
+		"${FILESDIR}"/${PN}-4.2.0-vtk-freetype.patch \
+		"${FILESDIR}"/${P}-protobuf-2.6.patch \
+		"${FILESDIR}"/${P}-fix-development-install.patch
 
 	# lib64 fixes
 	sed -i \
