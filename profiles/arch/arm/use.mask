@@ -4,6 +4,10 @@
 # Unmask arm arch specific flags
 -iwmmxt
 
+# Julian Ospald <hasufell@gentoo.org> (20 Sep 2015)
+# no LibreSSL support yet
+libressl
+
 # Patrick Lauer <patrick@gentoo.org> (28 Apr 2015)
 # Dependencies not keyworded
 ayatana

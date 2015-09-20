@@ -1,0 +1,19 @@
+$OpenBSD: patch-src_Csocket_cpp,v 1.1 2014/07/12 14:42:37 pascal Exp $
+--- src/Csocket.cpp.orig	Sat Jul 12 16:03:48 2014
++++ src/Csocket.cpp	Sat Jul 12 16:04:36 2014
+@@ -555,6 +555,7 @@ bool InitSSL( ECompType eCompressionType )
+ 	}
+ #endif /* _WIN32 */
+ 
++#ifndef OPENSSL_NO_COMP
+ 	COMP_METHOD *cm = NULL;
+ 
+ 	if( CT_ZLIB & eCompressionType )
+@@ -570,6 +571,7 @@ bool InitSSL( ECompType eCompressionType )
+ 		if( cm )
+ 			SSL_COMP_add_compression_method( CT_RLE, cm );
+ 	}
++#endif
+ 
+ 	// setting this up once in the begining
+ 	g_iCsockSSLIdx = SSL_get_ex_new_index( 0, ( void * )"CsockGlobalIndex", NULL, NULL, NULL );

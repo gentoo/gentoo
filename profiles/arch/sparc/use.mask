@@ -7,6 +7,10 @@
 
 # This file contains a list of useflags that cannot be used on sparc.
 
+# Julian Ospald <hasufell@gentoo.org> (20 Sep 2015)
+# no LibreSSL support yet
+libressl
+
 # Andrey Grozin <grozin@gentoo.org> (25 Jun 2014)
 # keyworded on sparc
 -ecls

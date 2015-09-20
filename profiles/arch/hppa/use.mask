@@ -3,6 +3,10 @@
 
 # DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.
 
+# Julian Ospald <hasufell@gentoo.org> (20 Sep 2015)
+# no LibreSSL support yet
+libressl
+
 # Jeroen Roovers <jer@gentoo.org> (3 Feb 2015)
 # app-misc/geoclue has not been tested on HPPA
 geoclue
