@@ -17,6 +17,7 @@ IUSE="+modules"
 
 RDEPEND="dev-lang/luajit:2=
 	>=dev-libs/jsoncpp-0.6_pre:0=
+	sys-libs/ncurses:0=
 	sys-libs/zlib:0="
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
@@ -54,6 +55,7 @@ src_configure() {
 		-DJSONCPP_PREFIX="${EPREFIX}"/usr
 		-DJSONCPP_INCLUDE="${EPREFIX}"/usr/include/jsoncpp
 		-DUSE_BUNDLED_ZLIB=OFF
+		-DUSE_BUNDLED_NCURSES=OFF
 		-DZLIB_PREFIX="${EPREFIX}"/usr
 	)
 
