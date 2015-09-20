@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ppc ~ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="livecd"
 
-RDEPEND="sys-libs/ncurses
+RDEPEND="sys-libs/ncurses:0
 	!elibc_FreeBSD? ( >=dev-libs/libbsd-0.7.0 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
