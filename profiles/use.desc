@@ -179,6 +179,7 @@ libcaca - Add support for colored ASCII-art graphics
 libedit - Use the libedit library (replacement for readline)
 libffi - Enable support for Foreign Function Interface library
 libnotify - Enable desktop notification support
+libressl - Use dev-libs/libressl as SSL provider (might need ssl USE flag), packages should not depend on this USE flag
 libsamplerate - Build with support for converting sample rates using libsamplerate
 libwww - Add libwww support (General purpose WEB API)
 lirc - Add support for lirc (Linux's Infra-Red Remote Control)

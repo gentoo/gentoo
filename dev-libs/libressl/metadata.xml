@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>hasufell@gentoo.org</email>
+		<name>Julian Ospald</name>
+	</maintainer>
+	<natural-name>LibreSSL</natural-name>
+	<longdescription lang="en">
+		LibreSSL is a version of the TLS/crypto stack forked from OpenSSL in
+		2014, with goals of modernizing the codebase, improving security, and
+		applying best practice development processes.
+	</longdescription>
+	<use>
+		<flag name="asm">Enables assembly</flag>
+	</use>
+	<upstream>
+		<changelog>http://www.libressl.org/releases.html</changelog>
+		<bugs-to>mailto:libressl@openbsd.org</bugs-to>
+		<bugs-to>https://github.com/libressl-portable/portable/issues</bugs-to>
+		<remote-id type="github">libressl-portable/portable</remote-id>
+	</upstream>
+</pkgmetadata>
