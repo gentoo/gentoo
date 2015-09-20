@@ -92,7 +92,6 @@ src_prepare() {
 		"${FILESDIR}"/${P}-removesqlite.patch \
 		"${FILESDIR}"/${PN}-4.0.1-gcc-4.7.patch \
 		"${FILESDIR}"/${P}-protobuf.patch \
-		"${FILESDIR}"/${P}-protobuf-2.patch \
 		"${FILESDIR}"/${PN}-4.1.0-no-fatal-warnings.patch \
 		"${FILESDIR}"/${P}-vtk-freetype.patch
 

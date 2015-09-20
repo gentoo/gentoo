@@ -1,5 +1,11 @@
-diff --git a/ParaViewCore/ServerImplementation/Core/vtkPVMessage.proto b/ParaViewCore/ServerImplementation/Core/vtkPVMessage.proto
-index 60e084c..aed5832 100644
+https://gitlab.kitware.com/ben.boeckel/paraview/commit/40a62e0bd20ceb73d7a545dab73e975fa07cddbb
+http://www.vtk.org/Bug/view.php?id=15442#c34997
+
+https://bugs.gentoo.org/show_bug.cgi?id=537988
+
+This updates the *.proto files to be compatible with version 2.6 and fixes
+a bug that prevented successful compilation with protobuf 2.6.
+
 --- a/ParaViewCore/ServerImplementation/Core/vtkPVMessage.proto
 +++ b/ParaViewCore/ServerImplementation/Core/vtkPVMessage.proto
 @@ -21,7 +21,7 @@ message Variant {
@@ -159,3 +165,13 @@ index 60e084c..aed5832 100644
    }
  }
  
+--- a/ParaViewCore/ServerManager/Rendering/vtkSMCameraLink.cxx
++++ b/ParaViewCore/ServerManager/Rendering/vtkSMCameraLink.cxx
+@@ -363,6 +363,6 @@ void vtkSMCameraLink::LoadState(const vtkSMMessage *msg, vtkSMProxyLocator *loca
+ void vtkSMCameraLink::UpdateState()
+ {
+   this->Superclass::UpdateState();
+-  this->State->GetExtension(LinkState::sync_interactive_renders,
++  this->State->SetExtension(LinkState::sync_interactive_renders,
+     this->GetSynchronizeInteractiveRenders());
+ }

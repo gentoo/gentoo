@@ -29,7 +29,7 @@ RDEPEND="
 	dev-libs/expat
 	>=dev-libs/jsoncpp-0.10.1
 	dev-libs/libxml2:2
-	<dev-libs/protobuf-2.6
+	dev-libs/protobuf
 	media-libs/freetype
 	media-libs/libpng:0
 	media-libs/libtheora
@@ -93,7 +93,7 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-4.2.0-removesqlite.patch \
 		"${FILESDIR}"/${PN}-4.0.1-gcc-4.7.patch \
 		"${FILESDIR}"/${PN}-4.2.0-protobuf.patch \
-		"${FILESDIR}"/${PN}-4.2.0-protobuf-2.patch \
+		"${FILESDIR}"/${P}-protobuf-2.6.patch \
 		"${FILESDIR}"/${PN}-4.1.0-no-fatal-warnings.patch \
 		"${FILESDIR}"/${PN}-4.2.0-vtk-freetype.patch
 
