@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/show_bug.cgi?id=560670
+http://www.paraview.org/Bug/view.php?id=15655
+
+diff --git a/Qt/Components/CMakeLists.txt b/Qt/Components/CMakeLists.txt
+index c45b4bf..8616a90 100644
+--- a/Qt/Components/CMakeLists.txt
++++ b/Qt/Components/CMakeLists.txt
+@@ -650,7 +650,7 @@ vtk_module_library(${vtk-module}
+ #the pqSGExportStateWizard has subclasses that directly access
+ #the UI file, and currently we don't have a clean way to break this hard
+ #dependency, so for no we install this ui file.
+-if(PARAVIEW_INSTALL_DEVELOPMENT_FILES)
++if(PARAVIEW_INSTALL_DEVELOPMENT_FILES AND PARAVIEW_ENABLE_PYTHON)
+   install(FILES "${CMAKE_CURRENT_BINARY_DIR}/ui_pqExportStateWizard.h"
+           DESTINATION "${VTK_INSTALL_INCLUDE_DIR}")
+ endif()
