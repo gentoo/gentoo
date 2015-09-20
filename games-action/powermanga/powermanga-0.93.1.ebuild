@@ -11,7 +11,7 @@ SRC_URI="http://linux.tlk.fr/games/Powermanga/download/${P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 RDEPEND=">=media-libs/libsdl-1.2[sound,joystick,video]
