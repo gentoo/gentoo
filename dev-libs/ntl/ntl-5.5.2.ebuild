@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=3
 inherit toolchain-funcs eutils multilib flag-o-matic
 
 DESCRIPTION="High-performance and portable Number Theory C++ library"
@@ -11,7 +11,7 @@ SRC_URI="http://www.shoup.net/ntl/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-macos"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc static-libs test"
 
 RDEPEND=">=dev-libs/gmp-4.3
@@ -26,11 +26,11 @@ src_prepare() {
 	sed -i -e "s/make/make ${MAKEOPTS}/g" WizardAux || die
 	cd ..
 	# enable compatibility with singular
-	epatch "$FILESDIR/${PN}-6.0.0-singular.patch"
+	epatch "$FILESDIR/${P}-singular.patch"
 	# implement a call back framework (submitted upstream)
-	epatch "$FILESDIR/${PN}-6.0.0-sage-tools.patch"
+	epatch "$FILESDIR/${P}-sage-tools.patch"
 	# sanitize the makefile and allow the building of shared library
-	epatch "$FILESDIR/${PN}-5.5.2-shared-r1.patch"
+	epatch "$FILESDIR/${P}-shared.patch"
 	replace-flags -O[3-9] -O2
 }
 

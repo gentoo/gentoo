@@ -1,0 +1,12 @@
+--- include/NTL/new.h.orig	2008-05-06 21:56:16.000000000 +1200
++++ include/NTL/new.h	2008-05-06 21:56:33.000000000 +1200
+@@ -12,7 +12,8 @@
+ 
+ #include <new>
+ 
+-#define NTL_NEW_OP new (std::nothrow)
++// uncommenting std::nothrow makes this ntl work properly with Singular
++#define NTL_NEW_OP new //(std::nothrow) 
+ 
+ 
+ #else
