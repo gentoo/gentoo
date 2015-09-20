@@ -17030,7 +17030,7 @@ www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring to
 www-client/w3mmee 0.3.2_p24-r7: A variant of w3m with support for multiple character encodings
 www-client/weboob 0g 0h 9998 9999: Weboob (Web Outside of Browsers) provides several applications to interact with a lot of websites
 www-client/xombrero 1.6.3 9999: A minimalist web browser with sophisticated security features designed-in
-www-misc/awstats 7.1_p20121017 7.1.1 7.3: AWStats is short for Advanced Web Statistics
+www-misc/awstats 7.1_p20121017 7.1.1 7.3 7.4: AWStats is short for Advanced Web Statistics
 www-misc/bookmarksync 0.3.4-r2: bookmarksync synchronizes various browser bookmark files
 www-misc/fcgiwrap 1.1.0-r1 9999: Simple FastCGI wrapper for CGI scripts (CGI support for nginx)
 www-misc/gurlchecker 0.13.1-r1: Gnome tool that checks links on web pages/sites
@@ -17395,7 +17395,7 @@ x11-libs/rep-gtk 0.90.8.1: A GTK+/libglade/GNOME language binding for the librep
 x11-libs/scw 0.4.7: A GTK+ widget set specifically designed for chat programs
 x11-libs/startup-notification 0.12 0.12-r1: Application startup notification and feedback library
 x11-libs/tslib 1.0-r3: Touchscreen Access Library
-x11-libs/vte 0.28.2-r206 0.28.2-r207 0.36.3 0.36.4 0.38.3 0.40.2: Library providing a virtual terminal emulator widget
+x11-libs/vte 0.28.2-r207 0.36.4 0.38.3 0.40.2: Library providing a virtual terminal emulator widget
 x11-libs/wxGTK 2.8.12.1-r1 2.8.12.1-r2 2.9.4.1-r1 3.0.0.0 3.0.1.1 3.0.2.0 3.0.2.0-r1 3.0.2.0-r2: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
 x11-libs/xbae 4.60.4: Motif-based widget to display a grid of cells as a spreadsheet
 x11-libs/xcb-util 0.3.9 0.3.9-r1 0.4.0: X C-language Bindings sample implementations
