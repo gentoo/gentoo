@@ -31,11 +31,13 @@ dev-python/skype4py
 dev-util/android-sdk-update-manager
 dev-util/android-studio
 dev-util/biew
+games-action/awesomenauts
 games-action/cs2d
 games-action/descent3
 games-action/descent3-demo
 games-action/heretic2
 games-action/heretic2-demo
+games-action/hotline-miami
 games-action/lugaru
 games-action/lugaru-demo
 games-action/mutantstorm-demo
@@ -44,6 +46,7 @@ games-action/rune
 games-action/shadowgrounds-bin
 games-action/shadowgrounds-survivor-bin
 games-action/spacetripper-demo
+games-action/trine2
 games-arcade/aquaria
 games-arcade/barbarian-bin
 games-arcade/jardinains
