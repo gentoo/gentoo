@@ -1049,7 +1049,7 @@ app-editors/qwriter 0.1.9 0.1.9-r1: Advanced text editor with syntax highlightin
 app-editors/qxmledit 0.8.5 0.8.8.1: Qt4 XML Editor
 app-editors/retext 4.1.3 5.0.2 5.1.0 9999: A Qt-based text editor for Markdown and reStructuredText
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
-app-editors/scite 3.5.2 3.5.4 3.5.5: A very powerful editor for programmers
+app-editors/scite 3.5.2 3.5.4 3.5.5 3.6.1: A very powerful editor for programmers
 app-editors/shed 1.12 1.13 1.15: Simple Hex EDitor
 app-editors/tea 36.0.2 41.0.0: Small, lightweight Qt text editor
 app-editors/teco 1.00-r4: Classic TECO editor, Predecessor to EMACS
@@ -8098,7 +8098,7 @@ dev-ruby/compass-core 1.0.1 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-import-once 1.0.5: Speed up your Sass compilation by making @import only import each file once
 dev-ruby/configliere 0.4.18-r1 0.4.22: Settings manager for Ruby scripts
 dev-ruby/connection_pool 2.2.0: Generic connection pooling for Ruby
-dev-ruby/contracts 0.10.1 0.11.0: provides contracts for Ruby
+dev-ruby/contracts 0.10.1 0.11.0 0.12.0: provides contracts for Ruby
 dev-ruby/coolio 1.2.1 1.3.0: A high performance event framework for Ruby which uses the libev C library
 dev-ruby/countdownlatch 1.0.0-r1: Synchronization aid that allows threads to wait until a set of operations in other threads completes
 dev-ruby/crack 0.4.2 0.4.2-r1: Really simple JSON and XML parsing, ripped from Merb and Rails
