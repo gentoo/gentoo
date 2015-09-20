@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="4"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug calendar doc hbci ofx quotes"
 
 COMMON_DEPEND="
