@@ -22,7 +22,7 @@ RDEPEND="virtual/opengl"
 
 DEPEND="${RDEPEND}
 	dev-libs/boost
-	media-libs/glew
+	media-libs/glew:=
 	media-libs/glm
 	sys-devel/libtool
 	virtual/pkgconfig
