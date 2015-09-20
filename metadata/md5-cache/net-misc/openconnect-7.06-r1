@@ -4,10 +4,10 @@ DESCRIPTION=Free client for Cisco AnyConnect SSL VPN software
 EAPI=5
 HOMEPAGE=http://www.infradead.org/openconnect.html
 IUSE=doc +gnutls gssapi java libproxy nls static-libs linguas_ar linguas_cs linguas_de linguas_el linguas_en_GB linguas_en_US linguas_es linguas_eu linguas_fi linguas_fr linguas_gl linguas_id linguas_lt linguas_nl linguas_pa linguas_pl linguas_pt linguas_pt_BR linguas_sk linguas_sl linguas_tg linguas_ug linguas_uk linguas_zh_CN linguas_zh_TW elibc_FreeBSD java
-KEYWORDS=amd64 ~arm ~arm64 ~ppc64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~ppc64 x86
 LICENSE=LGPL-2.1 GPL-2
 RDEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( >=dev-libs/openssl-1.0.1h:0[static-libs?] ) gnutls? ( >=net-libs/gnutls-3[static-libs?] dev-libs/nettle app-misc/ca-certificates ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) nls? ( virtual/libintl ) sys-apps/iproute2 !<sys-apps/openrc-0.13 java? ( >=dev-java/java-config-2.2.0 )
 SLOT=0/5
 SRC_URI=ftp://ftp.infradead.org/pub/openconnect/openconnect-7.06.tar.gz ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-20140806.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	java-utils-2	c7374d201551e4fb8552994ef210e0f7	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	b81ab4852d108e3d9c940fa03bce80e1	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=20b924ec6e71f35dfe05e81430fe1fb3
+_md5_=9909b1c08205454c7541560aa235bab5

@@ -4,11 +4,11 @@ DESCRIPTION=Tool to submit code to Gerrit
 EAPI=5
 HOMEPAGE=https://git.openstack.org/cgit/openstack-infra/git-review
 IUSE=python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=Apache-2.0
 RDEPEND=>=dev-python/requests-1.1[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 )
 SLOT=0
 SRC_URI=mirror://pypi/g/git-review/git-review-1.24.tar.gz
 _eclasses_=distutils-r1	46506dd0dd992b3c89b0d00daabfd86c	eutils	351a78113be5b393c09a2c948701ad36	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-r1	32b376cbb100a3a8083b3a0de023e117	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=18a7f72e5eb96a8c8651f7b4481aa2d1
+_md5_=8b4546c963eb89b455a18687312b6941

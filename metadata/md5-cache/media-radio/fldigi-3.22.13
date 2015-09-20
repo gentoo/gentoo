@@ -4,9 +4,9 @@ DESCRIPTION=Sound card based multimode software modem for Amateur Radio use
 EAPI=5
 HOMEPAGE=http://www.w1hkj.com/Fldigi.html
 IUSE=hamlib nls portaudio pulseaudio sndfile
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-3
 RDEPEND=x11-libs/fltk:1[threads,xft] media-libs/libsamplerate media-libs/libpng:0 x11-misc/xdg-utils dev-perl/RPC-XML dev-perl/Term-ReadLine-Perl hamlib? ( media-libs/hamlib ) portaudio? ( >=media-libs/portaudio-19_pre20071207 ) pulseaudio? ( media-sound/pulseaudio ) sndfile? ( >=media-libs/libsndfile-1.0.10 )
 SLOT=0
 SRC_URI=http://www.w1hkj.com/downloads/fldigi/fldigi-3.22.13.tar.gz
-_md5_=bb6a9c194202ddfff85fb21c976e9261
+_md5_=7ac6b565b619ba850c302f2729e568b7

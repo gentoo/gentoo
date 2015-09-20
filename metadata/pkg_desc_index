@@ -6726,7 +6726,7 @@ dev-python/attrdict 2.0.0: A dict with attribute-style access
 dev-python/audioread 1.0.1: Module for decoding audio files using whichever backend is available
 dev-python/authres 0.701 0.702 0.800: Authentication Results Header Module
 dev-python/autobahn 0.9.4.2 0.10.4: WebSocket and WAMP for Twisted and Asyncio
-dev-python/autopep8 1.0.4 1.1 1.1.1 1.2 9999: Automatically formats Python code to conform to the PEP 8 style guide
+dev-python/autopep8 1.0.4 1.1 1.1.1 1.2 1.2.1 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/axiom 0.6.0-r1 0.7.2 0.7.3: Object database implemented on top of SQLite
 dev-python/babelfish 0.4.0 0.5.1 0.5.3 9999: Python library to work with countries and languages
 dev-python/backports 1.0: Namespace for backported Python features
@@ -7155,7 +7155,7 @@ dev-python/mako 1.0.0 1.0.2: A Python templating language
 dev-python/mamba 0.6 0.8.4 0.8.5: The definitive testing tool for Python. Born under the banner of Behavior Driven Development
 dev-python/mando 0.3.2: Create Python CLI apps with little to no effort at all!
 dev-python/mantissa 0.7.0-r1 0.8.0 0.8.1: An extensible, multi-protocol, multi-user, interactive application server
-dev-python/manuel 1.7.1: Manuel lets you build tested documentation
+dev-python/manuel 1.7.1 1.8.0: Manuel lets you build tested documentation
 dev-python/markdown 2.5.1 2.6.1 2.6.2: Python implementation of the markdown markup language
 dev-python/markdown2 2.2.1 2.2.3 2.3.0: Python Markdown language reimplementation
 dev-python/markups 0.2.4-r1 0.6.1 0.6.3: A wrapper around various text markups
@@ -7526,7 +7526,7 @@ dev-python/pysvn 1.7.9 1.7.10: Object-oriented python bindings for subversion
 dev-python/pysyck 0.61.2-r1: Python bindings for the Syck YAML parser and emitter
 dev-python/pytables 3.1.1-r2 3.2.0 3.2.1 3.2.1.1: Hierarchical datasets for Python
 dev-python/pyte 0.4.9: Simple VTXXX-compatible terminal emulator
-dev-python/pytest 2.7.2 2.7.3: py.test: simple powerful testing with Python
+dev-python/pytest 2.7.2 2.7.3 2.8.0: py.test: simple powerful testing with Python
 dev-python/pytest-cache 1.0: mechanisms for caching across test runs
 dev-python/pytest-capturelog 0.7: py.test plugin to capture log messages
 dev-python/pytest-cov 1.6 1.8.1 2.1.0: py.test plugin for coverage reporting
@@ -7669,6 +7669,7 @@ dev-python/recaptcha-client 1.0.6-r1: A plugin for reCAPTCHA and reCAPTCHA Mailh
 dev-python/reconfigure 0.1.50 0.1.72: An ORM for config files
 dev-python/redis-py 2.7.4 2.9.1 2.10.1 2.10.3: Python client for Redis key-value store
 dev-python/rednose 0.4.1 0.4.3: coloured output for nosetests
+dev-python/regendoc 0.5: Check/update simple file/shell examples in documentation
 dev-python/regex 2015.07.12 2015.07.19: Alternative regular expression module to replace re
 dev-python/remoteobjects 99999999: subclassable Python objects for working with JSON REST APIs
 dev-python/rencode 1.0.3: similar to bencode from the BitTorrent project
@@ -7727,7 +7728,7 @@ dev-python/sepolgen 1.2.1-r1 1.2.2 9999: SELinux policy generation library
 dev-python/serpent 1.7 1.9 1.10 1.11: A simple serialization library based on ast.literal_eval
 dev-python/service_identity 14.0.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.9: Allow customization of the process title
-dev-python/setuptools 2.2 7.0 8.0.1 8.2.1 9.1 12.0.1 12.0.3 12.0.5 15.0 15.2 16.0 17.0 17.1.1 18.0.1 18.1 18.2 18.2-r2 18.2-r3 18.3.1 9999: a collection of extensions to Distutils
+dev-python/setuptools 2.2 7.0 8.0.1 8.2.1 9.1 12.0.1 12.0.3 12.0.5 15.0 15.2 16.0 17.0 17.1.1 18.0.1 18.1 18.2 18.2-r2 18.2-r3 18.3.2 9999: a collection of extensions to Distutils
 dev-python/setuptools-git 1.0 1.1: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.5.4 1.5.5 1.7.0 1.8.0: package to manage versions by scm tags via setuptools
@@ -7816,7 +7817,7 @@ dev-python/tempest-lib 0.3.0 0.4.0 0.5.0 0.7.0: A library to assist in creating 
 dev-python/tempita 0.5.3: A very small text templating language
 dev-python/termcolor 1.1.0-r1: ANSII Color formatting for output in terminal
 dev-python/terminado 0.5: Terminals served to term.js using Tornado websockets
-dev-python/testfixtures 3.0.0 4.1.1 4.1.2: A collection of helpers and mock objects for unit tests and doc tests
+dev-python/testfixtures 3.0.0 4.1.1 4.1.2 4.3.3: A collection of helpers and mock objects for unit tests and doc tests
 dev-python/testify 0.5.7 0.7.2: A more pythonic replacement for the unittest module and nose
 dev-python/testrepository 0.0.17-r1 0.0.17-r2 0.0.18-r1: A repository of test results
 dev-python/testresources 0.2.7-r2: Testresources, a pyunit extension for managing expensive test resources
@@ -7913,7 +7914,7 @@ dev-python/webtest 1.4.3-r1 2.0.16 2.0.17 2.0.18: Helper to test WSGI applicatio
 dev-python/webut 0.1.0.2 0.1.0.2-r1: Miscellaneous utilities for nevow and twisted.web programming
 dev-python/wehjit 0.2.2-r1: A Python web-widget library
 dev-python/werkzeug 0.9.6 0.10 0.10.1 0.10.4: Collection of various utilities for WSGI applications
-dev-python/wheel 0.24.0: A built-package format for Python
+dev-python/wheel 0.24.0 0.26.0: A built-package format for Python
 dev-python/whirlpool 0.3-r1: Bindings for whirlpool hash reference implementation
 dev-python/whisper 0.9.13: Fixed size round-robin style database
 dev-python/whoosh 2.6.0 2.7.0: Fast, pure-Python full text indexing, search and spell checking library

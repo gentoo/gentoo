@@ -4,10 +4,10 @@ DESCRIPTION=Artistic Style is a reindenter and reformatter of C++, C and Java so
 EAPI=5
 HOMEPAGE=http://astyle.sourceforge.net/
 IUSE=doc java static-libs elibc_FreeBSD java
-KEYWORDS=amd64 ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=amd64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=LGPL-2.1
 RDEPEND=app-arch/xz-utils java? ( >=virtual/jdk-1.6:= ) java? ( >=dev-java/java-config-2.2.0 )
 SLOT=0
 SRC_URI=mirror://sourceforge/astyle/astyle_2.04_linux.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	java-utils-2	c7374d201551e4fb8552994ef210e0f7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=994398c56198a148d908b67ca15d4df6
+_md5_=4711f608f6498112fdc4703b12299709
