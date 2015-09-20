@@ -9,17 +9,18 @@ EAPI=5
 CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
-DESCRIPTION="Patience diff and longest increasing subsequence"
-HOMEPAGE="http://hackage.haskell.org/package/patience"
+DESCRIPTION="Monad classes, using functional dependencies"
+HOMEPAGE="http://github.com/ekmett/mtl"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE=""
 
-RDEPEND=">=dev-lang/ghc-7.4.1:=
+RDEPEND=">=dev-haskell/transformers-0.3:=[profile?] <dev-haskell/transformers-0.4:=[profile?]
+	>=dev-lang/ghc-6.10.4:=
 "
 DEPEND="${RDEPEND}
-	>=dev-haskell/cabal-1.2
+	>=dev-haskell/cabal-1.6.0.3
 "

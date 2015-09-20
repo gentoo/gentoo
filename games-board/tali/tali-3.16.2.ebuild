@@ -12,16 +12,17 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Tali"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 RDEPEND="
 	dev-libs/glib:2
 	>=gnome-base/librsvg-2.32:2
-	>=x11-libs/gtk+-3.12:3
+	>=x11-libs/gtk+-3.15:3
 "
 DEPEND="${RDEPEND}
 	app-text/yelp-tools
+	dev-libs/appstream-glib
 	>=dev-util/intltool-0.50
 	sys-devel/gettext
 	virtual/pkgconfig

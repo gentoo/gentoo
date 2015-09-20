@@ -38,6 +38,10 @@ diff --git a/Convert.lhs b/Convert.lhs
 index 01d2c32..d31f437 100644
 --- a/Convert.lhs
 +++ b/Convert.lhs
+@@ -50,2 +50,3 @@
+ > import Control.Monad
++> import Control.Applicative
+ > import System.IO                     hiding (  isEOF  )
 @@ -235,2 +235,9 @@ Writer monad for collecting multiple error messages.
  
 +> instance Functor (Writer w) where
@@ -104,6 +108,10 @@ diff --git a/Lib/OrdUniqListSet.lhs b/Lib/OrdUniqListSet.lhs
 index ddb8629..decf65d 100644
 --- a/Lib/OrdUniqListSet.lhs
 +++ b/Lib/OrdUniqListSet.lhs
+@@ -63,2 +63,3 @@
+ > import Control.Monad
++> import Control.Applicative (Applicative, pure, (<*>))
+ 
 @@ -114,2 +114,6 @@ Yes, \tr{Set} is a functor and a monad.
  >
 +> instance Applicative Set where

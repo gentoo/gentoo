@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		This package backports the &quot;Control.Monad.Except&quot; module from
+		@mtl@ (if using @mtl-2.2.0.1@ or earlier), which reexports the
+		@ExceptT@ monad transformer and the @MonadError@ class.
+		
+		This package should only be used if there is a need to use the
+		@Control.Monad.Except@ module specifically. If you just want
+		the @mtl@ class instances for @ExceptT@, use
+		@transformers-compat@ instead, since @mtl-compat@ does nothing
+		but reexport the instances from that package.
+		
+		Note that unlike how @mtl-2.2@ or later works, the
+		&quot;Control.Monad.Except&quot; module defined in this package exports
+		all of @ExceptT@&#39;s monad class instances. Therefore, you may
+		have to declare @import Control.Monad.Except ()@ at the top of
+		your file to get all of the @ExceptT@ instances in scope.
+	</longdescription>
+</pkgmetadata>
