@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile install postinst prepare
-DEPEND=sys-libs/ncurses !elibc_FreeBSD? ( >=dev-libs/libbsd-0.7.0 ) virtual/pkgconfig
+DEPEND=sys-libs/ncurses:0 !elibc_FreeBSD? ( >=dev-libs/libbsd-0.7.0 ) virtual/pkgconfig
 DESCRIPTION=MicroGnuEmacs, a port from the BSDs
 EAPI=5
 HOMEPAGE=http://homepage.boetes.org/software/mg/
 IUSE=livecd
 KEYWORDS=alpha amd64 arm hppa ppc ~ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd
 LICENSE=public-domain
-RDEPEND=sys-libs/ncurses !elibc_FreeBSD? ( >=dev-libs/libbsd-0.7.0 )
+RDEPEND=sys-libs/ncurses:0 !elibc_FreeBSD? ( >=dev-libs/libbsd-0.7.0 )
 SLOT=0
 SRC_URI=http://homepage.boetes.org/software/mg/mg-20150323.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=bc345865cec7c28a946624dea34242f4
+_md5_=300a645e4040a91ca2e6b542e0d9e3d0
