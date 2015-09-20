@@ -53,6 +53,7 @@ src_install() {
 	fperms 0750 var/log/puppetlabs/puppet/
 	# the rest
 	insinto /opt
+	dodir opt/puppetlabs/puppet/cache
 	doins -r opt/*
 	fperms 0750 /opt/puppetlabs/puppet/cache
 	# init
