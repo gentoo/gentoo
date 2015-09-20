@@ -20,20 +20,21 @@ IUSE="gnome pulseaudio"
 RESTRICT="mirror strip"
 
 DEPEND=""
-RDEPEND="${DEPEND}
-		dev-libs/glib:2
-		|| ( dev-libs/libgcrypt:11/11 dev-libs/libgcrypt:0/11 dev-libs/libgcrypt:0/20 )
-		dev-libs/nss
-		gnome-base/gconf:2
-		media-libs/alsa-lib
-		net-misc/curl
-		sys-apps/util-linux
-		virtual/udev
-		x11-libs/gtk+:2
-		x11-libs/libX11
-		x11-libs/libXtst
-		pulseaudio? ( >=media-sound/pulseaudio-0.9.21 )
-		gnome? ( gnome-extra/gnome-integration-spotify )"
+RDEPEND="
+	${DEPEND}
+	dev-libs/nss
+	gnome-base/gconf
+	media-libs/alsa-lib
+	media-libs/harfbuzz[fontconfig]
+	media-libs/mesa
+	net-misc/curl[rtmp]
+	net-print/cups[ssl]
+	sys-libs/glibc
+	x11-libs/gtk+:2
+	x11-libs/libXScrnSaver
+	x11-libs/libXtst
+	pulseaudio? ( media-sound/pulseaudio )
+	gnome? ( gnome-extra/gnome-integration-spotify )"
 
 S=${WORKDIR}/
 
