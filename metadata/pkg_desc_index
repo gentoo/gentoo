@@ -9916,7 +9916,7 @@ games-puzzle/galaxis 1.8: A UNIX-hosted, curses-based clone of the nifty little 
 games-puzzle/gemdropx 0.9-r1: A puzzle game where it's your job to clear the screen of gems
 games-puzzle/gfifteen 1.0.3: graphical implementation of the sliding puzzle game fifteen
 games-puzzle/glightoff 1.0.0-r1: A simple (but not so easy to solve!) puzzle game
-games-puzzle/gnome-klotski 3.14.2 3.16.1: Slide blocks to solve the puzzle
+games-puzzle/gnome-klotski 3.16.1 3.16.2: Slide blocks to solve the puzzle
 games-puzzle/gnome-sudoku 3.14.2 3.16.0: Test your logic skills in this number grid puzzle
 games-puzzle/gnome-taquin 3.16.1: Move tiles so that they reach their places
 games-puzzle/gnome-tetravex 3.14.0 3.16.0: Complete the puzzle by matching numbered tiles
@@ -10287,7 +10287,7 @@ gnome-extra/gnome-contacts 3.14.2 3.16.2: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.6: Thumbnail generator for directories
 gnome-extra/gnome-do 0.9: GNOME Do allows you to get things done quickly
 gnome-extra/gnome-do-plugins 0.8.5: Plugins to put the Do in Gnome Do
-gnome-extra/gnome-documents 3.14.3 3.16.2 3.16.3: A document manager application for GNOME
+gnome-extra/gnome-documents 3.16.3 3.16.4: A document manager application for GNOME
 gnome-extra/gnome-dvb-daemon 0.2.10: Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
 gnome-extra/gnome-getting-started-docs 3.14.1 3.16.2: Help a new user get started in GNOME
 gnome-extra/gnome-integration-spotify 20131013 20140907: GNOME integration for Spotify
