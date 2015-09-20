@@ -19,3 +19,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
+
+all_ruby_prepare() {
+	sed -i -e '/bundler/I s:^:#:' Rakefile || die
+}
