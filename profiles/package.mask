@@ -30,6 +30,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Ian Delaney <idella4@gentoo.org> (21 Jul 2015)
+# Packages deprecated in favour of new form of
+# net-firewall/shorewall
+# Bug #560392
+net-firewall/shorewall-core
+net-firewall/shorewall-init
+net-firewall/shorewall-lite
+net-firewall/shorewall6
+net-firewall/shorewall6-lite
+<net-firewall/shorewall-4.6.10.1
+
 # Andreas K. Huettel <dilfridge@gentoo.org> (19 Sep 2015)
 # Masked for security reasons, bugs 516044, 552644
 # Keeping it in the tree for now for users who cannot upgrade
