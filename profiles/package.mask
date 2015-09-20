@@ -47,7 +47,7 @@ sci-chemistry/balbes
 sci-chemistry/ccp4
 sci-chemistry/ccp4-apps
 sci-chemistry/ccp4i
-<sci-chemistry/coot-8
+<sci-chemistry/coot-0.8
 sci-chemistry/imosflm
 sci-chemistry/makecif
 sci-chemistry/molrep
