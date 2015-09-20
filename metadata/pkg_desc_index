@@ -2826,7 +2826,7 @@ dev-cpp/pngpp 0.2.5: A simple but powerful C++ interface to libpng
 dev-cpp/pstreams 0.7.0 0.8.1: C++ wrapper for the POSIX.2 functions popen(3) and pclose(3)
 dev-cpp/rudiments 0.46 0.51: C++ class library for daemons, clients and servers
 dev-cpp/sparsehash 1.10 2.0.2: An extremely memory-efficient hash_map implementation
-dev-cpp/tbb 4.1.20121003-r1 4.3.20141023 4.3.20141023-r1 4.3.20150611: High level abstract threading library
+dev-cpp/tbb 4.3.20141023 4.3.20150611: High level abstract threading library
 dev-cpp/tclap 1.2.1: Simple templatized C++ library for parsing command line arguments
 dev-cpp/threadpool 0.2.5: A cross-platform C++ thread pool library (built on top of Boost)
 dev-cpp/tree 2.65-r1 2.81: An STL-like tree class
@@ -4263,6 +4263,7 @@ dev-java/tomcat-native 1.1.32 1.1.33: Native APR library for Tomcat
 dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44 6.0.44-r1 7.0.59 7.0.63 7.0.64 8.0.23 8.0.24 8.0.26: Tomcat's Servlet API 3.1/JSP API 2.3 implementation
 dev-java/toolbar 1.1.0-r1: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22: TouchGraph provides a set of interfaces for graph visualization
+dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
 dev-java/trident 1.3: Java animation library
 dev-java/trove 2.1.0 3.0.2 3.0.2-r1: GNU Trove: High performance collections for Java
 dev-java/txw2-runtime 20070407-r2: TXW is a library that allows you to write XML documents
@@ -6742,7 +6743,7 @@ dev-python/beaker 1.6.4-r1 1.7.0-r1: A Session and Caching library with WSGI Mid
 dev-python/beanstalkc 0.4.0 0.4.0-r1: A simple beanstalkd client library
 dev-python/beautifulsoup 3.1.0.1-r2 3.2.1-r1 4.1.3 4.1.3-r1 4.2.0 4.3.2 4.4.0: Provides pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
 dev-python/behave 1.2.4 1.2.5: behaviour-driven development, Python style
-dev-python/bicyclerepair 0.9-r2 0.9-r3: Bicycle Repair Man is the Python Refactoring Browser
+dev-python/bicyclerepair 0.9-r3: Bicycle Repair Man is the Python Refactoring Browser
 dev-python/billiard 3.3.0.18 3.3.0.19 3.3.0.20: Python multiprocessing fork
 dev-python/biplist 0.8 0.9: A binary plist parser/generator for Python
 dev-python/bitarray 0.8.1: efficient arrays of booleans -- C extension
@@ -7163,7 +7164,7 @@ dev-python/markupsafe 0.23: Implements a XML/HTML/XHTML Markup safe string for P
 dev-python/matplotlib 1.4.2 1.4.3 9999: Pure python plotting library with matlab like syntax
 dev-python/mccabe 0.2.1 0.3 0.3.1: a plugin for flake8
 dev-python/mecab-python 0.996: Python binding for MeCab
-dev-python/mechanize 0.2.5 0.2.5-r1: Stateful programmatic web browsing in Python
+dev-python/mechanize 0.2.5-r1: Stateful programmatic web browsing in Python
 dev-python/medusa 0.5.4-r1: A framework for writing asynchronous long-running, high-performance network servers in Python
 dev-python/meld3 1.0.0 1.0.2: meld3 is an HTML/XML templating engine
 dev-python/mergedict 0.2.0: A Python 'dict' with a merge() method
@@ -7371,7 +7372,7 @@ dev-python/pychef 0.2.1 0.2.3: A Python API for interacting with a Chef server
 dev-python/pychm 0.8.4 0.8.4-r1: Python bindings for the chmlib library
 dev-python/pychroot 0.9.9 0.9.11 0.9.12 9999: a python library and cli tool that simplify chroot handling
 dev-python/pycipher 0.2: A Python module that implements several well-known classical cipher algorithms
-dev-python/pyclamav 0.4.1-r1 0.4.1-r2: Python binding for libclamav
+dev-python/pyclamav 0.4.1-r2: Python binding for libclamav
 dev-python/pyclimate 1.2.2-r1 1.2.2-r2: Climate Data Analysis Module for Python
 dev-python/pycmd 1.1 1.2: pycmd: tools for managing/searching Python related files
 dev-python/pycollada 0.4 9999: python library for reading and writing collada documents
@@ -7687,7 +7688,7 @@ dev-python/retry-decorator 1.0.0: Decorator for retrying when exceptions occur
 dev-python/retrying 1.3.2 1.3.3: Retrying is a general-purpose retrying library.
 dev-python/reverend 0.4-r1: Reverend - Simple Bayesian classifier
 dev-python/rfc3986 0.2.0 0.2.2: Validating URI References per RFC 3986
-dev-python/rlcompleter2 0.98 0.98-r1: Python command line completion
+dev-python/rlcompleter2 0.98-r1: Python command line completion
 dev-python/robotframework 2.8.7 2.9: test automation framework for acceptance testing & test-driven development
 dev-python/robotframework-selenium2library 1.6.0 1.7.2 9999: Web testing library for Robot Framework
 dev-python/robotframework-sshlibrary 2.0.2 2.1.1: A test library for Robot Framework that enables SSH and SFTP
@@ -10322,7 +10323,7 @@ gnome-extra/sushi 3.12.0 3.16.0: A quick previewer for Nautilus, the GNOME file 
 gnome-extra/synapse 0.2.10 0.2.10-r1: A program launcher in the style of GNOME Do
 gnome-extra/yelp 3.14.1 3.14.2 3.16.1: Help browser for GNOME
 gnome-extra/yelp-xsl 3.12.0 3.14.0 3.16.1: XSL stylesheets for yelp
-gnome-extra/zeitgeist 0.9.15 0.9.16: Service to log activities and present to other apps
+gnome-extra/zeitgeist 0.9.16: Service to log activities and present to other apps
 gnome-extra/zeitgeist-datahub 0.9.5: Provides passive plugins to insert events into zeitgeist
 gnome-extra/zeitgeist-datasources 0.8.1: Plugins whose work is to push activities as events into Zeitgeist daemon
 gnome-extra/zeitgeist-explorer 0.2-r1: Monitor and inspect Zeitgeist's log at a low level - developer tool
