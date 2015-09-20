@@ -21,7 +21,7 @@ COMMON_DEPEND="
 	>=app-text/evince-3.13.3[introspection]
 	dev-libs/gjs
 	>=dev-libs/glib-2.39.3:2
-	>=dev-libs/gobject-introspection-1.31.6
+	>=dev-libs/gobject-introspection-1.31.6:=
 	>=dev-libs/libgdata-0.13.3:=[gnome,introspection]
 	gnome-base/gnome-desktop:3=
 	>=media-libs/clutter-1.10:1.0
@@ -43,6 +43,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	dev-libs/libxslt
 	>=dev-util/intltool-0.50.1
+	dev-util/itstool
 	virtual/pkgconfig
 
 	app-text/yelp-tools
@@ -54,8 +55,4 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-3.16.2-parallel-make.patch
 	eautoreconf
 	gnome2_src_prepare
-}
-
-src_configure() {
-	gnome2_src_configure ITSTOOL="$(type -P true)"
 }

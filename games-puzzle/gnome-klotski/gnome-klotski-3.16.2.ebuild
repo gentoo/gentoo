@@ -4,7 +4,7 @@
 
 EAPI="5"
 GCONF_DEBUG="no"
-VALA_MIN_API_VERSION="0.22"
+VALA_MIN_API_VERSION="0.28"
 
 inherit gnome-games vala
 
@@ -13,18 +13,18 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Klotski"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 RDEPEND="
 	>=dev-libs/glib-2.32:2
 	>=gnome-base/librsvg-2.32.0
-	>=x11-libs/gtk+-3.10:3
+	>=x11-libs/gtk+-3.15:3
 "
 DEPEND="${RDEPEND}
 	$(vala_depend)
 	app-text/yelp-tools
-	dev-util/appdata-tools
+	dev-libs/appstream-glib
 	>=dev-util/intltool-0.50
 	sys-devel/gettext
 	virtual/pkgconfig
@@ -33,8 +33,4 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	gnome-games_src_prepare
 	vala_src_prepare
-}
-
-src_configure() {
-	gnome-games_src_configure APPDATA_VALIDATE=$(type -P true)
 }
