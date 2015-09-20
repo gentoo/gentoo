@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+  <email>ahvenas@gmail.com</email>
+  <name>Henrik Pihl</name>
+</maintainer>
+<longdescription>
+Zeal is a simple offline API documentation browser inspired by Dash (OS X app), available for Linux and Windows.
+Quickly search documentation using Alt+Space (or customised) hotkey to display Zeal from any place in your workspace.
+- Search in multiple sets of documentation at once.
+- Don't be dependent on your internet connection.
+- Integrate Zeal with Emacs, Sublime Text, or Vim.
+All documentation available for Dash is also available for Zeal.
+You can also generate your own docsets using the same format Dash uses.
+</longdescription>
+</pkgmetadata>
