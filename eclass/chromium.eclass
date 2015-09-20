@@ -33,7 +33,10 @@ chromium_suid_sandbox_check_kernel_config() {
 		ERROR_NET_NS="NET_NS is required for sandbox to work"
 		ERROR_USER_NS="USER_NS is required for sandbox to work"
 		ERROR_SECCOMP_FILTER="SECCOMP_FILTER is required for sandbox to work"
-		CONFIG_CHECK="~PID_NS ~NET_NS ~SECCOMP_FILTER ~USER_NS"
+		# Warn if the kernel does not support features needed for the browser to work
+		# (bug #552576).
+		ERROR_CONFIG_ADVISE_SYSCALLS="CONFIG_ADVISE_SYSCALLS is required for the renderer (bug #552576)"
+		CONFIG_CHECK="~PID_NS ~NET_NS ~SECCOMP_FILTER ~USER_NS ~CONFIG_ADVISE_SYSCALLS"
 		check_extra_config
 	fi
 }
