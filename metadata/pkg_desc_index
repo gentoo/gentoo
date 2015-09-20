@@ -35,7 +35,7 @@ app-accessibility/speech-tools 2.1-r2 2.1-r3: Speech tools for Festival Text to 
 app-accessibility/speechd-el 2.5: Emacs speech support
 app-accessibility/speechd-up 0.4-r3: Interface between speakup and speech-dispatcher
 app-accessibility/sphinx2 0.6: CMU Speech Recognition-engine
-app-accessibility/sphinx3 0.6.3 0.8-r1: CMU Speech Recognition engine
+app-accessibility/sphinx3 0.8-r1: CMU Speech Recognition engine
 app-accessibility/sphinxbase 0.8: Support library required by the Sphinx Speech Recognition Engine
 app-accessibility/yasr 0.6.9-r1: general-purpose console screen reader
 app-admin/389-admin-console 1.1.8-r1: 389 Server Management Console (jar and help files)
