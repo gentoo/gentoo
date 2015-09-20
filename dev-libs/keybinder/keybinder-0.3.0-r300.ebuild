@@ -13,7 +13,7 @@ SRC_URI="http://kaizer.se/publicfiles/${PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="amd64 arm ~hppa ~mips ppc ppc64 x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 x86"
 IUSE="+introspection"
 
 RDEPEND="x11-libs/gtk+:3
