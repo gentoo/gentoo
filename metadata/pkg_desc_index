@@ -11858,7 +11858,7 @@ media-libs/mesa 7.10.3 10.2.8 10.3.7-r1 10.3.7-r2 10.4.6 10.5.8 10.6.5 10.6.6 11
 media-libs/ming 0.4.4-r1 0.4.5: An Open Source library for Flash movie generation
 media-libs/mlt 0.9.0 0.9.8: An open source multimedia framework, designed and developed for television broadcasting
 media-libs/musicbrainz 2.1.5 3.0.2 3.0.3 4.0.3 5.0.1: The MusicBrainz Client Library (for accessing the latest XML based web service)
-media-libs/mutagen 1.22 1.27 1.29 1.30: Mutagen is an audio metadata tag reader and writer implemented in pure Python
+media-libs/mutagen 1.22 1.27 1.29 1.30 1.31: Audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4 1.9.4-r1: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00: A set of utilities for converting to/from the netpbm (and related) formats
 media-libs/openal 1.15.1 1.15.1-r1 1.15.1-r2 1.16.0: A software implementation of the OpenAL 3D audio API
@@ -12897,7 +12897,7 @@ net-analyzer/barnyard 0.2.0-r3: Fast output system for Snort
 net-analyzer/barnyard2 1.9: Parser for Snort unified/unified2 files
 net-analyzer/bigeye 0.3-r3: network utility dump and simple honeypot utility
 net-analyzer/bing 1.1.3-r1: A point-to-point bandwidth measurement tool
-net-analyzer/bmon 3.6-r1 3.7 3.8: interface bandwidth monitor
+net-analyzer/bmon 3.8: interface bandwidth monitor
 net-analyzer/braa 0.82: Quick and dirty mass SNMP scanner
 net-analyzer/bsnmp 1.11a 1.12 1.12-r1: Mini-SNMP Daemon and Library
 net-analyzer/bwbar 1.2.3: The kernel.org "Current bandwidth utilization" bar
@@ -17703,7 +17703,7 @@ x11-misc/xtoolwait 1.3-r2: Xtoolwait notably decreases the startup time of an X 
 x11-misc/xtrace 1.3.0: X11 protocol trace utility
 x11-misc/xtrlock 2.7: A simplistic screen locking program for X
 x11-misc/xtscal 0.6.3 0.6.3-r1: Touchscreen calibration utility
-x11-misc/xvkbd 3.4a-r1 3.6 3.7: virtual keyboard for X window system
+x11-misc/xvkbd 3.6 3.7: virtual keyboard for X window system
 x11-misc/xwinwrap 0_p4: replace a desktop background with a movie or screensaver
 x11-misc/xwit 3.4 3.4-r1: A collection of simple routines to call some of those X11 functions
 x11-misc/xwrits 2.26: Reminds you to take wrist breaks, which will hopefully help you prevent repetitive stress injury
