@@ -17,6 +17,7 @@
 		<flag name="gcrypt">Add support for encrypted log files using <pkg>dev-libs/libgcrypt</pkg></flag>
 		<flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for allocations.</flag>
 		<flag name="kerberos">Build the GSSAPI input and output module (requires <pkg>virtual/krb5</pkg>)</flag>
+		<flag name="libressl">Use <pkg>dev-libs/libressl</pkg> for building the rfc5424hmac modify module (requires rfc5424hmac USE flag)</flag>
 		<flag name="mongodb">Build the MongoDB output module (requires <pkg>dev-libs/libmongo-client</pkg>)</flag>
 		<flag name="mysql">Build the MySQL databse output module (requires <pkg>virtual/mysql</pkg>)</flag>
 		<flag name="normalize">Build the normalize modify module (requires <pkg>dev-libs/libee</pkg> and <pkg>dev-libs/liblognorm</pkg>)</flag>
@@ -26,7 +27,7 @@
 		<flag name="redis">Build the Redis output module using (requires <pkg>dev-libs/hiredis</pkg>)</flag>
 		<flag name="relp">Build the Reliable Event Logging Protocol (RELP) output module (requires <pkg>dev-libs/librelp</pkg>)</flag>
 		<flag name="rfc3195">Build the rfc3195 input module (requires <pkg>dev-libs/liblogging</pkg>)</flag>
-		<flag name="rfc5424hmac">Build the rfc5424hmac modify module (requires <pkg>dev-libs/openssl</pkg>)</flag>
+		<flag name="rfc5424hmac">Build the rfc5424hmac modify module (requires <pkg>dev-libs/openssl</pkg> or <pkg>dev-libs/libressl</pkg>)</flag>
 		<flag name="snmp">Build the snmp modify and output module (requires <pkg>net-analyzer/net-snmp</pkg>)</flag>
 		<flag name="ssl">Add support for encrypted client/server communication (requires <pkg>net-libs/gnutls</pkg>)</flag>
 		<flag name="systemd">Build the journal input and output module (requires <pkg>sys-apps/systemd</pkg>)</flag>
