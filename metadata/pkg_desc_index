@@ -12358,7 +12358,7 @@ media-sound/gbsplay 0.0.91-r1: Nintendo Gameboy sound player for GBS format
 media-sound/gejengel 0.1.4-r1: Lightweight audio player
 media-sound/giada 0.7.0: A free, minimal, hardcore audio tool for DJs and live performers
 media-sound/gigedit 0.2.0: An instrument editor for gig files
-media-sound/gimmix 0.5.7.1 0.5.7.2: a graphical music player daemon (MPD) client using GTK+2
+media-sound/gimmix 0.5.7.1 0.5.7.2 0.5.7.2-r1: a graphical music player daemon (MPD) client using GTK+2
 media-sound/glmix 0.3: A 3D widget for mixing up to eight JACK audio streams down to stereo
 media-sound/glurp 0.12.3: Glurp is a GTK2 based graphical client for the Music Player Daemon
 media-sound/gmorgan 0.39 0.70: Opensource software rhythm station
