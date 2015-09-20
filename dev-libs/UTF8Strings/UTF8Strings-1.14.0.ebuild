@@ -6,7 +6,7 @@ EAPI="5"
 
 inherit cmake-utils
 
-DESCRIPTION="C++ library that provides ability to work natively with UTF8 strings in a very simple way"
+DESCRIPTION="C++ library providing ability to work natively with UTF8 string"
 HOMEPAGE="http://grigory.info/${PN}.About.html"
 SRC_URI="http://grigory.info/distfiles/${P}.tar.bz2"
 
