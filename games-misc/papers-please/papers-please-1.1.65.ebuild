@@ -12,7 +12,7 @@ SRC_URI="papers-please_${PV}_i386.tar.gz"
 
 LICENSE="PAPERS-PLEASE"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 RESTRICT="fetch bindist"
 
