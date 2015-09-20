@@ -6827,7 +6827,7 @@ dev-python/cov-core 1.7 1.15.0: plugin core for use by pytest-cov, nose-cov and 
 dev-python/coverage 3.6 3.7 3.7.1: Code coverage measurement for Python
 dev-python/crcmod 1.7-r2: Python CRC Generator module
 dev-python/crumbs 1.2.2-r1 2.0.0 2.0.1 2.0.2: Generalized all-in-one parameters module
-dev-python/cryptography 0.5.4 0.6.1 0.7.1-r1 0.7.2 0.8 0.8.1 0.8.2 0.9.2 0.9.3 1.0 1.0.1: Library providing cryptographic recipes and primitives
+dev-python/cryptography 0.5.4 0.6.1 0.7.1-r1 0.7.2 0.8 0.8.1 0.8.2 0.9.2 0.9.3 1.0 1.0.1 1.0.1-r1: Library providing cryptographic recipes and primitives
 dev-python/cryptography-vectors 0.5.4 0.6.1 0.7 0.7.1 0.7.2 0.8 0.8.1 0.8.2 0.9 0.9.1 0.9.2 0.9.3 1.0 1.0.1: Test vectors for the cryptography package
 dev-python/cssselect 0.9.1: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssutils 0.9.10-r1 1.0: A CSS Cascading Style Sheets library
@@ -7606,7 +7606,7 @@ dev-python/python-prctl 1.5.0-r1 1.6.0 1.6.1: Control process attributes through
 dev-python/python-ptrace 0.8.1-r1: python-ptrace is a debugger using ptrace (Linux, BSD and Darwin system call to trace processes)
 dev-python/python-saharaclient 0.7.0 0.9.0 0.11.0: This is a client for the OpenStack Sahara API, aka HADOOP
 dev-python/python-scw 0.4.7-r1: Python binding for Scw
-dev-python/python-sipsimple 2.5.1: SIP SIMPLE client SDK is a Software Development Kit
+dev-python/python-sipsimple 2.5.1 2.5.1-r1: SIP SIMPLE client SDK is a Software Development Kit
 dev-python/python-slip 0.6.0 0.6.1: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-social-auth 0.1.26 0.2.10: Easy to setup social auth mechanism with support for several frameworks and auth providers
 dev-python/python-sqlparse 0.1.10 0.1.13 0.1.14 0.1.15 0.1.16: A non-validating SQL parser module for Python
@@ -9517,7 +9517,7 @@ games-board/gambit 1.0.1 1.0.3: Qt-based chess application + engine "gupta"
 games-board/gmchess 0.29.6-r1: Chinese chess with gtkmm and c++
 games-board/gnome-chess 3.14.3 3.16.2: Play the classic two-player boardgame of chess
 games-board/gnome-hearts 0.3.1-r1: A clone of classic hearts card game
-games-board/gnome-mahjongg 3.14.1 3.16.1: Disassemble a pile of tiles by removing matching pairs
+games-board/gnome-mahjongg 3.16.1 3.16.2: Disassemble a pile of tiles by removing matching pairs
 games-board/gnome-mastermind 0.3.1-r1: A little Mastermind game for GNOME
 games-board/gnome-mines 3.14.1 3.14.2 3.16.1: Clear hidden mines from a minefield
 games-board/gnono 1.9.1: A rewrite for GNOME of the Windows card game WUNO
@@ -13636,14 +13636,14 @@ net-libs/libtirpc 0.1.10 0.2.4-r1 0.2.4-r2 0.2.5 0.3.1: Transport Independent RP
 net-libs/libtorrent 0.13.3 0.13.4: BitTorrent library written in C++ for *nix
 net-libs/libtrace 3.0.21 3.0.22: A library and tools for trace processing
 net-libs/libupnp 1.6.18 1.6.18-r1 1.6.19: An Portable Open Source UPnP Development Kit
-net-libs/libvncserver 0.9.10 0.9.10-r1 0.9.10-r3: library for creating vnc servers
+net-libs/libvncserver 0.9.10 0.9.10-r1 0.9.10-r3 0.9.10-r4: library for creating vnc servers
 net-libs/libwebsockets 1.4: C/C++ websockets library
 net-libs/libwhisker 2.5-r1: Perl module geared to HTTP testing
 net-libs/libyahoo2 1.0.1: interface to the new Yahoo! Messenger protocol
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/libzrtpcpp 2.3.4 4.2.4: GNU RTP stack for the zrtp protocol developed by Phil Zimmermann
 net-libs/loudmouth 1.4.3-r2: Lightweight C Jabber library
-net-libs/mbedtls 2.0.0 2.1.0 2.1.1: Cryptographic library for embedded systems
+net-libs/mbedtls 2.0.0 2.1.0 2.1.1 2.1.1-r1: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
 net-libs/miniupnpc 1.6-r1 1.6.20120509 1.7 1.8 1.9.20150427: UPnP client library and a simple UPnP client
 net-libs/nacl 0_p20110221: high-speed software library for network communication, encryption, decryption, signatures
@@ -14048,7 +14048,7 @@ net-misc/openconnect 4.08 6.00 7.02 7.06 7.06-r1: Free client for Cisco AnyConne
 net-misc/openntpd 4.0_pre20080406 5.7_p4-r2: Lightweight NTP server ported from OpenBSD
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
-net-misc/openssh 6.7_p1 6.7_p1-r4 6.8_p1-r5 6.9_p1-r1 6.9_p1-r2 7.0_p1 7.1_p1: Port of OpenBSD's free SSH release
+net-misc/openssh 6.7_p1 6.7_p1-r4 6.8_p1-r5 6.9_p1-r1 6.9_p1-r2 7.0_p1 7.1_p1 7.1_p1-r1: Port of OpenBSD's free SSH release
 net-misc/openssh-blacklist 0.4.1: Source files of vuln Debian keys
 net-misc/openvpn 2.3.6 2.3.6-r1 2.3.6-r2 2.3.7 2.3.8 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-misc/openvpn-auth-ldap 2.0.4_pre20131110: LDAP authentication and authorization plugin for OpenVPN 2.x
@@ -17637,7 +17637,7 @@ x11-misc/wmakerconf 2.12 2.12-r1 2.12-r2: X based config tool for the windowmake
 x11-misc/wmctrl 1.07-r1: command line tool to interact with an EWMH/NetWM compatible X Window Manager
 x11-misc/wmiface 2.1: Command line tool allowing user scripting of the running window manager
 x11-misc/wmname 0.1: utility to set the name of your window manager
-x11-misc/x11vnc 0.9.13 0.9.13-r1 0.9.13_p20150111: A VNC server for real X displays
+x11-misc/x11vnc 0.9.13 0.9.13-r1 0.9.13_p20150111 0.9.13_p20150111-r1: A VNC server for real X displays
 x11-misc/x2vnc 1.7.2-r1: Control a remote computer running VNC from X
 x11-misc/x2x 1.27-r3: A utility to connect the Mouse and KeyBoard to another X
 x11-misc/xac 0.6_pre4: Xorgautoconfig (xac) generates configuration files for X.org
