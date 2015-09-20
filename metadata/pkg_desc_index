@@ -4437,7 +4437,7 @@ dev-libs/OpenNI 1.5.7.10 9999: OpenNI SDK
 dev-libs/OpenNI2 2.2_beta2 9999: OpenNI2 SDK
 dev-libs/OpenSRF 1.2.0 2.1.1: Framework for the high-level development of the Evergreen ILS software
 dev-libs/STLport 5.2.1-r1 5.2.1-r2: C++ STL library
-dev-libs/UTF8Strings 1.13.2 1.14.0: C++ library that provides ability to work natively with UTF8 strings in a very simple way
+dev-libs/UTF8Strings 1.14.0 1.14.2: C++ library providing ability to work natively with UTF8 string
 dev-libs/ace 5.7.2 5.8.3: The Adaptive Communications Environment
 dev-libs/angelscript 2.29.2 2.30.1 2.30.2: A flexible, cross-platform scripting library
 dev-libs/antlr-c 3.5: The ANTLR3 C Runtime

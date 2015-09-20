@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
-DESCRIPTION=C++ library that provides ability to work natively with UTF8 strings in a very simple way
+DESCRIPTION=C++ library providing ability to work natively with UTF8 string
 EAPI=5
 HOMEPAGE=http://grigory.info/UTF8Strings.About.html
 KEYWORDS=amd64 ~mips x86 ~amd64-linux ~x86-linux
@@ -8,4 +8,4 @@ LICENSE=GPL-3
 SLOT=0
 SRC_URI=http://grigory.info/distfiles/UTF8Strings-1.14.0.tar.bz2
 _eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=af353acb03505081caae58f09305da88
+_md5_=5857038b1eb7d9f365ca154408eec103
