@@ -11,7 +11,7 @@ HOMEPAGE="http://assimp.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.zip"
 
 LICENSE="BSD"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="+boost samples static tools"
 SLOT="0"
 

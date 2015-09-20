@@ -11,7 +11,7 @@ SRC_URI="http://www.w1hkj.com/downloads/flrig/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="nls"
 
 RDEPEND="x11-libs/libX11

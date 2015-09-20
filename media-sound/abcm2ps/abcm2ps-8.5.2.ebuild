@@ -12,7 +12,7 @@ SRC_URI="http://moinejf.free.fr/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="examples pango"
 
 RDEPEND="pango? ( x11-libs/pango media-libs/freetype:2 )"

@@ -3,7 +3,8 @@
 # $Id$
 
 EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+
+PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
 
 inherit distutils-r1
 
@@ -14,10 +15,10 @@ HOMEPAGE="http://click.pocoo.org/ https://pypi.python.org/pypi/click"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
 IUSE="doc examples test"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	"
@@ -37,7 +38,7 @@ python_test() {
 }
 
 python_install_all() {
-	 use doc && local HTML_DOCS=( docs/_build/html/. )
+	use doc && local HTML_DOCS=( docs/_build/html/. )
 	use examples && local EXAMPLES=( examples/. )
 	distutils-r1_python_install_all
 }

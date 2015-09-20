@@ -1,0 +1,26 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+EAPI=5
+
+PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
+
+inherit distutils-r1
+
+MY_PN="RegenDoc"
+MY_P="${MY_PN}-${PV}"
+
+DESCRIPTION="Check/update simple file/shell examples in documentation"
+HOMEPAGE="https://pypi.python.org/pypi/RegenDoc http://bitbucket.org/pytest-dev/regendoc/"
+SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${P}.tar.gz"
+
+LICENSE="MIT"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+SLOT="0"
+
+RDEPEND="dev-python/click[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+"
