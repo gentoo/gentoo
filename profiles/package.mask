@@ -204,10 +204,6 @@ dev-haskell/deepseq
 ~dev-util/boost-build-1.58.0
 ~dev-libs/boost-1.58.0
 
-# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (10 Jul 2015)
-# Unused and broken. Removal in 30 days, bug #543576 .
-dev-lang/nacl-toolchain-newlib
-
 # Michael Orlitzky <mjo@gentoo.org> (3 Jul 2015)
 # Mask for removal in 30 days. Superseded by dev-haskell/biosff;
 # use that instead. Bug #553636.
