@@ -14,7 +14,7 @@ SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${PN}_2.0.18.orig.tar
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="${PYTHON_DEPS}
