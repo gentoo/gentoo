@@ -8821,7 +8821,7 @@ dev-texlive/texlive-texinfo 2012: TeXLive GNU Texinfo
 dev-texlive/texlive-xetex 2012 2013 2014 2015: TeXLive XeTeX and packages
 dev-util/App-SVN-Bisect 1.1-r1: Binary search through svn revisions
 dev-util/Orange 2.7.2: Open source data visualization and analysis for novice and experts.
-dev-util/a8 0.11-r2: An ultra-lightweight IDE, that embeds Vim, a terminal emulator, and a file browser
+dev-util/a8 0.11-r2 1.0: An ultra-lightweight IDE, that embeds Vim, a terminal emulator, and a file browser
 dev-util/aap 1.076 1.091-r2: Bram Moolenaar's super-make program
 dev-util/abi-compliance-checker 1.98.4 1.98.7 1.98.8 1.99.9 9999: A tool for checking backward compatibility of a C/C++ library
 dev-util/ald 0.1.7 0.1.7-r1: Assembly Language Debugger - a tool for debugging executable programs at the assembly level
@@ -14983,7 +14983,7 @@ sci-geosciences/qlandkartegt 1.7.6-r2 1.7.7 1.8.0 1.8.1: View and upload map fil
 sci-geosciences/qlandkartegt-garmindev 0.3.4: Garmin drivers for qlandkartegt
 sci-geosciences/qmapshack 1.3.0: GPS mapping utility
 sci-geosciences/readosm 1.0.0: A complete Spatial DBMS in a nutshell built upon sqlite
-sci-geosciences/seawater 2.0.1 3.3.2 3.3.3: Python version of the SEAWATER 3.2 MATLAB toolkit for calculating the properties of sea water
+sci-geosciences/seawater 2.0.1 3.3.2 3.3.3 3.3.4: Python version of the SEAWATER 3.2 MATLAB toolkit for calculating the properties of sea water
 sci-geosciences/swmm 5.0.022: Storm Water Management Model - SWMM, hydrology, hydraulics, and water quality model
 sci-geosciences/tappy 0.9.0: Tidal Analysis in Python breaks hourly water level into tidal components
 sci-geosciences/tcd-utils 20120115: Utilities for working with Tidal Constituent Databases
