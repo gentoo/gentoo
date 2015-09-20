@@ -208,10 +208,10 @@ SLOT="0"
 
 case "${BUILD}" in
 	"autotools")
-		IUSE="big-tables debug embedded minimal +perl selinux ssl static test"
+		IUSE="big-tables debug embedded libressl minimal +perl selinux ssl static test"
 		;;
 	"cmake")
-		IUSE="debug embedded minimal +perl selinux ssl static static-libs test"
+		IUSE="debug embedded libressl minimal +perl selinux ssl static static-libs test"
 		;;
 esac
 
@@ -269,7 +269,10 @@ REQUIRED_USE="${REQUIRED_USE} minimal? ( !cluster !extraengine !embedded ) stati
 # Be warned, *DEPEND are version-dependant
 # These are used for both runtime and compiletime
 DEPEND="
-	ssl? ( >=dev-libs/openssl-0.9.6d:0 )
+	ssl? (
+		!libressl? ( >=dev-libs/openssl-0.9.6d:0 )
+		libressl? ( dev-libs/libressl )
+	)
 	kernel_linux? ( sys-process/procps )
 	>=sys-apps/sed-4
 	>=sys-apps/texinfo-4.7-r1
@@ -322,7 +325,10 @@ if mysql_version_is_at_least "5.5.7" ; then
 		jemalloc? ( dev-libs/jemalloc[static-libs?] )
 		tcmalloc? ( dev-util/google-perftools )
 		>=sys-libs/zlib-1.2.3[static-libs?]
-		ssl? ( >=dev-libs/openssl-0.9.6d[static-libs?] )
+		ssl? (
+			!libressl? ( >=dev-libs/openssl-0.9.6d:0[static-libs?] )
+			libressl? ( dev-libs/libressl[static-libs?] )
+		)
 		systemtap? ( >=dev-util/systemtap-1.3 )
 		kernel_linux? ( dev-libs/libaio )
 	"

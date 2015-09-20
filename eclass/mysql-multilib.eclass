@@ -192,7 +192,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0/${SUBSLOT:-0}"
 
-IUSE="+community cluster debug embedded extraengine jemalloc latin1
+IUSE="+community cluster debug embedded extraengine jemalloc latin1 libressl
 	+perl profiling selinux ssl systemtap static static-libs tcmalloc test"
 
 ### Begin readline/libedit
@@ -271,7 +271,10 @@ REQUIRED_USE="
 # These are used for both runtime and compiletime
 # MULTILIB_USEDEP only set for libraries used by the client library
 DEPEND="
-	ssl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
+	ssl? (
+		!libressl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
+		libressl? ( dev-libs/libressl[${MULTILIB_USEDEP},static-libs?] )
+	)
 	kernel_linux? (
 		sys-process/procps:0=
 		dev-libs/libaio:0=
@@ -287,18 +290,27 @@ DEPEND="
 if [[ ${HAS_TOOLS_PATCH} ]] ; then
 	DEPEND+="
 		client-libs? (
-			ssl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
+			ssl? (
+				!libressl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
+				libressl? ( dev-libs/libressl[${MULTILIB_USEDEP},static-libs?] )
+			)
 			>=sys-libs/zlib-1.2.3:0=[${MULTILIB_USEDEP},static-libs?]
 		)
 		!client-libs? (
-			ssl? ( >=dev-libs/openssl-1.0.0:0=[static-libs?] )
+			ssl? (
+				!libressl? ( >=dev-libs/openssl-1.0.0:0=[static-libs?] )
+				libressl? ( dev-libs/libressl[static-libs?] )
+			)
 			>=sys-libs/zlib-1.2.3:0=[static-libs?]
 		)
 		tools? ( sys-libs/ncurses:0= ) embedded? ( sys-libs/ncurses:0= )
 	"
 else
 	DEPEND+="
-		ssl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
+		ssl? (
+			!libressl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
+			libressl? ( dev-libs/libressl[${MULTILIB_USEDEP},static-libs?] )
+		)
 		>=sys-libs/zlib-1.2.3:0=[${MULTILIB_USEDEP},static-libs?]
 		sys-libs/ncurses:0=[${MULTILIB_USEDEP}]
 	"

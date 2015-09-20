@@ -5,6 +5,12 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Julian Ospald <hasufell@gentoo.org> (20 sep 2015)
+# dev-libs/libressl is not in stable arch yet,
+# remove this entry once it is!
+dev-db/mariadb libressl
+dev-db/mysql libressl
+
 # Johannes Huber <johu@gentoo.org> (27 Aug 2015)
 # Needs KF 5 stable, bug #558460
 net-irc/quassel qt5
