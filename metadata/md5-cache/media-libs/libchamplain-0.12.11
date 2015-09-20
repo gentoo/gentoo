@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
+DEPEND=dev-db/sqlite:3 dev-libs/glib:2 >=media-libs/clutter-1.12:1.0[introspection?] media-libs/cogl:= >=net-libs/libsoup-2.34:2.4 x11-libs/cairo gtk? ( x11-libs/gtk+:3[introspection?] media-libs/clutter-gtk:1.0 ) introspection? ( dev-libs/gobject-introspection:= ) dev-util/gtk-doc-am virtual/pkgconfig vala? ( || ( dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] dev-lang/vala:0.24[vapigen(+)] dev-lang/vala:0.22[vapigen(+)] dev-lang/vala:0.20[vapigen(+)] ) ) app-arch/xz-utils >=sys-apps/sed-4
+DESCRIPTION=Clutter based world map renderer
+EAPI=5
+HOMEPAGE=https://wiki.gnome.org/Projects/libchamplain
+IUSE=debug +gtk +introspection vala
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2
+RDEPEND=dev-db/sqlite:3 dev-libs/glib:2 >=media-libs/clutter-1.12:1.0[introspection?] media-libs/cogl:= >=net-libs/libsoup-2.34:2.4 x11-libs/cairo gtk? ( x11-libs/gtk+:3[introspection?] media-libs/clutter-gtk:1.0 ) introspection? ( dev-libs/gobject-introspection:= )
+REQUIRED_USE=vala? ( introspection )
+SLOT=0.12
+SRC_URI=mirror://gnome/sources/libchamplain/0.12/libchamplain-0.12.11.tar.xz
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	84c1434ce5de42302c744df8431bf1f6	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	44555579e85afa5c035d2bd5428252da	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vala	335996addec48717e632dfd1f588ef1c	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=0ad6da5267911443acbea8d90b8bdf4d
