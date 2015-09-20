@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=>=dev-perl/Test-SharedFork-0.190.0 >=virtual/perl-IO-1.23 test? ( >=virtual/perl-Test-Simple-0.980.0 ) dev-lang/perl:=[-build(-)]
+DEPEND=>=dev-perl/Test-SharedFork-0.190.0 >=virtual/perl-IO-1.23 >=virtual/perl-ExtUtils-MakeMaker-6.640.0 virtual/perl-Time-HiRes test? ( >=virtual/perl-Test-Simple-0.980.0 >=dev-perl/Test-SharedFork-0.290.0 virtual/perl-File-Temp virtual/perl-Socket ) dev-lang/perl:=[-build(-)]
 DESCRIPTION=Testing TCP program
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Test-TCP/
 IUSE=test
-KEYWORDS=amd64 hppa ppc ppc64 x86
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Test-SharedFork-0.190.0 >=virtual/perl-IO-1.23 dev-lang/perl:=[-build(-)]
 SLOT=0
-SRC_URI=mirror://cpan/authors/id/T/TO/TOKUHIROM/Test-TCP-1.21.tar.gz
+SRC_URI=mirror://cpan/authors/id/T/TO/TOKUHIROM/Test-TCP-2.13.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79
-_md5_=bdeddefdc9785f283f0ad338fcb54567
+_md5_=c7de98fd3ffabe3539774d455a5bcfaf

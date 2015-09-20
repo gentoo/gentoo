@@ -1987,7 +1987,7 @@ app-office/kmymoney 4.7.2: Personal finance manager for KDE
 app-office/kraft 0.58: Software for operating a small business, helping create documents such as offers and invoices
 app-office/ledger 2.6.3-r1 3.1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 4.3.2-r1: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 4.4.4.3 4.4.5.2 4.4.9999 5.0.1.2 5.0.9999 9999: LibreOffice, a full office productivity suite
+app-office/libreoffice 4.4.4.3 4.4.5.2 4.4.9999 5.0.1.2 5.0.2.2 5.0.9999 9999: LibreOffice, a full office productivity suite
 app-office/libreoffice-bin 4.4.4.3 4.4.5.2: LibreOffice, a full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 4.4.4.3 4.4.5.2: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 4.4.4.3 4.4.5.2 5.0.1.2: Translations for the Libreoffice suite
@@ -5276,6 +5276,7 @@ dev-perl/Convert-Binary-C 0.760.0-r1 0.770.0: Binary Data Conversion using C Typ
 dev-perl/Convert-Color 0.80.0-r1: Color space conversions and named lookups
 dev-perl/Convert-TNEF 0.180.0-r1: A Perl module for reading TNEF files
 dev-perl/Convert-UUlib 1.400.0-r1 1.400.0-r2 1.500.0: A Perl interface to the uulib library
+dev-perl/Cookie-Baker 0.60.0: Cookie string generator / parser
 dev-perl/Coro 6.410.0 6.420.0 6.470.0: The only real threads in perl
 dev-perl/Crypt-Blowfish 2.140.0-r1: Crypt::Blowfish module for perl
 dev-perl/Crypt-CAST5_PP 1.40.0-r1: CAST5 block cipher in pure Perl
@@ -5604,6 +5605,7 @@ dev-perl/HTTP-Cookies 6.0.1-r1: Storage of cookies
 dev-perl/HTTP-DAV 0.470.0-r1 0.480.0: A WebDAV client library for Perl5
 dev-perl/HTTP-Daemon 6.10.0-r1: Base class for simple HTTP servers
 dev-perl/HTTP-Date 6.20.0-r1: Date conversion for HTTP date formats
+dev-perl/HTTP-Headers-Fast 0.190.0: Faster implementation of HTTP::Headers
 dev-perl/HTTP-Message 6.30.0-r1 6.40.0-r1 6.60.0-r1: Base class for Request/Response
 dev-perl/HTTP-Negotiate 6.0.1-r1: HTTP content negotiation
 dev-perl/HTTP-Response-Encoding 0.60.0-r1: Adds encoding() to HTTP::Response
@@ -5965,7 +5967,7 @@ dev-perl/PerlIO-via-symlink 0.50.0-r1: PerlIO::via::symlink - PerlIO layer for s
 dev-perl/Perlbal 1.800.0-r1: Reverse-proxy load balancer and webserver
 dev-perl/Perlbal-XS-HTTPHeaders 0.200.0-r1: XS acceleration for Perlbal header processing
 dev-perl/PlRPC 0.202.0-r2: The Perl RPC Module
-dev-perl/Plack 1.1.800 1.3.200: Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)
+dev-perl/Plack 1.3.200 1.3.700: Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)
 dev-perl/Plucene 1.250.0-r1 1.250.0-r2: Plucene - the Perl lucene port
 dev-perl/Pod-Abstract 0.200.0-r1: Abstract document tree for Perl POD documents
 dev-perl/Pod-Coverage 0.230.0-r1: Checks if the documentation of a module is comprehensive
@@ -6016,7 +6018,7 @@ dev-perl/SQL-Abstract-Limit 0.141.0-r1: Portable LIMIT emulation
 dev-perl/SQL-Statement 1.405.0-r1: Small SQL parser and engine
 dev-perl/SQL-Translator 0.110.160-r1 0.110.210: Manipulate structured data definitions (SQL and more)
 dev-perl/SRU 1.0.0: Catalyst::Controller::SRU - Dispatch SRU methods with Catalyst
-dev-perl/SVG 2.540.0 2.590.0: Perl extension for generating Scalable Vector Graphics (SVG) documents
+dev-perl/SVG 2.590.0 2.640.0: Perl extension for generating Scalable Vector Graphics (SVG) documents
 dev-perl/SVG-Graph 0.20.0-r1: Visualize your data in Scalable Vector Graphics (SVG) format
 dev-perl/SVN-Simple 0.280.0-r1: SVN::Simple::Edit - Simple interface to SVN::Delta::Editor
 dev-perl/Safe-Hole 0.130.0-r1: Exec subs in the original package from Safe
@@ -6051,7 +6053,7 @@ dev-perl/Sphinx-Search 0.280-r1: Perl API client for Sphinx search engine
 dev-perl/Spiffy 0.310.0-r1 0.460.0: Spiffy Perl Interface Framework For You
 dev-perl/Spreadsheet-ParseExcel 0.590.0-r1 0.650.0: Read information from an Excel file
 dev-perl/Spreadsheet-WriteExcel 2.390.0-r1 2.400.0: Write cross-platform Excel binary file
-dev-perl/Starlet 0.180.0 0.190.0 0.200.0: A simple, high-performance PSGI/Plack HTTP server
+dev-perl/Starlet 0.200.0 0.250.0: A simple, high-performance PSGI/Plack HTTP server
 dev-perl/Stat-lsMode 0.500.0-r1: The Perl Stat-lsMode Module
 dev-perl/Statistics-Descriptive 3.60.300-r1: Module of basic descriptive statistical functions
 dev-perl/Statistics-Descriptive-Discrete 0.70.0-r1: Statistics-Descriptive-Discrete module
@@ -6068,7 +6070,7 @@ dev-perl/String-Tokenizer 0.50.0-r1: A simple string tokenizer
 dev-perl/Sub-Exporter 0.986.0 0.987.0: A sophisticated exporter for custom-built routines
 dev-perl/Sub-Exporter-Progressive 0.1.11: Only use Sub::Exporter if you need it
 dev-perl/Sub-Identify 0.40.0-r1: Retrieve names of code references
-dev-perl/Sub-Install 0.926.0-r1: install subroutines into packages easily
+dev-perl/Sub-Install 0.926.0-r1 0.928.0: Install subroutines into packages easily
 dev-perl/Sub-Name 0.50.0-r1: (Re)name a sub
 dev-perl/Sub-Override 0.90.0: Perl extension for easily overriding subroutines
 dev-perl/Sub-Uplevel 0.240.0-r1 0.250.0: Apparently run a function in a higher stack frame
@@ -6087,7 +6089,7 @@ dev-perl/Sys-Statistics-Linux 0.660.0-r1: Collect linux system statistics
 dev-perl/Sys-Syscall 0.250.0-r1: Access system calls that Perl doesn't normally provide access to
 dev-perl/Sys-Virt 1.1.2 1.2.5 1.2.9: Sys::Virt provides an API for using the libvirt library from Perl
 dev-perl/Sysadm-Install 0.420.0 0.430.0 0.440.0 0.460.0: Typical installation tasks for system administrators
-dev-perl/TAP-Parser-SourceHandler-pgTAP 3.29: Stream TAP from pgTAP test scripts
+dev-perl/TAP-Parser-SourceHandler-pgTAP 3.29 3.310.0: Stream TAP from pgTAP test scripts
 dev-perl/Taint-Runtime 0.30.0-r1: Runtime enable taint checking
 dev-perl/Task-Weaken 1.40.0-r1: Ensure that a platform has weaken support
 dev-perl/TeX-Encode 1.300.0: Encode/decode Perl utf-8 strings into TeX
@@ -6150,9 +6152,10 @@ dev-perl/Test-Script 1.70.0-r1: Cross-platform basic tests for scripts
 dev-perl/Test-SharedFork 0.210.0-r1 0.290.0 0.330.0: fork test
 dev-perl/Test-Spec 0.470.0 0.510.0: Write tests in a declarative specification style
 dev-perl/Test-SubCalls 1.90.0-r1: Track the number of times subs are called
-dev-perl/Test-TCP 1.210.0 2.60.0: Testing TCP program
+dev-perl/Test-TCP 2.60.0 2.130.0: Testing TCP program
 dev-perl/Test-Taint 1.60.0-r1: Tools to test taintedness
 dev-perl/Test-Tester 0.108.0-r1 0.109.0-r1 0.114.0: Ease testing test modules built with Test::Builder
+dev-perl/Test-Time 0.40.0: Overrides the time() and sleep() core functions for testing
 dev-perl/Test-Trap 0.2.2-r1 0.3.0 0.3.2: Trap exit codes, exceptions, output, etc
 dev-perl/Test-Unit-Lite 0.120.200-r1: Unit testing without external dependencies
 dev-perl/Test-UseAllModules 0.140.0-r1 0.170.0: do use_ok() for all the MANIFESTed modules
@@ -6412,7 +6415,7 @@ dev-perl/rename 1.800.0-r1 1.900.0: A filename renaming utility based on perl re
 dev-perl/rpm-build-perl 0.820.0: Automatically extract Perl dependencies
 dev-perl/self 0.340.0-r1: provides '$self' in OO code
 dev-perl/set-scalar 1.280.0 1.290.0: Scalar set operations
-dev-perl/strictures 1.4.4-r1 2.0.0: Turn on strict and make all warnings fatal
+dev-perl/strictures 1.4.4-r1 2.0.0 2.0.1: Turn on strict and make all warnings fatal
 dev-perl/string-crc32 1.400.0-r1 1.500.0: Perl interface for cyclic redundancy check generation
 dev-perl/syntax 0.4.0: Activate syntax extensions
 dev-perl/text-template 1.460.0-r1: Expand template text with embedded Perl
