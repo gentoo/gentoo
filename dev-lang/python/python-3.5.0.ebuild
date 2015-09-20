@@ -66,6 +66,7 @@ src_prepare() {
 
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
 	epatch "${FILESDIR}/${PN}-3.4.3-ncurses-pkg-config.patch"
+	epatch "${FILESDIR}/3.5-secondary-targets.patch"
 
 	sed -i -e "s:@@GENTOO_LIBDIR@@:$(get_libdir):g" \
 		configure.ac \
@@ -171,6 +172,9 @@ src_configure() {
 }
 
 src_compile() {
+	# Avoid regenerating these for cross-compiles
+	touch Include/graminit.h Python/graminit.c Python/importlib.h Python/importlib_external.h || die
+
 	cd "${BUILD_DIR}" || die
 
 	emake CPPFLAGS= CFLAGS= LDFLAGS=
