@@ -16,7 +16,7 @@ SRC_URI="http://downloads.reviewboard.org/releases/${MY_PN}/$(get_version_compon
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=">=dev-python/six-1.8.0[${PYTHON_USEDEP}]"
