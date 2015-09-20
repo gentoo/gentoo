@@ -17,16 +17,16 @@ SRC_URI="http://code.haskell.org/~slyfox/snapshots/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
 IUSE=""
+
+RESTRICT=test # many test depends are not keyworded yet
 
 RDEPEND="dev-haskell/ghc-paths:=[profile?]
 	>=dev-haskell/xhtml-3000.2:=[profile?] <dev-haskell/xhtml-3000.3:=[profile?]
 	>=dev-lang/ghc-7.8.3:= <dev-lang/ghc-7.9:=
 "
 DEPEND="${RDEPEND}
-	test? ( dev-haskell/hspec
-		>=dev-haskell/quickcheck-2 <dev-haskell/quickcheck-3 )
 "
 
 src_prepare() {
