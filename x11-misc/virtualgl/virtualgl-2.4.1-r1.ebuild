@@ -49,7 +49,7 @@ src_configure() {
 	abi_configure() {
 		local mycmakeargs=(
 			$(cmake-utils_use ssl VGL_USESSL)
-			-DVGL_DOCDIR=/usr/share/doc/"${P}"
+			-DVGL_DOCDIR=/usr/share/doc/"${PF}"
 			-DTJPEG_INCLUDE_DIR=/usr/include
 			-DVGL_LIBDIR=/usr/$(get_libdir)
 			-DTJPEG_LIBRARY=/usr/$(get_libdir)/libturbojpeg.so
