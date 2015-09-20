@@ -39,10 +39,10 @@ RDEPEND="sys-libs/ncurses
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( sys-apps/dbus )
-	gfile? ( >=dev-libs/glib-2.28.6 )
 	gnutls? ( net-libs/gnutls )
 	gpm? ( sys-libs/gpm )
 	hesiod? ( net-dns/hesiod )
+	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
 	kerberos? ( virtual/krb5 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
 	selinux? ( sys-libs/libselinux )
@@ -223,7 +223,7 @@ src_configure() {
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}" \
 		--with-gameuser=":gamestat" \
 		--without-compress-install \
-		--with-file-notification=$(usev gfile || usev inotify || echo no) \
+		--with-file-notification=$(usev inotify || usev gfile || echo no) \
 		$(use_enable acl) \
 		$(use_with dbus) \
 		$(use_with gnutls) \

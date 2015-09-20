@@ -6,35 +6,20 @@ EAPI=5
 
 inherit autotools elisp-common eutils flag-o-matic multilib readme.gentoo
 
-if [[ ${PV##*.} = 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="git://git.sv.gnu.org/emacs.git"
-	EGIT_BRANCH="emacs-24"
-	EGIT_CHECKOUT_DIR="${WORKDIR}/emacs"
-	S="${EGIT_CHECKOUT_DIR}"
-else
-	SRC_URI="https://dev.gentoo.org/~ulm/distfiles/emacs-${PV}.tar.xz
-		mirror://gnu-alpha/emacs/pretest/emacs-${PV}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-	# FULL_VERSION keeps the full version number, which is needed in
-	# order to determine some path information correctly for copy/move
-	# operations later on
-	FULL_VERSION="${PV%%_*}"
-	#S="${WORKDIR}/emacs-${FULL_VERSION}"
-	S="${WORKDIR}/emacs"
-fi
-
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
+SRC_URI="mirror://gnu/emacs/${P}.tar.xz
+	https://dev.gentoo.org/~ulm/emacs/${P}-patches-1.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="24"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="acl alsa aqua athena dbus games gconf gfile gif gnutls gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm zlib"
 REQUIRED_USE="?? ( aqua X )"
 
 RDEPEND="sys-libs/ncurses
 	>=app-eselect/eselect-emacs-1.16
-	>=app-emacs/emacs-common-gentoo-1.4-r1[games?,X?]
+	>=app-emacs/emacs-common-gentoo-1.5[games?,X?]
 	net-libs/liblockfile
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
@@ -90,26 +75,19 @@ DEPEND="${RDEPEND}
 		sys-apps/paxctl
 	)"
 
-if [[ ${PV##*.} = 9999 ]]; then
-	DEPEND="${DEPEND}
-	sys-apps/texinfo"
-fi
+RDEPEND="${RDEPEND}
+	!<app-editors/emacs-vcs-${PV}"
 
 EMACS_SUFFIX="${PN/emacs/emacs-${SLOT}}"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"
+# FULL_VERSION keeps the full version number, which is needed in
+# order to determine some path information correctly for copy/move
+# operations later on
+FULL_VERSION="${PV%%_*}"
+S="${WORKDIR}/emacs-${FULL_VERSION}"
 
 src_prepare() {
-	if [[ ${PV##*.} = 9999 ]]; then
-		FULL_VERSION=$(sed -n 's/^AC_INIT([^,]*,[ \t]*\([^ \t,)]*\).*/\1/p' \
-			configure.ac)
-		[[ ${FULL_VERSION} ]] || die "Cannot determine current Emacs version"
-		einfo "Emacs branch: ${EGIT_BRANCH}"
-		einfo "Commit: ${EGIT_VERSION}"
-		einfo "Emacs version number: ${FULL_VERSION}"
-		[[ ${FULL_VERSION} =~ ^${PV%.*}(\..*)?$ ]] \
-			|| die "Upstream version number changed to ${FULL_VERSION}"
-	fi
-
+	EPATCH_SUFFIX=patch epatch
 	epatch_user
 
 	# Fix filename reference in redirected man page
@@ -207,16 +185,13 @@ src_configure() {
 	# Save version information in the Emacs binary. It will be available
 	# in variable "system-configuration-options".
 	myconf+=" GENTOO_PACKAGE=${CATEGORY}/${PF}"
-	if [[ ${PV##*.} = 9999 ]]; then
-		myconf+=" EGIT_BRANCH=${EGIT_BRANCH} EGIT_VERSION=${EGIT_VERSION}"
-	fi
 
 	econf \
 		--program-suffix="-${EMACS_SUFFIX}" \
 		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
 		--localstatedir="${EPREFIX}"/var \
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}" \
-		--with-gameuser="${GAMES_USER_DED:-games}" \
+		--with-gameuser=":gamestat" \
 		--without-compress-install \
 		--with-file-notification=$(usev inotify || usev gfile || echo no) \
 		$(use_enable acl) \
