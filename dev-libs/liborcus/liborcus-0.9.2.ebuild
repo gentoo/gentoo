@@ -18,7 +18,8 @@ LICENSE="MIT"
 SLOT="0/0.10"
 
 #[[ ${PV} == 9999 ]] || \
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+#KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS=""
 
 IUSE="static-libs"
 
