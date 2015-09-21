@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare
-DEPEND=app-arch/bzip2 dev-libs/openssl:0 gnome-base/libgnome-keyring net-libs/libupnp sys-libs/zlib cli? ( dev-libs/protobuf net-libs/libssh[server] ) feedreader? ( dev-libs/libxml2 dev-libs/libxslt net-misc/curl dev-qt/qtcore:4 dev-qt/qtgui:4 ) qt4? ( x11-libs/libX11 x11-libs/libXScrnSaver dev-qt/qtcore:4 || ( ( >=dev-qt/qtgui-4.8.5:4 dev-qt/designer:4 ) <dev-qt/qtgui-4.8.5:4 ) ) voip? ( media-libs/speex dev-qt/qt-mobility[multimedia] dev-qt/qtmultimedia:4 ) app-arch/unzip dev-qt/qtcore:4 virtual/pkgconfig >=sys-apps/sed-4
+DEPEND=app-arch/bzip2 dev-libs/openssl:0 gnome-base/libgnome-keyring net-libs/libupnp sys-libs/zlib cli? ( dev-libs/protobuf net-libs/libssh[server] ) feedreader? ( dev-libs/libxml2 dev-libs/libxslt net-misc/curl ) qt4? ( x11-libs/libX11 x11-libs/libXScrnSaver dev-qt/qtcore:4 dev-qt/qtgui:4 ) voip? ( media-libs/speex dev-qt/qt-mobility[multimedia] dev-qt/qtmultimedia:4 ) app-arch/unzip dev-qt/qtcore:4 virtual/pkgconfig >=sys-apps/sed-4
 DESCRIPTION=P2P private sharing application
 EAPI=5
 HOMEPAGE=http://retroshare.sourceforge.net
 IUSE=cli feedreader links-cloud qt4 voip
 KEYWORDS=amd64 x86
 LICENSE=GPL-2 GPL-3 Apache-2.0 LGPL-2.1
-RDEPEND=app-arch/bzip2 dev-libs/openssl:0 gnome-base/libgnome-keyring net-libs/libupnp sys-libs/zlib cli? ( dev-libs/protobuf net-libs/libssh[server] ) feedreader? ( dev-libs/libxml2 dev-libs/libxslt net-misc/curl dev-qt/qtcore:4 dev-qt/qtgui:4 ) qt4? ( x11-libs/libX11 x11-libs/libXScrnSaver dev-qt/qtcore:4 || ( ( >=dev-qt/qtgui-4.8.5:4 dev-qt/designer:4 ) <dev-qt/qtgui-4.8.5:4 ) ) voip? ( media-libs/speex dev-qt/qt-mobility[multimedia] dev-qt/qtmultimedia:4 )
+RDEPEND=app-arch/bzip2 dev-libs/openssl:0 gnome-base/libgnome-keyring net-libs/libupnp sys-libs/zlib cli? ( dev-libs/protobuf net-libs/libssh[server] ) feedreader? ( dev-libs/libxml2 dev-libs/libxslt net-misc/curl ) qt4? ( x11-libs/libX11 x11-libs/libXScrnSaver dev-qt/qtcore:4 dev-qt/qtgui:4 ) voip? ( media-libs/speex dev-qt/qt-mobility[multimedia] dev-qt/qtmultimedia:4 )
 REQUIRED_USE=|| ( cli qt4 ) feedreader? ( qt4 ) links-cloud? ( qt4 ) voip? ( qt4 )
 SLOT=0
 SRC_URI=mirror://sourceforge/retroshare/retroshare_0.5.5-0.7068.tar.gz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	gnome2-utils	44555579e85afa5c035d2bd5428252da	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=4487c6a3656433bcb0a80e8c997803d5
+_md5_=e3b87bbffac95fc27c4cfb58fcd18958
