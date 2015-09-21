@@ -6827,7 +6827,7 @@ dev-python/cookies 2.2.1: Friendlier RFC 6265-compliant cookie parser/renderer
 dev-python/cosmolopy 0.1.104-r1: Cosmology routines built on NumPy/SciPy
 dev-python/couchdb-python 0.9 0.10 1.0: Python library for working with CouchDB
 dev-python/cov-core 1.7 1.15.0: plugin core for use by pytest-cov, nose-cov and nose2-cov
-dev-python/coverage 3.6 3.7 3.7.1: Code coverage measurement for Python
+dev-python/coverage 3.6 3.7 3.7.1 4.0: Code coverage measurement for Python
 dev-python/crcmod 1.7-r2: Python CRC Generator module
 dev-python/crumbs 1.2.2-r1 2.0.0 2.0.1 2.0.2: Generalized all-in-one parameters module
 dev-python/cryptography 0.5.4 0.6.1 0.7.1-r1 0.7.2 0.8 0.8.1 0.8.2 0.9.2 0.9.3 1.0 1.0.1 1.0.1-r1: Library providing cryptographic recipes and primitives
