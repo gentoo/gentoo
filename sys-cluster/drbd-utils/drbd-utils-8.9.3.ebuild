@@ -83,7 +83,7 @@ src_install() {
 pkg_postinst() {
 	einfo
 	einfo "Please copy and gunzip the configuration file:"
-	einfo "from /usr/share/doc/${PF}/${PN}.conf.example.bz2 to /etc/${PN/-utils/}.conf"
+	einfo "from /usr/share/doc/${PF}/${PN/-utils/}.conf.example.bz2 to /etc/${PN/-utils/}.conf"
 	einfo "and edit it to your needs. Helpful commands:"
 	einfo "man 5 drbd.conf"
 	einfo "man 8 drbdsetup"
