@@ -11,4 +11,4 @@ RESTRICT=mirror strip
 SLOT=0
 SRC_URI=amd64? ( http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.14.124.g4dfabc51_amd64.deb ) x86? ( http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.14.122.gf29d9be0_i386.deb )
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	44555579e85afa5c035d2bd5428252da	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	4f1280c0d4dcd8340f731827007c0a53	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79
-_md5_=010b640f0535111fe64393d3edd8cac2
+_md5_=b5ad4c811e8c2510dd109d096f86473a
