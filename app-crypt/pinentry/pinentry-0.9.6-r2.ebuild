@@ -41,7 +41,7 @@ DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-0.8.2-ncurses.patch"
-	epatch "${FILESDIR}/${P}-Disable-Qt5-support-to-force-Qt4.patch"
+	epatch "${FILESDIR}/${P}-Remove-detection-of-Qt5.patch"
 	eautoreconf
 }
 
