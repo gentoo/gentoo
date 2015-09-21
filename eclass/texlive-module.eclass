@@ -265,7 +265,7 @@ texlive-module_src_compile() {
 	# later
 	for i in "${S}"/tlpkg/tlpobj/*;
 	do
-		grep '^execute ' "${i}" | sed -e 's/^execute //' | tr ' \t' '##' |sort|uniq >> "${T}/jobs"
+		grep '^execute ' "${i}" | sed -e 's/^execute //' | tr ' \t' '##' >> "${T}/jobs"
 	done
 
 	for i in $(<"${T}/jobs");
