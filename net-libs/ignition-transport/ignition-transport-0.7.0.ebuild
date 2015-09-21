@@ -17,7 +17,7 @@ IUSE=""
 
 DEPEND="
 	dev-libs/protobuf:=
-	net-libs/zeromq:=
+	>=net-libs/zeromq-3.2.0:=
 	sys-apps/util-linux
 "
 RDEPEND="${DEPEND}"
