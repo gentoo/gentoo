@@ -116,7 +116,7 @@ index 712c9bf..506686f 100644
 -                  reason = "Result: expected " ++ show expected ++ ", got " ++ show actual,
 -                  stamp = [], callbacks = []}
 -    
-+        P.result { P.ok = Just (expected == actual)
++        P.failed { P.ok = Just (expected == actual)
 +                 , P.reason = "Result: expected " ++ show expected ++ ", got " ++ show actual
 +                 }
  {- | Like '@=?', but with args in a different order. -}
