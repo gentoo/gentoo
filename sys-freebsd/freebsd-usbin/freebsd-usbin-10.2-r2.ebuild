@@ -10,7 +10,8 @@ DESCRIPTION="FreeBSD /usr/sbin tools"
 SLOT="0"
 
 # Security Advisory and Errata patches.
-UPSTREAM_PATCHES=( "EN-15:13/vidcontrol.patch" )
+UPSTREAM_PATCHES=( "EN-15:13/vidcontrol.patch"
+	"EN-15:16/pw.patch" )
 
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
