@@ -191,10 +191,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# fix for hardened pax_kernel, bug 240956
-	[[ ${PV} != 9999* ]] && epatch "${FILESDIR}"/glx_ro_text_segm.patch
-
-	eautoreconf
+	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
 multilib_src_configure() {
@@ -268,11 +265,9 @@ multilib_src_configure() {
 		fi
 	fi
 
-	# x86 hardened pax_kernel needs glx-rts, bug 240956
+	# x86 hardened pax_kernel needs glx-read-only-text, bug 240956
 	if use pax_kernel; then
-		myconf+="
-			$(use_enable x86 glx-rts)
-		"
+		myconf+="$(use_enable x86 glx-read-only-text)"
 	fi
 
 	# on abi_x86_32 hardened we need to have asm disable

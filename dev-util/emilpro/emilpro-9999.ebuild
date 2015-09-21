@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,13 +28,20 @@ DEPEND="|| ( dev-libs/elfutils dev-libs/libelf )
 	dev-cpp/gtkmm:3.0
 	dev-cpp/gtksourceviewmm:3.0
 	dev-cpp/libxmlpp:2.6
-	system-binutils? ( sys-devel/binutils[multitarget] )
+	dev-cpp/glibmm
+	dev-cpp/pangomm
+	dev-cpp/cairomm
+	dev-libs/libsigc++:2
+	dev-libs/glib:2
+	system-binutils? ( >=sys-devel/binutils-2.25.1-r1:*[multitarget] )
 	net-misc/curl"
+# automagic dep
+# dev-util/capstone
 RDEPEND="${DEPEND}"
 
 src_prepare() {
 	if use system-binutils; then
-		epatch "${FILESDIR}"/use-gentoo-binutils.patch
+		epatch "${FILESDIR}"/${P}-use-gentoo-binutils.patch
 	else
 		sed -i "s#wget -O binutils.tar.bz2 https://ftp.gnu.org/gnu/binutils/binutils-2.23.2.tar.bz2#cp \"${DISTDIR}/binutils-2.23.2.tar.bz2\" ./binutils.tar.bz2#" cmake/BuildBinutils.cmake
 	fi
