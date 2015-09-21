@@ -8,7 +8,7 @@ inherit findlib
 
 DESCRIPTION="An equivalent of the C preprocessor for OCaml programs"
 HOMEPAGE="http://mjambon.com/cppo.html"
-SRC_URI="http://mjambon.com/releases/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/mjambon/cppo/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"

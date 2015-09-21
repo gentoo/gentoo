@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit cmake-utils versionator vcs-snapshot
+inherit cmake-utils
 
 DESCRIPTION="Simulation Description Format (SDF) parser"
 HOMEPAGE="http://sdformat.org/"
