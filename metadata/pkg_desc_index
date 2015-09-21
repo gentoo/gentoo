@@ -3348,7 +3348,7 @@ dev-haskell/hdbc 2.3.1.2 2.4.0.0 2.4.0.1: Haskell Database Connectivity
 dev-haskell/hdbc-mysql 0.6.6.1-r1 0.6.6.1-r2: MySQL driver for HDBC
 dev-haskell/hdbc-odbc 2.3.1.0 2.3.1.1 2.4.0.0 2.4.0.1: ODBC driver for HDBC
 dev-haskell/hdbc-postgresql 2.3.2.1 2.3.2.2-r2 2.3.2.3: PostgreSQL driver for HDBC
-dev-haskell/hdbc-sqlite 2.3.3.0: Sqlite v3 driver for HDBC
+dev-haskell/hdbc-sqlite 2.3.3.0 2.3.3.1: Sqlite v3 driver for HDBC
 dev-haskell/hexpat 0.20.9: XML parser/formatter based on expat
 dev-haskell/hgettext 0.1.30: Bindings to libintl.h (gettext, bindtextdomain)
 dev-haskell/highlighting-kate 0.5.5 0.5.5.1 0.5.6.1 0.5.7 0.5.8.3 0.5.11 0.5.11.1 0.5.14 0.6: Syntax highlighting
@@ -8953,7 +8953,7 @@ dev-util/eggy 0.3.3-r1: An IDE/editor for several programming languages, includi
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
 dev-util/elfkickers 3.0-r1 3.0-r2 3.0a: collection of programs to manipulate ELF files: sstrip, rebind, elfls, elftoc
 dev-util/elfsh 0.51_beta3 0.65_rc1: scripting language to modify ELF binaries
-dev-util/emilpro 3-r1 9999: a graphical disassembler for a large number of instruction sets
+dev-util/emilpro 3-r2 9999: a graphical disassembler for a large number of instruction sets
 dev-util/eric 4.5.25-r1 5.5.2: A full featured Python IDE using PyQt4 and QScintilla
 dev-util/exmap 0.10 0.10-r1: A memory analysis kernel module with userland tool
 dev-util/fatrace 0.4 0.5 0.9 0.10: report file access events from all running processes
@@ -14122,7 +14122,7 @@ net-misc/siproxd 0.8.0-r2 0.8.1-r1: A proxy/masquerading daemon for the SIP prot
 net-misc/sipsak 0.9.6_p1 0.9.6_p1-r1: small command line tool for testing SIP applications and devices
 net-misc/sitecopy 0.16.6-r1: Maintain remote web sites with ease
 net-misc/sjphone 1.60.2235: VOIP softphone supports both SIP and H.323 standards
-net-misc/sks 1.1.5 1.1.5-r1: An OpenPGP keyserver which is decentralized and provides highly reliable synchronization
+net-misc/sks 1.1.5-r1: An OpenPGP keyserver which is decentralized and provides highly reliable synchronization
 net-misc/slimrat 9999: Linux Rapidshare downloader
 net-misc/smb4k 1.2.0: The advanced network neighborhood browser for KDE
 net-misc/smbc 1.2.2-r2: A text mode (ncurses) SMB network commander. Features: resume and UTF-8
