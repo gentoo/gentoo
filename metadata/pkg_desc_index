@@ -10179,7 +10179,7 @@ games-strategy/wesnoth 1.12.2 1.12.4: Battle for Wesnoth - A fantasy turn-based 
 games-strategy/widelands 0.17: A game similar to Settlers 2
 games-strategy/xbattle 5.4.1: A multi-player game of strategy and coordination
 games-strategy/xbattleai 1.2.2-r1: A multi-player game of strategy and coordination
-games-util/antimicro 2.10.1: Map keyboard and mouse buttons to gamepad buttons
+games-util/antimicro 2.10.1 2.19.2: Map keyboard and mouse buttons to gamepad buttons
 games-util/atlas 0.4.9_p20140320: Chart Program to use with Flightgear Flight Simulator
 games-util/biounzip 1.1a: Unpacks BioZip archives
 games-util/catcodec 1.0.3: Decodes and encodes sample catalogues for OpenTTD
