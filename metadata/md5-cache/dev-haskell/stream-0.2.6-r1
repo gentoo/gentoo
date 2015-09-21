@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm setup test
-DEPEND=>=dev-lang/ghc-6.6.1 dev-haskell/quickcheck:1 dev-haskell/cabal doc? ( dev-haskell/haddock ) >=dev-haskell/cabal-1.1.4
+DEPEND=>=dev-lang/ghc-6.6.1 dev-haskell/quickcheck:1 dev-haskell/cabal doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) >=dev-haskell/cabal-1.1.4
 DESCRIPTION=A library for manipulating infinite lists
 EAPI=4
 HOMEPAGE=http://www.cs.nott.ac.uk/~wss/repos/Stream/dist/doc/html/
@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=>=dev-lang/ghc-6.6.1 dev-haskell/quickcheck:1
 SLOT=0
 SRC_URI=mirror://hackage/packages/archive/Stream/0.2.6/Stream-0.2.6.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	ghc-package	6165faf4ae46df43d5a9b0dd28ec8654	haskell-cabal	844d30b2063d113d41e54823109e4325	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	ghc-package	6165faf4ae46df43d5a9b0dd28ec8654	haskell-cabal	5a91bcb951851c3c401505c28526502f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=3c457bf18e666b4d95fff5b7a4fa5a15

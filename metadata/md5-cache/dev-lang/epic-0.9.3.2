@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare setup test
-DEPEND=dev-haskell/cabal:=[profile?] dev-haskell/mtl:=[profile?] >=dev-libs/boehm-gc-7.0[threads] >=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.8.0.4 doc? ( dev-haskell/haddock ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
+DEPEND=dev-haskell/cabal:=[profile?] dev-haskell/mtl:=[profile?] >=dev-libs/boehm-gc-7.0[threads] >=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.8.0.4 doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
 DESCRIPTION=Compiler for a simple functional language
 EAPI=5
 HOMEPAGE=http://www.dcs.st-and.ac.uk/~eb/epic.php
@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=dev-haskell/cabal:=[profile?] dev-haskell/mtl:=[profile?] >=dev-libs/boehm-gc-7.0[threads] >=dev-lang/ghc-7.4.1:=
 SLOT=0/0.9.3.2
 SRC_URI=mirror://hackage/packages/archive/epic/0.9.3.2/epic-0.9.3.2.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	ghc-package	6165faf4ae46df43d5a9b0dd28ec8654	haskell-cabal	844d30b2063d113d41e54823109e4325	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	ghc-package	6165faf4ae46df43d5a9b0dd28ec8654	haskell-cabal	5a91bcb951851c3c401505c28526502f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=fd4f05beaf719cc62e3a53c1ba8b9e8e

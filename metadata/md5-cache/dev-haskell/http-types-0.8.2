@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm setup test
-DEPEND=>=dev-haskell/blaze-builder-0.2.1.4:=[profile?] <dev-haskell/blaze-builder-0.4:=[profile?] >=dev-haskell/case-insensitive-0.2:=[profile?] <dev-haskell/case-insensitive-1.2:=[profile?] >=dev-haskell/text-0.11.0.2:=[profile?] <dev-haskell/text-0.12:=[profile?] >=dev-lang/ghc-6.12.1:= >=dev-haskell/cabal-1.8.0.2 test? ( >=dev-haskell/hspec-1.3 dev-haskell/quickcheck ) doc? ( dev-haskell/haddock ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
+DEPEND=>=dev-haskell/blaze-builder-0.2.1.4:=[profile?] <dev-haskell/blaze-builder-0.4:=[profile?] >=dev-haskell/case-insensitive-0.2:=[profile?] <dev-haskell/case-insensitive-1.2:=[profile?] >=dev-haskell/text-0.11.0.2:=[profile?] <dev-haskell/text-0.12:=[profile?] >=dev-lang/ghc-6.12.1:= >=dev-haskell/cabal-1.8.0.2 test? ( >=dev-haskell/hspec-1.3 dev-haskell/quickcheck ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
 DESCRIPTION=Generic HTTP types for Haskell (for both client and server code)
 EAPI=5
 HOMEPAGE=https://github.com/aristidb/http-types
@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=>=dev-haskell/blaze-builder-0.2.1.4:=[profile?] <dev-haskell/blaze-builder-0.4:=[profile?] >=dev-haskell/case-insensitive-0.2:=[profile?] <dev-haskell/case-insensitive-1.2:=[profile?] >=dev-haskell/text-0.11.0.2:=[profile?] <dev-haskell/text-0.12:=[profile?] >=dev-lang/ghc-6.12.1:=
 SLOT=0/0.8.2
 SRC_URI=mirror://hackage/packages/archive/http-types/0.8.2/http-types-0.8.2.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	ghc-package	6165faf4ae46df43d5a9b0dd28ec8654	haskell-cabal	844d30b2063d113d41e54823109e4325	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	ghc-package	6165faf4ae46df43d5a9b0dd28ec8654	haskell-cabal	5a91bcb951851c3c401505c28526502f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=5f0e475f62771b0e423fd98627e713a6
