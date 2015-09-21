@@ -44,7 +44,7 @@ RDEPEND="
 	gnome-keyring? ( gnome-base/libgnome-keyring )
 	ssh? ( net-libs/libssh[sftp] )
 	telepathy? ( net-libs/telepathy-glib )
-	vte? ( x11-libs/vte:2.90 )
+	vte? ( x11-libs/vte:2.91 )
 	zeroconf? ( net-dns/avahi[gtk3] )
 "
 DEPEND="${RDEPEND}
