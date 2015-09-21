@@ -1,15 +1,16 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=5
+inherit versionator gnome2-utils cmake-utils
 
-inherit gnome2-utils cmake-utils
+MY_PV_MAIN=$(get_version_component_range 1-3)
+MY_PV_RC=$(get_version_component_range 4)
+MY_PV="${MY_PV_MAIN}-${MY_PV_RC//rc/rcgit.}"
 
 if [[ ${PV} != 9999 ]]; then
-	inherit vcs-snapshot
-	COMMIT="b6a55ae6f4633d55f8f03e7ce2eeb5899514a8fc"
-	SRC_URI="https://github.com/FreeRDP/Remmina/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/FreeRDP/Remmina/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 else
 	inherit git-2
@@ -20,26 +21,31 @@ else
 fi
 
 DESCRIPTION="A GTK+ RDP, VNC, XDMCP and SSH client"
-HOMEPAGE="http://remmina.sourceforge.net/"
+HOMEPAGE="http://remmina.org/ https://github.com/FreeRDP/Remmina"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ayatana avahi crypt debug freerdp gnome-keyring nls ssh telepathy vte"
+IUSE="ayatana crypt debug freerdp gnome-keyring nls ssh telepathy vte zeroconf"
+REQUIRED_USE="ssh? ( vte )" #546886
 
 RDEPEND="
-	x11-libs/gtk+:3
 	>=dev-libs/glib-2.31.18:2
 	>=net-libs/libvncserver-0.9.8.2
 	x11-libs/libxkbfile
-	x11-themes/gnome-icon-theme
-	avahi? ( net-dns/avahi[gtk3] )
-	ayatana? ( dev-libs/libappindicator )
-	crypt? ( dev-libs/libgcrypt:0 )
-	freerdp? ( >=net-misc/freerdp-1.1.0_beta1_p20130710 )
+	x11-libs/gdk-pixbuf
+	x11-libs/gtk+:3
+	x11-libs/libX11
+	virtual/freedesktop-icon-theme
+	ayatana? ( dev-libs/libappindicator:3 )
+	crypt? ( dev-libs/libgcrypt:0= )
+	freerdp? (
+		>=net-misc/freerdp-1.2
+	)
 	gnome-keyring? ( gnome-base/libgnome-keyring )
 	ssh? ( net-libs/libssh[sftp] )
 	telepathy? ( net-libs/telepathy-glib )
-	vte? ( x11-libs/vte:2.90 )
+	vte? ( x11-libs/vte:2.91 )
+	zeroconf? ( net-dns/avahi[gtk3] )
 "
 DEPEND="${RDEPEND}
 	dev-util/intltool
@@ -47,16 +53,17 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 "
 RDEPEND+="
+	x11-base/xorg-server[kdrive]
 	!net-misc/remmina-plugins
 "
 
 DOCS=( README )
-PATCHES=( "${FILESDIR}/remmina-external_tools.patch" )
+
+S="${WORKDIR}/Remmina-${MY_PV}"
 
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_with ayatana APPINDICATOR)
-		$(cmake-utils_use_with avahi AVAHI)
 		$(cmake-utils_use_with crypt GCRYPT)
 		$(cmake-utils_use_with freerdp FREERDP)
 		$(cmake-utils_use_with gnome-keyring GNOMEKEYRING)
@@ -65,8 +72,8 @@ src_configure() {
 		$(cmake-utils_use_with ssh LIBSSH)
 		$(cmake-utils_use_with telepathy TELEPATHY)
 		$(cmake-utils_use_with vte VTE)
+		$(cmake-utils_use_with zeroconf AVAHI)
 		-DGTK_VERSION=3
-		-DHAVE_PTHREAD=ON
 	)
 	cmake-utils_src_configure
 }

@@ -111,59 +111,6 @@ index 499e8ba..cb151ba 100644
      {"RAND_status",         (PyCFunction)PySSL_RAND_status, METH_NOARGS,
       PySSL_RAND_status_doc},
  #endif
-diff --git a/configure b/configure
-index 6be41f5..5b5a2a0 100755
---- a/configure
-+++ b/configure
-@@ -8823,6 +8823,48 @@ _ACEOF
- 
- fi
- 	# Dynamic linking for HP-UX
-+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for RAND_egd in -lcrypto" >&5
-+$as_echo_n "checking for RAND_egd in -lcrypto... " >&6; }
-+if ${ac_cv_lib_crypto_RAND_egd+:} false; then :
-+  $as_echo_n "(cached) " >&6
-+else
-+  ac_check_lib_save_LIBS=$LIBS
-+LIBS="-lcrypto  $LIBS"
-+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-+/* end confdefs.h.  */
-+
-+/* Override any GCC internal prototype to avoid an error.
-+   Use char because int might match the return type of a GCC
-+   builtin and then its argument prototype would still apply.  */
-+#ifdef __cplusplus
-+extern "C"
-+#endif
-+char RAND_egd ();
-+int
-+main ()
-+{
-+return RAND_egd ();
-+  ;
-+  return 0;
-+}
-+_ACEOF
-+if ac_fn_c_try_link "$LINENO"; then :
-+  ac_cv_lib_crypto_RAND_egd=yes
-+else
-+  ac_cv_lib_crypto_RAND_egd=no
-+fi
-+rm -f core conftest.err conftest.$ac_objext \
-+    conftest$ac_exeext conftest.$ac_ext
-+LIBS=$ac_check_lib_save_LIBS
-+fi
-+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_crypto_RAND_egd" >&5
-+$as_echo "$ac_cv_lib_crypto_RAND_egd" >&6; }
-+if test "x$ac_cv_lib_crypto_RAND_egd" = xyes; then :
-+
-+$as_echo "#define HAVE_RAND_EGD 1" >>confdefs.h
-+
-+fi
-+
- 
- # only check for sem_init if thread support is requested
- if test "$with_threads" = "yes" -o -z "$with_threads"; then
 diff --git a/configure.ac b/configure.ac
 index 6a64bff..90f315a 100644
 --- a/configure.ac
@@ -178,20 +125,3 @@ index 6a64bff..90f315a 100644
  
  # only check for sem_init if thread support is requested
  if test "$with_threads" = "yes" -o -z "$with_threads"; then
-diff --git a/pyconfig.h.in b/pyconfig.h.in
-index 0020300..0d37f67 100644
---- a/pyconfig.h.in
-+++ b/pyconfig.h.in
-@@ -660,6 +660,9 @@
- /* Define to 1 if you have the `pwrite' function. */
- #undef HAVE_PWRITE
- 
-+/* Define if the libcrypto has RAND_egd */
-+#undef HAVE_RAND_EGD
-+
- /* Define to 1 if you have the `readlink' function. */
- #undef HAVE_READLINK
- 
--- 
-2.5.2
-
