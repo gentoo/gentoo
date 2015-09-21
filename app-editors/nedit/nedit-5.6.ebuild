@@ -28,6 +28,7 @@ S="${WORKDIR}/${PN}-5.6"
 src_prepare() {
 	#respecting LDFLAGS, bug #208189
 	epatch \
+		"${FILESDIR}"/${P}-format.patch \
 		"${FILESDIR}"/${P}-ldflags.patch \
 		"${FILESDIR}"/${P}-40_Pointer_to_Integer.patch
 	sed \
