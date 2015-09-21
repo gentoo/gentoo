@@ -9,7 +9,7 @@ inherit multilib qt5-build
 DESCRIPTION="SQL abstraction library for the Qt5 tooolkit"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 arm ~arm64 hppa ~ppc64 ~x86"
+	KEYWORDS="amd64 arm ~arm64 hppa ppc64 ~x86"
 fi
 
 IUSE="freetds mysql oci8 odbc postgres +sqlite"
