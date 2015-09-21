@@ -8783,7 +8783,7 @@ dev-texlive/texlive-langchinese 2014 2015: TeXLive Chinese
 dev-texlive/texlive-langcjk 2012 2013 2014 2015: TeXLive Chinese/Japanese/Korean (base)
 dev-texlive/texlive-langcroatian 2012: TeXLive Croatian
 dev-texlive/texlive-langcyrillic 2012 2013 2014 2015: TeXLive Cyrillic
-dev-texlive/texlive-langczechslovak 2012 2013 2014 2015: TeXLive Czech/Slovak
+dev-texlive/texlive-langczechslovak 2012 2013 2014 2015-r1: TeXLive Czech/Slovak
 dev-texlive/texlive-langdanish 2012: TeXLive Danish
 dev-texlive/texlive-langdutch 2012: TeXLive Dutch
 dev-texlive/texlive-langenglish 2012 2013 2014 2015: TeXLive US and UK English

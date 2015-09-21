@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=>=dev-lang/ocaml-3.11.2:=[ocamlopt?] >=dev-ml/camlimages-4.0.1:=[truetype,tiff,jpeg,postscript,X] virtual/latex-base app-text/ghostscript-gpl x11-libs/libXinerama
 SLOT=0
 SRC_URI=http://gallium.inria.fr/advi/advi-1.10.2.tar.gz
-_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	texlive-common	9f53e0e2b52b33a0fa6b470fbcb05fb9	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	texlive-common	cf8d3d36261adafe564b821b75b34a05	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
 _md5_=aa2c8ca667ac2affeada2b891045c81b
