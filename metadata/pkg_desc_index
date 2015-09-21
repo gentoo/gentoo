@@ -14642,7 +14642,6 @@ sci-biology/express 0.9.5 0.9.5-r1 1.5.1: Streaming RNA-Seq Analysis
 sci-biology/fasta 35.4.10 36.3.5e: FASTA is a DNA and Protein sequence alignment software package
 sci-biology/fasttree 2.1.7 2.1.8: Fast inference of approximately-maximum-likelihood phylogenetic trees
 sci-biology/finchtv 1.3.1-r2: Graphical viewer for chromatogram files
-sci-biology/flower 0.7.2: Analyze 454 flowgrams (.SFF files)
 sci-biology/foldingathome 7.3.6-r2 7.4.4: Folding@Home is a distributed computing project for protein folding
 sci-biology/gatk 2.4 9999: The Genome Analysis Toolkit
 sci-biology/gibbs 3.1: Identify motifs, conserved regions, in DNA or protein sequences
