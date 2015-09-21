@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -37,14 +37,12 @@ RDEPEND="
 		dev-libs/libxml2
 		dev-libs/libxslt
 		net-misc/curl
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
 	)
 	qt4? (
 		x11-libs/libX11
 		x11-libs/libXScrnSaver
 		dev-qt/qtcore:4
-		|| ( ( >=dev-qt/qtgui-4.8.5:4 dev-qt/designer:4 ) <dev-qt/qtgui-4.8.5:4 )
+		dev-qt/qtgui:4
 	)
 	voip? (
 		media-libs/speex
@@ -56,7 +54,7 @@ DEPEND="${RDEPEND}
 	dev-qt/qtcore:4
 	virtual/pkgconfig"
 
-S=${WORKDIR}/retroshare-0.5.5/src
+S="${WORKDIR}/retroshare-0.5.5/src"
 
 src_prepare() {
 	local dir
