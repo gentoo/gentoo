@@ -85,7 +85,7 @@ texlive-common_do_symlinks() {
 				if [ $1 = $2 ];
 				then
 					einfo "Symlink $1 -> $2 skipped"
-				elif [ -e "${ED}/usr/bin/$1" ];
+				elif [ -e "${ED}/usr/bin/$1" -o -L "${ED}/usr/bin/$1" ];
 				then
 					einfo "Symlink $1 skipped (file exists)"
 				else
