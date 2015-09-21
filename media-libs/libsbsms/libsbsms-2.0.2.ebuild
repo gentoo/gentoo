@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/sbsms/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~mips ppc ~ppc64 x86"
+KEYWORDS="amd64 ~mips ppc ppc64 x86"
 IUSE="cpu_flags_x86_sse static-libs"
 
 src_prepare() {
