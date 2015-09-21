@@ -103,7 +103,13 @@ if [[ -n "${CABAL_USE_HADDOCK}" ]]; then
 	IUSE="${IUSE} doc"
 	# don't require depend on itself to build docs.
 	# ebuild bootstraps docs from just built binary
-	[[ ${CATEGORY}/${PN} = "dev-haskell/haddock" ]] || DEPEND="${DEPEND} doc? ( dev-haskell/haddock )"
+	#
+	# starting from ghc-7.10.2 we install haddock bundled with
+	# ghc to keep links to base and ghc library, otherwise
+	# newer haddock versions change index format and can't
+	# read index files for packages coming with ghc.
+	[[ ${CATEGORY}/${PN} = "dev-haskell/haddock" ]] || \
+		DEPEND="${DEPEND} doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) )"
 fi
 
 if [[ -n "${CABAL_USE_HSCOLOUR}" ]]; then
@@ -240,7 +246,7 @@ cabal-mksetup() {
 	rm -vf "${setupdir}"/Setup.{lhs,hs}
 	elog "Creating 'Setup.hs' for 'Simple' build type."
 
-	echo 'import Distribution.Simple; main = defaultMainWithHooks defaultUserHooks' \
+	echo 'import Distribution.Simple; main = defaultMain' \
 		> "${setup_src}" || die "failed to create default Setup.hs"
 }
 
