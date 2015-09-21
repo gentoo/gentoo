@@ -9,6 +9,9 @@ inherit bsdmk freebsd flag-o-matic multilib toolchain-funcs eutils multibuild mu
 DESCRIPTION="FreeBSD's base system libraries"
 SLOT="0"
 
+# Security Advisory and Errata patches.
+UPSTREAM_PATCHES=( "EN-15:17/libc.patch" )
+
 # Crypto is needed to have an internal OpenSSL header
 # sys is needed for libalias, probably we can just extract that instead of
 # extracting the whole tarball
