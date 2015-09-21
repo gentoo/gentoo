@@ -20,7 +20,6 @@ RDEPEND="
 	>=app-arch/xz-utils-4.9:=
 	dev-db/sqlite:3=
 	>=dev-libs/glib-2.38:2
-	dev-libs/libgcrypt:0=
 	>=dev-libs/libxml2-2.6.5:2
 	>=dev-libs/libxslt-1.1.4
 	>=gnome-extra/yelp-xsl-3.12
