@@ -1,14 +1,15 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
+
 PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
 
 inherit distutils-r1
 
-DESCRIPTION="Python package for providing Mozilla's CA Bundle"
-HOMEPAGE="http://packages.python.org/nose_fixes"
+DESCRIPTION="A plugin to make nose behave better"
+HOMEPAGE="https://pythonhosted.org/nose_fixes/ https://pypi.python.org/pypi/nose_fixes/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
@@ -20,8 +21,10 @@ RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/nose[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/pkginfo[${PYTHON_USEDEP}]' python2_7) )"
+	doc? (
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep 'dev-python/pkginfo[${PYTHON_USEDEP}]' python2_7)
+	)"
 
 python_prepare_all() {
 	sed -e 's:../bin/sphinx-build:/usr/bin/sphinx-build:' -i docs/Makefile || die
