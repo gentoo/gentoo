@@ -19,7 +19,7 @@ SLOT="0/4"
 # linux x86/amd64/ppc/ppc64/arm
 # OSX ppc/amd64
 # AIX ppc/ppc64
-KEYWORDS="-* amd64 arm ~ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="-* amd64 arm ~ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="largepages +debug minimal test static-libs"
 
 DEPEND="sys-libs/libunwind"

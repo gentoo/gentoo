@@ -8,7 +8,7 @@ inherit qt4-r2 mercurial
 
 DESCRIPTION="Photo processor for RAW and Bitmap images"
 HOMEPAGE="http://www.photivo.org"
-EHG_REPO_URI="https://photivo.googlecode.com/hg/"
+EHG_REPO_URI="https://bitbucket.org/Photivo/photivo"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -33,9 +33,17 @@ src_prepare() {
 	local File
 	for File in $(find "${S}" -type f); do
 		if grep -sq ccache ${File}; then
-			sed -e 's/ccache//' -i "${File}"
+			sed -e 's/ccache//' -i "${File}" || die
 		fi
 	done
+
+	# bug 560120 - fix includes for lensfun.h
+	sed -s -e 's:lensfun.h:lensfun\/lensfun.h:' \
+		-i ReferenceMaterial/LensFunSample.c \
+		-i Sources/ptConstants.h \
+		-i Sources/ptImage.h \
+		-i Sources/ptImage_Lensfun.cpp \
+		-i Sources/ptLensfun.h || die
 
 	# useless check (no pkgconfig file is provided)
 	sed -e "/PKGCONFIG += CImg/d" \
