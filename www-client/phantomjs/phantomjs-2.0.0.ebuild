@@ -27,6 +27,7 @@ RDEPEND="dev-libs/icu:=
 	virtual/jpeg:0"
 DEPEND="${RDEPEND}
 	${RUBY_DEPS}
+	net-misc/openssh[-bindist]
 	app-arch/unzip
 	virtual/pkgconfig"
 
