@@ -6721,7 +6721,7 @@ dev-python/asset 0.6.1-r1 0.6.2 0.6.3: A package resource and symbol loading hel
 dev-python/assets 0.1.1-r1: Cache-friendly asset management via content-hash-naming
 dev-python/astng 0.24.3: Abstract Syntax Tree for logilab packages
 dev-python/astor 0.3 0.4 0.4.1 0.5: Read/rewrite/write Python ASTs
-dev-python/astroid 1.3.4 1.3.6 1.3.7 1.3.8: Abstract Syntax Tree for logilab packages
+dev-python/astroid 1.3.8: Abstract Syntax Tree for logilab packages
 dev-python/astropy 0.3.1 0.3.2 0.4 0.4.4 1.0.4: Core functionality for performing astrophysics with Python
 dev-python/astropy-helpers 0.4.1 1.0.3: Helpers for Astropy and Affiliated packages
 dev-python/async 0.6.2: Async Framework
