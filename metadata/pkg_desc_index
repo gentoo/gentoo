@@ -5747,6 +5747,7 @@ dev-perl/Mail-Sender 0.8.22-r1 0.8.23: Module for sending mails with attachments
 dev-perl/Mail-Sendmail 0.790.0-r1: Simple platform independent mailer
 dev-perl/Mail-SpamAssassin-Plugin-GoogleSafeBrowsing 1.30.0-r1: SpamAssassin plugin to score mail based on Google blocklists
 dev-perl/MailTools 2.120.0-r1 2.140.0: Manipulation of electronic mail addresses
+dev-perl/Math-Base-Convert 0.80.0: Very fast base to base conversion
 dev-perl/Math-Base36 0.120.0-r1 0.140.0: Encoding and decoding of base36 strings
 dev-perl/Math-Bezier 0.10.0-r1: Solution of Bezier Curves
 dev-perl/Math-BigInt-GMP 1.380.0: Use the GMP library for Math::BigInt routines
@@ -6015,9 +6016,9 @@ dev-perl/SOAP-Lite 1.040.0-r1 1.140.0: Simple and lightweight interface to the S
 dev-perl/SOAP-WSDL 2.00.10-r1 3.2.0: SOAP with WSDL support
 dev-perl/SQL-Abstract 1.780.0: Generate SQL from Perl data structures
 dev-perl/SQL-Abstract-Limit 0.141.0-r1: Portable LIMIT emulation
-dev-perl/SQL-Statement 1.405.0-r1: Small SQL parser and engine
+dev-perl/SQL-Statement 1.405.0-r1 1.407.0: Small SQL parser and engine
 dev-perl/SQL-Translator 0.110.160-r1 0.110.210: Manipulate structured data definitions (SQL and more)
-dev-perl/SRU 1.0.0: Catalyst::Controller::SRU - Dispatch SRU methods with Catalyst
+dev-perl/SRU 1.0.0 1.10.0: Search and Retrieval by URL
 dev-perl/SVG 2.590.0 2.640.0: Perl extension for generating Scalable Vector Graphics (SVG) documents
 dev-perl/SVG-Graph 0.20.0-r1: Visualize your data in Scalable Vector Graphics (SVG) format
 dev-perl/SVN-Simple 0.280.0-r1: SVN::Simple::Edit - Simple interface to SVN::Delta::Editor
