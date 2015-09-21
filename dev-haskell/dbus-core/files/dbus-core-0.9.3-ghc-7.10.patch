@@ -1,0 +1,96 @@
+diff --git a/hs/DBus/Connection/Authentication.hs b/hs/DBus/Connection/Authentication.hs
+index b909a38..c33d311 100644
+--- a/hs/DBus/Connection/Authentication.hs
++++ b/hs/DBus/Connection/Authentication.hs
+@@ -25,3 +25,4 @@ module DBus.Connection.Authentication
+ import           Prelude hiding (getLine, head)
+-import           Control.Monad (liftM)
++import           Control.Applicative
++import           Control.Monad
+ import qualified Data.ByteString
+@@ -58,2 +59,9 @@ data Auth a = Auth
+ 
++instance Functor Auth where
++    fmap  = liftM
++
++instance Applicative Auth where
++    pure  = return
++    (<*>) = ap  -- defined in Control.Monad
++
+ instance Monad Auth where
+diff --git a/hs/DBus/Introspection.hs b/hs/DBus/Introspection.hs
+index 96ff4a3..da82812 100644
+--- a/hs/DBus/Introspection.hs
++++ b/hs/DBus/Introspection.hs
+@@ -29,3 +29,4 @@ module DBus.Introspection
+ 	) where
+-import           Control.Monad ((>=>))
++import           Control.Applicative
++import           Control.Monad
+ import           Control.Monad.ST (runST)
+@@ -176,2 +177,9 @@ newtype XmlWriter a = XmlWriter { runXmlWriter :: Maybe (a, Text) }
+ 
++instance Functor XmlWriter where
++    fmap  = liftM
++
++instance Applicative XmlWriter where
++    pure  = return
++    (<*>) = ap  -- defined in Control.Monad
++
+ instance Monad XmlWriter where
+diff --git a/hs/DBus/Types/Internal.hs b/hs/DBus/Types/Internal.hs
+index 7f5d9c5..7c73afe 100644
+--- a/hs/DBus/Types/Internal.hs
++++ b/hs/DBus/Types/Internal.hs
+@@ -5,2 +5,3 @@
+ {-# LANGUAGE IncoherentInstances #-}
++{-# LANGUAGE FlexibleContexts #-}
+ 
+diff --git a/hs/DBus/Util/MonadError.hs b/hs/DBus/Util/MonadError.hs
+index 33b51ed..ef01df2 100644
+--- a/hs/DBus/Util/MonadError.hs
++++ b/hs/DBus/Util/MonadError.hs
+@@ -23,2 +23,6 @@ module DBus.Util.MonadError
+ 	) where
++
++import Control.Applicative
++import Control.Monad
++
+ newtype ErrorM e a = ErrorM { runErrorM :: Either e a }
+@@ -30,2 +34,6 @@ instance Functor (ErrorM e) where
+ 
++instance Applicative (ErrorM e) where
++    pure  = return
++    (<*>) = ap  -- defined in Control.Monad
++
+ instance Monad (ErrorM e) where
+@@ -41,2 +49,9 @@ newtype ErrorT e m a = ErrorT { runErrorT :: m (Either e a) }
+ 
++instance Monad m => Functor (ErrorT e m) where
++    fmap  = liftM
++
++instance Monad m => Applicative (ErrorT e m) where
++    pure  = return
++    (<*>) = ap  -- defined in Control.Monad
++
+ instance Monad m => Monad (ErrorT e m) where
+diff --git a/hs/DBus/Wire/Internal.hs b/hs/DBus/Wire/Internal.hs
+index b386eec..512ff1a 100644
+--- a/hs/DBus/Wire/Internal.hs
++++ b/hs/DBus/Wire/Internal.hs
+@@ -19,3 +19,4 @@
+ module DBus.Wire.Internal where
+-import Control.Monad (liftM, when, unless)
++import Control.Applicative
++import Control.Monad hiding (void)
+ 
+@@ -96,2 +97,9 @@ newtype Wire s a = Wire
+ 
++instance Functor (Wire s) where
++    fmap  = liftM
++
++instance Applicative (Wire s) where
++    pure  = return
++    (<*>) = ap  -- defined in Control.Monad
++
+ instance Monad (Wire s) where
