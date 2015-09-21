@@ -10,7 +10,7 @@ SRC_URI="http://www.oddsock.org/tools/streamTranscoderV3/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~sparc x86"
+KEYWORDS="amd64 ppc sparc x86"
 IUSE=""
 
 RDEPEND=">=media-libs/libogg-1.1
