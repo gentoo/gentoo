@@ -25,7 +25,8 @@ RDEPEND="
 	dev-libs/nss
 	gnome-base/gconf
 	media-libs/alsa-lib
-	media-libs/harfbuzz[fontconfig]
+	media-libs/harfbuzz
+	media-libs/fontconfig
 	media-libs/mesa
 	net-misc/curl
 	net-print/cups[ssl]
