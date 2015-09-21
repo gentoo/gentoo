@@ -4986,7 +4986,7 @@ dev-ml/core_bench 112.35.00: Micro-benchmarking library for OCaml
 dev-ml/core_extended 112.35.00 113.00.00: Jane Street's alternative to the standard library
 dev-ml/core_kernel 112.35.00 113.00.00: System-independent part of Core
 dev-ml/core_profiler 112.35.00 113.00.00: Jane Street's profiling library
-dev-ml/cppo 0.9.3 1.0.1 1.1.2 1.3.0: An equivalent of the C preprocessor for OCaml programs
+dev-ml/cppo 1.3.0 1.3.1: An equivalent of the C preprocessor for OCaml programs
 dev-ml/cryptokit 1.7 1.9 1.10: Cryptographic primitives library for Objective Caml
 dev-ml/csv 1.3.0 1.3.3 1.4: A pure OCaml library to read and write CSV files
 dev-ml/cudf 0.7 0.8: Library to parse, pretty print, and evaluate CUDF documents
@@ -5056,7 +5056,7 @@ dev-ml/pa_bench 109.55.02 111.28.00 112.06.00: Syntax extension writing inline b
 dev-ml/pa_ounit 112.35.00 113.00.00: Syntax extension that helps writing in-line test in ocaml
 dev-ml/pa_structural_sexp 112.35.00 113.00.00: Quotation expanders to simplify building s-expressions from ocaml values
 dev-ml/pa_test 111.08.01 112.24.00: Quotation expanders for assertions
-dev-ml/parmap 1.0_rc6: Library allowing to exploit multicore architectures for OCaml programs with minimal modifications
+dev-ml/parmap 1.0_rc6 1.0_rc7: Library allowing to exploit multicore architectures for OCaml programs with minimal modifications
 dev-ml/pcre-ocaml 6.2.5 7.0.2 7.0.4 7.1.3 7.1.5 7.1.6: Perl Compatibility Regular Expressions for O'Caml
 dev-ml/pgocaml 1.7.1 2.1 2.2: PG'OCaml is a set of OCaml bindings for the PostgreSQL database
 dev-ml/pipebang 110.01.00 113.00.00: Syntax extension to transform x |! f into f x
@@ -7226,7 +7226,7 @@ dev-python/nose 1.3.4 1.3.6 1.3.7 9999: A unittest extension offering automatic 
 dev-python/nose-cover3 0.1.0-r1: Coverage 3.x support for Nose
 dev-python/nose-exclude 0.1.9 0.2.0 0.3.0 0.4.1: Exclude specific directories from nosetests runs
 dev-python/nose-testconfig 0.9: Test Configuration plugin for nosetests
-dev-python/nose_fixes 1.3: Python package for providing Mozilla's CA Bundle
+dev-python/nose_fixes 1.3: A plugin to make nose behave better
 dev-python/nosehtmloutput 0.0.4-r1 0.0.5: Nose plugin to produce test results in html
 dev-python/nosexcover 1.0.10: Extends nose.plugins.cover to add Cobertura-style XML reports
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
