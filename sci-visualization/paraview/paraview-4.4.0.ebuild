@@ -123,18 +123,6 @@ src_prepare() {
 }
 
 src_configure() {
-	local mysql_lib mysql_includedir
-
-	if use mysql ; then
-		if [[ $(mysql_config --version | sed 's/\.//g') -lt 5529 ]] ; then
-			mysql_lib="/usr/$(get_libdir)/mysql/libmysqlclient.so"
-			mysql_includedir="/usr/include/mysql"
-		else
-			mysql_lib="$(mysql_config --variable=pkglibdir)/libmysqlclient.so"
-			mysql_includedir="$(mysql_config --variable=pkgincludedir)"
-		fi
-	fi
-
 	# VTK_USE_SYSTEM_QTTESTING
 	# PARAVIEW_USE_SYSTEM_AUTOBAHN
 	local mycmakeargs=(
@@ -169,8 +157,6 @@ src_configure() {
 		-DVTK_USE_FFMPEG_ENCODER=OFF
 		-DPROTOC_LOCATION=$(type -P protoc)
 		-DVTK_Group_StandAlone=ON
-		-DMYSQL_INCLUDE_DIRECTORIES="$(usex mysql "${mysql_includedir}" "")"
-		-DMYSQL_LIBRARY="$(usex mysql "${mysql_lib}" "")"
 		# force this module due to incorrect build system deps
 		# wrt bug 460528
 		-DModule_vtkUtilitiesProcessXML=ON

@@ -1,0 +1,13 @@
+diff --git a/src/Test/HUnit/Tools.hs b/src/Test/HUnit/Tools.hs
+index a24a510..6b8a25e 100644
+--- a/src/Test/HUnit/Tools.hs
++++ b/src/Test/HUnit/Tools.hs
+@@ -97,3 +97,7 @@ runVerbTestText (HU.PutText put us) t = do
+   reportFailure = reportProblem "Failure:" "Failure in: "
+-  reportProblem p0 p1 msg ss us = put line True us
++  reportProblem p0 p1
++#if MIN_VERSION_HUnit(1,3,0)
++                      _loc
++#endif
++                           msg ss us = put line True us
+    where line  = "### " ++ kind ++ path' ++ '\n' : msg
