@@ -104,12 +104,6 @@ multilib_src_test() {
 		# main.mysqlhotcopy_archive main.mysqlhotcopy_myisam
 		# Called with bad parameters should be reported upstream
 		#
-		# innodb_stress.innodb_stress
-		# innodb_stress.innodb_stress_blob innodb_stress.innodb_stress_blob_nocompress
-		# innodb_stress.innodb_stress_crash innodb_stress.innodb_stress_crash_blob
-		# innodb_stress.innodb_stress_crash_blob_nocompress innodb_stress.innodb_stress_crash_nocompress
-		# innodb_stress.innodb_stress_nocompress
-		# Dependent on python2 being the system python
 
 		for t in main.mysql_client_test \
 			binlog.binlog_statement_insert_delayed main.information_schema \
@@ -124,14 +118,6 @@ multilib_src_test() {
 				mysql-multilib_disable_test  "$t" "False positives in Gentoo"
 		done
 
-		for t in innodb_stress.innodb_stress \
-			innodb_stress.innodb_stress_blob innodb_stress.innodb_stress_blob_nocompress \
-			innodb_stress.innodb_stress_crash innodb_stress.innodb_stress_crash_blob \
-			innodb_stress.innodb_stress_crash_blob_nocompress innodb_stress.innodb_stress_crash_nocompress \
-			innodb_stress.innodb_stress_nocompress ; do
-				mysql-multilib_disable_test "$t" "False positives due to python exception syntax"
-		done
-
 		# Run mysql tests
 		pushd "${TESTDIR}"
 
@@ -139,8 +125,10 @@ multilib_src_test() {
 		ulimit -n 3000
 
 		# run mysql-test tests
+		# We skip the innodb_stress suite because it depends on python2 being system python
 		perl mysql-test-run.pl --force --vardir="${T}/var-tests" \
-			--testcase-timeout=30 --reorder
+			--testcase-timeout=30 --reorder \
+			--skip-test=innodb_stress
 		retstatus_tests=$?
 		[[ $retstatus_tests -eq 0 ]] || eerror "tests failed"
 		has usersandbox $FEATURES && eerror "Some tests may fail with FEATURES=usersandbox"
