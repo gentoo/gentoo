@@ -31,6 +31,8 @@ RDEPEND="
 	dev-vcs/git
 	net-misc/rsync
 	sys-apps/portage
+	sys-fs/squashfs-tools
+	virtual/cdrtools
 	|| (
 		sys-kernel/genkernel
 		sys-kernel/genkernel-next
