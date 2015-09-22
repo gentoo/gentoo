@@ -8036,6 +8036,7 @@ dev-ros/rosconsole 1.11.14 9999: ROS console output library
 dev-ros/roscpp 1.11.14 9999: C++ implementation of ROS
 dev-ros/roscpp_serialization 0.5.6 9999: Code for serialization
 dev-ros/roscpp_traits 0.5.6 9999: Message traits code
+dev-ros/roscpp_tutorials 0.6.1 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
 dev-ros/roscreate 1.12.3 9999: Tool that assists in the creation of ROS filesystem resources
 dev-ros/rosgraph 1.11.14 9999: Prints information about the ROS Computation Graph
 dev-ros/rosgraph_msgs 1.11.1 9999: Messages relating to ROS comm
@@ -8051,6 +8052,7 @@ dev-ros/rosout 1.11.14 9999: System-wide logging mechanism for messages sent to 
 dev-ros/rospack 2.2.5 9999: Retrieves information about ROS packages available on the filesystem
 dev-ros/rosparam 1.11.14 9999: Command-line tool for getting and setting ROS Parameters on the parameter server
 dev-ros/rospy 1.11.14 9999: Python client library for ROS
+dev-ros/rospy_tutorials 0.6.1 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
 dev-ros/rosservice 1.11.14 9999: Command-line tool for listing and querying ROS Services
 dev-ros/rostest 1.11.14 9999: Integration test suite based on roslaunch that is compatible with xUnit frameworks
 dev-ros/rostime 0.5.6 9999: Time and Duration implementations for C++ libraries
@@ -8074,6 +8076,7 @@ dev-ros/test_rospy 1.11.14 9999: Unit tests for rospy
 dev-ros/test_rosservice 1.11.14 9999: Unit tests for rospy
 dev-ros/topic_tools 1.11.14 9999: Tools for directing, throttling and selecting ROS topics
 dev-ros/trajectory_msgs 1.12.3 9999: Messages for defining robot trajectories
+dev-ros/turtlesim 0.6.1 9999: Tool made for teaching ROS and ROS packages
 dev-ros/visualization_msgs 1.12.3 9999: Messages used by higher level packages that deal in visualization-specific data.
 dev-ros/xmlrpcpp 1.11.14 9999: C++ implementation of the XML-RPC protocol
 dev-ruby/GeoRuby 2.2.1-r2 2.2.1-r3 2.5.2: Ruby data holder for OGC Simple Features
@@ -14622,6 +14625,7 @@ perl-core/version 0.990.800: Perl extension for Version Objects
 ros-meta/common_msgs 1.12.3 9999: Messages that are widely used by other ROS packages
 ros-meta/ros 1.12.3 9999: ROS packaging system
 ros-meta/ros_comm 1.11.14 9999: ROS communications-related packages
+ros-meta/ros_tutorials 0.6.1 9999: Demonstrates various features of ROS, as well as support packages which help demonstrate them
 ros-meta/roscpp_core 0.5.6 9999: Underlying data libraries for roscpp messages
 sci-astronomy/aatm 0.4.3.1: Atmospheric Modelling for ALMA Observatory
 sci-astronomy/casa-data 10013 99999: Data and tables for the CASA software
