@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{3,4}} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="py.test plugin for coverage reporting"
-HOMEPAGE="https://bitbucket.org/memedough/pytest-cov/overview"
+HOMEPAGE="https://github.com/pytest-dev/pytest-cov https://pypi.python.org/pypi/pytest-cov"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
@@ -20,8 +20,7 @@ RDEPEND="
 	>=dev-python/py-1.4.22[${PYTHON_USEDEP}]
 	>=dev-python/pytest-2.6.0[${PYTHON_USEDEP}]
 	>=dev-python/cov-core-1.14.0[${PYTHON_USEDEP}]
-	>=dev-python/coverage-3.7.1[${PYTHON_USEDEP}]
-	<dev-python/coverage-4[${PYTHON_USEDEP}]"
+	>=dev-python/coverage-3.7.1[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
@@ -34,5 +33,5 @@ DEPEND="
 
 python_test() {
 	PYTHONPATH="${S}/tests:${BUILD_DIR}/lib" \
-		py.test -vv || die
+		py.test -p pytest_cov -vvx || die
 }
