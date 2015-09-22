@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jthornber/${PN}/archive/v${PV}${EXT} -> ${BASE_A}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ~ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 RDEPEND="dev-libs/expat
