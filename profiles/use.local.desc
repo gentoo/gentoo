@@ -7828,6 +7828,7 @@ www-servers/varnish:jemalloc - Use dev-libs/jemalloc for allocations
 www-servers/varnish:tools - Build additional tools: varnishhist, varnishstat, varnishtop, varnishsizes
 www-servers/xsp:developer - creates .mdb files for either Release and Debug
 x11-apps/ardesia:cwiid - cwiid support: collection of Linux tools written in C for interfacing to the Nintendo Wiimote.
+x11-apps/copyq:webkit - enables the application to use advanced HTML rendering and fetching remote images and other data
 x11-apps/intel-gpu-tools:python - Install python based register dumper utilities
 x11-apps/intel-gpu-tools:test-programs - Install test programs for DRM driver development
 x11-apps/intel-gpu-tools:unwind - Provide automatic stack traces on test failures

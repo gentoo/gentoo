@@ -8011,11 +8011,17 @@ dev-qt/qtwidgets 5.4.2: Set of UI elements for creating classic desktop-style us
 dev-qt/qtx11extras 5.4.2: Linux/X11-specific support library for the Qt5 framework
 dev-qt/qtxml 5.4.2: SAX and DOM implementation library for the Qt5 framework
 dev-qt/qtxmlpatterns 4.8.5 4.8.6-r1 4.8.7 5.4.2: XPath, XQuery, and XSLT support library for the Qt5 framework
+dev-ros/cmake_modules 0.4.0 9999: CMake Modules which are not distributed with CMake but are commonly used by ROS packages
+dev-ros/cpp_common 0.5.6 9999: C++ code for doing things that are not necessarily ROS related
 dev-ros/gencpp 0.5.3 9999: ROS C++ message definition and serialization generators
 dev-ros/geneus 2.2.4 9999: EusLisp ROS message and service generators
 dev-ros/genlisp 0.4.15 9999: Common-Lisp ROS message and service generators
 dev-ros/genmsg 0.5.6 9999: Python library for generating ROS message and service data structures for various languages
 dev-ros/genpy 0.5.5 9999: Python ROS message and service generators
+dev-ros/message_generation 0.3.0 9999: Build-time dependencies for generating language bindings of messages
+dev-ros/roscpp_serialization 0.5.6 9999: Code for serialization
+dev-ros/roscpp_traits 0.5.6 9999: Message traits code
+dev-ros/rostime 0.5.6 9999: Time and Duration implementations for C++ libraries
 dev-ruby/GeoRuby 2.2.1-r2 2.2.1-r3 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/RubyInline 3.12.3 3.12.3-r1 3.12.4: Allows to embed C/C++ in Ruby code
 dev-ruby/abstract 1.0.0-r2 1.0.0-r3: Library which enable you to define abstract method in Ruby
@@ -17105,6 +17111,7 @@ x11-apps/bdftopcf 1.0.4 1.0.5: X.Org bdftopcf application
 x11-apps/beforelight 1.0.5: Sample implementation of screen saver
 x11-apps/bitmap 1.0.7 1.0.8: X.Org bitmap application
 x11-apps/ccsm 0.8.4-r4 0.8.4-r5: Compizconfig Settings Manager
+x11-apps/copyq 2.4.9: Clipboard manager with advanced features
 x11-apps/editres 1.0.6: a dynamic resource editor for X Toolkit applications
 x11-apps/fonttosfnt 1.0.4-r1: X.Org fonttosfnt application
 x11-apps/fslsfonts 1.0.4 1.0.5: list fonts served by X font server
