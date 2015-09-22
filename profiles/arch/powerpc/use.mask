@@ -1,6 +1,10 @@
 # PPC Specific use flags
 #
 
+# Jeroen Roovers <jer@gentoo.org> (22 Sep 2015)
+# sci-libs/mkl is not supported on PPC
+mkl
+
 # Jeroen Roovers <jer@gentoo.org> (25 May 2015)
 # PowerPC has no support for this bootloader (bug #550322)
 gnuefi
