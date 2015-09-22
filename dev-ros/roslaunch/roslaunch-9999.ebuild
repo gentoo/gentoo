@@ -52,6 +52,10 @@ src_install() {
 	newconfd "${FILESDIR}/roslaunch.confd" roslaunch
 
 	doenvd "${FILESDIR}/40roslaunch"
+
+	# Needed by test_roslaunch
+	insinto /usr/share/${PN}
+	doins test/xml/noop.launch
 }
 
 pkg_preinst() {
