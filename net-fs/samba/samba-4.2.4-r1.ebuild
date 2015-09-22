@@ -68,7 +68,7 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-samba )
 "
 
-REQUIRED_USE="addc? ( gnutls )
+REQUIRED_USE="addc? ( gnutls !system-mitkrb5 )
 	ads? ( acl gnutls ldap )
 	${PYTHON_REQUIRED_USE}"
 
