@@ -1,0 +1,2 @@
+LC_ALL=C
+ROSLAUNCH_FILE="/etc/ros/ros.launch"

@@ -1,0 +1,38 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+depend() {
+	need roscore
+}
+
+checkconfig() {
+	[ -f "${ROSLAUNCH_FILE}" ]
+	eend $? "You need to define ROSLAUNCH_FILE and point it to a correct location (${ROSLAUNCH_FILE} does not exist)"
+}
+
+start() {
+	checkconfig || exit 1
+	ebegin "Waiting for roscore"
+
+	val=${ROS_MASTER_URI#http://}
+	dest=$(echo ${val%/} | tr ':' ' ')
+	while ! echo exit | nc ${dest} &> /dev/null; do sleep 1; done
+
+	ebegin "Starting ROS via roslaunch"
+	start-stop-daemon --start \
+		--user ros --group ros \
+		-m --pidfile /var/run/roslaunch.pid \
+		--exec "/usr/bin/roslaunch" --background \
+		-- ${ROSLAUNCH_FILE}
+	eend $? "Failed to start ROS"
+}
+
+stop() {
+	ebegin "Stopping roslaunch"
+	start-stop-daemon --stop \
+		--pidfile /var/run/roslaunch.pid \
+		--exec "/usr/bin/roslaunch"
+	eend $? "Failed to stop roslaunch"
+}
