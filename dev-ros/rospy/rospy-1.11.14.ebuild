@@ -23,3 +23,10 @@ RDEPEND="
 	dev-python/rospkg[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+
+src_install() {
+	ros-catkin_src_install
+	# Other tests need these nodes
+	exeinto /usr/share/${PN}
+	doexe test_nodes/*
+}
