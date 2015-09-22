@@ -17,5 +17,5 @@ HOMEPAGE="https://github.com/egonSchiele/contracts.ruby"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~x86"
 IUSE=""
