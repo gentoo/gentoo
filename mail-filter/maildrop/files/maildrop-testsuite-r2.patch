@@ -1,0 +1,65 @@
+--- libs/maildrop/configure.ac	2015-06-27 17:55:08.000000000 +0000
++++ libs/maildrop/configure.ac	2015-09-22 05:23:33.000000000 +0000
+@@ -195,6 +195,15 @@
+ AC_DEFINE_UNQUOTED(MAXLONGSIZE, $MAXLONGSIZE,
+ 				[ Maximum character size of a long ])
+ 
++dnl check for en_US locale
++check_en_US() {
++locale -a | grep en_US.utf8 > /dev/null
++return $?
++}
++AC_MSG_CHECKING([for en_US.utf8])
++AM_CONDITIONAL([HAS_EN_US], [check_en_US])
++AM_COND_IF([HAS_EN_US],[AC_MSG_RESULT([yes])],[AC_MSG_RESULT([not found])])
++
+ dnl Checks for library functions.
+ 
+ AC_FUNC_CLOSEDIR_VOID
+--- libs/maildrop/Makefile.am	2015-06-27 17:55:08.000000000 +0000
++++ libs/maildrop/Makefile.am	2015-09-22 05:24:29.000000000 +0000
+@@ -75,9 +75,13 @@
+ 	maildrop.lsm testsuite.txt.idn testsuite.txt.noidn testsuite2
+ 
+ check-am:
++if HAS_EN_US
+ 	@chmod +x testsuite
+ 	./testsuite | cmp -s - $(srcdir)/$(TESTSUITE)
+ 	@SHELL@ $(srcdir)/testsuite2
++else
++       echo ' Need en_US.utf8 to run tests'
++endif
+ 
+ noinst_DATA=maildrop.html maildrop.1 maildropfilter.html maildropfilter.7 \
+ 	maildropgdbm.html maildropgdbm.7
+--- libs/rfc2045/configure.ac	2014-02-16 09:00:13.000000000 +0000
++++ libs/rfc2045/configure.ac	2015-09-22 05:28:18.000000000 +0000
+@@ -60,6 +60,15 @@
+ AC_CHECK_FUNC(strncasecmp,,CFLAGS="$CFLAGS -Dstrncasecmp=strnicmp")
+ AC_CHECK_FUNC(strcasecmp,,CFLAGS="$CFLAGS -Dstrcasecmp=stricmp")
+ 
++dnl check for en_US locale
++check_en_US() {
++locale -a | grep en_US.utf8 > /dev/null
++return $?
++}
++AC_MSG_CHECKING([for en_US.utf8])
++AM_CONDITIONAL([HAS_EN_US], [check_en_US])
++AM_COND_IF([HAS_EN_US],[AC_MSG_RESULT([yes])],[AC_MSG_RESULT([not found])])
++
+ AC_ARG_WITH(package, [], package="$withval",
+ 	[
+ 		package="$PACKAGE"
+--- libs/rfc2045/Makefile.am	2015-02-28 17:59:41.000000000 +0000
++++ libs/rfc2045/Makefile.am	2015-09-22 05:29:08.000000000 +0000
+@@ -76,6 +76,10 @@
+ endif
+ 
+ check-am:
++if HAS_EN_US
+ 	@SHELL@ $(srcdir)/testsuite | cmp -s - $(srcdir)/$(TESTSUITE)
+ 	@SHELL@ $(srcdir)/testsuitemm | cmp -s - $(srcdir)/testsuitemm.txt
+ 	@SHELL@ $(srcdir)/testrfc3676parsersuite | diff -U 3 $(srcdir)/testrfc3676parsersuite.txt -
++else
++       echo ' Need en_US.utf8 to run tests'
++endif
