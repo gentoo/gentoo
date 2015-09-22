@@ -318,10 +318,6 @@ dev-java/icedtea systemtap
 # sci-chemistry/msms not available for this arch
 sci-chemistry/vmd msms
 
-# Justin Lecher <jlec@gentoo.org> (13 Aug 2010)
-# MKL not available on this arch
-media-gfx/povray mkl
-
 # Bernard Cafarelli <voyageur@gentoo.org> (26 Apr 2010)
 # This is for x86/amd64 only
 sys-devel/llvm udis86

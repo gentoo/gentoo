@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,6 +27,10 @@ pkg_setup() {
 
 	BUILD_TARGETS="default"
 	BUILD_PARAMS="KVERSION=${KV_FULL}"
+}
+
+src_prepare() {
+	sed -i 's/^KDIR.*$/KDIR\ \:= \/usr\/src\/linux/g' Makefile || die
 }
 
 src_install() {

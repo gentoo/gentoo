@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/arma/${P}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0/5"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="arpack blas debug doc examples hdf5 lapack mkl superlu tbb test"
 REQUIRED_USE="test? ( lapack )"
 
