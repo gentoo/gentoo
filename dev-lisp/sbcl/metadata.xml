@@ -28,8 +28,6 @@
   GLIBC. SBCL 0.8.17 and later support Unicode.
 </longdescription>
 	<use>
-		<flag name="asdf">Include support for <pkg>dev-lisp/asdf in SBCL</pkg></flag>
-		<flag name="ldb">Include support for the SBCL low level debugger</flag>
 		<flag name="pax_kernel">Enable if the user plans to run the package under a pax enabled hardened kernel</flag>
 	</use>
 	<upstream>
