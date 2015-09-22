@@ -8,5 +8,6 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">testfixtures</remote-id>
+    <remote-id type="github">Simplistix/testfixtures</remote-id>
   </upstream>
 </pkgmetadata>

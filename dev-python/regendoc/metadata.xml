@@ -4,5 +4,6 @@
   <herd>python</herd>
   <upstream>
     <remote-id type="pypi">pip</remote-id>
+    <remote-id type="bitbucket">pytest-dev/regendoc</remote-id>
   </upstream>
 </pkgmetadata>

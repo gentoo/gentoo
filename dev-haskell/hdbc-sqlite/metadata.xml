@@ -6,4 +6,7 @@
 		This is the Sqlite v3 driver for HDBC, the generic
 		database access system for Haskell
 	</longdescription>
+	<upstream>
+		<remote-id type="github">hdbc/hdbc-sqlite3</remote-id>
+	</upstream>
 </pkgmetadata>

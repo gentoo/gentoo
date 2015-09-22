@@ -8,5 +8,6 @@
   </maintainer>
   <upstream>
     <remote-id type="github">benji-york/manuel</remote-id>
+    <remote-id type="pypi">manuel</remote-id>
   </upstream>
 </pkgmetadata>

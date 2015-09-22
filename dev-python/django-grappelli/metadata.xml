@@ -8,5 +8,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">django-grappelli</remote-id>
+		<remote-id type="github">sehmaschine/django-grappelli</remote-id>
 	</upstream>
 </pkgmetadata>

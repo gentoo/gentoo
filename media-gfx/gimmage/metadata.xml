@@ -5,4 +5,7 @@
 	<longdescription lang="en">
 		gimmage: the gtkmm image viewer
 	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">gimmage.berlios</remote-id>
+	</upstream>
 </pkgmetadata>
