@@ -38,11 +38,11 @@ REQUIRED_USE="
 
 RDEPEND="
 	>=dev-libs/libinput-0.8.0
-	>=dev-libs/wayland-1.8.1
+	>=dev-libs/wayland-1.9.0
 	media-libs/lcms:2
 	media-libs/libpng:0=
 	media-libs/libwebp:0=
-	virtual/jpeg
+	virtual/jpeg:0=
 	>=x11-libs/cairo-1.11.3
 	>=x11-libs/libdrm-2.4.30
 	x11-libs/libxkbcommon
