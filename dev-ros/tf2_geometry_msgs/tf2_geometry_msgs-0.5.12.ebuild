@@ -7,7 +7,6 @@ ROS_REPO_URI="https://github.com/ros/geometry_experimental"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
 PYTHON_COMPAT=( python2_7 )
-CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/geometry_msgs"
 
 inherit ros-catkin
 
@@ -22,5 +21,6 @@ RDEPEND="
 	dev-python/python_orocos_kdl[${PYTHON_USEDEP}]
 	dev-ros/tf2
 	sci-libs/orocos_kdl
+	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP},${CATKIN_MESSAGES_CXX_USEDEP}]
 "
 DEPEND="${RDEPEND}"
