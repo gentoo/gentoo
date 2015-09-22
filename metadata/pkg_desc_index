@@ -8011,6 +8011,11 @@ dev-qt/qtwidgets 5.4.2: Set of UI elements for creating classic desktop-style us
 dev-qt/qtx11extras 5.4.2: Linux/X11-specific support library for the Qt5 framework
 dev-qt/qtxml 5.4.2: SAX and DOM implementation library for the Qt5 framework
 dev-qt/qtxmlpatterns 4.8.5 4.8.6-r1 4.8.7 5.4.2: XPath, XQuery, and XSLT support library for the Qt5 framework
+dev-ros/gencpp 0.5.3 9999: ROS C++ message definition and serialization generators
+dev-ros/geneus 2.2.4 9999: EusLisp ROS message and service generators
+dev-ros/genlisp 0.4.15 9999: Common-Lisp ROS message and service generators
+dev-ros/genmsg 0.5.6 9999: Python library for generating ROS message and service data structures for various languages
+dev-ros/genpy 0.5.5 9999: Python ROS message and service generators
 dev-ruby/GeoRuby 2.2.1-r2 2.2.1-r3 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/RubyInline 3.12.3 3.12.3-r1 3.12.4: Allows to embed C/C++ in Ruby code
 dev-ruby/abstract 1.0.0-r2 1.0.0-r3: Library which enable you to define abstract method in Ruby
@@ -9131,7 +9136,7 @@ dev-util/sasm 2.2 9999: Simple crossplatform IDE for NASM assembly language
 dev-util/scala-ide 4.1.0 4.1.1: The Scala IDE
 dev-util/scanmem 0.15.2: Locate and modify variables in executing processes
 dev-util/schroot 1.6.3 1.6.5 1.6.5-r1 1.6.10-r3: Utility to execute commands in a chroot environment
-dev-util/scons 2.3.0 2.3.1 2.3.1-r1 2.3.2 2.3.4 2.3.5: Extensible Python-based build utility
+dev-util/scons 2.3.0 2.3.4 2.3.5 2.4.0: Extensible Python-based build utility
 dev-util/sel 0.08.4 0.08.4-r1: A filemanager for shell scripts
 dev-util/setconf 0.6.6 0.6.7: A small python based utility used to change configuration files
 dev-util/sgb 20030623: Stanford GraphBase
