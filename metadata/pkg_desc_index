@@ -8373,7 +8373,7 @@ dev-ruby/rcairo 1.14.1 1.14.1-r1 1.14.3: Ruby bindings for cairo
 dev-ruby/rdiscount 1.6.8-r2 1.6.8-r3 2.1.7 2.1.7.1 2.1.8: Implementation of John Gruber's Markdown
 dev-ruby/rdoc 4.0.1-r1 4.0.1-r2 4.1.2 4.1.2-r1: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r1 0.6.38-r2: A multipurpose documentation format for Ruby
-dev-ruby/recog 2.0.6 2.0.12: Pattern recognition for hosts, services, and content
+dev-ruby/recog 2.0.6 2.0.12 2.0.13: Pattern recognition for hosts, services, and content
 dev-ruby/redcarpet 3.2.3 3.3.2: A Ruby wrapper for Upskirt
 dev-ruby/redcloth 4.2.9-r3 4.2.9-r4: A module for using Textile in Ruby
 dev-ruby/redis 3.0.6 3.0.7 3.2.1: A Ruby client library for Redis
