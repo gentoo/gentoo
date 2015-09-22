@@ -7078,7 +7078,7 @@ dev-python/ipcalc 1.0.0 1.1.1 1.1.2 1.1.3: IP subnet calculator
 dev-python/ipdb 0.8 0.8.1: IPython-enabled pdb
 dev-python/ipdbplugin 1.4 9999: Nose plugin to use iPdb instead of Pdb when tests fail
 dev-python/ipy 0.82a 0.83: Class and tools for handling of IPv4 and IPv6 addresses and networks
-dev-python/ipython 2.2.0-r1 3.2.0 3.2.1 3.2.1-r1: Advanced interactive shell for Python
+dev-python/ipython 2.2.0-r1 3.2.1-r1: Advanced interactive shell for Python
 dev-python/irc 11.0.1: IRC client framework written in Python
 dev-python/irman-python 0.1-r1: A minimal set of Python bindings for libirman
 dev-python/iso8601 0.1.10: Simple module to parse ISO 8601 dates
@@ -8011,17 +8011,28 @@ dev-qt/qtwidgets 5.4.2: Set of UI elements for creating classic desktop-style us
 dev-qt/qtx11extras 5.4.2: Linux/X11-specific support library for the Qt5 framework
 dev-qt/qtxml 5.4.2: SAX and DOM implementation library for the Qt5 framework
 dev-qt/qtxmlpatterns 4.8.5 4.8.6-r1 4.8.7 5.4.2: XPath, XQuery, and XSLT support library for the Qt5 framework
+dev-ros/actionlib_msgs 1.12.3 9999: Common messages to interact with an action server and an action client
 dev-ros/cmake_modules 0.4.0 9999: CMake Modules which are not distributed with CMake but are commonly used by ROS packages
 dev-ros/cpp_common 0.5.6 9999: C++ code for doing things that are not necessarily ROS related
+dev-ros/diagnostic_msgs 1.12.3 9999: Standardized interface for the diagnostic and runtime monitoring systems in ROS
 dev-ros/gencpp 0.5.3 9999: ROS C++ message definition and serialization generators
 dev-ros/geneus 2.2.4 9999: EusLisp ROS message and service generators
 dev-ros/genlisp 0.4.15 9999: Common-Lisp ROS message and service generators
 dev-ros/genmsg 0.5.6 9999: Python library for generating ROS message and service data structures for various languages
 dev-ros/genpy 0.5.5 9999: Python ROS message and service generators
+dev-ros/geometry_msgs 1.12.3 9999: Messages for common geometric primitives such as points, vectors, and poses
 dev-ros/message_generation 0.3.0 9999: Build-time dependencies for generating language bindings of messages
+dev-ros/message_runtime 0.4.12 9999: Package modeling the run-time dependencies for language bindings of messages
+dev-ros/nav_msgs 1.12.3 9999: Common messages used to interact with the navigation stack
 dev-ros/roscpp_serialization 0.5.6 9999: Code for serialization
 dev-ros/roscpp_traits 0.5.6 9999: Message traits code
 dev-ros/rostime 0.5.6 9999: Time and Duration implementations for C++ libraries
+dev-ros/sensor_msgs 1.12.3 9999: Messages for commonly used sensors, including cameras and scanning laser rangefinders
+dev-ros/shape_msgs 1.12.3 9999: Messages for defining shapes, such as simple solid object primitives, planes, and meshes
+dev-ros/std_msgs 0.5.9 9999: Standard ROS Messages
+dev-ros/stereo_msgs 1.12.3 9999: Messages specific to stereo processing, such as disparity images
+dev-ros/trajectory_msgs 1.12.3 9999: Messages for defining robot trajectories
+dev-ros/visualization_msgs 1.12.3 9999: Messages used by higher level packages that deal in visualization-specific data.
 dev-ruby/GeoRuby 2.2.1-r2 2.2.1-r3 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/RubyInline 3.12.3 3.12.3-r1 3.12.4: Allows to embed C/C++ in Ruby code
 dev-ruby/abstract 1.0.0-r2 1.0.0-r3: Library which enable you to define abstract method in Ruby
@@ -14565,6 +14576,8 @@ perl-core/libnet 1.270.0: A URI Perl Module
 perl-core/parent 0.228-r1: Establish an ISA relationship with base classes at compile time
 perl-core/podlators 2.5.3: Format POD source into various output formats
 perl-core/version 0.990.800: Perl extension for Version Objects
+ros-meta/common_msgs 1.12.3 9999: Messages that are widely used by other ROS packages
+ros-meta/roscpp_core 0.5.6 9999: Underlying data libraries for roscpp messages
 sci-astronomy/aatm 0.4.3.1: Atmospheric Modelling for ALMA Observatory
 sci-astronomy/casa-data 10013 99999: Data and tables for the CASA software
 sci-astronomy/casacore 1.5.0-r1: Core libraries for the Common Astronomy Software Applications
@@ -17308,7 +17321,7 @@ x11-libs/gtkglext 1.2.0-r2 1.2.0-r3: GL extensions for Gtk+ 2.0
 x11-libs/gtkhotkey 0.2.1: Cross platform library for using desktop wide hotkeys
 x11-libs/gtkmathview 0.8.0-r2: Rendering engine for MathML documents
 x11-libs/gtksourceview 2.10.5-r2 2.10.5-r3 3.12.3 3.14.3 3.14.4 3.16.1: A text widget implementing syntax highlighting and other features
-x11-libs/guile-gtk 2.1-r1 2.1-r2: GTK+ bindings for guile
+x11-libs/guile-gtk 2.1-r2: GTK+ bindings for guile
 x11-libs/hippo-canvas 0.3.0-r2: A canvas library based on GTK+ 2, Cairo, and Pango
 x11-libs/ige-mac-integration 0.8.2 9999: GTK+ bindings for Mac OS X specific tasks
 x11-libs/libFS 1.0.6 1.0.7: X.Org FS library
