@@ -4,6 +4,7 @@
   <herd>net-mail</herd>
   <use>
     <flag name="authlib">Add courier-authlib support</flag>
+    <flag name="dovecot">Add dovecot authentication support</flag>
     <flag name="tools">Install maildirmake and deliverquota tools</flag>
     <flag name="trashquota">Count deleted messages as part of the maildir quota</flag>
   </use>
