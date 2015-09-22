@@ -8023,10 +8023,21 @@ dev-ros/genpy 0.5.5 9999: Python ROS message and service generators
 dev-ros/geometry_msgs 1.12.3 9999: Messages for common geometric primitives such as points, vectors, and poses
 dev-ros/message_generation 0.3.0 9999: Build-time dependencies for generating language bindings of messages
 dev-ros/message_runtime 0.4.12 9999: Package modeling the run-time dependencies for language bindings of messages
+dev-ros/mk 1.12.3 9999: A collection of .mk include files for building ROS architectural elements
 dev-ros/nav_msgs 1.12.3 9999: Common messages used to interact with the navigation stack
+dev-ros/rosbash 1.12.3 9999: Assorted shell commands for using ros with bash
+dev-ros/rosboost_cfg 1.12.3 9999: Tool for determining cflags/lflags/etc. of boost on your system
+dev-ros/rosbuild 1.12.3 9999: Scripts for managing the CMake-based build system for ROS
+dev-ros/rosclean 1.12.3 9999: Cleanup filesystem resources (e.g. log files)
 dev-ros/roscpp_serialization 0.5.6 9999: Code for serialization
 dev-ros/roscpp_traits 0.5.6 9999: Message traits code
+dev-ros/roscreate 1.12.3 9999: Tool that assists in the creation of ROS filesystem resources
+dev-ros/roslang 1.12.3 9999: Common package for all ROS client libraries
+dev-ros/roslib 1.12.3 9999: Base dependencies and support libraries for ROS
+dev-ros/rosmake 1.12.3 9999: ROS dependency aware build tool
+dev-ros/rospack 2.2.5 9999: Retrieves information about ROS packages available on the filesystem
 dev-ros/rostime 0.5.6 9999: Time and Duration implementations for C++ libraries
+dev-ros/rosunit 1.12.3 9999: Unit-testing package for ROS
 dev-ros/sensor_msgs 1.12.3 9999: Messages for commonly used sensors, including cameras and scanning laser rangefinders
 dev-ros/shape_msgs 1.12.3 9999: Messages for defining shapes, such as simple solid object primitives, planes, and meshes
 dev-ros/std_msgs 0.5.9 9999: Standard ROS Messages
@@ -14577,6 +14588,7 @@ perl-core/parent 0.228-r1: Establish an ISA relationship with base classes at co
 perl-core/podlators 2.5.3: Format POD source into various output formats
 perl-core/version 0.990.800: Perl extension for Version Objects
 ros-meta/common_msgs 1.12.3 9999: Messages that are widely used by other ROS packages
+ros-meta/ros 1.12.3 9999: ROS packaging system
 ros-meta/roscpp_core 0.5.6 9999: Underlying data libraries for roscpp messages
 sci-astronomy/aatm 0.4.3.1: Atmospheric Modelling for ALMA Observatory
 sci-astronomy/casa-data 10013 99999: Data and tables for the CASA software
@@ -16450,7 +16462,7 @@ sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographi
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 35 55 60 63: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.107 3.4.108 3.4.109 3.4.9999 3.10.82 3.10.87 3.10.88 3.12.44 3.12.47 3.12.9999 3.14.48 3.14.51 3.14.52 3.14.53 3.18.16 3.18.20 3.18.21 4.0.4 4.0.5 4.0.9 4.1.6 4.1.7 4.1.8 4.2.0 4.2.0-r1: Full sources including the Gentoo patchset for the 4.2 kernel tree
+sys-kernel/gentoo-sources 3.4.107 3.4.108 3.4.109 3.4.9999 3.10.82 3.10.87 3.10.88 3.12.44 3.12.47 3.12.9999 3.14.48 3.14.51 3.14.52 3.14.53 3.18.16 3.18.20 3.18.21 4.0.4 4.0.5 4.0.9 4.1.6 4.1.7 4.1.8 4.2.0 4.2.0-r1 4.2.1: Full sources including the Gentoo patchset for the 4.2 kernel tree
 sys-kernel/git-sources 4.3_rc1 4.3_rc2: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 3.2.69-r13 3.2.71 3.14.49 3.14.51 4.0.8 4.1.6 4.1.6-r1 4.1.6-r2 4.1.7 4.1.7-r1: Hardened kernel sources (kernel series 4.1)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
