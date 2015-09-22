@@ -11045,7 +11045,7 @@ mail-filter/libsieve 2.2.7: A library for parsing, sorting and filtering your ma
 mail-filter/libspf2 1.2.9-r3 1.2.10: libspf2 implements the Sender Policy Framework, a part of the SPF/SRS protocol pair
 mail-filter/libsrs2 1.0.18: libsrs2 is the next generation Sender Rewriting Scheme library
 mail-filter/libsrs_alt 1.0: Sender Rewriting Scheme library
-mail-filter/maildrop 2.6.0: Mail delivery agent/filter
+mail-filter/maildrop 2.6.0 2.8.3: Mail delivery agent/filter
 mail-filter/mailfilter 0.8.2: Mailfilter is a utility to get rid of unwanted spam mails
 mail-filter/mapson 3.3: A challenge/response-based white-list spam filter
 mail-filter/milter-regex 1.9: A milter-based regular expression filter
