@@ -30,7 +30,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_install() {
 	insinto /opt/${PN}
-	doins -r *
+	doins -r .
 
 	fperms a+x /opt/${PN}/bin/{pycharm.sh,fsnotifier{,64},inspect.sh}
 
