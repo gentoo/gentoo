@@ -4,19 +4,16 @@
 
 EAPI=5
 
-MY_PN="RetroShare"
-MY_PV="${PV/_/-}"
-MY_P="${MY_PN}-${MY_PV}"
-inherit eutils gnome2-utils multilib qmake-utils
+EGIT_REPO_URI="https://github.com/RetroShare/RetroShare.git"
+inherit eutils git-r3 gnome2-utils multilib qmake-utils
 
 DESCRIPTION="P2P private sharing application"
 HOMEPAGE="http://retroshare.sourceforge.net"
-SRC_URI="mirror://sourceforge/retroshare/${MY_P}.tar.gz"
 
 # pegmarkdown can also be used with MIT
 LICENSE="GPL-2 GPL-3 Apache-2.0 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 
 IUSE="cli feedreader +qt5 voip"
 REQUIRED_USE="|| ( cli qt5 )
@@ -55,14 +52,13 @@ RDEPEND="
 		dev-qt/qtxml:5
 	)
 	voip? (
-		media-libs/opencv
+		<media-libs/opencv-3.0.0[-qt4]
 		media-libs/speex
+		virtual/ffmpeg[encode]
 	)"
 DEPEND="${RDEPEND}
 	dev-qt/qtcore:5
 	virtual/pkgconfig"
-
-S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	local dir
@@ -109,8 +105,8 @@ src_install() {
 	local i
 	local extension_dir="/usr/$(get_libdir)/${PN}/extensions6/"
 
-	use cli && dobin retroshare-nogui/src/retroshare-nogui
-	use qt5 && dobin retroshare-gui/src/RetroShare
+	use cli && dobin retroshare-nogui/src/RetroShare06-nogui
+	use qt5 && dobin retroshare-gui/src/RetroShare06
 
 	exeinto "${extension_dir}"
 	use feedreader && doexe plugins/FeedReader/*.so*
@@ -122,12 +118,11 @@ src_install() {
 	insinto /usr/share/RetroShare06/webui
 	doins libresapi/src/webfiles/*
 
-	dodoc README.txt
-	make_desktop_entry RetroShare
-	for i in 24 48 64 ; do
-		doicon -s ${i} "build_scripts/Debian+Ubuntu/data/${i}x${i}/${PN}.png"
+	dodoc README.md
+	make_desktop_entry RetroShare06
+	for i in 24 48 64 128 ; do
+		doicon -s ${i} "data/${i}x${i}/apps/retroshare06.png"
 	done
-	doicon -s 128 "build_scripts/Debian+Ubuntu/data/${PN}.png"
 }
 
 pkg_preinst() {
