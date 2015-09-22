@@ -8020,6 +8020,8 @@ dev-ros/bondcpp 1.7.16 9999: C++ implementation of bond, a mechanism for checkin
 dev-ros/bondpy 1.7.16 9999: Python implementation of bond, a mechanism for checking when another process has terminated
 dev-ros/class_loader 0.3.2 9999: ROS-independent package for loading plugins
 dev-ros/cmake_modules 0.4.0 9999: CMake Modules which are not distributed with CMake but are commonly used by ROS packages
+dev-ros/collada_parser 1.11.8 9999: C++ parser for the Collada robot description format
+dev-ros/collada_urdf 1.11.8 9999: Tool to convert Unified Robot Description Format (URDF) documents into COLLADA documents
 dev-ros/cpp_common 0.5.6 9999: C++ code for doing things that are not necessarily ROS related
 dev-ros/diagnostic_aggregator 1.8.8 9999: Aggregates ROS diagnostics
 dev-ros/diagnostic_analysis 1.8.8 9999: Converts diagnostics data into a series of CSV files
@@ -8028,13 +8030,17 @@ dev-ros/diagnostic_msgs 1.12.3 9999: Standardized interface for the diagnostic a
 dev-ros/diagnostic_updater 1.8.8 9999: Tools for updating diagnostics
 dev-ros/dynamic_reconfigure 1.5.39 9999: Provides a means to change node parameters at any time without having to restart the node
 dev-ros/eigen_conversions 1.11.7 9999: Conversion functions between Eigen and KDL and Eigen and geometry_msgs
+dev-ros/eigen_stl_containers 0.1.4 9999: Provides a set of typedef's that allow using Eigen datatypes in STL containers
 dev-ros/gencpp 0.5.3 9999: ROS C++ message definition and serialization generators
 dev-ros/geneus 2.2.4 9999: EusLisp ROS message and service generators
 dev-ros/genlisp 0.4.15 9999: Common-Lisp ROS message and service generators
 dev-ros/genmsg 0.5.6 9999: Python library for generating ROS message and service data structures for various languages
 dev-ros/genpy 0.5.5 9999: Python ROS message and service generators
+dev-ros/geometric_shapes 0.4.3 9999: Generic definitions of geometric shapes and bodies
 dev-ros/geometry_msgs 1.12.3 9999: Messages for common geometric primitives such as points, vectors, and poses
+dev-ros/joint_state_publisher 1.11.8 9999: Tool for setting and publishing joint state values for a given URDF
 dev-ros/kdl_conversions 1.11.7 9999: Conversion functions between KDL and geometry_msgs types
+dev-ros/kdl_parser 1.11.8 9999: Constructs a KDL tree from an XML robot representation in URDF
 dev-ros/message_filters 1.11.14 9999: Set of message filters which take in messages and may output those messages at a later time
 dev-ros/message_generation 0.3.0 9999: Build-time dependencies for generating language bindings of messages
 dev-ros/message_runtime 0.4.12 9999: Package modeling the run-time dependencies for language bindings of messages
@@ -8045,6 +8051,8 @@ dev-ros/nodelet_topic_tools 1.9.3 9999: Common nodelet tools such as a mux, demu
 dev-ros/nodelet_tutorial_math 0.1.8 9999: Nodelet tutorial
 dev-ros/pluginlib 1.10.1 9999: Provides tools for writing and dynamically loading plugins using the ROS build infrastructure
 dev-ros/pluginlib_tutorials 0.1.8 9999: Pluginlib tutorials
+dev-ros/random_numbers 0.3.0 9999: Wrappers for generating floating point values, integers, quaternions using boost libraries
+dev-ros/resource_retriever 1.11.6 9999: Retrieves data from url-format files
 dev-ros/rosbag 1.11.14 9999: Set of tools for recording from and playing back to ROS topics
 dev-ros/rosbag_storage 1.11.14 9999: Set of tools for recording from and playing back ROS message
 dev-ros/rosbash 1.12.3 9999: Assorted shell commands for using ros with bash
@@ -8117,6 +8125,8 @@ dev-ros/topic_tools 1.11.14 9999: Tools for directing, throttling and selecting 
 dev-ros/trajectory_msgs 1.12.3 9999: Messages for defining robot trajectories
 dev-ros/turtle_actionlib 0.1.8 9999: Demonstrates how to write an action server and client with the turtlesim
 dev-ros/turtlesim 0.6.1 9999: Tool made for teaching ROS and ROS packages
+dev-ros/urdf 1.11.8 9999: C++ parser for the Unified Robot Description Format (URDF)
+dev-ros/urdf_parser_plugin 1.11.8 9999: C++ base class for URDF parsers
 dev-ros/visualization_msgs 1.12.3 9999: Messages used by higher level packages that deal in visualization-specific data.
 dev-ros/xmlrpcpp 1.11.14 9999: C++ implementation of the XML-RPC protocol
 dev-ruby/GeoRuby 2.2.1-r2 2.2.1-r3 2.5.2: Ruby data holder for OGC Simple Features
@@ -14669,6 +14679,7 @@ ros-meta/diagnostics 1.8.8 9999: Packages related to gathering, viewing, and ana
 ros-meta/geometry 1.11.7 9999: Common geometric calculations
 ros-meta/geometry_experimental 0.5.12 9999: The second generation Transform Library in ros
 ros-meta/nodelet_core 1.9.3 9999: Nodelet Core Metapackage
+ros-meta/robot_model 1.11.8 9999: Packages for modeling various aspects of robot information
 ros-meta/ros 1.12.3 9999: ROS packaging system
 ros-meta/ros_base 1.2.0 9999: Metapackage which extends ros_core and includes other basic non-robot tools
 ros-meta/ros_comm 1.11.14 9999: ROS communications-related packages
@@ -16657,7 +16668,7 @@ sys-power/acpid 2.0.20 2.0.21 2.0.22 2.0.23: Daemon for Advanced Configuration a
 sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a replacement for the apm tool
 sys-power/apcupsd 3.14.8-r2 3.14.10-r6 3.14.12 3.14.12-r1: APC UPS daemon with integrated tcp/ip remote shutdown
 sys-power/athcool 0.3.12: small utility to toggle Powersaving mode for AMD Athlon/Duron processors
-sys-power/bbswitch 0.7 0.8: Toggle discrete NVIDIA Optimus graphics card
+sys-power/bbswitch 0.8: Toggle discrete NVIDIA Optimus graphics card
 sys-power/cpudyn 1.0.1: A daemon to control laptop power consumption via cpufreq and disk standby
 sys-power/cpupower 3.13 3.14 3.15 3.18 4.2: Shows and sets processor power related values
 sys-power/cpuspeedy 0.4.1: A simple and easy to use program to control the speed and the voltage of CPUs on the fly
