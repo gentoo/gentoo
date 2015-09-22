@@ -2269,9 +2269,6 @@ dev-python/cgkit:3ds - Enable support for importing 3D Studio models
 dev-python/cvxopt:dsdp - Use interior point library sci-libs/dsdp
 dev-python/cvxopt:glpk - Use GNU Linear Programming Kit sci-mathematics/glpk
 dev-python/dap:server - Enable OpenDAP server support
-dev-python/django-extensions:graphviz - Create a diagram of your database entity relationships using dev-python/pygraphviz.
-dev-python/django-extensions:s3 - Upload your media files to S3.
-dev-python/django-extensions:vcard - Export your users email addresses to the vcard format.
 dev-python/django-tastypie:bip - An optional serialiser dev-python/biplist
 dev-python/django-tastypie:digest - Library to aid in implementing HTTP Digest Authentication
 dev-python/django-tastypie:lxml - An optional serialiser dev-python/lxml
