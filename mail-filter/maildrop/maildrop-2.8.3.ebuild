@@ -50,18 +50,17 @@ src_prepare() {
 	# Prefer gdbm over berkdb
 	if use gdbm ; then
 		use berkdb && elog "Both gdbm and berkdb selected. Using gdbm."
-	elif use berkdb ; then
-		epatch "${FILESDIR}"/${PN}-2.5.1-db.patch
 	fi
 
 	if ! use fam ; then
-		epatch "${FILESDIR}"/${PN}-1.8.1-disable-fam.patch
+		epatch "${FILESDIR}"/${PN}-disable-fam.patch
 	fi
 
 	# no need to error out if no default - it will be given to econf anyway
 	sed -i -e \
 		's~AC_MSG_ERROR(Cannot determine default mailbox)~SPOOLDIR="./.maildir"~' \
 		"${S}"/libs/maildrop/configure.ac || die "sed failed"
+
 	epatch "${FILESDIR}"/${PN}-testsuite-r2.patch
 	eautoreconf
 }

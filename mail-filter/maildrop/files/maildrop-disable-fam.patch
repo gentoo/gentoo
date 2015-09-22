@@ -1,0 +1,54 @@
+--- configure.ac	2005-05-12 16:45:57.000000000 +0200
++++ configure.ac	2005-09-10 20:05:28.000000000 +0200
+@@ -145,6 +145,7 @@
+   --enable-tempdir=.tmp        directory for temp files (in user's home dir)
+   --disable-tempdir            disable temp files in home directory (use
+                                the tmpfile function)
++  --disable-fam                disable libfam.a for maildir operations
+   --enable-smallmsg=8192       size of buffer for small messages
+   --enable-global-timeout=300  global watchdog timer (seconds)
+   --enable-crlf-term=0         enable <CR><LF> line termination
+--- libs/maildir/configure.ac	2005-03-21 13:11:24.000000000 +0100
++++ libs/maildir/configure.ac	2005-09-10 20:10:55.000000000 +0200
+@@ -58,26 +58,30 @@
+ AC_STRUCT_TM
+ 
+ dnl Checks for library functions.
+-AC_CHECK_HEADER(fam.h, :, :)
+-AC_CHECK_FUNCS(symlink readlink strcasecmp utime utimes)
+-AC_CHECK_LIB(fam, FAMOpen,  [
++AC_ARG_ENABLE(fam, [  --disable-fam           Do not use libfam.a library.])
++if test x$enableval = xyes
++then
++	AC_CHECK_HEADER(fam.h, :, :)
++	AC_CHECK_FUNCS(symlink readlink strcasecmp utime utimes)
++	AC_CHECK_LIB(fam, FAMOpen,  [
+ 			LIBFAM=-lfam
+ 			AC_DEFINE_UNQUOTED(HAVE_FAM,1,
+ 			[ Whether libfam.a is available ])
+ 
+ 			AC_CHECK_HEADER(fam.h, : , [
+-AC_MSG_WARN([[The development header files and libraries for fam,]])
+-AC_MSG_WARN([[the File Alteration Monitor, are not installed.]])
+-AC_MSG_WARN([[You appear to have the FAM runtime libraries installed,]])
+-AC_MSG_WARN([[so you need to simply install the additional development]])
+-AC_MSG_WARN([[package for your operating system.]])
+-AC_MSG_ERROR([[FAM development libraries not found.]]) ]
++	AC_MSG_WARN([[The development header files and libraries for fam,]])
++	AC_MSG_WARN([[the File Alteration Monitor, are not installed.]])
++	AC_MSG_WARN([[You appear to have the FAM runtime libraries installed,]])
++	AC_MSG_WARN([[so you need to simply install the additional development]])
++	AC_MSG_WARN([[package for your operating system.]])
++	AC_MSG_ERROR([[FAM development libraries not found.]]) ]
+ 					)
+ 		  ])
+ 
+-AC_SUBST(LIBFAM)
++	AC_SUBST(LIBFAM)
+ 
+-echo "$LIBFAM" >maildir.libdeps
++	echo "$LIBFAM" >maildir.libdeps
++fi
+ 
+ AC_CACHE_CHECK([for missing gethostname prototype],maildir_cv_SYS_GETHOSTNAME,
+ 
