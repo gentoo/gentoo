@@ -32,3 +32,5 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!kde-base/baloo:4[-minimal(-)]
 "
+
+PATCHES=( "${FILESDIR}/${P}-check-if-db-open.patch" )
