@@ -8021,14 +8021,20 @@ dev-ros/bondpy 1.7.16 9999: Python implementation of bond, a mechanism for check
 dev-ros/class_loader 0.3.2 9999: ROS-independent package for loading plugins
 dev-ros/cmake_modules 0.4.0 9999: CMake Modules which are not distributed with CMake but are commonly used by ROS packages
 dev-ros/cpp_common 0.5.6 9999: C++ code for doing things that are not necessarily ROS related
+dev-ros/diagnostic_aggregator 1.8.8 9999: Aggregates ROS diagnostics
+dev-ros/diagnostic_analysis 1.8.8 9999: Converts diagnostics data into a series of CSV files
+dev-ros/diagnostic_common_diagnostics 1.8.8 9999: Generic nodes for monitoring a linux host
 dev-ros/diagnostic_msgs 1.12.3 9999: Standardized interface for the diagnostic and runtime monitoring systems in ROS
+dev-ros/diagnostic_updater 1.8.8 9999: Tools for updating diagnostics
 dev-ros/dynamic_reconfigure 1.5.39 9999: Provides a means to change node parameters at any time without having to restart the node
+dev-ros/eigen_conversions 1.11.7 9999: Conversion functions between Eigen and KDL and Eigen and geometry_msgs
 dev-ros/gencpp 0.5.3 9999: ROS C++ message definition and serialization generators
 dev-ros/geneus 2.2.4 9999: EusLisp ROS message and service generators
 dev-ros/genlisp 0.4.15 9999: Common-Lisp ROS message and service generators
 dev-ros/genmsg 0.5.6 9999: Python library for generating ROS message and service data structures for various languages
 dev-ros/genpy 0.5.5 9999: Python ROS message and service generators
 dev-ros/geometry_msgs 1.12.3 9999: Messages for common geometric primitives such as points, vectors, and poses
+dev-ros/kdl_conversions 1.11.7 9999: Conversion functions between KDL and geometry_msgs types
 dev-ros/message_filters 1.11.14 9999: Set of message filters which take in messages and may output those messages at a later time
 dev-ros/message_generation 0.3.0 9999: Build-time dependencies for generating language bindings of messages
 dev-ros/message_runtime 0.4.12 9999: Package modeling the run-time dependencies for language bindings of messages
@@ -8074,6 +8080,7 @@ dev-ros/rostime 0.5.6 9999: Time and Duration implementations for C++ libraries
 dev-ros/rostopic 1.11.14 9999: Command-line tool for displaying debug information about ROS Topics
 dev-ros/rosunit 1.12.3 9999: Unit-testing package for ROS
 dev-ros/roswtf 1.11.14 9999: Tool for diagnosing issues with a running ROS system
+dev-ros/self_test 1.8.8 9999: Robot self-test node
 dev-ros/sensor_msgs 1.12.3 9999: Messages for commonly used sensors, including cameras and scanning laser rangefinders
 dev-ros/shape_msgs 1.12.3 9999: Messages for defining shapes, such as simple solid object primitives, planes, and meshes
 dev-ros/smclib 1.7.16 9999: The State Machine Compiler (SMC) converts the description of a state machine into source code
@@ -8081,6 +8088,7 @@ dev-ros/std_msgs 0.5.9 9999: Standard ROS Messages
 dev-ros/std_srvs 1.11.1 9999: Messages relating to ROS comm
 dev-ros/stereo_msgs 1.12.3 9999: Messages specific to stereo processing, such as disparity images
 dev-ros/test_bond 1.7.16 9999: Tests for bond, bondpy and bondcpp
+dev-ros/test_diagnostic_aggregator 1.8.8 9999: diagnostic_aggregator tests
 dev-ros/test_nodelet 1.9.3 9999: Nodelet unit tests
 dev-ros/test_nodelet_topic_tools 1.9.3 9999: Nodelet topic tools unit tests
 dev-ros/test_rosbag 1.11.14 9999: Unit tests for rosbag
@@ -8093,6 +8101,18 @@ dev-ros/test_rosmaster 1.11.14 9999: Unit tests for rosmaster
 dev-ros/test_rosparam 1.11.14 9999: Unit tests for rosparam
 dev-ros/test_rospy 1.11.14 9999: Unit tests for rospy
 dev-ros/test_rosservice 1.11.14 9999: Unit tests for rospy
+dev-ros/test_tf2 0.5.12 9999: TF2 unit tests
+dev-ros/tf 1.11.7 9999: Maintains the relationship between coordinate frames in a tree structure buffered in time
+dev-ros/tf2 0.5.12 9999: The second generation Transform Library in ROS
+dev-ros/tf2_bullet 0.5.12 9999: TF2 bullet support
+dev-ros/tf2_geometry_msgs 0.5.12 9999: The second generation Transform Library in ROS
+dev-ros/tf2_kdl 0.5.12 9999: KDL binding for tf2
+dev-ros/tf2_msgs 0.5.12 9999: TF2 messages
+dev-ros/tf2_py 0.5.12 9999: TF2 python bindings
+dev-ros/tf2_ros 0.5.12 9999: ROS bindings for the tf2 library, for both Python and C++
+dev-ros/tf2_sensor_msgs 0.5.12 9999: Transform sensor_msgs with tf. Most notably, PointCloud2
+dev-ros/tf2_tools 0.5.12 9999: TF2 tools
+dev-ros/tf_conversions 1.11.7 9999: Conversion functions to convert common tf datatypes into identical datatypes used by other libraries
 dev-ros/topic_tools 1.11.14 9999: Tools for directing, throttling and selecting ROS topics
 dev-ros/trajectory_msgs 1.12.3 9999: Messages for defining robot trajectories
 dev-ros/turtle_actionlib 0.1.8 9999: Demonstrates how to write an action server and client with the turtlesim
@@ -14645,6 +14665,9 @@ perl-core/version 0.990.800: Perl extension for Version Objects
 ros-meta/bond_core 1.7.16 9999: A bond allows two processes, A and B, to know when the other has terminated
 ros-meta/common_msgs 1.12.3 9999: Messages that are widely used by other ROS packages
 ros-meta/common_tutorials 0.1.8 9999: Metapackage that contains common tutorials
+ros-meta/diagnostics 1.8.8 9999: Packages related to gathering, viewing, and analyzing diagnostics data from robots
+ros-meta/geometry 1.11.7 9999: Common geometric calculations
+ros-meta/geometry_experimental 0.5.12 9999: The second generation Transform Library in ros
 ros-meta/nodelet_core 1.9.3 9999: Nodelet Core Metapackage
 ros-meta/ros 1.12.3 9999: ROS packaging system
 ros-meta/ros_base 1.2.0 9999: Metapackage which extends ros_core and includes other basic non-robot tools
