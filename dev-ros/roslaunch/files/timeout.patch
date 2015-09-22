@@ -1,0 +1,18 @@
+Slow HW like the raspberry pi easily hit this timeout over NFS.
+Increase it to 1 min.
+
+diff --git a/tools/roslaunch/src/roslaunch/launch.py b/tools/roslaunch/src/roslaunch/launch.py
+index 9a3b931..8e33c0c 100644
+--- a/tools/roslaunch/src/roslaunch/launch.py
++++ b/tools/roslaunch/src/roslaunch/launch.py
+@@ -57,8 +57,8 @@ from roslaunch.pmon import start_process_monitor, ProcessListener
+ 
+ from roslaunch.rlutil import update_terminal_name
+ 
+-_TIMEOUT_MASTER_START = 10.0 #seconds
+-_TIMEOUT_MASTER_STOP  = 10.0 #seconds
++_TIMEOUT_MASTER_START = 60.0 #seconds
++_TIMEOUT_MASTER_STOP  = 60.0 #seconds
+ 
+ _ID = '/roslaunch'
+ 

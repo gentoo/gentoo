@@ -1,0 +1,25 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+depend() {
+	after net
+}
+
+start() {
+	ebegin "Starting ROS server roscore"
+	start-stop-daemon --start \
+		--user ros --group ros \
+		-m --pidfile /var/run/roscore.pid \
+		--exec "/usr/bin/roscore" --background
+	eend $? "Failed to start roscore"
+}
+
+stop() {
+	ebegin "Stopping roscore"
+	start-stop-daemon --stop \
+		--pidfile /var/run/roscore.pid \
+		--exec "/usr/bin/roscore"
+	eend $? "Failed to stop roscore"
+}
