@@ -60,5 +60,5 @@ src_install() {
 		insinto /etc
 		doins ethertypes
 	fi
-	dodoc ChangeLog THANKS || die
+	dodoc ChangeLog THANKS
 }
