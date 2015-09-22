@@ -30,6 +30,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# Fix build failure, bug #513542
 	sed -i 's/^KDIR.*$/KDIR\ \:= \/usr\/src\/linux/g' Makefile || die
 }
 
