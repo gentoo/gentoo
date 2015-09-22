@@ -55,7 +55,7 @@ RDEPEND="
 		dev-qt/qtxml:5
 	)
 	voip? (
-		media-libs/opencv
+		<media-libs/opencv-3.0.0[-qt4]
 		media-libs/speex
 	)"
 DEPEND="${RDEPEND}
