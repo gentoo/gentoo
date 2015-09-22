@@ -6014,7 +6014,7 @@ dev-perl/SGMLSpm 1.03-r7: Perl library for parsing the output of nsgmls
 dev-perl/SNMP_Session 1.13-r2: A SNMP Perl Module
 dev-perl/SOAP-Lite 1.040.0-r1 1.140.0: Simple and lightweight interface to the SOAP protocol (sic) both on client and server side
 dev-perl/SOAP-WSDL 2.00.10-r1 3.2.0: SOAP with WSDL support
-dev-perl/SQL-Abstract 1.780.0: Generate SQL from Perl data structures
+dev-perl/SQL-Abstract 1.780.0 1.810.0: Generate SQL from Perl data structures
 dev-perl/SQL-Abstract-Limit 0.141.0-r1: Portable LIMIT emulation
 dev-perl/SQL-Statement 1.405.0-r1 1.407.0: Small SQL parser and engine
 dev-perl/SQL-Translator 0.110.160-r1 0.110.210: Manipulate structured data definitions (SQL and more)
@@ -6046,11 +6046,11 @@ dev-perl/Sort-Key 1.330.0: sort objects by some (calculated) key
 dev-perl/Sort-Key-IPv4 0.30.0: Sort IP v4 addresses
 dev-perl/Sort-Naturally 1.30.0-r1: sort lexically, but sort numeral parts numerically
 dev-perl/Sort-Tree 1.90.0-r1: Organize list of objects into parent/child order
-dev-perl/Sort-Versions 1.500.0-r1: A perl 5 module for sorting of revision-like numbers
+dev-perl/Sort-Versions 1.500.0-r1 1.610.0: A perl 5 module for sorting of revision-like numbers
 dev-perl/Speech-Recognizer-SPX 0.80.100-r1: Interface to Sphinx-II speech recognition
 dev-perl/SpeedyCGI 2.22-r3: Speed up perl scripts by running them persistently
 dev-perl/Sphinx-Config 0.90.0-r1: Sphinx search engine configuration file read/modify/write
-dev-perl/Sphinx-Search 0.280-r1: Perl API client for Sphinx search engine
+dev-perl/Sphinx-Search 0.280-r1 0.290.0: Perl API client for Sphinx search engine
 dev-perl/Spiffy 0.310.0-r1 0.460.0: Spiffy Perl Interface Framework For You
 dev-perl/Spreadsheet-ParseExcel 0.590.0-r1 0.650.0: Read information from an Excel file
 dev-perl/Spreadsheet-WriteExcel 2.390.0-r1 2.400.0: Write cross-platform Excel binary file
