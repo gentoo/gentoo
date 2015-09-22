@@ -8,6 +8,6 @@ KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-2
 RDEPEND=pcap? ( net-libs/libpcap ) wireshark-plugins? ( >=net-analyzer/wireshark-1.8.3-r1:= !>net-analyzer/wireshark-1.98 )
 SLOT=0/2015.09.2
-SRC_URI=https://github.com/greatscottgadgets/libbtbb/archive/2015-09-R2.tar.gz -> libbtbb-2015-09-R2.tar.gz
+SRC_URI=https://github.com/greatscottgadgets/libbtbb/archive/2015-09-R2.tar.gz -> libbtbb-2015-09-R2.tar.gz https://dev.gentoo.org/~zerochaos/distfiles/libbtbb-2015.09.2-rename-plugins.patch.xz
 _eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=cf32ef7a30711c952fd1c8a12866fb54
+_md5_=e023374a9204f2c3d2a090aad20f422e

@@ -13550,7 +13550,7 @@ net-libs/libbitcoinconsensus 0.10.0 0.10.1 0.11.0 9999: Bitcoin Core consensus l
 net-libs/libblkmaker 0.3.2 0.4.2 0.5.0 0.5.1: C implementation of getblocktemplate (BIP 22)
 net-libs/libbluedevil 2.0_rc1 2.1: Qt wrapper for bluez used in the KDE bluetooth stack
 net-libs/libbt 1.05 1.06: implementation of the BitTorrent core protocols in C
-net-libs/libbtbb 2015.09.2 9999: A library to decode Bluetooth baseband packets
+net-libs/libbtbb 2015.09.2-r1 9999: A library to decode Bluetooth baseband packets
 net-libs/libcapi 3.0.7-r1: CAPI library used by AVM products
 net-libs/libcrafter 0.3 9999: a high level library for C++ designed to make easier the creation and decoding of network packets
 net-libs/libdexter 0.2.1-r1: A plugin-based, distributed sampling library
