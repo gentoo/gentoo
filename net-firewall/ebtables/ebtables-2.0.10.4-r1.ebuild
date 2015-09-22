@@ -42,10 +42,6 @@ src_compile() {
 	# This package uses _init functions to initialise extensions. With
 	# --as-needed this will not work.
 	append-ldflags $(no-as-needed)
-	# This package correctly aliases pointers, but gcc is unable to know that:
-	# unsigned char ip[4];
-	# if (*((uint32_t*)ip) == 0) {
-	#append-cflags -Wno-strict-aliasing
 	emake \
 		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
