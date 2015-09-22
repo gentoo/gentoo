@@ -8,11 +8,9 @@ PYTHON_COMPAT=( python2_7 python3_{3,4} )
 
 inherit distutils-r1 eutils
 
-GIT_HASH_TAG="d39ecfd"
-
 DESCRIPTION="Django Command Extensions"
 HOMEPAGE="https://github.com/django-extensions/django-extensions http://django-extensions.readthedocs.org"
-SRC_URI="https://github.com/django-extensions/django-extensions/tarball/${PV}/${P}.tgz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD || ( MIT GPL-2 )"
 SLOT="0"
@@ -21,6 +19,8 @@ IUSE="doc test"
 
 # Req'd for tests
 DISTUTILS_IN_SOURCE_BUILD=1
+
+RESTRICT=test
 
 RDEPEND="
 	>=dev-python/django-1.5.4[${PYTHON_USEDEP}]
@@ -32,18 +32,17 @@ DEPEND="
 		>=dev-python/django-1.5.4[${PYTHON_USEDEP}]
 		dev-python/shortuuid[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
-		dev-python/tox[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
 		)"
-
-S="${WORKDIR}/${PN}-${PN}-${GIT_HASH_TAG}"
 
 python_compile_all() {
 	use doc && emake -C docs html
 }
 
 python_test() {
-	"${PYTHON}" run_tests.py || die
+	py.test -vv || die
 }
 
 python_install_all() {

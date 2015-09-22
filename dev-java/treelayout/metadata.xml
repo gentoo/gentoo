@@ -3,4 +3,7 @@
 <pkgmetadata>
 	<herd>java</herd>
 	<longdescription>The TreeLayout creates tree layouts for arbitrary trees. It is not restricted to a specific output or format, but can be used for any kind of two dimensional diagram. Examples are Swing based components, SVG files, and many more. This is possible because TreeLayout separates the layout of a tree from the actual rendering.</longdescription>
+	<upstream>
+		<remote-id type="github">abego/treelayout</remote-id>
+	</upstream>
 </pkgmetadata>

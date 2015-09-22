@@ -7,8 +7,10 @@
 		<name>Christoph Mende</name>
 	</maintainer>
 	<use>
-		<flag name='cover'>Enable cover art fetching</flag>
-		<flag name='lyrics'>Enable lyric fetching</flag>
+		<flag name="cover">Enable cover art fetching</flag>
+		<flag name="lyrics">Enable lyric fetching</flag>
 	</use>
+	<upstream>
+		<remote-id type="launchpad">gimmix</remote-id>
+	</upstream>
 </pkgmetadata>
-

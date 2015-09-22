@@ -5,11 +5,6 @@
     <email>dev-zero@gentoo.org</email>
     <name>Tiziano Müller</name>
   </maintainer>
-  <use>
-    <flag name="graphviz">Create a diagram of your database entity relationships using <pkg>dev-python/pygraphviz</pkg>.</flag>
-    <flag name="s3">Upload your media files to S3.</flag>
-    <flag name="vcard">Export your users email addresses to the vcard format.</flag>
-  </use>
   <upstream>
     <remote-id type="pypi">django-extensions</remote-id>
     <remote-id type="github">django-extensions/django-extensions</remote-id>

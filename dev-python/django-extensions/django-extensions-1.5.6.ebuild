@@ -20,6 +20,8 @@ IUSE="doc test"
 # Req'd for tests
 DISTUTILS_IN_SOURCE_BUILD=1
 
+RESTRICT=test
+
 RDEPEND="
 	>=dev-python/django-1.5.4[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
@@ -32,7 +34,6 @@ DEPEND="
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
-		dev-python/tox[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		)"
 
@@ -41,7 +42,7 @@ python_compile_all() {
 }
 
 python_test() {
-	py.test || die
+	py.test -vv || die
 }
 
 python_install_all() {
