@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>jlec@gentoo.org</email>
+		<name>Justin Lecher</name>
+	</maintainer>
+	<use>
+		<flag name="webkit">
+	enables the application to use advanced HTML rendering and fetching 
+	remote images and other data
+	</flag>
+	</use>
+</pkgmetadata>
