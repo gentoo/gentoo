@@ -17,7 +17,8 @@ else
 	MY_PV=${PV/\./-}
 	MY_PV=${MY_PV/./-R}
 	S=${WORKDIR}/${PN}-${MY_PV}
-	SRC_URI="https://github.com/greatscottgadgets/${PN}/archive/${MY_PV}.tar.gz -> ${PN}-${MY_PV}.tar.gz"
+	SRC_URI="https://github.com/greatscottgadgets/${PN}/archive/${MY_PV}.tar.gz -> ${PN}-${MY_PV}.tar.gz \
+		https://dev.gentoo.org/~zerochaos/distfiles/libbtbb-2015.09.2-rename-plugins.patch.xz"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
@@ -49,6 +50,7 @@ which_plugins() {
 src_prepare(){
 	CMAKE_USE_DIR="${S}"
 	BUILD_DIR="${S}"_build
+	epatch "${WORKDIR}"/${P}-rename-plugins.patch
 	cmake-utils_src_prepare
 
 	if use wireshark-plugins; then
