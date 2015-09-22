@@ -20,7 +20,8 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-dash.patch \
-		"${FILESDIR}"/${P}-resources.patch
+		"${FILESDIR}"/${P}-resources.patch \
+		"${FILESDIR}"/${P}-gcc52.patch
 	eautoreconf
 }
 
