@@ -7325,7 +7325,7 @@ dev-python/pp 1.6.4-r1: Parallel and distributed programming for Python
 dev-python/pretend 1.0.7 1.0.8: A library for stubbing in Python
 dev-python/pretty-yaml 14.05.7 15.5.7 15.6.3: PyYAML-based module to produce pretty and readable YAML-serialized data
 dev-python/prettytable 0.7.1-r1 0.7.2: Easily displaying tabular data in a visually appealing ASCII table format
-dev-python/process-tests 1.1.0: Tools for testing processes
+dev-python/process-tests 1.1.0 1.1.2: Tools for testing processes
 dev-python/processing 0.52-r1: Package for using processes, which mimics the threading module API
 dev-python/progress 1.2: Easy to use progress bars
 dev-python/progressbar 2.3-r1: Text progressbar library for python
@@ -7635,7 +7635,7 @@ dev-python/pythong 2.1.5-r2: Nice and powerful spanish development environment f
 dev-python/pythonmagick 0.9.11 0.9.12: Python bindings for ImageMagick
 dev-python/pythonutils 0.4.0-r1: Voidspace Python modules
 dev-python/pytools 2014.3.5 9999: A collection of tools missing from the Python standard library
-dev-python/pytz 2014.10 2015.4: World timezone definitions for Python
+dev-python/pytz 2014.10 2015.4 2015.6: World timezone definitions for Python
 dev-python/pyudev 0.16.1-r1: Python binding to libudev
 dev-python/pyusb 0.4.3 1.0.0_beta2: USB support for Python
 dev-python/pyutil 2.0.0: A collection of utilities for Python programmers
@@ -18138,7 +18138,7 @@ x11-wm/fvwm 2.6.5: An extremely powerful ICCCM-compliant multiple virtual deskto
 x11-wm/goomwwm 1.0.0: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.6.2-r1 9999: A manual tiling window manager for X
 x11-wm/i3 4.8 4.9.1 4.10.4 9999: An improved dynamic tiling window manager
-x11-wm/icewm 1.3.8 1.3.9 1.3.10: Ice Window Manager with Themes
+x11-wm/icewm 1.3.8 1.3.9 1.3.10 1.3.11: Ice Window Manager with Themes
 x11-wm/jwm 2.1.0: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r1: Tiling window manager for X11, based on 9wm by David Hogan
 x11-wm/lwm 1.2.1 1.2.2 1.2.3: The ultimate lightweight window manager
