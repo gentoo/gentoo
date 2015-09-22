@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit eutils fortran-2 flag-o-matic multilib toolchain-funcs
 
@@ -10,8 +10,8 @@ DESCRIPTION="Versatile, SHELX-97 compatible, multipurpose crystallographic tool"
 HOMEPAGE="http://www.cryst.chem.uu.nl/platon/"
 SRC_URI="http://www.cryst.chem.uu.nl/xraysoft/unix/${PN}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="free-noncomm"
 SLOT="0"
+LICENSE="free-noncomm"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
 
@@ -31,8 +31,8 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	unpack ${A}
-	cd "${S}"
+	default
+	cd "${S}" || die
 	gunzip platon.f.gz xdrvr.c.gz || die
 }
 
