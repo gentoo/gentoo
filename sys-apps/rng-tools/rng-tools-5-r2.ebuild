@@ -21,7 +21,7 @@ RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-rngd )"
 
 src_prepare() {
-	echo 'bin_PROGRAMS = randstat' >> contrib/Makefile.am
+	echo 'bin_PROGRAMS = randstat' >> contrib/Makefile.am || die
 	epatch "${FILESDIR}"/test-for-argp.patch
 	epatch "${FILESDIR}"/${P}-fix-textrels-on-PIC-x86.patch #469962
 	epatch "${FILESDIR}"/${P}-man-fill-watermark.patch #555094
