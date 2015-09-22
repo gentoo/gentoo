@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="log"
 
-OBSOLETE="yes"
+OBSOLETE="no"
 [[ $OBSOLETE = yes ]] && RESTRICT="fetch strip" || RESTRICT="strip mirror"
 
 RDEPEND="
