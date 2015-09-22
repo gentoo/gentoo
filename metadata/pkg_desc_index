@@ -8021,29 +8021,61 @@ dev-ros/genlisp 0.4.15 9999: Common-Lisp ROS message and service generators
 dev-ros/genmsg 0.5.6 9999: Python library for generating ROS message and service data structures for various languages
 dev-ros/genpy 0.5.5 9999: Python ROS message and service generators
 dev-ros/geometry_msgs 1.12.3 9999: Messages for common geometric primitives such as points, vectors, and poses
+dev-ros/message_filters 1.11.14 9999: Set of message filters which take in messages and may output those messages at a later time
 dev-ros/message_generation 0.3.0 9999: Build-time dependencies for generating language bindings of messages
 dev-ros/message_runtime 0.4.12 9999: Package modeling the run-time dependencies for language bindings of messages
 dev-ros/mk 1.12.3 9999: A collection of .mk include files for building ROS architectural elements
 dev-ros/nav_msgs 1.12.3 9999: Common messages used to interact with the navigation stack
+dev-ros/rosbag 1.11.14 9999: Set of tools for recording from and playing back to ROS topics
+dev-ros/rosbag_storage 1.11.14 9999: Set of tools for recording from and playing back ROS message
 dev-ros/rosbash 1.12.3 9999: Assorted shell commands for using ros with bash
 dev-ros/rosboost_cfg 1.12.3 9999: Tool for determining cflags/lflags/etc. of boost on your system
 dev-ros/rosbuild 1.12.3 9999: Scripts for managing the CMake-based build system for ROS
 dev-ros/rosclean 1.12.3 9999: Cleanup filesystem resources (e.g. log files)
+dev-ros/rosconsole 1.11.14 9999: ROS console output library
+dev-ros/roscpp 1.11.14 9999: C++ implementation of ROS
 dev-ros/roscpp_serialization 0.5.6 9999: Code for serialization
 dev-ros/roscpp_traits 0.5.6 9999: Message traits code
 dev-ros/roscreate 1.12.3 9999: Tool that assists in the creation of ROS filesystem resources
+dev-ros/rosgraph 1.11.14 9999: Prints information about the ROS Computation Graph
+dev-ros/rosgraph_msgs 1.11.1 9999: Messages relating to ROS comm
 dev-ros/roslang 1.12.3 9999: Common package for all ROS client libraries
+dev-ros/roslaunch 1.11.14 9999: Tool for easily launching multiple ROS nodes
 dev-ros/roslib 1.12.3 9999: Base dependencies and support libraries for ROS
+dev-ros/roslz4 1.11.14 9999: Python and C++ implementation of the LZ4 streaming format
 dev-ros/rosmake 1.12.3 9999: ROS dependency aware build tool
+dev-ros/rosmaster 1.11.14 9999: ROS Master implementation
+dev-ros/rosmsg 1.11.14 9999: Command-line tools for displaying information about message and services
+dev-ros/rosnode 1.11.14 9999: Command-line tool for displaying debug information about ROS nodes
+dev-ros/rosout 1.11.14 9999: System-wide logging mechanism for messages sent to the /rosout topic
 dev-ros/rospack 2.2.5 9999: Retrieves information about ROS packages available on the filesystem
+dev-ros/rosparam 1.11.14 9999: Command-line tool for getting and setting ROS Parameters on the parameter server
+dev-ros/rospy 1.11.14 9999: Python client library for ROS
+dev-ros/rosservice 1.11.14 9999: Command-line tool for listing and querying ROS Services
+dev-ros/rostest 1.11.14 9999: Integration test suite based on roslaunch that is compatible with xUnit frameworks
 dev-ros/rostime 0.5.6 9999: Time and Duration implementations for C++ libraries
+dev-ros/rostopic 1.11.14 9999: Command-line tool for displaying debug information about ROS Topics
 dev-ros/rosunit 1.12.3 9999: Unit-testing package for ROS
+dev-ros/roswtf 1.11.14 9999: Tool for diagnosing issues with a running ROS system
 dev-ros/sensor_msgs 1.12.3 9999: Messages for commonly used sensors, including cameras and scanning laser rangefinders
 dev-ros/shape_msgs 1.12.3 9999: Messages for defining shapes, such as simple solid object primitives, planes, and meshes
 dev-ros/std_msgs 0.5.9 9999: Standard ROS Messages
+dev-ros/std_srvs 1.11.1 9999: Messages relating to ROS comm
 dev-ros/stereo_msgs 1.12.3 9999: Messages specific to stereo processing, such as disparity images
+dev-ros/test_rosbag 1.11.14 9999: Unit tests for rosbag
+dev-ros/test_rosbag_storage 1.11.14 9999: Unit tests for rosbag_storage
+dev-ros/test_roscpp 1.11.14 9999: Unit tests for roscpp
+dev-ros/test_rosgraph 1.11.14 9999: Unit tests for rosgraph
+dev-ros/test_roslaunch 1.11.14 9999: Unit tests for roslaunch
+dev-ros/test_roslib_comm 1.11.14 9999: Unit tests for roslib
+dev-ros/test_rosmaster 1.11.14 9999: Unit tests for rosmaster
+dev-ros/test_rosparam 1.11.14 9999: Unit tests for rosparam
+dev-ros/test_rospy 1.11.14 9999: Unit tests for rospy
+dev-ros/test_rosservice 1.11.14 9999: Unit tests for rospy
+dev-ros/topic_tools 1.11.14 9999: Tools for directing, throttling and selecting ROS topics
 dev-ros/trajectory_msgs 1.12.3 9999: Messages for defining robot trajectories
 dev-ros/visualization_msgs 1.12.3 9999: Messages used by higher level packages that deal in visualization-specific data.
+dev-ros/xmlrpcpp 1.11.14 9999: C++ implementation of the XML-RPC protocol
 dev-ruby/GeoRuby 2.2.1-r2 2.2.1-r3 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/RubyInline 3.12.3 3.12.3-r1 3.12.4: Allows to embed C/C++ in Ruby code
 dev-ruby/abstract 1.0.0-r2 1.0.0-r3: Library which enable you to define abstract method in Ruby
@@ -14589,6 +14621,7 @@ perl-core/podlators 2.5.3: Format POD source into various output formats
 perl-core/version 0.990.800: Perl extension for Version Objects
 ros-meta/common_msgs 1.12.3 9999: Messages that are widely used by other ROS packages
 ros-meta/ros 1.12.3 9999: ROS packaging system
+ros-meta/ros_comm 1.11.14 9999: ROS communications-related packages
 ros-meta/roscpp_core 0.5.6 9999: Underlying data libraries for roscpp messages
 sci-astronomy/aatm 0.4.3.1: Atmospheric Modelling for ALMA Observatory
 sci-astronomy/casa-data 10013 99999: Data and tables for the CASA software
