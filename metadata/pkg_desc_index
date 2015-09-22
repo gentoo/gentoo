@@ -8011,7 +8011,10 @@ dev-qt/qtwidgets 5.4.2: Set of UI elements for creating classic desktop-style us
 dev-qt/qtx11extras 5.4.2: Linux/X11-specific support library for the Qt5 framework
 dev-qt/qtxml 5.4.2: SAX and DOM implementation library for the Qt5 framework
 dev-qt/qtxmlpatterns 4.8.5 4.8.6-r1 4.8.7 5.4.2: XPath, XQuery, and XSLT support library for the Qt5 framework
+dev-ros/actionlib 1.11.4 9999: Provides a standardized interface for interfacing with preemptable tasks
 dev-ros/actionlib_msgs 1.12.3 9999: Common messages to interact with an action server and an action client
+dev-ros/actionlib_tutorials 0.1.8 9999: Actionlib tutorials
+dev-ros/angles 1.9.10 9999: Set of simple math utilities to work with angles
 dev-ros/bond 1.7.16 9999: A bond allows two processes, A and B, to know when the other has terminated
 dev-ros/bondcpp 1.7.16 9999: C++ implementation of bond, a mechanism for checking when another process has terminated
 dev-ros/bondpy 1.7.16 9999: Python implementation of bond, a mechanism for checking when another process has terminated
@@ -8033,7 +8036,9 @@ dev-ros/mk 1.12.3 9999: A collection of .mk include files for building ROS archi
 dev-ros/nav_msgs 1.12.3 9999: Common messages used to interact with the navigation stack
 dev-ros/nodelet 1.9.3 9999: Provides a way to run multiple algorithms in the same process with zero copy transport
 dev-ros/nodelet_topic_tools 1.9.3 9999: Common nodelet tools such as a mux, demux and throttle
+dev-ros/nodelet_tutorial_math 0.1.8 9999: Nodelet tutorial
 dev-ros/pluginlib 1.10.1 9999: Provides tools for writing and dynamically loading plugins using the ROS build infrastructure
+dev-ros/pluginlib_tutorials 0.1.8 9999: Pluginlib tutorials
 dev-ros/rosbag 1.11.14 9999: Set of tools for recording from and playing back to ROS topics
 dev-ros/rosbag_storage 1.11.14 9999: Set of tools for recording from and playing back ROS message
 dev-ros/rosbash 1.12.3 9999: Assorted shell commands for using ros with bash
@@ -8090,6 +8095,7 @@ dev-ros/test_rospy 1.11.14 9999: Unit tests for rospy
 dev-ros/test_rosservice 1.11.14 9999: Unit tests for rospy
 dev-ros/topic_tools 1.11.14 9999: Tools for directing, throttling and selecting ROS topics
 dev-ros/trajectory_msgs 1.12.3 9999: Messages for defining robot trajectories
+dev-ros/turtle_actionlib 0.1.8 9999: Demonstrates how to write an action server and client with the turtlesim
 dev-ros/turtlesim 0.6.1 9999: Tool made for teaching ROS and ROS packages
 dev-ros/visualization_msgs 1.12.3 9999: Messages used by higher level packages that deal in visualization-specific data.
 dev-ros/xmlrpcpp 1.11.14 9999: C++ implementation of the XML-RPC protocol
@@ -14638,8 +14644,10 @@ perl-core/podlators 2.5.3: Format POD source into various output formats
 perl-core/version 0.990.800: Perl extension for Version Objects
 ros-meta/bond_core 1.7.16 9999: A bond allows two processes, A and B, to know when the other has terminated
 ros-meta/common_msgs 1.12.3 9999: Messages that are widely used by other ROS packages
+ros-meta/common_tutorials 0.1.8 9999: Metapackage that contains common tutorials
 ros-meta/nodelet_core 1.9.3 9999: Nodelet Core Metapackage
 ros-meta/ros 1.12.3 9999: ROS packaging system
+ros-meta/ros_base 1.2.0 9999: Metapackage which extends ros_core and includes other basic non-robot tools
 ros-meta/ros_comm 1.11.14 9999: ROS communications-related packages
 ros-meta/ros_core 1.2.0 9999: Metapackage to aggregate the packages required to use core ROS concepts
 ros-meta/ros_tutorials 0.6.1 9999: Demonstrates various features of ROS, as well as support packages which help demonstrate them
