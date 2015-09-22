@@ -98,6 +98,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/concurrency-test-1.2.6.patch
 	# bugs #486552, #527666, #517004
 	epatch "${FILESDIR}"/bsd-sockets-test-1.2.11.patch
+	# bugs #560276, #561018
+	epatch "${FILESDIR}"/sb-posix-test-1.2.15.patch
 
 	epatch "${FILESDIR}"/${PN}-1.2.11-solaris.patch
 	epatch "${FILESDIR}"/${PN}-1.2.13-verbose-build.patch
