@@ -17,6 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~mips ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
+# git is needed for tests, see https://bugs.launchpad.net/pbr/+bug/1326682 and https://bugs.gentoo.org/show_bug.cgi?id=561038
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
@@ -33,11 +34,9 @@ DEPEND="
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 		>=dev-python/testtools-1.4.0[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
+		dev-vcs/git
 	)"
 PDEPEND="dev-python/pip[${PYTHON_USEDEP}]"
-
-# Requ'd for testsuite
-DISTUTILS_IN_SOURCE_BUILD=1
 
 # This normally actually belongs here.
 python_prepare_all() {
@@ -59,6 +58,10 @@ python_prepare_all() {
 }
 
 python_test() {
-	# Note; Tests, that have been removed, pass once package is emerged.
-	esetup.py testr
+	distutils_install_for_testing
+
+	rm -rf .testrepository || die "couldn't remove '.testrepository' under ${EPTYHON}"
+
+	testr init || die "testr init failed under ${EPYTHON}"
+	testr run || die "testr run failed under ${EPYTHON}"
 }
