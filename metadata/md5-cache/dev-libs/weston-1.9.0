@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst prepare test
+DEPEND=>=dev-libs/libinput-0.8.0 >=dev-libs/wayland-1.9.0 media-libs/lcms:2 media-libs/libpng:0= media-libs/libwebp:0= virtual/jpeg:0= >=x11-libs/cairo-1.11.3 >=x11-libs/libdrm-2.4.30 x11-libs/libxkbcommon x11-libs/pixman x11-misc/xkeyboard-config fbdev? ( >=sys-libs/mtdev-1.1.0 >=virtual/udev-136 ) colord? ( >=x11-misc/colord-0.1.27 ) dbus? ( sys-apps/dbus ) drm? ( media-libs/mesa[gbm] >=sys-libs/mtdev-1.1.0 >=virtual/udev-136 ) editor? ( x11-libs/pango ) gles2? ( media-libs/mesa[gles2,wayland] ) rdp? ( >=net-misc/freerdp-1.1.0_beta1_p20130710 ) rpi? ( >=sys-libs/mtdev-1.1.0 >=virtual/udev-136 ) systemd? ( sys-auth/pambase[systemd] sys-apps/systemd[pam] ) launch? ( sys-auth/pambase ) unwind? ( sys-libs/libunwind ) X? ( x11-libs/libxcb x11-libs/libX11 ) xwayland? ( x11-base/xorg-server[wayland] x11-libs/cairo[xcb] x11-libs/libxcb x11-libs/libXcursor ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Wayland reference compositor
+EAPI=5
+HOMEPAGE=http://wayland.freedesktop.org/
+IUSE=colord dbus +drm editor examples fbdev +gles2 headless ivi rdp +resize-optimization rpi +launch screen-sharing static-libs +suid systemd test unwind wayland-compositor +X xwayland test
+KEYWORDS=~amd64 ~arm ~x86 ~arm-linux
+LICENSE=MIT CC-BY-SA-3.0
+RDEPEND=>=dev-libs/libinput-0.8.0 >=dev-libs/wayland-1.9.0 media-libs/lcms:2 media-libs/libpng:0= media-libs/libwebp:0= virtual/jpeg:0= >=x11-libs/cairo-1.11.3 >=x11-libs/libdrm-2.4.30 x11-libs/libxkbcommon x11-libs/pixman x11-misc/xkeyboard-config fbdev? ( >=sys-libs/mtdev-1.1.0 >=virtual/udev-136 ) colord? ( >=x11-misc/colord-0.1.27 ) dbus? ( sys-apps/dbus ) drm? ( media-libs/mesa[gbm] >=sys-libs/mtdev-1.1.0 >=virtual/udev-136 ) editor? ( x11-libs/pango ) gles2? ( media-libs/mesa[gles2,wayland] ) rdp? ( >=net-misc/freerdp-1.1.0_beta1_p20130710 ) rpi? ( >=sys-libs/mtdev-1.1.0 >=virtual/udev-136 ) systemd? ( sys-auth/pambase[systemd] sys-apps/systemd[pam] ) launch? ( sys-auth/pambase ) unwind? ( sys-libs/libunwind ) X? ( x11-libs/libxcb x11-libs/libX11 ) xwayland? ( x11-base/xorg-server[wayland] x11-libs/cairo[xcb] x11-libs/libxcb x11-libs/libXcursor )
+REQUIRED_USE=drm? ( gles2 ) screen-sharing? ( rdp ) test? ( X ) wayland-compositor? ( gles2 )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://wayland.freedesktop.org/releases/weston-1.9.0.tar.xz
+_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	virtualx	7d550983f9b6adb3e7091f4090ddae2f
+_md5_=f60e35d037b4a15853d11894e2475caa
