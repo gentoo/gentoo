@@ -8015,9 +8015,11 @@ dev-ros/actionlib_msgs 1.12.3 9999: Common messages to interact with an action s
 dev-ros/bond 1.7.16 9999: A bond allows two processes, A and B, to know when the other has terminated
 dev-ros/bondcpp 1.7.16 9999: C++ implementation of bond, a mechanism for checking when another process has terminated
 dev-ros/bondpy 1.7.16 9999: Python implementation of bond, a mechanism for checking when another process has terminated
+dev-ros/class_loader 0.3.2 9999: ROS-independent package for loading plugins
 dev-ros/cmake_modules 0.4.0 9999: CMake Modules which are not distributed with CMake but are commonly used by ROS packages
 dev-ros/cpp_common 0.5.6 9999: C++ code for doing things that are not necessarily ROS related
 dev-ros/diagnostic_msgs 1.12.3 9999: Standardized interface for the diagnostic and runtime monitoring systems in ROS
+dev-ros/dynamic_reconfigure 1.5.39 9999: Provides a means to change node parameters at any time without having to restart the node
 dev-ros/gencpp 0.5.3 9999: ROS C++ message definition and serialization generators
 dev-ros/geneus 2.2.4 9999: EusLisp ROS message and service generators
 dev-ros/genlisp 0.4.15 9999: Common-Lisp ROS message and service generators
@@ -8029,6 +8031,9 @@ dev-ros/message_generation 0.3.0 9999: Build-time dependencies for generating la
 dev-ros/message_runtime 0.4.12 9999: Package modeling the run-time dependencies for language bindings of messages
 dev-ros/mk 1.12.3 9999: A collection of .mk include files for building ROS architectural elements
 dev-ros/nav_msgs 1.12.3 9999: Common messages used to interact with the navigation stack
+dev-ros/nodelet 1.9.3 9999: Provides a way to run multiple algorithms in the same process with zero copy transport
+dev-ros/nodelet_topic_tools 1.9.3 9999: Common nodelet tools such as a mux, demux and throttle
+dev-ros/pluginlib 1.10.1 9999: Provides tools for writing and dynamically loading plugins using the ROS build infrastructure
 dev-ros/rosbag 1.11.14 9999: Set of tools for recording from and playing back to ROS topics
 dev-ros/rosbag_storage 1.11.14 9999: Set of tools for recording from and playing back ROS message
 dev-ros/rosbash 1.12.3 9999: Assorted shell commands for using ros with bash
@@ -8071,6 +8076,8 @@ dev-ros/std_msgs 0.5.9 9999: Standard ROS Messages
 dev-ros/std_srvs 1.11.1 9999: Messages relating to ROS comm
 dev-ros/stereo_msgs 1.12.3 9999: Messages specific to stereo processing, such as disparity images
 dev-ros/test_bond 1.7.16 9999: Tests for bond, bondpy and bondcpp
+dev-ros/test_nodelet 1.9.3 9999: Nodelet unit tests
+dev-ros/test_nodelet_topic_tools 1.9.3 9999: Nodelet topic tools unit tests
 dev-ros/test_rosbag 1.11.14 9999: Unit tests for rosbag
 dev-ros/test_rosbag_storage 1.11.14 9999: Unit tests for rosbag_storage
 dev-ros/test_roscpp 1.11.14 9999: Unit tests for roscpp
@@ -12456,7 +12463,7 @@ media-sound/gnome-sound-recorder 3.16.0: Simple sound recorder
 media-sound/gnomoradio 0.15.1: Finds, fetches, shares, and plays freely licensed music
 media-sound/gnump3d 3.0-r1 3.0-r2: A streaming server for MP3, OGG vorbis and other streamable files
 media-sound/gom 0.29.103-r1: Console Mixer Program for OSS
-media-sound/google-musicmanager 1.0.129.6633_beta 1.0.182.3607_beta 1.0.196.8837_beta: Google Music Manager is a application for adding music to your Google Music library
+media-sound/google-musicmanager 1.0.129.6633_beta 1.0.182.3607_beta 1.0.196.8837_beta 1.0.221.5230_beta: Google Music Manager is a application for adding music to your Google Music library
 media-sound/gpodder 3.6.0 3.7.0 3.8.3: A free cross-platform podcast aggregator
 media-sound/gqmpeg 0.91.1: front end to various audio players, including mpg123
 media-sound/gqradio 1.9.2: An FM radio tuner app from the people who brought you GQmpeg
@@ -14631,6 +14638,7 @@ perl-core/podlators 2.5.3: Format POD source into various output formats
 perl-core/version 0.990.800: Perl extension for Version Objects
 ros-meta/bond_core 1.7.16 9999: A bond allows two processes, A and B, to know when the other has terminated
 ros-meta/common_msgs 1.12.3 9999: Messages that are widely used by other ROS packages
+ros-meta/nodelet_core 1.9.3 9999: Nodelet Core Metapackage
 ros-meta/ros 1.12.3 9999: ROS packaging system
 ros-meta/ros_comm 1.11.14 9999: ROS communications-related packages
 ros-meta/ros_core 1.2.0 9999: Metapackage to aggregate the packages required to use core ROS concepts
