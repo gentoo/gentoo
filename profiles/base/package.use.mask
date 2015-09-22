@@ -469,7 +469,8 @@ media-sound/clementine ios
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (13 Jul 2013)
 # GL/GLES support in cairo is mutually exclusive, bug #428770.
 x11-libs/cairo gles2
-dev-libs/weston gles2 rpi
+dev-libs/weston rpi
+<dev-libs/weston-1.9.0 gles2
 
 # Alexis Ballier <aballier@gentoo.org> (03 Jul 2013)
 # The idea behind using libunwind there is to avoid needing to link to libgcc_s
