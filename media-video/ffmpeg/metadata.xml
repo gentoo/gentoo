@@ -39,6 +39,7 @@
 	<flag name="pic">Force shared libraries to be built as PIC (this is slower)</flag>
 	<flag name="postproc">Build and install libpostproc.</flag>
 	<flag name="quvi">Adds support for playing media from Internet services using the quvi project.</flag>
+	<flag name="rubberband">Adds time-stretching and pitch-shifting audio filter based on <pkg>media-libs/rubberband</pkg>.</flag>
 	<flag name="schroedinger">Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).</flag>
 	<flag name="snappy">Enable <pkg>app-arch/snappy</pkg> support. Required for e.g. Vidvox Hap encoder.</flag>
 	<flag name="ssh">Enable SSH/sftp support via <pkg>net-libs/libssh</pkg>.</flag>
