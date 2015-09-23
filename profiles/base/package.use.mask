@@ -36,7 +36,7 @@ sys-apps/systemd gnuefi
 # See bug #541648
 <dev-libs/Ice-3.6 ruby
 # See bug #547768
-<net-irc/epic5-1.10-r1 ruby
+<net-irc/epic5-1.1.10-r1 ruby
 # See bug #547832
 sci-libs/gdal ruby
 # See bug #547834
