@@ -23,7 +23,7 @@ SRC_URI="mirror://sourceforge/${PN}-4/${P}.tar.bz2
 
 LICENSE="CPL-1.0 GPL-3 LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 sparc x86"
 IUSE="espeak gucharmap qqwry pronounce spell tools"
 
 RESTRICT="test"
