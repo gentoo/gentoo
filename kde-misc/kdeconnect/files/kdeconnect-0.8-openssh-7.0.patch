@@ -1,0 +1,32 @@
+From 56028b694176d1f52475ac073b0feb842c71a894 Mon Sep 17 00:00:00 2001
+From: Albert Vaca <albertvaka@gmail.com>
+Date: Mon, 24 Aug 2015 21:27:24 -0700
+Subject: [PATCH] Fixed incompatibility with OpenSSH 7.0
+
+BUG: 351725
+
+Conflicts:
+	plugins/sftp/mounter.cpp
+---
+ plugins/sftp/mounter.cpp | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/plugins/sftp/mounter.cpp b/plugins/sftp/mounter.cpp
+index c414f77..f13bb52 100644
+--- a/plugins/sftp/mounter.cpp
++++ b/plugins/sftp/mounter.cpp
+@@ -136,8 +136,9 @@ void Mounter::onPakcageReceived(const NetworkPackage& np)
+         << "-f"
+         << "-o" << "IdentityFile=" + m_sftp->device()->privateKeyPath()
+         << "-o" << "StrictHostKeyChecking=no" //Do not ask for confirmation because it is not a known host
+-        << "-o" << "UserKnownHostsFile=/dev/null"; //Prevent storing as a known host
+-    
++        << "-o" << "UserKnownHostsFile=/dev/null" //Prevent storing as a known host
++        << "-o" << "HostKeyAlgorithms=+ssh-dss"; //https://bugs.kde.org/show_bug.cgi?id=351725
++
+     m_proc->setProgram(program, arguments);
+ 
+     //To debug
+-- 
+2.4.9
+
