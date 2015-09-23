@@ -38,6 +38,10 @@ DEPEND="${RDEPEND}
 		dev-haskell/persistent-template )
 "
 
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-exe.patch
+}
+
 src_configure() {
 	haskell-cabal_src_configure \
 		$(cabal_flag build-sanity-exe build-sanity-exe) \
