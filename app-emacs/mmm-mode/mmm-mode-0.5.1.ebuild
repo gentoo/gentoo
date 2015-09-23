@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,6 +15,13 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 SITEFILE="50${PN}-gentoo.el"
+
+src_prepare() {
+	# fix bug 561306
+	for file in configure elisp-comp; do
+		sed -i -e "s/-batch/-batch --no-site-file/g" $file || die
+	done
+}
 
 src_configure() {
 	econf --with-emacs
