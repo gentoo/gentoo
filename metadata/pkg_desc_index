@@ -7984,7 +7984,7 @@ dev-qt/qtgraphicaleffects 5.4.2: Set of QML types for adding visual effects to u
 dev-qt/qtgui 4.8.5-r4 4.8.6-r4 4.8.7 5.4.2-r1: The GUI module and platform plugins for the Qt5 framework
 dev-qt/qthelp 4.8.5-r2 4.8.6-r3 4.8.7 5.4.2: The Help module for the Qt5 framework
 dev-qt/qtimageformats 5.4.2: Additional format plugins for the Qt image I/O system
-dev-qt/qtlockedfile 2.4.1_p20130904 2.4.1_p20150629: QFile extension with advisory locking functions
+dev-qt/qtlockedfile 2.4.1_p20150629: QFile extension with advisory locking functions
 dev-qt/qtmultimedia 4.8.5 4.8.6-r1 4.8.7 5.4.2-r1: The Multimedia module for the Qt5 framework
 dev-qt/qtnetwork 5.4.2: Network abstraction library for the Qt5 framework
 dev-qt/qtopengl 4.8.5 4.8.6-r1 4.8.7 5.4.2: OpenGL support library for the Qt5 framework (deprecated)
@@ -7998,7 +7998,7 @@ dev-qt/qtquickcontrols 5.4.2: Set of controls used in conjunction with Qt Quick 
 dev-qt/qtscript 4.8.5 4.8.6-r2 4.8.7 5.4.2-r1: Application scripting library for the Qt5 framework
 dev-qt/qtsensors 5.4.2: Hardware sensor access library for the Qt5 framework
 dev-qt/qtserialport 5.4.2: Serial port abstraction library for the Qt5 framework
-dev-qt/qtsingleapplication 2.6.1_p20130904-r1 2.6.1_p20150629: Qt library to start applications only once per user
+dev-qt/qtsingleapplication 2.6.1_p20150629: Qt library to start applications only once per user
 dev-qt/qtsql 4.8.5 4.8.6-r1 4.8.7 5.4.2: SQL abstraction library for the Qt5 tooolkit
 dev-qt/qtsvg 4.8.5 4.8.6-r1 4.8.7 5.4.2: SVG rendering library for the Qt5 framework
 dev-qt/qttest 4.8.5 4.8.6-r1 4.8.7 5.4.2: Unit testing library for the Qt5 framework
