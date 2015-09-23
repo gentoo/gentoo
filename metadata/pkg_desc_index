@@ -14737,7 +14737,7 @@ net-wireless/wifi-radar 2.0.8-r2: WiFi Radar is a Python/PyGTK2 utility for mana
 net-wireless/wireless-regdb 20130213 20141118 20150313 20150605: Binary regulatory database for CRDA
 net-wireless/wireless-tools 30_pre9: A collection of tools to configure IEEE 802.11 wireless LAN cards
 net-wireless/wpa_supplicant 2.4-r3 2.4-r4: IEEE 802.1X/WPA supplicant for secure wireless transfers
-net-wireless/yatebts 4.0.0-r3 9999: The Yate GSM base station
+net-wireless/yatebts 4.0.0-r3 5.0.0 9999: The Yate GSM base station
 perl-core/CPAN-Meta 2.143.240: The distribution metadata for a CPAN dist
 perl-core/CPAN-Meta-Requirements 2.125.0-r1: A set of version requirements for a CPAN dist
 perl-core/Data-Dumper 2.154.0: Stringified perl data structures, suitable for both printing and eval
@@ -16406,7 +16406,7 @@ sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/open-mx 1.5.4: Open-MX - Myrinet Express over Generic Ethernet Hardware
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
-sys-cluster/openmpi 1.4.3 1.4.5 1.6.5-r1 1.7.5-r1 1.8.4-r4 1.8.7-r1 1.8.8: A high-performance message passing library (MPI)
+sys-cluster/openmpi 1.4.3 1.4.5 1.6.5-r1 1.7.5-r1 1.8.4-r4 1.8.7-r1 1.8.8 1.10.0: A high-performance message passing library (MPI)
 sys-cluster/openstack-meta 2015.1.9999: A openstack meta-package for installing the various openstack pieces
 sys-cluster/osc-mpiexec 0.83: replacement for mpirun, integrates MPI with PBS
 sys-cluster/pacemaker 1.1.12-r2: Pacemaker CRM
