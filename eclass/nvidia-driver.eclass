@@ -88,11 +88,11 @@ drv_340x="
 	0caf 0cb0 0cb1 0cbc 10c0 10c3 10c5 10d8
 "
 
-mask_71xx="x11-drivers/nvidia-drivers:0/71"
-mask_96xx="x11-drivers/nvidia-drivers:0/96"
-mask_173x="x11-drivers/nvidia-drivers:0/173"
-mask_304x="x11-drivers/nvidia-drivers:0/304"
-mask_340x="x11-drivers/nvidia-drivers:0/340"
+mask_71xx=">=x11-drivers/nvidia-drivers-72.0.0"
+mask_96xx=">=x11-drivers/nvidia-drivers-97.0.0"
+mask_173x=">=x11-drivers/nvidia-drivers-177.0.0"
+mask_304x=">=x11-drivers/nvidia-drivers-305.0.0"
+mask_340x=">=x11-drivers/nvidia-drivers-341.0.0"
 
 # @FUNCTION: nvidia-driver-get-card
 # @DESCRIPTION:
@@ -171,8 +171,12 @@ nvidia-driver-check-warning() {
 			ewarn "system. If this is intentional, please ignore this. If it is not"
 			ewarn "please perform the following steps:"
 			ewarn
-			ewarn "Emerge the following branch of x11-drivers/nvidia-drivers:"
-			ewarn "emerge ${NVIDIA_MASK}"
+			ewarn "Add the following mask entry to /etc/portage/package.mask by"
+			if [ -d "${ROOT}/etc/portage/package.mask" ]; then
+				ewarn "echo \"${NVIDIA_MASK}\" > /etc/portage/package.mask/nvidia-drivers"
+			else
+				ewarn "echo \"${NVIDIA_MASK}\" >> /etc/portage/package.mask"
+			fi
 			ewarn
 			ewarn "Failure to perform the steps above could result in a non-working"
 			ewarn "X setup."
