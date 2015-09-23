@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/pptpclient/${MY_P}.tar.gz
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 ~arm ppc ~ppc64 x86"
+KEYWORDS="alpha amd64 ~arm ppc ppc64 x86"
 IUSE="tk"
 
 DEPEND="net-dialup/ppp
