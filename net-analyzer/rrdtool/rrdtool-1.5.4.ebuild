@@ -8,7 +8,7 @@ DISTUTILS_OPTIONAL=true
 DISTUTILS_SINGLE_IMPL=true
 GENTOO_DEPEND_ON_PERL=no
 PYTHON_COMPAT=( python2_7 )
-inherit autotools eutils perl-module distutils-r1 flag-o-matic multilib
+inherit autotools eutils perl-module distutils-r1 flag-o-matic multilib versionator
 
 DESCRIPTION="A system to store and display time-series data"
 HOMEPAGE="http://oss.oetiker.ch/rrdtool/"
@@ -170,20 +170,4 @@ src_install() {
 	newinitd "${FILESDIR}"/rrdcached.init rrdcached
 
 	use python && distutils-r1_src_install
-}
-
-pkg_postinst() {
-	if [[ "${REPLACING_VERSIONS}" -le 1.3 ]]; then
-		ewarn "Since version 1.3, rrdtool dump emits completely legal xml.  Basically this"
-		ewarn "means that it contains an xml header and a DOCTYPE definition.  Unfortunately"
-		ewarn "this causes older versions of rrdtool restore to be unhappy."
-		ewarn
-		ewarn "To restore a new dump with an old rrdtool restore version, either remove"
-		ewarn "the xml header and the doctype by hand (both on the first line of the dump)"
-		ewarn "or use rrdtool dump --no-header."
-		ewarn
-		ewarn ">=net-analyzer/rrdtool-1.3 does not have any default font bundled. Thus if"
-		ewarn ">you've upgraded from rrdtool-1.2.x and don't have any font installed to make"
-		ewarn ">lables visible, please, install some font, e.g.  media-fonts/dejavu."
-	fi
 }

@@ -1,8 +1,8 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="3"
+EAPI=5
 
 inherit eutils toolchain-funcs
 
@@ -11,12 +11,14 @@ HOMEPAGE="http://www.fourmilab.ch/random/"
 SRC_URI="mirror://gentoo/random-${PV}.zip"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 LICENSE="public-domain"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND=""
 DEPEND="app-arch/unzip"
+
+S="${WORKDIR}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PV}-gentoo.patch
@@ -24,6 +26,6 @@ src_prepare() {
 }
 
 src_install() {
-	dobin ${PN} || die
-	dohtml ${PN}.html ${PN}itle.gif || die
+	dobin ${PN}
+	dohtml ${PN}.html ${PN}itle.gif
 }
