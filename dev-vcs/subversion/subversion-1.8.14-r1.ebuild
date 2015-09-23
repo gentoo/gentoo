@@ -4,11 +4,12 @@
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
+USE_RUBY="ruby22 ruby21 ruby20 ruby19"
 DISTUTILS_OPTIONAL=1
 WANT_AUTOMAKE="none"
 GENTOO_DEPEND_ON_PERL="no"
 
-inherit autotools bash-completion-r1 db-use depend.apache distutils-r1 elisp-common flag-o-matic java-pkg-opt-2 libtool multilib perl-module eutils
+inherit autotools bash-completion-r1 db-use depend.apache distutils-r1 elisp-common eutils flag-o-matic java-pkg-opt-2 libtool multilib perl-module ruby-single
 
 MY_P="${P/_/-}"
 DESCRIPTION="Advanced version control system"
@@ -34,8 +35,7 @@ COMMON_DEPEND=">=dev-db/sqlite-3.7.12
 	kde? ( sys-apps/dbus dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 >=kde-base/kdelibs-4:4 )
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( >=dev-lang/ruby-2.1:2.1
-		dev-ruby/rubygems[ruby_targets_ruby21] )
+	ruby? ( ${RUBY_DEPS} )
 	sasl? ( dev-libs/cyrus-sasl )
 	http? ( >=net-libs/serf-1.2.1 )"
 RDEPEND="${COMMON_DEPEND}
@@ -113,6 +113,18 @@ pkg_setup() {
 
 	# Allow for custom repository locations.
 	SVN_REPOS_LOC="${SVN_REPOS_LOC:-${EPREFIX}/var/svn}"
+
+	if use ruby ; then
+		local rbslot
+		RB_VER=""
+		for rbslot in 2.2 2.1 2.0 1.9 ; do
+			if has_version dev-lang/ruby:${rbslot} ;  then
+				RB_VER="${rbslot/.}"
+				break
+			fi
+		done
+		[[ -z "${RB_VER}" ]] && die "No useable ruby version found"
+	fi
 }
 
 src_prepare() {
@@ -206,10 +218,9 @@ src_configure() {
 		export ac_cv_python_compile="$(tc-getCC)"
 	fi
 
-	# force ruby-2.1
 	# allow overriding Python include directory
-	ac_cv_path_RUBY=$(usex ruby "${EPREFIX}/usr/bin/ruby21" "none") \
-	ac_cv_path_RDOC=$(usex ruby "${EPREFIX}/usr/bin/rdoc21" "none") \
+	ac_cv_path_RUBY=$(usex ruby "${EPREFIX}/usr/bin/ruby${RB_VER}" "none") \
+	ac_cv_path_RDOC=$(usex ruby "${EPREFIX}/usr/bin/rdoc${RB_VER}" "none") \
 	ac_cv_python_includes='-I$(PYTHON_INCLUDEDIR)' \
 	econf --libdir="${EPREFIX}/usr/$(get_libdir)" \
 		$(use_with apache2 apache-libexecdir) \
