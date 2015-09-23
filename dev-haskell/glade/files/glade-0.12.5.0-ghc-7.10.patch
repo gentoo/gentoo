@@ -1,0 +1,182 @@
+diff --git a/Gtk2HsSetup.hs b/Gtk2HsSetup.hs
+index 371090a..8c60eec 100644
+--- a/Gtk2HsSetup.hs
++++ b/Gtk2HsSetup.hs
+@@ -8,5 +8,5 @@
+ --
+-module Gtk2HsSetup ( 
+-  gtk2hsUserHooks, 
+-  getPkgConfigPackages, 
++module Gtk2HsSetup (
++  gtk2hsUserHooks,
++  getPkgConfigPackages,
+   checkGtk2hsBuildtools,
+@@ -57,4 +57,5 @@ import Distribution.Verbosity
+ import Control.Monad (when, unless, filterM, liftM, forM, forM_)
+-import Data.Maybe ( isJust, isNothing, fromMaybe, maybeToList )
+-import Data.List (isPrefixOf, isSuffixOf, stripPrefix, nub)
++import Data.Maybe ( isJust, isNothing, fromMaybe, maybeToList, catMaybes )
++import Data.List (isPrefixOf, isSuffixOf, nub, minimumBy, stripPrefix, tails )
++import Data.Ord as Ord (comparing)
+ import Data.Char (isAlpha, isNumber)
+@@ -115,5 +116,12 @@ fixLibs dlls = concatMap $ \ lib ->
+     case filter (isLib lib) dlls of
+-                dll:_ -> [dropExtension dll]
+-                _     -> if lib == "z" then [] else [lib]
++                dlls@(_:_) -> [dropExtension (pickDll dlls)]
++                _          -> if lib == "z" then [] else [lib]
+   where
++    -- If there are several .dll files matching the one we're after then we
++    -- just have to guess. For example for recent Windows cairo builds we get
++    -- libcairo-2.dll libcairo-gobject-2.dll libcairo-script-interpreter-2.dll
++    -- Our heuristic is to pick the one with the shortest name.
++    -- Yes this is a hack but the proper solution is hard: we would need to
++    -- parse the .a file and see which .dll file(s) it needed to link to.
++    pickDll = minimumBy (Ord.comparing length)
+     isLib lib dll =
+@@ -123,3 +131,3 @@ fixLibs dlls = concatMap $ \ lib ->
+             _                           -> False
+-        
++
+ -- The following code is a big copy-and-paste job from the sources of
+@@ -156,8 +164,12 @@ register :: PackageDescription -> LocalBuildInfo
+          -> IO ()
+-register pkg@(library       -> Just lib )
+-         lbi@(libraryConfig -> Just clbi) regFlags
++register pkg@PackageDescription { library       = Just lib  } lbi regFlags
+   = do
++    let clbi = LBI.getComponentLocalBuildInfo lbi LBI.CLibName
+ 
+     installedPkgInfoRaw <- generateRegistrationInfo
++#if CABAL_VERSION_CHECK(1,22,0)
++                           verbosity pkg lib lbi clbi inplace False distPref packageDb
++#else
+                            verbosity pkg lib lbi clbi inplace distPref
++#endif
+ 
+@@ -170,3 +182,3 @@ register pkg@(library       -> Just lib )
+     case () of
+-     _ | modeGenerateRegFile   -> die "Generate Reg File not supported"
++     _ | modeGenerateRegFile   -> writeRegistrationFile installedPkgInfo
+        | modeGenerateRegScript -> die "Generate Reg Script not supported"
+@@ -182,2 +194,4 @@ register pkg@(library       -> Just lib )
+     modeGenerateRegFile = isJust (flagToMaybe (regGenPkgConf regFlags))
++    regFile             = fromMaybe (display (packageId pkg) <.> "conf")
++                                    (fromFlag (regGenPkgConf regFlags))
+     modeGenerateRegScript = fromFlag (regGenScript regFlags)
+@@ -190,2 +204,6 @@ register pkg@(library       -> Just lib )
+ 
++    writeRegistrationFile installedPkgInfo = do
++      notice verbosity ("Creating package registration file: " ++ regFile)
++      writeUTF8File regFile (showInstalledPackageInfo installedPkgInfo)
++
+ register _ _ regFlags = notice verbosity "No package to register"
+@@ -249,3 +267,3 @@ getCppOptions bi lbi
+    ++ [opt | opt@('-':c:_) <- PD.cppOptions bi ++ PD.ccOptions bi, c `elem` "DIU"]
+-   ++ ["-D__GLASGOW_HASKELL__="++show (ghcDefine . versionBranch . compilerVersion $ LBI.compiler lbi)]
++   ++ ["-D__GLASGOW_HASKELL__="++show (ghcDefine . ghcVersion . compilerId $ LBI.compiler lbi)]
+  where
+@@ -254,2 +272,15 @@ getCppOptions bi lbi
+ 
++  ghcVersion :: CompilerId -> [Int]
++-- This version is nicer, but we need to know the Cabal version that includes the new CompilerId
++-- #if CABAL_VERSION_CHECK(1,19,2)
++--   ghcVersion (CompilerId GHC v _) = versionBranch v
++--   ghcVersion (CompilerId _ _ (Just c)) = ghcVersion c
++-- #else
++--   ghcVersion (CompilerId GHC v) = versionBranch v
++-- #endif
++--   ghcVersion _ = []
++-- This version should work fine for now
++  ghcVersion = concat . take 1 . map (read . (++"]") . takeWhile (/=']')) . catMaybes
++               . map (stripPrefix "CompilerId GHC (Version {versionBranch = ") . tails . show
++
+ installCHI :: PackageDescription -- ^information from the .cabal file
+@@ -264,3 +295,3 @@ installCHI pkg@PD.PackageDescription { library = Just lib } lbi verbosity copyde
+                    (PD.libModules lib)
+-                 
++
+   let files = [ f | Just f <- mFiles ]
+@@ -268,3 +299,3 @@ installCHI pkg@PD.PackageDescription { library = Just lib } lbi verbosity copyde
+ 
+-  
++
+ installCHI _ _ _ _ = return ()
+@@ -294,3 +325,2 @@ genSynthezisedFiles :: Verbosity -> PackageDescription -> LocalBuildInfo -> IO (
+ genSynthezisedFiles verb pd lbi = do
+-
+   cPkgs <- getPkgConfigPackages verb lbi pd
+@@ -300,3 +330,3 @@ genSynthezisedFiles verb pd lbi = do
+       typeOpts :: String -> [ProgArg]
+-      typeOpts tag = concat [ map (\val -> '-':'-':drop (length tag) field++'=':val) (words content)
++      typeOpts tag = concat [ map (\val -> '-':'-':drop (length tag) field ++ '=':val) (words content)
+                             | (field,content) <- xList,
+@@ -308,4 +338,5 @@ genSynthezisedFiles verb pd lbi = do
+                  , tag <- name'
+-                        : [ name' ++ "-" ++ show major ++ "." ++ show digit
+-                          | digit <- [0,2..minor] ]
++                        :[ name' ++ "-" ++ show maj ++ "." ++ show d2
++                          | (maj, d2) <- [(maj,   d2) | maj <- [0..(major-1)], d2 <- [0,2..20]]
++                                      ++ [(major, d2) | d2 <- [0,2..minor]] ]
+                  ]
+@@ -400,11 +431,6 @@ fixDeps pd@PD.PackageDescription {
+   modDeps <- mapM extractDeps modDeps
+-  let (expMods, othMods) = span mdExposed $ sortTopological modDeps
+-      badOther = map (fromMaybe "<no file>" . mdLocation) $
+-                 filter (not . mdExposed) expMods
+-  unless (null badOther) $
+-    die ("internal chs modules "++intercalate "," badOther++
+-         " depend on exposed chs modules; cabal needs to build internal modules first")
++  let (othMods, expMods) = span (not . mdExposed) $ reverse $ sortTopological modDeps
+   return pd { PD.library = Just lib {
+-    PD.exposedModules = map mdOriginal expMods,
+-    PD.libBuildInfo = bi { PD.otherModules = map mdOriginal othMods }
++    PD.exposedModules = map mdOriginal (reverse expMods),
++    PD.libBuildInfo = bi { PD.otherModules = map mdOriginal (reverse othMods) }
+   }}
+@@ -428,3 +454,3 @@ instance Ord ModDep where
+ -- ignores CPP conditionals. We just require everything which means that the
+--- existance of a .chs module may not depend on some CPP condition.  
++-- existance of a .chs module may not depend on some CPP condition.
+ extractDeps :: ModDep -> IO ModDep
+@@ -435,3 +461,3 @@ extractDeps md@ModDep { mdLocation = Just f } = withUTF8FileContents f $ \con ->
+           case simpleParse (takeWhile ('#' /=) ys) of
+-            Just m -> findImports (m:acc) xxs 
++            Just m -> findImports (m:acc) xxs
+             Nothing -> die ("cannot parse chs import in "++f++":\n"++
+@@ -469,3 +495,3 @@ checkGtk2hsBuildtools programs = do
+   let printError name = do
+-        putStrLn $ "Cannot find " ++ name ++ "\n" 
++        putStrLn $ "Cannot find " ++ name ++ "\n"
+                  ++ "Please install `gtk2hs-buildtools` first and check that the install directory is in your PATH (e.g. HOME/.cabal/bin)."
+@@ -473,2 +499,2 @@ checkGtk2hsBuildtools programs = do
+   forM_ programInfos $ \ (name, location) ->
+-    when (isNothing location) (printError name) 
++    when (isNothing location) (printError name)
+diff --git a/SetupMain.hs b/SetupMain.hs
+index 201ee8f..2d1a782 100644
+--- a/SetupMain.hs
++++ b/SetupMain.hs
+@@ -12,2 +12,2 @@ main = do
+   defaultMainWithHooks gtk2hsUserHooks
+-  
++
+diff --git a/SetupWrapper.hs b/SetupWrapper.hs
+index aa825ec..44a20f8 100644
+--- a/SetupWrapper.hs
++++ b/SetupWrapper.hs
+@@ -11,3 +11,3 @@ import Distribution.Simple.Compiler
+ import Distribution.Simple.BuildPaths (exeExtension)
+-import Distribution.Simple.Configure (configCompiler)
++import Distribution.Simple.Configure (configCompilerEx)
+ import Distribution.Simple.GHC (getInstalledPackages)
+@@ -20,3 +20,3 @@ import System.Environment
+ import System.Process
+-import System.Exit
++import System.Exit (ExitCode(..), exitWith)
+ import System.FilePath
+@@ -117,3 +117,3 @@ setupWrapper setupHsFile = do
+ 
+-        (comp, conf)    <- configCompiler (Just GHC) Nothing Nothing
++        (comp, _, conf) <- configCompilerEx (Just GHC) Nothing Nothing
+                              defaultProgramConfiguration verbosity
