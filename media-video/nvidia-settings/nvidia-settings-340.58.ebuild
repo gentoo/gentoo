@@ -12,7 +12,7 @@ SRC_URI="ftp://download.nvidia.com/XFree86/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="-* amd64 x86 ~x86-fbsd"
 IUSE="examples"
 
 COMMON_DEPEND="x11-libs/libX11
@@ -28,7 +28,7 @@ COMMON_DEPEND="x11-libs/libX11
 	dev-libs/jansson"
 
 RDEPEND="
-	x11-drivers/nvidia-drivers:0/340
+	~x11-drivers/nvidia-drivers-340.93
 	${COMMON_DEPEND}
 	x11-libs/libvdpau"
 DEPEND="${RDEPEND}

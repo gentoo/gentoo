@@ -12,7 +12,7 @@ SRC_URI="http://www.ibiblio.org/pub/Linux/apps/serialcomm/dialout/${P}.tar.gz"
 
 LICENSE="xc-radley"
 SLOT="0"
-KEYWORDS="amd64 ~mips ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 ~mips ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="sys-libs/ncurses"

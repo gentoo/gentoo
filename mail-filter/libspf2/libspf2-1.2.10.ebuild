@@ -11,7 +11,7 @@ SRC_URI="http://www.libspf2.org/spf/libspf2-${PV}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 BSD-2 )"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ~ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="static static-libs"
 
 DEPEND=""

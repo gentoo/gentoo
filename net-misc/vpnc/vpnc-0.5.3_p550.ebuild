@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 arm ppc ppc64 sparc x86"
 IUSE="resolvconf +gnutls selinux"
 
 DEPEND="
