@@ -29,9 +29,10 @@ DEPEND="
 		svg? ( dev-qt/qtsvg:4 )
 	)
 	qt5? (
+		dev-qt/qtconcurrent:5
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
-		dev-qt/qtconcurrent:5
+		dev-qt/qtprintsupport:5
 		dev-qt/qtwidgets:5
 		designer? ( dev-qt/designer:5 )
 		opengl? ( dev-qt/qtopengl:5 )
