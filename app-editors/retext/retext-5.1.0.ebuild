@@ -13,20 +13,13 @@ inherit distutils-r1 l10n
 MY_PN="ReText"
 MY_P="${MY_PN}-${PV/_/~}"
 
-if [[ ${PV} == *9999* ]] ; then
-	inherit git-2
-	EGIT_REPO_URI="git://git.code.sf.net/p/retext/git"
-	KEYWORDS=""
-else
-	SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
-
-DESCRIPTION="A Qt-based text editor for Markdown and reStructuredText"
-HOMEPAGE="http://sourceforge.net/p/retext/home/ReText/"
+DESCRIPTION="Simple editor for Markdown and reStructuredText"
+HOMEPAGE="https://github.com/retext-project/retext https://github.com/retext-project/retext/wiki"
+SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="+spell"
 
 RDEPEND="
