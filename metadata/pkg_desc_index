@@ -8068,8 +8068,12 @@ dev-ros/nodelet_topic_tools 1.9.3 9999: Common nodelet tools such as a mux, demu
 dev-ros/nodelet_tutorial_math 0.1.8 9999: Nodelet tutorial
 dev-ros/opencv_apps 1.11.8 9999: OpenCV applications for ROS
 dev-ros/opencv_tests 1.11.8 9999: Tests for ROS OpenCV integration
+dev-ros/pcl_conversions 0.2.1 9999: Provides conversions from PCL data types and ROS message types
+dev-ros/pcl_msgs 0.2.0 9999: PCL (Point Cloud Library)-related ROS messages
+dev-ros/pcl_ros 1.3.0 9999: PCL (Point Cloud Library) ROS interface stack
 dev-ros/pluginlib 1.10.1 9999: Provides tools for writing and dynamically loading plugins using the ROS build infrastructure
 dev-ros/pluginlib_tutorials 0.1.8 9999: Pluginlib tutorials
+dev-ros/pointcloud_to_laserscan 1.3.0 9999: Converts a 3D Point Cloud into a 2D laser scan
 dev-ros/polled_camera 1.11.7 9999: C++ helper classes for implementing a polled camera driver node and requesting images from it
 dev-ros/pr2_dashboard_aggregator 1.11.9 9999: Aggregates all of the topics that a 'pr2_dashboard' app might be interested in
 dev-ros/pr2_description 1.11.9 9999: Description (mechanical, kinematic, visual, etc.) of the PR2 robot
@@ -14757,6 +14761,7 @@ ros-meta/geometry_experimental 0.5.12 9999: The second generation Transform Libr
 ros-meta/image_common 1.11.7 9999: Common code for working with images in ROS
 ros-meta/laser_pipeline 1.6.1 9999: Meta-package for processing laser data, e.g. converting laser data into 3D representations
 ros-meta/nodelet_core 1.9.3 9999: Nodelet Core Metapackage
+ros-meta/perception_pcl 1.3.0 9999: PCL (Point Cloud Library) ROS interface stack
 ros-meta/pr2_common 1.11.9 9999: URDF description and 3D models of robot components of the PR2 robot
 ros-meta/qt_gui_core 0.2.29 9999: Integration of the ROS package system and ROS-specific plugins for a Qt-based GUI
 ros-meta/robot 1.2.0 9999: Metapackage which extends ros_base and includes ROS libaries for any robot hardware
