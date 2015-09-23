@@ -13,10 +13,10 @@ DESCRIPTION="Utility that enables basic Ethernet frame filtering on a Linux brid
 HOMEPAGE="http://ebtables.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
-IUSE="static"
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+IUSE="static"
 
 S=${WORKDIR}/${MY_P}
 
@@ -42,10 +42,6 @@ src_compile() {
 	# This package uses _init functions to initialise extensions. With
 	# --as-needed this will not work.
 	append-ldflags $(no-as-needed)
-	# This package correctly aliases pointers, but gcc is unable to know that:
-	# unsigned char ip[4];
-	# if (*((uint32_t*)ip) == 0) {
-	#append-cflags -Wno-strict-aliasing
 	emake \
 		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
@@ -54,7 +50,7 @@ src_compile() {
 
 src_install() {
 	if ! use static; then
-		make DESTDIR="${D}" install
+		emake DESTDIR="${D}" install
 		keepdir /var/lib/ebtables/
 		newinitd "${FILESDIR}"/ebtables.initd-r1 ebtables
 		newconfd "${FILESDIR}"/ebtables.confd-r1 ebtables
@@ -64,5 +60,5 @@ src_install() {
 		insinto /etc
 		doins ethertypes
 	fi
-	dodoc ChangeLog THANKS || die
+	dodoc ChangeLog THANKS
 }

@@ -5,7 +5,7 @@
 EAPI="4"
 PYTHON_COMPAT=( python{3_3,3_4} )
 
-inherit flag-o-matic python-any-r1 toolchain-funcs autotools
+inherit flag-o-matic python-any-r1 toolchain-funcs
 
 DESCRIPTION="Network utility to retrieve files from the WWW"
 HOMEPAGE="https://www.gnu.org/software/wget/"
