@@ -212,6 +212,7 @@ src_install() {
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${PN}.logrotate" ${PN}
+	fperms 0644 /etc/logrotate.d/${PN}
 
 	diropts -m 755 -o firebird -g firebird
 	dodir /var/log/${PN}

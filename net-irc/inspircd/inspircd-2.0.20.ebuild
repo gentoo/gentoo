@@ -12,7 +12,7 @@ SRC_URI="https://www.github.com/inspircd/inspircd/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="geoip gnutls ipv6 ldap mysql pcre posix postgres sqlite ssl tre"
 
 RDEPEND="
