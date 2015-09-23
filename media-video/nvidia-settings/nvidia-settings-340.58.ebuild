@@ -28,7 +28,7 @@ COMMON_DEPEND="x11-libs/libX11
 	dev-libs/jansson"
 
 RDEPEND="
-	>=x11-drivers/nvidia-drivers-302.17
+	x11-drivers/nvidia-drivers:0/340
 	${COMMON_DEPEND}
 	x11-libs/libvdpau"
 DEPEND="${RDEPEND}

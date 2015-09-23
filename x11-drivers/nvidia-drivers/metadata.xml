@@ -4,6 +4,12 @@
 <maintainer>
   <email>jer@gentoo.org</email>
 </maintainer>
+<longdescription>
+Nvidia provides different branches of its drivers for different batches of its
+hardware. When maintaining these ebuilds or other ebuilds depending on them,
+you will need to keep in mind that the major versions represent these different
+branches.
+</longdescription>
 <use>
 	<flag name='X'>Install the X.org driver, OpenGL libraries, XvMC libraries, and VDPAU libraries</flag>
 	<flag name='gtk2'>Install nvidia-settings with support for GTK+ 2</flag>
