@@ -173,7 +173,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ ${REPLACING_VERSIONS} -le 1.3 ]]; then
+	if [[ "${REPLACING_VERSIONS}" -le 1.3 ]]; then
 		ewarn "Since version 1.3, rrdtool dump emits completely legal xml.  Basically this"
 		ewarn "means that it contains an xml header and a DOCTYPE definition.  Unfortunately"
 		ewarn "this causes older versions of rrdtool restore to be unhappy."
