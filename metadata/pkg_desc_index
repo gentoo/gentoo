@@ -1171,7 +1171,7 @@ app-emacs/mediawiki 2.2.4.1: MediaWiki client for Emacs
 app-emacs/mew 6.5 6.6: Great MIME mail reader for Emacs/XEmacs
 app-emacs/mic-paren 3.11: Advanced highlighting of matching parentheses
 app-emacs/mldonkey 0.0.4b-r1: An Emacs Lisp interface to the MLDonkey core
-app-emacs/mmm-mode 0.5.1: Enables the user to edit different parts of a file in different major modes
+app-emacs/mmm-mode 0.5.1 0.5.4: Enables the user to edit different parts of a file in different major modes
 app-emacs/moccur-edit 2.16: An improved interface to color-moccur for editing
 app-emacs/mode-compile 2.29.1: Smart command for compiling files according to major-mode
 app-emacs/mpg123-el 1.58 1.59: Emacs front-end to mpg123 audio player and OggVorbis audio player
