@@ -4569,6 +4569,7 @@ media-video/ffmpeg:opus - Adds (decoding) support for the Opus codec via media-l
 media-video/ffmpeg:pic - Force shared libraries to be built as PIC (this is slower)
 media-video/ffmpeg:postproc - Build and install libpostproc.
 media-video/ffmpeg:quvi - Adds support for playing media from Internet services using the quvi project.
+media-video/ffmpeg:rubberband - Adds time-stretching and pitch-shifting audio filter based on media-libs/rubberband.
 media-video/ffmpeg:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).
 media-video/ffmpeg:snappy - Enable app-arch/snappy support. Required for e.g. Vidvox Hap encoder.
 media-video/ffmpeg:ssh - Enable SSH/sftp support via net-libs/libssh.
