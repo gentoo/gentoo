@@ -1,0 +1,37 @@
+diff --git a/VM.hs b/VM.hs
+index 8ef93ce..e8113a0 100644
+--- a/VM.hs
++++ b/VM.hs
+@@ -1,7 +1,7 @@
+ module VM where
+ 
+-import Array
+-import IO
++import Data.Array
++import System.IO
+ import System.Random
+ 
+ {- Stack machine for running whitespace programs -}
+diff --git a/main.hs b/main.hs
+index 83c60b7..a22ff15 100644
+--- a/main.hs
++++ b/main.hs
+@@ -26,7 +26,7 @@ import Input
+ import VM
+ import Tokens
+ 
+-import System(getArgs)
++import System.Environment (getArgs)
+ 
+ main :: IO ()
+ main = do
+diff --git a/whitespace.cabal b/whitespace.cabal
+index 95ae434..e57ac58 100644
+--- a/whitespace.cabal
++++ b/whitespace.cabal
+@@ -15,4 +15,4 @@ Extra-Source-Files:  VM.hs Tokens.hs Input.hs
+ 
+ Executable wspace
+   Main-is:           main.hs
+-  Build-Depends:     haskell98, random
++  Build-Depends:     base, array, random
