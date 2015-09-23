@@ -1,0 +1,37 @@
+Upstream status: Pending
+https://github.com/ros-visualization/interactive_markers/pull/26
+
+commit e6b735989a15e840ba100bdd578b51caba614d37
+Author: Alexis Ballier <aballier@gentoo.org>
+Date:   Tue Feb 3 11:27:33 2015 +0100
+
+    Fix build with -DCATKIN_ENABLE_TESTING=OFF
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0fbb8a9..2d6be3a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -55,14 +55,14 @@ if(GTEST_FOUND)
+   target_link_libraries(server_client_test ${PROJECT_NAME} ${GTEST_LIBRARIES})
+   add_dependencies(tests server_client_test)
+   add_rostest(test/cpp_server_client.test)
+-endif()
+ 
+-# Test program to simulate Interactive Marker with missing tf information
+-add_executable(bursty_tf EXCLUDE_FROM_ALL src/test/bursty_tf.cpp)
+-target_link_libraries(bursty_tf ${PROJECT_NAME})
+-add_dependencies(tests bursty_tf)
++  # Test program to simulate Interactive Marker with missing tf information
++  add_executable(bursty_tf EXCLUDE_FROM_ALL src/test/bursty_tf.cpp)
++  target_link_libraries(bursty_tf ${PROJECT_NAME})
++  add_dependencies(tests bursty_tf)
+ 
+-# Test program to simulate Interactive Marker with wrong tf information
+-add_executable(missing_tf EXCLUDE_FROM_ALL src/test/missing_tf.cpp)
+-target_link_libraries(missing_tf ${PROJECT_NAME})
+-add_dependencies(tests missing_tf)
++  # Test program to simulate Interactive Marker with wrong tf information
++  add_executable(missing_tf EXCLUDE_FROM_ALL src/test/missing_tf.cpp)
++  target_link_libraries(missing_tf ${PROJECT_NAME})
++  add_dependencies(tests missing_tf)
++endif()
