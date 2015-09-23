@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>python</herd>
-<longdescription>
+	<longdescription>
 This is a ground-up rewrite of Perspective Broker, which itself is Twisted's
 native RPC/RMI protocol (Remote Procedure Call / Remote Method Invocation).
 If you have control of both ends of the wire, and are thus not constrained to
@@ -19,7 +19,7 @@ object, it is only accessible to clients to whom you've given the
 (unguessable) FURL. You can of course publish world-visible objects that
 have well-known FURLs.
 </longdescription>
-        <upstream>
-                <remote-id type="pypi">foolscap</remote-id>
-        </upstream>
+	<upstream>
+		<remote-id type="pypi">foolscap</remote-id>
+	</upstream>
 </pkgmetadata>

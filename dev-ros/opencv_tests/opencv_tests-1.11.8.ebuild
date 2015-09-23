@@ -5,6 +5,7 @@
 EAPI=5
 ROS_REPO_URI="https://github.com/ros-perception/vision_opencv"
 KEYWORDS="~amd64 ~arm"
+# Be careful: It needs opencv with python support but opencv is python-single-r1
 PYTHON_COMPAT=( python2_7 )
 ROS_SUBDIR=${PN}
 
@@ -18,7 +19,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/cv_bridge[${PYTHON_USEDEP}]
 	dev-ros/rospy[${PYTHON_USEDEP}]
-	media-libs/opencv[python,${PYTHON_USEDEP}]
+	media-libs/opencv[python,python_single_target_python2_7]
 	dev-python/numpy[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
