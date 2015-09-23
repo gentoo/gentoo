@@ -4,11 +4,11 @@ DESCRIPTION=An SMTP client and SMTP plugin for mail user agents such as Mutt
 EAPI=5
 HOMEPAGE=http://msmtp.sourceforge.net/
 IUSE=doc gnutls idn libsecret +mta nls sasl ssl vim-syntax
-KEYWORDS=alpha amd64 ia64 ppc ~ppc64 sparc x86 ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=GPL-3
 RDEPEND=idn? ( net-dns/libidn ) libsecret? ( app-crypt/libsecret ) nls? ( virtual/libintl ) sasl? ( virtual/gsasl ) ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl ) ) net-mail/mailbase mta? ( !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/opensmtpd !<mail-mta/ssmtp-2.64-r2 !>=mail-mta/ssmtp-2.64-r2[mta] )
 REQUIRED_USE=gnutls? ( ssl )
 SLOT=0
 SRC_URI=mirror://sourceforge/msmtp/msmtp-1.6.1.tar.xz
 _eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=e0e3cef4153a2c8195917152df5e8225
+_md5_=ec10cc96409f1753b03ca83bf67acbdd

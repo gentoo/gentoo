@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile install
-DEPEND=x11-drivers/nvidia-drivers:0/340 x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm x11-libs/gtk+:2 x11-libs/gdk-pixbuf[X] media-libs/mesa x11-libs/pango[X] x11-libs/libXv x11-libs/libXrandr dev-libs/glib:2 dev-libs/jansson x11-libs/libvdpau virtual/pkgconfig x11-proto/xproto
+DEPEND=~x11-drivers/nvidia-drivers-340.93 x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm x11-libs/gtk+:2 x11-libs/gdk-pixbuf[X] media-libs/mesa x11-libs/pango[X] x11-libs/libXv x11-libs/libXrandr dev-libs/glib:2 dev-libs/jansson x11-libs/libvdpau virtual/pkgconfig x11-proto/xproto
 DESCRIPTION=NVIDIA Linux X11 Settings Utility
 EAPI=5
 HOMEPAGE=http://www.nvidia.com/
 IUSE=examples
-KEYWORDS=-* ~amd64 ~x86 ~x86-fbsd
+KEYWORDS=-* amd64 x86 ~x86-fbsd
 LICENSE=GPL-2
-RDEPEND=x11-drivers/nvidia-drivers:0/340 x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm x11-libs/gtk+:2 x11-libs/gdk-pixbuf[X] media-libs/mesa x11-libs/pango[X] x11-libs/libXv x11-libs/libXrandr dev-libs/glib:2 dev-libs/jansson x11-libs/libvdpau
+RDEPEND=~x11-drivers/nvidia-drivers-340.93 x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm x11-libs/gtk+:2 x11-libs/gdk-pixbuf[X] media-libs/mesa x11-libs/pango[X] x11-libs/libXv x11-libs/libXrandr dev-libs/glib:2 dev-libs/jansson x11-libs/libvdpau
 SLOT=0
 SRC_URI=ftp://download.nvidia.com/XFree86/nvidia-settings/nvidia-settings-340.58.tar.bz2
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=84829af2d8747d4ba862e1f59559c9b5
+_md5_=4a91f4150812fb7e75fe5d41f3a5a4f0

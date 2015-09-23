@@ -4,11 +4,11 @@ DESCRIPTION=A collection of different plugins for Geany
 EAPI=5
 HOMEPAGE=http://plugins.geany.org/geany-plugins
 IUSE=+autoclose +commander debugger +defineformat devhelp enchant gpg gtkspell lua markdown multiterm nls python scope soup webkit python_targets_python2_7
-KEYWORDS=alpha amd64 arm ia64 ppc ~ppc64 sparc x86
+KEYWORDS=alpha amd64 arm ia64 ppc ppc64 sparc x86
 LICENSE=GPL-2
 RDEPEND=>=dev-util/geany-1.24 autoclose? ( x11-libs/gtk+:2 ) commander? ( x11-libs/gtk+:2 ) defineformat? ( x11-libs/gtk+:2 ) dev-libs/libxml2:2 dev-libs/glib:2 debugger? ( x11-libs/vte:0 ) devhelp? ( dev-util/devhelp gnome-base/gconf:2 net-libs/webkit-gtk:2 x11-libs/gtk+:2 x11-libs/libwnck:1 ) enchant? ( app-text/enchant ) gpg? ( app-crypt/gpgme ) gtkspell? ( app-text/gtkspell:2 ) lua? ( dev-lang/lua ) markdown? ( app-text/discount net-libs/webkit-gtk:2 x11-libs/gtk+:2 ) multiterm? ( || ( dev-lang/vala:0.28 dev-lang/vala:0.26 dev-lang/vala:0.24 dev-lang/vala:0.22 dev-lang/vala:0.20 ) x11-libs/gtk+:2 >=x11-libs/vte-0.28:0 ) python? ( dev-python/pygtk[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) scope? ( x11-libs/vte:0 ) soup? ( net-libs/libsoup ) webkit? ( net-libs/webkit-gtk:2 x11-libs/gtk+:2 x11-libs/gdk-pixbuf:2 ) scope? ( sys-devel/gdb )
 REQUIRED_USE=python? ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=http://plugins.geany.org/geany-plugins/geany-plugins-1.24.tar.gz
 _eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	vala	335996addec48717e632dfd1f588ef1c	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=82e9d143439cb937049009ec616fb7f2
+_md5_=8437800e00fdca93bdd61c746d22e801

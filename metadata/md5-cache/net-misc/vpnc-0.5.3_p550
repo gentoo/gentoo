@@ -4,11 +4,11 @@ DESCRIPTION=Free client for Cisco VPN routing software
 EAPI=5
 HOMEPAGE=http://www.unix-ag.uni-kl.de/~massar/vpnc/
 IUSE=resolvconf +gnutls selinux
-KEYWORDS=amd64 arm ppc ~ppc64 sparc x86
+KEYWORDS=amd64 arm ppc ppc64 sparc x86
 LICENSE=GPL-2 BSD
 RDEPEND=dev-lang/perl dev-libs/libgcrypt:0= >=sys-apps/iproute2-2.6.19.20061214[-minimal] gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl:0= ) resolvconf? ( net-dns/openresolv ) selinux? ( sec-policy/selinux-vpn )
 RESTRICT=!gnutls? ( bindist )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jlec/distfiles/vpnc-0.5.3_p550.tar.xz
 _eclasses_=eutils	351a78113be5b393c09a2c948701ad36	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=8785a0d980c439889d48184dac13c900
+_md5_=66f2634b519cd9050914d7b70e030614
