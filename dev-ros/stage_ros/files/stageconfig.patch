@@ -1,0 +1,73 @@
+commit 7e9a04fef3b02510017d0ea3bbea047c32a408b1
+Author: Alexis Ballier <aballier@gentoo.org>
+Date:   Wed Sep 23 14:55:50 2015 +0200
+
+    Revert "Use upstream stage-config.cmake"
+    
+    This reverts commit 55700196507b44ea577233747de25dbf271cdef8.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 89c433d..7ddd2c7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -14,12 +14,13 @@ find_package(catkin REQUIRED
+ 
+ find_package(Boost REQUIRED COMPONENTS system thread)
+ 
+-find_package(stage REQUIRED)
++set(Stage_DIR cmake)
++find_package(Stage REQUIRED)
+ 
+ include_directories(
+   ${catkin_INCLUDE_DIRS}
+   ${Boost_INCLUDE_DIRS}
+-  ${STAGE_INCLUDE_DIRS}
++  ${Stage_INCLUDE_DIRS}
+ )
+ 
+ catkin_package()
+@@ -33,7 +34,7 @@ endif()
+ target_link_libraries(stageros
+   ${catkin_LIBRARIES}
+   ${Boost_LIBRARIES}
+-  ${STAGE_LIBRARIES}
++  ${Stage_LIBRARIES}
+   ${${PROJECT_NAME}_extra_libs}
+ )
+ if(catkin_EXPORTED_TARGETS)
+diff --git a/cmake/StageConfig.cmake b/cmake/StageConfig.cmake
+new file mode 100644
+index 0000000..118e41c
+--- /dev/null
++++ b/cmake/StageConfig.cmake
+@@ -0,0 +1,30 @@
++# - Try to find Stage
++#
++# Once done this will define
++#
++#  Stage_FOUND - system has Stage
++#  Stage_INCLUDE_DIRS - the Stage include directory
++#  Stage_LIBRARIES - the Stage libraries
++#
++# Written by William Woodall <william@osrfoundation.org>
++#
++
++find_package(PkgConfig)
++pkg_check_modules(PC_Stage stage)
++
++find_library(Stage_LIBRARIES
++  NAMES ${PC_Stage_LIBRARIES}
++  PATHS ${PC_Stage_LIBRARY_DIRS}
++)
++
++set(Stage_INCLUDE_DIRS ${PC_Stage_INCLUDE_DIRS})
++
++include(FindPackageHandleStandardArgs)
++find_package_handle_standard_args(Stage
++	DEFAULT_MSG
++	Stage_LIBRARIES Stage_INCLUDE_DIRS
++)
++
++mark_as_advanced(Stage_LIBRARIES Stage_INCLUDE_DIRS)
++
++set(Stage_FOUND ${STAGE_FOUND})
