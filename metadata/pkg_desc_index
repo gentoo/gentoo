@@ -8040,9 +8040,13 @@ dev-ros/genmsg 0.5.6 9999: Python library for generating ROS message and service
 dev-ros/genpy 0.5.5 9999: Python ROS message and service generators
 dev-ros/geometric_shapes 0.4.3 9999: Generic definitions of geometric shapes and bodies
 dev-ros/geometry_msgs 1.12.3 9999: Messages for common geometric primitives such as points, vectors, and poses
+dev-ros/interactive_markers 1.11.1 9999: 3D interactive marker communication library for RViz and similar tools
 dev-ros/joint_state_publisher 1.11.8 9999: Tool for setting and publishing joint state values for a given URDF
 dev-ros/kdl_conversions 1.11.7 9999: Conversion functions between KDL and geometry_msgs types
 dev-ros/kdl_parser 1.11.8 9999: Constructs a KDL tree from an XML robot representation in URDF
+dev-ros/laser_assembler 1.7.3 9999: Nodes to assemble point clouds from either LaserScan or PointCloud messages
+dev-ros/laser_filters 1.8.0 9999: Assorted filters designed to operate on 2D planar laser scanners
+dev-ros/laser_geometry 1.6.4 9999: Class for converting from a 2D laser scan into a point cloud
 dev-ros/message_filters 1.11.14 9999: Set of message filters which take in messages and may output those messages at a later time
 dev-ros/message_generation 0.3.0 9999: Build-time dependencies for generating language bindings of messages
 dev-ros/message_runtime 0.4.12 9999: Package modeling the run-time dependencies for language bindings of messages
@@ -14688,6 +14692,7 @@ ros-meta/diagnostics 1.8.8 9999: Packages related to gathering, viewing, and ana
 ros-meta/executive_smach 2.0.0 9999: SMACH library and ROS SMACH integration packages
 ros-meta/geometry 1.11.7 9999: Common geometric calculations
 ros-meta/geometry_experimental 0.5.12 9999: The second generation Transform Library in ros
+ros-meta/laser_pipeline 1.6.1 9999: Meta-package for processing laser data, e.g. converting laser data into 3D representations
 ros-meta/nodelet_core 1.9.3 9999: Nodelet Core Metapackage
 ros-meta/robot 1.2.0 9999: Metapackage which extends ros_base and includes ROS libaries for any robot hardware
 ros-meta/robot_model 1.11.8 9999: Packages for modeling various aspects of robot information
