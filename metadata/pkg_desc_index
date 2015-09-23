@@ -8112,9 +8112,39 @@ dev-ros/rostime 0.5.6 9999: Time and Duration implementations for C++ libraries
 dev-ros/rostopic 1.11.14 9999: Command-line tool for displaying debug information about ROS Topics
 dev-ros/rosunit 1.12.3 9999: Unit-testing package for ROS
 dev-ros/roswtf 1.11.14 9999: Tool for diagnosing issues with a running ROS system
+dev-ros/rqt_action 0.3.12 9999: Introspect all available ROS action (from actionlib) types
+dev-ros/rqt_bag 0.3.12 9999: GUI plugin for displaying and replaying ROS bag files
+dev-ros/rqt_bag_plugins 0.3.12 9999: GUI plugin for displaying and replaying ROS bag files
+dev-ros/rqt_console 0.3.12 9999: GUI plugin for displaying and filtering ROS messages
+dev-ros/rqt_dep 0.3.12 9999: GUI plugin for visualizing the ROS dependency graph
+dev-ros/rqt_graph 0.3.12 9999: GUI plugin for visualizing the ROS computation graph
 dev-ros/rqt_gui 0.2.14 9999: Main to start an instance of the ROS integrated graphical user interface provided by qt_gui
 dev-ros/rqt_gui_cpp 0.2.14 9999: Enables GUI plugins to use the C++ client library for ROS
 dev-ros/rqt_gui_py 0.2.14 9999: Enables GUI plugins to use the Python client library for ROS
+dev-ros/rqt_image_view 0.3.12 9999: GUI plugin for displaying images using image_transport
+dev-ros/rqt_launch 0.3.12 9999: Easy view of .launch files
+dev-ros/rqt_logger_level 0.3.12 9999: GUI plugin for configuring the logger level of ROS nodes
+dev-ros/rqt_moveit 0.4.2 9999: Assists monitoring tasks for MoveIt! motion planner
+dev-ros/rqt_msg 0.3.12 9999: Python GUI plugin for introspecting available ROS message types
+dev-ros/rqt_nav_view 0.4.2 9999: Provides a gui for viewing navigation maps and paths
+dev-ros/rqt_plot 0.3.12 9999: GUI plugin visualizing numeric values in a 2D plot
+dev-ros/rqt_pose_view 0.4.2 9999: GUI plugin for visualizing 3D poses
+dev-ros/rqt_publisher 0.3.12 9999: GUI plugin for publishing arbitrary messages with fixed or computed field values
+dev-ros/rqt_py_common 0.3.12 9999: Common functionality for rqt plugins written in Python
+dev-ros/rqt_py_console 0.3.12 9999: Python GUI plugin providing an interactive Python console
+dev-ros/rqt_reconfigure 0.3.12 9999: Provides the way to view and edit the parameters that are accessible via dynamic_reconfigure
+dev-ros/rqt_robot_dashboard 0.4.2 9999: Infrastructure for building robot dashboard plugins in rqt
+dev-ros/rqt_robot_monitor 0.4.2 9999: Displays diagnostics_agg topics messages that are published by diagnostic_aggregator
+dev-ros/rqt_robot_steering 0.4.2 9999: GUI plugin for steering a robot using Twist messages
+dev-ros/rqt_runtime_monitor 0.4.2 9999: GUI plugin viewing DiagnosticsArray messages
+dev-ros/rqt_rviz 0.4.2 9999: GUI plugin embedding RViz
+dev-ros/rqt_service_caller 0.3.12 9999: GUI plugin for calling arbitrary services
+dev-ros/rqt_shell 0.3.12 9999: GUI plugin providing an interactive shell
+dev-ros/rqt_srv 0.3.12 9999: GUI plugin for introspecting available ROS message types
+dev-ros/rqt_tf_tree 0.4.2 9999: GUI plugin for visualizing the ROS TF frame tree
+dev-ros/rqt_top 0.3.12 9999: RQT plugin for monitoring ROS processes
+dev-ros/rqt_topic 0.3.12 9999: GUI plugin for displaying debug information about ROS topics
+dev-ros/rqt_web 0.3.12 9999: Simple web content viewer for rqt
 dev-ros/rviz 1.11.9 9999: 3D visualization tool for ROS
 dev-ros/self_test 1.8.8 9999: Robot self-test node
 dev-ros/sensor_msgs 1.12.3 9999: Messages for commonly used sensors, including cameras and scanning laser rangefinders
@@ -14724,7 +14754,10 @@ ros-meta/ros_core 1.2.0 9999: Metapackage to aggregate the packages required to 
 ros-meta/ros_tutorials 0.6.1 9999: Demonstrates various features of ROS, as well as support packages which help demonstrate them
 ros-meta/roscpp_core 0.5.6 9999: Underlying data libraries for roscpp messages
 ros-meta/rqt 0.2.14 9999: Qt-based framework for GUI development for ROS
+ros-meta/rqt_common_plugins 0.3.12 9999: ROS backend graphical tools suite that can be used on/off of robot runtime
+ros-meta/rqt_robot_plugins 0.4.2 9999: Metapackage of rqt plugins that are particularly used with robots during its operation
 ros-meta/vision_opencv 1.11.8 9999: Converts between ROS Image messages and OpenCV images
+ros-meta/viz 1.2.0 9999: Metapackage for ROS visualization packages
 sci-astronomy/aatm 0.4.3.1: Atmospheric Modelling for ALMA Observatory
 sci-astronomy/casa-data 10013 99999: Data and tables for the CASA software
 sci-astronomy/casacore 1.5.0-r1: Core libraries for the Common Astronomy Software Applications
