@@ -2851,7 +2851,7 @@ dev-db/derby 10.10.1.1: An embeddable relational database implemented entirely i
 dev-db/drizzle 7.2.4: Database optimized for Cloud and Net applications
 dev-db/etcd 0.4.6 2.0.10 2.0.10-r1: A highly-available key value store for shared configuration and service discovery
 dev-db/etcdctl 0.4.6 0.4.6-r1: A simple command line client for etcd
-dev-db/firebird 2.5.3.26780.0-r1: A relational database offering many ANSI SQL:2003 and some SQL:2008 features
+dev-db/firebird 2.5.3.26780.0-r2: A relational database offering many ANSI SQL:2003 and some SQL:2008 features
 dev-db/flamerobin 0.9.2: A database administration tool for Firebird DBMS
 dev-db/freetds 0.91 0.91-r1: Tabular Datastream Library
 dev-db/gigabase 3.83-r1: OO-DBMS with interfaces for C/C++/Java/PHP/Perl
@@ -8068,6 +8068,11 @@ dev-ros/pluginlib 1.10.1 9999: Provides tools for writing and dynamically loadin
 dev-ros/pluginlib_tutorials 0.1.8 9999: Pluginlib tutorials
 dev-ros/polled_camera 1.11.7 9999: C++ helper classes for implementing a polled camera driver node and requesting images from it
 dev-ros/python_qt_binding 0.2.17 9999: Infrastructure for an integrated graphical user interface based on Qt
+dev-ros/qt_dotgraph 0.2.29 9999: Helpers to work with dot graphs
+dev-ros/qt_gui 0.2.29 9999: ROS infrastructure for an integrated graphical user interface based on Qt
+dev-ros/qt_gui_app 0.2.29 9999: Main to start an instance of the integrated graphical user interface provided by qt_gui
+dev-ros/qt_gui_cpp 0.2.29 9999: Foundation for C++-bindings for dev-ros/qt_gui and creates bindings for every generator available
+dev-ros/qt_gui_py_common 0.2.29 9999: Common functionality for ROS RQT GUI plugins written in Python
 dev-ros/random_numbers 0.3.0 9999: Wrappers for generating floating point values, integers, quaternions using boost libraries
 dev-ros/resource_retriever 1.11.6 9999: Retrieves data from url-format files
 dev-ros/robot_state_publisher 1.10.4 9999: Package for publishing the state of a robot to tf
@@ -8107,6 +8112,9 @@ dev-ros/rostime 0.5.6 9999: Time and Duration implementations for C++ libraries
 dev-ros/rostopic 1.11.14 9999: Command-line tool for displaying debug information about ROS Topics
 dev-ros/rosunit 1.12.3 9999: Unit-testing package for ROS
 dev-ros/roswtf 1.11.14 9999: Tool for diagnosing issues with a running ROS system
+dev-ros/rqt_gui 0.2.14 9999: Main to start an instance of the ROS integrated graphical user interface provided by qt_gui
+dev-ros/rqt_gui_cpp 0.2.14 9999: Enables GUI plugins to use the C++ client library for ROS
+dev-ros/rqt_gui_py 0.2.14 9999: Enables GUI plugins to use the Python client library for ROS
 dev-ros/rviz 1.11.9 9999: 3D visualization tool for ROS
 dev-ros/self_test 1.8.8 9999: Robot self-test node
 dev-ros/sensor_msgs 1.12.3 9999: Messages for commonly used sensors, including cameras and scanning laser rangefinders
@@ -14706,6 +14714,7 @@ ros-meta/geometry_experimental 0.5.12 9999: The second generation Transform Libr
 ros-meta/image_common 1.11.7 9999: Common code for working with images in ROS
 ros-meta/laser_pipeline 1.6.1 9999: Meta-package for processing laser data, e.g. converting laser data into 3D representations
 ros-meta/nodelet_core 1.9.3 9999: Nodelet Core Metapackage
+ros-meta/qt_gui_core 0.2.29 9999: Integration of the ROS package system and ROS-specific plugins for a Qt-based GUI
 ros-meta/robot 1.2.0 9999: Metapackage which extends ros_base and includes ROS libaries for any robot hardware
 ros-meta/robot_model 1.11.8 9999: Packages for modeling various aspects of robot information
 ros-meta/ros 1.12.3 9999: ROS packaging system
@@ -14714,6 +14723,7 @@ ros-meta/ros_comm 1.11.14 9999: ROS communications-related packages
 ros-meta/ros_core 1.2.0 9999: Metapackage to aggregate the packages required to use core ROS concepts
 ros-meta/ros_tutorials 0.6.1 9999: Demonstrates various features of ROS, as well as support packages which help demonstrate them
 ros-meta/roscpp_core 0.5.6 9999: Underlying data libraries for roscpp messages
+ros-meta/rqt 0.2.14 9999: Qt-based framework for GUI development for ROS
 ros-meta/vision_opencv 1.11.8 9999: Converts between ROS Image messages and OpenCV images
 sci-astronomy/aatm 0.4.3.1: Atmospheric Modelling for ALMA Observatory
 sci-astronomy/casa-data 10013 99999: Data and tables for the CASA software
