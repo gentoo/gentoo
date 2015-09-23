@@ -1,9 +1,9 @@
 #!/sbin/runscript
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-opts="${opts} reload"
+extra_started_commands="reload"
 
 YATE_PIDFILE=${YATE_PIDFILE:-/var/run/${SVCNAME}.pid}
 YATE_BINARY=${YATE_BINARY:-/usr/bin/yate}
@@ -28,7 +28,7 @@ stop() {
 
 reload() {
     ebegin "Reloading ${SVCNAME}"
-    start-stop-daemon --stop --exec "${YATE_BINARY}" \
-			--pidfile "${YATE_PIDFILE}" --signal HUP --oknodo
+    start-stop-daemon --signal HUP --exec "${YATE_BINARY}" \
+			--pidfile "${YATE_PIDFILE}"
     eend $?
 }
