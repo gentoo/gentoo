@@ -18,7 +18,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/cv_bridge[${PYTHON_USEDEP}]
 	dev-ros/image_geometry[${PYTHON_USEDEP}]
-	media-libs/opencv[python,${PYTHON_USEDEP}]
+	|| ( media-libs/opencv[python,${PYTHON_USEDEP}] media-libs/opencv[python,python_single_target_python2_7] )
 	dev-ros/message_filters[${PYTHON_USEDEP}]
 	dev-ros/rospy[${PYTHON_USEDEP}]
 	dev-ros/std_srvs[${PYTHON_USEDEP}]
