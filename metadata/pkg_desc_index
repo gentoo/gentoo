@@ -8047,10 +8047,12 @@ dev-ros/kdl_parser 1.11.8 9999: Constructs a KDL tree from an XML robot represen
 dev-ros/laser_assembler 1.7.3 9999: Nodes to assemble point clouds from either LaserScan or PointCloud messages
 dev-ros/laser_filters 1.8.0 9999: Assorted filters designed to operate on 2D planar laser scanners
 dev-ros/laser_geometry 1.6.4 9999: Class for converting from a 2D laser scan into a point cloud
+dev-ros/map_msgs 1.13.0 9999: Messages commonly used in mapping packages
 dev-ros/message_filters 1.11.14 9999: Set of message filters which take in messages and may output those messages at a later time
 dev-ros/message_generation 0.3.0 9999: Build-time dependencies for generating language bindings of messages
 dev-ros/message_runtime 0.4.12 9999: Package modeling the run-time dependencies for language bindings of messages
 dev-ros/mk 1.12.3 9999: A collection of .mk include files for building ROS architectural elements
+dev-ros/move_base_msgs 1.13.0 9999: Holds the action description and relevant messages for the move_base package
 dev-ros/nav_msgs 1.12.3 9999: Common messages used to interact with the navigation stack
 dev-ros/nodelet 1.9.3 9999: Provides a way to run multiple algorithms in the same process with zero copy transport
 dev-ros/nodelet_topic_tools 1.9.3 9999: Common nodelet tools such as a mux, demux and throttle
