@@ -32,6 +32,7 @@ DEPEND+=" test? ( ${CDEPEND} )"
 src_prepare() {
 	sed -i 's/\-Werror\ //g' "vendor/leatherman/cmake/cflags.cmake" || die
 	# Remove the code that installs facter.rb to the wrong directory.
+	sed -i 's/if(RUBY_VENDORDIR)/if(False)/g' lib/CMakeLists.txt || die
 	sed -i '/RUBY_VENDORDIR/d' lib/CMakeLists.txt || die
 	# make it support multilib
 	sed -i 's/\ lib)/\ lib${LIB_SUFFIX})/g' lib/CMakeLists.txt || die
