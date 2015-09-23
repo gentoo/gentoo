@@ -1,15 +1,15 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
-inherit eutils user
+inherit eutils systemd user
 
 DESCRIPTION="Postgrey is a Postfix policy server implementing greylisting"
 HOMEPAGE="http://postgrey.schweikert.ch/"
 SRC_URI="http://postgrey.schweikert.ch/pub/${P}.tar.gz
-	http://postgrey.schweikert.ch/pub/old/${P}.tar.gz"
+http://postgrey.schweikert.ch/pub/old/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,6 +24,7 @@ RDEPEND=">=dev-lang/perl-5.6.0
 	dev-perl/Net-DNS
 	dev-perl/Parse-Syslog
 	dev-perl/Net-RBLClient
+	virtual/perl-Digest-SHA
 	>=sys-libs/db-4.1"
 
 pkg_setup() {
@@ -35,6 +36,7 @@ src_prepare() {
 	if use targrey ; then
 		epatch "${FILESDIR}"/targrey-0.31-postgrey-1.34.patch
 	fi
+	# bug 479400
 	sed -i 's@#!/usr/bin/perl -T -w@#!/usr/bin/perl -w@' postgrey || die "sed failed"
 }
 
@@ -59,11 +61,12 @@ src_install() {
 	doins postgrey_whitelist_clients postgrey_whitelist_recipients
 
 	# documentation
-	dodoc Changes README
+	dodoc Changes README README.exim
 
 	# init.d + conf.d files
 	insopts -o root -g root -m 755
-	newinitd "${FILESDIR}"/${PN}.rc.new ${PN}
+	newinitd "${FILESDIR}"/${PN}-1.34-r3.rc.new ${PN}
 	insopts -o root -g root -m 640
 	newconfd "${FILESDIR}"/${PN}.conf.new ${PN}
+	systemd_dounit "${FILESDIR}"/postgrey.service
 }
