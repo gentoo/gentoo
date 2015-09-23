@@ -38,8 +38,8 @@ src_install() {
 	insinto /etc/profile.d
 	doins bin/"${PN}".sh
 
-	newbashcomp bin/"${PN}".bash "${PN}"
 	insinto /usr/share/"${PN}"/
+	doins bin/"${PN}.bash"
 	doins bin/"${PN}.zsh"
 	insinto /usr/share/zsh/site-functions
 	doins bin/_j
