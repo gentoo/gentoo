@@ -88,4 +88,6 @@ src_install() {
 	else
 		emake DESTDIR="${ED}" install-noapi
 	fi
+	newinitd "${FILESDIR}"/yate.initd yate
+	newconfd "${FILESDIR}"/yate.confd yate
 }
