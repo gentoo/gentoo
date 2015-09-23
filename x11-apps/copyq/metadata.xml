@@ -11,4 +11,7 @@
 	remote images and other data
 	</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">hluk/CopyQ</remote-id>
+	</upstream>
 </pkgmetadata>
