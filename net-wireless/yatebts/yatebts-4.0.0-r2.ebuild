@@ -15,7 +15,7 @@ SLOT="0"
 IUSE="rad1 usrp1 uhd +bladerf cpu_flags_x86_sse3 cpu_flags_x86_sse4_1"
 
 RDEPEND="
-	>=net-voip/yate-5.4.0:=[gsm]
+	=net-voip/yate-5.4.0:=[gsm]
 	bladerf? ( net-wireless/bladerf:= )
 	uhd? ( net-wireless/uhd )
 	virtual/libusb:1"
