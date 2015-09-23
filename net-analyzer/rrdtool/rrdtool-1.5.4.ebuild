@@ -8,7 +8,7 @@ DISTUTILS_OPTIONAL=true
 DISTUTILS_SINGLE_IMPL=true
 GENTOO_DEPEND_ON_PERL=no
 PYTHON_COMPAT=( python2_7 )
-inherit autotools eutils perl-module distutils-r1 flag-o-matic multilib versionator
+inherit autotools eutils perl-module distutils-r1 flag-o-matic multilib
 
 DESCRIPTION="A system to store and display time-series data"
 HOMEPAGE="http://oss.oetiker.ch/rrdtool/"
