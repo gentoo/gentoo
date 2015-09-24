@@ -1,0 +1,57 @@
+From c6eee39e8c5185a0c330e3c70c7b1e109c69ac44 Mon Sep 17 00:00:00 2001
+From: Andrew Wilcox <AWilcox@Wilcox-Tech.com>
+Date: Sat, 12 Sep 2015 15:31:11 -0500
+Subject: [PATCH] Project plugin: Properly initialise libgit2
+
+Fixes bugs #346101, #346102, #345602
+---
+ addons/project/kateprojectworker.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/addons/project/kateprojectworker.cpp b/addons/project/kateprojectworker.cpp
+index 847f2b2..5433ee8 100644
+--- a/addons/project/kateprojectworker.cpp
++++ b/addons/project/kateprojectworker.cpp
+@@ -276,12 +276,15 @@ QStringList KateProjectWorker::filesFromGit(const QDir &dir, bool recursive)
+         return 0;
+     };
+ 
++    git_libgit2_init();
++
+     if (git_repository_open_ext(&repo, dir.path().toUtf8().data(), 0, NULL)) {
+         return QStringList();
+     }
+ 
+     if ((working_dir = git_repository_workdir(repo)) == nullptr) {
+         git_repository_free(repo);
++        git_libgit2_shutdown();
+         return files;
+     }
+ 
+@@ -290,6 +293,7 @@ QStringList KateProjectWorker::filesFromGit(const QDir &dir, bool recursive)
+ 
+     if (git_revparse_single(&root_tree, repo, "HEAD^{tree}")) {
+         git_repository_free(repo);
++        git_libgit2_shutdown();
+         return files;
+     }
+ 
+@@ -299,6 +303,7 @@ QStringList KateProjectWorker::filesFromGit(const QDir &dir, bool recursive)
+         if (git_object_lookup_bypath(&tree, root_tree, relpath.toUtf8().data(), GIT_OBJ_TREE)) {
+             git_object_free(root_tree);
+             git_repository_free(repo);
++            git_libgit2_shutdown();
+             return files;
+         }
+     }
+@@ -311,6 +316,7 @@ QStringList KateProjectWorker::filesFromGit(const QDir &dir, bool recursive)
+ 
+     git_object_free(root_tree);
+     git_repository_free(repo);
++    git_libgit2_shutdown();
+     return files;
+ }
+ 
+-- 
+2.5.2
+
