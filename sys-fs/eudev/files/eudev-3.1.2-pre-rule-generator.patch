@@ -1,0 +1,28 @@
+Move some entries further down so that the eudev rule-generator patch applies
+
+--- a/configure.ac	2015-06-19 12:32:53.000000000 -0400
++++ b/configure.ac	2015-09-24 10:41:34.630153037 -0400
+@@ -287,11 +287,6 @@
+ # ------------------------------------------------------------------------------
+ 
+ AC_CONFIG_FILES([Makefile
+-                 docs/Makefile
+-                 docs/gudev/Makefile
+-                 docs/gudev/version.xml
+-                 docs/libudev/Makefile
+-                 docs/libudev/version.xml
+                  hwdb/Makefile
+                  man/Makefile
+                  rules/Makefile
+@@ -310,6 +305,11 @@
+                  src/libudev/libudev.pc
+                  src/udev/Makefile
+                  src/udev/udev.pc
++                 docs/Makefile
++                 docs/gudev/Makefile
++                 docs/gudev/version.xml
++                 docs/libudev/Makefile
++                 docs/libudev/version.xml
+                  test/Makefile])
+ 
+ AC_OUTPUT
