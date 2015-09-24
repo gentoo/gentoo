@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201509-02">
+  <title>cURL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in cURL, the worst of
+    which can allow remote attackers to cause Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">curl</product>
+  <announced>September 24, 2015</announced>
+  <revised>September 24, 2015: 1</revised>
+  <bug>547376</bug>
+  <bug>552618</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/curl" auto="yes" arch="*">
+      <unaffected range="ge">7.43.0</unaffected>
+      <vulnerable range="lt">7.43.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>cURL is a tool and libcurl is a library for transferring data with URL
+      syntax.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in cURL. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly obtain sensitive information, or cause
+      a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All cURL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/curl-7.43.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3143">CVE-2015-3143</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3144">CVE-2015-3144</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3145">CVE-2015-3145</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3148">CVE-2015-3148</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3236">CVE-2015-3236</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3237">CVE-2015-3237</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 22 Apr 2015 12:07:04 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Thu, 24 Sep 2015 16:47:50 +0000">mrueg</metadata>
+</glsa>
