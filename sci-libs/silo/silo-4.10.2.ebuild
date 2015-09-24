@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils
+inherit eutils fortran-2
 
 DESCRIPTION="A mesh and field I/O library and scientific database"
 HOMEPAGE="https://wci.llnl.gov/simulation/computer-codes/silo"
