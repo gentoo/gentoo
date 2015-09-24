@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Dion Moult <moult@gentoo.org> (24 Sep 2015)
+# Masked for removal in 30 days. Obsoleted and uninstallable.
+# Bug #553182
+gnome-extra/zeitgeist-datahub
+
+# Dion Moult <moult@gentoo.org> (24 Sep 2015)
 # Masked for removal in 30 days. Upstream dead.
 # Bug #551282
 net-news/yarssr
