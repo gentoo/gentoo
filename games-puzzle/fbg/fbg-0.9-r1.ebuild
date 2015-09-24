@@ -1,6 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
 EAPI=5
 inherit eutils games
 
@@ -16,17 +17,16 @@ IUSE=""
 DEPEND="virtual/opengl
 	virtual/glu
 	dev-games/physfs
-	media-libs/libsdl
+	media-libs/libsdl[opengl,video]
 	media-libs/libmikmod
 	x11-libs/libXt"
-RDEPEND="${DEPEND}"
+RDEPEND=${DEPEND}
 
 src_prepare() {
 	sed -i \
 		-e "/FBGDATADIR=/s:\".*\":\"${GAMES_DATADIR}/${PN}\":" \
 		-e '/^datadir=/d' \
-		configure \
-		|| die "sed failed"
+		configure || die
 }
 
 src_configure() {
