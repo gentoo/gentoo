@@ -38,6 +38,11 @@ esac
 # Minimal KDE Applicaions version to require for the package.
 : ${KDE_APPS_MINIMAL:=14.12.0}
 
+# @ECLASS-VARIABLE: KDE_GCC_MINIMAL
+# @DESCRIPTION:
+# Minimal GCC version to require for the package.
+: ${KDE_GCC_MINIMAL:=4.8}
+
 # @ECLASS-VARIABLE: KDEBASE
 # @DESCRIPTION:
 # This gets set to a non-zero value when a package is considered a kde or
@@ -79,10 +84,12 @@ _check_gcc_version() {
 		local version=$(gcc-version)
 		local major=${version%.*}
 		local minor=${version#*.}
+		local min_major=${KDE_GCC_MINIMAL%.*}
+		local min_minor=${KDE_GCC_MINIMAL#*.}
 
-		[[ ${major} -lt 4 ]] || \
-				( [[ ${major} -eq 4 && ${minor} -lt 8 ]] ) \
-			&& die "Sorry, but gcc-4.8 or later is required for KDE 5."
+		[[ ${major} -lt ${min_major} ]] || \
+				( [[ ${major} -eq ${min_major} && ${minor} -lt ${min_minor} ]] ) \
+			&& die "Sorry, but gcc-${KDE_GCC_MINIMAL} or later is required for this package."
 	fi
 }
 
