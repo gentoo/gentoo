@@ -2331,7 +2331,7 @@ app-text/mecab 0.996: Yet Another Part-of-Speech and Morphological Analyzer
 app-text/mftrace 1.2.18: Traces TeX fonts to PFA or PFB fonts (formerly pktrace)
 app-text/mht-rip 0.8: convert mht/mhtml files to something usable
 app-text/mpage 2.5.6-r1: Many to one page printing utility
-app-text/multitail 6.2.1 6.3 6.4.1: Tail with multiple windows
+app-text/multitail 6.4.1: Tail with multiple windows
 app-text/mupdf 1.5-r1 1.6 1.7 1.7a 9999: a lightweight PDF viewer and toolkit written in portable C
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21 2.0.22_p1: Namazu is a full-text search engine
@@ -6776,18 +6776,18 @@ dev-python/buzhug 1.8-r1: Fast, pure-Python database engine, using a syntax that
 dev-python/bytecodeassembler 0.6: Generate Python code objects by assembling bytecode
 dev-python/cached-property 0.1.5 1.0.0 1.2.0: A cached-property for decorating methods in classes
 dev-python/cachetools 1.1.0: Extensible memoizing collections and decorators
-dev-python/cairocffi 0.5.3-r1 0.5.4 0.6 0.6-r1 0.7.1 0.7.2: CFFI-based drop-in replacement for Pycairo
+dev-python/cairocffi 0.6 0.7.2: CFFI-based drop-in replacement for Pycairo
 dev-python/cangjie 1.1 1.2: The Python bindings to libcangjie
 dev-python/carbon 0.9.12-r1 0.9.13: Backend data caching and persistence daemon for Graphite
 dev-python/carrot 0.10.7-r1: AMQP Messaging Framework for Python
 dev-python/casuarius 1.1: Cython wrapper for the Cassowary incremental constraint solver
 dev-python/catkin_pkg 0.2.10 9999: Standalone Python library for the catkin package system
-dev-python/cddb-py 1.4 1.4-r1: CDDB Module for Python
+dev-python/cddb-py 1.4-r1: CDDB Module for Python
 dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation of the ElementTree API
 dev-python/celery 3.1.17 3.1.18 3.1.18-r1: Open source asynchronous task queue/job queue based on distributed message passing
 dev-python/cement 2.0.2: CLI Application Framework for Python
 dev-python/certifi 14.05.14 2015.04.28 2015.9.6.2: Python package for providing Mozilla's CA Bundle
-dev-python/cffi 0.8.6 0.9.2 1.0.2 1.0.3 1.1.0 1.1.2 1.2.1: Foreign Function Interface for Python calling C code
+dev-python/cffi 0.9.2 1.1.2 1.2.1: Foreign Function Interface for Python calling C code
 dev-python/cfgio 0.1.2: Python library for reading and writing configuration file formats found on a *nix systems
 dev-python/cfgparse 1.3-r1: Config File parser for Python
 dev-python/cgkit 2.0.0: Python library for creating 3D images
@@ -7122,7 +7122,7 @@ dev-python/kiwi 1.9.39.2 1.9.40: Kiwi is a pure Python framework and set of enha
 dev-python/kiwisolver 0.1.3: An efficient C++ implementation of the Cassowary constraint solving algorithm
 dev-python/kombu 2.5.16 3.0.23 3.0.24 3.0.26: AMQP Messaging Framework for Python
 dev-python/larch 1.20130808 1.20131130: Copy-on-write B-tree data structure
-dev-python/ldap3 0.9.8.2 0.9.8.4 0.9.8.6 0.9.8.7 0.9.8.8 0.9.9: A strictly RFC 4511 conforming LDAP V3 pure Python client
+dev-python/ldap3 0.9.9 0.9.9.1: A strictly RFC 4511 conforming LDAP V3 pure Python client
 dev-python/ldappool 1.0: A connection pool for python-ldap
 dev-python/lesscpy 0.9j 0.10.2: A compiler written in Python for the LESS language
 dev-python/libasyncns-python 0.7.1-r1: Python bindings for libasyncns
@@ -7330,12 +7330,12 @@ dev-python/processing 0.52-r1: Package for using processes, which mimics the thr
 dev-python/progress 1.2: Easy to use progress bars
 dev-python/progressbar 2.3-r1: Text progressbar library for python
 dev-python/promise 0.2.2-r1: Bytecode optimisation using staticness assertions
-dev-python/prompt_toolkit 0.45 0.46 0.47 0.48 0.50: Building powerful interactive command lines in Python
+dev-python/prompt_toolkit 0.45 0.46 0.47 0.48 0.50 0.52: Building powerful interactive command lines in Python
 dev-python/protorpc 0.10.0: Google Protocol RPC
 dev-python/pssi 1.0-r1: Python Simple Smartcard Interpreter
 dev-python/psutil 1.2.1 2.1.3 3.0.1 3.1.1: Retrieve information on running processes and system utilization
 dev-python/psycopg 1.1.21-r1 2.5.3 2.5.4 2.6 2.6.1: PostgreSQL database adapter for Python
-dev-python/ptpython 0.20 0.21 0.22: Python REPL build on top of prompt_toolkit
+dev-python/ptpython 0.20 0.21 0.22 0.24: Python REPL build on top of prompt_toolkit
 dev-python/ptyprocess 0.5: Run a subprocess in a pseudo terminal
 dev-python/pudb 2013.3.6 2013.5.1 2014.1 2015.1 2015.2 2015.3: A full-screen, console-based Python debugger
 dev-python/pudge 0.1.3-r1: A documentation generator for Python projects, using Restructured Text
@@ -7384,7 +7384,7 @@ dev-python/pycmd 1.1 1.2: pycmd: tools for managing/searching Python related fil
 dev-python/pycollada 0.4 9999: python library for reading and writing collada documents
 dev-python/pyconstruct 2.5.2: A powerful declarative parser for binary data
 dev-python/pycountry 1.12 1.13 1.14: ISO country, subdivision, language, currency and script definitions and their translations
-dev-python/pycparser 2.10 2.12 2.13 2.14: C parser and AST generator written in Python
+dev-python/pycparser 2.10 2.14: C parser and AST generator written in Python
 dev-python/pycrypto 2.6.1 2.6.1-r1: Python Cryptography Toolkit
 dev-python/pycryptopp 0.6.0: Python wrappers for a few algorithms from the Crypto++ library
 dev-python/pycuda 2012.1 2013.1.1 2014.1 9999: Python wrapper for NVIDIA CUDA
@@ -7487,7 +7487,7 @@ dev-python/pyparted 3.10.3-r1 3.10.4 3.10.5: Python bindings for sys-block/parte
 dev-python/pypax 0.8.4 0.9.0 0.9.1 9999: Python module to get or set either PT_PAX and/or XATTR_PAX flags
 dev-python/pypcap 1.1.3 1.1.4: Simplified object-oriented Python extension module for libpcap
 dev-python/pypeg2 2.15.1: An intrinsic PEG Parser-Interpreter for Python
-dev-python/pypgsql 2.5.1 2.5.1-r1: Python Interface to PostgreSQL
+dev-python/pypgsql 2.5.1-r1: Python Interface to PostgreSQL
 dev-python/pyphen 0.8 0.9.1: Python module for hyphenation using hunspell dictionaries
 dev-python/pyplusplus 1.0.0-r1 1.0.0_p20131206 9999: Object-oriented framework for creating a code generator for Boost.Python library
 dev-python/pyprof2calltree 1.3.1 1.3.2: convert python profile data to kcachegrind calltree form
@@ -7937,7 +7937,7 @@ dev-python/wstools 0.4.3: WSDL parsing services package for Web Services for Pyt
 dev-python/wtf-peewee 0.2.3: Small python ORM
 dev-python/wtforms 2.0.1 2.0.2: Flexible forms validation and rendering library for python web development
 dev-python/wxpython 2.8.12.1-r2 2.9.4.1-r2 3.0.0.0 3.0.1.1 3.0.2.0: A blending of the wxWindows C++ class library with Python
-dev-python/xcffib 0.1.10 0.2.0 0.2.1 0.2.5 0.3.2 0.3.4: A drop in replacement for xpyb, an XCB python binding
+dev-python/xcffib 0.1.10 0.2.5 0.3.4: A drop in replacement for xpyb, an XCB python binding
 dev-python/xhtml2pdf 0.0.5-r1 0.0.6-r1: PDF generator using HTML and CSS
 dev-python/xlrd 0.9.3 0.9.3-r1 0.9.4: Library for developers to extract data from Microsoft Excel (tm) spreadsheet files
 dev-python/xlsxwriter 0.7.3: Python module for creating Excel XLSX files
@@ -9176,7 +9176,7 @@ dev-util/devhelp 3.14.0 3.16.1: An API documentation browser for GNOME
 dev-util/dialog 1.2.20150528: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.1 0.3.3: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffstat 1.58 1.59 1.60: Display a histogram of diff changes
+dev-util/diffstat 1.60: Display a histogram of diff changes
 dev-util/diffuse 0.4.6 0.4.7-r1 0.4.8: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r2: A tool for differing and merging directories
 dev-util/dissembler 0.9: polymorphs bytecode to a printable ASCII string
@@ -15053,7 +15053,7 @@ sci-chemistry/ccp4i 6.1.3-r4: Protein X-ray crystallography toolkit -- graphical
 sci-chemistry/ccpn 2.4.1_p150226 2.4.2 2.4.2_p150325 2.4.2_p150413 2.4.2_p150421: The Collaborative Computing Project for NMR
 sci-chemistry/chemical-mime-data 0.1.94 0.1.94-r1 0.1.94-r2: A collection of data files to add support for chemical MIME types
 sci-chemistry/chemtool 1.6.13 1.6.14: A GTK program for drawing organic molecules
-sci-chemistry/clashlist 3.17 3.17-r1: Build lists of van der Waals clashes from an input PDB file
+sci-chemistry/clashlist 3.17-r1: Build lists of van der Waals clashes from an input PDB file
 sci-chemistry/cluster 1.3.081231 1.3.081231-r1: Build lists of collections of interacting items
 sci-chemistry/cns 1.2.1-r8 1.3_p7-r1: Crystallography and NMR System
 sci-chemistry/coot 0.7 0.7.1-r1 0.7.2 0.8.2: Crystallographic Object-Oriented Toolkit for model building, completion and validation
