@@ -23,7 +23,7 @@ RDEPEND="${DEPEND}"
 
 REQUIRED_USE="|| ( mysql postgres )"
 
-need_httpd_cgi
+need_httpd_cgi  # From webapp.eclass
 
 pkg_setup() {
 	webapp_pkg_setup
