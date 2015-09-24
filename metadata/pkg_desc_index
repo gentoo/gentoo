@@ -17255,7 +17255,7 @@ www-apps/trac-accountmanager 0.3_p9766 0.4_p10645 0.4.2 0.4.2-r1: A Trac plugin 
 www-apps/trac-downloads 0.3_p9282: Project release downloads plugin for Trac
 www-apps/trac-mercurial 0.12.0.29_pre10899 1.0.0.3_pre20130206: A Mercurial plugin for Trac
 www-apps/trac-tags 0.6: Tags plugin for Trac
-www-apps/tt-rss 20150304 20150624: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
+www-apps/tt-rss 20150624 20150924: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
 www-apps/venus 20100911: A feed aggregator application
 www-apps/viewvc 1.1.20: ViewVC, a web interface to CVS and Subversion
 www-apps/webdavcgi 0.8.3 0.8.4: A Perl CGI for accessing and sharing files, or calendar/addressbooks via WebDAV
