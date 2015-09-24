@@ -41,7 +41,6 @@ src_prepare() {
 
 src_configure() {
 	use static && append-ldflags -static
-	eval export ac_cv_{header_magic_h,lib_magic_magic_open}=$(usex magic)
 	local myconf=()
 	case ${CHOST} in
 	*-gnu*|*-uclibc*) myconf+=( "--with-wordbounds" ) ;; #467848
@@ -53,6 +52,7 @@ src_configure() {
 		$(use_enable !minimal multibuffer) \
 		$(use_enable !minimal nanorc) \
 		--disable-wrapping-as-root \
+		$(use_enable magic libmagic) \
 		$(use_enable spell speller) \
 		$(use_enable justify) \
 		$(use_enable debug) \
