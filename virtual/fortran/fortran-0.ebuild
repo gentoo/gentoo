@@ -19,6 +19,5 @@ RDEPEND="
 		sys-devel/gcc-apple[fortran,openmp?]
 		dev-lang/ekopath
 		dev-lang/ifc
-		dev-lang/path64[openmp?]
 		)"
 DEPEND="${RDEPEND}"
