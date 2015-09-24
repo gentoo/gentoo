@@ -2013,7 +2013,7 @@ app-office/qchartdiary 0.6.4.1-r2: Free Qt4 diary/agenda application
 app-office/rubrica 2.1.6-r1: A contact database for Gnome
 app-office/sc 7.16-r1: sc is a free curses-based spreadsheet program that uses key bindings similar to vi and less
 app-office/scribus 1.4.4-r1 1.5.0-r1 9999: Desktop publishing (DTP) and layout program
-app-office/skrooge 1.10.0 1.12.0 1.12.5 2.0.0: Personal finances manager, aiming at being simple and intuitive
+app-office/skrooge 1.10.0 1.12.0 1.12.5 2.0.0 2.1.1: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.3.18 1.3.27 1.3.29 1.3.32 1.3.32-r1 1.3.40: Simple personal tasks and todo lists manager
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
 app-office/texmacs 1.0.7.21 1.99.1 1.99.2 1.99.2-r1: Wysiwyg text processor with high-quality maths
@@ -10788,7 +10788,7 @@ kde-apps/kompare 4.14.3: Kompare is a program to view the differences between fi
 kde-apps/konq-plugins 4.14.3 15.08.0: Various plugins for konqueror
 kde-apps/konqueror 4.14.3 15.08.0: KDE: Web browser and file manager
 kde-apps/konquest 4.14.3: Galactic Strategy KDE Game
-kde-apps/konsole 4.14.3 15.08.0: KDE's terminal emulator
+kde-apps/konsole 4.14.3 4.14.3-r1 15.08.0: KDE's terminal emulator
 kde-apps/kopete 4.14.3 4.14.3-r1 15.08.0: KDE multi-protocol IM client
 kde-apps/kpasswdserver 4.14.3 15.08.0 15.08.1: KDED Password Module
 kde-apps/kpat 4.14.3: KDE patience game
