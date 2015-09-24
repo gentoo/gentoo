@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-	<maintainer>
-		<email>voyageur@gentoo.org</email>
-		<name>Bernard Cafarelli</name>
-	</maintainer>
-	<longdescription>DragonEgg is a <pkg>sys-devel/gcc</pkg> plugin (dragonegg.so) that replaces gcc's optimizers and code generators with those from the LLVM project. It is a reimplementation of llvm-gcc that works with gcc-4.5 or later.</longdescription>
-</pkgmetadata>

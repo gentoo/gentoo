@@ -31,6 +31,16 @@
 #--- END OF EXAMPLES ---
 
 # Dion Moult <moult@gentoo.org> (24 Sep 2015)
+# Masked for removal in 30 days. Upstream dead.
+# Bug #551282
+net-news/yarssr
+
+# Dion Moult <moult@gentoo.org> (24 Sep 2015)
+# Masked for removal in 30 days.
+# Broken and replaced by dev-lang/ekopath. Bug #559510
+dev-lang/path64
+
+# Dion Moult <moult@gentoo.org> (24 Sep 2015)
 # Masked for removal in 30 days. Just use coreutils' tail.
 # Bug #559510
 sys-apps/turbotail
@@ -147,11 +157,6 @@ app-i18n/atokx2
 # via the kernel as upstream has deprecated these packages.
 app-emulation/kvm-kmod
 
-# Bernard Cafarelli <voyageur@gentoo.org> (24 Aug 2015)
-# Masked for removal in 30 days. Abandoned upstream,
-# last version does not compile. Bug #543644
-sys-devel/dragonegg
-
 # Matt Turner <mattst88@gentoo.org> (22 Aug 2015)
 # nouveau has been in the kernel since 2.6.33
 # Masked for removal in 30 days.
@@ -258,10 +263,6 @@ dev-lang/php:7.0
 # Breaks pretty much all consumers, like samba
 # Mask until it's more usable
 >=net-libs/gnutls-3.4.0
-
-# Christoph Junghans <ottxor@gentoo.org> (3 Apr 2015)
-# Dead upstream. Fails to build (bug #543644).
->=sys-devel/dragonegg-3.6
 
 # Michał Górny <mgorny@gentoo.org> (28 Mar 2015)
 # on behalf of gx86-multilib project <multilib@gentoo.org>
