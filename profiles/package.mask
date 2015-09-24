@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Dion Moult <moult@gentoo.org> (24 Sep 2015)
+# Masked for removal in 30 days. Bug #466724
+# Heavily out of date. Use sci-chemistry/icm
+sci-chemistry/icm-browser
+
+# Dion Moult <moult@gentoo.org> (24 Sep 2015)
 # Masked for removal in 30 days. Bug #216244
 # Outdated and does not compile due to upstream bug.
 dev-ada/polyorb
