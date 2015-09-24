@@ -10724,7 +10724,7 @@ kde-apps/kdenetwork-filesharing 4.14.3 15.08.0: kcontrol filesharing config modu
 kde-apps/kdenetwork-meta 4.14.3: kdenetwork - merge this to pull in all kdenetwork-derived packages
 kde-apps/kdenlive 0.9.8 0.9.10 15.08.0 15.08.1: Non-linear video editing suite by KDE
 kde-apps/kdepasswd 4.14.3 15.08.0: KDE GUI for passwd
-kde-apps/kdepim-l10n 15.08.0: KDE PIM internationalization package
+kde-apps/kdepim-l10n 15.08.0 15.08.1: KDE PIM internationalization package
 kde-apps/kdesdk-kioslaves 4.14.3: kioslaves from kdesdk package
 kde-apps/kdesdk-meta 4.14.3: KDE SDK - merge this to pull in all kdesdk-derived packages
 kde-apps/kdesdk-strigi-analyzer 4.14.3: kdesdk: strigi plugins
