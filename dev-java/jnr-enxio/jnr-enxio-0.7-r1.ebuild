@@ -20,10 +20,10 @@ CDEPEND="dev-java/jnr-constants:0
 	dev-java/jnr-ffi:2"
 
 DEPEND="${CDEPEND}
-	>=virtual/jdk-1.6"
+	>=virtual/jdk-1.7"
 
 RDEPEND="${CDEPEND}
-	>=virtual/jre-1.6"
+	>=virtual/jre-1.7"
 
 java_prepare() {
 	cp "${FILESDIR}"/${P}-build.xml build.xml || die
