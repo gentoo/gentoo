@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Dion Moult <moult@gentoo.org> (24 Sep 2015)
+# Masked for removal in 30 days. Bug #426012
+# Outdated kernel support, licensing issues.
+net-dialup/intel-536ep
+
+# Dion Moult <moult@gentoo.org> (24 Sep 2015)
 # Masked for removal in 30 days. Outdated toolchains. Bug #549364
 dev-embedded/scratchbox-toolchain-cs2005q3_2-glibc2_5
 dev-embedded/scratchbox-toolchain-cs2007q3-glibc2_5
