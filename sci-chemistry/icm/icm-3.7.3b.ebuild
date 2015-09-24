@@ -26,8 +26,7 @@ REQUIRED_USE="^^ (
 
 RESTRICT="fetch"
 
-DEPEND="!sci-chemistry/icm-browser
-		app-arch/unzip
+DEPEND="app-arch/unzip
 		vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 		amd64? (
 			64bit? (
