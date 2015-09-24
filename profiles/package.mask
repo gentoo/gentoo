@@ -31,6 +31,14 @@
 #--- END OF EXAMPLES ---
 
 # Dion Moult <moult@gentoo.org> (24 Sep 2015)
+# Masked for removal in 30 days. Outdated toolchains. Bug #549364
+dev-embedded/scratchbox-toolchain-cs2005q3_2-glibc2_5
+dev-embedded/scratchbox-toolchain-cs2007q3-glibc2_5
+dev-embedded/scratchbox-toolchain-cs2009q1-203sb1
+dev-embedded/scratchbox-toolchain-cs2009q1-eglibc2_8
+dev-embedded/scratchbox-toolchain-cs2009q3-eglibc2_10
+
+# Dion Moult <moult@gentoo.org> (24 Sep 2015)
 # Masked for removal in 30 days. Bug #547406
 # Package no longer builds, module now in kernel.
 net-wireless/rtl8180
