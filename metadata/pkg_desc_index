@@ -2841,7 +2841,7 @@ dev-db/apgdiff 1.4 2.2.1 2.2.2 2.3 2.4: Another PostgreSQL Diff Tool is a simple
 dev-db/barman 1.4.0 1.4.1: Administration tool for disaster recovery of PostgreSQL servers
 dev-db/bucardo 5.1.1-r1 5.2.0 5.3.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r3: Fast, reliable, simple package for creating and reading constant databases
-dev-db/couchdb 1.6.1: Apache CouchDB is a distributed, fault-tolerant and schema-free document-oriented database.
+dev-db/couchdb 1.6.1 1.6.1-r1: Apache CouchDB is a distributed, fault-tolerant and schema-free document-oriented database.
 dev-db/cppdb 0.3.1-r1: An SQL connectivity library for platform and database independent connectivity
 dev-db/ctdb 1.13-r1 9999: A cluster implementation of the TDB database used to store temporary data
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
