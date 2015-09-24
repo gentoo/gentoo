@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/SimonSapin/cairocffi"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="doc test"
 
 RDEPEND="
