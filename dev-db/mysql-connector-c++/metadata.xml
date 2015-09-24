@@ -7,8 +7,8 @@
 <flag name='gcov'>Build coverage support</flag>
 </use>
 	<maintainer>
-		<email>h.mth@web.de</email>
-		<description>Proxied developer. Please CC on bugs.</description>
-		<name>Hanno Meyer-Thurow</name>
+		<email>idella4@gentoo.org</email>
+		<name>Ian Delnaeny</name>
+		<description>Maintainer / developer</description>
 	</maintainer>
 </pkgmetadata>
