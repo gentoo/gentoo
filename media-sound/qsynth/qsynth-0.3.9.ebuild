@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/qsynth/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug jack alsa pulseaudio"
-KEYWORDS="~amd64 ppc ~x86"
+KEYWORDS="amd64 ppc ~x86"
 
 DEPEND=">=dev-qt/qtcore-4.2:4
 	>=dev-qt/qtgui-4.2:4
