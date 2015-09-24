@@ -1,9 +1,9 @@
 DEFINED_PHASES=-
-DEPEND=|| ( sys-devel/gcc[fortran,openmp?] sys-devel/gcc-apple[fortran,openmp?] dev-lang/ekopath dev-lang/ifc dev-lang/path64[openmp?] )
+DEPEND=|| ( sys-devel/gcc[fortran,openmp?] sys-devel/gcc-apple[fortran,openmp?] dev-lang/ekopath dev-lang/ifc )
 DESCRIPTION=Virtual for Fortran Compiler
 EAPI=4
 IUSE=openmp
 KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris
-RDEPEND=|| ( sys-devel/gcc[fortran,openmp?] sys-devel/gcc-apple[fortran,openmp?] dev-lang/ekopath dev-lang/ifc dev-lang/path64[openmp?] )
+RDEPEND=|| ( sys-devel/gcc[fortran,openmp?] sys-devel/gcc-apple[fortran,openmp?] dev-lang/ekopath dev-lang/ifc )
 SLOT=0
-_md5_=79de12aa3609038bad7e89cf923dee23
+_md5_=ec11149c82fcabbd1f7e7c13c05b2db8
