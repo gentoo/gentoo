@@ -544,6 +544,7 @@ qt5_base_configure() {
 		# disable everything to prevent automagic deps (part 1)
 		-no-mtdev
 		-no-journald
+		$([[ ${QT5_MINOR_VERSION} -ge 6 ]] && echo -no-syslog)
 		-no-libpng -no-libjpeg
 		-no-freetype -no-harfbuzz
 		-no-openssl
@@ -559,10 +560,7 @@ qt5_base_configure() {
 
 		# disable everything to prevent automagic deps (part 2)
 		-no-pulseaudio -no-alsa
-
-		# override in qtgui and qtwidgets where x11-libs/cairo[qt4] is blocked
-		# to avoid adding qt4 include paths (bug 433826)
-		-no-gtkstyle
+		$([[ ${QT5_MINOR_VERSION} -ge 7 ]] && echo -no-gtk || echo -no-gtkstyle)
 
 		# exclude examples and tests from default build
 		-nomake examples
@@ -606,7 +604,8 @@ qt5_base_configure() {
 		#-use-gold-linker
 
 		# disable all platform plugins by default, override in qtgui
-		-no-xcb -no-eglfs -no-directfb -no-linuxfb -no-kms
+		-no-xcb -no-eglfs -no-kms -no-directfb -no-linuxfb
+		$([[ ${QT5_MINOR_VERSION} -ge 6 ]] && echo -no-mirclient)
 
 		# disable undocumented X11-related flags, override in qtgui
 		# (not shown in ./configure -help output)
