@@ -579,7 +579,7 @@ app-crypt/pius 2.0.9 2.0.10 2.0.11: A tool for signing and email all UIDs on a s
 app-crypt/pkcrack 1.2.2 1.2.2-r1: PkZip cipher breaker
 app-crypt/pkcs11-data 0.7.4: Utilities for PKCS#11 data object manipulation in
 app-crypt/pkcs11-dump 0.3.4: Utilities for PKCS#11 token content dump
-app-crypt/qca 2.0.3-r1 2.1.0.3: Qt Cryptographic Architecture (QCA)
+app-crypt/qca 2.0.3-r1 2.1.0.3 2.1.0.3-r1: Qt Cryptographic Architecture (QCA)
 app-crypt/qca-cyrus-sasl 2.0.0_beta3: SASL plugin for QCA
 app-crypt/qca-gnupg 2.0.0_beta3: GnuPG plugin for QCA
 app-crypt/qca-logger 2.0.0_beta2: Logger plugin for QCA
@@ -15265,7 +15265,7 @@ sci-geosciences/osm-gps-map 0.7.3: A gtk+ viewer for OpenStreetMap files
 sci-geosciences/osm2mp 0.80: Converts openstreetmap data to mp format (used e. g. by mkgmap)
 sci-geosciences/osm2pgsql 0.84.0 0.86.0 0.87.0 0.87.1 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
 sci-geosciences/osmosis 0.35.1: Commandline tool to process openstreetmap data
-sci-geosciences/qgis 1.7.0 1.8.0: User friendly Geographic Information System
+sci-geosciences/qgis 1.8.0: User friendly Geographic Information System
 sci-geosciences/qlandkartegt 1.7.6-r2 1.7.7 1.8.0 1.8.1: View and upload map files, track and waypoint data to your Garmin GPS device
 sci-geosciences/qlandkartegt-garmindev 0.3.4: Garmin drivers for qlandkartegt
 sci-geosciences/qmapshack 1.3.0: GPS mapping utility
