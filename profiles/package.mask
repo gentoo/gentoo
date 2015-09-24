@@ -30,6 +30,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Dion Moult <moult@gentoo.org> (24 sep 2015)
+# masked for removal in 30 days.
+# upstream dead. functionality bugs. bug #553356
+net-im/birdie
+
+# Dion Moult <moult@gentoo.org> (24 Sep 2015)
+# Masked for removal in 30 days. Obsoleted and uninstallable.
+# Bug #553182
+gnome-extra/zeitgeist-datahub
+
 # Dion Moult <moult@gentoo.org> (24 Sep 2015)
 # Masked for removal in 30 days. Upstream dead.
 # Bug #551282
@@ -201,11 +211,6 @@ dev-libs/iniparser:4
 # on CPAN and nothing in the tree depends on it.
 # See bug #556640 for more info. Removal in 30 days.
 dev-perl/gtk2-fu
-
-# Mike Gilbert <floppym@gentoo.org> (03 Aug 2015)
-# Unmaintained upstream. Fails to build. Removal in 30 days.
-# Bugs: 478174, 546192, 556200.
-sys-apps/systemd-ui
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2 Aug 2015)
 # This package is a part of >=dev-lang/ghc-7.4. Gentoo

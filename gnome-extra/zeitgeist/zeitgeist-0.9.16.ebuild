@@ -28,7 +28,6 @@ REQUIRED_USE="
 
 RDEPEND="
 	${PYTHON_DEPS}
-	!gnome-extra/zeitgeist-datahub
 	dev-libs/json-glib
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/pygobject:2[${PYTHON_USEDEP}]
