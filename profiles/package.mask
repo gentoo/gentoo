@@ -31,6 +31,21 @@
 #--- END OF EXAMPLES ---
 
 # Dion Moult <moult@gentoo.org> (24 Sep 2015)
+# Masked for removal in 30 days. Bug #547406
+# Package no longer builds, module now in kernel.
+net-wireless/rtl8180
+
+# Dion Moult <moult@gentoo.org> (24 Sep 2015)
+# Masked for removal in 30 days. Bug #552284
+# Upstream disappeared. Use sci-chemistry/openbabel instead.
+sci-chemistry/babel
+
+# Dion Moult <moult@gentoo.org> (24 Sep 2015)
+# Masked for removal in 30 days.
+# Upstream disappeared. Bug #510594
+app-cdr/nero
+
+# Dion Moult <moult@gentoo.org> (24 Sep 2015)
 # Masked for removal in 30 days.
 # Upstream disappeared. Bug #528020
 app-crypt/aesutil

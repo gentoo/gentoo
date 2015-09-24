@@ -20,7 +20,6 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	!sci-chemistry/babel
 	~sci-chemistry/openbabel-${PV}
 	sys-libs/zlib"
 DEPEND="${RDEPEND}

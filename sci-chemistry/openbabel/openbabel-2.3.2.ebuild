@@ -18,7 +18,6 @@ KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc openmp test wxwidgets"
 
 RDEPEND="
-	!sci-chemistry/babel
 	dev-cpp/eigen:3
 	dev-libs/libxml2:2
 	sci-libs/inchi
