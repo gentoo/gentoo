@@ -1,0 +1,30 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+EAPI=5
+
+PYTHON_COMPAT=( python2_7 )
+
+inherit distutils-r1
+
+DESCRIPTION="Twisted client endpoints for SOCKS{4,4a,5}"
+HOMEPAGE="https://github.com/habnabit/txsocksx"
+SRC_URI="mirror://pypi/t/${PN}/${P}.tar.gz"
+
+LICENSE="MIT"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+IUSE="test"
+
+RDEPEND=">=dev-python/parsley-1.2[${PYTHON_USEDEP}]
+	dev-python/pyopenssl[${PYTHON_USEDEP}]
+	dev-python/twisted-core[${PYTHON_USEDEP},crypt]
+	dev-python/twisted-web[${PYTHON_USEDEP}]
+	dev-python/zope-interface[${PYTHON_USEDEP}]"
+DEPEND="dev-python/vcversioner[${PYTHON_USEDEP}]
+	test? ( ${RDEPEND} dev-python/pytest[${PYTHON_USEDEP}] )"
+
+python_test() {
+	py.test || die
+}
