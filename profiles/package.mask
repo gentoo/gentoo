@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Dion Moult <moult@gentoo.org> (24 Sep 2015)
+# Masked for removal in 30 days. Abandoned upstream and ancient.
+# Bug #559430
+dev-lang/gpc
+
+# Dion Moult <moult@gentoo.org> (24 Sep 2015)
 # Masked for removal in 30 days. Deprecated upstream. Please use
 # app-forensics/afl instead. Bug #544794
 dev-util/bunny
