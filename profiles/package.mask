@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Dion Moult <moult@gentoo.org> (24 Sep 2015)
+# Masked for removal in 30 days. Deprecated upstream. Please use
+# app-forensics/afl instead. Bug #544794
+dev-util/bunny
+
 # Michael Orlitzky <mjo@gentoo.org> (21 Sep 2015)
 # Mask for removal in 30 days. Obsolete. Bug #561040.
 dev-php/smarty-docs
