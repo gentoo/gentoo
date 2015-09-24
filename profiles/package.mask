@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Dion Moult <moult@gentoo.org> (24 Sep 2015)
+# Masked for removal in 30 days. Upstream dead.
+# Bug #551282
+net-news/yarssr
+
+# Dion Moult <moult@gentoo.org> (24 Sep 2015)
 # Masked for removal in 30 days.
 # Broken and replaced by dev-lang/ekopath. Bug #559510
 dev-lang/path64
