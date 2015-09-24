@@ -5,9 +5,9 @@
 EAPI=5
 inherit eutils flag-o-matic multilib pam ssl-cert systemd toolchain-funcs user versionator
 
-MY_PV="${PV/_pre/-}"
+MY_PV="${PV/_rc/-RC}"
 MY_SRC="${PN}-${MY_PV}"
-MY_URI="ftp://ftp.porcupine.org/mirrors/postfix-release/experimental"
+MY_URI="ftp://ftp.porcupine.org/mirrors/postfix-release/official"
 VDA_PV="2.10.0"
 VDA_P="${PN}-vda-v13-${VDA_PV}"
 RC_VER="2.7"
@@ -79,6 +79,11 @@ src_prepare() {
 
 	# change default paths to better comply with portage standard paths
 	sed -i -e "s:/usr/local/:/usr/:g" conf/master.cf || die "sed failed"
+
+	sed -i -e "/readme_directory\/CONNECTION_CACHE_README/ i\
+	\$readme_directory\/COMPATIBILITY_README:f:root:-:644" conf/postfix-files
+	sed -i -e "/html_directory\/CONNECTION_CACHE_README/ i\
+	\$html_directory\/COMPATIBILITY_README.html:f:root:-:644" conf/postfix-files
 
 	epatch_user
 }
@@ -192,7 +197,7 @@ src_configure() {
 	sed -i -e "/^RANLIB/s/ranlib/$(tc-getRANLIB)/g" "${S}"/makedefs
 	sed -i -e "/^AR/s/ar/$(tc-getAR)/g" "${S}"/makedefs
 
-	emake makefiles shared=yes dynamicmaps=no pie=yes \
+	emake makefiles shared=yes dynamicmaps=no \
 		shlib_directory="/usr/$(get_libdir)/postfix/MAIL_VERSION" \
 		DEBUG="" CC="$(tc-getCC)" OPT="${CFLAGS}" CCARGS="${mycc}" AUXLIBS="${mylibs}" \
 		AUXLIBS_CDB="${AUXLIBS_CDB}" AUXLIBS_LDAP="${AUXLIBS_LDAP}" \
