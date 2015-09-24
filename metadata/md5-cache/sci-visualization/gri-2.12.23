@@ -4,10 +4,10 @@ DESCRIPTION=Language for scientific graphics programming
 EAPI=5
 HOMEPAGE=http://gri.sourceforge.net/
 IUSE=doc emacs examples hdf5
-KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=>=sci-libs/netcdf-4 virtual/latex-base || ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[png,imagemagick] ) app-text/ghostscript-gpl emacs? ( virtual/emacs )
 SLOT=0
 SRC_URI=mirror://sourceforge/gri/gri-2.12.23.tar.gz
 _eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=f4924b48f98ac8e18bb1a9802bdca421
+_md5_=6f01c7177a7aac3bfd63ac22fd98e5a5

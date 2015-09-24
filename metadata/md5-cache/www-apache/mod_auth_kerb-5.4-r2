@@ -3,10 +3,10 @@ DEPEND=virtual/krb5 =www-servers/apache-2* virtual/pkgconfig
 DESCRIPTION=An Apache authentication module using Kerberos
 EAPI=5
 HOMEPAGE=http://modauthkerb.sourceforge.net/
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=BSD openafs-krb5-a HPND
 RDEPEND=virtual/krb5 =www-servers/apache-2*
 SLOT=0
 SRC_URI=mirror://sourceforge/modauthkerb/mod_auth_kerb-5.4.tar.gz
 _eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
-_md5_=991eba6e2b081dd6566804ac6c88f3d0
+_md5_=43032ae58b217397ae6a4c729f8ee93e
