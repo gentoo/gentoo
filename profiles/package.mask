@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Dion Moult <moult@gentoo.org> (24 sep 2015)
+# masked for removal in 30 days.
+# upstream dead. functionality bugs. bug #553356
+net-im/birdie
+
 # Dion Moult <moult@gentoo.org> (24 Sep 2015)
 # Masked for removal in 30 days. Obsoleted and uninstallable.
 # Bug #553182
