@@ -7,7 +7,7 @@ inherit games
 
 DESCRIPTION="Unreal Tournament 2003 Linux Dedicated Server"
 HOMEPAGE="http://www.ut2003.com/"
-SRC_URI="http://ftp.games.skynet.be/pub/misc/ut2003-lnxded-${PV}.tar.bz2
+SRC_URI="http://www.agaland.it/misc/ut2003/ut2003-lnxded-${PV}.tar.bz2
 	mirror://gentoo/UT2003CrashFix.zip"
 
 LICENSE="ut2003"
