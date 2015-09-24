@@ -192,7 +192,7 @@ src_configure() {
 
 	# for build-time scripts
 	if use ctypes-python || use python || use test; then
-		python_export_best
+		python_setup
 	fi
 
 	#force ruby-1.8 for bug 399105

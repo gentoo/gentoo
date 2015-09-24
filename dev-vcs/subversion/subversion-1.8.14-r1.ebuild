@@ -209,7 +209,7 @@ src_configure() {
 
 	# for build-time scripts
 	if use ctypes-python || use python || use test; then
-		python_export_best
+		python_setup
 	fi
 
 	if use python && [[ ${CHOST} == *-darwin* ]] ; then
