@@ -16,7 +16,7 @@ SRC_URI="ftp://ftp.netfilter.org/pub/${PN}/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~x86"
+KEYWORDS="amd64 ~ia64 ~ppc ~x86"
 IUSE="dbi doc json mysql nfacct +nfct +nflog pcap postgres sqlite -ulog"
 
 RDEPEND="
