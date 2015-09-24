@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install postinst prepare setup test
-DEPEND=!sci-chemistry/babel dev-cpp/eigen:3 dev-libs/libxml2:2 sci-libs/inchi sys-libs/zlib wxwidgets? ( x11-libs/wxGTK:2.8[X] ) >=dev-util/cmake-2.4.8 doc? ( app-doc/doxygen ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DEPEND=dev-cpp/eigen:3 dev-libs/libxml2:2 sci-libs/inchi sys-libs/zlib wxwidgets? ( x11-libs/wxGTK:2.8[X] ) >=dev-util/cmake-2.4.8 doc? ( app-doc/doxygen ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=Interconverts file formats used in molecular modeling
 EAPI=5
 HOMEPAGE=http://openbabel.sourceforge.net/
 IUSE=doc openmp test wxwidgets
 KEYWORDS=amd64 ~arm ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
-RDEPEND=!sci-chemistry/babel dev-cpp/eigen:3 dev-libs/libxml2:2 sci-libs/inchi sys-libs/zlib wxwidgets? ( x11-libs/wxGTK:2.8[X] )
+RDEPEND=dev-cpp/eigen:3 dev-libs/libxml2:2 sci-libs/inchi sys-libs/zlib wxwidgets? ( x11-libs/wxGTK:2.8[X] )
 SLOT=0
 SRC_URI=mirror://sourceforge/openbabel/openbabel-2.3.2.tar.gz
 _eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	wxwidgets	e0c7fd61275cea7156be4143ba8c673a
-_md5_=179bc5b749b753ab3ca0efa3e6e2818e
+_md5_=ddef2831048ee8abbc20b0ab4347491a
