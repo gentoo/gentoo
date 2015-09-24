@@ -202,11 +202,6 @@ dev-libs/iniparser:4
 # See bug #556640 for more info. Removal in 30 days.
 dev-perl/gtk2-fu
 
-# Mike Gilbert <floppym@gentoo.org> (03 Aug 2015)
-# Unmaintained upstream. Fails to build. Removal in 30 days.
-# Bugs: 478174, 546192, 556200.
-sys-apps/systemd-ui
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2 Aug 2015)
 # This package is a part of >=dev-lang/ghc-7.4. Gentoo
 # ebuilds use that. You can safely uninstall dev-haskell/deepseq
