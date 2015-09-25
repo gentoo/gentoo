@@ -4281,7 +4281,7 @@ dev-java/webgraph 1.4.1-r1: WebGraph is a framework to study the web graph
 dev-java/werken-xpath 0.9.4_beta-r2: W3C XPath-Rec implementation for DOM4J
 dev-java/ws-commons-util 1.0.1: Utility classes that allow high performance XML processing based on SAX
 dev-java/wsdl4j 1.6.2: Web Services Description Language for Java Toolkit (WSDL4J)
-dev-java/wstx 3.2.9: Woodstox is a high-performance validating namespace-aware XML-processor
+dev-java/wstx 3.2.9 3.2.9-r1: Woodstox is a high-performance validating namespace-aware XML-processor
 dev-java/xalan 2.7.2: Apache's XSLT processor for transforming XML documents into HTML, text, or other XML document types
 dev-java/xalan-serializer 2.7.2: DOM Level 3 serializer from Apache Xalan, shared by Xalan and Xerces
 dev-java/xerces 1.3.1-r2 2.11.0: The next generation of high performance, fully compliant XML parsers in the Apache Xerces family
@@ -12927,7 +12927,7 @@ media-tv/mythtv 0.26.0_p20130922 0.27_p20140321 0.27.5_p20150627 0.27.5_p2015090
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
 media-tv/nvtv 0.4.7-r1: TV-Out for NVidia cards
 media-tv/shoutcast2vdr 0.0.8 0.0.8-r1: VDR script: generate shoutcast playlists
-media-tv/tvbrowser 3.2.1-r1 3.4 3.4.1.0 9999: Themeable and easy to use TV Guide - written in Java
+media-tv/tvbrowser 3.4.1.0-r1 9999-r1: Themeable and easy to use TV Guide - written in Java
 media-tv/tvheadend 2.12 3.2 3.4.27 9999: Tvheadend is a TV streaming server and digital video recorder
 media-tv/tvmovie2vdr 0.5.13: load the program guide from tvmovie and others to vdr
 media-tv/tvnamer 2.3: Automatic TV episode file renamer, data from thetvdb.com
