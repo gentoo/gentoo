@@ -22,6 +22,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-libs/check
+	dev-util/gdbus-codegen
 	python? ( ${PYTHON_DEPS} )
 	doc? ( dev-util/gtk-doc )
 "
