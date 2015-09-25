@@ -14,7 +14,7 @@ SRC_URI="http://downloads.typesafe.com/scala/${PV}/scala-${PV}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 DEPEND=""
