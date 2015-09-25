@@ -90,7 +90,7 @@ src_prepare() {
 }
 
 src_configure() {
- 	local myeconfargs=(
+	local myeconfargs=(
 		--without-hadoop
 		--docdir="${EPREFIX}/usr/share/doc/${PF}"
 		--includedir=/usr/include

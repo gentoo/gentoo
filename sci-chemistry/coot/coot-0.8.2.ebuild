@@ -23,7 +23,7 @@ SRC_URI="http://www2.mrc-lmb.cam.ac.uk/Personal/pemsley/coot/source/releases/${M
 
 SLOT="0"
 LICENSE="GPL-3"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+openmp static-libs test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

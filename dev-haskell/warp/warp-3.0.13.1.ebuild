@@ -19,10 +19,12 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 x86"
 IUSE="+allow-sendfilefd warp-debug"
 
-RESTRICT=test # Ambiguous module name ‘Data.IP’: it was found in multiple packages:
-              # iproute-1.4.0@ network-data-0.5.3@
+# Ambiguous module name ‘Data.IP’: it was found in multiple packages:
+# iproute-1.4.0@ network-data-0.5.3@
+RESTRICT=test
 
-RDEPEND=">=dev-haskell/auto-update-0.1.1:=[profile?] <dev-haskell/auto-update-0.2:=[profile?]
+RDEPEND="
+	>=dev-haskell/auto-update-0.1.1:=[profile?] <dev-haskell/auto-update-0.2:=[profile?]
 	>=dev-haskell/blaze-builder-0.3.3:=[profile?] <dev-haskell/blaze-builder-0.5:=[profile?]
 	dev-haskell/bytestring-builder:=[profile?]
 	>=dev-haskell/case-insensitive-0.2:=[profile?]
@@ -41,7 +43,8 @@ RDEPEND=">=dev-haskell/auto-update-0.1.1:=[profile?] <dev-haskell/auto-update-0.
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.8
-	test? ( dev-haskell/async
+	test? (
+		dev-haskell/async
 		>=dev-haskell/doctest-0.9.3
 		>=dev-haskell/hspec-1.3
 		dev-haskell/http
@@ -49,7 +52,8 @@ DEPEND="${RDEPEND}
 		>=dev-haskell/lifted-base-0.1
 		dev-haskell/old-locale
 		dev-haskell/quickcheck
-		>=dev-haskell/transformers-0.2.2 )
+		>=dev-haskell/transformers-0.2.2
+	)
 "
 
 src_configure() {
