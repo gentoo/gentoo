@@ -14220,7 +14220,7 @@ net-misc/linux-eoip 0.5: Linux support for proprietary MIkrotik EoIP protocol
 net-misc/linux-identd 1.3-r1: A real IDENT daemon for linux
 net-misc/linuxptp 1.5: The Linux Precision Time Protocol (PTP) implementation
 net-misc/liveice 2000530-r1: Live Source Client For IceCast
-net-misc/livestreamer 1.7.2 1.11.1 1.12.1 1.12.2: CLI tool that pipes video streams from services like twitch.tv into a video player
+net-misc/livestreamer 1.11.1 1.12.1 1.12.2: CLI tool that pipes video streams from services like twitch.tv into a video player
 net-misc/lksctp-tools 1.0.13 1.0.16: Tools for Linux Kernel Stream Control Transmission Protocol implementation
 net-misc/lldpd 0.7.11-r3 0.7.13: Implementation of IEEE 802.1ab (LLDP)
 net-misc/logmein-hamachi 2.1.0.139: LogMeIn Hamachi VPN tunneling engine
@@ -16164,7 +16164,7 @@ sys-apps/stroke 0.1.3: A powerful tool to change file timestamps (including ctim
 sys-apps/superiotool 6637 99999999: util to detect Super I/O chips and functionality
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 218-r3 219_p112 224-r1 225 226 9999: System and service manager for Linux
+sys-apps/systemd 218-r3 218-r4 219_p112 224-r1 225 226 226-r1 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/systemd-sysv-utils 208 212 215 216 217: sysvinit compatibility symlinks and manpages
 sys-apps/sysvinit 2.88-r4 2.88-r5 2.88-r6 2.88-r7: /sbin/init - parent of all processes
@@ -17276,7 +17276,7 @@ www-client/epiphany 3.14.2 3.16.2 3.16.3: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1: Fetch is a simple, fast, and flexible HTTP download tool built on the HTTP Fetcher library
 www-client/firefox 38.2.0 38.2.1 38.3.0 40.0.3 41.0-r1: Firefox Web Browser
 www-client/firefox-bin 38.1.1 38.2.0 38.2.1 38.3.0 41.0: Firefox Web Browser
-www-client/google-chrome 45.0.2454.99_p1: The web browser from Google
+www-client/google-chrome 45.0.2454.101_p1: The web browser from Google
 www-client/google-chrome-beta 46.0.2490.42_p1: The web browser from Google
 www-client/google-chrome-unstable 47.0.2516.0_p1: The web browser from Google
 www-client/httrack 3.45.4 3.47.27 3.48.13 3.48.19 3.48.20 3.48.21: HTTrack Website Copier, Open Source Offline Browser
@@ -17333,7 +17333,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.521: Adobe Flash Player
-www-plugins/chrome-binary-plugins 45.0.2454.99_p1 46.0.2490.42_beta1 47.0.2516.0_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 45.0.2454.101_p1 46.0.2490.42_beta1 47.0.2516.0_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316: GNU Flash movie player that supports many SWF v7,8,9 features

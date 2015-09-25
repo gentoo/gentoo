@@ -3,10 +3,10 @@ DEPEND=x11-libs/libX11 x11-libs/libXft media-libs/freetype:2 >=media-libs/libclt
 DESCRIPTION=An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
 EAPI=5
 HOMEPAGE=http://kokkinizita.linuxaudio.org/linuxaudio/index.html
-KEYWORDS=amd64 ~ppc ~sparc ~x86
+KEYWORDS=amd64 ~ppc ~sparc x86
 LICENSE=LGPL-2.1
 RDEPEND=x11-libs/libX11 x11-libs/libXft media-libs/freetype:2 >=media-libs/libclthreads-2.4.0
 SLOT=0
 SRC_URI=http://kokkinizita.linuxaudio.org/linuxaudio/downloads/clxclient-3.9.0.tar.bz2
 _eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=d1a1a38fb1f2f04e723f931021660e7c
+_md5_=71a08d15a4ca979267ca777f0cb54388
