@@ -71,7 +71,7 @@ esac
 [[ -n "$GENTOO_PATCH_A" ]] || GENTOO_PATCH_A="${GENTOO_PATCHNAME}-${GENTOO_PATCHSTAMP}.tar.bz2"
 
 SRC_URI="mirror://apache/httpd/httpd-${PV}.tar.bz2
-	http://dev.gentoo.org/~${GENTOO_DEVELOPER}/dist/apache/${GENTOO_PATCH_A}"
+	https://dev.gentoo.org/~${GENTOO_DEVELOPER}/dist/apache/${GENTOO_PATCH_A}"
 
 # @VARIABLE: IUSE_MPMS_FORK
 # @DESCRIPTION:
@@ -365,7 +365,7 @@ check_upgrade() {
 		eerror "(${EROOT}etc/apache2/apache2-builtin-mods) exists on your"
 		eerror "system."
 		eerror
-		eerror "Please read http://www.gentoo.org/doc/en/apache-upgrading.xml"
+		eerror "Please read https://www.gentoo.org/doc/en/apache-upgrading.xml"
 		eerror "for detailed information how to convert this file to the new"
 		eerror "APACHE2_MODULES USE_EXPAND variable."
 		eerror

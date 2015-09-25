@@ -32,7 +32,7 @@ do-debian-credits() {
 # The following `impl-*-timestamp-hack' functions SHOULD NOT be used
 # outside of this eclass.
 
-# Bug http://bugs.gentoo.org/show_bug.cgi?id=16162 should remove the
+# Bug https://bugs.gentoo.org/show_bug.cgi?id=16162 should remove the
 # need for this hack.
 
 impl-save-timestamp-hack() {

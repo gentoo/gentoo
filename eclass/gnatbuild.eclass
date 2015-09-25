@@ -246,7 +246,7 @@ do_gnat_config() {
 	elog "Ada handling in Gentoo allows you to have multiple gnat variants"
 	elog "installed in parallel and automatically manage Ada libs."
 	elog "Please take a look at the Ada project page for some documentation:"
-	elog "http://www.gentoo.org/proj/en/prog_lang/ada/index.xml"
+	elog "https://www.gentoo.org/proj/en/prog_lang/ada/index.xml"
 }
 
 

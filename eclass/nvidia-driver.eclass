@@ -21,7 +21,7 @@ DEPEND="sys-apps/pciutils"
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="You must be in the video group to use the NVIDIA device
 For more info, read the docs at
-http://www.gentoo.org/doc/en/nvidia-guide.xml#doc_chap3_sect6
+https://www.gentoo.org/doc/en/nvidia-guide.xml#doc_chap3_sect6
 
 This ebuild installs a kernel module and X driver. Both must
 match explicitly in their version. This means, if you restart

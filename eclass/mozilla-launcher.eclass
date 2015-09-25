@@ -87,7 +87,7 @@ install_mozilla_launcher_stub() {
 #
 # Stub script to run mozilla-launcher.  We used to use a symlink here
 # but OOo brokenness makes it necessary to use a stub instead:
-# http://bugs.gentoo.org/show_bug.cgi?id=78890
+# https://bugs.gentoo.org/show_bug.cgi?id=78890
 
 export MOZILLA_LAUNCHER=${appname}
 export MOZILLA_LIBDIR=${libdir}
@@ -101,7 +101,7 @@ EOF
 #
 # Stub script to run mozilla-launcher.  We used to use a symlink here
 # but OOo brokenness makes it necessary to use a stub instead:
-# http://bugs.gentoo.org/show_bug.cgi?id=78890
+# https://bugs.gentoo.org/show_bug.cgi?id=78890
 
 export MOZILLA_LAUNCHER=${appname}
 export MOZILLA_LIBDIR=${libdir}
@@ -117,7 +117,7 @@ EOF
 warn_mozilla_launcher_stub() {
 	elog "Not all locales support the disabling of pango."
 	elog "If your locale does not support disabling pango,"
-	elog "please open a bug report on http://bugs.gentoo.org"
+	elog "please open a bug report on https://bugs.gentoo.org"
 	elog "Then we can filter around the problem with those"
 	elog "specific locales."
 }

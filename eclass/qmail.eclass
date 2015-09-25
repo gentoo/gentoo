@@ -475,7 +475,7 @@ qmail_config_fast() {
 			eerror
 			eerror "Cannot determine your fully-qualified hostname"
 			eerror "Please setup your /etc/hosts as described in"
-			eerror "http://www.gentoo.org/doc/en/handbook/handbook-x86.xml?part=1&chap=8#doc_chap2_sect4"
+			eerror "https://www.gentoo.org/doc/en/handbook/handbook-x86.xml?part=1&chap=8#doc_chap2_sect4"
 			eerror
 			die "cannot determine FQDN"
 		fi

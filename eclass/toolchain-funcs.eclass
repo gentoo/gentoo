@@ -825,7 +825,7 @@ gen_usr_ldscript() {
 			   redirects the linker to the real lib.  And yes, this works in the cross-
 			   compiling scenario as the sysroot-ed linker will prepend the real path.
 
-			   See bug http://bugs.gentoo.org/4411 for more info.
+			   See bug https://bugs.gentoo.org/4411 for more info.
 			 */
 			${output_format}
 			GROUP ( ${EPREFIX}/${libdir}/${tlib} )

@@ -78,7 +78,7 @@ webapp_checkfileexists() {
 	if [[ ! -e "${my_prefix}${1}" ]]; then
 		msg="ebuild fault: file '${1}' not found"
 		eerror "$msg"
-		eerror "Please report this as a bug at http://bugs.gentoo.org/"
+		eerror "Please report this as a bug at https://bugs.gentoo.org/"
 		die "$msg"
 	fi
 }
@@ -338,12 +338,12 @@ webapp_src_preinst() {
 		eerror "This ebuild did not call webapp_pkg_setup() at the beginning"
 		eerror "of the pkg_setup() function"
 		eerror
-		eerror "Please log a bug on http://bugs.gentoo.org"
+		eerror "Please log a bug on https://bugs.gentoo.org"
 		eerror
 		eerror "You should use emerge -C to remove this package, as the"
 		eerror "installation is incomplete"
 		eerror
-		die "Ebuild did not call webapp_pkg_setup() - report to http://bugs.gentoo.org"
+		die "Ebuild did not call webapp_pkg_setup() - report to https://bugs.gentoo.org"
 	fi
 
 	# Hint, see the webapp_read_config() function to find where these are
@@ -473,12 +473,12 @@ webapp_pkg_postinst() {
 		eerror "This ebuild did not call webapp_src_install() at the end"
 		eerror "of the src_install() function"
 		eerror
-		eerror "Please log a bug on http://bugs.gentoo.org"
+		eerror "Please log a bug on https://bugs.gentoo.org"
 		eerror
 		eerror "You should use emerge -C to remove this package, as the"
 		eerror "installation is incomplete"
 		eerror
-		die "Ebuild did not call webapp_src_install() - report to http://bugs.gentoo.org"
+		die "Ebuild did not call webapp_src_install() - report to https://bugs.gentoo.org"
 	fi
 
 	if has vhosts ${IUSE}; then

@@ -343,7 +343,7 @@ games_pkg_postinst() {
 		esac
 		echo
 		einfo "For more info about Gentoo gaming in general, see our website:"
-		einfo "   http://games.gentoo.org/"
+		einfo "   https://games.gentoo.org/"
 		echo
 	fi
 }

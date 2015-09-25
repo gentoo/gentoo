@@ -369,7 +369,7 @@ _ruby_each_implementation() {
 		eerror "You need to select at least one compatible Ruby installation target via RUBY_TARGETS in make.conf."
 		eerror "Compatible targets for this package are: ${USE_RUBY}"
 		eerror
-		eerror "See http://www.gentoo.org/proj/en/prog_lang/ruby/index.xml#doc_chap3 for more information."
+		eerror "See https://www.gentoo.org/proj/en/prog_lang/ruby/index.xml#doc_chap3 for more information."
 		eerror
 		die "No compatible Ruby target selected."
 	fi

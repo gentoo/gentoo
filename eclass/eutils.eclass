@@ -55,11 +55,11 @@ ebeep() {
 else
 
 ebeep() {
-	ewarn "QA Notice: ebeep is not defined in EAPI=${EAPI}, please file a bug at http://bugs.gentoo.org"
+	ewarn "QA Notice: ebeep is not defined in EAPI=${EAPI}, please file a bug at https://bugs.gentoo.org"
 }
 
 epause() {
-	ewarn "QA Notice: epause is not defined in EAPI=${EAPI}, please file a bug at http://bugs.gentoo.org"
+	ewarn "QA Notice: epause is not defined in EAPI=${EAPI}, please file a bug at https://bugs.gentoo.org"
 }
 
 fi
@@ -1402,7 +1402,7 @@ built_with_use() {
 # Many configure scripts wrongly bail when a C++ compiler could not be
 # detected.  If dir is not specified, then it defaults to ${S}.
 #
-# http://bugs.gentoo.org/73450
+# https://bugs.gentoo.org/73450
 epunt_cxx() {
 	local dir=$1
 	[[ -z ${dir} ]] && dir=${S}
