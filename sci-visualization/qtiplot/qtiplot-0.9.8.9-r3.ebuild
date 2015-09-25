@@ -44,7 +44,7 @@ CDEPEND="
 	>=dev-libs/boost-1.35.0:=
 	dev-libs/quazip
 	media-libs/libpng:=
-	sci-libs/alglib
+	sci-libs/alglib:=
 	sci-libs/gsl
 	sci-libs/tamu_anova
 	latex? ( dev-tex/qtexengine )
@@ -226,12 +226,8 @@ src_install() {
 
 pkg_postinst() {
 	if use python; then
-		elog "You might want to emerge"
-		elog "\t dev-python/pygsl"
-		elog "\t dev-python/rpy"
-		elog "\t sci-libs/scipy and"
-		elog "\t dev-python/sympy"
-		elog "to gain full python support."
+		optfeature "Enhanced python support" \
+			dev-python/pygsl dev-python/rpy sci-libs/scipy dev-python/sympy
 	fi
 
 	fdo-mime_desktop_database_update
