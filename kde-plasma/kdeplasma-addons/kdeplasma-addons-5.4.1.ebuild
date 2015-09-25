@@ -47,7 +47,7 @@ DEPEND="
 	scim? ( app-i18n/scim )
 "
 RDEPEND="${DEPEND}
-	!kde-base/kdeplasma-addons
+	!kde-base/kdeplasma-addons:4
 "
 
 src_configure() {

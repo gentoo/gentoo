@@ -53,15 +53,15 @@ COMMON_DEPEND="
 	samba? ( net-fs/samba[server(+)] )
 	wayland? ( $(add_plasma_dep kwayland) )
 	X? ( x11-libs/libX11 )
-	!kde-base/kcontrol
-	!kde-base/kinfocenter
-	!kde-misc/about-distro
-"
-RDEPEND="${COMMON_DEPEND}
-	$(add_plasma_dep kde-cli-tools)
 "
 DEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep plasma)
+"
+RDEPEND="${COMMON_DEPEND}
+	$(add_plasma_dep kde-cli-tools)
+	!kde-base/kcontrol:4
+	!kde-base/kinfocenter:4
+	!kde-misc/about-distro
 "
 
 src_configure() {

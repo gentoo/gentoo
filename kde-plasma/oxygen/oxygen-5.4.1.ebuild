@@ -28,8 +28,8 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	x11-libs/libxcb
-	!kde-base/kdebase-cursors
-	!kde-base/oxygen
+	!kde-base/kdebase-cursors:4
+	!kde-base/oxygen:4
 "
 DEPEND="${RDEPEND}
 	$(add_frameworks_dep kservice)
