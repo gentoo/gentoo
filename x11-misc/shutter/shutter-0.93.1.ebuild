@@ -68,3 +68,15 @@ src_install() {
 	find "${D}"/usr/share/shutter/resources/system/upload_plugins/upload -type f \
 		-name "*.pm" -exec chmod 755 {} \; || die "failed to make upload plugins executables"
 }
+
+pkg_postinst() {
+	elog ""
+	elog "The following optional dependencies can be used to provide"
+	elog "additional functionality:"
+	elog ""
+	elog "- media-libs/exiftool            : Writing Exif information"
+	elog "- dev-libs/libappindicator       : Status icon support for Unity"
+	elog "- dev-perl/{Net-OAuth,Path-Class}: Dropbox support"
+	elog "- dev-perl/JSON-XS               : vgy.me image hosting support"
+	elog""
+}
