@@ -50,6 +50,8 @@ src_prepare() {
 	# https://bugs.gentoo.org/show_bug.cgi?id=518728
 	epatch "${FILESDIR}"/${PN}-1.1.28-AC_PATH_TOOL.patch
 
+	mv configure.{in,ac} || die
+
 	eautoreconf
 	# If eautoreconf'd with new autoconf, then epunt_cxx is not necessary
 	# and it is propably otherwise too if upstream generated with new
@@ -79,7 +81,7 @@ multilib_src_configure() {
 	libxslt_configure --without-python # build python bindings separately
 
 	if multilib_is_native_abi && use python; then
-		python_parallel_foreach_impl libxslt_py_configure
+		python_foreach_impl libxslt_py_configure
 	fi
 }
 
