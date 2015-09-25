@@ -7,20 +7,20 @@
     <name>Yixun Lan</name>
     <description>Co Maintainer</description>
   </maintainer>
-<longdescription>
+  <longdescription>
 Ceph is a distributed network file system designed to provide excellent performance, reliability, and scalability.
 </longdescription>
-<use>
-	<flag name='cryptopp'>Use <pkg>dev-libs/crypto++</pkg> for cryptography</flag>
-	<flag name='fuse'>Build fuse client</flag>
-	<flag name='libatomic'>Use libatomic instead of builtin atomic operations</flag>
-	<flag name='libaio'>Use libaio as asynchronous input/output library</flag>
-	<flag name='lttng'>Add support for LTTng</flag>
-	<flag name='babeltrace'>Add support for LTTng babeltrace</flag>
-	<flag name='nss'>Use <pkg>dev-libs/nss</pkg> for cryptography</flag>
-	<flag name='radosgw'>Add radosgw support</flag>
-	<flag name='jemalloc'>Use <pkg>dev-libs/jemalloc</pkg> for allocations</flag>
-	<flag name='xfs'>Add xfs support</flag>
-	<flag name='zfs'>Add zfs support</flag>
-</use>
+  <use>
+    <flag name="cryptopp">Use <pkg>dev-libs/crypto++</pkg> for cryptography</flag>
+    <flag name="fuse">Build fuse client</flag>
+    <flag name="libatomic">Use libatomic instead of builtin atomic operations</flag>
+    <flag name="libaio">Use libaio as asynchronous input/output library</flag>
+    <flag name="lttng">Add support for LTTng</flag>
+    <flag name="babeltrace">Add support for LTTng babeltrace</flag>
+    <flag name="nss">Use <pkg>dev-libs/nss</pkg> for cryptography</flag>
+    <flag name="radosgw">Add radosgw support</flag>
+    <flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for allocations</flag>
+    <flag name="xfs">Add xfs support</flag>
+    <flag name="zfs">Add zfs support</flag>
+  </use>
 </pkgmetadata>
