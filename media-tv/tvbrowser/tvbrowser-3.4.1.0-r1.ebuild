@@ -29,7 +29,6 @@ COMMON_DEP="dev-java/bsh:0
 	dev-java/htmlparser-org:0
 	dev-java/log4j:0
 	dev-java/skinlf:0
-	dev-java/stax:0
 	dev-java/xalan:0
 	dev-java/opencsv:0
 	dev-java/texhyphj:0
@@ -51,7 +50,6 @@ RDEPEND="${COMMON_DEP}
 
 java_prepare() {
 	epatch "${FILESDIR}"/${PV}-*.patch
-	#epatch "${FILESDIR}"/${PV}-build.xml.patch
 
 	rm -v lib/{bsh-,commons,jgoodies,l2fprod-common-tasks,skinlf,stax,htmlparser,opencsv,trident,texhyphj,jRegistryKey}*.jar
 
