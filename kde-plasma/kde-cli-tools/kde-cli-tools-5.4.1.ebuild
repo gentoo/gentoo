@@ -39,7 +39,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	handbook? ( !kde-apps/kdesu[handbook] )
-	!kde-base/kde-cli-tools
 "
 
 # requires running kde environment
