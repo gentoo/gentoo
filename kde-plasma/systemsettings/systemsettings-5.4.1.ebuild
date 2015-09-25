@@ -34,5 +34,5 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	gtk? ( $(add_plasma_dep kde-gtk-config) )
-	!kde-base/systemsettings
+	!kde-base/systemsettings:4
 "

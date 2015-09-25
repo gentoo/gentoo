@@ -30,7 +30,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	$(add_plasma_dep kde-cli-tools)
-	!kde-base/kde-gtk-config
+	!kde-base/kde-gtk-config:4
 	!kde-misc/kde-gtk-config
 "
 

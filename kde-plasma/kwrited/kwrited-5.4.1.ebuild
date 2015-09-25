@@ -20,5 +20,5 @@ DEPEND="
 	dev-qt/qtwidgets:5
 "
 RDEPEND="${DEPEND}
-	!kde-base/kwrited
+	!kde-base/kwrited:4
 "

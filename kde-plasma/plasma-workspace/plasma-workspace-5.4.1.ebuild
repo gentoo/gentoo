@@ -108,15 +108,15 @@ RDEPEND="${COMMON_DEPEND}
 	x11-apps/xset
 	x11-apps/xsetroot
 	!<kde-apps/kio-extras-5.4.0
-	!kde-base/freespacenotifier
-	!kde-base/libtaskmanager
-	!kde-base/kcminit
-	!kde-base/kdebase-startkde
-	!kde-base/klipper
-	!kde-base/krunner
-	!kde-base/ksmserver
-	!kde-base/ksplash
-	!kde-base/plasma-workspace
+	!kde-base/freespacenotifier:4
+	!kde-base/libtaskmanager:4
+	!kde-base/kcminit:4
+	!kde-base/kdebase-startkde:4
+	!kde-base/klipper:4
+	!kde-base/krunner:4
+	!kde-base/ksmserver:4
+	!kde-base/ksplash:4
+	!kde-base/plasma-workspace:4
 	!kde-plasma/kio-extras
 "
 DEPEND="${COMMON_DEPEND}
