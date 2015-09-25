@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,6 @@ EAPI="5"
 PHP_EXT_NAME="dio"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
-DOCS="docs/examples/tutorial.txt ThanksTo.txt KnownIssues.txt"
 
 USE_PHP="php5-6 php5-5 php5-4"
 
