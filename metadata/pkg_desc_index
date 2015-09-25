@@ -6779,7 +6779,7 @@ dev-python/buzhug 1.8-r1: Fast, pure-Python database engine, using a syntax that
 dev-python/bytecodeassembler 0.6: Generate Python code objects by assembling bytecode
 dev-python/cached-property 0.1.5 1.0.0 1.2.0: A cached-property for decorating methods in classes
 dev-python/cachetools 1.1.0: Extensible memoizing collections and decorators
-dev-python/cairocffi 0.6 0.7.2: CFFI-based drop-in replacement for Pycairo
+dev-python/cairocffi 0.7.2: CFFI-based drop-in replacement for Pycairo
 dev-python/cangjie 1.1 1.2: The Python bindings to libcangjie
 dev-python/carbon 0.9.12-r1 0.9.13: Backend data caching and persistence daemon for Graphite
 dev-python/carrot 0.10.7-r1: AMQP Messaging Framework for Python
@@ -7940,7 +7940,7 @@ dev-python/wstools 0.4.3: WSDL parsing services package for Web Services for Pyt
 dev-python/wtf-peewee 0.2.3: Small python ORM
 dev-python/wtforms 2.0.1 2.0.2: Flexible forms validation and rendering library for python web development
 dev-python/wxpython 2.8.12.1-r2 2.9.4.1-r2 3.0.0.0 3.0.1.1 3.0.2.0: A blending of the wxWindows C++ class library with Python
-dev-python/xcffib 0.1.10 0.2.5 0.3.4: A drop in replacement for xpyb, an XCB python binding
+dev-python/xcffib 0.3.4: A drop in replacement for xpyb, an XCB python binding
 dev-python/xhtml2pdf 0.0.5-r1 0.0.6-r1: PDF generator using HTML and CSS
 dev-python/xlrd 0.9.3 0.9.3-r1 0.9.4: Library for developers to extract data from Microsoft Excel (tm) spreadsheet files
 dev-python/xlsxwriter 0.7.3: Python module for creating Excel XLSX files
@@ -14949,7 +14949,7 @@ sci-biology/mcl 08.312 12.135: A Markov Cluster Algorithm implementation
 sci-biology/meme 4.8.1-r2: The MEME/MAST system - Motif discovery and search
 sci-biology/mira 4.0.2: Whole Genome Shotgun and EST Sequence Assembler for Sanger, 454 and Solexa / Illumina
 sci-biology/mosaik 1.0.1367 1.0.1388: A reference-guided aligner for next-generation sequencing technologies
-sci-biology/mothur 1.6.0 1.27.0-r1: A suite of algorithms for ecological bioinformatics
+sci-biology/mothur 1.27.0-r1: A suite of algorithms for ecological bioinformatics
 sci-biology/mrbayes 3.1.2-r1 3.1.2-r2: Bayesian Inference of Phylogeny
 sci-biology/mummer 3.20 3.21 3.22-r1: A rapid whole genome aligner
 sci-biology/muscle 3.8.31: Multiple sequence comparison by log-expectation
