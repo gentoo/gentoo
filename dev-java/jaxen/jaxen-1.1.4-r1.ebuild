@@ -19,7 +19,7 @@ IUSE=""
 
 COMMON_DEP="
 	dev-java/dom4j:1
-	dev-java/jdom:1.0
+	dev-java/jdom:0
 	dev-java/xom:0"
 RDEPEND=">=virtual/jre-1.4
 	${COMMON_DEP}"
@@ -28,7 +28,7 @@ DEPEND=">=virtual/jdk-1.4
 	${COMMON_DEP}"
 
 JAVA_ANT_REWRITE_CLASSPATH="yes"
-EANT_GENTOO_CLASSPATH="dom4j-1,jdom-1.0,xom"
+EANT_GENTOO_CLASSPATH="dom4j-1,jdom,xom"
 EANT_TEST_EXTRA_ARGS="-DJunit.present=true"
 
 java_prepare() {
