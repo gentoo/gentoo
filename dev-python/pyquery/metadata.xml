@@ -6,7 +6,4 @@
     <remote-id type="pypi">pyquery</remote-id>
     <remote-id type="github">gawel/pyquery</remote-id>
   </upstream>
-  <use>
-    <flag name="beautifulsoup3">Support BeautifulSoup 3</flag>
-  </use>
 </pkgmetadata>
