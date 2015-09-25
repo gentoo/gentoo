@@ -156,6 +156,7 @@ multilib_src_install() {
 		# gatttool is only built with readline, bug #530776
 		use readline && dobin attrib/gatttool
 		dobin tools/hex2hcd
+		dobin tools/btmgmt
 
 		# Unittests are not that useful once installed
 		if use test ; then
