@@ -8,16 +8,16 @@ USE_PHP="php5-4 php5-5 php5-6"
 PHP_EXT_NAME="stomp"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
-DOCS="CREDITS EXPERIMENTAL README"
+DOCS="CREDITS doc/classes.php doc/functions.php"
 
 inherit php-ext-pecl-r2
 
 KEYWORDS="~amd64 ~x86"
 
-DESCRIPTION="PHP extension to communicate with any Stomp compliant Message Brokers"
+DESCRIPTION="PHP extension to communicate with Stomp compliant Message Brokers"
 LICENSE="PHP-3"
 SLOT="0"
-IUSE="+ssl"
+IUSE="examples +ssl"
 
 for target in ${USE_PHP}; do
 	slot=${target/php}
