@@ -3325,7 +3325,7 @@ dev-haskell/gnutls 0.1.4 0.1.5 0.1.6: Bindings for GNU libgnutls
 dev-haskell/groupoids 3.0.1.1 4.0: This package has been absorbed into semigroupoids 4.0
 dev-haskell/gsasl 0.3.5 0.3.6: Bindings for GNU libgsasl
 dev-haskell/gtk 0.12.0 0.12.4-r1 0.12.5.0.2 0.12.5.7.2 0.13.3.0.2 0.13.4.0.2 0.13.6.0.2 0.13.7.0.2: Binding to the Gtk+ graphical user interface library
-dev-haskell/gtk2hs-buildtools 0.12.5.1-r1 0.12.5.2-r1 0.13.0.3 0.13.0.4: Tools to build the Gtk2Hs suite of User Interface libraries
+dev-haskell/gtk2hs-buildtools 0.12.5.1-r1 0.12.5.2-r1 0.13.0.3 0.13.0.4 0.13.0.4-r3: Tools to build the Gtk2Hs suite of User Interface libraries
 dev-haskell/gtk3 0.13.7: Binding to the Gtk+ graphical user interface library
 dev-haskell/haddock 2.10.0-r2 2.13.1-r2 2.13.2 2.13.2-r1 2.13.2.1 2.14.3.0.7.8.3 2.16.1: A documentation-generation tool for Haskell libraries
 dev-haskell/haddock-api 2.16.1: A documentation-generation tool for Haskell libraries
@@ -4308,7 +4308,7 @@ dev-java/xpp3 1.1.4c-r1 1.1.4c-r2: An implementation of XMLPULL V1 API
 dev-java/xsd2jibx 0.2a_beta-r2: JiBX binding and code from schema generator
 dev-java/xsdlib 20090415: Sun XML Datatypes Library
 dev-java/xsom 20060901: XML Schema Object Model (XSOM) allows Java apps to easy parse and inspect XML Schema docs
-dev-java/xstream 1.3.1-r3: A text-processing Java classes that serialize objects to XML and back again
+dev-java/xstream 1.3.1-r3 1.3.1-r4: A text-processing Java classes that serialize objects to XML and back again
 dev-java/xz-java 1.4 1.5: Implementation of xz data compression in pure java
 dev-java/yanfs 1.0: Yet Another NFS - a Java NFS library
 dev-java/zemberek 2.1.1: Zemberek NLP library

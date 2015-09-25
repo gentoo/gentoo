@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test
+DEPEND=dev-haskell/random:= >=dev-lang/ghc-7.4.1:= || ( ( >=dev-lang/ghc-7.7:= dev-haskell/hashtables:= ) <dev-lang/ghc-7.7:= ) dev-haskell/alex >=dev-haskell/cabal-1.8 dev-haskell/happy >=dev-haskell/cabal-1.1.4
+DESCRIPTION=Tools to build the Gtk2Hs suite of User Interface libraries
+EAPI=5
+HOMEPAGE=http://projects.haskell.org/gtk2hs/
+IUSE=+closuresignals
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-haskell/random:= >=dev-lang/ghc-7.4.1:= || ( ( >=dev-lang/ghc-7.7:= dev-haskell/hashtables:= ) <dev-lang/ghc-7.7:= )
+SLOT=0
+SRC_URI=mirror://hackage/packages/archive/gtk2hs-buildtools/0.13.0.4/gtk2hs-buildtools-0.13.0.4.tar.gz
+_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	ghc-package	6165faf4ae46df43d5a9b0dd28ec8654	haskell-cabal	5a91bcb951851c3c401505c28526502f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=afbbcf993624c7d575a74f20725f6528
