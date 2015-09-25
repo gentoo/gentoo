@@ -6,7 +6,6 @@ EAPI="5"
 PHP_EXT_NAME="oauth"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
-DOCS="README"
 
 USE_PHP="php5-6 php5-5 php5-4"
 
@@ -17,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 DESCRIPTION="OAuth is an authorization protocol built on top of HTTP"
 LICENSE="BSD"
 SLOT="0"
-IUSE=""
+IUSE="examples"
 
 for target in ${USE_PHP}; do
 	slot=${target/php}
