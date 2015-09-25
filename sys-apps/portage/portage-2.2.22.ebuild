@@ -353,13 +353,11 @@ pkg_postinst() {
 	fi
 
 	einfo ""
-	einfo "The 'websync' module has now been properly renamed to 'webrsync'"
-	einfo "Please update your repos.conf/gentoo.conf file if needed."
-	einfo ""
-	einfo "This release of portage removed the new squashfs sync module "
-	einfo "introduced in portage-2.2.19."
-	einfo "Look for it to be released as an installable portage module soon."
-	einfo "This will allow it to develop at it's own pace partially independant"
-	einfo "of portage"
+	einfo "This release of portage contains the new repoman code base"
+	einfo "This code base is still being developed.  So its API's are"
+	einfo "not to be considered stable and are subject to change."
+	einfo "The code released has been tested and considered ready for use."
+	einfo "This however does not guarantee it to be completely bug free."
+	einfo "Please report any bugs you may encounter."
 	einfo ""
 }
