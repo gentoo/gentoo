@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,6 @@ PHP_EXT_PECL_PKG="LZF"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 USE_PHP="php5-6 php5-5 php5-4"
-DOCS="README ChangeLog"
 
 inherit php-ext-pecl-r2
 
