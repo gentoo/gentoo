@@ -13,7 +13,7 @@ SRC_URI="http://www.mothur.org/w/images/c/cb/Mothur.${PV}.zip -> ${P}.zip"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="mpi +readline"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	sci-biology/uchime
