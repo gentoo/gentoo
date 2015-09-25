@@ -26,5 +26,5 @@ DEPEND="
 	dev-qt/qtwidgets:5
 "
 RDEPEND="${DEPEND}
-	!kde-base/milou
+	!kde-misc/milou:4
 "
