@@ -7501,7 +7501,7 @@ dev-python/pypy-bin 2.4.0 2.5.1-r1 2.6.0-r1: A fast, compliant alternative imple
 dev-python/pypy3 2.4.0: A fast, compliant alternative implementation of Python 3
 dev-python/pypy3-bin 2.4.0-r1: A fast, compliant alternative implementation of Python 3 (binary package)
 dev-python/pyqtgraph 0.9.9 0.9.10: a pure-python scientific graphics and GUI library built on PyQt4/PySide and numpy
-dev-python/pyquery 1.2.8 1.2.9 1.2.9-r1: A jQuery-like library for python
+dev-python/pyquery 1.2.4 1.2.8 1.2.9 1.2.9-r1: A jQuery-like library for python
 dev-python/pyqwt 5.2.0-r1: Python bindings for the Qwt library
 dev-python/pyramid 1.5.1 1.5.2 1.5.4 1.5.7: A small open source Python web framework
 dev-python/pyrax 1.9.2 1.9.3 1.9.4: Python language bindings for OpenStack Clouds
