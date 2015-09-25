@@ -14,7 +14,7 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="GIMPS"
-KEYWORDS="-* amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE=""
 
 # Since there are no statically linked binaries for this version of mprime,
