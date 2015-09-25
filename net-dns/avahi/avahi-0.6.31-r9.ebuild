@@ -39,7 +39,7 @@ COMMON_DEPEND="
 	gtk3? ( x11-libs/gtk+:3[${MULTILIB_USEDEP}] )
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
 	kernel_linux? ( sys-libs/libcap )
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( dev-libs/gobject-introspection:= )
 	mono? (
 		dev-lang/mono
 		gtk? ( dev-dotnet/gtk-sharp )
@@ -119,6 +119,9 @@ src_prepare() {
 
 	# Fix build under various locales, bug #501664
 	epatch "${FILESDIR}"/${P}-fix-locale-build.patch
+
+	# Fix "Invalid response packet from host", bug #559408.
+	eptch "${FILESDIR}"/${P}-invalid_packet.patch
 
 	# Drop DEPRECATED flags, bug #384743
 	sed -i -e 's:-D[A-Z_]*DISABLE_DEPRECATED=1::g' avahi-ui/Makefile.am || die
@@ -213,6 +216,11 @@ multilib_src_install() {
 
 	use howl-compat && dosym avahi-compat-howl.pc /usr/$(get_libdir)/pkgconfig/howl.pc
 	use mdnsresponder-compat && dosym avahi-compat-libdns_sd/dns_sd.h /usr/include/dns_sd.h
+
+	# Needed for running on systemd properly, bug #537000
+	if multilib_is_native_abi; then
+		ln -s avahi-daemon.service "${D}$(systemd_get_unitdir)"/dbus-org.freedesktop.Avahi.service || die
+	fi
 
 	if multilib_is_native_abi && use doc; then
 		dohtml -r doxygen/html/. || die
