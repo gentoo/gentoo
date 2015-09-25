@@ -28,6 +28,7 @@ DEPEND="
 "
 
 src_prepare() {
+	find . -type f -execdir chmod +w {} \; #561360
 	sed -e 's:/etc/argus.conf:/etc/argus/argus.conf:' \
 		-i argus/argus.c \
 		-i support/Config/argus.conf \
