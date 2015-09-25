@@ -14533,7 +14533,7 @@ net-p2p/gift-gnutella 0.0.11: The giFT Gnutella plugin
 net-p2p/gift-openft 0.2.1.6: The giFT OpenFT plugin
 net-p2p/giftcurs 0.6.2: A ncurses frontend to the giFT daemon
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
-net-p2p/gtk-gnutella 1.1.1 1.1.3 1.1.4: A GTK+ Gnutella client
+net-p2p/gtk-gnutella 1.1.3 1.1.4: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/hx 0.4.11: This is a Hotline 1.5+ compatible *nix Hotline Client in CLI. It supports IRC compatibility
 net-p2p/i2p 0.9.18: A privacy-centric, anonymous network.
