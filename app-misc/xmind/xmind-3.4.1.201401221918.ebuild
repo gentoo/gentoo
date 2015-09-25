@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -43,11 +43,13 @@ src_configure() {
 	mv XMind/.eclipseproduct Commons || die
 	cp "${FILESDIR}"/${PN}-3.4.0-config.ini Commons/configuration || die #Combined common+linux config.ini
 	# force data instance & config area to be at home/.xmind directory
-	sed -i -e '/-configuration/d' \
+	sed \
+		-e '/-configuration/d' \
 		-e '/\.\/configuration/d' \
 		-e '/-data/d' \
-        -e '/\.\.\/Commons\/data\/workspace-cathy/d' \
-		-e 's/\.\.\/Commons/\/opt\/xmind\/Commons/g' XMind/XMind.ini || die
+		-e '/\.\.\/Commons\/data\/workspace-cathy/d' \
+		-e 's/\.\.\/Commons/\/opt\/xmind\/Commons/g' \
+		-i XMind/XMind.ini || die
 	echo '-Dosgi.instance.area=@user.home/.xmind/workspace-cathy' >> XMind/XMind.ini || die
 	echo '-Dosgi.configuration.area=@user.home/.xmind/configuration-cathy' >> XMind/XMind.ini || die
 }
@@ -58,10 +60,9 @@ src_compile() {
 
 src_install() {
 	insinto /opt/xmind
-	doins -r Commons XMind || die
+	doins -r Commons XMind
 	fperms a+rx  "/opt/xmind/XMind/XMind"
 
-	dodir /opt/bin
 	exeinto /opt/bin
 	newexe "${FILESDIR}/xmind-wrapper" xmind
 
