@@ -73,6 +73,6 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	optfeature "Support for BeautifulSoup as a parser backend" dev-python/beautifulsoup-3*
+	optfeature "Support for BeautifulSoup3 as a parser backend" dev-python/beautifulsoup
 	optfeature "Translates CSS selectors to XPath 1.0 expressions" dev-python/cssselect
 }
