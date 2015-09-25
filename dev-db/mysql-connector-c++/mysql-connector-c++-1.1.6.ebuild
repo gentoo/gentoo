@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug examples gcov static-libs"
 
-DEPEND=">=virtual/mysql-5.5:0=
+DEPEND="virtual/libmysqlclient:=
 	dev-libs/boost:0=
 	dev-libs/openssl:0="
 RDEPEND="${DEPEND}"
