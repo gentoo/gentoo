@@ -2328,7 +2328,6 @@ dev-python/pypy3:low-memory - Build using PyPy with the engine configured toward
 dev-python/pypy3:sandbox - Enable sandboxing functionality
 dev-python/pypy3:shadowstack - Use a shadow stack for finding GC roots
 dev-python/pypy3-bin:shadowstack - Use a shadow stack for finding GC roots
-dev-python/pyquery:beautifulsoup3 - Support BeautifulSoup 3
 dev-python/pyside:X - Build QtGui and QtTest modules
 dev-python/pyside:declarative - Build QtDeclarative module
 dev-python/pyside:designer - Build QtDesigner and QtUiTools modules
