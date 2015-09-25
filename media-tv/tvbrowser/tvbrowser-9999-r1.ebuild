@@ -85,7 +85,6 @@ CDEPEND="dev-java/bsh:0
 	dev-java/l2fprod-common:0
 	dev-java/log4j:0
 	dev-java/skinlf:0
-	dev-java/stax:0
 	dev-java/swt:4.2
 	dev-java/xalan:0
 	x11-libs/libXt:0
@@ -108,7 +107,7 @@ RDEPEND="${CDEPEND}
 src_prepare() {
 	cp "${FILESDIR}"/${P}-build.xml build.xml || die "Failed to replace build.xml."
 
-	# Yes, there are some bundled jars. 
+	# Yes, there are some bundled jars.
 	# Can't help but use them for the time being.
 	local error="Failed to unbundle or remove libraries or classes."
 	pushd lib > /dev/null
