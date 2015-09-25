@@ -3,10 +3,10 @@ DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 >=me
 DESCRIPTION=A Qt4 client for the music player daemon (MPD) written in C++
 EAPI=5
 HOMEPAGE=http://mpd.wikia.com/wiki/Client:Quimup
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 >=media-libs/libmpdclient-2.3 media-libs/taglib
 SLOT=0
 SRC_URI=mirror://sourceforge/quimup/quimup_1.4.0_src.tar.gz
 _eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=63c94f83ba95ea707ea5b4d098ce128e
+_md5_=13c54238c8cc140e94fa40429fa62d8a
