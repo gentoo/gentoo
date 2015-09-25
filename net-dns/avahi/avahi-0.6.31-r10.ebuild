@@ -121,7 +121,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-fix-locale-build.patch
 
 	# Fix "Invalid response packet from host", bug #559408.
-	eptch "${FILESDIR}"/${P}-invalid_packet.patch
+	epatch "${FILESDIR}"/${P}-invalid_packet.patch
 
 	# Drop DEPRECATED flags, bug #384743
 	sed -i -e 's:-D[A-Z_]*DISABLE_DEPRECATED=1::g' avahi-ui/Makefile.am || die
