@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/python:3.4 >=dev-libs/boost-1.49[threads] >=dev-libs/libpcre-8.31[pcre16] >=dev-libs/xerces-c-3.1.1[icu] >=dev-qt/qtconcurrent-5.4:5 >=dev-qt/qtcore-5.4:5 >=dev-qt/qtgui-5.4:5 >=dev-qt/qtnetwork-5.4:5 >=dev-qt/qtprintsupport-5.4:5 >=dev-qt/qtsvg-5.4:5 >=dev-qt/qtwebkit-5.4:5 >=dev-qt/qtwidgets-5.4:5 >=dev-qt/qtxml-5.4:5 >=dev-qt/qtxmlpatterns-5.4:5 >=sys-libs/zlib-1.2.7[minizip] virtual/pkgconfig >=dev-qt/linguist-tools-5.4:5 sys-devel/make >=dev-util/cmake-3.0 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Sigil is a multi-platform WYSIWYG ebook editor for ePub format
+EAPI=5
+HOMEPAGE=http://sigil-ebook.com/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-lang/python:3.4 >=dev-libs/boost-1.49[threads] >=dev-libs/libpcre-8.31[pcre16] >=dev-libs/xerces-c-3.1.1[icu] >=dev-qt/qtconcurrent-5.4:5 >=dev-qt/qtcore-5.4:5 >=dev-qt/qtgui-5.4:5 >=dev-qt/qtnetwork-5.4:5 >=dev-qt/qtprintsupport-5.4:5 >=dev-qt/qtsvg-5.4:5 >=dev-qt/qtwebkit-5.4:5 >=dev-qt/qtwidgets-5.4:5 >=dev-qt/qtxml-5.4:5 >=dev-qt/qtxmlpatterns-5.4:5 >=sys-libs/zlib-1.2.7[minizip]
+SLOT=0
+SRC_URI=https://github.com/Sigil-Ebook/Sigil/archive/0.8.900.tar.gz -> sigil-0.8.900_pre.tar.gz
+_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	95613dd6157fb4a3b225eafdc56bd441	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_md5_=4215cc2cf8b51a701724c6f017145604
