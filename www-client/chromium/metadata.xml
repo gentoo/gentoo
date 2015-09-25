@@ -4,6 +4,7 @@
 	<herd>chromium</herd>
 	<longdescription>Chromium is the open-source web browser project behind Google Chrome</longdescription>
 	<use>
+		<flag name="gtk3">Use gtk3 instead of gtk2</flag>
 		<flag name="hidpi">Enable support for high-resolution screens (high dots per inch)</flag>
 		<flag name="hotwording">Enable voice-recognition support (Ok Google)</flag>
 		<flag name="pic">Disable optimized assembly code that is not PIC friendly</flag>
