@@ -15,16 +15,12 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="BSD ElementTree GPL-2 PSF-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris ~arm64"
-IUSE="beautifulsoup3 doc examples +threads test"
+IUSE="doc examples +threads test"
 
 # Note: lib{xml2,xslt} are used as C libraries, not Python modules.
 RDEPEND="
 	>=dev-libs/libxml2-2.7.2
-	>=dev-libs/libxslt-1.1.23
-	beautifulsoup3? (
-		$(python_gen_cond_dep 'dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]' 'python2*')
-		$(python_gen_cond_dep 'dev-python/beautifulsoup:python-3[${PYTHON_USEDEP}]' 'python3*')
-	)"
+	>=dev-libs/libxslt-1.1.23"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/cssselect[${PYTHON_USEDEP}] )
@@ -74,4 +70,9 @@ python_install_all() {
 	use examples && local EXAMPLES=( samples/. )
 
 	distutils-r1_python_install_all
+}
+
+pkg_postinst() {
+	optfeature "Support for BeautifulSoup3 as a parser backend" dev-python/beautifulsoup
+	optfeature "Translates CSS selectors to XPath 1.0 expressions" dev-python/cssselect
 }

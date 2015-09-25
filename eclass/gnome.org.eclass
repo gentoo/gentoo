@@ -27,7 +27,7 @@ else
 fi
 
 # Even though xz-utils are in @system, they must still be added to DEPEND; see
-# http://archives.gentoo.org/gentoo-dev/msg_a0d4833eb314d1be5d5802a3b710e0a4.xml
+# https://archives.gentoo.org/gentoo-dev/msg_a0d4833eb314d1be5d5802a3b710e0a4.xml
 if [[ ${GNOME_TARBALL_SUFFIX} == "xz" ]]; then
 	DEPEND="${DEPEND} app-arch/xz-utils"
 fi

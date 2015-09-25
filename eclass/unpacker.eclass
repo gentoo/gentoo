@@ -212,7 +212,7 @@ unpack_makeself() {
 				eerror "I'm sorry, but I was unable to support the Makeself file."
 				eerror "The version I detected was '${ver}'."
 				eerror "Please file a bug about the file ${src##*/} at"
-				eerror "http://bugs.gentoo.org/ so that support can be added."
+				eerror "https://bugs.gentoo.org/ so that support can be added."
 				die "makeself version '${ver}' not supported"
 				;;
 		esac

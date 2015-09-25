@@ -36,7 +36,7 @@
 #   files):
 #
 #     <?xml version="1.0" encoding="UTF-8"?>
-#     <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+#     <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 #     <pkgmetadata>
 #     	<herd>vim</herd>
 #     	<maintainer>

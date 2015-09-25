@@ -18,9 +18,9 @@ case "${EAPI:-0}" in
 esac
 
 DESCRIPTION="Provides precompiled 32bit libraries"
-#HOMEPAGE="http://amd64.gentoo.org/emul/content.xml"
-HOMEPAGE="http://dev.gentoo.org/~pacho/emul.html"
-SRC_URI="http://dev.gentoo.org/~pacho/emul/${P}.tar.xz"
+#HOMEPAGE="https://amd64.gentoo.org/emul/content.xml"
+HOMEPAGE="https://dev.gentoo.org/~pacho/emul.html"
+SRC_URI="https://dev.gentoo.org/~pacho/emul/${P}.tar.xz"
 
 IUSE="+development"
 

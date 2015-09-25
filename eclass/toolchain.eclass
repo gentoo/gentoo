@@ -238,7 +238,7 @@ S=$(
 gentoo_urls() {
 	local devspace="HTTP~vapier/dist/URI HTTP~rhill/dist/URI
 	HTTP~zorry/patches/gcc/URI HTTP~blueness/dist/URI"
-	devspace=${devspace//HTTP/http:\/\/dev.gentoo.org\/}
+	devspace=${devspace//HTTP/https:\/\/dev.gentoo.org\/}
 	echo mirror://gentoo/$1 ${devspace//URI/$1}
 }
 
@@ -1617,7 +1617,7 @@ toolchain_src_install() {
 	# We remove the generated fixincludes, as they can cause things to break
 	# (ncurses, openssl, etc).  We do not prevent them from being built, as
 	# in the following commit which we revert:
-	# http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/eclass/toolchain.eclass?r1=1.647&r2=1.648
+	# https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/eclass/toolchain.eclass?r1=1.647&r2=1.648
 	# This is because bsd userland needs fixedincludes to build gcc, while
 	# linux does not.  Both can dispose of them afterwards.
 	while read x ; do
@@ -1957,7 +1957,7 @@ toolchain_pkg_postinst() {
 		echo
 		ewarn "You might want to review the GCC upgrade guide when moving between"
 		ewarn "major versions (like 4.2 to 4.3):"
-		ewarn "http://www.gentoo.org/doc/en/gcc-upgrading.xml"
+		ewarn "https://www.gentoo.org/doc/en/gcc-upgrading.xml"
 		echo
 
 		# Clean up old paths

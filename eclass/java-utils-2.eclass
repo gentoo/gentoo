@@ -2102,7 +2102,7 @@ java-pkg_init() {
 	}
 
 	# People do all kinds of weird things.
-	# http://forums.gentoo.org/viewtopic-p-3943166.html
+	# https://forums.gentoo.org/viewtopic-p-3943166.html
 	local silence="${SILENCE_JAVA_OPTIONS_WARNING}"
 	local accept="${I_WANT_GLOBAL_JAVA_OPTIONS}"
 	if [[ -n ${_JAVA_OPTIONS} && -z ${accept} && -z ${silence} ]]; then
@@ -2765,7 +2765,7 @@ java-pkg_ensure-dep() {
 			eqawarn "java-pkg_ensure-dep: ${dev_error}"
 #			eerror "Because you have ${target_pkg} installed,"
 #			eerror "the package will build without problems, but please"
-#			eerror "report this to http://bugs.gentoo.org."
+#			eerror "report this to https://bugs.gentoo.org."
 #		fi
 	elif [[ ${limit_to} != build && ! ( "${RDEPEND}${PDEPEND}" =~ ${stripped_pkg} ) ]]; then
 		dev_error="The ebuild is attempting to use ${target_pkg}, which is not "
@@ -2776,7 +2776,7 @@ java-pkg_ensure-dep() {
 			eqawarn "java-pkg_ensure-dep: ${dev_error}"
 #			eerror "The package will build without problems, but may fail to run"
 #			eerror "if you don't have ${target_pkg} installed,"
-#			eerror "so please report this to http://bugs.gentoo.org."
+#			eerror "so please report this to https://bugs.gentoo.org."
 #		fi
 	fi
 }

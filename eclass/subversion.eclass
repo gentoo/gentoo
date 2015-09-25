@@ -343,7 +343,7 @@ subversion_fetch() {
 		mkdir -p "${S}"
 
 		# export to the ${WORKDIR}
-		#*  "svn export" has a bug.  see http://bugs.gentoo.org/119236
+		#*  "svn export" has a bug.  see https://bugs.gentoo.org/119236
 		#* svn export . "${S}" || die "${ESVN}: can't export to ${S}."
 		rsync -rlpgo --exclude=".svn/" . "${S}" || die "${ESVN}: can't export to ${S}."
 	fi

@@ -17,7 +17,7 @@ DEPEND="|| ( >=app-editors/vim-${VIM_PLUGIN_VIM_VERSION}
 RDEPEND="${DEPEND}"
 if [[ ${PV} != 9999* ]] ; then
 	SRC_URI="mirror://gentoo/${P}.tar.bz2
-		http://dev.gentoo.org/~radhermit/vim/${P}.tar.bz2"
+		https://dev.gentoo.org/~radhermit/vim/${P}.tar.bz2"
 fi
 SLOT="0"
 

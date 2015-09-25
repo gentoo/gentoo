@@ -79,7 +79,7 @@ else
 fi
 
 # Even though xz-utils are in @system, they must still be added to DEPEND; see
-# http://archives.gentoo.org/gentoo-dev/msg_a0d4833eb314d1be5d5802a3b710e0a4.xml
+# https://archives.gentoo.org/gentoo-dev/msg_a0d4833eb314d1be5d5802a3b710e0a4.xml
 if [[ ${GST_TARBALL_SUFFIX} == "xz" ]]; then
 	DEPEND="${DEPEND} app-arch/xz-utils"
 fi
@@ -254,7 +254,7 @@ gst-plugins10_src_configure() {
 	einfo "Configuring to build ${GST_PLUGINS_BUILD} plugin(s) ..."
 	econf \
 		--with-package-name="Gentoo GStreamer ebuild" \
-		--with-package-origin="http://www.gentoo.org" \
+		--with-package-origin="https://www.gentoo.org" \
 		${gst_conf} $@
 }
 
