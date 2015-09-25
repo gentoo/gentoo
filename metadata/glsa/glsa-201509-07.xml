@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201509-07">
+  <title>Adobe Flash Player: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Adobe Flash Player, the
+    worst of which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">ACE,DoS,flash</product>
+  <announced>September 25, 2015</announced>
+  <revised>September 25, 2015: 1</revised>
+  <bug>561076</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">11.2.202.521</unaffected>
+      <vulnerable range="lt">11.2.202.521</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Adobe Flash Player is a renderer for the SWF file format, which is
+      commonly used to provide interactive websites.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Adobe Flash Player.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, cause a Denial of Service condition, obtain
+      sensitive information, or bypass security restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Adobe Flash Player users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-plugins/adobe-flash-11.2.202.521"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5567">CVE-2015-5567</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5568">CVE-2015-5568</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5570">CVE-2015-5570</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5571">CVE-2015-5571</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5572">CVE-2015-5572</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5573">CVE-2015-5573</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5574">CVE-2015-5574</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5575">CVE-2015-5575</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5576">CVE-2015-5576</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5577">CVE-2015-5577</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5578">CVE-2015-5578</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5579">CVE-2015-5579</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5580">CVE-2015-5580</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5581">CVE-2015-5581</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5582">CVE-2015-5582</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5584">CVE-2015-5584</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5587">CVE-2015-5587</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5588">CVE-2015-5588</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6676">CVE-2015-6676</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6677">CVE-2015-6677</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6678">CVE-2015-6678</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6679">CVE-2015-6679</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6680">CVE-2015-6680</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6681">CVE-2015-6681</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6682">CVE-2015-6682</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 23 Sep 2015 23:34:39 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 25 Sep 2015 07:25:37 +0000">
+    BlueKnight
+  </metadata>
+</glsa>
