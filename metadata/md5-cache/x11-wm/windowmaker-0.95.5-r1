@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/fontconfig >=x11-libs/libXft-2.1.0 x11-libs/libXmu x11-libs/libXpm x11-libs/libXt x11-libs/libXv gif? ( >=media-libs/giflib-4.1.0-r3 ) png? ( media-libs/libpng:0= ) jpeg? ( virtual/jpeg ) tiff? ( media-libs/tiff:0 ) xinerama? ( x11-libs/libXinerama ) xrandr? ( x11-libs/libXrandr ) nls? ( >=sys-devel/gettext-0.10.39 ) !app-i18n/scim-anthy[gtk3]
 SLOT=0
 SRC_URI=http://windowmaker.org/pub/source/release/WindowMaker-0.95.5.tar.gz http://www.windowmaker.org/pub/source/release/WindowMaker-extra-0.1.tar.gz
-_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	eutils	95613dd6157fb4a3b225eafdc56bd441	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=cba8bfd6f4ef4885d24f7240924e5fcc

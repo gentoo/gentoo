@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=dev-lang/php:* >=dev-php/pear-1.9.0
 SLOT=0
 SRC_URI=http://pear.symfony-project.com/get/YAML-1.0.6.tgz
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	php-pear-lib-r1	2d3324e4c86f07dd732ce0657b4a7ebb	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	php-pear-lib-r1	2d3324e4c86f07dd732ce0657b4a7ebb	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=0cfd05bf51d1b0a7a53e88959d23bf39

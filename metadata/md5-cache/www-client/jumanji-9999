@@ -7,5 +7,5 @@ IUSE=savedconfig
 LICENSE=ZLIB
 RDEPEND=dev-db/sqlite:3 dev-libs/glib:2 dev-libs/girara:3 net-libs/webkit-gtk:3 x11-libs/gtk+:3 !www-client/jumanji:0
 SLOT=develop
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	portability	3a50b3ec310b86914f98babecc8f89c6	savedconfig	7de7daa586f6bf361639e77d6f2299db	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	portability	3a50b3ec310b86914f98babecc8f89c6	savedconfig	7de7daa586f6bf361639e77d6f2299db	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=8b40863639ccff21cdd4a73bcd2e21dd

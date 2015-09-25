@@ -4772,7 +4772,7 @@ dev-libs/libxdiff 0.23 0.23-r1: Library for creating diff files
 dev-libs/libxls 0.3.0_pre107: A library which can read Excel (xls) files
 dev-libs/libxml2 2.9.2-r1: Version 2 of the library to manipulate XML files
 dev-libs/libxr 1.0: Cross-platform XML-RPC client/server library written in C
-dev-libs/libxslt 1.1.28-r1 1.1.28-r2 1.1.28-r3 1.1.28-r4: XSLT libraries and tools
+dev-libs/libxslt 1.1.28-r4: XSLT libraries and tools
 dev-libs/libyaml 0.1.6: YAML 1.1 parser and emitter written in C
 dev-libs/libzeitgeist 0.3.18: Client library to interact with zeitgeist
 dev-libs/libzip 1.0.1: Library for manipulating zip archives
@@ -7155,7 +7155,7 @@ dev-python/logilab-constraint 0.5.0-r1: A finite domain constraints solver writt
 dev-python/louie 1.1 1.1-r1: Signal dispatching mechanism for Python
 dev-python/lp_solve 5.5.2.0-r1: Python wrappers for lpsolve linear programming library
 dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine written in Python
-dev-python/lxml 3.3.5 3.4.1 3.4.2 3.4.3 3.4.4: A Pythonic binding for the libxml2 and libxslt libraries
+dev-python/lxml 3.4.1 3.4.4: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.6.1 0.7.0: LZ4 Bindings for Python
 dev-python/m2crypto 0.22.3-r4: M2Crypto: A Python crypto and SSL toolkit
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility

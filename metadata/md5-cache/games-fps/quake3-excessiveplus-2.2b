@@ -10,5 +10,5 @@ RDEPEND=games-misc/games-envd dedicated? ( || ( games-fps/quake3[dedicated] game
 RESTRICT=mirror strip
 SLOT=0
 SRC_URI=http://www.excessiveplus.net/files/release/xp-2.2b.zip
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	games	9c0a2dd4a6a25b6b7851fa01019cc809	games-mods	d3281c2f6983376342edaee91805393e	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	95613dd6157fb4a3b225eafdc56bd441	games	ce18d731b1dfae17561d847a24ca08c2	games-mods	d3281c2f6983376342edaee91805393e	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=cae617d997be59a22b62d30daac2bcc2

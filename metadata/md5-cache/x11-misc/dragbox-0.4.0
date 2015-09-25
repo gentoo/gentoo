@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-python/pygtk:2 gnome-base/libglade:2.0 dev-python/gnome-vfs-python:2 dev-python/libgnome-python:2 dev-python/gconf-python:2 sys-apps/dbus x11-libs/gtk+:2 =dev-lang/python-2*
 SLOT=0
 SRC_URI=http://kaizer.se/publicfiles/dragbox/dragbox-0.4.0.tar.gz
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=ff1348b044a96088e6f628505b619529

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/freetype:2 x11-libs/libXi x11-libs/libXmu x11-libs/libXp x11-libs/libXpm motif? ( >=x11-libs/motif-2.3:0 ) !motif? ( neXt? ( x11-libs/neXtaw ) !neXt? ( Xaw3d? ( x11-libs/libXaw3d ) !Xaw3d? ( x11-libs/libXaw ) ) ) dev-libs/kpathsea virtual/latex-base !<app-text/texlive-2007
 SLOT=0
 SRC_URI=mirror://sourceforge/xdvi/xdvik-22.87.tar.gz
-_eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	95613dd6157fb4a3b225eafdc56bd441	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=70b2f440442e09e7f4603d1777d5b917

@@ -7,5 +7,5 @@ LICENSE=google-chrome
 RDEPEND=app-admin/sudo dev-lang/python >=dev-libs/expat-2 dev-libs/glib:2 dev-libs/nspr dev-libs/nss dev-python/psutil gnome-base/gconf:2 media-libs/fontconfig media-libs/freetype:2 sys-devel/gcc sys-libs/glibc sys-libs/pam x11-libs/cairo x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXrandr x11-libs/libXtst x11-libs/pango x11-base/xorg-server[xvfb]
 SLOT=0
 SRC_URI=amd64? ( https://dl.google.com/linux/chrome-remote-desktop/deb/pool/main/c/chrome-remote-desktop/chrome-remote-desktop_44.0.2403.44_amd64.deb ) x86? ( https://dl.google.com/linux/chrome-remote-desktop/deb/pool/main/c/chrome-remote-desktop/chrome-remote-desktop_44.0.2403.44_i386.deb )
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79
+_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	unpacker	1d149d9bda7723e740cfd28118f27813
 _md5_=4d67e7255a89a3db6973322e8f305741

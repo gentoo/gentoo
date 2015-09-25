@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=dev-java/commons-beanutils:1.7 dev-java/commons-cli:1 dev-java/commons-collections:0 dev-java/commons-discovery:0 dev-java/commons-jexl:1.0 dev-java/commons-lang:0 dev-java/commons-logging:0 dev-java/dom4j:1 dev-java/jakarta-jstl:0 dev-java/jaxen:1.1 dev-java/junit:0 java-virtuals/servlet-api:2.5 >=virtual/jre-1.4 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 SLOT=1
 SRC_URI=mirror://apache/jakarta/commons/jelly/source/commons-jelly-1.0-src.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-ant-2	e39bd5336f73afdf3e4a15c91a5dad59	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	c7374d201551e4fb8552994ef210e0f7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	java-ant-2	e39bd5336f73afdf3e4a15c91a5dad59	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	22a0377180eb25cf7ad0e4d7e6fcbb8e	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=4efcf88c757615a14298355e5abc4732

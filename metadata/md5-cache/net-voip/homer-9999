@@ -7,5 +7,5 @@ IUSE=pulseaudio
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/openssl-1.0 media-libs/alsa-lib media-libs/libsdl[X,sound,video,alsa] media-libs/portaudio[alsa] media-libs/sdl-mixer media-libs/sdl-sound media-libs/x264:* media-video/ffmpeg:0[X] net-libs/sofia-sip dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 dev-qt/qtmultimedia:4 dev-qt/qtwebkit:4 pulseaudio? ( media-sound/pulseaudio )
 SLOT=0
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=f4321c25e4ce40b1ae83e85fe06d5e76

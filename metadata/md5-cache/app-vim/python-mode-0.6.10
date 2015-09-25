@@ -8,5 +8,5 @@ LICENSE=LGPL-3
 RDEPEND=dev-python/astng dev-python/autopep8 dev-python/pyflakes dev-python/pylint dev-python/rope dev-python/ropemode || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 SRC_URI=https://github.com/klen/python-mode/tarball/0.6.10 -> python-mode-0.6.10.tar.gz
-_eclasses_=vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd	vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	222d094e412102a0169617b4d68b6250
+_eclasses_=vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd	vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	1bbfc3364a7588372fb4c21734f0cd96
 _md5_=d38b0be02c58c54af2dc44a05ba1cec8

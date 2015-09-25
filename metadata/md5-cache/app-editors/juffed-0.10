@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=app-i18n/enca dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsingleapplication[qt4(+),X] x11-libs/qscintilla:=
 SLOT=0
 SRC_URI=mirror://sourceforge/juffed/juffed-0.10-1054.tar.bz2
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	95613dd6157fb4a3b225eafdc56bd441	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=48afef73434b7f769f6ae3022f328c7d

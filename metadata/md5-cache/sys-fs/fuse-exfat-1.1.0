@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=sys-fs/fuse
 SLOT=0
 SRC_URI=https://docs.google.com/uc?export=download&id=0B7CLI-REKbE3VTdaa0EzTkhYdU0 -> fuse-exfat-1.1.0.tar.gz
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	scons-utils	b7d634f772db55c8af429f50aeec6ee0	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	scons-utils	b7d634f772db55c8af429f50aeec6ee0	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=1833cfed7dbff2a93d34fd1b6395f6fb

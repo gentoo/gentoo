@@ -7,5 +7,5 @@ IUSE=atahpt +atavia +buspirate_spi dediprog +drkaiser +dummy +ft2232_spi +gfxnvi
 LICENSE=GPL-2
 RDEPEND=!static? ( atahpt? ( sys-apps/pciutils ) atavia? ( sys-apps/pciutils ) dediprog? ( virtual/libusb:0 ) drkaiser? ( sys-apps/pciutils ) ft2232_spi? ( dev-embedded/libftdi ) gfxnvidia? ( sys-apps/pciutils ) it8212? ( sys-apps/pciutils ) internal? ( sys-apps/pciutils ) nic3com? ( sys-apps/pciutils ) nicintel? ( sys-apps/pciutils ) nicintel_eeprom? ( sys-apps/pciutils ) nicintel_spi? ( sys-apps/pciutils ) nicnatsemi? ( sys-apps/pciutils ) nicrealtek? ( sys-apps/pciutils ) ogp_spi? ( sys-apps/pciutils ) pickit2_spi? ( virtual/libusb:0 ) rayer_spi? ( sys-apps/pciutils ) satamv? ( sys-apps/pciutils ) satasii? ( sys-apps/pciutils ) usbblaster_spi? ( dev-embedded/libftdi ) ) !internal_dmi? ( sys-apps/dmidecode )
 SLOT=0
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	subversion	d11b897c0c78e23413f0af0959ec6b92	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	subversion	4fee0a764150bb4dda27ed4d2c4ed7ce	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=37d3fdd13435c2c90f0a1ed79c5f80ef

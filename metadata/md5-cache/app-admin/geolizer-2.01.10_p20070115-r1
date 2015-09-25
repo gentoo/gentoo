@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=sys-libs/db-4.2 >=sys-libs/zlib-1.1.4 >=media-libs/libpng-1.2 >=media-libs/gd-1.8.3 dev-libs/geoip >=app-admin/webapp-config-1.50.15
 SLOT=0
 SRC_URI=ftp://ftp.mrunix.net/pub/webalizer/old/webalizer-2.01-10-src.tar.bz2 http://sysd.org/stas/files/active/0/geolizer_2.01-10-patch.20070115.tar.gz mirror://gentoo/webalizer.conf.gz
-_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	confutils	18995f74ac4ffafb7ad853dfe133f209	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	webapp	2442891c368d310c1d3fe77d9c77fe5b
+_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	confutils	18995f74ac4ffafb7ad853dfe133f209	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	95613dd6157fb4a3b225eafdc56bd441	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	webapp	42c6ef7af496b228f9854b3c81e4b226
 _md5_=eaf756fdf74f9a779d5ac1a3ec53d9de

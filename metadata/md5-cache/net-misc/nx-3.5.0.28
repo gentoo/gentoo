@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/freetype:2 >=media-libs/libpng-1.2.8:* >=sys-libs/zlib-1.2.3 virtual/jpeg:*
 SLOT=0
 SRC_URI=http://code.x2go.org/releases/source/nx-libs/nx-libs-3.5.0.28-full.tar.gz
-_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	eutils	95613dd6157fb4a3b225eafdc56bd441	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=170396d07315a242c9b1c98bde369890

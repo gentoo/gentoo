@@ -8,5 +8,5 @@ LICENSE=Artistic
 RDEPEND=sci-biology/bowtie
 SLOT=0
 SRC_URI=http://tophat.cbcb.umd.edu/downloads/tophat-1.0.12.tar.gz
-_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=e77d3500a52473f554abdde6a1d91b6c

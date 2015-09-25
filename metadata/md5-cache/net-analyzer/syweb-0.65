@@ -9,5 +9,5 @@ LICENSE=BSD-2
 RDEPEND=virtual/httpd-php net-analyzer/rrdtool >=app-admin/webapp-config-1.50.15
 SLOT=0
 SRC_URI=http://www.xs4all.nl/~wpd/symon/philes/syweb-0.65.tar.gz
-_eclasses_=webapp	2442891c368d310c1d3fe77d9c77fe5b
+_eclasses_=webapp	42c6ef7af496b228f9854b3c81e4b226
 _md5_=897d052fcb0249847201663ea1502e24

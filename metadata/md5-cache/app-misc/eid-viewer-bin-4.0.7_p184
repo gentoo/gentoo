@@ -8,5 +8,5 @@ LICENSE=LGPL-3
 RDEPEND=virtual/jre sys-apps/pcsc-lite
 SLOT=0
 SRC_URI=http://eid.belgium.be/en/binaries/eid-viewer-4%2E0%2E7-184%2Esrc%2Etar_tcm406-250014.gz -> eid-viewer-4.0.7_p184.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=7d6fb9d5b5337c2165bacfe848e07edd

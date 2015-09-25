@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~amd64-
 LICENSE=public-domain
 RDEPEND=|| ( dev-java/oracle-javamail:0 dev-java/sun-javamail:0 dev-java/gnu-javamail:1 ) >=dev-java/java-config-2.2.0
 SLOT=0
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-utils-2	c7374d201551e4fb8552994ef210e0f7	java-virtuals-2	c53e87cb867e7812d54bdf959c1164e3	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	java-utils-2	22a0377180eb25cf7ad0e4d7e6fcbb8e	java-virtuals-2	c53e87cb867e7812d54bdf959c1164e3	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=1686a5aee2b4b2566e85b8f692c53b8c

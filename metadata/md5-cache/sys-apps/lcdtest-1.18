@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=>=media-libs/libsdl-1.2.7-r2[X,video] >=media-libs/sdl-image-1.2.3-r1 >=media-libs/sdl-ttf-2.0.9 media-fonts/liberation-fonts
 SLOT=0
 SRC_URI=http://www.brouhaha.com/~eric/software/lcdtest/download/lcdtest-1.18.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	gnome2-utils	44555579e85afa5c035d2bd5428252da	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	scons-utils	b7d634f772db55c8af429f50aeec6ee0	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	gnome2-utils	44555579e85afa5c035d2bd5428252da	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	scons-utils	b7d634f772db55c8af429f50aeec6ee0	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=4de6a50eda28fea4cba75b916f20c9cc

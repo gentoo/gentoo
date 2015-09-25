@@ -10,5 +10,5 @@ RDEPEND=kernel_linux? ( virtual/modutils )
 RESTRICT=mirror
 SLOT=0
 SRC_URI=amd64? ( https://launchpad.net/~albertomilone/+archive/broadcom/+files/bcmwl-kernel-source_6.30.223.30%2Bbdcom-0ubuntu1%7Eppa1_amd64.deb ) x86? ( https://launchpad.net/~albertomilone/+archive/broadcom/+files/bcmwl-kernel-source_6.30.223.30%2Bbdcom-0ubuntu1%7Eppa1_i386.deb )
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	linux-mod	9e27971daa324852d78bc7d4d811afae	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	unpacker	1ca344bd9b922a7f8084a3fa02933b79	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	linux-mod	9e27971daa324852d78bc7d4d811afae	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	unpacker	1d149d9bda7723e740cfd28118f27813	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=760d1c0a4aa74bc730d36e7692a3b1ce

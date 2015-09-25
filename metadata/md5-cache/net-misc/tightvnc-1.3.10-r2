@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=media-fonts/font-misc-misc virtual/jpeg server? ( media-fonts/font-cursor-misc x11-apps/rgb x11-apps/xauth x11-apps/xsetroot ) x11-libs/libX11 x11-libs/libXaw x11-libs/libXmu x11-libs/libXp x11-libs/libXt tcpd? ( >=sys-apps/tcp-wrappers-7.6-r2 ) java? ( >=virtual/jre-1.4 ) java? ( >=dev-java/java-config-2.2.0 )
 SLOT=0
 SRC_URI=mirror://sourceforge/vnc-tight/tightvnc-1.3.10_unixsrc.tar.bz2 mirror://gentoo/tightvnc.png java? ( mirror://sourceforge/vnc-tight/tightvnc-1.3.10_javasrc.tar.gz )
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	java-utils-2	c7374d201551e4fb8552994ef210e0f7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	java-utils-2	22a0377180eb25cf7ad0e4d7e6fcbb8e	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=9fc871be4851c8eb59641db4204cfbcd

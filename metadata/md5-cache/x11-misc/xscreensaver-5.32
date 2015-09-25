@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=>=gnome-base/libglade-2 dev-libs/libxml2 media-libs/netpbm x11-apps/appres x11-apps/xwininfo x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXext x11-libs/libXi x11-libs/libXmu x11-libs/libXrandr x11-libs/libXt x11-libs/libXxf86misc x11-libs/libXxf86vm jpeg? ( virtual/jpeg:0 ) new-login? ( gdm? ( gnome-base/gdm ) !gdm? ( || ( x11-misc/lightdm kde-base/kdm ) ) ) opengl? ( virtual/glu virtual/opengl ) pam? ( virtual/pam ) xinerama? ( x11-libs/libXinerama ) perl? ( dev-lang/perl dev-perl/libwww-perl virtual/perl-Digest-MD5 ) selinux? ( sec-policy/selinux-xscreensaver )
 SLOT=0
 SRC_URI=http://www.jwz.org/xscreensaver/xscreensaver-5.32.tar.gz
-_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	05f80e6013406d68612a7493314e3777	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	eutils	95613dd6157fb4a3b225eafdc56bd441	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	05f80e6013406d68612a7493314e3777	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=54b44dd28c1c10910c3a6fa7755e056e

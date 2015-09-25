@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=media-sound/jack-audio-connection-kit x11-libs/wxGTK:2.8 media-libs/liblo dev-libs/libsigc++:1.2 media-libs/libsndfile media-libs/libsamplerate dev-libs/libxml2 media-libs/rubberband sci-libs/fftw:3.0
 SLOT=0
 SRC_URI=http://essej.net/sooperlooper/sooperlooper-1.6.17.tar.gz mirror://gentoo/sooperlooper-1.6.5-m4.tar.bz2
-_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	wxwidgets	e0c7fd61275cea7156be4143ba8c673a
+_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	eutils	95613dd6157fb4a3b225eafdc56bd441	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	wxwidgets	e0c7fd61275cea7156be4143ba8c673a
 _md5_=3926fe5728377e70263dff07ee11bdfb

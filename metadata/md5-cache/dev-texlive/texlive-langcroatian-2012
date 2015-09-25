@@ -9,5 +9,5 @@ LICENSE=GPL-2 LPPL-1.3
 RDEPEND=>=dev-texlive/texlive-basic-2012 >=app-text/texlive-core-2012
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-module-hrlatex-2012.tar.xz mirror://gentoo/texlive-module-hyphen-croatian-2012.tar.xz mirror://gentoo/texlive-module-collection-langcroatian-2012.tar.xz doc? ( mirror://gentoo/texlive-module-hrlatex.doc-2012.tar.xz ) source? ( mirror://gentoo/texlive-module-hrlatex.source-2012.tar.xz )
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	texlive-common	cf8d3d36261adafe564b821b75b34a05	texlive-module	9b17379edf5bdf6418f88d18496927ed	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	texlive-common	cf8d3d36261adafe564b821b75b34a05	texlive-module	9b17379edf5bdf6418f88d18496927ed	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=d458b68cfb1ff511b71240fbb48a0918

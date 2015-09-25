@@ -9,5 +9,5 @@ LICENSE=MIT public-domain
 RDEPEND=curl? ( net-misc/curl ) gd? ( media-libs/gd ) gtk? ( x11-libs/gdk-pixbuf:2 ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0 )
 SLOT=0
 SRC_URI=https://github.com/saitoha/libsixel/archive/v1.4.12.tar.gz -> libsixel-1.4.12.tar.gz
-_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=a9dc2ef859d05496647c3dba070c773a

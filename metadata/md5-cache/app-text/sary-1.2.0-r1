@@ -10,5 +10,5 @@ RDEPEND=dev-libs/glib:2
 RESTRICT=test
 SLOT=0
 SRC_URI=http://sary.sourceforge.net/sary-1.2.0.tar.gz
-_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=6799ef1e1205633cd136a637edd1062b

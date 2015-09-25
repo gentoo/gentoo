@@ -8,5 +8,5 @@ LICENSE=BSD-1
 RDEPEND=pkg-config? ( !dev-util/pkgconfig !dev-util/pkg-config-lite !dev-util/pkgconfig-openbsd[pkg-config] )
 SLOT=0
 SRC_URI=http://rabbit.dereferenced.org/~nenolod/distfiles/pkgconf-0.9.11.tar.bz2
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multilib-build	c47eec09e82c8a750127ff2abf0745b1	multilib-minimal	a93a9b4153a5f1c746bdd3b20ef9d834	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multilib-build	c47eec09e82c8a750127ff2abf0745b1	multilib-minimal	a93a9b4153a5f1c746bdd3b20ef9d834	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=3efc4413af9128698a714be069faf4b0

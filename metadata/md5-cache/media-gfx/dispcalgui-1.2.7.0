@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=>=media-gfx/argyllcms-1.1.0 dev-python/wxpython:2.8 >=x11-libs/libX11-1.3.3 >=x11-apps/xrandr-1.3.2 >=x11-libs/libXxf86vm-1.1.0 >=x11-proto/xineramaproto-1.2 >=x11-libs/libXinerama-1.1 >=dev-python/numpy-1.2.1 =dev-lang/python-2*
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~hwoarang/distfiles/dispcalGUI-1.2.7.0.tar.gz
-_eclasses_=distutils	def8c8eb435ec28fd9315114640f6c84	eutils	351a78113be5b393c09a2c948701ad36	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=distutils	def8c8eb435ec28fd9315114640f6c84	eutils	95613dd6157fb4a3b225eafdc56bd441	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=22aa25219240671e8d8f7f3723d83b40

@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-qt/qtgui-4.3:4 dev-libs/openssl dev-libs/elfutils
 SLOT=0
 SRC_URI=mirror://sourceforge/fwbuilder/fwbuilder-5.0.1.3592.tar.gz
-_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	base	84d9f879f57a8316ff02be0373a3d6f9	eutils	95613dd6157fb4a3b225eafdc56bd441	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=0f652edc9760c2076a28db16d3a601d0

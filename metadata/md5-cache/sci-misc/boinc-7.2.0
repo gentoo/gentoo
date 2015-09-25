@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=!sci-misc/boinc-bin !app-admin/quickswitch >=app-misc/ca-certificates-20080809 dev-libs/openssl:0= net-misc/curl[ssl,-gnutls(-),-nss(-),curl_ssl_openssl(+)] sys-apps/util-linux sys-libs/zlib cuda? ( >=dev-util/nvidia-cuda-toolkit-2.1 >=x11-drivers/nvidia-drivers-180.22 ) X? ( dev-db/sqlite:3 media-libs/freeglut sys-libs/glibc:2.2 virtual/jpeg:0= x11-libs/gtk+:2 >=x11-libs/libnotify-0.7 x11-libs/wxGTK:2.8[X,opengl] )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jlec/distfiles/boinc-7.2.0.tar.xz
-_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46	wxwidgets	e0c7fd61275cea7156be4143ba8c673a
+_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	95613dd6157fb4a3b225eafdc56bd441	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	user	906f3c8eb3a2350a4f1191a89baa3e46	wxwidgets	e0c7fd61275cea7156be4143ba8c673a
 _md5_=7695ef275a6ee59291344f105225828d

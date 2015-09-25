@@ -8,5 +8,5 @@ LICENSE=WTFPL-2
 RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 SRC_URI=https://github.com/scrooloose/syntastic/archive/3.5.0.tar.gz -> syntastic-3.5.0.tar.gz
-_eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	222d094e412102a0169617b4d68b6250
+_eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	1bbfc3364a7588372fb4c21734f0cd96
 _md5_=2788acc100a93de667c82f7942bfba21

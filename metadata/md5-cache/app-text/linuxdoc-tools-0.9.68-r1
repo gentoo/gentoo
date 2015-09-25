@@ -8,5 +8,5 @@ LICENSE=MIT SGMLUG
 RDEPEND=app-text/openjade app-text/opensp app-text/sgml-common dev-texlive/texlive-fontsrecommended dev-lang/perl sys-apps/gawk sys-apps/groff virtual/latex-base
 SLOT=0
 SRC_URI=mirror://debian/pool/main/l/linuxdoc-tools/linuxdoc-tools_0.9.68.tar.gz
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	sgml-catalog	b6e9d36507f43d79b6df9cb78d6eb4dd	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	sgml-catalog	b6e9d36507f43d79b6df9cb78d6eb4dd	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=29ef38eeeb092b0d4404d37f223423fa

@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/json-c-0.10-r1 dev-libs/glib:2 dev-libs/libpcre sys-apps/pciutils sys-power/iasl sys-power/pmtools sys-apps/dmidecode
 SLOT=0
 SRC_URI=https://launchpad.net/ubuntu/+archive/primary/+files/fwts_15.03.01.orig.tar.gz
-_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=308f9d74a9b88bf2aabc9c6233a3cc9e

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=fbsplash? ( >=app-arch/bzip2-1.0.6-r3[static-libs] >=media-gfx/splashutils-1.5.2.1 media-libs/freetype[static-libs] media-libs/libmng >=media-libs/libpng-1.4.8[static-libs] virtual/jpeg )
 SLOT=0
 SRC_URI=http://tuxonice.net/files/tuxonice-userui-1.1.tar.gz -> tuxonice-userui-1.1.tar mirror://debian/pool/main/t/tuxonice-userui/tuxonice-userui_1.1-2~exp1.debian.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=0faac342b82b8c3b89d713e102170ab3

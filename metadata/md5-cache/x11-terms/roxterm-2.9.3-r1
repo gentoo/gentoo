@@ -9,5 +9,5 @@ LICENSE=GPL-2 LGPL-3
 RDEPEND=>=dev-libs/dbus-glib-0.100 >=dev-libs/glib-2.28 x11-libs/gtk+:3 x11-libs/libICE x11-libs/libSM x11-libs/vte:2.90
 SLOT=0
 SRC_URI=mirror://sourceforge/roxterm/roxterm-2.9.3.tar.bz2
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	gnome2-utils	44555579e85afa5c035d2bd5428252da	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	b81ab4852d108e3d9c940fa03bce80e1	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	gnome2-utils	44555579e85afa5c035d2bd5428252da	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	b81ab4852d108e3d9c940fa03bce80e1	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=154c18a57bc24cf48d79dffb74fb3dcd

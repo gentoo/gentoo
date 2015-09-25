@@ -7,5 +7,5 @@ IUSE=test
 LICENSE=GPL-2
 RDEPEND=>=dev-vcs/mercurial-1.4 || ( dev-python/subvertpy >=dev-vcs/subversion-1.5[python] ) =dev-lang/python-2*
 SLOT=0
-_eclasses_=distutils	def8c8eb435ec28fd9315114640f6c84	eutils	351a78113be5b393c09a2c948701ad36	mercurial	6ac07cde03301514a5f9e4f13df3f55e	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=distutils	def8c8eb435ec28fd9315114640f6c84	eutils	95613dd6157fb4a3b225eafdc56bd441	mercurial	6ac07cde03301514a5f9e4f13df3f55e	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=ea4dcfe841f1e5359e438b9acf137bb4

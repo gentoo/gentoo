@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/perl-Digest-MD5 virtual/perl-Getopt-Long dev-perl/XML-Parser dev-perl/TimeDate app-shells/bash app-arch/cpio app-arch/rpm
 SLOT=0
 SRC_URI=https://api.opensuse.org/public/source/openSUSE:Tools/build/obs-build-20140918.tar.gz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	obs-download	34254a75c71884fa169583d31466e857	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	obs-download	34254a75c71884fa169583d31466e857	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=75b861d0629dbb610c1559cd92c43851

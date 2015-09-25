@@ -11,5 +11,5 @@ REQUIRED_USE=vanilla? ( !ssl !qmail-spp !highvolume )
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://qmail/netqmail-1.06.tar.gz https://dev.gentoo.org/~hollow/distfiles/genqmail-20080406.tar.bz2 http://www.ckdhr.com/ckd/qmail-103.patch !vanilla? ( highvolume? ( mirror://qmail/big-todo.103.patch ) qmail-spp? ( mirror://sourceforge/qmail-spp/qmail-spp-0.42.tar.gz ) ssl? ( http://shupp.org/patches/netqmail-1.05-tls-smtpauth-20070417.patch ) )
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	fixheadtails	2f44773656577fe2653bacc8bdcb2174	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmail	283e7fa084ff27bf177a23bf740c7218	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	fixheadtails	2f44773656577fe2653bacc8bdcb2174	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmail	b5cb479953f486ad5e0d7f5a428f5913	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=43a88441353c41e2cd1e324398f7a978

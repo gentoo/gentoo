@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libmad media-libs/flac tremor? ( media-libs/tremor ) !tremor? ( media-libs/libvorbis ) media-libs/libogg media-libs/portaudio[alsa?] aac? ( virtual/ffmpeg ) wma? ( virtual/ffmpeg ) display? ( app-misc/lirc )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~radhermit/dist/squeezeslave-1.1_p381.tar.xz
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=e669d62e16297664d5f4e78b222165b2

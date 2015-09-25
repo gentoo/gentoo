@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 SRC_URI=https://github.com/mbbill/undotree/archive/rel_5.0.tar.gz -> undotree-5.0.tar.gz
-_eclasses_=vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd	vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	222d094e412102a0169617b4d68b6250
+_eclasses_=vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd	vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	1bbfc3364a7588372fb4c21734f0cd96
 _md5_=2d6438fec6a5fe59f5409a7639540a61

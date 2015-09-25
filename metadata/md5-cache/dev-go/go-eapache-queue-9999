@@ -5,5 +5,5 @@ EAPI=5
 HOMEPAGE=https://github.com/eapache/queue
 LICENSE=MIT
 SLOT=0/9999
-_eclasses_=eutils	351a78113be5b393c09a2c948701ad36	golang-base	59e300a2d8836a6e8d508276da0d570f	golang-build	1b49258a68ba3972a575490adf3b7b4c	golang-vcs	6625d7992916e5a3bed86489f4b9a73d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	golang-base	59e300a2d8836a6e8d508276da0d570f	golang-build	1b49258a68ba3972a575490adf3b7b4c	golang-vcs	6625d7992916e5a3bed86489f4b9a73d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=8c09913f0eb86a25298457ea37e2cacc

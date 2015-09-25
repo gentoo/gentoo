@@ -10,6 +10,6 @@ PDEPEND=~app-admin/apache-tools-2.4.12
 RDEPEND=alpn? ( >=dev-libs/openssl-1.0.2:0= ) >=dev-libs/apr-1.5.1 !www-apache/mod_macro dev-lang/perl =dev-libs/apr-1* =dev-libs/apr-util-1*[ldap?] dev-libs/libpcre apache2_modules_deflate? ( sys-libs/zlib ) apache2_modules_mime? ( app-misc/mime-types ) ldap? ( =net-nds/openldap-2* ) ssl? ( >=dev-libs/openssl-0.9.8m:0= ) !=www-servers/apache-1* selinux? ( sec-policy/selinux-apache )
 REQUIRED_USE=alpn? ( ssl )
 SLOT=2
-SRC_URI=mirror://apache/httpd/httpd-2.4.12.tar.bz2 http://dev.gentoo.org/~polynomial-c/dist/apache/gentoo-apache-2.4.10-r1-20140731.tar.bz2
-_eclasses_=apache-2	0620965a3eab1d3d9d290b0f90678026	autotools	7d16e72a943b4803ca9691b2ecf89216	eutils	351a78113be5b393c09a2c948701ad36	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	ssl-cert	e90a74de57c48ea6c058b1cb3a735907	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+SRC_URI=mirror://apache/httpd/httpd-2.4.12.tar.bz2 https://dev.gentoo.org/~polynomial-c/dist/apache/gentoo-apache-2.4.10-r1-20140731.tar.bz2
+_eclasses_=apache-2	e7b4340e57e52ec27019f0c0c7bd0c47	autotools	7d16e72a943b4803ca9691b2ecf89216	eutils	95613dd6157fb4a3b225eafdc56bd441	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	ssl-cert	e90a74de57c48ea6c058b1cb3a735907	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=eda5029cdc848f95aa656653438c7944

@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=>=app-shells/bash-4 || ( app-text/recode ( dev-lang/perl dev-perl/HTML-Parser ) ) || ( media-gfx/imagemagick[tiff] media-gfx/graphicsmagick[imagemagick,tiff] ) net-misc/curl sys-apps/util-linux javascript? ( || ( dev-lang/spidermonkey:0 dev-java/rhino ) ) view-captcha? ( || ( media-gfx/aview media-libs/libcaca ) )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~voyageur/distfiles/plowshare-1.2.0.tar.gz
-_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361
+_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=89575e8325f4f3a90e8d63d3808315f4

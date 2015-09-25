@@ -7,6 +7,6 @@ KEYWORDS=amd64 x86 ~x64-macos
 LICENSE=WTFPL-2
 RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
-SRC_URI=mirror://gentoo/nerdtree-4.2.0.tar.bz2 http://dev.gentoo.org/~radhermit/vim/nerdtree-4.2.0.tar.bz2
-_eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	222d094e412102a0169617b4d68b6250
+SRC_URI=mirror://gentoo/nerdtree-4.2.0.tar.bz2 https://dev.gentoo.org/~radhermit/vim/nerdtree-4.2.0.tar.bz2
+_eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	1bbfc3364a7588372fb4c21734f0cd96
 _md5_=0b348b66db9b189b5e154d93c7887db0

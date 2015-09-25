@@ -9,5 +9,5 @@ LICENSE=BSD-2
 RDEPEND=cvs? ( dev-vcs/rcs ) subversion? ( >=dev-vcs/subversion-1.3.1[python] ) mod_wsgi? ( www-apache/mod_wsgi ) !mod_wsgi? ( virtual/httpd-cgi ) cvsgraph? ( >=dev-vcs/cvsgraph-1.5.0 ) mysql? ( >=dev-python/mysql-python-0.9.0 ) pygments? ( dev-python/pygments app-misc/mime-types ) =dev-lang/python-2* >=app-admin/webapp-config-1.50.15
 SLOT=0
 SRC_URI=http://viewvc.tigris.org/files/documents/3330/49275/viewvc-1.1.20.tar.gz
-_eclasses_=confutils	18995f74ac4ffafb7ad853dfe133f209	eutils	351a78113be5b393c09a2c948701ad36	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	4b8d3388c0a6e798504e20ba30b49361	webapp	2442891c368d310c1d3fe77d9c77fe5b
+_eclasses_=confutils	18995f74ac4ffafb7ad853dfe133f209	eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	webapp	42c6ef7af496b228f9854b3c81e4b226
 _md5_=6a19f9d1e6057e0b697de987fc9b9a6e
