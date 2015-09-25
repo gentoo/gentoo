@@ -14,7 +14,7 @@ SRC_URI="http://drive5.com/${PN}/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="public-domain"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 S="${WORKDIR}"/${MY_P}
