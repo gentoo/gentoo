@@ -2019,7 +2019,7 @@ app-office/taskcoach 1.3.18 1.3.27 1.3.29 1.3.32 1.3.32-r1 1.3.40: Simple person
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
 app-office/texmacs 1.0.7.21 1.99.1 1.99.2 1.99.2-r1: Wysiwyg text processor with high-quality maths
 app-office/texmaker 4.3 4.4.1 4.4.1-r1: A nice LaTeX-IDE
-app-office/texstudio 2.8.8 2.9.4 2.10.2: Free cross-platform LaTeX editor (fork from texmakerX)
+app-office/texstudio 2.9.4 2.10.2: Free cross-platform LaTeX editor (fork from texmakerX)
 app-office/unoconv 0.6 0.6.20131229 0.7 99999999: Convert between document formats supported by Libreoffice
 app-office/upwork 4.0.53.0 4.0.70.0: Project collaboration and tracking software for upwork.com
 app-office/wps-office 9.1.0.4961_alpha18_p1 9.1.0.4975_alpha19_p1: WPS Office is an office productivity suite
@@ -7712,7 +7712,7 @@ dev-python/rosdistro 0.4.2 9999: Tools to work with catkinized rosdistro files
 dev-python/rospkg 1.0.35 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.1-r1 2.2: A Python re-implementation of Rails routes system, mapping URL's to Controllers/Actions
 dev-python/rply 0.7.3: Pure python parser generator that also works with RPython
-dev-python/rpy 2.5.4 2.6.1 2.6.2: Python interface to the R Programming Language
+dev-python/rpy 2.6.2: Python interface to the R Programming Language
 dev-python/rpyc 3.2.3-r1: Remote Python Call (RPyC), a transparent and symmetric RPC library
 dev-python/rsa 3.1.4-r1 3.2: Pure-Python RSA implementation
 dev-python/rst2pdf 0.93-r2: Tool for transforming reStructuredText to PDF using ReportLab
@@ -15285,7 +15285,7 @@ sci-libs/Shapely 1.3.0 1.3.2 9999: Geometric objects, predicates, and operations
 sci-libs/ViSP 2.10.0-r1: Visual Servoing Platform: visual tracking and visual servoing library
 sci-libs/acml 4.1.0-r2: AMD Core Math Library for x86 and amd64 CPUs
 sci-libs/adolc 2.4.1 2.5.0 2.5.2: Automatic differentiation system for C/C++
-sci-libs/alglib 3.8.2 3.10.0: Numerical analysis and data processing library
+sci-libs/alglib 3.8.2-r1 3.10.0-r1: Numerical analysis and data processing library
 sci-libs/amd 2.3.1: Library to order a sparse matrix prior to Cholesky factorization
 sci-libs/armadillo 3.4.4 3.6.2 4.650.4 5.400.2 5.500.2: Streamlined C++ linear algebra library
 sci-libs/arpack 3.1.3-r1 3.1.5: Arnoldi package library to solve large scale eigenvalue problems
