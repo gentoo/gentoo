@@ -1,0 +1,28 @@
+From 63e5f76a91e2401e8a6227d0d8ae5e75dd2213b0 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 25 Sep 2015 10:26:18 -0400
+Subject: [PATCH] tmpfiles: Disable cleaning of /tmp and /var/tmp
+
+Bug: https://bugs.gentoo.org/490676
+---
+ tmpfiles.d/tmp.conf | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tmpfiles.d/tmp.conf b/tmpfiles.d/tmp.conf
+index b80dab4..241fad5 100644
+--- a/tmpfiles.d/tmp.conf
++++ b/tmpfiles.d/tmp.conf
+@@ -8,8 +8,8 @@
+ # See tmpfiles.d(5) for details
+ 
+ # Clear tmp directories separately, to make them easier to override
+-d /tmp 1777 root root 10d
+-d /var/tmp 1777 root root 30d
++v /tmp 1777 root root
++v /var/tmp 1777 root root
+ 
+ # Exclude namespace mountpoints created with PrivateTmp=yes
+ x /tmp/systemd-private-%b-*
+-- 
+2.5.3
+
