@@ -4,8 +4,6 @@
 
 EAPI=5
 
-DOCS="TODO"
-
 MY_PV="${PV/rc/RC}"
 
 USE_PHP="php5-6 php5-5 php5-4"
