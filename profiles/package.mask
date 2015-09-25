@@ -403,10 +403,6 @@ dev-db/postgresql-server
 # Security mask, wrt bug #529728
 <app-antivirus/clamav-0.98.5
 
-# Ian Stakenvicius <axs@gentoo.org> (03 Dec 2014)
-# masked for testing
-media-libs/openh264
-
 # Justin Lecher <jlec@gentoo.org> (02 Dec 2014)
 # Not supported by upstream anymore
 # Revdeps broken, #531392

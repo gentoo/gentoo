@@ -5,6 +5,11 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (25 Sep 2015)
+# Upstream gtk3 support is experimental:
+# https://code.google.com/p/chromium/issues/detail?id=132847
+www-client/chromium gtk3
+
 # Justin Lecher <jlec@gentoo.org> (22 Sep 2015)
 # Downloads files during installation
 # https://bugs.gentoo.org/show_bug.cgi?id=533876
