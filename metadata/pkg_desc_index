@@ -10654,13 +10654,13 @@ kde-apps/ark 4.14.3-r1: KDE Archiving tool
 kde-apps/artikulate 4.14.3: Language learning application that helps improving pronunciation skills
 kde-apps/attica 4.14.3 15.08.0 15.08.1: Open Collaboration Services provider management
 kde-apps/audiocd-kio 4.14.3 15.08.0 15.08.1: KDE kioslaves from the kdemultimedia package
-kde-apps/baloo-widgets 4.14.3 15.08.0: Widget library for baloo
+kde-apps/baloo-widgets 4.14.3 15.08.0 15.08.1: Widget library for baloo
 kde-apps/blinken 4.14.3: KDE version of the Simon Says game
 kde-apps/bomber 4.14.3: KDE arcade bombing game
 kde-apps/bovo 4.14.3: Five-in-a-row Board Game
 kde-apps/cantor 4.14.3: KDE4 interface for doing mathematics and scientific computing
 kde-apps/cervisia 4.14.3: Cervisia - A KDE CVS frontend
-kde-apps/dolphin 4.14.3 15.08.0: Plasma filemanager focusing on usability
+kde-apps/dolphin 4.14.3 15.08.0 15.08.1: Plasma filemanager focusing on usability
 kde-apps/dolphin-plugins 4.14.3: Extra Dolphin plugins
 kde-apps/dragon 4.14.3 15.08.0 15.08.1: A simple video player
 kde-apps/drkonqi 4.14.3 15.08.0 15.08.1: KDE crash handler, gives the user feedback if a program crashed
@@ -10760,7 +10760,7 @@ kde-apps/kigo 4.14.3: KDE Go game
 kde-apps/killbots 4.14.3: Kill the bots or they kill you!
 kde-apps/kimagemapeditor 4.14.3: KDE web development - image map editor
 kde-apps/kimgio 4.14.3 15.08.0 15.08.1: KDE WebP image format plugin
-kde-apps/kio-extras 15.08.0: KIO plugins present a filesystem-like view of arbitrary data
+kde-apps/kio-extras 15.08.0 15.08.1: KIO plugins present a filesystem-like view of arbitrary data
 kde-apps/kioclient 4.14.3 15.08.0 15.08.1: Command-line tool for network-transparent operations
 kde-apps/kiriki 4.14.3: Kiriki - a gtali clone for KDE4
 kde-apps/kiten 4.14.3: KDE Japanese dictionary and reference
@@ -17267,7 +17267,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.2 2.3.3: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.2.4 4.3 4.3.1: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 45.0.2454.85 46.0.2490.13 46.0.2490.22 47.0.2508.0 47.0.2516.0: Open-source version of Google Chrome web browser
+www-client/chromium 45.0.2454.85 45.0.2454.101 46.0.2490.13 46.0.2490.22 47.0.2508.0 47.0.2516.0: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20141005 1.0_pre20150227 1.0_pre20150519: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.4 3.0.4.1 3.0.5: Lean FLTK based web browser
