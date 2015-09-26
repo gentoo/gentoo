@@ -26,7 +26,7 @@
 #   https://bugzilla.mozilla.org/enter_bug.cgi?product=NSS&component=CA%20Certificates&version=trunk
 
 EAPI="4"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
 inherit eutils python-any-r1
 
@@ -46,8 +46,8 @@ fi
 
 DESCRIPTION="Common CA Certificates PEM files"
 HOMEPAGE="http://packages.debian.org/sid/ca-certificates"
+NMU_PR=""
 if ${PRECOMPILED} ; then
-	#NMU_PR="1"
 	SRC_URI="mirror://debian/pool/main/c/${PN}/${PN}_${PV}${NMU_PR:++nmu}${NMU_PR}_all.deb"
 else
 	SRC_URI="mirror://debian/pool/main/c/${PN}/${PN}_${DEB_VER}${NMU_PR:++nmu}${NMU_PR}.tar.xz
@@ -58,7 +58,7 @@ fi
 LICENSE="MPL-1.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
-IUSE=""
+IUSE="libressl"
 ${PRECOMPILED} || IUSE+=" +cacert"
 
 DEPEND=""
@@ -68,10 +68,14 @@ if ${PRECOMPILED} ; then
 		kernel_AIX? ( app-arch/deb2targz )
 		!<sys-apps/portage-2.1.10.41"
 fi
-# openssl: we run `c_rehash`
+# openssl: we run `c_rehash`; newer version for alt-cert-paths #552540
 # debianutils: we run `run-parts`
 RDEPEND="${DEPEND}
-	dev-libs/openssl
+	!libressl? ( >=dev-libs/openssl-1.0.1o:0 )
+	libressl? (
+		app-misc/c_rehash
+		dev-libs/libressl
+	)
 	sys-apps/debianutils"
 
 if ! ${PRECOMPILED}; then
@@ -89,6 +93,8 @@ pkg_setup() {
 
 src_unpack() {
 	${PRECOMPILED} || default
+
+	mv ${PN}-*/ ${PN} || die
 
 	# Do all the work in the image subdir to avoid conflicting with source
 	# dirs in $WORKDIR.  Need to perform everything in the offset #381937
@@ -111,12 +117,15 @@ src_prepare() {
 		fi
 	fi
 
-	epatch "${FILESDIR}"/${PN}-20110502-root.patch
+	epatch "${FILESDIR}"/${PN}-20150426-root.patch
 	local relp=$(echo "${EPREFIX}" | sed -e 's:[^/]\+:..:g')
 	sed -i \
 		-e '/="$ROOT/s:ROOT/:ROOT'"${EPREFIX}"'/:' \
 		-e '/RELPATH="\.\./s:"$:'"${relp}"'":' \
 		usr/sbin/update-ca-certificates || die
+
+	cd "${S}"
+	epatch "${FILESDIR}"/${PN}-20150426-nss-certdata2pem-py3.patch #548374
 }
 
 src_compile() {
@@ -169,7 +178,7 @@ pkg_postinst() {
 		# to include their stuff in the db.
 		# However it's too overzealous when the user has custom certs in place.
 		# --fresh is to clean up dangling symlinks
-		"${EROOT}"/usr/sbin/update-ca-certificates --root "${EROOT}"
+		"${EROOT}"/usr/sbin/update-ca-certificates --root "${ROOT}"
 	fi
 
 	local c badcerts=0
