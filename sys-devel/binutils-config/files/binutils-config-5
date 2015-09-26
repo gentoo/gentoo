@@ -1,0 +1,479 @@
+#!/bin/bash
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Format of /etc/env.d/binutils/:
+#  config-TARGET:	CURRENT=version for TARGET
+#  TARGET-VER:		has a TARGET and VER variable
+
+: ${ROOT:=/}
+[[ ${ROOT} != */ ]] && ROOT="${ROOT}/"
+[[ ${ROOT} != /* ]] && ROOT="${PWD%/}/${ROOT}"
+
+cd /
+
+trap ":" INT QUIT TSTP
+
+argv0=${0##*/}
+FUNCTIONS_SH="/lib/gentoo/functions.sh"
+source ${FUNCTIONS_SH} || {
+	echo "${argv0}: Could not source ${FUNCTIONS_SH}!" 1>&2
+	exit 1
+}
+esyslog() { :; }
+die() { eerror "${argv0}: $*"; exit 1; }
+umask 022
+
+usage() {
+cat << USAGE_END
+Usage: ${HILITE}binutils-config${NORMAL} ${GOOD}[options]${NORMAL} ${BRACKET}[binutils profile]${NORMAL}
+
+${HILITE}General Options:${NORMAL}
+  ${GOOD}-c, --get-current-profile${NORMAL}  Print current profile
+  ${GOOD}-l, --list-profiles${NORMAL}        Print a list of available profiles
+  ${GOOD}-u, --uninstall${NORMAL}            Remove all signs of specified target
+  ${GOOD}-d, --debug${NORMAL}                Execute with debug output
+
+${HILITE}General Cruft:${NORMAL}
+  ${GOOD}--linker${NORMAL} <linker>          Switch to specified linker (if supported)
+
+Profile names are of the form:  ${BRACKET}<CTARGET>-<binutils version>${NORMAL}
+For example:                    ${BRACKET}i686-pc-linux-gnu-2.15.92.0.2${NORMAL}
+
+For more info, please see ${HILITE}binutils-config${NORMAL}(8).
+USAGE_END
+
+	exit ${1:-1}
+}
+
+mv_if_diff() {
+	if cmp -s "$1" "$2" ; then
+		rm -f "$1"
+	else
+		mv -f "$1" "$2"
+	fi
+}
+atomic_ln() {
+	local target=$1 linkdir=$2 linkname=$3 linktmp linkfull
+	linktmp="${linkdir}/.binutils-config.tmp.${linkname}"
+	linkfull="${linkdir}/${linkname}"
+	if [[ -d ${linkfull} ]] ; then
+		# if linking to a dir, we need a little magic to
+		# make it atomic since `mv -T` is not portable
+		rm -rf "${linktmp}"
+		mkdir -p "${linktmp}"
+		ln -sf "${target}" "${linktmp}/${linkname}"
+		mv "${linktmp}/${linkname}" "${linktmp}/../"
+		rmdir "${linktmp}"
+	else
+		# `ln` will expand into unlink();symlink(); which
+		# is not atomic for a small amount of time, but
+		# `mv` is a single rename() call
+		ln -sf "${target}" "${linktmp}"
+		mv "${linktmp}" "${linkfull}"
+	fi
+}
+
+setup_env() {
+	unset TARGET VER LIBPATH
+	source "${ENV_D}/${PROFILE}"
+	if [[ -z ${TARGET} ]] ; then
+		eerror "${PROFILE} is invalid (no \$TARGET defined) :("
+		return 1
+	fi
+	if [[ -z ${VER} ]] ; then
+		eerror "${PROFILE} is invalid (no \$VER defined) :("
+		return 1
+	fi
+
+	#
+	# Generate binary symlinks
+	#
+	BINPATH=""
+	BINPATH_LINKS=""
+	if [[ ${TARGET} != ${HOST} ]] ; then
+		#
+		# Newer paths: /usr/${HOST}/${TARGET}/...
+		# Older paths: /usr/${TARGET}/...
+		#
+		if [[ -d ${ROOT}/usr/${HOST}/${TARGET}/binutils-bin/${VER} ]] ; then
+			BINPATH=/usr/${HOST}/${TARGET}/binutils-bin/${VER}
+			BINPATH_LINKS=/usr/libexec/gcc/${TARGET}
+		fi
+	fi
+	if [[ -z ${BINPATH} ]] ; then
+		BINPATH=/usr/${TARGET}/binutils-bin/${VER}
+		BINPATH_LINKS=/usr/${TARGET}/bin
+	fi
+}
+
+# Lists of headers that various versions have installed.
+HEADERS=(
+	ansidecl.h bfd.h bfdlink.h demangle.h dis-asm.h dyn-string.h
+	fibheap.h hashtab.h libiberty.h objalloc.h plugin-api.h
+	splay-tree.h symcat.h
+)
+
+switch_profile() {
+	local x
+
+	ebegin "Switching to ${PROFILE}"
+
+	setup_env || return 1
+
+	cd "${ROOT}/${BINPATH}" || exit 1
+	mkdir -p "${ROOT}/${BINPATH_LINKS}" "${ROOT}/usr/bin"
+	for x in * ; do
+		atomic_ln "${BINPATH}/${x}" "${ROOT}/${BINPATH_LINKS}" "${x}"
+		atomic_ln "${BINPATH_LINKS}/${x}" "${ROOT}/usr/bin" "${TARGET}-${x}"
+		if [[ ${TARGET} == ${HOST} ]] ; then
+			atomic_ln "${TARGET}-${x}" "${ROOT}/usr/bin" "${x}"
+		fi
+	done
+
+	#
+	# Generate library / ldscripts symlinks
+	#
+	: ${LIBPATH:=/usr/lib/binutils/${TARGET}/${VER}}
+	cd "${ROOT}/${LIBPATH}" || exit 1
+	if [[ ${TARGET} == ${HOST} ]] ; then
+		dstlib=${ROOT}/usr/${HOST}/lib
+	else
+		dstlib=${ROOT}/usr/${HOST}/${TARGET}/lib
+	fi
+	# When upgrading, we need to clean up ldscripts and libs.
+	# Don't symlink back in the libs -- the binutils-lib package handles
+	# these now.
+	# TODO: Stop requiring even the ldscripts symlink.
+	mkdir -p "${dstlib}"
+	rm -rf "${ROOT}/${BINPATH_LINKS}"/ldscripts
+	atomic_ln "${LIBPATH}/ldscripts" "${dstlib}" "ldscripts"
+	find -L "${dstlib}" -xtype l -name 'lib*' -exec rm -f {} +
+
+	#
+	# Clean out old generated include symlinks
+	#
+	INCPATH=${LIBPATH}/include
+	if [[ -d ${ROOT}/${INCPATH} ]] ; then
+		cd "${ROOT}/${INCPATH}" || exit 1
+		if [[ ${HOST} == ${TARGET} ]] ; then
+			# The binutils-lib package handles these files now.
+			for x in libiberty "${HEADERS[@]}" ; do
+				x="${ROOT}/usr/include/${x}"
+				if [[ -L ${x} ]] ; then
+					rm "${x}"
+				fi
+			done
+		else
+			# Clean out old path -- cannot use '-exec {} +' syntax here
+			find . -type f -exec rm -f "${ROOT}/usr/${TARGET}/usr/include/{}" \;
+			rmdir "${ROOT}/usr/${TARGET}/usr/include" >& /dev/null
+			rmdir "${ROOT}/usr/${TARGET}/usr" >& /dev/null
+			rmdir "${ROOT}/usr/${TARGET}" >& /dev/null
+		fi
+	fi
+
+	#
+	# Make sure proper paths get updated
+	#
+	local env_update_flag="--no-ldconfig"
+	if [[ ${TARGET} == ${HOST} ]] ; then
+		# Delete old config now that binutils-libs installs these files.
+		# Note: This skips ldconfig update if env.d had LDPATH, but meh.
+		# Most people have upgraded to ld.so.conf.d, and someone else will
+		# eventually re-run ldconfig for us.
+		x="${ROOT}"/etc/ld.so.conf.d/05binutils.conf
+		if [[ -e ${x} ]]; then
+			rm -f "${x}"
+			env_update_flag=""
+		fi
+
+		DATAPATH=/usr/share/binutils-data/${TARGET}/${VER}
+		local e="${ROOT}"/etc/env.d/05binutils
+		local ee="${e}.tmp"
+		rm -f "${ee}"
+		[[ -d ${ROOT}/${DATAPATH}/man  ]] && echo "MANPATH=${DATAPATH}/man"   >> "${ee}"
+		[[ -d ${ROOT}/${DATAPATH}/info ]] && echo "INFOPATH=${DATAPATH}/info" >> "${ee}"
+		mv_if_diff "${ee}" "${e}"
+	fi
+
+	local c="${ENV_D}/config-${TARGET}"
+	local cc="${c}.tmp"
+	echo "CURRENT=${VER}" > "${cc}"
+	mv_if_diff "${cc}" "${c}"
+
+	eend 0
+
+	#
+	# Regen env.d if need/can be
+	#
+	if [[ ${ROOT} == "/" ]] && [[ ${TARGET} == ${HOST} ]] ; then
+		env-update ${env_update_flag}
+		echo
+		ewarn "Please remember to run:"
+		echo
+		ewarn "  # . /etc/profile"
+		echo
+	fi
+
+	return 0
+}
+
+uninstall_target() {
+	: ${TARGET:=${UARG}}
+
+	if [[ ${TARGET} == ${HOST} ]] ; then
+		die "refusing to uninstall native binutils"
+	fi
+
+	shopt -s nullglob
+	PROFILE=""
+
+	for PROFILE in "${ENV_D}"/${TARGET}-* ; do
+		ewarn "Removing all signs of ${PROFILE##*/}"
+		rm -f "${ENV_D}"/${PROFILE}
+	done
+	if [[ -z ${PROFILE} ]] && [[ ! -e ${ENV_D}/config-${TARGET} ]] ; then
+		die "no profiles exist for '${TARGET}'"
+	fi
+
+	rm -f "${ENV_D}"/config-${TARGET}
+
+	local x
+	for x in \
+		addr2line ar as c++filt elf2flt elfedit flthdr gprof \
+		ld ld.{bfd,gold,real} \
+		nm objcopy objdump ranlib readelf size strings strip
+	do
+		x=(
+			"${ROOT}"/usr/bin/${TARGET}-${x}
+			"${ROOT}"/usr/{${HOST}/,}${TARGET}/bin/${x}
+			"${ROOT}"/usr/libexec/gcc/${TARGET}/${x}
+		)
+		rm -f "${x[@]}"
+	done
+	for x in "${HEADERS[@]}" ; do
+		rm -f "${ROOT}"/usr/{${HOST}/,}${TARGET}/{usr/,}include/${x}
+	done
+	for x in bfd iberty opcodes ; do
+		rm -f "${ROOT}"/usr/${HOST}/${TARGET}/lib/lib${x}{{-*,}.so,.a,.la}
+	done
+	# Delete broken symlinks
+	local destdir="${ROOT}/usr/${HOST}/${TARGET}"
+	rm -f "${destdir}"/lib/ldscripts
+	find -L "${destdir}"/lib -type l -exec rm {} +
+	rmdir \
+		"${destdir}"/{bin,include,lib,usr} \
+		"${destdir}" \
+		"${ROOT}"/var/db/pkg/cross-${TARGET} \
+		"${ROOT}"/usr/{${HOST}/,}${TARGET}/bin \
+		"${ROOT}"/usr/libexec/gcc/${TARGET} \
+		2>/dev/null
+
+	rm -f "${ENV_D}"/${TARGET}-*
+}
+
+set_current_profile() {
+	if [[ ! -f ${ENV_D}/config-${TARGET} ]] ; then
+		eerror "${argv0}: unable to locate a profile for target: ${TARGET}"
+		return 1
+	fi
+
+	source "${ENV_D}/config-${TARGET}"
+
+	if [[ -z ${CURRENT} ]] ; then
+		eerror "${argv0}: no binutils profile is active!"
+		return 1
+	fi
+
+	echo "${TARGET}-${CURRENT}"
+
+	return 0
+}
+get_current_profile() { echo "${PROFILE}" ; }
+
+list_profiles() {
+	local x i target
+
+	if [[ ${ROOT} != / ]] ; then
+		echo "Using binutils-config info in ${ROOT}"
+	fi
+
+	set -- "${ENV_D}"/*
+	target=
+	i=1
+
+	for x ; do
+		# skip broken links and config files
+		[[ -f ${x} ]] || continue
+		[[ ${x} == */config-* ]] && continue
+
+		source "${x}"
+		if [[ ${target} != ${TARGET} ]] ; then
+			[[ -n ${target} ]] && echo
+			target=${TARGET}
+		fi
+
+		x=${x##*/}
+		if [[ -e ${ENV_D}/config-${TARGET} ]] ; then
+			source "${ENV_D}/config-${TARGET}"
+			if [[ ${VER} == ${CURRENT} ]] ; then
+				[[ ${TARGET} == ${HOST} ]] \
+					&& x="${x} ${GOOD}*${NORMAL}" \
+					|| x="${x} ${HILITE}*${NORMAL}"
+			fi
+		fi
+
+		# We would align the [...] field like so:
+		#printf ' [%*ss] %s\n' ${##} "${i}" "${x}"
+		# but this breaks simple scripting: `binutils -l | awk '{print $2}'`
+
+		# Or we could align the target col like so:
+		#printf ' [%s]%*s %s\n' "${i}" $(( ${##} - ${#i} )) "" "${x}"
+		# but i'm not sold that it looks better
+
+		# So keep it simple ... only makes a diff anyways for crazy people
+		# like me which have 100+ binutils packages installed ...
+		echo " [$i] ${x}"
+		((++i))
+	done
+}
+
+switch_linker() {
+	local bpath ld=$1
+
+	case ${ld} in
+	ld.*) ;;
+	*) die "not supported: linker must start with 'ld.'" ;;
+	esac
+
+	setup_env || return 1
+	bpath="${ROOT}/${BINPATH}"
+
+	# does this binutils even support the requested linker ?
+	if [[ ! -e ${bpath}/${ld} ]] ; then
+		die "sorry, but ${PROFILE} doesn't support the ${ld} linker"
+	fi
+
+	# switch it up
+	ebegin "Setting default linker to ${ld} for ${PROFILE}"
+	atomic_ln ${ld} "${bpath}" ld
+	eend $?
+}
+
+set_HOST() {
+	# Set HOST to CHOST if it isn't already set
+	: ${HOST:=${CHOST:-$(portageq envvar CHOST)}}
+}
+
+ENV_D="${ROOT}etc/env.d/binutils"
+
+DEBUG="no"
+NEED_ACTION="yes"
+DOIT="switch_profile"
+PROFILE="current"
+HOST=""
+TARGET=""
+unset UARG
+
+select_action() {
+	if [[ ${NEED_ACTION} != "no" ]] ; then
+		NEED_ACTION="no"
+		DOIT=$1
+	else
+		die "one action at a time!"
+	fi
+}
+
+while [[ $# -gt 0 ]] ; do
+	x=$1
+	shift
+	case ${x} in
+		-c|--get-current-profile)  select_action get_current_profile ;;
+		-l|--list|--list-profiles) select_action list_profiles ;;
+		-u|--uninstall)            select_action uninstall_target ;;
+		--linker)                  select_action "switch_linker $1"; shift ;;
+		-d|--debug)                DEBUG="yes" ;;
+		-h|--help)                 usage 0 ;;
+		-V|--version)
+			unset Header
+			cvsver="$Id$"
+			cvsver=${cvsver##*binutils-config-}
+			bver=${cvsver%%,v *}
+			cvsver=${cvsver#* }
+			echo "binutils-config-${bver} (r${cvsver%% *})"
+			exit 0
+			;;
+		-*)
+			die "invalid switch!  Try '--help'."
+			;;
+		*)
+			if [[ ${UARG+set} == "set" ]] ; then
+				die "only one profile/target at a time please"
+			fi
+			NEED_ACTION="maybe"
+			UARG=${x}
+			;;
+	esac
+done
+
+[[ ${NEED_ACTION} == "yes" ]] && usage 1
+[[ ${DEBUG} == "yes" ]] && set -x
+
+# All operations need to know the current HOST to figure out
+# what is a native target and what is a cross target
+set_HOST
+
+# All operations need to know the profile the user wants
+case ${DOIT} in
+switch_profile|switch_linker_*)
+	# decode user's profile choice
+	x=${UARG:-$(TARGET=${HOST} set_current_profile)}
+	PROFILE=""
+	if [[ -z $(echo ${x} | tr -d '[:digit:]') ]] ; then
+		# User gave us a # representing the profile
+		i=1
+		for y in "${ENV_D}"/* ; do
+			[[ ${y/config-} != ${y} ]] && continue
+
+			if [[ -f ${y} ]] && [[ ${x} -eq ${i} ]] ; then
+				PROFILE=${y##*/}
+				break
+			fi
+			((++i))
+		done
+	fi
+
+	if [[ -z ${PROFILE} ]] ; then
+		# User gave us a full HOST-ver
+		x=${x##*/}
+		if [[ -f ${ENV_D}/${x} ]] ; then
+			# Valid HOST-ver yeah!
+			PROFILE=${x}
+		else
+			# Not a valid HOST-ver ...
+			if [[ ! -f ${ENV_D}/config-${x} ]] ; then
+				# Maybe they just gave us a ver ...
+				if [[ -f ${ENV_D}/${HOST}-${x} ]] ; then
+					x=${HOST}-${x}
+				else
+					die "could not locate '$x' in '${ENV_D}/'!"
+				fi
+				PROFILE=${x}
+			else
+				# Maybe they just gave us a target ... pick active profile
+				PROFILE=$(TARGET=${x} set_current_profile)
+			fi
+		fi
+	fi
+	;;
+*)
+	# lookup current profile as the user gave us a target
+	PROFILE=$(TARGET=${UARG:-${HOST}} set_current_profile) || exit 1
+	;;
+esac
+
+eval ${DOIT}
+
+# vim:ts=4
