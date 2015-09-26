@@ -107,8 +107,8 @@ src_install() {
 
 	# default configuration
 	insinto /etc/${PN}
-	newins conf/acng.conf ${PN}.conf
-	doins $( echo conf/* | sed 's|conf/acng.conf||g' )
+	newins "${CMAKE_BUILD_DIR}"/conf/acng.conf ${PN}.conf
+	doins $( echo conf/* | sed 's|conf/acng.conf.in||g' )
 
 	keepdir /var/log/${PN}
 	# Some directories must exists
