@@ -20,3 +20,9 @@ DEPEND="dev-python/cement[${PYTHON_USEDEP}]
 	dev-python/twisted-web
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
+
+src_unpack() {
+	default
+	find ${P} -type d -exec chmod 0755 {} + || die
+	find ${P} -type f -exec chmod 0644 {} + || die
+}
