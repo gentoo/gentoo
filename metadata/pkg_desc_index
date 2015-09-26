@@ -248,7 +248,7 @@ app-arch/createrepo 0.10.3: Creates a common rpm-metadata repository
 app-arch/deb2targz 1-r2: Convert a .deb file to a .tar.gz archive
 app-arch/defluff 0.3.2: deflate huffman optimizer
 app-arch/deltarpm 3.6_pre20110223-r1: tools to create and apply deltarpms
-app-arch/dpkg 1.17.25 1.18.1 1.18.2: Package maintenance system for Debian
+app-arch/dpkg 1.17.25 1.18.2 1.18.3: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
 app-arch/dump 0.4.44-r1: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.8.0 1.8.0-r1 1.8.1-r1: Engrampa archive manager for MATE
@@ -14056,7 +14056,7 @@ net-misc/aget 0.4.1-r1: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to reduce the length of the prefix list
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
 net-misc/aiccu 2007.01.15-r5: AICCU Client to configure an IPv6 tunnel to SixXS
-net-misc/apt-cacher-ng 0.8.3 0.8.4 0.8.5: Yet another implementation of an HTTP proxy for Debian/Ubuntu software packages written in C++
+net-misc/apt-cacher-ng 0.8.5 0.8.6: Yet another implementation of an HTTP proxy for Debian/Ubuntu software packages written in C++
 net-misc/apt-proxy 1.3.0: Caching proxy for the Debian package system
 net-misc/aria2 1.15.2 1.16.3 1.16.5 1.18.0 1.18.5 1.18.7 1.18.9 1.19.0: A download utility with segmented downloading with BitTorrent support
 net-misc/arm 1.4.5.0-r2 1.4.5.0_p20140714-r2: A ncurses-based status monitor for Tor relays
@@ -14447,7 +14447,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1: CLI to access Yandex Disk file storage service
 net-misc/yaydl 1.5.2: Yet Another Youtube DownLoader which is downloading more than youtube
-net-misc/youtube-dl 2015.04.03 2015.09.03 2015.09.09: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2015.04.03 2015.09.09 2015.09.22: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.1 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17291,7 +17291,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.2-r1 3.3-r1: a free, open source web browser
 www-client/opera 12.16_p1860-r1 31.0.1889.174 32.0.1948.25: A fast and secure web browser
 www-client/opera-beta 32.0.1948.12 32.0.1948.19: A fast and secure web browser
-www-client/opera-developer 33.0.1967.0 33.0.1982.0: A fast and secure web browser
+www-client/opera-developer 33.0.1982.0 34.0.1996.0: A fast and secure web browser
 www-client/otter 0.9.07 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.11.1 9999: Command line interface to (Gentoo) Bugzilla
@@ -17307,7 +17307,7 @@ www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ 
 www-client/uzbl 2012.05.14 2012.05.14-r1 9999: Web interface tools which adhere to the unix philosophy.
 www-client/vimb 2.9: a fast, lightweight, vim-like browser based on webkit
 www-client/vimprobable2 1.4.0 1.4.2 1.4.2-r1 9999: A minimal web browser that behaves like the Vimperator plugin for Firefox
-www-client/vivaldi 1.0.275.3_p1 1.0.279.3_p1: A new browser for our friends
+www-client/vivaldi 1.0.279.3_p1 1.0.283.8_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7: A variant of w3m with support for multiple character encodings
