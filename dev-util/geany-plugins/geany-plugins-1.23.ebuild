@@ -18,6 +18,7 @@ IUSE="+commander debugger devhelp enchant gpg gtkspell lua markdown multiterm nl
 LINGUAS="be ca da de es fr gl ja pt pt_BR ru tr zh_CN"
 
 COMMON_DEPEND=">=dev-util/geany-$(get_version_component_range 1-2)
+	<dev-util/geany-1.25
 	commander? ( x11-libs/gtk+:2 )
 	dev-libs/libxml2:2
 	dev-libs/glib:2
@@ -32,7 +33,7 @@ COMMON_DEPEND=">=dev-util/geany-$(get_version_component_range 1-2)
 	enchant? ( app-text/enchant )
 	gpg? ( app-crypt/gpgme )
 	gtkspell? ( app-text/gtkspell:2 )
-	lua? ( dev-lang/lua )
+	lua? ( dev-lang/lua:* )
 	markdown? (
 		app-text/discount
 		net-libs/webkit-gtk:2
