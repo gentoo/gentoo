@@ -9,6 +9,6 @@ LICENSE=BSD
 PDEPEND=>=app-dicts/ipadic-2.7.0
 RDEPEND=>=dev-libs/darts-0.32 perl? ( !dev-perl/Text-ChaSen ) dev-lang/perl:=[-build(-)]
 SLOT=0
-SRC_URI=mirror://sourceforge.jp//chasen-legacy/32224/chasen-2.4.4.tar.gz
+SRC_URI=mirror://sourceforge.jp/chasen-legacy/32224/chasen-2.4.4.tar.gz
 _eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	unpacker	1d149d9bda7723e740cfd28118f27813
-_md5_=ea7b05244a02f07a9f95285b9f1f994c
+_md5_=ecfe46c6ca9b9bf7b49c5095fe61b307
