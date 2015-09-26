@@ -4182,7 +4182,7 @@ dev-java/reflectasm 1.09: High performance Java reflection
 dev-java/reflections 0.9.9: Java runtime metadata analysis
 dev-java/relaxng-datatype 1.0-r1: Interface between RELAX NG validators and datatype libraries
 dev-java/relaxngcc 1.12-r2 1.12-r3: RELAX NG Compiler Compiler
-dev-java/resin-servlet-api 3.0.25 3.1.10 3.1.11 3.1.12 4.0.13 4.0.14 4.0.15 4.0.22 4.0.25 4.0.26 4.0.27 4.0.44: Resin Servlet API 3.0/JSP API 2.1 implementation
+dev-java/resin-servlet-api 3.0.25 3.1.12 4.0.26 4.0.27 4.0.44: Resin Servlet API 3.0/JSP API 2.1 implementation
 dev-java/rhino 1.6.5 1.7.2-r2 1.7.7 1.7.7-r1: An open-source implementation of JavaScript written in Java
 dev-java/rngom 20051226: RNGOM is an open-source Java library for parsing RELAX NG grammars
 dev-java/rome 0.9: Open source Atom/RSS Java utilities that make it easy to work in Java with most syndication formats
