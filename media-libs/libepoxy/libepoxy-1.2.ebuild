@@ -28,7 +28,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test"
+IUSE=""
 RESTICT="test" # FIXME: tests fail when run from portage.
 
 DEPEND="${PYTHON_DEPS}
