@@ -27,8 +27,6 @@ RDEPEND="!<sys-apps/openrc-0.9.4"
 #if LIVE
 KEYWORDS=
 SRC_URI=
-
-DEPEND="sys-devel/systemd-m4"
 #endif
 
 src_configure() {
