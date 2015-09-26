@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit autotools eutils
+inherit eutils
 
 DESCRIPTION="Nodebrain is a tool to monitor and do event correlation"
 HOMEPAGE="http://nodebrain.sourceforge.net/"
@@ -27,28 +27,14 @@ RDEPEND="
 	!www-apps/nanoblogger
 "
 
-S="${WORKDIR}/nodebrain-${PV}"
-
 src_prepare() {
-	# fdl.texi is not included in the sources
-	sed -i \
-		-e '/@include fdl.texi/d' \
-		doc/nbTutorial/nbTutorial.texi || die
-
 	epatch "${FILESDIR}"/${PN}-0.8.14-include.patch
-
-	eautoreconf
 }
 
 src_configure() {
 	econf \
 		$(use_enable static-libs static) \
 		--include=/usr/include
-}
-
-src_compile() {
-	# Fails at parallel make
-	emake -j1
 }
 
 src_install() {

@@ -27,8 +27,6 @@ RDEPEND="
 	!www-apps/nanoblogger
 "
 
-S="${WORKDIR}/nodebrain-${PV}"
-
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-0.8.14-include.patch
 }
