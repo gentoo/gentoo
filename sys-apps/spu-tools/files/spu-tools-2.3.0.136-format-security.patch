@@ -1,0 +1,16 @@
+ spu-ps.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/spu-ps.c b/spu-ps.c
+index 8e0d667..e4e6ac0 100644
+--- a/spu-ps.c
++++ b/spu-ps.c
+@@ -59,7 +59,7 @@ static void dump_ctxs_or_spus(void **ctxs_or_spus, struct field *fields)
+ 			chars += print_ctx_field((struct ctx *)ctxs_or_spus[i],
+ 					buf+chars, fields[j].id, fields[j].format);
+ 		}
+-		printf(buf);
++		printf("%s", buf);
+ 		printf("\n");
+ 		i++;
+ 	}

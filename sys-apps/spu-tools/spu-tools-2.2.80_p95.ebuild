@@ -1,11 +1,11 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 MY_P=${P/_p/-}
 
 DESCRIPTION="CELL spu ps and top alike utilities"
-HOMEPAGE="http://sourceforge/projects/libspe"
+HOMEPAGE="https://sourceforge.net/projects/libspe"
 SRC_URI="mirror://sourceforge/libspe/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

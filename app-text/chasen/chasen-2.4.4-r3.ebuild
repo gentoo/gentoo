@@ -1,13 +1,14 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
-inherit perl-module
+
+inherit eutils perl-module
 
 DESCRIPTION="Japanese Morphological Analysis System, ChaSen"
 HOMEPAGE="http://chasen-legacy.sourceforge.jp/"
-SRC_URI="mirror://sourceforge.jp//chasen-legacy/32224/${P}.tar.gz"
+SRC_URI="mirror://sourceforge.jp/chasen-legacy/32224/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -32,33 +33,29 @@ src_configure() {
 }
 
 src_compile() {
-	emake || die
+	default
 	if use perl ; then
-		cd "${S}"/perl
+		cd "${S}"/perl || die
 		perl-module_src_compile
 	fi
 }
 
 src_test() {
-	emake check || die
+	default
 	if use perl ; then
-		cd "${S}"/perl
+		cd "${S}"/perl || die
 		perl-module_src_test
 	fi
 }
 
 src_install () {
-	emake DESTDIR="${D}" install || die
-
-	dodoc AUTHORS ChangeLog NEWS README
+	default
 
 	if use perl ; then
-		cd "${S}"/perl
+		cd "${S}"/perl || die
 		perl-module_src_install
 		newdoc README README.perl
 	fi
 
-	if ! use static-libs ; then
-		find "${ED}" -name '*.la' -delete
-	fi
+	prune_libtool_files
 }
