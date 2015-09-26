@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<herd>proxy-maint</herd>
 	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
+		<email>russell@annunaki2k2.co.uk</email>
+		<name>Russell Knighton</name>
+		<description>Proxy (user) maintainer</description>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">roxterm</remote-id>
