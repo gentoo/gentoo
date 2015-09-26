@@ -918,10 +918,9 @@ git-r3_peek_remote_ref() {
 	for r in "${repos[@]}"; do
 		einfo "Peeking \e[1m${remote_ref}\e[22m on \e[1m${r}\e[22m ..." >&2
 
-		local is_branch lookup_ref
+		local lookup_ref
 		if [[ ${remote_ref} == refs/heads/* || ${remote_ref} == HEAD ]]
 		then
-			is_branch=1
 			lookup_ref=${remote_ref}
 		else
 			# ls-remote by commit is going to fail anyway,
