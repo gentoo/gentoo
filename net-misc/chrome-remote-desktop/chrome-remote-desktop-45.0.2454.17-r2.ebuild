@@ -14,9 +14,11 @@
 # Use curl to find the answer:
 #  curl -q https://dl.google.com/linux/chrome-remote-desktop/deb/dists/stable/main/binary-i386/Packages | grep ^Filename
 
-EAPI="4"
+EAPI="5"
 
-inherit unpacker eutils
+PYTHON_COMPAT=( python2_7 )
+
+inherit unpacker eutils python-single-r1
 
 DESCRIPTION="access remote computers via Chrome!"
 PLUGIN_URL="https://chrome.google.com/remotedesktop"
@@ -32,7 +34,7 @@ IUSE=""
 
 # All the libs this package links against.
 RDEPEND="app-admin/sudo
-	dev-lang/python
+	${PYTHON_DEPS}
 	>=dev-libs/expat-2
 	dev-libs/glib:2
 	dev-libs/nspr
@@ -65,6 +67,7 @@ QA_PREBUILT="/opt/google/chrome-remote-desktop/*"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-44.0.2403.44-always-sudo.patch #541708
+	python_fix_shebang opt/google/chrome-remote-desktop/chrome-remote-desktop
 }
 
 src_install() {
