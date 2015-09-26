@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<herd>base-system</herd>
 	<upstream>
-		<remote-id type="sourceforge">libhugetlbfs</remote-id>
+		<remote-id type="github">libhugetlbfs/libhugetlbfs</remote-id>
 	</upstream>
 </pkgmetadata>
