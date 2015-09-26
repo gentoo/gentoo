@@ -64,9 +64,6 @@
 		
 		(A note on naming: in Greek mythology, Aeson was the father of Jason.)
 	</longdescription>
-	<use>
-		<flag name="developer">Operate in developer mode.'</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">bos/aeson</remote-id>
 	</upstream>
