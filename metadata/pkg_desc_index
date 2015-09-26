@@ -1992,7 +1992,7 @@ app-office/libalkimia 4.3.2-r1: Library with common classes and functionality us
 app-office/libreoffice 4.4.4.3 4.4.5.2 4.4.9999 5.0.1.2 5.0.2.2 5.0.9999 9999: LibreOffice, a full office productivity suite
 app-office/libreoffice-bin 4.4.4.3 4.4.5.2: LibreOffice, a full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 4.4.4.3 4.4.5.2: LibreOffice, a full office productivity suite. Binary package, debug info
-app-office/libreoffice-l10n 4.4.4.3 4.4.5.2 5.0.1.2: Translations for the Libreoffice suite
+app-office/libreoffice-l10n 4.4.4.3 4.4.5.2 5.0.1.2 5.0.2.2: Translations for the Libreoffice suite
 app-office/lotus-notes 8.5.3: Commercial fork of openoffice.org with extra features for company usage
 app-office/lyx 1.6.10 2.0.8.1 2.1.3 2.1.4: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a: An X11 based presentation tool
@@ -6015,7 +6015,7 @@ dev-perl/Router-Simple 0.140.0-r1: Simple HTTP router
 dev-perl/SDL 2.540-r1 2.544: Simple DirectMedia Layer (SDL) bindings for perl
 dev-perl/SGMLSpm 1.03-r7: Perl library for parsing the output of nsgmls
 dev-perl/SNMP_Session 1.13-r2: A SNMP Perl Module
-dev-perl/SOAP-Lite 1.040.0-r1 1.140.0: Simple and lightweight interface to the SOAP protocol (sic) both on client and server side
+dev-perl/SOAP-Lite 1.040.0-r1 1.140.0 1.190.0: Simple and lightweight interface to the SOAP protocol (sic) both on client and server side
 dev-perl/SOAP-WSDL 2.00.10-r1 3.2.0: SOAP with WSDL support
 dev-perl/SQL-Abstract 1.780.0 1.810.0: Generate SQL from Perl data structures
 dev-perl/SQL-Abstract-Limit 0.141.0-r1: Portable LIMIT emulation
