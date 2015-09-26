@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst postrm prepare pretend setup t
 DEPEND=hppa? ( sys-devel/binutils-hppa64 ) !sys-devel/gcc-hppa64 !sys-devel/gcc-mips64 !sys-devel/gcc-powerpc64 !sys-devel/gcc-sparc64 >=sys-apps/sed-4 sys-devel/gnuconfig sys-libs/zlib nls? ( virtual/libintl ) virtual/libiconv >=sys-devel/bison-1.875 >=sys-devel/flex-2.5.4 nls? ( sys-devel/gettext ) regression-test? ( >=dev-util/dejagnu-1.4.4 >=sys-devel/autogen-5.5.4 )
 DESCRIPTION=64bit kernel compiler
 EAPI=4
-HOMEPAGE=http://gcc.gnu.org/
+HOMEPAGE=https://gcc.gnu.org/
 IUSE=multislot regression-test vanilla +nls +nptl
 KEYWORDS=-* hppa ~mips ppc ~s390 sparc
 LICENSE=GPL-2+ LGPL-2.1+ FDL-1.2+
@@ -11,5 +11,5 @@ RDEPEND=sys-libs/zlib nls? ( virtual/libintl ) virtual/libiconv
 RESTRICT=strip
 SLOT=4.1.2
 SRC_URI=mirror://gnu/gcc/gcc-4.1.2/gcc-4.1.2.tar.bz2 mirror://gentoo/gcc-4.1.2-patches-1.0.1.tar.bz2 https://dev.gentoo.org/~vapier/dist/gcc-4.1.2-patches-1.0.1.tar.bz2 https://dev.gentoo.org/~rhill/dist/gcc-4.1.2-patches-1.0.1.tar.bz2 https://dev.gentoo.org/~zorry/patches/gcc/gcc-4.1.2-patches-1.0.1.tar.bz2 https://dev.gentoo.org/~blueness/dist/gcc-4.1.2-patches-1.0.1.tar.bz2
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	fixheadtails	2f44773656577fe2653bacc8bdcb2174	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	gnuconfig	3920de1188fc7bfee873515453ed1d10	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	4f1280c0d4dcd8340f731827007c0a53	toolchain	271b2da2bfe3695ab182423e4ccb3715	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	fixheadtails	2f44773656577fe2653bacc8bdcb2174	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	gnuconfig	3920de1188fc7bfee873515453ed1d10	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	4f1280c0d4dcd8340f731827007c0a53	toolchain	4a9dfb2f6e7a2639af83dda8866994d8	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=10a3142baa013cd0ceac7dab96617a80
