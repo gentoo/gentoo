@@ -9209,7 +9209,7 @@ dev-util/ftnchek 3.3.1-r1: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6: Stress-tests programs by giving them random input
 dev-util/gdbus-codegen 2.40.2 2.42.1 2.42.2 2.44.1: GDBus code and documentation generator
 dev-util/geany 1.23.1 1.24.1 1.25: GTK+ based fast and lightweight IDE
-dev-util/geany-plugins 1.23 1.24-r1: A collection of different plugins for Geany
+dev-util/geany-plugins 1.23 1.24-r1 1.25: A collection of different plugins for Geany
 dev-util/gengetopt 2.22.6: A tool to write command line option parsing code for C programs
 dev-util/ghh 9999: a tool to track the history and make backups of your home directory
 dev-util/glade 3.8.5 3.18.3: A user interface designer for GTK+ and GNOME
