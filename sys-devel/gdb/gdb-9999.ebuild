@@ -170,6 +170,14 @@ src_install() {
 	use client && find "${ED}"/usr -name libiberty.a -delete
 	cd "${S}"
 
+	# Delete translations that conflict with binutils-libs. #528088
+	# Note: Should figure out how to store these in an internal gdb dir.
+	if use nls ; then
+		find "${ED}" \
+			-regextype posix-extended -regex '.*/(bfd|opcodes)[.]g?mo$' \
+			-delete
+	fi
+
 	# Don't install docs when building a cross-gdb
 	if [[ ${CTARGET} != ${CHOST} ]] ; then
 		rm -r "${ED}"/usr/share/{doc,info,locale}
