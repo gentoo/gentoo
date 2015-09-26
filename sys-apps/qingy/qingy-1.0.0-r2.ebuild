@@ -47,6 +47,7 @@ src_prepare() {
 	epatch "${DISTDIR}"/${P}-screensavers.patch.gz
 	# bug #372675 - fix from upstream
 	epatch "${DISTDIR}"/${P}-consolekit-pam.patch.gz
+	epatch_user #510738
 	eautoreconf
 }
 
