@@ -26,7 +26,7 @@
 #   https://bugzilla.mozilla.org/enter_bug.cgi?product=NSS&component=CA%20Certificates&version=trunk
 
 EAPI="4"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
 inherit eutils python-any-r1
 
@@ -123,6 +123,9 @@ src_prepare() {
 		-e '/="$ROOT/s:ROOT/:ROOT'"${EPREFIX}"'/:' \
 		-e '/RELPATH="\.\./s:"$:'"${relp}"'":' \
 		usr/sbin/update-ca-certificates || die
+
+	cd "${S}"
+	epatch "${FILESDIR}"/${PN}-20150426-nss-certdata2pem-py3.patch #548374
 }
 
 src_compile() {
