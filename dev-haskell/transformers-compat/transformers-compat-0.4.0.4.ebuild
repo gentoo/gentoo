@@ -17,10 +17,10 @@ SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="alpha amd64 ppc ~ppc64 sparc x86"
-IUSE="+three"
+IUSE=""
 
 RDEPEND=">=dev-lang/ghc-7.4.1:=
-	three? ( >=dev-haskell/mtl-2.1:=[profile?] <dev-haskell/mtl-2.2:=[profile?] )
+	>=dev-haskell/mtl-2.1:=[profile?]
 	>=dev-haskell/transformers-0.3:=[profile?] <dev-haskell/transformers-0.5:=[profile?]
 "
 DEPEND="${RDEPEND}
@@ -28,8 +28,16 @@ DEPEND="${RDEPEND}
 "
 
 src_configure() {
+	local tf_arg=()
+
+	has_version '=dev-haskell/transformers-0.3*' && \
+		tf_arg+=(--flag=three)
+
+	has_version '=dev-haskell/transformers-0.4*' && \
+		tf_arg+=(--flag=-three)
+
 	haskell-cabal_src_configure \
 		--flag=mtl \
-		$(cabal_flag three three) \
-		--flag=-two
+		--flag=-two \
+		${tf_arg[@]}
 }
