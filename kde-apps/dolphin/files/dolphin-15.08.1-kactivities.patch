@@ -1,0 +1,29 @@
+From 6e218c4c146c08626c6bf4c87e9849a9de7462c4 Mon Sep 17 00:00:00 2001
+From: Michael Palimaka <kensington@gentoo.org>
+Date: Sat, 26 Sep 2015 05:34:26 +1000
+Subject: [PATCH] Fix KF5Activities being optional.
+
+If found via find_package(KF5 COMPONENTS Activities) instead, it will
+inherit REQUIRED from the previous call.
+
+REVIEW: 125360
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d98f261..d926e9f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -66,7 +66,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+     WindowSystem
+     Notifications
+ )
+-find_package(KF5 ${KF5_MIN_VERSION} COMPONENTS
++find_package(KF5 ${KF5_MIN_VERSION} OPTIONAL_COMPONENTS
+     Activities
+ )
+ 
+-- 
+2.4.9
+
