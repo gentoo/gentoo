@@ -7,16 +7,18 @@ PYTHON_COMPAT=( python2_7 python3_{3,4} )
 DISTUTILS_OPTIONAL=1
 inherit distutils-r1 eutils libtool multilib multilib-minimal
 
-NL_P=${P/_/-}
+LIBNL_P=${P/_/-}
+LIBNL_DIR=${PV/_/}
+LIBNL_DIR=${LIBNL_DIR//./_}
 
 DESCRIPTION="A collection of libraries providing APIs to netlink protocol based Linux kernel interfaces"
-HOMEPAGE="http://www.infradead.org/~tgr/libnl/"
+HOMEPAGE="http://www.infradead.org/~tgr/libnl/ https://github.com/thom311/libnl"
 SRC_URI="
-	http://www.infradead.org/~tgr/${PN}/files/${NL_P}.tar.gz
+	https://github.com/thom311/${PN}/releases/download/${PN}${LIBNL_DIR}/${P/_rc/-rc}.tar.gz
 "
 LICENSE="LGPL-2.1 utils? ( GPL-2 )"
 SLOT="3"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~ia64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~ia64-linux ~x86-linux"
 IUSE="static-libs python utils"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )
@@ -34,7 +36,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DOCS=( ChangeLog )
 
-S=${WORKDIR}/${NL_P}
+S=${WORKDIR}/${LIBNL_P}
 
 MULTILIB_WRAPPED_HEADERS=(
 	# we do not install CLI stuff for non-native
