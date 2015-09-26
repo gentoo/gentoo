@@ -56,7 +56,7 @@ fi
 is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
 
 DESCRIPTION="Tools necessary to build programs"
-HOMEPAGE="http://sourceware.org/binutils/"
+HOMEPAGE="https://sourceware.org/binutils/"
 
 case ${BTYPE} in
 	git) SRC_URI="" ;;
