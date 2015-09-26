@@ -40,7 +40,7 @@ COMMON_TARGETS="aarch64 alpha arm cris i386 m68k microblaze microblazeel mips
 mips64 mips64el mipsel or32 ppc ppc64 s390x sh4 sh4eb sparc sparc64 unicore32
 x86_64"
 IUSE_SOFTMMU_TARGETS="${COMMON_TARGETS} lm32 moxie ppcemb tricore xtensa xtensaeb"
-IUSE_USER_TARGETS="${COMMON_TARGETS} armeb mipsn32 mipsn32el ppc64abi32 ppc64le sparc32plus"
+IUSE_USER_TARGETS="${COMMON_TARGETS} armeb mipsn32 mipsn32el ppc64abi32 ppc64le sparc32plus tilegx"
 
 use_softmmu_targets=$(printf ' qemu_softmmu_targets_%s' ${IUSE_SOFTMMU_TARGETS})
 use_user_targets=$(printf ' qemu_user_targets_%s' ${IUSE_USER_TARGETS})
