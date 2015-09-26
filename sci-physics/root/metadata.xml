@@ -17,11 +17,9 @@
 <use>
   <flag name="c++11"> Build ROOT using the C++11 standard</flag>
   <flag name="c++14"> Build ROOT using the C++14 standard</flag>
-  <flag name="clarens"> Build the Clarens and PEAC plug-ins, to use in a GRID enabled analysis</flag>  
   <flag name="fits">Support for images and data from FITS files with <pkg>sci-libs/cfitsio</pkg></flag>
   <flag name="gdml">Enable GDML writer and reader</flag>
   <flag name="geocad">Enable ROOT-CAD interface using <pkg>sci-libs/opencascade</pkg></flag>
-  <flag name="htmldoc">Generate html documentation</flag>
   <flag name="http">Enable http server support including but not limited to fastcgi support</flag>
   <flag name="math">Build all math related libraries plugins, needs <pkg>sci-libs/gsl</pkg> </flag>
   <flag name="memstat">Build memory statistics library, helps to detect memory leaks</flag>
