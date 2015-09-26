@@ -581,8 +581,8 @@ git-r3_fetch() {
 			if [[ ${remote_ref} == HEAD ]]; then
 				# HEAD
 				fetch_l=HEAD
-			elif [[ ${remote_ref} == refs/heads/* ]]; then
-				# regular branch
+			elif [[ ${remote_ref} == refs/* ]]; then
+				# regular branch, tag or some other explicit ref
 				fetch_l=${remote_ref}
 			else
 				# tag or commit id...
@@ -919,7 +919,7 @@ git-r3_peek_remote_ref() {
 		einfo "Peeking \e[1m${remote_ref}\e[22m on \e[1m${r}\e[22m ..." >&2
 
 		local lookup_ref
-		if [[ ${remote_ref} == refs/heads/* || ${remote_ref} == HEAD ]]
+		if [[ ${remote_ref} == refs/* || ${remote_ref} == HEAD ]]
 		then
 			lookup_ref=${remote_ref}
 		else
