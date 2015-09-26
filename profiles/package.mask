@@ -76,11 +76,6 @@ sci-chemistry/babel
 
 # Dion Moult <moult@gentoo.org> (24 Sep 2015)
 # Masked for removal in 30 days.
-# Upstream disappeared. Bug #510594
-app-cdr/nero
-
-# Dion Moult <moult@gentoo.org> (24 Sep 2015)
-# Masked for removal in 30 days.
 # Upstream disappeared. Bug #528020
 app-crypt/aesutil
 
