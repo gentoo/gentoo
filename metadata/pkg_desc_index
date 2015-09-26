@@ -8530,7 +8530,7 @@ dev-ruby/net-http-digest_auth 1.4-r1 1.4-r2: An implementation of RFC 2617 - Dig
 dev-ruby/net-http-persistent 2.9.4 2.9.4-r1: Manages persistent connections using Net::HTTP plus a speed fix for Ruby 1.8
 dev-ruby/net-scp 1.1.2-r1 1.2.1: A pure Ruby implementation of the SCP client protocol
 dev-ruby/net-sftp 2.1.2-r1 2.1.2-r2: SFTP in pure Ruby
-dev-ruby/net-ssh 2.8.0 2.9.2 2.10.0: Non-interactive SSH processing in pure Ruby
+dev-ruby/net-ssh 2.8.0 2.9.2 2.10.0 3.0.1: Non-interactive SSH processing in pure Ruby
 dev-ruby/net-ssh-gateway 1.2.0 1.2.0-r1: A simple library to assist in enabling tunneled Net::SSH connections
 dev-ruby/net-ssh-multi 1.2.0-r1 1.2.1: A library for controlling multiple Net::SSH connections via a single interface
 dev-ruby/netrc 0.9.0 0.9.0-r1 0.10.2 0.10.3: This library reads and writes .netrc files
