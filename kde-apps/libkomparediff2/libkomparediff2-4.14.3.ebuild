@@ -11,5 +11,5 @@ KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug test"
 
 RDEPEND="${DEPEND}
-	!<=kde-base/kompare-4.11.50
+	!<=kde-base/kompare-4.11.50:4
 "

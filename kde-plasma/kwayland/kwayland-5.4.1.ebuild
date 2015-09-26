@@ -19,9 +19,7 @@ DEPEND="
 	dev-qt/qtgui:5
 	media-libs/mesa[egl]
 "
-RDEPEND="${DEPEND}
-	!kde-base/kwayland
-"
+RDEPEND="${DEPEND}"
 
 # All failing, i guess we need a virtual wayland server
 RESTRICT="test"

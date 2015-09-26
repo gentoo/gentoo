@@ -36,7 +36,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!=kde-base/kdepim-runtime-4.10*
 	!=kde-base/kdepim-runtime-4.11*
-	!<kde-base/kdepim-runtime-4.4.11.1-r2
+	!<kde-base/kdepim-runtime-4.4.11.1-r2:4
 "
 
 PATCHES=( "${FILESDIR}/${PN}-4.9.1-boostincludes.patch" )

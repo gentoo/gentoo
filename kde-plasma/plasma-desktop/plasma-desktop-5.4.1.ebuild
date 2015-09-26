@@ -100,10 +100,10 @@ RDEPEND="${COMMON_DEPEND}
 	!kde-apps/kcontrol
 	!kde-apps/kdepasswd
 	!kde-apps/knetattach[handbook]
-	!kde-base/plasma-desktop
-	!kde-base/plasma-workspace
-	!kde-base/solid-actions-kcm
-	!kde-base/systemsettings
+	!kde-base/plasma-desktop:4
+	!kde-base/plasma-workspace:4
+	!kde-base/solid-actions-kcm:4
+	!kde-base/systemsettings:4
 	!kde-misc/kcm_touchpad
 	!kde-misc/kcm-touchpad
 	!kde-plasma/kcm-touchpad
