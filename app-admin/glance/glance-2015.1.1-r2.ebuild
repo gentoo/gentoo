@@ -26,7 +26,7 @@ DEPEND="
 			${RDEPEND}
 			>=dev-python/hacking-0.10.0[${PYTHON_USEDEP}]
 			<dev-python/hacking-0.11[${PYTHON_USEDEP}]
-			~dev-python/Babel-1.3[${PYTHON_USEDEP}]
+			>=dev-python/Babel-1.3[${PYTHON_USEDEP}]
 			>=dev-python/coverage-3.6[${PYTHON_USEDEP}]
 			>=dev-python/fixtures-0.3.14[${PYTHON_USEDEP}]
 			<dev-python/fixtures-1.3.0[${PYTHON_USEDEP}]
