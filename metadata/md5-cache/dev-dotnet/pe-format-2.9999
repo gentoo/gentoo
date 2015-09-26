@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare test unpack
-DEPEND=sys-devel/systemd-m4 >=dev-vcs/git-1.8.2.1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEPEND=>=dev-vcs/git-1.8.2.1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DESCRIPTION=Intelligent PE executable wrapper for binfmt_misc
 EAPI=5
 HOMEPAGE=https://bitbucket.org/mgorny/pe-format2/
@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=!<sys-apps/openrc-0.9.4
 SLOT=0
 _eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	95613dd6157fb4a3b225eafdc56bd441	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	git-r3	1502b9838d043db47700b8120083e637	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=aa6e160e796e345a50e852b68f5d6d7a
+_md5_=29fcee2b97e3e97280856db3acba8a19

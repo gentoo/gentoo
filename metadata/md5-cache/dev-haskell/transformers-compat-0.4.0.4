@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install postinst postrm setup test
-DEPEND=>=dev-lang/ghc-7.4.1:= three? ( >=dev-haskell/mtl-2.1:=[profile?] <dev-haskell/mtl-2.2:=[profile?] ) >=dev-haskell/transformers-0.3:=[profile?] <dev-haskell/transformers-0.5:=[profile?] >=dev-haskell/cabal-1.8 doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
+DEPEND=>=dev-lang/ghc-7.4.1:= >=dev-haskell/mtl-2.1:=[profile?] >=dev-haskell/transformers-0.3:=[profile?] <dev-haskell/transformers-0.5:=[profile?] >=dev-haskell/cabal-1.8 doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
 DESCRIPTION=A small compatibility shim for dev-haskell/transformers
 EAPI=5
 HOMEPAGE=https://github.com/ekmett/transformers-compat/
-IUSE=+three doc hscolour profile
+IUSE=doc hscolour profile
 KEYWORDS=alpha amd64 ppc ~ppc64 sparc x86
 LICENSE=BSD
-RDEPEND=>=dev-lang/ghc-7.4.1:= three? ( >=dev-haskell/mtl-2.1:=[profile?] <dev-haskell/mtl-2.2:=[profile?] ) >=dev-haskell/transformers-0.3:=[profile?] <dev-haskell/transformers-0.5:=[profile?]
+RDEPEND=>=dev-lang/ghc-7.4.1:= >=dev-haskell/mtl-2.1:=[profile?] >=dev-haskell/transformers-0.3:=[profile?] <dev-haskell/transformers-0.5:=[profile?]
 SLOT=0/0.4.0.4
 SRC_URI=mirror://hackage/packages/archive/transformers-compat/0.4.0.4/transformers-compat-0.4.0.4.tar.gz
 _eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	ghc-package	6165faf4ae46df43d5a9b0dd28ec8654	haskell-cabal	5a91bcb951851c3c401505c28526502f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=1accfbdb7639b97689371e6138366902
+_md5_=4115ea5faffdf4f8f6ecf5821ad915a6
