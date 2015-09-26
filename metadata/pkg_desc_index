@@ -207,7 +207,7 @@ app-admin/syslog-ng 3.4.8 3.6.2 3.6.4 3.7.1 3.7.1-r1: syslog replacement with ad
 app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/syslogread 0.92-r1: Syslog message handling tools
 app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via network
-app-admin/sysstat 11.0.2 11.0.5-r1 11.0.6 11.1.5-r1 11.1.6: System performance tools for Linux
+app-admin/sysstat 11.0.2 11.0.6 11.0.7 11.1.6 11.1.7: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
@@ -11974,7 +11974,7 @@ media-libs/libdvdread 4.2.1 5.0.0-r2 5.0.2 5.0.3 9999: Library for DVD navigatio
 media-libs/libebur128 1.0.2 1.0.3: A library implementing the EBU R128 loudness standard
 media-libs/libechonest 2.0.2 2.2.0-r1 2.3.0 2.3.1: A library for communicating with The Echo Nest
 media-libs/libemf 1.0.4-r1 1.0.7: Library implementation of ECMA-234 API for the generation of enhanced metafiles
-media-libs/libepoxy 1.2 9999: Epoxy is a library for handling OpenGL function pointer management for you
+media-libs/libepoxy 1.2 1.3.1 9999: Epoxy is a library for handling OpenGL function pointer management for you
 media-libs/libexif 0.6.21 0.6.21-r1: Library for parsing, editing, and saving EXIF data
 media-libs/libexif-gtk 0.3.5-r2: GTK+ frontend to the libexif library (parsing, editing, and saving EXIF data)
 media-libs/libextractor 1.0.1 1.3: A library used to extract metadata from files of arbitrary type
