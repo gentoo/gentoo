@@ -585,7 +585,7 @@ git-r3_fetch() {
 				# regular branch
 				fetch_l=${remote_ref}
 			else
-				# tag or commit...
+				# tag or commit id...
 				# let ls-remote figure it out
 				local tagref=$(git ls-remote "${r}" "refs/tags/${remote_ref}")
 
@@ -594,8 +594,8 @@ git-r3_fetch() {
 					# tag
 					fetch_l=refs/tags/${remote_ref}
 				else
-					# commit
-					# so we need to fetch the branch
+					# commit id
+					# so we need to fetch the whole branch
 					if [[ ${branch} ]]; then
 						fetch_l=${branch}
 					else
@@ -697,7 +697,7 @@ git-r3_fetch() {
 	[[ ${success} ]] || die "Unable to fetch from any of EGIT_REPO_URI"
 
 	# submodules can reference commits in any branch
-	# always use the 'clone' mode to accomodate that, bug #503332
+	# always use the 'mirror' mode to accomodate that, bug #503332
 	local EGIT_CLONE_TYPE=mirror
 
 	# recursively fetch submodules
