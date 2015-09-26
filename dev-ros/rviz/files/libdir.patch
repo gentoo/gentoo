@@ -1,0 +1,26 @@
+https://github.com/ros-visualization/rviz/pull/922
+
+commit 2f93b132a63e25e3cece330ebaf16de7a8aa9517
+Author: Alexis Ballier <aballier@gentoo.org>
+Date:   Sat Sep 26 11:39:39 2015 +0200
+
+    python_bindings: sip: Use CATKIN_PACKAGE_LIB_DESTINATION instead of hardcoded lib.
+    
+    Fixes build with libdir != lib.
+    https://bugs.gentoo.org/show_bug.cgi?id=561480
+
+diff --git a/src/python_bindings/sip/CMakeLists.txt b/src/python_bindings/sip/CMakeLists.txt
+index 6b0c939..c91a6be 100644
+--- a/src/python_bindings/sip/CMakeLists.txt
++++ b/src/python_bindings/sip/CMakeLists.txt
+@@ -42,8 +42,8 @@ include(${python_qt_binding_EXTRAS_DIR}/sip_helper.cmake)
+ # maintain context for different named target
+ set(rviz_sip_INCLUDE_DIRS ${rviz_INCLUDE_DIRS} "${PROJECT_SOURCE_DIR}/src" ${catkin_INCLUDE_DIRS})
+ set(rviz_sip_LIBRARIES ${rviz_LIBRARIES} ${PROJECT_NAME})
+-set(rviz_sip_LIBRARY_DIRS ${rviz_LIBRARY_DIRS} ${CATKIN_DEVEL_PREFIX}/lib)
+-set(rviz_sip_LDFLAGS_OTHER ${rviz_LDFLAGS_OTHER} -Wl,-rpath,\\"${CATKIN_DEVEL_PREFIX}/lib\\")
++set(rviz_sip_LIBRARY_DIRS ${rviz_LIBRARY_DIRS} ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION})
++set(rviz_sip_LDFLAGS_OTHER ${rviz_LDFLAGS_OTHER} -Wl,-rpath,\\"${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}\\")
+ 
+ if(sip_helper_FOUND)
+   list(APPEND rviz_BINDINGS "sip")
