@@ -315,7 +315,7 @@ pkg_postinst() {
 	if has_version "<${CATEGORY}/${PN}-7.1_p1" ; then #557388
 		elog "Starting with openssh-7.0, support for ssh-dss keys were disabled due to their"
 		elog "weak sizes.  If you rely on these key types, you can re-enable the key types by"
-		elog "adding to your sshd_config:"
+		elog "adding to your sshd_config or ~/.ssh/config files:"
 		elog "	PubkeyAcceptedKeyTypes=+ssh-dss"
 		elog "You should however generate new keys using rsa or ed25519."
 	fi

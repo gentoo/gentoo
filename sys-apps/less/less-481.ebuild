@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 inherit eutils
 
@@ -19,7 +19,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="pcre unicode"
 
 DEPEND=">=app-misc/editor-wrapper-3
-	>=sys-libs/ncurses-5.2
+	>=sys-libs/ncurses-5.2:0=
 	pcre? ( dev-libs/libpcre )"
 RDEPEND="${DEPEND}"
 

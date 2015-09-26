@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 inherit eutils flag-o-matic
 if [[ ${PV} == "9999" ]] ; then
@@ -21,8 +21,8 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="debug justify +magic minimal ncurses nls slang +spell static unicode"
 
-LIB_DEPEND=">=sys-libs/ncurses-5.9-r1:0[unicode?]
-	sys-libs/ncurses:0[static-libs(+)]
+LIB_DEPEND=">=sys-libs/ncurses-5.9-r1:0=[unicode?]
+	sys-libs/ncurses:0=[static-libs(+)]
 	magic? ( sys-apps/file[static-libs(+)] )
 	nls? ( virtual/libintl )
 	!ncurses? ( slang? ( sys-libs/slang[static-libs(+)] ) )"

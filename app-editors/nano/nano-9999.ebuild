@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 inherit eutils flag-o-matic
 if [[ ${PV} == "9999" ]] ; then
@@ -21,8 +21,8 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="debug justify +magic minimal ncurses nls slang +spell static unicode"
 
-LIB_DEPEND=">=sys-libs/ncurses-5.9-r1:0[unicode?]
-	sys-libs/ncurses:0[static-libs(+)]
+LIB_DEPEND=">=sys-libs/ncurses-5.9-r1:0=[unicode?]
+	sys-libs/ncurses:0=[static-libs(+)]
 	magic? ( sys-apps/file[static-libs(+)] )
 	nls? ( virtual/libintl )
 	!ncurses? ( slang? ( sys-libs/slang[static-libs(+)] ) )"
@@ -41,7 +41,6 @@ src_prepare() {
 
 src_configure() {
 	use static && append-ldflags -static
-	eval export ac_cv_{header_magic_h,lib_magic_magic_open}=$(usex magic)
 	local myconf=()
 	case ${CHOST} in
 	*-gnu*|*-uclibc*) myconf+=( "--with-wordbounds" ) ;; #467848
@@ -53,6 +52,7 @@ src_configure() {
 		$(use_enable !minimal multibuffer) \
 		$(use_enable !minimal nanorc) \
 		--disable-wrapping-as-root \
+		$(use_enable magic libmagic) \
 		$(use_enable spell speller) \
 		$(use_enable justify) \
 		$(use_enable debug) \

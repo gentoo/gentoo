@@ -18,7 +18,7 @@ IUSE="admin doc"
 
 KEYWORDS="~amd64 ~x86"
 
-CDEPEND="dev-java/resin-servlet-api:3.0
+CDEPEND="dev-java/resin-servlet-api:3.1
 	dev-java/jsr101:0
 	dev-java/mojarra:2.2
 	dev-java/oracle-javamail:0
