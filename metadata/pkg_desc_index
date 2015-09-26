@@ -6670,7 +6670,7 @@ dev-php/xdebug-client 2.2.2 2.2.3 2.2.5 2.2.6 2.2.7 2.3.1: Xdebug client for the
 dev-php/xhprof 0.9.4: A Hierarchical Profiler for PHP
 dev-python/3to2 1.0 1.1.1: Refactors valid 3.x syntax into valid 2.x syntax, if a syntactical conversion is possible
 dev-python/APScheduler 3.0.1: In-process task scheduler with Cron-like capabilities
-dev-python/Babel 1.3-r1 2.0 2.1.1: A collection of tools for internationalizing Python applications
+dev-python/Babel 2.0 2.1.1: A collection of tools for internationalizing Python applications
 dev-python/BitVector 3.3.2: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CacheControl 0.11.5: The httplib2 caching algorithms packaged up for use with requests
 dev-python/Coffin 0.3.8 2.0.1: Jinja2 adapter for Django
@@ -9411,7 +9411,7 @@ dev-util/uncrustify 0.59 0.61 0.61-r1 9999: C/C++/C#/D/Java/Pawn code indenter a
 dev-util/unifdef 2.10: remove #ifdef'ed lines from a file while otherwise leaving the file alone
 dev-util/universalindentgui 1.2.0-r1: Cross platform GUI for several code formatters, beautifiers and indenters
 dev-util/usb-robot 0.2.0: USB Reverse engineering tools
-dev-util/valgrind 3.7.0-r4 3.8.1 3.9.0 3.10.1: An open-source memory debugger for GNU/Linux
+dev-util/valgrind 3.7.0-r4 3.8.1 3.9.0 3.10.1 3.11.0: An open-source memory debugger for GNU/Linux
 dev-util/valkyrie 2.0.0: Graphical front-end to the Valgrind suite of tools
 dev-util/vbindiff 3.0_beta1 3.0_beta4: Visual binary diff utility
 dev-util/vdkbuilder 2.4.0 2.5.0: The Visual Development Kit used for VDK Builder
