@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile install prepare test
 DESCRIPTION=easy hugepage access
 EAPI=4
-HOMEPAGE=http://libhugetlbfs.sourceforge.net/
+HOMEPAGE=https://github.com/libhugetlbfs/libhugetlbfs
 IUSE=static-libs
 KEYWORDS=~amd64 ~ppc64 ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/libhugetlbfs/libhugetlbfs-2.19.tar.gz
 _eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=dce98cec421cb09a1545193faf6d14f1
+_md5_=b683d33fb75ec9954be8d9eb702eae2a
