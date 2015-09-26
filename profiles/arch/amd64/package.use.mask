@@ -18,6 +18,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Nathan Phillip Brink <binki@gentoo.org> (26 Sep 2015)
+# git useflag requires dev-libs/libgit2 which few arches support
+dev-util/geany-plugins -git
+
 # Brian Evans <grknight@gentoo.org (14 Sep 2015)
 # Unmask new USE flags for mariadb on supported arches
 >=dev-db/mariadb-10.1.0 -mroonga -sst-xtrabackup -galera

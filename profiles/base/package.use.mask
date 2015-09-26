@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Nathan Phillip Brink <binki@gentoo.org> (26 Sep 2015)
+# git useflag requires dev-libs/libgit2 which few arches support
+dev-util/geany-plugins git
+
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (25 Sep 2015)
 # Upstream gtk3 support is experimental:
 # https://code.google.com/p/chromium/issues/detail?id=132847
