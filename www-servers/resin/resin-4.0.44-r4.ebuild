@@ -44,7 +44,7 @@ mojarra-2.2
 oracle-javamail
 validation-api-1.0
 glassfish-xmlrpc-api
-resin-servlet-api-3.0
+resin-servlet-api-3.1
 glassfish-deployment-api-1.2"
 
 PATCHES=(
@@ -145,7 +145,7 @@ src_install() {
 	dosym /var/lib/resin/watchdog-data ${RESIN_HOME}/watchdog-data
 
 	dosym \
-		"$(java-pkg_getjar resin-servlet-api-3.0 resin-servlet-api.jar)" \
+		"$(java-pkg_getjar resin-servlet-api-3.1 resin-servlet-api.jar)" \
 		"${JAVA_PKG_JARDEST}/resin-servlet-api.jar"
 
 	use admin && {
