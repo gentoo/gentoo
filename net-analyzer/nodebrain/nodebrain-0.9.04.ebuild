@@ -1,11 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
+
 inherit eutils
 
-DESCRIPTION="Nodebrain is a tool to monitor and do event correlation"
+DESCRIPTION="Monitor and do event correlation"
 HOMEPAGE="http://nodebrain.sourceforge.net/"
 SRC_URI="mirror://sourceforge/nodebrain/nodebrain-${PV}.tar.gz"
 

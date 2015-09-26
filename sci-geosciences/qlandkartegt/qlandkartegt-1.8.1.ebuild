@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="dbus dmtx exif gps +gpsbabel +gpx-extensions mikrokopter +rmap qt4 qt5"
+IUSE="dbus dmtx exif gps +gpsbabel +gpx-extensions mikrokopter +rmap qt4 +qt5"
 
 REQUIRED_USE="^^ ( qt4 qt5 )"
 
