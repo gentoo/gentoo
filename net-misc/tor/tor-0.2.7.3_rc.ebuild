@@ -17,17 +17,15 @@ S="${WORKDIR}/${MY_PF}"
 LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="-bufferevents nat-pmp scrypt seccomp selinux stats systemd tor-hardening transparent-proxy test upnp web"
+IUSE="-bufferevents scrypt seccomp selinux stats systemd tor-hardening transparent-proxy test web"
 
 DEPEND="dev-libs/openssl:=
 	sys-libs/zlib
 	dev-libs/libevent
 	bufferevents? ( dev-libs/libevent[ssl] )
-	nat-pmp? ( net-libs/libnatpmp )
 	scrypt? ( app-crypt/libscrypt )
 	seccomp? ( sys-libs/libseccomp )
-	systemd? ( sys-apps/systemd )
-	upnp? ( net-libs/miniupnpc )"
+	systemd? ( sys-apps/systemd )"
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-tor )"
 
@@ -53,14 +51,12 @@ src_configure() {
 		--docdir=/usr/share/doc/${PF} \
 		$(use_enable stats instrument-downloads) \
 		$(use_enable bufferevents) \
-		$(use_enable nat-pmp) \
 		$(use_enable scrypt libscrypt) \
 		$(use_enable seccomp) \
 		$(use_enable systemd) \
 		$(use_enable tor-hardening gcc-hardening) \
 		$(use_enable tor-hardening linker-hardening) \
 		$(use_enable transparent-proxy transparent) \
-		$(use_enable upnp) \
 		$(use_enable web tor2web-mode) \
 		$(use_enable test unittests) \
 		$(use_enable test coverage)
