@@ -9363,7 +9363,7 @@ dev-util/rej 0.16: A utility for solving diff/patch rejects
 dev-util/reswrap 3.2.0 4.0.0: Utility to wrap icon resources into C++ code, from the FOX Toolkit
 dev-util/reviewboard 1.7.28: A web-based code review tool that offers developers an easy way to handle code reviews
 dev-util/rootstrap 0.3.24 0.3.24_p5-r1: A tool for building complete Linux filesystem images
-dev-util/rosdep 0.11.2 9999: Command-line tool for installing ROS system dependencies
+dev-util/rosdep 0.11.2 0.11.4 9999: Command-line tool for installing ROS system dependencies
 dev-util/rosinstall 0.7.6 9999: Command-line tools for maintaining a workspace of projects for ROS
 dev-util/rosinstall_generator 0.1.11 9999: Generates rosinstall files containing information about repositories with ROS packages/stacks
 dev-util/rpmdevtools 8.3 8.3-r1 8.5: Collection of rpm packaging related utilities
