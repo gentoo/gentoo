@@ -7,7 +7,7 @@ USE_RUBY="ruby19 ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR="doc"
-RUBY_FAKEGEM_EXTRADOC="TODO README.md doc/text/news.md"
+RUBY_FAKEGEM_EXTRADOC="README.md doc/text/news.md"
 
 inherit ruby-fakegem
 
