@@ -4,9 +4,8 @@
 	<herd>wine</herd>
 	<herd>proxy-maintainers</herd>
 	<maintainer>
-		<email>np.hardass@gmail.com</email>
+		<email>NP-Hardass@gentoo.org</email>
 		<name>NP-Hardass</name>
-		<description>Proxied co-maintainer</description>
 	</maintainer>
 	<upstream>
 		<remote-id type="google-code">winetricks</remote-id>
