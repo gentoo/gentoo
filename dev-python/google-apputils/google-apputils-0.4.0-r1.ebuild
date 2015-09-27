@@ -25,6 +25,12 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/mox[${PYTHON_USEDEP}] )"
 # version borders needed are already confluent with versions in the tree
 
+src_unpack() {
+	default
+	find ${P} -type d -exec chmod 0755 {} + || die
+	find ${P} -type f -exec chmod 0644 {} + || die
+}
+
 python_prepare_all() {
 	# https://code.google.com/p/google-apputils-python/source/detail?r=12
 	# This version bordering is long out of date and wrong since end of March 2012!
