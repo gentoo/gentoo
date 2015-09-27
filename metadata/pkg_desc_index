@@ -12382,7 +12382,7 @@ media-plugins/vdr-epgsync 1.0.1: VDR Plugin: Import the EPG of another VDR via v
 media-plugins/vdr-exec 0.0.3: VDR plugin: Exec commands like timers at defined times
 media-plugins/vdr-extb 0.3.1: VDR Plugin: used to control the VDR Extension Board
 media-plugins/vdr-extrecmenu 1.2.2-r2 1.2.4: VDR Plugin: Extended recordings menu
-media-plugins/vdr-femon 2.0.4 2.1.1 2.2.0: VDR Plugin: DVB Frontend Status Monitor (signal strengt/noise)
+media-plugins/vdr-femon 2.0.4 2.1.1 2.2.0 2.2.1: VDR Plugin: DVB Frontend Status Monitor (signal strengt/noise)
 media-plugins/vdr-fepg 0.4.1: VDR plugin: show epg of multiple channels graphically
 media-plugins/vdr-ffnetdev 0.1.2: VDR Plugin: Output device which offers OSD via VNC and Video as raw mpeg over network
 media-plugins/vdr-filebrowser 0.2.1: VDR plugin: file manager plugin for moving or renaming files in VDR
@@ -12393,7 +12393,7 @@ media-plugins/vdr-graphtft 0.3.7 0.3.7-r1: VDR plugin: GraphTFT
 media-plugins/vdr-image 0.3.1 0.4.0: VDR plugin: display of digital images, like jpeg, tiff, png, bmp
 media-plugins/vdr-imonlcd 0.0.5-r1 1.0.1: VDR Plugin: shows information about the current state of VDR on iMON LCD
 media-plugins/vdr-infosatepg 0.0.12: VDR Plugin: Reads the contents of infosat and writes the data into the EPG
-media-plugins/vdr-iptv 2.0.0 2.0.3 2.1.3 2.2.0: VDR plugin: Add a logical device capable of receiving IPTV
+media-plugins/vdr-iptv 2.0.0 2.0.3 2.1.3 2.2.0 2.2.1: VDR plugin: Add a logical device capable of receiving IPTV
 media-plugins/vdr-joystick 0.0.3: VDR plugin: allows using a joystick as a remote control for VDR
 media-plugins/vdr-kvdrmon 0.6: VDR Plugin: monitors on KDE Kickerapplet kvdrmon
 media-plugins/vdr-launcher 0.0.4: VDR Plugin: launch other plugins - even when their menu-entry is hidden
@@ -12437,7 +12437,7 @@ media-plugins/vdr-remoteosd 1.0.0: VDR Plugin: server/client remoteosd
 media-plugins/vdr-remotetimers 1.0.0 1.0.1 1.0.2: VDR plugin: edit timers on remote vdr instances
 media-plugins/vdr-rotor 0.1.5: VDR Plugin: Add support for dishes with rotation control engine
 media-plugins/vdr-rpihddevice 0.0.10 0.0.11: VDR Plugin: Output Device for Raspberry Pi
-media-plugins/vdr-rssreader 2.0.0 2.0.1 2.2.0: VDR Plugin: RSS reader
+media-plugins/vdr-rssreader 2.0.0 2.0.1 2.2.0 2.2.1: VDR Plugin: RSS reader
 media-plugins/vdr-satip 1.0.2-r1 2.2.0 2.2.3: VDR Plugin: integrates SAT>IP network devices seamlessly into VDR
 media-plugins/vdr-scheduler 0.1.3: VDR plugin: allows to control externel jobs from within VDR
 media-plugins/vdr-screenshot 0.0.15: VDR Plugin: takes screenshots of the current video or tv screen by one keypress on your remote
@@ -12446,7 +12446,7 @@ media-plugins/vdr-skincurses 2.0.0 2.2.0: VDR plugin: show content of menu in a 
 media-plugins/vdr-skinelchi 0.2.7 0.2.7-r1: VDR Skin Plugin: skinelchi
 media-plugins/vdr-skinenigmang 0.1.2 0.1.2_p20120618 0.1.2_p20130302: VDR - Skin Plugin: enigma-ng
 media-plugins/vdr-skinnopacity 1.1.1 1.1.3: VDR Skin Plugin: highly customizable native true color skin for the Video Disc Recorder
-media-plugins/vdr-skinsoppalusikka 2.0.0 2.0.3 2.2.0: VDR Skin Plugin: soppalusikka
+media-plugins/vdr-skinsoppalusikka 2.0.0 2.0.3 2.2.0 2.2.1: VDR Skin Plugin: soppalusikka
 media-plugins/vdr-sleeptimer 0.6: VDR Plugin: Sleeptimer
 media-plugins/vdr-sndctl 0.1.5.1: VDR plugin: Control the vol level of diff controls of your sound- card according to the settings of VDR
 media-plugins/vdr-solitaire 0.0.3: VDR Plugin: Solitaire game
