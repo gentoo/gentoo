@@ -15171,7 +15171,7 @@ sci-electronics/alliance 5.0.20110203: Digital IC design tools (simulation, synt
 sci-electronics/balsa 4.0-r1: The Balsa asynchronous synthesis system
 sci-electronics/cirkuit 0.4.3-r1: An application to generate publication-ready figures
 sci-electronics/drawtiming 0.7.1 0.7.1-r1: Command line tool for drawing timing diagrams
-sci-electronics/eagle 5.11.0 5.12.0 6.6.0 7.3.0: CadSoft EAGLE schematic and printed circuit board (PCB) layout editor
+sci-electronics/eagle 5.11.0 5.12.0 6.6.0 7.3.0 7.4.0: CadSoft EAGLE schematic and printed circuit board (PCB) layout editor
 sci-electronics/electric 8.09 8.11 9.02 9.03: Complete Electronic Design Automation (EDA) system that can handle many forms of circuit design
 sci-electronics/electronics-menu 1.0 1.0-r1: Creates an "Electronics" desktop menu
 sci-electronics/espresso-ab 1.0-r1: POSIX compliant version of the espresso logic minimization tool
