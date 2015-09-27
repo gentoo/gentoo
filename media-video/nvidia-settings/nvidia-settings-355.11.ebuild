@@ -31,7 +31,7 @@ COMMON_DEPEND="x11-libs/gtk+:2
 	>=x11-libs/libvdpau-1.0"
 
 RDEPEND="${COMMON_DEPEND}
-	x11-drivers/nvidia-drivers:0/340"
+	x11-drivers/nvidia-drivers:0/355"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-proto/xproto"
