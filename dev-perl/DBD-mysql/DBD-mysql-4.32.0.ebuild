@@ -26,7 +26,7 @@ else
 fi
 
 src_prepare() {
-        epatch "${FILESDIR}"/${PN}-print_embedded_options.patch
+	epatch "${FILESDIR}"/${PN}-print_embedded_options.patch
 }
 
 src_configure() {
