@@ -20,7 +20,8 @@ RDEPEND="
 	>=dev-python/py-1.4.22[${PYTHON_USEDEP}]
 	>=dev-python/pytest-2.6.0[${PYTHON_USEDEP}]
 	>=dev-python/cov-core-1.14.0[${PYTHON_USEDEP}]
-	>=dev-python/coverage-3.7.1[${PYTHON_USEDEP}]"
+	>=dev-python/coverage-3.7.1[${PYTHON_USEDEP}]
+	<dev-python/coverage-4[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
