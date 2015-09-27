@@ -23,6 +23,7 @@ DEPEND="${RDEPEND}
 	dev-haskell/alex
 	>=dev-haskell/cabal-1.8
 	dev-haskell/happy
+	dev-haskell/hashtables
 	dev-haskell/random
 	>=dev-lang/ghc-6.10.4
 "
