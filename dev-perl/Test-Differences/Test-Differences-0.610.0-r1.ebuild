@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Test strings and data structures and show differences if not ok"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ppc x86"
+KEYWORDS="amd64 ~arm hppa ppc ~ppc64 x86"
 IUSE="test"
 
 RDEPEND="dev-perl/Text-Diff
