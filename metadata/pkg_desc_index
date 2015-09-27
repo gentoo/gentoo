@@ -5309,7 +5309,7 @@ dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interf
 dev-perl/Cwd-Guard 0.40.0: Temporary changing working directory (chdir)
 dev-perl/DBD-Pg 2.19.3-r1 3.3.0 3.4.2: PostgreSQL database driver for the DBI module
 dev-perl/DBD-SQLite 1.350.0-r1 1.460.0 1.480.0: Self Contained RDBMS in a DBI Driver
-dev-perl/DBD-mysql 4.20.0-r1 4.31.0: The Perl DBD:mysql Module
+dev-perl/DBD-mysql 4.20.0-r1 4.31.0 4.32.0: The Perl DBD:mysql Module
 dev-perl/DBI 1.628.0 1.633.0 1.634.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r1: Interactive command shell for the DBI
 dev-perl/DBICx-TestDatabase 0.40.0: create a temporary database from a DBIx::Class::Schema
@@ -5703,7 +5703,7 @@ dev-perl/Linux-Pid 0.40.0-r1: Interface to Linux getpp?id functions
 dev-perl/Linux-Smaps 0.120.0 0.130.0: Perl interface to /proc/PID/smaps
 dev-perl/Lirc-Client 1.540.0-r1 2.20.0: A client library for the Linux Infrared Remote Control (LIRC)
 dev-perl/List-AllUtils 0.30.0-r1 0.80.0 0.90.0: Combines List::Util and List::MoreUtils in one bite-sized package
-dev-perl/List-MoreUtils 0.330.0-r1 0.408.0 0.413.0: Provide the missing functionality from List::Util
+dev-perl/List-MoreUtils 0.330.0-r1 0.413.0: Provide the missing functionality from List::Util
 dev-perl/List-UtilsBy 0.90.0-r1: Higher-order list utility functions
 dev-perl/Locale-Maketext-Lexicon 0.960.0-r1 1.0.0: Use other catalog formats in Maketext
 dev-perl/Locale-Msgfmt 0.150.0-r1: Compile .po files to .mo files
