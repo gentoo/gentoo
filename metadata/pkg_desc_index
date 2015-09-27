@@ -5457,7 +5457,7 @@ dev-perl/Exception-Class 1.370.0-r1 1.390.0: A module that allows you to declare
 dev-perl/Exception-Died 0.60.0-r1: Convert simple die into real exception object
 dev-perl/Exception-System 0.110.0-r1: Exception class for system or library calls
 dev-perl/Exception-Warning 0.40.100-r1: Convert simple warn into real exception object
-dev-perl/Expect 1.210.0-r1 1.320.0: Expect for Perl
+dev-perl/Expect 1.210.0-r1 1.320.0 1.320.0-r1: Expect for Perl
 dev-perl/Exporter-Cluster 0.310.0-r1: Extension for easy multiple module imports
 dev-perl/Exporter-Lite 0.20.0-r1: Lightweight exporting of variables
 dev-perl/Exporter-Tiny 0.42.0: An exporter with the features of Sub::Exporter but only core dependencies
@@ -5640,6 +5640,7 @@ dev-perl/IO-Socket-INET6 2.710.0-r1 2.720.0: Work with IO sockets in ipv6
 dev-perl/IO-Socket-SSL 1.953.0 1.967.0 1.998.0 2.12.0: Nearly transparent SSL encapsulation for IO::Socket::INET
 dev-perl/IO-Socket-Timeout 0.270.0: IO::Socket with read/write timeout
 dev-perl/IO-String 1.80.0-r1: IO::File interface for in-core strings
+dev-perl/IO-Stty 0.30.0: Change and print terminal line settings
 dev-perl/IO-Tee 0.640.0-r1: Multiplex output to multiple output handles
 dev-perl/IO-Tty 1.110.0 1.120.0: IO::Tty and IO::Pty modules for Perl
 dev-perl/IO-Util 1.500.0-r1: A selection of general-utility IO function
@@ -13509,7 +13510,7 @@ net-dns/pdns 3.3.1 3.3.2 3.3.3 3.4.0 3.4.0-r1 3.4.1 3.4.2 3.4.4 3.4.5: The Power
 net-dns/pdns-ldap-backend 0.2: Fork of the official but unmaintained LDAP backend
 net-dns/pdns-recursor 3.6.1-r1 3.6.2 3.6.3 3.6.4 3.7.1 3.7.2 3.7.3: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
-net-dns/rbldnsd 0.996b 0.997a-r1 0.997a-r2: DNS server designed to serve blacklist zones
+net-dns/rbldnsd 0.997a-r2: DNS server designed to serve blacklist zones
 net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writable location
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
 net-dns/tinystats 1.1: A tinydns logging helper app
