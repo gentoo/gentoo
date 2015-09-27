@@ -1,8 +1,0 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Id$
-
-# Config file for /etc/init.d/iiim
-
-# If you want to use Shift + Space to enable/disable ATOK, uncomment
-#JUSTSYSTEM_TRIGGER_SHIFT_SPACE=t

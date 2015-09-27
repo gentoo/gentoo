@@ -15,8 +15,7 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 IUSE="systemd"
 
-DEPEND=">=media-video/vdr-2"
-RDEPEND="${DEPEND}"
+DEPEND=">=media-video/vdr-2.2.0"
 
 pkg_setup() {
 	vdr-plugin-2_pkg_setup

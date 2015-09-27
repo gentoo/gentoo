@@ -216,12 +216,6 @@ x11-libs/libXevie
 # and nothing in the tree depends on it.
 dev-ruby/require_relative
 
-# Manuel Rüger <mrueg@gentoo.org> (26 Aug 2015)
-# Masked for removal in 30 days.
-# Superseded by app-i18n/atokx3.
-# See bug #553208
-app-i18n/atokx2
-
 # Doug Goldstein <cardoe@gentoo.org> (25 Aug 2015)
 # Masked for removal in 30 days. Users should use the modules available
 # via the kernel as upstream has deprecated these packages.
@@ -239,11 +233,6 @@ app-emulation/kvm-kmod
 # Lars Wendler <polynomial-c@gentoo.org> (20 Aug 2015)
 # Masked for testing
 =net-misc/iputils-20150815
-
-# Hans de Graaff <graaff@gentoo.org> (20 Aug 2015)
-# No longer part of ruby-gnome2. Nothing depends on it.
-# Masked for removal in 30 days.
-dev-ruby/ruby-goocanvas
 
 # Johannes Huber <johu@gentoo.org> (18 Aug 2015)
 # Masked for removal in 30 days. Does not compile with
