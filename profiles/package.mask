@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Huettel <dilfridge@gentoo.org> (27 Sep 2015)
+# Dead upstream, buggy, effectively unmaintained. Removal
+# in 30 days.
+app-emulation/vmware-view-open-client
+
 # James Le Cuirot <chewi@gentoo.org> (27 Sep 2015)
 # No release since 2007 and no revdeps. Removal in 30 days.
 dev-java/commons-transaction
