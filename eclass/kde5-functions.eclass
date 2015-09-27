@@ -26,12 +26,12 @@ esac
 # @ECLASS-VARIABLE: FRAMEWORKS_MINIMAL
 # @DESCRIPTION:
 # Minimal Frameworks version to require for the package.
-: ${FRAMEWORKS_MINIMAL:=5.13.0}
+: ${FRAMEWORKS_MINIMAL:=5.14.0}
 
 # @ECLASS-VARIABLE: PLASMA_MINIMAL
 # @DESCRIPTION:
 # Minimal Plasma version to require for the package.
-: ${PLASMA_MINIMAL:=5.3.2}
+: ${PLASMA_MINIMAL:=5.4.1}
 
 # @ECLASS-VARIABLE: KDE_APPS_MINIMAL
 # @DESCRIPTION:
