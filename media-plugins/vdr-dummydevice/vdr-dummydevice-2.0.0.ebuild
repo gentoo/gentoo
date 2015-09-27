@@ -10,7 +10,7 @@ DESCRIPTION="VDR Plugin: dummy output device - for recording server without any 
 HOMEPAGE="http://phivdr.dyndns.org/vdr/${PN}/"
 SRC_URI="http://phivdr.dyndns.org/vdr/${PN}/${P}.tgz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""
