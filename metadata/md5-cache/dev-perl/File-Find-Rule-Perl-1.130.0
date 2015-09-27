@@ -3,10 +3,10 @@ DEPEND=>=dev-perl/File-Find-Rule-0.32 dev-perl/Params-Util dev-lang/perl:=[-buil
 DESCRIPTION=Common rules for searching for Perl things
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/File-Find-Rule-Perl/
-KEYWORDS=~amd64 ~arm ~hppa ~x86
+KEYWORDS=~amd64 ~arm ~hppa ~ppc64 ~x86
 LICENSE=|| ( Artistic GPL-1 GPL-2 GPL-3 )
 RDEPEND=dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AD/ADAMK/File-Find-Rule-Perl-1.13.tar.gz
 _eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	unpacker	1d149d9bda7723e740cfd28118f27813
-_md5_=e7cdf8ea480fb12f08f52ae9a28c68fd
+_md5_=07d528dc9a880d06f359e57590ac9140
