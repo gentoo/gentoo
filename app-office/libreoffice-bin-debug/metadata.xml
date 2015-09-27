@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>openoffice</herd>
+	<herd>office</herd>
 	<longdescription>LibreOffice is a free office suite.
 This is debug info for the binary version of Libreoffice. Use this if you don't want to wait for the source version to build, but still debug crashes etc</longdescription>
 </pkgmetadata>

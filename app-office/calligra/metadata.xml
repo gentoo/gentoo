@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>kde</herd>
-	<herd>openoffice</herd>
+	<herd>office</herd>
 	<use>
 		<flag name="attica">Get hot stuff with <pkg>dev-libs/libattica</pkg></flag>
 		<flag name="color-management">Enable color management via <pkg>media-libs/opencolorio</pkg></flag>
