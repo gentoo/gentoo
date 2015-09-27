@@ -4,7 +4,6 @@
 
 EAPI=5
 
-
 DESCRIPTION="A collection of Polish translations of Linux manual pages"
 HOMEPAGE="http://sourceforge.net/projects/manpages-pl/"
 SRC_URI="mirror://sourceforge/manpages-pl/manpages-pl-${PV}.tar.bz2"
