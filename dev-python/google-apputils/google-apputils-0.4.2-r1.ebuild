@@ -24,6 +24,12 @@ RDEPEND="
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND} dev-python/mox[${PYTHON_USEDEP}] )"
 
+src_unpack() {
+	default
+	find ${P} -type d -exec chmod 0755 {} + || die
+	find ${P} -type f -exec chmod 0644 {} + || die
+}
+
 python_test() {
 	# These yield 2 fails which are in fact expected errors run from a shell script!
 	# They seemingly have no immediate mechanism to exit 0 in an expected fail style.
