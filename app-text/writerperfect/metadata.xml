@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>openoffice</herd>
+	<herd>office</herd>
 	<use>
 		<flag name="abiword">Add support for abiword format using <pkg>app-text/libabw</pkg></flag>
 		<flag name="ebook">Add support for various ebook formats using <pkg>app-text/libebook</pkg></flag>

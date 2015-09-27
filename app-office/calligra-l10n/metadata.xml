@@ -2,5 +2,5 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>kde</herd>
-	<herd>openoffice</herd>
+	<herd>office</herd>
 </pkgmetadata>

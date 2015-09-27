@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>openoffice</herd>
-  <longdescription>LibreOffice is a fork of OpenOffice.org. 
+  <herd>office</herd>
+  <longdescription>LibreOffice is the successor of OpenOffice.org. 
 This ebuild allows you to compile it yourself. Unfortunately this 
 compilation can take up to a day depending on the speed of your 
-computer. It will however make a snappier openoffice than the binary 
+computer. It will however make a snappier LibreOffice than the binary 
 version</longdescription>
   <use>
     <flag name="coinmp">Use sci-libs/coinor-mp as alternative solver</flag>
