@@ -26,6 +26,7 @@ RDEPEND="dev-haskell/cabal:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.8.0.4
+	dev-haskell/happy
 "
 
 src_prepare() {
