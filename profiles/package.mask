@@ -31,6 +31,10 @@
 #--- END OF EXAMPLES ---
 
 # James Le Cuirot <chewi@gentoo.org> (27 Sep 2015)
+# No release since 2007 and no revdeps. Removal in 30 days.
+dev-java/commons-transaction
+
+# James Le Cuirot <chewi@gentoo.org> (27 Sep 2015)
 # A string of interdependent obsolete Java packages. hibernate and
 # axis are alive upstream but we have no immediate plans to bump
 # them. hibernate has also been modularized so would now be called
