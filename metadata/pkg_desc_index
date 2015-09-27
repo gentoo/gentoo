@@ -1431,7 +1431,6 @@ app-forensics/yasat 526 700 755 839: Security and system auditing tool
 app-forensics/zzuf 0.13-r1: Transparent application input fuzzer
 app-i18n/anthy 9100h-r1: Anthy -- free and secure Japanese input system
 app-i18n/anthy-ss 9026: Anthy -- free and secure Japanese input system
-app-i18n/atokx2 17.0 17.0-r2: ATOK for Linux - The most famous Japanese Input Method Engine
 app-i18n/atokx3 3.0.0-r11: ATOK X3 for Linux - The most famous Japanese Input Method Engine
 app-i18n/bidiv 1.5-r1 1.5_p4: A commandline tool displaying logical Hebrew/Arabic
 app-i18n/canfep 1.0: Canna Japanese kana-kanji frontend processor on console
@@ -8663,7 +8662,6 @@ dev-ruby/ruby-gio2 2.2.3 2.2.3-r1 2.2.5: Ruby binding of GooCanvas
 dev-ruby/ruby-glib2 2.2.3 2.2.3-r1 2.2.5: Ruby Glib2 bindings
 dev-ruby/ruby-gnome2 2.2.3 2.2.3-r1 2.2.5: Ruby Gnome2 bindings
 dev-ruby/ruby-gobject-introspection 2.2.3 2.2.3-r1 2.2.5: Ruby GObjectIntrospection bindings
-dev-ruby/ruby-goocanvas 1.1.8 2.2.0 2.2.0-r1: Ruby binding of GooCanvas
 dev-ruby/ruby-gstreamer 2.2.3 2.2.3-r1 2.2.4 2.2.5: Ruby GStreamer bindings
 dev-ruby/ruby-gtk2 2.2.3 2.2.3-r1 2.2.5: Ruby Gtk2 bindings
 dev-ruby/ruby-gtk3 2.2.3 2.2.3-r1 2.2.5: Ruby Gtk3 bindings
@@ -12434,7 +12432,7 @@ media-plugins/vdr-radiolist 0.0.2: VDR plugin: Filters channel list and only sho
 media-plugins/vdr-rcu 2.0.0 2.2.0: VDR plugin: Remote Control Unit consists mainly of an infrared receiver, controlled by a PIC 16C84
 media-plugins/vdr-recsearch 0.3.5: VDR Plugin: Search through your recordings and find the one you are looking for...
 media-plugins/vdr-recstatus 0.0.8: VDR plugin: displays the recording status of the available devices
-media-plugins/vdr-remote 0.5.0 0.5.0-r1 0.6.0: VDR Plugin: use various devices for controlling vdr (keyboards, lirc, remotes bundled with tv-cards)
+media-plugins/vdr-remote 0.6.0 0.7.0: VDR Plugin: use various devices for controlling vdr (keyboards, lirc, remotes bundled with tv-cards)
 media-plugins/vdr-remoteosd 1.0.0: VDR Plugin: server/client remoteosd
 media-plugins/vdr-remotetimers 1.0.0 1.0.1 1.0.2: VDR plugin: edit timers on remote vdr instances
 media-plugins/vdr-rotor 0.1.5: VDR Plugin: Add support for dishes with rotation control engine
