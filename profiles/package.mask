@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Dion Moult <moult@gentoo.org> (27 Sep 2015)
+# Masked for removal in 30 days. Bug #514514
+# Fails to build for ages.
+sci-geosciences/grass
+sci-geosciences/gdal-grass
+
 # Patrice Clement <monsieurp@gentoo.org> (24 Sep 2015)
 # This package was never marked stable 
 # and is relying on an old version of JavaCC.

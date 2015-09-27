@@ -33,6 +33,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}/phantomjs-python3-udis86-itab.patch"
+	epatch "${FILESDIR}/phantomjs-gcc5-compile-fix.patch"
 
 	# Respect CC, CXX, {C,CXX,LD}FLAGS in .qmake.cache
 	sed -i \
