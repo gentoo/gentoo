@@ -68,7 +68,7 @@ src_compile() {
 		emake -j1 CC="$(tc-getCC)" CDEBUGFLAGS="${CFLAGS}" \
 			LOCAL_LDFLAGS="${LDFLAGS}" SHLIBGLOBALSFLAGS="${LDFLAGS}" \
 			JLATEXCMD=platex \
-			DVI2PSCMD="dvips -f" VARTEXFONTS=${T}/fonts \
+			DVI2PSCMD="dvips -f" VARTEXFONTS="${T}"/fonts \
 			canna.dvi canna.ps || die
 		if has_version 'app-text/dvipdfmx' && \
 			( has_version 'app-text/acroread' \
@@ -76,7 +76,7 @@ src_compile() {
 			emake -j1 CC="$(tc-getCC)" CDEBUGFLAGS="${CFLAGS}" \
 				LOCAL_LDFLAGS="${LDFLAGS}" SHLIBGLOBALSFLAGS="${LDFLAGS}" \
 				JLATEXCMD=platex \
-				DVI2PSCMD="dvips -f" VARTEXFONTS=${T}/fonts \
+				DVI2PSCMD="dvips -f" VARTEXFONTS="${T}"/fonts \
 				canna.pdf || die
 		fi
 	fi
