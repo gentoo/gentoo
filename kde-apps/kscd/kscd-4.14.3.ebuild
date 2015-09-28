@@ -13,7 +13,6 @@ IUSE="debug"
 
 DEPEND="
 	$(add_kdeapps_dep libkcddb)
-	$(add_kdeapps_dep libkcompactdisc)
 	media-libs/musicbrainz:3
 "
 RDEPEND="${DEPEND}"
