@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 inherit eutils toolchain-funcs
 
@@ -20,7 +20,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="+ncurses modern-top nls selinux static-libs systemd test unicode"
 
 RDEPEND="!<sys-apps/sysvinit-2.88-r6
-	ncurses? ( >=sys-libs/ncurses-5.7-r7[unicode?] )
+	ncurses? ( >=sys-libs/ncurses-5.7-r7:=[unicode?] )
 	selinux? ( sys-libs/libselinux )
 	systemd? ( >=sys-apps/systemd-209 )"
 DEPEND="${RDEPEND}
