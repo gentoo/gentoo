@@ -1,0 +1,46 @@
+From 00bd3be1310fb36a3b2eddc931eb48c89744b2b4 Mon Sep 17 00:00:00 2001
+From: "W. Trevor King" <wking@tremily.us>
+Date: Mon, 24 Aug 2015 01:31:17 -0700
+Subject: [PATCH 5/7] Use O_ACCMODE to pull out the access portion of the open
+ flags
+
+Following [1].  I'm using cp from GNU Coreutils 8.23, and it's setting
+my flags to 32769 (O_WRONLY + 0x8000).
+
+[1]: http://www.gnu.org/software/libc/manual/html_node/Access-Modes.html#index-0_005fACCMODE
+---
+ mtpfs.c | 18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
+
+diff --git a/mtpfs.c b/mtpfs.c
+index 9f924a9..a82d479 100644
+--- a/mtpfs.c
++++ b/mtpfs.c
+@@ -949,12 +949,18 @@ mtpfs_open (const gchar * path, struct fuse_file_info *fi)
+     if (item_id < 0)
+         return_unlock(-ENOENT);
+ 
+-    if (fi->flags == O_RDONLY) {
+-        DBG("read");
+-    } else if (fi->flags == O_WRONLY) {
+-        DBG("write");
+-    } else if (fi->flags == O_RDWR) {
+-        DBG("rdwrite");
++    switch (fi->flags & O_ACCMODE) {
++    case O_RDONLY:
++      DBG ("read");
++      break;
++    case O_WRONLY:
++      DBG ("write");
++      break;
++    case O_RDWR:
++      DBG("rdwrite");
++      break;
++    default:
++      DBG ("unexpected access mode: %d", fi->flags & O_ACCMODE);
+     }
+ 
+     int storageid;
+-- 
+2.5.3
+
