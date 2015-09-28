@@ -17,11 +17,15 @@
 	<use>
 		<flag name="apcupsd">enable support for <pkg>sys-power/apcupsd</pkg></flag>
 		<flag name="audacious">enable monitoring of music played by <pkg>media-sound/audacious</pkg></flag>
+		<flag name="cmus">enable monitoring of music played by <pkg>media-sound/cmus</pkg></flag>
 		<flag name="eve">enable support for the eve-online skill monitor</flag>
+		<flag name="ical">enable support for events from iCalendar (RFC 5545) files using <pkg>dev-libs/libical</pkg></flag>
 		<flag name="iostats">enable support for per-task I/O statistics</flag>
+		<flag name="irc">enable support for displaying everything from an irc channel using <pkg>net-libs/libircclient</pkg></flag>
 		<flag name="lua">enable if you want Lua scripting support</flag>
-		<flag name="lua-cairo">enable if you want Lua Cairo bindings for Conky (also enables lua support)</flag>
-		<flag name="lua-imlib">enable if you want Lua Imlib2 bindings for Conky (also enables lua and imlib support)</flag>
+		<flag name="lua-cairo">enable if you want Lua Cairo bindings</flag>
+		<flag name="lua-imlib">enable if you want Lua Imlib2 bindings</flag>
+		<flag name="lua-rsvg">enable if you want Lua RSVG bindings</flag>
 		<flag name="math">enable support for glibc's libm math library</flag>
 		<flag name="moc">enable monitoring of music played by <pkg>media-sound/moc</pkg></flag>
 		<flag name="mpd">enable monitoring of music controlled by <pkg>media-sound/mpd</pkg></flag>
@@ -31,6 +35,7 @@
 		<flag name="thinkpad">enable support for IBM/Lenovo notebooks</flag>
 		<flag name="weather-metar">enable support for metar weather service</flag>
 		<flag name="weather-xoap">enable support for metar and xoap weather service</flag>
+		<flag name="webserver">enable support to act as a webserver serving conkys output using <pkg>net-libs/libmicrohttpd</pkg></flag>
 		<flag name="xmms2">enable monitoring of music played by <pkg>media-sound/xmms2</pkg></flag>
 	</use>
 </pkgmetadata>

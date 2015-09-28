@@ -20,26 +20,26 @@ DEPEND_COMMON="
 		imlib? ( media-libs/imlib2[X] )
 		lua-cairo? (
 			>=dev-lua/toluapp-1.0.93
-			>=dev-lang/lua-5.1.4-r8
+			>=dev-lang/lua-5.1.4-r8:0
 			x11-libs/cairo[X] )
 		lua-imlib? (
 			>=dev-lua/toluapp-1.0.93
-			>=dev-lang/lua-5.1.4-r8
+			>=dev-lang/lua-5.1.4-r8:0
 			media-libs/imlib2[X] )
 		nvidia? ( media-video/nvidia-settings )
 		truetype? ( x11-libs/libXft >=media-libs/freetype-2 )
 		x11-libs/libX11
 		x11-libs/libXdamage
 		x11-libs/libXext
-		audacious? ( >=media-sound/audacious-1.5 dev-libs/glib )
+		audacious? ( >=media-sound/audacious-1.5 dev-libs/glib:2 )
 		xmms2? ( media-sound/xmms2 )
 	)
 	curl? ( net-misc/curl )
 	eve? ( net-misc/curl dev-libs/libxml2 )
-	portmon? ( dev-libs/glib )
-	lua? ( >=dev-lang/lua-5.1.4-r8 )
-	ncurses? ( sys-libs/ncurses )
-	rss? ( dev-libs/libxml2 net-misc/curl dev-libs/glib )
+	portmon? ( dev-libs/glib:2 )
+	lua? ( >=dev-lang/lua-5.1.4-r8:0 )
+	ncurses? ( sys-libs/ncurses:= )
+	rss? ( dev-libs/libxml2 net-misc/curl dev-libs/glib:2 )
 	wifi? ( net-wireless/wireless-tools )
 	weather-metar? ( net-misc/curl )
 	weather-xoap? ( dev-libs/libxml2 net-misc/curl )
