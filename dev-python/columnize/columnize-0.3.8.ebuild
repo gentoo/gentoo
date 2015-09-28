@@ -22,6 +22,8 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
+PATCHES=( "${FILESDIR}"/${P}-nose.patch )
+
 python_test() {
 	py.test || die
 }
