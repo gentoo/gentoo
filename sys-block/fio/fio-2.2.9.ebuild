@@ -51,6 +51,7 @@ src_prepare() {
 src_configure() {
 	chmod g-w "${T}"
 	# not a real configure script
+	set -- \
 	./configure \
 		--extra-cflags="${CFLAGS} ${CPPFLAGS}" \
 		--cc="$(tc-getCC)" \
@@ -58,8 +59,9 @@ src_configure() {
 		$(usex gtk '--enable-gfio' '') \
 		$(usex numa '' '--disable-numa') \
 		$(usex rbd '' '--disable-rbd') \
-		$(usex static '--build-static' '') \
-		|| die 'configure failed'
+		$(usex static '--build-static' '')
+	echo "$@"
+	"$@" || die 'configure failed'
 }
 
 src_compile() {
