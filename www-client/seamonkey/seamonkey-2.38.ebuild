@@ -46,7 +46,7 @@ IUSE="+chatzilla +crypt +gmp-autoupdate +ipc minimal pulseaudio +roaming selinux
 
 SRC_URI="${SRC_URI}
 	${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source.tar.xz -> ${P}.source.tar.xz
-	https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/${PATCHFF}.tar.xz
+	https://dev.gentoo.org/~axs/mozilla/patchsets/${PATCHFF}.tar.xz
 	https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/${PATCH}.tar.xz
 	crypt? ( https://www.enigmail.net/download/source/enigmail-${EMVER}.tar.gz )"
 
