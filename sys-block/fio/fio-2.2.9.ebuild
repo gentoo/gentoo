@@ -58,7 +58,7 @@ src_configure() {
 		$(usex gtk '--enable-gfio' '') \
 		$(usex numa '' '--disable-numa') \
 		$(usex rbd '' '--disable-rbd') \
-		$(usex static '' '--build-static') \
+		$(usex static '--build-static' '') \
 		|| die 'configure failed'
 }
 
