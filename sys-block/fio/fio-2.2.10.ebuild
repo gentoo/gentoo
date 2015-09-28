@@ -37,7 +37,6 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	sed -i '/^DEBUGFLAGS/s: -D_FORTIFY_SOURCE=2::g' Makefile || die
-	epatch "${FILESDIR}"/${P}-atomic-sync.patch
 	epatch_user
 
 	# Many checks don't have configure flags.
@@ -53,6 +52,7 @@ src_configure() {
 	# not a real configure script
 	set -- \
 	./configure \
+		--disable-optimizations \
 		--extra-cflags="${CFLAGS} ${CPPFLAGS}" \
 		--cc="$(tc-getCC)" \
 		$(usex glusterfs '' '--disable-gfapi') \
