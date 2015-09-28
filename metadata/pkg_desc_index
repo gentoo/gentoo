@@ -14045,7 +14045,7 @@ net-mail/relay-ctrl 3.1.1-r2: SMTP Relaying Control designed for qmail & tcpserv
 net-mail/renattach 1.2.4-r1: Filter that renames/deletes dangerous email attachments
 net-mail/ripmime 1.4.0.10: extract attachment files out of a MIME-encoded email pack
 net-mail/ripole 0.2.1 0.2.2: Program/library to pull out attachment from OLE2 data files
-net-mail/rss2email 2.71: A python script that converts RSS/Atom newsfeeds to email
+net-mail/rss2email 2.71 2.71-r1: A python script that converts RSS/Atom newsfeeds to email
 net-mail/safecat 1.13: Safecat implements qmail's maildir algorithm, copying standard input safely to a specified directory
 net-mail/sendEmail 1.56-r1 1.56-r2: Command line based, SMTP email agent
 net-mail/serialmail 0.75-r4: A serialmail is a collection of tools for passing mail across serial links
@@ -16635,7 +16635,7 @@ sys-fs/mhddfs 0.1.39: Fuse multi harddrive filesystem
 sys-fs/mp3fs 0.32 0.91: a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read
 sys-fs/mtd-utils 1.5.0 1.5.1 1.5.2 99999999: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
 sys-fs/mtools 4.0.13 4.0.15 4.0.16 4.0.17 4.0.18: utilities to access MS-DOS disks from Unix without mounting them
-sys-fs/mtpfs 1.0 1.1 1.1-r1 1.1-r2: A FUSE filesystem providing access to MTP devices
+sys-fs/mtpfs 1.0 1.1 1.1-r1 1.1-r2 1.1-r3: A FUSE filesystem providing access to MTP devices
 sys-fs/multipath-tools 0.5.0-r1: Device mapper target autoconfig
 sys-fs/ncdu 1.11: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1 2.1.6 2.2.2: A New Implementation of a Log-structured File System for Linux
