@@ -16,7 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+modules"
 
-RDEPEND="dev-lang/luajit:2=
+RDEPEND="
+	dev-lang/luajit:2=
 	>=dev-libs/jsoncpp-0.6_pre:0=
 	sys-libs/zlib:0="
 DEPEND="${RDEPEND}
@@ -24,7 +25,7 @@ DEPEND="${RDEPEND}
 	virtual/os-headers"
 
 # needed for the kernel module
-CONFIG_CHECK="HAVE_SYSCALL_TRACEPOINTS TRACEPOINTS"
+CONFIG_CHECK="HAVE_SYSCALL_TRACEPOINTS ~TRACEPOINTS"
 
 pkg_pretend() {
 	use modules && linux-mod_pkg_setup

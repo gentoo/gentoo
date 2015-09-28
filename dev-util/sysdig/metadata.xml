@@ -6,7 +6,7 @@
 		<name>Michał Górny</name>
 	</maintainer>
 	<use>
-		<flag name='modules'>Build kernel modules needed for tracing local
+		<flag name="modules">Build kernel modules needed for tracing local
 			events. Disable this only if you intend to use sysdig purely
 			to work with dumpfiles.</flag>
 	</use>
