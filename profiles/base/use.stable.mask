@@ -5,6 +5,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Hans de Graaff <graaff@gentoo.org> (28 Sep 2015)
+# Currently in testing and not ready to go stable yet.
+ruby_targets_ruby22
+
 # Patrick Lauer <patrick@gentoo.org> (28 Apr 2015)
 # dependencies not stable yet
 ayatana
