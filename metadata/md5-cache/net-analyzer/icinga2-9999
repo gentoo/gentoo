@@ -1,12 +1,13 @@
 DEFINED_PHASES=compile configure install postinst prepare setup test unpack
-DEPEND=dev-libs/openssl:= >=dev-libs/boost-1.41 sys-devel/bison >=sys-devel/flex-2.5.35 mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:= ) apache2? ( =www-servers/apache-2* ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-vcs/git virtual/pkgconfig
+DEPEND=dev-libs/openssl:0 >=dev-libs/boost-1.41 sys-devel/bison >=sys-devel/flex-2.5.35 mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:= ) apache2? ( =www-servers/apache-2* ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-vcs/git virtual/pkgconfig
 DESCRIPTION=Distributed, general purpose, network monitoring engine
 EAPI=5
 HOMEPAGE=http://icinga.org/icinga2
 IUSE=+mysql postgres classicui minimal nano-syntax +plugins +vim-syntax apache2
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
-RDEPEND=dev-libs/openssl:= >=dev-libs/boost-1.41 sys-devel/bison >=sys-devel/flex-2.5.35 mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:= ) plugins? ( || ( net-analyzer/monitoring-plugins net-analyzer/nagios-plugins ) ) classicui? ( net-analyzer/icinga[web] ) apache2? ( =www-servers/apache-2* )
+RDEPEND=dev-libs/openssl:0 >=dev-libs/boost-1.41 sys-devel/bison >=sys-devel/flex-2.5.35 mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:= ) plugins? ( || ( net-analyzer/monitoring-plugins net-analyzer/nagios-plugins ) ) classicui? ( net-analyzer/icinga[web] ) apache2? ( =www-servers/apache-2* )
 REQUIRED_USE=!minimal? ( || ( mysql postgres ) )
 SLOT=0
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	95613dd6157fb4a3b225eafdc56bd441	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=265f0d4e18f88ccd61212a63b50450f3
+_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	95613dd6157fb4a3b225eafdc56bd441	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=fc2e661517323ec8d1fb35500d9dfec5
