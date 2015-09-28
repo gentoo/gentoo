@@ -14,6 +14,7 @@ RDEPEND="
 	$(add_kdeapps_dep kcmshell)
 	$(add_kdeapps_dep kdebase-data)
 	$(add_kdeapps_dep kdebase-desktoptheme)
+	$(add_kdeapps_dep kdebase-kioslaves)
 	$(add_kdeapps_dep kdebase-menu)
 	$(add_kdeapps_dep kdebase-menu-icons)
 	$(add_kdeapps_dep kdebugdialog)
@@ -46,7 +47,6 @@ RDEPEND="
 	!minimal? (
 		$(add_kdeapps_dep attica)
 		$(add_kdeapps_dep kcontrol)
-		$(add_kdeapps_dep kdebase-kioslaves)
 		$(add_kdeapps_dep knetattach)
 	)
 "
