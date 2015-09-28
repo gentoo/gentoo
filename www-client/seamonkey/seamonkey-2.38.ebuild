@@ -17,50 +17,42 @@ MOZ_P="${P}"
 MY_MOZ_P="${PN}-${MOZ_PV}"
 
 if [[ ${PV} == *_pre* ]] ; then
-	MOZ_HTTP_URI="http://archive.mozilla.org/pub/${PN}/candidates/${MOZ_PV}-candidates/build${PV##*_pre}"
+	MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/candidates/${MOZ_PV}-candidates/build${PV##*_pre}"
 	MOZ_LANGPACK_PREFIX="linux-i686/xpi/"
 	# And the langpack stuff stays at eclass defaults
 else
-	MOZ_HTTP_URI="http://archive.mozilla.org/pub/${PN}/releases/${MOZ_PV}"
+	MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases/${MOZ_PV}"
 	MOZ_LANGPACK_PREFIX="langpack/${MY_MOZ_P}."
 	MOZ_LANGPACK_SUFFIX=".langpack.xpi"
 fi
 
 MOZCONFIG_OPTIONAL_WIFI=1
-#MOZCONFIG_OPTIONAL_JIT="enabled"
-inherit check-reqs flag-o-matic toolchain-funcs eutils mozconfig-v5.36 multilib pax-utils fdo-mime autotools mozextension nsplugins mozlinguas
+MOZCONFIG_OPTIONAL_JIT="enabled"
+inherit check-reqs flag-o-matic toolchain-funcs eutils mozconfig-v6.41 multilib pax-utils fdo-mime autotools mozextension nsplugins mozlinguas
 
-PATCHFF="firefox-36.0-patches-01"
+PATCHFF="firefox-40.0-patches-0.01"
 PATCH="${PN}-2.33-patches-01"
 EMVER="1.8.2"
 
 DESCRIPTION="Seamonkey Web Browser"
 HOMEPAGE="http://www.seamonkey-project.org"
 
-if [[ ${PV} == *_pre* ]] ; then
-	# pre-releases. No need for arch teams to change KEYWORDS here.
-
-	KEYWORDS=""
-else
-	# This is where arch teams should change the KEYWORDS.
-
-	KEYWORDS="~alpha amd64 ~arm ~ppc ~ppc64 x86"
-fi
+[[ ${PV} != *_pre* ]] && \
+KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="+chatzilla +crypt +gmp-autoupdate +ipc minimal pulseaudio +roaming selinux test"
 
 SRC_URI="${SRC_URI}
-	${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source.tar.bz2 -> ${P}.source.tar.bz2
-	https://dev.gentoo.org/~axs/mozilla/patchsets/${PATCHFF}.tar.xz
-	https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/${PATCH}.tar.xz
+	${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source.tar.xz -> ${P}.source.tar.xz
 	https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/${PATCHFF}.tar.xz
-	crypt? ( http://www.enigmail.net/download/source/enigmail-${EMVER}.tar.gz )"
+	https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/${PATCH}.tar.xz
+	crypt? ( https://www.enigmail.net/download/source/enigmail-${EMVER}.tar.gz )"
 
 ASM_DEPEND=">=dev-lang/yasm-1.1"
 
-RDEPEND=">=dev-libs/nss-3.17.4
+RDEPEND=">=dev-libs/nss-3.19.2
 	>=dev-libs/nspr-4.10.8
 	crypt? ( || (
 			( >=app-crypt/gnupg-2.0
@@ -69,8 +61,7 @@ RDEPEND=">=dev-libs/nss-3.17.4
 					app-crypt/pinentry[qt4]
 				)
 			)
-			=app-crypt/gnupg-1.4* ) )
-	system-sqlite? ( >=dev-db/sqlite-3.8.7.4:3[secure-delete,debug=] )"
+			=app-crypt/gnupg-1.4* ) )"
 
 DEPEND="${RDEPEND}
 	!elibc_glibc? ( !elibc_uclibc?  ( dev-libs/libexecinfo ) )
@@ -117,21 +108,20 @@ src_unpack() {
 
 src_prepare() {
 	# Apply our patches
+	EPATCH_EXCLUDE="2001_ldap_respect_cflags.patch" \
 	EPATCH_SUFFIX="patch" \
 	EPATCH_FORCE="yes" \
 	epatch "${WORKDIR}/seamonkey"
 
-	epatch "${FILESDIR}"/${PN}-2.30-jemalloc-configure.patch
-
 	# browser patches go here
 	pushd "${S}"/mozilla &>/dev/null || die
-	EPATCH_EXCLUDE="2000-firefox_gentoo_install_dirs.patch
-			8002_jemalloc_configure_unbashify.patch" \
+	EPATCH_EXCLUDE="2000-firefox_gentoo_install_dirs.patch" \
 	EPATCH_SUFFIX="patch" \
 	EPATCH_FORCE="yes" \
 	epatch "${WORKDIR}/firefox"
+	epatch "${FILESDIR}"/firefox-38-hppa-js-syntax-error.patch #556196
+	epatch "${FILESDIR}"/firefox-38-dont-hardcode-libc-soname.patch #557956
 	popd &>/dev/null || die
-	# drop -Wl,--build-id from LDFLAGS, bug #465466
 
 	# Shell scripts sometimes contain DOS line endings; bug 391889
 	grep -rlZ --include="*.sh" $'\r$' . |
@@ -165,11 +155,6 @@ src_prepare() {
 	sed 's@\(xargs rm\)$@\1 -f@' \
 		-i "${ms}"/toolkit/mozapps/installer/packager.mk || die
 
-	if has_version '>=media-libs/freetype-2.6' ; then
-		sed '/ftcache\.h/aftfntfmt.h' \
-			-i "${S}/mozilla/config/system-headers" || die
-	fi
-
 	eautoreconf
 	cd "${S}"/mozilla || die
 	eautoconf
@@ -199,9 +184,7 @@ src_configure() {
 	# It doesn't compile on alpha without this LDFLAGS
 	use alpha && append-ldflags "-Wl,--no-relax"
 
-	if use chatzilla ; then
-		MEXTENSIONS+=",irc"
-	else
+	if ! use chatzilla ; then
 		MEXTENSIONS+=",-irc"
 	fi
 	if ! use roaming ; then
@@ -220,10 +203,6 @@ src_configure() {
 	mozconfig_annotate '' --with-default-mozilla-five-home=${MOZILLA_FIVE_HOME}
 
 	mozconfig_annotate '' --enable-safe-browsing
-
-	# jit needs to be enabled unconditionally (bug #544436)
-	mozconfig_annotate '' --enable-ion
-	mozconfig_annotate '' --enable-yarr-jit
 
 	# Use an objdir to keep things organized.
 	echo "mk_add_options MOZ_OBJDIR=${BUILD_OBJ_DIR}" \
