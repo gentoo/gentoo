@@ -5071,7 +5071,7 @@ dev-ml/reactiveData 0.1: Functional reactive programming with incremental change
 dev-ml/res 4.0.3 4.0.4 4.0.6 4.0.7: Resizable Array and Buffer modules for O'Caml
 dev-ml/sexplib 112.35.00 113.00.00: Library for automated conversion of OCaml-values to and from S-expressions
 dev-ml/textutils 112.17.00: Text output utilities
-dev-ml/type-conv 112.01.02 113.00.00: Mini library required for some other preprocessing libraries
+dev-ml/type-conv 112.01.02 113.00.00 113.00.02: Mini library required for some other preprocessing libraries
 dev-ml/typehashlib 109.15.02: Syntax extension for deriving 'typehash' functions automatically
 dev-ml/typerep 112.35.00 113.00.00: Library for creating runtime representation of OCaml types
 dev-ml/typerep_extended 112.17.00 113.00.00: Runtime types for OCaml (Extended)
