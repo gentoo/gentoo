@@ -3815,7 +3815,7 @@ dev-java/ecs 1.4.2-r1 1.4.2-r2: Java library to generate markup language text su
 dev-java/edtftpj 2.0.4: FTP client library written in Java
 dev-java/ehcache 1.1-r1 1.1-r2 1.2.4-r3 1.2.4-r4: Ehcache is a pure Java, fully-featured, in-process cache
 dev-java/emma 2.0.5312-r2: a free Java code coverage tool
-dev-java/fastinfoset 1.2.1-r1 1.2.1-r2 1.2.11: Fast Infoset specifies a standardized binary encoding for the XML Information Sets
+dev-java/fastinfoset 1.2.11: Fast Infoset specifies a standardized binary encoding for the XML Information Sets
 dev-java/fastutil 4.3.1-r1 4.4.2-r1 5.1.3 6.5.4: Provides faster type-specific maps, sets and lists with a small memory footprint
 dev-java/fec 1.0.4-r1: Forword error correction libs
 dev-java/felix-bundlerepository 1.6.6: Felix Bundle Repository
@@ -4008,8 +4008,8 @@ dev-java/jgoodies-looks 1.2.2-r1 1.2.2-r2 2.3.1 2.3.1-r1 2.6.0: JGoodies Looks L
 dev-java/jgraph 5.12.0.4: Open-source graph component for Java
 dev-java/jgrapht 0.8.3: Graph library that is a simpler and faster alternative to JGraph
 dev-java/jgroups 2.9.0: JGroups is a toolkit for reliable multicast communication
-dev-java/jibx 1.1.5-r1: JiBX: Binding XML to Java Code
-dev-java/jibx-tools 1.1.5-r2: JiBX: Binding XML to Java Code - Generators
+dev-java/jibx 1.1.5-r1 1.1.5-r2: JiBX: Binding XML to Java Code
+dev-java/jibx-tools 1.1.5-r2 1.1.5-r3: JiBX: Binding XML to Java Code - Generators
 dev-java/jicmp 1.0.2: Java Interface to Tobias Oetiker's RRDtool
 dev-java/jid3 0.46-r2: ID3 Class Library Implementation
 dev-java/jigsaw 2.2.6: W3 Consortium's Java-based Web server libraries
@@ -4201,7 +4201,7 @@ dev-java/sbt 0.13.8 0.13.8-r1: sbt is a build tool for Scala and Java projects t
 dev-java/servletapi 2.2-r3 2.3-r3 2.4-r5: Servlet API 2.4 from jakarta.apache.org
 dev-java/shared-objects 1.4-r3: A Java Class implementing a core factory for maximal sharing of arbitrary objects
 dev-java/simplyhtml 0.13.1: Text processing application based on HTML and CSS files
-dev-java/sjsxp 1.0.1 1.0.1-r1: The Sun Java Streaming XML Parser (SJSXP) is an efficient implementation of the StAX API
+dev-java/sjsxp 1.0.1 1.0.1-r1 1.0.1-r2: The Sun Java Streaming XML Parser (SJSXP) is an efficient implementation of the StAX API
 dev-java/skinlf 6.7-r1: Skin Look and Feel - Skinning Engine for the Swing toolkit
 dev-java/slf4j-api 1.7.7: Simple Logging Facade for Java
 dev-java/slf4j-ext 1.7.5 1.7.7: Simple Logging Facade for Java
