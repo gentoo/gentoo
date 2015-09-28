@@ -35,6 +35,7 @@ DEPEND="${RDEPEND}
 	)"
 
 python_prepare_all() {
+	chmod o-w *egg*/* || die
 	# Disable versioning of py.test script to avoid collision with
 	# versioning performed by the eclass.
 	sed -e "s/return points/return {'py.test': target}/" -i setup.py || die "sed failed"
