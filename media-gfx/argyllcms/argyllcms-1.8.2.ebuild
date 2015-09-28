@@ -1,24 +1,26 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit base udev
+inherit base flag-o-matic multiprocessing toolchain-funcs udev
 
 MY_P="Argyll_V${PV}"
+
 DESCRIPTION="Open source, ICC compatible color management system"
 HOMEPAGE="http://www.argyllcms.com/"
 SRC_URI="http://www.argyllcms.com/${MY_P}_src.zip"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~hppa ~x86"
 IUSE="doc"
 
-RDEPEND="media-libs/tiff
-	virtual/jpeg
+RDEPEND="
+	media-libs/tiff:0
 	sys-libs/zlib
+	virtual/jpeg:0
 	x11-libs/libX11
 	x11-libs/libXau
 	x11-libs/libXdmcp
@@ -33,8 +35,9 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}/${PN}-1.4.0-jpeg.patch"
-	"${FILESDIR}/${PN}-1.4.0-CVE-2012-4405.patch" )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.8.0-gcc5.patch
+	)
 
 src_compile() {
 	# Make it respect LDFLAGS
@@ -44,42 +47,46 @@ src_compile() {
 	# the shared libraries by default on the command line _before_ the object to be built...
 	echo "STDLIBS += -ldl -lrt -lX11 -lXext -lXxf86vm -lXinerama -lXrandr -lXau -lXdmcp -lXss -ltiff -ljpeg ;" >> Jamtop
 
-	local jobnumber=$(echo "${MAKEOPTS}" | sed -ne "/-j/ { s/.*\(-j[[:space:]]*[0-9]\+\).*/\1/; p }")
-	[ ${jobnumber} ] || jobnumber=-j1
+	append-cflags -DUNIX -D_THREAD_SAFE
 
-	jam -q -fJambase ${jobnumber} || die
+	sed \
+		-e 's:CCFLAGS:CFLAGS:g' \
+		-e "s:ar rusc:$(tc-getAR) rusc:g" \
+		-i Jambase || die
+
+	tc-export CC RANLIB
+
+	jam -dx -fJambase "-j$(makeopts_jobs)" || die
 }
 
 src_install() {
-	jam -q -fJambase install || die
+	jam -dx -fJambase install || die
 
 	rm bin/License.txt || die
 
-	cd bin || die
+	pushd bin > /dev/null
 	local binname
 	for binname in * ; do
 		newbin ${binname} argyll-${binname}
 	done
-	cd .. || die
+	popd > /dev/null
 
-	if use doc; then
-		dohtml doc/*
-	fi
+	use doc && dohtml doc/*
 
 	dodoc log.txt Readme.txt ttbd.txt notes.txt
 
-	insinto /usr/share/${PN}/ref
-	doins   ref/*
+	insinto /usr/share/${PN}
+	doins -r ref
 
-	udev_dorules libusb/55-Argyll.rules
+	udev_dorules usb/55-Argyll.rules
 }
 
 pkg_postinst() {
 	elog "If you have a Spyder2 you need to extract the firmware"
 	elog "from the CVSpyder.dll of the windows driver package"
 	elog "and store it as /usr/share/color/spyd2PLD.bin"
-	elog
+	echo
 	elog "For further info on setting up instrument access read"
 	elog "http://www.argyllcms.com/doc/Installing_Linux.html"
-	elog
+	echo
 }

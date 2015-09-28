@@ -1,0 +1,15 @@
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 4a4b238..854d3e1 100755
+--- a/setup.py
++++ b/setup.py
+@@ -33,6 +33,6 @@ setup(
+       version            = VERSION,
+       py_modules         = py_modules,
+       install_requires   = install_requires,
+-      setup_requires     = ['nose>=1.0'],
++      tests_requires     = ['pytest'],
+       zip_safe           = zip_safe
+       )
