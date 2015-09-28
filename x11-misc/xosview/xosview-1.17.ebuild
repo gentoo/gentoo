@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit eutils toolchain-funcs
 
@@ -24,8 +24,8 @@ DEPEND="${COMMON_DEPS}
 	x11-proto/xproto"
 
 src_prepare() {
-	sed -e 's:lib/X11/app:share/X11/app:g' \
-		-i xosview.1 || die
+	sed -i -e 's:lib/X11/app:share/X11/app:g' -i ${PN}.1 || die
+	sed -i -e "s:Git:${PV}:g" ${PN}.cc || die
 	tc-export CXX
 }
 
