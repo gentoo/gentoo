@@ -134,28 +134,28 @@ app-admin/collectd:collectd_plugins_write_graphite - Build the write_graphite ou
 app-admin/collectd:collectd_plugins_write_http - Build the write_http output plugin (sends the values collected by collectd to a web-server)
 app-admin/collectd:collectd_plugins_write_mongodb - Build the write_mongodb output plugin (sends the values collected by collectd to a MongoDB)
 app-admin/collectd:contrib - Install user-contributed files in the doc directory
-app-admin/conky:apcupsd - enable support for sys-power/apcupsd
-app-admin/conky:audacious - enable monitoring of music played by media-sound/audacious
-app-admin/conky:cmus - enable monitoring of music played by media-sound/cmus
-app-admin/conky:eve - enable support for the eve-online skill monitor
-app-admin/conky:ical - enable support for events from iCalendar (RFC 5545) files using dev-libs/libical
-app-admin/conky:iostats - enable support for per-task I/O statistics
-app-admin/conky:irc - enable support for displaying everything from an irc channel using net-libs/libircclient
-app-admin/conky:lua - enable if you want Lua scripting support
-app-admin/conky:lua-cairo - enable if you want Lua Cairo bindings
-app-admin/conky:lua-imlib - enable if you want Lua Imlib2 bindings
-app-admin/conky:lua-rsvg - enable if you want Lua RSVG bindings
-app-admin/conky:math - enable support for glibc's libm math library
-app-admin/conky:moc - enable monitoring of music played by media-sound/moc
-app-admin/conky:mpd - enable monitoring of music controlled by media-sound/mpd
-app-admin/conky:nano-syntax - enable syntax highlighting for app-editors/nano
-app-admin/conky:nvidia - enable reading of nvidia card temperature sensors via media-video/nvidia-settings
-app-admin/conky:portmon - enable support for tcp (ip4) port monitoring
-app-admin/conky:thinkpad - enable support for IBM/Lenovo notebooks
-app-admin/conky:weather-metar - enable support for metar weather service
-app-admin/conky:weather-xoap - enable support for metar and xoap weather service
-app-admin/conky:webserver - enable support to act as a webserver serving conkys output using net-libs/libmicrohttpd
-app-admin/conky:xmms2 - enable monitoring of music played by media-sound/xmms2
+app-admin/conky:apcupsd - Enable support for sys-power/apcupsd
+app-admin/conky:audacious - Enable monitoring of music played by media-sound/audacious
+app-admin/conky:cmus - Enable monitoring of music played by media-sound/cmus
+app-admin/conky:eve - Enable support for the eve-online skill monitor
+app-admin/conky:ical - Enable support for events from iCalendar (RFC 5545) files using dev-libs/libical
+app-admin/conky:iostats - Enable support for per-task I/O statistics
+app-admin/conky:irc - Enable support for displaying everything from an irc channel using net-libs/libircclient
+app-admin/conky:lua - Enable if you want Lua scripting support
+app-admin/conky:lua-cairo - Enable if you want Lua Cairo bindings
+app-admin/conky:lua-imlib - Enable if you want Lua Imlib2 bindings
+app-admin/conky:lua-rsvg - Enable if you want Lua RSVG bindings
+app-admin/conky:math - Enable support for glibc's libm math library
+app-admin/conky:moc - Enable monitoring of music played by media-sound/moc
+app-admin/conky:mpd - Enable monitoring of music controlled by media-sound/mpd
+app-admin/conky:nano-syntax - Enable syntax highlighting for app-editors/nano
+app-admin/conky:nvidia - Enable reading of nvidia card temperature sensors via media-video/nvidia-settings
+app-admin/conky:portmon - Enable support for tcp (ip4) port monitoring
+app-admin/conky:thinkpad - Enable support for IBM/Lenovo notebooks
+app-admin/conky:weather-metar - Enable support for metar weather service
+app-admin/conky:weather-xoap - Enable support for metar and xoap weather service
+app-admin/conky:webserver - Enable support to act as a webserver serving conkys output using net-libs/libmicrohttpd
+app-admin/conky:xmms2 - Enable monitoring of music played by media-sound/xmms2
 app-admin/consul:web - Build the web UI.
 app-admin/diamond:mongo - Enable MongoDB support
 app-admin/diamond:redis - Enable Redis support
