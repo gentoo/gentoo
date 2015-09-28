@@ -4,10 +4,10 @@ DESCRIPTION=IStack Commons - Runtime jar
 EAPI=5
 HOMEPAGE=https://istack-commons.java.net
 IUSE=elibc_FreeBSD elibc_FreeBSD
-KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=CDDL
 RDEPEND=>=virtual/jre-1.6 >=dev-java/java-config-2.2.0
 SLOT=0
 SRC_URI=https://maven.java.net/content/repositories/releases/com/sun/istack/istack-commons-runtime/2.22/istack-commons-runtime-2.22-sources.jar
 _eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-pkg-simple	d87e645de7dff9e1bc0aac42b43ca4f4	java-utils-2	22a0377180eb25cf7ad0e4d7e6fcbb8e	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=ce6dbb0c1435da3c9ca4d4647c94eb6a
+_md5_=6fd690c1443bb67178faa9d24d0fe374
