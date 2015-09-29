@@ -36,7 +36,7 @@ RDEPEND="bd-xlator? ( sys-fs/lvm2 )
 	xml? ( dev-libs/libxml2 )
 	sys-libs/readline:=
 	dev-libs/libaio
-	dev-libs/openssl:=
+	dev-libs/openssl:=[-bindist]
 	dev-libs/userspace-rcu:=
 	|| ( sys-libs/glibc sys-libs/argp-standalone )
 	sys-apps/util-linux"
