@@ -1,0 +1,12 @@
+fix VirtualBox-5.0.4/src/VBox/Additions/linux/lightdm-greeter/vbox-greeter.cpp:929:64: error: invalid conversion from 'void (*)(PRTLOGGER, RTLOGPHASE, PFNRTLOGPHASEMSG) {aka void (*)(RTLOGGER*, RTLOGPHASE, void (__attribute__((regparm(0), cdecl)) *)(RTLOGGER*, const char*, ...))}' to 'PFNRTLOGPHASE {aka void (__attribute__((regparm(0), cdecl)) *)(RTLOGGER*, RTLOGPHASE, void (__attribute__((regparm(0), cdecl)) *)(RTLOGGER*, const char*, ...))}' [-fpermissive]
+for 32-bit build
+
+--- VirtualBox-5.0.4/src/VBox/Additions/linux/lightdm-greeter/vbox-greeter.cpp
++++ VirtualBox-5.0.4/src/VBox/Additions/linux/lightdm-greeter/vbox-greeter.cpp
+@@ -843,5 +843,5 @@
+  * @param   pfnLog
+  */
+-static void vboxGreeterLogHeaderFooter(PRTLOGGER pLoggerRelease, RTLOGPHASE enmPhase, PFNRTLOGPHASEMSG pfnLog)
++static DECLCALLBACK(void) vboxGreeterLogHeaderFooter(PRTLOGGER pLoggerRelease, RTLOGPHASE enmPhase, PFNRTLOGPHASEMSG pfnLog)
+ {
+     /* Some introductory information. */
