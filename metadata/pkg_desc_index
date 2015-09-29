@@ -10391,7 +10391,7 @@ games-strategy/dopewars 1.5.12-r2: Re-Write of the game Drug Wars
 games-strategy/dunelegacy 0.96.3: Updated clone of Westood Studios' Dune2
 games-strategy/freeciv 2.4.4 2.5.0 2.5.1: multiplayer strategy game (Civilization Clone)
 games-strategy/freecol 0.10.7: An open source clone of the game Colonization
-games-strategy/freeorion 0.4.5_pre: A free turn-based space empire and galactic conquest game
+games-strategy/freeorion 0.4.5_pre 0.4.5: A free turn-based space empire and galactic conquest game
 games-strategy/freesynd 0.7.1: A cross-platform reimplementation of engine for the classic Bullfrog game, Syndicate
 games-strategy/galaxyhack 1.74: Multiplayer AI script based strategy game
 games-strategy/glob2 0.9.4.4-r1: Real Time Strategy (RTS) game involving a brave army of globs
@@ -15584,7 +15584,7 @@ sci-mathematics/mlpy 3.5.0: High-performance Python library for predictive model
 sci-mathematics/msieve 1.51 9999: A C library implementing a suite of algorithms to factor large integers
 sci-mathematics/nauty 2.5.9: Computing automorphism groups of graphs and digraphs
 sci-mathematics/nestedsums 1.4.12-r1: A GiNaC-based library for symbolic expansion of certain transcendental functions
-sci-mathematics/normaliz 2.12.2: Tool for computations in affine monoids and more
+sci-mathematics/normaliz 2.12.2 3.0.0: Tool for computations in affine monoids and more
 sci-mathematics/num-utils 0.3 0.5-r1: A set of programs for dealing with numbers from the command line
 sci-mathematics/nusmv 2.3.1 2.5.0 2.5.2 2.5.3 2.5.4: NuSMV: new symbolic model checker
 sci-mathematics/octave 3.6.4 3.6.4-r1 3.8.1 3.8.1-r1 3.8.2 4.0.0: High-level interactive language for numerical computations
