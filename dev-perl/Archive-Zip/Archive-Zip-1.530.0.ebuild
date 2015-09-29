@@ -5,7 +5,7 @@
 EAPI=5
 
 MODULE_AUTHOR=PHRED
-MODULE_VERSION=1.48
+MODULE_VERSION=1.53
 inherit perl-module
 
 DESCRIPTION="A wrapper that lets you read Zip archive members as if they were files"
@@ -25,4 +25,4 @@ DEPEND="${RDEPEND}
 	test? ( >=virtual/perl-Test-Simple-0.880.0 )
 "
 
-SRC_TEST=do
+SRC_TEST="do parallel"
