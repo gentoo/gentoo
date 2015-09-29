@@ -22,7 +22,7 @@ SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd -sparc-fbsd ~x86-fbsd"
 IUSE="nls static-libs zlib"
 
-COMMON_DEPEND="zlib? ( sys-libs/zlib )"
+COMMON_DEPEND="zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )"
 DEPEND="${COMMON_DEPEND}
 	nls? ( sys-devel/gettext )"
 # Need a newer binutils-config that'll reset include/lib symlinks for us.
