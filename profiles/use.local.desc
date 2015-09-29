@@ -3417,6 +3417,7 @@ mail-client/claws-mail:libindicate - Enable notification through DBUS in connect
 mail-client/claws-mail:libnotify - Enable notification on the desktop in connection with USE=notification
 mail-client/claws-mail:notification - Notification for new mail in different way, see also USE flags libcanberra, libindicate and libnotify
 mail-client/claws-mail:pgp - Enable PGP support
+mail-client/claws-mail:sieve - Build plugin for sieve filter support
 mail-client/claws-mail:smime - Build plugin for S/MIME support
 mail-client/claws-mail:spam-report - Enable plugin for spam reporting to various services
 mail-client/claws-mail:spamassassin - Build mail-filter/spamassassin plugin
