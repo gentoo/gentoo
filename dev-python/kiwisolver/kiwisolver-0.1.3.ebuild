@@ -16,5 +16,11 @@ LICENSE="Clear-BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-DEPEND="app-arch/unzip
-		dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="
+	app-arch/unzip
+	dev-python/setuptools[${PYTHON_USEDEP}]"
+
+python_prepare_all() {
+	chmod o-w *egg*/* || die
+	distutils-r1_python_prepare_all
+}
