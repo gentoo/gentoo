@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>netmon</herd>
-<use>
-<flag name="system-lua">Use <pkg>dev-lang/lua</pkg> instead of the bundled liblua</flag>
-<flag name="lua">Include support for the Nmap Scripting Engine (NSE)</flag>
-<flag name="ncat">Install the ncat utility</flag>
-<flag name="ndiff">Install the ndiff utility</flag>
-<flag name="nmap-update">Install nmap-update, which uses <pkg>dev-vcs/subversion</pkg> to update nmap scripts in your home directory</flag>
-<flag name="nping">Install the nping utility</flag>
-<flag name="nse">Include support for the Nmap Scripting Engine (NSE)</flag>
-<flag name="zenmap">Install the GTK+ based nmap GUI, zenmap</flag>
-</use>
+	<herd>netmon</herd>
+	<use>
+		<flag name="system-lua">Use <pkg>dev-lang/lua</pkg> instead of the bundled liblua</flag>
+		<flag name="lua">Include support for the Nmap Scripting Engine (NSE)</flag>
+		<flag name="ncat">Install the ncat utility</flag>
+		<flag name="ndiff">Install the ndiff utility</flag>
+		<flag name="nmap-update">Install nmap-update, which uses <pkg>dev-vcs/subversion</pkg> to update nmap scripts in your home directory</flag>
+		<flag name="nping">Install the nping utility</flag>
+		<flag name="nse">Include support for the Nmap Scripting Engine (NSE)</flag>
+		<flag name="zenmap">Install the GTK+ based nmap GUI, zenmap</flag>
+	</use>
 </pkgmetadata>
