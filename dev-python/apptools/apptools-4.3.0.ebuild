@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,17 +10,20 @@ inherit distutils-r1 virtualx
 
 DESCRIPTION="Enthought Tool Suite: Application tools"
 HOMEPAGE="http://code.enthought.com/projects/app_tools/ https://pypi.python.org/pypi/apptools"
-SRC_URI="http://www.enthought.com/repo/ets/${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples test"
 
-RDEPEND="dev-python/configobj[${PYTHON_USEDEP}]
+RDEPEND="
+	dev-python/configobj[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-python/traitsui[${PYTHON_USEDEP}]
 	>=dev-python/traits-4[${PYTHON_USEDEP}]"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		${RDEPEND}
@@ -28,24 +31,21 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		media-fonts/font-cursor-misc
 		media-fonts/font-misc-misc
 		sci-visualization/mayavi[${PYTHON_USEDEP}]
+		dev-python/traits[${PYTHON_USEDEP}]
+		dev-python/traitsui[${PYTHON_USEDEP}]
 	)"
-
-PATCHES=( "${FILESDIR}"/${PN}_test.patch )
 
 python_compile_all() {
 	use doc && emake -C docs html
 }
 
 python_test() {
-	VIRTUALX_COMMAND="nosetests" virtualmake
+	# Ignore test file that imports a long deprecated module of traits
+	VIRTUALX_COMMAND="nosetests -I test_state_pickler.py" virtualmake
 }
 
 python_install_all() {
+	use doc && local HTML_DOCS=( docs/build/html/. )
+	use examples && local EXAMPLES=( examples/. )
 	distutils-r1_python_install_all
-	use doc && dohtml -r docs/build/html/
-
-	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r examples
-	fi
 }

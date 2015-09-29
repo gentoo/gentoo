@@ -23,7 +23,7 @@ else
 	[ "$DOCKER_GITCOMMIT" ] || die "DOCKER_GITCOMMIT must be added manually for each bump!"
 fi
 
-inherit bash-completion-r1 linux-info multilib systemd udev user
+inherit bash-completion-r1 eutils linux-info multilib systemd udev user
 
 LICENSE="Apache-2.0"
 SLOT="0"

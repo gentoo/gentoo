@@ -32,7 +32,7 @@ RESTRICT="strip binchecks"
 
 src_compile() {
 	sh ricty_generator.sh \
-		"${EPREFIX}/usr/share/fonts/inconsolata/Inconsolata.otf" \
+		"${EPREFIX}/usr/share/fonts/inconsolata/Inconsolata-Regular.ttf" \
 		"${EPREFIX}/usr/share/fonts/mix-mplus-ipa/migu-1m-regular.ttf" \
 		"${EPREFIX}/usr/share/fonts/mix-mplus-ipa/migu-1m-bold.ttf" || die
 }
