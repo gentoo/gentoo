@@ -18,11 +18,11 @@ KEYWORDS="amd64 ppc x86 ~x86-fbsd"
 
 IUSE=""
 
-CDEPENDEND="java-virtuals/jaf:0"
+CDEPEND="java-virtuals/jaf:0"
 RDEPEND=">=virtual/jre-1.6
-	${CDEPENDEND}"
+	${CDEPEND}"
 DEPEND=">=virtual/jdk-1.6
-	${CDEPENDEND}"
+	${CDEPEND}"
 
 JAVA_GENTOO_CLASSPATH="jaf"
 
