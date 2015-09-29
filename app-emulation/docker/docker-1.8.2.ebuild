@@ -170,6 +170,7 @@ pkg_setup() {
 
 src_prepare() {
 	cd "src/${EGO_PN}" || die
+	epatch "${FILESDIR}"/15404-fix-go14_15.patch
 	# allow user patches (use sparingly - upstream won't support them)
 	epatch_user
 }
