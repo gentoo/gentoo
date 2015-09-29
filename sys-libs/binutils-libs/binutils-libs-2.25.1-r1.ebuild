@@ -6,7 +6,7 @@ EAPI="5"
 
 PATCHVER="1.1"
 
-inherit eutils
+inherit eutils multilib-minimal
 
 MY_PN="binutils"
 MY_P="${MY_PN}-${PV}"
@@ -41,7 +41,7 @@ pkgversion() {
 	[[ -n ${PATCHVER} ]] && printf " p${PATCHVER}"
 }
 
-src_configure() {
+multilib_src_configure() {
 	local myconf=(
 		$(use_with zlib)
 		--enable-obsolete
@@ -66,12 +66,16 @@ src_configure() {
 		&& myconf+=( --without-included-gettext ) \
 		|| myconf+=( --disable-nls )
 
+	ECONF_SOURCE=${S} \
 	econf "${myconf[@]}"
 }
 
-src_install() {
+multilib_src_install() {
 	default
-	use static-libs || find "${ED}"/usr -name '*.la' -delete
 	# Provide libiberty.h directly.
 	dosym libiberty/libiberty.h /usr/include/libiberty.h
+}
+
+multilib_src_install_all() {
+	use static-libs || find "${ED}"/usr -name '*.la' -delete
 }
