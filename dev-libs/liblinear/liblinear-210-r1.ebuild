@@ -35,13 +35,13 @@ src_prepare() {
 
 src_compile() {
 	emake \
-		CC=$(tc-getCC) \
-		CXX=$(tc-getCXX) \
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
 		CFLAGS="${CFLAGS} -fPIC" \
 		CXXFLAGS="${CXXFLAGS} -fPIC" \
 		AR="$(tc-getAR) rcv" \
 		RANLIB="$(tc-getRANLIB)" \
-		LIBS=$($(tc-getPKG_CONFIG) --libs blas) \
+		LIBS="$($(tc-getPKG_CONFIG) --libs blas)" \
 		lib all
 }
 
