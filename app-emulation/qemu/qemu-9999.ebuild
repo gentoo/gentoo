@@ -385,7 +385,7 @@ qemu_src_configure() {
 		$(conf_softmmu sasl vnc-sasl)
 		$(conf_softmmu sdl)
 		$(conf_softmmu seccomp)
-		$(conf_softmmu smartcard smartcard-nss)
+		$(conf_softmmu smartcard)
 		$(conf_softmmu snappy)
 		$(conf_softmmu spice)
 		$(conf_softmmu ssh libssh2)
