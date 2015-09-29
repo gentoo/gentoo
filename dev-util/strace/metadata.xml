@@ -6,6 +6,9 @@
     <flag name="aio">
       Enable <pkg>dev-libs/libaio</pkg> support for tracing Asynchronous I/O operations
     </flag>
+    <flag name="unwind">
+      Enable stack backtraces (-k flag) via <pkg>sys-libs/libunwind</pkg>
+    </flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">strace</remote-id>
