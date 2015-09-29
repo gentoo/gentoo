@@ -198,7 +198,7 @@ eautoreconf() {
 		intltool    false "autotools_run_tool intltoolize --automake --copy --force"
 		gtkdoc      false "autotools_run_tool --at-missing gtkdocize --copy"
 		gnomedoc    false "autotools_run_tool --at-missing gnome-doc-prepare --copy --force"
-		libtool     false "_elibtoolize --install --copy --force"
+		libtool     false "_elibtoolize --auto-ltdl --install --copy --force"
 	)
 	for (( i = 0; i < ${#tools[@]}; i += 3 )) ; do
 		if _at_uses_${tools[i]} ; then
@@ -264,6 +264,7 @@ _at_uses_intltool()    { _at_uses_pkg {AC,IT}_PROG_INTLTOOL; }
 _at_uses_gtkdoc()      { _at_uses_pkg GTK_DOC_CHECK; }
 _at_uses_gnomedoc()    { _at_uses_pkg GNOME_DOC_INIT; }
 _at_uses_libtool()     { _at_uses_pkg A{C,M}_PROG_LIBTOOL LT_INIT; }
+_at_uses_libltdl()     { _at_uses_pkg LT_CONFIG_LTDL_DIR; }
 
 # @FUNCTION: eaclocal_amflags
 # @DESCRIPTION:
@@ -312,6 +313,11 @@ eaclocal() {
 # Note the '_' prefix: avoid collision with elibtoolize() from libtool.eclass.
 _elibtoolize() {
 	local LIBTOOLIZE=${LIBTOOLIZE:-$(type -P glibtoolize > /dev/null && echo glibtoolize || echo libtoolize)}
+
+	if [[ $1 == "--auto-ltdl" ]] ; then
+		shift
+		_at_uses_libltdl && set -- "$@" --ltdl
+	fi
 
 	[[ -f GNUmakefile.am || -f Makefile.am ]] && set -- "$@" --automake
 
@@ -519,7 +525,7 @@ autotools_run_tool() {
 # Keep a list of all the macros we might use so that we only
 # have to run the trace code once.  Order doesn't matter.
 ALL_AUTOTOOLS_MACROS=(
-	A{C,M}_PROG_LIBTOOL LT_INIT
+	A{C,M}_PROG_LIBTOOL LT_INIT LT_CONFIG_LTDL_DIR
 	A{C,M}_CONFIG_HEADER{S,}
 	AC_CONFIG_SUBDIRS
 	AC_CONFIG_AUX_DIR AC_CONFIG_MACRO_DIR
