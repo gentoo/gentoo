@@ -174,6 +174,9 @@ src_prepare() {
 	EPATCH_FORCE="yes" \
 	epatch "${WORKDIR}/patches"
 
+	# x86 build fixes (#561758)
+	epatch "${FILESDIR}"/${P}-x86_buildfix_{1,2}.patch
+
 	epatch_user
 }
 
