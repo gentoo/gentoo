@@ -3984,7 +3984,7 @@ dev-java/jdbc-jaybird 2.1.5-r1 2.1.5-r2 2.1.6 2.2.7 2.2.8: JDBC Type 2 and 4 dri
 dev-java/jdbc-mssqlserver 4.0.2206.100: JDBC driver for Microsoft SQL Server
 dev-java/jdbc-mysql 5.1.14 5.1.18 5.1.23 5.1.26: MySQL JDBC driver
 dev-java/jdbc-oracle-bin 9.2.0.8 10.1.0.5 10.2.0.3 10.2.0.4: JDBC 3.0 Drivers for Oracle
-dev-java/jdbc-postgresql 8.3_p603 8.4_p701-r1 9.2_p1003 9.2_p1004 9.3_p1100 9.4_p1201: JDBC Driver for PostgreSQL
+dev-java/jdbc-postgresql 8.3_p603 8.4_p701-r1 9.2_p1003 9.2_p1004 9.3_p1100 9.4_p1201 9.4_p1203: JDBC Driver for PostgreSQL
 dev-java/jdbc2-stdext 2.0-r3: A standard set of libs for Server-Side JDBC support
 dev-java/jdbm 0.12-r2: Jdbm aims to be for Java what GDBM is for Perl, Python, C, ...
 dev-java/jdepend 2.9-r5: JDepend traverses Java class file directories and generates design quality metrics per package
@@ -5100,7 +5100,7 @@ dev-perl/Any-Moose 0.210.0 0.260.0: Use Moose or Mouse modules (DEPRECATED)
 dev-perl/AnyEvent 7.40.0-r1 7.80.0: Provides a uniform interface to various event loops
 dev-perl/AnyEvent-HTTP 2.150.0-r1 2.210.0 2.220.0: Simple but non-blocking HTTP/HTTPS client
 dev-perl/AnyEvent-I3 0.150.0 0.160.0: Communicate with the i3 window manager
-dev-perl/Apache-AuthCookie 3.180.0-r1 3.220.0: Perl Authentication and Authorization via cookies
+dev-perl/Apache-AuthCookie 3.180.0-r1 3.220.0 3.230.0: Perl Authentication and Authorization via cookies
 dev-perl/Apache-CGI-Builder 1.300.0-r1: CGI::Builder and Apache/mod_perl (1 and 2) integration
 dev-perl/Apache-DBI 1.120.0-r1: Apache::DBI module for perl
 dev-perl/Apache-LogFormat-Compiler 0.320.0: Compile an Apache log format string to perl-code
@@ -5118,7 +5118,7 @@ dev-perl/AppConfig 1.660.0-r1 1.710.0: Perl5 module for reading configuration fi
 dev-perl/Archive-Any 0.94.100: Single interface to deal with file archives
 dev-perl/Archive-Extract 0.720.0: Generic archive extracting mechanism
 dev-perl/Archive-Rar 2.20.0-r1: Archive::Rar - Interface with the rar command
-dev-perl/Archive-Zip 1.370.0 1.480.0 1.490.0 1.500.0: A wrapper that lets you read Zip archive members as if they were files
+dev-perl/Archive-Zip 1.370.0 1.490.0 1.500.0 1.530.0: A wrapper that lets you read Zip archive members as if they were files
 dev-perl/Array-Compare 2.20.0-r1: Perl extension for comparing arrays
 dev-perl/Array-RefElem 1.0.0-r1: Set up array elements as aliases
 dev-perl/Array-Window 1.20.0-r1: Array::Window - Calculate windows/subsets/pages of arrays
@@ -5145,7 +5145,7 @@ dev-perl/B-Hooks-EndOfScope 0.120.0-r1 0.150.0: Execute code after a scope finis
 dev-perl/B-Hooks-OP-Check 0.190.0-r1: Wrap OP check callbacks
 dev-perl/B-Hooks-Parser 0.130.0 0.160.0: Interface to perls parser variables
 dev-perl/B-Keywords 1.130.0-r1 1.140.0: Lists of reserved barewords and symbol names
-dev-perl/B-OPCheck 0.290.0-r1: PL_check hacks using Perl callbacks
+dev-perl/B-OPCheck 0.290.0-r1 0.300.0: PL_check hacks using Perl callbacks
 dev-perl/B-Utils 0.260.0 0.270.0: Helper functions for op tree manipulation
 dev-perl/BSD-Resource 1.290.700-r1: Perl module for BSD process resource limit and priority functions
 dev-perl/BZ-Client 1.40.0: A client for the Bugzilla web services API.
@@ -6033,11 +6033,11 @@ dev-perl/Schedule-At 1.150.0-r1: OS independent interface to the Unix 'at' comma
 dev-perl/Schedule-Cron-Events 1.930.0: Take a line from a crontab and find out when events will occur
 dev-perl/Scope-Guard 0.200.0-r1: Lexically scoped resource management
 dev-perl/Search-Xapian 1.2.19.0 1.2.20.0 1.2.21.0: Perl XS frontend to the Xapian C++ search library
-dev-perl/Server-Starter 0.120.0-r1 0.190.0: A superdaemon for hot-deploying server programs
+dev-perl/Server-Starter 0.190.0 0.320.0: A superdaemon for hot-deploying server programs
 dev-perl/Set-Crontab 1.30.0: Expand crontab(5)-style integer lists
 dev-perl/Set-Infinite 0.650.0-r1: Sets of intervals
 dev-perl/Set-IntSpan 1.190.0-r1: Manages sets of integers
-dev-perl/Set-Object 1.290.0 1.310.0: set of objects and strings
+dev-perl/Set-Object 1.310.0 1.350.0: set of objects and strings
 dev-perl/Shell 0.720.0: Shell - run shell commands transparently within perl
 dev-perl/Shell-EnvImporter 1.70.0-r1 1.70.0-r2: Import environment variable changes from external commands or shell scripts
 dev-perl/ShipIt 0.600.0: Software Release Tool
