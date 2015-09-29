@@ -19,12 +19,14 @@ HOMEPAGE="http://sourceforge.net/projects/strace/"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="aio +perl static"
+IUSE="aio +perl static unwind"
 
+LIB_DEPEND="unwind? ( sys-libs/libunwind[static-libs(+)] )"
 # strace only uses the header from libaio to decode structs
-DEPEND="aio? ( >=dev-libs/libaio-0.3.106 )
+DEPEND="static? ( ${LIB_DEPEND} )
+	aio? ( >=dev-libs/libaio-0.3.106 )
 	sys-kernel/linux-headers"
-RDEPEND=""
+RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 
 src_prepare() {
 	if epatch_user || [[ ! -e configure ]] ; then
@@ -38,6 +40,10 @@ src_prepare() {
 	use static && append-ldflags -static
 
 	export ac_cv_header_libaio_h=$(usex aio)
+}
+
+src_configure() {
+	econf $(use_with unwind libunwind)
 }
 
 src_install() {
