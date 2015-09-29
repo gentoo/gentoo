@@ -14087,7 +14087,7 @@ net-misc/asterisk-spandsp_codec_g726 0.0.2_pre26: SpanDSP ITU G.726-32kbps codec
 net-misc/astmanproxy 1.28.2: Proxy for the Asterisk manager interface
 net-misc/autossh 1.4c 1.4d 1.4e: Automatically restart SSH sessions and tunnels
 net-misc/autoupnp 0.4.6 9999: Automatic open port forwarder using UPnP
-net-misc/axel 1.1 2.3-r1 2.4-r1 2.4-r2: Light Unix download accelerator
+net-misc/axel 1.1 2.3-r1 2.4-r1 2.4-r3: Light Unix download accelerator
 net-misc/badvpn 1.999.123-r3 1.999.126 1.999.127 1.999.128 1.999.129 1.999.130: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
 net-misc/balance 3.54-r1: TCP Load Balancing Port Forwarder
 net-misc/batctl 2013.4.0 2014.2.0: BATMAN advanced control and management tool
