@@ -12,7 +12,7 @@ EGIT_BRANCH="master"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS=""
 IUSE="+mysql postgres classicui minimal nano-syntax +plugins +vim-syntax"
 
 DEPEND="
