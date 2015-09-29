@@ -258,12 +258,6 @@ app-emulation/kvm-kmod
 # Masked for testing
 =net-misc/iputils-20150815
 
-# Johannes Huber <johu@gentoo.org> (18 Aug 2015)
-# Masked for removal in 30 days. Does not compile with
-# dev-python/PyQt4-4.11.4, which blocks stabilization.
-# Dead upstream. Last commit 6 years ago. See bug #558020.
-net-misc/guidedog
-
 # Brian Evans <grknight@gentoo.org> (16 Aug 2015)
 # Mask new PEAR installer as it is likely to break
 # many old scripts
