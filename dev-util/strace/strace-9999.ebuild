@@ -29,7 +29,8 @@ RDEPEND="perl? ( dev-lang/perl )"
 src_prepare() {
 	if epatch_user || [[ ! -e configure ]] ; then
 		# git generation
-		./xlat/gen.sh
+		./xlat/gen.sh || die
+		./generate_mpers_am.sh || die
 		eautoreconf
 		[[ ! -e CREDITS ]] && cp CREDITS{.in,}
 	fi
