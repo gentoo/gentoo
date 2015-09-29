@@ -5,7 +5,7 @@
 EAPI=5
 inherit eutils versionator
 
-SLOT="$(get_major_version)"
+SLOT=0
 MY_PV="$(get_version_component_range 4-6)"
 MY_PN="idea"
 
@@ -24,7 +24,7 @@ src_install() {
 	local dir="/opt/${PN}"
 
 	insinto "${dir}"
-	doins -r *
+	doins -r .
 	fperms 755 ${dir}/bin/{idea.sh,fsnotifier{,64}}
 
 	make_wrapper "${PN}" "${dir}/bin/${MY_PN}.sh"
