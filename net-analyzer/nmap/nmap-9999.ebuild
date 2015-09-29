@@ -30,7 +30,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	dev-libs/liblinear
+	dev-libs/liblinear:=
 	dev-libs/libpcre
 	net-libs/libpcap[ipv6?]
 	zenmap? (
