@@ -2824,3 +2824,12 @@ is-java-strict() {
 	[[ -n ${JAVA_PKG_STRICT} ]]
 	return $?
 }
+
+# @FUNCTION: java-pkg_clean
+# @DESCRIPTION:
+# java package cleaner function, will remove all *.class and *.jar files
+# removing any bundled dependencies
+java-pkg_clean() {
+	[[ -n "${JAVA_PKG_NO_CLEAN}" ]] &&
+		find "${@}" '(' -name '*.class' -o -name '*.jar' ')' -type f -delete -print || die
+}
