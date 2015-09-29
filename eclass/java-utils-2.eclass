@@ -2831,5 +2831,5 @@ is-java-strict() {
 # removing any bundled dependencies
 java-pkg_clean() {
 	[[ -n "${JAVA_PKG_NO_CLEAN}" ]] &&
-		find '(' -name '*.class' -o -name '*.jar' ')' -type f -delete -print || die
+		find "${@}" '(' -name '*.class' -o -name '*.jar' ')' -type f -delete -print || die
 }
