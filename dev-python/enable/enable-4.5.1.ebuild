@@ -10,14 +10,17 @@ inherit distutils-r1 virtualx flag-o-matic
 
 DESCRIPTION="Enthought Tool Suite: Drawing and interaction packages"
 HOMEPAGE="http://code.enthought.com/projects/enable/ https://pypi.python.org/pypi/enable https://github.com/enthought/enable"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+#SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/enthought/enable/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples test"
 
 RDEPEND="
+	dev-python/apptools[${PYTHON_USEDEP}]
+	dev-python/kiwisolver[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/reportlab[${PYTHON_USEDEP}]
 	>=dev-python/traitsui-4[${PYTHON_USEDEP}]
@@ -38,7 +41,7 @@ DEPEND="${RDEPEND}
 
 DISTUTILS_IN_SOURCE_BUILD=1
 
-PATCHES=( "${FILESDIR}"/${P}-swig.patch )
+PATCHES=( "${FILESDIR}"/${PN}-4.4.1-swig.patch )
 
 python_prepare_all() {
 	append-cflags -fno-strict-aliasing
@@ -57,7 +60,7 @@ python_test() {
 	pushd "${BUILD_DIR}"/lib > /dev/null
 	# https://github.com/enthought/enable/issues/158
 	PYTHONPATH=.:kiva \
-		VIRTUALX_COMMAND="nosetests" virtualmake
+		VIRTUALX_COMMAND="nosetests" virtualmake --verbose
 	popd > /dev/null
 }
 
