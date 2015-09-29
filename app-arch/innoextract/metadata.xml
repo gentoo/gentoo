@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
 	<maintainer>
 		<email>hasufell@gentoo.org</email>
 		<name>Julian Ospald</name>
@@ -13,9 +12,14 @@
 		<description>Proxy maintainer. CC him on bugs</description>
 	</maintainer>
 	<use>
+		<flag name='debug'>Enable debug logging and the --debug command-line option.</flag>
+		<flag name='lzma'>Enable support for extracting lzma-compressed installers using <pkg>app-arch/xz-utils</pkg>.</flag>
 		<flag name="c++0x">Compile innoextract using the C++11 standard.</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">innoextract</remote-id>
+		<bugs-to>http://innoextract.constexpr.org/issues</bugs-to>
+		<changelog>http://constexpr.org/innoextract/changelog</changelog>
+		<doc lang="en">http://constexpr.org/innoextract/innoextract.1</doc>
+		<remote-id type='github'>dscharrer/innoextract</remote-id>
 	</upstream>
 </pkgmetadata>
