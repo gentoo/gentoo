@@ -38,11 +38,12 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+blksha1 +curl cgi doc emacs gnome-keyring +gpg gtk highlight +iconv mediawiki +nls +pcre +perl +python ppcsha1 tk +threads +webdav xinetd cvs subversion test"
+IUSE="+blksha1 +curl cgi doc emacs gnome-keyring +gpg gtk highlight +iconv libressl mediawiki +nls +pcre +perl +python ppcsha1 tk +threads +webdav xinetd cvs subversion test"
 
 # Common to both DEPEND and RDEPEND
 CDEPEND="
-	dev-libs/openssl:0=
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:= )
 	sys-libs/zlib
 	pcre? ( dev-libs/libpcre )
 	perl? ( dev-lang/perl:=[-build(-)] )
@@ -228,6 +229,9 @@ src_prepare() {
 	epatch "${FILESDIR}"/git-1.8.5-mw-vendor.patch
 
 	epatch "${FILESDIR}"/git-2.2.0-svn-fe-linking.patch
+
+	# Bug #493306, where FreeBSD 10.x merged libiconv into its libc.
+	epatch "${FILESDIR}"/git-2.5.1-freebsd-10.x-no-iconv.patch
 
 	epatch_user
 
