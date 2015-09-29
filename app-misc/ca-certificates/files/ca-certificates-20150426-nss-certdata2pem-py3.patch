@@ -3,6 +3,19 @@ https://bugs.gentoo.org/548374
 
 --- a/ca-certificates/mozilla/certdata2pem.py
 +++ b/ca-certificates/mozilla/certdata2pem.py
+@@ -31,7 +31,11 @@ objects = []
+ # Dirty file parser.
+ in_data, in_multiline, in_obj = False, False, False
+ field, type, value, obj = None, None, None, dict()
+-for line in open('certdata.txt', 'r'):
++try:
++    f = open('certdata.txt', 'r', encoding='utf-8')
++except TypeError:
++    f = open('certdata.txt', 'r')
++for line in f:
+     # Ignore the file header.
+     if not in_data:
+         if line.startswith('BEGINDATA'):
 @@ -53,7 +53,7 @@ for line in open('certdata.txt', 'r'):
              if type == 'MULTILINE_OCTAL':
                  line = line.strip()
@@ -62,17 +75,19 @@ https://bugs.gentoo.org/548374
                                        .replace(')', '=')\
                                        .replace(',', '_')
 -        bname = bname.decode('string_escape')
+-        fname = bname + '.crt'
 +
 +        # this is the only way to decode the way NSS stores multi-byte UTF-8
 +        if bytes != str:
 +            bname = bname.encode('utf-8')
 +        bname = bname.decode('unicode_escape').encode('latin-1').decode('utf-8')
-         fname = bname + '.crt'
++        fname = (bname + '.crt').encode('utf-8')
 +
          if os.path.exists(fname):
 -            print "Found duplicate certificate name %s, renaming." % bname
-+            print("Found duplicate certificate name %s, renaming." % bname)
-             fname = bname + '_2.crt'
+-            fname = bname + '_2.crt'
++            print("Found duplicate certificate name %s, renaming." % fname)
++            fname = (bname + '_2.crt').encode('utf-8')
          f = open(fname, 'w')
          f.write("-----BEGIN CERTIFICATE-----\n")
 -        f.write("\n".join(textwrap.wrap(base64.b64encode(obj['CKA_VALUE']), 64)))
