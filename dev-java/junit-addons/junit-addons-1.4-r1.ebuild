@@ -1,6 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+EAPI=5
 
 JAVA_PKG_IUSE="doc source"
 
@@ -15,10 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-linux ~x86-macos"
 
 COMMON_DEP="
-	=dev-java/junit-3.8*
-	dev-java/ant-core
-	~dev-java/jdom-1.0
-	=dev-java/jaxen-1.1*
+	dev-java/junit:0
+	dev-java/ant-core:0
+	dev-java/jdom:0
+	dev-java/jaxen:1.1
 	"
 
 RDEPEND=">=virtual/jre-1.4
@@ -27,9 +29,7 @@ DEPEND=">=virtual/jdk-1.4
 		app-arch/unzip
 		${COMMON_DEP}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+java_prepare() {
 	unpack ./src.jar
 	rm -v *.jar || die
 	# Not included so taken from cvs
@@ -41,7 +41,7 @@ _eant() {
 	eant \
 		-Djunit.jar="$(java-pkg_getjar junit junit.jar)" \
 		-Dant.jar="$(java-pkg_getjar ant-core ant.jar)" \
-		-Djdom.jar="$(java-pkg_getjar jdom-1.0 jdom.jar)" \
+		-Djdom.jar="$(java-pkg_getjar jdom jdom.jar)" \
 		-Djaxen.jar="$(java-pkg_getjar jaxen-1.1 jaxen.jar)" \
 		"${@}"
 }
