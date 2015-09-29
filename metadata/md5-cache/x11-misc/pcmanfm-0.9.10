@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.18:2 >=x11-libs/gtk+-2.22.1:2 >=lxde-base/menu-cache-0.3.2 >=x11-libs/libfm-0.1.16 virtual/eject virtual/freedesktop-icon-theme
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~hwoarang/distfiles/pcmanfm-0.9.10.tar.gz
-_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=d34420736b86b3a1da994784a1ef7b28

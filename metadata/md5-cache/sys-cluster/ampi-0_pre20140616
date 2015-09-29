@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=virtual/mpi
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jauhien/distfiles/ampi-0_pre20140616.tar.gz
-_eclasses_=autotools	7d16e72a943b4803ca9691b2ecf89216	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=5fb45ed97b67eb7e8469156504e8c0bd
