@@ -22,6 +22,11 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 # tests connect to random remote sites
 RESTRICT="test"
 
+python_prepare_all() {
+	chmod o+r */*egg*/* || die
+	distutils-r1_python_prepare_all
+}
+
 python_test() {
 	if [[ ${EPYTHON} == python2.7 ]] ; then
 		cd python2 || die
