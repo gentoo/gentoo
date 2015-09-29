@@ -9,5 +9,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/DateTime-0.43.02 >=dev-perl/DateTime-Format-DateParse-0.04 >=dev-perl/DateTime-Format-Flexible-0.05 >=dev-perl/DateTime-Format-Natural-0.71 >=dev-perl/DateTime-Locale-0.40.01 >=dev-perl/DateTime-TimeZone-0.77.01 >=dev-perl/DateTimeX-Easy-0.082 >=dev-perl/Moose-0.41 >=dev-perl/MooseX-Types-0.300.0 dev-perl/namespace-autoclean >=dev-perl/Olson-Abbreviations-0.30.0 dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/E/EC/ECARROLL/MooseX-Types-DateTime-ButMaintained-0.16.tar.gz
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	unpacker	1d149d9bda7723e740cfd28118f27813
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	unpacker	1d149d9bda7723e740cfd28118f27813
 _md5_=06e55a7bac120a654c6b68875dc17285

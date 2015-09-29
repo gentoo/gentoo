@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=app-admin/pwgen dev-lang/php:*[calendar,curl,pdo,postgres,xml] dev-perl/DBI dev-perl/DBD-Pg dev-perl/yaml >=dev-php/awl-0.51 www-servers/apache =dev-lang/php-5* >=app-admin/webapp-config-1.50.15
 SLOT=1.1.0-r1
 SRC_URI=http://debian.mcmillan.net.nz/packages/davical/davical-1.1.0.tar.gz
-_eclasses_=depend.php	c595f1a83ba4052bfe96c06daee20004	eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	webapp	42c6ef7af496b228f9854b3c81e4b226
+_eclasses_=depend.php	c595f1a83ba4052bfe96c06daee20004	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	webapp	42c6ef7af496b228f9854b3c81e4b226
 _md5_=242a3bda87c15cdd431835e9b1da186a

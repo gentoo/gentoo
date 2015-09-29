@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=dev-texlive/texlive-metapost virtual/latex-base
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/feynmf-1.08.tar.gz doc? ( https://dev.gentoo.org/~ulm/distfiles/feynmf-cnl.tar.gz )
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	95613dd6157fb4a3b225eafdc56bd441	latex-package	20f17759e8808b666e37d3b1bbe2fa4d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	latex-package	20f17759e8808b666e37d3b1bbe2fa4d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=c27ff26149577a7852a72572f4fa1684

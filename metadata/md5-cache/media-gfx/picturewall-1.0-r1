@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-qt/qtcore-4.5.3:4 >=dev-qt/qtgui-4.5.3:4 >=dev-qt/qtwebkit-4.5.3:4
 SLOT=0
 SRC_URI=https://picturewall.googlecode.com/files/PictureWall_1.0.zip
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=6f4f3d490eace263c45de067bf9f7131

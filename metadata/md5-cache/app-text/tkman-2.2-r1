@@ -8,5 +8,5 @@ LICENSE=Artistic
 RDEPEND=>=app-text/rman-3.1 >=dev-lang/tcl-8.4:0 >=dev-lang/tk-8.4:0
 SLOT=0
 SRC_URI=mirror://sourceforge/tkman/tkman-2.2.tar.gz
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=ac447fb7c36893770432ecd69c9391fd

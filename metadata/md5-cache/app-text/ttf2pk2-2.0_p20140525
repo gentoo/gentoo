@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/kpathsea-6.2.0 media-libs/freetype:2 sys-libs/zlib !media-libs/freetype:1 !=dev-texlive/texlive-langcjk-2011*[source]
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-20140525-source.tar.xz
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=847bd33ad0c35510639c5857d928d1dc

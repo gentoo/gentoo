@@ -10,5 +10,5 @@ PDEPEND=pam? ( net-mail/mailbase ) crypt? ( >=app-crypt/gnupg-1.0.4 )
 RDEPEND=>=net-libs/courier-authlib-0.66.3 >=net-libs/courier-unicode-1.3 !gnutls? ( dev-libs/openssl:= ) gnutls? ( net-libs/gnutls ) >=sys-libs/gdbm-1.8.0 dev-libs/libpcre app-misc/mime-types fax? ( >=media-libs/netpbm-9.12 app-text/ghostscript-gpl >=net-dialup/mgetty-1.1.28 ) pam? ( virtual/pam ) mysql? ( virtual/mysql ) ldap? ( >=net-nds/openldap-1.2.11 ) postgres? ( dev-db/postgresql:= ) spell? ( app-text/aspell ) fam? ( virtual/fam ) !mail-filter/maildrop !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp !mail-mta/opensmtpd !net-mail/dot-forward !sys-apps/ucspi-tcp dev-lang/perl sys-process/procps !net-mail/bincimap !net-mail/courier-imap !net-mail/cyrus-imapd !net-mail/uw-imap
 SLOT=0
 SRC_URI=mirror://sourceforge/courier/courier-0.75.0.tar.bz2
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=b59c430429602ab9e31cf7026af3449f

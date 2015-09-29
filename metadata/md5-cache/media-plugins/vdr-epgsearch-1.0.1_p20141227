@@ -10,5 +10,5 @@ RDEPEND=media-video/vdr pcre? ( dev-libs/libpcre ) tre? ( dev-libs/tre ) >=media
 REQUIRED_USE=pcre? ( !tre ) tre? ( !pcre )
 SLOT=0
 SRC_URI=http://projects.vdr-developer.org/git/vdr-plugin-epgsearch.git/snapshot/vdr-plugin-epgsearch-a908daa4c5c6edd6c560ed96939358b4352e9b42.tar.gz -> vdr-epgsearch-1.0.1_p20141227.tar.gz
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	unpacker	1d149d9bda7723e740cfd28118f27813	vdr-plugin-2	10cd413f0e936b01e977002c4c9409c9
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	unpacker	1d149d9bda7723e740cfd28118f27813	vdr-plugin-2	10cd413f0e936b01e977002c4c9409c9
 _md5_=f6db1a68c09c2bfa73e808648fefa3ff

@@ -10,5 +10,5 @@ RDEPEND=media-libs/fontconfig
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=mirror://sourceforge/sourcecodepro.adobe/SourceCodePro_FontsOnly-1.013.zip mirror://sourceforge/sourcesans.adobe/SourceSansPro_FontsOnly-1.038.zip
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	font	cd7790315ca5b8c505e1e0513df6acce	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	font	cd7790315ca5b8c505e1e0513df6acce	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=1e79dd6cbdd8c2f3043ab6de9d953ee7

@@ -7,5 +7,5 @@ LICENSE=GPL-2
 RDEPEND=dev-perl/Locale-gettext dev-perl/XML-RSS dev-perl/gtk2-trayicon dev-perl/gtk2-gladexml dev-perl/gnome2-vfs-perl >=dev-perl/gnome2-perl-0.94
 SLOT=0
 SRC_URI=mirror://sourceforge/yarssr/yarssr-0.2.2.tar.bz2
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=4af6ba23f0bdc34990351cd49f1d11e6

@@ -9,5 +9,5 @@ LICENSE=CC-BY-SA-3.0 CC-BY-SA-4.0
 RDEPEND=x11-themes/gtk-engines-murrine gtk3? ( x11-themes/gtk-engines-unico )
 SLOT=0
 SRC_URI=mirror://ubuntu/pool/main/l/light-themes/light-themes_0.1.93.tar.gz https://dev.gentoo.org/~pacho/light-themes/Gentoo-Buttons-r1.tar.xz
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=0b5bf22171cf59afd24d698f12f27c40

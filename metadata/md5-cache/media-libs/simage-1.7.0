@@ -10,5 +10,5 @@ RDEPEND=gif? ( media-libs/giflib ) jpeg? ( virtual/jpeg ) jpeg2k? ( media-libs/j
 RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=https://bitbucket.org/Coin3D/coin/downloads/simage-1.7.0.tar.gz
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=ee8ed97b7025795d831d5d945d8944ab

@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=>=sci-libs/gsl-1.10 >=virtual/gnustep-back-0.16.0 >=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( !<sys-devel/gdb-6.0 )
 SLOT=0
 SRC_URI=mirror://nongnu/fisicalab/FisicaLab-0.3.0.tar.gz
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	gnustep-2	eae71f6ebee53a3bf1016938874bca15	gnustep-base	707840264bcc460d4e700dcc8c6aa746	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	gnustep-2	eae71f6ebee53a3bf1016938874bca15	gnustep-base	707840264bcc460d4e700dcc8c6aa746	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=66c30283122e9272fa7d9a4ad8d26acb

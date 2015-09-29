@@ -9,5 +9,5 @@ LICENSE=GPL-2 GPL-1 LPPL-1.3
 RDEPEND=>=dev-texlive/texlive-basic-2012 !=dev-texlive/texlive-langmanju-2007* >=app-text/texlive-core-2012
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-module-hyphen-mongolian-2012.tar.xz mirror://gentoo/texlive-module-mongolian-babel-2012.tar.xz mirror://gentoo/texlive-module-montex-2012.tar.xz mirror://gentoo/texlive-module-collection-langmongolian-2012.tar.xz doc? ( mirror://gentoo/texlive-module-mongolian-babel.doc-2012.tar.xz mirror://gentoo/texlive-module-montex.doc-2012.tar.xz ) source? ( mirror://gentoo/texlive-module-mongolian-babel.source-2012.tar.xz )
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	texlive-common	cf8d3d36261adafe564b821b75b34a05	texlive-module	9b17379edf5bdf6418f88d18496927ed	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	texlive-common	cf8d3d36261adafe564b821b75b34a05	texlive-module	9b17379edf5bdf6418f88d18496927ed	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=a6b4036890bec0281c478e8c1d036a10

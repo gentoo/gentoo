@@ -9,5 +9,5 @@ LICENSE=GPL-2 LGPL-2.1
 RDEPEND=media-libs/libpng:0= media-libs/libsdl:0=[joystick,opengl,video] sys-libs/zlib:0=[minizip] lirc? ( app-misc/lirc:0 ) osd? ( media-fonts/ttf-bitstream-vera media-libs/freetype:2= virtual/opengl:0= virtual/glu:0= ) !<games-emulation/mupen64plus-2.0 !<games-emulation/m64py-0.2.1-r1 !<games-emulation/mupen64plus-audio-sdl-2.0-r1 !<games-emulation/mupen64plus-input-sdl-2.0-r1 !<games-emulation/mupen64plus-rsp-hle-2.0-r1 !<games-emulation/mupen64plus-ui-console-2.0-r1 !<games-emulation/mupen64plus-video-glide64mk2-2.0-r1 !<games-emulation/mupen64plus-video-rice-2.0-r1
 SLOT=0/2
 SRC_URI=https://github.com/mupen64plus/mupen64plus-core/releases/download/2.0/mupen64plus-core-src-2.0.tar.gz
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=c93d1c475c29bf7fa552a3ddbfd663af

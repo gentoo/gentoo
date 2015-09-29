@@ -9,5 +9,5 @@ LICENSE=QPL
 RDEPEND=berkdb? ( >=sys-libs/db-3.2 ) gif? ( media-libs/giflib ) jpeg? ( virtual/jpeg ) png? ( media-libs/libpng )
 SLOT=0
 SRC_URI=mirror://sourceforge/spamprobe/spamprobe-1.4d.tar.gz
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=18d69583ecee48071b41593f882656ae

@@ -6,5 +6,5 @@ HOMEPAGE=https://code.google.com/p/linux-wbfs-manager/
 LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 gnome-base/libglade:2.0
 SLOT=0
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	subversion	4fee0a764150bb4dda27ed4d2c4ed7ce	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	subversion	4fee0a764150bb4dda27ed4d2c4ed7ce	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=4e7f72c747487f5d03f998994a84aabb

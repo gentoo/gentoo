@@ -6,5 +6,5 @@ KEYWORDS=alpha amd64 ~mips ppc sparc x86 ~x86-interix ~amd64-linux ~x86-linux ~p
 LICENSE=HPND
 SLOT=0
 SRC_URI=http://matt.immute.net/src/mtail/mtail-1.1.1.tgz http://matt.immute.net/src/mtail/mtailrc-syslog.sample
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=fafafdd090a606ee6334c40c75626a2f

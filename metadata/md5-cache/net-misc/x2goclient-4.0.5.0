@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=net-libs/libssh-0.6.0_rc1 net-print/cups dev-qt/qtcore:4[ssl] dev-qt/qtgui:4 dev-qt/qtsvg:4 x11-libs/libXpm ldap? ( net-nds/openldap ) net-misc/nx
 SLOT=0
 SRC_URI=http://code.x2go.org/releases/source/x2goclient/x2goclient-4.0.5.0.tar.gz
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	95613dd6157fb4a3b225eafdc56bd441	mozextension	3d8ee4835f89ff39d4666656aa603433	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	nsplugins	bf5bfcef1d2f0adad7e6230455df8e91	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	mozextension	3d8ee4835f89ff39d4666656aa603433	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	nsplugins	bf5bfcef1d2f0adad7e6230455df8e91	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=1dce0f25b34fb57c37e29a42c94f81f2

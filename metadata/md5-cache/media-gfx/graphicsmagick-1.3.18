@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=>=sys-devel/libtool-2.2.6b bzip2? ( app-arch/bzip2 ) fpx? ( media-libs/libfpx ) imagemagick? ( !media-gfx/imagemagick ) jbig? ( media-libs/jbigkit ) jpeg? ( virtual/jpeg ) jpeg2k? ( media-libs/jasper ) lcms? ( media-libs/lcms:2 ) lzma? ( app-arch/xz-utils ) perl? ( dev-lang/perl ) png? ( media-libs/libpng:0 ) postscript? ( app-text/ghostscript-gpl ) svg? ( dev-libs/libxml2 ) tiff? ( media-libs/tiff:0 ) truetype? ( media-fonts/urw-fonts >=media-libs/freetype-2 ) wmf? ( media-libs/libwmf ) X? ( x11-libs/libSM x11-libs/libXext ) zlib? ( sys-libs/zlib )
 SLOT=0
 SRC_URI=mirror://sourceforge/graphicsmagick/GraphicsMagick-1.3.18.tar.xz
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=4f9c6b790555ace8c38299dbd80f1ff5

@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=>=dev-haskell/cairo-0.12.0:0=[profile?] <dev-haskell/cairo-0.13:0=[profile?] >=dev-haskell/glib-0.12.0:0=[profile?] <dev-haskell/glib-0.13:0=[profile?] dev-haskell/mtl:=[profile?] >=dev-lang/ghc-6.10.4:= x11-libs/cairo x11-libs/pango
 SLOT=0/0.12.4
 SRC_URI=mirror://hackage/packages/archive/pango/0.12.4/pango-0.12.4.tar.gz
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	ghc-package	6165faf4ae46df43d5a9b0dd28ec8654	haskell-cabal	5a91bcb951851c3c401505c28526502f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	ghc-package	6165faf4ae46df43d5a9b0dd28ec8654	haskell-cabal	5a91bcb951851c3c401505c28526502f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=c161f981e3f328938f16eb4a2671b137

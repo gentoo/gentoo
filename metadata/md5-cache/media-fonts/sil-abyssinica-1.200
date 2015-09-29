@@ -8,5 +8,5 @@ KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~ppc-ma
 LICENSE=OFL-1.1
 SLOT=0
 SRC_URI=mirror://gentoo/AbyssinicaSIL1.200.zip
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	font	cd7790315ca5b8c505e1e0513df6acce	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	font	cd7790315ca5b8c505e1e0513df6acce	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=ad8b848ed22364efdca3f3e47f285c4b

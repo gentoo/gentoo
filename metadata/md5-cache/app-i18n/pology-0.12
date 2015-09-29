@@ -10,5 +10,5 @@ RDEPEND=dev-libs/libxslt dev-libs/libxml2 dev-python/dbus-python[python_targets_
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=http://pology.nedohodnik.net//release/pology-0.12.tar.bz2
-_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	95613dd6157fb4a3b225eafdc56bd441	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=83080e89143af9d72dfad2898bce1fcd

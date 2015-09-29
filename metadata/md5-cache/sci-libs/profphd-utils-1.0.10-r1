@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=virtual/fortran
 SLOT=0
 SRC_URI=ftp://rostlab.org/profphd-utils/profphd-utils-1.0.10.tar.gz
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=6f8aebb15211bd77233d96dbc49d014e

@@ -10,5 +10,5 @@ REQUIRED_USE=|| ( firefox chromium chrome )
 RESTRICT=strip mirror
 SLOT=0
 SRC_URI=https://lastpass.com/lplinux.tar.bz2 https://lastpass.com/lpchrome_linux.crx firefox? ( https://lastpass.com/lp_linux.xpi )
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=7bd6f2e813d44363d5a2c47f1b0a6d77

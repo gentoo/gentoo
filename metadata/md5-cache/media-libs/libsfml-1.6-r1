@@ -9,5 +9,5 @@ LICENSE=ZLIB
 RDEPEND=media-libs/freetype:2 media-libs/glew >=media-libs/libpng-1.4 media-libs/libsndfile media-libs/mesa media-libs/openal sys-libs/zlib virtual/jpeg x11-libs/libX11 x11-libs/libXrandr
 SLOT=0
 SRC_URI=mirror://sourceforge/sfml/SFML-1.6-sdk-linux-32.tar.gz
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=b16de0dad376e8e4db8c64f5eb22536c

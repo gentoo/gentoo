@@ -9,5 +9,5 @@ LICENSE=NPL-1.1
 RDEPEND=threadsafe? ( >=dev-libs/nspr-4.8.6 )
 SLOT=0/mozjs
 SRC_URI=http://releases.mozilla.org/pub/mozilla.org/firefox/releases/3.6.15/source/firefox-3.6.15.source.tar.bz2
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	b81ab4852d108e3d9c940fa03bce80e1	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	b81ab4852d108e3d9c940fa03bce80e1	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=cd1dd0d450d72c609ad26c05fb7825e5

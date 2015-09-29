@@ -9,5 +9,5 @@ LICENSE=|| ( LGPL-2.1 GPL-3 )
 RDEPEND=!<dev-qt/assistant-4.8.6:4 !<dev-qt/designer-4.8.6:4 !<dev-qt/linguist-4.8.6:4 !<dev-qt/pixeltool-4.8.6:4 !<dev-qt/qdbusviewer-4.8.6:4 !<dev-qt/qt3support-4.8.6:4 !<dev-qt/qtbearer-4.8.6:4 !<dev-qt/qtcore-4.8.6:4 !<dev-qt/qtdbus-4.8.6:4 !<dev-qt/qtdeclarative-4.8.6:4 !<dev-qt/qtdemo-4.8.6:4 !<dev-qt/qtgui-4.8.6:4 !<dev-qt/qthelp-4.8.6:4 !<dev-qt/qtmultimedia-4.8.6:4 !<dev-qt/qtopengl-4.8.6:4 !<dev-qt/qtopenvg-4.8.6:4 !<dev-qt/qtphonon-4.8.6:4 !<dev-qt/qtscript-4.8.6:4 !<dev-qt/qtsql-4.8.6:4 !<dev-qt/qtsvg-4.8.6:4 !<dev-qt/qttest-4.8.6:4 !<dev-qt/qtwebkit-4.8.6:4 !<dev-qt/qtxmlpatterns-4.8.6:4
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~pesa/distfiles/qtchooser-0_p20150102.tar.xz
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=fee7c16e47602613ceecff4fa9573acd

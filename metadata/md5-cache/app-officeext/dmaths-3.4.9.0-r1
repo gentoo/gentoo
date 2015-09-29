@@ -10,5 +10,5 @@ RDEPEND=office_implementation_libreoffice? ( || ( app-office/libreoffice app-off
 REQUIRED_USE=|| ( office_implementation_libreoffice office_implementation_openoffice )
 SLOT=0
 SRC_URI=http://extensions.libreoffice.org/extension-center/dmaths/releases/3.4.9.0/dmathsaddon.oxt
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	office-ext-r1	a58b476ab64f43cdb945405dbda568f7	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	office-ext-r1	a58b476ab64f43cdb945405dbda568f7	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=b4ca8bb47b9e88d93283e8a15313e84a

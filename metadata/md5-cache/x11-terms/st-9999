@@ -7,5 +7,5 @@ IUSE=savedconfig savedconfig
 LICENSE=MIT-with-advertising
 RDEPEND=!<sys-libs/ncurses-6.0 media-libs/fontconfig x11-libs/libX11 x11-libs/libXext x11-libs/libXft
 SLOT=0
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	portability	3a50b3ec310b86914f98babecc8f89c6	savedconfig	7de7daa586f6bf361639e77d6f2299db	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	portability	3a50b3ec310b86914f98babecc8f89c6	savedconfig	7de7daa586f6bf361639e77d6f2299db	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=d48d03203d48688e002a664d71f916d8

@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=>=dev-libs/gmp-4.1.3[cxx] lpsol? ( <=sci-mathematics/glpk-4.48 ) !<dev-libs/cloog-ppl-0.15.10
 SLOT=0
 SRC_URI=http://bugseng.com/products/ppl/download/ftp/releases/0.12.1/ppl-0.12.1.tar.bz2
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=dc15f7567af6ad2b019420ece0f0c2e0

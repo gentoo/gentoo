@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/wxGTK:2.8[X]
 SLOT=0
 SRC_URI=mirror://gentoo/wxchtdecoder-1.5a.tar.bz2
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	wxwidgets	e0c7fd61275cea7156be4143ba8c673a
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	wxwidgets	e0c7fd61275cea7156be4143ba8c673a
 _md5_=e8d32133f488bcb28f61c6c8ad2c6a53

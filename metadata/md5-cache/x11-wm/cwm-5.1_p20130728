@@ -9,5 +9,5 @@ LICENSE=ISC
 RDEPEND=x11-libs/libXft x11-libs/libXinerama x11-libs/libXrandr
 SLOT=0
 SRC_URI=vanilla? ( https://github.com/chneukirchen/cwm/tarball/0dec9e8 -> cwm-5.1_p20130728-chneukirchen.tar.gz ) !vanilla? ( https://github.com/xmw/cwm/tarball/b8be675 -> cwm-5.1_p20130728-xmw.tar.gz )
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=c7c950da8e0e2915fe67549363e75871

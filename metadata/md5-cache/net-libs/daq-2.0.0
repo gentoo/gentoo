@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=pcap? ( >=net-libs/libpcap-1.0.0 ) dump? ( >=net-libs/libpcap-1.0.0 ) nfq? ( dev-libs/libdnet >=net-firewall/iptables-1.4.10 net-libs/libnetfilter_queue ) ipq? ( dev-libs/libdnet >=net-firewall/iptables-1.4.10 net-libs/libnetfilter_queue )
 SLOT=0
 SRC_URI=http://www.snort.org/downloads/2311 -> daq-2.0.0.tar.gz
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=98e3fa226e470bb112a6bc2013ba17f1

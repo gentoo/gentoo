@@ -8,5 +8,5 @@ LICENSE=HPND
 RDEPEND=dev-libs/libf2c
 SLOT=0
 SRC_URI=mirror://debian/pool/main/f/f2c/f2c_20100827.orig.tar.gz mirror://debian/pool/main/f/f2c/f2c_20100827-1.debian.tar.gz
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=75db0f7b226aa474e6f5d128a2c271cc

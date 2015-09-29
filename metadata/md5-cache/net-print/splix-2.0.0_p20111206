@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=app-text/ghostscript-gpl-9.02 >=net-print/cups-1.4.0 jbig? ( media-libs/jbigkit )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~voyageur/distfiles/splix-2.0.0_p20111206.tar.bz2 http://dev.gentooexperimental.org/~scarabeus/samsung-cms-20120312.tar.xz
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=77c927abe0f97545f1ea551d2422d8ce

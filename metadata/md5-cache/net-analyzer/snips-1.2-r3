@@ -7,5 +7,5 @@ LICENSE=SNIPS BSD HPND GPL-1+ RSA free-noncomm
 RDEPEND=dev-lang/perl virtual/mailx net-analyzer/rrdtool >=net-misc/iputils-20071127-r2 sys-libs/gdbm sys-libs/ncurses
 SLOT=0
 SRC_URI=http://www.netplex-tech.com/software/downloads/snips/snips-1.2.tar.gz
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=c2a76e205916e1923eb59cab8c91bfce

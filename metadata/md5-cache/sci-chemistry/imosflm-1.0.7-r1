@@ -8,5 +8,5 @@ LICENSE=ccp4
 RDEPEND=dev-lang/tcl:0= >=dev-tcltk/itcl-3.3 >=dev-tcltk/itk-3.3 >=dev-tcltk/iwidgets-4 >=dev-tcltk/tdom-0.8 >=dev-tcltk/tkimg-1.3 >=dev-tcltk/tktreectrl-2.1 dev-tcltk/anigif dev-tcltk/combobox dev-tcltk/tablelist >=sci-chemistry/mosflm-7.0.9
 SLOT=0
 SRC_URI=http://www.mrc-lmb.cam.ac.uk/harry/imosflm/ver107/downloads/imosflm-1.0.7.zip
-_eclasses_=eutils	95613dd6157fb4a3b225eafdc56bd441	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=fa24e4f06467b81b1948cc1c926f7646
