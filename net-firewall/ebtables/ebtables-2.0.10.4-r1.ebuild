@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,10 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
-IUSE="static"
+IUSE="+perl static"
+
+# The ebtables-save script is written in perl.
+RDEPEND="perl? ( dev-lang/perl )"
 
 S=${WORKDIR}/${MY_P}
 
@@ -54,6 +57,9 @@ src_install() {
 		keepdir /var/lib/ebtables/
 		newinitd "${FILESDIR}"/ebtables.initd-r1 ebtables
 		newconfd "${FILESDIR}"/ebtables.confd-r1 ebtables
+		if ! use perl; then
+			rm "${ED}"/sbin/ebtables-save || die
+		fi
 	else
 		into /
 		newsbin static ebtables
