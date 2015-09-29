@@ -5087,6 +5087,7 @@ net-dns/unbound:dnstap - Enable dnstap support
 net-dns/unbound:ecdsa - Enable ECDSA support
 net-dns/unbound:gost - Enable GOST support
 net-firewall/arno-iptables-firewall:plugins - Install optional plugins
+net-firewall/ebtables:perl - Install the ebtables-save script which uses perl
 net-firewall/firewalld:gui - Builds and installs GUI configurator and GTK+ applet
 net-firewall/fwknop:client - Build fwknop client
 net-firewall/fwknop:extras - Install example AppArmor policy for fwknopd server
@@ -5826,6 +5827,7 @@ net-misc/connman:pptp - Use net-dialup/pptpclient for PPTP VPN support.
 net-misc/connman:tools - Enable testing tools.
 net-misc/connman:vpnc - Use net-misc/vpnc for cisco VPN support.
 net-misc/connman:wispr - Enable support for WISPr hotspot logins.
+net-misc/connman-gtk:openconnect - Support easier authentication to AnyConnect VPNs
 net-misc/csync:sftp - Enable sftp transfer support via net-libs/libssh
 net-misc/curl:http2 - Enabled HTTP/2.0 support
 net-misc/curl:metalink - Enable metalink support

@@ -9337,7 +9337,7 @@ dev-util/obs-service-update_source 20130802: Open Build Service client module - 
 dev-util/obs-service-verify_file 20130403: Open Build Service client module - verify_file service
 dev-util/omake 0.9.8.6.0_rc1: Make replacement
 dev-util/open-vcdiff 0.8.3 0.8.4: An encoder/decoder for the VCDIFF (RFC3284) format
-dev-util/oprofile 0.9.9-r1 1.0.0-r1 1.1.0: A transparent low-overhead system-wide profiler
+dev-util/oprofile 0.9.9-r1 0.9.9-r2 1.0.0-r2 1.1.0-r1: A transparent low-overhead system-wide profiler
 dev-util/osc 0.148.2 0.150.1 9999: Command line tool for Open Build Service
 dev-util/osdt 1.1.5: tools for Open Source software distribution
 dev-util/par 00.05.01: par manipulates PalmOS database files
@@ -14122,6 +14122,8 @@ net-misc/cmst 2015.03.01: Qt GUI for Connman with system tray icon
 net-misc/cocaine-core 0.9.2-r1 0.11.2.5 0.11.3.2: Cloud platform, core parts
 net-misc/connect 1.100 1.103: network connection relaying command (proxy)
 net-misc/connman 1.27 1.29 1.30: Provides a daemon for managing internet connections
+net-misc/connman-gtk 1.0: GTK GUI for Connman
+net-misc/connman-ui 9999: A full-featured GTK based trayicon UI for ConnMan
 net-misc/corkscrew 2.0: a tool for tunneling SSH through HTTP proxies
 net-misc/csync 0.50.0: lightweight file synchronizer utility
 net-misc/curl 7.42.1 7.42.1-r1 7.43.0 7.44.0 7.44.0-r1: A Client that groks URLs
