@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 AUTOTOOLS_AUTORECONF=yes
@@ -18,12 +18,13 @@ SLOT="0"
 LICENSE="GPL-3"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 
-IUSE="archive bogofilter calendar clamav dbus debug doc gdata gtk3 +imap ipv6 ldap +libcanberra +libindicate +libnotify networkmanager nntp +notification pda pdf perl +pgp python rss session smime spamassassin spam-report spell +gnutls startup-notification valgrind webkit xface"
-REQUIRED_USE="networkmanager? ( dbus )
-	smime? ( pgp )
-	libcanberra? ( notification )
+IUSE="archive bogofilter calendar clamav dbus debug doc gdata gtk3 +imap ipv6 ldap +libcanberra +libindicate +libnotify networkmanager nntp +notification pda pdf perl +pgp python rss session sieve smime spamassassin spam-report spell +gnutls startup-notification valgrind webkit xface"
+REQUIRED_USE="libcanberra? ( notification )
 	libindicate? ( notification )
-	libnotify? ( notification )"
+	libnotify? ( notification )
+	networkmanager? ( dbus )
+	sieve? ( gnutls )
+	smime? ( pgp )"
 
 # Plugins are all integrated or dropped since 3.9.1
 PLUGINBLOCK="!!mail-client/claws-mail-acpi-notifier
@@ -129,6 +130,7 @@ src_configure() {
 		$(use_enable python python-plugin)
 		$(use_enable rss rssyl-plugin)
 		$(use_enable spamassassin spamassassin-plugin)
+		$(use_enable sieve managesieve-plugin)
 		$(use_enable smime smime-plugin)
 		$(use_enable spam-report spam_report-plugin)
 		$(use_enable webkit fancy-plugin)
@@ -165,12 +167,12 @@ src_install() {
 	# => also install it in /usr/share/pixmaps for other desktop envs
 	# => also install higher resolution icons in /usr/share/icons/hicolor/...
 	insinto /usr/share/pixmaps
-	doins ${PN}.png || die
+	doins ${PN}.png
 	local res resdir
 	for res in 64x64 128x128 ; do
 		resdir="/usr/share/icons/hicolor/${res}/apps"
 		insinto ${resdir}
-		newins ${PN}-${res}.png ${PN}.png || die
+		newins ${PN}-${res}.png ${PN}.png
 	done
 
 	docinto tools
@@ -181,8 +183,8 @@ src_install() {
 	einfo "Installing extra tools"
 	cd "${S}"/tools
 	exeinto /usr/$(get_libdir)/${PN}/tools
-	doexe *.pl *.py *.conf *.sh || die
-	doexe tb2claws-mail update-po uudec uuooffice || die
+	doexe *.pl *.py *.conf *.sh
+	doexe tb2claws-mail update-po uudec uuooffice
 
 	# kill useless files
 	rm -f "${D}"/usr/lib*/claws-mail/plugins/*.{a,la}
