@@ -14,7 +14,7 @@ SRC_URI="https://maven.java.net/content/groups/public/org/jvnet/${PN/-/}/${PN}/$
 
 LICENSE="CDDL GPL-2"
 SLOT="1"
-KEYWORDS="amd64 ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc ~ppc64 x86 ~x86-fbsd"
 
 IUSE=""
 
