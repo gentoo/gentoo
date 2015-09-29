@@ -85,7 +85,7 @@ app-admin/diradm 2.9.7.1: diradm is a nearly complete nss/shadow suite for manag
 app-admin/drush 5.8 6.5.0: Command line shell and scripting interface for Drupal
 app-admin/durep 0.9-r4: A perl script designed for monitoring disk usage in a more visual way than du
 app-admin/ec2-ami-tools 1.5.6: These command-line tools serve as the client interface to the Amazon EC2 web service
-app-admin/ec2-api-tools 1.6.7.2-r4: These command-line tools serve as the client interface to the Amazon EC2 web service
+app-admin/ec2-api-tools 1.6.7.2-r5: These command-line tools serve as the client interface to the Amazon EC2 web service
 app-admin/eclean-kernel 0.4 0.4.1 9999: Remove outdated built kernels
 app-admin/elektra 0.7.1-r5 0.8.3-r3 0.8.6 0.8.7 0.8.12 9999: Universal and secure framework to store config parameters in a hierarchical key-value pair mechanism
 app-admin/emacs-updater 1.13 1.14: Rebuild Emacs packages
@@ -1981,7 +1981,7 @@ app-office/gtg 0.3 0.3.1: Personal organizer for the GNOME desktop environment
 app-office/gtimelog 0.8.0 0.8.1: A small Gtk+ application for keeping track of your time
 app-office/hamster-time-tracker 9999: Time tracking for the masses
 app-office/homebank 4.6.3 5.0.0 5.0.3: Free, easy, personal accounting for everyone
-app-office/hourglass 0.7.2: A PSP (personal software process) time tracking utility written in Java
+app-office/hourglass 0.7.2 0.7.2-r1: A PSP (personal software process) time tracking utility written in Java
 app-office/ical 3.0-r2: Tk-based Calendar program
 app-office/impressive 0.10.5 0.11.0b: Stylish way of giving presentations with Python
 app-office/kmymoney 4.7.2: Personal finance manager for KDE
@@ -2861,7 +2861,7 @@ dev-db/henplus 0.9.8 0.9.8-r1: Java-based multisession SQL shell for databases w
 dev-db/hsqldb 1.8.1.3-r1: The leading SQL relational database engine written in Java
 dev-db/hyperdex 1.6.0-r1 1.7.1 1.8.0 1.8.1 9999: A searchable distributed Key-Value Store
 dev-db/innotop 1.9.0-r1 1.9.1: innotop - A text-mode MySQL and InnoDB monitor like mytop, but with many more features
-dev-db/jxtray 0.5-r4: Java based Database Explorer
+dev-db/jxtray 0.5-r4 0.5-r5: Java based Database Explorer
 dev-db/kyotocabinet 1.2.76-r1: A straightforward implementation of DBM
 dev-db/lib_mysqludf_fPROJ4 0.1.0: MySQL UDFs which converts geographic/cartesian coordinates
 dev-db/lib_mysqludf_json 0.0.2: MySQL UDFs to map relational data to the JSON format
@@ -3773,7 +3773,7 @@ dev-java/commons-httpclient 3.1-r1: The Jakarta Commons HttpClient library
 dev-java/commons-io 2.4: Commons-IO contains utility classes, stream implementations, file filters, and endian classes
 dev-java/commons-jelly 1.0-r5 1.0-r6: A Java and XML based scripting and processing engine
 dev-java/commons-jexl 1.1 2.1.1: Expression language engine, can be embedded in applications and frameworks
-dev-java/commons-jxpath 1.3-r1: Applies XPath expressions to graphs of objects of all kinds
+dev-java/commons-jxpath 1.3-r1 1.3-r2: Applies XPath expressions to graphs of objects of all kinds
 dev-java/commons-lang 2.0-r2 2.6 3.1 3.3.2: Commons components to manipulate core java classes
 dev-java/commons-launcher 1.1-r1: Commons-launcher eliminates the need for a batch or shell script to launch a Java class
 dev-java/commons-logging 1.2: The Jakarta-Commons Logging package is an ultra-thin bridge between different logging libraries
@@ -3925,7 +3925,7 @@ dev-java/jaffl 0.5.11: An abstracted interface to invoking native functions from
 dev-java/jakarta-jstl 1.1.2-r2: An implementation of the JSP Standard Tag Library (JSTL)
 dev-java/jakarta-oro 2.0.8-r3: A set of text-processing Java classes
 dev-java/jakarta-regexp 1.3-r4 1.3-r5 1.4-r1 1.4-r2 1.5: 100% Pure Java Regular Expression package
-dev-java/jakarta-slide-webdavclient 2.1-r3: A content repository
+dev-java/jakarta-slide-webdavclient 2.1-r3 2.1-r4: A content repository
 dev-java/jal 20031117-r3: Partial port of the C++ Standard Template Library
 dev-java/jama 1.0.3: A Java Matrix Package
 dev-java/jamon 1.01-r3: Java API to monitor production applications
@@ -3958,7 +3958,7 @@ dev-java/jax-ws-api 2.0: JAXWS 2.0 API Final Release
 dev-java/jax-ws-tools 2.0.1-r1: Reference implementation of the Java API for XML Web Services
 dev-java/jaxb 2.1.2-r1: Reference implementation of the JAXB specification
 dev-java/jaxb-tools 2.1.2: Reference implementation of the JAXB specification
-dev-java/jaxen 1.1.1 1.1.4: A Java XPath Engine
+dev-java/jaxen 1.1.1 1.1.4-r1: A Java XPath Engine
 dev-java/jaxme 0.5.2 0.5.2-r1: JaxMe 2 is an open source implementation of JAXB, the specification for Java/XML binding
 dev-java/jaxp 1.4-r1: The Java API for XML Processing (JAXP)
 dev-java/jaxr 1.0.6-r1: Java API for XML Registries
@@ -3988,8 +3988,8 @@ dev-java/jdbc-postgresql 8.3_p603 8.4_p701-r1 9.2_p1003 9.2_p1004 9.3_p1100 9.4_
 dev-java/jdbc2-stdext 2.0-r3: A standard set of libs for Server-Side JDBC support
 dev-java/jdbm 0.12-r2: Jdbm aims to be for Java what GDBM is for Perl, Python, C, ...
 dev-java/jdepend 2.9-r5: JDepend traverses Java class file directories and generates design quality metrics per package
-dev-java/jdom 1.0_beta9-r2 1.0_beta9-r4 1.0_beta10-r4 1.0_beta10-r6 1.0-r2 1.0-r4 1.1.3 2.0.6 2.0.6-r4: Java API to manipulate XML data
-dev-java/jdom-jaxen 1.0_beta9-r2 1.0_beta10-r1 1.0-r1: Jaxen binding for jdom
+dev-java/jdom 1.0-r2 1.0-r4 1.1.3 2.0.6 2.0.6-r4: Java API to manipulate XML data
+dev-java/jdom-jaxen 1.0-r1: Jaxen binding for jdom
 dev-java/jdynamite 1.2: Dynamic Template in Java
 dev-java/jebl 2013.02.18 9999: Java Evolutionary Biology Library
 dev-java/jempbox 0.2.0 1.7.1: An open source Java library for parsing font files
@@ -4072,7 +4072,7 @@ dev-java/juel 2.1.0: JUEL is an implementation of the Unified Expression Languag
 dev-java/jump 0.5: JUMP Ultimate Math Package (JUMP) is a Java-based extensible high-precision math package
 dev-java/jung 1.7.6: The Java Universal Network/Graph Framework
 dev-java/junit 3.8.2-r1 4.10 4.11 4.12-r1: Simple framework to write repeatable tests
-dev-java/junit-addons 1.4: JUnit-addons is a collection of helper classes for JUnit
+dev-java/junit-addons 1.4-r1: JUnit-addons is a collection of helper classes for JUnit
 dev-java/junitperf 1.9.1-r1: Simple framework to write repeatable tests
 dev-java/junrar 0.6: Unrar java implementation
 dev-java/jupidator 0.6.0: Jupidator is a library/tool in Java for automatic updating of applications
@@ -4184,7 +4184,7 @@ dev-java/relaxngcc 1.12-r2 1.12-r3: RELAX NG Compiler Compiler
 dev-java/resin-servlet-api 3.0.25 3.1.12 4.0.26 4.0.27 4.0.44: Resin Servlet API 3.0/JSP API 2.1 implementation
 dev-java/rhino 1.6.5 1.7.2-r2 1.7.7 1.7.7-r1: An open-source implementation of JavaScript written in Java
 dev-java/rngom 20051226: RNGOM is an open-source Java library for parsing RELAX NG grammars
-dev-java/rome 0.9: Open source Atom/RSS Java utilities that make it easy to work in Java with most syndication formats
+dev-java/rome 0.9 0.9-r1: Open source Atom/RSS Java utilities that make it easy to work in Java with most syndication formats
 dev-java/rundoc 0.11: A Ant helper task for keeping documentation in source files
 dev-java/rxtx 2.1.7.2-r3 2.2_pre2: Native lib providing serial and parallel communication for Java
 dev-java/saaj 1.3.19-r1: SOAP with Attachments API for Java
@@ -4194,7 +4194,7 @@ dev-java/sac 1.3-r1: SAC is a standard interface for CSS parser
 dev-java/sat4j-core 2.2.0 2.3.1-r1: Lightweight constraint programming with a SAT solver
 dev-java/sat4j-pseudo 2.2.0 2.3.1: Pseudo Boolean solvers
 dev-java/sax 2.2.1-r2: Simple API for XML, originally a Java-only API. It was the first widely adopted API for XML in Java
-dev-java/saxon 6.5.5 8.4b-r3 9.2.0.6: A XSLT and XQuery Processor
+dev-java/saxon 6.5.5 6.5.5-r1 8.4b-r3 8.4b-r4 9.2.0.6 9.2.0.6-r1: A XSLT and XQuery Processor
 dev-java/saxpath 1.0-r2: A Simple API for XPath
 dev-java/sblim-cim-client 2.2.1 2.2.1-r1: A WBEM services client that includes an IETF RFC 2614 compliant SLP client for CIM service discovery
 dev-java/sbt 0.13.8 0.13.8-r1: sbt is a build tool for Scala and Java projects that aims to do the basics well
@@ -4275,9 +4275,9 @@ dev-java/typesafe-config 1.3.0 1.3.0-r1: a library of arguably useful Java utili
 dev-java/unkrig-nullanalysis 0_pre1644: Some classes to test for various null conditions
 dev-java/validation-api 1.0.0: Bean Validation (JSR-303) API
 dev-java/vecmath 1.5.2 1.6.0_pre12: Sun J3D: 3D vector math package
-dev-java/velocity 1.7: A Java-based template engine for easy creation/rendering of documents that format and present data
+dev-java/velocity 1.7 1.7-r1: A Java-based template engine for easy creation/rendering of documents that format and present data
 dev-java/webgraph 1.4.1-r1: WebGraph is a framework to study the web graph
-dev-java/werken-xpath 0.9.4_beta-r2: W3C XPath-Rec implementation for DOM4J
+dev-java/werken-xpath 0.9.4_beta-r2 0.9.4_beta-r3: W3C XPath-Rec implementation for DOM4J
 dev-java/ws-commons-util 1.0.1: Utility classes that allow high performance XML processing based on SAX
 dev-java/wsdl4j 1.6.2: Web Services Description Language for Java Toolkit (WSDL4J)
 dev-java/wstx 3.2.9 3.2.9-r1: Woodstox is a high-performance validating namespace-aware XML-processor
@@ -9522,7 +9522,7 @@ dev-vcs/rapidsvn 0.12.1-r1: Cross-platform GUI front-end for the Subversion revi
 dev-vcs/rcs 5.8.2 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
 dev-vcs/rsvndump 0.6: Dump a remote Subversion repository
-dev-vcs/statcvs 0.5.0: StatCVS generates HTML reports from CVS repository logs
+dev-vcs/statcvs 0.5.0 0.5.0-r1: StatCVS generates HTML reports from CVS repository logs
 dev-vcs/statsvn 0.5.0: StatSVN generates HTML reports from SVN repository logs
 dev-vcs/stgit 0.16-r2 0.17.1-r1: Manage a stack of patches using GIT as a backend
 dev-vcs/subversion 1.7.21 1.8.14 1.8.14-r1 1.9.1 1.9.2: Advanced version control system
@@ -13017,7 +13017,7 @@ media-video/get_flash_videos 1.24-r1 9999: Downloads videos from various Flash-b
 media-video/gnome-mplayer 1.0.8 1.0.9: A GTK+ interface to MPlayer
 media-video/gnome-subtitles 1.2 1.3: Video subtitling for the Gnome desktop
 media-video/gnome-video-effects 0.4.1: Effects for Cheese, the webcam video and picture application
-media-video/google2srt 0.5.3 0.5.6: Convert subtitles from Google Video and YouTube to SubRip (.srt) format
+media-video/google2srt 0.5.6-r1: Convert subtitles from Google Video and YouTube to SubRip (.srt) format
 media-video/gpac 0.5.0-r1 0.5.1_pre5456 0.5.2 9999: GPAC is an implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
 media-video/griffith 0.13 0.13-r1: Movie collection manager
 media-video/gtk-recordmydesktop 0.3.8-r3: GTK+ interface for RecordMyDesktop
@@ -14890,7 +14890,7 @@ sci-biology/arb 5.1-r1 5.2 5.3: Tools for DNA/RNA sequence database handling and
 sci-biology/ariadne 1.3-r1 1.3-r2: Protein sequences and profiles comparison
 sci-biology/augustus 2.5.5: Eukaryotic gene predictor
 sci-biology/bamtools 1.0.2 2.3.0: A programmer's API and an end-user's toolkit for handling BAM files
-sci-biology/beast-mcmc 1.5.2 1.7.5 9999: Bayesian MCMC of Evolution & Phylogenetics using Molecular Sequences
+sci-biology/beast-mcmc 1.7.5-r1 9999: Bayesian MCMC of Evolution & Phylogenetics using Molecular Sequences
 sci-biology/bedtools 2.16.2 2.20.1: Tools for manipulation and analysis of BED, GFF/GTF, VCF, and SAM/BAM file formats
 sci-biology/bfast 0.7.0a: Blat-like Fast Accurate Search Tool
 sci-biology/biogrep 1.0 1.0-r1: Multithreading application for matching large sets of patternsagainst biosequence dbs
