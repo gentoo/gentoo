@@ -51,6 +51,9 @@ src_configure() {
 		# preprocessor then.
 		append-cppflags -DDEBUG
 	fi
+	
+	# Explicitly enable c++11 mode
+	append-cppflags -std=c++11
 
 	autotools-utils_src_configure
 }
