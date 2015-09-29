@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,8 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-libs/libnl:3
-	sys-libs/readline
-	sys-devel/binutils"
+	sys-libs/binutils-libs
+	sys-libs/readline:="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
