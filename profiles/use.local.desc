@@ -2712,6 +2712,7 @@ dev-util/schroot:lvm - Enable support for chroots using LVM snapshots.
 dev-util/squashdelta:lz4 - Enable support for LZ4 compression using app-arch/lz4
 dev-util/squashmerge:lz4 - Enable support for LZ4 compression using app-arch/lz4
 dev-util/strace:aio - Enable dev-libs/libaio support for tracing Asynchronous I/O operations
+dev-util/strace:unwind - Enable stack backtraces (-k flag) via sys-libs/libunwind
 dev-util/suse-build:symlink - Provide compatibility symlinks with original openSUSE package (might clash with other packages)
 dev-util/sysdig:modules - Build kernel modules needed for tracing local events. Disable this only if you intend to use sysdig purely to work with dumpfiles.
 dev-util/trace-cmd:udis86 - Enable support for dev-libs/udis86 disassembler library
