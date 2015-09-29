@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>hasufell@gentoo.org</email>
+		<name>Julian Ospald</name>
+	</maintainer>
+	<natural-name>ConnMan-UI</natural-name>
+	<longdescription lang="en">
+	A full-featured GTK based trayicon UI for ConnMan.
+
+	It targets all WM/DM users but Gnome3 ones*. It works on any Linux WM/DM
+	which provides a freedesktop compliant system tray. (kde, awesome, ...)
+
+	It exposes almost all features provided by ConnMan API (small features are
+	missing, see TODO for more information). You can enable/disable a technology
+	(wired, wifi, cellular, bt, ...), connect/disconnect a service, configure a
+	service (IPv4, IPv6, DNS, Timeservers, etc...), share your current connection
+	(tethering) and so on. Everything is accessible through the mouse via the
+	trayicon, all with left and right click.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/tbursztyka/connman-ui/issues</bugs-to>
+		<remote-id type='github'>tbursztyka/connman-ui</remote-id>
+	</upstream>
+</pkgmetadata>
