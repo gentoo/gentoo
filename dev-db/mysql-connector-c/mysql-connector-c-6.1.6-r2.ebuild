@@ -20,7 +20,7 @@ LICENSE="GPL-2"
 
 SRC_URI="mirror://mysql/Downloads/Connector-C/${P}-src.tar.gz"
 S="${WORKDIR}/${P}-src"
-KEYWORDS="~amd64 ~ia64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc64 ~x86"
 
 SUBSLOT="18"
 SLOT="0/${SUBSLOT}"
