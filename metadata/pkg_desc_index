@@ -4223,8 +4223,8 @@ dev-java/spring-instrument 3.2.4: A comprehensive programming and configuration 
 dev-java/spymemcached 2.9.1: A simple, asynchronous, single-threaded memcached client written in java
 dev-java/squareness-jlf 2.3.0-r1: Squareness Java Look and Feel
 dev-java/stax 1.2.0: A standard XML processing API that allows you to stream XML data from and to your application
-dev-java/stax-ex 1.0 1.0-r1 1.0-r3 1.7.6: Extensions to complement JSR-173 StAX API
-dev-java/stax2-api 4.0.0: Extended Stax (STandard Api for Xml procesing) API
+dev-java/stax-ex 1.0-r4 1.7.6: Extensions to complement JSR-173 StAX API
+dev-java/stax2-api 4.0.0 4.0.0-r1: Extended Stax (STandard Api for Xml procesing) API
 dev-java/stringtemplate 3.2 3.2.1: A Java template engine
 dev-java/struts 2.3.15.2: A powerful Model View Controller Framework for JSP/Servlets
 dev-java/struts-core 2.3.15.2: A powerful Model View Controller Framework for JSP/Servlets: Core
@@ -4270,7 +4270,7 @@ dev-java/touchgraph-graphlayout 1.22: TouchGraph provides a set of interfaces fo
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
 dev-java/trident 1.3: Java animation library
 dev-java/trove 2.1.0 3.0.2 3.0.2-r1: GNU Trove: High performance collections for Java
-dev-java/txw2-runtime 20070407-r2: TXW is a library that allows you to write XML documents
+dev-java/txw2-runtime 20110809: TXW is a library that allows you to write XML documents
 dev-java/typesafe-config 1.3.0 1.3.0-r1: a library of arguably useful Java utilities
 dev-java/unkrig-nullanalysis 0_pre1644: Some classes to test for various null conditions
 dev-java/validation-api 1.0.0: Bean Validation (JSR-303) API
@@ -16465,7 +16465,7 @@ sys-cluster/vzctl 4.9.1 4.9.2 4.9.3: OpenVZ ConTainers control utility
 sys-cluster/wulfware 2.6.0: Applications to monitor on a beowulf- or GRID-style clusters
 sys-cluster/xgridagent 1.0: A simple system for setting up and using a cluster of OS X machines
 sys-devel/autoconf 2.13 2.59-r7 2.61-r2 2.62-r1 2.63-r1 2.64 2.65-r1 2.67 2.68 2.69 2.69-r1 9999: Used to create autoconfiguration files
-sys-devel/autoconf-archive 2012.09.08 2013.06.09 2013.11.01 2014.02.28 2015.02.04 2015.02.24: GNU Autoconf Macro Archive
+sys-devel/autoconf-archive 2012.09.08 2013.06.09 2013.11.01 2014.02.28 2015.02.04 2015.02.24 2015.09.25: GNU Autoconf Macro Archive
 sys-devel/autoconf-wrapper 13: wrapper for autoconf to manage multiple autoconf versions
 sys-devel/autogen 5.15 5.17.3 5.17.4 5.18.1 5.18.2 5.18.4: Program and text file generation
 sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r4 1.10.3-r1 1.11.6-r1 1.12.6 1.13.4 1.14.1 1.15 9999: Used to generate Makefile.in from Makefile.am
