@@ -20,7 +20,7 @@ else
 	[ "$DOCKER_GITCOMMIT" ] || die "DOCKER_GITCOMMIT must be added manually for each bump!"
 	inherit golang-vcs-snapshot
 fi
-inherit bash-completion-r1 linux-info multilib systemd udev user
+inherit bash-completion-r1 eutils linux-info multilib systemd udev user
 
 DESCRIPTION="Docker complements kernel namespacing with a high-level API which operates at the process level"
 HOMEPAGE="https://dockerproject.org"
