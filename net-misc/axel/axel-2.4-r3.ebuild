@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -32,13 +32,13 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=""
+	local myconf=()
 
-	use debug && myconf+=" --debug=1"
-	use nls && myconf+=" --i18n=$(use nls && echo 1 || echo 0)"
+	use debug && myconf+=( --debug=1 )
+	use nls && myconf+=( --i18n=$(usex nls 1 0) )
 	econf \
 		--strip=0 \
-		${myconf}
+		${myconf[@]}
 }
 
 pkg_postinst() {
