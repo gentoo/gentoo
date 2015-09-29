@@ -9,4 +9,4 @@ RDEPEND=virtual/blas
 SLOT=0/3
 SRC_URI=https://github.com/cjlin1/liblinear/archive/v210.tar.gz -> liblinear-210.tar.gz
 _eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=ab5d3e0bea62d668c6962c61aea143cf
+_md5_=94702da64d7abf7d93cc84f1286e5e60
