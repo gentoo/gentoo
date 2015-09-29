@@ -14,18 +14,17 @@ SRC_URI="https://stax-ex.java.net/files/documents/4480/44372/${P}-src.tar.gz"
 
 LICENSE="CDDL"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc x86 ~x86-fbsd"
 
 IUSE=""
 
-COMMON_DEPEND="java-virtuals/jaf:0
-	java-virtuals/stax-api:0"
-RDEPEND=">=virtual/jre-1.5
-	${COMMON_DEPEND}"
-DEPEND=">=virtual/jdk-1.5
-	${COMMON_DEPEND}"
+CDEPENDEND="java-virtuals/jaf:0"
+RDEPEND=">=virtual/jre-1.6
+	${CDEPENDEND}"
+DEPEND=">=virtual/jdk-1.6
+	${CDEPENDEND}"
 
-JAVA_GENTOO_CLASSPATH="jaf,stax-api"
+JAVA_GENTOO_CLASSPATH="jaf"
 
 S="${WORKDIR}/${P}"
 
