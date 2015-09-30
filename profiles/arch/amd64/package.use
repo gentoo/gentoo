@@ -8,7 +8,6 @@ media-video/mpv lua luajit
 
 # Michał Górny <mgorny@gentoo.org> (28 Jun 2014)
 # Packages that should be multilib by default.
-media-gfx/nvidia-cg-toolkit abi_x86_32
 x11-drivers/ati-drivers abi_x86_32
 x11-drivers/nvidia-drivers abi_x86_32
 

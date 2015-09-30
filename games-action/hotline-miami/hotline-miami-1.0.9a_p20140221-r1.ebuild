@@ -27,7 +27,7 @@ RDEPEND="
 	amd64? (
 		>=x11-libs/libX11-1.6.2[abi_x86_32(-)]
 		!bundled-libs? (
-			media-gfx/nvidia-cg-toolkit[multilib]
+			>=media-gfx/nvidia-cg-toolkit-3.1.0013-r3[abi_x86_32(-)]
 			>=media-libs/libogg-1.3.0[abi_x86_32(-)]
 			>=media-libs/libvorbis-1.3.3-r1[abi_x86_32(-)]
 			>=media-libs/openal-1.15.1[abi_x86_32(-)]

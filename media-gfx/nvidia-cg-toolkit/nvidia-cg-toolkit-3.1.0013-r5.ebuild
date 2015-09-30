@@ -26,32 +26,21 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples multilib"
 
-REQUIRED_USE="amd64? ( multilib? ( abi_x86_32 ) )"
-
 RESTRICT="strip"
 
 RDEPEND="
-	media-libs/glu
-	x11-libs/libICE
-	x11-libs/libSM
-	x11-libs/libX11
-	x11-libs/libXext
-	x11-libs/libXi
-	x11-libs/libXmu
-	x11-libs/libXt
-	virtual/opengl
+	>=media-libs/glu-9.0.0-r1[${MULTILIB_USEDEP}]
+	>=x11-libs/libICE-1.0.8-r1[${MULTILIB_USEDEP}]
+	>=x11-libs/libSM-1.2.1-r1[${MULTILIB_USEDEP}]
+	>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
+	>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
+	>=x11-libs/libXi-1.7.2[${MULTILIB_USEDEP}]
+	>=x11-libs/libXmu-1.1.1-r1[${MULTILIB_USEDEP}]
+	>=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}]
+	>=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}]
 	amd64? (
 		abi_x86_32? (
 			>=media-libs/freeglut-2.8.1[abi_x86_32(-)]
-			>=media-libs/glu-9.0.0-r1[abi_x86_32(-)]
-			>=virtual/opengl-7.0-r1[abi_x86_32(-)]
-			>=x11-libs/libICE-1.0.8-r1[abi_x86_32(-)]
-			>=x11-libs/libSM-1.2.1-r1[abi_x86_32(-)]
-			>=x11-libs/libX11-1.6.2[abi_x86_32(-)]
-			>=x11-libs/libXext-1.3.2[abi_x86_32(-)]
-			>=x11-libs/libXi-1.7.2[abi_x86_32(-)]
-			>=x11-libs/libXmu-1.1.1-r1[abi_x86_32(-)]
-			>=x11-libs/libXt-1.1.4[abi_x86_32(-)]
 		)
 	)"
 DEPEND=""

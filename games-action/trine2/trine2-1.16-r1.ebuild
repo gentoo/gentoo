@@ -40,7 +40,7 @@ RDEPEND="
 			>=x11-libs/libXxf86vm-1.1.3[abi_x86_32(-)]
 		)
 		!bundled-libs? (
-			media-gfx/nvidia-cg-toolkit[multilib]
+			>=media-gfx/nvidia-cg-toolkit-3.1.0013-r3[abi_x86_32(-)]
 		)
 	)
 	x86? (
