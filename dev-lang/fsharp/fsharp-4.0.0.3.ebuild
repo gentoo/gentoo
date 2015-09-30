@@ -18,7 +18,7 @@ KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 MAKEOPTS+=" -j1" #nowarn
-DEPEND="dev-lang/mono"
+DEPEND=">=dev-lang/mono-3"
 RDEPEND="${DEPEND}"
 
 AUTOTOOLS_IN_SOURCE_BUILD=1
