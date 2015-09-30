@@ -9559,7 +9559,7 @@ games-action/abuse 0.8: port of Abuse by Crack Dot Com
 games-action/accelerator3d 0.1.1-r2: Fast-paced, 3D, first-person shoot/dodge-'em-up, in the vain of Tempest or n2o
 games-action/armagetronad 0.2.8.3.2: Fast-paced 3D lightcycle game based on Tron
 games-action/atanks 6.1: Worms and Scorched Earth-like game
-games-action/awesomenauts 2013.5.21.3: Team-based competetive arena play
+games-action/awesomenauts 2013.5.21.3-r1: Team-based competetive arena play
 games-action/barrage 1.0.4: A violent point-and-click shooting game
 games-action/battalion 1.4b: Be a rampaging monster and destroy the city
 games-action/beathazardultra 20130308: Intense music-driven arcade shooter powered by your music
@@ -9589,7 +9589,7 @@ games-action/gltron 0.70-r1: 3d tron, just like the movie
 games-action/heretic2 1.06c-r1: Third-person classic magical action-adventure game
 games-action/heretic2-demo 1.06a: Third-person classic magical action-adventure game
 games-action/heroes 0.21-r1: Heroes Enjoy Riding Over Empty Slabs: similar to Tron and Nibbles
-games-action/hotline-miami 1.0.9a_p20140221: High-octane action game overflowing with raw brutality
+games-action/hotline-miami 1.0.9a_p20140221-r1: High-octane action game overflowing with raw brutality
 games-action/intrusion2 1.024: Fast paced action sidescroller set in a sci-fi environment
 games-action/koth 0.8.0: Multiplayer, networked game of little tanks with really big weapons
 games-action/lugaru 1.0c-r1: 3D arcade with unique fighting system and anthropomorphic characters
@@ -9628,7 +9628,7 @@ games-action/teeworlds 0.6.3: Online multi-player platform 2D shooter
 games-action/towbowl-tactics 0.5: Tow Bowl Tactics is a game based on Games Workshop's Blood Bowl
 games-action/transcend 0.3: retro-style, abstract, 2D shooter
 games-action/trine-bin 1.08: a physics-based action game where diff characters allow diff solutions to challenges
-games-action/trine2 1.16: A sidescrolling game of action, puzzles and platforming
+games-action/trine2 1.16-r1: A sidescrolling game of action, puzzles and platforming
 games-action/trosh 20: A game made in 20 hours for a friend. It has explosions
 games-action/tuxkart 0.4.0: A racing game starring Tux, the linux penguin
 games-action/violetland 0.4.3: Help a girl by name of Violet to struggle with hordes of monsters
@@ -11741,7 +11741,7 @@ media-gfx/mscgen 0.20: A message sequence chart generator
 media-gfx/mypaint 1.0.0-r1 1.1.0 1.1.0-r1 1.1.0-r2: fast and easy graphics application for digital painters
 media-gfx/nip2 7.26.4: VIPS Image Processing Graphical User Interface
 media-gfx/nomacs 2.4.2 2.4.4: Qt4-based image viewer
-media-gfx/nvidia-cg-toolkit 3.1.0013-r3 3.1.0013-r4: NVIDIA's C graphics compiler toolkit
+media-gfx/nvidia-cg-toolkit 3.1.0013-r3 3.1.0013-r5: NVIDIA's C graphics compiler toolkit
 media-gfx/nvidia-texture-tools 2.0.8-r2: A set of cuda-enabled texture tools and compressors
 media-gfx/opcion 1.1.1-r2: Free font viewer written in Java
 media-gfx/openclipart 0.20: Open Clip Art Library (openclipart.org)
