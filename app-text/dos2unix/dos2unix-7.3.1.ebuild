@@ -19,8 +19,8 @@ IUSE="debug nls test"
 
 RDEPEND="
 	!app-text/hd2u
-	!app-text/unix2dos
 	virtual/libintl"
+
 DEPEND="
 	${RDEPEND}
 	nls? ( sys-devel/gettext )
