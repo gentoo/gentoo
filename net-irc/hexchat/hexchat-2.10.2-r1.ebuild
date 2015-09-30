@@ -1,20 +1,19 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
-inherit autotools eutils fdo-mime gnome2-utils mono-env multilib python-single-r1 git-2
+inherit eutils fdo-mime gnome2-utils mono-env multilib python-single-r1
 
 DESCRIPTION="Graphical IRC client based on XChat"
 HOMEPAGE="http://hexchat.github.io/"
-SRC_URI=""
-EGIT_REPO_URI="git://github.com/hexchat/hexchat.git"
+SRC_URI="https://dl.hexchat.net/hexchat/${P}.tar.xz"
 
 LICENSE="GPL-2 plugin-fishlim? ( MIT )"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
 IUSE="dbus +gtk ipv6 libcanberra libnotify libproxy libressl nls ntlm perl +plugins plugin-checksum plugin-doat plugin-fishlim plugin-sysinfo python spell ssl theme-manager"
 REQUIRED_USE="plugins? ( python? ( ${PYTHON_REQUIRED_USE} ) )"
 
@@ -72,19 +71,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -i \
-		-e "/intl\/Makefile/d" \
-		-e "/po\/Makefile.in/d" \
-		configure.ac || die
-	sed -i -e "/SUBDIRS/s/intl//" Makefile.am || die
-	epatch -p1 \
-		"${FILESDIR}"/${PN}-2.9.5-autoconf-missing-macros.patch
 	epatch_user
-	cp $(type -p gettextize) "${T}"/ || die
-	sed -i -e 's:read dummy < /dev/tty::' "${T}/gettextize" || die
-	einfo "Running gettextize -f --no-changelog..."
-	"${T}"/gettextize -f --no-changelog > /dev/null || die "gettexize failed"
-	AT_M4DIR="m4" eautoreconf
 }
 
 src_configure() {
