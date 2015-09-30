@@ -6,13 +6,13 @@ EAPI="4"
 
 export CTARGET=hppa64-${CHOST#*-}
 
-PATCHVER="1.0"
+PATCHVER="1.1"
 ELF2FLT_VER=""
 inherit toolchain-binutils
 
 DESCRIPTION="binutils package for building 64bit kernels on HPPA"
 
-KEYWORDS="-* ~hppa"
+KEYWORDS="-* hppa"
 
 # 66_all_binutils-2.22-warn-textrel.patch fails to apply with
 # patch-2.5.9, so require a version that for sure works
