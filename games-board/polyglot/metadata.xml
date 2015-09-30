@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+  <email>ulm@gentoo.org</email>
+</maintainer>
+<longdescription>
+  PolyGlot is a "UCI adapter". It connects a GUI interface (such
+  as XBoard, Winboard, Arena or Chessbase) to a UCI chess engine.
+  By specifying an opening book (in PolyGlot book format) chess
+  engines can transparently use such books.
+</longdescription>
+</pkgmetadata>
