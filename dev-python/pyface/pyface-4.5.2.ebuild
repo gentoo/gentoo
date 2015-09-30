@@ -44,6 +44,6 @@ python_test() {
 }
 
 python_install_all() {
-	use exmaples && EXAMPLES=( examples/. )
+	use examples && EXAMPLES=( examples/. )
 	distutils-r1_python_install_all
 }
