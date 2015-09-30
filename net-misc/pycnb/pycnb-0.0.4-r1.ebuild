@@ -23,6 +23,5 @@ RDEPEND="${DEPEND}"
 
 src_unpack() {
 	default
-	find ${P} -type d -exec chmod 0755 {} + || die
-	find ${P} -type f -exec chmod 0644 {} + || die
+	chmod -R a+rX,u+w,g-w,o-w ${P} || die
 }
