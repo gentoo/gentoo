@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>perl</herd>
@@ -22,5 +22,6 @@
     <remote-id type="cpan-module">Perl::Tidy::VerticalAligner</remote-id>
     <remote-id type="cpan-module">Perl::Tidy::VerticalAligner::Alignment</remote-id>
     <remote-id type="cpan-module">Perl::Tidy::VerticalAligner::Line</remote-id>
+    <remote-id type="sourceforge">perltidy</remote-id>
   </upstream>
 </pkgmetadata>

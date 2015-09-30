@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>python</herd>
@@ -11,7 +11,7 @@ a few transport methods specific to TCP/IP networking.
 
 PySNMP is written entirely in Python and is self-sufficient in terms
 that it does not rely on any third party tool (it is not a wrapper!).
-</longdescription>
+  </longdescription>
   <longdescription lang="ja">
 ããã¯ SNMP v.1/v.2 ã¨ã³ã¸ã³ã®Pythonè¨èªã§ã®å®è£ã§ããé¢é£å¤ã«æ²¿ã£ãSNMPãªãã¸ã§
 ã¯ãIDãã/ã¸SNMPã¡ãã»ã¼ã¸ãã¢ã»ã³ãã«/ãã£ã¹ã¢ã»ã³ãã«ããã®ãä¸è¬çãªæ©è½ã§ã
@@ -20,8 +20,9 @@ that it does not rely on any third party tool (it is not a wrapper!).
 
 PySNMPã¯å¨ä½ãPythonè¨èªã§è¨è¿°ãããã©ã®ãµã¼ããã¼ãã£è£½ãã¼ã«ãä¿¡ç¨ããªãç«å ´ã§
 èªçµ¦èªè¶³ãã¾ãã(ããã¯ã©ããã¼ã»ãã¼ã«ã§ã¯ããã¾ããã)
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="pypi">pysnmp</remote-id>
+    <remote-id type="sourceforge">pysnmp</remote-id>
   </upstream>
 </pkgmetadata>

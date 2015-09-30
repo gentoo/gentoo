@@ -1,28 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>x11</herd>
-<use>
-	<flag name='bindist'>Disable patent-encumbered ARB_texture_float, EXT_texture_shared_exponent, and EXT_packed_float extensions.</flag>
-	<flag name='classic'>Build drivers based on the classic architecture.</flag>
-	<flag name='d3d9'>Enable Direct 3D9 API through Nine state tracker. Can be used together with patched wine.</flag>
-	<flag name='dri3'>Enable DRI3 support.</flag>
-	<flag name='egl'>Enable EGL support.</flag>
-	<flag name='gallium'>Build drivers based on Gallium3D, the new architecture for 3D graphics drivers.</flag>
-	<flag name='gbm'>Enable the Graphics Buffer Manager for EGL on KMS.</flag>
-	<flag name='gles'>Enable GLES (both v1 and v2) support.</flag>
-	<flag name='gles1'>Enable GLESv1 support.</flag>
-	<flag name='gles2'>Enable GLESv2 support.</flag>
-	<flag name='llvm'>Enable LLVM backend for Gallium3D.</flag>
-	<flag name='opencl'>Enable the Clover Gallium OpenCL state tracker.</flag>
-	<flag name='openmax'>Enable OpenMAX video decode/encode acceleration for Gallium3D.</flag>
-	<flag name='openvg'>Enable the OpenVG 2D acceleration API for Gallium3D.</flag>
-	<flag name='osmesa'>Build the Mesa library for off-screen rendering.</flag>
-	<flag name='pax_kernel'>Enable if the user plans to run the package under a pax enabled hardened kernel</flag>
-	<flag name='pic'>disable optimized assembly code that is not PIC friendly</flag>
-	<flag name='vdpau'>Enable the VDPAU acceleration interface for the Gallium3D Video Layer.</flag>
-	<flag name='wayland'>Enable support for dev-libs/wayland</flag>
-	<flag name='xa'>Enable the XA (X Acceleration) API for Gallium3D.</flag>
-	<flag name='xvmc'>Enable the XvMC acceleration interface for the Gallium3D Video Layer.</flag>
-</use>
+	<herd>x11</herd>
+	<use>
+		<flag name="bindist">Disable patent-encumbered ARB_texture_float, EXT_texture_shared_exponent, and EXT_packed_float extensions.</flag>
+		<flag name="classic">Build drivers based on the classic architecture.</flag>
+		<flag name="d3d9">Enable Direct 3D9 API through Nine state tracker. Can be used together with patched wine.</flag>
+		<flag name="dri3">Enable DRI3 support.</flag>
+		<flag name="egl">Enable EGL support.</flag>
+		<flag name="gallium">Build drivers based on Gallium3D, the new architecture for 3D graphics drivers.</flag>
+		<flag name="gbm">Enable the Graphics Buffer Manager for EGL on KMS.</flag>
+		<flag name="gles">Enable GLES (both v1 and v2) support.</flag>
+		<flag name="gles1">Enable GLESv1 support.</flag>
+		<flag name="gles2">Enable GLESv2 support.</flag>
+		<flag name="llvm">Enable LLVM backend for Gallium3D.</flag>
+		<flag name="opencl">Enable the Clover Gallium OpenCL state tracker.</flag>
+		<flag name="openmax">Enable OpenMAX video decode/encode acceleration for Gallium3D.</flag>
+		<flag name="openvg">Enable the OpenVG 2D acceleration API for Gallium3D.</flag>
+		<flag name="osmesa">Build the Mesa library for off-screen rendering.</flag>
+		<flag name="pax_kernel">Enable if the user plans to run the package under a pax enabled hardened kernel</flag>
+		<flag name="pic">disable optimized assembly code that is not PIC friendly</flag>
+		<flag name="vdpau">Enable the VDPAU acceleration interface for the Gallium3D Video Layer.</flag>
+		<flag name="wayland">Enable support for dev-libs/wayland</flag>
+		<flag name="xa">Enable the XA (X Acceleration) API for Gallium3D.</flag>
+		<flag name="xvmc">Enable the XvMC acceleration interface for the Gallium3D Video Layer.</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">mesa3d</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,14 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-        <herd>proxy-maintainers</herd>
-        <maintainer>
-                <email>beber@meleeweb.net</email>
-                <name>Bertrand Jacquin</name>
-                <description>Proxied maintainer.</description>
-        </maintainer>
-	<use>
-		<flag name="transparent">Enable transparent proxying of data connections</flag>
-	</use>
-	<longdescription>A transparent ftp proxy</longdescription>
+    <herd>proxy-maintainers</herd>
+    <maintainer>
+        <email>beber@meleeweb.net</email>
+        <name>Bertrand Jacquin</name>
+        <description>Proxied maintainer.</description>
+    </maintainer>
+    <use>
+        <flag name="transparent">Enable transparent proxying of data connections</flag>
+    </use>
+    <longdescription>A transparent ftp proxy</longdescription>
+    <upstream>
+        <remote-id type="sourceforge">frox</remote-id>
+    </upstream>
 </pkgmetadata>

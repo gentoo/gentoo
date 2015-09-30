@@ -1,11 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer>
     <email>mattm@gentoo.org</email>
-	<name>Mathew Marlowe</name>
+    <name>Mathew Marlowe</name>
   </maintainer>
   <longdescription>
-    A Qt WebKit Web Page Rendering Capture Utility 
+    A Qt WebKit Web Page Rendering Capture Utility
   </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">cutycapt</remote-id>
+  </upstream>
 </pkgmetadata>

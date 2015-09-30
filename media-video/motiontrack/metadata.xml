@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>video</herd>
@@ -8,4 +8,7 @@
   <use>
     <flag name="multiprocess">Enables multi-process support (SMP/cluster) for motiontrack programs</flag>
   </use>
+  <upstream>
+    <remote-id type="sourceforge">motiontrack</remote-id>
+  </upstream>
 </pkgmetadata>

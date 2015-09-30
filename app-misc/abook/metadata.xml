@@ -1,6 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>net-mail</herd>
-<longdescription>Abook is a text-based addressbook program designed to use with mutt mail client.</longdescription>
+	<herd>net-mail</herd>
+	<longdescription>Abook is a text-based addressbook program designed to use with mutt mail client.</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">abook</remote-id>
+	</upstream>
 </pkgmetadata>

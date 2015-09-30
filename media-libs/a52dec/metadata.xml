@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>sound</herd>
   <use>
     <flag name="djbfft">Prefer D.J. Bernstein's library for fourier transforms</flag>
   </use>
+  <upstream>
+    <remote-id type="sourceforge">liba52</remote-id>
+  </upstream>
 </pkgmetadata>

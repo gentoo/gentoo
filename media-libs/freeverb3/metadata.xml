@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>sound</herd>
@@ -7,9 +7,12 @@
 		<name>Sebastian Pipping</name>
 	</maintainer>
 	<use>
-		<flag name='audacious'>Build Audacious plugin</flag>
-		<flag name='forcefpu'>Disable assembly code</flag>
-		<flag name='plugdouble'>Build plugins in double precision mode
+		<flag name="audacious">Build Audacious plugin</flag>
+		<flag name="forcefpu">Disable assembly code</flag>
+		<flag name="plugdouble">Build plugins in double precision mode
 			(default is float)</flag>
 	</use>
+	<upstream>
+		<remote-id type="sourceforge">freeverb3</remote-id>
+	</upstream>
 </pkgmetadata>

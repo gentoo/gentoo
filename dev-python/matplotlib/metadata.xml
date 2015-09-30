@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>python</herd>
@@ -7,7 +7,7 @@
   data analysis in python with a syntax similar to matlab. It provides a
   variety of backends and hard copy formats for almost ready
   publication plots.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="excel">Pull <pkg>dev-python/xlwt</pkg> for the exceltools toolkit</flag>
     <flag name="gtk3">Use <pkg>x11-libs/gtk+:3</pkg> instead of <pkg>x11-libs/gtk+:2</pkg></flag>
@@ -15,5 +15,6 @@
   </use>
   <upstream>
     <remote-id type="pypi">matplotlib</remote-id>
+    <remote-id type="sourceforge">matplotlib</remote-id>
   </upstream>
 </pkgmetadata>

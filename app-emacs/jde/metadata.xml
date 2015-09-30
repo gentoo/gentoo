@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>emacs</herd>
-<herd>java</herd>
-<longdescription>
+    <herd>emacs</herd>
+    <herd>java</herd>
+    <longdescription>
  The Java Development Environment for Emacs is a software package that
  interfaces Emacs to command-line Java development tools (for example,
  JavaSoft's JDK). JDEE features include:
@@ -18,5 +18,8 @@
     * make file support
     * automatic code generation
     * Java source interpreter (Pat Neimeyer's BeanShell)
-</longdescription>
+    </longdescription>
+    <upstream>
+        <remote-id type="sourceforge">jdee</remote-id>
+    </upstream>
 </pkgmetadata>

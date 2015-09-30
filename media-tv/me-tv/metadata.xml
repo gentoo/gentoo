@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>media-tv</herd>
@@ -14,5 +14,6 @@ Me TV works with DVB-T, DVB-S, DVB-C and ATSC devices that are supported by Linu
   </use>
   <upstream>
     <remote-id type="launchpad">me-tv</remote-id>
+    <remote-id type="sourceforge">me-tv</remote-id>
   </upstream>
 </pkgmetadata>

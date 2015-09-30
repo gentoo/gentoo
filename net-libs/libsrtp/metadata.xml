@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>chromium</herd>
@@ -16,5 +16,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">cisco/libsrtp</remote-id>
+		<remote-id type="sourceforge">srtp</remote-id>
 	</upstream>
 </pkgmetadata>

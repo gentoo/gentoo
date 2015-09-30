@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>qt</herd>
 	<upstream>
 		<remote-id type="github">flavio/qjson</remote-id>
 		<bugs-to>https://github.com/flavio/qjson/issues</bugs-to>
+		<remote-id type="sourceforge">qjson</remote-id>
 	</upstream>
 </pkgmetadata>

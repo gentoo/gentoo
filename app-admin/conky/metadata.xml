@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
@@ -12,6 +12,7 @@
 			<description>Upstream author</description>
 		</maintainer>
 		<remote-id type="sourceforge">conky</remote-id>
+		<remote-id type="github">brndnmtthws/conky</remote-id>
 	</upstream>
 	<longdescription>Conky is a system monitor that sits in the corner of your desktop. It is a fork of Torsmo that is actually maintained.</longdescription>
 	<use>

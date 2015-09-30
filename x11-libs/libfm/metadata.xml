@@ -1,15 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>lxde</herd>
   <maintainer>
-  <email>hwoarang@gentoo.org</email>
-  <name>Markos Chandras</name>
+    <email>hwoarang@gentoo.org</email>
+    <name>Markos Chandras</name>
   </maintainer>
   <herd>lxqt</herd>
   <use>
-	<flag name='vala'>Support custom actions in menus</flag>
-	<flag name='udisks'>Use libfm's udisks-based volume monitor implementation instead of using the one from gvfs</flag>
-	<flag name='automount'>Use <pkg>gnome-base/gvfs</pkg> for automounting</flag>
+    <flag name="vala">Support custom actions in menus</flag>
+    <flag name="udisks">Use libfm's udisks-based volume monitor implementation instead of using the one from gvfs</flag>
+    <flag name="automount">Use <pkg>gnome-base/gvfs</pkg> for automounting</flag>
   </use>
+  <upstream>
+    <remote-id type="sourceforge">pcmanfm</remote-id>
+  </upstream>
 </pkgmetadata>

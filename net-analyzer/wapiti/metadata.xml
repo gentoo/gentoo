@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
@@ -10,4 +10,7 @@
 It performs black-box scans, i.e. it does not study the source code of the application but will scans the webpages of the deployed webapp, looking for scripts and forms where it can inject data.
 
 Once it gets this list, Wapiti acts like a fuzzer, injecting payloads to see if a script is vulnerable.</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">wapiti</remote-id>
+	</upstream>
 </pkgmetadata>

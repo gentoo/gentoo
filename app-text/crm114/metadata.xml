@@ -1,25 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>shell-tools</herd>
-<herd>proxy-maintainers</herd>
-<maintainer>
-  <email>steev@gentoo.org</email>
-  <name>Steev Klimaszewski</name>
-  <description>Maintainer</description>
-</maintainer>
-<maintainer>
-  <email>pacopablo@pacopablo.com</email>
-  <name>John Hampton</name>
-  <description>Consider him the user-maintainer of this package, and please
+  <herd>shell-tools</herd>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>steev@gentoo.org</email>
+    <name>Steev Klimaszewski</name>
+    <description>Maintainer</description>
+  </maintainer>
+  <maintainer>
+    <email>pacopablo@pacopablo.com</email>
+    <name>John Hampton</name>
+    <description>Consider him the user-maintainer of this package, and please
   CC him on bug reports (if he's not the reporter).</description>
-</maintainer>
-<use>
-  <flag name='mew'>Add support for using the mewdecode mime decoder
+  </maintainer>
+  <use>
+    <flag name="mew">Add support for using the mewdecode mime decoder
     (<pkg>app-emacs/mew</pkg>)</flag>
-  <flag name='mimencode'>Add support for using the mimencode mime
+    <flag name="mimencode">Add support for using the mimencode mime
     (<pkg>net-mail/metamail</pkg>)</flag>
-  <flag name='normalizemime'>Add support for using the normalizemime
+    <flag name="normalizemime">Add support for using the normalizemime
     (<pkg>mail-filter/normalizemime</pkg>)</flag>
-</use>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">crm114</remote-id>
+  </upstream>
 </pkgmetadata>

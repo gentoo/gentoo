@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>gnome</herd>
@@ -13,8 +13,9 @@
   of Repetitive Strain Injury (RSI). The program frequently alerts
   you to take micro-pauses, rest breaks and restricts you to your
   daily limit.
-</longdescription>
+	</longdescription>
 	<upstream>
 		<remote-id type="github">rcaelers/workrave</remote-id>
+		<remote-id type="sourceforge">workrave</remote-id>
 	</upstream>
 </pkgmetadata>

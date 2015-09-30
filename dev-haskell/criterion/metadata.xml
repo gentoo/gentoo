@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>haskell</herd>
@@ -12,4 +12,7 @@
 		The fastest way to get started is to read the documentation and
 		examples in the Criterion.Main module.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">bos/criterion</remote-id>
+	</upstream>
 </pkgmetadata>

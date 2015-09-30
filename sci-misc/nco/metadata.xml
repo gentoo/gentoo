@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>sci</herd>
@@ -10,11 +10,14 @@
   operation (e.g., averaging or hyperslabbing), and produce a netCDF
   output file. NCO was originally designed to manipulate and analyze
   climate data, though it works on any netCDF format datasets.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="dap">Support for remote data access with the NETCDF DAP client</flag>
     <flag name="ncap2">Build next generation netcdf arithmetic processor
     (needs <pkg>dev-java/antlr</pkg>)</flag>
     <flag name="udunits">Add <pkg>sci-libs/udunits</pkg> files support</flag>
   </use>
+  <upstream>
+    <remote-id type="sourceforge">nco</remote-id>
+  </upstream>
 </pkgmetadata>

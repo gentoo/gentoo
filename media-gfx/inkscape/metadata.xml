@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>graphics</herd>
@@ -9,4 +9,7 @@
     <flag name="visio">Enable support for Microsoft Visio Diagrams</flag>
     <flag name="wpg">Enable support for WordPerfect Graphics</flag>
   </use>
+  <upstream>
+    <remote-id type="sourceforge">inkscape</remote-id>
+  </upstream>
 </pkgmetadata>

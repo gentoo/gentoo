@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
     <maintainer>
         <email>robbat2@gentoo.org</email>
         <name>Robin H. Johnson</name>
     </maintainer>
+    <upstream>
+        <remote-id type="sourceforge">vqadmin</remote-id>
+    </upstream>
 </pkgmetadata>

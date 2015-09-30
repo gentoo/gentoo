@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>fonts</herd>
@@ -10,8 +10,8 @@
 	FontForge -- An outline font editor that lets you create your own
 	postscript, truetype, opentype, cid-keyed, multi-master, cff, svg and bitmap
 	(bdf, FON, NFNT) fonts, or edit existing ones. Also lets you convert one
-	format to another. FontForge has support for many macintosh font formats. 
-</longdescription>
+	format to another. FontForge has support for many macintosh font formats.
+	</longdescription>
 	<use>
 		<flag name="truetype-debugger">Enable truetype debugger in
 	fontforge</flag>
@@ -32,5 +32,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">troydhanson/uthash</remote-id>
+		<remote-id type="sourceforge">fontforge</remote-id>
 	</upstream>
 </pkgmetadata>

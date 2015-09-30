@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>desktop-misc</herd>
   <longdescription>
 	xdiskusage is a user-friendly program to show you what is using up all your disk space.
- </longdescription>
+  </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">xdiskusage</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>web-apps</herd>
@@ -13,4 +13,7 @@
 	<use>
 		<flag name="portage">Propagete python_targets dependencies to sys-apps/portage</flag>
 	</use>
+	<upstream>
+		<remote-id type="sourceforge">webapp-config</remote-id>
+	</upstream>
 </pkgmetadata>

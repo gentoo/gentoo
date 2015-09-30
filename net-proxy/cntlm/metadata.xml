@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
@@ -8,5 +8,7 @@
 		NTLM authorizing proxy. Upstream seems dead, but this is still a good
 		alternative to ntlmaps.
 	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">cntlm</remote-id>
+	</upstream>
 </pkgmetadata>
-
