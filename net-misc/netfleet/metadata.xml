@@ -2,8 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>qt</herd>
-	<longdescription lang="en">
-	</longdescription>
 	<upstream>
 		<remote-id type="google-code">netfleet</remote-id>
 	</upstream>
