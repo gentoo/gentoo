@@ -28,8 +28,8 @@ RDEPEND="${RDEPEND}"
 # The runtime dependencies are used at build-time as well since the
 # Rakefile loads thin!
 mydeps=">=dev-ruby/daemons-1.0.9
-	>=dev-ruby/rack-1.0.0
-	>=dev-ruby/eventmachine-1.0.0
+	>=dev-ruby/rack-1.0.0:*
+	>=dev-ruby/eventmachine-1.0.4:0
 	virtual/ruby-ssl"
 
 ruby_add_rdepend "${mydeps}"
