@@ -17,7 +17,7 @@ SLOT="0/${PV}"
 LICENSE="MPL-1.1"
 KEYWORDS="~alpha ~amd64 ~arm ~ppc ~sparc ~x86"
 
-DEPEND=">=net-libs/ptlib-2.6.4:=[wav]
+DEPEND=">=net-libs/ptlib-2.6.4:=[-debug,wav]
 	aec? ( >=media-libs/speex-1.2_rc1 )
 	sound? (
 		media-sound/gsm
