@@ -5,6 +5,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Justin Lecher <jlec@gentoo.org> (30 Sep 2015)
+# No stable libressl yet
+libressl
+
 # Hans de Graaff <graaff@gentoo.org> (28 Sep 2015)
 # Currently in testing and not ready to go stable yet.
 ruby_targets_ruby22
