@@ -10,6 +10,7 @@ PATCH_P="ut2004-lnxpatch${PV%.*}-2.tar.bz2"
 DESCRIPTION="Unreal Tournament 2004 Linux Dedicated Server"
 HOMEPAGE="http://www.unrealtournament.com/"
 SRC_URI="mirror://3dgamers/unrealtourn2k4/${BONUSPACK_P}
+	http://files.chaoticdreams.org/UT2004/DedicatedServer3339-BonusPack.zip -> ${BONUSPACK_P}
 	http://downloads.unrealadmin.org/UT2004/Server/${BONUSPACK_P}
 	http://sonic-lux.net/data/mirror/ut2004/${BONUSPACK_P}
 	mirror://3dgamers/unrealtourn2k4/${PATCH_P}
