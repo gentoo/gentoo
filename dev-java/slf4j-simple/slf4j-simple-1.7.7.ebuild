@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
+
 JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-ant-2
@@ -16,12 +17,16 @@ SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="test"
 
-COMMON_DEP="dev-java/slf4j-api:0"
-RDEPEND=">=virtual/jre-1.5
-	${COMMON_DEP}"
-DEPEND=">=virtual/jdk-1.5
-	${COMMON_DEP}
-	test? ( dev-java/junit )"
+CDEPEND="
+	dev-java/slf4j-api:0"
+RDEPEND=">=virtual/jre-1.6
+	${CDEPEND}"
+DEPEND=">=virtual/jdk-1.6
+	${CDEPEND}
+	test? (
+		dev-java/junit:4
+		dev-java/ant-junit:0
+	)"
 
 S="${WORKDIR}/${P/-simple/}/${PN}"
 
@@ -32,7 +37,7 @@ EANT_TEST_ANT_TASKS="ant-junit"
 EANT_EXTRA_ARGS="-Dmaven.build.finalName=${PN}"
 
 java_prepare() {
-	cp "${FILESDIR}"/1.7.6-build.xml build.xml || die
+	cp "${FILESDIR}"/"${PV}"-build.xml build.xml || die
 	find "${S}" -name "*.jar" -delete || die
 }
 
