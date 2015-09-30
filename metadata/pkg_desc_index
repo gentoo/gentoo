@@ -13808,7 +13808,7 @@ net-libs/gupnp 0.20.13 0.20.14: An object-oriented framework for creating UPnP d
 net-libs/gupnp-av 0.12.6 0.12.7: Utility library aiming to ease the handling UPnP A/V profiles
 net-libs/gupnp-igd 0.2.2-r1 0.2.3-r1 0.2.4: Library to handle UPnP IGD port mapping for GUPnP
 net-libs/gupnp-ui 0.1.1: Collection of simple GTK+ widgets on top of GUPnP
-net-libs/h323plus 1.25.0-r1: Open Source implementation of the ITU H.323 teleconferencing protocol, successor to OpenH323
+net-libs/h323plus 1.25.0-r1 1.25.0-r2: Open Source implementation of the ITU H.323 teleconferencing protocol, successor to OpenH323
 net-libs/http-parser 2.3 2.4.1 2.4.2 2.5.0: http request/response parser for c
 net-libs/hubbub 0.1.2 0.1.2-r1: HTML5 compliant parsing library, written in C
 net-libs/iax 0.2.2 0.2.2-r1 0.2.2-r3: IAX (Inter Asterisk eXchange) Library
@@ -14784,7 +14784,7 @@ net-wireless/wavemon 0.7.5 0.7.6: Ncurses based monitor for IEEE 802.11 wireless
 net-wireless/wepattack 0.1.3-r3: WLAN tool for breaking 802.11 WEP keys
 net-wireless/wepdecrypt 0.8-r2: Enhanced version of WepAttack a tool for breaking 802.11 WEP keys
 net-wireless/wifi-radar 2.0.8-r2: WiFi Radar is a Python/PyGTK2 utility for managing WiFi profiles
-net-wireless/wireless-regdb 20130213 20141118 20150313 20150605: Binary regulatory database for CRDA
+net-wireless/wireless-regdb 20130213 20141118 20150313 20150605 20150925: Binary regulatory database for CRDA
 net-wireless/wireless-tools 30_pre9: A collection of tools to configure IEEE 802.11 wireless LAN cards
 net-wireless/wpa_supplicant 2.4-r3 2.4-r4: IEEE 802.1X/WPA supplicant for secure wireless transfers
 net-wireless/yatebts 4.0.0-r3 5.0.0 9999: The Yate GSM base station
