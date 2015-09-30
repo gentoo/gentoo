@@ -11,7 +11,7 @@ SRC_URI="http://download.evolonline.org/manaplus/download/${PV}/manaplus-${PV}.t
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="nls opengl"
 
 RDEPEND="
