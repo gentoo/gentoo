@@ -4207,7 +4207,7 @@ dev-java/slf4j-api 1.7.7: Simple Logging Facade for Java
 dev-java/slf4j-ext 1.7.5 1.7.7: Simple Logging Facade for Java
 dev-java/slf4j-log4j12 1.7.7: Simple Logging Facade for Java (SLF4J) log4j bindings
 dev-java/slf4j-nop 1.7.7: Simple Logging Facade for Java
-dev-java/slf4j-simple 1.7.5 1.7.6 1.7.7: Simple Logging Facade for Java
+dev-java/slf4j-simple 1.7.7: Simple Logging Facade for Java
 dev-java/smack 2.2.1: An Open Source XMPP (Jabber) client library for instant messaging and presence
 dev-java/snakeyaml 1.9 1.9-r1 1.11: A YAML 1.1 parser and emitter for Java 5
 dev-java/snappy 1.0.3_rc3 1.1.0.1: Snappy compressor/decompressor for Java
