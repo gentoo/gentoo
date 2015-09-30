@@ -3913,12 +3913,12 @@ dev-java/istack-commons-tools 2.22: IStack Commons - Tools jar
 dev-java/itext 2.1.5-r2 5.5.4 5.5.4-r1: Java library that generate documents in the Portable Document Format (PDF) and/or HTML.
 dev-java/j2ssh 0.2.9: Java implementation of the SSH protocol
 dev-java/jackrabbit-webdav 2.10.1: Fully conforming implementation of the JRC API (specified in JSR 170 and 283)
-dev-java/jackson 1.9.13 2.5.1: High-performance JSON processor
-dev-java/jackson-annotations 2.5.1: High-performance JSON processor
-dev-java/jackson-databind 2.5.1-r1: High-performance JSON processor
-dev-java/jackson-dataformat-xml 2.5.1: XML data format extension for Jackson
+dev-java/jackson 1.9.13 2.5.1 2.5.2: High-performance JSON processor
+dev-java/jackson-annotations 2.5.1 2.5.2: High-performance JSON processor
+dev-java/jackson-databind 2.5.1-r1 2.5.2: High-performance JSON processor
+dev-java/jackson-dataformat-xml 2.5.1 2.5.2: XML data format extension for Jackson
 dev-java/jackson-dataformat-yaml 2.5.1: YAML data format extension for Jackson
-dev-java/jackson-module-jaxb-annotations 2.5.1: JAXB alternative to native Jackson annotations
+dev-java/jackson-module-jaxb-annotations 2.5.1 2.5.2: JAXB alternative to native Jackson annotations
 dev-java/jacl 1.4.1: Jacl is an implementation of Tcl written in Java
 dev-java/jad-bin 1.5.8e-r1: Jad - The fast JAva Decompiler
 dev-java/jade 3.3-r1 3.3-r2: JADE is FIPA-compliant Java Agent Development Environment
