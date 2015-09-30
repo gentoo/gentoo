@@ -3,11 +3,11 @@ DESCRIPTION=CadSoft EAGLE schematic and printed circuit board (PCB) layout edito
 EAPI=5
 HOMEPAGE=http://www.cadsoft.de
 IUSE=doc linguas_de linguas_zh
-KEYWORDS=-* amd64 ~x86
+KEYWORDS=-* amd64 x86
 LICENSE=cadsoft-2
 RDEPEND=sys-libs/glibc dev-libs/openssl:0 >=sys-libs/zlib-1.2.8-r1 >=media-libs/freetype-2.5.0.1 >=media-libs/fontconfig-2.10.92 x11-libs/libXext x11-libs/libX11 >=x11-libs/libXrender-0.9.8 >=x11-libs/libXrandr-1.4.2 >=x11-libs/libXcursor-1.1.14 >=x11-libs/libXi-1.7.2 net-print/cups x11-libs/libxcb
 RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=x86? ( ftp://ftp.cadsoft.de/eagle/program/7.3/eagle-lin32-7.3.0.run ) amd64? ( ftp://ftp.cadsoft.de/eagle/program/7.3/eagle-lin64-7.3.0.run )
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=a43bacd7b800b9f3b11115b8fa750455
+_md5_=5c2bed09d4b8d437bcd61aa60720ea18
