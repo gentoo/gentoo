@@ -12,10 +12,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 RDEPEND="dev-qt/qtwebkit:5
-	dev-qt/linguist-tools:5
 	dev-qt/qtscript:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtdbus:5
 	sci-libs/gdal
 	sci-libs/proj"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5"
