@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# Please note: apache, java, mono and ruby support disabled for now.
+# Please note: apache, mono and ruby support disabled for now.
 # Fill a bug if you need it.
 #
 # dju@gentoo.org, 4th July 2005
@@ -27,8 +27,7 @@ DEPEND="perl? ( dev-lang/perl:= )
 	java? ( >=virtual/jdk-1.6 )"
 
 RDEPEND="
-	java? ( >=virtual/jre-1.6 )
-	${DEPEND}"
+	java? ( >=virtual/jre-1.6 )"
 
 DOCS=(README INSTALL)
 
