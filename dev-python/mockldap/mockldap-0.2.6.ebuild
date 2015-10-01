@@ -4,9 +4,9 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 python3_{3,4} pypy )
 
-inherit distutils-r1
+inherit distutils-r1 eutils
 
 DESCRIPTION="A simple mock implementation of python-ldap"
 HOMEPAGE="https://bitbucket.org/psagers/mockldap/ https://pypi.python.org/pypi/mockldap"
@@ -17,15 +17,23 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
-RDEPEND="~dev-python/funcparserlib-0.3.6[${PYTHON_USEDEP}]
+RDEPEND="
+	~dev-python/funcparserlib-0.3.6[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
-	dev-python/python-ldap[${PYTHON_USEDEP}]"
+	dev-python/pyldap[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
 # Disable un-needed d'loading during doc build
 PATCHES=( "${FILESDIR}"/mapping.patch )
+
+python_prepare_all() {
+	sed \
+		-e "s:pyldap.*:pyldap',:g" \
+		-i setup.py
+		distutils-r1_python_prepare_all
+}
 
 python_compile_all() {
 	use doc && emake -C docs html
@@ -41,7 +49,5 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	if ! has_version dev-python/passlib; then
-		elog "Please install dev-python/passlib for hashed password support."
-	fi
+	optfeature "hashed password support" dev-python/passlib
 }
