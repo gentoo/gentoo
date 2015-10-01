@@ -21,7 +21,6 @@ LICENSE="GPL-2 LGPL-2.1+"
 SLOT="0"
 
 CDEPEND=">=dev-libs/glib-2.18:2
-	dev-qt/linguist-tools:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
@@ -36,6 +35,7 @@ RDEPEND="${CDEPEND}
 	virtual/eject
 	virtual/freedesktop-icon-theme"
 DEPEND="${CDEPEND}
+	dev-qt/linguist-tools:5
 	>=dev-util/intltool-0.40
 	sys-devel/gettext
 	virtual/pkgconfig"
