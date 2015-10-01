@@ -6,7 +6,7 @@ EAPI=5
 
 EGIT_REPO_URI="git://anongit.freedesktop.org/mesa/mesa"
 
-if [[ ${PV} = 9999* ]]; then
+if [[ ${PV} = 9999 ]]; then
 	GIT_ECLASS="git-r3"
 	EXPERIMENTAL="true"
 fi
@@ -23,7 +23,7 @@ FOLDER="${PV/_rc*/}"
 DESCRIPTION="OpenGL-like graphic library for Linux"
 HOMEPAGE="http://mesa3d.sourceforge.net/"
 
-if [[ $PV == 9999* ]]; then
+if [[ $PV == 9999 ]]; then
 	SRC_URI=""
 	KEYWORDS=""
 else
@@ -159,7 +159,7 @@ DEPEND="${RDEPEND}
 	>=x11-proto/xf86driproto-2.1.1-r1:=[${MULTILIB_USEDEP}]
 	>=x11-proto/xf86vidmodeproto-2.3.1-r1:=[${MULTILIB_USEDEP}]
 "
-[[ ${PV} == "9999" ]] && DEPEND+="
+[[ ${PV} == 9999 ]] && DEPEND+="
 	sys-devel/bison
 	sys-devel/flex
 	${PYTHON_DEPS}
@@ -265,9 +265,9 @@ multilib_src_configure() {
 		fi
 	fi
 
-	# x86 hardened pax_kernel needs glx-read-only-text, bug 240956
-	if use pax_kernel; then
-		myconf+="$(use_enable x86 glx-read-only-text)"
+	# x86 hardened pax_kernel needs glx-rts, bug 240956
+	if [[ ${ABI} == x86 ]]; then
+		myconf+="$(use_enable pax_kernel glx-read-only-text)"
 	fi
 
 	# on abi_x86_32 hardened we need to have asm disable
