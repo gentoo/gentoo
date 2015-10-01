@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>proxy-maintainers</herd>
@@ -11,16 +11,19 @@
 		<name>Luke Dashjr</name>
 	</maintainer>
 	<use>
-		<flag name='bitcoin_policy_cltv'>Check LockTime Verify policy: Your node will recognise and assist OP_CHECKLOCKTIMEVERIFY (BIP65) transactions</flag>
-		<flag name='bitcoin_policy_cpfp'>Child-Pays-For-Parent policy: If you mine, you will give consideration to child transaction fees to pay for their parents</flag>
-		<flag name='bitcoin_policy_dcmp'>Data Carrier Multi-Push policy: Your node will assist transactions with multiple pushes in their data carrier (if any)</flag>
-		<flag name='bitcoin_policy_rbf'>Replace By Fee policy: Your node will preferentially mine and relay transactions paying the highest fee, regardless of receive order</flag>
-		<flag name='bitcoin_policy_spamfilter'>Enhanced spam filter policy: Notorious spammers will not be assisted by your node</flag>
-		<flag name='ljr'>Enable Luke Dashjr's patches</flag>
-		<flag name='logrotate'>Use app-admin/logrotate for rotating logs</flag>
-		<flag name='upnp'>Enable Universal Plug and Play</flag>
-		<flag name='wallet'>Enable wallet support</flag>
-		<flag name='xt'>Enable Mike Hearn's Bitcoin XT patches</flag>
-		<flag name='zeromq'>Report blocks and transactions via zeromq</flag>
+		<flag name="bitcoin_policy_cltv">Check LockTime Verify policy: Your node will recognise and assist OP_CHECKLOCKTIMEVERIFY (BIP65) transactions</flag>
+		<flag name="bitcoin_policy_cpfp">Child-Pays-For-Parent policy: If you mine, you will give consideration to child transaction fees to pay for their parents</flag>
+		<flag name="bitcoin_policy_dcmp">Data Carrier Multi-Push policy: Your node will assist transactions with multiple pushes in their data carrier (if any)</flag>
+		<flag name="bitcoin_policy_rbf">Replace By Fee policy: Your node will preferentially mine and relay transactions paying the highest fee, regardless of receive order</flag>
+		<flag name="bitcoin_policy_spamfilter">Enhanced spam filter policy: Notorious spammers will not be assisted by your node</flag>
+		<flag name="ljr">Enable Luke Dashjr's patches</flag>
+		<flag name="logrotate">Use app-admin/logrotate for rotating logs</flag>
+		<flag name="upnp">Enable Universal Plug and Play</flag>
+		<flag name="wallet">Enable wallet support</flag>
+		<flag name="xt">Enable Mike Hearn's Bitcoin XT patches</flag>
+		<flag name="zeromq">Report blocks and transactions via zeromq</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">bitcoin/bitcoin</remote-id>
+	</upstream>
 </pkgmetadata>

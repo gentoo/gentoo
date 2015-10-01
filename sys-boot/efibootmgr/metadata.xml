@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
@@ -11,4 +11,7 @@
 		can create and destroy boot entries, change the boot order, change
 		the next running boot option, and more.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">rhinstaller/efibootmgr</remote-id>
+	</upstream>
 </pkgmetadata>

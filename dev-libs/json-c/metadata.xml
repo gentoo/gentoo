@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer>
@@ -11,5 +11,8 @@
 easily construct JSON objects in C, output them as JSON formatted 
 strings and parse JSON formatted strings back into the C 
 representation of JSON objects.
-</longdescription>
+  </longdescription>
+  <upstream>
+    <remote-id type="github">json-c/json-c</remote-id>
+  </upstream>
 </pkgmetadata>

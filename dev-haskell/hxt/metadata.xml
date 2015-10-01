@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>haskell</herd>
@@ -18,6 +18,9 @@
 		hxt-charproperties char properties for unicode and XML.
 	</longdescription>
 	<use>
-		<flag name='network-uri'>Get Network.URI from the network-uri package.</flag>
+		<flag name="network-uri">Get Network.URI from the network-uri package.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">UweSchmidt/hxt</remote-id>
+	</upstream>
 </pkgmetadata>

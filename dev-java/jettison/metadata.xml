@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>java</herd>
@@ -13,5 +13,7 @@
 		services in services frameworks like CXF or XML serialization frameworks
 		like XStream.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">codehaus/jettison</remote-id>
+	</upstream>
 </pkgmetadata>
-
