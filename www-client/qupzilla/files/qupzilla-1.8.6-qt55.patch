@@ -1,0 +1,105 @@
+From 739e01796a3587c21e7496b43a5a3cdb3fb6d7c5 Mon Sep 17 00:00:00 2001
+From: David Rosca <nowrep@gmail.com>
+Date: Thu, 11 Jun 2015 20:21:39 +0200
+Subject: [PATCH] Fix build with Qt 5.5 and gcc 4.9
+
+---
+ src/lib/3rdparty/qtsingleapplication/qtlocalpeer.cpp | 1 +
+ src/lib/plugins/qtwebkit/spellcheck/speller.h        | 2 +-
+ src/plugins.pri                                      | 2 --
+ src/plugins/TabManager/TabManager.pro                | 8 +-------
+ src/plugins/TabManager/tabmanagerplugin.h            | 1 -
+ src/plugins/TabManager/tabmanagerwidget.cpp          | 1 +
+ src/plugins/TabManager/tldextractor/tldextractor.h   | 1 +
+ 7 files changed, 5 insertions(+), 11 deletions(-)
+
+diff --git a/src/lib/3rdparty/qtsingleapplication/qtlocalpeer.cpp b/src/lib/3rdparty/qtsingleapplication/qtlocalpeer.cpp
+index 836658d..42e2f8a 100644
+--- a/src/lib/3rdparty/qtsingleapplication/qtlocalpeer.cpp
++++ b/src/lib/3rdparty/qtsingleapplication/qtlocalpeer.cpp
+@@ -48,6 +48,7 @@
+ #include "qtlocalpeer.h"
+ #include <QtCore/QCoreApplication>
+ #include <QtCore/QTime>
++#include <QDataStream>
+ 
+ #if defined(Q_OS_WIN)
+ #include <QtCore/QLibrary>
+diff --git a/src/lib/plugins/qtwebkit/spellcheck/speller.h b/src/lib/plugins/qtwebkit/spellcheck/speller.h
+index e3c1657..b711a46 100644
+--- a/src/lib/plugins/qtwebkit/spellcheck/speller.h
++++ b/src/lib/plugins/qtwebkit/spellcheck/speller.h
+@@ -40,7 +40,7 @@ class QUPZILLA_EXPORT Speller : public QObject
+         QString code;
+         QString name;
+ 
+-        bool operator==(const Language &other) {
++        bool operator==(const Language &other) const {
+             return this->name == other.name &&
+                    this->name.left(2) == other.name.left(2);
+             // Compare only first two chars of name.
+diff --git a/src/plugins.pri b/src/plugins.pri
+index d7e9f4c..2784d79 100644
+--- a/src/plugins.pri
++++ b/src/plugins.pri
+@@ -27,8 +27,6 @@ INCLUDEPATH += $$PWD/lib/3rdparty \
+ DEPENDPATH += $$INCLUDEPATH \
+               $$PWD/lib/data \
+ 
+-include(lib/3rdparty/qtsingleapplication/qtsingleapplication.pri)
+-
+ TEMPLATE = lib
+ CONFIG += plugin
+ DESTDIR = $$QZ_DESTDIR/plugins/
+diff --git a/src/plugins/TabManager/TabManager.pro b/src/plugins/TabManager/TabManager.pro
+index c2bff69..d47baec 100644
+--- a/src/plugins/TabManager/TabManager.pro
++++ b/src/plugins/TabManager/TabManager.pro
+@@ -21,10 +21,4 @@ TRANSLATIONS = \
+ include(tldextractor/tldextractor.pri)
+ 
+ PLUGIN_DIR = $$PWD
+-srcdir = $$(QUPZILLA_SRCDIR)
+-equals(srcdir, "") {
+-    include(../../plugins.pri)
+-}
+-else {
+-    include($$srcdir/src/plugins.pri)
+-}
++include(../../plugins.pri)
+diff --git a/src/plugins/TabManager/tabmanagerplugin.h b/src/plugins/TabManager/tabmanagerplugin.h
+index 680ea70..2dcc480 100644
+--- a/src/plugins/TabManager/tabmanagerplugin.h
++++ b/src/plugins/TabManager/tabmanagerplugin.h
+@@ -25,7 +25,6 @@
+ #include <QDebug>
+ #include <QLabel>
+ #include <QMessageBox>
+-#include <QWebElement>
+ #include <QVBoxLayout>
+ #include <QPointer>
+ 
+diff --git a/src/plugins/TabManager/tabmanagerwidget.cpp b/src/plugins/TabManager/tabmanagerwidget.cpp
+index 6f9fdd3..eda4dbe 100644
+--- a/src/plugins/TabManager/tabmanagerwidget.cpp
++++ b/src/plugins/TabManager/tabmanagerwidget.cpp
+@@ -34,6 +34,7 @@
+ #include <QDesktopWidget>
+ #include <QDialogButtonBox>
+ #include <QStackedWidget>
++#include <QWebView>
+ #include <QDialog>
+ #include <QTimer>
+ #include <QLabel>
+diff --git a/src/plugins/TabManager/tldextractor/tldextractor.h b/src/plugins/TabManager/tldextractor/tldextractor.h
+index b0163db..7dc5204 100644
+--- a/src/plugins/TabManager/tldextractor/tldextractor.h
++++ b/src/plugins/TabManager/tldextractor/tldextractor.h
+@@ -21,6 +21,7 @@
+ #define TLDExtractor_Version "1.0"
+ 
+ #include <QHash>
++#include <QObject>
+ #include <QStringList>
+ 
+ class TLDExtractor : public QObject

@@ -59,6 +59,8 @@ src_prepare() {
 	# patch bundled but changed QTSA for Qt-5.5, see bugs 548470 and 489142
 	epatch "${FILESDIR}"/qtsingleapplication-QDataStream.patch
 
+	epatch "${FILESDIR}"/${P}-qt55.patch
+
 	epatch_user
 
 	# remove outdated prebuilt localizations
