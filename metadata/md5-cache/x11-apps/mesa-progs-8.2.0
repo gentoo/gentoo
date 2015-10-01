@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=media-libs/mesa[egl?,gles2?] virtual/opengl x11-libs/libX11 egl? ( media-libs/glew ) gles2? ( media-libs/glew ) virtual/glu x11-proto/xproto !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=media-libs/mesa[egl?,gles2?] virtual/opengl x11-libs/libX11 media-libs/glew virtual/glu x11-proto/xproto !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Mesa's OpenGL utility and demo programs (glxgears and glxinfo)
 EAPI=5
 HOMEPAGE=http://mesa3d.sourceforge.net/
@@ -10,4 +10,4 @@ RDEPEND=media-libs/mesa[egl?,gles2?] virtual/opengl x11-libs/libX11
 SLOT=0
 SRC_URI=ftp://ftp.freedesktop.org/pub/mesa/demos/8.2.0/mesa-demos-8.2.0.tar.bz2
 _eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=d4d121baa2a0c96b1642ea99d8e1bebf
+_md5_=5a974dab97cb0502428101eb73351a6a
