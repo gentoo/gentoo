@@ -38,7 +38,6 @@ CDEPEND="
 		X? ( dev-qt/qtgui:4 )
 	)
 	qt5? (
-		dev-qt/linguist-tools:5
 		dev-qt/qtcore:5
 		dev-qt/qtnetwork:5
 		dev-qt/qtxml:5
@@ -48,6 +47,7 @@ CDEPEND="
 	)
 "
 DEPEND="${CDEPEND}
+	qt5? ( dev-qt/linguist-tools:5 )
 	virtual/pkgconfig
 "
 RDEPEND="${CDEPEND}
