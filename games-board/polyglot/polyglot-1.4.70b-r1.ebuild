@@ -16,7 +16,5 @@ KEYWORDS="~amd64 ~x86"
 DOCS="AUTHORS ChangeLog TODO" # README* installed by build system
 
 src_configure() {
-	econf \
-		--bindir="/usr/games/bin" \
-		--docdir="/usr/share/doc/${PF}"
+	econf --docdir="/usr/share/doc/${PF}"
 }
