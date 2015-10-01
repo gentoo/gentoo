@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>python</herd>
-<longdescription lang='en'>
+  <herd>python</herd>
+  <longdescription lang="en">
   Rope is a python refactoring library.
-</longdescription>
-<upstream>
-  <remote-id type="pypi">rope</remote-id>
-</upstream>
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">rope</remote-id>
+    <remote-id type="sourceforge">rope</remote-id>
+  </upstream>
 </pkgmetadata>

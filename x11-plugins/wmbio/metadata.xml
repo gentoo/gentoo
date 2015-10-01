@@ -1,12 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>desktop-dock</herd>
-<longdescription>
+	<herd>desktop-dock</herd>
+	<longdescription>
 Wmbio is a dockapp designed for WindowMaker. 
 Given your birth date, it can show you your 
 biorhythms, allows you to see the progress in time 
 of your biorhythms, and calculates your next totally 
 positive or negative biorhythmic level.
-</longdescription>
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">wmbio</remote-id>
+	</upstream>
 </pkgmetadata>

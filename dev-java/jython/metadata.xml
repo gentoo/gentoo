@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>java</herd>
@@ -6,4 +6,7 @@
     <flag name="readline">Use GNU readline instead of jline</flag>
     <flag name="servletapi">Add optional support for servlet-api</flag>
   </use>
+  <upstream>
+    <remote-id type="sourceforge">jython</remote-id>
+  </upstream>
 </pkgmetadata>

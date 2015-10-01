@@ -1,6 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>netmon</herd>
-<longdescription>an active sniffer that provides methods for aggressive sniffing on switched LAN</longdescription>
+	<herd>netmon</herd>
+	<longdescription>an active sniffer that provides methods for aggressive sniffing on switched LAN</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">angst</remote-id>
+	</upstream>
 </pkgmetadata>

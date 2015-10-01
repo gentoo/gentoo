@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>cluster</herd>
@@ -8,5 +8,8 @@
   and an xterm to all specified hosts. Any text typed into 
   the administration console is replicated to all windows. 
   All windows may also be typed into directly.
-</longdescription>
+  </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">clusterssh</remote-id>
+  </upstream>
 </pkgmetadata>

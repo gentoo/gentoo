@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci</herd>
-<longdescription>
+    <herd>sci</herd>
+    <longdescription>
     Transcalc is an analysis and synthesis tool for calculating the
     electrical and physical properties of different kinds of RF and
     microwave transmission lines. Transcalc was somewhat inspired by the
@@ -17,5 +17,8 @@
     Available transmission lines (this list will expand with subsequent
     releases): microstrip, rectangular waveguide, coaxial line, coupled
     microstrip.
-</longdescription>
+    </longdescription>
+    <upstream>
+        <remote-id type="sourceforge">transcalc</remote-id>
+    </upstream>
 </pkgmetadata>

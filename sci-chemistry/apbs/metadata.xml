@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>sci-chemistry</herd>
@@ -19,8 +19,9 @@ of the Poisson-Boltzmann equation (PBE), one of the most popular continuum
 models for describing electrostatic interactions between molecular solutes in 
 salty, aqueous media. Continuum electrostatics plays an important role in 
 several areas of biomolecular simulation
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="github">Electrostatics/apbs-pdb2pqr</remote-id>
+    <remote-id type="sourceforge">apbs</remote-id>
   </upstream>
 </pkgmetadata>

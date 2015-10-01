@@ -1,16 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>cjk</herd>
-<longdescription>
+  <herd>cjk</herd>
+  <longdescription>
   IM-JA is a Japanese input module for GTK+2. It supports kanji
   conversion using either the Canna or the (Free)Wnn kanji conversion
   engine. IM-JA can also do kanji character recognition, you can draw
   kanji into a widget using the mouse. This feature is based on the
   KanjiPad application which has been enhanced in IM-JA.
-</longdescription>
-<use>
-  <flag name='anthy'>Support for Anthy input method</flag>
-  <flag name='skk'>Support for SKK input method</flag>
-</use>
+  </longdescription>
+  <use>
+    <flag name="anthy">Support for Anthy input method</flag>
+    <flag name="skk">Support for SKK input method</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">im-ja</remote-id>
+  </upstream>
 </pkgmetadata>

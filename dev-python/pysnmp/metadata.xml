@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>python</herd>
@@ -23,5 +23,6 @@ PySNMPは全体をPython言語で記述され、どのサードパーティ製�
   </longdescription>
   <upstream>
     <remote-id type="pypi">pysnmp</remote-id>
+    <remote-id type="sourceforge">pysnmp</remote-id>
   </upstream>
 </pkgmetadata>

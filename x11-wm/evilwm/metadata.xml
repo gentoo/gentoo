@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>proxy-maintainers</herd>
@@ -12,4 +12,7 @@
 	real estate and provides good keyboard control. It is currently based on 
 	aewm.
 	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">evilwm</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>ruby</herd>
 	<upstream>
 		<remote-id type="google-code">ruby-activeldap</remote-id>
+		<remote-id type="sourceforge">ruby-ldap</remote-id>
 	</upstream>
 </pkgmetadata>

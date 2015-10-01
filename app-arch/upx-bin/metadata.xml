@@ -1,9 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-<email>maintainer-needed@gentoo.org</email>
-</maintainer>
-<longdescription>UPX is a versatile executable packer with a excellent
+	<maintainer>
+		<email>maintainer-needed@gentoo.org</email>
+	</maintainer>
+	<longdescription>UPX is a versatile executable packer with a excellent
 	compression ratio.</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">upx</remote-id>
+	</upstream>
 </pkgmetadata>

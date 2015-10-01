@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
@@ -11,4 +11,7 @@
 		<flag name="threads">Controls whether to build the Abyss web-server with pthreads or fork 'threading'.</flag>
 		<flag name="tools">Build the xmlrpc* tools.</flag>
 	</use>
+	<upstream>
+		<remote-id type="sourceforge">xmlrpc-c</remote-id>
+	</upstream>
 </pkgmetadata>

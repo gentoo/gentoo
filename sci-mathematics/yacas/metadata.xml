@@ -1,16 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci-mathematics</herd>
-<longdescription lang="en">
+  <herd>sci-mathematics</herd>
+  <longdescription lang="en">
   Yacas (Yet Another Computer Algebra System) is a small and highly
   flexible general-purpose computer algebra language. The syntax uses a
   infix-operator grammar parser. The distribution contains a small
   library of mathematical functions, but its real strength is in the
   language in which you can easily write your own symbolic manipulation
   algorithms.
-</longdescription>
-<use>
-  <flag name="server">Build the network server version</flag>
-</use>
+  </longdescription>
+  <use>
+    <flag name="server">Build the network server version</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">yacas</remote-id>
+  </upstream>
 </pkgmetadata>

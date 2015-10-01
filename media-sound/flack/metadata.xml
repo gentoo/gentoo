@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>sound</herd>
@@ -6,4 +6,7 @@
 		A menu-driven BASH script to easily tag your collection of FLAC files
 		from the command line, without the need for a GUI.
 	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">flack</remote-id>
+	</upstream>
 </pkgmetadata>

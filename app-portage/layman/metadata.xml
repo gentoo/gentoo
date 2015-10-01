@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>tools-portage</herd>
@@ -22,4 +22,7 @@
 		<flag name="subversion">Support <pkg>dev-vcs/subversion</pkg> based overlays</flag>
 		<flag name="sync-plugin-portage">Install the <pkg>sys-apps/portage</pkg> sync module</flag>
 	</use>
+	<upstream>
+		<remote-id type="sourceforge">layman</remote-id>
+	</upstream>
 </pkgmetadata>

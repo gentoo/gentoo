@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
@@ -8,4 +8,7 @@
 	<longdescription lang="en">
 		A (de)compressor for microsoft's compress.exe and expand.exe functions.
 	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">gnuwin32</remote-id>
+	</upstream>
 </pkgmetadata>

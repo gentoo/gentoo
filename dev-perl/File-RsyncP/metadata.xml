@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>perl</herd>
@@ -8,5 +8,6 @@
     <remote-id type="cpan-module">File::RsyncP::Digest</remote-id>
     <remote-id type="cpan-module">File::RsyncP::FileIO</remote-id>
     <remote-id type="cpan-module">File::RsyncP::FileList</remote-id>
+    <remote-id type="sourceforge">perlrsync</remote-id>
   </upstream>
 </pkgmetadata>

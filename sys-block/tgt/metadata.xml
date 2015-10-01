@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>cluster</herd>
@@ -8,7 +8,7 @@
 	</maintainer>
 	<longdescription>
 iSCSI Target daemon with rdma support
-</longdescription>
+	</longdescription>
 	<use>
 		<flag name="ibmvio">Add support for IBM Virtual I/O</flag>
 		<flag name="fcp">Add support for new FC protocol</flag>
@@ -17,5 +17,6 @@ iSCSI Target daemon with rdma support
 	</use>
 	<upstream>
 		<remote-id type="github">fujita/tgt</remote-id>
+		<remote-id type="sourceforge">stgt</remote-id>
 	</upstream>
 </pkgmetadata>

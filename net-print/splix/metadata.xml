@@ -1,14 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>printing</herd>
-<maintainer>
-	<email>wschlich@gentoo.org</email>
-	<name>Wolfram Schlich</name>
-	<description>Primary maintainer</description>
-</maintainer>
-<maintainer>
-	<email>voyageur@gentoo.org</email>
-	<name>Bernard Cafarelli</name>
-</maintainer>
+	<herd>printing</herd>
+	<maintainer>
+		<email>wschlich@gentoo.org</email>
+		<name>Wolfram Schlich</name>
+		<description>Primary maintainer</description>
+	</maintainer>
+	<maintainer>
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">splix</remote-id>
+	</upstream>
 </pkgmetadata>

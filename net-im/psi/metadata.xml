@@ -1,21 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>net-im</herd>
-<herd>proxy-maintainers</herd>
-<maintainer>
-  <email>nikoli@gmx.us</email>
-  <name>Nikoli</name>
-</maintainer>
-<longdescription>Psi is a very good jabber client that uses QT</longdescription>
-<use>
-	<flag name='enchant'>Use enchant spell engine instead of aspell</flag>
-	<flag name='extras'>Enables extra non official patches</flag>
-	<flag name='iconsets'>Install additional iconsets, some of them has not clear licensing</flag>
-	<flag name='plugins'>Enable plugins support</flag>
-	<flag name='powersave'>Disable some non critical timers for much less CPU usage</flag>
-	<flag name='webkit'>Enable chatlog rendering using webkit</flag>
-	<flag name='whiteboarding'>Enable experimental interactive SVG drawing</flag>
-	<flag name='xscreensaver'>Use X screensaver protocol extension to monitor idle/active status based on mouse/keyboard events</flag>
-</use>
+  <herd>net-im</herd>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>nikoli@gmx.us</email>
+    <name>Nikoli</name>
+  </maintainer>
+  <longdescription>Psi is a very good jabber client that uses QT</longdescription>
+  <use>
+    <flag name="enchant">Use enchant spell engine instead of aspell</flag>
+    <flag name="extras">Enables extra non official patches</flag>
+    <flag name="iconsets">Install additional iconsets, some of them has not clear licensing</flag>
+    <flag name="plugins">Enable plugins support</flag>
+    <flag name="powersave">Disable some non critical timers for much less CPU usage</flag>
+    <flag name="webkit">Enable chatlog rendering using webkit</flag>
+    <flag name="whiteboarding">Enable experimental interactive SVG drawing</flag>
+    <flag name="xscreensaver">Use X screensaver protocol extension to monitor idle/active status based on mouse/keyboard events</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">psi</remote-id>
+  </upstream>
 </pkgmetadata>

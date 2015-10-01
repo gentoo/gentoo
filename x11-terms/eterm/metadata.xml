@@ -1,20 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-<email>vapier@gentoo.org</email>
-</maintainer>
-<longdescription>
+	<maintainer>
+		<email>vapier@gentoo.org</email>
+	</maintainer>
+	<longdescription>
 Eterm is a color vt102 terminal emulator intended as a replacement for 
 xterm. It is designed with a Freedom of Choice philosophy, leaving as 
 much power, flexibility, and freedom as possible in the hands of the 
 user. It is designed to look good and work well, but takes a 
 feature-rich approach rather than one of minimalism while still 
 maintaining speed and efficiency.
-</longdescription>
-<use>
-	<flag name='escreen'>Enable built-in <pkg>app-misc/screen</pkg>
+	</longdescription>
+	<use>
+		<flag name="escreen">Enable built-in <pkg>app-misc/screen</pkg>
 		support</flag>
-	<flag name='utempter'>Include libutempter support</flag>
-</use>
+		<flag name="utempter">Include libutempter support</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">eterm</remote-id>
+	</upstream>
 </pkgmetadata>

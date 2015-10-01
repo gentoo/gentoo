@@ -1,9 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>sci</herd>
   <longdescription lang="en">
   Gerris Flow Solver is a software program for the solution of the partial
   differential equations describing fluid flow.
-</longdescription>
+  </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">gts</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -1,12 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>python</herd>
 	<longdescription>
 		pyusb is a python wrapper for the libusb user space USB device library.
 	</longdescription>
-	<maintainer><email>josejx@gentoo.org</email><name>Joseph Jezak</name></maintainer>
+	<maintainer>
+		<email>josejx@gentoo.org</email>
+		<name>Joseph Jezak</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pyusb</remote-id>
+		<remote-id type="sourceforge">pyusb</remote-id>
 	</upstream>
 </pkgmetadata>
