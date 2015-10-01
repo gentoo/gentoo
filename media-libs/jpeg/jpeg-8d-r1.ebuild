@@ -66,4 +66,6 @@ multilib_src_install_all() {
 		DESTDIR="${D}" prefix="${EPREFIX}"/usr \
 		INSTALL="install -m755" INSTALLDIR="install -d -m755" \
 		install
+	# Remove +x bits from man pages.
+	find "${ED}"/usr/share/man/ -type f -perm /1 -exec chmod a-x {} + || die
 }
