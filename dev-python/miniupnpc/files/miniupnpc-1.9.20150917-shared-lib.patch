@@ -1,0 +1,24 @@
+From cd8787999bf4c4b89601f6338ce765ea6229232c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 1 Oct 2015 18:49:26 +0200
+Subject: [PATCH] Use shared library when linking Python extensions
+
+---
+ miniupnpc/setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/miniupnpc/setup.py b/miniupnpc/setup.py
+index 049f670..2533ed4 100644
+--- a/miniupnpc/setup.py
++++ b/miniupnpc/setup.py
+@@ -19,6 +19,6 @@ setup(name="miniupnpc",
+       description='miniUPnP client',
+       ext_modules=[
+          Extension(name="miniupnpc", sources=["miniupnpcmodule.c"],
+-                   extra_objects=["libminiupnpc.a"])
++                   libraries=["miniupnpc"])
+       ])
+ 
+-- 
+2.6.0
+
