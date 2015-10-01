@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install preinst prepare setup test unpack
+DEPEND=perl? ( dev-lang/perl:= ) zlib? ( sys-libs/zlib ) java? ( >=virtual/jdk-1.6 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 python? ( =dev-lang/python-2* ) java? ( >=dev-java/java-config-2.2.0 )
+DESCRIPTION=Clearsilver is a fast, powerful, and language-neutral HTML template system
+EAPI=5
+HOMEPAGE=http://www.clearsilver.net/
+IUSE=perl python zlib perl java elibc_FreeBSD java
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd
+LICENSE=Apache-1.1
+RDEPEND=java? ( >=virtual/jre-1.6 ) python? ( =dev-lang/python-2* ) java? ( >=dev-java/java-config-2.2.0 )
+SLOT=0
+SRC_URI=http://www.clearsilver.net/downloads/clearsilver-0.10.5.tar.gz
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	java-utils-2	3f431421a91b4471894f5616adda4dc7	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-app	f4e5d7e4162790fd8dca8dafe5a2eadf	perl-module	1cfb38bf68a24c8394e41d2f53003146	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	unpacker	1d149d9bda7723e740cfd28118f27813	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=2f5101e65e5874d6e18b3801ce6c8982
