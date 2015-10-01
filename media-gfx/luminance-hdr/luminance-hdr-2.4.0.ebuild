@@ -19,7 +19,6 @@ IUSE="cpu_flags_x86_sse2 fits openmp test ${LANGS// / linguas_}"
 
 RDEPEND="
 	dev-libs/boost:0=
-	dev-qt/linguist-tools:5
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
@@ -41,6 +40,7 @@ RDEPEND="
 	virtual/jpeg:0
 "
 DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
 	test? ( dev-cpp/gtest )
 "
 
