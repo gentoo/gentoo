@@ -3997,7 +3997,7 @@ dev-java/jempbox 0.2.0 1.7.1: An open source Java library for parsing font files
 dev-java/jettison 1.0 1.3.7: A JSON StAX implementation
 dev-java/jexcelapi 2.6.8 2.6.8-r1: A Java API to read, write, and modify Excel spreadsheets
 dev-java/jffi 1.0.11 1.0.11-r1 1.2.9: An optimized Java interface to libffi
-dev-java/jflex 1.4.3-r1 1.4.3-r2 1.4.3-r3 1.5.0 1.5.1 1.6.0 1.6.0-r1 1.6.0-r2: JFlex is a lexical analyzer generator for Java
+dev-java/jflex 1.6.0-r2: JFlex is a lexical analyzer generator for Java
 dev-java/jformatstring 2.0.3: Compile time checking for Java format strings
 dev-java/jfreechart 1.0.13 1.0.14 1.0.19: JFreeChart is a free Java class library for generating charts
 dev-java/jfreesvg 2.1-r1 3.0: JFreeSVG is a fast, light-weight, vector graphics library for the Java platform
@@ -4105,7 +4105,7 @@ dev-java/maven-bin 1.1-r1 1.1-r3 2.0.11 2.0.11-r2 2.2.1 2.2.1-r2 3.0.4-r1 3.1.0 
 dev-java/mchange-commons 0.2.10: a library of arguably useful Java utilities
 dev-java/mersennetwister 0_pre23765: Modified MersenneTwister java port for Freenet
 dev-java/metadata-extractor 2.2.2-r2 2.2.2-r4: Metadata extraction framework for Exif and IPTC metadata segments, extraction support for JPEG files
-dev-java/metainf-services 1.5: Generates META-INF/services files automatically
+dev-java/metainf-services 1.6: Generates META-INF/services files automatically
 dev-java/mg4j 0.9.1-r2: A free Java implementation of inverted-index compression technique
 dev-java/microba 0.4.4: Swing components for date operations and palettes
 dev-java/miglayout 4.0: Easy to use yet very powerful Java Swing layout manager
@@ -4144,15 +4144,15 @@ dev-java/netbeans-platform 8.0.2: Netbeans Platform
 dev-java/netbeans-profiler 8.0.2: Netbeans Profiler Cluster
 dev-java/netbeans-webcommon 8.0.2: Netbeans Web Services Cluster
 dev-java/netbeans-websvccommon 8.0.2: Netbeans Web Services Common Cluster
-dev-java/netty-buffer 4.0.21: Async event-driven framework for rapid development of high performance network applications
-dev-java/netty-codec 4.0.19 4.0.21: Async event-driven framework for rapid development of high performance network applications
-dev-java/netty-common 4.0.21: Async event-driven framework for rapid development of high performance network applications
+dev-java/netty-buffer 4.0.21 4.0.22: Async event-driven framework for rapid development of high performance network applications
+dev-java/netty-codec 4.0.21 4.0.22: Async event-driven framework for rapid development of high performance network applications
+dev-java/netty-common 4.0.21 4.0.22: Async event-driven framework for rapid development of high performance network applications
 dev-java/netty-handler 4.0.19: Async event-driven framework for rapid development of high performance network applications
-dev-java/netty-transport 4.0.21-r1: Async event-driven framework for rapid development of high performance network applications
+dev-java/netty-transport 4.0.21-r1 4.0.22: Async event-driven framework for rapid development of high performance network applications
 dev-java/neuroph 2.3 2.3.1 2.4: A lightweight Java neural network framework
 dev-java/objenesis 1.3: A small Java library with one purpose: To instantiate a new object of a class
 dev-java/odfdom 0.8.6-r1: The ODFDOM reference implementation, written in Java
-dev-java/offo-hyphenation 1.2: Hyphenation patterns for Apache Fop
+dev-java/offo-hyphenation 2.0: Hyphenation patterns for Apache Fop
 dev-java/ognl 2.6.9-r2 3.0.8: Object-Graph Navigation Language; an expression language for getting/setting properties of objects
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/oracle-javamail 1.5.2: A Java-based framework to build multiplatform mail and messaging applications
