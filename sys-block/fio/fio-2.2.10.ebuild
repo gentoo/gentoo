@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="aio glusterfs gnuplot gtk numa rbd rdma static zlib"
 
 DEPEND="aio? ( dev-libs/libaio )
-	glusterfs? ( !arm? ( sys-cluster/glusterfs ) )
+	glusterfs? ( sys-cluster/glusterfs )
 	gtk? (
 		dev-libs/glib:2
 		x11-libs/gtk+:2
