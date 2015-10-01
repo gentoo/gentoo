@@ -71,7 +71,7 @@ fi
 # c_rehash: we run `c_rehash`; newer version for alt-cert-paths #552540
 # debianutils: we run `run-parts`
 RDEPEND="${DEPEND}
-	>=app-misc/c_rehash-1.7-r1
+    || ( >=dev-libs/openssl-1.0.2d >=app-misc/c_rehash-1.7-r1 )
 	sys-apps/debianutils"
 
 if ! ${PRECOMPILED}; then
