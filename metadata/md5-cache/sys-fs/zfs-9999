@@ -5,8 +5,8 @@ EAPI=5
 HOMEPAGE=http://zfsonlinux.org/
 IUSE=bash-completion custom-cflags debug kernel-builtin +rootfs test-suite static-libs python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 kernel_linux
 LICENSE=BSD-2 CDDL bash-completion? ( MIT )
-RDEPEND=sys-apps/util-linux[static-libs?] sys-libs/zlib[static-libs(+)?] virtual/awk !=sys-apps/grep-2.13* !kernel-builtin? ( =sys-fs/zfs-kmod-9999* ) !sys-fs/zfs-fuse !prefix? ( virtual/udev ) test-suite? ( sys-apps/util-linux sys-devel/bc sys-block/parted sys-fs/lsscsi sys-fs/mdadm sys-process/procps virtual/modutils ) rootfs? ( app-arch/cpio app-misc/pax-utils !<sys-boot/grub-2.00-r2:2 ) kernel_linux? ( virtual/modutils )
+RDEPEND=sys-apps/util-linux[static-libs?] sys-libs/zlib[static-libs(+)?] virtual/awk !=sys-apps/grep-2.13* !kernel-builtin? ( =sys-fs/zfs-kmod-9999* ) !sys-fs/zfs-fuse !prefix? ( virtual/udev ) test-suite? ( sys-apps/util-linux sys-devel/bc sys-block/parted sys-fs/lsscsi sys-fs/mdadm sys-process/procps virtual/modutils ) rootfs? ( app-arch/cpio app-misc/pax-utils !<sys-boot/grub-2.00-r2:2 ) !>=sys-fs/udev-init-scripts-28 kernel_linux? ( virtual/modutils )
 RESTRICT=test
 SLOT=0
 _eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	git-2	1bb87192831f668cd20d93ffb1689c94	libtool	7f78cd7d403808a350c9ae23f5821fb4	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	linux-mod	9e27971daa324852d78bc7d4d811afae	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	32b376cbb100a3a8083b3a0de023e117	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	udev	37ef89be271b9ae8aa64be024ddb39b5	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=7964a31cf633b32a088680e2e04561f7
+_md5_=368ac1887737171a394545b6f0af15aa
