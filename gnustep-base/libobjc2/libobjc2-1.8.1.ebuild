@@ -7,7 +7,7 @@ inherit cmake-utils eutils
 
 DESCRIPTION="GNUstep Objective-C runtime"
 HOMEPAGE="http://www.gnustep.org"
-SRC_URI="http://download.gna.org/gnustep/${P}.tar.bz2"
+SRC_URI="https://github.com/gnustep/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -20,7 +20,7 @@ DEPEND="${DEPEND}
 	>=sys-devel/clang-2.9"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-fix_soname.patch
+	epatch "${FILESDIR}"/${PN}-1.7-fix_soname.patch
 
 	if ! use cxx;
 	then
