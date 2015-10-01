@@ -34,8 +34,7 @@ RDEPEND="
 	virtual/opengl
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
-	egl? ( media-libs/glew )
-	gles2? ( media-libs/glew )
+	media-libs/glew
 	virtual/glu
 	x11-proto/xproto"
 
