@@ -15021,7 +15021,7 @@ sci-biology/pysam 0.6-r1: Python interface for the SAM/BAM sequence alignment an
 sci-biology/qrna 2.0.3c-r1: Prototype ncRNA genefinder
 sci-biology/raxml 7.2.6: Sequential, Parallel & Distributed Inference of Large Phylogenetic Trees
 sci-biology/readseq 20080420-r1 20100513: Reads and writes nucleic/protein sequences in various formats
-sci-biology/rebase 1508 1509: A restriction enzyme database
+sci-biology/rebase 1508 1509 1510: A restriction enzyme database
 sci-biology/recon 1.06-r1 1.06-r2: Automated de novo identification of repeat families from genomic sequences
 sci-biology/repeatmasker 4.0.1: Screen DNA sequences for interspersed repeats and low complexity DNA
 sci-biology/repeatmasker-libraries 20120418: A special version of RepBase used by RepeatMasker
