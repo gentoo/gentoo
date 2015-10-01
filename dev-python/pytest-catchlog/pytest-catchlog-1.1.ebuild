@@ -29,6 +29,6 @@ DEPEND="
 RESTRICT=test
 
 python_test() {
-	PYTHONPATH="${S}:${PYTONPATH}" \
+	PYTHONPATH="${S}:${PYTHONPATH}" \
 		py.test -v -v -x || die
 }
