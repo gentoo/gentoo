@@ -21,7 +21,6 @@ SLOT="0"
 
 RDEPEND="
 	dev-libs/glib:2
-	dev-qt/linguist-tools:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtscript:5
@@ -35,6 +34,7 @@ RDEPEND="
 	>=dev-libs/libqtxdg-1.0.0
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
 src_configure() {
