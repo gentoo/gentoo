@@ -6,12 +6,10 @@ EAPI=5
 
 DESCRIPTION="Hyphenation patterns for Apache Fop"
 HOMEPAGE="http://offo.sourceforge.net"
-# upstream will hopefully version future release...
 SRC_URI="mirror://sourceforge/offo/${PN}_v${PV}.zip"
-# review this upon update!
 LICENSE="GPL-2 Apache-2.0 LPPL-1.3b TeX"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="doc"
 
 RDEPEND=""
