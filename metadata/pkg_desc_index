@@ -6806,7 +6806,7 @@ dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
 dev-python/cherrypy 3.3.0 3.7.0 3.8.0: CherryPy is a pythonic, object-oriented HTTP framework
 dev-python/cherrytemplate 1.0.0-r1: Easy and powerful templating module for Python
 dev-python/cliapp 1.20130808 1.20140315 1.20150305: Framework for Unix-like command line programs
-dev-python/click 2.0 4.0-r1 4.1: A Python package for creating beautiful command line interfaces
+dev-python/click 2.0 4.0-r1 4.1 5.1: A Python package for creating beautiful command line interfaces
 dev-python/clientcookie 1.3.0-r1: Python module for handling HTTP cookies on the client side
 dev-python/cliff 1.8.0 1.10.1 1.12.0 1.13.0 1.14.0: Command Line Interface Formulation Framework
 dev-python/cliff-tablib 1.1: Formatter extensions of JSON, YAML, and HTML output in programs created by the cliff framework
@@ -9285,7 +9285,7 @@ dev-util/itstool 1.2.0-r1 2.0.2: Translation tool for XML documents that uses ge
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 1.609.3 1.627 1.629 1.630: Extensible continuous integration server
+dev-util/jenkins-bin 1.609.3 1.630 1.631: Extensible continuous integration server
 dev-util/jif 3.1_rc1: JIF is an IDE for the creation of text adventures based on Graham Nelson's Inform standard
 dev-util/kbuild 0.1.9998_pre20120806 0.1.9998_pre20131130 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.4 2.5.5: A graphical debugger interface
@@ -9710,7 +9710,7 @@ games-arcade/moleinvasion 0.4-r1: Mole infested 2D platform game
 games-arcade/monkey-bubble 0.4.0: A Puzzle Bobble clone
 games-arcade/monster-masher 1.8.1-r2: Squash the monsters with your levitation worker gnome
 games-arcade/mrrescue 1.02b: Arcade styled 2d action game centered around evacuating civilians from burning buildings
-games-arcade/netris 0.52: Classic networked version of T*tris
+games-arcade/netris 0.52 0.52-r1: Classic networked version of T*tris
 games-arcade/nibbles 0.0.4: An ncurses-based Nibbles clone
 games-arcade/ninvaders 0.1.1: ASCII space invaders clone
 games-arcade/njam 1.25: Multi or single-player network Pacman-like game in SDL
