@@ -12,7 +12,7 @@ SRC_URI="http://i3wm.org/downloads/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="+pango"
 
 CDEPEND="dev-libs/libev
