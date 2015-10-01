@@ -16,7 +16,7 @@ SRC_URI="http://www.jetico.com/linux/BCWipe-${MY_PV}.tar.gz
 LICENSE="bestcrypt"
 SLOT="0"
 IUSE="doc"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ~arm ppc x86"
 
 DEPEND=""
 RDEPEND=""
