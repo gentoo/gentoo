@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>python</herd>
@@ -11,5 +11,6 @@
   </longdescription>
   <upstream>
     <remote-id type="github">enthought/enable</remote-id>
+    <remote-id type="pypi">enable</remote-id>
   </upstream>
 </pkgmetadata>
