@@ -30,7 +30,6 @@ done
 
 RDEPEND="
 	qt5? (
-		dev-qt/linguist-tools:5
 		dev-qt/qtgui:5
 		dev-qt/qtnetwork:5
 		dev-qt/qtsql:5[sqlite]
@@ -49,6 +48,7 @@ DEPEND="${RDEPEND}
 		qt5?	( dev-libs/qtkeychain[qt5] )
 		!qt5?	( dev-libs/qtkeychain[qt4] )
 	)
+	qt5? ( dev-qt/linguist-tools:5 )
 	test? (
 		qt5?	( dev-qt/qttest:5 )
 		!qt5?	( >=dev-qt/qttest-${QT4_REQUIRED}:4 )

@@ -21,7 +21,6 @@ SLOT="0"
 
 RDEPEND="
 	dev-libs/glib:2
-	dev-qt/linguist-tools:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
@@ -37,6 +36,7 @@ RDEPEND="
 	x11-libs/libXfixes
 	x11-misc/pcmanfm-qt"
 DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
 src_configure() {

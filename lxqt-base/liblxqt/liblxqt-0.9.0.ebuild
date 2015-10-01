@@ -19,8 +19,7 @@ fi
 LICENSE="GPL-2 LGPL-2.1+"
 SLOT="0"
 
-DEPEND=">=dev-libs/libqtxdg-1.0.0
-	dev-qt/linguist-tools:5
+RDEPEND=">=dev-libs/libqtxdg-1.0.0
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
@@ -29,7 +28,9 @@ DEPEND=">=dev-libs/libqtxdg-1.0.0
 	dev-qt/qtxml:5
 	kde-frameworks/kwindowsystem:5
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
+"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then

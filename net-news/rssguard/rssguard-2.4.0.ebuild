@@ -15,13 +15,12 @@ KEYWORDS="~amd64"
 IUSE="qt4 +qt5"
 REQUIRED_USE="^^ ( qt4 qt5 )"
 
-DEPEND="
+RDEPEND="
 	qt4? ( dev-qt/qtcore:4
 		dev-qt/qtgui:4
 		dev-qt/qtwebkit:4
 		dev-qt/qtxmlpatterns:4 )
-	qt5? ( dev-qt/linguist-tools:5
-		dev-qt/qtcore:5
+	qt5? ( dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtnetwork:5
 		dev-qt/qtprintsupport:5
@@ -30,7 +29,9 @@ DEPEND="
 		dev-qt/qtwidgets:5
 		dev-qt/qtxml:5
 		dev-qt/qtxmlpatterns:5 )"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	qt5? ( dev-qt/linguist-tools:5 )
+"
 
 DOCS=( README.md resources/text/CHANGELOG )
 

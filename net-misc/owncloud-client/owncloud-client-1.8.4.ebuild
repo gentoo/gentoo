@@ -32,7 +32,6 @@ RDEPEND=">=dev-db/sqlite-3.4:3
 	)
 	qt5? (
 		dev-libs/qtkeychain[qt5]
-		dev-qt/linguist-tools:5
 		dev-qt/qtconcurrent:5
 		dev-qt/qtcore:5
 		dev-qt/qtdbus:5
@@ -51,6 +50,7 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-latexextra
 		virtual/latex-base
 	)
+	qt5? ( dev-qt/linguist-tools:5 )
 	test? (
 		dev-util/cmocka
 		qt4? ( dev-qt/qttest:4 )

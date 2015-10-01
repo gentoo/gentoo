@@ -21,7 +21,6 @@ SLOT="0"
 
 RDEPEND="dev-libs/glib:2
 	dev-libs/libxml2
-	dev-qt/linguist-tools:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
@@ -37,4 +36,5 @@ RDEPEND="dev-libs/glib:2
 	x11-libs/pango
 "
 DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
 	virtual/pkgconfig"

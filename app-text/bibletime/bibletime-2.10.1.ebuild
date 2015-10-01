@@ -21,7 +21,6 @@ RDEPEND="
 	>=app-text/sword-1.6.0
 	>=dev-cpp/clucene-2.3.3.4
 	qt5? (
-		dev-qt/linguist-tools:5
 		dev-qt/qtcore:5
 		dev-qt/qtdbus:5
 		dev-qt/qtprintsupport:5
@@ -42,6 +41,7 @@ DEPEND="
 	net-misc/curl
 	sys-libs/zlib
 	qt5? (
+		dev-qt/linguist-tools:5
 		dev-qt/qttest:5
 	)
 	!qt5? (

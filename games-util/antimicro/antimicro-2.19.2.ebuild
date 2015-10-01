@@ -18,11 +18,11 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtnetwork:5
-	dev-qt/linguist-tools:5
 	media-libs/libsdl2[X,joystick]
 	x11-libs/libX11
 	x11-libs/libXtst"
 DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
 src_configure() {

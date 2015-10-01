@@ -21,7 +21,6 @@ SLOT="0"
 
 RDEPEND="dev-libs/glib:2
 	>=dev-libs/libqtxdg-1.0.0
-	dev-qt/linguist-tools:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtscript:5
@@ -34,6 +33,7 @@ RDEPEND="dev-libs/glib:2
 	~lxqt-base/lxqt-globalkeys-${PV}
 	>=lxde-base/menu-cache-0.5.1"
 DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
 src_install(){

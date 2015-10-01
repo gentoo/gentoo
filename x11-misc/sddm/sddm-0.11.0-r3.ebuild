@@ -20,11 +20,11 @@ RDEPEND="sys-libs/pam
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtdeclarative:5
-	dev-qt/linguist-tools:5
 	dev-qt/qttest:5
 	systemd? ( sys-apps/systemd:= )
 	!systemd? ( || ( sys-power/upower sys-power/upower-pm-utils ) )"
 DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
 pkg_pretend() {

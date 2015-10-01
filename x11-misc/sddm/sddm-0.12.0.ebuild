@@ -19,7 +19,6 @@ RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtnetwork:5
-	dev-qt/linguist-tools:5
 	dev-qt/qttest:5
 	>=x11-base/xorg-server-1.15.1
 	x11-libs/libxcb[xkb(-)]
@@ -30,6 +29,7 @@ RDEPEND="dev-qt/qtcore:5
 
 DEPEND="${RDEPEND}
 	dev-python/docutils
+	dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
 pkg_pretend() {
