@@ -4063,7 +4063,7 @@ dev-java/jsr305 1.0-r1: Reference implementation for JSR 305: Annotations for So
 dev-java/jsr311-api 1.1: JAX-RS: Java API for RESTful Web Services
 dev-java/jsr67 1.3: SAAJ 1.3 (AKA JSR-67 MR3) API
 dev-java/jsr93 1.0 1.0-r1: Java API for XML Registries (JAXR) - API
-dev-java/jss 4.3 4.3-r1: Network Security Services for Java (JSS)
+dev-java/jss 4.3 4.3.2: Network Security Services for Java (JSS)
 dev-java/jstun 0.7.3: Java-based STUN implementation
 dev-java/jta 1.0.1-r1 1.1: The Java Transaction API
 dev-java/jtds 1.2.5-r1 1.3.0: jTDS - SQL Server and Sybase JDBC driver
