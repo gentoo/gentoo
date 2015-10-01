@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 x11-libs/libqxt ~x11-libs/qtermwidget-0.6.0[qt4(+)] ) qt5? ( dev-qt/linguist-tools:5 dev-qt/qtcore:5 dev-qt/qtgui:5 ~x11-libs/qtermwidget-0.6.0[qt5(-)] ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DEPEND=qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 x11-libs/libqxt ~x11-libs/qtermwidget-0.6.0[qt4(+)] ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 ~x11-libs/qtermwidget-0.6.0[qt5(-)] ) qt5? ( dev-qt/linguist-tools:5 ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=Qt-based multitab terminal emulator
 EAPI=5
 HOMEPAGE=https://github.com/qterminal/qterminal
 IUSE=debug qt4 qt5
 KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-2+
-RDEPEND=qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 x11-libs/libqxt ~x11-libs/qtermwidget-0.6.0[qt4(+)] ) qt5? ( dev-qt/linguist-tools:5 dev-qt/qtcore:5 dev-qt/qtgui:5 ~x11-libs/qtermwidget-0.6.0[qt5(-)] )
+RDEPEND=qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 x11-libs/libqxt ~x11-libs/qtermwidget-0.6.0[qt4(+)] ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 ~x11-libs/qtermwidget-0.6.0[qt5(-)] )
 REQUIRED_USE=^^ ( qt4 qt5 )
 SLOT=0
 SRC_URI=https://github.com/qterminal/qterminal/releases/download/0.6.0/qterminal-0.6.0.tar.xz
 _eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=f14b7f7a902d5d22bee829f8a2a4268c
+_md5_=52d2fb4cc91d25c242c2fea3bbb47557

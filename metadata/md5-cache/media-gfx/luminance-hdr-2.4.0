@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare pretend test
-DEPEND=dev-libs/boost:0= dev-qt/linguist-tools:5 dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsql:5 dev-qt/qtwebkit:5 >=media-gfx/exiv2-0.14:0= media-libs/lcms:2 media-libs/libpng:0= >=media-libs/libraw-0.13.4:= media-libs/ilmbase:= >=media-libs/openexr-1.2.2-r2:= >=media-libs/tiff-3.8.2-r2:0 sci-libs/fftw:3.0[threads] fits? ( sci-libs/ccfits ) sci-libs/gsl virtual/jpeg:0 test? ( dev-cpp/gtest ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DEPEND=dev-libs/boost:0= dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsql:5 dev-qt/qtwebkit:5 >=media-gfx/exiv2-0.14:0= media-libs/lcms:2 media-libs/libpng:0= >=media-libs/libraw-0.13.4:= media-libs/ilmbase:= >=media-libs/openexr-1.2.2-r2:= >=media-libs/tiff-3.8.2-r2:0 sci-libs/fftw:3.0[threads] fits? ( sci-libs/ccfits ) sci-libs/gsl virtual/jpeg:0 dev-qt/linguist-tools:5 test? ( dev-cpp/gtest ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=Luminance HDR is a graphical user interface that provides a workflow for HDR imaging
 EAPI=5
 HOMEPAGE=http://qtpfsgui.sourceforge.net https://github.com/LuminanceHDR/LuminanceHDR
 IUSE=cpu_flags_x86_sse2 fits openmp test linguas_cs linguas_de linguas_es linguas_fi linguas_fr linguas_hi linguas_hu linguas_id linguas_it linguas_pl linguas_ro linguas_ru linguas_sk linguas_tr linguas_zh
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=dev-libs/boost:0= dev-qt/linguist-tools:5 dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsql:5 dev-qt/qtwebkit:5 >=media-gfx/exiv2-0.14:0= media-libs/lcms:2 media-libs/libpng:0= >=media-libs/libraw-0.13.4:= media-libs/ilmbase:= >=media-libs/openexr-1.2.2-r2:= >=media-libs/tiff-3.8.2-r2:0 sci-libs/fftw:3.0[threads] fits? ( sci-libs/ccfits ) sci-libs/gsl virtual/jpeg:0
+RDEPEND=dev-libs/boost:0= dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsql:5 dev-qt/qtwebkit:5 >=media-gfx/exiv2-0.14:0= media-libs/lcms:2 media-libs/libpng:0= >=media-libs/libraw-0.13.4:= media-libs/ilmbase:= >=media-libs/openexr-1.2.2-r2:= >=media-libs/tiff-3.8.2-r2:0 sci-libs/fftw:3.0[threads] fits? ( sci-libs/ccfits ) sci-libs/gsl virtual/jpeg:0
 SLOT=0
 SRC_URI=mirror://sourceforge/qtpfsgui/luminance-hdr-2.4.0.tar.bz2
 _eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=d25c021fefbe7afc5b4ae51c835ccea9
+_md5_=75010dd3ed106fa6287085a84ca4b192

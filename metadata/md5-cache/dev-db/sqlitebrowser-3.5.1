@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-db/sqlite:3 dev-java/antlr:0[cxx] dev-libs/qcustomplot[qt5=] qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) qt5? ( dev-qt/linguist:5 dev-qt/linguist-tools:5 dev-qt/qtnetwork:5 dev-qt/qttest:5 dev-qt/qtwidgets:5 ) dev-util/ninja >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DEPEND=dev-db/sqlite:3 dev-java/antlr:0[cxx] dev-libs/qcustomplot[qt5=] qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) qt5? ( dev-qt/qtnetwork:5 dev-qt/qttest:5 dev-qt/qtwidgets:5 ) qt5? ( dev-qt/linguist-tools:5 ) dev-util/ninja >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=SQLite Database Browser
 EAPI=5
 HOMEPAGE=http://sqlitebrowser.org
 IUSE=qt4 qt5 test
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3 MPL-2.0
-RDEPEND=dev-db/sqlite:3 dev-java/antlr:0[cxx] dev-libs/qcustomplot[qt5=] qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) qt5? ( dev-qt/linguist:5 dev-qt/linguist-tools:5 dev-qt/qtnetwork:5 dev-qt/qttest:5 dev-qt/qtwidgets:5 )
+RDEPEND=dev-db/sqlite:3 dev-java/antlr:0[cxx] dev-libs/qcustomplot[qt5=] qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) qt5? ( dev-qt/qtnetwork:5 dev-qt/qttest:5 dev-qt/qtwidgets:5 )
 REQUIRED_USE=^^ ( qt4 qt5 )
 SLOT=0
 SRC_URI=https://github.com/sqlitebrowser/sqlitebrowser/archive/v3.5.1.tar.gz -> sqlitebrowser-3.5.1.tar.gz
 _eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=e9370e707871f77c68e704ec26aa342f
+_md5_=83ed4f701f6e7f9c87b40b6c555592a4

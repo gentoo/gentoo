@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile configure install prepare pretend test
-DEPEND=>=dev-libs/libqtxdg-1.0.0 x11-libs/libX11 x11-libs/libXcomposite x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXfixes x11-libs/libXrender dev-qt/linguist-tools:5 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DEPEND=>=dev-libs/libqtxdg-1.0.0 x11-libs/libX11 x11-libs/libXcomposite x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXfixes x11-libs/libXrender dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5 dev-qt/linguist-tools:5 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=Common base library for the LXQt desktop environment
 EAPI=5
 HOMEPAGE=http://lxqt.org/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2 LGPL-2.1+
-RDEPEND=>=dev-libs/libqtxdg-1.0.0 x11-libs/libX11 x11-libs/libXcomposite x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXfixes x11-libs/libXrender dev-qt/linguist-tools:5 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5
+RDEPEND=>=dev-libs/libqtxdg-1.0.0 x11-libs/libX11 x11-libs/libXcomposite x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXfixes x11-libs/libXrender dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5
 SLOT=0
 SRC_URI=http://downloads.lxqt.org/lxqt/0.8.0/liblxqt-0.8.0.tar.xz
 _eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=7f5c46280ad66f9db88bc64afb694623
+_md5_=1f4a01ae9f8e5d484299617b0b9cc22d
