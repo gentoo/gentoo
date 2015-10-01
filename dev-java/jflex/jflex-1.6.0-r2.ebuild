@@ -51,7 +51,6 @@ EANT_GENTOO_CLASSPATH_EXTRA="lib/${P}.jar"
 # Currently, this package uses an included JFlex.jar file to bootstrap.
 # Upstream was contacted and this bootstrap is really needed. The only way to
 # avoid it would be to use a supplied pre-compiled .scanner file.
-
 JAVA_ANT_REWRITE_CLASSPATH="true"
 EANT_GENTOO_CLASSPATH="
 	ant-core
@@ -76,7 +75,7 @@ src_test() {
 
 src_install() {
 	java-pkg_newjar build/${P}.jar ${PN}.jar
-	java-pkg_dolauncher "${PN}" --main jflex.Main
+	java-pkg_dolauncher "${PN}" --main "${PN}.Main"
 	java-pkg_register-ant-task
 
 	if use doc ; then
