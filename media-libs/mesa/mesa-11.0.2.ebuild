@@ -25,14 +25,13 @@ HOMEPAGE="http://mesa3d.sourceforge.net/"
 
 if [[ $PV == 9999* ]]; then
 	SRC_URI=""
-	KEYWORDS=""
 else
 	SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/${FOLDER}/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 RESTRICT="!bindist? ( bindist )"
 
 INTEL_CARDS="i915 i965 ilo intel"
@@ -111,7 +110,7 @@ RDEPEND="
 	opencl? (
 				app-eselect/eselect-opencl
 				dev-libs/libclc
-				!kernel_FreeBSD? ( || (
+				!kernel_FreeBSD?  ( || (
 					>=dev-libs/elfutils-0.155-r1:=[${MULTILIB_USEDEP}]
 					>=dev-libs/libelf-0.8.13-r2:=[${MULTILIB_USEDEP}]
 				) )
@@ -191,7 +190,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	[[ ${PV} == 9999 ]] && eautoreconf
+	# fix for hardened pax_kernel, bug 240956
+	[[ ${PV} != 9999* ]] && epatch "${FILESDIR}"/glx_ro_text_segm.patch
+
+	eautoreconf
 }
 
 multilib_src_configure() {
@@ -265,9 +267,11 @@ multilib_src_configure() {
 		fi
 	fi
 
-	# x86 hardened pax_kernel needs glx-read-only-text, bug 240956
+	# x86 hardened pax_kernel needs glx-rts, bug 240956
 	if use pax_kernel; then
-		myconf+="$(use_enable x86 glx-read-only-text)"
+		myconf+="
+			$(use_enable x86 glx-rts)
+		"
 	fi
 
 	# on abi_x86_32 hardened we need to have asm disable
@@ -283,7 +287,6 @@ multilib_src_configure() {
 		--enable-dri \
 		--enable-glx \
 		--enable-shared-glapi \
-		--disable-shader-cache \
 		$(use_enable !bindist texture-float) \
 		$(use_enable d3d9 nine) \
 		$(use_enable debug) \
