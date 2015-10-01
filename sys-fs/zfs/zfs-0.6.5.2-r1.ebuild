@@ -86,6 +86,12 @@ pkg_setup() {
 }
 
 src_prepare() {
+if [ ${PV} != "9999" ]
+	then
+		# Fix OpenRC scripts
+		epatch "${FILESDIR}/zfs-0.6.5-fix-openrc-scripts.patch"
+	fi
+
 	# Update paths
 	sed -e "s|/sbin/lsmod|/bin/lsmod|" \
 		-e "s|/usr/bin/scsi-rescan|/usr/sbin/rescan-scsi-bus|" \
