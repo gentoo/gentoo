@@ -12913,7 +12913,7 @@ media-sound/tudor-volumed 0_pre20110427: Lightweight, desktop environment agnost
 media-sound/tunapie 2.1.17: Directory browser for Radio and TV streams
 media-sound/twolame 0.3.13-r1: An optimised MPEG Audio Layer 2 (MP2) encoder
 media-sound/umix 1.0.2: Program for adjusting soundcard volumes
-media-sound/umurmur 0.2.16a: Minimalistic Murmur (Mumble server)
+media-sound/umurmur 0.2.16a 0.2.16a-r1: Minimalistic Murmur (Mumble server)
 media-sound/vb2rip 1.4: Konami VB2 sound format ripping utility
 media-sound/vbrfixc 0.24: Vbrfix fixes MP3s and re-constructs VBR headers
 media-sound/vdramgw 0.0.2: vdr to amarok gateway - allows vdr-amarok to access amarok
