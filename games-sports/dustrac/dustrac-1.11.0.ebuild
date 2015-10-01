@@ -19,11 +19,11 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtopengl:5
 	dev-qt/qtxml:5
-	dev-qt/linguist-tools:5
 	media-libs/libvorbis
 	media-libs/openal
 	virtual/opengl"
 DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
 	dev-qt/qttest:5
 	virtual/pkgconfig"
 
