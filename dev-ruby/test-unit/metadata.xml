@@ -8,5 +8,6 @@
   </longdescription>
   <upstream>
     <remote-id type="rubyforge">test-unit</remote-id>
+    <remote-id type="rubygems">test-unit</remote-id>
   </upstream>
 </pkgmetadata>
