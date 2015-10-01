@@ -26,6 +26,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-fix-textrels-on-PIC-x86.patch #469962
 	epatch "${FILESDIR}"/${P}-man-fill-watermark.patch #555094
 	epatch "${FILESDIR}"/${P}-man-rng-device.patch #555106
+	epatch "${FILESDIR}"/${P}-fix-noctty.patch #556456
 	eautoreconf
 
 	sed -i '/^AR /d' Makefile.in || die
