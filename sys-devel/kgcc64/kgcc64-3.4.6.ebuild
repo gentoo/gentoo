@@ -23,7 +23,7 @@ inherit eutils toolchain
 
 DESCRIPTION="64bit kernel compiler"
 
-KEYWORDS="-* ~hppa ~mips ~ppc ~s390 sparc"
+KEYWORDS="-* ~hppa ~mips ~s390 sparc"
 
 # unlike every other target, hppa has not unified the 32/64 bit
 # ports in binutils yet
