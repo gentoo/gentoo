@@ -1985,7 +1985,7 @@ app-office/hourglass 0.7.2 0.7.2-r1: A PSP (personal software process) time trac
 app-office/ical 3.0-r2: Tk-based Calendar program
 app-office/impressive 0.10.5 0.11.0b: Stylish way of giving presentations with Python
 app-office/kmymoney 4.7.2: Personal finance manager for KDE
-app-office/kraft 0.58: Software for operating a small business, helping create documents such as offers and invoices
+app-office/kraft 0.58 0.59: Software for operating a small business, helping create documents such as offers and invoices
 app-office/ledger 2.6.3-r1 3.1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 4.3.2-r1: Library with common classes and functionality used by KDE finance applications
 app-office/libreoffice 4.4.5.2 4.4.9999 5.0.1.2 5.0.2.2 5.0.9999 9999: LibreOffice, a full office productivity suite
@@ -4819,7 +4819,7 @@ dev-libs/openct 0.6.20-r3 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.5 1.7.1: An implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.12.2-r2 0.13.0 0.14.0 0.15.0: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.4-r1: A collection of special mathematical functions
-dev-libs/openssl 0.9.8z_p7 1.0.1p 1.0.2a 1.0.2b 1.0.2c 1.0.2d 1.0.2d-r1: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 0.9.8z_p7 1.0.1p 1.0.2a 1.0.2b 1.0.2c 1.0.2d 1.0.2d-r2: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r2 1.6.2-r4: An ISO-C:1999 API and corresponding CLI for the generation of DCE 1.1, ISO/IEC 11578:1996 and RFC 4122 compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/papi 5.3.0 5.4.0: Performance Application Programming Interface
@@ -16765,7 +16765,7 @@ sys-kernel/rsbac-sources 3.14.28: RSBAC kernel sources (kernel series 3.14)
 sys-kernel/rt-sources 3.14.46_p46 3.18.17_p14 4.0.5_p4 4.1.5_p5: Full Linux 4.1 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2 0.6.2-r1 0.6.2-r2 0.6.2-r3 0.6.2-r4 0.6.2-r5 0.6.3 0.6.3-r1 0.6.4 0.6.4.2 0.6.5 0.6.5.2 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.108 3.10.88 3.12.47 3.14.52 3.18.21 4.0.9 4.1.7 4.2.0: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.71 3.4.109 3.10.89 3.12.48 3.14.53 3.18.21 4.1.9 4.2.2: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.71 3.4.109 3.10.90 3.12.48 3.14.54 3.18.21 4.1.9 4.2.2: Full sources for the Linux kernel
 sys-kernel/vserver-sources 2.3.0.36.32 2.3.6.5 2.3.6.8 2.3.6.11 2.3.6.14 2.3.7.3 2.3.7.4: Full sources including Linux-VServer patchsets for the 3.18 kernel tree
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
