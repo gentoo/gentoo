@@ -133,16 +133,10 @@ dev-lang/php mysql mysqli
 net-libs/courier-authlib mysql
 
 # does not build
-x11-libs/libdrm libkms
 media-libs/mesa video_cards_vmware
-media-libs/mesa video_cards_r600
-media-libs/mesa video_cards_radeon
 
 # media-libs/libepoxy
 x11-base/xorg-server glamor wayland
-
-# x11-libs/libdrm[libkms]
-media-libs/mesa xorg
 
 # x11-drivers/xf86-video-sis
 x11-base/xorg-drivers video_cards_sis
