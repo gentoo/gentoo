@@ -56,6 +56,7 @@ DEPEND="${COMMON_DEPEND}
 	kernel_Darwin? ( sys-libs/libcxx )
 	clang? ( xml? ( virtual/pkgconfig ) )
 	doc? ( dev-python/sphinx )
+	gold? ( sys-libs/binutils-libs )
 	libffi? ( virtual/pkgconfig )
 	lldb? ( dev-lang/swig )
 	!!<dev-python/configparser-3.3.0.2
