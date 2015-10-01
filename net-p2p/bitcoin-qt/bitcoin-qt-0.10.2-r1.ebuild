@@ -26,13 +26,15 @@ RDEPEND="
 		media-gfx/qrencode
 	)
 	qt4? ( dev-qt/qtgui:4 )
-	qt5? ( dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/linguist-tools:5 )
+	qt5? ( dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 )
 	dbus? (
 		qt4? ( dev-qt/qtdbus:4 )
 		qt5? ( dev-qt/qtdbus:5 )
 	)
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	qt5? ( dev-qt/linguist-tools:5 )
+"
 REQUIRED_USE="${REQUIRED_USE} ^^ ( qt4 qt5 )"
 
 src_prepare() {
