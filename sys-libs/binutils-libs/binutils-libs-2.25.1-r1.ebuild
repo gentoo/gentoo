@@ -32,6 +32,10 @@ RDEPEND="${COMMON_DEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
+MULTILIB_WRAPPED_HEADERS=(
+	/usr/include/bfd.h
+)
+
 src_prepare() {
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}"/patch
 }
