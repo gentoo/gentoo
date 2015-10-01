@@ -39,8 +39,6 @@ COMMON_DEPEND="
 	dev-libs/hyphen
 	dev-libs/librevenge
 	dev-libs/libxml2
-	dev-qt/linguist:5
-	dev-qt/linguist-tools:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
@@ -73,6 +71,7 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	app-text/ghostscript-gpl"
 DEPEND="${COMMON_DEPEND}
+	dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
 PATCHES=(
