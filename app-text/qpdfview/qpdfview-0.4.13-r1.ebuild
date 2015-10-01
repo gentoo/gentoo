@@ -29,8 +29,7 @@ RDEPEND="cups? ( net-print/cups )
 		pdf? ( app-text/poppler[qt4] )
 		sqlite? ( dev-qt/qtsql:4[sqlite] )
 		svg? ( dev-qt/qtsvg:4 ) )
-	qt5? ( dev-qt/linguist-tools:5
-		dev-qt/qtconcurrent:5
+	qt5? ( dev-qt/qtconcurrent:5
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtprintsupport:5
@@ -40,6 +39,7 @@ RDEPEND="cups? ( net-print/cups )
 		svg? ( dev-qt/qtsvg:5 ) )
 	!svg? ( virtual/freedesktop-icon-theme )"
 DEPEND="${RDEPEND}
+	qt5? ( dev-qt/linguist-tools:5 )
 	virtual/pkgconfig"
 
 DOCS=( CHANGES CONTRIBUTORS README TODO )
