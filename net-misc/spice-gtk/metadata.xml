@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>virtualization</herd>
@@ -21,7 +21,4 @@
     <flag name="webdav">Support for folder-sharing between guest and client
 		using <pkg>net-libs/phodav</pkg></flag>
   </use>
-  <upstream>
-    <remote-id type="gitorious">spice-gtk</remote-id>
-  </upstream>
 </pkgmetadata>
