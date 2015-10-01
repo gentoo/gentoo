@@ -19,8 +19,7 @@ fi
 LICENSE="LGPL-2.1+"
 SLOT="0"
 
-DEPEND="
-	dev-qt/linguist-tools:5
+RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
@@ -31,7 +30,9 @@ DEPEND="
 	>=dev-libs/libqtxdg-1.0.0
 	x11-libs/libX11
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
+"
 
 src_configure() {
 	local mycmakeargs=(
