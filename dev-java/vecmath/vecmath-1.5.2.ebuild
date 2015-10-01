@@ -14,7 +14,7 @@ HOMEPAGE="https://vecmath.dev.java.net/"
 MY_P="${PN}-$(replace_all_version_separators _ ${PV})"
 
 SRC_URI="http://download.java.net/media/java3d/builds/release/${PV}/${MY_P}-src.zip"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 LICENSE="GPL-1"
 IUSE=""
