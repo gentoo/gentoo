@@ -19,7 +19,7 @@ IUSE="qt4 qt5 test"
 
 REQUIRED_USE="^^ ( qt4 qt5 )"
 
-DEPEND="
+RDEPEND="
 	dev-db/sqlite:3
 	dev-java/antlr:0[cxx]
 	dev-libs/qcustomplot[qt5=]
@@ -28,13 +28,12 @@ DEPEND="
 		dev-qt/qtgui:4
 	)
 	qt5? (
-		dev-qt/linguist:5
-		dev-qt/linguist-tools:5
 		dev-qt/qtnetwork:5
 		dev-qt/qttest:5
 		dev-qt/qtwidgets:5
 	)"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	qt5? ( dev-qt/linguist-tools:5 )"
 
 PATCHES=( "${FILESDIR}"/${P}-unbundle.patch )
 
