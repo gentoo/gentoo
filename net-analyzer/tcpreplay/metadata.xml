@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>netmon</herd>
@@ -9,12 +9,13 @@
   providing reliable and repeatible means for testing a variety of network
   devices such as switches, router, firewalls, network intrusion detection and
   prevention systems (IDS and IPS).
-</longdescription>
+  </longdescription>
   <use>
     <flag name="pcapnav">Enable if you want the jump to byte offset feature via <pkg>net-libs/libpcapnav</pkg></flag>
     <flag name="tcpdump">Use <pkg>net-analyzer/tcpdump</pkg> for packet decoding feature </flag>
   </use>
   <upstream>
     <remote-id type="github">appneta/tcpreplay</remote-id>
+    <remote-id type="sourceforge">tcpreplay</remote-id>
   </upstream>
 </pkgmetadata>

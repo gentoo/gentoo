@@ -1,11 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
 		<email>maintainer-needed@gentoo.org</email>
 	</maintainer>
 	<longdescription>A tool to create and apply deltarpms.</longdescription>
-	<upstream>
-		<remote-id type="gitorious">deltarpm/deltarpm</remote-id>
-	</upstream>
 </pkgmetadata>

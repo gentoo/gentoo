@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>kde</herd>
 	<herd>net-news</herd>
 	<upstream>
 		<remote-id type="sourceforge">kwooty</remote-id>
-		<remote-id type="gitorious">kwooty</remote-id>
 		<bugs-to>http://sourceforge.net/tracker/?group_id=285032</bugs-to>
 	</upstream>
 </pkgmetadata>

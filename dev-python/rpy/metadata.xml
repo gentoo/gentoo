@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>python</herd>
@@ -8,8 +8,9 @@
   language. It can manage R objects and can execute arbitrary R
   functions. All the errors from the R language are converted to
   Python exceptions.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="pypi">rpy2</remote-id>
+    <remote-id type="sourceforge">rpy</remote-id>
   </upstream>
 </pkgmetadata>

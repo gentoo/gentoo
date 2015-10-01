@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<longdescription lang="en">
@@ -12,4 +12,7 @@
 		<email>maintainer-needed@gentoo.org</email>
 		<name>Default assignee for orphaned packages</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">usat</remote-id>
+	</upstream>
 </pkgmetadata>

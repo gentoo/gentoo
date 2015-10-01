@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>haskell</herd>
@@ -8,4 +8,7 @@
 		ISO Latin 1 - 16, utf8, utf16, ASCII are supported. Decoding
 		is done with lasy functions, errors may be detected or ignored.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">UweSchmidt/hxt</remote-id>
+	</upstream>
 </pkgmetadata>

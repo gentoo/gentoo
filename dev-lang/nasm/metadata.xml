@@ -1,16 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-  <email>mr_bones_@gentoo.org</email>
-  <name>Michael Sterrett</name>
-</maintainer>
-<longdescription>
+  <maintainer>
+    <email>mr_bones_@gentoo.org</email>
+    <name>Michael Sterrett</name>
+  </maintainer>
+  <longdescription>
 The Netwide Assembler, NASM, is an 80x86 assembler designed for portability
 and modularity. It supports a range of object file formats, including Linux
 and NetBSD/FreeBSD a.out, ELF, COFF, Microsoft 16-bit OBJ and Win32. It
 will also output plain binary files. Its syntax is designed to be simple
 and easy to understand, similar to Intel's but less complex. It supports
 Pentium, P6, MMX, 3DNow!, SSE and SSE2 opcodes, and has macro capability.
-</longdescription>
+  </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">nasm</remote-id>
+  </upstream>
 </pkgmetadata>

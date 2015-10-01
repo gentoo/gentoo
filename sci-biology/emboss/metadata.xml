@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>sci-biology</herd>
@@ -15,4 +15,7 @@
 		analysis into a seamless whole. EMBOSS breaks the historical trend
 		towards commercial software packages.
 	</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">emboss</remote-id>
+  </upstream>
 </pkgmetadata>

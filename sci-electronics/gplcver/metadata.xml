@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>sci-electronics</herd>
@@ -9,4 +9,7 @@
   three PLI interfaces (tf_, acc_ and vpi_) as defined in the 2001 Language
   Reference Manual (LRM).
   </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">gplcver</remote-id>
+  </upstream>
 </pkgmetadata>

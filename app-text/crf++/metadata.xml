@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>cjk</herd>
@@ -9,4 +9,7 @@
 		applied to a lot of NLP tasks, such as Named Entity Recognition,
 		Information Extraction and Text Chunking.
 	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">crfpp</remote-id>
+	</upstream>
 </pkgmetadata>

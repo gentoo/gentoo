@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
@@ -12,5 +12,6 @@
 		</maintainer>
 		<bugs-to>https://bitbucket.org/mgorny/pixels2pgf/issues/</bugs-to>
 		<remote-id type="bitbucket">mgorny/pixels2pgf</remote-id>
+		<remote-id type="github">mgorny/pixels2pgf</remote-id>
 	</upstream>
 </pkgmetadata>

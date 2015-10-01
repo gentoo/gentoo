@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
@@ -26,4 +26,7 @@
 		<flag name="systray">Enables the system tray in the Fluxbox toolbar</flag>
 		<flag name="toolbar">Enables the Fluxbox toolbar</flag>
 	</use>
+	<upstream>
+		<remote-id type="sourceforge">fluxbox</remote-id>
+	</upstream>
 </pkgmetadata>

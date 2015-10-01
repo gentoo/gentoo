@@ -1,37 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-        <maintainer>
-                <email>maintainer-needed@gentoo.org</email>
-        </maintainer>
-	<upstream>
-		<remote-id type="cpan">XML-XSH2</remote-id>
-		<remote-id type="cpan-module">Parse::RecDescent::XML::XSH2::Parser</remote-id>
-		<remote-id type="cpan-module">XML::LibXML::Literal</remote-id>
-		<remote-id type="cpan-module">XML::LibXML::Namespace</remote-id>
-		<remote-id type="cpan-module">XML::LibXML::NodeList</remote-id>
-		<remote-id type="cpan-module">XML::LibXML::Number</remote-id>
-		<remote-id type="cpan-module">XML::LibXML::SubTreeIterator</remote-id>
-		<remote-id type="cpan-module">XML::SAX::Writer::XMLEnc</remote-id>
-		<remote-id type="cpan-module">XML::XSH2</remote-id>
-		<remote-id type="cpan-module">XML::XSH2::Compile</remote-id>
-		<remote-id type="cpan-module">XML::XSH2::Completion</remote-id>
-		<remote-id type="cpan-module">XML::XSH2::CompletionList</remote-id>
-		<remote-id type="cpan-module">XML::XSH2::DummyXPathContext</remote-id>
-		<remote-id type="cpan-module">XML::XSH2::FilteredIterator</remote-id>
-		<remote-id type="cpan-module">XML::XSH2::Functions</remote-id>
-		<remote-id type="cpan-module">XML::XSH2::Grammar</remote-id>
-		<remote-id type="cpan-module">XML::XSH2::Help</remote-id>
-		<remote-id type="cpan-module">XML::XSH2::Inline</remote-id>
-		<remote-id type="cpan-module">XML::XSH2::Internal::Exception</remote-id>
-		<remote-id type="cpan-module">XML::XSH2::Internal::LoopTerminatingException</remote-id>
-		<remote-id type="cpan-module">XML::XSH2::Internal::SubTerminatingException</remote-id>
-		<remote-id type="cpan-module">XML::XSH2::Internal::UncatchableException</remote-id>
-		<remote-id type="cpan-module">XML::XSH2::Iterators</remote-id>
-		<remote-id type="cpan-module">XML::XSH2::LibXMLCompat</remote-id>
-		<remote-id type="cpan-module">XML::XSH2::Map</remote-id>
-		<remote-id type="cpan-module">XML::XSH2::Parser</remote-id>
-		<remote-id type="cpan-module">XML::XSH2::VarAlias</remote-id>
-		<remote-id type="cpan-module">XML::XSH2::XPathToXML</remote-id>
-	</upstream>
+    <maintainer>
+        <email>maintainer-needed@gentoo.org</email>
+    </maintainer>
+    <upstream>
+        <remote-id type="cpan">XML-XSH2</remote-id>
+        <remote-id type="cpan-module">Parse::RecDescent::XML::XSH2::Parser</remote-id>
+        <remote-id type="cpan-module">XML::LibXML::Literal</remote-id>
+        <remote-id type="cpan-module">XML::LibXML::Namespace</remote-id>
+        <remote-id type="cpan-module">XML::LibXML::NodeList</remote-id>
+        <remote-id type="cpan-module">XML::LibXML::Number</remote-id>
+        <remote-id type="cpan-module">XML::LibXML::SubTreeIterator</remote-id>
+        <remote-id type="cpan-module">XML::SAX::Writer::XMLEnc</remote-id>
+        <remote-id type="cpan-module">XML::XSH2</remote-id>
+        <remote-id type="cpan-module">XML::XSH2::Compile</remote-id>
+        <remote-id type="cpan-module">XML::XSH2::Completion</remote-id>
+        <remote-id type="cpan-module">XML::XSH2::CompletionList</remote-id>
+        <remote-id type="cpan-module">XML::XSH2::DummyXPathContext</remote-id>
+        <remote-id type="cpan-module">XML::XSH2::FilteredIterator</remote-id>
+        <remote-id type="cpan-module">XML::XSH2::Functions</remote-id>
+        <remote-id type="cpan-module">XML::XSH2::Grammar</remote-id>
+        <remote-id type="cpan-module">XML::XSH2::Help</remote-id>
+        <remote-id type="cpan-module">XML::XSH2::Inline</remote-id>
+        <remote-id type="cpan-module">XML::XSH2::Internal::Exception</remote-id>
+        <remote-id type="cpan-module">XML::XSH2::Internal::LoopTerminatingException</remote-id>
+        <remote-id type="cpan-module">XML::XSH2::Internal::SubTerminatingException</remote-id>
+        <remote-id type="cpan-module">XML::XSH2::Internal::UncatchableException</remote-id>
+        <remote-id type="cpan-module">XML::XSH2::Iterators</remote-id>
+        <remote-id type="cpan-module">XML::XSH2::LibXMLCompat</remote-id>
+        <remote-id type="cpan-module">XML::XSH2::Map</remote-id>
+        <remote-id type="cpan-module">XML::XSH2::Parser</remote-id>
+        <remote-id type="cpan-module">XML::XSH2::VarAlias</remote-id>
+        <remote-id type="cpan-module">XML::XSH2::XPathToXML</remote-id>
+        <remote-id type="sourceforge">xsh</remote-id>
+    </upstream>
 </pkgmetadata>

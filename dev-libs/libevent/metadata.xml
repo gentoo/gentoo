@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
@@ -7,8 +7,9 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:niels_provos:libevent</remote-id>
+		<remote-id type="sourceforge">levent</remote-id>
 	</upstream>
 	<use>
-		<flag name='debug'>Support runtime debug mode and malloc hooks (for programmers)</flag>
+		<flag name="debug">Support runtime debug mode and malloc hooks (for programmers)</flag>
 	</use>
 </pkgmetadata>

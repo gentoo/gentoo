@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>proxy-maintainers</herd>
@@ -20,6 +20,6 @@ HTTP statistics for system administrators that require a visual server report on
 		<changelog>https://github.com/allinurl/goaccess/blob/master/ChangeLog</changelog>
 		<doc>http://goaccess.io/faq</doc>
 		<bugs-to>mailto:goaccess@prosoftcorp.com</bugs-to>
+		<remote-id type="sourceforge">goaccess</remote-id>
 	</upstream>
 </pkgmetadata>
-

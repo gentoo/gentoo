@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>python</herd>
@@ -11,17 +11,18 @@ a few transport methods specific to TCP/IP networking.
 
 PySNMP is written entirely in Python and is self-sufficient in terms
 that it does not rely on any third party tool (it is not a wrapper!).
-</longdescription>
+  </longdescription>
   <longdescription lang="ja">
-ããã¯ SNMP v.1/v.2 ã¨ã³ã¸ã³ã®Pythonè¨èªã§ã®å®è£ã§ããé¢é£å¤ã«æ²¿ã£ãSNMPãªãã¸ã§
-ã¯ãIDãã/ã¸SNMPã¡ãã»ã¼ã¸ãã¢ã»ã³ãã«/ãã£ã¹ã¢ã»ã³ãã«ããã®ãä¸è¬çãªæ©è½ã§ã
-ãPySNMPã¯å¹¾ã¤ãã®TCP/IPãããã¯ã¼ã­ã³ã°ãç¹å®ãããã©ã³ã¹ãã¼ãã»ã¡ã½ãããæä¾
-ãã¾ãã
+これは SNMP v.1/v.2 エンジンのPython言語での実装です。関連値に沿ったSNMPオブジェ
+クトIDから/へSNMPメッセージをアセンブル/ディスアセンブルするのが一般的な機能です
+。PySNMPは幾つかのTCP/IPネットワーキングを特定するトランスポート・メソッドも提供
+します。
 
-PySNMPã¯å¨ä½ãPythonè¨èªã§è¨è¿°ãããã©ã®ãµã¼ããã¼ãã£è£½ãã¼ã«ãä¿¡ç¨ããªãç«å ´ã§
-èªçµ¦èªè¶³ãã¾ãã(ããã¯ã©ããã¼ã»ãã¼ã«ã§ã¯ããã¾ããã)
-</longdescription>
+PySNMPは全体をPython言語で記述され、どのサードパーティ製ツールも信用しない立場で
+自給自足します。(これはラッパー・ツールではありません。)
+  </longdescription>
   <upstream>
     <remote-id type="pypi">pysnmp</remote-id>
+    <remote-id type="sourceforge">pysnmp</remote-id>
   </upstream>
 </pkgmetadata>

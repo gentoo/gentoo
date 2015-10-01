@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer>
@@ -14,4 +14,7 @@
     <flag name="pax_kernel">Apply patch needed for pax enabled kernels</flag>
     <flag name="ramfs">Enable initramfs/rootfs support</flag>
   </use>
+  <upstream>
+    <remote-id type="sourceforge">aufs</remote-id>
+  </upstream>
 </pkgmetadata>

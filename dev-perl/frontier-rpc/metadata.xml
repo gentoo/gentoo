@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>perl</herd>
@@ -16,5 +16,6 @@
     <remote-id type="cpan-module">Frontier::RPC2::Integer</remote-id>
     <remote-id type="cpan-module">Frontier::RPC2::String</remote-id>
     <remote-id type="cpan-module">Frontier::Responder</remote-id>
+    <remote-id type="sourceforge">perl-xml</remote-id>
   </upstream>
 </pkgmetadata>

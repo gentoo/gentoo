@@ -1,16 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>qt</herd>
   <use>
-    <flag name='bazaar'>
+    <flag name="bazaar">
       Support for <pkg>dev-vcs/bzr</pkg>
     </flag>
-    <flag name='mercurial'>
+    <flag name="mercurial">
       Support for <pkg>dev-vcs/mercurial</pkg>
     </flag>
-    <flag name='monotone'>
+    <flag name="monotone">
       Support for <pkg>dev-vcs/monotone</pkg>
     </flag>
   </use>
+  <upstream>
+    <remote-id type="sourceforge">qct</remote-id>
+  </upstream>
 </pkgmetadata>

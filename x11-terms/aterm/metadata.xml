@@ -1,13 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
 		<email>maintainer-needed@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name='background'>Enable background image support via
+		<flag name="background">Enable background image support via
 			<pkg>media-libs/libafterimage</pkg></flag>
-		<flag name='xgetdefault'>Enable resources via X instead of aterm small
+		<flag name="xgetdefault">Enable resources via X instead of aterm small
 			version</flag>
 	</use>
+	<upstream>
+		<remote-id type="sourceforge">aterm</remote-id>
+	</upstream>
 </pkgmetadata>

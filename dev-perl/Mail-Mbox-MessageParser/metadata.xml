@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>perl</herd>
@@ -10,5 +10,6 @@
     <remote-id type="cpan-module">Mail::Mbox::MessageParser::Grep</remote-id>
     <remote-id type="cpan-module">Mail::Mbox::MessageParser::MetaInfo</remote-id>
     <remote-id type="cpan-module">Mail::Mbox::MessageParser::Perl</remote-id>
+    <remote-id type="sourceforge">m-m-msgparser</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,6 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
-<longdescription>Redirector for squid that intercepts advertising, page counters and some web bugs</longdescription>
+	<maintainer>
+		<email>maintainer-needed@gentoo.org</email>
+	</maintainer>
+	<longdescription>Redirector for squid that intercepts advertising, page counters and some web bugs</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">adzapper</remote-id>
+	</upstream>
 </pkgmetadata>

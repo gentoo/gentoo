@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>media-tv</herd>
@@ -6,7 +6,7 @@
 		<email>idl0r@gentoo.org</email>
 		<name>Christian Ruppert</name>
 	</maintainer>
-    <longdescription>
+	<longdescription>
 		Video Disk Recorder Xinelib PlugIn ( VDR )
 	</longdescription>
 	<use>
@@ -17,4 +17,7 @@
 		<flag name="vdr">Compile the vdr output plugin to use local or remote xine as output</flag>
 		<flag name="xine">Compile the xine input plugin for displaying vdr video and OSD</flag>
 	</use>
+	<upstream>
+		<remote-id type="sourceforge">xineliboutput</remote-id>
+	</upstream>
 </pkgmetadata>

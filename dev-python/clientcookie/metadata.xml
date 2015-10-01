@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>python</herd>
-<longdescription>
+	<herd>python</herd>
+	<longdescription>
 ClientCookie is a Python module for handling HTTP cookies on the client
 side, useful for accessing web sites that require cookies to be set and
 then returned later. It also provides some other (optional) useful stuff:
@@ -11,5 +11,8 @@ header, automatic observance of robots.txt and lazily-seek()able responses.
 These extras are implemented using an extension that makes it easier to add
 new functionality to urllib2. It has developed from a port of Gisle Aas'
 Perl module HTTP::Cookies, from the libwww-perl library.
-</longdescription>
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">wwwsearch</remote-id>
+	</upstream>
 </pkgmetadata>

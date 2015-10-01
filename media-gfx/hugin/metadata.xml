@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>graphics</herd>
@@ -8,4 +8,7 @@
 		<pkg>media-gfx/autopano-sift</pkg> or
 		<pkg>media-gfx/autopano-sift-C</pkg></flag>
   </use>
+  <upstream>
+    <remote-id type="sourceforge">hugin</remote-id>
+  </upstream>
 </pkgmetadata>

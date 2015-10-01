@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>perl</herd>
@@ -53,5 +53,6 @@
     <remote-id type="cpan-module">Log::Log4perl::Util</remote-id>
     <remote-id type="cpan-module">Log::Log4perl::Util::Semaphore</remote-id>
     <remote-id type="cpan-module">Log::Log4perl::Util::TimeTracker</remote-id>
+    <remote-id type="sourceforge">log4perl</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,11 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>fonts</herd>
 	<herd>graphics</herd>
 	<use>
-		<flag name='metric'>
+		<flag name="metric">
 			default to a4 paper size and metric measurement
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="sourceforge">potrace</remote-id>
+	</upstream>
 </pkgmetadata>
