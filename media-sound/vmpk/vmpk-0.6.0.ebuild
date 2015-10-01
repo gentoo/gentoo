@@ -20,13 +20,13 @@ RDEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
-	dev-qt/linguist-tools:5
 	dev-qt/qtx11extras:5
 	x11-libs/libxcb
 	>=media-sound/drumstick-1.0.0
 	dbus? ( dev-qt/qtdbus:5 )"
 DEPEND="${RDEPEND}
 	app-text/docbook-xsl-stylesheets
+	dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS ChangeLog NEWS README TODO )
