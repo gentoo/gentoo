@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>sysadmin</herd>
@@ -10,7 +10,7 @@
     Munin you can easily monitor the performance of your computers, networks,
     SANs, and quite possibly applications as well. It makes it easy to determine
     "what's different today" when a performance problem crops up. It makes it
-    easy to see how you're doing capacity wise on all limited resources. 
+    easy to see how you're doing capacity wise on all limited resources.
   </longdescription>
   <use>
     <flag name="mysql">
@@ -72,7 +72,7 @@
     <flag name="ipv6">
       Add support for IPv6 in munin-node. IPv6 support for the master
       is always enabled, but the node requires a newer version of
-      <pkg>dev-perl/net-server</pkg>, capable of listening to IPv6
+    <pkg>dev-perl/net-server</pkg>, capable of listening to IPv6
       sockets.
     </flag>
     <flag name="syslog">
@@ -87,4 +87,7 @@
       process the documentation sources.
     </flag>
   </use>
+  <upstream>
+    <remote-id type="sourceforge">munin</remote-id>
+  </upstream>
 </pkgmetadata>

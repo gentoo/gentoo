@@ -1,8 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>ppc64</herd>
-<longdescription lang="en">
-</longdescription>
+	<herd>ppc64</herd>
+	<longdescription lang="en">
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">linux-diag</remote-id>
+	</upstream>
 </pkgmetadata>
-

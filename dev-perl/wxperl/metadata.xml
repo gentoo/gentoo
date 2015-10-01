@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>perl</herd>
@@ -299,5 +299,6 @@
     <remote-id type="cpan-module">build::Wx::XSP::Event</remote-id>
     <remote-id type="cpan-module">build::Wx::XSP::Overload</remote-id>
     <remote-id type="cpan-module">build::Wx::XSP::Virtual</remote-id>
+    <remote-id type="sourceforge">wxperl</remote-id>
   </upstream>
 </pkgmetadata>

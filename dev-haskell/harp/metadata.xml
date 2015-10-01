@@ -1,14 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>haskell</herd>
-<longdescription lang="en">
+	<herd>haskell</herd>
+	<longdescription lang="en">
 	HaRP, or Haskell Regular Patterns, is a Haskell extension that extends the
 	normal pattern matching facility with the power of regular expressions. This
 	expressive power is highly useful in a wide range of areas, including text
 	parsing and XML processing. Regular expression patterns in HaRP work over
 	ordinary Haskell lists ([]) of arbitrary type. HaRP is implemented as a
 	pre-processor to ordinary Haskell.
-</longdescription>
+	</longdescription>
+	<upstream>
+		<remote-id type="github">seereason/harp</remote-id>
+	</upstream>
 </pkgmetadata>
-

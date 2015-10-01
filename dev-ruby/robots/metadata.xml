@@ -1,12 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-<email>zerochaos@gentoo.org</email>
-<name>Rick Farina</name>
-</maintainer>
-<herd>ruby</herd>
-<longdescription lang="en">
-</longdescription>
+	<maintainer>
+		<email>zerochaos@gentoo.org</email>
+		<name>Rick Farina</name>
+	</maintainer>
+	<herd>ruby</herd>
+	<longdescription lang="en">
+	</longdescription>
+	<upstream>
+		<remote-id type="rubygems">robots</remote-id>
+	</upstream>
 </pkgmetadata>
-

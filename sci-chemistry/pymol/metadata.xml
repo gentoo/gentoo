@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>sci-chemistry</herd>
@@ -9,4 +9,7 @@
     <flag name="apbs">Install the apbs plugin</flag>
     <flag name="web">Install Pymodule needed for web app support</flag>
   </use>
+  <upstream>
+    <remote-id type="sourceforge">pymol</remote-id>
+  </upstream>
 </pkgmetadata>

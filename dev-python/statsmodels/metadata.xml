@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>python</herd>
@@ -11,8 +11,9 @@
   different types of data and each estimator. Researchers across
   fields may find that statsmodels fully meets their needs for
   statistical computing and data analysis in Python.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="pypi">statsmodels</remote-id>
+    <remote-id type="sourceforge">statsmodels</remote-id>
   </upstream>
 </pkgmetadata>

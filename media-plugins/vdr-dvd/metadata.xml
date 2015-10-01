@@ -1,12 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>media-tv</herd>
-		<maintainer>
-			<email>vdr@gentoo.org</email>
-			<name>Gentoo VDR Project</name>
-  		</maintainer>
-    <longdescription>
+	<maintainer>
+		<email>vdr@gentoo.org</email>
+		<name>Gentoo VDR Project</name>
+	</maintainer>
+	<longdescription>
 	  This is the DVD plugin for the Video Disk Recorder (VDR)
-	</longdescription>		
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">dvdplugin</remote-id>
+	</upstream>
 </pkgmetadata>

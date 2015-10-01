@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>graphics</herd>
 	<use>
-	<flag name='goffice'>use <pkg>x11-libs/goffice</pkg> to show plots</flag>
+		<flag name="goffice">use <pkg>x11-libs/goffice</pkg> to show plots</flag>
 	</use>
+	<upstream>
+		<remote-id type="sourceforge">vips</remote-id>
+	</upstream>
 </pkgmetadata>

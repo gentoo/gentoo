@@ -1,11 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>haskell</herd>
 	<longdescription>
 		Library for working with URIs, including parsing, rendering, merging, escaping
 	</longdescription>
-	<upstream>
-		<remote-id type="gitorious">uri</remote-id>
-	</upstream>
 </pkgmetadata>

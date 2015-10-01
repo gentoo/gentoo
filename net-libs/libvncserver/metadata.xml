@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>proxy-maintainers</herd>
@@ -17,12 +17,13 @@ surfing the internet.
 
 Now that you want to make a VNC server, that is, a server which speaks 
 the RFB protocol, you can download this library from sourceforge.
-</longdescription>
+	</longdescription>
 	<use>
 		<flag name="24bpp">enable 24bpp support</flag>
 		<flag name="gcrypt">enable support for gcrypt</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">LibVNC/libvncserver</remote-id>
+		<remote-id type="sourceforge">libvncserver</remote-id>
 	</upstream>
 </pkgmetadata>

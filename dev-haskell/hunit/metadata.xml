@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>haskell</herd>
@@ -6,4 +6,7 @@
 		HUnit is a unit testing framework for Haskell, inspired by the
 		JUnit tool for Java, see: &lt;http://www.junit.org&gt;.
 	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">hunit</remote-id>
+	</upstream>
 </pkgmetadata>

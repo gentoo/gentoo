@@ -1,11 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>net-news</herd>
-<use>
-	<flag name='uudeview'>Add support for yEnc coding and more using
+	<herd>net-news</herd>
+	<use>
+		<flag name="uudeview">Add support for yEnc coding and more using
 		<pkg>dev-libs/uulib</pkg></flag>
-	<flag name='canlock'>Add support for cancel locks via
+		<flag name="canlock">Add support for cancel locks via
 		<pkg>net-libs/canlock</pkg></flag>
-</use>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">slrn</remote-id>
+	</upstream>
 </pkgmetadata>

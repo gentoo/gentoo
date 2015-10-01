@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
@@ -12,6 +12,7 @@
 		<changelog>https://ignorantguru.github.com/spacefm/news.html</changelog>
 		<doc lang="en">https://github.com/IgnorantGuru/spacefm/wiki/</doc>
 		<bugs-to>https://github.com/IgnorantGuru/spacefm/issues</bugs-to>
+		<remote-id type="sourceforge">spacefm</remote-id>
 	</upstream>
 	<use>
 		<flag name="gtk2">Support GTK+ 2.x instead of GTK+ 3.x</flag>

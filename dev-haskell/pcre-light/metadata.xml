@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>haskell</herd>
@@ -12,4 +12,7 @@
 		&lt;http://code.haskell.org/~dons/tests/pcre-light/hpc_index.html&gt;
 		
 	</longdescription>
+	<upstream>
+		<remote-id type="github">Daniel-Diaz/pcre-light</remote-id>
+	</upstream>
 </pkgmetadata>

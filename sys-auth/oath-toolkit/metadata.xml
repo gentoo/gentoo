@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
@@ -9,7 +9,4 @@
 		<flag name="pskc">Build tools &amp; library for the Portable Symmetric Key Container (PSKC) format per RFC6030</flag>
 		<flag name="pam">Build PAM module for pluggable login authentication for OATH</flag>
 	</use>
-	<upstream>
-		<remote-id type="gitorious">oath-toolkit</remote-id>
-	</upstream>
 </pkgmetadata>

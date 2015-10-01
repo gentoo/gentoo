@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>games</herd>
-<longdescription lang="en">
+	<herd>games</herd>
+	<longdescription lang="en">
 A graphical frontend to run FlightGear Flight Simulator.
-</longdescription>
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">fgrun</remote-id>
+	</upstream>
 </pkgmetadata>

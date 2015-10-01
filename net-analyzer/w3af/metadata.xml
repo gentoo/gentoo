@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>proxy-maintainers</herd>
@@ -8,8 +8,9 @@
 		<description>Maintainer. Assign bugs to him</description>
 	</maintainer>
 	<longdescription lang="en">
-</longdescription>
+	</longdescription>
 	<upstream>
 		<remote-id type="github">andresriancho/w3af</remote-id>
+		<remote-id type="sourceforge">w3af</remote-id>
 	</upstream>
 </pkgmetadata>

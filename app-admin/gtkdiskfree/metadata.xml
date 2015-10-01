@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>proxy-maintainers</herd>
@@ -12,8 +12,5 @@
 	</maintainer>
 	<longdescription>
 gtkdiskfree is a gtk extension to the cli tool df, does the same and more
-</longdescription>
-	<upstream>
-		<remote-id type="gitorious">gtkdiskfree</remote-id>
-	</upstream>
+	</longdescription>
 </pkgmetadata>

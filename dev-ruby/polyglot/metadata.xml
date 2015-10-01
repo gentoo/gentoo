@@ -1,10 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>ruby</herd>
-<longdescription>
+	<herd>ruby</herd>
+	<longdescription>
 Polyglot provides support for fully-custom DSLs by providing a
 registry of file types that can be loaded by its improved version of
 'require', using a custom loader for each file type.
-</longdescription>
+	</longdescription>
+	<upstream>
+		<remote-id type="rubyforge">polyglot</remote-id>
+	</upstream>
 </pkgmetadata>

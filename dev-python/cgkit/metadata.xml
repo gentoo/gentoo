@@ -1,12 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>python</herd>
   <use>
-  	<flag name='3ds'>Enable support for importing 3D Studio models</flag>
+    <flag name="3ds">Enable support for importing 3D Studio models</flag>
   </use>
   <longdescription>Python library for creating 3D images</longdescription>
   <longdescription lang="ja">
   3D画像を作成するためのPython言語ライブラリです。
   </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">cgkit</remote-id>
+  </upstream>
 </pkgmetadata>

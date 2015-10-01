@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
@@ -12,4 +12,7 @@
 		<flag name="numpy"> Generate code for <pkg>dev-libs/boost-numpy </pkg> to accelerate arrays
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="sourceforge">pygccxml</remote-id>
+	</upstream>
 </pkgmetadata>
