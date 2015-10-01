@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (1 Oct 2015)
+# Project is over 10 years old and seems to have stalled.
+# Masked for removal in 30 days. See bug 561954.
+dev-java/xmlc
+
 # Andreas K. Huettel <dilfridge@gentoo.org> (27 Sep 2015)
 # Dead upstream, buggy, effectively unmaintained. Removal
 # in 30 days.

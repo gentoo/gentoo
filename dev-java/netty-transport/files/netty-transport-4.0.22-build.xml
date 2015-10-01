@@ -24,7 +24,7 @@
   <property file="${user.home}/.m2/maven.properties"/>
   <property file="maven-build.properties"/>
 
-  <property name="maven.build.finalName" value="netty-transport-4.0.19.Final"/>
+  <property name="maven.build.finalName" value="netty-transport-4.0.22.Final"/>
   <property name="maven.build.dir" value="target"/>
   <property name="maven.build.outputDir" value="${maven.build.dir}/classes"/>
   <property name="maven.build.srcDir.0" value="src/main/java"/>
@@ -70,8 +70,7 @@
            target="1.6" 
            verbose="false" 
            fork="true" 
-           memoryMaximumSize="256m" 
-           memoryInitialSize="1024m" 
+           memoryInitialSize="1024m"
            source="1.6">
       <src>
         <pathelement location="${maven.build.srcDir.0}"/>
@@ -97,8 +96,7 @@
            target="1.6" 
            verbose="false" 
            fork="true" 
-           memoryMaximumSize="256m" 
-           memoryInitialSize="1024m" 
+           memoryInitialSize="1024m"
            source="1.6">
       <src>
         <pathelement location="${maven.build.testDir.0}"/>
