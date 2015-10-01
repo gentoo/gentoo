@@ -41,7 +41,6 @@ RDEPEND="${DEPEND}
 pkg_setup() {
 	linux-info_pkg_setup
 	CONFIG_CHECK="!DEBUG_LOCK_ALLOC
-		BLK_DEV_LOOP
 		EFI_PARTITION
 		IOSCHED_NOOP
 		MODULES
@@ -66,7 +65,7 @@ pkg_setup() {
 	kernel_is ge 2 6 32 || die "Linux 2.6.32 or newer required"
 
 	[ ${PV} != "9999" ] && \
-		{ kernel_is le 4 2 || die "Linux 4.2 is the latest supported version."; }
+		{ kernel_is le 4 3 || die "Linux 4.3 is the latest supported version."; }
 
 	check_extra_config
 }

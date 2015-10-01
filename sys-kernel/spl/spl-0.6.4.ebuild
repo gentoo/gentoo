@@ -22,7 +22,7 @@ HOMEPAGE="http://zfsonlinux.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="custom-cflags debug debug-log"
+IUSE="custom-cflags debug"
 RESTRICT="debug? ( strip ) test"
 
 COMMON_DEPEND="dev-lang/perl
