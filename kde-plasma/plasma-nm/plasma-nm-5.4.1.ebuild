@@ -37,11 +37,11 @@ DEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
-	net-misc/mobile-broadband-provider-info
 	>=net-misc/networkmanager-0.9.10.0[teamd=]
 	modemmanager? (
 		$(add_frameworks_dep modemmanager-qt)
 		dev-qt/qtxml:5
+		net-misc/mobile-broadband-provider-info
 	)
 	openconnect? (
 		dev-qt/qtxml:5
