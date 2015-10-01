@@ -201,7 +201,7 @@ multilib_src_install() {
 multilib_src_install_all() {
 	# openssl installs perl version of c_rehash by default, but
 	# we provide a shell version via app-misc/c_rehash
-	rm "${ED}"/usr/bin/c_rehash
+	rm "${ED}"/usr/bin/c_rehash || die
 
 	dodoc CHANGES* FAQ NEWS README doc/*.txt doc/c-indentation.el
 	dohtml -r doc/*
