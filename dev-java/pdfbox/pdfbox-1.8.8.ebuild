@@ -13,7 +13,7 @@ SRC_URI="mirror://apache/${PN}/${PV}/${P}-src.zip
 	http://repo2.maven.org/maven2/com/adobe/pdf/pcfi/2010.08.09/${ADOBE_FILES}"
 LICENSE="BSD"
 SLOT="1.8"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 CDEPEND="dev-java/icu4j:4
