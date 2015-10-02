@@ -4506,7 +4506,7 @@ dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/ecore 1.7.10 1.7.10-r1 9999: Enlightenment's core event abstraction layer and OS abstraction layer
 dev-libs/eet 1.7.8 1.7.9 1.7.10 1.7.10-r1 9999: E file chunk reading/writing library
 dev-libs/eeze 1.7.8 1.7.9 1.7.10 9999: library to simplify the use of devices
-dev-libs/efl 1.12.2 1.13.1 1.15.0 1.15.1 9999: Enlightenment Foundation Libraries all-in-one package
+dev-libs/efl 1.12.2 1.13.1 1.15.0 1.15.1 1.15.1-r1 9999: Enlightenment Foundation Libraries all-in-one package
 dev-libs/efreet 1.7.10 9999: library for handling of freedesktop.org specs (desktop/icon/theme/etc...)
 dev-libs/eina 1.7.9 1.7.10 9999: Enlightenment's data types library (list, hash, etc) in C
 dev-libs/eio 1.7.8 1.7.9 1.7.10 9999: Enlightenment's integration to IO
