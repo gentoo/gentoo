@@ -22,7 +22,7 @@ REQUIRED_USE="
 	offscreen? ( opengl )"
 
 RDEPEND="
-	>=sys-libs/ncurses-5.4-r5
+	>=sys-libs/ncurses-5.4-r5:0=
 	>=sys-libs/readline-4.3-r5:0=
 	imagemagick? ( media-gfx/imagemagick[png] )
 	opengl? ( >=media-libs/mesa-8 )
