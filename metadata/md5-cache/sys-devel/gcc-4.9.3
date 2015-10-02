@@ -4,7 +4,7 @@ DESCRIPTION=The GNU Compiler Collection
 EAPI=4
 HOMEPAGE=https://gcc.gnu.org/
 IUSE=multislot regression-test vanilla altivec debug nopie nossp doc gcj awt hardened multilib objc objc-gc libssp objc++ fixed-point go graphite cilk +nls +nptl +cxx +fortran +openmp +sanitize
-KEYWORDS=~alpha amd64 ~arm arm64 ~hppa ~ia64 m68k ~mips ppc ppc64 s390 sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 m68k ~mips ppc ppc64 s390 sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd
 LICENSE=GPL-3+ LGPL-3+ || ( GPL-3+ libgcc libstdc++ gcc-runtime-library-exception-3.1 ) FDL-1.3+
 PDEPEND=elibc_glibc? ( >=sys-libs/glibc-2.8 ) >=sys-devel/gcc-config-1.7
 RDEPEND=sys-libs/zlib nls? ( virtual/libintl ) virtual/libiconv >=dev-libs/gmp-4.3.2:0 >=dev-libs/mpfr-2.4.2:0 >=dev-libs/mpc-0.8.1:0 graphite? ( >=dev-libs/cloog-0.18.0 >=dev-libs/isl-0.11.1 )
@@ -12,4 +12,4 @@ RESTRICT=strip
 SLOT=4.9
 SRC_URI=mirror://gnu/gcc/gcc-4.9.3/gcc-4.9.3.tar.bz2 mirror://gentoo/gcc-4.9.3-uclibc-patches-1.0.tar.bz2 https://dev.gentoo.org/~vapier/dist/gcc-4.9.3-uclibc-patches-1.0.tar.bz2 https://dev.gentoo.org/~rhill/dist/gcc-4.9.3-uclibc-patches-1.0.tar.bz2 https://dev.gentoo.org/~zorry/patches/gcc/gcc-4.9.3-uclibc-patches-1.0.tar.bz2 https://dev.gentoo.org/~blueness/dist/gcc-4.9.3-uclibc-patches-1.0.tar.bz2 mirror://gentoo/gcc-4.9.3-patches-1.2.tar.bz2 https://dev.gentoo.org/~vapier/dist/gcc-4.9.3-patches-1.2.tar.bz2 https://dev.gentoo.org/~rhill/dist/gcc-4.9.3-patches-1.2.tar.bz2 https://dev.gentoo.org/~zorry/patches/gcc/gcc-4.9.3-patches-1.2.tar.bz2 https://dev.gentoo.org/~blueness/dist/gcc-4.9.3-patches-1.2.tar.bz2 mirror://gentoo/gcc-4.9.3-piepatches-v0.6.3.tar.bz2 https://dev.gentoo.org/~vapier/dist/gcc-4.9.3-piepatches-v0.6.3.tar.bz2 https://dev.gentoo.org/~rhill/dist/gcc-4.9.3-piepatches-v0.6.3.tar.bz2 https://dev.gentoo.org/~zorry/patches/gcc/gcc-4.9.3-piepatches-v0.6.3.tar.bz2 https://dev.gentoo.org/~blueness/dist/gcc-4.9.3-piepatches-v0.6.3.tar.bz2 mirror://gentoo/gcc-4.4.3-specs-0.2.0.tar.bz2 https://dev.gentoo.org/~vapier/dist/gcc-4.4.3-specs-0.2.0.tar.bz2 https://dev.gentoo.org/~rhill/dist/gcc-4.4.3-specs-0.2.0.tar.bz2 https://dev.gentoo.org/~zorry/patches/gcc/gcc-4.4.3-specs-0.2.0.tar.bz2 https://dev.gentoo.org/~blueness/dist/gcc-4.4.3-specs-0.2.0.tar.bz2 gcj? ( ftp://sourceware.org/pub/java/ecj-4.5.jar )
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	fixheadtails	2f44773656577fe2653bacc8bdcb2174	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	gnuconfig	3920de1188fc7bfee873515453ed1d10	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	4f1280c0d4dcd8340f731827007c0a53	toolchain	4a9dfb2f6e7a2639af83dda8866994d8	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=22935710d4ee248058fc12fb114adcfc
+_md5_=64fcc78fd5f23835eeaa31ab5b174e43
