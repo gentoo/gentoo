@@ -3779,7 +3779,7 @@ dev-java/commons-lang 2.0-r2 2.6 3.1 3.3.2: Commons components to manipulate cor
 dev-java/commons-launcher 1.1-r1: Commons-launcher eliminates the need for a batch or shell script to launch a Java class
 dev-java/commons-logging 1.2: The Jakarta-Commons Logging package is an ultra-thin bridge between different logging libraries
 dev-java/commons-math 2.1-r1 3.2: Lightweight, self-contained mathematics and statistics components
-dev-java/commons-modeler 2.0.1: A lib to make the setup of Java Management Extensions easier
+dev-java/commons-modeler 2.0.1 2.0.1-r1: A lib to make the setup of Java Management Extensions easier
 dev-java/commons-net 1.4.1-r1 3.2: The purpose of the library is to provide fundamental protocol access, not higher-level abstractions
 dev-java/commons-pool 1.6 2.2: Provides general purpose object pooling API
 dev-java/commons-primitives 1.0-r2: The Jakarta-Commons Primitives Component
@@ -3884,7 +3884,7 @@ dev-java/hamcrest-library 1.1 1.3-r1: Core library of matchers for building test
 dev-java/hawtjni-runtime 1.10: A JNI code generator based on the generator used by the Eclipse SWT project
 dev-java/headius-options 1.1: A small library for managing sets of JVM properties
 dev-java/helpgui 1.1-r2: HelpGUI is a simple library which develop a help viewer component
-dev-java/hessian 4.0.3: Binary web service protocol
+dev-java/hessian 4.0.3 4.0.37: Binary web service protocol
 dev-java/hibernate 3.1.3-r4: A powerful, ultra-high performance object / relational persistence and query service for Java
 dev-java/hibernate-annotations 3.2.0: Annotations support for Hibernate
 dev-java/higlayout 1.0-r2: Java Swing layout manager that's powerful and easy to use
@@ -4042,7 +4042,7 @@ dev-java/joni 1.1.4 2.1.0: Java port of the Oniguruma regular expression engine
 dev-java/jopt-simple 4.4 4.5 4.6: A Java library for parsing command line options
 dev-java/jortho 1.0: A Java spell-checking library
 dev-java/jpf 1.5.1: Java Plugin Framework - a runtime engine that dynamically discovers and loads plugins
-dev-java/jpfcodegen 0.4: Generator of classes for accessing the attributes and extensions of JPF plug-ins
+dev-java/jpfcodegen 0.4 0.4-r1: Generator of classes for accessing the attributes and extensions of JPF plug-ins
 dev-java/jreleaseinfo 1.3.0-r2: Ant Task for build-time creation of Java source file with version, build number or other info
 dev-java/jrexx 1.1.1-r1: Regular expression API for textual pattern matching based on the finite state automaton theory
 dev-java/jrobin 1.6.0-r1: JRobin is a 100% pure Java alternative to RRDTool
@@ -4166,7 +4166,7 @@ dev-java/osgi-foundation 1.2.0-r1: OSGi R4 Foundation EE by Apache Felix
 dev-java/osgi-obr 1.0.2: OSGi Service OBR by Apache
 dev-java/pat 1.5.3: Regular Expressions in Java
 dev-java/pdf-renderer 0.9.1 1.0.5: a 100% Java PDF renderer and viewer
-dev-java/pdfbox 0.7.3-r3 1.8.8: Java library and utilities for working with PDF documents
+dev-java/pdfbox 1.8.8: Java library and utilities for working with PDF documents
 dev-java/piccolo 1.04: A small, extremely fast XML parser for Java
 dev-java/piccolo2d 1.2.1-r2: A Structured 2D Graphics Framework
 dev-java/picocontainer 1.1-r1: Small footprint Dependency Injection container
@@ -4265,7 +4265,7 @@ dev-java/tomcat-jstl-el 1.2.5: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.1.32 1.1.33: Native APR library for Tomcat
-dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44 6.0.44-r1 7.0.59 7.0.63 7.0.64 8.0.23 8.0.24 8.0.26: Tomcat's Servlet API 3.1/JSP API 2.3 implementation
+dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44 6.0.44-r1 7.0.59 7.0.63 7.0.64 8.0.23 8.0.24 8.0.26 8.0.27: Tomcat's Servlet API 3.1/JSP API 2.3 implementation
 dev-java/toolbar 1.1.0-r1: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -17411,7 +17411,7 @@ www-servers/servefile 0.4.2 0.4.3: Serve a single file via HTTP
 www-servers/spawn-fcgi 1.6.3-r1 1.6.3-r2 1.6.4: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thin 1.6.3 1.6.3-r1 1.6.4-r1: A fast and very simple Ruby web server
 www-servers/thttpd 2.26.4-r3 2.27.0 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 6.0.44 6.0.44-r2 7.0.59-r2 7.0.64 8.0.23-r2 8.0.26: Tomcat Servlet-3.1/JSP-2.3 Container
+www-servers/tomcat 6.0.44 6.0.44-r2 7.0.59-r2 7.0.64 8.0.23-r2 8.0.26 8.0.27: Tomcat Servlet-3.1/JSP-2.3 Container
 www-servers/tornado 3.1.1 3.1.1-r1 4.0.1 4.0.2 4.1.0 4.1.0-r1 4.2 4.2.0_beta1 4.2.1: Tornado is a Python web framework and asynchronous networking library, ... .
 www-servers/uwsgi 2.0.9 2.0.11.1 2.0.11.1-r1: uWSGI server for Python web applications
 www-servers/varnish 3.0.5 3.0.5-r3 3.0.5-r4 3.0.6 3.0.7 4.0.0-r1 4.0.1-r1 4.0.2 4.0.3: Varnish is a state-of-the-art, high-performance HTTP accelerator
