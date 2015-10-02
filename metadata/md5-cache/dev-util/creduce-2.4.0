@@ -1,11 +1,11 @@
 DEFINED_PHASES=-
-DEPEND=>=dev-lang/perl-5.10.0 app-text/delta dev-perl/Benchmark-Timer dev-perl/Exporter-Lite dev-perl/File-Which dev-perl/Getopt-Tabular dev-perl/regexp-common dev-perl/Sys-CPU dev-util/astyle dev-util/indent sys-devel/clang:0/3.6 sys-devel/llvm:0/3.7.0[clang]
+DEPEND=>=dev-lang/perl-5.10.0 app-text/delta dev-perl/Benchmark-Timer dev-perl/Exporter-Lite dev-perl/File-Which dev-perl/Getopt-Tabular dev-perl/regexp-common dev-perl/Sys-CPU dev-util/astyle dev-util/indent sys-devel/clang:0/3.7 sys-devel/llvm:0/3.7.0[clang]
 DESCRIPTION=C-Reduce - a plugin-based C program reducer
 EAPI=5
 HOMEPAGE=http://embed.cs.utah.edu/creduce/
 KEYWORDS=~amd64 ~x86
 LICENSE=creduce
-RDEPEND=>=dev-lang/perl-5.10.0 app-text/delta dev-perl/Benchmark-Timer dev-perl/Exporter-Lite dev-perl/File-Which dev-perl/Getopt-Tabular dev-perl/regexp-common dev-perl/Sys-CPU dev-util/astyle dev-util/indent sys-devel/clang:0/3.6 sys-devel/llvm:0/3.7.0[clang]
+RDEPEND=>=dev-lang/perl-5.10.0 app-text/delta dev-perl/Benchmark-Timer dev-perl/Exporter-Lite dev-perl/File-Which dev-perl/Getopt-Tabular dev-perl/regexp-common dev-perl/Sys-CPU dev-util/astyle dev-util/indent sys-devel/clang:0/3.7 sys-devel/llvm:0/3.7.0[clang]
 SLOT=0
 SRC_URI=http://embed.cs.utah.edu/creduce/creduce-2.4.0.tar.gz
-_md5_=cdc3d7389996dfd65f6b137be9ddb9c8
+_md5_=da49615e98448a5c302730cd45994c45
