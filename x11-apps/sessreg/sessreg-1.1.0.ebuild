@@ -13,3 +13,7 @@ IUSE=""
 RDEPEND=""
 DEPEND="${RDEPEND}
 	x11-proto/xproto"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.0-gcc-5.patch #546742
+)

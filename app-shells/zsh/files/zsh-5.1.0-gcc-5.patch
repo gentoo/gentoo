@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/547950
+http://www.zsh.org/mla/workers/2015/msg02660.html
+
+fix building w/gcc-5
+
+--- a/Src/Modules/system.mdd
++++ b/Src/Modules/system.mdd
+@@ -15,7 +15,7 @@
+ 		touch errtmp.out; \
+ 	   else \
+ 		$(AWK) -f $(sdir)/errnames1.awk @ERRNO_H@ >errtmp.c; \
+-		$(CPP) errtmp.c >errtmp.out; \
++		$(CPP) -P errtmp.c >errtmp.out; \
+ 	   fi
+ 	   $(AWK) -f $(sdir)/errnames2.awk errtmp.out > $@
+ 	   rm -f errtmp.c errtmp.out
