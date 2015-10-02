@@ -50,5 +50,10 @@ src_install() {
 		INSTALLDIRLIB="${D}usr/$(get_libdir)" \
 		install
 
+	# oh no, a missing header! fixed upstream:
+	# https://github.com/miniupnp/miniupnp/commit/1315c473539d03
+	insinto /usr/include/miniupnpc
+	doins upnpdev.h
+
 	dodoc README Changelog.txt
 }
