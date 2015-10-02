@@ -31,7 +31,7 @@ RDEPEND="
 	media-libs/libpng:0
 	media-libs/libsdl2[X,opengl,video]
 	net-libs/enet:1.3
-	net-libs/miniupnpc
+	net-libs/miniupnpc:=
 	net-misc/curl
 	sys-libs/zlib
 	virtual/jpeg:62
@@ -57,6 +57,7 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-gentoo.patch
+	epatch "${FILESDIR}"/${P}-miniupnpc14.patch
 }
 
 src_configure() {
