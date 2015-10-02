@@ -53,6 +53,7 @@ src_prepare() {
 	soelim Doc/zshall.1.soelim > Doc/zshall.1
 
 	epatch "${FILESDIR}"/${PN}-init.d-gentoo-r1.diff
+	epatch "${FILESDIR}"/${PN}-5.1.0-gcc-5.patch #547950
 
 	cp "${FILESDIR}"/zprofile-1 "${T}"/zprofile || die
 	eprefixify "${T}"/zprofile || die
