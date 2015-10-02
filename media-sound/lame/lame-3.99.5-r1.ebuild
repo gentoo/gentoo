@@ -31,6 +31,7 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-3.96-ccc.patch \
 		"${FILESDIR}"/${PN}-3.98-gtk-path.patch \
 		"${FILESDIR}"/${PN}-3.99.5-tinfo.patch \
+		"${FILESDIR}"/${PN}-3.99.5-msse.patch \
 		"${WORKDIR}"/${P}-automake-2.12.patch
 
 	mkdir libmp3lame/i386/.libs || die #workaround parallel build with nasm
