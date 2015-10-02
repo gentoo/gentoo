@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~arm ~ppc x86"
 IUSE=""
 RESTRICT="test" # nml version affects the checksums that the test uses (bug #451444)
 
-DEPEND=">=games-util/nml-0.3.0
+DEPEND=">=games-util/nml-0.4.0
 	games-util/grfcodec"
 RDEPEND=""
 
