@@ -13,7 +13,7 @@ SRC_URI="mirror://apache/${PN}/${PV}/${P}-src.zip
 	http://repo2.maven.org/maven2/com/adobe/pdf/pcfi/2010.08.09/${ADOBE_FILES}"
 LICENSE="BSD"
 SLOT="1.8"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86 ppc ppc64"
 IUSE=""
 
 CDEPEND="dev-java/icu4j:4
@@ -21,9 +21,9 @@ CDEPEND="dev-java/icu4j:4
 	dev-java/bcprov:1.45
 	dev-java/bcmail:1.45
 	>=dev-java/commons-logging-1.1.1:0"
-RDEPEND=">=virtual/jre-1.7
+RDEPEND=">=virtual/jre-1.6
 	${CDEPEND}"
-DEPEND=">=virtual/jdk-1.7
+DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
 	test? (
 		dev-java/ant-junit:0 )
