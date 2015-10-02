@@ -4,12 +4,6 @@
 
 EAPI=5
 
-#if LIVE
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
-
-inherit autotools git-r3
-#endif
-
 inherit eutils
 
 DESCRIPTION="Automatic open port forwarder using UPnP"
@@ -24,13 +18,6 @@ IUSE="libnotify"
 RDEPEND="net-libs/miniupnpc:0=
 	libnotify? ( x11-libs/libtinynotify:0= )"
 DEPEND="${RDEPEND}"
-
-#if LIVE
-KEYWORDS=
-SRC_URI=
-
-src_prepare() { eautoreconf; }
-#endif
 
 src_configure() {
 	local myconf=(
