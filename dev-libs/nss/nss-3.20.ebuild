@@ -243,7 +243,8 @@ multilib_src_install() {
 
 	dodir /usr/$(get_libdir)
 	cp -L */lib/*$(get_libname) "${ED}"/usr/$(get_libdir) || die "copying shared libs failed"
-	cp -L -t "${ED}"/usr/$(get_libdir) */lib/{libcrmf,libfreebl}.a || die "copying libs failed"
+	cp -L */lib/libcrmf.a "${ED}"/usr/$(get_libdir) || die "copying libs failed"
+	cp -L */lib/libfreebl.a "${ED}"/usr/$(get_libdir) || die "copying libs failed"
 
 	# Install nss-config and pkgconfig file
 	dodir /usr/bin
