@@ -23,7 +23,7 @@ SRC_URI="http://download.icu-project.org/files/${PN}/${PV}/${PN}-${MY_PV}-src.ja
 HOMEPAGE="http://www.icu-project.org/"
 LICENSE="icu"
 SLOT="4"
-KEYWORDS="amd64 ~ppc ~ppc64 x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ppc ppc64 x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos"
 IUSE=""
 
 RDEPEND=">=virtual/jre-1.4"
