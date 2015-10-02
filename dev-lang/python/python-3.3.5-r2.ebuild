@@ -75,6 +75,7 @@ src_prepare() {
 
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
 	epatch "${FILESDIR}/${PN}-3.3.5-ncurses-pkg-config.patch"
+	epatch "${FILESDIR}/${PN}-3.4-gcc-5.patch" #547626
 
 	sed -i -e "s:@@GENTOO_LIBDIR@@:$(get_libdir):g" \
 		Lib/distutils/command/install.py \
