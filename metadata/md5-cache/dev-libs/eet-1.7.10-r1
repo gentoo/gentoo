@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=>=dev-libs/eina-1.7.10 virtual/jpeg sys-libs/zlib gnutls? ( net-libs/gnutls dev-libs/libgcrypt:0 ) !gnutls? ( ssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) ) test? ( dev-libs/check dev-util/lcov ) doc? ( app-doc/doxygen )
+DESCRIPTION=E file chunk reading/writing library
+EAPI=4
+HOMEPAGE=https://trac.enlightenment.org/e/wiki/Eet
+IUSE=debug examples gnutls libressl ssl static-libs test nls doc
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-interix ~x86-solaris ~x64-solaris
+LICENSE=BSD-2
+RDEPEND=>=dev-libs/eina-1.7.10 virtual/jpeg sys-libs/zlib gnutls? ( net-libs/gnutls dev-libs/libgcrypt:0 ) !gnutls? ( ssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) ) nls? ( sys-devel/gettext )
+SLOT=0
+SRC_URI=https://download.enlightenment.org/releases/eet-1.7.10.tar.bz2
+_eclasses_=enlightenment	c185b1fa0d87798fd07fb1cd85866b23	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_md5_=dbedca61dd61a4c11ade78ccbc73fc99
