@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=5
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_SUB_PROJECT="legacy"
@@ -20,14 +20,19 @@ inherit enlightenment eutils
 DESCRIPTION="Enlightenment's core event abstraction layer and OS abstraction layer"
 
 LICENSE="BSD-2"
-IUSE="ares curl directfb +evas examples fbcon gles glib gnutls +inotify ipv6 opengl sdl ssl static-libs +threads tslib wayland +X xcb xinerama xprint xscreensaver"
+IUSE="ares curl directfb +evas examples fbcon gles glib gnutls +inotify ipv6 libressl opengl sdl ssl static-libs test +threads tslib wayland +X xcb xinerama xprint xscreensaver"
 
 RDEPEND=">=dev-libs/eina-${PV}
 	ares? ( net-dns/c-ares )
-	glib? ( dev-libs/glib )
+	glib? ( dev-libs/glib:2 )
 	curl? ( net-misc/curl )
 	gnutls? ( net-libs/gnutls )
-	!gnutls? ( ssl? ( dev-libs/openssl ) )
+	!gnutls? (
+		ssl? (
+			!libressl? ( dev-libs/openssl:0 )
+			libressl? ( dev-libs/libressl )
+		)
+	)
 	evas? (
 		>=media-libs/evas-${PV}[directfb?,fbcon?,opengl?,X?,xcb?]
 		opengl? ( virtual/opengl )
