@@ -4,10 +4,10 @@ DESCRIPTION=Search and query ebuilds, portage incl. local settings, ext. overlay
 EAPI=5
 HOMEPAGE=https://github.com/vaeth/eix/
 IUSE=debug +dep doc nls optimization security strong-optimization strong-security sqlite swap-remote tools linguas_de linguas_ru
-KEYWORDS=alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~ia64-hpux ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~ia64-hpux ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=sqlite? ( >=dev-db/sqlite-3 ) nls? ( virtual/libintl ) app-shells/push
 SLOT=0
 SRC_URI=https://github.com/vaeth/eix/releases/download/v0.30.11/eix-0.30.11.tar.bz2
 _eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	43da5163ba106e87d22d2e7d6d67537f	l10n	714aaf78929eade946da5eaff7d2001a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=c3c82712405e4e47abc58ee704a4e1ad
+_md5_=86ecf8c71b6e2eaf9c8467a6802657ae
