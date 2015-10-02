@@ -30,6 +30,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Pagano <mpagano@gentoo.org> (2 Oct 2015)
+# A regression in kernel 4.1.9 could lead to a system
+# lockup.  This has been fixed in gentoo-sources-4.1.9-r1
+# and the hope is that this patch will make it to 4.1.10
+# Expires (2 Oct 2017)
+=sys-kernel/vanilla-sources-4.1.9
+=sys-kernel/gentoo-sources-4.1.9
+
 # Michał Górny <mgorny@gentoo.org> (1 Oct 2015)
 # Thoroughly broken for me since the switch to Python 3 / PyQt5. Masking
 # to account for opt-in testing.
