@@ -9,6 +9,7 @@ python2_7 - Build with Python 2.7
 python3_2 - Build with Python 3.2 (deprecated)
 python3_3 - Build with Python 3.3
 python3_4 - Build with Python 3.4
+python3_5 - Build with Python 3.5
 jython2_5 - Build with Jython 2.5
 jython2_7 - Build with Jython 2.7
 pypy2_0 - Build with PyPy 2.0 (removed)
