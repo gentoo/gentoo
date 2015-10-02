@@ -15,7 +15,7 @@ HOMEPAGE="https://msv.java.net/"
 SRC_URI="http://search.maven.org/remotecontent?filepath=net/java/dev/${PN}/${PN}-core/${MY_PV}/${PN}-core-${MY_PV}-sources.jar"
 LICENSE="BSD Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ppc ppc64 x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 
 CDEPEND="dev-java/iso-relax:0
 	dev-java/relaxng-datatype:0
