@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=gtk3? ( x11-libs/gtk+:3 ) !gtk3? ( x11-libs/gtk+:2 ) virtual/libintl doc? ( app-text/gnome-doc-utils ) jpeg? ( virtual/jpeg:0 ) lcms? ( media-libs/lcms:2 ) lirc? ( app-misc/lirc ) lua? ( >=dev-lang/lua-5.1:= ) xmp? ( >=media-gfx/exiv2-0.17:=[xmp] ) !xmp? ( exif? ( >=media-gfx/exiv2-0.17 ) ) tiff? ( media-libs/tiff:0 ) virtual/pkgconfig dev-util/intltool sys-devel/gettext
+DESCRIPTION=A lightweight GTK image viewer forked from GQview
+EAPI=5
+HOMEPAGE=http://www.geeqie.org
+IUSE=debug doc exif gtk3 jpeg lcms lirc lua tiff xmp
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=gtk3? ( x11-libs/gtk+:3 ) !gtk3? ( x11-libs/gtk+:2 ) virtual/libintl doc? ( app-text/gnome-doc-utils ) jpeg? ( virtual/jpeg:0 ) lcms? ( media-libs/lcms:2 ) lirc? ( app-misc/lirc ) lua? ( >=dev-lang/lua-5.1:= ) xmp? ( >=media-gfx/exiv2-0.17:=[xmp] ) !xmp? ( exif? ( >=media-gfx/exiv2-0.17 ) ) tiff? ( media-libs/tiff:0 )
+SLOT=0
+SRC_URI=http://www.geeqie.org/geeqie-1.2.2.tar.xz
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_md5_=049c799853953533a910ce9679bd3fe2
