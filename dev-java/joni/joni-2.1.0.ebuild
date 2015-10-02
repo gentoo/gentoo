@@ -14,7 +14,7 @@ SRC_URI="https://github.com/jruby/${PN}/archive/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="2.1"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 
 CDEPEND="dev-java/asm:3
 	dev-java/jcodings:1"
