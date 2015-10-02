@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -47,6 +47,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.4-speech-dispatcher.patch
+	"${FILESDIR}"/${PN}-1.2.8-gcc49.patch
 )
 
 S="${WORKDIR}/${MY_P}"
