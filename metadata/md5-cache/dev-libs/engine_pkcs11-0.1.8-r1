@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=>=dev-libs/libp11-0.2.5 !libressl? ( >=dev-libs/openssl-0.9.7d:0 ) libressl? ( dev-libs/libressl ) virtual/pkgconfig
+DESCRIPTION=engine_pkcs11 is an implementation of an engine for OpenSSL
+EAPI=5
+HOMEPAGE=http://www.opensc-project.org/engine_pkcs11
+IUSE=libressl
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-libs/libp11-0.2.5 !libressl? ( >=dev-libs/openssl-0.9.7d:0 ) libressl? ( dev-libs/libressl )
+SLOT=0
+SRC_URI=http://www.opensc-project.org/files/engine_pkcs11/engine_pkcs11-0.1.8.tar.gz
+_md5_=592d853f7e13ae55f5d5274e9e7101a4
