@@ -6,6 +6,8 @@
 		<name>Lars Wendler</name>
 	</maintainer>
 	<use>
+		<flag name="libressl">Use <pkg>dev-libs/libressl</pkg> instead of
+			<pkg>dev-libs/openssl</pkg> for 'openssl' USE flag</flag>
 		<flag name="nss">Install apr_crypto_nss module</flag>
 		<flag name="openssl">Install apr_crypto_openssl module</flag>
 	</use>
