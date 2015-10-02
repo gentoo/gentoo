@@ -163,6 +163,17 @@ DEPEND="
 
 S=${WORKDIR}/${MY_P}
 
+src_prepare() {
+	# This is a hack of the upstream fix.  Drop with next release. #551882
+	sed -i \
+		-e 's:SDL/:SDL2/:g' \
+		configure \
+		src/modules/evas/engines/gl_common/evas_gl_common.h \
+		src/modules/evas/engines/gl_sdl/Evas_Engine_GL_SDL.h || die
+
+	enlightenment_src_prepare
+}
+
 src_configure() {
 	if use ssl && use gnutls ; then
 		einfo "You enabled both USE=ssl and USE=gnutls, but only one can be used;"
