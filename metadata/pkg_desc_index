@@ -13864,7 +13864,7 @@ net-libs/liblockfile 1.09: Implements functions designed to lock the standard ma
 net-libs/libmapi 1.0: Portable open-source implementations of Exchange protocols
 net-libs/libmbim 1.6.0 1.10.0 1.12.2 9999: MBIM modem protocol helper library
 net-libs/libmediawiki 4.4.0 4.7.0 4.10.0 4.12.0: KDE C++ interface for MediaWiki based web service as wikipedia.org
-net-libs/libmicrohttpd 0.9.39 0.9.42: A small C library that makes it easy to run an HTTP server as part of another application
+net-libs/libmicrohttpd 0.9.39 0.9.42 0.9.44: A small C library that makes it easy to run an HTTP server as part of another application
 net-libs/libmirisdr 9999: Software for the Mirics MSi2500 + MSi001 SDR platform
 net-libs/libmm-qt 1.0.1-r1: Modemmanager bindings for Qt
 net-libs/libmnl 1.0.3-r1: Minimalistic netlink library
@@ -13927,7 +13927,7 @@ net-libs/libzrtpcpp 2.3.4 4.2.4: GNU RTP stack for the zrtp protocol developed b
 net-libs/loudmouth 1.4.3-r2: Lightweight C Jabber library
 net-libs/mbedtls 2.0.0 2.1.0 2.1.1 2.1.1-r1: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
-net-libs/miniupnpc 1.8 1.9.20150427 1.9.20150917: UPnP client library and a simple UPnP client
+net-libs/miniupnpc 1.8 1.9.20150427 1.9.20150917-r1: UPnP client library and a simple UPnP client
 net-libs/nacl 0_p20110221: high-speed software library for network communication, encryption, decryption, signatures
 net-libs/nativebiginteger 0.6.4 0.6.4-r3 0.8.7: jbigi JNI library for net.i2p.util.NativeBigInteger java-class from I2P
 net-libs/neon 0.30.0 0.30.0-r1 0.30.1: HTTP and WebDAV client library
