@@ -4,10 +4,10 @@ DESCRIPTION=Multi-Schema XML Validator, a Java tool for validating XML documents
 EAPI=5
 HOMEPAGE=https://msv.java.net/
 IUSE=elibc_FreeBSD doc source elibc_FreeBSD
-KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=amd64 ppc ppc64 x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=BSD Apache-2.0
 RDEPEND=dev-java/iso-relax:0 dev-java/relaxng-datatype:0 dev-java/xsdlib:0 dev-java/xerces:2 >=virtual/jre-1.5 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 SLOT=0
 SRC_URI=http://search.maven.org/remotecontent?filepath=net/java/dev/msv/msv-core/2013.6.1/msv-core-2013.6.1-sources.jar
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-pkg-simple	d87e645de7dff9e1bc0aac42b43ca4f4	java-utils-2	3f431421a91b4471894f5616adda4dc7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=36c896456d279e9c7ae0d086044114cb
+_md5_=4d2c4752e43709bbca36986661927485

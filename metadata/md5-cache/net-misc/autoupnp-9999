@@ -1,5 +1,5 @@
-DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=net-libs/miniupnpc:0= libnotify? ( x11-libs/libtinynotify:0= ) >=dev-vcs/git-1.8.2.1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=net-libs/miniupnpc:0= libnotify? ( x11-libs/libtinynotify:0= ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Automatic open port forwarder using UPnP
 EAPI=5
 HOMEPAGE=https://bitbucket.org/mgorny/autoupnp/
@@ -7,5 +7,5 @@ IUSE=libnotify
 LICENSE=BSD
 RDEPEND=net-libs/miniupnpc:0= libnotify? ( x11-libs/libtinynotify:0= )
 SLOT=0
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	43da5163ba106e87d22d2e7d6d67537f	git-r3	1502b9838d043db47700b8120083e637	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=6674073302a7a1d601827ebc73a9b60f
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	git-r3	1502b9838d043db47700b8120083e637	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_md5_=112fb5dcb02078c9342b860bb451acad
