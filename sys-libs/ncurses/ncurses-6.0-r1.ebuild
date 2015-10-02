@@ -227,7 +227,7 @@ multilib_src_install() {
 	# Move main libraries into /.
 	if multilib_is_native_abi ; then
 		gen_usr_ldscript -a \
-			"${NCURSES_TARGETS[@]}"
+			"${NCURSES_TARGETS[@]}" \
 			$(use tinfo && usex unicode 'tinfow' '') \
 			$(usev tinfo)
 	fi
