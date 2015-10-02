@@ -4397,7 +4397,7 @@ dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/path64 1.0.0_pre20110821 1.0.0_pre20110924 1.0.0_pre20111108 1.0.0_pre20120223: Path64 Compiler Suite Community Edition
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.20.2 5.20.2-r1 5.22.0: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.4.44 5.4.45 5.5.28 5.5.29 5.6.12 5.6.13 7.0.0_beta1 7.0.0_rc1 7.0.0_rc2 7.0.0_rc3: The PHP language runtime engine: CLI, CGI, FPM/FastCGI, Apache2 and embed SAPIs
+dev-lang/php 5.4.45 5.5.29 5.5.30 5.6.13 5.6.14 7.0.0_rc4: The PHP language runtime engine: CLI, CGI, FPM/FastCGI, Apache2 and embed SAPIs
 dev-lang/pocl 0.11: PortableCL: opensource implementation of the OpenCL standard
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.9-r1 2.7.9-r2 2.7.10 2.7.10-r1 2.7.10-r2 3.3.5-r1 3.3.5-r2 3.4.0 3.4.1 3.4.2 3.4.3 3.4.3-r1 3.4.3-r2 3.5.0 3.5.0-r1: An interpreted, interactive, object-oriented programming language
@@ -4448,7 +4448,7 @@ dev-libs/angelscript 2.29.2 2.30.1 2.30.2: A flexible, cross-platform scripting 
 dev-libs/antlr-c 3.5: The ANTLR3 C Runtime
 dev-libs/appstream-glib 0.3.4 0.4.0 0.5.0: Provides GObjects and helper methods to read and write AppStream metadata
 dev-libs/apr 1.5.0-r2 1.5.1-r1 1.5.2: Apache Portable Runtime Library
-dev-libs/apr-util 1.5.2 1.5.3-r2 1.5.4: Apache Portable Runtime Utility Library
+dev-libs/apr-util 1.5.2 1.5.3-r2 1.5.4 1.5.4-r1: Apache Portable Runtime Utility Library
 dev-libs/argtable 2.13: An ANSI C library for parsing GNU-style command-line options with minimal fuss
 dev-libs/asyncresolv 0.0.3: Asynchronous DNS query library written in C++
 dev-libs/atk 2.12.0-r1 2.14.0 2.16.0 2.16.0-r1: GTK+ & GNOME Accessibility Toolkit
@@ -4461,7 +4461,7 @@ dev-libs/blitz 0.10 0.10-r1: High-performance C++ numeric library
 dev-libs/boehm-gc 6.8 7.1-r1 7.2d 7.2d-r1 7.2e 7.4.0 7.4.2: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.52.0-r7 1.53.0-r1 1.54.0-r1 1.55.0-r2 1.56.0-r1 1.57.0 1.58.0-r1: Boost Libraries for C++
 dev-libs/boost-numpy 0_pre20131206 9999: Boost.Python interface for NumPy
-dev-libs/botan 1.10.5 1.10.10 1.11.4 1.11.8 1.11.20: A C++ crypto library
+dev-libs/botan 1.10.5 1.10.10 1.11.4 1.11.8 1.11.20 1.11.20-r1: A C++ crypto library
 dev-libs/btparse 0.33 0.35: A C library to parse Bibtex files
 dev-libs/btparser 0.24 0.25: Parser and analyzer for backtraces produced by gdb
 dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
@@ -4485,7 +4485,7 @@ dev-libs/cvector 1.0.3-r1 1.0.3.1: An ANSI C implementation of dynamic arrays to
 dev-libs/cxxtools 1.4.8 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p03-r1 3.99.5_p05: REINER SCT cyberJack pinpad/e-com USB user space driver library
 dev-libs/cygwin 1.5.25.15: Linux-like environment for Windows
-dev-libs/cyrus-imap-dev 2.4.16 2.4.17: Developer support for the Cyrus IMAP Server
+dev-libs/cyrus-imap-dev 2.4.16 2.4.17 2.4.17-r1: Developer support for the Cyrus IMAP Server
 dev-libs/cyrus-sasl 2.1.26-r9 2.1.26-r10: The Cyrus SASL (Simple Authentication and Security Layer)
 dev-libs/d0_blind_id 0.5: Blind-ID library for user identification using RSA blind signatures
 dev-libs/darts 0.32: A C++ template library that implements Double-Array
