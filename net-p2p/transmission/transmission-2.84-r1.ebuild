@@ -72,6 +72,8 @@ src_prepare() {
 	# http://trac.transmissionbt.com/ticket/5700
 	sed -i -e '1iQMAKE_CXXFLAGS += -std=c++11' qt/qtr.pro || die
 
+	epatch "${FILESDIR}/2.84-miniupnp14.patch"
+
 	epatch_user
 	eautoreconf
 }

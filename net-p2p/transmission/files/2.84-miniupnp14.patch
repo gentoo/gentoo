@@ -1,0 +1,23 @@
+libtransmission: Build fix for miniupnp API version 14
+
+Patch by Sander Sweers <Sander.Sweers@gmail.com>
+
+Bug: https://bugs.gentoo.org/562020
+Index: libtransmission/upnp.c
+===================================================================
+--- libtransmission/upnp.c	(revision 14564)
++++ libtransmission/upnp.c	(working copy)
+@@ -86,8 +86,12 @@
+   struct UPNPDev * ret;
+   bool have_err;
+ 
+-#if (MINIUPNPC_API_VERSION >= 8) /* adds ipv6 and error args */
++#if (MINIUPNPC_API_VERSION >= 14) /* adds ttl */
+   int err = UPNPDISCOVER_SUCCESS;
++  ret = upnpDiscover (msec, NULL, NULL, 0, 0, 2, &err);
++  have_err = err != UPNPDISCOVER_SUCCESS;
++#elif (MINIUPNPC_API_VERSION >= 8) /* adds ipv6 and error args */
++  int err = UPNPDISCOVER_SUCCESS;
+   ret = upnpDiscover (msec, NULL, NULL, 0, 0, &err);
+   have_err = err != UPNPDISCOVER_SUCCESS;
+ #else
