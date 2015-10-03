@@ -7160,7 +7160,7 @@ dev-python/lp_solve 5.5.2.0-r1: Python wrappers for lpsolve linear programming l
 dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine written in Python
 dev-python/lxml 3.4.1 3.4.4: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.6.1 0.7.0: LZ4 Bindings for Python
-dev-python/m2crypto 0.22.3-r4: M2Crypto: A Python crypto and SSL toolkit
+dev-python/m2crypto 0.22.3-r4 0.22.3-r5: M2Crypto: A Python crypto and SSL toolkit
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
 dev-python/maintboot 0.1.0: Run maintenance tasks outside the OS
 dev-python/mako 1.0.0 1.0.2: A Python templating language
