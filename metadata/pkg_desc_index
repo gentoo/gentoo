@@ -8708,7 +8708,7 @@ dev-ruby/ruby-gtksourceview 2.2.3 2.2.3-r1 2.2.5: Ruby bindings for gtksourcevie
 dev-ruby/ruby-gtksourceview3 2.2.3 2.2.3-r1 2.2.5: Ruby Gtk3 bindings
 dev-ruby/ruby-hmac 0.4.0-r1: A common interface to HMAC functionality as documented in RFC2104
 dev-ruby/ruby-inifile 2.0.0-r2: Small library to parse INI-files in Ruby
-dev-ruby/ruby-ldap 0.9.16-r1 0.9.16-r2 0.9.17: A Ruby interface to some LDAP libraries
+dev-ruby/ruby-ldap 0.9.16-r1 0.9.17: A Ruby interface to some LDAP libraries
 dev-ruby/ruby-mp3info 0.8.6 0.8.7: A pure Ruby library for access to mp3 files (internal infos and tags)
 dev-ruby/ruby-net-ldap 0.7.0 0.8.0 0.11: Pure ruby LDAP client implementation
 dev-ruby/ruby-oci8 2.1.7 2.1.7-r1 2.1.8: A Ruby library for Oracle OCI8
@@ -14193,7 +14193,7 @@ net-misc/gogoc 1.2-r2 1.2-r3: Client to connect to a tunnel broker using the TSP
 net-misc/goog-sitemapgen 1.5: A python script which will generate an XML sitemap for your web site
 net-misc/googlecl 0.9.14: Command line tools for the Google Data APIs
 net-misc/grdesktop 0.23-r1: Gtk2 frontend for rdesktop
-net-misc/grive 0.4.0_pre20150905: An open source Linux client for Google Drive
+net-misc/grive 0.4.0_pre20150905 0.4.0_pre20150905-r1: An open source Linux client for Google Drive
 net-misc/gsasl 1.8.0-r1: The GNU SASL client, server, and library
 net-misc/gsutil 3.42 4.13 4.14 4.15: command line tool for interacting with cloud storage services
 net-misc/gtkvncviewer 0.4: A small GTK tool to connect to VNC servers
@@ -17594,7 +17594,7 @@ x11-drivers/xf86-video-voodoo 1.2.5: Voodoo video driver
 x11-libs/agg 2.5-r2: Anti-Grain Geometry - A High Quality Rendering Engine for C++
 x11-libs/amd-adl-sdk 6.0-r1 7.0 8.0: API to access display driver functionality for ATI graphics cards
 x11-libs/c++-gtk-utils 2.0.27 2.0.28 2.2.10 2.2.11: A library containing a number of classes and functions for programming GTK+ programs using C++
-x11-libs/cairo 1.14.2 9999: A vector graphics library with cross-device output support
+x11-libs/cairo 1.14.2 1.14.2-r1 9999: A vector graphics library with cross-device output support
 x11-libs/colord-gtk 0.1.25 0.1.26: GTK support library for colord
 x11-libs/compiz-bcop 0.8.8: Compiz Option code Generator
 x11-libs/compizconfig-backend-gconf 0.8.8: Compizconfig Gconf Backend
@@ -18476,7 +18476,7 @@ x11-wm/matchbox-window-manager 1.2-r1: Light weight WM designed for use on PDA c
 x11-wm/matwm2 0.1.1: Simple EWMH compatible window manager with titlebars and frames
 x11-wm/muffin 2.4.4 2.4.5 2.6.1: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r3 0.9.24_p20100226-r4: A simple dynamic window manager for X, with features nicked from ratpoison and dwm
-x11-wm/mutter 3.14.4 3.16.2 3.16.2-r1 3.16.3: GNOME 3 compositing window manager based on Clutter
+x11-wm/mutter 3.14.4 3.16.3 3.16.3-r1: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.5.2-r1 3.6 3.6.1 9999: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20: Small and fast window manager
