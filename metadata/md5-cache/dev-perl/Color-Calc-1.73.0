@@ -4,10 +4,10 @@ DESCRIPTION=Simple calculations with RGB colors
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Color-Calc/
 IUSE=test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Graphics-ColorNames-2.100.0 >=dev-perl/Graphics-ColorNames-WWW-0.10.0 >=dev-perl/Graphics-ColorObject-0.5.0 >=dev-perl/Params-Validate-0.75 dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/C/CF/CFAERBER/Color-Calc-1.073.tar.gz
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	unpacker	1d149d9bda7723e740cfd28118f27813
-_md5_=2608de3f0323ec6179557e55fadf70d1
+_md5_=fc2cc760bc2ba35c3a764cb0fdf50e7d

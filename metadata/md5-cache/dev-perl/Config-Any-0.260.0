@@ -4,10 +4,10 @@ DESCRIPTION=Load configuration from different file formats, transparently
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Config-Any/
 IUSE=test
-KEYWORDS=~amd64 ~arm ~ppc ~x86 ~ppc-aix
+KEYWORDS=amd64 arm ppc x86 ~ppc-aix
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Module-Pluggable-3.10.0 !<dev-perl/config-general-2.47 !<dev-perl/Config-General-2.47 dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/B/BR/BRICAS/Config-Any-0.26.tar.gz
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	unpacker	1d149d9bda7723e740cfd28118f27813
-_md5_=9bb1d2af331edcfb23510cb70a2cc983
+_md5_=71f1ab32d5627ef80a78a15cd7726326
