@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="An easy-to-use and comprehensive named-color library"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="
