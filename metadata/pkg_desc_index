@@ -17710,7 +17710,7 @@ x11-libs/libyui-qt 2.44.0: UI abstraction library - Qt plugin
 x11-libs/motif 2.2.3-r12 2.3.4-r3: The Motif user interface component toolkit
 x11-libs/mx 1.4.7-r1 1.4.7-r2: A widget toolkit using Clutter
 x11-libs/neXtaw 0.15.1-r1: Athena Widgets with N*XTSTEP appearance
-x11-libs/pango 1.36.3 1.36.5 1.36.7 1.36.8: Internationalized text layout and rendering library
+x11-libs/pango 1.36.8 1.36.8-r1: Internationalized text layout and rendering library
 x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
 x11-libs/pixman 0.32.6 0.32.8 0.33.2 9999: Low-level pixel manipulation routines
 x11-libs/qscintilla 2.8.4-r1 2.9: A Qt port of Neil Hodgson's Scintilla C++ editor class
