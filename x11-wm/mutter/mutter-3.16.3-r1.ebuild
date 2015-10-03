@@ -5,7 +5,7 @@
 EAPI="5"
 GCONF_DEBUG="yes"
 
-inherit eutils gnome2
+inherit autotools eutils gnome2
 
 DESCRIPTION="GNOME 3 compositing window manager based on Clutter"
 HOMEPAGE="https://git.gnome.org/browse/mutter/"
@@ -79,8 +79,25 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 src_prepare() {
-	# surface-actor-x11: Make sure to set a size when unredirected (from 3.16 branch)
-	epatch "${FILESDIR}"/${P}-size-unredirected.patch
+	# Fallback to a default keymap if getting it from X fails (from 'master')
+	epatch "${FILESDIR}"/${PN}-3.16.3-fallback-keymap.patch
+
+	# frames: handle META_FRAME_CONTROL_NONE on left click (from '3.16')
+	epatch "${FILESDIR}"/${P}-crash-border.patch
+
+	# compositor: Add support for GL_EXT_x11_sync_object (from '3.16')
+	epatch "${FILESDIR}"/${P}-GL_EXT_x11_sync_object.patch
+
+	# compositor: Fix GL_EXT_x11_sync_object race condition (from '3.16')
+	epatch "${FILESDIR}"/${P}-fix-race.patch
+
+	# build: Fix return value in meta-sync-ring.c (from '3.16')
+	epatch "${FILESDIR}"/${P}-fix-return.patch
+
+	# compositor: Handle fences in the frontend X connection (from '3.16')
+	epatch "${FILESDIR}"/${P}-flickering.patch
+
+	eautoreconf
 	gnome2_src_prepare
 }
 

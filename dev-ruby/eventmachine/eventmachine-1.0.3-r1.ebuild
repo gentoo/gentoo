@@ -22,9 +22,9 @@ KEYWORDS="amd64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x
 IUSE=""
 
 DEPEND="${DEPEND}
-	dev-libs/openssl"
+	dev-libs/openssl:0"
 RDEPEND="${RDEPEND}
-	dev-libs/openssl"
+	dev-libs/openssl:0"
 
 ruby_add_bdepend "doc? ( dev-ruby/yard )"
 

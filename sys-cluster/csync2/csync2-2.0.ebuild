@@ -39,7 +39,8 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	# Parallel install fails, bug #561382
+	emake -j1 DESTDIR="${D}" install
 
 	if use xinetd ; then
 		insinto /etc/xinetd.d

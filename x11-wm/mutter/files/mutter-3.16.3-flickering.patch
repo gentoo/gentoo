@@ -1,0 +1,114 @@
+From 916070cc7218cc80f4565ea265b0dd6e5e93cb98 Mon Sep 17 00:00:00 2001
+From: Rui Matos <tiagomatos@gmail.com>
+Date: Wed, 12 Aug 2015 15:26:34 +0200
+Subject: compositor: Handle fences in the frontend X connection
+
+Since mutter has two X connections and does damage handling on the
+frontend while fence triggering is done on the backend, we have a race
+between XDamageSubtract() and XSyncFenceTrigger() causing missed
+redraws in the GL_EXT_X11_sync_object path.
+
+If the fence trigger gets processed first by the server, any client
+drawing that happens between that and the damage subtract being
+processed and is completely contained in the last damage event box
+that mutter got, won't be included in the current frame nor will it
+cause a new damage event.
+
+A simple fix for this would be XSync()ing on the frontend connection
+after doing all the damage subtracts but that would add a round trip
+on every frame again which defeats the asynchronous design of X
+fences.
+
+Instead, if we move fence handling to the frontend we automatically
+get the right ordering between damage subtracts and fence triggers.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=728464
+
+diff --git a/src/backends/x11/meta-backend-x11.c b/src/backends/x11/meta-backend-x11.c
+index ac38ffc..3ff8431 100644
+--- a/src/backends/x11/meta-backend-x11.c
++++ b/src/backends/x11/meta-backend-x11.c
+@@ -45,7 +45,6 @@
+ #include <meta/util.h>
+ #include "display-private.h"
+ #include "compositor/compositor-private.h"
+-#include "compositor/meta-sync-ring.h"
+ 
+ struct _MetaBackendX11Private
+ {
+@@ -256,8 +255,6 @@ handle_host_xevent (MetaBackend *backend,
+         MetaCompositor *compositor = display->compositor;
+         if (meta_plugin_manager_xevent_filter (compositor->plugin_mgr, event))
+           bypass_clutter = TRUE;
+-        if (compositor->have_x11_sync_object)
+-          meta_sync_ring_handle_event (event);
+       }
+   }
+ 
+diff --git a/src/compositor/compositor.c b/src/compositor/compositor.c
+index 554faa1..2e182c2 100644
+--- a/src/compositor/compositor.c
++++ b/src/compositor/compositor.c
+@@ -534,8 +534,7 @@ meta_compositor_manage (MetaCompositor *compositor)
+        */
+       XMapWindow (xdisplay, compositor->output);
+ 
+-      compositor->have_x11_sync_object =
+-        meta_sync_ring_init (meta_backend_x11_get_xdisplay (META_BACKEND_X11 (backend)));
++      compositor->have_x11_sync_object = meta_sync_ring_init (xdisplay);
+     }
+ 
+   redirect_windows (display->screen);
+@@ -737,6 +736,9 @@ meta_compositor_process_event (MetaCompositor *compositor,
+         process_damage (compositor, (XDamageNotifyEvent *) event, window);
+     }
+ 
++  if (compositor->have_x11_sync_object)
++    meta_sync_ring_handle_event (event);
++
+   /* Clutter needs to know about MapNotify events otherwise it will
+      think the stage is invisible */
+   if (!meta_is_wayland_compositor () && event->type == MapNotify)
+diff --git a/src/compositor/meta-sync-ring.c b/src/compositor/meta-sync-ring.c
+index 217ebe5..336ccd4 100644
+--- a/src/compositor/meta-sync-ring.c
++++ b/src/compositor/meta-sync-ring.c
+@@ -322,7 +322,7 @@ meta_sync_new (Display *xdisplay)
+   self->xdisplay = xdisplay;
+ 
+   self->xfence = XSyncCreateFence (xdisplay, DefaultRootWindow (xdisplay), FALSE);
+-  self->gl_x11_sync = meta_gl_import_sync (GL_SYNC_X11_FENCE_EXT, self->xfence, 0);
++  self->gl_x11_sync = 0;
+   self->gpu_fence = 0;
+ 
+   self->xcounter = XSyncCreateCounter (xdisplay, SYNC_VALUE_ZERO);
+@@ -347,6 +347,13 @@ meta_sync_new (Display *xdisplay)
+   return self;
+ }
+ 
++static void
++meta_sync_import (MetaSync *self)
++{
++  g_return_if_fail (self->gl_x11_sync == 0);
++  self->gl_x11_sync = meta_gl_import_sync (GL_SYNC_X11_FENCE_EXT, self->xfence, 0);
++}
++
+ static Bool
+ alarm_event_predicate (Display  *dpy,
+                        XEvent   *event,
+@@ -437,6 +444,12 @@ meta_sync_ring_init (Display *xdisplay)
+       ring->syncs_array[i] = sync;
+       g_hash_table_replace (ring->alarm_to_sync, (gpointer) sync->xalarm, sync);
+     }
++  /* Since the connection we create the X fences on isn't the same as
++   * the one used for the GLX context, we need to XSync() here to
++   * ensure glImportSync() succeeds. */
++  XSync (xdisplay, False);
++  for (i = 0; i < NUM_SYNCS; ++i)
++    meta_sync_import (ring->syncs_array[i]);
+ 
+   ring->current_sync_idx = 0;
+   ring->current_sync = ring->syncs_array[0];
+-- 
+cgit v0.10.2
+
