@@ -60,8 +60,6 @@ REQUIRED_USE="libvirtd? ( || ( lxc openvz qemu uml virtualbox xen ) )
 RDEPEND="sys-libs/readline:=
 	sys-libs/ncurses:0=
 	>=net-misc/curl-7.18.0
-	net-firewall/ebtables
-	>=net-firewall/iptables-1.4.10[ipv6]
 	dev-libs/libgcrypt:0
 	>=dev-libs/libxml2-2.7.6
 	dev-libs/libnl:3
@@ -107,6 +105,8 @@ RDEPEND="sys-libs/readline:=
 	xen? ( app-emulation/xen-tools app-emulation/xen )
 	udev? ( virtual/udev >=x11-libs/libpciaccess-0.10.9 )
 	virt-network? ( net-dns/dnsmasq[script]
+		net-firewall/ebtables
+		>=net-firewall/iptables-1.4.10[ipv6]
 		net-misc/radvd
 		sys-apps/iproute2[-minimal]
 		firewalld? ( net-firewall/firewalld )
