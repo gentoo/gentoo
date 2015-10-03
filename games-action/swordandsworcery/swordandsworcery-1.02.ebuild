@@ -26,7 +26,7 @@ QA_PREBUILT="${MYGAMEDIR#/}/bin/*
 RDEPEND="
 	virtual/opengl
 	amd64? (
-		>=dev-libs/openssl-1.0.1h-r2[abi_x86_32(-)]
+		>=dev-libs/openssl-1.0.1h-r2:0=[abi_x86_32(-)]
 		>=sys-libs/zlib-1.2.8-r1[abi_x86_32(-)]
 		>=virtual/glu-9.0-r1[abi_x86_32(-)]
 		>=virtual/opengl-7.0-r1[abi_x86_32(-)]
@@ -51,7 +51,7 @@ RDEPEND="
 		)
 	)
 	x86? (
-		dev-libs/openssl
+		dev-libs/openssl:0=
 		media-libs/alsa-lib
 		media-libs/flac
 		media-libs/libogg
