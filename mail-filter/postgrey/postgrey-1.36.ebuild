@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils user
+inherit eutils systemd user
 
 DESCRIPTION="Postgrey is a Postfix policy server implementing greylisting"
 HOMEPAGE="http://postgrey.schweikert.ch/"
@@ -18,14 +18,14 @@ IUSE="targrey"
 
 DEPEND=""
 RDEPEND=">=dev-lang/perl-5.6.0
-	dev-perl/net-server
-	dev-perl/IO-Multiplex
-	dev-perl/BerkeleyDB
-	dev-perl/Net-DNS
-	dev-perl/Parse-Syslog
-	dev-perl/Net-RBLClient
-	virtual/perl-Digest-SHA
-	>=sys-libs/db-4.1"
+		dev-perl/net-server
+		dev-perl/IO-Multiplex
+		dev-perl/BerkeleyDB
+		dev-perl/Net-DNS
+		dev-perl/Parse-Syslog
+		dev-perl/Net-RBLClient
+		virtual/perl-Digest-SHA
+		>=sys-libs/db-4.1"
 
 pkg_setup() {
 	enewgroup ${PN}
@@ -68,4 +68,5 @@ src_install() {
 	newinitd "${FILESDIR}"/${PN}-1.34-r3.rc.new ${PN}
 	insopts -o root -g root -m 640
 	newconfd "${FILESDIR}"/${PN}.conf.new ${PN}
+	systemd_dounit "${FILESDIR}"/postgrey.service
 }
