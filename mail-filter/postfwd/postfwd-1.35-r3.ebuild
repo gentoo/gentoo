@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils user
+inherit eutils user systemd
 
 DESCRIPTION="Versatile Postfix policy server with a flexible ruleset based configuration"
 HOMEPAGE="http://www.postfwd.org/"
@@ -48,9 +48,10 @@ src_install() {
 		dodoc -r "${S}"/tools
 	fi
 
-	# init script and respective configuration file
+	# start scripts script and respective configuration file
 	newinitd "${FILESDIR}"/${PN}.init ${PN}
 	newconfd "${FILESDIR}"/${PN}.conf ${PN}
+	systemd_dounit "${FILESDIR}"/${PN}.service
 }
 
 pkg_postinst() {
