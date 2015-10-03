@@ -16,6 +16,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=dev-python/pysnmp-4.2.2[${PYTHON_USEDEP}]"
+DEPEND=">=dev-python/pysnmp-4.2.3[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
