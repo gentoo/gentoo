@@ -4,7 +4,6 @@
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
-WANT_AUTOMAKE=1.13 #547168
 
 inherit autotools eutils flag-o-matic java-pkg-opt-2 multilib python-single-r1
 
