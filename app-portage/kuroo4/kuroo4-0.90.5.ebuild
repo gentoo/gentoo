@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 SLOT="4"
 IUSE="debug"
 
-DEPEND="dev-db/sqlite"
+DEPEND="dev-db/sqlite:3"
 
 RDEPEND="${DEPEND}
 	app-portage/gentoolkit
