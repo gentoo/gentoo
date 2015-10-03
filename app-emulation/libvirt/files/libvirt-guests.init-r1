@@ -184,10 +184,8 @@ start() {
 
 	# start networks
 	ebegin "Starting libvirt networks"
-	while read -r line
+	while read -r uri uuid
 	do
-		# tokenize the data
-		read -r uri uuid <<<"${line}"
 		# ignore trash
 		[ -z "${uri}" ] || [ -z "${uuid}" ] && continue
 
@@ -199,10 +197,8 @@ start() {
 
 	# start domains
 	ebegin "Starting libvirt domains"
-	while read -r line
+	while read -r uri uuid
 	do
-		# tokenize the data
-		read -r uri uuid <<<"${line}"
 		# ignore trash
 		[ -z "${uri}" ] || [ -z "${uuid}" ] && continue
 
