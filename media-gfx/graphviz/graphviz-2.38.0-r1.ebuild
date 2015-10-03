@@ -13,7 +13,7 @@ SRC_URI="http://www.graphviz.org/pub/graphviz/stable/SOURCES/${P}.tar.gz"
 
 LICENSE="CPL-1.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris"
 IUSE="+cairo devil doc examples gdk-pixbuf gtk gts guile java lasi nls pdf perl postscript python qt4 ruby svg static-libs tcl X elibc_FreeBSD"
 
 # Requires ksh
@@ -22,13 +22,13 @@ RESTRICT="test"
 RDEPEND="
 	sys-libs/zlib
 	>=dev-libs/expat-2
-	>=dev-libs/glib-2.11.1
+	>=dev-libs/glib-2.11.1:2
+	dev-libs/libltdl:0
 	>=media-libs/fontconfig-2.3.95
 	>=media-libs/freetype-2.1.10
 	>=media-libs/gd-2.0.34[fontconfig,jpeg,png,truetype,zlib]
 	>=media-libs/libpng-1.2:0
 	!<=sci-chemistry/cluster-1.3.081231
-	sys-devel/libtool
 	virtual/jpeg:0
 	virtual/libiconv
 	X? (
@@ -54,12 +54,13 @@ RDEPEND="
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4
 	)
-	ruby?	( dev-lang/ruby )
+	ruby?	( dev-lang/ruby:* )
 	svg?	( gnome-base/librsvg )
 	tcl?	( >=dev-lang/tcl-8.3:0= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/flex
+	sys-devel/libtool
 	guile?	( dev-scheme/guile dev-lang/swig )
 	java?	( >=virtual/jdk-1.5 dev-lang/swig )
 	nls?	( >=sys-devel/gettext-0.14.5 )
@@ -182,8 +183,10 @@ src_configure() {
 		$(use_with devil)
 		$(use_with gtk)
 		$(use_with gts)
-		$(use_with qt4)
+		$(use_with qt4 qt)
 		$(use_with lasi)
+		$(use_with pdf poppler)
+		$(use_with postscript ghostscript)
 		$(use_with svg rsvg)
 		$(use_with X x)
 		$(use_with X xaw)
@@ -253,4 +256,9 @@ pkg_postinst() {
 	# This actually works if --enable-ltdl is passed
 	# to configure
 	dot -c
+}
+
+pkg_postrm() {
+	# Remove cruft, bug #547344
+	rm -f "${EROOT}usr/lib/graphviz/config{,6}"
 }
