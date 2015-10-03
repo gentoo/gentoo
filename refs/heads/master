@@ -1,13 +1,13 @@
 certificate version 0.1
-pusher 0xA792A613 1443859653 +0200
-pushee git+ssh://git.gentoo.org/repo/gentoo
-nonce 1443859653-627198e00771cf400643
+pusher Markus Meier <maekke@gentoo.org> 1443859754 +0200
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1443859754-2299f82d1850b2e001f1
 
-f58cb4f00057144f357d192c5c0a10407c6feb1c 4a2eb3a68f2469f1e5e96d1ddd78272c86fe1601 refs/heads/master
+4a2eb3a68f2469f1e5e96d1ddd78272c86fe1601 8ef22aad20c28f7a3b2158ce5e6b7fdc09f8202a refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iEYEABECAAYFAlYPjMUACgkQVWmRsqeSphOpsgCeLjUmOOg6DV3MJmKRUto+VQ/s
-OhEAn11x9KG7/qOcKmgaJFGJVK0KXv8c
-=12Ez
+iEYEABECAAYFAlYPjSoACgkQkKaRLQcq0GLUiACfdO/KXJ/9I47wgwK5Sd9jpHnh
+SIEAoIWECzmgnYkZlGOhTZHpHKXYdk/m
+=xQqN
 -----END PGP SIGNATURE-----
