@@ -30,7 +30,7 @@ RDEPEND="
 	systemd? ( sys-apps/systemd )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 	dev-libs/libpcre
-	dev-libs/openssl:=
+	dev-libs/openssl:0=
 	>=dev-libs/eventlog-0.2.12
 	>=dev-libs/glib-2.10.1:2"
 DEPEND="${RDEPEND}
