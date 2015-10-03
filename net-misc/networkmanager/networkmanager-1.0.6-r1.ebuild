@@ -22,7 +22,7 @@ IUSE="bluetooth connection-sharing consolekit +dhclient dhcpcd gnutls +introspec
 kernel_linux +nss +modemmanager ncurses +ppp resolvconf selinux systemd teamd test \
 vala +wext +wifi zeroconf" # wimax
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 REQUIRED_USE="
 	modemmanager? ( ppp )
@@ -118,8 +118,14 @@ src_prepare() {
 	DOC_CONTENTS="To modify system network connections without needing to enter the
 		root password, add your user account to the 'plugdev' group."
 
+	# vpn-connection: set the MTU for the VPN IP interface (from nm-1.0 branch)
+	epatch "${FILESDIR}"/${P}-vpn-mtu.patch
+
 	# Force use of /run, avoid eautoreconf, upstream bug #737139, fixed in 'master'
 	sed -e 's:$localstatedir/run/:/run/:' -i configure || die
+
+	# Don't build examples, they are not needed and can cause build failure
+	sed -e '/^\s*examples\s*\\/d' -i Makefile.{am,in} || die
 
 	use vala && vala_src_prepare
 
@@ -259,7 +265,7 @@ multilib_src_install_all() {
 		-i "${ED}/etc/NetworkManager/dispatcher.d/10-openrc-status" || die
 
 	keepdir /etc/NetworkManager/system-connections
-	chmod 0600 "${ED}"/etc/NetworkManager/system-connections/.keep* # bug #383765
+	chmod 0600 "${ED}"/etc/NetworkManager/system-connections/.keep* # bug #383765, upstream bug #754594
 
 	# Allow users in plugdev group to modify system connections
 	insinto /usr/share/polkit-1/rules.d/
