@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=blas? ( virtual/blas ) blas? ( virtual/pkgconfig )
+DESCRIPTION=A Library for Large Linear Classification
+EAPI=5
+HOMEPAGE=http://www.csie.ntu.edu.tw/~cjlin/liblinear/ https://github.com/cjlin1/liblinear
+IUSE=blas
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=BSD
+RDEPEND=blas? ( virtual/blas )
+SLOT=0/3
+SRC_URI=https://github.com/cjlin1/liblinear/archive/v210.tar.gz -> liblinear-210.tar.gz
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_md5_=8e73802a921ca8d80e68d59e77c358ab
