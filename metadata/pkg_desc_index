@@ -16230,7 +16230,7 @@ sys-apps/udevil 0.4.1 0.4.3 0.4.4 0.4.4-r1: mount and unmount removable devices 
 sys-apps/uevt 2.3-r1: UPower/UDisks Event, a lightweight desktop-independent power and disk manager
 sys-apps/ultracopier 0.2.0.16: Advanced file copying tool
 sys-apps/unscd 0.51 0.52-r2: simple & stable nscd replacement
-sys-apps/usb_modeswitch 1.2.7_p20130807 2.1.0_p20140129 2.1.1_p20140327 2.2.0_p20140529 2.2.3_p20150627: USB_ModeSwitch is a tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
+sys-apps/usb_modeswitch 2.2.0_p20140529 2.2.3_p20150627 2.2.5: USB_ModeSwitch is a tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
 sys-apps/usbmon 6-r1: Userland for USB monitoring framework
 sys-apps/usbredir 0.4.3 0.4.4 0.5 0.5.1 0.6 0.7 9999: A simple TCP daemon and set of libraries for the usbredir protocol (redirecting USB traffic)
 sys-apps/usbutils 007 008 008-r1: USB enumeration utilities
