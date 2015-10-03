@@ -12,9 +12,5 @@
       when counting seconds since the epoch (while POSIX does not) as they are
       based on the TAI (International Atomic Time) clock
     </flag>
-    <flag name='right_timezone'>
-      Install the set of "right" timezones; these timezones include leap seconds
-      when counting seconds since the epoch (while posix does not)
-    </flag>
   </use>
 </pkgmetadata>
