@@ -13,16 +13,15 @@ SRC_URI="mirror://kernel/linux/bluetooth/${P}.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/3"
-KEYWORDS="amd64 arm hppa ppc ppc64 x86"
+KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86"
 IUSE="cups debug +obex +readline selinux systemd test +udev"
-REQUIRED_USE="test? ( ${PYTHON_REQUIRED_USE} )"
 
 CDEPEND="
 	>=dev-libs/glib-2.28:2
 	>=sys-apps/dbus-1.6:=
 	>=sys-apps/hwids-20121202.2
 	cups? ( net-print/cups:= )
-	obex? ( dev-libs/libical )
+	obex? ( dev-libs/libical:= )
 	readline? ( sys-libs/readline:= )
 	systemd? ( sys-apps/systemd )
 	udev? ( >=virtual/udev-172 )
@@ -32,12 +31,16 @@ CDEPEND="
 	)
 "
 DEPEND="${CDEPEND}
+	app-arch/xz-utils
 	virtual/pkgconfig
 	test? (
-		${PYTHON_DEPS}
-		>=dev-python/dbus-python-1
-		dev-python/pygobject:2
-		dev-python/pygobject:3
+		$(python_gen_any_dep '
+			>=dev-python/dbus-python-1[${PYTHON_USEDEP}]
+			|| (
+				dev-python/pygobject:3[${PYTHON_USEDEP}]
+				dev-python/pygobject:2[${PYTHON_USEDEP}]
+			)
+		')
 	)
 "
 RDEPEND="${CDEPEND}
@@ -65,6 +68,10 @@ src_prepare() {
 	# Use static group "plugdev" if there is no ConsoleKit (or systemd logind)
 	epatch "${FILESDIR}"/bluez-plugdev.patch
 
+	# Try both udevadm paths to cover udev/systemd vs. eudev locations (#539844)
+	# http://www.spinics.net/lists/linux-bluetooth/msg58739.html
+	epatch "${FILESDIR}"/bluez-udevadm-path.patch
+
 	# Fedora patches
 	# http://www.spinics.net/lists/linux-bluetooth/msg38490.html
 	epatch "${FILESDIR}"/0001-Allow-using-obexd-without-systemd-in-the-user-sessio.patch
@@ -77,9 +84,6 @@ src_prepare() {
 
 	# ???
 	epatch "${FILESDIR}"/0004-agent-Assert-possible-infinite-loop.patch
-
-	# Ubuntu workaround for bug #501120
-	epatch "${FILESDIR}"/0001-work-around-Logitech-diNovo-Edge-keyboard-firmware-i.patch
 
 	if use cups; then
 		sed -i \
@@ -146,7 +150,7 @@ multilib_src_install() {
 	if multilib_is_native_abi; then
 		emake DESTDIR="${D}" install
 
-		# Upstream don't install this, bug #524640
+		# Upstream doesn't install this, bug #524640
 		# http://permalink.gmane.org/gmane.linux.bluez.kernel/53115
 		# http://comments.gmane.org/gmane.linux.bluez.kernel/54564
 		# gatttool is only built with readline, bug #530776
@@ -171,19 +175,13 @@ multilib_src_install_all() {
 	keepdir /var/lib/bluetooth
 
 	# Upstream don't want people to play with them
-	# But we keep installing them due 'historical' reasons
+	# But we keep installing them due to 'historical' reasons
 	insinto /etc/bluetooth
 	local d
 	for d in input network proximity; do
 		doins profiles/${d}/${d}.conf
 	done
 	doins src/main.conf
-	doins src/bluetooth.conf
-
-# FIXME:
-# Looks like upstream installs it only for systemd, probably not needed
-#	insinto /usr/share/dbus-1/system-services
-#	doins src/org.bluez.service
 
 	newinitd "${FILESDIR}"/bluetooth-init.d-r3 bluetooth
 	newinitd "${FILESDIR}"/rfcomm-init.d-r2 rfcomm
@@ -201,8 +199,7 @@ pkg_postinst() {
 	has_version net-dialup/ppp || elog "To use dial up networking you must install net-dialup/ppp."
 
 	if ! has_version sys-auth/consolekit && ! has_version sys-apps/systemd; then
-		elog "Since you don't have sys-auth/consolekit neither sys-apps/systemd, you will only"
-		elog "be able to run bluetooth clients as root. If you want to be able to run bluetooth clients as"
-		elog "a regular user, you need to add the user to the plugdev group."
+		elog "Since you don't have sys-auth/consolekit neither sys-apps/systemd, you will"
+		elog "need to add the user to the plugdev group."
 	fi
 }
