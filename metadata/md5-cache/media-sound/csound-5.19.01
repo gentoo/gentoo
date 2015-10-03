@@ -10,5 +10,5 @@ RDEPEND=>=media-libs/libsndfile-1.0.16 alsa? ( media-libs/alsa-lib ) csoundac? (
 REQUIRED_USE=java? ( cxx ) linear? ( double-precision ) lua? ( cxx ) python? ( cxx )
 SLOT=0
 SRC_URI=mirror://sourceforge/csound/Csound5.19.01.tar.gz
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	java-utils-2	3f431421a91b4471894f5616adda4dc7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	java-utils-2	221b9d28835c5f872d1e28c6feccf158	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=1b8d9b75e864d00d14f954e2422cf282

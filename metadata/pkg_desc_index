@@ -105,7 +105,7 @@ app-admin/genromfs 0.5.2: Create space-efficient, small, read-only romfs filesys
 app-admin/gentoo-rsync-mirror 1.0-r4 1.0-r5: Ebuild for setting up a Gentoo rsync mirror
 app-admin/geolizer 2.01.10_p20070115-r1: Webserver log file analyzer
 app-admin/gkrellm 2.3.5-r3 2.3.6_rc1: Single process stack of various system monitors
-app-admin/glance 2015.1.1-r2 2015.1.9999: Provides services for discovering, registering, and retrieving virtual machine images
+app-admin/glance 2015.1.1-r2 2015.1.1-r3 2015.1.9999: Provides services for discovering, registering, and retrieving virtual machine images
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/grubconfig 1.28-r1: Simple Tool to configure Grub-Bootloader
 app-admin/gtkdiskfree 2.0.1-r1: Graphical tool to show free disk space
@@ -14609,7 +14609,7 @@ net-p2p/smet2html 0.1: Convert eDonkey2000 server.met to html
 net-p2p/soulseek-qt 20131106-r1: Official binary Qt SoulSeek client
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6: A torrent file parser
-net-p2p/transmission 2.84 2.84-r1 2.84-r2: A Fast, Easy and Free BitTorrent client
+net-p2p/transmission 2.84 2.84-r1 2.84-r3: A Fast, Easy and Free BitTorrent client
 net-p2p/transmission-remote-cli 1.6.3 1.7.0: Ncurses interface for the Transmission BitTorrent client
 net-p2p/transmission-remote-gtk 1.0 1.1.1: GTK+ client for management of the Transmission BitTorrent client, over HTTP RPC
 net-p2p/tribler 6.0.3 6.3.3-r1: Bittorrent client that does not require a website to discover content

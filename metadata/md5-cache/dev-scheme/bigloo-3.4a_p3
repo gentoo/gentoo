@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/boehm-gc-7.1[threads?] emacs? ( virtual/emacs ) gmp? ( dev-libs/gmp ) gstreamer? ( media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 ) java? ( >=virtual/jdk-1.5 app-arch/zip ) sqlite? ( dev-db/sqlite:3 ) ssl? ( dev-libs/openssl ) java? ( >=dev-java/java-config-2.2.0 )
 SLOT=0
 SRC_URI=ftp://ftp-sop.inria.fr/members/Cyprien.Nicolas/mirror/bigloo-3.4a-patchset-1.tbz2 ftp://ftp-sop.inria.fr/indes/fp/Bigloo/bigloo3.4a-3.tar.gz
-_eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	java-utils-2	3f431421a91b4471894f5616adda4dc7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	java-utils-2	221b9d28835c5f872d1e28c6feccf158	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=b3d86f424e81629e04a06a0f3c949f2b

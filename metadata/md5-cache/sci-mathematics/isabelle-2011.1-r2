@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=dev-perl/libwww-perl sci-mathematics/sha1-polyml doc? ( virtual/latex-base dev-tex/rail ) proofgeneral? ( app-emacs/proofgeneral ) ledit? ( app-misc/ledit ) readline? ( app-misc/rlwrap ) >=app-shells/bash-3.0:* >=dev-lang/polyml-5.4.1:=[-portable] >=dev-lang/perl-5.8.8-r2 >=dev-java/java-config-2.2.0
 SLOT=0/2011.1
 SRC_URI=http://www.cl.cam.ac.uk/research/hvg/isabelle/dist/Isabelle2011-1.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	3f431421a91b4471894f5616adda4dc7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	221b9d28835c5f872d1e28c6feccf158	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=e7f8b8958338eae91fec513ba76be160

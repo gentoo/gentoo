@@ -10,5 +10,5 @@ RDEPEND=>=virtual/jre-1.6 dev-java/asm:4 dev-java/ant-core:0 >=dev-java/java-con
 RESTRICT=ppc? ( test ) ppc64? ( test )
 SLOT=3
 SRC_URI=mirror://sourceforge/cglib/cglib-src-3.0.jar
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-ant-2	e39bd5336f73afdf3e4a15c91a5dad59	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	3f431421a91b4471894f5616adda4dc7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-ant-2	e39bd5336f73afdf3e4a15c91a5dad59	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-utils-2	221b9d28835c5f872d1e28c6feccf158	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=533f804066f899d268ce6b41851f0a76
