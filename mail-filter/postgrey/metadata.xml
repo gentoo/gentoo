@@ -11,6 +11,11 @@
 	  <email>qnikst@gentoo.org</email>
 	  <name>Alexander Vershilov</name>
   </maintainer>
+  <maintainer>
+	<email>lists@xunil.at</email>
+	<name>Stefan Weichinger</name>
+	<description>Proxy maintainer under the proxy-maintainers herd</description>
+  </maintainer>
 <longdescription>Postgrey is a Postfix policy server implementing greylisting developed by David Schweikert at the ISG.EE.</longdescription>
 <use>
 	<flag name='targrey'>Enables the targrey patch</flag>
