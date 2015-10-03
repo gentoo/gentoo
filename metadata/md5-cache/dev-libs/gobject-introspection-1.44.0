@@ -4,7 +4,7 @@ DESCRIPTION=Introspection infrastructure for generating gobject library bindings
 EAPI=5
 HOMEPAGE=https://wiki.gnome.org/Projects/GObjectIntrospection
 IUSE=cairo doctool test python_targets_python2_7
-KEYWORDS=alpha amd64 ~arm ~arm64 hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm ~arm64 hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=LGPL-2+ GPL-2+
 PDEPEND=cairo? ( x11-libs/cairo[glib] )
 RDEPEND=>=dev-libs/gobject-introspection-common-1.44.0 >=dev-libs/glib-2.44:2 doctool? ( dev-python/mako ) virtual/libffi:= virtual/pkgconfig !<dev-lang/vala-0.20.0 >=dev-lang/python-2.7.5-r2:2.7[xml] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)]
@@ -12,4 +12,4 @@ REQUIRED_USE=python_targets_python2_7 test? ( cairo )
 SLOT=0
 SRC_URI=mirror://gnome/sources/gobject-introspection/1.44/gobject-introspection-1.44.0.tar.xz
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	44555579e85afa5c035d2bd5428252da	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=9b363db9c9064bd573707e8cf65b81d7
+_md5_=92dca33175fe2a5ff0fbf58f1ad590f7
