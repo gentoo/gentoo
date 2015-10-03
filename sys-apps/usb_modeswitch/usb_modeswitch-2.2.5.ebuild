@@ -3,11 +3,12 @@
 # $Id$
 
 EAPI=5
-inherit eutils linux-info toolchain-funcs udev
+inherit eutils linux-info toolchain-funcs udev systemd
 
 MY_PN=${PN/_/-}
 MY_P=${MY_PN}-${PV/_p*}
-DATA_VER=${PV/*_p}
+#DATA_VER=${PV/*_p}
+DATA_VER="20150627"
 
 DESCRIPTION="USB_ModeSwitch is a tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks"
 HOMEPAGE="http://www.draisberghof.de/usb_modeswitch/ http://www.draisberghof.de/usb_modeswitch/device_reference.txt"
@@ -16,17 +17,19 @@ SRC_URI="http://www.draisberghof.de/${PN}/${MY_P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="jimtcl"
 
-COMMON_DEPEND="virtual/udev
-	virtual/libusb:0
-	!<sys-apps/kmod-12-r1"
+COMMON_DEPEND="
+	virtual/udev
+	virtual/libusb:1
+"
 RDEPEND="${COMMON_DEPEND}
 	jimtcl? ( dev-lang/jimtcl )
 	!jimtcl? ( dev-lang/tcl:0 )" # usb_modeswitch script is tcl
 DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 S=${WORKDIR}/${MY_P}
 
@@ -43,8 +46,13 @@ src_compile() {
 src_install() {
 	emake \
 		DESTDIR="${D}" \
+		SYSDIR="${D}/$(systemd_get_unitdir)" \
 		UDEVDIR="${D}/$(get_udevdir)" \
 		$(usex jimtcl install-shared install)
+
+	# Even if we set SYSDIR above, the Makefile is causing automagic detection of `systemctl` binary,
+	# which is why we need to force the .service file to be installed:
+	systemd_dounit ${PN}@.service
 
 	dodoc ChangeLog README
 
