@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit eutils
+inherit autotools eutils
 
 DESCRIPTION="A lightweight GTK image viewer forked from GQview"
 HOMEPAGE="http://www.geeqie.org"
@@ -32,6 +32,8 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch_user
+
+	eautoreconf
 }
 
 src_configure() {
