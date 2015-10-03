@@ -165,12 +165,18 @@ wine_build_environment_check() {
 	[[ ${MERGE_TYPE} = "binary" ]] && return 0
 
 	# bug #549768
-	if use abi_x86_64 && [[ $(gcc-major-version) = 5 ]]; then
-		eerror "64-bit wine cannot be built with gcc-5.1 or 5.2 due to compiler bugs;"
-		eerror "you may use gcc-config to select an older compiler version."
-		eerror "See https://bugs.gentoo.org/549768"
-		eerror
-		return 1
+	if use abi_x86_64 && [[ $(gcc-major-version) = 5 && $(gcc-minor-version) -le 2 ]]; then
+		einfo "Checking for gcc-5 ms_abi compiler bug ..."
+		$(tc-getCC) -O2 "${FILESDIR}"/pr66838.c -o "${T}"/pr66838 || die
+		# Run in subshell to prevent "Aborted" message
+		if ! ( "${T}"/pr66838 || false ) >/dev/null 2>&1; then
+			eerror "64-bit wine cannot be built with gcc-5.1 or initial patchset of 5.2.0"
+			eerror "due to compiler bugs; please re-emerge the latest gcc-5.2.x ebuild,"
+			eerror "or use gcc-config to select a different compiler version."
+			eerror "See https://bugs.gentoo.org/549768"
+			eerror
+			return 1
+		fi
 	fi
 
 	if use abi_x86_64 && [[ $(( $(gcc-major-version) * 100 + $(gcc-minor-version) )) -lt 404 ]]; then
