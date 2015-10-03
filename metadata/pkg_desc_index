@@ -14609,7 +14609,7 @@ net-p2p/smet2html 0.1: Convert eDonkey2000 server.met to html
 net-p2p/soulseek-qt 20131106-r1: Official binary Qt SoulSeek client
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6: A torrent file parser
-net-p2p/transmission 2.84 2.84-r1: A Fast, Easy and Free BitTorrent client
+net-p2p/transmission 2.84 2.84-r1 2.84-r2: A Fast, Easy and Free BitTorrent client
 net-p2p/transmission-remote-cli 1.6.3 1.7.0: Ncurses interface for the Transmission BitTorrent client
 net-p2p/transmission-remote-gtk 1.0 1.1.1: GTK+ client for management of the Transmission BitTorrent client, over HTTP RPC
 net-p2p/tribler 6.0.3 6.3.3-r1: Bittorrent client that does not require a website to discover content
@@ -16214,7 +16214,7 @@ sys-apps/systemd-sysv-utils 208 212 215 216 217: sysvinit compatibility symlinks
 sys-apps/sysvinit 2.88-r4 2.88-r5 2.88-r6 2.88-r7: /sbin/init - parent of all processes
 sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
 sys-apps/texinfo 4.13-r2 5.2 6.0: The GNU info program and utilities
-sys-apps/the_silver_searcher 0.29.1: A code-searching tool similar to ack, but faster
+sys-apps/the_silver_searcher 0.29.1 0.31.0: A code-searching tool similar to ack, but faster
 sys-apps/timer_entropyd 0.2: A timer-based entropy generator
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
 sys-apps/toybox 0.4.7 0.4.8 0.4.9 0.4.9-r1 0.5.0 0.5.1 0.5.2 0.6.0 9999: Common linux commands in a multicall binary
