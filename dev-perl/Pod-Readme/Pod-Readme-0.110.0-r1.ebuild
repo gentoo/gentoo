@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Convert POD to README file"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="dev-perl/regexp-common"
