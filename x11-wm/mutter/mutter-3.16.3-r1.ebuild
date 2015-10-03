@@ -81,19 +81,19 @@ RDEPEND="${COMMON_DEPEND}
 src_prepare() {
 	# Fallback to a default keymap if getting it from X fails (from 'master')
 	epatch "${FILESDIR}"/${PN}-3.16.3-fallback-keymap.patch
-	
+
 	# frames: handle META_FRAME_CONTROL_NONE on left click (from '3.16')
 	epatch "${FILESDIR}"/${P}-crash-border.patch
-	
+
 	# compositor: Add support for GL_EXT_x11_sync_object (from '3.16')
 	epatch "${FILESDIR}"/${P}-GL_EXT_x11_sync_object.patch
-	
+
 	# compositor: Fix GL_EXT_x11_sync_object race condition (from '3.16')
 	epatch "${FILESDIR}"/${P}-fix-race.patch
-	
+
 	# build: Fix return value in meta-sync-ring.c (from '3.16')
 	epatch "${FILESDIR}"/${P}-fix-return.patch
-	
+
 	# compositor: Handle fences in the frontend X connection (from '3.16')
 	epatch "${FILESDIR}"/${P}-flickering.patch
 
