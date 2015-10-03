@@ -48,6 +48,7 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/os-headers
 	virtual/pkgconfig
+	qt5? ( dev-qt/linguist-tools:5 )
 	xfs? ( sys-fs/xfsprogs )"
 
 REQUIRED_USE="ayatana? ( gtk ) ?? ( qt4 qt5 )"
