@@ -1960,7 +1960,7 @@ toolchain_pkg_postinst() {
 		echo
 		ewarn "You might want to review the GCC upgrade guide when moving between"
 		ewarn "major versions (like 4.2 to 4.3):"
-		ewarn "https://www.gentoo.org/doc/en/gcc-upgrading.xml"
+		ewarn "https://wiki.gentoo.org/wiki/Upgrading_GCC"
 		echo
 
 		# Clean up old paths
