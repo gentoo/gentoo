@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Pacho Ramos <pacho@gentoo.org> (03 Oct 2015)
+# Missing stable, bug #529462
+media-gfx/graphviz java
+
 # Markus Meier <maekke@gentoo.org> (30 Jul 2015)
 # Missing stable
 x11-libs/wxGTK webkit
