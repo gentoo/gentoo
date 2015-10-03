@@ -16,7 +16,7 @@ start() {
 
 	params="$params -P /run/minidlna/minidlna.pid"
 
-	if [[ "${RESCAN}" = "true" || "{$RESCAN}" = yes ]]; then
+	if [[ "${RESCAN}" = "true" || "${RESCAN}" = yes ]]; then
 		params="$params -R"
 	fi
 
