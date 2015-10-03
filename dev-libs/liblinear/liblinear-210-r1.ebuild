@@ -42,13 +42,13 @@ src_prepare() {
 
 src_compile() {
 	emake \
-		CC=$(tc-getCC) \
-		CXX=$(tc-getCXX) \
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
 		CFLAGS="${CFLAGS} -fPIC" \
 		CXXFLAGS="${CXXFLAGS} -fPIC" \
 		AR="$(tc-getAR) rcv" \
 		RANLIB="$(tc-getRANLIB)" \
-		"LIBS=$(usex blas $( $(tc-getPKG_CONFIG) --libs blas ) blas/blas.a)" \
+		LIBS="$(usex blas "$( $(tc-getPKG_CONFIG) --libs blas )" blas/blas.a)" \
 		lib all
 }
 
