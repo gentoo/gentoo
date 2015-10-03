@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ VAR_DIR="/var/vdr/tvmovie2vdr"
 SHARE_DIR="/usr/share/${PN}"
 
 DESCRIPTION="load the program guide from tvmovie and others to vdr"
-HOMEPAGE="http://steckrue.be/tvm2vdr/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="http://steckrue.be/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
