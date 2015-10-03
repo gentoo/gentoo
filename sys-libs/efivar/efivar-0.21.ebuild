@@ -24,4 +24,5 @@ src_prepare() {
 src_configure() {
 	tc-export CC
 	export libdir="/usr/$(get_libdir)"
+	unset LIBS # Bug 562004
 }
