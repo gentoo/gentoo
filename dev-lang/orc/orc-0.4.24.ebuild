@@ -11,7 +11,7 @@ SRC_URI="http://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
 
 LICENSE="BSD BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ~ppc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 arm hppa ~ppc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="examples hardened static-libs"
 
 RDEPEND=""
