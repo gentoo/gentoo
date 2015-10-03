@@ -92,7 +92,7 @@ IUSE="cxx multislot multitarget nls static-libs test vanilla"
 if version_is_at_least 2.19 ; then
 	IUSE+=" zlib"
 fi
-if ! version_is_at_least 2.23.90 || [[ ${BTYPE} != "rel" ]] || is_cross || use multislot ; then
+if ! version_is_at_least 2.25 || [[ ${BTYPE} != "rel" ]] || is_cross || use multislot ; then
 	SLOT="${BVER}"
 else
 	SLOT="0"
