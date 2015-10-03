@@ -3,15 +3,17 @@
 # $Id$
 
 EAPI=5
-inherit autotools eutils git-r3 libtool multilib-minimal
+inherit eutils libtool multilib-minimal
+
+MY_P="${P}-beta"
 
 DESCRIPTION="A library to execute a function when a specific event occurs on a file descriptor"
 HOMEPAGE="http://libevent.org/"
-EGIT_REPO_URI="https://github.com/libevent/libevent"
+SRC_URI="mirror://sourceforge/levent/files/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug libressl +ssl static-libs test +threads"
 
 DEPEND="
@@ -28,8 +30,10 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/event2/event-config.h
 )
 
+S=${WORKDIR}/${MY_P}
+
 src_prepare() {
-	eautoreconf
+	elibtoolize
 	# don't waste time building tests
 	# https://github.com/libevent/libevent/pull/144
 	sed -i -e '/^all:/s|tests||g' Makefile.nmake || die
