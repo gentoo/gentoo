@@ -7902,7 +7902,7 @@ dev-python/vcversioner 2.14.0.0: Use version control tags to discover version nu
 dev-python/venusian 1.0_alpha8 1.0: A library for deferring decorator actions
 dev-python/verboselogs 1.0.1: Verbose logging for Python's logging module
 dev-python/versiontools 1.9.1-r1: Smart replacement for plain tuple used in __version__
-dev-python/vertex 0.3.0-r1 0.3.1: An implementation of the Q2Q protocol
+dev-python/vertex 0.3.0-r1 0.3.1 0.3.1-r1: An implementation of the Q2Q protocol
 dev-python/virtualenv 12.0.5 13.1.0 13.1.1 13.1.2: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.2.4-r2 0.2.5 0.2.6: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.3.1 4.3.2 4.5.1 4.6.0: virtualenvwrapper is a set of extensions to Ian Bicking's virtualenv tool
