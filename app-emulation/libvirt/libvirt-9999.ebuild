@@ -60,8 +60,6 @@ REQUIRED_USE="libvirtd? ( || ( lxc openvz qemu uml virtualbox xen ) )
 RDEPEND="sys-libs/readline:=
 	sys-libs/ncurses:0=
 	>=net-misc/curl-7.18.0
-	net-firewall/ebtables
-	>=net-firewall/iptables-1.4.10[ipv6]
 	dev-libs/libgcrypt:0
 	>=dev-libs/libxml2-2.7.6
 	dev-libs/libnl:3
@@ -107,6 +105,8 @@ RDEPEND="sys-libs/readline:=
 	xen? ( app-emulation/xen-tools app-emulation/xen )
 	udev? ( virtual/udev >=x11-libs/libpciaccess-0.10.9 )
 	virt-network? ( net-dns/dnsmasq[script]
+		net-firewall/ebtables
+		>=net-firewall/iptables-1.4.10[ipv6]
 		net-misc/radvd
 		sys-apps/iproute2[-minimal]
 		firewalld? ( net-firewall/firewalld )
@@ -126,8 +126,9 @@ DOC_CONTENTS="Important: The openrc libvirtd init script is now broken up into t
 separate services: libvirtd, that solely handles the daemon, and
 libvirt-guests, that takes care of clients during shutdown/restart of the
 host. In order to reenable client handling, edit /etc/conf.d/libvirt-guests
-and enable the service:
+and enable the service and start it:
 	$ rc-update add libvirt-guests
+	$ service libvirt-guests start
 
 For the basic networking support (bridged and routed networks) you don't
 need any extra software. For more complex network modes including but not
@@ -449,7 +450,7 @@ src_install() {
 	systemd_newtmpfilesd "${FILESDIR}"/libvirtd.tmpfiles.conf libvirtd.conf
 
 	newinitd "${S}/libvirtd.init" libvirtd || die
-	newinitd "${FILESDIR}/libvirt-guests.init" libvirt-guests || die
+	newinitd "${FILESDIR}/libvirt-guests.init-r1" libvirt-guests || die
 	newinitd "${FILESDIR}/virtlockd.init-r1" virtlockd || die
 
 	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd || die
