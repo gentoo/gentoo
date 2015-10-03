@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -64,6 +64,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.80-translations-path-fix.patch
 	# http://trac.transmissionbt.com/ticket/5700
 	sed -i -e '1iQMAKE_CXXFLAGS += -std=c++11' qt/qtr.pro || die
+
+	epatch "${FILESDIR}/2.84-miniupnp14.patch"
 
 	epatch_user
 	eautoreconf
