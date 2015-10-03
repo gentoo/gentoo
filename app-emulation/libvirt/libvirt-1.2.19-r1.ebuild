@@ -450,7 +450,7 @@ src_install() {
 	systemd_newtmpfilesd "${FILESDIR}"/libvirtd.tmpfiles.conf libvirtd.conf
 
 	newinitd "${S}/libvirtd.init" libvirtd || die
-	newinitd "${FILESDIR}/libvirt-guests.init" libvirt-guests || die
+	newinitd "${FILESDIR}/libvirt-guests.init-r1" libvirt-guests || die
 	newinitd "${FILESDIR}/virtlockd.init-r1" virtlockd || die
 
 	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd || die
