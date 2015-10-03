@@ -7505,7 +7505,6 @@ sys-libs/pam:cracklib - Build the pam_cracklib module, that allows to verify the
 sys-libs/readline:utils - Install rlfe (ReadLine Front-End) helper tool -- a wrapper program for making any stdin use readline
 sys-libs/talloc:compat - Enable extra compatibility stuff
 sys-libs/timezone-data:leaps_timezone - Install the set of "right" timezones; these timezones include leap seconds when counting seconds since the epoch (while POSIX does not) as they are based on the TAI (International Atomic Time) clock
-sys-libs/timezone-data:right_timezone - Install the set of "right" timezones; these timezones include leap seconds when counting seconds since the epoch (while posix does not)
 sys-libs/uclibc:rpc - Enable sun nis/rpc support (you should use libtirpc though)
 sys-libs/uclibc:savedconfig - Adds support for user defined configs
 sys-libs/uclibc:ssp - Force the use of ssp to be built into a hardened uclibc setup
