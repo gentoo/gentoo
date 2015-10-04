@@ -4,7 +4,7 @@
 
 EAPI=4
 
-inherit systemd user eutils readme.gentoo
+inherit autotools systemd user eutils readme.gentoo
 
 DESCRIPTION="Linux IPv6 Router Advertisement Daemon"
 HOMEPAGE="http://v6web.litech.org/radvd/"
@@ -36,6 +36,7 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.10-musl-libc-fix.patch
+	eautoreconf
 }
 
 src_configure() {
