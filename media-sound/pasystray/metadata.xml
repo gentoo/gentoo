@@ -2,6 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>sound</herd>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+        	<email>lmiphay@gmail.com</email>
+	        <name>Paul Healy</name>
+	        <description>Proxy maintainer</description>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">christophgysin/pasystray</remote-id>
 	</upstream>

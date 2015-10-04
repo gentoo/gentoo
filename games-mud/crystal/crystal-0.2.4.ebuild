@@ -15,8 +15,8 @@ KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 RDEPEND="sys-libs/zlib
-	sys-libs/ncurses
-	dev-libs/openssl
+	sys-libs/ncurses:0=
+	dev-libs/openssl:0=
 	virtual/libiconv"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
