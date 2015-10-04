@@ -4,12 +4,11 @@
 	<herd>graphics</herd>
 	<herd>kde</herd>
 	<longdescription lang="en">
-		Exiv2 is a C++ library and a command line utility to read and
-		write EXIF and IPTC image metadata.
+		Exiv2 is a C++ library and command line utility to read and
+		write EXIF, IPTC and XMP image metadata.
 	</longdescription>
 	<use>
-		<flag name='contrib'>
-			Build additional contrib components
-		</flag>
+		<flag name='contrib'>Build additional contrib components</flag>
+		<flag name='webready'>Support reading metadata over the internet</flag>
 	</use>
 </pkgmetadata>
