@@ -15,7 +15,7 @@ HOMEPAGE="http://www.ohler.com/ox/ https://github.com/ohler55/ox"
 SRC_URI="https://github.com/ohler55/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 SLOT="0"
 IUSE=""
 
