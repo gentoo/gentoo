@@ -13,7 +13,7 @@ SRC_URI="https://github.com/mltframework/mlt/archive/v0.9.8.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="compressed-lumas debug ffmpeg fftw frei0r gtk jack kde kdenlive libav libsamplerate melt opengl
 cpu_flags_x86_mmx qt4 rtaudio sdl cpu_flags_x86_sse cpu_flags_x86_sse2 xine xml lua python ruby vdpau" # java perl php tcl
 IUSE="${IUSE} kernel_linux"
