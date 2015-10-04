@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit eutils flag-o-matic virtualx multilib-minimal
+inherit autotools eutils flag-o-matic virtualx multilib-minimal
 
 DESCRIPTION="A set of symbols and convience functions that all indicators would like to use"
 HOMEPAGE="https://launchpad.net/libindicator"
@@ -19,6 +19,11 @@ RDEPEND=">=dev-libs/glib-2.22[${MULTILIB_USEDEP}]
 DEPEND="${RDEPEND}
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
 	test? ( dev-util/dbus-test-runner )"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-ldflags-spacing.patch
+	eautoreconf
+}
 
 multilib_src_configure() {
 	append-flags -Wno-error
