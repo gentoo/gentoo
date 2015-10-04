@@ -63,7 +63,7 @@ src_install() {
 	pyfa_py_install() {
 		local packagedir=$(python_get_sitedir)/${PN}
 		insinto "${packagedir}"
-		doins -r eos gui icons service config*.py __init__.py gpl.txt
+		doins -r eos gui icons service utils config*.py __init__.py gpl.txt
 		[[ -e info.py ]] && doins info.py # only in zip releases
 		doins "${BUILD_DIR}/configforced.py"
 		python_doscript "${BUILD_DIR}/pyfa"
