@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Store multiple values per key"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND=""
