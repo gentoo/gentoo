@@ -9881,7 +9881,7 @@ games-emulation/higan 094: A Nintendo multi-system emulator formerly known as bs
 games-emulation/hugo 2.12: PC-Engine (Turbografx16) emulator for linux
 games-emulation/kigb 2.02: A Gameboy (GB, SGB, GBA) Emulator for Linux
 games-emulation/lxdream 0.9.1-r2: An emulator for the Sega Dreamcast system
-games-emulation/m64py 0.2.1 0.2.1-r1 0.2.3: A frontend for Mupen64Plus
+games-emulation/m64py 0.2.1-r1 0.2.3: A frontend for Mupen64Plus
 games-emulation/mamory 0.2.25: ROM management tools and library
 games-emulation/mastergear-bin 2.0: SEGA Master System / Game Gear emulator
 games-emulation/mednafen 0.9.38.4: An advanced NES, GB/GBC/GBA, TurboGrafx 16/CD, NGPC and Lynx emulator
