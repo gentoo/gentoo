@@ -7,16 +7,17 @@ EAPI=5
 inherit autotools-utils flag-o-matic
 
 if [ "${PV}" = "9999" ]; then
-	LLVM_VERSION="3.6.2"
+	LLVM_VERSION="3.7.0"
 	EGIT_REPO_URI="git://github.com/losalamos/${PN^b}.git https://github.com/losalamos/${PN}.git"
 	inherit git-2
 	KEYWORDS=""
 	AUTOTOOLS_AUTORECONF=1
 else
-	LLVM_VERSION="3.6.2"
+	LLVM_VERSION="3.7.0"
 	MY_P="${P}-llvm-${LLVM_VERSION}"
 	SRC_URI="https://github.com/losalamos/Byfl/releases/download/v${MY_P#${PN}-}/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~amd64-linux"
+	S="${WORKDIR}/${MY_P}"
 fi
 
 DESCRIPTION="Compiler-based Application Analysis"
@@ -24,9 +25,9 @@ HOMEPAGE="https://github.com/losalamos/Byfl"
 
 SLOT="0"
 LICENSE="BSD"
-IUSE="dragonegg hdf5 static-libs sqlite"
+IUSE="hdf5 static-libs sqlite"
 
-RDEPEND="dragonegg? ( >=sys-devel/dragonegg-${LLVM_VERSION} )
+RDEPEND="
 	>=sys-devel/clang-${LLVM_VERSION}
 	>=sys-devel/llvm-${LLVM_VERSION}
 	sys-devel/binutils:0
@@ -38,7 +39,6 @@ DEPEND="${RDEPEND}"
 
 src_configure() {
 	append-cxxflags -std=c++11
-	use dragonegg || export ax_cv_file_dragonegg_so=no
 	use sqlite || export ac_cv_lib_sqlite3_sqlite3_errstr=no
 	autotools-utils_src_configure H5CXX=$(usex hdf5 h5c++ no)
 }
