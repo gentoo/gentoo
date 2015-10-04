@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Expect for Perl"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="test minimal"
 
 RDEPEND="
