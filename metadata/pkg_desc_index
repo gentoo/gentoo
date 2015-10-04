@@ -4894,7 +4894,7 @@ dev-libs/udis86 1.7-r2 1.7.2: Disassembler library for the x86/-64 architecture 
 dev-libs/unibilium 1.1.2 1.1.4: A very basic terminfo library
 dev-libs/urdfdom 0.3.0 9999: URDF (U-Robot Description Format) library
 dev-libs/urdfdom_headers 0.3.0 9999: URDF (U-Robot Description Format) headers
-dev-libs/uriparser 0.7.9 0.8.0 0.8.1 0.8.2: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
+dev-libs/uriparser 0.7.9 0.8.0 0.8.1 0.8.2 0.8.3: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
 dev-libs/userspace-rcu 0.7.12 0.7.13 0.8.4 0.8.5 0.8.6: userspace RCU (read-copy-update) library
 dev-libs/ustr 1.0.4-r5 1.0.4-r7: Low-overhead managed string library for C
 dev-libs/utfcpp 2.3.4: A simple, portable and lightweight generic library for handling UTF-8 encoded strings.
@@ -11745,7 +11745,7 @@ media-gfx/monica 3.7: Monica is a Monitor Calibration Tool
 media-gfx/mscgen 0.20: A message sequence chart generator
 media-gfx/mypaint 1.0.0-r1 1.1.0 1.1.0-r1 1.1.0-r2: fast and easy graphics application for digital painters
 media-gfx/nip2 7.26.4: VIPS Image Processing Graphical User Interface
-media-gfx/nomacs 2.4.2 2.4.4 2.4.4-r1: Qt4-based image viewer
+media-gfx/nomacs 2.4.2 2.4.4 2.4.6: Qt-based image viewer
 media-gfx/nvidia-cg-toolkit 3.1.0013-r3 3.1.0013-r5: NVIDIA's C graphics compiler toolkit
 media-gfx/nvidia-texture-tools 2.0.8-r2: A set of cuda-enabled texture tools and compressors
 media-gfx/opcion 1.1.1-r2: Free font viewer written in Java
@@ -14156,7 +14156,7 @@ net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1 2.10.2: Userspace tools t
 net-misc/datapipe 1.0-r1: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
-net-misc/dhcp 4.2.5_p1-r2 4.3.1-r2 4.3.2 4.3.3: ISC Dynamic Host Configuration Protocol (DHCP) client/server
+net-misc/dhcp 4.2.5_p1-r2 4.3.1-r2 4.3.2 4.3.3 4.3.3-r1: ISC Dynamic Host Configuration Protocol (DHCP) client/server
 net-misc/dhcpcd 6.9.0 6.9.1 6.9.2 6.9.3 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.4 0.7.5: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
