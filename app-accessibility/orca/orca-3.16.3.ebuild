@@ -15,7 +15,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Orca"
 
 LICENSE="LGPL-2.1+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 
 IUSE="+braille"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -23,7 +23,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # liblouis is not in portage yet
 # it is used to provide contracted braille support
 # XXX: Check deps for correctness
-COMMON_DEPEND="
+COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-accessibility/at-spi2-atk-2.10:2
 	>=app-accessibility/at-spi2-core-2.10:2[introspection]
 	>=dev-libs/atk-2.10
@@ -33,7 +33,6 @@ COMMON_DEPEND="
 	braille? (
 		>=app-accessibility/brltty-5.0-r3[python,${PYTHON_USEDEP}]
 		dev-libs/liblouis[python,${PYTHON_USEDEP}] )
-	${PYTHON_DEPS}
 "
 RDEPEND="${COMMON_DEPEND}
 	>=app-accessibility/speech-dispatcher-0.8[python,${PYTHON_USEDEP}]
@@ -45,19 +44,18 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.50
+	dev-util/itstool
 	virtual/pkgconfig
 "
 #	app-text/yelp-tools
 
 src_prepare() {
 	gnome2_src_prepare
-
 	python_copy_sources
 }
 
 src_configure() {
 	python_foreach_impl run_in_build_dir gnome2_src_configure \
-		ITSTOOL="$(type -P true)" \
 		$(use_with braille liblouis)
 }
 
