@@ -18,7 +18,7 @@ DESCRIPTION="A modern, simple and very fast Mysql library for Ruby - binding to 
 HOMEPAGE="https://github.com/brianmario/mysql2"
 
 LICENSE="MIT"
-SLOT="0.3"
+SLOT="0.4"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE=""
 
