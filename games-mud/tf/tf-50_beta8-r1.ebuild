@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="+atcp debug doc +gmcp ipv6 +option102 ssl"
 
-RDEPEND="ssl? ( dev-libs/openssl )
+RDEPEND="ssl? ( dev-libs/openssl:0= )
 	dev-libs/libpcre"
 DEPEND=${RDEPEND}
 
