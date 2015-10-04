@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst prepare setup
+DESCRIPTION=Tool to check TLS/SSL cipher support
+EAPI=5
+HOMEPAGE=https://testssl.sh/
+IUSE=bundled-openssl
+KEYWORDS=~amd64
+LICENSE=GPL-2 bundled-openssl? ( openssl )
+RDEPEND=dev-libs/openssl:0 sys-apps/util-linux
+SLOT=0
+SRC_URI=https://github.com/drwetter/testssl.sh/archive/v2.6.tar.gz -> testssl-2.6.tar.gz
+_md5_=701f58ffeb0b47332105bdb26ae77656
