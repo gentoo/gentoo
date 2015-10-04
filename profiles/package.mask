@@ -629,21 +629,6 @@ www-client/google-chrome:unstable
 # This is not for your production kit quite yet.
 =net-misc/asterisk-12*
 
-# Michał Górny <mgorny@gentoo.org> (15 Dec 2013)
-# Masked for testing due to almost complete redesign. It is now
-# completely split and no longer has an integrated GUI. Currently,
-# the only working GUI is the PyQt4 GUI and it has license issues
-# (bug #494524).
->=games-emulation/mupen64plus-2
-games-emulation/mupen64plus-core
-games-emulation/mupen64plus-audio-sdl
-games-emulation/mupen64plus-input-sdl
-games-emulation/mupen64plus-rsp-hle
-games-emulation/mupen64plus-ui-console
-games-emulation/mupen64plus-video-glide64mk2
-games-emulation/mupen64plus-video-rice
-games-emulation/m64py
-
 # Justin Lecher <jlec@gentoo.org> (14 Oct 2013)
 # Seems to break all deps - API change?
 >=sci-libs/metis-5
