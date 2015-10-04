@@ -4,15 +4,16 @@
 
 EAPI=5
 
-inherit eutils cmake-multilib multilib git-r3
+MY_P=${PN}-${PV/_rc/rc}
+inherit eutils cmake-multilib multilib
 
 DESCRIPTION="Access a working SSH implementation by means of a library"
 HOMEPAGE="http://www.libssh.org/"
-EGIT_REPO_URI="git://git.libssh.org/projects/libssh.git"
+SRC_URI="https://red.libssh.org/attachments/download/154/${MY_P}.tar.xz -> ${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
-KEYWORDS=""
-SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+SLOT="0/4" # subslot = soname major version
 IUSE="debug doc examples gcrypt gssapi libressl pcap +sftp ssh1 server static-libs test zlib"
 # Maintainer: check IUSE-defaults at DefineOptions.cmake
 
@@ -32,7 +33,11 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS README ChangeLog )
 
-EGIT_MIN_CLONE_TYPE=single
+S=${WORKDIR}/${MY_P}
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.5.0-tests.patch
+)
 
 src_prepare() {
 	# just install the examples do not compile them
