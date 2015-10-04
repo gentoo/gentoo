@@ -21,7 +21,7 @@ RDEPEND="media-libs/libpng:0=
 	sys-libs/zlib:0=[minizip]
 	lirc? ( app-misc/lirc:0 )
 	osd? (
-		media-fonts/ttf-bitstream-vera
+		media-fonts/dejavu
 		media-libs/freetype:2=
 		virtual/opengl:0=
 		virtual/glu:0=
@@ -107,6 +107,6 @@ src_install() {
 	local font_path=/usr/share/mupen64plus/font.ttf
 	rm "${D%/}/${font_path}" || die
 	if use osd; then
-		dosym /usr/share/fonts/ttf-bitstream-vera/Vera.ttf "${font_path}"
+		dosym /usr/share/fonts/dejavu/DejaVuSans.ttf "${font_path}"
 	fi
 }
