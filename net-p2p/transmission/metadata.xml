@@ -3,6 +3,10 @@
 <pkgmetadata>
   <herd>net-p2p</herd>
   <maintainer>
+    <email>floppym@gentoo.org</email>
+    <name>Mike Gilbert</name>
+  </maintainer>
+  <maintainer>
     <email>ssuominen@gentoo.org</email>
     <name>Samuli Suominen</name>
   </maintainer>
