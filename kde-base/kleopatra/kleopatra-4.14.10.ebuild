@@ -30,7 +30,10 @@ KMEXTRACTONLY="
 	libkleo/
 "
 
-PATCHES=( "${FILESDIR}/${PN}-install-headers.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-install-headers.patch"
+	"${FILESDIR}/${P}-newer-boost-buildfix.patch"
+)
 
 src_unpack() {
 	if use handbook; then

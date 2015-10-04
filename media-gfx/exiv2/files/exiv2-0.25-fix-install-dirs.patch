@@ -1,0 +1,64 @@
+USE GNUInstallDirs to fix man page and multilib install
+
+See also: http://dev.exiv2.org/issues/1125
+Patch based on: http://pkgs.fedoraproject.org/cgit/exiv2.git/tree/exiv2-0.25-cmake_LIB_SUFFIX.patch
+
+--- b/config/CMakeChecks.txt	2015-07-19 14:23:11.606686135 +0200
++++ b/config/CMakeChecks.txt	2015-06-22 08:41:22.913094633 -0500
+@@ -37,6 +37,8 @@
+ INCLUDE( CheckCSourceCompiles )
+ INCLUDE( CheckCXXSourceCompiles )
+ 
++INCLUDE( GNUInstallDirs )
++
+ INCLUDE( FindIconv )
+ 
+ SET( STDC_HEADERS ON )
+@@ -289,9 +291,9 @@
+ 
+ IF( NOT MSVC )
+     CONFIGURE_FILE( config/exiv2.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/exiv2.pc @ONLY )
+-    INSTALL( FILES ${CMAKE_CURRENT_BINARY_DIR}/exiv2.pc DESTINATION lib/pkgconfig )
++    INSTALL( FILES ${CMAKE_CURRENT_BINARY_DIR}/exiv2.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig )
+     CONFIGURE_FILE( config/exiv2.lsm.cmake ${CMAKE_CURRENT_BINARY_DIR}/exiv2.lsm)
+-    INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/exiv2.lsm DESTINATION lib/pkgconfig )
++    INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/exiv2.lsm DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig )
+ ENDIF( NOT MSVC )
+ 
+ # ******************************************************************************
+--- a/src/CMakeLists.txt	2015-07-19 14:06:54.104906589 +0200
++++ b/src/CMakeLists.txt	2015-07-19 14:12:37.982607526 +0200
+@@ -321,7 +321,7 @@
+ 
+ # ******************************************************************************
+ # Man page
+-INSTALL( FILES exiv2.1 DESTINATION man/man1 )
++INSTALL( FILES exiv2.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1 )
+ 
+ # That's all Folks!
+ ##
+--- a/CMakeLists.txt	2015-06-15 10:32:21.000000000 -0500
++++ b/CMakeLists.txt	2015-06-22 08:48:19.486245765 -0500
+@@ -25,7 +25,7 @@ if( POLICY CMP0042 )
+ else()
+     SET(CMAKE_MACOSX_RPATH 1)
+ endif()
+-SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
++#SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}")
+ 
+ 
+ SET( PACKAGE_COPYRIGHT      "Andreas Huggel" )
+@@ -156,10 +156,10 @@ INCLUDE( config/CMakeChecks.txt )
+ 
+ SET( INSTALL_TARGET_STANDARD_ARGS
+      RUNTIME DESTINATION bin
+-     LIBRARY DESTINATION lib
+-     ARCHIVE DESTINATION lib
++     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+ )
+-SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
++#SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}")
+ 
+ ##
+ # add sources from XMPSDK directory
