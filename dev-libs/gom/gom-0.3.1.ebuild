@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.40.0
 	sys-devel/gettext
 	virtual/pkgconfig
-	test? ( x11-libs/gdk-pixbuf )
+	x11-libs/gdk-pixbuf
 "
 
 src_configure() {

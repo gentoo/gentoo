@@ -1,0 +1,15 @@
+--- a/CMakeLists.txt	2015-08-30 14:18:57.169314811 +0200
++++ b/CMakeLists.txt	2015-08-30 14:17:34.534347890 +0200
+@@ -1,5 +1,10 @@
+-find_package(KDE4 REQUIRED)
+-include(KDE4Defaults)
++cmake_minimum_required(VERSION 2.8.12)
++
++find_package(ECM 0.0.9 REQUIRED NO_MODULE)
++set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
++
++include(KDEInstallDirs)
++include(KDECMakeSettings)
+ 
+ install(DIRECTORY Ariya DESTINATION ${WALLPAPER_INSTALL_DIR} PATTERN .svn EXCLUDE)
+ 
