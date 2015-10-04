@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND="sys-libs/zlib
 	sys-libs/ncurses
-	dev-libs/openssl
+	dev-libs/openssl:0=
 	virtual/libiconv"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
