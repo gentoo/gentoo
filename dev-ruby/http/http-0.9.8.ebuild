@@ -32,4 +32,10 @@ ruby_add_bdepend "
 all_ruby_prepare() {
 	sed -i -e '/simplecov/,/end/ s:^:#:' \
 		-e '1irequire "cgi"' spec/spec_helper.rb || die
+
+	# Avoid specs that require network access
+	sed -i -e '/.persistent/,/^  end/ s:^:#:' \
+		spec/lib/http_spec.rb || die
+	sed -i -e '/with non-ASCII URLs/,/^    end/ s:^:#:' \
+		spec/lib/http/client_spec.rb || die
 }

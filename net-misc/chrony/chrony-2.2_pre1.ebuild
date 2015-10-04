@@ -39,7 +39,7 @@ src_prepare() {
 	sed -i \
 		-e 's:/etc/chrony\.:/etc/chrony/chrony.:g' \
 		-e 's:/var/run:/run:g' \
-		conf.c chrony.texi.in examples/* FAQ || die
+		conf.c chrony.texi.in examples/* || die
 }
 
 src_configure() {
@@ -72,6 +72,7 @@ src_configure() {
 		${CHRONY_EDITLINE} \
 		${EXTRA_ECONF} \
 		--docdir=/usr/share/doc/${PF} \
+		--chronysockdir=/run/chrony \
 		--infodir=/usr/share/info \
 		--mandir=/usr/share/man \
 		--prefix=/usr \
@@ -99,8 +100,7 @@ src_install() {
 	newconfd "${FILESDIR}"/chronyd.conf chronyd
 
 	insinto /etc/${PN}
-	newins examples/chrony.conf.example3 chrony.conf
-	newins examples/chrony.keys.example chrony.keys
+	newins examples/chrony.conf.example1 chrony.conf
 
 	dodoc examples/*.example*
 
