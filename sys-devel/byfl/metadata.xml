@@ -5,9 +5,6 @@
 		<email>ottxor@gentoo.org</email>
 		<name>Christoph Junghans</name>
 	</maintainer>
-	<use>
-		<flag name="dragonegg">Add support for non C languages through <pkg>sys-devel/dragonegg</pkg></flag>
-	</use>
 	<upstream>
 		<remote-id type="github">losalamos/Byfl</remote-id>
 	</upstream>
