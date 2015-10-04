@@ -25,10 +25,10 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-m
 IUSE=""
 
 ruby_add_rdepend "
-	=dev-ruby/hike-1* >=dev-ruby/hike-1.2
+	=dev-ruby/hike-1*:0 >=dev-ruby/hike-1.2:0
 	=dev-ruby/multi_json-1*
-	=dev-ruby/rack-1*
-	=dev-ruby/tilt-1* >=dev-ruby/tilt-1.3.1
+	=dev-ruby/rack-1*:*
+	=dev-ruby/tilt-1*:0 >=dev-ruby/tilt-1.3.1:0
 	!!<dev-ruby/sprockets-2.2.2-r1:2.2"
 
 ruby_add_bdepend "test? (
@@ -55,6 +55,9 @@ all_ruby_prepare() {
 
 	# Require a newer version of execjs since we do not have this slotted.
 	sed -i -e '/execjs/ s/1.0/2.0/' ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	# Make sure the correct version of tilt is used when testing
+	sed -i -e '1igem "tilt", "~>1.3"' test/sprockets_test.rb || die
 }
 
 each_ruby_prepare() {
@@ -68,5 +71,10 @@ each_ruby_test() {
 	rm -rf test || die
 	mv test-new test || die
 
+	# Make sure we use the correct tilt version.
+	sed -i -e '2i gem "tilt", "~>1.3"' bin/sprockets || die
+
 	each_fakegem_test
+
+	sed -i -e '/tilt/d' bin/sprockets || die
 }
