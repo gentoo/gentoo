@@ -12051,7 +12051,7 @@ media-libs/liblastfm 1.0.8 1.0.9: Collection of libraries to integrate Last.fm s
 media-libs/liblingoteach 0.2.3: A library to support lingoteach-ui and for generic lesson development
 media-libs/liblo 0.26 0.27 0.28: Lightweight OSC (Open Sound Control) implementation
 media-libs/liblqr 0.4.2-r1: An easy to use C/C++ seam carving library
-media-libs/liblrdf 0.5.0: A library for the manipulation of RDF file in LADSPA plugins
+media-libs/liblrdf 0.5.0 0.5.0-r1: A library for the manipulation of RDF file in LADSPA plugins
 media-libs/liblscp 0.5.5 0.5.6 0.5.7: C++ library for the Linux Sampler control protocol
 media-libs/libmad 0.15.1b-r8: "M"peg "A"udio "D"ecoder library
 media-libs/libmatroska 1.2.0 1.3.0 1.4.0 1.4.1 1.4.2: Extensible multimedia container format based on EBML
@@ -12768,7 +12768,7 @@ media-sound/mserv 0.35-r1: Jukebox-style music server
 media-sound/mt-daapd 0.2.4.2: A multi-threaded implementation of Apple's DAAP server
 media-sound/muine 0.8.11-r3: A music player for GNOME
 media-sound/multimux 0.2.5.2: combines up to 8 audio mono wave ch. into one big multi ch. wave file
-media-sound/mumble 1.2.6 1.2.8 1.2.10: Mumble is an open source, low-latency, high quality voice chat software
+media-sound/mumble 1.2.6 1.2.8 1.2.10 1.2.10-r1: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/mup 5.7: Program for printing music scores
 media-sound/murmur 1.2.5 1.2.8 1.2.10: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/muse 0.9.2: Multiple Streaming Engine, an icecast source streamer
