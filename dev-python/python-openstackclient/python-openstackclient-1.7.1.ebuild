@@ -18,7 +18,7 @@ IUSE="doc test"
 REQUIRED_USE="test? ( doc )"
 
 CDEPEND="
-	>=dev-python/pbr-1.4[${PYTHON_USEDEP}]
+	>=dev-python/pbr-1.6[${PYTHON_USEDEP}]
 	<dev-python/pbr-2.0[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	${CDEPEND}
@@ -33,7 +33,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		>=dev-python/testrepository-0.0.18[${PYTHON_USEDEP}]
 		>=dev-python/testtools-1.4.0[${PYTHON_USEDEP}]
 		>=dev-python/webob-1.2.3[${PYTHON_USEDEP}]
-		>=dev-python/tempest-lib-0.6.1[${PYTHON_USEDEP}]
+		>=dev-python/tempest-lib-0.8.0[${PYTHON_USEDEP}]
 	)
 	doc? (
 		>=dev-python/oslo-sphinx-2.5.0[${PYTHON_USEDEP}]
@@ -47,13 +47,14 @@ RDEPEND="
 	>=dev-python/Babel-1.3[${PYTHON_USEDEP}]
 	>=dev-python/cliff-1.14.0[${PYTHON_USEDEP}]
 	>=dev-python/cliff-tablib-1.0[${PYTHON_USEDEP}]
-	>=dev-python/os-client-config-1.4.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-config-1.11.0[${PYTHON_USEDEP}]
+	>=dev-python/os-client-config-1.4[${PYTHON_USEDEP}]
+	!~dev-python/os-client-config-1.6.2[${PYTHON_USEDEP}]
+	>=dev-python/oslo-config-2.3.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-i18n-1.5.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-utils-1.9.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-utils-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/python-glanceclient-0.18.0[${PYTHON_USEDEP}]
 	>=dev-python/python-keystoneclient-1.6.0[${PYTHON_USEDEP}]
-	>=dev-python/python-novaclient-2.26.0[${PYTHON_USEDEP}]
+	>=dev-python/python-novaclient-2.28.1[${PYTHON_USEDEP}]
 	>=dev-python/python-cinderclient-1.3.1[${PYTHON_USEDEP}]
 	>=dev-python/python-neutronclient-2.6.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.5.2[${PYTHON_USEDEP}]
