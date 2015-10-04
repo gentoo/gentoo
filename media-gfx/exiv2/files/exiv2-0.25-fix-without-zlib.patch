@@ -1,0 +1,22 @@
+Fix exiv2.hpp if built with PNG support disabled (--without-zlib)
+
+Fixed upstream in >=0.26
+
+See also: http://dev.exiv2.org/issues/1103
+Gentoo bug 1: https://bugs.gentoo.org/show_bug.cgi?id=552046
+Gentoo bug 2: https://bugs.gentoo.org/show_bug.cgi?id=535836
+
+Index: exiv2.hpp
+===================================================================
+--- a/include/exiv2/exiv2.hpp	(revision 3887)
++++ b/include/exiv2/exiv2.hpp	(revision 3888)
+@@ -52,7 +52,9 @@
+ #include "mrwimage.hpp"
+ #include "orfimage.hpp"
+ #include "pgfimage.hpp"
++#ifdef   EXV_HAVE_LIBZ
+ #include "pngimage.hpp"
++#endif
+ #include "preview.hpp"
+ #include "properties.hpp"
+ #include "psdimage.hpp"
