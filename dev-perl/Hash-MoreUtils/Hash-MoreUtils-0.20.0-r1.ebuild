@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="Provide the stuff missing in Hash::Util"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND=""
