@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>kensington@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="bundled-openssl">Install precompiled versions of OpenSSL for greater testing coverage</flag>
+	</use>
+</pkgmetadata>
