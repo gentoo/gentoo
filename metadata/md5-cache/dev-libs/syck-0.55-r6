@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=python? ( !dev-python/pysyck ) >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)]
+DEPEND=python? ( !dev-python/pysyck ) >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)]
 DESCRIPTION=Syck is an extension for reading and writing YAML swiftly in popular scripting languages
 EAPI=5
 HOMEPAGE=http://whytheluckystiff.net/syck/
@@ -7,9 +7,9 @@ IUSE=php python python_targets_python2_7
 KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=BSD
 PDEPEND=php? ( dev-php/pecl-syck !=dev-libs/syck-0.55-r1 )
-RDEPEND=python? ( !dev-python/pysyck ) >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)]
+RDEPEND=python? ( !dev-python/pysyck ) >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)]
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=http://rubyforge.org/frs/download.php/4492/syck-0.55.tar.gz
-_eclasses_=distutils-r1	46506dd0dd992b3c89b0d00daabfd86c	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=distutils-r1	46506dd0dd992b3c89b0d00daabfd86c	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	006fb3ff3b8a9aa58f251f2312836cdf	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=644e69f2740b136da20d148ff664f61c

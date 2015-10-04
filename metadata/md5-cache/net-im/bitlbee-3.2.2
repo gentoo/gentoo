@@ -6,9 +6,9 @@ HOMEPAGE=http://www.bitlbee.org/
 IUSE=debug gnutls ipv6 +xmpp libevent msn nss +oscar otr +plugins purple selinux skype ssl test twitter +yahoo xinetd python_targets_python2_7
 KEYWORDS=amd64 ppc ~ppc64 x86 ~x86-fbsd
 LICENSE=GPL-2
-RDEPEND=>=dev-libs/glib-2.14 purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent ) otr? ( >=net-libs/libotr-4 ) gnutls? ( net-libs/gnutls ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( ssl? ( dev-libs/openssl ) ) ) virtual/logger skype? ( dev-python/skype4py[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] net-im/skype ) xinetd? ( sys-apps/xinetd )
+RDEPEND=>=dev-libs/glib-2.14 purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent ) otr? ( >=net-libs/libotr-4 ) gnutls? ( net-libs/gnutls ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( ssl? ( dev-libs/openssl ) ) ) virtual/logger skype? ( dev-python/skype4py[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] net-im/skype ) xinetd? ( sys-apps/xinetd )
 REQUIRED_USE=|| ( purple xmpp msn oscar yahoo ) msn? ( || ( gnutls nss ssl ) ) xmpp? ( !nss )
 SLOT=0
 SRC_URI=http://get.bitlbee.org/src/bitlbee-3.2.2.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	006fb3ff3b8a9aa58f251f2312836cdf	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=748bf04710ddb8675f35fc3da48cb241

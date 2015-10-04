@@ -10,5 +10,5 @@ RDEPEND=>=dev-python/Babel-1.3[python_targets_python2_7(-)?,python_targets_pytho
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 )
 SLOT=0
 SRC_URI=mirror://pypi/o/oslo.i18n/oslo.i18n-1.6.0.tar.gz
-_eclasses_=distutils-r1	46506dd0dd992b3c89b0d00daabfd86c	eutils	43da5163ba106e87d22d2e7d6d67537f	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-r1	32b376cbb100a3a8083b3a0de023e117	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=distutils-r1	46506dd0dd992b3c89b0d00daabfd86c	eutils	43da5163ba106e87d22d2e7d6d67537f	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-r1	32b376cbb100a3a8083b3a0de023e117	python-utils-r1	006fb3ff3b8a9aa58f251f2312836cdf	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=8b8c07848e92a38fee38969fc39b1cae

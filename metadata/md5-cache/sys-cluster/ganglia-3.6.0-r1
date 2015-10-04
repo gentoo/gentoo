@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure install postinst setup
-DEPEND=dev-libs/confuse dev-libs/expat >=dev-libs/apr-1.0 !dev-db/firebird pcre? ( dev-libs/libpcre ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] )
+DEPEND=dev-libs/confuse dev-libs/expat >=dev-libs/apr-1.0 !dev-db/firebird pcre? ( dev-libs/libpcre ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] )
 DESCRIPTION=A scalable distributed monitoring system for clusters and grids
 EAPI=5
 HOMEPAGE=http://ganglia.sourceforge.net/
 IUSE=minimal pcre python examples python_targets_python2_7
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=BSD
-RDEPEND=dev-libs/confuse dev-libs/expat >=dev-libs/apr-1.0 !dev-db/firebird pcre? ( dev-libs/libpcre ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) !minimal? ( net-analyzer/rrdtool )
+RDEPEND=dev-libs/confuse dev-libs/expat >=dev-libs/apr-1.0 !dev-db/firebird pcre? ( dev-libs/libpcre ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] ) !minimal? ( net-analyzer/rrdtool )
 REQUIRED_USE=python? ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=mirror://sourceforge/ganglia/ganglia-3.6.0.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	39c6b012a0512678e698e712b5b7ecc2	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	006fb3ff3b8a9aa58f251f2312836cdf	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=af43e9f1a0e8c2487586496f1b4280b3
