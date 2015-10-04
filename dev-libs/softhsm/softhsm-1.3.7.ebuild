@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,11 +15,11 @@ LICENSE="BSD"
 
 RDEPEND="
 	dev-db/sqlite:3
-	>=dev-libs/botan-1.10.1[threads]
+	dev-libs/botan[threads]
 "
 DEPEND="${RDEPEND}"
 
-DOCS=( AUTHORS NEWS README )
+DOCS=( AUTHORS NEWS )
 
 src_configure() {
 	econf \

@@ -5,6 +5,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Mike Gilbert <floppym@gentoo.org> (03 Oct 2015)
+# Unmask python3.5 for python-exec
+dev-lang/python-exec -python_targets_python3_5
+
 # Andreas Huettel <dilfridge@gentoo.org> (26 Sep 2015)
 # Not stable enough for stable (Debian and SuSE disable it completely)
 =app-office/libreoffice-5.0* gtk3

@@ -5,6 +5,11 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Mike Gilbert <floppym@gentoo.org> (02 Oct 2015)
+# Needs dev-lang/python:3.5 stable
+python_targets_python3_5
+python_single_target_python3_5
+
 # Justin Lecher <jlec@gentoo.org> (30 Sep 2015)
 # No stable libressl yet
 libressl

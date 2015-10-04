@@ -8,6 +8,7 @@ python2_7 - Build for Python 2.7 only
 python3_2 - Build for Python 3.2 only (deprecated)
 python3_3 - Build for Python 3.3 only
 python3_4 - Build for Python 3.4 only
+python3_5 - Build for Python 3.5 only
 jython2_5 - Build for Jython 2.5 only
 jython2_7 - Build for Jython 2.7 only
 pypy - Build for PyPy only

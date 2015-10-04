@@ -14,7 +14,7 @@ python3_1	3.1	dead	3.1
 python3_2	3.2	dead	3.2
 python3_3	3.3	supported	3.3
 python3_4		current	3.4
-python3_5		future	3.5
+python3_5		supported	3.5
 
 pypy1_8	2.7-pypy-1.8	dead	p1.8
 pypy1_9	2.7-pypy-1.9	dead	p1.9
