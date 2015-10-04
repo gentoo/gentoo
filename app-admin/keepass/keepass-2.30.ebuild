@@ -33,6 +33,9 @@ src_prepare() {
 	# KeePass looks for some XSL files in the same folder as the executable,
 	# we prefer to have it in /usr/share/KeePass
 	epatch "${FILESDIR}/${PN}-2.20-xsl-path-detection.patch"
+	# bug # 558094
+	has_version ">=dev-lang/mono-4" && epatch \
+		"${FILESDIR}/${P}-mono-4-support.patch"
 }
 
 src_compile() {
