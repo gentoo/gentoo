@@ -7605,7 +7605,7 @@ dev-python/python-musicbrainz 0.7.4-r1: Python Bindings for the MusicBrainz XML 
 dev-python/python-musicbrainz-ngs 0.4: This library implements webservice bindings for the Musicbrainz NGS site
 dev-python/python-nbxmpp 0.5.1 0.5.2 0.5.3: Python library to use Jabber/XMPP networks in a non-blocking way
 dev-python/python-neutronclient 2.3.6 2.4.0 2.6.0 3.0.0: A client for the OpenStack Quantum API
-dev-python/python-novaclient 2.17.0 2.17.0-r1 2.20.0 2.23.2 2.25.0 2.27.0: A client for the OpenStack Nova API
+dev-python/python-novaclient 2.17.0 2.17.0-r1 2.20.0 2.23.2 2.25.0 2.27.0 2.30.1: A client for the OpenStack Nova API
 dev-python/python-nss 0.16.0: Python bindings for Network Security Services (NSS)
 dev-python/python-oembed 0.2.1-r1 0.2.2: A Python library that implements an OEmbed consumer
 dev-python/python-openid 2.2.5-r1: OpenID support for servers and consumers
@@ -7827,7 +7827,7 @@ dev-python/tabulate 0.7.2 0.7.3 0.7.5: Pretty-print tabular data
 dev-python/tagpy 0.94.8-r1 2013.1: Python Bindings for TagLib
 dev-python/taskflow 0.1.3 0.2 0.5.0 0.7.1 0.10.0 0.10.1: A library to do [jobs, tasks, flows] in a HA manner using different backends
 dev-python/tdaemon 0.1.6: Test Daemon
-dev-python/tempest-lib 0.3.0 0.4.0 0.5.0 0.7.0: A library to assist in creating functional or integrated test suites for OpenStack projects.
+dev-python/tempest-lib 0.3.0 0.4.0 0.5.0 0.7.0 0.9.0: A library to assist in creating functional or integrated test suites for OpenStack projects.
 dev-python/tempita 0.5.3: A very small text templating language
 dev-python/termcolor 1.1.0-r1: ANSII Color formatting for output in terminal
 dev-python/terminado 0.5: Terminals served to term.js using Tornado websockets
