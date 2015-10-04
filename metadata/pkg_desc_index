@@ -1063,7 +1063,7 @@ app-editors/vim-core 7.4.273 7.4.769 7.4.827 9999: vim and gvim shared files
 app-editors/vim-qt 20140827-r3 20150102-r1: Qt GUI version of the Vim text editor
 app-editors/wily 1.0-r1: An emulation of ACME, Plan9's hybrid window system, shell and editor for programmers
 app-editors/wxhexeditor 0.20 0.21 0.22: A cross-platform hex editor designed specially for large files
-app-editors/xemacs 21.4.22-r4 21.4.24 21.5.31 21.5.33 21.5.34-r2: highly customizable open source text editor and application development system
+app-editors/xemacs 21.4.22-r4 21.4.24 21.5.31 21.5.33 21.5.34-r2 21.5.34-r3: highly customizable open source text editor and application development system
 app-editors/xmlcopyeditor 1.2.0.6 1.2.0.9 1.2.0.12: XML Copy Editor is a fast, free, validating XML editor
 app-editors/xvile 9.8k 9.8n 9.8o 9.8p: VI Like Emacs -- yet another full-featured vi clone
 app-editors/yudit 2.9.2 2.9.6: Free (Y)unicode text editor for all unices
@@ -11365,7 +11365,7 @@ mail-mta/msmtp 1.4.31-r1 1.4.32 1.6.0 1.6.1 1.6.2: An SMTP client and SMTP plugi
 mail-mta/netqmail 1.06 1.06-r1 1.06-r2: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 5.7.2_p1: Lightweight but featured SMTP daemon from OpenBSD
-mail-mta/postfix 2.10.8 2.11.6 3.0.0 3.0.1-r1 3.0.2 3.0.2-r1 3.1_pre20150924: A fast and secure drop-in replacement for sendmail
+mail-mta/postfix 2.10.8 2.11.6 3.0.0 3.0.1-r1 3.0.2 3.0.2-r1 3.0.2-r2 3.1_pre20150924 3.1_pre20150924-r1: A fast and secure drop-in replacement for sendmail
 mail-mta/qmail-ldap 1.03-r8: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.14.9 8.14.9-r1: Widely-used Mail Transport Agent (MTA)
@@ -11646,7 +11646,7 @@ media-gfx/evoluspencil 2.0.5: A simple GUI prototyping tool to create mockups
 media-gfx/exact-image 0.8.1-r1: A fast, modern and generic image processing library
 media-gfx/exif 0.6.21: Small CLI util to show EXIF infos hidden in JPEG files
 media-gfx/exiftags 1.01: Extracts JPEG EXIF headers from digital camera photos
-media-gfx/exiv2 0.24-r1 0.25: EXIF, IPTC and XMP metadata C++ library and command line utility
+media-gfx/exiv2 0.24-r1 0.25-r1: EXIF, IPTC and XMP metadata C++ library and command line utility
 media-gfx/fbgrab 1.0-r2 1.3: Framebuffer screenshot utility
 media-gfx/fbida 2.09-r4 2.10: Image viewers for the framebuffer console (fbi) and X11 (ida)
 media-gfx/fblogo 0.5.2: Creates images to substitute Linux boot logo
@@ -11915,7 +11915,7 @@ media-libs/fontconfig-ultimate 2015.04 2015.08.01: A set of font rendering and r
 media-libs/freealut 1.1.0-r3: The OpenAL Utility Toolkit
 media-libs/freeglut 2.8.1-r1 3.0.0: A completely OpenSourced alternative to the OpenGL Utility Toolkit (GLUT) library
 media-libs/freeimage 3.15.4: Image library supporting many formats
-media-libs/freetype 2.5.5 2.6: A high-quality and portable font engine
+media-libs/freetype 2.5.5 2.6 2.6.1: A high-quality and portable font engine
 media-libs/freeverb3 2.5.13-r2 2.6.6 3.1.1 3.1.1-r1: High Quality Reverb and Impulse Response Convolution library including XMMS/Audacious Effect plugins
 media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
 media-libs/game-music-emu 0.6.0-r1: Video game music file emulators
@@ -13483,7 +13483,7 @@ net-dialup/moserial 3.0.8 3.0.9: A clean and friendly gtk-based serial terminal
 net-dialup/mwavem 2.0-r1 2.0-r2: User level application for IBM Mwave modem
 net-dialup/neocon 20110228: A simple serial console utility that tries to open ttys repeatedly
 net-dialup/picocom 1.7: minimal dumb-terminal emulation program
-net-dialup/ppp 2.4.4-r25 2.4.5-r3 2.4.6-r3 2.4.7 2.4.7-r1: Point-to-Point Protocol (PPP)
+net-dialup/ppp 2.4.4-r25 2.4.5-r3 2.4.6-r3 2.4.7 2.4.7-r1 2.4.7-r2: Point-to-Point Protocol (PPP)
 net-dialup/ppp-scripts 0: Common set of scripts for various PPP implementations
 net-dialup/pppconfig 2.3.17-r1 2.3.21: A text menu based utility for configuring ppp
 net-dialup/pptpclient 1.7.2-r3 1.8.0: Linux client for PPTP
@@ -13505,7 +13505,7 @@ net-dialup/xl2tpd 1.3.1-r2 1.3.1-r3 1.3.1-r4 1.3.6: A modern version of the Laye
 net-dns/avahi 0.6.31-r6 0.6.31-r8 0.6.31-r10: System which facilitates service discovery on a local network
 net-dns/bind 9.10.2_p3 9.10.2_p4 9.10.2_p4-r1: BIND - Berkeley Internet Name Domain - Name Server
 net-dns/bind-dns-keygen 9.3.2.39-r1: A simple BIND key generator
-net-dns/bind-tools 9.10.1_p1 9.10.2_p2 9.10.2_p4: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
+net-dns/bind-tools 9.10.1_p1 9.10.2_p2 9.10.2_p4 9.10.2_p4-r1: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 net-dns/c-ares 1.7.4 1.7.5 1.8.0 1.9.1 1.10.0 1.10.0-r1: C library that resolves names asynchronously
 net-dns/cagibi 0.2.0: Cache/proxy system for the SSDP part of UPnP
 net-dns/ddclient 3.8.1-r5 3.8.2: Perl updater client for dynamic DNS services

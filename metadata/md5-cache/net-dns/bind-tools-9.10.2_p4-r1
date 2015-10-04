@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=ssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) gost? ( >=dev-libs/openssl-1.0.0:0[-bindist] ) xml? ( dev-libs/libxml2 ) idn? ( net-dns/idnkit ) gssapi? ( virtual/krb5 ) readline? ( sys-libs/readline:0= ) seccomp? ( sys-libs/libseccomp ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
+EAPI=5
+HOMEPAGE=http://www.isc.org/software/bind
+IUSE=doc gost gssapi idn ipv6 libressl readline seccomp ssl urandom xml
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=ISC BSD BSD-2 HPND JNIC RSA openssl
+RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) gost? ( >=dev-libs/openssl-1.0.0:0[-bindist] ) xml? ( dev-libs/libxml2 ) idn? ( net-dns/idnkit ) gssapi? ( virtual/krb5 ) readline? ( sys-libs/readline:0= ) seccomp? ( sys-libs/libseccomp ) !<net-dns/bind-9.10.2
+REQUIRED_USE=gost? ( ssl )
+RESTRICT=test
+SLOT=0
+SRC_URI=ftp://ftp.isc.org/isc/bind9/9.10.2-P4/bind-9.10.2-P4.tar.gz
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_md5_=8ba1b548d9d44271f93293e919a5016a
