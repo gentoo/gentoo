@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.25-fix-docs.patch"
 	"${FILESDIR}/${PN}-0.25-fix-install-dirs.patch"
 	"${FILESDIR}/${PN}-0.25-tools-optional.patch"
+	"${FILESDIR}/${PN}-0.25-fix-without-zlib.patch"
 )
 
 pkg_setup() {

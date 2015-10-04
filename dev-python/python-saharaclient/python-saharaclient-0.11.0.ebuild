@@ -50,7 +50,8 @@ RDEPEND="
 	>=dev-python/requests-2.5.2[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/prettytable-0.7[${PYTHON_USEDEP}]
-	<dev-python/prettytable-0.8[${PYTHON_USEDEP}]"
+	<dev-python/prettytable-0.8[${PYTHON_USEDEP}]
+	>=dev-python/oslo-log-1.10.0[${PYTHON_USEDEP}]"
 
 python_prepare_all() {
 	sed -i '/^argparse/d' requirements.txt || die
