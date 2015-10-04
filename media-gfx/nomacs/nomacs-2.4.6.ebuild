@@ -6,14 +6,14 @@ EAPI=5
 
 inherit cmake-utils fdo-mime
 
-DESCRIPTION="Qt4-based image viewer"
+DESCRIPTION="Qt-based image viewer"
 HOMEPAGE="http://www.nomacs.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-source.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~amd64-linux"
-IUSE="opencv raw tiff webp zip"
+IUSE="opencv qt5 raw tiff webp zip"
 
 REQUIRED_USE="
 	raw? ( opencv )
@@ -21,23 +21,36 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	dev-qt/qtcore:4
-	dev-qt/qtgui:4
-	>=media-gfx/exiv2-0.25:=[png]
-	opencv? ( >=media-libs/opencv-2.4:=[qt4] )
+	>=media-gfx/exiv2-0.25:=
+	qt5? (
+		dev-qt/qtconcurrent:5
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtnetwork:5
+		dev-qt/qtprintsupport:5
+		dev-qt/qtwidgets:5
+		opencv? ( media-libs/opencv:=[qt5] )
+		zip? ( dev-libs/quazip[qt5] )
+	)
+	!qt5? (
+		dev-qt/qtcore:4
+		dev-qt/qtgui:4
+		opencv? ( >=media-libs/opencv-2.4:=[qt4] )
+		zip? ( dev-libs/quazip[qt4] )
+	)
 	raw? ( >=media-libs/libraw-0.14:= )
 	tiff? ( media-libs/tiff:0 )
 	webp? ( >=media-libs/libwebp-0.3.1:= )
-	zip? ( dev-libs/quazip )
 "
 DEPEND="${RDEPEND}
+	qt5? ( dev-qt/linguist-tools:5 )
 	virtual/pkgconfig
 "
 
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_QT5=OFF
 		$(cmake-utils_use_enable opencv)
+		$(cmake-utils_use_enable qt5)
 		$(cmake-utils_use_enable raw)
 		$(cmake-utils_use_enable tiff)
 		$(cmake-utils_use_enable webp)
