@@ -105,7 +105,7 @@ app-admin/genromfs 0.5.2: Create space-efficient, small, read-only romfs filesys
 app-admin/gentoo-rsync-mirror 1.0-r4 1.0-r5: Ebuild for setting up a Gentoo rsync mirror
 app-admin/geolizer 2.01.10_p20070115-r1: Webserver log file analyzer
 app-admin/gkrellm 2.3.5-r3 2.3.6_rc1: Single process stack of various system monitors
-app-admin/glance 2015.1.1-r2 2015.1.1-r3 2015.1.9999: Provides services for discovering, registering, and retrieving virtual machine images
+app-admin/glance 2015.1.1-r3 2015.1.9999: Provides services for discovering, registering, and retrieving virtual machine images
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/grubconfig 1.28-r1: Simple Tool to configure Grub-Bootloader
 app-admin/gtkdiskfree 2.0.1-r1: Graphical tool to show free disk space
@@ -13068,7 +13068,7 @@ media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/luvcview 0.2.6: USB Video Class grabber
 media-video/lxdvdrip 1.77: Command line tool to automate the process of ripping and burning DVDs
 media-video/m2vrequantizer 0.0.2_pre20060306: Tool to requantize mpeg2 videos
-media-video/makemkv 1.9.6: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
+media-video/makemkv 1.9.7: Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
 media-video/maven-poke 0.0.1: Matrox utility to read and set maven registers (tune tvout)
 media-video/mediainfo 0.7.65 0.7.72 0.7.73: MediaInfo supplies technical and tag information about media files
