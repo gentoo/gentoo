@@ -23,7 +23,10 @@ else
 	KEYWORDS="amd64 ~arm x86"
 fi
 
-RDEPEND="dev-libs/fcgi"
+RDEPEND="
+	dev-libs/fcgi
+	systemd? ( sys-apps/systemd )
+"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 

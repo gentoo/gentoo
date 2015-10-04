@@ -11,7 +11,7 @@ HOMEPAGE="http://oss.linbit.com/csync2/"
 SRC_URI="http://oss.linbit.com/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="mysql postgres sqlite ssl xinetd"
 
