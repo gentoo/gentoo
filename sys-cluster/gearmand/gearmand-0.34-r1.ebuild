@@ -53,7 +53,7 @@ src_configure() {
 	fi
 	
 	# Explicitly enable c++11 mode
-	append-cppflags -std=c++11
+	append-cxxflags -std=c++11
 
 	autotools-utils_src_configure
 }
