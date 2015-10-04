@@ -47,6 +47,7 @@ start() {
 
 	ebegin "Starting collectd"
 	start-stop-daemon --start --user "${COLLECTD_USER}:collectd" \
+		--env LC_NUMERIC=C \
 		--nicelevel "${COLLECTD_NICELVL}" --exec /usr/sbin/collectd -- \
 			-P "${COLLECTD_PIDFILE}" -C "${COLLECTD_CFGFILE}"
 	eend $? "Failed to start collectd"
@@ -55,6 +56,7 @@ start() {
 stop() {
 	ebegin "Stopping collectd"
 	start-stop-daemon --stop \
+		--env LC_NUMERIC=C \
 		--pidfile "${COLLECTD_PIDFILE}"
 	eend $? "Failed to stop collectd"
 }
