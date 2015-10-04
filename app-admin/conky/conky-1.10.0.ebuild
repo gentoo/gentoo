@@ -64,6 +64,7 @@ RDEPEND="
 	"
 DEPEND="
 	${DEPEND_COMMON}
+	app-text/docbook2X
 	"
 
 CONFIG_CHECK=IPV6
