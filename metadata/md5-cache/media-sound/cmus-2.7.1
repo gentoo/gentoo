@@ -4,11 +4,11 @@ DESCRIPTION=A ncurses based music player with plugin support for many formats
 EAPI=5
 HOMEPAGE=http://cmus.github.io/
 IUSE=aac alsa ao cue cdio cddb discid debug examples +flac jack libsamplerate +mad mikmod modplug mp4 musepack opus oss pidgin pulseaudio tremor +unicode +vorbis wavpack wma
-KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses[unicode?] aac? ( media-libs/faad2 ) alsa? ( >=media-libs/alsa-lib-1.0.11 ) ao? ( media-libs/libao ) cue? ( media-libs/libcue ) cdio? ( dev-libs/libcdio-paranoia ) cddb? ( media-libs/libcddb ) discid? ( media-libs/libdiscid ) flac? ( media-libs/flac ) jack? ( media-sound/jack-audio-connection-kit ) libsamplerate? ( media-libs/libsamplerate ) mad? ( >=media-libs/libmad-0.14 ) mikmod? ( media-libs/libmikmod:0 ) modplug? ( >=media-libs/libmodplug-0.7 ) mp4? ( >=media-libs/libmp4v2-1.9:0 ) musepack? ( >=media-sound/musepack-tools-444 ) opus? ( media-libs/opusfile ) pulseaudio? ( media-sound/pulseaudio ) tremor? ( media-libs/tremor ) !tremor? ( vorbis? ( >=media-libs/libvorbis-1.0 ) ) wavpack? ( media-sound/wavpack ) wma? ( media-video/ffmpeg:= ) pidgin? ( net-im/pidgin dev-python/dbus-python )
 REQUIRED_USE=tremor? ( vorbis ) mp4? ( aac )
 SLOT=0
 SRC_URI=https://github.com/cmus/cmus/archive/v2.7.1.tar.gz -> cmus-2.7.1.tar.gz
 _eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=3360a4a14691741dd69f745228b73bde
+_md5_=6ac188514f40d9ad7aee3a9830b8cf4a
