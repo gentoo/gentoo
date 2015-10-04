@@ -38,11 +38,6 @@
 =sys-kernel/vanilla-sources-4.1.9
 =sys-kernel/gentoo-sources-4.1.9
 
-# Michał Górny <mgorny@gentoo.org> (1 Oct 2015)
-# Thoroughly broken for me since the switch to Python 3 / PyQt5. Masking
-# to account for opt-in testing.
-=games-emulation/m64py-0.2.3
-
 # Patrice Clement <monsieurp@gentoo.org> (1 Oct 2015)
 # Project is over 10 years old and seems to have stalled.
 # Masked for removal in 30 days. See bug 561954.
@@ -633,21 +628,6 @@ www-client/google-chrome:unstable
 # containing significant architectural changes.
 # This is not for your production kit quite yet.
 =net-misc/asterisk-12*
-
-# Michał Górny <mgorny@gentoo.org> (15 Dec 2013)
-# Masked for testing due to almost complete redesign. It is now
-# completely split and no longer has an integrated GUI. Currently,
-# the only working GUI is the PyQt4 GUI and it has license issues
-# (bug #494524).
->=games-emulation/mupen64plus-2
-games-emulation/mupen64plus-core
-games-emulation/mupen64plus-audio-sdl
-games-emulation/mupen64plus-input-sdl
-games-emulation/mupen64plus-rsp-hle
-games-emulation/mupen64plus-ui-console
-games-emulation/mupen64plus-video-glide64mk2
-games-emulation/mupen64plus-video-rice
-games-emulation/m64py
 
 # Justin Lecher <jlec@gentoo.org> (14 Oct 2013)
 # Seems to break all deps - API change?

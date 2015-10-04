@@ -10,6 +10,8 @@
 		<name>Christian Birchinger</name>
 	</maintainer>
 	<use>
+		<flag name="debugger">Build the debugger</flag>
+		<flag name="gles2">Use GLES2 instead of OpenGL</flag>
 		<flag name="new-dynarec">Enable new experimental dynamic recompiler implementation (only for x86 and arm)</flag>
 		<flag name="osd">Overlay emulator messages using on-screen-display</flag>
 	</use>
