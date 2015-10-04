@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
-DEPEND=ssl? ( dev-libs/openssl ) dev-libs/libpcre
+DEPEND=ssl? ( dev-libs/openssl:0= ) dev-libs/libpcre
 DESCRIPTION=A small, flexible, screen-oriented MUD client (aka TinyFugue)
 EAPI=5
 HOMEPAGE=http://tinyfugue.sourceforge.net/
 IUSE=+atcp debug doc +gmcp ipv6 +option102 ssl
 KEYWORDS=amd64 ~ppc ~sparc x86
 LICENSE=GPL-2
-RDEPEND=ssl? ( dev-libs/openssl ) dev-libs/libpcre games-misc/games-envd
+RDEPEND=ssl? ( dev-libs/openssl:0= ) dev-libs/libpcre games-misc/games-envd
 SLOT=0
 SRC_URI=mirror://sourceforge/tinyfugue/tf-50b8.tar.gz http://homepage.mac.com/mikeride/abelinc/scripts/allrootpatch.txt -> tf-allrootpatch.txt http://homepage.mac.com/mikeride/abelinc/scripts/allsrcpatch.txt -> tf-allsrcpatch.txt doc? ( mirror://sourceforge/tinyfugue/tf-50b8-help.tar.gz )
 _eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	games	ce18d731b1dfae17561d847a24ca08c2	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=0dfdfb1b4d72e86f4906d5c7623ae715
+_md5_=611fa15371d5bd190d813ae538e5b74b
