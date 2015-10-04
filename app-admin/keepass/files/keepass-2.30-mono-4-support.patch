@@ -1,0 +1,92 @@
+File keepass-2.30-original/.ipc_in is a fifo while file keepass-2.30/.ipc_in is a fifo
+File keepass-2.30-original/.ipc_out is a fifo while file keepass-2.30/.ipc_out is a fifo
+diff -ur keepass-2.30-original/work/Ext/KeePassMsi/KeePassMsi.sln keepass-2.30/work/Ext/KeePassMsi/KeePassMsi.sln
+--- keepass-2.30-original/work/Ext/KeePassMsi/KeePassMsi.sln	2008-09-11 18:19:14.000000000 +0200
++++ keepass-2.30/work/Ext/KeePassMsi/KeePassMsi.sln	2015-09-28 17:21:23.640007000 +0200
+@@ -1,5 +1,5 @@
+ ﻿
+-Microsoft Visual Studio Solution File, Format Version 10.00
++Microsoft Visual Studio Solution File, Format Version 11.00
+ # Visual Studio 2008
+ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "KeePassMsi", "KeePassMsi.vdproj", "{C4135368-4A84-4924-B5CE-82B18FAADFD4}"
+ EndProject
+diff -ur keepass-2.30-original/work/KeePass/KeePass.csproj keepass-2.30/work/KeePass/KeePass.csproj
+--- keepass-2.30-original/work/KeePass/KeePass.csproj	2015-09-28 17:20:19.828006799 +0200
++++ keepass-2.30/work/KeePass/KeePass.csproj	2015-09-28 17:21:26.160007008 +0200
+@@ -1,5 +1,5 @@
+-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+-  <PropertyGroup>
++﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
++  <PropertyGroup><TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+     <ProductVersion>9.0.30729</ProductVersion>
+@@ -1315,6 +1315,6 @@
+   <Target Name="AfterBuild">
+   </Target>
+   -->
+-  <PropertyGroup>
++  <PropertyGroup><TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+   </PropertyGroup>
+ </Project>
+diff -ur keepass-2.30-original/work/KeePassLib/KeePassLib.csproj keepass-2.30/work/KeePassLib/KeePassLib.csproj
+--- keepass-2.30-original/work/KeePassLib/KeePassLib.csproj	2015-09-28 17:20:19.836006799 +0200
++++ keepass-2.30/work/KeePassLib/KeePassLib.csproj	2015-09-28 17:21:26.148007008 +0200
+@@ -1,5 +1,5 @@
+-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+-  <PropertyGroup>
++﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
++  <PropertyGroup><TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+     <ProductVersion>9.0.30729</ProductVersion>
+diff -ur keepass-2.30-original/work/KeePassLibSD/KeePassLibSD.csproj keepass-2.30/work/KeePassLibSD/KeePassLibSD.csproj
+--- keepass-2.30-original/work/KeePassLibSD/KeePassLibSD.csproj	2014-05-08 15:00:06.000000000 +0200
++++ keepass-2.30/work/KeePassLibSD/KeePassLibSD.csproj	2015-09-28 17:21:26.148007008 +0200
+@@ -1,5 +1,5 @@
+-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+-  <PropertyGroup>
++﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
++  <PropertyGroup><TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+     <ProductVersion>9.0.30729</ProductVersion>
+@@ -14,7 +14,7 @@
+     <PlatformID>3C41C503-53EF-4c2a-8DD4-A8217CAD115E</PlatformID>
+     <OSVersion>4.20</OSVersion>
+     <DeployDirSuffix>KeePassLibSD</DeployDirSuffix>
+-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
++    
+     <FormFactorID>
+     </FormFactorID>
+     <SignAssembly>true</SignAssembly>
+diff -ur keepass-2.30-original/work/KeePass.sln keepass-2.30/work/KeePass.sln
+--- keepass-2.30-original/work/KeePass.sln	2015-09-28 17:20:19.848006799 +0200
++++ keepass-2.30/work/KeePass.sln	2015-09-28 17:21:23.632007000 +0200
+@@ -1,4 +1,4 @@
+-Microsoft Visual Studio Solution File, Format Version 10.00
++Microsoft Visual Studio Solution File, Format Version 11.00
+ # Visual Studio 2008
+ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeePassLib", "KeePassLib\KeePassLib.csproj", "{53573E4E-33CB-4FDB-8698-C95F5E40E7F3}"
+ EndProject
+diff -ur keepass-2.30-original/work/ShInstUtil/ShInstUtil.sln keepass-2.30/work/ShInstUtil/ShInstUtil.sln
+--- keepass-2.30-original/work/ShInstUtil/ShInstUtil.sln	2011-09-10 13:21:28.000000000 +0200
++++ keepass-2.30/work/ShInstUtil/ShInstUtil.sln	2015-09-28 17:21:23.636007000 +0200
+@@ -1,5 +1,5 @@
+ ﻿
+-Microsoft Visual Studio Solution File, Format Version 10.00
++Microsoft Visual Studio Solution File, Format Version 11.00
+ # Visual Studio 2008
+ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShInstUtil", "ShInstUtil.vcproj", "{C9FBA6FD-04AC-4B2F-8277-B852B8013DAE}"
+ EndProject
+diff -ur keepass-2.30-original/work/Translation/TrlUtil/TrlUtil.csproj keepass-2.30/work/Translation/TrlUtil/TrlUtil.csproj
+--- keepass-2.30-original/work/Translation/TrlUtil/TrlUtil.csproj	2013-07-21 10:06:38.000000000 +0200
++++ keepass-2.30/work/Translation/TrlUtil/TrlUtil.csproj	2015-09-28 17:21:26.140007008 +0200
+@@ -1,5 +1,5 @@
+-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+-  <PropertyGroup>
++﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
++  <PropertyGroup><TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+     <ProductVersion>9.0.30729</ProductVersion>
