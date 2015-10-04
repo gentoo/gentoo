@@ -19,7 +19,7 @@ DEPEND="media-libs/libsdl[sound,video]
 	media-libs/sdl-ttf
 	media-libs/sdl-mixer[vorbis]
 	media-libs/sdl-image[png]
-	dev-libs/openssl
+	dev-libs/openssl:0=
 	net-misc/curl
 	app-arch/libarchive
 	x11-libs/libX11
