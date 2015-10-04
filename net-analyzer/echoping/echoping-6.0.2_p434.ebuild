@@ -32,7 +32,6 @@ DOCS=( README AUTHORS ChangeLog DETAILS NEWS TODO )
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-6.0.2_p434-fix_implicit_declarations.patch
 
-	cp /usr/share/libtool/config/ltmain.sh .
 	eautoreconf
 }
 
