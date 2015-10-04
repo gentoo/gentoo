@@ -9,6 +9,9 @@
 		<email>joker@gentoo.org</email>
 		<name>Christian Birchinger</name>
 	</maintainer>
+	<use>
+		<flag name="gles2">Use GLES2 instead of OpenGL</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">mupen64plus/mupen64plus-video-rice</remote-id>
 	</upstream>

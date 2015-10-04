@@ -38,11 +38,6 @@
 =sys-kernel/vanilla-sources-4.1.9
 =sys-kernel/gentoo-sources-4.1.9
 
-# Michał Górny <mgorny@gentoo.org> (1 Oct 2015)
-# Thoroughly broken for me since the switch to Python 3 / PyQt5. Masking
-# to account for opt-in testing.
-=games-emulation/m64py-0.2.3
-
 # Patrice Clement <monsieurp@gentoo.org> (1 Oct 2015)
 # Project is over 10 years old and seems to have stalled.
 # Masked for removal in 30 days. See bug 561954.

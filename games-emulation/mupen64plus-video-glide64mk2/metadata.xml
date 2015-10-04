@@ -10,6 +10,7 @@
 		<name>Christian Birchinger</name>
 	</maintainer>
 	<use>
+		<flag name="gles2">Use GLES2 instead of OpenGL</flag>
 		<flag name="hires">Support hi-resolution textures (requires <pkg>dev-libs/boost</pkg>)</flag>
 	</use>
 	<upstream>
