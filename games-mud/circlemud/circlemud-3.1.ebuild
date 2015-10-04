@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE=""
 
-DEPEND="dev-libs/openssl"
+DEPEND="dev-libs/openssl:0="
+RDEPEND=${DEPEND}
 
 S=${WORKDIR}/circle-${PV}
 
