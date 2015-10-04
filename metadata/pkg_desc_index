@@ -9315,7 +9315,7 @@ dev-util/lttng-ust 2.5.0 2.5.1 2.6.0_rc2: Linux Trace Toolkit - UST library
 dev-util/makeheaders 0_p4: simple utility that will automatically generate header files
 dev-util/makepp 1.18 1.40.1a 1.50_pre110621 2.0-r1 2.0.98.4 2.0.98.5: GNU make replacement
 dev-util/mdds 0.10.3 0.11.2-r1 0.12.0 0.12.1 9999: A collection of multi-dimensional data structure and indexing algorithm
-dev-util/meld 3.12.3 3.14.0: A graphical diff and merge tool
+dev-util/meld 3.14.0 3.14.1: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
 dev-util/metro 1.5.1: release metatool used for creating Gentoo and Funtoo releases
 dev-util/min-cscope 16.1.0: Interactively examine a C program
@@ -9332,7 +9332,7 @@ dev-util/monodevelop-database 3.0.2: Database Browser Extension for MonoDevelop
 dev-util/monodevelop-debugger-gdb 3.0.2: GDB Extension for MonoDevelop
 dev-util/mpatch 0.8-r1: Patch-like tool for applying diffs which can resolve common causes of patch rejects
 dev-util/mutrace 0.2: A mutex tracer/profiler
-dev-util/nemiver 0.9.5: A gtkmm front end to the GNU Debugger (gdb)
+dev-util/nemiver 0.9.5 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
 dev-util/netbeans 8.0.2: Netbeans IDE
 dev-util/ninja 1.5.1 1.5.3 1.6.0 9999: A small build system similar to make
 dev-util/ninja-ide 2.3: Ninja-IDE Is Not Just Another IDE
@@ -9888,7 +9888,7 @@ games-emulation/mednafen 0.9.38.4: An advanced NES, GB/GBC/GBA, TurboGrafx 16/CD
 games-emulation/mekanix 070: SG-1000, SC-3000, SF-7000, SSC, SMS, GG, COLECO, and OMV emulator
 games-emulation/mupen64plus 1.5-r1 1.5-r2 2.0 2.5: A fork of Mupen64 Nintendo 64 emulator, meta-package
 games-emulation/mupen64plus-audio-sdl 2.0-r1 2.5: A fork of Mupen64 Nintendo 64 emulator, SDL audio plugin
-games-emulation/mupen64plus-core 2.0-r1 2.5: A fork of Mupen64 Nintendo 64 emulator, core library
+games-emulation/mupen64plus-core 2.0-r1 2.5-r1: A fork of Mupen64 Nintendo 64 emulator, core library
 games-emulation/mupen64plus-input-sdl 2.0-r1 2.5: A fork of Mupen64 Nintendo 64 emulator, SDL input plugin
 games-emulation/mupen64plus-rsp-hle 2.0-r1 2.5: A fork of Mupen64 Nintendo 64 emulator, HLE RSP plugin
 games-emulation/mupen64plus-ui-console 2.0-r1 2.5: A fork of Mupen64 Nintendo 64 emulator, console UI
