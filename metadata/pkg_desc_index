@@ -7552,7 +7552,7 @@ dev-python/pytest-timeout 0.4: py.test plugin to abort hanging tests
 dev-python/pytest-xdist 1.13.1: Distributed testing and loop-on-failing modes
 dev-python/python-application 1.5.0: Basic building blocks for python applications
 dev-python/python-augeas 0.4.1 0.4.2_pre131218 0.5.0: Python bindings for Augeas
-dev-python/python-barbicanclient 3.0.1 3.0.3: Client library for Barbican API.
+dev-python/python-barbicanclient 3.0.1 3.0.3 3.3.0: Client library for Barbican API.
 dev-python/python-bibtex 1.2.7-r1: A Python extension to parse BibTeX files
 dev-python/python-biggles 1.6.6-r1: A Python module for creating publication-quality 2D scientific plots
 dev-python/python-bugzilla 1.1.0: A python module for interacting with Bugzilla over XMLRPC
@@ -11283,7 +11283,7 @@ mail-client/hap 3.7-r1: A terminal mail notification program (replacement for bi
 mail-client/mail-notification 5.4-r8: Status icon informing about new mail
 mail-client/mailx 8.1.2.20050715-r6: The /bin/mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r1 20060102-r2: Provides lockspool utility
-mail-client/mutt 1.5.23-r5 1.5.23-r7 1.5.23-r8 1.5.24-r1: A small but very powerful text-based mail client
+mail-client/mutt 1.5.23-r5 1.5.23-r7 1.5.23-r8 1.5.24-r1 1.5.24-r2: A small but very powerful text-based mail client
 mail-client/nail 12.4 12.4-r2: an enhanced mailx-compatible mail client
 mail-client/nmh 1.3-r3: New MH mail reader
 mail-client/novell-groupwise-client 8.0.2.96933: Novell Groupwise Client for Linux
@@ -12815,7 +12815,7 @@ media-sound/projectm-pulseaudio 2.1.0: A Qt GUI for projectM that visualizes you
 media-sound/protux 0.50.100: Professional Audio Tools for GNU/Linux
 media-sound/ptabtools 0.4.3 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/puddletag 1.0.5: Audio tag editor
-media-sound/pulseaudio 5.0-r4 5.0-r7 6.0 7.0: A networked sound server with an advanced plugin system
+media-sound/pulseaudio 5.0-r4 5.0-r7 6.0 7.0 7.0-r1: A networked sound server with an advanced plugin system
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
 media-sound/pympd 0.08.1: a Rhythmbox-like PyGTK+ client for Music Player Daemon
 media-sound/qarecord 0.5.0: A simple harddisk recorder writing from an input audio stream to a .wav file
@@ -13315,7 +13315,7 @@ net-analyzer/nessus-client 1.0.2-r1: A client for the Nessus vulnerability scann
 net-analyzer/nessus-core 2.2.9-r1: A remote security scanner for Linux (nessus-core)
 net-analyzer/nessus-libraries 2.2.9-r1: A remote security scanner for Linux (nessus-libraries)
 net-analyzer/nessus-plugins 2.2.9-r1: A remote security scanner for Linux (nessus-plugins)
-net-analyzer/net-snmp 5.7.3_pre5-r1 5.7.3-r1: Software for generating and retrieving SNMP data
+net-analyzer/net-snmp 5.7.3_pre5-r1 5.7.3-r1 5.7.3-r2: Software for generating and retrieving SNMP data
 net-analyzer/netcat 110-r9: the network swiss army knife
 net-analyzer/netcat6 1.0-r2: netcat clone with better IPv6 support, improved code, etc...
 net-analyzer/netdiscover 0.3_beta6-r3: An active/passive address reconnaissance tool
