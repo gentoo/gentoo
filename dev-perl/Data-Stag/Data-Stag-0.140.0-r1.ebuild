@@ -12,7 +12,7 @@ DESCRIPTION="Structured Tags datastructures"
 HOMEPAGE="http://stag.sourceforge.net/ ${HOMEPAGE}"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="dev-perl/IO-String"
