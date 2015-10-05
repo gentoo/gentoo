@@ -6,19 +6,20 @@ EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads,ssl,xml"
 
-inherit bash-completion-r1 distutils-r1 eutils flag-o-matic versionator
-
 MY_P=${PN}-${PV}
-SERIES=$(get_version_component_range 1-2)
 
 DESCRIPTION="Bazaar is a next generation distributed version control system"
 HOMEPAGE="http://bazaar-vcs.org/"
-SRC_URI="https://launchpad.net/bzr/${SERIES}/${PV}/+download/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris"
 IUSE="curl doc +sftp test"
+PLOCALES="ar ast bs ca cs de el en_AU en_GB es fa fo fr gl he id it ja ko ms my nb nl oc pl pt_BR ro ru sco si sk sr sv tr ug uk vi zh_CN"
+
+inherit bash-completion-r1 distutils-r1 eutils flag-o-matic versionator l10n
+SERIES=$(get_version_component_range 1-2)
+SRC_URI="https://launchpad.net/bzr/${SERIES}/${PV}/+download/${MY_P}.tar.gz"
 
 RDEPEND="curl? ( dev-python/pycurl[${PYTHON_USEDEP}] )
 	sftp? ( dev-python/paramiko[${PYTHON_USEDEP}] )"
@@ -37,6 +38,10 @@ S="${WORKDIR}/${MY_P}"
 RESTRICT="test"
 
 python_configure_all() {
+	rm_loc() {
+		rm "${S}"/po/$1.po || die
+	}
+	l10n_for_each_disabled_locale_do rm_loc
 	# Generate the locales first to avoid a race condition.
 	esetup.py build_mo
 }
