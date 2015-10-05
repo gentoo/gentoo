@@ -16024,7 +16024,6 @@ sys-apps/coreutils 8.20 8.21 8.22 8.22-r1 8.23 8.24: Standard GNU file utilities
 sys-apps/cpint 1.1.6 2.5.3: Linux/390 Interface to z/VM's Control Program
 sys-apps/cpuid 20130610 20140123 20150606: Utility to get detailed information about the CPU(s) using the CPUID instruction
 sys-apps/cracklib-words 2.9.6 20080507: large set of crack/cracklib dictionaries
-sys-apps/cv 0.4.1: Coreutils Viewer: show progress for cp, rm, dd, and so forth
 sys-apps/daemonize 1.7.4 1.7.5 1.7.6: Runs a command as a Unix daemon
 sys-apps/darwin-miscutils 4-r1 5-r1 6-r1 7 8 9 10: Miscellaneous commands used on Darwin/Mac OS X systems, Mountain Lion 10.8
 sys-apps/dbus 1.8.16 1.8.18 1.8.20: A message bus system, a simple way for applications to talk to each other
@@ -16173,6 +16172,7 @@ sys-apps/powerpc-utils 1.1.3.18-r2: PowerPC utilities including nvsetenv, and ad
 sys-apps/prctl 1.5: Tool to query and modify process behavior
 sys-apps/prefix-chain-utils 0.2-r5: Chained EPREFIX utilities and wrappers
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
+sys-apps/progress 0.9: Coreutils Viewer: show progress for cp, rm, dd, and so forth
 sys-apps/proot 3.2.2-r1 4.0.1 4.0.3 5.0.0 5.1.0: User-space implementation of chroot, mount --bind, and binfmt_misc
 sys-apps/pv 1.6.0 1.6.0-r1: Pipe Viewer: a tool for monitoring the progress of data through a pipe
 sys-apps/pyrenamer 0.6.0-r2: Mass rename files
