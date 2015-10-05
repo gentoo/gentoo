@@ -1,0 +1,15 @@
+diff --git a/m4/xca_compile_test.m4 b/m4/xca_compile_test.m4
+index 5d2f8ca..fd10f5d 100644
+--- a/m4/xca_compile_test.m4
++++ b/m4/xca_compile_test.m4
+@@ -2,8 +2,8 @@ AC_DEFUN([XCA_COMPILE_TEST], [
+ 
+ # Try to compile a little application
+ #####################################
+-CXXFLAGS="${CXXFLAGS} ${OPENSSL_CFLAGS}${QT_CFLAGS}"
+-LIBS="${LIBS} ${OPENSSL_LIBS}${QT_LIBS}"
++CXXFLAGS="${CXXFLAGS} ${OPENSSL_CFLAGS} ${QT_CFLAGS}"
++LIBS="${LIBS} ${OPENSSL_LIBS} ${QT_LIBS}"
+ 
+ AC_TRY_RUN([
+ #include <stdio.h>
