@@ -3,13 +3,13 @@ DEPEND=dev-libs/libedit dev-libs/icu:= >=dev-util/btyacc-3.0-r2 doc? ( app-arch/
 DESCRIPTION=A relational database offering many ANSI SQL:2003 and some SQL:2008 features
 EAPI=5
 HOMEPAGE=http://www.firebirdsql.org/
-IUSE=doc client superserver xinetd examples debug
-KEYWORDS=~amd64 -ia64 ~x86
+IUSE=debug doc client examples superserver xinetd
+KEYWORDS=~amd64 ~x86
 LICENSE=IDPL Interbase-1.0
 RDEPEND=dev-libs/libedit dev-libs/icu:= xinetd? ( virtual/inetd ) !sys-cluster/ganglia
-REQUIRED_USE=client? ( !superserver ) client? ( !xinetd ) superserver? ( !xinetd )
+REQUIRED_USE=^^ ( client superserver xinetd )
 RESTRICT=userpriv
 SLOT=0
 SRC_URI=mirror://sourceforge/firebird/Firebird-2.5.3.26780-0.tar.bz2 doc? ( ftp://ftpc.inprise.com/pub/interbase/techpubs/ib_b60_doc.zip )
 _eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=392bcc67481ed7cba9e8e573138d1172
+_md5_=1f3844c53c8cf8dcb8e046e3c5dd8477
