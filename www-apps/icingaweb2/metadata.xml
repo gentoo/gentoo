@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<longdescription lang="en">
+		Icinga Web 2 - Frontend for icinga2
+	</longdescription>
+	<use>
+		<flag name="nginx">Adds support for nginx</flag>
+	</use>
+</pkgmetadata>
