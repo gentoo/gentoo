@@ -9,9 +9,6 @@ depend() {
 	provide entropy
 }
 
-# Do NOT add /dev/tpm to this.
-DEFAULT_DEVICE="/dev/hw_random* /dev/hwrandom* /dev/i810_rng /dev/hwrng*"
-
 command=/usr/sbin/rngd
 pidfile="/var/run/${SVCNAME}.pid"
 command_args="--pid-file ${pidfile} --background --random-step ${STEP:-64} ${NO_TPM:+--no-tpm=1} \
