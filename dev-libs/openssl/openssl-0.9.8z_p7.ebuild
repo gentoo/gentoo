@@ -31,9 +31,11 @@ RDEPEND="gmp? ( >=dev-libs/gmp-5.1.3-r1[${MULTILIB_USEDEP}] )
 	)
 	!=dev-libs/openssl-0.9.8*:0"
 DEPEND="${RDEPEND}
-	sys-apps/diffutils
 	>=dev-lang/perl-5
-	test? ( sys-devel/bc )"
+	test? (
+		sys-apps/diffutils
+		sys-devel/bc
+	)"
 
 # Do not install any docs
 DOCS=()

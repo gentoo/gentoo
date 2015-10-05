@@ -5,7 +5,7 @@
 EAPI=5
 
 MODULE_AUTHOR=PEVANS
-MODULE_VERSION=0.09
+MODULE_VERSION=0.10
 inherit perl-module
 
 DESCRIPTION="Higher-order list utility functions"

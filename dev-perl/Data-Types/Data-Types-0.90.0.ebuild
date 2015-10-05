@@ -11,7 +11,7 @@ inherit perl-module
 
 DESCRIPTION="Validate and convert data types."
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test"
 SRC_TEST=do
 DEPEND="dev-perl/Module-Build

@@ -5,7 +5,7 @@
 EAPI=5
 
 MODULE_AUTHOR=MLEHMANN
-MODULE_VERSION=6.41
+MODULE_VERSION=6.48
 inherit perl-module
 
 DESCRIPTION="The only real threads in perl"
@@ -23,7 +23,8 @@ RDEPEND="
 	<dev-lang/perl-5.22.0
 "
 DEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
+	dev-perl/Canary-Stability
+	>=virtual/perl-ExtUtils-MakeMaker-6.520.0
 "
 
-SRC_TEST="do"
+SRC_TEST="do parallel"

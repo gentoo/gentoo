@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,18 +14,18 @@ SRC_URI="mirror://apache/commons/attributes/source/${P}-src.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
-COMMON_DEP="dev-java/ant-core:0
+CDEPEND="dev-java/ant-core:0
 	dev-java/gjdoc:0
 	dev-java/qdox:1.6
 	dev-java/xjavadoc:0"
 
-DEPEND=">=virtual/jdk-1.4
-	${COMMON_DEP}"
+DEPEND=">=virtual/jdk-1.6
+	${CDEPEND}"
 
-RDEPEND=">=virtual/jre-1.4
-	${COMMON_DEP}"
+RDEPEND=">=virtual/jre-1.6
+	${CDEPEND}"
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
 EANT_GENTOO_CLASSPATH="ant-core,gjdoc,qdox-1.6"
