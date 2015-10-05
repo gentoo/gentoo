@@ -1,0 +1,28 @@
+From 6287ae4153231865c9d3cafaf8c80d488b8ba84e Mon Sep 17 00:00:00 2001
+From: Mike Walters <mike@flomp.net>
+Date: Mon, 5 Oct 2015 18:29:37 +0100
+Subject: [PATCH] Set default CXXFLAGS if none are set
+
+---
+ CMakeLists.txt | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 47e8faa..b788a24 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,9 +15,13 @@ if (WIN32)
+        endif(NOT(MMAN))
+ ENDIF (WIN32)
+ 
++if (NOT CMAKE_CXX_FLAGS)
++    set(CMAKE_CXX_FLAGS "-O2")
++endif (NOT CMAKE_CXX_FLAGS)
++
+ # This only works in cmake >3.1
+ #set_property(TARGET inspectrum PROPERTY CXX_STANDARD 11)
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11 -O3")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
+ 
+ list(APPEND inspectrum_sources 
+ 	main.cpp
