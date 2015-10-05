@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ DESCRIPTION="Perl interface providing graphics display using OpenGL"
 
 LICENSE="|| ( Artistic GPL-1 GPL-2 GPL-3 )"
 SLOT="0"
-KEYWORDS="amd64 arm ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ppc x86 ~ppc64 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="
