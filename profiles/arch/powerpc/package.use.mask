@@ -127,10 +127,6 @@ kde-apps/gwenview semantic-desktop
 kde-apps/okular dpi
 kde-base/nepomuk-core migrator
 
-# Pacho Ramos <pacho@gentoo.org> (12 Apr 2014)
-# Missing keywords, bug #507490
-net-misc/modemmanager mbim
-
 # Pacho Ramos <pacho@gentoo.org> (22 Feb 2013)
 # Missing keywords, bug #495250
 >=gnome-base/gnome-extra-apps-3.10 tracker
