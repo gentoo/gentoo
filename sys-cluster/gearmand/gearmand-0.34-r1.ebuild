@@ -52,6 +52,9 @@ src_configure() {
 		append-cppflags -DDEBUG
 	fi
 
+	# Explicitly enable c++11 mode
+	append-cxxflags -std=c++11
+
 	autotools-utils_src_configure
 }
 
