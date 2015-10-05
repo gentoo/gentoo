@@ -1,0 +1,10 @@
+DEFINED_PHASES=install unpack
+DEPEND=>=net-analyzer/icinga2-2.1.1 >=www-apps/icingaweb2-2.0.0 dev-vcs/git
+DESCRIPTION=Icinga Web 2 - Frontend for icinga2
+EAPI=5
+HOMEPAGE=http://www.icinga.org/
+LICENSE=GPL-2
+RDEPEND=>=net-analyzer/icinga2-2.1.1 >=www-apps/icingaweb2-2.0.0
+SLOT=0
+_eclasses_=git-2	1bb87192831f668cd20d93ffb1689c94
+_md5_=5a4098347a5297d044f5f897b9bc0163
