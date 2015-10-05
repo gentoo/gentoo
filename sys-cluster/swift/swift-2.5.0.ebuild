@@ -17,10 +17,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="proxy account container object test +memcached"
 REQUIRED_USE="|| ( proxy account container object )"
 
+CDEPEND="
+	>=dev-python/pbr-0.8.0[${PYTHON_USEDEP}]
+	<dev-python/pbr-2.0[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	>=dev-python/pbr-0.8.0[${PYTHON_USEDEP}]
-	<dev-python/pbr-1.0[${PYTHON_USEDEP}]
+	${CDEPEND}
 	test? (
 		${RDEPEND}
 		dev-python/coverage[${PYTHON_USEDEP}]
@@ -37,6 +39,7 @@ DEPEND="
 	)"
 
 RDEPEND="
+	${CDEPEND}
 	>=dev-python/dnspython-1.9.4[${PYTHON_USEDEP}]
 	>=dev-python/eventlet-0.16.1[${PYTHON_USEDEP}]
 	!~dev-python/eventlet-0.17.0[${PYTHON_USEDEP}]
