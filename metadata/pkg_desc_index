@@ -14792,7 +14792,7 @@ net-wireless/wepdecrypt 0.8-r2: Enhanced version of WepAttack a tool for breakin
 net-wireless/wifi-radar 2.0.8-r2: WiFi Radar is a Python/PyGTK2 utility for managing WiFi profiles
 net-wireless/wireless-regdb 20130213 20141118 20150313 20150605 20150925: Binary regulatory database for CRDA
 net-wireless/wireless-tools 30_pre9: A collection of tools to configure IEEE 802.11 wireless LAN cards
-net-wireless/wpa_supplicant 2.4-r3 2.4-r4: IEEE 802.1X/WPA supplicant for secure wireless transfers
+net-wireless/wpa_supplicant 2.4-r3 2.4-r4 2.5: IEEE 802.1X/WPA supplicant for secure wireless transfers
 net-wireless/yatebts 4.0.0-r3 5.0.0 9999: The Yate GSM base station
 perl-core/CPAN-Meta 2.143.240: The distribution metadata for a CPAN dist
 perl-core/CPAN-Meta-Requirements 2.125.0-r1: A set of version requirements for a CPAN dist
@@ -16308,7 +16308,7 @@ sys-auth/tfm-fingerprint 1.0: TouchChip TFM/ESS FingerPrint BSP
 sys-auth/thinkfinger 0.3-r3: Support for the UPEK/SGS Thomson Microelectronics fingerprint reader, often seen in Thinkpads
 sys-auth/ykclient 2.13 2.14: Yubico C client library
 sys-auth/ykneo-ccid-tools 0.0.0: Tools for Yubico's YubiKey NEO in CCID mode
-sys-auth/ykpers 1.16.2 1.17.1: Library and tool for personalization of Yubico's YubiKey
+sys-auth/ykpers 1.16.2 1.17.1 1.17.2: Library and tool for personalization of Yubico's YubiKey
 sys-auth/yubikey-personalization-gui 3.1.18 3.1.20 3.1.21 3.1.23: GUI for personalization of Yubico's YubiKey
 sys-block/afacli 4.1: Dell AACRAID-based PERC RAID controller management tool
 sys-block/aoetools 35 36: tools for ATA over Ethernet (AoE) network storage protocol
@@ -17919,7 +17919,7 @@ x11-misc/screengrab 1.0: Qt application for getting screenshots
 x11-misc/sddm 0.11.0-r3 0.12.0: Simple Desktop Display Manager
 x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewer for X windows
 x11-misc/set_opacity 1.0 9999: Tool for set real compositing for windows through window's id, process' pid etc.
-x11-misc/shared-mime-info 1.4 1.4-r1: The Shared MIME-info Database specification
+x11-misc/shared-mime-info 1.4 1.4-r1 1.5: The Shared MIME-info Database specification
 x11-misc/shutter 0.90 0.90.1 0.91 0.93 0.93.1: Feature-rich screenshot program
 x11-misc/shutterbug 1.6.36 1.7.45 1.7.47 1.7.49: Screenshot utility based on the FOX Toolkit
 x11-misc/simpleswitcher 9999: lightweight EWMH window switcher with features and looks of dmenu
