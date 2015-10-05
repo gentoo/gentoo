@@ -32,10 +32,12 @@ RDEPEND="gmp? ( >=dev-libs/gmp-5.1.3-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
 	!<net-misc/openssh-5.9_p1-r4
 	!<net-libs/neon-0.29.6-r1"
 DEPEND="${RDEPEND}
-	sys-apps/diffutils
 	>=dev-lang/perl-5
 	sctp? ( >=net-misc/lksctp-tools-1.0.12 )
-	test? ( sys-devel/bc )"
+	test? (
+		sys-apps/diffutils
+		sys-devel/bc
+	)"
 PDEPEND="app-misc/ca-certificates"
 
 S="${WORKDIR}/${MY_P}"
