@@ -4,9 +4,9 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python{2_7,3_3} pypy )
+PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 
-inherit autotools-utils eutils systemd python-single-r1
+inherit user autotools-utils eutils systemd python-r1
 
 DESCRIPTION="Varnish is a state-of-the-art, high-performance HTTP accelerator"
 HOMEPAGE="http://www.varnish-cache.org/"
@@ -15,13 +15,13 @@ SRC_URI="http://repo.varnish-cache.org/source/${P}.tar.gz"
 LICENSE="BSD-2 GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~mips ~x86"
-IUSE="doc jemalloc jit static-libs +tools"
+IUSE="jemalloc jit static-libs"
 
 CDEPEND="
-	|| ( dev-libs/libedit sys-libs/readline )
+	|| ( dev-libs/libedit sys-libs/readline:= )
 	dev-libs/libpcre[jit?]
 	jemalloc? ( dev-libs/jemalloc )
-	tools? ( sys-libs/ncurses )"
+	sys-libs/ncurses:="
 
 #varnish compiles stuff at run time
 RDEPEND="
@@ -31,6 +31,7 @@ RDEPEND="
 
 DEPEND="
 	${CDEPEND}
+	dev-python/docutils
 	virtual/pkgconfig"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -39,18 +40,13 @@ RESTRICT="test" #315725
 
 DOCS=( README doc/changes.rst )
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.0.4-fix-automake-1.13.patch
-	"${FILESDIR}"/${PN}-3.0.4-automagic.patch
-	"${FILESDIR}"/${PN}-3.0.3-pthread-uclibc.patch
-	"${FILESDIR}"/${PN}-3.0.5-fix-python-path.patch
-	"${FILESDIR}"/${PN}-3.0.5-path-to-vmod_vcc.patch
-)
-
 AUTOTOOLS_AUTORECONF="yes"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	ebegin "Creating varnish user and group"
+	enewgroup varnish 40
+	enewuser varnish 40 -1 /var/lib/varnish varnish
+	eend $?
 }
 
 src_prepare() {
@@ -66,9 +62,6 @@ src_configure() {
 		$(use_enable static-libs static)
 		$(use_enable jit pcre-jit )
 		$(use_with jemalloc)
-		$(use_with tools)
-		--without-rst2man
-		--without-rst2html
 	)
 	autotools-utils_src_configure
 }
@@ -76,21 +69,33 @@ src_configure() {
 src_install() {
 	autotools-utils_src_install
 
-	newinitd "${FILESDIR}"/varnishd.initd-r2 varnishd
-	newconfd "${FILESDIR}"/varnishd.confd-r2 varnishd
+	python_replicate_script "${D}/usr/share/varnish/vmodtool.py"
 
-	insinto /etc/logrotate.d
-	newins "${FILESDIR}/varnishd.logrotate" varnishd
+	newinitd "${FILESDIR}"/varnishlog.initd varnishlog
+	newconfd "${FILESDIR}"/varnishlog.confd varnishlog
 
-	dodir /var/log/varnish
+	newinitd "${FILESDIR}"/varnishncsa.initd-r1 varnishncsa
+	newconfd "${FILESDIR}"/varnishncsa.confd varnishncsa
 
-	use doc && dohtml -r "doc/sphinx/=build/html/"
+	newinitd "${FILESDIR}"/varnishd.initd-r3 varnishd
+	newconfd "${FILESDIR}"/varnishd.confd-r3 varnishd
+
+	insinto /etc/logrotate.d/
+	newins "${FILESDIR}/varnishd.logrotate-r2" varnishd
+
+	diropts -m750
+
+	dodir /var/log/varnish/
 
 	systemd_dounit "${FILESDIR}/${PN}d.service"
 
-	python_doscript lib/libvmod_std/vmod.py
-	insinto /etc/varnish
-	doins  lib/libvmod_std/vmod.vcc
+	insinto /etc/varnish/
+	doins lib/libvmod_std/vmod.vcc
+	doins etc/example.vcl
+
+	fowners root:varnish /etc/varnish/
+	fowners varnish:varnish /var/lib/varnish/
+	fperms 0750 /var/lib/varnish/ /etc/varnish/
 }
 
 pkg_postinst () {
