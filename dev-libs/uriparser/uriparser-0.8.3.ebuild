@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 DESCRIPTION="Uriparser is a strictly RFC 3986 compliant URI parsing library in C"
 HOMEPAGE="http://uriparser.sourceforge.net/"
@@ -28,16 +28,15 @@ src_configure() {
 		--enable-char \
 		$(use_enable unicode wchar_t) \
 		$(use_enable doc) \
-		--disable-dependency-tracking \
 		--docdir=/usr/share/doc/${PF}/
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "make install failed"
-	dodoc AUTHORS ChangeLog THANKS || die
+	emake DESTDIR="${D}" install
+	dodoc AUTHORS ChangeLog THANKS
 
 	if use doc && use qt4; then
-		insinto /usr/share/doc/${PF}/
-		doins doc/*.qch || die  # Using doins to avoid dodoc's compression
+		dodoc doc/*.qch
+		docompress -x /usr/share/doc/${PF}/${P}.qch
 	fi
 }
