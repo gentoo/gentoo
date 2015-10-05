@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst setup
+DEPEND=>=net-analyzer/icinga2-2.1.1 dev-lang/php:*[apache2?,cli,gd,json,intl,ldap?,mysql?,pdo,postgres?,sockets,ssl,xslt,xml] dev-php/pecl-imagick apache2? ( >=www-servers/apache-2.4.0 ) nginx? ( >=www-servers/nginx-1.7.0:* )
+DESCRIPTION=Icinga Web 2 - Frontend for icinga2
+EAPI=5
+HOMEPAGE=http://www.icinga.org/
+IUSE=apache2 ldap mysql nginx postgres
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=net-analyzer/icinga2-2.1.1 dev-lang/php:*[apache2?,cli,gd,json,intl,ldap?,mysql?,pdo,postgres?,sockets,ssl,xslt,xml] dev-php/pecl-imagick apache2? ( >=www-servers/apache-2.4.0 ) nginx? ( >=www-servers/nginx-1.7.0:* )
+SLOT=0
+SRC_URI=https://codeload.github.com/Icinga/icingaweb2/tar.gz/v2.0.0 -> icingaweb2-2.0.0.tar.gz
+_eclasses_=depend.apache	e3c541cb90838388f81620d630c28f41	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=239089f18152caa5da36b21be1ff52bd
