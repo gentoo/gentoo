@@ -1,12 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=dev-perl/IO-String dev-lang/perl:=[-build(-)]
-DESCRIPTION=Structured Tags datastructures
+DEPEND=>=dev-perl/Module-Build-0.380.0 test? ( dev-perl/Test-Pod ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Higher-order list utility functions
 EAPI=5
-HOMEPAGE=http://stag.sourceforge.net/ http://search.cpan.org/dist/Data-Stag/
+HOMEPAGE=http://search.cpan.org/dist/List-UtilsBy/
+IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
-RDEPEND=dev-perl/IO-String dev-lang/perl:=[-build(-)]
+RDEPEND=dev-lang/perl:=[-build(-)]
 SLOT=0
-SRC_URI=mirror://cpan/authors/id/C/CM/CMUNGALL/Data-Stag-0.13.tar.gz
+SRC_URI=mirror://cpan/authors/id/P/PE/PEVANS/List-UtilsBy-0.10.tar.gz
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	unpacker	1d149d9bda7723e740cfd28118f27813
-_md5_=ef3a180d5ecd3873fb26aa073093d181
+_md5_=4f54ca351ff743a14fb1fa47d33ceb31

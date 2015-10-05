@@ -3759,7 +3759,7 @@ dev-java/commons-chain 1.2: API exposing the Chain of Responsability design patt
 dev-java/commons-cli 1.2: A Java library for working with the command line arguments and options
 dev-java/commons-codec 1.7: Implementations of common encoders and decoders in Java
 dev-java/commons-collections 3.2.1-r1: Jakarta-Commons Collections Component
-dev-java/commons-compress 1.4.1 1.8.1 1.8.1-r1: Commons Compress defines an API for working with ar, cpio, tar, zip, gzip and bzip2 files
+dev-java/commons-compress 1.8.1-r1: Commons Compress defines an API for working with ar, cpio, tar, zip, gzip and bzip2 files
 dev-java/commons-configuration 1.6-r2: Generic interface for reading configuration data from a variety of sources
 dev-java/commons-daemon 1.0.7 1.0.9 1.0.15: Tools to allow Java programs to run as UNIX daemons
 dev-java/commons-dbcp 1.4-r2 2.1: Jakarta component providing database connection pooling API
@@ -5150,7 +5150,7 @@ dev-perl/B-Keywords 1.130.0-r1 1.140.0: Lists of reserved barewords and symbol n
 dev-perl/B-OPCheck 0.290.0-r1 0.300.0: PL_check hacks using Perl callbacks
 dev-perl/B-Utils 0.260.0 0.270.0: Helper functions for op tree manipulation
 dev-perl/BSD-Resource 1.290.700-r1: Perl module for BSD process resource limit and priority functions
-dev-perl/BZ-Client 1.40.0: A client for the Bugzilla web services API.
+dev-perl/BZ-Client 1.72.0: A client for the Bugzilla web services API.
 dev-perl/Benchmark-Timer 0.710.600 0.710.700: Perl code benchmarking tool
 dev-perl/BerkeleyDB 0.540.0 0.550.0: This module provides Berkeley DB interface for Perl
 dev-perl/Bio-ASN1-EntrezGene 1.91.0-r1: Regular expression-based Perl Parser for NCBI Entrez Gene
@@ -5281,7 +5281,7 @@ dev-perl/Convert-Color 0.80.0-r1: Color space conversions and named lookups
 dev-perl/Convert-TNEF 0.180.0-r1: A Perl module for reading TNEF files
 dev-perl/Convert-UUlib 1.400.0-r1 1.400.0-r2 1.500.0: A Perl interface to the uulib library
 dev-perl/Cookie-Baker 0.60.0: Cookie string generator / parser
-dev-perl/Coro 6.410.0 6.420.0 6.470.0: The only real threads in perl
+dev-perl/Coro 6.480.0: The only real threads in perl
 dev-perl/Crypt-Blowfish 2.140.0-r1: Crypt::Blowfish module for perl
 dev-perl/Crypt-CAST5_PP 1.40.0-r1: CAST5 block cipher in pure Perl
 dev-perl/Crypt-Cracklib 1.700.0-r1: Perl interface to Alec Muffett's Cracklib
@@ -5348,7 +5348,7 @@ dev-perl/Data-Perl 0.2.9: Base classes wrapping fundamental Perl data types
 dev-perl/Data-Random 0.80.0: A module used to generate random data
 dev-perl/Data-Serializer 0.600.0: Modules that serialize data structures
 dev-perl/Data-ShowTable 3.300.0-r1 4.600.0: routines to display tabular data in several formats
-dev-perl/Data-Stag 0.110.0-r1 0.130.0-r1 0.140.0-r1: Structured Tags datastructures
+dev-perl/Data-Stag 0.140.0-r1: Structured Tags datastructures
 dev-perl/Data-Stream-Bulk 0.110.0-r1: N at a time iteration API
 dev-perl/Data-Structure-Util 0.150.0: Change nature of data within a structure
 dev-perl/Data-Types 0.90.0: Validate and convert data types.
@@ -5706,7 +5706,7 @@ dev-perl/Linux-Smaps 0.120.0 0.130.0: Perl interface to /proc/PID/smaps
 dev-perl/Lirc-Client 1.540.0-r1 2.20.0: A client library for the Linux Infrared Remote Control (LIRC)
 dev-perl/List-AllUtils 0.30.0-r1 0.80.0 0.90.0: Combines List::Util and List::MoreUtils in one bite-sized package
 dev-perl/List-MoreUtils 0.330.0-r1 0.413.0: Provide the missing functionality from List::Util
-dev-perl/List-UtilsBy 0.90.0-r1: Higher-order list utility functions
+dev-perl/List-UtilsBy 0.100.0: Higher-order list utility functions
 dev-perl/Locale-Maketext-Lexicon 0.960.0-r1 1.0.0: Use other catalog formats in Maketext
 dev-perl/Locale-Msgfmt 0.150.0-r1: Compile .po files to .mo files
 dev-perl/Locale-PO 0.230.0 0.270.0: Perl module for manipulating .po entries from GNU gettext
@@ -6680,7 +6680,7 @@ dev-python/CoverageTestRunner 1.9-r1 1.10: fail Python program unit tests unless
 dev-python/Djblets 0.7.31: A collection of useful extensions for Django
 dev-python/Flask-KVSession 0.6.1 0.6.2: Transparent server-side session support for flask
 dev-python/GridDataFormats 0.2.2 0.2.5: Reading and writing of data on regular grids in Python
-dev-python/Kivy 1.8.0 1.9.0: A software library for rapid development of hardware-accelerated multitouch applications
+dev-python/Kivy 1.9.0-r1: A software library for rapid development of hardware-accelerated multitouch applications
 dev-python/Numdifftools 0.6.0 0.7.7 0.9.12: Solves automatic numerical differentiation problems in one or more variables
 dev-python/PyECLib 1.0.7-r2: Messaging API for RPC and notifications over a number of different messaging transports
 dev-python/PyFoam 0.5.4-r2: Tool to analyze and plot the residual files of OpenFOAM computations
