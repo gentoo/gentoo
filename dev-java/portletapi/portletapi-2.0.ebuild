@@ -15,7 +15,7 @@ SRC_URI="http://mirrors.ibiblio.org/maven2/javax/portlet/${MY_PN}/${PV}/${MY_P}-
 
 LICENSE="Apache-2.0"
 SLOT="2.0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 IUSE=""
 
