@@ -1,1 +1,2 @@
 slotmove =dev-ruby/mysql2-0.4* 0.3 0.4
+move sys-apps/cv sys-apps/progress

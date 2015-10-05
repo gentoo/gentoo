@@ -6,7 +6,7 @@ EAPI=5
 inherit toolchain-funcs
 
 DESCRIPTION="Coreutils Viewer: show progress for cp, rm, dd, and so forth"
-HOMEPAGE="https://github.com/Xfennec/cv"
+HOMEPAGE="https://github.com/Xfennec/progress"
 SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
