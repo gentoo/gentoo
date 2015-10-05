@@ -4826,8 +4826,8 @@ dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/papi 5.3.0 5.4.0: Performance Application Programming Interface
 dev-libs/pcc-libs 1.0.0 1.0.1_pre20121112 1.0.1_pre20131013 1.1.0 9999: pcc compiler support libs
 dev-libs/pcre++ 0.9.5-r1: A C++ support library for libpcre
-dev-libs/pkcs11-helper 1.11: PKCS#11 helper library
-dev-libs/poco 1.4.6_p4: C++ class libraries to simplify the development of network-centric, portable applications
+dev-libs/pkcs11-helper 1.11 1.11-r1: PKCS#11 helper library
+dev-libs/poco 1.4.6_p4 1.4.6_p4-r1: C++ class libraries to simplify the development of network-centric, portable applications
 dev-libs/polylib 9999: ppl port of cloog
 dev-libs/popt 1.16-r1 1.16-r2: Parse Options - Command line parser
 dev-libs/ppl 0.12.1-r1 1.1: The Parma Polyhedra Library provides numerical abstractions for analysis of complex systems
@@ -11364,7 +11364,7 @@ mail-mta/mini-qmail 1.05 1.05-r1 1.06: a small null client that forwards mail vi
 mail-mta/msmtp 1.4.31-r1 1.4.32 1.6.0 1.6.1 1.6.2: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06 1.06-r1 1.06-r2: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5: Simple relay-only local mail transport agent
-mail-mta/opensmtpd 5.7.2_p1: Lightweight but featured SMTP daemon from OpenBSD
+mail-mta/opensmtpd 5.7.2_p1-r1: Lightweight but featured SMTP daemon from OpenBSD
 mail-mta/postfix 2.10.8 2.11.6 3.0.0 3.0.1-r1 3.0.2 3.0.2-r1 3.0.2-r2 3.1_pre20150924 3.1_pre20150924-r1: A fast and secure drop-in replacement for sendmail
 mail-mta/qmail-ldap 1.03-r8: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
@@ -14229,7 +14229,7 @@ net-misc/iperf 2.0.5-r2 3.0.11 3.1_beta3: A TCP, UDP, and SCTP network bandwidth
 net-misc/ipsc 0.4.3.2-r2: IP Subnet Calculator
 net-misc/ipsorcery 2.0.9-r1: Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets
 net-misc/ipsvd 1.0.0-r1: ipsvd is a set of internet protocol service daemons for Unix
-net-misc/iputils 20121221 20121221-r1 20121221-r2 20150815 99999999: Network monitoring tools including ping and ping6
+net-misc/iputils 20121221 20121221-r1 20121221-r2 20150815 20150815-r1 99999999: Network monitoring tools including ping and ping6
 net-misc/ipv6calc 0.94.1 0.97.4 0.99.0 0.99.1: IPv6 address calculator
 net-misc/ipx-utils 1.1-r3: The IPX Utilities
 net-misc/isatapd 0.9.7-r2: creates and maintains an ISATAP tunnel (rfc5214)
