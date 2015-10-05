@@ -6,21 +6,23 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite,xml"
-inherit eutils flag-o-matic git-r3 python-single-r1 toolchain-funcs user
+inherit eutils flag-o-matic python-single-r1 toolchain-funcs
 
 MY_P=${P/_beta/BETA}
 
 DESCRIPTION="A utility for network discovery and security auditing"
 HOMEPAGE="http://nmap.org/"
-
-EGIT_REPO_URI="https://github.com/nmap/nmap"
-SRC_URI="https://dev.gentoo.org/~jer/nmap-logo-64.png"
+SRC_URI="
+	http://nmap.org/dist/${MY_P}.tar.bz2
+	https://dev.gentoo.org/~jer/nmap-logo-64.png
+"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 
 IUSE="ipv6 libressl +nse system-lua ncat ndiff nls nmap-update nping ssl zenmap"
-NMAP_LINGUAS=( de fr hr it ja pl pt_BR ru zh )
+NMAP_LINGUAS=( de fr hr it ja pl pt_BR ru )
 IUSE+=" ${NMAP_LINGUAS[@]/#/linguas_}"
 
 REQUIRED_USE="
@@ -59,6 +61,11 @@ pkg_setup() {
 	fi
 }
 
+src_unpack() {
+	# prevent unpacking the logo
+	unpack ${MY_P}.tar.bz2
+}
+
 src_prepare() {
 	epatch \
 		"${FILESDIR}"/${PN}-4.75-nolua.patch \
@@ -68,8 +75,8 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-6.25-liblua-ar.patch \
 		"${FILESDIR}"/${PN}-6.46-uninstaller.patch \
 		"${FILESDIR}"/${PN}-6.47-no-libnl.patch \
-		"${FILESDIR}"/${PN}-no-FORTIFY_SOURCE.patch \
-		"${FILESDIR}"/${PN}-6.47-ncat-lua.patch
+		"${FILESDIR}"/${PN}-6.47-ncat-lua.patch \
+		"${FILESDIR}"/${PN}-6.49-no-FORTIFY_SOURCE.patch
 
 	if use nls; then
 		local lingua=''
