@@ -3,15 +3,16 @@
 # $Id$
 
 EAPI=5
-inherit eutils flag-o-matic git-r3 toolchain-funcs user
+inherit flag-o-matic toolchain-funcs user
 
 DESCRIPTION="A Tool for network monitoring and data acquisition"
 HOMEPAGE="http://www.tcpdump.org/"
-EGIT_REPO_URI="https://github.com/the-tcpdump-group/tcpdump"
+SRC_URI="http://www.tcpdump.org/release/${P}.tar.gz
+		http://www.jp.tcpdump.org/release/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="+drop-root libressl smi ssl ipv6 samba suid test"
 
 RDEPEND="
