@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit eutils toolchain-funcs
+inherit autotools eutils toolchain-funcs
 
 DESCRIPTION="A GUI to OpenSSL, RSA public keys, certificates, signing requests and revokation lists"
 HOMEPAGE="http://xca.sourceforge.net"
@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.0.0-desktop.patch
 	epatch "${FILESDIR}"/${P}-build.patch
+	AT_M4DIR="m4" eautoreconf
 }
 
 src_configure() {
