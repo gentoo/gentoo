@@ -28,6 +28,10 @@ app-misc/workrave mate
 # Dependencies lack keywords
 games-fps/lsdldoom shareware
 
+# Pacho Ramos <pacho@gentoo.org> (12 Apr 2014)
+# Missing keywords, bug #507490
+net-misc/modemmanager mbim
+
 # Julian Ospald <hasufell@gentoo.org> (23 Nov 2013)
 # FIXME: app-arch/innoextract not available under ppc yet
 games-fps/duke3d-data gog

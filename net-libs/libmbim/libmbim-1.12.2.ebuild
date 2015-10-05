@@ -9,7 +9,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3 autotools
 	EGIT_REPO_URI="git://anongit.freedesktop.org/${PN}"
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~mips ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc64 ~x86"
 	SRC_URI="http://www.freedesktop.org/software/${PN}/${P}.tar.xz"
 fi
 

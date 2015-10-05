@@ -16,7 +16,7 @@ SRC_URI="http://etree.org/shnutils/shntool/support/formats/ape/unix/${MY_PV}-${P
 
 LICENSE="mac"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc x86"
+KEYWORDS="alpha amd64 ppc ~ppc64 x86"
 IUSE="cpu_flags_x86_mmx static-libs"
 
 RDEPEND=""
