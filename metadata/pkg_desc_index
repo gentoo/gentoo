@@ -16485,7 +16485,7 @@ sys-cluster/resource-agents 1.0.4-r1 1.0.4-r2 3.9.4 3.9.5 3.9.6: Resources pack 
 sys-cluster/rgmanager 2.03.09 2.03.09-r1 3.1.5: Clustered resource group manager
 sys-cluster/rgmanager-agents 3.9.2: Resource Manager Agents
 sys-cluster/slurm 2.6.3: SLURM: A Highly Scalable Resource Manager
-sys-cluster/swift 2.3.0-r1 2.4.0: A highly available, distributed, and eventually consistent object/blob store
+sys-cluster/swift 2.3.0-r1 2.5.0: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/torque 2.5.13 4.1.7 4.2.9-r4: Resource manager and queuing system based on OpenPBS
 sys-cluster/util-vserver 0.30.216_pre3025 0.30.216_pre3062 0.30.216_pre3120: Linux-VServer admin utilities
 sys-cluster/vzctl 4.9.1 4.9.2 4.9.3: OpenVZ ConTainers control utility
