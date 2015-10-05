@@ -13,10 +13,10 @@ else
 	patchset=
 	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	if [[ -n "${patchset}" ]]; then
-				SRC_URI="${SRC_URI}
-					https://dev.gentoo.org/~ssuominen/${P}-patches-${patchset}.tar.xz
-					https://dev.gentoo.org/~williamh/dist/${P}-patches-${patchset}.tar.xz"
-			fi
+		SRC_URI+="
+			https://dev.gentoo.org/~ssuominen/${P}-patches-${patchset}.tar.xz
+			https://dev.gentoo.org/~williamh/dist/${P}-patches-${patchset}.tar.xz"
+	fi
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 fi
 
