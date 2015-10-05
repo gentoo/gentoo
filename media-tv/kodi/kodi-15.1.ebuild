@@ -155,6 +155,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-9999-no-arm-flags.patch #400617
 	epatch "${FILESDIR}"/${P}-texturepacker.patch
 	epatch "${FILESDIR}"/${P}-gcc-5.patch #544760
+	epatch_user #293109
 
 	# some dirs ship generated autotools, some dont
 	multijob_init
@@ -188,8 +189,6 @@ src_prepare() {
 	sed -i \
 		-e '/dbus_connection_send_with_reply_and_block/s:-1:3000:' \
 		xbmc/linux/*.cpp || die
-
-	epatch_user #293109
 
 	# Tweak autotool timestamps to avoid regeneration
 	find . -type f -exec touch -r configure {} +

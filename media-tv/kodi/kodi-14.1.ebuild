@@ -154,6 +154,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-no-arm-flags.patch #400617
 	epatch "${FILESDIR}"/${PN}-14.0-dvddemux-ffmpeg.patch #526992#36
 	epatch "${FILESDIR}"/${P}-gcc-5.patch #557300
+	epatch_user #293109
+
 	# The mythtv patch touches configure.ac, so force a regen
 	rm -f configure
 
@@ -184,8 +186,6 @@ src_prepare() {
 	sed -i \
 		-e '/dbus_connection_send_with_reply_and_block/s:-1:3000:' \
 		xbmc/linux/*.cpp || die
-
-	epatch_user #293109
 
 	# Tweak autotool timestamps to avoid regeneration
 	find . -type f -exec touch -r configure {} +
