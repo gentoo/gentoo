@@ -608,7 +608,7 @@ app-crypt/tc-play 2.0: a free, pretty much fully featured and stable TrueCrypt i
 app-crypt/tinyca 2.0.7.5-r2: Simple Perl/Tk GUI to manage a small certification authority
 app-crypt/tpm-emulator 0.7.4-r1: Emulator driver for tpm
 app-crypt/tpm-tools 1.3.8: TrouSerS' support tools for the Trusted Platform Modules
-app-crypt/trousers 0.3.10-r1 0.3.13: An open-source TCG Software Stack (TSS) v1.1 implementation
+app-crypt/trousers 0.3.10-r1 0.3.13 0.3.13-r1: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/truecrypt 7.1a 7.2: Free open-source disk encryption software
 app-crypt/xca 1.1.0 1.3.0: A GUI to OpenSSL, RSA public keys, certificates, signing requests and revokation lists
 app-crypt/xor-analyze 0.5: program for cryptanalyzing xor 'encryption' with variable key length
@@ -12160,7 +12160,7 @@ media-libs/openh264 1.2_p20141104 1.3.1 1.4.0: Cisco OpenH264 library and Gecko 
 media-libs/openimageio 1.1.1 1.1.7 1.3.5: A library for reading and writing images
 media-libs/openjpeg 1.5.2 1.5.2-r1 2.0.0 2.0.0-r1 2.1.0 2.1.0-r1: An open-source JPEG 2000 library
 media-libs/opus 1.0.2-r2 1.1: Open versatile codec designed for interactive speech and audio transmission over the internet
-media-libs/opusfile 0.4 0.5 0.6: A high-level decoding and seeking API for .opus files
+media-libs/opusfile 0.4 0.5 0.6 0.6-r1: A high-level decoding and seeking API for .opus files
 media-libs/oyranos 0.9.4-r2 0.9.5 0.9.5-r1 9999: Colour management system allowing to share various settings across applications and services
 media-libs/phat 0.4.1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
 media-libs/phonon 4.7.2 4.8.3 4.8.3-r1 9999: KDE multimedia API
@@ -13334,7 +13334,7 @@ net-analyzer/ngrep 1.45-r3: A grep for network layers
 net-analyzer/nikto 1.36 2.1.5: Web Server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
 net-analyzer/nload 0.7.4: console application which monitors network traffic and bandwidth usage in real time
-net-analyzer/nmap 6.47-r1 6.47-r2 6.47-r3 6.49_beta2 9999: A utility for network discovery and security auditing
+net-analyzer/nmap 6.47-r1 6.47-r2 6.47-r3 6.49_beta2 6.49_beta2-r1 9999: A utility for network discovery and security auditing
 net-analyzer/nmapsi 0.4.1: A Qt4 frontend to nmap
 net-analyzer/nmbscan 1.2.5: netbios scanner
 net-analyzer/nodebrain 0.9.03 0.9.04: Monitor and do event correlation
@@ -13413,7 +13413,7 @@ net-analyzer/ssmping 0.9.1: Tool for testing multicast connectivity
 net-analyzer/symon 2.86-r1 2.87: Performance and information monitoring tool
 net-analyzer/synscan 5.01: A fast asynchronous half-open TCP portscanner
 net-analyzer/syweb 0.65: Web frontend to symon
-net-analyzer/tcpdump 4.7.4 9999: A Tool for network monitoring and data acquisition
+net-analyzer/tcpdump 4.7.4 4.7.4-r1 9999: A Tool for network monitoring and data acquisition
 net-analyzer/tcpflow 1.4.4_p3 1.4.5_p1: A tool for monitoring, capturing and storing TCP connections flows
 net-analyzer/tcping 1.3.5: Ping implementation that uses the TCP protocol
 net-analyzer/tcpreen 1.4.4: TCP network re-engineering tool
@@ -13821,7 +13821,7 @@ net-libs/iax 0.2.2 0.2.2-r1 0.2.2-r3: IAX (Inter Asterisk eXchange) Library
 net-libs/ignition-transport 0.7.0: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
 net-libs/iojs 2.3.3 2.3.4 2.4.0 2.5.0 3.0.0: An npm compatible platform originally based on node.js
 net-libs/jreen 1.2.0: Qt XMPP library
-net-libs/ldns 1.6.17: a library with the aim to simplify DNS programming in C
+net-libs/ldns 1.6.17 1.6.17-r1: a library with the aim to simplify DNS programming in C
 net-libs/liba53 9999: A5/3 Call encryption library
 net-libs/libaccounts-glib 1.18: Accounts SSO (Single Sign-On) management library for GLib applications
 net-libs/libasr 1.0.1 1.0.1.201505061057 1.0.2: Async Resolver Library from OpenBSD/OpenSMTPD
@@ -13999,7 +13999,7 @@ net-mail/cyrus-imap-admin 2.4.17-r1 2.4.18: Utilities and Perl modules to admini
 net-mail/cyrus-imapd 2.4.16 2.4.17 2.4.17-r1 2.4.18 2.5.4 2.5.5 2.5.6: The Cyrus IMAP Server
 net-mail/dbmail 3.2.2 3.2.3: DBMail is an open-source project that enables storage of mail messages in a relational database
 net-mail/dot-forward 0.71-r2 0.71-r3: reads sendmail's .forward files under qmail
-net-mail/dovecot 2.2.9 2.2.16-r1 2.2.18: An IMAP and POP3 server written with security primarily in mind
+net-mail/dovecot 2.2.9 2.2.16-r1 2.2.18 2.2.18-r1: An IMAP and POP3 server written with security primarily in mind
 net-mail/email 2.5.0 3.0.5 3.1.2 3.1.3: Advanced CLI tool for sending email
 net-mail/eps 1.7: Inter7 Email Processing and mht System library
 net-mail/ezmlm-idx 6.0.0 7.0.0 7.0.0-r1 7.0.0-r2: Simple yet powerful mailing list manager for qmail
@@ -14448,7 +14448,7 @@ net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Co
 net-misc/tlsdate 0.0.1 0.0.4 0.0.4-r1 0.0.4-r2 0.0.5 0.0.6 0.0.11 0.0.12 0.0.12-r1 0.0.12-r2 0.0.13: Update local time over HTTPS
 net-misc/tn5250 0.17.4: Telnet client for the IBM AS/400 that emulates 5250 terminals and printers
 net-misc/tokyotyrant 1.1.41-r1: A network interface to Tokyo Cabinet
-net-misc/tor 0.2.6.7 0.2.6.10 0.2.7.3_rc: Anonymizing overlay network for TCP
+net-misc/tor 0.2.6.7 0.2.6.10 0.2.7.3_rc 0.2.7.3_rc-r1: Anonymizing overlay network for TCP
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
 net-misc/ucarp 1.5.2-r3 1.5.2-r4: Portable userland implementation of Common Address Redundancy Protocol (CARP)
 net-misc/udpcast 20120424 20120424-r1: Multicast file transfer tool
@@ -16604,7 +16604,7 @@ sys-fs/clamfs 1.0.1-r1: A FUSE-based user-space file system with on-access anti-
 sys-fs/cloudfuse 1.0: A FUSE filesystem for Rackspace's Cloud Files
 sys-fs/copyfs 1.0.1: fuse-based filesystem for maintaining configuration files
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
-sys-fs/cryptsetup 1.6.2 1.6.5 1.6.7 1.6.8: Tool to setup encrypted devices with dm-crypt
+sys-fs/cryptsetup 1.6.2 1.6.5 1.6.7 1.6.8 1.6.8-r1: Tool to setup encrypted devices with dm-crypt
 sys-fs/davl 1.2.4-r1: Visualizes the fragmentation status of ext2/3 filesystems
 sys-fs/dd-rescue 1.28 1.46 1.99: Similar to dd but can copy from source with errors
 sys-fs/ddrescue 1.18.1 1.19 1.20: Copy data from one file or block device to another with read-error recovery

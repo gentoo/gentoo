@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install postinst prepare
-DEPEND=arping? ( !net-misc/arping ) rarpd? ( !net-misc/rarpd ) traceroute? ( !net-misc/traceroute ) !static? ( caps? ( sys-libs/libcap ) idn? ( net-dns/libidn ) ipv6? ( ssl? ( gcrypt? ( dev-libs/libgcrypt ) nettle? ( dev-libs/nettle ) openssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl[static-libs] ) ) ) ) ) static? ( caps? ( sys-libs/libcap[static-libs(+)] ) idn? ( net-dns/libidn[static-libs(+)] ) ipv6? ( ssl? ( gcrypt? ( dev-libs/libgcrypt[static-libs(+)] ) nettle? ( dev-libs/nettle[static-libs(+)] ) openssl? ( !libressl? ( dev-libs/openssl:0[static-libs(+)] ) libressl? ( dev-libs/libressl[static-libs] ) ) ) ) ) virtual/os-headers filecaps? ( sys-libs/libcap )
+DEPEND=arping? ( !net-misc/arping ) rarpd? ( !net-misc/rarpd ) traceroute? ( !net-misc/traceroute ) !static? ( caps? ( sys-libs/libcap ) idn? ( net-dns/libidn ) ipv6? ( ssl? ( gcrypt? ( dev-libs/libgcrypt ) nettle? ( dev-libs/nettle ) openssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) ) ) ) static? ( caps? ( sys-libs/libcap[static-libs(+)] ) idn? ( net-dns/libidn[static-libs(+)] ) ipv6? ( ssl? ( gcrypt? ( dev-libs/libgcrypt[static-libs(+)] ) nettle? ( dev-libs/nettle[static-libs(+)] ) openssl? ( !libressl? ( dev-libs/openssl:0[static-libs(+)] ) libressl? ( dev-libs/libressl[static-libs(+)] ) ) ) ) ) virtual/os-headers filecaps? ( sys-libs/libcap )
 DESCRIPTION=Network monitoring tools including ping and ping6
 EAPI=4
 HOMEPAGE=http://www.linuxfoundation.org/collaborate/workgroups/networking/iputils
 IUSE=arping caps clockdiff doc gcrypt idn ipv6 libressl nettle +openssl rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute +filecaps
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux
 LICENSE=BSD-4
-RDEPEND=arping? ( !net-misc/arping ) rarpd? ( !net-misc/rarpd ) traceroute? ( !net-misc/traceroute ) !static? ( caps? ( sys-libs/libcap ) idn? ( net-dns/libidn ) ipv6? ( ssl? ( gcrypt? ( dev-libs/libgcrypt ) nettle? ( dev-libs/nettle ) openssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl[static-libs] ) ) ) ) )
+RDEPEND=arping? ( !net-misc/arping ) rarpd? ( !net-misc/rarpd ) traceroute? ( !net-misc/traceroute ) !static? ( caps? ( sys-libs/libcap ) idn? ( net-dns/libidn ) ipv6? ( ssl? ( gcrypt? ( dev-libs/libgcrypt ) nettle? ( dev-libs/nettle ) openssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) ) ) )
 REQUIRED_USE=ipv6? ( ssl? ( ^^ ( gcrypt nettle openssl ) ) )
 SLOT=0
 SRC_URI=https://github.com/iputils/iputils/archive/s20150815.tar.gz -> iputils-20150815.tar.gz https://dev.gentoo.org/~polynomial-c/iputils-s20150815-manpages.tar.xz
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	fcaps	6a1091a98b1dde01cc26ab3252da1a9b	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=20d09cbbf16d67b7771220282a750905
+_md5_=52aa3c680d3d1ae9ee245fe3c33421f7
