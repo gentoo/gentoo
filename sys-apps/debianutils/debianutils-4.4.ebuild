@@ -15,8 +15,6 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~arm-linux ~x86-linux"
 IUSE="kernel_linux static"
 
-PDEPEND="|| ( >=sys-apps/coreutils-6.10-r1 sys-freebsd/freebsd-ubin )"
-
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-3.4.2-no-bs-namespace.patch
 }
