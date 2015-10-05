@@ -18,10 +18,10 @@ KEYWORDS="amd64 ~mips x86"
 IUSE="doc jemalloc jit static-libs +tools"
 
 CDEPEND="
-	|| ( dev-libs/libedit sys-libs/readline )
+	|| ( dev-libs/libedit sys-libs/readline:= )
 	dev-libs/libpcre[jit?]
 	jemalloc? ( dev-libs/jemalloc )
-	tools? ( sys-libs/ncurses )"
+	tools? ( sys-libs/ncurses:= )"
 
 #varnish compiles stuff at run time
 RDEPEND="
