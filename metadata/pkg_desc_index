@@ -2332,7 +2332,7 @@ app-text/mftrace 1.2.18: Traces TeX fonts to PFA or PFB fonts (formerly pktrace)
 app-text/mht-rip 0.8: convert mht/mhtml files to something usable
 app-text/mpage 2.5.6-r1: Many to one page printing utility
 app-text/multitail 6.4.1: Tail with multiple windows
-app-text/mupdf 1.5-r1 1.6 1.7 1.7a 9999: a lightweight PDF viewer and toolkit written in portable C
+app-text/mupdf 1.5-r1 1.6 1.7 1.7a 1.7a-r1 9999: a lightweight PDF viewer and toolkit written in portable C
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21 2.0.22_p1: Namazu is a full-text search engine
 app-text/nfoview 1.10 1.15.1 9999: simple viewer for NFO files, which are ASCII art in the CP437 codepage
@@ -13943,13 +13943,13 @@ net-libs/obby 0.4.8: Library for collaborative text editing
 net-libs/opal 3.10.11 3.12.4: C++ class library normalising numerous telephony protocols
 net-libs/openmq-cclient 4.4.1: C-Client Library for Open Source Java Message Service (JMS)
 net-libs/openpgm 5.1.118-r1 5.2.122: Open source implementation of the Pragmatic General Multicast specification
-net-libs/openslp 1.2.1-r3 2.0.0: An open-source implementation of Service Location Protocol
+net-libs/openslp 1.2.1-r3 2.0.0 2.0.0-r1: An open-source implementation of Service Location Protocol
 net-libs/ortp 0.20.0 0.22.0 0.23.0: Open Real-time Transport Protocol (RTP, RFC3550) stack
 net-libs/osptoolkit 3.5.0 4.1.5: Open Settlement Protocol development kit
 net-libs/pacparser 1.3.1: Library to parse proxy auto-config files
 net-libs/phodav 0.4 2.0-r1: WebDav server implementation using libsoup
 net-libs/polarssl 1.3.8 1.3.9 1.3.9-r1: Cryptographic library for embedded systems
-net-libs/ptlib 2.10.11 2.12.9: Network focused portable C++ class library providing high level functions
+net-libs/ptlib 2.10.11 2.12.9 2.12.9-r1: Network focused portable C++ class library providing high level functions
 net-libs/qmf 4.0.3: The Qt Messaging Framework
 net-libs/qtweetlib 0.5 9999: Qt based Twitter library
 net-libs/qxmpp 0.7.4 0.7.5 0.7.6 0.7.6-r1 0.8.0 0.8.2 9999: A cross-platform C++ XMPP client library based on the Qt framework
@@ -14178,7 +14178,7 @@ net-misc/fakeidentd 2.6: A static, secure identd. One source file only!
 net-misc/fatrat 1.2.0_beta2: Qt4-based download/upload manager
 net-misc/flexget 1.2.315 1.2.346 9999: Multipurpose automation tool for content like torrents, nzbs, podcasts, comics
 net-misc/fmirror 0.8.4-r2: FTP mirror utility
-net-misc/freerdp 1.1.0_beta1_p20130710-r1 1.1.0_beta1_p20130710-r2 1.1.0_beta1_p20150312 1.2.0_beta1_pre20141115 1.2.1_pre20150326 9999.1: Free implementation of the Remote Desktop Protocol
+net-misc/freerdp 1.1.0_beta1_p20130710-r1 1.1.0_beta1_p20130710-r2 1.1.0_beta1_p20150312 1.2.0_beta1_pre20141115 1.2.1_pre20150326 1.2.1_pre20150326-r1 9999.1: Free implementation of the Remote Desktop Protocol
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.2.1: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.26.2 0.26.3: A daemon to serve the gopher protocol
@@ -17401,7 +17401,7 @@ www-servers/fnord 1.10-r2 1.11: Yet another small httpd
 www-servers/gatling 0.12-r2 0.13: High performance web server
 www-servers/gunicorn 19.1.1 19.3.0: A WSGI HTTP Server for UNIX
 www-servers/hiawatha 9.8 9.14 9.14-r1: Advanced and secure webserver
-www-servers/lighttpd 1.4.35 1.4.35-r1 1.4.35-r2 1.4.37: Lightweight high-performance web server
+www-servers/lighttpd 1.4.35 1.4.35-r1 1.4.35-r2 1.4.37 1.4.37-r1: Lightweight high-performance web server
 www-servers/mongoose 5.3: easy to use web server
 www-servers/monkeyd 1.5.6-r1 1.6.2 9999: A small, fast, and scalable web server
 www-servers/nginx 1.8.0 1.9.2 1.9.3 1.9.4: Robust, small and high performance http and reverse proxy server
