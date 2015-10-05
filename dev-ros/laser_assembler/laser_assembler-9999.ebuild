@@ -23,6 +23,7 @@ RDEPEND="
 	dev-ros/laser_geometry[${PYTHON_USEDEP}]
 	dev-ros/pluginlib
 	dev-ros/message_filters[${PYTHON_USEDEP}]
+	dev-ros/filters
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )
