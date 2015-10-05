@@ -17,6 +17,7 @@ IUSE="bundled-openssl"
 
 RDEPEND="
 	dev-libs/openssl:0
+	net-dns/bind-tools
 	sys-apps/util-linux
 "
 
