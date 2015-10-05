@@ -47,8 +47,6 @@ src_prepare() {
 	# Use /run instead of /var/run
 	sed -i -e '/pidfile_path/s:_PATH_VARRUN:"/run/":' openbsd-compat/pidfile.c || die
 
-	epatch "${FILESDIR}"/"${PN}"-5.7.2-remote-header-crash.patch
-
 	epatch_user
 	eautoreconf
 }
