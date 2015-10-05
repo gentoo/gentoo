@@ -14,11 +14,11 @@ SRC_URI="mirror://apache/commons/chain/source/${MY_P}.zip"
 
 LICENSE="Apache-2.0"
 SLOT="1.2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
-# Too many missing imports from javax.servlet.* which cause the
+# Too many missing imports from javax.servlet.* which causes the
 # "compile-tests" target to fail compiling.
-# I gave up on it after wasting nearly half a day.
+# I gave up on them after wasting nearly half a day.
 RESTRICT="test"
 
 IUSE=""
