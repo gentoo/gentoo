@@ -12,7 +12,7 @@ SRC_URI="https://codeload.github.com/Icinga/${PN}/tar.gz/v${PV} -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="apache2 ldap mysql nginx postgres"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND=">=net-analyzer/icinga2-2.1.1
 		dev-lang/php:*[apache2?,cli,gd,json,intl,ldap?,mysql?,pdo,postgres?,sockets,ssl,xslt,xml]
