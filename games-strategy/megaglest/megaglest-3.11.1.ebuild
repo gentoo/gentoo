@@ -71,7 +71,8 @@ src_prepare() {
 	fi
 
 	epatch "${FILESDIR}"/${P}-static-build.patch \
-		"${FILESDIR}"/${P}-cmake.patch
+		"${FILESDIR}"/${P}-cmake.patch \
+		"${FILESDIR}"/${P}-miniupnpc.patch
 }
 
 src_configure() {
@@ -115,7 +116,9 @@ src_configure() {
 
 src_compile() {
 	if use editor || use model-viewer; then
-		VIRTUALX_COMMAND="cmake-utils_src_compile" virtualmake
+		# work around parallel make issues - bug #561380
+		MAKEOPTS="-j1 ${MAKEOPTS}" \
+			VIRTUALX_COMMAND="cmake-utils_src_compile" virtualmake
 	else
 		cmake-utils_src_compile
 	fi
