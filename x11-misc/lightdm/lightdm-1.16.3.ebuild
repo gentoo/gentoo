@@ -14,10 +14,11 @@ SRC_URI="https://launchpad.net/${PN}/${TRUNK_VERSION}/${PV}/+download/${P}.tar.x
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
-IUSE="+gtk +introspection kde qt4 qt5 +gnome"
+IUSE="audit +gtk +introspection kde qt4 qt5 +gnome"
 REQUIRED_USE="|| ( gtk kde )"
 
-COMMON_DEPEND=">=dev-libs/glib-2.32.3:2
+COMMON_DEPEND="audit? ( sys-process/audit )
+	>=dev-libs/glib-2.32.3:2
 	dev-libs/libxml2
 	gnome? ( sys-apps/accountsservice )
 	virtual/pam
@@ -86,6 +87,7 @@ src_configure() {
 		--localstatedir=/var \
 		--disable-static \
 		--disable-tests \
+		$(use_enable audit) \
 		$(use_enable introspection) \
 		$(use_enable qt4 liblightdm-qt) \
 		$(use_enable qt5 liblightdm-qt5) \
