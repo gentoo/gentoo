@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=>=net-analyzer/icinga2-2.1.1 >=www-apps/icingaweb2-2.0.0
 SLOT=0
 _eclasses_=git-2	1bb87192831f668cd20d93ffb1689c94
-_md5_=5a4098347a5297d044f5f897b9bc0163
+_md5_=4304eda1f3455c9485a46750f31836ef
