@@ -21,6 +21,6 @@ DEPEND=">=net-analyzer/icinga2-2.1.1
 RDEPEND="${DEPEND}"
 
 src_install() {
-	mkdir -p "${D}/usr/share/icingaweb2/modules/${PN}"
-	cp -R "${S}"/* "${D}/usr/share/icingaweb2/modules/${PN}"
+	mkdir -p "${D}/usr/share/icingaweb2/modules/pnp4nagios"
+	cp -R "${S}"/* "${D}/usr/share/icingaweb2/modules/pnp4nagios"
 }
