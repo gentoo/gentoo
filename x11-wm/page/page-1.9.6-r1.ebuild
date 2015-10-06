@@ -32,5 +32,4 @@ DEPEND="x11-proto/xcb-proto
 	x11-libs/pango
 	dev-libs/glib"
 
-RDEPEND="${DEPEND}
-	!dev-tcltk/tcllib"
+RDEPEND="!dev-tcltk/tcllib"
