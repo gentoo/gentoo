@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,22 +14,27 @@ SRC_URI="mirror://apache/commons/jexl/source/${P}-src.tar.gz"
 
 CDEPEND="dev-java/commons-logging:0"
 
-RDEPEND=">=virtual/jre-1.5
+RDEPEND=">=virtual/jre-1.6
 	${CDEPEND}"
 
-DEPEND=">=virtual/jdk-1.5
+DEPEND=">=virtual/jdk-1.6
 	>=dev-java/javacc-5
 	test? ( dev-java/ant-junit:0 )
 	${CDEPEND}"
 
 LICENSE="Apache-2.0"
 SLOT="2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 S="${WORKDIR}/${P}-src"
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
 EANT_GENTOO_CLASSPATH="commons-logging"
+
+# Dubious tests.
+JAVA_RM_FILES=(
+	src/test/java/org/apache/commons/jexl2/ArithmeticTest.java
+)
 
 java_prepare() {
 	cp "${FILESDIR}"/${PV}-build.xml build.xml || die
@@ -43,15 +48,13 @@ java_prepare() {
 		|| die "Parser.java code generation via javacc failed"
 }
 
-src_install() {
-	java-pkg_dojar target/${PN}.jar
-
-	dodoc RELEASE-NOTES.txt NOTICE.txt
-
-	use doc && java-pkg_dojavadoc "${S}"/target/site/apidocs
-	use source && java-pkg_dosrc "${S}"/src/main/java/*
-}
-
 src_test() {
 	java-pkg-2_src_test
+}
+
+src_install() {
+	java-pkg_dojar target/${PN}.jar
+	dodoc RELEASE-NOTES.txt NOTICE.txt
+	use doc && java-pkg_dojavadoc "${S}"/target/site/apidocs
+	use source && java-pkg_dosrc "${S}"/src/main/java/*
 }
