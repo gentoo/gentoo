@@ -13363,7 +13363,7 @@ net-analyzer/pbnj 2.04: A tool for running Nmap scans and diff'ing the results
 net-analyzer/pchar 1.5-r1: Internet bandwidth, latency, and loss of links analyzer
 net-analyzer/pinger 0.32e 0.33: Cyclic multi ping utility for selected adresses using GTK/ncurses
 net-analyzer/pktstat 1.8.5-r1: A network monitoring tool with bandwidth tracking
-net-analyzer/pmacct 1.5.1 1.5.2: A network tool to gather IP traffic information
+net-analyzer/pmacct 1.5.1 1.5.2 1.5.3_pre20150925: A network tool to gather IP traffic information
 net-analyzer/pnp4nagios 0.6.24 0.6.25: A performance data analyzer for nagios
 net-analyzer/poink 2.03: TCP/IP-based ping implementation
 net-analyzer/portbunny 1.0_p20080423: A kernel based highspeed TCP SYN port scanner
