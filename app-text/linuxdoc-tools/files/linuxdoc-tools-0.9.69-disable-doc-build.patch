@@ -1,0 +1,28 @@
+diff --git a/Makefile.in b/Makefile.in
+index 359f14e..1649245 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -161,23 +161,6 @@ endif
+ 	mkdir -m 755 -p $(tex_ddir)
+ 	$(INSTALL_DATA) tex/* $(tex_ddir)
+ 
+-#    -- Build and install documentation
+-	@echo "Installing documentation in $(doc_ddir) ..."
+-	(cd doc; \
+-		PATH=${PATH}:$(bin_ddir) \
+-		PREFIX=$(DESTDIR)$(prefix) \
+-		AUXBINDIR=$(auxbin_ddir) \
+-	 	PKGPERL5LIB=$(perl5lib_ddir) \
+-	 	PKGDATADIR=$(pkgdata_ddir) \
+-		bash Makedoc.sh)
+-
+-	mkdir -m 755 -p $(doc_ddir)
+-	# cp -r doc/* $(doc_ddir)
+-	( cd doc && tar --exclude='CVS' -cpf - . ) | ( cd $(doc_ddir) && tar -xpf - )
+-	rm -f $(doc_ddir)/Makedoc.sh
+-	find $(doc_ddir) -type d -print | xargs chmod 755
+-	find $(doc_ddir) -type f -print | xargs chmod 644
+-
+ # what dirs do the targets clean and distclean need?
+ DDIRS=
+ MDIRS=
