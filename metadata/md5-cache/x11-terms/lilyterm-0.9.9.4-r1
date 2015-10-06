@@ -1,0 +1,12 @@
+DEFINED_PHASES=prepare
+DEPEND=x11-libs/vte:0 dev-util/intltool sys-devel/gettext virtual/pkgconfig
+DESCRIPTION=a terminal emulator based off of libvte that aims to be fast and lightweight
+EAPI=5
+HOMEPAGE=http://lilyterm.luna.com.tw
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=x11-libs/vte:0
+SLOT=0
+SRC_URI=http://lilyterm.luna.com.tw/file/lilyterm-0.9.9.4.tar.gz
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_md5_=e122825e04cb664fa398b803693df15f

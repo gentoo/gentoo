@@ -17990,7 +17990,7 @@ x11-misc/xdaliclock 2.41 2.43: Dali Clock is a digital clock. When a digit chang
 x11-misc/xdesktopwaves 1.3-r1: A cellular automata setting the background of your X Windows desktop under water
 x11-misc/xdg-user-dirs 0.15: A tool to help manage 'well known' user directories
 x11-misc/xdg-user-dirs-gtk 0.9 0.10: xdg-user-dirs-gtk integrates xdg-user-dirs into the Gnome desktop and Gtk+ applications
-x11-misc/xdg-utils 1.1.0_rc2 1.1.0_rc2-r1 1.1.0_rc3_p20150119 1.1.0_rc3_p20150825: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
+x11-misc/xdg-utils 1.1.0_rc2 1.1.0_rc2-r1 1.1.0_rc3_p20150119 1.1.0_rc3_p20150825 1.1.1: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
 x11-misc/xdialog 2.3.1: drop-in replacement for cdialog using GTK
 x11-misc/xdiskusage 1.48_p20111016: front end to xdu for viewing disk usage graphically under X11
 x11-misc/xdo 0.3 0.4: Small X utility to perform elementary actions on windows
@@ -18287,7 +18287,7 @@ x11-terms/gnome-terminal 3.14.2-r2 3.14.3 3.16.2-r2: The Gnome Terminal
 x11-terms/guake 0.5.0 0.5.1 0.5.2 0.6.1 0.7.0 0.7.2 0.8.0 0.8.1 9999: Drop-down terminal for GTK+ desktops
 x11-terms/hanterm 3.1.6-r2 3.1.6-r4: Hanterm -- Korean terminal
 x11-terms/kterm 6.2.0-r5: Japanese Kanji X Terminal
-x11-terms/lilyterm 0.9.9.4: a terminal emulator based off of libvte that aims to be fast and lightweight
+x11-terms/lilyterm 0.9.9.4 0.9.9.4-r1: a terminal emulator based off of libvte that aims to be fast and lightweight
 x11-terms/mate-terminal 1.8.0 1.8.1: The MATE Terminal
 x11-terms/mlterm 3.4.5 3.5.0: A multi-lingual terminal emulator
 x11-terms/mrxvt 0.5.4: Multi-tabbed rxvt clone with XFT, transparent background and CJK support

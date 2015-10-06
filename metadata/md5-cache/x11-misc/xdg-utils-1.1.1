@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=app-text/xmlto || ( www-client/links www-client/lynx virtual/w3m ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
+EAPI=5
+HOMEPAGE=http://portland.freedesktop.org/
+IUSE=doc +perl
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+LICENSE=MIT
+RDEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info x11-apps/xprop x11-apps/xset perl? ( dev-perl/File-MimeInfo )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://portland.freedesktop.org/download/xdg-utils-1.1.1.tar.gz
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_md5_=2ce1dc6e4c127131048307f608e26159
