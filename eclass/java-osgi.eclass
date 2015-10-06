@@ -1,10 +1,5 @@
-# Base eclass for Java packages that needs to be OSGi compliant
-#
-# Copyright (c) 2007, Jean-Noël Rivasseau <elvanor@gmail.com>
-# Copyright (c) 2007-2011, Gentoo Foundation
-#
-# Licensed under the GNU General Public License, v2
-#
+# Copyright 2007-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # -----------------------------------------------------------------------------

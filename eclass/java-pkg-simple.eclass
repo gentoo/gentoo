@@ -1,9 +1,5 @@
-# Eclass for simple bare-source Java packages
-#
-# Copyright (c) 2004-2015, Gentoo Foundation
-#
-# Licensed under the GNU General Public License, v2
-#
+# Copyright 2004-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 inherit java-utils-2

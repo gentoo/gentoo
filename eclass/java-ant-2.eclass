@@ -1,19 +1,5 @@
-# eclass for ant based Java packages
-#
-# Copyright (c) 2004-2005, Thomas Matthijs <axxo@gentoo.org>
-# Copyright (c) 2004-2015, Gentoo Foundation
-# Changes:
-#   May 2007:
-#     Made bsfix make one pass for all things and add some glocal targets for
-#     setting up the whole thing. Contributed by  kiorky
-#     (kiorky@cryptelium.net).
-#   December 2006:
-#     I pretty much rewrote the logic of the bsfix functions
-#     and xml-rewrite.py because they were so slow
-#     Petteri Räty (betelgeuse@gentoo.org)
-#
-# Licensed under the GNU General Public License, v2
-#
+# Copyright 2004-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # @ECLASS: java-ant-2.eclass

@@ -1,15 +1,5 @@
-# Eclass for optional Java packages
-#
-# Copyright (c) 2004-2005, Thomas Matthijs <axxo@gentoo.org>
-# Copyright (c) 2004-2011, Gentoo Foundation
-#
-# Licensed under the GNU General Public License, v2
-#
-# Major changes:
-#    20070805:
-#       Removed phase hooks because Portage does proper env saving now.
-#       <betelgeuse@gentoo.org>
-#
+# Copyright 2004-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # @ECLASS: java-pkg-opt-2.eclass
