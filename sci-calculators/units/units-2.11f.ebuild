@@ -30,8 +30,6 @@ RDEPEND="
 	)
 "
 
-DOCS=( ChangeLog NEWS README )
-
 units_cur_prepare() {
 	local UNITS_PYTHON_MAJOR
 	UNITS_PYTHON_MAJOR=$(
@@ -56,6 +54,8 @@ units_cur_install() {
 
 src_install() {
 	emake DESTDIR="${D}" HAVE_PYTHON=no install
+
+	dodoc ChangeLog NEWS README
 
 	use units_cur && python_foreach_impl units_cur_install
 }
