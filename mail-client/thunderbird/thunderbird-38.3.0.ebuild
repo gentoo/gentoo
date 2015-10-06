@@ -27,7 +27,7 @@ EMVER="1.8.2"
 
 # Patches
 PATCH="thunderbird-38.0-patches-0.1"
-PATCHFF="firefox-38.0-patches-0.3"
+PATCHFF="firefox-38.0-patches-04"
 
 MOZ_HTTP_URI="http://ftp.mozilla.org/pub/${PN}/releases"
 
