@@ -18,6 +18,7 @@ IUSE="debug selinux vim-syntax"
 
 COMMON_DEPEND="
 	>=dev-libs/libevent-2.0.10
+	<dev-libs/libevent-2.5.1
 	sys-libs/ncurses"
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
