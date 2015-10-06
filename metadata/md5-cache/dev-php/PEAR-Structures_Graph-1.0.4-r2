@@ -3,10 +3,10 @@ DEPEND=dev-lang/php:*[pcre(+)] >=dev-php/PEAR-PEAR-1.8.1
 DESCRIPTION=Graph datastructure manipulation library
 EAPI=5
 HOMEPAGE=http://pear.php.net/package/Structures_Graph
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86
 LICENSE=LGPL-2.1
 PDEPEND=dev-php/pear
 RDEPEND=dev-lang/php:*[pcre(+)] >=dev-php/PEAR-PEAR-1.8.1
 SLOT=0
 SRC_URI=http://pear.php.net/get/Structures_Graph-1.0.4.tgz
-_md5_=7fd14b745eab618b9c44f20f29830ea9
+_md5_=5fef65908ec481d4bf6e7c28c1220e18
