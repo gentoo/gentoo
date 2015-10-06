@@ -1,21 +1,23 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=5
+
 JAVA_PKG_IUSE="doc source test"
 
-inherit eutils java-pkg-2 java-ant-2
+inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Expression language engine, can be embedded in applications and frameworks"
 HOMEPAGE="http://commons.apache.org/jexl/"
 SRC_URI="mirror://apache/jakarta/commons/jexl/source/${P}-src.tar.gz"
 
 CDEPEND="dev-java/commons-logging
-	=dev-java/junit-3*"
+		dev-java/junit:0"
 
-RDEPEND=">=virtual/jre-1.4
+RDEPEND=">=virtual/jre-1.6
 	${CDEPEND}"
-DEPEND=">=virtual/jdk-1.4
+DEPEND=">=virtual/jdk-1.6
 	test? ( dev-java/ant-junit )
 	${CDEPEND}"
 
@@ -26,12 +28,9 @@ IUSE=""
 
 S="${WORKDIR}/${P}-src"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
+java_prepare() {
 	# https://issues.apache.org/jira/browse/JEXL-31
-	epatch "${FILESDIR}/1.1-test-target.patch"
+	epatch "${FILESDIR}/${PV}-test-target.patch"
 
 	mkdir -p target/lib && cd target/lib
 	java-pkg_jar-from junit junit.jar
@@ -44,9 +43,7 @@ src_test() {
 
 src_install() {
 	java-pkg_newjar target/${P}*.jar
-
 	dodoc RELEASE-NOTES.txt || die
-
 	use doc && java-pkg_dojavadoc dist/docs/api
 	use source && java-pkg_dosrc "${S}"/src/java/*
 }
