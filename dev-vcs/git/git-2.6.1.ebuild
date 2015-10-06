@@ -233,6 +233,8 @@ src_prepare() {
 	# Bug #493306, where FreeBSD 10.x merged libiconv into its libc.
 	epatch "${FILESDIR}"/git-2.5.1-freebsd-10.x-no-iconv.patch
 
+	epatch "${FILESDIR}"/${PN}-2.6.0-send-email_connection_closed_fix.patch
+
 	epatch_user
 
 	sed -i \
