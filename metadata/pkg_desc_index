@@ -13580,7 +13580,7 @@ net-firewall/iptables 1.4.17 1.4.21-r1 1.4.21-r2 1.4.21-r3: Linux kernel (2.4+) 
 net-firewall/itval 1.2_p20121104: Iptables policy testing and validation tool
 net-firewall/lutelwall 0.99: IPTables firewall setup script
 net-firewall/nfacct 1.0.0 1.0.1: Command line tool to create/retrieve/delete accounting objects in NetFilter
-net-firewall/nftables 0.4 0.5: Linux kernel (3.13+) firewall, NAT and packet mangling tools
+net-firewall/nftables 0.5: Linux kernel (3.13+) firewall, NAT and packet mangling tools
 net-firewall/nufw 2.2.22-r1: An enterprise grade authenticating firewall based on netfilter
 net-firewall/pftop 0.5 0.7 0.7-r1 0.7-r2: Pftop: curses-based utility for real-time display of active states and rule statistics for pf
 net-firewall/pglinux 2.2.4 2.3.0: Privacy oriented firewall application
@@ -13882,7 +13882,7 @@ net-libs/libnetfilter_log 1.0.1: interface to packets that have been logged by t
 net-libs/libnetfilter_queue 1.0.2: API to packets that have been queued by the kernel packet filter
 net-libs/libnfnetlink 1.0.1: the low-level library for netfilter related kernel/userspace communication
 net-libs/libnfsidmap 0.24 0.25 0.25-r1: NFSv4 ID <-> name mapping library
-net-libs/libnftnl 1.0.3 1.0.4 1.0.5: Netlink API to the in-kernel nf_tables subsystem
+net-libs/libnftnl 1.0.5: Netlink API to the in-kernel nf_tables subsystem
 net-libs/libnice 0.1.8 0.1.10 0.1.13: An implementation of the Interactice Connectivity Establishment standard (ICE)
 net-libs/libnids 1.24-r6: an implementation of an E-component of Network Intrusion Detection System
 net-libs/libnipper 0.12.6-r1: A router configuration security analysis library
