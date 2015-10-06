@@ -12,8 +12,8 @@ SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~mips ~ppc ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="+snappy static-libs +tcmalloc"
+KEYWORDS="amd64 arm ~arm64 ~mips ~ppc ppc64 x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
+IUSE="+snappy static-libs +tcmalloc kernel_FreeBSD"
 
 DEPEND="tcmalloc? ( dev-util/google-perftools )
 	snappy? (
@@ -38,8 +38,14 @@ src_configure() {
 	# which the Makefile runs for us automatically.
 	tc-export AR CC CXX
 	export OPT="-DNDEBUG ${CPPFLAGS}"
+	local targetos
+	if use kernel_FreeBSD; then
+		targetos="FreeBSD"
+	else
+		targetos="Linux"
+	fi
 
-	TARGET_OS="Linux" \
+	TARGET_OS=${targetos} \
 	USE_SNAPPY=$(usex snappy) \
 	USE_TCMALLOC=no \
 	TMPDIR=${T} \
