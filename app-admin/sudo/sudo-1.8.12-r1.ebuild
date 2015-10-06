@@ -5,10 +5,6 @@
 EAPI=5
 
 inherit eutils pam multilib libtool
-if [[ ${PV} == "9999" ]] ; then
-	EHG_REPO_URI="http://www.sudo.ws/repos/sudo"
-	inherit mercurial
-fi
 
 MY_P=${P/_/}
 MY_P=${MY_P/beta/b}
@@ -20,16 +16,14 @@ esac
 
 DESCRIPTION="Allows users or groups to run commands as other users"
 HOMEPAGE="http://www.sudo.ws/"
-if [[ ${PV} != "9999" ]] ; then
-	SRC_URI="http://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz
-		ftp://ftp.sudo.ws/pub/sudo/${uri_prefix}${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~sparc-solaris"
-fi
+SRC_URI="http://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz
+	ftp://ftp.sudo.ws/pub/sudo/${uri_prefix}${MY_P}.tar.gz"
 
 # Basic license is ISC-style as-is, some files are released under
 # 3-clause BSD license
 LICENSE="ISC BSD"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~sparc-solaris"
 IUSE="ldap nls pam offensive selinux skey +sendmail sssd"
 
 DEPEND="pam? ( virtual/pam )
@@ -39,7 +33,8 @@ DEPEND="pam? ( virtual/pam )
 		dev-libs/cyrus-sasl
 	)
 	sys-libs/zlib
-	sssd? ( sys-auth/sssd )"
+	sssd? ( sys-auth/sssd )
+	"
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-sudo )
 	ldap? ( dev-lang/perl )
@@ -58,6 +53,7 @@ REQUIRED_USE="pam? ( !skey ) skey? ( !pam )
 MAKEOPTS+=" SAMPLES="
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-include-sys-types-h.patch
 	elibtoolize
 }
 
