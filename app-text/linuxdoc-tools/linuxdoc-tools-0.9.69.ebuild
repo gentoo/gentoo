@@ -13,7 +13,7 @@ SRC_URI="mirror://debian/pool/main/l/${PN}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="MIT SGMLUG"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ia64 ppc x86 ~x86-fbsd"
 IUSE="doc"
 
 DEPEND="
