@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~x86"
 
 CDEPEND="
 	dev-db/sqlite:3
-	!libressl? ( dev-libs/openssl:0 )
+	!libressl? ( dev-libs/openssl:0[-bindist] )
 	libressl? ( dev-libs/libressl )
 	dev-python/python-application[${PYTHON_USEDEP}]
 	media-libs/alsa-lib
