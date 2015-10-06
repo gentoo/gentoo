@@ -10,5 +10,5 @@ RDEPEND=sys-libs/zlib >=dev-libs/cyrus-sasl-2.1.13 afs? ( net-fs/openafs ) berkd
 REQUIRED_USE=afs? ( kerberos )
 SLOT=0
 SRC_URI=ftp://ftp.cyrusimap.org/cyrus-imapd/cyrus-imapd-2.4.17.tar.gz
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	05f80e6013406d68612a7493314e3777	ssl-cert	e90a74de57c48ea6c058b1cb3a735907	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	ssl-cert	e90a74de57c48ea6c058b1cb3a735907	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=14cb610947df373741b7de3e7e872f0e

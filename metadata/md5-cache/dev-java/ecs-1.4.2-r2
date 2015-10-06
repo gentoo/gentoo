@@ -9,5 +9,5 @@ LICENSE=Apache-1.1
 RDEPEND=>=virtual/jre-1.4 dev-java/jakarta-regexp:1.3 dev-java/xerces:2 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 SLOT=0
 SRC_URI=mirror://apache/jakarta/ecs/source/ecs-1.4.2-src.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-pkg-2	bb9b8157d2a348d9ec42ce34a107fe0d	java-pkg-simple	d87e645de7dff9e1bc0aac42b43ca4f4	java-utils-2	221b9d28835c5f872d1e28c6feccf158	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-pkg-simple	b39bf980f65c12acb466f0a891fc002d	java-utils-2	c059b30d6a4df7cf32e2c98c1da1c9b5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=d8830fce4fb85e059348271607f3c43a

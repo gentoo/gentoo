@@ -7,5 +7,5 @@ IUSE=doc java opengl elibc_FreeBSD java
 LICENSE=Apache-2.0
 RDEPEND=virtual/libusb:1 virtual/libudev virtual/jpeg:0 dev-libs/tinyxml opengl? ( media-libs/freeglut !dev-libs/OpenNI2[opengl] ) java? ( >=virtual/jre-1.5 ) java? ( >=dev-java/java-config-2.2.0 )
 SLOT=0
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	git-r3	1502b9838d043db47700b8120083e637	java-pkg-opt-2	4a567b4a22dd2dc61b77c056d29353a5	java-utils-2	221b9d28835c5f872d1e28c6feccf158	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	git-r3	1502b9838d043db47700b8120083e637	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	c059b30d6a4df7cf32e2c98c1da1c9b5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=d90d7315696d1a1d4cb044cdc4e5d05a

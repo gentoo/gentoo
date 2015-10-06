@@ -8,5 +8,5 @@ LICENSE=LGPL-2.1
 RDEPEND=virtual/pam dev-libs/libp11 dev-libs/openssl
 SLOT=0
 SRC_URI=mirror://sourceforge/opensc/pam_p11/pam_p11-0.1.5.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	05f80e6013406d68612a7493314e3777	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=1a8b9425bacee8de5f7a23d27d242001
