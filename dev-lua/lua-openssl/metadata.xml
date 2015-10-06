@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>jakub@jirutka.cz</email>
+		<name>Jakub Jirutka</name>
+	</maintainer>
+	<use>
+		<flag name="luajit">Use <pkg>dev-lang/luajit</pkg> instead of
+			<pkg>dev-lang/lua</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">zhaozg/lua-openssl</remote-id>
+	</upstream>
+</pkgmetadata>
