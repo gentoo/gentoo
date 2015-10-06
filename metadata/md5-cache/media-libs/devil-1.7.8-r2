@@ -10,4 +10,4 @@ RDEPEND=allegro? ( media-libs/allegro:0 ) gif? ( media-libs/giflib ) glut? ( med
 SLOT=0
 SRC_URI=mirror://sourceforge/openil/DevIL-1.7.8.tar.gz
 _eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=469a9bea3d8a1f2ca3b083109ff2e479
+_md5_=ae94adbfd62321d0eaa845f09c5a824f
