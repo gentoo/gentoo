@@ -23,6 +23,7 @@ RDEPEND="
 	dev-ros/nav_core
 	dev-ros/tf
 	dev-ros/move_base_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-cpp/eigen:3
 "
 DEPEND="${RDEPEND}
