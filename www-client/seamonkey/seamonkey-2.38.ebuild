@@ -30,7 +30,7 @@ MOZCONFIG_OPTIONAL_WIFI=1
 MOZCONFIG_OPTIONAL_JIT="enabled"
 inherit check-reqs flag-o-matic toolchain-funcs eutils mozconfig-v6.41 multilib pax-utils fdo-mime autotools mozextension nsplugins mozlinguas
 
-PATCHFF="firefox-40.0-patches-0.01"
+PATCHFF="firefox-41.0-patches-01"
 PATCH="${PN}-2.33-patches-01"
 EMVER="1.8.2"
 
@@ -119,8 +119,6 @@ src_prepare() {
 	EPATCH_SUFFIX="patch" \
 	EPATCH_FORCE="yes" \
 	epatch "${WORKDIR}/firefox"
-	epatch "${FILESDIR}"/firefox-38-hppa-js-syntax-error.patch #556196
-	epatch "${FILESDIR}"/firefox-38-dont-hardcode-libc-soname.patch #557956
 	popd &>/dev/null || die
 
 	# Shell scripts sometimes contain DOS line endings; bug 391889

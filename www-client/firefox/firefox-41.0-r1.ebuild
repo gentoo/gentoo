@@ -27,7 +27,7 @@ if [[ ${MOZ_ESR} == 1 ]]; then
 fi
 
 # Patch version
-PATCH="${PN}-40.0-patches-0.01"
+PATCH="${PN}-41.0-patches-01"
 MOZ_HTTP_URI="http://archive.mozilla.org/pub/${PN}/releases"
 
 MOZCONFIG_OPTIONAL_WIFI=1
@@ -140,7 +140,6 @@ src_prepare() {
 	EPATCH_SUFFIX="patch" \
 	EPATCH_FORCE="yes" \
 	epatch "${WORKDIR}/firefox"
-	epatch "${FILESDIR}"/${PN}-38-dont-hardcode-libc-soname.patch #557956
 
 	# Allow user to apply any additional patches without modifing ebuild
 	epatch_user
