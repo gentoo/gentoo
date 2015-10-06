@@ -62,5 +62,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "Run 'emerge --config ${CATEGORY}/${PF}' to finish setup."
+	einfo "Run 'emerge --config =${CATEGORY}/${PF}' to finish setup."
 }
