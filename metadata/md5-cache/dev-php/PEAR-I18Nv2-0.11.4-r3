@@ -3,10 +3,10 @@ DEPEND=dev-lang/php:*[iconv,pcre(+)] dev-lang/php:* >=dev-php/pear-1.8.1
 DESCRIPTION=Internationalization - basic support to localize your application
 EAPI=5
 HOMEPAGE=http://pear.php.net/I18Nv2
-KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
 LICENSE=PHP-3
 RDEPEND=dev-lang/php:*[iconv,pcre(+)] dev-lang/php:* >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=http://pear.php.net/get/I18Nv2-0.11.4.tgz
 _eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	php-pear-r1	775902054fe3b812a6afa7cdde2e0b40	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=aba71e49a9b08a7736a370647e84679e
+_md5_=a3a3a28381c2d8e2438791ab14eda81b
