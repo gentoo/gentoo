@@ -21,7 +21,7 @@ DEPEND="
 
 src_prepare() {
 	sed -i \
-		-e '/LFLAGS/s:-lncurses:$(LDFLAGS) $(shell $(PKG_CONFIG) --libs ncurses):' \
+		-e '/LDFLAGS/s:-lncurses:$(shell $(PKG_CONFIG) --libs ncurses):' \
 		-e 's:CFLAGS=-g:CFLAGS+=:' \
 		-e 's:gcc:$(CC):g' \
 		Makefile || die
