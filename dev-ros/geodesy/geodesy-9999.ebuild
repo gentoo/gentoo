@@ -5,7 +5,7 @@
 EAPI=5
 ROS_REPO_URI="https://github.com/ros-geographic-info/geographic_info"
 VER_PREFIX=geographic_info-
-KEYWORDS="~amd64"
+KEYWORDS=""
 PYTHON_COMPAT=( python2_7 )
 ROS_SUBDIR=${PN}
 

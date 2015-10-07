@@ -4,7 +4,7 @@
 
 EAPI=5
 ROS_REPO_URI="https://github.com/pr2/pr2_common"
-KEYWORDS="~amd64"
+KEYWORDS=""
 ROS_SUBDIR=${PN}
 PYTHON_COMPAT=( python2_7 )
 

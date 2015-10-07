@@ -5,7 +5,7 @@
 EAPI=5
 CATKIN_HAS_MESSAGES=yes
 ROS_REPO_URI="https://github.com/ros/geometry"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS=""
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin

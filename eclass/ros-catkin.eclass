@@ -120,7 +120,6 @@ CATKIN_MESSAGES_EUS_USEDEP="ros_messages_eus(-)"
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
-	KEYWORDS=""
 	S=${WORKDIR}/${P}/${ROS_SUBDIR}
 else
 	SRC_URI="${ROS_REPO_URI}/archive/${VER_PREFIX}${PV%_*}${VER_SUFFIX}.tar.gz -> ${ROS_REPO_URI##*/}-${PV}.tar.gz"

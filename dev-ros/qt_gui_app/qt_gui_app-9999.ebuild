@@ -5,7 +5,7 @@
 EAPI=5
 
 ROS_REPO_URI="https://github.com/ros-visualization/qt_gui_core"
-KEYWORDS="~amd64"
+KEYWORDS=""
 PYTHON_COMPAT=( python2_7 )
 ROS_SUBDIR=${PN}
 

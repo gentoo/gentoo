@@ -5,7 +5,7 @@
 EAPI=5
 
 ROS_REPO_URI="https://github.com/ros/xacro"
-KEYWORDS="~amd64"
+KEYWORDS=""
 PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin

@@ -4,7 +4,7 @@
 
 EAPI=5
 ROS_REPO_URI="https://github.com/ros-controls/control_toolbox"
-KEYWORDS="~amd64"
+KEYWORDS=""
 CATKIN_HAS_MESSAGES=yes
 PYTHON_COMPAT=( python2_7 )
 

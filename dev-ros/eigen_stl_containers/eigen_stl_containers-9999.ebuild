@@ -5,7 +5,7 @@
 EAPI=5
 
 ROS_REPO_URI="https://github.com/ros/eigen_stl_containers"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS=""
 
 inherit ros-catkin
 

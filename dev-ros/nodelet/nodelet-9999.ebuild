@@ -5,7 +5,7 @@
 EAPI=5
 CATKIN_HAS_MESSAGES=yes
 ROS_REPO_URI="https://github.com/ros/nodelet_core"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS=""
 ROS_SUBDIR=${PN}
 CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs"
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )

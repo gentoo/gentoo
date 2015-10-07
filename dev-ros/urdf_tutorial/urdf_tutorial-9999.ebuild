@@ -4,7 +4,7 @@
 
 EAPI=5
 ROS_REPO_URI="https://github.com/ros/urdf_tutorial"
-KEYWORDS="~amd64"
+KEYWORDS=""
 
 inherit ros-catkin
 

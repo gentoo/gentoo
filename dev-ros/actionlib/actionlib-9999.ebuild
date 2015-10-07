@@ -5,7 +5,7 @@
 EAPI=5
 CATKIN_HAS_MESSAGES=yes
 ROS_REPO_URI="https://github.com/ros/actionlib"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS=""
 PYTHON_COMPAT=( python2_7 )
 CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/actionlib_msgs dev-ros/std_msgs"
 

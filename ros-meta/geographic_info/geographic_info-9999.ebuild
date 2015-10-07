@@ -6,7 +6,7 @@ EAPI=5
 CATKIN_HAS_MESSAGES=yes
 ROS_REPO_URI="https://github.com/ros-geographic-info/geographic_info"
 VER_PREFIX=${PN}-
-KEYWORDS="~amd64"
+KEYWORDS=""
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
