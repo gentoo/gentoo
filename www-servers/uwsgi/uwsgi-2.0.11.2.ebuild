@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
 
 RUBY_OPTIONAL="yes"
 USE_RUBY="ruby19 ruby20 ruby21"
@@ -203,7 +203,7 @@ src_configure() {
 		-e "s|VAR_PLUGIN_DIR|/usr/$(get_libdir)/uwsgi|" \
 		-e "s|VAR_BUILD_DIR|${T}/plugins|" \
 		-e "s|VAR_EMBEDDED|${embedded_plugins// /, }|" \
-		buildconf/gentoo.ini
+		buildconf/gentoo.ini || die "sed failed"
 
 	use caps || sed -i -e 's|sys/capability.h|DISABLED|' uwsgiconfig.py || die "sed failed"
 	use zeromq || sed -i -e 's|uuid/uuid.h|DISABLED|' uwsgiconfig.py || die "sed failed"
@@ -218,7 +218,7 @@ src_configure() {
 }
 
 each_ruby_compile() {
-	cd "${WORKDIR}/${MY_P}"
+	cd "${WORKDIR}/${MY_P}" || die "sed failed"
 
 	UWSGICONFIG_RUBYPATH="${RUBY}" python uwsgiconfig.py --plugin plugins/rack gentoo rack_${RUBY##*/} || die "building plugin for ${RUBY} failed"
 	UWSGICONFIG_RUBYPATH="${RUBY}" python uwsgiconfig.py --plugin plugins/fiber gentoo fiber_${RUBY##*/}|| die "building fiber plugin for ${RUBY} failed"
@@ -239,19 +239,19 @@ python_compile_plugins() {
 	${PYTHON} uwsgiconfig.py --plugin plugins/python gentoo ${EPYV} || die "building plugin for ${EPYTHON} failed"
 
 	if use python_asyncio ; then
-		if [ "${PYV}" == "34" ] ; then
+		if [[ "${PYV}" == "34" || "${PYV}" == "35" ]] ; then
 			${PYTHON} uwsgiconfig.py --plugin plugins/asyncio gentoo asyncio${PYV} || die "building plugin for asyncio-support in ${EPYTHON} failed"
 		fi
 	fi
 
 	if use python_gevent ; then
-		if [ "${PYV}" == "27" ] ; then
+		if [[ "${PYV}" == "27" ]] ; then
 			${PYTHON} uwsgiconfig.py --plugin plugins/gevent gentoo gevent${PYV} || die "building plugin for gevent-support in ${EPYTHON} failed"
 		fi
 	fi
 
 	if use pypy ; then
-		if [ "${PYV}" == "27" ] ; then
+		if [[ "${PYV}" == "27" ]] ; then
 			# TODO: do some proper patching ? The wiki didn't help... I gave up for now.
 			# QA: RWX --- --- usr/lib64/uwsgi/pypy_plugin.so
 			append-ldflags -Wl,-z,noexecstack
