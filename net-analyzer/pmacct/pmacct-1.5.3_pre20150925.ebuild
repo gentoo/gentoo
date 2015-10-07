@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A network tool to gather IP traffic information"
 HOMEPAGE="http://www.pmacct.net/"
-SRC_URI="mirror://gentoo/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~jer/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
