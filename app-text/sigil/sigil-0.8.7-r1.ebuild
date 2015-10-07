@@ -4,7 +4,6 @@
 
 EAPI=5
 CMAKE_MIN_VERSION="3.0"
-CMAKE_BUILD_TYPE="Release"
 
 # This ebuild could use some python checks, as sigil contains python plugin architecture.
 
@@ -14,7 +13,7 @@ MY_PN="Sigil"
 
 DESCRIPTION="Sigil is a multi-platform WYSIWYG ebook editor for ePub format"
 HOMEPAGE="http://sigil-ebook.com/"
-SRC_URI="https://github.com/user-none/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Sigil-Ebook/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -39,6 +38,7 @@ RDEPEND="
 	>=sys-libs/zlib-1.2.7[minizip]
 "
 DEPEND="${RDEPEND}
+	>=sys-devel/gcc-4.8
 	virtual/pkgconfig
 	>=dev-qt/linguist-tools-5.4:5
 "
@@ -52,14 +52,4 @@ src_prepare() {
 	sed -e '/set( QT_LIBS/d' -i src/Sigil/CMakeLists.txt || die "sed failed"
 
 	cmake-utils_src_prepare
-}
-
-src_configure() {
-	cmake-utils_src_configure
-
-	cd "${WORKDIR}/${P}_build" || die "Where is the build dir?"
-	for i in CMakeCache.txt src/Sigil/CMakeFiles/sigil.dir/link.txt $(find . -name '*.make')
-	do
-		sed -e 's/-O3 -DNDEBUG/-DNDEBUG/' -i ${i} || die "sed failed"
-	done
 }
