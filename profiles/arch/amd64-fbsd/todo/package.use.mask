@@ -213,3 +213,6 @@ dev-libs/eet test
 
 # net-misc/freerdp (doesnt build)
 media-video/vlc rdp
+
+# net-wireless/bluez
+media-sound/pulseaudio bluetooth
