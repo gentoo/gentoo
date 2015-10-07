@@ -64,6 +64,11 @@ else
 	: ${KDE_DOXYGEN:=false}
 fi
 
+# @ECLASS-VARIABLE: KDE_DOX_DIR
+# @DESCRIPTION:
+# Defaults to ".". Otherwise, use alternative KDE doxygen path.
+: ${KDE_DOX_DIR:=.}
+
 # @ECLASS-VARIABLE: KDE_EXAMPLES
 # @DESCRIPTION:
 # If set to "false", unconditionally ignore a top-level examples subdirectory.
@@ -488,7 +493,7 @@ kde5_src_compile() {
 
 	# Build doxygen documentation if applicable
 	if use_if_iuse doc ; then
-		kgenapidox . || die
+		kgenapidox ${KDE_DOX_DIR} || die
 	fi
 }
 
