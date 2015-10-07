@@ -1,0 +1,27 @@
+From 6c7b6ab7d1aae47d3a3f72a7951c7de294be2917 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Tue, 6 Oct 2015 22:16:38 -0400
+Subject: [PATCH] Append $(python_get_sitedir)/pyfa to import path
+
+Ensures that pyfa's import statements continue to work for systemwide
+installation.
+---
+ pyfa.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/pyfa.py b/pyfa.py
+index 8189918..7b81f10 100755
+--- a/pyfa.py
++++ b/pyfa.py
+@@ -20,6 +20,8 @@
+ 
+ import sys
+ import re
++import os
++sys.path.append(os.path.join("%%SITEDIR%%", "pyfa"))
+ import config
+ 
+ 
+-- 
+2.6.0
+

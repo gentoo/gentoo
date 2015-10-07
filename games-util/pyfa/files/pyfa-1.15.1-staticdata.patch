@@ -1,0 +1,61 @@
+From c7bb5210ce9feebb753734b5c581acca9f5c9d06 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Tue, 6 Oct 2015 21:37:44 -0400
+Subject: [PATCH] make gameDB and imgs.zip paths settable from configforced
+
+---
+ config.py           | 10 +++++++++-
+ gui/bitmapLoader.py |  2 +-
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/config.py b/config.py
+index 4072236..a9e71ee 100644
+--- a/config.py
++++ b/config.py
+@@ -28,6 +28,7 @@ pyfaPath = None
+ savePath = None
+ saveDB = None
+ gameDB = None
++imgsZIP = None
+ 
+ 
+ class StreamToLogger(object):
+@@ -66,6 +67,7 @@ def defPaths():
+     global savePath
+     global saveDB
+     global gameDB
++    global imgsZIP
+     global saveInRoot
+ 
+     if debug:
+@@ -117,7 +119,13 @@ def defPaths():
+     # The database where the static EVE data from the datadump is kept.
+     # This is not the standard sqlite datadump but a modified version created by eos
+     # maintenance script
+-    gameDB = os.path.join(pyfaPath, "eve.db")
++    gameDB = getattr(configforced, "gameDB", None)
++    if gameDB is None:
++        gameDB = os.path.join(pyfaPath, "eve.db")
++
++    imgsZIP = getattr(configforced, "imgsZIP", None)
++    if imgsZIP is None:
++        imgsZIP = os.path.join(pyfaPath, "imgs.zip")
+ 
+     ## DON'T MODIFY ANYTHING BELOW ##
+     import eos.config
+diff --git a/gui/bitmapLoader.py b/gui/bitmapLoader.py
+index 45026be..02985c1 100644
+--- a/gui/bitmapLoader.py
++++ b/gui/bitmapLoader.py
+@@ -31,7 +31,7 @@ except ImportError:
+ class BitmapLoader():
+ 
+     try:
+-        archive = zipfile.ZipFile(os.path.join(config.pyfaPath, 'imgs.zip'), 'r')
++        archive = zipfile.ZipFile(config.imgsZIP, 'r')
+     except IOError:
+         archive = None
+ 
+-- 
+2.6.0
+
