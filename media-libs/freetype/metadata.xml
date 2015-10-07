@@ -20,6 +20,7 @@
 		<flag name="adobe-cff">Use Adobe CFF as default font-renderer</flag>
 		<flag name="auto-hinter">Use the unpatented auto-hinter instead
 			of the (recommended) TrueType bytecode interpreter</flag>
+		<flag name="bindist">Disable ClearType support (see http://freetype.org/patents.html)</flag>
 		<flag name="bzip2">Support bzip2 compressed PCF fonts.</flag>
 		<flag name="fontforge">Install internal headers required for TrueType
 			debugger in <pkg>media-gfx/fontforge</pkg> (built with
