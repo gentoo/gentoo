@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
-DEPEND=>=media-libs/libpng-1.2:0 virtual/jpeg:0 sys-libs/zlib x11-libs/libICE x11-libs/libSM x11-libs/libXext x11-libs/libXt cairo? ( x11-libs/cairo ) opengl? ( virtual/opengl ) xinerama? ( x11-libs/libXinerama ) xft? ( x11-libs/libXft ) x11-proto/xextproto doc? ( app-doc/doxygen pdf? ( dev-texlive/texlive-fontutils dev-texlive/texlive-latex dev-texlive/texlive-latexextra ) ) xinerama? ( x11-proto/xineramaproto ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DEPEND=>=media-libs/libpng-1.2:0 virtual/jpeg:0 sys-libs/zlib x11-libs/libICE x11-libs/libSM x11-libs/libXext x11-libs/libXt cairo? ( x11-libs/cairo ) opengl? ( virtual/opengl ) xinerama? ( x11-libs/libXinerama ) xft? ( x11-libs/libXft ) x11-proto/xextproto doc? ( app-doc/doxygen ) xinerama? ( x11-proto/xineramaproto ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
 DESCRIPTION=C++ user interface toolkit for X and OpenGL
 EAPI=5
 HOMEPAGE=http://www.fltk.org/
-IUSE=cairo debug doc examples games +opengl pdf static-libs +threads +xft +xinerama
+IUSE=cairo debug doc examples games +opengl static-libs +threads +xft +xinerama
 LICENSE=FLTK LGPL-2
 RDEPEND=>=media-libs/libpng-1.2:0 virtual/jpeg:0 sys-libs/zlib x11-libs/libICE x11-libs/libSM x11-libs/libXext x11-libs/libXt cairo? ( x11-libs/cairo ) opengl? ( virtual/opengl ) xinerama? ( x11-libs/libXinerama ) xft? ( x11-libs/libXft )
 SLOT=1
 _eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	subversion	4fee0a764150bb4dda27ed4d2c4ed7ce	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=a89f1a84f1d2b97336d4d38dd3d2c45c
+_md5_=f388a6dbdd0ed03d00ceec808461565a
