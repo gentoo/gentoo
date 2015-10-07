@@ -1894,7 +1894,7 @@ app-misc/tdl 1.5.2-r2: Command line To Do List manager
 app-misc/terminal-colors 2.0 2.1 2.2: A tool to display color charts for 8, 16, 88, and 256 color terminals
 app-misc/timestamp 1.1: A text filtering pipe that marks each line with a timestamp
 app-misc/tkpasman 2.2b: A useful and reliable personal password manager, written in Tcl/Tk
-app-misc/tmux 1.9a-r1 2.0-r2 9999: Terminal multiplexer
+app-misc/tmux 1.9a-r2 2.0-r3 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 2.1.0 2.2.1 2.2.1-r1 9999: CPU, RAM memory, and load monitor for use with tmux
 app-misc/toilet 0.3: The Other Implementations letters. Figlet replacement
 app-misc/tomboy 1.14.1: Desktop note-taking application
