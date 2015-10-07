@@ -240,7 +240,7 @@ src_install() {
 		domenu wireshark.desktop
 	fi
 
-	if use qt4; then
+	if use qt4 || use qt5; then
 		sed -e '/Exec=/s|wireshark|&-qt|g' wireshark.desktop > wireshark-qt.desktop || die
 		domenu wireshark-qt.desktop
 	fi
