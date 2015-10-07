@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+inherit eutils
 
 DESCRIPTION="A Library to Access SMI MIB Information"
 HOMEPAGE="http://www.ibr.cs.tu-bs.de/projects/libsmi"
