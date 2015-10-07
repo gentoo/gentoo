@@ -1,16 +1,11 @@
-Description: Fix FTBFS caused by freetype headers path change.
-Author: Gilles Filippini <pini@debian.org>
-Bug-Debian: http://bugs.debian.org/733403
-Index: nted/mainwindow.cpp
-===================================================================
---- nted.orig/mainwindow.cpp	2013-12-30 17:45:21.000000000 +0100
-+++ nted/mainwindow.cpp	2013-12-30 17:45:44.000000000 +0100
+--- nted-1.10.18/mainwindow.cpp
++++ nted-1.10.18/mainwindow.cpp
 @@ -24,7 +24,7 @@
  #include <stdio.h>
  #include <time.h>
  #include <ft2build.h>
 -#include <freetype/freetype.h>
-+#include <freetype.h>
++#include FT_FREETYPE_H
  #include <gtk/gtk.h>
  #include <gdk/gdkkeysyms.h>
  #include <cairo-ps.h>
