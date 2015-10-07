@@ -5,6 +5,10 @@
     <email>bman@gentoo.org</email>
     <name>Aaron Bauman</name>
   </maintainer>
+  <maintainer>
+	<email>alunduil@gentoo.org</email>
+	<name>Alex Brandt</name>
+  </maintainer>
   <upstream>
     <remote-id type="pypi">aiohttp</remote-id>
     <remote-id type="github">KeepSafe/aiohttp</remote-id>
