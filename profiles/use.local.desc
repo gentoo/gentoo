@@ -7680,6 +7680,7 @@ www-client/chromium:hidpi - Enable support for high-resolution screens (high dot
 www-client/chromium:hotwording - Enable voice-recognition support (Ok Google)
 www-client/chromium:pic - Disable optimized assembly code that is not PIC friendly
 www-client/chromium:proprietary-codecs - Enable proprietary codecs like H.264, MP3
+www-client/chromium:system-ffmpeg - Use system ffmpeg instead of the bundled one
 www-client/chromium:tcmalloc - Use bundled tcmalloc instead of system malloc
 www-client/chromium:widevine - Unsupported closed-source DRM capability (required by Netflix VOD)
 www-client/dwb:gtk3 - Link against x11-libs/gtk+:3 instead of x11-libs/gtk+:2
