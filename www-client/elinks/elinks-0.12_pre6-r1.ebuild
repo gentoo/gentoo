@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,11 +22,11 @@ RESTRICT="test"
 DEPEND="dev-libs/boehm-gc
 	>=dev-libs/expat-1.95.4
 	bzip2? ( >=app-arch/bzip2-1.0.2 )
-	ssl? ( >=dev-libs/openssl-0.9.6g )
+	ssl? ( >=dev-libs/openssl-0.9.6g:0 )
 	X? ( x11-libs/libX11 x11-libs/libXt )
 	zlib? ( >=sys-libs/zlib-1.1.4 )
-	lua? ( >=dev-lang/lua-5 )
-	gpm? ( >=sys-libs/ncurses-5.2 >=sys-libs/gpm-1.20.0-r5 )
+	lua? ( >=dev-lang/lua-5:0 )
+	gpm? ( >=sys-libs/ncurses-5.2:0 >=sys-libs/gpm-1.20.0-r5 )
 	guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated,discouraged] )
 	idn? ( net-dns/libidn )
 	perl? ( dev-lang/perl )
