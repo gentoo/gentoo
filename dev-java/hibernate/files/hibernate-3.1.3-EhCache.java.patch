@@ -1,0 +1,22 @@
+--- src/org/hibernate/cache/EhCache.java.orig	2015-10-07 14:06:39.968486000 +0000
++++ src/org/hibernate/cache/EhCache.java	2015-10-07 14:06:49.900486000 +0000
+@@ -192,9 +192,9 @@
+         catch (IllegalStateException e) {
+             throw new CacheException(e);
+         } 
+-        catch (IOException e) {
+-            throw new CacheException(e);
+-        }
++        // catch (IOException e) {
++        //     throw new CacheException(e);
++        // }
+     }
+ 
+     /**
+@@ -289,4 +289,4 @@
+ 		return "EHCache(" + getRegionName() + ')';
+ 	}
+ 
+-}
+\ No newline at end of file
++}

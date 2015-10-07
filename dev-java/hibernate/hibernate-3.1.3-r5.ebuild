@@ -19,14 +19,14 @@ IUSE=""
 SLOT="3.1"
 KEYWORDS="amd64 x86"
 
-COMMON_DEPEND="
+CDEPENDEND="
 	>=dev-java/antlr-2.7.7:0[java]
 	dev-java/c3p0:0
 	dev-java/cglib:3
 	dev-java/commons-collections:0
 	dev-java/commons-logging:0
 	dev-java/dom4j:1
-	dev-java/ehcache:0
+	dev-java/ehcache:1.2
 	dev-java/oscache:0
 	dev-java/proxool:0
 	dev-java/swarmcache:1.0
@@ -35,18 +35,21 @@ COMMON_DEPEND="
 	dev-java/ant-core:0
 	dev-java/asm:2.2"
 RDEPEND=">=virtual/jre-1.6
-	${COMMON_DEPEND}"
+	${CDEPENDEND}"
 DEPEND=">=virtual/jdk-1.6
-	${COMMON_DEPEND}"
+	${CDEPENDEND}"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
-# Avoid this to happen.
-#    [javac] /var/tmp/portage/dev-java/hibernate-3.1.3-r4/work/hibernate-3.1/src/org/hibernate/dialect/MimerSQLDialect.java:13: error: unmappable character for encoding UTF8
-#    [javac]  * @author Fredrik �lund <fredrik.alund@mimer.se>
 JAVA_ANT_ENCODING="ISO-8859-1"
 
+PATCHES=(
+	"${FILESDIR}"/"${P}-EhCache.java.patch"
+)
+
 java_prepare() {
+	epatch "${PATCHES[@]}"
+
 	java-ant_rewrite-bootclasspath 1.5
 
 	# this depends on jboss
@@ -60,7 +63,7 @@ java_prepare() {
 JAVA_ANT_REWRITE_CLASSPATH="true"
 EANT_GENTOO_CLASSPATH="
 c3p0,commons-collections,commons-logging,cglib-3,transaction-api
-dom4j-1,ehcache,oscache,proxool,swarmcache-1.0
+dom4j-1,ehcache-1.2,oscache,proxool,swarmcache-1.0
 sun-jacc-api,antlr,ant-core,asm-2.2
 "
 EANT_EXTRA_ARGS="-Dnosplash -Ddist.dir=dist"
