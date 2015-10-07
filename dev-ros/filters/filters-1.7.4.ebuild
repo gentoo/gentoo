@@ -18,4 +18,4 @@ RDEPEND="dev-ros/roscpp
 	dev-ros/pluginlib"
 DEPEND="${RDEPEND}
 	test? ( dev-ros/rostest dev-cpp/gtest )"
-PATCHES=( "${FILESDIR}/tests.patch" )
+PATCHES=( "${FILESDIR}/tests.patch" "${FILESDIR}/rostest.patch" )
