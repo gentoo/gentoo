@@ -15,7 +15,7 @@ ESVN_PASSWORD=""
 SLOT="1"
 LICENSE="FLTK LGPL-2"
 KEYWORDS=""
-IUSE="cairo debug doc examples games +opengl pdf static-libs +threads +xft +xinerama"
+IUSE="cairo debug doc examples games +opengl static-libs +threads +xft +xinerama"
 
 RDEPEND="
 	>=media-libs/libpng-1.2:0
@@ -31,14 +31,7 @@ RDEPEND="
 	xft? ( x11-libs/libXft )"
 DEPEND="${RDEPEND}
 	x11-proto/xextproto
-	doc? (
-		app-doc/doxygen
-		pdf? (
-			dev-texlive/texlive-fontutils
-			dev-texlive/texlive-latex
-			dev-texlive/texlive-latexextra
-		)
-	)
+	doc? ( app-doc/doxygen )
 	xinerama? ( x11-proto/xineramaproto )"
 
 FLTK_INCDIR=${EPREFIX}/usr/include/fltk
@@ -102,12 +95,11 @@ src_configure() {
 
 src_compile() {
 	default
+
 	if use doc; then
 		emake -C documentation html
-		if use pdf; then
-			emake -C documentation pdf
-		fi
 	fi
+
 	if use games; then
 		emake -C test blocks checkers sudoku
 	fi
