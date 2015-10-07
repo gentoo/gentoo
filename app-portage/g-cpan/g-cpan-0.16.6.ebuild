@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="g-cpan: generate and install CPAN modules using portage"
-HOMEPAGE="https://www.gentoo.org/proj/en/perl/g-cpan.xml"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Perl/g-cpan"
 
 LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
