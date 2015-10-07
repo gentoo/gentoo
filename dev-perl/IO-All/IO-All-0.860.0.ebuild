@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="unified IO operations"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 # needs Scalar::Util
