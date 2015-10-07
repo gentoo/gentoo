@@ -7886,6 +7886,7 @@ dev-python/txAMQP 0.6.2: Python library for communicating with AMQP peers using 
 dev-python/txaio 1.0.0: a helper library for writing code unmodified on both Twisted and asyncio
 dev-python/txsocksx 1.13.0.3 1.15.0.2: Twisted client endpoints for SOCKS{4,4a,5}
 dev-python/tzlocal 1.1.2 1.2: tzinfo object for the local timezone
+dev-python/uhashring 0.1: Full featured consistent hashing python library compatible with ketama
 dev-python/ujson 1.33: Ultra fast JSON encoder and decoder for Python
 dev-python/unicodecsv 0.9.4 0.11.0 0.11.1 0.12.0 0.13.0: Drop-in replacement for python stdlib csv module supporting unicode
 dev-python/unidecode 0.04.17 0.04.18: Module providing ASCII transliterations of Unicode text
