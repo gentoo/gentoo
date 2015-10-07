@@ -92,7 +92,7 @@ DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt:0
-	>=dev-libs/libgcrypt-1.4.5:0"
+"
 
 pkg_pretend() {
 	local CONFIG_CHECK="~AUTOFS4_FS ~BLK_DEV_BSG ~CGROUPS
