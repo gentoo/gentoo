@@ -55,6 +55,9 @@ src_prepare() {
 		-e '/^gnubgiconsdir / s#=.*#= /usr/share#' \
 		-e '/^gnubgpixmapsdir / s#=.*#= /usr/share/pixmaps#' \
 		pixmaps/Makefile.in || die
+	sed -i \
+		-e '1i#include <config.h>' \
+		copying.c || die #551896
 }
 
 src_configure() {
