@@ -3,3 +3,6 @@
 # $Id$
 
 sys-libs/libcxx libcxxrt
+
+# bug 562412
+www-client/firefox pulseaudio
