@@ -60,7 +60,7 @@ RDEPEND+="
 	sys-libs/ncurses:0=
 	app-arch/bzip2
 	sys-libs/zlib
-	>=media-video/ffmpeg-2.8:0=[vdpau?]
+	>=media-video/ffmpeg-2.6:0=[vdpau?]
 	a52? ( media-libs/a52dec )
 	aalib? ( media-libs/aalib )
 	alsa? ( media-libs/alsa-lib )
@@ -159,7 +159,7 @@ RDEPEND+="
 SLOT="0"
 LICENSE="GPL-2"
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 else
 	KEYWORDS=""
 fi
@@ -187,6 +187,11 @@ REQUIRED_USE="
 	xv? ( X )
 	xvmc? ( xv )"
 RESTRICT="faac? ( bindist )"
+
+PATCHES=(
+	# Work with pulseaudio-6, bug #549680, https://trac.mplayerhq.hu/ticket/2241
+	"${FILESDIR}"/${PN}-1.2_pre20150214-pulseaudio-6.0.patch
+)
 
 pkg_setup() {
 	if [[ ${PV} == *9999* ]]; then
@@ -260,6 +265,12 @@ src_prepare() {
 
 	# Use sane default for >=virtual/udev-197
 	sed -i -e '/default_dvd_device/s:/dev/dvd:/dev/cdrom:' configure || die
+
+	if has_version '>=media-video/ffmpeg-2.9'; then
+		epatch "${FILESDIR}/${PN}-1.2_pre20150730-chan.patch"
+		epatch "${FILESDIR}/${PN}-1.2-get_buffer.patch"
+		epatch "${FILESDIR}/${PN}-1.2_pre20150730-encode.patch"
+	fi
 }
 
 src_configure() {
