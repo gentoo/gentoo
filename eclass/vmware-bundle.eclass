@@ -71,7 +71,7 @@ vmware-bundle_extract-component() {
 	tail -c+$((offset+component_manifestOffset+1)) "${component}" 2> /dev/null |
 		head -c$((component_manifestSize)) | xsltproc "${T}"/list-component-files.xsl - |
 		while read -r file_offset file_compressedSize file_uncompressedSize file_path ; do
-			if [[ ${file_path} ]] ; then
+			if [[ ${file_path} ]] && [[ ${file_compressedSize} -gt 0 ]]; then
 				echo -n '.'
 				file_path="${dest}/${file_path}"
 				mkdir -p "$(dirname "${file_path}")" || die
