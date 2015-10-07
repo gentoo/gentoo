@@ -258,7 +258,7 @@ _at_uses_pkg() {
 }
 _at_uses_autoheader()  { _at_uses_pkg A{C,M}_CONFIG_HEADER{S,}; }
 _at_uses_automake()    { _at_uses_pkg AM_INIT_AUTOMAKE; }
-_at_uses_gettext()     { _at_uses_pkg AM_GNU_GETTEXT_VERSION; }
+_at_uses_gettext()     { _at_uses_pkg AM_GNU_GETTEXT_{,REQUIRE_}VERSION; }
 _at_uses_glibgettext() { _at_uses_pkg AM_GLIB_GNU_GETTEXT; }
 _at_uses_intltool()    { _at_uses_pkg {AC,IT}_PROG_INTLTOOL; }
 _at_uses_gtkdoc()      { _at_uses_pkg GTK_DOC_CHECK; }
@@ -531,7 +531,7 @@ ALL_AUTOTOOLS_MACROS=(
 	AC_CONFIG_AUX_DIR AC_CONFIG_MACRO_DIR
 	AM_INIT_AUTOMAKE
 	AM_GLIB_GNU_GETTEXT
-	AM_GNU_GETTEXT_VERSION
+	AM_GNU_GETTEXT_{,REQUIRE_}VERSION
 	{AC,IT}_PROG_INTLTOOL
 	GTK_DOC_CHECK
 	GNOME_DOC_INIT
