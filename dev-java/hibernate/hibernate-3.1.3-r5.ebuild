@@ -17,7 +17,7 @@ HOMEPAGE="http://www.hibernate.org"
 LICENSE="LGPL-2"
 IUSE=""
 SLOT="3.1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CDEPENDEND="
 	>=dev-java/antlr-2.7.7:0[java]
