@@ -22,7 +22,6 @@ RDEPEND=">=virtual/jre-1.7"
 S="${WORKDIR}/${PN}"
 
 EANT_BUILD_TARGET="javac jar"
-JAVA_ANT_REWRITE_CLASSPATH="true"
 JAVA_ANT_ENCODING="ISO-8859-1"
 
 # [0]: I don't know but it must be useful.
@@ -35,8 +34,7 @@ PATCHES=(
 
 java_prepare() {
 	epatch "${PATCHES[@]}"
-
-	find "${S}" -name \*.jar -exec rm -v {} \; || die
+	java-pkg_clean
 }
 
 src_install() {
