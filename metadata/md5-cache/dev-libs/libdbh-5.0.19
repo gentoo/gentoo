@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare setup
+DEPEND=dev-util/gtk-doc-am virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=a small library to create and manage 64-bit disk based hash tables
+EAPI=5
+HOMEPAGE=https://www.gnu.org/software/libdbh/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=mirror://sourceforge/dbh/dbh/5.0.19/libdbh2-5.0.19.tar.gz
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_md5_=f09ec2cef01b283f67828d007a811b85

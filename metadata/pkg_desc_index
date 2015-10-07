@@ -4611,6 +4611,7 @@ dev-libs/libcoyotl 3.1.0-r2: A collection of portable C++ classes
 dev-libs/libcroco 0.6.8 0.6.8-r1: Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit
 dev-libs/libcss 0.4.0 0.5.0-r1: CSS parser and selection engine, written in C
 dev-libs/libdaemon 0.14-r1 0.14-r2: Simple library for creating daemon processes in C
+dev-libs/libdbh 5.0.19: a small library to create and manage 64-bit disk based hash tables
 dev-libs/libdbusmenu 12.10.2-r2: Library to pass menu structure across DBus
 dev-libs/libdbusmenu-qt 0.9.2 0.9.3_pre20140619 0.9.3_pre20140619-r1: A library providing Qt implementation of DBusMenu specification
 dev-libs/libdivecomputer 0.4.1 0.4.2 9999: Library for communication with dive computers from various manufacturers
@@ -4752,6 +4753,7 @@ dev-libs/libtommath 0.42.0-r1: highly optimized and portable routines for intege
 dev-libs/libtompoly 0.04: portable ISO C library for polynomial basis arithmetic
 dev-libs/libtrain 0.9b: Library for calculating fastest train routes
 dev-libs/libtreadstone 0.1.0 0.2.0: Hyperdex libtreadstone support library
+dev-libs/libtubo 5.0.15: small and simple interprocess communication library
 dev-libs/libunicode 0.4-r1: Unicode library
 dev-libs/libunique 1.1.6-r1 3.0.2: a library for writing single instance application
 dev-libs/libunistring 0.9.3-r1 0.9.5: Library for manipulating Unicode strings and C strings according to the Unicode standard
@@ -17690,6 +17692,7 @@ x11-libs/liboglappth 0.98 1.0.0: A library for creating portable OpenGL applicat
 x11-libs/libpciaccess 0.13.3 0.13.4: Library providing generic access to the PCI bus and devices
 x11-libs/libproplist 0.10.1-r4: An library to mimic property list functionality from the GNUstep environment
 x11-libs/libqxt 0.6.2-r2: The Qt eXTension library provides cross-platform utility classes for the Qt toolkit
+x11-libs/librfm 5.3.16.3: the basic library used by some rfm applications, such as Rodent filemanager
 x11-libs/libsexy 0.1.11-r3 0.1.11-r4: Sexy GTK+ Widgets
 x11-libs/libsvg-cairo 0.1.6: Render SVG content using cairo
 x11-libs/libtinynotify 0.2.1 9999: A lightweight implementation of Desktop Notification Spec
@@ -17914,7 +17917,7 @@ x11-misc/rednotebook 1.4.0 1.8.0: A graphical journal with calendar, templates, 
 x11-misc/redshift 1.10: A screen color temperature adjusting software
 x11-misc/rendercheck 1.4 1.5: Tests for compliance with X RENDER extension
 x11-misc/revelation 0.4.14-r1: A password manager for GNOME
-x11-misc/rodent 4.9.2: A fast, small and powerful file manager and graphical shell
+x11-misc/rodent 4.9.2 5.3.16.3: A fast, small and powerful file manager and graphical shell
 x11-misc/rofi 0.15.7 0.15.8: A window switcher, run dialog and dmenu replacement
 x11-misc/rss-glx 0.9.1: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/screen-message 0.23: Display a multi-line message large, fullscreen, black on white
