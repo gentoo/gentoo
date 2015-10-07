@@ -16600,7 +16600,7 @@ sys-fs/bashmount 3.2.0: A bash script that uses udisks to handle removable devic
 sys-fs/bcache-tools 0_pre20130627-r1 1.0.4 1.0.5 9999: Tools for bcachefs
 sys-fs/bedup 0.9.0_p20140413-r1 9999: Btrfs file de-duplication tool
 sys-fs/bindfs 1.12.2 1.12.3 1.12.5 1.12.6: FUSE filesystem for mounting a directory to another location and altering permissions
-sys-fs/btrfs-progs 3.14.2 3.16.2 3.17.3 3.18.2 3.19.1 4.0 4.0.1 4.1 4.1.2 4.2 9999: Btrfs filesystem utilities
+sys-fs/btrfs-progs 3.14.2 3.16.2 3.17.3 3.18.2 3.19.1 4.0 4.0.1 4.1 4.1.2 4.2 4.2.2 9999: Btrfs filesystem utilities
 sys-fs/cachefilesd 0.10.5-r4: Provides a caching directory on an already mounted filesystem
 sys-fs/clamfs 1.0.1-r1: A FUSE-based user-space file system with on-access anti-virus file scanning
 sys-fs/cloudfuse 1.0: A FUSE filesystem for Rackspace's Cloud Files
@@ -17328,7 +17328,7 @@ www-client/firefox 38.2.0 38.3.0 41.0-r1: Firefox Web Browser
 www-client/firefox-bin 38.1.1 38.2.0 38.2.1 38.3.0 41.0: Firefox Web Browser
 www-client/google-chrome 45.0.2454.101_p1: The web browser from Google
 www-client/google-chrome-beta 46.0.2490.52_p1: The web browser from Google
-www-client/google-chrome-unstable 47.0.2522.1_p1: The web browser from Google
+www-client/google-chrome-unstable 47.0.2526.6_p1: The web browser from Google
 www-client/httrack 3.45.4 3.47.27 3.48.13 3.48.19 3.48.20 3.48.21: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/jumanji 0.0.0_p20111209 0.0.0_p20130103-r1 0.0.0_p20150527 9999: highly customizable and functional web browser with minimalistic and space saving interface
@@ -17383,7 +17383,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.521: Adobe Flash Player
-www-plugins/chrome-binary-plugins 45.0.2454.101_p1 46.0.2490.52_beta1 47.0.2522.1_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 45.0.2454.101_p1 46.0.2490.52_beta1 47.0.2526.6_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316: GNU Flash movie player that supports many SWF v7,8,9 features
