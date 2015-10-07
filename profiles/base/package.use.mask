@@ -449,10 +449,6 @@ net-proxy/swiftiply ruby_targets_ruby19
 # gentoo bugs.
 media-libs/libsdl2 custom-cflags
 
-# Mike Gilbert <floppym@gentoo.org> (23 Aug 2013)
-# Requires hard-masked ffmpeg.
->=www-client/chromium-30 system-ffmpeg
-
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
 # Causes build to fail, issue is being discussed with upstream
 >=www-plugins/gnash-0.8.10_p20130822 openvg
