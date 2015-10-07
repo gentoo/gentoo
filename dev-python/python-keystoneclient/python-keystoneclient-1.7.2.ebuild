@@ -20,8 +20,7 @@ IUSE="doc examples test"
 #doc? ( !~dev-python/sphinx-1.3_preb1[${PYTHON_USEDEP}] )
 
 CDEPEND="
-	>=dev-python/pbr-1.6[${PYTHON_USEDEP}]
-	<dev-python/pbr-2.0[${PYTHON_USEDEP}]"
+	>=dev-python/pbr-1.6[${PYTHON_USEDEP}]"
 TCDEPEND="
 	>=dev-python/lxml-2.3[${PYTHON_USEDEP}]
 	>=dev-python/mock-1.2[${PYTHON_USEDEP}]
@@ -41,7 +40,6 @@ DEPEND="
 		>=dev-python/oauthlib-0.6[${PYTHON_USEDEP}]
 		>=dev-python/oslotest-1.10.0[${PYTHON_USEDEP}]
 		>=dev-python/pycrypto-2.6[${PYTHON_USEDEP}]
-		>=dev-python/requests-mock-0.6.0[${PYTHON_USEDEP}]
 		>=dev-python/testrepository-0.0.18[${PYTHON_USEDEP}]
 		>=dev-python/testtools-1.4.0[${PYTHON_USEDEP}]
 	)
@@ -58,7 +56,7 @@ RDEPEND="
 	${CDEPEND}
 	>=dev-python/Babel-1.3[${PYTHON_USEDEP}]
 	>=dev-python/iso8601-0.1.9[${PYTHON_USEDEP}]
-	>=dev-python/debtcollector-0.3.0
+	>=dev-python/debtcollector-0.3.0[${PYTHON_USEDEP}]
 	>=dev-python/netaddr-0.7.12[${PYTHON_USEDEP}]
 	!~dev-python/netaddr-0.7.16[${PYTHON_USEDEP}]
 	>=dev-python/oslo-config-2.3.0[${PYTHON_USEDEP}]
