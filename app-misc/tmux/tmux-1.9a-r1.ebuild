@@ -17,8 +17,8 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 
 IUSE="debug selinux vim-syntax"
 
 COMMON_DEPEND="
-	>=dev-libs/libevent-2.0.10
 	<dev-libs/libevent-2.5.1
+	>=dev-libs/libevent-2.0.10
 	sys-libs/ncurses"
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"

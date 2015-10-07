@@ -18,8 +18,8 @@ IUSE="debug selinux vim-syntax"
 
 CDEPEND="
 	>=dev-libs/libevent-2.0.10
-	<dev-libs/libevent-2.5.1
 	!sys-apps/utempter
+	<dev-libs/libevent-2.5.1
 	sys-libs/ncurses"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
