@@ -25,8 +25,8 @@ SLOT="0"
 IUSE="examples"
 
 RDEPEND="
-	>=sys-devel/clang-3.0
-	>=sys-devel/llvm-3.0
+	>=sys-devel/clang-3.4
+	>=sys-devel/llvm-3.4
 	"
 DEPEND="
 	${RDEPEND}
