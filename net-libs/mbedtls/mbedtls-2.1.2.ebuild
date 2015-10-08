@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit multilib cmake-utils multilib-minimal
+inherit eutils multilib cmake-utils multilib-minimal
 
 DESCRIPTION="Cryptographic library for embedded systems"
 HOMEPAGE="https://tls.mbed.org/"
