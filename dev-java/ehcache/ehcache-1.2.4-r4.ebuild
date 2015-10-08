@@ -27,15 +27,10 @@ DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip"
 
 S="${WORKDIR}/${P}"
-
-JAVA_PKG_WANT_SOURCE="1.7"
-JAVA_PKG_WANT_TARGET="1.7"
-JAVA_SRC_DIR="src"
-
 JAVA_GENTOO_CLASSPATH="commons-collections,commons-logging,servlet-api-2.5"
 
 java_prepare() {
-	unzip -d src ${P}-sources.jar || die
-	rm -rf src/net/sf/ehcache/hibernate || die
-	rm *.jar || die
+	unpack ./${P}-sources.jar
+	rm -vr net/sf/ehcache/hibernate || die
+	java-pkg_clean
 }
