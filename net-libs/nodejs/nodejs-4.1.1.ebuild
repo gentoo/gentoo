@@ -119,9 +119,11 @@ src_compile() {
 src_install() {
 	local LIBDIR="${ED}/usr/$(get_libdir)"
 	emake install DESTDIR="${ED}" PREFIX=/usr
-	use npm && dodoc -r "${LIBDIR}"/node_modules/npm/html
-	rm -rf "${LIBDIR}"/node_modules/npm/{doc,html} || die
-	find "${LIBDIR}"/node_modules -type f -name "LICENSE*" -or -name "LICENCE*" -delete || die
+	if use npm; then
+		dodoc -r "${LIBDIR}"/node_modules/npm/html
+		rm -rf "${LIBDIR}"/node_modules/npm/{doc,html} || die
+		find "${LIBDIR}"/node_modules -type f -name "LICENSE*" -or -name "LICENCE*" -delete || die
+	fi
 
 	# set up a symlink structure that npm expects..
 	dodir /usr/include/node/deps/{v8,uv}
