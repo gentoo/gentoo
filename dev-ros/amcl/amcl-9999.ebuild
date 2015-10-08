@@ -21,6 +21,7 @@ RDEPEND="
 	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
 	dev-libs/boost:=
 	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )
