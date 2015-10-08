@@ -8,6 +8,8 @@ USE_RUBY="ruby20 ruby21"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.markdown README.markdown"
 
+RUBY_FAKEGEM_GEMSPEC="web-console.gemspec"
+
 inherit ruby-fakegem
 
 DESCRIPTION="A debugging tool for your Ruby on Rails applications"
