@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit systemd
+inherit eutils linux-info systemd
 
 DESCRIPTION="Daemon for Advanced Configuration and Power Interface"
 HOMEPAGE="http://sourceforge.net/projects/acpid2"
@@ -15,8 +15,20 @@ KEYWORDS="~amd64 ~ia64 ~x86"
 IUSE="selinux"
 
 RDEPEND="selinux? ( sec-policy/selinux-apm )"
-DEPEND="${RDEPEND}
-	    >=sys-kernel/linux-headers-3"
+DEPEND=">=sys-kernel/linux-headers-3"
+
+pkg_pretend() {
+	local CONFIG_CHECK="~INPUT_EVDEV"
+	local WARNING_INPUT_EVDEV="CONFIG_INPUT_EVDEV is required for ACPI button event support."
+	[[ ${MERGE_TYPE} != buildonly ]] && check_extra_config
+}
+
+pkg_setup() { :; }
+
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-2.0.25-kde4.patch #515088
+	epatch "${FILESDIR}"/${PN}-2.0.25-add_mate-power-manager.patch #538590
+}
 
 src_configure() {
 	econf --docdir=/usr/share/doc/${PF}
@@ -47,14 +59,14 @@ pkg_postinst() {
 		elog
 		elog "You may wish to read the Gentoo Linux Power Management Guide,"
 		elog "which can be found online at:"
-		elog "https://www.gentoo.org/doc/en/power-management-guide.xml"
+		elog "https://wiki.gentoo.org/wiki/Power_management/Guide"
 		elog
 	fi
 
 	# files/systemd/acpid.socket -> ListenStream=/run/acpid.socket
-	mkdir -p "${ROOT}"/run
+	mkdir -p "${ROOT%/}"/run
 
-	if ! grep -qs "^tmpfs.*/run " "${ROOT}"/proc/mounts ; then
+	if ! grep -qs "^tmpfs.*/run " "${ROOT%/}"/proc/mounts ; then
 		echo
 		ewarn "You should reboot the system now to get /run mounted with tmpfs!"
 	fi
