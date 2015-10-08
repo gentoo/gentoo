@@ -3,12 +3,8 @@
 <pkgmetadata>
   <herd>proxy-maintainers</herd>
   <maintainer>
-    <email>flameeyes@gentoo.org</email>
-    <name>Diego Elio Pettenò</name>
-  </maintainer>
-  <maintainer>
-    <email>erik_hahn@gmx.de</email>
-    <name>Erik Hahn</name>
+    <email>Sergiy.Borodych@gmail.com</email>
+    <name> Sergiy Borodych</name>
     <description>proxied maintainer</description>
   </maintainer>
 </pkgmetadata>
