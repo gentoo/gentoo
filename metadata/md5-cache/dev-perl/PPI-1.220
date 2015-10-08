@@ -4,10 +4,10 @@ DESCRIPTION=Parse, Analyze and Manipulate Perl (without perl)
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/PPI/
 IUSE=test
-KEYWORDS=~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
+KEYWORDS=~alpha amd64 ~arm ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=virtual/perl-Scalar-List-Utils-1.20 >=dev-perl/Params-Util-1.00 >=dev-perl/Clone-0.30 >=virtual/perl-Digest-MD5-2.35 dev-perl/IO-String >=dev-perl/List-MoreUtils-0.16 >=virtual/perl-Storable-2.17 dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MI/MITHALDU/PPI-1.220.tar.gz
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	unpacker	1d149d9bda7723e740cfd28118f27813
-_md5_=cc8e7b515e8f25e43f8dcf7d8e4807c6
+_md5_=70a38626e05b79fe9e93db53b7503789

@@ -4,10 +4,10 @@ DESCRIPTION=A tiny replacement for Module::Build
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Module-Build-Tiny/
 IUSE=test
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-CPAN-Meta >=virtual/perl-Exporter-5.570.0 virtual/perl-ExtUtils-CBuilder >=dev-perl/ExtUtils-Config-0.3.0 >=dev-perl/ExtUtils-Helpers-0.20.0 virtual/perl-ExtUtils-Install >=dev-perl/ExtUtils-InstallPaths-0.2.0 virtual/perl-ExtUtils-ParseXS virtual/perl-File-Path virtual/perl-File-Spec >=virtual/perl-Getopt-Long-2.360.0 >=virtual/perl-JSON-PP-2.0.0 virtual/perl-podlators virtual/perl-Test-Harness dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/L/LE/LEONT/Module-Build-Tiny-0.039.tar.gz
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	unpacker	1d149d9bda7723e740cfd28118f27813
-_md5_=20bba7fa7bf22a75aa8b244d18b0cc8a
+_md5_=771a078b083a65c2e4c8a82a5c522fd4

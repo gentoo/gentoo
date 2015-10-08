@@ -4,10 +4,10 @@ DESCRIPTION=Locate modules in the same fashion as require and use
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Module-Locate/
 IUSE=test
-KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp virtual/perl-File-Spec virtual/perl-IO dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/N/NE/NEILB/Module-Locate-1.79.tar.gz
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	unpacker	1d149d9bda7723e740cfd28118f27813
-_md5_=b6d8ff4dc532afc11ca082a0b9ec13f4
+_md5_=2145f2ba8998a7cea1cdf2bd42c49774
