@@ -15,8 +15,8 @@ HOMEPAGE="http://www.bouncycastle.org/java.html"
 SRC_URI="http://www.bouncycastle.org/download/${MY_P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="1.50"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos"
+SLOT="1.48"
+KEYWORDS="amd64 ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos"
 
 CDEPEND=""
 
@@ -31,7 +31,7 @@ S="${WORKDIR}/${MY_P}"
 
 JAVA_ENCODING="ISO-8859-1"
 
-# Package can't be build with test as bcprov and bcpkix can't be built with test.
+# Package can't be built with test as bcprov and bcpkix can't be built with test.
 RESTRICT="test"
 
 src_unpack() {
@@ -41,10 +41,18 @@ src_unpack() {
 }
 
 java_prepare() {
-	if ! test; then
-		for test_file in $(find . -type f -name '*Test*'.java); do
-			JAVA_RM_FILES+=("${test_file}")
-		done
+	if ! use test; then
+		# There are too many files to delete so we won't be using JAVA_RM_FILES
+		# (it produces a lot of output).
+		local RM_TEST_FILES=()
+		while read -d $'\0' -r file; do
+			RM_TEST_FILES+=("${file}")
+		done < <(find . -name "*Test*.java" -type f -print0)
+		while read -d $'\0' -r file; do
+			RM_TEST_FILES+=("${file}")
+		done < <(find . -name "*Mock*.java" -type f -print0)
+
+		rm -v "${RM_TEST_FILES[@]}"
 	fi
 }
 

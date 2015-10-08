@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 
 JAVA_PKG_IUSE="doc source test"
 
@@ -15,20 +15,13 @@ HOMEPAGE="http://www.bouncycastle.org/java.html"
 SRC_URI="http://www.bouncycastle.org/download/${MY_P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="1.52"
+SLOT="1.50"
 KEYWORDS="amd64 ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos"
 
-# Tests are currently broken. Appears to need older version of bcprov; but since bcprov is not slotted, this can cause conflicts.
-# Needs further investigation; though, only a small part has tests and there are no tests for bcpg itself.
-RESTRICT="test"
-
-CDEPEND="dev-java/bcprov:${SLOT}"
+CDEPEND=""
 
 DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
-	test? (
-		dev-java/ant-junit:0
-	)
 	${CDEPEND}"
 
 RDEPEND=">=virtual/jre-1.6
@@ -36,7 +29,10 @@ RDEPEND=">=virtual/jre-1.6
 
 S="${WORKDIR}/${MY_P}"
 
-JAVA_GENTOO_CLASSPATH="bcprov-${SLOT}"
+JAVA_ENCODING="ISO-8859-1"
+
+# Package can't be built with test as bcprov and bcpkix can't be built with test.
+RESTRICT="test"
 
 src_unpack() {
 	default
@@ -46,23 +42,22 @@ src_unpack() {
 
 java_prepare() {
 	if ! use test; then
-		local RM_TEST_FILES=(
-			org/bouncycastle/openpgp/test
-			org/bouncycastle/openpgp/examples/test
-		)
-		rm -rf "${RM_TEST_FILES[@]}" || die
+		# There are too many files to delete so we won't be using JAVA_RM_FILES
+		# (it produces a lot of output).
+		local RM_TEST_FILES=()
+		while read -d $'\0' -r file; do
+			RM_TEST_FILES+=("${file}")
+		done < <(find . -name "*Test*.java" -type f -print0)
+		while read -d $'\0' -r file; do
+			RM_TEST_FILES+=("${file}")
+		done < <(find . -name "*Mock*.java" -type f -print0)
+
+		rm -v "${RM_TEST_FILES[@]}"
 	fi
 }
 
 src_compile() {
 	java-pkg-simple_src_compile
-}
-
-src_test() {
-	local cp="${PN}.jar:bcprov.jar:junit.jar"
-	local pkg="org.bouncycastle"
-	java -cp ${cp} ${pkg}.openpgp.test.AllTests | tee openpgp.tests
-	grep -q FAILURES *.tests && die "Tests failed."
 }
 
 src_install() {

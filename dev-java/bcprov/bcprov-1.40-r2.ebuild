@@ -8,14 +8,14 @@ JAVA_PKG_IUSE="doc source test"
 
 inherit java-pkg-2 java-pkg-simple
 
-MY_P="${PN}-jdk15on-${PV/./}"
+MY_PN="${PN}-jdk16"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Java cryptography APIs"
 HOMEPAGE="http://www.bouncycastle.org/java.html"
-SRC_URI="http://www.bouncycastle.org/download/${MY_P}.tar.gz"
-
+SRC_URI="http://central.maven.org/maven2/org/bouncycastle/${MY_PN}/${PV}/${MY_P}-sources.jar"
 LICENSE="BSD"
-SLOT="1.52"
+SLOT="1.40"
 KEYWORDS="amd64 ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos"
 
 CDEPEND=""
@@ -27,18 +27,11 @@ DEPEND=">=virtual/jdk-1.6
 RDEPEND=">=virtual/jre-1.6
 	${CDEPEND}"
 
-S="${WORKDIR}/${MY_P}"
-
 JAVA_ENCODING="ISO-8859-1"
+JAVA_SRC_DIR="org"
 
-# Package can't be build with test as bcprov and bcpkix can't be built with test.
+# Package can't be built with test as bcprov and bcpkix can't be built with test.
 RESTRICT="test"
-
-src_unpack() {
-	default
-	cd "${S}"
-	unpack ./src.zip
-}
 
 java_prepare() {
 	if ! use test; then
