@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit eutils
 
@@ -12,30 +12,24 @@ SRC_URI="http://www.rsnapshot.org/downloads/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
-IUSE=""
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND=">=dev-lang/perl-5.8.2
+		dev-perl/Lchown
 		>=sys-apps/util-linux-2.12-r4
 		>=sys-apps/coreutils-5.0.91-r4
 		>=net-misc/openssh-3.7.1_p2-r1
 		>=net-misc/rsync-2.6.0"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-cp_al.patch
-}
-
 src_install() {
 	# Change sysconfdir to install the template file as documentation
 	# rather than in /etc.
 	emake install DESTDIR="${D}" \
-		sysconfdir="/usr/share/doc/${PF}" \
-		|| die
+		sysconfdir="${EPREFIX}/usr/share/doc/${PF}"
 
-	dodoc README AUTHORS TODO ChangeLog \
-		docs/Upgrading_from_1.1 \
-		docs/HOWTOs/rsnapshot-{Mac,windows}-howto
+	dodoc README.md AUTHORS ChangeLog \
+		docs/Upgrading_from_1.1
 
 	docinto utils
 	dodoc utils/{README,rsnaptar,*.sh,*.pl}
