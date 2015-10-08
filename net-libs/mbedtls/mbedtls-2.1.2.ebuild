@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit multilib cmake-utils multilib-minimal
+inherit eutils multilib cmake-utils multilib-minimal
 
 DESCRIPTION="Cryptographic library for embedded systems"
 HOMEPAGE="https://tls.mbed.org/"
@@ -13,10 +13,13 @@ SRC_URI="https://github.com/ARMmbed/mbedtls/archive/mbedtls-${PV}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0/10" # slot for libmbedtls.so
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
-IUSE="cpu_flags_x86_sse2 doc havege programs test threads zlib"
+IUSE="cpu_flags_x86_sse2 doc havege libressl programs test threads zlib"
 
 RDEPEND="
-	programs? ( dev-libs/openssl:0 )
+	programs? (
+		!libressl? ( dev-libs/openssl:0 )
+		libressl? ( dev-libs/libressl )
+	)
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen media-gfx/graphviz )
