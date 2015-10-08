@@ -10069,7 +10069,7 @@ games-fps/ut2004-unwheel 0_beta5: UT2004 UnWheel - multiplayer driving mod focus
 games-fps/warsow 1.5.1-r1: Multiplayer FPS based on the QFusion engine (evolved from Quake 2)
 games-fps/wolfgl 0.93-r1: Wolfenstein and Spear of Destiny port using OpenGL
 games-fps/worldofpadman 1.6: A cartoon style multiplayer first-person shooter
-games-fps/xonotic 0.8.0: Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
+games-fps/xonotic 0.8.0 0.8.1: Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
 games-kids/childsplay 0.90.2-r1: A suite of educational games for young children
 games-kids/crayon-physics 55: 2D physics puzzle/sandbox game with drawing
 games-kids/cubetest 0.9.4: A program to train your spatial insight
