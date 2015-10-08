@@ -24,9 +24,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	pushd apps/rodent-pkg >/dev/null
+	pushd apps/rodent-pkg >/dev/null || die
 	sed -i -e "/^install-data-hook/d" \
 		-e "/rm -f/d" Build/Makefile.am || die
 	eautoreconf
-	popd >/dev/null
+	popd >/dev/null || die
 }
