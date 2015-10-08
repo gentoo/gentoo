@@ -1,0 +1,44 @@
+fix from upstream
+
+From c0130c8ec22a89960d9304297a904a2a14979506 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@chromium.org>
+Date: Thu, 8 Oct 2015 12:14:05 -0400
+Subject: [PATCH alsa-utils] build: Do not try to detect cross-compiler
+
+cross compilers are passed via path may not be a gcc based cross
+compiler in such cases this check fails and try's to force gcc based
+cross compiler detection, This code is a convenience that limits the
+build system.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ configure.ac | 14 --------------
+ 1 file changed, 14 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 8c2d1a5..79a9aaf 100644
+--- a/configure
++++ b/configure
+@@ -6192,21 +6192,6 @@ $as_echo "#define HAVE_DCGETTEXT 1" >>confdefs.h
+ 
+ 
+ 
+-if test "x$target" != "x$host" -a -z "`echo $CC | grep -e '-gcc'`";
+-then
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for cross-compiler" >&5
+-$as_echo_n "checking for cross-compiler... " >&6; }
+-
+-  which ${program_prefix}gcc >/dev/null 2>&1 && CC=${program_prefix}gcc
+-  which ${target_cpu}-${target_os}-gcc >/dev/null 2>&1 \
+-  && CC=${target_cpu}-${target-os}-gcc
+-  which ${target_cpu}-${target_vendor}-${target_os}-gcc >/dev/null 2>&1 \
+-  && CC=${target_cpu}-${target_vendor}-${target_os}-gcc
+-
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $CC" >&5
+-$as_echo "$CC" >&6; }
+-fi
+-
+ ac_ext=c
+ ac_cpp='$CPP $CPPFLAGS'
+ ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
