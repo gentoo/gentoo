@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/rapid7/${PN}"
 SRC_URI="mirror://rubygems/${P}.gem"
 
 LICENSE="BSD"
-SLOT="2"
+SLOT="${PV}"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
