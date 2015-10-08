@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>idella4@gentoo.org</email>
+		<name>Ian elaney</name>
+	</maintainer>
+	<maintainer>
+		<email>kegalym2@mail.ru</email>
+		<name>Galym Kerimbekov</name>
+		<description>Proxy maintainer, assign bugs to him</description>
+	</maintainer>
+</pkgmetadata>
