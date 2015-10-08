@@ -681,6 +681,7 @@ app-dicts/freedict-ita-eng 1.0: Freedict for language translation from Italian t
 app-dicts/gjiten 2.6-r3: A Japanese dictionary program for Gnome
 app-dicts/gnome-dictionary 3.14.2 3.16.2: Dictionary utility for GNOME
 app-dicts/gwaei 3.0.2 3.2.0 3.6.2: Japanese-English Dictionary for GNOME
+app-dicts/hunspell-kk 1.1.2: Kazakh dictionaries for myspell/hunspell
 app-dicts/ipadic 2.7.0-r2: Japanese dictionary for ChaSen
 app-dicts/kasumi 2.5-r1: Anthy dictionary maintenance tool
 app-dicts/libydpdict 1.0.2: Library for handling the Collins Dictionary database
