@@ -4,12 +4,16 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python{2_{6,7},3_{2,3,4}} )
+# Testing within Portage's environment is broken, and the patch no
+# longer applies cleanly.
+RESTRICT="test"
+
+PYTHON_COMPAT=( python{2_7,3_4} )
 
 inherit eutils flag-o-matic linux-info multilib pam prefix python-single-r1 \
 		systemd user versionator
 
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~ppc-macos ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~ppc-macos ~x86-solaris"
 
 SLOT="$(get_version_component_range 1-2)"
 
@@ -21,7 +25,7 @@ HOMEPAGE="http://www.postgresql.org/"
 
 LINGUAS="af cs de en es fa fr hr hu it ko nb pl pt_BR ro ru sk sl sv tr
 		 zh_CN zh_TW"
-IUSE="doc kerberos kernel_linux ldap nls pam perl -pg_legacytimestamp python
+IUSE="doc kerberos kernel_linux ldap libressl nls pam perl -pg_legacytimestamp python
 	  +readline selinux +server ssl static-libs tcl threads uuid xml zlib"
 
 for lingua in ${LINGUAS}; do
@@ -48,34 +52,15 @@ pam? ( virtual/pam )
 perl? ( >=dev-lang/perl-5.8 )
 python? ( ${PYTHON_DEPS} )
 readline? ( sys-libs/readline:0= )
-ssl? ( >=dev-libs/openssl-0.9.6-r1:0= )
+ssl? (
+	!libressl? ( >=dev-libs/openssl-0.9.6-r1:0= )
+	libressl? ( dev-libs/libressl:= )
+)
 tcl? ( >=dev-lang/tcl-8:0= )
+uuid? ( dev-libs/ossp-uuid )
 xml? ( dev-libs/libxml2 dev-libs/libxslt )
 zlib? ( sys-libs/zlib )
 "
-
-# uuid flags -- depend on sys-apps/util-linux for Linux libcs, or if no
-# supported libc in use depend on dev-libs/ossp-uuid. For BSD systems,
-# the libc includes UUID functions.
-UTIL_LINUX_LIBC=( elibc_{glibc,uclibc,musl} )
-BSD_LIBC=( elibc_{Free,Net,Open}BSD )
-
-nest_usedep() {
-	local front back
-	while [[ ${#} -gt 1 ]]; do
-		front+="${1}? ( "
-		back+=" )"
-		shift
-	done
-	echo "${front}${1}${back}"
-}
-
-IUSE+=" ${UTIL_LINUX_LIBC[@]} ${BSD_LIBC[@]}"
-CDEPEND+="
-uuid? (
-	${UTIL_LINUX_LIBC[@]/%/? ( sys-apps/util-linux )}
-	$(nest_usedep ${UTIL_LINUX_LIBC[@]/#/!} ${BSD_LIBC[@]/#/!} dev-libs/ossp-uuid)
-)"
 
 DEPEND="${CDEPEND}
 !!<sys-apps/sandbox-2.0
@@ -109,11 +94,9 @@ src_prepare() {
 	sed "s|\(PGSOCKET_DIR\s\+\)\"/tmp\"|\1\"${EPREFIX}/run/postgresql\"|" \
 		-i src/include/pg_config_manual.h || die
 
-	use server || epatch "${FILESDIR}/${PN}-${SLOT}-no-server.patch"
+	epatch "${FILESDIR}/pg_ctl-exit-status.patch"
 
-	# Fix bug 486556 where the server would crash at start up because of
-	# an infinite loop caused by a self-referencing symlink.
-	epatch "${FILESDIR}/postgresql-9.2-9.4-tz-dir-overflow.patch"
+	use server || epatch "${FILESDIR}/${PN}-${SLOT}-no-server.patch"
 
 	if use pam ; then
 		sed -e "s/\(#define PGSQL_PAM_SERVICE \"postgresql\)/\1-${SLOT}/" \
@@ -136,17 +119,6 @@ src_configure() {
 
 	local PO="${EPREFIX%/}"
 
-	local i uuid_config=""
-	if use uuid; then
-		for i in ${UTIL_LINUX_LIBC[@]}; do
-			use ${i} && uuid_config="--with-uuid=e2fs"
-		done
-		for i in ${BSD_LIBC[@]}; do
-			use ${i} && uuid_config="--with-uuid=bsd"
-		done
-		[[ -z $uuid_config ]] && uuid_config="--with-uuid=ossp"
-	fi
-
 	econf \
 		--prefix="${PO}/usr/$(get_libdir)/postgresql-${SLOT}" \
 		--datadir="${PO}/usr/share/postgresql-${SLOT}" \
@@ -158,6 +130,7 @@ src_configure() {
 		$(use_enable !pg_legacytimestamp integer-datetimes) \
 		$(use_enable threads thread-safety) \
 		$(use_with kerberos gssapi) \
+		$(use_with kerberos krb5) \
 		$(use_with ldap) \
 		$(use_with pam) \
 		$(use_with perl) \
@@ -165,7 +138,7 @@ src_configure() {
 		$(use_with readline) \
 		$(use_with ssl openssl) \
 		$(use_with tcl) \
-		${uuid_config} \
+		$(use_with uuid ossp-uuid) \
 		$(use_with xml libxml) \
 		$(use_with xml libxslt) \
 		$(use_with zlib) \
@@ -219,7 +192,7 @@ src_install() {
 			"${FILESDIR}/${PN}.confd" | newconfd - ${PN}-${SLOT}
 
 		sed -e "s|@SLOT@|${SLOT}|g" -e "s|@LIBDIR@|$(get_libdir)|g" \
-			"${FILESDIR}/${PN}.init-9.3" | newinitd - ${PN}-${SLOT}
+			"${FILESDIR}/${PN}.init-pre_9.2" | newinitd - ${PN}-${SLOT}
 
 		sed -e "s|@SLOT@|${SLOT}|g" -e "s|@LIBDIR@|$(get_libdir)|g" \
 			"${FILESDIR}/${PN}.service" | \
@@ -243,6 +216,14 @@ pkg_postinst() {
 
 	elog "If you need a global psqlrc-file, you can place it in:"
 	elog "    ${EROOT%/}/etc/postgresql-${SLOT}/"
+
+	if [[ -z ${REPLACING_VERSIONS} ]] ; then
+		elog
+		elog "It looks like this is your first time installing PostgreSQL. Run the"
+		elog "following command in all active shells to pick up changes to the default"
+		elog "environemnt:"
+		elog "    source /etc/profile"
+	fi
 
 	if use server ; then
 		elog
@@ -397,23 +378,5 @@ pkg_config() {
 	else
 		einfo "You should use the '${EROOT%/}/etc/init.d/postgresql-${SLOT}' script to run PostgreSQL"
 		einfo "instead of 'pg_ctl'."
-	fi
-}
-
-src_test() {
-	einfo ">>> Test phase [check]: ${CATEGORY}/${PF}"
-
-	if use server && [[ ${UID} -ne 0 ]] ; then
-		emake check
-
-		einfo "If you think other tests besides the regression tests are necessary, please"
-		einfo "submit a bug including a patch for this ebuild to enable them."
-	else
-		use server || \
-			ewarn 'Tests cannot be run without the "server" use flag enabled.'
-		[[ ${UID} -eq 0 ]] || \
-			ewarn 'Tests cannot be run as root. Enable "userpriv" in FEATURES.'
-
-		ewarn 'Skipping.'
 	fi
 }
