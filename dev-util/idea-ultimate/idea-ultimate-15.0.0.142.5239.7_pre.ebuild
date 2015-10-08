@@ -12,7 +12,7 @@ MY_PN="idea"
 
 DESCRIPTION="A complete toolset for web, mobile and enterprise development"
 HOMEPAGE="http://www.jetbrains.com/idea"
-SRC_URI="https://download.jetbrains.com/idea/${MY_PN}IU-${PV_STRING}.tar.gz"
+SRC_URI="https://download.jetbrains.com/idea/${MY_PN}IU-15-PublicPreview.tar.gz -> ${P}.tar.gz"
 
 LICENSE="IDEA IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal"
 IUSE=""
