@@ -1,2 +1,5 @@
 slotmove =dev-ruby/mysql2-0.4* 0.3 0.4
 move sys-apps/cv sys-apps/progress
+slotmove =dev-ruby/recog-2.0.6 2 2.0.6
+slotmove =dev-ruby/recog-2.0.12 2 2.0.12
+slotmove =dev-ruby/recog-2.0.14 2 2.0.14
