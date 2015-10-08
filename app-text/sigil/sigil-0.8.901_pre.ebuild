@@ -4,14 +4,14 @@
 
 EAPI=5
 CMAKE_MIN_VERSION="3.0"
-CMAKE_BUILD_TYPE="Release"
 
-# This ebuild could use some python checks, as sigil contains python plugin architecture.
+# Sigil supports Python 3.5 already. Include it when we have the deps for it.
+PYTHON_COMPAT=( python3_4 )
 
-inherit eutils cmake-utils
+inherit eutils cmake-utils python-single-r1
 
 MY_PN="Sigil"
-MY_PV="0.8.900"
+MY_PV="0.8.901"
 
 DESCRIPTION="Sigil is a multi-platform WYSIWYG ebook editor for ePub format"
 HOMEPAGE="http://sigil-ebook.com/"
@@ -23,10 +23,17 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	dev-lang/python:3.4
-	>=dev-libs/boost-1.49[threads]
-	>=dev-libs/libpcre-8.31[pcre16]
-	>=dev-libs/xerces-c-3.1.1[icu]
+	dev-libs/boost[threads]
+	dev-libs/libpcre[pcre16]
+	dev-libs/xerces-c[icu]
+	dev-python/chardet[${PYTHON_USEDEP}]
+	dev-python/cssselect[${PYTHON_USEDEP}]
+	dev-python/cssutils[${PYTHON_USEDEP}]
+	dev-python/html5lib[${PYTHON_USEDEP}]
+	dev-python/lxml[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
+	dev-python/regex[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 	>=dev-qt/qtconcurrent-5.4:5
 	>=dev-qt/qtcore-5.4:5
 	>=dev-qt/qtgui-5.4:5
@@ -37,16 +44,19 @@ RDEPEND="
 	>=dev-qt/qtwidgets-5.4:5
 	>=dev-qt/qtxml-5.4:5
 	>=dev-qt/qtxmlpatterns-5.4:5
-	>=sys-libs/zlib-1.2.7[minizip]
+	sys-libs/zlib[minizip]
 "
 DEPEND="${RDEPEND}
+	dev-python/lxml[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
+	>=sys-devel/gcc-4.8
 	virtual/pkgconfig
 	>=dev-qt/linguist-tools-5.4:5
 "
 
 S="${WORKDIR}/${MY_PN}-${MY_PV}"
 
-DOCS=( README.md ChangeLog.txt )
+DOCS=( ChangeLog.txt README.md )
 
 src_prepare() {
 	# sigil tries to copy non-needed qt libs for deb package, safe to ignore this completely
@@ -61,10 +71,4 @@ src_configure() {
 		-DSYSTEM_LIBS_REQUIRED=1
 	)
 	cmake-utils_src_configure
-
-	cd "${WORKDIR}/${P}_build" || die "Where is the build dir?"
-	for i in CMakeCache.txt src/CMakeFiles/sigil.dir/link.txt $(find . -name '*.make')
-	do
-		sed -e 's/-O3 -DNDEBUG/-DNDEBUG/' -i ${i} || die "sed failed"
-	done
 }
