@@ -41,7 +41,7 @@ src_unpack() {
 }
 
 java_prepare() {
-	if ! test; then
+	if ! use test; then
 		# There are too many files to delete so we won't be using JAVA_RM_FILES
 		# (it produces a lot of output).
 		local RM_TEST_FILES=()
@@ -52,7 +52,7 @@ java_prepare() {
 			RM_TEST_FILES+=("${file}")
 		done < <(find . -name "*Mock*.java" -type f -print0)
 
-		rm -f "${RM_TEST_FILES[@]}"
+		rm -v "${RM_TEST_FILES[@]}"
 	fi
 }
 
