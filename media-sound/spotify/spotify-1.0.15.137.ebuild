@@ -7,12 +7,11 @@ inherit eutils fdo-mime gnome2-utils pax-utils unpacker
 
 DESCRIPTION="Spotify is a social music platform"
 HOMEPAGE="https://www.spotify.com/ch-de/download/previews/"
-MY_PV_AMD64="${PV}.124.g4dfabc51"
-MY_PV_I386="${PV}.122.gf29d9be0"
-MY_P="${PN}-client_"
+MY_PV="${PV}.gbdf68615"
+MY_P="${PN}-client_${MY_PV}"
 SRC_BASE="http://repository.spotify.com/pool/non-free/${PN:0:1}/${PN}-client/"
-SRC_URI="amd64? ( ${SRC_BASE}${MY_P}${MY_PV_AMD64}_amd64.deb )
-	x86? ( ${SRC_BASE}${MY_P}${MY_PV_I386}_i386.deb )"
+SRC_URI="amd64? ( ${SRC_BASE}${MY_P}_amd64.deb )
+	x86? ( ${SRC_BASE}${MY_P}_i386.deb )"
 LICENSE="Spotify"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -48,11 +47,6 @@ src_prepare() {
 		-e 's/spotify \%U/spotify-dbus.py \%U/g' \
 		usr/share/spotify/spotify.desktop || die "sed failed"
 	fi
-	#TODO: the semicolons will be fixed in 1.0.15, remove it then
-	sed -i \
-		-e 's/x-scheme-handler\/spotify$/x-scheme-handler\/spotify\;/g' \
-		-e 's/AudioVideo$/AudioVideo\;/g' \
-		usr/share/spotify/spotify.desktop || die "sed failed"
 }
 
 src_install() {
