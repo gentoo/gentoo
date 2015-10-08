@@ -55,7 +55,6 @@
 	</flag>
 	<!-- Miscellaneous flags -->
 	<flag name="apparmor">Enable AppArmor support</flag>
-	<flag name="audit">support <pkg>sys-process/audit</pkg></flag>
 	<flag name="fuse">Allow LXC to use <pkg>sys-fs/fuse</pkg> for mount
 		points</flag>
 	<flag name="numa">

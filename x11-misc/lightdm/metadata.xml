@@ -6,7 +6,6 @@
 		<name>Markos Chandras</name>
 	</maintainer>
 	<use>
-		<flag name="audit">support <pkg>sys-process/audit</pkg></flag>
 		<flag name="gtk">Pull in the gtk+ greeter</flag>
 		<flag name="introspection">Use dev-libs/gobject-introspection for introspection</flag>
 		<flag name="kde">Pull in the kde greeter</flag>

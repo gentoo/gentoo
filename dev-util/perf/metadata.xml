@@ -5,9 +5,6 @@
     <email>naota@gentoo.org</email>
   </maintainer>
   <use>
-    <flag name="audit">
-      Enable support for sys-process/audit.
-    </flag>
     <flag name="demangle">
       Enable C++ symbol name demangling, using libbfd from
       <pkg>sys-devel/binutils</pkg>. When this flag is enabled, the

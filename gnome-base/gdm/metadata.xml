@@ -3,7 +3,6 @@
 <pkgmetadata>
 <herd>gnome</herd>
 <use>
-	<flag name="audit">Enable support for <pkg>sys-process/audit</pkg></flag>
 	<flag name="fprint">Enables experimental fingerprint authentication using
 		<pkg>sys-auth/fprintd</pkg></flag>
 	<flag name="plymouth">Enable support for smooth transition from

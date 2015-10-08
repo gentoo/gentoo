@@ -3,7 +3,6 @@
 <pkgmetadata>
 	<herd>forensics</herd>
 	<use>
-		<flag name="audit">Enable support for <pkg>sys-process/audit</pkg></flag>
 		<flag name="prelink">Enable support for <pkg>sys-devel/prelink</pkg></flag>
 	</use>
 	<upstream>
