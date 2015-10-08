@@ -3,7 +3,6 @@
 <pkgmetadata>
 	<herd>openrc</herd>
 	<use>
-		<flag name="audit">enable support for Linux audit subsystem</flag>
 		<flag name="netifrc">enable Gentoo's network stack (net.* scripts)</flag>
 		<flag name="newnet">enable the new network stack (experimental)</flag>
 		<flag name="tools">build optional tools</flag>

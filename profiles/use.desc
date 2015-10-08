@@ -24,6 +24,7 @@ apm - Add APM (Advanced Power Management) support
 aqua - Include support for the Mac OS X Aqua (Carbon/Cocoa) GUI
 atm - Enable Asynchronous Transfer Mode protocol support
 audiofile - Add support for libaudiofile where applicable
+audit - Enable support for Linux audit subsystem using sys-process/audit
 avahi - Add avahi/Zeroconf support
 ayatana - Build in support for Ayatana notification using the libindicate or libappindicator plugin
 bash-completion - Enable bash-completion support

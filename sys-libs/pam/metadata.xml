@@ -6,8 +6,6 @@
     <email>pam-bugs@gentoo.org</email>
   </maintainer>
   <use>
-    <flag name='audit'>Enable support for <pkg>sys-process/audit</pkg></flag>
-
     <flag name="berkdb">
       Build the pam_userdb module, that allows to authenticate users
       against a Berkeley DB file. Please note that enabling this USE
