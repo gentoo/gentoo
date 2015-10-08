@@ -1,11 +1,11 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+# $Header: Exp $
 
 EAPI=5
 USE_RUBY="ruby19 ruby20 ruby21"
 
-inherit ruby-fakegem versionator
+inherit ruby-fakegem
 
 RUBY_FAKEGEM_EXTRAINSTALL="app config db spec"
 
@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/rapid7/metasploit-credential"
 SRC_URI="mirror://rubygems/${P}.gem"
 
 LICENSE="BSD"
-SLOT="$(get_version_component_range 1-2)"
+SLOT="${PV}"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
