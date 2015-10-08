@@ -24,5 +24,4 @@ ruby_add_rdepend ">=dev-ruby/metasploit-concern-1.0.0:1.0
 	dev-ruby/rubyzip:1
 	dev-ruby/rubyntlm
 	>=dev-ruby/railties-4.0.9:4.0
-	dev-ruby/net-ssh
 	dev-ruby/pg"
