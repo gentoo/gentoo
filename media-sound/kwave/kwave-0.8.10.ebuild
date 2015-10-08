@@ -4,6 +4,7 @@
 
 EAPI=5
 
+CMAKE_MAKEFILE_GENERATOR="emake"
 KDE_LINGUAS="cs de fr"
 KDE_HANDBOOK="optional"
 inherit kde4-base
