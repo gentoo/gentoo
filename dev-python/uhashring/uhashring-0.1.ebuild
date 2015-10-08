@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_4 )
 
 inherit distutils-r1
 
@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=""
-DEPEND="${RDEPEND}"
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+		${RDEPEND}"
 
 RESTRICT="test"
