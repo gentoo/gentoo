@@ -4,7 +4,7 @@
 
 EAPI=5
 USE_RUBY="ruby19 ruby20 ruby21"
-
+RUBY_FAKEGEM_BINWRAP=""
 inherit ruby-fakegem
 
 DESCRIPTION="Pattern recognition for hosts, services, and content"
@@ -16,4 +16,5 @@ SLOT="${PV}"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
-ruby_add_rdepend "dev-ruby/nokogiri !=dev-ruby/recog-2.0.0"
+ruby_add_rdepend "dev-ruby/nokogiri !=dev-ruby/recog-2.0.0
+		!<dev-ruby/recog-2.0.6-r1"

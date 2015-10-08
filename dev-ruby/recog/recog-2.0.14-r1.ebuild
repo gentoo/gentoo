@@ -4,7 +4,7 @@
 
 EAPI=5
 USE_RUBY="ruby19 ruby20 ruby21 ruby22"
-
+RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
@@ -18,7 +18,8 @@ SLOT="${PV}"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
-ruby_add_rdepend "dev-ruby/nokogiri"
+ruby_add_rdepend "dev-ruby/nokogiri
+		!<dev-ruby/recog-2.0.6-r1"
 
 ruby_add_bdepend "test? (
 	dev-ruby/regexp_parser
