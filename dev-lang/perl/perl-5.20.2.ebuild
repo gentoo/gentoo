@@ -57,13 +57,15 @@ dual_scripts() {
 	src_remove_dual      perl-core/ExtUtils-ParseXS   3.240.0      xsubpp
 	src_remove_dual      perl-core/IO-Compress        2.64.0       zipdetails
 	src_remove_dual      perl-core/JSON-PP            2.272.30      json_pp
-	src_remove_dual      perl-core/Module-Build       0.420.500    config_data
 	src_remove_dual      perl-core/Module-CoreList    5.201.502.140 corelist
 	src_remove_dual      perl-core/Pod-Parser         1.620.0      pod2usage podchecker podselect
 	src_remove_dual      perl-core/Pod-Perldoc        3.230.0      perldoc
 	src_remove_dual      perl-core/Test-Harness       3.330.0      prove
 	src_remove_dual      perl-core/podlators          2.5.3        pod2man pod2text
 	src_remove_dual_man  perl-core/podlators          2.5.3        /usr/share/man/man1/perlpodstyle.1
+	if [[ ${EBUILD_PHASE} == "install" ]] ; then #553726
+		rm "${ED}"/usr/bin/config_data "${ED}"/usr/share/man/man1/config_data.1 || die
+	fi
 }
 
 # eblit-include [--skip] <function> [version]
