@@ -21,6 +21,7 @@ IUSE="doc test"
 
 RDEPEND="
 	>=dev-python/curtsies-0.1.18[${PYTHON_USEDEP}]
+	<dev-python/curtsies-0.2.0[${PYTHON_USEDEP}]
 	dev-python/greenlet[${PYTHON_USEDEP}]
 	dev-python/jedi[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
