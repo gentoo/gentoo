@@ -16864,7 +16864,7 @@ sys-libs/uid_wrapper 1.1.0 1.1.1: A wrapper to fake privilege separation
 sys-libs/zlib 1.2.8-r1: Standard (de)compression library
 sys-power/acpi 1.6: Attempts to replicate the functionality of the 'old' apm command on ACPI systems
 sys-power/acpi_call 1.1.0 1.1.0-r1 9999: A kernel module that enables you to call ACPI methods
-sys-power/acpid 2.0.20 2.0.21 2.0.22 2.0.23: Daemon for Advanced Configuration and Power Interface
+sys-power/acpid 2.0.23 2.0.25: Daemon for Advanced Configuration and Power Interface
 sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a replacement for the apm tool
 sys-power/apcupsd 3.14.8-r2 3.14.10-r6 3.14.12 3.14.12-r1: APC UPS daemon with integrated tcp/ip remote shutdown
 sys-power/athcool 0.3.12: small utility to toggle Powersaving mode for AMD Athlon/Duron processors
