@@ -24,6 +24,7 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-alsa )"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-cross-compile.patch
 	epatch_user
 }
 
