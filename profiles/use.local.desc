@@ -571,7 +571,6 @@ app-emulation/libguestfs:introspection - Use dev-libs/gobject-introspection for 
 app-emulation/libguestfs:systemtap - Use dev-util/systemtap to inspect VM via "probes" way
 app-emulation/libspectrum:gcrypt - Use dev-libs/libgcrypt for low-level crypto of some features, including logfiles.
 app-emulation/libvirt:apparmor - Enable AppArmor support
-app-emulation/libvirt:audit - support sys-process/audit
 app-emulation/libvirt:firewalld - DBus interface to iptables/ebtables allowing for better runtime management of your firewall.
 app-emulation/libvirt:fuse - Allow LXC to use sys-fs/fuse for mount points
 app-emulation/libvirt:glusterfs - Enable GlusterFS support via sys-cluster/glusterfs
@@ -731,7 +730,6 @@ app-eselect/eselect-php:fpm - Enable the FastCGI Process Manager SAPI
 app-forensics/afflib:fuse - Enable extra fuse thingies
 app-forensics/afflib:qemu - Enable qemu stuff
 app-forensics/afflib:s3 - Enable support for Amazon S3
-app-forensics/aide:audit - Enable support for sys-process/audit
 app-forensics/aide:prelink - Enable support for sys-devel/prelink
 app-forensics/chkrootkit:cron - Install cron script for weekly rootkit scans
 app-forensics/libewf:bfio - Enables libbfio for chaining file in file handling
@@ -2695,7 +2693,6 @@ dev-util/nvidia-cuda-sdk:opencl - Build OpenCL binaries.
 dev-util/nvidia-cuda-toolkit:debugger - Installs the CUDA debugger.
 dev-util/nvidia-cuda-toolkit:eclipse - Install the dev-util/eclipse-sdk plugins
 dev-util/nvidia-cuda-toolkit:profiler - Installs the NVIDIA CUDA visual profiler.
-dev-util/perf:audit - Enable support for sys-process/audit.
 dev-util/perf:demangle - Enable C++ symbol name demangling, using libbfd from sys-devel/binutils. When this flag is enabled, the package will have to be rebuilt after every version bump of binutils.
 dev-util/perf:doc - Build documentation and man pages. With this USE flag disabled, the --help parameter for perf and its sub-tools will not be available. This is optional because it depends on a few documentation handling tools that are not always welcome on user systems.
 dev-util/perf:numa - Enable NUMA support
@@ -3075,7 +3072,6 @@ games-util/gslist:web - Enable the web interface
 games-util/pyfa:graph - Enable support for graphs
 games-util/wit:fuse - Enable image mount support via fuse
 gnome-base/gconf:ldap - Build backend which enables default mail accounts, addressbooks and calendars for Evolution to be configured using each user's LDAP entry."
-gnome-base/gdm:audit - Enable support for sys-process/audit
 gnome-base/gdm:fprint - Enables experimental fingerprint authentication using sys-auth/fprintd
 gnome-base/gdm:plymouth - Enable support for smooth transition from sys-boot/plymouth
 gnome-base/gnome:classic - Install gnome-extra/gnome-shell-extensions for the Gnome Shell Classic mode
@@ -6993,7 +6989,6 @@ sys-apps/microcode-data:monolithic - install the large text microcode.dat (used 
 sys-apps/microcode-data:split-ucode - install the split binary ucode files (used by the kernel directly)
 sys-apps/moreutils:perl - Install scripts written in Perl
 sys-apps/net-tools:old-output - use old ifconfig output style (useful for when new output breaks scripts)
-sys-apps/openrc:audit - enable support for Linux audit subsystem
 sys-apps/openrc:netifrc - enable Gentoo's network stack (net.* scripts)
 sys-apps/openrc:newnet - enable the new network stack (experimental)
 sys-apps/openrc:tools - build optional tools
@@ -7029,7 +7024,6 @@ sys-apps/roccat-tools:lua52 - Build support for Lua scripting for RyosMKPro ripp
 sys-apps/rsbac-admin:rklogd - Enabled deprecated RSBAC kernel logger
 sys-apps/s390-tools:fuse - build cmsfs-fuse to read files stored on a z/VM CMS disk
 sys-apps/s390-tools:zfcpdump - build the kernel disk dumping utility
-sys-apps/shadow:audit - Enable support for sys-process/audit
 sys-apps/smartmontools:minimal - Do not install the monitoring daemon and associated scripts.
 sys-apps/superiotool:pci - Support for PCI-attached "Super I/Os" (e.g. in VIA VT82686A/B).
 sys-apps/systemd:apparmor - Enable AppArmor support
@@ -7508,7 +7502,6 @@ sys-libs/libunwind:libatomic - Use libatomic instead of builtin atomic operation
 sys-libs/ncurses:ada - Add bindings for the ADA programming language
 sys-libs/ncurses:tinfo - Build curses library (libncurses) sep from the low-level terminfo library (libtinfo) -- usually needed only for binary packages -- but it is binary compatible in either mode
 sys-libs/ncurses:trace - Enable test trace() support in ncurses calls
-sys-libs/pam:audit - Enable support for sys-process/audit
 sys-libs/pam:berkdb - Build the pam_userdb module, that allows to authenticate users against a Berkeley DB file. Please note that enabling this USE flag will create a PAM module that links to the Berkeley DB (as provided by sys-libs/db) installed in /usr/lib and will thus not work for boot-critical services authentication.
 sys-libs/pam:cracklib - Build the pam_cracklib module, that allows to verify the chosen passwords' strength through the use of sys-libs/cracklib. Please note that simply enabling the USE flag on this package will not make use of pam_cracklib by default, you should also enable it in sys-auth/pambase as well as update your configuration files.
 sys-libs/readline:utils - Install rlfe (ReadLine Front-End) helper tool -- a wrapper program for making any stdin use readline
@@ -7972,7 +7965,6 @@ x11-misc/light-locker:consolekit - Keep track of the various users, sessions, an
 x11-misc/light-locker:dpms - Turn on the display on screensaver deactivation.
 x11-misc/light-locker:gtk3 - Build with GTK+ 3 instead of GTK+ 2.
 x11-misc/light-locker:screensaver - Lock the screen on screensaver activation.
-x11-misc/lightdm:audit - support sys-process/audit
 x11-misc/lightdm:gtk - Pull in the gtk+ greeter
 x11-misc/lightdm:introspection - Use dev-libs/gobject-introspection for introspection
 x11-misc/lightdm:kde - Pull in the kde greeter
