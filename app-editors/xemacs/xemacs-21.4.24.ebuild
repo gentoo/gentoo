@@ -45,7 +45,7 @@ RDEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	canna? ( app-i18n/canna )
 	!amd64? ( freewnn? ( app-i18n/freewnn ) )
-	>=sys-libs/ncurses-5.2
+	>=sys-libs/ncurses-5.2:=
 	>=app-eselect/eselect-emacs-1.15"
 
 DEPEND="${RDEPEND}
