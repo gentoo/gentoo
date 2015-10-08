@@ -14,7 +14,7 @@ DESCRIPTION="Pattern recognition for hosts, services, and content"
 HOMEPAGE="https://github.com/rapid7/${PN}"
 
 LICENSE="BSD-2"
-SLOT="2"
+SLOT="${PV}"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
