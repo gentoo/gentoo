@@ -4,7 +4,7 @@
 
 EAPI=5
 ROS_REPO_URI="https://github.com/lagadic/vision_visp"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS=""
 VER_PREFIX="jade-"
 ROS_SUBDIR=${PN}
 

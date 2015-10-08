@@ -5,7 +5,7 @@
 EAPI=5
 
 ROS_REPO_URI="https://github.com/ros/ros_comm"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS=""
 CATKIN_HAS_MESSAGES=yes
 PYTHON_COMPAT=( python2_7 )
 ROS_SUBDIR=clients/${PN}

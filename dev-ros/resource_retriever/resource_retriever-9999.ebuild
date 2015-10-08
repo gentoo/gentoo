@@ -4,7 +4,7 @@
 
 EAPI=5
 ROS_REPO_URI="https://github.com/ros/resource_retriever"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS=""
 
 inherit ros-catkin
 

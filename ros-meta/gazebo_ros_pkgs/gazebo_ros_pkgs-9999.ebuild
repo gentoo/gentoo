@@ -4,7 +4,7 @@
 
 EAPI=5
 ROS_REPO_URI="https://github.com/ros-simulation/gazebo_ros_pkgs"
-KEYWORDS="~amd64"
+KEYWORDS=""
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin

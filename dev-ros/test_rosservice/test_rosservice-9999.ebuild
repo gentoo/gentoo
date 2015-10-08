@@ -5,7 +5,7 @@
 EAPI=5
 
 ROS_REPO_URI="https://github.com/ros/ros_comm"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS=""
 ROS_SUBDIR=test/${PN}
 CATKIN_HAS_MESSAGES=yes
 CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs"

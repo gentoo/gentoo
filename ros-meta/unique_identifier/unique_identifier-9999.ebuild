@@ -5,7 +5,7 @@
 EAPI=5
 ROS_REPO_URI="https://github.com/ros-geographic-info/unique_identifier"
 VER_PREFIX=unique_identifier-
-KEYWORDS="~amd64 ~arm"
+KEYWORDS=""
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin

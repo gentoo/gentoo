@@ -5,7 +5,7 @@
 EAPI=5
 
 ROS_REPO_URI="https://github.com/ros/ros"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS=""
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 ROS_SUBDIR=tools/${PN}
 

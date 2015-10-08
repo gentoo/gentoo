@@ -4,7 +4,7 @@
 
 EAPI=5
 ROS_REPO_URI="https://github.com/ros-controls/ros_control"
-KEYWORDS="~amd64"
+KEYWORDS=""
 ROS_SUBDIR=${PN}
 PYTHON_COMPAT=( python2_7 )
 CATKIN_HAS_MESSAGES=yes

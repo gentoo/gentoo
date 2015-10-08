@@ -4,7 +4,7 @@
 
 EAPI=5
 ROS_REPO_URI="https://github.com/ros-perception/image_transport_plugins"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS=""
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin

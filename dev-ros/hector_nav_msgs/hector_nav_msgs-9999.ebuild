@@ -4,7 +4,7 @@
 
 EAPI=5
 ROS_REPO_URI="https://github.com/tu-darmstadt-ros-pkg/hector_slam"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS=""
 ROS_SUBDIR=${PN}
 CATKIN_HAS_MESSAGES=yes
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )

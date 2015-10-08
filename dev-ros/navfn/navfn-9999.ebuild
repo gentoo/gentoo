@@ -5,7 +5,7 @@
 EAPI=5
 ROS_REPO_URI="https://github.com/ros-planning/navigation"
 ROS_SUBDIR=${PN}
-KEYWORDS="~amd64 ~arm"
+KEYWORDS=""
 CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs dev-ros/geometry_msgs dev-ros/nav_msgs"
 
 inherit ros-catkin

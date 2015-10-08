@@ -4,7 +4,7 @@
 
 EAPI=5
 ROS_REPO_URI="https://github.com/ros/rosconsole_bridge"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS=""
 
 inherit ros-catkin
 

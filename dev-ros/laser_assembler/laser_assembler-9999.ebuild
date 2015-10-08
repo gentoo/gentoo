@@ -5,7 +5,7 @@
 EAPI=5
 ROS_REPO_URI="https://github.com/ros-perception/laser_assembler"
 CATKIN_HAS_MESSAGES=yes
-KEYWORDS="~amd64 ~arm"
+KEYWORDS=""
 PYTHON_COMPAT=( python2_7 )
 CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/sensor_msgs dev-ros/std_msgs"
 

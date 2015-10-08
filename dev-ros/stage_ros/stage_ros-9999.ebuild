@@ -5,7 +5,7 @@
 EAPI=5
 
 ROS_REPO_URI="https://github.com/ros-simulation/stage_ros"
-KEYWORDS="~amd64"
+KEYWORDS=""
 
 inherit ros-catkin
 

@@ -4,7 +4,7 @@
 
 EAPI=5
 ROS_REPO_URI="https://github.com/ros-perception/laser_geometry"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS=""
 PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
