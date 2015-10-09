@@ -1768,6 +1768,8 @@ dev-java/sun-jre-bin:jce - Enable Java Cryptographic Extension Unlimited Strengt
 dev-java/sun-jre-bin:pax_kernel - Use paxctl to mark the JVM binaries.
 dev-java/swt:webkit - Embedded browser support via net-libs/webkit-gtk:2, replacing former xulrunner-based browser.
 dev-lang/bas:lr0 - Use the LR0 parser instead of the recursive descending parser
+dev-lang/crystal:xml - Use the dev-libs/libxml2 library to enable Crystal xml module
+dev-lang/crystal:yaml - Use the dev-libs/libyaml library to enable Crystal yaml module
 dev-lang/erlang:compat-ethread - Enable compatibility with pre-pentium 4 CPUs in the ethread library.
 dev-lang/erlang:halfword - Enable halfword emulator
 dev-lang/erlang:hipe - HIgh Performance Erlang extension

@@ -3728,7 +3728,7 @@ dev-java/bcel 5.2-r2 5.2-r3 6.0_rc3: The Byte Code Engineering Library: analyze,
 dev-java/bcmail 1.38-r4 1.45-r3 1.50-r1 1.52-r1: Java cryptography APIs
 dev-java/bcpg 1.50-r1 1.52-r1: Java cryptography APIs
 dev-java/bcpkix 1.50 1.52: Java cryptography APIs
-dev-java/bcprov 1.38-r4 1.40-r2 1.45-r2 1.48-r2 1.49-r4 1.50-r2 1.52-r1: Java cryptography APIs
+dev-java/bcprov 1.38-r4 1.40-r2 1.45-r2 1.48-r2 1.49-r4 1.50-r2 1.50-r3 1.52-r1 1.52-r2: Java cryptography APIs
 dev-java/bctsp 1.45-r1: Java cryptography APIs
 dev-java/beansbinding 1.2.1 1.2.1-r1 1.2.1-r2: Implementation of JSR295
 dev-java/blowfishj 2.14-r3: Blowfish implementation in Java
@@ -4330,6 +4330,7 @@ dev-lang/clojure 1.5.1 1.6.0 1.7.0: Clojure is a dynamic programming language th
 dev-lang/closure-compiler-bin 20120305 20121212 20130227 20130411 20150126: JavaScript optimizing compiler
 dev-lang/coffee-script 1.9.3-r1: A little language that compiles into javascript
 dev-lang/confluence 0.10.6: Functional programming language for reactive system design (digital logic, hard-real-time software)
+dev-lang/crystal 0.7.7 0.8.0: The Crystal Programming Language
 dev-lang/dmd-bin 1.016 2.008-r1: Digital Mars D Compiler
 dev-lang/ekopath 6.0.477_p20150809 6.0.481_p20150811 6.0.521_p20150910 6.0.532_p20150921: PathScale EKOPath Compiler Suite
 dev-lang/elixir 1.0.5: Elixir programming language
@@ -4829,6 +4830,7 @@ dev-libs/ossp-uuid 1.6.2-r2 1.6.2-r4: An ISO-C:1999 API and corresponding CLI fo
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/papi 5.3.0 5.4.0: Performance Application Programming Interface
 dev-libs/pcc-libs 1.0.0 1.0.1_pre20121112 1.0.1_pre20131013 1.1.0 9999: pcc compiler support libs
+dev-libs/pcl 1.12: Portable Coroutine Library
 dev-libs/pcre++ 0.9.5-r1: A C++ support library for libpcre
 dev-libs/pkcs11-helper 1.11 1.11-r1: PKCS#11 helper library
 dev-libs/poco 1.4.6_p4 1.4.6_p4-r1: C++ class libraries to simplify the development of network-centric, portable applications
