@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="A window manager with more modern features than aewm but with the same look and feel"
@@ -26,10 +26,10 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CXX="$(tc-getCXX)" || die
+	emake CXX="$(tc-getCXX)"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc ChangeLog README || die
+	emake DESTDIR="${D}" install
+	dodoc ChangeLog README
 }
