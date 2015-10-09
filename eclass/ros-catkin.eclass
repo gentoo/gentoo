@@ -63,7 +63,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 if [ -n "${CATKIN_DO_PYTHON_MULTIBUILD}" ] ; then
-	RDEPEND="${RDEPEND} dev-lang/python-exec:2"
+	RDEPEND="${RDEPEND} dev-lang/python-exec:2 ${PYTHON_DEPS}"
+	DEPEND="${DEPEND} ${PYTHON_DEPS}"
 fi
 
 # @ECLASS-VARIABLE: CATKIN_HAS_MESSAGES
