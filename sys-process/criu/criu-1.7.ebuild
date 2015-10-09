@@ -29,7 +29,7 @@ RESTRICT="test"
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.3.1-flags.patch
 	epatch "${FILESDIR}"/${PN}-1.3.1-makefile.patch
-	epatch "${FILESDIR}"/${PN}-1.5-automagic-libbsd.patch
+	epatch "${FILESDIR}"/${PN}-1.7-automagic-libbsd.patch
 }
 
 criu_arch() {
