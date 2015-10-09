@@ -41,7 +41,7 @@ REQUIRED_USE='
 	proxy_getwork? ( proxy )
 	proxy_stratum? ( proxy )
 	x6500? ( libusb )
-	zeusminer? ( scrypt )
+	zeusminer? ( scrypt icarus )
 	ztex? ( libusb )
 '
 
