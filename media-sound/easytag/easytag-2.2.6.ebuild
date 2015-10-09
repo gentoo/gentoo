@@ -59,9 +59,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# Kludge to make easytag find its locales (bug #503698)
-	export DATADIRNAME=share
-
 	econf \
 		$(use_enable test appdata-validate) \
 		$(use_enable test tests) \
