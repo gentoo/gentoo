@@ -61,11 +61,9 @@ Enlightenment Features:
     <flag name="enlightenment_modules_battery">A gadget to visualize your battery status</flag>
     <flag name="enlightenment_modules_bluez4">Configure Bluetooth devices</flag>
     <flag name="enlightenment_modules_clock">Nice clock gadget to show current time</flag>
-    <flag name="enlightenment_modules_comp">Enlightenment Composite Manager</flag>
     <flag name="enlightenment_modules_connman">Control Wifi and wired networks as a user</flag>
     <flag name="enlightenment_modules_contact">Enable the contact module</flag>
     <flag name="enlightenment_modules_cpufreq">Gadget to monitor and change the CPU frequency</flag>
-    <flag name="enlightenment_modules_dropshadow">Module to add a dropshadow to windows</flag>
     <flag name="enlightenment_modules_everything">The run command module provides an application launcher dialog</flag>
     <flag name="enlightenment_modules_fileman">Enlightenment's integrated file manager</flag>
     <flag name="enlightenment_modules_fileman-opinfo">Can be placed on the desktop or in a shelf</flag>
@@ -96,10 +94,8 @@ Enlightenment Features:
     <flag name="enlightenment_modules_conf-comp">Configure default dialog properties</flag>
     <flag name="enlightenment_modules_conf-dialogs">Configure default dialog properties</flag>
     <flag name="enlightenment_modules_conf-display">Used to configure your screen</flag>
-    <flag name="enlightenment_modules_conf-edgebindings">Configure your edge bindings here</flag>
     <flag name="enlightenment_modules_conf-interaction">Configure Mouse and Touch input</flag>
     <flag name="enlightenment_modules_conf-intl">Used to select a default language</flag>
-    <flag name="enlightenment_modules_conf-keybindings">Key, Mouse and Button control settings</flag>
     <flag name="enlightenment_modules_conf-menus">Configures menu behavior</flag>
     <flag name="enlightenment_modules_conf-paths">Specifies the Enlightenment search paths and default directories</flag>
     <flag name="enlightenment_modules_conf-performance">Used to configure certain performance related items as frame rates and cache settings</flag>
