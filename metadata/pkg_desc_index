@@ -14333,7 +14333,7 @@ net-misc/nut-monitor 1.3-r2: A graphical application to monitor and manage UPSes
 net-misc/nx 3.5.0.20 3.5.0.28 3.5.0.30 3.5.0.32: NX compression technology core libraries
 net-misc/nxplayer 4.6.12.7 4.6.16.1 5.0.43.1: Client for NoMachine remote servers
 net-misc/ocsync 0.90.4 0.91.4: ownCloud fork of csync file synchronizer
-net-misc/ofono 1.14 1.15 1.16: Open Source mobile telephony (GSM/UMTS) daemon
+net-misc/ofono 1.16 1.17: Open Source mobile telephony (GSM/UMTS) daemon
 net-misc/oidentd 2.0.8-r5: Another (RFC1413 compliant) ident daemon
 net-misc/olsrd 0.6.4-r1: An implementation of the Optimized Link State Routing protocol
 net-misc/omniORB 4.1.4-r2: A robust, high-performance CORBA 2 ORB
@@ -16903,7 +16903,7 @@ sys-process/at 3.1.14 3.1.16 3.1.16-r1: Queues jobs for later execution
 sys-process/atop 1.27_p3 2.0.2 2.1 2.2: Resource-specific view of processes
 sys-process/audit 1.7.18 2.0.5 2.1.3-r1 2.2.2-r2 2.2.2-r3 2.4.1 2.4.1-r1 2.4.3 2.4.3-r1: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.09 0.09-r2: A new cron system designed with secure operations in mind by Bruce Guenter
-sys-process/criu 1.5.2 1.6-r1 1.6.1: utility to checkpoint/restore a process tree
+sys-process/criu 1.5.2 1.6.1 1.7: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.3 0.3.4 0.3.5-r1 0.3.6 0.3.7-r1: base for all cron ebuilds
 sys-process/cronie 1.5.0 1.5.0-r1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.5: Utilities to assist running batch processing jobs
@@ -17346,8 +17346,8 @@ www-client/midori 0.5.10 0.5.11: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.2-r1 3.3-r1: a free, open source web browser
 www-client/opera 12.16_p1860-r1 32.0.1948.69: A fast and secure web browser
-www-client/opera-beta 32.0.1948.19 33.0.1990.11: A fast and secure web browser
-www-client/opera-developer 33.0.1982.0 34.0.1996.0: A fast and secure web browser
+www-client/opera-beta 33.0.1990.11 33.0.1990.20: A fast and secure web browser
+www-client/opera-developer 34.0.1996.0 34.0.2011.0: A fast and secure web browser
 www-client/otter 0.9.07 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.11.1 9999: Command line interface to (Gentoo) Bugzilla
