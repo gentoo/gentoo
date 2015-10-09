@@ -798,10 +798,13 @@ postinst_sources() {
 	# if we have USE=symlink, then force K_SYMLINK=1
 	use symlink && K_SYMLINK=1
 
-	# if we're using a deblobbed kernel, it's not supported
-	[[ $K_DEBLOB_AVAILABLE == 1 ]] && \
-		use deblob && \
-		K_SECURITY_UNSUPPORTED=deblob
+	# We do support security on a deblobbed kernel, bug #555878.
+	# If some particular kernel version doesn't have security
+	# supported because of USE=deblob or otherwise, one can still
+	# set K_SECURITY_UNSUPPORTED on a per ebuild basis.
+	#[[ $K_DEBLOB_AVAILABLE == 1 ]] && \
+	#	use deblob && \
+	#	K_SECURITY_UNSUPPORTED=deblob
 
 	# if we are to forcably symlink, delete it if it already exists first.
 	if [[ ${K_SYMLINK} > 0 ]]; then
