@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=dev-ros/roslz4 dev-ros/xmlrpcpp dev-ros/roswtf dev-ros/message_filters dev-ros/rosbag dev-ros/rosbag_storage dev-ros/rosconsole dev-ros/rosgraph dev-ros/roslaunch dev-ros/rosmaster dev-ros/rosmsg dev-ros/rosnode dev-ros/rosout dev-ros/rosparam dev-ros/rosservice dev-ros/rostest dev-ros/rostopic dev-ros/topic_tools dev-ros/roscpp dev-ros/rospy dev-ros/test_rosbag dev-ros/test_rosbag_storage dev-ros/test_roscpp dev-ros/test_rosgraph dev-ros/test_roslaunch dev-ros/test_roslib_comm dev-ros/test_rosmaster dev-ros/test_rosparam dev-ros/test_rospy dev-ros/test_rosservice dev-util/catkin dev-python/empy
 SLOT=0
 SRC_URI=https://github.com/ros/ros_comm/archive/1.11.14.tar.gz -> ros_comm-1.11.14.tar.gz
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	ros-catkin	ba27d98abea526cd43db694252eb90a4	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	ros-catkin	5f290e56307a02a375ca45296f9d0171	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=29512896fe6f0b3c5bff5067792270c0
