@@ -43,7 +43,7 @@ RDEPEND="${DEPEND}
 			streaming? ( >=net-misc/youtube-dl-2014.11.26 ) ) )"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-unbundle-qtsingleapplication.patch # bug 487544
+	epatch "${FILESDIR}"/${PN}-14.9.0.6966-unbundle-qtsingleapplication.patch # bug 487544
 	use bidi || epatch "${FILESDIR}"/${PN}-14.9.0.6690-zero-bidi.patch
 
 	# Upstream Makefile sucks
@@ -74,6 +74,10 @@ src_prepare() {
 	# Turn off online update checker, bug #479902
 	sed -e 's:DEFINES += UPDATE_CHECKER:#DEFINES += UPDATE_CHECKER:' \
 		-e 's:DEFINES += CHECK_UPGRADED:#DEFINES += CHECK_UPGRADED:' \
+		-i "${S}"/src/smplayer.pro || die "sed failed"
+
+	# Turn off nasty share widget
+	sed -e 's:DEFINES += SHAREWIDGET:#DEFINES += SHAREWIDGET:' \
 		-i "${S}"/src/smplayer.pro || die "sed failed"
 
 	# Turn off youtube support (which pulls in extra dependencies) if unwanted
