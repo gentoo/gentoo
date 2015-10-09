@@ -12708,7 +12708,7 @@ media-sound/jokosher 0.11.5-r1: A simple yet powerful multi-track studio
 media-sound/jtagger 1.0-r1: Powerful MP3 tag and filename editor
 media-sound/justeport 0.2: Stream audio to your AirPort Express
 media-sound/k4guitune 1.1.1: A program to tune a musical instrument using your computer and it's mic- or line- input
-media-sound/karlyriceditor 1.3 1.4: Application to edit and synchronize lyrics with karaoke songs in various formats
+media-sound/karlyriceditor 1.4 1.11: Application to edit and synchronize lyrics with karaoke songs in various formats
 media-sound/kaudiocreator 1.3-r2: KDE CD ripper and audio encoder frontend
 media-sound/kenvy24 1.2: VIA Envy24 based sound card control utility for KDE
 media-sound/kid3 3.1.2 3.2.1: A simple tag editor for KDE
@@ -16259,7 +16259,7 @@ sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-apps/yum 3.4.3_p20130218 3.4.3_p20130218-r1: automatic updater and package installer/remover for rpm systems
 sys-apps/zorroutils 0.04: Zorro bus utility for Amigas running 2.1 and later kernels
 sys-auth/bioapi 1.2.3-r2 1.2.4: Framework for biometric-based authentication
-sys-auth/consolekit 0.4.6 1.0.0 9999: Framework for defining and tracking users, login sessions and seats
+sys-auth/consolekit 0.4.6 1.0.0 1.0.0-r1 9999: Framework for defining and tracking users, login sessions and seats
 sys-auth/fingerprint-gui 1.07: Use Fingerprint Devices with Linux
 sys-auth/fprint_demo 0.4: a simple GTK+ application to demonstrate and test libfprint's capabilities
 sys-auth/fprintd 0.2.0-r1 0.4.1 0.5.0 0.5.1 0.6.0: D-Bus service to access fingerprint readers
