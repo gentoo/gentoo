@@ -28,6 +28,7 @@ RDEPEND="
 	dev-ros/pluginlib
 	dev-ros/roscpp
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/visualization_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/tf
 	dev-ros/voxel_grid
 	dev-cpp/eigen:3
