@@ -63,7 +63,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 pkg_setup() {
-	if use kernel_linux; then
+	if use kernel_linux && use test-suite; then
 		linux-info_pkg_setup
 		if  ! linux_config_exists; then
 			ewarn "Cannot check the linux kernel configuration."
