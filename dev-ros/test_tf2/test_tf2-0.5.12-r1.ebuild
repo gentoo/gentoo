@@ -30,8 +30,6 @@ DEPEND="
 	sci-libs/orocos_kdl
 	dev-python/python_orocos_kdl[${PYTHON_USEDEP}]
 	dev-libs/boost:=[threads]
-	test? ( dev-cpp/gtest )"
+	dev-cpp/gtest"
 
-src_install() {
-	:
-}
+mycatkincmakeargs=( "-DCATKIN_ENABLE_TESTING=ON" )
