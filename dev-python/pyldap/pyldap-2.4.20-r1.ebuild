@@ -22,7 +22,6 @@ IUSE="doc examples sasl ssl"
 # OpenSSL is an optional runtime dep.
 # setup.py sets setuptools and misses pyasn1 and pyasn1-modules in install_requires
 RDEPEND="
-	!dev-python/python-ldap[${PYTHON_USEDEP}]
 	>net-nds/openldap-2.4.11
 	dev-python/pyasn1[${PYTHON_USEDEP}]
 	dev-python/pyasn1-modules[${PYTHON_USEDEP}]
@@ -30,6 +29,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
+RDEPEND+=" !dev-python/python-ldap"
 
 python_prepare_all() {
 	sed -e "s:^library_dirs =.*:library_dirs = /usr/$(get_libdir) /usr/$(get_libdir)/sasl2:" \
