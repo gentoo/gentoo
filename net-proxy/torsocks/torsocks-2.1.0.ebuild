@@ -43,6 +43,6 @@ src_install() {
 	dodoc ChangeLog README.md TODO doc/notes/DEBUG doc/socks/{SOCKS5,socks-extensions.txt}
 
 	#Remove libtool .la files
-	cd "${D}"/usr/$(get_libdir)/torsocks
+	cd "${D}"/usr/$(get_libdir)/torsocks || die
 	rm -f *.la
 }
