@@ -1,0 +1,73 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+RSYSLOG_CONFIGFILE=${RSYSLOG_CONFIGFILE:-"/etc/rsyslog.conf"}
+RSYSLOG_PIDFILE=${RSYSLOG_PIDFILE:-"/run/rsyslogd.pid"}
+RSYSLOG_SSDARGS=${RSYSLOG_SSDARGS:-"--wait 1000"}
+RSYSLOG_TERMTIMEOUT=${RSYSLOG_TERMTIMEOUT:-"TERM/60/KILL/5"}
+RSYSLOG_OPTS=${RSYSLOG_OPTS:-""}
+
+command="/usr/sbin/rsyslogd"
+command_args="${RSYSLOG_OPTS} -f \"${RSYSLOG_CONFIGFILE}\" -i \"${RSYSLOG_PIDFILE}\""
+start_stop_daemon_args="${RSYSLOG_SSDARGS}"
+pidfile="${RSYSLOG_PIDFILE}"
+retry="${RSYSLOG_TERMTIMEOUT}"
+
+required_files="${RSYSLOG_CONFIGFILE}"
+
+description="RSYSLOG is the rocket-fast system for log processing (syslog replacement)."
+
+extra_commands="configtest"
+extra_started_commands="rotate"
+
+description_configtest="Run rsyslogd's internal config check."
+
+description_rotate="Sends rsyslogd a signal to re-open its log files."
+
+depend() {
+	need clock hostname localmount
+	provide logger
+}
+
+start_pre() {
+	if [ "${RC_CMD}" != "restart" ]; then
+		configtest || return 1
+	fi
+}
+
+stop_pre() {
+	if [ "${RC_CMD}" = "restart" ]; then
+		configtest || return 1
+	fi
+}
+
+stop_post() {
+	if [ -f "${RSYSLOG_PIDFILE}" ]; then
+		vebegin "Removing stale PID file"
+		rm --force "${RSYSLOG_PIDFILE}"
+		veend $?
+	fi
+}
+
+configtest() {
+	local _command_args="-N 999 -f \"${RSYSLOG_CONFIGFILE}\""
+	local _retval=0
+
+	ebegin "Checking rsyslogd's configuration"
+	eval ${command} ${_command_args} >/dev/null 2>&1
+	_retval=$?
+
+	if [ ${_retval} -ne 0 ]; then
+		eval ${command} ${_command_args}
+	fi
+
+	eend ${_retval} "failed, please correct errors above"
+}
+
+rotate() {
+	ebegin "Re-opening rsyslogd logs"
+	start-stop-daemon --signal SIGHUP --pidfile "${RSYSLOG_PIDFILE}"
+	eend $?
+}
