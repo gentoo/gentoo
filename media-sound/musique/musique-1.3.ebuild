@@ -17,10 +17,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	dev-qt/qtcore:4
 	dev-qt/qtdbus:4
 	dev-qt/qtgui:4[gtkstyle]
-	dev-qt/qtsingleapplication[qt4]
 	dev-qt/qtsql:4[sqlite]
 	|| ( dev-qt/qtphonon:4 media-libs/phonon[qt4] )
 	media-libs/taglib
@@ -32,6 +30,10 @@ S="${WORKDIR}/${PN}"
 DOCS="CHANGES TODO"
 
 src_prepare () {
+	# bug 422665. Upstream only cares about ubuntu
+	# so this bug will be fixed once ubuntu moves
+	# to gcc-4.7. No, I will not send this patch upstream
+	# *again*
 	epatch "${FILESDIR}"/${PN}-1.1-gcc47.patch
 	qt4-r2_src_prepare
 }
