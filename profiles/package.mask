@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Anthony G. Basile <blueness@gentoo.org> (6 Oct 2015)
+# Dead upstream for a long time.  Masked for removal
+# in 30 days.
+dev-util/elfsh
+
 # Patrice Clement <monsieurp@gentoo.org> (6 Oct 2015)
 # No update since 2008. Masked for removal in 30 days.
 # See bug #562370.
