@@ -58,7 +58,7 @@ REQUIRED_USE='
 	rockminer? ( sha256d )
 	twinfury? ( sha256d )
 	x6500? ( sha256d libusb )
-	zeusminer? ( scrypt )
+	zeusminer? ( scrypt icarus )
 	ztex? ( sha256d libusb )
 '
 
