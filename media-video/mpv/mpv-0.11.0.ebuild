@@ -84,7 +84,7 @@ RDEPEND="
 	jack? ( media-sound/jack-audio-connection-kit )
 	jpeg? ( virtual/jpeg:0 )
 	libass? (
-		>=media-libs/libass-0.12.1:=[enca?,fontconfig]
+		>=media-libs/libass-0.12.1:=[enca(-)?,fontconfig]
 		virtual/ttf-fonts
 	)
 	libcaca? ( >=media-libs/libcaca-0.99_beta18 )
