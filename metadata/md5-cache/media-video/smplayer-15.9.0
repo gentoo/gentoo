@@ -9,6 +9,6 @@ LICENSE=GPL-2 BSD
 RDEPEND=qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsingleapplication[X,qt4] autoshutdown? ( dev-qt/qtdbus:4 ) mpris? ( dev-qt/qtdbus:4 ) streaming? ( dev-qt/qtcore:4[ssl] ) ) qt5? ( dev-qt/linguist-tools:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 >=dev-qt/qtsingleapplication-2.6.1_p20150629[X,qt5] dev-qt/qtwidgets:5 dev-qt/qtxml:5 autoshutdown? ( dev-qt/qtdbus:5 ) mpris? ( dev-qt/qtdbus:5 ) streaming? ( dev-qt/qtnetwork:5[ssl] dev-qt/qtscript:5 ) ) || ( media-video/mplayer[bidi?,libass,png,X] ( >=media-video/mpv-0.6.2[libass,X] streaming? ( >=net-misc/youtube-dl-2014.11.26 ) ) )
 REQUIRED_USE=^^ ( qt4 qt5 )
 SLOT=0
-SRC_URI=mirror://sourceforge/smplayer/smplayer-14.9.0.6966.tar.bz2
+SRC_URI=mirror://sourceforge/smplayer/smplayer-15.9.0.tar.bz2
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	l10n	714aaf78929eade946da5eaff7d2001a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=b6e6857942d9fc04dc335e85b3fb5fbd
+_md5_=379beaa461a7249711d61dec0f5370d5
