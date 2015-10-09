@@ -5,7 +5,7 @@
 EAPI=5
 USE_RUBY="ruby19 ruby20 ruby21"
 
-inherit ruby-fakegem versionator
+inherit ruby-fakegem
 
 RUBY_FAKEGEM_EXTRAINSTALL="app config db script spec"
 
@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/rapid7/metasploit_data_models"
 SRC_URI="mirror://rubygems/${P}.gem"
 
 LICENSE="BSD"
-SLOT="$(get_version_component_range 1-2)"
+SLOT="${PV}"
 KEYWORDS="~amd64 ~arm ~x86"
 RESTRICT=test
 #IUSE="development test"
