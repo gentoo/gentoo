@@ -11,7 +11,7 @@ HOMEPAGE="http://enet.bespin.org/"
 SRC_URI="http://enet.bespin.org/download/${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="1.3/2.2"
+SLOT="1.3/7"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="static-libs"
 
