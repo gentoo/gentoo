@@ -8545,7 +8545,7 @@ dev-ruby/metasploit-concern 1.0.0: Metasploit concern allows you to define conce
 dev-ruby/metasploit-credential 1.0.0 1.0.1: Code for modeling and managing credentials in Metasploit
 dev-ruby/metasploit-model 1.0.0: Common code, such as validators and mixins
 dev-ruby/metasploit-payloads 1.0.9-r1 1.0.15: Compiled binaries for Metasploit's Meterpreter
-dev-ruby/metasploit_data_models 1.2.5: The database layer for Metasploit
+dev-ruby/metasploit_data_models 1.2.5 1.2.7: The database layer for Metasploit
 dev-ruby/meterpreter_bins 0.0.22: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/method_source 0.8.2-r2 0.8.2-r3: Retrieve the source code for a method
 dev-ruby/mime-types 1.23 1.25.1 2.4.3 2.4.3-r1 2.5 2.6.1 2.6.2: Provides a mailcap-like MIME Content-Type lookup for Ruby
@@ -14705,7 +14705,7 @@ net-proxy/sshproxy 0.6.0_beta2-r2: sshproxy is an ssh gateway to apply ACLs on s
 net-proxy/sshuttle 0.61-r3: Transparent proxy server that works as a poor man's VPN using ssh
 net-proxy/tayga 0.9.2: out-of-kernel stateless NAT64 implementation based on TUN
 net-proxy/tinyproxy 1.8.3-r3: A lightweight HTTP/SSL proxy
-net-proxy/torsocks 1.2 1.2-r2 2.0.0-r1 2.1.0: Use most socks-friendly applications with Tor
+net-proxy/torsocks 1.2-r2 2.1.0: Use most socks-friendly applications with Tor
 net-proxy/tsocks 1.8_beta5-r5 1.8_beta5-r8: Transparent SOCKS v4 proxying library
 net-proxy/ufdbguard 1.24-r1 1.29: ufdbGuard is a redirector for the Squid internet proxy
 net-proxy/webscarab 20070504: A framework for analysing applications that communicate using the HTTP and HTTPS protocols
