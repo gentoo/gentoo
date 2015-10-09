@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare setup
 DEPEND=app-shells/bash:0 sys-apps/sed dev-libs/boost[threads(+)] dev-libs/glib:2 dev-libs/crypto++ ssl? ( dev-libs/openssl:0[-bindist] ) logrotate? ( app-admin/logrotate ) wallet? ( media-gfx/qrencode sys-libs/db:4.8[cxx] ) upnp? ( net-libs/miniupnpc ) virtual/bitcoin-leveldb !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DESCRIPTION=BitcoinXT crypto-currency wallet for automated services
 EAPI=5
-HOMEPAGE=https://github/bitcoinxt/bitcoinxt
+HOMEPAGE=https://github.com/bitcoinxt/bitcoinxt
 IUSE=+doc +ssl +logrotate +upnp +wallet
 KEYWORDS=~amd64 ~arm ~arm64 ~mips ~ppc ~x86 ~amd64-linux ~x86-linux
 LICENSE=MIT
@@ -10,4 +10,4 @@ RDEPEND=app-shells/bash:0 sys-apps/sed dev-libs/boost[threads(+)] dev-libs/glib:
 SLOT=0
 SRC_URI=https://github.com/bitcoinxt/bitcoinxt/archive/v0.11A.tar.gz -> bitcoinxtd-0.11.0.tar.gz
 _eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=d1c1215b4d1cd3ded1a47de63257c73d
+_md5_=16c27fd135a3e622b2a6ae833c4cd186
