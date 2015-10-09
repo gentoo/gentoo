@@ -52,7 +52,7 @@ java_prepare() {
 			RM_TEST_FILES+=("${file}")
 		done < <(find . -name "*Mock*.java" -type f -print0)
 
-		rm -v "${RM_TEST_FILES[@]}"
+		rm -v "${RM_TEST_FILES[@]}" || die
 	fi
 }
 
