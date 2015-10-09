@@ -23,7 +23,16 @@ IUSE=""
 
 ruby_add_bdepend "
 	test? (
-		dev-ruby/bundler
 		dev-ruby/test-unit:2
 		>=dev-ruby/minitest-5.4:5
 	)"
+
+all_ruby_prepare() {
+	sed -i -e "/[Bb]undler/d" \
+		-e '/specname/,$ s:^:#:' Rakefile || die
+
+	# Fix tests by providing an engine.
+	sed -i -e '591 s/new/new Table.engine/' \
+		-e '606 s/new/new Table.engine/' \
+		test/test_select_manager.rb || die
+}

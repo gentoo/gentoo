@@ -25,8 +25,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/minitest:5
 	dev-ruby/racc
 	dev-ruby/cliver )"
-ruby_add_rdepend "dev-ruby/ast
-	dev-ruby/slop:3"
+ruby_add_rdepend "dev-ruby/ast"
 
 all_ruby_prepare() {
 	sed -i -e "/[Bb]undler/d" Rakefile || die
