@@ -18,12 +18,14 @@ IUSE=""
 DEPEND="
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
+	x11-libs/libqxt
 	x11-libs/libX11
 "
 RDEPEND="${DEPEND}"
 
 src_prepare() {
 	sed -i -e "/LICENSE.txt/d" CMakeLists.txt || die
+	rm -r src/3rdparty || die
 
 	cmake-utils_src_prepare
 }
@@ -31,6 +33,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DSG_DOCDIR=${PF}
+		-DSG_USE_SYSTEM_QXT=ON
 	)
 
 	cmake-utils_src_configure
