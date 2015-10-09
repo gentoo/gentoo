@@ -284,15 +284,6 @@ dev-ruby/require_relative
 # via the kernel as upstream has deprecated these packages.
 app-emulation/kvm-kmod
 
-# Lars Wendler <polynomial-c@gentoo.org> (21 Aug 2015)
-# This version breaks tests in app-admin/rsyslog and 
-# also breaks rule settings.
-# See
-# http://lists.adiscon.net/pipermail/rsyslog/2015-August/041013.html
-# and
-# https://github.com/rsyslog/rsyslog/issues/489
-=dev-libs/liblognorm-1.1.2
-
 # Lars Wendler <polynomial-c@gentoo.org> (20 Aug 2015)
 # Masked for testing
 =net-misc/iputils-20150815
