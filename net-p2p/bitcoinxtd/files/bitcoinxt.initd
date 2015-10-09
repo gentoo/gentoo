@@ -1,0 +1,29 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+vardir="/var/lib/bitcoinxt"
+conffile="${vardir}/.bitcoinxt/bitcoinxt.conf"
+bitcoinxtd_user="${BITCOINXT_USER:-nobody:nobody}"
+
+description="BitcoinXT crypto-currency wallet for automated services"
+pidfile="/run/${SVCNAME}.pid"
+command="/usr/bin/bitcoinxtd"
+command_args="${BITCOINXT_OPTS}"
+command_background="true"
+start_stop_daemon_args="-u ${bitcoinxtd_user} -e HOME=${vardir} -N ${NICELEVEL:-0} -w 2000"
+
+depend() {
+	need net
+}
+
+start_pre() {
+	checkpath -f -o ${bitcoinxtd_user} -m 0400 ${conffile} || return 1
+
+	if ! grep -q '^rpcpassword=' "${conffile}"; then
+		eerror "Please edit `readlink -f ${conffile}`"
+		eerror "There must be at least a line assigning rpcpassword=something-secure"
+		return 1
+	fi
+}
