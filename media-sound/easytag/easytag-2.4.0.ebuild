@@ -11,15 +11,14 @@ HOMEPAGE="https://wiki.gnome.org/Apps/EasyTAG"
 LICENSE="GPL-2 GPL-2+ LGPL-2 LGPL-2+ LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
-IUSE="flac gtk2 +gtk3 mp3 mp4 opus speex test vorbis wavpack"
-REQUIRED_USE="|| ( gtk2 gtk3 )
-	opus? ( vorbis )
+IUSE="flac mp3 mp4 opus speex test vorbis wavpack"
+REQUIRED_USE="opus? ( vorbis )
 	speex? ( vorbis )"
 
-RDEPEND=">=dev-libs/glib-2.32:2
+RDEPEND=">=dev-libs/glib-2.38:2
+	media-libs/libcanberra[gtk3]
+	>=x11-libs/gtk+-3.10:3
 	flac? ( >=media-libs/flac-1.3 )
-	gtk2? ( >=x11-libs/gtk+-2.24:2 )
-	gtk3? ( >=x11-libs/gtk+-3.4:3 )
 	mp3? (
 		>=media-libs/id3lib-3.8.3-r8
 		>=media-libs/libid3tag-0.15.1b-r4
@@ -59,9 +58,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# Kludge to make easytag find its locales (bug #503698)
-	export DATADIRNAME=share
-
 	econf \
 		$(use_enable test appdata-validate) \
 		$(use_enable test tests) \
@@ -72,10 +68,22 @@ src_configure() {
 		$(use_enable speex) \
 		$(use_enable flac) \
 		$(use_enable mp4) \
-		$(use_enable wavpack) \
-		$(use_with gtk2)
+		$(use_enable wavpack)
 }
 
-pkg_preinst() { gnome2_icon_savelist; }
-pkg_postinst() { gnome2_icon_cache_update; fdo-mime_desktop_database_update; }
-pkg_postrm() { gnome2_icon_cache_update; fdo-mime_desktop_database_update; }
+pkg_preinst() {
+	gnome2_icon_savelist
+	gnome2_schemas_savelist
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	fdo-mime_desktop_database_update
+	gnome2_schemas_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	fdo-mime_desktop_database_update
+	gnome2_schemas_update
+}

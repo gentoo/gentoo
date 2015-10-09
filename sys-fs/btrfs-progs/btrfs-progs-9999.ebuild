@@ -16,8 +16,7 @@ if [[ ${PV} != 9999 ]]; then
 else
 	WANT_LIBTOOL=none
 	inherit autotools git-r3
-	EGIT_REPO_URI="git://git.kernel.org/pub/scm/linux/kernel/git/kdave/btrfs-progs.git
-		https://git.kernel.org/pub/scm/linux/kernel/git/kdave/btrfs-progs.git"
+	EGIT_REPO_URI="git://repo.or.cz/btrfs-progs-unstable/devel.git"
 	EGIT_BRANCH="devel"
 fi
 
