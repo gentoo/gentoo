@@ -12,7 +12,7 @@ SRC_URI="http://www.dillo.org/download/${P}.tar.bz2
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm hppa ~mips ~ppc ppc64 ~sparc ~x86 ~amd64-fbsd"
 IUSE="doc +gif ipv6 +jpeg +png ssl"
 
 RDEPEND="
