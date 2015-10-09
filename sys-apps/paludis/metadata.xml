@@ -13,6 +13,9 @@
     <flag name="pbins">Enable binary package support. Adds dependency upon
           <pkg>app-arch/libarchive</pkg></flag>
     <flag name="pink">Use a less boring colourscheme than the default</flag>
-    <flag name='search-index'>Enable cave search --index. Requires sqlite.</flag>
+    <flag name='search-index'>Enable cave search --index. Requires
+          <pkg>dev-db/sqlite</pkg>.</flag>
+    <flag name='xml'>Build xml things for metadata.xml and GLSA support
+          (needs <pkg>dev-libs/libxml2</pkg>).</flag>
   </use>
 </pkgmetadata>
