@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Michael Palimaka <kensington@gentoo.org (9 Oct 2015)
+# Dead upstream. No consumers. Collides with other packages.
+# Bug #560932 and bug #557006. Masked for removal in 30 days.
+dev-libs/libhash
+
+# Michael Palimaka <kensington@gentoo.org (9 Oct 2015)
 # Superceded by >=app-crypt/qca-2.1
 # Masked for removal in 30 days
 <app-crypt/qca-2.1
