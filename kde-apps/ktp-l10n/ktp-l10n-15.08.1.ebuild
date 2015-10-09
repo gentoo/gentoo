@@ -80,6 +80,8 @@ src_prepare() {
 				# We only want messages
 				sed -e '/messages/!s/^add_subdirectory/# DONT/'\
 					-i "${SDIR}"/CMakeLists.txt || die
+				sed -e '/KF5DocTools/ s/^/#/'\
+					-i "${SDIR}"/CMakeLists.txt || die
 
 				# Remove everything except kdenetwork
 				if [[ -d "${SDIR}/messages" ]] ; then
