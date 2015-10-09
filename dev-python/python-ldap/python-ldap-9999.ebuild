@@ -29,6 +29,7 @@ RDEPEND=">=net-nds/openldap-2.4
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/pyasn1-modules[${PYTHON_USEDEP}] )"
+RDEPEND+=" !dev-python/pyldap"
 
 python_prepare_all() {
 	sed -e "s:^library_dirs =.*:library_dirs = /usr/$(get_libdir) /usr/$(get_libdir)/sasl2:" \
