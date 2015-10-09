@@ -17,10 +17,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	>=app-crypt/qca-2.1.0.3:2[qt4]
+	>=app-crypt/qca-2.1.0.3:2[openssl,qt4]
 	dev-libs/qjson
 	dev-libs/qoauth
-	dev-qt/qtcore:4
+	dev-qt/qtcore:4[ssl]
 	dev-qt/qtdbus:4
 	dev-qt/qtgui:4
 	sys-apps/file"
