@@ -33,13 +33,14 @@ else
 	"
 	KEYWORDS="~amd64 ~arm ~hppa ~x86"
 
-	PATCHES+=( "${FILESDIR}"/8-stable/40-rsyslog-fix-parallel-build-issue-479.patch )
+	PATCHES+=( "${FILESDIR}"/${BRANCH}/50-${PN}-8.12.0-fix-re_extract.patch )
+	PATCHES+=( "${FILESDIR}"/${BRANCH}/50-${PN}-8.13.0-lookup-table-reload-bugfix.patch )
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
 SLOT="0"
-IUSE="dbi debug doc elasticsearch +gcrypt jemalloc kerberos mongodb mysql normalize omudpspoof
-postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp ssl systemd test usertools zeromq"
+IUSE="dbi debug doc elasticsearch +gcrypt jemalloc kerberos libressl mongodb mysql normalize omudpspoof"
+IUSE+=" postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp ssl systemd test usertools zeromq"
 
 RDEPEND="
 	>=dev-libs/json-c-0.11:=
@@ -55,7 +56,7 @@ RDEPEND="
 	mysql? ( virtual/mysql )
 	normalize? (
 		>=dev-libs/libee-0.4.0
-		>=dev-libs/liblognorm-1.1.0:=
+		>=dev-libs/liblognorm-1.1.2:=
 	)
 	omudpspoof? ( >=net-libs/libnet-1.1.6 )
 	postgres? ( >=dev-db/postgresql-8.4.20:= )
@@ -63,7 +64,10 @@ RDEPEND="
 	redis? ( >=dev-libs/hiredis-0.11.0 )
 	relp? ( >=dev-libs/librelp-1.2.5 )
 	rfc3195? ( >=dev-libs/liblogging-1.0.1:=[rfc3195] )
-	rfc5424hmac? ( >=dev-libs/openssl-0.9.8y:= )
+	rfc5424hmac? (
+		!libressl? ( >=dev-libs/openssl-0.9.8y:0= )
+		libressl? ( dev-libs/libressl:= )
+	)
 	snmp? ( >=net-analyzer/net-snmp-5.7.2 )
 	ssl? ( >=net-libs/gnutls-2.12.23 )
 	systemd? ( >=sys-apps/systemd-208 )
@@ -222,6 +226,11 @@ src_compile() {
 src_test() {
 	local _has_increased_ulimit=
 
+	# When adding new tests via patches we have to make them executable
+	einfo "Adjusting permissions of test scripts ..."
+	find "${S}"/tests -type f -name '*.sh' \! -perm -111 -exec chmod a+x '{}' \; || \
+		die "Failed to adjust test scripts permission"
+
 	if ulimit -n 3072; then
 		_has_increased_ulimit="true"
 	fi
@@ -245,8 +254,8 @@ src_install() {
 	use doc && HTML_DOCS=( "${S}/docs/build/" )
 	autotools-utils_src_install
 
-	newconfd "${FILESDIR}/${BRANCH}/${PN}.confd" ${PN}
-	newinitd "${FILESDIR}/${BRANCH}/${PN}.initd" ${PN}
+	newconfd "${FILESDIR}/${BRANCH}/${PN}.confd-r1" ${PN}
+	newinitd "${FILESDIR}/${BRANCH}/${PN}.initd-r1" ${PN}
 
 	keepdir /var/empty/dev
 	keepdir /var/spool/${PN}

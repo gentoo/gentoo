@@ -55,7 +55,10 @@ RDEPEND="
 	mysql? ( virtual/mysql )
 	normalize? (
 		>=dev-libs/libee-0.4.0
-		>=dev-libs/liblognorm-1.1.0:=
+		( || (
+			>=dev-libs/liblognorm-1.1.0:=
+			<dev-libs/liblognorm-1.1.2:=
+		) )
 	)
 	omudpspoof? ( >=net-libs/libnet-1.1.6 )
 	postgres? ( >=dev-db/postgresql-8.4.20:= )

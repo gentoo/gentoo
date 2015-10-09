@@ -1,0 +1,130 @@
+From a88d67df6e55e0a5f484f6aff8aa6e9813c5c31a Mon Sep 17 00:00:00 2001
+From: Janmejay Singh <singh.janmejay@gmail.com>
+Date: Mon, 28 Sep 2015 20:38:05 +0530
+Subject: [PATCH] fixed re_extract bug, which fails the regex-compile for
+ extract as fn-init fails when fn does not have exactly 2 args
+
+
+Fixes: https://github.com/rsyslog/rsyslog/issues/499
+
+---
+ grammar/rainerscript.c                   |  2 +-
+ tests/Makefile.am                        |  6 ++++++
+ tests/rscript_re_extract.sh              | 14 ++++++++++++++
+ tests/rscript_re_match.sh                | 14 ++++++++++++++
+ tests/testsuites/rscript_re_extract.conf |  9 +++++++++
+ tests/testsuites/rscript_re_match.conf   | 10 ++++++++++
+ 6 files changed, 54 insertions(+), 1 deletion(-)
+ create mode 100755 tests/rscript_re_extract.sh
+ create mode 100755 tests/rscript_re_match.sh
+ create mode 100644 tests/testsuites/rscript_re_extract.conf
+ create mode 100644 tests/testsuites/rscript_re_match.conf
+
+diff --git a/grammar/rainerscript.c b/grammar/rainerscript.c
+index f02e1fe..17f785e 100644
+--- a/grammar/rainerscript.c
++++ b/grammar/rainerscript.c
+@@ -3747,7 +3747,7 @@ initFunc_re_match(struct cnffunc *func)
+ 	regex_t *re;
+ 	DEFiRet;
+ 
+-	if(func->nParams != 2) {
++	if(func->nParams < 2) {
+ 		parser_errmsg("rsyslog logic error in line %d of file %s\n",
+ 			__LINE__, __FILE__);
+ 		FINALIZE;
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index 914d947..d77728a 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -120,6 +120,8 @@ TESTS +=  \
+ 	rscript_replace_complex.sh \
+ 	rscript_wrap2.sh \
+ 	rscript_wrap3.sh \
++	rscript_re_extract.sh \
++	rscript_re_match.sh \
+ 	rs_optimizer_pri.sh \
+ 	cee_simple.sh \
+ 	cee_diskqueue.sh \
+@@ -854,6 +856,10 @@ EXTRA_DIST= \
+ 	testsuites/stop_when_array_has_element.conf \
+ 	key_dereference_on_uninitialized_variable_space.sh \
+ 	testsuites/key_dereference_on_uninitialized_variable_space.conf \
++	rscript_re_extract.sh \
++	testsuites/rscript_re_extract.conf \
++	rscript_re_match.sh \
++	testsuites/rscript_re_match.conf \
+ 	cfg.sh
+ 
+ # TODO: re-enable
+diff --git a/tests/rscript_re_extract.sh b/tests/rscript_re_extract.sh
+new file mode 100755
+index 0000000..930448c
+--- /dev/null
++++ b/tests/rscript_re_extract.sh
+@@ -0,0 +1,14 @@
++#!/bin/bash
++# added 2015-09-29 by singh.janmejay
++# This file is part of the rsyslog project, released under ASL 2.0
++echo ===============================================================================
++echo \[rscript_re_extract.sh\]: test re_extract rscript-fn
++. $srcdir/diag.sh init
++. $srcdir/diag.sh startup rscript_re_extract.conf
++. $srcdir/diag.sh tcpflood -m 1 -I $srcdir/testsuites/date_time_msg
++echo doing shutdown
++. $srcdir/diag.sh shutdown-when-empty
++echo wait on shutdown
++. $srcdir/diag.sh wait-shutdown 
++. $srcdir/diag.sh content-check "*Number is 19597*"
++. $srcdir/diag.sh exit
+diff --git a/tests/rscript_re_match.sh b/tests/rscript_re_match.sh
+new file mode 100755
+index 0000000..d2e212d
+--- /dev/null
++++ b/tests/rscript_re_match.sh
+@@ -0,0 +1,14 @@
++#!/bin/bash
++# added 2015-09-29 by singh.janmejay
++# This file is part of the rsyslog project, released under ASL 2.0
++echo ===============================================================================
++echo \[rscript_re_match.sh\]: test re_match rscript-fn
++. $srcdir/diag.sh init
++. $srcdir/diag.sh startup rscript_re_match.conf
++. $srcdir/diag.sh tcpflood -m 1 -I $srcdir/testsuites/date_time_msg
++echo doing shutdown
++. $srcdir/diag.sh shutdown-when-empty
++echo wait on shutdown
++. $srcdir/diag.sh wait-shutdown 
++. $srcdir/diag.sh content-check "*Matched*"
++. $srcdir/diag.sh exit
+diff --git a/tests/testsuites/rscript_re_extract.conf b/tests/testsuites/rscript_re_extract.conf
+new file mode 100644
+index 0000000..6c71e53
+--- /dev/null
++++ b/tests/testsuites/rscript_re_extract.conf
+@@ -0,0 +1,9 @@
++$IncludeConfig diag-common.conf
++template(name="outfmt" type="string" string="*Number is %$.number%*\n")
++
++module(load="../plugins/imtcp/.libs/imtcp")
++input(type="imtcp" port="13514")
++
++set $.number = re_extract($msg, '.* ([0-9]+)$', 0, 1, 'none');
++
++action(type="omfile" file="./rsyslog.out.log" template="outfmt")
+diff --git a/tests/testsuites/rscript_re_match.conf b/tests/testsuites/rscript_re_match.conf
+new file mode 100644
+index 0000000..3e0f36f
+--- /dev/null
++++ b/tests/testsuites/rscript_re_match.conf
+@@ -0,0 +1,10 @@
++$IncludeConfig diag-common.conf
++template(name="outfmt" type="string" string="*Matched*\n")
++
++module(load="../plugins/imtcp/.libs/imtcp")
++input(type="imtcp" port="13514")
++
++if (re_match($msg, '.* ([0-9]+)$')) then {
++	 action(type="omfile" file="./rsyslog.out.log" template="outfmt")
++}
++

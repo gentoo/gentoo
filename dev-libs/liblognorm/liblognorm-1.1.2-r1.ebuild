@@ -16,12 +16,11 @@ SRC_URI="http://www.liblognorm.com/files/download/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0/2"
 KEYWORDS="~amd64 ~arm ~hppa ~x86 ~amd64-linux"
-IUSE="debug doc pcre static-libs test"
+IUSE="debug doc static-libs test"
 
 RDEPEND="
-	>=dev-libs/json-c-0.11:=
 	>=dev-libs/libestr-0.1.3
-	pcre? ( >=dev-libs/libpcre-8.35 )
+	>=dev-libs/json-c-0.11:=
 "
 
 DEPEND="
@@ -34,19 +33,25 @@ DOCS=( ChangeLog )
 
 PATCHES=(
 	"${FILESDIR}"/respect_CFLAGS.patch
+	"${FILESDIR}"/${PN}-1.1.2-issue_135.patch
 )
 
 src_configure() {
 	local myeconfargs=(
-		$(use_enable debug)
 		$(use_enable doc docs)
-		$(use_enable pcre regexp)
 		$(use_enable test testbench)
+		$(use_enable debug)
+		--disable-regexp
 	)
 
 	autotools-utils_src_configure
 }
 
 src_test() {
+	# When adding new tests via patches we have to make them executable
+	einfo "Adjusting permissions of test scripts ..."
+	find "${S}"/tests -type f -name '*.sh' \! -perm -111 -exec chmod a+x '{}' \; || \
+		die "Failed to adjust test scripts permission"
+
 	emake --jobs 1 check
 }
