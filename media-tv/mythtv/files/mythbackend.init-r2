@@ -42,7 +42,7 @@ start_pre() {
 
 	# Work around any strange permissions that may be on these files.
 	[ "x${MYTHBACKEND_LOGGING}" = "xfiles" ] && \
-		checkpath --directory --owner mythtv:video --mode 0775 /var/log/mythtv
+		checkpath --directory --owner mythtv:video --mode 0755 /var/log/mythtv
 	checkpath --directory --owner mythtv:video --mode 0775 /home/mythtv
 	checkpath --directory --owner mythtv:video --mode 0750 /run/mythtv
 }
