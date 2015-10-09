@@ -19,7 +19,7 @@ RDEPEND="
 	dev-libs/openssl:0
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
-	media-libs/libsdl
+	media-libs/libsdl[sound]
 	libav? ( media-video/libav:= )
 	!libav? ( media-video/ffmpeg:= )
 "
