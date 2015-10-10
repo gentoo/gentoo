@@ -1866,7 +1866,7 @@ app-misc/roadnav 0.19-r1: Roadnav is a street map application with routing and G
 app-misc/rox-filer 2.11: ROX-Filer a drag and drop spatial file manager
 app-misc/run-mailcap 3.39_p1 3.52_p1: Execute programs via entries in the mailcap file
 app-misc/scope 0.04-r1: Serial Line Analyser
-app-misc/screen 4.0.3-r6 4.0.3-r7 4.0.3-r8 4.2.1-r2 4.3.1 4.3.1-r1 9999: Full-screen window manager that multiplexes physical terminals between several processes
+app-misc/screen 4.3.1-r1 9999: Full-screen window manager that multiplexes physical terminals between several processes
 app-misc/screenfetch 2.7.7 3.2.2 3.6.5 9999: A Bash Screenshot Information Tool
 app-misc/screenie 1.30.0-r1: screen(1) frontend that is designed to be a session handler
 app-misc/scrub 2.5.2 2.6.1: Write patterns on disk/file
@@ -4280,6 +4280,7 @@ dev-java/unkrig-nullanalysis 0_pre1644: Some classes to test for various null co
 dev-java/validation-api 1.0.0: Bean Validation (JSR-303) API
 dev-java/vecmath 1.5.2 1.6.0_pre12: Sun J3D: 3D vector math package
 dev-java/velocity 1.7 1.7-r1: A Java-based template engine for easy creation/rendering of documents that format and present data
+dev-java/vldocking 3.0.5: Docking solution for Java Swing
 dev-java/webgraph 1.4.1-r1: WebGraph is a framework to study the web graph
 dev-java/werken-xpath 0.9.4_beta-r2 0.9.4_beta-r3: W3C XPath-Rec implementation for DOM4J
 dev-java/ws-commons-util 1.0.1: Utility classes that allow high performance XML processing based on SAX
@@ -7759,7 +7760,7 @@ dev-python/shiboken 1.2.2: A tool for creating Python bindings for C++ libraries
 dev-python/shm 1.2.2-r1: Python modules to access System V shared memory and semaphores
 dev-python/shortuuid 0.4.2: A generator library for concise, unambiguous and URL-safe UUIDs
 dev-python/simplecv 1.3: Python interface to several powerful open source computer vision libraries
-dev-python/simpleeval 0.8.2 0.8.5: A simple, safe single expression evaluator library
+dev-python/simpleeval 0.8.6: A simple, safe single expression evaluator library
 dev-python/simplegeneric 0.8.1-r1: Simple generic functions for Python
 dev-python/simplegui 0.1.0: Simplified GUI generation using Tkinter
 dev-python/simplejson 3.7.2 3.8.0: Simple, fast, extensible JSON encoder/decoder for Python
