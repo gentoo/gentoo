@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
+PYTHON_COMPAT=( python2_7 python3_4 )
 
 inherit distutils-r1 vcs-snapshot
 
@@ -18,7 +18,8 @@ IUSE="doc test"
 
 CDEPEND="
 	>=dev-python/docutils-0.10[${PYTHON_USEDEP}]
-	~dev-python/jmespath-0.7.1[${PYTHON_USEDEP}]
+	>=dev-python/jmespath-0.7.1[${PYTHON_USEDEP}]
+	<dev-python/jmespath-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.1[${PYTHON_USEDEP}]
 	<dev-python/python-dateutil-3.0.0[${PYTHON_USEDEP}]
 "
