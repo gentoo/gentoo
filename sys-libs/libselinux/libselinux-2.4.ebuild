@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI="5"
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
+PYTHON_COMPAT=( python2_7 python3_3 python3_4 python3_5 )
 USE_RUBY="ruby19 ruby20"
 
 # No, I am not calling ruby-ng
@@ -78,7 +78,7 @@ multilib_src_compile() {
 		building() {
 			einfo "Calling rubywrap for ${1}"
 			# Clean up .lo file to force rebuild
-			test -f src/selinuxswig_ruby_wrap.lo && rm src/selinuxswig_ruby_wrap.lo
+			rm -f src/selinuxswig_ruby_wrap.lo || die
 			emake \
 				CC="$(tc-getCC)" \
 				RUBY=${1} \
@@ -125,18 +125,18 @@ multilib_src_install() {
 		done
 	fi
 
-	use static-libs || rm "${D}"/usr/lib*/*.a
+	use static-libs || rm "${D}"/usr/lib*/*.a || die
 }
 
 pkg_postinst() {
 	# Fix bug 473502
 	for POLTYPE in ${POLICY_TYPES};
 	do
-		mkdir -p /etc/selinux/${POLTYPE}/contexts/files
-		touch /etc/selinux/${POLTYPE}/contexts/files/file_contexts.local
+		mkdir -p /etc/selinux/${POLTYPE}/contexts/files || die
+		touch /etc/selinux/${POLTYPE}/contexts/files/file_contexts.local || die
 		# Fix bug 516608
 		for EXPRFILE in file_contexts file_contexts.homedirs file_contexts.local ; do
-			sefcontext_compile /etc/selinux/${POLTYPE}/contexts/files/${EXPRFILE};
+			sefcontext_compile /etc/selinux/${POLTYPE}/contexts/files/${EXPRFILE} || die "Failed to recompile contexts"
 		done
 	done
 }
