@@ -1989,7 +1989,7 @@ app-office/kmymoney 4.7.2: Personal finance manager for KDE
 app-office/kraft 0.58 0.59: Software for operating a small business, helping create documents such as offers and invoices
 app-office/ledger 2.6.3-r1 3.1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 4.3.2-r1: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 4.4.5.2 4.4.9999 5.0.1.2 5.0.2.2 5.0.9999 9999: LibreOffice, a full office productivity suite
+app-office/libreoffice 4.4.5.2 4.4.9999 5.0.1.2 5.0.2.2 5.0.3.1 5.0.9999 9999: LibreOffice, a full office productivity suite
 app-office/libreoffice-bin 4.4.5.2: LibreOffice, a full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 4.4.5.2: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 4.4.5.2 5.0.1.2 5.0.2.2: Translations for the Libreoffice suite
@@ -2317,7 +2317,7 @@ app-text/libpaper 1.1.24-r2: Library for handling paper characteristics
 app-text/libspectre 0.2.6 0.2.7: A library for rendering Postscript documents
 app-text/libwpd 0.9.9 0.10.0 0.10.0-r1 0.10.0-r2: WordPerfect Document import/export library
 app-text/libwpg 0.2.2 0.3.0: C++ library to read and parse graphics in WPG
-app-text/libwps 0.2.9 0.3.1 0.4.1: Microsoft Works file word processor format import filter library
+app-text/libwps 0.2.9 0.3.1 0.4.1 0.4.2: Microsoft Works file word processor format import filter library
 app-text/libxmlpatch 0.3.3: A set of tools to create and apply patch to XML files using XPath
 app-text/linuxdoc-tools 0.9.69: A toolset for processing LinuxDoc DTD SGML files
 app-text/llpp 20_p20140818 21 21_p20150427 9999: a graphical PDF viewer which aims to superficially resemble less(1)
@@ -11260,7 +11260,7 @@ lxqt-base/lxqt-qtplugin 0.7.0 0.8.0 0.9.0: LXQt system integration plugin for Qt
 lxqt-base/lxqt-runner 0.7.0-r1 0.8.0 0.9.0: LXQt quick launcher
 lxqt-base/lxqt-session 0.7.0-r1 0.8.0 0.9.0-r1: LXQT session manager
 mail-client/alot 0.3.6: Experimental terminal UI for net-mail/notmuch written in Python
-mail-client/alpine 2.00-r5: alpine is an easy to use text-based based mail and news client
+mail-client/alpine 2.00-r5 2.00-r6: alpine is an easy to use text-based based mail and news client
 mail-client/balsa 2.4.14 2.5.2: Email client for GNOME
 mail-client/biabam 0.9.7: Biabam is a small commandline tool for sending mail attachments
 mail-client/claws-mail 3.9.0 3.9.3 3.10.1 3.11.1-r1 3.12.0: An email client (and news reader) based on GTK+
