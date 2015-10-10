@@ -62,7 +62,9 @@ src_prepare() {
 		"${FILESDIR}"/${P}-ffmpeg-0.11.patch \
 		"${FILESDIR}"/${PN}-libav9.patch \
 		"${FILESDIR}"/${PN}-pngtoh.patch \
-		"${FILESDIR}"/${PN}-nofindobject.patch
+		"${FILESDIR}"/${PN}-nofindobject.patch \
+		"${FILESDIR}"/${PN}-asm-gcc52.patch \
+		"${FILESDIR}"/${PN}-putbits-gcc52.patch
 
 	if has_version '>=media-video/ffmpeg-2' ; then
 		epatch "${FILESDIR}"/${PN}-ffmpeg2.patch
