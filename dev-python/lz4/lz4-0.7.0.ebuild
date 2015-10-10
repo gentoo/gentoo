@@ -20,3 +20,10 @@ RDEPEND=""
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 # Tests still excluded by upstream
+
+python_prepare_all() {
+	sed \
+		-e '/nose/s:setup_requires:test_requires:g' \
+		-i setup.py || die
+	distutils-r1_python_prepare_all
+}
