@@ -19,10 +19,11 @@ HOMEPAGE="https://libgit2.github.com/"
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0/23"
-IUSE="examples gssapi ssh test threads trace"
+IUSE="examples gssapi libressl ssh test threads trace"
 
 RDEPEND="
-	dev-libs/openssl:0
+	!libressl? ( dev-libs/openssl:0 )
+	libressl? ( dev-libs/libressl )
 	sys-libs/zlib
 	net-libs/http-parser
 	gssapi? ( virtual/krb5 )
@@ -68,7 +69,7 @@ src_install() {
 	cmake-utils_src_install
 
 	if use examples ; then
-		find examples -name .gitignore -delete || die
+		find examples -name .gitignore -delete || die
 		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
