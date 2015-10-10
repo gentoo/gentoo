@@ -9,7 +9,7 @@ QT_MINIMAL="4.7.4"
 KDE_SCM="git"
 CMAKE_REQUIRED="never"
 
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
+PYTHON_COMPAT=( python2_7 python3_4 )
 PYTHON_REQ_USE="threads,xml"
 
 # experimental ; release ; old
@@ -73,7 +73,7 @@ unset EXT_URI
 unset ADDONS_SRC
 
 IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf gnome gstreamer
-+gtk gtk3 jemalloc kde mysql odk postgres telepathy test vlc"
++gtk gtk3 jemalloc kde libressl mysql odk postgres telepathy test vlc"
 
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 # Unpackaged separate extensions:
@@ -122,7 +122,8 @@ COMMON_DEPEND="
 	>=dev-libs/nspr-4.8.8
 	>=dev-libs/nss-3.12.9
 	>=dev-lang/perl-5.0
-	>=dev-libs/openssl-1.0.0d:0
+	!libressl? ( >=dev-libs/openssl-1.0.0d:0 )
+	libressl? ( dev-libs/libressl )
 	>=dev-libs/redland-1.0.16
 	media-gfx/graphite2
 	>=media-libs/fontconfig-2.8.0
