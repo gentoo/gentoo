@@ -10,5 +10,5 @@ RDEPEND=>=dev-db/sqlite-3.4:3 >=dev-libs/glib-2.32 >=dev-libs/libcdio-0.90 >=dev
 REQUIRED_USE=glyr? ( peas ) libnotify? ( peas ) mtp? ( udev ) udev? ( peas )
 SLOT=0
 SRC_URI=https://github.com/matiasdelellis/pragha/archive/v1.3.0.tar.gz -> pragha-1.3.0.tar.gz
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	44555579e85afa5c035d2bd5428252da	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	xfconf	d842ab8b2140980394561496bf157447
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	xfconf	d842ab8b2140980394561496bf157447
 _md5_=9582c16d0821ef8850a9768ee0f73eed

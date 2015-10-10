@@ -10,5 +10,5 @@ RDEPEND=cgi? ( dev-lang/python ) fuse? ( >=sys-fs/fuse-2.6 )
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=http://pro.hit.gemius.pl/hitredir/id=p4CVHPOzkVa0JJIK.m0Ee6dyHZEgoQb1KaiPmVK29EX.M7/url=moosefs.org/tl_files/mfscode/mfs-1.6.26.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	006fb3ff3b8a9aa58f251f2312836cdf	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=2a4839377841d0c3ef3939267559f1b8

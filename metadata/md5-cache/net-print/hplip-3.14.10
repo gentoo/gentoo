@@ -10,5 +10,5 @@ RDEPEND=virtual/jpeg:0 hpijs? ( || ( >=net-print/cups-filters-1.0.43-r1[foomatic
 REQUIRED_USE=!minimal? ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=mirror://sourceforge/hplip/hplip-3.14.10.tar.gz https://dev.gentoo.org/~billie/distfiles/hplip-3.14.10-patches-1.tar.xz
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	libtool	7f78cd7d403808a350c9ae23f5821fb4	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	006fb3ff3b8a9aa58f251f2312836cdf	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	udev	37ef89be271b9ae8aa64be024ddb39b5	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	libtool	7f78cd7d403808a350c9ae23f5821fb4	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	udev	37ef89be271b9ae8aa64be024ddb39b5	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=64f2ff1bd7cea8c3b67953516075a7ee

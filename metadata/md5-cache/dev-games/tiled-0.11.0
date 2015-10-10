@@ -10,5 +10,5 @@ RDEPEND=>=dev-qt/qtcore-4.7:4 >=dev-qt/qtgui-4.7:4 >=dev-qt/qtopengl-4.7:4 sys-l
 REQUIRED_USE=python? ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=https://github.com/bjorn/tiled/archive/v0.11.0/tiled-0.11.0.tar.gz
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	l10n	714aaf78929eade946da5eaff7d2001a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	006fb3ff3b8a9aa58f251f2312836cdf	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	l10n	714aaf78929eade946da5eaff7d2001a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
 _md5_=1ca033964c937145c49d47f723ba10fb
