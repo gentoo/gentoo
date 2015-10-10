@@ -17,7 +17,7 @@ HOMEPAGE="http://kramdown.gettalong.org/"
 LICENSE="MIT"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="latex"
 
 LATEX_DEPS="latex? ( dev-texlive/texlive-latex dev-texlive/texlive-latexextra )"
