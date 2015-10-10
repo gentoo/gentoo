@@ -1,0 +1,8 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Fabian Groffen <grobian@gentoo.org> (30 Sep 2012)
+# Requires XQuartz, since Apple dropped much of X-support in 10.8
+# (a.k.a. Mountain Lion), bug #431182
+<=media-libs/opengl-apple-4.9999

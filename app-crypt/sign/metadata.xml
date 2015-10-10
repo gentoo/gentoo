@@ -6,11 +6,6 @@
 	<name>Alice Ferrazzi</name>
 	<description>Assign bugs to me.</description>
 </maintainer>
-<maintainer>
-	<email>mrueg@gentoo.org</email>
-	<name>Manuel Rüger</name>
-	<description>CC him on bugs.</description>
-</maintainer>
 <longdescription>
 sign is a file signing and signature verification utility. It's main purpose is
 to be a simple and convenient extension to a tar/gz/bzip2 line of tools to check
