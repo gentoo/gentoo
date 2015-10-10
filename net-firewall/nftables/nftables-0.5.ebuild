@@ -4,16 +4,16 @@
 
 EAPI=5
 
-inherit autotools linux-info
+inherit autotools linux-info eutils
 
 DESCRIPTION="Linux kernel (3.13+) firewall, NAT and packet mangling tools"
 HOMEPAGE="http://netfilter.org/projects/nftables/"
+SRC_URI="http://git.netfilter.org/nftables/snapshot/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="debug gmp +readline"
-SRC_URI="http://git.netfilter.org/nftables/snapshot/v${PV}.tar.gz -> ${P}.tar.gz"
 
 RDEPEND=">=net-libs/libmnl-1.0.3
 	>=net-libs/libnftnl-1.0.5

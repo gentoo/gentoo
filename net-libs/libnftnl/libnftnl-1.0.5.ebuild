@@ -4,16 +4,16 @@
 
 EAPI=5
 
-inherit base linux-info toolchain-funcs
+inherit base linux-info toolchain-funcs eutils
 
 DESCRIPTION="Netlink API to the in-kernel nf_tables subsystem"
 HOMEPAGE="http://netfilter.org/projects/nftables/"
+SRC_URI="http://netfilter.org/projects/${PN}/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/4"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="examples json static-libs test xml"
-SRC_URI="http://netfilter.org/projects/${PN}/files/${P}.tar.bz2"
 
 RDEPEND=">=net-libs/libmnl-1.0.0
 	xml? ( >=dev-libs/mini-xml-2.6 )
