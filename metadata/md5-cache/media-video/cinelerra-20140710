@@ -10,4 +10,4 @@ RDEPEND=media-libs/a52dec:= media-libs/faac:= media-libs/faad2:= >=media-libs/fr
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ssuominen/cinelerra-20140710.tar.xz
 _eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=d94a9a4c3d37efe28f7cb8035ab3587e
+_md5_=80c02761b015dde629776bd034d57196

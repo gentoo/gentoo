@@ -10,4 +10,4 @@ RDEPEND=>=sys-libs/ncurses-5.1 virtual/jpeg:0 X? ( x11-libs/libFS x11-libs/libXm
 SLOT=0
 SRC_URI=http://dl.bytesex.org/releases/xawtv/xawtv-3.95.tar.gz X? ( http://dl.bytesex.org/releases/tv-fonts/tv-fonts-1.1.tar.bz2 ) mirror://gentoo/xawtv-patches-4.tar.bz2
 _eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	font	cd7790315ca5b8c505e1e0513df6acce	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=e49607bb269cbdf259ba507497a925f6
+_md5_=d3d58d79be74aac9367c46d2d37abf35
