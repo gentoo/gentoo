@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils
 
 DESCRIPTION="Very fast and lightweight still powerful window manager for X"
@@ -21,8 +21,8 @@ RDEPEND="xpm? ( x11-libs/libXpm )
 	x11-libs/libXau
 	x11-libs/libXdmcp
 	truetype? ( x11-libs/libXft )
-	png? ( media-libs/libpng )
-	jpeg? ( virtual/jpeg )
+	png? ( media-libs/libpng:= )
+	jpeg? ( virtual/jpeg:= )
 	bidi? ( dev-libs/fribidi )
 	dev-libs/expat"
 DEPEND="${RDEPEND}
@@ -49,18 +49,15 @@ src_install() {
 	dodir /usr/share/man
 	emake BINDIR="${D}/usr/bin" SYSCONF="${D}/etc" \
 		MANDIR="${D}/usr/share/man" install
-	rm "${D}"/etc/system.jwmrc
 
-	echo "#!/bin/sh" > jwm
-	echo "exec /usr/bin/jwm" >> jwm
-	exeinto /etc/X11/Sessions
-	doexe jwm
+	make_wrapper "${PN}" "/usr/bin/${PN}" "" "" "/etc/X11/Sessions"
 
 	dodoc README.md example.jwmrc ChangeLog
 }
 
 pkg_postinst() {
-	einfo "Put an appropriate configuration file in /etc/system.jwmrc"
-	einfo "or in ~/.jwmrc."
+	einfo "JWM can be configured system-wide with ${EROOT}/etc/system.jwmrc"
+	einfo "or per-user by creating a configuration file in ~/.jwmrc"
+	einfo
 	einfo "An example file can be found in ${EROOT}/usr/share/doc/${PF}/"
 }
