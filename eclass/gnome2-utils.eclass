@@ -15,7 +15,7 @@
 #  * GConf schemas management
 #  * scrollkeeper (old Gnome help system) management
 
-inherit multilib
+inherit eutils multilib
 
 case "${EAPI:-0}" in
 	0|1|2|3|4|5) ;;
@@ -431,7 +431,7 @@ gnome2_gdk_pixbuf_update() {
 	fi
 
 	ebegin "Updating gdk-pixbuf loader cache"
-	local tmp_file=$(mktemp -t tmp.XXXXXXXXXX_gdkpixbuf)
+	local tmp_file=$(emktemp)
 	${updater} 1> "${tmp_file}" &&
 	chmod 0644 "${tmp_file}" &&
 	cp -f "${tmp_file}" "${EROOT}usr/$(get_libdir)/gdk-pixbuf-2.0/2.10.0/loaders.cache" &&

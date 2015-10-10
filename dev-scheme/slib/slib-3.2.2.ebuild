@@ -31,7 +31,7 @@ INSTALL_DIR="/usr/share/slib/"
 
 _fix_txi_file() {
 	local inplace_filename="${1}"
-	local tempfile="$(mktemp)"
+	local tempfile="$(emktemp)"
 	awk -f "${FILESDIR}"/slib-3.2.2-fix-texinfo.awk < "${inplace_filename}" > "${tempfile}"
 	mv "${tempfile}" "${inplace_filename}" || die
 }

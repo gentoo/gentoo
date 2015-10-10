@@ -164,7 +164,7 @@ UNOPKG_BINARY="/usr/lib64/openoffice/program/unopkg"
 office-ext-r1_add_extension() {
 	debug-print-function ${FUNCNAME} "$@"
 	local ext=$1
-	local tmpdir=$(mktemp -d --tmpdir="${T}")
+	local tmpdir=$(emktemp -d)
 
 	debug-print "${FUNCNAME}: ${UNOPKG_BINARY} add --shared \"${ext}\""
 	ebegin "Adding office extension: \"${ext}\""

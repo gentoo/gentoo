@@ -22,8 +22,7 @@ IUSE=""
 CDEPEND="dev-libs/beecrypt
 	net-firewall/iptables
 	net-misc/vconfig
-	sys-apps/iproute2
-	|| ( >=sys-apps/coreutils-6.10-r1 sys-apps/mktemp )"
+	sys-apps/iproute2"
 
 DEPEND=">=dev-libs/dietlibc-0.33_pre20110403
 	${CDEPEND}"

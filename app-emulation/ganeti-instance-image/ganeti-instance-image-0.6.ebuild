@@ -25,7 +25,6 @@ IUSE=""
 DEPEND=""
 RDEPEND="app-arch/dump
 	>=app-emulation/ganeti-2.0.3
-	|| ( >=sys-apps/coreutils-6.10-r1 sys-apps/mktemp )
 	app-emulation/qemu
 	sys-apps/util-linux
 	sys-fs/multipath-tools
