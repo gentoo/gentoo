@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	# Fix wrong process kill, bug #268142
 	sed "s:killall lt-timeout-server:killall timeout-server:" \
-		-i test/timeout.sh || die "sed 1 failed"
+		-i test/timeout.sh || die "sed 1 failed"
 
 	# Do not mess with CFLAGS
 	sed 's/-ggdb -O0//' -i configure.in configure || die "sed 2 failed"

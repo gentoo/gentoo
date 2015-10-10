@@ -32,7 +32,7 @@ S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	# Fix for "warning: jobserver unavailable: using -j1."
-	sed -i -e 's:make -C:$(MAKE) -C:' Makefile || die
+	sed -i -e 's:make -C:$(MAKE) -C:' Makefile || die
 }
 
 src_install() {

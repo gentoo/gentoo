@@ -1,5 +1,5 @@
 From 84a32e9cee2a70c0ec6ef58c1be279fed84a9a53 Mon Sep 17 00:00:00 2001
-From: Gunnar FarnebÃ¤ck <gunnar@lysator.liu.se>
+From: Gunnar Farnebäck <gunnar@lysator.liu.se>
 Date: Thu, 13 Jun 2013 18:45:03 +0000
 Subject: Avoid crashing due to registering an invalid loss move reason.
 

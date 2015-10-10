@@ -5,7 +5,7 @@ Samuli Suominen (17 Nov 2012)
  * Refresh the patch against libmikmod 3.2.0 release since it didn't make it upstream
    $ wget http://www.libsdl.org/projects/SDL_mixer/release/SDL_mixer-1.2.12.tar.gz
    $ tar -vzxf SDL_mixer-1.2.12.tar.gz (or "tar xf" with GNU tar)
-   $ unzip libmikmod-3.1.12.zip
+   $ unzip libmikmod-3.1.12.zip
    $ ls -l libmikmod-3.1.12-loopingvolume-fix.diff
 
 --- playercode/mplayer.c

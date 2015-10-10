@@ -62,7 +62,7 @@ src_install() {
 	pushd bin > /dev/null
 	cp "${FILESDIR}"/redcsl "${FILESDIR}"/csl . || die
 	sed -e "s/lib/${lib}/" -i redcsl || die
-	sed -e "s/lib/${lib}/" -i csl || die
+	sed -e "s/lib/${lib}/" -i csl || die
 	dobin redcsl csl
 	popd > /dev/null
 
@@ -77,7 +77,7 @@ src_install() {
 	dosym /usr/share/${PN}/doc /usr/${lib}/${PN}/${PN}.doc
 	if use X; then
 		doins -r ${PN}.fonts
-		mv "${D}"usr/share/${PN}/${PN}.fonts "${D}"usr/share/${PN}/fonts || die
+		mv "${D}"usr/share/${PN}/${PN}.fonts "${D}"usr/share/${PN}/fonts || die
 		dosym /usr/share/${PN}/fonts /usr/${lib}/${PN}/${PN}.fonts
 	fi
 	popd > /dev/null

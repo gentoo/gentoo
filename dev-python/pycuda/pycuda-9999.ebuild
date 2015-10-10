@@ -53,7 +53,7 @@ python_configure() {
 	local myopts=()
 	use opengl && myopts+=( --cuda-enable-gl )
 
-	mkdir "${BUILD_DIR}" || die
+	mkdir "${BUILD_DIR}" || die
 	cd "${BUILD_DIR}" || die
 	[[ -e ./siteconf.py ]] && rm -f ./siteconf.py
 	"${EPYTHON}" "${S}"/configure.py \

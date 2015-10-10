@@ -8,7 +8,7 @@ Content-Transfer-Encoding: 8bit
 
 Current libiberty md5 code triggers these warnings with gcc-4.7.1 for me:
 
-libiberty/md5.c: In function âmd5_finish_ctxâ:
+libiberty/md5.c: In function ‘md5_finish_ctx’:
 libiberty/md5.c:117:3: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
 libiberty/md5.c:118:3: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
 

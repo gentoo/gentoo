@@ -21,7 +21,7 @@ DEPEND="${RDEPEND}"
 RESTRICT="strip"
 
 src_prepare() {
-	sed -i -e "s/-O3 -fomit-frame-pointer/${CFLAGS}/" makefile  || die
+	sed -i -e "s/-O3 -fomit-frame-pointer/${CFLAGS}/" makefile || die
 }
 
 src_compile() {

@@ -40,7 +40,7 @@ src_prepare() {
 		-e '/Encoding/d' \
 		-e '/Categories/s:Application;::' \
 		-e '/Icon/s:.png::' \
-		data/alltray.desktop{,.in} || die
+		data/alltray.desktop{,.in} || die
 
 	vala_src_prepare
 	sed -i -e '/AC_PATH_PROG/s:valac:${VALAC}:g' configure.ac || die

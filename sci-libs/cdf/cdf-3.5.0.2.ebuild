@@ -114,7 +114,7 @@ src_install() {
 	fi
 
 	if use java; then
-		cd cdfjava || die
+		cd cdfjava || die
 		dolib.so jni/libcdfNativeLibrary.so.${PV_SO}
 		dosym libcdfNativeLibrary.so.${PV_SO} \
 			/usr/$(get_libdir)/libcdfNativeLibrary.so

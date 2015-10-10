@@ -30,7 +30,7 @@ RESTRICT="test"
 
 # Tests still hang
 python_test() {
-	cd tests || die
+	cd tests || die
 	"${PYTHON}" "${S}"/tests/tlstest.py client localhost:4443 . || die
 	"${PYTHON}" "${S}"/tests/tlstest.py server localhost:4442 . || die
 }

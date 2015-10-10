@@ -25,7 +25,7 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/CMT/${CMT_PV}"
 
 src_configure() {
-	cd "${S}"/mgr || die
+	cd "${S}"/mgr || die
 	./INSTALL || die
 	source setup.sh
 }

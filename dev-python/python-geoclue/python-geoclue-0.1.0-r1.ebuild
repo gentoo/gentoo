@@ -32,6 +32,6 @@ python_prepare_all() {
 
 python_test() {
 	VIRTUALX_COMMAND="${PYTHON}"
-	cd "${BUILD_DIR}" || die
+	cd "${BUILD_DIR}" || die
 	virtualmake "${S}"/tests/test.py
 }

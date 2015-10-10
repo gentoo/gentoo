@@ -36,7 +36,7 @@ src_install() {
 	# db files shouldn't be executable
 	find "${ED}"/usr/share/balbes/BALBES_0.0.1/ \
 		-type f \
-		-exec chmod 664 '{}' \; || die
+		-exec chmod 664 '{}' \; || die
 	dosym ../../ccp4/data/monomers /usr/share/balbes/BALBES_0.0.1/dic
 
 	cat >> "${T}"/20balbes <<- EOF

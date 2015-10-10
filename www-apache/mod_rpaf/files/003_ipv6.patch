@@ -1,6 +1,6 @@
 Description: ipv6 fixes
 Author: Piotr Roszatycki <dexter@debian.org>
-Reviewed-by: Sergey B Kirpichev <skirpichev@gmail.com>
+Reviewed-by: Sergey B Kirpichev <skirpichev@gmail.com>
 Bug-Debian: http://bugs.debian.org/726529
 
 ---

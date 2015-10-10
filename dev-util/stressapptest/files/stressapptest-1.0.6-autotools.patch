@@ -10,7 +10,7 @@ Content-Transfer-Encoding: 8bit
 * Correctly use autoconf host rather than target.
 * Use autoconf host_os.
 * Warn rather than error on unknown configs.
-* Add --disable-default-optimizations to avoid forced flags.
+* Add --disable-default-optimizations to avoid forced flags.
 * Fix manfile install
 
 
