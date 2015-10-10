@@ -23,7 +23,7 @@ SRC_URI="https://github.com/rspec/${PN}/archive/v${PV}.tar.gz -> ${P}-git.tgz"
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~hppa"
 IUSE="highlight"
 
 SUBVERSION="$(get_version_component_range 1-2)"
