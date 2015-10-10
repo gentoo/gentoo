@@ -9,4 +9,4 @@ RDEPEND=>=dev-python/pyxml-0.8.4 sci-libs/monomer-db
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=ftp://ftp.ccp4.ac.uk/ccp4/6.1.3/ccp4-6.1.3-balbesdb-10-11-08.tar.gz
-_md5_=469189afac6446dcb3e2b42d4064b91c
+_md5_=f943394fcf7efd2a7bbb1eb3692f3a46

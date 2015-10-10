@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=app-shells/bash app-cdr/cdrdao app-cdr/dvd+rw-tools media-libs/flac || ( dev-libs/libcdio-paranoia media-sound/cdparanoia ) media-sound/lame || ( media-sound/mpg123 media-sound/mpg321 ) media-sound/normalize media-sound/vorbis-tools virtual/cdrtools virtual/eject
 SLOT=0
 SRC_URI=http://bashburn.dose.se/index.php?s=file_download&id=25 -> BashBurn-3.1.0.tar.gz
-_md5_=b6a1c5433e332a6f123969e00441d32b
+_md5_=280f7e3ae2bbe736a550575c6ee7e0b3

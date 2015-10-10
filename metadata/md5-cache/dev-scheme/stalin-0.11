@@ -10,4 +10,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=ftp://ftp.ecn.purdue.edu/qobi/stalin-0.11.tgz
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=b6bc7c9c26f718f7987fb84c7ad588ff
+_md5_=f828195a9e3c8041055a93ffe6f07b9e

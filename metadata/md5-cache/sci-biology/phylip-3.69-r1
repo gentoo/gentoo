@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libXaw
 SLOT=0
 SRC_URI=http://evolution.gs.washington.edu/phylip/download/phylip-3.69.tar.gz
 _eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=43c11f272099656e424226b2c04c319c
+_md5_=fb82491d16d5f2daf7dbdac4f7a7003f
