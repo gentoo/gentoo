@@ -3,7 +3,8 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+
+PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
 
 inherit distutils-r1 flag-o-matic
 
@@ -11,7 +12,11 @@ MY_PN=pyOpenSSL
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Python interface to the OpenSSL library"
-HOMEPAGE="http://pyopenssl.sourceforge.net/ https://launchpad.net/pyopenssl https://pypi.python.org/pypi/pyOpenSSL"
+HOMEPAGE="
+	http://pyopenssl.sourceforge.net/
+	https://launchpad.net/pyopenssl
+	https://pypi.python.org/pypi/pyOpenSSL
+"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
@@ -42,7 +47,7 @@ python_test() {
 	esetup.py test
 
 	# https://bugs.launchpad.net/pyopenssl/+bug/1237953
-	rm -rf tmp* *.key *.pem
+	rm -rf tmp* *.key *.pem || die
 }
 
 python_install_all() {
