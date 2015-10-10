@@ -1117,6 +1117,9 @@ python_fix_shebang() {
 python_export_utf8_locale() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	# If the locale program isn't available, just return.
+	type locale >/dev/null || return 0
+
 	if [[ $(locale charmap) != UTF-8 ]]; then
 		if [[ -n ${LC_ALL} ]]; then
 			ewarn "LC_ALL is set to a locale with a charmap other than UTF-8."
