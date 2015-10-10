@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>python</herd>
-<longdescription>
+	<herd>python</herd>
+	<longdescription>
 PLY is a Python-only implementation of the popular compiler construction
 tools lex and yacc. The implementation borrows ideas from a number of
 previous efforts; most notably John Aycock's SPARK toolkit. However,
@@ -11,8 +11,8 @@ the C version of lex and yacc. The other significant feature of PLY is
 that it provides extensive input validation and error reporting--much
 more so than other Python parsing tools.
 </longdescription>
-<longdescription lang="ja">
+	<longdescription lang="ja">
 PLYはLexとYaccの有名なコンパイラ・コンストラクション・ツールのPython言語実装です
-。この実装は以前の試みから幾つものアイディアを借りています。そのほとんどがJohn AycockのSPARKツールキットからです。しかしながら、実装の全体像はC言語によるLexとYaccにより近いモデルです。PLYの他の重要点は幅広い入力バリデーションとエラー報告を>提供する点です。 -- その二点は他のPython言語パーサーより優れています。
+。この実装は以前の試みから幾つものアイディアを借りています。そのほとんどがJohn AycockのSPARKツールキットからです。しかしながら、実装の全体像はC言語によるLexとYaccにより近いモデルです。PLYの他の重要点は幅広い入力バリデーションとエラー報告を&gt;提供する点です。 -- その二点は他のPython言語パーサーより優れています。
 </longdescription>
 </pkgmetadata>
