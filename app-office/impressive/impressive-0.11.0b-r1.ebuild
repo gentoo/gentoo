@@ -35,7 +35,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 S=${WORKDIR}/${MY_PN}-${PV}
 
-src_preparep() {
+src_prepare() {
 	sed \
 		-e 's:tostring:tobytes:g' \
 		-i impressive.py || die
