@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~arm ~sparc x86"
 IUSE="xattr"
 
 RDEPEND="dev-libs/boost:=
-	dev-libs/openssl:=
+	dev-libs/openssl:0
 	>=dev-libs/rlog-1.4
 	>=sys-fs/fuse-2.7.0
 	sys-libs/zlib"
