@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="wxWinLL-3"
 SLOT="3.0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm hppa ~ia64 ~ppc ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
 IUSE="cairo examples libnotify opengl"
 
 RDEPEND="
