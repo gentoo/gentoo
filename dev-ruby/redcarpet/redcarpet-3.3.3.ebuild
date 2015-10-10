@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/vmg/redcarpet"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/nokogiri )"
