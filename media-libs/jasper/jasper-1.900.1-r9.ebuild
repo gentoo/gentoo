@@ -45,6 +45,11 @@ PATCHES=(
 
 DOCS=( NEWS README doc/. )
 
+src_prepare() {
+	chmod -R o-w "${S}" || die
+	autotools-multilib_src_prepare
+}
+
 src_configure() {
 	local myeconfargs=(
 		$(use_enable jpeg libjpeg)
