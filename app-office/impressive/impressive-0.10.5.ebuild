@@ -21,6 +21,7 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${PYTHON_DEPS}
+	!>=dev-python/pillow-3.0.0
 	app-text/pdftk
 	virtual/python-imaging[${PYTHON_USEDEP}]
 	dev-python/pygame[${PYTHON_USEDEP}]

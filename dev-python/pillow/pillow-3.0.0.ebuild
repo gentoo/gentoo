@@ -66,6 +66,11 @@ python_prepare_all() {
 		sed -i -e 's:feature.jpeg2000 =:& None #:' setup.py || die
 	fi
 
+	sed \
+		-e "/required/s:=.*:= set():g" \
+		-e "/if feature in/s:'jpeg', 'libz'::g" \
+		-i setup.py || die
+
 	distutils-r1_python_prepare_all
 }
 
