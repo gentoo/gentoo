@@ -15,7 +15,6 @@ SLOT="2"
 KEYWORDS="~amd64 ~x86"
 
 IUSE="examples cpu_flags_x86_sse2 tbb"
-REQUIRED_USE="cpu_flags_x86_sse2"
 
 RDEPEND="dev-lang/perl"
 DEPEND="${RDEPEND}
@@ -26,6 +25,13 @@ S="${WORKDIR}/${PN}2-${PV}"
 
 DOCS=( AUTHORS NEWS TUTORIAL )
 HTML_DOCS=( doc/{manual.html,style.css} )
+
+pkg_pretend() {
+	if ! use cpu_flags_x86_sse2 ; then
+		eerror "This package requires a CPU supporting the SSE2 instruction set."
+		die "SSE2 support missing"
+	fi
+}
 
 src_compile() {
 	emake \
