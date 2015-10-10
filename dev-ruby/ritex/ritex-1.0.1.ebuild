@@ -15,7 +15,7 @@ HOMEPAGE="http://masanjin.net/ritex/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
 ruby_add_rdepend "dev-ruby/racc"
