@@ -4,11 +4,11 @@ DESCRIPTION=Yet-another-markdown-parser but fast, pure Ruby, using a strict synt
 EAPI=5
 HOMEPAGE=http://kramdown.rubyforge.org/
 IUSE=latex test elibc_FreeBSD ruby_targets_ruby19 ruby_targets_ruby20 ruby_targets_ruby21 doc test test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~ppc64 ~x86
 LICENSE=MIT
 RDEPEND=latex? ( dev-texlive/texlive-latex dev-texlive/texlive-latexextra ) ruby_targets_ruby19? ( dev-ruby/prawn:2[ruby_targets_ruby19] dev-ruby/prawn-table[ruby_targets_ruby19] >=dev-ruby/rouge-1.8[ruby_targets_ruby19] >=dev-ruby/itextomml-1.5[ruby_targets_ruby19] >=dev-ruby/coderay-1.0.0[ruby_targets_ruby19] >=dev-ruby/ritex-1.0[ruby_targets_ruby19] >=dev-ruby/stringex-1.5.1[ruby_targets_ruby19] ) ruby_targets_ruby20? ( dev-ruby/prawn:2[ruby_targets_ruby20] dev-ruby/prawn-table[ruby_targets_ruby20] >=dev-ruby/rouge-1.8[ruby_targets_ruby20] >=dev-ruby/itextomml-1.5[ruby_targets_ruby20] >=dev-ruby/coderay-1.0.0[ruby_targets_ruby20] >=dev-ruby/ritex-1.0[ruby_targets_ruby20] >=dev-ruby/stringex-1.5.1[ruby_targets_ruby20] ) ruby_targets_ruby21? ( dev-ruby/prawn:2[ruby_targets_ruby21] dev-ruby/prawn-table[ruby_targets_ruby21] >=dev-ruby/rouge-1.8[ruby_targets_ruby21] >=dev-ruby/itextomml-1.5[ruby_targets_ruby21] >=dev-ruby/coderay-1.0.0[ruby_targets_ruby21] >=dev-ruby/ritex-1.0[ruby_targets_ruby21] >=dev-ruby/stringex-1.5.1[ruby_targets_ruby21] ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_ruby20? ( virtual/rubygems[ruby_targets_ruby20] ) ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] )
 REQUIRED_USE=|| ( ruby_targets_ruby19 ruby_targets_ruby20 ruby_targets_ruby21 )
 SLOT=0
 SRC_URI=mirror://rubygems/kramdown-1.6.0.gem
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-utils-2	c059b30d6a4df7cf32e2c98c1da1c9b5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	ruby-fakegem	b34b8f1debda62e461897a3f85df97e4	ruby-ng	12af15f9116c054425934f3eec054899	ruby-utils	97c910cb6b087c64260df641a9b3de0c	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=7f9d7fa0067d0ffe827c5a0c4a4e163b
+_md5_=09dd45cd78d93b38bc8d29a2ec451d74
