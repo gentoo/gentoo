@@ -90,7 +90,8 @@ unset lo_xt
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 [[ ${PV} == *9999* ]] || \
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS=""
+# KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
@@ -99,16 +100,16 @@ COMMON_DEPEND="
 	>=app-text/hunspell-1.3.2-r3
 	app-text/mythes
 	>=app-text/libabw-0.1.0
-	>=app-text/libexttextcat-3.4.4
+	>=app-text/libexttextcat-3.2
 	>=app-text/libebook-0.1.1
 	>=app-text/libetonyek-0.1.2
 	app-text/liblangtag
 	>=app-text/libmspub-0.1.0
-	>=app-text/libmwaw-0.3.6
+	>=app-text/libmwaw-0.3.5
 	>=app-text/libodfgen-0.1.0
 	app-text/libwpd:0.10[tools]
 	app-text/libwpg:0.3
-	>=app-text/libwps-0.4.2
+	=app-text/libwps-0.4*
 	>=app-text/poppler-0.16:=[xpdf-headers(+),cxx]
 	>=dev-cpp/clucene-2.3.3.4-r2
 	=dev-cpp/libcmis-0.5*
@@ -117,7 +118,7 @@ COMMON_DEPEND="
 	dev-libs/expat
 	>=dev-libs/hyphen-2.7.1
 	>=dev-libs/icu-4.8.1.1:=
-	>=dev-libs/liborcus-0.9.0
+	=dev-libs/liborcus-0.7*
 	>=dev-libs/librevenge-0.0.1
 	>=dev-libs/nspr-4.8.8
 	>=dev-libs/nss-3.12.9
@@ -160,11 +161,7 @@ COMMON_DEPEND="
 		x11-libs/gdk-pixbuf[X]
 		>=x11-libs/gtk+-2.24:2
 	)
-	gtk3? (
-		dev-libs/glib:2
-		dev-libs/gobject-introspection
-		>=x11-libs/gtk+-3.8:3
-	)
+	gtk3? ( >=x11-libs/gtk+-3.8:3 )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
@@ -439,6 +436,9 @@ src_configure() {
 	# --enable-*-link: link to the library rather than just dlopen on runtime
 	# --enable-release-build: build the libreoffice as release
 	# --disable-fetch-external: prevent dowloading during compile phase
+	# --disable-gnome-vfs: old gnome virtual fs support
+	# --disable-kdeab: kde3 adressbook
+	# --disable-kde: kde3 support
 	# --disable-systray: quickstarter does not actually work at all so do not
 	#   promote it
 	# --enable-extension-integration: enable any extension integration support
@@ -465,8 +465,11 @@ src_configure() {
 		--disable-dependency-tracking \
 		--disable-epm \
 		--disable-fetch-external \
+		--disable-gnome-vfs \
 		--disable-gstreamer-0-10 \
 		--disable-report-builder \
+		--disable-kdeab \
+		--disable-kde \
 		--disable-online-update \
 		--disable-systray \
 		--with-alloc=$(use jemalloc && echo "jemalloc" || echo "system") \
