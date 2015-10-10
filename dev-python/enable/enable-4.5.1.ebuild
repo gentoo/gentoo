@@ -41,7 +41,10 @@ DEPEND="${RDEPEND}
 
 DISTUTILS_IN_SOURCE_BUILD=1
 
-PATCHES=( "${FILESDIR}"/${PN}-4.4.1-swig.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.4.1-swig.patch
+	"${FILESDIR}"/${P}-gcc-5.patch
+	)
 
 python_prepare_all() {
 	append-cflags -fno-strict-aliasing
