@@ -36,10 +36,6 @@ src_unpack() {
 	gunzip platon.f.gz xdrvr.c.gz || die
 }
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PV}-buffer-overflow.patch
-}
-
 src_compile() {
 	# easy to ICE, at least on gcc 4.3
 	strip-flags
