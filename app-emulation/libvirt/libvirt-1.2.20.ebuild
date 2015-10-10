@@ -71,6 +71,7 @@ RDEPEND="
 	audit? ( sys-process/audit )
 	avahi? ( >=net-dns/avahi-0.6[dbus] )
 	caps? ( sys-libs/libcap-ng )
+	firewalld? ( net-firewall/firewalld )
 	fuse? ( >=sys-fs/fuse-2.8.6 )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
 	iscsi? ( sys-block/open-iscsi )
@@ -103,12 +104,17 @@ RDEPEND="
 		>=net-firewall/iptables-1.4.10[ipv6]
 		net-misc/radvd
 		sys-apps/iproute2[-minimal]
-		firewalld? ( net-firewall/firewalld )
 	)
 	virtualbox? ( || ( app-emulation/virtualbox >=app-emulation/virtualbox-bin-2.2.0 ) )
 	wireshark-plugins? ( net-analyzer/wireshark:= )
-	xen? ( app-emulation/xen-tools app-emulation/xen )
-	udev? ( virtual/udev >=x11-libs/libpciaccess-0.10.9 )
+	xen? (
+		app-emulation/xen
+		app-emulation/xen-tools
+	)
+	udev? (
+		virtual/udev
+		>=x11-libs/libpciaccess-0.10.9
+	)
 	elibc_glibc? ( || ( >=net-libs/libtirpc-0.2.2-r1 <sys-libs/glibc-2.14 ) )"
 
 DEPEND="${RDEPEND}
