@@ -1,3 +1,7 @@
+Fixes missing tinythread.cpp when using TBB:
+
+ebwt_search.cpp:(.text+0x91bb): undefined reference to `tthread::thread::join()'
+
 --- bowtie-1.1.2/Makefile
 +++ bowtie-1.1.2/Makefile
 @@ -106,10 +106,7 @@
