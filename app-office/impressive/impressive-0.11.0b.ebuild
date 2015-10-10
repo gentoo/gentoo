@@ -35,6 +35,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 S=${WORKDIR}/${MY_PN}-${PV}
 
+src_preparep() {
+	sed \
+		-e 's:tostring:tobytes:g' \
+		-i impressive.py || die
+}
+
 src_install() {
 	python_foreach_impl python_doscript ${PN}.py
 
