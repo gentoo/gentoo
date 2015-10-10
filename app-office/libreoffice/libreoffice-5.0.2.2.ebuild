@@ -260,7 +260,7 @@ REQUIRED_USE="
 "
 
 CHECKREQS_MEMORY="512M"
-CHECKREQS_DISK_BUILD="6G"
+if [[ ${MERGE_TYPE} != binary ]] ; then CHECKREQS_DISK_BUILD="6G" ; fi
 
 pkg_pretend() {
 	local pgslot
