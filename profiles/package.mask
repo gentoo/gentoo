@@ -268,10 +268,6 @@ app-portage/lightweight-cvs-toolkit
 # Masked for removal in 30 days.
 kde-misc/socket-sentry
 
-# Matt Turner <mattst88@gentoo.org> (28 Aug 2015)
-# Masked for removal in 30 days. Bug 482304
-x11-libs/libXevie
-
 # Hans de Graaff <graaff@gentoo.org> (28 Aug 2015)
 # Masked for removal in 30 days.
 # Only needed for ruby18 which has been removed a long time
