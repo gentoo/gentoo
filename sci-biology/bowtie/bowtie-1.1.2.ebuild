@@ -24,9 +24,6 @@ DOCS=( AUTHORS NEWS TUTORIAL doc/README )
 HTML_DOCS=( doc/{manual.html,style.css} )
 
 src_prepare() {
-	# Suppress useless -Wall pollution
-	sed -i 's/\-Wall/\-Wno-enum-compare/g' Makefile || die
-
 	# always include tinythread.cpp
 	epatch "${FILESDIR}/${P}-tbb-tinythread-missing.patch"
 }
