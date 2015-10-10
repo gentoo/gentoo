@@ -6,7 +6,7 @@
 	<name>Michael Weber</name>
 </maintainer>
 <longdescription>Aget fetches HTTP URLs in a manner similar to wget, but segments the retrieval into multiple parts to increase download speed. It can be many times as fast as wget in some circumstances.</longdescription>
-<longdescription lang="ja">Aget ã¯ wget é¢¨ã®æ¯èãã§ URL ä¸ãã HTTP 
-çµç±ã§åãå¯ãã¾ãããç°ãªãç¹ã¨ãã¦ã¯ãã¦ã³ã­ã¼ãã®ã¹ãã¼ãã¢ããã®ããå¯¾è±¡ãåå²ãã¾ããåå²ãã¦ã 
-wget ã¨å¤ãããªãå ´åãããã¾ãã</longdescription>
+<longdescription lang="ja">
+Aget は wget 風の振舞いで URL 上から HTTP 経由で取り寄せますが、異なる点としてはダウンロードのスピードアップのため対象を分割します。分割しても wget と変わらない場合もあります。
+</longdescription>
 </pkgmetadata>

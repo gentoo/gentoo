@@ -38,7 +38,7 @@ src_compile() {
 }
 
 src_install() {
-	cd "${WORKDIR}/${P}" || die
+	cd "${WORKDIR}/${P}" || die
 
 	mv exe/font* fonts || die "Font move failed."
 	mv exe/factor exe/factor-${PN} || die "Renaming factor failed."

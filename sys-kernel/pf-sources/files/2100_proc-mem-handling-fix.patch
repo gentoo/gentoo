@@ -10,7 +10,7 @@ From: Linus Torvalds <torvalds@linux-foundation.org>
 
 commit e268337dfe26dfc7efd422a804dbb27977a3cccc upstream.
 
-JÃ¼ri Aedla reported that the /proc/<pid>/mem handling really isn't very
+Jüri Aedla reported that the /proc/<pid>/mem handling really isn't very
 robust, and it also doesn't match the permission checking of any of the
 other related files.
 
@@ -29,7 +29,7 @@ addresses will also have changed as part of the execve.  So you cannot
 actually usefully access the fd across a VM change simply because all
 the offsets for IO would have changed too.
 
-Reported-by: JÃ¼ri Aedla <asd@ut.ee>
+Reported-by: Jüri Aedla <asd@ut.ee>
 Cc: Al Viro <viro@zeniv.linux.org.uk>
 Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
 Signed-off-by: Greg Kroah-Hartman <gregkh@suse.de>

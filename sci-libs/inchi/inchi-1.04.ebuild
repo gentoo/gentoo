@@ -67,7 +67,7 @@ src_install() {
 	fi
 	dobin "${S}"/INCHI/gcc/inchi-1/inchi-1
 	cd "${S}/INCHI_API/gcc_so_makefile/result" || die
-	rm *gz || die
+	rm *gz || die
 	dolib.so lib*so*
 	use static-libs && dolib.a lib*a
 	doheader ../../inchi_main/inchi_api.h

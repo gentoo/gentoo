@@ -46,7 +46,7 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS BUG-REPORTING HACKING NEWS README || die
+	dodoc AUTHORS BUG-REPORTING HACKING NEWS README || die
 }
 
 pkg_postinst() {

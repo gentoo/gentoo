@@ -43,7 +43,7 @@ src_configure() {
 }
 
 src_test() {
-	cp "${S}"/TESTS/testA.mtx "${BUILD_DIR}"/TESTS || die
+	cp "${S}"/TESTS/testA.mtx "${BUILD_DIR}"/TESTS || die
 	autotools-utils_src_test
 }
 

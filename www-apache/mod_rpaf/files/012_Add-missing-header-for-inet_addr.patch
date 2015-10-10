@@ -1,4 +1,4 @@
-Description: Add missing header for inet_addr
+Description: Add missing header for inet_addr
 Author: Sergey B Kirpichev <skirpichev@gmail.com>
 
 ---

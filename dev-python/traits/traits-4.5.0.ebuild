@@ -22,7 +22,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND} )"
 
 python_prepare_all() {
-	sed -i -e "s/'-O3'//g" setup.py || die
+	sed -i -e "s/'-O3'//g" setup.py || die
 	distutils-r1_python_prepare_all
 }
 

@@ -134,7 +134,7 @@ src_configure() {
 
 src_test() {
 	source "${EPREFIX}/etc/profile.d/40ccp4.setup.sh"
-	mkdir "${T}"/coot_test || die
+	mkdir "${T}"/coot_test || die
 
 	export COOT_STANDARD_RESIDUES="${S}/standard-residues.pdb"
 	export COOT_SCHEME_DIR="${S}/scheme/"

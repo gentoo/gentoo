@@ -38,7 +38,7 @@ src_prepare() {
 	# fix dependency on ncurses[tinfo], #459484
 	sed \
 		-e "s:\(ncurses\):\1 tinfo:g" \
-		-i configure.in || die
+		-i configure.in || die
 
 	eautoreconf
 

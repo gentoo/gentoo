@@ -37,14 +37,14 @@ src_prepare() {
 	python_convert_shebangs 2 mscript.py
 
 	# the "maitch" build system is complete junk. let's stab it...
-	sed -i -e 's:TerminalEmulator:System;&:' roxterm.desktop || die
+	sed -i -e 's:TerminalEmulator:System;&:' roxterm.desktop || die
 	sed -i -e '/ctx.install_doc/s:COPYING COPYING-LGPL ::' mscript.py || die
 	sed -i -e "/CFLAGS/s:-O2 -g:${CFLAGS}:" {maitch,mscript}.py || die
 	sed -i \
 		-e 's:gcc:${CC}:' \
 		-e "/LDFLAGS/s:'':'${LDFLAGS}':" \
 		-e 's:--mode=link:--mode=link --tag=CC:' \
-		maitch.py || die
+		maitch.py || die
 }
 
 src_configure() {

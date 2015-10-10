@@ -12,7 +12,7 @@ to be in ${PATH} and popen() passes the command to shell, just pass
 'systemd-ask-password' and let the shell find it.
 
 Fixes: https://bugzilla.samba.org/show_bug.cgi?id=10054
-Signed-off-by: MichaÅ GÃ³rny <mgorny@gentoo.org>
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
 ---
  mount.cifs.c |    4 ++--
  1 files changed, 2 insertions(+), 2 deletions(-)

@@ -7,7 +7,7 @@
 # Disable 32-bit parts of wine, bug #351436
 app-emulation/wine mono win32
 
-# Apr 28, 2008 SÃ©bastien Fabbro <bicatali@gentoo.org>
+# Apr 28, 2008 Sébastien Fabbro <bicatali@gentoo.org>
 # ifc masked
 sci-libs/acml ifc
 

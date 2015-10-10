@@ -28,7 +28,7 @@ src_prepare() {
 	sed -i -e 's:/etc/nikto.conf:/etc/nikto/nikto.conf:;
 	s:# EXECDIR=/usr/local/nikto:EXECDIR=/usr/share/nikto:;
 	s:# use LW2:use LW2:;
-	s:require "$CONFIGFILE{'\''PLUGINDIR'\''}/LW2.pm":# require "$CONFIGFILE{'\''PLUGINDIR'\''}/LW2.pm":;' nikto.pl || die
+	s:require "$CONFIGFILE{'\''PLUGINDIR'\''}/LW2.pm":# require "$CONFIGFILE{'\''PLUGINDIR'\''}/LW2.pm":;' nikto.pl || die
 }
 
 src_compile() { :; }

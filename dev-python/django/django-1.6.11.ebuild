@@ -89,7 +89,7 @@ python_install_all() {
 	bashcomp_alias ${PN}-admin django-admin.py
 
 	if use doc; then
-		rm -fr docs/_build/html/_sources || die
+		rm -fr docs/_build/html/_sources || die
 		local HTML_DOCS=( docs/_build/html/. )
 	fi
 

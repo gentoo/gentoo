@@ -169,8 +169,8 @@ src_install() {
 	done
 
 	cd ../share || die
-	mv -f * ../sbin || die
-	mv -f ../sbin/man . || die
+	mv -f * ../sbin || die
+	mv -f ../sbin/man . || die
 	cd .. || die
 
 	for x in mkimapdcert mkpop3dcert ; do

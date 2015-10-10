@@ -206,7 +206,7 @@ python_install_all() {
 
 	domenu "${HOME}"/.local/share/applications/*.desktop
 
-	find "${ED}"usr/share -type d -empty -delete || die
+	find "${ED}"usr/share -type d -empty -delete || die
 
 	cd "${ED}"/usr/share/calibre/fonts/liberation || die
 	local x

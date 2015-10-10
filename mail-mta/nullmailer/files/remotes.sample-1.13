@@ -1,7 +1,7 @@
 # Format is: HOST PROTOCOL [OPTIONS]
 # HOST = IP or DNS
 # PROTOCOL = smtp | qmtp
-# OPTIONS = [--port=NUMBER] [--user] [--pass] [--starttls | --ssl [--insecure] ]
+# OPTIONS = [--port=NUMBER] [--user] [--pass] [--starttls | --ssl [--insecure] ]
 #
 # Examples:
 # A standard SMTP server:

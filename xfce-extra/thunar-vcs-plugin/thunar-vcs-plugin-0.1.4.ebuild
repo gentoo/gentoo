@@ -48,7 +48,7 @@ src_prepare() {
 	# http://git.xfce.org/thunar-plugins/thunar-vcs-plugin/commit/?id=e87584f7b87627a322f6e41025e5e52d65ebb4d8
 	local lang
 	for lang in el eu ru ug uk; do
-		mv "${WORKDIR}"/${P}-${lang}.po po/${lang}.po || die
+		mv "${WORKDIR}"/${P}-${lang}.po po/${lang}.po || die
 	done
 	xfconf_src_prepare
 }

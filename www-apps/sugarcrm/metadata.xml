@@ -8,7 +8,7 @@
 	</maintainer>
 	<maintainer>
 		<email>maksbotan@gentoo.org</email>
-		<name>Maxim Koltsov</name>
+		<name>Maxim Koltsov</name>
 	</maintainer>
 	<use>
 		<flag name="json">Add JSON (JavaScript Object Notation) support</flag>
