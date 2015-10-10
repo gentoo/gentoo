@@ -36,6 +36,7 @@ pkg_setup() {
 src_prepare() {
 	sed -i ./src/couchdb/priv/Makefile.* -e 's|-Werror||g'
 	epatch "${FILESDIR}/${PV}-erlang-18.patch"
+	eautoreconf
 }
 
 src_configure() {
