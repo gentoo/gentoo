@@ -1050,7 +1050,7 @@ app-editors/pluma 1.8.0 1.8.1: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.0_pre20090420-r1: QEmacs is a very small but powerful UNIX editor
 app-editors/qwriter 0.1.9 0.1.9-r1: Advanced text editor with syntax highlighting
 app-editors/qxmledit 0.8.5 0.8.8.1: Qt4 XML Editor
-app-editors/retext 4.1.3 5.0.2 5.1.0 5.2.0 9999: Simple editor for Markdown and reStructuredText
+app-editors/retext 4.1.3 5.0.2 5.1.0 5.2.0 5.2.1 9999: Simple editor for Markdown and reStructuredText
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
 app-editors/scite 3.5.5 3.6.1: A very powerful editor for programmers
 app-editors/shed 1.12 1.13 1.15: Simple Hex EDitor
@@ -7312,7 +7312,7 @@ dev-python/peak-rules 0.5: Generic functions and business rules support systems
 dev-python/peewee 2.6.2 2.6.3: Small python ORM
 dev-python/pep8 1.4.5 1.5.6 1.5.7 1.6.1 1.6.2 1.6.2-r1: Python style guide checker
 dev-python/peppercorn 0.4-r1 0.5: A library for converting a token stream into a data structure for use in web form posts
-dev-python/pexpect 2.4 2.4-r1 3.0 3.3: Python module for spawning child applications and responding to expected patterns
+dev-python/pexpect 3.3: Python module for spawning child applications and responding to expected patterns
 dev-python/pgasync 2.01-r1: An asynchronous API to PostgreSQL for twisted
 dev-python/pgmagick 0.5.10 0.5.11: Yet another boost.python based wrapper for GraphicsMagick
 dev-python/pgpdump 1.5: PGP packet parser library
@@ -7327,7 +7327,7 @@ dev-python/pkipplib 0.07-r1: Pkipplib is a Python module which parses IPP reques
 dev-python/placefinder 0.3: Yahoo! BOSS PlaceFinder Python Client
 dev-python/platinfo 0.15.0-r1: Determines and returns consistent names for platforms
 dev-python/plumbum 1.5.0: A library for shell script-like programs in python
-dev-python/ply 3.4-r1 3.6-r1: Python Lex-Yacc library
+dev-python/ply 3.4-r1 3.6-r1 3.8: Python Lex-Yacc library
 dev-python/plyr 1.0.6: A python wrapper for Glyr
 dev-python/pmw 1.3.3-r2 2.0.0-r2 2.0.1: Toolkit for building high-level compound widgets in Python using the Tkinter module
 dev-python/polib 1.0.4: A library to manipulate gettext files (.po and .mo files)
