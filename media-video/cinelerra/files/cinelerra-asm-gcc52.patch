@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/show_bug.cgi?id=562208
+
+Index: cinelerra-20140710/quicktime/mmx.h
+===================================================================
+--- cinelerra-20140710.orig/quicktime/mmx.h
++++ cinelerra-20140710/quicktime/mmx.h
+@@ -102,7 +102,7 @@ typedef	union {
+  * are unused by Cinelerra CV.  Inspired by change found in
+  * <URL: http://hg.libsdl.org/SDL/file/32f0f603a0c8/src/video/mmx.h >
+  */
+-#if !defined(__clang__)
++#if 0
+ /*	Function to test if multimedia instructions are supported...
+ */
+ inline extern int
