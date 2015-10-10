@@ -284,6 +284,10 @@ src_configure() {
 
 	unset JAVA_HOME JDK_HOME CLASSPATH JAVAC JAVACFLAGS
 
+	# https://bugs.gentoo.org/show_bug.cgi?id=561500
+	ln -s "${FILESDIR}/TryXShmAttach.patch" || die
+	export DISTRIBUTION_PATCHES="TryXShmAttach.patch"
+
 	econf ${config} \
 		--with-openjdk-src-zip="${DISTDIR}/${OPENJDK_GENTOO_TARBALL}" \
 		--with-corba-src-zip="${DISTDIR}/${CORBA_GENTOO_TARBALL}" \
