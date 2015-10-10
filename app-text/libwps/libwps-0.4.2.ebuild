@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit base eutils
+inherit eutils
 
 DESCRIPTION="Microsoft Works file word processor format import filter library"
 HOMEPAGE="http://libwps.sourceforge.net/"
