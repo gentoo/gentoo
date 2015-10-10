@@ -1,4 +1,4 @@
-From: Renee Margaret McConahy <nepella <at> gmail.com>
+From: Renee Margaret McConahy <nepella@gmail.com>
 Subject: [PATCH v2] am: configure gpg at startup
 Newsgroups: gmane.comp.version-control.git
 Date: 2015-09-30 17:49:44 GMT (5 days, 14 hours and 45 minutes ago)
@@ -11,7 +11,7 @@ Perhaps git_gpg_config's functionality ought to be merged into
 git_default_config, but this is simpler and in keeping with the current
 practice.
 
-Signed-off-by: Renee Margaret McConahy <nepella <at> gmail.com>
+Signed-off-by: Renee Margaret McConahy <nepella@gmail.com>
 ---
 
  builtin/am.c | 13 ++++++++++++-
@@ -21,7 +21,7 @@ diff --git a/builtin/am.c b/builtin/am.c
 index 4f77e07..3bd4fd7 100644
 --- a/builtin/am.c
 +++ b/builtin/am.c
- <at>  <at>  -2208,6 +2208,17  <at>  <at>  enum resume_mode {
+@@ -2208,6 +2208,17 @@ enum resume_mode {
  	RESUME_ABORT
  };
 
@@ -39,7 +39,7 @@ index 4f77e07..3bd4fd7 100644
  int cmd_am(int argc, const char **argv, const char *prefix)
  {
  	struct am_state state;
- <at>  <at>  -2308,7 +2319,7  <at>  <at>  int cmd_am(int argc, const char **argv, const char *prefix)
+@@ -2308,7 +2319,7 @@ int cmd_am(int argc, const char **argv, const char *prefix)
  		OPT_END()
  	};
 
