@@ -12,7 +12,7 @@ SRC_URI="https://github.com/brndnmtthws/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-3 BSD LGPL-2.1 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="apcupsd audacious cmus curl debug eve hddtemp ical iconv imlib iostats
 	ipv6 irc lua-cairo lua-imlib lua-rsvg math moc mpd mysql nano-syntax
 	ncurses nvidia +portmon rss thinkpad truetype vim-syntax weather-metar

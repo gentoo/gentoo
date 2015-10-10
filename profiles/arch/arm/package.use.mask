@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Markus Meier <maekke@gentoo.org> (10 Oct 2015)
+# unkeyworded deps, bug #552330
+app-portage/g-sorcery bson
+
 # Ben de Groot <yngwin@gentoo.org> (03 May 2015)
 # media-libs/rubberband lacks arm keyword, bug 548446
 media-video/mpv rubberband
@@ -217,7 +221,7 @@ media-gfx/fim graphicsmagick svg
 
 # Markus Meier <maekke@gentoo.org> (04 Aug 2013)
 # Unkeyworded deps, bug #474026
-app-admin/conky lua-cairo lua-imlib xmms2 audacious moc
+app-admin/conky audacious cmus irc lua-cairo lua-imlib lua-rsvg moc xmms2
 
 # Sergey Popov <pinkbyte@gentoo.org> (30 Jul 2013)
 # Not tested

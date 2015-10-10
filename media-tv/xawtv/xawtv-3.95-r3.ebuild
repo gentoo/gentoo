@@ -76,6 +76,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}-libquicktime-compat.patch"
 	epatch "${FILESDIR}/${P}-pagemask-fix.patch"
 	epatch "${FILESDIR}/${P}-jpeg-7.patch"
+	epatch "${FILESDIR}/${P}-stdbool.patch"
 	eautoreconf
 }
 
