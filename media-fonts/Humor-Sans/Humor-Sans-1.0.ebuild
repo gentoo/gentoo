@@ -12,7 +12,7 @@ SRC_URI="http://www.antiyawn.com/uploads/${P}.ttf"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 S="${WORKDIR}"
 
