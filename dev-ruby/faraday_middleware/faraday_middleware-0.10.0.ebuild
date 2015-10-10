@@ -4,9 +4,9 @@
 
 EAPI=5
 
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby19 ruby20 ruby21 ruby22"
 
-RUBY_FAKEGEM_RECIPE_TEST="rspec"
+RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
@@ -36,15 +36,17 @@ ruby_add_rdepend "
 ruby_add_bdepend "test? (
 	dev-ruby/bundler
 	>=dev-ruby/multi_xml-0.5.3
+	>=dev-ruby/rack-cache-1.1
 	>=dev-ruby/simple_oauth-0.1
 	>=dev-ruby/hashie-1.2
 	>=dev-ruby/rash-0.3 )"
 
 all_ruby_prepare() {
-	sed -i -e '/\(cane\|simplecov\)/ s:^:#:' \
-		-e '/rspec/ s/>=/~>/' Gemfile || die
+	sed -i -e '/\(cane\|parallel\|simplecov\)/ s:^:#:' \
+		-e '/rspec/ s/>=/~>/' \
+		-e "/simple_oauth/ s/, '< 0.3'//" Gemfile || die
 }
 
 each_ruby_test() {
-	${RUBY} -S bundle exec rspec-2 spec || die
+	${RUBY} -S bundle exec rspec-3 spec || die
 }
