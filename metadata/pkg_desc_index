@@ -5466,7 +5466,7 @@ dev-perl/Exception-Class 1.370.0-r1 1.390.0: A module that allows you to declare
 dev-perl/Exception-Died 0.60.0-r1: Convert simple die into real exception object
 dev-perl/Exception-System 0.110.0-r1: Exception class for system or library calls
 dev-perl/Exception-Warning 0.40.100-r1: Convert simple warn into real exception object
-dev-perl/Expect 1.210.0-r1 1.320.0 1.320.0-r1: Expect for Perl
+dev-perl/Expect 1.210.0-r1 1.320.0-r1: Expect for Perl
 dev-perl/Exporter-Cluster 0.310.0-r1: Extension for easy multiple module imports
 dev-perl/Exporter-Lite 0.20.0-r1: Lightweight exporting of variables
 dev-perl/Exporter-Tiny 0.42.0: An exporter with the features of Sub::Exporter but only core dependencies
@@ -16460,13 +16460,13 @@ sys-cluster/keepalived 1.2.2-r4 1.2.9 1.2.15 1.2.16 1.2.18 1.2.19: A strong & ro
 sys-cluster/knem 1.1.1 9999: High-Performance Intra-Node MPI Communication
 sys-cluster/libccs 3.1.5 3.2.0: Cluster Configuration System Library
 sys-cluster/libccs-perl 3.1.5: Cluster Configuration System Library Perl-Bindings
-sys-cluster/libcircle 0.2.0_rc1: an API for distributing embarrassingly parallel workloads using self-stabilization
+sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1: an API for distributing embarrassingly parallel workloads using self-stabilization
 sys-cluster/libcman 3.1.5 3.2.0: Cluster Manager Library
 sys-cluster/libdlm 3.1.5 3.2.0: General-purpose Distributed Lock Manager Library
 sys-cluster/libfence 3.1.5 3.2.0: Cluster Fencing Library
 sys-cluster/liblogthread 3.1.5 3.2.0: Thread-Safe Syslog Logging Library
 sys-cluster/libqb 0.13.0 0.14.3 0.14.4 0.17.0 0.17.1: Library providing high performance logging, tracing, ipc, and poll
-sys-cluster/libquo 1.2 1.2.2 1.2.3: run-time tuning of process binding policies made easy
+sys-cluster/libquo 1.2 1.2.2 1.2.3 1.2.4: run-time tuning of process binding policies made easy
 sys-cluster/lspbs 1.1-r1: Displays clear, concise and up-to-date PBS node and CPU usage information
 sys-cluster/maui 3.2.6_p16 3.2.6_p21 3.2.6_p21-r1 3.3 3.3.1-r2 3.3.1-r3: Maui Cluster Scheduler
 sys-cluster/moosefs 1.6.26-r1 1.6.27: A filesystem for highly reliable petabyte storage
