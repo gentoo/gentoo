@@ -45,6 +45,7 @@ src_test() {
 src_install() {
 	autotools-utils_src_install
 	mv "${ED}"/usr/bin/makecert{,-czmq} || die
+	mv "${ED}"/usr/share/man/man1/makecert{,-cmzq}.1 || die
 }
 
 pkg_postinst() {
