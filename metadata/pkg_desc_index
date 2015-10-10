@@ -16488,7 +16488,7 @@ sys-cluster/pacemaker 1.1.12-r2: Pacemaker CRM
 sys-cluster/pacemaker-gui 2.1.2: Pacemaker python GUI and management daemon
 sys-cluster/pbs-python 4.3.3-r1: Python bindings to the Torque C API
 sys-cluster/pconsole 1.0-r3: Tool for managing multiple xterms simultaneously
-sys-cluster/ploop 1.13.2: openvz tool and a library to control ploop block devices
+sys-cluster/ploop 1.13.2 1.14.1: openvz tool and a library to control ploop block devices
 sys-cluster/polysh 0.4-r1: Aggregate several remote shells into one
 sys-cluster/poolmon 0.5: A director mailserver pool monitoring script for Dovecot
 sys-cluster/projections 6.2.1: Projections Performance Analysis Framework for Charm++ Applications
@@ -16499,7 +16499,7 @@ sys-cluster/slurm 2.6.3: SLURM: A Highly Scalable Resource Manager
 sys-cluster/swift 2.3.0-r1 2.5.0: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/torque 2.5.13 4.1.7 4.2.9-r4: Resource manager and queuing system based on OpenPBS
 sys-cluster/util-vserver 0.30.216_pre3025 0.30.216_pre3062 0.30.216_pre3120: Linux-VServer admin utilities
-sys-cluster/vzctl 4.9.1 4.9.2 4.9.3: OpenVZ ConTainers control utility
+sys-cluster/vzctl 4.9.1 4.9.4: OpenVZ ConTainers control utility
 sys-cluster/wulfware 2.6.0: Applications to monitor on a beowulf- or GRID-style clusters
 sys-cluster/xgridagent 1.0: A simple system for setting up and using a cluster of OS X machines
 sys-devel/autoconf 2.13 2.59-r7 2.61-r2 2.62-r1 2.63-r1 2.64 2.65-r1 2.67 2.68 2.69 2.69-r1 9999: Used to create autoconfiguration files
