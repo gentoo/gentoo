@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.antiyawn.com/uploads/${P}.ttf"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 S="${WORKDIR}"
 
@@ -20,5 +20,5 @@ FONT_S="${S}"
 FONT_SUFFIX="ttf"
 
 src_unpack() {
-	cp "${DISTDIR}/${A}" "${S}/${A//-${PV}}"
+	cp "${DISTDIR}/${A}" "${FONT_S}/${PN}.${FONT_SUFFIX}"
 }
