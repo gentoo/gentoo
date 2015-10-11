@@ -34,7 +34,7 @@
 # Ruby 1.9 is no longer maintained upstream since January
 # 2015, bug 536852.
 # Masked for removal in 30 days.
-=dev-ruby/ruby-1.9*
+=dev-lang/ruby-1.9*
 
 # Michael Palimaka <kensington@gentoo.org (9 Oct 2015)
 # Dead upstream. No consumers. Collides with other packages.
