@@ -12,7 +12,7 @@ HOMEPAGE="http://libevent.org/"
 SRC_URI="mirror://sourceforge/levent/files/${MY_P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/5.0.0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug libressl +ssl static-libs test +threads"
 
@@ -20,7 +20,8 @@ DEPEND="
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
 		libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
-	)"
+	)
+"
 RDEPEND="
 	${DEPEND}
 	!<=dev-libs/9libs-1.0
