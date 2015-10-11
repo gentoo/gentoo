@@ -16,11 +16,11 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/geometry_msgs[${PYTHON_USEDEP}]
 	dev-ros/roscpp
 	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/std_msgs[${PYTHON_USEDEP}]
 	dev-ros/tf[${PYTHON_USEDEP}]
 	dev-ros/turtlesim[${PYTHON_USEDEP}]
+	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
+	dev-ros/std_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
