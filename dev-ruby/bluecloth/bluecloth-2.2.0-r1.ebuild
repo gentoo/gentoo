@@ -27,6 +27,7 @@ ruby_add_bdepend "
 	dev-ruby/hoe
 	dev-ruby/rake-compiler
 	test? (
+		dev-ruby/rspec:2
 		dev-ruby/diff-lcs
 		dev-ruby/tidy-ext
 	)"
