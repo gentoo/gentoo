@@ -20,22 +20,25 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc64 ~x86"
 IUSE="doc latex test"
 
-RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+RDEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/docutils-0.11[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.3[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.0.1-r1[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4[${PYTHON_USEDEP}]
 	>=dev-python/Babel-1.3[${PYTHON_USEDEP}]
 	=dev-python/alabaster-0.7*[${PYTHON_USEDEP}]
-	=dev-python/sphinx_rtd_theme-0.1*[${PYTHON_USEDEP}]
 	>=dev-python/snowballstemmer-1.1[${PYTHON_USEDEP}]
 	latex? (
 		dev-texlive/texlive-latexextra
 		app-text/dvipng
 	)"
 DEPEND="${DEPEND}
-	test? ( dev-python/nose[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7 pypy) )"
+	test? (
+		dev-python/nose[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7 pypy)
+	)"
+PDEPEND="dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]"
 
 S="${WORKDIR}/${MY_P}"
 
