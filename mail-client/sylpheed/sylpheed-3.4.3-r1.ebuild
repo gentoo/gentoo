@@ -13,7 +13,7 @@ SRC_URI="http://${PN}.sraoss.jp/${PN}/v${PV%.*}/${P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="crypt ipv6 ldap nls oniguruma pda spell ssl xface"
+IUSE="crypt ipv6 ldap libressl nls oniguruma pda spell ssl xface"
 
 CDEPEND="x11-libs/gtk+:2
 	crypt? ( app-crypt/gpgme )
@@ -22,7 +22,10 @@ CDEPEND="x11-libs/gtk+:2
 	oniguruma? ( dev-libs/oniguruma )
 	pda? ( app-pda/jpilot )
 	spell? ( app-text/gtkspell:2 )
-	ssl? ( dev-libs/openssl:0 )"
+	ssl? (
+		!libressl? ( dev-libs/openssl:0 )
+		libressl? ( dev-libs/libressl )
+	)"
 RDEPEND="${CDEPEND}
 	app-misc/mime-types
 	net-misc/curl"
