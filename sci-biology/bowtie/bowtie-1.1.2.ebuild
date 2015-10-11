@@ -14,7 +14,7 @@ LICENSE="Artistic"
 SLOT="1"
 KEYWORDS="~amd64 ~x86 ~x64-macos"
 
-IUSE="examples tbb"
+IUSE="examples +tbb"
 
 DEPEND="app-arch/unzip
 	tbb? ( dev-cpp/tbb )"
