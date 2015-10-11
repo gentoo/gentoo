@@ -11,7 +11,7 @@ inherit kde4-meta
 
 DESCRIPTION="A Personal Organizer for KDE"
 HOMEPAGE="https://www.kde.org/applications/office/korganizer/"
-KEYWORDS="amd64 ~arm ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="

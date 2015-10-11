@@ -92,8 +92,7 @@ src_prepare() {
 			sed -i "/^${x}$/d" "${S}"/po/LINGUAS || die
 		fi
 	done
-	[[ $(wc -l "${S}"/po/LINGUAS | awk '{print $1}') == 0 ]] &&
-		echo en_GB > "${S}"/po/LINGUAS
+	echo en_GB >> "${S}"/po/LINGUAS
 }
 
 src_configure() {
