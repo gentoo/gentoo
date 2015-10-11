@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit kde4-base
+inherit flag-o-matic kde4-base
 
 DESCRIPTION="Extra Plasma applets and engines"
 LICENSE="GPL-2 LGPL-2"
@@ -41,6 +41,8 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 src_configure() {
+	# bug 560884
+	use ppc64 && append-flags -mno-altivec
 	local mycmakeargs=(
 		-DDBUS_INTERFACES_INSTALL_DIR="${EPREFIX}/usr/share/dbus-1/interfaces/"
 		-DWITH_Nepomuk=OFF
