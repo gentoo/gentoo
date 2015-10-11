@@ -11,7 +11,8 @@
 	<flag name="systemtap">Build support for profiling and tracing using 
 		<pkg>dev-util/systemtap</pkg></flag>
 	<flag name="utils">Install gtester-report utility to generate test
-		report files for your software.</flag>
+		report files for your software; build gresource utility with
+		ELF support.</flag>
   </use>
   <upstream>
     <remote-id type="cpe">cpe:/a:gnome:glib</remote-id>
