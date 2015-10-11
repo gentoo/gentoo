@@ -125,7 +125,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	S=${WORKDIR}/${P}/${ROS_SUBDIR}
 else
 	SRC_URI="${ROS_REPO_URI}/archive/${VER_PREFIX}${PV%_*}${VER_SUFFIX}.tar.gz -> ${ROS_REPO_URI##*/}-${PV}.tar.gz"
-	S=${WORKDIR}/${VER_PREFIX}${ROS_REPO_URI##*/}-${PV}/${ROS_SUBDIR}
+	S=${WORKDIR}/${VER_PREFIX}${ROS_REPO_URI##*/}-${PV}${VER_SUFFIX}/${ROS_SUBDIR}
 fi
 
 HOMEPAGE="http://wiki.ros.org/${PN}"
