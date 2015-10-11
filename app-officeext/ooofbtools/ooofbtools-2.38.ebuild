@@ -29,9 +29,9 @@ OFFICE_EXTENSIONS_LOCATION="${S}"
 
 src_prepare() {
 	# Remove Windows cruft
-	pushd "${WORKDIR}/${MY_PN}.oxt" 2>/dev/null
+	pushd "${WORKDIR}/${MY_PN}.oxt" 2>/dev/null || die
 	rm -r win32 || die
-	popd 2>/dev/null
+	popd 2>/dev/null || die
 }
 
 src_install() {
