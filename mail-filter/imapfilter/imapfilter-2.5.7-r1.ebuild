@@ -14,7 +14,11 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-RDEPEND="dev-libs/openssl:0
+IUSE="libressl"
+
+RDEPEND="
+	!libressl? ( dev-libs/openssl:0 )
+	libressl? ( dev-libs/libressl )
 	dev-libs/libpcre
 	dev-lang/lua:*"
 DEPEND="${RDEPEND}"
