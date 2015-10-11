@@ -6,9 +6,9 @@ HOMEPAGE=https://www.gentoo.org/proj/en/releng/catalyst/
 IUSE=ccache kernel_linux python_targets_python2_7
 KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd
 LICENSE=GPL-2
-RDEPEND=app-arch/lbzip2 app-crypt/shash virtual/cdrtools amd64? ( >=sys-boot/syslinux-3.72 ) ia64? ( sys-fs/dosfstools ) x86? ( >=sys-boot/syslinux-3.72 ) ccache? ( dev-util/ccache ) kernel_linux? ( app-misc/zisofs-tools >=sys-fs/squashfs-tools-2.1 ) >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)]
+RDEPEND=app-arch/lbzip2 app-crypt/shash app-arch/tar[xattr] virtual/cdrtools amd64? ( >=sys-boot/syslinux-3.72 ) ia64? ( sys-fs/dosfstools ) x86? ( >=sys-boot/syslinux-3.72 ) ccache? ( dev-util/ccache ) kernel_linux? ( app-misc/zisofs-tools >=sys-fs/squashfs-tools-2.1 ) >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)]
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=mirror://gentoo/catalyst-2.0.18.tar.bz2 https://dev.gentoo.org/~jmbsvicetto/distfiles/catalyst-2.0.18.tar.bz2 https://dev.gentoo.org/~mattst88/distfiles/catalyst-2.0.18.tar.bz2 https://dev.gentoo.org/~zerochaos/distfiles/catalyst-2.0.18.tar.bz2 https://dev.gentoo.org/~dolsen/releases/catalyst/catalyst-2.0.18.tar.bz2
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=9f8a4795d4d1053902dda6cf506c614a
+_md5_=9683fd47046933d1efba4da1f02c9cfb

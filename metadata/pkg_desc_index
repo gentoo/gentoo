@@ -1131,7 +1131,7 @@ app-emacs/emhacks 20070920: Useful Emacs Lisp libraries, including gdiff, jjar, 
 app-emacs/emms 3.0-r1: The Emacs Multimedia System
 app-emacs/erobot 2.1.0-r1: Battle-bots for Emacs!
 app-emacs/eselect-mode 1.4.4 9999: Emacs major mode for editing eselect files
-app-emacs/ess 13.09 14.09 15.03.1: Emacs Speaks Statistics
+app-emacs/ess 14.09 15.03.1 15.09: Emacs Speaks Statistics
 app-emacs/evil 1.0.8: Extensible vi layer for Emacs
 app-emacs/fff 20050517: Fast file finder for Emacs
 app-emacs/filladapt 2.12-r1: Filladapt enhances the behavior of Emacs' fill functions
@@ -4333,7 +4333,7 @@ dev-lang/coffee-script 1.9.3-r1: A little language that compiles into javascript
 dev-lang/confluence 0.10.6: Functional programming language for reactive system design (digital logic, hard-real-time software)
 dev-lang/crystal 0.7.7 0.8.0: The Crystal Programming Language
 dev-lang/dmd-bin 1.016 2.008-r1: Digital Mars D Compiler
-dev-lang/ekopath 6.0.477_p20150809 6.0.481_p20150811 6.0.521_p20150910 6.0.532_p20150921: PathScale EKOPath Compiler Suite
+dev-lang/ekopath 6.0.477_p20150809 6.0.481_p20150811 6.0.521_p20150910 6.0.532_p20150921 6.0.551_p20151010: PathScale EKOPath Compiler Suite
 dev-lang/elixir 1.0.5: Elixir programming language
 dev-lang/epic 0.9.2 0.9.3 0.9.3.2 0.9.3.3: Compiler for a simple functional language
 dev-lang/erlang 15.2.3.1 17.3 17.5 18.0 18.0-r1: Erlang programming language, runtime environment, and large collection of libraries
@@ -9191,7 +9191,7 @@ dev-util/bumpversion 0.5.3: Version-bump your software with a single command
 dev-util/bunny 0.93-r1: A small general purpose fuzzer for C programs
 dev-util/bustle 0.4.2-r1 0.4.3 0.4.7-r1 0.5.1: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20140101 20141128 20150711: the best variant of the Yacc parser generator
-dev-util/catalyst 2.0.16 2.0.17 2.0.18 2.0.18-r1 2.0.9999 2.9999 9999: Release metatool used for creating releases based on Gentoo Linux
+dev-util/catalyst 2.0.18-r1 2.0.9999 2.9999 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.6.14 0.6.15 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/ccache 2.4-r9 3.1.9-r4 3.1.10-r1 3.2.1-r1 3.2.2 3.2.3 3.2.4: fast compiler cache
