@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-ros/roscpp dev-ros/rosserial_msgs[ros_messages_cxx(-)] dev-ros/topic_tools dev-libs/boost:=[threads] >=dev-vcs/git-1.8.2.1 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-util/catkin dev-python/empy
+DESCRIPTION=C++ implementation of the rosserial server side
+EAPI=5
+HOMEPAGE=http://wiki.ros.org/rosserial_server
+IUSE=test
+LICENSE=BSD
+RDEPEND=dev-ros/roscpp dev-ros/rosserial_msgs[ros_messages_cxx(-)] dev-ros/topic_tools dev-libs/boost:=[threads] dev-util/catkin dev-python/empy
+SLOT=0
+_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	ros-catkin	5bd0782bea06cf2dd93b07f40e0a5e09	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_md5_=42c0ca77ff1cc75fc0d8c81fda6b4c08
