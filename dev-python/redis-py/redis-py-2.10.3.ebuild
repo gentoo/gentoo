@@ -59,7 +59,7 @@ python_test() {
 
 	"${EPREFIX}/usr/sbin/redis-server" - <<- EOF
 		daemonize yes
-		pidfile ${T}/redis.pid
+		pidfile "${T}"/redis.pid
 		unixsocket ${sock}
 		EOF
 

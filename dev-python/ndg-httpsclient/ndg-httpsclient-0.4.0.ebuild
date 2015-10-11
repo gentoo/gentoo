@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE=""
 
-RDEPEND="dev-python/pyopenssl[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/pyopenssl[$(python_gen_usedep 'python*' pypy)]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 

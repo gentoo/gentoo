@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+
 PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 
 inherit distutils-r1
@@ -16,13 +17,14 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ppc ppc64 s390 sh x86"
 IUSE="doc test"
 
-RDEPEND="dev-python/pyasn1[${PYTHON_USEDEP}]
-		dev-python/pyasn1-modules[${PYTHON_USEDEP}]
-		>=dev-python/pyopenssl-0.12[${PYTHON_USEDEP}]
-		>=dev-python/characteristic-14.0.0[${PYTHON_USEDEP}]"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}] )"
+RDEPEND="
+	dev-python/pyasn1[${PYTHON_USEDEP}]
+	dev-python/pyasn1-modules[${PYTHON_USEDEP}]
+	>=dev-python/pyopenssl-0.12[${PYTHON_USEDEP}]
+	>=dev-python/characteristic-14.0.0[${PYTHON_USEDEP}]"
+DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
 	# Prevent un-needed download during build
@@ -35,10 +37,7 @@ python_compile_all() {
 }
 
 python_test() {
-	# testsuite not supported by py3.2 which is about to become deprecated
-	if ! [[ "${EPYTHON}" == python3.2 ]]; then
-		py.test --cov service_identity --cov-report term-missing || die "tests failed under ${EPYTHON}"
-	fi
+	py.test -v -v -x || die "tests failed under ${EPYTHON}"
 }
 
 python_install_all() {

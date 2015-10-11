@@ -24,7 +24,7 @@ RDEPEND="
 	dev-python/ndg-httpsclient[${PYTHON_USEDEP}]
 	>=dev-python/py-1.4.30[${PYTHON_USEDEP}]
 	dev-python/pyasn1[${PYTHON_USEDEP}]
-	dev-python/pyopenssl[${PYTHON_USEDEP}]
+	dev-python/pyopenssl[$(python_gen_usedep 'python*' pypy)]
 	"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
