@@ -8,8 +8,6 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_ECLASS="git-2"
 	EGIT_REPO_URI="anongit.gentoo.org/proj/catalyst.git"
 	EGIT_MASTER="master"
-	SRC_URI=""
-	KEYWORDS=""
 	S="${WORKDIR}/${PN}"
 else
 	SRC_URI="mirror://gentoo/${P}.tar.bz2
