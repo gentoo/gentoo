@@ -17,14 +17,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="test"
 
-RDEPEND=">=dev-python/six-1.7.3[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	>=dev-python/six-1.7.3[${PYTHON_USEDEP}]"
 DEPEND="
 	test? (
 		${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7 pypy)
 	)
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	"
 
 python_test() {
 	chmod -x "${S}"/tests/* || die
