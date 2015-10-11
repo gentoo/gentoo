@@ -13,7 +13,7 @@ SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="BSD-4"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc64 x86"
+KEYWORDS="amd64 ~ia64 ~ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND="!dev-python/bcrypt"

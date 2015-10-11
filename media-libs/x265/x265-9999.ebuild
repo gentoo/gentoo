@@ -21,7 +21,7 @@ HOMEPAGE="http://x265.org/"
 
 LICENSE="GPL-2"
 # subslot = libx265 soname
-SLOT="0/68"
+SLOT="0/75"
 IUSE="+10bit test"
 
 ASM_DEPEND=">=dev-lang/yasm-1.2.0"
