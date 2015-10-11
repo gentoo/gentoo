@@ -13584,7 +13584,7 @@ net-dns/nsd 3.2.18 4.1.0: An authoritative only, high performance, open source n
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.17 1.3.18 1.4.6 1.4.7: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.6.1 3.6.2 3.7.0: A framework for managing DNS information
-net-dns/pdns 3.3.1 3.3.2 3.3.3 3.4.0 3.4.0-r1 3.4.1 3.4.2 3.4.4 3.4.5: The PowerDNS Daemon
+net-dns/pdns 3.3.1 3.3.2 3.3.3 3.4.0 3.4.0-r1 3.4.1 3.4.2 3.4.4 3.4.5 3.4.6: The PowerDNS Daemon
 net-dns/pdns-ldap-backend 0.2: Fork of the official but unmaintained LDAP backend
 net-dns/pdns-recursor 3.6.1-r1 3.6.2 3.6.3 3.6.4 3.7.1 3.7.2 3.7.3: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
