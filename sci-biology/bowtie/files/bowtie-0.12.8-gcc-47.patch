@@ -1,0 +1,45 @@
+ alphabet.h |   24 ++++++++++++------------
+ 1 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/alphabet.h b/alphabet.h
+index b464ddf..08d0281 100644
+--- a/alphabet.h
++++ b/alphabet.h
+@@ -38,6 +38,18 @@ static inline TStr reverseComplement(const TStr& s, bool color) {
+ 	return s_rc;
+ }
+ 
++/// Reverse a string in-place
++template <typename TStr>
++static inline void reverseInPlace(TStr& s) {
++	typedef typename Value<TStr>::Type TVal;
++	size_t len = length(s);
++	for(size_t i = 0; i < (len>>1); i++) {
++		TVal tmp = s[i];
++		s[i] = s[len-i-1];
++		s[len-i-1] = tmp;
++	}
++}
++
+ /**
+  * Reverse-complement s in-place.  Ns go to Ns.
+  */
+@@ -69,18 +81,6 @@ static inline void reverseComplementInPlace(TStr& s, bool color) {
+ 	}
+ }
+ 
+-/// Reverse a string in-place
+-template <typename TStr>
+-static inline void reverseInPlace(TStr& s) {
+-	typedef typename Value<TStr>::Type TVal;
+-	size_t len = length(s);
+-	for(size_t i = 0; i < (len>>1); i++) {
+-		TVal tmp = s[i];
+-		s[i] = s[len-i-1];
+-		s[len-i-1] = tmp;
+-	}
+-}
+-
+ /**
+  * Return the reverse-complement of s.
+  */
