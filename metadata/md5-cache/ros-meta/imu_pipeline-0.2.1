@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-ros/imu_processors dev-ros/imu_transformer sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-util/catkin dev-python/empy
+DESCRIPTION=Tools for processing and pre-processing IMU messages for easier use by later subscribers
+EAPI=5
+HOMEPAGE=http://wiki.ros.org/imu_pipeline
+IUSE=test
+KEYWORDS=~amd64 ~arm
+LICENSE=BSD
+RDEPEND=dev-ros/imu_processors dev-ros/imu_transformer dev-util/catkin dev-python/empy
+SLOT=0
+SRC_URI=https://github.com/ros-perception/imu_pipeline/archive/0.2.1.tar.gz -> imu_pipeline-0.2.1.tar.gz
+_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	ros-catkin	e04a8a402f33565b4c9ff1d1f4563807	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_md5_=66e5d46803faadf688fcd15889c03cf5
