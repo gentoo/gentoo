@@ -20,4 +20,5 @@ RDEPEND="
 	dev-ros/rosconsole
 	dev-ros/rostime
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-cpp/gtest )"
