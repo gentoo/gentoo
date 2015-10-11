@@ -44,11 +44,11 @@ src_configure() {
 }
 
 src_install() {
-	dodir /etc
 	dodir /usr/bin
+	dodir /etc
 	dodir /usr/share/man
-
-	default
+	emake BINDIR="${D}/usr/bin" SYSCONF="${D}/etc" \
+		MANDIR="${D}/usr/share/man" install
 
 	make_wrapper "${PN}" "/usr/bin/${PN}" "" "" "/etc/X11/Sessions"
 
