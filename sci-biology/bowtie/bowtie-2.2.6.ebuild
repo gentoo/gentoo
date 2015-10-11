@@ -14,7 +14,7 @@ LICENSE="GPL-3"
 SLOT="2"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="examples cpu_flags_x86_sse2 tbb"
+IUSE="examples cpu_flags_x86_sse2 +tbb"
 
 RDEPEND="dev-lang/perl"
 DEPEND="${RDEPEND}
