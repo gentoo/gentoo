@@ -1,8 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="5"
+
 inherit eutils autotools
 
 DESCRIPTION="A drop-in connection-time spam filter for qmail"
@@ -12,9 +13,9 @@ SRC_URI="http://www.spamdyke.org/releases/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="+tls"
+IUSE="+ssl"
 
-DEPEND="tls? ( dev-libs/openssl )"
+DEPEND="ssl? ( dev-libs/openssl )"
 RDEPEND="${DEPEND}
 	virtual/qmail"
 
@@ -23,7 +24,7 @@ S=${WORKDIR}/${P}/${PN}
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-gcc46.patch
 	echo "# Configuration option for ${PN}" > ${PN}.conf
-	if use tls; then
+	if use ssl; then
 		echo "tls-certificate-file=/var/qmail/control/clientcert.pem" \
 			>> ${PN}.conf
 	fi
@@ -41,7 +42,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable tls) || die "econf failed"
+		$(use_enable ssl tls) || die "econf failed"
 	cd ../utils
 	econf || die "econf failed in utils"
 }
