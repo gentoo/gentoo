@@ -36,6 +36,7 @@ DEPEND="
 RDEPEND="
 	app-arch/lbzip2
 	app-crypt/shash
+	app-arch/tar[xattr]
 	virtual/cdrtools
 	amd64? ( >=sys-boot/syslinux-3.72 )
 	ia64? ( sys-fs/dosfstools )
