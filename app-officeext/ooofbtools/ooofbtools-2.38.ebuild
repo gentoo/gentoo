@@ -18,9 +18,9 @@ SRC_URI="mirror://sourceforge/fbtools/files/release/${MY_PN}-${PV}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
-DEPEND="app-arch/unzip"
+DEPEND=""
 RDEPEND="dev-libs/libxml2"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
@@ -29,9 +29,9 @@ OFFICE_EXTENSIONS_LOCATION="${S}"
 
 src_prepare() {
 	# Remove Windows cruft
-	pushd "${WORKDIR}/${MY_PN}.oxt" 2>/dev/null
+	pushd "${WORKDIR}/${MY_PN}.oxt" 2>/dev/null || die
 	rm -r win32 || die
-	popd 2>/dev/null
+	popd 2>/dev/null || die
 }
 
 src_install() {
