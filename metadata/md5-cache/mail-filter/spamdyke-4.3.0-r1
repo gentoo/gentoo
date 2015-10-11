@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install postinst prepare
-DEPEND=tls? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=ssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A drop-in connection-time spam filter for qmail
 EAPI=5
 HOMEPAGE=http://www.spamdyke.org/
-IUSE=libressl +tls
+IUSE=libressl +ssl
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=tls? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) virtual/qmail
+RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) virtual/qmail
 SLOT=0
 SRC_URI=http://www.spamdyke.org/releases/spamdyke-4.3.0.tgz
 _eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=761ef74056e33c6af9acc8cf9b6a51d5
+_md5_=3c3948d3b6d50d6d8c8d842d1db8156f
