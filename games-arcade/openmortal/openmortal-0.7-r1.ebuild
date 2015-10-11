@@ -21,20 +21,20 @@ DEPEND="media-libs/libsdl[video]
 	media-libs/sdl-net
 	>=media-libs/freetype-2.4.0
 	dev-lang/perl"
-RDEPEND="${DEPEND}"
+RDEPEND=${DEPEND}
 
 src_prepare() {
 	epatch \
 		"${FILESDIR}/${P}"-gcc41.patch \
 		"${FILESDIR}/${P}"-freetype.patch
-
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	DOCS="AUTHORS ChangeLog README TODO" \
+		default
 	newicon data/gfx/icon.png ${PN}.png
 	make_desktop_entry ${PN} OpenMortal
-	dodoc AUTHORS ChangeLog README TODO
 	prepgamesdirs
 }
