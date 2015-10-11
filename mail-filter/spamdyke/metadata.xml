@@ -13,6 +13,6 @@ features to enhance qmail.
 Best of all, using spamdyke does not require patching or recompiling qmail!
 </longdescription>
 <use>
-	<flag name='tls'>Enables TLS protocol for spamdyke</flag>
+	<flag name='ssl'>Enables TLS protocol for spamdyke</flag>
 </use>
 </pkgmetadata>
