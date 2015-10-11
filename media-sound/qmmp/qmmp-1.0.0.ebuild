@@ -26,7 +26,12 @@ libsamplerate lyrics +mad midi mms modplug mplayer mpris musepack notifier opus 
 projectm pulseaudio qsui scrobbler sndfile stereo tray udisks +vorbis wavpack"
 
 RDEPEND="media-libs/taglib
+	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtx11extras:5
 	alsa? ( media-libs/alsa-lib )
 	bs2b? ( media-libs/libbs2b )
 	cdda? ( dev-libs/libcdio-paranoia )
@@ -59,7 +64,8 @@ RDEPEND="media-libs/taglib
 	scrobbler? ( net-misc/curl )
 	sndfile? ( media-libs/libsndfile )
 	udisks? ( sys-fs/udisks:2 )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5"
 
 DOCS="AUTHORS ChangeLog README"
 
