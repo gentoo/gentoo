@@ -7,7 +7,7 @@ EAPI="5"
 inherit eutils systemd user
 
 DESCRIPTION="A lightweight system monitoring tool"
-HOMEPAGE="http://www.${PN}.org/"
+HOMEPAGE="http://www.monitorix.org/"
 SRC_URI="http://www.${PN}.org/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -6,7 +6,7 @@ EAPI=5
 inherit cmake-utils user
 
 DESCRIPTION="Simple Desktop Display Manager"
-HOMEPAGE="https://github.com/${PN}/${PN}"
+HOMEPAGE="https://github.com/sddm/sddm"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.xz"
 KEYWORDS="~amd64 ~x86"
 
