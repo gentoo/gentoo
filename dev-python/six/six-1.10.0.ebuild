@@ -20,7 +20,7 @@ IUSE="doc test"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx )
-	test? ( >=dev-python/pytest-2.2.0[${PYTHON_USEDEP}] )"
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 PATCHES=(
 	"${FILESDIR}"/1.9.0-mapping.patch
