@@ -12132,7 +12132,7 @@ media-libs/libtimidity 0.1.0-r2: MIDI to WAVE converter library
 media-libs/libtxc_dxtn 1.0.1 1.0.1-r1: Helper library for S3TC texture (de)compression
 media-libs/libuninameslist 20091231: Library of unicode annotation data
 media-libs/libv4l 0.8.9 0.9.5 0.9.5-r1 1.0.0 1.2.1 1.6.0 1.6.0-r1 1.6.2: Separate libraries ebuild from upstream v4l-utils package
-media-libs/libvisio 0.0.30 0.1.1 0.1.3 9999: Library parsing the visio documents
+media-libs/libvisio 0.0.30 0.1.1 0.1.3 0.1.3-r1 9999: Library parsing the visio documents
 media-libs/libvisual 0.4.0-r3: Libvisual is an abstraction library that comes between applications and audio visualisation plugins
 media-libs/libvorbis 1.3.3 1.3.3-r1 1.3.4 1.3.5: The Ogg Vorbis sound file format library
 media-libs/libvpx 1.1.0 1.2.0_pre20130625 1.3.0 1.4.0: WebM VP8 Codec SDK
