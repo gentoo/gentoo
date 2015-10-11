@@ -28,7 +28,6 @@ RDEPEND="
 	>=dev-python/six-1.4[${PYTHON_USEDEP}]
 	>=dev-python/Babel-1.3[${PYTHON_USEDEP}]
 	=dev-python/alabaster-0.7*[${PYTHON_USEDEP}]
-	=dev-python/sphinx_rtd_theme-0.1*[${PYTHON_USEDEP}]
 	>=dev-python/snowballstemmer-1.1[${PYTHON_USEDEP}]
 	latex? (
 		dev-texlive/texlive-latexextra
@@ -39,6 +38,7 @@ DEPEND="${DEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7 pypy)
 	)"
+PDEPEND="dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]"
 
 S="${WORKDIR}/${MY_P}"
 
