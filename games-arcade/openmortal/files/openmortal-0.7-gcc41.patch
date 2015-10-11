@@ -1,5 +1,5 @@
---- src/OnlineChat.cpp.old	2006-01-28 14:34:42.000000000 -0700
-+++ src/OnlineChat.cpp	2006-01-28 14:34:53.000000000 -0700
+--- src/OnlineChat.cpp.old
++++ src/OnlineChat.cpp
 @@ -56,7 +56,7 @@
  class CChallengeMenu: public Menu
  {
