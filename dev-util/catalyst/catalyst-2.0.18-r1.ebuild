@@ -8,8 +8,6 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_ECLASS="git-2"
 	EGIT_REPO_URI="anongit.gentoo.org/proj/catalyst.git"
 	EGIT_MASTER="master"
-	SRC_URI=""
-	KEYWORDS=""
 	S="${WORKDIR}/${PN}"
 else
 	SRC_URI="mirror://gentoo/${P}.tar.bz2
@@ -38,6 +36,7 @@ DEPEND="
 RDEPEND="
 	app-arch/lbzip2
 	app-crypt/shash
+	app-arch/tar[xattr]
 	virtual/cdrtools
 	amd64? ( >=sys-boot/syslinux-3.72 )
 	ia64? ( sys-fs/dosfstools )

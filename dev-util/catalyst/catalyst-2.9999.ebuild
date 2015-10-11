@@ -9,8 +9,6 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="git://anongit.gentoo.org/proj/catalyst.git"
 	EGIT_MASTER="master"
 	EGIT_BRANCH="pending"
-	SRC_URI=""
-	KEYWORDS=""
 	S="${WORKDIR}/${PN}"
 else
 	SRC_URI="mirror://gentoo/${P}.tar.bz2
@@ -38,6 +36,7 @@ RDEPEND="
 	=dev-python/pydecomp-9999
 	app-arch/lbzip2
 	app-crypt/shash
+	app-arch/tar[xattr]
 	virtual/cdrtools
 	amd64? ( >=sys-boot/syslinux-3.72 )
 	ia64? ( sys-fs/dosfstools )

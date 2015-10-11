@@ -1,10 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit elisp
+inherit readme.gentoo elisp
 
 DESCRIPTION="Emacs Speaks Statistics"
 HOMEPAGE="http://ess.r-project.org/"
@@ -12,7 +12,7 @@ SRC_URI="http://ess.r-project.org/downloads/ess/${P}.tgz"
 
 LICENSE="GPL-2+ GPL-3+ Texinfo-manual"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 
 DEPEND="app-text/texi2html
 	virtual/latex-base"
@@ -35,11 +35,10 @@ src_install() {
 	# Most documentation is installed by the package's build system.
 	rm -f "${ED}${SITELISP}/${PN}/ChangeLog"
 	dodoc ChangeLog *NEWS doc/{TODO,ess-intro.pdf}
+	newdoc doc/ChangeLog ChangeLog-doc
 	newdoc lisp/ChangeLog ChangeLog-lisp
-}
 
-pkg_postinst() {
-	elisp-site-regen
-	elog "Please see /usr/share/doc/${PF} for the complete documentation."
-	elog "Usage hints are in ${SITELISP}/${PN}/ess-site.el ."
+	DOC_CONTENTS="Please see /usr/share/doc/${PF} for the complete
+		documentation. Usage hints are in ${SITELISP}/${PN}/ess-site.el ."
+	readme.gentoo_create_doc
 }
