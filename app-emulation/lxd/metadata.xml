@@ -19,6 +19,10 @@
 		<remote-id type="github">lxc/lxd</remote-id>
 	</upstream>
 	<use>
+		<flag name="btrfs">
+			Add support for managing instance/snapshot
+			disk using btrfs subvolumes
+		</flag>
 		<flag name="criu">
 			Add support for live-migrateable containers
 		</flag>
