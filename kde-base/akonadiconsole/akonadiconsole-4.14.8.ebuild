@@ -9,7 +9,7 @@ EGIT_BRANCH="KDE/4.14"
 inherit kde4-meta
 
 DESCRIPTION="Akonadi developer console"
-KEYWORDS="amd64 ~arm ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="
