@@ -6,7 +6,7 @@ EAPI=5
 
 inherit php-pear-r1
 
-KEYWORDS="~alpha ~amd64 hppa ~ia64 ~ppc ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 
 DESCRIPTION="A SQL Builder, Object Interface to Database Tables"
 LICENSE="PHP-2.02 PHP-3"
