@@ -14,7 +14,7 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-2
 else
 	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"
@@ -22,10 +22,9 @@ HOMEPAGE="https://github.com/gentoo/eudev"
 
 LICENSE="LGPL-2.1 MIT GPL-2"
 SLOT="0"
-IUSE="doc gudev +hwdb +kmod introspection selinux static-libs test"
+IUSE="doc +hwdb +kmod introspection selinux static-libs test"
 
 COMMON_DEPEND=">=sys-apps/util-linux-2.20
-	gudev? ( >=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}] )
 	introspection? ( >=dev-libs/gobject-introspection-1.38 )
 	kmod? ( >=sys-apps/kmod-16 )
 	selinux? ( >=sys-libs/libselinux-2.1.9 )
@@ -55,8 +54,7 @@ RDEPEND="${COMMON_DEPEND}
 	!<sys-fs/lvm2-2.02.103
 	!<sec-policy/selinux-base-2.20120725-r10
 	!sys-fs/udev
-	!sys-apps/systemd
-	gudev? ( !dev-libs/libgudev )"
+	!sys-apps/systemd"
 
 PDEPEND=">=sys-fs/udev-init-scripts-26
 	hwdb? ( >=sys-apps/hwids-20140304[udev] )"
@@ -131,8 +129,6 @@ multilib_src_configure() {
 		--enable-manpages
 		--disable-hwdb
 		--exec-prefix=/
-
-		$(use_enable gudev)
 	)
 
 	# Only build libudev for non-native_abi, and only install it to libdir,
@@ -164,7 +160,6 @@ multilib_src_compile() {
 	else
 		emake -C src/shared
 		emake -C src/libudev
-		use gudev && emake -C src/gudev
 	fi
 }
 
@@ -173,7 +168,6 @@ multilib_src_install() {
 		emake DESTDIR="${D}" install
 	else
 		emake -C src/libudev DESTDIR="${D}" install
-		use gudev && emake -C src/gudev DESTDIR="${D}" install
 	fi
 }
 
@@ -209,7 +203,7 @@ multilib_src_install_all() {
 
 pkg_preinst() {
 	local htmldir
-	for htmldir in gudev libudev; do
+	for htmldir in libudev; do
 		if [[ -d ${EROOT}usr/share/gtk-doc/html/${htmldir} ]]; then
 			rm -rf "${EROOT}"usr/share/gtk-doc/html/${htmldir}
 		fi
