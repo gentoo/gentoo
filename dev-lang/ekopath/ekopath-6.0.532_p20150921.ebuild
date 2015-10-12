@@ -38,7 +38,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	cat > 99${PN} <<-EOF
+	cat > 99${PN} <<-EOF || die
 		PATH=${EROOT%/}/opt/${PN}/bin
 		ROOTPATH=${EROOT%/}/opt/${PN}/bin
 		LDPATH=${EROOT%/}/opt/${PN}/lib:${EROOT%/}/opt/${PN}/lib/${MY_PV}/x8664/64
