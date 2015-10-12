@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 
 IUSE="ldap"
 
-RDEPEND=">=sys-libs/db-2
+RDEPEND=">=sys-libs/db-2:*
 	ldap? ( net-nds/openldap:0 )"
 
 DEPEND="${RDEPEND}
