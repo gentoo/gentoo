@@ -1,0 +1,12 @@
+diff -Naur llvm-3.7.0.src.orig/docs/CMakeLists.txt llvm-3.7.0.src/docs/CMakeLists.txt
+--- llvm-3.7.0.src.orig/docs/CMakeLists.txt	2015-08-18 18:48:44.000000000 +0200
++++ llvm-3.7.0.src/docs/CMakeLists.txt	2015-10-12 14:40:00.985384589 +0200
+@@ -115,7 +115,7 @@
+ endif()
+ 
+ list(FIND LLVM_BINDINGS_LIST ocaml uses_ocaml)
+-if( NOT uses_ocaml LESS 0 )
++if( NOT uses_ocaml LESS 0 AND LLVM_BUILD_DOCS )
+   set(doc_targets
+         ocaml_llvm
+         ocaml_llvm_all_backends
