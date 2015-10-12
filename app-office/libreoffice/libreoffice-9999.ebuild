@@ -178,12 +178,6 @@ COMMON_DEPEND="
 	jemalloc? ( dev-libs/jemalloc )
 	libreoffice_extensions_scripting-beanshell? ( >=dev-java/bsh-2.0_beta4 )
 	libreoffice_extensions_scripting-javascript? ( dev-java/rhino:1.6 )
-	libreoffice_extensions_wiki-publisher? (
-		dev-java/commons-codec:0
-		dev-java/commons-httpclient:3
-		dev-java/commons-lang:2.1
-		dev-java/commons-logging:0
-	)
 	mysql? ( >=dev-db/mysql-connector-c++-1.1.0 )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
 	telepathy? (
@@ -282,9 +276,9 @@ pkg_pretend() {
 		check-reqs_pkg_pretend
 
 		if [[ $(gcc-major-version) -lt 4 ]] || {
-			[[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 6 ]]; }
+			[[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 7 ]]; }
 		then
-			eerror "Compilation with gcc older than 4.6 is not supported"
+			eerror "Compilation with gcc older than 4.7 is not supported"
 			die "Too old gcc found."
 		fi
 	fi
@@ -423,15 +417,6 @@ src_configure() {
 
 		use libreoffice_extensions_scripting-javascript && \
 			java_opts+=" --with-rhino-jar=$(java-pkg_getjar rhino-1.6 js.jar)"
-
-		if use libreoffice_extensions_wiki-publisher; then
-			java_opts+="
-				--with-commons-codec-jar=$(java-pkg_getjar commons-codec commons-codec.jar)
-				--with-commons-httpclient-jar=$(java-pkg_getjar commons-httpclient-3 commons-httpclient.jar)
-				--with-commons-lang-jar=$(java-pkg_getjar commons-lang-2.1 commons-lang.jar)
-				--with-commons-logging-jar=$(java-pkg_getjar commons-logging commons-logging.jar)
-			"
-		fi
 	fi
 
 	# system headers/libs/...: enforce using system packages
