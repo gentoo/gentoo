@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-inherit flag-o-matic eutils multilib toolchain-funcs mono-env libtool java-pkg-opt-2 multilib-minimal
+inherit eutils toolchain-funcs mono-env libtool java-pkg-opt-2 multilib-minimal
 
 DESCRIPTION="GNU locale utilities"
 HOMEPAGE="https://www.gnu.org/software/gettext/"
