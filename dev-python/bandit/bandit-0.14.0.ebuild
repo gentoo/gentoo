@@ -53,5 +53,5 @@ python_test() {
 
 python_install_all() {
 	distutils-r1_python_install_all
-	mv "${D}/usr/etc" "${D}/"
+	mv "${D}/usr/etc" "${D}/" || die
 }
