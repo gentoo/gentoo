@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}
 	virtual/logger"
 
 src_prepare() {
-	mv Makefile{.boot,}
+	mv Makefile{.boot,} || die
 }
 
 src_compile() {
