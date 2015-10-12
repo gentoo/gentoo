@@ -17,7 +17,7 @@ HOMEPAGE="http://www.cherokee-project.com/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
-IUSE="admin ffmpeg debug geoip ipv6 kernel_linux ldap mysql nls pam php rrdtool ssl static static-libs"
+IUSE="admin ffmpeg debug geoip ipv6 kernel_linux ldap libressl mysql nls pam php rrdtool ssl static static-libs"
 
 COMMON_DEPEND="dev-libs/libpcre
 	>=sys-libs/zlib-1.1.4-r1
@@ -28,10 +28,14 @@ COMMON_DEPEND="dev-libs/libpcre
 	nls? ( virtual/libintl )
 	pam? ( virtual/pam )
 	php? ( || (
-		dev-lang/php[fpm]
-		dev-lang/php[cgi]
+		dev-lang/php:*[fpm]
+		dev-lang/php:*[cgi]
 	) )
-	ssl? ( dev-libs/openssl )"
+	ssl? (
+		!libressl? ( dev-libs/openssl:0 )
+		libressl? ( dev-libs/libressl )
+	)
+	"
 DEPEND="${COMMON_DEPEND}
 	nls? ( sys-devel/gettext )"
 RDEPEND="${COMMON_DEPEND}
