@@ -7715,7 +7715,7 @@ dev-python/robotframework-selenium2library 1.6.0 1.7.2 9999: Web testing library
 dev-python/robotframework-sshlibrary 2.0.2 2.1.1: A test library for Robot Framework that enables SSH and SFTP
 dev-python/roman 2.0.0: An Integer to Roman numerals converter
 dev-python/root_numpy 3.2.0 3.3.0 3.3.1 4.4.0: Interface between ROOT and numpy
-dev-python/rootpy 0.7.1: Pythonic layer on top of the ROOT framework's PyROOT bindings
+dev-python/rootpy 0.7.1 0.8.0: Pythonic layer on top of the ROOT framework's PyROOT bindings
 dev-python/rope 0.9.4-r1 0.10.2: Python refactoring library
 dev-python/ropeide 1.5.1-r2: Python refactoring IDE
 dev-python/ropemacs 0.7 0.8: Rope in Emacs
