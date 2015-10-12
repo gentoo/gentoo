@@ -16500,7 +16500,7 @@ sys-cluster/libdlm 3.1.5 3.2.0: General-purpose Distributed Lock Manager Library
 sys-cluster/libfence 3.1.5 3.2.0: Cluster Fencing Library
 sys-cluster/liblogthread 3.1.5 3.2.0: Thread-Safe Syslog Logging Library
 sys-cluster/libqb 0.13.0 0.14.3 0.14.4 0.17.0 0.17.1: Library providing high performance logging, tracing, ipc, and poll
-sys-cluster/libquo 1.2 1.2.2 1.2.3 1.2.4: run-time tuning of process binding policies made easy
+sys-cluster/libquo 1.2 1.2.2 1.2.3 1.2.4-r1: run-time tuning of process binding policies made easy
 sys-cluster/lspbs 1.1-r1: Displays clear, concise and up-to-date PBS node and CPU usage information
 sys-cluster/maui 3.2.6_p16 3.2.6_p21 3.2.6_p21-r1 3.3 3.3.1-r2 3.3.1-r3: Maui Cluster Scheduler
 sys-cluster/moosefs 1.6.26-r1 1.6.27: A filesystem for highly reliable petabyte storage
