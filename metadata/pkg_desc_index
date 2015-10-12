@@ -3115,7 +3115,7 @@ dev-games/ps2-packer 0.4.4: another ELF packer for the PS2
 dev-games/quake4-sdk 1.4.2: Quake4 SDK
 dev-games/simgear 3.4.0: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
-dev-games/tiled 0.11.0 0.12.3: A general purpose tile map editor
+dev-games/tiled 0.12.3 0.14.2: A general purpose tile map editor
 dev-games/vamos 0.7.1: an automotive simulation framework
 dev-games/wfmath 1.0.1: Worldforge math library
 dev-go/blackfriday 1.2_p20150720 9999: a markdown processor implemented in Go
@@ -9301,7 +9301,7 @@ dev-util/gtk-doc 1.21 1.24: GTK+ Documentation Generator
 dev-util/gtk-doc-am 1.21 1.24: Automake files from gtk-doc
 dev-util/gtk-update-icon-cache 2.24.27 3.14.13 3.16.4 3.16.5: GTK update icon cache
 dev-util/heaptrack 9999: A fast heap memory profiler
-dev-util/howdoi 1.1.6 1.1.7: A code search tool
+dev-util/howdoi 1.1.7: A code search tool
 dev-util/httpup 0.4.0k: synchronisation tool for http file repositories
 dev-util/huc 0.1: HTML umlaut conversion tool
 dev-util/hxd 0.70.02-r1: Binary to hexadecimal converter
