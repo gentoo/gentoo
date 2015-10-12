@@ -18,7 +18,7 @@ IUSE="examples python"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-DEPEND="
+RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtopengl:5
@@ -26,7 +26,9 @@ DEPEND="
 	sys-libs/zlib
 	python? ( ${PYTHON_DEPS} )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
+"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
