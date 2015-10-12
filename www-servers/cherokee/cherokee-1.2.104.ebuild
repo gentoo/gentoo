@@ -28,8 +28,8 @@ COMMON_DEPEND="dev-libs/libpcre
 	nls? ( virtual/libintl )
 	pam? ( virtual/pam )
 	php? ( || (
-		dev-lang/php[fpm]
-		dev-lang/php[cgi]
+		dev-lang/php:*[fpm]
+		dev-lang/php:*[cgi]
 	) )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0 )
