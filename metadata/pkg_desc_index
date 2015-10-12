@@ -4901,7 +4901,7 @@ dev-libs/udis86 1.7-r2 1.7.2: Disassembler library for the x86/-64 architecture 
 dev-libs/unibilium 1.1.2 1.1.4: A very basic terminfo library
 dev-libs/urdfdom 0.3.0 9999: URDF (U-Robot Description Format) library
 dev-libs/urdfdom_headers 0.3.0 9999: URDF (U-Robot Description Format) headers
-dev-libs/uriparser 0.7.9 0.8.0 0.8.1 0.8.2 0.8.3: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
+dev-libs/uriparser 0.7.9 0.8.0 0.8.1 0.8.2 0.8.3 0.8.4: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
 dev-libs/userspace-rcu 0.7.12 0.7.13 0.8.4 0.8.5 0.8.6: userspace RCU (read-copy-update) library
 dev-libs/ustr 1.0.4-r5 1.0.4-r7: Low-overhead managed string library for C
 dev-libs/utfcpp 2.3.4: A simple, portable and lightweight generic library for handling UTF-8 encoded strings.
