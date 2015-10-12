@@ -17440,10 +17440,10 @@ www-servers/apache 2.2.29 2.2.31 2.4.12-r1 2.4.16: The Apache Web Server
 www-servers/axis 1.4-r2: Apache's Axis1 implementation of the SOAP (Simple Object Access Protocol)
 www-servers/blogc-runserver 0.1 9999: A simple HTTP server to test blogc websites
 www-servers/boa 0.94.14_rc21-r1: A very small and very fast http daemon
-www-servers/bozohttpd 20140708: bozohttpd is a small and secure http server
+www-servers/bozohttpd 20140708 20140708-r1: bozohttpd is a small and secure http server
 www-servers/cherokee 1.2.104: An extremely fast and tiny web server
 www-servers/fnord 1.10-r2 1.11: Yet another small httpd
-www-servers/gatling 0.12-r2 0.13: High performance web server
+www-servers/gatling 0.12-r2 0.13 0.13-r1: High performance web server
 www-servers/gunicorn 19.1.1 19.3.0: A WSGI HTTP Server for UNIX
 www-servers/hiawatha 9.8 9.14 9.14-r1: Advanced and secure webserver
 www-servers/lighttpd 1.4.35 1.4.35-r1 1.4.35-r2 1.4.37 1.4.37-r1: Lightweight high-performance web server
@@ -17452,7 +17452,7 @@ www-servers/monkeyd 1.5.6-r1 1.6.2 9999: A small, fast, and scalable web server
 www-servers/nginx 1.8.0 1.9.2 1.9.3 1.9.4: Robust, small and high performance http and reverse proxy server
 www-servers/ocsigenserver 2.5-r2 2.6: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
-www-servers/pound 2.6 2.7d 2.7f: A http/https reverse-proxy and load-balancer
+www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.2.6 0.3 9999: Pretty small HTTP server -- a command-line tool to share files
 www-servers/resin 4.0.44-r4: A fast Servlet and JSP engine
 www-servers/servefile 0.4.2 0.4.3: Serve a single file via HTTP
