@@ -2,24 +2,29 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Note: Keep version bumps in sync with dev-libs/libintl.
+
 EAPI="5"
 
-inherit eutils toolchain-funcs mono-env libtool java-pkg-opt-2 multilib-minimal
+inherit eutils mono-env libtool java-pkg-opt-2 multilib-minimal
 
 DESCRIPTION="GNU locale utilities"
 HOMEPAGE="https://www.gnu.org/software/gettext/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-3+ LGPL-2.1+"
+# Only libasprintf is under the LGPL (and libintl is in a sep package),
+# so put that license behind USE=cxx.
+LICENSE="GPL-3+ cxx? ( LGPL-2.1+ )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE="acl -cvs +cxx doc emacs git java ncurses nls openmp static-libs elibc_glibc elibc_musl"
+IUSE="acl -cvs +cxx doc emacs git java ncurses nls openmp static-libs"
 
 # only runtime goes multilib
 # Note: expat lacks a subslot because it is dynamically loaded at runtime.  We
 # would depend on older subslots if they were available (based on the ABIs that
 # are explicitly handled), but expat doesn't currently use subslots.
 DEPEND=">=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
+	>=virtual/libintl-0-r2[${MULTILIB_USEDEP}]
 	dev-libs/libxml2:=
 	dev-libs/expat
 	acl? ( virtual/acl )
@@ -64,6 +69,8 @@ multilib_src_configure() {
 		# this will _disable_ libunistring (since it is not bundled),
 		# see bug #326477
 		--with-included-libunistring
+		# Never build libintl since it's in dev-libs/libintl now.
+		--without-included-gettext
 
 		$(use_enable acl)
 		$(use_enable cxx c++)
@@ -76,13 +83,6 @@ multilib_src_configure() {
 		$(use_enable openmp)
 		$(use_enable static-libs static)
 	)
-
-	# Build with --without-included-gettext (on glibc systems)
-	if use elibc_glibc || use elibc_musl ; then
-		myconf+=( --without-included-gettext )
-	else
-		myconf+=( --with-included-gettext )
-	fi
 
 	local ECONF_SOURCE=${S}
 	if ! multilib_is_native_abi ; then
@@ -99,8 +99,6 @@ multilib_src_install() {
 	if multilib_is_native_abi ; then
 		dosym msgfmt /usr/bin/gmsgfmt #43435
 		dobin gettext-tools/misc/gettextize
-
-		[[ ${USERLAND} == "BSD" ]] && gen_usr_ldscript -a intl
 	fi
 }
 
