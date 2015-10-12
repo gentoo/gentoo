@@ -18,11 +18,17 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 # numexpr is optional but set hard rdepend
-RDEPEND=">=dev-python/numpy-1.7[${PYTHON_USEDEP}]
+RDEPEND="
+	>=dev-python/numpy-1.7[${PYTHON_USEDEP}]
 	>=dev-python/numexpr-1.4.1[${PYTHON_USEDEP}]"
-DEPEND=">=dev-python/cython-0.22[${PYTHON_USEDEP}]
+DEPEND="
+	>=dev-python/setuptools-0.18[${PYTHON_USEDEP}]
+	>=dev-python/cython-0.22[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? ( dev-python/mock[${PYTHON_USEDEP}] )"
+	test? (
+		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7)
+		$(python_gen_cond_dep 'dev-python/unittest2[${PYTHON_USEDEP}]' python2_7)
+	)"
 
 python_prepare_all() {
 	if use doc; then
