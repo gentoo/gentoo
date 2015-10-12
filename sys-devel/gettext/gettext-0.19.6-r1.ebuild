@@ -72,21 +72,16 @@ multilib_src_configure() {
 		$(usex git --without-cvs $(use_with cvs))
 		$(use_enable java)
 		$(use_enable ncurses curses)
+		$(use_enable nls)
 		$(use_enable openmp)
 		$(use_enable static-libs static)
 	)
 
 	# Build with --without-included-gettext (on glibc systems)
 	if use elibc_glibc || use elibc_musl ; then
-		myconf+=(
-			--without-included-gettext
-			$(use_enable nls)
-		)
+		myconf+=( --without-included-gettext )
 	else
-		myconf+=(
-			--with-included-gettext
-			--enable-nls
-		)
+		myconf+=( --with-included-gettext )
 	fi
 
 	local ECONF_SOURCE=${S}
