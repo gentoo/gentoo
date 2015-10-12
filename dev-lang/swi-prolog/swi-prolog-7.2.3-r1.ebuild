@@ -16,7 +16,7 @@ SRC_URI="http://www.swi-prolog.org/download/stable/src/swipl-${PV}.tar.gz
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="archive debug doc +gmp hardened java minimal odbc +readline ssl static-libs test zlib X"
+IUSE="archive debug doc +gmp hardened java minimal odbc +readline ssl static-libs test uuid zlib X"
 
 RDEPEND="sys-libs/ncurses
 	archive? ( app-arch/libarchive )
@@ -26,6 +26,7 @@ RDEPEND="sys-libs/ncurses
 	gmp? ( dev-libs/gmp )
 	ssl? ( dev-libs/openssl )
 	java? ( >=virtual/jdk-1.5 )
+	uuid? ( dev-libs/ossp-uuid )
 	X? (
 		virtual/jpeg
 		x11-libs/libX11
@@ -45,6 +46,10 @@ src_prepare() {
 	EPATCH_FORCE=yes
 	EPATCH_SUFFIX=patch
 	epatch "${WORKDIR}"/${PV}
+
+	if ! use uuid; then
+		mv packages/clib/uuid.pl packages/clib/uuid.pl.unused || die
+	fi
 
 	# OSX/Intel ld doesn't like an archive without table of contents
 	sed -i -e 's/-cru/-scru/' packages/nlp/libstemmer_c/Makefile.pl || die
