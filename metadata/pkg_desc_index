@@ -17441,7 +17441,7 @@ www-servers/axis 1.4-r2: Apache's Axis1 implementation of the SOAP (Simple Objec
 www-servers/blogc-runserver 0.1 9999: A simple HTTP server to test blogc websites
 www-servers/boa 0.94.14_rc21-r1: A very small and very fast http daemon
 www-servers/bozohttpd 20140708: bozohttpd is a small and secure http server
-www-servers/cherokee 1.2.103-r2 1.2.104: An extremely fast and tiny web server
+www-servers/cherokee 1.2.104: An extremely fast and tiny web server
 www-servers/fnord 1.10-r2 1.11: Yet another small httpd
 www-servers/gatling 0.12-r2 0.13: High performance web server
 www-servers/gunicorn 19.1.1 19.3.0: A WSGI HTTP Server for UNIX
