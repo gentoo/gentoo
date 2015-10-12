@@ -16,7 +16,7 @@ SRC_URI="http://python-nbxmpp.gajim.org/downloads/${TAG} -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~alpha amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 S="${WORKDIR}"/nbxmpp-${PV}
