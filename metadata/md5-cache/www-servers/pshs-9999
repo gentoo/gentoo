@@ -1,11 +1,11 @@
 DEFINED_PHASES=configure prepare unpack
-DEPEND=>=dev-libs/libevent-2:0= magic? ( sys-apps/file:0= ) qrcode? ( media-gfx/qrencode:0= ) ssl? ( >=dev-libs/libevent-2.1:0=[ssl] dev-libs/openssl:0= ) upnp? ( net-libs/miniupnpc:0= ) netlink? ( sys-apps/iproute2 >=sys-kernel/linux-headers-2.6.27 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DEPEND=>=dev-libs/libevent-2:0= magic? ( sys-apps/file:0= ) qrcode? ( media-gfx/qrencode:0= ) ssl? ( >=dev-libs/libevent-2.1:0=[ssl] !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) upnp? ( net-libs/miniupnpc:0= ) netlink? ( sys-apps/iproute2 >=sys-kernel/linux-headers-2.6.27 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Pretty small HTTP server -- a command-line tool to share files
 EAPI=5
 HOMEPAGE=https://bitbucket.org/mgorny/pshs/
-IUSE=+magic +netlink qrcode ssl upnp
+IUSE=libressl +magic +netlink qrcode ssl upnp
 LICENSE=BSD
-RDEPEND=>=dev-libs/libevent-2:0= magic? ( sys-apps/file:0= ) qrcode? ( media-gfx/qrencode:0= ) ssl? ( >=dev-libs/libevent-2.1:0=[ssl] dev-libs/openssl:0= ) upnp? ( net-libs/miniupnpc:0= )
+RDEPEND=>=dev-libs/libevent-2:0= magic? ( sys-apps/file:0= ) qrcode? ( media-gfx/qrencode:0= ) ssl? ( >=dev-libs/libevent-2.1:0=[ssl] !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) upnp? ( net-libs/miniupnpc:0= )
 SLOT=0
 _eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	git-r3	1502b9838d043db47700b8120083e637	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
-_md5_=e0b9d15b2840abe70f029128b43c5057
+_md5_=814b1b9c987b2b3b5d1ad900678f3e0a

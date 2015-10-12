@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install preinst prepare
+DEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) )
+DESCRIPTION=Lightweight HTTP server for static content
+EAPI=5
+HOMEPAGE=http://linux.bytesex.org/misc/webfs.html
+IUSE=libressl ssl threads
+KEYWORDS=~amd64 ~ppc ~x86 ~arm-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) app-misc/mime-types
+SLOT=0
+SRC_URI=http://dl.bytesex.org/releases/webfs/webfs-1.21.tar.gz
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_md5_=098480917655c609114ab7533ca89b6e
