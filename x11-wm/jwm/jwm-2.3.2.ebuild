@@ -21,8 +21,8 @@ RDEPEND="xpm? ( x11-libs/libXpm )
 	x11-libs/libXau
 	x11-libs/libXdmcp
 	truetype? ( x11-libs/libXft )
-	png? ( media-libs/libpng:= )
-	jpeg? ( virtual/jpeg:= )
+	png? ( media-libs/libpng:0= )
+	jpeg? ( virtual/jpeg:0= )
 	bidi? ( dev-libs/fribidi )
 	dev-libs/expat"
 DEPEND="${RDEPEND}
