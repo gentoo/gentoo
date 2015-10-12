@@ -79,6 +79,7 @@ pkg_setup() {
 
 src_prepare() {
 	local x
+	local linguas="en_GB ${LINGUAS}"
 	vala_src_prepare
 	sed \
 		-e 's|CFLAGS :|CFLAGS +|g' \
@@ -88,11 +89,10 @@ src_prepare() {
 
 	# remove disabled lenguages from build
 	for x in ${CORE_SUPPORTED_LANGUAGES}; do
-		if ! has ${x} ${LINGUAS}; then
+		if ! has ${x} ${linguas}; then
 			sed -i "/^${x}$/d" "${S}"/po/LINGUAS || die
 		fi
 	done
-	echo en_GB >> "${S}"/po/LINGUAS
 }
 
 src_configure() {
