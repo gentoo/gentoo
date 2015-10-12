@@ -37,6 +37,11 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/gettext-po.h
 )
 
+pkg_setup() {
+	mono-env_pkg_setup
+	java-pkg-opt-2_pkg_setup
+}
+
 src_prepare() {
 	java-pkg-opt-2_src_prepare
 	epunt_cxx
