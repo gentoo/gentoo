@@ -155,15 +155,20 @@ done
 
 eblit-src_unpack-pre() {
 	[[ -n ${GCC_BOOTSTRAP_VER} ]] && use multilib && unpack gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2
+	# Bug 558636 we don't applY the pie works around for 2.22. It shoud have the support.
+	GLIBC_PATCH_EXCLUDE+=" 00_all_0002-workaround-crash-when-handling-signals-in-static-PIE.patch"
+	GLIBC_PATCH_EXCLUDE+=" 00_all_0009-arm-fix-PIC-vs-SHARED-typos.patch"
+	GLIBC_PATCH_EXCLUDE+=" 00_all_0012-disable-PIE-when-checking-for-PIC-default.patch"
 }
 
 eblit-src_prepare-post() {
 	cd "${S}"
 
 	if use hardened ; then
-		einfo "Patching to get working PIE binaries on PIE (hardened) platforms"
-		gcc-specs-pie && epatch "${FILESDIR}"/2.17/glibc-2.17-hardened-pie.patch
-		epatch "${FILESDIR}"/2.20/glibc-2.20-hardened-inittls-nosysenter.patch
+		# Bug 558636 we don't applY the pie works around for 2.22. It shoud have the support.
+		# einfo "Patching to get working PIE binaries on PIE (hardened) platforms"
+		# gcc-specs-pie && epatch "${FILESDIR}"/2.17/glibc-2.17-hardened-pie.patch
+		# epatch "${FILESDIR}"/2.20/glibc-2.20-hardened-inittls-nosysenter.patch
 
 		# We don't enable these for non-hardened as the output is very terse --
 		# it only states that a crash happened.  The default upstream behavior
