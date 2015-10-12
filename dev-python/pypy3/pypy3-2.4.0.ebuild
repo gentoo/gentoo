@@ -16,13 +16,14 @@ SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${P}-src.tar.bz2"
 LICENSE="MIT"
 SLOT="0/$(get_version_component_range 1-2 ${PV})"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="bzip2 gdbm +jit low-memory ncurses sandbox shadowstack sqlite cpu_flags_x86_sse2 tk"
+IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox shadowstack sqlite cpu_flags_x86_sse2 tk"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	virtual/libffi:0=
 	virtual/libintl:0=
 	dev-libs/expat:0=
-	dev-libs/openssl:0=
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:= )
 	bzip2? ( app-arch/bzip2:0= )
 	gdbm? ( sys-libs/gdbm:0= )
 	ncurses? ( =sys-libs/ncurses-5*:0= )
@@ -79,6 +80,7 @@ src_prepare() {
 		"${FILESDIR}/1.9-scripts-location.patch" \
 		"${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch" \
 		"${FILESDIR}"/2.3.1-shared-lib.patch	# 517002
+	epatch "${FILESDIR}"/${PN}-2.4.0-libressl.patch
 
 	epatch_user
 }
