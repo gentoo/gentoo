@@ -50,6 +50,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	>=gnome-base/gnome-common-3.6
 	>=dev-util/intltool-0.50
+	dev-util/itstool
 	sys-apps/paxctl
 	sys-devel/gettext
 	virtual/pkgconfig
@@ -72,8 +73,7 @@ src_configure() {
 		--disable-static \
 		--with-distributor-name=Gentoo \
 		$(use_enable nss) \
-		$(use_enable test tests) \
-		ITSTOOL=$(type -P true)
+		$(use_enable test tests)
 }
 
 src_compile() {
