@@ -13439,7 +13439,7 @@ net-analyzer/snort 2.9.4.6-r1 2.9.5.6 2.9.6.0 2.9.6.1 2.9.6.2 2.9.7.0 2.9.7.2 2.
 net-analyzer/snortalog 2.4.3-r1: a powerful perl script that summarizes snort logs
 net-analyzer/snortsam 2.50-r1 2.70: Snort plugin that allows automated blocking of IP addresses on several firewalls
 net-analyzer/softflowd 0.9.9-r1: flow-based network traffic analyser capable of Cisco NetFlow data export
-net-analyzer/speedtest-cli 0.2.4 0.2.5: Command line interface for testing internet bandwidth using speedtest.net
+net-analyzer/speedtest-cli 0.3.4: Command line interface for testing internet bandwidth using speedtest.net
 net-analyzer/sqlninja 0.2.6_p1-r1: A SQL Server injection & takeover tool
 net-analyzer/squid-graph 3.2-r1: Squid logfile analyzer and traffic grapher
 net-analyzer/squidsites 1.01-r2: A tool that parses Squid access log file and generates a report of the most visited sites
@@ -14037,7 +14037,7 @@ net-mail/cyrus-imap-admin 2.4.17-r1 2.4.18: Utilities and Perl modules to admini
 net-mail/cyrus-imapd 2.4.16 2.4.17 2.4.17-r1 2.4.18 2.5.4 2.5.5 2.5.6: The Cyrus IMAP Server
 net-mail/dbmail 3.2.2 3.2.3: DBMail is an open-source project that enables storage of mail messages in a relational database
 net-mail/dot-forward 0.71-r2 0.71-r3: reads sendmail's .forward files under qmail
-net-mail/dovecot 2.2.9 2.2.16-r1 2.2.18 2.2.18-r1: An IMAP and POP3 server written with security primarily in mind
+net-mail/dovecot 2.2.9 2.2.16-r1 2.2.18 2.2.18-r1 2.2.19: An IMAP and POP3 server written with security primarily in mind
 net-mail/email 2.5.0 3.0.5 3.1.2 3.1.3: Advanced CLI tool for sending email
 net-mail/eps 1.7: Inter7 Email Processing and mht System library
 net-mail/ezmlm-idx 6.0.0 7.0.0 7.0.0-r1 7.0.0-r2: Simple yet powerful mailing list manager for qmail
