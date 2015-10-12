@@ -4,5 +4,6 @@
 <herd>prolog</herd>
 <use>
 	<flag name='archive'>Use libarchive for extension packs</flag>
+	<flag name='uuid'>Use ossp-uuid for UUID pack</flag>
 </use>
 </pkgmetadata>
