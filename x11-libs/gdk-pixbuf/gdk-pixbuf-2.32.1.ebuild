@@ -50,10 +50,6 @@ src_prepare() {
 	# Upstream patches from 2.32.x
 	epatch "${FILESDIR}"/${P}-gint64-shift-overflow.patch
 
-	# ERROR: cve-2015-4491 - missing test plan
-	# FIXME - check if this works in 2.31.7
-	# $sed -e 's/cve-2015-4491$(EXEEXT)//' -i tests/Makefile.in || die
-
 	# This will avoid polluting the pkg-config file with versioned libpng,
 	# which is causing problems with libpng14 -> libpng15 upgrade
 	# See upstream bug #667068
