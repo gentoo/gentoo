@@ -53,7 +53,7 @@ src_install() {
 		fperms 770 /var/spool/vacation/vacation.pl-${SLOT}
 		dodoc VIRTUAL_VACATION/FILTER_README
 		newdoc VIRTUAL_VACATION/INSTALL.TXT VIRTUAL_VACATION_INSTALL.TXT
-		rm -r VIRTUAL_VACATION/{vacation.pl,INSTALL.TXT,tests,FILTER_README}
+		rm -r VIRTUAL_VACATION/{vacation.pl,INSTALL.TXT,tests,FILTER_README} || die
 	fi
 
 	insinto /usr/share/doc/${PF}/
@@ -80,7 +80,7 @@ pkg_postinst() {
 		chown vacation:vacation "${ROOT}"/var/spool/vacation/
 		einfo "/var/spool/vacation/vacation.pl symlink was updated to:"
 		einfo "/var/spool/vacation/vacation.pl-${SLOT}"
-		ln -sf "${ROOT}"/var/spool/vacation/vacation.pl{-${SLOT},}
+		ln -sf "${ROOT}"/var/spool/vacation/vacation.pl{-${SLOT},} || die
 	fi
 }
 
@@ -90,7 +90,7 @@ pkg_postrm() {
 	if [[ ! -e "${ROOT}"/var/spool/vacation/vacation.pl ]] &&
 		path_exists "${ROOT}"/var/spool/vacation/vacation.pl-*; then
 		ln -s $(LC_ALL=C ls -1 /var/spool/vacation/vacation.pl-* | tail -n1) \
-			"${ROOT}"/var/spool/vacation/vacation.pl
+			"${ROOT}"/var/spool/vacation/vacation.pl || die
 		ewarn "/var/spool/vacation/vacation.pl was updated to point on most"
 		ewarn "recent verion, but please, do your own checks"
 	fi
