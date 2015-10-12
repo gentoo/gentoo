@@ -4,7 +4,10 @@
 
 EAPI=5
 
-inherit autotools-utils
+FORTRAN_NEEDED=fortran
+FORTRAN_STANDARD=90
+
+inherit autotools-utils fortran-2
 
 if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="git://github.com/losalamos/${PN}.git https://github.com/losalamos/${PN}.git"
