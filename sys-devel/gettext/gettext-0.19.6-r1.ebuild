@@ -54,6 +54,7 @@ multilib_src_configure() {
 		--cache-file="${BUILD_DIR}"/config.cache
 		--docdir="/usr/share/doc/${PF}"
 
+		$(use_enable cxx c++)
 		$(use_enable cxx libasprintf)
 		$(use_enable java)
 		$(use_enable static-libs static)
@@ -71,7 +72,6 @@ multilib_src_configure() {
 			--enable-nls
 		)
 	fi
-	use cxx || export CXX=$(tc-getCC)
 
 	local ECONF_SOURCE=${S}
 	if ! multilib_is_native_abi ; then
