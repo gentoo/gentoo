@@ -68,9 +68,6 @@ multilib_src_configure() {
 	fi
 	use cxx || export CXX=$(tc-getCC)
 
-	# Should be able to drop this hack in next release. #333887
-	tc-is-cross-compiler && export gl_cv_func_working_acl_get_file=yes
-
 	local ECONF_SOURCE=${S}
 	if ! multilib_is_native_abi ; then
 		# for non-native ABIs, we build runtime only
