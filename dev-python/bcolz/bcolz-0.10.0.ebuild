@@ -18,9 +18,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 # numexpr is optional but set hard rdepend
-RDEPEND=">=dev-python/numpy-1.7[${PYTHON_USEDEP}]
+RDEPEND="
+	>=dev-python/numpy-1.7[${PYTHON_USEDEP}]
+	<dev-python/numpy-1.10[${PYTHON_USEDEP}]
 	>=dev-python/numexpr-1.4.1[${PYTHON_USEDEP}]"
-DEPEND=">=dev-python/cython-0.22[${PYTHON_USEDEP}]
+DEPEND="
+	>=dev-python/cython-0.22[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
