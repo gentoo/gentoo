@@ -44,7 +44,8 @@ src_configure() {
 		--with-autosave6="${EPREFIX}/var/lib/ip6tables/rules-save" \
 		$(use_enable doc) \
 		IP6TABLES_CMD=/bin/false \
-		IP6TABLES_SAVE_CMD=/bin/false
+		IP6TABLES_SAVE_CMD=/bin/false \
+		IP6TABLES_RESTORE_CMD=/bin/false
 }
 
 src_install() {
