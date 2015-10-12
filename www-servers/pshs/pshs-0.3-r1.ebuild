@@ -4,12 +4,6 @@
 
 EAPI=5
 
-#if LIVE
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
-
-inherit autotools git-r3
-#endif
-
 DESCRIPTION="Pretty small HTTP server -- a command-line tool to share files"
 HOMEPAGE="https://bitbucket.org/mgorny/pshs/"
 SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
@@ -31,13 +25,6 @@ DEPEND="${RDEPEND}
 	netlink? ( sys-apps/iproute2
 		>=sys-kernel/linux-headers-2.6.27 )"
 # libnetlink is static only ATM
-
-#if LIVE
-KEYWORDS=
-SRC_URI=
-
-src_prepare() { eautoreconf; }
-#endif
 
 src_configure() {
 	local myconf=(
