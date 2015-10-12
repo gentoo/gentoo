@@ -54,9 +54,25 @@ multilib_src_configure() {
 		--cache-file="${BUILD_DIR}"/config.cache
 		--docdir="/usr/share/doc/${PF}"
 
+		# Emacs support is now in a separate package
+		--without-emacs
+		--without-lispdir
+		# glib depends on us so avoid circular deps
+		--with-included-glib
+		# libcroco depends on glib which ... ^^^
+		--with-included-libcroco
+		# this will _disable_ libunistring (since it is not bundled),
+		# see bug #326477
+		--with-included-libunistring
+
+		$(use_enable acl)
 		$(use_enable cxx c++)
 		$(use_enable cxx libasprintf)
+		$(use_with git)
+		$(usex git --without-cvs $(use_with cvs))
 		$(use_enable java)
+		$(use_enable ncurses curses)
+		$(use_enable openmp)
 		$(use_enable static-libs static)
 	)
 
@@ -77,26 +93,6 @@ multilib_src_configure() {
 	if ! multilib_is_native_abi ; then
 		# for non-native ABIs, we build runtime only
 		ECONF_SOURCE+=/gettext-runtime
-	else
-		# remaining switches
-		myconf+=(
-			# Emacs support is now in a separate package
-			--without-emacs
-			--without-lispdir
-			# glib depends on us so avoid circular deps
-			--with-included-glib
-			# libcroco depends on glib which ... ^^^
-			--with-included-libcroco
-			# this will _disable_ libunistring (since it is not bundled),
-			# see bug #326477
-			--with-included-libunistring
-
-			$(use_enable acl)
-			$(use_enable ncurses curses)
-			$(use_enable openmp)
-			$(use_with git)
-			$(usex git --without-cvs $(use_with cvs))
-		)
 	fi
 
 	econf "${myconf[@]}"
