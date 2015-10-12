@@ -19,16 +19,18 @@ else
 	S="${WORKDIR}/${MY_P}"
 fi
 
-SONAME="135"
+SONAME="148"
 SLOT="0/${SONAME}"
 
 LICENSE="GPL-2"
-IUSE="10bit +interlaced pic static-libs cpu_flags_x86_sse +threads"
+IUSE="10bit +interlaced opencl pic static-libs cpu_flags_x86_sse +threads"
 
 ASM_DEP=">=dev-lang/yasm-1.2.0"
 DEPEND="abi_x86_32? ( ${ASM_DEP} )
-	abi_x86_64? ( ${ASM_DEP} )"
-RDEPEND="abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20130224-r7
+	abi_x86_64? ( ${ASM_DEP} )
+	opencl? ( dev-lang/perl )"
+RDEPEND="opencl? ( >=virtual/opencl-0-r3[${MULTILIB_USEDEP}] )
+	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20130224-r7
 		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
 
 DOCS="AUTHORS doc/*.txt"
@@ -36,7 +38,7 @@ DOCS="AUTHORS doc/*.txt"
 src_prepare() {
 	# Initial support for x32 ABI, bug #420241
 	# Avoid messing too much with CFLAGS.
-	epatch "${FILESDIR}"/${P}-cflags.patch
+	epatch "${FILESDIR}"/x264-0.0.20151011-cflags.patch
 }
 
 multilib_src_configure() {
@@ -49,6 +51,7 @@ multilib_src_configure() {
 
 	# Upstream uses this, see the cflags patch
 	use cpu_flags_x86_sse && append-flags "-msse" "-mfpmath=sse"
+	append-flags "-ffast-math"
 
 	"${S}/configure" \
 		--prefix="${EPREFIX}"/usr \
@@ -64,7 +67,7 @@ multilib_src_configure() {
 		--host="${CHOST}" \
 		$(usex 10bit "--bit-depth=10" "") \
 		$(usex interlaced "" "--disable-interlaced") \
-		--disable-opencl \
+		$(usex opencl "" "--disable-opencl") \
 		$(usex static-libs "--enable-static" "") \
 		$(usex threads "" "--disable-thread") \
 		${asm_conf} || die

@@ -4,73 +4,66 @@
 
 EAPI=5
 
-inherit flag-o-matic multilib toolchain-funcs
+inherit flag-o-matic multilib toolchain-funcs eutils
 
-DESCRIPTION="A free library for encoding X264/AVC streams"
+DESCRIPTION="A free commandline encoder for X264/AVC streams"
 HOMEPAGE="http://www.videolan.org/developers/x264.html"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-2
 	EGIT_REPO_URI="git://git.videolan.org/x264.git"
-	SLOT="0"
+	SRC_URI=""
 else
 	inherit versionator
 	MY_P="x264-snapshot-$(get_version_component_range 3)-2245"
 	SRC_URI="http://download.videolan.org/pub/videolan/x264/snapshots/${MY_P}.tar.bz2"
-	KEYWORDS="alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-
-	SONAME="132"
-	SLOT="0/${SONAME}"
-
+	KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 	S="${WORKDIR}/${MY_P}"
 fi
 
 LICENSE="GPL-2"
-IUSE="10bit custom-cflags +interlaced pic static-libs +threads"
+SLOT="0"
+IUSE="10bit avs custom-cflags ffmpeg ffmpegsource +interlaced mp4 +threads"
+
+REQUIRED_USE="ffmpegsource? ( ffmpeg )"
+
+RDEPEND="ffmpeg? ( virtual/ffmpeg )
+	~media-libs/x264-${PV}[10bit=,interlaced=,threads=]
+	ffmpegsource? ( media-libs/ffmpegsource )
+	mp4? ( >=media-video/gpac-0.5.2 )"
 
 ASM_DEP=">=dev-lang/yasm-1.2.0"
-DEPEND="amd64? ( ${ASM_DEP} )
-	amd64-fbsd? ( ${ASM_DEP} )
+DEPEND="${RDEPEND}
+	amd64? ( ${ASM_DEP} )
 	x86? ( ${ASM_DEP} )
-	x86-fbsd? ( ${ASM_DEP} )"
-
-DOCS="AUTHORS doc/*.txt"
+	x86-fbsd? ( ${ASM_DEP} )
+	virtual/pkgconfig"
 
 src_prepare() {
-	# Initial support for x32 ABI, bug #420241
-	epatch "${FILESDIR}"/x264-x32.patch
+	epatch "${FILESDIR}/gpac.patch"
 }
 
 src_configure() {
 	tc-export CC
-	local asm_conf=""
 
 	# let upstream pick the optimization level by default
 	use custom-cflags || filter-flags -O?
 
-	if use x86 && use pic || [[ ${ABI} == "x32" ]]; then
-		asm_conf=" --disable-asm"
-	fi
-
 	./configure \
 		--prefix="${EPREFIX}"/usr \
 		--libdir="${EPREFIX}"/usr/$(get_libdir) \
-		--disable-cli \
-		--disable-avs \
-		--disable-lavf \
-		--disable-swscale \
-		--disable-ffms \
-		--disable-gpac \
-		--enable-pic \
-		--enable-shared \
+		--system-libx264 \
 		--host="${CHOST}" \
+		--disable-lsmash \
 		$(usex 10bit "--bit-depth=10" "") \
+		$(usex avs "" "--disable-avs") \
+		$(usex ffmpeg "" "--disable-lavf --disable-swscale") \
+		$(usex ffmpegsource "" "--disable-ffms") \
 		$(usex interlaced "" "--disable-interlaced") \
-		$(usex static-libs "" "--enable-static") \
-		$(usex threads "" "--disable-thread") \
-		${asm_conf} || die
+		$(usex mp4 "" "--disable-gpac") \
+		$(usex threads "" "--disable-thread") || die
 
-	# this is a nasty workaround for bug #376925 as upstream doesn't like us
-	# fiddling with their CFLAGS
+	# this is a nasty workaround for bug #376925 for x264 that also applies
+	# here, needed because as upstream doesn't like us fiddling with their CFLAGS
 	if use custom-cflags; then
 		local cflags
 		cflags="$(grep "^CFLAGS=" config.mak | sed 's/CFLAGS=//')"
