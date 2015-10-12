@@ -25,11 +25,7 @@ DEPEND=">=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
 RDEPEND="${DEPEND}
 	!git? ( cvs? ( dev-vcs/cvs ) )
 	git? ( dev-vcs/git )
-	java? ( >=virtual/jre-1.4 )
-	abi_x86_32? (
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-		!<=app-emulation/emul-linux-x86-baselibs-20131008-r11
-	)"
+	java? ( >=virtual/jre-1.4 )"
 PDEPEND="emacs? ( app-emacs/po-mode )"
 
 MULTILIB_WRAPPED_HEADERS=(
