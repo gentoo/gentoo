@@ -195,6 +195,7 @@ psyco
 userland_BSD
 
 elibc_AIX
+elibc_bionic
 elibc_Cygwin
 elibc_Darwin
 elibc_DragonFly
