@@ -316,7 +316,7 @@ app-arch/undms 1.3-r1: Decompress Amiga DMS disk images to ADF
 app-arch/unlzx 1.1: Unarchiver for Amiga LZX archives
 app-arch/unmakeself 1.1: Makeself archive extractor
 app-arch/unp 2.0_pre7 2.0_pre7_p1: Script for unpacking various file formats
-app-arch/unrar 5.1.6 5.2.7 5.3.2 5.3.3: Uncompress rar files
+app-arch/unrar 5.1.6 5.2.7 5.3.3 5.3.6: Uncompress rar files
 app-arch/unrar-gpl 0.0.1_p20080417-r1 0.0.1_p20080417-r2: Free rar unpacker for old (pre v3) rar files
 app-arch/unrpa 1.4.1 9999: Ren'Py's RPA data file extractor
 app-arch/unshield 0.6_p20120308 0.6_p20120308-r1: InstallShield CAB file extractor
@@ -8570,7 +8570,7 @@ dev-ruby/memoize 1.3.1-r1: A Ruby library that lets you memoize methods
 dev-ruby/mercenary 0.3.5: Lightweight and flexible library for writing command-line apps
 dev-ruby/metaclass 0.0.1-r1 0.0.4: Adds a __metaclass__ method to all Ruby objects
 dev-ruby/metaid 1.0-r3: An aid to Ruby metaprogramming
-dev-ruby/metasm 1.0.2-r1: cross-architecture assembler, disassembler, linker, and debugger
+dev-ruby/metasm 1.0.2-r1 1.0.2-r2: cross-architecture assembler, disassembler, linker, and debugger
 dev-ruby/metasploit-concern 1.0.0: Metasploit concern allows you to define concerns in app/concerns.
 dev-ruby/metasploit-credential 1.0.0 1.0.1: Code for modeling and managing credentials in Metasploit
 dev-ruby/metasploit-model 1.0.0: Common code, such as validators and mixins
@@ -8763,7 +8763,7 @@ dev-ruby/ruby-rc4 0.1.5-r1 0.1.5-r2: A pure Ruby implementation of the Rc4 algor
 dev-ruby/ruby-romkan 0.4-r5 0.4-r6: A Romaji <-> Kana conversion library for Ruby
 dev-ruby/ruby-rsvg 2.2.3 2.2.3-r1 2.2.5 3.0.7: Ruby bindings for librsvg
 dev-ruby/ruby-sdl 2.1.2-r1 2.1.2-r2: Ruby/SDL: Ruby bindings for SDL
-dev-ruby/ruby-shadow 2.3.4 2.4.1: ruby shadow bindings
+dev-ruby/ruby-shadow 2.3.4 2.4.1 2.5.0: ruby shadow bindings
 dev-ruby/ruby-shout 2.2.1-r1 2.2.1-r2: A Ruby interface to libshout2
 dev-ruby/ruby-tcpwrap 0.6-r2 0.6-r3: A TCP wrappers library for Ruby
 dev-ruby/ruby-termios 1.0.0 1.0.0-r1: A Ruby interface to termios
@@ -8786,11 +8786,11 @@ dev-ruby/rubyzip 0.9.9-r1 0.9.9-r2 1.1.7 1.1.7-r1: A ruby library for reading an
 dev-ruby/safe_yaml 1.0.4 1.0.4-r1 1.0.4-r2: Parse YAML safely, without that pesky arbitrary object deserialization vulnerability
 dev-ruby/samuel 0.3.3-r1 0.3.3-r2: An automatic logger for HTTP requests in Ruby
 dev-ruby/sanitize 2.0.6-r1 2.1.0 4.0.0-r1: Sanitize is a whitelist-based HTML sanitizer
-dev-ruby/sass 3.2.19-r1 3.2.19-r2 3.3.14 3.3.14-r1 3.4.15 3.4.17 3.4.18: An extension of CSS3, adding nested rules, variables, mixins, selector inheritance, and more
+dev-ruby/sass 3.2.19-r1 3.2.19-r2 3.3.14 3.3.14-r1 3.4.15 3.4.17 3.4.18 3.4.19: An extension of CSS3, adding nested rules, variables, mixins, selector inheritance, and more
 dev-ruby/sass-rails 3.2.6 4.0.5 5.0.3 5.0.4: Official Ruby-on-Rails Integration with Sass
 dev-ruby/sdoc 0.3.20 0.4.1: rdoc generator html with javascript search index
 dev-ruby/seed-fu 2.2.0 2.3.3 2.3.4 2.3.5: Advanced seed data handling for Rails, combining the best practices of several methods together
-dev-ruby/selenium-webdriver 2.45.0 2.46.2 2.47.0 2.47.1: This gem provides Ruby bindings for WebDriver
+dev-ruby/selenium-webdriver 2.45.0 2.46.2 2.47.0 2.47.1 2.48.0: This gem provides Ruby bindings for WebDriver
 dev-ruby/semantic_puppet 0.1.1: Library of useful tools for working with Semantic Versions and module dependencies.
 dev-ruby/serialport 1.3.0 1.3.1: a library for serial port (rs232) access in ruby
 dev-ruby/session 3.1.2 3.2.0: A set of classes to drive external programs via pipe
