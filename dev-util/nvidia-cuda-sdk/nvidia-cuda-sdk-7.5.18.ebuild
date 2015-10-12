@@ -6,7 +6,7 @@ EAPI=5
 
 inherit cuda eutils flag-o-matic portability toolchain-funcs unpacker versionator
 
-MYD=$(get_version_component_range 1)_$(get_version_component_range 2)
+MYD=$(get_version_component_range 1-2)
 
 DESCRIPTION="NVIDIA CUDA Software Development Kit"
 HOMEPAGE="https://developer.nvidia.com/cuda-downloads"
