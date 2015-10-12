@@ -202,6 +202,10 @@ src_prepare() {
 		epatch "${FILESDIR}"/${PN}-3.7-lldb_python.patch
 		sed -e "s/GENTOO_LIBDIR/$(get_libdir)/" \
 			-i tools/lldb/scripts/Python/finishSwigPythonLLDB.py || die
+
+		# Fix build with ncurses[tinfo], #560474
+		# http://llvm.org/viewvc/llvm-project?view=revision&revision=247842
+		epatch "${FILESDIR}"/cmake/${P}-lldb_tinfo.patch
 	fi
 
 	# User patches
