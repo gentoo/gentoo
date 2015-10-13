@@ -5105,7 +5105,7 @@ dev-perl/Algorithm-ClusterPoints 0.80.0: Find clusters inside a set of points
 dev-perl/Algorithm-Dependency 1.110.0-r1: Toolkit for implementing dependency systems
 dev-perl/Algorithm-Diff 1.190.200-r1 1.190.300: Compute intelligent differences between two files / lists
 dev-perl/Algorithm-Munkres 0.80.0-r1: Munkres solution to classical Assignment problem
-dev-perl/Alien-SDL 1.440.0 1.444.0 1.446.0: building, finding and using SDL binaries
+dev-perl/Alien-SDL 1.446.0: building, finding and using SDL binaries
 dev-perl/Alien-wxWidgets 0.640.0-r1 0.670.0: Building, finding and using wxWidgets binaries
 dev-perl/Any-Moose 0.210.0 0.260.0: Use Moose or Mouse modules (DEPRECATED)
 dev-perl/AnyEvent 7.40.0-r1 7.80.0: Provides a uniform interface to various event loops
