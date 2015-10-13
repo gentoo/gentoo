@@ -44,7 +44,7 @@ src_unpack() {
 
 	if use dvbscan; then
 		mkdir "${S}/data/dvb-scan" || die
-		cd "${T}"
+		cd "${T}" || die
 		unpack dtv-scan-tables-2015-02-08-f2053b3.tar.bz2
 		rmdir "${S}/data/dvb-scan" || die
 		mv "${T}/usr/share/dvb" "${S}/data/dvb-scan" || die
