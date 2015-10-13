@@ -6,6 +6,9 @@ EAPI="5"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE=threads
+DISTUTILS_SINGLE_IMPL=yesplz
+DISTUTILS_OPTIONAL=yesplz
+DISTUTILS_IN_SOURCE_BUILD=yesplz
 
 USE_PHP="php5-4"
 
@@ -13,7 +16,7 @@ PHP_EXT_NAME="xapian"
 PHP_EXT_INI="yes"
 PHP_EXT_OPTIONAL_USE="php"
 
-inherit java-pkg-opt-2 mono-env php-ext-source-r2 python-single-r1
+inherit autotools distutils-r1 libtool java-pkg-opt-2 mono-env php-ext-source-r2
 
 DESCRIPTION="SWIG and JNI bindings for Xapian"
 HOMEPAGE="http://www.xapian.org/"
@@ -37,7 +40,7 @@ DEPEND="${COMMONDEPEND}
 RDEPEND="${COMMONDEPEND}
 	java? ( >=virtual/jre-1.3 )"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 pkg_setup() {
 	mono-env_pkg_setup
@@ -53,6 +56,8 @@ src_prepare() {
 			-e 's|\(^xapian/__init__.py: modern/xapian.py\)|\1 xapian/_xapian$(PYTHON_SO)|' \
 			-i python/Makefile.in || die "sed failed"
 	fi
+
+	eautoreconf
 }
 
 src_configure() {
@@ -81,7 +86,7 @@ src_configure() {
 }
 
 src_compile() {
-	local -x PYTHONDONTWRITEBYTECODE
+	local -x PYTHONDONTWRITEBYTECODE=
 	default
 }
 
@@ -91,10 +96,8 @@ src_install() {
 	if use java; then
 		java-pkg_dojar java/built/xapian_jni.jar
 		# TODO: make the build system not install this...
-		java-pkg_doso "${D}/${S}/java/built/libxapian_jni.so"
-		rm "${D}/${S}/java/built/libxapian_jni.so"
-		rmdir -p "${D}/${S}/java/built"
-		rmdir -p "${D}/${S}/java/native"
+		java-pkg_doso java/.libs/libxapian_jni.so
+		rm -rf "${D}var" || die "could not remove java cruft!"
 	fi
 
 	if use php; then
