@@ -17,11 +17,10 @@ IUSE="test"
 
 RDEPEND="dev-libs/apr:1
 	dev-libs/openssl:=
-	>=virtual/jre-1.7
-	test? ( dev-java/ant-junit:0 )"
+	>=virtual/jre-1.7"
 
 DEPEND=">=virtual/jdk-1.7
-	${RDEPEND}"
+	test? ( dev-java/ant-junit:0 )"
 
 S=${WORKDIR}/${P}-src/jni
 
