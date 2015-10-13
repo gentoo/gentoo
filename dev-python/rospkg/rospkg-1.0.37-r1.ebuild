@@ -41,6 +41,7 @@ DEPEND="${RDEPEND}
 "
 PATCHES=(
 	"${FILESDIR}/norecurse.patch"
+	"${FILESDIR}/py3.patch"
 )
 
 python_test() {
