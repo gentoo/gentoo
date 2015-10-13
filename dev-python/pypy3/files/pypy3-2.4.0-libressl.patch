@@ -1,0 +1,187 @@
+From 66bef80988c9efe60b61c6bc05f3206b4c3df7e8 Mon Sep 17 00:00:00 2001
+From: hasufell <hasufell@gentoo.org>
+Date: Mon, 12 Oct 2015 20:43:50 +0200
+Subject: [PATCH] Add LibreSSL support, patches backported from upstream
+
+https://bitbucket.org/pypy/pypy/pull-requests/333/deal-with-platforms-without-rand_egd-take/diff
+---
+ pypy/module/_ssl/interp_ssl.py                 | 34 +++++++++++++++-----------
+ pypy/module/_ssl/test/test_ssl.py              |  8 +++---
+ rpython/rlib/ropenssl.py                       |  6 ++++-
+ rpython/rtyper/tool/rffi_platform.py           | 12 ++++++---
+ rpython/rtyper/tool/test/test_rffi_platform.py | 24 +++++++++++++++++-
+ 5 files changed, 61 insertions(+), 23 deletions(-)
+
+diff --git a/pypy/module/_ssl/interp_ssl.py b/pypy/module/_ssl/interp_ssl.py
+index 0cac165..f210167 100644
+--- a/pypy/module/_ssl/interp_ssl.py
++++ b/pypy/module/_ssl/interp_ssl.py
+@@ -310,20 +310,26 @@ if HAVE_OPENSSL_RAND:
+         res = libssl_RAND_status()
+         return space.wrap(res)
+ 
+-    @unwrap_spec(path=str)
+-    def RAND_egd(space, path):
+-        """RAND_egd(path) -> bytes
+-
+-        Queries the entropy gather daemon (EGD) on socket path.  Returns number
+-        of bytes read.  Raises socket.sslerror if connection to EGD fails or
+-        if it does provide enough data to seed PRNG."""
+-        with rffi.scoped_str2charp(path) as socket_path:
+-            bytes = libssl_RAND_egd(socket_path)
+-        if bytes == -1:
+-            raise ssl_error(space,
+-                            "EGD connection failed or EGD did not return "
+-                            "enough data to seed the PRNG")
+-        return space.wrap(bytes)
++    if HAVE_OPENSSL_RAND_EGD:
++        @unwrap_spec(path=str)
++        def RAND_egd(space, path):
++            """RAND_egd(path) -> bytes
++
++            Queries the entropy gather daemon (EGD) on socket path.  Returns number
++            of bytes read.  Raises socket.sslerror if connection to EGD fails or
++            if it does provide enough data to seed PRNG."""
++            with rffi.scoped_str2charp(path) as socket_path:
++                bytes = libssl_RAND_egd(socket_path)
++            if bytes == -1:
++                raise ssl_error(space,
++                                "EGD connection failed or EGD did not return "
++                                "enough data to seed the PRNG")
++            return space.wrap(bytes)
++    else:
++        # Dummy func for platforms missing RAND_egd(). Most likely LibreSSL.
++        @unwrap_spec(path=str)
++        def RAND_egd(space, path):
++            raise ssl_error(space, "RAND_egd unavailable")
+ 
+ 
+ class SSLSocket(W_Root):
+diff --git a/pypy/module/_ssl/test/test_ssl.py b/pypy/module/_ssl/test/test_ssl.py
+index 3204610..9722fd5 100644
+--- a/pypy/module/_ssl/test/test_ssl.py
++++ b/pypy/module/_ssl/test/test_ssl.py
+@@ -33,7 +33,8 @@ class AppTestSSL:
+         assert isinstance(_ssl.OPENSSL_VERSION_INFO, tuple)
+         assert len(_ssl.OPENSSL_VERSION_INFO) == 5
+         assert isinstance(_ssl.OPENSSL_VERSION, str)
+-        assert 'openssl' in _ssl.OPENSSL_VERSION.lower()
++        lower_version = _ssl.OPENSSL_VERSION.lower()
++        assert 'openssl' in lower_version or "libressl" in lower_version
+ 
+     def test_RAND_add(self):
+         import _ssl
+@@ -64,8 +65,9 @@ class AppTestSSL:
+ 
+     def test_sslwrap(self):
+         import ssl, _socket, sys, gc
+-        if sys.platform == 'darwin' or 'freebsd' in sys.platform:
+-            skip("hangs indefinitely on OSX & FreeBSD (also on CPython)")
++        if sys.platform == 'darwin' or 'freebsd' in sys.platform or \
++                'openbsd' in sys.platform:
++            skip("hangs indefinitely on OSX & BSD (also on CPython)")
+         s = _socket.socket()
+         ss = ssl.wrap_socket(s)
+ 
+diff --git a/rpython/rlib/ropenssl.py b/rpython/rlib/ropenssl.py
+index c36779d..6fe45d0 100644
+--- a/rpython/rlib/ropenssl.py
++++ b/rpython/rlib/ropenssl.py
+@@ -168,6 +168,9 @@ OBJ_NAME = rffi.CArrayPtr(OBJ_NAME_st)
+ 
+ HAVE_OPENSSL_RAND = OPENSSL_VERSION_NUMBER >= 0x0090500f
+ HAVE_SSL_CTX_CLEAR_OPTIONS = OPENSSL_VERSION_NUMBER >= 0x009080df
++HAVE_OPENSSL_RAND_EGD = rffi_platform.has('RAND_egd("/")',
++                                          '#include <openssl/rand.h>',
++                                          libraries=['ssl', 'crypto'])
+ 
+ def external(name, argtypes, restype, **kw):
+     kw['compilation_info'] = eci
+@@ -194,7 +197,8 @@ ssl_external('CRYPTO_set_id_callback',
+ if HAVE_OPENSSL_RAND:
+     ssl_external('RAND_add', [rffi.CCHARP, rffi.INT, rffi.DOUBLE], lltype.Void)
+     ssl_external('RAND_status', [], rffi.INT)
+-    ssl_external('RAND_egd', [rffi.CCHARP], rffi.INT)
++    if HAVE_OPENSSL_RAND_EGD:
++        ssl_external('RAND_egd', [rffi.CCHARP], rffi.INT)
+ ssl_external('SSL_CTX_new', [SSL_METHOD], SSL_CTX)
+ ssl_external('SSL_get_SSL_CTX', [SSL], SSL_CTX)
+ ssl_external('TLSv1_method', [], SSL_METHOD)
+diff --git a/rpython/rtyper/tool/rffi_platform.py b/rpython/rtyper/tool/rffi_platform.py
+index 1760877..1d56c20 100755
+--- a/rpython/rtyper/tool/rffi_platform.py
++++ b/rpython/rtyper/tool/rffi_platform.py
+@@ -17,12 +17,15 @@ from rpython.rlib.rarithmetic import r_uint, r_longlong, r_ulonglong, intmask
+ #
+ # Helpers for simple cases
+ 
+-def eci_from_header(c_header_source, include_dirs=None):
++def eci_from_header(c_header_source, include_dirs=None, libraries=None):
+     if include_dirs is None:
+         include_dirs = []
++    if libraries is None:
++        libraries = []
+     return ExternalCompilationInfo(
+         post_include_bits=[c_header_source],
+-        include_dirs=include_dirs
++        include_dirs=include_dirs,
++        libraries=libraries,
+     )
+ 
+ def getstruct(name, c_header_source, interesting_fields):
+@@ -75,9 +78,10 @@ def getintegerfunctionresult(function, args=None, c_header_source='', includes=[
+         CConfig._compilation_info_.includes = includes
+     return configure(CConfig)['RESULT']
+ 
+-def has(name, c_header_source, include_dirs=None):
++def has(name, c_header_source, include_dirs=None, libraries=None):
+     class CConfig:
+-        _compilation_info_ = eci_from_header(c_header_source, include_dirs)
++        _compilation_info_ = \
++            eci_from_header(c_header_source, include_dirs, libraries)
+         HAS = Has(name)
+     return configure(CConfig)['HAS']
+ 
+diff --git a/rpython/rtyper/tool/test/test_rffi_platform.py b/rpython/rtyper/tool/test/test_rffi_platform.py
+index bfa069e..4feae87 100644
+--- a/rpython/rtyper/tool/test/test_rffi_platform.py
++++ b/rpython/rtyper/tool/test/test_rffi_platform.py
+@@ -271,12 +271,34 @@ def test_array():
+                                        [("d_name", lltype.FixedSizeArray(rffi.CHAR, 1))])
+     assert dirent.c_d_name.length == 32
+ 
+-def test_has():
++def test_has_0001():
+     assert rffi_platform.has("x", "int x = 3;")
+     assert not rffi_platform.has("x", "")
+     # has() should also not crash if it is given an invalid #include
+     assert not rffi_platform.has("x", "#include <some/path/which/cannot/exist>")
+ 
++def test_has_0002():
++    assert rffi_platform.has("pow", "#include <math.h>", libraries=["m"])
++
++def test_has_0003():
++    """multiple libraries"""
++    assert rffi_platform.has("pow", "#include <math.h>", libraries=["m", "c"])
++
++def test_has_0004():
++    """bogus symbol name"""
++    assert not rffi_platform.has("pow", "#include <math.h>",
++                                 libraries=["boguslibname"])
++
++def test_has_0005():
++    """bogus symbol name and lib name"""
++    assert not rffi_platform.has("bogus_symbol_name", "#include <math.h>",
++                                 libraries=["boguslibname"])
++
++def test_has_0006():
++    """missing include"""
++    assert not rffi_platform.has("pow", "", libraries=["m"])
++
++
+ def test_verify_eci():
+     eci = ExternalCompilationInfo()
+     rffi_platform.verify_eci(eci)
+-- 
+2.6.1
+
