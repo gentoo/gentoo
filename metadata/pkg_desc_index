@@ -13006,7 +13006,7 @@ media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the comm
 media-tv/nvtv 0.4.7-r1: TV-Out for NVidia cards
 media-tv/shoutcast2vdr 0.0.8 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvbrowser 3.4.1.0-r1 9999-r1: Themeable and easy to use TV Guide - written in Java
-media-tv/tvheadend 2.12 3.2 3.4.27 9999: Tvheadend is a TV streaming server and digital video recorder
+media-tv/tvheadend 3.4.27 4.0.6 9999: Tvheadend is a TV streaming server and digital video recorder
 media-tv/tvmovie2vdr 0.5.13: load the program guide from tvmovie and others to vdr
 media-tv/tvnamer 2.3: Automatic TV episode file renamer, data from thetvdb.com
 media-tv/v4l-dvb-saa716x 0.0.1_p20140322 0.0.1_p20141109 0.0.1_p20141109-r1 0.0.1_p20141109-r2: driver for saa716x based dvb cards like Technotrend S2-6400 or Technisat Skystar 2 eXpress HD
