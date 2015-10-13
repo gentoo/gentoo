@@ -19,13 +19,17 @@ DEPEND="nls? ( sys-devel/gettext )"
 RDEPEND=">=app-shells/bash-2.04"
 
 src_prepare() {
-	# See bug 93568
-	use nls || epatch "${FILESDIR}"/${P}-disable-nls.patch
+	# bug #562856
+	epatch "${FILESDIR}"/"${P}-textdomaindir.patch"
+
+	# bug #93568
+	use nls || epatch "${FILESDIR}"/"${P}-disable-nls.patch"
+
 	use cjk && sed -i -e 's/\xa4/:+:/g' "${S}"/${P}.sh
 }
 
 src_install() {
-	emake DESTDIR="${D}" MANDIR="${D}"/usr/share/man/man1 || die
-	dodoc Changelog NEWS README README.japanese TODO || die
-	newman txt2regex.man txt2regex.6 || die
+	emake install DESTDIR="${D}" MANDIR="${D}"/usr/share/man/man1 install
+	dodoc Changelog NEWS README README.japanese TODO
+	newman txt2regex.man txt2regex.6
 }

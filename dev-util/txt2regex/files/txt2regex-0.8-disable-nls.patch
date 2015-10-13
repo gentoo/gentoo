@@ -1,13 +1,12 @@
-diff -ur txt2regex-0.8/Makefile txt2regex-0.8.nonls/Makefile
---- txt2regex-0.8/Makefile	2004-09-28 16:04:55 -0500
-+++ txt2regex-0.8.nonls/Makefile	2005-05-14 15:28:38 -0500
-@@ -80,15 +80,8 @@
+--- Makefile.orig	2015-10-13 20:09:55.612486000 +0000
++++ Makefile	2015-10-13 20:11:19.166486000 +0000
+@@ -81,15 +81,9 @@
  	rm -rf $(DISTDIR)
  
  #TODO install man page and README
 -install: mo
--	@[ -d $(LOCALEDIR) ] || mkdir -p $(LOCALEDIR); \
-+install:
++install: 
+ 	@[ -d $(LOCALEDIR) ] || mkdir -p $(LOCALEDIR); \
  	[ -d $(BINDIR) ] || mkdir -p $(BINDIR); \
 -	for pot in `cd $(PODIR) && ls *.mo`; do \
 -		poti=`echo $$pot | sed 's/\.mo$$//'`; \
@@ -15,6 +14,6 @@ diff -ur txt2regex-0.8/Makefile txt2regex-0.8.nonls/Makefile
 -		[ -d $$modir ] || mkdir -p $$modir; \
 -		install -m644 $(PODIR)/$$pot $$modir/$(NAME).mo; \
 -	done; \
- 	sed -e '/^TEXTDOMAINDIR=/s,=.*,=$(LOCALEDIR),' \
+ 	sed -e '/^TEXTDOMAINDIR=/s,=.*,=$(BLOCALEDIR),' \
  	    -e '/^VERSION=/s/=.*/=$(VERSION)/' $(SHSKEL) > $(BINDIR)/$(NAME) && \
  	chmod +x $(BINDIR)/$(NAME) && \

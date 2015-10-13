@@ -1,0 +1,21 @@
+--- Makefile.orig	2015-10-13 19:24:21.799486000 +0000
++++ Makefile	2015-10-13 19:26:05.187486000 +0000
+@@ -11,7 +11,8 @@
+ 
+ DESTDIR = 
+ BINDIR	= $(DESTDIR)/usr/bin
+-LOCALEDIR = $(DESTDIR)/usr/share/locale
++BLOCALEDIR = /usr/share/locale
++LOCALEDIR = $(DESTDIR)$(BLOCALEDIR)
+ MANDIR = $(DESTDIR)/usr/share/man/man1
+ 
+ TARGET=all
+@@ -89,7 +90,7 @@
+ 		[ -d $$modir ] || mkdir -p $$modir; \
+ 		install -m644 $(PODIR)/$$pot $$modir/$(NAME).mo; \
+ 	done; \
+-	sed -e '/^TEXTDOMAINDIR=/s,=.*,=$(LOCALEDIR),' \
++	sed -e '/^TEXTDOMAINDIR=/s,=.*,=$(BLOCALEDIR),' \
+ 	    -e '/^VERSION=/s/=.*/=$(VERSION)/' $(SHSKEL) > $(BINDIR)/$(NAME) && \
+ 	chmod +x $(BINDIR)/$(NAME) && \
+ 	echo "program '$(NAME)' installed. just run $(BINDIR)/$(NAME)"
