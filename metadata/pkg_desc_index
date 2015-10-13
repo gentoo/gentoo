@@ -3775,7 +3775,7 @@ dev-java/commons-grant 1.0: A small collection of hacks to make using Ant in an 
 dev-java/commons-graph 0.1: A toolkit for managing graphs and graph based data structures
 dev-java/commons-httpclient 3.1-r1: The Jakarta Commons HttpClient library
 dev-java/commons-io 2.4: Commons-IO contains utility classes, stream implementations, file filters, and endian classes
-dev-java/commons-jelly 1.0-r7: A Java and XML based scripting and processing engine
+dev-java/commons-jelly 1.0-r8: A Java and XML based scripting and processing engine
 dev-java/commons-jexl 1.1-r1 2.1.1: Expression language engine, can be embedded in applications and frameworks
 dev-java/commons-jxpath 1.3-r1 1.3-r2: Applies XPath expressions to graphs of objects of all kinds
 dev-java/commons-lang 2.0-r2 2.6 3.1 3.3.2: Commons components to manipulate core java classes
@@ -4118,7 +4118,7 @@ dev-java/mimepull 1.8: Pull API for parsing MIME messages
 dev-java/mina-core 1.1.7: Apache MINA Project
 dev-java/minlog 1.2: Minimal overhead Java logging
 dev-java/mockito 1.9.5-r1: A mocking framework for Java
-dev-java/mojarra 2.2.12: Project Mojarra - GlassFish's Implementation for JavaServer Faces API
+dev-java/mojarra 2.2.12-r1: Project Mojarra - GlassFish's Implementation for JavaServer Faces API
 dev-java/msv 20130601: Multi-Schema XML Validator, a Java tool for validating XML documents
 dev-java/mx4j 3.0.2-r1: Metapackage for mx4j
 dev-java/mx4j-core 3.0.1 3.0.2 3.0.2-r1: Open Source implementation of the JMX and JMX Remote API (JSR 160) specifications
@@ -4263,10 +4263,10 @@ dev-java/telnetd 2.0: A telnet daemon for use in java applications
 dev-java/testng 6.8-r2: Testing framework introducing some new functionalities that make it more powerful and easier to use
 dev-java/texhyphj 1.1: Re-implementation of Franklin Mark Liang's hyphenation algorithm in Java
 dev-java/tijmp 0.8: Java Memory Profiler for java 1.6+
-dev-java/tomcat-jstl-compat 1.2.5: JSP Standard Tag Library (JSTL) - Compat jar
-dev-java/tomcat-jstl-el 1.2.5: JSP Standard Tag Library (JSTL) - EL jar
-dev-java/tomcat-jstl-impl 1.2.5: JSP Standard Tag Library (JSTL) - Implementation jar
-dev-java/tomcat-jstl-spec 1.2.5: JSP Standard Tag Library (JSTL) - Specification jar
+dev-java/tomcat-jstl-compat 1.2.5-r1: JSP Standard Tag Library (JSTL) - Compat jar
+dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
+dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
+dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.1.32 1.1.33-r1: Native APR library for Tomcat
 dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44 6.0.44-r1 7.0.59 7.0.63 7.0.64 8.0.23 8.0.24 8.0.26 8.0.27: Tomcat's Servlet API 3.1/JSP API 2.3 implementation
 dev-java/toolbar 1.1.0-r1: An improved version of JToolBar
@@ -16661,7 +16661,7 @@ sys-fs/diskdev_cmds 332.14 332.14_p1: HFS and HFS+ utils ported from OSX, suppli
 sys-fs/dmg2img 1.6 1.6.1 1.6.2 1.6.4 1.6.5: Converts Apple DMG files to standard HFS+ images
 sys-fs/dmraid 1.0.0_rc14 1.0.0_rc15 1.0.0_rc16-r3: Device-mapper RAID tool and library
 sys-fs/dosfstools 3.0.26 3.0.27 3.0.28: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
-sys-fs/duperemove 0.09.1 0.09.2 0.09.3 0.09.4 0.09.5: Btrfs deduplication utility
+sys-fs/duperemove 0.09.1 0.09.2 0.09.3 0.09.4 0.09.5 0.10: Btrfs deduplication utility
 sys-fs/e2fsprogs 1.41.7-r1 1.42.12 1.42.13: Standard EXT2/EXT3/EXT4 filesystem utilities
 sys-fs/e2tools 0.0.16: utilities to read, write, and manipulate files in an ext2/ext3 filesystem
 sys-fs/e4rat 0.2.3-r1 0.2.4_pre20141201: Toolset to accelerate the boot process and application startup
