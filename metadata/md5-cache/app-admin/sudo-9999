@@ -1,12 +1,12 @@
 DEFINED_PHASES=configure install postinst prepare unpack
-DEPEND=pam? ( virtual/pam ) skey? ( >=sys-auth/skey-1.1.5-r1 ) ldap? ( >=net-nds/openldap-2.1.30-r1 dev-libs/cyrus-sasl ) sys-libs/zlib sys-devel/bison dev-vcs/mercurial
+DEPEND=pam? ( virtual/pam ) skey? ( >=sys-auth/skey-1.1.5-r1 ) ldap? ( >=net-nds/openldap-2.1.30-r1 dev-libs/cyrus-sasl ) sys-libs/zlib sssd? ( sys-auth/sssd ) sys-devel/bison dev-vcs/mercurial
 DESCRIPTION=Allows users or groups to run commands as other users
 EAPI=5
 HOMEPAGE=http://www.sudo.ws/
-IUSE=ldap nls pam offensive selinux skey +sendmail
+IUSE=ldap nls pam offensive selinux skey +sendmail sssd
 LICENSE=ISC BSD
-RDEPEND=pam? ( virtual/pam ) skey? ( >=sys-auth/skey-1.1.5-r1 ) ldap? ( >=net-nds/openldap-2.1.30-r1 dev-libs/cyrus-sasl ) sys-libs/zlib selinux? ( sec-policy/selinux-sudo ) ldap? ( dev-lang/perl ) pam? ( sys-auth/pambase ) >=app-misc/editor-wrapper-3 virtual/editor sendmail? ( virtual/mta )
-REQUIRED_USE=pam? ( !skey ) skey? ( !pam )
+RDEPEND=pam? ( virtual/pam ) skey? ( >=sys-auth/skey-1.1.5-r1 ) ldap? ( >=net-nds/openldap-2.1.30-r1 dev-libs/cyrus-sasl ) sys-libs/zlib sssd? ( sys-auth/sssd ) selinux? ( sec-policy/selinux-sudo ) ldap? ( dev-lang/perl ) pam? ( sys-auth/pambase ) >=app-misc/editor-wrapper-3 virtual/editor sendmail? ( virtual/mta )
+REQUIRED_USE=pam? ( !skey ) skey? ( !pam ) sssd? ( || ( amd64 x86 ) )
 SLOT=0
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	mercurial	6ac07cde03301514a5f9e4f13df3f55e	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=989f60a94cf8aea51f6c20b35c3d99cd
+_md5_=39ed7a63fe373f8a1d1ae51d1b618f57
