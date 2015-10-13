@@ -4267,7 +4267,7 @@ dev-java/tomcat-jstl-compat 1.2.5: JSP Standard Tag Library (JSTL) - Compat jar
 dev-java/tomcat-jstl-el 1.2.5: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5: JSP Standard Tag Library (JSTL) - Specification jar
-dev-java/tomcat-native 1.1.32 1.1.33: Native APR library for Tomcat
+dev-java/tomcat-native 1.1.32 1.1.33-r1: Native APR library for Tomcat
 dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44 6.0.44-r1 7.0.59 7.0.63 7.0.64 8.0.23 8.0.24 8.0.26 8.0.27: Tomcat's Servlet API 3.1/JSP API 2.3 implementation
 dev-java/toolbar 1.1.0-r1: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
@@ -7855,7 +7855,7 @@ dev-python/tinycss 0.3: A complete yet simple CSS parser for Python
 dev-python/tlslite 0.4.3-r1 0.4.8: TLS Lite is a free python library that implements SSL 3.0 and TLS 1.0/1.1
 dev-python/tmdb3 0.6.17 0.7.2: TheMovieDB.org APIv3 interface
 dev-python/toolz 0.7.0 0.7.1 0.7.2: List processing tools and functional utilities
-dev-python/torment 2.0.3 2.0.4 2.1.0: A Study in Fixture Based Testing Frameworking
+dev-python/torment 2.0.4 2.1.0 3.0.0: A Study in Fixture Based Testing Frameworking
 dev-python/tox 1.8.0 1.8.1 1.9.0 1.9.2: virtualenv-based automation of test activities
 dev-python/tpg 3.2.2-r1: Toy Parser Generator for Python
 dev-python/traceback2 1.4.0 1.4.0-r1: Backports of the traceback module
