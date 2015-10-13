@@ -16,7 +16,7 @@ PHP_EXT_NAME="xapian"
 PHP_EXT_INI="yes"
 PHP_EXT_OPTIONAL_USE="php"
 
-inherit autotools distutils-r1 libtool java-pkg-opt-2 mono-env php-ext-source-r2
+inherit autotools distutils-r1 libtool java-pkg-opt-2 mono-env php-ext-source-r2 toolchain-funcs
 
 DESCRIPTION="SWIG and JNI bindings for Xapian"
 HOMEPAGE="http://www.xapian.org/"
@@ -36,6 +36,7 @@ COMMONDEPEND="=dev-libs/xapian-${PV}*
 	ruby? ( dev-lang/ruby:= )
 	tcl? ( >=dev-lang/tcl-8.1:0= )"
 DEPEND="${COMMONDEPEND}
+	virtual/pkgconfig
 	java? ( >=virtual/jdk-1.3 )"
 RDEPEND="${COMMONDEPEND}
 	java? ( >=virtual/jre-1.3 )"
@@ -71,7 +72,7 @@ src_configure() {
 	fi
 
 	if use lua; then
-		export LUA_LIB="$(pkg-config --variable=INSTALL_CMOD lua)"
+		export LUA_LIB="$($(tc-getPKG_CONFIG) --variable=INSTALL_CMOD lua)"
 	fi
 
 	econf \
