@@ -9,7 +9,7 @@ QT_MINIMAL="4.7.4"
 KDE_SCM="git"
 CMAKE_REQUIRED="never"
 
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
+PYTHON_COMPAT=( python{2_7,3_4} )
 PYTHON_REQ_USE="threads,xml"
 
 # experimental ; release ; old
@@ -27,10 +27,10 @@ BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
 # PATCHSET="${P}-patchset-01.tar.xz"
 
 [[ ${PV} == *9999* ]] && SCM_ECLASS="git-r3"
-inherit base multiprocessing autotools bash-completion-r1 check-reqs eutils java-pkg-opt-2 kde4-base pax-utils python-single-r1 multilib toolchain-funcs flag-o-matic versionator ${SCM_ECLASS}
+inherit multiprocessing autotools bash-completion-r1 check-reqs eutils java-pkg-opt-2 kde4-base pax-utils python-single-r1 multilib toolchain-funcs flag-o-matic versionator ${SCM_ECLASS}
 unset SCM_ECLASS
 
-DESCRIPTION="LibreOffice, a full office productivity suite"
+DESCRIPTION="A full office productivity suite"
 HOMEPAGE="http://www.libreoffice.org"
 SRC_URI="branding? ( http://dev.gentoo.org/~dilfridge/distfiles/${BRANDING} )"
 [[ -n ${PATCHSET} ]] && SRC_URI+=" http://dev.gentooexperimental.org/~scarabeus/${PATCHSET}"
@@ -58,15 +58,21 @@ unset DEV_URI
 # Really required addons
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
-ADDONS_SRC+=" ${ADDONS_URI}/d62650a6f908e85643e557a236ea989c-vigra1.6.0.tar.gz"
-ADDONS_SRC+=" ${ADDONS_URI}/1f24ab1d39f4a51faf22244c94a6203f-xmlsec1-1.2.14.tar.gz" # modifies source code
-ADDONS_SRC+=" collada? ( ${ADDONS_URI}/4b87018f7fff1d054939d19920b751a0-collada2gltf-master-cb1d97788a.tar.bz2 )"
-ADDONS_SRC+=" java? ( ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip )"
-ADDONS_SRC+=" libreoffice_extensions_wiki-publisher? ( ${ADDONS_URI}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zip )" # no release for 8 years, should we package it?
-ADDONS_SRC+=" libreoffice_extensions_scripting-javascript? ( ${ADDONS_URI}/798b2ffdc8bcfe7bca2cf92b62caf685-rhino1_5R5.zip )" # Does not build with 1.6 rhino at all
-ADDONS_SRC+=" libreoffice_extensions_scripting-javascript? ( ${ADDONS_URI}/35c94d2df8893241173de1d16b6034c0-swingExSrc.zip )" # requirement of rhino
-ADDONS_SRC+=" odk? ( http://download.go-oo.org/extern/185d60944ea767075d27247c3162b3bc-unowinreg.dll )" # not packageable
-SRC_URI+=" ${ADDONS_SRC}"
+ADDONS_SRC=(
+	"${ADDONS_URI}/d62650a6f908e85643e557a236ea989c-vigra1.6.0.tar.gz"
+	"${ADDONS_URI}/1f24ab1d39f4a51faf22244c94a6203f-xmlsec1-1.2.14.tar.gz" # modifies source code
+	"collada? ( ${ADDONS_URI}/4b87018f7fff1d054939d19920b751a0-collada2gltf-master-cb1d97788a.tar.bz2 )"
+	"java? ( ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip )"
+	# no release for 8 years, should we package it?
+	"libreoffice_extensions_wiki-publisher? ( ${ADDONS_URI}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zip )"
+	# Does not build with 1.6 rhino at all
+	"libreoffice_extensions_scripting-javascript? ( ${ADDONS_URI}/798b2ffdc8bcfe7bca2cf92b62caf685-rhino1_5R5.zip )"
+	# requirement of rhino
+	"libreoffice_extensions_scripting-javascript? ( ${ADDONS_URI}/35c94d2df8893241173de1d16b6034c0-swingExSrc.zip )"
+	# not packageable
+	"odk? ( http://download.go-oo.org/extern/185d60944ea767075d27247c3162b3bc-unowinreg.dll )"
+)
+SRC_URI+=" ${ADDONS_SRC[*]}"
 
 unset ADDONS_URI
 unset EXT_URI
@@ -172,7 +178,6 @@ COMMON_DEPEND="
 		dev-java/commons-httpclient:3
 		dev-java/commons-lang:2.1
 		dev-java/commons-logging:0
-		dev-java/tomcat-servlet-api:3.0
 	)
 	mysql? ( >=dev-db/mysql-connector-c++-1.1.0 )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
@@ -241,6 +246,19 @@ DEPEND="${COMMON_DEPEND}
 	test? ( dev-util/cppunit )
 "
 
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
+	bluetooth? ( dbus )
+	collada? ( gltf )
+	gnome? ( gtk )
+	eds? ( gnome )
+	telepathy? ( gtk )
+	libreoffice_extensions_nlpsolver? ( java )
+	libreoffice_extensions_scripting-beanshell? ( java )
+	libreoffice_extensions_scripting-javascript? ( java )
+	libreoffice_extensions_wiki-publisher? ( java )
+"
+
 PATCHES=(
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-4.4-system-pyuno.patch"
@@ -257,31 +275,21 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.4.5.2-fix-KDE4-listbox-regression.patch"
 )
 
-REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
-	bluetooth? ( dbus )
-	collada? ( gltf )
-	gnome? ( gtk )
-	eds? ( gnome )
-	telepathy? ( gtk )
-	libreoffice_extensions_nlpsolver? ( java )
-	libreoffice_extensions_scripting-beanshell? ( java )
-	libreoffice_extensions_scripting-javascript? ( java )
-	libreoffice_extensions_wiki-publisher? ( java )
-"
-
 CHECKREQS_MEMORY="512M"
 if [[ ${MERGE_TYPE} != binary ]] ; then CHECKREQS_DISK_BUILD="6G" ; fi
 
 pkg_pretend() {
 	local pgslot
 
+	use java || \
+		ewarn "If you plan to use lbase application you should enable java or you will get various crashes."
+
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		check-reqs_pkg_pretend
 
-		if [[ $(gcc-major-version) -lt 4 ]] || \
-				 ( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 6 ]] ) \
-				; then
+		if [[ $(gcc-major-version) -lt 4 ]] || {
+			[[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 6 ]]; }
+		then
 			eerror "Compilation with gcc older than 4.6 is not supported"
 			die "Too old gcc found."
 		fi
@@ -291,7 +299,7 @@ pkg_pretend() {
 	# install on clean system)
 	if use postgres && has_version dev-db/postgresql; then
 		 pgslot=$(postgresql-config show)
-		 if [[ ${pgslot//.} < 90 ]] ; then
+		 if [[ ${pgslot//.} -lt 90 ]] ; then
 			eerror "PostgreSQL slot must be set to 9.0 or higher."
 			eerror "    postgresql-config set 9.0"
 			die "PostgreSQL slot is not set to 9.0 or higher."
@@ -308,7 +316,7 @@ pkg_setup() {
 }
 
 src_unpack() {
-	local mod mod2 dest tmplfile tmplname mypv
+	local mod
 
 	[[ -n ${PATCHSET} ]] && unpack ${PATCHSET}
 	use branding && unpack "${BRANDING}"
@@ -320,38 +328,21 @@ src_unpack() {
 			unpack "${PN}-${mod}-${PV}.tar.xz"
 		done
 	else
+		local base_uri branch checkout mypv
+		base_uri="git://anongit.freedesktop.org"
 		for mod in ${MODULES}; do
+			branch="master"
 			mypv=${PV/.9999}
-			[[ ${mypv} != ${PV} ]] && EGIT_BRANCH="${PN}-${mypv/./-}"
-			EGIT_CHECKOUT_DIR="${WORKDIR}/${P}"
-			[[ ${mod} != core ]] && EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}-${mod}-${PV}"
-			EGIT_REPO_URI="git://anongit.freedesktop.org/${PN}/${mod}"
-			git-r3_src_unpack
-			if [[ ${mod} != core ]]; then
-				mod2=${mod}
-				# mapping does not match on help
-				[[ ${mod} == help ]] && mod2="helpcontent2"
-				mkdir -p "${S}/${mod2}/" || die
-				mv -n "${WORKDIR}/${PN}-${mod}-${PV}"/* "${S}/${mod2}" || die
-				rm -rf "${WORKDIR}/${PN}-${mod}-${PV}"
-			fi
+			[[ ${mypv} != ${PV} ]] && branch="${PN}-${mypv/./-}"
+			git-r3_fetch "${base_uri}/${PN}/${mod}" "refs/heads/${branch}"
+			[[ ${mod} != core ]] && checkout="${S}/${mod}"
+			[[ ${mod} == help ]] && checkout="helpcontent2" # doesn't match on help
+			git-r3_checkout "${base_uri}/${PN}/${mod}" ${checkout}
 		done
-		unset EGIT_CHECKOUT_DIR EGIT_REPO_URI EGIT_BRANCH
 	fi
 }
 
 src_prepare() {
-	# optimization flags
-	export GMAKE_OPTIONS="${MAKEOPTS}"
-	# System python 2.7 enablement:
-	export PYTHON_CFLAGS=$(python_get_CFLAGS)
-	export PYTHON_LIBS=$(python_get_LIBS)
-
-	if use collada; then
-		export OPENCOLLADA_CFLAGS="-I/usr/include/opencollada/COLLADABaseUtils -I/usr/include/opencollada/COLLADAFramework -I/usr/include/opencollada/COLLADASaxFrameworkLoader -I/usr/include/opencollada/GeneratedSaxParser"
-		export OPENCOLLADA_LIBS="-L /usr/$(get_libdir)/opencollada -lOpenCOLLADABaseUtils -lOpenCOLLADAFramework -lOpenCOLLADASaxFrameworkLoader -lGeneratedSaxParser"
-	fi
-
 	# patchset
 	if [[ -n ${PATCHSET} ]]; then
 		EPATCH_FORCE="yes" \
@@ -360,25 +351,25 @@ src_prepare() {
 		epatch
 	fi
 
-	base_src_prepare
+	epatch "${PATCHES[@]}"
 
 	AT_M4DIR="m4" eautoreconf
 	# hack in the autogen.sh
 	touch autogen.lastrun
 
 	# system pyuno mess
-	sed \
+	sed -i \
 		-e "s:%eprefix%:${EPREFIX}:g" \
 		-e "s:%libdir%:$(get_libdir):g" \
-		-i pyuno/source/module/uno.py \
-		-i pyuno/source/officehelper.py || die
+		pyuno/source/module/uno.py \
+		pyuno/source/officehelper.py || die
 	# sed in the tests
 	sed -i \
-		-e 's#all : build unitcheck#all : build#g' \
+		-e "s#all : build unitcheck#all : build#g" \
 		solenv/gbuild/Module.mk || die
 	sed -i \
-		-e 's#check: dev-install subsequentcheck#check: unitcheck slowcheck dev-install subsequentcheck#g' \
-		-e 's#Makefile.gbuild all slowcheck#Makefile.gbuild all#g' \
+		-e "s#check: dev-install subsequentcheck#check: unitcheck slowcheck dev-install subsequentcheck#g" \
+		-e "s#Makefile.gbuild all slowcheck#Makefile.gbuild all#g" \
 		Makefile.in || die
 
 	if use branding; then
@@ -392,6 +383,17 @@ src_configure() {
 	local internal_libs
 	local lo_ext
 	local ext_opts
+
+	# optimization flags
+	export GMAKE_OPTIONS="${MAKEOPTS}"
+	# System python 2.7 enablement:
+	export PYTHON_CFLAGS=$(python_get_CFLAGS)
+	export PYTHON_LIBS=$(python_get_LIBS)
+
+	if use collada; then
+		export OPENCOLLADA_CFLAGS="-I/usr/include/opencollada/COLLADABaseUtils -I/usr/include/opencollada/COLLADAFramework -I/usr/include/opencollada/COLLADASaxFrameworkLoader -I/usr/include/opencollada/GeneratedSaxParser"
+		export OPENCOLLADA_LIBS="-L /usr/$(get_libdir)/opencollada -lOpenCOLLADABaseUtils -lOpenCOLLADAFramework -lOpenCOLLADASaxFrameworkLoader -lGeneratedSaxParser"
+	fi
 
 	# sane: just sane.h header that is used for scan in writer, not
 	#       linked or anything else, worthless to depend on
@@ -434,7 +436,6 @@ src_configure() {
 				--with-commons-httpclient-jar=$(java-pkg_getjar commons-httpclient-3 commons-httpclient.jar)
 				--with-commons-lang-jar=$(java-pkg_getjar commons-lang-2.1 commons-lang.jar)
 				--with-commons-logging-jar=$(java-pkg_getjar commons-logging commons-logging.jar)
-				--with-servlet-api-jar=$(java-pkg_getjar tomcat-servlet-api-3.0 servlet-api.jar)
 			"
 		fi
 	fi
@@ -541,7 +542,7 @@ src_compile() {
 	# it is broken because we send --without-help
 	# https://bugs.freedesktop.org/show_bug.cgi?id=46506
 	(
-		grep "^export" "${S}/config_host.mk" > "${T}/config_host.mk"
+		grep "^export" "${S}/config_host.mk" > "${T}/config_host.mk" || die
 		source "${T}/config_host.mk" 2&> /dev/null
 
 		local path="${WORKDIR}/helpcontent2/source/auxiliary/"
@@ -551,7 +552,8 @@ src_compile() {
 		perl "${S}/helpcontent2/helpers/create_ilst.pl" \
 			-dir=icon-themes/galaxy/res/helpimg \
 			> "${path}/helpimg.ilst"
-		[[ -s "${path}/helpimg.ilst" ]] || ewarn "The help images list is empty, something is fishy, report a bug."
+		[[ -s "${path}/helpimg.ilst" ]] || \
+			ewarn "The help images list is empty, something is fishy, report a bug."
 	)
 
 	local target
@@ -571,17 +573,17 @@ src_install() {
 	make DESTDIR="${D}" distro-pack-install -o build -o check || die
 
 	# Fix bash completion placement
-	newbashcomp "${ED}"/etc/bash_completion.d/libreoffice.sh ${PN}
+	newbashcomp "${ED}"etc/bash_completion.d/libreoffice.sh ${PN}
 	bashcomp_alias \
 		libreoffice \
 		unopkg loimpress lobase localc lodraw lomath lowriter lofromtemplate loweb loffice
-	rm -rf "${ED}"/etc/ || die
+	rm -rf "${ED}"etc/ || die
 
 	if use branding; then
 		insinto /usr/$(get_libdir)/${PN}/program
 		newins "${WORKDIR}/branding-sofficerc" sofficerc
 		dodir /etc/env.d
-		echo "CONFIG_PROTECT=/usr/$(get_libdir)/${PN}/program/sofficerc" > "${ED}"/etc/env.d/99${PN}
+		echo "CONFIG_PROTECT=/usr/$(get_libdir)/${PN}/program/sofficerc" > "${ED}"etc/env.d/99${PN} || die
 	fi
 
 	# Hack for offlinehelp, this needs fixing upstream at some point.
@@ -591,14 +593,14 @@ src_install() {
 	doins xmlhelp/util/*.xsl
 
 	# Remove desktop files for support to old installs that can't parse mime
-	rm -rf "${ED}"/usr/share/mimelnk/
+	rm -r "${ED}"usr/share/mimelnk/ || die
 
 	# FIXME: Hack add missing file
-	insinto /usr/$(get_libdir)/${PN}/program
-	doins "${S}"/instdir/program/libsaxlo.so
+	exeinto /usr/$(get_libdir)/${PN}/program
+	doexe "${S}"/instdir/program/libsaxlo.so
 
-	pax-mark -m "${ED}"/usr/$(get_libdir)/libreoffice/program/soffice.bin
-	pax-mark -m "${ED}"/usr/$(get_libdir)/libreoffice/program/unopkg.bin
+	pax-mark -m "${ED}"usr/$(get_libdir)/libreoffice/program/soffice.bin
+	pax-mark -m "${ED}"usr/$(get_libdir)/libreoffice/program/unopkg.bin
 }
 
 pkg_preinst() {
@@ -608,9 +610,6 @@ pkg_preinst() {
 
 pkg_postinst() {
 	kde4-base_pkg_postinst
-
-	use java || \
-		ewarn 'If you plan to use lbase application you should enable java or you will get various crashes.'
 }
 
 pkg_postrm() {
