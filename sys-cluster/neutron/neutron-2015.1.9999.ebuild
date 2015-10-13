@@ -27,8 +27,6 @@ DEPEND="
 	app-admin/sudo
 	test? (
 		${RDEPEND}
-		>=dev-python/hacking-0.10.0[${PYTHON_USEDEP}]
-		<dev-python/hacking-0.11[${PYTHON_USEDEP}]
 		>=dev-python/cliff-1.10.0[${PYTHON_USEDEP}]
 		<dev-python/cliff-1.11.0[${PYTHON_USEDEP}]
 		>=dev-python/coverage-3.6[${PYTHON_USEDEP}]
@@ -70,7 +68,7 @@ RDEPEND="
 	>=dev-python/keystonemiddleware-1.5.0[${PYTHON_USEDEP}]
 	<dev-python/keystonemiddleware-1.6.0[${PYTHON_USEDEP}]
 	>=dev-python/netaddr-0.7.12[${PYTHON_USEDEP}]
-	>=dev-python/python-neutronclient-2.3.11[${PYTHON_USEDEP}]
+	>=dev-python/python-neutronclient-2.4.0[${PYTHON_USEDEP}]
 	<dev-python/python-neutronclient-2.5.0[${PYTHON_USEDEP}]
 	>=dev-python/retrying-1.2.3[${PYTHON_USEDEP}]
 	!~dev-python/retrying-1.3.0[${PYTHON_USEDEP}]
@@ -96,10 +94,11 @@ RDEPEND="
 	>=dev-python/python-keystoneclient-1.2.0[${PYTHON_USEDEP}]
 	<dev-python/python-keystoneclient-1.4.0[${PYTHON_USEDEP}]
 	>=dev-python/alembic-0.7.2[${PYTHON_USEDEP}]
+	<dev-python/alembic-0.8.1[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-1.3.0[${PYTHON_USEDEP}]
 	<dev-python/stevedore-1.4.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-concurrency-1.8.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-concurrency-1.8.2[${PYTHON_USEDEP}]
 	<dev-python/oslo-concurrency-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-config-1.9.3[${PYTHON_USEDEP}]
 	<dev-python/oslo-config-1.10.0[${PYTHON_USEDEP}]
@@ -120,6 +119,7 @@ RDEPEND="
 	>=dev-python/oslo-serialization-1.4.0[${PYTHON_USEDEP}]
 	<dev-python/oslo-serialization-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-utils-1.4.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-utils-1.4.1[${PYTHON_USEDEP}]
 	<dev-python/oslo-utils-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/python-novaclient-2.22.0[${PYTHON_USEDEP}]
 	<dev-python/python-novaclient-2.24.0[${PYTHON_USEDEP}]
@@ -134,7 +134,6 @@ RDEPEND="
 	dhcp? ( net-dns/dnsmasq[dhcp-tools] )"
 
 PATCHES=(
-
 )
 
 pkg_setup() {
@@ -156,9 +155,10 @@ pkg_config() {
 	fowners neutron:neutron /var/log neutron
 }
 
-src_prepare() {
-	#it's /bin/ip not /sbin/ip
-	sed -i 's/sbin\/ip\,/bin\/ip\,/g' etc/neutron/rootwrap.d/*
+sddrc_prepare() {
+	sed -i '/^hacking/d' test-requirements.txt || die
+	# it's /bin/ip not /sbin/ip
+	sed -i 's/sbin\/ip\,/bin\/ip\,/g' etc/neutron/rootwrap.d/* || die
 	distutils-r1_src_prepare
 }
 
