@@ -464,6 +464,9 @@ _calculate_src_uri() {
 				4.14.12)
 					# Part of 15.08.1 actually, sigh. Not stable for next release!
 					SRC_URI="mirror://kde/stable/applications/15.08.1/src/${_kmname_pv}.tar.xz" ;;
+				4.14.13)
+					# Part of 15.08.2 actually, sigh. Not stable for next release!
+					SRC_URI="mirror://kde/stable/applications/15.08.2/src/${_kmname_pv}.tar.xz" ;;
 				??.?.[6-9]? | ??.??.[4-9]?)
 					# Unstable KDE Applications releases
 					SRC_URI="mirror://kde/unstable/applications/${PV}/src/${_kmname}-${PV}.tar.xz" ;;
