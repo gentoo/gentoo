@@ -29,7 +29,7 @@ CDEPEND="
 	dev-java/commons-discovery:0
 	dev-java/commons-collections:0
 	dev-java/commons-beanutils:1.7
-	dev-java/tomcat-jstl-spec:1.2.5
+	dev-java/tomcat-jstl-spec:0
 	java-virtuals/servlet-api:3.0"
 RDEPEND="${CDEPEND}
 	>=virtual/jre-1.6"
@@ -49,7 +49,7 @@ JAVA_ANT_REWRITE_CLASSPATH="yes"
 EANT_EXTRA_ARGS="-Dlibdir=."
 EANT_GENTOO_CLASSPATH="
 	commons-beanutils-1.7,commons-cli-1,commons-collections,commons-discovery
-	commons-jexl-1.0,commons-lang,commons-logging,dom4j-1,tomcat-jstl-spec-1.2.5
+	commons-jexl-1.0,commons-lang,commons-logging,dom4j-1,tomcat-jstl-spec
 	jaxen-1.1,junit,servlet-api-3.0"
 
 src_test() {

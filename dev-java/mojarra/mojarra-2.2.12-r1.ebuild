@@ -19,8 +19,8 @@ IUSE=""
 CDEPEND="dev-java/glassfish-persistence:0
 	dev-java/glassfish-ejb-api:0
 	java-virtuals/servlet-api:3.0
-	dev-java/tomcat-jstl-spec:1.2.5
-	dev-java/tomcat-jstl-impl:1.2.5
+	dev-java/tomcat-jstl-spec:0
+	dev-java/tomcat-jstl-impl:0
 	dev-java/validation-api:1.0
 	dev-java/javax-inject:0
 	dev-java/cdi-api:1.2"
@@ -33,7 +33,16 @@ DEPEND=">=virtual/jdk-1.6
 
 JAVA_SRC_DIR="src"
 
-JAVA_GENTOO_CLASSPATH="glassfish-persistence,glassfish-ejb-api,tomcat-jstl-spec-1.2.5,tomcat-jstl-impl-1.2.5,validation-api-1.0,cdi-api-1.2,servlet-api-3.0,javax-inject"
+JAVA_GENTOO_CLASSPATH="
+	glassfish-persistence
+	glassfish-ejb-api
+	tomcat-jstl-spec
+	tomcat-jstl-impl
+	validation-api-1.0
+	cdi-api-1.2
+	servlet-api-3.0
+	javax-inject
+"
 
 java_prepare() {
 	mkdir src || die

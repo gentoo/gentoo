@@ -9,20 +9,20 @@ inherit java-pkg-2 java-ant-2 eutils
 
 MY_PN="taglibs-standard"
 MY_P="${MY_PN}-${PV}"
-MY_EL="${MY_PN}-jstlel"
+MY_COMPAT="${MY_PN}-compat"
 
-DESCRIPTION="JSP Standard Tag Library (JSTL) - EL jar"
+DESCRIPTION="JSP Standard Tag Library (JSTL) - Compat jar"
 HOMEPAGE="https://tomcat.apache.org/taglibs/standard/"
 SRC_URI="http://apache.mirrors.ovh.net/ftp.apache.org/dist/tomcat/taglibs/${MY_P}/${MY_P}-source-release.zip"
 
 LICENSE="Apache-2.0"
-SLOT="1.2.5"
-KEYWORDS="~amd64 ~x86"
+SLOT="0"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 CDEPEND="java-virtuals/servlet-api:3.0
-	dev-java/tomcat-jstl-impl:1.2.5
-	dev-java/tomcat-jstl-spec:1.2.5"
+	dev-java/tomcat-jstl-spec:0
+	dev-java/tomcat-jstl-impl:0"
 RDEPEND=">=virtual/jre-1.6
 	${CDEPEND}"
 DEPEND=">=virtual/jdk-1.6
@@ -35,12 +35,12 @@ DEPEND=">=virtual/jdk-1.6
 S="${WORKDIR}/${MY_P}"
 
 JAVA_ANT_REWRITE_CLASSPATH="yes"
-EANT_GENTOO_CLASSPATH="servlet-api-3.0,tomcat-jstl-spec-1.2.5,tomcat-jstl-impl-1.2.5"
+EANT_GENTOO_CLASSPATH="servlet-api-3.0,tomcat-jstl-spec,tomcat-jstl-impl"
 EANT_BUILD_TARGET="package"
-EANT_BUILD_XML="jstlel/build.xml"
+EANT_BUILD_XML="compat/build.xml"
 
 java_prepare() {
-	cp "${FILESDIR}"/${P}-build.xml "${S}"/jstlel/build.xml
+	cp "${FILESDIR}"/${P}-build.xml "${S}"/compat/build.xml
 }
 
 EANT_TEST_TARGET="test"
@@ -51,13 +51,13 @@ src_test() {
 }
 
 src_install() {
-	java-pkg_newjar "${S}"/jstlel/target/${MY_EL}-${PV}.jar ${MY_EL}.jar
+	java-pkg_newjar "${S}"/compat/target/${MY_COMPAT}-${PV}.jar ${MY_COMPAT}.jar
 
 	if use doc; then
-		java-pkg_dohtml -r "${S}"/jstlel/target/site/apidocs/
+		java-pkg_dohtml -r "${S}"/compat/target/site/apidocs/
 	fi
 
 	if use source; then
-		java-pkg_dosrc "${S}"/jstlel/src/*
+		java-pkg_dosrc "${S}"/compat/src/*
 	fi
 }
