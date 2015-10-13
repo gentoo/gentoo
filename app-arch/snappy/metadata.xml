@@ -4,7 +4,7 @@
 	<herd>proxy-maintainers</herd>
 	<maintainer>
 		<email>brendan@horan.hk</email>
-		<name>Brendam Horan</name>
+		<name>Brendan Horan</name>
 	</maintainer>
 	<longdescription lang="en">Snappy is a compression/decompression library. It does not aim for
 		maximum compression, or compatibility with any other compression
