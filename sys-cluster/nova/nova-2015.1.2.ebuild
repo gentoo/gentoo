@@ -5,16 +5,15 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 eutils git-2 linux-info multilib user
+inherit distutils-r1 eutils linux-info multilib user
 
 DESCRIPTION="A cloud computing fabric controller (main part of an IaaS system) written in Python"
 HOMEPAGE="https://launchpad.net/nova"
-EGIT_REPO_URI="https://github.com/openstack/nova.git"
-EGIT_BRANCH="stable/kilo"
+SRC_URI="https://launchpad.net/${PN}/kilo/${PV}/+download/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="+compute compute-only iscsi +kvm +memcached mysql +novncproxy openvswitch postgres +rabbitmq sqlite test xen"
 REQUIRED_USE="!compute-only? ( || ( mysql postgres sqlite ) )
 						compute-only? ( compute !rabbitmq !memcached !mysql !postgres !sqlite )
