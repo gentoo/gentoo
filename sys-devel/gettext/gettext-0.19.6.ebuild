@@ -4,16 +4,16 @@
 
 EAPI="4"
 
-inherit flag-o-matic eutils multilib toolchain-funcs mono-env libtool java-pkg-opt-2 multilib-minimal
+inherit eutils toolchain-funcs mono-env libtool java-pkg-opt-2 multilib-minimal
 
 DESCRIPTION="GNU locale utilities"
 HOMEPAGE="https://www.gnu.org/software/gettext/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-3 LGPL-2"
+LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE="acl -cvs doc emacs git java nls +cxx ncurses openmp static-libs elibc_glibc elibc_musl"
+IUSE="acl -cvs +cxx doc emacs git java ncurses nls openmp static-libs elibc_glibc elibc_musl"
 
 # only runtime goes multilib
 DEPEND=">=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
@@ -25,17 +25,18 @@ DEPEND=">=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
 RDEPEND="${DEPEND}
 	!git? ( cvs? ( dev-vcs/cvs ) )
 	git? ( dev-vcs/git )
-	java? ( >=virtual/jre-1.4 )
-	abi_x86_32? (
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-		!<=app-emulation/emul-linux-x86-baselibs-20131008-r11
-	)"
+	java? ( >=virtual/jre-1.4 )"
 PDEPEND="emacs? ( app-emacs/po-mode )"
 
 MULTILIB_WRAPPED_HEADERS=(
 	# only installed for native ABI
 	/usr/include/gettext-po.h
 )
+
+pkg_setup() {
+	mono-env_pkg_setup
+	java-pkg-opt-2_pkg_setup
+}
 
 src_prepare() {
 	java-pkg-opt-2_src_prepare
@@ -68,9 +69,6 @@ multilib_src_configure() {
 		)
 	fi
 	use cxx || export CXX=$(tc-getCC)
-
-	# Should be able to drop this hack in next release. #333887
-	tc-is-cross-compiler && export gl_cv_func_working_acl_get_file=yes
 
 	local ECONF_SOURCE=${S}
 	if ! multilib_is_native_abi ; then

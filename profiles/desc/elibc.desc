@@ -7,6 +7,7 @@
 # Keep it sorted.
 
 AIX - ELIBC setting for systems that use the AIX C library
+bionic - ELIBC setting for systems that use Android's Bionic C library
 Cygwin - ELIBC setting for systems that use Cygwin
 Darwin - ELIBC setting for systems that use the Darwin C library
 DragonFly - ELIBC setting for systems that use the DragonFly C library
