@@ -22,7 +22,7 @@ HOMEPAGE="https://github.com/gentoo/eudev"
 
 LICENSE="LGPL-2.1 MIT GPL-2"
 SLOT="0"
-IUSE="doc +hwdb +kmod introspection selinux static-libs test"
+IUSE="+hwdb +kmod introspection rule-generator selinux static-libs test"
 
 COMMON_DEPEND=">=sys-apps/util-linux-2.20
 	introspection? ( >=dev-libs/gobject-introspection-1.38 )
@@ -41,12 +41,6 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	>=sys-devel/make-3.82-r4
 	>=sys-kernel/linux-headers-${KV_min}
-	doc? ( >=dev-util/gtk-doc-1.18
-		app-text/docbook-xml-dtd:4.2
-		app-text/docbook-xml-dtd:4.5
-		app-text/docbook-xsl-stylesheets
-		dev-libs/libxslt
-	)
 	>=dev-util/intltool-0.50
 	test? ( app-text/tree dev-lang/perl )"
 
@@ -98,12 +92,6 @@ src_prepare() {
 	|| die "failed to change group dialout to uucp"
 
 	epatch_user
-
-	if use doc; then
-		gtkdocize --docdir docs || die "gtkdocize failed"
-	else
-		echo 'EXTRA_DIST =' > docs/gtk-doc.make
-	fi
 	eautoreconf
 }
 
@@ -121,10 +109,8 @@ multilib_src_configure() {
 		DBUS_LIBS=' '
 		--with-rootprefix=
 		--with-rootrundir=/run
-		--docdir=/usr/share/doc/${PF}
 		--libdir=/usr/$(get_libdir)
 		--with-rootlibexecdir=/lib/udev
-		--with-html-dir="/usr/share/doc/${PF}/html"
 		--enable-split-usr
 		--enable-manpages
 		--disable-hwdb
@@ -136,19 +122,19 @@ multilib_src_configure() {
 	if multilib_is_native_abi; then
 		econf_args+=(
 			--with-rootlibdir=/$(get_libdir)
-			$(use_enable doc gtk-doc)
 			$(use_enable introspection)
 			$(use_enable kmod)
 			$(use_enable static-libs static)
 			$(use_enable selinux)
+			$(use_enable rule-generator)
 		)
 	else
 		econf_args+=(
 			--disable-static
-			--disable-gtk-doc
 			--disable-introspection
 			--disable-kmod
 			--disable-selinux
+			--disable-rule-generator
 		)
 	fi
 	ECONF_SOURCE="${S}" econf "${econf_args[@]}"
@@ -187,31 +173,11 @@ multilib_src_test() {
 
 multilib_src_install_all() {
 	prune_libtool_files --all
-	rm -rf "${ED}"/usr/share/doc/${PF}/LICENSE.*
 
 	insinto /lib/udev/rules.d
 	doins "${FILESDIR}"/40-gentoo.rules
 
-	if ! [[ ${PV} = 9999* ]]; then
-		insinto /usr/share/doc/${PF}/html/gudev
-		doins "${S}"/docs/gudev/html/*
-
-		insinto /usr/share/doc/${PF}/html/libudev
-		doins "${S}"/docs/libudev/html/*
-	fi
-}
-
-pkg_preinst() {
-	local htmldir
-	for htmldir in libudev; do
-		if [[ -d ${EROOT}usr/share/gtk-doc/html/${htmldir} ]]; then
-			rm -rf "${EROOT}"usr/share/gtk-doc/html/${htmldir}
-		fi
-		if [[ -d ${ED}/usr/share/doc/${PF}/html/${htmldir} ]]; then
-			dosym ../../doc/${PF}/html/${htmldir} \
-				/usr/share/gtk-doc/html/${htmldir}
-		fi
-	done
+	use rule-generator && doinitd "${FILESDIR}"/udev-postmount
 }
 
 pkg_postinst() {
@@ -241,6 +207,15 @@ pkg_postinst() {
 	ewarn "You need to restart eudev as soon as possible to make the"
 	ewarn "upgrade go into effect:"
 	ewarn "\t/etc/init.d/udev --nodeps restart"
+
+	if use rule-generator && \
+	[[ -x $(type -P rc-update) ]] && rc-update show | grep udev-postmount | grep -qsv 'boot\|default\|sysinit'; then
+		ewarn
+		ewarn "Please add the udev-postmount init script to your default runlevel"
+		ewarn "to ensure the legacy rule-generator functionality works as reliably"
+		ewarn "as possible."
+		ewarn "\trc-update add udev-postmount default"
+	fi
 
 	elog
 	elog "For more information on eudev on Gentoo, writing udev rules, and"
