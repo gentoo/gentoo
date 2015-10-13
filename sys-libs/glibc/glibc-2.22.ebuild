@@ -157,7 +157,6 @@ eblit-src_unpack-pre() {
 	[[ -n ${GCC_BOOTSTRAP_VER} ]] && use multilib && unpack gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2
 	# Bug 558636 we don't applY the pie works around for 2.22. It shoud have the support.
 	GLIBC_PATCH_EXCLUDE+=" 00_all_0002-workaround-crash-when-handling-signals-in-static-PIE.patch"
-	GLIBC_PATCH_EXCLUDE+=" 00_all_0009-arm-fix-PIC-vs-SHARED-typos.patch"
 	GLIBC_PATCH_EXCLUDE+=" 00_all_0012-disable-PIE-when-checking-for-PIC-default.patch"
 }
 
