@@ -10,5 +10,5 @@ RDEPEND=>=dev-qt/qtcore-4.8.0:4 connectivity? ( >=dev-qt/qtdbus-4.8.0:4 bluetoot
 REQUIRED_USE=|| ( connectivity contacts feedback gallery location messaging multimedia organizer publishsubscribe sensors serviceframework systeminfo versit ) versit? ( contacts )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~pesa/distfiles/qt-mobility-1.2.2_p20130703.tar.xz
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=fe4391f64f0e01b0e7f6a4664aa9abc9

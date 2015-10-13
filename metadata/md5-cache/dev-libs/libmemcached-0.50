@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=net-misc/memcached virtual/perl-Pod-Parser doc? ( dev-python/sphinx ) libevent? ( dev-libs/libevent ) tcmalloc? ( dev-util/google-perftools ) sasl? ( virtual/gsasl )
 SLOT=0
 SRC_URI=https://launchpad.net/libmemcached/1.0/0.50/+download/libmemcached-0.50.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=13bb08271e69bf087083ae1853340c9b

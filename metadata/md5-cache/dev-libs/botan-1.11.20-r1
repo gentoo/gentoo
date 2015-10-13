@@ -10,5 +10,5 @@ RDEPEND=bzip2? ( >=app-arch/bzip2-1.0.5 ) zlib? ( >=sys-libs/zlib-1.2.3 ) boost?
 REQUIRED_USE=python? ( boost )
 SLOT=0
 SRC_URI=http://botan.randombit.net/releases/Botan-1.11.20.tgz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	32b376cbb100a3a8083b3a0de023e117	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	32b376cbb100a3a8083b3a0de023e117	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=5777ec1888abeff49b3eec23549d5bdb

@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=net-analyzer/openvas-libraries-7.0.10 >=net-analyzer/openvas-scanner-4.0.7 >=net-analyzer/openvas-manager-5.0.11 >=net-analyzer/openvas-cli-1.3.1 net-analyzer/openvas-tools pdf? ( app-text/htmldoc dev-texlive/texlive-latexextra virtual/latex-base )
 SLOT=0
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=21ae3a50569ed3f20e36f43723d7129e

@@ -8,5 +8,5 @@ LICENSE=public-domain
 RDEPEND=x11-libs/libXext games-misc/games-envd
 SLOT=0
 SRC_URI=mirror://debian/pool/main/x/xmille/xmille_2.0.orig.tar.gz mirror://debian/pool/main/x/xmille/xmille_2.0-12.diff.gz
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	games	4dae170e58f773c484e07d18ef441804	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	games	4dae170e58f773c484e07d18ef441804	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=20ba4ec93e070ff1c0906af9b94511f1

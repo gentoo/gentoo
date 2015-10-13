@@ -10,5 +10,5 @@ RDEPEND=sys-libs/zlib:0 >=x11-libs/gtk+-2.6:2 x11-libs/libX11:0
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/notecase/notecase-1.9.8_src.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=d0a09738279fa3609cb1611bd5063c9f

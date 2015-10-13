@@ -8,5 +8,5 @@ LICENSE=PSF-2
 RDEPEND==dev-lang/python-2*
 SLOT=0
 SRC_URI=http://www.josephson.org/projects/pyamazon/files/pyamazon-0.65.zip
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=a127ad5260c8a8ce0b6bd5add0cca4d7

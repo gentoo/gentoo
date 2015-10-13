@@ -7,5 +7,5 @@ IUSE=ssl
 LICENSE=Apache-2.0
 RDEPEND=>=net-libs/nghttp2-1.0 ssl? ( www-servers/apache[alpn] ) =www-servers/apache-2.4*
 SLOT=0
-_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=ebbc9572da40c91d75bb5678ef474bd9

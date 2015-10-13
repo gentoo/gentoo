@@ -6,5 +6,5 @@ HOMEPAGE=http://ubertooth.sourceforge.net/
 LICENSE=GPL-2
 RDEPEND=>=net-wireless/kismet-2011.03.2-r1:= >=net-wireless/ubertooth-9999:= >=net-libs/libbtbb-9999:= virtual/libusb:1
 SLOT=0/9999
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=603a82f9c287ee17d43bcec74857d561

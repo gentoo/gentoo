@@ -9,5 +9,5 @@ LICENSE=GPL-2 LGPL-2.1
 RDEPEND=>=media-libs/alsa-lib-1.0.27:= ffmpeg? ( virtual/ffmpeg ) jack? ( >=media-sound/jack-audio-connection-kit-0.98 ) libsamplerate? ( media-libs/libsamplerate:= ) pulseaudio? ( media-sound/pulseaudio ) speex? ( media-libs/speex:= )
 SLOT=0
 SRC_URI=mirror://alsaproject/plugins/alsa-plugins-1.0.27.tar.bz2
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=e8e4a842ec4c7ec7ff21a96d4c7cd83d

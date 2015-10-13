@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=!<app-text/texlive-core-2010 !app-text/ptex >=dev-libs/kpathsea-6.2.0
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-20140525-source.tar.xz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=b4e1ce355045c5103c986e18e188934e

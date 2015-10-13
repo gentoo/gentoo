@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=>=sys-libs/ncurses-5.2[unicode?]
 SLOT=0/5
 SRC_URI=ftp://invisible-island.net/cdk/cdk-5.0-20131107.tgz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=bb38d3e1b1298e6ddb4fd74c825cd9a1

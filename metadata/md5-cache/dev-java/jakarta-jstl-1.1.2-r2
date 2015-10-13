@@ -10,5 +10,5 @@ RDEPEND=>=virtual/jre-1.5 dev-java/servletapi:2.4 dev-java/xalan >=dev-java/java
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://apache/jakarta/taglibs/standard/source/jakarta-taglibs-standard-1.1.2-src.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-ant-2	946f77f25d457a91a2188c26f3e50b3e	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	c059b30d6a4df7cf32e2c98c1da1c9b5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-ant-2	946f77f25d457a91a2188c26f3e50b3e	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	c059b30d6a4df7cf32e2c98c1da1c9b5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=d4e29fac4a3378cabf76a36703173fab

@@ -10,5 +10,5 @@ RDEPEND=sys-libs/ncurses:0 >=app-eselect/eselect-emacs-1.16 >=app-emacs/emacs-co
 REQUIRED_USE=?? ( aqua X )
 SLOT=23
 SRC_URI=mirror://gnu/emacs/emacs-23.4.tar.bz2 https://dev.gentoo.org/~ulm/emacs/emacs-23.4-patches-17.tar.xz
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=41cffba6fe95c69239117e7135b14b24

@@ -10,5 +10,5 @@ RDEPEND=>=dev-python/compizconfig-python-0.6.0 >=x11-wm/compiz-0.6.0 x11-apps/xv
 REQUIRED_USE=|| ( gtk qt4 )
 SLOT=0
 SRC_URI=mirror://gentoo/fusion-icon-0.1.tar.gz
-_eclasses_=distutils	def8c8eb435ec28fd9315114640f6c84	eutils	43da5163ba106e87d22d2e7d6d67537f	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=distutils	def8c8eb435ec28fd9315114640f6c84	eutils	43da5163ba106e87d22d2e7d6d67537f	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=7a8f342741c7ee51251e4c2c60fceffd

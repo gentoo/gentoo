@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=crypt? ( >=app-crypt/gpgme-1.0.0 ) otr? ( >=net-libs/libotr-3.1.0 ) aspell? ( app-text/aspell ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) idn? ( net-dns/libidn ) spell? ( app-text/enchant ) dev-libs/glib:2 sys-libs/ncurses >=net-libs/loudmouth-1.4.3-r1[ssl?]
 SLOT=0
 SRC_URI=http://mcabber.com/hg/index.cgi/archive/a18e1b488f1c.tar.gz -> mcabber-0.10.2_p20131025.tar.gz
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=eb58cc49290394fc26b646a776c16714

@@ -9,5 +9,5 @@ LICENSE=LLGPL-2.1
 RDEPEND=>=dev-lisp/asdf-2.33-r3:=
 SLOT=0
 SRC_URI=x86? ( ftp://ftp.clozure.com/pub/release/1.10/ccl-1.10-linuxx86.tar.gz ) amd64? ( ftp://ftp.clozure.com/pub/release/1.10/ccl-1.10-linuxx86.tar.gz )
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=f5d9deff9469ee3d38ba95430352f501

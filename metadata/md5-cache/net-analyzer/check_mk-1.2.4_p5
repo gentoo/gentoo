@@ -9,5 +9,5 @@ RDEPEND=( || ( dev-lang/python:2.6 dev-lang/python:2.7 ) ) wato? ( app-admin/sud
 REQUIRED_USE=livestatus? ( !agent-only ) wato? ( !agent-only )
 SLOT=0
 SRC_URI=http://mathias-kettner.de/download/check_mk-1.2.4p5.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=b6424dc92d9d1855b258d6610659a421

@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-python/pygtk[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyusb:0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 SLOT=0
 SRC_URI=mirror://sourceforge/pk2-la/pk2-la-1.1.tar.bz2
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	32b376cbb100a3a8083b3a0de023e117	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	32b376cbb100a3a8083b3a0de023e117	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=d825e8389a144a12ad88ee3b01fcb070

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/php[cli,mysql,session,sockets,xml] dev-php/adodb net-analyzer/rrdtool[graph] virtual/cron virtual/mysql snmp? ( >=net-analyzer/net-snmp-5.2.0 ) >=app-admin/webapp-config-1.50.15
 SLOT=0.8.8f
 SRC_URI=http://www.cacti.net/downloads/cacti-0.8.8f.tar.gz
-_eclasses_=depend.php	c595f1a83ba4052bfe96c06daee20004	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	webapp	42c6ef7af496b228f9854b3c81e4b226
+_eclasses_=depend.php	c595f1a83ba4052bfe96c06daee20004	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	webapp	42c6ef7af496b228f9854b3c81e4b226
 _md5_=f7e75abd16c84b7e488827b92e1bc430

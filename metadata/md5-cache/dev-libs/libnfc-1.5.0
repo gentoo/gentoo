@@ -9,5 +9,5 @@ LICENSE=LGPL-3
 RDEPEND=sys-apps/pcsc-lite virtual/libusb:0
 SLOT=0
 SRC_URI=https://libnfc.googlecode.com/files/libnfc-1.5.0.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=490cd378c5b8ce26b18f34bef023f30e

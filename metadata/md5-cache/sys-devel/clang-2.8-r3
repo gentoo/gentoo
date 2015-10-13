@@ -9,5 +9,5 @@ LICENSE=UoI-NCSA
 RDEPEND=~sys-devel/llvm-2.8[debug=,multitarget=]
 SLOT=0
 SRC_URI=http://llvm.org/releases/2.8/llvm-2.8.tgz -> llvm-2.8-r1.tgz http://llvm.org/releases/2.8/clang-2.8.tgz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=ee7033a1a5de908da16d101c8d7b9d61

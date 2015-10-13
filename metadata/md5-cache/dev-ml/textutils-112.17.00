@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=>=dev-lang/ocaml-4.02[ocamlopt?] >=dev-ml/core-109.24.00:= >=dev-ml/pa_ounit-109.18.00:= >=dev-ml/sexplib-109.20.00:= dev-ml/camlp4:= >=dev-lang/ocaml-3.12:=[ocamlopt?]
 SLOT=0/112.17.00
 SRC_URI=http://ocaml.janestreet.com/ocaml-core/112.17/files/textutils-112.17.00.tar.gz
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	oasis	1f8aac15a40bfb39dd98018626248fe1	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	oasis	1f8aac15a40bfb39dd98018626248fe1	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=7928082d67e6fc5ce78c6fd70ad6379f

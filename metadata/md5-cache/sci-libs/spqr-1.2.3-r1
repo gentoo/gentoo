@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=sci-libs/cholmod[supernodal(+)] tbb? ( dev-cpp/tbb ) metis? ( >=sci-libs/cholmod-1.7.0-r1[metis] )
 SLOT=0
 SRC_URI=http://www.cise.ufl.edu/research/sparse/SPQR/SPQR-1.2.3.tar.gz
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=426f28db34e4df0daf1d65e37dae70e9

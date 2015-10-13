@@ -7,5 +7,5 @@ IUSE=debug mysql oracle oci8-instant-client postgres
 LICENSE=GPL-2
 RDEPEND=virtual/pkgconfig dev-libs/ferrisloki x11-libs/qscintilla dev-qt/qtgui:4 dev-qt/qtsql:4[mysql?,postgres?] dev-qt/qtxmlpatterns:4 oci8-instant-client? ( dev-db/oracle-instantclient-basic ) postgres? ( dev-db/postgresql )
 SLOT=0
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	subversion	4fee0a764150bb4dda27ed4d2c4ed7ce	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	subversion	4fee0a764150bb4dda27ed4d2c4ed7ce	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=f451a8b425980682dae5f0f621d1c9f1

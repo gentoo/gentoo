@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=app-shells/bash virtual/cron || ( net-misc/curl net-misc/wget ) dev-perl/IO-Socket-SSL dev-perl/Net-SSLeay sys-apps/net-tools alarm? ( media-sound/mpg123 media-sound/pulseaudio ) alert? ( || ( ( gnome-extra/zenity ) ( kde-apps/kdialog ) ) ) gtk? ( dev-python/pygtk ) lock? ( dev-python/pygtk ) network? ( net-analyzer/traceroute ) session? ( sys-apps/iproute2 || ( media-gfx/scrot media-gfx/imagemagick ) ) webcam? ( || ( ( media-video/mplayer[encode,jpeg,v4l] ) ( media-tv/xawtv ) ) )
 SLOT=0
 SRC_URI=http://preyproject.com/releases/0.5.4/prey-0.5.4-linux.zip
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=21596853ef9fb953f34407afd03d590b

@@ -7,5 +7,5 @@ IUSE=+pango
 LICENSE=BSD
 RDEPEND=dev-lang/perl dev-libs/libev dev-libs/libpcre >=dev-libs/yajl-2.0.3 x11-libs/libxcb[xkb] x11-libs/libxkbcommon[X] x11-libs/startup-notification x11-libs/xcb-util x11-libs/xcb-util-cursor x11-libs/xcb-util-keysyms x11-libs/xcb-util-wm pango? ( >=x11-libs/pango-1.30.0[X] >=x11-libs/cairo-1.12.2[X,xcb] ) dev-perl/AnyEvent-I3 dev-perl/JSON-XS
 SLOT=0
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=404b7f57cf59d64a5222f6c4cb272b8a

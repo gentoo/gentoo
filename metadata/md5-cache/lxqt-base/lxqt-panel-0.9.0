@@ -10,5 +10,5 @@ RDEPEND=dev-libs/glib:2 >=dev-libs/libqtxdg-1.0.0 dev-qt/linguist-tools:5 dev-qt
 REQUIRED_USE=volume? ( || ( alsa pulseaudio ) )
 SLOT=0
 SRC_URI=http://downloads.lxqt.org/lxqt/0.9.0/lxqt-panel-0.9.0.tar.xz
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=6a7fc2f2ee3be93afc0a9251ca2bc667

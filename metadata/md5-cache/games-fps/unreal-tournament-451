@@ -11,5 +11,5 @@ RDEPEND=>=media-libs/libsdl-1.2.15-r5[abi_x86_32(-)] x11-libs/libX11[abi_x86_32(
 RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=http://www.ibiblio.org/osg/Downloads/Linux/Installers/ut-install-436.run http://utpg.org/patches/UTPGPatch451.tar.bz2
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	cdrom	d59e7a8a50d875e095c60654bbe22273	eutils	43da5163ba106e87d22d2e7d6d67537f	games	4dae170e58f773c484e07d18ef441804	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	portability	3a50b3ec310b86914f98babecc8f89c6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	unpacker	1d149d9bda7723e740cfd28118f27813	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	cdrom	d59e7a8a50d875e095c60654bbe22273	eutils	43da5163ba106e87d22d2e7d6d67537f	games	4dae170e58f773c484e07d18ef441804	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	portability	3a50b3ec310b86914f98babecc8f89c6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=e272756c7f79d9eeb5aa9a79f4d52617

@@ -9,5 +9,5 @@ LICENSE=HPND GPL-2+
 RDEPEND=sys-libs/ncurses sys-libs/readline:0= dev-lang/tcl:0= dev-lang/tk:0= dev-tcltk/blt opengl? ( virtual/opengl )
 SLOT=0
 SRC_URI=http://www.opencircuitdesign.com/magic/archive/magic-7.5.231.tgz ftp://ftp.mosis.edu/pub/sondeen/magic/new/beta/2002a.tar.gz
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=ec7ad321bf32492eced8f5b277ce51c8

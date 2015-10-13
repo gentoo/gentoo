@@ -9,5 +9,5 @@ LICENSE=LGPL-2 GPL-2
 RDEPEND=dev-libs/expat dev-libs/libpcre:3 sci-libs/plplot sys-libs/zlib mysql? ( virtual/mysql ) pdf? ( media-libs/libharu ) png? ( media-libs/gd[png] ) postgres? ( dev-db/postgresql:= ) X? ( x11-libs/libXt )
 SLOT=0
 SRC_URI=ftp://emboss.open-bio.org/pub/EMBOSS/ESIM4-1.0.0.650.tar.gz -> embassy-esim4-1.0.0.650.tar.gz
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	emboss-r1	3a35d39ed2170438e28672a85b806260	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	emboss-r1	3a35d39ed2170438e28672a85b806260	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=372a55d64865de9d88f2b796cfe2c8e6

@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=dev-db/unixODBC sys-libs/ncurses
 SLOT=0
 SRC_URI=mirror://sourceforge/libodbcxx/libodbc++-0.2.5.tar.bz2
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=605b0e5c89cd39b50c2dac7438fc20e6

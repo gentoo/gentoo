@@ -9,5 +9,5 @@ LICENSE=GPL-2 LGPL-2.1
 RDEPEND=readline? ( >=sys-libs/readline-4.1 >=sys-libs/ncurses-5.2 ) libedit? ( dev-libs/libedit )
 SLOT=0
 SRC_URI=mirror://gnu-alpha/bc/bc-1.06.95.tar.bz2 mirror://gnu/bc/bc-1.06.95.tar.bz2
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=20a8bd5d17ec13501ee64894af3f7421

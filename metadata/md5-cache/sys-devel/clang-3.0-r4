@@ -9,5 +9,5 @@ LICENSE=UoI-NCSA
 RDEPEND=~sys-devel/llvm-3.0[debug=,multitarget=]
 SLOT=0
 SRC_URI=http://llvm.org/releases/3.0/llvm-3.0.tar.gz http://llvm.org/releases/3.0/clang-3.0.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=9cf1b65c705ed57076fe236cb3794642

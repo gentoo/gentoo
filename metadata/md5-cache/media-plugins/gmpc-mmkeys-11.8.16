@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=dev-libs/dbus-glib >=media-sound/gmpc-11.8.16
 SLOT=0
 SRC_URI=http://download.sarine.nl/Programs/gmpc/11.8/gmpc-mmkeys-11.8.16.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	vala	335996addec48717e632dfd1f588ef1c
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vala	335996addec48717e632dfd1f588ef1c
 _md5_=fd710028aa9d5d0fd993a1ca97261d32

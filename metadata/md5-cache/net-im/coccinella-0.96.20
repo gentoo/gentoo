@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=>=dev-lang/tk-8.5 >=dev-tcltk/tkpng-0.9 >=dev-tcltk/tktreectrl-2.2.9 >=dev-tcltk/tktray-1.1 >=dev-tcltk/snack-2.2 ssl? ( >=dev-tcltk/tls-1.4 ) >=dev-tcltk/tkimg-1.3
 SLOT=0
 SRC_URI=mirror://sourceforge/coccinella/Coccinella-0.96.20Src.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=5205f12e2f8802163a4878c19ebdd6fb

@@ -10,5 +10,5 @@ RDEPEND=>=media-libs/libsdl-1.2.5 truetype? ( >=media-libs/sdl-ttf-2.0.6 ) image
 REQUIRED_USE=|| ( ruby_targets_ruby19 ruby_targets_ruby20 ruby_targets_ruby21 ruby_targets_ruby22 )
 SLOT=0
 SRC_URI=https://github.com/ohai/rubysdl/archive/rel-2-1-2.tar.gz -> ruby-sdl-2.1.2.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-utils-2	c059b30d6a4df7cf32e2c98c1da1c9b5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	ruby-ng	12af15f9116c054425934f3eec054899	ruby-utils	97c910cb6b087c64260df641a9b3de0c	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-utils-2	c059b30d6a4df7cf32e2c98c1da1c9b5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	ruby-ng	12af15f9116c054425934f3eec054899	ruby-utils	97c910cb6b087c64260df641a9b3de0c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=805b4aeec2fca201bb23bc2abea03af2

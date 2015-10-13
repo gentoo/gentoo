@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=sci-visualization/gnuplot[-emacs(-)] >=virtual/emacs-23
 SLOT=0
 SRC_URI=https://github.com/bruceravel/gnuplot-mode/archive/0.7.0.tar.gz -> gnuplot-mode-0.7.0.tar.gz
-_eclasses_=elisp	484004c25306120b472b7dfdb0685c95	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=elisp	484004c25306120b472b7dfdb0685c95	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=39fc0626fa739e4e8c321f0b7a5a9434

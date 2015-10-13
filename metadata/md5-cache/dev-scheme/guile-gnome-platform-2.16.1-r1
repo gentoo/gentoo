@@ -10,5 +10,5 @@ RDEPEND=dev-libs/atk dev-libs/g-wrap dev-libs/glib:2 dev-scheme/guile:12 dev-sch
 RESTRICT=test
 SLOT=0
 SRC_URI=https://ftp.gnu.org/pub/gnu/guile-gnome/guile-gnome-platform/guile-gnome-platform-2.16.1.tar.gz
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=917b96daf101895ab1c66d7f42c4fbcb

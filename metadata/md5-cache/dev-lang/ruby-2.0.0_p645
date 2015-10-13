@@ -10,5 +10,5 @@ PDEPEND=virtual/rubygems[ruby_targets_ruby20] >=dev-ruby/json-1.7.7[ruby_targets
 RDEPEND=berkdb? ( sys-libs/db:= ) gdbm? ( sys-libs/gdbm ) ssl? ( dev-libs/openssl:0 ) socks5? ( >=net-proxy/dante-1.1.13 ) ncurses? ( sys-libs/ncurses:0= ) readline? ( sys-libs/readline:0 ) dev-libs/libyaml virtual/libffi sys-libs/zlib >=app-eselect/eselect-ruby-20100402 !<dev-ruby/rdoc-3.9.4 !<dev-ruby/rubygems-1.8.10-r1
 SLOT=2.0
 SRC_URI=mirror://ruby/2.0/ruby-2.0.0-p645.tar.xz https://dev.gentoo.org/~flameeyes/ruby-team/ruby-patches-2.0.0_p645.tar.bz2
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=07b8bef93006789e59afe10a1ef9034c

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=selinux? ( >=sys-libs/libselinux-1.28 sec-policy/selinux-shutdown ) !>=sys-apps/util-linux-2.23
 SLOT=0
 SRC_URI=mirror://nongnu/sysvinit/sysvinit-2.88dsf.tar.bz2
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=470e17dd65e2750e7379acf78d927d16

@@ -9,5 +9,5 @@ LICENSE=arb
 RDEPEND=app-text/sablotron media-libs/libpng media-libs/tiff www-client/lynx x11-libs/libXaw x11-libs/libXpm x11-libs/motif:0 opengl? ( media-libs/glew media-libs/freeglut || ( media-libs/mesa[motif] ( media-libs/mesa x11-libs/libGLw ) ) ) sci-visualization/gnuplot
 SLOT=0
 SRC_URI=http://download.arb-home.de/release/arb_5.1/arbsrc.tgz -> arb-5.1.tgz mirror://gentoo/arb-5.1-glibc2.10.patch.bz2 https://dev.gentoo.org/~jlec/arb-5.1-linker.patch.bz2
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=ccac55e99a86ba7bca4258e0de6a277a

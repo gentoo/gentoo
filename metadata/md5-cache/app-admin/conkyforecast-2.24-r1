@@ -10,5 +10,5 @@ RDEPEND=app-admin/conky >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=https://launchpad.net/~conky-companions/+archive/ppa/+files/conkyforecast_2.24.tar.gz
-_eclasses_=distutils-r1	46506dd0dd992b3c89b0d00daabfd86c	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=distutils-r1	46506dd0dd992b3c89b0d00daabfd86c	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=2ea70a2c00dbbd28cf83ce41b0fd44e4

@@ -10,5 +10,5 @@ RDEPEND=dev-libs/glib:2 lxde-base/menu-cache x11-libs/gtk+:2 icons? ( x11-wm/ope
 REQUIRED_USE=svg? ( icons )
 SLOT=0
 SRC_URI=https://bitbucket.org/fabriceT/openbox-menu/downloads/openbox-menu-0.7.0.tar.bz2
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=a78ad5c166cbf23e26f27db919496013

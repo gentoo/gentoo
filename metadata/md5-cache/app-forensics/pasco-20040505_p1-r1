@@ -6,5 +6,5 @@ KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=BSD
 SLOT=0
 SRC_URI=mirror://sourceforge/odessa/pasco_20040505_1.tar.gz
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=24663e7ce32654008a2df31f3ce29c8a

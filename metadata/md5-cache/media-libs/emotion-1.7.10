@@ -9,5 +9,5 @@ LICENSE=BSD-2
 RDEPEND=>=media-libs/evas-1.7.10 >=media-libs/edje-1.7.10 >=dev-libs/ecore-1.7.10 >=dev-libs/eina-1.7.10 >=dev-libs/eeze-1.7.10 vlc? ( media-video/vlc ) xine? ( >=media-libs/xine-lib-1.1.1 ) !gstreamer? ( !vlc? ( !xine? ( >=media-libs/xine-lib-1.1.1 ) ) ) gstreamer? ( =media-libs/gstreamer-0.10* =media-libs/gst-plugins-good-0.10* =media-plugins/gst-plugins-ffmpeg-0.10* ) nls? ( sys-devel/gettext )
 SLOT=0
 SRC_URI=https://download.enlightenment.org/releases/emotion-1.7.10.tar.bz2
-_eclasses_=enlightenment	c185b1fa0d87798fd07fb1cd85866b23	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=enlightenment	c185b1fa0d87798fd07fb1cd85866b23	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=c97fcc7e8958e8d1b87d876685103447

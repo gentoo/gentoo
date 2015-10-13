@@ -10,5 +10,5 @@ RDEPEND=!static? ( >=sys-apps/util-linux-2.17.2 readline? ( sys-libs/readline ) 
 REQUIRED_USE=static? ( static-libs )
 SLOT=0
 SRC_URI=ftp://oss.sgi.com/projects/xfs/cmd_tars/xfsprogs-3.1.11.tar.gz ftp://oss.sgi.com/projects/xfs/previous/cmd_tars/xfsprogs-3.1.11.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=71eb2daa47d3f497b1ed7f71a40247ba

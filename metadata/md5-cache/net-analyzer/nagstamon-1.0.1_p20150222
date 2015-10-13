@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-python/pygobject:2 dev-python/pygtk dev-python/lxml dev-python/beautifulsoup:python-2 gnome-base/librsvg dev-python/keyring gnome? ( dev-python/egg-python ) sound? ( media-sound/sox )
 SLOT=0
 SRC_URI=https://github.com/HenriWahl/nagstamon/archive/b7a91e68ca93ead4e5cfef22e2226c1ff9c7b52c.tar.gz -> Nagstamon-b7a91e68ca93ead4e5cfef22e2226c1ff9c7b52c.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	32b376cbb100a3a8083b3a0de023e117	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	32b376cbb100a3a8083b3a0de023e117	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=d6da9edbc433f167cd7a35b8c167d2b4

@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=>=dev-qt/qtgui-4.8:4[accessibility] >=dev-qt/qtdbus-4.8:4 >=dev-qt/qtsql-4.8:4 dev-qt/qtsingleapplication[qt4(+),X] kde? ( || ( media-libs/phonon[gstreamer?,qt4] >=dev-qt/qtphonon-4.8:4 ) ) !kde? ( || ( >=dev-qt/qtphonon-4.8:4 media-libs/phonon[gstreamer?,qt4] ) ) gstreamer? ( media-plugins/gst-plugins-soup:0.10 media-plugins/gst-plugins-ffmpeg:0.10 media-plugins/gst-plugins-faac:0.10 media-plugins/gst-plugins-faad:0.10 media-plugins/gst-plugins-theora )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~hwoarang/distfiles/minitube-2.3.tar.gz
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	l10n	714aaf78929eade946da5eaff7d2001a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	l10n	714aaf78929eade946da5eaff7d2001a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=4b9849c781d5d54e0297b6c134a45a12

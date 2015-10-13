@@ -7,5 +7,5 @@ KEYWORDS=amd64 arm ppc ppc64 x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.jdl.com/software/dtc-v1.3.0.tgz
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=7f9fb4a4fc325873c50bd37a98160721

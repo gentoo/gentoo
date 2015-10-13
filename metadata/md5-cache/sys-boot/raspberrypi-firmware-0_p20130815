@@ -7,5 +7,5 @@ LICENSE=GPL-2 raspberrypi-videocore-bin
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://github.com/raspberrypi/firmware/raw/e0590d6dda/boot/bootcode.bin -> raspberrypi-firmware-e0590d6dda-bootcode.bin https://github.com/raspberrypi/firmware/raw/e0590d6dda/boot/fixup.dat -> raspberrypi-firmware-e0590d6dda-fixup.dat https://github.com/raspberrypi/firmware/raw/e0590d6dda/boot/fixup_cd.dat -> raspberrypi-firmware-e0590d6dda-fixup_cd.dat https://github.com/raspberrypi/firmware/raw/e0590d6dda/boot/fixup_x.dat -> raspberrypi-firmware-e0590d6dda-fixup_x.dat https://github.com/raspberrypi/firmware/raw/e0590d6dda/boot/start.elf -> raspberrypi-firmware-e0590d6dda-start.elf https://github.com/raspberrypi/firmware/raw/e0590d6dda/boot/start_cd.elf -> raspberrypi-firmware-e0590d6dda-start_cd.elf https://github.com/raspberrypi/firmware/raw/e0590d6dda/boot/start_x.elf -> raspberrypi-firmware-e0590d6dda-start_x.elf
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=79fd4024a8a45faa66d5b7193d7a5aea

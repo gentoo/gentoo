@@ -9,5 +9,5 @@ LICENSE=public-domain
 RDEPEND=ecm? ( sci-mathematics/gmp-ecm[-gwnum] ) mpi? ( virtual/mpi ) zlib? ( sys-libs/zlib )
 SLOT=0
 SRC_URI=mirror://sourceforge/msieve/msieve/Msieve%20v1.51/msieve151.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=6a339e32b936c7a08e62c6e9b29571de

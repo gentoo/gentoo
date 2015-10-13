@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.26:2 >=x11-libs/gtk+-2.16:2 dev-libs/gmime:2.6 gnome-keyring? ( >=gnome-base/libgnome-keyring-3.2 ) libnotify? ( >=x11-libs/libnotify-0.4.1 ) spell? ( >=app-text/enchant-1.6 >=app-text/gtkspell-2.0.7:2 ) ssl? ( >=net-libs/gnutls-3 )
 SLOT=0
 SRC_URI=http://pan.rebelbase.com/download/releases/0.139/source/pan-0.139.tar.bz2
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=efded30c9f19f03bb560471c735bef4f

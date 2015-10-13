@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=app-text/dvipng virtual/latex-base
 SLOT=0
 SRC_URI=mirror://gentoo/mathtex-1.04.zip
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=1fa33c6b424cf02d64cccca1f95b96cd

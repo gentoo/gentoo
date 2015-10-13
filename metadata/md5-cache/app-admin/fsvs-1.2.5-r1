@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=dev-vcs/subversion dev-libs/libpcre sys-libs/gdbm dev-libs/apr-util dev-util/ctags
 SLOT=0
 SRC_URI=http://download.fsvs-software.org/fsvs-1.2.5.tar.bz2
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=c7c52e18a50fc9e6039131e735dda8ce

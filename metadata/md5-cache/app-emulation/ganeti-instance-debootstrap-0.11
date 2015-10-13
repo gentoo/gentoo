@@ -7,5 +7,5 @@ LICENSE=GPL-2
 RDEPEND=app-arch/dpkg app-arch/dump app-emulation/ganeti dev-util/debootstrap >=sys-apps/coreutils-6.10-r1 sys-apps/util-linux sys-fs/e2fsprogs
 SLOT=0
 SRC_URI=https://ganeti.googlecode.com/files/ganeti-instance-debootstrap-0.11.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=96206970ed1c218d417aaa12a1a9dfd5

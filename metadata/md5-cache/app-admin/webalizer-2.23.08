@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=sys-libs/db-4.2 >=sys-libs/zlib-1.1.4 >=media-libs/libpng-1.2 >=media-libs/gd-1.8.3[png] dev-libs/geoip bzip2? ( app-arch/bzip2 ) >=app-admin/webapp-config-1.50.15
 SLOT=0
 SRC_URI=ftp://ftp.mrunix.net/pub/webalizer/webalizer-2.23-08-src.tar.bz2 xtended? ( http://patrickfrei.ch/webalizer/rb30/webalizer-2.23-08-RB30-patch.tar.gz ) https://dev.gentoo.org/~blueness/webalizer/webalizer.conf.gz ftp://ftp.mrunix.net/pub/webalizer/geodb//webalizer-geodb-20140201.tgz
-_eclasses_=db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	webapp	42c6ef7af496b228f9854b3c81e4b226
+_eclasses_=db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	webapp	42c6ef7af496b228f9854b3c81e4b226
 _md5_=1effb93ee7c0c03fafeb2064428d24b8

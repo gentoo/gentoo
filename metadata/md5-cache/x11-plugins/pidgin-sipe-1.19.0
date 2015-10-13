@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/gmime-2.4.16 dev-libs/libxml2 openssl? ( dev-libs/openssl ) !openssl? ( dev-libs/nss ) kerberos? ( virtual/krb5 ) voice? ( >=dev-libs/glib-2.28.0 >=net-libs/libnice-0.1.0 media-libs/gstreamer:0.10 >=net-im/pidgin-2.8.0 ) !voice? ( >=dev-libs/glib-2.12.0:2 net-im/pidgin ) telepathy? ( >=sys-apps/dbus-1.1.0 >=dev-libs/dbus-glib-0.61 >=dev-libs/glib-2.28:2 >=net-libs/telepathy-glib-0.18.0 )
 SLOT=0
 SRC_URI=mirror://sourceforge/sipe/pidgin-sipe-1.19.0.tar.gz
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=e9ce9817a539f3e3a13d04a1bc75c937

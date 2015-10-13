@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=dev-lang/mono >=dev-dotnet/dbus-sharp-0.7:1.0
 SLOT=1.0
 SRC_URI=mirror://github/mono/dbus-sharp/dbus-sharp-glib-0.5.0.tar.gz
-_eclasses_=mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=bd2f4502a997e2f6016ad39f357b6de1

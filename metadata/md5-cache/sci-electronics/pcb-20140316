@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 gif? ( >=media-libs/gd-2.0.23 ) gtk? ( x11-libs/gtk+:2 x11-libs/pango x11-libs/gtkglext dbus? ( sys-apps/dbus ) ) jpeg? ( >=media-libs/gd-2.0.23[jpeg] ) motif? ( !gtk? ( >=x11-libs/motif-2.3:0 dbus? ( sys-apps/dbus ) xrender? ( >=x11-libs/libXrender-0.9 ) ) ) nelma? ( >=media-libs/gd-2.0.23 ) opengl? ( virtual/opengl ) gcode? ( >=media-libs/gd-2.0.23 ) virtual/libintl png? ( >=media-libs/gd-2.0.23[png] ) m4lib-png? ( >=media-libs/gd-2.0.23[png] ) tk? ( >=dev-lang/tk-8 ) sci-electronics/electronics-menu
 SLOT=0
 SRC_URI=mirror://sourceforge/pcb/pcb/pcb-20140316/pcb-20140316.tar.gz
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=5662b8e59bd1d2f799c2b137668ad51e

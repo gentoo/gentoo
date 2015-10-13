@@ -7,5 +7,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/python-imaging >=gnome-extra/gdesklets-core-0.36.1-r3
 SLOT=0
 SRC_URI=http://gdesklets.de/files/controls/ImageSlideShow/ImageSlideShow-0.8.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	gdesklets	90ccbfb7b39bf64475f984ceeb1223e1	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	gdesklets	90ccbfb7b39bf64475f984ceeb1223e1	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=2d033ee63e7667fd4571a6a8fd0ec870

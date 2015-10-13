@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=dev-perl/libwww-perl sci-mathematics/sha1-polyml doc? ( virtual/latex-base dev-tex/rail ) proofgeneral? ( app-emacs/proofgeneral ) pide? ( >=dev-lang/scala-2.8.2 ) ledit? ( app-misc/ledit ) readline? ( app-misc/rlwrap ) >=app-shells/bash-3.0:* >=dev-lang/polyml-5.4.1:=[-portable] >=dev-lang/perl-5.8.8-r2 >=dev-java/java-config-2.2.0
 SLOT=0/2012
 SRC_URI=http://www.cl.cam.ac.uk/research/hvg/isabelle/dist/Isabelle2012.tar.gz doc? ( https://dev.gentoo.org/~gienah/snapshots/Isabelle2012-doc-src.tar.gz ) pide? ( http://www4.in.tum.de/~wenzelm/test/jedit_build-20120414.tar.gz )
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	c059b30d6a4df7cf32e2c98c1da1c9b5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	c059b30d6a4df7cf32e2c98c1da1c9b5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=414a76e960d933967c10f56f8c9a91e6

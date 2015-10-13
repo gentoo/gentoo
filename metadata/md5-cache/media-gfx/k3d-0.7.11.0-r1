@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/boost[python] >=dev-cpp/glibmm-2.6:2 >=dev-cpp/gtkmm-2.6:2.4 dev-libs/expat >=dev-libs/libsigc++-2.2:2 media-libs/mesa virtual/glu virtual/opengl >=x11-libs/gtkglext-1.0.6-r3 x11-libs/libICE x11-libs/libSM x11-libs/libXmu x11-libs/libXt 3ds? ( media-libs/lib3ds ) cuda? ( dev-util/nvidia-cuda-toolkit ) gnome? ( gnome-base/libgnome ) graphviz? ( media-gfx/graphviz ) gts? ( sci-libs/gts ) imagemagick? ( media-gfx/imagemagick ) jpeg? ( virtual/jpeg ) openexr? ( media-libs/openexr ) png? ( >=media-libs/libpng-1.2.43-r2 ) python? ( >=dev-lang/python-2.3 dev-python/cgkit ) tiff? ( media-libs/tiff ) truetype? ( >=media-libs/freetype-2 )
 SLOT=0
 SRC_URI=mirror://sourceforge/k3d/k3d-source-0.7.11.0.tar.gz
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=9962570bdd70db2e45f059879657cf7d

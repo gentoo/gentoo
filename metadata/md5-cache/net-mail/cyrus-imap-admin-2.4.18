@@ -9,5 +9,5 @@ LICENSE=BSD-with-attribution
 RDEPEND=>=dev-lang/perl-5.6.1 >=dev-libs/cyrus-sasl-2.1.13 dev-perl/Term-ReadLine-Perl dev-perl/TermReadKey berkdb? ( >=sys-libs/db-3.2:* ) ssl? ( >=dev-libs/openssl-0.9.6:* ) kerberos? ( virtual/krb5 ) dev-lang/perl[-build(-)]
 SLOT=0
 SRC_URI=ftp://ftp.cyrusimap.org/cyrus-imapd/cyrus-imapd-2.4.18.tar.gz
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-app	f4e5d7e4162790fd8dca8dafe5a2eadf	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	unpacker	1d149d9bda7723e740cfd28118f27813	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-app	f4e5d7e4162790fd8dca8dafe5a2eadf	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=13c43e13915202833dba18abb56cd177

@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=sys-libs/ncurses X? ( x11-libs/libX11 xpm? ( x11-libs/libXpm ) ) nanoemacs? ( !app-editors/ne )
 SLOT=0
 SRC_URI=http://www.jasspa.com/release_20090909/jasspa-mesrc-20091011.tar.gz !nanoemacs? ( http://www.jasspa.com/release_20090909/jasspa-memacros-20091017.tar.gz http://www.jasspa.com/release_20090909/jasspa-mehtml-20091011.tar.gz http://www.jasspa.com/release_20060909/meicons-extra.tar.gz )
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=da92f6587e682c389ec960d3feebe93b

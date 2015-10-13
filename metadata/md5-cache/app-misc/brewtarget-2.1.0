@@ -9,5 +9,5 @@ LICENSE=GPL-3 WTFPL-2
 RDEPEND=>=dev-qt/qtcore-4.8:4 >=dev-qt/qtgui-4.8:4 >=dev-qt/qtsql-4.8:4[sqlite] >=dev-qt/qtsvg-4.8:4 >=dev-qt/qtwebkit-4.8:4 phonon? ( kde? ( media-libs/phonon[qt4] ) !kde? ( || ( >=dev-qt/qtphonon-4.8:4 media-libs/phonon[qt4] ) ) )
 SLOT=0
 SRC_URI=https://launchpad.net/brewtarget/trunk/2.1.0/+download/brewtarget_2.1.0.orig.tar.xz
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	l10n	714aaf78929eade946da5eaff7d2001a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	l10n	714aaf78929eade946da5eaff7d2001a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=9a020d857a22a62c3566f56c7b929f68

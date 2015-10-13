@@ -9,5 +9,5 @@ LICENSE=LGPL-3
 RDEPEND=dev-libs/popt >=sys-libs/talloc-2.0.8[python] >=sys-libs/tevent-0.9.17[python(+)] >=sys-libs/tdb-1.2.11[python] net-nds/openldap !!<net-fs/samba-3.6.0[ldb] !!>=net-fs/samba-4.0.0[ldb] =dev-lang/python-2*
 SLOT=0
 SRC_URI=http://www.samba.org/ftp/pub/ldb/ldb-1.1.15.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	waf-utils	ad1dd5b59c523843eebd3a9934c509ca
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	waf-utils	ad1dd5b59c523843eebd3a9934c509ca
 _md5_=a4d65d1d2bb0432aeed3e4bbe74cbe14

@@ -8,5 +8,5 @@ KEYWORDS=~amd64
 LICENSE=public-domain
 RDEPEND=dev-java/glassfish-ejb-api:0 >=dev-java/java-config-2.2.0
 SLOT=0
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-utils-2	c059b30d6a4df7cf32e2c98c1da1c9b5	java-virtuals-2	c53e87cb867e7812d54bdf959c1164e3	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-utils-2	c059b30d6a4df7cf32e2c98c1da1c9b5	java-virtuals-2	c53e87cb867e7812d54bdf959c1164e3	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=0a106e9f572f6150cc7e44dd5c89e8e4

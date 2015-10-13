@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libXrender x11-libs/libXmu >=media-libs/libpng-1.4 gif? ( >=media-libs/giflib-4.0.1 ) imlib? ( media-libs/imlib ) truetype? ( x11-libs/libXft ) emacs? ( virtual/emacs ) m17n-lib? ( dev-libs/m17n-lib ) mng? ( media-libs/libmng ) nls? ( sys-devel/gettext ) truetype? ( cjk? ( media-fonts/sazanami ) )
 SLOT=0
 SRC_URI=ftp://sh.wide.ad.jp/WIDE/free-ware/mgp/magicpoint-1.13a.tar.gz ftp://ftp.mew.org/pub/MagicPoint/magicpoint-1.13a.tar.gz
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	43da5163ba106e87d22d2e7d6d67537f	fixheadtails	2f44773656577fe2653bacc8bdcb2174	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	43da5163ba106e87d22d2e7d6d67537f	fixheadtails	2f44773656577fe2653bacc8bdcb2174	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=e08664c03e0133d46a4fad6016560e07

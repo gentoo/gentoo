@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-scheme/bigloo
 SLOT=0
 SRC_URI=ftp://ftp-sop.inria.fr/mimosa/fp/Skribe/skribe1.2l.tar.gz
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=2cdee906595598f469dced3a12985a65

@@ -8,5 +8,5 @@ LICENSE=Apache-2.0 bundled-libs? ( BSD MIT )
 RDEPEND=dev-libs/openssl:0 sys-libs/zlib !bundled-libs? ( dev-lang/luajit:2[lua52compat] >=dev-libs/yajl-2.0.4 )
 RESTRICT=test
 SLOT=0
-_eclasses_=git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=e0f7ced332860df07f51055530e93a93

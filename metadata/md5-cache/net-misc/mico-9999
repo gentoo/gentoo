@@ -9,5 +9,5 @@ RDEPEND=gtk? ( x11-libs/gtk+:2 ) postgres? ( dev-db/postgresql ) qt4? ( dev-qt/q
 RESTRICT=test
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~haubi/distfiles/mico-9999-gentoo-patches-20120924.tar.bz2
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	darcs	4cd4e599f4aac32e177c825081e3e6df	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	darcs	4cd4e599f4aac32e177c825081e3e6df	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=44f6189c3bef392d265eb7bc0226315b

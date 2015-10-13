@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=ncurses? ( >=sys-libs/ncurses-5.7-r7[unicode?] )
 SLOT=0
 SRC_URI=http://pkgs.fedoraproject.org/repo/pkgs/procps-ng/procps-ng-3.3.8.tar.xz/aecbeeda2ab308f8d09dddcb4cb9a572/procps-ng-3.3.8.tar.xz https://gitorious.org/procps/procps/commit/ce5e995921e770bfcda25e42fe090aeccdbf1291.patch -> procps-3.3.8-respect_epipe_in_fileutils.patch https://gitorious.org/procps/procps/commit/e6a78f2745ca6c7ceed4406d3ce5397e77518b11.patch -> procps-3.3.8-top_user_filter.patch
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	1dfcad7b3f439dbc511d76c49f23da0d
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=e4422fbab98e73768a4d38424967ca6d
