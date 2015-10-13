@@ -25,12 +25,12 @@ DEPEND="
 		<dev-python/pbr-1.0[${PYTHON_USEDEP}]
 		test? (
 			${RDEPEND}
-			>=dev-python/hacking-0.10.0[${PYTHON_USEDEP}]
-			<dev-python/hacking-0.11[${PYTHON_USEDEP}]
 			>=dev-python/Babel-1.3[${PYTHON_USEDEP}]
 			>=dev-python/coverage-3.6[${PYTHON_USEDEP}]
 			>=dev-python/fixtures-0.3.14[${PYTHON_USEDEP}]
 			<dev-python/fixtures-1.3.0[${PYTHON_USEDEP}]
+			>=dev-python/mox3-0.7.0[${PYTHON_USEDEP}]
+			<dev-python/mox3-0.8.0[${PYTHON_USEDEP}]
 			>=dev-python/mock-1.0[${PYTHON_USEDEP}]
 			<dev-python/mock-1.1.0[${PYTHON_USEDEP}]
 			>=dev-python/sphinx-1.1.2[${PYTHON_USEDEP}]
@@ -82,6 +82,8 @@ RDEPEND="
 	!~dev-python/routes-2.0[${PYTHON_USEDEP}]
 	>=dev-python/webob-1.2.3[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-migrate-0.9.5[${PYTHON_USEDEP}]
+	!~dev-python/sqlalchemy-migrate-0.9.8[${PYTHON_USEDEP}]
+	<dev-python/sqlalchemy-migrate-0.10.0[${PYTHON_USEDEP}]
 	>=dev-python/httplib2-0.7.5[${PYTHON_USEDEP}]
 	>=dev-python/kombu-2.5.0[${PYTHON_USEDEP}]
 	>=dev-python/pycrypto-2.6[${PYTHON_USEDEP}]
@@ -89,11 +91,12 @@ RDEPEND="
 	dev-python/ordereddict[${PYTHON_USEDEP}]
 	>=dev-python/oslo-config-1.9.3[${PYTHON_USEDEP}]
 	<dev-python/oslo-config-1.10.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-concurrency-1.8.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-concurrency-1.8.2[${PYTHON_USEDEP}]
 	<dev-python/oslo-concurrency-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-context-0.2.0[${PYTHON_USEDEP}]
 	<dev-python/oslo-context-0.3.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-utils-1.4.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-utils-1.4.1[${PYTHON_USEDEP}]
 	<dev-python/oslo-utils-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-1.3.0[${PYTHON_USEDEP}]
 	<dev-python/stevedore-1.4.0[${PYTHON_USEDEP}]
@@ -148,6 +151,7 @@ pkg_setup() {
 python_prepare_all() {
 	sed -i '/xattr/d' test-requirements.txt || die
 	sed -i '/pysendfile/d' test-requirements.txt || die
+	sed -i '/^hacking/d' test-requirements.txt || die
 	distutils-r1_python_prepare_all
 }
 
