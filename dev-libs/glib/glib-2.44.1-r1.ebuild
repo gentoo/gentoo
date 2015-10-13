@@ -151,6 +151,8 @@ src_prepare() {
 	# gdbus-codegen is a separate package
 	epatch "${FILESDIR}/${PN}-2.40.0-external-gdbus-codegen.patch"
 
+	epatch "${FILESDIR}/${PN}-2.44.1-bionic-nameser.patch"
+
 	# leave python shebang alone
 	sed -e '/${PYTHON}/d' \
 		-i glib/Makefile.{am,in} || die
@@ -180,6 +182,19 @@ multilib_src_configure() {
 		fi
 		export LIBFFI_CFLAGS="-I$(echo /usr/$(get_libdir)/libffi-*/include)"
 		export LIBFFI_LIBS="-lffi"
+	fi
+
+	# These configure tests don't work when cross-compiling.
+	if tc-is-cross-compiler ; then
+		# https://bugzilla.gnome.org/show_bug.cgi?id=756473
+		case ${CHOST} in
+		hppa*|metag*) export glib_cv_stack_grows=yes ;;
+		*)            export glib_cv_stack_grows=no ;;
+		esac
+		# https://bugzilla.gnome.org/show_bug.cgi?id=756474
+		export glib_cv_uscore=no
+		# https://bugzilla.gnome.org/show_bug.cgi?id=756475
+		export ac_cv_func_posix_get{pwuid,grgid}_r=yes
 	fi
 
 	local myconf

@@ -28,6 +28,8 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/${MY_P}/gettext-runtime"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-0.19.5-langinfo.patch
+
 	# The libtool files are stored higher up, so make sure we run in the
 	# whole tree and not just the subdir we build.
 	elibtoolize "${WORKDIR}"
