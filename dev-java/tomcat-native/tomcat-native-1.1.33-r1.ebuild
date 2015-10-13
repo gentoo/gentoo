@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit base eutils java-pkg-2
+inherit base eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Native APR library for Tomcat"
 
@@ -13,28 +13,39 @@ SRC_URI="mirror://apache/tomcat/tomcat-connectors/native/${PV}/source/${P}-src.t
 HOMEPAGE="http://tomcat.apache.org/"
 KEYWORDS="~amd64 ~x86"
 LICENSE="Apache-2.0"
-IUSE=""
+IUSE="test"
 
-RDEPEND="=dev-libs/apr-1*
+RDEPEND="dev-libs/apr:1
 	dev-libs/openssl:=
-	>=virtual/jre-1.5:*"
+	>=virtual/jre-1.7"
 
-DEPEND=">=virtual/jdk-1.5:*
-	${RDEPEND}"
+DEPEND=">=virtual/jdk-1.7
+	test? ( dev-java/ant-junit:0 )"
 
-S=${WORKDIR}/${P}-src/jni/native
+S=${WORKDIR}/${P}-src/jni
 
 src_configure(){
+	cd native || die
 	econf --with-apr=/usr/bin/apr-1-config  \
 		--with-ssl=/usr || die "Could not configure native sources"
 }
 
 src_compile() {
+	eant jar -f build.xml
+
+	cd native || die
 	base_src_compile
 }
 
 src_install() {
+	java-pkg_newjar "dist/${P}-dev.jar" "${PN}.jar"
+
+	cd native
 	emake DESTDIR="${D}" install || die "Could not install libtcnative-1.so"
+}
+
+src_test() {
+	java-pkg-2_src_test
 }
 
 pkg_postinst() {
