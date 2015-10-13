@@ -17,7 +17,7 @@ SRC_URI="mirror://gnu/gettext/${MY_P}.tar.gz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE="nls static-libs +threads"
+IUSE="static-libs +threads"
 
 DEPEND=">=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]"
 # Block C libraries known to provide libintl.
@@ -28,7 +28,9 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/${MY_P}/gettext-runtime"
 
 src_prepare() {
-	elibtoolize
+	# The libtool files are stored higher up, so make sure we run in the
+	# whole tree and not just the subdir we build.
+	elibtoolize "${WORKDIR}"
 }
 
 multilib_src_configure() {
@@ -36,6 +38,9 @@ multilib_src_configure() {
 		# Emacs support is now in a separate package.
 		--without-emacs
 		--without-lispdir
+		# Normally this controls nls behavior in general, but the libintl
+		# subdir is skipped unless this is explicitly set.  ugh.
+		--enable-nls
 		# This magic flag enables libintl.
 		--with-included-gettext
 		# The gettext package provides this library.
@@ -44,7 +49,6 @@ multilib_src_configure() {
 		# No java until someone cares.
 		--disable-java
 
-		$(use_enable nls)
 		$(use_enable static-libs static)
 		$(use_enable threads)
 	)
