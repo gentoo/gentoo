@@ -151,6 +151,8 @@ src_prepare() {
 	# gdbus-codegen is a separate package
 	epatch "${FILESDIR}/${PN}-2.40.0-external-gdbus-codegen.patch"
 
+	epatch "${FILESDIR}/${PN}-2.44.1-bionic-nameser.patch"
+
 	# leave python shebang alone
 	sed -e '/${PYTHON}/d' \
 		-i glib/Makefile.{am,in} || die
