@@ -5,7 +5,7 @@
 EAPI=5
 JAVA_PKG_IUSE="doc source"
 
-inherit java-pkg-2 java-ant-2 eutils
+inherit java-pkg-2 java-ant-2
 
 MY_PN="taglibs-standard"
 MY_P="${MY_PN}-${PV}"
@@ -16,13 +16,13 @@ HOMEPAGE="https://tomcat.apache.org/taglibs/standard/"
 SRC_URI="http://apache.mirrors.ovh.net/ftp.apache.org/dist/tomcat/taglibs/${MY_P}/${MY_P}-source-release.zip"
 
 LICENSE="Apache-2.0"
-SLOT="1.2.5"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 CDEPEND="java-virtuals/servlet-api:3.0
-	dev-java/tomcat-jstl-impl:1.2.5
-	dev-java/tomcat-jstl-spec:1.2.5"
+	dev-java/tomcat-jstl-impl:0
+	dev-java/tomcat-jstl-spec:0"
 RDEPEND=">=virtual/jre-1.6
 	${CDEPEND}"
 DEPEND=">=virtual/jdk-1.6
@@ -35,7 +35,7 @@ DEPEND=">=virtual/jdk-1.6
 S="${WORKDIR}/${MY_P}"
 
 JAVA_ANT_REWRITE_CLASSPATH="yes"
-EANT_GENTOO_CLASSPATH="servlet-api-3.0,tomcat-jstl-spec-1.2.5,tomcat-jstl-impl-1.2.5"
+EANT_GENTOO_CLASSPATH="servlet-api-3.0,tomcat-jstl-spec,tomcat-jstl-impl"
 EANT_BUILD_TARGET="package"
 EANT_BUILD_XML="jstlel/build.xml"
 
