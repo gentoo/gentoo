@@ -30,7 +30,7 @@ fi
 # 3-clause BSD license
 LICENSE="ISC BSD"
 SLOT="0"
-IUSE="ldap nls pam offensive selinux skey +sendmail sssd"
+IUSE="ldap nls pam offensive selinux skey +sendmail"
 
 DEPEND="pam? ( virtual/pam )
 	skey? ( >=sys-auth/skey-1.1.5-r1 )
@@ -38,8 +38,7 @@ DEPEND="pam? ( virtual/pam )
 		>=net-nds/openldap-2.1.30-r1
 		dev-libs/cyrus-sasl
 	)
-	sys-libs/zlib
-	sssd? ( sys-auth/sssd )"
+	sys-libs/zlib"
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-sudo )
 	ldap? ( dev-lang/perl )
@@ -52,8 +51,7 @@ DEPEND="${DEPEND}
 
 S=${WORKDIR}/${MY_P}
 
-REQUIRED_USE="pam? ( !skey ) skey? ( !pam )
-	sssd? ( || ( amd64 x86 ) )"
+REQUIRED_USE="pam? ( !skey ) skey? ( !pam )"
 
 MAKEOPTS+=" SAMPLES="
 
@@ -124,7 +122,6 @@ src_configure() {
 		$(use_with skey) \
 		$(use_with selinux) \
 		$(use_with sendmail) \
-		$(use_with sssd) \
 		--without-opie \
 		--without-linux-audit \
 		--with-rundir="${EPREFIX}"/var/run/sudo \
