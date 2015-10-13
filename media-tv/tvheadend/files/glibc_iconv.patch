@@ -1,0 +1,40 @@
+From 984bcbb1acadd2957d7fc79dc4ec72e2e07a3572 Mon Sep 17 00:00:00 2001
+From: Olliver Schinagl <oliver@schinagl.nl>
+Date: Sat, 26 Sep 2015 22:36:08 +0200
+Subject: [PATCH] Use glibc version iconv
+
+Signed-off-by: Olliver Schinagl <oliver@schinagl.nl>
+---
+ Makefile  | 2 +-
+ configure | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 07d6965..0ec0259 100644
+--- a/Makefile
++++ b/Makefile
+@@ -39,7 +39,7 @@ else
+ LDFLAGS += -ldl -lpthread -lm
+ endif
+ ifeq ($(CONFIG_LIBICONV),yes)
+-LDFLAGS += -liconv
++LDFLAGS +=
+ endif
+ ifeq ($(PLATFORM), darwin)
+ LDFLAGS += -framework CoreServices
+diff --git a/configure b/configure
+index 487456b..a6cce11 100755
+--- a/configure
++++ b/configure
+@@ -214,7 +214,7 @@ int test(void)
+   iconv_t ic = iconv_open("ASCII", "ASCII");
+   return 0;
+ }
+-' -liconv
++'
+ 
+ if enabled_or_auto dvben50221; then
+   check_cc_snippet libdvben50221 '
+-- 
+2.4.6
+
