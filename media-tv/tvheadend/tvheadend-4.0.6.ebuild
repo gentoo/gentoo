@@ -6,49 +6,62 @@ EAPI=5
 
 inherit eutils linux-info systemd toolchain-funcs user
 
-MY_PV="3.4patch1"
-
 DESCRIPTION="Tvheadend is a TV streaming server and digital video recorder"
 HOMEPAGE="https://tvheadend.org/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+		dvbscan? ( http://linuxtv.org/downloads/dtv-scan-tables/dtv-scan-tables-2015-02-08-f2053b3.tar.bz2 )"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="avahi +dvb +dvbscan ffmpeg imagecache inotify xmltv zlib"
+IUSE="avahi ccache capmt constcw +cwc dbus +dvb +dvbscan epoll ffmpeg hdhomerun libav iconv imagecache inotify iptv satip +timeshift uriparser xmltv zlib"
 
-REQUIRED_USE="dvbscan? ( dvb )"
-
-DEPEND="dev-libs/openssl:0=
+RDEPEND="dev-libs/openssl:=
 	avahi? ( net-dns/avahi )
+	capmt? ( virtual/linuxtv-dvb-headers )
+	ccache? ( dev-util/ccache sys-libs/zlib )
+	dbus? ( sys-apps/dbus )
 	dvb? ( virtual/linuxtv-dvb-headers )
 	ffmpeg? ( virtual/ffmpeg )
+	hdhomerun? ( media-libs/libhdhomerun )
+	iconv? ( virtual/libiconv )
+	libav? ( media-video/libav )
 	imagecache? ( net-misc/curl )
+	uriparser? ( dev-libs/uriparser )
 	zlib? ( sys-libs/zlib )
-	virtual/pkgconfig"
-
-RDEPEND="${DEPEND}
-	dvbscan? ( media-tv/linuxtv-dvb-apps )
 	xmltv? ( media-tv/xmltv )"
 
-S="${WORKDIR}/${PN}-${MY_PV}"
+DEPEND="${DEPEND}
+	virtual/pkgconfig"
 
 CONFIG_CHECK="~INOTIFY_USER"
 
-DOCS=( README )
+DOCS=( README.md )
+
+src_unpack() {
+	unpack "${P}.tar.gz"
+
+	if use dvbscan; then
+		mkdir "${S}/data/dvb-scan" || die
+		cd "${T}"
+		unpack dtv-scan-tables-2015-02-08-f2053b3.tar.bz2
+		rmdir "${S}/data/dvb-scan" || die
+		mv "${T}/usr/share/dvb" "${S}/data/dvb-scan" || die
+
+		# This is needed to prevent make from removing files
+		touch "${S}/data/dvb-scan/.stamp" || die
+	fi
+}
 
 pkg_setup() {
 	enewuser tvheadend -1 -1 /dev/null video
 }
 
 src_prepare() {
-	# set the version number
-	echo "const char *tvheadend_version = \"${PV}\";" \
-		> src/version.c || die "setting version failed!"
-
 	# remove '-Werror' wrt bug #438424
 	sed -e 's:-Werror::' -i Makefile || die 'sed failed!'
+	epatch "${FILESDIR}/${PV}-use-glibc-version-iconv.patch"
 }
 
 src_configure() {
@@ -56,11 +69,25 @@ src_configure() {
 		--datadir="${EPREFIX}"/usr/share \
 		--mandir="${EPREFIX}"/usr/share/man/man1 \
 		$(use_enable avahi) \
-		--disable-dvbscan \
+		$(use_enable ccache) \
+		$(use_enable capmt) \
+		$(use_enable constcw) \
+		$(use_enable cwc) \
+		$(use_enable dbus) \
 		$(use_enable dvb linuxdvb) \
+		$(use_enable dvbscan) \
+		$(use_enable epoll) \
+		--disable-kqueue \
 		$(use_enable ffmpeg libav) \
+		$(use_enable hdhomerun hdhomerun_client) \
+		$(use_enable libav) \
 		$(use_enable imagecache) \
 		$(use_enable inotify) \
+		$(use_enable iptv) \
+		$(use_enable satip satip_server) \
+		$(use_enable satip satip_client) \
+		$(use_enable timeshift) \
+		$(use_enable uriparser) \
 		$(use_enable zlib)
 }
 
