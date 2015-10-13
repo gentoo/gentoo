@@ -30,7 +30,7 @@ IUSE="java lua perl php python ruby tcl"
 REQUIRED_USE="|| ( java lua perl php python ruby tcl )"
 
 COMMONDEPEND="=dev-libs/xapian-${PV}*
-	lua? ( dev-lang/lua:= )
+	lua? ( dev-lang/lua:0 )
 	perl? ( dev-lang/perl:= )
 	ruby? ( dev-lang/ruby:= )
 	tcl? ( >=dev-lang/tcl-8.1:0= )"
