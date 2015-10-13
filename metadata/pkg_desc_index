@@ -4147,11 +4147,11 @@ dev-java/netbeans-platform 8.0.2: Netbeans Platform
 dev-java/netbeans-profiler 8.0.2: Netbeans Profiler Cluster
 dev-java/netbeans-webcommon 8.0.2: Netbeans Web Services Cluster
 dev-java/netbeans-websvccommon 8.0.2: Netbeans Web Services Common Cluster
-dev-java/netty-buffer 4.0.21 4.0.22: Async event-driven framework for rapid development of high performance network applications
-dev-java/netty-codec 4.0.21 4.0.22: Async event-driven framework for rapid development of high performance network applications
-dev-java/netty-common 4.0.21 4.0.22: Async event-driven framework for rapid development of high performance network applications
+dev-java/netty-buffer 4.0.21 4.0.32: Async event-driven framework for rapid development of high performance network applications
+dev-java/netty-codec 4.0.21 4.0.32: Async event-driven framework for rapid development of high performance network applications
+dev-java/netty-common 4.0.21 4.0.32: Async event-driven framework for rapid development of high performance network applications
 dev-java/netty-handler 4.0.19: Async event-driven framework for rapid development of high performance network applications
-dev-java/netty-transport 4.0.21-r1 4.0.22: Async event-driven framework for rapid development of high performance network applications
+dev-java/netty-transport 4.0.21-r1 4.0.32: Async event-driven framework for rapid development of high performance network applications
 dev-java/neuroph 2.3 2.3.1 2.4: A lightweight Java neural network framework
 dev-java/objenesis 1.3: A small Java library with one purpose: To instantiate a new object of a class
 dev-java/odfdom 0.8.6-r1: The ODFDOM reference implementation, written in Java
