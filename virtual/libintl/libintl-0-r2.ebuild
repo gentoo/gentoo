@@ -15,4 +15,4 @@ IUSE="elibc_glibc elibc_musl elibc_uclibc"
 
 # - Don't put elibc_glibc? ( sys-libs/glibc ) to avoid circular deps between
 # that and gcc. And don't force uClibc to dep on this.
-RDEPEND="!elibc_glibc? ( !elibc_uclibc? ( !elibc_musl? ( dev-libs/libiconv[${MULTILIB_USEDEP}] ) ) )"
+RDEPEND="!elibc_glibc? ( !elibc_uclibc? ( !elibc_musl? ( dev-libs/libintl[${MULTILIB_USEDEP}] ) ) )"
