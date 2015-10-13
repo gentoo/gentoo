@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# William Hubbs <williamh@gentoo.org> (13 Oct 2015)
+# Working on this bug. will fix shortly, but should go ahead and mask:
+Bug: 563010
+=sys-apps/openrc-0.18.1
+
+
 # Hans de Graaff <graaff@gentoo.org> (11 Oct 2015)
 # Ruby 1.9 is no longer maintained upstream since January
 # 2015, bug 536852.
