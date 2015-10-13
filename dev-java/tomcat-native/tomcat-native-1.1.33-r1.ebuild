@@ -26,7 +26,7 @@ DEPEND=">=virtual/jdk-1.7
 S=${WORKDIR}/${P}-src/jni
 
 src_configure(){
-	cd native
+	cd native || die
 	econf --with-apr=/usr/bin/apr-1-config  \
 		--with-ssl=/usr || die "Could not configure native sources"
 }
@@ -34,12 +34,12 @@ src_configure(){
 src_compile() {
 	eant jar -f build.xml
 
-	cd native
+	cd native || die
 	base_src_compile
 }
 
 src_install() {
-	java-pkg_newjar dist/${PN}-${PV}-dev.jar ${PN}.jar
+	java-pkg_newjar "dist/${P}-dev.jar" "${PN}.jar"
 
 	cd native
 	emake DESTDIR="${D}" install || die "Could not install libtcnative-1.so"
