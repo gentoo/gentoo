@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy pypy3 )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r1
 
 DESCRIPTION="A configurable sidebar-enabled Sphinx theme"
 HOMEPAGE="https://github.com/bitprophet/alabaster"

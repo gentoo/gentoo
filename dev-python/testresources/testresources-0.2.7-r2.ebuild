@@ -4,11 +4,11 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy pypy3 )
 
 inherit distutils-r1
 
-DESCRIPTION="Testresources, a pyunit extension for managing expensive test resources"
+DESCRIPTION="A pyunit extension for managing expensive test resources"
 HOMEPAGE="https://launchpad.net/testresources"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
