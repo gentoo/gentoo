@@ -182,6 +182,19 @@ multilib_src_configure() {
 		export LIBFFI_LIBS="-lffi"
 	fi
 
+	# These configure tests don't work when cross-compiling.
+	if tc-is-cross-compiler ; then
+		# https://bugzilla.gnome.org/show_bug.cgi?id=756473
+		case ${CHOST} in
+		hppa*|metag*) export glib_cv_stack_grows=yes ;;
+		*)            export glib_cv_stack_grows=no ;;
+		esac
+		# https://bugzilla.gnome.org/show_bug.cgi?id=756474
+		export glib_cv_uscore=no
+		# https://bugzilla.gnome.org/show_bug.cgi?id=756475
+		export ac_cv_func_posix_get{pwuid,grgid}_r=yes
+	fi
+
 	local myconf
 
 	case "${CHOST}" in
