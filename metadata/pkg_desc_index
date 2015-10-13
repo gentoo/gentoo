@@ -1989,7 +1989,7 @@ app-office/kmymoney 4.7.2: Personal finance manager for KDE
 app-office/kraft 0.58 0.59: Software for operating a small business, helping create documents such as offers and invoices
 app-office/ledger 2.6.3-r1 3.1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 4.3.2-r1: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 4.4.5.2 4.4.9999 5.0.1.2 5.0.2.2 5.0.3.1 5.0.9999 9999: LibreOffice, a full office productivity suite
+app-office/libreoffice 4.4.5.2 4.4.9999 5.0.1.2 5.0.2.2 5.0.3.1 5.0.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 4.4.5.2: LibreOffice, a full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 4.4.5.2: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 4.4.5.2 5.0.1.2 5.0.2.2: Translations for the Libreoffice suite
