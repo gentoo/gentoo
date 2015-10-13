@@ -22,6 +22,7 @@ DEPEND="
 	dev-lang/perl:=
 	|| ( sys-apps/gawk sys-apps/mawk )
 	sys-apps/groff
+	sys-devel/flex
 	doc? (
 		dev-texlive/texlive-fontsrecommended
 		virtual/latex-base
