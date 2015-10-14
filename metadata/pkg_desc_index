@@ -7462,7 +7462,7 @@ dev-python/pykit 0.1.0 0.2.0: Backend compiler for high-level typed code
 dev-python/pykka 1.2.1: A Python implementation of the actor model
 dev-python/pykwalify 1.4.0 1.4.1 1.5.0 9999: Python lib/cli for JSON/YAML schema validation
 dev-python/pylast 0.5.11-r1 1.0.0: Python interface to last.fm and other api-compatible websites
-dev-python/pyldap 2.4.20-r1: Various LDAP-related Python modules
+dev-python/pyldap 2.4.20-r1 2.4.20-r2: Various LDAP-related Python modules
 dev-python/pylibacl 0.5.0-r1: POSIX ACLs (Access Control Lists) for Python
 dev-python/pyliblzma 0.5.3-r1: Python bindings for liblzma
 dev-python/pylibmc 1.4.3 1.5.0: Libmemcached wrapper written as a Python extension
