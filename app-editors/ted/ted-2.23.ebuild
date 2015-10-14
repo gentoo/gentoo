@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,9 +14,9 @@ SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
 
 RDEPEND="x11-libs/gtk+:2
-	media-libs/tiff
-	virtual/jpeg
-	media-libs/libpng
+	media-libs/tiff:=
+	virtual/jpeg:=
+	media-libs/libpng:=
 	x11-libs/libXft
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
@@ -25,7 +25,8 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/Ted-${PV}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-make.patch
+	epatch "${FILESDIR}"/${P}-make.patch \
+		"${FILESDIR}"/${P}-freetype261.patch
 
 	sed -i -e 's|/Ted/|/share/Ted/|' \
 		"${S}"/appFrame/appFrameConfig.h.in \
