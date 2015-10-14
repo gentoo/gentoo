@@ -30,13 +30,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Patrice Clement <monsieurp@gentoo.org> (14 Oct 2015)
-# Both projects have been superseded by Apache Compress (packaged under
-# dev-java/commons-compress).
-# Masked for removal in 30 days. See bug #563066.
-dev-java/lzmajio
-dev-java/lzma
-
 # Hans de Graaff <graaff@gentoo.org> (11 Oct 2015)
 # Ruby 1.9 is no longer maintained upstream since January
 # 2015, bug 536852.
