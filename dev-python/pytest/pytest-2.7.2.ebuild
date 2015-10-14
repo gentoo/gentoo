@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
 
 inherit distutils-r1
 
-DESCRIPTION="simple powerful testing with Python"
+DESCRIPTION="Simple powerful testing with Python"
 HOMEPAGE="http://pytest.org/ https://pypi.python.org/pypi/pytest"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
