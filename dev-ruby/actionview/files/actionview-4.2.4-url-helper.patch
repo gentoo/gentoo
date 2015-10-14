@@ -1,0 +1,43 @@
+From 253ba56f5639ffb5ebe98d01c3515604c756a96a Mon Sep 17 00:00:00 2001
+From: Takashi Kokubun <takashikkbn@gmail.com>
+Date: Thu, 27 Aug 2015 21:40:11 +0900
+Subject: [PATCH] Fix mail_to to work well with Ruby 2.0
+
+Ruby 2.0's ERB::Util.url_encode crashes ActiveSupport::SafeBuffer.
+Related to 0789e06
+---
+ actionview/lib/action_view/helpers/url_helper.rb | 2 +-
+ actionview/test/template/url_helper_test.rb      | 7 +++++++
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/actionview/lib/action_view/helpers/url_helper.rb b/actionview/lib/action_view/helpers/url_helper.rb
+index b724b9c..7485fc0 100644
+--- a/actionview/lib/action_view/helpers/url_helper.rb
++++ b/actionview/lib/action_view/helpers/url_helper.rb
+@@ -463,7 +463,7 @@ def mail_to(email_address, name = nil, html_options = {}, &block)
+         }.compact
+         extras = extras.empty? ? '' : '?' + extras.join('&')
+ 
+-        encoded_email_address = ERB::Util.url_encode(email_address).gsub("%40", "@")
++        encoded_email_address = ERB::Util.url_encode(email_address.to_str).gsub("%40", "@")
+         html_options["href"] = "mailto:#{encoded_email_address}#{extras}"
+ 
+         content_tag(:a, name || email_address, html_options, &block)
+diff --git a/actionview/test/template/url_helper_test.rb b/actionview/test/template/url_helper_test.rb
+index 6ca937a..9e09490 100644
+--- a/actionview/test/template/url_helper_test.rb
++++ b/actionview/test/template/url_helper_test.rb
+@@ -515,6 +515,13 @@ def test_mail_with_options
+     )
+   end
+ 
++  def test_mail_to_with_html_safe_string
++    assert_dom_equal(
++      %{<a href="mailto:david@loudthinking.com">david@loudthinking.com</a>},
++      mail_to("david@loudthinking.com".html_safe)
++    )
++  end
++
+   def test_mail_to_with_img
+     assert_dom_equal %{<a href="mailto:feedback@example.com"><img src="/feedback.png" /></a>},
+       mail_to('feedback@example.com', '<img src="/feedback.png" />'.html_safe)
