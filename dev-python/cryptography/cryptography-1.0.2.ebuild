@@ -5,7 +5,7 @@
 EAPI=5
 
 # only works with >=pypy-2.6
-PYTHON_COMPAT=( python2_7 python3_{3,4} pypy )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
 
 inherit distutils-r1
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( Apache-2.0 BSD )"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh x86 ~amd64-linux ~x86-linux"
 IUSE="libressl test"
 
 RDEPEND="
