@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit games
+inherit games eutils
 
 DESCRIPTION="client for the french tarot game maitretarot"
 HOMEPAGE="http://www.nongnu.org/maitretarot/"
@@ -19,6 +19,10 @@ DEPEND="dev-libs/glib:2
 	dev-games/libmaitretarot
 	dev-games/libmt_client"
 RDEPEND=${DEPEND}
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-formatsecurity.patch
+}
 
 src_install() {
 	default
