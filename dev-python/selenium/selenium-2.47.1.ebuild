@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/SeleniumHQ/selenium http://www.seleniumhq.org
 		https://pypi.python.org/pypi/selenium/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 LICENSE="Apache-2.0"
 SLOT="0"
 
