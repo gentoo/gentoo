@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Justin Lecher <jlec@gentoo.org> (14 Oct 2015)
+# Requires dev-python/ipython which triggers a long dep chain
+dev-python/restkit cli
+
 # Tobias Klausmann <klausman@gentoo.org> (19 Sep 2015)
 # app-portage/g-sorcery pulls in pymongo and a whole host of deps that don't
 # work on alpha. Mask USE flag for layman accordingly
