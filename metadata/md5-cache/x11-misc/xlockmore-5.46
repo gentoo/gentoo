@@ -1,5 +1,5 @@
-DEFINED_PHASES=configure install
-DEPEND=gtk? ( x11-libs/gtk+:2 ) imagemagick? ( media-gfx/imagemagick ) motif? ( >=x11-libs/motif-2.3:0 ) nas? ( media-libs/nas ) opengl? ( virtual/opengl virtual/glu truetype? ( >=media-libs/ftgl-2.1.3_rc5 ) ) pam? ( virtual/pam ) truetype? ( media-libs/freetype:2 ) x11-libs/libX11 x11-libs/libXext x11-libs/libXmu x11-libs/libXpm x11-libs/libXt xinerama? ( x11-libs/libXinerama ) virtual/pkgconfig x11-proto/xineramaproto
+DEFINED_PHASES=configure install prepare
+DEPEND=gtk? ( x11-libs/gtk+:2 ) imagemagick? ( media-gfx/imagemagick ) motif? ( >=x11-libs/motif-2.3:0 ) nas? ( media-libs/nas ) opengl? ( virtual/opengl virtual/glu truetype? ( >=media-libs/ftgl-2.1.3_rc5 ) ) pam? ( virtual/pam ) truetype? ( media-libs/freetype:2 ) x11-libs/libX11 x11-libs/libXext x11-libs/libXmu x11-libs/libXpm x11-libs/libXt xinerama? ( x11-libs/libXinerama ) virtual/pkgconfig x11-proto/xineramaproto !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Just another screensaver application for X
 EAPI=5
 HOMEPAGE=http://www.tux.org/~bagleyd/xlockmore.html
@@ -10,5 +10,5 @@ RDEPEND=gtk? ( x11-libs/gtk+:2 ) imagemagick? ( media-gfx/imagemagick ) motif? (
 REQUIRED_USE=|| ( crypt pam ) pam? ( !xlockrc ) xlockrc? ( !pam )
 SLOT=0
 SRC_URI=http://www.tux.org/~bagleyd/xlock/xlockmore-5.46.tar.xz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=dfbdbd11a52e26acc24523fafc396f2f
+_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=c7d9c17e52279edc3b5774bad733c35f
