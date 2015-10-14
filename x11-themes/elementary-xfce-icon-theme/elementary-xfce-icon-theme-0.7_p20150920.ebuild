@@ -5,7 +5,7 @@
 EAPI=5
 inherit gnome2-utils
 
-COMMIT="b16a2c58a631219d1c0849cfe42866aa6347bd1a"
+COMMIT="b19b0b26fc2aba875fef5b06173423af48cbe563"
 
 DESCRIPTION="Elementary icons forked from upstream, extended and maintained for Xfce"
 HOMEPAGE="https://github.com/shimmerproject/elementary-xfce"
