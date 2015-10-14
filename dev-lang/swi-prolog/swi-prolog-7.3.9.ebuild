@@ -114,8 +114,12 @@ src_test() {
 	emake check
 
 	if ! use minimal ; then
+		unset DISPLAY
 		cd "${S}/packages" || die
-		emake USE_PUBLIC_NETWORK_TESTS=false DISPLAY= check
+		emake \
+			USE_PUBLIC_NETWORK_TESTS=false \
+			USE_ODBC_TESTS=false \
+			check
 		./report-failed || die
 	fi
 }
