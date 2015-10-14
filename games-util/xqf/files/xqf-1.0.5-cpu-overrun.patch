@@ -1,6 +1,5 @@
-diff -aburN xqf.orig/src/launch.c xqf/src/launch.c
---- xqf.orig/src/launch.c	2009-10-13 11:58:24.000000000 +0200
-+++ xqf/src/launch.c	2009-10-13 11:59:35.000000000 +0200
+--- xqf.orig/src/launch.c
++++ xqf/src/launch.c
 @@ -168,13 +168,17 @@
  
    res = read (fd, cl->buffer + cl->pos, CLIENT_ERROR_BUFFER - 1 - cl->pos);
