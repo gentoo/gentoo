@@ -1,0 +1,15 @@
+diff --git a/general/g.proj/main.c b/general/g.proj/main.c
+index 21d7b95..f81b392 100644
+--- a/general/g.proj/main.c
++++ b/general/g.proj/main.c
+@@ -41,8 +41,8 @@ int main(int argc, char *argv[])  # undeclared var if OSG disabled
+ 	*forcedatumtrans;	/* Force override of datumtrans parameters  */
+     
+     struct Option *location,	/* Name of new location to create           */
+-#ifdef HAVE_OGR
+ 	*inepsg,		/* EPSG projection code                     */
++#ifdef HAVE_OGR
+ 	*inwkt,			/* Input file with projection in WKT format */
+ 	*inproj4,		/* Projection in PROJ.4 format              */
+ 	*ingeo,			/* Input geo-referenced file readable by 
+

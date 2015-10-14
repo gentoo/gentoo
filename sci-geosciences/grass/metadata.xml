@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sci-geosciences</herd>
-  <longdescription>The original GIS, yes the first one, developed by the US Army Corp of Engineers, now an active open source GIS. 
-See the GRASS Documentation Project for more info http://grass.itc.it/gdp/index.php
+	<herd>sci-geosciences</herd>
+	<herd>proxy-maintainers</herd><maintainer>
+		<email>wraeth@wraeth.id.au</email>
+		<name>Sam Jorna</name>
+		<description>Proxy maintainer - assign bugs to him</description>
+	</maintainer>
+<longdescription>The original GIS, yes the first one, developed by the US 
+Army Corp of Engineers, now an active open source GIS. See the GRASS Documentation 
+Project for more info http://grass.itc.it/gdp/index.php
 </longdescription>
-  <use>
-    <flag name="gmath">Enable gmath wrapper for BLAS/Lapack (<pkg>virtual/blas</pkg>, <pkg>virtual/lapack</pkg>)</flag>
-  </use>
+	<use>
+		<flag name="gdal">Use <pkg>sci-libs/gdal</pkg> for import and export 
+		of most external raster and vector map formats</flag>
+		<flag name="geos">Use <pkg>sci-libs/geos</pkg> for v.buffer and adds
+		extended options to the v.select module</flag>
+		<flag name="gmath">Enable gmath wrapper for BLAS/Lapack 
+		(<pkg>virtual/blas</pkg>, <pkg>virtual/lapack</pkg>)</flag>
+		<flag name="opencl">Enable OpenCL support</flag>
+		<flag name="regex">Include support regex functionality</flag>
+	</use>
 </pkgmetadata>
