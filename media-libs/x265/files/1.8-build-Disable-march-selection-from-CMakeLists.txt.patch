@@ -1,0 +1,35 @@
+From e89069148db716d30fb81c798d0cfd83250a9f5a Mon Sep 17 00:00:00 2001
+From: Bertrand Jacquin <bertrand@jacquin.bzh>
+Date: Sat, 10 Oct 2015 00:05:41 +0100
+Subject: [PATCH] build: Disable -march selection from CMakeLists.txt
+
+x32 arch as defined on https://sites.google.com/site/x32abi is neither
+X86 nor X64, then forcing -march=i686 leads to build failure as wrong
+-march is used.
+
+Forcing -march, -mfloat-abi and -mfpu for ARM is also wrong
+
+As a global sanity sake, disable all forced -march in CMakeLists
+---
+ source/CMakeLists.txt | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/source/CMakeLists.txt b/source/CMakeLists.txt
+index 764d5f2..fbc0d49 100644
+--- a/source/CMakeLists.txt
++++ b/source/CMakeLists.txt
+@@ -167,14 +167,7 @@ if(GCC)
+     if(NATIVE_BUILD)
+         if(INTEL_CXX)
+             add_definitions(-xhost)
+-        else()
+-            add_definitions(-march=native)
+         endif()
+-    elseif(X86 AND NOT X64)
+-        add_definitions(-march=i686)
+-    endif()
+-    if(ARM)
+-        add_definitions(-march=armv6 -mfloat-abi=hard -mfpu=vfp)
+     endif()
+     if(FPROFILE_GENERATE)
+         if(INTEL_CXX)

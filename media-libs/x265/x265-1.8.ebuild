@@ -41,6 +41,10 @@ src_unpack() {
 	fi
 }
 
+src_prepare() {
+	epatch "${FILESDIR}/${PV}-build-Disable-march-selection-from-CMakeLists.txt.patch"	# bug #510890
+}
+
 multilib_src_configure() {
 	append-cflags -fPIC
 	append-cxxflags -fPIC
@@ -51,9 +55,12 @@ multilib_src_configure() {
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 	)
 
-	if [ "${ABI}" = x86 ] ; then
+	if [[ ${ABI} = x86 ]] ; then
 		use 10bit && ewarn "Disabling 10bit support on x86 as it does not build (or requires to disable assembly optimizations)"
 		mycmakeargs+=( -DHIGH_BIT_DEPTH=OFF )
+	elif [[ ${ABI} = x32 ]] ; then
+		# bug #510890
+		mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 	fi
 
 	cmake-utils_src_configure
