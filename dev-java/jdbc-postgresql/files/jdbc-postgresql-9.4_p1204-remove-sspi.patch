@@ -1,0 +1,138 @@
+--- a/org/postgresql/core/v3/ConnectionFactoryImpl.java	2015-10-09 20:55:53.000000000 +0200
++++ b/org/postgresql/core/v3/ConnectionFactoryImpl.java	2015-10-14 20:42:48.816753341 +0200
+@@ -32,7 +32,6 @@
+ import org.postgresql.hostchooser.HostChooserFactory;
+ import org.postgresql.hostchooser.HostRequirement;
+ import org.postgresql.hostchooser.HostStatus;
+-import org.postgresql.sspi.SSPIClient;
+ import org.postgresql.util.GT;
+ import org.postgresql.util.HostSpec;
+ import org.postgresql.util.MD5Digest;
+@@ -394,11 +393,7 @@
+         // or an authentication request
+ 
+         String password = PGProperty.PASSWORD.get(info);
+-        
+-        /* SSPI negotiation state, if used */
+-        SSPIClient sspiClient = null;
+ 
+-        try {
+ 	        authloop:
+ 	        while (true)
+ 	        {
+@@ -514,88 +509,16 @@
+                     case AUTH_REQ_SSPI:
+                         /* 
+                          * Use GSSAPI if requested on all platforms, via JSSE.
+-                         *
+-                         * For SSPI auth requests, if we're on Windows attempt native SSPI
+-                         * authentication if available, and if not disabled by setting a
+-                         * kerberosServerName. On other platforms, attempt JSSE GSSAPI
+-                         * negotiation with the SSPI server.
+-                         *
+-                         * Note that this is slightly different to libpq, which uses SSPI
+-                         * for GSSAPI where supported. We prefer to use the existing Java
+-                         * JSSE Kerberos support rather than going to native (via JNA) calls
+-                         * where possible, so that JSSE system properties etc continue
+-                         * to work normally.
+-                         *
+-                         * Note that while SSPI is often Kerberos-based there's no guarantee
+-                         * it will be; it may be NTLM or anything else. If the client responds
+-                         * to an SSPI request via GSSAPI and the other end isn't using Kerberos
+-                         * for SSPI then authentication will fail.
+                          */
+-                        final String gsslib = PGProperty.GSS_LIB.get(info);
+-                        final boolean usespnego = PGProperty.USE_SPNEGO.getBoolean(info);
+-                        
+-                        boolean useSSPI = false;
++                        org.postgresql.gss.MakeGSS.authenticate(pgStream, host,
++                                user, password, 
++                                PGProperty.JAAS_APPLICATION_NAME.get(info),
++                                PGProperty.KERBEROS_SERVER_NAME.get(info),
++                                logger,
++                                PGProperty.USE_SPNEGO.getBoolean(info));
++
++                        break;
+ 
+-                        /* 
+-                         * Use SSPI if we're in auto mode on windows and have a
+-                         * request for SSPI auth, or if it's forced. Otherwise
+-                         * use gssapi. If the user has specified a Kerberos server
+-                         * name we'll always use JSSE GSSAPI.
+-                         */
+-                        if (gsslib.equals("gssapi"))
+-                            logger.debug("Using JSSE GSSAPI, param gsslib=gssapi");
+-                        else if (areq == AUTH_REQ_GSS && !gsslib.equals("sspi"))
+-                            logger.debug("Using JSSE GSSAPI, gssapi requested by server and gsslib=sspi not forced");
+-                        else
+-                        {
+-                            /* Determine if SSPI is supported by the client */
+-                            sspiClient = new SSPIClient(pgStream,
+-                                    PGProperty.SSPI_SERVICE_CLASS.get(info),
+-                                    /* Use negotiation for SSPI, or if explicitly requested for GSS */
+-                                    areq == AUTH_REQ_SSPI || (areq == AUTH_REQ_GSS && usespnego),
+-                                    logger);
+-                            
+-                            useSSPI = sspiClient.isSSPISupported();
+-                            logger.debug("SSPI support detected: " + useSSPI);
+-                        
+-                            if (!useSSPI) {
+-                                /* No need to dispose() if no SSPI used */
+-                                sspiClient = null;
+-                                
+-                                if (gsslib.equals("sspi"))
+-                                    throw new PSQLException("SSPI forced with gsslib=sspi, but SSPI not available; set loglevel=2 for details", 
+-                                            PSQLState.CONNECTION_UNABLE_TO_CONNECT);
+-                            }
+-                            
+-                            logger.debug("Using SSPI: " + useSSPI + ", gsslib="+gsslib+" and SSPI support detected");
+-                        }
+-
+-                        if (useSSPI)
+-                        {
+-                            /* SSPI requested and detected as available */
+-    	                	sspiClient.startSSPI();
+-                        }
+-                        else
+-                        {
+-                            /* Use JGSS's GSSAPI for this request */
+-                            org.postgresql.gss.MakeGSS.authenticate(pgStream, host,
+-                                    user, password, 
+-                                    PGProperty.JAAS_APPLICATION_NAME.get(info),
+-                                    PGProperty.KERBEROS_SERVER_NAME.get(info),
+-                                    logger,
+-                                    usespnego);
+-                        }
+-                        
+-	                	break;
+-	                
+-	                case AUTH_REQ_GSS_CONTINUE:
+-	                	 /* 
+-	                	  * Only called for SSPI, as GSS is handled by an inner loop
+-	                	  * in MakeGSS.
+-	                	  */
+-	                	sspiClient.continueSSPI(l_msgLen - 8);
+-	                	break;
+-	                	
+ 	                case AUTH_REQ_OK:
+ 	                    /* Cleanup after successful authentication */
+ 	                    if (logger.logDebug())
+@@ -616,18 +539,6 @@
+ 	                throw new PSQLException(GT.tr("Protocol error.  Session setup failed."), PSQLState.PROTOCOL_VIOLATION);
+ 	            }
+ 	        }
+-        } finally {
+-        	/* Cleanup after successful or failed authentication attempts */
+-        	if (sspiClient != null)
+-        	{
+-        		try {
+-        			sspiClient.dispose();
+-        		} catch (RuntimeException ex) {
+-        			logger.log("Unexpected error during SSPI context disposal", ex);
+-        		}
+-        		
+-        	}
+-        }
+         
+     }
+ 
