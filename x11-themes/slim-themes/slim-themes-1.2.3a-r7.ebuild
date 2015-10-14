@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 inherit eutils
 
 DESCRIPTION="SLiM (Simple Login Manager) themes pack"
