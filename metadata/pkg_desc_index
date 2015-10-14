@@ -11705,7 +11705,7 @@ media-gfx/fotoxx 13.11.1 15.04.1 15.05: Program for improving image files made w
 media-gfx/fr0st 1.4-r1: A fractal flame editor
 media-gfx/freecad 0.12.5284-r4 0.13.1830-r1 0.14.3702-r1 0.15.4671 9999: QT based Computer Aided Design application
 media-gfx/freepv 0.3.0-r4: Panorama viewer (Quicktime, PangeaVR, GLPanoView formats)
-media-gfx/freewrl 1.22.13-r3 2.3.3 3.0.0 9999: VRML97 and X3D compliant browser, library, and web-browser plugin
+media-gfx/freewrl 1.22.13-r4 2.3.3-r1 3.0.0 9999: VRML97 and X3D compliant browser, library, and web-browser plugin
 media-gfx/galleryadd 2.30: Perl script to recursively adds directories/images to Gallery
 media-gfx/geeqie 1.2-r1 1.2.1 1.2.2: A lightweight GTK image viewer forked from GQview
 media-gfx/gif2apng 1.6 1.7 1.8 1.9: create an APNG from a GIF
