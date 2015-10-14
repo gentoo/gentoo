@@ -3,6 +3,9 @@
 <pkgmetadata>
   <herd>cluster</herd>
   <maintainer>
+    <email>chutzpah@gentoo.org</email>
+    <name>Patrick McLean</name>
+    <description>Co Maintainer</description>
     <email>dlan@gentoo.org</email>
     <name>Yixun Lan</name>
     <description>Co Maintainer</description>
