@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit games
+inherit games eutils
 
 DESCRIPTION="client for the french tarot game maitretarot"
 HOMEPAGE="http://www.nongnu.org/maitretarot/"
@@ -22,6 +22,10 @@ DEPEND="dev-libs/glib:2
 	x11-libs/gtk+:2"
 RDEPEND="${DEPEND}
 	dev-games/cardpics"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-formatsecurity.patch
+}
 
 src_configure() {
 	egamesconf $(use_enable gnome gnome2)

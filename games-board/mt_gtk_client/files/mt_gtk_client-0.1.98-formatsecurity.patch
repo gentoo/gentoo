@@ -1,0 +1,11 @@
+--- src/player.c.old	2015-10-14 21:52:59.453971198 +0200
++++ src/player.c	2015-10-14 21:53:36.375289009 +0200
+@@ -52,7 +52,7 @@
+ {
+   player->nick[0] = g_string_new (config->gui_player_name->str);
+ 
+-  g_printerr (player->nick[0]->str);
++  g_printerr ("%s", player->nick[0]->str);
+ 
+   gdk_threads_enter ();
+   gtk_statusbar_push (GTK_STATUSBAR (gui_statusbar), 0,
