@@ -5,4 +5,9 @@
   <upstream>
     <remote-id type="sourceforge">bowtie-bio</remote-id>
   </upstream>
+  <use>
+    <flag name="tbb">Enables building bowtie with the Intel
+      Threading Building Blocks from <pkg>dev-cpp/tbb</pkg>. This
+      flag is recommended.</flag>
+  </use>
 </pkgmetadata>

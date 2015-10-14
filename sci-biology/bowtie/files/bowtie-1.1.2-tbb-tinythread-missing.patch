@@ -1,0 +1,18 @@
+Fixes missing tinythread.cpp when using TBB:
+
+ebwt_search.cpp:(.text+0x91bb): undefined reference to `tthread::thread::join()'
+
+--- bowtie-1.1.2/Makefile
++++ bowtie-1.1.2/Makefile
+@@ -106,10 +106,7 @@
+ endif
+ 
+ OTHER_CPPS = ccnt_lut.cpp ref_read.cpp alphabet.cpp shmem.cpp \
+-             edit.cpp ebwt.cpp
+-ifneq (1,$(WITH_TBB))
+-	OTHER_CPPS += tinythread.cpp
+-endif
++             edit.cpp ebwt.cpp tinythread.cpp
+ 
+ SEARCH_CPPS = qual.cpp pat.cpp ebwt_search_util.cpp ref_aligner.cpp \
+               log.cpp hit_set.cpp refmap.cpp annot.cpp sam.cpp \
