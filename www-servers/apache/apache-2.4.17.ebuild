@@ -35,7 +35,7 @@ IUSE_MODULES="access_compat actions alias asis auth_basic auth_digest
 authn_alias authn_anon authn_core authn_dbd authn_dbm authn_file authz_core
 authz_dbd authz_dbm authz_groupfile authz_host authz_owner authz_user autoindex
 cache cache_disk cern_meta charset_lite cgi cgid dav dav_fs dav_lock dbd deflate
-dir dumpio env expires ext_filter file_cache filter headers ident imagemap
+dir dumpio env expires ext_filter file_cache filter headers http2 ident imagemap
 include info lbmethod_byrequests lbmethod_bytraffic lbmethod_bybusyness
 lbmethod_heartbeat log_config log_forensic logio macro mime mime_magic negotiation
 proxy proxy_ajp proxy_balancer proxy_connect proxy_ftp proxy_http proxy_scgi
@@ -87,6 +87,7 @@ MODULE_DEFINES="
 	dav_fs:DAV
 	dav_lock:DAV
 	file_cache:CACHE
+	http2:HTTP2
 	info:INFO
 	ldap:LDAP
 	proxy:PROXY
@@ -123,11 +124,8 @@ HOMEPAGE="http://httpd.apache.org/"
 LICENSE="Apache-2.0 Apache-1.1"
 SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x64-macos ~x86-macos ~m68k-mint ~sparc64-solaris ~x64-solaris"
-IUSE="alpn"
-REQUIRED_USE="alpn? ( ssl )"
 
-DEPEND+="alpn? ( >=dev-libs/openssl-1.0.2:0= )"
-RDEPEND+="alpn? ( >=dev-libs/openssl-1.0.2:0= )"
+DEPEND+="apache2_modules_http2? ( >=net-libs/nghttp2-1.0.0 )"
 
 pkg_setup() {
 	# dependend critical modules which are not allowed in global scope due
@@ -135,11 +133,6 @@ pkg_setup() {
 	use ssl && MODULE_CRITICAL+=" socache_shmcb"
 	use doc && MODULE_CRITICAL+=" alias negotiation setenvif"
 	apache-2_pkg_setup
-}
-
-src_prepare() {
-	use alpn && epatch "${FILESDIR}"/${PN}-2.4.12-alpn.patch #471512
-	apache-2_src_prepare
 }
 
 src_configure() {
