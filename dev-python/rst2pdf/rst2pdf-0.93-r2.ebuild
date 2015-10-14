@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
@@ -26,10 +27,7 @@ DEPEND="dev-python/docutils[${PYTHON_USEDEP}]
 RDEPEND="${DEPEND}"
 # >=reportlab-2.6: https://code.google.com/p/rst2pdf/issues/detail?id=474
 
-python_prepare_all() {
-	epatch "${FILESDIR}/${P}-fix-logging.patch"
-	distutils-r1_python_prepare_all
-}
+PATCHES=( "${FILESDIR}/${P}-fix-logging.patch" )
 
 python_install_all() {
 	dodoc doc/*.pdf
