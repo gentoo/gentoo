@@ -40,7 +40,7 @@ index ae71788..9e9571f 100644
  #include <time.h>
  #include <string.h>
  
-+#ifdef __GLIBC__
++#if defined(__GLIBC__) && !defined(__UCLIBC__)
  #define PRETEND_MEM_SIZE (16 * 1024 * 1024)
  #define REMAINING_MEM_SIZE 100000
  
