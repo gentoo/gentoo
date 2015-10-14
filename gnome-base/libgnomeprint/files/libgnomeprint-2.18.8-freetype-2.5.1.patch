@@ -1,14 +1,15 @@
-From cf17a44bd5b8aac1c73f3bb00ca872cd8f08df4a Mon Sep 17 00:00:00 2001
-From: Alexandre Rostovtsev <tetromino@gentoo.org>
-Date: Mon, 17 Mar 2014 00:01:10 -0400
+From e848ee98108ab8c5b12e2167b041b274b4bede83 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Thu, 8 Oct 2015 11:06:44 +0200
 Subject: [PATCH] Update freetype includes to work with >=freetype-2.5.1
 
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
 ---
  configure.in                    | 22 +++-------------------
- libgnomeprint/gnome-font-face.c |  2 +-
+ libgnomeprint/gnome-font-face.c |  3 ++-
  libgnomeprint/gnome-print-gdi.c |  2 +-
  libgnomeprint/gnome-rfont.c     |  4 ++--
- 4 files changed, 7 insertions(+), 23 deletions(-)
+ 4 files changed, 8 insertions(+), 23 deletions(-)
 
 diff --git a/configure.in b/configure.in
 index c15bb69..aebe591 100644
@@ -44,15 +45,16 @@ index c15bb69..aebe591 100644
  dnl =================================
  dnl END: Checking for freetype2
 diff --git a/libgnomeprint/gnome-font-face.c b/libgnomeprint/gnome-font-face.c
-index 0447377..f9f8f3e 100644
+index 0447377..23794a8 100644
 --- a/libgnomeprint/gnome-font-face.c
 +++ b/libgnomeprint/gnome-font-face.c
-@@ -36,7 +36,7 @@
+@@ -36,7 +36,8 @@
  #include <stdarg.h>
  #include <locale.h>
  
 -#include <freetype/ftoutln.h>
-+#include <ftoutln.h>
++#include <ft2build.h>
++#include FT_OUTLINE_H
  
  #include <libgnomeprint/gnome-print-private.h>
  #include <libgnomeprint/gnome-font-private.h>
@@ -70,7 +72,7 @@ index f89a8e8..7755673 100755
  #define WIN32_LEAN_AND_MEAN
  #include <windows.h>
 diff --git a/libgnomeprint/gnome-rfont.c b/libgnomeprint/gnome-rfont.c
-index 55ec261..09e5a6e 100644
+index 55ec261..a71bbda 100644
 --- a/libgnomeprint/gnome-rfont.c
 +++ b/libgnomeprint/gnome-rfont.c
 @@ -28,8 +28,8 @@
@@ -79,11 +81,11 @@ index 55ec261..09e5a6e 100644
  #include FT_FREETYPE_H
 -#include <freetype/ftglyph.h>
 -#include <freetype/ftbbox.h>
-+#include <ftglyph.h>
-+#include <ftbbox.h>
++#include FT_GLYPH_H
++#include FT_BBOX_H
  #include <libart_lgpl/art_misc.h>
  #include <libart_lgpl/art_affine.h>
  #include <libart_lgpl/art_vpath.h>
 -- 
-1.9.0
+2.6.1
 
