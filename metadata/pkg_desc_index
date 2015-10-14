@@ -14977,7 +14977,7 @@ sci-biology/bioruby 1.4.3.0001-r1 9999: An integrated environment for bioinforma
 sci-biology/biosql 1.0.1: A generic bioinformatics relational database model
 sci-biology/blat 34 34-r1: The BLAST-Like Alignment Tool, a fast genomic sequence aligner
 sci-biology/blossoc 1.4.0: A linkage disequilibrium association mapping tool
-sci-biology/bowtie 0.12.8 1.0.0: An ultrafast memory-efficient short read aligner
+sci-biology/bowtie 0.12.8 1.1.2 2.2.6: Popular short read aligner for Next-generation sequencing data, allowing for gaps
 sci-biology/bwa 0.7.12: Burrows-Wheeler Alignment Tool, a fast short genomic sequence aligner
 sci-biology/cd-hit 4.5.1 4.5.4 4.6: Clustering Database at High Identity with Tolerance
 sci-biology/clustal-omega 1.2.1: Scalable multiple alignment of protein sequences
@@ -17428,7 +17428,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 11.2.202.521 11.2.202.535: Adobe Flash Player
+www-plugins/adobe-flash 11.2.202.535: Adobe Flash Player
 www-plugins/chrome-binary-plugins 45.0.2454.101_p1 46.0.2490.64_beta1 47.0.2526.8_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
