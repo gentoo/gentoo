@@ -17,7 +17,4 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]"
-
-# dev-python/sphinx previously set in PDEPEND which broke some doc builds.
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
