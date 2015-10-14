@@ -165,7 +165,12 @@ do_configure() {
 		conf+=( --without-{pthread,reentrant} )
 	fi
 	# Make sure each variant goes in a unique location.
-	if [[ ${target} != "ncurses" ]] ; then
+	if [[ ${target} == "ncurses" ]] ; then
+		# "ncurses" variant goes into "${EPREFIX}"/usr/include
+		# It is needed on Prefix because the configure script appends
+		# "ncurses" to "${prefix}/include" if "${prefix}" is not /usr.
+		conf+=( --enable-overwrite )
+	else
 		conf+=( --includedir="${EPREFIX}"/usr/include/${target} )
 	fi
 	# See comments in src_configure.
