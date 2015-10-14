@@ -1,13 +1,23 @@
 certificate version 0.1
-pusher 0x8883FA56A308A8D7 1444799619 +0200
-pushee git+ssh://git.gentoo.org/repo/gentoo
-nonce 1444799619-c3a1550f66aa7d937596
+pusher Benda Xu <heroxbd@gentoo.org> 1444801242 +0900
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1444801230-92b1c00af7a80c309555
 
-d3f5509e59f54cf3f9b27886aa508ba3e2c6e0b0 7ae4f1dbc8519aa2100365b94495d1afad4a2cc4 refs/heads/master
+7ae4f1dbc8519aa2100365b94495d1afad4a2cc4 a0072d7220178f6b9311e6307d549a04305fdafc refs/heads/master
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+Version: GnuPG v1
 
-iF4EABEIAAYFAlYd5IMACgkQiIP6VqMIqNeHTgD+PLpohbC5tjmjUIZhzru++U02
-qn+skZdLx5nR6BRUQRYA/RE0n6oaetX8Gw9vDISU39HZG6NRwm1RmA4AOC+JUgWN
-=cJcp
+iQIcBAABCgAGBQJWHeraAAoJEN92ELUh8XEihUoP/R5SR1zbJ2w+GGp7n2vSh/6J
+L76E3ByxhTtqTH0zeRPd6ZLjELYo1qEW66ubIetBSN0pX7POUb9DBpWJTfo2wpuN
+2DvDEk80QT0EXnVDJfr+17Tgj5FhTlhGN9e38SQxb4LpAzZXOgbb5H5bodQawRIm
+bv+/7WJn2JWMQ/7UeKRoVMk+YZbCdbxcMz5J/2dyitpwi4wW7npDro3Rz33+EJ4D
+C2KIEP3bvxpvyoys6IepjavCcwMNtaf0FXg7ZtXEecRgc12EBNVaAnWtutcAK8nW
+Nc/f7hzClNGhWjpTZn27CJyw3RmrxWfzkPLwFqHSKFhpUQc1Lh+CS4rpnyP2/1OG
+v9KvOo7dIjgo69bGe18hNFMoQvm0kRnxTO6lSBTJDYcQgqCdtFfj8eHVsqCBOq9l
+KRMRekWF2wPdJevEBOsfThH9FCIhiVMdKiS3YY7UTgX8Ik+/Mx0vAiGGbcJiA12c
+RPkxVCNXsXU26GtgAk6th0vkqKq6PQbmDxpQ4liKZFkD4rXufRE/9tLa0P0d6EhD
+j6XlDcNEIzKBHb36e0d8cmkUFr4+aT+5P4C59PQGbq5zYQ5+OY4vNAiRBxJ4FSOX
+ElajpyPCnA3C+k/NMwkbIQgTUx86/EGSMP7I/jm9ChgKhisVmGjX+E3PX44/YxSx
+87Atk210Mzop851fepmS
+=ZTVG
 -----END PGP SIGNATURE-----
