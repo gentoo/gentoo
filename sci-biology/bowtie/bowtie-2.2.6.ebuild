@@ -37,6 +37,7 @@ src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
 		CPP="$(tc-getCXX)" \
+		CXX="$(tc-getCXX)" \
 		CFLAGS="" \
 		CXXFLAGS="" \
 		EXTRA_FLAGS="${LDFLAGS}" \
