@@ -16202,7 +16202,7 @@ sys-apps/netplug 1.2.9.2-r1: Brings up/down ethernet ports automatically with ca
 sys-apps/newrelic-sysmond 1.1.2.124: NewRelic System Monitor
 sys-apps/noexec 1.1.0: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 0_pre20150821: NVM-Express user space tooling for Linux
-sys-apps/openrc 0.13.11 0.14 0.15 0.15.1 0.16 0.16.1 0.16.2 0.16.3 0.16.4 0.17 0.18.2 9999: OpenRC manages the services, startup and shutdown of a host
+sys-apps/openrc 0.13.11 0.14 0.15 0.15.1 0.16 0.16.1 0.16.2 0.16.3 0.16.4 0.17 0.18.3 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/pacman 4.0.1 4.0.3 4.0.3-r1: Archlinux's binary package manager
 sys-apps/paludis 1.4.2-r1 2.0.0 2.2.0 2.2.0-r2 2.4.0 9999: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
@@ -17373,9 +17373,9 @@ www-client/epiphany 3.14.2 3.16.3: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1: Fetch is a simple, fast, and flexible HTTP download tool built on the HTTP Fetcher library
 www-client/firefox 38.2.0 38.3.0 41.0.1: Firefox Web Browser
 www-client/firefox-bin 38.1.1 38.2.0 38.2.1 38.3.0 41.0.1: Firefox Web Browser
-www-client/google-chrome 45.0.2454.101_p1: The web browser from Google
+www-client/google-chrome 46.0.2490.71_p1: The web browser from Google
 www-client/google-chrome-beta 46.0.2490.64_p1: The web browser from Google
-www-client/google-chrome-unstable 47.0.2526.8_p1: The web browser from Google
+www-client/google-chrome-unstable 47.0.2526.16_p1: The web browser from Google
 www-client/httrack 3.45.4 3.47.27 3.48.13 3.48.19 3.48.20 3.48.21: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/jumanji 0.0.0_p20111209 0.0.0_p20130103-r1 0.0.0_p20150527 9999: highly customizable and functional web browser with minimalistic and space saving interface
@@ -17430,7 +17430,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.535: Adobe Flash Player
-www-plugins/chrome-binary-plugins 45.0.2454.101_p1 46.0.2490.64_beta1 47.0.2526.8_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 46.0.2490.64_beta1 46.0.2490.71_p1 47.0.2526.16_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316: GNU Flash movie player that supports many SWF v7,8,9 features
