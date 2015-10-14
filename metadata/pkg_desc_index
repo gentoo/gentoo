@@ -8334,7 +8334,7 @@ dev-ruby/actionmailer 3.2.22 4.0.13 4.1.11 4.1.12 4.1.13 4.2.2 4.2.3 4.2.4: Fram
 dev-ruby/actionpack 3.2.22 4.0.13 4.1.11 4.1.12 4.1.13 4.2.2 4.2.3 4.2.4: Eases web-request routing, handling, and response
 dev-ruby/actionpack-action_caching 1.1.1: Action caching for Action Pack (removed from core in Rails 4.0)
 dev-ruby/actionpack-xml_parser 1.0.2: XML parameters parser for Action Pack (removed from core in Rails 4.0)
-dev-ruby/actionview 4.1.11 4.1.12 4.1.13 4.1.13-r1 4.2.2 4.2.3 4.2.4: Simple, battle-tested conventions and helpers for building web pages
+dev-ruby/actionview 4.1.11 4.1.12 4.1.13 4.1.13-r1 4.2.2 4.2.3 4.2.4 4.2.4-r1: Simple, battle-tested conventions and helpers for building web pages
 dev-ruby/activejob 4.2.2 4.2.3 4.2.4: Job framework with pluggable queues
 dev-ruby/activeldap 3.2.2 4.0.4: Ruby/ActiveLDAP provides an activerecord inspired object oriented interface to LDAP
 dev-ruby/activemodel 3.2.22 4.0.13 4.1.11 4.1.12 4.1.13 4.2.2 4.2.3 4.2.4: A toolkit for building modeling frameworks like Active Record and Active Resource
@@ -10536,7 +10536,7 @@ games-util/xboxgw 1.082: Tunnels XBox system link games over the net
 games-util/xgame 1.7.1: Run games in a separate X session
 games-util/xgame-gtk2 2.0.2: Run games in a separate X session
 games-util/xgamer 0.6.2: A launcher for starting games in a second X session
-games-util/xqf 1.0.5: A server browser for many FPS games (frontend for qstat)
+games-util/xqf 1.0.5 1.0.6.2: A server browser for many FPS games (frontend for qstat)
 gnome-base/dconf 0.20.0 0.22.0 0.24.0: Simple low-level configuration system
 gnome-base/dconf-editor 3.16.1: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r3: GNOME configuration system and daemon
