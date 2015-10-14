@@ -6,7 +6,7 @@ EAPI="5"
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes"
 
-inherit eutils flag-o-matic gnome2 multilib libtool multilib-minimal
+inherit autotools eutils flag-o-matic gnome2 multilib libtool multilib-minimal
 
 DESCRIPTION="Image loading library for GTK+"
 HOMEPAGE="http://www.gtk.org/"
@@ -49,6 +49,8 @@ MULTILIB_CHOST_TOOLS=(
 src_prepare() {
 	# Upstream patches from 2.32.x
 	epatch "${FILESDIR}"/${P}-gint64-shift-overflow.patch
+	epatch "${FILESDIR}"/${P}-lowmem-test-glibc.patch #563052, needs eautoreconf
+	eautoreconf
 
 	# This will avoid polluting the pkg-config file with versioned libpng,
 	# which is causing problems with libpng14 -> libpng15 upgrade
