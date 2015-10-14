@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc64 ~s390 ~sh ~sparc ~x86 ~arm-linux ~x86-linux"
 
 RDEPEND="sys-fs/fuse"
-DEPEND=${RDEPEND}
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
 
 src_install() {
 	emake DESTDIR="${D}" install
