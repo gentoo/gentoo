@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-JAVA_PKG_IUSE="doc javamail jms jmx source"
+JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-ant-2
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://logging.apache.org/log4j/"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd"
-IUSE="doc javamail jms jmx source"
+IUSE="javamail jms"
 
 CDEPEND="javamail? (
 			dev-java/oracle-javamail:0
