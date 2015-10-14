@@ -1,0 +1,15 @@
+# upstream commit http://sourceforge.net/p/ctags/code/812/ and universal-ctags
+# commit 7fb36a2f4690374526e9e7ef4f1e24800b6914ec
+--- a/vim.c
++++ b/vim.c
+@@ -419,6 +419,10 @@
+ 			while (*cp && !isspace ((int) *cp))
+ 				++cp; 
+ 		}
++		else
++		{
++			++cp;
++		}
+ 	} while ( *cp &&  !isalnum ((int) *cp) );
+ 
+ 	if ( ! *cp )
