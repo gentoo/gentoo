@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare
-DEPEND=>=dev-libs/apr-1.5.0:1 dev-libs/apr-util:1 dev-libs/expat dev-libs/libpcre kernel_linux? ( sys-apps/util-linux ) ssl? ( dev-libs/openssl:0= ) sys-devel/libtool
+DEPEND=>=dev-libs/apr-1.5.0:1 dev-libs/apr-util:1 dev-libs/expat dev-libs/libpcre kernel_linux? ( sys-apps/util-linux ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) sys-devel/libtool
 DESCRIPTION=Useful Apache tools - htdigest, htpasswd, ab, htdbm
 EAPI=5
 HOMEPAGE=http://httpd.apache.org/
-IUSE=ssl
+IUSE=libressl ssl
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc64-solaris ~x64-solaris
 LICENSE=Apache-2.0
-RDEPEND=>=dev-libs/apr-1.5.0:1 dev-libs/apr-util:1 dev-libs/expat dev-libs/libpcre kernel_linux? ( sys-apps/util-linux ) ssl? ( dev-libs/openssl:0= )
+RDEPEND=>=dev-libs/apr-1.5.0:1 dev-libs/apr-util:1 dev-libs/expat dev-libs/libpcre kernel_linux? ( sys-apps/util-linux ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) )
 RESTRICT=test
 SLOT=0
-SRC_URI=mirror://apache/httpd/httpd-2.4.12.tar.bz2
+SRC_URI=mirror://apache/httpd/httpd-2.4.17.tar.bz2
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=2afb1340629bf8cde520d26c4455722b
+_md5_=e33e8619acdc368ba7ee765f196e9539
