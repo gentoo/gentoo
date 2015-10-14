@@ -34,7 +34,6 @@ src_prepare() {
 		-e '/Icon/s/.png//' \
 		xqf.desktop.in || die
 
-
 	mv configure.{in,ac} || die
 	eautoreconf
 }
