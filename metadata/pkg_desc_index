@@ -4248,6 +4248,7 @@ dev-java/sun-jimi 1.0-r3: Jimi is a class library for managing images
 dev-java/sun-jms 1.1-r2: The Java Message Service (JMS) API
 dev-java/sun-jmx 1.2.1-r3: Java Management Extensions for managing and monitoring devices, applications, and services
 dev-java/sun-jre-bin 1.6.0.45: Oracle's Java SE Runtime Environment
+dev-java/super-csv 2.3.1: A fast, programmer-friendly, free CSV library for Java
 dev-java/sux4j 2.0: Sux: Implementing Succinct Data Structures
 dev-java/svgsalamander 0.0-r1: a SVG engine for Java
 dev-java/swarmcache 1.0_pre20050106-r1: SwarmCache is a simple but effective distributed cache
@@ -4313,7 +4314,7 @@ dev-java/xsd2jibx 0.2a_beta-r2: JiBX binding and code from schema generator
 dev-java/xsdlib 20090415: Sun XML Datatypes Library
 dev-java/xsom 20060901: XML Schema Object Model (XSOM) allows Java apps to easy parse and inspect XML Schema docs
 dev-java/xstream 1.3.1-r3 1.3.1-r4: A text-processing Java classes that serialize objects to XML and back again
-dev-java/xz-java 1.4 1.5: Implementation of xz data compression in pure java
+dev-java/xz-java 1.5: Implementation of xz data compression in pure java
 dev-java/yanfs 1.0: Yet Another NFS - a Java NFS library
 dev-java/zemberek 2.1.1: Zemberek NLP library
 dev-java/zeus-jscl 1.08 1.64: Zeus Java Swing Components Library
