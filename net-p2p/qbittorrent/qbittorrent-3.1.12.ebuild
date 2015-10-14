@@ -5,7 +5,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-r1 qt4-r2
+inherit eutils python-r1 qmake-utils qt4-r2
 
 DESCRIPTION="BitTorrent client in C++ and Qt"
 HOMEPAGE="http://www.qbittorrent.org/"
@@ -49,6 +49,7 @@ src_configure() {
 	local myconf=(
 		./configure
 		--prefix="${EPREFIX}/usr"
+		--qtdir="$(qt4_get_libdir)"
 		--with-libboost-inc="${EPREFIX}/usr/include/boost"
 		--with-qtsingleapplication=system
 		$(use dbus  || echo --disable-qt-dbus)
