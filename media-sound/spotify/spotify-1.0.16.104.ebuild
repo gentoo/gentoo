@@ -7,7 +7,7 @@ inherit eutils fdo-mime gnome2-utils pax-utils unpacker
 
 DESCRIPTION="Spotify is a social music platform"
 HOMEPAGE="https://www.spotify.com/ch-de/download/previews/"
-MY_PV="${PV}.gbdf68615"
+MY_PV="${PV}.g3b776c9e"
 MY_P="${PN}-client_${MY_PV}"
 SRC_BASE="http://repository.spotify.com/pool/non-free/${PN:0:1}/${PN}-client/"
 SRC_URI="amd64? ( ${SRC_BASE}${MY_P}_amd64.deb )
@@ -63,12 +63,13 @@ src_install() {
 	fperms +x ${SPOTIFY_HOME}/spotify
 
 	dodir /usr/bin
-	cat <<-EOF >"${D}"/usr/bin/spotify
+	cat <<-EOF >"${D}"/usr/bin/spotify || die
 		#! /bin/sh
 		exec ${SPOTIFY_HOME}/spotify "\$@"
 	EOF
 	fperms +x /usr/bin/spotify
 
+	local size
 	for size in 16 22 24 32 48 64 128 256 512; do
 		newicon -s ${size} "${S}${SPOTIFY_PKG_HOME}/icons/spotify-linux-${size}.png" \
 			"spotify-client.png"
