@@ -22,7 +22,7 @@ RDEPEND="
 	udunits? ( >=sci-libs/udunits-2 )"
 
 DEPEND="${RDEPEND}
-	ncap2? ( dev-java/antlr:0 )
+	ncap2? ( dev-cpp/antlr-cpp:2= )
 	test? ( >=sci-libs/netcdf-4[tools] )"
 
 src_configure() {

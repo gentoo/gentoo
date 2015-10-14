@@ -20,6 +20,7 @@ IUSE="+eigen fftw grib gshhs hdf hdf5 imagemagick netcdf openmp
 	png proj postscript	python static-libs udunits wxwidgets"
 
 RDEPEND="
+	dev-cpp/antlr-cpp:2=
 	sci-libs/gsl:0=
 	sci-libs/plplot:0=[-dynamic]
 	sys-libs/ncurses:0=
@@ -48,7 +49,7 @@ RDEPEND="
 	wxwidgets? ( x11-libs/wxGTK:2.8[X,-odbc] )"
 
 DEPEND="${RDEPEND}
-	>=dev-java/antlr-2.7.7-r5:0[cxx,java,script]
+	dev-java/antlr:0[java(+),script(+)]
 	virtual/pkgconfig
 	eigen? ( dev-cpp/eigen:3 )"
 
