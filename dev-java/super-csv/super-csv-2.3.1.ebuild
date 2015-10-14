@@ -14,14 +14,11 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
-CDEPEND=""
-RDEPEND=">=virtual/jre-1.6
-	${CDEPEND}"
+RDEPEND=">=virtual/jre-1.6"
 DEPEND=">=virtual/jdk-1.6
 	test? (
 		dev-java/ant-junit:0
-	)
-	${CDEPEND}"
+	)"
 
 IUSE=""
 
