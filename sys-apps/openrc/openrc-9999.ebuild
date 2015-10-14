@@ -238,6 +238,17 @@ EOF
 		fi
 	fi
 	has_version ">=sys-apps/openrc-0.14" || add_boot_init binfmt
+
+	if ! has_version ">=sys-apps/openrc-0.18.3"; then
+		add_boot_init mtab
+		if [[ -f "${EROOT}"etc/mtab ]] && [[ ! -L "${EROOT}"etc/mtab ]]; then
+			ewarn "${EROOT}etc/mtab will be replaced with a"
+			ewarn "symbolic link to /proc/self/mounts on the next"
+			ewarn "reboot."
+			ewarn "Change the setting in ${EROOT}etc/conf.d/mtab"
+			ewarn "if you do not want this to happen."
+		fi
+	fi
 }
 
 # >=OpenRC-0.11.3 requires udev-mount to be in the sysinit runlevel with udev.
