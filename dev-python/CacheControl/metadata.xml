@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>python</herd>
-  <use>
-    <flag name="redis">Allows using redis as a cache store</flag>
-  </use>
   <upstream>
     <remote-id type="github">ionrock/cachecontrol</remote-id>
     <remote-id type="pypi">CacheControl</remote-id>
