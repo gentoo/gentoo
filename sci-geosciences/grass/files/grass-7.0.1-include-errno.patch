@@ -1,0 +1,12 @@
+diff --git a/lib/raster/open.c b/lib/raster/open.c
+index d5a902f..1beada7 100644
+--- a/lib/raster/open.c
++++ b/lib/raster/open.c
+@@ -19,6 +19,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
++#include <errno.h>
+ 
+ #include <grass/config.h>
+ #include <grass/gis.h>
