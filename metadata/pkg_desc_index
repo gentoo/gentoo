@@ -14729,7 +14729,7 @@ net-proxy/privoxy 3.0.23: A web proxy with advanced filtering capabilities for p
 net-proxy/ratproxy 1.58: A semi-automated, largely passive web application security audit tool
 net-proxy/rejik 3.2.10: A squid redirector used for blocking unwanted content
 net-proxy/shadowsocks-libev 2.2.2 2.2.3: A lightweight secured scoks5 proxy for embedded devices and low end boxes
-net-proxy/squid 3.5.6 3.5.7 3.5.8 3.5.9: A full-featured web proxy cache
+net-proxy/squid 3.5.6 3.5.7 3.5.8 3.5.9 3.5.10: A full-featured web proxy cache
 net-proxy/squidclamav 6.8 6.10: HTTP Antivirus for Squid based on ClamAv and ICAP
 net-proxy/squidguard 1.4-r4 1.5_beta-r1: Combined filter, redirector and access controller plugin for Squid
 net-proxy/squirm 1.26-r1: A redirector for Squid
@@ -17427,7 +17427,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 11.2.202.521: Adobe Flash Player
+www-plugins/adobe-flash 11.2.202.521 11.2.202.535: Adobe Flash Player
 www-plugins/chrome-binary-plugins 45.0.2454.101_p1 46.0.2490.64_beta1 47.0.2526.8_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
