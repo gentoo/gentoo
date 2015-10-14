@@ -19,7 +19,6 @@ IUSE="debug slp"
 
 DEPEND="slp? ( net-libs/openslp )"
 RDEPEND="${DEPEND}
-	virtual/udev
 	sys-fs/lsscsi
 	sys-apps/util-linux"
 
@@ -79,6 +78,7 @@ src_install() {
 
 	insinto /etc/iscsi
 	newins "${FILESDIR}"/initiatorname.iscsi initiatorname.iscsi.example
+
 	# udev pieces
 	insinto /lib/udev/rules.d
 	doins "${FILESDIR}"/99-iscsi.rules
