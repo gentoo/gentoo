@@ -1,16 +1,14 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit cmake-utils
 
-MY_P="${PN}-v${PV}"
-
 DESCRIPTION="Software for Calculating Scattering Diagrams on Massively Parallel Computers"
 HOMEPAGE="http://www.sassena.org"
-SRC_URI="http://www.sassena.org/software/source-code/releases/v${PV}/${MY_P}.tar.gz/at_download/file -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/benlabs/sassena/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -27,8 +25,8 @@ DEPEND="
 		virtual/lapack"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${MY_P}"
-
 PATCHES=(
-	"${FILESDIR}/$P-libs.patch"
-	)
+	"${FILESDIR}/${P}_cmake-remove-missing.patch"
+	"${FILESDIR}/${P}_uint32_t.patch"
+	"${FILESDIR}/${P}_link_boost_thread.patch"
+)
