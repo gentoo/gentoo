@@ -12,7 +12,7 @@ SRC_URI="http://www.ijs.si/software/amavisd/${MY_P}.tar.xz"
 
 LICENSE="GPL-2 BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="clamav courier dkim ldap mysql postgres qmail razor snmp spamassassin zmq"
 
 DEPEND=">=sys-apps/sed-4
@@ -50,7 +50,6 @@ RDEPEND="${DEPEND}
 	virtual/perl-IO-Socket-IP
 	>=virtual/perl-Time-HiRes-1.49
 	dev-perl/Unix-Syslog
-	dev-perl/Net-LibIDN
 	sys-apps/file
 	>=sys-libs/db-4.4.20
 	dev-perl/BerkeleyDB
@@ -64,7 +63,7 @@ RDEPEND="${DEPEND}
 	razor? ( mail-filter/razor )
 	snmp? ( net-analyzer/net-snmp[perl] )
 	spamassassin? ( mail-filter/spamassassin )
-	zmq? ( dev-perl/ZMQ-LibZMQ3 )"
+	zmq? ( dev-perl/ZMQ-LibZMQ2 )"
 
 AMAVIS_ROOT="/var/amavis"
 S="${WORKDIR}/${MY_P}"
@@ -109,6 +108,7 @@ src_install() {
 		dosbin amavisd-snmp-subagent
 		use zmq && dosbin amavisd-snmp-subagent-zmq
 		dodoc AMAVIS-MIB.txt
+		newinitd "${FILESDIR}"/amavisd-snmp.initd amavisd-snmp
 	fi
 
 	if use zmq ; then

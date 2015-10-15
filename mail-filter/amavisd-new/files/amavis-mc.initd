@@ -1,24 +1,14 @@
-#!/sbin/runscript
-# Copyright 1999-2012 Gentoo Foundation
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-prog="/usr/sbin/amavis-mc"
-progname="amavis-mc"
+pidfile="/run/amavis/amavis-mc.pid"
+command="/usr/sbin/amavis-mc"
+command_args="${amavis_mc_args} -P ${pidfile}"
+start_stop_daemon_args="--interpreted"
 
 depend() {
 	use logger
 	before amavisd-new snmpd
-}
-
-start() {
-	ebegin "Starting ${progname}"
-	start-stop-daemon --start --exec ${prog}
-	eend $?
-}
-
-stop() {
-	ebegin "Stopping ${progname}"
-	start-stop-daemon --stop --interpreted --exec ${prog}
-	eend $?
 }
