@@ -23,6 +23,7 @@ RDEPEND="
 	dev-qt/qtgui:4
 	dev-qt/qtopengl:4
 	dev-qt/qtcore:4
+	dev-qt/qtsvg:4
 	dev-cpp/eigen:3
 	dev-cpp/yaml-cpp
 
