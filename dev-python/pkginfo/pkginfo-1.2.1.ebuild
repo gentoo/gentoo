@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Provides an API for querying the distutils metadata written in a PKG-INFO file"
 HOMEPAGE="https://pypi.python.org/pypi/pkginfo"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="doc examples"
 
 LICENSE="MIT"
