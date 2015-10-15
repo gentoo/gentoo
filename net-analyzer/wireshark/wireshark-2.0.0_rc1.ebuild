@@ -7,7 +7,7 @@ inherit autotools eutils fcaps flag-o-matic multilib qmake-utils qt4-r2 user
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="http://www.wireshark.org/"
-SRC_URI="${HOMEPAGE}download/src/all-versions/${P}.tar.bz2"
+SRC_URI="${HOMEPAGE}download/src/all-versions/${P/_/}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
@@ -20,6 +20,8 @@ REQUIRED_USE="
 	ssl? ( crypt )
 	?? ( qt4 qt5 )
 "
+
+S=${WORKDIR}/${P/_/}
 
 GTK_COMMON_DEPEND="
 	x11-libs/gdk-pixbuf
@@ -93,10 +95,8 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${PN}-1.6.13-ldflags.patch \
 		"${FILESDIR}"/${PN}-1.11.0-oldlibs.patch \
-		"${FILESDIR}"/${PN}-1.99.6-gcc_option.patch \
 		"${FILESDIR}"/${PN}-1.99.0.1975-sse4_2.patch \
 		"${FILESDIR}"/${PN}-99999999-pkgconfig.patch \
-		"${FILESDIR}"/${PN}-1.99.7-qt-pie.patch \
 		"${FILESDIR}"/${PN}-1.99.8-qtchooser.patch
 
 	epatch_user
@@ -190,11 +190,12 @@ src_compile() {
 
 src_install() {
 	default
+
 	if use doc; then
 		dohtml -r docbook/{release-notes.html,ws{d,u}g_html{,_chunked}}
 		if use doc-pdf; then
 			insinto /usr/share/doc/${PF}/pdf/
-			doins docbook/{{developer,user}-guide,release-notes}-{a4,us}.pdf
+			doins docbook/{developer,user}-guide-{a4,us}.pdf docbook/release-notes.pdf
 		fi
 	fi
 
