@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (15 Oct 2015)
+# Repoman reports dependency issues on arm.
+www-client/chromium system-ffmpeg
+
 # Markus Meier <maekke@gentoo.org> (10 Oct 2015)
 # unkeyworded deps, bug #552330
 app-portage/g-sorcery bson
