@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=libav? ( media-video/libav ) !libav? ( media-video/ffmpeg ) chromaprint? ( media-libs/chromaprint ) loudness? ( media-libs/libebur128[speex] ) sound? ( media-libs/libsdl2[sound] )
 SLOT=0/4
 SRC_URI=https://github.com/andrewrk/libgroove/archive/4.3.0.tar.gz -> libgroove-4.3.0.tar.gz
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=cmake-utils	ed6fe5316459777893d5a8b929faec18	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=36c684d93df49a0aaa3c94d788df53e0

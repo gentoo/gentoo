@@ -10,5 +10,5 @@ RDEPEND=dev-db/sqlite:3 dev-libs/glib:2 dev-libs/libxml2 dev-libs/libxslt
 RESTRICT=test
 SLOT=0
 SRC_URI=http://www.opensync.org/download/releases/0.36/libopensync-0.36.tar.bz2
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=cmake-utils	ed6fe5316459777893d5a8b929faec18	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=0e588dd830242c487d8b7d464cda246e

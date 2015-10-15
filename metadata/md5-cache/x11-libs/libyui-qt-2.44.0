@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=dev-qt/qtgui:4 media-libs/freetype x11-libs/libX11 x11-libs/libyui:0/6
 SLOT=0/6
 SRC_URI=https://github.com/libyui/libyui-qt/archive/libyui-qt/master/2.44.0.tar.gz -> libyui-qt-2.44.0.tar.gz
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=cmake-utils	ed6fe5316459777893d5a8b929faec18	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=ac82585211122ad3a5c4ee9ea61042e9

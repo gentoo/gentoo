@@ -8,5 +8,5 @@ LICENSE=GPL-2 LGPL-2.1+
 RDEPEND=dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 dev-qt/qtsvg:4 ~lxqt-base/liblxqt-0.7.0 ~dev-libs/libqtxdg-0.5.3 x11-libs/libX11 x11-libs/libxcb || ( sys-power/upower sys-power/upower-pm-utils )
 SLOT=0
 SRC_URI=http://downloads.lxqt.org/lxqt/lxqt/0.7.0/lxqt-powermanagement-0.7.0.tar.xz
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=cmake-utils	ed6fe5316459777893d5a8b929faec18	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=6f047fa2762be4eebf66357290c1d765

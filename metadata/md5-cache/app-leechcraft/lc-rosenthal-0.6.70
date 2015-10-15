@@ -8,5 +8,5 @@ LICENSE=Boost-1.0
 RDEPEND=~app-leechcraft/lc-core-0.6.70 app-text/hunspell
 SLOT=0
 SRC_URI=http://dist.leechcraft.org/LeechCraft/0.6.70/leechcraft-0.6.70.tar.xz
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	leechcraft	c676f028a625e4defb5f949455a08737	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	ed6fe5316459777893d5a8b929faec18	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	leechcraft	c676f028a625e4defb5f949455a08737	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=cdca6ff4f7113a37228bf69e0d22d1e6

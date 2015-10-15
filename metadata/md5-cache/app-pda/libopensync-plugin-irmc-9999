@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=~app-pda/libopensync-9999 dev-libs/glib:2 dev-libs/libxml2 >=dev-libs/openobex-1.0[bluetooth?,irda?] bluetooth? ( net-wireless/bluez )
 REQUIRED_USE=|| ( bluetooth irda )
 SLOT=0
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	subversion	4fee0a764150bb4dda27ed4d2c4ed7ce	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=cmake-utils	ed6fe5316459777893d5a8b929faec18	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	subversion	4fee0a764150bb4dda27ed4d2c4ed7ce	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=4834de47c6992cf0aaad69d7330f1931

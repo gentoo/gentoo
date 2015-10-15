@@ -9,5 +9,5 @@ LICENSE=Apache-2.0 vim
 RDEPEND=dev-lang/luajit:2 >=dev-libs/libtermkey-0.17 dev-libs/libvterm-neovim >=dev-libs/unibilium-1.1.1 >=dev-libs/libuv-1.2.0 >=dev-libs/msgpack-0.6.0_pre20150220 dev-lua/lpeg dev-lua/messagepack perl? ( dev-lang/perl ) python? ( dev-python/neovim-python-client )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~yngwin/distfiles/neovim-0.0.0_pre20150627.tar.xz
-_eclasses_=cmake-utils	f474224ef49d530640a43a04ae94928e	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=cmake-utils	ed6fe5316459777893d5a8b929faec18	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=d28d314046191f5f8f58c275531c72a3
