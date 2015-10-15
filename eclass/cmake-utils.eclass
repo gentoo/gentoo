@@ -480,7 +480,12 @@ enable_cmake-utils_src_configure() {
 			Cygwin) sysname="CYGWIN_NT-5.1" ;;
 			HPUX) sysname="HP-UX" ;;
 			linux) sysname="Linux" ;;
-			Winnt) sysname="Windows" ;;
+			Winnt)
+				sysname="Windows"
+				cat >> "${toolchain_file}" <<- _EOF_ || die
+					SET (CMAKE_RC_COMPILER $(tc-getRC))
+				_EOF_
+				;;
 			*) sysname="${KERNEL}" ;;
 		esac
 
