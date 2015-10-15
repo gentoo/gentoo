@@ -29,7 +29,7 @@ src_prepare() {
 
 	sed -e "s:@@confCCOPTS@@:${CFLAGS}:" \
 		-e "s:@@confLDOPTS@@:${LDFLAGS}:" \
-		-e "s:@@confCC@@:$(tc-getCC):" "${FILESDIR}/${PN}-8.14.5-site.config.m4" \
+		-e "s:@@confCC@@:$(tc-getCC):" "${FILESDIR}/site.config.m4" \
 		> "${S}/devtools/Site/site.config.m4" || die "sed failed"
 }
 
