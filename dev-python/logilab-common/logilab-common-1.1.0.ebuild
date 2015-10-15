@@ -14,24 +14,18 @@ SRC_URI="ftp://ftp.logilab.org/pub/common/${P}.tar.gz mirror://pypi/${PN:0:1}/${
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="test doc"
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 # egenix-mx-base tests are optional and supports python2 only.
 DEPEND="${RDEPEND}
-	test? ( $(python_gen_cond_dep 'dev-python/egenix-mx-base[${PYTHON_USEDEP}]' python2_7) )
+	>=dev-python/six-1.4.0[${PYTHON_USEDEP}]
+	test? (	$(python_gen_cond_dep 'dev-python/egenix-mx-base[${PYTHON_USEDEP}]' python2_7)
+		dev-python/pytz[${PYTHON_USEDEP}] )
 	doc? ( $(python_gen_cond_dep 'dev-python/epydoc[${PYTHON_USEDEP}]' python2_7) )"
 
-PATCHES=(
-	# Make sure setuptools does not create a zip file in python_test;
-	# this is buggy and causes tests to fail.
-	"${FILESDIR}/${PN}-0.59.1-zipsafe.patch"
-
-	# Depends on order of dictionary keys
-	"${FILESDIR}/logilab-common-0.60.0-skip-doctest.patch"
-)
 # Req'd for impl specific failures in the testsuite
 DISTUTILS_IN_SOURCE_BUILD=1
 
@@ -60,22 +54,6 @@ python_test() {
 
 	# Make sure that the tests use correct modules.
 	pushd "${TEST_DIR}"/lib > /dev/null || die
-
-	if python_is_python3; then
-	# http://www.logilab.org/ticket/241813, 241807
-	# The suite can be made to pass under py3.4 by disabling the class MxDateTC in unittest_date.py
-	# These are covered by issue 241813.  Any and all methods to disable them temporarily
-	# (assuming they will ever be fixed) are simply cumbersome in the extreme, thus impractical.
-	# The failures are specific to py3.4's unittest's parameters in _addSkip and not the package itself.
-		if [[ "${EPYTHON}" == "python3.4" ]]; then
-			sed -e 's:test_any:_&:' \
-				-i $(find . -name unittest_compat.py) || die
-			sed -e 's:test_add_days_worked:_&:' \
-				-i $(find . -name unittest_date.py) || die
-		fi
-	#  Returns a clean run under py3.3
-		rm $(find . -name unittest_umessage.py) || die
-	fi
 	"${TEST_DIR}"/scripts/pytest || die "Tests fail with ${EPYTHON}"
 	popd > /dev/null || die
 }

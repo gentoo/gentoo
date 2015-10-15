@@ -3,7 +3,8 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
 
 inherit distutils-r1
 
@@ -18,6 +19,9 @@ IUSE="doc examples"
 
 RDEPEND="!dev-python/pyparsing:py2 !dev-python/pyparsing:py3"
 
+# no contained in the tarball
+RESTRICT=test
+
 python_install_all() {
 	local HTML_DOCS=( HowToUsePyparsing.html )
 	if use doc; then
@@ -26,4 +30,8 @@ python_install_all() {
 	fi
 	use examples && local EXAMPLES=( examples/. )
 	distutils-r1_python_install_all
+}
+
+python_test() {
+	${PYTHON} unitTests.py || die
 }
