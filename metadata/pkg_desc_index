@@ -6794,6 +6794,7 @@ dev-python/cached-property 0.1.5 1.0.0 1.2.0: A cached-property for decorating m
 dev-python/cachetools 1.1.0: Extensible memoizing collections and decorators
 dev-python/cairocffi 0.7.2: CFFI-based drop-in replacement for Pycairo
 dev-python/cangjie 1.1 1.2: The Python bindings to libcangjie
+dev-python/capturer 2.1: Easily capture stdout/stderr of the current process and subprocesses
 dev-python/carbon 0.9.12-r1 0.9.13: Backend data caching and persistence daemon for Graphite
 dev-python/carrot 0.10.7-r1: AMQP Messaging Framework for Python
 dev-python/castellan 0.2.1: Generic Key Manager interface for OpenStack
@@ -6829,7 +6830,7 @@ dev-python/cmd2 0.6.7 0.6.8: Extra features for standard library's cmd module
 dev-python/codetools 4.2.0: Enthought Tool Suite: Code analysis and execution tools
 dev-python/colander 1.0: A simple schema-based serialization and deserialization library
 dev-python/colorama 0.3.2 0.3.3: Makes ANSI escape character sequences for producing colored terminal text & cursor positioning
-dev-python/coloredlogs 1.0.1-r1: Colored stream handler for the logging module
+dev-python/coloredlogs 1.0.1-r1 2.0: Colored stream handler for the logging module
 dev-python/colorlog 2.6.0: Log formatting with colors
 dev-python/colout 0.1: Adds color to arbitrary command output
 dev-python/columnize 0.3.5-r1 0.3.8: Format a simple (i.e. not nested) list into aligned columns
