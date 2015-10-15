@@ -133,6 +133,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.8.1-norpath.patch"
 	"${FILESDIR}/${PN}-4.9.3-werror.patch"
 	"${FILESDIR}/${PN}-4.10.0-udisks.patch"
+	"${FILESDIR}/${PN}-4.14.13-FindQt4.patch"
 )
 
 pkg_pretend() {
@@ -179,9 +180,6 @@ src_prepare() {
 		# Try to fix kkeyserver_mac
 		epatch "${FILESDIR}"/${PN}-4.3.80-kdeui_util_kkeyserver_mac.patch
 	fi
-
-	# updated version ships with cmake
-	sed -i -e "/FindQt4.cmake/d" cmake/modules/CMakeLists.txt || die
 }
 
 src_configure() {
