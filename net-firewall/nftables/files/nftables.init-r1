@@ -1,0 +1,263 @@
+#!/sbin/runscript
+# Copyright 2014 Nicholas Vinson
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="clear list panic save"
+extra_started_commands="reload"
+depend() {
+    need localmount #434774
+    before net
+}
+
+start_pre() {
+    checkkernel || return 1
+    checkconfig || return 1
+    return 0
+}
+
+clear() {
+    if use_legacy; then
+        clear_legacy
+        return 0
+    fi
+
+    nft flush ruleset
+}
+
+list() {
+    if use_legacy; then
+        list_legacy
+        return 0
+    fi
+
+    nft list ruleset
+}
+
+panic() {
+    checkkernel || return 1
+    if service_started ${RC_SVCNAME}; then
+        rc-service ${RC_SVCNAME} stop
+    fi
+
+    ebegin "Dropping all packets"
+    clear
+    if nft create table ip filter >/dev/null 2>&1; then
+        #nft -f /var/lib/nftables/rules-panic.ip
+	nft -f /dev/stdin <<-EOF
+	    table ip filter {
+	                    chain input {
+	                                    type filter hook input priority 0;
+	                                    drop
+	                    }
+	                    chain forward {
+	                                    type filter hook forward priority 0;
+	                                    drop
+	                    }
+	                    chain output {
+	                                    type filter hook output priority 0;
+	                                    drop
+	                    }
+	    }
+	EOF
+    fi
+    if nft create table ip6 filter >/dev/null 2>&1; then
+        #nft -f /var/lib/nftables/rules-panic.ip6
+	nft -f /dev/stdin <<-EOF
+	    table ip6 filter {
+	                    chain input {
+	                                    type filter hook input priority 0;
+	                                    drop
+	                    }
+	                    chain forward {
+	                                    type filter hook forward priority 0;
+	                                    drop
+	                    }
+	                    chain output {
+	                                    type filter hook output priority 0;
+	                                    drop
+	                    }
+	    }
+	EOF
+    fi
+}
+
+reload() {
+    checkkernel || return 1
+    ebegin "Flushing firewall"
+    clear
+    start
+}
+
+save() {
+    ebegin "Saving nftables state"
+    checkpath -q -d "$(dirname "${NFTABLES_SAVE}")"
+    checkpath -q -m 0600 -f "${NFTABLES_SAVE}"
+
+    local tmp_save="${NFTABLES_SAVE}.tmp"
+
+    if use_legacy; then
+        save_legacy ${tmp_save}
+    else
+        nft list ruleset > ${tmp_save}
+    fi
+    mv ${tmp_save} ${NFTABLES_SAVE}
+}
+
+start() {
+    ebegin "Loading nftables state and starting firewall"
+    clear
+    nft -f ${NFTABLES_SAVE}
+    eend $?
+}
+
+stop() {
+    if yesno ${SAVE_ON_STOP:-yes}; then
+        save || return 1
+    fi
+
+    ebegin "Stopping firewall"
+    clear
+    eend $?
+}
+
+################################################################################
+#
+# SUPPORT FUNCTIONS
+#
+################################################################################
+checkconfig() {
+    if [ ! -f ${NFTABLES_SAVE} ]; then
+        eerror "Not starting nftables.  First create some rules then run:"
+        eerror "rc-service nftables save"
+        return 1
+    fi
+    return 0
+}
+
+checkkernel() {
+    if ! nft list tables >/dev/null 2>&1; then
+        eerror "Your kernel lacks nftables support, please load"
+        eerror "appropriate modules and try again."
+        return 1
+    fi
+    return 0
+}
+
+use_legacy() {
+    local major_ver minor_ver
+
+    major_ver=`uname -r | cut -d '.' -f1`
+    minor_ver=`uname -r | cut -d '.' -f2`
+
+    [[ $major_ver -ge 4 || $major_ver -eq 3 && $minor_ver -ge 18 ]] && return 1
+    return 0
+}
+
+################################################################################
+#
+# LEGACY COMMAND FUNCTIONS
+#
+################################################################################
+
+clear_legacy() {
+    local l3f line table chain first_line
+
+    first_line=1
+    if manualwalk; then
+        for l3f in $(getfamilies); do
+            nft list tables ${l3f} | while read line; do
+                table=$(echo ${line} | sed "s/table[ \t]*//")
+                deletetable ${l3f} ${table}
+            done
+        done
+    else
+        nft list tables | while read line; do
+            l3f=$(echo ${line} | cut -d ' ' -f2)
+            table=$(echo ${line} | cut -d ' ' -f3)
+            deletetable ${l3f} ${table}
+        done
+    fi
+}
+
+list_legacy() {
+    local l3f
+
+    if manualwalk; then
+        for l3f in $(getfamilies); do
+            nft list tables ${l3f} | while read line; do
+                line=$(echo ${line} | sed "s/table/table ${l3f}/")
+                echo "$(nft list ${line})"
+            done
+        done
+    else
+        nft list tables | while read line; do
+            echo "$(nft list ${line})"
+        done
+    fi
+}
+
+save_legacy() {
+    tmp_save=$1
+    touch "${tmp_save}"
+    if manualwalk; then
+        for l3f in $(getfamilies); do
+            nft list tables ${l3f} | while read line; do
+                line=$(echo ${line} | sed "s/table/table ${l3f}/")
+                nft ${SAVE_OPTIONS} list ${line} >> ${tmp_save}
+            done
+        done
+    else
+        nft list tables | while read line; do
+            nft ${SAVE_OPTIONS} list ${line} >> "${tmp_save}"
+        done
+    fi
+}
+
+################################################################################
+#
+# LEGACY SUPPORT FUNCTIONS
+#
+################################################################################
+CHECK_TABLE_NAME="GENTOO_CHECK_TABLE"
+
+getfamilies() {
+    local l3f families
+
+    for l3f in ip arp ip6 bridge inet; do
+        if nft create table ${l3f} ${CHECK_TABLE_NAME} > /dev/null 2>&1; then
+            families="${families}${l3f} "
+            nft delete table ${l3f} ${CHECK_TABLE_NAME}
+        fi
+    done
+    echo ${families}
+}
+
+manualwalk() {
+    local result l3f=`getfamilies | cut -d ' ' -f1`
+
+    nft create table ${l3f} ${CHECK_TABLE_NAME}
+    nft list tables | read line
+    if [ $(echo $line | wc -w) -lt 3 ]; then
+        result=0
+    fi
+    result=1
+    nft delete table ${l3f} ${CHECK_TABLE_NAME}
+
+    return $result
+}
+
+deletetable() {
+    # family is $1
+    # table name is $2
+    nft flush table $1 $2
+    nft list table $1 $2 | while read l; do
+        chain=$(echo $l | grep -o 'chain [^[:space:]]\+' | cut -d ' ' -f2)
+        if [ -n "${chain}" ]; then
+            nft flush chain $1 $2 ${chain}
+            nft delete chain $1 $2 ${chain}
+        fi
+    done
+    nft delete table $1 $2
+}
+
