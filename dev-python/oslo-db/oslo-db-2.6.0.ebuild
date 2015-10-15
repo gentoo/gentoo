@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_4 )
 
 inherit distutils-r1
 
@@ -20,38 +20,39 @@ REQUIRED_USE="|| ( mysql postgres sqlite )"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	>=dev-python/pbr-0.8.2[${PYTHON_USEDEP}]
-	<dev-python/pbr-1.0.0[${PYTHON_USEDEP}]
+	>=dev-python/pbr-1.6.0[${PYTHON_USEDEP}]
+	<dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 "
 RDEPEND="
-	>=dev-python/alembic-0.7.2[${PYTHON_USEDEP}]
+	>=dev-python/alembic-0.8.0[${PYTHON_USEDEP}]
 	>=dev-python/Babel-1.3[${PYTHON_USEDEP}]
 	>=dev-python/iso8601-0.1.9[${PYTHON_USEDEP}]
 	>=dev-python/oslo-i18n-1.5.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-config-1.9.3[${PYTHON_USEDEP}]
-	>=dev-python/oslo-utils-1.4.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-config-2.3.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-context-0.2.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-utils-2.0.0[${PYTHON_USEDEP}]
 	sqlite? (
 		|| (
-			>=dev-python/sqlalchemy-0.9.7[sqlite,${PYTHON_USEDEP}]
-			<=dev-python/sqlalchemy-0.9.99[sqlite,${PYTHON_USEDEP}]
+			>=dev-python/sqlalchemy-0.9.9[sqlite,${PYTHON_USEDEP}]
+			<dev-python/sqlalchemy-1.1.0[sqlite,${PYTHON_USEDEP}]
 		)
 	)
 	mysql? (
 		dev-python/mysql-python
 		|| (
-			>=dev-python/sqlalchemy-0.9.7[${PYTHON_USEDEP}]
-			<=dev-python/sqlalchemy-0.9.99[${PYTHON_USEDEP}]
+			>=dev-python/sqlalchemy-0.9.9[${PYTHON_USEDEP}]
+			<dev-python/sqlalchemy-1.1.0[${PYTHON_USEDEP}]
 		)
 	)
 	postgres? (
 		dev-python/psycopg:2
 		|| (
-			>=dev-python/sqlalchemy-0.9.7[${PYTHON_USEDEP}]
-			<=dev-python/sqlalchemy-0.9.99[${PYTHON_USEDEP}]
+			>=dev-python/sqlalchemy-0.9.9[${PYTHON_USEDEP}]
+			<dev-python/sqlalchemy-1.1.0[${PYTHON_USEDEP}]
 		)
 	)
-	>=dev-python/sqlalchemy-migrate-0.9.5[${PYTHON_USEDEP}]
-	>=dev-python/stevedore-1.3.0[${PYTHON_USEDEP}]
+	>=dev-python/sqlalchemy-migrate-0.9.6[${PYTHON_USEDEP}]
+	>=dev-python/stevedore-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/testresources-0.2.4[${PYTHON_USEDEP}]
 	>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
