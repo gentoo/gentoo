@@ -1,0 +1,44 @@
+From cdfcad788394ff53e317043e07b8e34f4987c659 Mon Sep 17 00:00:00 2001
+From: Alex Smith <alex.smith@imgtec.com>
+Date: Tue, 8 Sep 2015 11:34:11 +0100
+Subject: [PATCH 1/1] target-mips: Fix RDHWR on CP0.Count
+
+For RDHWR on the CP0.Count register, env->CP0_Count was being returned.
+This value is a delta against the QEMU_CLOCK_VIRTUAL clock, not the
+correct current value of CP0.Count. Use cpu_mips_get_count() instead.
+
+Signed-off-by: Alex Smith <alex.smith@imgtec.com>
+Cc: Aurelien Jarno <aurelien@aurel32.net>
+Cc: Leon Alrae <leon.alrae@imgtec.com>
+Reviewed-by: Leon Alrae <leon.alrae@imgtec.com>
+Reviewed-by: Aurelien Jarno <aurelien@aurel32.net>
+Signed-off-by: Leon Alrae <leon.alrae@imgtec.com>
+---
+ target-mips/op_helper.c |    9 +++++++--
+ 1 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/target-mips/op_helper.c b/target-mips/op_helper.c
+index 1aa9e3c..94de108 100644
+--- a/target-mips/op_helper.c
++++ b/target-mips/op_helper.c
+@@ -2184,10 +2184,15 @@ target_ulong helper_rdhwr_synci_step(CPUMIPSState *env)
+ target_ulong helper_rdhwr_cc(CPUMIPSState *env)
+ {
+     if ((env->hflags & MIPS_HFLAG_CP0) ||
+-        (env->CP0_HWREna & (1 << 2)))
++        (env->CP0_HWREna & (1 << 2))) {
++#ifdef CONFIG_USER_ONLY
+         return env->CP0_Count;
+-    else
++#else
++        return (int32_t)cpu_mips_get_count(env);
++#endif
++    } else {
+         helper_raise_exception(env, EXCP_RI);
++    }
+ 
+     return 0;
+ }
+-- 
+1.7.0.4
+
