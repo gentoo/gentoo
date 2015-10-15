@@ -177,11 +177,13 @@ src_install() {
 			-e 's:^!\(NetHack.tile_file.*\):\1:' \
 			"${D}/etc/X11/app-defaults/NetHack" \
 			|| die "sed /etc/X11/app-defaults/NetHack failed"
+
+		newicon nh_icon.xpm nethack.xpm
+		make_desktop_entry ${PN} Nethack
 	fi
 
 	keepdir "${STATEDIR}/save"
 	rm "${D}/${HACKDIR}/"{logfile,perm,record}
-	make_desktop_entry nethack "Nethack"
 
 	fowners -R "root:${NETHACK_GROUP}" "${STATEDIR}"
 	fperms -R 660 "${STATEDIR}"
