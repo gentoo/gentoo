@@ -13,4 +13,8 @@
 		<remote-id type="pypi">glance_store</remote-id>
 		<remote-id type="launchpad">oslo</remote-id>
 	</upstream>
+	<use>
+		<flag name="cinder">adds cinder backend support</flag>
+		<flag name="swift">adds swift backend support</flag>
+	</use>
 </pkgmetadata>
