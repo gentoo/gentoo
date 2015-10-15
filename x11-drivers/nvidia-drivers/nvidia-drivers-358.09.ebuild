@@ -28,7 +28,7 @@ KEYWORDS="-* ~amd64 ~x86 ~amd64-fbsd ~x86-fbsd"
 RESTRICT="bindist mirror strip"
 EMULTILIB_PKG="true"
 
-IUSE="acpi multilib kernel_FreeBSD kernel_linux kms pax_kernel +tools gtk2 gtk3 +X uvm"
+IUSE="acpi multilib kernel_FreeBSD kernel_linux +kms pax_kernel +tools gtk2 gtk3 +X uvm"
 REQUIRED_USE="
 	tools? ( X || ( gtk2 gtk3 ) )
 "
