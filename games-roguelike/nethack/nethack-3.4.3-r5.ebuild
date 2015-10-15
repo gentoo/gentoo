@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86 ~x86-fbsd"
 IUSE="X"
 
-RDEPEND=">=sys-libs/ncurses-5.2-r5
+RDEPEND="sys-libs/ncurses:0=
 	X? (
 		x11-libs/libXaw
 		x11-libs/libXpm
