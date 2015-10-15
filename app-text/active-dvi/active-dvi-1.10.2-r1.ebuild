@@ -46,9 +46,10 @@ src_configure() {
 }
 
 src_compile() {
+	export VARTEXFONTS="${T}/fonts"
 	emake
 	cd doc || die
-	VARTEXFONTS="${T}/fonts" emake splash.dvi scratch_write_splash.dvi scratch_draw_splash.dvi
+	emake splash.dvi scratch_write_splash.dvi scratch_draw_splash.dvi
 }
 
 src_install() {
