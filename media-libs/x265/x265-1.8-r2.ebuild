@@ -13,7 +13,7 @@ else
 	SRC_URI="
 		https://bitbucket.org/multicoreware/x265/downloads/${PN}_${PV}.tar.gz
 		http://ftp.videolan.org/pub/videolan/x265/${PN}_${PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Library for encoding video streams into the H.265/HEVC format"
@@ -39,6 +39,10 @@ src_unpack() {
 		unpack ${A}
 		export S="$(echo "${WORKDIR}/${PN}_"*"/source")"
 	fi
+}
+
+src_prepare() {
+	epatch "${FILESDIR}/${PV}-build-Disable-march-selection-from-CMakeLists.txt.patch"	# bug #510890
 }
 
 # By default, the library and the encoder is configured for only one output bit
