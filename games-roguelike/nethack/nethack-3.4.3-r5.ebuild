@@ -143,10 +143,8 @@ src_install() {
 	doman doc/*.6
 	dodoc doc/*.txt
 
-	# Can be copied to ~/.nethackrc to set options
-	# Add this to /etc/.skel as well, thats the place for default configs
-	insinto "${HACKDIR}"
-	doins "${FILESDIR}/dot.nethackrc"
+	insinto /etc/skel
+	newins "${FILESDIR}/dot.nethackrc" .nethackrc
 
 	local windowtypes="tty"
 	use X && windowtypes="${windowtypes} x11"
@@ -154,10 +152,8 @@ src_install() {
 	sed -i \
 		-e "s:GENTOO_WINDOWTYPES:${windowtypes}:" \
 		-e "s:GENTOO_DEFWINDOWTYPE:$1:" \
-		"${D}${HACKDIR}/dot.nethackrc" \
-		|| die "sed ${HACKDIR}/dot.nethackrc failed"
-	insinto /etc/skel
-	newins "${D}/${HACKDIR}/dot.nethackrc" .nethackrc
+		"${D}/etc/skel/.nethackrc" \
+		|| die "sed /etc/skel/.nethackrc failed"
 
 	if use X ; then
 		# install nethack fonts
