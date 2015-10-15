@@ -29,12 +29,12 @@ patches() {
 }
 
 # The version of readline this bash normally ships with.
-READLINE_VER="7.0"
+READLINE_VER="7.0_beta"
 
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="http://tiswww.case.edu/php/chet/bash/bashtop.html"
 case ${PV} in
-*_alpha*|*_rc*) SRC_URI+=" ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz" ;;
+*_alpha*|*_beta*|*_rc*) SRC_URI+=" ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz" ;;
 *) SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)" ;;
 esac
 
@@ -44,7 +44,7 @@ SLOT="0"
 IUSE="afs bashlogger examples mem-scramble +net nls plugins +readline vanilla"
 
 DEPEND=">=sys-libs/ncurses-5.2-r2:0=
-	readline? ( >=sys-libs/readline-${READLINE_VER}_alpha:0= )
+	readline? ( >=sys-libs/readline-${READLINE_VER}:0= )
 	nls? ( virtual/libintl )"
 RDEPEND="${DEPEND}
 	!<sys-apps/portage-2.1.6.7_p1
@@ -85,8 +85,6 @@ src_prepare() {
 	sed -i -r '/^(HS|RL)USER/s:=.*:=:' doc/Makefile.in || die
 	touch -r . doc/*
 
-	epatch "${FILESDIR}"/${PN}-4.4-optimize-fork.patch
-
 	epatch_user
 }
 
@@ -117,7 +115,7 @@ src_configure() {
 	# be safe.
 	# Exact cached version here doesn't really matter as long as it
 	# is at least what's in the DEPEND up above.
-	export ac_cv_rl_version=${READLINE_VER}
+	export ac_cv_rl_version=${READLINE_VER%%_*}
 
 	# Force linking with system curses ... the bundled termcap lib
 	# sucks bad compared to ncurses.  For the most part, ncurses
