@@ -76,11 +76,11 @@ src_configure() {
 }
 
 multilib_src_test() {
-	if has ${MULTILIB_ABI_FLAG} abi_x86_32 abi_x86_64 ; then
-		cd "${BUILD_DIR}/test" || die
-		for i in TestBench ; do
-			./${i} || die
-		done
+	if [ -x "${BUILD_DIR}/test/TestBench" ] ; then
+		"${BUILD_DIR}/test/TestBench" || die
+	else
+		einfo "Unit tests check only assembly, and you do not seem to have any."
+		einfo "Skipping tests."
 	fi
 }
 
