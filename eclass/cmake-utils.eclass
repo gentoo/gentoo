@@ -228,6 +228,11 @@ _generator_to_use() {
 
 	case ${CMAKE_MAKEFILE_GENERATOR} in
 		ninja)
+			# if ninja is enabled but not installed, the build could fail
+			# this could happen if ninja is manually enabled (eg. make.conf) but not installed
+			if ! has_version dev-util/ninja; then
+				die "CMAKE_MAKEFILE_GENERATOR is set to ninja, but ninja is not installed. Please install dev-util/ninja or unset CMAKE_MAKEFILE_GENERATOR."
+			fi
 			generator_name="Ninja"
 			;;
 		emake)
