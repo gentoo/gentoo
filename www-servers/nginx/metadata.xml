@@ -14,6 +14,7 @@
   <use>
     <flag name="aio">Enables file AIO support</flag>
     <flag name="http">Enable HTTP core support</flag>
+    <flag name="http2">Enable HTTP2 module support</flag>
     <flag name="http-cache">Enable HTTP cache support</flag>
     <flag name="libatomic">Use libatomic instead of builtin atomic operations</flag>
     <flag name="luajit">Use <pkg>dev-lang/luajit</pkg> instead of <pkg>dev-lang/lua</pkg> for lua support when building the lua http module.</flag>
