@@ -7,5 +7,6 @@
   </maintainer>
   <use>
 	  <flag name="10bit">Set output bit depth to 10</flag>
+	  <flag name="pic">Disable optimized assembly code that is not PIC friendly</flag>
   </use>
 </pkgmetadata>
