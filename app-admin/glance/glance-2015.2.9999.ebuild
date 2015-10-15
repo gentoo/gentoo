@@ -41,6 +41,7 @@ DEPEND="
 		>=dev-python/psutil-1.1.1[${PYTHON_USEDEP}]
 		<dev-python/psutil-2.0.0[${PYTHON_USEDEP}]
 		>=dev-python/oslotest-1.10.0[${PYTHON_USEDEP}]
+		>=dev-python/pymysql-0.6.2[${PYTHON_USEDEP}]
 		>=dev-python/psycopg-2.5[${PYTHON_USEDEP}]
 		>=dev-python/pysendfile-2.0.0[${PYTHON_USEDEP}]
 		dev-python/qpid-python[$(python_gen_usedep 'python2_7')]
