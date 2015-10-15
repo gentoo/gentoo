@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -108,6 +108,7 @@ src_install() {
 		dosbin amavisd-snmp-subagent
 		use zmq && dosbin amavisd-snmp-subagent-zmq
 		dodoc AMAVIS-MIB.txt
+		newinitd "${FILESDIR}"/amavisd-snmp.initd amavisd-snmp
 	fi
 
 	if use zmq ; then

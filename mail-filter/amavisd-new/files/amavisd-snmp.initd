@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+name="amavisd-snmp"
+pidfile="/run/amavis/${name}.pid"
+command="/usr/sbin/${name}-subagent"
+command_args="${amavis_snmp_args} -P ${pidfile}"
+start_stop_daemon_args="--interpreted"
+
+depend() {
+	use logger
+	before amavisd-new snmpd
+}
+
+start_pre() {
+	if [[ -x ${command}-zmq && ! $amavisd_snmp_command ]]; then
+		command="${command}-zmq"
+	fi
+}
