@@ -10,15 +10,12 @@ FORTRAN_NEEDED=lapack
 
 inherit distutils-r1 eutils flag-o-matic fortran-2 multilib multiprocessing toolchain-funcs versionator
 
-MY_PV="${PV/_p/.post}"
-MY_P="${PN}-${MY_PV}"
-
 DOC_PV="1.9.1"
 DOC_P="${PN}-${DOC_PV}"
 
 DESCRIPTION="Fast array and numerical python library"
 HOMEPAGE="http://www.numpy.org/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
 	doc? (
 		http://docs.scipy.org/doc/${DOC_P}/${PN}-html-${DOC_PV}.zip
 		http://docs.scipy.org/doc/${DOC_P}/${PN}-ref-${DOC_PV}.pdf
@@ -44,8 +41,6 @@ DISTUTILS_IN_SOURCE_BUILD=1
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.2-no-hardcode-blas.patch
 )
-
-S="${WORKDIR}/${MY_P}"
 
 src_unpack() {
 	default
