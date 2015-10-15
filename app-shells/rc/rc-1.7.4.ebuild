@@ -1,35 +1,35 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 
 DESCRIPTION="A reimplementation of the Plan 9 shell"
-HOMEPAGE="http://rc-shell.slackmatic.org/"
-SRC_URI="ftp://rc.quanstro.net/pub/${P}.tbz"
+HOMEPAGE="http://static.tobold.org/"
+SRC_URI="http://static.tobold.org/${PN}/${P}.tar.gz"
 
 LICENSE="rc"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="libedit readline"
 
-RDEPEND="readline? ( sys-libs/readline )
+RDEPEND="readline? ( sys-libs/readline:0 )
 	libedit? ( dev-libs/libedit )"
 DEPEND="${RDEPEND}"
 
 src_configure() {
 	local myconf="--with-history"
-	use readline && myconf="--with-readline"
-	use libedit && myconf="--with-editline"
+	use readline && myconf="--with-edit=readline"
+	use libedit && myconf="--with-edit=editline"
 
 	econf \
 		--disable-dependency-tracking \
-		${myconf}
+		"${myconf}"
 }
 
 src_install() {
 	into /
-	newbin rc rcsh || die
+	newbin rc rcsh
 	newman rc.1 rcsh.1
 	dodoc AUTHORS ChangeLog NEWS README
 }
