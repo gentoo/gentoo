@@ -27,10 +27,6 @@ sys-auth/sssd samba
 dev-libs/efl physics sdl
 media-libs/elementary sdl
 
-# Ben de Groot <yngwin@gentoo.org> (15 Mar 2015)
-# Waiting for keywording in bug 543398
->=media-sound/picard-1.3.2 cdda
-
 # Michał Górny <mgorny@gentoo.org> (21 Feb 2015)
 # The external QCA plugins are not keyworded on this arch. Since
 # this is only a temporary measure and nothing depends on them,
