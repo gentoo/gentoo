@@ -13,7 +13,7 @@ HOMEPAGE="http://packages.python.org/argh/"
 SRC_URI="mirror://pypi/a/${PN}/${P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm ~ppc x86"
 LICENSE="LGPL-3"
 IUSE="test"
 
