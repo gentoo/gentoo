@@ -15,7 +15,7 @@ HOMEPAGE="https://glassfish.dev.java.net/javaee5/webtier/webtierhome.html"
 SRC_URI="http://central.maven.org/maven2/org/glassfish/javax.servlet/${PV}/${MY_P}-sources.jar"
 LICENSE="CDDL"
 SLOT="3.1.1"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 x86 ~ppc ~ppc64"
 
 DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip"
