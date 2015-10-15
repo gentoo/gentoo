@@ -19,7 +19,8 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD hotwording? ( no-source-code )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cups gnome gnome-keyring gtk3 hidpi hotwording kerberos neon pic pulseaudio selinux +tcmalloc widevine"
+IUSE="cups gnome gnome-keyring gtk3 hidpi hotwording kerberos neon pic +proprietary-codecs pulseaudio selinux +system-ffmpeg +tcmalloc widevine"
+RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
 # Native Client binaries are compiled with different set of flags, bug #452066.
 QA_FLAGS_IGNORED=".*\.nexe"
@@ -56,7 +57,7 @@ RDEPEND=">=app-accessibility/speech-dispatcher-0.8:=
 	>=media-libs/libwebp-0.4.0:=
 	media-libs/speex:=
 	pulseaudio? ( media-sound/pulseaudio:= )
-	>=media-video/ffmpeg-2.7.2:=[opus,vorbis,vpx]
+	system-ffmpeg? ( >=media-video/ffmpeg-2.7.2:=[opus,vorbis,vpx] )
 	sys-apps/dbus:=
 	sys-apps/pciutils:=
 	>=sys-libs/libcap-2.22:=
@@ -198,8 +199,14 @@ src_prepare() {
 
 	epatch_user
 
+	local conditional_bundled_libraries=""
+	if ! use system-ffmpeg; then
+		conditional_bundled_libraries+=" third_party/ffmpeg"
+	fi
+
 	# Remove most bundled libraries. Some are still needed.
 	build/linux/unbundle/remove_bundled_libraries.py \
+		${conditional_bundled_libraries} \
 		'base/third_party/dmg_fp' \
 		'base/third_party/dynamic_annotations' \
 		'base/third_party/icu' \
@@ -335,7 +342,7 @@ src_configure() {
 	# TODO: use_system_sqlite (http://crbug.com/22208).
 	myconf+="
 		-Duse_system_bzip2=1
-		-Duse_system_ffmpeg=1
+		-Duse_system_ffmpeg=$(usex system-ffmpeg 1 0)
 		-Duse_system_flac=1
 		-Duse_system_harfbuzz=1
 		-Duse_system_icu=1
@@ -409,7 +416,8 @@ src_configure() {
 		-Dlinux_use_bundled_gold=0
 		-Dlinux_use_gold_flags=0"
 
-	myconf+=" -Dproprietary_codecs=1"
+	ffmpeg_branding="$(usex proprietary-codecs Chrome Chromium)"
+	myconf+=" -Dproprietary_codecs=1 -Dffmpeg_branding=${ffmpeg_branding}"
 
 	# Set up Google API keys, see http://www.chromium.org/developers/how-tos/api-keys .
 	# Note: these are for Gentoo use ONLY. For your own distribution,
@@ -422,10 +430,13 @@ src_configure() {
 	local myarch="$(tc-arch)"
 	if [[ $myarch = amd64 ]] ; then
 		target_arch=x64
+		ffmpeg_target_arch=x64
 	elif [[ $myarch = x86 ]] ; then
 		target_arch=ia32
+		ffmpeg_target_arch=ia32
 	elif [[ $myarch = arm ]] ; then
 		target_arch=arm
+		ffmpeg_target_arch=$(usex neon arm-neon arm)
 		# TODO: re-enable NaCl (NativeClient).
 		local CTARGET=${CTARGET:-${CHOST}}
 		if [[ $(tc-is-softfloat) == "no" ]]; then
@@ -487,6 +498,22 @@ src_configure() {
 	# Bug 491582.
 	export TMPDIR="${WORKDIR}/temp"
 	mkdir -p -m 755 "${TMPDIR}" || die
+
+	if ! use system-ffmpeg; then
+		local build_ffmpeg_args=""
+		if use pic && [[ "${ffmpeg_target_arch}" == "ia32" ]]; then
+			build_ffmpeg_args+=" --disable-asm"
+		fi
+
+		# Re-configure bundled ffmpeg. See bug #491378 for example reasons.
+		einfo "Configuring bundled ffmpeg..."
+		pushd third_party/ffmpeg > /dev/null || die
+		chromium/scripts/build_ffmpeg.py linux ${ffmpeg_target_arch} \
+			--branding ${ffmpeg_branding} -- ${build_ffmpeg_args} || die
+		chromium/scripts/copy_config.sh || die
+		chromium/scripts/generate_gyp.py || die
+		popd > /dev/null || die
+	fi
 
 	third_party/libaddressinput/chromium/tools/update-strings.py || die
 
