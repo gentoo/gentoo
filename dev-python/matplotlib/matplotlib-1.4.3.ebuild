@@ -51,7 +51,7 @@ DEPEND="${COMMON_DEPEND}
 		virtual/python-imaging[${PYTHON_USEDEP}]
 		dev-python/ipython[${PYTHON_USEDEP}]
 		dev-python/numpydoc[${PYTHON_USEDEP}]
-		dev-python/xlwt[${PY2_USEDEP}]
+		dev-python/xlwt[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-fontsrecommended
@@ -71,8 +71,11 @@ RDEPEND="${COMMON_DEPEND}
 			dev-python/cairocffi[${PYTHON_USEDEP}]
 			)
 		)
-	excel? ( dev-python/xlwt[${PY2_USEDEP}] )
-	fltk? ( dev-python/pyfltk[${PY2_USEDEP}] )
+	excel? ( dev-python/xlwt[${PYTHON_USEDEP}] )
+	fltk? (
+		$(python_gen_cond_dep 'dev-python/pyfltk[${PYTHON_USEDEP}]' python2_7)
+		$(python_gen_cond_dep 'dev-python/pyfltk[${PYTHON_USEDEP}]' 'python3*')
+		)
 	gtk3? (
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		x11-libs/gtk+:3[introspection] )
