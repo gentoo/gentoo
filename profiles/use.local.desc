@@ -4019,7 +4019,8 @@ media-libs/x264:10bit - Set output bit depth to 10, this may not be compatible w
 media-libs/x264:interlaced - enable interlaced encoding support, this can decrease encoding speed by up to 2%
 media-libs/x264:opencl - Add support for OpenCL.
 media-libs/x264:pic - disable optimized assembly code that is not PIC friendly
-media-libs/x265:10bit - Set output bit depth to 10
+media-libs/x265:10bit - Add support for producing 10bits HEVC.
+media-libs/x265:12bit - Add support for producing 12bits HEVC.
 media-libs/x265:numa - Build with support for NUMA nodes.
 media-libs/x265:pic - Disable optimized assembly code that is not PIC friendly
 media-libs/xine-lib:bluray - Enable playback of Blu-ray filesystems using media-libs/libbluray
