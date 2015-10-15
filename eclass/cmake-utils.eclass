@@ -128,8 +128,7 @@ case ${EAPI} in
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
-CMAKE_EXPF="src_prepare src_configure src_compile src_test src_install"
-EXPORT_FUNCTIONS ${CMAKE_EXPF}
+EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
 
 case ${CMAKE_MAKEFILE_GENERATOR} in
 	emake)
@@ -376,7 +375,7 @@ _modify-cmakelists() {
 		|| die "${LINENO}: failed to disable hardcoded settings"
 
 	# NOTE Append some useful summary here
-	cat >> "${CMAKE_USE_DIR}"/CMakeLists.txt <<- _EOF_
+	cat >> "${CMAKE_USE_DIR}"/CMakeLists.txt <<- _EOF_ || die
 
 		MESSAGE(STATUS "<<< Gentoo configuration >>>
 		Build type      \${CMAKE_BUILD_TYPE}
@@ -457,7 +456,7 @@ enable_cmake-utils_src_configure() {
 
 	# Prepare Gentoo override rules (set valid compiler, append CPPFLAGS etc.)
 	local build_rules=${BUILD_DIR}/gentoo_rules.cmake
-	cat > "${build_rules}" <<- _EOF_
+	cat > "${build_rules}" <<- _EOF_ || die
 		SET (CMAKE_AR $(type -P $(tc-getAR)) CACHE FILEPATH "Archive manager" FORCE)
 		SET (CMAKE_ASM_COMPILE_OBJECT "<CMAKE_C_COMPILER> <DEFINES> ${CFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "ASM compile command" FORCE)
 		SET (CMAKE_C_COMPILE_OBJECT "<CMAKE_C_COMPILER> <DEFINES> ${CPPFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "C compile command" FORCE)
@@ -468,7 +467,7 @@ enable_cmake-utils_src_configure() {
 	_EOF_
 
 	local toolchain_file=${BUILD_DIR}/gentoo_toolchain.cmake
-	cat > ${toolchain_file} <<- _EOF_
+	cat > ${toolchain_file} <<- _EOF_ || die
 		SET (CMAKE_C_COMPILER $(tc-getCC))
 		SET (CMAKE_CXX_COMPILER $(tc-getCXX))
 		SET (CMAKE_Fortran_COMPILER $(tc-getFC))
@@ -480,18 +479,23 @@ enable_cmake-utils_src_configure() {
 			Cygwin) sysname="CYGWIN_NT-5.1" ;;
 			HPUX) sysname="HP-UX" ;;
 			linux) sysname="Linux" ;;
-			Winnt) sysname="Windows" ;;
+			Winnt)
+				sysname="Windows"
+				cat >> "${toolchain_file}" <<- _EOF_ || die
+					SET (CMAKE_RC_COMPILER $(tc-getRC))
+				_EOF_
+				;;
 			*) sysname="${KERNEL}" ;;
 		esac
 
-		cat >> "${toolchain_file}" <<- _EOF_
+		cat >> "${toolchain_file}" <<- _EOF_ || die
 			SET (CMAKE_SYSTEM_NAME "${sysname}")
 		_EOF_
 
 		if [ "${SYSROOT:-/}" != "/" ] ; then
 			# When cross-compiling with a sysroot (e.g. with crossdev's emerge wrappers)
 			# we need to tell cmake to use libs/headers from the sysroot but programs from / only.
-			cat >> "${toolchain_file}" <<- _EOF_
+			cat >> "${toolchain_file}" <<- _EOF_ || die
 				set(CMAKE_FIND_ROOT_PATH "${SYSROOT}")
 				set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 				set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
@@ -503,7 +507,7 @@ enable_cmake-utils_src_configure() {
 	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
 
 	if [[ ${EPREFIX} ]]; then
-		cat >> "${build_rules}" <<- _EOF_
+		cat >> "${build_rules}" <<- _EOF_ || die
 			# in Prefix we need rpath and must ensure cmake gets our default linker path
 			# right ... except for Darwin hosts
 			IF (NOT APPLE)
@@ -528,7 +532,7 @@ enable_cmake-utils_src_configure() {
 	# Common configure parameters (invariants)
 	local common_config=${BUILD_DIR}/gentoo_common_config.cmake
 	local libdir=$(get_libdir)
-	cat > "${common_config}" <<- _EOF_
+	cat > "${common_config}" <<- _EOF_ || die
 		SET (LIB_SUFFIX ${libdir/lib} CACHE STRING "library path suffix" FORCE)
 		SET (CMAKE_INSTALL_LIBDIR ${libdir} CACHE PATH "Output directory for libraries")
 	_EOF_
