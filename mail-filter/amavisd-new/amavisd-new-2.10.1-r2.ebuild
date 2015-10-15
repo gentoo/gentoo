@@ -109,6 +109,7 @@ src_install() {
 		dosbin amavisd-snmp-subagent
 		use zmq && dosbin amavisd-snmp-subagent-zmq
 		dodoc AMAVIS-MIB.txt
+		newinitd "${FILESDIR}"/amavisd-snmp.initd amavisd-snmp
 	fi
 
 	if use zmq ; then
