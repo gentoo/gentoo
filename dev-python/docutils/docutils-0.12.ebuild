@@ -20,8 +20,6 @@ IUSE=""
 DEPEND="dev-python/pygments[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 
-DISTUTILS_NO_PARALLEL_BUILD=1
-
 python_compile_all() {
 	# Generate html docs from reStructured text sources.
 
