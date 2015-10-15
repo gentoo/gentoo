@@ -11,7 +11,7 @@ DESCRIPTION="Provides services for discovering, registering, and retrieving
 virtual machine images"
 HOMEPAGE="https://launchpad.net/glance"
 EGIT_REPO_URI="https://github.com/openstack/glance.git"
-EGIT_BRANCH="stable/kilo"
+EGIT_BRANCH="stable/liberty"
 
 LICENSE="Apache-2.0"
 SLOT="0"
