@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit flag-o-matic toolchain-funcs multilib
+inherit eutils flag-o-matic toolchain-funcs multilib
 
 DESCRIPTION="A small, fast, and scalable web server"
 HOMEPAGE="http://www.monkey-project.com/"
@@ -21,22 +21,23 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-# Currently monkeyd_plugins_tls is off.  It provides mbed TLS (formerly PolarSSL).
 # jemalloc is also off until we figure out how to work CMakeLists.txt magic.
-#PLUGINS="monkeyd_plugins_auth monkeyd_plugins_cheetah monkeyd_plugins_dirlisting +monkeyd_plugins_liana monkeyd_plugins_logger monkeyd_plugins_mandril monkeyd_plugins_tls"
 #IUSE="cgi -debug fastcgi jemalloc php static-plugins ${PLUGINS}"
 
-PLUGINS="monkeyd_plugins_auth monkeyd_plugins_cheetah monkeyd_plugins_dirlisting +monkeyd_plugins_liana monkeyd_plugins_logger monkeyd_plugins_mandril"
+PLUGINS="monkeyd_plugins_auth monkeyd_plugins_cheetah monkeyd_plugins_dirlisting +monkeyd_plugins_liana monkeyd_plugins_logger monkeyd_plugins_mandril monkeyd_plugins_tls"
 IUSE="cgi -debug fastcgi php static-plugins ${PLUGINS}"
 
 # uclibc is often compiled without backtrace info so we should
 # force this off.  If someone complains, consider relaxing it.
 REQUIRED_USE="
+	monkeyd_plugins_tls? ( !static-plugins )
 	elibc_uclibc? ( !debug )
 	cgi? ( php )"
 
 #DEPEND="jemalloc? ( >=dev-libs/jemalloc-3.3.1 )"
-DEPEND="dev-util/cmake"
+DEPEND="
+	dev-util/cmake
+	monkeyd_plugins_tls? ( net-libs/mbedtls:= )"
 RDEPEND="
 	php? ( dev-lang/php )
 	cgi? ( dev-lang/php[cgi] )"
@@ -56,8 +57,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Unconditionally get rid of the bundled jemalloc and mbedTLS
+	# Unconditionally get rid of the bundled jemalloc
 	rm -rf "${S}"/deps
+	epatch "${FILESDIR}"/${P}-system-mbedtls.patch
 }
 
 src_configure() {
