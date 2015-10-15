@@ -1,0 +1,20 @@
+Index: onion-0.7/CMakeLists.txt
+===================================================================
+--- onion-0.7.orig/CMakeLists.txt
++++ onion-0.7/CMakeLists.txt
+@@ -151,15 +151,6 @@ endif (SYSTEMD_ENABLED)
+ add_definitions(-D_BSD_SOURCE)
+ add_definitions(-D_POSIX_C_SOURCE=200112L)
+ 
+-##
+-IF (${CMAKE_BUILD_TYPE} MATCHES "Debug")
+-	add_definitions(-D__DEBUG__)
+-	SET(CMAKE_C_FLAGS "-Wall -Werror -O0 -fPIC")
+-ELSE (${CMAKE_BUILD_TYPE} MATCHES "Debug")
+-	SET(CMAKE_C_FLAGS "-Wall -Werror -O2 -fPIC")
+-ENDIF (${CMAKE_BUILD_TYPE} MATCHES "Debug")
+-
+-
+ project (onion)
+ 
+ INCLUDE(CPackConfig.cmake)
