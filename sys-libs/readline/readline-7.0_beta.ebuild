@@ -31,7 +31,7 @@ patches() {
 DESCRIPTION="Another cute console display library"
 HOMEPAGE="http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html"
 case ${PV} in
-*_alpha*|*_rc*) SRC_URI+=" ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz" ;;
+*_alpha*|*_beta*|*_rc*) SRC_URI+=" ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz" ;;
 *) SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz $(patches)" ;;
 esac
 
