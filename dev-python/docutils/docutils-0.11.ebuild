@@ -19,8 +19,6 @@ IUSE=""
 DEPEND="dev-python/pygments[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 
-DISTUTILS_NO_PARALLEL_BUILD=1
-
 PATCHES=( "${FILESDIR}"/docutils-0.11-python3.3-odt-writer.patch )
 
 python_compile_all() {
