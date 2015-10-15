@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
 inherit distutils-r1
 
@@ -58,6 +58,8 @@ python_prepare_all() {
 python_test() {
 	# Note; removed tests pass once package is emerged,
 	# it's the suite's design that breaks form, not the tests' intended purpose
+	einfo "init tests"
 	testr init || die
+	einfo "Running tests"
 	testr run || die "Testsuite failed under ${EPYTHON}"
 }
