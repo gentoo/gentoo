@@ -35,7 +35,7 @@ src_configure() {
 	local myconf=()
 
 	use debug && myconf+=( --debug=1 )
-	use nls && myconf+=( --i18n=$(usex nls 1 0) )
+	myconf+=( --i18n=$(usex nls 1 0) )
 	econf \
 		--strip=0 \
 		${myconf[@]}
