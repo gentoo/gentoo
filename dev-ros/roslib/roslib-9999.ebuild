@@ -17,7 +17,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-python/rospkg[${PYTHON_USEDEP}]
+	>=dev-python/rospkg-1.0.37[${PYTHON_USEDEP}]
 	dev-libs/boost:=[threads]
 	dev-ros/rospack
 "
