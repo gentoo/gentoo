@@ -24,7 +24,7 @@ DEPEND="
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 RDEPEND=""
 
-DOCS=( ACKS README.rst RELEASE-NOTES )
+DOCS=( ACKS AUTHORS ChangeLog README.rst RELEASE-NOTES )
 
 python_compile_all() {
 	if use doc; then
