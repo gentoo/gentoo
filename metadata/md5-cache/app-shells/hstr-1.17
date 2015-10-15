@@ -3,10 +3,10 @@ DEPEND=sys-libs/ncurses:0= virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || 
 DESCRIPTION=Shell history suggest box - easily view, navigate, search and manage your command history
 EAPI=5
 HOMEPAGE=https://github.com/dvorka/hstr http://www.mindforger.com
-KEYWORDS=~amd64 ~x86 ~ppc ~ppc64 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ~x86 ppc ppc64 ~amd64-linux ~x86-linux
 LICENSE=Apache-2.0
 RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=https://github.com/dvorka/hstr/archive/1.17.tar.gz -> hstr-1.17.tar.gz
 _eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=04915d6df9c46807b541bf9f3f187884
+_md5_=8a1b6b6a14456a3536d12b5effe084a8
