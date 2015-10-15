@@ -27,4 +27,7 @@ DEPEND=">=dev-texlive/texlive-latex-2015
 "
 RDEPEND="${DEPEND} "
 TEXLIVE_MODULE_BINSCRIPTS="texmf-dist/scripts/thumbpdf/thumbpdf.pl"
-PATCHES=( "${FILESDIR}/thumbpdf_invocation.patch" )
+PATCHES=(
+	"${FILESDIR}/thumbpdf_invocation.patch" 
+	"${FILESDIR}/caption_beamer_fix.patch" 
+)
