@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=!libav? ( media-video/ffmpeg:= ) libav? ( media-video/libav:= ) media-libs/libpng:0= virtual/jpeg:0 virtual/pkgconfig
+DESCRIPTION=HTTP Ardour Video Daemon
+EAPI=5
+HOMEPAGE=http://x42.github.io/harvid/
+IUSE=libav
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=!libav? ( media-video/ffmpeg:= ) libav? ( media-video/libav:= ) media-libs/libpng:0= virtual/jpeg:0
+SLOT=0
+SRC_URI=https://github.com/x42/harvid/archive/v0.8.0.tar.gz -> harvid-0.8.0.tar.gz
+_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=5ec2b9b80dee9f77887bf2fe8d4e13fa
