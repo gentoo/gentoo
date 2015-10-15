@@ -18,7 +18,7 @@ IUSE=""
 RDEPEND="media-fonts/dejavu
 	media-libs/freetype
 	!dev-util/jenkins-bin:0
-	virtual/jre"
+	>=virtual/jre-1.7.0"
 
 S=${WORKDIR}
 
