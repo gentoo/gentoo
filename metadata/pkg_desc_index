@@ -3762,7 +3762,7 @@ dev-java/commons-chain 1.2: API exposing the Chain of Responsability design patt
 dev-java/commons-cli 1.2: A Java library for working with the command line arguments and options
 dev-java/commons-codec 1.7: Implementations of common encoders and decoders in Java
 dev-java/commons-collections 3.2.1-r1: Jakarta-Commons Collections Component
-dev-java/commons-compress 1.8.1-r1: Commons Compress defines an API for working with ar, cpio, tar, zip, gzip and bzip2 files
+dev-java/commons-compress 1.8.1-r1 1.10: Commons Compress defines an API for working with ar, cpio, tar, zip, gzip and bzip2 files
 dev-java/commons-configuration 1.6-r2: Generic interface for reading configuration data from a variety of sources
 dev-java/commons-daemon 1.0.7 1.0.9 1.0.15: Tools to allow Java programs to run as UNIX daemons
 dev-java/commons-dbcp 1.4-r2 2.1: Jakarta component providing database connection pooling API
