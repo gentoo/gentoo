@@ -59,12 +59,10 @@ COMMON_DEPEND="
 
 DEPEND="
 	${COMMON_DEPEND}
+	doc? ( app-doc/doxygen )
+	app-doc/xmltoman
 	dev-util/intltool
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
-	doc? (
-		app-doc/doxygen
-		app-doc/xmltoman
-	)
 "
 
 RDEPEND="
