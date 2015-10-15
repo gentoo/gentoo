@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>video</herd>
+  <maintainer>
+    <email>media-video@gentoo.org</email>
+  </maintainer>
+  <use>
+	  <flag name="v4l">Add support for V4L2 hardware codecs.</flag>
+	  <flag name="glx">Add support for OpenGL/GLX instead of EGL.</flag>
+	  <flag name="gles">Add suppport for GLES.</flag>
+	  <flag name="capi">Add a C API interface, in addition to the C++.</flag>
+	  <flag name="md5">Add support for generating md5 sums for each frame.</flag>
+	  <flag name="dmabuf">Enable dma_buf buffer sharing.</flag>
+	  <flag name="tools">Build and install command line tools. Useful for testing.</flag>
+  </use>
+</pkgmetadata>
