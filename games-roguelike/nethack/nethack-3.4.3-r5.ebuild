@@ -116,7 +116,6 @@ src_install() {
 	emake \
 		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
-		LFLAGS="-L/usr/X11R6/lib" \
 		GAMEPERM=02755 \
 		GAMEUID="root" GAMEGRP="${NETHACK_GROUP}" \
 		PREFIX="${D}/usr" \
@@ -209,21 +208,21 @@ pkg_postinst() {
 	cd "${ROOT}/${STATEDIR}" || die "Failed to enter ${STATEDIR} directory"
 
 	if [[ -v migration ]] ; then
-		cp "$T/"{logfile,record} . || \
+		cp "$T/"{logfile,record} . ||
 		die "Failed to preserve ${ROOT}/${STATEDIR} files"
 
-		chown -R root:"${NETHACK_GROUP}" . && \
-		chmod -R 660 . && \
-		chmod 770 . save || \
+		chown -R root:"${NETHACK_GROUP}" . &&
+		chmod -R 660 . &&
+		chmod 770 . save ||
 		die "Adjustment of file permissions in ${ROOT}/${STATEDIR} failed"
 	fi
 
 	# we don't want to overwrite existing files, as they contain user data
 	local files="logfile perm record"
 
-	touch $files && \
-	chmod 660 $files && \
-	chown root:"${NETHACK_GROUP}" $files || \
+	touch $files &&
+	chmod 660 $files &&
+	chown root:"${NETHACK_GROUP}" $files ||
 	die "Adjustment of file permissions in "${ROOT}/${STATEDIR}" failed"
 
 	elog "You may want to look at /etc/skel/.nethackrc for interesting options"
