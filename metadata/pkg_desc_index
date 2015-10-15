@@ -17866,7 +17866,7 @@ x11-misc/evolvotron 0.6.2 0.6.3: Generative art image evolver
 x11-misc/fbdesk 1.4.1: fluxbox-util application that creates and manage icons on your Fluxbox desktop
 x11-misc/fbpager 20090221: A Pager for fluxbox
 x11-misc/fbpanel 6.1-r2: light-weight X11 desktop panel
-x11-misc/fireflies 2.07-r1 2.07-r2: Fireflies screensaver: Wicked cool eye candy
+x11-misc/fireflies 2.07-r1 2.07-r2 2.08: Fireflies screensaver: Wicked cool eye candy
 x11-misc/flow-pomodoro 1.1.1: A pomodoro app that blocks distractions while you work
 x11-misc/fluxter 0.1.0: workspace pager dockapp, particularly useful with the Fluxbox window manager
 x11-misc/fpm2 0.79: A GUI password manager utility with password generator
