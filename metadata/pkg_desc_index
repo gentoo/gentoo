@@ -13264,7 +13264,7 @@ net-analyzer/ffp 0.0.8-r1: a tool to do fuzzy fingerprinting for man-in-the-midd
 net-analyzer/firewalk 5.0-r1: A tool for determining a firewall's rule set
 net-analyzer/flow-tools 0.68.5.1-r2 0.68.5.1-r4 0.68.5.1-r5 0.68.5.1-r6: library and programs to collect, send, process, and generate reports from NetFlow data
 net-analyzer/flowgrind 0.7.1: Network performance measurement tool
-net-analyzer/fping 2.4_beta2_p161-r2 3.10: A utility to ping multiple hosts at once
+net-analyzer/fping 2.4_beta2_p161-r2 3.10 3.11: A utility to ping multiple hosts at once
 net-analyzer/fprobe 1.1 1.1-r2: A libpcap-based tool to collect network traffic data and emit it as NetFlow flows
 net-analyzer/fragroute 1.2.6: Testing of network intrusion detection systems, firewalls and TCP/IP stacks
 net-analyzer/ftester 1.0: Firewall and Intrusion Detection System testing tool
@@ -13484,7 +13484,7 @@ net-analyzer/vnstat 1.11-r2 1.12 1.13 1.14: Console-based network traffic monito
 net-analyzer/w3af 1.1-r1 1.5: Web Application Attack and Audit Framework
 net-analyzer/wapiti 2.3.0 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
-net-analyzer/wireshark 1.12.7 1.99.9 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 1.12.7 1.12.8 1.99.9 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
