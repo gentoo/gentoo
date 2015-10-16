@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install prepare
-DEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt] >=dev-ml/findlib-1.0.4-r1
+DEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt] !dev-ml/ocaml-dns >=dev-ml/findlib-1.0.4-r1
 DESCRIPTION=OCaml library to query DNS servers
 EAPI=5
 HOMEPAGE=http://odns.tuxfamily.org/
 KEYWORDS=~amd64
 LICENSE=GPL-2
-RDEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt]
+RDEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt] !dev-ml/ocaml-dns
 SLOT=0/0.3
 SRC_URI=http://download.tuxfamily.org/odns/odns-0.3.tar.gz
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=159464bd319042dd9c6185d995b9a03c
+_md5_=17ac55c8581249815708c7cbbfe6c75f

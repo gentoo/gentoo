@@ -3948,7 +3948,7 @@ dev-java/java-dep-check 0.3-r1: Java Dependency checker
 dev-java/java-getopt 1.0.14: Java command line option parser
 dev-java/java-gnome 4.0.19 4.0.20 4.1.3: Java bindings for GTK and GNOME
 dev-java/java-sdk-docs 1.6.0.30 1.7.0.80 1.8.0.60: Oracle's documentation bundle (including API) for Java SE
-dev-java/java-service-wrapper 3.5.14-r1 3.5.25: A wrapper that makes it possible to install a Java Application as daemon
+dev-java/java-service-wrapper 3.5.25-r1: A wrapper that makes it possible to install a Java Application as daemon
 dev-java/javacc 4.0-r4 4.2 5.0-r1: Java Compiler Compiler - The Java Parser Generator
 dev-java/javacsv 2.1: Java library for reading and writing CSV and plain delimited text files
 dev-java/javacup 0.11a_beta20060608 0.11b_beta20150326: CUP Parser Generator for Java
@@ -5063,7 +5063,7 @@ dev-ml/ocamlpam 1.1: OCamlPAM - an OCaml library for PAM
 dev-ml/ocamlsdl 0.9.1: OCaml SDL Bindings
 dev-ml/ocamlweb 1.38-r1 1.39: O'Caml literate programming tool
 dev-ml/ocurl 0.6.1 0.7.4 0.7.5: OCaml interface to the libcurl library
-dev-ml/odns 0.3: OCaml library to query DNS servers
+dev-ml/odns 0.3-r1: OCaml library to query DNS servers
 dev-ml/opam 1.2.0 1.2.1 1.2.2: A source-based package manager for OCaml
 dev-ml/optcomp 1.5 1.6: Optional compilation for OCaml with cpp-like directives
 dev-ml/ounit 1.1.2 2.0.0: Unit testing framework for OCaml
