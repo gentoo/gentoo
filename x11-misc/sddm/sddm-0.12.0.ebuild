@@ -43,7 +43,8 @@ pkg_pretend() {
 src_prepare() {
 	cmake-utils_src_prepare
 
-	epatch "${FILESDIR}/${P}-respect-user-flags.patch"
+	# fix for flags handling and bug 563108
+	epatch "${FILESDIR}/${P}-respect-user-flags.patch" "${FILESDIR}/${P}-CVE-2015-0856.patch"
 	use consolekit && epatch "${FILESDIR}/${PN}-0.11.0-consolekit.patch"
 }
 
