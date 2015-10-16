@@ -18,7 +18,7 @@ SRC_URI="http://central.maven.org/maven2/org/bouncycastle/${MY_PN}/${PV}/${MY_P}
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos"
 
 LICENSE="BSD"
-SLOT="1.50"
+SLOT="0"
 RESTRICT="test"
 
 CDEPEND="dev-java/bcprov:${SLOT}"
