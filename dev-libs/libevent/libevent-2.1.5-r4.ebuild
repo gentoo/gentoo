@@ -36,7 +36,7 @@ S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	elibtoolize
-	epatch "${FILESDIR}/event_signals_ordering.patch"
+	epatch "${FILESDIR}/${PN}-2.1.5-event_signals_ordering.patch"
 	# don't waste time building tests
 	# https://github.com/libevent/libevent/pull/144
 	sed -i -e '/^all:/s|tests||g' Makefile.nmake || die
