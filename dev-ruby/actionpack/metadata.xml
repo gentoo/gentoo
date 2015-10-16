@@ -4,6 +4,5 @@
   <herd>ruby</herd>
   <upstream>
     <remote-id type="github">rails/rails</remote-id>
-    <remote-id type="rubyforge">actionpack</remote-id>
   </upstream>
 </pkgmetadata>

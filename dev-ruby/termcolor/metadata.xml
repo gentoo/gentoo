@@ -5,7 +5,4 @@
   <maintainer>
     <email>naota@gentoo.org</email>
   </maintainer>
-  <upstream>
-    <remote-id type="rubyforge">termcolor</remote-id>
-  </upstream>
 </pkgmetadata>

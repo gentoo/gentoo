@@ -4,6 +4,5 @@
   <herd>ruby</herd>
   <upstream>
     <remote-id type="github">ahoward/open4</remote-id>
-    <remote-id type="rubyforge">codeforpeople</remote-id>
   </upstream>
 </pkgmetadata>

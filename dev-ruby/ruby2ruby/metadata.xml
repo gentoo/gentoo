@@ -4,6 +4,5 @@
   <herd>ruby</herd>
   <upstream>
     <remote-id type="github">seattlerb/ruby2ruby</remote-id>
-    <remote-id type="rubyforge">seattlerb</remote-id>
   </upstream>
 </pkgmetadata>

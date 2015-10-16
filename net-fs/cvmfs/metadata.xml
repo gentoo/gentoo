@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-  <email>bicatali@gentoo.org</email>
-</maintainer>
-<longdescription lang='en'>
+  <maintainer>
+    <email>bicatali@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
   The CernVM File System is a client-server file system developed to
   deliver software stacks onto virtual machines in a fast, scalable,
   and reliable way. CernVM-FS is implemented as a FUSE module. It
@@ -14,9 +14,12 @@
   avoids most of the firewall issues of other network file systems. It
   transfers data file by file on demand, verifying the content by
   SHA-1 keys.
-</longdescription>
-<use>
-  <flag name='client'>Install the cvmfs client programs and init script</flag>
-  <flag name='server'>Install the cvmfsd program and init script</flag>
-</use>
+  </longdescription>
+  <use>
+    <flag name="client">Install the cvmfs client programs and init script</flag>
+    <flag name="server">Install the cvmfsd program and init script</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">cvmfs/cvmfs</remote-id>
+  </upstream>
 </pkgmetadata>

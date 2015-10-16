@@ -1,5 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>ros</herd>
+	<herd>ros</herd>
+	<upstream>
+		<remote-id type="github">ros-simulation/stage_ros</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>java</herd>
 	<longdescription>
 	Jansi is a small java library that allows you to use ANSI escape sequences to format your console output which works even on windows.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">fusesource/jansi</remote-id>
+	</upstream>
 </pkgmetadata>

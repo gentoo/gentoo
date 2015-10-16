@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer>
@@ -10,4 +10,7 @@
   <maintainer>
     <email>yngwin@gentoo.org</email>
   </maintainer>
+  <upstream>
+    <remote-id type="sourceforge">calibre</remote-id>
+  </upstream>
 </pkgmetadata>

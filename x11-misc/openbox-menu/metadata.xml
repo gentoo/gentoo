@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>desktop-misc</herd>
-<upstream>
-<maintainer status="active">
-<email>mimasgpc@free.fr</email>
-</maintainer>
-<doc lang="en">http://mimasgpc.free.fr/openbox-menu_en.html</doc>
-</upstream>
-<use>
-<flag name='icons'>Enable support for icons in menus</flag>
-<flag name='svg'>Support SVG icons</flag>
-</use>
+	<herd>desktop-misc</herd>
+	<upstream>
+		<maintainer status="active">
+			<email>mimasgpc@free.fr</email>
+		</maintainer>
+		<doc lang="en">http://mimasgpc.free.fr/openbox-menu_en.html</doc>
+		<remote-id type="bitbucket">fabriceT/openbox-menu</remote-id>
+	</upstream>
+	<use>
+		<flag name="icons">Enable support for icons in menus</flag>
+		<flag name="svg">Support SVG icons</flag>
+	</use>
 </pkgmetadata>
-

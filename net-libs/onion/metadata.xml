@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer>
@@ -6,8 +6,11 @@
     <name>Alexis Ballier</name>
   </maintainer>
   <use>
-	  <flag name="libev">Use <pkg>dev-libs/libev</pkg> as thread poller instead of Linux's epoll.</flag>
-	  <flag name="libevent">Use <pkg>dev-libs/libevent</pkg> as thread poller instead of libev or Linux's epoll.</flag>
-	  <flag name="boehm-gc">Add <pkg>dev-libs/boehm-gc</pkg> support for memory allocations.</flag>
+    <flag name="libev">Use <pkg>dev-libs/libev</pkg> as thread poller instead of Linux's epoll.</flag>
+    <flag name="libevent">Use <pkg>dev-libs/libevent</pkg> as thread poller instead of libev or Linux's epoll.</flag>
+    <flag name="boehm-gc">Add <pkg>dev-libs/boehm-gc</pkg> support for memory allocations.</flag>
   </use>
+  <upstream>
+    <remote-id type="github">davidmoreno/onion</remote-id>
+  </upstream>
 </pkgmetadata>

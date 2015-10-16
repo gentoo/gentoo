@@ -4,6 +4,5 @@
 	<herd>ruby</herd>
 	<upstream>
 		<remote-id type="github">blackwinter/ruby-filemagic</remote-id>
-		<remote-id type="rubyforge">ruby-filemagic</remote-id>
 	</upstream>
 </pkgmetadata>

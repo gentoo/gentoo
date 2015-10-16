@@ -1,19 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-  <email>bircoph@gentoo.org</email>
-  <name>Andrew Savchenko</name>
-</maintainer>
-<herd>sci-physics</herd>
-<longdescription lang="en">
+  <maintainer>
+    <email>bircoph@gentoo.org</email>
+    <name>Andrew Savchenko</name>
+  </maintainer>
+  <herd>sci-physics</herd>
+  <longdescription lang="en">
   This package contains the automatically generated ROOT class
   documentation.
-</longdescription>
-<use>
-  <flag name="api">Generate html API documentation</flag>
-  <flag name="http">Build HttpServer documentation</flag>
-  <flag name="math">Provide all math related documentation</flag>
-  <flag name="metric">Default to A4 paper size and metric measurement. Letter will be used otherwise</flag>
-</use>
+  </longdescription>
+  <use>
+    <flag name="api">Generate html API documentation</flag>
+    <flag name="http">Build HttpServer documentation</flag>
+    <flag name="math">Provide all math related documentation</flag>
+    <flag name="metric">Default to A4 paper size and metric measurement. Letter will be used otherwise</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">tmva</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>sci</herd>
@@ -10,4 +10,7 @@
 		OpenGL apps, spreadsheets and other office apps, etc. Eigen is dedicated to
 		providing optimal speed with GCC.
 	</longdescription>
+	<upstream>
+		<remote-id type="bitbucket">eigen/eigen</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -4,6 +4,5 @@
   <herd>ruby</herd>
   <upstream>
     <remote-id type="github">cjheath/treetop</remote-id>
-    <remote-id type="rubyforge">treetop</remote-id>
   </upstream>
 </pkgmetadata>

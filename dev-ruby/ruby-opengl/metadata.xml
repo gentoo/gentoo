@@ -4,6 +4,5 @@
   <herd>ruby</herd>
   <upstream>
     <remote-id type="github">larskanis/opengl</remote-id>
-    <remote-id type="rubyforge">ruby-opengl</remote-id>
   </upstream>
 </pkgmetadata>

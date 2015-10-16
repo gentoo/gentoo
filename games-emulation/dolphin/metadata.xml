@@ -1,15 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<use>
-	<flag name="lto">Add support for link-time optimizations.</flag>
-</use>
-<longdescription lang="en">
+	<use>
+		<flag name="lto">Add support for link-time optimizations.</flag>
+	</use>
+	<longdescription lang="en">
 Dolphin is a Gamecube and Wii emulator. Most games run perfectly or with minor
 bugs. Games are playable at HD quality, with 1080p and more.
-</longdescription>
-    <maintainer>
-        <email>twitch153@gentoo.org</email>
-        <name>Devan Franchini</name>
-    </maintainer>
+	</longdescription>
+	<maintainer>
+		<email>twitch153@gentoo.org</email>
+		<name>Devan Franchini</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">dolphin-emu/dolphin</remote-id>
+	</upstream>
 </pkgmetadata>

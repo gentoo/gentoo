@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>ml</herd>
+	<herd>ml</herd>
 	<longdescription lang="en">
 Ocamldap is an implementation of the Light Weight Directory Access Protocol,
 and a set of useful tools built around it. It includes high level libraries
@@ -18,4 +18,7 @@ unlike a search filter you can also ask ocamldap to MAKE an object satisfy its
 conditions. This can be really useful in distributed managment applications.
 Needless to say, more on this in the Documentation section.
 	</longdescription>
+	<upstream>
+		<remote-id type="bitbucket">deplai_j/ocamldap</remote-id>
+	</upstream>
 </pkgmetadata>

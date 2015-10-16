@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer>
@@ -12,5 +12,6 @@
   <upstream>
     <remote-id type="sourceforge">retext</remote-id>
     <remote-id type="github">retext-project/retext</remote-id>
+    <remote-id type="pypi">ReText</remote-id>
   </upstream>
 </pkgmetadata>

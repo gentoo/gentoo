@@ -9,6 +9,5 @@
   </use>
   <upstream>
     <remote-id type="github">rspec/rspec-core</remote-id>
-    <remote-id type="rubyforge">rspec</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer>
@@ -14,11 +14,14 @@ of gigabit Ethernet.
 ZMap can be used to study protocol adoption over time, monitor service 
 availability, and help us better understand large systems distributed 
 across the Internet.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="redis">
 		Add support for storing in a redis DB via <pkg>dev-libs/hiredis</pkg>
 	</flag>
     <flag name="json">Add support to store results JSON based</flag>
   </use>
+  <upstream>
+    <remote-id type="github">zmap/zmap</remote-id>
+  </upstream>
 </pkgmetadata>

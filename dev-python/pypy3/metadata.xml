@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>python</herd>
@@ -11,4 +11,7 @@
 		<flag name="sandbox">Enable sandboxing functionality</flag>
 		<flag name="shadowstack">Use a shadow stack for finding GC roots</flag>
 	</use>
+	<upstream>
+		<remote-id type="bitbucket">pypy/pypy</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>proxy-maintainers</herd>
@@ -10,6 +10,8 @@
 		<email>geert.braekmans@gmail.com</email>
 		<name>Geert Braekmans</name>
 		<description>Proxy maintainer</description>
-        </maintainer>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">jpfleury/clearlooks-phenix</remote-id>
+	</upstream>
 </pkgmetadata>
-

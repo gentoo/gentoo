@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>proxy-maintainers</herd>
@@ -11,9 +11,12 @@
 		<name>Ron OHara</name>
 	</maintainer>
 	<use>
-		<flag name='doc'> Include documentatio</flag>
-		<flag name='logrotate'>Use app-admin/logrotate for rotating logs</flag>
-		<flag name='upnp'>Enable Universal Plug and Play</flag>
-		<flag name='wallet'>Enable wallet support</flag>
+		<flag name="doc"> Include documentatio</flag>
+		<flag name="logrotate">Use app-admin/logrotate for rotating logs</flag>
+		<flag name="upnp">Enable Universal Plug and Play</flag>
+		<flag name="wallet">Enable wallet support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">bitcoinxt/bitcoinxt</remote-id>
+	</upstream>
 </pkgmetadata>

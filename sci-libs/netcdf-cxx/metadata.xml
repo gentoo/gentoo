@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci</herd>
-<longdescription lang="en">
+  <herd>sci</herd>
+  <longdescription lang="en">
   NetCDF (network Common Data Form) is an interface for scientific
   data access and a freely-distributed software library that provides an
   implementation of the interface.  The netCDF library also defines a
@@ -10,5 +10,8 @@
   Together, the interface, library, and format support the creation,
   access, and sharing of scientific data.
   This is the C++ library which links to the C library.
-</longdescription>
+  </longdescription>
+  <upstream>
+    <remote-id type="github">Unidata/netcdf-cxx4</remote-id>
+  </upstream>
 </pkgmetadata>

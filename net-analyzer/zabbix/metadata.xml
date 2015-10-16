@@ -1,27 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-<email>mattm@gentoo.org</email>
-<name>Matthew Marlowe</name>
-</maintainer>
-<longdescription>
+	<maintainer>
+		<email>mattm@gentoo.org</email>
+		<name>Matthew Marlowe</name>
+	</maintainer>
+	<longdescription>
 ZABBIX is software for monitoring of your applications, network and servers.
 ZABBIX supports both polling and trapping techniques to collect data from
 monitored hosts. A flexible notification mechanism allows easy and quickly
 configure different types of notifications for pre-defined events.
-</longdescription>
-<use>
-	<flag name='agent'>Enable zabbix agent (for to-be-monitored machines)</flag>
-	<flag name='frontend'>Enable zabbix web frontend</flag>
-	<flag name='ipv6'>Turn on support of IPv6</flag>
-	<flag name='proxy'>Enable proxy support</flag>
-	<flag name='openipmi'>Enable openipmi things</flag>
-	<flag name='server'>Enable zabbix server</flag>
-	<flag name='ssh'>SSH v2 based checks</flag>
-	<flag name='odbc'>Enable Database Monitor and use UnixODBC Library by default</flag>
-	<flag name='static'>Build statically linked binaries</flag>
-	<flag name='java'>Enable Zabbix Java JMX Management Gateway</flag>
-	<flag name='libxml2'>Use libxml2 client library</flag>
-</use>
+	</longdescription>
+	<use>
+		<flag name="agent">Enable zabbix agent (for to-be-monitored machines)</flag>
+		<flag name="frontend">Enable zabbix web frontend</flag>
+		<flag name="ipv6">Turn on support of IPv6</flag>
+		<flag name="proxy">Enable proxy support</flag>
+		<flag name="openipmi">Enable openipmi things</flag>
+		<flag name="server">Enable zabbix server</flag>
+		<flag name="ssh">SSH v2 based checks</flag>
+		<flag name="odbc">Enable Database Monitor and use UnixODBC Library by default</flag>
+		<flag name="static">Build statically linked binaries</flag>
+		<flag name="java">Enable Zabbix Java JMX Management Gateway</flag>
+		<flag name="libxml2">Use libxml2 client library</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">prdownloads</remote-id>
+	</upstream>
 </pkgmetadata>

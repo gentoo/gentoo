@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
@@ -7,4 +7,8 @@
 	</maintainer>
 	<longdescription lang="en">
 	</longdescription>
+	<upstream>
+		<remote-id type="github">fmoo/python-editor</remote-id>
+		<remote-id type="pypi">python-editor</remote-id>
+	</upstream>
 </pkgmetadata>

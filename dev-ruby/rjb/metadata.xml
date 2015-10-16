@@ -8,7 +8,4 @@
 	</maintainer>
 	<longdescription lang="en">
 	</longdescription>
-	<upstream>
-		<remote-id type="rubyforge">rjb</remote-id>
-	</upstream>
 </pkgmetadata>

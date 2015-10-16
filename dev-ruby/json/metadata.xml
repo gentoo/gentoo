@@ -4,6 +4,5 @@
   <herd>ruby</herd>
   <upstream>
     <remote-id type="github">flori/json</remote-id>
-    <remote-id type="rubyforge">json</remote-id>
   </upstream>
 </pkgmetadata>

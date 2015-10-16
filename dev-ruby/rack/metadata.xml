@@ -1,10 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>ruby</herd>
 	<longdescription>Rack provides a common API for connecting web frameworks, web servers and layers
 of software inbetween.</longdescription>
-	<upstream>
-		<remote-id type="rubyforge">rack</remote-id>
-	</upstream>
 </pkgmetadata>

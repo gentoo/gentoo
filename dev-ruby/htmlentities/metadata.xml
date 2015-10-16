@@ -4,6 +4,5 @@
   <herd>ruby</herd>
   <upstream>
     <remote-id type="github">threedaymonk/htmlentities</remote-id>
-    <remote-id type="rubyforge">htmlentities</remote-id>
   </upstream>
 </pkgmetadata>

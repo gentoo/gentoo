@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>sci-chemistry</herd>
@@ -7,9 +7,10 @@
 		<name>Christoph Junghans</name>
 	</maintainer>
 	<use>
-		<flag name='system-boost'>Use system boost (<pkg>dev-libs/boost</pkg>) instead of bundled one</flag>
+		<flag name="system-boost">Use system boost (<pkg>dev-libs/boost</pkg>) instead of bundled one</flag>
 	</use>
 	<upstream>
 		<remote-id type="google-code">votca</remote-id>
+		<remote-id type="github">votca/tools</remote-id>
 	</upstream>
 </pkgmetadata>

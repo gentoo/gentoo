@@ -4,6 +4,5 @@
   <herd>ruby</herd>
   <upstream>
     <remote-id type="github">rails/rails</remote-id>
-    <remote-id type="rubyforge">activerecord</remote-id>
   </upstream>
 </pkgmetadata>

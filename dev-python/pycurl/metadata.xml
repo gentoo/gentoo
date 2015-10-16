@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>python</herd>
@@ -7,11 +7,12 @@ PycURL is a Python interface to libcurl. PycURL can be used to fetch
 objects identified by a URL from a Python program, similar to the urllib
 Python module. All the functionality provided by libcurl can used through
 the pycurl interface.
-</longdescription>
+  </longdescription>
   <longdescription lang="ja">
 PycURLはLibcurlへのパイソン・インターフェイスです。PycURLはPython言語モジュール&gt;の様に、Python言語プログラムからURLで指定されたオブジェクトをダウンロードするに&gt;も使えます。Libcurlで利用できる機能全てはPycURLインターフェイスを通して利用でき&gt;ます。
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="github">pycurl/pycurl</remote-id>
+    <remote-id type="sourceforge">pycurl</remote-id>
   </upstream>
 </pkgmetadata>

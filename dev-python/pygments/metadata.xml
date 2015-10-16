@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>python</herd>
 	<longdescription>Pygments is a syntax highlighting package written in Python. Pygments can output to html, bbcode, latex, rtf and other formats.</longdescription>
 	<upstream>
 		<remote-id type="pypi">Pygments</remote-id>
+		<remote-id type="bitbucket">birkenfeld/pygments-main</remote-id>
 	</upstream>
 </pkgmetadata>

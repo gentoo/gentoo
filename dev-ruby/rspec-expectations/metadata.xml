@@ -4,6 +4,5 @@
   <herd>ruby</herd>
   <upstream>
     <remote-id type="github">rspec/rspec-expectations</remote-id>
-    <remote-id type="rubyforge">rspec</remote-id>
   </upstream>
 </pkgmetadata>

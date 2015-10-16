@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>proxy-maintainers</herd>
@@ -24,6 +24,7 @@
   </use>
   <upstream>
     <changelog>http://nginx.org/en/CHANGES</changelog>
-    <remote-id type="github">yaoweibin/nginx_ajp_module</remote-id>
+    <remote-id type="github">openresty/memc-nginx-module</remote-id>
+    <remote-id type="bitbucket">nginx-goodies/nginx-sticky-module-ng</remote-id>
   </upstream>
 </pkgmetadata>

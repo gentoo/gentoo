@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>kde</herd>
@@ -10,5 +10,6 @@ KDE control module for systemd. Provides a graphical frontend for the systemd da
 			<email>rthomsen6@gmail.com</email>
 			<name>Ragnar Thomsen</name>
 		</maintainer>
+		<remote-id type="github">rthomsen/kcmsystemd</remote-id>
 	</upstream>
 </pkgmetadata>

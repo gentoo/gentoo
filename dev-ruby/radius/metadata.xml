@@ -4,6 +4,5 @@
   <herd>ruby</herd>
   <upstream>
     <remote-id type="github">jlong/radius</remote-id>
-    <remote-id type="rubyforge">radius</remote-id>
   </upstream>
 </pkgmetadata>

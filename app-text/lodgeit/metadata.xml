@@ -1,12 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer>
     <email>qnikst@gentoo.org</email>
   </maintainer>
   <use>
-    <flag name='vim'>
+    <flag name="vim">
       Install a vim plugin allowing to paste and download from within vim
     </flag>
   </use>
+  <upstream>
+    <remote-id type="bitbucket">skrattaren/lodgeit-script-gentoo</remote-id>
+  </upstream>
 </pkgmetadata>

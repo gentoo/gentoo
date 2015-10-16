@@ -1,10 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>cjk</herd>
-<use>
-  <flag name='xfconf'>Enable integration in the Xfce desktop environment with <pkg>xfce-base/xfconf</pkg></flag>
-  <flag name='gconf'>Enable GConf support</flag>
-  <flag name='gtk3'>Enable support for <pkg>x11-libs/gtk+</pkg>:3</flag>
-</use>
+  <herd>cjk</herd>
+  <use>
+    <flag name="xfconf">Enable integration in the Xfce desktop environment with <pkg>xfce-base/xfconf</pkg></flag>
+    <flag name="gconf">Enable GConf support</flag>
+    <flag name="gtk3">Enable support for <pkg>x11-libs/gtk+</pkg>:3</flag>
+  </use>
+  <upstream>
+    <remote-id type="bitbucket">tagoh/imsettings</remote-id>
+  </upstream>
 </pkgmetadata>

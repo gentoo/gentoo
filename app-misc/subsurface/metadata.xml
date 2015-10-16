@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer>
     <email>me@bearsh.org</email>
     <name>Martin Gysel</name>
-    <description>Proxy maintainer. Assign bugs to him.</description>    
+    <description>Proxy maintainer. Assign bugs to him.</description>
   </maintainer>
   <maintainer>
     <email>bauman.aaron@gmail.com</email>
@@ -21,4 +21,7 @@
     <flag name="linguas_gsw">Language support for gsw.</flag>
     <flag name="linguas_hr_HR">Language support for hr_HR.</flag>
   </use>
+  <upstream>
+    <remote-id type="bitbucket">bearsh/bearshlay</remote-id>
+  </upstream>
 </pkgmetadata>
