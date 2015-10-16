@@ -697,11 +697,6 @@ sci-geosciences/googleearth
 # Upstream next versions
 >=sys-boot/raspberrypi-firmware-1_pre
 
-# Sergey Popov <pinkbyte@gentoo.org> (12 Jul 2013)
-# Probably new versions will work with hexchat too.
-# Do not lastrite this, just leave mask by Lars Wendler's request.
-net-irc/xchat-otr
-
 # Tom Wijsman <TomWij@gentoo.org> (30 Jun 2013)
 # Sun JDK and JRE contain critical vulnerabilities and receive no further
 # updates; masking to make users aware of this, users that still need this
