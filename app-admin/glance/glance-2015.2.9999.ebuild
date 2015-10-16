@@ -26,7 +26,7 @@ DEPEND="
 	test? (
 		${RDEPEND}
 		>=dev-python/Babel-1.3[${PYTHON_USEDEP}]
-		<=dev-python/Babel-2.2.1[${PYTHON_USEDEP}]
+		<=dev-python/Babel-2.0[${PYTHON_USEDEP}]
 		>=dev-python/coverage-3.6[${PYTHON_USEDEP}]
 		<=dev-python/coverage-4.0[${PYTHON_USEDEP}]
 		>=dev-python/fixtures-1.3.1[${PYTHON_USEDEP}]
@@ -97,7 +97,7 @@ RDEPEND="
 	>=dev-python/sqlalchemy-migrate-0.9.6[${PYTHON_USEDEP}]
 	<=dev-python/sqlalchemy-migrate-0.10.0[${PYTHON_USEDEP}]
 	>=dev-python/httplib2-0.7.5[${PYTHON_USEDEP}]
-	<=dev-python/httplib2-0.9.2[${PYTHON_USEDEP}]
+	<=dev-python/httplib2-0.9.1[${PYTHON_USEDEP}]
 	>=dev-python/pycrypto-2.6[${PYTHON_USEDEP}]
 	<=dev-python/pycrypto-2.6.1[${PYTHON_USEDEP}]
 	>=dev-python/iso8601-0.1.9[${PYTHON_USEDEP}]
@@ -119,7 +119,7 @@ RDEPEND="
 	>=dev-python/taskflow-1.16.0[${PYTHON_USEDEP}]
 	<=dev-python/taskflow-1.21.0[${PYTHON_USEDEP}]
 	>=dev-python/keystonemiddleware-2.0.0[${PYTHON_USEDEP}]
-	<=dev-python/keystonemiddleware-2.4.1[${PYTHON_USEDEP}]
+	<=dev-python/keystonemiddleware-2.3.1[${PYTHON_USEDEP}]
 	>=dev-python/WSME-0.7[${PYTHON_USEDEP}]
 	<=dev-python/WSME-0.8.0[${PYTHON_USEDEP}]
 	<=dev-python/paste-2.0.2[${PYTHON_USEDEP}]
@@ -127,7 +127,7 @@ RDEPEND="
 	!~dev-python/jsonschema-2.5.0[${PYTHON_USEDEP}]
 	<dev-python/jsonschema-3.0.0[${PYTHON_USEDEP}]
 	>=dev-python/python-keystoneclient-1.6.0[${PYTHON_USEDEP}]
-	<=dev-python/python-keystoneclient-1.8.1[${PYTHON_USEDEP}]
+	<=dev-python/python-keystoneclient-1.7.2[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.14[${PYTHON_USEDEP}]
 	<=dev-python/pyopenssl-0.15.1[${PYTHON_USEDEP}]
 	~dev-python/six-1.9.0[${PYTHON_USEDEP}]
@@ -159,7 +159,7 @@ RDEPEND="
 	>=dev-python/castellan-0.2.0[${PYTHON_USEDEP}]
 	<=dev-python/castellan-0.2.1[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.0[${PYTHON_USEDEP}]
-	<=dev-python/cryptography-1.0.2[${PYTHON_USEDEP}]
+	<=dev-python/cryptography-1.0.1-r9999[${PYTHON_USEDEP}]
 "
 
 PATCHES=(
