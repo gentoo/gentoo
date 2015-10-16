@@ -21,9 +21,9 @@ DEPEND="media-libs/fontconfig
 	x11-libs/libXpm
 	x11-libs/libXt
 	x11-libs/libXv
-	gif? ( >=media-libs/giflib-4.1.0-r3 )
+	gif? ( >=media-libs/giflib-4.1.0-r3:0= )
 	png? ( media-libs/libpng:0= )
-	jpeg? ( virtual/jpeg )
+	jpeg? ( virtual/jpeg:0= )
 	tiff? ( media-libs/tiff:0 )
 	xinerama? ( x11-libs/libXinerama )
 	xrandr? ( x11-libs/libXrandr )"
