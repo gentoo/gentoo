@@ -19,12 +19,16 @@ IUSE="doc test"
 
 DEPEND="
 	>dev-python/pbr-0.7[${PYTHON_USEDEP}]
-	<dev-python/pbr-1[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 RDEPEND=""
 
 DOCS=( ACKS AUTHORS ChangeLog README.rst RELEASE-NOTES )
+
+python_prepare_all() {
+	rm requirements.txt || die
+	distutils-r1_python_prepare_all
+}
 
 python_compile_all() {
 	if use doc; then
