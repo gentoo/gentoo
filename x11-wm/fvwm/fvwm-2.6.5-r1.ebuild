@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,10 +29,10 @@ COMMON_DEPEND="
 	x11-libs/libXrandr
 	x11-libs/libXrender
 	bidi? ( dev-libs/fribidi )
-	png? ( media-libs/libpng )
+	png? ( media-libs/libpng:0= )
 	readline? (
-		sys-libs/ncurses
-		sys-libs/readline
+		sys-libs/ncurses:0=
+		sys-libs/readline:0=
 	)
 	stroke? ( dev-libs/libstroke )
 	svg? ( gnome-base/librsvg )
