@@ -3,8 +3,10 @@
 # $Id$
 
 EAPI=5
+
 GCONF_DEBUG="no" # gnome2_src_configure is not being used
 AUTOTOOLS_AUTORECONF=true
+VALA_MAX_API_VERSION=0.26
 
 inherit gnome2 autotools-utils vala
 
