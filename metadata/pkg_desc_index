@@ -5079,6 +5079,7 @@ dev-ml/pipebang 110.01.00 113.00.00: Syntax extension to transform x |! f into f
 dev-ml/pomap 3.0.2 3.0.3 3.0.5: Partially Ordered Map ADT for O'Caml
 dev-ml/postgresql-ocaml 2.0.5 2.0.6 3.2.0 3.2.1: A package for ocaml that provides access to PostgreSQL databases
 dev-ml/pxp 1.2.4 1.2.7: validating XML parser library for O'Caml
+dev-ml/qcheck 0.4.0.1: QuickCheck inspired property-based testing for OCaml
 dev-ml/re2 112.35.00 113.00.00: OCaml bindings for RE2
 dev-ml/react 0.9.4 1.2.0: OCaml module for functional reactive programming
 dev-ml/reactiveData 0.1: Functional reactive programming with incremental changes in data structures
