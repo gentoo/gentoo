@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,11 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND=">=dev-lang/ocaml-3.10.2:=[ocamlopt]"
+# It is ancient and upstream is dead. Consider using ocaml-dns instead.
+RDEPEND="
+	>=dev-lang/ocaml-3.10.2:=[ocamlopt]
+	!dev-ml/ocaml-dns
+"
 DEPEND="${RDEPEND}"
 
 CLIBS="" # Workaround for bug #422683
