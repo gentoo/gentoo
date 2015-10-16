@@ -289,6 +289,7 @@ app-emulation/kvm-kmod
 # Lars Wendler <polynomial-c@gentoo.org> (20 Aug 2015)
 # Masked for testing
 =net-misc/iputils-20150815
+=net-misc/iputils-20150815-r1
 
 # Brian Evans <grknight@gentoo.org> (16 Aug 2015)
 # Mask new PEAR installer as it is likely to break
