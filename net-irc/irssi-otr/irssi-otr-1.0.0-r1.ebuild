@@ -12,7 +12,7 @@ SRC_URI="https://github.com/cryptodotis/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~sparc x86"
 IUSE=""
 
 # please note >=libotr-4.1.0 is required due to critical bugfix
