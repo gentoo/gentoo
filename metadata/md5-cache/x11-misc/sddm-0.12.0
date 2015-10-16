@@ -10,4 +10,4 @@ RDEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtdeclarative:5 de
 SLOT=0
 SRC_URI=https://github.com/sddm/sddm/releases/download/v0.12.0/sddm-0.12.0.tar.xz
 _eclasses_=cmake-utils	ed6fe5316459777893d5a8b929faec18	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=47ced4ea4d439d1639bcadd181f3b018
+_md5_=1e2a370ec794baba8b73b7b6917857d9

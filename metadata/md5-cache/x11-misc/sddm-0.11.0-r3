@@ -10,4 +10,4 @@ RDEPEND=sys-libs/pam >=x11-base/xorg-server-1.15.1 x11-libs/libxcb[xkb(-)] dev-q
 SLOT=0
 SRC_URI=https://github.com/sddm/sddm/archive/v0.11.0.tar.gz -> sddm-0.11.0.tar.gz
 _eclasses_=cmake-utils	ed6fe5316459777893d5a8b929faec18	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=8030b67eb4d05225802b346fd1dc719b
+_md5_=64742e581d6747061e16ee75906f08af
