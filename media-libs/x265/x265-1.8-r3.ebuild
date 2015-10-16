@@ -43,6 +43,7 @@ src_unpack() {
 
 src_prepare() {
 	epatch "${FILESDIR}/${PV}-build-Disable-march-selection-from-CMakeLists.txt.patch"	# bug #510890
+	epatch "${FILESDIR}/1.8-extralibs_order.patch"
 }
 
 # By default, the library and the encoder is configured for only one output bit
