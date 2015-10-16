@@ -33,6 +33,8 @@ RDEPEND="${CDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-twisted-backport.patch
+	"${FILESDIR}"/${P}-twisted-backport1.patch
+	"${FILESDIR}"/${P}-twisted-backport2.patch
 )
 
 python_compile_all() {
