@@ -1,3 +1,5 @@
+https://bitbucket.org/multicoreware/x265/pull-requests/22
+
 Link EXTRA_LIB before PLATFORM_LIBS since they're static libraries and as-needed
 might drop required libraries if they come after.
 
