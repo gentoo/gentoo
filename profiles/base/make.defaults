@@ -111,6 +111,10 @@ RUBY_TARGETS="ruby20 ruby21"
 # https://archives.gentoo.org/gentoo-dev/msg_a181cd0d36600067b599f4b996c6989f.xml
 USE="${USE} cxx"
 
+# Enable extended filesystem attribute support by default.
+# https://archives.gentoo.org/gentoo-dev/message/ba0e3457e4b807e79816f0df03566af0
+USE="${USE} xattr"
+
 # Tiziano Müller <dev-zero@gentoo.org> (24 Jan 2010)
 # We usually don't want python to (re)write .py[co] files during phase runs
 # since it could cause sandbox violations
