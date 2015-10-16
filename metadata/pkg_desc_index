@@ -3989,7 +3989,7 @@ dev-java/jdbc-jaybird 2.1.5-r1 2.1.5-r2 2.1.6 2.2.7 2.2.8: JDBC Type 2 and 4 dri
 dev-java/jdbc-mssqlserver 4.0.2206.100: JDBC driver for Microsoft SQL Server
 dev-java/jdbc-mysql 5.1.14 5.1.18 5.1.23 5.1.26: MySQL JDBC driver
 dev-java/jdbc-oracle-bin 9.2.0.8 10.1.0.5 10.2.0.3 10.2.0.4: JDBC 3.0 Drivers for Oracle
-dev-java/jdbc-postgresql 8.3_p603 8.4_p701-r1 9.2_p1003 9.2_p1004 9.3_p1100 9.4_p1201 9.4_p1203: JDBC Driver for PostgreSQL
+dev-java/jdbc-postgresql 9.2_p1003 9.2_p1004 9.3_p1100 9.4_p1201 9.4_p1203 9.4_p1204: JDBC Driver for PostgreSQL
 dev-java/jdbc2-stdext 2.0-r3: A standard set of libs for Server-Side JDBC support
 dev-java/jdbm 0.12-r2: Jdbm aims to be for Java what GDBM is for Perl, Python, C, ...
 dev-java/jdepend 2.9-r5: JDepend traverses Java class file directories and generates design quality metrics per package
