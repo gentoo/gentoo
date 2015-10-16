@@ -1,18 +1,17 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
+GCONF_DEBUG="no" # gnome2_src_configure is not being used
 AUTOTOOLS_AUTORECONF=true
-VALA_MIN_API_VERSION=0.14
-VALA_MAX_API_VERSION=0.20
 
-inherit gnome2 autotools-utils gnome2-utils vala
+inherit gnome2 autotools-utils vala
 
 DESCRIPTION="A program launcher in the style of GNOME Do"
 HOMEPAGE="https://launchpad.net/synapse-project/"
-SRC_URI="https://launchpad.net/synapse-project/${PV%.*}/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/synapse-project/0.3/${PV}/+download/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -21,22 +20,23 @@ KEYWORDS="~amd64 ~x86"
 IUSE="plugins +zeitgeist"
 
 RDEPEND="
-	dev-libs/libgee:0
-	dev-libs/glib:2
+	dev-libs/libgee:0.8
+	>=dev-libs/glib-2.28.0:2
 	dev-libs/json-glib
+	dev-libs/keybinder:3
 	dev-libs/libunique:1
 	sys-apps/dbus
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtkhotkey
-	x11-libs/gtk+:2
+	>=x11-libs/gtk+-3.0.0:3
 	x11-libs/libnotify
 	x11-libs/pango
 	x11-themes/gnome-icon-theme
-	plugins? ( net-libs/rest )
+	plugins? ( >=net-libs/rest-0.7 )
 	zeitgeist? (
 		dev-libs/libzeitgeist
-		gnome-extra/zeitgeist
+		>=gnome-extra/zeitgeist-0.9.14
 		gnome-extra/zeitgeist-extensions
 		|| ( gnome-extra/zeitgeist[fts] gnome-extra/zeitgeist-extensions[fts] )
 		)"
@@ -45,15 +45,6 @@ DEPEND="${RDEPEND}
 	$(vala_depend)
 	dev-util/intltool
 	virtual/pkgconfig"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.2.8.2-underlinking.patch
-	"${FILESDIR}"/${PN}-0.2.8.2-zeitgeist.patch
-	)
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
 
 src_prepare() {
 	sed -i -e 's/GNOME/GNOME;GTK/' data/synapse.desktop.in || die
@@ -68,16 +59,4 @@ src_configure() {
 		$(use_enable zeitgeist)
 		)
 	autotools-utils_src_configure
-}
-
-pkg_preinst() {
-	gnome2_pkg_preinst
-}
-
-pkg_postinst() {
-	gnome2_pkg_postinst
-}
-
-pkg_postrm() {
-	gnome2_pkg_postrm
 }
