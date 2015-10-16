@@ -3728,7 +3728,7 @@ dev-java/batik 1.8-r2: Java based SVG toolkit
 dev-java/bcel 5.2-r2 5.2-r3 6.0_rc3: The Byte Code Engineering Library: analyze, create, manipulate Java class files
 dev-java/bcmail 1.38-r4 1.45-r3 1.50-r1 1.52-r1: Java cryptography APIs
 dev-java/bcpg 1.50-r1 1.52-r1: Java cryptography APIs
-dev-java/bcpkix 1.50 1.52: Java cryptography APIs
+dev-java/bcpkix 1.50-r1 1.52-r1: Java cryptography APIs
 dev-java/bcprov 1.38-r4 1.40-r2 1.45-r2 1.48-r2 1.49-r4 1.50-r2 1.50-r3 1.52-r1 1.52-r2: Java cryptography APIs
 dev-java/bctsp 1.45-r1: Java cryptography APIs
 dev-java/beansbinding 1.2.1 1.2.1-r1 1.2.1-r2: Implementation of JSR295
@@ -15250,7 +15250,7 @@ sci-chemistry/rasmol 2.7.5.2-r2: Molecular Graphics Visualisation Tool
 sci-chemistry/raster3d 3.0.2 3.0.3: Generation high quality raster images of proteins or other molecules
 sci-chemistry/reduce 3.13.080428-r1 3.14.080821 3.16.111118: Adds hydrogens to a Protein Data Bank (PDB) molecule structure file
 sci-chemistry/refmac 5.5.0110-r3: Macromolecular crystallographic refinement program
-sci-chemistry/relax 3.3.8 3.3.9: Molecular dynamics by NMR data analysis
+sci-chemistry/relax 3.3.8 3.3.9 4.0.0: Molecular dynamics by NMR data analysis
 sci-chemistry/scala 3.3.20: Scale together multiple observations of reflections
 sci-chemistry/sfcheck 7.03.18-r1: Program for assessing the agreement between the atomic model and X-ray data or EM map
 sci-chemistry/shelx 20141228: Programs for crystal structure determination from single-crystal diffraction data
