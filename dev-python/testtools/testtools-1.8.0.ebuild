@@ -31,6 +31,10 @@ DEPEND="
 "
 RDEPEND="${CDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-twisted-backport.patch
+)
+
 python_compile_all() {
 	use doc && emake -C doc html
 }
