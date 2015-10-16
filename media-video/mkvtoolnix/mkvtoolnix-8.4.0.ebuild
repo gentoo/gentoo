@@ -13,7 +13,7 @@ SRC_URI="http://www.bunkus.org/videotools/mkvtoolnix/sources/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="curl debug pch qt5"
+IUSE="curl debug pch test qt5"
 
 ruby_atom() {
 	local ruby_slot=${1/ruby/}
@@ -48,6 +48,7 @@ DEPEND="${RDEPEND}
 	|| ( ${RUBY_BDEPS} )
 	sys-devel/gettext
 	virtual/pkgconfig
+	test? ( dev-cpp/gtest )
 "
 
 pkg_pretend() {
@@ -100,6 +101,11 @@ src_configure() {
 
 src_compile() {
 	"${RUBY}" ./drake V=1 -j$(makeopts_jobs) || die
+}
+
+src_test() {
+	"${RUBY}" ./drake V=1 -j$(makeopts_jobs) tests:unit || die
+	"${RUBY}" ./drake V=1 -j$(makeopts_jobs) tests:run_unit || die
 }
 
 src_install() {
