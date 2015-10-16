@@ -19,7 +19,6 @@ KEYWORDS="amd64 ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64
 
 LICENSE="BSD"
 SLOT="0"
-RESTRICT="test"
 
 CDEPEND="dev-java/bcprov:${SLOT}"
 
