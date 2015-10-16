@@ -64,12 +64,10 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-4.75-nolua.patch \
 		"${FILESDIR}"/${PN}-5.10_beta1-string.patch \
 		"${FILESDIR}"/${PN}-5.21-python.patch \
-		"${FILESDIR}"/${PN}-6.01-make.patch \
 		"${FILESDIR}"/${PN}-6.25-liblua-ar.patch \
 		"${FILESDIR}"/${PN}-6.46-uninstaller.patch \
 		"${FILESDIR}"/${PN}-6.47-no-libnl.patch \
-		"${FILESDIR}"/${PN}-no-FORTIFY_SOURCE.patch \
-		"${FILESDIR}"/${PN}-6.47-ncat-lua.patch
+		"${FILESDIR}"/${PN}-no-FORTIFY_SOURCE.patch
 
 	if use nls; then
 		local lingua=''
@@ -121,6 +119,12 @@ src_configure() {
 }
 
 src_compile() {
+	local dep deps="build-dnet build-nbase build-nsock build-netutil"
+
+	for dep in ${deps}; do
+		emake makefile.dep ${dep}
+	done
+
 	emake \
 		AR=$(tc-getAR) \
 		RANLIB=$(tc-getRANLIB )
