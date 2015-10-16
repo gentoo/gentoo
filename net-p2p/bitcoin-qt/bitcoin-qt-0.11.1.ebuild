@@ -38,7 +38,7 @@ REQUIRED_USE="${REQUIRED_USE} ^^ ( qt4 qt5 )"
 src_prepare() {
 	bitcoincore_prepare
 
-	local filt= yeslang= nolang=
+	local filt= yeslang= nolang= lan ts x
 
 	for lan in $LANGS; do
 		if [ ! -e src/qt/locale/bitcoin_$lan.ts ]; then
@@ -52,15 +52,15 @@ src_prepare() {
 		x="${x/.ts/}"
 		if ! use "linguas_$x"; then
 			nolang="$nolang $x"
-			rm "$ts"
+			rm "$ts" || die
 			filt="$filt\\|$x"
 		else
 			yeslang="$yeslang $x"
 		fi
 	done
 	filt="bitcoin_\\(${filt:2}\\)\\.\(qm\|ts\)"
-	sed "/${filt}/d" -i 'src/qt/bitcoin_locale.qrc'
-	sed "s/locale\/${filt}/bitcoin.qrc/" -i 'src/Makefile.qt.include'
+	sed "/${filt}/d" -i 'src/qt/bitcoin_locale.qrc' || die
+	sed "s/locale\/${filt}/bitcoin.qrc/" -i 'src/Makefile.qt.include' || die
 	einfo "Languages -- Enabled:$yeslang -- Disabled:$nolang"
 
 	bitcoincore_autoreconf
@@ -87,6 +87,10 @@ src_install() {
 		insinto /usr/share/kde4/services
 		doins contrib/debian/bitcoin-qt.protocol
 	fi
+}
+
+pkg_preinst() {
+	gnome2_icon_savelist
 }
 
 update_caches() {
