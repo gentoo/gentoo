@@ -11,12 +11,12 @@ SRC_URI="mirror://sourceforge/bashdb/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~ppc ~ppc64"
+KEYWORDS="amd64 x86 ppc ppc64"
 IUSE=""
 
 DEPEND="!>=app-shells/bash-${PV:0:1}.$((${PV:2:1}+1))"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 # Unfortunately, not all tests pass.
 RESTRICT='test'
