@@ -90,9 +90,9 @@ FFMPEG_FLAG_MAP=(
 # Same as above but for encoders, i.e. they do something only with USE=encode.
 FFMPEG_ENCODER_FLAG_MAP=(
 	aac:libvo-aacenc amrenc:libvo-amrwbenc mp3:libmp3lame
-	aacplus:libaacplus faac:libfaac snappy:libsnappy theora:libtheora
-	twolame:libtwolame wavpack:libwavpack webp:libwebp x264:libx264 x265:libx265
-	xvid:libxvid
+	aacplus:libaacplus faac:libfaac openh264:libopenh264 snappy:libsnappy
+	theora:libtheora twolame:libtwolame wavpack:libwavpack webp:libwebp
+	x264:libx264 x265:libx265 xvid:libxvid
 )
 
 IUSE="
@@ -165,6 +165,7 @@ RDEPEND="
 		amrenc? ( >=media-libs/vo-amrwbenc-0.1.2-r1[${MULTILIB_USEDEP}] )
 		faac? ( >=media-libs/faac-1.28-r3[${MULTILIB_USEDEP}] )
 		mp3? ( >=media-sound/lame-3.99.5-r1[${MULTILIB_USEDEP}] )
+		openh264? ( >=media-libs/openh264-1.4.0-r1[${MULTILIB_USEDEP}] )
 		snappy? ( >=app-arch/snappy-1.1.2-r1[${MULTILIB_USEDEP}] )
 		theora? (
 			>=media-libs/libtheora-1.1.1[encode,${MULTILIB_USEDEP}]

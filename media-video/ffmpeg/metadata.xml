@@ -34,6 +34,7 @@
 	<flag name="mipsdspr2">Enables MIPS DSP ASE R2 optimizations.</flag>
 	<flag name="mipsfpu">Enables floating point MIPS optimizations.</flag>
 	<flag name="network">Enables network streaming support</flag>
+	<flag name="openh264">Enables H.264 encoding suppoprt via <pkg>media-libs/openh264</pkg>.</flag>
 	<flag name="openssl">Enables <pkg>dev-libs/openssl</pkg> support. Adds support for encrypted network protocols (TLS/HTTPS).</flag>
 	<flag name="opus">Adds (decoding) support for the Opus codec via <pkg>media-libs/opus</pkg>.</flag>
 	<flag name="pic">Force shared libraries to be built as PIC (this is slower)</flag>

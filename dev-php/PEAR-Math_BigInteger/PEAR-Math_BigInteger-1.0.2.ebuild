@@ -10,7 +10,7 @@ DESCRIPTION="Pure-PHP arbitrary precision integer arithmetic library"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc64 ~sparc ~x86"
 IUSE=""
 
 RDEPEND=">=dev-lang/php-5.3.0"
