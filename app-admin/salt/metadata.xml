@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer>
@@ -19,7 +19,7 @@ files to define the state a server needs to be in.
 
 Between the remote execution system, and state management Salt addresses the
 backbone of cloud and data center management.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="api">Enable support for salt-api.</flag>
     <flag name="cherrypy">Enable support for using cherrypy.</flag>
@@ -39,5 +39,6 @@ backbone of cloud and data center management.
   </use>
   <upstream>
     <remote-id type="pypi">salt</remote-id>
+    <remote-id type="github">saltstack/salt-vim</remote-id>
   </upstream>
 </pkgmetadata>

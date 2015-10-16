@@ -4,6 +4,5 @@
   <herd>ruby</herd>
   <upstream>
     <remote-id type="github">cardmagic/classifier</remote-id>
-    <remote-id type="rubyforge">classifier</remote-id>
   </upstream>
 </pkgmetadata>

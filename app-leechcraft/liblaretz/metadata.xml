@@ -1,5 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>leechcraft</herd>
+	<upstream>
+		<remote-id type="github">0xd34df00d/laretz</remote-id>
+	</upstream>
 </pkgmetadata>

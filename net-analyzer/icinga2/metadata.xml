@@ -1,13 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-<email>prometheanfire@gentoo.org</email>
-<name>Matthew Thode</name>
-</maintainer>
+	<maintainer>
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
 	<use>
 		<flag name="classicui">Adds support for the old interface</flag>
 		<flag name="nano-syntax">Adds support for syntax used in the nano editor</flag>
 		<flag name="plugins">Adds support for nagios plugins</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">Icinga/icinga2</remote-id>
+	</upstream>
 </pkgmetadata>

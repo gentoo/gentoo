@@ -7,7 +7,4 @@
   <use>
     <flag name="bittorrent">Enable support for bittorrent downloads</flag>
   </use>
-  <upstream>
-    <remote-id type="rubyforge">podcatcher</remote-id>
-  </upstream>
 </pkgmetadata>

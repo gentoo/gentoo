@@ -1,6 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>netmon</herd>
-<use><flag name='sguil'>Enable sguil (The Analyst Console for Network Security Monitoring) support</flag></use>
+	<herd>netmon</herd>
+	<use>
+		<flag name="sguil">Enable sguil (The Analyst Console for Network Security Monitoring) support</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">sancp</remote-id>
+	</upstream>
 </pkgmetadata>

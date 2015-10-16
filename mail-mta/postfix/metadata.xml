@@ -1,18 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>net-mail</herd>
 	<use>
-		<flag name='dovecot-sasl'>Enable <pkg>net-mail/dovecot</pkg> protocol
+		<flag name="dovecot-sasl">Enable <pkg>net-mail/dovecot</pkg> protocol
 			version 1 (server only) SASL implementation</flag>
-		<flag name='eai'>Add support for SMTPUTF8</flag>
-		<flag name='ldap-bind'>Add support for binding to LDAP backend
+		<flag name="eai">Add support for SMTPUTF8</flag>
+		<flag name="ldap-bind">Add support for binding to LDAP backend
 			using <pkg>dev-libs/cyrus-sasl</pkg></flag>
-		<flag name='memcached'>Add support for using <pkg>net-misc/memcached</pkg>
+		<flag name="memcached">Add support for using <pkg>net-misc/memcached</pkg>
 		    for lookup tables</flag>
-		<flag name='lmdb'>Add support for using <pkg>dev-db/lmdb</pkg>
+		<flag name="lmdb">Add support for using <pkg>dev-db/lmdb</pkg>
 		    for lookup tables</flag>
-		<flag name='vda'>Add support for virtual delivery agent quota
+		<flag name="vda">Add support for virtual delivery agent quota
 			enforcing</flag>
 	</use>
+	<upstream>
+		<remote-id type="sourceforge">vda</remote-id>
+	</upstream>
 </pkgmetadata>

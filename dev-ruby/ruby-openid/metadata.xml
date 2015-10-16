@@ -4,6 +4,5 @@
   <herd>ruby</herd>
   <upstream>
     <remote-id type="github">openid/ruby-openid</remote-id>
-    <remote-id type="rubyforge">ruby-openid</remote-id>
   </upstream>
 </pkgmetadata>

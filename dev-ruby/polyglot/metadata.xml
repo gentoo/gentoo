@@ -7,7 +7,4 @@ Polyglot provides support for fully-custom DSLs by providing a
 registry of file types that can be loaded by its improved version of
 'require', using a custom loader for each file type.
 	</longdescription>
-	<upstream>
-		<remote-id type="rubyforge">polyglot</remote-id>
-	</upstream>
 </pkgmetadata>

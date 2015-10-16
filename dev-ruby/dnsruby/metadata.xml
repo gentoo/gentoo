@@ -5,7 +5,4 @@
 	<maintainer>
 		<email>mschiff@gentoo.org</email>
 	</maintainer>
-	<upstream>
-		<remote-id type="rubyforge">dnsruby</remote-id>
-	</upstream>
 </pkgmetadata>

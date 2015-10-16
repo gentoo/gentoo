@@ -9,7 +9,6 @@
 	</maintainer>
 	<longdescription>Oracle Interface for Ruby, compatible with oracle 8, 9i, 10g and 11g.</longdescription>
 	<upstream>
-		<remote-id type="rubyforge">ruby-oci8</remote-id>
 		<remote-id type="rubygems">ruby-oci8</remote-id>
 	</upstream>
 </pkgmetadata>

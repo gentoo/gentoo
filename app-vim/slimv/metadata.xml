@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>vim</herd>
@@ -19,4 +19,7 @@
 		The script also supports a number of other features provided by SLIME
 		including profiling, paredit mode, and hyperspec lookups.
 	</longdescription>
+	<upstream>
+		<remote-id type="bitbucket">kovisoft/slimv</remote-id>
+	</upstream>
 </pkgmetadata>

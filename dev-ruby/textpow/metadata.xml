@@ -4,6 +4,5 @@
   <herd>ruby</herd>
   <upstream>
     <remote-id type="github">grosser/textpow</remote-id>
-    <remote-id type="rubyforge">textpow</remote-id>
   </upstream>
 </pkgmetadata>

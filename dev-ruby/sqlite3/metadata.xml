@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<herd>ruby</herd>
 	<upstream>
-		<remote-id type="rubyforge">sqlite-ruby</remote-id>
+		<remote-id type="github">sparklemotion/sqlite3-ruby</remote-id>
 	</upstream>
 </pkgmetadata>

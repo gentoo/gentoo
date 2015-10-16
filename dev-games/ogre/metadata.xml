@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>games</herd>
@@ -72,19 +72,22 @@ Exporters
     * Wings3D (meshes)
     * VRML97 (meshes)
     * Maya (meshes)
-</longdescription>
+  </longdescription>
   <use>
     <flag name="boost">enable boost support</flag>
     <flag name="cg">NVIDIA toolkit plugin</flag>
     <flag name="double-precision">more precise calculations at the expense of speed</flag>
-	<flag name="freeimage">support images via freeimage</flag>
-	<flag name="gl3plus">Build OpenGL 3+ RenderSystem (EXPERIMENTAL)</flag>
-	<flag name="gles2">build OpenGL ES 2.x RenderSystem</flag>
-	<flag name="gles3">Enable OpenGL ES 3.x Features</flag>
+    <flag name="freeimage">support images via freeimage</flag>
+    <flag name="gl3plus">Build OpenGL 3+ RenderSystem (EXPERIMENTAL)</flag>
+    <flag name="gles2">build OpenGL ES 2.x RenderSystem</flag>
+    <flag name="gles3">Enable OpenGL ES 3.x Features</flag>
     <flag name="ois">pull in Object-oriented Input System library for samples</flag>
     <flag name="poco">when USE=threads, use poco for threading</flag>
     <flag name="tbb">when USE=threads, use tbb for threading</flag>
     <flag name="tools">build+install helper tools</flag>
     <flag name="zip">support zip archives</flag>
   </use>
+  <upstream>
+    <remote-id type="bitbucket">sinbad/ogre</remote-id>
+  </upstream>
 </pkgmetadata>

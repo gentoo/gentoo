@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>video</herd>
 	<longdescription lang="en">
 		mkvalidator is a simple command line tool to verify Matroska and WebM files for spec conformance. It checks the various bogus or missing key elements against the EBML DocType version of the file and reports the errors/warnings in the command line.
 	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">downloads</remote-id>
+	</upstream>
 </pkgmetadata>

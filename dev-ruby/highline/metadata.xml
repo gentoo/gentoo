@@ -4,6 +4,5 @@
   <herd>ruby</herd>
   <upstream>
     <remote-id type="github">JEG2/highline</remote-id>
-    <remote-id type="rubyforge">highline</remote-id>
   </upstream>
 </pkgmetadata>

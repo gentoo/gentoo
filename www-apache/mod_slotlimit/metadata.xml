@@ -4,4 +4,7 @@
 	<maintainer>
 		<email>patrick@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">downloads</remote-id>
+	</upstream>
 </pkgmetadata>

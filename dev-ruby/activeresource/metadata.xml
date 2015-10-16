@@ -3,7 +3,6 @@
 <pkgmetadata>
   <herd>ruby</herd>
   <upstream>
-    <remote-id type="github">rails/rails</remote-id>
-    <remote-id type="rubyforge">activeresource</remote-id>
+    <remote-id type="github">rails/activeresource</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>shell-tools</herd>
@@ -12,4 +12,7 @@
 		tmux is intended to be a simple, modern, BSD-licensed alternative to
 		programs such as <pkg>app-misc/screen</pkg>.
 	</longdescription>
+  <upstream>
+    <remote-id type="github">tmux/tmux</remote-id>
+  </upstream>
 </pkgmetadata>

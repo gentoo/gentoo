@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>base-system</herd>
@@ -6,4 +6,7 @@
 		If anyone from base-system wants to be secondary, by all means just add
 		yourself, and send me (boo) a mail telling me that you've done so.
 	-->
+	<upstream>
+		<remote-id type="github">lkundrak/dev86</remote-id>
+	</upstream>
 </pkgmetadata>

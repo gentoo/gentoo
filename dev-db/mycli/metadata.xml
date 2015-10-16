@@ -1,10 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<use>
-</use>
+	<use>
+	</use>
 	<maintainer>
 		<email>grknight@gentoo.org</email>
 		<name>Brian Evans</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">dbcli/mycli</remote-id>
+	</upstream>
 </pkgmetadata>

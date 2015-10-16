@@ -4,6 +4,5 @@
   <herd>ruby</herd>
   <upstream>
     <remote-id type="github">taf2/curb</remote-id>
-    <remote-id type="rubyforge">curb</remote-id>
   </upstream>
 </pkgmetadata>

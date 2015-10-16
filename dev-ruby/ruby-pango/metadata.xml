@@ -4,5 +4,6 @@
 	<herd>ruby</herd>
 	<upstream>
 		<remote-id type="sourceforge-jp">ruby-gnome2</remote-id>
+		<remote-id type="sourceforge">ruby-gnome2</remote-id>
 	</upstream>
 </pkgmetadata>

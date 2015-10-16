@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-<email>jer@gentoo.org</email>
-<name>Jeroen Roovers</name>
-</maintainer>
+	<maintainer>
+		<email>jer@gentoo.org</email>
+		<name>Jeroen Roovers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Emdek/otter</remote-id>
+	</upstream>
 </pkgmetadata>

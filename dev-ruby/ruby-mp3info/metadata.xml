@@ -4,6 +4,5 @@
   <herd>ruby</herd>
   <upstream>
     <remote-id type="github">moumar/ruby-mp3info</remote-id>
-    <remote-id type="rubyforge">ruby-mp3info</remote-id>
   </upstream>
 </pkgmetadata>

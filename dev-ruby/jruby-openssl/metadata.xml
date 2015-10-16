@@ -3,7 +3,4 @@
 <pkgmetadata>
 	<herd>ruby</herd>
 	<herd>java</herd>
-	<upstream>
-		<remote-id type="rubyforge">jruby-extras</remote-id>
-	</upstream>
 </pkgmetadata>

@@ -1,18 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
- <herd>proxy-maintainers</herd>
- <maintainer>
-  <email>patrick@gentoo.org</email>
-  <name>Patrick Lauer</name>
- </maintainer>
- <maintainer>
-  <email>oli.borm@web.de</email>
-  <name>Oliver Borm</name>
- </maintainer>
-	<use>
-		<flag name="opendx"> Install opendx visualisation tool</flag>
-		<flag name="src"> Install source files</flag>
-		<flag name="paraview">Enable support for paraview library</flag>
-	</use>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>patrick@gentoo.org</email>
+    <name>Patrick Lauer</name>
+  </maintainer>
+  <maintainer>
+    <email>oli.borm@web.de</email>
+    <name>Oliver Borm</name>
+  </maintainer>
+  <use>
+    <flag name="opendx"> Install opendx visualisation tool</flag>
+    <flag name="src"> Install source files</flag>
+    <flag name="paraview">Enable support for paraview library</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">downloads</remote-id>
+  </upstream>
 </pkgmetadata>

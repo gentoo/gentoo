@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>sound</herd>
   <use>
     <flag name="tools">Build and install fpcalc and fpcollect tools</flag>
   </use>
+  <upstream>
+    <remote-id type="bitbucket">acoustid/chromaprint</remote-id>
+  </upstream>
 </pkgmetadata>

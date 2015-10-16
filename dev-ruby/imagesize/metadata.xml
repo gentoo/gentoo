@@ -4,6 +4,5 @@
   <herd>ruby</herd>
   <upstream>
     <remote-id type="github">mattheworiordan/imagesize</remote-id>
-    <remote-id type="rubyforge">imagesize</remote-id>
   </upstream>
 </pkgmetadata>
