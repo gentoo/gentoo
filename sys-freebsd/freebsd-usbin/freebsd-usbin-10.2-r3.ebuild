@@ -40,7 +40,7 @@ fi
 RDEPEND="=sys-freebsd/freebsd-lib-${RV}*[usb?,bluetooth?,netware?]
 	=sys-freebsd/freebsd-libexec-${RV}*
 	build? ( sys-apps/baselayout )
-	ssl? ( dev-libs/openssl )
+	ssl? ( dev-libs/openssl:0 )
 	>=app-arch/libarchive-3
 	sys-apps/tcp-wrappers
 	dev-util/dialog
