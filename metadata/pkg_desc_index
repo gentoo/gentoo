@@ -9163,7 +9163,7 @@ dev-util/App-SVN-Bisect 1.1-r1: Binary search through svn revisions
 dev-util/Orange 2.7.2: Open source data visualization and analysis for novice and experts.
 dev-util/a8 0.11-r2 1.0: An ultra-lightweight IDE, that embeds Vim, a terminal emulator, and a file browser
 dev-util/aap 1.076 1.091-r2: Bram Moolenaar's super-make program
-dev-util/abi-compliance-checker 1.99.9 9999: A tool for checking backward compatibility of a C/C++ library
+dev-util/abi-compliance-checker 1.99.9 1.99.12 9999: A tool for checking backward compatibility of a C/C++ library
 dev-util/ald 0.1.7 0.1.7-r1: Assembly Language Debugger - a tool for debugging executable programs at the assembly level
 dev-util/alleyoop 0.9.8: A Gtk+ front-end to the Valgrind memory checker
 dev-util/amtterm 1.3-r1 1.4: A nice tool to manage amt-enabled machines
