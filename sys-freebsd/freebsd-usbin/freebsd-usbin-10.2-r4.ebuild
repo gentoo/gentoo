@@ -12,7 +12,8 @@ SLOT="0"
 # Security Advisory and Errata patches.
 UPSTREAM_PATCHES=( "EN-15:13/vidcontrol.patch"
 	"EN-15:16/pw.patch"
-	"SA-15:24/rpcbind.patch" )
+	"SA-15:24/rpcbind.patch"
+	"SA-15:24/rpcbind-00.patch" )
 
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
