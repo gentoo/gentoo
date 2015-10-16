@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (16 Oct 2015)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-48
+
 # Hans de Graaff <graaff@gentoo.org> (11 Oct 2015)
 # Ruby 1.9 is no longer maintained upstream since January
 # 2015, bug 536852.
@@ -263,11 +268,6 @@ app-portage/lightweight-cvs-toolkit
 # Lars Wendler <polynomial-c@gentoo.org> (09 Sep 2015)
 # Masked for testing
 >=net-fs/samba-4.3.0
-
-# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (08 Sep 2015)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-47
 
 # Michael Palimaka <kensington@gentoo.org> (01 Sep 2015)
 # Fails to build (bug #559330). Dead upstream.
