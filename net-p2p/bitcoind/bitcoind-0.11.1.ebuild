@@ -6,7 +6,7 @@ EAPI=5
 
 BITCOINCORE_COMMITHASH="cf33f196e79b1e61d6266f8e5190a0c4bfae7224"
 BITCOINCORE_LJR_DATE="20150921"
-BITCOINCORE_IUSE="addrindex examples ljr logrotate test upnp +wallet zeromq"
+BITCOINCORE_IUSE="addrindex examples ljr test upnp +wallet zeromq"
 BITCOINCORE_ADDRINDEX_DIFF="8a915e56f4be5d090d79f01cbd4a23ce1b7e9168...4a6331c5068d8f2c95731518445a57267d506bb5"
 BITCOINCORE_ADDRINDEX_PATCHFILE="bitcoin-addrindex-v0.11.0.patch"
 BITCOINCORE_POLICY_PATCHES="cltv cpfp dcmp rbf spamfilter"
@@ -19,13 +19,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~x86 ~amd64-linux ~x86-linux"
 
-RDEPEND="
-	logrotate? (
-		app-admin/logrotate
-	)
-"
-DEPEND="${RDEPEND}"
-
 pkg_setup() {
 	local UG='bitcoin'
 	enewgroup "${UG}"
@@ -33,7 +26,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -i 's/have bitcoind &&//;s/^\(complete -F _bitcoind bitcoind\) bitcoin-cli$/\1/' contrib/${PN}.bash-completion
+	sed -i 's/have bitcoind &&//;s/^\(complete -F _bitcoind bitcoind\) bitcoin-cli$/\1/' contrib/${PN}.bash-completion || die
 	bitcoincore_src_prepare
 }
 
@@ -70,8 +63,6 @@ src_install() {
 		dodoc -r contrib/{bitrpc,qos,spendfrom,tidy_datadir.sh}
 	fi
 
-	if use logrotate; then
-		insinto /etc/logrotate.d
-		newins "${FILESDIR}/bitcoind.logrotate-r1" bitcoind
-	fi
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}/bitcoind.logrotate-r1" bitcoind
 }

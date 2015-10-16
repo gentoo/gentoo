@@ -4,7 +4,7 @@
 
 EAPI=5
 
-BITCOINCORE_IUSE="examples logrotate test upnp +wallet"
+BITCOINCORE_IUSE="examples test upnp +wallet"
 BITCOINCORE_NEED_LEVELDB=1
 BITCOINCORE_NEED_LIBSECP256K1=1
 inherit bash-completion-r1 bitcoincore user systemd
@@ -14,13 +14,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 
-RDEPEND="
-	logrotate? (
-		app-admin/logrotate
-	)
-"
-DEPEND="${RDEPEND}"
-
 pkg_setup() {
 	local UG='bitcoin'
 	enewgroup "${UG}"
@@ -28,7 +21,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -i 's/have bitcoind &&//;s/^\(complete -F _bitcoind bitcoind\) bitcoin-cli$/\1/' contrib/${PN}.bash-completion
+	sed -i 's/have bitcoind &&//;s/^\(complete -F _bitcoind bitcoind\) bitcoin-cli$/\1/' contrib/${PN}.bash-completion || die
 	bitcoincore_src_prepare
 }
 
@@ -65,8 +58,6 @@ src_install() {
 		dodoc -r contrib/{bitrpc,qos,spendfrom,tidy_datadir.sh}
 	fi
 
-	if use logrotate; then
-		insinto /etc/logrotate.d
-		newins "${FILESDIR}/bitcoind.logrotate-r1" bitcoind
-	fi
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}/bitcoind.logrotate-r1" bitcoind
 }
