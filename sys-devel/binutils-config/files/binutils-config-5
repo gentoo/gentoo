@@ -242,7 +242,7 @@ uninstall_target() {
 
 	local x
 	for x in \
-		addr2line ar as c++filt elf2flt elfedit flthdr gprof \
+		addr2line ar as c++filt dwp elf2flt elfedit flthdr gprof \
 		ld ld.{bfd,gold,real} \
 		nm objcopy objdump ranlib readelf size strings strip
 	do
