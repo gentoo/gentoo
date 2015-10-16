@@ -7,7 +7,7 @@ ELIBC=uclibc
 
 FEATURES="sandbox sfperms strict"
 
-USE="nptl unicode xattr -berkdb"
+USE="nptl unicode -berkdb"
 BOOTSTRAP_USE="${BOOTSTRAP_USE} nptl -berkdb"
 
 SYMLINK_LIB="no"

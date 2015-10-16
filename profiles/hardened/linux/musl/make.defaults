@@ -6,7 +6,7 @@ ELIBC="musl"
 
 FEATURES="sandbox sfperms strict"
 
-USE="hardened nptl pax_kernel pic unicode xattr -berkdb -jit -orc"
+USE="hardened nptl pax_kernel pic unicode -berkdb -jit -orc"
 BOOTSTRAP_USE="${BOOTSTRAP_USE} hardened nptl pax_kernel pic -berkdb -jit -nls -orc"
 
 SYMLINK_LIB="no"

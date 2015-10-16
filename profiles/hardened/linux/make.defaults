@@ -6,7 +6,7 @@
 # Rename STAGE1_USE to BOOTSTRAP_USE and stack it to the parent value
 BOOTSTRAP_USE="${BOOTSTRAP_USE} hardened pax_kernel pic xtpax -jit -orc"
 
-USE="hardened pax_kernel pic urandom xattr xtpax -fortran -jit -orc"
+USE="hardened pax_kernel pic urandom xtpax -fortran -jit -orc"
 
 # Ian Stakenvicius, 2014-09-03
 # Set a variable just to indicate that the current profile is a hardened one
