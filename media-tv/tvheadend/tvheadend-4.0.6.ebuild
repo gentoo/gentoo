@@ -23,10 +23,12 @@ RDEPEND="dev-libs/openssl:=
 	ccache? ( dev-util/ccache sys-libs/zlib )
 	dbus? ( sys-apps/dbus )
 	dvb? ( virtual/linuxtv-dvb-headers )
-	ffmpeg? ( virtual/ffmpeg )
+	ffmpeg? (
+		!libav? ( media-video/ffmpeg:0= )
+		libav? ( media-video/libav:= )
+	)
 	hdhomerun? ( media-libs/libhdhomerun )
 	iconv? ( virtual/libiconv )
-	libav? ( media-video/libav )
 	imagecache? ( net-misc/curl )
 	uriparser? ( dev-libs/uriparser )
 	zlib? ( sys-libs/zlib )
@@ -80,7 +82,6 @@ src_configure() {
 		--disable-kqueue \
 		$(use_enable ffmpeg libav) \
 		$(use_enable hdhomerun hdhomerun_client) \
-		$(use_enable libav) \
 		$(use_enable imagecache) \
 		$(use_enable inotify) \
 		$(use_enable iptv) \
