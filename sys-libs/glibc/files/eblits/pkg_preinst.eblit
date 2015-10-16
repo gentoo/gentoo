@@ -29,6 +29,9 @@ glibc_sanity_check() {
 		*"statically linked"*) continue;;
 		*"ASCII text"*) continue;;
 		esac
+		# We need to clear the locale settings as the upgrade might want
+		# incompatible locale data.  This test is not for verifying that.
+		LC_ALL=C \
 		./ld-*.so --library-path . ${x} > /dev/null \
 			|| die "simple run test (${x}) failed"
 	done
