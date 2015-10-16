@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=dev-libs/expat net-libs/udns net-dns/libidn virtual/gsasl berkdb? ( >=sys-libs/db-4.1.25:* ) ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql:* ) ssl? ( !libressl? ( >=dev-libs/openssl-1.0.1:0[-bindist] ) libressl? ( dev-libs/libressl ) ) sqlite? ( dev-db/sqlite:3 ) zlib? ( sys-libs/zlib ) app-arch/xz-utils virtual/pkgconfig test? ( dev-libs/check )
+DESCRIPTION=Open Source Jabber Server
+EAPI=5
+HOMEPAGE=http://jabberd2.org
+IUSE=berkdb debug experimental ldap libressl memdebug mysql pam postgres sqlite ssl test zlib
+KEYWORDS=~amd64 ~ppc ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=dev-libs/expat net-libs/udns net-dns/libidn virtual/gsasl berkdb? ( >=sys-libs/db-4.1.25:* ) ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql:* ) ssl? ( !libressl? ( >=dev-libs/openssl-1.0.1:0[-bindist] ) libressl? ( dev-libs/libressl ) ) sqlite? ( dev-db/sqlite:3 ) zlib? ( sys-libs/zlib ) >=net-im/jabber-base-0.01
+REQUIRED_USE=memdebug? ( debug )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/jabberd2/jabberd2/releases/download/jabberd-2.3.3/jabberd-2.3.3.tar.xz
+_eclasses_=db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=7485d8f733159b7b215cb53a9640cfc1

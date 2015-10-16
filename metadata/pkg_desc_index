@@ -13724,7 +13724,7 @@ net-im/gajim 0.16 0.16.3 0.16.4: Jabber client written in PyGTK
 net-im/gg-transport 2.2.4: Gadu-Gadu transport for Jabber
 net-im/indicator-messages 0.6.0-r1: A place on the user's desktop that collects messages that need a response
 net-im/jabber-base 0.01: Jabber servers and transports layout package
-net-im/jabberd2 2.3.1-r1 2.3.2 2.3.2-r1 2.3.3: Open Source Jabber Server
+net-im/jabberd2 2.3.1-r1 2.3.2 2.3.2-r1 2.3.3-r1: Open Source Jabber Server
 net-im/kadu 0.12.3 2.1: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
 net-im/kde-telepathy-meta 0.9.0: KDE Telepathy client - merge this to pull in all net-im/ktp-* kde packages
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
