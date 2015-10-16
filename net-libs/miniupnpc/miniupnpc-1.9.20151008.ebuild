@@ -40,11 +40,11 @@ src_prepare() {
 
 src_compile() {
 	tc-export CC AR
-	emake upnpc-shared $(use static-libs && echo upnpc-static)
+	emake upnpc-shared $(usex static-libs upnpc-static '')
 }
 
 src_test() {
-	emake -j1 HAVE_IPV6=$(usex ipv6 yes no) check
+	emake -j1 HAVE_IPV6=$(usex ipv6) check
 }
 
 src_install() {
