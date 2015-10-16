@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jabberd2/jabberd2/releases/download/jabberd-${PV}/ja
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x86-fbsd"
-IUSE="berkdb debug experimental ldap memdebug mysql pam postgres sqlite ssl test zlib"
+IUSE="berkdb debug experimental ldap libressl memdebug mysql pam postgres sqlite ssl test zlib"
 REQUIRED_USE="memdebug? ( debug )"
 
 # broken
@@ -28,7 +28,10 @@ DEPEND="dev-libs/expat
 	mysql? ( virtual/mysql )
 	pam? ( virtual/pam )
 	postgres? ( dev-db/postgresql:* )
-	ssl? ( >=dev-libs/openssl-1.0.1:0[-bindist] )
+	ssl? (
+		!libressl? ( >=dev-libs/openssl-1.0.1:0[-bindist] )
+		libressl? ( dev-libs/libressl )
+	)
 	sqlite? ( dev-db/sqlite:3 )
 	zlib? ( sys-libs/zlib )"
 RDEPEND="${DEPEND}
