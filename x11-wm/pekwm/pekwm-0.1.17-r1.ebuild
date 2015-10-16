@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,8 +18,8 @@ KEYWORDS=" amd64 ~mips ppc x86 ~x86-fbsd"
 IUSE="contrib debug themes truetype xinerama"
 
 RDEPEND="
-	media-libs/libpng
-	virtual/jpeg
+	media-libs/libpng:0=
+	virtual/jpeg:0
 	x11-libs/libXpm
 	x11-libs/libXrandr
 	x11-libs/libXrender
