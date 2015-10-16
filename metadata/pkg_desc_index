@@ -4736,7 +4736,7 @@ dev-libs/libqzeitgeist 0.8.0: Qt interface to the Zeitgeist event tracking syste
 dev-libs/librelp 1.2.7-r1: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.2.1 0.92.3: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.0.13-r1: Generic library for reporting software bugs
-dev-libs/libressl 2.2.3: Free version of the SSL/TLS protocol forked from OpenSSL
+dev-libs/libressl 2.2.4: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/librevenge 0.0.1 0.0.2 9999: A helper library for REVerse ENGineered formats filters
 dev-libs/libroadnav 0.19: A library capable of plotting streetmaps and providing driving directions for US addresses
 dev-libs/librra 0.16: Implements the RRA protocol, for syncing pre WM-2005 PIM data, and files for all versions
@@ -13797,7 +13797,7 @@ net-irc/ircstats 1.1-r1: IRCStats tries to be a log analyzer for Linux similar t
 net-irc/irker 1.19 1.20 2.9 2.11 2.12 2.13: Submission tools for IRC notifications
 net-irc/iroffer-dinoex 3.29: IRC fileserver using DCC
 net-irc/irssi 0.8.16 0.8.17 9999: A modular textUI IRC client with IPv6 support
-net-irc/irssi-otr 0.2 0.3-r1 1.0.0 1.0.0-r1: Off-The-Record messaging (OTR) for irssi
+net-irc/irssi-otr 1.0.0-r1: Off-The-Record messaging (OTR) for irssi
 net-irc/irssi-xmpp 0.52: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
 net-irc/jircii 41: jIRCii - IRC client written in Java
