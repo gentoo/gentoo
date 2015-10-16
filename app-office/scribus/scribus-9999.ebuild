@@ -76,7 +76,7 @@ DEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.0-docdir.patch
-	"${FILESDIR}"/${PN}-1.5.0-fpic.patch
+	"${FILESDIR}"/${PN}-9999-fpic.patch
 	)
 
 src_prepare() {

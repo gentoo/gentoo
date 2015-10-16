@@ -12,7 +12,8 @@ SLOT="0"
 # Security Advisory and Errata patches.
 UPSTREAM_PATCHES=( "EN-15:13/vidcontrol.patch"
 	"EN-15:16/pw.patch"
-	"SA-15:24/rpcbind.patch" )
+	"SA-15:24/rpcbind.patch"
+	"SA-15:24/rpcbind-00.patch" )
 
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
@@ -40,7 +41,7 @@ fi
 RDEPEND="=sys-freebsd/freebsd-lib-${RV}*[usb?,bluetooth?,netware?]
 	=sys-freebsd/freebsd-libexec-${RV}*
 	build? ( sys-apps/baselayout )
-	ssl? ( dev-libs/openssl )
+	ssl? ( dev-libs/openssl:0 )
 	>=app-arch/libarchive-3
 	sys-apps/tcp-wrappers
 	dev-util/dialog
