@@ -4518,7 +4518,7 @@ dev-libs/efreet 1.7.10 9999: library for handling of freedesktop.org specs (desk
 dev-libs/eina 1.7.9 1.7.10 9999: Enlightenment's data types library (list, hash, etc) in C
 dev-libs/eio 1.7.8 1.7.9 1.7.10 9999: Enlightenment's integration to IO
 dev-libs/elfio 1.0.3: ELF (Executable and Linkable Format) reader and producer implemented as a C++ library
-dev-libs/elfutils 0.158 0.159 0.160 0.161 0.162 0.163: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
+dev-libs/elfutils 0.158 0.159 0.160 0.161 0.162 0.163 0.164: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/embryo 1.7.10 9999: load and control programs compiled in embryo language (small/pawn variant)
 dev-libs/engine_pkcs11 0.1.8 0.1.8-r1: engine_pkcs11 is an implementation of an engine for OpenSSL
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
