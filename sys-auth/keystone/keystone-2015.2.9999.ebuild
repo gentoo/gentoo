@@ -37,7 +37,7 @@ DEPEND="
 		)
 		ldap? (
 			>=dev-python/python-ldap-2.4[$(python_gen_usedep 'python2_7')]
-			<=dev-python/python-ldap-2.4.21[$(python_gen_usedep 'python2_7')]
+			<=dev-python/python-ldap-2.4.20[$(python_gen_usedep 'python2_7')]
 			>=dev-python/ldappool-1.0[$(python_gen_usedep 'python2_7')]
 			<=dev-python/ldappool-1.0[$(python_gen_usedep 'python2_7')]
 		)
@@ -65,7 +65,7 @@ DEPEND="
 		>=dev-python/oslo-sphinx-2.5.0[${PYTHON_USEDEP}]
 		<=dev-python/oslo-sphinx-3.2.0[${PYTHON_USEDEP}]
 		>=dev-python/tempest-lib-0.8.0[${PYTHON_USEDEP}]
-		<=dev-python/tempest-lib-0.10.0[${PYTHON_USEDEP}]
+		<=dev-python/tempest-lib-0.9.0[${PYTHON_USEDEP}]
 		>=dev-python/requests-2.5.2[${PYTHON_USEDEP}]
 		<=dev-python/requests-2.7.0[${PYTHON_USEDEP}]
 	)"
@@ -85,7 +85,7 @@ RDEPEND="
 	!~dev-python/routes-2.1[$(python_gen_usedep 'python2_7')]
 	<=dev-python/routes-2.2[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.0[${PYTHON_USEDEP}]
-	<=dev-python/cryptography-1.0.2[${PYTHON_USEDEP}]
+	<=dev-python/cryptography-1.0.1-r9999[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	<=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	sqlite? (
@@ -109,9 +109,9 @@ RDEPEND="
 	>=dev-python/passlib-1.6[${PYTHON_USEDEP}]
 	<=dev-python/passlib-1.6.5[${PYTHON_USEDEP}]
 	>=dev-python/python-keystoneclient-1.6.0[${PYTHON_USEDEP}]
-	<=dev-python/python-keystoneclient-1.8.1[${PYTHON_USEDEP}]
+	<=dev-python/python-keystoneclient-1.7.2[${PYTHON_USEDEP}]
 	>=dev-python/keystonemiddleware-2.0.0[${PYTHON_USEDEP}]
-	<=dev-python/keystonemiddleware-2.4.1[${PYTHON_USEDEP}]
+	<=dev-python/keystonemiddleware-2.3.1[${PYTHON_USEDEP}]
 	>=dev-python/oslo-concurrency-2.3.0[${PYTHON_USEDEP}]
 	<=dev-python/oslo-concurrency-2.6.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-config-2.3.0[${PYTHON_USEDEP}]
