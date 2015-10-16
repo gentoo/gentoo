@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <herd>ml</herd>
+    <herd>proxy-maintainers</herd>
+    <maintainer>
+        <email>tomboy64@sina.cn</email>
+    </maintainer>
+	<longdescription lang="en">
+	</longdescription>
+	<use>
+		<flag name="async">support for asynchronous execution</flag>
+		<flag name="lwt">enable threads via lwt</flag>
+		<flag name="nettests">if running test, also enable network-tests</flag>
+	</use>
+</pkgmetadata>
