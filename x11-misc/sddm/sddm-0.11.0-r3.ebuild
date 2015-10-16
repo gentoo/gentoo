@@ -38,8 +38,8 @@ pkg_pretend() {
 src_prepare() {
 	use consolekit && epatch "${FILESDIR}/${P}-consolekit.patch"
 	use !systemd && epatch "${FILESDIR}/${PN}-0.10.0-upower.patch"
-	# fix bug 552318
-	epatch "${FILESDIR}/${P}-dbus-config.patch"
+	# fix bug 552318 and bug 563108
+	epatch "${FILESDIR}/${P}-dbus-config.patch" "${FILESDIR}/${PN}-0.12.0-CVE-2015-0856.patch"
 
 	# respect user's cflags
 	sed -e 's|-Wall -march=native||' \

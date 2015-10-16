@@ -131,7 +131,7 @@ src_install() {
 		fi
 
 		if use xine; then
-			doinit "${FILESDIR}"/vdr-frontend
+			doinitd "${FILESDIR}"/vdr-frontend
 
 			insinto $XINE_PLUGIN_DIR
 			doins xineplug_inp_xvdr.so
