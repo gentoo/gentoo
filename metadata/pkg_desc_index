@@ -13984,7 +13984,7 @@ net-libs/libzrtpcpp 2.3.4 4.2.4: GNU RTP stack for the zrtp protocol developed b
 net-libs/loudmouth 1.4.3-r2: Lightweight C Jabber library
 net-libs/mbedtls 2.1.2: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
-net-libs/miniupnpc 1.8 1.9.20150427 1.9.20150917-r1: UPnP client library and a simple UPnP client
+net-libs/miniupnpc 1.8 1.9.20150427 1.9.20150917-r1 1.9.20151008: UPnP client library and a simple UPnP client
 net-libs/nacl 0_p20110221: high-speed software library for network communication, encryption, decryption, signatures
 net-libs/nativebiginteger 0.6.4 0.6.4-r3 0.8.7: jbigi JNI library for net.i2p.util.NativeBigInteger java-class from I2P
 net-libs/neon 0.30.0 0.30.0-r1 0.30.1 0.30.1-r1: HTTP and WebDAV client library
