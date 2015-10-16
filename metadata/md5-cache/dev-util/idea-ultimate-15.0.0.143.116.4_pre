@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=!dev-util/idea-ultimate:14 !dev-util/idea-ultimate:15
+DESCRIPTION=A complete toolset for web, mobile and enterprise development
+EAPI=5
+HOMEPAGE=http://www.jetbrains.com/idea
+KEYWORDS=~amd64 ~x86
+LICENSE=IDEA IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal
+RDEPEND=!dev-util/idea-ultimate:14 !dev-util/idea-ultimate:15 >=virtual/jdk-1.7
+SLOT=0
+SRC_URI=https://download.jetbrains.com/idea/ideaIU-143.116.4.tar.gz -> idea-ultimate-15.0.0.143.116.4_pre.tar.gz
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=c69132daafbc526f54f27790cdafc887
