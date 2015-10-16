@@ -13152,7 +13152,7 @@ media-video/nvidia-settings 340.58 340.58-r1 355.11: NVIDIA Linux X11 Settings U
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/openshot 1.4.3: Free, open-source, non-linear video editor to create and edit videos and movies
 media-video/oxine 0.7.1-r1: OSD frontend for Xine
-media-video/parole 0.5.4 0.6.1 0.7.0 0.8.0-r1: a simple media player based on the GStreamer framework for the Xfce4 desktop
+media-video/parole 0.5.4 0.6.1 0.7.0 0.8.0-r1 0.8.1: a simple media player based on the GStreamer framework for the Xfce4 desktop
 media-video/pgcedit 0.8.6: DVD IFO and Menu editor
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
 media-video/photofilmstrip 1.9.91-r1: Movie slideshow creator using Ken Burns effect
