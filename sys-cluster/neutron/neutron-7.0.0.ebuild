@@ -55,9 +55,9 @@ DEPEND="
 		>=dev-python/oslotest-1.10.0[${PYTHON_USEDEP}]
 		<=dev-python/oslotest-1.11.0[${PYTHON_USEDEP}]
 		>=dev-python/os-testr-0.1.0[${PYTHON_USEDEP}]
-		<=dev-python/os-testr-0.4.2[${PYTHON_USEDEP}]
+		<=dev-python/os-testr-0.3.0[${PYTHON_USEDEP}]
 		>=dev-python/tempest-lib-0.8.0[${PYTHON_USEDEP}]
-		<=dev-python/tempest-lib-0.10.0[${PYTHON_USEDEP}]
+		<=dev-python/tempest-lib-0.9.0[${PYTHON_USEDEP}]
 		>=dev-python/ddt-0.7.0[${PYTHON_USEDEP}]
 		<=dev-python/ddt-1.0.0[${PYTHON_USEDEP}]
 		~dev-python/pylint-1.4.4[${PYTHON_USEDEP}]
@@ -79,13 +79,13 @@ RDEPEND="
 	>=dev-python/greenlet-0.3.2[${PYTHON_USEDEP}]
 	<=dev-python/greenlet-0.4.9[${PYTHON_USEDEP}]
 	>=dev-python/httplib2-0.7.5[${PYTHON_USEDEP}]
-	<=dev-python/httplib2-0.9.2[${PYTHON_USEDEP}]
+	<=dev-python/httplib2-0.9.1[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.5.2[${PYTHON_USEDEP}]
 	<=dev-python/requests-2.7.0[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.6[${PYTHON_USEDEP}]
 	<=dev-python/jinja-2.8[${PYTHON_USEDEP}]
 	>=dev-python/keystonemiddleware-2.0.0[${PYTHON_USEDEP}]
-	<=dev-python/keystonemiddleware-2.4.1[${PYTHON_USEDEP}]
+	<=dev-python/keystonemiddleware-2.3.1[${PYTHON_USEDEP}]
 	>=dev-python/netaddr-0.7.12[${PYTHON_USEDEP}]
 	!~dev-python/netaddr-0.7.16[${PYTHON_USEDEP}]
 	<=dev-python/netaddr-0.7.18[${PYTHON_USEDEP}]
@@ -117,7 +117,7 @@ RDEPEND="
 	>=dev-python/webob-1.2.3[${PYTHON_USEDEP}]
 	<=dev-python/webob-1.4.1[${PYTHON_USEDEP}]
 	>=dev-python/python-keystoneclient-1.6.0[${PYTHON_USEDEP}]
-	<=dev-python/python-keystoneclient-1.8.1[${PYTHON_USEDEP}]
+	<=dev-python/python-keystoneclient-1.7.2[${PYTHON_USEDEP}]
 	>=dev-python/alembic-0.8.0[${PYTHON_USEDEP}]
 	<=dev-python/alembic-0.8.2[${PYTHON_USEDEP}]
 	~dev-python/six-1.9.0[${PYTHON_USEDEP}]
@@ -154,14 +154,14 @@ RDEPEND="
 	>=dev-python/oslo-versionedobjects-0.9.0[${PYTHON_USEDEP}]
 	<=dev-python/oslo-versionedobjects-0.10.0[${PYTHON_USEDEP}]
 	>=dev-python/python-novaclient-2.28.1[${PYTHON_USEDEP}]
-	<=dev-python/python-novaclient-2.31.0[${PYTHON_USEDEP}]
+	<=dev-python/python-novaclient-2.30.1[${PYTHON_USEDEP}]
 	dev-python/pyudev[${PYTHON_USEDEP}]
 	sys-apps/iproute2
 	net-misc/bridge-utils
 	net-firewall/ipset
 	net-firewall/iptables
 	net-firewall/ebtables
-	openvswitch? ( net-misc/openvswitch )
+	openvswitch? ( <=net-misc/openvswitch-2.4.0 )
 	ipv6? ( net-misc/radvd )
 	dhcp? ( net-dns/dnsmasq[dhcp-tools] )"
 

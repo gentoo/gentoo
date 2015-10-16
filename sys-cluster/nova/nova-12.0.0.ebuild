@@ -37,10 +37,10 @@ DEPEND="
 		>=dev-python/psycopg-2.5[${PYTHON_USEDEP}]
 		<=dev-python/psycopg-2.6.1[${PYTHON_USEDEP}]
 		>=dev-python/pymysql-0.6.2[${PYTHON_USEDEP}]
-		<=dev-python/pymysql-0.6.7[${PYTHON_USEDEP}]
+		<=dev-python/pymysql-0.6.6[${PYTHON_USEDEP}]
 		~dev-python/python-barbicanclient-3.3.0[${PYTHON_USEDEP}]
 		>=dev-python/python-ironicclient-0.8.0[${PYTHON_USEDEP}]
-		<=dev-python/python-ironicclient-0.9.0[${PYTHON_USEDEP}]
+		<=dev-python/python-ironicclient-0.8.1[${PYTHON_USEDEP}]
 		>=dev-python/subunit-0.0.18[${PYTHON_USEDEP}]
 		<=dev-python/subunit-1.1.0[${PYTHON_USEDEP}]
 		~dev-python/requests-mock-0.6.0[${PYTHON_USEDEP}]
@@ -60,7 +60,7 @@ DEPEND="
 		>=dev-python/testtools-1.4.0[${PYTHON_USEDEP}]
 		<=dev-python/testtools-1.8.0[${PYTHON_USEDEP}]
 		>=dev-python/tempest-lib-0.8.0[${PYTHON_USEDEP}]
-		<=dev-python/tempest-lib-0.10.0[${PYTHON_USEDEP}]
+		<=dev-python/tempest-lib-0.9.0[${PYTHON_USEDEP}]
 		~dev-python/bandit-0.13.2[${PYTHON_USEDEP}]
 		>=dev-python/oslo-vmware-0.16.0[${PYTHON_USEDEP}]
 		<=dev-python/oslo-vmware-0.21.0[${PYTHON_USEDEP}]
@@ -90,12 +90,12 @@ RDEPEND="
 	>=dev-python/boto-2.32.1[${PYTHON_USEDEP}]
 	<=dev-python/boto-2.38.0[${PYTHON_USEDEP}]
 	>=dev-python/decorator-3.4.0[${PYTHON_USEDEP}]
-	<=dev-python/decorator-4.0.4[${PYTHON_USEDEP}]
+	<=dev-python/decorator-4.0.2[${PYTHON_USEDEP}]
 	~dev-python/eventlet-0.17.4[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.6[${PYTHON_USEDEP}]
 	<=dev-python/jinja-2.8[${PYTHON_USEDEP}]
 	>=dev-python/keystonemiddleware-2.0.0[${PYTHON_USEDEP}]
-	<=dev-python/keystonemiddleware-2.4.1[${PYTHON_USEDEP}]
+	<=dev-python/keystonemiddleware-2.3.1[${PYTHON_USEDEP}]
 	>=dev-python/lxml-2.3[${PYTHON_USEDEP}]
 	<=dev-python/lxml-3.4.4[${PYTHON_USEDEP}]
 	>=dev-python/routes-1.12.3[${PYTHON_USEDEP}]
@@ -103,7 +103,7 @@ RDEPEND="
 	!~dev-python/routes-2.1[$(python_gen_usedep 'python2_7')]
 	<=dev-python/routes-2.2[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.0[${PYTHON_USEDEP}]
-	<=dev-python/cryptography-1.0.2[${PYTHON_USEDEP}]
+	<=dev-python/cryptography-1.0.1-r9999[${PYTHON_USEDEP}]
 	>=dev-python/webob-1.2.3[${PYTHON_USEDEP}]
 	<=dev-python/webob-1.4.1[${PYTHON_USEDEP}]
 	>=dev-python/greenlet-0.3.2[${PYTHON_USEDEP}]
@@ -120,9 +120,9 @@ RDEPEND="
 	<=dev-python/netaddr-0.7.18[${PYTHON_USEDEP}]
 	~dev-python/netifaces-0.10.4[${PYTHON_USEDEP}]
 	>=dev-python/paramiko-1.13.0[${PYTHON_USEDEP}]
-	<=dev-python/paramiko-1.15.3[${PYTHON_USEDEP}]
+	<=dev-python/paramiko-1.15.2[${PYTHON_USEDEP}]
 	>=dev-python/Babel-1.3[${PYTHON_USEDEP}]
-	<=dev-python/Babel-2.1.1[${PYTHON_USEDEP}]
+	<=dev-python/Babel-2.0[${PYTHON_USEDEP}]
 	>=dev-python/iso8601-0.1.9[${PYTHON_USEDEP}]
 	<=dev-python/iso8601-0.1.10[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-2.0.0[${PYTHON_USEDEP}]
@@ -131,7 +131,7 @@ RDEPEND="
 	>=dev-python/python-cinderclient-1.3.1[${PYTHON_USEDEP}]
 	<=dev-python/python-cinderclient-1.4.0[${PYTHON_USEDEP}]
 	>=dev-python/python-keystoneclient-1.6.0[${PYTHON_USEDEP}]
-	<=dev-python/python-keystoneclient-1.8.1[${PYTHON_USEDEP}]
+	<=dev-python/python-keystoneclient-1.7.2[${PYTHON_USEDEP}]
 	>=dev-python/python-neutronclient-2.6.0[${PYTHON_USEDEP}]
 	<=dev-python/python-neutronclient-3.1.0[${PYTHON_USEDEP}]
 	>=dev-python/python-glanceclient-0.18.0[${PYTHON_USEDEP}]
@@ -183,14 +183,14 @@ RDEPEND="
 	<=dev-python/alembic-0.8.20[${PYTHON_USEDEP}]
 	>=dev-python/os-brick-0.4.0[${PYTHON_USEDEP}]
 	<=dev-python/os-brick-0.5.0[${PYTHON_USEDEP}]
-	dev-python/libvirt-python[${PYTHON_USEDEP}]
+	<=dev-python/libvirt-python-1.2.19[${PYTHON_USEDEP}]
 	app-emulation/libvirt[iscsi?]
 	novncproxy? ( www-apps/novnc )
 	sys-apps/iproute2
-	openvswitch? ( net-misc/openvswitch )
+	openvswitch? ( <=net-misc/openvswitch-2.4.0 )
 	rabbitmq? ( net-misc/rabbitmq-server )
 	memcached? ( net-misc/memcached
-	dev-python/python-memcached )
+	<=dev-python/python-memcached-1.57 )
 	sys-fs/sysfsutils
 	sys-fs/multipath-tools
 	net-misc/bridge-utils
