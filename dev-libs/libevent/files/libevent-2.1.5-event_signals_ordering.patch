@@ -1,5 +1,3 @@
-diff --git a/event.c b/event.c
-index acef2b2..ad4c7f0 100644
 --- a/event.c
 +++ b/event.c
 @@ -926,13 +926,13 @@ event_reinit(struct event_base *base)
