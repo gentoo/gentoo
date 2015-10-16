@@ -1,15 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-
-#if LIVE
-EGIT_REPO_URI="git://github.com/lvc/${PN}.git
-	https://github.com/lvc/${PN}.git"
-
-inherit git-r3
-#endif
 
 DESCRIPTION="A tool for checking backward compatibility of a C/C++ library"
 HOMEPAGE="http://ispras.linuxbase.org/index.php/ABI_compliance_checker"
@@ -19,11 +12,6 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-
-#if LIVE
-SRC_URI=
-KEYWORDS=
-#endif
 
 src_compile() {
 	:
