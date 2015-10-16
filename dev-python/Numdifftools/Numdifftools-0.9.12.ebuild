@@ -29,6 +29,7 @@ RDEPEND="
 	"
 DEPEND="
 	>=dev-python/setuptools-0.9[${PYTHON_USEDEP}]
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
