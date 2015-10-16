@@ -10,7 +10,6 @@ inherit toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://anongit.gentoo.org/proj/elfix.git"
-	KEYWORDS=""
 	inherit git-2
 else
 	SRC_URI="https://dev.gentoo.org/~blueness/install-xattr/${P}.tar.bz2"
