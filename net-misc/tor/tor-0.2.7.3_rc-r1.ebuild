@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="-bufferevents libressl scrypt seccomp selinux stats systemd tor-hardening transparent-proxy test web"
 
 DEPEND="
-	!libressl? ( dev-libs/openssl:0= )
+	!libressl? ( dev-libs/openssl:0=[-bindist] )
 	libressl? ( dev-libs/libressl:= )
 	sys-libs/zlib
 	dev-libs/libevent
