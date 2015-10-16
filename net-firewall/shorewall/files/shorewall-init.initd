@@ -1,0 +1,192 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+SHOREWALLRC_FILE="@GENTOO_PORTAGE_EPREFIX@/usr/share/shorewall/shorewallrc"
+CONFIG_FILE="@GENTOO_PORTAGE_EPREFIX@/etc/conf.d/${SVCNAME}"
+
+description="Puts Shorewall in a safe state at boot time"
+description="${description} prior to bringing up the network."
+
+required_files="$SHOREWALLRC_FILE"
+
+depend() {
+	need localmount
+	before net
+	after bootmisc ipset tmpfiles.setup ulogd
+}
+
+
+. $SHOREWALLRC_FILE
+
+checkconfig() {
+	local PRODUCT=
+
+	if [ -z "${VARLIB}" ]; then
+		eerror "\"VARLIB\" isn't defined or empty! Please check" \
+			"\"${SHOREWALLRC_FILE}\"."
+
+		return 1
+	fi
+
+	if [ -z "${PRODUCTS}" ]; then
+		eerror "${SVCNAME} isn't configured! Please check" \
+			"\"${CONFIG_FILE}\"."
+
+		return 1
+	fi
+
+	for PRODUCT in ${PRODUCTS}; do
+		if [ ! -x ${SBINDIR}/${PRODUCT} ]; then
+			eerror "Invalid product \"${PRODUCT}\" specified" \
+				"in \"${CONFIG_FILE}\"!"
+			eerror "Maybe \"${PRODUCT}\" isn't installed?"
+
+			return 1
+		fi
+	done
+
+	return 0
+}
+
+check_firewall_script() {
+	if [ ${PRODUCT} = shorewall -o ${PRODUCT} = shorewall6 ]; then
+		ebegin "Checking \"${STATEDIR}/firewall\""
+		${SBINDIR}/${PRODUCT} compile -c 1>/dev/null
+		eend $?
+	fi
+
+	if [ ! -x ${STATEDIR}/firewall ]; then
+		eerror "\"${PRODUCT}\" isn't configured!"
+
+		if [ ${PRODUCT} = shorewall-lite -o ${PRODUCT} = shorewall6-lite ]; then
+			eerror "Please go to your 'administrative system'" \
+				"and deploy the compiled firewall" \
+				"configuration for this system."
+		fi
+
+		return 1
+	fi
+
+	return 0
+}
+
+is_allowed_to_be_executed() {
+	# This is not a real service. shorewall-init is an intermediate
+	# script to put your Shorewall-based firewall into a safe state
+	# at boot time prior to bringing up the network.
+	# Please read /usr/share/doc/shorewall-init-*/README.gentoo.gz
+	# for more information.
+	# When your system is up, there is no need to call shorewall-init.
+	# Please call shorewall{,6,-lite,6-lite} directly. That's the
+	# reason why we are preventing start, stop or restart here.
+
+	local PRODUCT=
+
+	if [ "${RC_RUNLEVEL}" != "boot" -a "${RC_CMD}" = "start" ]; then
+		# Starting shorewall-init is only allowed at boot time
+		eerror "This is a boot service, which can only be started" \
+			"at boot."
+		eerror "If you want to get your shorewall-based firewall" \
+			"into the same safe boot state again, run"
+		eerror ""
+		eindent
+		for PRODUCT in ${PRODUCTS}; do
+			eerror "/etc/init.d/${PRODUCT} stop"
+		done
+		eoutdent
+		eerror ""
+		eerror "Yes, \"stop\" and not start."
+		eerror ""
+		return 1
+	fi
+
+	if [ "${RC_RUNLEVEL}" != "shutdown" -a "${RC_CMD}" = "stop" ]; then
+		# Stopping shorewall-init is only allowed at shutdown
+		eerror "This is a boot service, which cannot be stopped."
+		eerror "If you really want to stop your Shorewall-based" \
+			"firewall the same way this service would stop" \
+			"Shorewall at shutdown, please run"
+		eerror ""
+		eindent
+		for PRODUCT in ${PRODUCTS}; do
+			eerror "/etc/init.d/${PRODUCT} clear"
+		done
+		eoutdent
+		eerror ""
+		eerror "Keep in mind that this will clear (=bring down)" \
+			"your firewall!"
+		eerror ""
+		return 1
+	fi
+
+	if [ "${RC_CMD}" = "restart" ]; then
+		eerror "This is a boot service, which cannot be restarted."
+		eerror "If you want to restart any of your Shorewall-based" \
+			"firewalls, run"
+		eerror ""
+		eindent
+		for PRODUCT in ${PRODUCTS}; do
+			eerror "/etc/init.d/${PRODUCT} restart"
+		done
+		eoutdent
+		eerror ""
+		return 1
+	fi
+
+	return 0
+}
+
+set_statedir() {
+	STATEDIR=
+	local VARDIR=
+
+	if [ -f ${CONFDIR}/${PRODUCT}/vardir ]; then
+		STATEDIR=$( . ${CONFDIR}/${PRODUCT}/vardir && echo ${VARDIR} )
+	fi
+
+	[ ! -n "${STATEDIR}" ] && STATEDIR=${VARLIB}/${PRODUCT}
+}
+
+start_pre() {
+	checkconfig || return 1
+
+	is_allowed_to_be_executed || return 1
+}
+
+start() {
+	local PRODUCT=
+	local STATEDIR=
+
+	for PRODUCT in ${PRODUCTS}; do
+		set_statedir
+
+		check_firewall_script || return 1
+
+		ebegin "Initializing \"${PRODUCT}\""
+		${STATEDIR}/firewall stop 1>/dev/null
+		eend $?
+	done
+}
+
+stop_pre() {
+	checkconfig || return 1
+
+	is_allowed_to_be_executed || return 1
+}
+
+stop() {
+	local PRODUCT=
+	local STATEDIR=
+
+	for PRODUCT in ${PRODUCTS}; do
+		set_statedir
+
+		check_firewall_script || return 1
+
+		ebegin "Clearing \"${PRODUCT}\""
+		${STATEDIR}/firewall clear 1>/dev/null
+		eend $?
+	done
+}

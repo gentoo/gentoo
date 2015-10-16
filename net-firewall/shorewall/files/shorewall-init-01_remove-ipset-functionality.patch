@@ -1,0 +1,28 @@
+diff -rupN old/shorewall-init-4.6.10.1/shorewall-init new/shorewall-init-4.6.10.1/shorewall-init
+--- old/shorewall-init-4.6.10.1/shorewall-init	2015-06-09 20:02:00.000000000 +0200
++++ new/shorewall-init-4.6.10.1/shorewall-init	2015-06-14 17:16:17.396424059 +0200
+@@ -78,10 +78,6 @@ shorewall_start () {
+ 	fi
+     done
+ 
+-    if [ -n "$SAVE_IPSETS" -a -f "$SAVE_IPSETS" ]; then
+-	ipset -R < "$SAVE_IPSETS"
+-    fi
+-
+     return 0
+ }
+ 
+@@ -99,13 +95,6 @@ shorewall_stop () {
+ 	fi
+     done
+ 
+-    if [ -n "$SAVE_IPSETS" ]; then
+-	mkdir -p $(dirname "$SAVE_IPSETS")
+-	if ipset -S > "${SAVE_IPSETS}.tmp"; then
+-	    grep -qE -- '^(-N|create )' "${SAVE_IPSETS}.tmp" && mv -f "${SAVE_IPSETS}.tmp" "$SAVE_IPSETS"
+-	fi
+-    fi
+-
+     return 0
+ }
+ 
