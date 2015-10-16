@@ -19,6 +19,7 @@ It can:
 Its event-driven architecture allows it to easily handle thousands of simultaneous connections on hundreds of instances without risking the system's stability.
 	</longdescription>
 	<use>
+		<flag name="net_ns">Enable network namespace support (CONFIG_NET_NS)</flag>
 		<flag name="pcre-jit">Use JIT support for PCRE</flag>
 		<flag name="tools">Install additional tools (halog, iprange)</flag>
 	</use>
