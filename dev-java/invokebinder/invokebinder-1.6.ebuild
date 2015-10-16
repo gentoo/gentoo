@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/headius/invokebinder"
 SRC_URI="https://github.com/headius/${PN}/archive/${P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="Apache-2.0"
 
 S="${WORKDIR}/${PN}-${P}"
