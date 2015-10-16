@@ -19,6 +19,7 @@ DEPEND="
 	dev-libs/protobuf:=
 	>=net-libs/zeromq-3.2.0:=
 	sys-apps/util-linux
+	net-libs/cppzmq
 "
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
