@@ -5,7 +5,7 @@
 EAPI="5"
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
-PYTHON_REQ_USE="xml(+)"
+PYTHON_REQ_USE="xml(+),sqlite?"
 
 inherit eutils distutils-r1 git-2 linux-info prefix
 
@@ -17,10 +17,11 @@ EGIT_REPO_URI="git://anongit.gentoo.org/proj/layman.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="bazaar cvs darcs +git gpg g-sorcery mercurial squashfs subversion sync-plugin-portage test"
+IUSE="bazaar cvs darcs +git gpg g-sorcery mercurial sqlite squashfs subversion sync-plugin-portage test"
 
 DEPEND="test? ( dev-vcs/subversion )
-	app-text/asciidoc"
+	app-text/asciidoc
+	"
 
 RDEPEND="
 	bazaar? ( dev-vcs/bzr )
