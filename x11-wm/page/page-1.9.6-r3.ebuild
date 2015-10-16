@@ -30,6 +30,7 @@ DEPEND="x11-proto/xcb-proto
 	x11-proto/xextproto
 	x11-libs/cairo[xcb]
 	x11-libs/pango
-	dev-libs/glib"
+	dev-libs/glib:2"
 
-RDEPEND="!dev-tcltk/tcllib"
+RDEPEND="${DEPEND}
+	!dev-tcltk/tcllib"
