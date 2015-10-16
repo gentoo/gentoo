@@ -41,7 +41,7 @@ src_compile() {
 src_install() {
 	dosbin "${S}/obj.$(uname -s).$(uname -r).$(arch)/${PN}/${PN}" || die
 
-	cd "${S}/${PN}"
+	cd "${S}/${PN}" || die
 	doman "${PN}.8" || die
 	dodoc README || die
 
