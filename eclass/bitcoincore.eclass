@@ -162,7 +162,7 @@ bitcoincore_common_depend_use() {
 	in_bcc_iuse "$1" || return
 	BITCOINCORE_COMMON_DEPEND="${BITCOINCORE_COMMON_DEPEND} $1? ( $2 )"
 }
-bitcoincore_common_depend_use upnp net-libs/miniupnpc
+bitcoincore_common_depend_use upnp '>net-libs/miniupnpc-1.9.20150915'
 bitcoincore_common_depend_use wallet "${WALLET_DEPEND}"
 bitcoincore_common_depend_use zeromq net-libs/zeromq
 RDEPEND="${RDEPEND} ${BITCOINCORE_COMMON_DEPEND}"
