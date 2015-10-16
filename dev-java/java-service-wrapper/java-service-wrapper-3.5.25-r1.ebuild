@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=5
 
 WANT_ANT_TASKS="ant-nodeps"
 JAVA_PKG_IUSE="doc source test"
@@ -32,11 +32,16 @@ S="${WORKDIR}/${MY_P}"
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
 
-java_prepare() {
-	#Reported upstream http://sourceforge.net/tracker2/?func=detail&aid=2299391&group_id=39428&atid=425189
-	epatch "${FILESDIR}"/${P}-as-needed.patch
+PATCHES=(
+	"${FILESDIR}"/${P}-as-needed.patch
+	"${FILESDIR}"/${P}-gentoo-wrapper-defaults.patch
+	"${FILESDIR}"/${P}-testsuite.patch
+)
 
-	epatch "${FILESDIR}"/${P}-gentoo-wrapper-defaults.patch #414027
+java_prepare() {
+	epatch "${PATCHES[@]}"
+
+	cp "${S}/src/c/Makefile-linux-armel-32.make" "${S}/src/c/Makefile-linux-arm-32.make"
 }
 
 src_compile() {
@@ -45,7 +50,7 @@ src_compile() {
 	use amd64 && BITS="64"
 	eant -Dbits=${BITS} jar compile-c
 	if use doc; then
-		javadoc -d api -sourcepath src/java/ -subpackages org \
+		ejavadoc -d api -sourcepath src/java/ -subpackages org \
 			|| die "javadoc	failed"
 	fi
 }
