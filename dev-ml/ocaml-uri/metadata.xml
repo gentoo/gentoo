@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <herd>ml</herd>
+    <herd>proxy-maintainers</herd>
+    <maintainer>
+        <email>tomboy64@sina.cn</email>
+    </maintainer>
+    <use>
+        <flag name="allservices">Compile support for all service types</flag>
+    </use>
+</pkgmetadata>
