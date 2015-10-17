@@ -5,7 +5,7 @@
 <!ATTLIST catmetadata pkgname CDATA "">
 
 <!-- Metadata for a package -->
-<!ELEMENT pkgmetadata ( (herd|maintainer|natural-name|longdescription|use|upstream)* )>
+<!ELEMENT pkgmetadata ( (herd|maintainer|natural-name|longdescription|slots|use|upstream)* )>
 <!ATTLIST pkgmetadata pkgname CDATA "">
 
   <!-- One tag for each herd this package is assigned to. -->
@@ -19,6 +19,15 @@
 
   <!-- A long description of the package in freetext-->
   <!ELEMENT longdescription (#PCDATA|pkg|cat)* >
+
+  <!-- A description of the packages SLOTs -->
+  <!ELEMENT slots ((slot)*,subslots?) >
+    <!-- A particular SLOT -->
+    <!ELEMENT slot (#PCDATA)* >
+      <!-- name attribute holds the name of the SLOT, for sub-SLOTS use the subslots element -->
+      <!ATTLIST slot name CDATA #REQUIRED >
+    <!-- The meaning of sub-SLOTs for the whole package -->
+    <!ELEMENT subslots (#PCDATA)* >
 
   <!-- The changelog of the package-->
   <!-- Please note that #PCDATA is mentioned only for the upstream changelog
@@ -79,6 +88,7 @@
   language "C" or "en", which is equivalent -->
   <!ATTLIST description lang CDATA "C" >
   <!ATTLIST longdescription lang CDATA "C" >
+  <!ATTLIST slots lang CDATA "C" >
   <!ATTLIST use lang CDATA "C" >
 
 <!-- The restrict attribute, this attribute specifies restrictions on 
