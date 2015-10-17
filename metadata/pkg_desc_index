@@ -5085,6 +5085,7 @@ dev-ml/react 0.9.4 1.2.0: OCaml module for functional reactive programming
 dev-ml/reactiveData 0.1: Functional reactive programming with incremental changes in data structures
 dev-ml/res 4.0.3 4.0.4 4.0.6 4.0.7: Resizable Array and Buffer modules for O'Caml
 dev-ml/sexplib 112.35.00 113.00.00: Library for automated conversion of OCaml-values to and from S-expressions
+dev-ml/stringext 1.4.0: Extra string functions for OCaml
 dev-ml/textutils 112.17.00: Text output utilities
 dev-ml/type-conv 112.01.02 113.00.00 113.00.02: Mini library required for some other preprocessing libraries
 dev-ml/typehashlib 109.15.02: Syntax extension for deriving 'typehash' functions automatically
@@ -8009,7 +8010,7 @@ dev-qt/qt3support 4.8.5 4.8.6-r1 4.8.7: The Qt3Support module for the Qt toolkit
 dev-qt/qtbearer 4.8.5 4.8.6-r1 4.8.7: The network bearer plugins for the Qt toolkit
 dev-qt/qtchooser 0_p20150102: Qt4/Qt5 version chooser
 dev-qt/qtconcurrent 5.4.2: Multi-threading concurrence support library for the Qt5 framework
-dev-qt/qtcore 4.8.5-r2 4.8.6-r2 4.8.7 5.4.2: Cross-platform application development framework
+dev-qt/qtcore 4.8.5-r2 4.8.6-r2 4.8.7 4.8.7-r1 5.4.2: Cross-platform application development framework
 dev-qt/qtdbus 4.8.5 4.8.6-r1 4.8.7 5.4.2: The D-Bus module for the Qt5 framework
 dev-qt/qtdeclarative 4.8.5 4.8.6-r1 4.8.7 5.4.2-r1: The QML and Quick modules for the Qt5 framework
 dev-qt/qtdemo 4.8.5-r1 4.8.6-r1 4.8.7: Demonstration module and examples for the Qt toolkit
