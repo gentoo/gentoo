@@ -1,0 +1,26 @@
+diff --git a/tdfsb.c b/tdfsb.c
+index 5f6b233..a1af5a1 100644
+--- a/tdfsb.c
++++ b/tdfsb.c
+@@ -2436,7 +2436,7 @@ int speckey(int key)
+ 			    if(TDFSB_CSE_FLAG)
+ 				snprintf(TDFSB_CES_TEMP,4096,TDFSB_CUSTOM_EXECUTE_STRING,fullpath);
+ 			    else
+-	    			snprintf(TDFSB_CES_TEMP,4096,TDFSB_CUSTOM_EXECUTE_STRING);
++	    			snprintf(TDFSB_CES_TEMP,4096,"%s", TDFSB_CUSTOM_EXECUTE_STRING);
+ 			}
+ 			system(TDFSB_CES_TEMP);
+ 			printf("EXECUTE COMMAND: %s\n",TDFSB_CES_TEMP);
+@@ -2732,9 +2732,9 @@ int keyboard (unsigned char key)
+ 
+                 else if (key==TDFSB_KC_HELP)
+                         {       TDFSB_SHOW_HELP = 1-TDFSB_SHOW_HELP;
+-                                if (TDFSB_SHOW_HELP)    {       printf("\n=======================================\n");
+-                                                                printf(help_str);
+-                                                                printf("=======================================\n\n");
++                                if (TDFSB_SHOW_HELP)    {       printf("%s", "\n=======================================\n");
++                                                                printf("%s", help_str);
++                                                                printf("%s", "=======================================\n\n");
+                                                         }
+                         }
+ 
