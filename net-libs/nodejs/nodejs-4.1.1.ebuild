@@ -103,6 +103,9 @@ src_configure() {
 		*) die "Unrecognized ARCH ${ARCH}";;
 	esac
 
+	GYP_DEFINES="linux_use_gold_flags=0
+		linux_use_bundled_binutils=0
+		linux_use_bundled_gold=0" \
 	"${PYTHON}" configure \
 		--prefix="${EPREFIX}"/usr \
 		--dest-cpu=${myarch} \
