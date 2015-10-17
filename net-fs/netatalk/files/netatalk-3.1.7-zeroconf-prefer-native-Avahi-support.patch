@@ -1,0 +1,97 @@
+From 6b4abfe853ab2143ad2f5b95a15a39c91174fda3 Mon Sep 17 00:00:00 2001
+From: Doug Goldstein <cardoe@cardoe.com>
+Date: Fri, 9 Oct 2015 00:28:19 -0500
+Subject: [PATCH] zeroconf: prefer native Avahi support over mDNSResponder
+
+Check first for native Avahi support and use that over mDNSResponder
+support to avoid using Avahi's mDNSResponder compatibility layer by
+default.
+
+Bug: http://sourceforge.net/p/netatalk/bugs/586/
+Gentoo-Bug: https://bugs.gentoo.org/show_bug.cgi?id=492716
+
+Signed-off-by: Doug Goldstein <cardoe@cardoe.com>
+---
+ macros/zeroconf.m4 | 52 ++++++++++++++++++++++++++--------------------------
+ 1 file changed, 26 insertions(+), 26 deletions(-)
+
+diff --git a/macros/zeroconf.m4 b/macros/zeroconf.m4
+index 6916c99..fd2f920 100644
+--- a/macros/zeroconf.m4
++++ b/macros/zeroconf.m4
+@@ -25,46 +25,46 @@ AC_DEFUN([AC_NETATALK_ZEROCONF], [
+ 			zeroconf_dir="$zeroconf"
+ 		fi
+ 
+-        # mDNS support using mDNSResponder
++        # mDNS support using Avahi
+         AC_CHECK_HEADER(
+-            dns_sd.h,
++            avahi-client/client.h,
+             AC_CHECK_LIB(
+-                dns_sd,
+-                DNSServiceRegister,
++                avahi-client,
++                avahi_client_new,
+                 AC_DEFINE(USE_ZEROCONF, 1, [Use DNS-SD registration]))
+         )
+ 
+-        if test "$ac_cv_lib_dns_sd_DNSServiceRegister" = yes; then
+-            ZEROCONF_LIBS="-ldns_sd"
+-            AC_DEFINE(HAVE_MDNS, 1, [Use mDNSRespnder/DNS-SD registration])
++        case "$ac_cv_lib_avahi_client_avahi_client_new" in
++        yes)
++            PKG_CHECK_MODULES(AVAHI, [ avahi-client >= 0.6 ])
++            PKG_CHECK_MODULES(AVAHI_TPOLL, [ avahi-client >= 0.6.4 ],
++                [AC_DEFINE(HAVE_AVAHI_THREADED_POLL, 1, [Uses Avahis threaded poll implementation])],
++                [AC_MSG_WARN(This Avahi implementation is not supporting threaded poll objects. Maybe this is not what you want.)])
++            ZEROCONF_LIBS="$AVAHI_LIBS"
++            ZEROCONF_CFLAGS="$AVAHI_CFLAGS"
++            AC_DEFINE(HAVE_AVAHI, 1, [Use Avahi/DNS-SD registration])
+             found_zeroconf=yes
+-        fi
++            ;;
++        esac
++	  	CPPFLAGS="$savedcppflags"
++	    LDFLAGS="$savedldflags"
+ 
+-        # mDNS support using Avahi
++        # mDNS support using mDNSResponder
+         if test x"$found_zeroconf" != x"yes" ; then
+             AC_CHECK_HEADER(
+-                avahi-client/client.h,
++                dns_sd.h,
+                 AC_CHECK_LIB(
+-                    avahi-client,
+-                    avahi_client_new,
++                    dns_sd,
++                    DNSServiceRegister,
+                     AC_DEFINE(USE_ZEROCONF, 1, [Use DNS-SD registration]))
+             )
+ 
+-            case "$ac_cv_lib_avahi_client_avahi_client_new" in
+-            yes)
+-                PKG_CHECK_MODULES(AVAHI, [ avahi-client >= 0.6 ])
+-                PKG_CHECK_MODULES(AVAHI_TPOLL, [ avahi-client >= 0.6.4 ],
+-                    [AC_DEFINE(HAVE_AVAHI_THREADED_POLL, 1, [Uses Avahis threaded poll implementation])],
+-                    [AC_MSG_WARN(This Avahi implementation is not supporting threaded poll objects. Maybe this is not what you want.)])
+-                ZEROCONF_LIBS="$AVAHI_LIBS"
+-                ZEROCONF_CFLAGS="$AVAHI_CFLAGS"
+-                AC_DEFINE(HAVE_AVAHI, 1, [Use Avahi/DNS-SD registration])
++            if test "$ac_cv_lib_dns_sd_DNSServiceRegister" = yes; then
++                ZEROCONF_LIBS="-ldns_sd"
++                AC_DEFINE(HAVE_MDNS, 1, [Use mDNSRespnder/DNS-SD registration])
+                 found_zeroconf=yes
+-                ;;
+-            esac
+-	    	CPPFLAGS="$savedcppflags"
+-		    LDFLAGS="$savedldflags"
+-    	fi
++            fi
++		fi
+ 	fi
+ 
+ 	netatalk_cv_zeroconf=no
+-- 
+2.4.9
+
