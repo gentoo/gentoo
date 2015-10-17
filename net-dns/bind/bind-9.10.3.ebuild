@@ -39,9 +39,9 @@ SRC_URI="ftp://ftp.isc.org/isc/bind9/${MY_PV}/${MY_P}.tar.gz
 
 LICENSE="GPL-2 ISC BSD BSD-2 HPND JNIC openssl"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="berkdb +caps dlz doc filter-aaaa fixed-rrset geoip gost gssapi idn ipv6
-json ldap mysql nslint odbc postgres python rpz seccomp selinux ssl static-libs
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="berkdb +caps dlz doc fetchlimit filter-aaaa fixed-rrset geoip gost gssapi idn ipv6
+json ldap mysql nslint odbc postgres python rpz seccomp selinux sit ssl static-libs
 +threads urandom xml"
 # sdb-ldap - patch broken
 # no PKCS11 currently as it requires OpenSSL to be patched, also see bug 409687
@@ -147,31 +147,33 @@ src_configure() {
 		--localstatedir=/var \
 		--with-libtool \
 		--enable-full-report \
+		--without-readline \
+		$(use_enable caps linux-caps) \
+		$(use_enable fetchlimit) \
+		$(use_enable filter-aaaa) \
+		$(use_enable fixed-rrset) \
+		$(use_enable ipv6) \
+		$(use_enable rpz rpz-nsdname) \
+		$(use_enable rpz rpz-nsip) \
+		$(use_enable seccomp) \
+		$(use_enable sit) \
 		$(use_enable threads) \
+		$(use_with berkdb dlz-bdb) \
 		$(use_with dlz dlopen) \
 		$(use_with dlz dlz-filesystem) \
 		$(use_with dlz dlz-stub) \
-		$(use_with postgres dlz-postgres) \
-		$(use_with mysql dlz-mysql) \
-		$(use_with berkdb dlz-bdb) \
-		$(use_with ldap dlz-ldap) \
-		$(use_with odbc dlz-odbc) \
-		$(use_with ssl openssl "${EPREFIX}"/usr) \
-		$(use_with ssl ecdsa) \
-		$(use_with idn) \
-		$(use_enable ipv6) \
-		$(use_with xml libxml2) \
-		$(use_with gssapi) \
-		$(use_enable rpz rpz-nsip) \
-		$(use_enable rpz rpz-nsdname) \
-		$(use_enable caps linux-caps) \
 		$(use_with gost) \
-		$(use_enable filter-aaaa) \
-		$(use_enable fixed-rrset) \
-		$(use_with python) \
-		$(use_enable seccomp) \
+		$(use_with gssapi) \
+		$(use_with idn) \
 		$(use_with json libjson) \
-		--without-readline \
+		$(use_with ldap dlz-ldap) \
+		$(use_with mysql dlz-mysql) \
+		$(use_with odbc dlz-odbc) \
+		$(use_with postgres dlz-postgres) \
+		$(use_with python) \
+		$(use_with ssl ecdsa) \
+		$(use_with ssl openssl "${EPREFIX}"/usr) \
+		$(use_with xml libxml2) \
 		${myconf}
 
 	# $(use_enable static-libs static) \
@@ -233,7 +235,7 @@ src_install() {
 
 	# ftp://ftp.rs.internic.net/domain/named.cache:
 	insinto /var/bind
-	doins "${FILESDIR}"/named.cache
+	newins "${FILESDIR}"/named.cache-r1 named.cache
 
 	insinto /var/bind/pri
 	newins "${FILESDIR}"/localhost.zone-r3 localhost.zone
@@ -295,6 +297,7 @@ src_install() {
 	fperms 0770 /var/log/named /var/bind/{,sec,dyn}
 
 	systemd_newunit "${FILESDIR}/named.service-r1" named.service
+	systemd_dotmpfilesd "${FILESDIR}"/named.conf
 	exeinto /usr/libexec
 	doexe "${FILESDIR}/generate-rndc-key.sh"
 }
