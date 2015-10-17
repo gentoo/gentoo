@@ -11,14 +11,10 @@ SRC_URI="mirror://debian/pool/main/p/posh/${P/-/_}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
-RESTRICT=test
-
-#PATCHES=(
-#	"${FILESDIR}"/${PN}-glibc-2.16.patch
-#)
+RESTRICT="test"
 
 src_configure() {
 	myeconfargs=(
