@@ -18,14 +18,18 @@ KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
 # dev-java/ant-core is automatically added due to java-ant-2.eclass
-DEPEND="dev-java/eclipse-ecj:*
-		dev-java/jrobin:0
-		dev-java/slf4j-api:0
-		dev-java/java-service-wrapper:0
-		dev-libs/gmp:*
-		nls? ( sys-devel/gettext )
-		>=virtual/jdk-1.6"
-RDEPEND="${DEPEND} >=virtual/jre-1.6"
+CDEPEND="dev-java/jrobin:0
+	dev-java/slf4j-api:0
+	dev-java/java-service-wrapper:0"
+
+DEPEND="${CDEPEND}
+	dev-java/eclipse-ecj:*
+	dev-libs/gmp:*
+	nls? ( sys-devel/gettext )
+	>=virtual/jdk-1.6"
+
+RDEPEND="${CDEPEND}
+	>=virtual/jre-1.6"
 
 EANT_BUILD_TARGET="pkg"
 EANT_GENTOO_CLASSPATH="java-service-wrapper,jrobin,slf4j-api"
