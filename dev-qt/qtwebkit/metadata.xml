@@ -5,11 +5,14 @@
 	<use>
 		<flag name="exceptions">Add support for exceptions - like catching them
 			inside the event loop (recommended by upstream)</flag>
-		<flag name="gstreamer">Enable HTML5 audio/video support via <pkg>media-libs/gstreamer</pkg></flag>
-		<flag name="gstreamer010">Enable HTML5 audio/video support via legacy <pkg>media-libs/gstreamer:0.10</pkg></flag>
+		<flag name="geolocation">Enable physical position determination via <pkg>dev-qt/qtpositioning</pkg></flag>
+		<flag name="gstreamer">Enable HTML5 audio/video support via <pkg>media-libs/gstreamer:1.0</pkg></flag>
+		<flag name="gstreamer010">Enable HTML5 audio/video support via <pkg>media-libs/gstreamer:0.10</pkg></flag>
 		<flag name="multimedia">Enable HTML5 audio/video support via <pkg>dev-qt/qtmultimedia</pkg></flag>
+		<flag name="orientation">Enable device orientation detection via <pkg>dev-qt/qtsensors</pkg></flag>
 		<flag name="printsupport">Enable printing via <pkg>dev-qt/qtprintsupport</pkg></flag>
 		<flag name="qml">Build QML/QtQuick bindings</flag>
+		<flag name="webchannel">Enable integration with <pkg>dev-qt/qtwebchannel</pkg></flag>
 		<flag name="webp">Add support for WebP image format</flag>
 	</use>
 	<upstream>

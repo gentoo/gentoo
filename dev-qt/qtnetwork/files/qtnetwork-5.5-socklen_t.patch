@@ -1,0 +1,40 @@
+From 813f468a14fb84af43c1f8fc0a1430277358eba2 Mon Sep 17 00:00:00 2001
+From: Dave Flogeras <dflogeras2@gmail.com>
+Date: Tue, 29 Sep 2015 08:52:31 -0300
+Subject: [PATCH] Fix for platform socklen_t on other C libraries than glibc.
+
+Rather than treating >=glibc-2 specially, we treat <glibc-2 specially
+and all other libc implementations as POSIX.
+
+This was found here http://patchwork.openembedded.org/patch/94947/ and
+tested with armv6j-hardfloat-linux-uclibceabi and
+armv6j-hardfloat-linux-musleabi.
+
+Change-Id: I3850b1561a2e240f6564afedd80ce39407cc50b6
+Reviewed-by: Oswald Buddenhagen <oswald.buddenhagen@theqtcompany.com>
+Reviewed-by: Thiago Macieira <thiago.macieira@intel.com>
+---
+ mkspecs/linux-g++/qplatformdefs.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/mkspecs/linux-g++/qplatformdefs.h b/mkspecs/linux-g++/qplatformdefs.h
+index 5c18632..95a5758 100644
+--- a/mkspecs/linux-g++/qplatformdefs.h
++++ b/mkspecs/linux-g++/qplatformdefs.h
+@@ -78,10 +78,10 @@
+ 
+ #undef QT_SOCKLEN_T
+ 
+-#if defined(__GLIBC__) && (__GLIBC__ >= 2)
+-#define QT_SOCKLEN_T            socklen_t
+-#else
++#if defined(__GLIBC__) && (__GLIBC__ < 2)
+ #define QT_SOCKLEN_T            int
++#else
++#define QT_SOCKLEN_T            socklen_t
+ #endif
+ 
+ #if defined(_XOPEN_SOURCE) && (_XOPEN_SOURCE >= 500)
+-- 
+2.6.0
+

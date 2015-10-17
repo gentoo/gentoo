@@ -4,6 +4,7 @@
 	<herd>qt</herd>
 	<use>
 		<flag name="designer">Build plugin for <pkg>dev-qt/designer</pkg></flag>
+		<flag name="gles2">Use GLES 2.0 or later instead of full OpenGL</flag>
 		<flag name="webkit">Build the WebView import for QtQuick1 (requires QtWebKit)</flag>
 		<flag name="xml">Build the XmlListModel import for QtQuick1 (requires QtXmlPatterns)</flag>
 	</use>

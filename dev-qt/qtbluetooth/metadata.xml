@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>qt</herd>
+	<use>
+		<flag name="qml">Build QML/QtQuick bindings and imports</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://bugreports.qt.io/</bugs-to>
+		<doc>http://doc.qt.io/</doc>
+	</upstream>
+</pkgmetadata>
