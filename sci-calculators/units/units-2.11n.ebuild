@@ -17,7 +17,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="+units_cur"
 
 DEPEND="
-	>=sys-libs/readline-4.1-r2
+	sys-libs/readline:=
 	units_cur? (
 		dev-lang/python-exec:2
 	)
