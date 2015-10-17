@@ -20,16 +20,19 @@ SLOT="0"
 IUSE="+introspection +python spell vala"
 # python-single-r1 would request disabling PYTHON_TARGETS on libpeas
 # we need to fix that
-REQUIRED_USE="python? ( ^^ ( $(python_gen_useflags '*') ) )"
+REQUIRED_USE="
+	python? ( introspection )
+	python? ( ^^ ( $(python_gen_useflags '*') ) )
+"
 
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux"
 
 # X libs are not needed for OSX (aqua)
 COMMON_DEPEND="
 	>=dev-libs/libxml2-2.5.0:2
 	>=dev-libs/glib-2.40:2[dbus]
-	>=x11-libs/gtk+-3.14:3[introspection?]
-	>=x11-libs/gtksourceview-3.14.3:3.0[introspection?]
+	>=x11-libs/gtk+-3.16:3[introspection?]
+	>=x11-libs/gtksourceview-3.16:3.0[introspection?]
 	>=dev-libs/libpeas-1.7.0[gtk]
 
 	gnome-base/gsettings-desktop-schemas
@@ -39,11 +42,9 @@ COMMON_DEPEND="
 
 	net-libs/libsoup:2.4
 
-	introspection? ( >=dev-libs/gobject-introspection-0.9.3 )
+	introspection? ( >=dev-libs/gobject-introspection-0.9.3:= )
 	python? (
 		${PYTHON_DEPS}
-		>=dev-libs/gobject-introspection-0.9.3
-		>=x11-libs/gtk+-3:3[introspection]
 		dev-python/pycairo[${PYTHON_USEDEP}]
 		>=dev-python/pygobject-3:3[cairo,${PYTHON_USEDEP}]
 		dev-libs/libpeas[${PYTHON_USEDEP}] )
@@ -61,6 +62,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-libs/libxml2:2
 	>=dev-util/gtk-doc-am-1
 	>=dev-util/intltool-0.50.1
+	dev-util/itstool
 	>=sys-devel/gettext-0.18
 	virtual/pkgconfig
 "
@@ -85,8 +87,7 @@ src_configure() {
 		$(use_enable introspection) \
 		$(use_enable spell) \
 		$(use_enable python) \
-		$(use_enable vala) \
-		ITSTOOL=$(type -P true)
+		$(use_enable vala)
 }
 
 src_test() {
