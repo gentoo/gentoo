@@ -5052,6 +5052,7 @@ dev-ml/ocaml-sha 1.8 1.9: A binding for SHA interface code in OCaml
 dev-ml/ocaml-sqlite3 2.0.4 2.0.5 2.0.7 2.0.9 4.0.0: A package for ocaml that provides access to SQLite databases
 dev-ml/ocaml-ssl 0.4.6 0.4.7 0.5.1: OCaml bindings for OpenSSL
 dev-ml/ocaml-text 0.6 0.8: Library for dealing with 'text'
+dev-ml/ocaml-uri 1.9.1: RFC3986 URI parsing library for OCaml
 dev-ml/ocamldap 2.2: an implementation of the Light Weight Directory Access Protocol
 dev-ml/ocamldsort 0.16.0: A dependency sorter for OCaml source files
 dev-ml/ocamlgraph 0.99b 1.8.5: O'Caml Graph library
@@ -16131,6 +16132,7 @@ sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
 sys-apps/gptfdisk 0.8.10 1.0.0: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201506081912 3.1.201507041117 3.1.201507191652: Administrative interface for the grsecurity Role Based Access Control system
 sys-apps/grep 2.21-r1: GNU regular expression matcher
+sys-apps/grepcidr 2.0: Filter IPv4 and IPv6 addresses matching CIDR patterns
 sys-apps/groff 1.22.2 1.22.3: Text formatter used for man pages
 sys-apps/gscanbus 0.8: a little bus scanning, testing, and topology visualizing tool for the Linux IEEE1394 subsystem
 sys-apps/gsmartcontrol 0.8.7: Hard disk drive health inspection tool
