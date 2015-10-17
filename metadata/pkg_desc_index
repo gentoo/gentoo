@@ -18322,7 +18322,7 @@ x11-proto/bigreqsproto 1.1.2: X.Org BigReqs protocol headers
 x11-proto/compositeproto 0.4.2-r1: X.Org Composite protocol headers
 x11-proto/damageproto 1.2.1-r1: X.Org Damage protocol headers
 x11-proto/dmxproto 2.3.1: X.Org DMX protocol headers
-x11-proto/dri2proto 2.6 2.8 2.8-r1: X.Org DRI2 protocol headers
+x11-proto/dri2proto 2.8-r1: X.Org DRI2 protocol headers
 x11-proto/dri3proto 1.0: X.Org DRI3 protocol specification and Xlib/Xserver headers
 x11-proto/evieext 1.1.1: X.Org EvIE protocol headers
 x11-proto/fixesproto 5.0 5.0-r1: X.Org Fixes protocol headers
@@ -18343,7 +18343,7 @@ x11-proto/videoproto 2.3.2: X.Org Video protocol headers
 x11-proto/xcalibrateproto 0.1_pre20081210: Touchscreen calibration protocol
 x11-proto/xcb-proto 1.8-r3 1.9-r1 1.10 1.11: X C-language Bindings protocol headers
 x11-proto/xcmiscproto 1.2.2: X.Org XCMisc protocol headers
-x11-proto/xextproto 7.2.0 7.2.1 7.2.1-r1 7.3.0: X.Org XExt protocol headers
+x11-proto/xextproto 7.3.0: X.Org XExt protocol headers
 x11-proto/xf86bigfontproto 1.2.0-r1: X.Org XF86BigFont protocol headers
 x11-proto/xf86dgaproto 2.1-r2: X.Org XF86DGA protocol headers
 x11-proto/xf86driproto 2.1.1-r1: X.Org XF86DRI protocol headers
