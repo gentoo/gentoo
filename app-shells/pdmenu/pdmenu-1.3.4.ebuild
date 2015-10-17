@@ -38,15 +38,12 @@ src_configure() {
 }
 
 src_install() {
-	dobin pdmenu
-
+	dobin "${PN}"
 	dodoc doc/ANNOUNCE doc/BUGS doc/TODO
-
 	use examples && dodoc -r examples
-
-	mv doc/pdmenu.man doc/pdmenu.1 || die
-	mv doc/pdmenurc.man doc/pdmenurc.5 || die
-	doman doc/pdmenu.1 doc/pdmenurc.5
+	mv "doc/${PN}.man" "doc/${PN}.1" || die
+	mv "doc/${PN}rc.man" "doc/${PN}rc.5" || die
+	doman "doc/${PN}.1" "doc/${PN}rc.5"
 
 }
 
