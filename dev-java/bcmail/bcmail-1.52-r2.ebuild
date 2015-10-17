@@ -20,8 +20,8 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux 
 
 CDEPEND="dev-java/bcprov:${SLOT}
 		dev-java/bcpkix:${SLOT}
-		dev-java/sun-jaf:0
 		dev-java/junit:0
+		java-virtuals/jaf:0
 		dev-java/oracle-javamail:0"
 
 DEPEND=">=virtual/jdk-1.6
@@ -34,10 +34,10 @@ RDEPEND=">=virtual/jre-1.6
 S="${WORKDIR}/${MY_P}"
 
 JAVA_GENTOO_CLASSPATH="
+	jaf
 	junit
 	bcprov-${SLOT}
 	bcpkix-${SLOT}
-	sun-jaf
 	oracle-javamail
 "
 

@@ -4,32 +4,31 @@
 
 EAPI=5
 
-JAVA_PKG_IUSE="doc source test"
+JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-pkg-simple
 
-MY_P="${PN}-jdk15on-${PV/./}"
-
+MY_P="${PN}-jdk15-${PV/./}"
 DESCRIPTION="Java cryptography APIs"
 HOMEPAGE="http://www.bouncycastle.org/java.html"
 SRC_URI="http://www.bouncycastle.org/download/${MY_P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="1.50"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos"
+SLOT="1.45"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 
-CDEPEND="dev-java/bcprov:${SLOT}
-	dev-java/bcpkix:${SLOT}
-	java-virtuals/jaf:0
+CDEPEND="
+	dev-java/bcprov:${SLOT}
 	dev-java/junit:0
-	dev-java/oracle-javamail:0"
-
+	java-virtuals/jaf:0
+	dev-java/oracle-javamail:0
+"
 DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip
 	${CDEPEND}"
-
 RDEPEND=">=virtual/jre-1.6
 	${CDEPEND}"
+IUSE=""
 
 S="${WORKDIR}/${MY_P}"
 
@@ -37,24 +36,13 @@ JAVA_GENTOO_CLASSPATH="
 	jaf
 	junit
 	bcprov-${SLOT}
-	bcpkix-${SLOT}
 	oracle-javamail
 "
-
-# Package can't be built with test as bcprov and bcpkix can't be built with test.
-RESTRICT="test"
 
 src_unpack() {
 	default
 	cd "${S}"
 	unpack ./src.zip
-}
-
-java_prepare() {
-	JAVA_RM_FILES=(
-		org/bouncycastle/mail/smime/test/*
-		org/bouncycastle/mail/smime/examples/CreateSignedMail.java
-	)
 }
 
 src_compile() {
