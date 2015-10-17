@@ -40,6 +40,7 @@ RDEPEND="${COMMON_DEPEND}
 	kipi? ( >=media-plugins/kipi-plugins-4.7.0 )
 "
 
+PATCHES=( "${FILESDIR}/${P}-bump-min-cmake.patch" )
 DOCS=( ChangeLog README )
 
 src_configure() {
