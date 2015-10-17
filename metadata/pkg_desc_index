@@ -600,7 +600,7 @@ app-crypt/shash 0.2.6-r2: Generate or check digests or MACs of files
 app-crypt/shishi 1.0.1 1.0.1-r1 1.0.1-r2 1.0.2: A free implementation of the Kerberos 5 network security system
 app-crypt/sign 1.0.7: File signing and signature verification utility
 app-crypt/signing-party 1.1.4 1.1.11-r1 2.0 2.1: A collection of several tools related to OpenPGP
-app-crypt/simple-tpm-pk11 0.03: Simple PKCS11 provider for TPM chips
+app-crypt/simple-tpm-pk11 0.03 0.04: Simple PKCS11 provider for TPM chips
 app-crypt/ssdeep 2.10 2.11.1 2.12 2.13: Computes context triggered piecewise hashes (fuzzy hashes)
 app-crypt/ssh-multiadd 1.3.2 1.3.2-r1: Adds multiple ssh keys to the ssh authentication agent
 app-crypt/stan 0.4.1: Stan is a console application that analyzes binary streams and calculates statistical information
@@ -5035,7 +5035,7 @@ dev-ml/oasis 0.3.0 0.4.1 0.4.4 0.4.5: OASIS is a tool to integrate a configure, 
 dev-ml/ocaml-augeas 0.5: Ocaml bindings for Augeas
 dev-ml/ocaml-autoconf 1.1: autoconf macros to support configuration of OCaml programs and libraries
 dev-ml/ocaml-base64 2.0.0: Library for radix-64 representation (de)coding
-dev-ml/ocaml-cstruct 1.7.0: Map OCaml arrays onto C-like structs
+dev-ml/ocaml-cstruct 1.7.0-r1: Map OCaml arrays onto C-like structs
 dev-ml/ocaml-ctypes 0.4.1: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.10 0.0.11: This project uses type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-doc 3.12: Ocaml reference manual (html)
@@ -5052,7 +5052,7 @@ dev-ml/ocaml-sha 1.8 1.9: A binding for SHA interface code in OCaml
 dev-ml/ocaml-sqlite3 2.0.4 2.0.5 2.0.7 2.0.9 4.0.0: A package for ocaml that provides access to SQLite databases
 dev-ml/ocaml-ssl 0.4.6 0.4.7 0.5.1: OCaml bindings for OpenSSL
 dev-ml/ocaml-text 0.6 0.8: Library for dealing with 'text'
-dev-ml/ocaml-uri 1.9.1: RFC3986 URI parsing library for OCaml
+dev-ml/ocaml-uri 1.9.1-r1: RFC3986 URI parsing library for OCaml
 dev-ml/ocamldap 2.2: an implementation of the Light Weight Directory Access Protocol
 dev-ml/ocamldsort 0.16.0: A dependency sorter for OCaml source files
 dev-ml/ocamlgraph 0.99b 1.8.5: O'Caml Graph library
@@ -5063,7 +5063,7 @@ dev-ml/ocamlnet 3.7.7 4.0.2 4.0.3 4.0.4: Modules for OCaml application-level Int
 dev-ml/ocamlpam 1.1: OCamlPAM - an OCaml library for PAM
 dev-ml/ocamlsdl 0.9.1: OCaml SDL Bindings
 dev-ml/ocamlweb 1.38-r1 1.39: O'Caml literate programming tool
-dev-ml/ocplib-endian 0.8: Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays
+dev-ml/ocplib-endian 0.8-r1: Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays
 dev-ml/ocurl 0.6.1 0.7.4 0.7.5: OCaml interface to the libcurl library
 dev-ml/odns 0.3-r1: OCaml library to query DNS servers
 dev-ml/opam 1.2.0 1.2.1 1.2.2: A source-based package manager for OCaml
@@ -5086,7 +5086,7 @@ dev-ml/react 0.9.4 1.2.0: OCaml module for functional reactive programming
 dev-ml/reactiveData 0.1: Functional reactive programming with incremental changes in data structures
 dev-ml/res 4.0.3 4.0.4 4.0.6 4.0.7: Resizable Array and Buffer modules for O'Caml
 dev-ml/sexplib 112.35.00 113.00.00: Library for automated conversion of OCaml-values to and from S-expressions
-dev-ml/stringext 1.4.0: Extra string functions for OCaml
+dev-ml/stringext 1.4.0-r1: Extra string functions for OCaml
 dev-ml/textutils 112.17.00: Text output utilities
 dev-ml/type-conv 112.01.02 113.00.00 113.00.02: Mini library required for some other preprocessing libraries
 dev-ml/typehashlib 109.15.02: Syntax extension for deriving 'typehash' functions automatically
@@ -5101,7 +5101,7 @@ dev-ml/xml-light 2.2-r1 2.2-r2 2.2-r3: Minimal Xml parser and printer for OCaml
 dev-ml/xmlm 1.1.1 1.2.0: Ocaml XML manipulation module
 dev-ml/xstr 0.2.1: Thread-safe implementation of string searching/matching/splitting
 dev-ml/yojson 1.2.0 1.2.1 1.2.3: JSON parsing and pretty-printing library for OCaml
-dev-ml/zarith 1.3: Arithmetic and logic operations over arbitrary-precision integers
+dev-ml/zarith 1.3-r1: Arithmetic and logic operations over arbitrary-precision integers
 dev-ml/zed 1.2 1.4: Zed is an abstract engine for text edition
 dev-perl/Ace 1.920.0-r1: Object-Oriented Access to ACEDB Databases
 dev-perl/Acme-Damn 0.60.0: Module, that 'unblesses' Perl objects
