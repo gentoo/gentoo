@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/rgrinberg/stringext"
 SRC_URI="https://github.com/rgrinberg/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
