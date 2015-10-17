@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (18 Oct 2015)
+# Project discontinued by the ASF and now superseded by dev-java/tomcat-jstl-*
+# ebuilds. Masked for removal in 30 days. See bug #551032.
+dev-java/jakarta-jstl
+
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (16 Oct 2015)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
