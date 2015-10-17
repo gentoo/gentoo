@@ -5,7 +5,7 @@
 EAPI="5"
 GCONF_DEBUG="yes"
 
-inherit autotools eutils gnome2
+inherit eutils gnome2
 
 DESCRIPTION="GNOME 3 compositing window manager based on Clutter"
 HOMEPAGE="https://git.gnome.org/browse/mutter/"
@@ -13,7 +13,7 @@ HOMEPAGE="https://git.gnome.org/browse/mutter/"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="+introspection +kms test wayland"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 # libXi-1.7.4 or newer needed per:
 # https://bugzilla.gnome.org/show_bug.cgi?id=738944
@@ -22,12 +22,12 @@ COMMON_DEPEND="
 	>=x11-libs/cairo-1.10[X]
 	>=x11-libs/gtk+-3.9.11:3[X,introspection?]
 	>=dev-libs/glib-2.36.0:2[dbus]
-	>=media-libs/clutter-1.19.5:1.0[introspection?]
+	>=media-libs/clutter-1.21.3:1.0[introspection?]
 	>=media-libs/cogl-1.17.1:1.0=[introspection?]
 	>=media-libs/libcanberra-0.26[gtk3]
 	>=x11-libs/startup-notification-0.7
 	>=x11-libs/libXcomposite-0.2
-	>=gnome-base/gsettings-desktop-schemas-3.7.3[introspection?]
+	>=gnome-base/gsettings-desktop-schemas-3.15.92[introspection?]
 	gnome-base/gnome-desktop:3=
 	>sys-power/upower-0.99:=
 
@@ -60,7 +60,7 @@ COMMON_DEPEND="
 		virtual/libgudev
 		x11-libs/libdrm:= )
 	wayland? (
-		>=dev-libs/wayland-1.5.90
+		>=dev-libs/wayland-1.6.90
 		>=media-libs/clutter-1.20[wayland]
 		x11-base/xorg-server[wayland] )
 "
@@ -79,13 +79,8 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 src_prepare() {
-	# Compat with Ubuntu metacity themes (e.g. x11-themes/light-themes)
-	epatch "${FILESDIR}"/${PN}-3.2.1-ignore-shadow-and-padding.patch
-
-	# Automagic fixes, upstream bug #746929
-	epatch "${FILESDIR}"/${PN}-3.14.2-automagic.patch
-
-	eautoreconf
+	# Fallback to a default keymap if getting it from X fails (from 'master')
+	epatch "${FILESDIR}"/${PN}-3.16.3-fallback-keymap.patch
 	gnome2_src_prepare
 }
 

@@ -9,7 +9,7 @@ inherit eutils python-r1
 
 DESCRIPTION="Unit conversion program"
 HOMEPAGE="https://www.gnu.org/software/units/units.html"
-SRC_URI="mirror://gnu-alpha/${PN}/${P}.tar.gz"
+SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="FDL-1.3 GPL-3"
 SLOT="0"
@@ -17,7 +17,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="+units_cur"
 
 DEPEND="
-	>=sys-libs/readline-4.1-r2
+	sys-libs/readline:=
 	units_cur? (
 		dev-lang/python-exec:2
 	)
