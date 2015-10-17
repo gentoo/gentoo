@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm preinst setup
+DEPEND=dev-lang/perl sys-libs/zlib x11-libs/wxGTK:3.0[X] >=sys-apps/sed-4
+DESCRIPTION=simulator for Conway's Game of Life and other cellular automata
+EAPI=5
+HOMEPAGE=http://golly.sourceforge.net/
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl sys-libs/zlib x11-libs/wxGTK:3.0[X]
+SLOT=0
+SRC_URI=mirror://sourceforge/golly/golly-2.7-src.tar.gz
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	wxwidgets	e0c7fd61275cea7156be4143ba8c673a
+_md5_=f4f9818e4466e29db8dc18cd6d124e90
