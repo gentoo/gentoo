@@ -13,6 +13,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+DEPEND="dev-lang/perl"
+RDEPEND="${DEPEND}
+	dev-util/ctags"
+
 src_install() {
 	mkdir -p "${D}"/usr || die
 	perl Makefile.pl --install --prefix=/usr --destdir="${D}" || die

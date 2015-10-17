@@ -20,6 +20,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+DEPEND="dev-lang/perl"
+RDEPEND="${DEPEND}
+	dev-util/ctags"
+
 #if LIVE
 SRC_URI=
 KEYWORDS=

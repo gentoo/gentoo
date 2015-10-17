@@ -13,6 +13,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+DEPEND="dev-lang/perl"
+RDEPEND="${DEPEND}
+	dev-util/ctags"
+
 src_compile() {
 	:
 }
