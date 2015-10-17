@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/OCamlPro/ocplib-endian"
 SRC_URI="https://github.com/OCamlPro/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1-with-linking-exception"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
