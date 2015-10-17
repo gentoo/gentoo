@@ -67,7 +67,7 @@ src_install() {
 	dodoc AUTHORS ChangeLog NEWS
 
 	if use aqua ; then
-		cat > "${T}/${PN}" <<-EOF
+		cat > "${T}/${PN}" <<-EOF || die
 			#!${EPREFIX}/bin/bash
 			open "${EPREFIX}"/Applications/FileZilla.app
 		EOF
