@@ -5,6 +5,8 @@
 	<use>
 		<flag name="bindist">Disable EC support via <pkg>dev-libs/openssl</pkg></flag>
 		<flag name="connman">Enable <pkg>net-misc/connman</pkg>-based bearer plugin</flag>
+		<flag name="libproxy">Use <pkg>net-libs/libproxy</pkg> for automatic
+			HTTP/SOCKS proxy configuration</flag>
 		<flag name="networkmanager">Enable <pkg>net-misc/networkmanager</pkg>-based
 			bearer plugin</flag>
 	</use>
