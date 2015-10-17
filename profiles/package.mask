@@ -30,13 +30,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Sergey Popov <pinkbyte@gentoo.org> (17 Oct 2015)
-# Upstream is dead, last updated in 2002.
-# Crosscompile problems - bug #373347
-# Newer versions available in tree as net-dialup/freeradius-client
-# Masked for removal in 30 days.
-net-dialup/radiusclient
-
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (16 Oct 2015)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
