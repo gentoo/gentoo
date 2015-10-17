@@ -1,0 +1,36 @@
+From f33f7a5e9424544884a37b264bf88ee1866a56ac Mon Sep 17 00:00:00 2001
+From: Luis de Bethencourt <luis@debethencourt.com>
+Date: Tue, 28 Jul 2015 14:02:44 +0100
+Subject: clutter: update method to create video texture
+
+---
+ src/snappy.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/snappy.c b/src/snappy.c
+index c06fd10..94b6e5b 100644
+--- a/src/snappy.c
++++ b/src/snappy.c
+@@ -222,8 +222,6 @@ main (int argc, char *argv[])
+   ui->tags = tags;
+   ui->data_dir = data_dir;
+   interface_init (ui);
+-  video_texture = g_object_new (CLUTTER_TYPE_TEXTURE, "disable-slicing", TRUE,
+-      NULL);
+ 
+   /* Gstreamer engine */
+   engine = g_new (GstEngine, 1);
+@@ -232,7 +230,9 @@ main (int argc, char *argv[])
+     g_print ("ERROR: Failed to create clutter-gst sink element\n");
+     return FALSE;
+   }
+-  g_object_set (G_OBJECT (sink), "texture", video_texture, NULL);
++  video_texture = g_object_new (CLUTTER_TYPE_ACTOR, "content",
++      g_object_new (CLUTTER_GST_TYPE_CONTENT, "sink", sink, NULL),
++      "name", "texture", NULL);
+ 
+   ok = engine_init (engine, sink);
+   if (!ok)
+-- 
+cgit v0.11.2
+
