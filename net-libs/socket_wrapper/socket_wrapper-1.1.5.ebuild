@@ -8,7 +8,7 @@ inherit cmake-multilib
 
 DESCRIPTION="A library passing all socket communications through unix sockets"
 HOMEPAGE="https://cwrap.org/socket_wrapper.html"
-SRC_URI="ftp://ftp.samba.org/pub/cwrap/${P}.tar.gz"
+SRC_URI="https://ftp.samba.org/pub/cwrap/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
