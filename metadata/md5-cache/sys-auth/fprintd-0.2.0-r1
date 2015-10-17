@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/dbus-glib dev-libs/glib:2 sys-auth/libfprint sys-auth/polkit pam? ( sys-libs/pam )
 SLOT=0
 SRC_URI=http://cgit.freedesktop.org/libfprint/fprintd/snapshot/V_0_2_0.tar.bz2 -> fprintd-0.2.0.tar.bz2
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=451540fcbf6202241d57e7ac2873a619

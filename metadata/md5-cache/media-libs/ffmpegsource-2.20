@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=sys-libs/zlib libav? ( >=media-video/libav-9.17:0= ) !libav? ( >=media-video/ffmpeg-1.2.6-r1:0= )
 SLOT=0/3
 SRC_URI=https://github.com/FFMS/ffms2/archive/2.20.tar.gz -> ffmpegsource-2.20.tar.gz
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=54b6f2a332bf23b80298ac7fcac2505d

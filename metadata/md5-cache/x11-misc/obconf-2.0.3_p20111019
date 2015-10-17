@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=gnome-base/libglade:2.0 x11-libs/gtk+:2 x11-libs/startup-notification >=x11-wm/openbox-3.5.0_p20111019
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~hwoarang/distfiles/obconf-2.0.3_p20111019.tar.gz
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=4d8c9fa407c75d14017c7266998836d2

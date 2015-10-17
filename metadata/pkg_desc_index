@@ -1976,7 +1976,7 @@ app-office/eqe 1.3.0: A small LaTeX editor that produces images, with drag and d
 app-office/geierlein 0.6.1 0.6.2 0.7.1 0.7.3 0.7.8: Submit tax forms (Umsatzsteuervoranmeldung) to the german digital tax project ELSTER
 app-office/glabels 3.2.0 3.2.1: Program for creating labels and business cards
 app-office/gnucash 2.6.6 2.6.7: A personal finance manager
-app-office/gnumeric 1.12.22 1.12.23: The GNOME Spreadsheet
+app-office/gnumeric 1.12.23 1.12.24: The GNOME Spreadsheet
 app-office/grisbi 1.0.0: Grisbi is a personal accounting application for Linux
 app-office/gtg 0.3 0.3.1: Personal organizer for the GNOME desktop environment
 app-office/gtimelog 0.8.0 0.8.1: A small Gtk+ application for keeping track of your time
@@ -4707,7 +4707,7 @@ dev-libs/libmowgli 1.0.0 2.0.0 9999: Useful set of performance and usability-ori
 dev-libs/libmowgli-glib 0.1: GLib bridge for libmowgli-2 eventing
 dev-libs/libnatspec 0.2.6 0.2.6-r1: library to smooth charset/localization issues
 dev-libs/libnfc 1.4.2 1.5.0 1.5.1 1.5.1-r1 1.7.0-r1: Near Field Communications (NFC) library
-dev-libs/libnl 1.1.4 3.2.26 3.2.27_rc1 3.2.9999: A collection of libraries providing APIs to netlink protocol based Linux kernel interfaces
+dev-libs/libnl 1.1.4 3.2.26 3.2.27 3.2.9999: A collection of libraries providing APIs to netlink protocol based Linux kernel interfaces
 dev-libs/libnsfb 0.1.2 0.1.3-r1: framebuffer abstraction library, written in C
 dev-libs/libnsutils 0.0.1-r1: base64 and time library, written in C
 dev-libs/libntru 0.4.1: C Implementation of NTRUEncrypt
@@ -10584,7 +10584,7 @@ gnome-base/libgnomeprint 2.18.8-r1: Printer handling for Gnome
 gnome-base/libgnomeprintui 2.18.6-r1: User interface libraries for gnome print
 gnome-base/libgnomeui 2.24.5-r1: User Interface routines for Gnome
 gnome-base/libgtop 2.30.0: A library that provides top functionality to applications
-gnome-base/librsvg 2.40.9 2.40.10: Scalable Vector Graphics (SVG) rendering library
+gnome-base/librsvg 2.40.9 2.40.10 2.40.11: Scalable Vector Graphics (SVG) rendering library
 gnome-base/nautilus 3.14.2-r1 3.16.2: A file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r4: ORBit2 is a high-performance CORBA ORB
 gnome-extra/activity-log-manager 0.9.7 0.9.7-r1: GUI which lets you easily control what gets logged by Zeitgeist
@@ -15137,7 +15137,7 @@ sci-calculators/speedcrunch 0.10.1 0.11-r1 0.11-r2: Fast and usable calculator f
 sci-calculators/tiemu 3.03: Texas Instruments hand-helds emulator
 sci-calculators/tilp2 1.16-r1 1.17-r1: Communication program for Texas Instruments calculators
 sci-calculators/transcalc 0.14-r1: Microwave and RF transmission line calculator
-sci-calculators/units 2.11 2.11d 2.11f 2.11n: Unit conversion program
+sci-calculators/units 2.11 2.11n 2.12: Unit conversion program
 sci-calculators/wcalc 2.2.1 2.4: A flexible command-line scientific calculator
 sci-chemistry/GromacsWrapper 0.3.1 0.3.2: Python framework for Gromacs
 sci-chemistry/PyMca 4.6.2 4.6.2-r1: X-ray Fluorescence Toolkit
@@ -17790,7 +17790,7 @@ x11-libs/rep-gtk 0.90.8.1: A GTK+/libglade/GNOME language binding for the librep
 x11-libs/scw 0.4.7: A GTK+ widget set specifically designed for chat programs
 x11-libs/startup-notification 0.12 0.12-r1: Application startup notification and feedback library
 x11-libs/tslib 1.0-r3: Touchscreen Access Library
-x11-libs/vte 0.28.2-r207 0.36.4 0.38.3 0.40.2: Library providing a virtual terminal emulator widget
+x11-libs/vte 0.28.2-r207 0.36.4 0.36.5 0.38.3 0.40.2: Library providing a virtual terminal emulator widget
 x11-libs/wxGTK 2.8.12.1-r1 2.8.12.1-r2 2.9.4.1-r1 3.0.0.0 3.0.1.1 3.0.2.0 3.0.2.0-r1 3.0.2.0-r2: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
 x11-libs/xbae 4.60.4: Motif-based widget to display a grid of cells as a spreadsheet
 x11-libs/xcb-util 0.3.9 0.3.9-r1 0.4.0: X C-language Bindings sample implementations
@@ -18543,7 +18543,7 @@ x11-wm/matchbox-window-manager 1.2-r1: Light weight WM designed for use on PDA c
 x11-wm/matwm2 0.1.1: Simple EWMH compatible window manager with titlebars and frames
 x11-wm/muffin 2.4.4 2.4.5 2.6.1: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r3 0.9.24_p20100226-r4: A simple dynamic window manager for X, with features nicked from ratpoison and dwm
-x11-wm/mutter 3.14.4 3.16.3 3.16.3-r1: GNOME 3 compositing window manager based on Clutter
+x11-wm/mutter 3.16.3 3.16.3-r1 3.16.4: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.5.2-r1 3.6 3.6.1 9999: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20: Small and fast window manager

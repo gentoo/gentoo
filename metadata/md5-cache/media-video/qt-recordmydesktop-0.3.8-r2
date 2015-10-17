@@ -9,5 +9,5 @@ RDEPEND=>=media-video/recordmydesktop-0.3.8 x11-apps/xwininfo || ( =dev-lang/pyt
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/recordmydesktop/qt-recordmydesktop-0.3.8.tar.gz
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=fcfa8d1846d126f283ec58ab20a8bd11

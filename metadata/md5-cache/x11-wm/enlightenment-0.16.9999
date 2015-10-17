@@ -8,5 +8,5 @@ LICENSE=BSD
 PDEPEND=doc? ( app-doc/edox-data )
 RDEPEND=pulseaudio? ( media-sound/pulseaudio ) dbus? ( sys-apps/dbus ) pango? ( x11-libs/pango ) =media-libs/freetype-2* >=media-libs/imlib2-1.3.0[X] x11-libs/libSM x11-libs/libICE x11-libs/libX11 x11-libs/libXext x11-libs/libXfixes x11-libs/libXdamage x11-libs/libXxf86vm x11-libs/libXft xrandr? ( x11-libs/libXrandr ) x11-libs/libXrender x11-misc/xbitmaps xinerama? ( x11-libs/libXinerama ) xcomposite? ( x11-libs/libXcomposite ) nls? ( virtual/libintl ) virtual/libiconv
 SLOT=0
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	subversion	4fee0a764150bb4dda27ed4d2c4ed7ce	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	subversion	4fee0a764150bb4dda27ed4d2c4ed7ce	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=d7c7edb2e78823f1e4da0b8a4274bc20

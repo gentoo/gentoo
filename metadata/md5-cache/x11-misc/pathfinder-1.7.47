@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/fox:1.7 x11-libs/libICE x11-libs/libSM jpeg? ( virtual/jpeg ) png? ( media-libs/libpng:0 ) tiff? ( media-libs/tiff:0 )
 SLOT=0
 SRC_URI=ftp://ftp.fox-toolkit.org/pub/fox-1.7.47.tar.gz
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	fox	e4d855999fa2c4077e6723d257808bbe	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	fox	e4d855999fa2c4077e6723d257808bbe	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=423e178bce35e3eae32d05a1cbf29219

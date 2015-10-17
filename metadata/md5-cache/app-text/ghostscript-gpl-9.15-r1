@@ -10,5 +10,5 @@ RDEPEND=app-text/libpaper media-libs/fontconfig >=media-libs/freetype-2.4.9:2= m
 RESTRICT=djvu? ( bindist )
 SLOT=0
 SRC_URI=http://downloads.ghostscript.com/public/ghostscript-9.15.tar.bz2 mirror://gentoo/ghostscript-gpl-9.12-patchset-1.tar.bz2 djvu? ( mirror://sourceforge/djvu/gsdjvu-1.6.tar.gz )
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=dce7c116d5fac03b4b2eb13db100b04e

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/DirectFB-1.1.1 <dev-libs/DirectFB-1.6.3 alsa? ( media-libs/alsa-lib ) timidity? ( media-libs/libtimidity media-sound/timidity++ ) vorbis? ( media-libs/libvorbis ) mad? ( media-libs/libmad ) cddb? ( media-libs/libcddb ) ffmpeg? ( >=virtual/ffmpeg-9 )
 SLOT=0
 SRC_URI=http://www.directfb.org/downloads/Core/FusionSound-1.1.1.tar.gz
-_eclasses_=autotools	542bf3f83917668f3893f4da1ca238ff	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=63372666937e1e85fc46d5dad8bf4e92
