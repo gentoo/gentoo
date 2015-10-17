@@ -8,11 +8,11 @@ inherit eutils
 
 DESCRIPTION="A simple console menu program"
 HOMEPAGE="http://joeyh.name/code/pdmenu/"
-SRC_URI="mirror://debian/pool/main/p/pdmenu/pdmenu_${PV}.tar.gz"
+SRC_URI="mirror://debian/pool/main/p/${PN}/pdmenu_${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86"
+KEYWORDS="amd64 mips x86"
 IUSE="nls gpm examples"
 
 DEPEND="
