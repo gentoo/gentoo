@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <herd>ml</herd>
+    <herd>proxy-maintainers</herd>
+    <maintainer>
+        <email>tomboy64@sina.cn</email>
+    </maintainer>
+    <use>
+        <flag name="async">Support for asynchronous execution</flag>
+        <flag name="camlp4">Enable support for camlp4</flag>
+        <flag name="lwt">Enable threads via lwt</flag>
+    </use>
+</pkgmetadata>
