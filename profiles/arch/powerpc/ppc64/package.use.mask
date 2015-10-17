@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Michael Palimaka <kensington@gentoo.org> (17 Oct 2015)
+# Unkeyworded dependencies
+dev-qt/qtwebkit webchannel
+
 # James Le Cuirot <chewi@gentoo.org> (15 Aug 2015)
 # Java 7+ is required for websocket support.
 www-servers/tomcat websockets
