@@ -22,15 +22,15 @@ elif [[ ${PV%_p*} != ${PV} ]] ; then # Gentoo snapshot
 	SRC_URI="https://dev.gentoo.org/~lu_zero/libav/${P}.tar.xz"
 else # Official release
 	SRC_URI="https://libav.org/releases/${P}.tar.xz"
+	SRC_URI+=" https://dev.gentoo.org/~lu_zero/libav/patches/0001-x86-Put-COPY3_IF_LT-under-HAVE_6REGS.patch.gz"
 fi
 # 9999 does not have fate-*.tar.xz
 [[ ${PV%9999} != "" ]] && SRC_URI+=" test? ( https://dev.gentoo.org/~lu_zero/libav/fate-${PV%%.*}.tar.xz )"
 
 LICENSE="LGPL-2.1  gpl? ( GPL-3 )"
-SLOT="0/12"
-[[ ${PV} == *9999 ]] || KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64
-~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
-~x64-solaris ~x86-solaris"
+SLOT="0/11"
+[[ ${PV} == *9999 ]] || \
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE="aac alsa amr bs2b +bzip2 cdio cpudetection custom-cflags debug doc +encode faac fdk
 	frei0r fontconfig +gpl gsm +hardcoded-tables ieee1394 jack jpeg2k libressl mp3
 	+network openssl opus oss pic pulseaudio rtmp schroedinger sdl speex ssl
@@ -102,7 +102,11 @@ RDEPEND="
 	vaapi? ( >=x11-libs/libva-1.2.1-r1[${MULTILIB_USEDEP}] )
 	vdpau? ( >=x11-libs/libvdpau-0.7[${MULTILIB_USEDEP}] )
 	vpx? ( >=media-libs/libvpx-1.2.0_pre20130625[${MULTILIB_USEDEP}] )
-	X? ( >=x11-libs/libxcb-1.9.1[${MULTILIB_USEDEP}] )
+	X? (
+		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
+		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
+		>=x11-libs/libXfixes-5.0.1[${MULTILIB_USEDEP}]
+	)
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 "
 
@@ -131,7 +135,7 @@ RDEPEND="${RDEPEND}
 # x264 requires gpl2
 REQUIRED_USE="
 	rtmp? ( network )
-	amr? ( gpl ) aac? ( gpl ) x264? ( gpl ) cdio? ( gpl ) x265? ( gpl )
+	amr? ( gpl ) aac? ( gpl ) x264? ( gpl ) X? ( gpl ) cdio? ( gpl ) x265? ( gpl )
 	test? ( encode zlib )
 	fontconfig? ( truetype )
 "
@@ -149,6 +153,8 @@ src_unpack() {
 
 src_prepare() {
 	epatch_user
+
+	epatch "${WORKDIR}/0001-x86-Put-COPY3_IF_LT-under-HAVE_6REGS.patch"
 
 	# if we have snapshot then we need to hardcode the version
 	if [[ ${PV%_p*} != ${PV} ]]; then
@@ -220,7 +226,7 @@ multilib_src_configure() {
 	for i in alsa oss jack; do
 		use ${i} || myconf+=( --disable-indev=${i} )
 	done
-	use X && myconf+=( --enable-libxcb )
+	use X && myconf+=( --enable-x11grab )
 	# Outdevs
 	for i in alsa oss ; do
 		use ${i} || myconf+=( --disable-outdev=${i} )
@@ -278,11 +284,6 @@ multilib_src_configure() {
 
 	# Misc stuff
 	use hardcoded-tables && myconf+=( --enable-hardcoded-tables )
-
-	# Forcing arm would make the compiler break left and right
-	if [[ ${ABI} == arm ]]; then
-		filter-flags -marm
-	fi
 
 	# Specific workarounds for too-few-registers arch...
 	if [[ ${ABI} == x86 ]]; then
