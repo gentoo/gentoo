@@ -3725,10 +3725,10 @@ dev-java/backport-util-concurrent 3.1 3.1-r1: A portability wrapper for java.uti
 dev-java/balloontip 1.2.1: A balloon tip component to spice up your Java Swing applications
 dev-java/batik 1.8-r2: Java based SVG toolkit
 dev-java/bcel 5.2-r2 5.2-r3 6.0_rc3: The Byte Code Engineering Library: analyze, create, manipulate Java class files
-dev-java/bcmail 1.38-r4 1.45-r3 1.50-r1 1.52-r1: Java cryptography APIs
+dev-java/bcmail 1.38-r4 1.38-r5 1.45-r3 1.45-r4 1.50-r1 1.50-r2 1.52-r1 1.52-r2: Java cryptography APIs
 dev-java/bcpg 1.50-r1 1.52-r1: Java cryptography APIs
-dev-java/bcpkix 1.50-r1 1.52-r1: Java cryptography APIs
-dev-java/bcprov 1.38-r4 1.40-r2 1.45-r2 1.48-r2 1.49-r4 1.50-r2 1.50-r3 1.52-r1 1.52-r2: Java cryptography APIs
+dev-java/bcpkix 1.50-r1 1.50-r2 1.52-r1: Java cryptography APIs
+dev-java/bcprov 1.38-r4 1.40-r2 1.45-r2 1.48-r2 1.49-r4 1.50-r2 1.50-r3 1.50-r4 1.52-r1 1.52-r2 1.52-r3: Java cryptography APIs
 dev-java/bctsp 1.45-r1: Java cryptography APIs
 dev-java/beansbinding 1.2.1 1.2.1-r1 1.2.1-r2: Implementation of JSR295
 dev-java/blowfishj 2.14-r3: Blowfish implementation in Java
@@ -3913,7 +3913,7 @@ dev-java/istack-commons-buildtools 2.22-r1: IStack Commons - Buildtools jar
 dev-java/istack-commons-runtime 2.22: IStack Commons - Runtime jar
 dev-java/istack-commons-soimp 2.22: IStack Commons - Soimp jar
 dev-java/istack-commons-tools 2.22: IStack Commons - Tools jar
-dev-java/itext 2.1.5-r2 5.5.4 5.5.4-r1: Java library that generate documents in the Portable Document Format (PDF) and/or HTML.
+dev-java/itext 2.1.5-r2 5.5.4 5.5.4-r1 5.5.4-r2: Java library that generate documents in the Portable Document Format (PDF) and/or HTML.
 dev-java/j2ssh 0.2.9: Java implementation of the SSH protocol
 dev-java/jackrabbit-webdav 2.10.1: Fully conforming implementation of the JRC API (specified in JSR 170 and 283)
 dev-java/jackson 1.9.13 2.5.1 2.5.2: High-performance JSON processor
@@ -8035,7 +8035,7 @@ dev-qt/qtscript 4.8.5 4.8.6-r2 4.8.7 5.4.2-r1: Application scripting library for
 dev-qt/qtsensors 5.4.2: Hardware sensor access library for the Qt5 framework
 dev-qt/qtserialport 5.4.2: Serial port abstraction library for the Qt5 framework
 dev-qt/qtsingleapplication 2.6.1_p20150629: Qt library to start applications only once per user
-dev-qt/qtsql 4.8.5 4.8.6-r1 4.8.7 5.4.2: SQL abstraction library for the Qt5 tooolkit
+dev-qt/qtsql 4.8.5 4.8.6-r1 4.8.7-r1 5.4.2: SQL abstraction library for the Qt5 tooolkit
 dev-qt/qtsvg 4.8.5 4.8.6-r1 4.8.7 5.4.2: SVG rendering library for the Qt5 framework
 dev-qt/qttest 4.8.5 4.8.6-r1 4.8.7 5.4.2: Unit testing library for the Qt5 framework
 dev-qt/qttranslations 4.8.6-r1 4.8.7 5.4.2: Translation files for the Qt5 framework
