@@ -31,7 +31,7 @@ SLOT="0/11"
 [[ ${PV} == *9999 ]] || \
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE="aac alsa amr bs2b +bzip2 cdio cpudetection custom-cflags debug doc +encode faac fdk
-	frei0r fontconfig +gpl gsm +hardcoded-tables ieee1394 jack jpeg2k mp3
+	frei0r fontconfig +gpl gsm +hardcoded-tables ieee1394 jack jpeg2k libressl mp3
 	+network openssl opus oss pic pulseaudio rtmp schroedinger sdl speex ssl
 	static-libs test theora threads tools truetype twolame v4l vaapi vdpau vorbis vpx X
 	wavpack webp x264 x265 xvid +zlib"
@@ -87,7 +87,10 @@ RDEPEND="
 	pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] )
 	rtmp? ( >=media-video/rtmpdump-2.4_p20131018[${MULTILIB_USEDEP}] )
 	ssl? (
-		openssl? ( >=dev-libs/openssl-1.0.1h-r2[${MULTILIB_USEDEP}] )
+		openssl? (
+			!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
+			libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
+		)
 		!openssl? ( >=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP}] )
 	)
 	sdl? ( >=media-libs/libsdl-1.2.15-r4[sound,video,${MULTILIB_USEDEP}] )
