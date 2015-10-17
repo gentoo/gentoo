@@ -1,0 +1,128 @@
+From 872fc2ed3d0339559e4023523fa0935f168f631a Mon Sep 17 00:00:00 2001
+From: Luis de Bethencourt <luis@debethencourt.com>
+Date: Tue, 28 Jul 2015 12:06:16 +0100
+Subject: clutter: upgrade to clutter-gst-3.0
+
+---
+ configure.ac         | 4 ++--
+ src/gst_engine.c     | 2 +-
+ src/gst_engine.h     | 5 +++--
+ src/snappy.c         | 7 ++-----
+ src/user_interface.h | 4 ++++
+ 5 files changed, 12 insertions(+), 10 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index b2986c6..75ffb8d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -35,7 +35,7 @@ AC_CANONICAL_HOST
+ # keep one single GST_REQ, core/base should be same versions anyway
+ GST_REQ=1.4.0
+ CLUTTER_REQS=1.20.0
+-CLUTTER_GST_REQS=2.0.12
++CLUTTER_GST_REQS=2.99.2
+ CLUTTER_GTK_REQS=1.6.0
+ GTK_REQS=3.5.0
+ GIO_REQ=2.32
+@@ -55,7 +55,7 @@ PKG_CHECK_MODULES([CLUTTER],
+ AC_SUBST(CLUTTER_CFLAGS)
+ AC_SUBST(CLUTTER_LIBS)
+ 
+-PKG_CHECK_MODULES([CLUTTER_GST], [clutter-gst-2.0 >= $CLUTTER_GST_REQS])
++PKG_CHECK_MODULES([CLUTTER_GST], [clutter-gst-3.0 >= $CLUTTER_GST_REQS])
+ AC_SUBST(CLUTTER_GST_CFLAGS)
+ AC_SUBST(CLUTTER_GST_LIBS)
+ 
+diff --git a/src/gst_engine.c b/src/gst_engine.c
+index 8fc16d4..431d77c 100644
+--- a/src/gst_engine.c
++++ b/src/gst_engine.c
+@@ -724,7 +724,7 @@ cycle_streams (GstEngine * engine, guint streamid)
+ 
+ /*            Init GstEngine variables           */
+ gboolean
+-engine_init (GstEngine * engine, GstElement * sink)
++engine_init (GstEngine * engine, ClutterGstVideoSink * sink)
+ {
+   engine->playing = FALSE;
+   engine->direction_foward = TRUE;
+diff --git a/src/gst_engine.h b/src/gst_engine.h
+index 70dce63..1c044eb 100644
+--- a/src/gst_engine.h
++++ b/src/gst_engine.h
+@@ -24,6 +24,7 @@
+ #define __GST_ENGINE_H__
+ 
+ #include <gst/gst.h>
++#include <clutter-gst/clutter-gst.h>
+ 
+ /* GStreamer Interfaces */
+ #include <gst/video/navigation.h>
+@@ -50,7 +51,7 @@ struct _GstEngine
+   gchar *uri;
+ 
+   GstElement *player;
+-  GstElement *sink;
++  ClutterGstVideoSink *sink;
+ 
+   GstBus *bus;
+ 
+@@ -64,7 +65,7 @@ gboolean bus_call (GstBus * bus, GstMessage * msg, gpointer data);
+ gboolean change_state (GstEngine * engine, gchar * state);
+ gboolean check_missing_plugins_error (GstEngine * engine, GstMessage * msg);
+ gboolean cycle_streams (GstEngine * engine, guint streamid);
+-gboolean engine_init (GstEngine * engine, GstElement * sink);
++gboolean engine_init (GstEngine * engine, ClutterGstVideoSink * sink);
+ gboolean engine_change_offset (GstEngine * engine, gint64 av_offest);
+ gboolean engine_change_speed (GstEngine * engine, gdouble rate);
+ void engine_load_uri (GstEngine * engine, gchar * uri);
+diff --git a/src/snappy.c b/src/snappy.c
+index c2bb2d0..c06fd10 100644
+--- a/src/snappy.c
++++ b/src/snappy.c
+@@ -29,9 +29,6 @@
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include <string.h>
+-#include <clutter/clutter.h>
+-#include <clutter-gst/clutter-gst.h>
+-#include <clutter-gtk/clutter-gtk.h>
+ 
+ #include "user_interface.h"
+ 
+@@ -160,7 +157,7 @@ main (int argc, char *argv[])
+   UserInterface *ui = NULL;
+   GstEngine *engine = NULL;
+   ClutterActor *video_texture;
+-  GstElement *sink;
++  ClutterGstVideoSink *sink;
+ 
+   gboolean ok, blind = FALSE, fullscreen = FALSE, hide = FALSE, loop = FALSE;
+   gboolean secret = FALSE, tags = FALSE;
+@@ -230,7 +227,7 @@ main (int argc, char *argv[])
+ 
+   /* Gstreamer engine */
+   engine = g_new (GstEngine, 1);
+-  sink = gst_element_factory_make ("cluttersink", "video-sink");
++  sink = clutter_gst_video_sink_new ();
+   if (sink == NULL) {
+     g_print ("ERROR: Failed to create clutter-gst sink element\n");
+     return FALSE;
+diff --git a/src/user_interface.h b/src/user_interface.h
+index 6fe43c5..b011da0 100644
+--- a/src/user_interface.h
++++ b/src/user_interface.h
+@@ -23,6 +23,10 @@
+ #ifndef __USER_INTERFACE_H__
+ #define __USER_INTERFACE_H__
+ 
++#include <clutter/clutter.h>
++#include <clutter-gst/clutter-gst.h>
++#include <clutter-gtk/clutter-gtk.h>
++
+ #include <gtk/gtk.h>
+ 
+ #include "gst_engine.h"
+-- 
+cgit v0.11.2
+
