@@ -13,7 +13,7 @@ SRC_URI="mirror://mysql/Downloads/${URI_DIR}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm ~ppc ppc64 sparc x86"
 IUSE="debug examples gcov static-libs"
 
 DEPEND="virtual/libmysqlclient:=
