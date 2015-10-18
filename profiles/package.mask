@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Amy Winston <amynka@gentoo.org> (18 Oct 2015)
+# Fails to build for ages. Lot of bugs repaired
+# in new version. Masked for removal in 30 days.
+=sci-geosciences/grass-6.4.2
+
 # Patrice Clement <monsieurp@gentoo.org> (18 Oct 2015)
 # Project discontinued by the ASF and now superseded by dev-java/tomcat-jstl-*
 # ebuilds. Masked for removal in 30 days. See bug #551032.

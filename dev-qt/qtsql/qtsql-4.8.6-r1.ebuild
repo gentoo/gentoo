@@ -9,9 +9,9 @@ inherit multilib qt4-build-multilib
 DESCRIPTION="The SQL module for the Qt toolkit"
 
 if [[ ${QT4_BUILD_TYPE} == live ]]; then
-	KEYWORDS="alpha arm hppa ia64 ppc ppc64"
+	KEYWORDS="alpha arm hppa ia64 ppc ppc64 sparc"
 else
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd"
+	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
 fi
 
 IUSE="freetds mysql oci8 odbc postgres qt3support +sqlite"
