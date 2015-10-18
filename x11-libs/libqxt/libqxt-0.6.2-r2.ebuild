@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit multilib qt4-r2
+inherit multilib qmake-utils qt4-r2
 
 DESCRIPTION="The Qt eXTension library provides cross-platform utility classes for the Qt toolkit"
 HOMEPAGE="http://libqxt.org/"
@@ -57,7 +57,7 @@ src_configure() {
 		-prefix "${EPREFIX}/usr"
 		-libdir "${EPREFIX}/usr/$(get_libdir)"
 		-docdir "${EPREFIX}/usr/share/doc/${PF}"
-		-qmake-bin "${EPREFIX}/usr/bin/qmake"
+		-qmake-bin "${EPREFIX}/$(qt4_get_bindir)/qmake"
 		$(use debug && echo -debug || echo -release)
 		$(use berkdb || echo -no-db -nomake berkeley)
 		$(use doc || echo -nomake docs)
