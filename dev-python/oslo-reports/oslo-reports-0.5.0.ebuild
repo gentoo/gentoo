@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="generified reports for openstack"
 HOMEPAGE="http://docs.openstack.org/developer/oslo.reports"
 SRC_URI="mirror://pypi/${PN:0:1}/oslo.reports/oslo.reports-${PV}.tar.gz"
-S="${WORKDIR}/oslo.messaging-${PV}"
+S="${WORKDIR}/oslo.reports-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
