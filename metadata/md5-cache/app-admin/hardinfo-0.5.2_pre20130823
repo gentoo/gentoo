@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-libs/glib:2 net-libs/libsoup x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/pango virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=A system information and benchmark tool for Linux systems
 EAPI=5
-HOMEPAGE=http://hardinfo.berlios.de/
+HOMEPAGE=http://hardinfo.org/
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 net-libs/libsoup x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/pango
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~hasufell/distfiles/hardinfo-0.5.2_pre20130823.tar.xz
 _eclasses_=cmake-utils	7dc05d514e5011a2a16bfa7a32e69587	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=6f3d4654a881088896ee488cd13cbac7
+_md5_=ff3ea62d30472077c43e120a45832f44

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=dev-cpp/gtkmm:2.4 dev-cpp/pangomm:1.4 media-libs/taglib dev-db/sqlite:3 || ( media-gfx/imagemagick[cxx] media-gfx/graphicsmagick[imagemagick] ) mad? ( media-libs/libmad ) flac? ( media-libs/flac[cxx] ) ffmpeg? ( >=virtual/ffmpeg-9 ) audioscrobbler? ( >=media-libs/lastfmlib-0.4 ) dbus? ( dev-libs/dbus-glib ) libnotify? ( x11-libs/libnotify ) openal? ( media-libs/openal ) alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio ) dev-libs/libxdg-basedir dev-util/intltool >=sys-devel/automake-1.11 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Lightweight audio player
+EAPI=4
+HOMEPAGE=https://github.com/dirkvdb/gejengel
+IUSE=+alsa audioscrobbler debug dbus +ffmpeg flac libnotify mad openal pulseaudio syslog
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-cpp/gtkmm:2.4 dev-cpp/pangomm:1.4 media-libs/taglib dev-db/sqlite:3 || ( media-gfx/imagemagick[cxx] media-gfx/graphicsmagick[imagemagick] ) mad? ( media-libs/libmad ) flac? ( media-libs/flac[cxx] ) ffmpeg? ( >=virtual/ffmpeg-9 ) audioscrobbler? ( >=media-libs/lastfmlib-0.4 ) dbus? ( dev-libs/dbus-glib ) libnotify? ( x11-libs/libnotify ) openal? ( media-libs/openal ) alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio )
+SLOT=0
+SRC_URI=https://gejengel.googlecode.com/files/gejengel-0.1.4.tar.gz
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=47e3df6e579b03cf9f7df122047a0640
