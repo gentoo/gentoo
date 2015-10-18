@@ -16,7 +16,7 @@ SRC_URI="https://atinject.googlecode.com/files/${MY_P}-bundle.jar"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 
 DEPEND=">=virtual/jdk-1.5
 	app-arch/unzip"
