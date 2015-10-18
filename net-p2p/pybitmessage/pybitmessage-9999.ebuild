@@ -28,7 +28,7 @@ RDEPEND="${DEPEND}
 src_compile() { :; }
 
 src_install () {
-	cat >> "${T}"/${PN}-wrapper <<-EOF
+	cat >> "${T}"/${PN}-wrapper <<-EOF || die
 	#!/usr/bin/env python
 	import os
 	import sys
