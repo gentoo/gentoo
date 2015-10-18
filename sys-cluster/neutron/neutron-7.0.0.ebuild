@@ -117,7 +117,7 @@ RDEPEND="
 	>=dev-python/webob-1.2.3[${PYTHON_USEDEP}]
 	<=dev-python/webob-1.4.1[${PYTHON_USEDEP}]
 	>=dev-python/python-keystoneclient-1.6.0[${PYTHON_USEDEP}]
-	<=dev-python/python-keystoneclient-1.7.2[${PYTHON_USEDEP}]
+	<=dev-python/python-keystoneclient-1.7.2-r9999[${PYTHON_USEDEP}]
 	>=dev-python/alembic-0.8.0[${PYTHON_USEDEP}]
 	<=dev-python/alembic-0.8.2[${PYTHON_USEDEP}]
 	~dev-python/six-1.9.0[${PYTHON_USEDEP}]

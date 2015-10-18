@@ -127,7 +127,7 @@ RDEPEND="
 	!~dev-python/jsonschema-2.5.0[${PYTHON_USEDEP}]
 	<dev-python/jsonschema-3.0.0[${PYTHON_USEDEP}]
 	>=dev-python/python-keystoneclient-1.6.0[${PYTHON_USEDEP}]
-	<=dev-python/python-keystoneclient-1.7.2[${PYTHON_USEDEP}]
+	<=dev-python/python-keystoneclient-1.7.2-r9999[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.14[${PYTHON_USEDEP}]
 	<=dev-python/pyopenssl-0.15.1[${PYTHON_USEDEP}]
 	~dev-python/six-1.9.0[${PYTHON_USEDEP}]
