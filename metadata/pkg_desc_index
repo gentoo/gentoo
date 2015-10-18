@@ -18559,7 +18559,7 @@ x11-wm/page 1.9.6-r3: A mouse friendly tiling window manager
 x11-wm/pekwm 0.1.17-r1: A lightweight window manager initially based on aewm++
 x11-wm/plwm 2.7_rc1-r1: Python classes for, and an implementation of, a window manager
 x11-wm/qtile 0.5-r1 0.6 0.7.0 0.8.0 0.9.1-r1 0.10.0 0.10.1 9999: A full-featured, hackable tiling window manager written in Python
-x11-wm/ratpoison 1.4.8 9999: an extremely light-weight and barebones wm modelled after screen
+x11-wm/ratpoison 1.4.8 1.4.8-r1 9999: window manager without mouse dependency
 x11-wm/sawfish 1.9.1-r2: Extensible window manager using a Lisp-based scripting language
 x11-wm/selectwm 0.4.1: window manager selector tool
 x11-wm/sithwm 1.2.3: Minimalist Window Manager for X

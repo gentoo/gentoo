@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare unpack
-DEPEND=emacs? ( virtual/emacs ) history? ( sys-libs/readline ) virtual/perl-Pod-Parser x11-libs/libXinerama x11-libs/libXtst xft? ( x11-libs/libXft ) app-arch/xz-utils virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
-DESCRIPTION=an extremely light-weight and barebones wm modelled after screen
+DEPEND=emacs? ( virtual/emacs ) history? ( sys-libs/readline:= ) xft? ( x11-libs/libXft ) virtual/perl-Pod-Parser x11-libs/libXinerama x11-libs/libXtst app-arch/xz-utils virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=window manager without mouse dependency
 EAPI=5
 HOMEPAGE=http://www.nongnu.org/ratpoison/
 IUSE=debug emacs +history sloppy +xft
 LICENSE=GPL-2
-RDEPEND=emacs? ( virtual/emacs ) history? ( sys-libs/readline ) virtual/perl-Pod-Parser x11-libs/libXinerama x11-libs/libXtst xft? ( x11-libs/libXft )
+RDEPEND=emacs? ( virtual/emacs ) history? ( sys-libs/readline:= ) xft? ( x11-libs/libXft ) virtual/perl-Pod-Parser x11-libs/libXinerama x11-libs/libXtst
 SLOT=0
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	43da5163ba106e87d22d2e7d6d67537f	git-r3	1502b9838d043db47700b8120083e637	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=09c6c913073b691aae4d82fe95a0ee61
+_md5_=5079804f675b1993b313449e296c41c6

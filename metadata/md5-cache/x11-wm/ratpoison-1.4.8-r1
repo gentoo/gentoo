@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare
+DEPEND=emacs? ( virtual/emacs ) history? ( sys-libs/readline:= ) xft? ( x11-libs/libXft ) virtual/perl-Pod-Parser x11-libs/libXinerama x11-libs/libXtst app-arch/xz-utils virtual/pkgconfig
+DESCRIPTION=window manager without mouse dependency
+EAPI=5
+HOMEPAGE=http://www.nongnu.org/ratpoison/
+IUSE=debug emacs +history sloppy +xft
+KEYWORDS=~amd64 ~hppa ~ppc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=emacs? ( virtual/emacs ) history? ( sys-libs/readline:= ) xft? ( x11-libs/libXft ) virtual/perl-Pod-Parser x11-libs/libXinerama x11-libs/libXtst
+SLOT=0
+SRC_URI=http://download.savannah.gnu.org/releases/ratpoison/ratpoison-1.4.8.tar.xz
+_eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=a6e6a9cf9b6ae91b4836c37e73d93b57
