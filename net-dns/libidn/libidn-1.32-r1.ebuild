@@ -21,10 +21,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	nls? ( >=sys-devel/gettext-0.17 )
-	java? (
-		>=virtual/jdk-1.5
-		doc? ( dev-java/gjdoc )
-	)
+	java? ( >=virtual/jdk-1.5 )
 "
 RDEPEND="${COMMON_DEPEND}
 	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
@@ -46,7 +43,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE=${S} \
+	ECONF_SOURCE=${S} GJDOC=javadoc \
 	econf \
 		$(multilib_native_use_enable java) \
 		$(multilib_native_use_enable mono csharp mono) \
@@ -63,8 +60,9 @@ multilib_src_configure() {
 multilib_src_compile() {
 	default
 
-	if multilib_is_native_abi && use emacs; then
-		elisp-compile "${S}"/src/*.el || die
+	if multilib_is_native_abi; then
+		use emacs && elisp-compile "${S}"/src/*.el
+		use java && use doc && emake -C java/src/main/java javadoc
 	fi
 }
 
@@ -77,12 +75,9 @@ multilib_src_install() {
 	emake DESTDIR="${D}" install
 
 	if multilib_is_native_abi && use java; then
-		java-pkg_newjar java/${P}.jar ${PN}.jar || die
+		java-pkg_newjar java/${P}.jar ${PN}.jar
 		rm -r "${ED}"/usr/share/java || die
-
-		if use doc ; then
-			java-pkg_dojavadoc doc/java
-		fi
+		use doc && java-pkg_dojavadoc "${S}"/doc/java
 	fi
 }
 
