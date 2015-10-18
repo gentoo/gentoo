@@ -1,0 +1,32 @@
+From d30eeb9c9866161a16fc38fcca7ad3772d30fcc8 Mon Sep 17 00:00:00 2001
+From: Davide Pesavento <pesa@gentoo.org>
+Date: Sun, 18 Oct 2015 02:43:59 +0200
+Subject: Tests: add missing column to tst_fileutils::parentDir testcase
+
+The third column was accidentally removed from one data row in
+commit 271794fbc9cbeaa3393808691742893602de6cf5
+
+Fixes the following fatal error:
+QFETCH: Requested testdata 'expectFailMessage' not available, check your _data function.
+
+Change-Id: I4a09df2e044b4dcee1ed2ffc589082a3e2601232
+---
+ tests/auto/utils/fileutils/tst_fileutils.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/auto/utils/fileutils/tst_fileutils.cpp b/tests/auto/utils/fileutils/tst_fileutils.cpp
+index dd02f57..0b1e502 100644
+--- a/tests/auto/utils/fileutils/tst_fileutils.cpp
++++ b/tests/auto/utils/fileutils/tst_fileutils.cpp
+@@ -62,7 +62,7 @@ void tst_fileutils::parentDir_data()
+     QTest::newRow("//") << "//" << "" << "";
+     QTest::newRow("/tmp/dir") << "/tmp/dir" << "/tmp" << "";
+     QTest::newRow("relative/path") << "relative/path" << "relative" << "";
+-    QTest::newRow("relativepath") << "relativepath" << ".";
++    QTest::newRow("relativepath") << "relativepath" << "." << "";
+ 
+     // Windows stuff:
+ #ifdef Q_OS_WIN
+-- 
+2.6.2
+
