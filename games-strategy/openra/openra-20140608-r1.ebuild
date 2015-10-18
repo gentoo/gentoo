@@ -22,7 +22,7 @@ DEPEND="dev-dotnet/libgdiplus
 	media-libs/freetype:2[X]
 	media-libs/libsdl2[X,opengl,video]
 	media-libs/openal
-	virtual/jpeg
+	virtual/jpeg:0
 	virtual/opengl"
 RDEPEND="${DEPEND}"
 

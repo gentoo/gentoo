@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,16 +13,17 @@ SRC_URI="https://github.com/OpenRA/OpenRA/tarball/release-${PV} -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="cg tools"
+IUSE="tools"
+
+QA_PREBUILT="$(games_get_libdir)/openra/liblua*"
 
 DEPEND="dev-dotnet/libgdiplus
 	dev-lang/mono
 	media-libs/freetype:2[X]
-	media-libs/libsdl[X,opengl,video]
+	media-libs/libsdl2[X,opengl,video]
 	media-libs/openal
-	virtual/jpeg
-	virtual/opengl
-	cg? ( >=media-gfx/nvidia-cg-toolkit-2.1.0017 )"
+	virtual/jpeg:0
+	virtual/opengl"
 RDEPEND="${DEPEND}"
 
 pkg_setup() {
@@ -34,9 +35,9 @@ src_unpack() {
 	vcs-snapshot_src_unpack
 }
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-makefile.patch
+src_configure() { :; }
 
+src_prepare() {
 	# register game-version
 	sed \
 		-e "/Version/s/{DEV_VERSION}/release-${PV}/" \
@@ -45,31 +46,33 @@ src_prepare() {
 
 src_compile() {
 	emake $(usex tools "all" "")
+	emake native-dependencies
+	emake docs
 }
 
 src_install() {
 	emake \
-		datadir="${GAMES_DATADIR}" \
+		datadir="/usr/share" \
 		bindir="${GAMES_BINDIR}" \
-		libdir="$(games_get_libdir)/${PN}" \
+		libdir="$(games_get_libdir)" \
 		DESTDIR="${D}" \
-		$(usex tools "install-all" "install")
+		$(usex tools "install-all" "install") install-linux-scripts
+
+	exeinto "$(games_get_libdir)/openra"
+	doexe Eluant.dll.config liblua$(usex amd64 "64" "32")*
 
 	# icons
 	insinto /usr/share/icons/
 	doins -r packaging/linux/hicolor
 
 	# desktop entries
-	local myrenderer=$(usex cg Cg Gl)
-	make_desktop_entry "${PN} Game.Mods=cnc Graphics.Renderer=${myrenderer}" \
-		"OpenRA CNC" ${PN}
-	make_desktop_entry "${PN} Game.Mods=ra Graphics.Renderer=${myrenderer}" \
-		"OpenRA RA" ${PN}
-	make_desktop_entry "${PN} Game.Mods=d2k Graphics.Renderer=${myrenderer}" \
-		"OpenRA Dune2k" ${PN}
+	make_desktop_entry "${PN} Game.Mods=cnc" "OpenRA CNC" ${PN}
+	make_desktop_entry "${PN} Game.Mods=ra" "OpenRA RA" ${PN}
+	make_desktop_entry "${PN} Game.Mods=d2k" "OpenRA Dune2k" ${PN}
 	make_desktop_entry "${PN}-editor" "OpenRA Map Editor" ${PN}
 
-	dodoc "${FILESDIR}"/README.gentoo README.md HACKING CHANGELOG
+	dodoc "${FILESDIR}"/README.gentoo README.md CONTRIBUTING.md AUTHORS \
+		DOCUMENTATION.md Lua-API.md
 
 	# file permissions
 	prepgamesdirs
@@ -84,12 +87,8 @@ pkg_postinst() {
 	games_pkg_postinst
 	gnome2_icon_cache_update
 
-	if ! use cg ; then
-		elog "If you have problems starting the game consider switching"
-		elog "to Graphics.Renderer=Cg in openra*.desktop or manually"
-		elog "run:"
-		elog "${PN} Game.Mods=\$mod Graphics.Renderer=Cg"
-	fi
+	elog "optional dependencies:"
+	elog "  media-gfx/nvidia-cg-toolkit (fallback renderer if OpenGL fails)"
 }
 
 pkg_postrm() {

@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=4
 
-inherit eutils mono-env gnome2-utils vcs-snapshot games
+inherit eutils mono gnome2-utils vcs-snapshot games
 
 DESCRIPTION="A free RTS engine supporting games like Command & Conquer and Red Alert"
 HOMEPAGE="http://open-ra.org/"
@@ -13,59 +13,56 @@ SRC_URI="https://github.com/OpenRA/OpenRA/tarball/release-${PV} -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="tools"
+IUSE="cg"
 
 DEPEND="dev-dotnet/libgdiplus
 	dev-lang/mono
 	media-libs/freetype:2[X]
-	|| (
-		media-libs/libsdl[X,opengl,video]
-		media-libs/libsdl2[X,opengl,video]
-	)
+	media-libs/libsdl[X,opengl,video]
 	media-libs/openal
-	virtual/jpeg
-	virtual/opengl"
+	virtual/jpeg:0
+	virtual/opengl
+	cg? ( >=media-gfx/nvidia-cg-toolkit-2.1.0017 )"
 RDEPEND="${DEPEND}"
-
-pkg_setup() {
-	mono-env_pkg_setup
-	games_pkg_setup
-}
 
 src_unpack() {
 	vcs-snapshot_src_unpack
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-sdl2.patch
+	epatch "${FILESDIR}"/${P}-sound.patch
+
 	# register game-version
 	sed \
 		-e "/Version/s/{DEV_VERSION}/release-${PV}/" \
-		-i mods/{ra,cnc,d2k}/mod.yaml || die
+		-i mods/{ra,cnc}/mod.yaml || die
 }
 
 src_compile() {
-	emake $(usex tools "all" "")
+	emake all
 }
 
 src_install() {
 	emake \
+		datadir="${GAMES_DATADIR}" \
 		bindir="${GAMES_BINDIR}" \
-		libexecdir="$(games_get_libdir)" \
+		libdir="$(games_get_libdir)/${PN}" \
 		DESTDIR="${D}" \
-		$(usex tools "install-all" "install")
+		install
 
 	# icons
 	insinto /usr/share/icons/
 	doins -r packaging/linux/hicolor
 
 	# desktop entries
-	make_desktop_entry "${PN} Game.Mods=cnc" "OpenRA CNC" ${PN}
-	make_desktop_entry "${PN} Game.Mods=ra" "OpenRA RA" ${PN}
-	make_desktop_entry "${PN} Game.Mods=d2k" "OpenRA Dune2k" ${PN}
+	local myrenderer=$(usex cg Cg Gl)
+	make_desktop_entry "${PN} Game.Mods=cnc Graphics.Renderer=${myrenderer}" \
+		"OpenRA CNC" ${PN}
+	make_desktop_entry "${PN} Game.Mods=ra Graphics.Renderer=${myrenderer}" \
+		"OpenRA RA" ${PN}
 	make_desktop_entry "${PN}-editor" "OpenRA Map Editor" ${PN}
 
-	dodoc "${FILESDIR}"/README.gentoo README.md CHANGELOG
+	dodoc "${FILESDIR}"/README.gentoo README HACKING CHANGELOG
 
 	# file permissions
 	prepgamesdirs
@@ -80,12 +77,12 @@ pkg_postinst() {
 	games_pkg_postinst
 	gnome2_icon_cache_update
 
-	elog "optional dependencies:"
-	elog "  media-gfx/nvidia-cg-toolkit (fallback renderer if OpenGL fails)"
-	elog
-	elog "you might also want to emerge media-libs/libsdl2 specifically,"
-	elog "because ${PN} supports both sdl1.2 and sdl2, but the ebuild only"
-	elog "pulls in one of them, prefering sdl1.2."
+	if ! use cg ; then
+		elog "If you have problems starting the game consider switching"
+		elog "to Graphics.Renderer=Cg in openra*.desktop or manually"
+		elog "run:"
+		elog "${PN} Game.Mods=\$mod Graphics.Renderer=Cg"
+	fi
 }
 
 pkg_postrm() {
