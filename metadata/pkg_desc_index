@@ -3753,7 +3753,7 @@ dev-java/classmate 0.9.0-r1: Library for introspecting generic type information 
 dev-java/cldc-api 1.1-r1: Java ME Connected Limited Device Configuration API
 dev-java/codemodel 2.6: Java library for code generators
 dev-java/cofoja 1.2: Contracts for Java
-dev-java/colt 1.2.0-r3: A set of Open Source Libraries for High Performance Scientific and Technical Computing in Java
+dev-java/colt 1.2.0-r2 1.2.0-r3: A set of Open Source Libraries for High Performance Scientific and Technical Computing in Java
 dev-java/commons-attributes 2.2-r2: Commons Attributes enables Java programmers to use C#/.Net-style attributes in their code
 dev-java/commons-beanutils 1.9.2: Provides easy-to-use wrappers around Reflection and Introspection APIs
 dev-java/commons-betwixt 0.8: Introspective Bean to XML mapper
@@ -10500,7 +10500,7 @@ games-strategy/mindrover-demo 1.07b: Control a robot as it races across Europa
 games-strategy/naev 0.6.0: A 2D space trading and combat game, in a similar vein to Escape Velocity
 games-strategy/netherearth 0.52: A remake of the SPECTRUM game Nether Earth
 games-strategy/netpanzer 0.8.2: Fast-action multiplayer strategic network game
-games-strategy/openra 20120630 20130514-r1 20131223-r1 20140608 20140722 20141029-r1: A free RTS engine supporting games like Command & Conquer and Red Alert
+games-strategy/openra 20120630-r1 20130514-r2 20131223-r2 20140608-r1 20140722-r1 20141029-r2: A free RTS engine supporting games like Command & Conquer and Red Alert
 games-strategy/outerspace 0.5.68: on-line strategy game taking place in the dangerous universe
 games-strategy/revenge-of-the-titans 1.80.12: defeat the returning Titan horde in a series of epic ground battles
 games-strategy/s25rttr 0.8.1: Open Source remake of The Settlers II game (needs original game files)
