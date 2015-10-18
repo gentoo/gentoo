@@ -113,11 +113,6 @@ dev-java/mx4j-tools
 dev-java/proxool
 www-servers/axis:1
 
-# Dion Moult <moult@gentoo.org> (27 Sep 2015)
-# Masked for removal in 30 days. Bug #514514
-# Fails to build for ages.
-sci-geosciences/grass
-sci-geosciences/gdal-grass
 
 # Patrice Clement <monsieurp@gentoo.org> (24 Sep 2015)
 # This package was never marked stable 
