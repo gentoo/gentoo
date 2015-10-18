@@ -34,7 +34,7 @@ RDEPEND=">=virtual/jdk-1.7
 	>=media-libs/freetype-2.5.5[abi_x86_32(-)]
 	>=media-libs/libpng-1.2.51[abi_x86_32(-)]
 	>=media-libs/mesa-10.2.8[abi_x86_32(-)]
-	|| ( >=sys-libs/ncurses-5.9-r3:0/5[abi_x86_32(-)] >=sys-libs/ncurses-5.9-r3:5/5[abi_x86_32(-)] )
+	|| ( >=sys-libs/ncurses-5.9-r3:5/5[abi_x86_32(-)] >=sys-libs/ncurses-5.9-r3:0/5[abi_x86_32(-)] )
 	>=sys-libs/zlib-1.2.8-r1[abi_x86_32(-)]
 	>=x11-libs/libX11-1.6.2[abi_x86_32(-)]
 	>=x11-libs/libXau-1.0.7-r1[abi_x86_32(-)]

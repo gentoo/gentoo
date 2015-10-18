@@ -7,15 +7,15 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit eutils python-r1 gnome2-utils git-r3
+inherit eutils python-r1 gnome2-utils
 
 DESCRIPTION="P2P communications protocol"
 HOMEPAGE="https://bitmessage.org"
-EGIT_REPO_URI="https://github.com/Bitmessage/PyBitmessage.git"
+SRC_URI="https://github.com/Bitmessage/PyBitmessage/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="libressl"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -24,6 +24,8 @@ RDEPEND="${DEPEND}
 	!libressl? ( dev-libs/openssl:0[-bindist] )
 	libressl? ( dev-libs/libressl )
 	dev-python/PyQt4[${PYTHON_USEDEP}]"
+
+S=${WORKDIR}/PyBitmessage-${PV}
 
 src_compile() { :; }
 
