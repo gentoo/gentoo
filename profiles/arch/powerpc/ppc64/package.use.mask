@@ -35,10 +35,6 @@ xfce-extra/xfce4-power-manager lxpanel
 # sys-devel/clang is not keyworded
 app-doc/doxygen clang
 
-# Pacho Ramos <pacho@gentoo.org> (12 Apr 2014)
-# Missing keywords, bug #507490
-net-misc/modemmanager mbim
-
 # Michael Sterrett <mr_bones_@gentoo.org (12 Nov 2013)
 # Mask openmedia use flag because the content generation tools
 # are missing keywords.
