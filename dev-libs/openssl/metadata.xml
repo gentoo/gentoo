@@ -12,4 +12,10 @@
 <upstream>
  <remote-id type="cpe">cpe:/a:openssl:openssl</remote-id>
 </upstream>
+<slots>
+ <slot name="0">For building against. This is the only slot
+  that provides headers and command line tools.</slot>
+ <slot name="0.9.8">For binary compatibility, provides libcrypto.so.0.9.8
+  and libssl.so.0.9.8 only.</slot>
+</slots>
 </pkgmetadata>
