@@ -87,7 +87,7 @@ RDEPEND="
 	>=dev-python/cryptography-1.0[${PYTHON_USEDEP}]
 	<=dev-python/cryptography-1.0.1-r9999[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
-	<=dev-python/six-1.9.0[${PYTHON_USEDEP}]
+	<=dev-python/six-1.9.0-r9999[${PYTHON_USEDEP}]
 	sqlite? (
 		>=dev-python/sqlalchemy-0.9.9[sqlite,${PYTHON_USEDEP}]
 		<dev-python/sqlalchemy-1.1.0[sqlite,${PYTHON_USEDEP}]
