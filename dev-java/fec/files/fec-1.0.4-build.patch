@@ -1,8 +1,6 @@
-Index: csrc/Makefile
-===================================================================
---- src/csrc.orig/Makefile
-+++ src/csrc/Makefile
-@@ -28,11 +28,8 @@ fec8-jinterf.o: fec-jinterf.c
+--- src/csrc/Makefile.orig	2015-10-18 14:31:56.752486000 +0000
++++ src/csrc/Makefile	2015-10-18 14:33:11.502486000 +0000
+@@ -28,11 +28,8 @@
  		-I$(JAVA_HOME)/include/linux fec-jinterf.c \
  		-o fec8-jinterf.o
  
@@ -16,7 +14,7 @@ Index: csrc/Makefile
  
  libfec16.so: fec16.o fec16-jinterf.o
  	$(CC) $(LDFLAGS) -shared fec16-jinterf.o fec16.o -o libfec16.so
-@@ -42,11 +39,8 @@ fec16-jinterf.o: fec-jinterf.c
+@@ -42,11 +39,8 @@
  		-I$(JAVA_HOME)/include/linux fec-jinterf.c \
  		-o fec16-jinterf.o
  

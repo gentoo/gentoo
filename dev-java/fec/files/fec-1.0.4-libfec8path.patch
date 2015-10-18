@@ -1,5 +1,5 @@
---- src/com/onionnetworks/fec/Native8Code.java	2009-08-21 02:37:00.515004583 +0200
-+++ src/com/onionnetworks/fec/Native8Code.java.new	2009-08-21 02:37:57.829254678 +0200
+--- src/com/onionnetworks/fec/Native8Code.java.orig	2015-10-18 14:27:06.160486000 +0000
++++ src/com/onionnetworks/fec/Native8Code.java	2015-10-18 14:30:32.557486000 +0000
 @@ -3,6 +3,7 @@
  //import java.security.AccessController;
  //import sun.security.action.*;
@@ -16,14 +16,15 @@
 -            (Native8Code.class.getClassLoader(),"fec8");
 -        if (path != null) {
 -            System.load(path);
-+       File path = new File("/usr/lib/libfec8.so");
-+       System.out.println("Loading FEC lib ["+path.getAbsolutePath()+']');
-+       System.load(path.getAbsolutePath());
-             initFEC();
+-            initFEC();
 -        } else {
 -            System.out.println("Unable to find native library for fec8 for platform "+NativeDeployer.OS_ARCH);
 -            System.out.println(path);
 -        }
++        File path = new File("/usr/lib/libfec8.so");
++		 System.out.println("Loading FEC lib ["+path.getAbsolutePath()+']');
++        System.load(path.getAbsolutePath());
++        initFEC();
      }
  
      public Native8Code(int k, int n) {
