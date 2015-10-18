@@ -61,17 +61,18 @@
  
  # Having IPv6 enabled can cause problems with certain configurations. Changing the
  # next value to true may help. 
---- wrapper.config	2015-03-15 02:02:29.022408661 -0700
-+++ wrapper.config	2015-03-15 02:21:50.666238909 -0700
-@@ -60,13 +60,17 @@
+--- wrapper.config.orig	2015-10-18 13:31:29.410486000 +0000
++++ wrapper.config	2015-10-18 13:48:05.823486000 +0000
+@@ -60,13 +60,18 @@
  # classes, or all the classes of i2p.jar, are in a different directory).
  # Be sure there are no other duplicate classes.
  #
 -wrapper.java.classpath.1=$INSTALL_PATH/lib/*.jar
 +wrapper.java.classpath.1=/usr/share/i2p/lib/*.jar
-+wrapper.java.classpath.2=/usr/share/jakarta-jstl/lib/*.jar
-+wrapper.java.classpath.3=/usr/share/java-service-wrapper/lib/*.jar
-+wrapper.java.classpath.4=/usr/share/bcprov/lib/*.jar
++wrapper.java.classpath.2=/usr/share/tomcat-jstl-impl/lib/*.jar
++wrapper.java.classpath.3=/usr/share/tomcat-jstl-spec/lib/*.jar
++wrapper.java.classpath.4=/usr/share/java-service-wrapper/lib/*.jar
++wrapper.java.classpath.5=/usr/share/bcprov-1.50/lib/*.jar
  #  uncomment this to use the system classpath as well (e.g. to get tools.jar)
  # wrapper.java.classpath.2=%CLASSPATH%
  
@@ -84,54 +85,12 @@
  
  # Java Bits.  On applicable platforms, tells the JVM to run in 32 or 64-bit mode.
  wrapper.java.additional.auto_bits=TRUE
-@@ -76,7 +80,7 @@
+@@ -74,7 +79,7 @@
+ # Java Additional Parameters
+ # Numbers must be consecutive (except for stripquotes)
  wrapper.java.additional.1=-DloggerFilenameOverride=logs/log-router-@.txt
- wrapper.java.additional.2=-Dorg.mortbay.http.Version.paranoid=true
- wrapper.java.additional.3=-Dorg.mortbay.xml.XmlParser.NotValidating=true
--wrapper.java.additional.4=-Di2p.dir.base="$INSTALL_PATH"
-+wrapper.java.additional.4=-Di2p.dir.base="/usr/share/i2p"
- wrapper.java.additional.4.stripquotes=TRUE
+-wrapper.java.additional.2=-Di2p.dir.base="$INSTALL_PATH"
++wrapper.java.additional.2=-Di2p.dir.base="/usr/share/i2p"
+ wrapper.java.additional.2.stripquotes=TRUE
  
- # On some IPv6 enabled systems, I2P and other network-enabled java applications
-@@ -96,11 +100,11 @@
- # wrapper.java.additional.7=-Dorg.mortbay.util.FileResource.checkAliases=false
- # PORTABLE installation:
- # uncomment the following
--#wrapper.java.additional.7=-Di2p.dir.pid="$INSTALL_PATH"
-+#wrapper.java.additional.7=-Di2p.dir.pid="/usr/share/i2p"
- #wrapper.java.additional.7.stripquotes=TRUE
--#wrapper.java.additional.8=-Di2p.dir.temp="$INSTALL_PATH"
-+#wrapper.java.additional.8=-Di2p.dir.temp="/usr/share/i2p"
- #wrapper.java.additional.8.stripquotes=TRUE
--#wrapper.java.additional.9=-Di2p.dir.config="$INSTALL_PATH"
-+#wrapper.java.additional.9=-Di2p.dir.config="/usr/share/i2p"
- #wrapper.java.additional.9.stripquotes=TRUE
- #
- # Uncomment this for better performance.
-@@ -147,7 +151,7 @@
- # PORTABLE installation:
- # Use the following instead. I2P will find the logfile here,
- # no need for a wrapper.java.additional line too.
--#wrapper.logfile=$INSTALL_PATH/wrapper.log
-+#wrapper.logfile=/usr/share/i2p/wrapper.log
- 
- # Format of output for the log file.
- # The format consists of the tokens 'L' for log level, 'P' for prefix, 'D' for thread,
-@@ -220,7 +224,7 @@
- #wrapper.java.pidfile=$SYSTEM_java_io_tmpdir/routerjvm.pid
- # PORTABLE installation:
- # Use the following instead.
--#wrapper.java.pidfile=$INSTALL_PATH/routerjvm.pid
-+#wrapper.java.pidfile=/usr/share/i2p/routerjvm.pid
- # pid file for the service monitoring the JVM
- #
- # From i2prouter:
-@@ -238,7 +242,7 @@
- #wrapper.pidfile=$SYSTEM_java_io_tmpdir/i2p.pid
- # PORTABLE installation:
- # Use the following instead.
--#wrapper.pidfile=$INSTALL_PATH/i2p.pid
-+#wrapper.pidfile=/usr/share/i2p/i2p.pid
- 
- #********************************************************************
- # Wrapper General Properties
+ # Prevent the JVM from exporting stats (and thereby causing hundreds of
