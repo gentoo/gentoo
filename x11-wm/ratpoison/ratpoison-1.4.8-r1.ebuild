@@ -3,15 +3,15 @@
 # $Id$
 
 EAPI=5
-inherit autotools elisp-common eutils git-r3 toolchain-funcs
+inherit elisp-common eutils toolchain-funcs
 
 DESCRIPTION="window manager without mouse dependency"
 HOMEPAGE="http://www.nongnu.org/ratpoison/"
-EGIT_REPO_URI="git://git.savannah.nongnu.org/ratpoison.git"
+SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~hppa ~ppc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux"
 IUSE="debug emacs +history sloppy +xft"
 
 RDEPEND="
@@ -33,15 +33,13 @@ DOCS=( AUTHORS ChangeLog NEWS README TODO )
 
 src_prepare() {
 	epatch "${FILESDIR}"/ratpoison.el-gentoo.patch
-	eautoreconf
 }
 
 src_configure() {
 	econf \
 		$(use_enable debug) \
 		$(use_enable history) \
-		$(use_with xft) \
-		--without-electric-fence
+		$(use_with xft)
 }
 
 src_compile() {
