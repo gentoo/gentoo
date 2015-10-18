@@ -2164,6 +2164,8 @@ dev-ml/lwt:toplevel - Enables enhanced toplevel.
 dev-ml/ocaml-cstruct:async - Support for asynchronous execution
 dev-ml/ocaml-cstruct:camlp4 - Enable support for camlp4
 dev-ml/ocaml-cstruct:lwt - Enable threads via lwt
+dev-ml/ocaml-dns:async - support for asynchronous execution
+dev-ml/ocaml-dns:lwt - enable threads via lwt
 dev-ml/ocaml-uri:allservices - Compile support for all service types
 dev-ml/ocamlnet:cryptokit - Enables encryption support via dev-ml/cryptokit
 dev-ml/ocamlnet:httpd - Enables net-httpd web server component
