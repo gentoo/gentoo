@@ -15,7 +15,7 @@ SRC_URI="http://download.transmissionbt.com/${PN}/files/${P}.tar.xz"
 LICENSE="|| ( GPL-2 GPL-3 Transmission-OpenSSL-exception ) GPL-2 MIT"
 SLOT=0
 IUSE="ayatana gtk lightweight systemd qt4 qt5 xfs"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ppc64 ~x86 ~x86-fbsd ~amd64-linux"
+KEYWORDS="amd64 ~arm ~mips ~ppc ppc64 x86 ~x86-fbsd ~amd64-linux"
 
 RDEPEND=">=dev-libs/libevent-2.0.10:=
 	dev-libs/openssl:0=

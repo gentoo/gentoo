@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit multilib qt4-r2
+inherit multilib qmake-utils qt4-r2
 
 DESCRIPTION="The Qt eXTension library provides cross-platform utility classes for the Qt toolkit"
 HOMEPAGE="http://libqxt.org/"
@@ -16,11 +16,9 @@ KEYWORDS="amd64 ~arm x86"
 IUSE="berkdb debug doc sql web xscreensaver zeroconf"
 
 COMMON_DEPEND="
+	dev-qt/designer:4
 	dev-qt/qtcore:4[ssl]
-	|| (
-		( >=dev-qt/qtgui-4.8.5:4 dev-qt/designer:4 )
-		<dev-qt/qtgui-4.8.5:4
-	)
+	dev-qt/qtgui:4
 	x11-libs/libXrandr
 	berkdb? ( >=sys-libs/db-4.6 )
 	sql? ( dev-qt/qtsql:4 )
@@ -57,7 +55,7 @@ src_configure() {
 		-prefix "${EPREFIX}/usr"
 		-libdir "${EPREFIX}/usr/$(get_libdir)"
 		-docdir "${EPREFIX}/usr/share/doc/${PF}"
-		-qmake-bin "${EPREFIX}/usr/bin/qmake"
+		-qmake-bin "${EPREFIX}/$(qt4_get_bindir)/qmake"
 		$(use debug && echo -debug || echo -release)
 		$(use berkdb || echo -no-db -nomake berkeley)
 		$(use doc || echo -nomake docs)
