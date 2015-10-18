@@ -15,6 +15,7 @@ LICENSE="BSD-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
+# https://github.com/mirage/mirage-profile/issues/11
 RESTRICT="test"
 
 RDEPEND="
