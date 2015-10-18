@@ -4,17 +4,15 @@
 
 EAPI=5
 
-EGIT_REPO_URI="git://github.com/IgnorantGuru/${PN}.git"
-EGIT_BRANCH="next"
-
-inherit fdo-mime git-2 gnome2-utils linux-info
+inherit fdo-mime gnome2-utils linux-info
 
 DESCRIPTION="A multi-panel tabbed file manager"
 HOMEPAGE="https://ignorantguru.github.com/spacefm/"
+SRC_URI="https://github.com/ignorantguru/${PN}/archive/${PV}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="gtk2 +gtk3 +startup-notification +video-thumbnails"
 REQUIRED_USE="gtk2? ( !gtk3 )"
 
