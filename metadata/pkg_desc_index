@@ -10979,7 +10979,7 @@ kde-base/contactthemeeditor 4.13.3: A contact theme editor for KAddressBook
 kde-base/freespacenotifier 4.11.19 4.11.22: A module that monitors free disk space on the home dir
 kde-base/kabcclient 4.4.2015.06 4.14.8 4.14.10: A command line client for accessing the KDE addressbook
 kde-base/kactivities 4.13.3 4.13.3-r1: KDE Activity Manager
-kde-base/kactivitymanagerd 4.13.3: KDE Activity Manager Daemon
+kde-base/kactivitymanagerd 4.13.3-r1: KDE Activity Manager Daemon
 kde-base/kaddressbook 4.4.2015.06 4.14.8 4.14.10: The KDE Address Book
 kde-base/kalarm 4.4.2015.06 4.14.8 4.14.10: Personal alarm message, command and email scheduler for KDE
 kde-base/katepart 4.14.3: KDE Editor KPart
