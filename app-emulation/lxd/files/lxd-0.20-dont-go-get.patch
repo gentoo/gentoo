@@ -1,0 +1,18 @@
+--- Makefile.orig	2015-09-17 20:37:16.481867339 -0500
++++ Makefile	2015-09-17 20:53:27.715800926 -0500
+@@ -12,15 +12,11 @@
+ 
+ .PHONY: default
+ default:
+-	-go get -t -v -d ./...
+-	-go get -t -v -d ./...
+ 	go install -v ./...
+ 	@echo "LXD built succesfuly"
+ 
+ .PHONY: client
+ client:
+-	-go get -t -v -d ./...
+-	-go get -t -v -d ./...
+ 	go install -v ./lxc
+ 	@echo "LXD client built succesfuly"
+ 
