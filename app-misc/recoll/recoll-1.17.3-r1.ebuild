@@ -5,7 +5,7 @@
 EAPI="4"
 
 PYTHON_DEPEND="2"
-inherit toolchain-funcs qt4-r2 linux-info python
+inherit toolchain-funcs qmake-utils qt4-r2 linux-info python
 
 DESCRIPTION="A personal full text search package"
 HOMEPAGE="http://www.lesbonscomptes.com/recoll/"
@@ -103,7 +103,7 @@ src_prepare() {
 src_configure() {
 	local qtconf
 
-	use qt4 && qtconf="QMAKEPATH=/usr/bin/qmake"
+	use qt4 && qtconf="QMAKEPATH=$(qt4_get_bindir)/qmake"
 
 	econf \
 		$(use_with spell aspell) \
