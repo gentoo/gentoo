@@ -7,7 +7,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit eutils python-r1 gnome2-utils git-2
+inherit eutils python-r1 gnome2-utils git-r3
 
 DESCRIPTION="P2P communications protocol"
 HOMEPAGE="https://bitmessage.org"
