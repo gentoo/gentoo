@@ -20,6 +20,7 @@ S=${WORKDIR}/${KMNAME}-${PV}
 
 src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_SKIP_RPATH=ON
 		-DWITH_NepomukCore=OFF
 	)
 	kde4-base_src_configure
