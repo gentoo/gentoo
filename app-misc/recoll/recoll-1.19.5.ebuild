@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="4"
 
 PYTHON_DEPEND="2"
-inherit toolchain-funcs qt4-r2 linux-info python readme.gentoo
+inherit toolchain-funcs qmake-utils qt4-r2 linux-info python readme.gentoo
 
 DESCRIPTION="A personal full text search package"
 HOMEPAGE="http://www.lesbonscomptes.com/recoll/"
@@ -116,7 +116,7 @@ src_configure() {
 	local qtconf
 
 	if use qt4 || use webkit; then
-		qtconf="QMAKEPATH=/usr/bin/qmake"
+		qtconf="QMAKEPATH=$(qt4_get_bindir)/qmake"
 	fi
 
 	econf \
