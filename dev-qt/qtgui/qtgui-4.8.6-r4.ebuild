@@ -10,9 +10,9 @@ DESCRIPTION="The GUI module for the Qt toolkit"
 SRC_URI+=" https://dev.gentoo.org/~pesa/patches/${PN}-systemtrayicon-plugin-system.patch"
 
 if [[ ${QT4_BUILD_TYPE} == live ]]; then
-	KEYWORDS="alpha arm hppa ia64 ppc ppc64"
+	KEYWORDS="alpha arm hppa ia64 ppc ppc64 sparc"
 else
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd"
+	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
 fi
 
 IUSE="+accessibility cups egl +glib gtkstyle mng nas nis qt3support tiff trace xinerama +xv"
