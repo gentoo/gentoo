@@ -202,14 +202,6 @@ gnome-extra/libgda reports
 # Requires libpcre with jit
 www-apache/mod_security jit
 
-# Ben de Groot <yngwin@gentoo.org> (14 Jun 2012)
-# Since dev-qt/qt* will no longer be available for sparc, we need
-# to mask the reverse dependencies
-dev-cpp/eigen examples
-dev-tex/latex-beamer lyx
-media-sound/pulseaudio equalizer
-media-video/vlc skins
-
 # Raúl Porcel <armin76@gentoo.org> (28 May 2012)
 # Needs x11-misc/lightdm(which also requires some other deps)
 x11-misc/xscreensaver new-login
