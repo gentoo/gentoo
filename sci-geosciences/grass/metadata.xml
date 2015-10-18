@@ -19,6 +19,5 @@ Project for more info http://grass.itc.it/gdp/index.php
 		<flag name="gmath">Enable gmath wrapper for BLAS/Lapack 
 		(<pkg>virtual/blas</pkg>, <pkg>virtual/lapack</pkg>)</flag>
 		<flag name="opencl">Enable OpenCL support</flag>
-		<flag name="regex">Include support regex functionality</flag>
 	</use>
 </pkgmetadata>
