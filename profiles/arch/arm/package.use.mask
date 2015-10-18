@@ -15,7 +15,7 @@ app-portage/g-sorcery bson
 media-video/mpv rubberband
 
 # Patrick Lauer <patrick@gentoo.org> (20 Apr 2015)
-# qt5/kf5 not keyworded on arm
+# kde-frameworks/*:5 not keyworded on arm
 net-irc/quassel qt5
 
 # Markos Chandras <hwoarang@gentoo.org> (18 Apr 2015)
