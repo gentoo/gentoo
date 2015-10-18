@@ -46,7 +46,7 @@ EANT_DOC_TARGET=""
 
 src_compile() {
 	if use javamail; then
-		EANT_GENTOO_CLASSPATH+="javamail,jaf"
+		EANT_GENTOO_CLASSPATH+="oracle-javamail,jaf"
 		EANT_EXTRA_ARGS+=" -Djavamail-present=true"
 	fi
 	if use jms; then
