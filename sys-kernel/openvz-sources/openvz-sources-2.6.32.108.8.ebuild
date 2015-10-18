@@ -31,7 +31,7 @@ K_DEBLOB_AVAILABLE=0
 inherit kernel-2
 #detect_version
 
-KEYWORDS="~amd64 ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~ppc64 ~sparc x86"
 IUSE=""
 
 DESCRIPTION="Kernel sources with OpenVZ patchset"
