@@ -75,7 +75,7 @@ COMMONDEPEND=">=sys-devel/gettext-0.12.1
 	)
 	smime? ( >=app-crypt/gpgme-0.4.5 )
 	calendar? ( >=net-misc/curl-7.9.7 )
-	pdf? ( app-text/poppler:=[cairo] )
+	pdf? ( app-text/poppler[cairo] )
 	spam-report? ( >=net-misc/curl-7.9.7 )
 	webkit? ( >=net-libs/webkit-gtk-1.0:2
 		>=net-libs/libsoup-gnome-2.26:2.4 )
