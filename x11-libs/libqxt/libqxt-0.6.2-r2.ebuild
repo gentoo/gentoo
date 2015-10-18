@@ -16,11 +16,9 @@ KEYWORDS="amd64 ~arm x86"
 IUSE="berkdb debug doc sql web xscreensaver zeroconf"
 
 COMMON_DEPEND="
+	dev-qt/designer:4
 	dev-qt/qtcore:4[ssl]
-	|| (
-		( >=dev-qt/qtgui-4.8.5:4 dev-qt/designer:4 )
-		<dev-qt/qtgui-4.8.5:4
-	)
+	dev-qt/qtgui:4
 	x11-libs/libXrandr
 	berkdb? ( >=sys-libs/db-4.6 )
 	sql? ( dev-qt/qtsql:4 )
