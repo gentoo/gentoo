@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 PLOCALES="de fr ja"
-IUSE="nls test +image"
+IUSE="+daemon nls test"
 
 # IUSE and PLOCALES must be defined before l10n inherited
 inherit bash-completion-r1 eutils golang-build l10n systemd user vcs-snapshot
@@ -34,15 +34,15 @@ DEPEND="
 "
 
 RDEPEND="
-	app-admin/cgmanager
-	app-arch/xz-utils
-	app-emulation/lxc[cgmanager]
-	net-analyzer/openbsd-netcat
-	net-misc/bridge-utils
-	virtual/acl
-	image? (
-		app-crypt/gnupg
-		>=dev-lang/python-3.2
+	daemon? (
+		app-admin/cgmanager
+		app-arch/xz-utils
+		app-emulation/lxc[cgmanager,seccomp]
+		net-analyzer/openbsd-netcat
+		net-misc/bridge-utils
+		net-misc/rsync[xattr]
+		sys-apps/iproute2
+		virtual/acl
 	)
 "
 
@@ -51,8 +51,18 @@ RDEPEND="
 #   localized output.  Anyway, upstream (Canonical) doesn't install the
 #   message files.
 
+# TODO:
+# - since 0.15 gccgo is a supported compiler ('make gccgo').  It would
+#   be preferable for that support to go into the golang-build eclass not
+#   this package directly.
+# - integrate "lxd shutdown" into initscript as custom action (default "stop"
+#   action should _not_ stop containers amirite?)
+#   "Perform a clean shutdown of LXD and all running containers"
+
 src_prepare() {
 	cd "${S}/src/${EGO_PN}"
+
+	epatch "${FILESDIR}/${P}-dont-go-get.patch"
 
 	# Upstream requires the openbsd flavor of netcat (with -U), but
 	# Gentoo installs that with a renamed binary
@@ -67,15 +77,22 @@ src_compile() {
 
 	cd "${S}/src/${EGO_PN}"
 
-	# Build binaries
-	GOPATH="${S}:$(get_golibdir_gopath)" emake
+	if use daemon; then
+		# Build binaries
+		GOPATH="${S}:$(get_golibdir_gopath)" emake
+	else
+		# build client tool
+		GOPATH="${S}:$(get_golibdir_gopath)" emake client
+	fi
 
 	use nls && emake build-mo
 }
 
 src_test() {
-	# Go native tests should succeed
-	golang-build_src_test
+	if use daemon; then
+		# Go native tests should succeed
+		golang-build_src_test
+	fi
 }
 
 src_install() {
@@ -83,15 +100,14 @@ src_install() {
 	golang-build_src_install
 
 	cd "${S}"
-
-	dobin bin/fuidshift
 	dobin bin/lxc
+	if use daemon; then
+		dobin bin/fuidshift
 
-	dosbin bin/lxd
+		dosbin bin/lxd
+	fi
 
 	cd "src/${EGO_PN}"
-
-	use image && dobin scripts/lxd-images
 
 	if use nls; then
 		for lingua in ${PLOCALES}; do
@@ -101,10 +117,12 @@ src_install() {
 		done
 	fi
 
-	newinitd "${FILESDIR}"/lxd.initd lxd
-	newconfd "${FILESDIR}"/lxd.confd lxd
+	if use daemon; then
+		newinitd "${FILESDIR}"/${P}.initd lxd
+		newconfd "${FILESDIR}"/${P}.confd lxd
 
-	systemd_dounit "${FILESDIR}"/lxd.service
+		systemd_dounit "${FILESDIR}"/lxd.service
+	fi
 
 	newbashcomp config/bash/lxc.in lxc
 
@@ -114,24 +132,38 @@ src_install() {
 	dodoc specs/*
 }
 
-pkg_config() {
-	if brctl show lxcbr0 2>&1 | grep "No such device" >/dev/null; then
-		brctl addbr lxcbr0
-	fi
-}
-
 pkg_postinst() {
+	einfo
+	einfo "Consult https://wiki.gentoo.org/wiki/LXD for more information,"
+	einfo "including a Quick Start."
+
+	# The messaging below only applies to daemon installs
+	use daemon || return 0
+
 	# The control socket will be owned by (and writeable by) this group.
 	enewgroup lxd
 
 	# Ubuntu also defines an lxd user but it appears unused (the daemon
 	# must run as root)
 
-	# precedent: sys-libs/timezone-data
-	pkg_config
-
 	einfo
-	einfo "To interact with the service as a non-root user, add yourself to the"
-	einfo "lxd group.  This requires you to log out and log in again."
+	einfo "Though not strictly required, some features are enabled at run-time"
+	einfo "when the relevant helper programs are detected:"
+	einfo "- sys-apps/apparmor"
+	einfo "- sys-fs/btrfs-progs"
+	einfo "- sys-fs/lvm2"
+	einfo "- sys-fs/zfs"
+	einfo "- sys-process/criu"
+	einfo
+	einfo "Since these features can't be disabled at build-time they are"
+	einfo "not USE-conditional."
+
+	if test -n "${REPLACING_VERSIONS}"; then
+		einfo
+		einfo "If you are upgrading from version 0.14 or older, note that the --tcp"
+		einfo "is no longer available in /etc/conf.d/lxd.  Instead, configure the"
+		einfo "listen address/port by setting the core.https_address server option."
+	fi
+
 	einfo
 }

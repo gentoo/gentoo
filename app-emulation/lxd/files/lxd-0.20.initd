@@ -8,10 +8,7 @@ PIDFILE=/run/lxd.pid
 
 depend() {
     need cgmanager
-
-    if echo "${LXD_OPTIONS}" | grep -e "--tcp" >/dev/null; then
-	need net
-    fi
+    need net
 }
 
 start() {
