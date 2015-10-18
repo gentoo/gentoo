@@ -11,10 +11,11 @@ DESCRIPTION="Qt4-based audio player with winamp/xmms skins support"
 HOMEPAGE="http://qmmp.ylsoftware.com"
 if [ "$PV" != "9999" ]; then
 	SRC_URI="http://qmmp.ylsoftware.com/files/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~ppc ~x86"
+	KEYWORDS="~amd64 ~x86"
 else
+	QMMP_DEV_BRANCH="1.1"
 	SRC_URI=""
-	ESVN_REPO_URI="https://qmmp.googlecode.com/svn/trunk/qmmp/"
+	ESVN_REPO_URI="svn://svn.code.sf.net/p/${PN}-dev/code/branches/${PN}-${QMMP_DEV_BRANCH}"
 	KEYWORDS=""
 fi
 
@@ -26,7 +27,12 @@ libsamplerate lyrics +mad midi mms modplug mplayer mpris musepack notifier opus 
 projectm pulseaudio qsui scrobbler sndfile stereo tray udisks +vorbis wavpack"
 
 RDEPEND="media-libs/taglib
-	dev-qt/qtgui:4
+	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtx11extras:5
 	alsa? ( media-libs/alsa-lib )
 	bs2b? ( media-libs/libbs2b )
 	cdda? ( dev-libs/libcdio-paranoia )
@@ -43,7 +49,7 @@ RDEPEND="media-libs/taglib
 	midi? ( media-sound/wildmidi )
 	mms? ( media-libs/libmms )
 	mplayer? ( media-video/mplayer )
-	mpris? ( dev-qt/qtdbus:4 )
+	mpris? ( dev-qt/qtdbus:5 )
 	musepack? ( >=media-sound/musepack-tools-444 )
 	modplug? ( >=media-libs/libmodplug-0.8.4 )
 	vorbis? ( media-libs/libvorbis
@@ -53,13 +59,15 @@ RDEPEND="media-libs/taglib
 	ffmpeg? ( virtual/ffmpeg )
 	opus? ( media-libs/opusfile )
 	projectm? ( media-libs/libprojectm
-		dev-qt/qtopengl:4 )
+		dev-qt/qtopengl:5
+		dev-qt/qtgui:5[-gles2] )
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.9 )
 	wavpack? ( media-sound/wavpack )
 	scrobbler? ( net-misc/curl )
 	sndfile? ( media-libs/libsndfile )
 	udisks? ( sys-fs/udisks:2 )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5"
 
 DOCS="AUTHORS ChangeLog README"
 
@@ -92,7 +100,6 @@ src_configure() {
 		$(cmake-utils_use_use dbus)
 		$(cmake-utils_use_use enca)
 		$(cmake-utils_use_use ffmpeg)
-		-DUSE_FFMPEG_LEGACY=OFF
 		$(cmake-utils_use_use flac)
 		$(cmake-utils_use_use game GME)
 		-DUSE_HAL=OFF
@@ -118,7 +125,6 @@ src_configure() {
 		$(cmake-utils_use_use stereo)
 		$(cmake-utils_use_use tray STATICON)
 		$(cmake-utils_use_use udisks UDISKS2)
-		-DUSE_UDISKS=OFF
 		$(cmake-utils_use_use libsamplerate SRC)
 		$(cmake-utils_use_use vorbis)
 		$(cmake-utils_use_use wavpack)

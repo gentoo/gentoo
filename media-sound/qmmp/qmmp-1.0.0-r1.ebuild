@@ -13,8 +13,9 @@ if [ "$PV" != "9999" ]; then
 	SRC_URI="http://qmmp.ylsoftware.com/files/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 else
+	QMMP_DEV_BRANCH="1.1"
 	SRC_URI=""
-	ESVN_REPO_URI="https://qmmp.googlecode.com/svn/trunk/qmmp/"
+	ESVN_REPO_URI="svn://svn.code.sf.net/p/${PN}-dev/code/branches/${PN}-${QMMP_DEV_BRANCH}"
 	KEYWORDS=""
 fi
 
@@ -58,7 +59,8 @@ RDEPEND="media-libs/taglib
 	ffmpeg? ( virtual/ffmpeg )
 	opus? ( media-libs/opusfile )
 	projectm? ( media-libs/libprojectm
-		dev-qt/qtopengl:5 )
+		dev-qt/qtopengl:5
+		dev-qt/qtgui:5[-gles2] )
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.9 )
 	wavpack? ( media-sound/wavpack )
 	scrobbler? ( net-misc/curl )

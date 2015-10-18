@@ -1,0 +1,26 @@
+Upstream Commit: https://sourceforge.net/p/qmmp-dev/code/5683/
+Upstream Bug: https://sourceforge.net/p/qmmp-dev/tickets/818/
+
+Signed-off-by: Markos Chandras <hwoarang@gentoo.org>
+Index: branches/qmmp-plugin-pack-1.0/CMakeLists.txt
+===================================================================
+--- branches/qmmp-plugin-pack-1.0/CMakeLists.txt	(revision 5682)
++++ branches/qmmp-plugin-pack-1.0/CMakeLists.txt	(revision 5683)
+@@ -49,6 +49,7 @@
+ SET(LIB_DIR "lib${LIB_SUFFIX}" CACHE STRING "library path")
+ 
+ pkg_check_modules(QMMP qmmp>=1.0.0 REQUIRED)
++include_directories(${QMMP_INCLUDEDIR})
+ 
+ IF(QMMP_FOUND)
+ add_subdirectory(src)
+Index: branches/qmmp-plugin-pack-1.0
+===================================================================
+--- branches/qmmp-plugin-pack-1.0	(revision 5682)
++++ branches/qmmp-plugin-pack-1.0	(revision 5683)
+
+Property changes on: branches/qmmp-plugin-pack-1.0
+___________________________________________________________________
+Modified: svn:mergeinfo
+## -0,0 +0,1 ##
+   Merged /trunk/qmmp-plugin-pack:r5681
