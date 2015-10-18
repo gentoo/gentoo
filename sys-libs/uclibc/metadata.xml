@@ -6,6 +6,10 @@
     <email>vapier@gentoo.org</email>
     <description>Primary Maintainer</description>
   </maintainer>
+  <maintainer>
+    <email>blueness@gentoo.org</email>
+    <name>Anthony G. Basile</name>
+  </maintainer>
   <longdescription>
 uClibc pronounced yew-see-lib-see is a C library for developing embedded Linux 
 systems. It is much smaller than the GNU C Library, but nearly all applications supported 
