@@ -52,6 +52,8 @@ src_prepare() {
 	# bug #220361
 	rm aclocal.m4
 	rm -rf libtool.m4/
+
+	mv configure.in configure.ac || die # configure.in is deprecated
 	eautoreconf
 }
 
