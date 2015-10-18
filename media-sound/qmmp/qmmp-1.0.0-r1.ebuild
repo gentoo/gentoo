@@ -58,7 +58,8 @@ RDEPEND="media-libs/taglib
 	ffmpeg? ( virtual/ffmpeg )
 	opus? ( media-libs/opusfile )
 	projectm? ( media-libs/libprojectm
-		dev-qt/qtopengl:5 )
+		dev-qt/qtopengl:5
+		dev-qt/qtgui:5[-gles2] )
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.9 )
 	wavpack? ( media-sound/wavpack )
 	scrobbler? ( net-misc/curl )
