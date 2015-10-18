@@ -7432,7 +7432,7 @@ dev-python/pyds9 1.7: Python interface to XPA to communicate with DS9
 dev-python/pydvdread 1.0-r1: A set of Python bindings for the libdvdread library
 dev-python/pyechonest 7.2.1 9.0.0: Python interface to The Echo Nest APIs
 dev-python/pyelemental 1.2.0-r1: Python bindings for libelemental (sci-chemistry/gelemental)
-dev-python/pyelftools 0.21-r4 0.22 0.23 0.23-r1: pure-Python library for parsing and analyzing ELF files and DWARF debugging information
+dev-python/pyelftools 0.22 0.23-r1: pure-Python library for parsing and analyzing ELF files and DWARF debugging information
 dev-python/pyemf 2.0.0: Pure Python Enhanced Metafile Library
 dev-python/pyenchant 1.6.6: Python bindings for the Enchant spellchecking system
 dev-python/pyev 0.8.1 0.9.0: Python libev interface, an event loop
