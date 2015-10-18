@@ -12,7 +12,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="
-	!<kde-base/kactivitymanager-4.14.3-r1
+	!<kde-base/kactivities-4.14.3-r1
 	!kde-frameworks/kactivities
 "
 
