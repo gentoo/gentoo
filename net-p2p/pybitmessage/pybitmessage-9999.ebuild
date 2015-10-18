@@ -52,12 +52,12 @@ src_install () {
 
 	python_foreach_impl install_python
 
-	nonfatal dodoc README.md debian/changelog
-	nonfatal doman man/*
+	dodoc README.md debian/changelog
+	doman man/*
 
-	nonfatal newicon -s 24 desktop/icon24.png ${PN}.png
-	nonfatal newicon -s scalable desktop/can-icon.svg ${PN}.svg
-	nonfatal domenu desktop/${PN}.desktop
+	newicon -s 24 desktop/icon24.png ${PN}.png
+	newicon -s scalable desktop/can-icon.svg ${PN}.svg
+	domenu desktop/${PN}.desktop
 }
 
 pkg_preinst() {
