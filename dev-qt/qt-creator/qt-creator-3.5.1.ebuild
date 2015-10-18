@@ -80,6 +80,10 @@ PDEPEND="
 	valgrind? ( dev-util/valgrind )
 "
 
+PATCHES=(
+	"${FILESDIR}/3.5.1-tst_fileutils-parentDir.patch"
+)
+
 src_unpack() {
 	if [[ $(gcc-major-version) -lt 4 ]] || [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 7 ]]; then
 		eerror "GCC version 4.7 or later is required to build Qt Creator"
@@ -94,6 +98,10 @@ src_unpack() {
 }
 
 src_prepare() {
+	# apply patches
+	[[ ${PATCHES[@]} ]] && epatch "${PATCHES[@]}"
+	epatch_user
+
 	# disable unwanted plugins
 	for plugin in "${QTC_PLUGINS[@]#[+-]}"; do
 		if ! use ${plugin%:*}; then
