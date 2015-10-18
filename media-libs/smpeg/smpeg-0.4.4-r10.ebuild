@@ -52,6 +52,7 @@ src_prepare() {
 	rm "${S}/acinclude.m4"
 
 	cd "${S}"
+	mv configure.in configure.ac || die
 	AT_M4DIR="${S}/m4" eautoreconf
 }
 
