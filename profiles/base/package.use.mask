@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Justin Lecher <jlec@gentoo.org> (19 Oct 2015)
+# depgraph incomplete
+dev-python/numpydoc python_targets_python3_5
+
 # Rick Farina <zerochaos@gentoo.org> (06 Oct 2015)
 # forward porting this patch is non-trivial, mask for now
 =net-wireless/wpa_supplicant-2.5 wimax
