@@ -74,10 +74,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.5.0-docdir.patch
-	"${FILESDIR}"/${PN}-9999-fpic.patch
-	)
+PATCHES=( "${FILESDIR}"/${PN}-1.5.0-docdir.patch )
 
 src_prepare() {
 	rm -r codegen/cheetah || die
