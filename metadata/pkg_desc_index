@@ -7287,7 +7287,7 @@ dev-python/os-testr 0.3.0: OpenStack logging config library provides standardize
 dev-python/os-virtual-interfacesv2-python-novaclient-ext 0.15 0.19: Adds Virtual Interfaces support to python-novaclient
 dev-python/oslo-concurrency 1.8.0 1.8.1 1.8.2 2.5.0: library for running multi-thread, multi-process applications
 dev-python/oslo-config 1.9.3 2.3.0 2.4.0: Oslo Configuration API
-dev-python/oslo-context 0.1.0 0.1.0-r1 0.2.0 0.3.0: Helpers to maintain useful information about a request context
+dev-python/oslo-context 0.1.0 0.1.0-r1 0.2.0 0.3.0 0.6.0: Helpers to maintain useful information about a request context
 dev-python/oslo-db 1.0.2 1.4.1 1.7.1 1.7.2 1.8.0 1.9.0 2.6.0: OpenStack Common DB Code
 dev-python/oslo-i18n 1.0.0 1.3.1 1.4.0 1.5.0 1.6.0 2.6.0: oslo.i18n library
 dev-python/oslo-log 0.3.0 1.0.0 1.1.0 1.10.0: OpenStack logging config library provides standardized configuration for all openstack projects.
