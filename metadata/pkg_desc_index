@@ -17400,8 +17400,8 @@ www-client/fetch 1.0-r1: Fetch is a simple, fast, and flexible HTTP download too
 www-client/firefox 38.2.0 38.3.0 41.0.2: Firefox Web Browser
 www-client/firefox-bin 38.1.1 38.2.0 38.2.1 38.3.0 41.0.2: Firefox Web Browser
 www-client/google-chrome 46.0.2490.71_p1: The web browser from Google
-www-client/google-chrome-beta 46.0.2490.64_p1: The web browser from Google
-www-client/google-chrome-unstable 47.0.2526.16_p1: The web browser from Google
+www-client/google-chrome-beta 47.0.2526.16_p1: The web browser from Google
+www-client/google-chrome-unstable 48.0.2535.0_p1: The web browser from Google
 www-client/httrack 3.45.4 3.47.27 3.48.13 3.48.19 3.48.20 3.48.21: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/jumanji 0.0.0_p20111209 0.0.0_p20130103-r1 0.0.0_p20150527 9999: highly customizable and functional web browser with minimalistic and space saving interface
@@ -17456,7 +17456,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.535: Adobe Flash Player
-www-plugins/chrome-binary-plugins 46.0.2490.64_beta1 46.0.2490.71_p1 47.0.2526.16_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 46.0.2490.71_p1 47.0.2526.16_beta1 48.0.2535.0_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316: GNU Flash movie player that supports many SWF v7,8,9 features
@@ -17745,7 +17745,7 @@ x11-libs/libcompizconfig 0.8.8: Compiz Configuration System
 x11-libs/libcryptui 3.12.2: User interface components for OpenPGP
 x11-libs/libdesktop-agnostic 0.3.92-r1: A desktop-agnostic library for GLib-based projects
 x11-libs/libdmx 1.1.3: X.Org dmx library
-x11-libs/libdockapp 0.6.1 0.6.4 0.7.0: Window Maker Dock Applet Library
+x11-libs/libdockapp 0.6.1 0.6.4 0.7.0 0.7.1: Window Maker Dock Applet Library
 x11-libs/libdrm 2.4.59 2.4.64 2.4.65 9999: X.Org libdrm library
 x11-libs/libfakekey 0.1-r1 0.1-r2: Helper library for the x11-misc/matchbox-keyboard package
 x11-libs/libfm 0.1.17-r1 1.1.4 1.2.2.1 1.2.3 1.2.3-r1 9999: A library for file management
