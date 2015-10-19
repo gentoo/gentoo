@@ -1,0 +1,207 @@
+# cinder-rootwrap command filters for volume nodes
+# This file should be owned by (and only-writeable by) the root user
+
+[Filters]
+# cinder/volume/iscsi.py: iscsi_helper '--op' ...
+ietadm: CommandFilter, ietadm, root
+tgtadm: CommandFilter, tgtadm, root
+iscsictl: CommandFilter, iscsictl, root
+tgt-admin: CommandFilter, tgt-admin, root
+cinder-rtstool: CommandFilter, cinder-rtstool, root
+scstadmin: CommandFilter, scstadmin, root
+
+# LVM related show commands
+pvs: EnvFilter, env, root, LC_ALL=C, pvs
+vgs: EnvFilter, env, root, LC_ALL=C, vgs
+lvs: EnvFilter, env, root, LC_ALL=C, lvs
+lvdisplay: EnvFilter, env, root, LC_ALL=C, lvdisplay
+
+# LVM conf var
+pvs_lvmconf: EnvFilter, env, root, LVM_SYSTEM_DIR=, LC_ALL=C, pvs
+vgs_lvmconf: EnvFilter, env, root, LVM_SYSTEM_DIR=, LC_ALL=C, vgs
+lvs_lvmconf: EnvFilter, env, root, LVM_SYSTEM_DIR=, LC_ALL=C, lvs
+lvdisplay_lvmconf: EnvFilter, env, root, LVM_SYSTEM_DIR=, LC_ALL=C, lvdisplay
+
+# os-brick library commands
+# TODO(smcginnis) This is a temporary fix. Need to pull in os-brick
+# os-brick.filters file instead and clean out stale brick values from
+# this file.
+scsi_id: CommandFilter, /lib/udev/scsi_id, root
+
+# cinder/volumes/drivers/srb.py: 'pvresize', '--setphysicalvolumesize', sizestr, pvname
+pvresize: CommandFilter, pvresize, root
+
+# cinder/brick/local_dev/lvm.py: 'vgcreate', vg_name, pv_list
+vgcreate: CommandFilter, vgcreate, root
+
+# cinder/volumes/drivers/srb.py: 'vgremove', '-f', vgname
+vgremove: CommandFilter, vgremove, root
+
+# cinder/volumes/drivers/srb.py: 'vgchange', '-an', vgname
+# cinder/volumes/drivers/srb.py: 'vgchange', '-ay', vgname
+vgchange: CommandFilter, vgchange, root
+
+# cinder/volume/driver.py: 'lvcreate', '-L', sizestr, '-n', volume_name,..
+# cinder/volume/driver.py: 'lvcreate', '-L', ...
+lvcreate: CommandFilter, lvcreate, root
+
+# cinder/volume/driver.py: 'dd', 'if=%s' % srcstr, 'of=%s' % deststr,...
+dd: CommandFilter, dd, root
+
+# cinder/volume/driver.py: 'lvremove', '-f', %s/%s % ...
+lvremove: CommandFilter, lvremove, root
+
+# cinder/volume/driver.py: 'lvrename', '%(vg)s', '%(orig)s' '(new)s'...
+lvrename: CommandFilter, lvrename, root
+
+# cinder/volume/driver.py: 'lvextend', '-L' '%(new_size)s', '%(lv_name)s' ...
+# cinder/volume/driver.py: 'lvextend', '-L' '%(new_size)s', '%(thin_pool)s' ...
+lvextend: CommandFilter, lvextend, root
+
+# cinder/brick/local_dev/lvm.py: 'lvchange -a y -K <lv>'
+lvchange: CommandFilter, lvchange, root
+
+# cinder/volume/driver.py: 'iscsiadm', '-m', 'discovery', '-t',...
+# cinder/volume/driver.py: 'iscsiadm', '-m', 'node', '-T', ...
+iscsiadm: CommandFilter, iscsiadm, root
+
+# cinder/volume/drivers/lvm.py: 'shred', '-n3'
+# cinder/volume/drivers/lvm.py: 'shred', '-n0', '-z', '-s%dMiB'
+shred: CommandFilter, shred, root
+
+# cinder/volume/utils.py: utils.temporary_chown(path, 0)
+chown: CommandFilter, chown, root
+
+# cinder/volume/utils.py: copy_volume(..., ionice='...')
+ionice_1: ChainingRegExpFilter, ionice, root, ionice, -c[0-3], -n[0-7]
+ionice_2: ChainingRegExpFilter, ionice, root, ionice, -c[0-3]
+
+# cinder/volume/utils.py: setup_blkio_cgroup()
+cgcreate: CommandFilter, cgcreate, root
+cgset: CommandFilter, cgset, root
+cgexec: ChainingRegExpFilter, cgexec, root, cgexec, -g, blkio:\S+
+
+# cinder/volume/driver.py
+dmsetup: CommandFilter, dmsetup, root
+ln: CommandFilter, ln, root
+
+# cinder/image/image_utils.py
+qemu-img: EnvFilter, env, root, LC_ALL=C, qemu-img
+qemu-img_convert: CommandFilter, qemu-img, root
+
+udevadm: CommandFilter, udevadm, root
+
+# cinder/volume/driver.py: utils.read_file_as_root()
+cat: CommandFilter, cat, root
+
+# cinder/volume/nfs.py
+stat: CommandFilter, stat, root
+mount: CommandFilter, mount, root
+df: CommandFilter, df, root
+du: CommandFilter, du, root
+truncate: CommandFilter, truncate, root
+chmod: CommandFilter, chmod, root
+rm: CommandFilter, rm, root
+
+# cinder/volume/drivers/netapp/nfs.py:
+netapp_nfs_find: RegExpFilter, find, root, find, ^[/]*([^/\0]+(/+)?)*$, -maxdepth, \d+, -name, img-cache.*, -amin, \+\d+
+
+# cinder/volume/drivers/glusterfs.py
+chgrp: CommandFilter, chgrp, root
+umount: CommandFilter, umount, root
+fallocate: CommandFilter, fallocate, root
+
+# cinder/volumes/drivers/hds/hds.py:
+hus-cmd: CommandFilter, hus-cmd, root
+hus-cmd_local: CommandFilter, /usr/local/bin/hus-cmd, root
+
+# cinder/volumes/drivers/hds/hnas_backend.py
+ssc: CommandFilter, ssc, root
+
+# cinder/brick/initiator/connector.py:
+ls: CommandFilter, ls, root
+tee: CommandFilter, tee, root
+multipath: CommandFilter, multipath, root
+multipathd: CommandFilter, multipathd, root
+systool: CommandFilter, systool, root
+
+# cinder/volume/drivers/block_device.py
+blockdev: CommandFilter, blockdev, root
+
+# cinder/volume/drivers/ibm/gpfs.py
+# cinder/volume/drivers/tintri.py
+mv: CommandFilter, mv, root
+
+# cinder/volume/drivers/ibm/gpfs.py
+cp: CommandFilter, cp, root
+mmgetstate: CommandFilter, /usr/lpp/mmfs/bin/mmgetstate, root
+mmclone: CommandFilter, /usr/lpp/mmfs/bin/mmclone, root
+mmlsattr: CommandFilter, /usr/lpp/mmfs/bin/mmlsattr, root
+mmchattr: CommandFilter, /usr/lpp/mmfs/bin/mmchattr, root
+mmlsconfig: CommandFilter, /usr/lpp/mmfs/bin/mmlsconfig, root
+mmlsfs: CommandFilter, /usr/lpp/mmfs/bin/mmlsfs, root
+mmlspool: CommandFilter, /usr/lpp/mmfs/bin/mmlspool, root
+mkfs: CommandFilter, mkfs, root
+mmcrfileset: CommandFilter, /usr/lpp/mmfs/bin/mmcrfileset, root
+mmlinkfileset: CommandFilter, /usr/lpp/mmfs/bin/mmlinkfileset, root
+mmunlinkfileset: CommandFilter, /usr/lpp/mmfs/bin/mmunlinkfileset, root
+mmdelfileset: CommandFilter, /usr/lpp/mmfs/bin/mmdelfileset, root
+mmcrsnapshot: CommandFilter, /usr/lpp/mmfs/bin/mmcrsnapshot, root
+mmdelsnapshot: CommandFilter, /usr/lpp/mmfs/bin/mmdelsnapshot, root
+
+# cinder/volume/drivers/ibm/gpfs.py
+# cinder/volume/drivers/ibm/ibmnas.py
+find_maxdepth_inum: RegExpFilter, find, root, find, ^[/]*([^/\0]+(/+)?)*$, -maxdepth, \d+, -inum, \d+
+
+# cinder/brick/initiator/connector.py:
+aoe-revalidate: CommandFilter, aoe-revalidate, root
+aoe-discover: CommandFilter, aoe-discover, root
+aoe-flush: CommandFilter, aoe-flush, root
+
+# cinder/brick/initiator/linuxscsi.py:
+sg_scan: CommandFilter, sg_scan, root
+
+#cinder/backup/services/tsm.py
+dsmc:CommandFilter,/usr/bin/dsmc,root
+
+# cinder/volume/drivers/hitachi/hbsd_horcm.py
+raidqry: CommandFilter, raidqry, root
+raidcom: CommandFilter, raidcom, root
+pairsplit: CommandFilter, pairsplit, root
+paircreate: CommandFilter, paircreate, root
+pairdisplay: CommandFilter, pairdisplay, root
+pairevtwait: CommandFilter, pairevtwait, root
+horcmstart.sh: CommandFilter, horcmstart.sh, root
+horcmshutdown.sh: CommandFilter, horcmshutdown.sh, root
+horcmgr: EnvFilter, env, root, HORCMINST=, /etc/horcmgr
+
+# cinder/volume/drivers/hitachi/hbsd_snm2.py
+auman: EnvFilter, env, root, LANG=, STONAVM_HOME=, LD_LIBRARY_PATH=, STONAVM_RSP_PASS=, STONAVM_ACT=, /usr/stonavm/auman
+auluref: EnvFilter, env, root, LANG=, STONAVM_HOME=, LD_LIBRARY_PATH=, STONAVM_RSP_PASS=, STONAVM_ACT=, /usr/stonavm/auluref
+auhgdef: EnvFilter, env, root, LANG=, STONAVM_HOME=, LD_LIBRARY_PATH=, STONAVM_RSP_PASS=, STONAVM_ACT=, /usr/stonavm/auhgdef
+aufibre1: EnvFilter, env, root, LANG=, STONAVM_HOME=, LD_LIBRARY_PATH=, STONAVM_RSP_PASS=, STONAVM_ACT=, /usr/stonavm/aufibre1
+auhgwwn: EnvFilter, env, root, LANG=, STONAVM_HOME=, LD_LIBRARY_PATH=, STONAVM_RSP_PASS=, STONAVM_ACT=, /usr/stonavm/auhgwwn
+auhgmap: EnvFilter, env, root, LANG=, STONAVM_HOME=, LD_LIBRARY_PATH=, STONAVM_RSP_PASS=, STONAVM_ACT=, /usr/stonavm/auhgmap
+autargetmap: EnvFilter, env, root, LANG=, STONAVM_HOME=, LD_LIBRARY_PATH=, STONAVM_RSP_PASS=, STONAVM_ACT=, /usr/stonavm/autargetmap
+aureplicationvvol: EnvFilter, env, root, LANG=, STONAVM_HOME=, LD_LIBRARY_PATH=, STONAVM_RSP_PASS=, STONAVM_ACT=, /usr/stonavm/aureplicationvvol
+auluadd: EnvFilter, env, root, LANG=, STONAVM_HOME=, LD_LIBRARY_PATH=, STONAVM_RSP_PASS=, STONAVM_ACT=, /usr/stonavm/auluadd
+auludel: EnvFilter, env, root, LANG=, STONAVM_HOME=, LD_LIBRARY_PATH=, STONAVM_RSP_PASS=, STONAVM_ACT=, /usr/stonavm/auludel
+auluchgsize: EnvFilter, env, root, LANG=, STONAVM_HOME=, LD_LIBRARY_PATH=, STONAVM_RSP_PASS=, STONAVM_ACT=, /usr/stonavm/auluchgsize
+auchapuser: EnvFilter, env, root, LANG=, STONAVM_HOME=, LD_LIBRARY_PATH=, STONAVM_RSP_PASS=, STONAVM_ACT=, /usr/stonavm/auchapuser
+autargetdef: EnvFilter, env, root, LANG=, STONAVM_HOME=, LD_LIBRARY_PATH=, STONAVM_RSP_PASS=, STONAVM_ACT=, /usr/stonavm/autargetdef
+autargetopt: EnvFilter, env, root, LANG=, STONAVM_HOME=, LD_LIBRARY_PATH=, STONAVM_RSP_PASS=, STONAVM_ACT=, /usr/stonavm/autargetopt
+autargetini: EnvFilter, env, root, LANG=, STONAVM_HOME=, LD_LIBRARY_PATH=, STONAVM_RSP_PASS=, STONAVM_ACT=, /usr/stonavm/autargetini
+auiscsi: EnvFilter, env, root, LANG=, STONAVM_HOME=, LD_LIBRARY_PATH=, STONAVM_RSP_PASS=, STONAVM_ACT=, /usr/stonavm/auiscsi
+audppool: EnvFilter, env, root, LANG=, STONAVM_HOME=, LD_LIBRARY_PATH=, STONAVM_RSP_PASS=, STONAVM_ACT=, /usr/stonavm/audppool
+aureplicationlocal: EnvFilter, env, root, LANG=, STONAVM_HOME=, LD_LIBRARY_PATH=, STONAVM_RSP_PASS=, STONAVM_ACT=, /usr/stonavm/aureplicationlocal
+aureplicationmon: EnvFilter, env, root, LANG=, STONAVM_HOME=, LD_LIBRARY_PATH=, STONAVM_RSP_PASS=, STONAVM_ACT=, /usr/stonavm/aureplicationmon
+
+# cinder/volume/drivers/hgst.py
+vgc-cluster: CommandFilter, vgc-cluster, root
+
+# cinder/volume/drivers/vzstorage.py
+pstorage-mount: CommandFilter, pstorage-mount, root
+pstorage: CommandFilter, pstorage, root
+
+# initiator/connector.py:
+drv_cfg: CommandFilter, /opt/emc/scaleio/sdc/bin/drv_cfg, root, /opt/emc/scaleio/sdc/bin/drv_cfg, --query_guid
