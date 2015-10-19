@@ -43,7 +43,7 @@ COMMON_DEPEND="
 		>=dev-lang/ocaml-4.00.0:0=
 		dev-ml/findlib
 		dev-ml/ocaml-ctypes
-		!!<=sys-devel/llvm-3.7.0-r2[ocaml] )"
+		!!<=sys-devel/llvm-3.7.0-r1[ocaml] )"
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
 DEPEND="${COMMON_DEPEND}
 	dev-lang/perl
