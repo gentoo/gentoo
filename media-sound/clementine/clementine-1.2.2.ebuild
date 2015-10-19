@@ -96,6 +96,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc49.patch
 )
 
+export QT_SELECT=4
+
 src_prepare() {
 	cmake-utils_src_prepare
 
