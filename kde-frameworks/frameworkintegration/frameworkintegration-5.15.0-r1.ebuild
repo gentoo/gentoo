@@ -4,6 +4,7 @@
 
 EAPI=5
 
+QT_MINIMAL="5.5.1"
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
@@ -25,10 +26,9 @@ RDEPEND="
 	$(add_frameworks_dep knotifications)
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
-	<dev-qt/qtcore-5.5:5
-	<dev-qt/qtdbus-5.5:5
-	<dev-qt/qtgui-5.5:5
-	<dev-qt/qtwidgets-5.5:5
+	dev-qt/qtdbus:5
+	dev-qt/qtgui:5
+	dev-qt/qtwidgets:5
 	X? (
 		dev-qt/qtx11extras:5
 		x11-libs/libxcb
