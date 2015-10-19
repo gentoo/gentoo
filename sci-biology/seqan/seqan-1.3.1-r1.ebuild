@@ -20,10 +20,18 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	sci-biology/samtools"
+	~sci-biology/samtools-0.1.19"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"/${P}/cmake
+
+pkg_setup() {
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		[[ $(gcc-major-version) -gt 4 ]] || \
+		( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -gt 8 ]] ) \
+		&& die "Sorry, but gcc 4.9 or higher is unsupported"
+	fi
+}
 
 src_prepare() {
 	append-cppflags -I"${EPREFIX}/usr/include/bam"
