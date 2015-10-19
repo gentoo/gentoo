@@ -14538,7 +14538,7 @@ net-misc/vncsnapshot 1.2a: A command-line tool for taking JPEG snapshots of VNC 
 net-misc/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-misc/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-misc/vrrpd 1.0 1.9: Virtual Router Redundancy Protocol Daemon
-net-misc/vtun 3.0.2-r2 3.0.3: Create virtual tunnels over TCP/IP networks with traffic shaping, encryption, and compression
+net-misc/vtun 3.0.3: Create virtual tunnels over TCP/IP networks with traffic shaping, encryption, and compression
 net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
 net-misc/wget 1.16 1.16.1 1.16.2 1.16.3 1.16.3-r1 1.16.3-r2: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
@@ -17389,7 +17389,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.2 2.3.3: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.2.4 4.3 4.3.1: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 45.0.2454.85 45.0.2454.101 46.0.2490.22 46.0.2490.42 46.0.2490.71 47.0.2526.6 47.0.2526.16 48.0.2535.0: Open-source version of Google Chrome web browser
+www-client/chromium 46.0.2490.71 47.0.2526.6 47.0.2526.16 48.0.2535.0: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20141005 1.0_pre20150227 1.0_pre20150519: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.4 3.0.4.1 3.0.5: Lean FLTK based web browser
