@@ -185,6 +185,8 @@ python_install() {
 	doins etc/keystone.conf.sample etc/logging.conf.sample
 	doins etc/default_catalog.templates etc/policy.json
 	doins etc/policy.v3cloudsample.json etc/keystone-paste.ini
+	insinto /etc/keystone/httpd
+	doins httpd/keystone.py httpd/wsgi-keystone.conf
 
 	fowners keystone:keystone /etc/keystone /var/log/keystone
 }
