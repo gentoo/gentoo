@@ -3,10 +3,10 @@ DEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 >=media-libs/portaudio-19_pre20071207 >=sc
 DESCRIPTION=A program to tune musical instruments using Qt4
 EAPI=5
 HOMEPAGE=http://wspinell.altervista.org/qpitch/
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 >=media-libs/portaudio-19_pre20071207 >=sci-libs/fftw-3.1.0
 SLOT=0
 SRC_URI=http://download.gna.org/qpitch/releases/qpitch-1.0.1.tar.gz
 _eclasses_=cmake-utils	7dc05d514e5011a2a16bfa7a32e69587	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=22540333dae2dd870cd044a82cef28c8
+_md5_=5b71a7f6e2671e4998344194abdae627
