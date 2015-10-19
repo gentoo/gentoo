@@ -9,7 +9,7 @@ inherit leechcraft
 DESCRIPTION="Full-featured RSS/Atom feed reader for LeechCraft"
 
 SLOT="0"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug mysql +sqlite postgres webaccess"
 
 DEPEND="~app-leechcraft/lc-core-${PV}[postgres?,sqlite?]
