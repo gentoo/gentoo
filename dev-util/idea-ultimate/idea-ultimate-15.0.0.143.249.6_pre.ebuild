@@ -16,7 +16,7 @@ SRC_URI="https://download.jetbrains.com/idea/${MY_PN}IU-${PV_STRING}.tar.gz -> $
 
 LICENSE="IDEA IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal"
 IUSE=""
-KEYWORDS="~amd64 ~x86" # No keywords for EAP versions. Code quality sucks.
+KEYWORDS="" # No keywords for EAP versions. Code quality sucks.
 
 DEPEND="!dev-util/${PN}:14
 	!dev-util/${PN}:15"
@@ -32,20 +32,20 @@ QA_PRESTRIPPED="opt/${PN}-${MY_PV}/lib/libpty/linux/x86/libpty.so
 
 src_prepare() {
 	if ! use amd64; then
-		rm -rf plugins/tfsIntegration/lib/native/linux/x86_64
+		rm -r plugins/tfsIntegration/lib/native/linux/x86_64 || die
 	fi
 	if ! use arm; then
-		rm bin/fsnotifier-arm
-		rm -rf plugins/tfsIntegration/lib/native/linux/arm
+		rm bin/fsnotifier-arm || die
+		rm -r plugins/tfsIntegration/lib/native/linux/arm || die
 	fi
 	if ! use ppc; then
-		rm -rf plugins/tfsIntegration/lib/native/linux/ppc
+		rm -r plugins/tfsIntegration/lib/native/linux/ppc || die
 	fi
 	if ! use x86; then
-		rm -rf plugins/tfsIntegration/lib/native/linux/x86
+		rm -r plugins/tfsIntegration/lib/native/linux/x86 || die
 	fi
-	rm -rf plugins/tfsIntegration/lib/native/solaris
-	rm -rf plugins/tfsIntegration/lib/native/hpux
+	rm -r plugins/tfsIntegration/lib/native/solaris || die
+	rm -r plugins/tfsIntegration/lib/native/hpux || die
 }
 
 src_install() {
@@ -58,8 +58,8 @@ src_install() {
 	make_wrapper "${PN}" "${dir}/bin/${MY_PN}.sh"
 
 	# recommended by: https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
-	mkdir -p "${D}/etc/sysctl.d/"
-	echo "fs.inotify.max_user_watches = 524288" > "${D}/etc/sysctl.d/30-idea-inotify-watches.conf"
+	mkdir -p "${D}/etc/sysctl.d/" || die
+	echo "fs.inotify.max_user_watches = 524288" > "${D}/etc/sysctl.d/30-idea-inotify-watches.conf" || die
 }
 
 pkg_postinst() {
