@@ -9,7 +9,7 @@ inherit leechcraft
 DESCRIPTION="An issue reporting client for LeechCraft's issue tracker"
 
 SLOT="0"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS=" amd64 ~x86"
 IUSE="debug"
 
 DEPEND="~app-leechcraft/lc-core-${PV}"
