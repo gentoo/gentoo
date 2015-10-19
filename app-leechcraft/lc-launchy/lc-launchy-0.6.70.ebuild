@@ -9,7 +9,7 @@ inherit leechcraft toolchain-funcs
 DESCRIPTION="Allows one to launch third-party applications (as well as LeechCraft plugins) from LeechCraft"
 
 SLOT="0"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS=" amd64 ~x86"
 IUSE=""
 
 DEPEND="~app-leechcraft/lc-core-${PV}
