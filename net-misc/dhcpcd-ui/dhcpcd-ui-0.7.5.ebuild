@@ -12,7 +12,7 @@ SRC_URI="http://roy.marples.name/downloads/${PN%-ui}/${P}.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug gtk gtk3 qt4 libnotify"
 
 REQUIRED_USE="

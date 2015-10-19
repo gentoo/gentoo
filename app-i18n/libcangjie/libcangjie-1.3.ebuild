@@ -10,7 +10,7 @@ SRC_URI="https://github.com/Cangjians/libcangjie/releases/download/v${PV}/libcan
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DEPEND="dev-db/sqlite:3="
 
