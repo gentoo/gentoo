@@ -15,9 +15,9 @@ SRC_URI="http://packages.${PN}.de/${PN}-src/${PN}-src-${PV}.tar.gz"
 SLOT="0"
 LICENSE="BSD GPL-3"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
+IUSE="cpu_flags_x86_sse4_1"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="${PYTHON_REQUIRED_USE} cpu_flags_x86_sse4_1"
 
 RDEPEND="${PYTHON_DEPS}
 	sci-biology/samtools"
@@ -28,17 +28,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-include.patch
 )
 
-pkg_pretend() {
-	[[ ${MERGE_TYPE} = "binary" ]] && return 0
-	if use amd64; then
-		if ! echo "#include <smmintrin.h>" | gcc -E - 2>&1 > /dev/null; then
-			ewarn "Need at least SSE4.1 support"
-			die "Missing SSE4.1 support"
-		fi
-	fi
-}
-
 src_prepare() {
+	append-cppflags -msse4.1
 	rm -f \
 		util/cmake/FindZLIB.cmake \
 		|| die
