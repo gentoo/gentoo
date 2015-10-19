@@ -9,7 +9,7 @@ inherit leechcraft
 DESCRIPTION="LeechCraft plugin for supporting and managing Internet data storages like Yandex.Disk"
 
 SLOT="0"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+googledrive +yandexdisk"
 
 DEPEND="~app-leechcraft/lc-core-${PV}
