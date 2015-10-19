@@ -3,31 +3,18 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
-inherit eutils python-r1 toolchain-funcs
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
+
+inherit eutils mercurial python-r1 toolchain-funcs
 
 DESCRIPTION="Python extension module generator for C and C++ libraries"
 HOMEPAGE="http://www.riverbankcomputing.com/software/sip/intro https://pypi.python.org/pypi/SIP"
-LICENSE="|| ( GPL-2 GPL-3 SIP )"
-
-if [[ ${PV} == *9999* ]]; then
-	# live version from mercurial repo
-	EHG_REPO_URI="http://www.riverbankcomputing.com/hg/sip"
-	inherit mercurial
-elif [[ ${PV} == *_pre* ]]; then
-	# development snapshot
-	HG_REVISION=
-	MY_P=${PN}-${PV%_pre*}-snapshot-${HG_REVISION}
-	SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.gz"
-	S=${WORKDIR}/${MY_P}
-else
-	# official release
-	SRC_URI="mirror://sourceforge/pyqt/${P}.tar.gz"
-fi
+EHG_REPO_URI="http://www.riverbankcomputing.com/hg/sip"
 
 # Sub-slot based on SIP_API_MAJOR_NR from siplib/sip.h.in
 SLOT="0/11"
+LICENSE="|| ( GPL-2 GPL-3 SIP )"
 KEYWORDS=""
 IUSE="debug doc"
 
@@ -39,20 +26,18 @@ RDEPEND="${DEPEND}"
 	doc? ( dev-python/sphinx[$(python_gen_usedep 'python2*')] )
 "
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-[[ ${PV} == *9999* ]] && REQUIRED_USE+="
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
 	|| ( $(python_gen_useflags 'python2*') )
 "
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-4.15.5-darwin.patch
 
-	if [[ ${PV} == *9999* ]]; then
-		python_setup 'python2*'
-		"${PYTHON}" build.py prepare || die
-		if use doc; then
-			"${PYTHON}" build.py doc || die
-		fi
+	python_setup 'python2*'
+	"${PYTHON}" build.py prepare || die
+	if use doc; then
+		"${PYTHON}" build.py doc || die
 	fi
 
 	# Sub-slot sanity check

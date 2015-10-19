@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
 inherit autotools eutils python-r1
 
@@ -17,9 +17,12 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~m68k-mint"
 IUSE="doc examples test"
 # API docs generated with epydoc, which is python2-only
-REQUIRED_USE="doc? ( python_targets_python2_7 )"
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
+	doc? ( python_targets_python2_7 )"
 
-RDEPEND=">=dev-libs/dbus-glib-0.100:=
+RDEPEND="
+	>=dev-libs/dbus-glib-0.100:=
 	>=sys-apps/dbus-1.6:=
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}

@@ -3,7 +3,8 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
 
 inherit distutils-r1
 
@@ -41,7 +42,6 @@ python_compile_all() {
 
 python_test() {
 	"${PYTHON}" -m unittest discover || die "Test ${test} failed under ${EPYTHON}"
-	popd > /dev/null
 }
 
 python_install_all() {
