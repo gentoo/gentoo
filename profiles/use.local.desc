@@ -6147,6 +6147,10 @@ net-misc/strongswan:strongswan_plugins_unity - Enable support for the unity plug
 net-misc/strongswan:strongswan_plugins_vici - Enable support for the vici plugin.
 net-misc/strongswan:strongswan_plugins_whitelist - Enable support for the whitelist plugin.
 net-misc/stunnel:stunnel3 - Install the stunnel3 wrapper.
+net-misc/sx:client - Access the SX Cluster from this machine via its Nginx server. Also responsible for tools required to run the server.
+net-misc/sx:ipv6 - Enable support for communication via IPv6.
+net-misc/sx:server - Enable SX's server component.
+net-misc/sx:ssl - Enable communication security via OpenSSL.
 net-misc/teamviewer:system-wine - Use app-emulation/wine instead of bundled wine.
 net-misc/termpkg:uucp - Adds support for uucp style device locking
 net-misc/tigervnc:server - Build TigerVNC server

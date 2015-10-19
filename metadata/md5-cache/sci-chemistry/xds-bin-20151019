@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst unpack
+DESCRIPTION=X-ray Detector Software for processing single-crystal monochromatic diffraction data
+EAPI=5
+HOMEPAGE=http://xds.mpimf-heidelberg.mpg.de/
+IUSE=smp X
+KEYWORDS=-* ~amd64
+LICENSE=free-noncomm
+RDEPEND=X? ( sci-visualization/xds-viewer )
+SLOT=0
+SRC_URI=ftp://ftp.mpimf-heidelberg.mpg.de/pub/kabsch/XDS-INTEL64_Linux_x86_64.tar.gz -> XDS-INTEL64_Linux_x86_64-20151019.tar.gz ftp://ftp.mpimf-heidelberg.mpg.de/pub/kabsch/XDS_html_doc.tar.gz -> XDS_html_doc-20151019.tar.gz
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=a7b8f88e1fbc4ceec06e7d9e410543af

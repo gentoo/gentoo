@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install
+DEPEND=dev-libs/libltdl:0 dev-libs/yajl net-misc/curl[idn,ipv6(-)?,ssh,ssl(-)?] server? ( >=dev-db/sqlite-3.8.4.3:3 dev-libs/fcgi www-servers/nginx:mainline[http,ipv6(-)?,nginx_modules_http_fastcgi(-),nginx_modules_http_gzip(-),nginx_modules_http_proxy(-),nginx_modules_http_scgi(-),nginx_modules_http_uwsgi(-),ssl(-)?] )
+DESCRIPTION=Skylable SX - a distributed object-storage software for data clusters
+EAPI=5
+HOMEPAGE=http://www.skylable.com/products/sx
+IUSE=+client ipv6 +server ssl
+KEYWORDS=~amd64
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=dev-libs/libltdl:0 dev-libs/yajl net-misc/curl[idn,ipv6(-)?,ssh,ssl(-)?] server? ( >=dev-db/sqlite-3.8.4.3:3 dev-libs/fcgi www-servers/nginx:mainline[http,ipv6(-)?,nginx_modules_http_fastcgi(-),nginx_modules_http_gzip(-),nginx_modules_http_proxy(-),nginx_modules_http_scgi(-),nginx_modules_http_uwsgi(-),ssl(-)?] )
+REQUIRED_USE=server? ( client )
+SLOT=0/2
+SRC_URI=http://cdn.skylable.com/source/sx-1.2.tar.gz
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=ba08281d517febeadfc517eb46058156
