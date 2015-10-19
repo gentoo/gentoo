@@ -1,12 +1,12 @@
 DEFINED_PHASES=configure install prepare unpack
-DEPEND=media-libs/libsdl[X] virtual/glu virtual/opengl x11-libs/libX11 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=media-libs/libsdl[X,opengl,video] virtual/glu virtual/opengl x11-libs/libX11 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Fireflies screensaver: Wicked cool eye candy
 EAPI=5
 HOMEPAGE=http://somewhere.fscked.org/proj/fireflies/
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2 HPND
-RDEPEND=media-libs/libsdl[X] virtual/glu virtual/opengl x11-libs/libX11
+RDEPEND=media-libs/libsdl[X,opengl,video] virtual/glu virtual/opengl x11-libs/libX11
 SLOT=0
 SRC_URI=http://somewhere.fscked.org/proj/fireflies/files/fireflies-2.07.tar.gz
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=cfb8a812710247bb9eb11b5f83d0f131
+_md5_=f7798779fac59f001ede7683af1e7978
