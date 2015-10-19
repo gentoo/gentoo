@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples test"
 
 RDEPEND="virtual/mpi"
@@ -22,8 +22,6 @@ DEPEND="${RDEPEND}
 	test? ( dev-python/nose[${PYTHON_USEDEP}]
 	virtual/mpi[romio] )"
 DISTUTILS_IN_SOURCE_BUILD=1
-
-PATCHES=( "${FILESDIR}"/${P}-py3-test-backport-1.patch "${FILESDIR}"/${P}-ldshared.patch )
 
 python_prepare_all() {
 	# not needed on install
