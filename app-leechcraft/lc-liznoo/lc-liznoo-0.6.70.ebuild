@@ -9,7 +9,7 @@ inherit leechcraft
 DESCRIPTION="UPower-based power manager for LeechCraft"
 
 SLOT="0"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS=" amd64 ~x86"
 IUSE="debug systemd"
 
 DEPEND="~app-leechcraft/lc-core-${PV}
