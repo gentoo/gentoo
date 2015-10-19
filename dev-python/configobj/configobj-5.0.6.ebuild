@@ -3,7 +3,8 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
 
 inherit distutils-r1
 
@@ -19,8 +20,10 @@ RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 
 python_prepare_all() {
 	# Not to install un-needed _version.py
-	sed -e "/^MODULES =/s/, '_version'//" -i setup.py
-	sed -e "s/^from _version import __version__$/__version__ = '${PV}'/" -i configobj.py
+	sed -e "/^MODULES =/s/, '_version'//" -i setup.py || die
+	sed \
+		-e "s/^from _version import __version__$/__version__ = '${PV}'/" \
+		-i configobj.py || die
 
 	distutils-r1_python_prepare_all
 }
