@@ -9,7 +9,8 @@ inherit distutils-r1 eutils linux-info multilib user
 
 DESCRIPTION="A cloud computing fabric controller (main part of an IaaS system) written in Python"
 HOMEPAGE="https://launchpad.net/nova"
-SRC_URI="https://launchpad.net/${PN}/liberty/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/liberty/${PV}/+download/${P}.tar.gz
+	https://dev.gentoo.org/~prometheanfire/dist/nova/liberty/nova.conf.sample -> liberty-nova.conf.sample"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -225,13 +226,7 @@ pkg_setup() {
 
 python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die
-	sed -i 's/python/python2\.7/g' tools/config/generate_sample.sh || die
 	distutils-r1_python_prepare_all
-}
-
-python_compile() {
-	distutils-r1_python_compile
-	./tools/config/generate_sample.sh -b ./ -p nova -o etc/nova || die
 }
 
 python_test() {
@@ -258,16 +253,17 @@ python_install() {
 
 	insinto /etc/nova
 	insopts -m 0640 -o nova -g nova
-	newins "etc/nova/nova.conf.sample" "nova.conf"
-	doins "etc/nova/api-paste.ini"
-	doins "etc/nova/logging_sample.conf"
-	doins "etc/nova/policy.json"
-	doins "etc/nova/rootwrap.conf"
+	newins "${FILESDIR}/etc.liberty/api-paste.ini" "api-paste.ini"
+	newins "${FILESDIR}/etc.liberty/cells.json" "cells.json"
+	newins "${FILESDIR}/etc.liberty/logging_sample.conf" "logging_sample.conf"
+	newins "${DISTDIR}/liberty-nova.conf.sample" "nova.conf.sample"
+	newins "${FILESDIR}/etc.liberty/policy.json" "policy.json"
+	newins "${FILESDIR}/etc.liberty/rootwrap.conf" "rootwrap.conf"
 	#rootwrap filters
 	insinto /etc/nova/rootwrap.d
-	doins "etc/nova/rootwrap.d/api-metadata.filters"
-	doins "etc/nova/rootwrap.d/compute.filters"
-	doins "etc/nova/rootwrap.d/network.filters"
+	newins "${FILESDIR}/etc.liberty/rootwrap.d/api-metadata.filters" "api-metadata.filters"
+	newins "${FILESDIR}/etc.liberty/rootwrap.d/compute.filters" "compute.filters"
+	newins "${FILESDIR}/etc.liberty/rootwrap.d/network.filters" "network.filters"
 	#copy migration conf file (not coppied on install via setup.py script)
 	insopts -m 0644
 	insinto /usr/$(get_libdir)/python2.7/site-packages/nova/db/sqlalchemy/migrate_repo/

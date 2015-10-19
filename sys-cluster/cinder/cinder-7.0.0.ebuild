@@ -9,7 +9,8 @@ inherit distutils-r1 eutils linux-info user
 
 DESCRIPTION="Cinder is the OpenStack Block storage service, a spin out of nova-volumes"
 HOMEPAGE="https://launchpad.net/cinder"
-SRC_URI="https://launchpad.net/${PN}/liberty/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/liberty/${PV}/+download/${P}.tar.gz
+	https://dev.gentoo.org/~prometheanfire/dist/cinder/liberty/cinder.conf.sample -> liberty-cinder.conf.sample"
 
 LICENSE="Apache-2.0"
 SLOT="0"
