@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils multilib pax-utils user
+inherit autotools eutils multilib pax-utils user
 
 DESCRIPTION="Apache CouchDB is a distributed, fault-tolerant and schema-free document-oriented database."
 HOMEPAGE="http://couchdb.apache.org/"
