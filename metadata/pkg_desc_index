@@ -76,7 +76,7 @@ app-admin/conserver 8.1.18 8.1.18-r1: Serial Console Manager
 app-admin/consolehm 1.31: Console based hardware monitor for FreeBSD
 app-admin/consul 0.5.2 0.5.2-r1 9999: A tool for service discovery, monitoring and configuration
 app-admin/consul-template 0.9.0 0.9.0-r1 9999: Generic template rendering and notifications with Consul
-app-admin/cpulimit 1.8: Limits the CPU usage of a process
+app-admin/cpulimit 1.8 2.2: Limits the CPU usage of a process
 app-admin/cronolog 1.6.2-r3 1.6.2-r4: Cronolog apache logfile rotator
 app-admin/denyhosts 2.9 3.0: DenyHosts is a utility to help sys admins thwart ssh hackers
 app-admin/diamond 4.0-r1 9999: Python daemon that collects and publishes system metrics
@@ -2232,7 +2232,7 @@ app-text/docbook-sgml-utils 0.6.14-r1: Shell scripts to manage DocBook documents
 app-text/docbook-xml-dtd 4.1.2-r6 4.2-r2 4.3-r1 4.4-r2 4.5-r1: Docbook DTD for XML
 app-text/docbook-xml-simple-dtd 1.0-r1 1.0-r2 4.1.2.4-r2 4.1.2.4-r3 4.1.2.5-r2: Simplified Docbook DTD for XML
 app-text/docbook-xsl-ns-stylesheets 1.78.0: XSL Stylesheets for Docbook
-app-text/docbook-xsl-stylesheets 1.78.0-r1: XSL Stylesheets for Docbook
+app-text/docbook-xsl-stylesheets 1.78.0-r1 1.79.0: XSL Stylesheets for Docbook
 app-text/docbook2X 0.8.8-r4: Tools to convert docbook to man and info
 app-text/docx2txt 1.2 1.3 1.4: Convert MS Office docx files to plain text
 app-text/dos2unix 6.0.6 7.3-r1 7.3.1: Convert DOS or MAC text files to UNIX format or vice versa
@@ -2258,7 +2258,7 @@ app-text/flpsed 0.7.0 0.7.2 0.7.3: Pseudo PostScript editor
 app-text/freepwing 1.4.3: FreePWING is a free JIS X 4081 (subset of EPWING V1) formatter
 app-text/gentoo-guide-xml-dtd 2.1-r1: DTD for Gentoo-Guide Style XML Files
 app-text/getxbook 1.0-r1: Download books from google, amazon, barnes and noble
-app-text/ghostscript-gpl 9.10-r2 9.10-r4 9.15-r1: Ghostscript is an interpreter for the PostScript language and for PDF
+app-text/ghostscript-gpl 9.10-r2 9.10-r4 9.15-r1 9.18: Ghostscript is an interpreter for the PostScript language and for PDF
 app-text/glark 1.10.5 1.10.5-r1: File searcher similar to grep but with fancy output
 app-text/glosung 3.6.2-r1: Watch word program for the GNOME2 desktop (watch word (german): losung)
 app-text/gnome-doc-utils 0.20.10-r1: A collection of documentation utilities for the Gnome project
