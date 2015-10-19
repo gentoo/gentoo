@@ -9,7 +9,7 @@ inherit leechcraft
 DESCRIPTION="Cloud image storage services client (like Flickr or Picasa)"
 
 SLOT="0"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS=" amd64 ~x86"
 IUSE="debug +deathnote +rappor +spegnersi +vangog"
 
 DEPEND="~app-leechcraft/lc-core-${PV}
