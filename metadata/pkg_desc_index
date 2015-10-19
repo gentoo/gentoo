@@ -13341,7 +13341,7 @@ net-analyzer/mate-netspeed 1.8.0: Applet showing network traffic for MATE
 net-analyzer/mbrowse 0.4.3: MBrowse is a graphical MIB browser
 net-analyzer/metasploit 4.11.4_p2015090201-r1 9999: Advanced open-source framework for developing, testing, and using vulnerability exploit code
 net-analyzer/mk-livestatus 1.2.2_p3: Nagios/Icinga event broker module that allows quick/direct access to your status data
-net-analyzer/monitoring-plugins 2.1.1: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
+net-analyzer/monitoring-plugins 2.1.1 2.1.2: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
 net-analyzer/mrtg 2.17.4-r1: A tool to monitor the traffic load on network-links
 net-analyzer/mrtg-ping-probe 2.2.0: Addon mrtg contrib for stats ping/loss packets
