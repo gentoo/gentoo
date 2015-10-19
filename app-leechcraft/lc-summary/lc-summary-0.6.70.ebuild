@@ -9,7 +9,7 @@ inherit leechcraft
 DESCRIPTION="Summary plugin for Leechcraft"
 
 SLOT="0"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug"
 
 DEPEND="~app-leechcraft/lc-core-${PV}"
