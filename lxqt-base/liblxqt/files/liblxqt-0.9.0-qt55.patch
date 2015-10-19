@@ -1,0 +1,22 @@
+From 7303ea207de0771d6f450a31ec4a1ce69202869b Mon Sep 17 00:00:00 2001
+From: rezso <rezso@rezso.net>
+Date: Sun, 5 Jul 2015 18:46:13 +0200
+Subject: [PATCH] fix build with qt 5.5
+
+(lxqtnotification.h:43:5: error: 'Q_OBJECT' does not name a type)
+---
+ lxqtnotification.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lxqtnotification.h b/lxqtnotification.h
+index 4334a55..2d74504 100644
+--- a/lxqtnotification.h
++++ b/lxqtnotification.h
+@@ -25,6 +25,7 @@
+ #ifndef LXQTNOTIFICATION_H
+ #define LXQTNOTIFICATION_H
+ 
++#include <QObject>
+ #include <QStringList>
+ #include "lxqtglobals.h"
+ 
