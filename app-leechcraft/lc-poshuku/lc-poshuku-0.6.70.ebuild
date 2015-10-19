@@ -9,7 +9,7 @@ inherit confutils leechcraft
 DESCRIPTION="Poshuku, the full-featured web browser plugin for LeechCraft"
 
 SLOT="0"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+autosearch debug +dcac +cleanweb +fatape +filescheme +fua +idn +keywords +onlinebookmarks
 		+pcre postgres qrd +sqlite wyfv"
 
