@@ -11240,7 +11240,7 @@ kde-misc/yakuake 2.9.9-r2: A quake-style terminal emulator based on KDE konsole 
 kde-misc/yawp 0.4.5: Yet Another Weather Plasmoid
 kde-misc/zanshin 0.2.1-r1 0.2.2: Todo management application for KDE
 kde-plasma/bluedevil 5.4.1 5.4.2: Bluetooth stack for KDE
-kde-plasma/breeze 5.4.1 5.4.2: Breeze visual style for the Plasma desktop
+kde-plasma/breeze 5.4.1 5.4.2 5.4.2-r1: Breeze visual style for the Plasma desktop
 kde-plasma/kde-cli-tools 5.4.1 5.4.2: Tools based on KDE Frameworks 5 to better interact with the system
 kde-plasma/kde-gtk-config 5.4.1 5.4.2: KDE systemsettings kcm to set GTK application look&feel
 kde-plasma/kdecoration 5.4.1 5.4.2: Plugin based library to create window decorations
