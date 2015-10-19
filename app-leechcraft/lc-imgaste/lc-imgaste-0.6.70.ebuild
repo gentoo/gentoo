@@ -9,7 +9,7 @@ inherit leechcraft
 DESCRIPTION="The simple image uploader data filter for LeechCraft"
 
 SLOT="0"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS=" amd64 ~x86"
 IUSE="debug"
 
 DEPEND="~app-leechcraft/lc-core-${PV}"

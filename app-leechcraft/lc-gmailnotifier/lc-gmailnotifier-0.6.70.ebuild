@@ -9,7 +9,7 @@ inherit leechcraft
 DESCRIPTION="Notifier about new mail in a GMail inbox for LeechCraft"
 
 SLOT="0"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug notify quark"
 
 DEPEND="~app-leechcraft/lc-core-${PV}

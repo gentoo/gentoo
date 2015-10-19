@@ -9,7 +9,7 @@ inherit leechcraft
 DESCRIPTION="HistoryHolder keeps track of stuff downloaded in LeechCraft"
 
 SLOT="0"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug"
 
 DEPEND="~app-leechcraft/lc-core-${PV}"

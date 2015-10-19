@@ -9,7 +9,7 @@ inherit leechcraft
 DESCRIPTION="Fetches info about current tune and provides it to other plugins"
 
 SLOT="0"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS=" amd64 ~x86"
 IUSE="debug"
 
 DEPEND="~app-leechcraft/lc-core-${PV}
