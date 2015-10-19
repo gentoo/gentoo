@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>python</herd>
-<longdescription>
+  <herd>python</herd>
+  <longdescription>
   Joblib is a set of tools to provide lightweight pipelining in
   Python. In particular, joblib offers:
   * transparent disk-caching of the output values and lazy
@@ -12,7 +12,7 @@
   Joblib is optimized to be fast and robust in particular on large,
   long-running functions and has specific optimizations for numpy arrays.
 </longdescription>
-<upstream>
-  <remote-id type="pypi">joblib</remote-id>
-</upstream>
+  <upstream>
+    <remote-id type="pypi">joblib</remote-id>
+  </upstream>
 </pkgmetadata>
