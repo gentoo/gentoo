@@ -40,6 +40,10 @@ DEPEND="${RDEPEND}
 # Needed for individual runs of testsuite by python impls.
 DISTUTILS_IN_SOURCE_BUILD=1
 
+PATCHES=(
+	"${FILESDIR}"/${P}-py3.5-backport.patch
+)
+
 python_prepare_all() {
 	sed -e "/setup_args\['data_files'\] = /d" -i setup.py || die
 	distutils-r1_python_prepare_all
