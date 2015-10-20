@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
-PYTHON_DEPEND="2"
+PYTHON_COMPAT=( python2_7 )
 
-inherit linux-info autotools eutils python
+inherit linux-info autotools eutils python-single-r1
 
 DESCRIPTION="A linux trace/probe tool"
 HOMEPAGE="http://www.sourceware.org/systemtap/"
@@ -14,14 +14,17 @@ SRC_URI="http://www.sourceware.org/${PN}/ftp/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="sqlite"
 
 RDEPEND=">=dev-libs/elfutils-0.142
 	sys-libs/libcap
+	${PYTHON_DEPS}
 	sqlite? ( dev-db/sqlite:3 )"
 DEPEND="${RDEPEND}
 	>=sys-devel/gettext-0.18.2"
+
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 CONFIG_CHECK="~KPROBES ~RELAY ~DEBUG_FS"
 ERROR_KPROBES="${PN} requires support for KProbes Instrumentation (KPROBES) - this can be enabled in 'Instrumentation Support -> Kprobes'."
@@ -32,12 +35,11 @@ DOCS="AUTHORS HACKING NEWS README"
 
 pkg_setup() {
 	linux-info_pkg_setup
-	python_set_active_version 2
-	python_pkg_setup
+	python-single-r1_pkg_setup
 }
 
 src_prepare() {
-	python_convert_shebangs 2 dtrace.in
+	python_fix_shebang .
 
 	sed -i \
 		-e 's:-Werror::g' \
@@ -54,6 +56,9 @@ src_prepare() {
 		testsuite/systemtap.base/sdt.exp \
 		scripts/kprobes_test/gen_code.py \
 		|| die "Failed to clean up sources"
+
+	epatch_user
+
 	eautoreconf
 }
 
