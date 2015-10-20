@@ -364,6 +364,15 @@ java-pkg_dojar() {
 		fi
 	done
 
+	# Extra logging if enabled.
+	if [[ -n ${JAVA_PKG_DEBUG} ]]; then
+		einfo "Verbose logging for \"${FUNCNAME}\" function"
+		einfo "Jar file(s) destination: ${JAVA_PKG_JARDEST}"
+		einfo "Jar file(s) created: ${@}"
+		einfo "Complete command:"
+		einfo "${FUNCNAME} ${@}"
+	fi
+
 	java-pkg_do_write_
 }
 
@@ -642,7 +651,6 @@ java-pkg_dojavadoc() {
 	fi
 
 	# Actual installation
-
 	java-pkg_dohtml -r "${dir_to_install}"
 
 	# Let's make a symlink to the directory we have everything else under
@@ -651,6 +659,15 @@ java-pkg_dojavadoc() {
 	if [[ ${symlink} ]]; then
 		debug-print "symlinking ${dest}/{api,${symlink}}"
 		dosym ${dest}/{api,${symlink}} || die
+	fi
+
+	# Extra logging if enabled.
+	if [[ -n ${JAVA_PKG_DEBUG} ]]; then
+		einfo "Verbose logging for \"${FUNCNAME}\" function"
+		einfo "Documentation destination: ${dest}"
+		einfo "Directory to install: ${dir_to_install}"
+		einfo "Complete command:"
+		einfo "${FUNCNAME} ${@}"
 	fi
 }
 
@@ -711,6 +728,17 @@ java-pkg_dosrc() {
 		doins ${zip_path} || die "Failed to install source"
 
 	JAVA_SOURCES="${JAVA_PKG_SOURCESPATH}/${zip_name}"
+
+	# Extra logging if enabled.
+	if [[ -n ${JAVA_PKG_DEBUG} ]]; then
+		einfo "Verbose logging for \"${FUNCNAME}\" function"
+		einfo "Zip filename created: ${zip_name}"
+		einfo "Zip file destination: ${JAVA_PKG_SOURCESPATH}"
+		einfo "Directories zipped: ${@}"
+		einfo "Complete command:"
+		einfo "${FUNCNAME} ${@}"
+	fi
+
 	java-pkg_do_write_
 }
 
