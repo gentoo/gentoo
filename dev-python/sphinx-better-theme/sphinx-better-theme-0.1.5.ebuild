@@ -3,12 +3,14 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
 
 inherit distutils-r1
 
 DESCRIPTION="A nice-looking, customizable theme for Sphinx"
-HOMEPAGE="https://github.com/irskep/sphinx-better-theme
+HOMEPAGE="
+	https://github.com/irskep/sphinx-better-theme
 	https://pypi.python.org/pypi/sphinx-better-theme"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
