@@ -20,14 +20,15 @@ HOMEPAGE="http://www.virtualbox.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa doc headless java pam pulseaudio +opengl python +qt4 +sdk +udev vboxwebsrv vnc"
+IUSE="alsa doc headless java libressl pam pulseaudio +opengl python +qt4 +sdk +udev vboxwebsrv vnc"
 
 RDEPEND="!app-emulation/virtualbox-bin
 	~app-emulation/virtualbox-modules-${PV}
 	dev-libs/libIDL
 	>=dev-libs/libxslt-1.1.19
 	net-misc/curl
-	dev-libs/openssl:0=
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:= )
 	dev-libs/libxml2
 	media-libs/libpng:0=
 	media-libs/libvpx
@@ -170,12 +171,10 @@ src_prepare() {
 		EPATCH_EXCLUDE="050_${PN}-5.0.2-nopie.patch"
 	fi
 
+	EPATCH_EXCLUDE="007_virtualbox-4.3.16-gsoap2813.patch" \
 	EPATCH_SUFFIX="patch" \
 	EPATCH_FORCE="yes" \
 	epatch "${WORKDIR}/patches"
-
-	# x86 build fixes (#561758)
-	epatch "${FILESDIR}"/${P}-x86_buildfix_{1,2}.patch
 
 	epatch_user
 }
