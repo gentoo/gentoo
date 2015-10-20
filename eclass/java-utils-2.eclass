@@ -2049,7 +2049,6 @@ ejavac() {
 
 	ebegin "Compiling"
 	${compiler_executable} ${javac_args} "${@}" || die "ejavac failed"
-	eend $?
 }
 
 # @FUNCTION: ejavadoc
@@ -2060,8 +2059,6 @@ ejavac() {
 ejavadoc() {
 	debug-print-function ${FUNCNAME} $*
 
-	# TODO: create a java-pkg_get-javadoc function
-	local javadoc_executable=javadoc
 	local javadoc_args=""
 
 	if java-pkg_is-vm-version-ge "1.8" ; then
@@ -2070,15 +2067,14 @@ ejavadoc() {
 
 	if [[ -n ${JAVA_PKG_DEBUG} ]]; then
 		einfo "Verbose logging for \"${FUNCNAME}\" function"
-		einfo "Javadoc executable: ${javadoc_executable}"
+		einfo "Javadoc executable: javadoc"
 		einfo "Extra arguments: ${javadoc_args}"
 		einfo "Complete command:"
-		einfo "${javadoc_executable} ${javadoc_args} ${@}"
+		einfo "javadoc ${javadoc_args} ${@}"
 	fi
 
 	ebegin "Generating JavaDoc"
-	${javadoc_executable} ${javadoc_args} "${@}" || die "ejavadoc failed"
-	eend $?
+	javadoc ${javadoc_args} "${@}" || die "ejavadoc failed"
 }
 
 # @FUNCTION: java-pkg_filter-compiler
