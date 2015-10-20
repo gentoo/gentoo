@@ -1,17 +1,17 @@
 certificate version 0.1
-pusher 9191A5F193491BB8 1445352862 +0000
-pushee git+ssh://git.gentoo.org/repo/gentoo
-nonce 1445352959-8ef3d158b9122a834ca8
+pusher Christoph Junghans <ottxor@gentoo.org> 1445356869 -0600
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1445356868-712080902a8920350842
 
-d8296583cf06042230f6011f280315a4342cbc60 f271695cb9658457152fbea17799241dbc84e1c9 refs/heads/master
+f271695cb9658457152fbea17799241dbc84e1c9 8f826bcf9ca7c4e586d77738c4b03facc9e5480d refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQEcBAABAgAGBQJWJlWeAAoJEJGRpfGTSRu4Zd4H+wV2IkGKQs5V/VWXt3BRG/BW
-UOEkemzdhQzMxbkV6MpbbJNA345i+eBDMgyKY6H3jUvL4L9fGDA5Pe6WS2VIZB+H
-ok3AjGC1Dv6M3nFeBrrf6cGkUs8tfToDZeZYfk7EZRarrE5Xw4kVwoX8goXHa7ZL
-kU6j+3weyab3HunesBY+LXazA+gVE8UhLxkSWtUoMI0tApXib6dwLXej1DgqCMox
-O7+tk1DOinta4EgASTq+tNMivrIwWI+Enn8B5Iqz8NQJBypl08PO5cvfLGdTVVa8
-+gPKft3FNEISO3TrF2MmLD+aj0Lp41bEx1zAdCvlUi4+bigAI1HCTAIUI4Vmf1c=
-=vgSm
+iQEcBAABCAAGBQJWJmVFAAoJEOeBhlrCAAWGEfUIAJgGWfx759X54kO/hb49uL6g
+dskagyVJuHfyyGBbktQcaezkDpRyOdcVWid2BYDgqyhhL1GKJf27rQWgyd5xiiyC
++ZK4CJ1jcfszPbt34jEBnQbGXybwZga1ws0NoqTXUdr8jTvMdh3StH1rBx55b/zf
+IKu0Ar1ZkaZVR2xPchk8pPYBZZW7BOMl3xSqQZx56BmgS5wpoNl75sfyopZLkT/x
+tLrwzpKkLboWB0y4IvoZAaGQPShVsbdTT3JnB0y1hzEImzrM6U8jt5Y+xK5/Nd3V
+tcDfrj0AQei6cshhfDOAbXZ0T2KOLJowyyV5p4NRhpw55UHGdEc8yNIz037lsqM=
+=S1lA
 -----END PGP SIGNATURE-----
