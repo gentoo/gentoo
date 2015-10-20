@@ -18,10 +18,12 @@ LICENSE="|| ( GPL-2 GPL-3 SIP )"
 KEYWORDS="alpha amd64 arm hppa ~ia64 ~ppc ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug doc"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RDEPEND="${PYTHON_DEPS}"
+DEPEND="${RDEPEND}"
 
-DEPEND="${PYTHON_DEPS}"
-RDEPEND="${DEPEND}"
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
+"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-4.15.5-darwin.patch

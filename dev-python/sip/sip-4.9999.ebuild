@@ -18,9 +18,8 @@ LICENSE="|| ( GPL-2 GPL-3 SIP )"
 KEYWORDS=""
 IUSE="debug doc"
 
-DEPEND="${PYTHON_DEPS}"
-RDEPEND="${DEPEND}"
-[[ ${PV} == *9999* ]] && DEPEND+="
+RDEPEND="${PYTHON_DEPS}"
+DEPEND="${RDEPEND}
 	sys-devel/bison
 	sys-devel/flex
 	doc? ( dev-python/sphinx[$(python_gen_usedep 'python2*')] )
