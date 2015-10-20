@@ -73,6 +73,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.05b-parallel-build.patch #41002
 	epatch "${FILESDIR}"/${PN}-2.05b-jobs.patch
 	epatch "${FILESDIR}"/${PN}-2.05b-fix-job-warning.patch
+	epatch "${FILESDIR}"/${PN}-3.1-dev-fd-buffer-overflow.patch #431850
 
 	epatch_user
 }

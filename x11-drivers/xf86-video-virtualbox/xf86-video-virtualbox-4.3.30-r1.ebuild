@@ -88,7 +88,7 @@ src_prepare() {
 		"${FILESDIR}/${PN}-4-mkisofs-check.patch"
 
 	# link with lazy on hardened #394757
-	sed -i '/^TEMPLATE_VBOXR3EXE_LDFLAGS.linux/s/$/ -Wl,-z,lazy/' Config.kmk
+	sed -i '/^TEMPLATE_VBOXR3EXE_LDFLAGS.linux/s/$/ -Wl,-z,lazy/' Config.kmk || die
 }
 
 src_configure() {

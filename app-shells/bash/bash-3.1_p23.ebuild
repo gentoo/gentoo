@@ -73,6 +73,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-3.0-trap-fg-signals.patch
 	epatch "${FILESDIR}"/${PN}-3.1-fix-dash-login-shell.patch #118257
 	epatch "${FILESDIR}"/${PN}-3.1-dev-fd-test-as-user.patch #131875
+	epatch "${FILESDIR}"/${PN}-3.1-dev-fd-buffer-overflow.patch #431850
 
 	epatch_user
 }

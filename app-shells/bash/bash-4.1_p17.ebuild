@@ -68,6 +68,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-4.1-fbsd-eaccess.patch #303411
 	sed -i '1i#define NEED_FPURGE_DECL' execute_cmd.c # needs fpurge() decl
 	epatch "${FILESDIR}"/${PN}-4.1-parallel-build.patch
+	epatch "${FILESDIR}"/${PN}-4.2-dev-fd-buffer-overflow.patch #431850
 
 	epatch_user
 }

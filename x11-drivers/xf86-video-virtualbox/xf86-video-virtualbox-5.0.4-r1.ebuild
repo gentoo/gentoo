@@ -86,7 +86,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-5.0.0_beta3-configure_checks.patch"
 
 	# link with lazy on hardened #394757
-	sed -i '/^TEMPLATE_VBOXR3EXE_LDFLAGS.linux/s/$/ -Wl,-z,lazy/' Config.kmk
+	sed -i '/^TEMPLATE_VBOXR3EXE_LDFLAGS.linux/s/$/ -Wl,-z,lazy/' Config.kmk || die
 }
 
 src_configure() {
