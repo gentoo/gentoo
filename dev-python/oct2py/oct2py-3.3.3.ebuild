@@ -4,22 +4,26 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
 inherit distutils-r1
 
 DESCRIPTION="Python to GNU Octave bridge"
-HOMEPAGE="https://pypi.python.org/pypi/oct2py"
+HOMEPAGE="
+	https://pypi.python.org/pypi/oct2py
+	http://pythonhosted.org/oct2py/
+	http://github.com/blink1073/oct2py"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples test"
 
 RDEPEND="
-	sci-libs/scipy[${PYTHON_USEDEP}]
-	<sci-mathematics/octave-3.8"
+	>=dev-python/numpy-1.7.1[${PYTHON_USEDEP}]
+	>=sci-libs/scipy-0.12[${PYTHON_USEDEP}]
+	sci-mathematics/octave"
 DEPEND="${RDEPEND}
 	doc? (
 		dev-python/sphinx-bootstrap-theme[${PYTHON_USEDEP}]
@@ -31,9 +35,10 @@ DEPEND="${RDEPEND}
 	)"
 
 python_prepare_all() {
-	local PATCHES=(
-		"${FILESDIR}/${P}-test.patch"
-	)
+	# https://github.com/blink1073/oct2py/issues/77
+	sed \
+		-e 's:test_help:disabled:g' \
+		-i oct2py/tests/test_usage.py || die
 	distutils-r1_python_prepare_all
 }
 
@@ -48,8 +53,7 @@ python_test() {
 	if [[ ${EPYTHON} == python2.7 ]]; then
 		local OPTIONS="--with-doctest"
 	fi
-	nosetests oct2py ${OPTIONS} || die "Tests fail with ${EPYTHON}"
-	iptest -v IPython.extensions.tests.test_octavemagic || die "Tests fail with ${EPYTHON}"
+	nosetests --exe -v oct2py ${OPTIONS} || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {
