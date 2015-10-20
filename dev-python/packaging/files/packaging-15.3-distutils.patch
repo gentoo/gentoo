@@ -1,25 +1,19 @@
- setup.py | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
+Force setup.py to use distutils
 
-diff --git a/setup.py b/setup.py
-index 13c9dad..9d68590 100644
+Bug: https://bugs.gentoo.org/563534
+
 --- a/setup.py
 +++ b/setup.py
-@@ -15,7 +15,12 @@
+@@ -15,7 +15,7 @@
  from __future__ import absolute_import, division, print_function
  
  import os
 -import setuptools
-+
-+try:
-+    from setuptools import setup
-+except ImportError:
-+    from distutils.core import setup
-+
++from distutils.core import setup
  
  
  base_dir = os.path.dirname(__file__)
-@@ -31,7 +36,7 @@ with open(os.path.join(base_dir, "CHANGELOG.rst")) as f:
+@@ -31,7 +31,7 @@ with open(os.path.join(base_dir, "CHANGELOG.rst")) as f:
      long_description = "\n".join([long_description, f.read()])
  
  
