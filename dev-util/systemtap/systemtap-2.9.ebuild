@@ -56,6 +56,9 @@ src_prepare() {
 		testsuite/systemtap.base/sdt.exp \
 		scripts/kprobes_test/gen_code.py \
 		|| die "Failed to clean up sources"
+
+	epatch_user
+
 	eautoreconf
 }
 
