@@ -6,6 +6,8 @@
     <email>chutzpah@gentoo.org</email>
     <name>Patrick McLean</name>
     <description>Co Maintainer</description>
+  </maintainer>
+  <maintainer>
     <email>dlan@gentoo.org</email>
     <name>Yixun Lan</name>
     <description>Co Maintainer</description>
