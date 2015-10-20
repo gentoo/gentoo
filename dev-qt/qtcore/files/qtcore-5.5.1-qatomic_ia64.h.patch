@@ -1,0 +1,45 @@
+From deb6b5032c8eed35021b3c697a770645d90b11ed Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=89meric=20MASCHINO?= <emeric.maschino@gmail.com>
+Date: Wed, 9 Sep 2015 22:56:32 +0200
+Subject: [PATCH] Fixed compilation errors in qatomic_ia64.h
+
+QBasicAtomicOps<size>::testAndSetRelaxed(T &, T, T) and
+QBasicAtomicOps<size>::testAndSetOrdered(T &, T, T) bodies don't match
+any prototypes in qatomic_ia64.h: the optional parameter T *currentValue
+is missing.
+
+Task-number: QTBUG-48197
+Change-Id: I0112c429b161b4a0ddb6e8a0400a436282ffb1c7
+Reviewed-by: Thiago Macieira <thiago.macieira@intel.com>
+---
+ src/corelib/arch/qatomic_ia64.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/corelib/arch/qatomic_ia64.h b/src/corelib/arch/qatomic_ia64.h
+index c880e85..2ba6d12 100644
+--- a/src/corelib/arch/qatomic_ia64.h
++++ b/src/corelib/arch/qatomic_ia64.h
+@@ -1035,16 +1035,16 @@ bool QBasicAtomicOps<size>::deref(T &_q_value) Q_DECL_NOTHROW
+ }
+ 
+ template<int size> template <typename T> inline
+-bool QBasicAtomicOps<size>::testAndSetRelaxed(T &_q_value, T expectedValue, T newValue) Q_DECL_NOTHROW
++bool QBasicAtomicOps<size>::testAndSetRelaxed(T &_q_value, T expectedValue, T newValue, T *currentValue) Q_DECL_NOTHROW
+ {
+-    return testAndSetAcquire(_q_value, expectedValue, newValue);
++    return testAndSetAcquire(_q_value, expectedValue, newValue, currentValue);
+ }
+ 
+ template<int size> template <typename T> inline
+-bool QBasicAtomicOps<size>::testAndSetOrdered(T &_q_value, T expectedValue, T newValue) Q_DECL_NOTHROW
++bool QBasicAtomicOps<size>::testAndSetOrdered(T &_q_value, T expectedValue, T newValue, T *currentValue) Q_DECL_NOTHROW
+ {
+     orderedMemoryFence(_q_value);
+-    return testAndSetAcquire(_q_value, expectedValue, newValue);
++    return testAndSetAcquire(_q_value, expectedValue, newValue, currentValue);
+ }
+ 
+ template<int size> template <typename T> inline
+-- 
+2.6.2
+
