@@ -4745,7 +4745,7 @@ dev-libs/libsecp256k1 0.0.0_pre20141212 0.0.0_pre20150423 9999: Optimized C libr
 dev-libs/libserialport 0.1.0 9999: Cross platform serial port access library
 dev-libs/libsigc++ 1.2.7 2.4.0 2.4.1: Typesafe callback system for standard C++
 dev-libs/libsigsegv 2.10: library for handling page faults in user mode
-dev-libs/libsodium 1.0.2 1.0.3: A portable fork of NaCl, a higher-level cryptographic library
+dev-libs/libsodium 1.0.2 1.0.3 1.0.4: A portable fork of NaCl, a higher-level cryptographic library
 dev-libs/libspnav 0.2.2: The libspnav provides a replacement of the magellan library with cleaner and more orthogonal API
 dev-libs/libspt 1.1-r2: Library for handling root privilege
 dev-libs/libsqlora8 2.3.3: libsqlora8 is a simple C-library to access Oracle databases via the OCI interface
@@ -7727,7 +7727,7 @@ dev-python/requests 2.6.0 2.6.1 2.7.0 2.8.0 2.8.1: HTTP library for human beings
 dev-python/requests-cache 0.4.9 0.4.10: Persistent cache for requests library
 dev-python/requests-mock 0.5.1 0.6.0: Mock out responses from the requests package
 dev-python/requests-oauthlib 0.4.1: This project provides first-class OAuth library support for Requests
-dev-python/responses 0.4.0: A utility for mocking out the Python Requests library
+dev-python/responses 0.4.0 0.5.0: A utility for mocking out the Python Requests library
 dev-python/restkit 4.2.2: A HTTP ressource kit for Python
 dev-python/restructuredtext-lint 0.12.2: Created out of frustration, it sucks to find out your reST is invalid after uploading it.
 dev-python/retry-decorator 1.0.0: Decorator for retrying when exceptions occur
@@ -9351,7 +9351,7 @@ dev-util/itstool 1.2.0-r1 2.0.2: Translation tool for XML documents that uses ge
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 1.625.1 1.631 1.633: Extensible continuous integration server
+dev-util/jenkins-bin 1.625.1 1.633 1.634: Extensible continuous integration server
 dev-util/jif 3.1_rc1: JIF is an IDE for the creation of text adventures based on Graham Nelson's Inform standard
 dev-util/kbuild 0.1.9998_pre20120806 0.1.9998_pre20131130 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.4 2.5.5: A graphical debugger interface
@@ -13681,7 +13681,7 @@ net-fs/nfstest 1.0.2: Tools for testing either the NFS client or the NFS server
 net-fs/openafs 1.6.11 1.6.11-r1 1.6.11.1 1.6.11.1-r1 1.6.12 1.6.12-r1 1.6.14: The OpenAFS distributed file system
 net-fs/openafs-kernel 1.6.11 1.6.11-r1 1.6.11.1 1.6.11.1-r1 1.6.12 1.6.12-r1 1.6.14: The OpenAFS distributed file system kernel module
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
-net-fs/samba 3.5.21 3.5.22 3.6.25 4.0.26-r1 4.1.20-r1 4.1.21 4.2.4-r1 4.3.0: Samba Suite Version 4
+net-fs/samba 3.5.21 3.5.22 3.6.25 4.0.26-r1 4.1.20-r1 4.1.21 4.2.4-r1 4.3.0 4.3.1: Samba Suite Version 4
 net-fs/smbnetfs 0.5.3b 0.6.0 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/smbtatools 1.2.6: Tools for configuration and query of SMB Traffic Analyzer
@@ -17560,7 +17560,7 @@ x11-apps/xgamma 1.0.5 1.0.6: Alter a monitor's gamma correction through the X se
 x11-apps/xgc 1.0.4 1.0.5: X graphics demo
 x11-apps/xhost 1.0.6 1.0.7: Controls host and/or user access to a running X server
 x11-apps/xinit 1.3.3 1.3.3-r1 1.3.4 1.3.4-r1: X Window System initializer
-x11-apps/xinput 1.6.1: Utility to set XInput device parameters
+x11-apps/xinput 1.6.1 1.6.2: Utility to set XInput device parameters
 x11-apps/xinput_calibrator 0.7.5: A generic touchscreen calibration program for X.Org
 x11-apps/xkbcomp 1.2.4 1.3.0: compile XKB keyboard description
 x11-apps/xkbevd 1.1.3 1.1.4: XKB event daemon
@@ -18082,7 +18082,7 @@ x11-misc/xgestures 0.4: A mouse gesture recognition program for X11 desktops
 x11-misc/xhkeys 2.2.1: assign particular actions to any key or key combination
 x11-misc/xidle 24102005: xidle monitors inactivity in X and runs the specified program when a timeout occurs.
 x11-misc/xkbd 0.8.15-r1 0.8.16: onscreen soft keyboard for X11
-x11-misc/xkeyboard-config 2.14 2.15: X keyboard configuration database
+x11-misc/xkeyboard-config 2.14 2.15 2.16: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r1: GUI frontend to xmodmap
 x11-misc/xlockmore 5.45 5.46: Just another screensaver application for X
 x11-misc/xmobar 0.20.1-r1 0.21 0.22.1 0.23 0.23.1: A Minimalistic Text Based Status Bar
