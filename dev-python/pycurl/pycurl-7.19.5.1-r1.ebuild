@@ -4,7 +4,7 @@
 EAPI=5
 
 # The selftests fail with pypy, and urlgrabber segfaults for me.
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
 inherit distutils-r1
 
@@ -23,10 +23,12 @@ IUSE="curl_ssl_gnutls curl_ssl_libressl curl_ssl_nss +curl_ssl_openssl examples 
 # If curl uses gnutls, depend on at least gnutls 2.11.0 so that pycurl
 # does not need to initialize gcrypt threading and we do not need to
 # explicitly link to libgcrypt.
-RDEPEND=">=net-misc/curl-7.25.0-r1[ssl=]
+RDEPEND="
+	>=net-misc/curl-7.25.0-r1[ssl=]
 	ssl? (
 		net-misc/curl[curl_ssl_gnutls(-)=,curl_ssl_libressl(-)=,curl_ssl_nss(-)=,curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-),-curl_ssl_polarssl(-)]
-		curl_ssl_gnutls? ( >=net-libs/gnutls-2.11.0 ) )"
+		curl_ssl_gnutls? ( >=net-libs/gnutls-2.11.0 )
+	)"
 
 # bottle-0.12.7: https://github.com/pycurl/pycurl/issues/180
 # bottle-0.12.7: https://github.com/defnull/bottle/commit/f35197e2a18de1672831a70a163fcfd38327a802
@@ -54,6 +56,9 @@ python_compile() {
 }
 
 python_test() {
+	# Python3.5 test problems
+	# https://github.com/pycurl/pycurl/issues/273
+	# https://github.com/pycurl/pycurl/issues/274
 	emake -j1 do-test
 }
 
