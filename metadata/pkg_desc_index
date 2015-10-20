@@ -17669,7 +17669,7 @@ x11-drivers/xf86-video-trident 1.3.7: Trident video driver
 x11-drivers/xf86-video-tseng 1.2.5-r1: Tseng Labs video driver
 x11-drivers/xf86-video-v4l 0.2.0: video4linux driver
 x11-drivers/xf86-video-vesa 2.3.3 2.3.4: Generic VESA video driver
-x11-drivers/xf86-video-virtualbox 4.3.28 4.3.30 5.0.4 5.0.6: VirtualBox video driver
+x11-drivers/xf86-video-virtualbox 4.3.28-r1 4.3.30-r1 5.0.4-r1 5.0.6-r1: VirtualBox video driver
 x11-drivers/xf86-video-vmware 13.0.1-r1 13.0.2 13.1.0: VMware SVGA video driver
 x11-drivers/xf86-video-voodoo 1.2.5: Voodoo video driver
 x11-libs/agg 2.5-r2: Anti-Grain Geometry - A High Quality Rendering Engine for C++
