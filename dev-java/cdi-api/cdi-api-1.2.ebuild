@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+JAVA_PKG_IUSE="doc source"
 
 inherit eutils java-pkg-2 java-pkg-simple
 
