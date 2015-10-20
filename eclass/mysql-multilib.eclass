@@ -27,7 +27,7 @@ MYSQL_EXTRAS=""
 # Use "none" to disable it's use
 [[ ${MY_EXTRAS_VER} == "live" ]] && MYSQL_EXTRAS="git-r3"
 
-inherit eutils flag-o-matic ${MYSQL_EXTRAS} mysql-cmake mysql_fx versionator \
+inherit eutils systemd flag-o-matic ${MYSQL_EXTRAS} mysql-cmake mysql_fx versionator \
 	toolchain-funcs user cmake-utils multilib-minimal
 
 #
@@ -192,8 +192,10 @@ fi
 LICENSE="GPL-2"
 SLOT="0/${SUBSLOT:-0}"
 
-IUSE="+community cluster debug embedded extraengine jemalloc latin1
-	+perl profiling selinux ssl systemtap static static-libs tcmalloc test"
+IUSE="+community cluster debug embedded extraengine jemalloc latin1 libressl +openssl
+	+perl profiling selinux systemtap static static-libs tcmalloc test yassl"
+
+REQUIRED_USE="^^ ( yassl openssl libressl )"
 
 ### Begin readline/libedit
 ### If the world was perfect, we would use external libedit on both to have a similar experience
@@ -261,7 +263,7 @@ fi
 
 REQUIRED_USE="
 	${REQUIRED_USE} tcmalloc? ( !jemalloc ) jemalloc? ( !tcmalloc )
-	 static? ( !ssl )"
+	 static? ( yassl )"
 
 #
 # DEPENDENCIES:
@@ -271,7 +273,6 @@ REQUIRED_USE="
 # These are used for both runtime and compiletime
 # MULTILIB_USEDEP only set for libraries used by the client library
 DEPEND="
-	ssl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
 	kernel_linux? (
 		sys-process/procps:0=
 		dev-libs/libaio:0=
@@ -287,18 +288,21 @@ DEPEND="
 if [[ ${HAS_TOOLS_PATCH} ]] ; then
 	DEPEND+="
 		client-libs? (
-			ssl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
+			openssl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
+			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP},static-libs?] )
 			>=sys-libs/zlib-1.2.3:0=[${MULTILIB_USEDEP},static-libs?]
 		)
 		!client-libs? (
-			ssl? ( >=dev-libs/openssl-1.0.0:0=[static-libs?] )
+			openssl? ( >=dev-libs/openssl-1.0.0:0=[static-libs?] )
+			libressl? ( dev-libs/libressl:0=[static-libs?] )
 			>=sys-libs/zlib-1.2.3:0=[static-libs?]
 		)
 		tools? ( sys-libs/ncurses:0= ) embedded? ( sys-libs/ncurses:0= )
 	"
 else
 	DEPEND+="
-		ssl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
+		openssl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
+		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP},static-libs?] )
 		>=sys-libs/zlib-1.2.3:0=[${MULTILIB_USEDEP},static-libs?]
 		sys-libs/ncurses:0=[${MULTILIB_USEDEP}]
 	"
@@ -637,10 +641,20 @@ multilib_src_configure() {
 		-DENABLED_LOCAL_INFILE=1
 		-DMYSQL_UNIX_ADDR=${EPREFIX}/var/run/mysqld/mysqld.sock
 		-DINSTALL_UNIX_ADDRDIR=${EPREFIX}/var/run/mysqld/mysqld.sock
-		-DWITH_SSL=$(usex ssl system bundled)
 		-DWITH_DEFAULT_COMPILER_OPTIONS=0
 		-DWITH_DEFAULT_FEATURE_SET=0
+		-DINSTALL_SYSTEMD_UNITDIR=$(systemd_get_unitdir)
 	)
+
+	if in_iuse systemd ; then
+		mycmakeargs+=( -DWITH_SYSTEMD=$(usex systemd) )
+	fi
+
+	if use openssl || use libressl ; then
+		mycmakeargs+=( -DWITH_SSL=system )
+	else
+		mycmakeargs+=( -DWITH_SSL=bundled )
+	fi
 
 	if in_iuse client-libs ; then
 		mycmakeargs+=( -DWITHOUT_CLIENTLIBS=$(usex client-libs 0 1) )
@@ -795,7 +809,7 @@ mysql-multilib_pkg_preinst() {
 	        if [[ -z ${REPLACING_VERSIONS} && -e "${EROOT}usr/$(get_libdir)/libmysqlclient.so" ]] ; then
 			SHOW_ABI_MESSAGE=1
 		elif [[ ${REPLACING_VERSIONS} && -e "${EROOT}usr/$(get_libdir)/libmysqlclient.so" ]] && \
-			in_iuse client-libs && ! built_with_use --missing true ${CATEGORY}/${PN} client-libs ; then
+			in_iuse client-libs && has_version "${CATEGORY}/${PN}[-client-libs(+)]" ; then
 			SHOW_ABI_MESSAGE=1
 		fi
 

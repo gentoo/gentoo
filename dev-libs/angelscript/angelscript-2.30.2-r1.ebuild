@@ -28,7 +28,7 @@ src_prepare() {
 }
 
 multilib_src_compile() {
-	emake -C ${PN}/projects/gnuc
+	emake -C ${PN}/projects/gnuc LIBRARYDEST=
 }
 
 multilib_src_install() {

@@ -23,6 +23,14 @@ RDEPEND="!media-sound/amarok[embedded]"
 # If you want to add a single patch, copy the ebuild to an overlay
 # and create your own mysql-extras tarball, looking at 000_index.txt
 
+src_prepare() {
+	mysql-multilib_src_prepare
+	if use libressl ; then
+		sed -i 's/OPENSSL_MAJOR_VERSION STREQUAL "1"/OPENSSL_MAJOR_VERSION STREQUAL "2"/' \
+			"${S}/cmake/ssl.cmake" || die
+	fi
+}
+
 # Official test instructions:
 # USE='cluster extraengine perl ssl community' \
 # FEATURES='test userpriv -usersandbox' \
