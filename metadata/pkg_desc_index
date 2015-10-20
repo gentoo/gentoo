@@ -4627,7 +4627,7 @@ dev-libs/libdnsres 0.1a-r2: A non-blocking DNS resolver library
 dev-libs/libdshconfig 0.20.12 0.20.13: Library for parsing dsh.style configuration files
 dev-libs/libdynd 0.6.5 0.6.6: C++ dynamic multi-dimensionnal array library with Python exposure
 dev-libs/libe 0.9.0 0.10.1 0.11.0: Hyperdex libe support library
-dev-libs/libebml 1.2.1 1.2.2 1.3.0 1.3.1: Extensible binary format library (kinda like XML)
+dev-libs/libebml 1.2.1 1.2.2 1.3.0 1.3.1 1.3.3: Extensible binary format library (kinda like XML)
 dev-libs/libedit 20120311.3.0-r1 20130611.3.1-r1 20130712.3.1: BSD replacement for libreadline
 dev-libs/libee 0.3.2-r1 0.3.2-r2 0.4.1: An Event Expression Library inspired by CEE
 dev-libs/libelf 0.8.13-r1 0.8.13-r2: A ELF object file access library
@@ -7100,6 +7100,7 @@ dev-python/imdbpy 4.9-r1 5.0: Python package to access the IMDb movie database
 dev-python/importing 1.10: Import objects dynamically, lazily, weakly, and more
 dev-python/iniparse 0.4-r1: Better INI parser for Python
 dev-python/inotifyx 0.2.0-r1 0.2.2: Python bindings to the Linux inotify file system event monitoring API
+dev-python/intelhex 2.0: Python library for Intel HEX files manipulations
 dev-python/into 0.1.3 0.2.1 0.2.2: Data migration utilities
 dev-python/ioflo 1.0.2 1.2.1: Automated Reasoning Engine and Flow Based Programming Framework
 dev-python/ipaddr 2.1.10-r1 2.1.11: Python IP address manipulation library
@@ -12120,7 +12121,7 @@ media-libs/liblqr 0.4.2-r1: An easy to use C/C++ seam carving library
 media-libs/liblrdf 0.5.0 0.5.0-r1: A library for the manipulation of RDF file in LADSPA plugins
 media-libs/liblscp 0.5.5 0.5.6 0.5.7: C++ library for the Linux Sampler control protocol
 media-libs/libmad 0.15.1b-r8: "M"peg "A"udio "D"ecoder library
-media-libs/libmatroska 1.2.0 1.3.0 1.4.0 1.4.1 1.4.2: Extensible multimedia container format based on EBML
+media-libs/libmatroska 1.2.0 1.3.0 1.4.0 1.4.1 1.4.2 1.4.4: Extensible multimedia container format based on EBML
 media-libs/libmediaart 0.7.0 1.9.0: Manages, extracts and handles media art caches
 media-libs/libmediainfo 0.7.65 0.7.72 0.7.73: MediaInfo libraries
 media-libs/libmetalink 0.1.0-r1 0.1.1 0.1.1-r1 0.1.3: Library for handling Metalink files
@@ -12177,7 +12178,7 @@ media-libs/libsixel 1.4.12 1.4.13: A lightweight, fast implementation of DEC SIX
 media-libs/libsmf 1.3: Standard MIDI File format library
 media-libs/libsndfile 1.0.25 1.0.25-r1: A C library for reading and writing files containing sampled sound
 media-libs/libsoundio 1.0.0 1.0.2: C99 library providing cross-platform audio input and output
-media-libs/libsoundtouch 1.7.1 1.8.0 1.8.0-r1 1.9.0: Audio processing library for changing tempo, pitch and playback rates
+media-libs/libsoundtouch 1.7.1 1.8.0 1.8.0-r1 1.9.0 1.9.2: Audio processing library for changing tempo, pitch and playback rates
 media-libs/libsvg 0.1.4-r1: A parser for SVG content in files or buffers
 media-libs/libsvgtiny 0.1.2 0.1.3-r1: framebuffer abstraction library, written in C
 media-libs/libtaginfo 0.2.1: a library for reading media metadata
@@ -12434,7 +12435,7 @@ media-plugins/kipi-plugins 4.4.0 4.7.0 4.10.0 4.12.0: Plugins for the KDE Image 
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.0.1 2.1.0: A libvisual graphical music visualization plugin similar to milkdrop
-media-plugins/live 2012.01.07 2012.09.13 2013.02.11 2015.08.07: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
+media-plugins/live 2012.01.07 2012.09.13 2013.02.11 2015.08.07 2015.10.12: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
 media-plugins/mcp-plugins 0.4.0: MCP ladspa plugins package. Includes moogvcf, phaser & chorus
 media-plugins/mda-lv2 1.0.0 1.2.2: LV2 port of the MDA plugins by Paul Kellett
 media-plugins/mediastreamer-amr 0.0.1: mediastreamer plugin: add AMR Narrow Band support
