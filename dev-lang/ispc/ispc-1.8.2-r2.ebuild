@@ -27,6 +27,8 @@ IUSE="examples"
 RDEPEND="
 	>=sys-devel/clang-3.4
 	>=sys-devel/llvm-3.4
+	<sys-devel/clang-3.7
+	<sys-devel/llvm-3.7
 	"
 DEPEND="
 	${RDEPEND}
