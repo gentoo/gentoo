@@ -16,7 +16,7 @@ IUSE="artist-screen chat-screen colors debug +help-screen key-screen lirc lyrics
 
 RDEPEND=">=dev-libs/glib-2.12:2
 	>=media-libs/libmpdclient-2.3
-	sys-libs/ncurses[unicode]
+	sys-libs/ncurses:*[unicode]
 	lirc? ( app-misc/lirc )"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
@@ -27,7 +27,7 @@ DOCS=( AUTHORS NEWS README doc/config.sample doc/keys.sample )
 src_prepare() {
 	# default ax_with_curses.m4 produces automagic dependency on ncursesw
 	# also, ncursesw is required for colors (bug #554245), so we force it here
-	epatch "${FILESDIR}"/${PN}-0.24-tinfo2.patch
+	epatch "${FILESDIR}"/${PN}-0.24-tinfo.patch
 
 	cp "${FILESDIR}"/ax_require_defined.m4 m4/ || die
 
