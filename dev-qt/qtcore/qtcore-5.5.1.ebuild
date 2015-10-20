@@ -24,6 +24,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-qatomic_ia64.h.patch" # bug 559802
+)
+
 QT5_TARGET_SUBDIRS=(
 	src/tools/bootstrap
 	src/tools/moc
