@@ -120,6 +120,16 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 #	JAVA_PKG_WANT_TARGET=1.3 emerge bar
 # @CODE
 
+# @ECLASS-VARIABLE: JAVA_PKG_DEBUG
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# A variable to be set with "yes" or "y", or ANY string of length non equal to
+# zero. When set, verbosity across java eclasses is increased and extra
+# logging is displayed.
+# @CODE
+#	JAVA_PKG_DEBUG="yes"
+# @CODE
+
 # @ECLASS-VARIABLE: JAVA_RM_FILES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -2001,8 +2011,17 @@ ejavac() {
 	local javac_args
 	javac_args="$(java-pkg_javac-args)"
 
-	[[ -n ${JAVA_PKG_DEBUG} ]] && echo ${compiler_executable} ${javac_args} "${@}"
+	if [[ -n ${JAVA_PKG_DEBUG} ]]; then
+		einfo "Verbose logging for \"${FUNCNAME}\" function"
+		einfo "Compiler executable: ${compiler_executable}"
+		einfo "Extra arguments: ${javac_args}"
+		einfo "Complete command:"
+		einfo "${compiler_executable} ${javac_args} ${@}"
+	fi
+
+	ebegin "Compiling"
 	${compiler_executable} ${javac_args} "${@}" || die "ejavac failed"
+	eend $?
 }
 
 # @FUNCTION: ejavadoc
@@ -2013,13 +2032,25 @@ ejavac() {
 ejavadoc() {
 	debug-print-function ${FUNCNAME} $*
 
+	# TODO: create a java-pkg_get-javadoc function
+	local javadoc_executable=javadoc
 	local javadoc_args=""
 
 	if java-pkg_is-vm-version-ge "1.8" ; then
 		javadoc_args="-Xdoclint:none"
 	fi
 
-	javadoc ${javadoc_args} "${@}" || die "ejavadoc failed"
+	if [[ -n ${JAVA_PKG_DEBUG} ]]; then
+		einfo "Verbose logging for \"${FUNCNAME}\" function"
+		einfo "Javadoc executable: ${javadoc_executable}"
+		einfo "Extra arguments: ${javadoc_args}"
+		einfo "Complete command:"
+		einfo "${javadoc_executable} ${javadoc_args} ${@}"
+	fi
+
+	ebegin "Generating JavaDoc"
+	${javadoc_executable} ${javadoc_args} "${@}" || die "ejavadoc failed"
+	eend $?
 }
 
 # @FUNCTION: java-pkg_filter-compiler
