@@ -16,21 +16,26 @@ EGIT_REPO_URI="https://github.com/${MY_PN}/${MY_PN}.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="acl debug doc kernel_linux pam policykit selinux test"
+IUSE="acl cgroups debug doc kernel_linux pam policykit selinux test"
 
-COMMON_DEPEND=">=dev-libs/glib-2.40:2=
+COMMON_DEPEND=">=dev-libs/glib-2.40:2=[dbus]
+	>=sys-devel/gettext-0.19
+	sys-apps/dbus
 	sys-libs/zlib:=
 	x11-libs/libX11:=
 	acl? (
 		sys-apps/acl:=
 		>=virtual/udev-200
 		)
+	cgroups? (
+		app-admin/cgmanager
+		>=sys-libs/libnih-1.0.2[dbus]
+		)
 	pam? ( virtual/pam )
 	policykit? ( >=sys-auth/polkit-0.110 )"
 RDEPEND="${COMMON_DEPEND}
 	kernel_linux? ( sys-apps/coreutils[acl?] )
-	selinux? ( sec-policy/selinux-consolekit )
-	sys-power/pm-utils"
+	selinux? ( sec-policy/selinux-consolekit )"
 DEPEND="${COMMON_DEPEND}
 	dev-libs/libxslt
 	virtual/pkgconfig
@@ -75,6 +80,7 @@ src_configure() {
 		$(use_enable debug) \
 		$(use_enable policykit polkit) \
 		$(use_enable acl udev-acl) \
+		$(use_enable cgroups) \
 		$(use_enable test tests) \
 		--with-dbus-services="${EPREFIX}"/usr/share/dbus-1/services \
 		--with-pam-module-dir="$(getpam_mod_dir)" \
@@ -92,7 +98,7 @@ src_install() {
 
 	dodoc AUTHORS HACKING NEWS README TODO
 
-	newinitd "${FILESDIR}"/${PN}-0.2.rc consolekit
+	newinitd "${FILESDIR}"/${PN}-1.0.0.initd consolekit
 
 	keepdir /usr/lib/ConsoleKit/run-seat.d
 	keepdir /usr/lib/ConsoleKit/run-session.d
@@ -108,4 +114,9 @@ src_install() {
 
 	insinto /etc/logrotate.d
 	newins "${WORKDIR}"/debian/${PN}.logrotate ${PN} #374513
+}
+
+pkg_postinst() {
+	elog "For suspend/hibernate support, please emerge"
+	elog "  sys-power/pm-utils"
 }
