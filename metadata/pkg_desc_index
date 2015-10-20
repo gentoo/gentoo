@@ -9497,7 +9497,7 @@ dev-util/suse-build 2014.02.20 2014.09.18 9999: Script to build SUSE Linux RPMs
 dev-util/synopsis 0.13: General source code documentation tool
 dev-util/sysdig 0.1.92 0.1.98 0.1.104: A system exploration and troubleshooting tool
 dev-util/sysprof 1.2.0: System-wide Linux Profiler
-dev-util/systemtap 2.4 2.4-r1 2.5: A linux trace/probe tool
+dev-util/systemtap 2.4-r1 2.5 2.9: A linux trace/probe tool
 dev-util/tailor 0.9.35-r1: A tool to migrate changesets between version control systems
 dev-util/ticpp 0_p20120423 9999: A completely new interface to TinyXML that uses MANY of the C++ strengths
 dev-util/tinlink 1.0.0: a tool to create very small elf binary from pure binary files
