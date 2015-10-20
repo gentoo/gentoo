@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare setup
+DEPEND=>=sys-devel/clang-3.7 >=sys-devel/llvm-3.7 || ( >=dev-lang/python-2.7.5-r2:2.7 ) sys-devel/bison sys-devel/flex
+DESCRIPTION=Intel SPMD Program Compiler
+EAPI=5
+HOMEPAGE=https://ispc.github.com/
+IUSE=examples
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD BSD-2 UoI-NCSA
+RDEPEND=>=sys-devel/clang-3.7 >=sys-devel/llvm-3.7
+SLOT=0
+SRC_URI=https://github.com/ispc/ispc/archive/v1.8.2.tar.gz -> ispc-1.8.2.tar.gz http://dev.gentoo.org/~ottxor/dist/ispc-1.8.2-llvm-3.7.patch.gz
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	b81ab4852d108e3d9c940fa03bce80e1	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=4e09595b3d971c39889d6fdae433fc34
