@@ -45,8 +45,6 @@ DEPEND="${COMMON_DEPEND}
 		app-text/xmlto
 		)"
 
-S=${WORKDIR}/${MY_P}
-
 QA_MULTILIB_PATHS="usr/lib/ConsoleKit/.*"
 
 pkg_setup() {
