@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
 PYTHON_REQ_USE='tk?'
 
@@ -24,9 +24,22 @@ LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
 KEYWORDS=""
 IUSE="cairo doc excel examples fltk gtk gtk3 latex pyside qt4 qt5 test tk wxwidgets"
 
+PY2_FLAGS="|| ( $(python_gen_useflags python2_7) )"
+REQUIRED_USE="
+	doc? ( ${PY2_FLAGS} )
+	excel? ( ${PY2_FLAGS} )
+	fltk? ( ${PY2_FLAGS} )
+	gtk? ( ${PY2_FLAGS} )
+	wxwidgets? ( ${PY2_FLAGS} )
+	test? (
+		cairo fltk latex pyside qt5 qt4 tk wxwidgets
+		|| ( gtk gtk3 )
+		)"
+
 # #456704 -- a lot of py2-only deps
 PY2_USEDEP=$(python_gen_usedep python2_7)
 COMMON_DEPEND="
+	dev-python/cycler[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.6[${PYTHON_USEDEP}]
 	dev-python/python-dateutil:0[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
@@ -93,18 +106,6 @@ RDEPEND="${COMMON_DEPEND}
 	qt4? ( dev-python/PyQt4[X,${PYTHON_USEDEP}] )
 	qt5? ( dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}] )
 	"
-
-PY2_FLAGS="|| ( $(python_gen_useflags python2_7) )"
-REQUIRED_USE="
-	doc? ( ${PY2_FLAGS} )
-	excel? ( ${PY2_FLAGS} )
-	fltk? ( ${PY2_FLAGS} )
-	gtk? ( ${PY2_FLAGS} )
-	wxwidgets? ( ${PY2_FLAGS} )
-	test? (
-		cairo fltk latex pyside qt5 qt4 tk wxwidgets
-		|| ( gtk gtk3 )
-		)"
 
 RESTRICT="mirror"
 

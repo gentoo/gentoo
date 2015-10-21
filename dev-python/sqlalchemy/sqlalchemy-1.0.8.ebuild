@@ -3,7 +3,8 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
 PYTHON_REQ_USE="sqlite?"
 
 inherit distutils-r1 flag-o-matic
@@ -19,12 +20,13 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc examples +sqlite test"
+
 REQUIRED_USE="test? ( sqlite )"
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-
 DEPEND="${RDEPEND}
-	test? (	dev-python/pytest[${PYTHON_USEDEP}]
+	test? (
+		dev-python/pytest[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7 pypy)
 	)"
 S="${WORKDIR}/${MY_P}"
@@ -47,9 +49,9 @@ python_test() {
 	# Create copies of necessary files in BUILD_DIR.
 	# https://bitbucket.org/zzzeek/sqlalchemy/issue/3144/
 	cp -pR examples sqla_nose.py setup.cfg test "${BUILD_DIR}" || die
-	pushd "${BUILD_DIR}" > /dev/null
+	pushd "${BUILD_DIR}" > /dev/null || die
 	if [[ "${EPYTHON}" == "python3.2" ]]; then
-		2to3 --no-diffs -w test
+		2to3 --no-diffs -w test || die
 	fi
 	# Recently upstream elected to make the testsuite also pytest capable
 	# "${PYTHON}" sqla_nose.py || die "Testsuite failed under ${EPYTHON}"
@@ -59,7 +61,6 @@ python_test() {
 
 python_install_all() {
 	use doc && HTML_DOCS=( doc/. )
-
 	use examples && local EXAMPLES=( examples/. )
 
 	distutils-r1_python_install_all

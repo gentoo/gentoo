@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
 inherit distutils-r1 virtualx
 
@@ -34,6 +34,11 @@ DEPEND="${CDEPEND}
 		dev-python/ipython[${PYTHON_USEDEP}]
 		)
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-pandas-0.17.0.patch
+	"${FILESDIR}"/${P}-numpy-1.10.patch
+)
 
 pkg_setup() {
 	export MPLCONFIGDIR="${T}" HOME="${T}"

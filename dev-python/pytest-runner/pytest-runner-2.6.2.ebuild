@@ -4,11 +4,11 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy pypy3 )
 
 inherit distutils-r1
 
-DESCRIPTION="Adds support for tests durring installation of setup.py files"
+DESCRIPTION="Adds support for tests during installation of setup.py files"
 HOMEPAGE="https://pypi.python.org/pypi/pytest-runner https://bitbucket.org/pytest-dev/pytest-runner"
 SRC_URI="mirror://pypi/p/${PN}/${P}.tar.gz"
 
