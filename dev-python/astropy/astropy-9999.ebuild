@@ -6,15 +6,15 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
-inherit distutils-r1
+inherit distutils-r1 git-r3
 
 DESCRIPTION="Core functionality for performing astrophysics with Python"
 HOMEPAGE="http://astropy.org/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/astropy/astropy.git"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS=""
 IUSE="doc test"
 
 RDEPEND="
@@ -48,7 +48,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.4-disable_helper.patch"
 	"${FILESDIR}/${PN}-1.0.4-system-six.patch"
-	"${FILESDIR}/${PN}-1.0.4-system-pytest.patch"
+	"${FILESDIR}/${P}-system-pytest.patch"
 	"${FILESDIR}/${PN}-1.0.4-system-configobj.patch"
 	)
 
