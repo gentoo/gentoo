@@ -25,13 +25,13 @@ IUSE=""
 RESTRICT="test strip"
 
 QA_PREBUILT="
-	usr/$(get_libdir)/ruby/gems/*/gems/${PN}-${SLOT}/data/meterpreter/msflinker_linux_x86.bin
-	usr/$(get_libdir)/ruby/gems/*/gems/${PN}-${SLOT}/data/meterpreter/ext_server_sniffer.lso
-	usr/$(get_libdir)/ruby/gems/*/gems/${PN}-${SLOT}/data/meterpreter/ext_server_networkpug.lso
-	usr/$(get_libdir)/ruby/gems/*/gems/${PN}-${SLOT}/data/meterpreter/ext_server_stdapi.lso
-	usr/$(get_libdir)/ruby/gems/*/gems/${PN}-${SLOT}/data/android/libs/armeabi/libndkstager.so
-	usr/$(get_libdir)/ruby/gems/*/gems/${PN}-${SLOT}/data/android/libs/mips/libndkstager.so
-	usr/$(get_libdir)/ruby/gems/*/gems/${PN}-${SLOT}/data/android/libs/x86/libndkstager.so
+	usr/lib*/ruby/gems/*/gems/${PN}-${SLOT}/data/meterpreter/msflinker_linux_x86.bin
+	usr/lib*/ruby/gems/*/gems/${PN}-${SLOT}/data/meterpreter/ext_server_sniffer.lso
+	usr/lib*/ruby/gems/*/gems/${PN}-${SLOT}/data/meterpreter/ext_server_networkpug.lso
+	usr/lib*/ruby/gems/*/gems/${PN}-${SLOT}/data/meterpreter/ext_server_stdapi.lso
+	usr/lib*/ruby/gems/*/gems/${PN}-${SLOT}/data/android/libs/armeabi/libndkstager.so
+	usr/lib*/ruby/gems/*/gems/${PN}-${SLOT}/data/android/libs/mips/libndkstager.so
+	usr/lib*/ruby/gems/*/gems/${PN}-${SLOT}/data/android/libs/x86/libndkstager.so
 	"
 
 src_install() {
