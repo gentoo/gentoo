@@ -35,6 +35,10 @@ pkg_setup() {
 	linux-info_pkg_setup
 }
 
+src_prepare() {
+	epatch "${FILESDIR}/${PN}-2.0.2-autosave.patch"
+}
+
 src_configure() {
 	# removing IP6TABLES_CMD has no effect and enable build
 	# without ipv6 available
