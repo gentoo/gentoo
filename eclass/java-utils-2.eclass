@@ -120,6 +120,16 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 #	JAVA_PKG_WANT_TARGET=1.3 emerge bar
 # @CODE
 
+# @ECLASS-VARIABLE: JAVA_PKG_DEBUG
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# A variable to be set with "yes" or "y", or ANY string of length non equal to
+# zero. When set, verbosity across java eclasses is increased and extra
+# logging is displayed.
+# @CODE
+#	JAVA_PKG_DEBUG="yes"
+# @CODE
+
 # @ECLASS-VARIABLE: JAVA_RM_FILES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -353,6 +363,15 @@ java-pkg_dojar() {
 			die "${jar} does not exist"
 		fi
 	done
+
+	# Extra logging if enabled.
+	if [[ -n ${JAVA_PKG_DEBUG} ]]; then
+		einfo "Verbose logging for \"${FUNCNAME}\" function"
+		einfo "Jar file(s) destination: ${JAVA_PKG_JARDEST}"
+		einfo "Jar file(s) created: ${@}"
+		einfo "Complete command:"
+		einfo "${FUNCNAME} ${@}"
+	fi
 
 	java-pkg_do_write_
 }
@@ -632,7 +651,6 @@ java-pkg_dojavadoc() {
 	fi
 
 	# Actual installation
-
 	java-pkg_dohtml -r "${dir_to_install}"
 
 	# Let's make a symlink to the directory we have everything else under
@@ -641,6 +659,15 @@ java-pkg_dojavadoc() {
 	if [[ ${symlink} ]]; then
 		debug-print "symlinking ${dest}/{api,${symlink}}"
 		dosym ${dest}/{api,${symlink}} || die
+	fi
+
+	# Extra logging if enabled.
+	if [[ -n ${JAVA_PKG_DEBUG} ]]; then
+		einfo "Verbose logging for \"${FUNCNAME}\" function"
+		einfo "Documentation destination: ${dest}"
+		einfo "Directory to install: ${dir_to_install}"
+		einfo "Complete command:"
+		einfo "${FUNCNAME} ${@}"
 	fi
 }
 
@@ -701,6 +728,17 @@ java-pkg_dosrc() {
 		doins ${zip_path} || die "Failed to install source"
 
 	JAVA_SOURCES="${JAVA_PKG_SOURCESPATH}/${zip_name}"
+
+	# Extra logging if enabled.
+	if [[ -n ${JAVA_PKG_DEBUG} ]]; then
+		einfo "Verbose logging for \"${FUNCNAME}\" function"
+		einfo "Zip filename created: ${zip_name}"
+		einfo "Zip file destination: ${JAVA_PKG_SOURCESPATH}"
+		einfo "Directories zipped: ${@}"
+		einfo "Complete command:"
+		einfo "${FUNCNAME} ${@}"
+	fi
+
 	java-pkg_do_write_
 }
 
@@ -2001,7 +2039,15 @@ ejavac() {
 	local javac_args
 	javac_args="$(java-pkg_javac-args)"
 
-	[[ -n ${JAVA_PKG_DEBUG} ]] && echo ${compiler_executable} ${javac_args} "${@}"
+	if [[ -n ${JAVA_PKG_DEBUG} ]]; then
+		einfo "Verbose logging for \"${FUNCNAME}\" function"
+		einfo "Compiler executable: ${compiler_executable}"
+		einfo "Extra arguments: ${javac_args}"
+		einfo "Complete command:"
+		einfo "${compiler_executable} ${javac_args} ${@}"
+	fi
+
+	ebegin "Compiling"
 	${compiler_executable} ${javac_args} "${@}" || die "ejavac failed"
 }
 
@@ -2019,6 +2065,15 @@ ejavadoc() {
 		javadoc_args="-Xdoclint:none"
 	fi
 
+	if [[ -n ${JAVA_PKG_DEBUG} ]]; then
+		einfo "Verbose logging for \"${FUNCNAME}\" function"
+		einfo "Javadoc executable: javadoc"
+		einfo "Extra arguments: ${javadoc_args}"
+		einfo "Complete command:"
+		einfo "javadoc ${javadoc_args} ${@}"
+	fi
+
+	ebegin "Generating JavaDoc"
 	javadoc ${javadoc_args} "${@}" || die "ejavadoc failed"
 }
 
