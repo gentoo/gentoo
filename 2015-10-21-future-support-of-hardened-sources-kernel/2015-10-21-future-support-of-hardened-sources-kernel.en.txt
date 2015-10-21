@@ -1,11 +1,9 @@
 Title: Future Support of hardened-sources Kernel
 Content-Type: text/plain
 Posted: 2015-10-21
-Revision: 1
+Revision: 2
 News-Item-Format: 1.0
 Display-If-Installed: sys-kernel/hardened-sources
-Display-If-Keyword: hardened
-Display-If-Keyword: pax_kernel
 Display-If-Profile: hardened/linux/amd64
 Display-If-Profile: hardened/linux/amd64/no-multilib
 Display-If-Profile: hardened/linux/amd64/no-multilib/selinux
