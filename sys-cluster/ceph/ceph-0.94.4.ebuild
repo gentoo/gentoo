@@ -75,7 +75,7 @@ STRIP_MASK="/usr/lib*/rados-classes/*"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.79-libzfs.patch
 )
-CHECKREQS_DISK_BUILD="1G"
+CHECKREQS_DISK_BUILD="1400M"
 
 pkg_setup() {
 	python_setup
