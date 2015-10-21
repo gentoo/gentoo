@@ -23,13 +23,10 @@ IUSE=""
 
 RDEPEND="${RDEPEND} !dev-ruby/metasploit-model:0"
 
-ruby_add_rdepend ">=dev-ruby/railties-4.0.9:4.0
-			>=dev-ruby/activesupport-4.0.9:4.0
-			>=dev-ruby/activemodel-4.0.9:4.0"
 ruby_add_bdepend "dev-ruby/bundler"
 
 all_ruby_prepare() {
-	[ -f Gemfile.lock ] && rm Gemfile.lock
+	[ -f Gemfile.lock ] && rm Gemfile.lock || die
 	#For now, we don't support development or testing at all
 	#if ! use development; then
 		sed -i -e "/^group :development do/,/^end$/d" Gemfile || die
