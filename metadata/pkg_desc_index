@@ -1737,7 +1737,7 @@ app-misc/fdupes 1.51 9999: Identify/delete duplicate files residing within speci
 app-misc/fdutils 5.4.20020222-r1 5.5-r2 5.5.20060227: utilities for configuring and debugging the Linux floppy driver
 app-misc/figlet 2.2.5: program for making large letters out of ordinary text
 app-misc/flasm 1.63: Command line assembler/disassembler of Flash ActionScript bytecode
-app-misc/freemind 1.0.1-r1 1.0.1-r2: Mind-mapping software written in Java
+app-misc/freemind 1.0.1-r2: Mind-mapping software written in Java
 app-misc/fslint 2.44-r2: A utility to find various forms of lint on a filesystem
 app-misc/fslurp 2.1.4: Read and display data from Fronius IG and IG Plus inverters
 app-misc/fsniper 1.3.1-r1: Tool that monitors a given set of directories for new files
@@ -7751,7 +7751,7 @@ dev-python/rosdistro 0.4.2 9999: Tools to work with catkinized rosdistro files
 dev-python/rospkg 1.0.35 1.0.37-r1 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.1-r1 2.2: A Python re-implementation of Rails routes system, mapping URL's to Controllers/Actions
 dev-python/rply 0.7.3 0.7.4: Pure python parser generator that also works with RPython
-dev-python/rpy 2.6.2: Python interface to the R Programming Language
+dev-python/rpy 2.6.2 2.7.2: Python interface to the R Programming Language
 dev-python/rpyc 3.2.3-r1: Remote Python Call (RPyC), a transparent and symmetric RPC library
 dev-python/rsa 3.1.4-r1 3.2: Pure-Python RSA implementation
 dev-python/rst2pdf 0.93-r2: Tool for transforming reStructuredText to PDF using ReportLab
@@ -8599,7 +8599,7 @@ dev-ruby/memoize 1.3.1-r1: A Ruby library that lets you memoize methods
 dev-ruby/mercenary 0.3.5: Lightweight and flexible library for writing command-line apps
 dev-ruby/metaclass 0.0.1-r1 0.0.4: Adds a __metaclass__ method to all Ruby objects
 dev-ruby/metaid 1.0-r3: An aid to Ruby metaprogramming
-dev-ruby/metasm 1.0.2-r1 1.0.2-r2: cross-architecture assembler, disassembler, linker, and debugger
+dev-ruby/metasm 1.0.2-r3: cross-architecture assembler, disassembler, linker, and debugger
 dev-ruby/metasploit-concern 1.0.0: Metasploit concern allows you to define concerns in app/concerns.
 dev-ruby/metasploit-credential 1.0.0 1.0.1: Code for modeling and managing credentials in Metasploit
 dev-ruby/metasploit-model 1.0.0: Common code, such as validators and mixins
@@ -16114,7 +16114,7 @@ sys-apps/dmapi 2.2.12-r1: XFS data management API library
 sys-apps/dmidecode 2.12-r1 3.0: DMI (Desktop Management Interface) table related utilities
 sys-apps/dmtcp 1.2.6: DMTCP is the Distributed MultiThreaded Checkpointing tool
 sys-apps/dnotify 0.18.0: Execute a command when the contents of a directory change
-sys-apps/dog 1.7-r4: Dog is better than cat
+sys-apps/dog 1.7-r4 1.7-r5: Dog is better than cat
 sys-apps/dstat 0.6.9-r1 0.7.2-r1: Versatile replacement for vmstat, iostat and ifstat
 sys-apps/dtc 1.3.0 1.3.0-r1 1.4.0 1.4.1 1.4.1-r1 9999: Open Firmware device tree compiler
 sys-apps/ed 1.10 1.11 1.12: Your basic line editor
