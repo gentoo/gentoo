@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils flag-o-matic multilib toolchain-funcs
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.musl-libc.org/musl"
-	inherit git-2
+	inherit git-r3
 fi
 
 export CBUILD=${CBUILD:-${CHOST}}
@@ -42,7 +42,7 @@ just_headers() {
 
 musl_endian() {
 	# XXX: this wont work for bi-endian, but we dont have any
-	touch "${T}"/endian.s
+	touch "${T}"/endian.s || die
 	$(tc-getAS ${CTARGET}) "${T}"/endian.s -o "${T}"/endian.o
 	case $(file "${T}"/endian.o) in
 		*" MSB "*) echo "";;
@@ -78,16 +78,16 @@ src_configure() {
 }
 
 src_compile() {
-	emake include/bits/alltypes.h || die
+	emake include/bits/alltypes.h
 	just_headers && return 0
 
-	emake || die
+	emake
 }
 
 src_install() {
 	local target="install"
 	just_headers && target="install-headers"
-	emake DESTDIR="${D}" ${target} || die
+	emake DESTDIR="${D}" ${target}
 	just_headers && return 0
 
 	# musl provides ldd via a sym link to its ld.so
@@ -106,13 +106,13 @@ src_install() {
 			ppc)   arch="powerpc";;
 			x86)   arch="i386";;
 		esac
-		cp "${FILESDIR}"/ldconfig.in "${T}"
-		sed -e "s|@@ARCH@@|${arch}|" "${T}"/ldconfig.in > "${T}"/ldconfig
+		cp "${FILESDIR}"/ldconfig.in "${T}" || die
+		sed -e "s|@@ARCH@@|${arch}|" "${T}"/ldconfig.in > "${T}"/ldconfig || die
 		into /
 		dosbin "${T}"/ldconfig
 		into /usr
 		dobin "${FILESDIR}"/getent
-		echo 'LDPATH="include ld.so.conf.d/*.conf"' > "${T}"/00musl
+		echo 'LDPATH="include ld.so.conf.d/*.conf"' > "${T}"/00musl || die
 		doenvd "${T}"/00musl || die
 	fi
 }
