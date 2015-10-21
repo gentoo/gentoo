@@ -163,6 +163,17 @@ DEPEND="
 
 S=${WORKDIR}/${MY_P}
 
+src_prepare() {
+	enlightenment_src_prepare
+
+	# Remove stupid sleep command.
+	# Also back out gnu make hack that causes regen of Makefiles.
+	sed -i \
+		-e '/sleep 10/d' \
+		-e '/^#### Work around bug in automake check macro$/,/^#### Info$/d' \
+		configure || die
+}
+
 src_configure() {
 	if use ssl && use gnutls ; then
 		einfo "You enabled both USE=ssl and USE=gnutls, but only one can be used;"
