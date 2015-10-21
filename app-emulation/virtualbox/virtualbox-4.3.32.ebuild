@@ -11,7 +11,7 @@ MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
 MY_P=VirtualBox-${MY_PV}
 SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.0.2-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-4.3.16-patches-01.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise as well as home use"
@@ -20,14 +20,15 @@ HOMEPAGE="http://www.virtualbox.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa doc headless java pam pulseaudio +opengl python +qt4 +sdk +udev vboxwebsrv vnc"
+IUSE="+additions alsa doc extensions headless java libressl pam pulseaudio +opengl python +qt4 +sdk +udev vboxwebsrv vnc"
 
 RDEPEND="!app-emulation/virtualbox-bin
 	~app-emulation/virtualbox-modules-${PV}
 	dev-libs/libIDL
 	>=dev-libs/libxslt-1.1.19
 	net-misc/curl
-	dev-libs/openssl:0=
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:= )
 	dev-libs/libxml2
 	media-libs/libpng:0=
 	media-libs/libvpx
@@ -73,6 +74,8 @@ DEPEND="${RDEPEND}
 	pulseaudio? ( media-sound/pulseaudio )
 	vboxwebsrv? ( net-libs/gsoap[-gnutls(-)] )
 	${PYTHON_DEPS}"
+PDEPEND="additions? ( ~app-emulation/virtualbox-additions-${PV} )
+	extensions? ( =app-emulation/virtualbox-extpack-oracle-${PV}* )"
 
 QA_TEXTRELS_x86="usr/lib/virtualbox-ose/VBoxGuestPropSvc.so
 	usr/lib/virtualbox/VBoxSDL.so
@@ -145,7 +148,7 @@ src_prepare() {
 
 	# Disable things unused or split into separate ebuilds
 	sed -e "s@MY_LIBDIR@$(get_libdir)@" \
-		"${FILESDIR}"/${PN}-5-localconfig > LocalConfig.kmk || die
+		"${FILESDIR}"/${PN}-4-localconfig > LocalConfig.kmk || die
 
 	# Respect LDFLAGS
 	sed -e "s@_LDFLAGS\.${ARCH}*.*=@& ${LDFLAGS}@g" \
@@ -167,15 +170,12 @@ src_prepare() {
 	fi
 
 	if ! gcc-specs-pie ; then
-		EPATCH_EXCLUDE="050_${PN}-5.0.2-nopie.patch"
+		EPATCH_EXCLUDE="050_${PN}-4.3.14-nopie.patch"
 	fi
 
 	EPATCH_SUFFIX="patch" \
 	EPATCH_FORCE="yes" \
 	epatch "${WORKDIR}/patches"
-
-	# x86 build fixes (#561758)
-	epatch "${FILESDIR}"/${P}-x86_buildfix_{1,2}.patch
 
 	epatch_user
 }
@@ -270,12 +270,12 @@ src_install() {
 		newconfd "${FILESDIR}"/vboxwebsrv-confd vboxwebsrv
 	fi
 
-	local rcfiles="*.rc"
+	local gcfiles="*gc"
 	if use amd64 && ! has_multilib_profile ; then
-		rcfiles=""
+		gcfiles=""
 	fi
 
-	for each in VBox{Manage,SVC,XPCOMIPCD,Tunctl,ExtPackHelperApp} *so *r0 ${rcfiles} ; do
+	for each in VBox{Manage,SVC,XPCOMIPCD,Tunctl,ExtPackHelperApp} *so *r0 ${gcfiles} ; do
 		doins ${each}
 		fowners root:vboxusers /usr/$(get_libdir)/${PN}/${each}
 		fperms 0750 /usr/$(get_libdir)/${PN}/${each}
@@ -291,26 +291,20 @@ src_install() {
 	# VBoxSVC and VBoxManage need to be pax-marked (bug #403453)
 	# VBoxXPCOMIPCD (bug #524202)
 	for each in VBox{Manage,SVC,XPCOMIPCD} ; do
-		if ! pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/${each} ; then
-			ewarn "Couldn't pax-mark /usr/$(get_libdir)/${PN}/${each}"
-		fi
+		pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/${each}
 	done
 
 	if ! use headless ; then
 		doins VBoxSDL
 		fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBoxSDL
 		fperms 4750 /usr/$(get_libdir)/${PN}/VBoxSDL
-		if ! pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxSDL ; then
-			ewarn "Couldn't pax-mark /usr/$(get_libdir)/${PN}/VBoxSDL"
-		fi
+		pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxSDL
 
 		if use opengl && use qt4 ; then
 			doins VBoxTestOGL
 			fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBoxTestOGL
 			fperms 0750 /usr/$(get_libdir)/${PN}/VBoxTestOGL
-			if ! pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxTestOGL ; then
-				ewarn "Couldn't pax-mark /usr/$(get_libdir)/${PN}/VBoxTestOGL"
-			fi
+			pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxTestOGL
 		fi
 
 		dosym /usr/$(get_libdir)/${PN}/VBox /usr/bin/VBoxSDL
@@ -319,16 +313,14 @@ src_install() {
 			doins VirtualBox
 			fowners root:vboxusers /usr/$(get_libdir)/${PN}/VirtualBox
 			fperms 4750 /usr/$(get_libdir)/${PN}/VirtualBox
-			if ! pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VirtualBox ; then
-				ewarn "Couldn't pax-mark /usr/$(get_libdir)/${PN}/VirtualBox"
-			fi
+			pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VirtualBox
 
 			dosym /usr/$(get_libdir)/${PN}/VBox /usr/bin/VirtualBox
 
 			newmenu "${FILESDIR}"/${PN}-ose.desktop-2 ${PN}.desktop
 		fi
 
-		pushd "${S}"/src/VBox/Artwork/OSE &>/dev/null || die
+		pushd "${S}"/src/VBox/Resources/OSE &>/dev/null || die
 		for size in 16 32 48 64 128 ; do
 			newicon -s ${size} ${PN}-${size}px.png ${PN}.png
 		done
@@ -340,9 +332,7 @@ src_install() {
 	doins VBoxHeadless
 	fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBoxHeadless
 	fperms 4750 /usr/$(get_libdir)/${PN}/VBoxHeadless
-	if ! pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxHeadless ; then
-		ewarn "Couldn't pax-mark /usr/$(get_libdir)/${PN}/VBoxHeadless"
-	fi
+	pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxHeadless
 
 	insinto /usr/$(get_libdir)/${PN}
 	# Install EFI Firmware files (bug #320757)
@@ -412,12 +402,6 @@ pkg_postinst() {
 	elog "For USB-2 support, PXE-boot ability and VRDP support please emerge"
 	elog "  app-emulation/virtualbox-extpack-oracle"
 	elog "package."
-	elog "Starting with version 5.0.0, ${PN} no longer has the \"additions\" and"
-	elog "the \"extension\" USE flag. For installation of the guest additions ISO"
-	elog "image, please emerge"
-	elog "  app-emulation/virtualbox-additions"
-	elog "and for the USB2, USB3, VRDP and PXE boot ROM modules, please emerge"
-	elog "  app-emulation/virtualbox-extpack-oracle"
 	if ! use udev ; then
 		elog ""
 		elog "WARNING!"

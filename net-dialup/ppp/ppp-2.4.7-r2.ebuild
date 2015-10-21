@@ -85,6 +85,8 @@ src_prepare() {
 		einfo "Disabling radius"
 		sed -i -e '/+= radius/s:^:#:' pppd/plugins/Makefile.linux || die
 	fi
+
+	epatch_user # 549588
 }
 
 src_compile() {
