@@ -16140,7 +16140,7 @@ sys-apps/gentoo-functions 0.7 0.8 0.9 0.10 9999: base functions required by all 
 sys-apps/gentoo-systemd-integration 2 4 9999: systemd integration files for Gentoo
 sys-apps/gnome-disk-utility 3.14.0 3.16.2: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
-sys-apps/gptfdisk 0.8.10 1.0.0: GPT partition table manipulator for Linux
+sys-apps/gptfdisk 0.8.10 1.0.0 1.0.1: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201506081912 3.1.201507041117 3.1.201507191652: Administrative interface for the grsecurity Role Based Access Control system
 sys-apps/grep 2.21-r1: GNU regular expression matcher
 sys-apps/grepcidr 2.0: Filter IPv4 and IPv6 addresses matching CIDR patterns
