@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
@@ -6,5 +6,7 @@
 		<name>Thomas Sachau (Tommy[D])</name>
 	</maintainer>
 	<herd>java</herd>
+	<upstream>
+		<remote-id type="bitbucket">onionnetworks</remote-id>
+	</upstream>
 </pkgmetadata>
-

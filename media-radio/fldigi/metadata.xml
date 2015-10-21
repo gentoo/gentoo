@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
@@ -6,8 +6,11 @@
 		<name>Thomas Beierlein</name>
 	</maintainer>
 	<use>
-		<flag name='hamlib'>Enables support by the Hamlib amateur radio 
+		<flag name="hamlib">Enables support by the Hamlib amateur radio 
 			rig control library to get/set frequency and mode of the 
 			ham radio in use</flag>
 	</use>
+	<upstream>
+		<remote-id type="sourceforge">fldigi</remote-id>
+	</upstream>
 </pkgmetadata>

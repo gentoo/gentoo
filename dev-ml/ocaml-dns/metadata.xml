@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
     <herd>ml</herd>
@@ -10,4 +10,7 @@
         <flag name="async">support for asynchronous execution</flag>
         <flag name="lwt">enable threads via lwt</flag>
     </use>
+    <upstream>
+        <remote-id type="github">mirage/ocaml-dns</remote-id>
+    </upstream>
 </pkgmetadata>
