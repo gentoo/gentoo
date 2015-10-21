@@ -102,16 +102,14 @@ java-pkg-simple_src_compile() {
 	classpath=${classpath%:}
 	classpath=${classpath#:}
 	debug-print "CLASSPATH=${classpath}"
-	java-pkg-simple_verbose-cmd \
-		ejavac -d ${classes} -encoding ${JAVA_ENCODING} \
+	ejavac -d ${classes} -encoding ${JAVA_ENCODING} \
 		${classpath:+-classpath ${classpath}} ${JAVAC_ARGS} \
 		@${sources}
 
 	# javadoc
 	if has doc ${JAVA_PKG_IUSE} && use doc; then
 		mkdir -p ${apidoc}
-		java-pkg-simple_verbose-cmd \
-			ejavadoc -d ${apidoc} \
+		ejavadoc -d ${apidoc} \
 			-encoding ${JAVA_ENCODING} -docencoding UTF-8 -charset UTF-8 \
 			${classpath:+-classpath ${classpath}} ${JAVADOC_ARGS:- -quiet} \
 			@${sources} || die "javadoc failed"
@@ -122,8 +120,7 @@ java-pkg-simple_src_compile() {
 	if [[ -e ${classes}/META-INF/MANIFEST.MF ]]; then
 		jar_args="cfm ${JAVA_JAR_FILENAME} ${classes}/META-INF/MANIFEST.MF"
 	fi
-	java-pkg-simple_verbose-cmd \
-		jar ${jar_args} -C ${classes} . || die "jar failed"
+	jar ${jar_args} -C ${classes} . || die "jar failed"
 }
 
 # @FUNCTION: java-pkg-simple_src_install
@@ -136,13 +133,11 @@ java-pkg-simple_src_install() {
 	local sources=sources.lst classes=target/classes apidoc=target/api
 
 	# main jar
-	java-pkg-simple_verbose-cmd \
-		java-pkg_dojar ${JAVA_JAR_FILENAME}
+	java-pkg_dojar ${JAVA_JAR_FILENAME}
 
 	# javadoc
 	if has doc ${JAVA_PKG_IUSE} && use doc; then
-		java-pkg-simple_verbose-cmd \
-			java-pkg_dojavadoc ${apidoc}
+		java-pkg_dojavadoc ${apidoc}
 	fi
 
 	# dosrc
@@ -159,19 +154,6 @@ java-pkg-simple_src_install() {
 			# take all directories actually containing any sources
 			srcdirs="$(cut -d/ -f1 ${sources} | sort -u)"
 		fi
-		java-pkg-simple_verbose-cmd \
-			java-pkg_dosrc ${srcdirs}
+		java-pkg_dosrc ${srcdirs}
 	fi
-}
-
-# @FUNCTION: java-pkg-simple_src_install
-# @DESCRIPTION:
-# Print a command before executing it. To give user some feedback
-# about what is going on, where the time is being spent, and also to
-# help debugging ebuilds.
-#
-# @param $@ - command to be called and its arguments
-java-pkg-simple_verbose-cmd() {
-	echo "$*"
-	"$@"
 }
