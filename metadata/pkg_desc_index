@@ -4764,7 +4764,7 @@ dev-libs/libtreadstone 0.1.0 0.2.0: Hyperdex libtreadstone support library
 dev-libs/libtubo 5.0.15: small and simple interprocess communication library
 dev-libs/libunicode 0.4-r1: Unicode library
 dev-libs/libunique 1.1.6-r1 3.0.2: a library for writing single instance application
-dev-libs/libunistring 0.9.3-r1 0.9.5: Library for manipulating Unicode strings and C strings according to the Unicode standard
+dev-libs/libunistring 0.9.5 0.9.6: Library for manipulating Unicode strings and C strings according to the Unicode standard
 dev-libs/libusb 1.0.9-r2 1.0.18 1.0.19: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2 0.1.5-r3: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libusbhp 1.0.2: Usb Hotplug Library
@@ -12140,7 +12140,7 @@ media-libs/libmpdclient 2.9 2.10: A library for interfacing Music Player Daemon 
 media-libs/libmpeg2 0.5.1-r2: library for decoding mpeg-2 and mpeg-1 video
 media-libs/libmpeg3 1.8 1.8-r1: An mpeg library for linux
 media-libs/libmpris2client 0.1.0: An library to control MPRIS2 compatible players
-media-libs/libmtp 1.1.6-r1 1.1.8 1.1.9 9999: An implementation of Microsoft's Media Transfer Protocol (MTP)
+media-libs/libmtp 1.1.8 1.1.9 1.1.10 9999: An implementation of Microsoft's Media Transfer Protocol (MTP)
 media-libs/libmygpo-qt 1.0.7 1.0.7-r1 9999: Qt/C++ library wrapping the gpodder.net webservice
 media-libs/libnjb 2.2.6 2.2.7: a C library and API for communicating with the Creative Nomad JukeBox digital audio player
 media-libs/libnsbmp 0.1.1 0.1.2-r1: decoding library for BMP and ICO image file formats, written in C

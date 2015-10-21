@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=virtual/libusb:1 crypt? ( >=dev-libs/libgcrypt-1.5.4:0= ) virtual/pkgconfig doc? ( app-doc/doxygen ) virtual/pkgconfig
+DESCRIPTION=An implementation of Microsoft's Media Transfer Protocol (MTP)
+EAPI=5
+HOMEPAGE=http://libmtp.sourceforge.net/
+IUSE=+crypt doc examples static-libs
+KEYWORDS=~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=LGPL-2.1
+RDEPEND=virtual/libusb:1 crypt? ( >=dev-libs/libgcrypt-1.5.4:0= )
+SLOT=0/9
+SRC_URI=mirror://sourceforge/libmtp/libmtp-1.1.10.tar.gz
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	udev	37ef89be271b9ae8aa64be024ddb39b5	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=62d2c6c1939aa9a5e2a46701f2a2ab47
