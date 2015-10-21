@@ -15347,7 +15347,7 @@ sci-geosciences/bt747 2.0.3: MTK GPS Datalogger Device Control
 sci-geosciences/cdat-lite 6.0_rc2: Large suite of open source tools for the management and analysis of climate data
 sci-geosciences/congen 1.6.2: A package for generating the speeds, equilibrium arguments, and node factors of tidal constituents
 sci-geosciences/foxtrotgps 1.1.0 1.1.1: Easy to use, fast and lightweight mapping application (fork of tangogps)
-sci-geosciences/gdal-grass 1.4.3-r1: GDAL plugin to access GRASS data
+sci-geosciences/gdal-grass 1.4.3-r1 2.0.0: GDAL plugin to access GRASS data
 sci-geosciences/gebabbel 0.4: QT-Frontend to load and convert gps tracks with gpsbabel
 sci-geosciences/geocode-glib 3.14.0 3.16.2: GLib geocoding library that uses the Yahoo! Place Finder service
 sci-geosciences/gmapcatcher 0.8.0.4: An offline viewer for different map providers

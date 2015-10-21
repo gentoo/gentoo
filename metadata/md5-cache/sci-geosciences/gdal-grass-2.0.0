@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=sci-libs/gdal-2.0.0 >=sci-geosciences/grass-7.0.1[gdal] dev-libs/expat dev-libs/json-c virtual/jpeg media-libs/tiff sci-libs/libgeotiff sci-libs/proj sys-libs/zlib postgres? ( dev-db/postgresql )
+DESCRIPTION=GDAL plugin to access GRASS data
+EAPI=5
+HOMEPAGE=http://www.gdal.org/
+IUSE=postgres
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=>=sci-libs/gdal-2.0.0 >=sci-geosciences/grass-7.0.1[gdal]
+SLOT=0
+SRC_URI=http://download.osgeo.org/gdal/2.0.0/gdal-grass-2.0.0.tar.gz
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=fedc1864154948663b8a88d052ad7fc8

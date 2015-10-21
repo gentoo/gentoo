@@ -6627,6 +6627,7 @@ sci-electronics/pcb:xrender - Translucent PCB display for Motif/Lesstif GUI
 sci-electronics/pulseview:decode - Enable decoding of protocols while capturing
 sci-electronics/sigrok-cli:decode - Enable decoding of protocols while capturing
 sci-electronics/splat:hires - Builds additional high resolution application 'rfsplat-hd'.
+sci-geosciences/gdal-grass:postgres - Include support for dev-db/postgresql
 sci-geosciences/geocode-glib:introspection - Use dev-libs/gobject-introspection for introspection
 sci-geosciences/gmt:gdal - Enable sci-libs/gdal library support
 sci-geosciences/gmt:gmtfull - Full resolution bathymetry database
