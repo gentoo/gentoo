@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare setup unpack
-DEPEND=dev-vcs/git
+DEPEND=>=dev-vcs/git-1.8.2.1
 DESCRIPTION=Lightweight, fast and simple C library focused on standards-conformance and safety
 EAPI=5
 HOMEPAGE=http://www.musl-libc.org/
@@ -7,5 +7,5 @@ IUSE=crosscompile_opts_headers-only
 LICENSE=MIT LGPL-2 GPL-2
 RDEPEND=!sys-apps/getent
 SLOT=0
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	git-2	1bb87192831f668cd20d93ffb1689c94	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=c9bb3b15a269fc7512a5b40b486644fd
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=e59dbdc4038f5bc2253272e799561bca
