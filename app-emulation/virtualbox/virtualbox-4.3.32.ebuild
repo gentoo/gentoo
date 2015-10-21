@@ -11,7 +11,7 @@ MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
 MY_P=VirtualBox-${MY_PV}
 SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.0.2-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-4.3.16-patches-01.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise as well as home use"
@@ -20,7 +20,7 @@ HOMEPAGE="http://www.virtualbox.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa doc headless java libressl pam pulseaudio +opengl python +qt4 +sdk +udev vboxwebsrv vnc"
+IUSE="+additions alsa doc extensions headless java libressl pam pulseaudio +opengl python +qt4 +sdk +udev vboxwebsrv vnc"
 
 RDEPEND="!app-emulation/virtualbox-bin
 	~app-emulation/virtualbox-modules-${PV}
@@ -74,6 +74,8 @@ DEPEND="${RDEPEND}
 	pulseaudio? ( media-sound/pulseaudio )
 	vboxwebsrv? ( net-libs/gsoap[-gnutls(-)] )
 	${PYTHON_DEPS}"
+PDEPEND="additions? ( ~app-emulation/virtualbox-additions-${PV} )
+	extensions? ( =app-emulation/virtualbox-extpack-oracle-${PV}* )"
 
 QA_TEXTRELS_x86="usr/lib/virtualbox-ose/VBoxGuestPropSvc.so
 	usr/lib/virtualbox/VBoxSDL.so
@@ -146,7 +148,7 @@ src_prepare() {
 
 	# Disable things unused or split into separate ebuilds
 	sed -e "s@MY_LIBDIR@$(get_libdir)@" \
-		"${FILESDIR}"/${PN}-5-localconfig > LocalConfig.kmk || die
+		"${FILESDIR}"/${PN}-4-localconfig > LocalConfig.kmk || die
 
 	# Respect LDFLAGS
 	sed -e "s@_LDFLAGS\.${ARCH}*.*=@& ${LDFLAGS}@g" \
@@ -168,10 +170,9 @@ src_prepare() {
 	fi
 
 	if ! gcc-specs-pie ; then
-		EPATCH_EXCLUDE="050_${PN}-5.0.2-nopie.patch"
+		EPATCH_EXCLUDE="050_${PN}-4.3.14-nopie.patch"
 	fi
 
-	EPATCH_EXCLUDE="007_virtualbox-4.3.16-gsoap2813.patch" \
 	EPATCH_SUFFIX="patch" \
 	EPATCH_FORCE="yes" \
 	epatch "${WORKDIR}/patches"
@@ -269,12 +270,12 @@ src_install() {
 		newconfd "${FILESDIR}"/vboxwebsrv-confd vboxwebsrv
 	fi
 
-	local rcfiles="*.rc"
+	local gcfiles="*gc"
 	if use amd64 && ! has_multilib_profile ; then
-		rcfiles=""
+		gcfiles=""
 	fi
 
-	for each in VBox{Manage,SVC,XPCOMIPCD,Tunctl,ExtPackHelperApp} *so *r0 ${rcfiles} ; do
+	for each in VBox{Manage,SVC,XPCOMIPCD,Tunctl,ExtPackHelperApp} *so *r0 ${gcfiles} ; do
 		doins ${each}
 		fowners root:vboxusers /usr/$(get_libdir)/${PN}/${each}
 		fperms 0750 /usr/$(get_libdir)/${PN}/${each}
@@ -319,7 +320,7 @@ src_install() {
 			newmenu "${FILESDIR}"/${PN}-ose.desktop-2 ${PN}.desktop
 		fi
 
-		pushd "${S}"/src/VBox/Artwork/OSE &>/dev/null || die
+		pushd "${S}"/src/VBox/Resources/OSE &>/dev/null || die
 		for size in 16 32 48 64 128 ; do
 			newicon -s ${size} ${PN}-${size}px.png ${PN}.png
 		done
@@ -401,12 +402,6 @@ pkg_postinst() {
 	elog "For USB-2 support, PXE-boot ability and VRDP support please emerge"
 	elog "  app-emulation/virtualbox-extpack-oracle"
 	elog "package."
-	elog "Starting with version 5.0.0, ${PN} no longer has the \"additions\" and"
-	elog "the \"extension\" USE flag. For installation of the guest additions ISO"
-	elog "image, please emerge"
-	elog "  app-emulation/virtualbox-additions"
-	elog "and for the USB2, USB3, VRDP and PXE boot ROM modules, please emerge"
-	elog "  app-emulation/virtualbox-extpack-oracle"
 	if ! use udev ; then
 		elog ""
 		elog "WARNING!"
