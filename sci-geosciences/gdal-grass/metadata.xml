@@ -2,5 +2,13 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>sci-geosciences</herd>
+<herd>proxy-maintainers</herd><maintainer>
+                <email>wraeth@wraeth.id.au</email>
+                <name>Sam Jorna</name>
+                <description>Proxy maintainer - assign bugs to him</description>
+        </maintainer>
+        <use>
+                <flag name="postgres">Include support for <pkg>dev-db/postgresql</pkg></flag>
+        </use>
 </pkgmetadata>
 

@@ -39,12 +39,15 @@ dev-java/xjavadoc
 # apache-2.4.17 includes support for http2 now.
 www-apache/mod_h2
 
+# Amy Winston <amynka@gentoo.org> (21 Oct 2015)
+# gdal-grass-1.4.3-r1 fails to build. New version added.
+# Masked for removal in 30 days.
 # Ian Delaney <idella4@gwntoo.org (18 Oct 2015)
 # Amy Winston <amynka@gentoo.org> (18 Oct 2015)
 # Fails to build for ages. Lot of bugs repaired
 # in new version. Masked for removal in 30 days.
 =sci-geosciences/grass-6.4.2
-sci-geosciences/gdal-grass
+=sci-geosciences/gdal-grass-1.4.3-r1
 
 # Patrice Clement <monsieurp@gentoo.org> (18 Oct 2015)
 # Project discontinued by the ASF and now superseded by dev-java/tomcat-jstl-*
