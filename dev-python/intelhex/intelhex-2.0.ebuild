@@ -14,5 +14,5 @@ SRC_URI="mirror://pypi/I/IntelHex/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="*"
+KEYWORDS="~amd64 ~arm ~mips ~x86"
 IUSE=""
