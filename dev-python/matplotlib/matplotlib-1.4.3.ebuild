@@ -126,6 +126,10 @@ use_setup() {
 	fi
 }
 
+PATCHES=(
+	"${FILESDIR}"/${P}-backport-GH5291-2462.patch
+)
+
 python_prepare_all() {
 # Generates test failures, but fedora does it
 #	local PATCHES=(
