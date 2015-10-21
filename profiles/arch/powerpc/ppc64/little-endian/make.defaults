@@ -1,0 +1,2 @@
+ARCH="ppc64le"
+CHOST="powerpc64le-linux-gnu"
