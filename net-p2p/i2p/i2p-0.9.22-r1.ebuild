@@ -85,7 +85,7 @@ src_install() {
 	# Install main files and basic documentation
 	exeinto ${i2p_home}
 	insinto ${i2p_home}
-	#doins blocklist.txt hosts.txt *.config
+	doins blocklist.txt hosts.txt *.config
 	doexe eepget i2prouter runplain.sh
 	dodoc history.txt INSTALL-headless.txt LICENSE.txt
 	doman man/*
