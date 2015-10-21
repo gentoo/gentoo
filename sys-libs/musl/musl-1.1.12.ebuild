@@ -42,7 +42,7 @@ just_headers() {
 
 musl_endian() {
 	# XXX: this wont work for bi-endian, but we dont have any
-	touch "${T}"/endian.s
+	touch "${T}"/endian.s || die
 	$(tc-getAS ${CTARGET}) "${T}"/endian.s -o "${T}"/endian.o
 	case $(file "${T}"/endian.o) in
 		*" MSB "*) echo "";;
