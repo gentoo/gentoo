@@ -9,5 +9,5 @@ LICENSE=BSD Apache-1.1
 RDEPEND=dev-java/xerces:2 dev-java/relaxng-datatype:0 >=virtual/jre-1.4 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 SLOT=0
 SRC_URI=http://java.net/downloads/msv/releases/xsdlib.20090415.zip
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-pkg-simple	28bfda67a64cc63f4231290d7a22f4dc	java-utils-2	c059b30d6a4df7cf32e2c98c1da1c9b5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-pkg-simple	623b3c638bbbb8741f0e12a9db738c4a	java-utils-2	e03639b92617c43f3ca3d670af620cf5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=4e4ea19e7041fff400b5ae17ce838b3e

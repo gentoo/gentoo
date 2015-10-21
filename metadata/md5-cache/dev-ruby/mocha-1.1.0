@@ -10,5 +10,5 @@ RDEPEND=ruby_targets_ruby19? ( dev-ruby/introspection[ruby_targets_ruby19] ) rub
 REQUIRED_USE=|| ( ruby_targets_ruby19 ruby_targets_ruby20 ruby_targets_ruby21 ruby_targets_ruby22 )
 SLOT=1.0
 SRC_URI=mirror://rubygems/mocha-1.1.0.gem
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-utils-2	c059b30d6a4df7cf32e2c98c1da1c9b5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	ruby-fakegem	b34b8f1debda62e461897a3f85df97e4	ruby-ng	12af15f9116c054425934f3eec054899	ruby-utils	97c910cb6b087c64260df641a9b3de0c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-utils-2	e03639b92617c43f3ca3d670af620cf5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	ruby-fakegem	b34b8f1debda62e461897a3f85df97e4	ruby-ng	12af15f9116c054425934f3eec054899	ruby-utils	97c910cb6b087c64260df641a9b3de0c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=f1b90d8bba265a35c63c1162a909413e

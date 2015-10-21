@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=>=virtual/jre-1.6 java? ( >=dev-java/java-config-2.2.0 )
 SLOT=0
 SRC_URI=amd64? ( http://downloads.typesafe.com/scalaide-pack/4.1.0-vfinal-luna-211-20150525/scala-SDK-4.1.0-vfinal-2.11-linux.gtk.x86_64.tar.gz ) x86? ( http://downloads.typesafe.com/scalaide-pack/4.1.0-vfinal-luna-211-20150525/scala-SDK-4.1.0-vfinal-2.11-linux.gtk.x86.tar.gz )
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	c059b30d6a4df7cf32e2c98c1da1c9b5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	e03639b92617c43f3ca3d670af620cf5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=8047c58ebbb5708c42f6bb592f4c5fde

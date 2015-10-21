@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=>=virtual/jre-1.4 dev-java/bsf:2.3 dev-java/commons-beanutils:1.7 dev-java/commons-codec:0 dev-java/commons-digester:0 dev-java/commons-fileupload:0 dev-java/commons-lang:2.1 dev-java/commons-logging:0 dev-java/jakarta-oro:2.0 dev-java/javassist:2 dev-java/ognl:2.6 dev-java/servletapi:2.4 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 SLOT=3.0
 SRC_URI=mirror://apache/tapestry/Tapestry-3.0.4-src.zip
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-ant-2	946f77f25d457a91a2188c26f3e50b3e	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	c059b30d6a4df7cf32e2c98c1da1c9b5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-ant-2	946f77f25d457a91a2188c26f3e50b3e	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	e03639b92617c43f3ca3d670af620cf5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=f5196752d4e675a45ff90ae774651eb8
