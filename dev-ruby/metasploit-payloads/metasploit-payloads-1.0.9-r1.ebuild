@@ -38,7 +38,7 @@ src_install() {
 	ruby-ng_src_install
 	#tell revdep-rebuild to ignore binaries meant for the target
 	dodir /etc/revdep-rebuild
-	cat <<-EOF > "${ED}"/etc/revdep-rebuild/99-${PN}-${SLOT}
+	cat <<-EOF > "${ED}"/etc/revdep-rebuild/99-${PN}-${SLOT} || die
 		#These dirs contain prebuilt binaries for running on the TARGET not the HOST
 		SEARCH_DIRS_MASK="/usr/lib*/ruby/gems/*/gems/${PN}-${SLOT}/data/android/libs"
 	EOF
