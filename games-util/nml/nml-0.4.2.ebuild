@@ -20,6 +20,7 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 DOCS=( docs/{changelog,readme}.txt )
+PATCHES=( "${FILESDIR}"/${P}-pillow3.patch )
 
 src_install() {
 	distutils-r1_src_install
