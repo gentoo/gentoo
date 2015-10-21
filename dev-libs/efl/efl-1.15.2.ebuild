@@ -18,7 +18,7 @@ else
 	EKEY_STATE="snap"
 fi
 
-inherit enlightenment
+inherit enlightenment pax-utils
 
 DESCRIPTION="Enlightenment Foundation Libraries all-in-one package"
 
@@ -254,6 +254,18 @@ src_configure() {
 	)
 
 	enlightenment_src_configure
+}
+
+src_compile() {
+	if host-is-pax && ! use oldlua ; then
+		# We need to build the lua code first so we can pax-mark it. #547076
+		local target='_e_built_sources_target_gogogo_'
+		printf '%s: $(BUILT_SOURCES)\n' "${target}" >> src/Makefile || die
+		emake -C src "${target}"
+		emake -C src bin/elua/elua
+		pax-mark m src/bin/elua/.libs/elua
+	fi
+	enlightenment_src_compile
 }
 
 src_install() {

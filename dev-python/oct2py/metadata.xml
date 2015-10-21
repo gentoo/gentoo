@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>sci-mathematics</herd>
@@ -6,8 +6,9 @@
   Uses Octave to run commands and m-files. Supports any Octave
   function or m-file, passing the data seamlessly between Python and
   Octave using MAT files.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="pypi">oct2py</remote-id>
+    <remote-id type="github">blink1073/oct2py</remote-id>
   </upstream>
 </pkgmetadata>

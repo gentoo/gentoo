@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}-src-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="groovy latex pdf svg"
 
 CDEPEND="

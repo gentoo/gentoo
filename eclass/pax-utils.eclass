@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@
 # @AUTHOR:
 # Original Author: Kevin F. Quinn <kevquinn@gentoo.org>
 # Modifications for bugs #365825, #431092, #520198, @ ECLASS markup: Anthony G. Basile <blueness@gentoo.org>
-# @BLURB: functions to provide pax markings
+# @BLURB: functions to provide PaX markings for hardened kernels
 # @DESCRIPTION:
 #
 # This eclass provides support for manipulating PaX markings on ELF binaries,
@@ -32,18 +32,20 @@ _PAX_UTILS_ECLASS=1
 PAX_MARKINGS=${PAX_MARKINGS:="PT XT"}
 
 # @FUNCTION: pax-mark
-# @USAGE: <flags> {<ELF files>}
+# @USAGE: <flags> <ELF files>
 # @RETURN: Shell true if we succeed, shell false otherwise
 # @DESCRIPTION:
 # Marks <ELF files> with provided PaX <flags>
 #
-# Flags are passed directly to the utilities unchanged
+# Flags are passed directly to the utilities unchanged.
 #
+# @CODE
 #	p: disable PAGEEXEC		P: enable PAGEEXEC
 #	e: disable EMUTRAMP		E: enable EMUTRAMP
 #	m: disable MPROTECT		M: enable MPROTECT
 #	r: disable RANDMMAP		R: enable RANDMMAP
 #	s: disable SEGMEXEC		S: enable SEGMEXEC
+# @CODE
 #
 # Default flags are 'PeMRS', which are the most restrictive settings.  Refer
 # to http://pax.grsecurity.net/ for details on what these flags are all about.
@@ -52,10 +54,9 @@ PAX_MARKINGS=${PAX_MARKINGS:="PT XT"}
 # Either ask on the gentoo-hardened mailing list, or CC/assign hardened@g.o on
 # the bug report.
 pax-mark() {
-
 	local f								# loop over paxables
 	local flags							# pax flags
-	local ret=0							# overal return code of this function
+	local ret=0							# overall return code of this function
 
 	# Only the actual PaX flags and z are accepted
 	# 1. The leading '-' is optional
@@ -75,19 +76,19 @@ pax-mark() {
 		_pax_list_files einfo "$@"
 		for f in "$@"; do
 
-			#First try paxctl -> this might try to create/convert program headers
+			# First try paxctl -> this might try to create/convert program headers.
 			if type -p paxctl > /dev/null; then
 				einfo "PT PaX marking -${flags} ${f} with paxctl"
-				# First, try modifying the existing PAX_FLAGS header
+				# First, try modifying the existing PAX_FLAGS header.
 				paxctl -q${flags} "${f}" && continue
-				# Second, try creating a PT_PAX header (works on ET_EXEC)
-				# Even though this is less safe, most exes need it, eg bug #463170
+				# Second, try creating a PT_PAX header (works on ET_EXEC).
+				# Even though this is less safe, most exes need it. #463170
 				paxctl -qC${flags} "${f}" && continue
 				# Third, try stealing the (unused under PaX) PT_GNU_STACK header
 				paxctl -qc${flags} "${f}" && continue
 			fi
 
-			#Next try paxctl-ng -> this will not create/convert any program headers
+			# Next try paxctl-ng -> this will not create/convert any program headers.
 			if type -p paxctl-ng > /dev/null && paxctl-ng -L ; then
 				einfo "PT PaX marking -${flags} ${f} with paxctl-ng"
 				flags="${flags//z}"
@@ -96,10 +97,10 @@ pax-mark() {
 				paxctl-ng -L -${flags} "${f}" && continue
 			fi
 
-			#Finally fall back on scanelf
+			# Finally fall back on scanelf.
 			if type -p scanelf > /dev/null && [[ ${PAX_MARKINGS} != "none" ]]; then
 				scanelf -Xxz ${flags} "$f"
-			#We failed to set PT_PAX flags
+			# We failed to set PT_PAX flags.
 			elif [[ ${PAX_MARKINGS} != "none" ]]; then
 				elog "Failed to set PT_PAX markings -${flags} ${f}."
 				ret=1
@@ -112,7 +113,7 @@ pax-mark() {
 		flags="${flags//z}"
 		for f in "$@"; do
 
-			#First try paxctl-ng
+			# First try paxctl-ng.
 			if type -p paxctl-ng > /dev/null && paxctl-ng -l ; then
 				einfo "XT PaX marking -${flags} ${f} with paxctl-ng"
 				[[ ${dodefault} == "yes" ]] && paxctl-ng -d "${f}"
@@ -120,7 +121,7 @@ pax-mark() {
 				paxctl-ng -l -${flags} "${f}" && continue
 			fi
 
-			#Next try setfattr
+			# Next try setfattr.
 			if type -p setfattr > /dev/null; then
 				[[ "${flags//[!Ee]}" ]] || flags+="e" # bug 447150
 				einfo "XT PaX marking -${flags} ${f} with setfattr"
@@ -128,7 +129,7 @@ pax-mark() {
 				setfattr -n "user.pax.flags" -v "${flags}" "${f}" && continue
 			fi
 
-			#We failed to set XATTR_PAX flags
+			# We failed to set XATTR_PAX flags.
 			if [[ ${PAX_MARKINGS} != "none" ]]; then
 				elog "Failed to set XATTR_PAX markings -${flags} ${f}."
 				ret=1
@@ -142,8 +143,8 @@ pax-mark() {
 }
 
 # @FUNCTION: list-paxables
-# @USAGE: {<files>}
-# @RETURN: Subset of {<files>} which are ELF executables or shared objects
+# @USAGE: <files>
+# @RETURN: Subset of <files> which are ELF executables or shared objects
 # @DESCRIPTION:
 # Print to stdout all of the <files> that are suitable to have PaX flag
 # markings, i.e., filter out the ELF executables or shared objects from a list
@@ -160,9 +161,9 @@ list-paxables() {
 # @RETURN: Shell true if the build process is PaX enabled, shell false otherwise
 # @DESCRIPTION:
 # This is intended for use where the build process must be modified conditionally
-# depending on whether the host is PaX enabled or not.  It is not intedened to
+# depending on whether the host is PaX enabled or not.  It is not indented to
 # determine whether the final binaries need PaX markings.  Note: if procfs is
-# not mounted on /proc, this returns shell false (e.g. Gentoo/FBSD).
+# not mounted on /proc, this returns shell false (e.g. Gentoo/FreeBSD).
 host-is-pax() {
 	grep -qs ^PaX: /proc/self/status
 }
@@ -173,7 +174,7 @@ host-is-pax() {
 #
 # These functions are for use internally by the eclass - do not use
 # them elsewhere as they are not supported (i.e. they may be removed
-# or their function may change arbitratily).
+# or their function may change arbitrarily).
 
 # Display a list of things, one per line, indented a bit, using the
 # display command in $1.

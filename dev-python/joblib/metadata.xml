@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>python</herd>
@@ -11,8 +11,9 @@
   * logging and tracing of the execution
   Joblib is optimized to be fast and robust in particular on large,
   long-running functions and has specific optimizations for numpy arrays.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="pypi">joblib</remote-id>
+    <remote-id type="github">joblib/joblib</remote-id>
   </upstream>
 </pkgmetadata>
