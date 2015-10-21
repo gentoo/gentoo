@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils flag-o-matic multilib toolchain-funcs
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.musl-libc.org/musl"
-	inherit git-2
+	inherit git-r3
 fi
 
 export CBUILD=${CBUILD:-${CHOST}}
