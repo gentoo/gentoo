@@ -5,9 +5,13 @@
 EAPI=5
 
 KDE_HANDBOOK="optional"
-KMNAME="kde-runtime"
-inherit kde4-meta
+inherit kde4-base
 
-DESCRIPTION="KDE network wizard"
+DESCRIPTION="KDE: A dialer and front-end to pppd"
+HOMEPAGE="https://www.kde.org/applications/internet/kppp"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
+
+RDEPEND="
+	net-dialup/ppp
+"

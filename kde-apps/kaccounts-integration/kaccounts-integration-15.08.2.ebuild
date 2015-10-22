@@ -14,7 +14,7 @@ HOMEPAGE="https://community.kde.org/KTp"
 LICENSE="LGPL-2.1"
 
 KEYWORDS="~amd64 ~x86"
-IUSE="kdepim"
+IUSE=""
 
 RDEPEND="
 	$(add_frameworks_dep kconfig)
@@ -32,19 +32,11 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	net-libs/accounts-qt
 	net-libs/signond
-	kdepim? ( $(add_kdeapps_dep kdepimlibs) )
 "
 DEPEND="${RDEPEND}
 	$(add_frameworks_dep kcmutils)
+	sys-devel/gettext
 "
 
 # bug #549444
 RESTRICT="test"
-
-src_configure() {
-	local mycmakeargs=(
-		$(cmake-utils_use_find_package kdepim KF5Akonadi)
-	)
-
-	kde5_src_configure
-}

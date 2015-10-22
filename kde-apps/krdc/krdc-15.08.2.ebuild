@@ -8,7 +8,7 @@ KDE_HANDBOOK="optional"
 inherit kde4-base
 
 DESCRIPTION="KDE remote desktop connection (RDP and VNC) client"
-HOMEPAGE="http://www.kde.org/applications/internet/krdc/"
+HOMEPAGE="https://www.kde.org/applications/internet/krdc/"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug jpeg +rdesktop telepathy vnc zeroconf"
 
