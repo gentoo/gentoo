@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ LICENSE="GPL-2"
 DEPEND="dev-python/numpy"
 RDEPEND="${DEPEND}
 	dev-python/PyQt4[X,svg]
-	fits? ( dev-python/pyfits )"
+	fits? ( virtual/pyfits )"
 
 PYTHON_CFLAGS=("2.* + -fno-strict-aliasing")
 

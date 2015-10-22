@@ -24,7 +24,7 @@ CDEPEND="
 RDEPEND="${CDEPEND}
 	dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
 	emf? ( dev-python/pyemf[$(python_gen_usedep 'python2*')] )
-	fits? ( dev-python/astropy[${PYTHON_USEDEP}] )
+	fits? ( virtual/pyfits[${PYTHON_USEDEP}] )
 	hdf5? ( dev-python/h5py[${PYTHON_USEDEP}] )
 	minuit? ( dev-python/pyminuit[${PYTHON_USEDEP}] )
 	vo? (
