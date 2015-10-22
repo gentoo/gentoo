@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>python</herd>
-<herd>sci-astronomy</herd>
-<longdescription>
+  <herd>python</herd>
+  <herd>sci-astronomy</herd>
+  <longdescription>
   This package contains utilities used to package some of STScI's Python
   projects; specifically those projects that comprise stsci_python and
   Astrolib.
@@ -11,7 +11,7 @@
   distutils2/packaging and/or d2to1, and a customized easy_install command
   meant for use with distribute.
 </longdescription>
-<upstream>
-  <remote-id type="pypi">stsci.distutils</remote-id>
-</upstream>
+  <upstream>
+    <remote-id type="pypi">stsci.distutils</remote-id>
+  </upstream>
 </pkgmetadata>
