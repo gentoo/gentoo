@@ -3,9 +3,8 @@
 <pkgmetadata>
 	<herd>haskell</herd>
 	<longdescription>
-		A hodge-podge of functions and modules that do not have a better home
+		Djinn uses an theorem prover for intuitionistic propositional logic
+		to generate a Haskell expression when given a type.
+		This is a library extracted from Djinn sources.
 	</longdescription>
-	<use>
-		<flag name="network-uri">use network-uri package</flag>
-	</use>
 </pkgmetadata>

@@ -3,9 +3,6 @@
 <pkgmetadata>
 	<herd>haskell</herd>
 	<longdescription>
-		A hodge-podge of functions and modules that do not have a better home
+		Scrap Your Boilerplate utilities for the GHC API.
 	</longdescription>
-	<use>
-		<flag name="network-uri">use network-uri package</flag>
-	</use>
 </pkgmetadata>

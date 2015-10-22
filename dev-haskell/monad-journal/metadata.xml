@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		This package provides a typeclass for logging in
+		pure code, or more generally, in any kind of
+		context. You can do whatever you want with
+		logs, especially get them, clear them or even
+		sink them through `IO` if you're logging in
+		`(MonadIO m) =&gt; m`.
+	</longdescription>
+</pkgmetadata>
