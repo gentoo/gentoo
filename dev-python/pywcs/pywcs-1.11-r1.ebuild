@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
-inherit distutils-r1 eutils
+inherit distutils-r1
 
 WCS_V=4.8.2
 MYP=${P}-${WCS_V}
@@ -26,15 +26,14 @@ DEPEND="
 RDEPEND="
 	>=sci-astronomy/wcslib-${WCS_V}
 	virtual/pyfits
-	!<dev-python/astropy-0.3"
+	!dev-python/astropy"
 
 # missing data to run tests
 RESTRICT=test
+
 S="${WORKDIR}/${MYP}"
 
-python_prepare_all(){
-	epatch "${FILESDIR}"/${P}-wcslib.patch
-}
+PATCHES=( "${FILESDIR}"/${P}-wcslib.patch )
 
 python_test() {
 	nosetests -w "${BUILD_DIR}"/lib || die "Tests fail with ${EPYTHON}"
