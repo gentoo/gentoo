@@ -76,7 +76,7 @@ src_prepare() {
 	sed \
 		-e "s:@EPREFIX@:${EPREFIX:-/}:" \
 		-e "s:@libdir@:/usr/$(get_libdir):" \
-		"${FILESDIR}/distcc-config-3.2_rc1" > "${T}/distcc-config" || die
+		"${FILESDIR}/3.2/distcc-config" > "${T}/distcc-config" || die
 
 	eaclocal -Im4 --output=aclocal.m4
 	eautoconf
@@ -102,13 +102,11 @@ src_install() {
 	default
 	python_optimize
 
-	dobin "${FILESDIR}/3.0/distcc-config"
-
-	newinitd "${FILESDIR}/3.1/init" distccd
+	newinitd "${FILESDIR}/3.2/init" distccd
 	systemd_dounit "${FILESDIR}/distccd.service"
 	systemd_install_serviced "${FILESDIR}/distccd.service.conf"
 
-	cp "${FILESDIR}/3.0/conf" "${T}/distccd" || die
+	cp "${FILESDIR}/3.2/conf" "${T}/distccd" || die
 	if use avahi; then
 		cat >> "${T}/distccd" <<-EOF
 
