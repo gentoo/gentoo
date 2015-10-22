@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils distutils-r1
+inherit distutils-r1
 
 DESCRIPTION="Collection of python tools for astronomy"
 HOMEPAGE="http://www.astro.rug.nl/software/kapteyn"
@@ -21,13 +21,14 @@ DEPEND="
 	sci-astronomy/wcslib
 	dev-python/numpy[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
-	virtual/pyfits[${PYTHON_USEDEP}]
+	dev-python/astropy[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]"
 
 DOCS=( CHANGES.txt README.txt doc/${PN}.pdf )
 
+PATCHES=( "${FILESDIR}"/${PN}-2.2-debundle_wcs.patch )
+
 python_prepare_all() {
-	epatch "${FILESDIR}"/${P}-debundle_wcs.patch
 	rm -r src/wcslib-4.* || die
 	distutils-r1_python_prepare_all
 }

@@ -4,7 +4,8 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
+
 inherit distutils-r1 eutils multilib
 
 DESCRIPTION="Provides an interface to FITS formatted files under python"
@@ -18,7 +19,7 @@ IUSE="doc test"
 
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
-	!<dev-python/astropy-0.3
+	!dev-python/astropy
 	sci-libs/cfitsio:0="
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -26,7 +27,7 @@ DEPEND="${RDEPEND}
 	>=dev-python/stsci-distutils-0.3[${PYTHON_USEDEP}]
 	doc? (
 		dev-python/matplotlib[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/numpydoc[${PYTHON_USEDEP}]' python2_7 'python{3_3,3_4}')
+		$(python_gen_cond_dep 'dev-python/numpydoc[${PYTHON_USEDEP}]' 'python*')
 		dev-python/sphinxcontrib-programoutput[${PYTHON_USEDEP}]
 		dev-python/stsci-sphinxext[${PYTHON_USEDEP}]
 		 )
@@ -40,7 +41,9 @@ python_prepare_all() {
 		"${S}"/setup.cfg || die
 
 	# https://github.com/spacetelescope/PyFITS/issues/95
-	sed -e "s/except UserWarning, w/except UserWarning as w/" -i lib/pyfits/scripts/fitscheck.py
+	sed \
+		-e "s/except UserWarning, w/except UserWarning as w/" \
+		-i lib/pyfits/scripts/fitscheck.py || die
 
 	distutils-r1_python_prepare_all
 }
@@ -51,17 +54,16 @@ python_compile_all() {
 
 python_test() {
 	cd "${BUILD_DIR}"/lib* || die
-	nosetests || die
+	nosetests --verbose || die
 }
 
 python_install_all() {
-	use doc && local HTML_DOCS=( docs/build/html )
+	use doc && local HTML_DOCS=( docs/build/html/. )
+	DOCS=( FAQ.txt CHANGES.txt )
 	distutils-r1_python_install_all
-	dodoc FAQ.txt CHANGES.txt
 	rename_binary() {
 		local binary
-		for binary in "${ED}"/usr/bin/* "${D}$(python_get_scriptdir)"/*
-		do
+		for binary in "${ED}"/usr/bin/* "${D}$(python_get_scriptdir)"/*; do
 			mv ${binary}{,-${PN}} || die "failed renaming"
 		done
 	}
