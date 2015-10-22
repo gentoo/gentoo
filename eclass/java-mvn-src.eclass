@@ -26,8 +26,8 @@ inherit java-pkg-simple
 : ${GROUP_ID:=${PN}}
 
 # @ECLASS-VARIABLE: ARTIFACT_ID
+# @DESCRIPTION:
 # The artifactId of the artifact. Default value is ${PN}.
-
 : ${ARTIFACT_ID:=${PN}}
 
 # @ECLASS-VARIABLE: MAVEN2_REPOSITORIES

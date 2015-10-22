@@ -59,7 +59,7 @@ S="${WORKDIR}"
 #	JAVA_SRC_DIR="src/java/org/gentoo"
 # @CODE
 
-# @ECLASS-VARIABLE: JAVA_SRC_DIR
+# @ECLASS-VARIABLE: JAVA_ENCODING
 # @DESCRIPTION:
 # The character encoding used in the source files.
 : ${JAVA_ENCODING:=UTF-8}
