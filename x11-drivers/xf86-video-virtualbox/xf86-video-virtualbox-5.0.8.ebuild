@@ -54,6 +54,10 @@ S="${WORKDIR}/${MY_P}"
 QA_TEXTRELS_x86="usr/lib/VBoxOGL.so"
 
 pkg_setup() {
+	if [ "${MERGE_TYPE}" != "binary" ]; then
+		version_is_at_least 4.9 $(gcc-version) || die "Please set gcc 4.9 or higher as active in gcc-config to build ${PN}"
+	fi
+
 	linux-mod_pkg_setup
 	BUILD_PARAMS="KERN_DIR=${KV_OUT_DIR} KERNOUT=${KV_OUT_DIR}"
 
