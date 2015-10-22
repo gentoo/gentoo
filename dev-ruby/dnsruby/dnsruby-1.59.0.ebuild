@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="DNSSEC EXAMPLES README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="A pure Ruby DNS client library"
-HOMEPAGE="http://rubyforge.org/projects/dnsruby"
+HOMEPAGE="https://github.com/alexdalitz/dnsruby"
 
 KEYWORDS="~amd64 ~x86"
 LICENSE="Apache-2.0"
