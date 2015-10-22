@@ -1,9 +1,0 @@
-DEFINED_PHASES=compile install
-DESCRIPTION=Binary regulatory database for CRDA
-EAPI=5
-HOMEPAGE=https://wireless.kernel.org/en/developers/Regulatory
-KEYWORDS=alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 sparc x86
-LICENSE=ISC
-SLOT=0
-SRC_URI=https://www.kernel.org/pub/software/network/wireless-regdb/wireless-regdb-2015.03.13.tar.xz
-_md5_=88a05d010998b63134c185762a7e9de6
