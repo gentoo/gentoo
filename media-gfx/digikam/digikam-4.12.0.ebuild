@@ -7,12 +7,8 @@ EAPI=5
 KDE_LINGUAS="af ar az be bg bn br bs ca cs csb cy da de el en_GB eo es et eu fa fi fo fr fy ga gl ha he hi hr hsb
 hu id is it ja ka kk km ko ku lb lo lt lv mi mk mn ms mt nb nds ne nl nn nso oc pa pl pt pt_BR ro ru
 rw se sk sl sq sr sr@Latn ss sv ta te tg th tr tt uk uz uz@cyrillic ven vi wa xh zh_CN zh_HK zh_TW zu"
-
 KDE_HANDBOOK="optional"
-KDE_MINIMAL="4.10"
-
 KDE_DOC_DIRS="doc-digikam doc-showfoto"
-
 inherit kde4-base
 
 MY_PV=${PV/_/-}
@@ -32,12 +28,13 @@ CDEPEND="
 	kde-apps/kdebase-kioslaves:4
 	kde-apps/libkdcraw:4=
 	kde-apps/libkexiv2:4=
-	>=kde-apps/libkface-4.6.0:4
-	>=kde-apps/libkgeomap-4.6.0:4=
+	>=kde-apps/libkface-4.12.0:4
+	>=kde-appslibkgeomap-4.12.0:4=
 	kde-apps/libkipi:4
 	kde-apps/marble:4=[plasma]
 	kde-apps/kcmshell:4
 	dev-qt/qtgui:4
+	|| ( dev-qt/qtsql:4[mysql] dev-qt/qtsql:4[sqlite] )
 	media-libs/jasper
 	media-libs/lcms:2
 	>=media-libs/lensfun-0.2.6
@@ -49,25 +46,18 @@ CDEPEND="
 	>=media-libs/tiff-3.8.2:0
 	virtual/jpeg:0
 	x11-libs/libX11
-	|| ( dev-qt/qtsql:4[mysql] dev-qt/qtsql:4[sqlite] )
 	addressbook? ( $(add_kdebase_dep kdepimlibs) )
 	gphoto2? ( media-libs/libgphoto2:= )
 	mysql? ( virtual/mysql )
-	semantic-desktop? (
-		$(add_kdebase_dep baloo '' 4.12.0)
-	)
+	semantic-desktop? ( $(add_kdebase_dep baloo '' 4.12.0) )
 "
 RDEPEND="${CDEPEND}
-	kde-apps/kreadconfig:4
-	media-plugins/kipi-plugins
-	video? (
-		|| (
-			kde-apps/ffmpegthumbs:4
-			kde-apps/mplayerthumbs:4
-			$(add_kdeapps_dep mplayerthumbs)
-			$(add_kdeapps_dep ffmpegthumbs)
-		)
-	)
+	$(add_kdeapps_dep kreadconfig)
+	media-plugins/kipi-plugins:4
+	video? ( || (
+		$(add_kdeapps_dep ffmpegthumbs)
+		$(add_kdeapps_dep mplayerthumbs)
+	) )
 "
 DEPEND="${CDEPEND}
 	dev-cpp/eigen:3

@@ -1,0 +1,31 @@
+From: David Faure <faure@kde.org>
+Date: Sun, 26 Jul 2015 16:12:24 +0000
+Subject: set cmake_min_req to 2.8.9 to match kdelibs4 policy; fix build accordingly
+X-Git-Url: http://quickgit.kde.org/?p=kphotoalbum.git&a=commitdiff&h=f785317ba88528760886b592aa9604b0c4ba62dd
+---
+set cmake_min_req to 2.8.9 to match kdelibs4 policy; fix build accordingly
+
+(working around the lack of ${KDE4_KMEDIAPLAYER_LIBS})
+
+CCMAIL: kde-buildsystem@kde.org
+---
+
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.3 FATAL_ERROR)
++cmake_minimum_required(VERSION 2.8.9)
+ project(kphotoalbum)
+ 
+ if(POLICY CMP0017)
+@@ -456,7 +456,7 @@
+ target_link_libraries(kphotoalbum Utilities)
+ 
+ # External components
+-target_link_libraries(kphotoalbum ${KDE4_KIO_LIBS} ${JPEG_LIBRARY} kmediaplayer ${KDE4_PHONON_LIBS})
++target_link_libraries(kphotoalbum ${KDE4_KIO_LIBS} ${JPEG_LIBRARY} ${KDE4_TARGET_PREFIX}kmediaplayer ${KDE4_PHONON_LIBS})
+ 
+ if(KIPI_FOUND)
+     target_link_libraries(kphotoalbum ${KIPI_LIBRARIES})
+
