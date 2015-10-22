@@ -29,7 +29,6 @@ RDEPEND="dev-python/urllib3[${PYTHON_USEDEP}]
 # I believe we don't need unpackaged package markment
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND} )"
-DISTUTILS_NO_PARALLEL_BUILD=1
 
 PATCHES=( "${FILESDIR}"/${P}-deps.patch )
 

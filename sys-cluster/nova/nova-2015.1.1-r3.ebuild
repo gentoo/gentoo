@@ -193,8 +193,6 @@ python_compile() {
 }
 
 python_test() {
-	# turn multiprocessing off, testr will use it --parallel
-	local DISTUTILS_NO_PARALLEL_BUILD=1
 	testr init
 	testr run --parallel || die "failed testsuite under python2.7"
 }

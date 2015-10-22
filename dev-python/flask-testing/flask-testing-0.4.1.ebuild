@@ -29,7 +29,6 @@ DEPEND="${RDEPEND}
 	)"
 
 S="${WORKDIR}/${MY_P}"
-DISTUTILS_NO_PARALLEL_BUILD=1
 
 python_test() {
 	nosetests || die "Testing failed with ${EPYTHON}"

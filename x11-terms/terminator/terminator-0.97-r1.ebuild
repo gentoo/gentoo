@@ -5,7 +5,6 @@
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
-DISTUTILS_NO_PARALLEL_BUILD=true
 
 inherit gnome2 distutils-r1
 

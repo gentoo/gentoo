@@ -19,7 +19,6 @@ IUSE=""
 # distutils.command.config writes to CWD, bug #450516
 # mxSetup.py is broken with --build-lib
 #DISTUTILS_IN_SOURCE_BUILD=1
-DISTUTILS_NO_PARALLEL_BUILD=1
 
 python_prepare_all() {
 	# Don't install documentation in site-packages directories.

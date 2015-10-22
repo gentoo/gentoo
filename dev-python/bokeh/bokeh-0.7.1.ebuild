@@ -60,8 +60,6 @@ DOCS=( CHANGELOG QUICKSTART.md README.md )
 
 PATCHES=( "${FILESDIR}"/${P}-setup.patch )
 
-DISTUTILS_NO_PARALLEL_BUILD=1
-
 python_prepare_all() {
 	DOC_CONTENTS="websockets work only with python2_7"
 

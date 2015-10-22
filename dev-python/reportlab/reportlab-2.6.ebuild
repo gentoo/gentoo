@@ -25,8 +25,6 @@ RDEPEND="virtual/python-imaging
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 
-DISTUTILS_NO_PARALLEL_BUILD=1
-
 src_unpack() {
 	unpack ${P}.tar.gz
 	cd ${P}/src/reportlab/fonts || die
