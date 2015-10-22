@@ -22,7 +22,7 @@ IUSE=""
 DEPEND=">=x11-libs/xpa-${XPAPV}"
 RDEPEND="${DEPEND}
 	dev-python/numpy[${PYTHON_USEDEP}]
-	virtual/pyfits[${PYTHON_USEDEP}]"
+	dev-python/astropy[${PYTHON_USEDEP}]"
 
 DOCS=(changelog README)
 
