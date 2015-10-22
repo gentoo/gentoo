@@ -27,13 +27,6 @@ python_compile_all() {
 	use doc && emake -C doc html
 }
 
-src_test() {
-	# Tests bind to static addresses, bug #456920
-	local DISTUTILS_NO_PARALLEL_BUILD=1
-
-	distutils-r1_src_test
-}
-
 python_test() {
 	nosetests || die "Tests fail with ${EPYTHON}"
 }
