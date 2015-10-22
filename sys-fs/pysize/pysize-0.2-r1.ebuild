@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,8 +30,6 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-setuptools-automagic.patch
 	)
 
-DISTUTILS_NO_PARALLEL_BUILD=1
-
 python_prepare_all() {
 	if ! use gtk; then
 		sed \
@@ -56,12 +54,6 @@ python_prepare_all() {
 		-i pysize/main.py || die
 
 	distutils-r1_python_prepare_all
-}
-
-src_test() {
-	# Tests shatter otherwise
-	local DISTUTILS_NO_PARALLEL_BUILD=1
-	distutils-r1_src_test
 }
 
 python_test() {
