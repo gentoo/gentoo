@@ -38,6 +38,8 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="${REQUIRED_USE} ^^ ( qt4 qt5 )"
 
 src_prepare() {
+	epatch "${FILESDIR}/miniupnpc-14.patch"
+
 	bitcoincore_prepare
 
 	local filt= yeslang= nolang=
