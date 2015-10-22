@@ -2079,7 +2079,7 @@ app-portage/demerge 0.047-r1: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r2 9999: A utility to maintain package.unmask entries up-to-date with masks
 app-portage/distpatch 0.1.1: Distfile Patching Support for Gentoo Linux (tools)
 app-portage/eclass-manpages 20150814: collection of Gentoo eclass manpages
-app-portage/eix 0.30.4 0.30.7 0.30.8 0.30.10 0.30.11 0.31.0: Search and query ebuilds, portage incl. local settings, ext. overlays, version changes, and more
+app-portage/eix 0.30.4 0.30.7 0.30.8 0.30.10 0.30.11 0.31.1: Search and query ebuilds, portage incl. local settings, ext. overlays, version changes, and more
 app-portage/elogv 0.7.6.1-r1 0.7.6.2 0.7.6.3 0.7.6.4 0.7.6.5 0.7.6.6: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 0.6.2-r3 2.1-r1 2.1-r2 2.6: Elog viewer for Gentoo
 app-portage/emerge-delta-webrsync 3.6.2 3.7.1 3.7.2-r1: emerge-webrsync using patches to minimize bandwidth
@@ -17401,8 +17401,8 @@ www-client/fetch 1.0-r1: Fetch is a simple, fast, and flexible HTTP download too
 www-client/firefox 38.2.0 38.3.0 41.0.2: Firefox Web Browser
 www-client/firefox-bin 38.1.1 38.2.0 38.2.1 38.3.0 41.0.2: Firefox Web Browser
 www-client/google-chrome 46.0.2490.71_p1: The web browser from Google
-www-client/google-chrome-beta 47.0.2526.16_p1: The web browser from Google
-www-client/google-chrome-unstable 48.0.2535.0_p1: The web browser from Google
+www-client/google-chrome-beta 47.0.2526.27_p1: The web browser from Google
+www-client/google-chrome-unstable 48.0.2541.0_p1: The web browser from Google
 www-client/httrack 3.45.4 3.47.27 3.48.13 3.48.19 3.48.20 3.48.21: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/jumanji 0.0.0_p20111209 0.0.0_p20130103-r1 0.0.0_p20150527 9999: highly customizable and functional web browser with minimalistic and space saving interface
@@ -17457,7 +17457,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.540: Adobe Flash Player
-www-plugins/chrome-binary-plugins 46.0.2490.71_p1 47.0.2526.16_beta1 48.0.2535.0_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 46.0.2490.71_p1 47.0.2526.27_beta1 48.0.2541.0_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316: GNU Flash movie player that supports many SWF v7,8,9 features
