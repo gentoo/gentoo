@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
 inherit python-r1
 
@@ -18,6 +18,6 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="|| (
+		dev-python/astropy[${PYTHON_USEDEP}]
 		>=dev-python/pyfits-3.1[${PYTHON_USEDEP}]
-		<dev-python/astropy-0.3[${PYTHON_USEDEP}]
 	)"
