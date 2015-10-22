@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install postinst
-DEPEND=media-libs/libmpd net-misc/curl virtual/pkgconfig
+DEPEND=media-libs/libmpdclient net-misc/curl virtual/pkgconfig
 DESCRIPTION=An AudioScrobbler client for MPD written in C++
 EAPI=5
 HOMEPAGE=http://50hz.ws/mpdas/
 KEYWORDS=amd64 ~x86
 LICENSE=BSD
-RDEPEND=media-libs/libmpd net-misc/curl
+RDEPEND=media-libs/libmpdclient net-misc/curl
 SLOT=0
 SRC_URI=http://50hz.ws/mpdas/mpdas-0.4.0.tar.gz
 _eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=7b54893d3fc2e1b72cd0979fd501afd9
+_md5_=33a7062517e2a5b04a5e152713886582
