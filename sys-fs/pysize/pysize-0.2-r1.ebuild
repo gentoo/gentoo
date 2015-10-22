@@ -21,7 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	gtk? ( dev-python/pygtk:2 )
-	ncurses? ( sys-libs/ncurses )"
+	ncurses? ( sys-libs/ncurses:0= )"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
