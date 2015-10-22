@@ -147,7 +147,7 @@ pkg_postinst() {
 	fi
 	elog
 	elog "Tips on using distcc with Gentoo can be found at"
-	elog "https://www.gentoo.org/doc/en/distcc.xml"
+	elog "https://wiki.gentoo.org/wiki/Distcc"
 	elog
 	elog "How to use pump mode with Gentoo:"
 	elog "# distcc-config --set-hosts \"foo,cpp,lzo bar,cpp,lzo baz,cpp,lzo\""
