@@ -40,12 +40,6 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-src_test() {
-	 # Required to allow / ensure all impls to pass run of testsuite
-	local DISTUTILS_NO_PARALLEL_BUILD=1
-	distutils-r1_src_test
-}
-
 python_test() {
 	esetup.py test
 }
