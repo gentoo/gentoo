@@ -22,7 +22,6 @@ DEPEND="${PYTHON_DEPS}
 
 src_test() {
 	addwrite /proc/self/comm
-	local DISTUTILS_NO_PARALLEL_BUILD=1
 	distutils-r1_src_test
 }
 
