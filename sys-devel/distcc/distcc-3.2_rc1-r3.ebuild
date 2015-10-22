@@ -176,7 +176,7 @@ pkg_postinst() {
 	elog
 	elog "How to use pump mode with Gentoo:"
 	elog "# distcc-config --set-hosts \"foo,cpp,lzo bar,cpp,lzo baz,cpp,lzo\""
-	elog "# echo 'FEATURES=\"\${FEATURES} distcc distcc-pump\"' >> /etc/make.conf"
+	elog "# echo 'FEATURES=\"\${FEATURES} distcc distcc-pump\"' >> /etc/portage/make.conf"
 	elog "# emerge -u world"
 	elog
 	elog "To use the distccmon programs with Gentoo you should use this command:"
