@@ -29,7 +29,7 @@ COMMON_DEPEND="
 	face? ( >=kde-apps/libkface-4.7.0 )
 	geolocation? ( $(add_kdeapps_dep marble) )
 	kipi? ( $(add_kdeapps_dep libkipi '' 4.9.58) )
-	map? ( >=media-libs/libkgeomap-4.7.0 )
+	map? ( >=kde-apps/libkgeomap-4.7.0:4 )
 	raw? ( $(add_kdeapps_dep libkdcraw '' 4.9.58) )
 "
 DEPEND="${COMMON_DEPEND}
