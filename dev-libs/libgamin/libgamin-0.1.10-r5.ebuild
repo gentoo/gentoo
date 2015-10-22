@@ -95,7 +95,7 @@ multilib_src_configure() {
 			econf "${myconf[@]}" --with-python
 		}
 
-		python_parallel_foreach_impl python_configure
+		python_foreach_impl python_configure
 	fi
 }
 

@@ -48,7 +48,7 @@ src_configure() {
 		autotools-utils_src_configure --with-boost-python=boost_python-${EPYTHON#python}
 	}
 
-	python_parallel_foreach_impl python_configure
+	python_foreach_impl python_configure
 }
 
 src_compile() {

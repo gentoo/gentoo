@@ -98,7 +98,7 @@ src_configure() {
 	kmod_configure --disable-python
 
 	if use python; then
-		python_parallel_foreach_impl kmod_configure --enable-python
+		python_foreach_impl kmod_configure --enable-python
 	fi
 }
 
