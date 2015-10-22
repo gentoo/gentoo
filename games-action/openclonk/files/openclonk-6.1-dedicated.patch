@@ -1,0 +1,1073 @@
+From 652c7e43e23652fb8bf05b4b57e6db36b0eb765c Mon Sep 17 00:00:00 2001
+From: Nicolas Hake <isilkor@openclonk.org>
+Date: Wed, 17 Jun 2015 21:30:56 +0200
+Subject: [PATCH] Fix headless build
+
+Several rendering changes have resulted in a non-rendering build that
+failed to build from source. Dummy out all of these functions to make it
+work again.
+
+Cherry-picked.
+Author:    Nicolas Hake <isilkor@openclonk.org>
+Date:      Wed Jun 17 21:30:56 2015 +0200
+Conflicts:
+	src/lib/StdMesh.h
+---
+ src/graphics/C4DrawT.cpp                |  2 +-
+ src/graphics/C4DrawT.h                  |  6 +++++-
+ src/graphics/C4GraphicsResource.cpp     |  2 ++
+ src/graphics/C4Shader.cpp               | 21 +++++++++++++++++--
+ src/graphics/C4Shader.h                 | 37 +++++++++++++++++++++++++++++----
+ src/landscape/fow/C4FoW.cpp             | 14 +++++++++++++
+ src/landscape/fow/C4FoW.h               |  2 ++
+ src/landscape/fow/C4FoWAmbient.cpp      | 13 ++++++++++--
+ src/landscape/fow/C4FoWAmbient.h        |  2 ++
+ src/landscape/fow/C4FoWBeam.cpp         |  6 +++++-
+ src/landscape/fow/C4FoWBeam.h           |  5 ++++-
+ src/landscape/fow/C4FoWDrawStrategy.cpp |  4 ++++
+ src/landscape/fow/C4FoWDrawStrategy.h   |  4 ++++
+ src/landscape/fow/C4FoWLight.cpp        |  5 +++++
+ src/landscape/fow/C4FoWLight.h          |  6 +++++-
+ src/landscape/fow/C4FoWLightSection.cpp |  5 +++++
+ src/landscape/fow/C4FoWLightSection.h   |  6 +++++-
+ src/landscape/fow/C4FoWRegion.cpp       | 12 +++++++++--
+ src/landscape/fow/C4FoWRegion.h         |  5 ++++-
+ src/lib/StdMesh.cpp                     | 35 +++++++++++++++++++++++++++++--
+ src/lib/StdMesh.h                       |  6 +++++-
+ src/lib/StdMeshMaterial.cpp             | 19 ++++++++++++++++-
+ src/object/C4Def.cpp                    |  2 ++
+ 23 files changed, 198 insertions(+), 21 deletions(-)
+
+diff --git a/src/graphics/C4DrawT.cpp b/src/graphics/C4DrawT.cpp
+index 694dd98..69b93e4 100644
+--- a/src/graphics/C4DrawT.cpp
++++ b/src/graphics/C4DrawT.cpp
+@@ -22,7 +22,7 @@ CStdNoGfx::CStdNoGfx()
+ 	Default();
+ }
+ 
+-bool CStdNoGfx::CreatePrimarySurfaces(bool Fullscreen, unsigned int iXRes, unsigned int iYRes, int iColorDepth, unsigned int iMonitor)
++bool CStdNoGfx::CreatePrimarySurfaces(unsigned int iXRes, unsigned int iYRes, int iColorDepth, unsigned int iMonitor)
+ {
+ 	Log("Graphics disabled.");
+ 	// Save back color depth
+diff --git a/src/graphics/C4DrawT.h b/src/graphics/C4DrawT.h
+index b7b7e97..519ba95 100644
+--- a/src/graphics/C4DrawT.h
++++ b/src/graphics/C4DrawT.h
+@@ -41,8 +41,12 @@ public:
+ 	virtual bool InvalidateDeviceObjects() { return true; }
+ 	virtual bool DeleteDeviceObjects() { return true; }
+ 	virtual bool DeviceReady() { return true; }
+-	virtual bool CreatePrimarySurfaces(bool, unsigned int, unsigned int, int, unsigned int);
++	virtual bool CreatePrimarySurfaces(unsigned int, unsigned int, int, unsigned int);
+ 	virtual bool SetOutputAdapter(unsigned int) { return true; }
++
++	virtual void PerformMultiPix(C4Surface *, const C4BltVertex *, unsigned int) {}
++	virtual void PerformMultiLines(C4Surface *, const C4BltVertex *, unsigned int, float) {}
++	virtual void PerformMultiTris(C4Surface *, const C4BltVertex *, unsigned int, const C4BltTransform *, C4TexRef *, C4TexRef *, C4TexRef *, DWORD) {}
+ };
+ 
+ #endif
+diff --git a/src/graphics/C4GraphicsResource.cpp b/src/graphics/C4GraphicsResource.cpp
+index 774fd39..f55b22f 100644
+--- a/src/graphics/C4GraphicsResource.cpp
++++ b/src/graphics/C4GraphicsResource.cpp
+@@ -186,6 +186,7 @@ bool C4GraphicsResource::Init()
+ 		return false;
+ 	}
+ 
++#ifndef USE_CONSOLE
+ 	// Pre-load all shader files
+ 	Files.PreCacheEntries(C4CFN_ShaderFiles);
+ 	if (!pGL->InitShaders(&Files))
+@@ -193,6 +194,7 @@ bool C4GraphicsResource::Init()
+ 		LogFatal(LoadResStr("IDS_ERR_GFX_INITSHADERS"));
+ 		return false;
+ 	}
++#endif
+ 
+ 	Game.SetInitProgress(11.0f);
+ 	ProgressStart = 12.0f; ProgressIncrement = 0.35f; // TODO: This should be changed so that it stops at 25%, no matter how many graphics we load.
+diff --git a/src/graphics/C4Shader.cpp b/src/graphics/C4Shader.cpp
+index 32de995..bec53b5 100644
+--- a/src/graphics/C4Shader.cpp
++++ b/src/graphics/C4Shader.cpp
+@@ -39,8 +39,10 @@ C4ShaderPosName C4SH_PosNames[] = {
+ 
+ C4Shader::C4Shader()
+ 	: iTexCoords(0)
++#ifndef USE_CONSOLE
+ 	, hVert(0), hFrag(0), hProg(0)
+ 	, pUniforms(NULL)
++#endif
+ {
+ 
+ }
+@@ -260,6 +262,7 @@ void C4Shader::AddVertexDefaults()
+ 	AddVertexSlice(C4Shader_Vertex_PositionPos, "gl_Position = ftransform();\n");
+ }
+ 
++#ifndef USE_CONSOLE
+ GLenum C4Shader::AddTexCoord(const char *szName)
+ {
+ 	// Make sure we have enough space
+@@ -275,6 +278,7 @@ GLenum C4Shader::AddTexCoord(const char *szName)
+ 
+ 	return GL_TEXTURE0 + iTexCoords++;
+ }
++#endif
+ 
+ void C4Shader::ClearSlices()
+ {
+@@ -285,6 +289,7 @@ void C4Shader::ClearSlices()
+ 
+ void C4Shader::Clear()
+ {
++#ifndef USE_CONSOLE
+ 	if (!hProg) return;
+ 	// Need to be detached, then deleted
+ 	glDetachObjectARB(hProg, hFrag);
+@@ -296,11 +301,12 @@ void C4Shader::Clear()
+ 	// Clear uniform data
+ 	delete[] pUniforms; pUniforms = NULL;
+ 	iUniformCount = 0;
++#endif
+ }
+ 
+ bool C4Shader::Init(const char *szWhat, const char **szUniforms)
+ {
+-
++#ifndef USE_CONSOLE
+ 	// No support?
+ 	if(!GLEW_ARB_fragment_program)
+ 	{
+@@ -310,6 +316,7 @@ bool C4Shader::Init(const char *szWhat, const char **szUniforms)
+ 
+ 	// Clear old shader first
+ 	if (hProg) Clear();
++#endif
+ 
+ 	// Dump
+ 	if (C4Shader::IsLogging())
+@@ -320,6 +327,7 @@ bool C4Shader::Init(const char *szWhat, const char **szUniforms)
+ 		ShaderLog(Build(FragmentSlices, true).getData());
+ 	}
+ 
++#ifndef USE_CONSOLE
+ 	// Attempt to create shaders
+ 	StdStrBuf VertexShader = Build(VertexSlices),
+ 			  FragmentShader = Build(FragmentSlices);
+@@ -363,6 +371,7 @@ bool C4Shader::Init(const char *szWhat, const char **szUniforms)
+ 	// because the respective uniforms got optimized out!
+ 	for (int i = 0; i < iUniformCount; i++)
+ 		pUniforms[i] = glGetUniformLocationARB(hProg, szUniforms[i]);
++#endif
+ 
+ 	return true;
+ }
+@@ -420,9 +429,13 @@ StdStrBuf C4Shader::Build(const ShaderSliceList &Slices, bool fDebug)
+ 	// At the start of the shader set the #version and number of
+ 	// available uniforms
+ 	StdStrBuf Buf;
++#ifndef USE_CONSOLE
+ 	GLint iMaxFrags = 0, iMaxVerts = 0;
+ 	glGetIntegerv(GL_MAX_FRAGMENT_UNIFORM_COMPONENTS_ARB, &iMaxFrags);
+ 	glGetIntegerv(GL_MAX_VERTEX_UNIFORM_COMPONENTS_ARB, &iMaxVerts);
++#else
++	int iMaxFrags = INT_MAX, iMaxVerts = INT_MAX;
++#endif
+ 	Buf.Format("#version %d\n"
+ 			   "#define MAX_FRAGMENT_UNIFORM_COMPONENTS %d\n"
+ 			   "#define MAX_VERTEX_UNIFORM_COMPONENTS %d\n",
+@@ -468,6 +481,7 @@ StdStrBuf C4Shader::Build(const ShaderSliceList &Slices, bool fDebug)
+ 	return Buf;
+ }
+ 
++#ifndef USE_CONSOLE
+ GLhandleARB C4Shader::Create(GLenum iShaderType, const char *szWhat, const char *szShader)
+ {
+ 	// Create shader
+@@ -515,9 +529,11 @@ int C4Shader::GetObjectStatus(GLhandleARB hObj, GLenum type)
+ 	glGetObjectParameterivARB(hObj, type, &iStatus);
+ 	return iStatus;
+ }
++#endif
+ 
+ bool C4Shader::IsLogging() { return !!Application.isEditor; }
+ 
++#ifndef USE_CONSOLE
+ GLint C4ShaderCall::AllocTexUnit(int iUniform, GLenum iType)
+ {
+ 	// Want to bind uniform automatically? If not, the caller will take
+@@ -550,7 +566,6 @@ void C4ShaderCall::Start()
+ 	// Activate shader
+ 	glUseProgramObjectARB(pShader->hProg);
+ 	fStarted = true;
+-
+ }
+ 
+ void C4ShaderCall::Finish()
+@@ -569,3 +584,5 @@ void C4ShaderCall::Finish()
+ 	iUnits = 0;
+ 	fStarted = false;
+ }
++
++#endif
+diff --git a/src/graphics/C4Shader.h b/src/graphics/C4Shader.h
+index 53e38cc..c988d90 100644
+--- a/src/graphics/C4Shader.h
++++ b/src/graphics/C4Shader.h
+@@ -68,11 +68,13 @@ private:
+ 	// Used texture coordinates
+ 	int iTexCoords;
+ 
++#ifndef USE_CONSOLE
+ 	// shaders
+ 	GLhandleARB hVert, hFrag, hProg;
+ 	// shader variables
+ 	int iUniformCount;
+ 	GLint *pUniforms;
++#endif
+ 
+ public:
+ 	enum VertexAttribIndex
+@@ -93,15 +95,35 @@ public:
+ 		VAI_BoneIndicesMax = VAI_BoneIndices + VAI_BoneWeightsMax - VAI_BoneWeights
+ 	};
+ 
+-	bool Initialised() const { return hVert != 0; }
++	bool Initialised() const
++	{
++#ifndef USE_CONSOLE
++		return hVert != 0;
++#else
++		return true;
++#endif
++	}
+ 
+ 	// Uniform getters
+-	GLint GetUniform(int iUniform) const {
++#ifndef USE_CONSOLE
++	GLint GetUniform(int iUniform) const
++	{
+ 		return iUniform >= 0 && iUniform < iUniformCount ? pUniforms[iUniform] : -1;
+ 	}
+-	bool HaveUniform(int iUniform) const {
++	bool HaveUniform(int iUniform) const
++	{
+ 		return GetUniform(iUniform) != GLint(-1);
+ 	}
++#else
++	int GetUniform(int iUniform) const
++	{
++		return -1;
++	}
++	bool HaveUniform(int iUniform) const
++	{
++		return false;
++	}
++#endif
+ 
+ 	// Shader is composed from various slices
+ 	void AddVertexSlice(int iPos, const char *szText);
+@@ -113,10 +135,12 @@ public:
+ 	// Add default vertex code (2D - no transformation)
+ 	void AddVertexDefaults();
+ 
++#ifndef USE_CONSOLE
+ 	// Allocate a texture coordinate, returning its ID to be used with glMultiTexCoord.
+ 	// The texture coordinate will be visible to both shaders under the given name.
+ 	// Note that in contrast to uniforms, these will not disappear if not used!
+ 	GLenum AddTexCoord(const char *szName);
++#endif
+ 
+ 	// Assemble and link the shader. Should be called again after new slices are added.
+ 	bool Init(const char *szWhat, const char **szUniforms);
+@@ -131,18 +155,22 @@ private:
+ 	int ParsePosition(const char *szWhat, const char **ppPos);
+ 
+ 	StdStrBuf Build(const ShaderSliceList &Slices, bool fDebug = false);
++
++#ifndef USE_CONSOLE
+ 	GLhandleARB Create(GLenum iShaderType, const char *szWhat, const char *szShader);
+ 	void DumpInfoLog(const char *szWhat, GLhandleARB hShader);
+ 	int GetObjectStatus(GLhandleARB hObj, GLenum type);
++#endif
+ 
+ public:
+ 	static bool IsLogging();
+ };
+ 
++#ifndef USE_CONSOLE
+ class C4ShaderCall
+ {
+ public:
+-	C4ShaderCall(const C4Shader *pShader) 
++	C4ShaderCall(const C4Shader *pShader)
+ 		: fStarted(false), pShader(pShader), iUnits(0)
+ 	{ }
+ 	~C4ShaderCall() { Finish(); }
+@@ -210,5 +238,6 @@ public:
+ 	void Start();
+ 	void Finish();
+ };
++#endif
+ 
+ #endif // INC_C4Shader
+diff --git a/src/landscape/fow/C4FoW.cpp b/src/landscape/fow/C4FoW.cpp
+index 1dcddb6..be9019b 100644
+--- a/src/landscape/fow/C4FoW.cpp
++++ b/src/landscape/fow/C4FoW.cpp
+@@ -26,6 +26,7 @@ C4FoW::C4FoW()
+ 
+ C4Shader *C4FoW::GetFramebufShader()
+ {
++#ifndef USE_CONSOLE
+ 	// Not created yet?
+ 	if (!FramebufShader.Initialised())
+ 	{
+@@ -46,10 +47,14 @@ C4Shader *C4FoW::GetFramebufShader()
+ 
+ 	}
+ 	return &FramebufShader;
++#else
++	return NULL;
++#endif
+ }
+ 
+ void C4FoW::Add(C4Object *pObj)
+ {
++#ifndef USE_CONSOLE
+ 	// No view range? Probably want to remove instead
+ 	if(!pObj->lightRange && !pObj->lightFadeoutRange)
+ 	{
+@@ -77,10 +82,12 @@ void C4FoW::Add(C4Object *pObj)
+ 		pLight->pNext = pLights;
+ 		pLights = pLight;
+ 	}
++#endif
+ }
+ 
+ void C4FoW::Remove(C4Object *pObj)
+ {
++#ifndef USE_CONSOLE
+ 	// Look for matching light
+ 	C4FoWLight *pPrev = NULL, *pLight;
+ 	for (pLight = pLights; pLight; pPrev = pLight, pLight = pLight->getNext())
+@@ -92,24 +99,31 @@ void C4FoW::Remove(C4Object *pObj)
+ 	// Remove
+ 	(pPrev ? pPrev->pNext : pLights) = pLight->getNext();
+ 	delete pLight;
++#endif
+ }
+ 
+ void C4FoW::Invalidate(C4Rect r)
+ {
++#ifndef USE_CONSOLE
+ 	for (C4FoWLight *pLight = pLights; pLight; pLight = pLight->getNext())
+ 		pLight->Invalidate(r);
++#endif
+ }
+ 
+ void C4FoW::Update(C4Rect r, C4Player *pPlr)
+ {
++#ifndef USE_CONSOLE
+ 	for (C4FoWLight *pLight = pLights; pLight; pLight = pLight->getNext())
+ 		if (pLight->IsVisibleForPlayer(pPlr))
+ 			pLight->Update(r);
++#endif
+ }
+ 
+ void C4FoW::Render(C4FoWRegion *pRegion, const C4TargetFacet *pOnScreen, C4Player *pPlr)
+ {
++#ifndef USE_CONSOLE
+ 	for (C4FoWLight *pLight = pLights; pLight; pLight = pLight->getNext())
+ 		if (pLight->IsVisibleForPlayer(pPlr))
+ 			pLight->Render(pRegion, pOnScreen);
++#endif
+ }
+diff --git a/src/landscape/fow/C4FoW.h b/src/landscape/fow/C4FoW.h
+index 4006f6e..59f110b 100644
+--- a/src/landscape/fow/C4FoW.h
++++ b/src/landscape/fow/C4FoW.h
+@@ -99,8 +99,10 @@ public:
+ 	void Render(class C4FoWRegion *pRegion, const C4TargetFacet *pOnScreen, C4Player *pPlr);
+ 
+ private:
++#ifndef USE_CONSOLE
+ 	// Shader for updating the frame buffer
+ 	C4Shader FramebufShader;
++#endif
+ };
+ 
+ #endif // C4FOW_H
+diff --git a/src/landscape/fow/C4FoWAmbient.cpp b/src/landscape/fow/C4FoWAmbient.cpp
+index 6e0ec09..e257570 100644
+--- a/src/landscape/fow/C4FoWAmbient.cpp
++++ b/src/landscape/fow/C4FoWAmbient.cpp
+@@ -84,7 +84,10 @@ struct LightMapZoom {
+ } // anonymous namespace
+ 
+ C4FoWAmbient::C4FoWAmbient() :
+-	Tex(0), Resolution(0.), Radius(0.), FullCoverage(0.),
++#ifndef USE_CONSOLE
++	Tex(0),
++#endif
++	Resolution(0.), Radius(0.), FullCoverage(0.),
+ 	SizeX(0), LandscapeX(0), SizeY(0), LandscapeY(0),
+ 	Brightness(1.)
+ {
+@@ -97,8 +100,10 @@ C4FoWAmbient::~C4FoWAmbient()
+ 
+ void C4FoWAmbient::Clear()
+ {
++#ifndef USE_CONSOLE
+ 	if(Tex != 0) glDeleteTextures(1, &Tex);
+ 	Tex = 0;
++#endif
+ 	Resolution = Radius = FullCoverage = 0.;
+ 	SizeX = SizeY = 0;
+ 	LandscapeX = LandscapeY = 0;
+@@ -112,7 +117,7 @@ void C4FoWAmbient::CreateFromLandscape(const C4Landscape& landscape, double reso
+ 	assert(full_coverage > 0 && full_coverage <= 1.);
+ 
+ 	// Clear old map
+-	if(Tex != 0) Clear();
++	Clear();
+ 
+ 	Resolution = resolution;
+ 	Radius = radius;
+@@ -124,6 +129,7 @@ void C4FoWAmbient::CreateFromLandscape(const C4Landscape& landscape, double reso
+ 	SizeX = Min<unsigned int>(static_cast<unsigned int>(ceil(LandscapeX / resolution)), pDraw->MaxTexSize);
+ 	SizeY = Min<unsigned int>(static_cast<unsigned int>(ceil(LandscapeY / resolution)), pDraw->MaxTexSize);
+ 
++#ifndef USE_CONSOLE
+ 	glGenTextures(1, &Tex);
+ 	glBindTexture(GL_TEXTURE_2D, Tex);
+ 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+@@ -136,10 +142,12 @@ void C4FoWAmbient::CreateFromLandscape(const C4Landscape& landscape, double reso
+ 	UpdateFromLandscape(landscape, C4Rect(0, 0, landscape.Width, landscape.Height));
+ 	uint32_t dt = C4TimeMilliseconds::Now() - begin;
+ 	LogF("Created %ux%u ambient map in %g secs", SizeX, SizeY, dt / 1000.);
++#endif
+ }
+ 
+ void C4FoWAmbient::UpdateFromLandscape(const C4Landscape& landscape, const C4Rect& update)
+ {
++#ifndef USE_CONSOLE
+ 	// Nothing to do?
+ 	if(update.Wdt == 0 || update.Hgt == 0) return;
+ 
+@@ -191,6 +199,7 @@ void C4FoWAmbient::UpdateFromLandscape(const C4Landscape& landscape, const C4Rec
+ 	glBindTexture(GL_TEXTURE_2D, Tex);
+ 	glTexSubImage2D(GL_TEXTURE_2D, 0, left, top, (right - left), (bottom - top), GL_RED, GL_FLOAT, ambient);
+ 	delete[] ambient;
++#endif
+ }
+ 
+ void C4FoWAmbient::GetFragTransform(const FLOAT_RECT& vpRect, const C4Rect& clipRect, const C4Rect& outRect, float ambientTransform[6]) const
+diff --git a/src/landscape/fow/C4FoWAmbient.h b/src/landscape/fow/C4FoWAmbient.h
+index ded91b9..d8ce833 100644
+--- a/src/landscape/fow/C4FoWAmbient.h
++++ b/src/landscape/fow/C4FoWAmbient.h
+@@ -28,7 +28,9 @@ public:
+ 	C4FoWAmbient();
+ 	~C4FoWAmbient();
+ 
++#ifndef USE_CONSOLE
+ 	GLuint Tex;
++#endif
+ 
+ private:
+ 	// Parameters
+diff --git a/src/landscape/fow/C4FoWBeam.cpp b/src/landscape/fow/C4FoWBeam.cpp
+index a5736a0..e515d0c 100644
+--- a/src/landscape/fow/C4FoWBeam.cpp
++++ b/src/landscape/fow/C4FoWBeam.cpp
+@@ -14,6 +14,8 @@
+  */
+ 
+ #include "C4Include.h"
++
++#ifndef USE_CONSOLE
+ #include "C4FoWBeam.h"
+ 
+ // Maximum error allowed while merging beams.
+@@ -48,7 +50,7 @@ bool C4FoWBeam::MergeRight(int32_t x, int32_t y)
+ 
+ 	// Calculate error. Note that simply summing up errors is not correct,
+ 	// strictly speaking (as new and old error surfaces might overlap). Still,
+-	// this is quite elaborate already, no need to make it even more 
++	// this is quite elaborate already, no need to make it even more
+ 	int32_t iErr = getDoubleTriangleSurface(
+ 		getLeftEndX(), iLeftEndY,
+ 		getRightEndX(), iRightEndY,
+@@ -193,3 +195,5 @@ void C4FoWBeam::CompileFunc(StdCompiler *pComp)
+ 	pComp->Value(mkNamingAdapt(iError, "iError"));
+ 	pComp->Value(mkNamingAdapt(fDirty, "fDirty"));
+ }
++
++#endif
+diff --git a/src/landscape/fow/C4FoWBeam.h b/src/landscape/fow/C4FoWBeam.h
+index 7297fa9..531e7a4 100644
+--- a/src/landscape/fow/C4FoWBeam.h
++++ b/src/landscape/fow/C4FoWBeam.h
+@@ -16,6 +16,7 @@
+ #ifndef C4FOWBEAM_H
+ #define C4FOWBEAM_H
+ 
++#ifndef USE_CONSOLE
+ #include "StdBuf.h"
+ 
+ /** This class represents one beam. A beam is a triangle spanned by two rays: one going from the origin to the
+@@ -133,4 +134,6 @@ public:
+ 
+ };
+ 
+-#endif // C4FOWBEAM
+\ No newline at end of file
++#endif
++
++#endif // C4FOWBEAM
+diff --git a/src/landscape/fow/C4FoWDrawStrategy.cpp b/src/landscape/fow/C4FoWDrawStrategy.cpp
+index fc1fbd4..cc55c09 100644
+--- a/src/landscape/fow/C4FoWDrawStrategy.cpp
++++ b/src/landscape/fow/C4FoWDrawStrategy.cpp
+@@ -14,6 +14,9 @@
+  */
+ 
+ #include "C4Include.h"
++
++#ifndef USE_CONSOLE
++
+ #include "C4FoWDrawStrategy.h"
+ #include "C4FoWLight.h"
+ #include "C4FoWRegion.h"
+@@ -151,3 +154,4 @@ void C4FoWDrawWireframeStrategy::DrawLightVertex(float x, float y)
+ 	DrawVertex(x, y);
+ }
+ 
++#endif
+diff --git a/src/landscape/fow/C4FoWDrawStrategy.h b/src/landscape/fow/C4FoWDrawStrategy.h
+index feb0512..4743c11 100644
+--- a/src/landscape/fow/C4FoWDrawStrategy.h
++++ b/src/landscape/fow/C4FoWDrawStrategy.h
+@@ -16,6 +16,8 @@
+ #ifndef C4FOWDRAWSTRATEGY_H
+ #define C4FOWDRAWSTRATEGY_H
+ 
++#ifndef USE_CONSOLE
++
+ #include "C4DrawGL.h"
+ #include <list>
+ 
+@@ -122,3 +124,5 @@ private:
+ };
+ 
+ #endif
++
++#endif
+diff --git a/src/landscape/fow/C4FoWLight.cpp b/src/landscape/fow/C4FoWLight.cpp
+index 8becfea..4e35db9 100644
+--- a/src/landscape/fow/C4FoWLight.cpp
++++ b/src/landscape/fow/C4FoWLight.cpp
+@@ -14,6 +14,9 @@
+  */
+ 
+ #include "C4Include.h"
++
++#ifndef USE_CONSOLE
++
+ #include "C4FoWLight.h"
+ #include "C4FoWLightSection.h"
+ #include "C4FoWBeamTriangle.h"
+@@ -344,3 +347,5 @@ bool C4FoWLight::IsVisibleForPlayer(C4Player *player) const
+ 	if (!pObj || !player) return true;
+ 	return !::Hostile(pObj->Owner,player->Number);
+ }
++
++#endif
+diff --git a/src/landscape/fow/C4FoWLight.h b/src/landscape/fow/C4FoWLight.h
+index 13ad58e..52f0457 100644
+--- a/src/landscape/fow/C4FoWLight.h
++++ b/src/landscape/fow/C4FoWLight.h
+@@ -15,6 +15,8 @@
+ #ifndef C4FOWLIGHT_H
+ #define C4FOWLIGHT_H
+ 
++#ifndef USE_CONSOLE
++
+ #include "C4Object.h"
+ #include "C4Surface.h"
+ #include "C4FacetEx.h"
+@@ -95,4 +97,6 @@ private:
+ 
+ };
+ 
+-#endif
+\ No newline at end of file
++#endif
++
++#endif
+diff --git a/src/landscape/fow/C4FoWLightSection.cpp b/src/landscape/fow/C4FoWLightSection.cpp
+index 0ef4d77..30009a6 100644
+--- a/src/landscape/fow/C4FoWLightSection.cpp
++++ b/src/landscape/fow/C4FoWLightSection.cpp
+@@ -14,6 +14,9 @@
+  */
+ 
+ #include "C4Include.h"
++
++#ifndef USE_CONSOLE
++
+ #include "C4FoWLightSection.h"
+ #include "C4FoWBeamTriangle.h"
+ #include "C4FoWBeam.h"
+@@ -856,3 +859,5 @@ void C4FoWLightSection::CompileFunc(StdCompiler *pComp)
+ 		}
+ 	}
+ }
++
++#endif
+diff --git a/src/landscape/fow/C4FoWLightSection.h b/src/landscape/fow/C4FoWLightSection.h
+index cde356a..edecd34 100644
+--- a/src/landscape/fow/C4FoWLightSection.h
++++ b/src/landscape/fow/C4FoWLightSection.h
+@@ -16,6 +16,8 @@
+ #ifndef C4FOWLIGHTSECTION_H
+ #define C4FOWLIGHTSECTION_H
+ 
++#ifndef USE_CONSOLE
++
+ #include "C4Rect.h"
+ #include <list>
+ 
+@@ -134,4 +136,6 @@ public:
+ 
+ };
+ 
+-#endif
+\ No newline at end of file
++#endif
++
++#endif
+diff --git a/src/landscape/fow/C4FoWRegion.cpp b/src/landscape/fow/C4FoWRegion.cpp
+index 5e107a7..1df661e 100644
+--- a/src/landscape/fow/C4FoWRegion.cpp
++++ b/src/landscape/fow/C4FoWRegion.cpp
+@@ -16,6 +16,7 @@
+ #include "C4Include.h"
+ #include "C4FoWRegion.h"
+ 
++#ifndef USE_CONSOLE
+ bool glCheck() {
+ 	if (int err = glGetError()) {
+ 		LogF("GL error %d: %s", err, gluErrorString(err));
+@@ -23,6 +24,7 @@ bool glCheck() {
+ 	}
+ 	return true;
+ }
++#endif
+ 
+ C4FoWRegion::~C4FoWRegion()
+ {
+@@ -31,7 +33,7 @@ C4FoWRegion::~C4FoWRegion()
+ 
+ bool C4FoWRegion::BindFramebuf()
+ {
+-
++#ifndef USE_CONSOLE
+ 	// Flip texture
+ 	C4Surface *pSfc = pSurface;
+ 	pSurface = pBackSurface;
+@@ -79,6 +81,7 @@ bool C4FoWRegion::BindFramebuf()
+ 		glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
+ 		return false;
+ 	}
++#endif
+ 
+ 	// Worked!
+ 	return true;
+@@ -86,11 +89,13 @@ bool C4FoWRegion::BindFramebuf()
+ 
+ void C4FoWRegion::Clear()
+ {
++#ifndef USE_CONSOLE
+ 	if (hFrameBufDraw) {
+ 		glDeleteFramebuffersEXT(1, &hFrameBufDraw);
+ 		glDeleteFramebuffersEXT(1, &hFrameBufRead);
+ 	}
+ 	hFrameBufDraw = hFrameBufRead = 0;
++#endif
+ 	delete pSurface; pSurface = NULL;
+ 	delete pBackSurface; pBackSurface = NULL;
+ }
+@@ -104,6 +109,7 @@ void C4FoWRegion::Update(C4Rect r, const FLOAT_RECT& vp)
+ 
+ void C4FoWRegion::Render(const C4TargetFacet *pOnScreen)
+ {
++#ifndef USE_CONSOLE
+ 	// Update FoW at interesting location
+ 	pFoW->Update(Region, pPlayer);
+ 
+@@ -199,7 +205,7 @@ void C4FoWRegion::Render(const C4TargetFacet *pOnScreen)
+ 	glCheck();
+ 
+ 	OldRegion = Region;
+-
++#endif
+ }
+ 
+ void C4FoWRegion::GetFragTransform(const C4Rect& clipRect, const C4Rect& outRect, float lightTransform[6]) const
+@@ -229,7 +235,9 @@ void C4FoWRegion::GetFragTransform(const C4Rect& clipRect, const C4Rect& outRect
+ C4FoWRegion::C4FoWRegion(C4FoW *pFoW, C4Player *pPlayer)
+ 	: pFoW(pFoW)
+ 	, pPlayer(pPlayer)
++#ifndef USE_CONSOLE
+ 	, hFrameBufDraw(0), hFrameBufRead(0)
++#endif
+ 	, Region(0,0,0,0), OldRegion(0,0,0,0)
+ 	, pSurface(NULL), pBackSurface(NULL)
+ {
+diff --git a/src/landscape/fow/C4FoWRegion.h b/src/landscape/fow/C4FoWRegion.h
+index 20e33a6..a264e4b 100644
+--- a/src/landscape/fow/C4FoWRegion.h
++++ b/src/landscape/fow/C4FoWRegion.h
+@@ -31,10 +31,13 @@ public:
+ private:
+ 	C4FoW *pFoW;
+ 	C4Player *pPlayer;
++	C4Surface *pSurface, *pBackSurface;
+ 	C4Rect Region, OldRegion;
+ 	FLOAT_RECT ViewportRegion; // Region covered by visible viewport
+-	C4Surface *pSurface, *pBackSurface;
++
++#ifndef USE_CONSOLE
+ 	GLuint hFrameBufDraw, hFrameBufRead;
++#endif
+ 
+ public:
+ 	const C4FoW* getFoW() const { return pFoW; }
+diff --git a/src/lib/StdMesh.cpp b/src/lib/StdMesh.cpp
+index 6c1905d..9930097 100644
+--- a/src/lib/StdMesh.cpp
++++ b/src/lib/StdMesh.cpp
+@@ -534,7 +534,11 @@ StdSubMesh::StdSubMesh() :
+ {
+ }
+ 
+-StdMesh::StdMesh() : Skeleton(new StdMeshSkeleton), vbo(0)
++StdMesh::StdMesh() :
++	Skeleton(new StdMeshSkeleton)
++#ifndef USE_CONSOLE
++	, vbo(0)
++#endif
+ {
+ 	BoundingBox.x1 = BoundingBox.y1 = BoundingBox.z1 = 0.0f;
+ 	BoundingBox.x2 = BoundingBox.y2 = BoundingBox.z2 = 0.0f;
+@@ -543,17 +547,22 @@ StdMesh::StdMesh() : Skeleton(new StdMeshSkeleton), vbo(0)
+ 
+ StdMesh::~StdMesh()
+ {
++#ifndef USE_CONSOLE
+ 	if (vbo)
+ 		glDeleteBuffers(1, &vbo);
++#endif
+ }
+ 
+ void StdMesh::PostInit()
+ {
++#ifndef USE_CONSOLE
+ 	// Order submeshes so that opaque submeshes come before non-opaque ones
+ 	std::sort(SubMeshes.begin(), SubMeshes.end(), StdMeshSubMeshVisibilityCmpPred());
+ 	UpdateVBO();
++#endif
+ }
+ 
++#ifndef USE_CONSOLE
+ void StdMesh::UpdateVBO()
+ {
+ 	// We're only uploading vertices once, so there shouldn't be a VBO so far
+@@ -603,18 +612,21 @@ void StdMesh::UpdateVBO()
+ 	// Unbind the buffer so following rendering calls do not use it
+ 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+ }
+-
++#endif
+ 
+ StdSubMeshInstance::StdSubMeshInstance(StdMeshInstance& instance, const StdSubMesh& submesh, float completion):
+ 	base(&submesh), Material(NULL), CurrentFaceOrdering(FO_Fixed)
+ {
++#ifndef USE_CONSOLE
+ 	LoadFacesForCompletion(instance, submesh, completion);
++#endif
+ 
+ 	SetMaterial(submesh.GetMaterial());
+ }
+ 
+ void StdSubMeshInstance::LoadFacesForCompletion(StdMeshInstance& instance, const StdSubMesh& submesh, float completion)
+ {
++#ifndef USE_CONSOLE
+ 	// First: Copy all faces
+ 	Faces.resize(submesh.GetNumFaces());
+ 	for (unsigned int i = 0; i < submesh.GetNumFaces(); ++i)
+@@ -637,12 +649,14 @@ void StdSubMeshInstance::LoadFacesForCompletion(StdMeshInstance& instance, const
+ 		assert(submesh.GetNumFaces() >= 1);
+ 		Faces.resize(Clamp<unsigned int>(static_cast<unsigned int>(completion * submesh.GetNumFaces() + 0.5), 1, submesh.GetNumFaces()));
+ 	}
++#endif
+ }
+ 
+ void StdSubMeshInstance::SetMaterial(const StdMeshMaterial& material)
+ {
+ 	Material = &material;
+ 
++#ifndef USE_CONSOLE
+ 	// Setup initial texture animation data
+ 	assert(Material->BestTechniqueIndex >= 0);
+ 	const StdMeshMaterialTechnique& technique = Material->Techniques[Material->BestTechniqueIndex];
+@@ -664,10 +678,12 @@ void StdSubMeshInstance::SetMaterial(const StdMeshMaterial& material)
+ 	}
+ 
+ 	// TODO: Reset face ordering
++#endif
+ }
+ 
+ void StdSubMeshInstance::SetFaceOrdering(const StdSubMesh& submesh, FaceOrdering ordering)
+ {
++#ifndef USE_CONSOLE
+ 	if (CurrentFaceOrdering != ordering)
+ 	{
+ 		CurrentFaceOrdering = ordering;
+@@ -677,10 +693,12 @@ void StdSubMeshInstance::SetFaceOrdering(const StdSubMesh& submesh, FaceOrdering
+ 				Faces[i] = submesh.GetFace(i);
+ 		}
+ 	}
++#endif
+ }
+ 
+ void StdSubMeshInstance::SetFaceOrderingForClrModulation(const StdSubMesh& submesh, uint32_t clrmod)
+ {
++#ifndef USE_CONSOLE
+ 	bool opaque = Material->IsOpaque();
+ 
+ 	if(!opaque)
+@@ -689,6 +707,7 @@ void StdSubMeshInstance::SetFaceOrderingForClrModulation(const StdSubMesh& subme
+ 		SetFaceOrdering(submesh, FO_NearestToFarthest);
+ 	else
+ 		SetFaceOrdering(submesh, FO_Fixed);
++#endif
+ }
+ 
+ void StdSubMeshInstance::CompileFunc(StdCompiler* pComp)
+@@ -1050,6 +1069,7 @@ StdMeshInstance::~StdMeshInstance()
+ 
+ void StdMeshInstance::SetFaceOrdering(FaceOrdering ordering)
+ {
++#ifndef USE_CONSOLE
+ 	for (unsigned int i = 0; i < Mesh->GetNumSubMeshes(); ++i)
+ 		SubMeshInstances[i]->SetFaceOrdering(Mesh->GetSubMesh(i), ordering);
+ 
+@@ -1058,10 +1078,12 @@ void StdMeshInstance::SetFaceOrdering(FaceOrdering ordering)
+ 	for (AttachedMeshIter iter = AttachChildren.begin(); iter != AttachChildren.end(); ++iter)
+ 		if ((*iter)->OwnChild)
+ 			(*iter)->Child->SetFaceOrdering(ordering);
++#endif
+ }
+ 
+ void StdMeshInstance::SetFaceOrderingForClrModulation(uint32_t clrmod)
+ {
++#ifndef USE_CONSOLE
+ 	for (unsigned int i = 0; i < Mesh->GetNumSubMeshes(); ++i)
+ 		SubMeshInstances[i]->SetFaceOrderingForClrModulation(Mesh->GetSubMesh(i), clrmod);
+ 
+@@ -1070,16 +1092,19 @@ void StdMeshInstance::SetFaceOrderingForClrModulation(uint32_t clrmod)
+ 	for (AttachedMeshIter iter = AttachChildren.begin(); iter != AttachChildren.end(); ++iter)
+ 		if ((*iter)->OwnChild)
+ 			(*iter)->Child->SetFaceOrderingForClrModulation(clrmod);
++#endif
+ }
+ 
+ void StdMeshInstance::SetCompletion(float completion)
+ {
+ 	Completion = completion;
+ 
++#ifndef USE_CONSOLE
+ 	// TODO: Load all submesh faces and then determine the ones to use from the
+ 	// full pool.
+ 	for(unsigned int i = 0; i < Mesh->GetNumSubMeshes(); ++i)
+ 		SubMeshInstances[i]->LoadFacesForCompletion(*this, Mesh->GetSubMesh(i), completion);
++#endif
+ }
+ 
+ StdMeshInstance::AnimationNode* StdMeshInstance::PlayAnimation(const StdStrBuf& animation_name, int slot, AnimationNode* sibling, ValueProvider* position, ValueProvider* weight)
+@@ -1210,6 +1235,7 @@ void StdMeshInstance::ExecuteAnimation(float dt)
+ 		if(!ExecuteAnimationNode(AnimationStack[i-1]))
+ 			StopAnimation(AnimationStack[i-1]);
+ 
++#ifndef USE_CONSOLE
+ 	// Update animated textures
+ 	for (unsigned int i = 0; i < SubMeshInstances.size(); ++i)
+ 	{
+@@ -1240,6 +1266,7 @@ void StdMeshInstance::ExecuteAnimation(float dt)
+ 			}
+ 		}
+ 	}
++#endif
+ 
+ 	// Update animation for attached meshes
+ 	for (AttachedMeshList::iterator iter = AttachChildren.begin(); iter != AttachChildren.end(); ++iter)
+@@ -1321,7 +1348,9 @@ void StdMeshInstance::SetMaterial(size_t i, const StdMeshMaterial& material)
+ {
+ 	assert(i < SubMeshInstances.size());
+ 	SubMeshInstances[i]->SetMaterial(material);
++#ifndef USE_CONSOLE
+ 	std::stable_sort(SubMeshInstancesOrdered.begin(), SubMeshInstancesOrdered.end(), StdMeshSubMeshInstanceVisibilityCmpPred());
++#endif
+ }
+ 
+ const StdMeshMatrix& StdMeshInstance::GetBoneTransform(size_t i) const
+@@ -1433,6 +1462,7 @@ bool StdMeshInstance::UpdateBoneTransforms()
+ 
+ void StdMeshInstance::ReorderFaces(StdMeshMatrix* global_trans)
+ {
++#ifndef USE_CONSOLE
+ 	for (unsigned int i = 0; i < SubMeshInstances.size(); ++i)
+ 	{
+ 		StdSubMeshInstance& inst = *SubMeshInstances[i];
+@@ -1450,6 +1480,7 @@ void StdMeshInstance::ReorderFaces(StdMeshMatrix* global_trans)
+ 	}
+ 
+ 	// TODO: Also reorder submeshes, attached meshes and include AttachTransformation for attached meshes...
++#endif
+ }
+ 
+ void StdMeshInstance::CompileFunc(StdCompiler* pComp, AttachedMesh::DenumeratorFactoryFunc Factory)
+diff --git a/src/lib/StdMesh.h b/src/lib/StdMesh.h
+index 7007a74..a5ae5f3 100644
+--- a/src/lib/StdMesh.h
++++ b/src/lib/StdMesh.h
+@@ -197,11 +197,15 @@ public:
+ 
+ 	void PostInit();
+ 
+-	const GLuint GetVBO() const { return vbo; }
++#ifndef USE_CONSOLE
++	GLuint GetVBO() const { return vbo; }
++#endif
+ 
+ private:
++#ifndef USE_CONSOLE
+ 	GLuint vbo;
+ 	void UpdateVBO();
++#endif
+ 
+ 	StdMesh(const StdMesh& other); // non-copyable
+ 	StdMesh& operator=(const StdMesh& other); // non-assignable
+diff --git a/src/lib/StdMeshMaterial.cpp b/src/lib/StdMeshMaterial.cpp
+index cb601a5..f1f65ce 100644
+--- a/src/lib/StdMeshMaterial.cpp
++++ b/src/lib/StdMeshMaterial.cpp
+@@ -849,7 +849,9 @@ bool StdMeshMaterialProgram::CompileShader(StdMeshMaterialLoader& loader, C4Shad
+ 	shader.AddVertexSlices(VertexShader->GetFilename(), VertexShader->GetCode(), VertexShader->GetFilename());
+ 	shader.AddFragmentSlices(FragmentShader->GetFilename(), FragmentShader->GetCode(), FragmentShader->GetFilename());
+ 	// Construct the list of uniforms
+-	std::vector<const char*> uniformNames(C4SSU_Count + ParameterNames.size() + 1);
++	std::vector<const char*> uniformNames;
++#ifndef USE_CONSOLE
++	uniformNames.resize(C4SSU_Count + ParameterNames.size() + 1);
+ 	uniformNames[C4SSU_ClrMod] = "clrMod";
+ 	uniformNames[C4SSU_BaseTex] = "baseTex"; // unused
+ 	uniformNames[C4SSU_OverlayTex] = "overlayTex"; // unused
+@@ -864,25 +866,31 @@ bool StdMeshMaterialProgram::CompileShader(StdMeshMaterialLoader& loader, C4Shad
+ 	for (unsigned int i = 0; i < ParameterNames.size(); ++i)
+ 		uniformNames[C4SSU_Count + i] = ParameterNames[i].getData();
+ 	uniformNames[C4SSU_Count + ParameterNames.size()] = NULL;
++#endif
+ 	// Compile the shader
+ 	StdCopyStrBuf name(Name);
++#ifndef USE_CONSOLE
+ 	if (ssc != 0) name.Append(":");
+ 	if (ssc & C4SSC_LIGHT) name.Append("Light");
+ 	if (ssc & C4SSC_MOD2) name.Append("Mod2");
++#endif
+ 	return shader.Init(name.getData(), &uniformNames[0]);
+ }
+ 
+ bool StdMeshMaterialProgram::Compile(StdMeshMaterialLoader& loader)
+ {
++#ifndef USE_CONSOLE
+ 	if (!CompileShader(loader, Shader, 0)) return false;
+ 	if (!CompileShader(loader, ShaderMod2, C4SSC_MOD2)) return false;
+ 	if (!CompileShader(loader, ShaderLight, C4SSC_LIGHT)) return false;
+ 	if (!CompileShader(loader, ShaderLightMod2, C4SSC_LIGHT | C4SSC_MOD2)) return false;
++#endif
+ 	return true;
+ }
+ 
+ const C4Shader* StdMeshMaterialProgram::GetShader(int ssc) const
+ {
++#ifndef USE_CONSOLE
+ 	const C4Shader* shaders[4] = {
+ 		&Shader,
+ 		&ShaderMod2,
+@@ -896,13 +904,20 @@ const C4Shader* StdMeshMaterialProgram::GetShader(int ssc) const
+ 
+ 	assert(index < 4);
+ 	return shaders[index];
++#else
++	return NULL;
++#endif
+ }
+ 
+ int StdMeshMaterialProgram::GetParameterIndex(const char* name) const
+ {
++#ifndef USE_CONSOLE
+ 	std::vector<StdCopyStrBuf>::const_iterator iter = std::find(ParameterNames.begin(), ParameterNames.end(), name);
+ 	if(iter == ParameterNames.end()) return -1;
+ 	return C4SSU_Count + std::distance(ParameterNames.begin(), iter);
++#else
++	return -1;
++#endif
+ }
+ 
+ double StdMeshMaterialTextureUnit::Transformation::GetWaveXForm(double t) const
+@@ -1515,12 +1530,14 @@ void StdMeshMatManager::Parse(const char* mat_script, const char* filename, StdM
+ 
+ 			Materials[material_name] = mat;
+ 
++#ifndef USE_CONSOLE
+ 			// To Gfxspecific setup of the material; choose working techniques
+ 			if (!pDraw->PrepareMaterial(*this, loader, Materials[material_name]))
+ 			{
+ 				Materials.erase(material_name);
+ 				ctx.Error(StdCopyStrBuf("No working technique for material '") + material_name + "'");
+ 			}
++#endif
+ 		}
+ 		else if (token_name == "vertex_program")
+ 		{
+diff --git a/src/object/C4Def.cpp b/src/object/C4Def.cpp
+index 5d8442e..81a0e36 100644
+--- a/src/object/C4Def.cpp
++++ b/src/object/C4Def.cpp
+@@ -59,6 +59,7 @@ public:
+ 
+ 	virtual void AddShaderSlices(C4Shader& shader, int ssc)
+ 	{
++#ifndef USE_CONSOLE
+ 		// Add mesh-independent slices
+ 		shader.AddFragmentSlice(-1, "#define OPENCLONK");
+ 		shader.AddVertexSlice(-1, "#define OPENCLONK");
+@@ -80,6 +81,7 @@ public:
+ 
+ 		if (ssc & C4SSC_BASE) shader.LoadSlices(&::GraphicsResource.Files, "SpriteTextureShader.glsl");
+ 		if (ssc & C4SSC_OVERLAY) shader.LoadSlices(&::GraphicsResource.Files, "SpriteOverlayShader.glsl");
++#endif
+ 	}
+ 
+ private:
+-- 
+2.1.4
+

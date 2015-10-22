@@ -1,0 +1,69 @@
+Updated for openclonk-6.0, based on this patch:
+  From: Julian Ospald <hasufell@gentoo.org>
+  Date: Thu Feb  6 19:58:45 UTC 2014
+  Subject: make paths modifiable
+
+diff -Naur openclonk-release-6.0-src.orig/CMakeLists.txt openclonk-release-6.0-src/CMakeLists.txt
+--- openclonk-release-6.0-src.orig/CMakeLists.txt	2015-03-12 21:21:51.000000000 +0000
++++ openclonk-release-6.0-src/CMakeLists.txt	2015-04-25 08:07:16.000000000 +0000
+@@ -42,6 +42,16 @@
+ 	set(${_var} "${_string}" PARENT_SCOPE)
+ endfunction()
+ 
++
++############################################################################
++# User selectable paths
++############################################################################
++set(INSTALL_BINDIR "bin/" CACHE PATH "Binary install destination")
++set(INSTALL_GAMES_BINDIR "games/bin" CACHE PATH "Games binary install destination")
++set(INSTALL_DATAROOTDIR "share/" CACHE PATH "Data root install destination")
++set(INSTALL_DATADIR "${INSTALL_DATAROOTDIR}" CACHE PATH "Data install destination")
++
++
+ ############################################################################
+ # User selectable options
+ ############################################################################
+@@ -1212,10 +1222,16 @@
+ # Assemble compiler flags
+ ############################################################################
+ if(UNIX)
++	if(NOT IS_ABSOLUTE "${INSTALL_DATADIR}")
++		set(ABSOLUTE_INSTALL_DATADIR "${CMAKE_INSTALL_PREFIX}/${INSTALL_DATADIR}")
++	else()
++		set(ABSOLUTE_INSTALL_DATADIR "${INSTALL_DATADIR}")
++	endif()
++
+ 	# Don't put this into CMAKE_CXX_FLAGS because otherwise it is cached,
+ 	# and when the path is changed both the old and new definition appears
+ 	# in the list of flags.
+-	add_definitions("-DOC_SYSTEM_DATA_DIR=\"${CMAKE_INSTALL_PREFIX}/share/games/openclonk\"")
++	add_definitions("-DOC_SYSTEM_DATA_DIR=\"${ABSOLUTE_INSTALL_DATADIR}/openclonk\"")
+ endif()
+ if(OC_CXX_FLAGS)
+ 	list(REMOVE_DUPLICATES OC_CXX_FLAGS)
+@@ -1537,7 +1553,7 @@
+ 			DEPENDS "${native_c4group}"
+ 			VERBATIM
+ 		)
+-		install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${group} DESTINATION share/games/openclonk)
++		install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${group} DESTINATION "${INSTALL_DATADIR}/openclonk")
+ 	endif()
+ endforeach()
+ 
+@@ -1546,13 +1562,13 @@
+ 	add_dependencies(data groups)
+ 	
+ 	# Install new files
+-	install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/openclonk.desktop DESTINATION share/applications)
++	install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/openclonk.desktop DESTINATION "${INSTALL_DATAROOTDIR}/applications")
+ 	# Update the MIME cache -- this makes the clonk:// protocol handler actually work
+ 	install(CODE "execute_process(COMMAND update-desktop-database)")
+ 
+ 	# Install binaries
+-	install(TARGETS openclonk DESTINATION games)
+-	install(TARGETS c4group DESTINATION bin)
++	install(TARGETS openclonk DESTINATION "${INSTALL_GAMES_BINDIR}")
++	install(TARGETS c4group DESTINATION "${INSTALL_BINDIR}")
+ else()
+ 	install(TARGETS openclonk
+ 		BUNDLE DESTINATION .
