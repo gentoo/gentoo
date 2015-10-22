@@ -32,6 +32,8 @@ QA_EXECSTACK="
 	usr/lib/go/src/debug/elf/testdata/go-relocation-test-gcc482-aarch64.obj
 	usr/lib/go/src/debug/elf/testdata/gcc-amd64-openbsd-debug-with-rela.obj"
 
+	REQUIRES_EXCLUDE="/usr/lib/go/src/debug/elf/testdata/*"
+
 # The tools in /usr/lib/go should not cause the multilib-strict check to fail.
 QA_MULTILIB_PATHS="usr/lib/go/pkg/tool/.*/.*"
 
