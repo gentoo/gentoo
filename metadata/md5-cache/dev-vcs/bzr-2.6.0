@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://launchpad.net/bzr/2.6/2.6.0/+download/bzr-2.6.0.tar.gz
 _eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	distutils-r1	46506dd0dd992b3c89b0d00daabfd86c	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	l10n	714aaf78929eade946da5eaff7d2001a	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-r1	32b376cbb100a3a8083b3a0de023e117	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=0de957ac2c56594da146ebf5a13a909f
+_md5_=09530d98ef74cfe4b47e0bd625307792
