@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
-DEPEND=>=virtual/emacs-23
+DEPEND=>=app-emacs/dash-2.12.0 >=virtual/emacs-23
 DESCRIPTION=An Emacs mode for GIT
 EAPI=5
 HOMEPAGE=http://magit.github.io/
 IUSE=contrib
-KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+KEYWORDS=~amd64
 LICENSE=GPL-3+ FDL-1.2+
-RDEPEND=>=virtual/emacs-23
+RDEPEND=>=app-emacs/dash-2.12.0 >=dev-vcs/git-1.9.4 >=virtual/emacs-23
 RESTRICT=test
 SLOT=0
-SRC_URI=https://github.com/downloads/magit/magit/magit-1.2.0.tar.gz
+SRC_URI=mirror://github/magit/magit/releases/download/2.2.2/magit-2.2.2.tar.gz
 _eclasses_=elisp	484004c25306120b472b7dfdb0685c95	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=0d42f6346d57f72cd23bd0f3ecaf8020
+_md5_=2ee0be6fe12f723f1298997c48a16e51

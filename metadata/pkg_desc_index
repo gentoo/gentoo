@@ -1165,7 +1165,7 @@ app-emacs/limit 1.14.10_pre200811252332: Library about Internet Message, for IT 
 app-emacs/lookup 1.4.1: An interface to search CD-ROM books and network dictionaries
 app-emacs/lua-mode 20130419: An Emacs major mode for editing Lua scripts
 app-emacs/lyskom-elisp-client 0.48_p20131231: Elisp client for the LysKOM conference system
-app-emacs/magit 1.2.0-r1 1.2.2: An Emacs mode for GIT
+app-emacs/magit 1.2.2 2.2.2: An Emacs mode for GIT
 app-emacs/mailcrypt 3.5.9: Provides a simple interface to public key cryptography with OpenPGP
 app-emacs/markdown-mode 1.8.1-r1 2.0: Major mode for editing Markdown-formatted text files
 app-emacs/matlab 3.3.2_pre20130829: Major modes for MATLAB .m and .tlc files
@@ -8475,7 +8475,7 @@ dev-ruby/dep_selector 0.1.1: constraint based package dependency resolver
 dev-ruby/deprecated 3.0.1-r1 3.0.1-r2: A Ruby library for handling deprecated code
 dev-ruby/descendants_tracker 0.0.4: Module that adds descendant tracking to a class
 dev-ruby/diff-lcs 1.2.5 1.2.5-r1: Use the McIlroy-Hunt LCS algorithm to compute differences
-dev-ruby/dnsruby 1.56.0 1.57.0 1.58.0: A pure Ruby DNS client library
+dev-ruby/dnsruby 1.58.0 1.59.0: A pure Ruby DNS client library
 dev-ruby/docile 1.1.5: Turns any Ruby object into a DSL
 dev-ruby/domain_name 0.5.22 0.5.23 0.5.24 0.5.25: Domain Name manipulation library for Ruby
 dev-ruby/dotenv 2.0.1 2.0.2: Loads environment variables from .env into ENV
