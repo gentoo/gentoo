@@ -60,6 +60,7 @@ DEPEND="${RDEPEND}
 "
 
 DOCS="README LICENSE"
+PATCHES=( "${FILESDIR}/${P}-qt5.5-includes.patch" )
 
 src_configure() {
 	local mycmakeargs=(
