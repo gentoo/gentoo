@@ -1139,6 +1139,7 @@ app-emacs/filladapt 2.12-r1: Filladapt enhances the behavior of Emacs' fill func
 app-emacs/flashcard 2.3.3: An Emacs Lisp package for drilling on questions and answers
 app-emacs/flim 1.14.9-r2: A library to provide basic features about message representation or encoding
 app-emacs/folding 2012.0226.1623 2013.0613.1821: A folding-editor-like Emacs minor mode
+app-emacs/ghc-mod 5.4.0.0: Happy Haskell Programming
 app-emacs/gnuplot-mode 0.7.0: Gnuplot mode for Emacs
 app-emacs/gnuserv 3.12.8-r2: Attach to an already running Emacs
 app-emacs/google-c-style 20091009-r1: Provides the google C/C++ coding style
@@ -3194,6 +3195,7 @@ dev-haskell/bytestring-show 0.3.5.4-r2 0.3.5.5 0.3.5.6: Efficient conversion of 
 dev-haskell/bzlib 0.5.0.4 0.5.0.5: Compression and decompression in the bzip2 format
 dev-haskell/c2hs 0.16.3-r1 0.16.4 0.16.5 0.17.2 0.20.1 0.25.2: C->Haskell FFI tool that gives some cross-language type safety
 dev-haskell/cabal 1.14.0 1.16.0.3 1.18.1.2 1.18.1.3 1.18.1.5 1.20.0.2 1.22.4.0: A framework for packaging Haskell software
+dev-haskell/cabal-helper 0.6.1.0: Simple interface to some of Cabal's configuration state used by ghc-mod
 dev-haskell/cabal-install 1.18.0.2 1.18.0.3 1.18.0.3-r1 1.18.1.0 1.20.0.3-r2 1.22.6.0: The command-line interface for Cabal and Hackage
 dev-haskell/cairo 0.12.0 0.12.3 0.12.3.1 0.12.4-r1 0.12.5.0-r1 0.12.5.3 0.13.0.5 0.13.1.0: Binding to the Cairo library
 dev-haskell/case-insensitive 1.0.0.2-r1 1.1.0.3 1.2.0.4: Case insensitive string comparison
@@ -3270,6 +3272,8 @@ dev-haskell/deepseq-generics 0.1.1.2: GHC.Generics-based Control.DeepSeq.rnf imp
 dev-haskell/diff 0.1.3 0.3.0 0.3.1 0.3.2: O(ND) diff algorithm in haskell
 dev-haskell/digest 0.0.1.2: Various cryptographic hashes for bytestrings; CRC32 and Adler32 for now
 dev-haskell/distributive 0.3.1 0.3.2 0.4 0.4.4: Distributive functors -- Dual to Traversable
+dev-haskell/djinn-ghc 0.0.2.3: Generate Haskell code from a type. Bridge from Djinn to GHC API
+dev-haskell/djinn-lib 0.0.1.2: Generate Haskell code from a type. Library extracted from djinn package
 dev-haskell/dlist 0.5 0.5-r1 0.6.0.1 0.7.1 0.7.1.1: Difference lists
 dev-haskell/dlist-instances 0.1: Difference lists instances
 dev-haskell/dns 0.3.8 1.4.0 1.4.4 1.4.5 2.0.0: DNS library in Haskell
@@ -3295,9 +3299,10 @@ dev-haskell/esqueleto 1.3.5 1.4.1.2 2.1.2.1 2.1.2.2 2.1.3: Type-safe EDSL for SQ
 dev-haskell/exceptions 0.3.3 0.6.1 0.8.0.2: Extensible optionally-pure exceptions
 dev-haskell/executable-path 0.0.3-r1: Finding out the full path of the executable
 dev-haskell/extensible-exceptions 0.1.1.4: Extensible exceptions
-dev-haskell/extra 1.3.1 1.46.1-r1: A grab bag of modules
+dev-haskell/extra 1.3.1 1.4.2 1.46.1-r1 1.46.3: A grab bag of modules
 dev-haskell/failure 0.2.0.1 0.2.0.3: A simple type class for success/failure computations. (deprecated)
 dev-haskell/fast-logger 0.3.3 2.0.0 2.1.5 2.2.3 2.3.1 2.4.0: A fast logging system
+dev-haskell/fclabels 2.0.2.3: First class accessor labels implemented as lenses
 dev-haskell/fdo-notify 0.3.1: Desktop Notifications client
 dev-haskell/feed 0.3.9.2 0.3.9.2-r1 0.3.9.7: Interfacing with RSS (v 0.9x, 2.x, 1.0) + Atom feeds
 dev-haskell/fgl 5.4.2.4 5.4.2.4-r1 5.5.0.1 5.5.1.0: Martin Erwig's Functional Graph Library
@@ -3317,6 +3322,7 @@ dev-haskell/generic-deriving 1.6.1 1.6.2 1.6.3 1.7.0: Generic programming librar
 dev-haskell/geniplate 0.6.0.3 0.6.0.4 0.6.0.5: Use Template Haskell to generate Uniplate-like functions
 dev-haskell/geniplate-mirror 0.7.1: Use Template Haskell to generate Uniplate-like functions
 dev-haskell/ghc-paths 0.1.0.9: Knowledge of GHC's installation directories
+dev-haskell/ghc-syb-utils 0.2.3: Scrap Your Boilerplate utilities for the GHC API
 dev-haskell/gio 0.12.0 0.12.3 0.12.4-r1 0.12.5.0-r1 0.12.5.3 0.13.0.3 0.13.0.4 0.13.1.0: Binding to the GIO
 dev-haskell/glade 0.12.1 0.12.1-r1 0.12.5.0-r1 0.12.5.0-r2: Binding to the glade library
 dev-haskell/glib 0.12.0 0.12.3.1 0.12.4-r1 0.12.5.0-r1 0.12.5.4 0.13.0.6 0.13.0.7 0.13.1.0 0.13.2.1: Binding to the GLIB library for Gtk2Hs
@@ -3438,6 +3444,7 @@ dev-haskell/mmap 0.5.8 0.5.9: Memory mapped files for POSIX and Windows
 dev-haskell/mmorph 1.0.0 1.0.2 1.0.3 1.0.4: Monad morphisms
 dev-haskell/mockery 0.3.0 0.3.2: Support functions for automated testing
 dev-haskell/monad-control 0.2.0.3 0.3.1.4 0.3.2 0.3.2.1 0.3.2.2 0.3.2.3 0.3.3.0 1.0.0.1 1.0.0.4: Lift control operations, like exception catching, through monad transformers
+dev-haskell/monad-journal 0.7.1: Pure logger typeclass and monad transformer
 dev-haskell/monad-logger 0.3.1.1 0.3.3.1 0.3.4.0 0.3.6.1 0.3.11 0.3.11.1 0.3.13.1 0.3.13.2: A class of monads which can log messages
 dev-haskell/monad-loops 0.4.2 0.4.2.1 0.4.3: Monadic loops
 dev-haskell/monad-par 0.3.4.7: A library for parallel programming based on a monad
@@ -3485,6 +3492,7 @@ dev-haskell/pem 0.1.2 0.2.0 0.2.1 0.2.2: Privacy Enhanced Mail (PEM) format read
 dev-haskell/persistent 1.1.5.1 1.2.3.0 1.3.0.2 1.3.1.1 2.1.1 2.1.1.3 2.1.2 2.1.6: Type-safe, multi-backend data serialization
 dev-haskell/persistent-sqlite 1.1.5 1.2.0 1.2.1-r1 1.3.0.2 1.3.0.5 2.1.1 2.1.1.2 2.1.4 2.1.4.2: Backend for the persistent library using sqlite3
 dev-haskell/persistent-template 1.1.3.1 1.2.0.1 1.2.0.2 1.2.0.6 1.3.1.1 1.3.1.4 2.1 2.1.0.1 2.1.1 2.1.3.4: Type-safe, non-relational, multi-backend persistence
+dev-haskell/pipes 4.1.6: Compositional pipelines
 dev-haskell/pointed 4.0 4.1 4.1.1 4.2 4.2.0.2: Pointed and copointed data
 dev-haskell/polyparse 1.8 1.9 1.10 1.11: A variety of alternative parser combinator libraries
 dev-haskell/pool-conduit 0.1.2 0.1.2.3: Resource pool allocations via ResourceT. (deprecated)
