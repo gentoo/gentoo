@@ -6,11 +6,12 @@ EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
-inherit distutils-r1 eutils
+inherit distutils-r1
 
 DESCRIPTION="Python module to read VO tables into a numpy array"
 HOMEPAGE="https://trac6.assembla.com/astrolib/wiki"
-SRC_URI="http://stsdas.stsci.edu/astrolib/${P}.tar.gz
+SRC_URI="
+	http://stsdas.stsci.edu/astrolib/${P}.tar.gz
 	test? ( http://svn6.assembla.com/svn/astrolib/trunk/vo/test/wfpc2_all.xml.gz )"
 
 IUSE="examples test"
@@ -20,26 +21,25 @@ LICENSE="BSD"
 
 RDEPEND="
 	dev-libs/expat
-	!<dev-python/astropy-0.3"
+	!dev-python/astropy"
 DEPEND="${RDEPEND}"
 
 # slow and buggy tests
 RESTRICT="test"
 
+PATCHES=( "${FILESDIR}"/${PN}-0.6-expat.patch )
+
 python_prepare_all() {
-	epatch "${FILESDIR}"/${PN}-0.6-expat.patch
 	use test && cp "${WORKDIR}"/wfpc2_all.xml test
 }
 
 python_test() {
 	cd test || die
 	ln -s "${S}"/lib/data "${BUILD_DIR}/lib/vo/data" || die
-	PYTHONPATH="${BUILD_DIR}/lib" "${EPYTHON}" benchmarks.py || die
+	"${EPYTHON}" benchmarks.py || die
 }
 
 python_install_all() {
-	if use examples; then
-		insinto /usr/share/doc/${PF}/
-		doins -r examples
-	fi
+	use examples && EXAMPLES=( examples/. )
+	distutils-r1_python_install_all
 }
