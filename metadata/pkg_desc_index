@@ -11697,7 +11697,7 @@ media-gfx/cutycapt 0_p20120409: Qt WebKit Web Page Rendering Capture Utility
 media-gfx/darktable 1.6.6 1.6.7 1.6.8 9999: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b: 3D geometrical postscript renderer
 media-gfx/dcraw 9.24.4 9.25.0 9.26.0: Converts the native (RAW) format of various digital cameras into netpbm portable pixmap (.ppm) image
-media-gfx/digikam 4.4.0-r1 4.7.0 4.10.0 4.12.0: Digital photo management application for KDE
+media-gfx/digikam 4.4.0-r1 4.10.0: Digital photo management application for KDE
 media-gfx/dispcalgui 1.2.7.0 2.0.0.0 2.5.0.0 2.6.0.0: Display Calibration and Characterization powered by Argyll CMS
 media-gfx/dpic 20130310: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
 media-gfx/drqueue 0.64.4-r1 9999: Render farm managing software
@@ -12113,8 +12113,8 @@ media-libs/libjpeg-turbo 1.3.0-r3 1.3.1 1.3.1-r1 1.4.1 1.4.2: MMX, SSE, and SSE2
 media-libs/libjsw 1.5.8: provide a uniform API and user configuration for joysticks and game controllers
 media-libs/libkarma 0.1.2: Support library for using Rio devices with mtp
 media-libs/libkate 0.3.7 0.3.8 0.4.1: Codec for karaoke and text encapsulation for Ogg
-media-libs/libkface 4.4.0 4.7.0-r1 4.10.0 4.12.0: Qt/C++ wrapper around LibFace to perform face recognition and detection
-media-libs/libkgeomap 4.4.0 4.7.0 4.10.0 4.12.0: Wrapper library for world map components as marble, openstreetmap and googlemap
+media-libs/libkface 4.4.0 4.12.0: Qt/C++ wrapper around LibFace to perform face recognition and detection
+media-libs/libkgeomap 4.4.0 4.12.0: Wrapper library for world map components as marble, openstreetmap and googlemap
 media-libs/liblastfm 1.0.8 1.0.9: Collection of libraries to integrate Last.fm services
 media-libs/liblingoteach 0.2.3: A library to support lingoteach-ui and for generic lesson development
 media-libs/liblo 0.26 0.27 0.28: Lightweight OSC (Open Sound Control) implementation
@@ -12432,7 +12432,7 @@ media-plugins/gst-plugins-xvideo 0.10.36 0.10.36-r1: plugin for gstreamer
 media-plugins/hexter 1.0.2 1.0.3: Yamaha DX7 modeling DSSI plugin
 media-plugins/imlib2_loaders 1.4.7 9999: image loader plugins for Imlib 2
 media-plugins/ir_lv2 1.3: LV2 convolver plugin especially for creating reverb effects
-media-plugins/kipi-plugins 4.4.0 4.7.0 4.10.0 4.12.0: Plugins for the KDE Image Plugin Interface
+media-plugins/kipi-plugins 4.4.0 4.12.0: Plugins for the KDE Image Plugin Interface
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.0.1 2.1.0: A libvisual graphical music visualization plugin similar to milkdrop
@@ -13930,11 +13930,11 @@ net-libs/libkolab 0.5.2 0.5.3: Advanced Kolab Object Handling Library
 net-libs/libkolabxml 1.0.1 1.0.3 1.1.0: Kolab XML format schema definitions library
 net-libs/libkpeople 0.3.0: KDE contact person abstraction library
 net-libs/libktorrent 1.3.1: A BitTorrent library based on KDE Platform
-net-libs/libkvkontakte 4.4.0 4.7.0 4.10.0 4.11.0 4.12.0: Library for accessing the features of social networking site vkontakte.ru
+net-libs/libkvkontakte 4.4.0 4.12.0: Library for accessing the features of social networking site vkontakte.ru
 net-libs/liblockfile 1.09: Implements functions designed to lock the standard mailboxes
 net-libs/libmapi 1.0: Portable open-source implementations of Exchange protocols
 net-libs/libmbim 1.6.0 1.10.0 1.12.2 9999: MBIM modem protocol helper library
-net-libs/libmediawiki 4.4.0 4.7.0 4.10.0 4.12.0: KDE C++ interface for MediaWiki based web service as wikipedia.org
+net-libs/libmediawiki 4.4.0 4.12.0: KDE C++ interface for MediaWiki based web service as wikipedia.org
 net-libs/libmicrohttpd 0.9.42 0.9.44: A small C library that makes it easy to run an HTTP server as part of another application
 net-libs/libmirisdr 9999: Software for the Mirics MSi2500 + MSi001 SDR platform
 net-libs/libmm-qt 1.0.1-r1: Modemmanager bindings for Qt
@@ -16846,7 +16846,7 @@ sys-kernel/rsbac-sources 3.14.28: RSBAC kernel sources (kernel series 3.14)
 sys-kernel/rt-sources 3.14.46_p46 3.18.17_p14 4.0.5_p4 4.1.5_p5: Full Linux 4.1 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.108 3.4.109 3.10.88 3.10.90 3.12.47 3.12.48 3.14.52 3.14.54 3.18.21 3.18.22 4.0.9 4.1.7 4.1.9 4.2.0 4.2.3: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.72 3.4.109 3.10.90 3.12.49 3.14.54 3.18.22 4.1.8 4.2.3: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.72 3.4.110 3.10.90 3.12.49 3.14.54 3.18.22 4.1.8 4.2.3: Full sources for the Linux kernel
 sys-kernel/vserver-sources 2.3.0.36.32 2.3.6.5 2.3.6.8 2.3.6.11 2.3.6.14 2.3.7.3 2.3.7.4: Full sources including Linux-VServer patchsets for the 3.18 kernel tree
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
