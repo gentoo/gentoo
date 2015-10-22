@@ -10942,6 +10942,8 @@ kde-apps/libkdcraw 4.14.3 4.14.3-r1: KDE digital camera raw image library wrappe
 kde-apps/libkdeedu 4.14.3: Common library for KDE educational apps
 kde-apps/libkdegames 4.14.3 4.14.3-r1: Base library common to many KDE games
 kde-apps/libkexiv2 4.14.3: KDE Image Plugin Interface: an exiv2 library wrapper
+kde-apps/libkface 4.4.0 4.12.0: Qt/C++ wrapper around LibFace to perform face recognition and detection
+kde-apps/libkgeomap 4.4.0 4.12.0: Wrapper library for world map components as marble, openstreetmap and googlemap
 kde-apps/libkipi 4.14.3: A library for image plugins accross KDE applications
 kde-apps/libkmahjongg 4.14.3: LibKMahjongg for KDE
 kde-apps/libkomparediff2 4.14.3: KDE library to compare files and strings
@@ -12113,8 +12115,6 @@ media-libs/libjpeg-turbo 1.3.0-r3 1.3.1 1.3.1-r1 1.4.1 1.4.2: MMX, SSE, and SSE2
 media-libs/libjsw 1.5.8: provide a uniform API and user configuration for joysticks and game controllers
 media-libs/libkarma 0.1.2: Support library for using Rio devices with mtp
 media-libs/libkate 0.3.7 0.3.8 0.4.1: Codec for karaoke and text encapsulation for Ogg
-media-libs/libkface 4.4.0 4.12.0: Qt/C++ wrapper around LibFace to perform face recognition and detection
-media-libs/libkgeomap 4.4.0 4.12.0: Wrapper library for world map components as marble, openstreetmap and googlemap
 media-libs/liblastfm 1.0.8 1.0.9: Collection of libraries to integrate Last.fm services
 media-libs/liblingoteach 0.2.3: A library to support lingoteach-ui and for generic lesson development
 media-libs/liblo 0.26 0.27 0.28: Lightweight OSC (Open Sound Control) implementation

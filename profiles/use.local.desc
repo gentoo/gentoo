@@ -3779,10 +3779,10 @@ media-gfx/jpeg2ps:metric - Default to A4 paper size
 media-gfx/k3d:3ds - Enable support for 3D Studio models
 media-gfx/k3d:cuda - Use nvidia cuda toolkit for speeding up computations
 media-gfx/k3d:gts - Add Support for the GNU Triangulated Surface Library sci-libs/gts
-media-gfx/kphotoalbum:face - Enable face detection and recognition using media-libs/libkface
+media-gfx/kphotoalbum:face - Enable face detection and recognition using kde-apps/libkface
 media-gfx/kphotoalbum:geolocation - Add support for kde-apps/marble
 media-gfx/kphotoalbum:kipi - Support for the KDE Image Plugin Interface
-media-gfx/kphotoalbum:map - Enable map display support using media-libs/libkgeomap
+media-gfx/kphotoalbum:map - Enable map display support using kde-apps/libkgeomap
 media-gfx/librecad:3d - Require all 2D coordinates stored as 3D
 media-gfx/librecad:tools - Build additional tool programs: tff2lff
 media-gfx/luminance-hdr:fits - Enable support for the FITS format
@@ -4113,7 +4113,7 @@ media-plugins/hexter:gtk2 - Enable x11-libs/gtk+:2 based GUI
 media-plugins/imlib2_loaders:eet - Enable Eet image loader
 media-plugins/imlib2_loaders:xcf - Enable XCF image loader
 media-plugins/kipi-plugins:expoblending - Build the expoblending plugin, which requires media-gfx/hugin
-media-plugins/kipi-plugins:gpssync - Build the gpssync plugin, which requires media-lib/libkgeomap and thereby marble
+media-plugins/kipi-plugins:gpssync - Build the gpssync plugin, which requires kde-apps/libkgeomap and thereby marble
 media-plugins/kipi-plugins:linguas_ha - Hausa translation
 media-plugins/kipi-plugins:linguas_mi - Maori translation
 media-plugins/kipi-plugins:linguas_tt - ?? translation
