@@ -18,8 +18,6 @@ IUSE=""
 
 DEPEND="dev-python/feedparser[${PYTHON_USEDEP}]"
 RDEPEND=""
-# Test run fails under multi threading
-DISTUTILS_NO_PARALLEL_BUILD=1
 
 python_test() {
 	# pypy fails half way through; meh

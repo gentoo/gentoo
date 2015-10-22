@@ -25,11 +25,6 @@ DEPEND="test? ( app-misc/geoclue:0 )"
 
 S="${WORKDIR}"/${PN}
 
-python_prepare_all() {
-	use test && DISTUTILS_NO_PARALLEL_BUILD=true
-	distutils-r1_python_prepare_all
-}
-
 python_test() {
 	VIRTUALX_COMMAND="${PYTHON}"
 	cd "${BUILD_DIR}" || die

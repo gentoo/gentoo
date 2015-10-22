@@ -63,14 +63,6 @@ python_compile_all() {
 	use doc && emake -C doc html
 }
 
-src_test() {
-	# nosetests use heavy multiprocessing during the tests.
-	# this shall make them less likely to kill your system or timeout.
-	local DISTUTILS_NO_PARALLEL_BUILD=1
-
-	distutils-r1_src_test
-}
-
 python_test() {
 	"${PYTHON}" selftest.py -v || die "Tests fail with ${EPYTHON}"
 }

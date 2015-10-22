@@ -24,8 +24,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 				dev-python/mako[${PYTHON_USEDEP}]
 				>=dev-python/dogpile-core-0.4.1[${PYTHON_USEDEP}] )"
 
-# for testsuite
-DISTUTILS_NO_PARALLEL_BUILD=1
 # This time half the doc files are missing; Do you want them? toss a coin
 
 python_test() {

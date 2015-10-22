@@ -43,13 +43,6 @@ python_compile() {
 	distutils-r1_python_compile
 }
 
-src_test() {
-	# multiprocessing causes test failure with signals
-	local DISTUTILS_NO_PARALLEL_BUILD=1
-
-	distutils-r1_src_test
-}
-
 python_test() {
 	cd "${BUILD_DIR}" || die
 	scripts/unit2 discover -s lib || die "Tests fail with ${EPYTHON}"

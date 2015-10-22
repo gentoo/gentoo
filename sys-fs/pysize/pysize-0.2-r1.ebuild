@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	gtk? ( dev-python/pygtk:2 )
-	ncurses? ( sys-libs/ncurses )"
+	ncurses? ( sys-libs/ncurses:0= )"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
@@ -29,8 +29,6 @@ PATCHES=(
 	"${FILESDIR}"/psyco-${PV}-automagic.patch
 	"${FILESDIR}"/${PV}-setuptools-automagic.patch
 	)
-
-DISTUTILS_NO_PARALLEL_BUILD=1
 
 python_prepare_all() {
 	if ! use gtk; then
@@ -56,12 +54,6 @@ python_prepare_all() {
 		-i pysize/main.py || die
 
 	distutils-r1_python_prepare_all
-}
-
-src_test() {
-	# Tests shatter otherwise
-	local DISTUTILS_NO_PARALLEL_BUILD=1
-	distutils-r1_src_test
 }
 
 python_test() {

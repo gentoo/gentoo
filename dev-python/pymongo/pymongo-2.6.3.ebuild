@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )
-	kerberos? ( dev-python/pykerberos )"
+	kerberos? ( dev-python/pykerberos[${PYTHON_USEDEP}] )"
 DISTUTILS_IN_SOURCE_BUILD=1
 
 reqcheck() {
@@ -49,20 +49,13 @@ python_compile_all() {
 	fi
 }
 
-src_test() {
+python_test() {
 	# Yes, we need TCP/IP for that...
 	local DB_IP=127.0.0.1
 	local DB_PORT=27000
 
 	export DB_IP DB_PORT
 
-	# 1.5G of disk space per run.
-	local DISTUTILS_NO_PARALLEL_BUILD=1
-
-	distutils-r1_src_test
-}
-
-python_test() {
 	local dbpath=${TMPDIR}/mongo.db
 	local logpath=${TMPDIR}/mongod.log
 
@@ -108,11 +101,11 @@ python_test() {
 	fi
 	DB_PORT2=$(( DB_PORT + 1 )) DB_PORT3=$(( DB_PORT + 2 )) esetup.py test || failed=1
 
-	mongod --dbpath "${dbpath}" --shutdown
+	mongod --dbpath "${dbpath}" --shutdown || die
 
 	[[ ${failed} ]] && die "Tests fail with ${EPYTHON}"
 
-	rm -rf "${dbpath}"
+	rm -rf "${dbpath}" || die
 }
 
 python_install() {

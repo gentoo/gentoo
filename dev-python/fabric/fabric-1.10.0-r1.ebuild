@@ -52,11 +52,6 @@ python_compile_all() {
 	fi
 }
 
-src_test() {
-	local DISTUTILS_NO_PARALLEL_BUILD=1
-	distutils-r1_src_test
-}
-
 python_test() {
 	nosetests tests || die "Tests failed under ${EPYTHON}"
 }

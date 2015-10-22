@@ -33,15 +33,6 @@ PATCHES=(
 	"${FILESDIR}/${P}-py2_6-tests-fix.patch"
 )
 
-src_test() {
-	# The test server tries to bind at an unused port but suffers
-	# a race condition in it. Seems to be fixed already.
-	# https://github.com/facebook/tornado/blob/master/tornado/test/process_test.py#L64
-	local DISTUTILS_NO_PARALLEL_BUILD=1
-
-	distutils-r1_src_test
-}
-
 python_test() {
 	cd "${TMPDIR}" || die
 	"${PYTHON}" -m tornado.test.runtests || die "Tests fail with ${EPYTHON}"
