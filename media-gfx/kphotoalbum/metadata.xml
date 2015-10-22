@@ -3,9 +3,9 @@
 <pkgmetadata>
 	<herd>kde</herd>
 	<use>
-		<flag name="face">Enable face detection and recognition using <pkg>media-libs/libkface</pkg></flag>
+		<flag name="face">Enable face detection and recognition using <pkg>kde-apps/libkface</pkg></flag>
 		<flag name="geolocation">Add support for <pkg>kde-apps/marble</pkg></flag>
 		<flag name="kipi">Support for the KDE Image Plugin Interface</flag>
-		<flag name="map">Enable map display support using <pkg>media-libs/libkgeomap</pkg></flag>
+		<flag name="map">Enable map display support using <pkg>kde-apps/libkgeomap</pkg></flag>
 	</use>
 </pkgmetadata>
