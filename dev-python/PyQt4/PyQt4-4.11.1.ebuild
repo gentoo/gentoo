@@ -176,7 +176,7 @@ src_configure() {
 			popd > /dev/null || return
 		fi
 	}
-	python_parallel_foreach_impl run_in_build_dir configuration
+	python_foreach_impl run_in_build_dir configuration
 }
 
 src_compile() {

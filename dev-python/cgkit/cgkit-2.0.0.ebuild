@@ -42,7 +42,7 @@ cgkit_unpack() {
 }
 
 src_unpack() {
-	python_parallel_foreach_impl cgkit_unpack
+	python_foreach_impl cgkit_unpack
 	mkdir "${S}" || die
 }
 

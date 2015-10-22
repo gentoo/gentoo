@@ -43,7 +43,7 @@ src_install() {
 		doins ${PN}.py || die
 		python_optimize || die
 	}
-	python_parallel_foreach_impl abi_specific_install
+	python_foreach_impl abi_specific_install
 
 	dodir /usr/bin || die
 	_make_call_script /usr/bin/${PN} || die

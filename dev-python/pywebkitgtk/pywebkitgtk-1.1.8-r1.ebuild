@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	local myeconfargs=( --disable-static )
-	python_parallel_foreach_impl autotools-utils_src_configure
+	python_foreach_impl autotools-utils_src_configure
 }
 
 src_compile() {

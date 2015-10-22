@@ -71,9 +71,9 @@ src_install() {
 			install install-doc-en
 	}
 	python_foreach_impl installation
-	python_parallel_foreach_impl python_optimize
+	python_foreach_impl python_optimize
 
-	python_parallel_foreach_impl python_newscript bibusStart.py ${PN}
+	python_foreach_impl python_newscript bibusStart.py ${PN}
 }
 
 pkg_postinst() {

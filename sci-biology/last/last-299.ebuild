@@ -44,7 +44,7 @@ src_install() {
 
 	cd scripts || die
 	for i in *py; do
-		python_parallel_foreach_impl python_newscript ${i} ${i%.py}
+		python_foreach_impl python_newscript ${i} ${i%.py}
 	done
 	dobin *sh
 }

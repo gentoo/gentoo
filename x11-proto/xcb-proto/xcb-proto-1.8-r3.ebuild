@@ -31,7 +31,7 @@ multilib_src_configure() {
 	autotools-utils_src_configure
 
 	if multilib_is_native_abi; then
-		python_parallel_foreach_impl autotools-utils_src_configure
+		python_foreach_impl autotools-utils_src_configure
 	fi
 }
 

@@ -42,7 +42,7 @@ src_configure() {
 	autotools-utils_src_configure
 
 	if use python; then
-		python_parallel_foreach_impl \
+		python_foreach_impl \
 			autotools-utils_src_configure --with-python
 	fi
 }
