@@ -26,9 +26,9 @@ src_prepare() {
 	kde4-base_src_prepare
 
 	if ! use handbook ; then
-		pushd kcmcddb > /dev/null
+		pushd kcmcddb > /dev/null || die
 		comment_add_subdirectory doc
-		popd > /dev/null
+		popd > /dev/null || die
 	fi
 }
 

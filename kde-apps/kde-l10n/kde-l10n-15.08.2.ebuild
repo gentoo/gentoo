@@ -7,19 +7,22 @@ EAPI=5
 KDE_HANDBOOK="true"
 inherit kde5
 
-DESCRIPTION="KDE PIM internationalization package"
+DESCRIPTION="KDE internationalization package"
 HOMEPAGE="http://l10n.kde.org"
 
 DEPEND="
+	$(add_frameworks_dep ki18n)
+	dev-qt/linguist-tools:5
 	sys-devel/gettext
 "
 RDEPEND="
-	!<kde-apps/kde-l10n-15.08.0-r1
-	!<kde-apps/kde4-l10n-4.14.3-r1
-	!kde-base/kdepim-l10n
+	!<kde-apps/kde4-l10n-${PV}
+	!kde-apps/kde4-l10n[-minimal]
+	!<kde-apps/kdepim-l10n-${PV}
+	!<kde-apps/ktp-l10n-${PV}
 "
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=" ~amd64 ~x86"
 IUSE=""
 
 # /usr/portage/distfiles $ ls -1 kde-l10n-*-${PV}.* |sed -e 's:-${PV}.tar.xz::' -e 's:kde-l10n-::' |tr '\n' ' '
@@ -27,14 +30,12 @@ MY_LANGS="ar bg bs ca ca@valencia cs da de el en_GB eo es et eu fa fi fr ga gl
 he hi hr hu ia id is it ja kk km ko lt lv mr nb nds nl nn pa pl pt pt_BR ro ru
 sk sl sr sv tr ug uk wa zh_CN zh_TW"
 
-PIM_L10N="kdepim kdepimlibs kdepim-runtime pim"
-
 URI_BASE="${SRC_URI/-${PV}.tar.xz/}"
 SRC_URI=""
 
 for MY_LANG in ${MY_LANGS} ; do
 	IUSE="${IUSE} linguas_${MY_LANG}"
-	SRC_URI="${SRC_URI} linguas_${MY_LANG}? ( ${URI_BASE/kdepim/kde}/kde-l10n-${MY_LANG}-${PV}.tar.xz )"
+	SRC_URI="${SRC_URI} linguas_${MY_LANG}? ( ${URI_BASE}/${PN}-${MY_LANG}-${PV}.tar.xz )"
 done
 
 S="${WORKDIR}"
@@ -59,8 +60,7 @@ src_prepare() {
 	# add all linguas to cmake
 	if [[ -n ${A} ]]; then
 		for LNG in ${LINGUAS}; do
-			DIR="kde-l10n-${LNG}-${PV}"
-			SDIR="${S}/${DIR}/5/${LNG}"
+			DIR="${PN}-${LNG}-${PV}"
 			if [[ -d "${DIR}" ]] ; then
 				echo "add_subdirectory( ${DIR} )" >> "${S}"/CMakeLists.txt
 
@@ -68,49 +68,31 @@ src_prepare() {
 				sed -e '/add_subdirectory(4)/ s/^/#/'\
 					-i "${S}"/${DIR}/CMakeLists.txt || die
 
-				# Remove everything except kdepim, kdepimlibs, kdepim-runtime and pim
-				for SUBDIR in data docs messages scripts ; do
-					if [[ -d "${SDIR}/${SUBDIR}" ]] ; then
-						einfo "   ${SUBDIR} subdirectory"
-						echo > "${SDIR}/${SUBDIR}/CMakeLists.txt"
-						for pim in ${PIM_L10N}; do
-							[[ -d "${SDIR}/${SUBDIR}/${pim}" ]] && \
-								( echo "add_subdirectory(${pim})" >> "${SDIR}/${SUBDIR}/CMakeLists.txt" )
-						done
-					fi
+				# Remove kdepim translations (part of kde-apps/kdepim-l10n)
+				for subdir in kdepim kdepimlibs kdepim-runtime pim; do
+					find "${S}/${DIR}" -name CMakeLists.txt -type f \
+						-exec sed -i -e "/add_subdirectory( *${subdir} *)/ s/^/#/" {} +
 				done
 
-				# In some cases we may have sub-lingua subdirs, e.g. sr :(
-				for XSUBDIR in "${SDIR}/${LNG}"@* ; do
-					XLNG=$(echo ${XSUBDIR}|sed -e 's:^.*/::')
-					if [[ -d "${XSUBDIR}" ]] ; then
-						einfo "   ${XLNG} variant"
-						# remove everything except kdepim and kdepim-runtime
-						for SUBDIR in data docs messages scripts ; do
-							if [[ -d "${XSUBDIR}/${SUBDIR}" ]] ; then
-								einfo "      ${SUBDIR} subdirectory"
-								echo > "${XSUBDIR}/${SUBDIR}/CMakeLists.txt"
-								for pim in ${PIM_L10N}; do
-									[[ -d "${XSUBDIR}/${SUBDIR}/${pim}" ]] && \
-										( echo "add_subdirectory(${pim})" >> "${XSUBDIR}/${SUBDIR}/CMakeLists.txt" )
-								done
-							fi
-						done
-					fi
-				done
+				# Remove ktp translations (part of kde-apps/ktp-l10n)
+				# Drop that hack (and kde-apps/ktp-l10n) after ktp:4 removal
+				find "${S}"/${DIR}/5/${LNG}/messages/kdenetwork -type f \
+					\( -name kaccounts*po -o -name kcm_ktp*po -o -name kcmtelepathy*po \
+					-o -name kded_ktp*po -o -name ktp*po -o -name plasma*ktp*po \) \
+					-delete
 
 				# Handbook optional
 				sed -e '/KF5DocTools/ s/ REQUIRED//'\
-					-i "${SDIR}"/CMakeLists.txt || die
+					-i "${S}"/${DIR}/5/${LNG}/CMakeLists.txt || die
 				if ! use handbook ; then
 					sed -e '/add_subdirectory(docs)/ s/^/#/'\
-						-i "${SDIR}"/CMakeLists.txt || die
+						-i "${S}"/${DIR}/5/${LNG}/CMakeLists.txt || die
 				fi
 
 				# Fix broken LINGUAS=sr (KDE4 leftover)
 				if [[ ${LNG} = "sr" ]] ; then
 					sed -e '/add_subdirectory(lokalize)/ s/^/#/'\
-						-i "${SDIR}"/data/kdesdk/CMakeLists.txt || die
+						-i "${S}"/${DIR}/5/${LNG}/data/kdesdk/CMakeLists.txt || die
 				fi
 			fi
 		done

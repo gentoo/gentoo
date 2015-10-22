@@ -4,62 +4,57 @@
 
 EAPI=5
 
+KDE_BLOCK_SLOT4="false"
 KDE_HANDBOOK="true"
 KDE_PUNT_BOGUS_DEPS="true"
+KDE_TEST="true"
+VIRTUALX_REQUIRED="test"
 inherit kde5
 
-DESCRIPTION="Non-linear video editing suite by KDE"
-HOMEPAGE="http://www.kdenlive.org/"
+DESCRIPTION="KDE's terminal emulator"
+HOMEPAGE="https://www.kde.org/applications/system/konsole https://konsole.kde.org"
 
-LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
-IUSE="v4l"
+IUSE="X"
 
-RDEPEND="
-	$(add_frameworks_dep karchive)
+DEPEND="
 	$(add_frameworks_dep kbookmarks)
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep kdbusaddons)
+	$(add_frameworks_dep kdelibs4support)
 	$(add_frameworks_dep kguiaddons)
+	$(add_frameworks_dep kjobwidgets)
 	$(add_frameworks_dep ki18n)
+	$(add_frameworks_dep kinit)
 	$(add_frameworks_dep kiconthemes)
 	$(add_frameworks_dep kio)
-	$(add_frameworks_dep kitemviews)
-	$(add_frameworks_dep kjobwidgets)
-	$(add_frameworks_dep knewstuff)
 	$(add_frameworks_dep knotifications)
 	$(add_frameworks_dep knotifyconfig)
-	$(add_frameworks_dep kplotting)
+	$(add_frameworks_dep kparts)
+	$(add_frameworks_dep kpty)
 	$(add_frameworks_dep kservice)
 	$(add_frameworks_dep ktextwidgets)
 	$(add_frameworks_dep kwidgetsaddons)
+	$(add_frameworks_dep kwindowsystem)
 	$(add_frameworks_dep kxmlgui)
-	$(add_frameworks_dep solid)
 	dev-qt/qtdbus:5
-	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
-	dev-qt/qtopengl:5
+	dev-qt/qtprintsupport:5
 	dev-qt/qtscript:5
-	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	>=media-libs/mlt-0.9.8[ffmpeg,-kde,kdenlive,melt,-qt4,sdl,xml]
-	virtual/ffmpeg[encode,sdl,X]
-	virtual/opengl
-	v4l? ( media-libs/libv4l )
-	!media-video/kdenlive
+	X? ( x11-libs/libX11 )
 "
-DEPEND="${RDEPEND}
-	sys-devel/gettext
+RDEPEND="${DEPEND}
+	!kde-apps/konsole:4[-minimal(-),handbook]
 "
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package v4l LibV4L2)
+		$(cmake-utils_use_find_package X X11)
 	)
 
 	kde5_src_configure

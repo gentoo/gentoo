@@ -51,8 +51,6 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kded)
 	!<kde-apps/kcontrol-15.08.0-r1:4
-	!kde-base/kio-extras
-	!kde-plasma/kio-extras
 "
 DEPEND="${COMMON_DEPEND}
 	x11-misc/shared-mime-info

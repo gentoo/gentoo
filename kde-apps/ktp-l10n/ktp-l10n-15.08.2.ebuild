@@ -7,10 +7,12 @@ EAPI=5
 KDE_HANDBOOK="false"
 inherit kde5
 
-DESCRIPTION="KDE PIM internationalization package"
+DESCRIPTION="KDE Telepathy internationalization package"
 HOMEPAGE="http://l10n.kde.org"
 
 DEPEND="
+	$(add_frameworks_dep ki18n)
+	dev-qt/linguist-tools:5
 	sys-devel/gettext
 "
 RDEPEND="
@@ -77,6 +79,8 @@ src_prepare() {
 
 				# We only want messages
 				sed -e '/messages/!s/^add_subdirectory/# DONT/'\
+					-i "${SDIR}"/CMakeLists.txt || die
+				sed -e '/KF5DocTools/ s/^/#/'\
 					-i "${SDIR}"/CMakeLists.txt || die
 
 				# Remove everything except kdenetwork

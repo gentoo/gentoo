@@ -66,11 +66,12 @@ src_unpack() {
 }
 
 src_prepare() {
-	local LNG DIR SDIR
+	local LNG DIR LDIR SDIR
 	# add all linguas to cmake
 	if [[ -n ${A} ]]; then
 		for LNG in ${LINGUAS}; do
 			DIR="${KMNAME}-${LNG}-${PV}"
+			LDIR="${KMNAME}-${LNG}-${LV}"
 			SDIR="${S}/${DIR}/4/${LNG}"
 			if [[ -d "${DIR}" ]] ; then
 				echo "add_subdirectory( ${DIR} )" >> "${S}"/CMakeLists.txt
@@ -80,12 +81,12 @@ src_prepare() {
 
 				# Drop translations installed with plasma 5 and kde-apps 5 packages
 				if use minimal; then
-					einfo "Removing paths from ${LNG}"
-					if [[ -d "${KMNAME}-${LNG}-${LV}" ]] ; then
-						rm -rf "${KMNAME}-${LNG}-${LV}"
+					einfo "${LNG}: Removing file conflicts"
+					if [[ -d "${LDIR}" ]] ; then
+						rm -rf "${LDIR}"
 					fi
 
-					# Remove dirs
+					einfo "   directories..."
 					while read path; do
 						if [[ -n ${path} && -e "${SDIR}"/${path%\ *}/CMakeLists.txt ]] ; then
 							sed -e ":${path#*\ }: s:^:#:"\
@@ -93,7 +94,7 @@ src_prepare() {
 						fi
 					done < <(grep -v "^#" "${REMOVE_DIRS}")
 
-					# Remove messages
+					einfo "   messages..."
 					for path in $(grep -v "^#" "${REMOVE_MSGS}") ; do
 						rm -f "${SDIR}"/messages/${path}
 						# Quirk for LINGUAS=sr variants
@@ -102,16 +103,31 @@ src_prepare() {
 						fi
 					done
 				else
-					if [[ -d "${KMNAME}-${LNG}-${LV}" ]] ; then
-						# Do not try to copy kdepim localisation
-						for path in kdepim kdepimlibs kdepim-runtime; do
-							rm -rf "${KMNAME}-${LNG}-${LV}/messages/${path}" || die
+					if [[ -d "${LDIR}" ]] ; then
+						einfo "${LNG}: Adding legacy localisation"
+						local dest_path
+						# Step through directories alphabetically first
+						for path in $(ls -R "${LDIR}" | grep ":$" | sed -e 's/:$//') ; do
+							dest_path="${path/${LV}/${PV}/4/${LNG}}"
+							if [[ ! -d "${dest_path}" ]] ; then
+								einfo "   $(basename ${dest_path}) subdirectory"\
+									"added to $(basename $(dirname ${dest_path}))"
+								mkdir "${dest_path}" || die "Failed creating ${dest_path}"
+								echo "add_subdirectory($(basename ${dest_path}))" >> \
+									$(dirname "${dest_path}")/CMakeLists.txt
+							fi
 						done
-						# Merge legacy localisation
-						for path in $(find "${KMNAME}-${LNG}-${LV}" -name "*.po"); do
-							cp -rn "${path}" "${path/${LV}/${PV}/4/${LNG}}" || die
+						einfo "   merging legacy localisation..."
+						for path in $(find "${LDIR}" -type f) ; do
+							dest_path="${path/${LV}/${PV}/4/${LNG}}"
+							cp -rn "${path}" "${dest_path}" || die "Failed copying ${path}"
 						done
-						rm -rf "${KMNAME}-${LNG}-${LV}"
+						# Disable kdepim
+						for path in kdepim kdepimlibs kdepim-runtime ; do
+							find "${SDIR}" -name CMakeLists.txt -type f -exec \
+								sed -i -e "s:^ *add_subdirectory( *${path} *):# no ${path}:g" {} +
+						done
+						rm -rf "${LDIR}"
 					fi
 				fi
 			fi

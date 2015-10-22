@@ -37,11 +37,13 @@ DEPEND="
 		>=media-sound/pulseaudio-0.9.12
 	)
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	$(add_plasma_dep kde-cli-tools)
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-15.04.2-alsa-optional.patch"
-	 "${FILESDIR}/${PN}-15.08.0-deps.patch"
+	"${FILESDIR}/${PN}-15.08.0-deps.patch"
 )
 
 src_configure() {
