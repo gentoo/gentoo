@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/openclonk/openclonk-6.0.ebuild,v 1.0 2015/04/25 06:01:16 nico Exp $
+# $Id$
 
 EAPI=5
 
@@ -33,7 +33,7 @@ RDEPEND="
 		media-libs/libvorbis
 		media-libs/openal
 		media-libs/sdl-mixer[mp3,vorbis,wav]
-		virtual/jpeg
+		virtual/jpeg:=
 		virtual/opengl
 		virtual/glu
 		x11-libs/gdk-pixbuf
