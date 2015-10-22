@@ -173,7 +173,7 @@ src_configure() {
 
 src_compile() {
 	# we don't want to link against embedded mysql lib
-	emake MYSQLDLIB=""
+	emake CC="$(tc-getCC)" MYSQLDLIB=""
 }
 
 src_install() {
