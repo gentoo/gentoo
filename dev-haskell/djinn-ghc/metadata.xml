@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		Djinn uses an theorem prover for intuitionistic propositional logic
+		to generate a Haskell expression when given a type.
+		This is the bridge from djinn-lib to GHC API.
+	</longdescription>
+</pkgmetadata>
