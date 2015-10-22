@@ -33,7 +33,7 @@ RDEPEND="
 		media-libs/libvorbis
 		media-libs/openal
 		media-libs/sdl-mixer[mp3,vorbis,wav]
-		virtual/jpeg:=
+		virtual/jpeg:0=
 		virtual/opengl
 		virtual/glu
 		x11-libs/gdk-pixbuf
