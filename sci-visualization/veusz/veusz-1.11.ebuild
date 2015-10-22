@@ -21,7 +21,7 @@ LICENSE="GPL-2"
 DEPEND="dev-python/numpy"
 RDEPEND="${DEPEND}
 	dev-python/PyQt4[X,svg]
-	fits? ( virtual/pyfits )"
+	fits? ( dev-python/pyfits )"
 
 PYTHON_CFLAGS=("2.* + -fno-strict-aliasing")
 
