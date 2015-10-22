@@ -27,4 +27,7 @@
       Build extra tools
     </flag>
   </use>
+  <slots>
+   <subslots>Reflect ABI compatibility of libgnutls.so</subslots>
+  </slots>
 </pkgmetadata>
