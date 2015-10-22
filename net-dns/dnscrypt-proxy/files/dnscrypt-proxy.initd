@@ -21,8 +21,8 @@ start() {
 	if [ ! -d "${rundir}" ]; then
 		mkdir "${rundir}"
 		if [ -n "${runas_user}" ]; then
-			touch  ${DNSCRYPT_LOGFILE}
-			chown ${runas_user}:${runas_group} ${DNSCRYPT_LOGFILE}
+			touch "${DNSCRYPT_LOGFILE}"
+			chown ${runas_user}:${runas_group} "${DNSCRYPT_LOGFILE}"
 			chown -R ${runas_user}:${runas_group} "${rundir}"
 		fi
 	fi
@@ -31,8 +31,8 @@ start() {
 	start-stop-daemon --start --quiet \
 		--exec /usr/sbin/dnscrypt-proxy \
 		-- \
-		--pidfile=${pidfile} \
-		--logfile=${DNSCRYPT_LOGFILE} \
+		--pidfile="${pidfile}" \
+		--logfile="${DNSCRYPT_LOGFILE}" \
 		--daemonize --user=${runas_user} \
 		--local-address=${DNSCRYPT_LOCALIP}:${DNSCRYPT_LOCALPORT} \
 		--resolver-address=${DNSCRYPT_RESOLVERIP}:${DNSCRYPT_RESOLVERPORT} \
