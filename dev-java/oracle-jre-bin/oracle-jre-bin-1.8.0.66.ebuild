@@ -34,7 +34,7 @@ SRC_URI="
 
 LICENSE="Oracle-BCLA-JavaSE"
 SLOT="1.8"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="alsa +awt cups +fontconfig javafx jce nsplugin pax_kernel selinux"
 
 RESTRICT="fetch preserve-libs strip"
