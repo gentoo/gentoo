@@ -11,7 +11,10 @@ inherit eutils fdo-mime multilib python-r1 versionator
 
 DESCRIPTION="Bibliographic and reference management software, integrates with L/OO.o and MS Word"
 HOMEPAGE="http://bibus-biblio.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}-biblio/${PN}_${PV}.orig.tar.gz"
+SRC_URI="
+	mirror://sourceforge/${PN}-biblio/${PN}_${PV}.orig.tar.gz
+	https://dev.gentoo.org/~jlec/distfiles/${P}-lo-4.patch.xz
+	"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -45,7 +48,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-install.patch
+	epatch \
+		"${FILESDIR}"/${P}-install.patch \
+		"${FILESDIR}"/${P}-bibus.cfg.patch \
+		"${WORKDIR}"/${P}-lo-4.patch
 }
 
 src_compile() { :; }
