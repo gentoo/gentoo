@@ -25,6 +25,7 @@ DEPEND="${RDEPEND}
 	>=dev-util/kbuild-0.1.9998_pre20131130
 	${PYTHON_DEPS}
 	>=dev-lang/yasm-0.6.2
+	>=sys-devel/gcc-4.9.0
 	sys-power/iasl
 	x11-proto/fontsproto
 	x11-proto/randrproto
