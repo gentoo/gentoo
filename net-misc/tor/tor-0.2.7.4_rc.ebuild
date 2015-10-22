@@ -37,7 +37,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.2.3.14_alpha-torrc.sample.patch
+	epatch "${FILESDIR}"/${PN}-0.2.7.4-torrc.sample.patch
 	epatch_user
 }
 
