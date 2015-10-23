@@ -7840,6 +7840,8 @@ www-misc/monitorix:hddtemp - Use SMART to monitor the temperature of hard drives
 www-misc/monitorix:httpd - Enables the CGI webserver with any package that satisfies virtual/httpd-cgi.
 www-misc/monitorix:lm_sensors - Additional hardware mnitoring sensors with sys-apps/lm_sensors.
 www-misc/monitorix:postfix - Analyze postfix logs with net-mail/pflogsumm.
+www-misc/shellinabox:pam - Enable PAM support.
+www-misc/shellinabox:ssl - Enable SSL support.
 www-misc/vdradmin-am:vdr - Support for media-video/vdr. Disable this if the VDR you want to control runs at a remote machine.
 www-misc/xxv:themes - Enable more themes via x11-themes/xxv-skins
 www-misc/zoneminder:curl - Enable using net-misc/curl for streaming from cameras
