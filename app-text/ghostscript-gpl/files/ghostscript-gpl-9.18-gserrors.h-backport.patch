@@ -1,0 +1,43 @@
+From feafe5e540a0545ec5d28f3f66bb542056bba495 Mon Sep 17 00:00:00 2001
+From: Chris Liddell <chris.liddell@artifex.com>
+Date: Fri, 23 Oct 2015 10:16:11 +0100
+Subject: [PATCH] Bug 696301: add gserrors.h to the installed files
+
+for the so-install target.
+
+Also remove a spurious (copy'n'paste error) comment.
+
+No cluster differences
+---
+ base/gserrors.h   | 2 +-
+ base/unix-dll.mak | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/base/gserrors.h b/base/gserrors.h
+index 5f18081..cdebb38 100644
+--- a/base/gserrors.h
++++ b/base/gserrors.h
+@@ -25,7 +25,7 @@
+ /* We don't use a typedef internally to avoid a lot of casting. */
+ 
+ enum gs_error_type {
+-    gs_error_ok = 0,	/* unknown error */
++    gs_error_ok = 0,
+     gs_error_unknownerror = -1,	/* unknown error */
+     gs_error_dictfull = -2,
+     gs_error_dictstackoverflow = -3,
+diff --git a/base/unix-dll.mak b/base/unix-dll.mak
+index 7b67aa1..73b4fa9 100644
+--- a/base/unix-dll.mak
++++ b/base/unix-dll.mak
+@@ -186,6 +186,7 @@ install-so-subtarget: so-subtarget
+ 	ln -s $(GS_SONAME_MAJOR_MINOR) $(DESTDIR)$(libdir)/$(GS_SONAME_MAJOR)
+ 	$(INSTALL_DATA) $(PSSRC)iapi.h $(DESTDIR)$(gsincludedir)iapi.h
+ 	$(INSTALL_DATA) $(PSSRC)ierrors.h $(DESTDIR)$(gsincludedir)ierrors.h
++	$(INSTALL_DATA) $(GLSRC)gserrors.h $(DESTDIR)$(gsincludedir)gserrors.h
+ 	$(INSTALL_DATA) $(DEVSRC)gdevdsp.h $(DESTDIR)$(gsincludedir)gdevdsp.h
+ 
+ soinstall:
+-- 
+2.5.1
+
