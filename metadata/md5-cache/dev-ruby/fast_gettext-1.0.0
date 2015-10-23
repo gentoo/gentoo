@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=ruby_targets_ruby19? ( test? ( dev-ruby/activerecord[ruby_targets_ruby19] dev-ruby/protected_attributes[ruby_targets_ruby19] dev-ruby/bundler[ruby_targets_ruby19] ) ) ruby_targets_ruby20? ( test? ( dev-ruby/activerecord[ruby_targets_ruby20] dev-ruby/protected_attributes[ruby_targets_ruby20] dev-ruby/bundler[ruby_targets_ruby20] ) ) ruby_targets_ruby21? ( test? ( dev-ruby/activerecord[ruby_targets_ruby21] dev-ruby/protected_attributes[ruby_targets_ruby21] dev-ruby/bundler[ruby_targets_ruby21] ) ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby19? ( test? ( dev-ruby/rspec:3[ruby_targets_ruby19] ) ) ruby_targets_ruby20? ( test? ( dev-ruby/rspec:3[ruby_targets_ruby20] ) ) ruby_targets_ruby21? ( test? ( dev-ruby/rspec:3[ruby_targets_ruby21] ) ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_ruby20? ( virtual/rubygems[ruby_targets_ruby20] ) ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] ) test? ( ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_ruby20? ( virtual/rubygems[ruby_targets_ruby20] ) ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] ) )
+DESCRIPTION=GetText but 3.5 x faster, 560 x less memory, simple, clean namespace (7 vs 34) and threadsave!
+EAPI=5
+HOMEPAGE=https://github.com/grosser/fast_gettext
+IUSE=elibc_FreeBSD ruby_targets_ruby19 ruby_targets_ruby20 ruby_targets_ruby21 test test
+KEYWORDS=~amd64 ~x86
+LICENSE=public-domain
+RDEPEND=ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_ruby20? ( virtual/rubygems[ruby_targets_ruby20] ) ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] )
+REQUIRED_USE=|| ( ruby_targets_ruby19 ruby_targets_ruby20 ruby_targets_ruby21 )
+SLOT=0
+SRC_URI=https://github.com/grosser/fast_gettext/archive/v1.0.0.tar.gz -> fast_gettext-1.0.0.tar.gz
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-utils-2	e03639b92617c43f3ca3d670af620cf5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	ruby-fakegem	b34b8f1debda62e461897a3f85df97e4	ruby-ng	12af15f9116c054425934f3eec054899	ruby-utils	97c910cb6b087c64260df641a9b3de0c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=a9560f79333114f2f3f16715aa86f672
