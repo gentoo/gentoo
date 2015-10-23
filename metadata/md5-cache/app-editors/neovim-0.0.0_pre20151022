@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/luajit:2 >=dev-libs/libtermkey-0.17 dev-libs/libvterm >=dev-libs/unibilium-1.1.1 >=dev-libs/libuv-1.2.0 >=dev-libs/msgpack-0.6.0_pre20150220 dev-lua/lpeg dev-lua/messagepack virtual/libiconv virtual/libintl sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Ambitious vim fork focused on extensibility and agility
+EAPI=5
+HOMEPAGE=https://github.com/neovim/neovim
+IUSE=+nvimpager perl python
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0 vim
+RDEPEND=dev-lang/luajit:2 >=dev-libs/libtermkey-0.17 dev-libs/libvterm >=dev-libs/unibilium-1.1.1 >=dev-libs/libuv-1.2.0 >=dev-libs/msgpack-0.6.0_pre20150220 dev-lua/lpeg dev-lua/messagepack perl? ( dev-lang/perl ) python? ( dev-python/neovim-python-client )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~tranquility/distfiles/neovim-0.0.0_pre20151022.tar.xz
+_eclasses_=cmake-utils	7dc05d514e5011a2a16bfa7a32e69587	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=1b2325664a0a65fb5567486a5a0e4c83
