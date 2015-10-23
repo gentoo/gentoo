@@ -169,7 +169,6 @@ multilib_src_install() {
 			rm -r "${ED}"/usr/$(get_libdir)/bluez/test || die
 		fi
 		if use test-programs; then
-			#EPYTHON=python2.7 python_fix_shebang "${ED}"/usr/$(get_libdir)/bluez/test
 			python_fix_shebang "${ED}"/usr/$(get_libdir)/bluez/test
 			for i in $(find "${ED}"/usr/$(get_libdir)/bluez/test -maxdepth 1 -type f ! -name "*.*"); do
 				dosym "${i}" /usr/bin/bluez-"${i##*/}"
