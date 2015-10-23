@@ -5,7 +5,7 @@
 EAPI=5
 PYTHON_COMPAT="python2_7"
 
-inherit autotools eutils multilib python-single-r1 python-utils-r1 readme.gentoo systemd udev user multilib-minimal
+inherit autotools eutils multilib python-single-r1 readme.gentoo systemd udev user multilib-minimal
 
 DESCRIPTION="Bluetooth Tools and System Daemons for Linux"
 HOMEPAGE="http://www.bluez.org"
@@ -58,8 +58,10 @@ DOC_CONTENTS="
 
 pkg_setup() {
 	enewgroup plugdev
-	use test && python-single-r1_pkg_setup
-	use test-programs && python-single-r1_pkg_setup
+
+	if use test || use test-programs; then
+		python-single-r1_pkg_setup
+	fi
 
 	if ! use udev; then
 		ewarn
@@ -126,7 +128,6 @@ multilib_src_configure() {
 		--enable-pie \
 		--enable-threads \
 		--enable-library \
-		$(multilib_native_use_enable test) \
 		--enable-tools \
 		--enable-manpages \
 		--enable-monitor \
@@ -134,7 +135,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable obex) \
 		$(multilib_native_use_enable readline client) \
 		$(multilib_native_use_enable systemd) \
-		$(multilib_native_use_enable test-programs test)
+		$(multilib_native_use_enable test-programs test) \
 		$(systemd_with_unitdir) \
 		$(multilib_native_use_enable udev) \
 		$(multilib_native_use_enable udev sixaxis)
@@ -165,9 +166,6 @@ multilib_src_install() {
 		dobin tools/hex2hcd
 
 		# Unittests are not that useful once installed, so make them optional
-		if use test && ! use test-programs; then
-			rm -r "${ED}"/usr/$(get_libdir)/bluez/test || die
-		fi
 		if use test-programs; then
 			python_fix_shebang "${ED}"/usr/$(get_libdir)/bluez/test
 			for i in $(find "${ED}"/usr/$(get_libdir)/bluez/test -maxdepth 1 -type f ! -name "*.*"); do
