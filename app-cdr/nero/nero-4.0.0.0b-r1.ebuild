@@ -2,25 +2,29 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils fdo-mime rpm multilib gnome2-utils linux-info
 
 DESCRIPTION="Nero Burning ROM for Linux"
 HOMEPAGE="http://nerolinux.nero.com"
-SRC_URI="x86? ( mirror://${PN}/${PN}linux-${PV}-x86.rpm )
-	amd64? ( mirror://${PN}/${PN}linux-${PV}-x86_64.rpm )"
+SRC_URI="
+	x86? ( ${PN}linux-${PV}-x86.rpm )
+	amd64? ( ${PN}/${PN}linux-${PV}-x86_64.rpm )
+"
 
 LICENSE="Nero-EULA-US"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
-RESTRICT="strip mirror test"
+RESTRICT="strip mirror test fetch"
 
-RDEPEND="x11-libs/gtk+:2
+RDEPEND="
+	x11-libs/gtk+:2
 	x11-libs/libX11
 	x11-libs/libXinerama
-	x11-libs/pango[X]"
+	x11-libs/pango[X]
+"
 DEPEND=""
 
 QA_TEXTRELS="opt/${PN}/$(get_libdir)/${PN}/*
@@ -33,7 +37,17 @@ QA_PREBUILT="opt/${PN}/${PN}.*
 	opt/${PN}/$(get_libdir)/${PN}/plug-ins/*
 	usr/share/${PN}/helpers/splash/nerosplash"
 
-S=${WORKDIR}
+S="${WORKDIR}"
+
+pkg_nofetch() {
+	local nero_arch
+	use amd64 && nero_arch=64
+	use x86 && ner_arch=32
+
+	einfo "Please visit http://www.nero.com/enu/downloads/previous-versions/download-linux4-update.php"
+	einfo " and use the 'RPM package ${nero_arch} bit' download then place ${A}"
+	einfo " into ${DISTDIR}"
+}
 
 pkg_setup() {
 	CONFIG_CHECK="~CHR_DEV_SG"
@@ -78,11 +92,6 @@ pkg_postinst() {
 	fdo-mime_mime_database_update
 	gnome2_icon_cache_update
 	nero --perform-post-installation
-
-	elog "Technical support for NeroLINUX is provided by CDFreaks"
-	elog "Linux forum at http://club.cdfreaks.com/forumdisplay.php?f=104"
-	elog
-	elog "You also need to setup your user to cdrom group."
 }
 
 pkg_postrm() {
