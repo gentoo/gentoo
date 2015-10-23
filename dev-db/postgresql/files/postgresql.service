@@ -47,5 +47,9 @@ TimeoutSec=300
 # Disable OOM kill on the postmaster
 OOMScoreAdjust=-1000
 
+# Make sure the required runtimedir is present
+RuntimeDirectory=postgresql
+RuntimeDirectoryMode=1775
+
 [Install]
 WantedBy=multi-user.target

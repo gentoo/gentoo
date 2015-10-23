@@ -4,10 +4,6 @@
 
 EAPI="5"
 
-# Testing within Portage's environment is broken, and the patch no
-# longer applies cleanly.
-RESTRICT="test"
-
 PYTHON_COMPAT=( python{2_7,3_4} )
 
 inherit eutils flag-o-matic linux-info multilib pam prefix python-single-r1 \
@@ -94,9 +90,11 @@ src_prepare() {
 	sed "s|\(PGSOCKET_DIR\s\+\)\"/tmp\"|\1\"${EPREFIX}/run/postgresql\"|" \
 		-i src/include/pg_config_manual.h || die
 
-	epatch "${FILESDIR}/pg_ctl-exit-status.patch"
-
 	use server || epatch "${FILESDIR}/${PN}-${SLOT}-no-server.patch"
+
+	# Fix bug 486556 where the server would crash at start up because of
+	# an infinite loop caused by a self-referencing symlink.
+	epatch "${FILESDIR}/postgresql-9.2-9.4-tz-dir-overflow.patch"
 
 	if use pam ; then
 		sed -e "s/\(#define PGSQL_PAM_SERVICE \"postgresql\)/\1-${SLOT}/" \
@@ -192,13 +190,11 @@ src_install() {
 			"${FILESDIR}/${PN}.confd" | newconfd - ${PN}-${SLOT}
 
 		sed -e "s|@SLOT@|${SLOT}|g" -e "s|@LIBDIR@|$(get_libdir)|g" \
-			"${FILESDIR}/${PN}.init-pre_9.2" | newinitd - ${PN}-${SLOT}
+			"${FILESDIR}/${PN}.init-9.3" | newinitd - ${PN}-${SLOT}
 
 		sed -e "s|@SLOT@|${SLOT}|g" -e "s|@LIBDIR@|$(get_libdir)|g" \
 			"${FILESDIR}/${PN}.service" | \
 			systemd_newunit - ${PN}-${SLOT}.service
-
-		systemd_newtmpfilesd "${FILESDIR}"/${PN}.tmpfilesd ${PN}-${SLOT}.conf
 
 		newbin "${FILESDIR}"/${PN}-check-db-dir ${PN}-${SLOT}-check-db-dir
 
@@ -378,5 +374,23 @@ pkg_config() {
 	else
 		einfo "You should use the '${EROOT%/}/etc/init.d/postgresql-${SLOT}' script to run PostgreSQL"
 		einfo "instead of 'pg_ctl'."
+	fi
+}
+
+src_test() {
+	einfo ">>> Test phase [check]: ${CATEGORY}/${PF}"
+
+	if use server && [[ ${UID} -ne 0 ]] ; then
+		emake check
+
+		einfo "If you think other tests besides the regression tests are necessary, please"
+		einfo "submit a bug including a patch for this ebuild to enable them."
+	else
+		use server || \
+			ewarn 'Tests cannot be run without the "server" use flag enabled.'
+		[[ ${UID} -eq 0 ]] || \
+			ewarn 'Tests cannot be run as root. Enable "userpriv" in FEATURES.'
+
+		ewarn 'Skipping.'
 	fi
 }
