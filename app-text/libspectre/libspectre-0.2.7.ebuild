@@ -26,6 +26,8 @@ DOCS="NEWS README TODO"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-0.2.0-interix.patch
+	has_version \>=app-text/ghostscript-gpl-9.18 \
+		&& epatch "${FILESDIR}"/${PN}-0.2.7-gs918.patch
 	eautoreconf # need new libtool for interix
 }
 
