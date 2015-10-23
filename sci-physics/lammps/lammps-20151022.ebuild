@@ -9,34 +9,8 @@ PYTHON_COMPAT=( python{2_7,3_3} )
 inherit eutils flag-o-matic fortran-2 multilib python-r1
 
 convert_month() {
-	case $1 in
-		01) echo Jan
-			;;
-		02) echo Feb
-			;;
-		03) echo Mar
-			;;
-		04) echo Apr
-			;;
-		05) echo May
-			;;
-		06) echo Jun
-			;;
-		07) echo Jul
-			;;
-		08) echo Aug
-			;;
-		09) echo Sep
-			;;
-		10) echo Oct
-			;;
-		11) echo Nov
-			;;
-		12) echo Dec
-			;;
-		*)  echo unknown
-			;;
-	esac
+	local months=( "" Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec )
+	echo ${months[${1#0}]}
 }
 
 MY_P=${PN}-$((10#${PV:6:2}))$(convert_month ${PV:4:2})${PV:2:2}
