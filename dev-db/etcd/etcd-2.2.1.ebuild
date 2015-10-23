@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,11 +9,12 @@ inherit user systemd
 KEYWORDS="~amd64"
 DESCRIPTION="A highly-available key value store for shared configuration and service discovery"
 HOMEPAGE="https://github.com/coreos/etcd/"
-SRC_URI="https://github.com/coreos/etcd/archive/v${PV}.zip -> ${P}.zip"
+SRC_URI="https://github.com/coreos/etcd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="doc"
-DEPEND=">=dev-lang/go-1.2"
+DEPEND=">=dev-lang/go-1.2:="
+RDEPEND="!dev-db/etcdctl"
 
 pkg_setup() {
 	enewgroup ${PN}
@@ -21,20 +22,23 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -e "s:^\(go install\)\(.*\)$:\\1 -x -ldflags=\"-v -linkmode=external -extldflags '${LDFLAGS}'\" \\2:" \
+	sed -e 's|GIT_SHA=.*|GIT_SHA=v${PV}|'\
+		-e 's|-ldflags "-s.*"|-v -x|' \
+		-e 's|-ldflags "-s|-v -x "|' \
 		-i build || die
+	sed -e 's|go test|\0 -v|'\
+		-i test || die
 }
 
 src_compile() {
-	CGO_CFLAGS="${CFLAGS}" ./build || die
+	./build || die
 }
 
 src_install() {
 	insinto /etc/${PN}
 	doins "${FILESDIR}/${PN}.conf"
-	dobin bin/${PN}
-	newbin bin/bench ${PN}-bench
-	dodoc CHANGELOG README.md
+	dobin bin/*
+	dodoc README.md
 	use doc && dodoc -r Documentation
 	systemd_dounit "${FILESDIR}/${PN}.service"
 	systemd_newtmpfilesd "${FILESDIR}/${PN}.tmpfiles.d.conf" ${PN}.conf
@@ -46,4 +50,8 @@ src_install() {
 	dodir /var/log/${PN}
 	fowners ${PN}:${PN} /var/log/${PN}
 	fperms 755 /var/log/${PN}
+}
+
+src_test() {
+	./test || die
 }
