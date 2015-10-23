@@ -4,16 +4,19 @@
 
 EAPI=5
 
-BITCOINCORE_IUSE="dbus kde +qrcode qt4 qt5 test upnp +wallet"
+BITCOINCORE_COMMITHASH="cf33f196e79b1e61d6266f8e5190a0c4bfae7224"
+BITCOINCORE_LJR_DATE="20150921"
+BITCOINCORE_IUSE="dbus kde ljr +qrcode qt4 qt5 test upnp +wallet zeromq"
+BITCOINCORE_POLICY_PATCHES="cltv cpfp dcmp rbf spamfilter"
 LANGS="ach af_ZA ar be_BY bg bs ca ca@valencia ca_ES cmn cs cy da de el_GR en eo es es_CL es_DO es_MX es_UY et eu_ES fa fa_IR fi fr fr_CA gl gu_IN he hi_IN hr hu id_ID it ja ka kk_KZ ko_KR ky la lt lv_LV mn ms_MY nb nl pam pl pt_BR pt_PT ro_RO ru sah sk sl_SI sq sr sv th_TH tr uk ur_PK uz@Cyrl vi vi_VN zh_HK zh_CN zh_TW"
 BITCOINCORE_NEED_LEVELDB=1
 BITCOINCORE_NEED_LIBSECP256K1=1
-inherit bitcoincore eutils fdo-mime gnome2-utils kde4-functions qt4-r2 git-2
+inherit bitcoincore eutils fdo-mime gnome2-utils kde4-functions qt4-r2
 
 DESCRIPTION="An end-user Qt GUI for the Bitcoin crypto-currency"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	dev-libs/protobuf
@@ -39,7 +42,7 @@ src_prepare() {
 
 	for lan in $LANGS; do
 		if [ ! -e src/qt/locale/bitcoin_$lan.ts ]; then
-			ewarn "Language '$lan' no longer supported. Ebuild needs update."
+			die "Language '$lan' no longer supported. Ebuild needs update."
 		fi
 	done
 

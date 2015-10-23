@@ -4,7 +4,12 @@
 
 EAPI=5
 
-BITCOINCORE_IUSE="examples test upnp +wallet"
+BITCOINCORE_COMMITHASH="cf33f196e79b1e61d6266f8e5190a0c4bfae7224"
+BITCOINCORE_LJR_DATE="20150921"
+BITCOINCORE_IUSE="addrindex examples ljr test upnp +wallet zeromq"
+BITCOINCORE_ADDRINDEX_DIFF="8a915e56f4be5d090d79f01cbd4a23ce1b7e9168...4a6331c5068d8f2c95731518445a57267d506bb5"
+BITCOINCORE_ADDRINDEX_PATCHFILE="bitcoin-addrindex-v0.11.0.patch"
+BITCOINCORE_POLICY_PATCHES="cltv cpfp dcmp rbf spamfilter"
 BITCOINCORE_NEED_LEVELDB=1
 BITCOINCORE_NEED_LIBSECP256K1=1
 inherit bash-completion-r1 bitcoincore user systemd
@@ -12,7 +17,7 @@ inherit bash-completion-r1 bitcoincore user systemd
 DESCRIPTION="Original Bitcoin crypto-currency wallet for automated services"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~x86 ~amd64-linux ~x86-linux"
 
 pkg_setup() {
 	local UG='bitcoin'
