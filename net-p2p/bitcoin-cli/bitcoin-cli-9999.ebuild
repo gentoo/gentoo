@@ -15,7 +15,7 @@ KEYWORDS=""
 
 src_prepare() {
 	bitcoincore_prepare
-	sed -i 's/bitcoin-tx//' src/Makefile.am || die
+	sed -i 's/bitcoin-tx//' src/Makefile.am
 	bitcoincore_autoreconf
 }
 

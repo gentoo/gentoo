@@ -213,7 +213,6 @@ bitcoincore_pkg_pretend() {
 }
 
 bitcoincore_prepare() {
-	local mypolicy
 	if [ -n "${BITCOINCORE_NO_SYSLIBS}" ]; then
 		true
 	elif [ "${PV}" = "9999" ]; then
