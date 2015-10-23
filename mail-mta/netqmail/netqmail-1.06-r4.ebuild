@@ -49,6 +49,7 @@ DEPEND="
 		!libressl? ( dev-libs/openssl:0 )
 		libressl? ( dev-libs/libressl )
 	)
+	sys-apps/gentoo-functions
 	sys-apps/groff
 "
 RDEPEND="
