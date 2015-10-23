@@ -162,13 +162,9 @@ multilib_src_configure() {
 	# static-libs USE flag.
 	options+=($(use_enable static-libs static))
 
-	# tcl, test USE flags.
+	# tcl, test, tools USE flags.
 	if full_tarball; then
-		if use tcl || use test; then
-			options+=(--enable-tcl)
-		else
-			options+=(--disable-tcl)
-		fi
+		options+=(--enable-tcl)
 	fi
 
 	if [[ "${CHOST}" == *-mint* ]]; then
@@ -189,7 +185,7 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	emake TCLLIBDIR="${EPREFIX}/usr/$(get_libdir)/${P}"
+	emake HAVE_TCL="$(usex tcl 1 "")" TCLLIBDIR="${EPREFIX}/usr/$(get_libdir)/${P}"
 
 	if use tools && multilib_is_native_abi; then
 		emake showdb showjournal showstat4 showwal sqldiff sqlite3_analyzer
@@ -202,7 +198,7 @@ multilib_src_test() {
 		return
 	fi
 
-	emake $(use debug && echo fulltest || echo test)
+	emake HAVE_TCL="$(usex tcl 1 "")" $(use debug && echo fulltest || echo test)
 }
 
 multilib_src_install() {
