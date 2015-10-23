@@ -10946,13 +10946,13 @@ kde-apps/kwordquiz 4.14.3: KDE: A powerful flashcard and vocabulary learning pro
 kde-apps/kwrite 4.14.3 15.08.2: KDE simple text editor
 kde-apps/libkcddb 4.14.3 15.08.1 15.08.2: KDE library for CDDB
 kde-apps/libkcompactdisc 4.14.3 15.08.1 15.08.2: KDE library for playing & ripping CDs
-kde-apps/libkdcraw 4.14.3 4.14.3-r1: KDE digital camera raw image library wrapper
+kde-apps/libkdcraw 4.14.3 4.14.3-r1 15.08.2: KDE digital camera raw image library wrapper
 kde-apps/libkdeedu 4.14.3: Common library for KDE educational apps
 kde-apps/libkdegames 4.14.3 4.14.3-r1: Base library common to many KDE games
-kde-apps/libkexiv2 4.14.3: KDE Image Plugin Interface: an exiv2 library wrapper
+kde-apps/libkexiv2 4.14.3 15.08.2: KDE Image Plugin Interface: an exiv2 library wrapper
 kde-apps/libkface 4.4.0 4.12.0 15.08.2-r1: Qt/C++ wrapper around LibFace to perform face recognition and detection
 kde-apps/libkgeomap 4.4.0 4.12.0 15.08.2: Wrapper library for world map components as marble, openstreetmap and googlemap
-kde-apps/libkipi 4.14.3: A library for image plugins accross KDE applications
+kde-apps/libkipi 4.14.3 15.08.2-r1: A library for image plugins accross KDE applications
 kde-apps/libkmahjongg 4.14.3: LibKMahjongg for KDE
 kde-apps/libkomparediff2 4.14.3: KDE library to compare files and strings
 kde-apps/libkonq 4.14.3 15.08.2: The embeddable part of konqueror
