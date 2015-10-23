@@ -21,7 +21,7 @@ DEPEND=">=virtual/jdk-1.6
 	source? ( app-arch/zip )
 	test? ( dev-java/junit:0 )"
 
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc ppc64 x86 ~x86-fbsd"
 IUSE="commons-digester"
 
 S=${WORKDIR}/${P}-src
