@@ -136,13 +136,6 @@ dev-java/mx4j-tools
 dev-java/proxool
 www-servers/axis:1
 
-
-# Patrice Clement <monsieurp@gentoo.org> (24 Sep 2015)
-# This package was never marked stable 
-# and is relying on an old version of JavaCC.
-# Masked for removal in 30 days. See bug 561410.
-dev-db/derby
-
 # Dion Moult <moult@gentoo.org> (24 Sep 2015)
 # Masked for removal in 30 days. Bug #466724
 # Heavily out of date. Use sci-chemistry/icm

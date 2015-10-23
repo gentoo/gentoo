@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sci-geosciences</herd>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>wraeth@wraeth.id.au</email>
+		<name>Sam Jorna</name>
+		<description>Proxy maintainer - assign bugs to him</description>
+	</maintainer>
+<longdescription lang="en">
+An open-source utility for compressing LAS-stored LiDAR information in a
+lossless format.
+</longdescription>
+</pkgmetadata>
