@@ -20,6 +20,7 @@ RDEPEND="
 	sys-devel/binutils
 "
 
+S=${WORKDIR}/${PN}
 DOCS=( TODO debian/changelog )
 
 src_unpack() {
