@@ -4,10 +4,10 @@ DESCRIPTION=A lib to make the setup of Java Management Extensions easier
 EAPI=5
 HOMEPAGE=http://commons.apache.org/modeler/
 IUSE=commons-digester elibc_FreeBSD doc source test elibc_FreeBSD
-KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd
+KEYWORDS=amd64 ppc ppc64 x86 ~x86-fbsd
 LICENSE=Apache-2.0
 RDEPEND=>=virtual/jre-1.5 dev-java/mx4j-core:3.0 dev-java/commons-logging:0 commons-digester? ( dev-java/commons-digester:3.2 ) >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 SLOT=0
 SRC_URI=mirror://apache/commons/modeler/source/commons-modeler-2.0.1-src.tar.gz
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-ant-2	946f77f25d457a91a2188c26f3e50b3e	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	e03639b92617c43f3ca3d670af620cf5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=c5dc12d54f1eef21524d645b09e3c77f
+_md5_=9f346afea84009aab17a4b0071547501

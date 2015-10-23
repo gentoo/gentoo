@@ -3790,7 +3790,7 @@ dev-java/commons-lang 2.0-r2 2.6 3.1 3.3.2: Commons components to manipulate cor
 dev-java/commons-launcher 1.1-r1: Commons-launcher eliminates the need for a batch or shell script to launch a Java class
 dev-java/commons-logging 1.2: The Jakarta-Commons Logging package is an ultra-thin bridge between different logging libraries
 dev-java/commons-math 2.1-r1 3.2: Lightweight, self-contained mathematics and statistics components
-dev-java/commons-modeler 2.0.1 2.0.1-r1: A lib to make the setup of Java Management Extensions easier
+dev-java/commons-modeler 2.0.1-r1: A lib to make the setup of Java Management Extensions easier
 dev-java/commons-net 1.4.1-r1 3.2: The purpose of the library is to provide fundamental protocol access, not higher-level abstractions
 dev-java/commons-pool 1.6 2.2: Provides general purpose object pooling API
 dev-java/commons-primitives 1.0-r2: The Jakarta-Commons Primitives Component
@@ -4069,10 +4069,10 @@ dev-java/jspeex 0.9.7-r1: Speex speech codec library for Java
 dev-java/jsr101 1.4-r3: Java(TM) API for XML-Based RPC Specification Interface Classes
 dev-java/jsr173 1.0-r1: The Streaming API for XML (StAX) is a Java API for parsing and writing XML easily and efficiently
 dev-java/jsr181 1.0 1.0-r1: JSR 181 API classes
-dev-java/jsr223 1.0-r1: Scripting for the Java(TM) Platform
+dev-java/jsr223 1.0-r1 1.0-r2: Scripting for the Java(TM) Platform
 dev-java/jsr250 1.0-r1: JSR 250 Common Annotations
-dev-java/jsr305 1.0-r1: Reference implementation for JSR 305: Annotations for Software Defect Detection in Java
-dev-java/jsr311-api 1.1: JAX-RS: Java API for RESTful Web Services
+dev-java/jsr305 1.0-r1 3.0.1: Annotations for Software Defect Detection in Java
+dev-java/jsr311-api 1.1 1.1.1: JAX-RS: Java API for RESTful Web Services
 dev-java/jsr67 1.3: SAAJ 1.3 (AKA JSR-67 MR3) API
 dev-java/jsr93 1.0 1.0-r1: Java API for XML Registries (JAXR) - API
 dev-java/jss 4.3 4.3.2: Network Security Services for Java (JSS)
