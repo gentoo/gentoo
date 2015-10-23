@@ -73,17 +73,17 @@ pkg_setup() {
 
 src_prepare() {
 	# remove internal copies of various libraries
-	rm -rf "${S}"/cups/libs
-	rm -rf "${S}"/expat
-	rm -rf "${S}"/freetype
-	rm -rf "${S}"/jbig2dec
-	rm -rf "${S}"/jpeg{,xr}
-	rm -rf "${S}"/lcms{,2}
-	rm -rf "${S}"/libpng
-	rm -rf "${S}"/tiff
-	rm -rf "${S}"/zlib
+	rm -rf "${S}"/cups/libs || die
+	rm -rf "${S}"/expat || die
+	rm -rf "${S}"/freetype || die
+	rm -rf "${S}"/jbig2dec || die
+	rm -rf "${S}"/jpeg{,xr} || die
+	rm -rf "${S}"/lcms{,2} || die
+	rm -rf "${S}"/libpng || die
+	rm -rf "${S}"/tiff || die
+	rm -rf "${S}"/zlib || die
 	# remove internal CMaps (CMaps from poppler-data are used instead)
-	rm -rf "${S}"/Resource/CMap
+	rm -rf "${S}"/Resource/CMap || die
 
 	# apply various patches, many borrowed from Fedora
 	# http://pkgs.fedoraproject.org/cgit/ghostscript.git
@@ -96,15 +96,15 @@ src_prepare() {
 
 	if use djvu ; then
 		unpack gsdjvu-${GSDJVU_PV}.tar.gz
-		cp gsdjvu-${GSDJVU_PV}/gsdjvu "${S}"
-		cp gsdjvu-${GSDJVU_PV}/gdevdjvu.c "${S}"/base
+		cp gsdjvu-${GSDJVU_PV}/gsdjvu "${S}" || die
+		cp gsdjvu-${GSDJVU_PV}/gdevdjvu.c "${S}"/base || die
 		epatch "${WORKDIR}"/patches-gsdjvu/gsdjvu-1.3-${PN}-8.64.patch
-		cp "${S}"/contrib/contrib.mak "${S}"/base/contrib.mak.gsdjvu
+		cp "${S}"/contrib/contrib.mak "${S}"/base/contrib.mak.gsdjvu || die
 		grep -q djvusep "${S}"/contrib/contrib.mak || \
-			cat gsdjvu-${GSDJVU_PV}/gsdjvu.mak >> "${S}"/contrib/contrib.mak
+			cat gsdjvu-${GSDJVU_PV}/gsdjvu.mak >> "${S}"/contrib/contrib.mak || die
 
 		# install ps2utf8.ps, bug #197818
-		cp gsdjvu-${GSDJVU_PV}/ps2utf8.ps "${S}"/lib
+		cp gsdjvu-${GSDJVU_PV}/ps2utf8.ps "${S}"/lib || die
 		sed -i -e '/$(EXTRA_INIT_FILES)/ a\ps2utf8.ps \\' \
 			"${S}"/base/unixinst.mak || die "sed failed"
 	fi
@@ -124,10 +124,10 @@ src_prepare() {
 		-e 's:-L$(BINDIR):& $(LDFLAGS):g' \
 		"${S}"/Makefile.in "${S}"/base/*.mak || die "sed failed"
 
-	cd "${S}"
+	cd "${S}" || die
 	eautoreconf
 
-	cd "${S}/ijs"
+	cd "${S}/ijs" || die
 	eautoreconf
 }
 
@@ -171,7 +171,7 @@ src_configure() {
 			"${S}"/Makefile || die "sed failed"
 	fi
 
-	cd "${S}/ijs"
+	cd "${S}/ijs" || die
 	econf \
 		--enable-shared \
 		$(use_enable static-libs static)
@@ -181,31 +181,30 @@ src_compile() {
 	# -j1 needed because of bug #550926
 	emake -j1 so all
 
-	cd "${S}/ijs"
+	cd "${S}/ijs" || die
 	emake
 }
 
 src_install() {
 	emake -j1 DESTDIR="${D}" install-so install
 
-	if use djvu ; then
-		dobin gsdjvu
-	fi
+	use djvu && dobin gsdjvu
 
 	# move gsc to gs, bug #343447
 	# gsc collides with gambit, bug #253064
-	mv -f "${D}/usr/bin/gsc" "${D}/usr/bin/gs" || die
+	mv -f "${ED}"/usr/bin/{gsc,gs} || die
 
-	cd "${S}/ijs"
+	cd "${S}/ijs" || die
 	emake -j1 DESTDIR="${D}" install
 
 	# rename the original cidfmap to cidfmap.GS
-	mv "${D}/usr/share/ghostscript/${PVM}/Resource/Init/cidfmap"{,.GS} || die
+	mv "${ED}/usr/share/ghostscript/${PVM}/Resource/Init/cidfmap"{,.GS} || die
 
 	# install our own cidfmap to handle CJK fonts
-	insinto "/usr/share/ghostscript/${PVM}/Resource/Init"
-	doins "${WORKDIR}/fontmaps/CIDFnmap"
-	doins "${WORKDIR}/fontmaps/cidfmap"
+	insinto /usr/share/ghostscript/${PVM}/Resource/Init
+	doins \
+		"${WORKDIR}/fontmaps/CIDFnmap" \
+		"${WORKDIR}/fontmaps/cidfmap"
 	for X in ${LANGS} ; do
 		if use linguas_${X} ; then
 			doins "${WORKDIR}/fontmaps/cidfmap.${X}"
@@ -215,7 +214,9 @@ src_install() {
 	# install the CMaps from poppler-data properly, bug #409361
 	dosym /usr/share/poppler/cMaps /usr/share/ghostscript/${PVM}/Resource/CMap
 
-	use static-libs || find "${D}" -name '*.la' -delete
+	use static-libs || prune_libtool_files --all
 
-	use linguas_de || rm -r "${D}"/usr/share/man/de
+	if ! use linguas_de; then
+		rm -r "${ED}"/usr/share/man/de || die
+	fi
 }
