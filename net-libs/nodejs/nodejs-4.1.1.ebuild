@@ -28,11 +28,6 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/node-v${PV}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-# Tests do not pass on both platforms.
-if [[ ${ABI} == "ppc" || ${ABI} == "ppc64" ]]; then
-	RESTRICT="test"
-fi
-
 pkg_pretend() {
 	if ! test-flag-CXX -std=c++11 ; then
 		die "Your compiler doesn't support C++11. Use GCC 4.8, Clang 3.3 or newer."
@@ -92,7 +87,7 @@ src_prepare() {
 
 src_configure() {
 	local myarch=""
-	local myconf=( --shared-openssl --shared-libuv --shared-http-parser --shared-zlib )
+	local myconf+=( --shared-openssl --shared-libuv --shared-http-parser --shared-zlib )
 	use npm || myconf+=( --without-npm )
 	use icu && myconf+=( --with-intl=system-icu )
 	use snapshot && myconf+=( --with-snapshot )
@@ -105,8 +100,6 @@ src_configure() {
 		x32) myarch="x32";;
 		arm) myarch="arm";;
 		arm64) myarch="arm64";;
-		ppc) myarch="ppc";;
-		ppc64) myarch="ppc64";;
 		*) die "Unrecognized ARCH ${ARCH}";;
 	esac
 
@@ -115,7 +108,7 @@ src_configure() {
 		linux_use_bundled_gold=0" \
 	"${PYTHON}" configure \
 		--prefix="${EPREFIX}"/usr \
-		--dest-cpu="${myarch}" \
+		--dest-cpu=${myarch} \
 		--without-dtrace \
 		"${myconf[@]}" || die
 }
