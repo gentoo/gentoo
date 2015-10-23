@@ -17803,7 +17803,7 @@ x11-libs/mx 1.4.7-r1 1.4.7-r2: A widget toolkit using Clutter
 x11-libs/neXtaw 0.15.1-r1: Athena Widgets with N*XTSTEP appearance
 x11-libs/pango 1.36.8 1.36.8-r1: Internationalized text layout and rendering library
 x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
-x11-libs/pixman 0.32.6 0.32.8 0.33.2 9999: Low-level pixel manipulation routines
+x11-libs/pixman 0.32.6 0.32.8 0.33.2 0.33.4 9999: Low-level pixel manipulation routines
 x11-libs/qscintilla 2.8.4-r1 2.9: A Qt port of Neil Hodgson's Scintilla C++ editor class
 x11-libs/qtermwidget 0.4.0 0.4.0.37 0.6.0: Qt terminal emulator widget
 x11-libs/qtscriptgenerator 0.2.0: Tool for generating Qt bindings for Qt Script
