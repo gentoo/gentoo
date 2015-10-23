@@ -26,7 +26,9 @@ RDEPEND="${RDEPEND} !dev-ruby/metasploit-model:0"
 ruby_add_bdepend "dev-ruby/bundler"
 
 all_ruby_prepare() {
-	[ -f Gemfile.lock ] && rm Gemfile.lock || die
+	if [ -f Gemfile.lock ]; then
+		rm  Gemfile.lock || die
+	fi
 	#For now, we don't support development or testing at all
 	#if ! use development; then
 		sed -i -e "/^group :development do/,/^end$/d" Gemfile || die
