@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=caps? ( sys-libs/libcap ) libedit? ( dev-libs/libedit ) readline? ( >=sys-libs/readline-4.1-r4:= ) sys-apps/texinfo >=dev-vcs/git-1.8.2.1 virtual/pkgconfig
+DESCRIPTION=NTP client and server programs
+EAPI=5
+HOMEPAGE=http://chrony.tuxfamily.org/
+IUSE=caps +cmdmon ipv6 libedit +ntp +phc +pps readline +refclock +rtc selinux +adns
+LICENSE=GPL-2
+RDEPEND=caps? ( sys-libs/libcap ) libedit? ( dev-libs/libedit ) readline? ( >=sys-libs/readline-4.1-r4:= ) selinux? ( sec-policy/selinux-chronyd )
+REQUIRED_USE=?? ( libedit readline )
+RESTRICT=test
+SLOT=0
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=23c43bdb9ce836570eb23ad9f91d2a57
