@@ -26,6 +26,6 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	econf \
-		$(use_with pcre) \
+		$(use_with pcre libpcre) \
 		$(use_with unac)
 }
