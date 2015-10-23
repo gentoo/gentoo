@@ -33,7 +33,7 @@ RDEPEND="!app-emulation/virtinst
 	dev-libs/libxml2[python,${PYTHON_USEDEP}]
 	dev-python/ipaddr[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	dev-python/urlgrabber[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
 	sys-libs/libosinfo[introspection]
 	gtk? (
 		x11-libs/gtk+:3[introspection]
