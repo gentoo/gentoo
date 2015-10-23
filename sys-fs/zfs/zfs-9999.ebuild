@@ -3,32 +3,25 @@
 # $Id$
 
 EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
-
-inherit python-r1 linux-info
-
-AT_M4DIR="config"
-AUTOTOOLS_AUTORECONF="1"
-AUTOTOOLS_IN_SOURCE_BUILD="1"
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 
 if [ ${PV} == "9999" ] ; then
-	inherit git-2 linux-mod
+	inherit git-r3 linux-mod
+	AUTOTOOLS_AUTORECONF="1"
 	EGIT_REPO_URI="git://github.com/zfsonlinux/${PN}.git"
 else
-	inherit eutils versionator
-	SRC_URI="https://github.com/zfsonlinux/${PN}/archive/${P}.tar.gz"
-	S="${WORKDIR}/${PN}-${P}"
+	SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
 fi
 
-inherit bash-completion-r1 flag-o-matic toolchain-funcs autotools-utils udev systemd
+inherit autotools-utils bash-completion-r1 flag-o-matic linux-info python-r1 systemd toolchain-funcs udev
 
 DESCRIPTION="Userland utilities for ZFS Linux kernel module"
 HOMEPAGE="http://zfsonlinux.org/"
 
-LICENSE="BSD-2 CDDL bash-completion? ( MIT )"
+LICENSE="BSD-2 CDDL MIT"
 SLOT="0"
-IUSE="bash-completion custom-cflags debug kernel-builtin +rootfs test-suite static-libs"
+IUSE="custom-cflags debug kernel-builtin +rootfs test-suite static-libs"
 RESTRICT="test"
 
 COMMON_DEPEND="
@@ -61,6 +54,9 @@ RDEPEND="${COMMON_DEPEND}
 		)
 	!>=sys-fs/udev-init-scripts-28
 "
+
+AT_M4DIR="config"
+AUTOTOOLS_IN_SOURCE_BUILD="1"
 
 pkg_setup() {
 	if use kernel_linux && use test-suite; then
@@ -126,7 +122,8 @@ src_install() {
 	gen_usr_ldscript -a uutil nvpair zpool zfs zfs_core
 	use test-suite || rm -rf "${ED}usr/share/zfs"
 
-	use bash-completion && newbashcomp "${FILESDIR}/bash-completion-r1" zfs
+	newbashcomp "${FILESDIR}/bash-completion-r1" zfs
+	bashcomp_alias zfs zpool
 
 	exeinto /usr/libexec
 	doexe "${T}/zfs-init.sh"
@@ -134,7 +131,6 @@ src_install() {
 }
 
 pkg_postinst() {
-
 	if ! use kernel-builtin && [ ${PV} = "9999" ]
 	then
 		einfo "Adding ${P} to the module database to ensure that the"

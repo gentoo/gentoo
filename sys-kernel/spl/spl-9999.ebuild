@@ -2,20 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
-AUTOTOOLS_AUTORECONF="1"
-
-inherit flag-o-matic linux-info linux-mod autotools-utils
+EAPI="5"
 
 if [[ ${PV} == "9999" ]] ; then
-	inherit git-2
+	AUTOTOOLS_AUTORECONF="1"
 	EGIT_REPO_URI="https://github.com/zfsonlinux/${PN}.git"
+	inherit git-r3
 else
-	inherit eutils versionator
-	SRC_URI="https://github.com/zfsonlinux/${PN}/archive/${P}.tar.gz"
-	S="${WORKDIR}/${PN}-${P}"
+	SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
 fi
+
+inherit flag-o-matic linux-info linux-mod autotools-utils
 
 DESCRIPTION="The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs"
 HOMEPAGE="http://zfsonlinux.org/"
@@ -35,6 +33,7 @@ RDEPEND="${COMMON_DEPEND}
 
 AT_M4DIR="config"
 AUTOTOOLS_IN_SOURCE_BUILD="1"
+DOCS=( AUTHORS DISCLAIMER README.markdown )
 
 pkg_setup() {
 	linux-info_pkg_setup
@@ -96,7 +95,6 @@ src_configure() {
 
 src_install() {
 	autotools-utils_src_install INSTALL_MOD_PATH="${INSTALL_MOD_PATH:-$EROOT}"
-	dodoc AUTHORS DISCLAIMER README.markdown
 }
 
 pkg_postinst() {
