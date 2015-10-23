@@ -14,6 +14,8 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE=""
 
+PATCHES=( "${FILESDIR}"/${P}-addbook.patch )
+
 src_configure() {
 	strip-flags # bug #199097
 	egamesconf --without-readline # bug 491088

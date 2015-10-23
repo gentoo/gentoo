@@ -1,0 +1,10 @@
+--- trunk/src/main.cc	2015/10/17 13:52:22	127
++++ trunk/src/main.cc	2015/10/18 17:28:56	128
+@@ -412,6 +412,7 @@
+     char data[9+MAXSTR+1+4]="";
+     sprintf( data, "book add %s\nquit", opt_addbook );
+     SendToEngine( data );
++    SET (flags, QUIT);
+   }
+ 
+   if ( opt_easy == 0 )

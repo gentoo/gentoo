@@ -5,3 +5,4 @@ slotmove =dev-ruby/recog-2.0.12 2 2.0.12
 slotmove =dev-ruby/recog-2.0.14 2 2.0.14
 move media-libs/libkface kde-apps/libkface
 move media-libs/libkgeomap kde-apps/libkgeomap
+move media-fonts/nanumfont media-fonts/nanum
