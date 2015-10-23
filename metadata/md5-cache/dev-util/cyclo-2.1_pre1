@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=sys-devel/flex
+DESCRIPTION=Computes cyclomatic complexity metrics on C source code.
+EAPI=5
+HOMEPAGE=https://github.com/sarnold/cyclo
+IUSE=debug
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://github.com/sarnold/cyclo/archive/2.1_pre1.tar.gz -> cyclo-2.1_pre1.tar.gz
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=06b17162f205c2114bad97afdce73449
