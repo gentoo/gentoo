@@ -147,7 +147,7 @@ app-admin/metalog 3-r1: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 0.2.4 0.2.5: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1: MongoDB MMS agents
 app-admin/mongo-tools 3.0.5 3.0.6 3.0.7: A high-performance, open source, schema-free document-oriented database
-app-admin/monit 5.8 5.8.1-r1 5.9 5.12.2 5.13 5.14: a utility for monitoring and managing daemons or similar programs running on a Unix system
+app-admin/monit 5.8 5.12.2 5.14 5.15: a utility for monitoring and managing daemons or similar programs running on a Unix system
 app-admin/multilog-watch 1.12: Watches a multilog file for irregularities
 app-admin/newsyslog 1.1: a highly configurable program for managing and archiving log files
 app-admin/ngxtop 0.0.2-r1 0.0.3_pre141201: real-time metrics for nginx server (and others)
