@@ -6649,6 +6649,8 @@ sci-geosciences/grass:geos - Use sci-libs/geos for v.buffer and adds extended op
 sci-geosciences/grass:gmath - Enable gmath wrapper for BLAS/Lapack (virtual/blas, virtual/lapack)
 sci-geosciences/grass:opencl - Enable OpenCL support
 sci-geosciences/gshhs:data - Add earth data with sci-geosciences/gshhs-data
+sci-geosciences/liblas:gdal - Add support for the sci-libs/gdal geospatial raster library
+sci-geosciences/liblas:geotiff - Add support for geo-tagged TIFF files with sci-libs/libgeotiff
 sci-geosciences/mapnik:gdal - Enable sci-libs/gdal library support
 sci-geosciences/mapnik:geos - Enable sci-libs/geos library support
 sci-geosciences/mapserver:gdal - Enable sci-libs/gdal library support

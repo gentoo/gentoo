@@ -2852,7 +2852,6 @@ dev-db/ctdb 1.13-r1 9999: A cluster implementation of the TDB database used to s
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
 dev-db/db-je 3.3.75: Berkeley DB JE is a high performance, transactional storage engine written entirely in Java
 dev-db/dbmodel 0.3: Qt4 tool for drawing entity-relational diagrams
-dev-db/derby 10.10.1.1: An embeddable relational database implemented entirely in Java
 dev-db/drizzle 7.2.4: Database optimized for Cloud and Net applications
 dev-db/etcd 0.4.6 2.0.10 2.0.10-r1: A highly-available key value store for shared configuration and service discovery
 dev-db/etcdctl 0.4.6 0.4.6-r1: A simple command line client for etcd
@@ -3957,7 +3956,7 @@ dev-java/java-getopt 1.0.14: Java command line option parser
 dev-java/java-gnome 4.0.19 4.0.20 4.1.3: Java bindings for GTK and GNOME
 dev-java/java-sdk-docs 1.6.0.30 1.7.0.80 1.8.0.66: Oracle's documentation bundle (including API) for Java SE
 dev-java/java-service-wrapper 3.5.25-r1: A wrapper that makes it possible to install a Java Application as daemon
-dev-java/javacc 4.0-r4 4.2 5.0-r1: Java Compiler Compiler - The Java Parser Generator
+dev-java/javacc 5.0-r1: Java Compiler Compiler - The Java Parser Generator
 dev-java/javacsv 2.1: Java library for reading and writing CSV and plain delimited text files
 dev-java/javacup 0.11a_beta20060608 0.11b_beta20150326: CUP Parser Generator for Java
 dev-java/javahelp 2.0.05_p63: The JavaHelp system online help system
@@ -15375,6 +15374,8 @@ sci-geosciences/harmonics-dwf-free 20121224 20131228: Tidal harmonics database f
 sci-geosciences/harmonics-dwf-free-noncomm 20111230-r1: Tidal harmonics database for libtcd
 sci-geosciences/josm 5608 6060 7347 8800 9999: Java-based editor for the OpenStreetMap project
 sci-geosciences/josm-plugins 20101206: Set of plugins for josm
+sci-geosciences/laszip 2.2.0: Library for free and lossless compression of the LAS LiDAR format
+sci-geosciences/liblas 1.8.0: C/C++ library for manipulating the LAS LiDAR format common in GIS
 sci-geosciences/libtcd 2.2.5_p2 2.2.6 2.2.7: Library for reading and writing Tide Constituent Database (TCD) files
 sci-geosciences/mapnik 2.0.1 2.0.2 2.1.0 2.2.0: A Free Toolkit for developing mapping applications
 sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
