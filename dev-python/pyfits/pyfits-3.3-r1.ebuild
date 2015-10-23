@@ -19,7 +19,6 @@ IUSE="doc test"
 
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
-	!dev-python/astropy
 	sci-libs/cfitsio:0="
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -57,15 +56,17 @@ python_test() {
 	nosetests --verbose || die
 }
 
+python_install() {
+	distutils-r1_python_install
+	local binary
+	for binary in "${ED}"/usr/bin/* "${D}$(python_get_scriptdir)"/*; do
+		einfo "Renaming ${binary} to ${binary}-${PN}"
+		mv ${binary}{,-${PN}} || die "failed renaming"
+	done
+}
+
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/build/html/. )
 	DOCS=( FAQ.txt CHANGES.txt )
 	distutils-r1_python_install_all
-	rename_binary() {
-		local binary
-		for binary in "${ED}"/usr/bin/* "${D}$(python_get_scriptdir)"/*; do
-			mv ${binary}{,-${PN}} || die "failed renaming"
-		done
-	}
-	python_foreach_impl rename_binary
 }
