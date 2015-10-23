@@ -6851,7 +6851,7 @@ dev-python/cmd2 0.6.7 0.6.8: Extra features for standard library's cmd module
 dev-python/codetools 4.2.0: Enthought Tool Suite: Code analysis and execution tools
 dev-python/colander 1.0: A simple schema-based serialization and deserialization library
 dev-python/colorama 0.3.2 0.3.3: Makes ANSI escape character sequences for producing colored terminal text & cursor positioning
-dev-python/coloredlogs 1.0.1-r1 2.0: Colored stream handler for the logging module
+dev-python/coloredlogs 1.0.1-r1 2.0 3.1: Colored stream handler for the logging module
 dev-python/colorlog 2.6.0: Log formatting with colors
 dev-python/colout 0.1: Adds color to arbitrary command output
 dev-python/columnize 0.3.5-r1 0.3.8: Format a simple (i.e. not nested) list into aligned columns
@@ -7099,7 +7099,7 @@ dev-python/httmock 1.2.2: A mocking library for requests
 dev-python/http-parser 0.8.3: HTTP request/response parser for python in C
 dev-python/httplib2 0.8 0.9.1 0.9.2-r1: A comprehensive HTTP client library
 dev-python/httpretty 0.7.0 0.7.1 0.8.0 0.8.0-r1 0.8.6 0.8.10: HTTP client mock for Python
-dev-python/humanfriendly 1.33 1.35 1.38: Human friendly output for text interfaces using Python
+dev-python/humanfriendly 1.33 1.35 1.38 1.42: Human friendly output for text interfaces using Python
 dev-python/hypothesis 1.7.1 1.9.0: A library for property based testing
 dev-python/icalendar 3.8.4 3.9.0: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/iconvcodec 1.1.2-r1: Python Codecs for Iconv Encodings
@@ -7860,7 +7860,7 @@ dev-python/strict-rfc3339 0.6: Strict, simple, lightweight RFC3339 functions
 dev-python/stripogram 1.5-r1: Strip-o-Gram HTML Conversion Library
 dev-python/stsci-distutils 0.3.7: Utilities used to package some of STScI's Python projects
 dev-python/stsci-sphinxext 1.2.1: Tools and templates to customize Sphinx for STScI projects
-dev-python/subunit 0.0.6 0.0.10-r1 0.0.16 0.0.18-r2 0.0.19 0.0.21-r1 1.0.0 1.1.0: A streaming protocol for test results
+dev-python/subunit 0.0.6 0.0.10-r1 0.0.16 0.0.18-r2 0.0.19 0.0.21-r1 1.0.0 1.1.0 1.2.0: A streaming protocol for test results
 dev-python/subvertpy 0.9.1: Alternative Python bindings for Subversion
 dev-python/suds 0.4-r1 0.6 0.6-r1: Lightweight SOAP client (Jurko's fork) (py3 support) (active development)
 dev-python/sudsds 1.0.1-r1: Lightweight SOAP client - Czech NIC labs fork
@@ -7946,7 +7946,7 @@ dev-python/vcrpy 1.5.2 1.7.3 1.7.4: Automatically mock your HTTP interactions to
 dev-python/vcstools 0.1.37 0.1.38 9999: Python library for interacting with various VCS systems
 dev-python/vcversioner 2.14.0.0: Use version control tags to discover version numbers
 dev-python/venusian 1.0_alpha8 1.0: A library for deferring decorator actions
-dev-python/verboselogs 1.0.1: Verbose logging for Python's logging module
+dev-python/verboselogs 1.0.1 1.0.2: Verbose logging for Python's logging module
 dev-python/versiontools 1.9.1-r1: Smart replacement for plain tuple used in __version__
 dev-python/vertex 0.3.0-r1 0.3.1 0.3.1-r1: An implementation of the Q2Q protocol
 dev-python/virtualenv 12.0.5 13.1.0 13.1.1 13.1.2: Virtual Python Environment builder
