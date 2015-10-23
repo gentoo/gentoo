@@ -293,13 +293,6 @@ app-portage/lightweight-cvs-toolkit
 # Masked for removal in 30 days.
 kde-misc/socket-sentry
 
-# Hans de Graaff <graaff@gentoo.org> (28 Aug 2015)
-# Masked for removal in 30 days.
-# Only needed for ruby18 which has been removed a long time
-# ago. This gem is a no-op for newer ruby implementations
-# and nothing in the tree depends on it.
-dev-ruby/require_relative
-
 # Doug Goldstein <cardoe@gentoo.org> (25 Aug 2015)
 # Masked for removal in 30 days. Users should use the modules available
 # via the kernel as upstream has deprecated these packages.
