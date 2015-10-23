@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
-	tc-export CC LD
+	tc-export CC LD PKG_CONFIG
 }
 
 src_compile() {

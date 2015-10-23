@@ -1,10 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI="5"
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
 DESCRIPTION="nl80211-based configuration utility for wireless devices using the mac80211 kernel stack"
 HOMEPAGE="https://wireless.kernel.org/en/users/Documentation/iw"
@@ -20,11 +20,12 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
-	tc-export CC LD
-	epatch "${FILESDIR}/${P}-versioncheck.patch"
+	tc-export CC LD PKG_CONFIG
 }
 
 src_compile() {
+	CFLAGS="${CFLAGS} ${CPPFLAGS}" \
+	LDFLAGS="${CFLAGS} ${LDFLAGS}" \
 	emake V=1
 }
 
