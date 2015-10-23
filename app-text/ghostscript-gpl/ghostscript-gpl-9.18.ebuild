@@ -94,6 +94,8 @@ src_prepare() {
 			ghostscript-gpl-9.12-icc-missing-check.patch"
 	epatch
 
+	epatch "${FILESDIR}"/${P}-gserrors.h-backport.patch
+
 	if use djvu ; then
 		unpack gsdjvu-${GSDJVU_PV}.tar.gz
 		cp gsdjvu-${GSDJVU_PV}/gsdjvu "${S}" || die
