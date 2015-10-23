@@ -236,6 +236,7 @@ python_install() {
 		newinitd "${FILESDIR}/neutron.initd" "neutron-ovs-cleanup"
 		newconfd "${FILESDIR}/neutron-openvswitch-agent.confd" "neutron-ovs-cleanup"
 	fi
+	# changed in liberty
 	if use linuxbridge; then
 		newinitd "${FILESDIR}/neutron.initd" "neutron-linuxbridge-agent"
 		newconfd "${FILESDIR}/neutron-linuxbridge-agent.confd.liberty" "neutron-linuxbridge-agent"
