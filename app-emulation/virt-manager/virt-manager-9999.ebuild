@@ -34,7 +34,7 @@ RDEPEND="!app-emulation/virtinst
 	dev-python/ipaddr[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
-	sys-libs/libosinfo[introspection]
+	>=sys-libs/libosinfo-0.2.10[introspection]
 	gtk? (
 		x11-libs/gtk+:3[introspection]
 		gnome-base/dconf
