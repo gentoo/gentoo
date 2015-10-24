@@ -22,10 +22,7 @@ IUSE="doc cxx pgo static-libs"
 
 DEPEND="sys-devel/m4
 	app-arch/xz-utils"
-RDEPEND="abi_x86_32? (
-	!<=app-emulation/emul-linux-x86-baselibs-20131008-r1
-	!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-)"
+RDEPEND=""
 
 S=${WORKDIR}/${MY_P}
 
