@@ -35,7 +35,8 @@ RDEPEND="
 	gnome? ( >=gnome-base/gnome-shell-3.6.2 )
 	gstreamer? (
 		media-libs/gstreamer:1.0[introspection?]
-		media-libs/gst-plugins-base:1.0[introspection?] )
+		media-libs/gst-plugins-base:1.0[introspection?]
+		media-plugins/gst-plugins-meta:1.0 )
 	introspection? ( dev-libs/gobject-introspection:= )
 	mate? ( mate-base/mate-applets )
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.15 )
