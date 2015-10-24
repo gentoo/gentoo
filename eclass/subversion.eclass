@@ -348,7 +348,7 @@ subversion_fetch() {
 		rsync -rlpgo --exclude=".svn/" . "${S}" || die "${ESVN}: can't export to ${S}."
 	fi
 
-	popd >/dev/null
+	popd >/dev/null || die
 	echo
 }
 
