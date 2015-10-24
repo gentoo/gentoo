@@ -1,10 +1,12 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # This version is just for the ABI .4 library
 
-inherit eutils flag-o-matic
+EAPI="5"
+
+inherit eutils multilib-minimal flag-o-matic
 
 # Official patches
 # See ftp://ftp.cwru.edu/pub/bash/readline-4.3-patches/
@@ -36,26 +38,28 @@ SLOT="${PV:0:1}"
 KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 IUSE=""
 
-RDEPEND=">=sys-libs/ncurses-5.2-r2"
+RDEPEND=">=sys-libs/ncurses-5.2-r2:0[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
 
-src_unpack() {
-	unpack ${MY_P}.tar.gz
-	cd "${S}"
+src_prepare() {
 	[[ ${PLEVEL} -gt 0 ]] && epatch $(patches -s)
 	# force ncurses linking #71420
 	sed -i -e 's:^SHLIB_LIBS=:SHLIB_LIBS=-lncurses:' support/shobj-conf || die "sed"
 }
 
-src_compile() {
+multilib_src_configure() {
 	append-cppflags -D_GNU_SOURCE
-	econf --with-curses --disable-static || die
-	emake -C shlib || die
+	ECONF_SOURCE=${S} \
+	econf --with-curses --disable-static
 }
 
-src_install() {
-	emake -C shlib DESTDIR="${D}" install || die
+multilib_src_compile() {
+	emake -C shlib
+}
+
+multilib_src_install() {
+	emake -C shlib DESTDIR="${D}" install
 	rm -f "${D}"/usr/lib*/*.so
 }
