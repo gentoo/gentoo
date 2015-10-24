@@ -22,6 +22,10 @@ DEPEND="media-libs/libsdl[joystick,sound,video]
 	media-libs/sdl-mixer[mod,vorbis]
 	media-libs/libvorbis"
 
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-format.patch
+}
+
 src_install() {
 	default
 	find "${D}" -name "Makefile*" -exec rm -f '{}' +
