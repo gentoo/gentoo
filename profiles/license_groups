@@ -76,7 +76,7 @@ BINARY-REDISTRIBUTABLE @FREE atheros-hal bh-luxi Broadcom Dina hashcat intel-uco
 
 # License agreements that try to take away your rights. These are more
 # restrictive than "all-rights-reserved" or require explicit approval.
-EULA Adaptec-EULA AdobeFlash-11.x ArxFatalis-EULA-JoWooD baudline BCS bf1942-lnxded CAPYBARA-EULA cadsoft Coherent-Graphics CROSSOVER CROSSOVER-2 CYANA DOOM3 ETQW FAH-EULA-2009 FAH-EULA-2014 FraunhoferFDK GameFront Gameplay-Group-EULA GIMPS GOG-EULA google-chrome googleearth Google-TOS IBM-J1.6 Intel-SDP Introversion LastPass LOKI-EULA LRCTF MakeMKV-EULA MARBLEBLAST Mendeley-terms MSjdbcEULA40 MTA-0.5 NVIDIA-CUDA Nero-AAC-EULA Nero-EULA-US Oracle-BCLA-JavaSE PAPERS-PLEASE POMPOM postal2 Primate-Plunge PUEL Q3AEULA Q3AEULA-20000111 QUAKE4 RTCW RTCW-ETEULA SCM-MICRO SJ-Labs skype-4.0.0.7-copyright spin-commercial spin-educational TeamViewer THINKTANKS UPEK-SDK-EULA ut2003 ut2003-demo Vivaldi
+EULA Adaptec-EULA AdobeFlash-11.x ArxFatalis-EULA-JoWooD baudline BCS bf1942-lnxded CAPYBARA-EULA cadsoft Coherent-Graphics CROSSOVER CROSSOVER-2 CYANA DOOM3 ETQW FAH-EULA-2009 FAH-EULA-2014 FraunhoferFDK GameFront Gameplay-Group-EULA GIMPS GOG-EULA google-chrome googleearth Google-TOS IBM-J1.6 Intel-SDP Introversion LastPass LOKI-EULA LRCTF MakeMKV-EULA MARBLEBLAST Mendeley-terms MSjdbcEULA40 MTA-0.5 NVIDIA-CODEC-SDK NVIDIA-CUDA Nero-AAC-EULA Nero-EULA-US Oracle-BCLA-JavaSE PAPERS-PLEASE POMPOM postal2 Primate-Plunge PUEL Q3AEULA Q3AEULA-20000111 QUAKE4 RTCW RTCW-ETEULA SCM-MICRO SJ-Labs skype-4.0.0.7-copyright spin-commercial spin-educational TeamViewer THINKTANKS UPEK-SDK-EULA ut2003 ut2003-demo Vivaldi
 
 # Deprecated license labels, used by repoman
 #DEPRECATED as-is
