@@ -351,7 +351,7 @@ _enable_selected_linguas_dir() {
 
 	[[ -d  ${dir} ]] || die "linguas dir \"${dir}\" does not exist"
 	comment_all_add_subdirectory "${dir}"
-	pushd "${dir}" > /dev/null
+	pushd "${dir}" > /dev/null || die
 
 	# fix all various crazy sr@Latn variations
 	# this part is only ease for ebuilds, so there wont be any die when this
@@ -390,7 +390,7 @@ _enable_selected_linguas_dir() {
 	done
 	[[ -n ${linguas} ]] && echo ">>> Enabling languages: ${linguas}"
 
-	popd > /dev/null
+	popd > /dev/null || die
 }
 
 # @FUNCTION: get_kde_version
