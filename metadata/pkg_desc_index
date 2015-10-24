@@ -14544,7 +14544,7 @@ net-misc/valve 1.0: Copies data while enforcing a specified maximum transfer rat
 net-misc/vconfig 1.9: 802.1Q vlan control utility
 net-misc/vde 2.2.2 2.3.1 2.3.2 2.3.2-r1 2.3.2-r2: Virtual distributed ethernet emulator for emulators like qemu, bochs, and uml
 net-misc/vinagre 3.14.3 3.14.3-r1 3.16.1: VNC client for the GNOME desktop
-net-misc/vino 3.14.2 3.16.0: An integrated VNC server for GNOME
+net-misc/vino 3.16.0 3.16.0-r1: An integrated VNC server for GNOME
 net-misc/vmnet 0.4: A simple virtual networking program - SLIP over stdin/out
 net-misc/vmpsd 1.4: An open-source VLAN management system
 net-misc/vncrec 0.2-r1: VNC session recorder and player
