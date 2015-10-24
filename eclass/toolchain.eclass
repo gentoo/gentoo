@@ -410,7 +410,7 @@ toolchain_src_unpack() {
 }
 
 gcc_quick_unpack() {
-	pushd "${WORKDIR}" > /dev/null
+	pushd "${WORKDIR}" > /dev/null || die
 	export PATCH_GCC_VER=${PATCH_GCC_VER:-${GCC_RELEASE_VER}}
 	export UCLIBC_GCC_VER=${UCLIBC_GCC_VER:-${PATCH_GCC_VER}}
 	export PIE_GCC_VER=${PIE_GCC_VER:-${GCC_RELEASE_VER}}
@@ -427,14 +427,14 @@ gcc_quick_unpack() {
 		unpack gcc-${GCC_RELEASE_VER}.tar.bz2
 		# We want branch updates to be against a release tarball
 		if [[ -n ${BRANCH_UPDATE} ]] ; then
-			pushd "${S}" > /dev/null
+			pushd "${S}" > /dev/null || die
 			epatch "${DISTDIR}"/gcc-${GCC_RELEASE_VER}-branch-update-${BRANCH_UPDATE}.patch.bz2
-			popd > /dev/null
+			popd > /dev/null || die
 		fi
 	fi
 
 	if [[ -n ${D_VER} ]] && use d ; then
-		pushd "${S}"/gcc > /dev/null
+		pushd "${S}"/gcc > /dev/null || die
 		unpack gdc-${D_VER}-src.tar.bz2
 		cd ..
 		ebegin "Adding support for the D language"
@@ -445,7 +445,7 @@ gcc_quick_unpack() {
 			eerror "  ${T}/dgcc.log"
 			die "failed to include the D language"
 		fi
-		popd > /dev/null
+		popd > /dev/null || die
 	fi
 
 	[[ -n ${PATCH_VER} ]] && \
@@ -466,7 +466,7 @@ gcc_quick_unpack() {
 
 	use_if_iuse boundschecking && unpack "bounds-checking-gcc-${HTB_GCC_VER}-${HTB_VER}.patch.bz2"
 
-	popd > /dev/null
+	popd > /dev/null || die
 }
 
 #---->> src_prepare <<----
@@ -1230,7 +1230,7 @@ toolchain_src_configure() {
 
 	# Build in a separate build tree
 	mkdir -p "${WORKDIR}"/build
-	pushd "${WORKDIR}"/build > /dev/null
+	pushd "${WORKDIR}"/build > /dev/null || die
 
 	# and now to do the actual configuration
 	addwrite /dev/zero
@@ -1241,7 +1241,7 @@ toolchain_src_configure() {
 	bash "${S}"/configure "${confgcc[@]}" || die "failed to run configure"
 
 	# return to whatever directory we were in before
-	popd > /dev/null
+	popd > /dev/null || die
 }
 
 # Replace -m flags unsupported by the version being built with the best
@@ -1556,7 +1556,7 @@ gcc_do_make() {
 
 	einfo "Compiling ${PN} (${GCC_MAKE_TARGET})..."
 
-	pushd "${WORKDIR}"/build >/dev/null
+	pushd "${WORKDIR}"/build >/dev/null || die
 
 	emake \
 		LDFLAGS="${LDFLAGS}" \
@@ -1587,7 +1587,7 @@ gcc_do_make() {
 		fi
 	fi
 
-	popd >/dev/null
+	popd >/dev/null || die
 }
 
 #---->> src_test <<----
@@ -1737,7 +1737,7 @@ toolchain_src_install() {
 
 	# Move pretty-printers to gdb datadir to shut ldconfig up
 	local py gdbdir=/usr/share/gdb/auto-load${LIBPATH/\/lib\//\/$(get_libdir)\/}
-	pushd "${D}"${LIBPATH} >/dev/null
+	pushd "${D}"${LIBPATH} >/dev/null || die
 	for py in $(find . -name '*-gdb.py') ; do
 		local multidir=${py%/*}
 		insinto "${gdbdir}/${multidir}"
@@ -1745,7 +1745,7 @@ toolchain_src_install() {
 		doins "${py}" || die
 		rm "${py}" || die
 	done
-	popd >/dev/null
+	popd >/dev/null || die
 
 	# Don't scan .gox files for executable stacks - false positives
 	export QA_EXECSTACK="usr/lib*/go/*/*.gox"
@@ -1819,13 +1819,13 @@ gcc_movelibs() {
 fix_libtool_libdir_paths() {
 	local libpath="$1"
 
-	pushd "${D}" >/dev/null
+	pushd "${D}" >/dev/null || die
 
-	pushd "./${libpath}" >/dev/null
+	pushd "./${libpath}" >/dev/null || die
 	local dir="${PWD#${D%/}}"
 	local allarchives=$(echo *.la)
 	allarchives="\(${allarchives// /\\|}\)"
-	popd >/dev/null
+	popd >/dev/null || die
 
 	# The libdir might not have any .la files. #548782
 	find "./${dir}" -maxdepth 1 -name '*.la' \
@@ -1837,7 +1837,7 @@ fix_libtool_libdir_paths() {
 	find "./${dir}/" -maxdepth 1 -name '*.la' \
 		-exec sed -i -e "/^dependency_libs=/s:/[^ ]*/${allarchives}:${libpath}/\1:g" {} + || die
 
-	popd >/dev/null
+	popd >/dev/null || die
 }
 
 create_gcc_env_entry() {
@@ -2252,7 +2252,7 @@ want_pie() {
 has toolchain_death_notice ${EBUILD_DEATH_HOOKS} || EBUILD_DEATH_HOOKS+=" toolchain_death_notice"
 toolchain_death_notice() {
 	if [[ -e "${WORKDIR}"/build ]] ; then
-		pushd "${WORKDIR}"/build >/dev/null
+		pushd "${WORKDIR}"/build >/dev/null || die
 		(echo '' | $(tc-getCC ${CTARGET}) ${CFLAGS} -v -E - 2>&1) > gccinfo.log
 		[[ -e "${T}"/build.log ]] && cp "${T}"/build.log .
 		tar jcf "${WORKDIR}"/gcc-build-logs.tar.bz2 \
@@ -2261,6 +2261,6 @@ toolchain_death_notice() {
 		eerror
 		eerror "Please include ${WORKDIR}/gcc-build-logs.tar.bz2 in your bug report."
 		eerror
-		popd >/dev/null
+		popd >/dev/null || die
 	fi
 }
