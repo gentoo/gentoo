@@ -2,6 +2,22 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# DEPRECATED
+# This eclass has been deprecated and must not be used by any new
+# ebuilds or eclasses. Replacements for particular phase functions
+# in EAPI 2+:
+#
+# base_src_unpack() - default (or unpacker_src_unpack if unpacker.eclass
+#     was inherited)
+# base_src_prepare() - inherit eutils, inline:
+#     epatch "${PATCHES[@]}" # if PATCHES defined as array
+#     epatch ${PATCHES} # if PATCHES defined as string
+#     epatch_user
+# base_src_configure() - default
+# base_src_compile() - default
+# base_src_install() - default
+# base_src_install_docs() - einstalldocs from eutils.eclass
+
 # @ECLASS: base.eclass
 # @MAINTAINER:
 # QA Team <qa@gentoo.org>

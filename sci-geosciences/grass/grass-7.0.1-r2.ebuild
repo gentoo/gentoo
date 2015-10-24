@@ -186,7 +186,7 @@ src_install() {
 		PREFIX="${D}usr/" \
 		install
 
-	pushd "${D}usr/${MY_PM}" &> /dev/null
+	pushd "${D}usr/${MY_PM}" &> /dev/null || die
 
 	# fix docs
 	dodoc AUTHORS CHANGES
@@ -207,7 +207,7 @@ src_install() {
 		mv "${D}usr/share/locale/pt_br" "${D}usr/share/locale/pt_BR" || die
 	fi
 
-	popd &> /dev/null
+	popd &> /dev/null || die
 
 	# place libraries where they belong
 	mv "${D}usr/${MY_PM}/lib/" "${D}usr/$(get_libdir)/" || die
@@ -238,7 +238,7 @@ src_install() {
 		local GUI="-gui"
 		[[ ${WX_BUILD} == yes ]] && GUI="-wxpython"
 		make_desktop_entry "/usr/bin/${MY_PM} ${GUI}" "${PN}" "${PN}-48x48" "Science;Education"
-		doicon gui/icons/${PN}-48x48.png
+		doicon -s 48 gui/icons/${PN}-48x48.png
 	fi
 
 	# install .pc file so other apps know where to look for grass

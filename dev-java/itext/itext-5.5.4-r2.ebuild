@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.zip"
 
 LICENSE="AGPL-3"
 SLOT="5"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BC_SLOT="1.52"
 
