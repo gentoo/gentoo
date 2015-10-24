@@ -10,4 +10,4 @@ RDEPEND=dev-java/gnu-classpath:0.98 libffi? ( virtual/libffi ) amd64? ( virtual/
 SLOT=0
 SRC_URI=mirror://sourceforge/jamvm/jamvm-1.5.4.tar.gz
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	java-vm-2	82eb4c2a4b43108087d4d92d34d2bd0f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	9dd3f9de6dccb2463faf55e568439d1c	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=29c0dfe3d299a7990fa3544d84e69e42
+_md5_=4078efab8afca34a5a53de191e616f50
