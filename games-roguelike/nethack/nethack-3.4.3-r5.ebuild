@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86 ~x86-fbsd"
 IUSE="X"
 
-RDEPEND=">=sys-libs/ncurses-5.2-r5
+RDEPEND="sys-libs/ncurses:0=
 	X? (
 		x11-libs/libXaw
 		x11-libs/libXpm
@@ -30,12 +30,13 @@ DEPEND="${RDEPEND}
 	)"
 
 BINDIR="/usr/games/bin"
-HACKDIR="/usr/share/games/${PN}"
 STATEDIR="/var/games/${PN}"
 
 NETHACK_GROUP="gamestat"
 
 pkg_setup() {
+	HACKDIR="/usr/$(get_libdir)/${PN}"
+
 	enewgroup gamestat 36
 }
 
@@ -115,7 +116,6 @@ src_install() {
 	emake \
 		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
-		LFLAGS="-L/usr/X11R6/lib" \
 		GAMEPERM=02755 \
 		GAMEUID="root" GAMEGRP="${NETHACK_GROUP}" \
 		PREFIX="${D}/usr" \
@@ -142,10 +142,8 @@ src_install() {
 	doman doc/*.6
 	dodoc doc/*.txt
 
-	# Can be copied to ~/.nethackrc to set options
-	# Add this to /etc/.skel as well, thats the place for default configs
-	insinto "${HACKDIR}"
-	doins "${FILESDIR}/dot.nethackrc"
+	insinto /etc/skel
+	newins "${FILESDIR}/dot.nethackrc" .nethackrc
 
 	local windowtypes="tty"
 	use X && windowtypes="${windowtypes} x11"
@@ -153,10 +151,8 @@ src_install() {
 	sed -i \
 		-e "s:GENTOO_WINDOWTYPES:${windowtypes}:" \
 		-e "s:GENTOO_DEFWINDOWTYPE:$1:" \
-		"${D}${HACKDIR}/dot.nethackrc" \
-		|| die "sed ${HACKDIR}/dot.nethackrc failed"
-	insinto /etc/skel
-	newins "${D}/${HACKDIR}/dot.nethackrc" .nethackrc
+		"${D}/etc/skel/.nethackrc" \
+		|| die "sed /etc/skel/.nethackrc failed"
 
 	if use X ; then
 		# install nethack fonts
@@ -176,11 +172,13 @@ src_install() {
 			-e 's:^!\(NetHack.tile_file.*\):\1:' \
 			"${D}/etc/X11/app-defaults/NetHack" \
 			|| die "sed /etc/X11/app-defaults/NetHack failed"
+
+		newicon nh_icon.xpm nethack.xpm
+		make_desktop_entry ${PN} Nethack
 	fi
 
 	keepdir "${STATEDIR}/save"
 	rm "${D}/${HACKDIR}/"{logfile,perm,record}
-	make_desktop_entry nethack "Nethack"
 
 	fowners -R "root:${NETHACK_GROUP}" "${STATEDIR}"
 	fperms -R 660 "${STATEDIR}"
@@ -210,21 +208,21 @@ pkg_postinst() {
 	cd "${ROOT}/${STATEDIR}" || die "Failed to enter ${STATEDIR} directory"
 
 	if [[ -v migration ]] ; then
-		cp "$T/"{logfile,record} . || \
+		cp "$T/"{logfile,record} . ||
 		die "Failed to preserve ${ROOT}/${STATEDIR} files"
 
-		chown -R root:"${NETHACK_GROUP}" . && \
-		chmod -R 660 . && \
-		chmod 770 . save || \
+		chown -R root:"${NETHACK_GROUP}" . &&
+		chmod -R 660 . &&
+		chmod 770 . save ||
 		die "Adjustment of file permissions in ${ROOT}/${STATEDIR} failed"
 	fi
 
 	# we don't want to overwrite existing files, as they contain user data
 	local files="logfile perm record"
 
-	touch $files && \
-	chmod 660 $files && \
-	chown root:"${NETHACK_GROUP}" $files || \
+	touch $files &&
+	chmod 660 $files &&
+	chown root:"${NETHACK_GROUP}" $files ||
 	die "Adjustment of file permissions in "${ROOT}/${STATEDIR}" failed"
 
 	elog "You may want to look at /etc/skel/.nethackrc for interesting options"
