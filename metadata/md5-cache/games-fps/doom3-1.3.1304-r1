@@ -10,5 +10,5 @@ RDEPEND=sys-libs/glibc amd64? ( sys-libs/glibc[multilib] ) !dedicated? ( >=virtu
 RESTRICT=strip
 SLOT=0
 SRC_URI=mirror://idsoftware/doom3/linux/doom3-linux-1.3.1.1304.x86.run http://zerowing.idsoftware.com/linux/doom3.png
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	games	4dae170e58f773c484e07d18ef441804	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	43da5163ba106e87d22d2e7d6d67537f	games	4dae170e58f773c484e07d18ef441804	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=46640a313b692c725c3218f5238a0ae3

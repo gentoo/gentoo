@@ -9,5 +9,5 @@ LICENSE=ZLIB
 RDEPEND=>=media-libs/imlib2-1.4.0[X] media-libs/freetype:2 x11-libs/libX11 x11-libs/libXrender x11-libs/libXcomposite x11-libs/libXfixes media-libs/fontconfig libev? ( dev-libs/libev ) libevent? ( dev-libs/libevent )
 SLOT=0
 SRC_URI=http://nsf.110mb.com/bmpanel/bmpanel-0.9.27.tar.gz
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=49e23516d1426786b391901e0196d1e0

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/opengl media-libs/freetype:2 media-libs/libpng media-libs/libsdl media-libs/sdl-ttf media-fonts/dejavu sys-libs/zlib[minizip] x11-libs/gtk+:2 libsamplerate? ( media-libs/libsamplerate ) lirc? ( app-misc/lirc ) qt4? ( dev-qt/qtgui:4 dev-qt/qtcore:4 ) app-arch/xz-utils games-misc/games-envd
 SLOT=0
 SRC_URI=https://mupen64plus.googlecode.com/files/Mupen64Plus-1-5-src.tar.gz mirror://gentoo/mupen64plus-1.5-patches-20100507.tar.bz2
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	games	4dae170e58f773c484e07d18ef441804	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	games	4dae170e58f773c484e07d18ef441804	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=64458c4fe1b4e1e868e86e350e2610a4

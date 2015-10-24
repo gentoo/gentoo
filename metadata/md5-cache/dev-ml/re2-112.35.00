@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=>=dev-ml/type-conv-112:= dev-ml/core:= dev-ml/bin-prot:= dev-ml/sexplib:= dev-ml/comparelib:= dev-ml/pa_test:= dev-libs/re2:= dev-ml/camlp4:= >=dev-lang/ocaml-3.12:=[ocamlopt?]
 SLOT=0/112.35.00
 SRC_URI=http://ocaml.janestreet.com/ocaml-core/112.35/files/re2-112.35.00.tar.gz
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	oasis	1f8aac15a40bfb39dd98018626248fe1	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	43da5163ba106e87d22d2e7d6d67537f	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	oasis	1f8aac15a40bfb39dd98018626248fe1	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=1d4b13e86a13c4a75a100ec84bb984d7

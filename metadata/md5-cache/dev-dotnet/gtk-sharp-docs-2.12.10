@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/mono-2.0 >=dev-lang/mono-2.0.1
 RESTRICT=test
 SLOT=2
 SRC_URI=mirror://gentoo/gtk-sharp-2.12.7.patch.bz2 http://download.mono-project.com/sources/gtk-sharp212/gtk-sharp-2.12.10.tar.bz2
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	gtk-sharp-module	37e00de79db2975a7a579e70d5a6e263	libtool	7f78cd7d403808a350c9ae23f5821fb4	mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	43da5163ba106e87d22d2e7d6d67537f	gtk-sharp-module	37e00de79db2975a7a579e70d5a6e263	libtool	7f78cd7d403808a350c9ae23f5821fb4	mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=7901e7ed29391cda4d5358e49638b4bc

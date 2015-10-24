@@ -10,5 +10,5 @@ RDEPEND=expat? ( dev-libs/expat ) xml? ( >=dev-libs/libxml2-2.6.24 )
 REQUIRED_USE=^^ ( expat xml )
 SLOT=0
 SRC_URI=https://launchpad.net/libmetalink/trunk/libmetalink-0.1.0/+download/libmetalink-0.1.0.tar.bz2
-_eclasses_=base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=0993c564b6c9d88ca448836d7f4d747f

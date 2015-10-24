@@ -7,5 +7,5 @@ IUSE=doc static-libs test
 LICENSE=|| ( GPL-2+ LGPL-2.1 MPL-1.1 )
 RDEPEND=dev-libs/librevenge dev-libs/libxml2 sys-libs/zlib
 SLOT=0
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	84d9f879f57a8316ff02be0373a3d6f9	eutils	43da5163ba106e87d22d2e7d6d67537f	git-2	1bb87192831f668cd20d93ffb1689c94	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	43da5163ba106e87d22d2e7d6d67537f	git-2	1bb87192831f668cd20d93ffb1689c94	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=7e513fed190bb2f53b0ef4a955881e8d
