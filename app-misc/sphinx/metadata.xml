@@ -6,6 +6,7 @@
 </maintainer>
 <use>
   <flag name='id64'>use 64-bit document and word IDs</flag>
+  <flag name='re2'>use the <pkg>dev-libs/re2</pkg> regular expression library</flag>
   <flag name='stemmer'>Enable language stemming support</flag>
 </use>
 </pkgmetadata>
