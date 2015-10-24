@@ -1,0 +1,23 @@
+--- configure.ac.old	2015-10-24 10:11:47.469290574 +0200
++++ configure.ac	2015-10-24 10:14:35.918680898 +0200
+@@ -884,20 +884,12 @@
+ if test "x$enable_gstreamer" != "xno";
+ then
+     PKG_CHECK_MODULES([GSTREAMER],
+-                      [gstreamer-0.10],
+-                      [config_gstreamer=yes
+-                       AC_DEFINE(HAVE_GSTREAMER, 1, [Use GStreamer for playing sounds])], [ ])
+-		     
+-    if test "x$config_gstreamer" != "xyes";
+-    then
+-        PKG_CHECK_MODULES([GSTREAMER],
+                       [gstreamer-1.0],
+                       [config_gstreamer=yes
+                        AC_DEFINE(HAVE_GSTREAMER, 1, [Use GStreamer for playing sounds])],
+                          [if test "x$enable_gstreamer" = "xyes"; then
+                            AC_MSG_ERROR([GStreamer development headers not found.])
+                        fi])
+-    fi
+ fi
+ 
+ 
