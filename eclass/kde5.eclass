@@ -395,7 +395,7 @@ kde5_src_prepare() {
 	# when required
 	if [[ ${KDE_BUILD_TYPE} = release ]] ; then
 		if [[ -d po ]] ; then
-			pushd po > /dev/null
+			pushd po > /dev/null || die
 			for lang in *; do
 				if ! has ${lang} ${LINGUAS} ; then
 					if [[ ${lang} != CMakeLists.txt ]] ; then
@@ -406,17 +406,17 @@ kde5_src_prepare() {
 					fi
 				fi
 			done
-			popd > /dev/null
+			popd > /dev/null || die
 		fi
 
 		if [[ ${KDE_HANDBOOK} = true && -d ${KDE_DOC_DIR} && ${CATEGORY} != kde-apps ]] ; then
-			pushd ${KDE_DOC_DIR} > /dev/null
+			pushd ${KDE_DOC_DIR} > /dev/null || die
 			for lang in *; do
 				if ! has ${lang} ${LINGUAS} ; then
 					comment_add_subdirectory ${lang}
 				fi
 			done
-			popd > /dev/null
+			popd > /dev/null || die
 		fi
 	else
 		rm -rf po
