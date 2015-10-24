@@ -4966,7 +4966,7 @@ dev-lua/lanes 3.10.0: lightweight, native, lazy evaluating multithreading librar
 dev-lua/lgi 0.6.2 0.6.2-r1 0.7.2 0.9.0: Lua bindings using gobject-introspection
 dev-lua/lpeg 0.12 0.12.1 0.12.2: Parsing Expression Grammars for Lua
 dev-lua/lua-cjson 2.1.0: A fast JSON encoding/parsing module for Lua
-dev-lua/lua-openssl 0.4.1: OpenSSL binding for Lua
+dev-lua/lua-openssl 0.4.1-r1: OpenSSL binding for Lua
 dev-lua/lua-zlib 0.3 0.4: Lua bindings to zlib
 dev-lua/luacrypto 0.3.2-r1: Lua frontend to OpenSSL
 dev-lua/luadbi 0.5-r5: DBI module for Lua
@@ -8613,7 +8613,7 @@ dev-ruby/metasploit-concern 1.0.0: Metasploit concern allows you to define conce
 dev-ruby/metasploit-credential 1.0.0 1.0.1: Code for modeling and managing credentials in Metasploit
 dev-ruby/metasploit-model 1.0.0: Common code, such as validators and mixins
 dev-ruby/metasploit-payloads 1.0.9-r1 1.0.15: Compiled binaries for Metasploit's Meterpreter
-dev-ruby/metasploit_data_models 1.2.5 1.2.8: The database layer for Metasploit
+dev-ruby/metasploit_data_models 1.2.5 1.2.9: The database layer for Metasploit
 dev-ruby/meterpreter_bins 0.0.22: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/method_source 0.8.2-r2 0.8.2-r3: Retrieve the source code for a method
 dev-ruby/mime-types 1.23 1.25.1 2.4.3 2.4.3-r1 2.5 2.6.1 2.6.2: Provides a mailcap-like MIME Content-Type lookup for Ruby
