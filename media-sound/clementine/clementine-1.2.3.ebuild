@@ -98,6 +98,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-hide_boost_includes_from_q_moc.patch"
 )
 
+export QT_SELECT=4
+
 src_prepare() {
 	cmake-utils_src_prepare
 
