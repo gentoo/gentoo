@@ -18,7 +18,7 @@ IUSE="luajit"
 RDEPEND="
 	luajit? ( dev-lang/luajit:2 )
 	!luajit? ( >=dev-lang/lua-5.1:0 )
-	dev-libs/openssl:0"
+	dev-libs/openssl:0[-bindist]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
