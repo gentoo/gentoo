@@ -4,9 +4,9 @@
 
 # this ebuild is only for the libgmp.so.3 ABI SONAME
 
-EAPI="3"
+EAPI="5"
 
-inherit eutils libtool toolchain-funcs
+inherit eutils libtool toolchain-funcs multilib-minimal
 
 DESCRIPTION="Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers"
 HOMEPAGE="http://gmplib.org/"
@@ -37,7 +37,7 @@ src_prepare() {
 	chmod a+rx configure
 }
 
-src_configure() {
+multilib_src_configure() {
 	# Because of our 32-bit userland, 1.0 is the only HPPA ABI that works
 	# http://gmplib.org/manual/ABI-and-ISA.html#ABI-and-ISA (bug #344613)
 	if [[ ${CHOST} == hppa2.0-* ]] ; then
@@ -53,7 +53,7 @@ src_configure() {
 	export GMPABI
 
 	tc-export CC
-	econf \
+	ECONF_SOURCE="${S}" econf \
 		--localstatedir=/var/state/gmp \
 		--disable-mpfr \
 		--disable-mpbsd \
@@ -61,7 +61,7 @@ src_configure() {
 		--disable-cxx
 }
 
-src_install() {
-	emake install-libLTLIBRARIES DESTDIR="${D}" || die
+multilib_src_install() {
+	emake DESTDIR="${D}" install-libLTLIBRARIES
 	rm "${D}"/usr/*/libgmp.{la,so} || die
 }
