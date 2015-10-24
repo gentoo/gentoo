@@ -828,7 +828,7 @@ mysql-v2_pkg_config() {
 		chmod 755 "${PID_DIR}" || die "Could not set permissions on pid directory"
 	fi
 
-	pushd "${TMPDIR}" &>/dev/null
+	pushd "${TMPDIR}" &>/dev/null || die
 	#cmd="'${EROOT}/usr/share/mysql/scripts/mysql_install_db' '--basedir=${EPREFIX}/usr' ${options}"
 	cmd=${EROOT}usr/share/mysql/scripts/mysql_install_db
 	[[ -f ${cmd} ]] || cmd=${EROOT}usr/bin/mysql_install_db
@@ -840,7 +840,7 @@ mysql-v2_pkg_config() {
 		grep -B5 -A999 -i "ERROR" "${TMPDIR}"/mysql_install_db.log 1>&2
 		die "Failed to run mysql_install_db. Please review ${EPREFIX}/var/log/mysql/mysqld.err AND ${TMPDIR}/mysql_install_db.log"
 	fi
-	popd &>/dev/null
+	popd &>/dev/null || die
 	[[ -f "${ROOT}/${MY_DATADIR}/mysql/user.frm" ]] \
 	|| die "MySQL databases not installed"
 	chown -R mysql:mysql "${ROOT}/${MY_DATADIR}" 2>/dev/null
