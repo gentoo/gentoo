@@ -176,10 +176,10 @@ eautoreconf() {
 		# Take care of subdirs
 		for x in $(autotools_check_macro_val AC_CONFIG_SUBDIRS) ; do
 			if [[ -d ${x} ]] ; then
-				pushd "${x}" >/dev/null
+				pushd "${x}" >/dev/null || die
 				# Avoid unsafe nested multijob_finish_one for bug #426512.
 				AT_NOELIBTOOLIZE="yes" eautoreconf || die
-				popd >/dev/null
+				popd >/dev/null || die
 			fi
 		done
 	fi
