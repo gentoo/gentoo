@@ -447,9 +447,9 @@ x-modular_src_install() {
 #		mandir=${XDIR}/share/man \
 
 	if [[ -n ${GIT_ECLASS} ]]; then
-		pushd "${EGIT_STORE_DIR}/${EGIT_CLONE_DIR}"
+		pushd "${EGIT_STORE_DIR}/${EGIT_CLONE_DIR}" || die
 		git log ${GIT_TREE} > "${S}"/ChangeLog
-		popd
+		popd || die
 	fi
 
 	if [[ -e ${S}/ChangeLog ]]; then
