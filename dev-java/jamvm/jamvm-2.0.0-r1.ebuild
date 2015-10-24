@@ -22,10 +22,14 @@ DEPEND="dev-java/gnu-classpath:0.98
 	sparc? ( virtual/libffi )"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/"${P}-classes-location.patch"
+	"${FILESDIR}"/"${P}-noexecstack.patch"
+)
+
 src_prepare() {
 	# without this patch, classes.zip is not found at runtime
-	epatch "${FILESDIR}/classes-location.patch"
-	epatch "${FILESDIR}/noexecstack.patch"
+	epatch "${PATCHES[@]}"
 	eautoreconf
 
 	# These come precompiled.
@@ -65,7 +69,7 @@ create_launcher() {
 			-Xbootclasspath/p:/usr/share/classpath/tools.zip" \
 			gnu.classpath.tools.${1}.Main "\$@"
 	EOF
-	chmod +x "${script}"
+	chmod +x "${script}" || die
 }
 
 src_install() {
@@ -77,7 +81,7 @@ src_install() {
 
 	dodoc ACKNOWLEDGEMENTS AUTHORS ChangeLog NEWS README
 
-	set_java_env "${FILESDIR}/${PN}.env"
+	set_java_env "${FILESDIR}/${P}-env.file"
 
 	dodir ${JDK_DIR}/bin
 	dosym /usr/bin/jamvm ${JDK_DIR}/bin/java
@@ -97,11 +101,11 @@ src_install() {
 
 	local ecj_jar="$(readlink "${EPREFIX}"/usr/share/eclipse-ecj/ecj.jar)"
 	exeinto ${JDK_DIR}/bin
-	cat "${FILESDIR}"/javac.in | sed -e "s#@JAVA@#/usr/bin/jamvm#" \
+	sed -e "s#@JAVA@#/usr/bin/jamvm#" \
 		-e "s#@ECJ_JAR@#${ecj_jar}#" \
 		-e "s#@RT_JAR@#/usr/share/classpath/glibj.zip#" \
 		-e "s#@TOOLS_JAR@#/usr/share/classpath/tools.zip#" \
-	| newexe - javac
+		"${FILESDIR}"/"${P}-javac.in" | newexe - javac
 
 	local libarch="${ARCH}"
 	[ ${ARCH} == x86 ] && libarch="i386"
