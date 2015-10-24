@@ -85,7 +85,7 @@ l10n_find_plocales_changes() {
 		x=${x%"${3}"}
 		current+="${x} "
 	done
-	popd >/dev/null
+	popd >/dev/null || die
 	if [[ ${PLOCALES} != ${current%[[:space:]]} ]] ; then
 		einfo "There are changes in locales! This ebuild should be updated to:"
 		einfo "PLOCALES=\"${current%[[:space:]]}\""
