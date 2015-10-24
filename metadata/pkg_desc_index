@@ -2925,7 +2925,7 @@ dev-db/percona-toolkit 2.2.7 2.2.11 2.2.15: essential command-line utilities for
 dev-db/pg_activity 1.2.0: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 3.6.2-r1 3.7.0: 'top' for PostgreSQL
 dev-db/pgadmin3 1.18.1 1.20.0 1.20.0-r1 1.20.0-r2: wxWidgets GUI for PostgreSQL
-dev-db/pgagent 3.3.0 3.4.0: pgAgent is a job scheduler for PostgreSQL
+dev-db/pgagent 3.3.0 3.4.0 3.4.0-r1: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 6.2 6.4 7.0: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.5.4 1.5.4-r1 1.5.5: Lightweight connection pooler for PostgreSQL
 dev-db/pgmemcache 2.1.2 2.2.0 2.3.0: A PostgreSQL API based on libmemcached to interface with memcached
@@ -9172,7 +9172,7 @@ dev-texlive/texlive-mathextra 2012 2012-r1 2013 2014 2015: TeXLive Mathematics p
 dev-texlive/texlive-metapost 2012 2013 2014 2015: TeXLive MetaPost and Metafont packages
 dev-texlive/texlive-music 2012 2013 2014 2015: TeXLive Music packages
 dev-texlive/texlive-omega 2012 2013 2014 2015: TeXLive Omega packages
-dev-texlive/texlive-pictures 2012 2013 2014 2015-r1: TeXLive Graphics, pictures, diagrams
+dev-texlive/texlive-pictures 2012 2013 2014 2015-r2: TeXLive Graphics, pictures, diagrams
 dev-texlive/texlive-plainextra 2012 2013 2014 2015: TeXLive Plain TeX packages
 dev-texlive/texlive-pstricks 2012 2013 2014 2015: TeXLive PSTricks
 dev-texlive/texlive-publishers 2012 2013 2014 2015: TeXLive Publisher styles, theses, etc.
