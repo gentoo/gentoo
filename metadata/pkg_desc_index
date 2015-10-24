@@ -4069,7 +4069,7 @@ dev-java/jsoup 1.8.3: Java HTML parser that makes sense of real-world HTML soup
 dev-java/jspeex 0.9.7-r1: Speex speech codec library for Java
 dev-java/jsr101 1.4-r3: Java(TM) API for XML-Based RPC Specification Interface Classes
 dev-java/jsr173 1.0-r1: The Streaming API for XML (StAX) is a Java API for parsing and writing XML easily and efficiently
-dev-java/jsr181 1.0 1.0-r1: JSR 181 API classes
+dev-java/jsr181 1.0 1.0-r1 1.0-r2: JSR 181 API classes
 dev-java/jsr223 1.0-r1 1.0-r2: Scripting for the Java(TM) Platform
 dev-java/jsr250 1.0-r1: JSR 250 Common Annotations
 dev-java/jsr305 1.0-r1 3.0.1: Annotations for Software Defect Detection in Java
@@ -13678,7 +13678,7 @@ net-firewall/shorewall6 4.5.21.9 4.5.21.10-r1: The Shoreline Firewall, commonly 
 net-firewall/shorewall6-lite 4.5.21.9 4.5.21.10-r1: An iptables-based firewall whose config is handled by a normal Shorewall6
 net-firewall/ufw 0.34_pre805-r2: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r3: Provides graphical frontend to ufw
-net-firewall/xtables-addons 1.37 1.47.1 2.1 2.3 2.6 2.7 2.8 2.9: extensions not yet accepted in the main kernel/iptables (patch-o-matic(-ng) successor)
+net-firewall/xtables-addons 1.47.1 2.8 2.9: extensions not yet accepted in the main kernel/iptables (patch-o-matic(-ng) successor)
 net-fs/autofs 5.0.7-r4 5.0.7-r5 5.0.8-r1 5.0.8-r2 5.0.9 5.0.9-r1 5.0.10 5.1.0 5.1.0-r1 5.1.1: Kernel based automounter
 net-fs/cifs-utils 5.9-r1 6.1-r1 6.3 6.4: Tools for Managing Linux CIFS Client Filesystems
 net-fs/curlftpfs 0.9.2-r3: File system for accessing ftp hosts based on FUSE
@@ -16161,7 +16161,7 @@ sys-apps/groff 1.22.2 1.22.3: Text formatter used for man pages
 sys-apps/gscanbus 0.8: a little bus scanning, testing, and topology visualizing tool for the Linux IEEE1394 subsystem
 sys-apps/gsmartcontrol 0.8.7: Hard disk drive health inspection tool
 sys-apps/hardened-shadow 0.9.2: Hardened implementation of user account utilities
-sys-apps/haveged 1.5 1.7a 1.7a-r1 1.9.1: A simple entropy daemon using the HAVEGE algorithm
+sys-apps/haveged 1.9.1: A simple entropy daemon using the HAVEGE algorithm
 sys-apps/hbaapi 2.2: The Host Bus Adapter API for managing Fibre Channel Host Bus Adapters
 sys-apps/hdparm 9.39 9.45 9.47 9.48: Utility to change hard drive performance parameters
 sys-apps/heirloom-tools 070715: Heirloom toolchest - original Unix tools
