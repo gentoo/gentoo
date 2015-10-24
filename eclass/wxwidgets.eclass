@@ -52,8 +52,13 @@
 #
 # Note: unless you know your package works with wxbase (which is very
 # doubtful), always depend on wxGTK[X].
+#
+# Debugging: In wxGTK 3.0 and later debugging support is enabled in the
+# library by default and needs to be controlled at the package level.
+# Use the -DNDEBUG preprocessor flag to disable debugging features.
+# (Using need-wxwidgets will do this for you, see below.)
 
-inherit eutils multilib
+inherit eutils flag-o-matic multilib
 
 # We do this in global scope so ebuilds can get sane defaults just by
 # inheriting.
@@ -80,10 +85,18 @@ fi
 # @USAGE:       <profile>
 # @DESCRIPTION:
 #
-#  Available configurations are:
+#  Available profiles are:
 #
 #    unicode       (USE="X")
 #    base-unicode  (USE="-X")
+#
+#  This lets you choose which config file from /usr/lib/wx/config is used when
+#  building the package. It also exports ${WX_CONFIG} with the full path to
+#  that config.
+#
+#  If your ebuild does not have a debug USE flag, or it has one and it is
+#  disabled, -DNDEBUG will be automatically added to CPPFLAGS. This can be
+#  overridden by setting WX_DISABLE_DEBUG if you want to handle it yourself.
 
 need-wxwidgets() {
 	local wxtoolkit wxdebug wxconf
@@ -123,6 +136,10 @@ need-wxwidgets() {
 			wxdebug="debug-"
 		else
 			wxdebug="release-"
+		fi
+	else
+		if [[ -z ${WX_DISABLE_DEBUG} ]]; then
+			use_if_iuse debug || append-cppflags -DNDEBUG
 		fi
 	fi
 
