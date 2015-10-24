@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Sergey Popov <pinkbyte@gentoo.org> (24 Oct 2015)
+# Not tested
+net-mail/dovecot lz4
+
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs sci-physics/bullet tested #499974
 dev-libs/efl physics
