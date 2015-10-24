@@ -4,5 +4,6 @@
 	<herd>kde</herd>
 	<use>
 		<flag name="egl">Enable EGL support</flag>
+		<flag name="gles2">Use GLES 2.0 or later instead of full OpenGL</flag>
 	</use>
 </pkgmetadata>
