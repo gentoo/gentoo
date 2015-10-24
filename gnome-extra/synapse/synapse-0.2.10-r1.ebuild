@@ -36,9 +36,7 @@ RDEPEND="
 	plugins? ( net-libs/rest )
 	zeitgeist? (
 		dev-libs/libzeitgeist
-		gnome-extra/zeitgeist
-		gnome-extra/zeitgeist-extensions
-		|| ( gnome-extra/zeitgeist[fts] gnome-extra/zeitgeist-extensions[fts] )
+		gnome-extra/zeitgeist[fts]
 		)"
 	#ayatana? ( dev-libs/libappindicator )
 DEPEND="${RDEPEND}
