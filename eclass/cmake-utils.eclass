@@ -398,7 +398,7 @@ _modify-cmakelists() {
 enable_cmake-utils_src_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	pushd "${S}" > /dev/null
+	pushd "${S}" > /dev/null || die
 
 	debug-print "$FUNCNAME: PATCHES=$PATCHES"
 	[[ ${PATCHES[@]} ]] && epatch "${PATCHES[@]}"
@@ -406,7 +406,7 @@ enable_cmake-utils_src_prepare() {
 	debug-print "$FUNCNAME: applying user patches"
 	epatch_user
 
-	popd > /dev/null
+	popd > /dev/null || die
 }
 
 # @VARIABLE: mycmakeargs
@@ -578,11 +578,11 @@ enable_cmake-utils_src_configure() {
 		cmakeargs+=( -C "${CMAKE_EXTRA_CACHE_FILE}" )
 	fi
 
-	pushd "${BUILD_DIR}" > /dev/null
+	pushd "${BUILD_DIR}" > /dev/null || die
 	debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: mycmakeargs is ${mycmakeargs_local[*]}"
 	echo "${CMAKE_BINARY}" "${cmakeargs[@]}" "${CMAKE_USE_DIR}"
 	"${CMAKE_BINARY}" "${cmakeargs[@]}" "${CMAKE_USE_DIR}" || die "cmake failed"
-	popd > /dev/null
+	popd > /dev/null || die
 }
 
 enable_cmake-utils_src_compile() {
@@ -659,25 +659,25 @@ cmake-utils_src_make() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	_check_build_dir
-	pushd "${BUILD_DIR}" > /dev/null
+	pushd "${BUILD_DIR}" > /dev/null || die
 
 	${CMAKE_MAKEFILE_GENERATOR}_src_make "$@"
 
-	popd > /dev/null
+	popd > /dev/null || die
 }
 
 enable_cmake-utils_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	_check_build_dir
-	pushd "${BUILD_DIR}" > /dev/null
+	pushd "${BUILD_DIR}" > /dev/null || die
 	[[ -e CTestTestfile.cmake ]] || { echo "No tests found. Skipping."; return 0 ; }
 
 	[[ -n ${TEST_VERBOSE} ]] && myctestargs+=( --extra-verbose --output-on-failure )
 
 	if ctest "${myctestargs[@]}" "$@" ; then
 		einfo "Tests succeeded."
-		popd > /dev/null
+		popd > /dev/null || die
 		return 0
 	else
 		if [[ -n "${CMAKE_YES_I_WANT_TO_SEE_THE_TEST_LOG}" ]] ; then
@@ -692,7 +692,7 @@ enable_cmake-utils_src_test() {
 		fi
 
 		# die might not die due to nonfatal
-		popd > /dev/null
+		popd > /dev/null || die
 		return 1
 	fi
 }
@@ -701,13 +701,13 @@ enable_cmake-utils_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	_check_build_dir
-	pushd "${BUILD_DIR}" > /dev/null
+	pushd "${BUILD_DIR}" > /dev/null || die
 	DESTDIR="${D}" ${CMAKE_MAKEFILE_GENERATOR} install "$@" || die "died running ${CMAKE_MAKEFILE_GENERATOR} install"
-	popd > /dev/null
+	popd > /dev/null || die
 
-	pushd "${S}" > /dev/null
+	pushd "${S}" > /dev/null || die
 	einstalldocs
-	popd > /dev/null
+	popd > /dev/null || die
 }
 
 # @FUNCTION: cmake-utils_src_prepare
