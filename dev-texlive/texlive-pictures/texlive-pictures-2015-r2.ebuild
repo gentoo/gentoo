@@ -57,7 +57,7 @@ IUSE=""
 DEPEND=">=dev-texlive/texlive-basic-2015
 !<dev-texlive/texlive-latexextra-2009
 !<dev-texlive/texlive-texinfo-2009
-dev-tex/pgf
+>=dev-tex/pgf-3.0.1
 "
 RDEPEND="${DEPEND} "
 TEXLIVE_MODULE_BINSCRIPTS="
