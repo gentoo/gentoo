@@ -19,7 +19,7 @@ LICENSE="POSTGRESQL GPL-2"
 SLOT="0"
 IUSE=""
 
-RDEPEND=">=dev-db/postgresql-9.0.0
+RDEPEND=">=dev-db/postgresql-9.0.0:*
 	 x11-libs/wxGTK:${WX_GTK_VER}
 "
 DEPEND="${RDEPEND}
@@ -31,7 +31,7 @@ S="${WORKDIR}/${MY_PN}-${PV}-Source"
 src_prepare() {
 	sed -e "s:share):share/${P}):" \
 		-i CMakeLists.txt || die "Couldn't patch CMakeLists.txt"
-	sed -i -e '/SET(WX_VERSION "2.8")/d' CMakeLists.txt || die 
+	sed -i -e '/SET(WX_VERSION "2.8")/d' CMakeLists.txt || die
 }
 
 src_configure() {
