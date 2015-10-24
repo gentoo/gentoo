@@ -216,7 +216,6 @@ src_configure() {
 		$(use_enable vdpau)
 		$(usex vdpau "$(use_enable opengl vdpau-gl-x11)" '--disable-vdpau-gl-x11')
 		$(use_enable vaapi)
-		$(use_enable vaapi vaapi-vpp)
 		$(usex vaapi "$(use_enable opengl vaapi-glx)" '--disable-vaapi-glx')
 		$(use_enable libcaca caca)
 		$(use_enable drm)
