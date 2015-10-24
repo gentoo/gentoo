@@ -72,7 +72,7 @@ EXPORT_FUNCTIONS ${BASE_EXPF}
 base_src_unpack() {
 	debug-print-function $FUNCNAME "$@"
 
-	pushd "${WORKDIR}" > /dev/null
+	pushd "${WORKDIR}" > /dev/null || die
 
 	if [[ $(type -t unpacker_src_unpack) == "function" ]] ; then
 		unpacker_src_unpack
@@ -81,7 +81,7 @@ base_src_unpack() {
 	fi
 	has src_prepare ${BASE_EXPF} || base_src_prepare
 
-	popd > /dev/null
+	popd > /dev/null || die
 }
 
 # @FUNCTION: base_src_prepare
@@ -94,7 +94,7 @@ base_src_prepare() {
 
 	local patches_failed=0
 
-	pushd "${S}" > /dev/null
+	pushd "${S}" > /dev/null || die
 	if [[ "$(declare -p PATCHES 2>/dev/null 2>&1)" == "declare -a"* ]]; then
 		for x in "${PATCHES[@]}"; do
 			debug-print "$FUNCNAME: applying patch from ${x}"
@@ -132,7 +132,7 @@ base_src_prepare() {
 	debug-print "$FUNCNAME: applying user patches"
 	epatch_user
 
-	popd > /dev/null
+	popd > /dev/null || die
 }
 
 # @FUNCTION: base_src_configure
@@ -189,7 +189,7 @@ base_src_install_docs() {
 
 	local x
 
-	pushd "${S}" > /dev/null
+	pushd "${S}" > /dev/null || die
 
 	if [[ "$(declare -p DOCS 2>/dev/null 2>&1)" == "declare -a"* ]]; then
 		for x in "${DOCS[@]}"; do
@@ -204,7 +204,7 @@ base_src_install_docs() {
 		done
 	fi
 
-	popd > /dev/null
+	popd > /dev/null || die
 }
 
 fi
