@@ -119,7 +119,7 @@ ELT_walk_patches() {
 		fi
 	done
 
-	popd >/dev/null
+	popd >/dev/null || die
 	return ${ret}
 }
 
