@@ -1,0 +1,74 @@
+From d19a4bc2475705f8252f8952c446b57b31661453 Mon Sep 17 00:00:00 2001
+From: Debarshi Ray <debarshir@gnome.org>
+Date: Fri, 16 Oct 2015 13:35:34 +0200
+Subject: proxy volume monitor: Properly handle failure to create a remote
+ proxy
+
+We should finish constructing the innards of the object and not leave
+it in an inconsistent state when we hit an error. The other option
+would be to litter the rest of the code with NULL checks, but that
+would be ugly and prone to errors.
+
+We should also ensure that the reference counting stays consistent with
+the non-error paths.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=755805
+---
+ monitor/proxy/gproxyvolumemonitor.c | 15 ++++++---------
+ 1 file changed, 6 insertions(+), 9 deletions(-)
+
+diff --git a/monitor/proxy/gproxyvolumemonitor.c b/monitor/proxy/gproxyvolumemonitor.c
+index 17474a8..a7466f0 100644
+--- a/monitor/proxy/gproxyvolumemonitor.c
++++ b/monitor/proxy/gproxyvolumemonitor.c
+@@ -972,10 +972,7 @@ g_proxy_volume_monitor_constructor (GType                  type,
+   klass = G_PROXY_VOLUME_MONITOR_CLASS (g_type_class_peek (type));
+   object = g_hash_table_lookup (the_volume_monitors, (gpointer) type);
+   if (object != NULL)
+-    {
+-      g_object_ref (object);
+-      goto out;
+-    }
++    goto out;
+ 
+   dbus_name = klass->dbus_name;
+ 
+@@ -988,6 +985,10 @@ g_proxy_volume_monitor_constructor (GType                  type,
+ 
+   monitor = G_PROXY_VOLUME_MONITOR (object);
+ 
++  monitor->drives = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
++  monitor->volumes = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
++  monitor->mounts = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
++
+   error = NULL;
+   monitor->proxy = gvfs_remote_volume_monitor_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
+                                                                       G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
+@@ -1022,10 +1023,6 @@ g_proxy_volume_monitor_constructor (GType                  type,
+   g_signal_connect (monitor->proxy, "volume-changed", G_CALLBACK (volume_changed), monitor);
+   g_signal_connect (monitor->proxy, "volume-removed", G_CALLBACK (volume_removed), monitor);
+ 
+-  monitor->drives = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
+-  monitor->volumes = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
+-  monitor->mounts = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
+-
+   /* listen to when the owner of the service appears/disappears */
+   g_signal_connect (monitor->proxy, "notify::g-name-owner", G_CALLBACK (name_owner_changed), monitor);
+   /* initially seed drives/volumes/mounts if we have an owner */
+@@ -1038,12 +1035,12 @@ g_proxy_volume_monitor_constructor (GType                  type,
+ 
+   g_hash_table_insert (the_volume_monitors, (gpointer) type, object);
+ 
++ out:
+   /* Take an extra reference to make the instance live forever - see also
+    * the dispose() and finalize() vfuncs
+    */
+   g_object_ref (object);
+ 
+- out:
+   G_UNLOCK (proxy_vm);
+   return object;
+ }
+-- 
+cgit v0.11.2
+
