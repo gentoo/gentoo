@@ -20,7 +20,7 @@ SRC_URI="https://launchpad.net/zeitgeist/${DIR_PV}/${PV}/+download/${P}.tar.xz
 LICENSE="LGPL-2+ LGPL-3+ GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
-IUSE="+datahub downloads-monitor extensions +fts icu introspection nls plugins sql-debug telepathy"
+IUSE="+datahub downloads-monitor +fts icu introspection nls plugins sql-debug telepathy"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -30,17 +30,13 @@ RDEPEND="
 	${PYTHON_DEPS}
 	dev-libs/json-glib
 	dev-python/dbus-python[${PYTHON_USEDEP}]
-	dev-python/pygobject:2[${PYTHON_USEDEP}]
-	dev-python/pyxdg[${PYTHON_USEDEP}]
-	dev-python/rdflib[${PYTHON_USEDEP}]
 	media-libs/raptor:2
 	>=dev-libs/glib-2.35.4:2
 	>=dev-db/sqlite-3.7.11:3
 	sys-apps/dbus
 	datahub? ( x11-libs/gtk+:3 )
-	extensions? ( gnome-extra/zeitgeist-extensions  )
 	fts? ( dev-libs/xapian[inmemory] )
-	icu? ( dev-libs/dee[icu?,${PYTHON_USEDEP}] )
+	icu? ( dev-libs/dee[icu?] )
 	introspection? ( dev-libs/gobject-introspection )
 	plugins? ( gnome-extra/zeitgeist-datasources )
 	telepathy? ( net-libs/telepathy-glib )
