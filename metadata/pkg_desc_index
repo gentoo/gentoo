@@ -11137,7 +11137,7 @@ kde-frameworks/kxmlgui 5.14.0 5.15.0: Framework for managing menu and toolbar ac
 kde-frameworks/kxmlrpcclient 5.14.0 5.15.0: Framework providing client-side support for the XML-RPC protocol
 kde-frameworks/modemmanager-qt 5.14.0 5.15.0: ModemManager bindings for Qt
 kde-frameworks/networkmanager-qt 5.14.0 5.15.0: NetworkManager bindings for Qt
-kde-frameworks/plasma 5.14.0 5.15.0: Plasma framework
+kde-frameworks/plasma 5.14.0 5.15.0 5.15.0-r1: Plasma framework
 kde-frameworks/solid 5.14.0 5.15.0: Framework providing platform independent hardware discovery, abstraction, and management
 kde-frameworks/sonnet 5.14.0 5.15.0: Framework for providing spell-checking capabilities through abstraction of popular backends
 kde-frameworks/threadweaver 5.14.0 5.15.0: Framework for managing threads using job and queue-based interfaces
