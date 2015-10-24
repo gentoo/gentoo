@@ -14568,7 +14568,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1: CLI to access Yandex Disk file storage service
 net-misc/yaydl 1.5.2: Yet Another Youtube DownLoader which is downloading more than youtube
-net-misc/youtube-dl 2015.04.03 2015.10.16 2015.10.18: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2015.04.03 2015.10.18 2015.10.24: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.1 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -15367,7 +15367,7 @@ sci-geosciences/gpscorrelate 1.6.1: Tool for adjusting EXIF tags of your photos 
 sci-geosciences/gpsd 2.95-r1 2.96-r1 3.6 3.7 3.8 3.9 3.9-r1 3.10 3.11 3.13 3.15 9999: GPS daemon and library to support USB/serial GPS devices and various GPS/mapping clients
 sci-geosciences/gpx-viewer 0.4.0-r1: Simple program to visualize a gpx file
 sci-geosciences/gpxpy 0.8.6: python GPX parser
-sci-geosciences/grass 6.4.2 7.0.1-r1: A free GIS with raster and vector functionality, as well as 3D vizualization
+sci-geosciences/grass 6.4.2 7.0.1-r1 7.0.1-r2: A free GIS with raster and vector functionality, as well as 3D vizualization
 sci-geosciences/gshhs 1.13: Global Self-consistent, Hierarchical, High-resolution Shoreline programs
 sci-geosciences/gshhs-data 2.2.0: Global Self-consistent, Hierarchical, High-resolution Shoreline programs data
 sci-geosciences/gtk-g-rays2 2.01 2.05: GUI for accessing the Wintec WBT 201 / G-Rays 2 GPS device
@@ -17426,7 +17426,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.2-r1 3.3-r1: a free, open source web browser
 www-client/opera 12.16_p1860-r1 32.0.1948.69: A fast and secure web browser
 www-client/opera-beta 33.0.1990.20 33.0.1990.35: A fast and secure web browser
-www-client/opera-developer 34.0.2011.0 34.0.2023.0: A fast and secure web browser
+www-client/opera-developer 34.0.2023.0 34.0.2026.0: A fast and secure web browser
 www-client/otter 0.9.07 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.11.1 9999: Command line interface to (Gentoo) Bugzilla
@@ -17442,7 +17442,7 @@ www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ 
 www-client/uzbl 2012.05.14 2012.05.14-r1 9999: Web interface tools which adhere to the unix philosophy.
 www-client/vimb 2.9: a fast, lightweight, vim-like browser based on webkit
 www-client/vimprobable2 1.4.0 1.4.2 1.4.2-r1 9999: A minimal web browser that behaves like the Vimperator plugin for Firefox
-www-client/vivaldi 1.0.303.22_p1 1.0.303.23_p1: A new browser for our friends
+www-client/vivaldi 1.0.303.23_p1 1.0.303.27_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7: A variant of w3m with support for multiple character encodings
