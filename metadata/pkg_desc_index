@@ -8428,7 +8428,7 @@ dev-ruby/camping 2.1.532: A small web framework modeled after Ruby on Rails
 dev-ruby/capistrano 2.15.5-r1 2.15.5-r2 3.3.5 3.4.0: A distributed application deployment system
 dev-ruby/capistrano-stats 1.1.1: Official metrics to help the development direction of Capistrano
 dev-ruby/capybara 1.1.4 2.2.1 2.4.4 2.5.0: Capybara aims to simplify the process of integration testing Rack applications
-dev-ruby/celluloid 0.16.0: Celluloid provides a simple and natural way to build fault-tolerant concurrent programs in Ruby
+dev-ruby/celluloid 0.16.0 0.16.0-r1: Celluloid provides a simple and natural way to build fault-tolerant concurrent programs in Ruby
 dev-ruby/celluloid-io 0.16.2: Evented IO for Celluloid actors
 dev-ruby/certificate_authority 0.1.6: Managing the core functions outlined in RFC-3280 for PKI
 dev-ruby/charlock_holmes 0.7.3: Character encoding detecting library for Ruby using ICU
