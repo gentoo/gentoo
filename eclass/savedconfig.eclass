@@ -122,9 +122,9 @@ restore_config() {
 	elif [[ -d ${found} ]]; then
 		elog "Building using saved config directory ${found}"
 		local dest=${PWD}
-		pushd "${found}" > /dev/null
+		pushd "${found}" > /dev/null || die
 		treecopy . "${dest}" || die "Failed to restore ${found} to $1"
-		popd > /dev/null
+		popd > /dev/null || die
 	else
 		# maybe the user is screwing around with perms they shouldnt #289168
 		if [[ ! -r ${base} ]] ; then
