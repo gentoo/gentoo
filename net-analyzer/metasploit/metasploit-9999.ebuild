@@ -47,7 +47,7 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/json
 	dev-ruby/kissfft
 	dev-ruby/metasm:1.0.2
-	dev-ruby/metasploit_data_models:1.2.8
+	dev-ruby/metasploit_data_models:1.2.9
 	dev-ruby/meterpreter_bins:0.0.22
 	dev-ruby/metasploit-payloads:1.0.15
 	dev-ruby/metasploit-credential:1.0.1
