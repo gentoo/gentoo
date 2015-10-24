@@ -80,6 +80,8 @@ pkg_setup() {
 src_prepare() {
 	java-pkg-opt-2_src_prepare
 
+	epatch "${FILESDIR}"/${P}-glibc-2.22-backport.patch
+
 	# fix datadir and docdir placement
 	sed -i \
 		-e "s:@datadir@:@datadir@/gdal:" \
