@@ -729,7 +729,7 @@ install_headers() {
 
 	# Do not use "linux/*" as that can cause problems with very long
 	# $S values where the cmdline to cp is too long
-	pushd "${S}" >/dev/null
+	pushd "${S}" >/dev/null || die
 	dodir ${ddir}/linux
 	cp -pPR "${S}"/include/linux "${D}"/${ddir}/ || die
 	rm -rf "${D}"/${ddir}/linux/modules
@@ -745,7 +745,7 @@ install_headers() {
 	# clean up
 	find "${D}" -name '*.orig' -exec rm -f {} \;
 
-	popd >/dev/null
+	popd >/dev/null || die
 }
 
 install_sources() {
@@ -935,13 +935,13 @@ unipatch() {
 				PATCH_ORDER="${z}${STRICT_COUNT}"
 
 				mkdir -p "${KPATCH_DIR}/${PATCH_ORDER}"
-				pushd "${KPATCH_DIR}/${PATCH_ORDER}" >/dev/null
+				pushd "${KPATCH_DIR}/${PATCH_ORDER}" >/dev/null || die
 				unpack ${i##*/}
-				popd >/dev/null
+				popd >/dev/null || die
 			else
-				pushd "${KPATCH_DIR}" >/dev/null
+				pushd "${KPATCH_DIR}" >/dev/null || die
 				unpack ${i##*/}
-				popd >/dev/null
+				popd >/dev/null || die
 			fi
 
 			[[ ${i} == *:* ]] && echo ">>> Strict patch levels not currently supported for tarballed patchsets"
