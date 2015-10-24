@@ -22,10 +22,7 @@ IUSE="doc cxx pgo static-libs"
 
 DEPEND="sys-devel/m4
 	app-arch/xz-utils"
-RDEPEND="abi_x86_32? (
-	!<=app-emulation/emul-linux-x86-baselibs-20131008-r1
-	!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-)"
+RDEPEND=""
 
 S=${WORKDIR}/${MY_P}
 
@@ -45,7 +42,7 @@ src_prepare() {
 	mv configure configure.wrapped || die
 	cat <<-\EOF > configure
 	#!/bin/sh
-	exec env ABI="$GMPABI" "$0.wrapped" "$@"
+	exec env ABI="${GMPABI}" "$0.wrapped" "$@"
 	EOF
 	chmod a+rx configure
 }
@@ -54,7 +51,7 @@ multilib_src_configure() {
 	# Because of our 32-bit userland, 1.0 is the only HPPA ABI that works
 	# http://gmplib.org/manual/ABI-and-ISA.html#ABI-and-ISA (bug #344613)
 	if [[ ${CHOST} == hppa2.0-* ]] ; then
-		export GMPABI="1.0"
+		GMPABI="1.0"
 	fi
 
 	# ABI mappings (needs all architectures supported)
