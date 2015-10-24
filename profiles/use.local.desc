@@ -3191,7 +3191,6 @@ gnome-extra/synapse:plugins - Build support for plugins using librest
 gnome-extra/synapse:zeitgeist - Add support for Zeitgeist event tracking system
 gnome-extra/zeitgeist:datahub - Use build datahub for passive event injection
 gnome-extra/zeitgeist:downloads-monitor - Monitor the XDG_DOWNLOAD_DIRECTORY
-gnome-extra/zeitgeist:extensions - Use gnome-extra/zeitgeist-extentions to enhance the internal routines
 gnome-extra/zeitgeist:fts - Enable the full text search extension
 gnome-extra/zeitgeist:plugins - Use gnome-extra/zeitgeist-datasources to enable numerous packages to inject events
 gnome-extra/zeitgeist:sql-debug - Enable SQL debugging
