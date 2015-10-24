@@ -106,9 +106,9 @@ gnome2_environment_reset() {
 # This function should be called from pkg_preinst.
 gnome2_gconf_savelist() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
-	pushd "${ED}" &> /dev/null
+	pushd "${ED}" &> /dev/null || die
 	export GNOME2_ECLASS_SCHEMAS=$(find 'etc/gconf/schemas/' -name '*.schemas' 2> /dev/null)
-	popd &> /dev/null
+	popd &> /dev/null || die
 }
 
 # @FUNCTION: gnome2_gconf_install
@@ -200,9 +200,9 @@ gnome2_gconf_uninstall() {
 # This function should be called from pkg_preinst.
 gnome2_icon_savelist() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
-	pushd "${ED}" &> /dev/null
+	pushd "${ED}" &> /dev/null || die
 	export GNOME2_ECLASS_ICONS=$(find 'usr/share/icons' -maxdepth 1 -mindepth 1 -type d 2> /dev/null)
-	popd &> /dev/null
+	popd &> /dev/null || die
 }
 
 # @FUNCTION: gnome2_icon_cache_update
@@ -321,9 +321,9 @@ gnome2_omf_fix() {
 # This function should be called from pkg_preinst.
 gnome2_scrollkeeper_savelist() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
-	pushd "${ED}" &> /dev/null
+	pushd "${ED}" &> /dev/null || die
 	export GNOME2_ECLASS_SCROLLS=$(find 'usr/share/omf' -type f -name "*.omf" 2> /dev/null)
-	popd &> /dev/null
+	popd &> /dev/null || die
 }
 
 # @FUNCTION: gnome2_scrollkeeper_update
@@ -356,9 +356,9 @@ gnome2_scrollkeeper_update() {
 # This function should be called from pkg_preinst.
 gnome2_schemas_savelist() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
-	pushd "${ED}" &>/dev/null
+	pushd "${ED}" &>/dev/null || die
 	export GNOME2_ECLASS_GLIB_SCHEMAS=$(find 'usr/share/glib-2.0/schemas' -name '*.gschema.xml' 2>/dev/null)
-	popd &>/dev/null
+	popd &>/dev/null || die
 }
 
 # @FUNCTION: gnome2_schemas_update
@@ -392,9 +392,9 @@ gnome2_schemas_update() {
 # This function should be called from pkg_preinst.
 gnome2_gdk_pixbuf_savelist() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
-	pushd "${ED}" 1>/dev/null
+	pushd "${ED}" 1>/dev/null || die
 	export GNOME2_ECLASS_GDK_PIXBUF_LOADERS=$(find usr/lib*/gdk-pixbuf-2.0 -type f 2>/dev/null)
-	popd 1>/dev/null
+	popd 1>/dev/null || die
 }
 
 # @FUNCTION: gnome2_gdk_pixbuf_update
