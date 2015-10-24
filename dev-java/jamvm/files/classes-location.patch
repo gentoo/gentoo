@@ -1,7 +1,7 @@
-diff -ur jamvm-1.5.0.old/configure.ac jamvm-1.5.0/configure.ac
---- jamvm-1.5.0.old/configure.ac	2008-03-03 17:31:46.000000000 +0200
-+++ jamvm-1.5.0/configure.ac	2008-03-03 17:36:14.000000000 +0200
-@@ -208,6 +208,7 @@
+diff -Nru jamvm-2.0.0.old/configure.ac jamvm-2.0.0/configure.ac
+--- jamvm-2.0.0.old/configure.ac	2014-06-10 21:33:37.000000000 +0100
++++ jamvm-2.0.0/configure.ac	2014-11-28 19:22:12.183091414 +0000
+@@ -236,6 +236,7 @@
      install_dir=$prefix
  fi
  AC_DEFINE_UNQUOTED(INSTALL_DIR, "$install_dir", [Installation directory (prefix)])
@@ -9,10 +9,10 @@ diff -ur jamvm-1.5.0.old/configure.ac jamvm-1.5.0/configure.ac
  
  AC_ARG_ENABLE(zip,
      [AS_HELP_STRING(--disable-zip,turn-off zip support in the bootstrap loader)],,)
-diff -ur jamvm-1.5.0.old/src/class.h jamvm-1.5.0/src/class.h
---- jamvm-1.5.0.old/src/class.h	2008-03-03 17:31:46.000000000 +0200
-+++ jamvm-1.5.0/src/class.h	2008-03-03 17:36:51.000000000 +0200
-@@ -39,10 +39,10 @@
+diff -Nru jamvm-2.0.0.old/src/classlib/gnuclasspath/class.c jamvm-2.0.0/src/classlib/gnuclasspath/class.c
+--- jamvm-2.0.0.old/src/classlib/gnuclasspath/class.c	2012-05-17 22:01:47.000000000 +0100
++++ jamvm-2.0.0/src/classlib/gnuclasspath/class.c	2014-11-28 19:23:27.312108240 +0000
+@@ -110,10 +110,10 @@
     separate class files in a directory structure */
  
  #ifdef USE_ZIP
