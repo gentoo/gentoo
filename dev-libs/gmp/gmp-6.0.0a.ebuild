@@ -44,7 +44,7 @@ src_prepare() {
 	mv configure configure.wrapped || die
 	cat <<-\EOF > configure
 	#!/bin/sh
-	exec env ABI="$GMPABI" "$0.wrapped" "$@"
+	exec env ABI="${GMPABI}" "$0.wrapped" "$@"
 	EOF
 	chmod a+rx configure
 }
@@ -53,7 +53,7 @@ multilib_src_configure() {
 	# Because of our 32-bit userland, 1.0 is the only HPPA ABI that works
 	# http://gmplib.org/manual/ABI-and-ISA.html#ABI-and-ISA (bug #344613)
 	if [[ ${CHOST} == hppa2.0-* ]] ; then
-		export GMPABI="1.0"
+		GMPABI="1.0"
 	fi
 
 	# ABI mappings (needs all architectures supported)
