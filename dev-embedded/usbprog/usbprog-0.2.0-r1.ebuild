@@ -21,7 +21,7 @@ RDEPEND="
 	>=dev-libs/libxml2-2.0.0
 	net-misc/curl
 	virtual/libusb:0
-	sys-libs/readline
+	sys-libs/readline:0
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
