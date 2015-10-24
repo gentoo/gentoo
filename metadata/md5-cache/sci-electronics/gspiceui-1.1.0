@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=x11-libs/wxGTK:3.0[X] sci-electronics/electronics-menu || ( sci-electronics/ngspice sci-electronics/gnucap ) waveform? ( sci-electronics/gwave ) schematics? ( sci-electronics/geda )
 SLOT=0
 SRC_URI=mirror://sourceforge/gspiceui/gspiceui-v1.1.00.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	wxwidgets	e0c7fd61275cea7156be4143ba8c673a
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	wxwidgets	2a19d3cd9b18703ae9fb53123722061c
 _md5_=859c840579b65e43a7a153b42e23a0b8

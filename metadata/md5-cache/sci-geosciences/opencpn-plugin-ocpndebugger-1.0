@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=>=sci-geosciences/opencpn-4.0.0 sys-devel/gettext
 SLOT=0
 SRC_URI=https://github.com/nohal/ocpndebugger_pi/archive/v1.0.tar.gz -> opencpn-plugin-ocpndebugger-1.0.tar.gz
-_eclasses_=cmake-utils	7dc05d514e5011a2a16bfa7a32e69587	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	wxwidgets	e0c7fd61275cea7156be4143ba8c673a
+_eclasses_=cmake-utils	7dc05d514e5011a2a16bfa7a32e69587	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	wxwidgets	2a19d3cd9b18703ae9fb53123722061c
 _md5_=f08b963dbdfff9c47e728a6bd9572fe2
