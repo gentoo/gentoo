@@ -1,0 +1,35 @@
+commit bb3c3cbee65ef42b2b3048afae008c719bc2056a
+Author: Ole Reifschneider <mail@ole-reifschneider.de>
+Date:   Sat Oct 24 18:48:01 2015 +0200
+
+    Make jemalloc optional
+    
+    Don't enable it automagically if it exists
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 348e138..53e3873 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -260,12 +260,16 @@ if((CLANG_ASAN_UBSAN OR CLANG_MSAN OR CLANG_TSAN) AND NOT CMAKE_C_COMPILER_ID MA
+   message(FATAL_ERROR "Sanitizers are only supported for Clang.")
+ endif()
+ 
+-if(CLANG_ASAN_UBSAN OR CLANG_MSAN OR CLANG_TSAN)
+-  message(STATUS "Sanitizers have been enabled; don't use jemalloc.")
+-else()
+-  find_package(JeMalloc)
+-  if(JEMALLOC_FOUND)
+-    include_directories(SYSTEM ${JEMALLOC_INCLUDE_DIRS})
++option(ENABLE_JEMALLOC "enable jemalloc" OFF)
++
++if (ENABLE_JEMALLOC)
++  if(CLANG_ASAN_UBSAN OR CLANG_MSAN OR CLANG_TSAN)
++    message(STATUS "Sanitizers have been enabled; don't use jemalloc.")
++  else()
++    find_package(JeMalloc)
++    if(JEMALLOC_FOUND)
++      include_directories(SYSTEM ${JEMALLOC_INCLUDE_DIRS})
++    endif()
+   endif()
+ endif()
+ 

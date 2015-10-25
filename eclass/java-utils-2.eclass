@@ -720,7 +720,7 @@ java-pkg_dosrc() {
 		if [[ ${result} != 12 && ${result} != 0 ]]; then
 			die "failed to zip ${dir_name}"
 		fi
-		popd >/dev/null
+		popd >/dev/null || die
 	done
 
 	# Install the zip
@@ -1033,11 +1033,11 @@ java-pkg_jar-from() {
 					java-pkg_record-jar_ --build-only "${target_pkg}" "${jar}"
 				fi
 			fi
-			popd > /dev/null
+			popd > /dev/null || die
 			return 0
 		fi
 	done
-	popd > /dev/null
+	popd > /dev/null || die
 	# if no target was specified, we're ok
 	if [[ -z "${target_jar}" ]] ; then
 		return 0
@@ -2487,9 +2487,9 @@ java-pkg_append_() {
 # @CODE
 # @RETURN: path to $1's parent directory
 java-pkg_expand_dir_() {
-	pushd "$(dirname "${1}")" >/dev/null 2>&1
+	pushd "$(dirname "${1}")" >/dev/null 2>&1 || die
 	pwd
-	popd >/dev/null 2>&1
+	popd >/dev/null 2>&1 || die
 }
 
 # @FUNCTION: java-pkg_func-exists
