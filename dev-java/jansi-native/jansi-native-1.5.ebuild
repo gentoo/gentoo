@@ -14,7 +14,7 @@ SRC_URI="https://github.com/fusesource/${PN}/tarball/${P} -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 x86 ppc ppc64"
 
 CDEPEND="dev-java/hawtjni-runtime:0"
 
