@@ -36,16 +36,6 @@ src_prepare() {
 		-i tests/check/elements/splitmux.c || die
 }
 
-src_configure() {
-	# gst doesnt handle optimisations well
-	strip-flags
-	replace-flags "-O3" "-O2"
-	# https://bugs.gentoo.org/show_bug.cgi?id=22249
-	filter-flags "-fprefetch-loop-arrays"
-
-	multilib-minimal_src_configure
-}
-
 multilib_src_configure() {
 	# Always enable optional bz2 support for matroska
 	# Always enable optional zlib support for qtdemux and matroska
