@@ -10,4 +10,4 @@ RDEPEND=sys-libs/gdbm
 SLOT=0
 SRC_URI=mirror://sourceforge/gauche/Gauche-0.9.4.tgz
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=8c27fa2a484a189277f59a7ac95cec48
+_md5_=9bc9555b5c538e29f3a8fb308367125d
