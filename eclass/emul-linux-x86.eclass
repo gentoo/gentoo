@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# @DEAD
+
 #
 # Original Author: Mike Doty <kingtaco@gentoo.org>
 # Adapted from emul-libs.eclass
@@ -16,6 +18,10 @@ case "${EAPI:-0}" in
 		;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
+
+eqawarn "emul-linux-x86.eclass is last rited and will be removed on 2015-11-24."
+eqawarn "Please remove your copies of emul-linux-x86 ebuilds as they are"
+eqawarn "no longer supported."
 
 DESCRIPTION="Provides precompiled 32bit libraries"
 #HOMEPAGE="https://amd64.gentoo.org/emul/content.xml"
