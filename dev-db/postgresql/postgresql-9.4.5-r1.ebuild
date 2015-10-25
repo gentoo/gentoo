@@ -4,10 +4,6 @@
 
 EAPI="5"
 
-# Testing within Portage's environment is broken, and the patch no
-# longer applies cleanly.
-RESTRICT="test"
-
 PYTHON_COMPAT=( python{2_7,3_4} )
 
 inherit eutils flag-o-matic linux-info multilib pam prefix python-single-r1 \
@@ -57,10 +53,32 @@ ssl? (
 	libressl? ( dev-libs/libressl:= )
 )
 tcl? ( >=dev-lang/tcl-8:0= )
-uuid? ( dev-libs/ossp-uuid )
 xml? ( dev-libs/libxml2 dev-libs/libxslt )
 zlib? ( sys-libs/zlib )
 "
+
+# uuid flags -- depend on sys-apps/util-linux for Linux libcs, or if no
+# supported libc in use depend on dev-libs/ossp-uuid. For BSD systems,
+# the libc includes UUID functions.
+UTIL_LINUX_LIBC=( elibc_{glibc,uclibc,musl} )
+BSD_LIBC=( elibc_{Free,Net,Open}BSD )
+
+nest_usedep() {
+	local front back
+	while [[ ${#} -gt 1 ]]; do
+		front+="${1}? ( "
+		back+=" )"
+		shift
+	done
+	echo "${front}${1}${back}"
+}
+
+IUSE+=" ${UTIL_LINUX_LIBC[@]} ${BSD_LIBC[@]}"
+CDEPEND+="
+uuid? (
+	${UTIL_LINUX_LIBC[@]/%/? ( sys-apps/util-linux )}
+	$(nest_usedep ${UTIL_LINUX_LIBC[@]/#/!} ${BSD_LIBC[@]/#/!} dev-libs/ossp-uuid)
+)"
 
 DEPEND="${CDEPEND}
 !!<sys-apps/sandbox-2.0
@@ -94,13 +112,11 @@ src_prepare() {
 	sed "s|\(PGSOCKET_DIR\s\+\)\"/tmp\"|\1\"${EPREFIX}/run/postgresql\"|" \
 		-i src/include/pg_config_manual.h || die
 
-	epatch "${FILESDIR}/pg_ctl-exit-status.patch"
-
 	use server || epatch "${FILESDIR}/${PN}-${SLOT}-no-server.patch"
 
 	# Fix bug 486556 where the server would crash at start up because of
 	# an infinite loop caused by a self-referencing symlink.
-	epatch "${FILESDIR}/postgresql-9.1-tz-dir-overflow.patch"
+	epatch "${FILESDIR}/postgresql-9.2-9.4-tz-dir-overflow.patch"
 
 	if use pam ; then
 		sed -e "s/\(#define PGSQL_PAM_SERVICE \"postgresql\)/\1-${SLOT}/" \
@@ -123,6 +139,17 @@ src_configure() {
 
 	local PO="${EPREFIX%/}"
 
+	local i uuid_config=""
+	if use uuid; then
+		for i in ${UTIL_LINUX_LIBC[@]}; do
+			use ${i} && uuid_config="--with-uuid=e2fs"
+		done
+		for i in ${BSD_LIBC[@]}; do
+			use ${i} && uuid_config="--with-uuid=bsd"
+		done
+		[[ -z $uuid_config ]] && uuid_config="--with-uuid=ossp"
+	fi
+
 	econf \
 		--prefix="${PO}/usr/$(get_libdir)/postgresql-${SLOT}" \
 		--datadir="${PO}/usr/share/postgresql-${SLOT}" \
@@ -134,7 +161,6 @@ src_configure() {
 		$(use_enable !pg_legacytimestamp integer-datetimes) \
 		$(use_enable threads thread-safety) \
 		$(use_with kerberos gssapi) \
-		$(use_with kerberos krb5) \
 		$(use_with ldap) \
 		$(use_with pam) \
 		$(use_with perl) \
@@ -142,7 +168,7 @@ src_configure() {
 		$(use_with readline) \
 		$(use_with ssl openssl) \
 		$(use_with tcl) \
-		$(use_with uuid ossp-uuid) \
+		${uuid_config} \
 		$(use_with xml libxml) \
 		$(use_with xml libxslt) \
 		$(use_with zlib) \
@@ -196,13 +222,11 @@ src_install() {
 			"${FILESDIR}/${PN}.confd" | newconfd - ${PN}-${SLOT}
 
 		sed -e "s|@SLOT@|${SLOT}|g" -e "s|@LIBDIR@|$(get_libdir)|g" \
-			"${FILESDIR}/${PN}.init-pre_9.2" | newinitd - ${PN}-${SLOT}
+			"${FILESDIR}/${PN}.init-9.3" | newinitd - ${PN}-${SLOT}
 
 		sed -e "s|@SLOT@|${SLOT}|g" -e "s|@LIBDIR@|$(get_libdir)|g" \
 			"${FILESDIR}/${PN}.service" | \
 			systemd_newunit - ${PN}-${SLOT}.service
-
-		systemd_newtmpfilesd "${FILESDIR}"/${PN}.tmpfilesd ${PN}-${SLOT}.conf
 
 		newbin "${FILESDIR}"/${PN}-check-db-dir ${PN}-${SLOT}-check-db-dir
 
@@ -382,5 +406,23 @@ pkg_config() {
 	else
 		einfo "You should use the '${EROOT%/}/etc/init.d/postgresql-${SLOT}' script to run PostgreSQL"
 		einfo "instead of 'pg_ctl'."
+	fi
+}
+
+src_test() {
+	einfo ">>> Test phase [check]: ${CATEGORY}/${PF}"
+
+	if use server && [[ ${UID} -ne 0 ]] ; then
+		emake check
+
+		einfo "If you think other tests besides the regression tests are necessary, please"
+		einfo "submit a bug including a patch for this ebuild to enable them."
+	else
+		use server || \
+			ewarn 'Tests cannot be run without the "server" use flag enabled.'
+		[[ ${UID} -eq 0 ]] || \
+			ewarn 'Tests cannot be run as root. Enable "userpriv" in FEATURES.'
+
+		ewarn 'Skipping.'
 	fi
 }
