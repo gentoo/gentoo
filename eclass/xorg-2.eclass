@@ -516,9 +516,9 @@ xorg-2_src_install() {
 	fi
 
 	if [[ -n ${GIT_ECLASS} ]]; then
-		pushd "${EGIT_STORE_DIR}/${EGIT_CLONE_DIR}" > /dev/null
+		pushd "${EGIT_STORE_DIR}/${EGIT_CLONE_DIR}" > /dev/null || die
 		git log ${EGIT_COMMIT} > "${S}"/ChangeLog
-		popd > /dev/null
+		popd > /dev/null || die
 	fi
 
 	if [[ -e "${S}"/ChangeLog ]]; then

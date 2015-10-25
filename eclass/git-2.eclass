@@ -180,7 +180,7 @@ git-2_submodules() {
 		fi
 
 		debug-print "${FUNCNAME}: working in \"${1}\""
-		pushd "${EGIT_DIR}" > /dev/null
+		pushd "${EGIT_DIR}" > /dev/null || die
 
 		debug-print "${FUNCNAME}: git submodule init"
 		git submodule init || die
@@ -189,7 +189,7 @@ git-2_submodules() {
 		debug-print "${FUNCNAME}: git submodule update"
 		git submodule update || die
 
-		popd > /dev/null
+		popd > /dev/null || die
 	fi
 }
 
@@ -204,7 +204,7 @@ git-2_branch() {
 	local branchname src
 
 	debug-print "${FUNCNAME}: working in \"${EGIT_SOURCEDIR}\""
-	pushd "${EGIT_SOURCEDIR}" > /dev/null
+	pushd "${EGIT_SOURCEDIR}" > /dev/null || die
 
 	local branchname=branch-${EGIT_BRANCH} src=origin/${EGIT_BRANCH}
 	if [[ ${EGIT_COMMIT} != ${EGIT_BRANCH} ]]; then
@@ -215,7 +215,7 @@ git-2_branch() {
 	git checkout -b ${branchname} ${src} \
 		|| die "${FUNCNAME}: changing the branch failed"
 
-	popd > /dev/null
+	popd > /dev/null || die
 }
 
 # @FUNCTION: git-2_gc
@@ -228,13 +228,13 @@ git-2_gc() {
 	local args
 
 	if [[ ${EGIT_REPACK} || ${EGIT_PRUNE} ]]; then
-		pushd "${EGIT_DIR}" > /dev/null
+		pushd "${EGIT_DIR}" > /dev/null || die
 		ebegin "Garbage collecting the repository"
 		[[ ${EGIT_PRUNE} ]] && args='--prune'
 		debug-print "${FUNCNAME}: git gc ${args}"
 		git gc ${args}
 		eend $?
-		popd > /dev/null
+		popd > /dev/null || die
 	fi
 }
 
@@ -306,12 +306,12 @@ git-2_move_source() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	debug-print "${FUNCNAME}: ${MOVE_COMMAND} \"${EGIT_DIR}\" \"${EGIT_SOURCEDIR}\""
-	pushd "${EGIT_DIR}" > /dev/null
+	pushd "${EGIT_DIR}" > /dev/null || die
 	mkdir -p "${EGIT_SOURCEDIR}" \
 		|| die "${FUNCNAME}: failed to create ${EGIT_SOURCEDIR}"
 	${MOVE_COMMAND} "${EGIT_SOURCEDIR}" \
 		|| die "${FUNCNAME}: sync to \"${EGIT_SOURCEDIR}\" failed"
-	popd > /dev/null
+	popd > /dev/null || die
 }
 
 # @FUNCTION: git-2_initial_clone
@@ -388,22 +388,22 @@ git-2_fetch() {
 
 	if [[ ! -d ${EGIT_DIR} ]]; then
 		git-2_initial_clone
-		pushd "${EGIT_DIR}" > /dev/null
+		pushd "${EGIT_DIR}" > /dev/null || die
 		cursha=$(git rev-parse ${UPSTREAM_BRANCH})
 		echo "GIT NEW clone -->"
 		echo "   repository:               ${EGIT_REPO_URI_SELECTED}"
 		echo "   at the commit:            ${cursha}"
 
-		popd > /dev/null
+		popd > /dev/null || die
 	elif [[ ${EVCS_OFFLINE} ]]; then
-		pushd "${EGIT_DIR}" > /dev/null
+		pushd "${EGIT_DIR}" > /dev/null || die
 		cursha=$(git rev-parse ${UPSTREAM_BRANCH})
 		echo "GIT offline update -->"
 		echo "   repository:               $(git config remote.origin.url)"
 		echo "   at the commit:            ${cursha}"
-		popd > /dev/null
+		popd > /dev/null || die
 	else
-		pushd "${EGIT_DIR}" > /dev/null
+		pushd "${EGIT_DIR}" > /dev/null || die
 		oldsha=$(git rev-parse ${UPSTREAM_BRANCH})
 		git-2_update_repo
 		cursha=$(git rev-parse ${UPSTREAM_BRANCH})
@@ -421,7 +421,7 @@ git-2_fetch() {
 
 		# print nice statistic of what was changed
 		git --no-pager diff --stat ${oldsha}..${UPSTREAM_BRANCH}
-		popd > /dev/null
+		popd > /dev/null || die
 	fi
 	# export the version the repository is at
 	export EGIT_VERSION="${cursha}"
@@ -454,7 +454,7 @@ git-2_bootstrap() {
 	# combination with --keep-going it would lead in not-updating
 	# pakcages that are up-to-date.
 	if [[ ${EGIT_BOOTSTRAP} ]]; then
-		pushd "${EGIT_SOURCEDIR}" > /dev/null
+		pushd "${EGIT_SOURCEDIR}" > /dev/null || die
 		einfo "Starting bootstrap"
 
 		if [[ -f ${EGIT_BOOTSTRAP} ]]; then
@@ -478,7 +478,7 @@ git-2_bootstrap() {
 		fi
 
 		einfo "Bootstrap finished"
-		popd > /dev/null
+		popd > /dev/null || die
 	fi
 }
 
