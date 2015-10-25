@@ -30,6 +30,11 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
+src_prepare() {
+	need-wxwidgets unicode
+	cmake-utils_src_prepare
+}
+
 src_install() {
 	cmake-utils_src_install
 	insinto "/usr/share/opencpn/plugins/${MY_PN}/data/"
