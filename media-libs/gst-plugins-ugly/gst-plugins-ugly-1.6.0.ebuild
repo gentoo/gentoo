@@ -24,15 +24,6 @@ DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.12
 "
 
-src_configure() {
-	# gst doesnt handle optimisations well
-	strip-flags
-	replace-flags "-O3" "-O2"
-	filter-flags "-fprefetch-loop-arrays" # see bug 22249
-
-	multilib-minimal_src_configure
-}
-
 multilib_src_install_all() {
 	DOCS="AUTHORS ChangeLog NEWS README RELEASE"
 	einstalldocs
