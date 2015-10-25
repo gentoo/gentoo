@@ -47,6 +47,11 @@ multilib_src_configure() {
 		--disable-examples \
 		--with-default-audiosink=autoaudiosink \
 		--with-default-visualizer=goom
+
+	if multilib_is_native_abi; then
+		ln -s "${S}"/docs/plugins/html docs/plugins/html || die
+	fi
+
 }
 
 multilib_src_install_all() {
