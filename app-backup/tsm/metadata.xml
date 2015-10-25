@@ -15,6 +15,11 @@
 		<email>dilfridge@gentoo.org</email>
 		<description>Proxy maintainer, CC him in bugs.</description>
 	</maintainer>
+	<maintainer>
+		<email>xmw@gentoo.org</email>
+		<name>Michael Weber</name>
+		<description>Proxy maintainer, CC him in bugs.</description>
+	</maintainer>
 	<use>
 		<flag name="hsm">Installs Tivoli Storage Manager for Space Management</flag>
 		<flag name="tsm_cit">IBM Tivoli Common Inventory Technology</flag>
