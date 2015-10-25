@@ -67,6 +67,13 @@ multilib_src_configure() {
 		--disable-debug \
 		--disable-cocoa \
 		--disable-wgl
+
+	if multilib_is_native_abi; then
+		local x
+		for x in libs plugins; do
+			ln -s "${S}"/docs/${x}/html docs/${x}/html || die
+		done
+	fi
 }
 
 multilib_src_install_all() {
