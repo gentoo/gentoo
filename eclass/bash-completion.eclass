@@ -33,6 +33,9 @@
 
 inherit eutils
 
+eqawarn "bash-completion.eclass is last rited and will be removed on 2015-11-24."
+eqawarn "Please update your ebuilds to use bash-completion-r1 instead."
+
 EXPORT_FUNCTIONS pkg_postinst
 
 IUSE="bash-completion"
