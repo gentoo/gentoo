@@ -45,7 +45,7 @@ src_configure() {
 		$(use_enable doc documentation)
 	)
 	if tc-is-cross-compiler ; then
-		myeconfargs+=( --disable-scanner )
+		myeconfargs+=( --with-host-scanner )
 	fi
 	if ! multilib_is_native_abi; then
 		myeconfargs+=( --disable-documentation )
