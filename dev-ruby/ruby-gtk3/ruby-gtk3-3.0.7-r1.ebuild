@@ -16,10 +16,16 @@ RDEPEND+=" x11-libs/gtk+:3"
 
 ruby_add_bdepend ">=dev-ruby/ruby-glib2-${PV}
 	>=dev-ruby/ruby-pango-${PV}"
-ruby_add_rdepend ">=dev-ruby/ruby-gdkpixbuf2-${PV}
+
+ruby_add_rdepend "
 	>=dev-ruby/ruby-atk-${PV}
 	>=dev-ruby/ruby-gdk3-${PV}
-	>=dev-ruby/ruby-gio2-${PV}"
+	>=dev-ruby/ruby-gdkpixbuf2-${PV}
+	>=dev-ruby/ruby-gio2-${PV}
+	>=dev-ruby/ruby-glib2-${PV}
+	>=dev-ruby/ruby-gobject-introspection-${PV}
+	>=dev-ruby/ruby-pango-${PV}
+"
 
 all_ruby_prepare() {
 	# Avoid unneeded dependency on test-unit-notify.
@@ -29,6 +35,7 @@ all_ruby_prepare() {
 	# Avoid compilation of dependencies during test.
 	sed -i -e '/which make/,/^    end/ s:^:#:' test/run-test.rb || die
 }
+
 each_ruby_test() {
 	VIRTUALX_COMMAND="${RUBY} test/run-test.rb"
 	 virtualmake || die
