@@ -6312,7 +6312,7 @@ dev-perl/Weather-Com 2.0.0: fetching weather information from weather.com
 dev-perl/WebService-Linode 0.28.0: Perl interface to the Linode.com API
 dev-perl/WebService-MusicBrainz 0.930.0-r1: Web service API to MusicBrainz database
 dev-perl/WordNet-QueryData 1.490.0-r1: Direct perl interface to WordNet database
-dev-perl/Wx-Perl-ProcessStream 0.320.0-r1: access IO of external processes via events
+dev-perl/Wx-Perl-ProcessStream 0.320.0-r1 0.320.0-r2: access IO of external processes via events
 dev-perl/Wx-Scintilla 0.390.0-r1 0.390.0-r2: Scintilla source code editing component for wxWidgets
 dev-perl/X-Osd 0.700.0-r1: Perl glue to libxosd (X OnScreen Display)
 dev-perl/X11-FreeDesktop-DesktopEntry 0.40.0-r1: An interface to Freedesktop.org .desktop files
@@ -15386,7 +15386,7 @@ sci-geosciences/mc2bsbh 0.0.9: MapCal to BSBchart Header Utility
 sci-geosciences/merkaartor 0.17.2 0.18.1 0.18.1-r1 9999: A Qt4 based map editor for the openstreetmap.org project
 sci-geosciences/mkgmap 1995: Tool to create garmin maps
 sci-geosciences/mtkbabel 0.8.2 0.8.3.1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
-sci-geosciences/opencpn 3.0.2 3.2.2 4.0.0: a free, open source software for marine navigation
+sci-geosciences/opencpn 3.0.2 3.2.2 4.0.0 4.0.0-r1: a free, open source software for marine navigation
 sci-geosciences/opencpn-plugin-br24radar 1.1: Navico (Simrad, Lowrance) Broadband BR24/3G/4G Radar Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-climatology 1.0: Climatology Plugin for OpenCPN (includes CL-DATA)
 sci-geosciences/opencpn-plugin-launcher 1.0: Launcher Plugin for OpenCPN
