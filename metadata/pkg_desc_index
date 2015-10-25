@@ -12017,12 +12017,12 @@ media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplaye
 media-libs/gnonlin 0.10.9 0.10.17 1.2.1 1.4.0: Gnonlin is a set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/grilo 0.2.11 0.2.12: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.1: Thin GObject wrapper around the libcanberra sound event library
-media-libs/gst-plugins-bad 0.10.23-r2 1.2.4-r1 1.4.5: Less plugins for GStreamer
-media-libs/gst-plugins-base 0.10.36-r1 0.10.36-r2 1.2.4-r1 1.4.5: Basepack of plugins for gstreamer
-media-libs/gst-plugins-good 0.10.31 0.10.31-r1 1.2.3 1.2.4-r1 1.4.5: Basepack of plugins for GStreamer
+media-libs/gst-plugins-bad 0.10.23-r2 1.2.4-r1 1.4.5 1.6.0: Less plugins for GStreamer
+media-libs/gst-plugins-base 0.10.36-r1 0.10.36-r2 1.2.4-r1 1.4.5 1.6.0: Basepack of plugins for gstreamer
+media-libs/gst-plugins-good 0.10.31 0.10.31-r1 1.2.3 1.2.4-r1 1.4.5 1.6.0: Basepack of plugins for GStreamer
 media-libs/gst-plugins-ugly 0.10.19-r1 1.2.4-r1 1.4.5: Basepack of plugins for gstreamer
 media-libs/gst-rtsp-server 0.10.8-r1 1.4.5: A GStreamer based RTSP server
-media-libs/gstreamer 0.10.36-r2 1.2.4-r2 1.4.5: Open source multimedia framework
+media-libs/gstreamer 0.10.36-r2 1.2.4-r2 1.4.5 1.6.0: Open source multimedia framework
 media-libs/gstreamer-editing-services 1.2.1 1.4.0: SDK for making video editors and more
 media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.2 0.10.3: Library providing DLNA-related functionality for MediaServers
@@ -12369,74 +12369,74 @@ media-plugins/gst-plugins-a52dec 0.10.19-r1 1.2.4-r1 1.4.5: plugin for gstreamer
 media-plugins/gst-plugins-alsa 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-amr 0.10.19 0.10.19-r1 1.2.3 1.2.4 1.2.4-r1 1.4.5: GStreamer plugin for AMRNB/AMRWB codec
 media-plugins/gst-plugins-annodex 0.10.31 0.10.31-r1: GStreamer plugin for annodex stream manipulation
-media-plugins/gst-plugins-assrender 0.10.23-r1 1.2.4-r1 1.4.5: GStreamer plugin for ASS/SSA rendering with effects support
+media-plugins/gst-plugins-assrender 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer plugin for ASS/SSA rendering with effects support
 media-plugins/gst-plugins-cdio 0.10.19-r1 1.2.4-r1 1.4.5: plugin for gstreamer
-media-plugins/gst-plugins-cdparanoia 0.10.36-r1 1.2.4-r1 1.4.5: plugin for gstreamer
-media-plugins/gst-plugins-dash 1.2.4-r1 1.4.5: MPEG-DASH plugin
-media-plugins/gst-plugins-dts 0.10.23-r1 1.2.4-r1 1.4.5: GStreamer plugin for MPEG-1/2 video encoding
-media-plugins/gst-plugins-dv 0.10.31-r1 1.2.4-r1 1.4.5: GStreamer plugin to demux and decode DV
-media-plugins/gst-plugins-dvb 0.10.23-r1 1.2.4-r1 1.4.5: plugin for gstreamer
+media-plugins/gst-plugins-cdparanoia 0.10.36-r1 1.2.4-r1 1.4.5 1.6.0: plugin for gstreamer
+media-plugins/gst-plugins-dash 1.2.4-r1 1.4.5 1.6.0: MPEG-DASH plugin
+media-plugins/gst-plugins-dts 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer plugin for MPEG-1/2 video encoding
+media-plugins/gst-plugins-dv 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer plugin to demux and decode DV
+media-plugins/gst-plugins-dvb 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0: plugin for gstreamer
 media-plugins/gst-plugins-dvdread 0.10.19-r1 1.2.4-r1 1.4.5: plugin for gstreamer
-media-plugins/gst-plugins-faac 0.10.23-r1 1.2.4-r1 1.4.5: plugin for gstreamer
-media-plugins/gst-plugins-faad 0.10.23-r1 0.10.23-r2 1.2.4-r1 1.4.5 1.4.5-r1: plugin for gstreamer
+media-plugins/gst-plugins-faac 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0: plugin for gstreamer
+media-plugins/gst-plugins-faad 0.10.23-r1 0.10.23-r2 1.2.4-r1 1.4.5 1.4.5-r1 1.6.0: plugin for gstreamer
 media-plugins/gst-plugins-ffmpeg 0.10.13_p201211-r2 0.10.13_p201211-r3 0.10.13_p201211-r4: FFmpeg based gstreamer plugin
-media-plugins/gst-plugins-flac 0.10.31 0.10.31-r1 1.2.4-r1 1.4.5: GStreamer encoder/decoder/tagger for FLAC
+media-plugins/gst-plugins-flac 0.10.31 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer encoder/decoder/tagger for FLAC
 media-plugins/gst-plugins-gconf 0.10.31 0.10.31-r1: GStreamer plugin for wrapping GConf audio/video settings
-media-plugins/gst-plugins-gdkpixbuf 0.10.31-r1 1.2.4-r1 1.4.5: plugin for gstreamer
+media-plugins/gst-plugins-gdkpixbuf 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0: plugin for gstreamer
 media-plugins/gst-plugins-gio 0.10.36 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-gl 0.10.3-r1: GStreamer OpenGL plugins
 media-plugins/gst-plugins-gnomevfs 0.10.36 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-gsm 0.10.23 0.10.23-r1: GStreamer plugin for GSM audio decoding/encoding
-media-plugins/gst-plugins-hls 1.2.4-r1 1.4.5: HTTP live streaming plugin
+media-plugins/gst-plugins-hls 1.2.4-r1 1.4.5 1.6.0: HTTP live streaming plugin
 media-plugins/gst-plugins-ivorbis 0.10.36 0.10.36-r1: plugin for gstreamer
-media-plugins/gst-plugins-jack 0.10.31-r1 1.2.4-r1 1.4.5: plugin for gstreamer
-media-plugins/gst-plugins-jpeg 0.10.31-r1 1.2.4-r1 1.4.5: GStreamer encoder/decoder for JPEG format
+media-plugins/gst-plugins-jack 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0: plugin for gstreamer
+media-plugins/gst-plugins-jpeg 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer encoder/decoder for JPEG format
 media-plugins/gst-plugins-ladspa 0.10.23 0.10.23-r1: plugin for gstreamer
 media-plugins/gst-plugins-lame 0.10.19-r1 1.2.4-r1 1.4.5: plugin for gstreamer
 media-plugins/gst-plugins-libav 1.4.5-r1 1.4.5-r2: FFmpeg based gstreamer plugin
-media-plugins/gst-plugins-libmms 0.10.23-r1 1.2.4-r1 1.4.5: plugin for gstreamer
+media-plugins/gst-plugins-libmms 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0: plugin for gstreamer
 media-plugins/gst-plugins-libnice 0.1.8 0.1.8-r100 0.1.10 0.1.10-r100 0.1.13 0.1.13-r100: GStreamer plugin for ICE (RFC 5245) support
-media-plugins/gst-plugins-libpng 0.10.31-r1 1.2.4-r1 1.4.5: GStreamer encoder/decoder for PNG images
-media-plugins/gst-plugins-libvisual 0.10.36-r1 1.2.4-r1 1.4.5: plugin for gstreamer
+media-plugins/gst-plugins-libpng 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer encoder/decoder for PNG images
+media-plugins/gst-plugins-libvisual 0.10.36-r1 1.2.4-r1 1.4.5 1.6.0: plugin for gstreamer
 media-plugins/gst-plugins-mad 0.10.19-r1 1.2.4-r1 1.4.5: plugin for gstreamer
 media-plugins/gst-plugins-meta 0.10-r9 0.10-r10 1.0-r2 1.0-r3: Meta ebuild to pull in gst plugins for apps
-media-plugins/gst-plugins-mimic 0.10.23-r1 1.2.4-r1 1.4.5: GStreamer plugin for the MIMIC codec
-media-plugins/gst-plugins-modplug 0.10.23-r1 1.2.4-r1 1.4.5: plugin for gstreamer
+media-plugins/gst-plugins-mimic 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer plugin for the MIMIC codec
+media-plugins/gst-plugins-modplug 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0: plugin for gstreamer
 media-plugins/gst-plugins-mpeg2dec 0.10.19-r1 1.2.4-r1 1.4.5: Libmpeg2 based decoder plug-in for gstreamer
-media-plugins/gst-plugins-mpeg2enc 0.10.23-r1 1.2.4-r1 1.4.5: GStreamer plugin for MPEG-1/2 video encoding
-media-plugins/gst-plugins-mplex 0.10.23-r1 1.2.4-r1 1.4.5: GStreamer plugin for MPEG/DVD/SVCD/VCD video/audio multiplexing
+media-plugins/gst-plugins-mpeg2enc 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer plugin for MPEG-1/2 video encoding
+media-plugins/gst-plugins-mplex 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer plugin for MPEG/DVD/SVCD/VCD video/audio multiplexing
 media-plugins/gst-plugins-musepack 0.10.23 0.10.23-r1: plugin for gstreamer
-media-plugins/gst-plugins-neon 0.10.23 0.10.23-r1 1.2.3 1.2.4 1.2.4-r1: plugin for gstreamer
-media-plugins/gst-plugins-ofa 0.10.23-r1 1.2.4-r1 1.4.5: plugin for gstreamer
+media-plugins/gst-plugins-neon 0.10.23 0.10.23-r1 1.2.3 1.2.4 1.2.4-r1 1.6.0: plugin for gstreamer
+media-plugins/gst-plugins-ofa 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0: plugin for gstreamer
 media-plugins/gst-plugins-ogg 0.10.36 0.10.36-r1: plugin for gstreamer
-media-plugins/gst-plugins-opus 0.10.23-r1 1.2.4-r1 1.4.5: GStreamer plugin for Opus audio codec support
-media-plugins/gst-plugins-oss 0.10.31 0.10.31-r1 1.2.4-r1 1.4.5: GStreamer plugin for OSS (Open Sound System) support
+media-plugins/gst-plugins-opus 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer plugin for Opus audio codec support
+media-plugins/gst-plugins-oss 0.10.31 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer plugin for OSS (Open Sound System) support
 media-plugins/gst-plugins-pango 0.10.36 0.10.36-r1: plugin for gstreamer
-media-plugins/gst-plugins-pulse 0.10.31-r1 1.2.4-r1 1.4.5: GStreamer plugin for the PulseAudio sound server
-media-plugins/gst-plugins-raw1394 0.10.31-r1 1.2.4-r1 1.4.5: GStreamer plugin to capture firewire video
-media-plugins/gst-plugins-resindvd 0.10.23-r1 1.2.4-r1 1.4.5: plugin for gstreamer
-media-plugins/gst-plugins-rtmp 0.10.23-r1 1.2.4-r1 1.4.5: GStreamer plugin for supporting RTMP sources
-media-plugins/gst-plugins-schroedinger 0.10.23-r1 1.2.4-r1 1.4.5: plugin for gstreamer
-media-plugins/gst-plugins-shout2 0.10.31 0.10.31-r1 1.2.4-r1 1.4.5: GStreamer plugin to send data to an icecast server
+media-plugins/gst-plugins-pulse 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer plugin for the PulseAudio sound server
+media-plugins/gst-plugins-raw1394 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer plugin to capture firewire video
+media-plugins/gst-plugins-resindvd 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0: plugin for gstreamer
+media-plugins/gst-plugins-rtmp 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer plugin for supporting RTMP sources
+media-plugins/gst-plugins-schroedinger 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0: plugin for gstreamer
+media-plugins/gst-plugins-shout2 0.10.31 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer plugin to send data to an icecast server
 media-plugins/gst-plugins-sidplay 0.10.19-r1 1.2.4-r1 1.4.5: plugin for gstreamer
-media-plugins/gst-plugins-smoothstreaming 1.2.4-r1 1.4.5: Smooth Streaming plugin
-media-plugins/gst-plugins-soundtouch 0.10.23-r1 1.2.4-r1 1.4.5: GStreamer elements for beats-per-minute detection and pitch controlling
-media-plugins/gst-plugins-soup 0.10.31-r1 1.2.4-r1 1.4.5: GStreamer plugin for HTTP client source/sink
-media-plugins/gst-plugins-speex 0.10.31-r1 1.2.4-r1 1.4.5: GStreamer plugin to allow encoding and decoding of speex
-media-plugins/gst-plugins-taglib 0.10.31-r1 1.2.4-r1 1.4.5: GStreamer taglib based tag handler
+media-plugins/gst-plugins-smoothstreaming 1.2.4-r1 1.4.5 1.6.0: Smooth Streaming plugin
+media-plugins/gst-plugins-soundtouch 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer elements for beats-per-minute detection and pitch controlling
+media-plugins/gst-plugins-soup 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer plugin for HTTP client source/sink
+media-plugins/gst-plugins-speex 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer plugin to allow encoding and decoding of speex
+media-plugins/gst-plugins-taglib 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer taglib based tag handler
 media-plugins/gst-plugins-theora 0.10.36 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-twolame 0.10.19-r1 1.2.4-r1 1.4.5: plugin for gstreamer
-media-plugins/gst-plugins-v4l2 0.10.31-r1 1.2.4-r1 1.4.5: plugin for gstreamer
+media-plugins/gst-plugins-v4l2 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0: plugin for gstreamer
 media-plugins/gst-plugins-vaapi 0.5.10 0.6.0: Hardware accelerated video decoding through VA-API plugin
-media-plugins/gst-plugins-voaacenc 1.2.4-r1 1.4.5: GStreamer plugin for encoding AAC
-media-plugins/gst-plugins-voamrwbenc 1.2.4-r1 1.4.5: GStreamer plugin for encoding AMR-WB
+media-plugins/gst-plugins-voaacenc 1.2.4-r1 1.4.5 1.6.0: GStreamer plugin for encoding AAC
+media-plugins/gst-plugins-voamrwbenc 1.2.4-r1 1.4.5 1.6.0: GStreamer plugin for encoding AMR-WB
 media-plugins/gst-plugins-vorbis 0.10.36 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-vp8 0.10.23-r2 0.10.23-r3: GStreamer decoder for vpx video format
-media-plugins/gst-plugins-vpx 1.2.4-r1 1.4.5: GStreamer decoder for vpx video format
-media-plugins/gst-plugins-wavpack 0.10.31-r1 1.2.4-r1 1.4.5: GStreamer encoder/decoder for wavpack audio format
+media-plugins/gst-plugins-vpx 1.2.4-r1 1.4.5 1.6.0: GStreamer decoder for vpx video format
+media-plugins/gst-plugins-wavpack 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer encoder/decoder for wavpack audio format
 media-plugins/gst-plugins-x 0.10.36 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-x264 0.10.19-r1 1.2.4-r1 1.4.5: plugin for gstreamer
-media-plugins/gst-plugins-ximagesrc 0.10.31-r1 1.2.4-r1 1.4.5: GStreamer plugin for X11 video capture stream
+media-plugins/gst-plugins-ximagesrc 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer plugin for X11 video capture stream
 media-plugins/gst-plugins-xvid 0.10.23 0.10.23-r1: GStreamer plugin for XviD (MPEG-4) video encoding/decoding support
 media-plugins/gst-plugins-xvideo 0.10.36 0.10.36-r1: plugin for gstreamer
 media-plugins/hexter 1.0.2 1.0.3: Yamaha DX7 modeling DSSI plugin
@@ -15389,13 +15389,13 @@ sci-geosciences/mtkbabel 0.8.2 0.8.3.1: MTKBabel is a Perl program to operate th
 sci-geosciences/opencpn 3.0.2 3.2.2 4.0.0 4.0.0-r1: a free, open source software for marine navigation
 sci-geosciences/opencpn-plugin-br24radar 1.1 1.1-r1: Navico (Simrad, Lowrance) Broadband BR24/3G/4G Radar Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-climatology 1.0 1.0-r1: Climatology Plugin for OpenCPN (includes CL-DATA)
-sci-geosciences/opencpn-plugin-launcher 1.0: Launcher Plugin for OpenCPN
-sci-geosciences/opencpn-plugin-logbookkonni 1.2012 1.2018: Logbook Plugin for OpenCPN
-sci-geosciences/opencpn-plugin-objsearch 0.5.1: Chart Object Search Plugin for OpenCPN
-sci-geosciences/opencpn-plugin-ocpndebugger 1.0: NMEA-data and plugin-API Debugger Plugin for OpenCPN
-sci-geosciences/opencpn-plugin-statusbar 0.5: Statusbar Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-launcher 1.0 1.0-r1: Launcher Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-logbookkonni 1.2012 1.2018 1.2018-r1: Logbook Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-objsearch 0.5.1 0.5.1-r1: Chart Object Search Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-ocpndebugger 1.0 1.0-r1: NMEA-data and plugin-API Debugger Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-statusbar 0.5 0.5-r1: Statusbar Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-weather_routing 1.2: Weather Routing Plugin for OpenCPN
-sci-geosciences/opencpn-plugin-weatherfax 1.3: Weatherfax Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-weatherfax 1.3 1.3-r1: Weatherfax Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-wmm 1.0: World Magnetic Model Plugin for OpenCPN
 sci-geosciences/osgearth 2.6 2.7: Dynamic map generation toolkit for OpenSceneGraph
 sci-geosciences/osm-gps-map 0.7.3: A gtk+ viewer for OpenStreetMap files
