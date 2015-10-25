@@ -6,9 +6,6 @@
 		<email>no111u3@gmail.com</email>
 		<name>Boris Vinogradov</name>
 	</maintainer>
-	<maintainer>
-		<email>@gentoo.org</email>
-	</maintainer>
 	<longdescription>
 		This is a ST-Link V2 (Debugger/Programmer) client developped for Linux, OSX and Windows.
 
