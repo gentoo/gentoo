@@ -2960,7 +2960,7 @@ dev-db/tora 3.0.0_pre20140929-r1 9999: TOra - Toolkit For Oracle
 dev-db/unixODBC 2.3.1 2.3.1-r1 2.3.2-r1 2.3.2-r2: A complete ODBC driver manager
 dev-db/vbisam 2.0: replacement for IBM's C-ISAM
 dev-db/vsqlite++ 0.3.13-r1: VSQLite++ - A welldesigned and portable SQLite3 Wrapper for C++
-dev-db/wxsqlite3 3.0.6.1-r1: C++ wrapper around the public domain SQLite 3.x database
+dev-db/wxsqlite3 3.0.6.1-r1 3.2.1: C++ wrapper around the public domain SQLite 3.x database
 dev-db/xbase 3.1.2: xbase (i.e. dBase, FoxPro, etc.) compatible C++ class library
 dev-db/xbsql 0.11-r2: An SQL Wrapper for the XBase library
 dev-db/xtrabackup-bin 2.1.9 2.2.5 2.2.12: MySQL hot backup software that performs non-blocking backups for InnoDB and XtraDB databases
@@ -6899,7 +6899,7 @@ dev-python/dingus 0.3.4-r1: A record-then-assert mocking library
 dev-python/discogs-client 2.0.2 2.2.0: Official Python API client for Discogs
 dev-python/disqus-python 0.4.2: Python client library for accessing the disqus.com API
 dev-python/distlib 0.2.1: Distribution utilities
-dev-python/django 1.4.22 1.5.12 1.6.11 1.7.10 1.8.4 1.8.5 9999: High-level Python web framework
+dev-python/django 1.4.22 1.5.12 1.6.11 1.7.10 1.8.5 9999: High-level Python web framework
 dev-python/django-annoying 0.7.6-r1 0.7.7 0.8.2: This is django application that try to eliminate annoying things in Django framework
 dev-python/django-appconf 0.6 1.0.1: A helper class for handling configuration defaults of packaged apps gracefully
 dev-python/django-auth-ldap 1.2.2 1.2.6: Django LDAP authentication backend
@@ -7353,7 +7353,7 @@ dev-python/pgmagick 0.5.10 0.5.11: Yet another boost.python based wrapper for Gr
 dev-python/pgpdump 1.5: PGP packet parser library
 dev-python/piddle 1.0.15 1.0.15-r1: Cross-media, cross-platform 2D graphics package
 dev-python/pika 0.9.14: Pure-Python implementation of the AMQP
-dev-python/pillow 2.8.1 2.8.2 2.9.0 3.0.0: Python Imaging Library (fork)
+dev-python/pillow 2.8.1 2.8.2 2.9.0 3.0.0 3.0.0-r1: Python Imaging Library (fork)
 dev-python/pip 1.5.6 7.1.0 7.1.2: Installs python packages -- replacement for easy_install
 dev-python/pivy 0.5_alpha20110303-r1 9999: Coin3d binding for Python
 dev-python/pkgconfig 1.1.0: Interface Python with pkg-config
@@ -15129,7 +15129,7 @@ sci-biology/t-coffee 9.03.1318-r1 11.00: A multiple sequence alignment package
 sci-biology/tophat 1.0.12 1.4.1 2.0.0 2.0.2 2.0.8 2.0.9: A fast splice junction mapper for RNA-Seq reads
 sci-biology/transfac 3.2: A database of eucaryotic transcription factors
 sci-biology/tree-puzzle 5.2: Maximum likelihood analysis for nucleotide, amino acid, and two-state data
-sci-biology/treeviewx 0.5.1-r2: A phylogenetic tree viewer
+sci-biology/treeviewx 0.5.1-r2 0.5.1-r3: A phylogenetic tree viewer
 sci-biology/trf 4.04: Tandem Repeats Finder
 sci-biology/trnascan-se 1.23-r2 1.31: tRNA detection in large-scale genome sequences
 sci-biology/uchime 4.2.40: Fast, accurate chimera detection
