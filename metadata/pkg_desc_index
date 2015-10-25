@@ -12393,7 +12393,7 @@ media-plugins/gst-plugins-jack 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0: plugin for gstre
 media-plugins/gst-plugins-jpeg 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer encoder/decoder for JPEG format
 media-plugins/gst-plugins-ladspa 0.10.23 0.10.23-r1: plugin for gstreamer
 media-plugins/gst-plugins-lame 0.10.19-r1 1.2.4-r1 1.4.5 1.6.0: plugin for gstreamer
-media-plugins/gst-plugins-libav 1.4.5-r1 1.4.5-r2: FFmpeg based gstreamer plugin
+media-plugins/gst-plugins-libav 1.4.5-r1 1.4.5-r2 1.6.0: FFmpeg based gstreamer plugin
 media-plugins/gst-plugins-libmms 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0: plugin for gstreamer
 media-plugins/gst-plugins-libnice 0.1.8 0.1.8-r100 0.1.10 0.1.10-r100 0.1.13 0.1.13-r100: GStreamer plugin for ICE (RFC 5245) support
 media-plugins/gst-plugins-libpng 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0: GStreamer encoder/decoder for PNG images
