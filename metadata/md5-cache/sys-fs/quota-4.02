@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=ldap? ( >=net-nds/openldap-2.3.35 ) netlink? ( sys-apps/dbus dev-libs/libnl:1.1 ) rpc? ( net-nds/rpcbind ) tcpd? ( sys-apps/tcp-wrappers ) nls? ( sys-devel/gettext )
+DEPEND=ldap? ( >=net-nds/openldap-2.3.35 ) netlink? ( sys-apps/dbus dev-libs/libnl:3 ) rpc? ( net-nds/rpcbind ) tcpd? ( sys-apps/tcp-wrappers ) nls? ( sys-devel/gettext )
 DESCRIPTION=Linux quota tools
 EAPI=4
 HOMEPAGE=http://sourceforge.net/projects/linuxquota/
 IUSE=ldap netlink nls rpc tcpd
 KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86
 LICENSE=GPL-2
-RDEPEND=ldap? ( >=net-nds/openldap-2.3.35 ) netlink? ( sys-apps/dbus dev-libs/libnl:1.1 ) rpc? ( net-nds/rpcbind ) tcpd? ( sys-apps/tcp-wrappers )
+RDEPEND=ldap? ( >=net-nds/openldap-2.3.35 ) netlink? ( sys-apps/dbus dev-libs/libnl:3 ) rpc? ( net-nds/rpcbind ) tcpd? ( sys-apps/tcp-wrappers )
 SLOT=0
 SRC_URI=mirror://sourceforge/linuxquota/quota-4.02.tar.gz
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=7c3c551360f75dcfcc8c638ece1042c3
+_md5_=dffadc0dfde232bbe333b5687712a1cb
