@@ -19,7 +19,7 @@ IUSE=""
 
 # SDL & libmupen64plus are through ctypes, so they rely on specific ABI
 RDEPEND="media-libs/libsdl2:0/0[joystick]
-	dev-python/PyQt5[opengl,${PYTHON_USEDEP}]
+	dev-python/PyQt5[gui,opengl,widgets,${PYTHON_USEDEP}]
 	>=games-emulation/mupen64plus-core-2.5:0/2-sdl2"
 
 python_prepare_all() {
