@@ -8,6 +8,9 @@
 	</longdescription>
 	<use>
 		<flag name="developer">creates .mdb files for either Release and Debug</flag>
+                <flag name="net35">use .NET 3.5 Framework</flag>
+                <flag name="net40">use .NET 4.0 Framework</flag>
+                <flag name="net45">use .NET 4.5 Framework</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">mono/xsp</remote-id>
