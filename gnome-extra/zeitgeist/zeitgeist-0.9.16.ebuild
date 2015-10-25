@@ -30,6 +30,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	dev-libs/json-glib
 	dev-python/dbus-python[${PYTHON_USEDEP}]
+	dev-python/rdflib[${PYTHON_USEDEP}]
 	media-libs/raptor:2
 	>=dev-libs/glib-2.35.4:2
 	>=dev-db/sqlite-3.7.11:3
