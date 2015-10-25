@@ -31,6 +31,10 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-ext-ldflags.diff
 	epatch "${FILESDIR}"/${PN}-xz-info.diff
 	epatch "${FILESDIR}"/${PN}-rfc.tls.diff
+
+	mv gc/src/*.[Ss] gc || die
+	sed -i "/^EXTRA_libgc_la_SOURCES/s|src/||g" gc/Makefile.am
+
 	eautoconf
 }
 
