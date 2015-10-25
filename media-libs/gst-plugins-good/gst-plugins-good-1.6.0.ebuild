@@ -29,6 +29,13 @@ DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.12
 "
 
+src_prepare() {
+	# Disable test due to missing files
+	# https://bugzilla.gnome.org/show_bug.cgi?id=757087
+	sed -e 's:\(tcase_add_test.*test_splitmuxsrc\):// \1:' \
+		-i tests/check/elements/splitmux.c || die
+}
+
 src_configure() {
 	# gst doesnt handle optimisations well
 	strip-flags
