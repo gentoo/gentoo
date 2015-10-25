@@ -12593,7 +12593,7 @@ media-plugins/vdr-xine 0.9.4-r1: VDR plugin: for 'software only' playback using 
 media-plugins/vdr-xineliboutput 1.1.0 2.0.0_p20130821 2.0.0_p20150220 9999: Video Disk Recorder Xinelib PlugIn
 media-plugins/vdr-xvdr 9999: VDR plugin: XVDR Streamserver Plugin
 media-plugins/vdr-zaphistory 0.9.6: VDR Plugin: Shows the least recently used channels
-media-plugins/vdr-zappilot 0.0.5: VDR Plugin: browse fast the EPG information without being forced to switch to a channel
+media-plugins/vdr-zappilot 0.0.5 0.0.5-r1: VDR Plugin: browse fast the EPG information without being forced to switch to a channel
 media-plugins/xbmc-addon-xvdr 9999: XBMC addon: add VDR (http://www.tvdr.de/) as a TV/PVR Backend
 media-plugins/xsynth-dssi 0.9.2 0.9.4: A software synthesizer plugin for the DSSI Soft Synth Interface
 media-radio/KochMorse 0.99.6 0.99.6-r1: Morse-tutor for Linux using the Koch-method
