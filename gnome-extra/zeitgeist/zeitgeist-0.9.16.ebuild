@@ -38,7 +38,6 @@ RDEPEND="
 	fts? ( dev-libs/xapian[inmemory] )
 	icu? ( dev-libs/dee[icu?] )
 	introspection? ( dev-libs/gobject-introspection )
-	plugins? ( gnome-extra/zeitgeist-datasources )
 	telepathy? ( net-libs/telepathy-glib )
 "
 DEPEND="${RDEPEND}
@@ -46,6 +45,7 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.35
 	virtual/pkgconfig
 "
+PDEPEND="plugins? ( gnome-extra/zeitgeist-datasources )"
 
 src_prepare() {
 	# pure-python module is better managed manually, see src_install
