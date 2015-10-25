@@ -17,7 +17,6 @@ RDEPEND="
 	>=x11-libs/libXdamage-1.1.4-r1[${MULTILIB_USEDEP}]
 	>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libXfixes-5.0.1[${MULTILIB_USEDEP}]
-	>=x11-libs/libSM-1.2.1-r1[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	>=x11-proto/damageproto-1.2.1-r1[${MULTILIB_USEDEP}]
