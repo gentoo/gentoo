@@ -1,0 +1,28 @@
+From: Pietro Battiston <me@pietrobattiston.it>
+Date: Sun, 21 Dec 2014 11:50:09 +0100
+Subject: Adapt to wxpython 3.0, which enforces assertions on ListItems ids.
+
+---
+ fontypythonmodules/gui_PogChooser.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/fontypythonmodules/gui_PogChooser.py b/fontypythonmodules/gui_PogChooser.py
+index c679191..4cdf772 100644
+--- a/fontypythonmodules/gui_PogChooser.py
++++ b/fontypythonmodules/gui_PogChooser.py
+@@ -200,6 +200,7 @@ class PogChooser(wx.ListCtrl) :
+ 			li.SetImage(i) 
+ 			li.SetText(p) 
+ 			id = wx.NewId()
++			li.SetId(id)
+ 			PogChooser.__poglistCopy[id] = p # record the pog name
+ 			row = self.InsertItem( li ) 
+ 			self.SetItemData( row, id ) # associate back to __poglistCopy
+@@ -214,6 +215,7 @@ class PogChooser(wx.ListCtrl) :
+ 		li.SetImage(0)
+ 		li.SetText(pogname)
+ 		id = wx.NewId()
++		li.SetId(id)
+ 		self.__poglistCopy[id] = pogname 
+ 		row = self.InsertItem(li)
+ 		self.SetItemData( row, id )
