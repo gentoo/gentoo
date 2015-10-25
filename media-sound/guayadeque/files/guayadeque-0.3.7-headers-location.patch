@@ -1,0 +1,90 @@
+Description: Point sources to the correct wxcurl's headers location.
+Author: Alessio Treglia <alessio@debian.org>
+Forwarded: no
+---
+ src/LastFM.cpp      |    2 +-
+ src/LastFMPanel.cpp |    2 +-
+ src/LyricsPanel.cpp |    2 +-
+ src/MainFrame.h     |    2 +-
+ src/MusicBrainz.cpp |    2 +-
+ src/MusicDns.cpp    |    2 +-
+ src/Podcasts.h      |    2 +-
+ 7 files changed, 7 insertions(+), 7 deletions(-)
+
+--- a/src/LastFM.cpp
++++ b/src/LastFM.cpp
+@@ -24,7 +24,7 @@
+ #include "DbCache.h"
+ #include "Utils.h"
+ 
+-#include "curl/http.h"
++#include "wx/curl/http.h"
+ 
+ #include <wx/arrimpl.cpp>
+ #include <wx/sstream.h>
+--- a/src/LastFMPanel.cpp
++++ b/src/LastFMPanel.cpp
+@@ -21,7 +21,7 @@
+ #include "LastFMPanel.h"
+ 
+ #include "Commands.h"
+-#include "curl/http.h"
++#include "wx/curl/http.h"
+ #include "Images.h"
+ #include "MainApp.h"
+ #include "Settings.h"
+--- a/src/LyricsPanel.cpp
++++ b/src/LyricsPanel.cpp
+@@ -23,7 +23,7 @@
+ #include "Base64.h"
+ #include "Commands.h"
+ #include "Config.h"
+-#include "curl/http.h"
++#include "wx/curl/http.h"
+ #include "Preferences.h"
+ #include "Images.h"
+ #include "ListView.h"
+--- a/src/MainFrame.h
++++ b/src/MainFrame.h
+@@ -26,7 +26,7 @@
+ #include "Config.h"
+ #include "CoverPanel.h"
+ #include "Collections.h"
+-#include "curl/http.h"
++#include "wx/curl/http.h"
+ #include "dbus/gudbus.h"
+ #include "dbus/mpris.h"
+ #include "dbus/mpris2.h"
+--- a/src/MusicBrainz.cpp
++++ b/src/MusicBrainz.cpp
+@@ -21,7 +21,7 @@
+ #include "MusicBrainz.h"
+ 
+ #include "Utils.h"
+-#include "curl/http.h"
++#include "wx/curl/http.h"
+ 
+ #include <wx/arrimpl.cpp>
+ #include <wx/sstream.h>
+--- a/src/MusicDns.cpp
++++ b/src/MusicDns.cpp
+@@ -21,7 +21,7 @@
+ #include "MusicDns.h"
+ 
+ #include "Commands.h"
+-#include "curl/http.h"
++#include "wx/curl/http.h"
+ #include "MusicBrainz.h"
+ #include "Utils.h"
+ #include "Version.h"
+--- a/src/Podcasts.h
++++ b/src/Podcasts.h
+@@ -21,7 +21,7 @@
+ #ifndef PODCASTS_H
+ #define PODCASTS_H
+ 
+-#include "curl/http.h"
++#include "wx/curl/http.h"
+ 
+ #include <wx/dynarray.h>
+ #include <wx/xml/xml.h>

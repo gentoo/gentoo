@@ -35,7 +35,7 @@ src_prepare() {
 		-e "s:@WXVERSION@:${WX_GTK_VER}:g" \
 		-e "s:@LIBDIR@:$(get_libdir):g" \
 		-e "s:@VERSION@:${PV}:g" \
-		"${FILESDIR}"/${PN}-3.0.6.1.pc.in > ${PN}.pc || die
+		"${FILESDIR}"/${P}.pc.in > ${PN}.pc || die
 }
 
 src_configure() {

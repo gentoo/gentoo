@@ -1,0 +1,134 @@
+From: Pietro Battiston <me@pietrobattiston.it>
+Date: Sun, 21 Dec 2014 09:14:19 +0100
+Subject: Removed unused code which causes crash with wx 3.0
+
+---
+ fontypython                                | 2 --
+ fontypythonmodules/dialogues.py            | 4 ----
+ fontypythonmodules/gui_Left.py             | 4 ----
+ fontypythonmodules/gui_Middle.py           | 5 -----
+ fontypythonmodules/gui_PogChooser.py       | 4 ----
+ fontypythonmodules/gui_Right.py            | 4 ----
+ fontypythonmodules/gui_ScrolledFontView.py | 4 ----
+ fontypythonmodules/wxgui.py                | 4 ----
+ 8 files changed, 31 deletions(-)
+
+diff --git a/fontypython b/fontypython
+index a05290f..e46e34e 100755
+--- a/fontypython
++++ b/fontypython
+@@ -72,8 +72,6 @@ else: # err code -11
+ 
+ 	## Setup wxPython to access translations : enables the stock buttons.
+ 	localedir = "fontypythonmodules/locales"
+-	langid = wx.LANGUAGE_DEFAULT
+-	mylocale = wx.Locale( langid )
+ 
+ 	iPC = PC.PathControl() 
+ 
+diff --git a/fontypythonmodules/dialogues.py b/fontypythonmodules/dialogues.py
+index 1fbff5f..eba7ab3 100644
+--- a/fontypythonmodules/dialogues.py
++++ b/fontypythonmodules/dialogues.py
+@@ -23,10 +23,6 @@ import wx
+ import wx.html as html
+ 
+ 
+-## Setup wxPython to access translations : enables the stock buttons.
+-langid = wx.LANGUAGE_DEFAULT # Picks this up from $LANG
+-mylocale = wx.Locale( langid )
+-
+ ## langcode = locale.getlocale()[0] # I must not use getlocale...
+ ## This is suggested by Martin:
+ loc = locale.setlocale(locale.LC_CTYPE) # use *one* of the categories (not LC_ALL)
+diff --git a/fontypythonmodules/gui_Left.py b/fontypythonmodules/gui_Left.py
+index 5451f39..7b1f0c6 100644
+--- a/fontypythonmodules/gui_Left.py
++++ b/fontypythonmodules/gui_Left.py
+@@ -17,10 +17,6 @@
+ 
+ import wx, os
+ 
+-## Setup wxPython to access translations : enables the stock buttons.
+-langid = wx.LANGUAGE_DEFAULT # Picks this up from $LANG
+-mylocale = wx.Locale( langid )
+-
+ 
+ from pubsub import *
+ from wxgui import ps
+diff --git a/fontypythonmodules/gui_Middle.py b/fontypythonmodules/gui_Middle.py
+index 470e3ea..9af3f9f 100644
+--- a/fontypythonmodules/gui_Middle.py
++++ b/fontypythonmodules/gui_Middle.py
+@@ -19,11 +19,6 @@ import wx
+ import wx.lib.stattext
+ import  wx.lib.buttons  as  buttons
+ 
+-## Setup wxPython to access translations : enables the stock buttons.
+-langid = wx.LANGUAGE_DEFAULT # Picks this up from $LANG
+-mylocale = wx.Locale( langid )
+-
+-
+ from pubsub import *
+ from wxgui import ps
+ 
+diff --git a/fontypythonmodules/gui_PogChooser.py b/fontypythonmodules/gui_PogChooser.py
+index f233529..c679191 100644
+--- a/fontypythonmodules/gui_PogChooser.py
++++ b/fontypythonmodules/gui_PogChooser.py
+@@ -17,10 +17,6 @@
+ 
+ import wx, locale
+ 
+-## Setup wxPython to access translations : enables the stock buttons.
+-langid = wx.LANGUAGE_DEFAULT # Picks this up from $LANG
+-mylocale = wx.Locale( langid )
+-
+ from pubsub import *
+ from wxgui import ps
+ 
+diff --git a/fontypythonmodules/gui_Right.py b/fontypythonmodules/gui_Right.py
+index adefa1d..ea5062b 100644
+--- a/fontypythonmodules/gui_Right.py
++++ b/fontypythonmodules/gui_Right.py
+@@ -17,10 +17,6 @@
+ 
+ import wx
+ 
+-## Setup wxPython to access translations : enables the stock buttons.
+-langid = wx.LANGUAGE_DEFAULT # Picks this up from $LANG
+-mylocale = wx.Locale( langid )
+-
+ from pubsub import *
+ from wxgui import ps
+ 
+diff --git a/fontypythonmodules/gui_ScrolledFontView.py b/fontypythonmodules/gui_ScrolledFontView.py
+index d7b3d2f..3e35d62 100644
+--- a/fontypythonmodules/gui_ScrolledFontView.py
++++ b/fontypythonmodules/gui_ScrolledFontView.py
+@@ -20,10 +20,6 @@ import wx.lib.scrolledpanel
+ 
+ from pubsub import *
+ 
+-## Setup wxPython to access translations : enables the stock buttons.
+-langid = wx.LANGUAGE_DEFAULT # Picks this up from $LANG
+-mylocale = wx.Locale( langid )
+-
+ import fpsys # Global objects
+ 
+ from gui_Fitmap import * #Also brings in 'ps' variable
+diff --git a/fontypythonmodules/wxgui.py b/fontypythonmodules/wxgui.py
+index da80d17..6e6716a 100644
+--- a/fontypythonmodules/wxgui.py
++++ b/fontypythonmodules/wxgui.py
+@@ -23,10 +23,6 @@ import fpversion
+ ## Now, bring in all those big modules
+ import wx
+ 
+-## Setup wxPython to access translations : enables the stock buttons.
+-langid = wx.LANGUAGE_DEFAULT # Picks this up from $LANG
+-mylocale = wx.Locale( langid )
+-
+ ## Fetch my own pubsub stuff
+ from pubsub import *
+ ps = CPubsub()
