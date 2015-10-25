@@ -13,7 +13,7 @@ SRC_URI="https://github.com/fusesource/${PN}/archive/${P}.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 x86 ppc ppc64"
 
 CDEPEND="dev-java/jansi-native:0"
 
