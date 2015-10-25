@@ -24,6 +24,15 @@ DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.12
 "
 
+multilib_src_configure() {
+	gstreamer_multilib_src_configure
+
+	if multilib_is_native_abi; then
+		ln -s "${S}"/docs/plugins/html docs/plugins/html || die
+	fi
+
+}
+
 multilib_src_install_all() {
 	DOCS="AUTHORS ChangeLog NEWS README RELEASE"
 	einstalldocs
