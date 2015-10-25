@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit eutils multilib multilib-minimal pax-utils
+inherit bash-completion-r1 eutils multilib multilib-minimal pax-utils
 
 DESCRIPTION="Open source multimedia framework"
 HOMEPAGE="http://gstreamer.freedesktop.org/"
@@ -61,6 +61,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable introspection)
 		$(use_enable nls)
 		$(use_enable test tests)
+		--with-bash-completion-dir="$(get_bashcompdir)"
 		--with-package-name="GStreamer ebuild for Gentoo"
 		--with-package-origin="https://packages.gentoo.org/package/media-libs/gstreamer"
 	)
