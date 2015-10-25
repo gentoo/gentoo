@@ -1,7 +1,8 @@
 Title: Future Support of hardened-sources Kernel
+Author: Anthony G. Basile <blueness@gentoo.org>
 Content-Type: text/plain
 Posted: 2015-10-21
-Revision: 2
+Revision: 3
 News-Item-Format: 1.0
 Display-If-Installed: sys-kernel/hardened-sources
 Display-If-Profile: hardened/linux/amd64
