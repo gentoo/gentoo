@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit qmake-utils
+inherit eutils qmake-utils
 
 MY_P=${PN}_${PV}
 
@@ -28,6 +28,10 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${PN} ${PV}"
 
 DOCS=( changelog FAQ.txt README )
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-qdatastream.patch
+}
 
 src_configure() {
 	eqmake5
