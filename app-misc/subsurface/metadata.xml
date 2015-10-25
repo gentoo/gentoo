@@ -7,10 +7,6 @@
     <name>Martin Gysel</name>
     <description>Proxy maintainer. Assign bugs to him.</description>
   </maintainer>
-  <maintainer>
-    <email>bman@gentoo.org</email>
-    <name>Aaron Bauman</name>
-  </maintainer>
   <longdescription lang="en">
     An open source dive log program.
   </longdescription>
