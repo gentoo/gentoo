@@ -1,0 +1,15 @@
+diff -urN dblatex-0.3.4.orig/setup.py dblatex-0.3.4/setup.py
+--- dblatex-0.3.4.orig/setup.py	2012-06-03 02:43:42.000000000 +0300
++++ dblatex-0.3.4/setup.py	2012-12-08 21:29:45.276764482 +0200
+@@ -365,10 +365,7 @@
+             raise OSError("not found: %s" % ", ".join(mis_stys))
+ 
+     def run(self):
+-        if self.install_layout == "deb":
+-            db = DebianInstaller(self)
+-        else:
+-            db = None
++        db = None
+ 
+         if not(db) and not(self.nodeps):
+             try:
