@@ -1,11 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
 
 JAVA_PKG_IUSE="doc examples source test"
-WANT_ANT_TASKS="ant-junit"
 
 inherit java-pkg-2 java-ant-2
 
@@ -17,23 +16,26 @@ LICENSE="Apache-2.0"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
-CDEPEND="dev-java/ant-core:0
+CDEPEND="
 	dev-java/bsh:0
 	dev-java/guice:2
-	dev-java/jcommander:0
 	dev-java/junit:4
+	dev-java/ant-core:0
+	dev-java/jcommander:0
 	dev-java/snakeyaml:1.9"
 
-DEPEND=">=virtual/jdk-1.5
+DEPEND=">=virtual/jdk-1.6
 	app-arch/zip
 	${CDEPEND}"
 
-RDEPEND=">=virtual/jre-1.5
+RDEPEND=">=virtual/jre-1.6
 	${CDEPEND}"
 
+JAVA_ANT_CLASSPATH_TAGS+=" testng javadocs-current"
 JAVA_PKG_BSFIX_NAME="build.xml build-tests.xml"
 JAVA_ANT_REWRITE_CLASSPATH="true"
-JAVA_ANT_CLASSPATH_TAGS+=" testng javadocs-current"
+JAVA_ANT_ENCODING="ISO-8859-1"
+
 EANT_GENTOO_CLASSPATH="ant-core,bsh,guice-2,jcommander,junit-4,snakeyaml-1.9"
 EANT_TEST_GENTOO_CLASSPATH="${EANT_GENTOO_CLASSPATH}"
 
@@ -41,13 +43,20 @@ EANT_BUILD_TARGET="build"
 EANT_TEST_TARGET="tests"
 EANT_DOC_TARGET="javadocs"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-remove-ivy-retrieve.patch
+	"${FILESDIR}"/${P}-remove-jar-bundling.patch
+)
+
+# Error: A JNI error has occurred, please check your installation and try again.
+RESTRICT="test"
+
 java_prepare() {
-	find . -name '*.jar' -print -delete || die
+	java-pkg_clean
 
 	cp "${FILESDIR}"/${P}-build-tests.xml build-tests.xml || die
 
-	epatch "${FILESDIR}"/${P}-remove-ivy-retrieve.patch
-	epatch "${FILESDIR}"/${P}-remove-jar-bundling.patch
+	epatch "${PATCHES[@]}"
 
 	# Removal of tests that break due to restrictions or environment expectations:
 	#     ServiceLoaderTest - Breaks due absolute URL load that Portage prevents;
@@ -66,9 +75,9 @@ java_prepare() {
 }
 
 src_test() {
-	local tests_file="target/test-output/index.html"
-
 	java-pkg-2_src_test
+
+	local tests_file="target/test-output/index.html"
 
 	if [[ ! -f ${tests_file} ]] ; then
 		die "Tests failed, test output does not exist; a problem with starting the tests."
