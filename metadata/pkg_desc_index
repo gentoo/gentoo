@@ -2960,7 +2960,7 @@ dev-db/tora 3.0.0_pre20140929-r1 9999: TOra - Toolkit For Oracle
 dev-db/unixODBC 2.3.1 2.3.1-r1 2.3.2-r1 2.3.2-r2: A complete ODBC driver manager
 dev-db/vbisam 2.0: replacement for IBM's C-ISAM
 dev-db/vsqlite++ 0.3.13-r1: VSQLite++ - A welldesigned and portable SQLite3 Wrapper for C++
-dev-db/wxsqlite3 3.0.6.1-r1 3.2.1: C++ wrapper around the public domain SQLite 3.x database
+dev-db/wxsqlite3 3.0.6.1-r1 3.2.1-r1: C++ wrapper around the public domain SQLite 3.x database
 dev-db/xbase 3.1.2: xbase (i.e. dBase, FoxPro, etc.) compatible C++ class library
 dev-db/xbsql 0.11-r2: An SQL Wrapper for the XBase library
 dev-db/xtrabackup-bin 2.1.9 2.2.5 2.2.12: MySQL hot backup software that performs non-blocking backups for InnoDB and XtraDB databases
@@ -11737,7 +11737,7 @@ media-gfx/fim 0.4_rc3-r1: Fbi-IMproved is a framebuffer image viewer based on Fb
 media-gfx/flam3 3.0.1 9999: Tools and a library for creating fractal flames
 media-gfx/fondu 20060102-r1: Utilities for converting between and manipulating mac fonts and unix fonts
 media-gfx/fontforge 20110222-r1 20120731 20120731-r1 20150430 20150612 20150612-r1: postscript font editor and converter
-media-gfx/fontypython 0.4.4-r1 0.4.4-r2: Font preview application
+media-gfx/fontypython 0.4.4-r1 0.4.4-r2 0.4.4-r3: Font preview application
 media-gfx/fotowall 0.9-r1: Qt4 tool for creating wallpapers
 media-gfx/fotoxx 13.11.1 15.04.1 15.05: Program for improving image files made with a digital camera
 media-gfx/fr0st 1.4-r1: A fractal flame editor
@@ -12555,7 +12555,7 @@ media-plugins/vdr-remote 0.6.0 0.6.0-r1 0.7.0: VDR Plugin: use various devices f
 media-plugins/vdr-remoteosd 1.0.0: VDR Plugin: server/client remoteosd
 media-plugins/vdr-remotetimers 1.0.0 1.0.1 1.0.2: VDR plugin: edit timers on remote vdr instances
 media-plugins/vdr-rotor 0.1.5: VDR Plugin: Add support for dishes with rotation control engine
-media-plugins/vdr-rpihddevice 0.0.10 0.0.11: VDR Plugin: Output Device for Raspberry Pi
+media-plugins/vdr-rpihddevice 0.0.10 0.0.11 1.0.0: VDR Plugin: Output Device for Raspberry Pi
 media-plugins/vdr-rssreader 2.0.0 2.0.1 2.2.0 2.2.1: VDR Plugin: RSS reader
 media-plugins/vdr-satip 1.0.2-r1 2.2.0 2.2.3: VDR Plugin: integrates SAT>IP network devices seamlessly into VDR
 media-plugins/vdr-scheduler 0.1.3: VDR plugin: allows to control externel jobs from within VDR
@@ -12749,7 +12749,7 @@ media-sound/gst123 0.3.1 0.3.2 0.3.3: A more flexible command line player in the
 media-sound/gstreamripper 0.2: A GTK+ toolkit based frontend for streamripper
 media-sound/gtick 0.5.0: a metronome application supporting different meters and speeds ranging
 media-sound/gtkguitune 0.8: A guitar tuning program that uses Schmitt-triggering for quick feedback
-media-sound/guayadeque 0.3.5 0.3.6_pre1887 0.3.7: Music management program designed for all music enthusiasts
+media-sound/guayadeque 0.3.5 0.3.6_pre1887 0.3.7 0.3.7-r1: Music management program designed for all music enthusiasts
 media-sound/guimup 0.3.2: A client for MPD with a clean, GTK interface
 media-sound/hearnet 0.0.9: Listen to your network
 media-sound/helm 0.4.1-r1: Open source polyphonic software synthesizer with lots of modulation
@@ -14051,7 +14051,7 @@ net-libs/telepathy-accounts-signon 1.0: Mission control plugin for Telepathy to 
 net-libs/telepathy-farstream 0.6.2: Telepathy client library that uses Farstream to handle Call channels
 net-libs/telepathy-glib 0.24.0 0.24.1: GLib bindings for the Telepathy D-Bus protocol
 net-libs/telepathy-logger-qt 0.8.0 15.04.0: Qt bindings for the Telepathy logger
-net-libs/telepathy-qt 0.9.5 0.9.6.1: Qt bindings for the Telepathy D-Bus protocol
+net-libs/telepathy-qt 0.9.6.1: Qt bindings for the Telepathy D-Bus protocol
 net-libs/txtorcon 0.13.0: Twisted-based Tor controller client, with state-tracking and configuration abstractions
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.4.0 0.5.0: HTTP web service mocking library
@@ -14501,7 +14501,7 @@ net-misc/spread 4.1.0 4.3.0: Distributed network messaging system
 net-misc/ssh-askpass-fullscreen 1.0-r1: A small SSH Askpass replacement written with GTK2
 net-misc/ssh-chain 20131217: ssh via a chain of intermediary hosts
 net-misc/sshpass 1.05: Tool for noninteractively performing password authentication with ssh
-net-misc/sslh 1.15 1.16 1.17: Port multiplexer - accept both HTTPS and SSH connections on the same port
+net-misc/sslh 1.17: Port multiplexer - accept both HTTPS and SSH connections on the same port
 net-misc/sslwrap 2.0.6-r2: TSL/SSL - Port Wrapper
 net-misc/sstp-client 1.0.9-r1: A client implementation of Secure Socket Tunneling Protocol (SSTP)
 net-misc/ssvnc 1.0.28 1.0.29: VNC viewer that adds encryption security to VNC connections
