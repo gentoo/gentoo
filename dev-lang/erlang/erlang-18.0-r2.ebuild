@@ -27,7 +27,7 @@ RDEPEND="
 		libressl? ( dev-libs/libressl )
 	)
 	emacs? ( virtual/emacs )
-	java? ( >=virtual/jdk-1.2 )
+	java? ( >=virtual/jdk-1.2:* )
 	odbc? ( dev-db/unixODBC )"
 DEPEND="${RDEPEND}
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X,opengl] virtual/glu )
