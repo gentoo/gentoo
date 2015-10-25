@@ -41,6 +41,8 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-4.2.8-ipc-caps.patch #533966
+	epatch "${FILESDIR}"/${PN}-4.2.8-sntp-test-pthreads.patch #563922
+	epatch "${FILESDIR}"/${PN}-4.2.8-ntpd-test-signd.patch
 	append-cppflags -D_GNU_SOURCE #264109
 	# Make sure every build uses the same install layout. #539092
 	find sntp/loc/ -type f '!' -name legacy -delete || die

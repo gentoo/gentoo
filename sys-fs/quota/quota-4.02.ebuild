@@ -18,7 +18,7 @@ IUSE="ldap netlink nls rpc tcpd"
 RDEPEND="ldap? ( >=net-nds/openldap-2.3.35 )
 	netlink? (
 		sys-apps/dbus
-		dev-libs/libnl:1.1
+		dev-libs/libnl:3
 	)
 	rpc? ( net-nds/rpcbind )
 	tcpd? ( sys-apps/tcp-wrappers )"
