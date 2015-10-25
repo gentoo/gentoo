@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.freeradius.org/pub/freeradius/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 ~ppc64 ~x86"
 
 IUSE="scp shadow static-libs"
 
