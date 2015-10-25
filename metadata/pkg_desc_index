@@ -4345,7 +4345,7 @@ dev-lang/confluence 0.10.6: Functional programming language for reactive system 
 dev-lang/crystal 0.7.7 0.8.0: The Crystal Programming Language
 dev-lang/dmd-bin 1.016 2.008-r1: Digital Mars D Compiler
 dev-lang/ekopath 6.0.477_p20150809 6.0.481_p20150811 6.0.521_p20150910 6.0.532_p20150921 6.0.551_p20151010: PathScale EKOPath Compiler Suite
-dev-lang/elixir 1.0.5: Elixir programming language
+dev-lang/elixir 1.0.5 1.1.1: Elixir programming language
 dev-lang/epic 0.9.2 0.9.3 0.9.3.2 0.9.3.3: Compiler for a simple functional language
 dev-lang/erlang 15.2.3.1 17.3 17.5 18.0 18.0-r1 18.0-r2: Erlang programming language, runtime environment, and large collection of libraries
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
@@ -4777,7 +4777,7 @@ dev-libs/libusb 1.0.9-r2 1.0.18 1.0.19: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2 0.1.5-r3: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libusbhp 1.0.2: Usb Hotplug Library
 dev-libs/libutf8proc 1.1.6-r1: mapping tool for UTF-8 strings
-dev-libs/libuv 0.11.25-r1 0.11.29 1.1.0 1.4.2 1.5.0 1.6.1 1.7.0 1.7.5: Cross-platform asychronous I/O
+dev-libs/libuv 1.4.2 1.5.0 1.6.1 1.7.0 1.7.5: Cross-platform asychronous I/O
 dev-libs/libverto 0.2.5 0.2.5-r1 0.2.6: Main event loop abstraction library
 dev-libs/libvformat 1.13-r1 1.13-r2: Library to read and write vcard files
 dev-libs/libvolume_id 0.81.0 0.81.1: Library to provide file system information
@@ -9957,7 +9957,7 @@ games-emulation/higan 094: A Nintendo multi-system emulator formerly known as bs
 games-emulation/hugo 2.12: PC-Engine (Turbografx16) emulator for linux
 games-emulation/kigb 2.02: A Gameboy (GB, SGB, GBA) Emulator for Linux
 games-emulation/lxdream 0.9.1-r2: An emulator for the Sega Dreamcast system
-games-emulation/m64py 0.2.1-r1 0.2.3-r1: A frontend for Mupen64Plus
+games-emulation/m64py 0.2.1-r1 0.2.3-r2: A frontend for Mupen64Plus
 games-emulation/mamory 0.2.25: ROM management tools and library
 games-emulation/mastergear-bin 2.0: SEGA Master System / Game Gear emulator
 games-emulation/mednafen 0.9.38.4: An advanced NES, GB/GBC/GBA, TurboGrafx 16/CD, NGPC and Lynx emulator
