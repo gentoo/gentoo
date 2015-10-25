@@ -11,5 +11,5 @@ DESCRIPTION="GStreamer encoder/decoder for JPEG format"
 KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
 IUSE=""
 
-RDEPEND=">=virtual/jpeg-0-r2[${MULTILIB_USEDEP}]"
+RDEPEND=">=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
