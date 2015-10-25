@@ -10,5 +10,5 @@ RDEPEND=ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_ruby20? ( dev-la
 REQUIRED_USE=|| ( ruby_targets_ruby19 ruby_targets_ruby20 ruby_targets_ruby21 ruby_targets_ruby22 )
 SLOT=0
 SRC_URI=https://github.com/openid/ruby-openid/archive/v2.7.0.tar.gz -> ruby-openid-2.7.0.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-utils-2	e03639b92617c43f3ca3d670af620cf5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	ruby-fakegem	b34b8f1debda62e461897a3f85df97e4	ruby-ng	12af15f9116c054425934f3eec054899	ruby-utils	97c910cb6b087c64260df641a9b3de0c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-utils-2	a96633177f44ee992b3fce360d1c4f16	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	ruby-fakegem	b34b8f1debda62e461897a3f85df97e4	ruby-ng	12af15f9116c054425934f3eec054899	ruby-utils	97c910cb6b087c64260df641a9b3de0c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=fe5248961b63eec241502c0f652fc656

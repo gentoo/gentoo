@@ -7,5 +7,5 @@ IUSE=doc java neon opengl static-libs elibc_FreeBSD java
 LICENSE=Apache-2.0
 RDEPEND=virtual/libusb:1 virtual/libudev virtual/jpeg:0 opengl? ( media-libs/freeglut ) java? ( >=virtual/jre-1.5 ) java? ( >=dev-java/java-config-2.2.0 )
 SLOT=0
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	git-r3	1502b9838d043db47700b8120083e637	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	e03639b92617c43f3ca3d670af620cf5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	git-r3	1502b9838d043db47700b8120083e637	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	a96633177f44ee992b3fce360d1c4f16	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=dc95a3f12aaca0a0fcc53319faa75901

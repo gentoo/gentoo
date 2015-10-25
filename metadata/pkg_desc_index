@@ -1042,7 +1042,7 @@ app-editors/mp 5.2.2: Minimum Profit: A text editor for programmers
 app-editors/nano 2.3.6 2.4.0 2.4.1 2.4.2 9999: GNU GPL'd Pico clone with more functionality
 app-editors/ne 2.5 3.0.1: the nice editor, easy to use for the beginner and powerful for the wizard
 app-editors/nedit 5.5_p20110116-r2 5.6: Multi-purpose text editor for the X Window System
-app-editors/neovim 0.0.0_pre20150627 0.0.0_pre20150727 0.0.0_pre20150814 0.0.0_pre20151022: Ambitious vim fork focused on extensibility and agility
+app-editors/neovim 0.0.0_pre20150627 0.0.0_pre20150727 0.0.0_pre20150814 0.0.0_pre20151022 0.0.0_pre20151025: Vim-fork focused on extensibility and agility.
 app-editors/ng 1.5_beta1 1.5_beta1-r1: Emacs like micro editor Ng -- based on mg2a
 app-editors/nvi 1.81.6-r3 1.81.6-r4 1.81.6-r5: Vi clone
 app-editors/padre 0.980.0-r1 1.0.0: Perl Application Development and Refactoring Environment
@@ -7258,7 +7258,7 @@ dev-python/natgrid 0.2.1-r2: Matplotlib toolkit for gridding irreguraly spaced d
 dev-python/natsort 3.4.0 4.0.3: Natural sorting for Python
 dev-python/nautilus-python 1.1-r1 1.1-r2: Python bindings for the Nautilus file manager
 dev-python/ndg-httpsclient 0.3.2 0.4.0: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
-dev-python/neovim-python-client 0.0.37: Python client to connect to Neovim thru its msgpack-rpc API
+dev-python/neovim-python-client 0.0.37 0.0.38: Python client for Neovim
 dev-python/netaddr 0.7.12 0.7.13 0.7.14 0.7.15 0.7.17 0.7.18: Network address representation and manipulation library
 dev-python/netcdf4-python 1.0.4: Python/numpy interface to netCDF
 dev-python/netifaces 0.8-r2 0.10.4: Portable network interface information
@@ -11706,7 +11706,7 @@ media-gfx/cropgui 0.1.1-r3: GUI for lossless cropping of jpeg images
 media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
 media-gfx/cthumb 4.2: Create a statical HTML Image gallery with captions for each image
 media-gfx/cutycapt 0_p20120409: Qt WebKit Web Page Rendering Capture Utility
-media-gfx/darktable 1.6.6 1.6.7 1.6.8 9999: A virtual lighttable and darkroom for photographers
+media-gfx/darktable 1.6.6 1.6.7 1.6.8 1.6.9 9999: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b: 3D geometrical postscript renderer
 media-gfx/dcraw 9.24.4 9.25.0 9.26.0: Converts the native (RAW) format of various digital cameras into netpbm portable pixmap (.ppm) image
 media-gfx/digikam 4.4.0-r1 4.12.0 4.14.0: Digital photo management application for KDE
@@ -12218,7 +12218,7 @@ media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/mash 0.2.0-r1: A library for rendering 3D models with Clutter
 media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 7.10.3 10.2.8 10.3.7-r1 10.3.7-r2 10.4.6 10.5.8 10.6.9 11.0.3 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 7.10.3 10.2.8 10.3.7-r1 10.3.7-r2 10.4.6 10.5.8 10.6.9 11.0.3 11.0.4 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.4-r1 0.4.5: An Open Source library for Flash movie generation
 media-libs/mlt 0.9.0 0.9.8: An open source multimedia framework, designed and developed for television broadcasting
 media-libs/musicbrainz 2.1.5 3.0.2 3.0.3 4.0.3 5.0.1: The MusicBrainz Client Library (for accessing the latest XML based web service)

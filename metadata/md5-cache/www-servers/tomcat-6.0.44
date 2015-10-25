@@ -10,5 +10,5 @@ RDEPEND=dev-java/eclipse-ecj:3.7 dev-java/tomcat-servlet-api:2.5 >=virtual/jre-1
 RESTRICT=test
 SLOT=6
 SRC_URI=mirror://apache/tomcat/tomcat-6/v6.0.44/src/apache-tomcat-6.0.44-src.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-ant-2	946f77f25d457a91a2188c26f3e50b3e	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	e03639b92617c43f3ca3d670af620cf5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-ant-2	7c5d0c274d390745f5033754a319f515	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	a96633177f44ee992b3fce360d1c4f16	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=e4e08ce7241161cd3f944ae61a2520f5
