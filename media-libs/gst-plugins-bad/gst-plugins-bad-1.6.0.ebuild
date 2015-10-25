@@ -52,14 +52,6 @@ src_prepare() {
 		-i tests/check/elements/audiomixer.c || die
 }
 
-src_configure() {
-	strip-flags
-	replace-flags "-O3" "-O2"
-	filter-flags "-fprefetch-loop-arrays" # (Bug #22249)
-
-	multilib-minimal_src_configure
-}
-
 multilib_src_configure() {
 	gstreamer_multilib_src_configure \
 		$(multilib_native_use_enable introspection) \
