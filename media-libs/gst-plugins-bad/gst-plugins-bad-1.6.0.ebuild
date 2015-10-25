@@ -5,7 +5,7 @@
 EAPI="5"
 GST_ORG_MODULE="gst-plugins-bad"
 
-inherit eutils flag-o-matic gstreamer
+inherit eutils flag-o-matic gstreamer virtualx
 
 DESCRIPTION="Less plugins for GStreamer"
 HOMEPAGE="http://gstreamer.freedesktop.org/"
@@ -74,6 +74,11 @@ multilib_src_configure() {
 			ln -s "${S}"/docs/${x}/html docs/${x}/html || die
 		done
 	fi
+}
+
+multilib_src_test() {
+	unset DISPLAY
+	Xemake check
 }
 
 multilib_src_install_all() {
