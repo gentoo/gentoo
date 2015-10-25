@@ -12,7 +12,7 @@ SRC_URI="http://firehol.org/download/releases/v${PV}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc"
-KEYWORDS="amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 
 RDEPEND="net-firewall/iptables
 	sys-apps/iproute2[-minimal]
