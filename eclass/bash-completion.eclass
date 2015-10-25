@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# @DEAD
+
 # DEPRECATED
 # This eclass has been superseded by bash-completion-r1 eclass.
 # Please modify your ebuilds to use that one instead.
