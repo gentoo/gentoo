@@ -1,3 +1,5 @@
+# from the wagnerflo overlay, see
+# https://bugs.gentoo.org/show_bug.cgi?id=129368
 diff -Naur dblatex-0.3.orig/scripts/dblatex dblatex-0.3/scripts/dblatex
 --- dblatex-0.3.orig/scripts/dblatex	2010-05-12 20:51:18.292451299 +0200
 +++ dblatex-0.3/scripts/dblatex	2010-05-12 20:51:34.388451834 +0200
