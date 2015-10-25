@@ -7,5 +7,5 @@ IUSE=ssl
 LICENSE=BSD-2
 RDEPEND=ssl? ( dev-libs/openssl )
 SLOT=2
-_eclasses_=git-2	1bb87192831f668cd20d93ffb1689c94
+_eclasses_=git-2	32530738ee006bc09e1ac93f6e73d719
 _md5_=2d55039b9d6f8404472aeb33953f0402

@@ -5,5 +5,5 @@ EAPI=5
 HOMEPAGE=https://github.com/RangeNetworks/liba53
 LICENSE=GPL-2
 SLOT=0
-_eclasses_=git-2	1bb87192831f668cd20d93ffb1689c94
+_eclasses_=git-2	32530738ee006bc09e1ac93f6e73d719
 _md5_=f20995dd38efb966d13c7cb2c5cfa932

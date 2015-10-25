@@ -11,5 +11,5 @@ RDEPEND=>=app-eselect/eselect-opengl-1.0.8 dev-libs/openssl media-libs/freetype 
 REQUIRED_USE=!minimal? ( || ( dmx kdrive xnest xorg xvfb ) )
 SLOT=0/1.12.4
 SRC_URI=http://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.12.4.tar.bz2 mirror://gentoo/xorg-server-1.12-cve-2014-8091..8103.patches.tar.xz
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xorg-2	eea8dd526d72948be85a9628c00694d4
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xorg-2	b41f09eee8d441f780b7413dba7e120b
 _md5_=fe739438fa86a11b8f3d4724874e31d5

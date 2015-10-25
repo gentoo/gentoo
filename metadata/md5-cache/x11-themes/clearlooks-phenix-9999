@@ -6,5 +6,5 @@ HOMEPAGE=http://www.jpfleury.net/en/software/clearlooks-phenix.php
 LICENSE=GPL-3
 RDEPEND=x11-libs/gtk+:3 x11-themes/gtk-engines
 SLOT=live
-_eclasses_=git-2	1bb87192831f668cd20d93ffb1689c94
+_eclasses_=git-2	32530738ee006bc09e1ac93f6e73d719
 _md5_=5cfac5a2354958edfb4f5189a0d323ef

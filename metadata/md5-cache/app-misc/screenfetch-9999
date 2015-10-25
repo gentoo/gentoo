@@ -7,5 +7,5 @@ IUSE=X
 LICENSE=GPL-3
 RDEPEND=X? ( media-gfx/scrot x11-apps/xdpyinfo )
 SLOT=0
-_eclasses_=git-2	1bb87192831f668cd20d93ffb1689c94
+_eclasses_=git-2	32530738ee006bc09e1ac93f6e73d719
 _md5_=eecde9233b7f18edd750e1e4e6cc92cb

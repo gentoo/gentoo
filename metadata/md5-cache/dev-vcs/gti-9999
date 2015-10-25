@@ -6,5 +6,5 @@ HOMEPAGE=http://r-wos.org/hacks/gti
 LICENSE=MIT
 RDEPEND=dev-vcs/git
 SLOT=0
-_eclasses_=git-2	1bb87192831f668cd20d93ffb1689c94
+_eclasses_=git-2	32530738ee006bc09e1ac93f6e73d719
 _md5_=e93c0afde121a5c0a0563604132dfec2
