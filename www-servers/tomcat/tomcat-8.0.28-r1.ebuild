@@ -69,7 +69,7 @@ EANT_NEEDS_TOOLS="true"
 EANT_EXTRA_ARGS="-Dversion=${PV}-gentoo -Dversion.number=${PV} -Dcompile.debug=false"
 
 # revisions of the scripts
-IM_REV="-r1"
+IM_REV="-r2"
 INIT_REV="-r1"
 
 src_compile() {
