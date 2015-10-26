@@ -7,7 +7,7 @@ EAPI=5
 inherit qmake-utils toolchain-funcs
 
 DESCRIPTION="Qt4/Qt5 version chooser"
-HOMEPAGE="https://qt.gitorious.org/qt/qtchooser"
+HOMEPAGE="https://code.qt.io/cgit/qt/qtchooser.git/"
 SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 GPL-3 )"
