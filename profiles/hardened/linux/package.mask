@@ -31,3 +31,6 @@ app-crypt/hmaccalc
 # due to C99 struct init requirement by hardened kernels,
 # see bug 540196 comment 9.
 net-fs/openafs-kernel
+
+# Crashes immediately on start. bug 560666
+=www-client/qutebrowser-0.4.1
