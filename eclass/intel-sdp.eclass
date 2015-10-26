@@ -172,7 +172,7 @@ QA_PREBUILT="${INTEL_SDP_DIR}/*"
 # Creating necessary links to use intel compiler with eclipse
 _isdp_link_eclipse_plugins() {
 	local c f
-	pushd ${INTEL_SDP_DIR}/eclipse_support > /dev/null
+	pushd ${INTEL_SDP_DIR}/eclipse_support > /dev/null || die
 		for c in cdt*; do
 			local cv=${c#cdt} ev=3.$(( ${cv:0:1} - 1))
 			if has_version "dev-util/eclipse-sdk:${ev}"; then
@@ -189,7 +189,7 @@ _isdp_link_eclipse_plugins() {
 				done
 			fi
 		done
-	popd > /dev/null
+	popd > /dev/null || die
 }
 
 # @FUNCTION: _isdp_big-warning
