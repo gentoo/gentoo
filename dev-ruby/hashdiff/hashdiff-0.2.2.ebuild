@@ -18,5 +18,5 @@ HOMEPAGE="https://github.com/liufengyun/hashdiff"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 IUSE=""
