@@ -30,6 +30,8 @@ RDEPEND=">=app-text/docbook-xsl-stylesheets-1.75
 		dev-libs/libxslt
 		graphviz? ( media-gfx/graphviz )
 		app-text/docbook-xml-dtd:4.5
+		app-text/dblatex
+		|| ( www-client/w3m www-client/lynx )
 		highlight? ( || ( dev-python/pygments[${PYTHON_USEDEP}] dev-util/source-highlight ) )
 		${PYTHON_DEPS}
 "
