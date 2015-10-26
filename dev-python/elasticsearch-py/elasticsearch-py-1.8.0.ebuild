@@ -37,7 +37,9 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 
 python_prepare_all() {
 	# rename manpage to elasticsearch-py
-	sed -i "s@('index', 'elasticsearch'@('index', 'elasticsearch-py'@g" docs/conf.py
+	sed \
+		-e "s@('index', 'elasticsearch'@('index', 'elasticsearch-py'@g" \
+		-i docs/conf.py || die
 
 	distutils-r1_python_prepare_all
 }
