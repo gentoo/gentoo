@@ -9,5 +9,5 @@ RDEPEND=dev-cpp/eigen:3 dev-games/ode <dev-libs/boost-1.57 dev-libs/libf2c dev-l
 RESTRICT=bindist mirror
 SLOT=0
 SRC_URI=mirror://sourceforge/free-cad/freecad-0.12.5284.tar.gz
-_eclasses_=cmake-utils	7dc05d514e5011a2a16bfa7a32e69587	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=cmake-utils	34a43631b1edbd429618149bc986d524	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=166f2ca0b23ea6c210cc9598ddad29e7

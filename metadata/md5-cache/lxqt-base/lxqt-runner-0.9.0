@@ -8,5 +8,5 @@ LICENSE=GPL-2 LGPL-2.1+
 RDEPEND=dev-libs/glib:2 >=dev-libs/libqtxdg-1.0.0 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtscript:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5 kde-frameworks/kwindowsystem:5 ~lxqt-base/liblxqt-0.9.0 ~lxqt-base/lxqt-globalkeys-0.9.0 >=lxde-base/menu-cache-0.5.1
 SLOT=0
 SRC_URI=http://downloads.lxqt.org/lxqt/0.9.0/lxqt-runner-0.9.0.tar.xz
-_eclasses_=cmake-utils	7dc05d514e5011a2a16bfa7a32e69587	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=cmake-utils	34a43631b1edbd429618149bc986d524	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=bd081b58bfef9dd63288ace67a46e0e0

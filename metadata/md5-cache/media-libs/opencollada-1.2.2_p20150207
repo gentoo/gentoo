@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=dev-libs/libpcre dev-libs/zziplib media-libs/lib3ds sys-libs/zlib >=sys-devel/gcc-4.7 expat? ( dev-libs/expat ) !expat? ( dev-libs/libxml2 )
 SLOT=0
 SRC_URI=https://github.com/KhronosGroup/OpenCOLLADA/tarball/ceb409cabdccda3000aa2e5c065850b8fde60b0f -> opencollada-1.2.2_p20150207.tar.gz
-_eclasses_=cmake-utils	7dc05d514e5011a2a16bfa7a32e69587	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	34a43631b1edbd429618149bc986d524	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=b3cd2bd296a8d7111843d5564095bc0f

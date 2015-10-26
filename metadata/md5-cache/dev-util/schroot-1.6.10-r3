@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=>=dev-libs/boost-1.42.0 >=sys-apps/util-linux-2.16 btrfs? ( >=sys-fs/btrfs-progs-0.19-r2 ) lvm? ( sys-fs/lvm2 ) pam? ( sys-libs/pam ) sys-apps/debianutils dchroot? ( !sys-apps/dchroot ) nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=mirror://debian/pool/main/s/schroot/schroot_1.6.10.orig.tar.xz mirror://debian/pool/main/s/schroot/schroot_1.6.10-1.debian.tar.xz
-_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	cmake-utils	7dc05d514e5011a2a16bfa7a32e69587	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	cmake-utils	34a43631b1edbd429618149bc986d524	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=4e0ebc85523c7b06c254cb60e3e355dd
