@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/3.2.1-gcc4.6.patch
 	"${FILESDIR}"/3.2.1-gcc4.7.patch
 	"${FILESDIR}"/3.9.0-atlas.patch
+	"${FILESDIR}"/${P}-gcc5.2.patch
 	)
 
 AUTOTOOLS_IN_SOURCE_BUILD=1
