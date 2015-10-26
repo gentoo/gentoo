@@ -7,11 +7,6 @@
 		<name>Martin Gysel</name>
 		<description>Proxied maintainer. Assign bugs to him.</description>
 	</maintainer>
-	<maintainer>
-		<email>aaron@flappyport.com</email>
-		<name>Aaron Bauman</name>
-		<description>Proxied maintainer. CC him on bugs.</description>
-	</maintainer>
 	<longdescription lang="en">
 		Library for communication with dive computers from various manufacturers.
 	</longdescription>

@@ -2,12 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
-		<email>idella4@gentoo.org</email>
-	</maintainer>
-	<maintainer>
-		<email>aaron@flappyport.com</email>
-		<name>Arron Bauman</name>
-		<description>proxy maintainer</description>
+		<email>bman@gentoo.org</email>
+		<name>Aaron Bauman</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">vpcs</remote-id>
