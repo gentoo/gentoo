@@ -1,3 +1,6 @@
+Avoid installing META files for labltk and camlp4: Those are provided by their
+respective packages now.
+
 Index: findlib-1.5.5/configure
 ===================================================================
 --- findlib-1.5.5.orig/configure
