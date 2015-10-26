@@ -33,7 +33,6 @@ PATCHES=(
 )
 
 src_install() {
-	distutils-r1_src_install || die "distutils install failed"
-
-	python_doscript "${S}"/scripts/dblatex || die "python_doscript failed"
+	distutils-r1_src_install
+	python_doscript "${S}"/scripts/dblatex
 }
