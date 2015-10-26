@@ -6,6 +6,10 @@
 		<email>nikoli@gmx.us</email>
 		<name>Nikoli</name>
 	</maintainer>
+        <maintainer>
+                <email>itumaykin@gmail.com</email>
+                <name>Coacher</name>
+        </maintainer>
 	<maintainer>
 		<email>maksbotan@gentoo.org</email>
 		<name>Maxim Koltsov</name>
