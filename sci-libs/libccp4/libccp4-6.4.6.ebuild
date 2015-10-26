@@ -14,7 +14,7 @@ SRC_URI="ftp://ftp.ccp4.ac.uk/opensource/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-3 LGPL-3"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="fortran static-libs"
 
 RDEPEND="sci-libs/mmdb:2"
