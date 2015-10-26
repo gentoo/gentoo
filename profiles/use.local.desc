@@ -6578,8 +6578,6 @@ sci-chemistry/avogadro:glsl - Enable glsl features via GLEW.
 sci-chemistry/ball:cuda - Include cuda support
 sci-chemistry/ball:sql - Include SQL database support
 sci-chemistry/ball:webkit - Uses dev-qt/qtwebkit for drawing
-sci-chemistry/ccp4:arpwarp - Add binary arp-warp for molecular replacement
-sci-chemistry/ccp4:balbes - Install sci-chemistry/balbes
 sci-chemistry/chemtool:emf - EMF export support
 sci-chemistry/cns:aria - Support patch for sci-chemistry/aria
 sci-chemistry/eden:double-precision - More precise calculations at the expense of speed
@@ -6603,7 +6601,6 @@ sci-chemistry/molequeue:client - Build the client application
 sci-chemistry/molequeue:server - Build the serve application
 sci-chemistry/molequeue:zeromq - Build with net-libs/zeromq support
 sci-chemistry/mopac7:gmxmopac7 - Add support library for gromacs
-sci-chemistry/oasis:minimal - Restricts functionality on free software
 sci-chemistry/pdb2pqr:opal - Add web interface via opal
 sci-chemistry/pdb2pqr:pdb2pka - Install experimental pdb2pka interface
 sci-chemistry/pymol:apbs - Install the apbs plugin

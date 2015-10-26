@@ -5,8 +5,8 @@ EAPI=5
 HOMEPAGE=http://ibiblio.org/pub/Linux/apps/financial/spreadsheet/
 KEYWORDS=amd64 ppc sparc x86
 LICENSE=public-domain
-RDEPEND=>=sys-libs/ncurses-5.2 !dev-lang/stratego !<sci-chemistry/ccp4-apps-6.1.3-r4
+RDEPEND=>=sys-libs/ncurses-5.2 !dev-lang/stratego
 SLOT=0
 SRC_URI=ftp://ibiblio.org/pub/Linux/apps/financial/spreadsheet/sc-7.16.tar.gz
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=d1ef5633302382f67164c5cef36537f7
+_md5_=fb69f1f54130f668d0fd0c486768e621

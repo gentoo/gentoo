@@ -4682,8 +4682,6 @@ dev-libs/libisoburn 1.3.8 1.4.0: Enables creation and expansion of ISO-9660 file
 dev-libs/libisofs 1.3.8 1.4.0: libisofs is an open-source library for reading, mastering and writing optical discs
 dev-libs/libixion 0.7.0 0.9.0 0.9.1 9999: General purpose formula parser & interpreter
 dev-libs/libjit 0.1.2: Libjit is a generic Just-In-Time compilation library
-dev-libs/libjwc_c 1.1-r2: additional c library for ccp4
-dev-libs/libjwc_f 1.1-r2: Additional fortran library for ccp4
 dev-libs/libkpass 6: Libkpass is a from-scratch C implementation of accessing KeePass 1.x format password databases
 dev-libs/libksba 1.3.3: X.509 and CMS (PKCS#7) library
 dev-libs/liblazy 0.2: lib for D-Bus daemon messages, querying HAL or PolicyKit privileges
@@ -15171,28 +15169,23 @@ sci-chemistry/ambertools 1.5-r1: A suite for carrying out complete molecular mec
 sci-chemistry/apbs 1.4.1-r2: Evaluation of electrostatic properties of nanoscale biomolecular systems
 sci-chemistry/aqua 3.2-r2: Program suite in this distribution calculates restraint violations
 sci-chemistry/aria 2.3.2_p20130826: Automated NOE assignment and NMR structure calculation
-sci-chemistry/arp-warp-bin 7.5: Improvement and interpretation of crystallographic electron density maps
 sci-chemistry/autodock 4.2.6: A suite of automated docking tools
 sci-chemistry/autodock_vina 1.1.2: Program for drug discovery, molecular docking and virtual screening
 sci-chemistry/avogadro 1.0.3-r2 1.1.0: Advanced molecular editor that uses Qt4 and OpenGL
 sci-chemistry/azara 2.8-r4 2.8-r5: A suite of programmes to process and view NMR data
 sci-chemistry/babel 1.6-r1: Interconvert file formats used in molecular modeling
-sci-chemistry/balbes 1.0.0_p100317-r2: Automated molecular replacement (MR) pipeline
 sci-chemistry/ball 1.4.2: Biochemical Algorithms Library
 sci-chemistry/bkchem 0.14.0_pre2-r1: Chemical drawing program
 sci-chemistry/bodr 9-r1 10: The Blue Obelisk Data Repository listing element and isotope properties
 sci-chemistry/burrow-owl 1.5.1: Visualize multidimensional nuclear magnetic resonance (NMR) spectra
 sci-chemistry/cara-bin 1.8.4-r1: Analysis of NMR spectra and Computer Aided Resonance Assignment
-sci-chemistry/ccp4 6.1.3-r1: Protein X-ray crystallography toolkit -- meta package
-sci-chemistry/ccp4-apps 6.1.3-r13: Protein X-ray crystallography toolkit
-sci-chemistry/ccp4i 6.1.3-r4: Protein X-ray crystallography toolkit -- graphical interface
 sci-chemistry/ccpn 2.4.1_p150226 2.4.2 2.4.2_p150325 2.4.2_p150413 2.4.2_p150421: The Collaborative Computing Project for NMR
 sci-chemistry/chemical-mime-data 0.1.94 0.1.94-r1 0.1.94-r2: A collection of data files to add support for chemical MIME types
 sci-chemistry/chemtool 1.6.13 1.6.14: A GTK program for drawing organic molecules
 sci-chemistry/clashlist 3.17-r1: Build lists of van der Waals clashes from an input PDB file
 sci-chemistry/cluster 1.3.081231 1.3.081231-r1: Build lists of collections of interacting items
 sci-chemistry/cns 1.2.1-r8 1.3_p7-r1: Crystallography and NMR System
-sci-chemistry/coot 0.7 0.7.1-r1 0.7.2 0.8.2-r1: Crystallographic Object-Oriented Toolkit for model building, completion and validation
+sci-chemistry/coot 0.8.2-r1: Crystallographic Object-Oriented Toolkit for model building, completion and validation
 sci-chemistry/cyana 2.1: Combined assignment and dynamics algorithm for NMR applications
 sci-chemistry/dssp 2.2.1-r1: The protein secondary structure standard
 sci-chemistry/easychem 0.6-r1: Chemical structure drawing program - focused on presentation
@@ -15212,10 +15205,8 @@ sci-chemistry/gtk-gamess 2.00: GUI for GAMESS, a General Atomic and Molecular El
 sci-chemistry/hollow 1.2-r1: Production of surface images of proteins
 sci-chemistry/icm 3.7.2e 3.7.3b: MolSoft LCC ICM Pro
 sci-chemistry/icm-browser 3.6.1i: MolSoft LCC ICM Browser
-sci-chemistry/imosflm 1.0.7-r1: A new GUI for the Mosflm crystallographic data processing tool
 sci-chemistry/jmol 12.0.45-r1 12.2.27-r1: Java molecular viever for 3-D chemical structures
 sci-chemistry/ksdssp 040728 040728-r1: An open source implementation of sci-chemistry/dssp
-sci-chemistry/makecif 5.6.6 5.6.6-r1: PDB --> CIF convertor
 sci-chemistry/mars 1.2: Robust automatic backbone assignment of proteins
 sci-chemistry/massxpert 2.0.5 3.4.0: Software suite to predict/analyze mass spectrometric data on (bio)polymers
 sci-chemistry/mdanalysis 0.7.7: A python library to analyze and manipulate molecular dynamics trajectories
@@ -15225,35 +15216,28 @@ sci-chemistry/molden 4.8-r2 5.0: Display molecular density from GAMESS-UK, GAMES
 sci-chemistry/moldy 2.16e-r2: Molecular dynamics simulations platform
 sci-chemistry/molequeue 0.7.1: Abstract, manage and coordinate execution of tasks
 sci-chemistry/molmol 2k_p2-r2 2k_p2-r3 2k_p2-r4 2k_p2-r5: Publication-quality molecular visualization package
-sci-chemistry/molrep 11.0.02 11.0.03-r1: molecular replacement program
 sci-chemistry/molscript 2.1.2-r2: Display molecular 3D structures, such as proteins, in both schematic and detailed representations
 sci-chemistry/molsketch 0.2.0-r1 0.3.0: A drawing tool for 2D molecular structures
 sci-chemistry/mongochem 0.7.0: Application for managing large collections of chemical data
 sci-chemistry/mopac7 1.15 1.15-r1: Autotooled, updated version of a powerful, fast semi-empirical package
-sci-chemistry/mosflm 7.0.9: A program for integrating single crystal diffraction data from area detectors
 sci-chemistry/mpqc 2.3.1-r1 2.3.1-r2 2.3.1-r3: The Massively Parallel Quantum Chemistry Program
-sci-chemistry/mrbump 0.4.4: An automated scheme for Molecular Replacement
 sci-chemistry/msms-bin 2.6.1-r1: MSMS allows to compute very efficiently triangulations of Solvent Excluded Surfaces
 sci-chemistry/mustang 3.2.1: MUltiple STructural AligNment AlGorithm
 sci-chemistry/namd 2.9-r1 2.10: A powerful and highly parallelized molecular dynamics code
 sci-chemistry/nmrglue 0.5-r1: A module for working with NMR data in Python
 sci-chemistry/numbat 0.999-r1: new user-friendly method built for automatic dX-tensor determination
-sci-chemistry/oasis 4.0-r3: A direct-method program for SAD/SIR phasing
 sci-chemistry/openbabel 2.3.2 2.3.2-r1: Interconverts file formats used in molecular modeling
 sci-chemistry/openbabel-perl 2.3.2: Perl bindings for OpenBabel
 sci-chemistry/openbabel-python 2.3.2: Python bindings for OpenBabel (including Pybel)
 sci-chemistry/ortep3 1.0.3-r1: Thermal ellipsoid plot program for crystal structure illustrations
 sci-chemistry/p3d 0.4.3 9999: Python module for structural bioinformatics
 sci-chemistry/parassign 20130522: Assign protein nuclei solely on the basis of pseudocontact shifts (PCS)
-sci-chemistry/pdb-extract 3.004-r2 3.11: Tools for extracting mmCIF data from structure determination applications
 sci-chemistry/pdb-tools 0.2.1-r1 0.2.1-r2: Tools for manipulating and doing calculations on wwPDB macromolecule structure files
 sci-chemistry/pdb2pqr 1.9.0-r1: An automated pipeline for performing Poisson-Boltzmann electrostatics calculations
 sci-chemistry/pdbcat 1.3: Manipulate and process PDB files using commonly available tools such as Perl, awk, etc
 sci-chemistry/pdbcns 2.0.010504: Convert atom names for common amino acids and nucleic acid bases from PDB format to CNS or back
 sci-chemistry/pdbmat 3.89: Calculate Tirion's model from pdb structures
-sci-chemistry/phaser 2.1.4: A program for phasing macromolecular crystal structures
 sci-chemistry/platon 20151001: Versatile, SHELX-97 compatible, multipurpose crystallographic tool
-sci-chemistry/pointless 1.6.2 1.6.14 1.6.14-r1: Scores crystallographic Laue and space groups
 sci-chemistry/povscript+ 2.1.2.2.19 2.1.2.2.20: Modified molscript that uses POV-Ray, does thermal ellipsoids, and more
 sci-chemistry/prekin 6.51.081122-r1: Prepares molecular kinemages (input files for Mage & KiNG) from PDB-format coordinate files
 sci-chemistry/probe 2.13.110909: Evaluates atomic packing within or between molecules
@@ -15275,12 +15259,8 @@ sci-chemistry/pymol-plugins-psico 3.1-r1: Pymol ScrIpt COllection
 sci-chemistry/rasmol 2.7.5.2-r2: Molecular Graphics Visualisation Tool
 sci-chemistry/raster3d 3.0.2 3.0.3: Generation high quality raster images of proteins or other molecules
 sci-chemistry/reduce 3.13.080428-r1 3.14.080821 3.16.111118: Adds hydrogens to a Protein Data Bank (PDB) molecule structure file
-sci-chemistry/refmac 5.5.0110-r3: Macromolecular crystallographic refinement program
 sci-chemistry/relax 3.3.8 3.3.9 4.0.0 4.0.0-r1: Molecular dynamics by NMR data analysis
-sci-chemistry/scala 3.3.20: Scale together multiple observations of reflections
-sci-chemistry/sfcheck 7.03.18-r1: Program for assessing the agreement between the atomic model and X-ray data or EM map
 sci-chemistry/shelx 20141228: Programs for crystal structure determination from single-crystal diffraction data
-sci-chemistry/solve-resolve-bin 2.13: Automated crystallographic structure solution for MIR, SAD, and MAD
 sci-chemistry/sparky 3.115-r1: Graphical NMR assignment and integration program for proteins, nucleic acids, and other polymers
 sci-chemistry/suitename 0.3.070628: The ROC RNA Ontology Consortium consensus RNA backbone nomenclature and conformer-list development
 sci-chemistry/surf 1.0: Solvent accesible Surface calculator
@@ -15295,9 +15275,7 @@ sci-chemistry/votca-csgapps 1.2.2 1.2.4 1.3_rc1: Extra applications for votca-cs
 sci-chemistry/wxmacmolplt 7.4.2 7.5 7.5-r1: Chemical 3D graphics program with GAMESS input builder
 sci-chemistry/xds-bin 20151019: X-ray Detector Software for processing single-crystal monochromatic diffraction data
 sci-chemistry/xdsgui 0_p130530: GUI for XDS that is supposed to help both novice and experienced users
-sci-chemistry/xdsi 0.92-r1: A crude interface for running the XDS
 sci-chemistry/xdsstat-bin 140225: Prints various statistics (that are not available from XDS itself)
-sci-chemistry/xia2 0.3.1.0 0.3.1.6 0.3.1.7 0.3.3.1 0.3.3.3 0.3.4.0: An automated data reduction system for crystallography
 sci-chemistry/xyza2pipe 20101129 20121001: Cross conversion environment of NMR spectra
 sci-electronics/Stage 4.1.1 9999: The Stage Robot Simulator
 sci-electronics/alliance 5.0.20110203: Digital IC design tools (simulation, synthesis, place/route, etc...)
@@ -15426,7 +15404,6 @@ sci-libs/armadillo 3.4.4 3.6.2 4.650.4 5.500.2 5.600.2 6.100.1: Streamlined C++ 
 sci-libs/arpack 3.1.3-r1 3.1.5: Arnoldi package library to solve large scale eigenvalue problems
 sci-libs/arprec 2.2.16 2.2.17: Arbitrary precision float arithmetics and functions
 sci-libs/avogadrolibs 0.7.2-r1: Advanced molecule editor and visualizer 2 - libraries
-sci-libs/balbes-db 6.1.3-r1: The database for the BALBES automated crystallographic molecular replacement pipeline
 sci-libs/beagle 3.0.3: Open BEAGLE, a versatile EC/GA/GP framework
 sci-libs/blas-reference 20070226 20070226-r2 20070226-r3: Basic Linear Algebra Subprograms F77 reference implementations
 sci-libs/bliss 0.72: A Tool for Computing Automorphism Groups and Canonical Labelings of Graphs
@@ -15438,7 +15415,6 @@ sci-libs/cbflib 0.9.2.2 0.9.2.4 0.9.2.10 0.9.2.10-r1 0.9.3.3: Library providing 
 sci-libs/cblas-reference 20030223-r4 20030223-r5: C wrapper interface to the F77 reference BLAS implementation
 sci-libs/ccfits 2.4: C++ interface for cfitsio
 sci-libs/ccolamd 2.8.0: Constrained Column approximate minimum degree ordering algorithm
-sci-libs/ccp4-libs 6.1.3-r16: Protein X-ray crystallography toolkit - Libraries
 sci-libs/ccpn-data 2.3.1_p140425 2.4.0_p140425 2.4.1 2.4.2: The Collaborative Computing Project for NMR - Data
 sci-libs/cctbx 2010.03.29.2334-r7: Computational Crystallography Toolbox
 sci-libs/cdd+ 077a: Another implementation of the double description method
@@ -15453,7 +15429,7 @@ sci-libs/cholmod 2.1.2: Sparse Cholesky factorization and update/downdate librar
 sci-libs/cifparse-obj 7.025-r1: Provides an object-oriented application interface to information in mmCIF format
 sci-libs/clapack 3.2.1-r6 3.2.1-r7 3.2.1-r8: f2c'ed version of LAPACK
 sci-libs/clashscore-db 3.17: Clashscore-db for clashlist
-sci-libs/clipper 2.1_p100511-r1 2.1.20140911: Object-oriented libraries for crystallographic data and crystallographic computation
+sci-libs/clipper 2.1.20140911: Object-oriented libraries for crystallographic data and crystallographic computation
 sci-libs/cln 1.3.3: Class library (C++) for numbers
 sci-libs/cminpack 1.3.2 1.3.4: C implementation of the MINPACK nonlinear optimization library
 sci-libs/cmpfit 1.2: MINPACK-1 Least Squares Fitting Library in C
@@ -15483,7 +15459,7 @@ sci-libs/coinor-utils 2.9.11: COIN-OR Matrix, Vector and other utility classes
 sci-libs/coinor-vol 1.4.4: COIN-OR Volume algorithm linear programming solver
 sci-libs/colamd 2.8.0: Column approximate minimum degree ordering algorithm
 sci-libs/colpack 1.0.6 1.0.8 1.0.9: C++ algorithms for specialized vertex coloring problems
-sci-libs/coot-data 2 2-r1 3: Data for the Crystallographic Object-Oriented Toolkit
+sci-libs/coot-data 3: Data for the Crystallographic Object-Oriented Toolkit
 sci-libs/cqrlib 1.1.2-r1: An ANSI C implementation of a utility library for quaternion arithmetic and quaternion rotation math
 sci-libs/cxsparse 2.2.1 2.2.6 3.1.1 3.1.2: Extended sparse matrix package
 sci-libs/deap 0.9.1 1.0.0: Distributed Evolutionary Algorithms in Python
@@ -15569,9 +15545,9 @@ sci-libs/metis 4.0.3 5.1.0-r1: A package for unstructured serial graph partition
 sci-libs/minfx 1.0.3-r1 1.0.4_pre98 1.0.4 1.0.5 1.0.6 1.0.10 1.0.11: Numerical optimisation library
 sci-libs/minuit 5.28.00: A C++ physics analysis tool for function minimization
 sci-libs/mkl 10.0.5.025: Intel(R) Math Kernel Library: linear algebra, fft, math functions
-sci-libs/mmdb 1.24 1.25.5 1.25.5-r1 2.0.1: The Coordinate Library, designed to assist CCP4 developers in working with coordinate files
+sci-libs/mmdb 1.25.5-r1 2.0.1: The Coordinate Library, designed to assist CCP4 developers in working with coordinate files
 sci-libs/mmtk 2.7.3 2.7.5 2.7.9: Molecular Modeling ToolKit for Python
-sci-libs/monomer-db 0.090729 5.41: Monomer library used for macromolecular structure building and refinement
+sci-libs/monomer-db 5.41: Monomer library used for macromolecular structure building and refinement
 sci-libs/mpfi 1.5.1: Multiple precision interval arithmetic library based on MPFR
 sci-libs/mpir 2.6.0-r2: Library for arbitrary precision integer arithmetic (fork of gmp)
 sci-libs/mumps 4.10.0-r1: MUltifrontal Massively Parallel sparse direct matrix Solver
@@ -15626,7 +15602,7 @@ sci-libs/silo 4.9.1 4.10.2: A mesh and field I/O library and scientific database
 sci-libs/spooles 2.2: SParse Object Oriented Linear Equations Solver
 sci-libs/spqr 1.2.3-r1 1.3.1: Multithreaded multifrontal sparse QR factorization library
 sci-libs/spr 3.3.2: Statistical analysis and machine learning library
-sci-libs/ssm 1.1 1.4: A macromolecular coordinate superposition library
+sci-libs/ssm 1.4: A macromolecular coordinate superposition library
 sci-libs/starparse 1.0-r1: Library for parsing NMR star files (peak-list format) and CIF files
 sci-libs/suitesparse 4.0.2 4.2.1: Meta package for a suite of sparse matrix tools
 sci-libs/suitesparseconfig 4.2.1: Common configurations for all packages in suitesparse
@@ -17789,7 +17765,6 @@ x11-libs/libvdpau 1.1.1: VDPAU wrapper and trace libraries
 x11-libs/libview 0.6.6-r2: VMware's Incredibly Exciting Widgets
 x11-libs/libwnck 2.31.0 3.4.9 3.14.0: A window navigation construction kit
 x11-libs/libxcb 1.9.1 1.9.1-r1 1.9.3 1.9.3-r1 1.10 1.11 1.11-r1 1.11.1: X C-language Bindings library
-x11-libs/libxdl_view 4.2-r2: An X-Windows Based Toolkit
 x11-libs/libxkbcommon 0.2.0 0.3.1 0.4.1 0.5.0: X.Org xkbcommon library
 x11-libs/libxkbfile 1.0.8 1.0.9: X.Org xkbfile library
 x11-libs/libxkbui 1.0.2-r1: X.Org xkbui library

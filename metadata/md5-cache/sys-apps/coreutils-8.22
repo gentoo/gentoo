@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure install postinst prepare test
-DEPEND=!static? ( acl? ( sys-apps/acl ) caps? ( sys-libs/libcap ) gmp? ( dev-libs/gmp ) xattr? ( !userland_BSD? ( sys-apps/attr ) ) ) selinux? ( sys-libs/libselinux ) nls? ( virtual/libintl ) !app-misc/realpath !<sys-apps/util-linux-2.13 !sys-apps/stat !net-mail/base64 !sys-apps/mktemp !<app-forensics/tct-1.18-r1 !<net-fs/netatalk-2.0.3-r4 !<sci-chemistry/ccp4-6.1.1 static? ( acl? ( sys-apps/acl[static-libs] ) caps? ( sys-libs/libcap ) gmp? ( dev-libs/gmp[static-libs] ) xattr? ( !userland_BSD? ( sys-apps/attr[static-libs] ) ) ) app-arch/xz-utils
+DEPEND=!static? ( acl? ( sys-apps/acl ) caps? ( sys-libs/libcap ) gmp? ( dev-libs/gmp ) xattr? ( !userland_BSD? ( sys-apps/attr ) ) ) selinux? ( sys-libs/libselinux ) nls? ( virtual/libintl ) !app-misc/realpath !<sys-apps/util-linux-2.13 !sys-apps/stat !net-mail/base64 !sys-apps/mktemp !<app-forensics/tct-1.18-r1 !<net-fs/netatalk-2.0.3-r4 static? ( acl? ( sys-apps/acl[static-libs] ) caps? ( sys-libs/libcap ) gmp? ( dev-libs/gmp[static-libs] ) xattr? ( !userland_BSD? ( sys-apps/attr[static-libs] ) ) ) app-arch/xz-utils
 DESCRIPTION=Standard GNU file utilities (chmod, cp, dd, dir, ls...), text utilities (sort, tr, head, wc..), and shell utilities (whoami, who,...)
 EAPI=3
 HOMEPAGE=https://www.gnu.org/software/coreutils/
 IUSE=acl caps gmp nls selinux static userland_BSD vanilla xattr
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~arm-linux ~x86-linux
 LICENSE=GPL-3
-RDEPEND=!static? ( acl? ( sys-apps/acl ) caps? ( sys-libs/libcap ) gmp? ( dev-libs/gmp ) xattr? ( !userland_BSD? ( sys-apps/attr ) ) ) selinux? ( sys-libs/libselinux ) nls? ( virtual/libintl ) !app-misc/realpath !<sys-apps/util-linux-2.13 !sys-apps/stat !net-mail/base64 !sys-apps/mktemp !<app-forensics/tct-1.18-r1 !<net-fs/netatalk-2.0.3-r4 !<sci-chemistry/ccp4-6.1.1
+RDEPEND=!static? ( acl? ( sys-apps/acl ) caps? ( sys-libs/libcap ) gmp? ( dev-libs/gmp ) xattr? ( !userland_BSD? ( sys-apps/attr ) ) ) selinux? ( sys-libs/libselinux ) nls? ( virtual/libintl ) !app-misc/realpath !<sys-apps/util-linux-2.13 !sys-apps/stat !net-mail/base64 !sys-apps/mktemp !<app-forensics/tct-1.18-r1 !<net-fs/netatalk-2.0.3-r4
 SLOT=0
 SRC_URI=mirror://gnu/coreutils/coreutils-8.22.tar.xz mirror://gentoo/coreutils-8.22-patches-1.0.tar.xz https://dev.gentoo.org/~vapier/dist/coreutils-8.22-patches-1.0.tar.xz mirror://gentoo/coreutils-8.22-man-r1.tar.xz https://dev.gentoo.org/~vapier/dist/coreutils-8.22-man-r1.tar.xz
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=ba48a18c442f65caef917cc1f9a2d142
+_md5_=fb5653a67b8b817075e6f188e54b9523
