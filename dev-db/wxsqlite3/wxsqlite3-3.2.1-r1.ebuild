@@ -15,23 +15,19 @@ SRC_URI="mirror://sourceforge/wxcode/${P}.tar.gz"
 LICENSE="wxWinLL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug"
+IUSE=""
 
 DEPEND="
-	x11-libs/wxGTK:3.0[X,debug=]
+	x11-libs/wxGTK:3.0[X]
 	dev-db/sqlite:3"
 RDEPEND="${DEPEND}"
 
 #S="${WORKDIR}/${P%.1}"
 
 src_prepare() {
-	local wxdebug
-
 	rm -rf sqlite3 || die
 	cp configure30 configure || die
-	use debug && wxdebug="d"
 	sed \
-		-e "s:@WXDEBUG@:${wxdebug}:g" \
 		-e "s:@WXVERSION@:${WX_GTK_VER}:g" \
 		-e "s:@LIBDIR@:$(get_libdir):g" \
 		-e "s:@VERSION@:${PV}:g" \
