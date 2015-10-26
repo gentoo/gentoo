@@ -23,10 +23,20 @@ if ! has java-pkg-2 ${INHERITED}; then
 	eerror "java-pkg-simple eclass can only be inherited AFTER java-pkg-2"
 fi
 
-EXPORT_FUNCTIONS src_compile src_install
+EXPORT_FUNCTIONS src_compile src_install src_test
 
 # We are only interested in finding all java source files, wherever they may be.
 S="${WORKDIR}"
+
+# @ECLASS-VARIABLE: JAVA_TEST_SRC_DIR
+# @DESCRIPTION:
+# Directory containing ${PN}'s JUnit tests, if any.
+# If not specified, defaults to "src/main/test".
+#
+# @CODE
+#	JAVA_TEST_SRC_DIR="src/main/test"
+# @CODE
+JAVA_TEST_SRC_DIR=${JAVA_TEST_SRC_DIR:="src/main/test"}
 
 # @ECLASS-VARIABLE: JAVA_GENTOO_CLASSPATH
 # @DEFAULT_UNSET
@@ -156,4 +166,44 @@ java-pkg-simple_src_install() {
 		fi
 		java-pkg_dosrc ${srcdirs}
 	fi
+}
+
+# @FUNCTION: java-pkg-simple_src_test
+# @DESCRIPTION:
+# Compile and run JUnit tests (classes) found in JAVA_TEST_SRC_DIR.
+#
+# NOTE: Bear in mind this is not a one-size-fits-all solution and might not be
+# appropriate for some ebuilds. It will most likely work for Maven-based
+# projects, though it is not guaranteed.
+#
+# @CODE
+#	src_test() {
+#		java-pkg-simple_src_test
+#	}
+# @CODE
+java-pkg-simple_src_test() {
+	debug-print-function ${FUNCNAME} $*
+
+	if [[ ! -d ${JAVA_TEST_SRC_DIR} ]]; then
+		eerror "Directory for JUnit tests not found."
+		eerror "Please set the variable JAVA_TEST_SRC_DIR correctly."
+		die
+	fi
+
+	local JAVA_TESTS_TO_RUN=$(find "${JAVA_TEST_SRC_DIR}" -type f -name "*Test.java" ! -name "Abstract*")
+	JAVA_TESTS_TO_RUN=${JAVA_TESTS_TO_RUN//"${JAVA_TEST_SRC_DIR}"\/}
+	JAVA_TESTS_TO_RUN=${JAVA_TESTS_TO_RUN//.java}
+	JAVA_TESTS_TO_RUN=${JAVA_TESTS_TO_RUN//\//.}
+
+	local JAVA_TEST_CLASSPATH="${JAVA_TEST_SRC_DIR}:${PN}.jar:$(java-pkg_getjars junit-4)"
+	if [[ -n ${JAVA_GENTOO_CLASSPATH} ]]; then
+		JAVA_TEST_CLASSPATH="${JAVA_TEST_CLASSPATH}:$(java-pkg_getjars ${JAVA_GENTOO_CLASSPATH})"
+	fi
+
+	ejavac -classpath ${JAVA_TEST_CLASSPATH} \
+		-d ${JAVA_TEST_SRC_DIR} \
+		$(find "${JAVA_TEST_SRC_DIR}" -name "*.java")
+
+	ejunit4 -classpath ${JAVA_TEST_CLASSPATH} \
+		${JAVA_TESTS_TO_RUN}
 }
