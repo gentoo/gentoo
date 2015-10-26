@@ -4,7 +4,7 @@
 
 EAPI=5
 
-WX_GTK_VER="2.8"
+WX_GTK_VER="3.0"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads,ssl"
@@ -34,7 +34,7 @@ RDEPEND="
 	net-libs/miniupnpc:=
 	net-misc/curl
 	sys-libs/zlib
-	virtual/jpeg:62
+	virtual/jpeg:0
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXcursor
