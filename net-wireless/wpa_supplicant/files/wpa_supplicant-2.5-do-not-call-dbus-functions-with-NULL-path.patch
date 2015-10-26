@@ -1,7 +1,8 @@
-diff -Naur wpa_supplicant/dbus/dbus_new_helpers.c wpa_supplicant-fixed/dbus/dbus_new_helpers.c
---- wpa_supplicant/dbus/dbus_new_helpers.c	2015-09-27 15:02:05.000000000 -0400
-+++ wpa_supplicant-fixed/dbus/dbus_new_helpers.c	2015-10-05 18:38:58.489713168 -0400
-@@ -847,7 +847,7 @@
+diff --git a/wpa_supplicant/dbus/dbus_new_helpers.c b/wpa_supplicant/dbus/dbus_new_helpers.c
+index 45623f3..0fc3d08 100644
+--- a/wpa_supplicant/dbus/dbus_new_helpers.c
++++ b/wpa_supplicant/dbus/dbus_new_helpers.c
+@@ -847,7 +847,7 @@ void wpa_dbus_mark_property_changed(struct wpas_dbus_priv *iface,
  	const struct wpa_dbus_property_desc *dsc;
  	int i = 0;
  
