@@ -15,7 +15,4 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="static-libs"
 
-DEPEND="!<sci-libs/ccp4-libs-6.1.3"
-RDEPEND=""
-
 PATCHES=( "${FILESDIR}"/${P}-include-path.patch )

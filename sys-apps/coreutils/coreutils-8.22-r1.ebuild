@@ -34,7 +34,7 @@ RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs]} )
 	!sys-apps/mktemp
 	!<app-forensics/tct-1.18-r1
 	!<net-fs/netatalk-2.0.3-r4
-	!<sci-chemistry/ccp4-6.1.1"
+"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )
 	app-arch/xz-utils"

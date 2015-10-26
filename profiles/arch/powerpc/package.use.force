@@ -15,5 +15,4 @@ net-p2p/sancho-bin java
 # sci-chemistry/arp-warp-bin is not available for ppc
 # sci-chemistry/solve-resolve-bin is not available for ppc
 # sci-chemistry/cns is not available for ppc
-sci-chemistry/oasis minimal
 sci-libs/cctbx minimal

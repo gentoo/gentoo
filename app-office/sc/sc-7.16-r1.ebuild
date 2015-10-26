@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="sc is a free curses-based spreadsheet program that uses key bindings similar to vi and less"
@@ -17,9 +18,7 @@ COMMON_DEPEND=">=sys-libs/ncurses-5.2"
 DEPEND="virtual/pkgconfig"
 RDEPEND="
 	${COMMON_DEPEND}
-	!dev-lang/stratego
-	!<sci-chemistry/ccp4-apps-6.1.3-r4
-"
+	!dev-lang/stratego"
 
 src_prepare() {
 	epatch \

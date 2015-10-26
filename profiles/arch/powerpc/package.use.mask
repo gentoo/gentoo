@@ -291,12 +291,6 @@ mail-client/claws-mail pda
 # No media-sound/lilypond here, yet (bug #356069)
 app-text/asciidoc test
 
-# Kacper Kowalik <xarthisius@gentoo.org> (16 Jan 2011)
-# bug 303931
-# dev-lang/icc is not available for ppc
-# sci-chemistry/arp-warp-bin is not available for ppc
-sci-chemistry/ccp4 arpwarp
-
 # Justin Lecher <jlec@gentoo.org> (01 Nov 2010)
 # Deps not Keyworded
 sci-chemistry/apbs fetk
