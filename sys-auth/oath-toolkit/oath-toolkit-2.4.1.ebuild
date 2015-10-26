@@ -27,7 +27,7 @@ src_prepare() {
 		gl/tests/Makefile.am
 	# disable portability warnings, caused by gtk-doc.make
 	sed -i \
-		-e '/AM_INIT_AUTOMAKE/ s:-Werror:\0 -Wno-portability:' \
+		-e '/AM_INIT_AUTOMAKE/ s:-Wall:\0 -Wno-portability:' \
 		{liboath,libpskc}/configure.ac
 	eautoreconf
 	default
