@@ -117,25 +117,6 @@ dev-java/xmlc
 # in 30 days.
 app-emulation/vmware-view-open-client
 
-# James Le Cuirot <chewi@gentoo.org> (27 Sep 2015)
-# No release since 2007 and no revdeps. Removal in 30 days.
-dev-java/commons-transaction
-
-# James Le Cuirot <chewi@gentoo.org> (27 Sep 2015)
-# A string of interdependent obsolete Java packages. hibernate and
-# axis are alive upstream but we have no immediate plans to bump
-# them. hibernate has also been modularized so would now be called
-# hibernate-core anyway. Removal in 30 days.
-dev-java/commons-modeler
-dev-java/hibernate
-dev-java/hibernate-annotations
-dev-java/jax-rpc
-dev-java/mx4j
-dev-java/mx4j-core
-dev-java/mx4j-tools
-dev-java/proxool
-www-servers/axis:1
-
 # Dion Moult <moult@gentoo.org> (24 Sep 2015)
 # Masked for removal in 30 days. Bug #466724
 # Heavily out of date. Use sci-chemistry/icm
