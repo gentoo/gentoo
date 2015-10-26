@@ -25,6 +25,10 @@ src_prepare() {
 	sed -i -r \
 		-e '/TESTS/s,test-vc-list-files-(git|cvs).sh,,g' \
 		gl/tests/Makefile.am
+	# disable portability warnings, caused by gtk-doc.make
+	sed -i \
+		-e '/AM_INIT_AUTOMAKE/ s:-Werror:\0 -Wno-portability:' \
+		{liboath,libpskc}/configure.ac
 	eautoreconf
 	default
 }
