@@ -161,7 +161,10 @@ multilib_src_install() {
 		# http://permalink.gmane.org/gmane.linux.bluez.kernel/53115
 		# http://comments.gmane.org/gmane.linux.bluez.kernel/54564
 		# gatttool is only built with readline, bug #530776
-		use readline && dobin attrib/gatttool
+		if use readline; then
+			dobin attrib/gatttool
+			dobin tools/btmgmt
+		fi
 		dobin tools/hex2hcd
 
 		# Unittests are not that useful once installed, so make them optional

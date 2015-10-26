@@ -64,6 +64,11 @@ else
 	: ${KDE_DOXYGEN:=false}
 fi
 
+# @ECLASS-VARIABLE: KDE_DOX_DIR
+# @DESCRIPTION:
+# Defaults to ".". Otherwise, use alternative KDE doxygen path.
+: ${KDE_DOX_DIR:=.}
+
 # @ECLASS-VARIABLE: KDE_EXAMPLES
 # @DESCRIPTION:
 # If set to "false", unconditionally ignore a top-level examples subdirectory.
@@ -319,6 +324,10 @@ _calculate_live_repo() {
 				_kmname=${PN}
 			fi
 
+			if [[ ${PV} == ??.??.49.9999 && ${CATEGORY} = kde-apps ]]; then
+				EGIT_BRANCH="Applications/$(get_version_component_range 1-2)"
+			fi
+
 			if [[ ${PV} != 9999 && ${CATEGORY} = kde-plasma ]]; then
 				EGIT_BRANCH="Plasma/$(get_version_component_range 1-2)"
 			fi
@@ -395,7 +404,7 @@ kde5_src_prepare() {
 	# when required
 	if [[ ${KDE_BUILD_TYPE} = release ]] ; then
 		if [[ -d po ]] ; then
-			pushd po > /dev/null
+			pushd po > /dev/null || die
 			for lang in *; do
 				if ! has ${lang} ${LINGUAS} ; then
 					if [[ ${lang} != CMakeLists.txt ]] ; then
@@ -406,17 +415,17 @@ kde5_src_prepare() {
 					fi
 				fi
 			done
-			popd > /dev/null
+			popd > /dev/null || die
 		fi
 
 		if [[ ${KDE_HANDBOOK} = true && -d ${KDE_DOC_DIR} && ${CATEGORY} != kde-apps ]] ; then
-			pushd ${KDE_DOC_DIR} > /dev/null
+			pushd ${KDE_DOC_DIR} > /dev/null || die
 			for lang in *; do
 				if ! has ${lang} ${LINGUAS} ; then
 					comment_add_subdirectory ${lang}
 				fi
 			done
-			popd > /dev/null
+			popd > /dev/null || die
 		fi
 	else
 		rm -rf po
@@ -488,7 +497,7 @@ kde5_src_compile() {
 
 	# Build doxygen documentation if applicable
 	if use_if_iuse doc ; then
-		kgenapidox . || die
+		kgenapidox ${KDE_DOX_DIR} || die
 	fi
 }
 
