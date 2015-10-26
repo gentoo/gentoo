@@ -10472,7 +10472,7 @@ games-sports/trophy 2.0.3: 2D Racing Game
 games-sports/ultimatestunts 0.7.7: Remake of the famous Stunts game
 games-sports/vdrift 20120722: A driving simulation made with drift racing in mind
 games-sports/xmoto 0.5.11: A challenging 2D motocross platform game
-games-strategy/0ad 0.0.18_alpha-r2 0.0.18_alpha-r3: A free, real-time strategy game
+games-strategy/0ad 0.0.18_alpha-r4: A free, real-time strategy game
 games-strategy/0ad-data 0.0.18_alpha: Data files for 0ad
 games-strategy/asc 2.6.0.0 2.6.0.0-r1: turn based strategy game designed in the tradition of the Battle Isle series
 games-strategy/attal 0.10.1: turn-based strategy game project
@@ -17608,7 +17608,7 @@ x11-drivers/xf86-input-synaptics 1.7.4 1.7.8 1.8.1 1.8.2: Driver for Synaptics t
 x11-drivers/xf86-input-tslib 0.0.6-r2 0.0.6-r3: xorg input driver for use of tslib based touchscreen devices
 x11-drivers/xf86-input-vmmouse 13.0.0-r1 13.1.0: VMWare mouse input driver
 x11-drivers/xf86-input-void 1.4.0 1.4.1: null input driver
-x11-drivers/xf86-input-wacom 0.24.0 0.29.0 0.30.0: Driver for Wacom tablets and drawing devices
+x11-drivers/xf86-input-wacom 0.24.0 0.29.0 0.30.0 0.31.0: Driver for Wacom tablets and drawing devices
 x11-drivers/xf86-video-amdgpu 0.0.01_pre20150814 9999: Accelerated Open Source driver for AMDGPU cards
 x11-drivers/xf86-video-apm 1.2.4 1.2.5 1.2.5-r1: Alliance ProMotion video driver
 x11-drivers/xf86-video-ark 0.7.5: X.Org driver for ark cards
