@@ -25,7 +25,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~ppc-macos ~x64-macos ~x86-macos ~sparc-solari
 IUSE="test"
 
 # Block on other packages trying to install a /usr/bin/listen
-RDEPEND+="!!media-sound/listen !!media-radio/ax25 !!<dev-ruby/listen-2.8.6:2"
+RDEPEND+="!!media-sound/listen !!media-radio/ax25 !!<dev-ruby/listen-2.8.6-r1:2"
 
 ruby_add_rdepend ">=dev-ruby/rb-inotify-0.9.0"
 
