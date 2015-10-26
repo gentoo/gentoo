@@ -23,7 +23,10 @@ if [[ -z ${_GOLANG_BASE} ]]; then
 
 _GOLANG_BASE=1
 
-DEPEND=">=dev-lang/go-1.4.2:="
+# Go compiler not yet supported on arch ppc64 & ppc64le
+# And gcc-go5 onwards support building Go apps on Power platform.
+# When building gcc-go5, please 'USE="go" emerge gcc .
+#DEPEND=">=dev-lang/go-1.4.2:="
 STRIP_MASK="*.a"
 
 # @ECLASS-VARIABLE: EGO_PN
