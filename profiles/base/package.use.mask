@@ -57,10 +57,6 @@ sci-libs/gdal ruby
 # See bug #480574
 media-libs/mlt ruby
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (02 Sep 2015)
-# x11-drivers/xf86-video-amdgpu is not keyworded on most arches
-x11-base/xorg-drivers video_cards_amdgpu
-
 # Andreas K. Huettel <dilfridge@gentoo.org> (1 Sep 2015)
 # Currently broken upstream. We still hope it will get fixed.
 app-office/libreoffice telepathy
