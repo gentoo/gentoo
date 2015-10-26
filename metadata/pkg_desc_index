@@ -8446,7 +8446,7 @@ dev-ruby/coderay 1.1.0-r1 1.1.0-r2: A Ruby library for syntax highlighting
 dev-ruby/coffee-rails 3.2.2 4.0.1 4.1.0: Coffee Script adapter for the Rails asset pipeline
 dev-ruby/coffee-script 2.2.0-r1 2.2.0-r2 2.3.0 2.4.1: Ruby CoffeeScript is a bridge to the official CoffeeScript compiler
 dev-ruby/coffee-script-source 1.7.1 1.9.1 1.9.1.1: Ruby CoffeeScript is a bridge to the official CoffeeScript compiler
-dev-ruby/color 1.7.1 1.7.1-r1: Colour management with Ruby
+dev-ruby/color 1.7.1 1.7.1-r1 1.8: Colour management with Ruby
 dev-ruby/colorator 0.1-r1: Colorize your text in the terminal
 dev-ruby/colored 1.2: Console coloring
 dev-ruby/colorize 0.7.5 0.7.7: Add some methods to set color, background color and text effect on console easier
