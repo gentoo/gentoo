@@ -16,7 +16,7 @@ SRC_URI="http://cci.lbl.gov/cctbx_build/results/${MY_PV}/${PN}_bundle.tar.gz -> 
 
 LICENSE="cctbx-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="+minimal openmp threads"
 
 REQUIRED_USE="
