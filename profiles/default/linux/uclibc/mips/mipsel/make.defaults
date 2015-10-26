@@ -3,4 +3,4 @@
 # $Id$
 
 CHOST="mipsel-gentoo-linux-uclibc"
-CHOST_o32=${CHOST}
+CHOST_o32="${CHOST}"
