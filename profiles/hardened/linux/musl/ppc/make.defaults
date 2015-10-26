@@ -14,6 +14,6 @@ FCFLAGS="${CFLAGS}"
 ABI="ppc"
 DEFAULT_ABI="ppc"
 MULTILIB_ABIS="ppc"
-CHOST_ppc=${CHOST}
+CHOST_ppc="${CHOST}"
 LIBDIR_ppc="lib"
 IUSE_IMPLICIT="abi_ppc_32"
