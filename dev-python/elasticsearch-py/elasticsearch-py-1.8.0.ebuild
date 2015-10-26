@@ -80,12 +80,14 @@ python_test() {
 
 python_compile_all() {
 	cd docs || die
-	emake man $(usex doc html "")
+	use doc && emake man html
 }
 
 python_install_all() {
-	use doc && HTML_DOCS=( docs/_build/html/. )
+	if use doc; then
+		export HTML_DOCS=( docs/_build/html/. )
+		doman docs/_build/man/*
+	fi
 	use examples && local EXAMPLES=( example/. )
-	doman docs/_build/man/*
 	distutils-r1_python_install_all
 }
