@@ -17,7 +17,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="+tools samples"
 
-RDEPEND=">=dev-util/nvidia-cuda-toolkit-6.5"
+RDEPEND=">=x11-drivers/nvidia-drivers-347.09
+	tools? ( >=dev-util/nvidia-cuda-toolkit-6.5 )"
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 
