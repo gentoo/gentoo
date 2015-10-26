@@ -17,6 +17,8 @@ IUSE=""
 DEPEND="sys-devel/libtool
 	virtual/pkgconfig"
 
+RDEPEND="!dev-libs/libvterm-neovim"
+
 src_compile() {
 	append-cflags -fPIC
 	emake PREFIX="${EPREFIX}/usr" LIBDIR="${EPREFIX}/usr/$(get_libdir)"
