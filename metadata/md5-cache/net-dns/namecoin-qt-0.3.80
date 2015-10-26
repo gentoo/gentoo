@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=MIT ISC cryptopp GPL-3 LGPL-2.1 public-domain || ( CC-BY-SA-3.0 LGPL-2.1 )
 RDEPEND=dev-libs/boost[threads(+)] dev-libs/crypto++ dev-libs/openssl:0[-bindist] sys-libs/db:4.8[cxx] dev-qt/qtgui:4 dbus? ( dev-qt/qtdbus:4 )
 SLOT=0
-_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	git-r3	1502b9838d043db47700b8120083e637	gnome2-utils	588052cacdf74572e68bdfeaece20534	kde4-functions	3b68b9a6265fb2bd834efa55716107e8	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	git-r3	1502b9838d043db47700b8120083e637	gnome2-utils	588052cacdf74572e68bdfeaece20534	kde4-functions	7c6a6bcbd13275fc424ef9fb43ae5ad1	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=147d0533472757b0837cc86a89478618
