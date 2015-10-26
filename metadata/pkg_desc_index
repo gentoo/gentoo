@@ -16332,7 +16332,7 @@ sys-auth/nss-mdns 0.10-r2: Name Service Switch module for Multicast DNS
 sys-auth/nss-myhostname 0.3: Name Service Switch module for resolving the local hostname
 sys-auth/nss-pam-ldapd 0.8.14-r2 0.9.6: NSS module for name lookups using LDAP
 sys-auth/nss_ldap 258 259 261 262 264 264-r1 265 265-r1 265-r2 265-r4 265-r5: NSS LDAP Module
-sys-auth/oath-toolkit 2.4.1: Toolkit for using one-time password authentication with HOTP/TOTP algorithms
+sys-auth/oath-toolkit 2.4.1 2.6.1: Toolkit for using one-time password authentication with HOTP/TOTP algorithms
 sys-auth/openpam 20140912: Open source PAM library
 sys-auth/otpcalc 0.97-r6: A One Time Password and S/Key calculator for X
 sys-auth/pam-afs-session 1.3 1.5 1.6: OpenAFS PAM Module
