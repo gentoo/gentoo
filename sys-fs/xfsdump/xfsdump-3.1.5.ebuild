@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="5"
 
 inherit multilib eutils
 
@@ -13,11 +13,11 @@ SRC_URI="ftp://oss.sgi.com/projects/xfs/cmd_tars/${P}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 -sparc x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 -sparc ~x86"
 IUSE=""
 
 RDEPEND="sys-fs/e2fsprogs
-	!<sys-fs/xfsprogs-3
+	>=sys-fs/xfsprogs-3.2.0
 	sys-apps/dmapi
 	>=sys-apps/attr-2.4.19"
 DEPEND="${RDEPEND}
@@ -30,7 +30,19 @@ src_prepare() {
 		|| die
 	epatch "${FILESDIR}"/${PN}-3.0.5-prompt-overflow.patch #335115
 	epatch "${FILESDIR}"/${PN}-3.0.4-no-symlink.patch #311881
-	epatch "${FILESDIR}"/${PN}-3.0.6-path-overflow.patch #370949
+
+	# The release when used with xfsprogs-4.2+ is ... a mess.
+	epatch "${FILESDIR}"/${P}-config-platform.patch
+	find -type f -name '*.c' -exec sed -i \
+		-e '1i#include "config.h"' \
+		-e '1i#include <assert.h>' \
+		-e '1i#include <fcntl.h>' \
+		-e '1i#include <stdarg.h>' \
+		-e '1i#include <stdlib.h>' \
+		-e '1i#include <string.h>' \
+		-e '1i#include <unistd.h>' \
+		-e '1i#include <sys/wait.h>' \
+		{} + || die
 }
 
 src_configure() {
@@ -39,12 +51,7 @@ src_configure() {
 	export DEBUG=-DNDEBUG
 
 	econf \
-		--libdir=/$(get_libdir) \
-		--libexecdir=/usr/$(get_libdir) \
-		--sbindir=/sbin
-}
-
-src_install() {
-	emake DIST_ROOT="${D}" install || die
-	prepalldocs
+		--libdir="${EPREFIX}/$(get_libdir)" \
+		--libexecdir="${EPREFIX}/usr/$(get_libdir)" \
+		--sbindir="${EPREFIX}/sbin"
 }
