@@ -406,13 +406,13 @@ all_ruby_unpack() {
 				eend $?
 
 				mkdir "${S}"
-				pushd "${S}" &>/dev/null
+				pushd "${S}" &>/dev/null || die
 
 				ebegin "Unpacking data.tar.gz"
 				tar -mxf "${my_WORKDIR}"/data.tar.gz || die
 				eend $?
 
-				popd &>/dev/null
+				popd &>/dev/null || die
 				;;
 			*.patch.bz2)
 				# We apply the patches with RUBY_PATCHES directly from DISTDIR,
@@ -498,9 +498,9 @@ all_fakegem_install() {
 		for dir in ${RUBY_FAKEGEM_DOCDIR}; do
 			[[ -d ${dir} ]] || continue
 
-			pushd ${dir} &>/dev/null
+			pushd ${dir} &>/dev/null || die
 			dohtml -r * || die "failed to install documentation"
-			popd &>/dev/null
+			popd &>/dev/null || die
 		done
 	fi
 
@@ -514,12 +514,12 @@ all_fakegem_install() {
 		local bindir=$(find "${D}" -type d -path "*/gems/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}/bin" -print -quit)
 
 		if [[ -d "${bindir}" ]]; then
-			pushd "${bindir}" &>/dev/null
+			pushd "${bindir}" &>/dev/null || die
 			local binaries=$(eval ls ${RUBY_FAKEGEM_BINWRAP})
 			for binary in $binaries; do
 				ruby_fakegem_binwrapper $binary
 			done
-			popd &>/dev/null
+			popd &>/dev/null || die
 		fi
 	fi
 }
