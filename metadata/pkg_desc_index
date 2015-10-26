@@ -2889,7 +2889,7 @@ dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-contrib 1.1.13 1.1.14: Contribution database for the m17n library
 dev-db/m17n-db 1.5.2 1.5.5 1.6.2-r1 1.6.3 1.6.4: Database for the m17n library
 dev-db/maatkit 7540-r1: essential command-line utilities for MySQL
-dev-db/mariadb 5.5.45 5.5.46 10.0.21 10.0.21-r1 10.1.7_rc 10.1.8: An enhanced, drop-in replacement for MySQL
+dev-db/mariadb 5.5.46 10.0.21 10.0.21-r1 10.1.8: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-galera 10.0.21: An enhanced, drop-in replacement for MySQL with Galera Replication
 dev-db/maxscale 1.2.0: A content aware, plug-able MySQL proxy server
 dev-db/metakit 2.4.9.7-r2: Embedded database library
@@ -2898,7 +2898,7 @@ dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.4.0 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.6.2: A high-performance multi-threaded backup (and restore) toolset for MySQL and Drizzle
 dev-db/myodbc 5.2.7-r1 5.2.7-r2: ODBC driver for MySQL
-dev-db/mysql 5.5.44 5.5.45 5.5.46 5.6.26 5.6.26-r1 5.6.27 5.6.27-r1: A fast, multi-threaded, multi-user SQL database server
+dev-db/mysql 5.5.46 5.6.26 5.6.27 5.6.27-r1: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 2.3.2 3.1.0 3.2.1 3.2.2: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.19 7.2.20 7.3.8 7.3.9-r1: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql-connector-c 6.1.5 6.1.6-r1 6.1.6-r2: C client library for MariaDB/MySQL
@@ -6802,7 +6802,7 @@ dev-python/bokeh 0.7.1: Statistical and interactive HTML plots for Python
 dev-python/boto 2.27.0 2.31.1 2.34.0 2.35.1 2.38.0: Amazon Web Services API
 dev-python/boto3 1.1.1 1.1.2 1.1.3: The AWS SDK for Python
 dev-python/botocore 1.1.11 1.2.10 1.3.0: Low-level, data-driven core of boto 3.
-dev-python/bottle 0.12.7 0.12.8: A fast and simple micro-framework for small web-applications
+dev-python/bottle 0.12.7 0.12.8 0.12.9: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
 dev-python/bpython 0.13.1 0.13.2 0.14 0.14.1 0.14.2: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/bsddb3 6.0.1 6.1.0: Python bindings for Berkeley DB
@@ -6849,7 +6849,7 @@ dev-python/cmd2 0.6.7 0.6.8: Extra features for standard library's cmd module
 dev-python/codetools 4.2.0: Enthought Tool Suite: Code analysis and execution tools
 dev-python/colander 1.0: A simple schema-based serialization and deserialization library
 dev-python/colorama 0.3.2 0.3.3: Makes ANSI escape character sequences for producing colored terminal text & cursor positioning
-dev-python/coloredlogs 1.0.1-r1 2.0 3.1: Colored stream handler for the logging module
+dev-python/coloredlogs 1.0.1-r1 2.0 3.1 3.1.2: Colored stream handler for the logging module
 dev-python/colorlog 2.6.0: Log formatting with colors
 dev-python/colout 0.1: Adds color to arbitrary command output
 dev-python/columnize 0.3.5-r1 0.3.8: Format a simple (i.e. not nested) list into aligned columns
@@ -7098,7 +7098,7 @@ dev-python/http-parser 0.8.3: HTTP request/response parser for python in C
 dev-python/httplib2 0.8 0.9.1 0.9.2-r1: A comprehensive HTTP client library
 dev-python/httpretty 0.7.0 0.7.1 0.8.0 0.8.0-r1 0.8.6 0.8.10: HTTP client mock for Python
 dev-python/humanfriendly 1.33 1.35 1.38 1.42: Human friendly output for text interfaces using Python
-dev-python/hypothesis 1.7.1 1.9.0: A library for property based testing
+dev-python/hypothesis 1.7.1 1.9.0 1.12.0: A library for property based testing
 dev-python/icalendar 3.8.4 3.9.0: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/iconvcodec 1.1.2-r1: Python Codecs for Iconv Encodings
 dev-python/id3-py 1.2 1.2-r1: Module for manipulating ID3 tags in Python
@@ -7662,7 +7662,7 @@ dev-python/python-scw 0.4.7-r1: Python binding for Scw
 dev-python/python-sipsimple 2.5.1 2.5.1-r2: SIP SIMPLE client SDK is a Software Development Kit
 dev-python/python-slip 0.6.0 0.6.1: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-social-auth 0.1.26 0.2.10: Easy to setup social auth mechanism with support for several frameworks and auth providers
-dev-python/python-sqlparse 0.1.10 0.1.13 0.1.14 0.1.15 0.1.16: A non-validating SQL parser module for Python
+dev-python/python-sqlparse 0.1.10 0.1.13 0.1.14 0.1.15 0.1.16 0.1.18: A non-validating SQL parser module for Python
 dev-python/python-stdnum 0.9 1.1: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 2.0.3 2.1.0 2.2.0-r1: Python bindings to the OpenStack Object Storage API
 dev-python/python-systemd 230: Python module for native access to the systemd facilities
@@ -7684,7 +7684,7 @@ dev-python/pythong 2.1.5-r2: Nice and powerful spanish development environment f
 dev-python/pythonmagick 0.9.11 0.9.12: Python bindings for ImageMagick
 dev-python/pythonutils 0.4.0-r1: Voidspace Python modules
 dev-python/pytools 2014.3.5 9999: A collection of tools missing from the Python standard library
-dev-python/pytz 2015.4 2015.6: World timezone definitions for Python
+dev-python/pytz 2015.4 2015.6 2015.7: World timezone definitions for Python
 dev-python/pyudev 0.16.1-r1: Python binding to libudev
 dev-python/pyusb 0.4.3 1.0.0_beta2: USB support for Python
 dev-python/pyutil 2.0.0: A collection of utilities for Python programmers
@@ -17409,7 +17409,7 @@ www-client/phantomjs 1.9.8 2.0.0: A headless WebKit scriptable with a JavaScript
 www-client/pybugz 0.11.1 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qtweb 3.8.5_p108: Lightweight, fast, secure and portable browser for the Web
 www-client/qupzilla 1.8.6 1.8.6-r1: Qt WebKit web browser
-www-client/qutebrowser 0.2.1 0.3.0 0.4.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
+www-client/qutebrowser 0.2.1 0.3.0 0.4.1 0.4.1-r1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
 www-client/rekonq 2.4.2-r1: A browser based on qtwebkit
 www-client/seamonkey 2.35 2.38: Seamonkey Web Browser
 www-client/seamonkey-bin 2.35 2.38: Mozilla Application Suite - web browser, email, HTML editor, IRC
