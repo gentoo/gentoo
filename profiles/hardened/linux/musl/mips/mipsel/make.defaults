@@ -3,7 +3,7 @@
 # $Id$
 
 CHOST="mipsel-gentoo-linux-musl"
-CHOST_o32=${CHOST}
+CHOST_o32="${CHOST}"
 
 # Disable sandbox because its currently broken on mipsel-musl
 FEATURES="-sandbox"
