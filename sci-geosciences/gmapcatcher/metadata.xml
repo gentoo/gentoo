@@ -7,10 +7,5 @@
 		<name>Denis M.</name>
 		<description>Maintainer, assign bugs to him</description>
 	</maintainer>
-	<maintainer>
-		<email>mrueg@gentoo.org</email>
-		<name>Manuel Rüger</name>
-		<description>Proxy-Maintainer, CC him on bugs</description>
-	</maintainer>
 </pkgmetadata>
 
