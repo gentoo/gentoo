@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
+# Tests require non-keyworded qt5
+dev-qt/qtchooser test
+
 # Justin Lecher <jlec@gentoo.org> (14 Oct 2015)
 # Requires dev-python/ipython which triggers a long dep chain
 dev-python/restkit cli
