@@ -14,6 +14,7 @@ LICENSE="BSD BSD-2 ISC MIT"
 SLOT="0/1"
 KEYWORDS="amd64 ~arm ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs"
+RESTRICT="test"
 
 DEPEND="
 	sys-devel/libtool
