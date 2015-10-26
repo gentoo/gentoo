@@ -2,8 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
+# Tests require non-keyworded qt5
+dev-qt/qtchooser test
+
 # Johannes Huber <johu@gentoo.org> (28 Jan 2015)
-# Missing keyword on dev-libs/botan,dev-libs/pkcs11-helper
+# Missing keyword on dev-libs/botan and dev-libs/pkcs11-helper
 app-crypt/qca botan pkcs11
 
 # Michael Palimaka <kensington@gentoo.org) (26 Dec 2014)
