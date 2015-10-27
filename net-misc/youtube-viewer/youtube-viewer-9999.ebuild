@@ -22,8 +22,6 @@ RDEPEND="
 	dev-perl/JSON
 	dev-perl/libwww-perl[ssl]
 	dev-perl/Term-ReadLine-Gnu
-	|| ( media-video/mplayer[network]
-		media-video/mpv )
 	virtual/perl-Encode
 	virtual/perl-File-Path
 	virtual/perl-File-Spec
@@ -73,7 +71,7 @@ pkg_preinst() {
 
 pkg_postinst() {
 	use gtk && gnome2_icon_cache_update
-	einfo
+	elog
 	elog "optional dependencies:"
 	elog "  dev-perl/LWP-UserAgent-Cached (cache support)"
 	elog "  dev-perl/Term-ReadLine-Gnu (for a better STDIN support)"
@@ -82,7 +80,15 @@ pkg_postinst() {
 	elog "  dev-perl/Text-CharWidth (print the results in a fixed-width"
 	elog "    format (--fixed-width, -W))"
 	elog "  virtual/perl-threads (threads support)"
-	einfo
+	elog
+	elog "You also need a compatible video player, possible choices are:"
+	elog "  media-video/gnome-mplayer"
+	elog "  media-video/mplayer[network]"
+	elog "  media-video/mpv"
+	elog "  media-video/smplayer"
+	elog "  media-video/vlc"
+	elog "Also check the configuration file in ~/.config/youtube-viewer/"
+	elog "and configure your video player backend."
 }
 
 pkg_postrm() {
