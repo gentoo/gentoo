@@ -20,7 +20,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-ruby_add_bdepend "test? ( >=www-apps/jekyll-2 )"
+ruby_add_bdepend "test? ( dev-ruby/webmock
+	>=www-apps/jekyll-2 )"
 
 all_ruby_prepare() {
 	rm Rakefile || die
