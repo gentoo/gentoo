@@ -22,12 +22,13 @@ start() {
 	fi
 
 	ebegin "Starting aMule Daemon"
-	env HOME="${AMULEHOME}" start-stop-daemon --start \
+	start-stop-daemon --start \
 		--quiet --background \
 		--make-pidfile --pidfile /var/run/amuled.pid \
-		-c ${AMULEUSER} \
-		-x /usr/bin/amuled >${LOG}
-	
+		--env HOME="${AMULEHOME}" \
+		--user ${AMULEUSER} \
+		--exec /usr/bin/amuled >${LOG}
+
 	sleep 2
 	if ! pgrep -u ${AMULEUSER} amuled > /dev/null; then
 		eerror "aMule daemon can't be started! Check logfile: ${LOG}"
@@ -37,7 +38,7 @@ start() {
 
 stop() {
 	ebegin "Stopping aMule daemon -- please wait"
-	start-stop-daemon --oknodo --stop --pidfile /var/run/amuled.pid &>/dev/null
+	start-stop-daemon --stop --pidfile /var/run/amuled.pid 2>&1 >/dev/null
 	eend $?
 }
 

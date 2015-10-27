@@ -26,12 +26,13 @@ start() {
 	OPTIONS="-h ${AMULEHOST} -p ${AMULEPORT} -P ${AMULEPWD} -A ${WEBPWD} -t ${TEMPLATE} -q"
 
 	ebegin "Starting aMule WebServer"
-	env HOME="${AMULEHOME}" start-stop-daemon --start \
-		--quiet -b \
+	start-stop-daemon --start \
+		--quiet --background \
 		--make-pidfile --pidfile /var/run/amuleweb.pid \
-		-c ${AMULEUSER} \
-		-x /usr/bin/amuleweb -- ${OPTIONS} &>${LOG}
-	
+		--env HOME="${AMULEHOME}" \
+		--user ${AMULEUSER} \
+		--exec /usr/bin/amuleweb -- ${OPTIONS} 2>&1 >${LOG}
+
 	sleep 1
 	if ! pgrep -u ${AMULEUSER} amuleweb > /dev/null; then
 		eerror "aMule daemon can't be started! Check logfile: ${LOG}"
@@ -43,7 +44,7 @@ start() {
 
 stop() {
 	ebegin "Stopping aMule WebServer"
-	start-stop-daemon --oknodo --stop --pidfile /var/run/amuleweb.pid &>/dev/null
+	start-stop-daemon --stop --pidfile /var/run/amuleweb.pid 2>&1 >/dev/null
 	eend $?
 }
 
