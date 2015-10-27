@@ -43,7 +43,7 @@ IUSE="debug doc source +threads +unicode pax_kernel zlib"
 CDEPEND=">=dev-lisp/asdf-3.1:="
 DEPEND="${CDEPEND}
 		doc? ( sys-apps/texinfo >=media-gfx/graphviz-2.26.0 )
-		pax_kernel? ( sys-apps/paxctl sys-apps/elfix )"
+		pax_kernel? ( sys-apps/elfix )"
 RDEPEND="${CDEPEND}
 		!prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.6 ) )"
 
@@ -148,7 +148,7 @@ src_compile() {
 
 	strip-unsupported-flags ; filter-flags -fomit-frame-pointer
 
-	if host-is-pax ; then
+	if use pax_kernel ; then
 		# To disable PaX on hardened systems
 		pax-mark -mr "${bindir}"/src/runtime/sbcl
 
