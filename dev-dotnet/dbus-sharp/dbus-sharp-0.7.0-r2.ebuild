@@ -11,7 +11,7 @@ SRC_URI="mirror://github/mono/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="1.0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 
 RDEPEND="dev-lang/mono
