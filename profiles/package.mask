@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (Oct 27 2015)
+# xproto-7.0.28 breaks xorg-server
+>=x11-proto/xproto-7.0.28
+
 # Ian Delaney <idella4@gentoo.org> (27 Oct 2015)
 # fails to build dev-lisp/sbcl-1.2.16 #563812
 # mgorny: dev-lisp/uiop as version-bound revdep
