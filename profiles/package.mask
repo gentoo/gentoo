@@ -32,7 +32,9 @@
 
 # Ian Delaney <idella4@gentoo.org> (27 Oct 2015)
 # fails to build dev-lisp/sbcl-1.2.16 #563812
+# mgorny: dev-lisp/uiop as version-bound revdep
 =dev-lisp/asdf-3.1.6
+=dev-lisp/uiop-3.1.6
 
 # Justin Lecher <jlec@gentoo.org> (23 Oct 2015)
 # Breaking changes #563540
