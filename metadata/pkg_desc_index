@@ -13031,7 +13031,7 @@ media-tv/kodi 14.1 15.1 9999: Kodi is a free and open source media-player and en
 media-tv/linuxtv-dvb-apps 1.1.1.20100223-r1: small utils for DVB to scan, zap, view signal strength, ...
 media-tv/linuxtv-dvb-firmware 2009.07.06-r1 2009.09.19: Firmware files needed for operation of some dvb-devices
 media-tv/me-tv 1.4.0.10: Me TV is a GTK desktop application for watching digital television
-media-tv/mythtv 0.26.0_p20130922 0.27_p20140321 0.27.5_p20150627 0.27.5_p20150904-r1 0.27.5_p20150904-r2: Homebrew PVR project
+media-tv/mythtv 0.26.0_p20130922 0.27_p20140321 0.27.5_p20150627 0.27.5_p20150904-r1 0.27.5_p20150904-r2 0.27.5_p20151025: Homebrew PVR project
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
 media-tv/nvtv 0.4.7-r1: TV-Out for NVidia cards
 media-tv/shoutcast2vdr 0.0.8 0.0.8-r1: VDR script: generate shoutcast playlists
@@ -16806,7 +16806,7 @@ sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographi
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 35 55 60 63: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.107 3.4.108 3.4.109 3.4.110 3.4.9999 3.10.82 3.10.87 3.10.88 3.10.89 3.10.90 3.10.91 3.12.44 3.12.47 3.12.48 3.12.49 3.12.9999 3.14.48 3.14.51 3.14.52 3.14.53 3.14.54 3.14.55 3.18.21 3.18.22 4.0.4 4.0.5 4.0.9 4.1.6 4.1.7 4.1.8 4.1.9-r1 4.1.11 4.2.0 4.2.0-r1 4.2.1 4.2.2 4.2.3 4.2.4: Full sources including the Gentoo patchset for the 4.2 kernel tree
+sys-kernel/gentoo-sources 3.4.107 3.4.108 3.4.109 3.4.110 3.4.9999 3.10.82 3.10.87 3.10.88 3.10.89 3.10.90 3.10.91 3.12.44 3.12.47 3.12.48 3.12.49 3.12.9999 3.14.48 3.14.51 3.14.52 3.14.53 3.14.54 3.14.55 3.18.21 3.18.22 4.0.4 4.0.5 4.0.9 4.1.6 4.1.7 4.1.8 4.1.9-r1 4.1.11 4.2.0 4.2.0-r1 4.2.1 4.2.2 4.2.3 4.2.4 4.2.5: Full sources including the Gentoo patchset for the 4.2 kernel tree
 sys-kernel/git-sources 4.3_rc1 4.3_rc2 4.3_rc3 4.3_rc4 4.3_rc5 4.3_rc6 4.3_rc7: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.1.7-r1 4.2.4-r2: Hardened kernel sources (kernel series 4.2)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
