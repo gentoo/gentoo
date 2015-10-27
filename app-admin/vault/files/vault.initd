@@ -8,7 +8,7 @@ group=${group:-${SVCNAME}}
 pidfile=${pidfile:-"/run/${SVCNAME}/${SVCNAME}.pid"}
 user=${user:-${SVCNAME}}
 
-command="/usr/sbin/${SVCNAME}"
+command="/usr/bin/${SVCNAME}"
 command_args="agent -config-dir=/etc/vault.d ${command_args}"
 command_background="true"
 start_stop_daemon_args="--user ${user} --group ${group} \
