@@ -41,13 +41,21 @@ pkg_setup() {
 	fi
 }
 
+src_prepare() {
+	sed \
+		-e '/__GNUC__/s:== 4:>= 4:g' \
+		-i include/openbabel/shared_ptr.h || die
+	cmake-utils_src_prepare
+}
+
 src_configure() {
 	need-wxwidgets unicode
-	local mycmakeargs=""
-	mycmakeargs="${mycmakeargs}
+	local mycmakeargs=()
+	mycmakeargs+=(
 		-DOPENBABEL_USE_SYSTEM_INCHI=ON
 		$(cmake-utils_use_enable openmp OPENMP)
-		$(cmake-utils_use wxwidgets BUILD_GUI)"
+		$(cmake-utils_use wxwidgets BUILD_GUI)
+	)
 
 	cmake-utils_src_configure
 }
