@@ -1,0 +1,52 @@
+Description: Migrate from ffmpeg to avconv.
+Author: Alessio Treglia <alessio@debian.org>
+---
+ data/library.sh.in  |    8 ++++----
+ src/movie-title.in  |    2 +-
+ src/movie-to-dvd.in |    2 +-
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+--- videotrans.orig/data/library.sh.in
++++ videotrans/data/library.sh.in
+@@ -250,15 +250,15 @@ audio_params()
+ 	then
+ 		if [ "${force_or_auto}" = "ac3" ]
+ 		then
+-			msg="${msg}Converting the audio from WAV to AC3 with ${new_ch} channels using ffmpeg. "
++			msg="${msg}Converting the audio from WAV to AC3 with ${new_ch} channels using avconv. "
+ 			if [ "${audio_bitrate_override}" != "auto" -a "${audio_bitrate_override}" != "" ]
+ 			then
+-				audio_encode="ffmpeg -y -v 0 -f wav -i /dev/stdin -ab ${audio_bitrate_override}k -ar 48000 -ac ${new_ch} `shellescape "${output}.ac3"`"
++				audio_encode="avconv -y -v 0 -f wav -i /dev/stdin -b:a ${audio_bitrate_override}k -ar 48000 -ac ${new_ch} `shellescape "${output}.ac3"`"
+ 			elif [ "${new_ch}" = "2" ]
+ 			then
+-				audio_encode="ffmpeg -y -v 0 -f wav -i /dev/stdin -ab 192k -ar 48000 -ac ${new_ch} `shellescape "${output}.ac3"`"
++				audio_encode="avconv -y -v 0 -f wav -i /dev/stdin -b:a 192k -ar 48000 -ac ${new_ch} `shellescape "${output}.ac3"`"
+ 			else
+-				audio_encode="ffmpeg -y -v 0 -f wav -i /dev/stdin -ab 448k -ar 48000 -ac ${new_ch} `shellescape "${output}.ac3"`"
++				audio_encode="avconv -y -v 0 -f wav -i /dev/stdin -b:a 448k -ar 48000 -ac ${new_ch} `shellescape "${output}.ac3"`"
+ 			fi
+ 			audio_ext="ac3"
+ 		else
+--- videotrans.orig/src/movie-title.in
++++ videotrans/src/movie-title.in
+@@ -961,7 +961,7 @@ else
+ 			\> "${TEMP}.mplayer" 2\>\&1 \< /dev/null \&
+ 		mplayer_pid="$!"
+ 
+-		# Start mp2enc or ffmpeg to encode the audio
++		# Start mp2enc or avconv to encode the audio
+ 
+ 		{
+ 			< "${TEMP}.wav" $audio_filter_cmd | eval ${audio_encode}
+--- videotrans.orig/src/movie-to-dvd.in
++++ videotrans/src/movie-to-dvd.in
+@@ -698,7 +698,7 @@ do
+ 	} > "${TEMP}.video" 2>&1 &
+ 	video_enc_pid="$!"
+ 
+-	# Start mp2enc or ffmpeg to encode the audio
++	# Start mp2enc or avconv to encode the audio
+ 
+ 	{
+ 		< "${TEMP}.wav" $audio_filter_cmd | eval ${audio_encode}
