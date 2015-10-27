@@ -4,16 +4,15 @@
 
 EAPI=5
 
-inherit gnome2-utils eutils perl-module git-r3
+inherit gnome2-utils eutils perl-module vcs-snapshot
 
 DESCRIPTION="A command line utility for viewing youtube-videos in Mplayer"
 HOMEPAGE="https://trizen.googlecode.com"
-SRC_URI=""
-EGIT_REPO_URI="git://github.com/trizen/${PN}.git"
+SRC_URI="https://github.com/trizen/youtube-viewer/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="gtk"
 
 RDEPEND="
