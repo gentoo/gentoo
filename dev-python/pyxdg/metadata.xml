@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>python</herd>
+  <herd>python</herd>
+  <upstream>
+    <doc lang="en">https://pyxdg.readthedocs.org/en/latest/</doc>
+    <bugs-to>https://bugs.freedesktop.org/</bugs-to>
+    <remote-id type="pypi">pyxdg</remote-id>
+    <remote-id type="launchpad">pyxdg</remote-id>
+  </upstream>
 </pkgmetadata>
