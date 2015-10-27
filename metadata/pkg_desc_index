@@ -6776,7 +6776,7 @@ dev-python/beanstalkc 0.4.0 0.4.0-r1: A simple beanstalkd client library
 dev-python/beautifulsoup 3.1.0.1-r2 3.2.1-r1 4.3.2 4.4.0 4.4.1: Provides pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
 dev-python/behave 1.2.4 1.2.5: behaviour-driven development, Python style
 dev-python/bicyclerepair 0.9-r3: Bicycle Repair Man is the Python Refactoring Browser
-dev-python/billiard 3.3.0.18 3.3.0.19 3.3.0.20: Python multiprocessing fork
+dev-python/billiard 3.3.0.18 3.3.0.19 3.3.0.20 3.3.0.21: Python multiprocessing fork
 dev-python/biplist 0.8 0.9: A binary plist parser/generator for Python
 dev-python/bitarray 0.8.1: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.1: A pure Python module for creation and analysis of binary data
@@ -6812,7 +6812,7 @@ dev-python/casuarius 1.1: Cython wrapper for the Cassowary incremental constrain
 dev-python/catkin_pkg 0.2.10 9999: Standalone Python library for the catkin package system
 dev-python/cddb-py 1.4-r1: CDDB Module for Python
 dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation of the ElementTree API
-dev-python/celery 3.1.17 3.1.18 3.1.18-r1: Open source asynchronous task queue/job queue based on distributed message passing
+dev-python/celery 3.1.17 3.1.18 3.1.18-r1 3.1.19: Open source asynchronous task queue/job queue based on distributed message passing
 dev-python/cement 2.0.2 2.6.2: CLI Application Framework for Python
 dev-python/certifi 14.05.14 2015.04.28 2015.9.6.2: Python package for providing Mozilla's CA Bundle
 dev-python/cffi 0.8.6 1.1.2 1.2.1 1.3.0: Foreign Function Interface for Python calling C code
@@ -6970,7 +6970,7 @@ dev-python/enzyme 0.4.1 9999: Python video metadata parser
 dev-python/epsilon 0.6.0-r2 0.7.0: Epsilon is a Python utilities package, most famous for its Time class
 dev-python/epydoc 3.0.1-r2: Tool for generating API documentation for Python modules from docstrings
 dev-python/errorhandler 1.1.1-r2: Logging framework handler that tracks when messages above a certain level have been logged
-dev-python/et_xmlfile 1.0.0: An implementation of lxml.xmlfile for the standard library
+dev-python/et_xmlfile 1.0.0 1.0.1: An implementation of lxml.xmlfile for the standard library
 dev-python/ets 4.4.1: Meta package for the Enthought Tool Suite
 dev-python/etsdevtools 4.0.2-r1: Enthought Tool Suite: Tools to support Python development
 dev-python/etsproxy 0.1.2-r1: Enthought Tool Suite: Proxy modules for backwards compatibility
@@ -7152,7 +7152,7 @@ dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
 dev-python/kivy-garden 0.1.1: Kivys Garden tool to manage flowers
 dev-python/kiwi 1.9.39.2 1.9.40: Kiwi is a pure Python framework and set of enhanced PyGTK widgets
 dev-python/kiwisolver 0.1.3: An efficient C++ implementation of the Cassowary constraint solving algorithm
-dev-python/kombu 2.5.16 3.0.23 3.0.24 3.0.26 3.0.28: AMQP Messaging Framework for Python
+dev-python/kombu 2.5.16 3.0.23 3.0.24 3.0.26 3.0.28 3.0.29: AMQP Messaging Framework for Python
 dev-python/larch 1.20130808 1.20131130: Copy-on-write B-tree data structure
 dev-python/ldap3 0.9.9 0.9.9.1: A strictly RFC 4511 conforming LDAP V3 pure Python client
 dev-python/ldappool 1.0: A connection pool for python-ldap
@@ -7196,7 +7196,7 @@ dev-python/mamba 0.6 0.8.4 0.8.5: The definitive testing tool for Python. Born u
 dev-python/mando 0.3.2: Create Python CLI apps with little to no effort at all!
 dev-python/mantissa 0.7.0-r1 0.8.0 0.8.1: An extensible, multi-protocol, multi-user, interactive application server
 dev-python/manuel 1.7.1 1.8.0: Manuel lets you build tested documentation
-dev-python/markdown 2.5.1 2.6.1 2.6.2: Python implementation of the markdown markup language
+dev-python/markdown 2.5.1 2.6.1 2.6.2 2.6.3: Python implementation of the markdown markup language
 dev-python/markdown2 2.2.1 2.2.3 2.3.0: Python Markdown language reimplementation
 dev-python/markups 0.2.4-r1 0.6.1 0.6.3: A wrapper around various text markups
 dev-python/markupsafe 0.23: Implements a XML/HTML/XHTML Markup safe string for Python
@@ -7674,6 +7674,7 @@ dev-python/pythondialog 3.2.2 3.3.0: A Python module for making simple text/cons
 dev-python/pythong 2.1.5-r2: Nice and powerful spanish development environment for Python
 dev-python/pythonmagick 0.9.11 0.9.12: Python bindings for ImageMagick
 dev-python/pythonutils 0.4.0-r1: Voidspace Python modules
+dev-python/pytidylib 0.2.4: Python wrapper for HTML Tidy (tidylib)
 dev-python/pytools 2014.3.5 9999: A collection of tools missing from the Python standard library
 dev-python/pytz 2015.4 2015.6 2015.7: World timezone definitions for Python
 dev-python/pyudev 0.16.1-r1: Python binding to libudev
