@@ -1,0 +1,39 @@
+https://github.com/brianmay/django-celery/commit/8c4449f2a1b65f16eb405ecb3a2ef98ea7a8bf4f
+diff --git a/djcelery/loaders.py b/djcelery/loaders.py
+index c86455a..61c6d04 100644
+--- a/djcelery/loaders.py
++++ b/djcelery/loaders.py
+# Patch to fix failing tests test_list_registered_tasks and
+# test_apply with python3. Patch sourced from upstream
+# https://github.com/celery/django-celery/issues/342
+@@ -201,7 +201,8 @@ def find_related_module(app, related_name):
+         return
+
+     try:
+-        imp.find_module(related_name, app_path)
++        file, _, _ = imp.find_module(related_name, app_path)
++        file.close()
+     except ImportError:
+         return
+
+diff --git a/djcelery/views.py b/djcelery/views.py
+index 34cb307..4d07e0a 100644
+--- a/djcelery/views.py
++++ b/djcelery/views.py
+@@ -34,7 +34,7 @@ def task_view(task):
+         kwargs = kwdict(request.method == 'POST' and
+                         request.POST or request.GET)
+         # no multivalue
+-        kwargs = dict(((k, v) for k, v in kwargs.iteritems()), **options)
++        kwargs = dict(((k, v) for k, v in kwargs.items()), **options)
+         result = task.apply_async(kwargs=kwargs)
+         return JsonResponse({'ok': 'true', 'task_id': result.task_id})
+
+@@ -78,8 +78,8 @@ def task_status(request, task_id):
+
+ def registered_tasks(request):
+     """View returning all defined tasks as a JSON object."""
+-    return JsonResponse({'regular': tasks.regular().keys(),
+-                         'periodic': tasks.periodic().keys()})
++    return JsonResponse({'regular': list(tasks.regular().keys()),
++                         'periodic': list(tasks.periodic().keys())})
