@@ -13,7 +13,7 @@ SRC_URI="http://central.maven.org/maven2/com/google/code/findbugs/${PN}/${PV}/${
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 RDEPEND=">=virtual/jre-1.6"

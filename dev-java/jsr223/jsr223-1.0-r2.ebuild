@@ -13,7 +13,7 @@ SRC_URI="mirror://gentoo/${PN}-openjdk-6-src-b19.tar.bz2"
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 RDEPEND=">=virtual/jre-1.6"
