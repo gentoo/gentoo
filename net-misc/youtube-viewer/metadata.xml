@@ -4,6 +4,12 @@
 	<maintainer>
 		<email>hasufell@gentoo.org</email>
 		<name>Julian Ospald</name>
+		<description>Primary maintainer, assign him on bugs.</description>
+	</maintainer>
+	<maintainer>
+		<email>zoltan@sinustrom.info</email>
+		<name>Zoltan Puskas</name>
+		<description>Proxied maintainer, CC him on bugs.</description>
 	</maintainer>
 	<upstream>
 		<maintainer status="active">
