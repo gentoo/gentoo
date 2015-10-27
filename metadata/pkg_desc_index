@@ -1103,7 +1103,7 @@ app-emacs/csharp-mode 0.7.0-r1: A derived Emacs mode implementing most of the C#
 app-emacs/css-mode 0.11-r1: A major mode for editing Cascading Style Sheets (CSS)
 app-emacs/csv-mode 1.50: A major mode for editing comma-separated value files
 app-emacs/d-mode 2.0.6: Emacs major mode for editing D code
-app-emacs/dash 2.12.0: A modern list library for Emacs
+app-emacs/dash 2.12.0 2.12.1: A modern list library for Emacs
 app-emacs/ddskk 14.3 14.4 15.1: One Japanese input methods on Emacs
 app-emacs/develock 0.45: An Emacs minor mode for highlighting broken formatting rules
 app-emacs/df-mode 20050509: Minor mode to show space left on devices in the mode line
@@ -1166,7 +1166,7 @@ app-emacs/limit 1.14.10_pre200811252332: Library about Internet Message, for IT 
 app-emacs/lookup 1.4.1: An interface to search CD-ROM books and network dictionaries
 app-emacs/lua-mode 20130419: An Emacs major mode for editing Lua scripts
 app-emacs/lyskom-elisp-client 0.48_p20131231: Elisp client for the LysKOM conference system
-app-emacs/magit 1.2.2 2.2.2-r1: An Emacs mode for GIT
+app-emacs/magit 1.2.2 2.2.2-r2: A Git porcelain inside Emacs
 app-emacs/mailcrypt 3.5.9: Provides a simple interface to public key cryptography with OpenPGP
 app-emacs/markdown-mode 1.8.1-r1 2.0: Major mode for editing Markdown-formatted text files
 app-emacs/matlab 3.3.2_pre20130829: Major modes for MATLAB .m and .tlc files
