@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=>=dev-lisp/asdf-3.1:= doc? ( sys-apps/texinfo >=media-gfx/graphviz-2.26.0 ) pax_kernel? ( sys-apps/paxctl sys-apps/elfix )
+DEPEND=>=dev-lisp/asdf-3.1:= doc? ( sys-apps/texinfo >=media-gfx/graphviz-2.26.0 ) pax_kernel? ( sys-apps/elfix )
 DESCRIPTION=Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
 EAPI=5
 HOMEPAGE=http://sbcl.sourceforge.net/
@@ -10,4 +10,4 @@ RDEPEND=>=dev-lisp/asdf-3.1:= !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.6 ) )
 SLOT=0/1.2.16
 SRC_URI=mirror://sourceforge/sbcl/sbcl-1.2.16-source.tar.bz2 x86? ( mirror://sourceforge/sbcl/sbcl-1.2.7-x86-linux-binary.tar.bz2 ) amd64? ( mirror://sourceforge/sbcl/sbcl-1.2.16-x86-64-linux-binary.tar.bz2 ) ppc? ( mirror://sourceforge/sbcl/sbcl-1.2.7-powerpc-linux-binary.tar.bz2 ) sparc? ( mirror://sourceforge/sbcl/sbcl-1.0.28-sparc-linux-binary.tar.bz2 ) alpha? ( mirror://sourceforge/sbcl/sbcl-1.0.28-alpha-linux-binary.tar.bz2 ) arm? ( mirror://sourceforge/sbcl/sbcl-1.2.7-armhf-linux-binary.tar.bz2 ) ppc-macos? ( mirror://sourceforge/sbcl/sbcl-1.0.47-powerpc-darwin-binary.tar.bz2 ) x86-macos? ( mirror://sourceforge/sbcl/sbcl-1.1.6-x86-darwin-binary.tar.bz2 ) x64-macos? ( mirror://sourceforge/sbcl/sbcl-1.2.11-x86-64-darwin-binary.tar.bz2 ) sparc-solaris? ( mirror://sourceforge/sbcl/sbcl-1.0.23-sparc-solaris-binary.tar.bz2 ) x86-solaris? ( mirror://sourceforge/sbcl/sbcl-1.2.7-x86-solaris-binary.tar.bz2 ) x64-solaris? ( mirror://sourceforge/sbcl/sbcl-1.2.7-x86-64-solaris-binary.tar.bz2 )
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	9dd3f9de6dccb2463faf55e568439d1c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=bc23266c2bb2595af35372be4367c60a
+_md5_=c392d1a2374925cf90236f475dcc4077
