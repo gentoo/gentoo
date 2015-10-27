@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2 SIFT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 
 LANGS=" ca@valencia ca_ES cs_CZ da de en_GB es eu fi fr hu it ja nl pl pt_BR ro ru sk sv zh_CN zh_TW"
 IUSE="debug lapack python sift $(echo ${LANGS//\ /\ linguas_})"
