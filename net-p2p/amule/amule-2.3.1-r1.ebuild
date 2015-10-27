@@ -19,6 +19,7 @@ KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="daemon debug geoip nls remote stats unicode upnp +X"
 
 DEPEND=">=dev-libs/crypto++-5
+	sys-libs/binutils-libs:0=
 	>=sys-libs/zlib-1.2.1
 	>=x11-libs/wxGTK-2.8.12:2.8[X?]
 	stats? ( >=media-libs/gd-2.0.26:=[jpeg] )
