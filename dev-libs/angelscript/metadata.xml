@@ -4,5 +4,11 @@
 	<maintainer>
 		<email>maintainer-needed@gentoo.org</email>
 	</maintainer>
+	<slots>
+		<subslots>
+			Reflects ABI compatibility of libangelscript.so.
+			Since there is practically no compatibility, this is $PV.
+		</subslots>
+	</slots>
 </pkgmetadata>
 
