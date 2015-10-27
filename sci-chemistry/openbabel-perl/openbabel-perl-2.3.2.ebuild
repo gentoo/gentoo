@@ -25,6 +25,9 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/openbabel-${PV}"
 
 src_prepare() {
+	sed \
+		-e '/__GNUC__/s:== 4:>= 4:g' \
+		-i include/openbabel/shared_ptr.h || die
 	epatch \
 		"${FILESDIR}"/${P}-trunk_cmake.patch \
 		"${FILESDIR}"/${P}-bindings_only.patch
@@ -32,14 +35,15 @@ src_prepare() {
 }
 
 src_configure() {
-	local mycmakeargs="${mycmakeargs}
+	local mycmakeargs=(
 		-DCMAKE_INSTALL_RPATH=
 		-DBINDINGS_ONLY=ON
 		-DBABEL_SYSTEM_LIBRARY="${EPREFIX}/usr/$(get_libdir)/libopenbabel.so"
 		-DOB_MODULE_PATH="${EPREFIX}/usr/$(get_libdir)/openbabel/${PV}"
 		-DLIB_INSTALL_DIR="${D}/${VENDOR_ARCH}"
 		-DPERL_BINDINGS=ON
-		-DRUN_SWIG=ON"
+		-DRUN_SWIG=ON
+	)
 
 	cmake-utils_src_configure
 }
