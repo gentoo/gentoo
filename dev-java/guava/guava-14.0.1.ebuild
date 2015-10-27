@@ -13,15 +13,15 @@ SRC_URI="http://search.maven.org/remotecontent?filepath=com/google/${PN}/${PN}/$
 
 LICENSE="Apache-2.0"
 SLOT="14"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 
-COMMON_DEP="
+CDEPEND="
 	dev-java/javax-inject:0
 	dev-java/jsr305:0
 	java-virtuals/jdk-with-com-sun:0"
-RDEPEND="${COMMON_DEP}
+RDEPEND="${CDEPEND}
 	|| ( virtual/jre:1.7 virtual/jre:1.6 )"
-DEPEND="${COMMON_DEP}
+DEPEND="${CDEPEND}
 	app-arch/unzip
 	virtual/jdk:1.7" # https://code.google.com/p/guava-libraries/issues/detail?id=635
 
