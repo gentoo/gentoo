@@ -2794,7 +2794,7 @@ dev-cpp/cairomm 1.10.0 1.10.0-r1: C++ bindings for the Cairo vector graphics lib
 dev-cpp/clucene 2.3.3.4-r5: High-performance, full-featured text search engine based off of lucene in C++
 dev-cpp/commoncpp2 1.8.1-r1: C++ framework offering portable support for threading, sockets, file access, daemons, persistence, serial I/O, XML parsing, and system services
 dev-cpp/ctemplate 2.2 2.2_p129 2.3: A simple but powerful template language for C++
-dev-cpp/eigen 2.0.17 3.1.3 3.2.5: C++ template library for linear algebra: vectors, matrices, and related algorithms
+dev-cpp/eigen 2.0.17 3.1.3 3.2.5 3.2.6: C++ template library for linear algebra: vectors, matrices, and related algorithms
 dev-cpp/gccxml 0.9.0_pre20120309 0.9.0_pre20131217: XML output extension to GCC
 dev-cpp/gconfmm 2.28.3: C++ bindings for GConf
 dev-cpp/gflags 2.1.1-r1 2.1.2 9999: Google's C++ argument parsing library
@@ -10916,7 +10916,7 @@ kde-apps/ksnakeduel 4.14.3: KDE Tron game
 kde-apps/ksnapshot 4.14.3: KDE Screenshot Utility
 kde-apps/kspaceduel 4.14.3: KDE Space Game
 kde-apps/ksquares 4.14.3: KSquares is an implementation of the game squares for KDE4
-kde-apps/kstars 4.14.3 4.14.3-r1: KDE Desktop Planetarium
+kde-apps/kstars 4.14.3-r1: KDE Desktop Planetarium
 kde-apps/kstart 4.14.3 15.08.1 15.08.2: KDE: Utility to launch applications with special window properties
 kde-apps/ksudoku 4.14.3: KDE Sudoku
 kde-apps/ksystemlog 4.14.3 15.08.1 15.08.2: KDE system log viewer
