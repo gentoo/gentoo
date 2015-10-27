@@ -54,6 +54,8 @@ DEPEND="${RDEPEND}
 
 [[ ${PV} == 9999 ]] || S=${WORKDIR}/${MY_P}
 
+PATCHES=( "${FILESDIR}/${P}-gstreamer-1.6.0.patch" )
+
 pkg_setup() {
 	MULTIBUILD_VARIANTS=( $(usev qt4) $(usev qt5) )
 }
