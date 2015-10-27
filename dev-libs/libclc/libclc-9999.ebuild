@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 EGIT_REPO_URI="http://llvm.org/git/${PN}.git"
 
 if [[ ${PV} = 9999* ]]; then
-	GIT_ECLASS="git-2"
+	GIT_ECLASS="git-r3"
 	EXPERIMENTAL="true"
 fi
 
@@ -29,24 +29,18 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=sys-devel/clang-3.4
-	>=sys-devel/llvm-3.4
-	<sys-devel/clang-3.6
-	<sys-devel/llvm-3.6"
+	>=sys-devel/clang-3.6
+	>=sys-devel/llvm-3.6"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}"
 
 src_unpack() {
 	if [[ $PV = 9999* ]]; then
-		git-2_src_unpack
+		git-r3_src_unpack
 	else
 		default
 		mv ${PN}-*/ ${P} || die
 	fi
-}
-
-src_prepare() {
-	epatch "${FILESDIR}/libclc-llvm-3.5-compat.patch"
 }
 
 src_configure() {

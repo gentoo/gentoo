@@ -21,11 +21,11 @@ if [[ $PV = 9999* ]]; then
 	SRC_URI="${SRC_PATCHES}"
 else
 	SRC_URI="mirror://gentoo/${P}.tar.xz ${SRC_PATCHES}"
+	KEYWORDS="~amd64 ~ppc ~x86"
 fi
 
 LICENSE="|| ( MIT BSD )"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 RDEPEND="
