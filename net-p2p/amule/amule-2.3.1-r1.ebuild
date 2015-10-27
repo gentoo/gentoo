@@ -79,6 +79,7 @@ src_configure() {
 	fi
 
 	econf \
+		--with-denoise-level=0 \
 		--with-wx-config="${WX_CONFIG}" \
 		--enable-amulecmd \
 		$(use_enable debug) \
