@@ -7681,6 +7681,7 @@ dev-python/pyudev 0.16.1-r1: Python binding to libudev
 dev-python/pyusb 0.4.3 1.0.0_beta2: USB support for Python
 dev-python/pyutil 2.0.0: A collection of utilities for Python programmers
 dev-python/pyutmp 0.2.1: Python UTMP wrapper for Un*x systems
+dev-python/pyuv 1.2.0: Python interface for libuv
 dev-python/pyvorbis 1.4-r4: Python bindings for the ogg.vorbis library
 dev-python/pyvtk 0.4.74: Tools for manipulating VTK files in Python
 dev-python/pywavelets 0.2.2-r1 0.3.0: Python module for discrete, stationary, and packet wavelet transforms
