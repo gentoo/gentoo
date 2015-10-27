@@ -1,9 +1,0 @@
-# List the Shorewall products that Shorewall-init is to
-# initialize (space-separated list).
-#
-# Sample: PRODUCTS="shorewall shorewall6-lite"
-#
-PRODUCTS=""
-
-# Startup options - set verbosity to 0 (minimal reporting)
-OPTIONS="-V0"
