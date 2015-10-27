@@ -82,7 +82,7 @@ app-admin/denyhosts 2.9 3.0: DenyHosts is a utility to help sys admins thwart ss
 app-admin/diamond 4.0-r1 9999: Python daemon that collects and publishes system metrics
 app-admin/dio 1.5.2: dio - Device I/O monitoring tool
 app-admin/diradm 2.9.7.1: diradm is a nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP
-app-admin/drush 5.8 6.5.0: Command line shell and scripting interface for Drupal
+app-admin/drush 6.5.0 6.6.0: Command line shell and scripting interface for Drupal
 app-admin/durep 0.9-r4: A perl script designed for monitoring disk usage in a more visual way than du
 app-admin/ec2-ami-tools 1.5.6: These command-line tools serve as the client interface to the Amazon EC2 web service
 app-admin/ec2-api-tools 1.6.7.2-r5: These command-line tools serve as the client interface to the Amazon EC2 web service
