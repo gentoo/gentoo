@@ -31,6 +31,7 @@ RDEPEND="${COMMON_DEP}
 	!<dev-java/tomcat-native-1.1.24
 	>=virtual/jre-1.7"
 DEPEND="${COMMON_DEP}
+	app-admin/pwgen
 	>=virtual/jdk-1.7
 	test? (
 		>=dev-java/ant-junit-1.9:0
@@ -110,7 +111,7 @@ src_install() {
 	fperms 0750 "${dest}"/logs
 
 	# replace the default pw with a random one, see #92281
-	local randpw=$(echo ${RANDOM}|md5sum|cut -c 1-15)
+	local randpw="$(pwgen -s -B 15 1)"
 	sed -i -e "s|SHUTDOWN|${randpw}|" output/build/conf/server.xml || die
 
 	# prepend gentoo.classpath to common.loader, see #453212
