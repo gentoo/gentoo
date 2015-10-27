@@ -1833,6 +1833,7 @@ dev-lang/mono:pax_kernel - Enable if the user plans to run the package under a p
 dev-lang/mono:xen - Make mono generate code that is considerably faster on xen VMs but slightly slower on for normal systems.
 dev-lang/nqp:moar - Build the MoarVM backend (experimental/broken)
 dev-lang/nqp:parrot - Build the parrot backend (default)
+dev-lang/orc:pax_kernel - Apply patch needed for pax enabled kernels.
 dev-lang/path64:assembler - Build PathAS
 dev-lang/path64:debugger - Build PathDB
 dev-lang/path64:native - Use EKOPath/Path64 for bootstraping
