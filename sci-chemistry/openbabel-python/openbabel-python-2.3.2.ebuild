@@ -45,11 +45,14 @@ src_prepare() {
 		-outdir scripts/python \
 		scripts/openbabel-python.i \
 		|| die "Regeneration of openbabel-python.cpp failed"
+	sed \
+		-e '/__GNUC__/s:== 4:>= 4:g' \
+		-i include/openbabel/shared_ptr.h || die
 }
 
 src_configure() {
 	my_impl_src_configure() {
-		local mycmakeargs="${mycmakeargs}
+		local mycmakeargs=(
 			-DCMAKE_INSTALL_RPATH=
 			-DBINDINGS_ONLY=ON
 			-DBABEL_SYSTEM_LIBRARY="${EPREFIX}/usr/$(get_libdir)/libopenbabel.so"
@@ -60,7 +63,8 @@ src_configure() {
 			-DPYTHON_INCLUDE_DIR="${EPREFIX}/usr/include/${EPYTHON}"
 			-DPYTHON_INCLUDE_PATH="${EPREFIX}/usr/include/${EPYTHON}"
 			-DPYTHON_LIBRARY="${EPREFIX}/usr/$(get_libdir)/lib${EPYTHON}.so"
-			-DENABLE_TESTS=ON"
+			-DENABLE_TESTS=ON
+		)
 
 		cmake-utils_src_configure
 	}
