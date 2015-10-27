@@ -9457,7 +9457,7 @@ dev-util/quilt 0.50 0.63 9999: quilt patch manager
 dev-util/radare2 0.9.8 0.9.9 9999: Advanced command line hexadecimal editor and more
 dev-util/ragel 6.7-r1 6.8 6.9: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.1-r2 2.3: RATS - Rough Auditing Tool for Security
-dev-util/rbtools 0.7.4: Command line tools for use with Review Board
+dev-util/rbtools 0.7.4 0.7.5: Command line tools for use with Review Board
 dev-util/re2c 0.13.5-r1 0.13.6 0.13.7.5 0.14.2 0.14.3: tool for generating C-based recognizers from regular expressions
 dev-util/rebar 2.3.1 2.4.0 2.5.0 2.5.1: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/rec 1.6: Reverse Engineering Compiler
@@ -17800,7 +17800,7 @@ x11-misc/Xorgautoconfig 0.2.4-r1: Xorgautconfig generates xorg.conf files for PP
 x11-misc/accessx 0951-r1: Interface to the XKEYBOARD extension in X11
 x11-misc/afbinit 1.0.1-r7: loads the microcode for Elite3D framebuffers to use X
 x11-misc/alacarte 3.10.0 3.11.91: Simple GNOME menu editor
-x11-misc/albert 0.7.7: Desktop agnostic launcher
+x11-misc/albert 0.7.7 0.8.0: Desktop agnostic launcher
 x11-misc/alltray 0.7.5.1: An application which allows any application to be docked into the system notification area
 x11-misc/alock 94: locks the local X display until a password is entered
 x11-misc/andromeda 0.3: Qt4-based filemanager
