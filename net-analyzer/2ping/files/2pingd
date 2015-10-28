@@ -4,7 +4,7 @@
 # $Id$
 
 DAEMON="/usr/bin/2ping"
-PIDFILE="/var/run/2ping"
+PIDFILE="/run/2ping.pid"
 
 depend() {
 	need net
