@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="ChangeLog README TODO"
@@ -13,7 +13,7 @@ RUBY_FAKEGEM_TASK_TEST=""
 inherit multilib ruby-fakegem
 
 DESCRIPTION="Ruby binding to libmagic"
-HOMEPAGE="http://ruby-filemagic.rubyforge.org/"
+HOMEPAGE="https://github.com/blackwinter/ruby-filemagic"
 
 LICENSE="Ruby"
 SLOT="0"

@@ -3,6 +3,6 @@
 <pkgmetadata>
   <herd>ruby</herd>
   <upstream>
-    <remote-id type="github">progrium/ruby-jwt</remote-id>
+    <remote-id type="github">jwt/ruby-jwt</remote-id>
   </upstream>
 </pkgmetadata>
