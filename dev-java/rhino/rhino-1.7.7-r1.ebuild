@@ -24,7 +24,7 @@ HOMEPAGE="http://www.mozilla.org/rhino/"
 
 LICENSE="MPL-1.1 GPL-2"
 SLOT="1.6"
-KEYWORDS="amd64 ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ppc ppc64 x86"
 IUSE=""
 
 # ../rhino-Rhino1_7_7_RELEASE

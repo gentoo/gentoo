@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# James Le Cuirot <chewi@gentoo.org> (19 Oct 2015)
+# Issue with keywording sub-dependency jflex but this should be
+# resolved very shortly. Masking this now to unbreak the tree.
+dev-java/rhino test
+
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (15 Oct 2015)
 # Repoman reports dependency issues on arm.
 www-client/chromium system-ffmpeg
