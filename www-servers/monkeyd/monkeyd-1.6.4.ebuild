@@ -84,6 +84,7 @@ src_configure() {
 	use cgi && enable_plugins+="cgi," || disable_plugins+="cgi,"
 	use fastcgi && enable_plugins+="fastcgi," || disable_plugins+="fastcgi,"
 	# For the rest, we scan the monkeyd_plugins_* and parse out the plugin name.
+	local p
 	for p in ${PLUGINS}; do
 		pp=${p/+/}
 		cp=${pp/monkeyd_plugins_/}
@@ -129,8 +130,7 @@ src_install() {
 	# Move htdocs to docdir, bug #429632
 	docompress -x /usr/share/doc/"${PF}"/htdocs.dist
 	mv "${D}"${WEBROOT}/htdocs \
-		"${D}"/usr/share/doc/"${PF}"/htdocs.dist
-	mkdir "${D}"${WEBROOT}/htdocs
+		"${D}"/usr/share/doc/"${PF}"/htdocs.dist || die
 
 	keepdir \
 		/var/log/monkeyd \
