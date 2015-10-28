@@ -4,10 +4,10 @@ DESCRIPTION=a free Java code coverage tool
 EAPI=2
 HOMEPAGE=http://emma.sourceforge.net/
 IUSE=+launcher elibc_FreeBSD source elibc_FreeBSD
-KEYWORDS=amd64 ppc ppc64 x86 ~x86-fbsd
+KEYWORDS=amd64 ~arm ppc ppc64 x86 ~x86-fbsd
 LICENSE=CPL-1.0
 RDEPEND=>=virtual/jre-1.4 >=dev-java/ant-core-1.7.0 launcher? ( !sci-biology/emboss ) >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 SLOT=0
 SRC_URI=mirror://sourceforge/emma/emma-2.0.5312-src.zip
 _eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	43da5163ba106e87d22d2e7d6d67537f	java-ant-2	7c5d0c274d390745f5033754a319f515	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	a96633177f44ee992b3fce360d1c4f16	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=082558d859a15eb81133b14f5742a1f0
+_md5_=cd42b7a796b37eb6c20a4a31fba1f58b
