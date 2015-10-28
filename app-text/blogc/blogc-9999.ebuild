@@ -10,6 +10,8 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3 autotools
 fi
 
+inherit eutils
+
 DESCRIPTION="A blog compiler"
 HOMEPAGE="http://blogc.org/"
 
@@ -42,6 +44,7 @@ DEPEND="${DEPEND}
 
 src_prepare() {
 	[[ ${PV} = *9999* ]] && eautoreconf
+	epatch_user
 	default
 }
 
