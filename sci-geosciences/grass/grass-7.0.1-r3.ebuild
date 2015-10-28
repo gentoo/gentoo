@@ -21,18 +21,18 @@ SRC_URI="http://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="7"
 KEYWORDS="~amd64 ~x86"
-IUSE="X blas cxx fftw gdal geos lapack liblas mysql netcdf nls odbc opencl opengl openmp png postgres readline sqlite threads tiff truetype"
+IUSE="X blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl opengl openmp png postgres readline sqlite threads tiff truetype"
 
 RDEPEND="${PYTHON_DEPS}
 	>=app-admin/eselect-1.2
 	media-libs/libprojectm
 	sci-libs/proj
 	sci-libs/xdrfile
+	sci-libs/gdal
 	sys-libs/gdbm
 	sys-libs/ncurses:0=
 	sys-libs/zlib
 	fftw? ( sci-libs/fftw:3.0 )
-	gdal? ( sci-libs/gdal )
 	geos? ( sci-libs/geos )
 	blas? ( virtual/blas
 		sci-libs/cblas-reference )
@@ -80,6 +80,12 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	opengl? ( X )"
 
+PATCHES=(
+	"${FILESDIR}/${P}"-include-errno.patch
+	"${FILESDIR}/${P}"-declare-inespg.patch
+	"${FILESDIR}/${PV}"-sec-format.patch
+)
+
 pkg_setup() {
 	if use lapack; then
 		local mylapack
@@ -109,20 +115,15 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Fix undefined reference to errno in lib/raster/open.c
-	# see http://trac.osgeo.org/grass/changeset/66398
-	epatch "${FILESDIR}/${P}"-include-errno.patch
-
-	# Fix undeclared variable if OSG is disabled
-	epatch "${FILESDIR}/${P}"-declare-inespg.patch
-
-	# Bug #563490
-	epatch "${FILESDIR}/${PV}"-sec-format.patch
-
 	# Fix unversioned python calls
 	local pyver=${EPYTHON/python/}
 	sed -e "s:GRASS_PYTHON=.*:&${pyver}:" -i "${S}/lib/init/grass.sh" || die
 	sed -e "s:= python:&${pyver}:" -i "${S}/include/Make/Platform.make.in" || die
+
+	# fix header being unconditionally included
+	# see upstream https://trac.osgeo.org/grass/ticket/2779
+	sed -e 's:\(#include <ogr_api.h>\):#ifdef HAVE_OGR\n\1\n#endif:' \
+		-i "${S}/vector/v.external/main.c" || die "failed to sed main.c"
 
 	epatch_user
 	eautoconf
@@ -136,6 +137,8 @@ src_configure() {
 		WX_GTK_VER=2.8
 		need-wxwidgets unicode
 	fi
+
+	use opencl && addwrite "${ROOT}dev/dri/renderD128"
 
 	econf \
 		--enable-shared \
@@ -163,7 +166,7 @@ src_configure() {
 		$(use_with threads pthread) \
 		$(use_with openmp) \
 		$(use_with opencl) \
-		$(use_with gdal gdal "${ROOT}usr/bin/gdal-config") \
+		--with-gdal="${ROOT}usr/bin/gdal-config" \
 		$(use_with liblas liblas "${ROOT}usr/bin/liblas-config") \
 		$(use_with X wxwidgets "${WX_CONFIG}") \
 		$(use_with netcdf netcdf "${ROOT}usr/bin/nc-config") \
