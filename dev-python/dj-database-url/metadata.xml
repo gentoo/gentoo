@@ -3,7 +3,7 @@
 <pkgmetadata>
   <herd>python</herd>
   <upstream>
-    <remote-id type="bitbucket">openpyxl/et_xmlfile</remote-id>
-    <remote-id type="pypi">et_xmlfile</remote-id>
+    <remote-id type="github">kennethreitz/dj-database-url</remote-id>
+    <remote-id type="pypi">dj-database-url</remote-id>
   </upstream>
 </pkgmetadata>

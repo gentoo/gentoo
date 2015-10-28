@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>python</herd>
@@ -24,4 +24,7 @@
 			Faster hashing for token-aware routing
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">datastax/python-driver</remote-id>
+	</upstream>
 </pkgmetadata>

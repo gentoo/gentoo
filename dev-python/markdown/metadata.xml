@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>python</herd>
@@ -7,5 +7,6 @@
   </use>
   <upstream>
     <remote-id type="pypi">Markdown</remote-id>
+    <remote-id type="github">waylan/Python-Markdown</remote-id>
   </upstream>
 </pkgmetadata>
