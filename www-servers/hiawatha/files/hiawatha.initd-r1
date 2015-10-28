@@ -1,0 +1,26 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon \
+		--start \
+		--exec "/usr/sbin/hiawatha" \
+		--pidfile "@HIAWATHA_PID_DIR@/hiawatha.pid"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon \
+		--stop \
+		--exec "/usr/sbin/hiawatha" \
+		--pidfile "@HIAWATHA_PID_DIR@/hiawatha.pid"
+	eend $?
+}

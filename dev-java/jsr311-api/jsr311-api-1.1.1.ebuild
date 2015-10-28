@@ -13,7 +13,7 @@ SRC_URI="http://repo1.maven.org/maven2/javax/ws/rs/${PN}/${PV}/${P}-sources.jar"
 
 LICENSE="CDDL"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 RDEPEND=">=virtual/jre-1.6"
