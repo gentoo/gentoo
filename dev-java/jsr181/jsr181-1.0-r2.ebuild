@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+JAVA_PKG_IUSE="source doc"
 
 inherit java-pkg-2 java-pkg-simple
 
@@ -16,7 +17,7 @@ SRC_URI="http://central.maven.org/maven2/javax/jws/${MY_PN}/${MY_PV}/${MY_P}-sou
 
 LICENSE="CDDL"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 RDEPEND=">=virtual/jre-1.6"
