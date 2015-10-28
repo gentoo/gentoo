@@ -12,7 +12,7 @@ HOMEPAGE="http://contrapunctus.net/league/haques/lzmajio/"
 SRC_URI="http://comsci.liu.edu/~league/dist/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE=""
 
