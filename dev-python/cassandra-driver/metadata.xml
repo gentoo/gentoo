@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>python</herd>
+	<maintainer>
+		<email>stasibear@gentoo.org</email>
+		<name>Erik Mackdanz</name>
+	</maintainer>
+	<longdescription>
+		A modern, feature-rich and highly-tunable Python
+		client library for Apache Cassandra (1.2+) and
+		DataStax Enterprise (3.1+) using exclusively
+		Cassandra's binary protocol and Cassandra Query
+		Language v3.
+	</longdescription>
+	<use>
+		<flag name="cython">
+			Optimize core modules and build custom extensions
+		</flag>
+		<flag name="libev">
+			libev event loop integration
+		</flag>
+		<flag name="murmur">
+			Faster hashing for token-aware routing
+		</flag>
+	</use>
+</pkgmetadata>
