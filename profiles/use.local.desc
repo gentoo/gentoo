@@ -2295,6 +2295,9 @@ dev-python/PyQtMobility:versit - Build bindings for the QtVersit module
 dev-python/amqplib:extras - Install extra tools to generate initial Python mod from an AMQP XML file
 dev-python/anyvc:bazaar - Add support for Bazaar
 dev-python/anyvc:mercurial - Add support for Mercurial
+dev-python/cassandra-driver:cython - Optimize core modules and build custom extensions
+dev-python/cassandra-driver:libev - libev event loop integration
+dev-python/cassandra-driver:murmur - Faster hashing for token-aware routing
 dev-python/celery:redis - Enables redis support
 dev-python/celery:sqs - Enables Amazon SQS transport module for celery
 dev-python/celery:yaml - Enable support of yaml as a configuration file format
