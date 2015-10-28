@@ -47,64 +47,36 @@ lmp_emake() {
 
 	# The lammps makefile uses CC to indicate the C++ compiler.
 	emake \
-		ARCHIVE=$(tc-getAR) \
-		CC=$(usex mpi "mpic++" "$(tc-getCXX)") \
-		F90=$(usex mpi "mpif90" "$(tc-getFC)") \
-		LINK=$(usex mpi "mpic++" "$(tc-getCXX)") \
+		ARCHIVE="$(tc-getAR)" \
+		CC="$(usex mpi "mpic++" "$(tc-getCXX)")" \
+		F90="$(usex mpi "mpif90" "$(tc-getFC)")" \
+		LINK="$(usex mpi "mpic++" "$(tc-getCXX)")" \
 		CCFLAGS="${CXXFLAGS}" \
 		F90FLAGS="${FCFLAGS}" \
 		LINKFLAGS="${LDFLAGS}" \
 		LMP_INC="${LAMMPS_INCLUDEFLAGS}" \
-		MPI_INC=$(usex mpi "" "-I../STUBS") \
-		MPI_PATH=$(usex mpi "" "-L../STUBS") \
-		MPI_LIB=$(usex mpi "" "-lmpi_stubs") \
+		MPI_INC="$(usex mpi "" "-I../STUBS")" \
+		MPI_PATH="$(usex mpi "" "-L../STUBS")" \
+		MPI_LIB="$(usex mpi "" "-lmpi_stubs")" \
 		user-atc_SYSLIB="$(usex mpi "$($(tc-getPKG_CONFIG) --libs blas) $($(tc-getPKG_CONFIG) --libs lapack)" '')"\
 		"$@"
 }
 
 lmp_activate_packages() {
 	# Build packages
-	lmp_emake -C src yes-asphere
-	lmp_emake -C src yes-body
-	lmp_emake -C src yes-class2
-	lmp_emake -C src yes-colloid
-	lmp_emake -C src yes-coreshell
-	lmp_emake -C src yes-dipole
-	lmp_emake -C src yes-fld
-	#lmp_emake -C src yes-gpu
-	lmp_emake -C src yes-granular
-	# Need OpenKIM external dependency.
-	#lmp_emake -C src yes-kim
-	# Need Kokkos external dependency.
-	#lmp_emake -C src yes-kokkos
-	lmp_emake -C src yes-kspace
-	lmp_emake -C src yes-manybody
-	lmp_emake -C src yes-mc
-	lmp_emake -C src yes-meam
-	lmp_emake -C src yes-misc
-	lmp_emake -C src yes-molecule
-	#lmp_emake -C src yes-mpiio
-	lmp_emake -C src yes-opt
-	lmp_emake -C src yes-peri
-	lmp_emake -C src yes-poems
-	lmp_emake -C src yes-qeq
-	lmp_emake -C src yes-reax
-	lmp_emake -C src yes-replica
-	lmp_emake -C src yes-rigid
-	lmp_emake -C src yes-shock
-	lmp_emake -C src yes-snap
-	lmp_emake -C src yes-srd
-	lmp_emake -C src yes-voronoi
-	lmp_emake -C src yes-xtc
+	local packages=( yes-asphere yes-body yes-class2 yes-colloid \
+		yes-coreshell yes-dipole yes-fld yes-granular yes-kspace \
+		yes-manybody yes-mc yes-meam yes-misc \
+		$(usex mpi "yes-user-atc" "") \
+		yes-molecule yes-opt yes-peri yes-poems yes-qeq yes-reax \
+		yes-replica yes-rigid yes-shock yes-snap yes-srd \
+		yes-user-eff yes-user-fep \
+		$(usex mpi "yes-user-lb" "") \
+		yes-user-phonon	yes-user-sph yes-voronoi yes-xtc )
 
-	if use mpi; then
-		lmp_emake -C src yes-user-atc
-	fi
-	lmp_emake -C src yes-user-eff
-	lmp_emake -C src yes-user-fep
-	use mpi && lmp_emake -C src yes-user-lb
-	lmp_emake -C src yes-user-phonon
-	lmp_emake -C src yes-user-sph
+	for p in ${packages[@]}; do
+		lmp_emake -C src ${p}
+	done
 }
 
 lmp_build_packages() {
