@@ -1,0 +1,65 @@
+--- src/asm.c.old	2015-10-28 13:23:53.465014342 +0100
++++ src/asm.c	2015-10-28 13:23:10.502813377 +0100
+@@ -652,7 +652,7 @@
+   macputs(str);
+ #else
+   if (!inCdb)
+-    fprintf(stderr, str);
++    fprintf(stderr, "%s", str);
+ #if defined DOSALLGRAPHX
+   else {
+     if (displayMode == TEXT)
+@@ -833,7 +833,7 @@
+ #ifdef __MAC__
+     textout(notEnoughMemErr);
+ #else
+-    fprintf(stderr, notEnoughMemErr);
++    fprintf(stderr, "%s", notEnoughMemErr);
+ #endif
+     Exit(MEMERR);
+     break;
+@@ -916,7 +916,7 @@
+   }
+ 
+   if (ierr >= ERRMAX) {
+-    sprintf(outs, tooManyMsgErr);
++    sprintf(outs, "%s", tooManyMsgErr);
+ #ifndef VMS
+     textout(outs);
+ #else
+--- src/cdb.c.old	2015-10-28 13:24:04.669805966 +0100
++++ src/cdb.c	2015-10-28 13:23:10.502813377 +0100
+@@ -2760,7 +2760,7 @@
+       fprintf(outp, nameByAuthorScores, warrior[idxV[i]].name, warrior[idxV[i]].authorName,
+               scrV[idxV[i]]);
+       if (warriors > 2) {
+-        fprintf(outp, resultsAre);
++        fprintf(outp, "%s", resultsAre);
+         for (j = 0; j < warriors; ++j) {
+           fprintf(outp, " %d", warrior[idxV[i]].score[j]);
+         }
+--- src/clparse.c.old	2015-10-28 13:24:10.648694768 +0100
++++ src/clparse.c	2015-10-28 13:23:10.502813377 +0100
+@@ -289,7 +289,7 @@
+               if (next_input(filep, inputs)) {
+                 if (!strcmp(inputs, "-")) {
+                   newFile = stdin;
+-                  fprintf(stderr, readingStdin);
++                  fprintf(stderr, "%s", readingStdin);
+                 } else {
+                   if ((newFile = fopen(inputs, "r")) == NULL) {
+                     code = FILENAME;        /* command file not found */
+@@ -430,11 +430,11 @@
+     errout(outs);
+     break;
+   case MEMORY:
+-    sprintf(outs, outOfMemory);
++    sprintf(outs, "%s", outOfMemory);
+     errout(outs);
+     break;
+   case FILENAME:
+-    sprintf(outs, cannotOpenParameterFile);
++    sprintf(outs, "%s", cannotOpenParameterFile);
+     errout(outs);
+     break;
+   }

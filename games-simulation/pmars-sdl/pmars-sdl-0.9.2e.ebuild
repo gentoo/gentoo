@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit toolchain-funcs games
+inherit toolchain-funcs games eutils
 
 MY_PN="${PN/-sdl/}"
 MY_PV="${PV/e/-5}"
@@ -23,6 +23,10 @@ DEPEND="sdl? ( x11-libs/libX11 media-libs/libsdl[video] )
 	!sdl? ( !X? ( sys-libs/ncurses ) )"
 
 S=${WORKDIR}/${MY_P}
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-format.patch
+}
 
 src_compile() {
 	CFLAGS="${CFLAGS} -DEXT94 -DPERMUTATE"
