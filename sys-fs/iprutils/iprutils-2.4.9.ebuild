@@ -16,7 +16,7 @@ KEYWORDS="~ppc ~ppc64"
 IUSE="static-libs"
 
 IPRUTILS_DEPEND="
-	>=sys-libs/ncurses-5.4-r5
+	>=sys-libs/ncurses-5.4-r5:=
 	>=sys-apps/pciutils-2.1.11-r1
 "
 RDEPEND="
