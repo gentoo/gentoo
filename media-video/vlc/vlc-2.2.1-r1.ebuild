@@ -250,6 +250,7 @@ src_prepare() {
 	# We are not in a real git checkout due to the absence of a .git directory.
 	touch src/revision.txt || die
 
+	# PATCHES
 	# Fix build system mistake.
 	epatch "${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch
 
@@ -270,6 +271,8 @@ src_prepare() {
 
 	# Add missed header imgproc_c.h, imgproc.hpp, bug #554562
 	epatch "${FILESDIR}"/opencv-3.0.0.patch
+
+	epatch "${FILESDIR}"//${P}-CVE-2015-5949.patch
 
 	# Don't use --started-from-file when not using dbus.
 	if ! use dbus ; then
