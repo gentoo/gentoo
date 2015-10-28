@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit qmake-utils
+inherit eutils qmake-utils
 
 DESCRIPTION="OAuth2 plugin for Signon daemon"
 HOMEPAGE="https://01.org/gsso/"
@@ -30,6 +30,8 @@ src_prepare() {
 	else
 		sed -i -e '/^INSTALLS.*/,+1d' tests/tests.pro || die "couldn't remove tests from install target"
 	fi
+
+	epatch "${FILESDIR}/${P}-unused-dependency.patch"
 }
 
 src_configure() {
