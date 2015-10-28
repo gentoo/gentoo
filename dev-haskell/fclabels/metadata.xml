@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>haskell</herd>
 	<longdescription>
 		This package provides first class labels that can act as
 		bidirectional record fields. The labels can be derived
-		automatically using Template Haskell which means you don&#39;t have
+		automatically using Template Haskell which means you don't have
 		to write any boilerplate yourself. The labels are implemented as
 		lenses and are fully composable. Labels can be used to /get/,
 		/set/ and /modify/ parts of a datatype in a consistent way.
 		
-		See &quot;Data.Label&quot; for an introductory explanation.
+		See "Data.Label" for an introductory explanation.
 		
 		Internally lenses are not tied to Haskell functions directly,
 		but are implemented as arrows. Arrows allow the lenses to be run
@@ -18,9 +18,12 @@
 		make partial lenses that point to fields of multi-constructor
 		datatypes in an elegant way.
 		
-		See the &quot;Data.Label.Maybe&quot; module for the use of partial labels.
+		See the "Data.Label.Maybe" module for the use of partial labels.
 		
 		&gt; 1.0.3 -&gt; 1.0.4
 		&gt;   - Bugfix to compile on GHC 6.12 again.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">sebastiaanvisser/fclabels</remote-id>
+	</upstream>
 </pkgmetadata>
