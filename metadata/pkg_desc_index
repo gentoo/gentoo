@@ -5957,7 +5957,7 @@ dev-perl/Package-Stash 0.340.0 0.360.0: Routines for manipulating stashes
 dev-perl/Package-Stash-XS 0.260.0 0.280.0: Faster and more correct implementation of the Package::Stash API
 dev-perl/Package-Variant 1.1.2-r1: Parameterizable packages
 dev-perl/PadWalker 1.960.0-r1 2.100.0: play with other peoples' lexical variables
-dev-perl/Pango 1.224.0: Layout and render international text
+dev-perl/Pango 1.224.0 1.224.0-r1: Layout and render international text
 dev-perl/Panotools-Script 0.280.0-r1: A perl module for reading, writing, and manipulating hugin script files
 dev-perl/ParaDNS 2.0.0-r1: a DNS lookup class for the Danga::Socket framework
 dev-perl/Parallel-ForkManager 1.20.0-r1: A simple parallel processing fork manager
@@ -10748,7 +10748,7 @@ java-virtuals/javamail 1.0-r1 1.0-r2 1.0-r3: Virtual for javamail implementation
 java-virtuals/jaxp-virtual 1.4-r1: Virtual for Java API for XML Processing (JAXP)
 java-virtuals/jdk-with-com-sun 20111111-r2 20111111-r3: Virtual ebuilds that require internal com.sun classes from a JDK
 java-virtuals/jms 1.1: Virtual for Java Message Service (JMS) API
-java-virtuals/jmx 1.0-r3 1.0-r4: Virtual for Java Management Extensions (JMX)
+java-virtuals/jmx 1.0-r4: Virtual for Java Management Extensions (JMX)
 java-virtuals/saaj-api 1.3-r3: Virtual for SAAJ 1.3 (AKA JSR-67 MR3) API
 java-virtuals/script-api 1.0-r1: Virtual for Java Scripting API (jsr223)
 java-virtuals/servlet-api 2.2 2.3 2.4 2.5-r1 3.0-r1 3.1: Virtual for servlet api
