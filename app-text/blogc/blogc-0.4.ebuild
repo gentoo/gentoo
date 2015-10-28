@@ -42,6 +42,7 @@ DEPEND="${DEPEND}
 
 src_prepare() {
 	[[ ${PV} = *9999* ]] && eautoreconf
+	epatch_user
 	default
 }
 
