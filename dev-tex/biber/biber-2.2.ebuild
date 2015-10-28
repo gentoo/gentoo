@@ -9,8 +9,8 @@ inherit eutils perl-module
 MY_PN=biblatex-${PN}
 
 DESCRIPTION="A BibTeX replacement for users of biblatex"
-HOMEPAGE="http://biblatex-biber.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/${MY_PN}/${MY_PN}/${PV}/${MY_PN}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="http://biblatex-biber.sourceforge.net/ https://github.com/plk/biber/"
+SRC_URI="https://github.com/plk/biber/archive/v${PV}.tar.gz  -> ${P}.tar.gz"
 
 LICENSE="|| ( Artistic-2 GPL-1 GPL-2 GPL-3 )"
 SLOT="0"
@@ -32,32 +32,36 @@ RDEPEND=">=dev-lang/perl-5.16
 	dev-perl/IPC-Run3
 	dev-perl/libwww-perl[ssl]
 	dev-perl/List-AllUtils
+	>=dev-perl/List-MoreUtils-0.408.0
 	dev-perl/Log-Log4perl
+	dev-perl/LWP-Protocol-https
 	dev-perl/regexp-common
 	dev-perl/Readonly
 	dev-perl/Readonly-XS
-	>=dev-perl/Text-BibTeX-0.66
+	dev-perl/Text-Roman
+	>=dev-perl/Text-BibTeX-0.700.0
 	dev-perl/URI
 	dev-perl/Unicode-LineBreak
+	dev-perl/Unicode-Normalize
 	dev-perl/XML-LibXML-Simple
 	dev-perl/XML-LibXSLT
 	dev-perl/XML-SAX-Base
 	dev-perl/XML-Writer
-	>=dev-tex/biblatex-2.7
-	virtual/perl-IPC-Cmd"
+	>=dev-tex/biblatex-3.1
+	virtual/perl-IPC-Cmd
+	>=virtual/perl-Unicode-Collate-1.140.0"
 DEPEND="${RDEPEND}
 	dev-perl/Config-AutoConf
 	dev-perl/Module-Build
 	test? ( dev-perl/File-Which
+			dev-perl/Test-Differences
 			dev-perl/Test-Pod
 			dev-perl/Test-Pod-Coverage )"
-
-S=${WORKDIR}/${MY_PN}-${PV}
 
 SRC_TEST="parallel"
 
 src_prepare(){
-	epatch "${FILESDIR}"/${P}-drop-mozilla-ca.patch
+	epatch "${FILESDIR}"/${PN}-2.1-drop-mozilla-ca.patch
 }
 
 src_install(){
