@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (29 Oct 2015)
+# No release since 2007. Has dependencies on old ebuilds.
+# Removal in 30 days. See #564370
+dev-db/octopus
+
 # Matt Turner <mattst88@gentoo.org> (Oct 27 2015)
 # xproto-7.0.28 breaks xorg-server
 >=x11-proto/xproto-7.0.28
