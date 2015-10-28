@@ -315,7 +315,7 @@ multilib_src_configure() {
 		if use aac || use amrenc ; then
 			myconf+=( --enable-version3 )
 		fi
-		if use aacplus || use faac ; then
+		if use aacplus || use faac || use nvenc ; then
 			myconf+=( --enable-nonfree )
 		fi
 	else
