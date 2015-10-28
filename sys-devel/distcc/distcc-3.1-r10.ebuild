@@ -130,12 +130,12 @@ src_install() {
 		newins "doc/example/xinetd" distcc
 	fi
 
-	rm -rf "${D}/etc/default" || die
-	rm -f "${D}/etc/distcc/clients.allow" || die
-	rm -f "${D}/etc/distcc/commands.allow.sh" || die
+	rm -rf "${ED}/etc/default" || die
+	rm -f "${ED}/etc/distcc/clients.allow" || die
+	rm -f "${ED}/etc/distcc/commands.allow.sh" || die
 
 	python_fix_shebang "${ED}"
-	python_optimize "${ED}"/$(python_get_sitedir)
+	python_optimize
 }
 
 pkg_postinst() {
