@@ -16699,7 +16699,7 @@ sys-fs/gt5 1.4.0-r2: a diff-capable 'du-browser'
 sys-fs/hfsplusutils 1.0.4-r1: HFS+ Filesystem Access Utilities (a PPC filesystem)
 sys-fs/hfsutils 3.2.6-r5: HFS FS Access utils
 sys-fs/inotify-tools 3.13-r1 3.14: a set of command-line programs providing a simple interface to inotify
-sys-fs/iprutils 2.4.7 2.4.8-r1: IBM's tools for support of the ipr SCSI controller
+sys-fs/iprutils 2.4.7 2.4.8-r1 2.4.9: IBM's tools for support of the ipr SCSI controller
 sys-fs/jdiskreport-bin 1.2.5-r1 1.3.0 1.4.1: JDiskReport helps you to understand disk drive usage
 sys-fs/jfsutils 1.1.15: IBM's Journaling Filesystem (JFS) Utilities
 sys-fs/jmtpfs 0.5: A FUSE and libmtp based filesystem for accessing MTP devices
