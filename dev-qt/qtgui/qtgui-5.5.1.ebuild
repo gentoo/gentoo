@@ -22,6 +22,7 @@ REQUIRED_USE="
 	eglfs? ( egl )
 	ibus? ( dbus )
 	libinput? ( udev )
+	xcb? ( gles2? ( egl ) )
 "
 
 RDEPEND="
