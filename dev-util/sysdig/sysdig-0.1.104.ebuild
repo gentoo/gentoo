@@ -64,6 +64,7 @@ src_configure() {
 
 	# setup linux-mod ugliness
 	MODULE_NAMES="sysdig-probe(extra:${BUILD_DIR}/driver:)"
+	BUILD_PARAMS='KERNELDIR="${KERNEL_DIR}"'
 	BUILD_TARGETS="driver"
 }
 
