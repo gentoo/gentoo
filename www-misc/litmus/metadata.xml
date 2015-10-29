@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<herd>proxy-maintainers</herd>
 	<maintainer>
-		<email>beber@meleeweb.net</email>
+		<email>bertrand@jacquin.bzh</email>
 		<name>Bertrand Jacquin</name>
 	</maintainer>
 	<longdescription>WebDAV server protocol compliance test suite</longdescription>
