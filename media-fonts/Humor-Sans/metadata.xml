@@ -3,9 +3,9 @@
 <pkgmetadata>
 	<herd>proxy-maintainers</herd>
 	<maintainer>
-		<email>beber@meleeweb.net</email>
+		<email>bertrand@jacquin.bzh</email>
 		<name>Bertrand Jacquin</name>
-		<description>Proxied maintainer.</description>
+		<description>Proxied maintainer</description>
 	</maintainer>
 	<longdescription>A sanserif typeface in the style of xkcd.</longdescription>
 </pkgmetadata>
