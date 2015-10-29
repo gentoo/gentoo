@@ -19,7 +19,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-RDEPEND="dev-python/pygtk[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/pygtk[${PYTHON_USEDEP}]
+	dev-python/pygobject:2[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	x11-misc/xdg-utils
 	test? (
@@ -27,10 +28,23 @@ DEPEND="${RDEPEND}
 		dev-vcs/git
 		dev-vcs/mercurial )"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.60-remove-ubuntu-theme.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.60-remove-ubuntu-theme.patch
+)
 
 python_prepare() {
 	sed -i -e "s/'USER'/'LOGNAME'/g" zim/__init__.py zim/fs.py || die
+
+	if [[ ${LINGUAS} ]]; then
+		local lingua
+		for lingua in translations/*.po; do
+			lingua=${lingua/.po}
+			lingua=${lingua/translations\/}
+			has ${lingua} ${LINGUAS} || \
+				{ rm translations/${lingua}.po || die; }
+		done
+	fi
+
 	distutils-r1_python_prepare
 }
 
