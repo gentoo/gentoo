@@ -9616,7 +9616,7 @@ dev-vcs/rcsi 0.5: A program to give information about RCS files
 dev-vcs/rsvndump 0.6: Dump a remote Subversion repository
 dev-vcs/statcvs 0.5.0 0.5.0-r1: StatCVS generates HTML reports from CVS repository logs
 dev-vcs/statsvn 0.5.0: StatSVN generates HTML reports from SVN repository logs
-dev-vcs/stgit 0.16-r2 0.17.1-r1: Manage a stack of patches using GIT as a backend
+dev-vcs/stgit 0.16-r2 0.17.1-r2: Manage a stack of patches using GIT as a backend
 dev-vcs/subversion 1.7.21 1.8.14 1.8.14-r1 1.9.1 1.9.2: Advanced version control system
 dev-vcs/svn2cl 0.12: Create a GNU-style ChangeLog from subversion's svn log --xml output
 dev-vcs/svn2git 1.0.10 9999: Tool for one-time conversion from svn to git
