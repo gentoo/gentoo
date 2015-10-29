@@ -20,6 +20,7 @@ src_unpack() {
 
 src_configure() {
 	sh configure || die
+	sed -i -e 's#\(^PREFIX \).*#\1\?= /usr#' Makefile.bsd || die
 }
 
 src_test() {
