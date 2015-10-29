@@ -10,7 +10,6 @@
 			inside the event loop (recommended by upstream)</flag>
 		<flag name="gles2">Use GLES 2.0 or later instead of full OpenGL</flag>
 		<flag name="glib">Enable integration with the <pkg>dev-libs/glib</pkg> event loop</flag>
-		<flag name="gtk">Build the GTK platform theme plugin</flag>
 		<flag name="gtkstyle">Build a widgets style that mimics the active GTK+ theme</flag>
 		<flag name="harfbuzz">Use <pkg>media-libs/harfbuzz</pkg> for text shaping</flag>
 		<flag name="ibus">Build the IBus input method plugin</flag>
