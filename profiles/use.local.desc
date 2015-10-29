@@ -2503,7 +2503,6 @@ dev-qt/qtgui:evdev - Enable support for input devices via evdev
 dev-qt/qtgui:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
 dev-qt/qtgui:gles2 - Use GLES 2.0 or later instead of full OpenGL
 dev-qt/qtgui:glib - Enable integration with the dev-libs/glib event loop
-dev-qt/qtgui:gtk - Build the GTK platform theme plugin
 dev-qt/qtgui:gtkstyle - Build a widgets style that mimics the active GTK+ theme
 dev-qt/qtgui:harfbuzz - Use media-libs/harfbuzz for text shaping
 dev-qt/qtgui:ibus - Build the IBus input method plugin
