@@ -4,8 +4,8 @@
   <herd>vim</herd>
   <herd>proxy-maintainers</herd>
 <maintainer>
-    <email>ahf@exherbo.org</email>
-    <name>Alexander H. Faeroy</name>
+    <email>ahf@0x90.dkg</email>
+    <name>Alexander Faeroy</name>
     <description>Proxied upstream</description>
   </maintainer>
 </pkgmetadata>
