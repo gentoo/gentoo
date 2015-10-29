@@ -80,7 +80,7 @@ src_prepare(){
 	if use cpu_flags_x86_sse; then
 		if [[ ${MARCH} == "i686" ]] || [[ ${MARCH} == "i486" ]]; then
 			elog "You enabled sse but use an march that does not support sse!"
-			elog "We add -msse to the cflags now, but please consider switching your march in make.conf!"
+			elog "We add sse to the flags now, but please consider switching your march in make.conf!"
 		fi
 		OPTFLAGS="sse"
 	fi
