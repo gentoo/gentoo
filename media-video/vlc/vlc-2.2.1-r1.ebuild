@@ -203,8 +203,9 @@ REQUIRED_USE="
 	qt4? ( X !qt5 )
 	qt5? ( X !qt4 )
 	sdl? ( X )
-	skins? ( truetype X ^^ ( qt4 qt5 ) )
+	skins? ( truetype X xml ^^ ( qt4 qt5 ) )
 	vaapi? ( avcodec X )
+	vdpau? ( xcb )
 	vlm? ( encode )
 	xv? ( xcb )
 "
