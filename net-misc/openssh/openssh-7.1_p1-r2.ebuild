@@ -9,7 +9,7 @@ inherit eutils user flag-o-matic multilib autotools pam systemd versionator
 # and _p? releases.
 PARCH=${P/_}
 
-HPN_PATCH="${PN}-7.1p1-hpnssh14v9.tar.xz"
+HPN_PATCH="${PARCH}-hpnssh14v9.tar.xz"
 LDAP_PATCH="${PN}-lpk-6.8p1-0.3.14.patch.xz"
 X509_VER="8.6" X509_PATCH="${PN}-${PV//_/}+x509-${X509_VER}.diff.gz"
 
@@ -116,7 +116,9 @@ src_prepare() {
 
 	if use X509 ; then
 		pushd .. >/dev/null
+		pushd ${HPN_PATCH%.*.*} >/dev/null
 		epatch "${FILESDIR}"/${PN}-7.1_p1-hpn-x509-glue.patch
+		popd >/dev/null
 		epatch "${FILESDIR}"/${PN}-7.0_p1-sctp-x509-glue.patch
 		popd >/dev/null
 		epatch "${WORKDIR}"/${X509_PATCH%.*}
