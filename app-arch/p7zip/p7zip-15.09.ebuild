@@ -40,9 +40,6 @@ src_prepare() {
 	sed \
 		-e 's:-m32 ::g' \
 		-e 's:-m64 ::g' \
-		-e 's:-O::g' \
-		-e 's: -s ::g' \
-		-e 's: -s$::g' \
 		-e 's:-pipe::g' \
 		-e "/^CXX=/s:g++:$(tc-getCXX):" \
 		-e "/^CC=/s:gcc:$(tc-getCC):" \
@@ -100,7 +97,7 @@ src_compile() {
 	emake all3
 	if use kde || use wxwidgets; then
 		emake -- 7zG
-		emake -- 7zFM
+#		emake -- 7zFM
 	fi
 }
 
@@ -116,13 +113,14 @@ src_install() {
 
 	if use kde || use wxwidgets; then
 		make_wrapper 7zG "/usr/$(get_libdir)/${PN}/7zG"
-		make_wrapper 7zFM "/usr/$(get_libdir)/${PN}/7zFM"
+#		make_wrapper 7zFM "/usr/$(get_libdir)/${PN}/7zFM"
 
-		make_desktop_entry 7zFM "${PN} FM" ${PN} "GTK;Utility;Archiving;Compression"
+#		make_desktop_entry 7zFM "${PN} FM" ${PN} "GTK;Utility;Archiving;Compression"
 
 		dobin GUI/p7zipForFilemanager
 		exeinto /usr/$(get_libdir)/${PN}
-		doexe bin/7z{G,FM}
+#		doexe bin/7z{G,FM}
+		doexe bin/7zG
 
 		insinto /usr/$(get_libdir)/${PN}
 		doins -r GUI/{Lang,help}

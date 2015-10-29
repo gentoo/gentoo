@@ -8,21 +8,16 @@ PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
 DOC_PV=${PV}
 
-inherit eutils fortran-2 distutils-r1 flag-o-matic multilib toolchain-funcs
+inherit eutils fortran-2 distutils-r1 flag-o-matic git-r3 multilib toolchain-funcs
 
 DESCRIPTION="Scientific algorithms library for Python"
 HOMEPAGE="https://www.scipy.org/"
-SRC_URI="
-	mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
-	doc? (
-		https://docs.scipy.org/doc/${PN}-${DOC_PV}/${PN}-html-${PV}.zip -> ${PN}-${DOC_PV}-html.zip
-		https://docs.scipy.org/doc/${PN}-${DOC_PV}/${PN}-ref-${PV}.pdf -> ${PN}-${DOC_PV}-ref.pdf
-	)"
+EGIT_REPO_URI="https://github.com/scipy/scipy.git"
 
 LICENSE="BSD LGPL-2"
 SLOT="0"
-IUSE="doc sparse test"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS=""
+IUSE="sparse test"
 
 CDEPEND="
 	>=dev-python/numpy-1.6.2[lapack,${PYTHON_USEDEP}]
@@ -34,7 +29,6 @@ DEPEND="${CDEPEND}
 	dev-lang/swig
 	>=dev-python/cython-0.22[${PYTHON_USEDEP}]
 	virtual/pkgconfig
-	doc? ( app-arch/unzip )
 	test? (	dev-python/nose[${PYTHON_USEDEP}] )
 	"
 
@@ -44,13 +38,6 @@ RDEPEND="${CDEPEND}
 DOCS=( HACKING.rst.txt THANKS.txt )
 
 DISTUTILS_IN_SOURCE_BUILD=1
-
-src_unpack() {
-	unpack ${P}.tar.gz
-	if use doc; then
-		unzip -qo "${DISTDIR}"/${PN}-${DOC_PV}-html.zip -d html || die
-	fi
-}
 
 pc_incdir() {
 	$(tc-getPKG_CONFIG) --cflags-only-I $@ | \
@@ -96,14 +83,9 @@ python_prepare_all() {
 		lapack_libs = $(pc_libs lapack)
 	EOF
 
-	# Drop hashes to force rebuild of cython based .c code
-	rm cythonize.dat || die
-
 	local PATCHES=(
 		"${FILESDIR}"/${PN}-0.12.0-blitz.patch
 		"${FILESDIR}"/${PN}-0.12.0-restore-sys-argv.patch
-		"${FILESDIR}"/${P}-glibc-2.22-backport.patch
-		"${FILESDIR}"/${P}-test-fix-backport.patch
 	)
 	distutils-r1_python_prepare_all
 }
