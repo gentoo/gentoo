@@ -15,10 +15,9 @@ LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
 
 IUSE="postgres"
-
 RDEPEND="
 	>=sci-libs/gdal-2.0.0
-	>=sci-geosciences/grass-7.0.1[gdal]
+	>=sci-geosciences/grass-7.0.1-r3
 "
 DEPEND="${RDEPEND}
 	dev-libs/expat
@@ -37,9 +36,9 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--with-grass="${ROOT}/usr/$(get_libdir)/grass70" \
-		--with-gdal="${ROOT}/usr/bin/gdal-config" \
-		$(use_with postgres postgres-includes "${ROOT}/usr/include/postgresql")
+		--with-grass="/usr/$(get_libdir)/grass70" \
+		--with-gdal="/usr/bin/gdal-config" \
+		$(use_with postgres postgres-includes "/usr/include/postgresql")
 }
 
 src_install() {
