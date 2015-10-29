@@ -17898,7 +17898,7 @@ x11-misc/imake 1.0.5 1.0.6 1.0.7: C preprocessor interface to the make utility
 x11-misc/imwheel 1.0.0_pre12 1.0.0_pre13_p20100827: mouse tool for advanced features such as wheels and 3+ buttons
 x11-misc/ipager 1.1.0: A themable desktop pager for fluxbox and other window managers
 x11-misc/kapow 1.4.3 1.4.4: A punch clock program designed to easily keep track of your hours
-x11-misc/kaqaz 1.2.0: Modern note manager
+x11-misc/kaqaz 1.2.0 1.2.0-r1: Modern note manager
 x11-misc/kbdd 0.5.2 0.7: Very simple layout switcher
 x11-misc/kdocker 4.8-r2: Helper to dock any application into the system tray
 x11-misc/kronometer 2.0.0 2.0.1: KF5-based stopwatch application
