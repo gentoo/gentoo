@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-  <email>bircoph@gentoo.org</email>
-  <name>Andrew Savchenko</name>
-</maintainer>
-<herd>sci-physics</herd>
-<longdescription lang="en">
+  <maintainer>
+    <email>bircoph@gentoo.org</email>
+    <name>Andrew Savchenko</name>
+  </maintainer>
+  <herd>sci-physics</herd>
+  <longdescription lang="en">
   ROOT Object Oriented Technologies is an object oriented data
   analysis framework written in C++ by the CERN. Widely used in
   high energy physics, but also in other data analysis applications. It
@@ -14,20 +14,21 @@
   statistics, serialization, optimization, linear algebra, graphics,
   GUI toolkit, and a complete visualization framework.
 </longdescription>
-<use>
-  <flag name="c++11"> Build ROOT using the C++11 standard</flag>
-  <flag name="c++14"> Build ROOT using the C++14 standard</flag>
-  <flag name="fits">Support for images and data from FITS files with <pkg>sci-libs/cfitsio</pkg></flag>
-  <flag name="gdml">Enable GDML writer and reader</flag>
-  <flag name="geocad">Enable ROOT-CAD interface using <pkg>sci-libs/opencascade</pkg></flag>
-  <flag name="http">Enable http server support including but not limited to fastcgi support</flag>
-  <flag name="math">Build all math related libraries plugins, needs <pkg>sci-libs/gsl</pkg> </flag>
-  <flag name="memstat">Build memory statistics library, helps to detect memory leaks</flag>
-  <flag name="pythia6">Build the interface for <pkg>sci-physics/pythia</pkg> version 6.x </flag>
-  <flag name="pythia8">Build the interface for <pkg>sci-physics/pythia</pkg> version 8.x </flag>
-  <flag name="reflex">Build the reflection database for the C++ interpreter</flag>
-  <flag name="shadow">Enable shadow authentication in rootd and proofd</flag>
-  <flag name="table">Build libTable contrib library</flag>
-  <flag name="xrootd">Build the interface for <pkg>net-libs/xrootd</pkg> </flag>
-</use>
+  <use>
+    <flag name="c++11"> Build ROOT using the C++11 standard</flag>
+    <flag name="c++14"> Build ROOT using the C++14 standard</flag>
+    <flag name="fits">Support for images and data from FITS files with <pkg>sci-libs/cfitsio</pkg></flag>
+    <flag name="gdml">Enable GDML writer and reader</flag>
+    <flag name="geocad">Enable ROOT-CAD interface using <pkg>sci-libs/opencascade</pkg></flag>
+    <flag name="http">Enable http server support including but not limited to fastcgi support</flag>
+    <flag name="math">Build all math related libraries plugins, needs <pkg>sci-libs/gsl</pkg> </flag>
+    <flag name="memstat">Build memory statistics library, helps to detect memory leaks</flag>
+    <flag name="pythia6">Build the interface for <pkg>sci-physics/pythia</pkg> version 6.x </flag>
+    <flag name="pythia8">Build the interface for <pkg>sci-physics/pythia</pkg> version 8.x </flag>
+    <flag name="reflex">Build the reflection database for the C++ interpreter</flag>
+    <flag name="shadow">Enable shadow authentication in rootd and proofd</flag>
+    <flag name="table">Build libTable contrib library</flag>
+    <flag name="xrootd">Build the interface for <pkg>net-libs/xrootd</pkg> </flag>
+    <flag name="R">Enable support for <pkg>dev-lang/R</pkg></flag>
+  </use>
 </pkgmetadata>
