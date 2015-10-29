@@ -1,0 +1,2 @@
+# Define startup options for Kerberos KDC
+KDC_OPTS=""
