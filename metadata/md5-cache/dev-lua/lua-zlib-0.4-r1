@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-lang/lua:0 sys-libs/zlib virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Lua bindings to zlib
+EAPI=5
+HOMEPAGE=https://github.com/brimworks/lua-zlib
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/lua:0 sys-libs/zlib
+SLOT=0
+SRC_URI=https://github.com/brimworks/lua-zlib/tarball/v0.4 -> lua-zlib-0.4.tgz
+_eclasses_=cmake-utils	34a43631b1edbd429618149bc986d524	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=1db96e79bc5909842746c08b7be5f584
