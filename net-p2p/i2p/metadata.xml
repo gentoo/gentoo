@@ -7,7 +7,6 @@
 	<email>sam@cmpct.info</email>
 	<description>Proxy-maintainer; add or CC them for bugs</description>
 </maintainer>
-<maintainer><email>zlg@gentoo.org</email></maintainer>
 <longdescription>I2P is an anonymous network, exposing a simple layer that applications can use to anonymously and securely send messages to each other.</longdescription>
 <use>
 <flag name="nls">Adds Native Language Support using GNU gettext.</flag>
