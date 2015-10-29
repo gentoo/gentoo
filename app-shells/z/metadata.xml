@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>aidecoe@gentoo.org</email>
+		<name>Amadeusz Żołnowski</name>
+	</maintainer>
+	<longdescription lang="en">
+		Tracks your most used directories, based on 'frecency'. After a short
+		learning phase, z will take you to the most 'frecent' directory that
+		matches ALL of the regexes given on the command line, in order.
+	</longdescription>
+</pkgmetadata>
