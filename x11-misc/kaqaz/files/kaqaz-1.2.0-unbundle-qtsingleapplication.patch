@@ -1,0 +1,43 @@
+Use system copy of qtsingleapplication.
+
+--- sialantools/sialantools.pri
++++ sialantools/sialantools.pri
+@@ -1,4 +1,5 @@
+ QT += qml quick
++CONFIG += qtsingleapplication
+ 
+ android {
+     manifest.source = android-build
+@@ -24,20 +25,10 @@
+ 
+             HEADERS += \
+                 sialantools/sialanmimeapps.h \
+-                sialantools/qtsingleapplication/qtsinglecoreapplication.h \
+-                sialantools/qtsingleapplication/qtsingleapplication.h \
+-                sialantools/qtsingleapplication/qtlockedfile.h \
+-                sialantools/qtsingleapplication/qtlocalpeer.h
+ 
+             SOURCES += \
+                 sialantools/sialanmimeapps.cpp \
+-                sialantools/qtsingleapplication/qtsinglecoreapplication.cpp \
+-                sialantools/qtsingleapplication/qtsingleapplication.cpp \
+-                sialantools/qtsingleapplication/qtlockedfile.cpp \
+-                sialantools/qtsingleapplication/qtlocalpeer.cpp
+ 
+-            win32: SOURCES += sialantools/qtsingleapplication/qtlockedfile_win.cpp
+-            unix:  SOURCES += sialantools/qtsingleapplication/qtlockedfile_unix.cpp
+         }
+     }
+ }
+
+--- sialantools/sialanapplication.h
++++ sialantools/sialanapplication.h
+@@ -22,7 +22,7 @@
+ #include "sialan_macros.h"
+ 
+ #ifdef DESKTOP_DEVICE
+-#include "qtsingleapplication/qtsingleapplication.h"
++#include "qtsingleapplication.h"
+ class INHERIT_QAPP : public QtSingleApplication
+ {
+ public:
