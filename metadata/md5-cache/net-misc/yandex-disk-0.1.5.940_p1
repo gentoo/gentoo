@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare unpack
+DEPEND=>=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=CLI to access Yandex Disk file storage service
+EAPI=5
+HOMEPAGE=https://disk.yandex.ru
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=YDSLA
+RDEPEND=sys-libs/zlib
+SLOT=0
+SRC_URI=amd64? ( http://repo.yandex.ru/yandex-disk/rpm/stable/x86_64/yandex-disk-0.1.5.940-1.fedora.x86_64.rpm ) x86? ( http://repo.yandex.ru/yandex-disk/rpm/stable/i386/yandex-disk-0.1.5.940-1.fedora.i386.rpm )
+_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	rpm	514a1840ee796656311a029ea952faa9	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=e097da63c283b462b2933d87bdac768b

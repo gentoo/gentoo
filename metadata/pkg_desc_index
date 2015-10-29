@@ -14556,7 +14556,7 @@ net-misc/x2goclient 4.0.2.0 4.0.3.1 4.0.3.2 4.0.4.0 4.0.5.0: The X2Go Qt client
 net-misc/x2goserver 4.0.1.12 4.0.1.18-r2 4.0.1.19: The X2Go server
 net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
-net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1: CLI to access Yandex Disk file storage service
+net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/yaydl 1.5.2: Yet Another Youtube DownLoader which is downloading more than youtube
 net-misc/youtube-dl 2015.04.03 2015.10.18 2015.10.24: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.1 3.1.9 9999: A command line utility for viewing youtube-videos in Mplayer
@@ -17576,7 +17576,7 @@ x11-apps/xwd 1.0.6: dump an image of an X window
 x11-apps/xwininfo 1.1.2 1.1.3: window information utility for X
 x11-apps/xwud 1.0.4: image displayer for X
 x11-base/xorg-drivers 1.12 1.13 1.14 1.15 1.16 1.17: Meta package containing deps on all xorg drivers
-x11-base/xorg-server 1.12.4-r5 1.12.4-r6 1.15.2-r2 1.15.2-r3 1.16.4 1.16.4-r1 1.16.4-r2 1.16.4-r3 1.16.4-r4 1.17.1 1.17.1-r1 1.17.2 1.17.2-r1 1.17.2-r2 1.17.4: X.Org X servers
+x11-base/xorg-server 1.12.4-r5 1.12.4-r7 1.15.2-r2 1.15.2-r4 1.16.4 1.16.4-r5 1.17.4: X.Org X servers
 x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/afb-ucode 1.3.11: Binary blob microcode for Elite3D framebuffers to use X, required by xf86-video-sunffb
 x11-drivers/ati-drivers 14.12-r3 15.1 15.7-r1 15.9 15.9-r1: Ati precompiled drivers for Radeon Evergreen (HD5000 Series) and newer chipsets
