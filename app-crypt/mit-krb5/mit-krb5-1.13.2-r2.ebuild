@@ -64,6 +64,9 @@ src_unpack() {
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-1.12_warn_cflags.patch"
 	epatch "${FILESDIR}/${PN}-config_LDFLAGS.patch"
+	epatch "${FILESDIR}/CVE-2015-2695.patch" \
+		"${FILESDIR}/CVE-2015-2696.patch" \
+		"${FILESDIR}/CVE-2015-2697.patch"
 
 	eautoreconf
 }
