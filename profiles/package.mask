@@ -366,10 +366,6 @@ app-emulation/emul-linux-x86-jna
 # Mask live ebuild
 =dev-util/radare2-9999
 
-# Anthony G. Basile <blueness@gentoo.org> (28 Jan 2015)
-# Its broken and we're waiting for fixes from upstream, bug #536196
-=net-misc/tor-0.2.6.2_alpha-r1
-
 # Anthony G. Basile <blueness@gentoo.org> (9 Jan 2015)
 # p.mask the -9999 version
 =dev-misc/i2pd-9999
