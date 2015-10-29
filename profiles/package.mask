@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (29 Oct 2015)
+# Upstream is somewhat alive but there are better XML parsers out there.
+# Removal in 30 days. See #268619.
+dev-java/castor
+
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (29 Oct 2015)
 # Mask until it is decided how to address xorg-server file collisions #564358
 =x11-drivers/xf86-input-evdev-2.10.0
