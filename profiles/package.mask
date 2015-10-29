@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (29 Oct 2015)
+# Dead project with no revdeps. Removal in 30 days.
+dev-java/flute
+
 # Patrice Clement <monsieurp@gentoo.org> (29 Oct 2015)
 # Upstream is somewhat alive but there are better XML parsers out there.
 # Removal in 30 days. See #268619.
