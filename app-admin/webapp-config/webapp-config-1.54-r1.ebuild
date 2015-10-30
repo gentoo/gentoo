@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 inherit distutils-r1
 
 SRC_URI="https://dev.gentoo.org/~twitch153/${PN}/${P}.tar.bz2"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd"
 
 DESCRIPTION="Gentoo's installer for web-based applications"
 HOMEPAGE="http://sourceforge.net/projects/webapp-config/"
