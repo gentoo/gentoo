@@ -14,13 +14,14 @@ SRC_URI="http://download.ag-projects.com/SipClient/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
+IUSE="libressl"
 
 KEYWORDS="~amd64 ~x86"
 
 CDEPEND="
 	dev-db/sqlite:3
-	dev-libs/openssl:0
+	!libressl? ( dev-libs/openssl:0[-bindist] )
+	libressl? ( dev-libs/libressl )
 	dev-python/python-application[${PYTHON_USEDEP}]
 	media-libs/alsa-lib
 	media-libs/libv4l
@@ -29,7 +30,7 @@ CDEPEND="
 	virtual/ffmpeg
 "
 RDEPEND="${CDEPEND}
-	dev-python/dnspython[${PYTHON_USEDEP}]
+	virtual/dnspython[${PYTHON_USEDEP}]
 	dev-python/python-cjson[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/python-eventlib[${PYTHON_USEDEP}]
