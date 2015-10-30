@@ -105,7 +105,7 @@ app-admin/genromfs 0.5.2: Create space-efficient, small, read-only romfs filesys
 app-admin/gentoo-rsync-mirror 1.0-r4 1.0-r5: Ebuild for setting up a Gentoo rsync mirror
 app-admin/geolizer 2.01.10_p20070115-r1: Webserver log file analyzer
 app-admin/gkrellm 2.3.5-r3 2.3.6_rc1 2.3.6_rc1-r1: Single process stack of various system monitors
-app-admin/glance 2015.1.1-r3 2015.1.2 2015.1.9999 2015.2.9999: Services for discovering, registering, and retrieving virtual machine images
+app-admin/glance 11.0.0 2015.1.1-r3 2015.1.2 2015.1.9999 2015.2.9999: Services for discovering, registering, and retrieving virtual machine images
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/grubconfig 1.28-r1: Simple Tool to configure Grub-Bootloader
 app-admin/gtkdiskfree 2.0.1-r1: Graphical tool to show free disk space
@@ -6692,7 +6692,7 @@ dev-php/xdebug-client 2.2.2 2.2.3 2.2.5 2.2.6 2.2.7 2.3.1: Xdebug client for the
 dev-php/xhprof 0.9.4: A Hierarchical Profiler for PHP
 dev-python/3to2 1.0 1.1.1: Refactors valid 3.x syntax into valid 2.x syntax, if a syntactical conversion is possible
 dev-python/APScheduler 3.0.1: In-process task scheduler with Cron-like capabilities
-dev-python/Babel 2.1.1: A collection of tools for internationalizing Python applications
+dev-python/Babel 2.0 2.1.1: A collection of tools for internationalizing Python applications
 dev-python/BitVector 3.3.2: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CacheControl 0.11.5: The httplib2 caching algorithms packaged up for use with requests
 dev-python/Coffin 0.3.8 2.0.1: Jinja2 adapter for Django
@@ -9203,7 +9203,7 @@ dev-util/babeltrace 1.2.3 1.2.4: A command-line tool and library to read and con
 dev-util/bakefile 0.2.9-r1: Native makefiles generator
 dev-util/bam 0.4.0-r1: Fast and flexible Lua-based build system
 dev-util/bbe 0.2.2: Sed-like editor for binary files
-dev-util/bcpp 20050725 20090630: Indents C/C++ source code
+dev-util/bcpp 20050725 20090630 20150811: Indents C/C++ source code
 dev-util/bdelta 0.3.1 9999: Binary Delta - Efficient difference algorithm and format
 dev-util/beediff 1.9: A graphical user interface for comparing and merging files
 dev-util/biew 6.1.0-r3: A portable viewer of binary files, hexadecimal and disassembler modes
@@ -16479,7 +16479,7 @@ sys-cluster/ccs 2.03.09: cluster configuration system to manage the cluster conf
 sys-cluster/ceph 0.80.10-r1 0.94.4 9999: Ceph distributed filesystem
 sys-cluster/charm 6.5.1-r1 6.5.1-r2 6.5.1-r3 6.6.0 6.6.0-r1 6.6.1: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
-sys-cluster/cinder 2015.1.1 2015.1.2 2015.1.9999 2015.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
+sys-cluster/cinder 7.0.0 2015.1.1 2015.1.2 2015.1.9999 2015.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.9-r1 1.0.10 1.0.11 1.0.12: Library pack for Heartbeat / Pacemaker
 sys-cluster/cman 3.1.5 3.1.5-r1 3.2.0: Cluster Manager
@@ -16526,7 +16526,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 7.0.0 2015.1.1-r1 2015.1.2 2015.1.9999 2015.2.9999: A virtual network service for Openstack
-sys-cluster/nova 2015.1.1-r3 2015.1.2 2015.1.9999 2015.2.9999: A cloud computing fabric controller (main part of an IaaS system)
+sys-cluster/nova 12.0.0 2015.1.1-r3 2015.1.2 2015.1.9999 2015.2.9999: A cloud computing fabric controller (main part of an IaaS system)
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/open-mx 1.5.4: Open-MX - Myrinet Express over Generic Ethernet Hardware

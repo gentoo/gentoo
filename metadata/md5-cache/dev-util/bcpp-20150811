@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install postinst
+DESCRIPTION=Indents C/C++ source code
+EAPI=5
+HOMEPAGE=http://invisible-island.net/bcpp/
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=ftp://invisible-island.net/bcpp/bcpp-20150811.tgz
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=c5e9cef9238272dbf575654f266b12f2
