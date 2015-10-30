@@ -322,8 +322,7 @@ distutils-r1_python_prepare_all() {
 
 	_distutils-r1_disable_ez_setup
 
-	if [[ ${DISTUTILS_IN_SOURCE_BUILD} && ! ${DISTUTILS_SINGLE_IMPL} ]]
-	then
+	if [[ ${DISTUTILS_IN_SOURCE_BUILD} && ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 		# create source copies for each implementation
 		python_copy_sources
 	fi
