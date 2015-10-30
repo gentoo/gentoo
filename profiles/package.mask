@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (30 Oct 2015)
+# Uses unsafe ioctls that could result in data corruption. Upstream
+# is working on replacing them in the wip/dedup-syscall branch.
+# Keep it masked until they are done. sys-fs/duperemove is
+# the suggested replacement for the meantime.
+sys-fs/bedup
+
 # James Le Cuirot <chewi@gentoo.org> (29 Oct 2015)
 # Dead project with no revdeps. Removal in 30 days.
 dev-java/flute
