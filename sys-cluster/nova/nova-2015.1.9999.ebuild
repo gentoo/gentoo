@@ -5,9 +5,9 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 eutils git-2 linux-info multilib user
+inherit distutils-r1 eutils git-r3 linux-info multilib user
 
-DESCRIPTION="A cloud computing fabric controller (main part of an IaaS system) written in Python"
+DESCRIPTION="A cloud computing fabric controller (main part of an IaaS system)"
 HOMEPAGE="https://launchpad.net/nova"
 EGIT_REPO_URI="https://github.com/openstack/nova.git"
 EGIT_BRANCH="stable/kilo"
