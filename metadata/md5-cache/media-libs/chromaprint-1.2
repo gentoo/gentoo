@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=libav? ( media-video/libav:0= ) !libav? ( media-video/ffmpeg:0= ) test? ( dev-cpp/gtest dev-libs/boost ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DEPEND=libav? ( media-video/libav:0= ) !libav? ( >=media-video/ffmpeg-2.6:0= ) test? ( dev-cpp/gtest dev-libs/boost ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
 DESCRIPTION=A client-side library that implements a custom algorithm for extracting fingerprints
 EAPI=5
 HOMEPAGE=http://acoustid.org/chromaprint
 IUSE=libav test tools
 KEYWORDS=~alpha amd64 ~ppc ~ppc64 x86 ~amd64-fbsd
 LICENSE=LGPL-2.1
-RDEPEND=libav? ( media-video/libav:0= ) !libav? ( media-video/ffmpeg:0= )
+RDEPEND=libav? ( media-video/libav:0= ) !libav? ( >=media-video/ffmpeg-2.6:0= )
 SLOT=0
 SRC_URI=https://bitbucket.org/acoustid/chromaprint/downloads/chromaprint-1.2.tar.gz
 _eclasses_=cmake-utils	34a43631b1edbd429618149bc986d524	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=eb7b5aefefe4095aedfa66a575b3c4a8
+_md5_=cae967f490376f0c85d9562a91fea79c
