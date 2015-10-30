@@ -11,7 +11,7 @@ SRC_URI="http://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ~ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm hppa ppc ppc64 ~sparc x86"
 IUSE="iconv"
 
 RDEPEND=">=media-libs/libmpdclient-2.2

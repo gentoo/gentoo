@@ -8,10 +8,10 @@ if [[ $PV = *9999* ]]; then
 	scm_eclass=git-r3
 	EGIT_REPO_URI=( "git://anongit.kde.org/akonadi" )
 	SRC_URI=""
-	KEYWORDS="ppc64"
+	KEYWORDS="ppc ppc64"
 else
 	SRC_URI="mirror://kde/stable/${PN/-server/}/src/${P/-server/}.tar.bz2"
-	KEYWORDS="amd64 ~arm ~ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 ~arm ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 	S="${WORKDIR}/${P/-server/}"
 fi
 
