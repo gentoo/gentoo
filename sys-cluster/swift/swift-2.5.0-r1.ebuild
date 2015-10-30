@@ -40,7 +40,7 @@ DEPEND="
 
 RDEPEND="
 	${CDEPEND}
-	>=dev-python/dnspython-1.9.4[${PYTHON_USEDEP}]
+	virtual/dnspython[${PYTHON_USEDEP}]
 	>=dev-python/eventlet-0.16.1[${PYTHON_USEDEP}]
 	!~dev-python/eventlet-0.17.0[${PYTHON_USEDEP}]
 	>=dev-python/greenlet-0.3.1[${PYTHON_USEDEP}]
