@@ -17,7 +17,7 @@ IUSE="libav test tools"
 # note: use ffmpeg or libav instead of fftw because it's recommended and required for tools
 RDEPEND="
 	libav? ( media-video/libav:0= )
-	!libav? ( media-video/ffmpeg:0= )
+	!libav? ( >=media-video/ffmpeg-2.6:0= )
 "
 DEPEND="${RDEPEND}
 	test? (
@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 
 DOCS="NEWS.txt README.md"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.1-gtest.patch )
+PATCHES=( "${FILESDIR}"/${PN}-1.1-gtest.patch "${FILESDIR}"/${P}-ffmpeg29.patch )
 
 src_configure() {
 	local mycmakeargs=(
