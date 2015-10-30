@@ -20,7 +20,10 @@ IUSE="selinux"
 DEPEND="virtual/mta
 	virtual/cron
 	virtual/httpd-cgi
-	dev-python/dnspython"
+	|| (
+		dev-python/dnspython:0
+		virtual/dnspython
+	)"
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-mailman )
 "
