@@ -175,7 +175,7 @@ src_configure() {
 	fi
 
 	if use contrib; then
-		mycmakeargs+=( "-DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib-master/modules" )
+		mycmakeargs+=( "-DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-master/modules" )
 	fi
 
 	if use cuda; then
