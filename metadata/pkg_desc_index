@@ -105,7 +105,7 @@ app-admin/genromfs 0.5.2: Create space-efficient, small, read-only romfs filesys
 app-admin/gentoo-rsync-mirror 1.0-r4 1.0-r5: Ebuild for setting up a Gentoo rsync mirror
 app-admin/geolizer 2.01.10_p20070115-r1: Webserver log file analyzer
 app-admin/gkrellm 2.3.5-r3 2.3.6_rc1 2.3.6_rc1-r1: Single process stack of various system monitors
-app-admin/glance 11.0.0 2015.1.1-r3 2015.1.2 2015.1.9999 2015.2.9999: Provides services for discovering, registering, and retrieving virtual machine images
+app-admin/glance 2015.1.1-r3 2015.1.2 2015.1.9999 2015.2.9999: Services for discovering, registering, and retrieving virtual machine images
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/grubconfig 1.28-r1: Simple Tool to configure Grub-Bootloader
 app-admin/gtkdiskfree 2.0.1-r1: Graphical tool to show free disk space
@@ -6692,7 +6692,7 @@ dev-php/xdebug-client 2.2.2 2.2.3 2.2.5 2.2.6 2.2.7 2.3.1: Xdebug client for the
 dev-php/xhprof 0.9.4: A Hierarchical Profiler for PHP
 dev-python/3to2 1.0 1.1.1: Refactors valid 3.x syntax into valid 2.x syntax, if a syntactical conversion is possible
 dev-python/APScheduler 3.0.1: In-process task scheduler with Cron-like capabilities
-dev-python/Babel 2.0 2.1.1: A collection of tools for internationalizing Python applications
+dev-python/Babel 2.1.1: A collection of tools for internationalizing Python applications
 dev-python/BitVector 3.3.2: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CacheControl 0.11.5: The httplib2 caching algorithms packaged up for use with requests
 dev-python/Coffin 0.3.8 2.0.1: Jinja2 adapter for Django
@@ -12038,6 +12038,7 @@ media-libs/jbig2dec 0.11-r1: A decoder implementation of the JBIG2 image compres
 media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
 media-libs/jpeg 6b-r12 8d-r1 8d-r2 9a: Library to load, handle and manipulate images in the JPEG format
+media-libs/kvazaar 0.7.1 9999: An open-source HEVC encoder
 media-libs/ladspa-cmt 1.16-r4: CMT (computer music toolkit) LADSPA library plugins
 media-libs/ladspa-sdk 1.13-r1 1.13-r2: The Linux Audio Developer's Simple Plugin API
 media-libs/lasi 1.1.1: C++ library for postscript stream output
@@ -13102,7 +13103,7 @@ media-video/emovix 0.9.0: Micro Linux distro to boot from a CD and play every vi
 media-video/episoder 0.4.7: episoder is a tool to tell you when new episodes of your favourite TV shows are airing
 media-video/ffcast 2.4.1: Record screencasts using ffmpeg
 media-video/ffdiaporama 2.1 2.1-r1: Movie creator from photos and video clips
-media-video/ffmpeg 2.6.3 2.6.4 2.7.2 2.8 2.8-r1 2.8.1 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
+media-video/ffmpeg 2.6.3 2.6.4 2.7.2 2.8.1 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
 media-video/ffmpeg2theora 0.29-r1 0.29-r2: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.0.8 2.0.10 2.1.0: Lightweight video thumbnailer that can be used by file managers
 media-video/flumotion 0.8.1 0.8.1-r1 0.10.1: Flumotion Streaming server
