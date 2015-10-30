@@ -9,7 +9,7 @@ QT_MINIMAL="4.7.4"
 KDE_SCM="git"
 CMAKE_REQUIRED="never"
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5} )
 PYTHON_REQ_USE="threads,xml"
 
 # experimental ; release ; old
@@ -161,7 +161,7 @@ COMMON_DEPEND="
 	eds? ( gnome-extra/evolution-data-server )
 	firebird? ( >=dev-db/firebird-2.5 )
 	gltf? ( media-libs/libgltf )
-	gnome? ( gnome-base/gconf:2 )
+	gnome? ( dev-libs/glib:2 )
 	gtk? (
 		x11-libs/gdk-pixbuf[X]
 		>=x11-libs/gtk+-2.24:2
@@ -180,11 +180,7 @@ COMMON_DEPEND="
 	libreoffice_extensions_scripting-javascript? ( dev-java/rhino:1.6 )
 	mysql? ( >=dev-db/mysql-connector-c++-1.1.0 )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
-	telepathy? (
-		dev-libs/glib:2
-		>=net-libs/telepathy-glib-0.18.0
-		>=x11-libs/gtk+-2.24:2
-	)
+	telepathy? ( >=net-libs/telepathy-glib-0.18.0 )
 "
 
 RDEPEND="${COMMON_DEPEND}
@@ -249,9 +245,9 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	bluetooth? ( dbus )
 	collada? ( gltf )
-	gnome? ( gtk )
 	eds? ( gnome )
-	telepathy? ( gtk )
+	gnome? ( gtk )
+	telepathy? ( gnome )
 	libreoffice_extensions_nlpsolver? ( java )
 	libreoffice_extensions_scripting-beanshell? ( java )
 	libreoffice_extensions_scripting-javascript? ( java )
@@ -374,7 +370,7 @@ src_configure() {
 
 	# optimization flags
 	export GMAKE_OPTIONS="${MAKEOPTS}"
-	# System python 2.7 enablement:
+	# System python enablement:
 	export PYTHON_CFLAGS=$(python_get_CFLAGS)
 	export PYTHON_LIBS=$(python_get_LIBS)
 
@@ -481,9 +477,7 @@ src_configure() {
 		$(use_enable eds evolution2) \
 		$(use_enable firebird firebird-sdbc) \
 		$(use_enable gltf) \
-		$(use_enable gnome gconf) \
 		$(use_enable gnome gio) \
-		$(use_enable gnome lockdown) \
 		$(use_enable gstreamer gstreamer-1-0) \
 		$(use_enable gtk) \
 		$(use_enable gtk3) \
