@@ -16,7 +16,7 @@ SRC_URI="http://gts.sourceforge.net/tarballs/${MYP}.tar.gz"
 
 SLOT="0"
 LICENSE="LGPL-2"
-KEYWORDS="amd64 hppa ~ppc ppc64 x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 hppa ppc ppc64 x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
 IUSE="doc examples static-libs test"
 
 RDEPEND="dev-libs/glib:2"
