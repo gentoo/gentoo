@@ -769,7 +769,7 @@ pkg_postinst() {
 	fi
 	elog
 	elog "This ebuild installed a version of php.ini based on php.ini-${PHP_INI_VERSION} version."
-	elog "You can chose which version of php.ini to install by default by setting PHP_INI_VERSION to either"
+	elog "You can choose which version of php.ini to install by default by setting PHP_INI_VERSION to either"
 	elog "'production' or 'development' in ${EPREFIX}/etc/make.conf"
 	elog "Both versions of php.ini can be found in ${EPREFIX}/usr/share/doc/${PF}"
 
