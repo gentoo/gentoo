@@ -4,10 +4,10 @@ DESCRIPTION=Combined filter, redirector and access controller plugin for Squid
 EAPI=5
 HOMEPAGE=http://www.squidguard.org
 IUSE=ldap
-KEYWORDS=amd64 ~arm ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=amd64 ~arm ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=>=sys-libs/db-2:* ldap? ( net-nds/openldap:0 )
 SLOT=0
 SRC_URI=http://www.squidguard.org/Downloads/Devel/squidGuard-1.5-beta.tar.gz
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=1d954b8ee9f70b04dee483c8ef3a0025
+_md5_=74d2575f258a9dea566770bb0ff72863

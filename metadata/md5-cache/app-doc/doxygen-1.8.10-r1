@@ -4,7 +4,7 @@ DESCRIPTION=Documentation system for most programming languages
 EAPI=4
 HOMEPAGE=http://www.doxygen.org/
 IUSE=clang debug doc dot doxysearch latex qt4 sqlite userland_GNU linguas_hy linguas_ar linguas_pt_BR linguas_ca linguas_zh linguas_cs linguas_de linguas_da linguas_eo linguas_es linguas_fa linguas_fi linguas_fr linguas_el linguas_hr linguas_hu linguas_id linguas_it linguas_ja linguas_ko linguas_lt linguas_mk linguas_nl linguas_nb linguas_pl linguas_pt linguas_ro linguas_ru linguas_sl linguas_sk linguas_sr linguas_sv linguas_tr linguas_uk linguas_vi linguas_af
-KEYWORDS=~alpha amd64 ~arm ~arm64 hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
+KEYWORDS=~alpha amd64 ~arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=app-text/ghostscript-gpl dev-lang/perl media-libs/libpng virtual/libiconv clang? ( sys-devel/clang ) dot? ( media-gfx/graphviz media-libs/freetype ) doxysearch? ( =dev-libs/xapian-1.2* ) latex? ( app-text/texlive[extra] ) qt4? ( dev-qt/qtgui:4 ) sqlite? ( dev-db/sqlite:3 )
 REQUIRED_USE=doc? ( latex )
@@ -12,4 +12,4 @@ RESTRICT=mirror test
 SLOT=0
 SRC_URI=http://ftp.stack.nl/pub/users/dimitri/doxygen-1.8.10.src.tar.gz https://dev.gentoo.org/~xarthisius/distfiles/doxywizard.png
 _eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	cmake-utils	34a43631b1edbd429618149bc986d524	eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	b81ab4852d108e3d9c940fa03bce80e1	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=cafc3dfb0d6471b1083d7ada55833381
+_md5_=26fd34c9aceb0ec83d0a728578b32603
