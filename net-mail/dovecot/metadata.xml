@@ -19,5 +19,6 @@
     <flag name="lzma">Add support for lzma (de)compression</flag>
     <flag name="lz4">Add support for lz4 (de)compression</flag>
     <flag name="solr">Add solr full text search (FTS) support</flag>
+    <flag name="textcat">Add libtextcat language guessing support for full text search (FTS)</flag>
   </use>
 </pkgmetadata>
