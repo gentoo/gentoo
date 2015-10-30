@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,8 +19,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="doc"
 
-RDEPEND="|| (
-		dev-python/dnspython[${PYTHON_USEDEP}]
+RDEPEND="
+	|| (
+		virtual/dnspython[${PYTHON_USEDEP}]
 		dev-python/pydns[${PYTHON_USEDEP}]
 	)"
 DEPEND="${RDEPEND}
@@ -33,6 +34,6 @@ PATCHES=(
 )
 
 python_install_all() {
+	use doc && HTML_DOCS=( doc/. )
 	distutils-r1_python_install_all
-	use doc && dohtml -A py -r doc/.
 }

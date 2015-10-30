@@ -6,8 +6,8 @@
 		<name>Marc Schiffbauer</name>
 	</maintainer>
 	<use>
-		<flag name='ipsec'>Enable support for IPSECKEY records (ipseckey)</flag>
-		<flag name='openpgp'>Enable support for OPENPGPKEY records (openpgpkey)</flag>
-		<flag name='ssh'>Enable support for SSHFP records (sshfp)</flag>
+		<flag name="ipsec">Enable support for IPSECKEY records (ipseckey)</flag>
+		<flag name="openpgp">Enable support for OPENPGPKEY records (openpgpkey)</flag>
+		<flag name="ssh">Enable support for SSHFP records (sshfp)</flag>
 	</use>
 </pkgmetadata>

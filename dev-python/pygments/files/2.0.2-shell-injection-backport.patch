@@ -1,0 +1,29 @@
+# HG changeset patch
+# User Javantea <jvoss@altsci.com>
+# Date 1443460403 25200
+# Node ID 6b4baae517b6aaff7142e66f1dbadf7b9b871f61
+# Parent  655dbebddc23943b8047b3c139c51c22ef18fd91
+Fix Shell Injection in FontManager._get_nix_font_path
+
+diff --git a/pygments/formatters/img.py b/pygments/formatters/img.py
+--- a/pygments/formatters/img.py
++++ b/pygments/formatters/img.py
+@@ -10,6 +10,7 @@
+ """
+ 
+ import sys
++import shlex
+ 
+ from pygments.formatter import Formatter
+ from pygments.util import get_bool_opt, get_int_opt, get_list_opt, \
+@@ -79,8 +80,8 @@
+             from commands import getstatusoutput
+         except ImportError:
+             from subprocess import getstatusoutput
+-        exit, out = getstatusoutput('fc-list "%s:style=%s" file' %
+-                                    (name, style))
++        exit, out = getstatusoutput('fc-list %s file' % 
++                                    shlex.quote("%s:style=%s" % (name, style)))
+         if not exit:
+             lines = out.splitlines()
+             if lines:

@@ -19,15 +19,15 @@
 		<name>Emery Hemingway</name>
 	</maintainer>
 	<use>
-		<flag name='cli'>Enables the CLI interface</flag>
-		<flag name='cosign'>Enable plugin to support multisig wallets between multiple Electrum clients</flag>
-		<flag name='email'>Enable plugin to support emailing invoices</flag>
-		<flag name='fiat'>Enable plugin for looking up fiat values of bitcoin</flag>
-		<flag name='greenaddress_it'>Enable plugin to verify GreenAddress.it instant transactions</flag>
-		<flag name='gtk3'>Enable support for gtk+3</flag>
-		<flag name='qrcode'>Enable QR code scanning with <pkg>media-gfx/zbar</pkg></flag>
-		<flag name='sync'>Enable plugin to sync wallet metadata across multiple Electrum clients</flag>
-		<flag name='trustedcoin_com'>Enable plugin to use two-factor service by TrustedCoin.com</flag>
-		<flag name='vkb'>Enable plugin for virtual keyboard</flag>
+		<flag name="cli">Enables the CLI interface</flag>
+		<flag name="cosign">Enable plugin to support multisig wallets between multiple Electrum clients</flag>
+		<flag name="email">Enable plugin to support emailing invoices</flag>
+		<flag name="fiat">Enable plugin for looking up fiat values of bitcoin</flag>
+		<flag name="greenaddress_it">Enable plugin to verify GreenAddress.it instant transactions</flag>
+		<flag name="gtk3">Enable support for gtk+3</flag>
+		<flag name="qrcode">Enable QR code scanning with <pkg>media-gfx/zbar</pkg></flag>
+		<flag name="sync">Enable plugin to sync wallet metadata across multiple Electrum clients</flag>
+		<flag name="trustedcoin_com">Enable plugin to use two-factor service by TrustedCoin.com</flag>
+		<flag name="vkb">Enable plugin for virtual keyboard</flag>
 	</use>
 </pkgmetadata>

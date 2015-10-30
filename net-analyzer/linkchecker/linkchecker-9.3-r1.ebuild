@@ -22,7 +22,10 @@ KEYWORDS="amd64 x86 ~ppc-macos ~x64-solaris"
 IUSE="gnome sqlite X"
 
 RDEPEND="
-	dev-python/dnspython[${PYTHON_USEDEP}]
+	|| (
+		dev-python/dnspython:0[${PYTHON_USEDEP}]
+		virtual/dnspython[${PYTHON_USEDEP}]
+		)
 	>=dev-python/requests-2.2.1[${PYTHON_USEDEP}]
 	gnome? ( dev-python/pygtk:2[${PYTHON_USEDEP}] )
 	X? (

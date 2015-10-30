@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ KEYWORDS="amd64 ~arm ~ia64 ~ppc ~ppc64 x86"
 IUSE="doc"
 
 RDEPEND="|| (
-		dev-python/dnspython
+		dev-python/dnspython:0
 		dev-python/pydns
 	)"
 DEPEND="${RDEPEND}

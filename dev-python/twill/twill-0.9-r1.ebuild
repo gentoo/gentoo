@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI="5"
+
 PYTHON_COMPAT=( python2_7 pypy )
 
 inherit distutils-r1
@@ -19,18 +20,24 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ppc ~ppc64 x86"
 IUSE="doc examples"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( $(python_gen_cond_dep 'dev-python/epydoc[${PYTHON_USEDEP}]' python2_7)
-		$(python_gen_cond_dep 'dev-python/dnspython[${PYTHON_USEDEP}]' python2_7) )"
+DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	doc? (
+		$(python_gen_cond_dep 'dev-python/epydoc[${PYTHON_USEDEP}]' python2_7)
+		|| (
+			dev-python/dnspython:0[${PYTHON_USEDEP}]
+			virtual/dnspython:0[${PYTHON_USEDEP}]
+		)
+	)"
 
 S="${WORKDIR}/${MY_P}"
 
 python_compile_all() {
 	if use doc; then
-		pushd doc > /dev/null
-		chmod +x make-epydoc.sh
-		./make-epydoc.sh
-		popd> /dev/null
+		pushd doc > /dev/null || die
+		chmod +x make-epydoc.sh || die
+		./make-epydoc.sh || die
+		popd> /dev/null || die
 	fi
 }
 

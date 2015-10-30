@@ -5,6 +5,7 @@
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
+
 inherit python-r1
 
 DESCRIPTION="Various tools to generate special DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY"
@@ -16,26 +17,26 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="ipsec +openpgp +ssh"
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 DEPEND=""
 RDEPEND="
 	${PYTHON_DEPS}
-	dev-python/dnspython[$PYTHON_USEDEP]
 	dev-python/ipaddr[$PYTHON_USEDEP]
 	dev-python/m2crypto[$PYTHON_USEDEP]
 	net-dns/unbound[python,$PYTHON_USEDEP]
+	virtual/dnspython[$PYTHON_USEDEP]
 	ipsec? ( net-misc/libreswan[dnssec] )
 	openpgp? ( dev-python/python-gnupg[$PYTHON_USEDEP] )
 	ssh? ( net-misc/openssh )
 "
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-
 src_install() {
 	local tools
 	tools="tlsa"
-	use ssh 	&& tools+=" sshfp"
+	use ssh	&& tools+=" sshfp"
 	use openpgp && tools+=" openpgpkey"
-	use ipsec 	&& tools+=" ipseckey"
+	use ipsec && tools+=" ipseckey"
 	for tool in $tools ; do
 		doman ${tool}.1
 		python_foreach_impl python_doscript ${tool}

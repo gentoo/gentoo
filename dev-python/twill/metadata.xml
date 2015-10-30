@@ -6,4 +6,3 @@
 		twill is a simple language that allows users to browse the Web from a command-line interface. With twill, you can navigate through Web sites that use forms, cookies, and most standard Web features.  twill supports automated Web testing and has a simple Python interface. Check out the examples! twill is open source and written in Python.
 	</longdescription>
 </pkgmetadata>
-

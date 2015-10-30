@@ -20,9 +20,10 @@ KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-
 IUSE="doc test"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/nose[${PYTHON_USEDEP}]
+	test? (
+		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/pycountry[${PYTHON_USEDEP}]
-		>=dev-python/dnspython-1.12.0-r1[${PYTHON_USEDEP}] )"
+		virtual/dnspython[${PYTHON_USEDEP}] )"
 RDEPEND=""
 
 RESTRICT="test"

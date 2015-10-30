@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -45,7 +45,7 @@ COMMON_DEPEND="
 	dev-python/apsw
 	>=dev-python/beautifulsoup-3.0.5:python-2
 	dev-python/netifaces
-	>=dev-python/dnspython-1.6.0
+	>=dev-python/dnspython-1.6.0:0
 	>=dev-python/cssselect-0.7.1
 	>=dev-python/cssutils-0.9.9
 	>=dev-python/dbus-python-0.82.2

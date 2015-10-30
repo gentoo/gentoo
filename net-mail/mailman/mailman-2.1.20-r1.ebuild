@@ -2,10 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
-PYTHON_DEPEND="2"
+EAPI=5
 
-inherit eutils python multilib systemd user
+PYTHON_COMPAT=( python2_7 )
+
+inherit eutils python-single-r1 multilib systemd user
 
 DESCRIPTION="A python-based mailing list server with an extensive web interface"
 SRC_URI="mirror://sourceforge/${PN}/${P/_p/-}.tgz"
@@ -14,22 +15,20 @@ S="${WORKDIR}/${P/_p/-}"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="selinux"
 
-DEPEND="virtual/mta
+DEPEND="
+	virtual/mta
 	virtual/cron
 	virtual/httpd-cgi
-	|| (
-		dev-python/dnspython:0
-		virtual/dnspython
-	)"
+	virtual/dnspython[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-mailman )
 "
 
 pkg_setup() {
-	python_set_active_version 2
+	python-single-r1_pkg_setup
 	INSTALLDIR=${MAILMAN_PREFIX:-"/usr/$(get_libdir)/mailman"}
 	VAR_PREFIX=${MAILMAN_VAR_PREFIX:-"/var/lib/mailman"}
 	CGIUID=${MAILMAN_CGIUID:-apache}
@@ -44,17 +43,16 @@ pkg_setup() {
 	# Duplicated at pkg_postinst() for binary install.
 	enewgroup ${MAILGRP} ${MAILGID}
 	enewuser  ${MAILUSR} ${MAILUID} /bin/bash ${INSTALLDIR} mailman,cron
-
-	python_pkg_setup
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-2.1.14_rc1-directory-check.patch" || die "patch failed."
-	epatch "${FILESDIR}/${PN}-2.1.9-icons.patch" || die "patch failed."
+	epatch "${FILESDIR}/${PN}-2.1.14_rc1-directory-check.patch"
+	epatch "${FILESDIR}/${PN}-2.1.9-icons.patch"
 }
 
 src_configure() {
-	econf --without-permcheck \
+	econf \
+		--without-permcheck \
 		--prefix="${INSTALLDIR}" \
 		--with-mail-gid=${MAILGID} \
 		--with-cgi-gid=${CGIGID} \
@@ -62,31 +60,28 @@ src_configure() {
 		--with-var-prefix="${VAR_PREFIX}" \
 		--with-username=${MAILUSR} \
 		--with-groupname=${MAILGRP} \
-		--with-python=$(PYTHON -2 -a) \
-	|| die "configure failed"
-}
-
-src_compile() {
-	emake || die "make failed"
+		--with-python="${PYTHON}"
 }
 
 src_install () {
-	emake "DESTDIR=${D}" doinstall || die
+	emake "DESTDIR=${D}" doinstall
 
 	insinto /etc/apache2/modules.d
 	newins "${FILESDIR}/50_mailman.conf-r2" 50_mailman.conf
-	sed -i "s:/usr/local/mailman/cgi-bin:${INSTALLDIR}/cgi-bin:g" "${D}/etc/apache2/modules.d/50_mailman.conf"
-	sed -i "s:/usr/local/mailman/icons:${INSTALLDIR}/icons:g" "${D}/etc/apache2/modules.d/50_mailman.conf"
-	sed -i "s:/usr/local/mailman/archives:${VAR_PREFIX}/archives:g" "${D}/etc/apache2/modules.d/50_mailman.conf"
+	sed \
+		-e "s:/usr/local/mailman/cgi-bin:${INSTALLDIR}/cgi-bin:g" \
+		-e "s:/usr/local/mailman/icons:${INSTALLDIR}/icons:g" \
+		-e "s:/usr/local/mailman/archives:${VAR_PREFIX}/archives:g" \
+		-i "${D}/etc/apache2/modules.d/50_mailman.conf" || die
 
-	newdoc "${FILESDIR}/README.gentoo-r3" README.gentoo || die "newdoc failed"
+	newdoc "${FILESDIR}/README.gentoo-r3" README.gentoo
 
 	dodoc ACK* BUGS FAQ NEWS README* TODO UPGRADING INSTALL contrib/mailman.mc \
-		contrib/README.check_perms_grsecurity contrib/virtusertable || die "dodoc failed"
+		contrib/README.check_perms_grsecurity contrib/virtusertable
 
 	exeinto ${INSTALLDIR}/bin
 	doexe build/contrib/*.py contrib/majordomo2mailman.pl contrib/auto \
-		contrib/mm-handler* || die
+		contrib/mm-handler*
 
 	dodir /etc/mailman
 	mv "${D}/${INSTALLDIR}/Mailman/mm_cfg.py" "${D}/etc/mailman"
@@ -94,10 +89,9 @@ src_install () {
 
 	# Save the old config for updates from pre-2.1.9-r2
 	# To be removed some distant day
-	for i in /var/mailman /home/mailman /usr/local/mailman ${INSTALLDIR}
-	do
+	for i in /var/mailman /home/mailman /usr/local/mailman ${INSTALLDIR}; do
 		if [ -f ${i}/Mailman/mm_cfg.py ] && ! [ -L ${i}/Mailman/mm_cfg.py ]; then
-			cp ${i}/Mailman/mm_cfg.py "${D}/etc/mailman/mm_cfg.py"
+			cp ${i}/Mailman/mm_cfg.py "${D}/etc/mailman/mm_cfg.py" || die
 		fi
 	done
 
@@ -114,34 +108,33 @@ src_install () {
 	keepdir ${VAR_PREFIX}/lists
 	keepdir ${VAR_PREFIX}/qfiles
 
-	chown -R ${MAILUSR}:${MAILGRP} "${D}/${VAR_PREFIX}" "${D}/${INSTALLDIR}" "${D}"/etc/mailman/*
-	chown ${CGIUID}:${MAILGRP} "${D}/${VAR_PREFIX}/archives/private"
+	chown -R ${MAILUSR}:${MAILGRP} "${D}/${VAR_PREFIX}" "${D}/${INSTALLDIR}" "${D}"/etc/mailman/* || die
+	chown ${CGIUID}:${MAILGRP} "${D}/${VAR_PREFIX}/archives/private" || die
 	chmod 2775 "${D}/${INSTALLDIR}" "${D}/${INSTALLDIR}"/templates/* \
-		"${D}/${INSTALLDIR}"/messages/* "${D}/${VAR_PREFIX}" "${D}/${VAR_PREFIX}"/{logs,lists,spam,locks,archives/public}
-	chmod 2770 "${D}/${VAR_PREFIX}/archives/private"
-	chmod 2770 "${D}/${VAR_PREFIX}/qfiles"
-	chmod 2755 "${D}/${INSTALLDIR}"/cgi-bin/* "${D}/${INSTALLDIR}/mail/mailman"
+		"${D}/${INSTALLDIR}"/messages/* "${D}/${VAR_PREFIX}" "${D}/${VAR_PREFIX}"/{logs,lists,spam,locks,archives/public} || die
+	chmod 2770 "${D}/${VAR_PREFIX}/archives/private" || die
+	chmod 2770 "${D}/${VAR_PREFIX}/qfiles" || die
+	chmod 2755 "${D}/${INSTALLDIR}"/cgi-bin/* "${D}/${INSTALLDIR}/mail/mailman" || die
 
+	python_optimize ${INSTALLDIR}/bin/ ${INSTALLDIR}/Mailman \
+		${INSTALLDIR}/Mailman/*/
 }
 
 pkg_postinst() {
-	python_mod_optimize ${INSTALLDIR}/bin/ ${INSTALLDIR}/Mailman \
-		${INSTALLDIR}/Mailman/*/
-
 	enewgroup ${MAILGRP} ${MAILGID}
 	enewuser  ${MAILUSR} ${MAILUID} -1 ${INSTALLDIR} mailman,cron
-	elog
+	echo
 	elog "Please read /usr/share/doc/${PF}/README.gentoo.bz2 for additional"
 	elog "Setup information, mailman will NOT run unless you follow"
 	elog "those instructions!"
-	elog
+	echo
 
 	elog "An example Mailman configuration file for Apache has been installed into:"
 	elog "  ${APACHE2_MODULES_CONFDIR}/50_mailman.conf"
-	elog
+	echo
 	elog "To enable, you will need to add \"-D MAILMAN\" to"
 	elog "/etc/conf.d/apache2."
-	elog
+	echo
 
 	ewarn "Default-Configuration has changed deeply in 2.1.9-r2. You can configure"
 	ewarn "mailman with the following variables:"
@@ -168,10 +161,4 @@ pkg_postinst() {
 	ewarn "a pre 2.1.9-r2 installation), you should move your old lists/ and"
 	ewarn "archives/ directory to the new location, ensuring that the"
 	ewarn "permissions is correct.  See bug #208789 for a discussion."
-}
-
-pkg_postrm() {
-	INSTALLDIR=${MAILMAN_PREFIX:-"/usr/$(get_libdir)/mailman"}
-	python_mod_cleanup ${INSTALLDIR}/bin ${INSTALLDIR}/Mailman \
-		${INSTALLDIR}/Mailman/*/
 }
