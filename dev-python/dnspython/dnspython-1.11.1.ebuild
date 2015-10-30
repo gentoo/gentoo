@@ -17,7 +17,10 @@ KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd
 IUSE="examples test"
 
 DEPEND="dev-python/pycrypto[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!dev-python/dnspython:py2
+	!dev-python/dnspython:py3
+"
 
 DOCS=( ChangeLog README )
 

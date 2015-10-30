@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
@@ -12,21 +13,23 @@ HOMEPAGE="http://www.dnspython.org/ https://pypi.python.org/pypi/dnspython"
 SRC_URI="http://www.dnspython.org/kits/${PV}/${P}.tar.gz"
 
 LICENSE="ISC"
-SLOT="0"
+SLOT="py2"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
 IUSE="examples test"
 
-DEPEND="dev-python/pycrypto[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}"
+RDEPEND="dev-python/pycrypto[${PYTHON_USEDEP}]
+	!dev-python/dnspython:0"
+DEPEND="${RDEPEND}
+	!dev-python/dnspython:0
+	app-arch/unzip"
 
-# For tests
+# For testsuite
 DISTUTILS_IN_SOURCE_BUILD=1
 
 python_test() {
-	pushd "${BUILD_DIR}"/../tests &> /dev/null
+	cd tests || die
 	"${PYTHON}" utest.py || die "tests failed under ${EPYTHON}"
 	einfo "Testsuite passed under ${EPYTHON}"
-	popd &> /dev/null
 }
 
 python_install_all() {
