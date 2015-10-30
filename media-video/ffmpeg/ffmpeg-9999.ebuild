@@ -106,7 +106,7 @@ IUSE="
 ARM_CPU_FEATURES=( armv5te armv6 armv6t2 neon armvfp:vfp )
 MIPS_CPU_FEATURES=( mipsdspr1 mipsdspr2 mipsfpu )
 PPC_CPU_FEATURES=( altivec )
-X86_CPU_FEATURES_RAW=( 3dnow:amd3dnow 3dnowext:amd3dnowext avx:avx avx2:avx2 fma3:fma3 fma4:fma4 mmx:mmx mmxext:mmxext sse:sse sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4 sse4_2:sse42 xop:xop )
+X86_CPU_FEATURES_RAW=( 3dnow:amd3dnow 3dnowext:amd3dnowext aes:aesni avx:avx avx2:avx2 fma3:fma3 fma4:fma4 mmx:mmx mmxext:mmxext sse:sse sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4 sse4_2:sse42 xop:xop )
 X86_CPU_FEATURES=( ${X86_CPU_FEATURES_RAW[@]/#/cpu_flags_x86_} )
 X86_CPU_REQUIRED_USE="
 	cpu_flags_x86_avx2? ( cpu_flags_x86_avx )
@@ -114,6 +114,7 @@ X86_CPU_REQUIRED_USE="
 	cpu_flags_x86_fma3? ( cpu_flags_x86_avx )
 	cpu_flags_x86_xop?  ( cpu_flags_x86_avx )
 	cpu_flags_x86_avx?  ( cpu_flags_x86_sse4_2 )
+	cpu_flags_x86_aes? ( cpu_flags_x86_sse4_2 )
 	cpu_flags_x86_sse4_2?  ( cpu_flags_x86_sse4_1 )
 	cpu_flags_x86_sse4_1?  ( cpu_flags_x86_ssse3 )
 	cpu_flags_x86_ssse3?  ( cpu_flags_x86_sse3 )
