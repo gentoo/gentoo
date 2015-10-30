@@ -8214,7 +8214,7 @@ dev-ros/rosbag_storage 1.11.14 1.11.15 9999: Set of tools for recording from and
 dev-ros/rosbash 1.12.3 1.12.5 9999: Assorted shell commands for using ros with bash
 dev-ros/rosboost_cfg 1.12.3 1.12.5 9999: Tool for determining cflags/lflags/etc. of boost on your system
 dev-ros/rosbridge_library 0.7.13 9999: Core rosbridge package repsonsible for interpreting JSON and performing the appropriate ROS action
-dev-ros/rosbridge_server 0.7.13 9999: A WebSocket interface to rosbridge
+dev-ros/rosbridge_server 0.7.13-r1 9999: A WebSocket interface to rosbridge
 dev-ros/rosbuild 1.12.3 1.12.5 9999: Scripts for managing the CMake-based build system for ROS
 dev-ros/rosclean 1.12.3 1.12.5 9999: Cleanup filesystem resources (e.g. log files)
 dev-ros/rosconsole 1.11.14 1.11.15 9999: ROS console output library
