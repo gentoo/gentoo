@@ -103,7 +103,6 @@ python_prepare_all() {
 		"${FILESDIR}"/${PN}-0.12.0-blitz.patch
 		"${FILESDIR}"/${PN}-0.12.0-restore-sys-argv.patch
 		"${FILESDIR}"/${P}-glibc-2.22-backport.patch
-		"${FILESDIR}"/${P}-test-fix-backport.patch
 	)
 	distutils-r1_python_prepare_all
 }
