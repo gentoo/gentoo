@@ -1373,7 +1373,7 @@ app-eselect/eselect-lapack 0.1: LAPACK module for eselect
 app-eselect/eselect-lcdfilter 1 2: Eselect module to choose Freetype infinality-enhanced LCD filtering settings
 app-eselect/eselect-lib-bin-symlink 0.1 0.1.1 9999: An eselect library to manage executable symlinks
 app-eselect/eselect-lua 1: Lua eselect module
-app-eselect/eselect-maven 0.2-r1 0.2-r2: Manages Maven symlinks
+app-eselect/eselect-maven 0.2-r1 0.2-r2 0.2-r3: Manages Maven symlinks
 app-eselect/eselect-mesa 0.0.10: Utility to change the Mesa OpenGL driver being used
 app-eselect/eselect-metasploit 0.16: eselect module for metasploit
 app-eselect/eselect-miniaudicle 1.0.1-r1: Manages the /usr/bin/miniAudicle symlink
