@@ -152,10 +152,6 @@ www-apps/venus test
 # dev-java/sun-j2me-bin is going away.
 dev-java/proguard j2me
 
-# Christoph Junghans <ottxor@gentoo.org> (03 Apr 2015)
-# >=~sys-devel/dragonegg-3.6 is broken (bug #543644)
-sys-devel/byfl dragonegg
-
 # Lars Wendler <polynomial-c@gentoo.org> (19 Mar 2015)
 # >=games-strategy/freeciv-2.5.0 requires >=dev-lang/lua-5.2
 # No stable qt5 yet.
