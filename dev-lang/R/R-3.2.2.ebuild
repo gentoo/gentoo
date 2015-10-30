@@ -45,7 +45,7 @@ DEPEND="${CDEPEND}
 	)"
 
 RDEPEND="${CDEPEND}
-	( || ( <sys-libs/zlib-1.2.5.1-r1:0 >=sys-libs/zlib-1.2.5.1-r2:0[minizip] ) )
+	>=sys-libs/zlib-1.2.5.1-r2:0[minizip]
 	java? ( >=virtual/jre-1.5 )"
 
 RESTRICT="minimal? ( test )"
