@@ -21,8 +21,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? (
-		dev-cpp/gtest
-		dev-libs/boost
+		dev-cpp/gtest[${MULTILIB_USEDEP}]
+		dev-libs/boost[${MULTILIB_USEDEP}]
 	)"
 
 DOCS="NEWS.txt README.md"
