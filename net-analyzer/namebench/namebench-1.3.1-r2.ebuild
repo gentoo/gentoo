@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,11 +20,12 @@ IUSE="X"
 # PYTHON_REQ_USE does not support X? ( tk ) syntax yet
 DEPEND="X? ( $(python_gen_cond_dep dev-lang/python:2.7[tk] python2_7) )"
 RDEPEND="${DEPEND}
-	>=dev-python/dnspython-1.8.0[${PYTHON_USEDEP}]
 	>=dev-python/httplib2-0.6[${PYTHON_USEDEP}]
 	>=dev-python/graphy-1.0[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.2.1[${PYTHON_USEDEP}]
-	>=dev-python/simplejson-2.1.2[${PYTHON_USEDEP}]"
+	>=dev-python/simplejson-2.1.2[${PYTHON_USEDEP}]
+	virtual/dnspython[${PYTHON_USEDEP}]
+"
 
 python_prepare_all() {
 	# don't include bundled libraries
