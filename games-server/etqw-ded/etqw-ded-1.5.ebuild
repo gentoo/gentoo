@@ -21,8 +21,8 @@ RDEPEND="sys-libs/glibc"
 S=${WORKDIR}/data
 dir=${GAMES_PREFIX_OPT}/${PN}
 
-QA_TEXTRELS="${dir:1}/pb/*.so"
-QA_EXECSTACK="${dir:1}/*.x86
+QA_PREBUILT="${dir:1}/pb/*.so
+	${dir:1}/*.x86
 	${dir:1}/*.so*"
 
 pkg_nofetch() {
@@ -30,9 +30,9 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	tail -c +194885 "${DISTDIR}"/${A} > ${A}.zip
+	tail -c +194885 "${DISTDIR}"/${A} > ${A}.zip || die
 	unpack ./${A}.zip
-	rm -f ${A}.zip
+	rm -f ${A}.zip || die
 }
 
 src_install() {
