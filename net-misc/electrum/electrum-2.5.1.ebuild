@@ -39,7 +39,6 @@ REQUIRED_USE="
 
 RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/dnspython[${PYTHON_USEDEP}]
 	dev-python/ecdsa[${PYTHON_USEDEP}]
 	dev-python/pbkdf2[${PYTHON_USEDEP}]
 	dev-python/pyasn1[${PYTHON_USEDEP}]
@@ -51,6 +50,7 @@ RDEPEND="
 	dev-python/socksipy[${PYTHON_USEDEP}]
 	dev-python/tlslite[${PYTHON_USEDEP}]
 	dev-libs/protobuf[python,${PYTHON_USEDEP}]
+	virtual/dnspython[${PYTHON_USEDEP}]
 	qrcode? ( media-gfx/zbar[python,v4l,${PYTHON_USEDEP}] )
 	gtk3? (
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
