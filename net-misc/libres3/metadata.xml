@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>ml</herd>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>tomboy64@sina.cn</email>
+	</maintainer>
+	<longdescription lang="en">
+		LibreS3 adds an S3-compatibility layer over SX Cluster. With LibreS3 you access the data stored in your storage cluster using any existing S3 client.
+	</longdescription>
+</pkgmetadata>
