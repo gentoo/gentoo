@@ -7926,7 +7926,7 @@ dev-python/txsocksx 1.13.0.3 1.15.0.2: Twisted client endpoints for SOCKS{4,4a,5
 dev-python/tzlocal 1.1.2 1.2: tzinfo object for the local timezone
 dev-python/uhashring 0.2: Full featured consistent hashing python library compatible with ketama
 dev-python/ujson 1.33: Ultra fast JSON encoder and decoder for Python
-dev-python/unicodecsv 0.9.4 0.11.0 0.11.1 0.12.0 0.13.0: Drop-in replacement for python stdlib csv module supporting unicode
+dev-python/unicodecsv 0.9.4 0.13.0 0.14.1: Drop-in replacement for python stdlib csv module supporting unicode
 dev-python/unidecode 0.04.17 0.04.18: Module providing ASCII transliterations of Unicode text
 dev-python/unittest2 0.5.1-r1 0.5.1-r2 0.8.0 1.0.1-r1 1.1.0: The new features in unittest backported to Python 2.4+
 dev-python/uritemplate 0.6: Python implementation of RFC6570, URI Template
