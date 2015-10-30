@@ -12,7 +12,7 @@ SRC_URI="http://download.osgeo.org/${PN}/libLAS-${PV}.tar.bz2"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="gdal geotiff"
 REQUIRED_USE="gdal? ( geotiff )"
 

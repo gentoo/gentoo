@@ -20,7 +20,7 @@ SRC_URI="http://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="7"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="X blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl opengl openmp png postgres readline sqlite threads tiff truetype"
 
 RDEPEND="${PYTHON_DEPS}
