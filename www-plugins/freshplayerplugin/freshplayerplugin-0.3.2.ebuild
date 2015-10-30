@@ -15,7 +15,7 @@ SRC_URI="https://github.com/i-rinat/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SLOT=0
 IUSE="gtk3 jack libav pulseaudio vaapi vdpau"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 HWDEC_DEPEND="
 	libav? ( media-video/libav:0=[vaapi?,vdpau?,x264] )
