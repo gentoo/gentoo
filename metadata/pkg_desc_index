@@ -2114,7 +2114,7 @@ app-portage/layman 2.0.0-r1 2.0.0-r3 2.1.0-r3 2.2.0-r7 2.3.0 9999: Tool to manag
 app-portage/layman-dbtools 0_p20100322: Tools to work with layman-global.txt/repositories.xml like files
 app-portage/lightweight-cvs-toolkit 1: Tools to create partial CVS checkout, merge PRs and revert commits
 app-portage/maintainer-helper 0.1.2: An application to help with ebuild maintenance
-app-portage/metagen 0.6.2-r1 9999: metadata.xml generator for ebuilds
+app-portage/metagen 0.6.2-r1 0.6.3 9999: metadata.xml generator for ebuilds
 app-portage/mirrorselect 2.2.0.1 2.2.2 2.2.2-r2 9999: Tool to help select distfiles mirrors for Gentoo
 app-portage/overlint 0.5.2 0.5.3: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreports; 'emerge --info' for perl
@@ -12642,7 +12642,7 @@ media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
 media-sound/asunder 2.2 2.7 2.8: A graphical Audio CD ripper and encoder with support for WAV, MP3, OggVorbis, FLAC and Opus
 media-sound/aucdtect 0.8.2-r1: Commandline FLAC CDDA authenticity verifier
 media-sound/audacious 2.4.4 2.5.4 3.1 3.1.1 3.2.2-r1 3.2.3 3.2.4 3.3.3 3.3.4 3.4.1 3.5.1 3.6.2: Audacious Player - Your music, your way, no exceptions
-media-sound/audacity 2.0.2 2.0.5 2.1.1: Free crossplatform audio editor
+media-sound/audacity 2.0.2 2.0.5 2.0.5-r1 2.1.1: Free crossplatform audio editor
 media-sound/audex 0.79: KDE based CDDA extraction tool
 media-sound/audicle 1.0.0.7-r1: A Context-sensitive, On-the-fly Audio Programming Environ/mentality
 media-sound/audiocompress 2.0: Very gentle 1-band dynamic range compressor
