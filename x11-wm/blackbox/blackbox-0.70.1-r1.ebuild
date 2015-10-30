@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}wm/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~ppc ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ppc ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="nls truetype debug"
 
 RDEPEND="x11-libs/libXft
