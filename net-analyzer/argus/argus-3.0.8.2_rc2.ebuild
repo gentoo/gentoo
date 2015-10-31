@@ -7,11 +7,11 @@ inherit autotools eutils user
 
 DESCRIPTION="network Audit Record Generation and Utilization System"
 HOMEPAGE="http://www.qosient.com/argus/"
-SRC_URI="http://qosient.com/argus/src/${P}.tar.gz"
+SRC_URI="${HOMEPAGE}dev/${P/_rc/.rc.}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="debug sasl tcpd"
 
 RDEPEND="
@@ -27,7 +27,10 @@ DEPEND="
 	>=sys-devel/flex-2.4.6
 "
 
+S=${WORKDIR}/${P/_rc/.rc.}
+
 src_prepare() {
+	find . -type f -execdir chmod +w {} \; #561360
 	sed -e 's:/etc/argus.conf:/etc/argus/argus.conf:' \
 		-i argus/argus.c \
 		-i support/Config/argus.conf \
@@ -39,7 +42,7 @@ src_prepare() {
 		-e 's:\(#ARGUS_CHROOT_DIR=\).*:\1/var/lib/argus:' \
 			-i support/Config/argus.conf || die
 	epatch \
-		"${FILESDIR}"/${PN}-3.0.4-disable-tcp-wrappers-automagic.patch \
+		"${FILESDIR}"/${PN}-3.0.8.1-disable-tcp-wrappers-automagic.patch \
 		"${FILESDIR}"/${PN}-3.0.5-Makefile.patch \
 		"${FILESDIR}"/${PN}-3.0.7.3-DLT_IPNET.patch
 	eautoreconf
