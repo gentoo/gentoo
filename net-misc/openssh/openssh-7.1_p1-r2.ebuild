@@ -207,12 +207,6 @@ src_configure() {
 	# The seccomp sandbox is broken on x32, so use the older method for now. #553748
 	use amd64 && [[ ${ABI} == "x32" ]] && myconf+=( --with-sandbox=rlimit )
 
-	# Special settings for Gentoo/FreeBSD 9.0 or later (see bug #391011)
-	if use elibc_FreeBSD && version_is_at_least 9.0 "$(uname -r|sed 's/\(.\..\).*/\1/')" ; then
-		myconf+=( --disable-utmp --disable-wtmp --disable-wtmpx )
-		append-ldflags -lutil
-	fi
-
 	econf "${myconf[@]}"
 }
 
