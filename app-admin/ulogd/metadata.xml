@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<herd>proxy-maintainers</herd>
 	<maintainer>
-		<email>itumaykin@gmail.com</email>
+		<email>itumaykin+gentoo@gmail.com</email>
 	</maintainer>
 	<use>
 		<flag name='json'>Build JSON output plugin to save packets in JSON file format.</flag>
