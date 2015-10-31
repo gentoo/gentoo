@@ -13244,7 +13244,7 @@ media-video/xine-ui 0.99.7 0.99.8 0.99.9: Xine movie player
 media-video/xvattr 1.3-r3: X11 XVideo Querying/Setting Tool from Ogle project
 media-video/xvid4conf 1.12: GTK2-configuration dialog for xvid4
 media-video/xvideoservicethief 2.4.1-r2: Download (and convert) videos from various Web Video Services
-net-analyzer/2ping 3.0.0: A bi-directional ping utility
+net-analyzer/2ping 3.0.1: A bi-directional ping utility
 net-analyzer/aimsniff 0.9d: Utility for monitoring and archiving AOL Instant Messenger messages across a network
 net-analyzer/alive 2.0.1 2.0.2: a periodic ping program
 net-analyzer/amap 5.4: A network scanning tool for pentesters
@@ -17468,7 +17468,7 @@ www-servers/gunicorn 19.1.1 19.3.0: A WSGI HTTP Server for UNIX
 www-servers/hiawatha 9.8 9.14 9.14-r1 9.15: Advanced and secure webserver
 www-servers/lighttpd 1.4.35 1.4.35-r1 1.4.35-r2 1.4.37 1.4.37-r1: Lightweight high-performance web server
 www-servers/mongoose 5.3: easy to use web server
-www-servers/monkeyd 1.5.6-r1 1.6.4 9999: A small, fast, and scalable web server
+www-servers/monkeyd 1.5.6-r1 1.6.5 9999: A small, fast, and scalable web server
 www-servers/nginx 1.8.0 1.9.4 1.9.5 1.9.6: Robust, small and high performance http and reverse proxy server
 www-servers/ocsigenserver 2.5-r2 2.6: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
