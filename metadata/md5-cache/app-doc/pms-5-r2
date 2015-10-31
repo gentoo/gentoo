@@ -8,4 +8,4 @@ KEYWORDS=alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~pp
 LICENSE=CC-BY-SA-3.0
 SLOT=0
 SRC_URI=!binary? ( https://dev.gentoo.org/~ulm/distfiles/pms-5.tar.xz ) binary? ( https://dev.gentoo.org/~ulm/distfiles/pms-5-prebuilt.tar.xz )
-_md5_=5303c20b0932b3142553198d12ce1a1c
+_md5_=55e928097ecbe3b1fcc91cfca59ad35b
