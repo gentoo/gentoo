@@ -403,7 +403,7 @@ src_configure() {
 	# DBA support
 	if use cdb || use berkdb || use flatfile || use gdbm || use inifile \
 		|| use qdbm ; then
-		my_conf="${my_conf} --enable-dba${shared}"
+		my_conf+=" --enable-dba${shared}"
 	fi
 
 	# DBA drivers support
@@ -497,12 +497,12 @@ src_configure() {
 	fi
 
 	# Use pic for shared modules such as apache2's mod_php
-	my_conf="${my_conf} --with-pic"
+	my_conf+=" --with-pic"
 
 	# we use the system copy of pcre
 	# --with-pcre-regex affects ext/pcre
 	# --with-pcre-dir affects ext/filter and ext/zip
-	my_conf="${my_conf} --with-pcre-regex=${EPREFIX}/usr --with-pcre-dir=${EPREFIX}/usr"
+	my_conf+=" --with-pcre-regex=${EPREFIX}/usr --with-pcre-dir=${EPREFIX}/usr"
 
 	# Catch CFLAGS problems
 	# Fixes bug #14067.
@@ -510,7 +510,7 @@ src_configure() {
 	replace-cpu-flags "k6*" "i586"
 
 	# Support user-passed configuration parameters
-	my_conf="${my_conf} ${EXTRA_ECONF:-}"
+	my_conf+=" ${EXTRA_ECONF:-}"
 
 	# Support the Apache2 extras, they must be set globally for all
 	# SAPIs to work correctly, especially for external PHP extensions
