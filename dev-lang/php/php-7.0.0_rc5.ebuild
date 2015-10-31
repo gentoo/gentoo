@@ -445,10 +445,8 @@ src_configure() {
 	$(use_with iodbc iodbc ${EPREFIX}/usr)"
 
 	# Oracle support
-	if use oci8-instant-client ; then
-		my_conf+="
-		$(use_with oci8-instant-client oci8)"
-	fi
+	my_conf+="
+	$(use_with oci8-instant-client oci8)"
 
 	# PDO support
 	if use pdo ; then
