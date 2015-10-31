@@ -8521,6 +8521,7 @@ dev-ruby/fuubar 2.0.0: Instafailing RSpec progress bar formatter
 dev-ruby/fxruby 1.6.29 1.6.29-r1: Ruby language binding to the FOX GUI toolkit
 dev-ruby/gettext_i18n_rails 1.2.2 1.2.3 1.3.0: FastGettext / Rails integration
 dev-ruby/gherkin 2.12.0-r2 2.12.0-r3 2.12.2: Fast Gherkin lexer and parser based on Ragel
+dev-ruby/gherkin3 3.1.2: Fast Gherkin lexer and parser
 dev-ruby/git 1.2.9.1 1.2.9.1-r1: Library for using Git in Ruby
 dev-ruby/github_api 0.11.3 0.11.3-r1 0.12.4: A Ruby wrapper for the GitHub REST API v3
 dev-ruby/globalid 0.3.3 0.3.5 0.3.6: Reference models by URI
@@ -8644,7 +8645,7 @@ dev-ruby/net-sftp 2.1.2-r1 2.1.2-r2: SFTP in pure Ruby
 dev-ruby/net-ssh 2.8.0 2.9.2 2.10.0 3.0.1: Non-interactive SSH processing in pure Ruby
 dev-ruby/net-ssh-gateway 1.2.0 1.2.0-r1: A simple library to assist in enabling tunneled Net::SSH connections
 dev-ruby/net-ssh-multi 1.2.0-r1 1.2.1: A library for controlling multiple Net::SSH connections via a single interface
-dev-ruby/netrc 0.9.0 0.9.0-r1 0.10.2 0.10.3: This library reads and writes .netrc files
+dev-ruby/netrc 0.9.0 0.10.3 0.11.0: This library reads and writes .netrc files
 dev-ruby/network_interface 0.0.1-r1: network_interface layer from metasploit pcaprub
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
 dev-ruby/nio4r 1.0.1 1.1.0 1.1.1: A high performance selector API for monitoring IO objects
@@ -13443,7 +13444,7 @@ net-analyzer/pbnj 2.04: A tool for running Nmap scans and diff'ing the results
 net-analyzer/pchar 1.5-r1: Internet bandwidth, latency, and loss of links analyzer
 net-analyzer/pinger 0.32e 0.33: Cyclic multi ping utility for selected adresses using GTK/ncurses
 net-analyzer/pktstat 1.8.5-r1: A network monitoring tool with bandwidth tracking
-net-analyzer/pmacct 1.5.1 1.5.2 1.5.3_pre20150925: A network tool to gather IP traffic information
+net-analyzer/pmacct 1.5.1 1.5.2 1.5.3_pre20150925 1.5.3_pre20150925-r1: A network tool to gather IP traffic information
 net-analyzer/pnp4nagios 0.6.24 0.6.25: A performance data analyzer for nagios
 net-analyzer/poink 2.03: TCP/IP-based ping implementation
 net-analyzer/portbunny 1.0_p20080423: A kernel based highspeed TCP SYN port scanner

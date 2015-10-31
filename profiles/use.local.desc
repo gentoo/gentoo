@@ -4997,6 +4997,7 @@ net-analyzer/pchar:pcap - Use the net-libs/libpcap library
 net-analyzer/pinger:gtk2 - Install the gtkpinger GUI utility based on x11-libs/gtk:2
 net-analyzer/pinger:gtk3 - Install the gtkpinger GUI utility based on x11-libs/gtk:3
 net-analyzer/pmacct:64bit - Use 64bit counters instead of 32bit ones
+net-analyzer/pmacct:geoipv2 - Add support for GeoIP2 through dev-libs/libmaxminddb
 net-analyzer/pmacct:mongodb - Add support for mongodb backend
 net-analyzer/pmacct:ulog - Enable support for ULOG in older kernels (deprecated)
 net-analyzer/rrdcollect:exec - Enable exec:/// support
