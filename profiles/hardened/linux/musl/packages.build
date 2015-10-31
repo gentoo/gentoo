@@ -6,4 +6,6 @@
 # a stage 1 based on this profile.
 
 dev-util/pkgconf
+sys-apps/attr
 sys-apps/sandbox
+dev-python/pyxattr
