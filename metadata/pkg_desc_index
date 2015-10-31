@@ -6948,7 +6948,7 @@ dev-python/dogpile-core 0.4.1: A lock which allows a thread to generate an expen
 dev-python/doit 0.23.0-r1 0.27.0 0.28.0: Automation tool
 dev-python/doit-py 0.3.0: doit tasks for python stuff
 dev-python/doublex 1.7 1.8.1: Python test doubles
-dev-python/doublex-expects 0.4.0 0.7.0_rc1: Expects matchers for Doublex test doubles assertions
+dev-python/doublex-expects 0.4.0 0.7.0_rc1 0.7.0_rc2: Expects matchers for Doublex test doubles assertions
 dev-python/dpkt 1.8-r1: Fast, simple packet creation / parsing, with definitions for the basic TCP/IP protocols
 dev-python/dreampie 1.2.1: pygtk-based python shell
 dev-python/drpython 3.11.4: A powerful cross-platform IDE for Python
@@ -14810,7 +14810,7 @@ net-wireless/bluedevil 2.1.1: Bluetooth stack for KDE
 net-wireless/blueman 2.0-r1 9999: GTK+ Bluetooth Manager, designed to be simple and intuitive for everyday bluetooth tasks
 net-wireless/bluez 4.101-r9 5.33 5.34 5.35 5.35-r1: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
-net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141 6.30.223.141-r1 6.30.223.141-r2 6.30.223.248-r1 6.30.223.248-r2 6.30.223.248-r3 6.30.223.248-r4: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
+net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141 6.30.223.141-r1 6.30.223.141-r2 6.30.223.248-r1 6.30.223.248-r2 6.30.223.248-r3 6.30.223.248-r4 6.30.223.271: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
 net-wireless/bss 0.8: Bluetooth stack smasher / fuzzer
 net-wireless/btcrack 9999: linux port of Thierry Zollers' BTCrack
 net-wireless/chillispot 1.1.0: open source captive portal or wireless LAN access point controller
