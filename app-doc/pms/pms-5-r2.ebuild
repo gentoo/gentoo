@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -38,7 +38,8 @@ src_compile() {
 src_install() {
 	dodoc pms.pdf eapi-cheatsheet.pdf
 	if use html; then
-		dohtml *.html pms.css $(shopt -s nullglob; echo *.png)
+		docinto html
+		dodoc *.html pms.css $(shopt -s nullglob; echo *.png)
 		dosym {..,/usr/share/doc/${PF}/html}/eapi-cheatsheet.pdf
 	fi
 }
