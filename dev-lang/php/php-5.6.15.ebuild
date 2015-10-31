@@ -464,12 +464,8 @@ src_configure() {
 
 	# ODBC support
 	my_conf+="
-	$(use_with odbc unixODBC ${EPREFIX}/usr)"
-
-	if use iodbc ; then
-		my_conf+="
-		$(use_with iodbc iodbc ${EPREFIX}/usr)"
-	fi
+	$(use_with odbc unixODBC ${EPREFIX}/usr)
+	$(use_with iodbc iodbc ${EPREFIX}/usr)"
 
 	# Oracle support
 	if use oci8-instant-client ; then
