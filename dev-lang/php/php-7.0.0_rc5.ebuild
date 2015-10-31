@@ -454,11 +454,8 @@ src_configure() {
 		$(use_with mysql pdo-mysql ${mysqllib})
 		$(use_with postgres pdo-pgsql )
 		$(use_with sqlite pdo-sqlite ${EPREFIX}/usr)
-		$(use_with odbc pdo-odbc unixODBC,${EPREFIX}/usr)"
-		if use oci8-instant-client ; then
-			my_conf+="
-			$(use_with oci8-instant-client pdo-oci)"
-		fi
+		$(use_with odbc pdo-odbc unixODBC,${EPREFIX}/usr)
+		$(use_with oci8-instant-client pdo-oci)"
 	fi
 
 	# readline/libedit support
