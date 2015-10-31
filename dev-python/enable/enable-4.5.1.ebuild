@@ -44,6 +44,8 @@ DISTUTILS_IN_SOURCE_BUILD=1
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.4.1-swig.patch
 	"${FILESDIR}"/${P}-gcc-5.patch
+	"${FILESDIR}"/${P}-doc.patch
+	"${FILESDIR}"/${P}-version.patch
 	)
 
 python_prepare_all() {

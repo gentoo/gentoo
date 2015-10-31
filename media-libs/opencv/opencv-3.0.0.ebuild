@@ -13,7 +13,7 @@ HOMEPAGE="http://opencv.org"
 SRC_URI="
 	mirror://sourceforge/opencvlibrary/opencv-unix/${PV}/${P}.zip
 	https://github.com/Itseez/${PN}/archive/${PV}.zip -> ${P}.zip
-	contrib? ( https://github.com/Itseez/opencv_contrib/archive/172fdb315280325a617fbb9db5ec5631acd8180e.zip -> ${PN}_contrib.zip )" # commit from 6.8.2015
+	contrib? ( https://github.com/Itseez/opencv_contrib/archive/2d1fc7a6cdccd04435795f68126151a51071a539.zip -> ${PN}_contrib.zip )" # commit from 26.10.2015
 
 LICENSE="BSD"
 SLOT="0/3.0"
@@ -102,6 +102,9 @@ src_prepare() {
 	sed -i \
 		-e '/add_subdirectory(.*3rdparty.*)/ d' \
 		CMakeLists.txt cmake/*cmake || die
+
+	#removing broken sample bug #558104
+	rm ../opencv_contrib-master/modules/ximgproc/samples/disparity_filtering.cpp
 
 	java-pkg-opt-2_src_prepare
 }
