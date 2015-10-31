@@ -1,0 +1,59 @@
+do not build test programs as we don't install them
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -10,7 +10,7 @@
+ 
+ AM_CFLAGS = $(THREAD_CFLAGS) $(Z_CFLAGS) $(LZMA_CFLAGS)
+ 
+-noinst_PROGRAMS=testSchemas testRelax testSAX testHTML testXPath testURI \
++check_PROGRAMS=testSchemas testRelax testSAX testHTML testXPath testURI \
+                 testThreads testC14N testAutomata testRegexp \
+                 testReader testapi testModule runtest runsuite testchar \
+ 		testdict runxmlconf testrecurse testlimits
+@@ -170,7 +170,7 @@
+ testModule_DEPENDENCIES = $(DEPS)
+ testModule_LDADD= $(LDADDS)
+ 
+-noinst_LTLIBRARIES = testdso.la
++check_LTLIBRARIES = testdso.la
+ testdso_la_SOURCES = testdso.c
+ testdso_la_LDFLAGS = -module -no-undefined -avoid-version -rpath $(libdir)
+ 
+--- a/doc/examples/Makefile.am
++++ b/doc/examples/Makefile.am
+@@ -13,7 +13,7 @@
+ rebuild: examples.xml index.html
+ .PHONY: rebuild
+ 
+-examples.xml: index.py $(noinst_PROGRAMS:=.c)
++examples.xml: index.py $(check_PROGRAMS:=.c)
+ 	cd $(srcdir) && $(PYTHON) index.py
+ 	$(MAKE) Makefile
+ 
+@@ -49,7 +49,7 @@
+ 	xpath1.res \
+ 	xpath2.res
+ 
+-noinst_PROGRAMS = \
++check_PROGRAMS = \
+ 	io1 \
+ 	io2 \
+ 	parse1 \
+@@ -99,7 +99,7 @@
+ valgrind: 
+ 	$(MAKE) CHECKER='valgrind' tests
+ 
+-tests: $(noinst_PROGRAMS)
++tests: $(check_PROGRAMS)
+ 	test -f Makefile.am || test -f test1.xml || $(LN_S) $(srcdir)/test?.xml .
+ 	@(echo '## examples regression tests')
+ 	@(echo > .memdump)
+--- a/example/Makefile.am
++++ b/example/Makefile.am
+@@ -1,4 +1,4 @@
+-noinst_PROGRAMS	= gjobread
++check_PROGRAMS	= gjobread
+ 
+ AM_CPPFLAGS = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(srcdir)/include
+ AM_CFLAGS = $(THREAD_CFLAGS) $(Z_CFLAGS)
