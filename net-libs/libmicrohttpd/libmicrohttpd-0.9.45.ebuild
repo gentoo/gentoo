@@ -20,9 +20,11 @@ RDEPEND="ssl? (
 		net-libs/gnutls
 	)"
 
+# We disable tests below because they're broken,
+# but if enabled, we'll need this.
 DEPEND="${RDEPEND}
 	test?	(
-		ssl? ( >=net-misc/curl-7.25.0-r1[ssl] )
+		ssl? ( net-misc/curl[ssl] )
 	)"
 
 S=${WORKDIR}/${MY_P}
@@ -36,12 +38,18 @@ src_configure() {
 		--disable-examples \
 		--disable-spdy \
 		--enable-postprocessor \
+		--runstatedir=/run \
 		$(use_enable epoll) \
 		$(use_enable test curl) \
 		$(use_enable messages) \
 		$(use_enable ssl https) \
 		$(use_with ssl gnutls) \
 		$(use_enable static-libs static)
+}
+
+# tests are broken in the portage environment.
+src_test() {
+	:
 }
 
 src_install() {
