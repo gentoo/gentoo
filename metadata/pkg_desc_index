@@ -7206,7 +7206,7 @@ dev-python/markdown 2.5.1 2.6.1 2.6.2 2.6.3: Python implementation of the markdo
 dev-python/markdown2 2.2.1 2.2.3 2.3.0: Python Markdown language reimplementation
 dev-python/markups 0.2.4-r1 0.6.1 0.6.3: A wrapper around various text markups
 dev-python/markupsafe 0.23: Implements a XML/HTML/XHTML Markup safe string for Python
-dev-python/matplotlib 1.4.2 1.4.3 9999: Pure python plotting library with matlab like syntax
+dev-python/matplotlib 1.4.2 1.4.3 1.5.0 9999: Pure python plotting library with matlab like syntax
 dev-python/mccabe 0.2.1 0.3 0.3.1: a plugin for flake8
 dev-python/mecab-python 0.996: Python binding for MeCab
 dev-python/mechanize 0.2.5-r1: Stateful programmatic web browsing in Python
@@ -7944,6 +7944,7 @@ dev-python/vcstools 0.1.37 0.1.38 9999: Python library for interacting with vari
 dev-python/vcversioner 2.14.0.0: Use version control tags to discover version numbers
 dev-python/venusian 1.0_alpha8 1.0: A library for deferring decorator actions
 dev-python/verboselogs 1.0.1 1.0.2: Verbose logging for Python's logging module
+dev-python/versioneer 0.15: Easy VCS-based management of project version strings
 dev-python/versiontools 1.9.1-r1: Smart replacement for plain tuple used in __version__
 dev-python/vertex 0.3.0-r1 0.3.1 0.3.1-r1: An implementation of the Q2Q protocol
 dev-python/virtualenv 12.0.5 13.1.0 13.1.1 13.1.2: Virtual Python Environment builder
