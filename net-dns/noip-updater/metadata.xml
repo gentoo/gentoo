@@ -3,10 +3,10 @@
 <pkgmetadata>
 	<herd>proxy-maintainers</herd>
 	<maintainer>
-                <email>influencedchaos@gmail.com</email>
-                <name>Francis Booth</name>
-                <description>Active Maintainer, Assign bugs</description>
-        </maintainer>
+		<email>boothfsec@gmail.com</email>
+		<name>Francis Booth</name>
+		<description>Active Maintainer, Assign bugs</description>
+	</maintainer>
 	<longdescription lang="en">
 		no-ip.com dynamic DNS updater
 	</longdescription>
