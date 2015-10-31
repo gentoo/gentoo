@@ -99,7 +99,7 @@ DEPEND="
 	firebird? ( dev-db/firebird )
 	gd? ( virtual/jpeg:0 media-libs/libpng:0= sys-libs/zlib )
 	gdbm? ( >=sys-libs/gdbm-1.8.0 )
-	gmp? ( >=dev-libs/gmp-4.1.2 )
+	gmp? ( dev-libs/gmp:0 )
 	iconv? ( virtual/libiconv )
 	imap? ( virtual/imap-c-client[ssl=] )
 	intl? ( dev-libs/icu:= )
