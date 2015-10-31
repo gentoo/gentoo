@@ -37,9 +37,6 @@ S=${WORKDIR}/${MY_P}
 src_prepare() {
 	elibtoolize
 	epatch "${FILESDIR}/${PN}-2.1.5-event_signals_ordering.patch"
-	# don't waste time building tests
-	# https://github.com/libevent/libevent/pull/144
-	sed -i -e '/^all:/s|tests||g' Makefile.nmake || die
 }
 
 multilib_src_configure() {
@@ -48,10 +45,12 @@ multilib_src_configure() {
 
 	ECONF_SOURCE="${S}" \
 	econf \
+		--disable-samples \
 		$(use_enable debug debug-mode) \
 		$(use_enable debug malloc-replacement) \
 		$(use_enable ssl openssl) \
 		$(use_enable static-libs static) \
+		$(use_enable test libevent-regress) \
 		$(use_enable threads thread-support)
 }
 
