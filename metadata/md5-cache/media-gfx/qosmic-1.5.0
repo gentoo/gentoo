@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=>=dev-lang/lua-5.1.4 >=media-gfx/flam3-3.0.1 || ( ( >=dev-qt/qtgui-4.8.5:4 dev-qt/designer:4 ) <dev-qt/qtgui-4.8.5:4 ) virtual/pkgconfig
+DEPEND=>=dev-lang/lua-5.1.4 dev-qt/qtgui:4 >=media-gfx/flam3-3.0.1 virtual/pkgconfig
 DESCRIPTION=A cosmic recursive flame fractal editor
 EAPI=4
 HOMEPAGE=https://code.google.com/p/qosmic/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=>=dev-lang/lua-5.1.4 >=media-gfx/flam3-3.0.1 || ( ( >=dev-qt/qtgui-4.8.5:4 dev-qt/designer:4 ) <dev-qt/qtgui-4.8.5:4 )
+RDEPEND=>=dev-lang/lua-5.1.4 dev-qt/qtgui:4 >=media-gfx/flam3-3.0.1
 SLOT=0
 SRC_URI=https://qosmic.googlecode.com/files/qosmic-1.5.0.tar.bz2
 _eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=3384cb7788aeed48bed518ef6a06be56
+_md5_=58775117ea535ae8b17f46152803fda3
