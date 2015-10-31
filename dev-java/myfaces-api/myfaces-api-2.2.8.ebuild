@@ -11,7 +11,7 @@ DESCRIPTION="Apache MyFaces API - Core package"
 HOMEPAGE="http://myfaces.apache.org/"
 SRC_URI="http://repo1.maven.org/maven2/org/apache/myfaces/core/${PN}/${PV}/${P}-sources.jar"
 
-LICENSE="CDDL"
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
