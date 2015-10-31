@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/levent/files/${MY_P}.tar.gz"
 LICENSE="BSD"
 # libevent-2.1.so.5
 SLOT="0/2.1-5"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug libressl +ssl static-libs test +threads"
 
 DEPEND="
@@ -37,9 +37,6 @@ S=${WORKDIR}/${MY_P}
 src_prepare() {
 	elibtoolize
 	epatch "${FILESDIR}/${PN}-2.1.5-event_signals_ordering.patch"
-	# don't waste time building tests
-	# https://github.com/libevent/libevent/pull/144
-	sed -i -e '/^all:/s|tests||g' Makefile.nmake || die
 }
 
 multilib_src_configure() {
@@ -48,10 +45,12 @@ multilib_src_configure() {
 
 	ECONF_SOURCE="${S}" \
 	econf \
+		--disable-samples \
 		$(use_enable debug debug-mode) \
 		$(use_enable debug malloc-replacement) \
 		$(use_enable ssl openssl) \
 		$(use_enable static-libs static) \
+		$(use_enable test libevent-regress) \
 		$(use_enable threads thread-support)
 }
 
