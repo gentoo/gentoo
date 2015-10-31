@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
+PYTHON_COMPAT=( python2_7 python3_4 )
 
 inherit distutils-r1 vcs-snapshot
 
@@ -17,9 +17,9 @@ KEYWORDS="~amd64"
 IUSE="doc test"
 
 CDEPEND="
-	>=dev-python/botocore-1.1.0[${PYTHON_USEDEP}]
-	<dev-python/botocore-1.2.0[${PYTHON_USEDEP}]
-	>=dev-python/jmespath-0.6.2[${PYTHON_USEDEP}]
+	>=dev-python/botocore-1.3.0[${PYTHON_USEDEP}]
+	<dev-python/botocore-1.4.0[${PYTHON_USEDEP}]
+	>=dev-python/jmespath-0.7.1[${PYTHON_USEDEP}]
 	<dev-python/jmespath-1.0.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '=dev-python/futures-2.2.0[${PYTHON_USEDEP}]' 'python2_7')
 "

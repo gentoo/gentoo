@@ -6,17 +6,13 @@ EAPI=5
 
 inherit eutils
 
-MY_PN="eid-viewer"
-MY_PV="${PV%%_p*}"
-#MY_PV="${PV/_p/-}"
-MY_P="${MY_PN}-${MY_PV}"
-
+MY_P="${P/-bin/}"
 SLOT="0"
 LICENSE="LGPL-3"
 KEYWORDS="~amd64 ~x86"
 DESCRIPTION="Graphical interface to the Belgian Electronic Identity Card"
 
-SRC_URI="http://eid.belgium.be/en/binaries/eid-viewer-4%2E0%2E7-184%2Esrc%2Etar_tcm406-250014.gz -> eid-viewer-4.0.7_p184.tar.gz"
+SRC_URI="https://downloads.services.belgium.be/eid/${MY_P}-v${PV}.src.tar.gz -> ${MY_P}.tar.gz"
 HOMEPAGE="http://eid.belgium.be"
 
 RDEPEND="
