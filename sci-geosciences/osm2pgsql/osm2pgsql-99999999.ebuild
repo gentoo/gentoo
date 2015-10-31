@@ -4,10 +4,9 @@
 
 EAPI=5
 
-inherit autotools git-2
+inherit cmake-utils git-2
 
 EGIT_REPO_URI="git://github.com/openstreetmap/osm2pgsql.git"
-EGIT_BOOTSTRAP="eautoreconf"
 
 DESCRIPTION="Converts OSM planet.osm data to a PostgreSQL/PostGIS database"
 HOMEPAGE="http://wiki.openstreetmap.org/wiki/Osm2pgsql"
