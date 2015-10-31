@@ -59,7 +59,7 @@ pkg_setup() {
 src_prepare() {
 	# Unconditionally get rid of the bundled jemalloc
 	rm -rf "${S}"/deps
-	epatch "${FILESDIR}"/${P}-system-mbedtls.patch
+	epatch "${FILESDIR}"/${PN}-1.6.3-system-mbedtls.patch
 }
 
 src_configure() {
