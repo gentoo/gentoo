@@ -10,4 +10,4 @@ RDEPEND=>=sys-libs/zlib-1.2.8-r1:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?
 SLOT=2
 SRC_URI=ftp://xmlsoft.org/libxml2/libxml2-2.9.2.tar.gz test? ( http://www.w3.org/XML/2004/xml-schema-test-suite/xmlschema2002-01-16/xsts-2002-01-16.tar.gz http://www.w3.org/XML/2004/xml-schema-test-suite/xmlschema2004-01-14/xsts-2004-01-14.tar.gz http://www.w3.org/XML/Test/xmlts20080827.tar.gz )
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multilib-build	c47eec09e82c8a750127ff2abf0745b1	multilib-minimal	a93a9b4153a5f1c746bdd3b20ef9d834	prefix	e7f2b9c6e57342e5d25eac22fce23062	python-r1	32b376cbb100a3a8083b3a0de023e117	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=7b3653f90c4b3ceaf85a00a4e7b968eb
+_md5_=584be97e36d7fe2f7efbe457ad4d9427
