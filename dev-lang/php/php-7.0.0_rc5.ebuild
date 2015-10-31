@@ -416,11 +416,8 @@ src_configure() {
 	fi
 
 	# Interbase/firebird support
-
-	if use firebird ; then
-		my_conf+="
-		$(use_with firebird interbase ${EPREFIX}/usr)"
-	fi
+	my_conf+="
+	$(use_with firebird interbase ${EPREFIX}/usr)"
 
 	# LDAP support
 	if use ldap ; then
