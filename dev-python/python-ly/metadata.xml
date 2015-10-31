@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>karl.j.linden@gmail.com</email>
+    <name>Karl Linden</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="pypi">python-ly</remote-id>
+  </upstream>
+</pkgmetadata>
