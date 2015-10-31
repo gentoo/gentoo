@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201510-06">
+  <title>Django: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Django, the worst of
+    which may allow a remote attacker to cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">django</product>
+  <announced>October 31, 2015</announced>
+  <revised>October 31, 2015: 1</revised>
+  <bug>554864</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-python/django" auto="yes" arch="*">
+      <unaffected range="ge">1.8.3</unaffected>
+      <unaffected range="rge">1.7.9</unaffected>
+      <unaffected range="rge">1.4.21</unaffected>
+      <vulnerable range="lt">1.8.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Django is a Python-based web framework.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been found in Django:</p>
+    
+    <ul>
+      <li>Session backends create a new record anytime request.session was
+        accessed (CVE-2015-5143)
+      </li>
+      <li>Built-in validators in Django do not properly sanitize input
+        (CVE-2015-5144)
+      </li>
+      <li>URL validation included a regular expression that was extremely slow
+        (CVE-2015-5145)
+      </li>
+    </ul>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able cause a Denial of Service condition,
+      inject arbitrary headers, and conduct HTTP response splitting attacks. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Django 1.8 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/django-1.8.3"
+    </code>
+    
+    <p>All Django 1.7 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/django-1.7.9"
+    </code>
+    
+    <p>All Django 1.4 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-python/django-1.4.21"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5143">CVE-2015-5143</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5144">CVE-2015-5144</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5145">CVE-2015-5145</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 10 Oct 2015 02:24:53 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 31 Oct 2015 15:22:32 +0000">ackle</metadata>
+</glsa>
