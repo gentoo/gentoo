@@ -7967,7 +7967,7 @@ dev-python/weberror 0.10.3-r1 0.11: Web Error handling and exception catching
 dev-python/webhelpers 1.3-r1: Web Helpers
 dev-python/webob 1.4 1.4.1 1.5.0: WSGI request and response object
 dev-python/webpy 0.37 0.37-r1: A small and simple web framework for Python
-dev-python/websocket-client 0.21.0 0.29.0 0.31.0 0.32.0: WebSocket client for python. hybi13 is supported
+dev-python/websocket-client 0.21.0 0.31.0 0.32.0 0.34.0: WebSocket client for python. hybi13 is supported
 dev-python/websockify 0.6.0 0.7.0: WebSockets support for any application/server
 dev-python/webtest 1.4.3-r1 2.0.16 2.0.17 2.0.18: Helper to test WSGI applications
 dev-python/webut 0.1.0.2 0.1.0.2-r1: Miscellaneous utilities for nevow and twisted.web programming
