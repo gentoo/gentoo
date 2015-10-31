@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_EXTRADOC="changelog.txt Readme.md"
 
@@ -20,9 +20,9 @@ SLOT="0"
 IUSE=""
 
 all_ruby_prepare() {
-	sed -e '/test_encrypted_roundtrip/a skip "depends on external gpg test keys"' -i test/test_netrc.rb || die
+	sed -e '/test_encrypted_roundtrip/,/^  end/ s:^:#:' -i test/test_netrc.rb || die
 }
 
 each_ruby_test() {
-	${RUBY} -S testrb test/test_*.rb || die
+	${RUBY} -Ilib:. -e "Dir['test/test_*.rb'].each{|f| require f}" || die
 }
