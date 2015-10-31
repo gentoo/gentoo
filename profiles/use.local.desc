@@ -4998,7 +4998,7 @@ net-analyzer/pinger:gtk2 - Install the gtkpinger GUI utility based on x11-libs/g
 net-analyzer/pinger:gtk3 - Install the gtkpinger GUI utility based on x11-libs/gtk:3
 net-analyzer/pmacct:64bit - Use 64bit counters instead of 32bit ones
 net-analyzer/pmacct:mongodb - Add support for mongodb backend
-net-analyzer/pmacct:ulog - Enable ULOG support
+net-analyzer/pmacct:ulog - Enable support for ULOG in older kernels (deprecated)
 net-analyzer/rrdcollect:exec - Enable exec:/// support
 net-analyzer/rrdcollect:librrd - Use the librrd library from net-analyzer/rrdtool
 net-analyzer/rrdtool:graph - Enable support for graphing functions
