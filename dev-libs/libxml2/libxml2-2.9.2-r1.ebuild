@@ -75,6 +75,9 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.7.1-catalog_path.patch
 	epatch "${FILESDIR}"/${PN}-2.8.0_rc1-winnt.patch
 
+	# Disable programs that we don't actually install.
+	epatch "${FILESDIR}"/${PN}-2.9.2-disable-tests.patch
+
 	eprefixify catalog.c xmlcatalog.c runtest.c xmllint.c
 
 #	epunt_cxx # if we don't eautoreconf
