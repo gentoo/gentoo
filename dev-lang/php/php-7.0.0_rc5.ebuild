@@ -440,10 +440,8 @@ src_configure() {
 	fi
 
 	# ODBC support
-	if use odbc ; then
-		my_conf+="
-		$(use_with odbc unixODBC ${EPREFIX}/usr)"
-	fi
+	my_conf+="
+	$(use_with odbc unixODBC ${EPREFIX}/usr)"
 
 	if use iodbc ; then
 		my_conf+="
