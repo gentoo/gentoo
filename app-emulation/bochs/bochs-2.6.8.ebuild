@@ -59,7 +59,6 @@ src_configure() {
 		--enable-ne2000 \
 		--enable-plugins \
 		--enable-pci \
-		--enable-pcidev \
 		--enable-pnic \
 		--enable-raw-serial \
 		--enable-sb16=linux \
