@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# @DEAD
+
 # @ECLASS: qt4-build.eclass
 # @MAINTAINER:
 # Qt herd <qt@gentoo.org>
