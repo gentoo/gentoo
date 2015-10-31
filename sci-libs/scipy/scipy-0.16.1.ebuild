@@ -119,9 +119,13 @@ python_test() {
 	"${PYTHON}" -c \
 		'import numpy as np; print("relaxed strides checking:", np.ones((10,1),order="C").flags.f_contiguous)' \
 		|| die
+	# https://github.com/scipy/scipy/issues/5426
 	"${EPYTHON}" -c \
-		"import scipy, sys; r = scipy.test('fast',verbose=2); sys.exit(0 if r.wasSuccessful() else 1)" \
+		"import scipy, sys; r = scipy.test('fast', verbose=2, raise_warnings='release'); sys.exit(0 if r.wasSuccessful() else 1)" \
 		|| die "Tests fail with ${EPYTHON}"
+#	"${EPYTHON}" -c \
+#		"import scipy, sys; r = scipy.test('fast',verbose=2); sys.exit(0 if r.wasSuccessful() else 1)" \
+#		|| die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {
