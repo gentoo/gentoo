@@ -1,0 +1,301 @@
+Index: harvid-0.8.0/libharvid/decoder_ctrl.c
+===================================================================
+--- harvid-0.8.0.orig/libharvid/decoder_ctrl.c
++++ harvid-0.8.0/libharvid/decoder_ctrl.c
+@@ -29,7 +29,7 @@
+ #include "ffcompat.h"
+ #include "dlog.h"
+ 
+-#define DEFAULT_PIX_FMT (PIX_FMT_RGB24) // TODO global default
++#define DEFAULT_PIX_FMT (AV_PIX_FMT_RGB24) // TODO global default
+ 
+ //#define HASH_EMIT_KEYS 3
+ #define HASH_FUNCTION HASH_SAX
+@@ -104,15 +104,15 @@ static inline int my_open_movie(void **v
+   }
+   ff_create(vd);
+   assert (
+-         render_fmt == PIX_FMT_YUV420P
+-      || render_fmt == PIX_FMT_YUV440P
+-      || render_fmt == PIX_FMT_YUYV422
+-      || render_fmt == PIX_FMT_UYVY422
+-      || render_fmt == PIX_FMT_RGB24
+-      || render_fmt == PIX_FMT_BGR24
+-      || render_fmt == PIX_FMT_RGBA
+-      || render_fmt == PIX_FMT_ARGB
+-      || render_fmt == PIX_FMT_BGRA
++         render_fmt == AV_PIX_FMT_YUV420P
++      || render_fmt == AV_PIX_FMT_YUV440P
++      || render_fmt == AV_PIX_FMT_YUYV422
++      || render_fmt == AV_PIX_FMT_UYVY422
++      || render_fmt == AV_PIX_FMT_RGB24
++      || render_fmt == AV_PIX_FMT_BGR24
++      || render_fmt == AV_PIX_FMT_RGBA
++      || render_fmt == AV_PIX_FMT_ARGB
++      || render_fmt == AV_PIX_FMT_BGRA
+       );
+ 
+   if (!ff_open_movie (*vd, fn, render_fmt)) {
+@@ -144,7 +144,7 @@ static inline void my_get_info_canonical
+ static JVOBJECT *newjvo (JVOBJECT *jvo, pthread_mutex_t *appendlock) {
+   debugmsg(DEBUG_DCTL, "DCTL: newjvo() allocated new decoder object\n");
+   JVOBJECT *n = calloc(1, sizeof(JVOBJECT));
+-  n->fmt = PIX_FMT_NONE;
++  n->fmt = AV_PIX_FMT_NONE;
+   n->frame = -1;
+   pthread_mutex_init(&n->lock, NULL);
+   JVOBJECT *cptr = jvo;
+@@ -175,8 +175,8 @@ static JVOBJECT *testjvd(JVOBJECT *jvo,
+     if (!(cptr->flags&VOF_VALID) || cptr->id != id) {
+       continue;
+     }
+-    if (fmt != PIX_FMT_NONE && cptr->fmt != fmt
+-        && cptr->fmt != PIX_FMT_NONE
++    if (fmt != AV_PIX_FMT_NONE && cptr->fmt != fmt
++        && cptr->fmt != AV_PIX_FMT_NONE
+         ) {
+       continue;
+     }
+@@ -324,7 +324,7 @@ static int clearjvo(JVD *jvd, int f, int
+       my_destroy(&cptr->decoder);
+       cptr->decoder = NULL;
+       cptr->flags &= ~VOF_OPEN;
+-      cptr->fmt = PIX_FMT_NONE;
++      cptr->fmt = AV_PIX_FMT_NONE;
+     }
+ 
+     hashref_delete_jvo(jvd, cptr);
+@@ -410,7 +410,7 @@ static JVOBJECT *getjvo(JVD *jvd) {
+         if (cptr->flags&(VOF_OPEN)) {
+           my_destroy(&cptr->decoder); // close it.
+           cptr->decoder = NULL; // not really need..
+-          cptr->fmt = PIX_FMT_NONE;
++          cptr->fmt = AV_PIX_FMT_NONE;
+         }
+ 
+         hashref_delete_jvo(jvd, cptr);
+@@ -563,7 +563,7 @@ static JVOBJECT *new_video_object(JVD *j
+ 
+ 
+   jvo->id = id;
+-  jvo->fmt = fmt == PIX_FMT_NONE ? DEFAULT_PIX_FMT : fmt;
++  jvo->fmt = fmt == AV_PIX_FMT_NONE ? DEFAULT_PIX_FMT : fmt;
+   jvo->frame = -1;
+   jvo->flags |= VOF_VALID;
+ 
+@@ -619,7 +619,7 @@ static void * dctrl_get_decoder(void *p,
+    * use it IFF frame == -1  (ie. non-blocking info lookups) */
+   if (frame < 0) {
+     pthread_rwlock_rdlock(&jvd->lock_jdh);
+-    if (fmt == PIX_FMT_NONE) {
++    if (fmt == AV_PIX_FMT_NONE) {
+       HASH_FIND(hhi, jvd->jvi, &id, sizeof(unsigned short), jvo);
+     } else {
+       const JVOBJECT jvt = {id, fmt, 0};
+@@ -670,7 +670,7 @@ static void * dctrl_get_decoder(void *p,
+       jvo->lru = time(NULL);
+       pthread_mutex_unlock(&jvo->lock);
+ 
+-      if (fmt == PIX_FMT_NONE) fmt = DEFAULT_PIX_FMT;
++      if (fmt == AV_PIX_FMT_NONE) fmt = DEFAULT_PIX_FMT;
+ 
+       if (!my_open_movie(&jvo->decoder, get_fn(jvd, jvo->id), fmt)) {
+         pthread_mutex_lock(&jvo->lock);
+@@ -798,7 +798,7 @@ int dctrl_decode(void *p, unsigned short
+ 
+ int dctrl_get_info(void *p, unsigned short id, VInfo *i) {
+   int err = 0;
+-  JVOBJECT *jvo = (JVOBJECT*) dctrl_get_decoder(p, id, PIX_FMT_NONE, -1, &err);
++  JVOBJECT *jvo = (JVOBJECT*) dctrl_get_decoder(p, id, AV_PIX_FMT_NONE, -1, &err);
+   if (!jvo) return err;
+   my_get_info(jvo->decoder, i);
+   jvo->hitcount_info++;
+Index: harvid-0.8.0/libharvid/ffdecoder.c
+===================================================================
+--- harvid-0.8.0.orig/libharvid/ffdecoder.c
++++ harvid-0.8.0/libharvid/ffdecoder.c
+@@ -102,7 +102,7 @@ static int ff_getbuffersize(void *ptr, s
+ 
+ static void render_empty_frame(ffst *ff, uint8_t* buf, int w, int h, int xoff, int ys) {
+   switch (ff->render_fmt) {
+-    case PIX_FMT_UYVY422:
++    case AV_PIX_FMT_UYVY422:
+       {
+ 	int i;
+ 	for (i = 0; i < w*h*2; i += 2) {
+@@ -110,7 +110,7 @@ static void render_empty_frame(ffst *ff,
+ 	}
+       }
+       break;
+-    case PIX_FMT_YUYV422:
++    case AV_PIX_FMT_YUYV422:
+       {
+ 	int i;
+ 	for (i = 0; i < w*h*2; i += 2) {
+@@ -118,25 +118,25 @@ static void render_empty_frame(ffst *ff,
+ 	}
+       }
+       break;
+-    case PIX_FMT_YUV420P:
++    case AV_PIX_FMT_YUV420P:
+       {
+ 	size_t Ylen = w * h;
+ 	memset(buf, 0, Ylen);
+ 	memset(buf+Ylen, 0x80, Ylen/2);
+       }
+       break;
+-    case PIX_FMT_YUV440P:
++    case AV_PIX_FMT_YUV440P:
+       {
+ 	size_t Ylen = w * h;
+ 	memset(buf, 0, Ylen);
+ 	memset(buf+Ylen, 0x80, Ylen);
+       }
+       break;
+-    case PIX_FMT_BGR24:
+-    case PIX_FMT_RGB24:
+-    case PIX_FMT_RGBA:
+-    case PIX_FMT_BGRA:
+-    case PIX_FMT_ARGB:
++    case AV_PIX_FMT_BGR24:
++    case AV_PIX_FMT_RGB24:
++    case AV_PIX_FMT_RGBA:
++    case AV_PIX_FMT_BGRA:
++    case AV_PIX_FMT_ARGB:
+       memset(buf, 0, ff_getbuffersize(ff, NULL));
+       break;
+     default:
+@@ -147,8 +147,8 @@ static void render_empty_frame(ffst *ff,
+ #if 1 // draw cross
+   int x,y;
+   switch (ff->render_fmt) {
+-    case PIX_FMT_YUV420P:
+-    case PIX_FMT_YUV440P:
++    case AV_PIX_FMT_YUV420P:
++    case AV_PIX_FMT_YUV440P:
+       for (x = 0, y = 0; x < w-1; x++, y = h * x / w) {
+ 	int off = (x + w * y);
+ 	buf[off]=127; buf[off+1]=127;
+@@ -156,8 +156,8 @@ static void render_empty_frame(ffst *ff,
+ 	buf[off]=127; buf[off+1]=127;
+       }
+       break;
+-    case PIX_FMT_YUYV422:
+-    case PIX_FMT_UYVY422:
++    case AV_PIX_FMT_YUYV422:
++    case AV_PIX_FMT_UYVY422:
+       for (x = 0, y = 0; x < w-1; x++, y = h * x / w) {
+ 	int off = (x + w * y) * 2;
+ 	buf[off] = 127; buf[off+1] = 127;
+@@ -165,8 +165,8 @@ static void render_empty_frame(ffst *ff,
+ 	buf[off] = 127; buf[off+1] = 127;
+       }
+       break;
+-    case PIX_FMT_RGB24:
+-    case PIX_FMT_BGR24:
++    case AV_PIX_FMT_RGB24:
++    case AV_PIX_FMT_BGR24:
+       for (x = 0, y = 0; x < w-1; x++, y = h * x / w) {
+ 	int off = 3 * (x + w * y);
+ 	buf[off]=255; buf[off+1]=255; buf[off+2]=255;
+@@ -174,11 +174,11 @@ static void render_empty_frame(ffst *ff,
+ 	buf[off]=255; buf[off+1]=255; buf[off+2]=255;
+       }
+       break;
+-    case PIX_FMT_RGBA:
+-    case PIX_FMT_BGRA:
+-    case PIX_FMT_ARGB:
++    case AV_PIX_FMT_RGBA:
++    case AV_PIX_FMT_BGRA:
++    case AV_PIX_FMT_ARGB:
+       {
+-      const int O = (ff->render_fmt == PIX_FMT_ARGB) ? 1 : 0;
++      const int O = (ff->render_fmt == AV_PIX_FMT_ARGB) ? 1 : 0;
+       for (x = 0, y = 0; x < w-1; x++, y = h * x / w) {
+ 	int off = 4 * (x + w * y) + O;
+ 	buf[off]=255; buf[off+1]=255; buf[off+2]=255;
+@@ -749,7 +749,7 @@ void ff_get_info_canonical(void *ptr, VI
+ 
+ void ff_create(void **ff) {
+   (*((ffst**)ff)) = (ffst*) calloc(1, sizeof(ffst));
+-  (*((ffst**)ff))->render_fmt = PIX_FMT_RGB24;
++  (*((ffst**)ff))->render_fmt = AV_PIX_FMT_RGB24;
+   (*((ffst**)ff))->want_ignstart = 0;
+   (*((ffst**)ff))->want_genpts = 0;
+   (*((ffst**)ff))->packet.data = NULL;
+@@ -792,25 +792,25 @@ void ff_resize(void *ptr, int w, int h,
+ 
+ const char * ff_fmt_to_text(int fmt) {
+   switch (fmt) {
+-    case PIX_FMT_NONE:
++    case AV_PIX_FMT_NONE:
+       return "-";
+-    case PIX_FMT_BGR24:
++    case AV_PIX_FMT_BGR24:
+       return "BGR24";
+-    case PIX_FMT_RGB24:
++    case AV_PIX_FMT_RGB24:
+       return "RGB24";
+-    case PIX_FMT_RGBA:
++    case AV_PIX_FMT_RGBA:
+       return "RGBA";
+-    case PIX_FMT_BGRA:
++    case AV_PIX_FMT_BGRA:
+       return "BGRA";
+-    case PIX_FMT_ARGB:
++    case AV_PIX_FMT_ARGB:
+       return "ARGB";
+-    case PIX_FMT_YUV420P:
++    case AV_PIX_FMT_YUV420P:
+       return "YUV420P";
+-    case PIX_FMT_YUYV422:
++    case AV_PIX_FMT_YUYV422:
+       return "YUYV422";
+-    case PIX_FMT_UYVY422:
++    case AV_PIX_FMT_UYVY422:
+       return "UYVY422";
+-    case PIX_FMT_YUV440P:
++    case AV_PIX_FMT_YUV440P:
+       return "YUV440P";
+     default:
+       return "?";
+Index: harvid-0.8.0/src/ics_handler.c
+===================================================================
+--- harvid-0.8.0.orig/src/ics_handler.c
++++ harvid-0.8.0/src/ics_handler.c
+@@ -109,16 +109,16 @@ void parse_param(struct queryparserstate
+     else if (!strncmp(val, "jpeg",4)) {qps->a->render_fmt = FMT_JPG; qps->a->misc_int = atoi(&val[4]);}
+     else if (!strcmp(val, "png"))      qps->a->render_fmt = FMT_PNG;
+     else if (!strcmp(val, "ppm"))      qps->a->render_fmt = FMT_PPM;
+-    else if (!strcmp(val, "yuv"))     {qps->a->render_fmt = FMT_RAW; qps->a->decode_fmt = PIX_FMT_YUV420P;}
+-    else if (!strcmp(val, "yuv420"))  {qps->a->render_fmt = FMT_RAW; qps->a->decode_fmt = PIX_FMT_YUV420P;}
+-    else if (!strcmp(val, "yuv440"))  {qps->a->render_fmt = FMT_RAW; qps->a->decode_fmt = PIX_FMT_YUV440P;}
+-    else if (!strcmp(val, "yuv422"))  {qps->a->render_fmt = FMT_RAW; qps->a->decode_fmt = PIX_FMT_YUYV422;}
+-    else if (!strcmp(val, "uyv422"))  {qps->a->render_fmt = FMT_RAW; qps->a->decode_fmt = PIX_FMT_UYVY422;}
+-    else if (!strcmp(val, "rgb"))     {qps->a->render_fmt = FMT_RAW; qps->a->decode_fmt = PIX_FMT_RGB24;}
+-    else if (!strcmp(val, "bgr"))     {qps->a->render_fmt = FMT_RAW; qps->a->decode_fmt = PIX_FMT_BGR24;}
+-    else if (!strcmp(val, "rgba"))    {qps->a->render_fmt = FMT_RAW; qps->a->decode_fmt = PIX_FMT_RGBA;}
+-    else if (!strcmp(val, "argb"))    {qps->a->render_fmt = FMT_RAW; qps->a->decode_fmt = PIX_FMT_ARGB;}
+-    else if (!strcmp(val, "bgra"))    {qps->a->render_fmt = FMT_RAW; qps->a->decode_fmt = PIX_FMT_BGRA;}
++    else if (!strcmp(val, "yuv"))     {qps->a->render_fmt = FMT_RAW; qps->a->decode_fmt = AV_PIX_FMT_YUV420P;}
++    else if (!strcmp(val, "yuv420"))  {qps->a->render_fmt = FMT_RAW; qps->a->decode_fmt = AV_PIX_FMT_YUV420P;}
++    else if (!strcmp(val, "yuv440"))  {qps->a->render_fmt = FMT_RAW; qps->a->decode_fmt = AV_PIX_FMT_YUV440P;}
++    else if (!strcmp(val, "yuv422"))  {qps->a->render_fmt = FMT_RAW; qps->a->decode_fmt = AV_PIX_FMT_YUYV422;}
++    else if (!strcmp(val, "uyv422"))  {qps->a->render_fmt = FMT_RAW; qps->a->decode_fmt = AV_PIX_FMT_UYVY422;}
++    else if (!strcmp(val, "rgb"))     {qps->a->render_fmt = FMT_RAW; qps->a->decode_fmt = AV_PIX_FMT_RGB24;}
++    else if (!strcmp(val, "bgr"))     {qps->a->render_fmt = FMT_RAW; qps->a->decode_fmt = AV_PIX_FMT_BGR24;}
++    else if (!strcmp(val, "rgba"))    {qps->a->render_fmt = FMT_RAW; qps->a->decode_fmt = AV_PIX_FMT_RGBA;}
++    else if (!strcmp(val, "argb"))    {qps->a->render_fmt = FMT_RAW; qps->a->decode_fmt = AV_PIX_FMT_ARGB;}
++    else if (!strcmp(val, "bgra"))    {qps->a->render_fmt = FMT_RAW; qps->a->decode_fmt = AV_PIX_FMT_BGRA;}
+     /* info, version, rc,... format */
+     else if (!strcmp(val, "html"))    qps->a->render_fmt = OUT_HTML;
+     else if (!strcmp(val, "xhtml"))   qps->a->render_fmt = OUT_HTML;
+@@ -141,7 +141,7 @@ static void parse_http_query_params(stru
+ static int parse_http_query(CONN *c, char *query, httpheader *h, ics_request_args *a) {
+   struct queryparserstate qps = {a, NULL, 0};
+ 
+-  a->decode_fmt = PIX_FMT_RGB24;
++  a->decode_fmt = AV_PIX_FMT_RGB24;
+   a->render_fmt = FMT_PNG;
+   a->frame = 0;
+   a->misc_int = 0;

@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit toolchain-funcs multilib
+inherit toolchain-funcs multilib eutils
 
 DESCRIPTION="HTTP Ardour Video Daemon"
 HOMEPAGE="http://x42.github.io/harvid/"
@@ -16,14 +16,18 @@ KEYWORDS="~amd64"
 IUSE="libav"
 
 RDEPEND="
-	!libav? ( media-video/ffmpeg:= )
-	libav? ( media-video/libav:= )
+	!libav? ( >=media-video/ffmpeg-2.6:0= )
+	libav? ( >=media-video/libav-9:0= )
 	media-libs/libpng:0=
 	virtual/jpeg:0
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
+
+src_prepare() {
+	epatch "${FILESDIR}/ffmpeg29.patch"
+}
 
 hv_make() {
 	emake \
