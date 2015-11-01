@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 
 WX_GTK_VER="3.0"
 
-inherit cmake-utils fdo-mime flag-o-matic gnome2-utils python-single-r1 python-utils-r1 vcs-snapshot wxwidgets versionator
+inherit cmake-utils fdo-mime flag-o-matic gnome2-utils python-single-r1 vcs-snapshot wxwidgets versionator
 
 DESCRIPTION="Electronic Schematic and PCB design tools."
 HOMEPAGE="http://www.kicad-pcb.org"
@@ -53,7 +53,8 @@ DEPEND="${CDEPEND}
 	app-arch/xz-utils
 	doc? ( app-doc/doxygen )
 	i18n? ( >=sys-devel/gettext-0.18 )
-	python? ( dev-lang/swig:0 )"
+	python? ( dev-lang/swig:0 )
+	app-text/dos2unix"
 RDEPEND="${CDEPEND}
 	sci-electronics/electronics-menu"
 
@@ -64,10 +65,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	if use python; then
-		# dev-python/wxpython doesn't support python3
-		sed '/set(_PYTHON3_VERSIONS 3.3 3.2 3.1 3.0)/d' -i CMakeModules/FindPythonLibs.cmake || die "sed failed"
-	fi
+	# remove all the non unix file endings
+	find "${S}" -type f -name "*.desktop" | xargs -n1 dos2unix || die "dos2unix failed"
 
 	# Handle optional minimal install.
 	if use minimal; then
@@ -78,7 +77,7 @@ src_prepare() {
 		ln -s "${WORKDIR}/${P}-library" "${S}/${PN}-library" || die "ln failed"
 		# add the libraries directory to cmake as a subproject to build
 		sed "/add_subdirectory( bitmaps_png )/a add_subdirectory( ${PN}-library )" -i CMakeLists.txt || die "sed failed"
-		# add the libraries directory subproject also to uninstallation procedures
+		# remove duplicate uninstall directions for the library module
 		sed '/make uninstall/,/# /d' -i ${PN}-library/CMakeLists.txt || die "sed failed"
 	fi
 
@@ -89,7 +88,7 @@ src_prepare() {
 		# Remove unused languages. Project generates only languages specified in the
 		# file in LINGUAS in the subproject folder. By default all languages are added
 		# so we sed out the unused ones based on the user linguas_* settings.
-		local lang=""
+		local lang
 		for lang in ${LANGS}; do
 			if ! use linguas_${lang}; then
 				sed "/${lang}/d" -i ${PN}-i18n/LINGUAS || die "sed failed"
@@ -101,14 +100,16 @@ src_prepare() {
 		sed "s|\${CMAKE_SOURCE_DIR}/\${LANG}|\${CMAKE_SOURCE_DIR}/${PN}-i18n/\${LANG}|g" -i ${PN}-i18n/CMakeLists.txt || die "sed failed"
 		# add the translations directory to cmake as a subproject to build
 		sed "/add_subdirectory( bitmaps_png )/a add_subdirectory( ${PN}-i18n )" -i CMakeLists.txt || die "sed failed"
-		# add the translations directory subproject also to uninstallation procedures
+		# remove duplicate uninstall directions for the translation module
 		sed '/make uninstall/,$d' -i ${PN}-i18n/CMakeLists.txt || die "sed failed"
 	fi
 
 	# Install examples in the right place if requested
 	if use examples; then
+		# install demos into the examples folder too
 		sed -e 's:${KICAD_DATA}/demos:${KICAD_DOCS}/examples:' -i CMakeLists.txt || die "sed failed"
 	else
+		# remove additional demos/examples as its not strictly required to run the binaries 
 		sed -e '/add_subdirectory( demos )/d' -i CMakeLists.txt || die "sed failed"
 	fi
 
@@ -120,6 +121,10 @@ src_configure() {
 	need-wxwidgets unicode
 
 	local mycmakeargs=(
+		-DPYTHON_DEST="$(python_get_sitedir)"
+		-DPYTHON_EXECUTABLE="${PYTHON}"
+		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
+		-DPYTHON_LIBRARY="$(python_get_library_path)"
 		-DKICAD_DOCS="/usr/share/doc/${PF}"
 		-DKICAD_HELP="/usr/share/doc/${PF}/help"
 		-DwxUSE_UNICODE=ON
@@ -132,7 +137,8 @@ src_configure() {
 		$(usex i18n "-DKICAD_I18N_UNIX_STRICT_PATH=1" "")
 	)
 	if use debug; then
-		append-flags "-DDEBUG"
+		append-cxxflags "-DDEBUG"
+		append-cflags "-DDEBUG"
 	fi
 	cmake-utils_src_configure
 }
@@ -146,12 +152,12 @@ src_compile() {
 
 src_install() {
 	cmake-utils_src_install
-	use python && python_optimize "${D}/usr/$(get_libdir)/${EPYTHON}/site-packages/pcbnew.py"
+	use python && python_optimize
 	if use doc ; then
 		insinto /usr/share/doc/${PF}
-		doins uncrustify.cfg
+		dodoc uncrustify.cfg
 		cd Documentation || die "cd failed"
-		doins -r GUI_Translation_HOWTO.pdf guidelines/UIpolicies.txt doxygen/*
+		dodoc -r GUI_Translation_HOWTO.pdf guidelines/UIpolicies.txt doxygen/.
 	fi
 }
 
@@ -171,8 +177,8 @@ pkg_postinst() {
 		ewarn "- Remove the libraries from the 'Libs and Dir' preferences."
 		ewarn "- Fix the libraries' locations in the 'Libs and Dir' preferences."
 		ewarn "- Emerge ${PN} without the 'minimal' USE flag."
-		ewarn ""
 	fi
+	elog ""
 	elog "You may want to emerge media-gfx/wings if you want to create 3D models of components."
 }
 
