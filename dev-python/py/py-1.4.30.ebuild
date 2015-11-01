@@ -36,7 +36,7 @@ python_test() {
 	# 1 failure, test_comments, under both pypy only.
 	# Also appears the home repo has no issue tracker.
 	[[ "${EPYTHON}" == pypy ]] && return
-	py.test || die "testing failed with ${EPYTHON}"
+	py.test -v -v || die "testing failed with ${EPYTHON}"
 }
 
 python_install_all() {
