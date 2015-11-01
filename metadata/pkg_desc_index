@@ -7586,6 +7586,7 @@ dev-python/pytest-cov 1.6 1.8.1 2.1.0 2.2.0: py.test plugin for coverage reporti
 dev-python/pytest-django 2.8.0: A Django plugin for py.test
 dev-python/pytest-localserver 0.3.4: Py.test plugin to test server connections locally
 dev-python/pytest-pythonpath 0.7: pytest plugin for adding to the PYTHONPATH from command line or configs
+dev-python/pytest-raisesregexp 2.0: Simple pytest plugin to look for regex in Exceptions
 dev-python/pytest-runner 2.1.2 2.5.1 2.6.1 2.6.2: Adds support for tests during installation of setup.py files
 dev-python/pytest-timeout 0.4: py.test plugin to abort hanging tests
 dev-python/pytest-xdist 1.13.1: Distributed testing and loop-on-failing modes
@@ -13323,7 +13324,7 @@ net-analyzer/httping 2.4: http protocol ping-like program
 net-analyzer/hunt 1.5-r1 1.5-r2: tool for checking well known weaknesses in the TCP/IP protocol
 net-analyzer/hydra 8.1: Advanced parallized login hacker
 net-analyzer/ibmonitor 1.4: Interactive bandwidth monitor
-net-analyzer/icinga 1.9.6 1.10.4 1.11.1 1.11.4 1.11.7 1.12.0 1.12.2: Nagios Fork - Check daemon, CGIs, docs, IDOutils
+net-analyzer/icinga 1.9.6 1.10.4 1.11.1 1.11.4 1.11.7 1.12.0 1.12.2 1.13.3: Nagios Fork - Check daemon, CGIs, docs, IDOutils
 net-analyzer/icinga-web 1.9.1-r1 1.10.0 1.10.0-r1 1.10.1 1.11.2: Icinga Web - new Web Interface
 net-analyzer/icinga2 2.3.10-r1 2.3.11 9999: Distributed, general purpose, network monitoring engine
 net-analyzer/ifmetric 0.3 0.3-r1: Linux tool for setting metrics of all IPv4 routes attached to a given network interface at once
