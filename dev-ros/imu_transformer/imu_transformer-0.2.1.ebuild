@@ -27,3 +27,4 @@ RDEPEND="
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/tests.patch" )
