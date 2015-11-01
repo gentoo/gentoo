@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Justin Lecher <jlec@gentoo.org> (01 Nov 2015)
+# Obsolete package
+# Incompatible to recent numpy version
+# No upstream activity
+dev-python/scientificpython
+
 # Michał Górny <mgorny@gentoo.org> (30 Oct 2015)
 # Uses unsafe ioctls that could result in data corruption. Upstream
 # is working on replacing them in the wip/dedup-syscall branch.
