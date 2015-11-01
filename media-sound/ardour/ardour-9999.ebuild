@@ -69,6 +69,12 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen[dot] )"
 
+pkg_setup() {
+	if has_version \>=dev-libs/libsigc++-2.6 ; then
+		append-cxxflags -std=c++11
+	fi
+}
+
 src_prepare(){
 	if ! [[ ${PV} == *9999* ]]; then
 		epatch "${FILESDIR}"/${PN}-4.x-revision-naming.patch
