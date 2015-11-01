@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=dev-java/javax-inject:0 dev-java/jsr305:0 java-virtuals/jdk-with-com-sun:0 || ( virtual/jre:1.7 virtual/jre:1.6 ) >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 SLOT=15
 SRC_URI=http://search.maven.org/remotecontent?filepath=com/google/guava/guava/15.0/guava-15.0-sources.jar
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-pkg-simple	002bfd79a6cd417a199bb3bd8704334e	java-utils-2	a96633177f44ee992b3fce360d1c4f16	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-pkg-simple	bdf24e52707f01512ffea6d3aa05425b	java-utils-2	a96633177f44ee992b3fce360d1c4f16	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=14bda81ffc1446f61368bf2047531ee4
