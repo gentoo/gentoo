@@ -13,7 +13,7 @@ HOMEPAGE="http://x-stream.github.io"
 SRC_URI="http://central.maven.org/maven2/com/thoughtworks/${PN}/${PN}/${PV}/${P}-sources.jar"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~x86"
 
 CDEPEND="
 	dev-java/kxml:2
@@ -26,13 +26,14 @@ CDEPEND="
 	dev-java/joda-time:0
 	dev-java/jettison:0"
 
+# This package does need Java 8. See bug 564616.
 RDEPEND="
 	${CDEPEND}
-	>=virtual/jre-1.6"
+	>=virtual/jre-1.8"
 
 DEPEND="
 	${CDEPEND}
-	>=virtual/jdk-1.6
+	>=virtual/jdk-1.8
 	app-arch/unzip"
 
 JAVA_GENTOO_CLASSPATH="
