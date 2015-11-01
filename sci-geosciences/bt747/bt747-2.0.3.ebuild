@@ -17,7 +17,7 @@ SRC_URI="mirror://sourceforge/${PN}/BT747_${PV}_full.zip"
 
 LICENSE="GPL-3"
 SLOT="1"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 COMMON_DEP="
