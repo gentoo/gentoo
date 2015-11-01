@@ -8,7 +8,7 @@ DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 
-inherit distutils-r1 waf-utils multilib
+inherit distutils-r1 waf-utils multilib eutils
 
 DESCRIPTION="Library for audio labelling"
 HOMEPAGE="http://aubio.org/"
@@ -17,10 +17,13 @@ SRC_URI="http://aubio.org//pub/${P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="doc double-precision examples ffmpeg fftw jack libsamplerate sndfile python"
+IUSE="doc double-precision examples ffmpeg fftw jack libav libsamplerate sndfile python"
 
 RDEPEND="
-	ffmpeg? ( virtual/ffmpeg )
+	ffmpeg? (
+		!libav? ( >=media-video/ffmpeg-2.6:0= )
+		libav? ( >=media-video/libav-9:0= )
+	)
 	fftw? ( sci-libs/fftw:3.0 )
 	jack? ( media-sound/jack-audio-connection-kit )
 	libsamplerate? ( media-libs/libsamplerate )
@@ -37,7 +40,6 @@ DOCS=( AUTHORS ChangeLog README.md )
 PYTHON_SRC_DIR="${S}/python"
 
 src_prepare() {
-	sed -i -e "s:\/lib:\/$(get_libdir):" src/wscript_build || die
 	sed -i -e "s:doxygen:doxygen_disabled:" wscript || die
 }
 
