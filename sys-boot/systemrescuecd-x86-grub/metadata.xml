@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<name>Michael Lange</name>
+		<email>gentoobugs@milaw.biz</email>
+		<description>Accepts only mails from Gentoo's Bugzilla</description>
+	</maintainer>
+	<maintainer>
+		<name>Michał Górny</name>
+		<email>mgorny@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		This package adds menu entries in GRUB for the SystemRescueCD. You can
+		add custom bootoptions for SystemRescueCD in a special config file.
+	</longdescription>
+</pkgmetadata>
