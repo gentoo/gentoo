@@ -45,6 +45,13 @@ python_prepare_all() {
 
 	# Prevent un-needed d'loading
 	sed -e "s/'sphinx.ext.intersphinx', //" -i doc/en/conf.py || die
+
+	# https://github.com/pytest-dev/pytest/issues/1162
+	# https://github.com/pytest-dev/pytest/issues/1163
+	sed \
+		-e 's:test_logging_initialized_in_test:_&:g' \
+		-i testing/test_capture.py || die
+
 	distutils-r1_python_prepare_all
 }
 
