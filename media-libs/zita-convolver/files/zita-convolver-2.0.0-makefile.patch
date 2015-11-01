@@ -1,8 +1,6 @@
-Index: zita-convolver-2.0.0/libs/Makefile
-===================================================================
---- zita-convolver-2.0.0.orig/libs/Makefile
-+++ zita-convolver-2.0.0/libs/Makefile
-@@ -28,9 +28,7 @@ VERSION = $(MAJVERS).$(MINVERS)
+--- libs/Makefile.orig	2015-10-16 16:00:45.639918246 +0100
++++ libs/Makefile	2015-10-28 15:52:17.539967709 +0000
+@@ -28,9 +28,8 @@
  DISTDIR = zita-convolver-$(VERSION)
  
  
@@ -10,10 +8,11 @@ Index: zita-convolver-2.0.0/libs/Makefile
 -CPPFLAGS += -mmmx -msse -mfpmath=sse -ffast-math -funroll-loops -fpermissive
 -CPPFLAGS += -march=i686
 +CPPFLAGS += -Wall -I. -fPIC -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS
++CXXFLAGS += -ffast-math
  #CPPFLAGS += -DVECTORIZE 
  
  LDLFAGS += 
-@@ -46,7 +44,7 @@ ZITA-CONVOLVER_H = zita-convolver.h
+@@ -46,7 +45,7 @@
  
  
  $(ZITA-CONVOLVER_MIN):	$(ZITA-CONVOLVER_O)
@@ -22,11 +21,13 @@ Index: zita-convolver-2.0.0/libs/Makefile
  
  
  install:	$(ZITA-CONVOLVER_MIN)
-@@ -54,7 +52,6 @@ install:	$(ZITA-CONVOLVER_MIN)
+@@ -54,8 +53,8 @@
  	install -d $(PREFIX)/$(LIBDIR)
  	install -m 644 $(ZITA-CONVOLVER_H) $(PREFIX)/include
  	install -m 755 $(ZITA-CONVOLVER_MIN) $(PREFIX)/$(LIBDIR)
 -	ldconfig
  	ln -sf $(ZITA-CONVOLVER_MIN) $(PREFIX)/$(LIBDIR)/$(ZITA-CONVOLVER_SO)
++	ln -sf $(ZITA-CONVOLVER_MIN) $(PREFIX)/$(LIBDIR)/$(ZITA-CONVOLVER_MAJ)
  
  
+ clean:
