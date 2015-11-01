@@ -24,8 +24,8 @@ COMMON_DEPEND=">=app-cdr/dvd+rw-tools-7.1
 	>=media-video/dvdauthor-0.7.1
 	>=media-video/xine-ui-0.99.7
 	virtual/cdrtools
-	libav? ( media-video/libav:0=[encode] )
-	!libav? ( media-video/ffmpeg:0=[encode] )
+	libav? ( >=media-video/libav-9:0=[encode] )
+	!libav? ( >=media-video/ffmpeg-2.6:0=[encode] )
 	virtual/jpeg:0
 	x11-libs/wxGTK:${WX_GTK_VER}=[gstreamer,X]
 	sys-apps/dbus
@@ -54,7 +54,7 @@ src_prepare() {
 	sed -i \
 		-e '/Icon/s:.png::' -e '/^Encoding/d' -e '/Categories/s:Application;::' \
 		data/dvdstyler.desktop || die
-	has_version '>=media-video/ffmpeg-2.9' && epatch "${FILESDIR}/ffmpeg29.patch"
+	epatch "${FILESDIR}/${PN}-2.9.4-ffmpeg29.patch"
 }
 
 src_configure() {
