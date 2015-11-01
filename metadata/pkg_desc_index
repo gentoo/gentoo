@@ -8847,7 +8847,7 @@ dev-ruby/simplecov 0.8.2 0.9.0 0.9.1: Code coverage with a configuration library
 dev-ruby/simplecov-html 0.8.0 0.9.0: Generates a nice HTML report of your SimpleCov ruby code coverage results on Ruby 1.9
 dev-ruby/sinatra 1.4.6 1.4.6-r1: Sinatra is a DSL for quickly creating web applications in Ruby with minimal effort
 dev-ruby/six 0.2.0: An ultra lite authorization library
-dev-ruby/slim 2.0.3 2.1.0: A template language whose goal is reduce the syntax to the essential parts without becoming cryptic
+dev-ruby/slim 2.0.3 2.1.0 3.0.6: A template language whose goal is reduce the syntax to the essential parts without becoming cryptic
 dev-ruby/slop 3.6.0 4.1.0 4.2.0: A simple option parser with an easy to remember syntax and friendly API
 dev-ruby/snmplib 1.2.0 1.2.0-r1: SNMP library implemented in pure Ruby
 dev-ruby/source_map 3.0.1: Provides an API for parsing, and an API for generating source maps in ruby
