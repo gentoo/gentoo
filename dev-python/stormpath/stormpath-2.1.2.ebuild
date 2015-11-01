@@ -19,9 +19,7 @@ IUSE="doc test"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? (
-		dev-python/sphinx[${PYTHON_USEDEP}]
-	)
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
@@ -29,6 +27,7 @@ DEPEND="
 	)
 "
 RDEPEND="
+	>=dev-python/isodate-0.5.4[${PYTHON_USEDEP}]
 	>=dev-python/oauthlib-0.6.3[${PYTHON_USEDEP}]
 	>=dev-python/pydispatcher-2.0.5[${PYTHON_USEDEP}]
 	>=dev-python/pyjwt-1.0.0[${PYTHON_USEDEP}]
@@ -36,14 +35,6 @@ RDEPEND="
 	>=dev-python/requests-2.4.3[${PYTHON_USEDEP}]
 	>=dev-python/six-1.6.1[${PYTHON_USEDEP}]
 "
-
-python_prepare_all() {
-	local PATCHES=(
-		"${FILESDIR}"/drop-test-module.patch
-	)
-
-	distutils-r1_python_prepare_all
-}
 
 python_compile_all() {
 	use doc && emake -C docs html
