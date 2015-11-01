@@ -38,7 +38,7 @@ src_prepare() {
 }
 
 src_configure() {
-	JAVA_CLASSPATH_EXTRA=$(java-pkg_getjars --build-only ant-core)
+	JAVA_GENTOO_CLASSPATH_EXTRA=$(java-pkg_getjars --build-only ant-core)
 }
 
 src_install() {

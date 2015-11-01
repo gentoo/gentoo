@@ -40,7 +40,7 @@ S="${WORKDIR}"
 #	JAVA_GENTOO_CLASSPATH="foo,bar-2"
 # @CODE
 
-# @ECLASS-VARIABLE: JAVA_CLASSPATH_EXTRA
+# @ECLASS-VARIABLE: JAVA_GENTOO_CLASSPATH_EXTRA
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Extra list of colon separated path elements to be put on the
@@ -93,7 +93,7 @@ java-pkg-simple_src_compile() {
 	mkdir -p ${classes} || die "Could not create target directory"
 
 	# compile
-	local classpath="${JAVA_CLASSPATH_EXTRA}" dependency
+	local classpath="${JAVA_GENTOO_CLASSPATH_EXTRA}" dependency
 	for dependency in ${JAVA_GENTOO_CLASSPATH}; do
 		classpath="${classpath}:$(java-pkg_getjars ${dependency})" \
 			|| die "getjars failed for ${dependency}"
