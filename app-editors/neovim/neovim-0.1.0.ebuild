@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit cmake-utils eutils flag-o-matic
+inherit cmake-utils flag-o-matic
 
 DESCRIPTION="Vim-fork focused on extensibility and agility."
 HOMEPAGE="https://neovim.io"
