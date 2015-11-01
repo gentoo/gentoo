@@ -13,16 +13,19 @@ SRC_URI="http://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 CDEPEND="dev-java/log4j:0"
 
-RDEPEND=">=virtual/jre-1.6
-	${CDEPEND}"
-DEPEND=">=virtual/jdk-1.6
-	app-arch/unzip
-	${CDEPEND}"
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
+
+DEPEND="
+	${CDEPEND}
+	>=virtual/jdk-1.6
+	app-arch/unzip"
 
 PATCHES=(
 	"${FILESDIR}"/"${P}-libfec8path.patch"
