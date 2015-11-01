@@ -34,9 +34,13 @@ DEPEND="
 # Required for test phase
 DISTUTILS_IN_SOURCE_BUILD=1
 
+# https://github.com/testing-cabal/testrepository/issues/18
+RESTRICT=test
+
 python_test() {
 	# some errors appear to have crept in the suite undert py3 since addition.
 	# Python2.7 now passes all.
 
-	esetup.py testr
+	${PYTHON} testr init || die
+	${PYTHON} testr run || die
 }
