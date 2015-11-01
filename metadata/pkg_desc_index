@@ -195,7 +195,7 @@ app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log
 app-admin/sshguard 1.5-r1 1.5-r2 1.5-r3: protects hosts from brute force attacks against ssh
 app-admin/stow 2.2.0-r2: Manage installation of software in /var/lib/
 app-admin/sud 1.3-r1: A daemon to execute processes with special (and customizable) privileges in a nosuid environment
-app-admin/sudo 1.8.12 1.8.12-r1 1.8.13 1.8.14_p3 9999: Allows users or groups to run commands as other users
+app-admin/sudo 1.8.12 1.8.14_p3 1.8.15 9999: Allows users or groups to run commands as other users
 app-admin/sulfur 1.0_rc104-r1: Sulfur, the Entropy Package Manager Store
 app-admin/superadduser 1.0.9: Interactive adduser script from Slackware
 app-admin/supernova 2.0.7 2.0.8 2.0.9: novaclient wrapper for multiple nova environments
@@ -3727,7 +3727,7 @@ dev-java/apple-java-extensions-bin 1.5 1.5-r1: A pluggable jar of stub classes r
 dev-java/apple-jdk-bin 1.6.0: Links to Apple's version of Sun's J2SE Development Kit
 dev-java/apt-mirror 1.0-r1: Annotation processing apt mirror API introduced in J2SE 5.0
 dev-java/args4j 2.32: args4j is a Java command line arguments parser
-dev-java/asm 2.0-r1 2.2.3-r1 3.3.1 4.0 5.0.3: Bytecode manipulation framework for Java
+dev-java/asm 2.0-r1 2.2.3-r1 3.3.1 4.0 5.0.3 5.0.4: Bytecode manipulation framework for Java
 dev-java/aspectj 1.7.3-r1 1.7.4: A seamless aspect-oriented extension to the Java programming language
 dev-java/avalon-framework 4.1.5-r1 4.1.5-r2 4.2.0-r1 4.2.0-r2: Avalon Framework
 dev-java/avalon-logkit 1.2.2-r1 2.1-r5 2.1-r6 2.1-r7 2.1-r8: Easy-to-use Java logging toolkit
@@ -3829,7 +3829,7 @@ dev-java/ehcache 1.2.4-r3 1.2.4-r4: Ehcache is a pure Java, fully-featured, in-p
 dev-java/emma 2.0.5312-r2: a free Java code coverage tool
 dev-java/fastinfoset 1.2.11: Fast Infoset specifies a standardized binary encoding for the XML Information Sets
 dev-java/fastutil 4.3.1-r1 4.4.2-r1 5.1.3 6.5.4: Provides faster type-specific maps, sets and lists with a small memory footprint
-dev-java/fec 1.0.4-r1 1.0.4-r2: Forward Error Correction library in Java
+dev-java/fec 1.0.4-r2: Forward Error Correction library in Java
 dev-java/felix-bundlerepository 1.6.6: Felix Bundle Repository
 dev-java/felix-gogo-command 0.12.0: Felix Gogo Command
 dev-java/felix-gogo-runtime 0.10.0: Felix Gogo Runtime
@@ -4318,7 +4318,7 @@ dev-java/xpp3 1.1.4c-r1 1.1.4c-r2: An implementation of XMLPULL V1 API
 dev-java/xsd2jibx 0.2a_beta-r2: JiBX binding and code from schema generator
 dev-java/xsdlib 20090415: Sun XML Datatypes Library
 dev-java/xsom 20060901: XML Schema Object Model (XSOM) allows Java apps to easy parse and inspect XML Schema docs
-dev-java/xstream 1.3.1-r3 1.3.1-r4 1.4.8: A text-processing Java API that serialize objects to XML and back again
+dev-java/xstream 1.3.1-r3 1.3.1-r4 1.4.8-r1: A text-processing Java API that serialize objects to XML and back again
 dev-java/xz-java 1.5: Implementation of xz data compression in pure java
 dev-java/yanfs 1.0: Yet Another NFS - a Java NFS library
 dev-java/zemberek 2.1.1: Zemberek NLP library
@@ -14568,7 +14568,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/yaydl 1.5.2: Yet Another Youtube DownLoader which is downloading more than youtube
-net-misc/youtube-dl 2015.04.03 2015.10.18 2015.10.24: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2015.04.03 2015.10.24 2015.11.01: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.1 3.1.9 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
