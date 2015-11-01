@@ -12,9 +12,9 @@ DESCRIPTION="The KDE Network Monitor"
 HOMEPAGE="http://kde-apps.org/content/show.php?content=12956"
 SRC_URI="http://www.kde-apps.org/CONTENT/content-files/12956-${P}.tar.xz"
 
+LICENSE="GPL-2"
 SLOT="4"
 KEYWORDS="~amd64 ~x86"
-LICENSE="GPL-2"
 IUSE="debug wifi"
 
 DEPEND="
@@ -29,10 +29,8 @@ RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS ChangeLog README )
 
-PATCHES=()
-
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		$(cmake-utils_use_no wifi WIRELESS_SUPPORT)
 	)
 
