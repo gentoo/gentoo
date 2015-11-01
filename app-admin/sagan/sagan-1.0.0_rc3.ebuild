@@ -15,7 +15,7 @@ SRC_URI="http://sagan.quadrantsec.com/download/sagan-1.0.0RC3.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="geoip +libdnet +lognorm mysql +pcap smtp snort"
 
 RDEPEND="dev-libs/libpcre
