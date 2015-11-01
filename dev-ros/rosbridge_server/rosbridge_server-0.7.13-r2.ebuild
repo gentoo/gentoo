@@ -21,6 +21,10 @@ RDEPEND="
 	dev-ros/rosbridge_library[${PYTHON_USEDEP},${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/rosauth[${PYTHON_USEDEP}]
 	dev-python/backports-ssl-match-hostname[${PYTHON_USEDEP}]
+	www-servers/tornado[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/backports-ssl.patch" )
+PATCHES=(
+	"${FILESDIR}/backports-ssl.patch"
+	"${FILESDIR}/tornado.patch"
+)
