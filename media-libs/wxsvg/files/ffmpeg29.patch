@@ -1,0 +1,13 @@
+Index: wxsvg-1.5.5/src/mediadec_ffmpeg.cpp
+===================================================================
+--- wxsvg-1.5.5.orig/src/mediadec_ffmpeg.cpp
++++ wxsvg-1.5.5/src/mediadec_ffmpeg.cpp
+@@ -263,7 +263,7 @@ wxImage wxFfmpegMediaDecoder::GetNextFra
+ 			avcodec_decode_video2(m_codecCtx, m_frame, &frameFinished, &packet);
+ 			if (frameFinished) {
+ 				SwsContext* imgConvertCtx = sws_getContext(m_codecCtx->width, m_codecCtx->height, m_codecCtx->pix_fmt,
+-						m_width, m_height, PIX_FMT_RGB24, SWS_BICUBIC, NULL, NULL, NULL);
++						m_width, m_height, AV_PIX_FMT_RGB24, SWS_BICUBIC, NULL, NULL, NULL);
+ 				if (imgConvertCtx == NULL) {
+ 					av_free_packet(&packet);
+ 					return wxImage();
