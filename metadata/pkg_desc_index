@@ -11948,7 +11948,7 @@ media-libs/alsa-oss 1.0.25 1.0.25-r1 1.0.28: Advanced Linux Sound Architecture O
 media-libs/alure 1.2: The OpenAL Utility Toolkit
 media-libs/assimp 3.0.1270 3.1.1: Importer library to import assets from 3D files
 media-libs/atlas-c++ 0.6.3: Atlas protocol, used in role playing games at worldforge
-media-libs/aubio 0.3.2-r2 0.4.0-r1 0.4.1: Library for audio labelling
+media-libs/aubio 0.4.1 0.4.2: Library for audio labelling
 media-libs/audiofile 0.3.5 0.3.6-r1: An elegant API for accessing audio files
 media-libs/avidemux-core 2.6.2-r1 2.6.3 2.6.4 2.6.5 2.6.7 2.6.8 9999: Core libraries for a video editor designed for simple cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.6.2-r2 2.6.3 2.6.4 2.6.4-r1 2.6.5 2.6.5-r1 2.6.7 2.6.8 9999: Plugins for avidemux; a video editor designed for simple cutting, filtering and encoding tasks
