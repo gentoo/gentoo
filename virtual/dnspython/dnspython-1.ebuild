@@ -17,7 +17,10 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
-RDEPEND="!dev-python/dnspython:0
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RDEPEND="${PYTHON_DEPS}
+	!dev-python/dnspython:0
 	$(python_gen_cond_dep 'dev-python/dnspython:py2[${PYTHON_USEDEP}]' python2*)
 	$(python_gen_cond_dep 'dev-python/dnspython:py3[${PYTHON_USEDEP}]' python3*)"
 DEPEND="!dev-python/dnspython:0"
