@@ -20,6 +20,8 @@ LICENSE="BSD-1"
 SLOT="0"
 IUSE="+pkg-config strict"
 
+RESTRICT="test" # at least until 0.9.13
+
 DEPEND=""
 RDEPEND="${DEPEND}
 	pkg-config? (
