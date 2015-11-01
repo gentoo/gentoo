@@ -6626,6 +6626,10 @@ sci-electronics/gtkwave:fasttree - Enables experimental Fast SST Tree widget cod
 sci-electronics/gtkwave:fatlines - Renders lines as double width in gtkwave.
 sci-electronics/gtkwave:judy - Enables Judy array support.
 sci-electronics/gtkwave:packed - Enables '#pragma pack' for data arrays (saves memory, costs time).
+sci-electronics/kicad:github - Add github support into PCB editor
+sci-electronics/kicad:i18n - Allow GUI internationalization through linguas_* use flags
+sci-electronics/kicad:minimal - Build only binaries without parts library and examples
+sci-electronics/kicad:python - Enable python scripting support
 sci-electronics/pcb:gcode - gcode file export
 sci-electronics/pcb:gif - GIF graphics export
 sci-electronics/pcb:jpeg - JPEG graphics export

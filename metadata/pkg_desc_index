@@ -4540,7 +4540,7 @@ dev-libs/fstrm 0.2.0-r1: Frame Streams implementation in C
 dev-libs/g-wrap 1.9.11 1.9.13 1.9.14: A tool for exporting C libraries into Scheme
 dev-libs/gdl 3.14.0 3.16.0: GNOME docking library
 dev-libs/gecode 3.7.3: Gecode is an environment for developing constraint-based systems and applications
-dev-libs/geoip 1.6.5 1.6.6: easily lookup countries by IP addresses, even when Reverse DNS entries don't exist
+dev-libs/geoip 1.6.5 1.6.6 1.6.7: easily lookup countries by IP addresses, even when Reverse DNS entries don't exist
 dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.0-r1 1.1: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.2.2 0.2.3 0.2.4 9999: A library that implements a user interface that focuses on simplicity and minimalism
@@ -15307,7 +15307,7 @@ sci-electronics/gtkwave 3.3.45 3.3.47 3.3.59 3.3.64 3.3.65 3.3.66: A wave viewer
 sci-electronics/gwave 20090213-r1: Analog waveform viewer for SPICE-like simulations
 sci-electronics/irsim 9.7.79 9.7.87: IRSIM is a "switch-level" simulator
 sci-electronics/iverilog 0.9.6 0.9.7: A Verilog simulation and synthesis tool
-sci-electronics/kicad 20130518: Electronic Schematic and PCB design tools
+sci-electronics/kicad 4.0.0_rc1: Electronic Schematic and PCB design tools.
 sci-electronics/klayout 0.23.10: Viewer and editor for GDS and OASIS integrated circuit layouts
 sci-electronics/linsmith 0.99.28: Smith charting program, mainly designed for educational use
 sci-electronics/magic 7.5.202-r1 7.5.231 8.0.138 8.0.207: The VLSI design CAD tool
@@ -17421,7 +17421,7 @@ www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ 
 www-client/uzbl 2012.05.14 2012.05.14-r1 9999: Web interface tools which adhere to the unix philosophy.
 www-client/vimb 2.9: a fast, lightweight, vim-like browser based on webkit
 www-client/vimprobable2 1.4.0 1.4.2 1.4.2-r1 9999: A minimal web browser that behaves like the Vimperator plugin for Firefox
-www-client/vivaldi 1.0.303.37_p1 1.0.303.40_p1: A new browser for our friends
+www-client/vivaldi 1.0.303.40_p1 1.0.303.48_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7: A variant of w3m with support for multiple character encodings
