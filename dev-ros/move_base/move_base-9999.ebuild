@@ -16,6 +16,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
+	>=dev-ros/costmap_2d-1.13.1
 	dev-ros/roscpp
 	dev-ros/pluginlib
 	dev-ros/actionlib
