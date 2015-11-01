@@ -10,4 +10,4 @@ RDEPEND=dev-lang/luajit:2 >=dev-libs/libtermkey-0.17 >=dev-libs/libuv-1.2.0 >=de
 SLOT=0
 SRC_URI=https://github.com/neovim/neovim/archive/v0.1.0.tar.gz -> neovim-0.1.0.tar.gz
 _eclasses_=cmake-utils	34a43631b1edbd429618149bc986d524	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=88f8ccececb7286cb2005fbdc8475566
+_md5_=a7ebd182fa64c17044c4e23d1c6711a9
