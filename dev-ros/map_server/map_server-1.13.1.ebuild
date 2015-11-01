@@ -9,21 +9,19 @@ KEYWORDS="~amd64 ~arm"
 
 inherit ros-catkin
 
-DESCRIPTION="Recovery behavior that attempts to clear space by reverting the costmaps to the static map"
+DESCRIPTION="Offers map data as a ROS service"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=dev-ros/costmap_2d-1.13.1
-	dev-ros/nav_core
-	dev-ros/pluginlib
 	dev-ros/roscpp
 	dev-ros/tf
-	dev-cpp/eigen:3
-	sci-libs/pcl
+	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-libs/boost:=
+	media-libs/sdl-image
+	>=dev-cpp/yaml-cpp-0.5
 "
 DEPEND="${RDEPEND}
-	dev-ros/cmake_modules
 	test? ( dev-ros/rostest dev-cpp/gtest )
-"
+	virtual/pkgconfig"

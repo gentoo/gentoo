@@ -9,21 +9,17 @@ KEYWORDS="~amd64 ~arm"
 
 inherit ros-catkin
 
-DESCRIPTION="Recovery behavior that attempts to clear space by reverting the costmaps to the static map"
+DESCRIPTION="Attempts to find a legal place to put a carrot for the robot to follow"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=dev-ros/costmap_2d-1.13.1
-	dev-ros/nav_core
-	dev-ros/pluginlib
 	dev-ros/roscpp
 	dev-ros/tf
-	dev-cpp/eigen:3
-	sci-libs/pcl
+	dev-ros/nav_core
+	dev-ros/costmap_2d
+	dev-ros/base_local_planner
+	dev-ros/pluginlib
 "
-DEPEND="${RDEPEND}
-	dev-ros/cmake_modules
-	test? ( dev-ros/rostest dev-cpp/gtest )
-"
+DEPEND="${RDEPEND}"
