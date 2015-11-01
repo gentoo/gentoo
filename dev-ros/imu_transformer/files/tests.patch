@@ -1,0 +1,23 @@
+commit 5524d5687803f720ed8532f103e804c82cbdadb4
+Author: Alexis Ballier <aballier@gentoo.org>
+Date:   Sun Nov 1 23:50:20 2015 +0100
+
+    imu_transformer: Fix build with CATKIN_ENABLE_TESTIING=OFF
+    
+    https://bugs.gentoo.org/show_bug.cgi?id=564654
+
+diff --git a/imu_transformer/CMakeLists.txt b/imu_transformer/CMakeLists.txt
+index 9a498dc..1148f19 100644
+--- a/imu_transformer/CMakeLists.txt
++++ b/imu_transformer/CMakeLists.txt
+@@ -31,7 +31,9 @@ target_link_libraries(imu_transformer_nodelet ${catkin_LIBRARIES})
+ add_executable(imu_transformer_node src/imu_transformer_node.cpp)
+ target_link_libraries(imu_transformer_node ${catkin_LIBRARIES})
+ 
+-roslaunch_add_file_check(launch)
++if(CATKIN_ENABLE_TESTING)
++  roslaunch_add_file_check(launch)
++endif()
+ 
+ install(TARGETS imu_transformer_node imu_transformer_nodelet
+ 	RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
