@@ -1,0 +1,31 @@
+From 62b1450cfe2e0df2d912279d38edf1b916020101 Mon Sep 17 00:00:00 2001
+From: hasufell <hasufell@hasufell.de>
+Date: Mon, 2 Nov 2015 16:39:31 +0100
+Subject: [PATCH 4/4] makefile: add CFLAGS to linking command
+
+Although we compile the objects explicitly there are some CFLAGS
+that may also affect linking, which is not always obvious.
+
+This can also be a problem for toolchains that support multiple ABIs
+and need to set CFLAGS=<abi selector>, which will cause linking
+to either fail or produce an unusable executable/library.
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index cbe93e8..ae16f08 100644
+--- a/Makefile
++++ b/Makefile
+@@ -102,7 +102,7 @@ libhttp_parser.o: http_parser.c http_parser.h Makefile
+ 	$(CC) $(CPPFLAGS_FAST) $(CFLAGS_LIB) -c http_parser.c -o libhttp_parser.o
+ 
+ library: libhttp_parser.o
+-	$(CC) $(LDFLAGS_LIB) -o $(SONAME) $<
++	$(CC) $(CFLAGS_LIB) $(LDFLAGS_LIB) -o $(SONAME) $<
+ 
+ package: http_parser.o
+ 	$(AR) rcs libhttp_parser.a http_parser.o
+-- 
+2.6.1
+
