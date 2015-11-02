@@ -43,7 +43,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--exec-prefix="${EPREFIX}" \
 		--docdir='$(datarootdir)'/doc/${PF} \
 		$(use_enable modern-top) \
 		$(use_with ncurses) \
@@ -62,8 +61,9 @@ src_install() {
 	default
 	#dodoc sysctl.conf
 
-	# The configure script is completely whacked in the head
-	mv "${ED}"/lib* "${ED}"/usr/ || die
+	dodir /bin
+	mv "${ED}"/usr/bin/{kill,pidof,ps} "${ED}"/bin/ || die
+
 	gen_usr_ldscript -a procps
 	prune_libtool_files
 }
