@@ -7,8 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_3 )
 
 inherit distutils-r1
 
-DESCRIPTION="A Django authentication backend for use with the OpenStack Keystone
-Identity backend."
+DESCRIPTION="Django authentication backend for use with OpenStack Keystone Identity backend"
 HOMEPAGE="http://django_openstack_auth.readthedocs.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/django_openstack_auth/django_openstack_auth-${PV}.tar.gz"
 S="${WORKDIR}/django_openstack_auth-${PV}"
