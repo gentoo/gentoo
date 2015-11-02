@@ -193,10 +193,7 @@ src_prepare() {
 	# Add support for the Epson-specific backend.  Needs media-gfx/iscan installed.
 	epkowa
 	EOF
-	epatch "${FILESDIR}"/niash_array_index.patch \
-		"${FILESDIR}"/${PN}-1.0.24-automagic_systemd.patch \
-		"${FILESDIR}"/${PN}-1.0.24-systemd_pkgconfig.patch \
-		"${FILESDIR}"/${PN}-1.0.24-saned_pidfile_location.patch
+	epatch "${FILESDIR}"/${PN}-1.0.24-saned_pidfile_location.patch
 	mv configure.{in,ac} || die
 	AT_NOELIBTOOLIZE=yes eautoreconf
 }
