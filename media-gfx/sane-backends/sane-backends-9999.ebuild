@@ -190,6 +190,7 @@ src_prepare() {
 	epkowa
 	EOF
 	epatch "${FILESDIR}"/${PN}-1.0.24-saned_pidfile_location.patch
+	epatch "${FILESDIR}"/${PN}-1.0.25-disable-usb-tests.patch
 	mv configure.{in,ac} || die
 	AT_NOELIBTOOLIZE=yes eautoreconf
 

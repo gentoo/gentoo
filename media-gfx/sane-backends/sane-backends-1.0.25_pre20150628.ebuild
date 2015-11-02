@@ -197,7 +197,8 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.0.24-automagic_systemd.patch \
 		"${FILESDIR}"/${PN}-1.0.24-systemd_pkgconfig.patch \
 		"${FILESDIR}"/${PN}-1.0.24-saned_pidfile_location.patch \
-		"${FILESDIR}"/${PN}-1.0.24-cross-compile.patch
+		"${FILESDIR}"/${PN}-1.0.24-cross-compile.patch \
+		"${FILESDIR}"/${PN}-1.0.25-disable-usb-tests.patch
 	# Fix for "make check".
 	sed -i -e 's/sane-backends 1.0.24/sane-backends 1.0.25git/' testsuite/tools/data/html*
 	mv configure.{in,ac} || die
