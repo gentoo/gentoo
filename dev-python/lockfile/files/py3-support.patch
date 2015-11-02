@@ -1,0 +1,107 @@
+# https://github.com/smontanaro/pylockfile/commit/379fa0b6131995f96f5bd048906fc0bd3c2527f7
+# https://github.com/smontanaro/pylockfile/commit/eeead7d35e9a97b457b90edd241fd031df68d57b
+# https://github.com/smontanaro/pylockfile/commit/bf2627a5b9f83e1bbcf1b5030a693acb6236a211
+--- a/lockfile/__init__.py
++++ b/lockfile/__init__.py
+@@ -1,4 +1,3 @@
+-
+ """
+ lockfile.py - Platform-independent advisory file locks.
+ 
+@@ -50,6 +49,8 @@ Exceptions:
+             NotMyLock - File was locked but not by the current thread/process
+ """
+ 
++from __future__ import absolute_import
++
+ import sys
+ import socket
+ import os
+@@ -257,7 +258,7 @@ def LinkFileLock(*args, **kwds):
+     Do not use in new code.  Instead, import LinkLockFile from the
+     lockfile.linklockfile module.
+     """
+-    import linklockfile
++    from . import linklockfile
+     return _fl_helper(linklockfile.LinkLockFile, "lockfile.linklockfile",
+                       *args, **kwds)
+ 
+@@ -267,7 +268,7 @@ def MkdirFileLock(*args, **kwds):
+     Do not use in new code.  Instead, import MkdirLockFile from the
+     lockfile.mkdirlockfile module.
+     """
+-    import mkdirlockfile
++    from . import mkdirlockfile
+     return _fl_helper(mkdirlockfile.MkdirLockFile, "lockfile.mkdirlockfile",
+                       *args, **kwds)
+ 
+@@ -277,7 +278,7 @@ def SQLiteFileLock(*args, **kwds):
+     Do not use in new code.  Instead, import SQLiteLockFile from the
+     lockfile.mkdirlockfile module.
+     """
+-    import sqlitelockfile
++    from . import sqlitelockfile
+     return _fl_helper(sqlitelockfile.SQLiteLockFile, "lockfile.sqlitelockfile",
+                       *args, **kwds)
+ 
+@@ -306,10 +307,10 @@ def locked(path, timeout=None):
+     return decor
+ 
+ if hasattr(os, "link"):
+-    import linklockfile as _llf
++    from . import linklockfile as _llf
+     LockFile = _llf.LinkLockFile
+ else:
+-    import mkdirlockfile as _mlf
++    from . import mkdirlockfile as _mlf
+     LockFile = _mlf.MkdirLockFile
+ 
+ FileLock = LockFile
+diff --git a/lockfile/pidlockfile.py b/lockfile/pidlockfile.py
+index 3fc8f63..a965ba8 100644
+--- a/lockfile/pidlockfile.py
++++ b/lockfile/pidlockfile.py
+@@ -78,7 +78,7 @@ class PIDLockFile(LockBase):
+         while True:
+             try:
+                 write_pid_to_pidfile(self.path)
+-            except OSError, exc:
++            except OSError as exc:
+                 if exc.errno == errno.EEXIST:
+                     # The lock creation failed.  Maybe sleep a bit.
+                     if timeout is not None and time.time() > end_time:
+@@ -159,7 +159,7 @@ def write_pid_to_pidfile(pidfile_path):
+ 
+         """
+     open_flags = (os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+-    open_mode = 0644
++    open_mode = 0o644
+     pidfile_fd = os.open(pidfile_path, open_flags, open_mode)
+     pidfile = os.fdopen(pidfile_fd, 'w')
+ 
+@@ -186,7 +186,7 @@ def remove_existing_pidfile(pidfile_path):
+         """
+     try:
+         os.remove(pidfile_path)
+-    except OSError, exc:
++    except OSError as exc:
+         if exc.errno == errno.ENOENT:
+             pass
+         else:
+diff --git a/lockfile/sqlitelockfile.py b/lockfile/sqlitelockfile.py
+index ec75490..d596229 100644
+--- a/lockfile/sqlitelockfile.py
++++ b/lockfile/sqlitelockfile.py
+@@ -3,6 +3,11 @@ from __future__ import absolute_import, division
+ import time
+ import os
+ 
++try:
++    unicode
++except NameError:
++    unicode = str
++
+ from . import LockBase, NotLocked, NotMyLock, LockTimeout, AlreadyLocked
+ 
+ class SQLiteLockFile(LockBase):
+
