@@ -18,17 +18,12 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="doc test"
 
 DEPEND="
-	>dev-python/pbr-0.7[${PYTHON_USEDEP}]
+	dev-python/pbr[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 RDEPEND=""
 
-DOCS=( ACKS AUTHORS ChangeLog README.rst RELEASE-NOTES )
-
-python_prepare_all() {
-	rm requirements.txt || die
-	distutils-r1_python_prepare_all
-}
+DOCS=( ACKS README RELEASE-NOTES )
 
 python_compile_all() {
 	if use doc; then
