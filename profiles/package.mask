@@ -138,11 +138,6 @@ dev-java/commons-grant
 =sys-kernel/vanilla-sources-4.1.9
 =sys-kernel/gentoo-sources-4.1.9
 
-# Patrice Clement <monsieurp@gentoo.org> (1 Oct 2015)
-# Project is over 10 years old and seems to have stalled.
-# Masked for removal in 30 days. See bug 561954.
-dev-java/xmlc
-
 # Andreas K. Huettel <dilfridge@gentoo.org> (27 Sep 2015)
 # Dead upstream, buggy, effectively unmaintained. Removal
 # in 30 days.
