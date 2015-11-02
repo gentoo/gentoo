@@ -62,7 +62,7 @@ src_configure() {
 	myconf="${myconf} $(use_enable modelock) $(use_enable xrandr randr) $(use_enable xinerama)"
 
 	if use nls; then
-		[[ -z $LINGUAS ]] && export LINGUAS="`ls po/*.po | sed 's:po/\(.*\)\.po$:\1:'`"
+		[[ -z $LINGUAS ]] && export LINGUAS="$(ls po/*.po | sed 's:po/\(.*\)\.po$:\1:' | xargs)"
 	else
 		myconf="${myconf} --disable-locale"
 	fi
