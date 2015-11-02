@@ -128,7 +128,7 @@ src_install() {
 	default
 
 	if use ldap ; then
-		dodoc README.LDAP doc/schema.OpenLDAP
+		dodoc README.LDAP
 		dosbin plugins/sudoers/sudoers2ldif
 
 		cat <<-EOF > "${T}"/ldap.conf.sudo
@@ -137,12 +137,15 @@ src_install() {
 
 		# supported directives: host, port, ssl, ldap_version
 		# uri, binddn, bindpw, sudoers_base, sudoers_debug
-		# tls_{checkpeer,cacertfile,cacertdir,randfile,ciphers,cert,key
+		# tls_{checkpeer,cacertfile,cacertdir,randfile,ciphers,cert,key}
 		EOF
 
 		insinto /etc
 		doins "${T}"/ldap.conf.sudo
 		fperms 0440 /etc/ldap.conf.sudo
+
+		insinto /etc/openldap/schema
+		newins doc/schema.OpenLDAP sudo.schema
 	fi
 
 	pamd_mimic system-auth sudo auth account session
