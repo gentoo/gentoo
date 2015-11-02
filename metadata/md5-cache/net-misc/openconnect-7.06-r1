@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure install postinst preinst prepare pretend setup
-DEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( >=dev-libs/openssl-1.0.1h:0[static-libs?] ) gnutls? ( >=net-libs/gnutls-3[static-libs?] dev-libs/nettle app-misc/ca-certificates ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) nls? ( virtual/libintl ) virtual/pkgconfig doc? ( || ( >=dev-lang/python-2.7.5-r2:2.7[xml] ) sys-apps/groff ) java? ( >=virtual/jdk-1.6 ) nls? ( sys-devel/gettext ) java? ( >=dev-java/java-config-2.2.0 )
+DEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( >=dev-libs/openssl-1.0.1h:0[static-libs?] ) gnutls? ( >=net-libs/gnutls-3[static-libs?] dev-libs/nettle app-misc/ca-certificates ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) nls? ( virtual/libintl ) smartcard? ( sys-apps/pcsc-lite:0= ) virtual/pkgconfig doc? ( || ( >=dev-lang/python-2.7.5-r2:2.7[xml] ) sys-apps/groff ) java? ( >=virtual/jdk-1.6 ) nls? ( sys-devel/gettext ) java? ( >=dev-java/java-config-2.2.0 )
 DESCRIPTION=Free client for Cisco AnyConnect SSL VPN software
 EAPI=5
 HOMEPAGE=http://www.infradead.org/openconnect.html
-IUSE=doc +gnutls gssapi java libproxy nls static-libs linguas_ar linguas_cs linguas_de linguas_el linguas_en_GB linguas_en_US linguas_es linguas_eu linguas_fi linguas_fr linguas_gl linguas_id linguas_lt linguas_nl linguas_pa linguas_pl linguas_pt linguas_pt_BR linguas_sk linguas_sl linguas_tg linguas_ug linguas_uk linguas_zh_CN linguas_zh_TW elibc_FreeBSD java
+IUSE=doc +gnutls gssapi java libproxy nls smartcard static-libs linguas_ar linguas_cs linguas_de linguas_el linguas_en_GB linguas_en_US linguas_es linguas_eu linguas_fi linguas_fr linguas_gl linguas_id linguas_lt linguas_nl linguas_pa linguas_pl linguas_pt linguas_pt_BR linguas_sk linguas_sl linguas_tg linguas_ug linguas_uk linguas_zh_CN linguas_zh_TW elibc_FreeBSD java
 KEYWORDS=amd64 arm ~arm64 ppc64 x86
 LICENSE=LGPL-2.1 GPL-2
-RDEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( >=dev-libs/openssl-1.0.1h:0[static-libs?] ) gnutls? ( >=net-libs/gnutls-3[static-libs?] dev-libs/nettle app-misc/ca-certificates ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) nls? ( virtual/libintl ) sys-apps/iproute2 !<sys-apps/openrc-0.13 java? ( >=dev-java/java-config-2.2.0 )
+RDEPEND=dev-libs/libxml2 sys-libs/zlib !gnutls? ( >=dev-libs/openssl-1.0.1h:0[static-libs?] ) gnutls? ( >=net-libs/gnutls-3[static-libs?] dev-libs/nettle app-misc/ca-certificates ) gssapi? ( virtual/krb5 ) libproxy? ( net-libs/libproxy ) nls? ( virtual/libintl ) smartcard? ( sys-apps/pcsc-lite:0= ) sys-apps/iproute2 !<sys-apps/openrc-0.13 java? ( >=dev-java/java-config-2.2.0 )
 SLOT=0/5
 SRC_URI=ftp://ftp.infradead.org/pub/openconnect/openconnect-7.06.tar.gz ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-20140806.tar.gz
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	a96633177f44ee992b3fce360d1c4f16	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	b81ab4852d108e3d9c940fa03bce80e1	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=3dbaff8d487939fdea51722f7cfef4ad
+_md5_=e69c0e1ea9e3b8034ced182eed07b7f6
