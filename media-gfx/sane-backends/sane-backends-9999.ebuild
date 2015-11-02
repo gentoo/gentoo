@@ -142,18 +142,20 @@ if [[ ${PV} != "9999" ]] ; then
 fi
 
 RDEPEND="
-	sane_backends_dc210? ( >=virtual/jpeg-0-r2[${MULTILIB_USEDEP}] )
-	sane_backends_dc240? ( >=virtual/jpeg-0-r2[${MULTILIB_USEDEP}] )
-	sane_backends_dell1600n_net? ( >=virtual/jpeg-0-r2[${MULTILIB_USEDEP}]
-									>=media-libs/tiff-3.9.7-r1[${MULTILIB_USEDEP}] )
+	sane_backends_dc210? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
+	sane_backends_dc240? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
+	sane_backends_dell1600n_net? (
+		>=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}]
+		>=media-libs/tiff-3.9.7-r1:0=[${MULTILIB_USEDEP}]
+	)
 	avahi? ( >=net-dns/avahi-0.6.31-r2[${MULTILIB_USEDEP}] )
 	sane_backends_canon_pp? ( >=sys-libs/libieee1284-0.2.11-r3[${MULTILIB_USEDEP}] )
 	sane_backends_hpsj5s? ( >=sys-libs/libieee1284-0.2.11-r3[${MULTILIB_USEDEP}] )
 	sane_backends_mustek_pp? ( >=sys-libs/libieee1284-0.2.11-r3[${MULTILIB_USEDEP}] )
-	usb? ( >=virtual/libusb-1-r1:1[${MULTILIB_USEDEP}] )
+	usb? ( >=virtual/libusb-1-r1:1=[${MULTILIB_USEDEP}] )
 	gphoto2? (
 		>=media-libs/libgphoto2-2.5.3.1:=[${MULTILIB_USEDEP}]
-		>=virtual/jpeg-0-r2[${MULTILIB_USEDEP}]
+		>=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}]
 	)
 	v4l? ( >=media-libs/libv4l-0.9.5[${MULTILIB_USEDEP}] )
 	xinetd? ( sys-apps/xinetd )
