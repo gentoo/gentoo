@@ -18,7 +18,7 @@ SRC_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5"
 KEYWORDS="amd64 arm ~arm64 ppc64 x86"
-IUSE="doc +gnutls gssapi java libproxy nls static-libs"
+IUSE="doc +gnutls gssapi java libproxy nls smartcard static-libs"
 ILINGUAS="ar cs de el en_GB en_US es eu fi fr gl id lt nl pa pl pt pt_BR sk sl tg ug uk zh_CN zh_TW"
 for lang in $ILINGUAS; do
 	IUSE="${IUSE} linguas_${lang}"
@@ -35,7 +35,8 @@ DEPEND="dev-libs/libxml2
 	)
 	gssapi? ( virtual/krb5 )
 	libproxy? ( net-libs/libproxy )
-	nls? ( virtual/libintl )"
+	nls? ( virtual/libintl )
+	smartcard? ( sys-apps/pcsc-lite:0= )"
 RDEPEND="${DEPEND}
 	sys-apps/iproute2
 	!<sys-apps/openrc-0.13"
@@ -77,6 +78,7 @@ src_configure() {
 		$(use_with libproxy) \
 		--without-stoken \
 		$(use_with gssapi) \
+		$(use_with smartcard libpcsclite) \
 		$(use_with java)
 }
 
