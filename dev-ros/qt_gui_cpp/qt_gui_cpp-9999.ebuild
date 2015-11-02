@@ -18,6 +18,7 @@ IUSE=""
 
 RDEPEND="
 	dev-qt/qtcore:4
+	dev-qt/qtgui:4
 	>=dev-ros/pluginlib-1.9.23
 	>=dev-ros/qt_gui-0.2.18[${PYTHON_USEDEP}]
 	dev-libs/tinyxml
