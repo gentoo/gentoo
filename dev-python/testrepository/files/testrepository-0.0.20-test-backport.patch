@@ -1,0 +1,71 @@
+From 8f8ab15fafdad6db850c84772323b32375b09285 Mon Sep 17 00:00:00 2001
+From: Robert Collins <robertc@robertcollins.net>
+Date: Tue, 10 Mar 2015 15:21:49 +1300
+Subject: [PATCH] Fixup tests with latest testtools.
+
+Testtools has started chunking exceptions (which is perhaps good,
+perhaps bad) - but we shouldn't depend on the exact behaviour in it
+for our tests.
+---
+ NEWS                                    |  6 ++++++
+ testrepository/tests/test_repository.py | 14 ++++++++++----
+ 2 files changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/NEWS b/NEWS
+index e258b11..536308c 100644
+--- a/NEWS
++++ b/NEWS
+@@ -5,6 +5,12 @@ testrepository release notes
+ NEXT (In development)
+ +++++++++++++++++++++
+ 
++CHANGES
++-------
++
++* Isolate the testrepository test suite from the chunking (or otherwise)
++  behaviour of testtools' exception handlers. (Robert Collins)
++
+ 0.0.20
+ ++++++
+ 
+diff --git a/testrepository/tests/test_repository.py b/testrepository/tests/test_repository.py
+index e2e5e05..4a8667b 100644
+--- a/testrepository/tests/test_repository.py
++++ b/testrepository/tests/test_repository.py
+@@ -28,6 +28,7 @@
+ from testresources import TestResource
+ from testtools import (
+     clone_test_with_new_id,
++    content,
+     PlaceHolder,
+     )
+ import testtools
+@@ -103,19 +104,24 @@ class Case(ResourcedTestCase):
+     def passing(self):
+         pass
+ 
+-    def failing(self):
+-        self.fail("oops")
+-
+     def unexpected_success(self):
+         self.expectFailure("unexpected success", self.assertTrue, True)
+ 
+ 
++class FailingCase:
++
++    def run(self, result):
++        result.startTest(self)
++        result.addError(
++            self, None, details={'traceback': content.text_content("")})
++        result.stopTest(self)
++
+ def make_test(id, should_pass):
+     """Make a test."""
+     if should_pass:
+         case = Case("passing")
+     else:
+-        case = Case("failing")
++        case = FailingCase()
+     return clone_test_with_new_id(case, id)
+ 
+ 
