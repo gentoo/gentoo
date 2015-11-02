@@ -8,14 +8,16 @@ PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy pypy3 )
 
 inherit distutils-r1
 
-DESCRIPTION="Python package for providing Mozilla's CA Bundle"
-HOMEPAGE="http://certifi.io/"
+DESCRIPTION="Eases the transition from PIL to Pillow"
+HOMEPAGE="https://pypi.python.org/pypi/pillowfight/ https://github.com/beanbaginc/pillowfight"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux"
+LICENSE="MIT"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND=""
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
+"

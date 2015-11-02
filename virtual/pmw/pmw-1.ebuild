@@ -17,6 +17,9 @@ SLOT="0"
 KEYWORDS="alpha amd64 ia64 ppc ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
-RDEPEND="
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/pmw:py2[${PYTHON_USEDEP}]' python2*)
 	$(python_gen_cond_dep 'dev-python/pmw:py3[${PYTHON_USEDEP}]' python3*)"
+DEPEND=""

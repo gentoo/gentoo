@@ -52,6 +52,9 @@ python_prepare_all() {
 	sed -e s':test_command_hooks:_&:' \
 		-e s':test_global_setup_hooks:_&:' \
 		-i pbr/tests/test_hooks.py || die
+	sed \
+		-e "s:test_wsgi_script_install:_&:" \
+		-i pbr/tests/test_wsgi.py || die
 	einfo "rogue tests disabled"
 	sed -i '/^hacking/d' test-requirements.txt || die
 

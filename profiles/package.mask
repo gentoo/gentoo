@@ -350,11 +350,17 @@ app-emulation/emul-linux-x86-jna
 
 # Justin Lecher <jlec@gentoo.org> (28 Feb 2015)
 # Unfixed security problems
+# No upstream support anymore
 # CVE-2015-{0219,0220,0221,0222,5145}
 # #536586
 # #554864
+=dev-python/django-1.4*
 =dev-python/django-1.5*
 =dev-python/django-1.6*
+# Not supported by any django version upstream supports
+dev-python/south
+dev-python/Djblets
+dev-util/reviewboard
 
 # Michał Górny <mgorny@gentoo.org> (11 Feb 2015)
 # Potentially destructive to @world, bug #539746.

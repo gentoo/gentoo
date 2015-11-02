@@ -26,6 +26,16 @@ PATCHES=(
 	"${FILESDIR}"/1.9.0-mapping.patch
 	)
 
+python_prepare_all() {
+	# https://bitbucket.org/gutworth/six/issues/139/
+	sed \
+		-e 's:test_assertCountEqual:_&:g' \
+		-e 's:test_assertRegex:_&:g' \
+		-e 's:test_assertRaisesRegex:_&:g' \
+		-i test_six.py || die
+	distutils-r1_python_prepare_all
+}
+
 python_compile_all() {
 	use doc && emake -C documentation html
 }

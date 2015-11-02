@@ -3,18 +3,19 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_{3,4}} pypy )
+
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
 
 inherit distutils-r1 eutils
 
 DESCRIPTION="Parse RSS and Atom feeds in Python"
 HOMEPAGE="https://github.com/kurtmckee/feedparser https://pypi.python.org/pypi/feedparser"
-SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.bz2"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 # sgmllib is licensed under PSF-2.
 LICENSE="BSD-2 PSF-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE=""
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
@@ -24,12 +25,11 @@ RDEPEND=""
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-backport_fix_for_chardet-py3.patch
+	"${FILESDIR}/${P}-sgmllib.patch"
 )
 
 python_prepare_all() {
 	mv feedparser/sgmllib3.py feedparser/_feedparser_sgmllib.py || die
-	epatch "${FILESDIR}/${PN}-5.1-sgmllib.patch"
 	distutils-r1_python_prepare_all
 }
 
