@@ -34,8 +34,10 @@ DEPEND="
 # Required for test phase
 DISTUTILS_IN_SOURCE_BUILD=1
 
-# https://github.com/testing-cabal/testrepository/issues/18
-RESTRICT=test
+PATCHES=(
+	"${FILESDIR}"/${P}-test-backport.patch
+	"${FILESDIR}"/${P}-test-backport1.patch
+)
 
 python_test() {
 	# some errors appear to have crept in the suite undert py3 since addition.
