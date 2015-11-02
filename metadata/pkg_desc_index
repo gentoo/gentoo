@@ -8150,7 +8150,7 @@ dev-ros/image_geometry 1.11.8 9999: C++ and Python libraries for interpreting im
 dev-ros/image_proc 1.12.14 9999: Single image rectification and color processing
 dev-ros/image_rotate 1.12.14 9999: Rotates an image stream minimizing the angle between an arbitrary vector and the camera frame
 dev-ros/image_transport 1.11.7 9999: Transparent support for transporting images in low-bandwidth compressed formats
-dev-ros/image_view 1.12.14 9999: Simple viewer for ROS image topics
+dev-ros/image_view 1.12.14-r1 9999: Simple viewer for ROS image topics
 dev-ros/imu_processors 0.2.1 9999: Processors for sensor_msgs::Imu data
 dev-ros/imu_transformer 0.2.1 9999: Node/nodelet combination to transform sensor_msgs::Imu data from one frame into another
 dev-ros/interactive_marker_tutorials 0.9.2 9999: Interactive marker tutorials
@@ -8214,7 +8214,7 @@ dev-ros/python_qt_binding 0.2.17 9999: Infrastructure for an integrated graphica
 dev-ros/qt_dotgraph 0.2.29 9999: Helpers to work with dot graphs
 dev-ros/qt_gui 0.2.29 9999: ROS infrastructure for an integrated graphical user interface based on Qt
 dev-ros/qt_gui_app 0.2.29 9999: Main to start an instance of the integrated graphical user interface provided by qt_gui
-dev-ros/qt_gui_cpp 0.2.29 9999: Foundation for C++-bindings for dev-ros/qt_gui and creates bindings for every generator available
+dev-ros/qt_gui_cpp 0.2.29-r1 9999: Foundation for C++-bindings for dev-ros/qt_gui and creates bindings for every generator available
 dev-ros/qt_gui_py_common 0.2.29 9999: Common functionality for ROS RQT GUI plugins written in Python
 dev-ros/random_numbers 0.3.0 9999: Wrappers for generating floating point values, integers, quaternions using boost libraries
 dev-ros/realtime_tools 1.9.1 9999: Set of tools that can be used from a hard realtime thread, without breaking the realtime behavior
