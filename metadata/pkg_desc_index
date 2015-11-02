@@ -316,7 +316,7 @@ app-arch/undms 1.3-r1: Decompress Amiga DMS disk images to ADF
 app-arch/unlzx 1.1: Unarchiver for Amiga LZX archives
 app-arch/unmakeself 1.1: Makeself archive extractor
 app-arch/unp 2.0_pre7 2.0_pre7_p1: Script for unpacking various file formats
-app-arch/unrar 5.1.6 5.2.7 5.3.3 5.3.6: Uncompress rar files
+app-arch/unrar 5.1.6 5.2.7 5.3.3 5.3.6 5.3.7: Uncompress rar files
 app-arch/unrar-gpl 0.0.1_p20080417-r1 0.0.1_p20080417-r2: Free rar unpacker for old (pre v3) rar files
 app-arch/unrpa 1.4.1 9999: Ren'Py's RPA data file extractor
 app-arch/unshield 0.6_p20120308 0.6_p20120308-r1: InstallShield CAB file extractor
@@ -3970,7 +3970,7 @@ dev-java/jaxb-tools 2.1.2: Reference implementation of the JAXB specification
 dev-java/jaxen 1.1.1 1.1.4-r1: A Java XPath Engine
 dev-java/jaxme 0.5.2 0.5.2-r1: JaxMe 2 is an open source implementation of JAXB, the specification for Java/XML binding
 dev-java/jaxp 1.4-r1: The Java API for XML Processing (JAXP)
-dev-java/jaxr 1.0.6-r1: Java API for XML Registries
+dev-java/jaxr 1.0.6-r2: Java API for XML Registries
 dev-java/jazzy 0.5.2: Java Spell Check API
 dev-java/jbitcollider-core 0.8: Core classes of jBitcollider: org.bitpedia.collider.core
 dev-java/jboss-logging 3.1.4: JBoss logging framework
@@ -4071,7 +4071,7 @@ dev-java/jsr250 1.0-r1: JSR 250 Common Annotations
 dev-java/jsr305 3.0.1: Annotations for Software Defect Detection in Java
 dev-java/jsr311-api 1.1.1: JAX-RS: Java API for RESTful Web Services
 dev-java/jsr67 1.3: SAAJ 1.3 (AKA JSR-67 MR3) API
-dev-java/jsr93 1.0 1.0-r1 1.0-r2: Java API for XML Registries (JAXR) - API
+dev-java/jsr93 1.0-r2: Java API for XML Registries (JAXR) - API
 dev-java/jss 4.3 4.3.2: Network Security Services for Java (JSS)
 dev-java/jssc 2.8.0: Apache MyFaces API - Core package
 dev-java/jstun 0.7.3: Java-based STUN implementation
@@ -10007,7 +10007,7 @@ games-engines/exult 9999: an Ultima 7 game engine that runs on modern operating 
 games-engines/frobtads 1.2.2: Curses-based interpreter and development tools for TADS 2 and TADS 3 text adventures
 games-engines/frotz 2.43: Curses based interpreter for Z-code based text games
 games-engines/gargoyle 2011.1: An Interactive Fiction (IF) player supporting all major formats
-games-engines/gemrb 0.8.2: Reimplementation of the Infinity engine
+games-engines/gemrb 0.8.2 0.8.3: Reimplementation of the Infinity engine
 games-engines/love 0.7.2-r1 0.8.0 9999: A framework for 2D games in Lua
 games-engines/nazghul 0.7.1: A computer role-playing game (CRPG) engine with game called HaximA
 games-engines/odamex 0.6.4 0.7.0: An online multiplayer, free software engine for Doom and Doom II
@@ -10548,7 +10548,7 @@ games-strategy/wesnoth 1.12.2 1.12.4: Battle for Wesnoth - A fantasy turn-based 
 games-strategy/widelands 0.17: A game similar to Settlers 2
 games-strategy/xbattle 5.4.1: A multi-player game of strategy and coordination
 games-strategy/xbattleai 1.2.2-r1: A multi-player game of strategy and coordination
-games-util/antimicro 2.10.1 2.19.2: Map keyboard and mouse buttons to gamepad buttons
+games-util/antimicro 2.10.1 2.19.2 2.20.2: Map keyboard and mouse buttons to gamepad buttons
 games-util/atlas 0.4.9_p20140320: Chart Program to use with Flightgear Flight Simulator
 games-util/biounzip 1.1a: Unpacks BioZip archives
 games-util/catcodec 1.0.3: Decodes and encodes sample catalogues for OpenTTD
@@ -12051,7 +12051,7 @@ media-libs/icclib 2.14: Library for reading and writing ICC color profile files
 media-libs/id3lib 3.8.3-r8: Id3 library for C/C++
 media-libs/ilmbase 1.0.2 2.0.1-r1 2.1.0 2.2.0: OpenEXR ILM Base libraries
 media-libs/imlib 1.9.15-r4: Image loading and rendering library
-media-libs/imlib2 1.4.5-r1 1.4.6-r1 1.4.6-r2 1.4.7 9999: Version 2 of an advanced replacement library for libraries like libXpm
+media-libs/imlib2 1.4.6-r2 1.4.7 9999: Version 2 of an advanced replacement library for libraries like libXpm
 media-libs/iulib 0.3 0.4: easy-to-use image and video I/O functions
 media-libs/jasper 1.900.1-r9: software-based implementation of the codec specified in the JPEG-2000 Part-1 standard
 media-libs/jbig2dec 0.11-r1: A decoder implementation of the JBIG2 image compression format
@@ -16839,7 +16839,7 @@ sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.1 0.1.3: Kernel config generator
 sys-kernel/linux-docs 3.4.104 3.10.58 3.12.30 3.14.22 3.16.6 4.1.4: Developer documentation generated from the Linux kernel
 sys-kernel/linux-firmware 20140603 20140809 20140902 20141009 20150206 20150320 20150812 99999999: Linux firmware files
-sys-kernel/linux-headers 2.4.33.3 2.4.36 3.18 3.19 4.0 4.1 4.2: Linux system headers
+sys-kernel/linux-headers 2.4.33.3 2.4.36 3.18 3.19 4.0 4.1 4.2 4.3: Linux system headers
 sys-kernel/mips-sources 4.1.7 4.2.0-r2: Linux-Mips GIT sources for MIPS-based machines, dated 20150830
 sys-kernel/openvz-sources 2.6.32.108.5 2.6.32.108.8 2.6.32.111.12: Kernel sources with OpenVZ patchset
 sys-kernel/pf-sources 2.6.31_p9 2.6.32_p16 2.6.33_p4 2.6.34_p7 2.6.35_p11 2.6.36_p6 2.6.37_p6 2.6.38_p8 2.6.39_p4 3.0.7-r2 3.1.6-r2 3.2.7 3.3.6 3.4.6 3.5.4 3.6.12 3.7.5 3.8.2 3.9.5 3.10.1 3.11.4 3.12.4 3.13.3 3.14_p4 3.15_p5 3.16_p4 3.17_p4 3.19_p1 4.0_p6 4.1_p1: Linux kernel fork with new features, including the -ck patchset (BFS), BFQ, TuxOnIce and UKSM
