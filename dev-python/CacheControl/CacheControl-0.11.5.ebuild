@@ -25,8 +25,11 @@ DEPENDS="${RDEPEND}
 	test? (	dev-python/pytest[${PYTHON_USEDEP}]	)
 "
 
+# Not included
+RESTRICT=test
+
 python_test() {
-	py.test -v || die
+	py.test -v -v || die
 }
 
 pkg_postinst() {
