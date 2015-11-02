@@ -63,6 +63,7 @@ src_prepare() {
 		"${FILESDIR}/${PN}-6.30.223.141-makefile.patch" \
 		"${FILESDIR}/${PN}-6.30.223.141-eth-to-wlan.patch" \
 		"${FILESDIR}/${PN}-6.30.223.141-gcc.patch" \
+		"${FILESDIR}/${PN}-6.30.223.271-r1-linux-3.18.patch" \
 		"${FILESDIR}/${PN}-6.30.223.248-r3-Wno-date-time.patch"
 
 	epatch_user
