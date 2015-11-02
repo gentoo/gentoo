@@ -14,8 +14,30 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
+
+PATCHES=(
+	"${FILESDIR}"/${P}-unbundle.patch
+)
+
+python_prepare_all() {
+	rm -r \
+		distlib/*.exe \
+		distlib/_backport \
+		tests/test_shutil.py* \
+		tests/test_sysconfig.py* || die
+
+	# Broken tests
+	# 1 fails due to it being sensitive to dictionary ordering
+	# inconsistency between code and test
+	sed \
+		-e 's:test_dependency_finder:_&:g' \
+		-e 's:test_abi:_&:g' \
+		-i tests/*py || die
+
+	distutils-r1_python_prepare_all
+}
 
 python_test() {
 	sed \
