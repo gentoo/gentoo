@@ -10,7 +10,7 @@ WX_GTK_VER="3.0"
 PLOCALES="ar bg ca cs da de el es eu fa fi fr_FR gl hu id it ja ko nl pl pt_BR pt_PT ru sr_RS@latin sr_RS vi zh_CN zh_TW"
 inherit autotools-utils wxwidgets l10n fdo-mime gnome2-utils
 
-DESCRIPTION="Advanced SSA/ASS subtitle editor"
+DESCRIPTION="Advanced subtitle editor"
 HOMEPAGE="http://www.aegisub.org/"
 SRC_URI="http://ftp.aegisub.org/pub/releases/${P}.tar.xz"
 
