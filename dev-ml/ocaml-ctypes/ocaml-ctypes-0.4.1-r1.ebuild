@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="test"
 
 RDEPEND="
-	>=dev-lang/ocaml-4:=[ocamlopt]
+	>=dev-lang/ocaml-4.02:=[ocamlopt]
 	virtual/libffi
 "
 DEPEND="${RDEPEND}

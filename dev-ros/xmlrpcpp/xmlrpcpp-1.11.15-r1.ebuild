@@ -17,3 +17,11 @@ IUSE=""
 
 RDEPEND="dev-ros/cpp_common"
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/headers.patch" )
+
+src_configure() {
+	ros-catkin_src_configure
+	# Hack so that proper -I are added
+	sed -e "s#_include_dirs \"include\"#_include_dirs \"include;${SYSROOT:-${EPREFIX}}/usr/include/xmlrpcpp\"#" \
+		-i "${BUILD_DIR}/catkin_generated/installspace/xmlrpcppConfig.cmake" ||	die
+}
