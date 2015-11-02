@@ -2237,8 +2237,6 @@ dev-php/pecl-memcached:json - Enable support for json serialization
 dev-php/pecl-mysqlnd_qc:memcached - Use dev-libs/libmemcached as a storage handler
 dev-php/pecl-mysqlnd_qc:sqlite - Use dev-db/sqlite as a storage handler
 dev-php/pecl-redis:igbinary - Enables igbinary serialisation support
-dev-php/smarty-docs:html - Install the documentation in HTML format
-dev-php/smarty-docs:pdf - Install the documentation in PDF format
 dev-python/Kivy:camera - Install libraries needed to support camera
 dev-python/Kivy:garden - Install garden tool to manage user maintained widgets
 dev-python/PyFoam:extras - Enable optional dependencies

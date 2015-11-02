@@ -6684,7 +6684,6 @@ dev-php/propel-runtime 1.6.4: Object Persistence Layer for PHP 5 (Runtime)
 dev-php/securimage 3.0.1: PHP captcha creator and validator library
 dev-php/simpletest 1.1.0: A PHP testing framework
 dev-php/smarty 3.1.21-r1 3.1.27: A template engine for PHP
-dev-php/smarty-docs 2.6.14 3.0: Documentation for Smarty, a template engine for PHP
 dev-php/stringparser_bbcode 0.3.3: A PHP class to parse BB codes
 dev-php/suhosin 0.9.38: Suhosin is an advanced protection system for PHP installations
 dev-php/tcpdf 5.9.149 6.0.096: TCPDF is a FLOSS PHP class for generating PDF documents
@@ -14825,7 +14824,7 @@ net-wireless/bluedevil 2.1.1: Bluetooth stack for KDE
 net-wireless/blueman 2.0-r1 9999: GTK+ Bluetooth Manager, designed to be simple and intuitive for everyday bluetooth tasks
 net-wireless/bluez 4.101-r9 5.33 5.34 5.35 5.35-r1: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
-net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141 6.30.223.141-r1 6.30.223.141-r2 6.30.223.248-r1 6.30.223.248-r2 6.30.223.248-r3 6.30.223.248-r4 6.30.223.271: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
+net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141 6.30.223.141-r1 6.30.223.141-r2 6.30.223.248-r1 6.30.223.248-r2 6.30.223.248-r3 6.30.223.248-r4 6.30.223.271-r1: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
 net-wireless/bss 0.8: Bluetooth stack smasher / fuzzer
 net-wireless/btcrack 9999: linux port of Thierry Zollers' BTCrack
 net-wireless/chillispot 1.1.0: open source captive portal or wireless LAN access point controller
