@@ -224,6 +224,7 @@ python_configure() {
 wrap_setup() {
 	local MPLSETUPCFG=${BUILD_DIR}/setup.cfg
 	export MPLSETUPCFG
+	unset DISPLAY
 
 	# Note: remove build... if switching to out-of-source build
 	"${@}" build --build-lib="${BUILD_DIR}"/build/lib
