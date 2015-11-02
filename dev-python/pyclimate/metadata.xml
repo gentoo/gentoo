@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<herd>sci</herd>
 	<herd>python</herd>
-<longdescription>
+	<longdescription>
  A package designed to accomplish some usual tasks during the analysis of 
  climate variability using Python. It provides functions to perform some 
  simple IO operations, operations with COARDS-compliant netCDF files, EOF 
@@ -11,10 +11,10 @@
  filters, kernel based probability density function estimation and access 
  to DCDFLIB.C library.
 </longdescription>
-<longdescription lang="ja">
+	<longdescription lang="ja">
 このパッケージはPython言語を使った気候の変化を分析する必要なタスクを終えるために
 デザインされました。幾つかの単純なI/O操作、COARDS-compliant netCDFファイルの操作
-、EOF解析、カップル・データのSVDとCCA解析、幾つかのリニア・デジタル・フィルター>、カーネル・ベースのプロバビリティ・デンシティ・ファンクション・エスティメーショ
+、EOF解析、カップル・データのSVDとCCA解析、幾つかのリニア・デジタル・フィルター&gt;、カーネル・ベースのプロバビリティ・デンシティ・ファンクション・エスティメーショ
 ンとDCDFLIB.Cライブラリへのアクセス等の機能を提供します。
 </longdescription>
 </pkgmetadata>
