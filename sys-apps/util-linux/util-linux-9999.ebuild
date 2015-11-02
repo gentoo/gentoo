@@ -90,13 +90,9 @@ multilib_src_configure() {
 	tc-is-cross-compiler && export scanf_cv_alloc_modifier=ms
 	export ac_cv_header_security_pam_misc_h=$(multilib_native_usex pam) #485486
 	export ac_cv_header_security_pam_appl_h=$(multilib_native_usex pam) #545042
-	# We manually set --libdir to the default since on prefix, econf will set it to
-	# a value which the configure script does not recognize.  This makes it set the
-	# usrlib_execdir to a bad value. bug #518898#c2, fixed upstream for >2.25
 	ECONF_SOURCE=${S} \
 	econf \
 		--enable-fs-paths-extra="${EPREFIX}/usr/sbin:${EPREFIX}/bin:${EPREFIX}/usr/bin" \
-		--libdir='${prefix}/'"$(get_libdir)" \
 		--docdir='${datarootdir}'/doc/${PF} \
 		$(multilib_native_use_enable nls) \
 		--enable-agetty \
