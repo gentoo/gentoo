@@ -25,7 +25,7 @@ IUSE="+berkdb cdb doc dovecot-sasl +eai hardened ldap ldap-bind libressl lmdb me
 DEPEND=">=dev-libs/libpcre-3.4
 	dev-lang/perl
 	berkdb? ( >=sys-libs/db-3.2:* )
-	cdb? ( || ( >=dev-db/tinycdb-0.76 >=dev-db/cdb-0.75-r1 ) )
+	cdb? ( || ( >=dev-db/tinycdb-0.76 >=dev-db/cdb-0.75-r4 ) )
 	eai? ( dev-libs/icu:= )
 	ldap? ( net-nds/openldap )
 	ldap-bind? ( net-nds/openldap[sasl] )
