@@ -192,6 +192,12 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.0.24-saned_pidfile_location.patch
 	mv configure.{in,ac} || die
 	AT_NOELIBTOOLIZE=yes eautoreconf
+
+	# Fix for "make check".  Upstream sometimes forgets to update this.
+	local ver=$(./configure --version | awk '{print $NF; exit 0}')
+	sed -i \
+		-e "/by sane-desc 3.5 from sane-backends/s:sane-backends .*:sane-backends ${ver}:" \
+		testsuite/tools/data/html* || die
 }
 
 src_configure() {
