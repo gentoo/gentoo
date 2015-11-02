@@ -6725,7 +6725,7 @@ dev-python/adns-python 1.2.1-r1: Python bindings for ADNS
 dev-python/adodb-py 2.20-r1: Active Data Objects Data Base library for Python
 dev-python/aioeventlet 0.4: asyncio event loop scheduling callbacks in eventlet
 dev-python/aiohttp 0.14.4-r1 0.17.4: http client/server for asyncio
-dev-python/alabaster 0.6.0 0.6.3 0.7.2 0.7.4 0.7.5 0.7.6: A configurable sidebar-enabled Sphinx theme
+dev-python/alabaster 0.7.6: A configurable sidebar-enabled Sphinx theme
 dev-python/alembic 0.6.7 0.7.4 0.7.6 0.7.7 0.8.2: database migrations tool, written by the author of SQLAlchemy
 dev-python/algopy 0.5.1 0.5.2 0.5.3: Taylor Arithmetic Computation and Algorithmic Differentiation
 dev-python/amodem 1.12.0 1.13: Transmit data between two computers using audio
@@ -6819,7 +6819,7 @@ dev-python/cddb-py 1.4-r1: CDDB Module for Python
 dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation of the ElementTree API
 dev-python/celery 3.1.17 3.1.18 3.1.18-r1 3.1.19: Open source asynchronous task queue/job queue based on distributed message passing
 dev-python/cement 2.0.2 2.6.2: CLI Application Framework for Python
-dev-python/certifi 14.05.14 2015.04.28 2015.9.6.2: Python package for providing Mozilla's CA Bundle
+dev-python/certifi 2015.9.6.2: Python package for providing Mozilla's CA Bundle
 dev-python/cffi 0.8.6 1.1.2 1.2.1 1.3.0: Foreign Function Interface for Python calling C code
 dev-python/cfgio 0.1.2: Python library for reading and writing configuration file formats found on a *nix systems
 dev-python/cfgparse 1.3-r1: Config File parser for Python
@@ -6991,7 +6991,7 @@ dev-python/fabric 1.10.0-r1 1.10.1 1.10.2: A simple pythonic tool for remote exe
 dev-python/falcon 0.1.6 0.1.7 0.1.8 0.1.9: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.13.0: A python package that provides useful locks
 dev-python/feedgenerator 1.6 1.7: Standalone version of django.utils.feedgenerator
-dev-python/feedparser 5.1.3-r2: Parse RSS and Atom feeds in Python
+dev-python/feedparser 5.1.3-r2 5.2.1: Parse RSS and Atom feeds in Python
 dev-python/fexpect 0.2: Extension for fabric to handle prompts through pexpect
 dev-python/figleaf 0.6.1-r1: Code coverage tool
 dev-python/fixtures 0.3.14-r2 1.2.0 1.3.0 1.3.1-r1 1.4.0: Fixtures, reusable state for writing clean tests and more
@@ -7202,7 +7202,7 @@ dev-python/mamba 0.6 0.8.4 0.8.5: The definitive testing tool for Python. Born u
 dev-python/mando 0.3.2: Create Python CLI apps with little to no effort at all!
 dev-python/mantissa 0.7.0-r1 0.8.0 0.8.1: An extensible, multi-protocol, multi-user, interactive application server
 dev-python/manuel 1.7.1 1.8.0: Manuel lets you build tested documentation
-dev-python/markdown 2.5.1 2.6.1 2.6.2 2.6.3: Python implementation of the markdown markup language
+dev-python/markdown 2.6.1 2.6.3: Python implementation of the markdown markup language
 dev-python/markdown2 2.2.1 2.2.3 2.3.0: Python Markdown language reimplementation
 dev-python/markups 0.2.4-r1 0.6.1 0.6.3: A wrapper around various text markups
 dev-python/markupsafe 0.23: Implements a XML/HTML/XHTML Markup safe string for Python
@@ -7273,7 +7273,7 @@ dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
 dev-python/numba 0.18.2 0.19.2 0.20.0: NumPy aware dynamic Python compiler using LLVM
 dev-python/numdisplay 1.6.0-r1: Python package for interactively displaying FITS arrays
 dev-python/numexpr 2.4.3 2.4.4: Fast numerical array expression evaluator for Python and NumPy
-dev-python/numpy 1.8.0-r1 1.8.1 1.8.2 1.9.0 1.9.0-r1 1.9.1 1.9.2 1.9.3 1.10.1 1.10.1-r1: Fast array and numerical python library
+dev-python/numpy 1.8.2 1.9.2 1.9.3 1.10.1-r1: Fast array and numerical python library
 dev-python/numpydoc 0.4-r1 0.5: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
 dev-python/oauth2 1.5.211-r1 1.9.0_p1: Library for OAuth version 1.0
@@ -7349,10 +7349,11 @@ dev-python/pgpdump 1.5: PGP packet parser library
 dev-python/piddle 1.0.15 1.0.15-r1: Cross-media, cross-platform 2D graphics package
 dev-python/pika 0.9.14: Pure-Python implementation of the AMQP
 dev-python/pillow 2.8.1 2.8.2 2.9.0 3.0.0 3.0.0-r1: Python Imaging Library (fork)
+dev-python/pillowfight 0.2: Eases the transition from PIL to Pillow
 dev-python/pip 1.5.6 7.1.0 7.1.2: Installs python packages -- replacement for easy_install
 dev-python/pivy 0.5_alpha20110303-r1 9999: Coin3d binding for Python
 dev-python/pkgconfig 1.1.0: Interface Python with pkg-config
-dev-python/pkginfo 1.0 1.2.1: Provides an API for querying the distutils metadata written in a PKG-INFO file
+dev-python/pkginfo 1.2.1: Provides an API for querying the distutils metadata written in a PKG-INFO file
 dev-python/pkipplib 0.07-r1: Pkipplib is a Python module which parses IPP requests
 dev-python/placefinder 0.3: Yahoo! BOSS PlaceFinder Python Client
 dev-python/platinfo 0.15.0-r1: Determines and returns consistent names for platforms
@@ -7384,7 +7385,7 @@ dev-python/pudb 2013.3.6 2013.5.1 2014.1 2015.1 2015.2 2015.3: A full-screen, co
 dev-python/pudge 0.1.3-r1: A documentation generator for Python projects, using Restructured Text
 dev-python/pupynere 1.0.15-r1: Pupynere is a PUre PYthon NEtcdf REader
 dev-python/pxml 0.2.11-r1 0.2.12: A python library and command-line tool to prettify and colorize XML
-dev-python/py 1.4.25 1.4.26 1.4.27 1.4.28 1.4.29 1.4.30: library with cross-python path, ini-parsing, io, code, log facilities
+dev-python/py 1.4.30: library with cross-python path, ini-parsing, io, code, log facilities
 dev-python/py-amqp 1.4.5 1.4.6 1.4.7: Low-level AMQP client for Python (fork of amqplib)
 dev-python/py-bcrypt 0.4: py-bcrypt is an implementation of the OpenBSD Blowfish password hashing algorithm
 dev-python/py-notify 0.3.1-r1: Tools for implementing the Observer programming pattern in Python
@@ -7827,7 +7828,7 @@ dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/sphinx 1.1.3-r7 1.2.2 1.2.3 1.3.1-r1: Python documentation generator
 dev-python/sphinx-better-theme 0.1.5: A nice-looking, customizable theme for Sphinx
 dev-python/sphinx-bootstrap-theme 0.4.5 0.4.6 0.4.7: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
-dev-python/sphinx_rtd_theme 0.1.6 0.1.9: ReadTheDocs.org theme for Sphinx
+dev-python/sphinx_rtd_theme 0.1.9: ReadTheDocs.org theme for Sphinx
 dev-python/sphinxcontrib-cheeseshop 0.2: Sphinx extension cheeseshop
 dev-python/sphinxcontrib-doxylink 1.3: Extension to link to external Doxygen API documentation
 dev-python/sphinxcontrib-googleanalytics 0.1-r1: Sphinx extension googleanalytics
@@ -7930,7 +7931,7 @@ dev-python/txsocksx 1.13.0.3 1.15.0.2: Twisted client endpoints for SOCKS{4,4a,5
 dev-python/tzlocal 1.1.2 1.2: tzinfo object for the local timezone
 dev-python/uhashring 0.2: Full featured consistent hashing python library compatible with ketama
 dev-python/ujson 1.33: Ultra fast JSON encoder and decoder for Python
-dev-python/unicodecsv 0.9.4 0.13.0 0.14.1: Drop-in replacement for python stdlib csv module supporting unicode
+dev-python/unicodecsv 0.13.0 0.14.1: Drop-in replacement for python stdlib csv module supporting unicode
 dev-python/unidecode 0.04.17 0.04.18: Module providing ASCII transliterations of Unicode text
 dev-python/unittest2 0.5.1-r1 0.5.1-r2 0.8.0 1.0.1-r1 1.1.0: The new features in unittest backported to Python 2.4+
 dev-python/uritemplate 0.6: Python implementation of RFC6570, URI Template
