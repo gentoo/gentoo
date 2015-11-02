@@ -8166,6 +8166,7 @@ dev-ros/laser_assembler 1.7.3 9999: Nodes to assemble point clouds from either L
 dev-ros/laser_cb_detector 0.10.13 9999: Extracts checkerboard corners from a dense laser snapshot
 dev-ros/laser_filters 1.8.0 9999: Assorted filters designed to operate on 2D planar laser scanners
 dev-ros/laser_geometry 1.6.4 9999: Class for converting from a 2D laser scan into a point cloud
+dev-ros/laser_proc 0.1.4 9999: Converts representations of sensor_msgs/LaserScan and sensor_msgs/MultiEchoLaserScan
 dev-ros/librviz_tutorial 0.9.2 9999: Tutorial showing how to compile your own C++ program with RViz displays and features
 dev-ros/map_msgs 1.13.0 9999: Messages commonly used in mapping packages
 dev-ros/map_server 1.13.0 1.13.1 9999: Offers map data as a ROS service
@@ -8352,6 +8353,8 @@ dev-ros/unique_id 1.0.5 9999: ROS Python and C++ interfaces for universally uniq
 dev-ros/urdf 1.11.8 9999: C++ parser for the Unified Robot Description Format (URDF)
 dev-ros/urdf_parser_plugin 1.11.8 9999: C++ base class for URDF parsers
 dev-ros/urdf_tutorial 0.2.4 9999: URDF tutorials
+dev-ros/urg_c 1.0.404 9999: URG Helper / URG Widget / URG Library / urg_c
+dev-ros/urg_node 0.1.9 9999: ROS wrapper for the Hokuyo urg_c library
 dev-ros/uuid_msgs 1.0.5 9999: ROS messages for universally unique identifiers
 dev-ros/visp_auto_tracker 0.8.0 9999: Online automated pattern-based object tracker relying on visual servoing
 dev-ros/visp_bridge 0.8.0 9999: Converts between ROS structures and ViSP structures
