@@ -30,12 +30,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Justin Lecher <jlec@gentoo.org> (01 Nov 2015)
-# Obsolete package
-# Incompatible to recent numpy version
-# No upstream activity
-dev-python/scientificpython
-
 # Michał Górny <mgorny@gentoo.org> (30 Oct 2015)
 # Uses unsafe ioctls that could result in data corruption. Upstream
 # is working on replacing them in the wip/dedup-syscall branch.
@@ -363,6 +357,10 @@ app-emulation/emul-linux-x86-jna
 =dev-python/django-1.4*
 =dev-python/django-1.5*
 =dev-python/django-1.6*
+# Not supported by any django version upstream supports
+dev-python/south
+dev-python/Djblets
+dev-util/reviewboard
 
 # Michał Górny <mgorny@gentoo.org> (11 Feb 2015)
 # Potentially destructive to @world, bug #539746.
