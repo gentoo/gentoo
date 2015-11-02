@@ -3,14 +3,14 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 PYTHON_REQ_USE='threads(+)'
 inherit eutils python-any-r1 waf-utils pax-utils fdo-mime gnome2-utils
 
 WAF_V="1.8.12"
 
 DESCRIPTION="Media player based on MPlayer and mplayer2"
-HOMEPAGE="http://mpv.io/"
+HOMEPAGE="https://mpv.io"
 SRC_URI="http://ftp.waf.io/pub/release/waf-${WAF_V}"
 DOCS=( README.md etc/example.conf etc/input.conf )
 
@@ -26,50 +26,46 @@ fi
 # See Copyright in source tarball and bug #506946. Waf is BSD, libmpv is ISC.
 LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
-IUSE="+alsa bluray cdio +cli doc-pdf drm dvb +dvd egl +enca encode +iconv
+IUSE="+X +alsa bluray cdda +cli doc-pdf drm dvb +dvd egl +enca encode +iconv
 jack jpeg lcms +libass libav libcaca libguess libmpv lua luajit openal
-+opengl oss pulseaudio pvr raspberry-pi rubberband samba sdl selinux v4l vaapi
-vdpau vf-dlopen wayland +X xinerama +xscreensaver xv"
++opengl oss pulseaudio raspberry-pi rubberband samba sdl selinux v4l vaapi
+vdpau vf-dlopen wayland xinerama +xscreensaver xv"
 
 REQUIRED_USE="
 	|| ( cli libmpv )
-	egl? ( opengl X )
+	egl? ( opengl )
 	enca? ( iconv )
 	lcms? ( opengl )
 	libguess? ( iconv )
 	luajit? ( lua )
 	opengl? ( || ( wayland X ) )
-	pvr? ( v4l )
 	vaapi? ( X )
 	vdpau? ( X )
-	wayland? ( opengl )
+	wayland? ( egl )
 	xinerama? ( X )
 	xscreensaver? ( X )
 	xv? ( X )
 "
 
-RDEPEND="
+COMMON_DEPEND="
 	libav? ( >=media-video/libav-11:0=[encode?,threads,vaapi?,vdpau?] )
-	!libav? ( >=media-video/ffmpeg-2.4.0:0=[encode?,threads,vaapi?,vdpau?] )
+	!libav? ( >=media-video/ffmpeg-2.8.3:0=[encode?,threads,vaapi?,vdpau?] )
 	sys-libs/zlib
 	X? (
 		x11-libs/libX11
 		x11-libs/libXext
 		>=x11-libs/libXrandr-1.2.0
-		opengl? (
-			virtual/opengl
-			egl? ( media-libs/mesa[egl] )
-		)
+		opengl? ( media-libs/mesa[egl?] )
 		lcms? ( >=media-libs/lcms-2.6:2 )
-		vaapi? ( >=x11-libs/libva-0.34.0[X(+)] )
-		vdpau? ( >=x11-libs/libvdpau-0.2 )
+		vaapi? ( >=x11-libs/libva-1.4.0[X(+)] )
+		vdpau? ( x11-libs/libvdpau )
 		xinerama? ( x11-libs/libXinerama )
 		xscreensaver? ( x11-libs/libXScrnSaver )
 		xv? ( x11-libs/libXv )
 	)
 	alsa? ( >=media-libs/alsa-lib-1.0.18 )
 	bluray? ( >=media-libs/libbluray-0.3.0 )
-	cdio? (
+	cdda? (
 		dev-libs/libcdio
 		dev-libs/libcdio-paranoia
 	)
@@ -84,7 +80,7 @@ RDEPEND="
 	jack? ( media-sound/jack-audio-connection-kit )
 	jpeg? ( virtual/jpeg:0 )
 	libass? (
-		>=media-libs/libass-0.12.1:=[enca(-)?,fontconfig]
+		>=media-libs/libass-0.12.1:=[fontconfig]
 		virtual/ttf-fonts
 	)
 	libcaca? ( >=media-libs/libcaca-0.99_beta18 )
@@ -97,7 +93,7 @@ RDEPEND="
 	pulseaudio? ( media-sound/pulseaudio )
 	rubberband? ( >=media-libs/rubberband-1.8.0 )
 	samba? ( net-fs/samba )
-	sdl? ( media-libs/libsdl2[threads] )
+	sdl? ( media-libs/libsdl2[X,sound,threads,video] )
 	v4l? ( media-libs/libv4l )
 	wayland? (
 		>=dev-libs/wayland-1.6.0
@@ -105,7 +101,7 @@ RDEPEND="
 		>=x11-libs/libxkbcommon-0.3.0
 	)
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 	virtual/pkgconfig
 	>=dev-lang/perl-5.8
@@ -117,11 +113,11 @@ DEPEND="${RDEPEND}
 		xscreensaver? ( x11-proto/scrnsaverproto )
 	)
 "
-RDEPEND+="
+RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-mplayer )
 "
 
-pkg_setup() {
+pkg_pretend() {
 	if ! use libass; then
 		ewarn "You have disabled the libass flag. No OSD or subtitles will be displayed."
 	fi
@@ -145,8 +141,6 @@ pkg_setup() {
 	einfo "For additional format support you need to enable the support on your"
 	einfo "libavcodec/libavformat provider:"
 	einfo "    media-video/ffmpeg or media-video/libav"
-
-	python-any-r1_pkg_setup
 }
 
 src_prepare() {
@@ -166,6 +160,7 @@ src_configure() {
 		--disable-optimize	# do not add '-O2' to CFLAGS
 		--disable-debug-build	# do not add '-g' to CFLAGS
 		--disable-test		# avoid dev-util/cmocka automagic
+		--enable-gpl3
 		$(use_enable doc-pdf pdf-build)
 		$(use_enable vf-dlopen vf-dlopen-filters)
 		$(use_enable cli zsh-comp)
@@ -181,7 +176,7 @@ src_configure() {
 		$(use_enable bluray libbluray)
 		$(use_enable dvd dvdread)
 		$(use_enable dvd dvdnav)
-		$(use_enable cdio cdda)
+		$(use_enable cdda)
 		$(use_enable enca)
 		$(use_enable rubberband)
 		$(use_enable lcms lcms2)
@@ -200,8 +195,13 @@ src_configure() {
 		$(use_enable jack)
 		$(use_enable openal)
 		$(use_enable alsa)
+		--disable-coreaudio
+		--disable-dsound
+		--disable-wasapi
 
 		# video outputs
+		--disable-cocoa
+		$(use_enable drm)
 		$(use_enable wayland)
 		$(use_enable X x11)
 		$(use_enable xscreensaver xss)
@@ -212,24 +212,26 @@ src_configure() {
 		$(usex X "$(use_enable opengl gl-x11)" '--disable-gl-x11')
 		$(use_enable egl egl-x11)
 		$(usex wayland "$(use_enable opengl gl-wayland)" '--disable-gl-wayland')
-		$(use_enable opengl gl)
 		$(use_enable vdpau)
 		$(usex vdpau "$(use_enable opengl vdpau-gl-x11)" '--disable-vdpau-gl-x11')
 		$(use_enable vaapi)
+		$(usex vaapi "$(use_enable X vaapi-x11)" '--disable-vaapi-x11')
+		$(usex vaapi "$(use_enable wayland vaapi-wayland)" '--disable-vaapi-wayland')
 		$(usex vaapi "$(use_enable opengl vaapi-glx)" '--disable-vaapi-glx')
+		$(usex vaapi "$(use_enable egl vaapi-x-egl)" '--disable-vaapi-x-egl')
 		$(use_enable libcaca caca)
-		$(use_enable drm)
 		$(use_enable jpeg)
 		$(use_enable raspberry-pi rpi)
+		$(use_enable opengl gl)
 
 		# hwaccels
 		$(use_enable vaapi vaapi-hwaccel)
+		$(use_enable vdpau vdpau-hwaccel)
 
 		# tv features
 		$(use_enable v4l tv)
 		$(use_enable v4l tv-v4l2)
 		$(use_enable v4l libv4l2)
-		$(use_enable pvr)
 		$(use_enable dvb dvbin)
 	)
 	waf-utils_src_configure "${mywafargs[@]}"
