@@ -16,18 +16,23 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-CDEPEND="dev-java/jaxb:2
-	dev-java/jsr173:0
+CDEPEND="
+	dev-java/jaxb:2
 	dev-java/jsr67:0
 	dev-java/jsr93:0
-	dev-java/sun-jaf:0"
-DEPEND=">=virtual/jdk-1.6
-	${CDEPEND}"
-RDEPEND=">=virtual/jre-1.6
-	${CDEPEND}"
+	dev-java/jsr173:0"
+
+DEPEND="
+	${CDEPEND}
+	>=virtual/jdk-1.6"
+
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
 
 S="${WORKDIR}/${PN}-ri"
 
+JAVA_ANT_REWRITE_CLASSPATH="yes"
 EANT_BUILD_TARGET="compile"
 EANT_DOC_TARGET="javadoc-build"
 
@@ -36,7 +41,6 @@ EANT_GENTOO_CLASSPATH="
 	jsr67
 	jsr173
 	jsr93
-	sun-jaf
 "
 
 java_prepare() {
@@ -45,8 +49,7 @@ java_prepare() {
 	java-pkg_jar-from --into lib jaxb-2
 	java-pkg_jar-from --into lib jsr67 jsr67.jar saaj-api.jar
 	java-pkg_jar-from --into lib jsr173 jsr173.jar jsr173_1.0_api.jar
-	java-pkg_jar-from --into lib jsr93 jsr93-api.jar jaxr-api.jar
-	java-pkg_jar-from --into lib sun-jaf
+	java-pkg_jar-from --into lib jsr93
 
 	epatch "${FILESDIR}/${P}-javadoc.patch"
 

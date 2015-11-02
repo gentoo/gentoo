@@ -54,6 +54,7 @@ go_arch()
 	local portage_arch=$(tc-arch $@)
 	case "${portage_arch}" in
 		x86)	echo 386;;
+		x64-*)	echo amd64;;
 		*)		echo "${portage_arch}";;
 	esac
 }
@@ -112,6 +113,7 @@ src_prepare()
 		sed -i -e 's/"-Werror",//g' src/cmd/dist/build.go ||
 			die 'sed failed'
 	fi
+	epatch "${FILESDIR}"/${P}-darwin-sysctl.patch
 	epatch_user
 }
 
