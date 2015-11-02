@@ -171,11 +171,7 @@ DEPEND="${RDEPEND}
 
 # We now use new syntax construct (SUBSYSTEMS!="usb|usb_device)
 RDEPEND="${RDEPEND}
-	!<sys-fs/udev-114
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-medialibs-20140508
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)]
-	)"
+	!<sys-fs/udev-114"
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/sane-config
