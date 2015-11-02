@@ -6642,7 +6642,7 @@ dev-php/pecl-lzf 1.6.3: This package handles LZF de/compression
 dev-php/pecl-mailparse 2.1.6-r1 2.1.6-r2: A PHP extension for parsing and working with RFC822 and RFC2045 (MIME) compliant messages
 dev-php/pecl-memcache 2.2.7 3.0.8 3.0.8-r1: PHP extension for using memcached
 dev-php/pecl-memcached 1.0.2-r2 2.1.0-r2 2.1.0-r3 2.2.0: PHP extension for interfacing with memcached via libmemcached library
-dev-php/pecl-mongo 1.5.4 1.5.6 1.6.2 1.6.3 1.6.9: MongoDB database driver
+dev-php/pecl-mongo 1.5.4 1.5.6 1.6.2 1.6.3 1.6.9 1.6.11: Legacy MongoDB database driver for PHP
 dev-php/pecl-mysqlnd_ms 1.5.2-r1: A replication and load balancing plugin for the mysqlnd library
 dev-php/pecl-mysqlnd_qc 1.2.0: A query cache plugin for the mysqlnd library
 dev-php/pecl-ncurses 1.0.2-r2: Terminal screen handling and optimization package
@@ -16320,7 +16320,7 @@ sys-apps/usbredir 0.4.3 0.4.4 0.5 0.5.1 0.6 0.7 9999: A simple TCP daemon and se
 sys-apps/usbutils 007 008 008-r1: USB enumeration utilities
 sys-apps/usermode-utilities 20070815-r3: Tools for use with Usermode Linux virtual machines
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
-sys-apps/util-linux 2.24.1-r3 2.24.2 2.25.2-r2 2.26.2 2.27 9999: Various useful Linux utilities
+sys-apps/util-linux 2.24.1-r3 2.24.2 2.25.2-r2 2.26.2 2.27 2.27.1 9999: Various useful Linux utilities
 sys-apps/v86d 0.1.10: A daemon to run x86 code in an emulated environment
 sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hardware state (i.e. reinitialize video card)
 sys-apps/watchdog 5.13-r1 5.14: A software watchdog and /dev/watchdog daemon
