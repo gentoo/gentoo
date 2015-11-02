@@ -26,5 +26,7 @@ RDEPEND="
 	dev-ros/nodelet
 	dev-ros/rosconsole
 	dev-ros/roscpp
+	dev-ros/stereo_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
 DEPEND="${RDEPEND}"
