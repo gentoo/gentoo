@@ -59,7 +59,6 @@ pkg_setup() {
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}/${PN}-6.30.223.141-license.patch" \
 		"${FILESDIR}/${PN}-6.30.223.141-makefile.patch" \
 		"${FILESDIR}/${PN}-6.30.223.141-eth-to-wlan.patch" \
 		"${FILESDIR}/${PN}-6.30.223.141-gcc.patch" \
