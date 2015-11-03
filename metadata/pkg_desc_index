@@ -10523,7 +10523,7 @@ games-strategy/liquidwar 5.6.4-r1: unique multiplayer wargame
 games-strategy/liquidwar6 0.4.3681: Unique multiplayer wargame between liquids
 games-strategy/majesty-demo 1.0.0: Control your own kingdom in this simulation
 games-strategy/maxr 0.2.8: Mechanized Assault and Exploration Reloaded
-games-strategy/megaglest 3.9.1-r1 3.11.1: Cross-platform 3D realtime strategy game
+games-strategy/megaglest 3.9.1-r1 3.11.1-r1: Cross-platform 3D realtime strategy game
 games-strategy/megaglest-data 3.9.1 3.11.1: Data files for the cross-platform 3D realtime strategy game MegaGlest
 games-strategy/mindrover-demo 1.07b: Control a robot as it races across Europa
 games-strategy/naev 0.6.0: A 2D space trading and combat game, in a similar vein to Escape Velocity
