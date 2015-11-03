@@ -21,23 +21,18 @@ DEPEND="
 	app-arch/xz-utils
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx )
-	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/tox[${PYTHON_USEDEP}]
-	)"
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 python_test() {
-	PYTHONPATH="${PYTHONPATH%:}${PYTHONPATH+:}${S}/test" py.test test || die "Tests failed under ${EPYTHON}"
+	PYTHONPATH="${PYTHONPATH%:}${PYTHONPATH+:}${S}/test" py.test -v -v test \
+		|| die "Tests failed under ${EPYTHON}"
 }
 
-src_compile() {
-	if use doc ; then
-		emake -C docs html
-	fi
-	distutils-r1_src_compile
+python_compile_all() {
+	use doc && emake -C docs html
 }
 
 python_install_all() {
-	use doc && dohtml -r "${S}"/docs/_build/html/*
+	use doc && HTML_DOCS=( "${S}"/docs/_build/html/. )
 	distutils-r1_python_install_all
 }
