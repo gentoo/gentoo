@@ -14,7 +14,7 @@ HOMEPAGE="http://www.jmock.org/"
 
 LICENSE="BSD"
 SLOT="1.0"
-KEYWORDS="amd64 ppc ppc64 x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE=""
 
 CDEPEND="dev-java/junit:0"

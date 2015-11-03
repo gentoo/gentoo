@@ -79,8 +79,23 @@ DEPEND="
 	>=app-eselect/eselect-php-0.7.1-r3[apache2?,fpm?]
 	>=dev-libs/libpcre-8.32[unicode]
 	apache2? ( || ( >=www-servers/apache-2.4[apache2_modules_unixd,threads=]
-		<www-servers/apache-2.4[threads=] ) )
-	berkdb? ( =sys-libs/db-4* )
+		<www-servers/apache-2.4[threads=] ) )"
+
+# This wacky berkdb dependency really means "any 4.x or 5.x version of
+# sys-libs/db". The ./configure flag is called --with-db4, but this is a
+# misnomer since db5 also works (bug #521222). We really want to say
+# "any 4.x or 5.x slot", but that's not possible. The safest thing to
+# do is list all 4.x and 5.x slots in order of preference.
+DEPEND="${DEPEND}
+	berkdb? ( || ( sys-libs/db:5.3
+					sys-libs/db:5.1
+					sys-libs/db:4.8
+					sys-libs/db:4.7
+					sys-libs/db:4.6
+					sys-libs/db:4.5
+					sys-libs/db:4.4
+					sys-libs/db:4.3
+					sys-libs/db:4.2 ) )
 	bzip2? ( app-arch/bzip2 )
 	cdb? ( || ( dev-db/cdb dev-db/tinycdb ) )
 	cjk? ( !gd? (
@@ -307,6 +322,10 @@ src_prepare() {
 		sed -e 's|PHP_ADD_LIBRARY(k5crypto, 1, $1)||g' -i acinclude.m4 \
 			|| die "Failed to fix heimdal crypt library reference"
 	fi
+
+	# Fix a const crash in php-fpm, bug #564690.
+	# Only applies to php-5.6.15 and should be fixed in 5.6.16.
+	epatch "${FILESDIR}/fix-5.6.15-fpm-const-crash.patch"
 
 	#Add user patches #357637
 	epatch_user
