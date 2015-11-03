@@ -27,8 +27,8 @@ CDEPEND=">=net-libs/libtirpc-0.2.3
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
-	selinux? ( sec-policy/selinux-rpcbind )
-"
+	selinux? ( sec-policy/selinux-rpcbind )"
+
 src_prepare() {
 	[[ ${PV} == "9999" ]] && eautoreconf
 	epatch_user
