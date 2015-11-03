@@ -216,7 +216,7 @@ app-admin/testdisk 7.0 7.0-r1 7.0-r2 7.0-r3: Checks and undeletes partitions + P
 app-admin/tmpreaper 1.6.13: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11 2.11-r1: Files which haven't been accessed in a given period of time are removed from specified directories
 app-admin/tripwire 2.4.2.2-r3: Open Source File Integrity Checker and IDS
-app-admin/ulogd 2.0.4-r1 2.0.5-r2: A userspace logging daemon for netfilter/iptables related logging
+app-admin/ulogd 2.0.5-r2 2.0.5-r3: A userspace logging daemon for netfilter/iptables related logging
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
 app-admin/usermin 1.600: A web-based user administration interface
 app-admin/vault 0.1.2 0.1.2-r1 9999: A tool for managing secrets
@@ -13677,7 +13677,7 @@ net-firewall/iptables 1.4.17 1.4.21-r1 1.4.21-r2 1.4.21-r3: Linux kernel (2.4+) 
 net-firewall/itval 1.2_p20121104: Iptables policy testing and validation tool
 net-firewall/lutelwall 0.99: IPTables firewall setup script
 net-firewall/nfacct 1.0.0 1.0.1: Command line tool to create/retrieve/delete accounting objects in NetFilter
-net-firewall/nftables 0.5 0.5-r1: Linux kernel (3.13+) firewall, NAT and packet mangling tools
+net-firewall/nftables 0.5 0.5-r1 0.5-r2: Linux kernel (3.13+) firewall, NAT and packet mangling tools
 net-firewall/nufw 2.2.22-r1: An enterprise grade authenticating firewall based on netfilter
 net-firewall/pftop 0.5 0.7 0.7-r1 0.7-r2: Pftop: curses-based utility for real-time display of active states and rule statistics for pf
 net-firewall/pglinux 2.2.4 2.3.0: Privacy oriented firewall application
