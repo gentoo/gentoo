@@ -42,7 +42,7 @@ CDEPEND="x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,webkit?]
 		dev-python/wxpython:${WX_GTK_VER}[opengl,${PYTHON_USEDEP}]
 		${PYTHON_DEPS}
 	)
-	>=dev-libs/boost-1.56[context,threads,python?]
+	>=dev-libs/boost-1.56[context,nls,threads,python?]
 	github? ( dev-libs/openssl:0 )
 	media-libs/glew
 	media-libs/freeglut
@@ -154,7 +154,6 @@ src_install() {
 	cmake-utils_src_install
 	use python && python_optimize
 	if use doc ; then
-		insinto /usr/share/doc/${PF}
 		dodoc uncrustify.cfg
 		cd Documentation || die "cd failed"
 		dodoc -r GUI_Translation_HOWTO.pdf guidelines/UIpolicies.txt doxygen/.
