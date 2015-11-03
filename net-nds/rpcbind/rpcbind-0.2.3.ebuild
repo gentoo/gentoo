@@ -31,6 +31,7 @@ RDEPEND="${CDEPEND}
 
 src_prepare() {
 	[[ ${PV} == "9999" ]] && eautoreconf
+	epatch "${FILESDIR}"/${P}-libtirpc.patch
 	epatch_user
 }
 
