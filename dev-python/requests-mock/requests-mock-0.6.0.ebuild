@@ -19,7 +19,6 @@ IUSE="test"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/pbr-0.8[${PYTHON_USEDEP}]
-	<dev-python/pbr-1.0[${PYTHON_USEDEP}]
 	test? (
 		dev-python/fixtures[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
