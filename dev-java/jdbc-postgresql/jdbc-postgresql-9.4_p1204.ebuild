@@ -39,6 +39,10 @@ RESTRICT="test" # Requires external postgresql server setup
 
 S="${WORKDIR}/postgresql-jdbc-${MY_PV}.src"
 
+JAVA_ANT_REWRITE_CLASSPATH="yes"
+JAVA_ANT_ENCODING="UTF-8"
+EANT_DOC_TARGET="publicapi"
+
 java_prepare() {
 	# Strip build.xml of maven deps
 	sed -i -e '/<classpath.*dependency\.compile\.classpath/c\' build.xml || die
@@ -61,9 +65,6 @@ java_prepare() {
 
 	java-pkg_clean
 }
-
-JAVA_ANT_REWRITE_CLASSPATH="yes"
-EANT_DOC_TARGET="publicapi"
 
 src_compile() {
 	EANT_BUILD_TARGET="release-version jar"
