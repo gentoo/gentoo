@@ -3,18 +3,22 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+
+PYTHON_COMPAT=( python2_7 python3_{3,4} pypy )
 
 inherit distutils-r1
 
-DESCRIPTION="A library for property based testing"
-HOMEPAGE="https://github.com/DRMacIver/hypothesis"
+DESCRIPTION="JavaScript minifier"
+HOMEPAGE="https://bitbucket.org/dcs/jsmin/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-LICENSE="MPL-2.0"
-SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
+LICENSE="MIT"
+SLOT="0"
 
-RDEPEND=""
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+
+python_test() {
+	"${PYTHON}" -m ${PN}.test || die
+}

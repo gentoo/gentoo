@@ -6,12 +6,15 @@
 		<email>nikoli@gmx.us</email>
 		<name>Nikoli</name>
 	</maintainer>
-        <maintainer>
-                <email>itumaykin+gentoo@gmail.com</email>
-                <name>Coacher</name>
-        </maintainer>
+	<maintainer>
+		<email>itumaykin+gentoo@gmail.com</email>
+		<name>Coacher</name>
+	</maintainer>
 	<maintainer>
 		<email>maksbotan@gentoo.org</email>
 		<name>Maxim Koltsov</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">Aegisub/Aegisub</remote-id>
+	</upstream>
 </pkgmetadata>
