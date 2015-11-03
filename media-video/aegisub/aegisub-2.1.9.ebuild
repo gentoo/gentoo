@@ -7,7 +7,7 @@ EAPI="4"
 WX_GTK_VER="2.8"
 inherit autotools wxwidgets
 
-DESCRIPTION="Advanced SSA/ASS subtitle editor"
+DESCRIPTION="Advanced subtitle editor"
 HOMEPAGE="http://www.aegisub.org/"
 SRC_URI="https://rion-overlay.googlecode.com/files/${P}.tar.xz"
 
