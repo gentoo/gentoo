@@ -1700,7 +1700,7 @@ app-misc/ckermit 8.0.211-r4: combined serial and network communication software 
 app-misc/clockywock 0.3.1a: ncurses based analog clock
 app-misc/cmatrix 1.2a-r1: An ncurses based app to show a scrolling screen from the Matrix
 app-misc/color 1.2-r1: Easily add ANSI colouring to shell scripts
-app-misc/colordiff 1.0.13-r1 1.0.15-r1: Colorizes output of diff
+app-misc/colordiff 1.0.13-r1 1.0.15-r1 1.0.16: Colorizes output of diff
 app-misc/conmux 0.15.1-r3: A console multiplexor
 app-misc/countrycodes 1.0.5-r1: An ISO 3166 country code finder
 app-misc/crunch 3.4 3.5 3.6: A wordlist generator
@@ -14008,7 +14008,7 @@ net-libs/libsrtp 1.4.4-r1 1.4.4-r2 1.4.4_p20121108 1.4.4_p20121108-r1 1.5.2 1.5.
 net-libs/libssh 0.6.5 0.7.0-r1 0.7.1 0.7.2 9999: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.5.0 1.6.0 1.6.0-r1 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
-net-libs/libtirpc 0.1.10 0.2.4-r1 0.2.4-r2 0.2.5 0.3.1: Transport Independent RPC library (SunRPC replacement)
+net-libs/libtirpc 0.1.10 0.2.4-r1 0.2.4-r2 0.2.5 0.3.1 1.0.1: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.3 0.13.4 0.13.6: BitTorrent library written in C++ for *nix
 net-libs/libtrace 3.0.21 3.0.22: A library and tools for trace processing
 net-libs/libupnp 1.6.18 1.6.18-r1 1.6.19: An Portable Open Source UPnP Development Kit
@@ -14602,7 +14602,7 @@ net-nds/nsscache 0.23: commandline tool to sync directory services to local cach
 net-nds/openldap 2.3.43-r3 2.3.43-r4 2.4.38-r2 2.4.39 2.4.40 2.4.40-r2 2.4.40-r4 2.4.42 2.4.42-r1: LDAP suite of application and development tools
 net-nds/phpldapadmin 1.2.3 1.2.3-r1: phpLDAPadmin is a web-based tool for managing all aspects of your LDAP server
 net-nds/portmap 6.0 9999: Netkit - portmapper
-net-nds/rpcbind 0.2.0-r1 0.2.1-r1 0.2.2-r1 0.2.3 9999: portmap replacement which supports RPC over various protocols
+net-nds/rpcbind 0.2.0-r1 0.2.1-r1 0.2.2-r1 0.2.3 0.2.3-r1 9999: portmap replacement which supports RPC over various protocols
 net-nds/shelldap 1.3.1: A handy shell-like interface for browsing LDAP servers and editing their content
 net-nds/smbldap-tools 0.9.8 0.9.9 0.9.10 0.9.10-r1: Samba LDAP management tools
 net-nds/tac_plus 4.0.4.19-r3 4.0.4.19-r4 4.0.4.27a: An updated version of Cisco's TACACS+ server
@@ -16326,7 +16326,7 @@ sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hardware state (i.e
 sys-apps/watchdog 5.13-r1 5.14: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.20-r1 2.21: Prints out location of specified executables that are in your path
 sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
-sys-apps/xinetd 2.3.15-r1: powerful replacement for inetd
+sys-apps/xinetd 2.3.15-r1 2.3.15-r2: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-apps/yum 3.4.3_p20130218 3.4.3_p20130218-r1: automatic updater and package installer/remover for rpm systems
 sys-apps/zorroutils 0.04: Zorro bus utility for Amigas running 2.1 and later kernels

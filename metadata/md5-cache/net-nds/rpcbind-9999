@@ -1,11 +1,11 @@
 DEFINED_PHASES=configure install prepare unpack
-DEPEND=>=net-libs/libtirpc-0.2.3 systemd? ( sys-apps/systemd:= ) tcpd? ( sys-apps/tcp-wrappers ) virtual/pkgconfig virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DEPEND=>=net-libs/libtirpc-0.2.3:= systemd? ( sys-apps/systemd:= ) tcpd? ( sys-apps/tcp-wrappers ) virtual/pkgconfig virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=portmap replacement which supports RPC over various protocols
 EAPI=5
 HOMEPAGE=http://sourceforge.net/projects/rpcbind/
 IUSE=debug selinux systemd tcpd warmstarts
 LICENSE=BSD
-RDEPEND=>=net-libs/libtirpc-0.2.3 systemd? ( sys-apps/systemd:= ) tcpd? ( sys-apps/tcp-wrappers ) selinux? ( sec-policy/selinux-rpcbind )
+RDEPEND=>=net-libs/libtirpc-0.2.3:= systemd? ( sys-apps/systemd:= ) tcpd? ( sys-apps/tcp-wrappers ) selinux? ( sec-policy/selinux-rpcbind )
 SLOT=0
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	git-r3	1502b9838d043db47700b8120083e637	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=72f9ef871be290a509d6115719bbb083
+_md5_=472b0c387bcb9a8490ddf62985a9d4df
