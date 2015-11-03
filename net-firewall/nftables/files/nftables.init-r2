@@ -1,0 +1,123 @@
+#!/sbin/runscript
+# Copyright 2014 Nicholas Vinson
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="clear list panic save"
+extra_started_commands="reload"
+depend() {
+    need localmount #434774
+    before net
+}
+
+start_pre() {
+    checkkernel || return 1
+    checkconfig || return 1
+    return 0
+}
+
+clear() {
+    /usr/libexec/nftables/nftables.sh clear || return 1
+    return 0
+}
+
+list() {
+    /usr/libexec/nftables/nftables.sh list || return 1
+    return 0
+}
+
+panic() {
+    checkkernel || return 1
+    if service_started ${RC_SVCNAME}; then
+        rc-service ${RC_SVCNAME} stop
+    fi
+
+    ebegin "Dropping all packets"
+    clear
+    if nft create table ip filter >/dev/null 2>&1; then
+	nft -f /dev/stdin <<-EOF
+	    table ip filter {
+	                    chain input {
+	                                    type filter hook input priority 0;
+	                                    drop
+	                    }
+	                    chain forward {
+	                                    type filter hook forward priority 0;
+	                                    drop
+	                    }
+	                    chain output {
+	                                    type filter hook output priority 0;
+	                                    drop
+	                    }
+	    }
+	EOF
+    fi
+    if nft create table ip6 filter >/dev/null 2>&1; then
+	nft -f /dev/stdin <<-EOF
+	    table ip6 filter {
+	                    chain input {
+	                                    type filter hook input priority 0;
+	                                    drop
+	                    }
+	                    chain forward {
+	                                    type filter hook forward priority 0;
+	                                    drop
+	                    }
+	                    chain output {
+	                                    type filter hook output priority 0;
+	                                    drop
+	                    }
+	    }
+	EOF
+    fi
+}
+
+reload() {
+    checkkernel || return 1
+    ebegin "Flushing firewall"
+    clear
+    start
+}
+
+save() {
+    ebegin "Saving nftables state"
+    checkpath -q -d "$(dirname "${NFTABLES_SAVE}")"
+    checkpath -q -m 0600 -f "${NFTABLES_SAVE}"
+    /usr/libexec/nftables/nftables.sh store ${NFTABLES_SAVE}
+    return $?
+}
+
+start() {
+    ebegin "Loading nftables state and starting firewall"
+    clear
+    /usr/libexec/nftables/nftables.sh load ${NFTABLES_SAVE}
+    eend $?
+}
+
+stop() {
+    if yesno ${SAVE_ON_STOP:-yes}; then
+        save || return 1
+    fi
+
+    ebegin "Stopping firewall"
+    clear
+    eend $?
+}
+
+checkconfig() {
+    if [ ! -f ${NFTABLES_SAVE} ]; then
+        eerror "Not starting nftables.  First create some rules then run:"
+        eerror "rc-service nftables save"
+        return 1
+    fi
+    return 0
+}
+
+checkkernel() {
+    if ! nft list tables >/dev/null 2>&1; then
+        eerror "Your kernel lacks nftables support, please load"
+        eerror "appropriate modules and try again."
+        return 1
+    fi
+    return 0
+}
