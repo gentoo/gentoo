@@ -21,16 +21,17 @@ LICENSE="BSD"
 SLOT="0"
 IUSE="debug selinux systemd tcpd warmstarts"
 
-CDEPEND=">=net-libs/libtirpc-0.2.3
+CDEPEND=">=net-libs/libtirpc-0.2.3:=
 	systemd? ( sys-apps/systemd:= )
 	tcpd? ( sys-apps/tcp-wrappers )"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
-	selinux? ( sec-policy/selinux-rpcbind )
-"
+	selinux? ( sec-policy/selinux-rpcbind )"
+
 src_prepare() {
 	[[ ${PV} == "9999" ]] && eautoreconf
+	epatch "${FILESDIR}"/${P}-libtirpc.patch
 	epatch_user
 }
 

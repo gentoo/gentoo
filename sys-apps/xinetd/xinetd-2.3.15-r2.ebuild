@@ -12,7 +12,7 @@ SRC_URI="http://www.xinetd.org/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="perl rpc tcpd"
 
 DEPEND="tcpd? ( >=sys-apps/tcp-wrappers-7.6-r2 )
@@ -26,6 +26,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.3.14-DESTDIR.patch
 	epatch "${FILESDIR}"/${PN}-2.3.14-install-contrib.patch
 	epatch "${FILESDIR}"/${PN}-2.3.14-config.patch
+	epatch "${FILESDIR}"/${PN}-2.3.15-creds.patch #488158
 	find -name Makefile.in -exec sed -i 's:\<ar\>:$(AR):' {} +
 }
 

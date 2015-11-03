@@ -31,6 +31,8 @@ RDEPEND="${CDEPEND}
 
 src_prepare() {
 	[[ ${PV} == "9999" ]] && eautoreconf
+	epatch "${FILESDIR}"/${P}-libtirpc.patch
+	epatch "${FILESDIR}"/${P}-mem-corrupt.patch #560990
 	epatch_user
 }
 
