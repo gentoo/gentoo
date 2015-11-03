@@ -3956,7 +3956,7 @@ dev-java/java-sdk-docs 1.6.0.30 1.7.0.80 1.8.0.66: Oracle's documentation bundle
 dev-java/java-service-wrapper 3.5.25-r1: A wrapper that makes it possible to install a Java Application as daemon
 dev-java/javacc 5.0-r1: Java Compiler Compiler - The Java Parser Generator
 dev-java/javacsv 2.1: Java library for reading and writing CSV and plain delimited text files
-dev-java/javacup 0.11a_beta20060608 0.11b_beta20150326: CUP Parser Generator for Java
+dev-java/javacup 0.11a_beta20060608 0.11b_beta20150326 0.11b_p20151001: CUP Parser Generator for Java
 dev-java/javahelp 2.0.05_p63: The JavaHelp system online help system
 dev-java/javassist 2.6-r2 3.18.2: Javassist makes Java bytecode manipulation simple
 dev-java/javatoolkit 0.3.0-r9: Collection of Gentoo-specific tools for Java
@@ -4005,7 +4005,7 @@ dev-java/jempbox 0.2.0 1.7.1: An open source Java library for parsing font files
 dev-java/jettison 1.0 1.3.7: A JSON StAX implementation
 dev-java/jexcelapi 2.6.8 2.6.8-r1: A Java API to read, write, and modify Excel spreadsheets
 dev-java/jffi 1.0.11 1.0.11-r1 1.2.9: An optimized Java interface to libffi
-dev-java/jflex 1.6.0-r2: JFlex is a lexical analyzer generator for Java
+dev-java/jflex 1.6.0-r2 1.6.1: JFlex is a lexical analyzer generator for Java
 dev-java/jformatstring 2.0.3: Compile time checking for Java format strings
 dev-java/jfreechart 1.0.13 1.0.14 1.0.19: JFreeChart is a free Java class library for generating charts
 dev-java/jfreesvg 2.1-r1 3.0: JFreeSVG is a fast, light-weight, vector graphics library for the Java platform
@@ -4184,7 +4184,7 @@ dev-java/poi 3.0.2-r1 3.2: Java API To Access Microsoft Format Files
 dev-java/portletapi 1.0 2.0: Portlet API 2.0 developed by the Java Community Process JSR-286
 dev-java/prefuse 20071021_beta: UI toolkit for building highly interactive visualizations of structured and unstructured data
 dev-java/proguard 4.5 4.7 4.8 5.2.1: Free Java class file shrinker, optimizer, and obfuscator
-dev-java/qdox 1.6.3 1.12-r1 1.12-r2 1.12.1: Parser for extracting class/interface/method definitions
+dev-java/qdox 1.6.3 1.12-r1 1.12.1-r1: Parser for extracting class/interface/method definitions
 dev-java/radeox 1.0_beta2-r1: Radeox Wiki render engine
 dev-java/reflectasm 1.09: High performance Java reflection
 dev-java/reflections 0.9.9: Java runtime metadata analysis
@@ -4407,7 +4407,7 @@ dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/path64 1.0.0_pre20110821 1.0.0_pre20110924 1.0.0_pre20111108 1.0.0_pre20120223: Path64 Compiler Suite Community Edition
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.20.2 5.20.2-r1 5.22.0: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.4.45 5.5.29 5.5.30 5.6.13 5.6.14 5.6.15 7.0.0_rc4 7.0.0_rc5: The PHP language runtime engine: CLI, CGI, FPM/FastCGI, Apache2 and embed SAPIs
+dev-lang/php 5.4.45 5.5.29 5.5.30 5.6.13 5.6.14 5.6.15-r1 7.0.0_rc4 7.0.0_rc5: The PHP language runtime engine: CLI, CGI, FPM/FastCGI, Apache2 and embed SAPIs
 dev-lang/pocl 0.11: PortableCL: opensource implementation of the OpenCL standard
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.9-r1 2.7.9-r2 2.7.10 2.7.10-r1 2.7.10-r2 3.3.5-r1 3.3.5-r2 3.4.0 3.4.1 3.4.2 3.4.3 3.4.3-r1 3.4.3-r2 3.5.0 3.5.0-r1: An interpreted, interactive, object-oriented programming language
@@ -4568,7 +4568,7 @@ dev-libs/hiredis 0.11.0 0.11.0-r1 0.13.1: Minimalistic C client library for the 
 dev-libs/http-fetcher 1.1.0: small, robust, flexible library for downloading files via HTTP using the GET method
 dev-libs/hyperleveldb 1.2.2: Hyperdex fork/extension of leveldb
 dev-libs/hyphen 2.8.6 2.8.8: ALTLinux hyphenation library
-dev-libs/icu 54.1-r1 55.1: International Components for Unicode
+dev-libs/icu 55.1: International Components for Unicode
 dev-libs/igraph 0.7.1-r1: Creating and manipulating undirected and directed graphs
 dev-libs/iksemel 1.3 1.4: eXtensible Markup Language parser library designed for Jabber applications
 dev-libs/ilbc-rfc3951 0-r1: iLBC (internet Low Bitrate Codec) is a speech codec suitable for robust voice communication over IP
@@ -6037,7 +6037,7 @@ dev-perl/Role-Basic 0.130.0: Just roles. Nothing else
 dev-perl/Role-Tiny 1.3.2 2.0.0: Roles. Like a nouvelle cuisine portion size slice of Moose
 dev-perl/Roman 1.230.0-r1 1.240.0: Perl module for conversion between Roman and Arabic numerals
 dev-perl/Router-Simple 0.140.0-r1: Simple HTTP router
-dev-perl/SDL 2.540-r1 2.544: Simple DirectMedia Layer (SDL) bindings for perl
+dev-perl/SDL 2.540-r1 2.544 2.546: Simple DirectMedia Layer (SDL) bindings for perl
 dev-perl/SGMLSpm 1.03-r7: Perl library for parsing the output of nsgmls
 dev-perl/SNMP_Session 1.13-r2: A SNMP Perl Module
 dev-perl/SOAP-Lite 1.040.0-r1 1.140.0 1.190.0: Simple and lightweight interface to the SOAP protocol (sic) both on client and server side
@@ -11900,7 +11900,7 @@ media-gfx/replicatorg 37-r2 40-r1: ReplicatorG is a simple, open source 3D print
 media-gfx/ristretto 0.6.3 0.8.0-r1: A fast and lightweight picture viewer for the Xfce desktop environment
 media-gfx/rotoscope 0.2: Graphics program that can be used to give photos a cartoon-like appearance
 media-gfx/sam2p 0.49.1 0.49.2: Utility to convert raster images to EPS, PDF and many others
-media-gfx/sane-backends 1.0.24-r5 1.0.25_pre20150628 9999: Scanner Access Now Easy - Backends
+media-gfx/sane-backends 1.0.24-r5 1.0.25_pre20150628 1.0.25 9999: Scanner Access Now Easy - Backends
 media-gfx/sane-frontends 1.0.14: Scanner Access Now Easy
 media-gfx/scantailor 0.9.10 0.9.11.1: A interactive post-processing tool for scanned pages
 media-gfx/scrot 0.8-r1 0.8_p13: Screen capture utility using imlib2 library
@@ -14242,7 +14242,7 @@ net-misc/connman-gtk 1.0: GTK GUI for Connman
 net-misc/connman-ui 9999: A full-featured GTK based trayicon UI for ConnMan
 net-misc/corkscrew 2.0: a tool for tunneling SSH through HTTP proxies
 net-misc/csync 0.50.0: lightweight file synchronizer utility
-net-misc/curl 7.42.1 7.42.1-r1 7.43.0 7.44.0 7.44.0-r1 7.45.0: A Client that groks URLs
+net-misc/curl 7.43.0 7.44.0 7.44.0-r1 7.45.0: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.0.1-r1 2.10.1 2.10.2-r2: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1 2.10.2: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/datapipe 1.0-r1: bind a local port and connect it to a remote socket
@@ -16848,7 +16848,7 @@ sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.999
 sys-kernel/rsbac-sources 3.14.28: RSBAC kernel sources (kernel series 3.14)
 sys-kernel/rt-sources 3.14.46_p46 3.18.17_p14 4.0.5_p4 4.1.5_p5: Full Linux 4.1 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
-sys-kernel/tuxonice-sources 3.4.108 3.4.109 3.10.88 3.10.90 3.12.47 3.12.48 3.14.52 3.14.54 3.18.21 3.18.22 4.0.9 4.1.7 4.1.9 4.2.0 4.2.3: TuxOnIce + Gentoo patchset sources
+sys-kernel/tuxonice-sources 3.4.108 3.4.109 3.4.110 3.10.88 3.10.90 3.10.92 3.12.47 3.12.48 3.12.49 3.14.52 3.14.54 3.14.56 3.18.21 3.18.22 3.18.23 4.0.9 4.1.7 4.1.9 4.1.12 4.2.0 4.2.3 4.2.5 4.3.0: TuxOnIce + Gentoo patchset sources
 sys-kernel/vanilla-sources 3.2.72 3.4.110 3.10.92 3.12.49 3.14.56 3.18.23 4.1.12 4.2.5 4.3.0: Full sources for the Linux kernel
 sys-kernel/vserver-sources 2.3.0.36.32 2.3.6.5 2.3.6.8 2.3.6.11 2.3.6.14 2.3.7.3 2.3.7.4: Full sources including Linux-VServer patchsets for the 3.18 kernel tree
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
@@ -17003,7 +17003,7 @@ sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.2: A utility for parallelizing execution of shell functions
 sys-process/procenv 0.35 0.36 0.39: A command-line utility that simply dumps all attributes of its environment
 sys-process/procexp 1.5.277: Graphical process explorer
-sys-process/procps 3.3.9-r2 3.3.10-r1 3.3.11: standard informational utilities and process-handling tools
+sys-process/procps 3.3.9-r2 3.3.10-r1 3.3.11-r1: standard informational utilities and process-handling tools
 sys-process/psinfo 0.12: Process information and statistics using the kernel /proc interface
 sys-process/psmisc 22.16 22.20 22.21-r2: A set of tools that use the proc filesystem
 sys-process/runit 2.1.1-r1 2.1.2: A UNIX init scheme with service supervision
@@ -18122,7 +18122,7 @@ x11-misc/xwinwrap 0_p4: replace a desktop background with a movie or screensaver
 x11-misc/xwit 3.4 3.4-r1: A collection of simple routines to call some of those X11 functions
 x11-misc/xwrits 2.26: Reminds you to take wrist breaks, which will hopefully help you prevent repetitive stress injury
 x11-misc/xxkb 1.11-r3 1.11.1: eXtended XKB - assign different keymaps to different windows
-x11-misc/zim 0.63 0.64: A desktop wiki
+x11-misc/zim 0.63 0.64 0.65: A desktop wiki
 x11-plugins/allin1 0.5.0 0.5.0-r1: All in one monitoring dockapp: RAM, CPU, Net, Power, df, seti
 x11-plugins/asapm 3.1-r1: APM monitor for AfterStep
 x11-plugins/asclock 2.0.12-r1: Clock applet for AfterStep
