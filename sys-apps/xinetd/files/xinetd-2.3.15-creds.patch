@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/488158
+
+taken from Fedora
+
+Patch by Thomas Swan <thomas.swan@gmail.com>
+
+--- a/xinetd/builtins.c
++++ b/xinetd/builtins.c
+@@ -695,7 +695,7 @@ static void tcpmux_handler( const struct server *serp )
+    if( SC_IS_INTERNAL( scp ) ) {
+       SC_INTERNAL(scp, nserp);
+    } else {
+-      exec_server(nserp);
++      child_process(nserp);
+    }
+ }
+ 
