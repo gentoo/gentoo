@@ -64,9 +64,10 @@ DEPEND="${COMMON_DEPEND}
 		app-text/dvipng
 		virtual/python-imaging[${PYTHON_USEDEP}]
 		dev-python/ipython[${PYTHON_USEDEP}]
+		dev-python/mock[${PY2_USEDEP}]
 		dev-python/numpydoc[${PYTHON_USEDEP}]
-		dev-python/xlwt[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/xlwt[${PYTHON_USEDEP}]
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-latexrecommended
@@ -106,8 +107,6 @@ RDEPEND="${COMMON_DEPEND}
 	qt4? ( dev-python/PyQt4[X,${PYTHON_USEDEP}] )
 	qt5? ( dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}] )
 	"
-
-RESTRICT="mirror"
 
 # A few C++ source files are written to srcdir.
 # Other than that, the ebuild shall be fit for out-of-source build.

@@ -19,3 +19,11 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+
+pkg_postinst() {
+	optfeature "datetime support" dev-python/pytz
+	optfeature "numpy support" dev-python/numpy
+	optfeature "django support" dev-python/django dev-python/pytz
+	optfeature "pytest support" dev-python/pytest
+#	optfeature "fake-factory support" dev-python/fake-factory
+}

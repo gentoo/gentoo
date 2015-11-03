@@ -107,8 +107,6 @@ RDEPEND="${COMMON_DEPEND}
 	qt5? ( dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}] )
 	"
 
-RESTRICT="mirror"
-
 # A few C++ source files are written to srcdir.
 # Other than that, the ebuild shall be fit for out-of-source build.
 DISTUTILS_IN_SOURCE_BUILD=1

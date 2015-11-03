@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
 inherit distutils-r1
 
@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~x86-solaris"
 IUSE="doc +gmp test"
 
-RDEPEND="gmp? ( dev-libs/gmp )"
+RDEPEND="gmp? ( dev-libs/gmp:0= )"
 DEPEND="${RDEPEND}
 	doc? (
 		dev-python/docutils[${PYTHON_USEDEP}]
@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="test? ( gmp )"
 
 python_prepare_all() {
-	epatch "${FILESDIR}"/${P}-cross-compile.patch
+	local PATCHES=( "${FILESDIR}"/${P}-cross-compile.patch )
 	# Fix Crypto.PublicKey.RSA._RSAobj.exportKey(format="OpenSSH") with Python 3
 	# https://github.com/dlitz/pycrypto/commit/ab25c6fe95ee92fac3187dcd90e0560ccacb084a
 	sed \
@@ -48,7 +48,7 @@ python_configure_all() {
 
 python_compile_all() {
 	if use doc; then
-		rst2html.py Doc/pycrypt.rst > Doc/index.html
+		rst2html.py Doc/pycrypt.rst > Doc/index.html || die
 		epydoc --config=Doc/epydoc-config --exclude-introspect="^Crypto\.(Random\.OSRNG\.nt|Util\.winrandom)$" || die
 	fi
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,15 +19,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
-RDEPEND=">=dev-python/django-1.5.8[${PYTHON_USEDEP}]
+RDEPEND="
+	>=dev-python/django-1.7[${PYTHON_USEDEP}]
 	dev-python/jsmin[${PYTHON_USEDEP}]
+	dev-python/jinja[${PYTHON_USEDEP}]
 	virtual/python-futures[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
+DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? (
-		dev-python/jinja[${PYTHON_USEDEP}]
+	test? ( ${RDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}] )"
+
 # As usual for test phase
 DISTUTILS_IN_SOURCE_BUILD=1
 
@@ -36,6 +38,7 @@ python_compile_all() {
 }
 
 python_test() {
+	# https://github.com/cyberdelia/django-pipeline/issues/381
 	PYTHONPATH=. django-admin.py test --settings=tests.settings tests \
 		|| die "Tests failed under ${EPYTHON}"
 }
