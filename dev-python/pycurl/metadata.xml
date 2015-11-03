@@ -9,7 +9,7 @@ Python module. All the functionality provided by libcurl can used through
 the pycurl interface.
   </longdescription>
   <longdescription lang="ja">
-PycURLはLibcurlへのパイソン・インターフェイスです。PycURLはPython言語モジュール&gt;の様に、Python言語プログラムからURLで指定されたオブジェクトをダウンロードするに&gt;も使えます。Libcurlで利用できる機能全てはPycURLインターフェイスを通して利用でき&gt;ます。
+PycURLはLibcurlへのパイソン・インターフェイスです。PycURLはPython言語モジュール>の様に、Python言語プログラムからURLで指定されたオブジェクトをダウンロードするに>も使えます。Libcurlで利用できる機能全てはPycURLインターフェイスを通して利用でき>ます。
   </longdescription>
   <upstream>
     <remote-id type="github">pycurl/pycurl</remote-id>
