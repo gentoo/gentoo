@@ -13,7 +13,7 @@ HOMEPAGE="http://commons.apache.org/proper/commons-chain/"
 SRC_URI="mirror://apache/commons/chain/source/${MY_P}.zip"
 
 LICENSE="Apache-2.0"
-SLOT="1.2"
+SLOT="0"
 KEYWORDS="amd64 x86"
 
 # Too many missing imports from javax.servlet.* which causes the
