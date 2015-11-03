@@ -35,7 +35,7 @@ DEPEND="
 		!~dev-python/testtools-1.2.0[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
 	)"
-RDEPEND="dev-python/pip[${PYTHON_USEDEP}]"
+PDEPEND="dev-python/pip[${PYTHON_USEDEP}]"
 
 # Requ'd for testsuite
 DISTUTILS_IN_SOURCE_BUILD=1
