@@ -291,14 +291,6 @@ php_set_ini_dir() {
 }
 
 src_prepare() {
-	# USE=sharedmem (session/mod_mm to be exact) tries to mmap() this path
-	# ([empty session.save_path]/session_mm_[sapi][gid].sem)
-	# there is no easy way to circumvent that, all php calls during
-	# install use -n, so no php.ini file will be used.
-	# As such, this is the easiest way to get around
-	addpredict /session_mm_cli250.sem
-	addpredict /session_mm_cli0.sem
-
 	# Change PHP branding
 	# Get the alpha/beta/rc version
 	sed -re	"s|^(PHP_EXTRA_VERSION=\").*(\")|\1-pl${PR/r/}-gentoo\2|g" \
