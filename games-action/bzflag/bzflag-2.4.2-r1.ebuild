@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="dedicated sdl upnp"
+IUSE="dedicated sdl"
 
 UIDEPEND="virtual/opengl
 	virtual/glu
@@ -32,7 +32,6 @@ UIDEPEND="virtual/opengl
 DEPEND=">=net-misc/curl-7.15.0
 	sys-libs/ncurses
 	net-dns/c-ares
-	upnp? ( || ( net-libs/miniupnpc:0/0 net-libs/miniupnpc:0/12 ) )
 	sdl? ( ${UIDEPEND} )
 	!sdl? ( !dedicated? ( ${UIDEPEND} ) )"
 
@@ -53,7 +52,7 @@ src_configure() {
 	egamesconf \
 		--disable-ccachetest \
 		--without-regex \
-		$(use_enable upnp UPnP) \
+		--disable-UPnP \
 		${myconf}
 }
 
