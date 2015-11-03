@@ -2,11 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 
 AUTOTOOLS_AUTORECONF=1
 AUTOTOOLS_IN_SOURCE_BUILD=1
-inherit autotools-utils eutils linux-info readme.gentoo systemd user
+
+inherit autotools-utils eutils flag-o-matic linux-info readme.gentoo systemd user
 
 DESCRIPTION="A userspace logging daemon for netfilter/iptables related logging"
 HOMEPAGE="http://netfilter.org/projects/ulogd/index.html"
@@ -15,10 +16,11 @@ SRC_URI="ftp://ftp.netfilter.org/pub/${PN}/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ppc x86"
-IUSE="dbi doc json mysql nfacct +nfct +nflog pcap postgres sqlite"
+KEYWORDS="~amd64 ~ia64 ~ppc ~x86"
+IUSE="dbi doc json mysql nfacct +nfct +nflog pcap postgres sqlite -ulog"
 
-RDEPEND="net-firewall/iptables
+RDEPEND="
+	|| ( net-firewall/iptables net-firewall/nftables )
 	>=net-libs/libnfnetlink-1.0.1
 	dbi? ( dev-db/libdbi )
 	json? ( dev-libs/jansson )
@@ -31,20 +33,23 @@ RDEPEND="net-firewall/iptables
 	mysql? ( virtual/mysql )
 	pcap? ( net-libs/libpcap )
 	postgres? ( dev-db/postgresql:= )
-	sqlite? ( dev-db/sqlite:3 )"
-
+	sqlite? ( dev-db/sqlite:3 )
+"
 DEPEND="${RDEPEND}
 	doc? (
 		app-text/linuxdoc-tools
 		app-text/texlive-core
 		virtual/latex-base
-	)"
+	)
+"
 
-PATCHES=( "${FILESDIR}/${P}-linux-headers-3.17-ipt_ulog.patch" )
+PATCHES=( "${FILESDIR}/${P}-remove-db-automagic.patch" )
 
 DOCS=( AUTHORS README TODO )
-DOC_CONTENTS="You must have at least one logging stack enabled to make ulogd work.
-Please edit example configuration located at /etc/ulogd.conf"
+DOC_CONTENTS="
+	You must have at least one logging stack enabled to make ulogd work.
+	Please edit example configuration located at /etc/ulogd.conf
+"
 
 pkg_setup() {
 	enewgroup ulogd
@@ -53,21 +58,19 @@ pkg_setup() {
 	linux-info_pkg_setup
 
 	if kernel_is lt 2 6 14; then
-		die "ulogd2 requires kernel newer than 2.6.14"
+		die "ulogd requires kernel newer than 2.6.14"
 	fi
 
 	if kernel_is lt 2 6 18; then
-		ewarn
 		ewarn "You are using kernel older than 2.6.18"
-		ewarn "Some ulogd2 features may be unavailable"
-		ewarn
+		ewarn "Some ulogd features may be unavailable"
 	fi
 
 	if use nfacct && kernel_is lt 3 3 0; then
 		ewarn "NFACCT input plugin requires kernel newer than 3.3.0"
 	fi
 
-	if ! use nfacct && ! use nfct && ! use nflog && kernel_is gt 3 17 0; then
+	if use ulog && kernel_is gt 3 17 0; then
 		ewarn "ULOG target was removed since 3.17.0 kernel release"
 		ewarn "Consider enabling NFACCT, NFCT or NFLOG support"
 	fi
@@ -81,6 +84,7 @@ src_prepare() {
 		-e 's:tmp:run:g' \
 		ulogd.conf.in || die 'sed on ulogd.conf.in failed'
 
+	append-lfs-flags
 	autotools-utils_src_prepare
 }
 
@@ -95,6 +99,7 @@ src_configure() {
 		$(use_with pcap)
 		$(use_with postgres pgsql)
 		$(use_with sqlite)
+		$(use_enable ulog)
 	)
 	autotools-utils_src_configure
 }
@@ -103,7 +108,7 @@ src_compile() {
 	autotools-utils_src_compile
 
 	if use doc; then
-		# prevent access violations from generation of bitmap font files
+		# Prevent access violations from bitmap font files generation
 		export VARTEXFONTS="${T}"/fonts
 		emake -C doc
 	fi
@@ -129,8 +134,8 @@ src_install() {
 	fowners root:ulogd /etc/ulogd.conf
 	fperms 640 /etc/ulogd.conf
 
-	newinitd "${FILESDIR}/${PN}.init" ${PN}
-	systemd_dounit "${FILESDIR}/${PN}.service"
+	newinitd "${FILESDIR}/${PN}.init-r2" ${PN}
+	systemd_newunit "${FILESDIR}/${PN}.service-r1" ${PN}.service
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${PN}.logrotate" ${PN}
