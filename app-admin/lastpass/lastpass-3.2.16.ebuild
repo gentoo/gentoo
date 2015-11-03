@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,9 +10,9 @@ HOMEPAGE="https://lastpass.com/misc_download2.php"
 # sadly, upstream has no versioned distfiles
 MAINDISTFILE=lplinux.tar.bz2
 SRC_URI="
-	https://lastpass.com/${MAINDISTFILE}
-	https://lastpass.com/lpchrome_linux.crx
-	firefox? ( https://lastpass.com/lp_linux.xpi )"
+	https://lastpass.com/${MAINDISTFILE} -> ${P}.tar.bz2
+	https://lastpass.com/lpchrome_linux.crx -> lpchrome_linux-${PV}.crx
+	firefox? ( https://lastpass.com/lp_linux.xpi -> lp_linux-${PV}.xpi )"
 
 LICENSE="LastPass"
 SLOT="0"
@@ -20,7 +20,7 @@ KEYWORDS="-* ~x86 ~amd64"
 IUSE="+chromium +firefox +chrome"
 RESTRICT="strip mirror" # We can't mirror it, but we can fetch it
 
-DEPEND=""
+DEPEND="app-arch/unzip"
 RDEPEND="
 	chrome? ( || (
 		www-client/google-chrome
@@ -43,11 +43,11 @@ QA_PREBUILT="
 S="${WORKDIR}"
 
 src_unpack() {
-	unpack ${MAINDISTFILE}
+	unpack ${P}.tar.bz2
 	mkdir -p "${S}"/crx || die
 	# bug #524864: strip Chrome CRX header
 	# otherwise the unzip warning can be fatal in some cases
-	dd bs=306 skip=1 if="${DISTDIR}"/lpchrome_linux.crx of="${T}"/lpchrome_linux.zip 2>/dev/null || die
+	dd bs=306 skip=1 if="${DISTDIR}"/lpchrome_linux-${PV}.crx of="${T}"/lpchrome_linux.zip 2>/dev/null || die
 	unzip -qq -o "${T}"/lpchrome_linux.zip -d "${S}"/crx || die
 }
 
@@ -62,7 +62,7 @@ src_install() {
 	exeinto /usr/$(get_libdir)/nsbrowser/plugins
 	doexe "${S}"/crx/lib${bin}.so
 
-	cat >"${T}"/lastpass_policy.json <<-EOF
+	cat >"${T}"/lastpass_policy.json <<-EOF || die
 	{
 		"ExtensionInstallSources": [
 			"https://lastpass.com/*",
@@ -71,7 +71,7 @@ src_install() {
 		]
 	}
 	EOF
-	cat >"${T}"/com.lastpass.nplastpass.json <<-EOF
+	cat >"${T}"/com.lastpass.nplastpass.json <<-EOF || die
 	{
 		"name": "com.lastpass.nplastpass",
 		"description": "LastPass",
@@ -101,9 +101,8 @@ src_install() {
 	if use firefox; then
 		d="$D/usr/$(get_libdir)/firefox/browser/extensions/support@lastpass.com"
 		mkdir -p $d || die
-		unzip -qq -o "${DISTDIR}/lp_linux.xpi" -d "$d" || die
+		unzip -qq -o "${DISTDIR}/lp_linux-${PV}.xpi" -d "$d" || die
 	fi
-
 }
 
 pkg_postinst() {
