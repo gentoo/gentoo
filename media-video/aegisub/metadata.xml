@@ -14,4 +14,7 @@
 		<email>maksbotan@gentoo.org</email>
 		<name>Maxim Koltsov</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">Aegisub/Aegisub</remote-id>
+	</upstream>
 </pkgmetadata>
