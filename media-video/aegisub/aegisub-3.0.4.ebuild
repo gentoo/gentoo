@@ -6,31 +6,27 @@ EAPI=5
 
 AUTOTOOLS_AUTORECONF=1
 AUTOTOOLS_IN_SOURCE_BUILD=1
-PLOCALES="ar bg ca cs da de el es eu fa fi fr_FR gl hu id it ja ko nl pl pt_BR pt_PT ru sr_RS@latin sr_RS uk_UA vi zh_CN zh_TW"
-WX_GTK_VER="3.0"
+PLOCALES="ar ca cs da de el es eu fa fi fr_FR hu id it ja ko nl pl pt_BR pt_PT ru sr_RS@latin sr_RS vi zh_CN zh_TW"
+WX_GTK_VER="2.9"
 
-inherit autotools-utils fdo-mime gnome2-utils l10n toolchain-funcs wxwidgets git-2
+inherit autotools-utils fdo-mime gnome2-utils l10n wxwidgets
 
 DESCRIPTION="Advanced subtitle editor"
 HOMEPAGE="http://www.aegisub.org/"
-EGIT_REPO_URI="git://github.com/Aegisub/Aegisub.git"
+SRC_URI="http://ftp.aegisub.org/pub/releases/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
-IUSE="alsa debug +ffmpeg +fftw openal oss portaudio pulseaudio spell"
+KEYWORDS="~amd64 ~x86"
+IUSE="alsa debug +ffmpeg +fftw +libass lua openal oss portaudio pulseaudio spell"
 
 # configure.ac specifies minimal versions for some of the dependencies below.
 # However, most of these minimal versions date back to 2006-2010 yy.
 # Such version specifiers are meaningless nowadays, so they are omitted.
 RDEPEND="
-	>=dev-lang/luajit-2.0.4:2=
-	>=dev-libs/boost-1.50.0:=[icu,nls,threads]
-	>=dev-libs/icu-4.8.1.1:=
-	>=x11-libs/wxGTK-3.0.0:${WX_GTK_VER}[X,opengl,debug?]
+	>=x11-libs/wxGTK-2.9.3:${WX_GTK_VER}[X,opengl,debug?]
 	media-libs/fontconfig
 	media-libs/freetype
-	media-libs/libass[fontconfig]
 	virtual/libiconv
 	virtual/opengl
 
@@ -42,6 +38,8 @@ RDEPEND="
 	ffmpeg? ( >=media-libs/ffmpegsource-2.16:= )
 	fftw? ( >=sci-libs/fftw-3.3:= )
 
+	libass? ( media-libs/libass[fontconfig] )
+	lua? ( =dev-lang/lua-5.1*:= )
 	spell? ( app-text/hunspell )
 "
 DEPEND="${RDEPEND}
@@ -54,26 +52,18 @@ REQUIRED_USE="
 	|| ( alsa openal oss portaudio pulseaudio )
 "
 
-# aegisub also bundles luabins (https://github.com/agladysh/luabins).
-# Unfortunately, luabins upstream is dead since 2011.
-# Thus unbundling luabins is not worth the effort.
 PATCHES=(
-	"${FILESDIR}/${PN}-3.2.2-fix-lua-regexp.patch"
-	"${FILESDIR}/${P}-unbundle-luajit.patch"
+	"${FILESDIR}/${P}-fix-lua-macro.patch"
 	"${FILESDIR}/${P}-respect-user-compiler-flags.patch"
 )
 
-pkg_pretend() {
-	if [[ ${MERGE_TYPE} != "binary" ]] && ! test-flag-CXX -std=c++11; then
-		die "Your compiler lacks C++11 support. Use GCC>=4.7.0 or Clang>=3.3."
-	fi
-}
+S="${WORKDIR}/${PN}/${PN}"
 
 src_prepare() {
 	cp /usr/share/gettext/config.rpath . || die
 
 	remove_locale() {
-		rm "po/${1}.po" || die
+		sed -i -e "s/${1}\.po//" po/Makefile || die
 	}
 
 	l10n_find_plocales_changes 'po' '' '.po'
@@ -86,11 +76,14 @@ src_configure() {
 	# Prevent sandbox violation from OpenAL detection. Gentoo bug #508184.
 	use openal && export agi_cv_with_openal="yes"
 	local myeconfargs=(
+		--disable-crash-reporter
 		--disable-update-checker
 		$(use_enable debug)
 		$(use_with alsa)
 		$(use_with ffmpeg ffms2)
 		$(use_with fftw fftw3)
+		$(use_with libass)
+		$(use_with lua)
 		$(use_with openal)
 		$(use_with oss)
 		$(use_with portaudio)

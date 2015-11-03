@@ -1,0 +1,134 @@
+diff --git a/Makefile.inc.in b/Makefile.inc.in
+index d1e1da4..aa26b81 100644
+--- a/Makefile.inc.in
++++ b/Makefile.inc.in
+@@ -78,7 +78,7 @@ CFLAGS_ICONV       = @ICONV_CFLAGS@
+ CFLAGS_ICU         = @ICU_I18N_CFLAGS@
+ CFLAGS_LIBASS      = @LIBASS_CFLAGS@
+ CFLAGS_LIBPULSE    = @LIBPULSE_CFLAGS@
+-CFLAGS_LUA         = -I$(TOP)vendor/luajit/include
++CFLAGS_LUA         = @LUAJIT_CFLAGS@
+ CFLAGS_OPENAL      = @OPENAL_CFLAGS@
+ CFLAGS_OSS         = @OSS_CFLAGS@
+ CFLAGS_PORTAUDIO   = @PORTAUDIO_CFLAGS@
+@@ -96,15 +96,11 @@ LIBS_ICONV         = @ICONV_LIBS@
+ LIBS_ICU           = @ICU_UC_LIBS@ @ICU_I18N_LIBS@
+ LIBS_LIBASS        = @LIBASS_LIBS@
+ LIBS_LIBPULSE      = @LIBPULSE_LIBS@
+-LIBS_LUA           = $(TOP)vendor/luajit/src/libluajit.a
++LIBS_LUA           = @LUAJIT_LIBS@
+ LIBS_OPENAL        = @OPENAL_LIBS@
+ LIBS_PORTAUDIO     = @PORTAUDIO_LIBS@
+ LIBS_PTHREAD       = @PTHREAD_LIBS@
+ 
+-ifeq (yes, $(BUILD_DARWIN))
+-LIBS_LUA           = $(TOP)vendor/luajit/src/libluajit-aegisub.so
+-endif
+-
+ FONTCONFIG_CONF_DIR = @FONTCONFIG_CONF_DIR@
+ 
+ #####################
+diff --git a/configure.ac b/configure.ac
+index d0b5152..ecec4de 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -16,6 +16,8 @@ m4_define([libpulse_required_version], [0.5])
+ m4_define([pkgconfig_required_version], [0.20])
+ m4_define([portaudio_required_version], [19])
+ m4_define([wx_required_version], [3.0.0])
++# Same version as the bundled one
++m4_define([luajit_required_version], [2.0.4])
+ 
+ #######
+ # Setup
+@@ -206,6 +208,7 @@ AC_SUBST(GL_LIBS)
+ PKG_CHECK_MODULES(FREETYPE, freetype2 >= freetype_required_version)
+ PKG_CHECK_MODULES(FONTCONFIG, fontconfig >= fontconfig_required_version)
+ PKG_CHECK_MODULES(LIBASS, libass >= libass_required_version)
++PKG_CHECK_MODULES(LUAJIT, luajit >= luajit_required_version)
+ 
+ FONTCONFIG_CONF_DIR=$($PKG_CONFIG --variable=confdir fontconfig)
+ AC_SUBST(FONTCONFIG_CONF_DIR)
+diff --git a/header.mk b/header.mk
+index 61c8ba1..050472d 100644
+--- a/header.mk
++++ b/header.mk
+@@ -13,7 +13,6 @@ subdirs := \
+ 	tests \
+ 	tools \
+ 	vendor/luabins \
+-	vendor/luajit \
+ 	vendor/universalchardet
+ 
+ subdirs := $(addprefix $(TOP),$(addsuffix /Makefile,$(subdirs)))
+diff --git a/src/Makefile b/src/Makefile
+index 08f9216..bb9233b 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -6,7 +6,8 @@ src_CPPFLAGS := -I$(d) -I.. -I$(d)include -I$(TOP)libaegisub/include -I$(TOP)bui
+ 	$(CFLAGS_PTHREAD) $(CFLAGS_FFTW3) $(CFLAGS_ICU) $(CPPFLAGS_BOOST)
+ src_CXXFLAGS := $(CXXFLAGS_WX)
+ src_LIBS := $(LIBS_GL) $(LIBS_PTHREAD) $(LIBS_WX) $(LIBS_FREETYPE) \
+-	$(LIBS_LIBASS) $(LIBS_FONTCONFIG) $(LIBS_FFTW3)  $(LIBS_BOOST) $(LIBS_ICU)
++	$(LIBS_LIBASS) $(LIBS_FONTCONFIG) $(LIBS_FFTW3) $(LIBS_BOOST) $(LIBS_ICU) \
++	$(LIBS_LUA)
+ src_PCH := $(d)agi_pre.h
+ src_INSTALLNAME := $(AEGISUB_COMMAND)
+ 
+@@ -112,7 +113,6 @@ src_OBJ := \
+ 	$(d)video_provider_yuv4mpeg.o \
+ 	$(d)video_slider.o \
+ 	$(d)visual_feature.o \
+-	$(LIBS_LUA) \
+ 	$(TOP)lib/libaegisub.a \
+ 	$(TOP)lib/libluabins.a \
+ 	$(TOP)lib/libresrc.a \
+@@ -192,10 +192,10 @@ $(d)subtitles_provider.o_FLAGS          := $(CFLAGS_LIBASS)
+ $(d)subtitles_provider_libass.o_FLAGS   := $(CFLAGS_LIBASS) -Wno-c++11-narrowing
+ $(d)text_file_reader.o_FLAGS            := -D_X86_
+ $(d)video_provider_manager.o_FLAGS      := $(CFLAGS_FFMS2)
+-$(d)auto4_lua.o_FLAGS                   := -I$(TOP)vendor/luajit/include
+-$(d)auto4_lua_assfile.o_FLAGS           := -I$(TOP)vendor/luajit/include
+-$(d)auto4_lua_dialog.o_FLAGS            := -I$(TOP)vendor/luajit/include
+-$(d)auto4_lua_progresssink.o_FLAGS      := -I$(TOP)vendor/luajit/include
++$(d)auto4_lua.o_FLAGS                   := $(CFLAGS_LUA)
++$(d)auto4_lua_assfile.o_FLAGS           := $(CFLAGS_LUA)
++$(d)auto4_lua_dialog.o_FLAGS            := $(CFLAGS_LUA)
++$(d)auto4_lua_progresssink.o_FLAGS      := $(CFLAGS_LUA)
+ 
+ $(src_OBJ): $(d)libresrc/bitmap.h $(d)libresrc/default_config.h
+ 
+diff --git a/src/libresrc/Makefile b/src/libresrc/Makefile
+index 6441856..0562eb1 100644
+--- a/src/libresrc/Makefile
++++ b/src/libresrc/Makefile
+@@ -10,7 +10,7 @@ resrc_OBJ := \
+ 
+ $(resrc_OBJ): $(d)default_config.h $(d)bitmap.h $(d)default_config.cpp $(d)bitmap.cpp
+ 
+-RESPACK := cd $(TOP)src/libresrc; $(TOP)vendor/luajit/src/host/minilua $(TOP)tools/respack.lua
++RESPACK := cd $(TOP)src/libresrc; luajit $(TOP)tools/respack.lua
+ 
+ $(d)bitmap.cpp: $(d)bitmap.h
+ $(d)default_config.cpp: $(d)default_config.h
+diff --git a/tools/Makefile b/tools/Makefile
+index d9f64b8..d56ef63 100644
+--- a/tools/Makefile
++++ b/tools/Makefile
+@@ -12,6 +12,4 @@ repack-thes-dict_CPPFLAGS := -I$(TOP) -I$(TOP)libaegisub/include $(CFLAGS_ICU)
+ 
+ PROGRAM += $(d)repack-thes-dict
+ 
+-$(TOP)tools/respack.lua: $(TOP)vendor/luajit/src/host/minilua
+-
+ include $(TOP)Makefile.target
+diff --git a/tools/respack.lua b/tools/respack.lua
+index 85955d1..11af2f4 100755
+--- a/tools/respack.lua
++++ b/tools/respack.lua
+@@ -1,4 +1,4 @@
+-#!../vendor/luajit/src/host/minilua
++#!/usr/bin/env luajit
+ -- Copyright (c) 2014, Thomas Goyne <plorkyeran@aegisub.org>
+ --
+ -- Permission to use, copy, modify, and distribute this software for any
