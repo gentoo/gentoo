@@ -7232,7 +7232,7 @@ dev-python/morbid 0.8.7.3 0.8.7.3-r1: A Twisted-based publish/subscribe messagin
 dev-python/more-itertools 2.2: More routines for operating on iterables, beyond itertools
 dev-python/moto 0.3.8 0.4.3 0.4.8: Mock library for boto
 dev-python/mox 0.5.3-r1: A mock object framework for Python, loosely based on EasyMock for Java
-dev-python/mox3 0.7.0 0.7.0-r1: Mock object framework for Python
+dev-python/mox3 0.7.0 0.7.0-r1 0.12.0: Mock object framework for Python
 dev-python/mpi4py 1.3.1 2.0.0: Message Passing Interface for Python
 dev-python/mpmath 0.18 0.19: Python library for arbitrary-precision floating-point arithmetic
 dev-python/msgpack 0.4.6: MessagePack (de)serializer for Python
@@ -11626,7 +11626,6 @@ media-fonts/montecarlo 0: monospace font, created by programmers, for programmer
 media-fonts/mplus-fonts 2.2.4: M+ Japanese bitmap fonts
 media-fonts/mplus-outline-fonts 0_pre055 0_pre056 0_pre059 0_pre060: M+ Japanese outline fonts
 media-fonts/nanum 3.0: The Nanum Korean fonts distributed by Naver
-media-fonts/nanumfont 2.0 2.0-r1: Korean monospace font distributed by NHN
 media-fonts/nepali-fonts 1-r1: a collection of fonts for Nepali users
 media-fonts/noto 2014.11 2015.04: Google's font family that aims to support all the world's languages
 media-fonts/nunito 1.0: A well balanced Sans Serif with rounded terminals
@@ -13644,9 +13643,9 @@ net-dns/nsd 3.2.18 4.1.0: An authoritative only, high performance, open source n
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.17 1.3.18 1.4.6 1.4.7: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.6.1 3.6.2 3.7.0 3.7.2: A framework for managing DNS information
-net-dns/pdns 3.3.1 3.3.2 3.3.3 3.4.0 3.4.0-r1 3.4.1 3.4.2 3.4.4 3.4.5 3.4.6: The PowerDNS Daemon
+net-dns/pdns 3.3.1 3.3.2 3.3.3 3.4.0 3.4.0-r1 3.4.1 3.4.2 3.4.4 3.4.5 3.4.6 3.4.7: The PowerDNS Daemon
 net-dns/pdns-ldap-backend 0.2: Fork of the official but unmaintained LDAP backend
-net-dns/pdns-recursor 3.6.1-r1 3.6.2 3.6.3 3.6.4 3.7.1 3.7.2 3.7.3: The PowerDNS Recursor
+net-dns/pdns-recursor 3.6.4 3.7.3: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.997a-r2: DNS server designed to serve blacklist zones
 net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writable location
@@ -13833,7 +13832,7 @@ net-irc/ircservices 5.1.24: ChanServ, NickServ, and MemoServ with support for se
 net-irc/ircstats 1.1-r1: IRCStats tries to be a log analyzer for Linux similar to mIRCStats
 net-irc/irker 1.19 1.20 2.9 2.11 2.12 2.13: Submission tools for IRC notifications
 net-irc/iroffer-dinoex 3.29: IRC fileserver using DCC
-net-irc/irssi 0.8.16 0.8.17 9999: A modular textUI IRC client with IPv6 support
+net-irc/irssi 0.8.17 9999: A modular textUI IRC client with IPv6 support
 net-irc/irssi-otr 1.0.0-r1: Off-The-Record messaging (OTR) for irssi
 net-irc/irssi-xmpp 0.52: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
