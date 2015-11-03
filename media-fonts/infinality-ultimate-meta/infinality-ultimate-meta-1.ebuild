@@ -68,7 +68,7 @@ RDEPEND="media-libs/fontconfig-ultimate
 				media-fonts/vlgothic
 			)
 			linguas_kn_IN? ( media-fonts/lohit-kannada )
-			linguas_ko? ( media-fonts/nanumfont )
+			linguas_ko? ( media-fonts/nanum )
 			linguas_ml? ( media-fonts/lohit-malayalam )
 			linguas_mr? ( media-fonts/lohit-marathi )
 			linguas_ne? ( media-fonts/lohit-nepali )
