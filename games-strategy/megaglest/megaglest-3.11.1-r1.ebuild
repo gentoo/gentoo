@@ -33,9 +33,9 @@ RDEPEND="
 	virtual/glu
 	x11-libs/libX11
 	x11-libs/libXext
-	editor? ( x11-libs/wxGTK:2.8[X,opengl] )
+	editor? ( x11-libs/wxGTK:3.0[X,opengl] )
 	fribidi? ( dev-libs/fribidi )
-	model-viewer? ( x11-libs/wxGTK:2.8[X] )
+	model-viewer? ( x11-libs/wxGTK:3.0[X] )
 	!static? (
 		dev-libs/xerces-c[icu]
 		media-libs/ftgl
@@ -66,7 +66,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	if use editor || use model-viewer ; then
-		WX_GTK_VER="2.8"
+		WX_GTK_VER="3.0"
 		need-wxwidgets unicode
 	fi
 
