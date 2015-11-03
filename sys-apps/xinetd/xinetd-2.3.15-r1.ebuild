@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 inherit eutils flag-o-matic systemd toolchain-funcs
 
@@ -16,7 +16,7 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
 IUSE="perl rpc tcpd"
 
 DEPEND="tcpd? ( >=sys-apps/tcp-wrappers-7.6-r2 )
-	rpc? ( net-libs/libtirpc )"
+	rpc? ( net-libs/libtirpc:= )"
 RDEPEND="${DEPEND}
 	perl? ( dev-lang/perl )"
 DEPEND="${DEPEND}
