@@ -1,0 +1,22 @@
+--- org/ini4j/Profile.java.orig	2015-11-03 22:49:34.854486000 +0000
++++ org/ini4j/Profile.java	2015-11-03 22:49:53.412486000 +0000
+@@ -43,7 +43,7 @@
+ 
+     Section remove(Profile.Section section);
+ 
+-    String remove(Object sectionName, Object optionName);
++    String removeString(Object sectionName, Object optionName);
+ 
+     interface Section extends OptionMap
+     {
+--- org/ini4j/BasicProfile.java.orig	2015-11-03 22:50:28.101486000 +0000
++++ org/ini4j/BasicProfile.java	2015-11-03 22:51:09.338486000 +0000
+@@ -138,7 +138,7 @@
+         return remove((Object) section.getName());
+     }
+ 
+-    @Override public String remove(Object sectionName, Object optionName)
++    @Override public String removeString(Object sectionName, Object optionName)
+     {
+         Section sec = get(sectionName);
+ 
