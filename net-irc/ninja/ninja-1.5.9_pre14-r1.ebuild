@@ -11,7 +11,7 @@ HOMEPAGE="http://ninja.qoop.org/"
 SRC_URI="ftp://qoop.org/ninja/stable/${P/_/}.tar.gz"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ppc ~ppc64 ~sparc x86"
 IUSE="ncurses ipv6 ssl"
 
 RESTRICT="test"
