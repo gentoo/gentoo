@@ -34,9 +34,15 @@ DEPEND="
 # Required for test phase
 DISTUTILS_IN_SOURCE_BUILD=1
 
+PATCHES=(
+	"${FILESDIR}"/${P}-test-backport.patch
+	"${FILESDIR}"/${PN}-0.0.20-test-backport1.patch
+)
+
 python_test() {
 	# some errors appear to have crept in the suite undert py3 since addition.
 	# Python2.7 now passes all.
 
-	esetup.py testr --coverage
+	${PYTHON} testr init || die
+	${PYTHON} testr run || die
 }
