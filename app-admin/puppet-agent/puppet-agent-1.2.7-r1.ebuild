@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit eutils systemd unpacker
+inherit eutils systemd unpacker user
 
 DESCRIPTION="general puppet client utils along with mcollective hiera and facter"
 HOMEPAGE="https://puppetlabs.com/"
@@ -37,6 +37,11 @@ RDEPEND="${CDEPEND}
 	puppetdb? ( >=dev-ruby/puppetdb-termini-3.1.0 )"
 
 S=${WORKDIR}
+
+pkg_setup() {
+	enewgroup puppet
+	enewuser puppet -1 -1 /var/run/puppet puppet
+}
 
 src_install() {
 	# conf.d
