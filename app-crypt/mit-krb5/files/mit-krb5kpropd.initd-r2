@@ -13,7 +13,7 @@ depend() {
 
 start() {
 	ebegin "Starting $daemon"
-	start-stop-daemon --start --quiet --exec ${exec} -- "${KPROPD_OPTS}" 1>&2
+	start-stop-daemon --start --quiet --exec ${exec} -- ${KPROPD_OPTS} 1>&2
 	eend $? "Error starting $daemon"
 }
 
