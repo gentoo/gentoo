@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Simple Java API Windows style .ini file handling"
 HOMEPAGE="http://ini4j.sourceforge.net/"
-SRC_URI="http://central.maven.org/maven2/org/ini4j/ini4j/0.5.1/ini4j-0.5.1-sources.jar"
+SRC_URI="http://central.maven.org/maven2/org/${PN}/${PN}/${PV}/${P}-sources.jar -> ${P}.jar"
 
 LICENSE="Apache-2.0"
 SLOT="0"
