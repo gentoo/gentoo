@@ -3,7 +3,9 @@
 # $Id$
 
 EAPI=5
+
 PYTHON_COMPAT=( python{2_7,3_3,3_4} ) # Tests crash with pypy
+
 inherit distutils-r1 flag-o-matic prefix
 
 DESCRIPTION="Tools for generating printable PDF documents from any data source"
@@ -18,12 +20,11 @@ IUSE="doc examples"
 
 RDEPEND="
 	>=dev-python/pillow-2.4.0[tiff,truetype,${PYTHON_USEDEP}]
-	>=dev-python/pip-1.4.1[${PYTHON_USEDEP}]
-	>=dev-python/setuptools-2.2[${PYTHON_USEDEP}]
 	media-libs/libart_lgpl
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}
+	>=dev-python/setuptools-2.2[${PYTHON_USEDEP}]
 	app-arch/unzip
 "
 

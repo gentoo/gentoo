@@ -22,13 +22,12 @@ IUSE="doc examples"
 
 RDEPEND="
 	>=dev-python/pillow-2.4.0[tiff,${PYTHON_USEDEP}]
-	>=dev-python/pip-1.4.1[${PYTHON_USEDEP}]
-	>=dev-python/setuptools-2.2[${PYTHON_USEDEP}]
 	media-fonts/dejavu
 	media-libs/libart_lgpl
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}
+	>=dev-python/setuptools-2.2[${PYTHON_USEDEP}]
 	app-arch/unzip
 "
 
