@@ -3,7 +3,8 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 pypy )
+
+PYTHON_COMPAT=( python2_7 python3_{3,4} pypy )
 
 inherit distutils-r1
 
@@ -16,10 +17,11 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~s390 ~sh ~sparc ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="doc test"
 
-CDEPEND="$(python_gen_cond_dep 'dev-python/funcsigs[${PYTHON_USEDEP}]' 'python2_7')"
+CDEPEND="
+	>=dev-python/pbr-1.3[${PYTHON_USEDEP}]
+	virtual/funcsigs[${PYTHON_USEDEP}]"
 DEPEND="
 	>=dev-python/setuptools-17.1[${PYTHON_USEDEP}]
-	>=dev-python/pbr-1.3[${PYTHON_USEDEP}]
 	test? (
 		${CDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
