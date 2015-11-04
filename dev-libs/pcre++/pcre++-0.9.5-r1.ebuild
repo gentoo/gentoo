@@ -25,6 +25,11 @@ src_prepare() {
 	EPATCH_FORCE="yes" \
 	epatch
 
+	sed -i 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' configure.in || die #467670
+
+	# Upstream is kind of dead, so handle the rename ourselves.
+	mv configure.{in,ac} || die
+
 	# Disable examples which we never run/install.
 	echo > examples/Makefile.am || die
 
