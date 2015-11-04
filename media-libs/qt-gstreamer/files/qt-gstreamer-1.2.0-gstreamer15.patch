@@ -1,0 +1,39 @@
+From e2ca8094aa8d0eac1c3a98df66fe94ce0c754088 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jos=C3=A9=20Manuel=20Santamar=C3=ADa?= <panfaust@gmail.com>
+Date: Fri, 2 Oct 2015 15:00:29 +0300
+Subject: Fix compilation with GStreamer >= 1.5.1
+
+apply gstreamer pkg-config definitions To ensure gstreamer builds correctly,
+pick up its cflags in FindGstreamer and apply them to the build as definitions
+
+https://lists.ubuntu.com/archives/kubuntu-devel/2015-August/009819.html
+
+https://bugzilla.gnome.org/show_bug.cgi?id=751382
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4d3e7dd..5744015 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -106,6 +106,7 @@ find_package(GObject)
+ macro_log_feature(GOBJECT_FOUND "GObject" "Required to build QtGLib" "http://www.gtk.org/" TRUE)
+ 
+ set(CMAKE_REQUIRED_INCLUDES ${QTGSTREAMER_INCLUDES})
++add_definitions(${GSTREAMER_DEFINITIONS})
+ include(CheckCXXSourceCompiles)
+ check_cxx_source_compiles("
+ #include <QtCore/QtGlobal>
+diff --git a/cmake/modules/FindGStreamer.cmake b/cmake/modules/FindGStreamer.cmake
+index dab91ac..fe6cde1 100644
+--- a/cmake/modules/FindGStreamer.cmake
++++ b/cmake/modules/FindGStreamer.cmake
+@@ -36,6 +36,7 @@ if (PKG_CONFIG_FOUND)
+     exec_program(${PKG_CONFIG_EXECUTABLE}
+                  ARGS --variable pluginsdir gstreamer-${GSTREAMER_ABI_VERSION}
+                  OUTPUT_VARIABLE PKG_GSTREAMER_PLUGIN_DIR)
++    set(GSTREAMER_DEFINITIONS ${PKG_GSTREAMER_CFLAGS})
+ endif()
+ 
+ find_library(GSTREAMER_LIBRARY
+-- 
+cgit v0.10.2
+
