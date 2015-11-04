@@ -14,7 +14,7 @@ SRC_URI="http://www.daemon.de/files/mirror/ftp.daemon.de/scip/Apps/${PN}/${P}.ta
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 s390 sh sparc x86"
-IUSE=""
+IUSE="static-libs"
 
 DEPEND="dev-libs/libpcre"
 RDEPEND="${DEPEND}"
@@ -25,11 +25,19 @@ src_prepare() {
 	EPATCH_FORCE="yes" \
 	epatch
 
+	# Disable examples which we never run/install.
+	echo > examples/Makefile.am || die
+
 	eautoreconf
+}
+
+src_configure() {
+	econf $(use_enable static-libs static)
 }
 
 src_install() {
 	default
+	use static-libs || find "${ED}"/usr -name 'lib*.la' -delete
 
 	dohtml -r doc/html/.
 	doman doc/man/man3/Pcre.3
