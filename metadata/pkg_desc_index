@@ -4824,8 +4824,8 @@ dev-libs/nettle 2.7.1-r4 3.1.1: Low-level cryptographic library
 dev-libs/newt 0.52.15 0.52.18: Redhat's Newt windowing toolkit development files
 dev-libs/npth 1.1 1.2: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.1.1 0.1.2-r1: generate javascript to dom bindings from w3c webidl files
-dev-libs/nspr 4.10.8 4.10.9: Netscape Portable Runtime
-dev-libs/nss 3.19.2 3.20: Mozilla's Network Security Services library that implements PKI support
+dev-libs/nspr 4.10.8 4.10.10: Netscape Portable Runtime
+dev-libs/nss 3.19.2 3.20 3.20.1: Mozilla's Network Security Services library that implements PKI support
 dev-libs/ntl 5.5.2 6.1.0 9.3.0: High-performance and portable Number Theory C++ library
 dev-libs/ocl-icd 2.1.3 2.2.3: Alternative to vendor specific OpenCL ICD loaders
 dev-libs/oniguruma 5.9.2 5.9.2-r1 5.9.3 5.9.4 5.9.5: a regular expression library for different character encodings
@@ -15244,7 +15244,7 @@ sci-chemistry/mustang 3.2.1 3.2.2: MUltiple STructural AligNment AlGorithm
 sci-chemistry/namd 2.9-r1 2.10: A powerful and highly parallelized molecular dynamics code
 sci-chemistry/nmrglue 0.5-r1: A module for working with NMR data in Python
 sci-chemistry/numbat 0.999-r1: new user-friendly method built for automatic dX-tensor determination
-sci-chemistry/openbabel 2.3.2 2.3.2-r1: Interconverts file formats used in molecular modeling
+sci-chemistry/openbabel 2.3.2-r1: Interconverts file formats used in molecular modeling
 sci-chemistry/openbabel-perl 2.3.2: Perl bindings for OpenBabel
 sci-chemistry/openbabel-python 2.3.2: Python bindings for OpenBabel (including Pybel)
 sci-chemistry/ortep3 1.0.3-r1: Thermal ellipsoid plot program for crystal structure illustrations
@@ -17407,8 +17407,8 @@ www-client/dwb 2013.03.30 2014.03.07 2014.03.07-r1 9999: Dynamic web browser bas
 www-client/elinks 0.12_pre6-r1 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.14.2 3.16.3: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1: Fetch is a simple, fast, and flexible HTTP download tool built on the HTTP Fetcher library
-www-client/firefox 38.2.0 38.3.0 41.0.2: Firefox Web Browser
-www-client/firefox-bin 38.1.1 38.2.0 38.2.1 38.3.0 41.0.2: Firefox Web Browser
+www-client/firefox 38.2.0 38.3.0 38.4.0 42.0: Firefox Web Browser
+www-client/firefox-bin 38.1.1 38.2.0 38.2.1 38.3.0 38.4.0 42.0: Firefox Web Browser
 www-client/google-chrome 46.0.2490.80_p1: The web browser from Google
 www-client/google-chrome-beta 47.0.2526.35_p1: The web browser from Google
 www-client/google-chrome-unstable 48.0.2547.0_p1: The web browser from Google
