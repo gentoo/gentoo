@@ -1,6 +1,8 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+EAPI="5"
 
 inherit eutils autotools
 
@@ -17,10 +19,7 @@ IUSE=""
 DEPEND="dev-libs/libpcre"
 RDEPEND="${DEPEND}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
+src_prepare() {
 	EPATCH_SUFFIX="patch" \
 	EPATCH_SOURCE="${WORKDIR}/${P}-patches" \
 	EPATCH_FORCE="yes" \
@@ -30,11 +29,10 @@ src_unpack() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "make failed"
-	dodoc AUTHORS ChangeLog NEWS README TODO
+	default
 
 	dohtml -r doc/html/.
 	doman doc/man/man3/Pcre.3
 
-	rm -rf "${D}/usr/doc"
+	rm -rf "${ED}/usr/doc"
 }
