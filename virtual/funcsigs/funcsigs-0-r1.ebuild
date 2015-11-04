@@ -21,5 +21,5 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	$(python_gen_cond_dep 'dev-python/funcsigs' python2_7 pypy )"
+	$(python_gen_cond_dep 'dev-python/funcsigs' python2_7 pypy pypy3 )"
 DEPEND=""
