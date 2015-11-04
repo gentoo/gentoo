@@ -27,7 +27,7 @@ KEYWORDS="~amd64 ~amd64-fbsd ~amd64-linux ~sparc ~x86 ~x86-fbsd ~x86-linux"
 IUSE="doc kerberos +modules pam"
 
 CDEPEND="
-	sys-libs/ncurses:=
+	sys-libs/ncurses:0=
 	pam? ( virtual/pam )
 	kerberos? ( virtual/krb5 )"
 
