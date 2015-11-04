@@ -10,6 +10,7 @@
 	<flag name="gmp-autoupdate">Allow Gecko Media Plugins (binary blobs) to be automatically
 		downloaded and kept up-to-date in user profiles</flag>
 	<flag name="gstreamer-0">Use gstreamer:0.10 instead of gstreamer:1 for media support</flag>
+	<flag name="gtk3">Use the cairo-gtk3 rendering engine</flag>
 	<flag name="jemalloc3">Enable or disable jemalloc3 (forced-on when supported prior to 38.0)</flag>
 	<flag name="minimal">Prevent sdk and headers from being installed</flag>
 	<flag name="pgo">Add support for profile-guided optimization using gcc-4.5,
