@@ -45,8 +45,9 @@ DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
 
 pkg_setup() {
-	local CONFIG_CHECK="~DM_CRYPT ~CRYPTO ~CRYPTO_CBC"
+	local CONFIG_CHECK="~DM_CRYPT ~CRYPTO ~CRYPTO_CBC ~CRYPTO_SHA256"
 	local WARNING_DM_CRYPT="CONFIG_DM_CRYPT:\tis not set (required for cryptsetup)\n"
+	local WARNING_CRYPTO_SHA256="CONFIG_CRYPTO_SHA256:\tis not set (required for cryptsetup)\n"
 	local WARNING_CRYPTO_CBC="CONFIG_CRYPTO_CBC:\tis not set (required for kernel 2.6.19)\n"
 	local WARNING_CRYPTO="CONFIG_CRYPTO:\tis not set (required for cryptsetup)\n"
 	check_extra_config
