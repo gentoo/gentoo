@@ -13,8 +13,6 @@ dev-db/mariadb
 -->
 <use>
   <flag name='client-libs'>Build the libmysqlclient libraries</flag>
-  <flag name='cluster'>Add support for NDB clustering (deprecated)</flag>
-  <flag name='community'>Enables the community features from upstream.</flag>
   <flag name='embedded'>Build embedded server (libmysqld)</flag>
   <flag name='extraengine'>Add support for alternative storage engines (Archive, CSV, Blackhole, Federated(X), Partition)</flag>
   <flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for allocations.</flag>
