@@ -10,16 +10,17 @@ PATCHSET_VER="0"
 
 DESCRIPTION="free, small, and standard compliant Prolog compiler"
 HOMEPAGE="http://www.swi-prolog.org/"
-SRC_URI="http://www.swi-prolog.org/download/stable/src/swipl-${PV}.tar.gz
+SRC_URI="http://www.swi-prolog.org/download/devel/src/swipl-${PV}.tar.gz
 	mirror://gentoo/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="archive debug doc +gmp hardened java minimal odbc +readline ssl static-libs test uuid zlib X"
+IUSE="archive berkdb debug doc +gmp hardened java minimal odbc +readline ssl static-libs test uuid zlib X"
 
 RDEPEND="sys-libs/ncurses:=
 	archive? ( app-arch/libarchive )
+	berkdb? ( >=sys-libs/db-4:= )
 	zlib? ( sys-libs/zlib )
 	odbc? ( dev-db/unixODBC )
 	readline? ( sys-libs/readline:= )
@@ -86,6 +87,7 @@ src_configure() {
 		econf \
 			--libdir="${EPREFIX}"/usr/$(get_libdir) \
 			$(use_with archive) \
+			$(use_with berkdb bdb ) \
 			$(use_with java jpl) \
 			${jpltestconf} \
 			$(use_with odbc) \
@@ -112,9 +114,13 @@ src_test() {
 	emake check
 
 	if ! use minimal ; then
+		unset DISPLAY
 		cd "${S}/packages" || die
-		emake check
-		./report-failed || die "Cannot report failed packages"
+		emake \
+			USE_PUBLIC_NETWORK_TESTS=false \
+			USE_ODBC_TESTS=false \
+			check
+		./report-failed || die
 	fi
 }
 
