@@ -3,21 +3,21 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit autotools python-single-r1 linux-info libtool eutils
+inherit autotools python-single-r1 linux-info libtool eutils versionator
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
-HOMEPAGE="https://code.google.com/p/cryptsetup/"
-SRC_URI="https://cryptsetup.googlecode.com/files/${P}.tar.bz2"
+HOMEPAGE="https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md"
+SRC_URI="mirror://kernel/linux/utils/${PN}/v$(get_version_component_range 1-2)/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 CRYPTO_BACKENDS="+gcrypt kernel nettle openssl"
 # we don't support nss since it doesn't allow cryptsetup to be built statically
 # and it's missing ripemd160 support so it can't provide full backward compatibility
-IUSE="${CRYPTO_BACKENDS} nls python reencrypt static static-libs udev urandom"
+IUSE="${CRYPTO_BACKENDS} libressl nls pwquality python reencrypt static static-libs udev urandom"
 REQUIRED_USE="^^ ( ${CRYPTO_BACKENDS//+/} )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	static? ( !gcrypt )" #496612
@@ -27,7 +27,11 @@ LIB_DEPEND="dev-libs/libgpg-error[static-libs(+)]
 	sys-apps/util-linux[static-libs(+)]
 	gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] )
 	nettle? ( >=dev-libs/nettle-2.4[static-libs(+)] )
-	openssl? ( dev-libs/openssl[static-libs(+)] )
+	openssl? (
+		!libressl? ( dev-libs/openssl:0=[static-libs(+)] )
+		libressl? ( dev-libs/libressl:=[static-libs(+)] )
+	)
+	pwquality? ( dev-libs/libpwquality[static-libs(+)] )
 	sys-fs/lvm2[static-libs(+)]
 	udev? ( virtual/libudev[static-libs(+)] )"
 # We have to always depend on ${LIB_DEPEND} rather than put behind
@@ -52,8 +56,7 @@ pkg_setup() {
 
 src_prepare() {
 	sed -i '/^LOOPDEV=/s:$: || exit 0:' tests/{compat,mode}-test || die
-	epatch "${FILESDIR}"/${PN}-1.6.1-openssl-static.patch
-	eautoreconf
+	epatch_user && eautoreconf
 }
 
 src_configure() {
@@ -69,11 +72,12 @@ src_configure() {
 		$(use_enable static static-cryptsetup) \
 		$(use_enable static-libs static) \
 		$(use_enable nls) \
+		$(use_enable pwquality) \
 		$(use_enable python) \
 		$(use_enable reencrypt cryptsetup-reencrypt) \
 		$(use_enable udev) \
 		$(use_enable !urandom dev-random) \
-		--with-crypto_backend=$(for x in ${CRYPTO_BACKENDS//+/}; do use ${x} && echo ${x} ; done)
+		--with-crypto_backend=$(for x in ${CRYPTO_BACKENDS//+/} ; do usev ${x} ; done)
 }
 
 src_test() {
@@ -97,26 +101,6 @@ src_install() {
 	fi
 	prune_libtool_files --modules
 
-	newconfd "${FILESDIR}"/1.0.6-dmcrypt.confd dmcrypt
-	newinitd "${FILESDIR}"/1.5.1-dmcrypt.rc dmcrypt
-}
-
-pkg_postinst() {
-	if [[ -z ${REPLACING_VERSIONS} ]] ; then
-		elog "Please see the example for configuring a LUKS mountpoint"
-		elog "in /etc/conf.d/dmcrypt"
-		elog
-		elog "If you are using baselayout-2 then please do:"
-		elog "rc-update add dmcrypt boot"
-		elog "This version introduces a command line arguement 'key_timeout'."
-		elog "If you want the search for the removable key device to timeout"
-		elog "after 10 seconds add the following to your bootloader config:"
-		elog "key_timeout=10"
-		elog "A timeout of 0 will mean it will wait indefinitely."
-		elog
-		elog "Users using cryptsetup-1.0.x (dm-crypt plain) volumes must use"
-		elog "a compatibility mode when using cryptsetup-1.1.x. This can be"
-		elog "done by specifying the cipher (-c), key size (-s) and hash (-h)."
-		elog "For more info, see https://code.google.com/p/cryptsetup/wiki/FrequentlyAskedQuestions#6._Issues_with_Specific_Versions_of_cryptsetup"
-	fi
+	newconfd "${FILESDIR}"/1.6.7-dmcrypt.confd dmcrypt
+	newinitd "${FILESDIR}"/1.6.7-dmcrypt.rc dmcrypt
 }
