@@ -4068,6 +4068,7 @@ dev-java/jsr101 1.4-r3: Java(TM) API for XML-Based RPC Specification Interface C
 dev-java/jsr173 1.0-r1: The Streaming API for XML (StAX) is a Java API for parsing and writing XML easily and efficiently
 dev-java/jsr181 1.0-r2: JSR 181 API classes
 dev-java/jsr223 1.0-r2: Scripting for the Java(TM) Platform
+dev-java/jsr225 1.0: XQuery API for Java
 dev-java/jsr250 1.0-r1: JSR 250 Common Annotations
 dev-java/jsr305 3.0.1: Annotations for Software Defect Detection in Java
 dev-java/jsr311-api 1.1.1: JAX-RS: Java API for RESTful Web Services
