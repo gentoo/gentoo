@@ -80,6 +80,8 @@ fi
 # If set to "false", do nothing.
 # Otherwise, add "+handbook" to IUSE, add the appropriate dependency, and
 # generate and install KDE handbook.
+# If set to "forceoptional", remove a KF5DocTools dependency from the root
+# CMakeLists.txt in addition to the above.
 : ${KDE_HANDBOOK:=false}
 
 # @ECLASS-VARIABLE: KDE_DOC_DIR
@@ -418,7 +420,7 @@ kde5_src_prepare() {
 			popd > /dev/null || die
 		fi
 
-		if [[ ${KDE_HANDBOOK} = true && -d ${KDE_DOC_DIR} && ${CATEGORY} != kde-apps ]] ; then
+		if [[ ${KDE_HANDBOOK} != false && -d ${KDE_DOC_DIR} && ${CATEGORY} != kde-apps ]] ; then
 			pushd ${KDE_DOC_DIR} > /dev/null || die
 			for lang in *; do
 				if ! has ${lang} ${LINGUAS} ; then
@@ -457,6 +459,12 @@ kde5_src_prepare() {
 			fi
 			;;
 	esac
+
+	if [[ ${KDE_HANDBOOK} = forceoptional ]] ; then
+		if ! use_if_iuse handbook ; then
+			punt_bogus_dep KF5 DocTools
+		fi
+	fi
 
 	cmake-utils_src_prepare
 }
