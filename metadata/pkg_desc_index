@@ -12921,7 +12921,7 @@ media-sound/qmidiarp 0.3.9 0.6.1: An arpeggiator, sequencer and MIDI LFO for ALS
 media-sound/qmidiroute 0.3.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 0.8.3 0.8.4 0.8.5 0.8.8 0.9.1 0.9.2 0.9.3 1.0.0-r1 1.0.1 9999: Qt4-based audio player with winamp/xmms skins support
 media-sound/qmpdclient 1.2.2-r1: QMPDClient with NBL additions, such as lyrics' display
-media-sound/qpitch 1.0.1 1.0.1-r1: A program to tune musical instruments using Qt4
+media-sound/qpitch 1.0.1-r1: A program to tune musical instruments using Qt4
 media-sound/qsampler 0.2.2_p2345 0.3.1: A graphical frontend to the LinuxSampler engine
 media-sound/qsynth 0.3.6 0.3.9 0.4.0: A Qt application to control FluidSynth
 media-sound/qtagconvert 2.0.0-r2: Qt4 tag editor for mp3 files
@@ -13750,7 +13750,7 @@ net-im/climm 0.7.1: ICQ text-mode client with many features
 net-im/coccinella 0.96.20: Jabber Client With a Built-in Whiteboard and VoIP (jingle)
 net-im/corebird 0.8 1.0 1.1: Native GTK+3 Twitter client
 net-im/cpop 0.0.4-r1: GTK+ network popup message client. Compatible with the jpop protocol
-net-im/dianara 1.2.4 1.3.1-r1: Qt-based client for the pump.io distributed social network
+net-im/dianara 1.3.1-r1: Qt-based client for the pump.io distributed social network
 net-im/ejabberd 2.1.13-r1 15.03-r1: The Erlang Jabber Daemon
 net-im/ekg2 0.3.1-r2 9999: Text-based, multi-protocol instant messenger
 net-im/empathy 3.12.10 3.12.11: Telepathy instant messaging and video/audio call client for GNOME
