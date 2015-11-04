@@ -6861,7 +6861,7 @@ dev-python/cookies 2.2.1: Friendlier RFC 6265-compliant cookie parser/renderer
 dev-python/cosmolopy 0.1.104-r1: Cosmology routines built on NumPy/SciPy
 dev-python/couchdb-python 0.9 0.10 1.0: Python library for working with CouchDB
 dev-python/cov-core 1.7 1.15.0: plugin core for use by pytest-cov, nose-cov and nose2-cov
-dev-python/coverage 3.6 3.7 3.7.1 4.0 4.0.1: Code coverage measurement for Python
+dev-python/coverage 3.6 3.7 3.7.1 4.0 4.0.1 4.0.2: Code coverage measurement for Python
 dev-python/crcmod 1.7-r2: Python CRC Generator module
 dev-python/crumbs 1.2.2-r1 2.0.0 2.0.1 2.0.2: Generalized all-in-one parameters module
 dev-python/cryptography 0.5.4 0.6.1 0.7.1-r1 0.7.2 0.8 0.8.1 0.8.2 0.9.2 0.9.3 1.0 1.0.1 1.0.1-r1 1.0.2 1.1: Library providing cryptographic recipes and primitives
@@ -6996,6 +6996,7 @@ dev-python/fexpect 0.2: Extension for fabric to handle prompts through pexpect
 dev-python/figleaf 0.6.1-r1: Code coverage tool
 dev-python/fixtures 0.3.14-r2 1.2.0 1.3.0 1.3.1-r1 1.4.0: Fixtures, reusable state for writing clean tests and more
 dev-python/flake8 2.0-r1 2.1.0 2.2.5 2.4.1-r1: A wrapper around PyFlakes, pep8 & mccabe
+dev-python/flaky 2.4.0: Plugin for nose or py.test that automatically reruns flaky tests
 dev-python/flask 0.10.1-r1 0.10.1-r2 9999: A microframework based on Werkzeug, Jinja2 and good intentions
 dev-python/flask-admin 1.0.6 1.1.0 1.2.0: Simple and extensible admin interface framework for Flask
 dev-python/flask-babel 0.8-r1 0.9: i18n and l10n support for Flask based on Babel and pytz
@@ -7043,6 +7044,7 @@ dev-python/gcs-oauth2-boto-plugin 1.7 1.8 1.8-r1 1.9: OAuth 2.0 plugin for Googl
 dev-python/gdata 2.0.14 2.0.17-r1 2.0.18: Python client library for Google data APIs
 dev-python/gdmodule 0.56-r2: Python extensions for gd
 dev-python/genshi 0.7: Python toolkit for stream-based generation of output for the web
+dev-python/genty 1.2.1: Allows you to run a test with multiple data sets
 dev-python/geoip-python 1.3.2: Python bindings for GeoIP
 dev-python/geopy 1.8.1 1.9.1 1.10.0: A Geocoding Toolbox for Python
 dev-python/gevent 1.0 1.0.1 1.0.2: Python networking library that uses greenlet to provide synchronous API
@@ -7433,7 +7435,7 @@ dev-python/pycrypto 2.6.1 2.6.1-r1: Python Cryptography Toolkit
 dev-python/pycryptopp 0.6.0: Python wrappers for a few algorithms from the Crypto++ library
 dev-python/pycuda 2012.1 2013.1.1 2014.1 9999: Python wrapper for NVIDIA CUDA
 dev-python/pycups 1.9.72 1.9.73: Python bindings for the CUPS API
-dev-python/pycurl 7.19.3.1-r2 7.19.5.1 7.19.5.1-r1 7.19.5.2: python binding for curl/libcurl
+dev-python/pycurl 7.19.3.1-r2 7.19.5.1 7.19.5.1-r1 7.19.5.3: python binding for curl/libcurl
 dev-python/pycxx 6.2.5 6.2.6: Set of facilities to extend Python with C++
 dev-python/pydb 1.26-r1 1.26-r2: Extended python debugger
 dev-python/pydecomp 9999: A python interface library for common compression, decompression and contents handling
@@ -7726,7 +7728,7 @@ dev-python/recaptcha-client 1.0.6-r1: A plugin for reCAPTCHA and reCAPTCHA Mailh
 dev-python/reconfigure 0.1.50 0.1.72: An ORM for config files
 dev-python/redis-py 2.7.4 2.9.1 2.10.1 2.10.3 2.10.5: Python client for Redis key-value store
 dev-python/rednose 0.4.1 0.4.3: coloured output for nosetests
-dev-python/regendoc 0.5: Check/update simple file/shell examples in documentation
+dev-python/regendoc 0.5 0.6.1: Check/update simple file/shell examples in documentation
 dev-python/regex 2015.07.12 2015.07.19: Alternative regular expression module to replace re
 dev-python/remoteobjects 99999999: subclassable Python objects for working with JSON REST APIs
 dev-python/rencode 1.0.3: similar to bencode from the BitTorrent project
