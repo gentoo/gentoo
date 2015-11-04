@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="python binding for curl/libcurl"
 HOMEPAGE="https://github.com/pycurl/pycurl https://pypi.python.org/pypi/pycurl"
-SRC_URI="http://pycurl.sourceforge.net/download/${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -35,17 +35,18 @@ RDEPEND="
 # bottle-0.12.7: https://github.com/defnull/bottle/commit/f35197e2a18de1672831a70a163fcfd38327a802
 DEPEND="${RDEPEND}
 	test? (
+		dev-python/bottle[${PYTHON_USEDEP}]
+		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
+		net-misc/curl[curl_ssl_gnutls(-)=,curl_ssl_libressl(-)=,curl_ssl_nss(-)=,curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-),-curl_ssl_polarssl(-),kerberos]
 		>=dev-python/bottle-0.12.7[${PYTHON_USEDEP}]
 	)"
 # Needed for individual runs of testsuite by python impls.
 DISTUTILS_IN_SOURCE_BUILD=1
 
-# https://github.com/pycurl/pycurl/issues/299
-RESTRICT=test
-
 python_prepare_all() {
 	sed -e "/setup_args\['data_files'\] = /d" -i setup.py || die
+	sed -e '/pyflakes/d' -i Makefile || die
 	distutils-r1_python_prepare_all
 }
 
