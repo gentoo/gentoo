@@ -53,7 +53,10 @@ DEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/${P}-boost157.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-boost157.patch"
+	"${FILESDIR}/${P}-gstreamer15.patch"
+)
 
 # bug 497880
 RESTRICT="test"
