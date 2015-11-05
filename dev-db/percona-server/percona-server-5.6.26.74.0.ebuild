@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI="5"
-MY_EXTRAS_VER="20150717-1707Z"
+MY_EXTRAS_VER="20151105-2051Z"
 HAS_TOOLS_PATCH="1"
 SUBSLOT="18"
 
@@ -29,7 +29,7 @@ REQUIRED_USE="tokudb? ( jemalloc ) tokudb-backup-plugin? ( tokudb )"
 # and create your own mysql-extras tarball, looking at 000_index.txt
 
 # Official test instructions:
-# USE='extraengine perl ssl static-libs community' \
+# USE='extraengine perl openssl static-libs' \
 # FEATURES='test userpriv -usersandbox' \
 # ebuild percona-server-X.X.XX.ebuild \
 # digest clean package
