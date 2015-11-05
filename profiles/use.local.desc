@@ -2300,6 +2300,16 @@ dev-python/cgkit:3ds - Enable support for importing 3D Studio models
 dev-python/cvxopt:dsdp - Use interior point library sci-libs/dsdp
 dev-python/cvxopt:glpk - Use GNU Linear Programming Kit sci-mathematics/glpk
 dev-python/dap:server - Enable OpenDAP server support
+dev-python/django-cms:admin-style - Install plugin customizing admin panel styles
+dev-python/django-cms:ckeditor - Install text-ckeditor plugin for rich text editing
+dev-python/django-cms:file - Install djangocms file plugin
+dev-python/django-cms:flash - Install djangocms flash plugin
+dev-python/django-cms:inherit - Install djangocms inherit plugin
+dev-python/django-cms:link - Install djangocms link plugin
+dev-python/django-cms:picture - Install djangocms picture plugin
+dev-python/django-cms:snippet - Install djangocms snippet plugin
+dev-python/django-cms:teaser - Install djangocms teaser plugin
+dev-python/django-cms:video - Install djangocms video plugin
 dev-python/django-tastypie:bip - An optional serialiser dev-python/biplist
 dev-python/django-tastypie:digest - Library to aid in implementing HTTP Digest Authentication
 dev-python/django-tastypie:lxml - An optional serialiser dev-python/lxml
