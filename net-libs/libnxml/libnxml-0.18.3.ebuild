@@ -10,7 +10,7 @@ SRC_URI="http://www.autistici.org/bakunin/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ppc ~sparc x86"
+KEYWORDS="amd64 ~arm ~mips ppc ~sparc x86"
 IUSE="doc examples static-libs"
 
 RDEPEND="net-misc/curl"
