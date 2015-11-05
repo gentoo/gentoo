@@ -1,0 +1,13 @@
+--- CMakeLists.txt.orig	2015-11-03 20:19:34.092188350 -0500
++++ CMakeLists.txt	2015-11-03 20:20:17.176302442 -0500
+@@ -384,7 +384,9 @@
+ 
+ # manual pages
+ IF( UNIX )
+-    INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/debian/vbam.1 DESTINATION ${CMAKE_INSTALL_PREFIX}/share/man/man1)
++    IF( ENABLE_SDL )
++        INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/debian/vbam.1 DESTINATION ${CMAKE_INSTALL_PREFIX}/share/man/man1)
++    ENDIF( ENABLE_SDL )
+     IF( ENABLE_GTK )
+         INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/debian/gvbam.1 DESTINATION ${CMAKE_INSTALL_PREFIX}/share/man/man1)
+     ENDIF( ENABLE_GTK )
