@@ -138,94 +138,6 @@ dev-java/commons-grant
 =sys-kernel/vanilla-sources-4.1.9
 =sys-kernel/gentoo-sources-4.1.9
 
-# Andreas K. Huettel <dilfridge@gentoo.org> (27 Sep 2015)
-# Dead upstream, buggy, effectively unmaintained. Removal
-# in 30 days.
-app-emulation/vmware-view-open-client
-
-# Dion Moult <moult@gentoo.org> (24 Sep 2015)
-# Masked for removal in 30 days. Bug #466724
-# Heavily out of date. Use sci-chemistry/icm
-sci-chemistry/icm-browser
-
-# Dion Moult <moult@gentoo.org> (24 Sep 2015)
-# Masked for removal in 30 days. Bug #216244
-# Outdated and does not compile due to upstream bug.
-dev-ada/polyorb
-
-# Dion Moult <moult@gentoo.org> (24 Sep 2015)
-# Masked for removal in 30 days. Bug #472002
-# Can't keep up with upstream changes.
-sci-geosciences/josm-plugins
-
-# Dion Moult <moult@gentoo.org> (24 Sep 2015)
-# Masked for removal in 30 days. Bug #426012
-# Outdated kernel support, licensing issues.
-net-dialup/intel-536ep
-
-# Dion Moult <moult@gentoo.org> (24 Sep 2015)
-# Masked for removal in 30 days. Outdated toolchains. Bug #549364
-dev-embedded/scratchbox-toolchain-cs2005q3_2-glibc2_5
-dev-embedded/scratchbox-toolchain-cs2007q3-glibc2_5
-dev-embedded/scratchbox-toolchain-cs2009q1-203sb1
-dev-embedded/scratchbox-toolchain-cs2009q1-eglibc2_8
-dev-embedded/scratchbox-toolchain-cs2009q3-eglibc2_10
-
-# Dion Moult <moult@gentoo.org> (24 Sep 2015)
-# Masked for removal in 30 days. Bug #547406
-# Package no longer builds, module now in kernel.
-net-wireless/rtl8180
-
-# Dion Moult <moult@gentoo.org> (24 Sep 2015)
-# Masked for removal in 30 days. Bug #552284
-# Upstream disappeared. Use sci-chemistry/openbabel instead.
-sci-chemistry/babel
-
-# Dion Moult <moult@gentoo.org> (24 Sep 2015)
-# Masked for removal in 30 days.
-# Upstream disappeared. Bug #528020
-app-crypt/aesutil
-
-# Dion Moult <moult@gentoo.org> (24 Sep 2015)
-# Masked for removal in 30 days.
-# Obsoleted in new pysnmp. Bug #513092
-dev-python/twistedsnmp
-
-# Dion Moult <moult@gentoo.org> (24 Sep 2015)
-# Masked for removal in 30 days.
-# Upstream dead. Functionality bugs. Bug #553356
-net-im/birdie
-
-# Dion Moult <moult@gentoo.org> (24 Sep 2015)
-# Masked for removal in 30 days. Obsoleted and uninstallable.
-# Bug #553182
-gnome-extra/zeitgeist-datahub
-
-# Dion Moult <moult@gentoo.org> (24 Sep 2015)
-# Masked for removal in 30 days. Upstream dead.
-# Bug #551282
-net-news/yarssr
-
-# Dion Moult <moult@gentoo.org> (24 Sep 2015)
-# Masked for removal in 30 days.
-# Broken and replaced by dev-lang/ekopath. Bug #559510
-dev-lang/path64
-
-# Dion Moult <moult@gentoo.org> (24 Sep 2015)
-# Masked for removal in 30 days. Just use coreutils' tail.
-# Bug #559510
-sys-apps/turbotail
-
-# Dion Moult <moult@gentoo.org> (24 Sep 2015)
-# Masked for removal in 30 days. Abandoned upstream and ancient.
-# Bug #559430
-dev-lang/gpc
-
-# Dion Moult <moult@gentoo.org> (24 Sep 2015)
-# Masked for removal in 30 days. Deprecated upstream. Please use
-# app-forensics/afl instead. Bug #544794
-dev-util/bunny
-
 # Andreas K. Huettel <dilfridge@gentoo.org> (19 Sep 2015)
 # Masked for security reasons, bugs 516044, 552644
 # Keeping it in the tree for now for users who cannot upgrade
@@ -233,24 +145,9 @@ dev-util/bunny
 =app-emulation/vmware-workstation-9*
 =app-emulation/vmware-modules-271*
 
-# Michał Górny <mgorny@gentoo.org> (09 Sep 2015)
-# Package to be used with gentoo-x86 CVS, so pretty much defunct now.
-# Removal in 30 days. Bug #560056.
-app-portage/lightweight-cvs-toolkit
-
 # Lars Wendler <polynomial-c@gentoo.org> (09 Sep 2015)
 # Masked for testing
 >=net-fs/samba-4.3.0
-
-# Michael Palimaka <kensington@gentoo.org> (01 Sep 2015)
-# Fails to build (bug #559330). Dead upstream.
-# Masked for removal in 30 days.
-kde-misc/socket-sentry
-
-# Doug Goldstein <cardoe@gentoo.org> (25 Aug 2015)
-# Masked for removal in 30 days. Users should use the modules available
-# via the kernel as upstream has deprecated these packages.
-app-emulation/kvm-kmod
 
 # Lars Wendler <polynomial-c@gentoo.org> (20 Aug 2015)
 # Masked for testing
@@ -266,12 +163,6 @@ app-emulation/kvm-kmod
 # Sebastian Pipping <sping@gentoo.org> (8 Aug 2015)
 # Upcoming, too young to go into testing unmasked
 dev-libs/iniparser:4
-
-# Mikle Kolyada <zlogene@hemtoo.org> (04 Aug 2015)
-# Unmaintained since 2010. No longer available
-# on CPAN and nothing in the tree depends on it.
-# See bug #556640 for more info. Removal in 30 days.
-dev-perl/gtk2-fu
 
 # Davide Pesavento <pesa@gentoo.org> (23 Jul 2015)
 # Standalone version of qtwebkit from the 2.3 upstream branch.
