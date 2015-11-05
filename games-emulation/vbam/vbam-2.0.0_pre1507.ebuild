@@ -17,30 +17,33 @@ fi
 DESCRIPTION="Game Boy, GBC, and GBA emulator forked from VisualBoyAdvance"
 HOMEPAGE="http://sourceforge.net/projects/vbam/"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
-IUSE="cairo ffmpeg gtk link lirc nls openal +sdl wxwidgets"
+IUSE="cairo cpu_flags_x86_mmx ffmpeg gtk link lirc nls openal +sdl wxwidgets"
 REQUIRED_USE="|| ( sdl gtk wxwidgets )"
 
 RDEPEND=">=media-libs/libpng-1.4:0=
-	media-libs/libsdl[joystick]
-	link? ( >=media-libs/libsfml-2.0 )
+	media-libs/libsdl[sound]
 	sys-libs/zlib
 	virtual/glu
 	virtual/opengl
+	link? ( >=media-libs/libsfml-2.0 )
 	ffmpeg? ( virtual/ffmpeg[-libav] )
+	lirc? ( app-misc/lirc )
+	nls? ( virtual/libintl )
+	sdl? ( media-libs/libsdl[joystick,opengl] )
 	gtk? ( >=dev-cpp/glibmm-2.4.0:2
 		>=dev-cpp/gtkmm-2.4.0:2.4
 		>=dev-cpp/gtkglextmm-1.2.0 )
-	lirc? ( app-misc/lirc )
-	nls? ( virtual/libintl )
 	wxwidgets? (
 		cairo? ( x11-libs/cairo )
 		openal? ( media-libs/openal )
 		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
 	)"
 DEPEND="${RDEPEND}
-	wxwidgets? ( || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) )
+	wxwidgets? ( || (
+		media-gfx/imagemagick
+		media-gfx/graphicsmagick[imagemagick] ) )
 	x86? ( || ( dev-lang/nasm dev-lang/yasm ) )
 	nls? ( sys-devel/gettext )
 	virtual/pkgconfig"
@@ -52,10 +55,8 @@ src_prepare() {
 	sed -i '1i#define OF(x) x' src/common/memgzio.c || die
 
 	sed -i "s:\(DESTINATION\) bin:\1 ${GAMES_BINDIR}:" \
-		CMakeLists.txt src/wx/CMakeLists.txt || die
-
-	# fix desktop file QA warnings
-	edos2unix src/gtk/gvbam.desktop src/wx/wxvbam.desktop
+		CMakeLists.txt src/{wx,gtk}/CMakeLists.txt || die
+	epatch "${FILESDIR}"/${P}-man.patch
 }
 
 src_configure() {
@@ -71,6 +72,7 @@ src_configure() {
 		$(cmake-utils_use_enable wxwidgets WX)
 		$(cmake-utils_use_enable x86 ASM_CORE)
 		$(cmake-utils_use_enable x86 ASM_SCALERS)
+		$(cmake-utils_use_enable cpu_flags_x86_mmx MMX)
 		-DCMAKE_SKIP_RPATH=ON
 		-DDATA_INSTALL_DIR=share/games/${PN}
 	)
@@ -83,14 +85,7 @@ src_compile() {
 
 src_install() {
 	cmake-utils_src_install
-
-	if use sdl ; then
-		dodoc doc/ReadMe.SDL.txt
-		doman src/debian/vbam.1
-	fi
-	use wxwidgets && doman src/debian/wxvbam.1
-	use gtk && doman src/debian/gvbam.1
-
+	use sdl && dodoc doc/ReadMe.SDL.txt
 	prepgamesdirs
 }
 
@@ -107,13 +102,13 @@ pkg_postinst() {
 	games_pkg_postinst
 	if use gtk || use wxwidgets ; then
 		gnome2_icon_cache_update
+		use gtk && fdo-mime_desktop_database_update
 	fi
-	use gtk && fdo-mime_desktop_database_update
 }
 
 pkg_postrm() {
 	if use gtk || use wxwidgets ; then
 		gnome2_icon_cache_update
+		use gtk && fdo-mime_desktop_database_update
 	fi
-	use gtk && fdo-mime_desktop_database_update
 }
