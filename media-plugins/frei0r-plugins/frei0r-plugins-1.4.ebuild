@@ -39,8 +39,8 @@ src_prepare() {
 
 src_configure() {
 	 local mycmakeargs=(
-		$(cmake-utils_use "!facedetect" "WITHOUT_GAVL"  )
-		$(cmake-utils_use "!scale0tilt" "WITHOUT_OPENCV")
+		$(cmake-utils_use "!facedetect" "WITHOUT_OPENCV" )
+		$(cmake-utils_use "!scale0tilt" "WITHOUT_GAVL"   )
 	 )
 	cmake-utils_src_configure
 }
