@@ -77,7 +77,8 @@ REQUIRED_USE="|| ( raet zeromq )"
 
 python_prepare() {
 	# this test fails because it trys to "pip install distribute"
-	rm tests/unit/{modules,states}/zcbuildout_test.py
+	rm tests/unit/{modules,states}/zcbuildout_test.py \
+		|| die "Failed to remove broken tests"
 }
 
 python_install_all() {
