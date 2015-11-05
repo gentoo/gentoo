@@ -17,8 +17,8 @@ if [[ $PV == *9999 ]]; then
 	live_eclass="mercurial"
 else
 	KEYWORDS="~amd64 ~arm ~arm64 -x86"
-	UPSTREAM_VER=
-	SECURITY_VER=
+	UPSTREAM_VER=0
+	SECURITY_VER=7
 	# xen-tools's gentoo patches tarball
 	GENTOO_VER=4
 	# xen-tools's gentoo patches version which apply to this specific ebuild
