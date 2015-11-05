@@ -31,6 +31,9 @@ src_prepare() {
 		-e "/LIBDIR.*frei0r-1/s:lib:$(get_libdir):" \
 		${f} || die
 
+	# https://bugs.gentoo.org/show_bug.cgi?id=555782
+	epatch "${FILESDIR}/${P}-opencv3.patch"
+
 	# https://bugs.gentoo.org/418243
 	sed -i \
 		-e '/set.*CMAKE_C_FLAGS/s:"): ${CMAKE_C_FLAGS}&:' \
