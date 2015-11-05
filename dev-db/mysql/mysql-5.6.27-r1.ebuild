@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-MY_EXTRAS_VER="20150717-1707Z"
+MY_EXTRAS_VER="20151105-2051Z"
 MY_PV="${PV//_alpha_pre/-m}"
 MY_PV="${MY_PV//_/-}"
 HAS_TOOLS_PATCH="1"
@@ -40,7 +40,7 @@ src_prepare() {
 }
 
 # Official test instructions:
-# USE='server embedded extraengine perl ssl static-libs community' \
+# USE='server embedded extraengine perl openssl static-libs' \
 # FEATURES='test userpriv -usersandbox' \
 # ebuild mysql-X.X.XX.ebuild \
 # digest clean package
