@@ -90,7 +90,8 @@ PATCHES=(
 python_prepare() {
 	# this test fails because it trys to "pip install distribute"
 	rm tests/unit/{modules,states}/zcbuildout_test.py \
-		tests/unit/modules/{rh_ip,win_network,random_org}_test.py
+		tests/unit/modules/{rh_ip,win_network,random_org}_test.py \
+		|| die "Failed to remove broken tests"
 }
 
 python_install_all() {
