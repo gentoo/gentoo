@@ -91,12 +91,15 @@ src_prepare() {
 			epatch "${WORKDIR}"/patches-upstream
 	fi
 
-	# Security patchset
 	if [[ -n ${SECURITY_VER} ]]; then
-		EPATCH_SUFFIX="patch" \
-		EPATCH_FORCE="yes" \
-		EPATCH_OPTS="-p1" \
-			epatch "${WORKDIR}/patches-security/${PV}"
+		einfo "Try to apply Xen Security patcheset"
+		source "${WORKDIR}"/patches-security/${PV}.conf
+		# apply main xen patches
+		for i in ${XEN_SECURITY_MAIN}; do
+			EPATCH_SUFFIX="patch" \
+			EPATCH_FORCE="yes" \
+				epatch "${WORKDIR}"/patches-security/xen/$i
+		done
 	fi
 
 	# Gentoo's patchset
@@ -106,12 +109,11 @@ src_prepare() {
 			epatch "${WORKDIR}"/patches-gentoo
 	fi
 
-	epatch "${FILESDIR}"/${PN}-4.6-efi.patch
-
 	# Drop .config
 	sed -e '/-include $(XEN_ROOT)\/.config/d' -i Config.mk || die "Couldn't	drop"
 
 	if use efi; then
+		epatch "${FILESDIR}"/${PN}-4.5-efi.patch
 		export EFI_VENDOR="gentoo"
 		export EFI_MOUNTPOINT="boot"
 	fi
