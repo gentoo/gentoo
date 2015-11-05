@@ -13,7 +13,7 @@ HOMEPAGE="https://pypi.python.org/pypi/pytest-runner"
 SRC_URI="mirror://pypi/p/${PN}/${P}.zip"
 
 LICENSE="MIT"
-KEYWORDS="amd64 ~arm ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ppc ppc64 sparc x86"
 SLOT="0"
 IUSE=""
 
