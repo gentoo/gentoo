@@ -13,7 +13,7 @@ SRC_URI="http://www.leptonica.com/source/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~arm ~mips ~ppc ~ppc64 sparc x86"
 IUSE="gif jpeg jpeg2k png tiff webp utils zlib static-libs test"
 
 # N.b. Tests need all tested features enabled:
