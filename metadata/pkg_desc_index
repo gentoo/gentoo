@@ -8603,7 +8603,7 @@ dev-ruby/levenshtein 0.2.2-r1 0.2.2-r2: Levenshtein distance algorithm
 dev-ruby/libxml 2.8.0 2.8.0-r1: Ruby libxml with a user friendly API, akin to REXML, but feature complete and significantly faster
 dev-ruby/liquid 2.6.2 3.0.4 3.0.6: Template engine for Ruby
 dev-ruby/liquid-c 3.0.0: Liquid performance extension in C
-dev-ruby/listen 0.7.3-r1 0.7.3-r2 1.3.1-r2 1.3.1-r3 2.8.5 2.8.6 2.8.6-r1 3.0.3: Listens to file modifications and notifies you about the changes
+dev-ruby/listen 0.7.3-r1 0.7.3-r2 1.3.1-r2 1.3.1-r3 2.8.5 2.8.6 2.8.6-r1 3.0.3 3.0.4: Listens to file modifications and notifies you about the changes
 dev-ruby/litc 1.0.3-r1: A tiny ruby module for Amazon EC2 intance metadata
 dev-ruby/little-plugger 1.1.3-r2 1.1.4: Module that provides Gem based plugin management
 dev-ruby/locale 2.1.0-r1 2.1.0-r2 2.1.1 2.1.2: A pure ruby library which provides basic APIs for localization
@@ -8669,7 +8669,7 @@ dev-ruby/net-sftp 2.1.2-r1 2.1.2-r2: SFTP in pure Ruby
 dev-ruby/net-ssh 2.8.0 2.9.2 2.10.0 3.0.1: Non-interactive SSH processing in pure Ruby
 dev-ruby/net-ssh-gateway 1.2.0 1.2.0-r1: A simple library to assist in enabling tunneled Net::SSH connections
 dev-ruby/net-ssh-multi 1.2.0-r1 1.2.1: A library for controlling multiple Net::SSH connections via a single interface
-dev-ruby/netrc 0.9.0 0.10.3 0.11.0: This library reads and writes .netrc files
+dev-ruby/netrc 0.10.3 0.11.0: This library reads and writes .netrc files
 dev-ruby/network_interface 0.0.1-r1: network_interface layer from metasploit pcaprub
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
 dev-ruby/nio4r 1.0.1 1.1.0 1.1.1: A high performance selector API for monitoring IO objects
@@ -8743,7 +8743,7 @@ dev-ruby/rb-gsl 1.16.0.3 1.16.0.4 1.16.0.5 1.16.0.6: Ruby interface to GNU Scien
 dev-ruby/rb-inotify 0.9.5 0.9.5-r1: A thorough inotify wrapper for Ruby using FFI
 dev-ruby/rb-readline 0.5.1 0.5.2 0.5.3: Ruby implementation of the GNU readline C library
 dev-ruby/rb-readline-r7 0.5.2.0: Ruby implementation of the GNU readline C library forked by r7
-dev-ruby/rbpdf 1.18.6-r1: Ruby on Rails TCPDF plugin
+dev-ruby/rbpdf 1.18.6-r1 1.18.7: Ruby on Rails RBPDF plugin
 dev-ruby/rbtree 0.4.2: Ruby/RBTree module
 dev-ruby/rcairo 1.14.1 1.14.1-r1 1.14.3: Ruby bindings for cairo
 dev-ruby/rdiscount 1.6.8-r2 1.6.8-r3 2.1.7 2.1.7.1 2.1.8: Implementation of John Gruber's Markdown
@@ -8935,7 +8935,7 @@ dev-ruby/warden 1.2.3: General Rack Authentication Framework
 dev-ruby/watch 0.1.0: A dirt simple mechanism to tell if files have changed
 dev-ruby/weakling 0.0.4: weakling: a collection of weakref utilities for Ruby
 dev-ruby/web-console 2.2.1-r1: A debugging tool for your Ruby on Rails applications
-dev-ruby/webmock 1.19.0 1.20.3 1.22.1: Allows stubbing HTTP requests and setting expectations on HTTP requests
+dev-ruby/webmock 1.19.0 1.20.3 1.22.1 1.22.3: Allows stubbing HTTP requests and setting expectations on HTTP requests
 dev-ruby/webrobots 0.1.1-r1 0.1.1-r2: A library to help write robots.txt compliant web robots
 dev-ruby/websocket-driver 0.3.4 0.6.2: A complete implementation of the WebSocket protocols
 dev-ruby/websocket-extensions 0.1.2: Generic extension manager for WebSocket connections
