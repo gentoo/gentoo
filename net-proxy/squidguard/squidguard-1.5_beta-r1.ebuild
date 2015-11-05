@@ -16,7 +16,7 @@ SRC_URI="http://www.squidguard.org/Downloads/Devel/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm ppc ~ppc64 sparc x86"
 
 IUSE="ldap"
 
