@@ -37,7 +37,9 @@ RESTRICT="test"
 S=${WORKDIR}/${MY_P}
 
 python_prepare_all() {
-	rm -r {libev,c-ares} || die
+	export LIBEV_EMBED="false"
+	export CARES_EMBED="false"
+	export EMBED="false"
 
 	distutils-r1_python_prepare_all
 }
