@@ -151,7 +151,8 @@ _python_impl_supported() {
 # The path to Python library.
 #
 # Set and exported on request using python_export().
-# Valid only for CPython.
+# Valid only for CPython. Requires a proper build-time dependency
+# on the Python implementation.
 #
 # Example value:
 # @CODE
@@ -289,20 +290,12 @@ python_export() {
 				fi
 				;;
 			PYTHON_LIBPATH)
-				local libname
-				case "${impl}" in
-					python*)
-						libname=lib${impl}
-						;;
-					*)
-						die "${impl} lacks a dynamic library"
-						;;
-				esac
-
-				local path=${EPREFIX}/usr/$(get_libdir)
-
-				export PYTHON_LIBPATH=${path}/${libname}$(get_libname)
+				export PYTHON_LIBPATH=$("${PYTHON}" -c 'import os.path, sysconfig; print(os.path.join(sysconfig.get_config_var("LIBDIR"), sysconfig.get_config_var("LDLIBRARY")) if sysconfig.get_config_var("LDLIBRARY") else "")')
 				debug-print "${FUNCNAME}: PYTHON_LIBPATH = ${PYTHON_LIBPATH}"
+
+				if [[ ! ${PYTHON_LIBPATH} ]]; then
+					die "${impl} lacks a (usable) dynamic library"
+				fi
 				;;
 			PYTHON_CFLAGS)
 				local val
