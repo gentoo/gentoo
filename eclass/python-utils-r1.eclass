@@ -138,6 +138,7 @@ _python_impl_supported() {
 # The path to Python include directory.
 #
 # Set and exported on request using python_export().
+# Requires a proper build-time dependency on the Python implementation.
 #
 # Example value:
 # @CODE
@@ -279,21 +280,13 @@ python_export() {
 				debug-print "${FUNCNAME}: PYTHON_SITEDIR = ${PYTHON_SITEDIR}"
 				;;
 			PYTHON_INCLUDEDIR)
-				local dir
-				case "${impl}" in
-					python*)
-						dir=/usr/include/${impl}
-						;;
-					pypy|pypy3)
-						dir=/usr/$(get_libdir)/${impl}/include
-						;;
-					*)
-						die "${impl} lacks header files"
-						;;
-				esac
-
-				export PYTHON_INCLUDEDIR=${EPREFIX}${dir}
+				export PYTHON_INCLUDEDIR=$("${PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_inc())')
 				debug-print "${FUNCNAME}: PYTHON_INCLUDEDIR = ${PYTHON_INCLUDEDIR}"
+
+				# Jython gives a non-existing directory
+				if [[ ! -d ${PYTHON_INCLUDEDIR} ]]; then
+					die "${impl} does not install any header files!"
+				fi
 				;;
 			PYTHON_LIBPATH)
 				local libname
