@@ -40,6 +40,6 @@ multilib_src_test() {
 }
 
 multilib_src_install() {
-	emake DESTDIR="${D}" PREFIX="/usr" LIBDIR="/usr/$(get_libdir)" install
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" LIBDIR="${EPREFIX}/usr/$(get_libdir)" install
 	use static-libs && dolib.a libhttp_parser.a
 }
