@@ -14,6 +14,11 @@
       quality and much faster than both the included resampler and
       libsamplerate.
     </flag>
+    <flag name="libsamplerate">
+      Uses <pkg>media-libs/libsamplerate</pkg> as audio resampling library:
+      Higher quality than the included resampler but lower quality and much
+      slower than libsoxr.
+    </flag>
     <flag name="lv2">Add support for Ladspa V2</flag>
     <flag name="midi">Enables MIDI support</flag>
     <flag name="portmixer">Enable the internal portmixer feature</flag>
