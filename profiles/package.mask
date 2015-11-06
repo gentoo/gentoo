@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (06 Nov 2015)
+# Mask new versions of dev-php/pecl-yaml that only work with PHP-7+
+>=dev-php/pecl-yaml-2.0
+
 # Michael Orlitzky <mjo@gentoo.org> (05 Nov 2015)
 # Masked for testing: the ./configure handling was largely rewritten.
 =dev-lang/php-5.6.15-r3
