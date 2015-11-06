@@ -4,6 +4,7 @@
 	<herd>proxy-maintainers</herd>
 	<maintainer>
 		<email>itumaykin+gentoo@gmail.com</email>
+		<name>Coacher</name>
 	</maintainer>
 	<use>
 		<flag name='json'>Build JSON output plugin to save packets in JSON file format.</flag>
