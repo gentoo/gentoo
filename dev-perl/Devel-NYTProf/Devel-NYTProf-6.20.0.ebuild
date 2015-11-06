@@ -17,7 +17,6 @@ IUSE="test"
 RDEPEND="
 	>=dev-perl/File-Which-1.90.0
 	virtual/perl-Getopt-Long
-	dev-perl/JSON-Any
 	dev-perl/JSON-MaybeXS
 	virtual/perl-Scalar-List-Utils
 	virtual/perl-XSLoader
