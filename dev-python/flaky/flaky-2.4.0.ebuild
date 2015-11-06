@@ -32,8 +32,8 @@ RESTRICT=test
 
 python_test() {
 	nosetests --with-flaky --exclude="pytest|test_nose_options_example" test/ || die
-	py.test -k 'example and not nose and not options' --doctest-modules test/·||·die
-	py.test -p no:flaky test/test_flaky_pytest_plugin.py·||·die
-	nosetests --with-flaky --force-flaky --max-runs 2 test/test_nose_options_example.py ·||·die
-	py.test --force-flaky --max-runs 2  test/test_pytest_options_example.py ||·die
+	py.test -k 'example and not nose and not options' --doctest-modules test/ || die
+	py.test -p no:flaky test/test_flaky_pytest_plugin.py || die
+	nosetests --with-flaky --force-flaky --max-runs 2 test/test_nose_options_example.py || die
+	py.test --force-flaky --max-runs 2  test/test_pytest_options_example.py || die
 }

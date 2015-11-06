@@ -1,0 +1,25 @@
+commit 317b2f02a829f694a66c760fc6de7df1db99b006
+Author: Tobias Doerffel <tobias.doerffel@gmail.com>
+Date:   Mon Feb 16 18:22:49 2015 +0100
+
+    AutomatableModel: fix wrong comparison logic
+    
+    We must not negate the float but instead test for inequality in order to
+    determine whether the linked model has to be updated.
+    
+    Closes #1761.
+
+diff --git a/src/core/AutomatableModel.cpp b/src/core/AutomatableModel.cpp
+index 6c7501c..bf56285 100644
+--- a/src/core/AutomatableModel.cpp
++++ b/src/core/AutomatableModel.cpp
+@@ -318,8 +318,7 @@ void AutomatableModel::setAutomatedValue( const float value )
+ 									it != m_linkedModels.end(); ++it )
+ 		{
+ 			if( (*it)->m_setValueDepth < 1 &&
+-				!(*it)->fittedValue( m_value ) !=
+-							 (*it)->m_value )
++				(*it)->fittedValue( m_value ) != (*it)->m_value )
+ 			{
+ 				(*it)->setAutomatedValue( value );
+ 			}

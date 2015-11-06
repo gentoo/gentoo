@@ -13,7 +13,7 @@ SRC_URI="https://github.com/Cangjians/ibus-cangjie/releases/download/v${PV}/ibus
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="${PYTHON_DEPS}
 	>=app-i18n/ibus-1.4.1

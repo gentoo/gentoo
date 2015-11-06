@@ -19,9 +19,10 @@ RDEPEND="
 	>=media-libs/libmpdclient-2.1
 	curl? ( net-misc/curl )
 	dev-libs/boost:=[nls,threads]
-	sys-libs/ncurses[unicode?]
+	sys-libs/ncurses:=[unicode?]
 	sys-libs/readline:*
 	taglib? ( media-libs/taglib )
+	unicode? ( dev-libs/boost:=[icu] )
 	visualizer? ( sci-libs/fftw:3.0 )
 "
 DEPEND="
