@@ -6,7 +6,7 @@
 	  <email>monsieurp@gentoo.org</email>
   </maintainer>
   <upstream>
-    <remote-id type="cpan">Test-NoTabs</remote-id>
-    <remote-id type="cpan-module">Test::NoTabs</remote-id>
+    <remote-id type="cpan">txt2html</remote-id>
+    <remote-id type="cpan-module">txt2html</remote-id>
   </upstream>
 </pkgmetadata>

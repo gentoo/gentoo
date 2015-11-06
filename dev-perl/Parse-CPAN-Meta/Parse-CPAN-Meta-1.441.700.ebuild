@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 RDEPEND=""
-DEPEND="${REPEND}
+DEPEND="${RDEPEND}
 	test? (
 		virtual/perl-File-Spec
 	)
