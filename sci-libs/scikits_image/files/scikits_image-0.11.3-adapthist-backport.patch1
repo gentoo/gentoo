@@ -1,0 +1,73 @@
+ skimage/exposure/_adapthist.py          |  8 +++++---
+ skimage/exposure/tests/test_exposure.py | 14 +++++++-------
+ 2 files changed, 12 insertions(+), 10 deletions(-)
+
+diff --git a/skimage/exposure/_adapthist.py b/skimage/exposure/_adapthist.py
+index b71916f..e878bfb 100644
+--- a/skimage/exposure/_adapthist.py
++++ b/skimage/exposure/_adapthist.py
+@@ -255,12 +255,14 @@ def clip_histogram(hist, clip_limit):
+     while n_excess > 0:  # Redistribute remaining excess
+         index = 0
+         while n_excess > 0 and index < hist.size:
++            under_mask = hist < 0
+             step_size = int(hist[hist < clip_limit].size / n_excess)
+             step_size = max(step_size, 1)
+             indices = np.arange(index, hist.size, step_size)
+-            under = hist[indices] < clip_limit
+-            hist[under] += 1
+-            n_excess -= hist[under].size
++            under_mask[indices] = True
++            under_mask = (under_mask) & (hist < clip_limit)
++            hist[under_mask] += 1
++            n_excess -= under_mask.sum()
+             index += 1
+ 
+     return hist
+diff --git a/skimage/exposure/tests/test_exposure.py b/skimage/exposure/tests/test_exposure.py
+index 265ce24..83bb551 100644
+--- a/skimage/exposure/tests/test_exposure.py
++++ b/skimage/exposure/tests/test_exposure.py
+@@ -199,9 +199,9 @@ def test_adapthist_scalar():
+     full_scale = skimage.exposure.rescale_intensity(skimage.img_as_float(img))
+ 
+     assert_almost_equal = np.testing.assert_almost_equal
+-    assert_almost_equal(peak_snr(full_scale, adapted), 101.2295, 3)
++    assert_almost_equal(peak_snr(full_scale, adapted), 102.066, 3)
+     assert_almost_equal(norm_brightness_err(full_scale, adapted),
+-                        0.041, 3)
++                        0.038, 3)
+     return img, adapted
+ 
+ 
+@@ -216,8 +216,8 @@ def test_adapthist_grayscale():
+                                               nbins=128)
+     assert_almost_equal = np.testing.assert_almost_equal
+     assert img.shape == adapted.shape
+-    assert_almost_equal(peak_snr(img, adapted), 97.6876, 3)
+-    assert_almost_equal(norm_brightness_err(img, adapted), 0.0591, 3)
++    assert_almost_equal(peak_snr(img, adapted), 102.078, 3)
++    assert_almost_equal(norm_brightness_err(img, adapted), 0.0529, 3)
+     return data, adapted
+ 
+ 
+@@ -237,7 +237,7 @@ def test_adapthist_color():
+     assert adapted.max() == 1.0
+     assert img.shape == adapted.shape
+     full_scale = skimage.exposure.rescale_intensity(img)
+-    assert_almost_equal(peak_snr(full_scale, adapted), 109.6, 1)
++    assert_almost_equal(peak_snr(full_scale, adapted), 109.393, 1)
+     assert_almost_equal(norm_brightness_err(full_scale, adapted), 0.02, 2)
+     return data, adapted
+ 
+@@ -255,8 +255,8 @@ def test_adapthist_alpha():
+     full_scale = skimage.exposure.rescale_intensity(img)
+     assert img.shape == adapted.shape
+     assert_almost_equal = np.testing.assert_almost_equal
+-    assert_almost_equal(peak_snr(full_scale, adapted), 109.60, 2)
+-    assert_almost_equal(norm_brightness_err(full_scale, adapted), 0.0235, 3)
++    assert_almost_equal(peak_snr(full_scale, adapted), 109.393, 2)
++    assert_almost_equal(norm_brightness_err(full_scale, adapted), 0.0248, 3)
+ 
+ 
+ def peak_snr(img1, img2):

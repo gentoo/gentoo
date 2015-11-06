@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci</herd>
-<longdescription lang="en">
+  <herd>sci</herd>
+  <longdescription lang="en">
   PyAMG is a library of Algebraic Multigrid (AMG) solvers with a
   Python interface.
   The predominant portion of PyAMG is written in Python with a smaller
   amount of supporting C++ code for performance critical operations.
 </longdescription>
-<upstream>
-  <remote-id type="pypi">pyamg</remote-id>
-</upstream>
+  <upstream>
+    <remote-id type="pypi">pyamg</remote-id>
+  </upstream>
 </pkgmetadata>
