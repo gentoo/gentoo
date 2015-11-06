@@ -246,9 +246,6 @@ src_install() {
 		-e "s/\(PY_LDFLAGS=\).*/\1/" \
 		-i "${libdir}/config-${SLOT}"*/Makefile || die "sed failed"
 
-	# Backwards compat with Gentoo divergence.
-	dosym python${SLOT}-config /usr/bin/python-config-${SLOT}
-
 	# Fix collisions between different slots of Python.
 	rm -f "${ED}usr/$(get_libdir)/libpython3.so"
 
