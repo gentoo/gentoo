@@ -27,8 +27,15 @@ DEPEND="${RDEPEND}
 	)
 "
 
-# https://github.com/box/flaky/issues/72
-RESTRICT=test
+python_prepare_all() {
+	cat >> test/__init__.py <<- EOF
+	# coding: utf-8
+
+	from __future__ import unicode_literals
+	EOF
+
+	distutils-r1_python_prepare_all
+}
 
 python_test() {
 	nosetests --with-flaky --exclude="pytest|test_nose_options_example" test/ || die
