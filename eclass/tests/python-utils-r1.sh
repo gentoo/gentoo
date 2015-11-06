@@ -66,8 +66,8 @@ test_var PYTHON python2_7 /usr/bin/python2.7
 test_var PYTHON_SITEDIR python2_7 /usr/lib/python2.7/site-packages
 if [[ -x /usr/bin/python2.7 ]]; then
 	test_var PYTHON_INCLUDEDIR python2_7 /usr/include/python2.7
+	test_var PYTHON_LIBPATH python2_7 "/usr/lib*/libpython2.7$(get_libname)"
 fi
-test_var PYTHON_LIBPATH python2_7 /usr/lib/libpython2.7$(get_libname)
 test_var PYTHON_PKG_DEP python2_7 '*dev-lang/python*:2.7'
 test_var PYTHON_SCRIPTDIR python2_7 /usr/lib/python-exec/python2.7
 
@@ -77,8 +77,8 @@ test_var PYTHON_SITEDIR python3_4 /usr/lib/python3.4/site-packages
 if [[ -x /usr/bin/python3.4 ]]; then
 	abiflags=$(/usr/bin/python3.4 -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS"))')
 	test_var PYTHON_INCLUDEDIR python3_4 "/usr/include/python3.4${abiflags}"
+	test_var PYTHON_LIBPATH python3_4 "/usr/lib*/libpython3.4${abiflags}$(get_libname)"
 fi
-test_var PYTHON_LIBPATH python3_4 /usr/lib/libpython3.4$(get_libname)
 test_var PYTHON_PKG_DEP python3_4 '*dev-lang/python*:3.4'
 test_var PYTHON_SCRIPTDIR python3_4 /usr/lib/python-exec/python3.4
 
