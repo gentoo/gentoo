@@ -1305,7 +1305,7 @@ app-emulation/openstack-guest-agents-unix 1.39.0 1.39.0-r1 1.39.0-r2 1.39.1: Ope
 app-emulation/phpvirtualbox 4.1.11 4.2.7 4.3.0 5.0.3: Web-based administration for VirtualBox in PHP
 app-emulation/playonlinux 4.2.4 4.2.6 4.2.8: Set of scripts to easily install and use Windows games and software
 app-emulation/q4wine 1.0-r3 1.1_p2-r1: Qt4 GUI configuration tool for Wine
-app-emulation/qemu 2.3.0-r5 2.3.0-r6 2.3.1 2.4.0-r1 2.4.0.1 2.4.0.1-r1 9999: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu 2.3.0-r5 2.3.0-r6 2.3.1 2.4.0-r1 2.4.0.1 2.4.0.1-r1 2.4.1 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 2.3.0 2.3.1 2.4.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qtemu 1.0.5: A graphical user interface for QEMU written in Qt4
 app-emulation/rex-client 9999: Remote EXexcution agent
@@ -2001,7 +2001,7 @@ app-office/multitalk 1.4: A new type of presentation program
 app-office/odeskteam 3.6.1 3.12.9 3.12.19: Project collaboration and tracking software for oDesk.com
 app-office/ooextras 20060909: OOExtras: Extra Templates for OpenOffice.org!
 app-office/openerp 6.1.1-r1 7.0.20130219-r5 7.0.20140125 8.0.20140125: Open Source ERP & CRM
-app-office/openoffice-bin 4.1.1: Apache OpenOffice productivity suite
+app-office/openoffice-bin 4.1.1 4.1.2: Apache OpenOffice productivity suite
 app-office/openproj-bin 1.4 1.4-r1: A free and open source desktop alternative to Microsoft Project
 app-office/orage 4.10.0 4.12.1: A time managing application (and panel plug-in) for the Xfce desktop environment
 app-office/passepartout 0.7.0-r1: A DTP application for the X Window System
@@ -2916,7 +2916,7 @@ dev-db/oracle-instantclient-basic 10.2.0.3-r1 11.2.0.2 11.2.0.3 11.2.0.4: Oracle
 dev-db/oracle-instantclient-jdbc 10.2.0.3 11.2.0.2 11.2.0.3 11.2.0.4: Oracle 11g Instant Client: JDBC supplement
 dev-db/oracle-instantclient-odbc 11.2.0.2-r1 11.2.0.3 11.2.0.4: Oracle 11g Instant Client: ODBC supplement
 dev-db/oracle-instantclient-sqlplus 10.2.0.3 11.2.0.2 11.2.0.3 11.2.0.3-r1 11.2.0.4: Oracle 11g Instant Client: SQL*Plus
-dev-db/percona-server 5.6.25.73.0 5.6.25.73.0-r1 5.6.26.74.0: An enhanced, drop-in replacement for MySQL from the Percona team
+dev-db/percona-server 5.6.27.75.0: An enhanced, drop-in replacement for MySQL from the Percona team
 dev-db/percona-toolkit 2.2.7 2.2.11 2.2.15: essential command-line utilities for MySQL
 dev-db/pg_activity 1.2.0: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 3.6.2-r1 3.7.0: 'top' for PostgreSQL
@@ -6661,7 +6661,7 @@ dev-php/pecl-uploadprogress 1.0.3.1-r1 1.0.3.1-r2: An extension to track progres
 dev-php/pecl-uuid 1.0.3-r2: A wrapper around libuuid
 dev-php/pecl-xdiff 1.5.2-r2: PHP extension for generating diff files
 dev-php/pecl-xrange 1.3.2-r1: Implementation of weak references
-dev-php/pecl-yaml 1.2.0: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
+dev-php/pecl-yaml 1.2.0 2.0.0_rc5: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
 dev-php/pecl-yaz 1.1.6 1.1.9: This extension implements a Z39.50 client for PHP using the YAZ toolkit
 dev-php/pecl-zendopcache 7.0.3: The Zend Optimizer+ provides faster PHP execution through opcode caching and optimization
 dev-php/phing 2.8.2 2.10.1: PHP project build system based on Apache Ant
@@ -6685,8 +6685,8 @@ dev-php/suhosin 0.9.38: Suhosin is an advanced protection system for PHP install
 dev-php/tcpdf 5.9.149 6.0.096: TCPDF is a FLOSS PHP class for generating PDF documents
 dev-php/twig 1.20.0: PHP templating engine with syntax similar to Django
 dev-php/xcache 3.0.4 3.1.2 3.2.0: A fast and stable PHP opcode cacher
-dev-php/xdebug 2.2.6 2.2.7 2.3.1: A PHP debugging and profiling extension
-dev-php/xdebug-client 2.2.2 2.2.3 2.2.5 2.2.6 2.2.7 2.3.1: Xdebug client for the Common Debugger Protocol (DBGP)
+dev-php/xdebug 2.2.6 2.2.7 2.3.1 2.3.3 2.4.0_beta1: A PHP debugging and profiling extension
+dev-php/xdebug-client 2.2.2 2.2.3 2.2.5 2.2.6 2.2.7 2.3.1 2.3.3 2.4.0_beta1: Xdebug client for the Common Debugger Protocol (DBGP)
 dev-php/xhprof 0.9.4: A Hierarchical Profiler for PHP
 dev-python/3to2 1.0 1.1.1: Refactors valid 3.x syntax into valid 2.x syntax, if a syntactical conversion is possible
 dev-python/APScheduler 3.0.1: In-process task scheduler with Cron-like capabilities
@@ -6905,7 +6905,7 @@ dev-python/django-discover-runner 0.4 1.0: A Django test runner based on unittes
 dev-python/django-durationfield 0.5.2: Reusable app for adding a DurationField to Django
 dev-python/django-endless-pagination 2.0: Tools supporting ajax, multiple and lazy pagination, Twitter-style and Digg-style pagination
 dev-python/django-evolution 0.6.9 0.7.4 0.7.5: A Django application that will run cron jobs for other django apps
-dev-python/django-extensions 1.5.6 1.5.7: Django Command Extensions
+dev-python/django-extensions 1.5.6 1.5.7 1.5.9: Django Command Extensions
 dev-python/django-filer 0.9.12: A file management application for django that makes handling of files and images a breeze.
 dev-python/django-formtools 1.0: High-level abstractions for Django forms
 dev-python/django-grappelli 2.7.1: A jazzy skin for the Django Admin-Interface
@@ -7265,7 +7265,7 @@ dev-python/mygpoclient 1.7-r1: A gpodder.net client library
 dev-python/mypy 0.2.0 0.2.0-r1: Optional static typing for Python
 dev-python/mysql-connector-python 2.0.3 2.1.1: Python client library for MariaDB/MySQL
 dev-python/mysql-python 1.2.3-r1 1.2.5 1.2.5-r1: Python interface to MySQL
-dev-python/mysqlclient 1.3.6: Fork of MySQL-python
+dev-python/mysqlclient 1.3.6 1.3.7: Fork of MySQL-python
 dev-python/natgrid 0.2.1-r2: Matplotlib toolkit for gridding irreguraly spaced data
 dev-python/natsort 3.4.0 4.0.3: Natural sorting for Python
 dev-python/nautilus-python 1.1-r1 1.1-r2: Python bindings for the Nautilus file manager
@@ -7334,7 +7334,7 @@ dev-python/pSQL 1.2.0 1.2.1: MySQL abstraction layer for python
 dev-python/packaging 15.3-r2: Core utilities for Python packages
 dev-python/paisley 0.3.1 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
 dev-python/pandas 0.16.2 0.17.0 9999: Powerful data structures for data analysis and statistics
-dev-python/paramiko 1.15.1-r1 1.15.2 1.15.3 1.15.4: SSH2 protocol library
+dev-python/paramiko 1.15.1-r1 1.15.2 1.15.3 1.15.4 1.16.0: SSH2 protocol library
 dev-python/paramunittest 0.2: Simple extension to have parametrized unit tests.
 dev-python/parse 1.6.4: parse() is the opposite of format()
 dev-python/parse-type 0.3.4: Simplifies to build parse types based on the parse module
@@ -7418,7 +7418,7 @@ dev-python/pyalsa 1.0.26-r1 1.0.29: Python bindings for ALSA library
 dev-python/pyalsaaudio 0.7-r2 0.8.2: A Python wrapper for the ALSA API
 dev-python/pyamazon 0.65: A Python wrapper for the Amazon web API
 dev-python/pyamf 0.7.0 0.7.2: Action Message Format (AMF) support for Python
-dev-python/pyamg 2.1.0: Algebraic multigrid solvers in Python
+dev-python/pyamg 2.1.0 2.2.1: Algebraic multigrid solvers in Python
 dev-python/pyao 0.82-r2 0.82-r3: Python bindings for the libao library
 dev-python/pyasn1 0.1.7 0.1.8 0.1.9: ASN.1 library for Python
 dev-python/pyasn1-modules 0.0.5-r1 0.0.6 0.0.7 0.0.8: pyasn1 modules
@@ -7573,7 +7573,7 @@ dev-python/pyro 3.16-r1 4.25 4.39 4.40: Advanced and powerful Distributed Object
 dev-python/pyroma 1.7: Test project's packaging friendliness
 dev-python/pyrtf 0.45-r1: A set of Python classes that make it possible to produce RTF documents from Python programs
 dev-python/pysaml2 2.1.0 3.0.0: Python implementation of SAML Version 2 to be used in a WSGI environment
-dev-python/pyscaffold 2.4.1: Tool for easily putting up the scaffold of a Python project
+dev-python/pyscaffold 2.4.1 2.4.4: Tool for easily putting up the scaffold of a Python project
 dev-python/pyscard 1.6.16 1.7.0: pyscard is a python module adding smart cards support to python
 dev-python/pysctp 0.6: PySCTP gives access to the SCTP transport protocol from Python
 dev-python/pysendfile 2.0.1: A python interface to sendfile(2) system call
@@ -8546,6 +8546,7 @@ dev-ruby/ferret 0.11.8.5-r2 0.11.8.6: A ruby indexing/searching library
 dev-ruby/ffaker 1.32.1 2.0.0 2.1.0: Faster Faker, generates dummy data
 dev-ruby/ffi 1.9.6-r1 1.9.6-r2 1.9.8 1.9.9 1.9.10: Ruby extension for programmatically loading dynamic libraries
 dev-ruby/file-tail 1.1.0: A small ruby library that allows it to 'tail' files in Ruby
+dev-ruby/filesize 0.1.1: small ruby class for handling filesizes with both the SI and binary prefixes
 dev-ruby/fivemat 1.3.1 1.3.2: MiniTest/RSpec/Cucumber formatter that gives each test file its own line of dots
 dev-ruby/flexmock 1.3.3 1.3.3-r1: Simple mock object library for Ruby unit testing
 dev-ruby/flickraw 0.9.8: A library to access flickr api in a simple way
@@ -8644,7 +8645,7 @@ dev-ruby/metasm 1.0.2-r3: cross-architecture assembler, disassembler, linker, an
 dev-ruby/metasploit-concern 1.0.0: Metasploit concern allows you to define concerns in app/concerns.
 dev-ruby/metasploit-credential 1.0.0 1.0.1: Code for modeling and managing credentials in Metasploit
 dev-ruby/metasploit-model 1.0.0: Common code, such as validators and mixins
-dev-ruby/metasploit-payloads 1.0.9-r1 1.0.15: Compiled binaries for Metasploit's Meterpreter
+dev-ruby/metasploit-payloads 1.0.9-r1 1.0.16: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/metasploit_data_models 1.2.5 1.2.9: The database layer for Metasploit
 dev-ruby/meterpreter_bins 0.0.22: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/method_source 0.8.2-r2 0.8.2-r3: Retrieve the source code for a method
@@ -15611,8 +15612,8 @@ sci-libs/rosetta-fragments 3.1-r1: Fragment library for rosetta
 sci-libs/rtabmap 0.10.5 0.10.10 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
 sci-libs/scalapack 2.0.2: Subset of LAPACK routines redesigned for heterogenous (MPI) computing
 sci-libs/scikits 0.1-r1: Common files for python scikits
-sci-libs/scikits_image 0.9.3 0.10.0 0.10.1: Image processing routines for SciPy
-sci-libs/scikits_learn 0.13.1 0.14.1 0.15.1 0.15.2 0.16.1: Python modules for machine learning and data mining
+sci-libs/scikits_image 0.9.3 0.10.0 0.10.1 0.11.3: Image processing routines for SciPy
+sci-libs/scikits_learn 0.13.1 0.14.1 0.15.1 0.15.2 0.16.1 0.17: Python modules for machine learning and data mining
 sci-libs/scikits_optimization 0.3: Python module for numerical optimization
 sci-libs/scikits_timeseries 0.91.3-r1: SciPy module for manipulating, reporting, and plotting time series
 sci-libs/scipy 0.15.1 0.16.0 0.16.1 9999: Scientific algorithms library for Python
