@@ -2,6 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# php 7 is still masked for testing
+php_targets_php7-0
+
 # cilk has been ported only to x86 systems
 cilk
 
