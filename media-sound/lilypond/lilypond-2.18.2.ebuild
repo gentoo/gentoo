@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -58,6 +58,7 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.17.2-tex-docs.patch
+	epatch "${FILESDIR}"/${P}-fontforge.patch
 
 	if ! use vim-syntax ; then
 		sed -i 's/vim//' GNUmakefile.in || die

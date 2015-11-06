@@ -2,6 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>scheme</herd>
+	<herd>proxy-maintainers</herd>
 	<maintainer>
 		<email>hkBst@gentoo.org</email>
 		<name>Marijn Schouten</name>
@@ -9,6 +10,10 @@
 	<maintainer>
 		<email>radhermit@gentoo.org</email>
 		<name>Tim Harder</name>
+	</maintainer>
+	<maintainer>
+		<email>karl.j.linden@gmail.com</email>
+		<name>Karl Linden</name>
 	</maintainer>
 	<longdescription lang="en">
 LilyPond is an automated engraving system. It formats music beautifully and automatically, and has a friendly syntax for its input files.
