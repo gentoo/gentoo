@@ -6,7 +6,7 @@
 	  <email>monsieurp@gentoo.org</email>
   </maintainer>
   <upstream>
-    <remote-id type="cpan">Mo</remote-id>
-    <remote-id type="cpan-module">Mo</remote-id>
+    <remote-id type="cpan">Parse-CPAN-Meta</remote-id>
+    <remote-id type="cpan-module">Parse::CPAN::Meta</remote-id>
   </upstream>
 </pkgmetadata>
