@@ -23,7 +23,7 @@ src_prepare() {
 	sed -i -e 's:grub-mount:grub2-mount:g' \
 		common.sh \
 		linux-boot-probes/common/50mounted-tests \
-		os-probes/common/50mounted-tests
+		os-probes/common/50mounted-tests || die
 }
 
 src_compile() {
