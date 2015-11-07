@@ -49,7 +49,7 @@ src_prepare() {
 }
 
 src_configure() {
-	need-wxwidgets unicode
+	use wxwidgets && need-wxwidgets unicode
 	local mycmakeargs=()
 	mycmakeargs+=(
 		-DOPENBABEL_USE_SYSTEM_INCHI=ON
