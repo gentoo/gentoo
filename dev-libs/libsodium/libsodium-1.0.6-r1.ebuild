@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/jedisct1/libsodium"
 SRC_URI="http://download.libsodium.org/${PN}/releases/${P}.tar.gz"
 
 LICENSE="ISC"
-SLOT="0/13"
+SLOT="0/17"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="+asm minimal static-libs +urandom"
 
