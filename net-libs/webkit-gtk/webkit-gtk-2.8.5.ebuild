@@ -138,6 +138,9 @@ src_prepare() {
 	# https://bugs.gentoo.org/show_bug.cgi?id=555504
 	epatch "${FILESDIR}"/${PN}-2.8.5-fix-ia64-build.patch
 
+	# https://bugs.gentoo.org/show_bug.cgi?id=564352
+	epatch "${FILESDIR}"/${PN}-2.8.5-fix-alpha-build.patch
+
 	# https://bugs.webkit.org/show_bug.cgi?id=148379
 	epatch "${FILESDIR}"/${PN}-2.8.5-webkit2gtkinjectedbundle-j1.patch
 
