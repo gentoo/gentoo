@@ -1,0 +1,67 @@
+From: Guy Rutenberg <guyrutenberg@gmail.com>
+Date: Sat, 25 Oct 2014 15:33:42 +0200
+Subject: wxstrtol
+
+Fixes a FTBFS with recent versions of wx3.0.
+---
+ src/MainFrame.cpp | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/src/MainFrame.cpp b/src/MainFrame.cpp
+index 2128376..8e29d6d 100644
+--- a/src/MainFrame.cpp
++++ b/src/MainFrame.cpp
+@@ -510,7 +510,7 @@ void MainFrame::OnUndo(wxCommandEvent& event)
+ 		wxString tempstr;
+ 	
+ 		tempstr = ((wxTextCtrl*) FindWindow(ID_YAHTZEEBONUSTEXT)) -> GetValue();
+-		tempstr.Printf(wxT("%li"), wxStrtol(tempstr, NULL, 10) - 100);
++		tempstr.Printf(wxT("%li"), strtol(tempstr.mb_str(), NULL, 10) - 100);
+ 		((wxTextCtrl*) FindWindow(ID_YAHTZEEBONUSTEXT)) -> SetValue(tempstr);
+ 	}
+ 
+@@ -936,7 +936,7 @@ void MainFrame::YahtzeeBonus()
+ 		return;
+ 	if (m_score_dice.IsYahtzee()) {
+ 		tempstr = ((wxTextCtrl*) FindWindow(ID_YAHTZEEBONUSTEXT)) -> GetValue();
+-		tempstr.Printf(wxT("%li"), wxStrtol(tempstr, NULL, 10) + 100);
++		tempstr.Printf(wxT("%li"), strtol(tempstr.mb_str(), NULL, 10) + 100);
+ 		((wxTextCtrl*) FindWindow(ID_YAHTZEEBONUSTEXT)) -> SetValue(tempstr);
+ 		m_yahtzeebonus = true;
+ 	}	
+@@ -973,7 +973,7 @@ void MainFrame::EndofGame()
+ 
+ 	for (int i = ID_ACESTEXT; i<=ID_SIXESTEXT; i++){
+ 		tempstr = ((wxTextCtrl*) FindWindow(i)) -> GetValue();
+-		upperscore += wxStrtol(tempstr, NULL, 10);
++		upperscore += strtol(tempstr.mb_str(), NULL, 10);
+ 	}
+ 	
+ 	tempstr.Printf(wxT("%li"),upperscore);
+@@ -992,7 +992,7 @@ void MainFrame::EndofGame()
+ 	//calculate total on lower section
+ 	for (int i = ID_THREEOFAKINDTEXT; i<=ID_YAHTZEEBONUSTEXT; i++) {
+ 		tempstr = ((wxTextCtrl*) FindWindow(i)) -> GetValue();
+-		lowerscore += wxStrtol(tempstr, NULL, 10);
++		lowerscore += strtol(tempstr.mb_str(), NULL, 10);
+ 	}
+ 	
+ 	tempstr.Printf(wxT("%li"),lowerscore);
+@@ -1091,7 +1091,7 @@ void MainFrame::CalculateSubTotal()
+ 
+ 	for (int i = ID_ACESTEXT; i<=ID_SIXESTEXT; i++){
+ 		tempstr = ((wxTextCtrl*) FindWindow(i)) -> GetValue();
+-		upperscore += wxStrtol(tempstr, NULL, 10);
++		upperscore += strtol(tempstr.mb_str(), NULL, 10);
+ 	}
+ 	
+ 	tempstr.Printf(wxT("%li"),upperscore);
+@@ -1105,7 +1105,7 @@ void MainFrame::CalculateSubTotal()
+ 
+ 	for (int i = ID_THREEOFAKINDTEXT; i<=ID_YAHTZEEBONUSTEXT; i++) {
+ 		tempstr = ((wxTextCtrl*) FindWindow(i)) -> GetValue();
+-		lowerscore += wxStrtol(tempstr, NULL, 10);
++		lowerscore += strtol(tempstr.mb_str(), NULL, 10);
+ 	}
+ 	
+ 	tempstr.Printf(wxT("%li"),lowerscore);
