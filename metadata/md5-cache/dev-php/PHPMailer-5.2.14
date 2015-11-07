@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst test
+DEPEND=dev-lang/php:* doc? ( dev-php/phpDocumentor ) test? ( dev-php/phpunit )
+DESCRIPTION=Full-featured email creation and transfer class for PHP
+EAPI=5
+HOMEPAGE=https://github.com/PHPMailer/PHPMailer
+IUSE=doc +examples test
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-lang/php:*
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/PHPMailer/PHPMailer/archive/v5.2.14.tar.gz -> PHPMailer-5.2.14.tar.gz
+_md5_=f1f44b94e259862bc4a66e47d7c1a275
