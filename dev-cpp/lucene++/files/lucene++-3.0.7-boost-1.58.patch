@@ -1,0 +1,37 @@
+commit 1987082cf9278a639d772b4f35a8ae2d34944177
+Author: Václav Slavík <vaclav@slavik.io>
+Date:   Mon May 4 18:04:46 2015 +0200
+
+    Fix compilation with Boost 1.58
+    
+    1.58 introduces strict type checking in boost::get() and while that's
+    good in theory, the VariantUtils code makes it impractical to use.
+    Instead, use relaxed_get() to get the old behavior. relaxed_get() didn't
+    exist in older versions of Boost, so the code must check BOOST_VERSION.
+    
+    Fixes #93.
+
+diff --git a/include/VariantUtils.h b/include/VariantUtils.h
+index 1e6c243..5a72e59 100644
+--- a/include/VariantUtils.h
++++ b/include/VariantUtils.h
+@@ -8,6 +8,7 @@
+ #define VARIANTUTILS_H
+ 
+ #include <boost/any.hpp>
++#include <boost/version.hpp>
+ #include "Lucene.h"
+ #include "MiscUtils.h"
+ 
+@@ -22,7 +23,11 @@ public:
+ 
+     template <typename TYPE, typename VAR>
+     static TYPE get(VAR var) {
++#if BOOST_VERSION < 105800
+         return var.type() == typeid(TYPE) ? boost::get<TYPE>(var) : TYPE();
++#else
++        return var.type() == typeid(TYPE) ? boost::relaxed_get<TYPE>(var) : TYPE();
++#endif
+     }
+ 
+     template <typename TYPE, typename VAR>
