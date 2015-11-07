@@ -14386,7 +14386,7 @@ net-misc/miniupnpd 1.10_pre20150721: MiniUPnP IGD Daemon
 net-misc/miredo 1.2.5-r2 1.2.6: Miredo is an open-source Teredo IPv6 tunneling software
 net-misc/mknbi 1.4.4: Utility for making tagged kernel images useful for netbooting
 net-misc/mobile-broadband-provider-info 20120614: Database of mobile broadband service providers
-net-misc/modemmanager 1.4.0 1.4.2 1.4.4 1.4.6 1.4.8 1.4.10: Modem and mobile broadband management libraries
+net-misc/modemmanager 1.4.8 1.4.10 1.4.12: Modem and mobile broadband management libraries
 net-misc/monmotha 2.3.8: MonMotha IPTables-based firewall script
 net-misc/mosh 1.2.4 1.2.5 1.2.5-r1 9999: Mobile shell that supports roaming and intelligent local echo
 net-misc/mrouted 3.9.5: IP multicast routing daemon
@@ -16417,7 +16417,7 @@ sys-block/endpoint 0.1.0: Endpoint turns a Linux machine with one or more firewi
 sys-block/fio 1.17.2 1.99.10 2.0.14-r1 2.0.15 2.1.9 2.2.4-r1 2.2.9 2.2.10: Jens Axboe's Flexible IO tester
 sys-block/fwdl 1.2.3: Seagate Fibre-Channel disk firmware upgrade tool
 sys-block/gpart 0.1h-r1 0.1h-r2: Partition table rescue/guessing tool
-sys-block/gparted 0.22.0 0.23.0: Gnome Partition Editor
+sys-block/gparted 0.23.0 0.24.0: Gnome Partition Editor
 sys-block/hdrecover 0.4: Attempts to recover a hard disk that has bad blocks on it
 sys-block/hpacucli 9.30.15.0: HP Array Configuration Utility Command Line Interface (HPACUCLI, formerly CPQACUXE)
 sys-block/iscsitarget 0.4.17 1.4.19 1.4.20.2 1.4.20.2_p20130103 1.4.20.2_p20130821 9999: Open Source iSCSI target with professional features
