@@ -248,6 +248,12 @@ python_export() {
 	esac
 	debug-print "${FUNCNAME}: implementation: ${impl}"
 
+	# make sure it doesn't leave our function unless desired
+	if ! has PYTHON "${@}"; then
+		local PYTHON
+	fi
+	export PYTHON=${EPREFIX}/usr/bin/${impl}
+
 	for var; do
 		case "${var}" in
 			EPYTHON)
@@ -255,7 +261,7 @@ python_export() {
 				debug-print "${FUNCNAME}: EPYTHON = ${EPYTHON}"
 				;;
 			PYTHON)
-				export PYTHON=${EPREFIX}/usr/bin/${impl}
+				# already exported above
 				debug-print "${FUNCNAME}: PYTHON = ${PYTHON}"
 				;;
 			PYTHON_SITEDIR)
