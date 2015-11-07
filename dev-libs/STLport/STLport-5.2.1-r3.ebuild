@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="boost debug static static-libs threads"
 
-DEPEND="boost? ( >=dev-libs/boost-1.35.0-r5 )"
+DEPEND="boost? ( dev-libs/boost:= )"
 RDEPEND="${DEPEND}"
 
 DOCS=( README etc/ChangeLog doc/FAQ doc/README.utf8 )
@@ -44,6 +44,9 @@ src_prepare() {
 	#define _LARGEFILE_SOURCE
 	#define _LARGEFILE64_SOURCE
 	EOF
+
+	# bug #562926
+	epatch "${FILESDIR}/${P}-time-facets.patch"
 
 	epatch_user
 }
