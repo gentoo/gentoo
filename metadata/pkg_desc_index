@@ -4182,7 +4182,7 @@ dev-java/reflectasm 1.09: High performance Java reflection
 dev-java/reflections 0.9.9: Java runtime metadata analysis
 dev-java/relaxng-datatype 1.0-r1: Interface between RELAX NG validators and datatype libraries
 dev-java/relaxngcc 1.12-r2 1.12-r3: RELAX NG Compiler Compiler
-dev-java/resin-servlet-api 3.0.25 3.1.12 4.0.26 4.0.27 4.0.44: Resin Servlet API 3.0/JSP API 2.1 implementation
+dev-java/resin-servlet-api 3.0.25 3.1.12 4.0.26 4.0.27 4.0.44 4.0.46: Resin Servlet API 3.0/JSP API 2.1 implementation
 dev-java/rhino 1.7.7-r1: An open-source implementation of JavaScript written in Java
 dev-java/rngom 20051226: RNGOM is an open-source Java library for parsing RELAX NG grammars
 dev-java/rome 0.9 0.9-r1: Open source Atom/RSS Java utilities that make it easy to work in Java with most syndication formats
@@ -6134,7 +6134,7 @@ dev-perl/Term-ShellUI 0.920.0-r1: A fully-featured shell-like command line envir
 dev-perl/TermReadKey 2.300.200-r1 2.330.0: Change terminal modes, and perform non-blocking reads
 dev-perl/Test-Assert 0.50.400-r1: Assertion methods for those who like JUnit
 dev-perl/Test-Base 0.600.0-r1 0.880.0: A Data Driven Testing Framework
-dev-perl/Test-CPAN-Meta 0.25.0: Validate your CPAN META.yml file
+dev-perl/Test-CPAN-Meta 0.25.0 0.25.0-r1: Validate your CPAN META.yml file
 dev-perl/Test-CheckDeps 0.2.0 0.10.0: Check for presence of dependencies
 dev-perl/Test-Class 0.390.0-r1 0.480.0 0.500.0: Easily create test classes in an xUnit/JUnit style
 dev-perl/Test-ClassAPI 1.60.0-r1: Provides basic first-pass API testing for large class trees
@@ -17501,7 +17501,7 @@ www-servers/ocsigenserver 2.5-r2 2.6: Ocaml-powered webserver and framework for 
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.2.6 0.3 0.3-r1 9999: Pretty small HTTP server -- a command-line tool to share files
-www-servers/resin 4.0.44-r4: A fast Servlet and JSP engine
+www-servers/resin 4.0.44-r4 4.0.46: A fast Servlet and JSP engine
 www-servers/servefile 0.4.2 0.4.3: Serve a single file via HTTP
 www-servers/spawn-fcgi 1.6.3-r1 1.6.3-r2 1.6.4: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thin 1.6.3 1.6.3-r1 1.6.4-r1: A fast and very simple Ruby web server
