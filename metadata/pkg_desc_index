@@ -4441,7 +4441,7 @@ dev-libs/MicroJSON 0.3.1 0.3.2: Small and simple to use JSON generation and pars
 dev-libs/OpenNI 1.5.7.10 9999: OpenNI SDK
 dev-libs/OpenNI2 2.2_beta2 9999: OpenNI2 SDK
 dev-libs/OpenSRF 1.2.0 2.1.1: Framework for the high-level development of the Evergreen ILS software
-dev-libs/STLport 5.2.1-r1 5.2.1-r2: C++ STL library
+dev-libs/STLport 5.2.1-r1 5.2.1-r3: C++ STL library
 dev-libs/UTF8Strings 1.14.0 1.14.2: C++ library providing ability to work natively with UTF8 string
 dev-libs/ace 5.7.2 5.8.3: The Adaptive Communications Environment
 dev-libs/angelscript 2.30.2-r1: A flexible, cross-platform scripting library
@@ -9370,7 +9370,7 @@ dev-util/gquilt 0.25-r1: A Python/GTK wrapper for quilt
 dev-util/gtk-builder-convert 2.24.25 2.24.27 2.24.28: Converts Glade files to GtkBuilder XML format
 dev-util/gtk-doc 1.21 1.24: GTK+ Documentation Generator
 dev-util/gtk-doc-am 1.21 1.24: Automake files from gtk-doc
-dev-util/gtk-update-icon-cache 2.24.27 3.14.13 3.16.4 3.16.5: GTK update icon cache
+dev-util/gtk-update-icon-cache 3.14.13 3.16.5 3.16.7: GTK update icon cache
 dev-util/heaptrack 9999: A fast heap memory profiler
 dev-util/howdoi 1.1.7: A code search tool
 dev-util/httpup 0.4.0k: synchronisation tool for http file repositories
@@ -10659,7 +10659,7 @@ gnome-extra/cinnamon-translations 2.4.4 2.6.2 2.6.3: Translation data for Cinnam
 gnome-extra/cjs 2.4.2 2.6.1 2.6.2: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/connman-gnome 0.7: Provides a daemon for managing internet connections
 gnome-extra/docky 2.2.0 2.2.1.1: Elegant, powerful, clean dock
-gnome-extra/eiciel 0.9.8.2 0.9.9 0.9.10: ACL editor for GNOME, with Nautilus extension
+gnome-extra/eiciel 0.9.10 0.9.11: ACL editor for GNOME, with Nautilus extension
 gnome-extra/evolution-data-server 3.12.11 3.16.4 3.16.5: Evolution groupware backend
 gnome-extra/evolution-ews 3.12.11 3.16.3-r1 3.16.4 3.16.5: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
@@ -10687,7 +10687,7 @@ gnome-extra/gnome-packagekit 3.12.2: PackageKit client for the GNOME desktop
 gnome-extra/gnome-power-manager 3.14.1 3.16.1: GNOME power management service
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extensions 3.14.4 3.16.1 3.16.2: JavaScript extensions for GNOME Shell
-gnome-extra/gnome-shell-extensions-topicons 26: Shows legacy tray icons on top
+gnome-extra/gnome-shell-extensions-topicons 26 28: Shows legacy tray icons on top
 gnome-extra/gnome-shell-frippery 0.9.0 0.10.2 0.10.3: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-system-monitor 3.14.1 3.16.0: The Gnome System Monitor
 gnome-extra/gnome-tweak-tool 3.14.2 3.14.3 3.16.2: Tool to customize GNOME 3 options
@@ -16482,7 +16482,7 @@ sys-boot/mbr-gpt 0.0.1: An MBR that can handle BIOS-based boot on GPT
 sys-boot/milo 2.4.18: The Alpha MIniLOader, for Alpha Machines without SRM
 sys-boot/netboot 0.10.2: netbooting utility
 sys-boot/nettrom 2.3.3: NetWinder ARM bootloader and utilities
-sys-boot/os-prober 1.65 1.66 1.67 1.68: Utility to detect other OSs on a set of drives
+sys-boot/os-prober 1.65 1.68 1.70: Utility to detect other OSs on a set of drives
 sys-boot/palo 1.95 9999: PALO : PArisc Linux Loader
 sys-boot/plymouth 0.8.8-r4 0.8.8-r5 0.9.0 0.9.2 9999: Graphical boot animation (splash) and logger
 sys-boot/plymouth-openrc-plugin 0.1.2: Plymouth plugin for OpenRC
