@@ -17219,7 +17219,7 @@ virtual/ttf-fonts 1: Virtual for Serif/Sans/Monospace font packages
 virtual/udev 215 217: Virtual to select between different udev daemon providers
 virtual/w3m 0: Virtual for the w3m web browser
 virtual/yacc 0: virtual for yacc (yet another compiler compiler)
-www-apache/anyterm 1.1.29: A terminal anywhere
+www-apache/anyterm 1.1.29 1.1.29-r1: A terminal anywhere
 www-apache/libapreq2 2.13-r1: A library for manipulating client request data via the Apache API
 www-apache/mod-auth-mysql 4.3.9-r1: Apache 2 module enabling HTTP authentication against MySQL databases.
 www-apache/mod_access_dnsbl 0.02: Specify access controls based on DNSBL zones
