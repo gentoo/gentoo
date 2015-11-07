@@ -2300,7 +2300,7 @@ app-text/kchmviewer 6.0-r1 6.1 7.1 7.3: A feature rich chm file viewer, based on
 app-text/kding 0.6-r2: KDE port of Ding, a dictionary lookup program
 app-text/keepnote 0.7.9-r2: A note taking application
 app-text/kpaste 1.0: Command-line tool to paste to paste.kde.org
-app-text/krop 0.4.7 0.4.8: A tool to crop PDF files
+app-text/krop 0.4.7 0.4.8 0.4.9: A tool to crop PDF files
 app-text/landslide 1.1.1 1.1.3: Landslide generates a slideshow using the slides that power the html5-slides presentation
 app-text/lcdf-typetools 2.97 2.104 2.105: Font utilities for eg manipulating OTF
 app-text/letterize 1.3: Generate English-plausible alphabetic mnemonics for a phone number
@@ -10254,7 +10254,7 @@ games-misc/rfksay 0.1: Like cowsay, but different because it involves robots and
 games-misc/robotfindskitten 1.7320508.406: Help robot find kitten
 games-misc/sdljoytest 11102003: SDL app to test joysticks and game controllers
 games-misc/sex 1.0: Spouts silly mad-lib-style porn-like text
-games-misc/sound-of-sorting 0.6.3 0.6.5: Visualization and Audibilization of Sorting Algorithms
+games-misc/sound-of-sorting 0.6.3 0.6.5 0.6.6_pre20151107: Visualization and Audibilization of Sorting Algorithms
 games-misc/typespeed 0.6.5: Test your typing speed, and get your fingers CPS
 games-misc/wtf 20090924: translates acronyms for you
 games-misc/wumpus 1.4: Classic Hunt the Wumpus Adventure Game
