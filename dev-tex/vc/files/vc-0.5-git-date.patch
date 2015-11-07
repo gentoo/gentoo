@@ -1,0 +1,14 @@
+Use CommitterDate instead of AuthorDate, because the latter is not
+guaranteed to increase monotonously.
+
+--- vc-orig/git-unix/vc-git.awk
++++ vc/git-unix/vc-git.awk
+@@ -39,7 +39,7 @@
+ ### Standard encoding is UTF-8.
+ 				if (Encoding == "") Encoding = "UTF-8"
+ ### Extract relevant information from variables.
+-				LongDate = substr(AuthorDate, 1, 25)
++				LongDate = substr(CommitterDate, 1, 25)
+         DateRAW = substr(LongDate, 1, 10)
+         DateISO = DateRAW
+         DateTEX = DateISO

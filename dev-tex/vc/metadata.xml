@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>tex</herd>
+<maintainer>
+  <email>ulm@gentoo.org</email>
+</maintainer>
+<longdescription>
+  This is a script based approach to version control for TeX documents.
+  It works more reliably than keyword substitution based approaches,
+  since it tracks all files in a working copy, not only .tex files.
+
+  The vc bundle works with LaTeX and plain TeX. Currently, Bazaar, Git
+  and Subversion are supported.
+</longdescription>
+</pkgmetadata>
