@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="admin doc"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CDEPEND="dev-java/resin-servlet-api:3.1
 	dev-java/jsr101:0
@@ -48,7 +48,6 @@ resin-servlet-api-3.1
 glassfish-deployment-api-1.2"
 
 PATCHES=(
-	"${FILESDIR}"/"${PV}"/resin-compile.patch
 	"${FILESDIR}"/"${PV}"/build.xml.patch
 )
 
@@ -60,11 +59,6 @@ pkg_setup() {
 
 src_prepare() {
 	local vm_version=$(java-pkg_get-vm-version)
-
-	# #558442.
-	if [[ "${vm_version}" == "1.8" ]]; then
-		PATCHES+=("${FILESDIR}"/"${PV}"/VarType.java.patch)
-	fi
 
 	epatch "${PATCHES[@]}"
 
