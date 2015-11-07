@@ -25,6 +25,8 @@ S="${WORKDIR}/${MY_P}"
 
 DOCS=( AUTHORS README.rst )
 
+PATCHES=( "${FILESDIR}/${P}-boost-1.58.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_DEMO=OFF
