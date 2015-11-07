@@ -1,0 +1,27 @@
+Output format of "git status" has changed which broke parsing.
+Use "git status --porcelain" instead which is a more stable interface,
+intended for processing by scripts.
+
+--- vc-orig/git-unix/vc
++++ vc/git-unix/vc
+@@ -20,5 +20,5 @@
+ git --no-pager log -1 HEAD --pretty=format:"Hash: %H%nAbr. Hash: %h%nParent Hashes: %P%nAbr. Parent Hashes: %p%nAuthor Name: %an%nAuthor Email: %ae%nAuthor Date: %ai%nCommitter Name: %cn%nCommitter Email: %ce%nCommitter Date: %ci%n" |gawk -v script=log -v full=$full -f vc-git.awk > vc.tex
+ if [ "$mod" = 1 ]
+ then
+-  git status |gawk -v script=status -f vc-git.awk >> vc.tex
++  git status --porcelain |gawk -v script=status -f vc-git.awk >> vc.tex
+ fi
+--- vc-orig/git-unix/vc-git.awk
++++ vc/git-unix/vc-git.awk
+@@ -26,9 +26,9 @@
+ 
+ ### Process output of "git status".
+ ### Changed index?
+-script=="status" && /^# Changes to be committed:/ { modified = 1 }
++script=="status" && /^[MADRC]/ { if (modified == 0) modified = 1 }
+ ### Unstaged modifications?
+-script=="status" && /^# Changed but not updated:/ { modified = 2 }
++script=="status" && /^.[MD]/ { modified = 2 }
+ 
+ 
+ 
