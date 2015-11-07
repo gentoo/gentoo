@@ -3,7 +3,6 @@
 # $Id$
 
 EAPI=5
-WX_GTK_VER="3.0"
 inherit eutils multilib toolchain-funcs versionator multiprocessing autotools
 
 DESCRIPTION="Tools to create, alter, and inspect Matroska files"
