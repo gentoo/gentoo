@@ -126,6 +126,7 @@ _python_impl_supported() {
 # The path to Python site-packages directory.
 #
 # Set and exported on request using python_export().
+# Requires a proper build-time dependency on the Python implementation.
 #
 # Example value:
 # @CODE
@@ -267,17 +268,10 @@ python_export() {
 				debug-print "${FUNCNAME}: PYTHON = ${PYTHON}"
 				;;
 			PYTHON_SITEDIR)
-				local dir
-				case "${impl}" in
-					python*|pypy|pypy3)
-						dir=/usr/$(get_libdir)/${impl}
-						;;
-					jython*)
-						dir=/usr/share/${impl/n/n-}/Lib
-						;;
-				esac
-
-				export PYTHON_SITEDIR=${EPREFIX}${dir}/site-packages
+				# sysconfig can't be used because:
+				# 1) pypy doesn't give site-packages but stdlib
+				# 2) jython gives paths with wrong case
+				export PYTHON_SITEDIR=$("${PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_lib())')
 				debug-print "${FUNCNAME}: PYTHON_SITEDIR = ${PYTHON_SITEDIR}"
 				;;
 			PYTHON_INCLUDEDIR)
