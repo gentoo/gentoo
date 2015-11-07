@@ -154,7 +154,7 @@ src_configure() {
 	# It does not compile on alpha without this in LDFLAGS
 	# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=648761
 	use alpha && append-ldflags "-Wl,--no-relax"
-	
+
 	# ld segfaults on ia64 with LDFLAGS --as-needed, bug #555504
 	use ia64 && append-ldflags "-Wl,--no-as-needed"
 
