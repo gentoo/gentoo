@@ -25,7 +25,7 @@ RDEPEND="
 	stats? ( >=media-libs/gd-2.0.26[jpeg] )
 	geoip? ( dev-libs/geoip )
 	upnp? ( >=net-libs/libupnp-1.6.6 )
-	remote? ( >=media-libs/libpng-1.2.0
+	remote? ( >=media-libs/libpng-1.2.0:0=
 	unicode? ( >=media-libs/gd-2.0.26 ) )
 	X? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )
 	!X? ( x11-libs/wxGTK:${WX_GTK_VER} )
