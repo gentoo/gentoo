@@ -7,7 +7,7 @@ EAPI=5
 WX_GTK_VER="3.0"
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
-inherit base mercurial python-single-r1 wxwidgets versionator cmake-utils
+inherit mercurial python-single-r1 wxwidgets versionator cmake-utils
 
 DESCRIPTION="GUI for the creation & processing of panoramic images"
 HOMEPAGE="http://hugin.sf.net"
