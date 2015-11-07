@@ -11,6 +11,10 @@ SLOT="0"
 
 IUSE="+build-kernel debug dtrace zfs"
 
+# Security Advisory and Errata patches.
+UPSTREAM_PATCHES=( "EN-15:19/kqueue.patch"
+	"EN-15:20/vm.patch" )
+
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 	SRC_URI="${SRC_URI}
