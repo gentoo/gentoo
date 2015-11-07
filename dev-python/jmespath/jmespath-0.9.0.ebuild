@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )
 "
 RDEPEND=""
