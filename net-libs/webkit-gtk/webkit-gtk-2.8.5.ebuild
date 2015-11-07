@@ -135,11 +135,11 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Debian patches to fix support for some arches
-	# https://bugs.webkit.org/show_bug.cgi?id=129540
-	epatch "${FILESDIR}"/${PN}-2.6.0-{hppa,ia64}-platform.patch
-	# https://bugs.webkit.org/show_bug.cgi?id=129542
-	epatch "${FILESDIR}"/${PN}-2.8.1-ia64-malloc.patch
+	# https://bugs.gentoo.org/show_bug.cgi?id=555504
+	epatch "${FILESDIR}"/${PN}-2.8.5-fix-ia64-build.patch
+
+	# https://bugs.gentoo.org/show_bug.cgi?id=564352
+	epatch "${FILESDIR}"/${PN}-2.8.5-fix-alpha-build.patch
 
 	# https://bugs.webkit.org/show_bug.cgi?id=148379
 	epatch "${FILESDIR}"/${PN}-2.8.5-webkit2gtkinjectedbundle-j1.patch
@@ -157,6 +157,9 @@ src_configure() {
 	# It does not compile on alpha without this in LDFLAGS
 	# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=648761
 	use alpha && append-ldflags "-Wl,--no-relax"
+
+	# ld segfaults on ia64 with LDFLAGS --as-needed, bug #555504
+	use ia64 && append-ldflags "-Wl,--no-as-needed"
 
 	# Sigbuses on SPARC with mcpu and co., bug #???
 	use sparc && filter-flags "-mvis"
