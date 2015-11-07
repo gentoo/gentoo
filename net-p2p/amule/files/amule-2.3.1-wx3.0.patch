@@ -1,0 +1,45 @@
+diff -ur aMule-2.3.1/src/amuled.cpp aMule-2.3.1.wx3/src/amuled.cpp
+--- aMule-2.3.1/src/amuled.cpp	2011-07-13 17:00:12.000000000 +0200
++++ aMule-2.3.1.wx3/src/amuled.cpp	2014-01-19 13:55:50.904800356 +0100
+@@ -423,7 +423,9 @@
+ #ifndef __WXMSW__
+ 
+ 
++/*
+ static EndProcessDataMap endProcDataMap;
++*/
+ 
+ 
+ int CDaemonAppTraits::WaitForChild(wxExecuteData &execData)
+@@ -449,6 +451,7 @@
+ 		wxSleep(1);
+ 		result = AmuleWaitPid(execData.pid, &status, WNOHANG, &msg);
+ 		if (result == 0) {
++		/*
+ 			// Add a WxEndProcessData entry to the map, so that we can
+ 			// support process termination
+ 			wxEndProcessData *endProcData = new wxEndProcessData();
+@@ -456,6 +459,7 @@
+ 			endProcData->process = execData.process;
+ 			endProcData->tag = 0;
+ 			endProcDataMap[execData.pid] = endProcData;
++		*/
+ 
+ 			status = execData.pid;
+ 		} else {
+@@ -480,6 +484,7 @@
+ 	msg << wxT("OnSignalChildHandler() has been called for child process with pid `") <<
+ 		siginfo->si_pid <<
+ 		wxT("'. ");
++/*
+ 	// Make sure we leave no zombies by calling waitpid()
+ 	int status = 0;
+ 	pid_t result = AmuleWaitPid(siginfo->si_pid, &status, WNOHANG, &msg);
+@@ -503,6 +508,7 @@
+ 			msg << wxT(" Error: the child process pid is not on the pid map.");
+ 		}
+ 	}
++*/
+ 
+ 	// Log our passage here
+ 	AddDebugLogLineN(logGeneral, msg);
