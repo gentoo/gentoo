@@ -13,8 +13,8 @@ PLEVEL=${PV/*p}
 DESCRIPTION="Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers"
 HOMEPAGE="http://gmplib.org/"
 SRC_URI="ftp://ftp.gmplib.org/pub/${MY_P}/${MY_P}.tar.xz
-	mirror://gnu/${PN}/${MY_P}.tar.xz"
-#	doc? ( http://gmplib.org/${PN}-man-${MY_PV}.pdf )"
+	mirror://gnu/${PN}/${MY_P}.tar.xz
+	doc? ( http://gmplib.org/${PN}-man-${MY_PV}.pdf )"
 
 LICENSE="|| ( LGPL-3+ GPL-2+ )"
 # The subslot reflects the C & C++ SONAMEs.
