@@ -9,5 +9,5 @@ RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=mirror://sourceforge/burn-cd/burn-cd-1.8.0.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=e223b3e57570c27cd065f6300f328b27

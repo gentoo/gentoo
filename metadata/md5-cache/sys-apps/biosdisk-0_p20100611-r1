@@ -9,5 +9,5 @@ RDEPEND=>=app-text/dos2unix-5.0 sys-boot/syslinux >=dev-lang/python-2.7.5-r2:2.7
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=http://linux.dell.com/biosdisk/biosdisk-git-06112010.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=e02218eae72a3a634ae663b4ca212e31

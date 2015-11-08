@@ -10,5 +10,5 @@ RDEPEND=>=x11-libs/gtk+-2.4:2 >=dev-libs/glib-2.6:2 || ( ( >=dev-lang/python-2.7
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://gnome/sources/gnome-python-extras/2.25/gnome-python-extras-2.25.3.tar.bz2
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	b81ab4852d108e3d9c940fa03bce80e1	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	60a62ae0ee8cd93b4ba99a4c1371eb8b	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=5773c38fe4c8f4595c41a8e2c78363f2

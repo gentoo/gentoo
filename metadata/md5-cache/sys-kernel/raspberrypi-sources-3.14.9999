@@ -8,5 +8,5 @@ LICENSE=GPL-2 freedist
 RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
 RESTRICT=binchecks strip
 SLOT=3.14.9999
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	git-2	32530738ee006bc09e1ac93f6e73d719	kernel-2	7bbc05b42cbfd1ed8b4f9837d1e43df2	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	b81ab4852d108e3d9c940fa03bce80e1	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	git-2	32530738ee006bc09e1ac93f6e73d719	kernel-2	7bbc05b42cbfd1ed8b4f9837d1e43df2	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	60a62ae0ee8cd93b4ba99a4c1371eb8b	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=437183d58bd2aa7ef61a96b3c035268d

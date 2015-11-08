@@ -6986,7 +6986,6 @@ dev-python/enable 4.4.1 4.5.1: Enthought Tool Suite: Drawing and interaction pac
 dev-python/enaml 0.6.8-r1 0.9.8: Enthought Tool Suite: framework for writing declarative interfaces
 dev-python/encore 0.3 0.4.0 0.5.1: Enthought Tool Suite: collection of core-level utility modules
 dev-python/enum34 1.0 1.0.4: Python 3.4 Enum backported
-dev-python/envisage 4.4.0: Enthought Tool Suite: Extensible application framework
 dev-python/envoy 0.0.3: Simple API for running external processes
 dev-python/enzyme 0.4.1 9999: Python video metadata parser
 dev-python/epsilon 0.6.0-r2 0.7.0: Epsilon is a Python utilities package, most famous for its Time class
@@ -6994,7 +6993,6 @@ dev-python/epydoc 3.0.1-r2: Tool for generating API documentation for Python mod
 dev-python/errorhandler 1.1.1-r2: Logging framework handler that tracks when messages above a certain level have been logged
 dev-python/et_xmlfile 1.0.0 1.0.1: An implementation of lxml.xmlfile for the standard library
 dev-python/ets 4.4.1: Meta package for the Enthought Tool Suite
-dev-python/etsdevtools 4.0.2-r1: Enthought Tool Suite: Tools to support Python development
 dev-python/etsproxy 0.1.2-r1: Enthought Tool Suite: Proxy modules for backwards compatibility
 dev-python/eunuchs 20050320.1-r1: Missing manly parts of UNIX API for Python
 dev-python/eventlet 0.13.0 0.15.2 0.17.1 0.17.4: Highly concurrent networking library
@@ -7927,7 +7925,6 @@ dev-python/turbocheetah 1.0-r1: TurboGears plugin to support use of Cheetah temp
 dev-python/turbojson 1.3.2-r1: TurboGears JSON file format support plugin
 dev-python/turbokid 1.0.5-r1: Python template plugin that supports Kid templates
 dev-python/turbolift 2.0.5: Openstack Swift sync/backup utility
-dev-python/tvdb_api 1.9: Python interface to thetvdb.com API
 dev-python/tweepy 2.3 3.3.0: A Python library for accessing the Twitter API
 dev-python/twilio 3.6.9: Helper library for the Twilio API
 dev-python/twill 0.9-r1: Simple scripting language for web browsing with Python API
@@ -13080,7 +13077,6 @@ media-tv/shoutcast2vdr 0.0.8 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvbrowser 3.4.1.0-r1 9999-r1: Themeable and easy to use TV Guide - written in Java
 media-tv/tvheadend 3.4.27 4.0.6 9999: Tvheadend is a TV streaming server and digital video recorder
 media-tv/tvmovie2vdr 0.5.13: load the program guide from tvmovie and others to vdr
-media-tv/tvnamer 2.3: Automatic TV episode file renamer, data from thetvdb.com
 media-tv/v4l-dvb-saa716x 0.0.1_p20140322 0.0.1_p20141109 0.0.1_p20141109-r1 0.0.1_p20141109-r2: driver for saa716x based dvb cards like Technotrend S2-6400 or Technisat Skystar 2 eXpress HD
 media-tv/v4l-utils 1.0.0 1.6.0 1.6.2: Separate utilities ebuild from upstream v4l-utils package
 media-tv/w_scan 20121111 20130331 20140118 20140727 20141122: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies and modulations
@@ -14278,7 +14274,7 @@ net-misc/dropbox-cli 1-r1 1.6.0: Cli interface for dropbox (python), part of nau
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
 net-misc/electrum 2.1.1 2.3.3 2.5.1: User friendly Bitcoin client
 net-misc/elliptics 2.19.2.6: Elliptics network is a fault tolerant key/value storage without dedicated metadata servers
-net-misc/elliptics-eblob 0.0.1 0.22.16: The elliptics network - eblob backend
+net-misc/elliptics-eblob 0.0.1: The elliptics network - eblob backend
 net-misc/ethercard-diag 20050321.1g 20050321.1g-r1: low level mii diagnostic tools including mii-diag and etherwake (merge of netdiag/isa-diag)
 net-misc/exabgp 3.2.17: The BGP swiss army knife of networking
 net-misc/fakeidentd 2.6: A static, secure identd. One source file only!
@@ -14780,7 +14776,6 @@ net-proxy/dansguardian 2.12.0.3-r2: Web content filtering via proxy
 net-proxy/dante 1.1.19-r4 1.4.0-r2 1.4.1: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.16-r1: The dnsproxy daemon is a proxy for DNS queries
 net-proxy/haproxy 1.4.26 1.5.14 1.6.1 9999: A TCP/HTTP reverse proxy for high availability environments
-net-proxy/hatop 0.7.7: interactive ncurses client and real-time monitoring, statistics displaying tool for the HAProxy
 net-proxy/havp 0.92a-r1: HTTP AntiVirus Proxy
 net-proxy/http-replicator 3.0-r4 4.0_alpha2-r4: Proxy cache for Gentoo packages
 net-proxy/httpush 0.9_beta11-r1: Httpush is an intercepting proxy, allowing user to modify HTTP requests on-the-fly
@@ -14874,7 +14869,6 @@ net-wireless/madwifi-ng-tools 0.9.3.3 0.9.4 0.9.4.4119.20100201 0.9.4.4133.20100
 net-wireless/madwimax 0.1.1-r1: A reverse-engineered Linux driver for mobile WiMAX devices based on Samsung CMC-730 chip
 net-wireless/mdk 3.6-r1: Wireless injection tool with various functions
 net-wireless/mfoc 0.10.7: Mifare Classic Offline Cracker
-net-wireless/multimode 1.00-r2 1.4_p20140831-r1 9999: multimode radio decoder for rtl-sdr devices using gnuradio
 net-wireless/ndiswrapper 1.59: Wrapper for using Windows drivers for some wireless cards
 net-wireless/neard 0.11 0.13 0.15: Near Field Communication (NFC) management daemon
 net-wireless/openbsc 9999: OpenBSC, OsmoSGSN, OsmoBSC and other programs
@@ -14887,7 +14881,6 @@ net-wireless/portapack-firmware 20150904: Firmware and scripts for controlling t
 net-wireless/pyrit 0.4.0-r1: GPU-accelerated attack against WPA-PSK authentication
 net-wireless/python-wifi 0.5.0-r1 0.5.0-r3: Provides r/w access to a wireless network card's capabilities using the Linux Wireless Extensions
 net-wireless/reaver 1.4 1.4-r1 1.4-r3: Brute force attack against Wifi Protected Setup
-net-wireless/rfcat 9999: The swiss army knife of subGHz
 net-wireless/rfkill 0.5: Tool to read and control rfkill status through /dev/rfkill
 net-wireless/rfswitch 1.3: Drivers for software based wireless radio switches
 net-wireless/rtl-sdr 0.5.0 0.5.3 0.5.3-r1 0.5.3_p20150730 9999: turns your Realtek RTL2832 based DVB dongle into a SDR receiver
@@ -17405,7 +17398,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.2 2.3.3: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.2.4 4.3 4.3.1: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 46.0.2490.71 47.0.2526.6 47.0.2526.16 48.0.2547.0 48.0.2552.0: Open-source version of Google Chrome web browser
+www-client/chromium 46.0.2490.71 47.0.2526.16 47.0.2526.49 48.0.2547.0 48.0.2552.0: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20141005 1.0_pre20150227 1.0_pre20150519: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.4 3.0.4.1 3.0.5: Lean FLTK based web browser

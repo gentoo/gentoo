@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=mirror://sabayon/sys-apps/entropy-254.tar.bz2
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	612c783d1a1a182ad7ea4f2eb0b79e86	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=eaed949442ee32202cc7442298fb69f8
