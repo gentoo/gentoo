@@ -252,6 +252,14 @@ src_install() {
 	# Fix collisions between different slots of Python.
 	rm -f "${ED}usr/$(get_libdir)/libpython3.so"
 
+	# Cheap hack to get version with ABIFLAGS
+	local abiver=$(cd "${ED}usr/include"; echo python*)
+	# Replace python3.X with a symlink if appropriate
+	if [[ ${abiver} != python${SLOT} ]]; then
+		rm "${ED}usr/bin/python${SLOT}" || die
+		dosym "${abiver}" "/usr/bin/python${SLOT}"
+	fi
+
 	if use build; then
 		rm -fr "${ED}usr/bin/idle${SLOT}" "${libdir}/"{idlelib,sqlite3,test,tkinter}
 	else
