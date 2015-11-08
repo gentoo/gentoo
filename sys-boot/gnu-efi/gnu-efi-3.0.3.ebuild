@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit multilib
+inherit multilib toolchain-funcs
 
 DESCRIPTION="Library for build EFI Applications"
 HOMEPAGE="http://gnu-efi.sourceforge.net/"
