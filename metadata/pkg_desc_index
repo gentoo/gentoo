@@ -17523,7 +17523,7 @@ x11-apps/copyq 2.4.9: Clipboard manager with advanced features
 x11-apps/editres 1.0.6: a dynamic resource editor for X Toolkit applications
 x11-apps/fonttosfnt 1.0.4-r1: X.Org fonttosfnt application
 x11-apps/fslsfonts 1.0.4 1.0.5: list fonts served by X font server
-x11-apps/fstobdf 1.0.5 1.0.6: generate BDF font from X font server
+x11-apps/fstobdf 1.0.6: generate BDF font from X font server
 x11-apps/fusion-icon 0.1-r4: Compiz Fusion Tray Icon and Manager
 x11-apps/iceauth 1.0.6 1.0.7: ICE authority file utility
 x11-apps/ico 1.0.4: animate an icosahedron or other polyhedron
@@ -17545,16 +17545,16 @@ x11-apps/showfont 1.0.4 1.0.5: font dumper for X font server
 x11-apps/simple-ccsm 0.8.4-r2: Simplified Compizconfig Settings Manager
 x11-apps/smproxy 1.0.5 1.0.6: Session Manager Proxy
 x11-apps/spotlighter 0.1: Shows a movable and resizable spotlight on the screen
-x11-apps/transset 1.0.0 1.0.1: An utility for setting opacity property
+x11-apps/transset 1.0.1: An utility for setting opacity property
 x11-apps/viewres 1.0.4: graphical class browser for Xt
 x11-apps/whyteboard 0.41.1: A simple image, PDF and postscript file annotator
 x11-apps/x11perf 1.5.4 1.6.0: X rendering operation stress test utility
-x11-apps/xauth 1.0.8 1.0.9 1.0.9-r1 1.0.9-r2: X authority file utility
+x11-apps/xauth 1.0.9-r1 1.0.9-r2: X authority file utility
 x11-apps/xbacklight 1.2.1-r1: Sets backlight level using the RandR 1.2 BACKLIGHT output property
 x11-apps/xbiff 1.0.3: mailbox flag for X
 x11-apps/xcalc 1.0.5 1.0.6: scientific calculator for X
 x11-apps/xclipboard 1.1.2 1.1.3: interchange between cut buffer and selection
-x11-apps/xclock 1.0.6 1.0.7: analog / digital clock for X
+x11-apps/xclock 1.0.7: analog / digital clock for X
 x11-apps/xcmsdb 1.0.4 1.0.5: Device Color Characterization utility for X Color Management System
 x11-apps/xconsole 1.0.6: monitor system console messages with X
 x11-apps/xcursorgen 1.0.5 1.0.6: create an X cursor file from a collection of PNG images
@@ -17575,7 +17575,7 @@ x11-apps/xhost 1.0.6 1.0.7: Controls host and/or user access to a running X serv
 x11-apps/xinit 1.3.3 1.3.3-r1 1.3.4 1.3.4-r1: X Window System initializer
 x11-apps/xinput 1.6.1 1.6.2: Utility to set XInput device parameters
 x11-apps/xinput_calibrator 0.7.5: A generic touchscreen calibration program for X.Org
-x11-apps/xkbcomp 1.2.4 1.3.0: compile XKB keyboard description
+x11-apps/xkbcomp 1.3.0 1.3.1: compile XKB keyboard description
 x11-apps/xkbevd 1.1.3 1.1.4: XKB event daemon
 x11-apps/xkbprint 1.0.3 1.0.4: Print an XKB keyboard description
 x11-apps/xkbset 0.5-r1: Manage xkb features such as MouseKeys, AccessX, StickyKeys, BounceKeys and SlowKeys
@@ -17608,7 +17608,7 @@ x11-apps/xvidtune 1.0.2-r1 1.0.3: video mode tuner for Xorg
 x11-apps/xvinfo 1.1.2 1.1.3: Print out X-Video extension adaptor information
 x11-apps/xwarppointer 1-r2: Program to move the mouse cursor
 x11-apps/xwd 1.0.6: dump an image of an X window
-x11-apps/xwininfo 1.1.2 1.1.3: window information utility for X
+x11-apps/xwininfo 1.1.3: window information utility for X
 x11-apps/xwud 1.0.4: image displayer for X
 x11-base/xorg-drivers 1.12 1.13 1.14 1.15 1.16 1.17: Meta package containing deps on all xorg drivers
 x11-base/xorg-server 1.12.4-r5 1.12.4-r7 1.15.2-r2 1.15.2-r4 1.16.4 1.16.4-r5 1.17.4: X.Org X servers
