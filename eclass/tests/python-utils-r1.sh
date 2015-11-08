@@ -69,13 +69,13 @@ test_var PYTHON_LIBPATH python2_7 /usr/lib/libpython2.7$(get_libname)
 test_var PYTHON_PKG_DEP python2_7 '*dev-lang/python*:2.7'
 test_var PYTHON_SCRIPTDIR python2_7 /usr/lib/python-exec/python2.7
 
-test_var EPYTHON python3_3 python3.3
-test_var PYTHON python3_3 /usr/bin/python3.3
-test_var PYTHON_SITEDIR python3_3 /usr/lib/python3.3/site-packages
-test_var PYTHON_INCLUDEDIR python3_3 /usr/include/python3.3
-test_var PYTHON_LIBPATH python3_3 /usr/lib/libpython3.3$(get_libname)
-test_var PYTHON_PKG_DEP python3_3 '*dev-lang/python*:3.3'
-test_var PYTHON_SCRIPTDIR python3_3 /usr/lib/python-exec/python3.3
+test_var EPYTHON python3_4 python3.4
+test_var PYTHON python3_4 /usr/bin/python3.4
+test_var PYTHON_SITEDIR python3_4 /usr/lib/python3.4/site-packages
+test_var PYTHON_INCLUDEDIR python3_4 /usr/include/python3.4
+test_var PYTHON_LIBPATH python3_4 /usr/lib/libpython3.4$(get_libname)
+test_var PYTHON_PKG_DEP python3_4 '*dev-lang/python*:3.4'
+test_var PYTHON_SCRIPTDIR python3_4 /usr/lib/python-exec/python3.4
 
 test_var EPYTHON jython2_7 jython2.7
 test_var PYTHON jython2_7 /usr/bin/jython2.7
