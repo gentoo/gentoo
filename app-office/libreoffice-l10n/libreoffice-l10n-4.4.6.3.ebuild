@@ -22,7 +22,7 @@ IUSE="offlinehelp"
 # when changing the language lists, please be careful to preserve the spaces (bug 491728)
 #
 LANGUAGES_HELP=" am ast bg bn_IN bn bo bs ca_valencia ca cs da de dz el en_GB en en_ZA eo es et eu fi fr gl gu he hi hr hu id is it ja ka km ko mk nb ne nl nn om pl pt_BR pt ru si sk sl sq sv tg tr ug uk vi zh_CN zh_TW "
-LANGUAGES="${LANGUAGES_HELP}af ar as be br brx cy dgo fa ga gd gug kk kmr_Latn kn kok ks lb lo lt lv mai ml mn mni mr my nr nso oc or pa_IN ro rw sa_IN sat sd sid sr_Latn sr ss st sw_TZ ta te th tn ts tt uz ve xh zu "
+LANGUAGES="${LANGUAGES_HELP}af ar as be br brx cy dgo fa ga gd kk kmr_Latn kn kok ks lb lo lt lv mai ml mn mni mr my nr nso oc or pa_IN ro rw sa_IN sat sd sid sr_Latn sr ss st sw_TZ ta te th tn ts tt uz ve xh zu "
 
 for lang in ${LANGUAGES_HELP}; do
 	helppack=""
