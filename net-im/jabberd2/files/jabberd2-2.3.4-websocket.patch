@@ -1,0 +1,31 @@
+From b861b9c72adc732cbdfbac4eb8a4205126227f6b Mon Sep 17 00:00:00 2001
+From: Tomasz Sterna <tomek@xiaoka.com>
+Date: Fri, 30 Oct 2015 12:40:32 +0100
+Subject: [PATCH] Enable USE_WEBSOCKET check in SX plugins
+
+---
+ sx/plugins.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/sx/plugins.h b/sx/plugins.h
+index b5d3934..65dae93 100644
+--- a/sx/plugins.h
++++ b/sx/plugins.h
+@@ -159,7 +159,7 @@ typedef struct _sx_compress_conn_st {
+ JABBERD2_API int sx_ack_init(sx_env_t env, sx_plugin_t p, va_list args);
+ 
+ /* websocket wrapper plugin */
+-//#ifdef USE_WEBSOCKET
++#ifdef USE_WEBSOCKET
+ #include <http_parser.h>
+ #include <util/util.h>
+ 
+@@ -183,7 +183,7 @@ typedef struct _sx_websocket_conn_st {
+     xht                     headers;
+     void                    *frame;
+ } *_sx_websocket_conn_t;
+-//#endif
++#endif
+ 
+ #ifdef __cplusplus
+ }
