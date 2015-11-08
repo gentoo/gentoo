@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils flag-o-matic
 
 JUMBOV=20070520
-DESCRIPTION="Interactive image manipulation program supporting a wide variety of image formats"
+DESCRIPTION="Interactive image manipulation program supporting a wide variety of formats"
 HOMEPAGE="http://www.trilon.com/xv/index.html http://www.sonic.net/~roelofs/greg_xv.html"
 SRC_URI="mirror://sourceforge/png-mng/${P}-jumbo-patches-${JUMBOV}.tar.gz
 	ftp://ftp.cis.upenn.edu/pub/xv/${P}.tar.gz
