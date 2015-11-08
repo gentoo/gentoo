@@ -14469,7 +14469,7 @@ net-misc/pssh 2.3.1-r1: PSSH provides parallel versions of OpenSSH and related t
 net-misc/ptpd 2.3.1: Precision Time Protocol daemon
 net-misc/puf 1.0.0: A download tool for UNIX-like systems
 net-misc/pump 0.8.24-r4: This is the DHCP/BOOTP client written by RedHat
-net-misc/putty 0.65 9999: A Free Telnet/SSH Client
+net-misc/putty 0.65 0.66 9999: A Free Telnet/SSH Client
 net-misc/pycnb 0.0.4-r1: Access cnb.cz daily rates with the comfort of your command line
 net-misc/pyhoca-cli 0.5.0.2-r1: X2Go command line client
 net-misc/pyhoca-gui 0.5.0.4-r1: X2Go graphical client applet
@@ -18112,7 +18112,7 @@ x11-misc/xplanetFX 2.6.4 2.6.6: User-friendly interface to configure, run or dae
 x11-misc/xrestop 0.4: 'Top' like statistics of X11 client's server side resource usage
 x11-misc/xrmap 2.33-r1: a X client for generating images of the Earth and manipulating the CIA World data bank
 x11-misc/xrootconsole 0.6: A utility that displays its input in a text box on your root window
-x11-misc/xscreensaver 5.32 5.33 5.34: A modular screen saver and locker for the X Window System
+x11-misc/xscreensaver 5.34: A modular screen saver and locker for the X Window System
 x11-misc/xscreensaver-app 2.3-r2 2.3-r3: XScreenSaver dockapp for the Window Maker window manager
 x11-misc/xsel 1.2.0: XSel is a command-line program for getting and setting the contents of the X selection
 x11-misc/xsensors 0.70: A hardware health information viewer, interface to lm-sensors
