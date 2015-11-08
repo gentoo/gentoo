@@ -190,6 +190,20 @@ _python_impl_supported() {
 # -lpython2.7
 # @CODE
 
+# @ECLASS-VARIABLE: PYTHON_CONFIG
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Path to the python-config executable.
+#
+# Set and exported on request using python_export().
+# Valid only for CPython. Requires a proper build-time dependency
+# on the Python implementation and on pkg-config.
+#
+# Example value:
+# @CODE
+# /usr/bin/python2.7-config
+# @CODE
+
 # @ECLASS-VARIABLE: PYTHON_PKG_DEP
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -323,6 +337,22 @@ python_export() {
 				export PYTHON_LIBS=${val}
 				debug-print "${FUNCNAME}: PYTHON_LIBS = ${PYTHON_LIBS}"
 				;;
+			PYTHON_CONFIG)
+				local flags val
+
+				case "${impl}" in
+					python*)
+						flags=$("${PYTHON}" -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS") or "")')
+						val=${PYTHON}${flags}-config
+						;;
+					*)
+						die "${impl}: obtaining ${var} not supported"
+						;;
+				esac
+
+				export PYTHON_CONFIG=${val}
+				debug-print "${FUNCNAME}: PYTHON_CONFIG = ${PYTHON_CONFIG}"
+				;;
 			PYTHON_PKG_DEP)
 				local d
 				case ${impl} in
@@ -441,6 +471,23 @@ python_get_LIBS() {
 
 	python_export "${@}" PYTHON_LIBS
 	echo "${PYTHON_LIBS}"
+}
+
+# @FUNCTION: python_get_PYTHON_CONFIG
+# @USAGE: [<impl>]
+# @DESCRIPTION:
+# Obtain and print the PYTHON_CONFIG location for the given
+# implementation. If no implementation is provided, ${EPYTHON} will be
+# used.
+#
+# Please note that this function can be used with CPython only.
+# It requires Python installed, and therefore proper build-time
+# dependencies need be added to the ebuild.
+python_get_PYTHON_CONFIG() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	python_export "${@}" PYTHON_CONFIG
+	echo "${PYTHON_CONFIG}"
 }
 
 # @FUNCTION: python_get_scriptdir
