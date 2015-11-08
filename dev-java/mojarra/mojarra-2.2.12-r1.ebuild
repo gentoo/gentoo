@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils java-pkg-2 java-pkg-simple
+inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Project Mojarra - GlassFish's Implementation for JavaServer Faces API"
 HOMEPAGE="https://javaserverfaces.dev.java.net/"

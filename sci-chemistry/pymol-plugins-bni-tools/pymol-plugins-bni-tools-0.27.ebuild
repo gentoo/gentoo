@@ -28,8 +28,8 @@ S="${WORKDIR}"
 
 src_install(){
 	python_moduleinto pmg_tk/startup
-	python_parallel_foreach_impl python_domodule bni-tools.py
-	python_parallel_foreach_impl python_optimize
+	python_foreach_impl python_domodule bni-tools.py
+	python_foreach_impl python_optimize
 	dodoc readme.txt
 	dohtml ShortCommandDescription.html
 }

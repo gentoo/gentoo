@@ -56,7 +56,7 @@ src_compile() {
 }
 
 src_install() {
-	python_parallel_foreach_impl python_doscript code/* || die
+	python_foreach_impl python_doscript code/* || die
 
 	dodoc PARAssign_Tutorial.pdf README
 

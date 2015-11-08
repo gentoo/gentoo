@@ -47,10 +47,6 @@ python_compile_all() {
 	use doc && emake -C docs html
 }
 
-src_test() {
-	DISTUTILS_NO_PARALLEL_BUILD=1 distutils-r1_src_test
-}
-
 python_test() {
 	PYTHONPATH=.:tests ./tests/run_all_tests.sh || die
 }

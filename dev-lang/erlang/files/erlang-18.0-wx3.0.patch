@@ -1,0 +1,531 @@
+Description: Fix constants for wxwidgets3.0
+ The values of wx constants can change between stable release series (and
+ some have between 2.8 and 3.0), but erlang seems to hardcode these values.
+Author: Olly Betts <olly@survex.com>
+Bug-Debian: https://bugs.debian.org/766790
+Forwarded: no
+Last-Update: 2014-11-25
+
+--- a/lib/wx/include/wx.hrl
++++ b/lib/wx/include/wx.hrl
+@@ -767,7 +767,7 @@
+ % From "checkbox.h"
+ -define(wxCHK_ALLOW_3RD_STATE_FOR_USER, 8192).
+ -define(wxCHK_3STATE, 4096).
+--define(wxCHK_2STATE, 0).
++-define(wxCHK_2STATE, 16384).
+ % From "checkbox.h": wxCheckBoxState
+ -define(wxCHK_UNCHECKED, 0).
+ -define(wxCHK_CHECKED, 1).
+@@ -1014,10 +1014,10 @@
+ -define(wxSIZE_AUTO_WIDTH, 1).
+ -define(wxSETUP, 131072).
+ -define(wxMORE, 65536).
+--define(wxHELP, 32768).
+--define(wxRESET, 16384).
+--define(wxBACKWARD, 8192).
+--define(wxFORWARD, 4096).
++-define(wxHELP, 4096).
++-define(wxRESET, 32768).
++-define(wxBACKWARD, 16384).
++-define(wxFORWARD, 8192).
+ -define(wxICON_MASK, (16#00000100 bor 16#00000200 bor 16#00000400 bor 16#00000800)).
+ -define(wxICON_ASTERISK, ?wxICON_INFORMATION).
+ -define(wxICON_STOP, ?wxICON_HAND).
+@@ -1049,8 +1049,8 @@
+ -define(wxTC_TOP, 0).
+ -define(wxTC_FIXEDWIDTH, 32).
+ -define(wxTC_RIGHTJUSTIFY, 16).
+--define(wxSP_WRAP, 8192).
+--define(wxSP_ARROW_KEYS, 4096).
++-define(wxSP_WRAP, 32768).
++-define(wxSP_ARROW_KEYS, 16384).
+ -define(wxSP_VERTICAL, ?wxVERTICAL).
+ -define(wxSP_HORIZONTAL, ?wxHORIZONTAL).
+ -define(wxSB_VERTICAL, ?wxVERTICAL).
+@@ -1071,8 +1071,8 @@
+ -define(wxCB_SIMPLE, 4).
+ -define(wxLB_INT_HEIGHT, 2048).
+ -define(wxLB_HSCROLL, ?wxHSCROLL).
+--define(wxLB_ALWAYS_SB, 1024).
+--define(wxLB_NEEDED_SB, 512).
++-define(wxLB_ALWAYS_SB, 512).
++-define(wxLB_NEEDED_SB, 0).
+ -define(wxLB_OWNERDRAW, 256).
+ -define(wxLB_EXTENDED, 128).
+ -define(wxLB_MULTIPLE, 64).
+@@ -1548,7 +1548,7 @@
+ -define(wxUPDATE_UI_FROMIDLE, 2).
+ % From "dialog.h"
+ -define(wxDEFAULT_DIALOG_STYLE, (?wxCAPTION bor ?wxSYSTEM_MENU bor ?wxCLOSE_BOX)).
+--define(wxDIALOG_NO_PARENT, 1).
++-define(wxDIALOG_NO_PARENT, 32).
+ % From "dirctrlg.h"
+ -define(wxDIRCTRL_DIR_ONLY, 16).
+ -define(wxDIRCTRL_SELECT_FIRST, 32).
+@@ -2036,212 +2036,212 @@
+ -define(wxLANGUAGE_ARABIC_YEMEN, 24).
+ -define(wxLANGUAGE_ARMENIAN, 25).
+ -define(wxLANGUAGE_ASSAMESE, 26).
+--define(wxLANGUAGE_AYMARA, 27).
+--define(wxLANGUAGE_AZERI, 28).
+--define(wxLANGUAGE_AZERI_CYRILLIC, 29).
+--define(wxLANGUAGE_AZERI_LATIN, 30).
+--define(wxLANGUAGE_BASHKIR, 31).
+--define(wxLANGUAGE_BASQUE, 32).
+--define(wxLANGUAGE_BELARUSIAN, 33).
+--define(wxLANGUAGE_BENGALI, 34).
+--define(wxLANGUAGE_BHUTANI, 35).
+--define(wxLANGUAGE_BIHARI, 36).
+--define(wxLANGUAGE_BISLAMA, 37).
+--define(wxLANGUAGE_BRETON, 38).
+--define(wxLANGUAGE_BULGARIAN, 39).
+--define(wxLANGUAGE_BURMESE, 40).
+--define(wxLANGUAGE_CAMBODIAN, 41).
+--define(wxLANGUAGE_CATALAN, 42).
+--define(wxLANGUAGE_CHINESE, 43).
+--define(wxLANGUAGE_CHINESE_SIMPLIFIED, 44).
+--define(wxLANGUAGE_CHINESE_TRADITIONAL, 45).
+--define(wxLANGUAGE_CHINESE_HONGKONG, 46).
+--define(wxLANGUAGE_CHINESE_MACAU, 47).
+--define(wxLANGUAGE_CHINESE_SINGAPORE, 48).
+--define(wxLANGUAGE_CHINESE_TAIWAN, 49).
+--define(wxLANGUAGE_CORSICAN, 50).
+--define(wxLANGUAGE_CROATIAN, 51).
+--define(wxLANGUAGE_CZECH, 52).
+--define(wxLANGUAGE_DANISH, 53).
+--define(wxLANGUAGE_DUTCH, 54).
+--define(wxLANGUAGE_DUTCH_BELGIAN, 55).
+--define(wxLANGUAGE_ENGLISH, 56).
+--define(wxLANGUAGE_ENGLISH_UK, 57).
+--define(wxLANGUAGE_ENGLISH_US, 58).
+--define(wxLANGUAGE_ENGLISH_AUSTRALIA, 59).
+--define(wxLANGUAGE_ENGLISH_BELIZE, 60).
+--define(wxLANGUAGE_ENGLISH_BOTSWANA, 61).
+--define(wxLANGUAGE_ENGLISH_CANADA, 62).
+--define(wxLANGUAGE_ENGLISH_CARIBBEAN, 63).
+--define(wxLANGUAGE_ENGLISH_DENMARK, 64).
+--define(wxLANGUAGE_ENGLISH_EIRE, 65).
+--define(wxLANGUAGE_ENGLISH_JAMAICA, 66).
+--define(wxLANGUAGE_ENGLISH_NEW_ZEALAND, 67).
+--define(wxLANGUAGE_ENGLISH_PHILIPPINES, 68).
+--define(wxLANGUAGE_ENGLISH_SOUTH_AFRICA, 69).
+--define(wxLANGUAGE_ENGLISH_TRINIDAD, 70).
+--define(wxLANGUAGE_ENGLISH_ZIMBABWE, 71).
+--define(wxLANGUAGE_ESPERANTO, 72).
+--define(wxLANGUAGE_ESTONIAN, 73).
+--define(wxLANGUAGE_FAEROESE, 74).
+--define(wxLANGUAGE_FARSI, 75).
+--define(wxLANGUAGE_FIJI, 76).
+--define(wxLANGUAGE_FINNISH, 77).
+--define(wxLANGUAGE_FRENCH, 78).
+--define(wxLANGUAGE_FRENCH_BELGIAN, 79).
+--define(wxLANGUAGE_FRENCH_CANADIAN, 80).
+--define(wxLANGUAGE_FRENCH_LUXEMBOURG, 81).
+--define(wxLANGUAGE_FRENCH_MONACO, 82).
+--define(wxLANGUAGE_FRENCH_SWISS, 83).
+--define(wxLANGUAGE_FRISIAN, 84).
+--define(wxLANGUAGE_GALICIAN, 85).
+--define(wxLANGUAGE_GEORGIAN, 86).
+--define(wxLANGUAGE_GERMAN, 87).
+--define(wxLANGUAGE_GERMAN_AUSTRIAN, 88).
+--define(wxLANGUAGE_GERMAN_BELGIUM, 89).
+--define(wxLANGUAGE_GERMAN_LIECHTENSTEIN, 90).
+--define(wxLANGUAGE_GERMAN_LUXEMBOURG, 91).
+--define(wxLANGUAGE_GERMAN_SWISS, 92).
+--define(wxLANGUAGE_GREEK, 93).
+--define(wxLANGUAGE_GREENLANDIC, 94).
+--define(wxLANGUAGE_GUARANI, 95).
+--define(wxLANGUAGE_GUJARATI, 96).
+--define(wxLANGUAGE_HAUSA, 97).
+--define(wxLANGUAGE_HEBREW, 98).
+--define(wxLANGUAGE_HINDI, 99).
+--define(wxLANGUAGE_HUNGARIAN, 100).
+--define(wxLANGUAGE_ICELANDIC, 101).
+--define(wxLANGUAGE_INDONESIAN, 102).
+--define(wxLANGUAGE_INTERLINGUA, 103).
+--define(wxLANGUAGE_INTERLINGUE, 104).
+--define(wxLANGUAGE_INUKTITUT, 105).
+--define(wxLANGUAGE_INUPIAK, 106).
+--define(wxLANGUAGE_IRISH, 107).
+--define(wxLANGUAGE_ITALIAN, 108).
+--define(wxLANGUAGE_ITALIAN_SWISS, 109).
+--define(wxLANGUAGE_JAPANESE, 110).
+--define(wxLANGUAGE_JAVANESE, 111).
+--define(wxLANGUAGE_KANNADA, 112).
+--define(wxLANGUAGE_KASHMIRI, 113).
+--define(wxLANGUAGE_KASHMIRI_INDIA, 114).
+--define(wxLANGUAGE_KAZAKH, 115).
+--define(wxLANGUAGE_KERNEWEK, 116).
+--define(wxLANGUAGE_KINYARWANDA, 117).
+--define(wxLANGUAGE_KIRGHIZ, 118).
+--define(wxLANGUAGE_KIRUNDI, 119).
+--define(wxLANGUAGE_KONKANI, 120).
+--define(wxLANGUAGE_KOREAN, 121).
+--define(wxLANGUAGE_KURDISH, 122).
+--define(wxLANGUAGE_LAOTHIAN, 123).
+--define(wxLANGUAGE_LATIN, 124).
+--define(wxLANGUAGE_LATVIAN, 125).
+--define(wxLANGUAGE_LINGALA, 126).
+--define(wxLANGUAGE_LITHUANIAN, 127).
+--define(wxLANGUAGE_MACEDONIAN, 128).
+--define(wxLANGUAGE_MALAGASY, 129).
+--define(wxLANGUAGE_MALAY, 130).
+--define(wxLANGUAGE_MALAYALAM, 131).
+--define(wxLANGUAGE_MALAY_BRUNEI_DARUSSALAM, 132).
+--define(wxLANGUAGE_MALAY_MALAYSIA, 133).
+--define(wxLANGUAGE_MALTESE, 134).
+--define(wxLANGUAGE_MANIPURI, 135).
+--define(wxLANGUAGE_MAORI, 136).
+--define(wxLANGUAGE_MARATHI, 137).
+--define(wxLANGUAGE_MOLDAVIAN, 138).
+--define(wxLANGUAGE_MONGOLIAN, 139).
+--define(wxLANGUAGE_NAURU, 140).
+--define(wxLANGUAGE_NEPALI, 141).
+--define(wxLANGUAGE_NEPALI_INDIA, 142).
+--define(wxLANGUAGE_NORWEGIAN_BOKMAL, 143).
+--define(wxLANGUAGE_NORWEGIAN_NYNORSK, 144).
+--define(wxLANGUAGE_OCCITAN, 145).
+--define(wxLANGUAGE_ORIYA, 146).
+--define(wxLANGUAGE_OROMO, 147).
+--define(wxLANGUAGE_PASHTO, 148).
+--define(wxLANGUAGE_POLISH, 149).
+--define(wxLANGUAGE_PORTUGUESE, 150).
+--define(wxLANGUAGE_PORTUGUESE_BRAZILIAN, 151).
+--define(wxLANGUAGE_PUNJABI, 152).
+--define(wxLANGUAGE_QUECHUA, 153).
+--define(wxLANGUAGE_RHAETO_ROMANCE, 154).
+--define(wxLANGUAGE_ROMANIAN, 155).
+--define(wxLANGUAGE_RUSSIAN, 156).
+--define(wxLANGUAGE_RUSSIAN_UKRAINE, 157).
+--define(wxLANGUAGE_SAMOAN, 158).
+--define(wxLANGUAGE_SANGHO, 159).
+--define(wxLANGUAGE_SANSKRIT, 160).
+--define(wxLANGUAGE_SCOTS_GAELIC, 161).
+--define(wxLANGUAGE_SERBIAN, 162).
+--define(wxLANGUAGE_SERBIAN_CYRILLIC, 163).
+--define(wxLANGUAGE_SERBIAN_LATIN, 164).
+--define(wxLANGUAGE_SERBO_CROATIAN, 165).
+--define(wxLANGUAGE_SESOTHO, 166).
+--define(wxLANGUAGE_SETSWANA, 167).
+--define(wxLANGUAGE_SHONA, 168).
+--define(wxLANGUAGE_SINDHI, 169).
+--define(wxLANGUAGE_SINHALESE, 170).
+--define(wxLANGUAGE_SISWATI, 171).
+--define(wxLANGUAGE_SLOVAK, 172).
+--define(wxLANGUAGE_SLOVENIAN, 173).
+--define(wxLANGUAGE_SOMALI, 174).
+--define(wxLANGUAGE_SPANISH, 175).
+--define(wxLANGUAGE_SPANISH_ARGENTINA, 176).
+--define(wxLANGUAGE_SPANISH_BOLIVIA, 177).
+--define(wxLANGUAGE_SPANISH_CHILE, 178).
+--define(wxLANGUAGE_SPANISH_COLOMBIA, 179).
+--define(wxLANGUAGE_SPANISH_COSTA_RICA, 180).
+--define(wxLANGUAGE_SPANISH_DOMINICAN_REPUBLIC, 181).
+--define(wxLANGUAGE_SPANISH_ECUADOR, 182).
+--define(wxLANGUAGE_SPANISH_EL_SALVADOR, 183).
+--define(wxLANGUAGE_SPANISH_GUATEMALA, 184).
+--define(wxLANGUAGE_SPANISH_HONDURAS, 185).
+--define(wxLANGUAGE_SPANISH_MEXICAN, 186).
+--define(wxLANGUAGE_SPANISH_MODERN, 187).
+--define(wxLANGUAGE_SPANISH_NICARAGUA, 188).
+--define(wxLANGUAGE_SPANISH_PANAMA, 189).
+--define(wxLANGUAGE_SPANISH_PARAGUAY, 190).
+--define(wxLANGUAGE_SPANISH_PERU, 191).
+--define(wxLANGUAGE_SPANISH_PUERTO_RICO, 192).
+--define(wxLANGUAGE_SPANISH_URUGUAY, 193).
+--define(wxLANGUAGE_SPANISH_US, 194).
+--define(wxLANGUAGE_SPANISH_VENEZUELA, 195).
+--define(wxLANGUAGE_SUNDANESE, 196).
+--define(wxLANGUAGE_SWAHILI, 197).
+--define(wxLANGUAGE_SWEDISH, 198).
+--define(wxLANGUAGE_SWEDISH_FINLAND, 199).
+--define(wxLANGUAGE_TAGALOG, 200).
+--define(wxLANGUAGE_TAJIK, 201).
+--define(wxLANGUAGE_TAMIL, 202).
+--define(wxLANGUAGE_TATAR, 203).
+--define(wxLANGUAGE_TELUGU, 204).
+--define(wxLANGUAGE_THAI, 205).
+--define(wxLANGUAGE_TIBETAN, 206).
+--define(wxLANGUAGE_TIGRINYA, 207).
+--define(wxLANGUAGE_TONGA, 208).
+--define(wxLANGUAGE_TSONGA, 209).
+--define(wxLANGUAGE_TURKISH, 210).
+--define(wxLANGUAGE_TURKMEN, 211).
+--define(wxLANGUAGE_TWI, 212).
+--define(wxLANGUAGE_UIGHUR, 213).
+--define(wxLANGUAGE_UKRAINIAN, 214).
+--define(wxLANGUAGE_URDU, 215).
+--define(wxLANGUAGE_URDU_INDIA, 216).
+--define(wxLANGUAGE_URDU_PAKISTAN, 217).
+--define(wxLANGUAGE_UZBEK, 218).
+--define(wxLANGUAGE_UZBEK_CYRILLIC, 219).
+--define(wxLANGUAGE_UZBEK_LATIN, 220).
+--define(wxLANGUAGE_VIETNAMESE, 221).
+--define(wxLANGUAGE_VOLAPUK, 222).
+--define(wxLANGUAGE_WELSH, 223).
+--define(wxLANGUAGE_WOLOF, 224).
+--define(wxLANGUAGE_XHOSA, 225).
+--define(wxLANGUAGE_YIDDISH, 226).
+--define(wxLANGUAGE_YORUBA, 227).
+--define(wxLANGUAGE_ZHUANG, 228).
+--define(wxLANGUAGE_ZULU, 229).
++-define(wxLANGUAGE_AYMARA, 28).
++-define(wxLANGUAGE_AZERI, 29).
++-define(wxLANGUAGE_AZERI_CYRILLIC, 30).
++-define(wxLANGUAGE_AZERI_LATIN, 31).
++-define(wxLANGUAGE_BASHKIR, 32).
++-define(wxLANGUAGE_BASQUE, 33).
++-define(wxLANGUAGE_BELARUSIAN, 34).
++-define(wxLANGUAGE_BENGALI, 35).
++-define(wxLANGUAGE_BHUTANI, 36).
++-define(wxLANGUAGE_BIHARI, 37).
++-define(wxLANGUAGE_BISLAMA, 38).
++-define(wxLANGUAGE_BRETON, 40).
++-define(wxLANGUAGE_BULGARIAN, 41).
++-define(wxLANGUAGE_BURMESE, 42).
++-define(wxLANGUAGE_CAMBODIAN, 43).
++-define(wxLANGUAGE_CATALAN, 44).
++-define(wxLANGUAGE_CHINESE, 45).
++-define(wxLANGUAGE_CHINESE_SIMPLIFIED, 46).
++-define(wxLANGUAGE_CHINESE_TRADITIONAL, 47).
++-define(wxLANGUAGE_CHINESE_HONGKONG, 48).
++-define(wxLANGUAGE_CHINESE_MACAU, 49).
++-define(wxLANGUAGE_CHINESE_SINGAPORE, 50).
++-define(wxLANGUAGE_CHINESE_TAIWAN, 51).
++-define(wxLANGUAGE_CORSICAN, 52).
++-define(wxLANGUAGE_CROATIAN, 53).
++-define(wxLANGUAGE_CZECH, 54).
++-define(wxLANGUAGE_DANISH, 55).
++-define(wxLANGUAGE_DUTCH, 56).
++-define(wxLANGUAGE_DUTCH_BELGIAN, 57).
++-define(wxLANGUAGE_ENGLISH, 58).
++-define(wxLANGUAGE_ENGLISH_UK, 59).
++-define(wxLANGUAGE_ENGLISH_US, 60).
++-define(wxLANGUAGE_ENGLISH_AUSTRALIA, 61).
++-define(wxLANGUAGE_ENGLISH_BELIZE, 62).
++-define(wxLANGUAGE_ENGLISH_BOTSWANA, 63).
++-define(wxLANGUAGE_ENGLISH_CANADA, 64).
++-define(wxLANGUAGE_ENGLISH_CARIBBEAN, 65).
++-define(wxLANGUAGE_ENGLISH_DENMARK, 66).
++-define(wxLANGUAGE_ENGLISH_EIRE, 67).
++-define(wxLANGUAGE_ENGLISH_JAMAICA, 68).
++-define(wxLANGUAGE_ENGLISH_NEW_ZEALAND, 69).
++-define(wxLANGUAGE_ENGLISH_PHILIPPINES, 70).
++-define(wxLANGUAGE_ENGLISH_SOUTH_AFRICA, 71).
++-define(wxLANGUAGE_ENGLISH_TRINIDAD, 72).
++-define(wxLANGUAGE_ENGLISH_ZIMBABWE, 73).
++-define(wxLANGUAGE_ESPERANTO, 74).
++-define(wxLANGUAGE_ESTONIAN, 75).
++-define(wxLANGUAGE_FAEROESE, 76).
++-define(wxLANGUAGE_FARSI, 77).
++-define(wxLANGUAGE_FIJI, 78).
++-define(wxLANGUAGE_FINNISH, 79).
++-define(wxLANGUAGE_FRENCH, 80).
++-define(wxLANGUAGE_FRENCH_BELGIAN, 81).
++-define(wxLANGUAGE_FRENCH_CANADIAN, 82).
++-define(wxLANGUAGE_FRENCH_LUXEMBOURG, 83).
++-define(wxLANGUAGE_FRENCH_MONACO, 84).
++-define(wxLANGUAGE_FRENCH_SWISS, 85).
++-define(wxLANGUAGE_FRISIAN, 86).
++-define(wxLANGUAGE_GALICIAN, 87).
++-define(wxLANGUAGE_GEORGIAN, 88).
++-define(wxLANGUAGE_GERMAN, 89).
++-define(wxLANGUAGE_GERMAN_AUSTRIAN, 90).
++-define(wxLANGUAGE_GERMAN_BELGIUM, 91).
++-define(wxLANGUAGE_GERMAN_LIECHTENSTEIN, 92).
++-define(wxLANGUAGE_GERMAN_LUXEMBOURG, 93).
++-define(wxLANGUAGE_GERMAN_SWISS, 94).
++-define(wxLANGUAGE_GREEK, 95).
++-define(wxLANGUAGE_GREENLANDIC, 96).
++-define(wxLANGUAGE_GUARANI, 97).
++-define(wxLANGUAGE_GUJARATI, 98).
++-define(wxLANGUAGE_HAUSA, 99).
++-define(wxLANGUAGE_HEBREW, 100).
++-define(wxLANGUAGE_HINDI, 101).
++-define(wxLANGUAGE_HUNGARIAN, 102).
++-define(wxLANGUAGE_ICELANDIC, 103).
++-define(wxLANGUAGE_INDONESIAN, 104).
++-define(wxLANGUAGE_INTERLINGUA, 105).
++-define(wxLANGUAGE_INTERLINGUE, 106).
++-define(wxLANGUAGE_INUKTITUT, 107).
++-define(wxLANGUAGE_INUPIAK, 108).
++-define(wxLANGUAGE_IRISH, 109).
++-define(wxLANGUAGE_ITALIAN, 110).
++-define(wxLANGUAGE_ITALIAN_SWISS, 111).
++-define(wxLANGUAGE_JAPANESE, 112).
++-define(wxLANGUAGE_JAVANESE, 113).
++-define(wxLANGUAGE_KANNADA, 114).
++-define(wxLANGUAGE_KASHMIRI, 115).
++-define(wxLANGUAGE_KASHMIRI_INDIA, 116).
++-define(wxLANGUAGE_KAZAKH, 117).
++-define(wxLANGUAGE_KERNEWEK, 118).
++-define(wxLANGUAGE_KINYARWANDA, 119).
++-define(wxLANGUAGE_KIRGHIZ, 120).
++-define(wxLANGUAGE_KIRUNDI, 121).
++-define(wxLANGUAGE_KONKANI, 122).
++-define(wxLANGUAGE_KOREAN, 123).
++-define(wxLANGUAGE_KURDISH, 124).
++-define(wxLANGUAGE_LAOTHIAN, 125).
++-define(wxLANGUAGE_LATIN, 126).
++-define(wxLANGUAGE_LATVIAN, 127).
++-define(wxLANGUAGE_LINGALA, 128).
++-define(wxLANGUAGE_LITHUANIAN, 129).
++-define(wxLANGUAGE_MACEDONIAN, 130).
++-define(wxLANGUAGE_MALAGASY, 131).
++-define(wxLANGUAGE_MALAY, 132).
++-define(wxLANGUAGE_MALAYALAM, 133).
++-define(wxLANGUAGE_MALAY_BRUNEI_DARUSSALAM, 134).
++-define(wxLANGUAGE_MALAY_MALAYSIA, 135).
++-define(wxLANGUAGE_MALTESE, 136).
++-define(wxLANGUAGE_MANIPURI, 137).
++-define(wxLANGUAGE_MAORI, 138).
++-define(wxLANGUAGE_MARATHI, 139).
++-define(wxLANGUAGE_MOLDAVIAN, 140).
++-define(wxLANGUAGE_MONGOLIAN, 141).
++-define(wxLANGUAGE_NAURU, 142).
++-define(wxLANGUAGE_NEPALI, 143).
++-define(wxLANGUAGE_NEPALI_INDIA, 144).
++-define(wxLANGUAGE_NORWEGIAN_BOKMAL, 145).
++-define(wxLANGUAGE_NORWEGIAN_NYNORSK, 146).
++-define(wxLANGUAGE_OCCITAN, 147).
++-define(wxLANGUAGE_ORIYA, 148).
++-define(wxLANGUAGE_OROMO, 149).
++-define(wxLANGUAGE_PASHTO, 150).
++-define(wxLANGUAGE_POLISH, 151).
++-define(wxLANGUAGE_PORTUGUESE, 152).
++-define(wxLANGUAGE_PORTUGUESE_BRAZILIAN, 153).
++-define(wxLANGUAGE_PUNJABI, 154).
++-define(wxLANGUAGE_QUECHUA, 155).
++-define(wxLANGUAGE_RHAETO_ROMANCE, 156).
++-define(wxLANGUAGE_ROMANIAN, 157).
++-define(wxLANGUAGE_RUSSIAN, 158).
++-define(wxLANGUAGE_RUSSIAN_UKRAINE, 159).
++-define(wxLANGUAGE_SAMOAN, 161).
++-define(wxLANGUAGE_SANGHO, 162).
++-define(wxLANGUAGE_SANSKRIT, 163).
++-define(wxLANGUAGE_SCOTS_GAELIC, 164).
++-define(wxLANGUAGE_SERBIAN, 165).
++-define(wxLANGUAGE_SERBIAN_CYRILLIC, 166).
++-define(wxLANGUAGE_SERBIAN_LATIN, 167).
++-define(wxLANGUAGE_SERBO_CROATIAN, 168).
++-define(wxLANGUAGE_SESOTHO, 169).
++-define(wxLANGUAGE_SETSWANA, 170).
++-define(wxLANGUAGE_SHONA, 171).
++-define(wxLANGUAGE_SINDHI, 172).
++-define(wxLANGUAGE_SINHALESE, 173).
++-define(wxLANGUAGE_SISWATI, 174).
++-define(wxLANGUAGE_SLOVAK, 175).
++-define(wxLANGUAGE_SLOVENIAN, 176).
++-define(wxLANGUAGE_SOMALI, 177).
++-define(wxLANGUAGE_SPANISH, 178).
++-define(wxLANGUAGE_SPANISH_ARGENTINA, 179).
++-define(wxLANGUAGE_SPANISH_BOLIVIA, 180).
++-define(wxLANGUAGE_SPANISH_CHILE, 181).
++-define(wxLANGUAGE_SPANISH_COLOMBIA, 182).
++-define(wxLANGUAGE_SPANISH_COSTA_RICA, 183).
++-define(wxLANGUAGE_SPANISH_DOMINICAN_REPUBLIC, 184).
++-define(wxLANGUAGE_SPANISH_ECUADOR, 185).
++-define(wxLANGUAGE_SPANISH_EL_SALVADOR, 186).
++-define(wxLANGUAGE_SPANISH_GUATEMALA, 187).
++-define(wxLANGUAGE_SPANISH_HONDURAS, 188).
++-define(wxLANGUAGE_SPANISH_MEXICAN, 189).
++-define(wxLANGUAGE_SPANISH_MODERN, 190).
++-define(wxLANGUAGE_SPANISH_NICARAGUA, 191).
++-define(wxLANGUAGE_SPANISH_PANAMA, 192).
++-define(wxLANGUAGE_SPANISH_PARAGUAY, 193).
++-define(wxLANGUAGE_SPANISH_PERU, 194).
++-define(wxLANGUAGE_SPANISH_PUERTO_RICO, 195).
++-define(wxLANGUAGE_SPANISH_URUGUAY, 196).
++-define(wxLANGUAGE_SPANISH_US, 197).
++-define(wxLANGUAGE_SPANISH_VENEZUELA, 198).
++-define(wxLANGUAGE_SUNDANESE, 199).
++-define(wxLANGUAGE_SWAHILI, 200).
++-define(wxLANGUAGE_SWEDISH, 201).
++-define(wxLANGUAGE_SWEDISH_FINLAND, 202).
++-define(wxLANGUAGE_TAGALOG, 203).
++-define(wxLANGUAGE_TAJIK, 204).
++-define(wxLANGUAGE_TAMIL, 205).
++-define(wxLANGUAGE_TATAR, 206).
++-define(wxLANGUAGE_TELUGU, 207).
++-define(wxLANGUAGE_THAI, 208).
++-define(wxLANGUAGE_TIBETAN, 209).
++-define(wxLANGUAGE_TIGRINYA, 210).
++-define(wxLANGUAGE_TONGA, 211).
++-define(wxLANGUAGE_TSONGA, 212).
++-define(wxLANGUAGE_TURKISH, 213).
++-define(wxLANGUAGE_TURKMEN, 214).
++-define(wxLANGUAGE_TWI, 215).
++-define(wxLANGUAGE_UIGHUR, 216).
++-define(wxLANGUAGE_UKRAINIAN, 217).
++-define(wxLANGUAGE_URDU, 218).
++-define(wxLANGUAGE_URDU_INDIA, 219).
++-define(wxLANGUAGE_URDU_PAKISTAN, 220).
++-define(wxLANGUAGE_UZBEK, 221).
++-define(wxLANGUAGE_UZBEK_CYRILLIC, 222).
++-define(wxLANGUAGE_UZBEK_LATIN, 223).
++-define(wxLANGUAGE_VIETNAMESE, 225).
++-define(wxLANGUAGE_VOLAPUK, 226).
++-define(wxLANGUAGE_WELSH, 227).
++-define(wxLANGUAGE_WOLOF, 228).
++-define(wxLANGUAGE_XHOSA, 229).
++-define(wxLANGUAGE_YIDDISH, 230).
++-define(wxLANGUAGE_YORUBA, 231).
++-define(wxLANGUAGE_ZHUANG, 232).
++-define(wxLANGUAGE_ZULU, 233).
+ -define(wxLANGUAGE_USER_DEFINED, 230).
+--define(wxLANGUAGE_VALENCIAN, 536870911).
+--define(wxLANGUAGE_SAMI, 536870912).
++-define(wxLANGUAGE_VALENCIAN, 224).
++-define(wxLANGUAGE_SAMI, 160).
+ % From "intl.h": wxLayoutDirection
+ -define(wxLayout_Default, 0).
+ -define(wxLayout_LeftToRight, 1).
+@@ -3728,7 +3728,7 @@
+ -define(wxSTC_KEY_LEFT, 302).
+ -define(wxSTC_KEY_UP, 301).
+ -define(wxSTC_KEY_DOWN, 300).
+--define(wxSTC_MODEVENTMASKALL, 8191).
++-define(wxSTC_MODEVENTMASKALL, 1048575).
+ -define(wxSTC_MULTILINEUNDOREDO, 4096).
+ -define(wxSTC_MOD_BEFOREDELETE, 2048).
+ -define(wxSTC_MOD_BEFOREINSERT, 1024).
+@@ -3810,7 +3810,7 @@
+ -define(wxSTC_INDIC_TT, 2).
+ -define(wxSTC_INDIC_SQUIGGLE, 1).
+ -define(wxSTC_INDIC_PLAIN, 0).
+--define(wxSTC_INDIC_MAX, 7).
++-define(wxSTC_INDIC_MAX, 31).
+ -define(wxSTC_CASE_LOWER, 2).
+ -define(wxSTC_CASE_UPPER, 1).
+ -define(wxSTC_CASE_MIXED, 0).
+@@ -3835,7 +3835,7 @@
+ -define(wxSTC_CHARSET_BALTIC, 186).
+ -define(wxSTC_CHARSET_DEFAULT, 1).
+ -define(wxSTC_CHARSET_ANSI, 0).
+--define(wxSTC_STYLE_MAX, 127).
++-define(wxSTC_STYLE_MAX, 255).
+ -define(wxSTC_STYLE_LASTPREDEFINED, 39).
+ -define(wxSTC_STYLE_CALLTIP, 38).
+ -define(wxSTC_STYLE_INDENTGUIDE, 37).
+@@ -3934,9 +3934,9 @@
+ -define(wxTE_PROCESS_TAB, 64).
+ -define(wxTE_MULTILINE, 32).
+ -define(wxTE_READONLY, 16).
+--define(wxTE_AUTO_SCROLL, 8).
++-define(wxTE_AUTO_SCROLL, 0).
+ -define(wxTE_NO_VSCROLL, 2).
+--define(wxHAS_TEXT_WINDOW_STREAM, 0).
++-define(wxHAS_TEXT_WINDOW_STREAM, 1).
+ % From "textctrl.h": wxTextAttrAlignment
+ -define(wxTEXT_ALIGNMENT_DEFAULT, 0).
+ -define(wxTEXT_ALIGNMENT_LEFT, 1).
+@@ -3986,7 +3986,7 @@
+ -define(wxDEFAULT_FRAME_STYLE, (?wxSYSTEM_MENU bor ?wxRESIZE_BORDER bor ?wxMINIMIZE_BOX bor ?wxMAXIMIZE_BOX bor ?wxCLOSE_BOX bor ?wxCAPTION bor ?wxCLIP_CHILDREN)).
+ -define(wxRESIZE_BORDER, 64).
+ -define(wxTINY_CAPTION_VERT, 128).
+--define(wxTINY_CAPTION_HORIZ, 256).
++-define(wxTINY_CAPTION_HORIZ, 128).
+ -define(wxMAXIMIZE_BOX, 512).
+ -define(wxMINIMIZE_BOX, 1024).
+ -define(wxSYSTEM_MENU, 2048).

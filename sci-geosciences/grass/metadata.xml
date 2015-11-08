@@ -18,6 +18,8 @@ Project for more info http://grass.itc.it/gdp/index.php
 		extended options to the v.select module</flag>
 		<flag name="gmath">Enable gmath wrapper for BLAS/Lapack 
 		(<pkg>virtual/blas</pkg>, <pkg>virtual/lapack</pkg>)</flag>
+		<flag name="liblas">Include support for LAS and LAZ encoded LiDAR
+		files through <pkg>sci-geosciences/liblas</pkg></flag>
 		<flag name="opencl">Enable OpenCL support</flag>
 	</use>
 </pkgmetadata>

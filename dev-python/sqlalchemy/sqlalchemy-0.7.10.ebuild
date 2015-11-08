@@ -33,8 +33,6 @@ DEPEND="${RDEPEND}
 		>=dev-python/nose-0.10.4[${PYTHON_USEDEP}]
 	)"
 
-# py26 tests needs
-DISTUTILS_NO_PARALLEL_BUILD=1
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=( "${FILESDIR}/${PN}-0.7-logging.handlers.patch" )

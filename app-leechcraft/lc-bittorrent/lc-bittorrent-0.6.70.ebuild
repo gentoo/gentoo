@@ -9,7 +9,7 @@ inherit leechcraft
 DESCRIPTION="Full-featured BitTorrent client plugin for LeechCraft"
 
 SLOT="0"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug geoip"
 
 DEPEND="~app-leechcraft/lc-core-${PV}

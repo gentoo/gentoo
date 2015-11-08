@@ -28,8 +28,8 @@ CDEPEND="
 	kde-apps/kdebase-kioslaves:4
 	kde-apps/libkdcraw:4=
 	kde-apps/libkexiv2:4=
-	|| ( kde-apps/libkface:4 >=media-libs/libkface-4.12.0 )
-	|| ( kde-apps/libkgeomap:4= >=media-libs/libkgeomap-4.12.0:= )
+	>=kde-apps/libkface-4.12.0:4
+	>=kde-apps/libkgeomap-4.12.0:4=
 	kde-apps/libkipi:4
 	kde-apps/marble:4=[plasma]
 	kde-apps/kcmshell:4

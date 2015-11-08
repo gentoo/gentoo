@@ -1,0 +1,54 @@
+From d663c85f0356d7800638c5eaa1a49e6c26bdfa33 Mon Sep 17 00:00:00 2001
+From: Ondrej Holy <oholy@redhat.com>
+Date: Fri, 27 Feb 2015 10:22:22 +0100
+Subject: afp: Change g_error to g_warning for read errors
+
+Use g_warning rather than g_error when a read error occurs to prevent
+spurious crash reports since there are many different ways for a read
+from the network to fail.
+
+[Cherry-picked from gnome-3-14/14369db2a8fc
+ Commit message written by Ross Lagerwall.]
+
+https://bugzilla.gnome.org/show_bug.cgi?id=710490
+---
+ daemon/gvfsafpconnection.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/daemon/gvfsafpconnection.c b/daemon/gvfsafpconnection.c
+index c8ccad7..abe1422 100644
+--- a/daemon/gvfsafpconnection.c
++++ b/daemon/gvfsafpconnection.c
+@@ -1078,12 +1078,12 @@ read_data_cb (GObject *object, GAsyncResult *res, gpointer user_data)
+         g_error_matches (err, G_IO_ERROR, G_IO_ERROR_CONNECTION_CLOSED))
+     {
+       g_message (_("Host closed connection"));
+-      exit(0);
+     }
+     else
+     {
+-      g_error ("FAIL!!! \"%s\"\n", err->message);
++      g_warning ("FAIL!!! \"%s\"\n", err->message);
+     }
++    exit (0);
+   }
+ 
+   dispatch_reply (afp_connection);
+@@ -1120,12 +1120,12 @@ read_dsi_header_cb (GObject *object, GAsyncResult *res, gpointer user_data)
+         g_error_matches (err, G_IO_ERROR, G_IO_ERROR_CONNECTION_CLOSED))
+     {
+       g_message (_("Host closed connection"));
+-      exit(0);
+     }
+     else
+     {
+-      g_error ("FAIL!!! \"%s\"\n", err->message);
++      g_warning ("FAIL!!! \"%s\"\n", err->message);
+     }
++    exit (0);
+   }
+ 
+   dsi_header = &priv->read_dsi_header;
+-- 
+cgit v0.11.2
+

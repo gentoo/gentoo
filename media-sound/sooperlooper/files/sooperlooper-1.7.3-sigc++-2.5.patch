@@ -1,0 +1,166 @@
+Description: support for sigc++>=2.5.2
+ since sigc++-2.5.2, the sigc++/object.h has been removed
+ (and replaced by sigc++/trackable.h>
+Author: IOhannes m zmölnig
+Last-Update: 2015-10-21
+Forwarded: Jesse Chappell <jesse@essej.net>
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- sooperlooper.orig/configure.ac
++++ sooperlooper/configure.ac
+@@ -220,7 +220,15 @@
+     AC_SUBST(NCURSES_LIBS)
+ 
+     dnl sigc++
+-    PKG_CHECK_MODULES(SIGCPP, sigc++-2.0 >= 2.2.10)
++    have_sigcpp=no
++    PKG_CHECK_MODULES(SIGCPP, [sigc++-2.0 >= 2.2.10],[have_sigcpp=yes])
++    if test "x${have_sigcpp}" = "xyes"
++    then
++      presigcpp_CFLAGS=$CFLAGS
++      CFLAGS=$CFLAGS $SIGCPP_CFLAGS
++      AC_CHECK_HEADER([sigc++/object.h], [SIGCPP_CFLAGS="$SIGCPP_CFLAGS -DUSE_SIGCPP_OBJECT_H"])
++      CFLAGS=$presigcpp_CFLAGS
++    fi
+ 
+     AC_SUBST(SIGCPP_LIBS)
+     AC_SUBST(SIGCPP_CFLAGS)
+--- sooperlooper.orig/libs/pbd/configure.ac
++++ sooperlooper/libs/pbd/configure.ac
+@@ -193,7 +193,15 @@
+ PKG_CHECK_MODULES(XML, libxml-2.0 >= 2.5)
+ 
+ dnl sigc++
+-PKG_CHECK_MODULES(SIGCPP, sigc++-2.0 >= 2.2.10)
++have_sigcpp=no
++PKG_CHECK_MODULES(SIGCPP, [sigc++-2.0 >= 2.2.10],[have_sigcpp=yes])
++if test "x${have_sigcpp}" = "xyes"
++then
++  presigcpp_CFLAGS=$CFLAGS
++  CFLAGS=$CFLAGS $SIGCPP_CFLAGS
++  AC_CHECK_HEADER([sigc++/object.h], [SIGCPP_CFLAGS="$SIGCPP_CFLAGS -DUSE_SIGCPP_OBJECT_H"])
++  CFLAGS=$presigcpp_CFLAGS
++fi
+ 
+ 
+ AM_BUILD_ENVIRONMENT
+--- sooperlooper.orig/src/control_osc.hpp
++++ sooperlooper/src/control_osc.hpp
+@@ -27,7 +27,11 @@
+ #include <list>
+ #include <utility>
+ 
+-#include <sigc++/object.h>
++#ifdef USE_SIGCPP_OBJECT_H
++# include <sigc++/object.h>
++#else
++# include <sigc++/trackable.h>
++#endif
+ 
+ #include "event.hpp"
+ #include "event_nonrt.hpp"
+--- sooperlooper.orig/src/gui/app_frame.hpp
++++ sooperlooper/src/gui/app_frame.hpp
+@@ -26,7 +26,11 @@
+ #include <string>
+ #include <vector>
+ 
+-#include <sigc++/object.h>
++#ifdef USE_SIGCPP_OBJECT_H
++# include <sigc++/object.h>
++#else
++# include <sigc++/trackable.h>
++#endif
+ #include <sigc++/signal.h>
+ #include <sigc++/connection.h>
+ 
+--- sooperlooper.orig/src/gui/config_panel.hpp
++++ sooperlooper/src/gui/config_panel.hpp
+@@ -26,7 +26,11 @@
+ 
+ #include <string>
+ #include <vector>
+-#include <sigc++/object.h>
++#ifdef USE_SIGCPP_OBJECT_H
++# include <sigc++/object.h>
++#else
++# include <sigc++/trackable.h>
++#endif
+ 
+ class wxListCtrl;
+ class wxSpinCtrl;
+--- sooperlooper.orig/src/gui/keys_panel.hpp
++++ sooperlooper/src/gui/keys_panel.hpp
+@@ -26,7 +26,11 @@
+ 
+ #include <string>
+ #include <vector>
+-#include <sigc++/object.h>
++#ifdef USE_SIGCPP_OBJECT_H
++# include <sigc++/object.h>
++#else
++# include <sigc++/trackable.h>
++#endif
+ 
+ class wxListCtrl;
+ 
+--- sooperlooper.orig/src/gui/latency_panel.hpp
++++ sooperlooper/src/gui/latency_panel.hpp
+@@ -26,7 +26,11 @@
+ 
+ #include <string>
+ #include <vector>
+-#include <sigc++/object.h>
++#ifdef USE_SIGCPP_OBJECT_H
++# include <sigc++/object.h>
++#else
++# include <sigc++/trackable.h>
++#endif
+ 
+ class wxListCtrl;
+ 
+--- sooperlooper.orig/src/gui/main_panel.hpp
++++ sooperlooper/src/gui/main_panel.hpp
+@@ -26,7 +26,11 @@
+ #include <string>
+ #include <vector>
+ 
+-#include <sigc++/object.h>
++#ifdef USE_SIGCPP_OBJECT_H
++# include <sigc++/object.h>
++#else
++# include <sigc++/trackable.h>
++#endif
+ #include <sigc++/signal.h>
+ #include <sigc++/connection.h>
+ 
+--- sooperlooper.orig/src/gui/midi_bind_panel.hpp
++++ sooperlooper/src/gui/midi_bind_panel.hpp
+@@ -26,7 +26,11 @@
+ 
+ #include <string>
+ #include <vector>
+-#include <sigc++/object.h>
++#ifdef USE_SIGCPP_OBJECT_H
++# include <sigc++/object.h>
++#else
++# include <sigc++/trackable.h>
++#endif
+ #include <list>
+ 
+ #include <midi_bind.hpp>
+--- sooperlooper.orig/src/gui/prefs_dialog.hpp
++++ sooperlooper/src/gui/prefs_dialog.hpp
+@@ -26,7 +26,11 @@
+ 
+ #include <string>
+ #include <vector>
+-#include <sigc++/object.h>
++#ifdef USE_SIGCPP_OBJECT_H
++# include <sigc++/object.h>
++#else
++# include <sigc++/trackable.h>
++#endif
+ 
+ class wxListCtrl;
+ class wxSpinCtrl;

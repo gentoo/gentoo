@@ -1,0 +1,47 @@
+From bdd14508f9ea46372fcef93e17a9c14bcb8b4c83 Mon Sep 17 00:00:00 2001
+From: Dimitri Tarassenko <dtarassenko@gmail.com>
+Date: Fri, 28 Aug 2015 17:02:15 +0100
+Subject: Improve handling of name resolution failure
+
+Ensure that the host string for a client is always filled with a valid
+string, by calling getnameinfo() a second time (ensuring a numeric host
+is returned) if the first call fails.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=754194
+---
+ server/libvncserver/rfbserver.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/server/libvncserver/rfbserver.c b/server/libvncserver/rfbserver.c
+index 1295219..0a60fb2 100644
+--- a/server/libvncserver/rfbserver.c
++++ b/server/libvncserver/rfbserver.c
+@@ -150,7 +150,7 @@ rfbNewClient(rfbScreenInfoPtr rfbScreen,
+     struct sockaddr_storage addr;
+     socklen_t addrlen = sizeof(addr);
+     int i;
+-    char host[NI_MAXHOST];
++    char host[NI_MAXHOST] = "(unresolved)";
+     const char *prt = "unknown";
+ 
+     cl = (rfbClientPtr)calloc(sizeof(rfbClientRec),1);
+@@ -166,11 +166,11 @@ rfbNewClient(rfbScreenInfoPtr rfbScreen,
+ 
+       getpeername(sock, (struct sockaddr *)&addr, &addrlen);
+ 
+-      getnameinfo((struct sockaddr *)&addr,
+-                  addrlen,
+-                  host, sizeof(host),
+-                  NULL, 0,
+-                  0);
++      if (getnameinfo((struct sockaddr *)&addr, addrlen,
++                      host, sizeof(host), NULL, 0, 0)) {
++        getnameinfo((struct sockaddr *)&addr, addrlen,
++                    host, sizeof(host), NULL, 0, NI_NUMERICHOST);
++      }
+ 
+       cl->host = strdup(host);
+ 
+-- 
+cgit v0.11.2
+

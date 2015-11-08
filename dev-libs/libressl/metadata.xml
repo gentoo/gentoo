@@ -20,4 +20,9 @@
 		<bugs-to>https://github.com/libressl-portable/portable/issues</bugs-to>
 		<remote-id type="github">libressl-portable/portable</remote-id>
 	</upstream>
+	<slots>
+		<subslots>
+			Reflect ABI of libcrypto.so and libssl.so only, NOT libtls.so.
+		</subslots>
+	</slots>
 </pkgmetadata>

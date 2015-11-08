@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
 
 inherit distutils-r1
 
@@ -30,7 +30,7 @@ RDEPEND="${DEPEND}
 	"
 
 pkg_postinst() {
-	einfo
+	echo
 	einfo "This is beta software."
 	einfo "The APIs it installs should be considered unstable"
 	einfo "and are subject to change in these early versions."
@@ -38,5 +38,5 @@ pkg_postinst() {
 	einfo "Please file any enhancement requests, or bugs"
 	einfo "at https://github.com/dol-sen/ssl-fetch/issues"
 	einfo "I am also on IRC @ #gentoo-portage, #gentoo-keys,... of the Freenode network"
-	einfo
+	echo
 }

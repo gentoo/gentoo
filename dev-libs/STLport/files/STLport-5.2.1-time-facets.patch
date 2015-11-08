@@ -1,0 +1,12 @@
+diff -uNptr a/src/time_facets.cpp b/src/time_facets.cpp
+--- a/src/time_facets.cpp	2008-12-10 10:56:51.000000000 +0100
++++ b/src/time_facets.cpp	2015-10-11 12:07:55.841141984 +0100
+@@ -428,7 +428,7 @@ void _STLP_CALL __write_formatted_timeT(
+         break;
+       {
+         int diff;
+-#    if defined (__USE_BSD) || defined (__BEOS__)
++#    if defined (__USE_MISC) || defined (__USE_BSD) || defined (__BEOS__)
+         diff = t->tm_gmtoff;
+ #    else
+         diff = t->__tm_gmtoff;

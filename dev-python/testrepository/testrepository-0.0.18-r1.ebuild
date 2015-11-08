@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 RDEPEND="
@@ -34,9 +34,15 @@ DEPEND="
 # Required for test phase
 DISTUTILS_IN_SOURCE_BUILD=1
 
+PATCHES=(
+	"${FILESDIR}"/${P}-test-backport.patch
+	"${FILESDIR}"/${PN}-0.0.20-test-backport1.patch
+)
+
 python_test() {
 	# some errors appear to have crept in the suite undert py3 since addition.
 	# Python2.7 now passes all.
 
-	esetup.py testr --coverage
+	${PYTHON} testr init || die
+	${PYTHON} testr run || die
 }

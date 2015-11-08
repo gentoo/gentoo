@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci-astronomy</herd>
-<longdescription lang="en">
+  <herd>sci-astronomy</herd>
+  <longdescription lang="en">
   The Kapteyn Package is a collection of Python modules and applications
   made by the computer group of the Kapteyn Astronomical Institute,
   University of Groningen, The Netherlands. The purpose of the package

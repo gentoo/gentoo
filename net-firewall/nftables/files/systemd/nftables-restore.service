@@ -1,0 +1,14 @@
+[Unit]
+Description=Restore nftables firewall rules
+# if both are queued for some reason, don't store before restoring :)
+Before=nftables-store.service
+# sounds reasonable to have firewall up before any of the services go up
+Before=network.target
+Conflicts=shutdown.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/nftables/nftables.sh load /var/lib/nftables/rules-save
+
+[Install]
+WantedBy=basic.target

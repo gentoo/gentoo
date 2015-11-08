@@ -2,6 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>mysql</herd>
+  <maintainer restrict="dev-db/mysql[libressl]">
+    <email>hasufell@gentoo.org</email>
+    <description>Libressl issues. Only assign if it's a direct Libressl issue. Do not directly assign for anything else.</description>
+  </maintainer>
 <use>
   <flag name='cluster'>Add support for NDB clustering</flag>
   <flag name='community'>Enables the community features from upstream.</flag>
@@ -9,10 +13,13 @@
   <flag name='extraengine'>Add support for alternative storage engines (Archive, CSV, Blackhole, Federated(X), Partition)</flag>
   <flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for allocations.</flag>
   <flag name='latin1'>Use LATIN1 encoding instead of UTF8</flag>
+  <flag name='libressl'>Enable SSL connections and crypto functions using <pkg>dev-libs/libressl</pkg></flag>
+  <flag name='openssl'>Enable SSL connections and crypto functions using <pkg>dev-libs/openssl</pkg></flag>
   <flag name='max-idx-128'>Raise the max index per table limit from 64 to 128</flag>
   <flag name='minimal'>Install client programs only, no server</flag>
   <flag name='profiling'>Add support for statement profiling (requires USE=community).</flag>
   <flag name="systemtap">Build support for profiling and tracing using <pkg>dev-util/systemtap</pkg></flag>
   <flag name='test'>Install upstream testsuites for end use.</flag>
+  <flag name='yassl'>Enable SSL connections and crypto functions using the bundled yaSSL</flag>
 </use>
 </pkgmetadata>

@@ -7,11 +7,6 @@
 # HPPA has no NUMA support in the kernel
 numa
 
-# Julian Ospald <hasufell@gentoo.org> (20 Sep 2015)
-# no LibreSSL support yet
-curl_ssl_libressl
-libressl
-
 # Jeroen Roovers <jer@gentoo.org> (3 Feb 2015)
 # app-misc/geoclue has not been tested on HPPA
 geoclue

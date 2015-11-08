@@ -38,10 +38,6 @@ python_compile_all() {
 	fi
 }
 
-src_test() {
-	DISTUTILS_NO_PARALLEL_BUILD=1 distutils-r1_src_test
-}
-
 python_test() {
 	# Tests raise ImportErrors with our default PYTHONPATH.
 	unset PYTHONPATH

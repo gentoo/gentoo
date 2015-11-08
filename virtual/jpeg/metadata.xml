@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>graphics</herd>
+	<herd>graphics</herd>
+	<slots>
+		<slot name="0">For building against. This is the only slot
+			that provides headers and command line tools.</slot>
+		<slot name="62">For binary compatibility, provides
+			libjpeg.so.62 only.</slot>
+	</slots>
 </pkgmetadata>

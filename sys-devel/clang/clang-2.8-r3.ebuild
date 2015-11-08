@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -156,7 +156,7 @@ src_install() {
 		install-scan-view() {
 			insinto "$(python_get_sitedir)"/clang
 			doins Reporter.py Resources ScanView.py startfile.py
-			touch "${ED}"/"$(python_get_sitedir)"/clang/__init__.py
+			touch "${D}"/"$(python_get_sitedir)"/clang/__init__.py
 		}
 		python_execute_function install-scan-view
 	fi

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>python</herd>
@@ -12,8 +12,10 @@
   picklable Python object as well as optimized communications of
   Python object exposing the single-segment buffer interface (NumPy
   arrays, builtin bytes/string/array objects).
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="google-code">mpi4py</remote-id>
+    <remote-id type="bitbucket">mpi4py</remote-id>
+    <remote-id type="pypi">mpi4py</remote-id>
   </upstream>
 </pkgmetadata>

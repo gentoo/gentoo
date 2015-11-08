@@ -13,6 +13,7 @@
 		<doc lang="en">https://github.com/IgnorantGuru/spacefm/wiki/</doc>
 		<bugs-to>https://github.com/IgnorantGuru/spacefm/issues</bugs-to>
 		<remote-id type="sourceforge">spacefm</remote-id>
+		<remote-id type="github">ignorantguru/spacefm</remote-id>
 	</upstream>
 	<use>
 		<flag name="gtk2">Support GTK+ 2.x instead of GTK+ 3.x</flag>

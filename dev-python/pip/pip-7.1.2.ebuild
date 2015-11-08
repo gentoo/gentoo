@@ -13,7 +13,7 @@ HOMEPAGE="https://pip.pypa.io/ https://pypi.python.org/pypi/pip/ https://github.
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 
 # Check pip/_vendor/vendor.txt for this
@@ -57,10 +57,10 @@ python_install_all() {
 
 	COMPLETION="${T}"/completion.tmp
 
-	${EPYTHON} pip/__init__.py completion --bash > "${COMPLETION}" || die
+	"${PYTHON}" pip/__init__.py completion --bash > "${COMPLETION}" || die
 	newbashcomp "${COMPLETION}" ${PN}
 
-	${EPYTHON} pip/__init__.py completion --zsh > "${COMPLETION}" || die
+	"${PYTHON}" pip/__init__.py completion --zsh > "${COMPLETION}" || die
 	insinto /usr/share/zsh/site-functions
 	newins "${COMPLETION}" _pip
 }

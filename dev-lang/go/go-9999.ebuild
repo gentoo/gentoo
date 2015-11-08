@@ -32,6 +32,8 @@ RDEPEND="!<dev-go/go-tools-0_pre20150902"
 # These test data objects have writable/executable stacks.
 QA_EXECSTACK="usr/lib/go/src/debug/elf/testdata/*.obj"
 
+REQUIRES_EXCLUDE="/usr/lib/go/src/debug/elf/testdata/*"
+
 # The tools in /usr/lib/go should not cause the multilib-strict check to fail.
 QA_MULTILIB_PATHS="usr/lib/go/pkg/tool/.*/.*"
 

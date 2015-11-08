@@ -9,6 +9,9 @@
 		<email>mpagano@gentoo.org</email>
 		<name>Mike Pagano</name>
 	</maintainer>
+	<maintainer>
+		<email>tomboy64@sina.cn</email>
+	</maintainer>
 	<upstream>
 		<remote-id type="launchpad">~albertomilone</remote-id>
 	</upstream>

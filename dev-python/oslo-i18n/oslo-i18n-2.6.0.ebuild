@@ -44,7 +44,7 @@ RDEPEND="
 "
 
 python_prepare_all() {
-	sed -i 's/python/python2\.7/g' tools/config/generate_sample.sh || die
+	sed -i '/^hacking/d' test-requirements.txt || die
 	distutils-r1_python_prepare_all
 }
 

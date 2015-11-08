@@ -69,7 +69,7 @@ src_prepare() {
 		die "Cannot patch check.sh"
 
 	# splat is unnecessary unless we are debugging
-	use debug || sed -e 's/^subdir-m += splat$//' -i "${S}/module/Makefile.in"
+	use debug || { sed -e 's/^subdir-m += splat$//' -i "${S}/module/Makefile.in" || die ; }
 
 	# Set module revision number
 	[ ${PV} != "9999" ] && \

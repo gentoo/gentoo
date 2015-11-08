@@ -57,10 +57,6 @@ sci-libs/gdal ruby
 # See bug #480574
 media-libs/mlt ruby
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (02 Sep 2015)
-# x11-drivers/xf86-video-amdgpu is not keyworded on most arches
-x11-base/xorg-drivers video_cards_amdgpu
-
 # Andreas K. Huettel <dilfridge@gentoo.org> (1 Sep 2015)
 # Currently broken upstream. We still hope it will get fixed.
 app-office/libreoffice telepathy
@@ -155,10 +151,6 @@ www-apps/venus test
 # James Le Cuirot <chewi@gentoo.org> (05 Apr 2015)
 # dev-java/sun-j2me-bin is going away.
 dev-java/proguard j2me
-
-# Christoph Junghans <ottxor@gentoo.org> (03 Apr 2015)
-# >=~sys-devel/dragonegg-3.6 is broken (bug #543644)
-sys-devel/byfl dragonegg
 
 # Lars Wendler <polynomial-c@gentoo.org> (19 Mar 2015)
 # >=games-strategy/freeciv-2.5.0 requires >=dev-lang/lua-5.2

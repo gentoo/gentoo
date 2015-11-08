@@ -1,5 +1,0 @@
-#Node name of the device
-DEV_NAME=536ep
-
-#Which group will have the permission to use this modem
-DEV_GROUP=tty

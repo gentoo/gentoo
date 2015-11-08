@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
 PYTHON_REQ_USE='tk?'
 
@@ -20,8 +20,20 @@ SLOT="0"
 # matplotlib/backends/qt4_editor: MIT
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 arm ~ppc ~ppc64 ~x86 ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="cairo doc excel examples fltk gtk gtk3 latex pyside qt4 qt5 test tk wxwidgets"
+
+PY2_FLAGS="|| ( $(python_gen_useflags python2_7) )"
+REQUIRED_USE="
+	doc? ( ${PY2_FLAGS} )
+	excel? ( ${PY2_FLAGS} )
+	fltk? ( ${PY2_FLAGS} )
+	gtk? ( ${PY2_FLAGS} )
+	wxwidgets? ( ${PY2_FLAGS} )
+	test? (
+		cairo fltk latex pyside qt5 qt4 tk wxwidgets
+		|| ( gtk gtk3 )
+		)"
 
 # #456704 -- a lot of py2-only deps
 PY2_USEDEP=$(python_gen_usedep python2_7)
@@ -72,10 +84,7 @@ RDEPEND="${COMMON_DEPEND}
 			)
 		)
 	excel? ( dev-python/xlwt[${PYTHON_USEDEP}] )
-	fltk? (
-		$(python_gen_cond_dep 'dev-python/pyfltk[${PYTHON_USEDEP}]' python2_7)
-		$(python_gen_cond_dep 'dev-python/pyfltk[${PYTHON_USEDEP}]' 'python3*')
-		)
+	fltk? ( dev-python/pyfltk[${PYTHON_USEDEP}] )
 	gtk3? (
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		x11-libs/gtk+:3[introspection] )
@@ -92,20 +101,6 @@ RDEPEND="${COMMON_DEPEND}
 	qt4? ( dev-python/PyQt4[X,${PYTHON_USEDEP}] )
 	qt5? ( dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}] )
 	"
-
-PY2_FLAGS="|| ( $(python_gen_useflags python2_7) )"
-REQUIRED_USE="
-	doc? ( ${PY2_FLAGS} )
-	excel? ( ${PY2_FLAGS} )
-	fltk? ( ${PY2_FLAGS} )
-	gtk? ( ${PY2_FLAGS} )
-	wxwidgets? ( ${PY2_FLAGS} )
-	test? (
-		cairo fltk latex pyside qt5 qt4 tk wxwidgets
-		|| ( gtk gtk3 )
-		)"
-
-RESTRICT="mirror"
 
 # A few C++ source files are written to srcdir.
 # Other than that, the ebuild shall be fit for out-of-source build.
@@ -125,6 +120,10 @@ use_setup() {
 		echo "${uword}agg = False"
 	fi
 }
+
+PATCHES=(
+	"${FILESDIR}"/${P}-backport-GH5291-2462.patch
+)
 
 python_prepare_all() {
 # Generates test failures, but fedora does it
@@ -215,6 +214,7 @@ python_configure() {
 wrap_setup() {
 	local MPLSETUPCFG=${BUILD_DIR}/setup.cfg
 	export MPLSETUPCFG
+	unset DISPLAY
 
 	# Note: remove build... if switching to out-of-source build
 	"${@}" build --build-lib="${BUILD_DIR}"/build/lib

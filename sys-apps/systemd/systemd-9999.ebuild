@@ -48,7 +48,7 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.27:0=[${MULTILIB_USEDEP}]
 		sys-libs/zlib:0=
 	)
 	kmod? ( >=sys-apps/kmod-15:0= )
-	lz4? ( >=app-arch/lz4-0_p119:0=[${MULTILIB_USEDEP}] )
+	lz4? ( >=app-arch/lz4-0_p131:0=[${MULTILIB_USEDEP}] )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1:0=[${MULTILIB_USEDEP}] )
 	nat? ( net-firewall/iptables:0= )
 	pam? ( virtual/pam:= )
@@ -145,7 +145,7 @@ src_prepare() {
 	# Bug 463376
 	sed -i -e 's/GROUP="dialout"/GROUP="uucp"/' rules/*.rules || die
 	epatch "${FILESDIR}/218-Dont-enable-audit-by-default.patch"
-	epatch "${FILESDIR}/226-noclean-tmp.patch"
+	epatch "${FILESDIR}/228-noclean-tmp.patch"
 	epatch_user
 	eautoreconf
 }

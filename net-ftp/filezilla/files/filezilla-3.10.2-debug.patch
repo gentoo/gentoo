@@ -1,0 +1,13 @@
+--- configure.ac.orig	2015-03-03 17:04:56.300296016 +0100
++++ configure.ac	2015-03-03 17:05:20.739299967 +0100
+@@ -46,8 +46,8 @@
+ if ! test "$localesonly" = "yes"; then
+ 
+   if test "X$GCC" = Xyes; then
+-    CFLAGS="$CFLAGS -Wall -g"
+-    CXXFLAGS="$CXXFLAGS -Wall -g"
++    CFLAGS="$CFLAGS -Wall"
++    CXXFLAGS="$CXXFLAGS -Wall"
+   fi
+ 
+   # Check for C++11 support

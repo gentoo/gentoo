@@ -32,6 +32,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}/miniupnpc-14.patch"
 	epatch "${FILESDIR}/0.10.0-openrc-compat.patch"
 	bitcoincore_src_prepare
 }

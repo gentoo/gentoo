@@ -30,6 +30,14 @@ RDEPEND="${RDEPEND}"
 # disable until we see what happens with it
 MYSQL_CMAKE_NATIVE_DEFINES="-DWITHOUT_VALIDATE_PASSWORD=1"
 
+src_prepare() {
+	mysql-multilib_src_prepare
+	if use libressl ; then
+		sed -i 's/OPENSSL_MAJOR_VERSION STREQUAL "1"/OPENSSL_MAJOR_VERSION STREQUAL "2"/' \
+			"${S}/cmake/ssl.cmake" || die
+	fi
+}
+
 # Official test instructions:
 # USE='embedded extraengine perl ssl static-libs community' \
 # FEATURES='test userpriv -usersandbox' \

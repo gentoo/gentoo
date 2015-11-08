@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# James Le Cuirot <chewi@gentoo.org> (19 Oct 2015)
+# Issue with keywording sub-dependency jflex but this should be
+# resolved very shortly. Masking this now to unbreak the tree.
+dev-java/rhino test
+
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (15 Oct 2015)
 # Repoman reports dependency issues on arm.
 www-client/chromium system-ffmpeg
@@ -15,7 +20,7 @@ app-portage/g-sorcery bson
 media-video/mpv rubberband
 
 # Patrick Lauer <patrick@gentoo.org> (20 Apr 2015)
-# qt5/kf5 not keyworded on arm
+# kde-frameworks/*:5 not keyworded on arm
 net-irc/quassel qt5
 
 # Markos Chandras <hwoarang@gentoo.org> (18 Apr 2015)

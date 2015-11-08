@@ -6,7 +6,6 @@ EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 PYTHON_REQ_USE="sqlite?"
-DISTUTILS_NO_PARALLEL_BUILD=true
 # The usual required for tests
 DISTUTILS_IN_SOURCE_BUILD=1
 

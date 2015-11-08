@@ -9,4 +9,13 @@
 		<remote-id type="cpe">cpe:/a:libpng:libpng</remote-id>
 		<remote-id type="sourceforge">apng</remote-id>
 	</upstream>
+	<slots>
+		<slot name="0">For building against. This is the only slot
+			that provides headers and command line tools.</slot>
+		<slot name="1.2">For binary compatibility, provides libpng12.so.0
+			only.</slot>
+		<slot name="1.5">For binary compatibility, provides libpng15.so.15
+			only.</slot>
+		<subslots>Reflect ABI compatibility for libpng.so.</subslots>
+	</slots>
 </pkgmetadata>

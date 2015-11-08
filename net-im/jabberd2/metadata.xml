@@ -6,8 +6,8 @@
 		<flag name='experimental'>Enable experimental features such
 			as TLS Everywhere.</flag>
 		<flag name='memdebug'>Enable nad and pool debug.
-			Requires USE="debug" to be set.
-		</flag>
+			Requires USE="debug" to be set.</flag>
+		<flag name='websocket'>Enable WebSocket support on C2S port.</flag>
 	</use>
 	<upstream>
 		<remote-id type='github'>jabberd2/jabberd2</remote-id>

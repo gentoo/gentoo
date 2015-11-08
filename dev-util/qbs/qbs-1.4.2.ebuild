@@ -14,7 +14,7 @@ SRC_URI="http://download.qt.io/official_releases/${PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="doc examples test"
 
 RDEPEND="

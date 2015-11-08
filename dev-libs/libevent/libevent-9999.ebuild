@@ -30,9 +30,6 @@ MULTILIB_WRAPPED_HEADERS=(
 
 src_prepare() {
 	eautoreconf
-	# don't waste time building tests
-	# https://github.com/libevent/libevent/pull/144
-	sed -i -e '/^all:/s|tests||g' Makefile.nmake || die
 }
 
 multilib_src_configure() {
@@ -41,10 +38,12 @@ multilib_src_configure() {
 
 	ECONF_SOURCE="${S}" \
 	econf \
+		--disable-samples \
 		$(use_enable debug debug-mode) \
 		$(use_enable debug malloc-replacement) \
 		$(use_enable ssl openssl) \
 		$(use_enable static-libs static) \
+		$(use_enable test libevent-regress) \
 		$(use_enable threads thread-support)
 }
 

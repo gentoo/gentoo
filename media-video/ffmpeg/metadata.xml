@@ -17,6 +17,7 @@
 	<flag name="bs2b">Enables <pkg>media-libs/libbs2b</pkg> based Bauer stereo-to-binaural filter.</flag>
 	<flag name="cdio">Enables audio CD grabbing with <pkg>dev-libs/libcdio</pkg>.</flag>
 	<flag name="celt">Adds Xiph CELT audio decoding support via <pkg>media-libs/celt</pkg></flag>
+	<flag name="chromaprint">Enables audio fingerprinting support with <pkg>media-libs/chromaprint</pkg>.</flag>
 	<flag name="cpudetection">Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)</flag>
 	<flag name="faac">Use external faac library for AAC encoding</flag>
 	<flag name="fdk">Use external fdk-aac library for AAC encoding</flag>
@@ -27,6 +28,7 @@
 	<flag name="gpl">Build GPL code. Should be enabled unless you require LGPL binaries.</flag>
 	<flag name="hardcoded-tables">Use pre-calculated tables rather than calculating them on the fly.</flag>
 	<flag name="iec61883"> Support for FireWire DV/HDV input device using <pkg>media-libs/libiec61883</pkg>.</flag>
+	<flag name="kvazaar">Enables <pkg>media-libs/kvazaar</pkg> based HEVC encoder.</flag>
 	<flag name="librtmp">Enables Real Time Messaging Protocol using librtmp (<pkg>media-video/rtmpdump</pkg>) in addition to FFmpeg's native implementation.</flag>
 	<flag name="libsoxr">Enables audio resampling through <pkg>media-libs/soxr</pkg>.</flag>
 	<flag name="libv4l">Uses <pkg>media-libs/libv4l</pkg> for video4linux instead of direct calls. Adds support for more devices via the userspace library.</flag>
@@ -34,6 +36,7 @@
 	<flag name="mipsdspr2">Enables MIPS DSP ASE R2 optimizations.</flag>
 	<flag name="mipsfpu">Enables floating point MIPS optimizations.</flag>
 	<flag name="network">Enables network streaming support</flag>
+	<flag name="nvenc">Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.</flag>
 	<flag name="openh264">Enables H.264 encoding suppoprt via <pkg>media-libs/openh264</pkg>.</flag>
 	<flag name="openssl">Enables <pkg>dev-libs/openssl</pkg> support. Adds support for encrypted network protocols (TLS/HTTPS).</flag>
 	<flag name="opus">Adds (decoding) support for the Opus codec via <pkg>media-libs/opus</pkg>.</flag>
@@ -48,6 +51,7 @@
 	<flag name="vpx">Enables vp8 codec support using libvpx: Decoding vp8 does not require this to be enabled but libvpx can also be used for decoding; encoding vp8 requires this useflag to be enabled though.</flag>
 	<flag name="webp">Enables WebP encoding with <pkg>media-libs/libwebp</pkg>.</flag>
 	<flag name="x265">Enables HEVC encoding with <pkg>media-libs/x265</pkg>.</flag>
+	<flag name="zimg">Enables <pkg>media-libs/zimg</pkg> based scale filter.</flag>
 	<flag name="zvbi">Enables <pkg>media-libs/zvbi</pkg> based teletext decoder.</flag>
   </use>
 </pkgmetadata>

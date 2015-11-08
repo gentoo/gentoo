@@ -7,5 +7,6 @@
   </use>
   <upstream>
     <remote-id type="pypi">Markdown</remote-id>
+    <remote-id type="github">waylan/Python-Markdown</remote-id>
   </upstream>
 </pkgmetadata>

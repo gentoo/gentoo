@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="doc test"
 
 CDEPEND="
@@ -36,6 +36,9 @@ PATCHES=(
 	"${FILESDIR}"/${P}-twisted-backport1.patch
 	"${FILESDIR}"/${P}-twisted-backport2.patch
 )
+
+# https://github.com/testing-cabal/testtools/issues/156
+RESTRICT=test
 
 python_compile_all() {
 	use doc && emake -C doc html

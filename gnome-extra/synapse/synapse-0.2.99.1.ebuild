@@ -15,7 +15,7 @@ SRC_URI="https://launchpad.net/synapse-project/0.3/${PV}/+download/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 # "ayatana" support pending on GTK+-3.x version of synapse wrt #411613
 IUSE="plugins +zeitgeist"
 
@@ -36,9 +36,7 @@ RDEPEND="
 	plugins? ( >=net-libs/rest-0.7 )
 	zeitgeist? (
 		dev-libs/libzeitgeist
-		>=gnome-extra/zeitgeist-0.9.14
-		gnome-extra/zeitgeist-extensions
-		|| ( gnome-extra/zeitgeist[fts] gnome-extra/zeitgeist-extensions[fts] )
+		>=gnome-extra/zeitgeist-0.9.14[fts]
 		)"
 	#ayatana? ( dev-libs/libappindicator )
 DEPEND="${RDEPEND}

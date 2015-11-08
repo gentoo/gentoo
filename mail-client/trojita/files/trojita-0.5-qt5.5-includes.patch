@@ -1,0 +1,40 @@
+From 8a2496c273f2b0034f0edcc525e4987938a86c50 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jan=20Kundr=C3=A1t?= <jkt@kde.org>
+Date: Tue, 10 Mar 2015 14:41:20 +0100
+Subject: [PATCH] Fix build with (unreleased) Qt 5.5
+
+It is our fault for not including the headers we need, of course.
+
+Change-Id: Ibaa1df4a8b763bf6ae611c85cbdeeac5d2e3f9fd
+---
+ src/AbookAddressbook/AbookAddressbook.h | 1 +
+ src/Imap/Model/MailboxMetadata.cpp      | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/AbookAddressbook/AbookAddressbook.h b/src/AbookAddressbook/AbookAddressbook.h
+index 787661b..6f0634d 100644
+--- a/src/AbookAddressbook/AbookAddressbook.h
++++ b/src/AbookAddressbook/AbookAddressbook.h
+@@ -25,6 +25,7 @@
+ #ifndef ABOOK_ADDRESSBOOK
+ #define ABOOK_ADDRESSBOOK
+ 
++#include <QObject>
+ #include <QPair>
+ #include "Gui/AbstractAddressbook.h"
+ 
+diff --git a/src/Imap/Model/MailboxMetadata.cpp b/src/Imap/Model/MailboxMetadata.cpp
+index d5d2323..0dba1cd 100644
+--- a/src/Imap/Model/MailboxMetadata.cpp
++++ b/src/Imap/Model/MailboxMetadata.cpp
+@@ -20,6 +20,7 @@
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ #include "MailboxMetadata.h"
++#include <QDataStream>
+ 
+ namespace Imap
+ {
+-- 
+1.8.3.2
+

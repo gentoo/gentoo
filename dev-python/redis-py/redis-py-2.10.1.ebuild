@@ -46,12 +46,6 @@ python_compile() {
 	fi
 }
 
-src_test() {
-	local DISTUTILS_NO_PARALLEL_BUILD=1
-
-	distutils-r1_src_test
-}
-
 python_test() {
 	# https://github.com/andymccurdy/redis-py/issues/503
 	# the suite is quite broken at this point but it's also the case in -2.9.1,

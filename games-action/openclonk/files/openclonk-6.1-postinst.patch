@@ -1,0 +1,15 @@
+update-desktop-database is called from the pkg_postinst stage instead.
+
+diff -Naur openclonk-release-6.0-src.orig/CMakeLists.txt openclonk-release-6.0-src/CMakeLists.txt
+--- openclonk-release-6.0-src.orig/CMakeLists.txt	2015-04-25 08:22:16.000000000 +0000
++++ openclonk-release-6.0-src/CMakeLists.txt	2015-04-25 09:50:16.000000000 +0000
+@@ -1564,7 +1564,8 @@
+ 	# Install new files
+ 	install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/openclonk.desktop DESTINATION "${INSTALL_DATAROOTDIR}/applications")
+ 	# Update the MIME cache -- this makes the clonk:// protocol handler actually work
+-	install(CODE "execute_process(COMMAND update-desktop-database)")
++	# --> ebuild, pkg_postinst stage
++	#install(CODE "execute_process(COMMAND update-desktop-database)")
+ 
+ 	# Install binaries
+ 	install(TARGETS openclonk DESTINATION "${INSTALL_GAMES_BINDIR}")

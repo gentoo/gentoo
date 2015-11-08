@@ -1,0 +1,22 @@
+ config/Makefile.in | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/config/Makefile.in b/config/Makefile.in
+index 9243c90..a23a4d2 100644
+--- a/config/Makefile.in
++++ b/config/Makefile.in
+@@ -64,11 +64,11 @@ HOST           := @host@
+ USECONFIG      := @useconfig@
+ MKLIBOPTIONS   := @mkliboption@
+ 
+-EXTRA_CFLAGS   := -Iinclude @cflags@
++EXTRA_CFLAGS   := -Iinclude @cflags@ $(CFLAGS)
+ USERCONF_CFLAGS:= @usercflags@
+-EXTRA_CXXFLAGS := -Iinclude @cflags@
++EXTRA_CXXFLAGS := -Iinclude @cflags@ $(CXXFLAGS)
+ USERCONF_CXXFLAGS:= @usercxxflags@
+-EXTRA_LDFLAGS  := @ldflags@
++EXTRA_LDFLAGS  := @ldflags@ $(LDFLAGS)
+ WERROR         := @werror@
+ WINRTDEBUG     := @winrtdebug@
+ CTORSINITARRAY := @ctorsinitarray@

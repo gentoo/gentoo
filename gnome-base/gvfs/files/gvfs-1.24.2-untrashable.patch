@@ -1,0 +1,28 @@
+From 7bcfc873fd54e565836228ab030782885e133ebb Mon Sep 17 00:00:00 2001
+From: Debarshi Ray <debarshir@gnome.org>
+Date: Fri, 21 Aug 2015 16:54:46 +0200
+Subject: dav: Mark files as untrashable
+
+Otherwise nautilus will offer the wrong action in its UI.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=753934
+---
+ daemon/gvfsbackenddav.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/daemon/gvfsbackenddav.c b/daemon/gvfsbackenddav.c
+index 2d2704a..94e8b1c 100644
+--- a/daemon/gvfsbackenddav.c
++++ b/daemon/gvfsbackenddav.c
+@@ -974,6 +974,8 @@ ms_response_to_file_info (MsResponse *response,
+   if (basename && basename[0] == '.')
+     g_file_info_set_is_hidden (info, TRUE);
+ 
++  g_file_info_set_attribute_boolean (info, G_FILE_ATTRIBUTE_ACCESS_CAN_TRASH, FALSE);
++
+   file_type = G_FILE_TYPE_REGULAR;
+   mime_type = NULL;
+ 
+-- 
+cgit v0.11.2
+

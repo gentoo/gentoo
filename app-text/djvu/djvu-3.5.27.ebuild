@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+
 inherit eutils fdo-mime flag-o-matic
 
 MY_P="${PN}libre-${PV#*_p}"
@@ -54,9 +55,8 @@ src_install() {
 
 pkg_postinst() {
 	fdo-mime_mime_database_update
-	if ! has_version app-text/djview; then
-		elog "For djviewer or browser plugin, emerge app-text/djview."
-	fi
+	has_version app-text/djview || \
+		optfeature "For djviewer or browser plugin" app-text/djview
 }
 
 pkg_postrm() {

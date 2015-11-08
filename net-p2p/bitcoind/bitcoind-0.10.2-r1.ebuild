@@ -33,6 +33,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}/miniupnpc-14.patch"
 	sed -i 's/have bitcoind &&//;s/^\(complete -F _bitcoind bitcoind\) bitcoin-cli$/\1/' contrib/${PN}.bash-completion
 	epatch "${FILESDIR}/0.10.0-openrc-compat.patch"
 	bitcoincore_src_prepare

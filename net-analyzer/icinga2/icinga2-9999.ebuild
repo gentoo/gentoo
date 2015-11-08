@@ -75,7 +75,7 @@ src_configure() {
 
 src_install() {
 	BUILDDIR="${WORKDIR}"/icinga2-${PV}_build
-	cd $BUILDDIR
+	cd "${BUILDDIR}" || die
 
 	emake DESTDIR="${D}" install
 

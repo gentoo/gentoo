@@ -9,7 +9,7 @@ inherit leechcraft
 DESCRIPTION="LeechCraft HTML Text editoR component"
 
 SLOT="0"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug"
 
 DEPEND="~app-leechcraft/lc-core-${PV}

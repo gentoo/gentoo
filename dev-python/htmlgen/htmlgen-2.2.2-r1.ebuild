@@ -43,7 +43,7 @@ src_install() {
 	mkdir htmlgen || die
 	touch htmlgen/__init__.py || die
 	ln ${files} htmlgen/ || die
-	python_parallel_foreach_impl python_domodule htmlgen
+	python_foreach_impl python_domodule htmlgen
 
 	if use doc; then
 		# fix the image locations in the docs

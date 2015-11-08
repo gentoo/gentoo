@@ -42,7 +42,10 @@ COMMON_DEPEND="
 	>=dev-libs/icu-4.4:=
 	>=dev-python/apsw-3.7.17[python_targets_python2_7(-)]
 	>=dev-python/beautifulsoup-3.0.5:python-2[python_targets_python2_7(-)]
-	>=dev-python/dnspython-1.6.0[python_targets_python2_7(-)]
+	|| (
+		>=dev-python/dnspython-1.6.0:0[python_targets_python2_7(-)]
+		virtual/dnspython[python_targets_python2_7(-)]
+	)
 	>=dev-python/cssselect-0.7.1[python_targets_python2_7(-)]
 	>=dev-python/cssutils-0.9.9[python_targets_python2_7(-)]
 	>=dev-python/dbus-python-1.2.0[python_targets_python2_7(-)]

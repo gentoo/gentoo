@@ -7,7 +7,6 @@ EAPI=5
 # pypy: bug #458558 (wrong linker options due to not respecting CC)
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_IN_SOURCE_BUILD=1
-DISTUTILS_NO_PARALLEL_BUILD=1
 
 inherit distutils-r1 git-2 multilib
 

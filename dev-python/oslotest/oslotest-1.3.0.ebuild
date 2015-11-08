@@ -52,8 +52,6 @@ python_compile_all() {
 }
 
 python_test() {
-	local DISTUTILS_NO_PARALLEL_BUILD=TRUE
-
 	rm -rf .testrepository || die "coudln't remove '.testrepository' under ${EPYTHON}"
 
 	testr init || die "testr init failed under ${EPYTHON}"

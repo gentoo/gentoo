@@ -9,9 +9,9 @@
 		<name>Timo Rothenpieler</name>
 		<description>proxy maintainer</description>
 	</maintainer>
-        <maintainer>
-                <email>realnc@gmail.com</email>
-                <name>Nikos Chantziaras</name>
-                <description>proxy maintainer</description>
-        </maintainer>
+	<maintainer>
+		<email>realnc@gmail.com</email>
+		<name>Nikos Chantziaras</name>
+		<description>proxy maintainer</description>
+	</maintainer>
 </pkgmetadata>

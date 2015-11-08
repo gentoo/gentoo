@@ -27,7 +27,7 @@ else
 fi
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 
 QTC_PLUGINS=('android:android|qmakeandroidsupport' autotools:autotoolsprojectmanager baremetal
 	bazaar clang:clangcodemodel clearcase cmake:cmakeprojectmanager cvs git ios mercurial

@@ -17,7 +17,7 @@ SRC_URI="http://www.python.org/ftp/python/${PV%_rc*}/${MY_P}.tar.xz
 
 LICENSE="PSF-2"
 SLOT="3.4"
-#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="build elibc_uclibc examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl +threads tk wininst +xml"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
@@ -31,21 +31,21 @@ RDEPEND="app-arch/bzip2
 	virtual/libffi
 	virtual/libintl
 	xml? ( >=dev-libs/expat-2.1 )
-		gdbm? ( sys-libs/gdbm[berkdb] )
-		ncurses? (
-			>=sys-libs/ncurses-5.2
-			readline? ( >=sys-libs/readline-4.1 )
-		)
-		sqlite? ( >=dev-db/sqlite-3.3.8:3 )
-		ssl? (
-			!libressl? ( dev-libs/openssl:0 )
-			libressl? ( dev-libs/libressl )
-		)
-		tk? (
-			>=dev-lang/tk-8.0
-			dev-tcltk/blt
-			dev-tcltk/tix
-		)
+	gdbm? ( sys-libs/gdbm[berkdb] )
+	ncurses? (
+		>=sys-libs/ncurses-5.2
+		readline? ( >=sys-libs/readline-4.1 )
+	)
+	sqlite? ( >=dev-db/sqlite-3.3.8:3 )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0 )
+		libressl? ( dev-libs/libressl )
+	)
+	tk? (
+		>=dev-lang/tk-8.0
+		dev-tcltk/blt
+		dev-tcltk/tix
+	)
 	!!<sys-apps/sandbox-2.6-r1"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

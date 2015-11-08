@@ -1,0 +1,16 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+VERSION="JamVM JDK @PV@"
+JAVA_HOME="@GENTOO_PORTAGE_EPREFIX@/usr/@LIBDIR@/@PN@-jdk"
+JDK_HOME="@GENTOO_PORTAGE_EPREFIX@/usr/@LIBDIR@/@PN@-jdk"
+BOOTCLASSPATH="@GENTOO_PORTAGE_EPREFIX@/usr/@LIBDIR@/@PN@/classes.zip:${JAVA_HOME}/lib/rt.jar"
+JAVAC="${JAVA_HOME}/bin/javac"
+PATH="${JAVA_HOME}/bin"
+ROOTPATH="${JAVA_HOME}/bin"
+PROVIDES_TYPE="JRE"
+PROVIDES_VERSION="1.5"
+GENERATION="2"
+ENV_VARS="JAVA_HOME JAVAC PATH"
+LDPATH="${JAVA_HOME}/lib"

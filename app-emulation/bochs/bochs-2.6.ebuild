@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 WX_GTK_VER=2.8
 
@@ -27,8 +27,8 @@ RDEPEND="X? ( x11-libs/libICE
 	sdl? ( media-libs/libsdl )
 	svga? ( media-libs/svgalib )
 	wxwidgets? ( x11-libs/wxGTK:2.8[X] )
-	readline? ( sys-libs/readline )
-	ncurses? ( sys-libs/ncurses )"
+	readline? ( sys-libs/readline:= )
+	ncurses? ( sys-libs/ncurses:= )"
 
 DEPEND="${RDEPEND}
 	doc? ( app-text/docbook-sgml-utils )

@@ -81,6 +81,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-3.0-trap-fg-signals.patch
 	epatch "${FILESDIR}"/${PN}-3.0-pgrp-pipe-fix.patch #92349
 	epatch "${FILESDIR}"/${PN}-3.0-strnlen.patch
+	epatch "${FILESDIR}"/${PN}-3.1-dev-fd-buffer-overflow.patch #431850
 
 	epatch_user
 }

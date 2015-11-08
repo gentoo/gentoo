@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
 inherit distutils-r1
 
@@ -44,6 +44,7 @@ RDEPEND="${CDEPEND}"
 python_prepare_all() {
 	local PATCHES=(
 		"${FILESDIR}"/drop-intersphinx.patch
+		"${FILESDIR}"/${P}-py3.5-backport.patch
 	)
 
 	distutils-r1_python_prepare_all

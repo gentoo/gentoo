@@ -15,9 +15,15 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-lang/lua-5.1.4
-	>=media-gfx/flam3-3.0.1
-	|| ( ( >=dev-qt/qtgui-4.8.5:4 dev-qt/designer:4 ) <dev-qt/qtgui-4.8.5:4 )"
+	dev-qt/qtgui:4
+	>=media-gfx/flam3-3.0.1"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS="changes.txt README"
+
+src_prepare() {
+	qt4-r2_src_prepare
+
+	sed -i -e "/^CONFIG/s/uitools//" ${PN}.pro || die
+}

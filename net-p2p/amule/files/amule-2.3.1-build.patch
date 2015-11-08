@@ -1,0 +1,10 @@
+--- aMule-2.3.1/src/LoggerConsole.cpp~	2011-06-13 10:50:25.000000000 +0200
++++ aMule-2.3.1/src/LoggerConsole.cpp	2015-04-11 10:58:20.592470541 +0200
+@@ -29,6 +29,7 @@
+ 
+ #include "Logger.h"				// for Add(Debug)LogLineM()
+ 
++DEFINE_LOCAL_EVENT_TYPE(MULE_EVT_LOGLINE)
+ 
+ #ifdef __DEBUG__
+ bool CLogger::IsEnabled(DebugType /*type*/) const

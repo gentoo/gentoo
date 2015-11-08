@@ -16,13 +16,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-DEPEND=""
-RDEPEND=""
-
-python_prepare_all() {
-	use test && DISTUTILS_NO_PARALLEL_BUILD=1
-}
-
 python_test() {
-	"${PYTHON}" setup.py build -b "build-${EPYTHON}" test || die "Tests failed under ${EPYTHON}"
+	esetup.py test
 }

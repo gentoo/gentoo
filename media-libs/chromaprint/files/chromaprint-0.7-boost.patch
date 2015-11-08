@@ -1,8 +1,0 @@
---- chromaprint-0.7/tests/CMakeLists.txt
-+++ chromaprint-0.7/tests/CMakeLists.txt
-@@ -1,4 +1,5 @@
- include_directories(
-+	${Boost_INCLUDE_DIRS}
- 	${GTEST_INCLUDE_DIRS}
- 	${CMAKE_CURRENT_SOURCE_DIR}/../src
- )

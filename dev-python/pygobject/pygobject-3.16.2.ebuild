@@ -3,9 +3,10 @@
 # $Id$
 
 EAPI="5"
+
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
 inherit eutils gnome2 python-r1 virtualx
 

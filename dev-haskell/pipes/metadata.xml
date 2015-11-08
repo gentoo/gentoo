@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		\&quot;Coroutines done right\&quot;.  This library generalizes iteratees and coroutines
+		simply and elegantly.
+		
+		Advantages over traditional iteratee\/coroutine implementations:
+		
+		* /Concise API/: Use three simple commands: (&#39;&gt;-&gt;&#39;), &#39;request&#39;, and &#39;respond&#39;
+		
+		* /Bidirectionality/: Implement duplex channels
+		
+		* /Blazing fast/: Implementation tuned for speed
+		
+		* /Elegant semantics/: Use practical category theory
+		
+		* /Extension Framework/: Mix and match extensions and create your own
+		
+		* /ListT/: Correct implementation of ListT that interconverts with pipes
+		
+		* /Lightweight Dependency/: @pipes@ depends only on @transformers@ and
+		@mmorph@ and compiles rapidly
+		
+		* /Extensive Documentation/: Second to none!
+		
+		Import &quot;Control.Proxy&quot; to use the library.
+		
+		Read &quot;Control.Proxy.Tutorial&quot; for an extensive tutorial.
+	</longdescription>
+</pkgmetadata>

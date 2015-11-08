@@ -53,12 +53,6 @@ python_test() {
 		|| die "Tests fail with ${EPYTHON}"
 }
 
-src_test() {
-	# Port conflict in django.test.testcases.LiveServerTestCase.
-	# Several other races with temp files.
-	DISTUTILS_NO_PARALLEL_BUILD=1 distutils-r1_src_test
-}
-
 src_install() {
 	distutils-r1_src_install
 	webapp_src_install

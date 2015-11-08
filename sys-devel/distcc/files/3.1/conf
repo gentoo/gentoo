@@ -23,7 +23,7 @@ DISTCCD_PIDFILE="/var/run/distccd/distccd.pid"
 # where xx is the nice level.
 
 # SECURITY NOTICE:
-# It is HIGHLY recomended that you use the --listen option
+# It is HIGHLY recommended that you use the --listen option
 # for increased security. You can specify an IP to permit connections 
 # from or a CIDR mask
 # --listen accepts only a single IP

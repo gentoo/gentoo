@@ -19,6 +19,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-optional-qtdeclarative.patch" )
+
 src_prepare() {
 	qt_use_disable_mod qml quick src/src.pro
 	qt_use_disable_mod qml qml src/webchannel/webchannel.pro

@@ -1,0 +1,51 @@
+ pyparsing.py | 20 +++++++++++---------
+ 1 file changed, 11 insertions(+), 9 deletions(-)
+
+diff --git a/pyparsing.py b/pyparsing.py
+index 81c82ce..55c72a3 100644
+--- a/pyparsing.py
++++ b/pyparsing.py
+@@ -22,6 +22,8 @@
+ # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ #
+ 
++from __future__ import print_function
++
+ __doc__ = \
+ """
+ pyparsing module - Classes and methods to define and execute parsing grammars
+@@ -1554,19 +1556,19 @@ class ParserElement(object):
+            run a parse expression against a list of sample strings.
+         """
+         for t in tests:
+-            print t
++            print(t)
+             try:
+-                print self.parseString(t).dump()
++                print(self.parseString(t).dump())
+             except ParseException as pe:
+                 if '\n' in t:
+-                    print line(pe.loc, t)
+-                    print ' '*(col(pe.loc,t)-1) + '^'
++                    print(line(pe.loc, t))
++                    print(' '*(col(pe.loc,t)-1) + '^')
+                 else:
+-                    print ' '*pe.loc + '^'
+-                print pe
+-            print
++                    print(' '*pe.loc + '^')
++                print(pe)
++            print()
++
+ 
+-        
+ class Token(ParserElement):
+     """Abstract C{ParserElement} subclass, for defining atomic matching patterns."""
+     def __init__( self ):
+@@ -3803,4 +3805,4 @@ if __name__ == "__main__":
+ """
+ CHANGES
+ UnitTests.py
+-"""
+\ No newline at end of file
++"""

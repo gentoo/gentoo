@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI="5"
 
@@ -93,24 +93,24 @@ RDEPEND+=" ${COMMON_DEPEND}
 RESTRICT="strip"
 
 QA_PREBUILT="
-	usr/$(get_libdir)/${PN}${SLOT}/data/templates/template_x86_linux.bin
-	usr/$(get_libdir)/${PN}${SLOT}/data/templates/template_armle_linux.bin
-	usr/$(get_libdir)/${PN}${SLOT}/data/templates/template_x86_solaris.bin
-	usr/$(get_libdir)/${PN}${SLOT}/data/templates/template_x64_linux.bin
-	usr/$(get_libdir)/${PN}${SLOT}/data/templates/template_x64_linux_dll.bin
-	usr/$(get_libdir)/${PN}${SLOT}/data/templates/template_x86_bsd.bin
-	usr/$(get_libdir)/${PN}${SLOT}/data/templates/template_x64_bsd.bin
-	usr/$(get_libdir)/${PN}${SLOT}/data/templates/template_mipsbe_linux.bin
-	usr/$(get_libdir)/${PN}${SLOT}/data/templates/template_mipsle_linux.bin
-	usr/$(get_libdir)/${PN}${SLOT}/data/meterpreter/msflinker_linux_x86.bin
-	usr/$(get_libdir)/${PN}${SLOT}/data/meterpreter/ext_server_sniffer.lso
-	usr/$(get_libdir)/${PN}${SLOT}/data/meterpreter/ext_server_networkpug.lso
-	usr/$(get_libdir)/${PN}${SLOT}/data/meterpreter/ext_server_stdapi.lso
-	usr/$(get_libdir)/${PN}${SLOT}/data/exploits/CVE-2013-2171.bin
-	usr/$(get_libdir)/${PN}${SLOT}/data/exploits/CVE-2014-3153.elf
-	usr/$(get_libdir)/${PN}${SLOT}/data/android/libs/x86/libndkstager.so
-	usr/$(get_libdir)/${PN}${SLOT}/data/android/libs/mips/libndkstager.so
-	usr/$(get_libdir)/${PN}${SLOT}/data/android/libs/armeabi/libndkstager.so
+	usr/lib*/${PN}${SLOT}/data/templates/template_x86_linux.bin
+	usr/lib*/${PN}${SLOT}/data/templates/template_armle_linux.bin
+	usr/lib*/${PN}${SLOT}/data/templates/template_x86_solaris.bin
+	usr/lib*/${PN}${SLOT}/data/templates/template_x64_linux.bin
+	usr/lib*/${PN}${SLOT}/data/templates/template_x64_linux_dll.bin
+	usr/lib*/${PN}${SLOT}/data/templates/template_x86_bsd.bin
+	usr/lib*/${PN}${SLOT}/data/templates/template_x64_bsd.bin
+	usr/lib*/${PN}${SLOT}/data/templates/template_mipsbe_linux.bin
+	usr/lib*/${PN}${SLOT}/data/templates/template_mipsle_linux.bin
+	usr/lib*/${PN}${SLOT}/data/meterpreter/msflinker_linux_x86.bin
+	usr/lib*/${PN}${SLOT}/data/meterpreter/ext_server_sniffer.lso
+	usr/lib*/${PN}${SLOT}/data/meterpreter/ext_server_networkpug.lso
+	usr/lib*/${PN}${SLOT}/data/meterpreter/ext_server_stdapi.lso
+	usr/lib*/${PN}${SLOT}/data/exploits/CVE-2013-2171.bin
+	usr/lib*/${PN}${SLOT}/data/exploits/CVE-2014-3153.elf
+	usr/lib*/${PN}${SLOT}/data/android/libs/x86/libndkstager.so
+	usr/lib*/${PN}${SLOT}/data/android/libs/mips/libndkstager.so
+	usr/lib*/${PN}${SLOT}/data/android/libs/armeabi/libndkstager.so
 	"
 
 pkg_setup() {

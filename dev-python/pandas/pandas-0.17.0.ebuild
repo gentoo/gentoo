@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
 inherit distutils-r1 eutils flag-o-matic virtualx
 
@@ -39,14 +39,13 @@ DEPEND="${CDEPEND}
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		>=dev-python/openpyxl-1.6.1[${PYTHON_USEDEP}]
-		dev-python/openpyxl[${PYTHON_USEDEP}]
 		>=dev-python/pytables-3.0.0[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 		dev-python/rpy[${PYTHON_USEDEP}]
 		sci-libs/scipy[${PYTHON_USEDEP}]
 		>=dev-python/sphinx-1.2.1[${PYTHON_USEDEP}]
-		dev-python/xlrd[$(python_gen_usedep 'python2_7')]
-		dev-python/xlwt[$(python_gen_usedep 'python2_7')]
+		dev-python/xlrd[${PYTHON_USEDEP}]
+		dev-python/xlwt[${PYTHON_USEDEP}]
 		x11-misc/xclip
 		)
 	test? (
@@ -66,8 +65,8 @@ RDEPEND="${CDEPEND}
 	dev-python/pytz[${PYTHON_USEDEP}]
 	sci-libs/scipy[${PYTHON_USEDEP}]
 	excel? (
-		dev-python/xlrd[$(python_gen_usedep 'python2_7')]
-		dev-python/xlwt[$(python_gen_usedep 'python2_7')]
+		dev-python/xlrd[${PYTHON_USEDEP}]
+		dev-python/xlwt[${PYTHON_USEDEP}]
 		|| (
 			dev-python/xlsxwriter[${PYTHON_USEDEP}]
 			>=dev-python/openpyxl-1.6.1[${PYTHON_USEDEP}]
@@ -84,6 +83,11 @@ RDEPEND="${CDEPEND}
 python_prepare_all() {
 	# Prevent un-needed download during build
 	sed -e "/^              'sphinx.ext.intersphinx',/d" -i doc/source/conf.py || die
+
+	# https://github.com/pydata/pandas/issues/11299
+	sed \
+		-e 's:testOdArray:disable:g' \
+		-i pandas/io/tests/test_json/test_ujson.py || die
 
 	distutils-r1_python_prepare_all
 }
@@ -103,7 +107,7 @@ python_test() {
 	[[ -n "${FAST_PANDAS}" ]] && test_pandas+=' and not slow'
 	pushd  "${BUILD_DIR}"/lib > /dev/null
 	VIRTUALX_COMMAND="nosetests"
-	PYTHONPATH=. MPLCONFIGDIR=. HOME=. \
+	PYTHONPATH=. MPLCONFIGDIR=. \
 		virtualmake --verbosity=3 -A "${test_pandas}" pandas
 	popd > /dev/null
 }

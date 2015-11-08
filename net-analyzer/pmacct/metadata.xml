@@ -3,8 +3,9 @@
 <pkgmetadata>
 <herd>netmon</herd>
 <use>
+<flag name='geoipv2'>Add support for GeoIP2 through <pkg>dev-libs/libmaxminddb</pkg></flag>
 <flag name='64bit'>Use 64bit counters instead of 32bit ones</flag>
 <flag name='mongodb'>Add support for mongodb backend</flag>
-<flag name='ulog'>Enable ULOG support</flag>
+<flag name='ulog'>Enable support for ULOG in older kernels (deprecated)</flag>
 </use>
 </pkgmetadata>

@@ -1,0 +1,1 @@
+NEUTRON_CONFS=("/etc/neutron/neutron.conf" "/etc/neutron/plugins/ml2/ml2_conf.ini" "/etc/neutron/plugins/ml2/linuxbridge_agent.ini")

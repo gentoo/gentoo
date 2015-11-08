@@ -1,0 +1,61 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+my_daemon="shellinaboxd"
+pidfile="/var/run/${my_daemon}.pid"
+command="/usr/sbin/${my_daemon}"
+command_args="${SIAB_OPTS}"
+
+depend() {
+    use net
+}
+
+start_pre() {
+    function my_join() { local IFS="${1}"; shift; echo "$*"; }
+
+    if [[ -n ${SIAB_CSS_DIR} ]]; then
+        # This code searches SIAB_CSS_DIR for CSS files
+        # and formats the --user-css option accordingly.
+        local CSS_FILES=( "${SIAB_CSS_DIR}"/*.css )
+        local SIAB_CSS_FILES=()
+
+        for _CSS in "${CSS_FILES[@]}"; do
+            _BASE="$(basename ${_CSS})"
+            _NAME="${_BASE%%\.css}"
+            _NAME="${_NAME//-/_}"
+            _NAME="${_NAME^}"
+            # These are the default style sheets. Don't load them.
+            [[ ${_NAME} =~ ^(Print|Styles).*? ]] && continue
+            SIAB_CSS_FILES+=("\"${_NAME}\":-${_CSS}")
+        done
+
+        # The 1st one, which the default one, must be turned on using a + sign.
+        SIAB_CSS_FILES[0]=$(sed 's#:-#:+#' <<< ${SIAB_CSS_FILES[0]})
+
+        command_args="${command_args} --user-css=$(my_join , "${SIAB_CSS_FILES[@]}")"
+    fi
+
+    return 0
+}
+
+start() {
+    ebegin "Starting ${my_daemon}"
+    start-stop-daemon \
+        --start \
+        --background \
+        --pidfile ${pidfile} \
+        --make-pidfile \
+        --exec ${command} \
+        -- ${command_args}
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping ${my_daemon}"
+    start-stop-daemon \
+        --stop \
+        --pidfile ${pidfile}
+    eend $?
+}

@@ -32,6 +32,8 @@ DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 "
 
+PATCHES=( "${FILESDIR}/${P}-qt55.patch" )
+
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		[[ $(gcc-version) < 4.8 ]] && \

@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Michael Palimaka <kensington@gentoo.org> (28 Oct 2015)
+# KDE is not stable on arm
+media-video/vlc kde
+
 # Pacho Ramos <pacho@gentoo.org> (03 Oct 2015)
 # Missing stable, bug #529462
 media-gfx/graphviz java

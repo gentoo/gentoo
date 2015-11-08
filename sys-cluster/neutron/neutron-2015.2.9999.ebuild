@@ -203,8 +203,6 @@ python_test() {
 	# https://bugs.launchpad.net/neutron/+bug/1234857
 	# https://bugs.launchpad.net/swift/+bug/1249727
 	# https://bugs.launchpad.net/neutron/+bug/1251657
-	# turn multiprocessing off, testr will use it --parallel
-	local DISTUTILS_NO_PARALLEL_BUILD=1
 	# Move tests out that attempt net connection, have failures
 	mv $(find . -name test_ovs_tunnel.py) . || die
 	sed -e 's:test_app_using_ipv6_and_ssl:_&:' \
@@ -241,7 +239,7 @@ python_install() {
 	fi
 	if use linuxbridge; then
 		newinitd "${FILESDIR}/neutron.initd" "neutron-linuxbridge-agent"
-		newconfd "${FILESDIR}/neutron-linuxbridge-agent.confd" "neutron-linuxbridge-agent"
+		newconfd "${FILESDIR}/neutron-linuxbridge-agent.confd.liberty" "neutron-linuxbridge-agent"
 	fi
 	diropts -m 755 -o neutron -g neutron
 	dodir /var/log/neutron /var/lib/neutron

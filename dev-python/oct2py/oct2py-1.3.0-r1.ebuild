@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python2_7 python3_{3,4} )
 
 inherit distutils-r1
 
@@ -19,7 +19,7 @@ IUSE="doc examples test"
 
 RDEPEND="
 	sci-libs/scipy[${PYTHON_USEDEP}]
-	sci-mathematics/octave"
+	<sci-mathematics/octave-3.8"
 DEPEND="${RDEPEND}
 	doc? (
 		dev-python/sphinx-bootstrap-theme[${PYTHON_USEDEP}]
@@ -54,10 +54,6 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( html/. )
+	use examples && EXAMPLES=( example/. )
 	distutils-r1_python_install_all
-
-	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r example
-	fi
 }

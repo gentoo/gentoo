@@ -26,10 +26,10 @@ COMMON_DEPEND="
 	media-libs/phonon[qt4]
 	virtual/jpeg:0
 	exif? ( >=media-gfx/exiv2-0.17 )
-	face? ( >=media-libs/libkface-4.7.0 )
+	face? ( >=kde-apps/libkface-4.7.0 )
 	geolocation? ( $(add_kdeapps_dep marble) )
 	kipi? ( $(add_kdeapps_dep libkipi '' 4.9.58) )
-	map? ( >=media-libs/libkgeomap-4.7.0 )
+	map? ( >=kde-apps/libkgeomap-4.7.0:4 )
 	raw? ( $(add_kdeapps_dep libkdcraw '' 4.9.58) )
 "
 DEPEND="${COMMON_DEPEND}
@@ -40,6 +40,7 @@ RDEPEND="${COMMON_DEPEND}
 	kipi? ( >=media-plugins/kipi-plugins-4.7.0 )
 "
 
+PATCHES=( "${FILESDIR}/${P}-bump-min-cmake.patch" )
 DOCS=( ChangeLog README )
 
 src_configure() {

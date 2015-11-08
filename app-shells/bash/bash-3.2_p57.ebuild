@@ -75,6 +75,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-3.2-ulimit.patch
 	epatch "${FILESDIR}"/${PN}-3.0-trap-fg-signals.patch
 	epatch "${FILESDIR}"/${PN}-3.2-dev-fd-test-as-user.patch #131875
+	epatch "${FILESDIR}"/${PN}-4.2-dev-fd-buffer-overflow.patch #431850
 
 	epatch_user
 }

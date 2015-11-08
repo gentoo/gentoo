@@ -9,7 +9,7 @@ inherit leechcraft
 DESCRIPTION="Simple HTTP server for Leechcraft"
 
 SLOT="0"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DEPEND="~app-leechcraft/lc-core-${PV}"
 RDEPEND="${DEPEND}"

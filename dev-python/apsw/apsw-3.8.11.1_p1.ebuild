@@ -36,12 +36,6 @@ python_compile() {
 	distutils-r1_python_compile --enable=load_extension
 }
 
-src_test() {
-	# tests use overlapping database files
-	local DISTUTILS_NO_PARALLEL_BUILD=1
-	distutils-r1_src_test
-}
-
 python_test() {
 	"${PYTHON}" setup.py build_test_extension || die "Building of test loadable extension failed"
 	"${PYTHON}" tests.py -v || die

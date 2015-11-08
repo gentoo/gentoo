@@ -45,12 +45,6 @@ python_compile() {
 	fi
 }
 
-src_test() {
-#	local DISTUTILS_NO_PARALLEL_BUILD=1
-
-	distutils-r1_src_test
-}
-
 python_test() {
 	local pidfile=${T}/redis-${EPYTHON}.pid
 	local sock=${T}/redis-${EPYTHON}.sock

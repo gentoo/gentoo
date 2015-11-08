@@ -34,5 +34,5 @@ DOCS=( manual.odt )
 
 src_install() {
 	python_moduleinto pmg_tk/startup
-	python_parallel_foreach_impl python_domodule pymol_plugin_dynamics.py
+	python_foreach_impl python_domodule pymol_plugin_dynamics.py
 }

@@ -6,6 +6,10 @@
 		<name>Mike Gilbert</name>
 	</maintainer>
 	<maintainer>
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<maintainer>
 		<email>mattsch@gmail.com</email>
 		<name>Matthew Schultz</name>
 		<description>Proxied maintainer. Copy on bugs.</description>

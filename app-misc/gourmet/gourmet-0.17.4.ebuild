@@ -5,8 +5,6 @@
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
-# Parallel builds fail when building translations
-DISTUTILS_NO_PARALLEL_BUILD=1
 
 inherit distutils-r1
 
@@ -24,10 +22,14 @@ RDEPEND=">=dev-python/pygtk-2.22.0:2[${PYTHON_USEDEP}]
 	virtual/python-imaging[${PYTHON_USEDEP}]
 	i18n? ( dev-python/elib-intl[${PYTHON_USEDEP}] )
 	ipython? ( >=dev-python/ipython-0.13.2[${PYTHON_USEDEP}] )
-	pdf? ( >=dev-python/reportlab-2.6[${PYTHON_USEDEP}]
-	       >=dev-python/python-poppler-0.12.1-r4[${PYTHON_USEDEP}] )
-	print? ( >=dev-python/reportlab-2.6[${PYTHON_USEDEP}]
-	         >=dev-python/python-poppler-0.12.1-r4[${PYTHON_USEDEP}] )
+	pdf? (
+		>=dev-python/reportlab-2.6[${PYTHON_USEDEP}]
+		>=dev-python/python-poppler-0.12.1-r4[${PYTHON_USEDEP}]
+	)
+	print? (
+		>=dev-python/reportlab-2.6[${PYTHON_USEDEP}]
+		>=dev-python/python-poppler-0.12.1-r4[${PYTHON_USEDEP}]
+	)
 	spell? ( >=dev-python/gtkspell-python-2.25.3-r1[${PYTHON_USEDEP}] )
 	sound? ( >=dev-python/gst-python-0.10.22-r1:0.10[${PYTHON_USEDEP}] )
 	web? ( >=dev-python/beautifulsoup-3.2.1-r1:python-2[${PYTHON_USEDEP}] )"
@@ -53,7 +55,7 @@ python_prepare() {
 	sed -i "s:\(lib_dir = \)'../gourmet':\1'$(python_get_sitedir)':" gourmet/settings.py || die
 }
 
-src_install() {
-	distutils-r1_src_install
+python_install_all() {
+	distutils-r1_python_install_all
 	doman gourmet.1
 }

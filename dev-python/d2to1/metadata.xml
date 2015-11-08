@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>python</herd>
@@ -9,5 +9,6 @@
 		which will slurp its arguments from the setup.cfg.</longdescription>
 	<upstream>
 		<remote-id type="pypi">d2to1</remote-id>
+		<remote-id type="github">embray/d2to1</remote-id>
 	</upstream>
 </pkgmetadata>

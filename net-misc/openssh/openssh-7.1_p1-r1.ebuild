@@ -116,7 +116,9 @@ src_prepare() {
 
 	if use X509 ; then
 		pushd .. >/dev/null
+		pushd ${HPN_PATCH%.*.*} >/dev/null
 		epatch "${FILESDIR}"/${PN}-7.1_p1-hpn-x509-glue.patch
+		popd >/dev/null
 		epatch "${FILESDIR}"/${PN}-7.0_p1-sctp-x509-glue.patch
 		popd >/dev/null
 		epatch "${WORKDIR}"/${X509_PATCH%.*}

@@ -14,7 +14,7 @@ if [[ ${PV} = 9999 ]]; then
 else
 	SRC_URI="https://storage.googleapis.com/golang/go${PV}.src.tar.gz"
 	# Upstream only supports go on amd64, arm and x86 architectures.
-	KEYWORDS="-* amd64 arm x86 ~amd64-fbsd ~x86-fbsd ~x64-macos ~x86-macos"
+	KEYWORDS="-* amd64 arm x86 ~amd64-fbsd ~x86-fbsd ~x64-macos ~x86-macos ~x64-solaris"
 fi
 
 DESCRIPTION="A concurrent garbage collected and typesafe programming language"
@@ -31,6 +31,8 @@ RDEPEND=""
 QA_EXECSTACK="
 	usr/lib/go/src/debug/elf/testdata/go-relocation-test-gcc482-aarch64.obj
 	usr/lib/go/src/debug/elf/testdata/gcc-amd64-openbsd-debug-with-rela.obj"
+
+	REQUIRES_EXCLUDE="/usr/lib/go/src/debug/elf/testdata/*"
 
 # The tools in /usr/lib/go should not cause the multilib-strict check to fail.
 QA_MULTILIB_PATHS="usr/lib/go/pkg/tool/.*/.*"

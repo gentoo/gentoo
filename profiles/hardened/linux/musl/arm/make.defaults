@@ -10,3 +10,11 @@ CFLAGS="-O2"
 CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"
 FCFLAGS="${CFLAGS}"
+
+# Anthony G. Basile <blueness@gentoo.org> (25 Oct 2015)
+# Multilib-related setup, bug #515130
+ABI="arm"
+DEFAULT_ABI="arm"
+MULTILIB_ABIS="arm"
+CHOST_arm="${CHOST}"
+LIBDIR_arm="lib"

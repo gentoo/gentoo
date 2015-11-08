@@ -9,7 +9,7 @@ inherit leechcraft
 DESCRIPTION="Allows other LeechCraft modules to register global shortcuts"
 
 SLOT="0"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug"
 
 DEPEND="~app-leechcraft/lc-core-${PV}

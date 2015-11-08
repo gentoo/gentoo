@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1 eutils linux-info multilib user
 
-DESCRIPTION="A cloud computing fabric controller (main part of an IaaS system) written in Python"
+DESCRIPTION="A cloud computing fabric controller (main part of an IaaS system)"
 HOMEPAGE="https://launchpad.net/nova"
 SRC_URI="https://launchpad.net/${PN}/kilo/${PV}/+download/${P}.tar.gz"
 
@@ -193,8 +193,6 @@ python_compile() {
 }
 
 python_test() {
-	# turn multiprocessing off, testr will use it --parallel
-	local DISTUTILS_NO_PARALLEL_BUILD=1
 	testr init
 	testr run --parallel || die "failed testsuite under python2.7"
 }

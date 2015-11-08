@@ -106,6 +106,7 @@ RDEPEND="
 				) )
 		)
 		>=sys-devel/llvm-3.4.2:=[${MULTILIB_USEDEP}]
+		<sys-devel/llvm-3.7
 	)
 	opencl? (
 				app-eselect/eselect-opencl

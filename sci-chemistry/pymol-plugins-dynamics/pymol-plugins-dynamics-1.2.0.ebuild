@@ -38,6 +38,6 @@ src_prepare() {
 
 src_install() {
 	python_moduleinto pmg_tk/startup
-	python_parallel_foreach_impl python_domodule dynamics_pymol_plugin.py
-	python_parallel_foreach_impl python_doscript pydynamics*
+	python_foreach_impl python_domodule dynamics_pymol_plugin.py
+	python_foreach_impl python_doscript pydynamics*
 }

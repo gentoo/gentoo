@@ -24,12 +24,6 @@ PATCHES=(
 	"${FILESDIR}/${P}-testsuite-fix-from-r235.patch"
 )
 
-src_test() {
-	local DISTUTILS_NO_PARALLEL_BUILD=1
-
-	distutils-r1_src_test
-}
-
 python_test() {
 	esetup.py test
 }

@@ -5,6 +5,7 @@
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
+
 inherit distutils-r1 multilib
 
 XPAPV=2.1.15
@@ -21,8 +22,7 @@ IUSE=""
 DEPEND=">=x11-libs/xpa-${XPAPV}"
 RDEPEND="${DEPEND}
 	dev-python/numpy[${PYTHON_USEDEP}]
-	|| ( dev-python/astropy[${PYTHON_USEDEP}]
-		 dev-python/pyfits[${PYTHON_USEDEP}] )"
+	dev-python/astropy[${PYTHON_USEDEP}]"
 
 DOCS=(changelog README)
 

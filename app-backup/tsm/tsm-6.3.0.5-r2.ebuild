@@ -35,7 +35,7 @@ LICENSE="Apache-1.1 Apache-2.0 JDOM BSD-2 CC-PD Boost-1.0 MIT CPL-1.0 HPND Exola
 	|| ( BSD GPL-2+ ) gSOAP libpng tsm"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 -*"
 IUSE="acl java +tsm_cit +tsm_hw"
 QA_PREBUILT="*"
 

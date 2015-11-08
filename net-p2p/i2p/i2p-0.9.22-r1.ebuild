@@ -19,7 +19,10 @@ IUSE="nls"
 
 # dev-java/ant-core is automatically added due to java-ant-2.eclass
 CDEPEND="dev-java/jrobin:0
+	dev-java/bcprov:1.50
 	dev-java/slf4j-api:0
+	dev-java/tomcat-jstl-impl:0
+	dev-java/tomcat-jstl-spec:0
 	dev-java/java-service-wrapper:0"
 
 DEPEND="${CDEPEND}
@@ -32,7 +35,7 @@ RDEPEND="${CDEPEND}
 	>=virtual/jre-1.6"
 
 EANT_BUILD_TARGET="pkg"
-EANT_GENTOO_CLASSPATH="java-service-wrapper,jrobin,slf4j-api"
+EANT_GENTOO_CLASSPATH="java-service-wrapper,jrobin,slf4j-api,tomcat-jstl-impl,tomcat-jstl-spec,bcprov-1.50"
 
 pkg_setup() {
 	enewgroup i2p
@@ -82,7 +85,7 @@ src_install() {
 	# Install main files and basic documentation
 	exeinto ${i2p_home}
 	insinto ${i2p_home}
-	#doins blocklist.txt hosts.txt *.config
+	doins blocklist.txt hosts.txt *.config
 	doexe eepget i2prouter runplain.sh
 	dodoc history.txt INSTALL-headless.txt LICENSE.txt
 	doman man/*

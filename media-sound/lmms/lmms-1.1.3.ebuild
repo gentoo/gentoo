@@ -44,6 +44,8 @@ RDEPEND="${RDEPEND}
 
 DOCS="README AUTHORS TODO"
 
+PATCHES=( "${FILESDIR}/gcc52.patch" )
+
 src_configure() {
 	mycmakeargs="${mycmakeargs}
 		-DWANT_SYSTEM_SR=TRUE

@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+EAPI=5
+
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 PYTHON_REQ_USE="xml"
 
 inherit libtool flag-o-matic eutils python-r1 autotools prefix multilib-minimal
@@ -73,6 +74,9 @@ src_prepare() {
 	# Patches needed for prefix support
 	epatch "${FILESDIR}"/${PN}-2.7.1-catalog_path.patch
 	epatch "${FILESDIR}"/${PN}-2.8.0_rc1-winnt.patch
+
+	# Disable programs that we don't actually install.
+	epatch "${FILESDIR}"/${PN}-2.9.2-disable-tests.patch
 
 	eprefixify catalog.c xmlcatalog.c runtest.c xmllint.c
 

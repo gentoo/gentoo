@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit games
+inherit games eutils
 
 MY_P="${PN}-source-${PV}"
 DESCRIPTION="Clone of BBS Door game Trade Wars 2002"
@@ -16,6 +16,10 @@ KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 S=${WORKDIR}/${MY_P}
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-format.patch
+}
 
 src_install() {
 	DOCS="AUTHORS ChangeLog PROTOCOL README TODO" \

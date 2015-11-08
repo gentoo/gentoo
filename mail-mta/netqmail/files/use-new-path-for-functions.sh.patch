@@ -1,0 +1,11 @@
+--- genqmail-20080406.orig/ssl/mkservercert.orig	2015-10-18 12:46:40.082559295 -0200
++++ genqmail-20080406/ssl/mkservercert	2015-10-18 12:49:03.749576181 -0200
+@@ -5,7 +5,7 @@
+ # Based on mkimapdcert from courier-imap.
+
+ test -x /usr/bin/openssl || exit 0
+-source /etc/init.d/functions.sh || exit 1
++source /lib/gentoo/functions.sh || exit 1
+
+ filedir="/var/qmail/control"
+ pemfile="${filedir}/servercert.pem"

@@ -61,6 +61,8 @@ pkg_setup() {
 
 src_prepare() {
 	sed -i -e '/SystemdService/d' data/org.freedesktop.ConsoleKit.service.in || die
+
+	epatch_user
 }
 
 src_configure() {

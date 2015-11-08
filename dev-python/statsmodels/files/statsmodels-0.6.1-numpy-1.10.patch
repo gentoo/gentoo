@@ -1,0 +1,20 @@
+ statsmodels/tsa/ar_model.py | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/statsmodels/tsa/ar_model.py b/statsmodels/tsa/ar_model.py
+index f0af7ee..fe05634 100644
+--- a/statsmodels/tsa/ar_model.py
++++ b/statsmodels/tsa/ar_model.py
+@@ -256,10 +256,8 @@ class AR(tsbase.TimeSeriesModel):
+ 
+         Vpinv = np.zeros((p, p), dtype=params.dtype)
+         for i in range(1, p1):
+-            Vpinv[i-1, i-1:] = np.correlate(params0, params0[:i],
+-                                            old_behavior=False)[:-1]
+-            Vpinv[i-1, i-1:] -= np.correlate(params0[-i:], params0,
+-                                             old_behavior=False)[:-1]
++            Vpinv[i-1, i-1:] = np.correlate(params0, params0[:i])[:-1]
++            Vpinv[i-1, i-1:] -= np.correlate(params0[-i:], params0)[:-1]
+ 
+         Vpinv = Vpinv + Vpinv.T - np.diag(Vpinv.diagonal())
+         return Vpinv

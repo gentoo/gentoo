@@ -27,7 +27,7 @@ MYSQL_EXTRAS=""
 # Use "none" to disable it's use
 [[ ${MY_EXTRAS_VER} == "live" ]] && MYSQL_EXTRAS="git-r3"
 
-inherit eutils flag-o-matic ${MYSQL_EXTRAS} mysql-cmake mysql_fx versionator \
+inherit eutils systemd flag-o-matic ${MYSQL_EXTRAS} mysql-cmake mysql_fx versionator \
 	toolchain-funcs user cmake-utils multilib-minimal
 
 #
@@ -192,8 +192,10 @@ fi
 LICENSE="GPL-2"
 SLOT="0/${SUBSLOT:-0}"
 
-IUSE="+community cluster debug embedded extraengine jemalloc latin1
-	+perl profiling selinux ssl systemtap static static-libs tcmalloc test"
+IUSE="debug embedded extraengine jemalloc latin1 libressl +openssl
+	+perl profiling selinux systemtap static static-libs tcmalloc test yassl"
+
+REQUIRED_USE="^^ ( yassl openssl libressl )"
 
 ### Begin readline/libedit
 ### If the world was perfect, we would use external libedit on both to have a similar experience
@@ -210,6 +212,9 @@ IUSE="+community cluster debug embedded extraengine jemalloc latin1
 #	mysql_check_version_range "7.2 to 7.2.99.99"  ; then
 #	IUSE="bindist ${IUSE}"
 #fi
+
+# Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
+RESTRICT="libressl? ( test )"
 
 if [[ ${PN} == "mariadb" || ${PN} == "mariadb-galera" ]] ; then
 	IUSE="bindist ${IUSE}"
@@ -261,7 +266,7 @@ fi
 
 REQUIRED_USE="
 	${REQUIRED_USE} tcmalloc? ( !jemalloc ) jemalloc? ( !tcmalloc )
-	 static? ( !ssl )"
+	 static? ( yassl )"
 
 #
 # DEPENDENCIES:
@@ -271,7 +276,6 @@ REQUIRED_USE="
 # These are used for both runtime and compiletime
 # MULTILIB_USEDEP only set for libraries used by the client library
 DEPEND="
-	ssl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
 	kernel_linux? (
 		sys-process/procps:0=
 		dev-libs/libaio:0=
@@ -287,18 +291,21 @@ DEPEND="
 if [[ ${HAS_TOOLS_PATCH} ]] ; then
 	DEPEND+="
 		client-libs? (
-			ssl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
+			openssl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
+			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP},static-libs?] )
 			>=sys-libs/zlib-1.2.3:0=[${MULTILIB_USEDEP},static-libs?]
 		)
 		!client-libs? (
-			ssl? ( >=dev-libs/openssl-1.0.0:0=[static-libs?] )
+			openssl? ( >=dev-libs/openssl-1.0.0:0=[static-libs?] )
+			libressl? ( dev-libs/libressl:0=[static-libs?] )
 			>=sys-libs/zlib-1.2.3:0=[static-libs?]
 		)
 		tools? ( sys-libs/ncurses:0= ) embedded? ( sys-libs/ncurses:0= )
 	"
 else
 	DEPEND+="
-		ssl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
+		openssl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
+		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP},static-libs?] )
 		>=sys-libs/zlib-1.2.3:0=[${MULTILIB_USEDEP},static-libs?]
 		sys-libs/ncurses:0=[${MULTILIB_USEDEP}]
 	"
@@ -503,9 +510,6 @@ mysql-multilib_pkg_pretend() {
 			die
 		fi
 	fi
-	if use_if_iuse cluster && [[ "${PN}" != "mysql-cluster" ]]; then
-		die "NDB Cluster support has been removed from all packages except mysql-cluster"
-	fi
 }
 
 # @FUNCTION: mysql-multilib_pkg_setup
@@ -601,7 +605,7 @@ multilib_src_configure() {
 
 	if ! multilib_is_native_abi && in_iuse client-libs ; then
 		if ! use client-libs ; then
-			ewarn "Skipping multilib build due to client-libs USE disabled"
+			einfo "Skipping multilib build due to client-libs USE disabled"
 			return 0
 		fi
 	fi
@@ -637,10 +641,20 @@ multilib_src_configure() {
 		-DENABLED_LOCAL_INFILE=1
 		-DMYSQL_UNIX_ADDR=${EPREFIX}/var/run/mysqld/mysqld.sock
 		-DINSTALL_UNIX_ADDRDIR=${EPREFIX}/var/run/mysqld/mysqld.sock
-		-DWITH_SSL=$(usex ssl system bundled)
 		-DWITH_DEFAULT_COMPILER_OPTIONS=0
 		-DWITH_DEFAULT_FEATURE_SET=0
+		-DINSTALL_SYSTEMD_UNITDIR="$(systemd_get_unitdir)"
 	)
+
+	if in_iuse systemd ; then
+		mycmakeargs+=( -DWITH_SYSTEMD=$(usex systemd) )
+	fi
+
+	if use openssl || use libressl ; then
+		mycmakeargs+=( -DWITH_SSL=system )
+	else
+		mycmakeargs+=( -DWITH_SSL=bundled )
+	fi
 
 	if in_iuse client-libs ; then
 		mycmakeargs+=( -DWITHOUT_CLIENTLIBS=$(usex client-libs 0 1) )
@@ -726,7 +740,6 @@ mysql-multilib_src_compile() {
 multilib_src_compile() {
 	if ! multilib_is_native_abi && in_iuse client-libs ; then
 		if ! use client-libs ; then
-			ewarn "Skipping multilib build due to client-libs USE disabled"
 			return 0
 		fi
 	fi
@@ -756,7 +769,6 @@ multilib_src_install() {
 
 	if ! multilib_is_native_abi && in_iuse client-libs ; then
 		if ! use client-libs ; then
-			ewarn "Skipping multilib build due to client-libs USE disabled"
 			return 0
 		fi
 	fi
@@ -795,7 +807,7 @@ mysql-multilib_pkg_preinst() {
 	        if [[ -z ${REPLACING_VERSIONS} && -e "${EROOT}usr/$(get_libdir)/libmysqlclient.so" ]] ; then
 			SHOW_ABI_MESSAGE=1
 		elif [[ ${REPLACING_VERSIONS} && -e "${EROOT}usr/$(get_libdir)/libmysqlclient.so" ]] && \
-			in_iuse client-libs && ! built_with_use --missing true ${CATEGORY}/${PN} client-libs ; then
+			in_iuse client-libs && has_version "${CATEGORY}/${PN}[-client-libs(+)]" ; then
 			SHOW_ABI_MESSAGE=1
 		fi
 
@@ -856,7 +868,7 @@ mysql-multilib_pkg_postinst() {
 				einfo
 				elog "This install includes the PAM authentication plugin."
 				elog "To activate and configure the PAM plugin, please read:"
-				elog "https://kb.askmonty.org/en/pam-authentication-plugin/"
+				elog "https://mariadb.com/kb/en/mariadb/pam-authentication-plugin/"
 				einfo
 			fi
 		fi
@@ -872,7 +884,7 @@ mysql-multilib_pkg_postinst() {
 		elog "mysql_upgrade tool."
 		einfo
 
-		if [[ ${PN} == "mariadb-galera" ]] ; then
+		if [[ ${PN} == "mariadb-galera" ]] || use_if_iuse galera ; then
 			einfo
 			elog "Be sure to edit the my.cnf file to activate your cluster settings."
 			elog "This should be done after running \"emerge --config =${CATEGORY}/${PF}\""
@@ -899,9 +911,10 @@ mysql-multilib_getopt() {
 # Use my_print_defaults to extract specific config options
 mysql-multilib_getoptval() {
 	local mypd="${EROOT}"/usr/bin/my_print_defaults
-	section="$1"
-	flag="--${2}="
-	"${mypd}" $section | sed -n "/^${flag}/s,${flag},,gp"
+	local section="$1"
+	local flag="--${2}="
+	local extra_options="${3}"
+	"${mypd}" $extra_options $section | sed -n "/^${flag}/s,${flag},,gp"
 }
 
 # @FUNCTION: mysql-multilib_pkg_config
@@ -962,6 +975,10 @@ mysql-multilib_pkg_config() {
 
 	if [ -z "${MYSQL_ROOT_PASSWORD}" ]; then
 		MYSQL_ROOT_PASSWORD="$(mysql-multilib_getoptval 'client mysql' password)"
+		# Sometimes --show is required to display passwords in some implementations of my_print_defaults
+		if [[ "${MYSQL_ROOT_PASSWORD}" == '*****' ]]; then
+			MYSQL_ROOT_PASSWORD="$(mysql-multilib_getoptval 'client mysql' password --show)"
+		fi
 	fi
 	MYSQL_TMPDIR="$(mysql-multilib_getoptval mysqld tmpdir)"
 	# These are dir+prefix
@@ -1025,7 +1042,7 @@ mysql-multilib_pkg_config() {
 	help_tables="${TMPDIR}/fill_help_tables.sql"
 
 	# Figure out which options we need to disable to do the setup
-	helpfile="${TMPDIR}/mysqld-help"
+	local helpfile="${TMPDIR}/mysqld-help"
 	${EROOT}/usr/sbin/mysqld --verbose --help >"${helpfile}" 2>/dev/null
 	for opt in grant-tables host-cache name-resolve networking slave-start \
 		federated ssl log-bin relay-log slow-query-log external-locking \

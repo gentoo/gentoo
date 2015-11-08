@@ -223,7 +223,7 @@ pkg_postinst() {
 	# for DBUS_MACHINE_UUID_FILE (see tools/dbus-launch.c) and reverse
 	# dependencies with hardcoded paths (although the known ones got fixed already)
 	dbus-uuidgen --ensure="${EROOT%/}"/etc/machine-id
-	ln -sf "${EROOT%/}"/etc/machine-id "${EROOT%/}"/var/lib/dbus/machine-id
+	ln -sf "${EPREFIX}"/etc/machine-id "${EROOT%/}"/var/lib/dbus/machine-id
 
 	if [[ ${CHOST} == *-darwin* ]]; then
 		local plist="org.freedesktop.dbus-session.plist"

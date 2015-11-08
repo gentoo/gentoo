@@ -88,6 +88,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-autotools.patch \
+		"${FILESDIR}"/${P}-format.patch \
 		"${FILESDIR}"/${P}-xf86extensions.patch
 	sed -i \
 		-e 's/building//' \

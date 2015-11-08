@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/431850
+
+this is a backport of the upstream bash42-033 patch for bash 3.1/3.0/2.05
+
+--- a/test.c
++++ b/test.c
+@@ -194,7 +194,8 @@
+      trailing slash.  Make sure /dev/fd/xx really uses DEV_FD_PREFIX/xx.
+      On most systems, with the notable exception of linux, this is
+      effectively a no-op. */
+-      char pbuf[32];
++      static char *pbuf = 0;
++      pbuf = xrealloc (pbuf, sizeof (DEV_FD_PREFIX) + strlen (path + 8));
+       strcpy (pbuf, DEV_FD_PREFIX);
+       strcat (pbuf, path + 8);
+       return (stat (pbuf, finfo));

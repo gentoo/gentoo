@@ -2,26 +2,26 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# -----------------------------------------------------------------------------
-# @eclass-begin
-# @eclass-shortdesc Java OSGi eclass
-# @eclass-maintainer java@gentoo.org
-#
-# This eclass provides functionality which is used by
-# packages that need to be OSGi compliant. This means
-# that the generated jars will have special headers in their manifests.
-# Currently this is used only by Eclipse-3.3 - later
-# we could extend this so that Gentoo Java system would be
-# fully OSGi compliant.
-#
-# -----------------------------------------------------------------------------
+# @ECLASS: java-osgi.eclass
+# @MAINTAINER:
+# java@gentoo.org
+# @AUTHOR:
+# Java maintainers (java@gentoo.org)
+# @BLURB: Java OSGi eclass
+# @DESCRIPTION:
+# This eclass provides functionality which is used by packages that need to be
+# OSGi compliant. This means that the generated jars will have special headers
+# in their manifests. Currently this is used only by Eclipse-3.3 - later we
+# could extend this so that Gentoo Java system would be fully OSGi compliant.
 
 inherit java-utils-2
 
+# @ECLASS-VARIABLE: _OSGI_T
+# @INTERNAL
+# @DESCRIPTION:
 # We define _OSGI_T so that it does not contain a slash at the end.
 # According to Paludis guys, there is currently a proposal for EAPIs that
 # would require all variables to end with a slash.
-
 _OSGI_T="${T/%\//}"
 
 # must get Diego to commit something like this to portability.eclass
@@ -36,18 +36,17 @@ _canonicalise() {
 	fi
 }
 
-# -----------------------------------------------------------------------------
-# @ebuild-function _java-osgi_plugin
-#
+# @FUNCTION: _java-osgi_plugin
+# @USAGE: <plugin name>
+# @INTERNAL
+# @DESCRIPTION:
 # This is an internal function, not to be called directly.
 #
-# @example
+# @CODE
 #	_java-osgi_plugin "JSch"
+# @CODE
 #
 # @param $1 - bundle name
-#
-# ------------------------------------------------------------------------------
-
 _java-osgi_plugin() {
 	# We hardcode Gentoo as the vendor name
 
@@ -57,21 +56,20 @@ _java-osgi_plugin() {
 	EOF
 }
 
-# -----------------------------------------------------------------------------
-# @ebuild-function _java-osgi_makejar
-#
+# @FUNCTION: _java-osgi_makejar
+# @USAGE: <jar name> <symbolic name> <bundle name> <header name>
+# @INTERNAL
+# @DESCRIPTION:
 # This is an internal function, not to be called directly.
 #
-# @example
+# @CODE
 #	_java-osgi_makejar "dist/${PN}.jar" "com.jcraft.jsch" "JSch" "com.jcraft.jsch, com.jcraft.jsch.jce;x-internal:=true"
+# @CODE
 #
 # @param $1 - name of jar to repackage with OSGi
 # @param $2 - bundle symbolic name
 # @param $3 - bundle name
 # @param $4 - export-package header
-#
-# ------------------------------------------------------------------------------
-
 _java-osgi_makejar() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -104,9 +102,9 @@ _java-osgi_makejar() {
 	rm -rf "${_OSGI_T}/tmp_jar"
 }
 
-# -----------------------------------------------------------------------------
-# @ebuild-function java-osgi_dojar
-#
+# @FUNCTION: @java-osgi_dojar
+# @USAGE: <jar name> <symbolic name> <bundle name> <header name>
+# @DESCRIPTION:
 # Rewrites a jar, and produce an OSGi compliant jar from arguments given on the command line.
 # The arguments given correspond to the minimal set of headers
 # that must be present on a Manifest file of an OSGi package.
@@ -114,16 +112,14 @@ _java-osgi_makejar() {
 # that create the Manifest from a file.
 # It will call java-pkg_dojar at the end.
 #
-# @example
+# @CODE
 #	java-osgi_dojar "dist/${PN}.jar" "com.jcraft.jsch" "JSch" "com.jcraft.jsch, com.jcraft.jsch.jce;x-internal:=true"
+# @CODE
 #
 # @param $1 - name of jar to repackage with OSGi
 # @param $2 - bundle symbolic name
 # @param $3 - bundle name
 # @param $4 - export-package-header
-#
-# ------------------------------------------------------------------------------
-
 java-osgi_dojar() {
 	debug-print-function ${FUNCNAME} "$@"
 	local jarName="$(basename ${1})"
@@ -131,9 +127,9 @@ java-osgi_dojar() {
 	java-pkg_dojar "${_OSGI_T}/osgi/${jarName}"
 }
 
-# -----------------------------------------------------------------------------
-# @ebuild-function java-osgi_newjar
-#
+# @FUNCTION: java-osgi_newjar
+# @USAGE: <jar name> <symbolic name> <bundle name> <header name>
+# @DESCRIPTION:
 # Rewrites a jar, and produce an OSGi compliant jar.
 # The arguments given correspond to the minimal set of headers
 # that must be present on a Manifest file of an OSGi package.
@@ -141,17 +137,15 @@ java-osgi_dojar() {
 # that create the Manifest from a file.
 # It will call java-pkg_newjar at the end.
 #
-# @example
+# @CODE
 #	java-osgi_newjar "dist/${PN}.jar" "com.jcraft.jsch" "JSch" "com.jcraft.jsch, com.jcraft.jsch.jce;x-internal:=true"
+# @CODE
 #
 # @param $1 - name of jar to repackage with OSGi
 # @param $2 (optional) - name of the target jar. It will default to package name if not specified.
 # @param $3 - bundle symbolic name
 # @param $4 - bundle name
 # @param $5 - export-package header
-#
-# ------------------------------------------------------------------------------
-
 java-osgi_newjar() {
 	debug-print-function ${FUNCNAME} "$@"
 	local jarName="$(basename $1)"
@@ -165,21 +159,20 @@ java-osgi_newjar() {
 	fi
 }
 
-# -----------------------------------------------------------------------------
-# @ebuild-function _java-osgi_makejar-fromfile
-#
+# @FUNCTION:_java-osgi_makejar-fromfile
+# @USAGE: <jar to repackage with OSGi> <Manifest file> <bundle name> <version rewriting>
+# @INTERNAL
+# @DESCRIPTION:
 # This is an internal function, not to be called directly.
 #
-# @example
+# @CODE
 #	_java-osgi_makejar-fromfile "dist/${PN}.jar" "${FILESDIR}/MANIFEST.MF" "JSch" 1
+# @CODE
 #
 # @param $1 - name of jar to repackage with OSGi
 # @param $2 - path to the Manifest file
 # @param $3 - bundle name
 # @param $4 - automatic version rewriting (0 or 1)
-#
-# ------------------------------------------------------------------------------
-
 _java-osgi_makejar-fromfile() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -212,27 +205,26 @@ _java-osgi_makejar-fromfile() {
 	rm -rf "${_OSGI_T}/tmp_jar"
 }
 
-# -----------------------------------------------------------------------------
-# @ebuild-function java-osgi_newjar-fromfile()
-#
+# @FUNCTION: java-osgi_newjar-fromfile
+# @USAGE: <jar to repackage with OSGi> <Manifest file> <bundle name> <version rewriting>
+# @DESCRIPTION:
 # This function produces an OSGi compliant jar from a given manifest file.
 # The Manifest Bundle-Version header will be replaced by the current version
 # of the package, unless the --no-auto-version option is given.
 # It will call java-pkg_newjar at the end.
 #
-# @example
+# @CODE
 #	java-osgi_newjar-fromfile "dist/${PN}.jar" "${FILESDIR}/MANIFEST.MF" "Standard Widget Toolkit for GTK 2.0"
+# @CODE
 #
 # @param $opt
 #	--no-auto-version - This option disables automatic rewriting of the
-#		version in the Manifest file#
+#		version in the Manifest file
+#
 # @param $1 - name of jar to repackage with OSGi
 # @param $2 (optional) - name of the target jar. It will default to package name if not specified.
 # @param $3 - path to the Manifest file
 # @param $4 - bundle name
-#
-# ------------------------------------------------------------------------------
-
 java-osgi_newjar-fromfile() {
 	debug-print-function ${FUNCNAME} "$@"
 	local versionRewriting=1
@@ -252,26 +244,25 @@ java-osgi_newjar-fromfile() {
 	fi
 }
 
-# -----------------------------------------------------------------------------
-# @ebuild-function java-osgi_dojar-fromfile()
-#
+# @FUNCTION: java-osgi_dojar-fromfile()
+# @USAGE: <jar to repackage with OSGi> <Manifest file> <bundle name>
+# @DESCRIPTION:
 # This function produces an OSGi compliant jar from a given manifestfile.
 # The Manifest Bundle-Version header will be replaced by the current version
 # of the package, unless the --no-auto-version option is given.
 # It will call java-pkg_dojar at the end.
 #
-# @example
+# @CODE
 #	java-osgi_dojar-fromfile "dist/${PN}.jar" "${FILESDIR}/MANIFEST.MF" "Standard Widget Toolkit for GTK 2.0"
+# @CODE
 #
 # @param $opt
 #	--no-auto-version - This option disables automatic rewriting of the
 #		version in the Manifest file
+#
 # @param $1 - name of jar to repackage with OSGi
 # @param $2 - path to the Manifest file
 # @param $3 - bundle name
-#
-# ------------------------------------------------------------------------------
-
 java-osgi_dojar-fromfile() {
 	debug-print-function ${FUNCNAME} "$@"
 	local versionRewriting=1

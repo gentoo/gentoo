@@ -9,7 +9,7 @@ inherit leechcraft
 DESCRIPTION="Submissions API 1.2-compliant scrobbler for services like libre.fm"
 
 SLOT="0"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS=" amd64 ~x86"
 IUSE="debug"
 
 DEPEND="~app-leechcraft/lc-core-${PV}"

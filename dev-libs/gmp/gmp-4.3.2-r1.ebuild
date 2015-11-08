@@ -4,9 +4,9 @@
 
 # this ebuild is only for the libgmp.so.3 ABI SONAME
 
-EAPI="3"
+EAPI="5"
 
-inherit eutils libtool toolchain-funcs
+inherit eutils libtool toolchain-funcs multilib-minimal
 
 DESCRIPTION="Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers"
 HOMEPAGE="http://gmplib.org/"
@@ -22,32 +22,38 @@ RDEPEND=""
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-4.1.4-noexecstack.patch
-	epatch "${FILESDIR}"/${PN}-4.3.2-ABI-multilib.patch
 	epatch "${FILESDIR}"/${PN}-4.2.1-s390.diff
-
-	sed -i -e 's:ABI = @ABI@:GMPABI = @GMPABI@:' \
-		Makefile.in */Makefile.in */*/Makefile.in
 
 	# note: we cannot run autotools here as gcc depends on this package
 	elibtoolize
+
+	# GMP uses the "ABI" env var during configure as does Gentoo (econf).
+	# So, to avoid patching the source constantly, wrap things up.
+	mv configure configure.wrapped || die
+	cat <<-\EOF > configure
+	#!/bin/sh
+	exec env ABI="${GMPABI}" "$0.wrapped" "$@"
+	EOF
+	chmod a+rx configure
 }
 
-src_configure() {
+multilib_src_configure() {
 	# Because of our 32-bit userland, 1.0 is the only HPPA ABI that works
 	# http://gmplib.org/manual/ABI-and-ISA.html#ABI-and-ISA (bug #344613)
 	if [[ ${CHOST} == hppa2.0-* ]] ; then
-		export GMPABI="1.0"
+		GMPABI="1.0"
 	fi
 
 	# ABI mappings (needs all architectures supported)
 	case ${ABI} in
-		32|x86)       export GMPABI=32;;
-		64|amd64|n64) export GMPABI=64;;
-		o32|n32)      export GMPABI=${ABI};;
+		32|x86)       GMPABI=32;;
+		64|amd64|n64) GMPABI=64;;
+		[onx]32)      GMPABI=${ABI};;
 	esac
+	export GMPABI
 
 	tc-export CC
-	econf \
+	ECONF_SOURCE="${S}" econf \
 		--localstatedir=/var/state/gmp \
 		--disable-mpfr \
 		--disable-mpbsd \
@@ -55,7 +61,7 @@ src_configure() {
 		--disable-cxx
 }
 
-src_install() {
-	emake install-libLTLIBRARIES DESTDIR="${D}" || die
+multilib_src_install() {
+	emake DESTDIR="${D}" install-libLTLIBRARIES
 	rm "${D}"/usr/*/libgmp.{la,so} || die
 }

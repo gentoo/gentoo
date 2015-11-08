@@ -54,12 +54,6 @@ python_compile() {
 	distutils-r1_python_compile
 }
 
-src_test() {
-	# Race due to conflicting ports in
-	# blackbox.test_serve.TestBzrServe.test_bzr_serve*.
-	DISTUTILS_NO_PARALLEL_BUILD=1 distutils-r1_src_test
-}
-
 python_test() {
 	# Some tests expect the usual pyc compiling behaviour.
 	local -x PYTHONDONTWRITEBYTECODE

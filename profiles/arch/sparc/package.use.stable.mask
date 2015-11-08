@@ -18,7 +18,11 @@
 
 #--- END OF EXAMPLES ---
 
-# Pacho Ramos <pacho@gentoo.org> (02 Ago 2015)
+# Davide Pesavento <pesa@gentoo.org> (18 Oct 2015)
+# Requires dev-python/PyQt4, which is not stable on sparc
+media-sound/pulseaudio equalizer
+
+# Pacho Ramos <pacho@gentoo.org> (02 Aug 2015)
 # Missing keywords
 dev-libs/protobuf python
 dev-python/pyquery test

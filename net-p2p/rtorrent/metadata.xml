@@ -3,11 +3,12 @@
 <pkgmetadata>
   <herd>net-p2p</herd>
   <longdescription lang="en">
-	Console BitTorrent client using ncurses based on libtorrent written in C++.
-</longdescription>
+    Console BitTorrent client using ncurses based on libtorrent written in C++.
+  </longdescription>
   <use>
-    <flag name="daemon">Uses <pkg>app-misc/screen</pkg> to daemonize this
-		application
-	</flag>
+    <flag name="daemon">Uses <pkg>app-misc/screen</pkg> to daemonize this application</flag>
   </use>
+  <upstream>
+    <remote-id type="github">rakshasa/rtorrent</remote-id>
+  </upstream>
 </pkgmetadata>

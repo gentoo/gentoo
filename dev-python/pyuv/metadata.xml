@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>hasufell@gentoo.org</email>
+		<name>Julian Ospald</name>
+	</maintainer>
+	<longdescription lang="en">
+		pyuv is a Python module which provides an interface to
+		<pkg>dev-libs/libuv</pkg>.
+		libuv is a high performance asynchronous networking and platform
+		abstraction library.
+
+		libuv is built on top of epoll/kequeue/event ports/etc on Unix and
+		IOCP on Windows systems providing a consistent API on top of them.
+
+		pyuv's features:
+		* Non-blocking TCP sockets
+		* Non-blocking named pipes
+		* UDP support (including multicast)
+		* Timers
+		* Child process spawning
+		* Asynchronous DNS resolution (getaddrinfo)
+		* Asynchronous file system APIs
+		* High resolution time
+		* System memory information
+		* System CPUs information
+		* Network interfaces information
+		* Thread pool scheduling
+		* ANSI escape code controlled TTY
+		* File system events (inotify style and stat based)
+		* IPC and TCP socket sharing between processes
+		* Arbitrary file descriptor polling
+		* Thread synchronization primitives
+	</longdescription>
+	<upstream>
+		<maintainer status="active">
+			<email>saghul@gmail.com</email>
+			<name>Saúl Ibarra Corretgé</name>
+		</maintainer>
+		<remote-id type="github">saghul/pyuv</remote-id>
+		<remote-id type="pypi">pyuv</remote-id>
+	</upstream>
+</pkgmetadata>

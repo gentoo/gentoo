@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<herd>gnome</herd>
 	<upstream>
-		<remote-id type="sourceforge">galculator</remote-id>
+		<remote-id type="github">galculator/galculator</remote-id>
 	</upstream>
 </pkgmetadata>

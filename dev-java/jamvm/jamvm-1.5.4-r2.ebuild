@@ -21,9 +21,13 @@ DEPEND="dev-java/gnu-classpath:${CLASSPATH_SLOT}
 	amd64? ( virtual/libffi )"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/"${P}-classes-location.patch"
+)
+
 src_prepare() {
 	# without this patch, classes.zip is not found at runtime
-	epatch "${FILESDIR}/classes-location.patch"
+	epatch "${PATCHES[@]}"
 	eautoreconf
 
 	# These come precompiled.
@@ -76,7 +80,7 @@ src_install() {
 
 	dodoc ACKNOWLEDGEMENTS AUTHORS ChangeLog NEWS README
 
-	set_java_env "${FILESDIR}/${PN}-1.5.4-r2.env"
+	set_java_env "${FILESDIR}/${P}-env.file"
 
 	dosym /usr/bin/jamvm ${INSTALL_DIR}/bin/java
 	dosym ${CLASSPATH_DIR}/share/classpath/glibj.zip ${INSTALL_DIR}/jre/lib/rt.jar

@@ -19,7 +19,7 @@ inherit php-ext-pecl-r2 confutils eutils
 
 S="${WORKDIR}/apcu-${PV}"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DESCRIPTION="Stripped down version of APC supporting only user cache"
 LICENSE="PHP-3.01"

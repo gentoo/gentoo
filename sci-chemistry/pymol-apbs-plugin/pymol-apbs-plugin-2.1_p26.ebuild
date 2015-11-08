@@ -52,5 +52,5 @@ src_install() {
 		python_domodule apbs_tools.py || die
 		python_optimize
 	}
-	python_parallel_foreach_impl installation
+	python_foreach_impl installation
 }

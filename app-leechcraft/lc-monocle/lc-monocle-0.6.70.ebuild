@@ -9,7 +9,7 @@ inherit leechcraft
 DESCRIPTION="Monocle, the modular document viewer for LeechCraft"
 
 SLOT="0"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS=" amd64 ~x86"
 IUSE="debug +djvu doc +fb2 +mobi +pdf +postscript"
 
 REQUIRED_USE="postscript? ( pdf )"

@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-MY_EXTRAS_VER="20150717-1707Z"
+MY_EXTRAS_VER="20151105-2051Z"
 MY_PV="${PV//_alpha_pre/-m}"
 MY_PV="${MY_PV//_/-}"
 HAS_TOOLS_PATCH="1"
@@ -31,8 +31,16 @@ RDEPEND="${RDEPEND}"
 # disable until we see what happens with it
 MYSQL_CMAKE_NATIVE_DEFINES="-DWITHOUT_VALIDATE_PASSWORD=1"
 
+src_prepare() {
+	mysql-multilib_src_prepare
+	if use libressl ; then
+		sed -i 's/OPENSSL_MAJOR_VERSION STREQUAL "1"/OPENSSL_MAJOR_VERSION STREQUAL "2"/' \
+			"${S}/cmake/ssl.cmake" || die
+	fi
+}
+
 # Official test instructions:
-# USE='server embedded extraengine perl ssl static-libs community' \
+# USE='server embedded extraengine perl openssl static-libs' \
 # FEATURES='test userpriv -usersandbox' \
 # ebuild mysql-X.X.XX.ebuild \
 # digest clean package

@@ -13,7 +13,7 @@ more so than other Python parsing tools.
 	</longdescription>
 	<longdescription lang="ja">
 PLYはLexとYaccの有名なコンパイラ・コンストラクション・ツールのPython言語実装です
-。この実装は以前の試みから幾つものアイディアを借りています。そのほとんどがJohn AycockのSPARKツールキットからです。しかしながら、実装の全体像はC言語によるLexとYaccにより近いモデルです。PLYの他の重要点は幅広い入力バリデーションとエラー報告を&gt;提供する点です。 -- その二点は他のPython言語パーサーより優れています。
+。この実装は以前の試みから幾つものアイディアを借りています。そのほとんどがJohn AycockのSPARKツールキットからです。しかしながら、実装の全体像はC言語によるLexとYaccにより近いモデルです。PLYの他の重要点は幅広い入力バリデーションとエラー報告を提供する点です。 -- その二点は他のPython言語パーサーより優れています。
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">ply</remote-id>

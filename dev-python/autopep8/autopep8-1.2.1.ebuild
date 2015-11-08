@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy pypy3 )
 
 inherit distutils-r1 vcs-snapshot
 
@@ -23,9 +23,6 @@ RDEPEND="
 DEPEND="${DEPEND}
 	test? (	>=dev-python/pydiff-0.1.2[${PYTHON_USEDEP}] )"
 
-# https://github.com/hhatto/autopep8/issues/217
-RESTRICT=test
-
 python_prepare_all() {
 	# Prevent UnicodeDecodeError with LANG=C
 	sed -e "/é/d" -i MANIFEST.in || die
@@ -34,22 +31,4 @@ python_prepare_all() {
 
 python_test() {
 	esetup.py test
-	# from the travis.yml
-	"${PYTHON}" test/test_autopep8.py || die
-	"${PYTHON}" test/acid.py -aaa --experimental test/example.py || die
-	"${PYTHON}" test/acid.py -aaa --experimental test/example_with_reduce.py || die
-	"${PYTHON}" test/acid.py -aaa --compare-bytecode --experimental test/example.py  die
-	"${PYTHON}" test/acid.py --aggressive --line-range 550 610 test/inspect_example.py || die
-	"${PYTHON}" test/acid.py --line-range 289 925 test/vectors_example.py || die
-	"${PYTHON}" test/test_suite.py || die
-}
-
-pkg_postinst() {
-	ewarn "Since this version of autopep depends on >=dev-python/pep8-1.3"
-	ewarn "it is affected by https://github.com/jcrocholl/pep8/issues/45"
-	ewarn "(indentation checks inside triple-quotes)."
-	ewarn "If you do not want to be affected by this, then add the"
-	ewarn "following lines to your local package.mask:"
-	ewarn "  >=dev-python/pep8-1.3"
-	ewarn "  >=dev-python/autopep8-0.6"
 }

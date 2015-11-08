@@ -4,6 +4,7 @@
   <herd>vim</herd>
   <use>
     <flag name='nvimpager'>Install nvimpager symlink to less.sh macro</flag>
+    <flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for allocations</flag>
   </use>
   <upstream>
     <remote-id type="github">neovim/neovim</remote-id>

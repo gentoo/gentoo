@@ -236,6 +236,10 @@ src_install() {
 				newins image/${c}${d}-app-wireshark.png wireshark.png
 			done
 		done
+		for d in 16 24 32 48 64 128 256 ; do
+			insinto /usr/share/icons/hicolor/${d}x${d}/mimetypes
+			newins image/WiresharkDoc-${d}.png application-vnd.tcpdump.pcap.png
+		done
 	fi
 
 	if use gtk3; then
@@ -243,7 +247,11 @@ src_install() {
 	fi
 
 	if use qt4 || use qt5; then
-		sed -e '/Exec=/s|wireshark|&-qt|g' wireshark.desktop > wireshark-qt.desktop || die
+		sed \
+			-e '/Exec=/s|wireshark|&-qt|g' \
+			-e 's|^Name.*=Wireshark|& (Qt)|g' \
+			wireshark.desktop > wireshark-qt.desktop \
+			|| die
 		domenu wireshark-qt.desktop
 	fi
 

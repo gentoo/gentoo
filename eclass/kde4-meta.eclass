@@ -209,7 +209,7 @@ kde4-meta_src_extract() {
 		done
 		extractlist+=" $(_list_needed_subdirectories)"
 
-		pushd "${WORKDIR}" > /dev/null
+		pushd "${WORKDIR}" > /dev/null || die
 
 		# @ECLASS-VARIABLE: KDE4_STRICTER
 		# @DESCRIPTION:
@@ -223,7 +223,7 @@ kde4-meta_src_extract() {
 			mv ${topdir} ${P} || die "Died while moving \"${topdir}\" to \"${P}\""
 		fi
 
-		popd > /dev/null
+		popd > /dev/null || die
 
 		eend $?
 
@@ -398,7 +398,7 @@ _change_cmakelists_parent_dirs() {
 kde4-meta_change_cmakelists() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	pushd "${S}" > /dev/null
+	pushd "${S}" > /dev/null || die
 
 	comment_all_add_subdirectory ./
 
@@ -547,7 +547,7 @@ kde4-meta_change_cmakelists() {
 			;;
 	esac
 
-	popd > /dev/null
+	popd > /dev/null || die
 }
 
 # @FUNCTION: kde4-meta_src_configure

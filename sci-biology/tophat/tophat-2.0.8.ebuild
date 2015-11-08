@@ -20,7 +20,7 @@ IUSE="debug"
 DEPEND="
 	dev-libs/boost
 	sci-biology/samtools
-	sci-biology/seqan"
+	~sci-biology/seqan-1.3.1"
 RDEPEND="${DEPEND}
 	sci-biology/bowtie"
 

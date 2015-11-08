@@ -131,6 +131,7 @@ ppc64           default/linux/powerpc/ppc64/13.0/64bit-userland/desktop/gnome/sy
 ppc64           default/linux/powerpc/ppc64/13.0/64bit-userland/desktop/kde             stable
 ppc64           default/linux/powerpc/ppc64/13.0/64bit-userland/desktop/kde/systemd     stable
 ppc64           default/linux/powerpc/ppc64/13.0/64bit-userland/developer               stable
+ppc64		default/linux/powerpc/ppc64/13.0/64bit-userland/little-endian		exp
 
 # RISC-V Profiles
 riscv           default/linux/riscv/13.0                        exp

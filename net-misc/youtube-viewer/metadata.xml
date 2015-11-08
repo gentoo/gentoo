@@ -2,7 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
+		<email>hasufell@gentoo.org</email>
+		<name>Julian Ospald</name>
+		<description>Primary maintainer, assign him on bugs.</description>
+	</maintainer>
+	<maintainer>
+		<email>zoltan@sinustrom.info</email>
+		<name>Zoltan Puskas</name>
+		<description>Proxied maintainer, CC him on bugs.</description>
 	</maintainer>
 	<upstream>
 		<maintainer status="active">
@@ -11,9 +18,13 @@
 		<bugs-to>https://github.com/trizen/youtube-viewer/issues</bugs-to>
 		<remote-id type="github">trizen/youtube-viewer</remote-id>
 	</upstream>
+	<use>
+		<flag name="gtk">Install the gtk GUI, called gtk-youtube-viewer</flag>
+	</use>
 	<longdescription lang="en">
-		Youtube Viewer is a CLI application dedicated for searching and streaming
-		Youtube Videos with MPlayer. It has been written in Perl and plays videos
-		from Youtube at the best quality available without using a flash player. 
+		Youtube Viewer is a CLI application dedicated for searching and
+		streaming Youtube Videos with MPlayer. It has been written in Perl
+		and plays videos from Youtube at the best quality available without
+		using a flash player.
 	</longdescription>
 </pkgmetadata>

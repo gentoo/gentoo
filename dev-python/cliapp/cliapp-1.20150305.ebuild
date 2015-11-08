@@ -21,7 +21,7 @@ DEPEND="${PYTHON_DEPS}
 	test? ( dev-python/CoverageTestRunner )"
 
 src_test() {
-	use test && addwrite /proc/self/comm
+	addwrite /proc/self/comm
 	distutils-r1_src_test
 }
 

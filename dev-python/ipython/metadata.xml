@@ -21,7 +21,7 @@
   * Integrated access to the pdb debugger and the Python profiler.
 </longdescription>
   <longdescription lang="ja">
-対話的に利用する場合にPythonインタープリタから、より機能が豊富なIPythonへ置き換&gt;える事ができます。
+対話的に利用する場合にPythonインタープリタから、より機能が豊富なIPythonへ置き換える事ができます。
 
 主機能：
 * 内包的オブジェクトの分析。

@@ -79,7 +79,7 @@ multilib_src_install() {
 			install_name_tool \
 				-change "${S}/bin/default/libtalloc.dylib" \
 					"${EPREFIX}"/usr/$(get_libdir)/libtalloc.2.dylib \
-				"${ED}"$(python_get_sitedir)/talloc.bundle || die
+				"${D}"$(python_get_sitedir)/talloc.bundle || die
 		fi
 	fi
 }

@@ -1,84 +1,101 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 
-AUTOTOOLS_AUTORECONF="1"
-AUTOTOOLS_IN_SOURCE_BUILD="1"
+AUTOTOOLS_AUTORECONF=1
+AUTOTOOLS_IN_SOURCE_BUILD=1
+PLOCALES="ar bg ca cs da de el es eu fa fi fr_FR gl hu id it ja ko nl pl pt_BR pt_PT ru sr_RS@latin sr_RS uk_UA vi zh_CN zh_TW"
 WX_GTK_VER="3.0"
-PLOCALES="ar bg ca cs da de el es eu fa fi fr_FR gl hu id it ja ko nl pl pt_BR pt_PT ru sr_RS@latin sr_RS vi zh_CN zh_TW"
-inherit autotools-utils wxwidgets l10n fdo-mime gnome2-utils git-2
 
-DESCRIPTION="Advanced SSA/ASS subtitle editor"
+inherit autotools-utils fdo-mime gnome2-utils l10n toolchain-funcs wxwidgets git-2
+
+DESCRIPTION="Advanced subtitle editor"
 HOMEPAGE="http://www.aegisub.org/"
-EGIT_REPO_URI="https://github.com/Aegisub/Aegisub.git"
+EGIT_REPO_URI="git://github.com/Aegisub/Aegisub.git"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 IUSE="alsa debug +ffmpeg +fftw openal oss portaudio pulseaudio spell"
 
+# configure.ac specifies minimal versions for some of the dependencies below.
+# However, most of these minimal versions date back to 2006-2010 yy.
+# Such version specifiers are meaningless nowadays, so they are omitted.
+RDEPEND="
+	>=dev-lang/luajit-2.0.4:2=
+	>=dev-libs/boost-1.50.0:=[icu,nls,threads]
+	>=dev-libs/icu-4.8.1.1:=
+	>=x11-libs/wxGTK-3.0.0:${WX_GTK_VER}[X,opengl,debug?]
+	media-libs/fontconfig
+	media-libs/freetype
+	media-libs/libass[fontconfig]
+	virtual/libiconv
+	virtual/opengl
+
+	alsa? ( media-libs/alsa-lib )
+	openal? ( media-libs/openal )
+	portaudio? ( =media-libs/portaudio-19* )
+	pulseaudio? ( media-sound/pulseaudio )
+
+	ffmpeg? ( >=media-libs/ffmpegsource-2.16:= )
+	fftw? ( >=sci-libs/fftw-3.3:= )
+
+	spell? ( app-text/hunspell )
+"
+DEPEND="${RDEPEND}
+	oss? ( virtual/os-headers )
+	dev-util/intltool
+	sys-devel/gettext
+	virtual/pkgconfig
+"
 REQUIRED_USE="
 	|| ( alsa openal oss portaudio pulseaudio )
 "
 
-RDEPEND="
-	>=x11-libs/wxGTK-3.0.0:${WX_GTK_VER}[X,opengl,debug?]
-	virtual/opengl
-	virtual/glu
-	>=media-libs/libass-0.10.0[fontconfig]
-	virtual/libiconv
-	>=dev-libs/boost-1.53.0:=[icu,nls,threads]
-	>=dev-libs/icu-4.8.1.1:=
-	>=media-libs/fontconfig-2.4.2
-	>=media-libs/freetype-2.3.5:2
+# aegisub also bundles luabins (https://github.com/agladysh/luabins).
+# Unfortunately, luabins upstream is dead since 2011.
+# Thus unbundling luabins is not worth the effort.
+PATCHES=(
+	"${FILESDIR}/${PN}-3.2.2-fix-lua-regexp.patch"
+	"${FILESDIR}/${P}-unbundle-luajit.patch"
+	"${FILESDIR}/${P}-respect-user-compiler-flags.patch"
+)
 
-	alsa? ( >=media-libs/alsa-lib-1.0.16 )
-	portaudio? ( =media-libs/portaudio-19* )
-	pulseaudio? ( >=media-sound/pulseaudio-0.9.5 )
-	openal? ( media-libs/openal )
-
-	spell? ( >=app-text/hunspell-1.2.2 )
-	ffmpeg? ( >=media-libs/ffmpegsource-2.17:= )
-	fftw? ( >=sci-libs/fftw-3.3 )
-"
-DEPEND="${RDEPEND}
-	oss? ( virtual/os-headers )
-	>=sys-devel/gettext-0.18
-	dev-util/intltool
-	virtual/pkgconfig
-"
+pkg_pretend() {
+	if [[ ${MERGE_TYPE} != "binary" ]] && ! test-flag-CXX -std=c++11; then
+		die "Your compiler lacks C++11 support. Use GCC>=4.7.0 or Clang>=3.3."
+	fi
+}
 
 src_prepare() {
-	my_rm_loc() {
-		sed -i -e "s:${1}\.po::" po/Makefile || die
+	cp /usr/share/gettext/config.rpath . || die
+
+	remove_locale() {
 		rm "po/${1}.po" || die
 	}
 
 	l10n_find_plocales_changes 'po' '' '.po'
-	if [ -z "$(l10n_get_locales)" ]; then
-		sed -e 's/^\s*po\s*$//' -i Makefile || die
-	else
-		l10n_for_each_disabled_locale_do my_rm_loc
-	fi
+	l10n_for_each_disabled_locale_do remove_locale
 
 	autotools-utils_src_prepare
 }
 
 src_configure() {
-	# testing openal does not work in sandbox, bug #508184
+	# Prevent sandbox violation from OpenAL detection. Gentoo bug #508184.
 	use openal && export agi_cv_with_openal="yes"
 	local myeconfargs=(
+		--disable-update-checker
+		$(use_enable debug)
 		$(use_with alsa)
+		$(use_with ffmpeg ffms2)
+		$(use_with fftw fftw3)
+		$(use_with openal)
 		$(use_with oss)
 		$(use_with portaudio)
 		$(use_with pulseaudio libpulse)
-		$(use_with openal)
-		$(use_with ffmpeg ffms2)
-		$(use_with fftw fftw3)
 		$(use_with spell hunspell)
-		$(use_enable debug)
 	)
 	autotools-utils_src_configure
 }

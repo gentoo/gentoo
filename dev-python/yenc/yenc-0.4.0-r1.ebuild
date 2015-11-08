@@ -23,8 +23,3 @@ DOCS=( README TODO CHANGES doc/${PN}-draft.1.3.txt )
 python_test() {
 	"${PYTHON}" test/test.py || die "Test failed."
 }
-
-src_test() {
-	# Tests use a constant temp file.
-	DISTUTILS_NO_PARALLEL_BUILD=1 distutils-r1_src_test
-}

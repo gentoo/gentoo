@@ -27,10 +27,6 @@ DEPEND="${RDEPEND}
 # https://github.com/byroot/pysrt/issues/42
 RESTRICT="test"
 
-src_test() {
-	DISTUTILS_NO_PARALLEL_BUILD=1 distutils-r1_src_test
-}
-
 python_test() {
 	nosetests --with-coverage --cover-package=pysrt \
 		|| die "Tests failed under ${EPYTHON}"

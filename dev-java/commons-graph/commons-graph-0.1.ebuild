@@ -10,6 +10,10 @@ inherit java-pkg-2 java-ant-2
 DESCRIPTION="A toolkit for managing graphs and graph based data structures"
 HOMEPAGE="https://commons.apache.org/sandbox/commons-graph/"
 SRC_URI="http://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
+LICENSE="Apache-2.0"
+SLOT="0"
+KEYWORDS="amd64 x86"
+IUSE=""
 
 DEPEND=">=virtual/jdk-1.6
 	test? (
@@ -18,11 +22,6 @@ DEPEND=">=virtual/jdk-1.6
 
 RDEPEND=">=virtual/jre-1.6
 	${CDEPEND}"
-
-LICENSE="Apache-2.0"
-SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 JAVA_ANT_REWRITE_CLASSPATH="yes"
 EANT_TEST_TARGET="test"

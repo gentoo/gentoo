@@ -39,7 +39,7 @@ COMMONDEPEND="
 	dev-libs/libxml2
 	dev-libs/libxslt
 	dev-libs/qjson
-	gpssync?	( >=media-libs/libkgeomap-4.2.0 )
+	gpssync?	( >=kde-apps/libkgeomap-4.2.0:4 )
 	media-libs/libpng:0=
 	media-libs/tiff
 	virtual/jpeg

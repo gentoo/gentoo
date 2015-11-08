@@ -154,7 +154,7 @@ java-ant_bsfix() {
 		echo "QA Notice: Package is using java-ant, but doesn't depend on a Java VM"
 	fi
 
-	pushd "${S}" >/dev/null
+	pushd "${S}" >/dev/null || die
 
 	local find_args=""
 	[[ "${JAVA_PKG_BSFIX_ALL}" == "yes" ]] || find_args="-maxdepth 1"
@@ -172,7 +172,7 @@ java-ant_bsfix() {
 
 	[[ "${bsfix_these// /}" ]] && eval java-ant_bsfix_files ${bsfix_these}
 
-	popd > /dev/null
+	popd > /dev/null || die
 }
 
 _bsfix_die() {

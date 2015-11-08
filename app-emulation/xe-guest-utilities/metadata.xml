@@ -5,7 +5,7 @@
 <herd>virtualization</herd>
 <herd>xen</herd>
 <maintainer>
-	<email>chris@camisa.org</email>
+	<email>bugs@camisa.org</email>
 	<name>Christopher J. Camisa</name>
 	<description>proxy maintainer</description>
 </maintainer>

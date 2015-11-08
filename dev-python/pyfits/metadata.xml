@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci-astronomy</herd>
-<herd>python</herd>
-<longdescription lang="en">
+  <herd>sci-astronomy</herd>
+  <herd>python</herd>
+  <longdescription lang="en">
   PyFITS provides an interface to FITS formatted files under the
   Python scripting language and PyRAF, the Python-based interface to
   IRAF.
 </longdescription>
-<upstream>
-  <remote-id type="pypi">pyfits</remote-id>
-</upstream>
+  <upstream>
+    <remote-id type="pypi">pyfits</remote-id>
+  </upstream>
 </pkgmetadata>

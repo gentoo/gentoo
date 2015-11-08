@@ -54,12 +54,6 @@ python_compile_all() {
 	use doc && emake -C docs html
 }
 
-src_test() {
-	# multiprocessing causes tests competing for and address to fail
-	local DISTUTILS_NO_PARALLEL_BUILD=1
-	distutils-r1_src_test
-}
-
 python_test() {
 	# pypy doesn't get started in suite
 	if [[ "${EPYTHON}" == pypy ]]; then

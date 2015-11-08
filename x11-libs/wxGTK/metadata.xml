@@ -22,4 +22,8 @@
 	<upstream>
 		<remote-id type="sourceforge">wxpython</remote-id>
 	</upstream>
+	<slots>
+		<slot name="*">Slots reflect MAJOR.MINOR versions which can
+			be installed in parallel.</slot>
+	</slots>
 </pkgmetadata>

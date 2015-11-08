@@ -53,12 +53,6 @@ python_compile() {
 	distutils-r1_python_compile
 }
 
-src_test() {
-	# suite shatters without this
-	local DISTUTILS_NO_PARALLEL_BUILD=1
-	distutils-r1_src_test
-}
-
 python_test() {
 	emake test
 }

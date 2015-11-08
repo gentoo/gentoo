@@ -275,8 +275,9 @@ check_targets() {
 
 	pushd "${S}"/default-configs >/dev/null || die
 
-	detected=$(echo $(printf '%s\n' *-${mak}.mak | sed "s:-${mak}.mak::" | sort -u))
-	sorted=$(echo $(printf '%s\n' ${!var} | sort -u))
+	# Force C locale until glibc is updated. #564936
+	detected=$(echo $(printf '%s\n' *-${mak}.mak | sed "s:-${mak}.mak::" | LC_COLLATE=C sort -u))
+	sorted=$(echo $(printf '%s\n' ${!var} | LC_COLLATE=C sort -u))
 	if [[ ${sorted} != "${detected}" ]] ; then
 		eerror "The ebuild needs to be kept in sync."
 		eerror "${var}: ${sorted}"

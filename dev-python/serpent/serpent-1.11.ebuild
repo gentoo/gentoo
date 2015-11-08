@@ -3,15 +3,23 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
 
 inherit distutils-r1
 
 DESCRIPTION="A simple serialization library based on ast.literal_eval"
-HOMEPAGE="https://pypi.python.org/packages/source/s/serpent/"
+HOMEPAGE="https://pypi.python.org/pypi/serpent https://github.com/irmen/Serpent"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
+
+# not bundled
+RESTRICT="test"
+
+python_test() {
+	${PYTHON} -bb test_serpent.py || die
+}

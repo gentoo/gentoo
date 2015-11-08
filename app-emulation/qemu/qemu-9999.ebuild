@@ -281,8 +281,9 @@ check_targets() {
 
 	pushd "${S}"/default-configs >/dev/null || die
 
-	detected=$(echo $(printf '%s\n' *-${mak}.mak | sed "s:-${mak}.mak::" | sort -u))
-	sorted=$(echo $(printf '%s\n' ${!var} | sort -u))
+	# Force C locale until glibc is updated. #564936
+	detected=$(echo $(printf '%s\n' *-${mak}.mak | sed "s:-${mak}.mak::" | LC_COLLATE=C sort -u))
+	sorted=$(echo $(printf '%s\n' ${!var} | LC_COLLATE=C sort -u))
 	if [[ ${sorted} != "${detected}" ]] ; then
 		eerror "The ebuild needs to be kept in sync."
 		eerror "${var}: ${sorted}"
@@ -567,12 +568,12 @@ src_install() {
 	doins "${FILESDIR}/bridge.conf"
 
 	# Remove the docdir placed qmp-commands.txt
-	mv "${ED}/usr/share/doc/${PF}/html/qmp-commands.txt" "${S}/docs/qmp/"
+	mv "${ED}/usr/share/doc/${PF}/html/qmp-commands.txt" "${S}/docs/" || die
 
 	cd "${S}"
 	dodoc Changelog MAINTAINERS docs/specs/pci-ids.txt
 	newdoc pc-bios/README README.pc-bios
-	dodoc docs/qmp/*.txt
+	dodoc docs/qmp-*.txt
 
 	if [[ -n ${softmmu_targets} ]]; then
 		# Remove SeaBIOS since we're using the SeaBIOS packaged one

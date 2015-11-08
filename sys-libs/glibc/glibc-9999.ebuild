@@ -161,10 +161,6 @@ eblit-src_prepare-post() {
 	cd "${S}"
 
 	if use hardened ; then
-		einfo "Patching to get working PIE binaries on PIE (hardened) platforms"
-		gcc-specs-pie && epatch "${FILESDIR}"/2.17/glibc-2.17-hardened-pie.patch
-		epatch "${FILESDIR}"/2.20/glibc-2.20-hardened-inittls-nosysenter.patch
-
 		# We don't enable these for non-hardened as the output is very terse --
 		# it only states that a crash happened.  The default upstream behavior
 		# includes backtraces and symbols.

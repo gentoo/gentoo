@@ -13,10 +13,10 @@ HOMEPAGE="https://github.com/blueman-project/blueman"
 if [[ ${PV} == "9999" ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/blueman-project/blueman.git"
-	KEYWORDS=""
+	KEYWORDS="~ppc"
 else
 	SRC_URI="https://github.com/blueman-project/${PN}/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~ppc ~x86"
 fi
 
 LICENSE="GPL-3"

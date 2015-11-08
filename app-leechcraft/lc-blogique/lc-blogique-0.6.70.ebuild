@@ -9,7 +9,7 @@ inherit leechcraft
 DESCRIPTION="Blogging client for LeechCraft"
 
 SLOT="0"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS=" amd64 ~x86"
 IUSE="debug +metida +hestia"
 
 DEPEND="~app-leechcraft/lc-core-${PV}

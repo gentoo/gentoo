@@ -34,6 +34,6 @@ src_prepare() {
 
 src_install() {
 	python_moduleinto pmg_tk/startup
-	python_parallel_foreach_impl python_domodule ${P}.py
-	python_parallel_foreach_impl python_optimize
+	python_foreach_impl python_domodule ${P}.py
+	python_foreach_impl python_optimize
 }

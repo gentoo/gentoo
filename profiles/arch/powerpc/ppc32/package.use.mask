@@ -4,6 +4,14 @@
 
 # This file requires >=portage-2.1.1
 
+# Anthony G. Basile <blueness@gentoo.org> (26 Oct 2015)
+# Mask x265 on vlc for bug #564138
+media-video/vlc x265
+
+# Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
+# Tests require non-keyworded qt5
+dev-qt/qtchooser test
+
 # Ben de Groot <yngwin@gentoo.org> (20 Jul 2015)
 # missing keyword
 media-sound/audacity midi

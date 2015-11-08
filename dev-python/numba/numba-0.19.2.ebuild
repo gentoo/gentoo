@@ -4,9 +4,6 @@
 
 EAPI=5
 
-# test phase is pointless since it errors in circa 60% of 1984 tests
-RESTRICT="test"
-
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
 inherit distutils-r1
@@ -18,16 +15,18 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
 IUSE="doc examples test"
 
 RDEPEND="
 	dev-python/llvmlite[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.6[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python{2_7,3_3})
-	$(python_gen_cond_dep 'dev-python/funcsigs[${PYTHON_USEDEP}]' python2_7)"
+	virtual/funcsigs[${PYTHON_USEDEP}]"
 DEPEND="test? ( ${RDEPEND} )
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
+
+# test phase is pointless since it errors in circa 60% of 1984 tests
+RESTRICT="test"
 
 # Delete intersphinx & entry to set sphinxjp.themecore, which is absent from portage, from conf.py
 PATCHES=( "${FILESDIR}"/${P}-docbuild.patch )

@@ -5,7 +5,6 @@
 EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
-DISTUTILS_NO_PARALLEL_BUILD=true
 
 inherit distutils-r1 eutils multilib flag-o-matic
 

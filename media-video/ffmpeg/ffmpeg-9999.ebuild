@@ -79,8 +79,9 @@ FFMPEG_FLAG_MAP=(
 		schroedinger:libschroedinger speex:libspeex vorbis:libvorbis vpx:libvpx
 		zvbi:libzvbi
 		# libavfilter options
-		bs2b:libbs2b flite:libflite frei0r fribidi:libfribidi fontconfig ladspa
-		libass truetype:libfreetype rubberband:librubberband
+		bs2b:libbs2b chromaprint flite:libflite frei0r fribidi:libfribidi
+		fontconfig ladspa libass truetype:libfreetype rubberband:librubberband
+		zimg:libzimg
 		# libswresample options
 		libsoxr
 		# Threads; we only support pthread for now but ffmpeg supports more
@@ -90,9 +91,9 @@ FFMPEG_FLAG_MAP=(
 # Same as above but for encoders, i.e. they do something only with USE=encode.
 FFMPEG_ENCODER_FLAG_MAP=(
 	aac:libvo-aacenc amrenc:libvo-amrwbenc mp3:libmp3lame
-	aacplus:libaacplus faac:libfaac openh264:libopenh264 snappy:libsnappy
-	theora:libtheora twolame:libtwolame wavpack:libwavpack webp:libwebp
-	x264:libx264 x265:libx265 xvid:libxvid
+	aacplus:libaacplus faac:libfaac kvazaar:libkvazaar nvenc:nvenc
+	openh264:libopenh264 snappy:libsnappy theora:libtheora twolame:libtwolame
+	wavpack:libwavpack webp:libwebp x264:libx264 x265:libx265 xvid:libxvid
 )
 
 IUSE="
@@ -106,7 +107,7 @@ IUSE="
 ARM_CPU_FEATURES=( armv5te armv6 armv6t2 neon armvfp:vfp )
 MIPS_CPU_FEATURES=( mipsdspr1 mipsdspr2 mipsfpu )
 PPC_CPU_FEATURES=( altivec )
-X86_CPU_FEATURES_RAW=( 3dnow:amd3dnow 3dnowext:amd3dnowext avx:avx avx2:avx2 fma3:fma3 fma4:fma4 mmx:mmx mmxext:mmxext sse:sse sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4 sse4_2:sse42 xop:xop )
+X86_CPU_FEATURES_RAW=( 3dnow:amd3dnow 3dnowext:amd3dnowext aes:aesni avx:avx avx2:avx2 fma3:fma3 fma4:fma4 mmx:mmx mmxext:mmxext sse:sse sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4 sse4_2:sse42 xop:xop )
 X86_CPU_FEATURES=( ${X86_CPU_FEATURES_RAW[@]/#/cpu_flags_x86_} )
 X86_CPU_REQUIRED_USE="
 	cpu_flags_x86_avx2? ( cpu_flags_x86_avx )
@@ -114,6 +115,7 @@ X86_CPU_REQUIRED_USE="
 	cpu_flags_x86_fma3? ( cpu_flags_x86_avx )
 	cpu_flags_x86_xop?  ( cpu_flags_x86_avx )
 	cpu_flags_x86_avx?  ( cpu_flags_x86_sse4_2 )
+	cpu_flags_x86_aes? ( cpu_flags_x86_sse4_2 )
 	cpu_flags_x86_sse4_2?  ( cpu_flags_x86_sse4_1 )
 	cpu_flags_x86_sse4_1?  ( cpu_flags_x86_ssse3 )
 	cpu_flags_x86_ssse3?  ( cpu_flags_x86_sse3 )
@@ -159,12 +161,15 @@ RDEPEND="
 	bzip2? ( >=app-arch/bzip2-1.0.6-r4[${MULTILIB_USEDEP}] )
 	cdio? ( >=dev-libs/libcdio-paranoia-0.90_p1-r1[${MULTILIB_USEDEP}] )
 	celt? ( >=media-libs/celt-0.11.1-r1[${MULTILIB_USEDEP}] )
+	chromaprint? ( >=media-libs/chromaprint-1.2-r1[${MULTILIB_USEDEP}] )
 	encode? (
 		aac? ( >=media-libs/vo-aacenc-0.1.3[${MULTILIB_USEDEP}] )
 		aacplus? ( >=media-libs/libaacplus-2.0.2-r1[${MULTILIB_USEDEP}] )
 		amrenc? ( >=media-libs/vo-amrwbenc-0.1.2-r1[${MULTILIB_USEDEP}] )
 		faac? ( >=media-libs/faac-1.28-r3[${MULTILIB_USEDEP}] )
+		kvazaar? ( media-libs/kvazaar[${MULTILIB_USEDEP}] )
 		mp3? ( >=media-sound/lame-3.99.5-r1[${MULTILIB_USEDEP}] )
+		nvenc? ( >=media-video/nvenc-5 )
 		openh264? ( >=media-libs/openh264-1.4.0-r1[${MULTILIB_USEDEP}] )
 		snappy? ( >=app-arch/snappy-1.1.2-r1[${MULTILIB_USEDEP}] )
 		theora? (
@@ -235,6 +240,7 @@ RDEPEND="
 		>=x11-libs/libXv-1.0.10[${MULTILIB_USEDEP}]
 	)
 	xcb? ( >=x11-libs/libxcb-1.4[${MULTILIB_USEDEP}] )
+	zimg? ( media-libs/zimg[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 	zvbi? ( >=media-libs/zvbi-0.2.35[${MULTILIB_USEDEP}] )
 	!media-video/qt-faststart
@@ -282,7 +288,7 @@ REQUIRED_USE="
 	${GPL_REQUIRED_USE}
 	${CPU_REQUIRED_USE}"
 RESTRICT="
-	encode? ( faac? ( bindist ) aacplus? ( bindist ) )
+	encode? ( faac? ( bindist ) aacplus? ( bindist ) nvenc? ( bindist ) )
 	gpl? ( openssl? ( bindist ) fdk? ( bindist ) )
 "
 
@@ -314,7 +320,7 @@ multilib_src_configure() {
 		if use aac || use amrenc ; then
 			myconf+=( --enable-version3 )
 		fi
-		if use aacplus || use faac ; then
+		if use aacplus || use faac || use nvenc ; then
 			myconf+=( --enable-nonfree )
 		fi
 	else

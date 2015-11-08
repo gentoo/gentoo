@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{3,4}} pypy )
 inherit distutils-r1 eutils
 
 DESCRIPTION="Parse RSS and Atom feeds in Python"
-HOMEPAGE="https://code.google.com/p/feedparser/ https://pypi.python.org/pypi/feedparser"
+HOMEPAGE="https://github.com/kurtmckee/feedparser https://pypi.python.org/pypi/feedparser"
 SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.bz2"
 
 # sgmllib is licensed under PSF-2.

@@ -3,7 +3,8 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
 inherit distutils-r1 flag-o-matic
 
@@ -21,8 +22,10 @@ IUSE="debug doc examples"
 
 RDEPEND=">=dev-db/postgresql-8.1"
 DEPEND="${RDEPEND}
-	doc? (  dev-python/sphinx[${PYTHON_USEDEP}]
-		>=dev-python/python-docs-2.7.6-r1:2.7 )"
+	doc? (
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		>=dev-python/python-docs-2.7.6-r1:2.7
+	)"
 
 RESTRICT="test"
 # Remove py3.2 entry from intersphinx setting

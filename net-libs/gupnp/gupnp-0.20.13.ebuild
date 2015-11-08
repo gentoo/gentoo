@@ -72,5 +72,5 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	einstalldocs
-	python_parallel_foreach_impl python_doscript tools/gupnp-binding-tool
+	python_foreach_impl python_doscript tools/gupnp-binding-tool
 }

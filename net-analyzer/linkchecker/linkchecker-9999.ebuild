@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ KEYWORDS=""
 IUSE="gnome sqlite X"
 
 RDEPEND="
-	dev-python/dnspython[${PYTHON_USEDEP}]
+	virtual/dnspython[${PYTHON_USEDEP}]
 	gnome? ( dev-python/pygtk:2[${PYTHON_USEDEP}] )
 	X? (
 		dev-python/PyQt4[X,help,${PYTHON_USEDEP}]

@@ -186,8 +186,6 @@ src_install() {
 		"${FILESDIR}/${PN}.service" | \
 		systemd_newunit - ${PN}-${SLOT}.service
 
-	systemd_newtmpfilesd "${FILESDIR}"/${PN}.tmpfilesd ${PN}-${SLOT}.conf
-
 	newbin "${FILESDIR}"/${PN}-check-db-dir ${PN}-${SLOT}-check-db-dir
 
 	use pam && pamd_mimic system-auth ${PN}-${SLOT} auth account session

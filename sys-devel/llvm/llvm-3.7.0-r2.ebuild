@@ -43,7 +43,7 @@ COMMON_DEPEND="
 		>=dev-lang/ocaml-4.00.0:0=
 		dev-ml/findlib
 		dev-ml/ocaml-ctypes
-		!!<=sys-devel/llvm-3.7.0-r2[ocaml] )"
+		!!<=sys-devel/llvm-3.7.0-r1[ocaml] )"
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
 DEPEND="${COMMON_DEPEND}
 	dev-lang/perl
@@ -180,6 +180,10 @@ src_prepare() {
 		# https://llvm.org/bugs/show_bug.cgi?id=23792
 		epatch "${FILESDIR}"/cmake/clang-0001-Install-clang-runtime-into-usr-lib-without-suffix.patch
 		epatch "${FILESDIR}"/cmake/compiler-rt-0001-cmake-Install-compiler-rt-into-usr-lib-without-suffi.patch
+
+		# Do not force -march flags on arm platforms
+		# https://bugs.gentoo.org/show_bug.cgi?id=562706
+		epatch "${FILESDIR}"/cmake/${P}-compiler_rt_arm_march_flags.patch
 
 		# Make it possible to override CLANG_LIBDIR_SUFFIX
 		# (that is used only to find LLVMgold.so)

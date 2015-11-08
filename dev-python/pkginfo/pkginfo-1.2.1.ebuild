@@ -3,14 +3,15 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
 
 inherit distutils-r1
 
 DESCRIPTION="Provides an API for querying the distutils metadata written in a PKG-INFO file"
 HOMEPAGE="https://pypi.python.org/pypi/pkginfo"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm ppc ppc64 x86"
 IUSE="doc examples"
 
 LICENSE="MIT"
@@ -41,7 +42,6 @@ python_compile_all() {
 
 python_test() {
 	"${PYTHON}" -m unittest discover || die "Test ${test} failed under ${EPYTHON}"
-	popd > /dev/null
 }
 
 python_install_all() {

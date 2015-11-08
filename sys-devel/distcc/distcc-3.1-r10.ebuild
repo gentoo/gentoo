@@ -130,12 +130,12 @@ src_install() {
 		newins "doc/example/xinetd" distcc
 	fi
 
-	rm -rf "${D}/etc/default" || die
-	rm -f "${D}/etc/distcc/clients.allow" || die
-	rm -f "${D}/etc/distcc/commands.allow.sh" || die
+	rm -rf "${ED}/etc/default" || die
+	rm -f "${ED}/etc/distcc/clients.allow" || die
+	rm -f "${ED}/etc/distcc/commands.allow.sh" || die
 
 	python_fix_shebang "${ED}"
-	python_optimize "${ED}"/$(python_get_sitedir)
+	python_optimize
 }
 
 pkg_postinst() {
@@ -147,7 +147,7 @@ pkg_postinst() {
 	fi
 	elog
 	elog "Tips on using distcc with Gentoo can be found at"
-	elog "https://www.gentoo.org/doc/en/distcc.xml"
+	elog "https://wiki.gentoo.org/wiki/Distcc"
 	elog
 	elog "How to use pump mode with Gentoo:"
 	elog "# distcc-config --set-hosts \"foo,cpp,lzo bar,cpp,lzo baz,cpp,lzo\""

@@ -31,8 +31,8 @@ src_prepare() {
 }
 
 src_install() {
-	python_parallel_foreach_impl python_newscript ${PN}.py ${PN}
-	python_parallel_foreach_impl python_newscript CcpnToAcpype.py CcpnToAcpype
+	python_foreach_impl python_newscript ${PN}.py ${PN}
+	python_foreach_impl python_newscript CcpnToAcpype.py CcpnToAcpype
 	dodoc NOTE.txt README.txt
 	insinto /usr/share/${PN}
 	doins -r ffamber_additions test

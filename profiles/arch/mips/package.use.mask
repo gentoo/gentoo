@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
+# Tests require non-keyworded qt5
+dev-qt/qtchooser test
+
 # Mike Frysinger <vapier@gentoo.org> (10 Sep 2015)
 # Requires matplotlib which requires a bit more.
 dev-python/numpydoc test

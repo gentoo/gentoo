@@ -6,7 +6,6 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE=( gdbm )
-DISTUTILS_NO_PARALLEL_BUILD=1
 
 inherit distutils-r1 gnome2-utils vcs-snapshot
 

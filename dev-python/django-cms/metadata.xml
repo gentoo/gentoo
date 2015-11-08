@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>slis@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="admin-style">
+      Install plugin customizing admin panel styles
+    </flag>
+    <flag name="ckeditor">
+      Install text-ckeditor plugin for rich text editing
+    </flag>
+    <flag name="file">
+      Install djangocms file plugin
+    </flag>
+    <flag name="flash">
+      Install djangocms flash plugin
+    </flag>
+    <flag name="inherit">
+      Install djangocms inherit plugin
+    </flag>
+    <flag name="link">
+      Install djangocms link plugin
+    </flag>
+    <flag name="picture">
+      Install djangocms picture plugin
+    </flag>
+    <flag name="snippet">
+      Install djangocms snippet plugin
+    </flag>
+    <flag name="teaser">
+      Install djangocms teaser plugin
+    </flag>
+    <flag name="video">
+      Install djangocms video plugin
+    </flag>
+  </use>
+</pkgmetadata>

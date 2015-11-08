@@ -5,9 +5,9 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 python3_4 )
 
-inherit distutils-r1 git-2 user
+inherit distutils-r1 git-r3 user
 
-DESCRIPTION="Provides services for discovering, registering, and retrieving
+DESCRIPTION="Services for discovering, registering, and retrieving
 virtual machine images"
 HOMEPAGE="https://launchpad.net/glance"
 EGIT_REPO_URI="https://github.com/openstack/glance.git"

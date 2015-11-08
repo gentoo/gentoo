@@ -1,0 +1,27 @@
+diff -Nru jamvm-2.0.0.old/configure.ac jamvm-2.0.0/configure.ac
+--- jamvm-2.0.0.old/configure.ac	2014-06-10 21:33:37.000000000 +0100
++++ jamvm-2.0.0/configure.ac	2014-11-28 19:22:12.183091414 +0000
+@@ -236,6 +236,7 @@
+     install_dir=$prefix
+ fi
+ AC_DEFINE_UNQUOTED(INSTALL_DIR, "$install_dir", [Installation directory (prefix)])
++AC_DEFINE_UNQUOTED(PKGDATADIR, "$datadir/$PACKAGE", [Package data directory (pkgdatadir)])
+ 
+ AC_ARG_ENABLE(zip,
+     [AS_HELP_STRING(--disable-zip,turn-off zip support in the bootstrap loader)],,)
+diff -Nru jamvm-2.0.0.old/src/classlib/gnuclasspath/class.c jamvm-2.0.0/src/classlib/gnuclasspath/class.c
+--- jamvm-2.0.0.old/src/classlib/gnuclasspath/class.c	2012-05-17 22:01:47.000000000 +0100
++++ jamvm-2.0.0/src/classlib/gnuclasspath/class.c	2014-11-28 19:23:27.312108240 +0000
+@@ -110,10 +110,10 @@
+    separate class files in a directory structure */
+ 
+ #ifdef USE_ZIP
+-#define JAMVM_CLASSES INSTALL_DIR"/share/jamvm/classes.zip"
++#define JAMVM_CLASSES PKGDATADIR"/classes.zip"
+ #define CLASSPATH_CLASSES CLASSPATH_INSTALL_DIR"/share/classpath/glibj.zip"
+ #else
+-#define JAMVM_CLASSES INSTALL_DIR"/share/jamvm/classes"
++#define JAMVM_CLASSES PKGDATADIR"/classes"
+ #define CLASSPATH_CLASSES CLASSPATH_INSTALL_DIR"/share/classpath"
+ #endif
+ 

@@ -9,7 +9,7 @@ inherit leechcraft
 DESCRIPTION="Provides session restore between LeechCraft runs as well as manual saves/restores"
 
 SLOT="0"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug"
 
 DEPEND="~app-leechcraft/lc-core-${PV}"

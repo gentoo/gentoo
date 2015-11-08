@@ -91,8 +91,11 @@ case "${PV}" in
 0.11*)
 	BITCOINCORE_SERIES="0.11.x"
 	LIBSECP256K1_DEPEND="=dev-libs/libsecp256k1-0.0.0_pre20150423"
-	BITCOINCORE_RBF_DIFF="5f032c75eefb0fe8ff79ed9595da1112c05f5c4a...660b96d24916b8ef4e0677e5d6162e24e2db447e"
-	BITCOINCORE_RBF_PATCHFILE="${MyPN}-rbf-v0.11.0rc3.patch"
+	# RBF is bundled with ljr patchset since 0.11.1
+	if [ "${PVR}" = "0.11.0" ]; then
+		BITCOINCORE_RBF_DIFF="5f032c75eefb0fe8ff79ed9595da1112c05f5c4a...660b96d24916b8ef4e0677e5d6162e24e2db447e"
+		BITCOINCORE_RBF_PATCHFILE="${MyPN}-rbf-v0.11.0rc3.patch"
+	fi
 	;;
 9999*)
 	BITCOINCORE_SERIES="9999"
@@ -122,7 +125,7 @@ else
 		BITCOINXT_PATCHFILE="${MyPN}xt-v${PV}.patch"
 		SRC_URI="${SRC_URI} xt? ( https://github.com/bitcoinxt/bitcoinxt/compare/${BITCOINCORE_XT_DIFF}.diff -> ${BITCOINXT_PATCHFILE} )"
 	fi
-	if in_bcc_policy rbf; then
+	if in_bcc_policy rbf && [ -n "${BITCOINCORE_RBF_DIFF}" ]; then
 		SRC_URI="${SRC_URI} bitcoin_policy_rbf? ( https://github.com/petertodd/bitcoin/compare/${BITCOINCORE_RBF_DIFF}.diff -> ${BITCOINCORE_RBF_PATCHFILE} )"
 	fi
 	S="${WORKDIR}/${MyPN}-${BITCOINCORE_COMMITHASH}"
@@ -204,12 +207,13 @@ bitcoincore_pkg_pretend() {
 		"Replace By Fee policy is enabled: Your node will preferentially mine and relay transactions paying the highest fee, regardless of receive order." \
 		"Replace By Fee policy is disabled: Your node will only accept the first transaction seen consuming a conflicting input, regardless of fee offered by later ones."
 	bitcoincore_policymsg spamfilter \
-		"Enhanced spam filter is enabled: A blacklist (seen as controversial by some) will be used by your node. This may impact your ability to use some services (see link for a list)." \
-		"Enhanced spam filter is disabled: Your node will not be checking for notorious spammers, and may assist them."
+		"Enhanced spam filter policy is enabled: Your node will identify notorious spam scripts and avoid assisting them. This may impact your ability to use some services (see link for a list)." \
+		"Enhanced spam filter policy is disabled: Your node will not be checking for notorious spam scripts, and may assist them."
 	$bitcoincore_policymsg_flag && einfo "For more information on any of the above, see ${LJR_PATCH_DESC}"
 }
 
 bitcoincore_prepare() {
+	local mypolicy
 	if [ -n "${BITCOINCORE_NO_SYSLIBS}" ]; then
 		true
 	elif [ "${PV}" = "9999" ]; then
@@ -239,7 +243,11 @@ bitcoincore_prepare() {
 		use bitcoin_policy_${mypolicy} || continue
 		case "${mypolicy}" in
 		rbf)
-			epatch "${DISTDIR}/${BITCOINCORE_RBF_PATCHFILE}"
+			if [ -n "${BITCOINCORE_RBF_PATCHFILE}" ]; then
+				epatch "${DISTDIR}/${BITCOINCORE_RBF_PATCHFILE}"
+			else
+				epatch "$(LJR_PATCH ${mypolicy})"
+			fi
 			;;
 		*)
 			epatch "$(LJR_PATCH ${mypolicy})"

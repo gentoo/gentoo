@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# @DEAD
+
 # DEPRECATED
 # This eclass has been superseded by bash-completion-r1 eclass.
 # Please modify your ebuilds to use that one instead.
@@ -30,6 +32,9 @@
 # arguments.
 
 inherit eutils
+
+eqawarn "bash-completion.eclass is last rited and will be removed on 2015-11-24."
+eqawarn "Please update your ebuilds to use bash-completion-r1 instead."
 
 EXPORT_FUNCTIONS pkg_postinst
 

@@ -20,7 +20,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-IUSE="+peer_perms +open_perms +ubac +unconfined doc"
+IUSE="doc +open_perms +peer_perms systemd +ubac +unconfined"
 
 DESCRIPTION="Gentoo base policy for SELinux"
 HOMEPAGE="https://www.gentoo.org/proj/en/hardened/selinux/"
@@ -35,10 +35,6 @@ DEPEND="${RDEPEND}
 	>=sys-apps/checkpolicy-2.3"
 
 S=${WORKDIR}/
-
-#src_unpack() {
-#	git-2_src_unpack
-#}
 
 src_prepare() {
 	if [[ ${PV} != 9999* ]]; then
@@ -64,12 +60,12 @@ src_configure() {
 
 	if ! use peer_perms; then
 		sed -i -e '/network_peer_controls/d' \
-			"${S}/refpolicy/policy/policy_capabilities"
+			"${S}/refpolicy/policy/policy_capabilities" || die
 	fi
 
 	if ! use open_perms; then
 		sed -i -e '/open_perms/d' \
-			"${S}/refpolicy/policy/policy_capabilities"
+			"${S}/refpolicy/policy/policy_capabilities" || die
 	fi
 
 	if ! use ubac; then
@@ -77,20 +73,25 @@ src_configure() {
 			|| die "Failed to disable User Based Access Control"
 	fi
 
-	echo "DISTRO = gentoo" >> "${S}/refpolicy/build.conf"
+	if use systemd; then
+		sed -i -e '/^SYSTEMD/s/n/y/' "${S}/refpolicy/build.conf" \
+			|| die "Failed to enable SystemD"
+	fi
+
+	echo "DISTRO = gentoo" >> "${S}/refpolicy/build.conf" || die
 
 	# Prepare initial configuration
-	cd "${S}/refpolicy";
+	cd "${S}/refpolicy" || die
 	make conf || die "Make conf failed"
 
 	# Setup the policies based on the types delivered by the end user.
 	# These types can be "targeted", "strict", "mcs" and "mls".
 	for i in ${POLICY_TYPES}; do
-		cp -a "${S}/refpolicy" "${S}/${i}"
-		cd "${S}/${i}";
+		cp -a "${S}/refpolicy" "${S}/${i}" || die
+		cd "${S}/${i}" || die
 
 		#cp "${FILESDIR}/modules-2.20120215.conf" "${S}/${i}/policy/modules.conf"
-		sed -i -e "/= module/d" "${S}/${i}/policy/modules.conf"
+		sed -i -e "/= module/d" "${S}/${i}/policy/modules.conf" || die
 
 		sed -i -e '/^QUIET/s/n/y/' -e "/^NAME/s/refpolicy/$i/" \
 			"${S}/${i}/build.conf" || die "build.conf setup failed."
@@ -120,10 +121,10 @@ src_compile() {
 	[ -z "${POLICY_TYPES}" ] && local POLICY_TYPES="targeted strict mls mcs"
 
 	for i in ${POLICY_TYPES}; do
-		cd "${S}/${i}"
-		emake base || die "${i} compile failed"
+		cd "${S}/${i}" || die
+		emake base
 		if use doc; then
-			make html || die
+			emake html
 		fi
 	done
 }
@@ -132,7 +133,7 @@ src_install() {
 	[ -z "${POLICY_TYPES}" ] && local POLICY_TYPES="targeted strict mls mcs"
 
 	for i in ${POLICY_TYPES}; do
-		cd "${S}/${i}"
+		cd "${S}/${i}" || die
 
 		make DESTDIR="${D}" install \
 			|| die "${i} install failed."
@@ -140,9 +141,9 @@ src_install() {
 		make DESTDIR="${D}" install-headers \
 			|| die "${i} headers install failed."
 
-		echo "run_init_t" > "${D}/etc/selinux/${i}/contexts/run_init_type"
+		echo "run_init_t" > "${D}/etc/selinux/${i}/contexts/run_init_type" || die
 
-		echo "textrel_shlib_t" >> "${D}/etc/selinux/${i}/contexts/customizable_types"
+		echo "textrel_shlib_t" >> "${D}/etc/selinux/${i}/contexts/customizable_types" || die
 
 		# libsemanage won't make this on its own
 		keepdir "/etc/selinux/${i}/policy"
@@ -164,5 +165,5 @@ src_install() {
 	doins "${FILESDIR}/config"
 
 	insinto /usr/share/portage/config/sets
-	doins "${FILESDIR}/selinux.conf" || die "failed to install selinux-rebuild portage set"
+	doins "${FILESDIR}/selinux.conf"
 }

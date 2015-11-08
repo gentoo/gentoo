@@ -24,7 +24,7 @@ HOMEPAGE="http://www.mozilla.org/rhino/"
 
 LICENSE="MPL-1.1 GPL-2"
 SLOT="1.6"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ppc ppc64 x86"
 IUSE=""
 
 # ../rhino-Rhino1_7_7_RELEASE
@@ -56,13 +56,9 @@ EANT_TEST_TARGET="junit"
 RESTRICT="test"
 
 java_prepare() {
-	find . \
-		-type f \
-		-name \*.jar \
-		-print \
-		-exec rm -v {} \; || die "Couldn't delete bundled jar files."
+	java-pkg_clean
 
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 
 	if use test; then
 		mkdir lib || die

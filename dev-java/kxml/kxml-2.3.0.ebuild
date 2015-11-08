@@ -6,7 +6,7 @@ EAPI="5"
 
 JAVA_PKG_IUSE="doc examples source"
 
-inherit eutils java-pkg-2 java-ant-2
+inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Small XML pull parser for constrained environments such as Applets, Personal Java or MIDP devices"
 HOMEPAGE="http://kxml.org/"
@@ -14,29 +14,28 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}2-src-${PV}.zip"
 
 LICENSE="BSD"
 SLOT="2"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 
 CDEPEND="dev-java/xpp3:0"
 
-DEPEND=">=virtual/jdk-1.6
+DEPEND="
 	${CDEPEND}
+	>=virtual/jdk-1.6
 	app-arch/unzip"
 
-RDEPEND=">=virtual/jre-1.6
-	${CDEPEND}"
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
 
 S="${WORKDIR}"
 
 java_prepare() {
+	java-pkg_clean
 	cp "${FILESDIR}"/${P}-build.xml build.xml || die
-
-	find . -name '*.class' -print -delete || die
-	find . -name '*.jar' -print -delete || die
 }
 
-EANT_BUILD_TARGET="build_jar"
-
 JAVA_ANT_REWRITE_CLASSPATH="true"
+EANT_BUILD_TARGET="build_jar"
 EANT_GENTOO_CLASSPATH="xpp3"
 
 src_install() {

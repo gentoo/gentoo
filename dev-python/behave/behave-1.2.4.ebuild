@@ -40,8 +40,6 @@ python_compile_all() {
 python_test() {
 	nosetests || die "nosetests failed under ${EPYTHON}"
 
-	local DISTUTILS_NO_PARALLEL_BUILD=TRUE
-
 	rm -f "${HOME}"/.pydistutils.cfg || die "Couldn't remove pydistutils.cfg"
 
 	distutils_install_for_testing

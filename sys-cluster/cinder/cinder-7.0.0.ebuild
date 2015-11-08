@@ -9,7 +9,8 @@ inherit distutils-r1 eutils linux-info user
 
 DESCRIPTION="Cinder is the OpenStack Block storage service, a spin out of nova-volumes"
 HOMEPAGE="https://launchpad.net/cinder"
-SRC_URI="https://launchpad.net/${PN}/liberty/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/liberty/${PV}/+download/${P}.tar.gz
+	https://dev.gentoo.org/~prometheanfire/dist/cinder/liberty/cinder.conf.sample -> liberty-cinder.conf.sample"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -201,13 +202,6 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-python_compile() {
-		distutils-r1_python_compile
-		mv cinder/test.py cinder/test.py.bak || die
-		./tools/config/generate_sample.sh -b ./ -p cinder -o etc/cinder || die
-		mv cinder/test.py.bak cinder/test.py || die
-}
-
 python_test() {
 	# Let's track progress of this # https://bugs.launchpad.net/swift/+bug/1249727
 	nosetests -I test_wsgi.py cinder/tests/ || die "tests failed under python2.7"
@@ -224,13 +218,14 @@ python_install() {
 
 	insinto /etc/cinder
 	insopts -m0640 -o cinder -g cinder
-	newins "${S}/etc/cinder/cinder.conf.sample" "cinder.conf"
-	newins "${S}/etc/cinder/api-paste.ini" "api-paste.ini"
-	newins "${S}/etc/cinder/logging_sample.conf" "logging_sample.conf"
-	newins "${S}/etc/cinder/policy.json" "policy.json"
-	newins "${S}/etc/cinder/rootwrap.conf" "rootwrap.conf"
+	newins "${FILESDIR}/etc.liberty/api-httpd.conf" "api-httpd.conf"
+	newins "${FILESDIR}/etc.liberty/api-paste.ini" "api-paste.ini"
+	newins "${DISTDIR}/liberty-cinder.conf.sample" "cinder.conf.sample"
+	newins "${FILESDIR}/etc.liberty/logging_sample.conf" "logging_sample.conf"
+	newins "${FILESDIR}/etc.liberty/policy.json" "policy.json"
+	newins "${FILESDIR}/etc.liberty/rootwrap.conf" "rootwrap.conf"
 	insinto /etc/cinder/rootwrap.d
-	newins "${S}/etc/cinder/rootwrap.d/volume.filters" "volume.filters"
+	newins "${FILESDIR}/etc.liberty/rootwrap.d/volume.filters" "volume.filters"
 
 	dodir /var/log/cinder
 	fowners cinder:cinder /var/log/cinder

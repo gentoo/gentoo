@@ -25,5 +25,3 @@ RDEPEND="
 	x11-libs/gtk+:3[introspection]"
 DEPEND="${RDEPEND}
 	dev-python/python-distutils-extra[${PYTHON_USEDEP}]"
-
-DISTUTILS_NO_PARALLEL_BUILD=true

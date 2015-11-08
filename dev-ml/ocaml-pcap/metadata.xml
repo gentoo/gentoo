@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
     <herd>ml</herd>
@@ -6,4 +6,7 @@
     <maintainer>
         <email>tomboy64@sina.cn</email>
     </maintainer>
+    <upstream>
+        <remote-id type="github">mirage/ocaml-pcap</remote-id>
+    </upstream>
 </pkgmetadata>

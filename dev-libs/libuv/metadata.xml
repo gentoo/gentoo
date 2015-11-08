@@ -31,4 +31,7 @@
 		<bugs-to>https://github.com/libuv/libuv/issues</bugs-to>
 		<remote-id type="github">libuv/libuv</remote-id>
 	</upstream>
+	<slots>
+		<subslots>Reflect ABI compatibility of libuv.so.</subslots>
+	</slots>
 </pkgmetadata>

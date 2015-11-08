@@ -19,9 +19,7 @@ MYGAMEDIR=${GAMES_PREFIX_OPT}/${PN}
 QA_PREBUILT="${MYGAMEDIR#/}/crayon
 	${MYGAMEDIR#/}/lib32/*"
 
-# fuck this pulseaudio linkage
 RDEPEND="
-	media-sound/pulseaudio[abi_x86_32(-)]
 	dev-qt/qtcore:4[abi_x86_32(-)]
 	dev-qt/qtgui:4[abi_x86_32(-)]
 	virtual/glu[abi_x86_32(-)]
@@ -36,7 +34,7 @@ RDEPEND="
 			media-libs/sdl-mixer[vorbis,wav]
 			media-libs/smpeg[X,opengl]
 			media-libs/tiff:0
-			virtual/jpeg
+			virtual/jpeg:0
 		)
 	)"
 

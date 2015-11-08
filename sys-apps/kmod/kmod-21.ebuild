@@ -13,7 +13,7 @@ if [[ ${PV} == 9999* ]]; then
 	inherit autotools git-2
 else
 	SRC_URI="mirror://kernel/linux/utils/kernel/kmod/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
 	inherit libtool
 fi
 
@@ -98,7 +98,7 @@ src_configure() {
 	kmod_configure --disable-python
 
 	if use python; then
-		python_parallel_foreach_impl kmod_configure --enable-python
+		python_foreach_impl kmod_configure --enable-python
 	fi
 }
 

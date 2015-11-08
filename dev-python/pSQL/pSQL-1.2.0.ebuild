@@ -25,7 +25,7 @@ RDEPEND="
 DEPEND=""
 
 src_install() {
-	python_parallel_foreach_impl python_domodule pSQL.py
+	python_foreach_impl python_domodule pSQL.py
 
 	dodoc *pSQL
 }

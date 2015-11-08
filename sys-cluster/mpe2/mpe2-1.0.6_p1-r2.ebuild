@@ -65,7 +65,7 @@ pkg_setup() {
 
 	einfo "Building with support for: sys-cluster/${MPE_IMP}"
 
-	if ! minimal; then
+	if ! use minimal; then
 		java-pkg-opt-2_pkg_setup
 	fi
 }
@@ -76,7 +76,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/slog2sdk-trace_rlog-makefile-fixes.patch
 	epatch "${FILESDIR}"/slog2sdk-trace_sample-makefile-fixes.patch
 
-	if ! minimal; then
+	if ! use minimal; then
 		java-pkg-opt-2_src_prepare
 	fi
 }

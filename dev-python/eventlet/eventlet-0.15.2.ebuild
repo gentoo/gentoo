@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -42,12 +42,6 @@ python_prepare_all() {
 python_compile_all() {
 	# https://github.com/eventlet/eventlet/issues/152
 	use doc && emake -C doc html
-}
-
-src_test() {
-	# Tests bind to static addresses, bug #456920
-	local DISTUTILS_NO_PARALLEL_BUILD=1
-	distutils-r1_src_test
 }
 
 python_test() {

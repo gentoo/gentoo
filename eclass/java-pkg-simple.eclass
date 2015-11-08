@@ -2,16 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-inherit java-utils-2
-
-if ! has java-pkg-2 ${INHERITED}; then
-	eerror "java-pkg-simple eclass can only be inherited AFTER java-pkg-2"
-fi
-
-# -----------------------------------------------------------------------------
-# @eclass-begin
-# @eclass-summary Eclass for Java sources without build instructions
-#
+# @ECLASS: java-pkg-simple.eclass
+# @MAINTAINER:
+# java@gentoo.org
+# @AUTHOR:
+# Java maintainers (java@gentoo.org)
+# @BLURB: Eclass for packaging Java software with ease.
+# @DESCRIPTION:
 # This class is intended to build pure Java packages from Java sources
 # without the use of any build instructions shipped with the sources.
 # There is no support for resources besides the generated class files,
@@ -19,92 +16,75 @@ fi
 # the resulting jar, although these issues may be addressed by an
 # ebuild by putting corresponding files into the target directory
 # before calling the src_compile function of this eclass.
-# -----------------------------------------------------------------------------
+
+inherit java-utils-2
+
+if ! has java-pkg-2 ${INHERITED}; then
+	eerror "java-pkg-simple eclass can only be inherited AFTER java-pkg-2"
+fi
 
 EXPORT_FUNCTIONS src_compile src_install
 
 # We are only interested in finding all java source files, wherever they may be.
 S="${WORKDIR}"
 
-# -----------------------------------------------------------------------------
-# @variable-external JAVA_GENTOO_CLASSPATH
-# @variable-default ""
-#
+# @ECLASS-VARIABLE: JAVA_GENTOO_CLASSPATH
+# @DEFAULT_UNSET
+# @DESCRIPTION:
 # Comma or space separated list of java packages to include in the
 # class path. The packages will also be registered as runtime
 # dependencies of this new package. Dependencies will be calculated
 # transitively. See "java-config -l" for appropriate package names.
-# -----------------------------------------------------------------------------
-# JAVA_GENTOO_CLASSPATH
-
-# -----------------------------------------------------------------------------
-# @variable-external JAVA_CLASSPATH_EXTRA
-# @variable-default ""
 #
+# @CODE
+#	JAVA_GENTOO_CLASSPATH="foo,bar-2"
+# @CODE
+
+# @ECLASS-VARIABLE: JAVA_GENTOO_CLASSPATH_EXTRA
+# @DEFAULT_UNSET
+# @DESCRIPTION:
 # Extra list of colon separated path elements to be put on the
 # classpath when compiling sources.
-# -----------------------------------------------------------------------------
-# JAVA_CLASSPATH_EXTRA
 
-# -----------------------------------------------------------------------------
-# @variable-external JAVA_SRC_DIR
-# @variable-default ""
-#
+# @ECLASS-VARIABLE: JAVA_SRC_DIR
+# @DEFAULT_UNSET
+# @DESCRIPTION:
 # Directories relative to ${S} which contain the sources of the
 # application. The default of "" will be treated mostly as ${S}
 # itself. For the generated source package (if source is listed in
 # ${JAVA_PKG_IUSE}), it is important that these directories are
 # actually the roots of the corresponding source trees.
-# -----------------------------------------------------------------------------
-# JAVA_SRC_DIR
-
-# -----------------------------------------------------------------------------
-# @variable-external JAVA_ENCODING
-# @variable-default UTF-8
 #
-# The character encoding used in the source files
-# -----------------------------------------------------------------------------
+# @CODE
+#	JAVA_SRC_DIR="src/java/org/gentoo"
+# @CODE
+
+# @ECLASS-VARIABLE: JAVA_ENCODING
+# @DESCRIPTION:
+# The character encoding used in the source files.
 : ${JAVA_ENCODING:=UTF-8}
 
-# -----------------------------------------------------------------------------
-# @variable-external JAVAC_ARGS
-# @variable-default ""
-#
-# Additional arguments to be passed to javac
-# -----------------------------------------------------------------------------
-# JAVAC_ARGS
+# @ECLASS-VARIABLE: JAVAC_ARGS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Additional arguments to be passed to javac.
 
-# -----------------------------------------------------------------------------
-# @variable-external JAVADOC_ARGS
-# @variable-default ""
-#
-# Additional arguments to be passed to javadoc
-# -----------------------------------------------------------------------------
-# JAVADOC_ARGS
+# @ECLASS-VARIABLE: JAVADOC_ARGS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Additional arguments to be passed to javadoc.
 
-# -----------------------------------------------------------------------------
-# @variable-external JAVA_JAR_FILENAME
-# @variable-default ${PN}.jar
-#
-# The name of the jar file to create and install
-# -----------------------------------------------------------------------------
+# @ECLASS-VARIABLE: JAVA_JAR_FILENAME
+# @DESCRIPTION:
+# The name of the jar file to create and install.
 : ${JAVA_JAR_FILENAME:=${PN}.jar}
 
-# ------------------------------------------------------------------------------
-# @eclass-src_compile
-#
+# @FUNCTION: java-pkg-simple_src_compile
+# @DESCRIPTION:
 # src_compile for simple bare source java packages. Finds all *.java
 # sources in ${JAVA_SRC_DIR}, compiles them with the classpath
 # calculated from ${JAVA_GENTOO_CLASSPATH}, and packages the resulting
 # classes to ${JAVA_JAR_FILENAME}.
-#
-# variables:
-# JAVA_GENTOO_CLASSPATH - list java packages to put on the classpath.
-# JAVA_ENCODING - encoding of source files, used by javac and javadoc
-# JAVA_SRC_DIR - directories containing source files, relative to ${S}
-# JAVAC_ARGS - additional arguments to be passed to javac
-# JAVADOC_ARGS - additional arguments to be passed to javadoc
-# ------------------------------------------------------------------------------
 java-pkg-simple_src_compile() {
 	local sources=sources.lst classes=target/classes apidoc=target/api
 
@@ -113,7 +93,7 @@ java-pkg-simple_src_compile() {
 	mkdir -p ${classes} || die "Could not create target directory"
 
 	# compile
-	local classpath="${JAVA_CLASSPATH_EXTRA}" dependency
+	local classpath="${JAVA_GENTOO_CLASSPATH_EXTRA}" dependency
 	for dependency in ${JAVA_GENTOO_CLASSPATH}; do
 		classpath="${classpath}:$(java-pkg_getjars ${dependency})" \
 			|| die "getjars failed for ${dependency}"
@@ -122,16 +102,14 @@ java-pkg-simple_src_compile() {
 	classpath=${classpath%:}
 	classpath=${classpath#:}
 	debug-print "CLASSPATH=${classpath}"
-	java-pkg-simple_verbose-cmd \
-		ejavac -d ${classes} -encoding ${JAVA_ENCODING} \
+	ejavac -d ${classes} -encoding ${JAVA_ENCODING} \
 		${classpath:+-classpath ${classpath}} ${JAVAC_ARGS} \
 		@${sources}
 
 	# javadoc
 	if has doc ${JAVA_PKG_IUSE} && use doc; then
 		mkdir -p ${apidoc}
-		java-pkg-simple_verbose-cmd \
-			ejavadoc -d ${apidoc} \
+		ejavadoc -d ${apidoc} \
 			-encoding ${JAVA_ENCODING} -docencoding UTF-8 -charset UTF-8 \
 			${classpath:+-classpath ${classpath}} ${JAVADOC_ARGS:- -quiet} \
 			@${sources} || die "javadoc failed"
@@ -142,29 +120,24 @@ java-pkg-simple_src_compile() {
 	if [[ -e ${classes}/META-INF/MANIFEST.MF ]]; then
 		jar_args="cfm ${JAVA_JAR_FILENAME} ${classes}/META-INF/MANIFEST.MF"
 	fi
-	java-pkg-simple_verbose-cmd \
-		jar ${jar_args} -C ${classes} . || die "jar failed"
+	jar ${jar_args} -C ${classes} . || die "jar failed"
 }
 
-# ------------------------------------------------------------------------------
-# @eclass-src_install
-#
+# @FUNCTION: java-pkg-simple_src_install
+# @DESCRIPTION:
 # src_install for simple single jar java packages. Simply packages the
 # contents from the target directory and installs it as
 # ${JAVA_JAR_FILENAME}. If the file target/META-INF/MANIFEST.MF exists,
 # it is used as the manifest of the created jar.
-# ------------------------------------------------------------------------------
 java-pkg-simple_src_install() {
 	local sources=sources.lst classes=target/classes apidoc=target/api
 
 	# main jar
-	java-pkg-simple_verbose-cmd \
-		java-pkg_dojar ${JAVA_JAR_FILENAME}
+	java-pkg_dojar ${JAVA_JAR_FILENAME}
 
 	# javadoc
 	if has doc ${JAVA_PKG_IUSE} && use doc; then
-		java-pkg-simple_verbose-cmd \
-			java-pkg_dojavadoc ${apidoc}
+		java-pkg_dojavadoc ${apidoc}
 	fi
 
 	# dosrc
@@ -181,25 +154,6 @@ java-pkg-simple_src_install() {
 			# take all directories actually containing any sources
 			srcdirs="$(cut -d/ -f1 ${sources} | sort -u)"
 		fi
-		java-pkg-simple_verbose-cmd \
-			java-pkg_dosrc ${srcdirs}
+		java-pkg_dosrc ${srcdirs}
 	fi
 }
-
-# ------------------------------------------------------------------------------
-# @internal-function java-pkg-simple_verbose-cmd
-#
-# Print a command before executing it. To give user some feedback
-# about what is going on, where the time is being spent, and also to
-# help debugging ebuilds.
-#
-# @param $@ - command to be called and its arguments
-# ------------------------------------------------------------------------------
-java-pkg-simple_verbose-cmd() {
-	echo "$*"
-	"$@"
-}
-
-# ------------------------------------------------------------------------------
-# @eclass-end
-# ------------------------------------------------------------------------------
