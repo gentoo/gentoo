@@ -75,6 +75,9 @@ if [[ ! ${_PYTHON_ANY_R1} ]]; then
 if ! declare -p PYTHON_COMPAT &>/dev/null; then
 	die 'PYTHON_COMPAT not declared.'
 fi
+if [[ $(declare -p PYTHON_COMPAT) != "declare -a"* ]]; then
+	die 'PYTHON_COMPAT must be an array.'
+fi
 
 # @ECLASS-VARIABLE: PYTHON_REQ_USE
 # @DEFAULT_UNSET
