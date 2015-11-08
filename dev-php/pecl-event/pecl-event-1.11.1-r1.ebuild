@@ -13,7 +13,7 @@ USE_PHP="php5-4 php5-5 php5-6"
 
 inherit php-ext-pecl-r2 confutils eutils
 
-KEYWORDS="amd64 ~ia64 x86"
+KEYWORDS="amd64 ia64 x86"
 LICENSE="PHP-3.01"
 
 DESCRIPTION="PHP wrapper for libevent2"
