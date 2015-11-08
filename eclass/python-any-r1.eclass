@@ -72,8 +72,8 @@ if [[ ! ${_PYTHON_ANY_R1} ]]; then
 # @CODE
 # PYTHON_COMPAT=( python{2_5,2_6,2_7} )
 # @CODE
-if ! declare -p PYTHON_COMPAT &>/dev/null; then
-	die 'PYTHON_COMPAT not declared.'
+if [[ $(declare -p PYTHON_COMPAT) != "declare -a"* ]]; then
+    die 'PYTHON_COMPAT must be an array.'
 fi
 if [[ $(declare -p PYTHON_COMPAT) != "declare -a"* ]]; then
 	die 'PYTHON_COMPAT must be an array.'
