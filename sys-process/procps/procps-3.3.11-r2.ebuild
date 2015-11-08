@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 
 inherit eutils toolchain-funcs
 
@@ -43,6 +43,8 @@ src_prepare() {
 
 src_configure() {
 	econf \
+		--bindir='${EPREFIX}'/bin \
+		--sbindir='${EPREFIX}'/sbin \
 		--docdir='$(datarootdir)'/doc/${PF} \
 		$(use_enable modern-top) \
 		$(use_with ncurses) \
@@ -60,9 +62,6 @@ src_test() {
 src_install() {
 	default
 	#dodoc sysctl.conf
-
-	dodir /bin
-	mv "${ED}"/usr/bin/{kill,pidof,ps} "${ED}"/bin/ || die
 
 	gen_usr_ldscript -a procps
 	prune_libtool_files
