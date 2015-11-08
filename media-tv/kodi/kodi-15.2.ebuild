@@ -68,7 +68,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/jasper
 	media-libs/jbigkit
 	>=media-libs/libass-0.9.7
-	bluray? ( >=media-libs/libbluray-0.7.0 )
+	bluray? ( media-libs/libbluray )
 	css? ( media-libs/libdvdcss )
 	media-libs/libmad
 	media-libs/libmodplug
@@ -108,7 +108,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	vaapi? ( x11-libs/libva[opengl] )
 	vdpau? (
-		|| ( >=x11-libs/libvdpau-1.1 >=x11-drivers/nvidia-drivers-180.51 )
+		|| ( x11-libs/libvdpau >=x11-drivers/nvidia-drivers-180.51 )
 		media-video/ffmpeg[vdpau]
 	)
 	X? (
@@ -125,7 +125,6 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils
 	dev-lang/swig
-	dev-libs/crossguid
 	dev-util/gperf
 	texturepacker? ( media-libs/giflib )
 	X? ( x11-proto/xineramaproto )
@@ -154,7 +153,7 @@ src_unpack() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-9999-no-arm-flags.patch #400617
-	epatch "${FILESDIR}"/${PN}-9999-texturepacker.patch
+	epatch "${FILESDIR}"/${PN}-15.1-texturepacker.patch
 	epatch_user #293109
 
 	# some dirs ship generated autotools, some dont

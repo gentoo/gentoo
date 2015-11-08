@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT="python2_7"
+PYTHON_COMPAT=( python2_7 )
 
 inherit eutils python-single-r1 flag-o-matic cmake-utils
 
