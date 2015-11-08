@@ -971,7 +971,7 @@ app-doc/motif-reference-manual 2.3.0-r1: Motif Reference Manual
 app-doc/php-docs 20101029-r1: HTML documentation for PHP
 app-doc/phrack 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68: A Hacker magazine by the community, for the community
 app-doc/phrack-all 68: Hacker magazine by the community, for the community (this will install *all* issues of phrack)
-app-doc/pms 5-r2 9999: Gentoo Package Manager Specification (draft)
+app-doc/pms 5-r2 6 9999: Gentoo Package Manager Specification (draft)
 app-doc/podbrowser 0.12-r3: PodBrowser is a documentation browser for Perl
 app-doc/psmark 2.1: Prints watermark-like text on any PostScript document
 app-doc/root-docs 5.34.26 5.34.32 6.02.05 6.04.06: Documentation for ROOT Data Analysis Framework
@@ -17013,7 +17013,7 @@ sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.2: A utility for parallelizing execution of shell functions
 sys-process/procenv 0.35 0.36 0.39: A command-line utility that simply dumps all attributes of its environment
 sys-process/procexp 1.5.277: Graphical process explorer
-sys-process/procps 3.3.9-r2 3.3.10-r1 3.3.11-r1: standard informational utilities and process-handling tools
+sys-process/procps 3.3.9-r2 3.3.10-r1 3.3.11-r2: standard informational utilities and process-handling tools
 sys-process/psinfo 0.12: Process information and statistics using the kernel /proc interface
 sys-process/psmisc 22.16 22.20 22.21-r2: A set of tools that use the proc filesystem
 sys-process/runit 2.1.1-r1 2.1.2: A UNIX init scheme with service supervision
