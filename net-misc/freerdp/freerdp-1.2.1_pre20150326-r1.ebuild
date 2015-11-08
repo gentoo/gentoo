@@ -81,7 +81,11 @@ DEPEND="${RDEPEND}
 
 DOCS=( README )
 
-PATCHES=( "${FILESDIR}/freerdp-armfp.patch" "${FILESDIR}/freerdp-ffmpeg29.patch" )
+PATCHES=(
+	"${FILESDIR}/freerdp-armfp.patch"
+	"${FILESDIR}/freerdp-ffmpeg29.patch"
+	"${FILESDIR}/1.2.1-gstreamer.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
