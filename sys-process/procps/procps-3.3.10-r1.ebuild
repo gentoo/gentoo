@@ -16,7 +16,7 @@ SRC_URI="https://dev.gentoo.org/~polynomial-c/${PN}-ng-${PV}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~ia64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~ia64-linux ~x86-linux"
 IUSE="+ncurses modern-top nls selinux static-libs systemd test unicode"
 
 RDEPEND="!<sys-apps/sysvinit-2.88-r6
