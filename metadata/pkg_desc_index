@@ -1989,10 +1989,10 @@ app-office/kmymoney 4.7.2: Personal finance manager for KDE
 app-office/kraft 0.58 0.59: Software for operating a small business, helping create documents such as offers and invoices
 app-office/ledger 2.6.3-r1 3.1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 4.3.2-r1: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 4.4.5.2 4.4.9999 5.0.2.2 5.0.3.2 5.0.9999 9999: A full office productivity suite
+app-office/libreoffice 4.4.5.2 4.4.6.3 4.4.9999 5.0.2.2 5.0.3.2 5.0.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 4.4.5.2: LibreOffice, a full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 4.4.5.2: LibreOffice, a full office productivity suite. Binary package, debug info
-app-office/libreoffice-l10n 4.4.5.2 5.0.2.2 5.0.3.2: Translations for the Libreoffice suite
+app-office/libreoffice-l10n 4.4.5.2 4.4.6.3 5.0.2.2 5.0.3.2: Translations for the Libreoffice suite
 app-office/lotus-notes 8.5.3: Commercial fork of openoffice.org with extra features for company usage
 app-office/lyx 1.6.10 2.0.8.1 2.1.3 2.1.4: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a: An X11 based presentation tool
@@ -11959,7 +11959,7 @@ media-gfx/xloadimage 4.1-r11: utility to view many different types of images und
 media-gfx/xpaint 2.9.10.2 2.9.10.3: Image editor with tiff, jpeg and png support
 media-gfx/xsane 0.999-r1: graphical scanning frontend
 media-gfx/xsvg 0.2.1: a command line viewer for SVG files
-media-gfx/xv 3.10a-r16: An interactive image manipulation program that supports a wide variety of image formats
+media-gfx/xv 3.10a-r16 3.10a-r17: Interactive image manipulation program supporting a wide variety of formats
 media-gfx/xzgv 0.9.1: Fast and simple GTK+ image viewer
 media-gfx/yafaray 0.1.1: YafaRay is a raytracing open source render engine
 media-gfx/zbar 0.10-r5 0.10_p20121015: Library and tools for reading barcodes from images or video
@@ -17793,7 +17793,7 @@ x11-libs/libxcb 1.9.1 1.9.1-r1 1.9.3 1.9.3-r1 1.10 1.11 1.11-r1 1.11.1: X C-lang
 x11-libs/libxkbcommon 0.2.0 0.3.1 0.4.1 0.5.0: X.Org xkbcommon library
 x11-libs/libxkbfile 1.0.8 1.0.9: X.Org xkbfile library
 x11-libs/libxkbui 1.0.2-r1: X.Org xkbui library
-x11-libs/libxklavier 5.2.1 5.3: A library for the X Keyboard Extension (high-level API)
+x11-libs/libxklavier 5.3: A library for the X Keyboard Extension (high-level API)
 x11-libs/libxsettings-client 0.17 0.17-r1: XSETTINGS client code
 x11-libs/libxshmfence 1.1 1.2: Shared memory fences using futexes
 x11-libs/libyui 3.0.13: UI abstraction library
