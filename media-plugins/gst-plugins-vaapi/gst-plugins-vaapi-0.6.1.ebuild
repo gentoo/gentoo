@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI="5"
+
 inherit eutils multilib-minimal
 
 MY_PN="gstreamer-vaapi"
@@ -18,9 +19,9 @@ REQUIRED_USE="|| ( drm opengl wayland X )"
 
 RDEPEND="
 	>=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
-	>=media-libs/gstreamer-1.2.3:1.0[${MULTILIB_USEDEP}]
-	>=media-libs/gst-plugins-base-1.2.3:1.0[${MULTILIB_USEDEP}]
-	>=media-libs/gst-plugins-bad-1.2.3:1.0[${MULTILIB_USEDEP}]
+	>=media-libs/gstreamer-1.6:1.0[${MULTILIB_USEDEP}]
+	>=media-libs/gst-plugins-base-1.6:1.0[${MULTILIB_USEDEP}]
+	>=media-libs/gst-plugins-bad-1.6:1.0[opengl?,${MULTILIB_USEDEP}]
 	>=x11-libs/libva-1.4.0[drm?,X?,opengl?,wayland?,${MULTILIB_USEDEP}]
 	drm? (
 		>=virtual/libudev-208:=[${MULTILIB_USEDEP}]
@@ -36,7 +37,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.12
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
+	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
