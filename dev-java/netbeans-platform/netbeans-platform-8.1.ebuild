@@ -30,6 +30,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
+# oracle-jdk-bin is needed for now because of javafx which is not packaged separately yet
+# [parseprojectxml] Distilling /var/tmp/portage/dev-java/netbeans-platform-9999_p20151108/work/nbbuild/build/public-package-jars/org-netbeans-libs-javafx.jar from [/var/tmp/portage/dev-java/netbeans-platform-9999_p20151108/work/nbbuild/netbeans/platform/modules/org-netbeans-libs-javafx.jar, /usr/lib64/icedtea8/jre/lib/ext/jfxrt.jar]
+# [parseprojectxml] Classpath entry /usr/lib64/icedtea8/jre/lib/ext/jfxrt.jar does not exist; skipping
+#  [nbmerge] Failed to build target: all-api.htmlui
 CDEPEND="dev-java/hamcrest-core:1.3
 	dev-java/javahelp:0
 	>=dev-java/jna-3.4:0
@@ -38,13 +42,7 @@ CDEPEND="dev-java/hamcrest-core:1.3
 	dev-java/osgi-compendium:0
 	dev-java/swing-layout:1[source]
 	dev-java/testng:0"
-# oracle-jdk-bin is needed because other jdks do not contain file jre/lib/ext/jfxrt.jar
-# the error:
-#  [parseprojectxml] Distilling /var/tmp/portage/dev-java/netbeans-platform-9999_p20140922/work/nbbuild/build/public-package-jars/org-netbeans-libs-javafx.jar from [/var/tmp/portage/dev-java/netbeans-platform-9999_p20140922/work/nbbuild/netbeans/platform/modules/org-netbeans-libs-javafx.jar, /opt/icedtea-bin-7.2.4.7/jre/lib/ext/jfxrt.jar]
-#  [parseprojectxml] Classpath entry /opt/icedtea-bin-7.2.4.7/jre/lib/ext/jfxrt.jar does not exist; skipping
-#  [nbmerge] Failed to build target: all-api.html4j
-
-DEPEND="dev-java/oracle-jdk-bin:1.7
+DEPEND="dev-java/oracle-jdk-bin:1.8[javafx]
 	app-arch/unzip
 	${CDEPEND}"
 RDEPEND=">=virtual/jdk-1.7
@@ -57,7 +55,7 @@ EANT_BUILD_TARGET="rebuild-cluster"
 EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.platform -Dext.binaries.downloaded=true -Djava.awt.headless=true -Dpermit.jdk8.builds=true"
 EANT_FILTER_COMPILER="ecj-3.3 ecj-3.4 ecj-3.5 ecj-3.6 ecj-3.7"
 JAVA_PKG_BSFIX="off"
-JAVA_PKG_WANT_BUILD_VM="oracle-jdk-bin-1.7"
+JAVA_PKG_WANT_BUILD_VM="oracle-jdk-bin-1.8"
 JAVA_PKG_WANT_SOURCE="1.7"
 JAVA_PKG_WANT_TARGET="1.7"
 
