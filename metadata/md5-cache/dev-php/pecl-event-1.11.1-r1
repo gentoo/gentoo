@@ -4,11 +4,11 @@ DESCRIPTION=PHP wrapper for libevent2
 EAPI=5
 HOMEPAGE=http://pecl.php.net/event
 IUSE=debug +extra +ssl threads +sockets examples php_targets_php5-4 php_targets_php5-5 php_targets_php5-6
-KEYWORDS=amd64 ~ia64 x86
+KEYWORDS=amd64 ia64 x86
 LICENSE=PHP-3
 RDEPEND=>=dev-libs/libevent-2.0.2 !dev-php/pecl-libevent sockets? ( dev-lang/php:*[sockets] ) php_targets_php5-4? ( dev-lang/php:5.4 ) php_targets_php5-5? ( dev-lang/php:5.5 ) php_targets_php5-6? ( dev-lang/php:5.6 )
 REQUIRED_USE=|| ( php_targets_php5-4 php_targets_php5-5 php_targets_php5-6 )
 SLOT=0
 SRC_URI=http://pecl.php.net/get/event-1.11.1.tgz
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	confutils	18995f74ac4ffafb7ad853dfe133f209	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	php-ext-pecl-r2	738a8315cc641f854af2e615c618e70b	php-ext-source-r2	74e9367fec569b8fe0935b103506d117	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=4d26008710deb9a5919a5e36e2a9c180
+_md5_=b0e1e21ac4372f92a92f7ee0f8f3089e
