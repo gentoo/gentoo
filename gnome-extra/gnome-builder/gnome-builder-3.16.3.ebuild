@@ -49,7 +49,7 @@ src_configure() {
 	gnome2_src_configure \
 		--disable-static \
 		$(use_enable introspection) \
-		PYTHON3_CONFIG=${PYTHON}-config
+		PYTHON3_CONFIG="$(python_get_PYTHON_CONFIG)"
 }
 
 src_test() {
