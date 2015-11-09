@@ -3,15 +3,15 @@
 # $Id$
 
 EAPI=5
-inherit eutils git-r3 toolchain-funcs
+inherit eutils toolchain-funcs
 
 DESCRIPTION="a generic, highly customizable, and efficient menu for the X Window System"
 HOMEPAGE="http://tools.suckless.org/dmenu/"
-EGIT_REPO_URI="git://git.suckless.org/dmenu"
+SRC_URI="http://dl.suckless.org/tools/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE="xinerama"
 
 RDEPEND="
@@ -33,7 +33,7 @@ src_prepare() {
 		-e '/^	echo/d' \
 		Makefile || die
 
-	epatch "${FILESDIR}"/${P}-gentoo.patch
+	epatch "${FILESDIR}"/${PN}-4.6-gentoo.patch
 
 	epatch_user
 }
