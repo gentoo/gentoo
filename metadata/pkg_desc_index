@@ -7911,7 +7911,7 @@ dev-python/timelib 0.2.4-r1: parse english textual date descriptions
 dev-python/tinycss 0.3: A complete yet simple CSS parser for Python
 dev-python/tlslite 0.4.3-r1 0.4.8: TLS Lite is a free python library that implements SSL 3.0 and TLS 1.0/1.1
 dev-python/tmdb3 0.6.17 0.7.2: TheMovieDB.org APIv3 interface
-dev-python/toolz 0.7.0 0.7.1 0.7.2: List processing tools and functional utilities
+dev-python/toolz 0.7.0 0.7.1 0.7.2 0.7.4: List processing tools and functional utilities
 dev-python/torment 2.1.0 3.0.0 3.0.1: A Study in Fixture Based Testing Frameworking
 dev-python/tox 1.8.0 1.8.1 1.9.0 1.9.2: virtualenv-based automation of test activities
 dev-python/tpg 3.2.2-r1: Toy Parser Generator for Python
