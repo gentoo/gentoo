@@ -12052,7 +12052,7 @@ media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplaye
 media-libs/gnonlin 0.10.9 0.10.17 1.2.1 1.4.0: Gnonlin is a set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/grilo 0.2.11 0.2.12: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.1 1.0.2: Thin GObject wrapper around the libcanberra sound event library
-media-libs/gst-plugins-bad 0.10.23-r2 1.2.4-r1 1.4.5 1.6.0 1.6.1: Less plugins for GStreamer
+media-libs/gst-plugins-bad 0.10.23-r2 1.2.4-r1 1.4.5 1.6.0 1.6.1 1.6.1-r1: Less plugins for GStreamer
 media-libs/gst-plugins-base 0.10.36-r1 0.10.36-r2 1.2.4-r1 1.4.5 1.6.0 1.6.1: Basepack of plugins for gstreamer
 media-libs/gst-plugins-good 0.10.31 0.10.31-r1 1.2.3 1.2.4-r1 1.4.5 1.6.0 1.6.1: Basepack of plugins for GStreamer
 media-libs/gst-plugins-ugly 0.10.19-r1 1.2.4-r1 1.4.5 1.6.0 1.6.1: Basepack of plugins for gstreamer
@@ -12411,6 +12411,7 @@ media-plugins/gst-plugins-assrender 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0 1.6.1: GStre
 media-plugins/gst-plugins-cdio 0.10.19-r1 1.2.4-r1 1.4.5 1.6.0 1.6.1: plugin for gstreamer
 media-plugins/gst-plugins-cdparanoia 0.10.36-r1 1.2.4-r1 1.4.5 1.6.0 1.6.1: plugin for gstreamer
 media-plugins/gst-plugins-dash 1.2.4-r1 1.4.5 1.6.0 1.6.1: MPEG-DASH plugin
+media-plugins/gst-plugins-dtls 1.6.1: DTLS plugin for GStreamer.
 media-plugins/gst-plugins-dts 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0 1.6.1: GStreamer plugin for MPEG-1/2 video encoding
 media-plugins/gst-plugins-dv 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0 1.6.1: GStreamer plugin to demux and decode DV
 media-plugins/gst-plugins-dvb 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0 1.6.1: plugin for gstreamer
