@@ -22,7 +22,7 @@ app-accessibility/freetts 1.2.1-r2 1.2.2: A speech synthesis system written enti
 app-accessibility/julius 4.2.2: Large Vocabulary Continuous Speech Recognition Engine
 app-accessibility/mbrola 3.0.1h-r6: Speech synthesizer based on the concatenation of diphones. Includes sample voices
 app-accessibility/nfbtrans 7.74 7.74-r1: braille translator from the National Federation of the Blind
-app-accessibility/orca 3.16.2 3.16.3: Extensible screen reader that provides access to the desktop
+app-accessibility/orca 3.16.2 3.16.3 3.18.2: Extensible screen reader that provides access to the desktop
 app-accessibility/perlbox-voice 0.09-r2: A voice enabled application to bring your desktop under your command
 app-accessibility/pidgin-festival 2.4: A plugin for pidgin which enables text-to-speech output of conversations using festival
 app-accessibility/pocketsphinx 0.8: Large open source vocabulary, speaker-independent continuous speech recognition engine
@@ -2412,7 +2412,7 @@ app-text/silvercity 0.9.7 0.9.7-r1: A lexical analyser for many languages
 app-text/skribe 1.2l: Skribe is a text processor for technical documents written in scheme
 app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a large number of languages
 app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellchecking in mails, etc.)
-app-text/stardict 3.0.6: A international dictionary supporting fuzzy and glob style matching
+app-text/stardict 3.0.6 3.0.6-r1: A international dictionary supporting fuzzy and glob style matching
 app-text/sword 1.6.2 1.7.2 1.7.3: Library for Bible reading software
 app-text/sword-modules 1: A collection of modules for the SWORD project
 app-text/t1utils 1.39: Type 1 Font utilities
@@ -9799,7 +9799,7 @@ games-arcade/funnyboat 1.5-r1: A side scrolling shooter game starring a steamboa
 games-arcade/gav 0.9.0: GPL Arcade Volleyball
 games-arcade/gish-demo 1.6: Play as an amorphous ball of tar that rolls and squishes around
 games-arcade/gnake 0.94b: An ncurses-based Nibbles clone
-games-arcade/gnome-nibbles 3.14.1 3.16.1: Nibbles clone for Gnome
+games-arcade/gnome-nibbles 3.16.1 3.18.2: Nibbles clone for Gnome
 games-arcade/gnome-robots 3.16.1 3.18.1: Avoid the robots and make them crash into each other
 games-arcade/gnujump 1.0.8: Xjump clone with added features
 games-arcade/grande-KXL 0.6: ZANAC type game
@@ -9913,7 +9913,7 @@ games-board/gnome-chess 3.14.3 3.16.2: Play the classic two-player boardgame of 
 games-board/gnome-hearts 0.3.1-r1: A clone of classic hearts card game
 games-board/gnome-mahjongg 3.16.1 3.16.2: Disassemble a pile of tiles by removing matching pairs
 games-board/gnome-mastermind 0.3.1-r1: A little Mastermind game for GNOME
-games-board/gnome-mines 3.14.1 3.14.2 3.16.1: Clear hidden mines from a minefield
+games-board/gnome-mines 3.16.1 3.18.2: Clear hidden mines from a minefield
 games-board/gnono 1.9.1: A rewrite for GNOME of the Windows card game WUNO
 games-board/gnubg 1.04.000 1.05.000: GNU BackGammon
 games-board/gnuchess 6.2.1 6.2.2-r1: Console based chess interface
@@ -10365,7 +10365,7 @@ games-puzzle/sgt-puzzles 9861 99999999: Simon Tatham's Portable Puzzle Collectio
 games-puzzle/shaaft 0.5.0: A falling block game similar to Blockout
 games-puzzle/skoosh 2.5.0-r1: Sliding tile puzzle for Gnome 2
 games-puzzle/splice 20121120: An experimental and artistic puzzler set in a microbial world
-games-puzzle/swell-foop 3.14.0 3.16.1 3.16.2: Clear the screen by removing groups of colored and shaped tiles
+games-puzzle/swell-foop 3.16.2 3.18.1: Clear the screen by removing groups of colored and shaped tiles
 games-puzzle/tanglet 1.2.1 1.3.1: A single player word finding game based on Boggle
 games-puzzle/tetrinet 0.11: console based tetrinet inc. standalone server
 games-puzzle/textmaze 1.2: An ncurses-based maze solving game written in Perl
@@ -10671,7 +10671,7 @@ gnome-extra/gdesklets-core 0.36.3-r4: GNOME Desktop Applets: Core library for de
 gnome-extra/gnome-activity-journal 0.8.0-r4 0.8.0-r5: Tool for easily browsing and finding files on your computer
 gnome-extra/gnome-boxes 3.14.3.1 3.16.2: Simple GNOME 3 application to access remote or virtual systems
 gnome-extra/gnome-builder 3.16.3: Builder attempts to be an IDE for writing software for GNOME
-gnome-extra/gnome-calculator 3.14.1 3.16.1 3.16.2: A calculator application for GNOME
+gnome-extra/gnome-calculator 3.16.2 3.18.2: A calculator application for GNOME
 gnome-extra/gnome-calendar 3.16.2: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-characters 3.16.2: Unicode character map viewer and library
 gnome-extra/gnome-clocks 3.16.1 3.16.2: Clocks application for GNOME
@@ -10693,7 +10693,7 @@ gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extensions 3.14.4 3.16.1 3.16.2: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons 26 28: Shows legacy tray icons on top
 gnome-extra/gnome-shell-frippery 0.9.0 0.10.2 0.10.3: Unofficial extension pack providing GNOME 2-like features for GNOME 3
-gnome-extra/gnome-system-monitor 3.14.1 3.16.0: The Gnome System Monitor
+gnome-extra/gnome-system-monitor 3.16.0 3.18.2: The Gnome System Monitor
 gnome-extra/gnome-tweak-tool 3.14.2 3.14.3 3.16.2: Tool to customize GNOME 3 options
 gnome-extra/gnome-user-docs 3.14.2 3.16.1: GNOME end user documentation
 gnome-extra/gnome-user-share 3.14.2: Personal file sharing for the GNOME desktop
@@ -10702,7 +10702,7 @@ gnome-extra/gnome-weather 3.14.1 3.16.2.1: A weather application for GNOME
 gnome-extra/gnome-web-photo 0.10.6: A tool to generate images and thumbnails from HTML files
 gnome-extra/gpointing-device-settings 1.5.1-r3: A GTK+ based configuration utility for the synaptics driver
 gnome-extra/gtkhtml 4.8.5: Lightweight HTML rendering/printing/editing engine
-gnome-extra/gucharmap 3.0.1-r200 3.12.1 3.14.2 3.16.2: Unicode character map viewer and library
+gnome-extra/gucharmap 3.0.1-r200 3.12.1 3.14.2 3.16.2 3.18.2: Unicode character map viewer and library
 gnome-extra/libgda 5.2.2 5.2.4: GNOME database access library
 gnome-extra/libgsf 1.14.33 1.14.34: The GNOME Structured File Library
 gnome-extra/mousetweaks 3.12.0: Mouse accessibility enhancements for the GNOME desktop
@@ -15373,7 +15373,7 @@ sci-geosciences/gebabbel 0.4: QT-Frontend to load and convert gps tracks with gp
 sci-geosciences/geocode-glib 3.14.0 3.16.2: GLib geocoding library that uses the Yahoo! Place Finder service
 sci-geosciences/gmapcatcher 0.8.0.4: An offline viewer for different map providers
 sci-geosciences/gmt 4.5.6 4.5.8 4.5.9: Powerful map generator
-sci-geosciences/gnome-maps 3.14.2 3.16.2: A map application for GNOME
+sci-geosciences/gnome-maps 3.16.2 3.18.2: A map application for GNOME
 sci-geosciences/googleearth 7.1.2.2041: A 3D interface to the planet
 sci-geosciences/gpsbabel 1.4.3 1.4.4: GPS waypoints, tracks and routes converter
 sci-geosciences/gpscorrelate 1.6.1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
