@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=tk? ( dev-lang/tk:0 ) virtual/pkgconfig
+DESCRIPTION=Dell Inspiron and Latitude utilities
+EAPI=5
+HOMEPAGE=https://launchpad.net/i8kutils
+IUSE=examples tk
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=tk? ( dev-lang/tk:0 ) sys-power/acpi
+SLOT=0
+SRC_URI=https://launchpad.net/i8kutils/trunk/1.42/+download/i8kutils_1.42.tar.xz
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=3a15935f9559b1568cd58d99b051793f

@@ -335,7 +335,7 @@ app-arch/zpaq 6.41 6.49 6.53 7.04: Journaling incremental deduplicating archivin
 app-arch/zpaq-extras 2 3: A set of additional compression profiles for app-arch/zpaq
 app-arch/zpipe 2.01-r1: Pipe compressor/decompressor for ZPAQ
 app-backup/amanda 3.3.3 3.3.3-r1 3.3.5 3.3.7: The Advanced Maryland Automatic Network Disk Archiver
-app-backup/backintime 1.0.24-r2 1.0.36-r2 1.0.40 1.1.4: A simple backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4
+app-backup/backintime 1.0.24-r2 1.0.36-r2 1.0.40 1.1.4 1.1.8: A simple backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4
 app-backup/backup-manager 0.7.5 0.7.10.1-r2: Backup Manager is a command line backup tool for GNU/Linux
 app-backup/backupninja 1.0.1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.0-r1: A high-performance system for backing up computers to a server's disk
@@ -1563,7 +1563,7 @@ app-laptop/dispad 0.3 0.3.1: Daemon to disable trackpads while typing
 app-laptop/easy-slow-down-manager 0.3: provides Linux users with functionality similar to Samsung Easy Speed Up Manager
 app-laptop/hdaps-gl 0.0.5: OpenGL visualization for HDAPS data
 app-laptop/hdapsd 20090401-r2 20141203: IBM ThinkPad Hard Drive Active Protection System (HDAPS) daemon
-app-laptop/i8kutils 1.33-r1: Dell Inspiron and Latitude utilities
+app-laptop/i8kutils 1.33-r1 1.42: Dell Inspiron and Latitude utilities
 app-laptop/ibam 0.5.2-r3: Intelligent Battery Monitor
 app-laptop/laptop-mode-tools 1.66 1.67 1.68 1.68.1: Linux kernel laptop_mode user-space utilities
 app-laptop/lphdisk 0.9.1-r2: utility for preparing a hibernation partition for APM Suspend-To-Disk
@@ -9798,7 +9798,7 @@ games-arcade/gav 0.9.0: GPL Arcade Volleyball
 games-arcade/gish-demo 1.6: Play as an amorphous ball of tar that rolls and squishes around
 games-arcade/gnake 0.94b: An ncurses-based Nibbles clone
 games-arcade/gnome-nibbles 3.14.1 3.16.1: Nibbles clone for Gnome
-games-arcade/gnome-robots 3.14.2 3.16.1: Avoid the robots and make them crash into each other
+games-arcade/gnome-robots 3.16.1 3.18.1: Avoid the robots and make them crash into each other
 games-arcade/gnujump 1.0.8: Xjump clone with added features
 games-arcade/grande-KXL 0.6: ZANAC type game
 games-arcade/gunocide2ex 1.0: fast-paced 2D shoot'em'up
@@ -9901,7 +9901,7 @@ games-board/cockatrice 20120702: An open-source multiplatform software for playi
 games-board/crafty 24.1: Bob Hyatt's strong chess engine
 games-board/domination 1.1.1.5 1.1.1.6: The well-known board game, written in java
 games-board/eboard 1.1.1-r1: chess interface for POSIX systems
-games-board/four-in-a-row 3.16.2: Make lines of the same color to win
+games-board/four-in-a-row 3.16.2 3.18.2: Make lines of the same color to win
 games-board/freedoko 0.7.13: FreeDoko is a Doppelkopf-game
 games-board/fruit 2.1: UCI-only chess engine
 games-board/gamazons 0.83: A chess/go hybrid
@@ -10309,8 +10309,8 @@ games-puzzle/galaxis 1.8: A UNIX-hosted, curses-based clone of the nifty little 
 games-puzzle/gemdropx 0.9-r1: A puzzle game where it's your job to clear the screen of gems
 games-puzzle/gfifteen 1.0.3: graphical implementation of the sliding puzzle game fifteen
 games-puzzle/glightoff 1.0.0-r1: A simple (but not so easy to solve!) puzzle game
-games-puzzle/gnome-klotski 3.16.1 3.16.2: Slide blocks to solve the puzzle
-games-puzzle/gnome-sudoku 3.14.2 3.16.0: Test your logic skills in this number grid puzzle
+games-puzzle/gnome-klotski 3.16.1 3.16.2 3.18.2: Slide blocks to solve the puzzle
+games-puzzle/gnome-sudoku 3.16.0 3.18.2: Test your logic skills in this number grid puzzle
 games-puzzle/gnome-taquin 3.16.1: Move tiles so that they reach their places
 games-puzzle/gnome-tetravex 3.14.0 3.16.0: Complete the puzzle by matching numbered tiles
 games-puzzle/gnudoku 0.93: A program for creating and solving Su Doku puzzles
@@ -16156,7 +16156,7 @@ sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 3.1.8 4.0.2 4.1.2 4.1.3: GNU awk pattern-matching language
 sys-apps/gentoo-functions 0.7 0.8 0.9 0.10 9999: base functions required by all gentoo systems
 sys-apps/gentoo-systemd-integration 2 4 9999: systemd integration files for Gentoo
-sys-apps/gnome-disk-utility 3.14.0 3.16.2: Disk Utility for GNOME using udisks
+sys-apps/gnome-disk-utility 3.16.2 3.18.2: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
 sys-apps/gptfdisk 0.8.10 1.0.0 1.0.1: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201506081912 3.1.201507041117 3.1.201507191652: Administrative interface for the grsecurity Role Based Access Control system
