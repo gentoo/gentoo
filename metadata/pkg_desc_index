@@ -7312,7 +7312,7 @@ dev-python/os-brick 0.5.0: OpenStack Cinder brick library for managing local vol
 dev-python/os-client-config 1.6.1 1.6.3: OpenStack Client Configuation Library
 dev-python/os-diskconfig-python-novaclient-ext 0.1.1 0.1.1-r1 0.1.2 9999: Disk Config extension for python-novaclient
 dev-python/os-networksv2-python-novaclient-ext 0.21 0.21-r1 0.25: Adds network extension support to python-novaclient
-dev-python/os-testr 0.3.0: OpenStack logging config library provides standardized configuration for all openstack projects.
+dev-python/os-testr 0.3.0: A testr wrapper to provide functionality for OpenStack projects.
 dev-python/os-virtual-interfacesv2-python-novaclient-ext 0.15 0.19: Adds Virtual Interfaces support to python-novaclient
 dev-python/oslo-concurrency 1.8.0 1.8.1 1.8.2 2.5.0: library for running multi-thread, multi-process applications
 dev-python/oslo-config 1.9.3 2.3.0 2.4.0: Oslo Configuration API
