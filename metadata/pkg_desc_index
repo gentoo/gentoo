@@ -9739,7 +9739,7 @@ games-action/solar2 1.10: An open-world, sandbox game set in an infinite abstrac
 games-action/spacearyarya-kxl 1.0.2-r1: A 2D/3D shooting game
 games-action/spacetripper-demo 1: hardcore arcade shoot-em-up
 games-action/super-hexagon 20141027: A minimal action game by Terry Cavanagh, with music by Chipzel
-games-action/supertuxkart 0.8.1 0.9: A kart racing game starring Tux, the linux penguin (TuxKart fork)
+games-action/supertuxkart 0.8.1 0.9 0.9.1: A kart racing game starring Tux, the linux penguin (TuxKart fork)
 games-action/swordandsworcery 1.02: An exploratory action adventure game with an emphasis on audiovisual style
 games-action/teeworlds 0.6.3: Online multi-player platform 2D shooter
 games-action/towbowl-tactics 0.5: Tow Bowl Tactics is a game based on Games Workshop's Blood Bowl
