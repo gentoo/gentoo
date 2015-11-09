@@ -15,7 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="examples graphviz highlight test vim-syntax"
+IUSE="examples graphviz highlight test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -44,15 +44,6 @@ REQUISITES for a list of runtime dependencies.
 "
 
 src_prepare() {
-	if ! use vim-syntax; then
-		sed -i -e '/^install/s/install-vim//' Makefile.in || die
-	else
-		sed -i\
-			-e "/^vimdir/s:@sysconfdir@/vim:${EPREFIX}/usr/share/vim/vimfiles:" \
-			-e 's:/etc/vim::' \
-			Makefile.in || die
-	fi
-
 	# Only needed for prefix - harmless (does nothing) otherwise
 	sed -i -e "s:^CONF_DIR=.*:CONF_DIR='${EPREFIX}/etc/asciidoc':" \
 		"${S}/asciidoc.py" || die
@@ -63,8 +54,6 @@ src_configure() {
 }
 
 src_install() {
-	use vim-syntax && dodir /usr/share/vim/vimfiles
-
 	emake DESTDIR="${D}" install
 
 	python_fix_shebang "${ED}"/usr/bin/*.py
