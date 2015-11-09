@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_PF}"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos"
 IUSE="-bufferevents libressl scrypt seccomp selinux stats systemd tor-hardening transparent-proxy test web"
 
 DEPEND="
@@ -50,7 +50,7 @@ src_configure() {
 	econf \
 		--enable-system-torrc \
 		--enable-asciidoc \
-		--docdir=/usr/share/doc/${PF} \
+		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		$(use_enable stats instrument-downloads) \
 		$(use_enable bufferevents) \
 		$(use_enable scrypt libscrypt) \
