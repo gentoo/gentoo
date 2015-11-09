@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+        <herd>proxy-maintainers</herd>
+        <maintainer>
+                <email>zoltan@sinustrom.info</email>
+                <name>Zoltan Puskas</name>
+                <description>Proxied maintainer. Assign bugs to him.</description>
+        </maintainer>
+        <longdescription>
+               dbaltex is an opensource DocBook to LaTeX publishing software 
+               that originally started as DB2LaTeX clone, but now is more
+               feature rich and easier to use.
+        </longdescription>
+</pkgmetadata>
