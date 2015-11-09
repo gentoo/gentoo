@@ -4,11 +4,11 @@ DESCRIPTION=Epic5 IRC Client
 EAPI=4
 HOMEPAGE=http://epicsol.org/
 IUSE=archive ipv6 perl tcl ruby socks5 valgrind elibc_FreeBSD ruby_targets_ruby20 ruby_targets_ruby21 ruby_targets_ruby22
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=amd64 ~ppc ~x86
 LICENSE=BSD
 RDEPEND=>=dev-libs/openssl-0.9.8e-r3:0 >=sys-libs/ncurses-5.6-r2 virtual/libiconv archive? ( app-arch/libarchive ) perl? ( >=dev-lang/perl-5.8.8-r2 ) tcl? ( dev-lang/tcl:0 ) socks5? ( net-proxy/dante ) ruby? ( ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) )
 REQUIRED_USE=ruby? ( ^^ ( ruby_targets_ruby20 ruby_targets_ruby21 ruby_targets_ruby22 ) ) ruby_targets_ruby20? ( ruby ) ruby_targets_ruby21? ( ruby ) ruby_targets_ruby22? ( ruby )
 SLOT=0
 SRC_URI=ftp://ftp.epicsol.org/pub/epic/EPIC5-PRODUCTION/epic5-1.1.10.tar.bz2
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	java-utils-2	a96633177f44ee992b3fce360d1c4f16	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	ruby-ng	79b6c8cabcf1e455baae2f2168e8e370	ruby-utils	97c910cb6b087c64260df641a9b3de0c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=00dc38e821f88210c46d846ba4271165
+_md5_=453e4abce8c01c9a174082c5305be5be
