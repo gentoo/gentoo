@@ -11,7 +11,7 @@ SRC_URI="https://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${MY_P}.tar.gz"
 
 LICENSE="IPAfont"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 S="${WORKDIR}/${MY_P}"
