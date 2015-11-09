@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils
+inherit eutils toolchain-funcs
 
 DESCRIPTION="A simple console menu program"
 HOMEPAGE="http://joeyh.name/code/pdmenu/"
@@ -32,9 +32,13 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
+	CC=$(tc-getCC) econf \
 		$(use_with gpm) \
 		$(use_enable nls)
+}
+
+src_compile() {
+	emake CC=$(tc-getCC) || die
 }
 
 src_install() {
