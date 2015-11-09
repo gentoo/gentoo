@@ -31,6 +31,14 @@
 #--- END OF EXAMPLES ---
 
 # Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
+# GNOME 3.18 mask (#561326)
+>=games-puzzle/gnome-sudoku-3.18
+>=games-arcade/gnome-robots-3.18
+>=games-puzzle/gnome-klotski-3.18
+>=sys-apps/gnome-disk-utility-3.18
+>=games-board/four-in-a-row-3.18
+
+# Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
 # Not properly installed, dead for ages, upstream
 # ask people to use Zed Attack Proxy Project instead
 # Removal in a month. Bug #185919
