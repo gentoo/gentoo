@@ -26,12 +26,19 @@ DEPEND="
 	test? (
 		dev-python/virtualenv[${PYTHON_USEDEP}]
 		dev-python/process-tests[${PYTHON_USEDEP}]
-		dev-python/pytest-cache[${PYTHON_USEDEP}]
+		|| (
+			>=dev-python/pytest-2.8.0[${PYTHON_USEDEP}]
+			dev-python/pytest-cache[${PYTHON_USEDEP}]
+		)
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/pytest-capturelog[${PYTHON_USEDEP}]
 		)"
 
+# https://github.com/pytest-dev/pytest-cov/issues/99
+RESTRICT=test
+
 python_test() {
 	PYTHONPATH="${S}/tests:${BUILD_DIR}/lib" \
-		py.test -p pytest_cov -vvx || die
+		PYTEST_PLUGINS=pytest_cov \
+		py.test -v -v -x || die
 }
