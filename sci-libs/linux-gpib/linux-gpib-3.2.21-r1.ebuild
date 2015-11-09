@@ -42,6 +42,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.16-perl.patch
 	"${FILESDIR}"/${PN}-3.2.16-reallydie.patch
 	"${WORKDIR}"/${PN}-3.2.21-ctrl-c.patch
+	"${FILESDIR}"/${PN}-3.2.21-build2.patch
 )
 
 pkg_setup () {
