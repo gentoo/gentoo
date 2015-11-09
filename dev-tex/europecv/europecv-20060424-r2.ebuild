@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=5
 inherit latex-package
 
 DESCRIPTION="LaTeX class for the standard model for curricula vitae as recommended by the European Commission"
@@ -16,7 +17,7 @@ KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86
 
 IUSE="examples"
 
-RDEPEND="|| ( >=dev-texlive/texlive-latexextra-2008 dev-tex/latex-unicode )"
+RDEPEND=">=dev-texlive/texlive-latexextra-2008"
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 S="${WORKDIR}/${PN}"
@@ -32,7 +33,7 @@ src_install() {
 	doins ecv* europecv.cls EuropeFlag* europasslogo*
 
 	insinto /usr/share/doc/${PF}
-	doins -r europecv.pdf europecv.tex
+	doins europecv.pdf europecv.tex
 	dosym /usr/share/doc/${PF}/europecv.pdf	${TEXMF}/doc/latex/${PN}/europecv.pdf
 	use examples && doins -r examples templates
 }

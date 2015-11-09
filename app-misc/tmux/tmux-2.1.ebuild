@@ -17,7 +17,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 IUSE="debug selinux vim-syntax"
 
 CDEPEND="
-	=dev-libs/libevent-2.0*
+	|| ( =dev-libs/libevent-2.0*
+		 >=dev-libs/libevent-2.1.5-r4 )
 	!sys-apps/utempter
 	sys-libs/ncurses"
 DEPEND="${CDEPEND}
@@ -30,7 +31,7 @@ RDEPEND="${CDEPEND}
 
 DOCS=( CHANGES FAQ README TODO )
 
-PATCHES=( "${FILESDIR}"/${P}-flags.patch )
+PATCHES=( "${FILESDIR}"/${PN}-2.0-flags.patch )
 
 pkg_setup() {
 	if has_version "<app-misc/tmux-1.9a"; then
@@ -53,9 +54,6 @@ src_prepare() {
 
 	# regenerate aclocal.m4 to support earlier automake versions
 	rm aclocal.m4 || die
-
-	# remove generated files
-	rm -r compat/.{dirstamp,deps} || die
 
 	autotools-utils_src_prepare
 }
