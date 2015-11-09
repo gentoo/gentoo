@@ -28,32 +28,25 @@ fi
 
 MOZCONFIG_OPTIONAL_WIFI=1
 MOZCONFIG_OPTIONAL_JIT="enabled"
-inherit check-reqs flag-o-matic toolchain-funcs eutils mozconfig-v6.39 multilib pax-utils fdo-mime autotools mozextension nsplugins mozlinguas
+inherit check-reqs flag-o-matic toolchain-funcs eutils mozconfig-v6.41 multilib pax-utils fdo-mime autotools mozextension nsplugins mozlinguas
 
-PATCHFF="firefox-38.0-patches-04"
+PATCHFF="firefox-42.0-patches-02"
 PATCH="${PN}-2.33-patches-01"
 EMVER="1.8.2"
 
 DESCRIPTION="Seamonkey Web Browser"
 HOMEPAGE="http://www.seamonkey-project.org"
 
-if [[ ${PV} == *_pre* ]] ; then
-	# pre-releases. No need for arch teams to change KEYWORDS here.
-
-	KEYWORDS=""
-else
-	# This is where arch teams should change the KEYWORDS.
-
-	KEYWORDS="~alpha amd64 ~arm ~ppc ~ppc64 x86"
-fi
+[[ ${PV} != *_pre* ]] && \
+KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="+chatzilla +crypt +gmp-autoupdate +ipc minimal pulseaudio +roaming selinux test"
 
 SRC_URI="${SRC_URI}
-	${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source.tar.bz2 -> ${P}.source.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/${PATCHFF}.tar.xz
+	${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source.tar.xz -> ${P}.source.tar.xz
+	https://dev.gentoo.org/~axs/mozilla/patchsets/${PATCHFF}.tar.xz
 	https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/${PATCH}.tar.xz
 	crypt? ( https://www.enigmail.net/download/source/enigmail-${EMVER}.tar.gz )"
 
@@ -78,11 +71,7 @@ DEPEND="${RDEPEND}
 	x86? ( ${ASM_DEPEND}
 		virtual/opengl )"
 
-if [[ ${PV} == *beta* ]] ; then
-	S="${WORKDIR}/comm-beta"
-else
-	S="${WORKDIR}/comm-release"
-fi
+S="${WORKDIR}/${PN}-${MOZ_PV}"
 
 BUILD_OBJ_DIR="${S}/seamonk"
 
@@ -115,6 +104,7 @@ src_unpack() {
 
 src_prepare() {
 	# Apply our patches
+	EPATCH_EXCLUDE="2001_ldap_respect_cflags.patch" \
 	EPATCH_SUFFIX="patch" \
 	EPATCH_FORCE="yes" \
 	epatch "${WORKDIR}/seamonkey"
