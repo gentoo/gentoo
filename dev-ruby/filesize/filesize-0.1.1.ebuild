@@ -3,15 +3,17 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22"
 
-RUBY_FAKEGEM_RECIPE_TEST="rspec"
+RUBY_FAKEGEM_RECIPE_TEST="rspec3"
+
+RUBY_FAKEGEM_RECIPE_DOC="rdoc"
+RUBY_FAKEGEM_EXTRADOC="README.md"
 
 inherit ruby-fakegem
 
 DESCRIPTION="small ruby class for handling filesizes with both the SI and binary prefixes"
 HOMEPAGE="https://github.com/dominikh/filesize"
-SRC_URI="mirror://rubygems/${P}.gem"
 
 LICENSE="MIT"
 SLOT="${PV}"
