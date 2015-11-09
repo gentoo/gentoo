@@ -2215,6 +2215,7 @@ app-text/cuneiform 1.1.0-r1: An enterprise quality optical character recognition
 app-text/cutemarked 0.11.1: Qt5 markdown editor
 app-text/cwtext 0.96: Text to Morse Code converter
 app-text/dbacl 1.14: Digramic Bayesian text classifier
+app-text/dblatex 0.3.7: Transform DocBook using TeX macros
 app-text/ddir 0_p20100323: A perl implementation of the tree(1) program
 app-text/delta 20060803: Heuristically minimizes interesting files
 app-text/dictd 1.12.1-r1: Dictionary Client/Server for the DICT protocol
