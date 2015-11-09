@@ -18,7 +18,10 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 RDEPEND="
-	dev-python/pytest-cache[${PYTHON_USEDEP}]
+	|| (
+		dev-python/pytest-cache[${PYTHON_USEDEP}]
+		>=dev-python/pytest-2.8.0[${PYTHON_USEDEP}]
+	)
 	dev-python/psutil[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
