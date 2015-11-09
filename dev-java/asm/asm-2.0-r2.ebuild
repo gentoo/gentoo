@@ -14,7 +14,8 @@ SLOT="2"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris"
 IUSE="doc source"
 
-CDEPEND="dev-java/ant-core:0"
+CDEPEND="dev-java/ant-core:0
+	dev-java/ant-owanttask:0"
 
 RDEPEND="
 	${CDEPEND}
