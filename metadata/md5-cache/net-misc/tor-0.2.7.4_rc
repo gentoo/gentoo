@@ -4,10 +4,10 @@ DESCRIPTION=Anonymizing overlay network for TCP
 EAPI=5
 HOMEPAGE=http://www.torproject.org/
 IUSE=-bufferevents libressl scrypt seccomp selinux stats systemd tor-hardening transparent-proxy test web
-KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos
 LICENSE=BSD GPL-2
 RDEPEND=!libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:= ) sys-libs/zlib dev-libs/libevent bufferevents? ( dev-libs/libevent[ssl] ) scrypt? ( app-crypt/libscrypt ) seccomp? ( sys-libs/libseccomp ) systemd? ( sys-apps/systemd ) selinux? ( sec-policy/selinux-tor )
 SLOT=0
 SRC_URI=https://www.torproject.org/dist/tor-0.2.7.4-rc.tar.gz https://archive.torproject.org/tor-package-archive/tor-0.2.7.4-rc.tar.gz
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=9360c82557b7171aa46de6f2897f02e7
+_md5_=080f384f91d4cd4014f349afb27e3117
