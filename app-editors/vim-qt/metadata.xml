@@ -3,6 +3,7 @@
 <pkgmetadata>
   <herd>qt</herd>
   <use>
+    <flag name="lto">Enable configure workaround for -flto</flag>
     <flag name="luajit">Use <pkg>dev-lang/luajit</pkg> instead of <pkg>dev-lang/lua</pkg></flag>
     <flag name="racket">Enable support for Scheme using <pkg>dev-lang/racket</pkg></flag>
   </use>
