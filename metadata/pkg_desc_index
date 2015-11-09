@@ -1815,7 +1815,7 @@ app-misc/ltunify 0.2-r1: Tool for working with Logitech Unifying receivers and d
 app-misc/lxsplit 0.2.4: Command-line file splitter/joiner for Linux
 app-misc/magneto-loader 254: Official Sabayon Linux Entropy Notification Applet Loader
 app-misc/matew 1.9: Make Album The Easy Way (Matew) is an HTML/CSS generator for static image albums
-app-misc/mc 4.8.11 4.8.12 4.8.13 4.8.13-r1 4.8.14 9999: GNU Midnight Commander is a text based file manager
+app-misc/mc 4.8.11 4.8.12 4.8.13 4.8.13-r1 4.8.14 4.8.15 9999: GNU Midnight Commander is a text based file manager
 app-misc/media-player-info 21-r1 22: A repository of data files describing media player capabilities
 app-misc/mediacrush-cli 1.1.2 9999: A bash script for working with MediaCrush from a shell
 app-misc/mencal 2.3: A calendar that can be used to track menstruation (or other) cycles conveniently
@@ -1895,7 +1895,7 @@ app-misc/tdl 1.5.2-r2: Command line To Do List manager
 app-misc/terminal-colors 2.0 2.1 2.2: A tool to display color charts for 8, 16, 88, and 256 color terminals
 app-misc/timestamp 1.1: A text filtering pipe that marks each line with a timestamp
 app-misc/tkpasman 2.2b: A useful and reliable personal password manager, written in Tcl/Tk
-app-misc/tmux 1.9a-r2 2.0-r3 2.0-r4 9999: Terminal multiplexer
+app-misc/tmux 1.9a-r2 2.0-r4 2.1 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 2.1.0 2.2.1 2.2.1-r1 9999: CPU, RAM memory, and load monitor for use with tmux
 app-misc/toilet 0.3: The Other Implementations letters. Figlet replacement
 app-misc/tomboy 1.14.1: Desktop note-taking application
@@ -3718,7 +3718,7 @@ dev-java/apple-java-extensions-bin 1.5 1.5-r1: A pluggable jar of stub classes r
 dev-java/apple-jdk-bin 1.6.0: Links to Apple's version of Sun's J2SE Development Kit
 dev-java/apt-mirror 1.0-r1: Annotation processing apt mirror API introduced in J2SE 5.0
 dev-java/args4j 2.32: args4j is a Java command line arguments parser
-dev-java/asm 2.0-r1 2.2.3-r1 3.3.1 4.0 5.0.3 5.0.4: Bytecode manipulation framework for Java
+dev-java/asm 2.0-r1 2.0-r2 2.2.3-r1 2.2.3-r2 3.3.1 3.3.1-r1 4.0 4.0-r1 5.0.3 5.0.4: Bytecode manipulation framework for Java
 dev-java/aspectj 1.7.3-r1 1.7.4: A seamless aspect-oriented extension to the Java programming language
 dev-java/avalon-framework 4.1.5-r1 4.1.5-r2 4.2.0-r1 4.2.0-r2: Avalon Framework
 dev-java/avalon-logkit 1.2.2-r1 2.1-r5 2.1-r6 2.1-r7 2.1-r8: Easy-to-use Java logging toolkit
@@ -9067,7 +9067,7 @@ dev-tex/dvi2tty 5.3.4: Preview dvi-files on text-only devices
 dev-tex/dvipost 1.1-r2: post processor for dvi files
 dev-tex/ellipsis 1.6: Simple package that fixes the way LaTeX centers ellipses
 dev-tex/envlab 1.2-r1: A LaTeX module to format envelopes
-dev-tex/europecv 20060424-r1: LaTeX class for the standard model for curricula vitae as recommended by the European Commission
+dev-tex/europecv 20060424-r2: LaTeX class for the standard model for curricula vitae as recommended by the European Commission
 dev-tex/feynmf 1.08-r3 1.08-r4: Combined LaTeX/Metafont package for drawing of Feynman diagrams
 dev-tex/flabels 1.0: Macros for typesetting pretty lables (optionally colored) for the back of files or binders
 dev-tex/floatflt 1.31a: LaTeX package used to warp text around figures
@@ -11524,6 +11524,7 @@ media-fonts/bitstream-cyberbit 2.0: Cyberbit Unicode (including CJK) font
 media-fonts/cantarell 0.0.16 0.0.17.2 0.0.18: Default fontset for GNOME Shell
 media-fonts/cardo 1.04: Unicode font for classicists, medievalists and linguists
 media-fonts/cheapskatefonts 1.0: Dustismo's decorative font collection
+media-fonts/clearsans 1.00: OpenType font optimized for readability on small screens
 media-fonts/cm-unicode 0.7.0: Computer Modern Unicode fonts
 media-fonts/comic-neue 2.2: Typographically savvy casual script typeface
 media-fonts/corefonts 1-r7: Microsoft's TrueType core fonts
@@ -16521,7 +16522,7 @@ sys-cluster/cman 3.1.5 3.1.5-r1 3.2.0: Cluster Manager
 sys-cluster/cman-lib 2.03.09 2.03.09-r1: A library for cluster management common to the various pieces of Cluster Suite
 sys-cluster/corosync 1.3.0 1.3.5 1.4.7 2.3.3 2.3.4-r1: OSI Certified implementation of a complete cluster engine
 sys-cluster/crmsh 2.1.1: Pacemaker command line interface for management and configuration
-sys-cluster/csync2 1.34-r2 2.0: Cluster synchronization tool
+sys-cluster/csync2 2.0: Cluster synchronization tool
 sys-cluster/dlm 2.03.09 2.03.11: General-purpose Distributed Lock Manager
 sys-cluster/dlm-lib 2.03.09 2.03.11: General-purpose Distributed Lock Manager
 sys-cluster/drbd 8.0.16 8.3.7 8.3.8.1 8.3.8.1-r1 8.3.10 8.3.11-r1 8.3.12 8.3.13 8.3.15 8.4.0 8.4.2 8.4.3: mirror/replicate block-devices across a network-connection
