@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/irda/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~sh ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~sh ~x86"
 IUSE=""
 
 RDEPEND="

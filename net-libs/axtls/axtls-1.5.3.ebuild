@@ -41,7 +41,7 @@ S="${WORKDIR}/${PN}-code"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm hppa ~mips ~ppc ppc64 ~s390 ~x86"
+KEYWORDS="amd64 ~arm hppa ~mips ~ppc ppc64 ~s390 ~x86"
 
 IUSE="httpd cgi-lua cgi-php static static-libs doc"
 

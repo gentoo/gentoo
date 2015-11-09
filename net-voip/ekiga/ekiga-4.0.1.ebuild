@@ -16,7 +16,7 @@ HOMEPAGE="http://www.ekiga.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="avahi dbus debug doc eds gconf gnome gstreamer h323 kde kontact ldap
 libnotify cpu_flags_x86_mmx nls pulseaudio +shm static v4l xcap xv"
 

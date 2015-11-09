@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/mediainfo/${PN}_${PV}.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="curl doc mms static-libs"
 
 RDEPEND="sys-libs/zlib
