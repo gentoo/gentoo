@@ -8,7 +8,7 @@
 	<longdescription lang="en">
 	</longdescription>
 	<upstream>
-		<remote-id type="pypi">oslo.log</remote-id>
-		<remote-id type="github">openstack/oslo.log</remote-id>
+		<remote-id type="pypi">os-testr</remote-id>
+		<remote-id type="github">openstack/os-testr</remote-id>
 	</upstream>
 </pkgmetadata>
