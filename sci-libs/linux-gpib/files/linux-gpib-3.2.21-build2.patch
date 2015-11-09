@@ -1,0 +1,12 @@
+diff -Naur linux-gpib-3.2.21.orig/drivers/gpib/sys/osfuncs.c linux-gpib-3.2.21/drivers/gpib/sys/osfuncs.c
+--- linux-gpib-3.2.21/drivers/gpib/sys/osfuncs.c	2015-02-15 00:41:42.320008509 +0000
++++ linux-gpib-3.2.21/drivers/gpib/sys/osfuncs.c	2015-02-15 00:41:56.320008602 +0000
+@@ -178,7 +178,7 @@
+ 
+ long ibioctl(struct file *filep, unsigned int cmd, unsigned long arg)
+ {
+-	unsigned int minor = iminor(filep->f_dentry->d_inode);
++	unsigned int minor = iminor(file_inode(filep));
+ 	gpib_board_t *board;
+ 	gpib_file_private_t *file_priv = filep->private_data;
+ 	long retval = -ENOTTY;
