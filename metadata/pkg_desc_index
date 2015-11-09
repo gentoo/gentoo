@@ -7558,7 +7558,7 @@ dev-python/pyproj 1.9.4: Python interface to PROJ.4 library
 dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a new 'declaration API'
 dev-python/pyptlib 0.0.6: Python library for tor's pluggable transport managed-proxy protocol
 dev-python/pypy 2.4.0 2.5.1 2.6.0 4.0.0: A fast, compliant alternative implementation of the Python language
-dev-python/pypy-bin 2.4.0 2.5.1-r1 2.6.0-r1: A fast, compliant alternative implementation of the Python language (binary package)
+dev-python/pypy-bin 2.4.0 2.5.1-r1 2.6.0-r1 4.0.0: A fast, compliant alternative implementation of the Python language (binary package)
 dev-python/pypy3 2.4.0: A fast, compliant alternative implementation of Python 3
 dev-python/pypy3-bin 2.4.0-r1: A fast, compliant alternative implementation of Python 3 (binary package)
 dev-python/pyqtgraph 0.9.9 0.9.10: a pure-python scientific graphics and GUI library built on PyQt4/PySide and numpy
