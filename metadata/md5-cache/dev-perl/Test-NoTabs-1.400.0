@@ -4,10 +4,10 @@ DESCRIPTION=Check the presence of tabs in your project
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Test-NoTabs/
 IUSE=test
-KEYWORDS=amd64 ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ~ppc ppc64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/B/BO/BOBTFISH/Test-NoTabs-1.4.tar.gz
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
-_md5_=28cea57d5365303438ad20cb162cb439
+_md5_=3f14d9fa304aadde3a81aa953af40d99
