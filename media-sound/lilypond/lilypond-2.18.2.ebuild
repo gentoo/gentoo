@@ -34,7 +34,7 @@ DEPEND="${RDEPEND}
 		<dev-texlive/texlive-metapost-2013
 	)
 	virtual/pkgconfig
-	media-gfx/fontforge
+	media-gfx/fontforge[png]
 	>=sys-apps/texinfo-4.11
 	>=sys-devel/bison-2.0
 	sys-devel/flex
