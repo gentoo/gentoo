@@ -40,6 +40,9 @@
 >=app-misc/bijiben-3.18
 >=media-gfx/gnome-photos-3.18.2
 >=media-sound/gnome-sound-recorder-3.18.2
+>=gnome-extra/evolution-data-server-3.18.2
+>=mail-client/evolution-3.18.2
+>=gnome-extra/evolution-ews-3.18.2
 
 # Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
 # Not properly installed, dead for ages, upstream

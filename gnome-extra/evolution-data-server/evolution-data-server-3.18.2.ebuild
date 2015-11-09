@@ -16,17 +16,19 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Evolution"
 
 # Note: explicitly "|| ( LGPL-2 LGPL-3 )", not "LGPL-2+".
 LICENSE="|| ( LGPL-2 LGPL-3 ) BSD Sleepycat"
-SLOT="0/49" # subslot = libcamel-1.2 soname version
+SLOT="0/54" # subslot = libcamel-1.2 soname version
 IUSE="api-doc-extras +gnome-online-accounts +gtk +introspection ipv6 ldap kerberos vala +weather"
 REQUIRED_USE="vala? ( introspection )"
 
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~x86-solaris"
 
+# sys-libs/db is only required for migrating from <3.13 versions
+# gdata-0.15.1 is required for google tasks
 RDEPEND="
 	>=app-crypt/gcr-3.4
 	>=app-crypt/libsecret-0.5[crypt]
-	>=dev-db/sqlite-3.5:=
-	>=dev-libs/glib-2.36:2
+	>=dev-db/sqlite-3.7.17:=
+	>=dev-libs/glib-2.40:2
 	>=dev-libs/libgdata-0.10:=
 	>=dev-libs/libical-0.43:=
 	>=net-libs/libsoup-2.42:2.4
@@ -41,13 +43,13 @@ RDEPEND="
 
 	gtk? (
 		>=app-crypt/gcr-3.4[gtk]
-		>=x11-libs/gtk+-3.2:3
+		>=x11-libs/gtk+-3.10:3
 	)
 	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.8 )
-	introspection? ( >=dev-libs/gobject-introspection-0.9.12 )
+	introspection? ( >=dev-libs/gobject-introspection-0.9.12:= )
 	kerberos? ( virtual/krb5:= )
 	ldap? ( >=net-nds/openldap-2:= )
-	weather? ( >=dev-libs/libgweather-3.8:2= )
+	weather? ( >=dev-libs/libgweather-3.10:2= )
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
@@ -60,6 +62,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
 "
+
 # eautoreconf needs:
 #	>=gnome-base/gnome-common-2
 
@@ -79,10 +82,6 @@ src_prepare() {
 	ELTCONF="--reverse-deps"
 
 	gnome2_src_prepare
-
-	# Fix compilation flags crazyness, upstream bug #653157
-	sed 's/^\(AM_CFLAGS="\)$WARNING_FLAGS/\1/' \
-		-i configure || die "sed failed"
 }
 
 src_configure() {
