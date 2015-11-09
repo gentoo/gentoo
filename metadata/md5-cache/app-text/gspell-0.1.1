@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
+DEPEND=>=app-text/enchant-1.6.0 >=app-text/iso-codes-0.35 >=dev-libs/glib-2.44:2 >=dev-libs/libxml2-2.5.0:2 >=x11-libs/gtk+-3.16:3 >=x11-libs/gtksourceview-3.16:3.0 introspection? ( >=dev-libs/gobject-introspection-1.42.0:= ) vala? ( || ( dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] dev-lang/vala:0.24[vapigen(+)] dev-lang/vala:0.22[vapigen(+)] dev-lang/vala:0.20[vapigen(+)] ) ) >=dev-util/gtk-doc-am-1.24 >=dev-util/intltool-0.35.0 >=sys-devel/gettext-0.19.4 virtual/pkgconfig app-arch/xz-utils >=sys-apps/sed-4
+DESCRIPTION=Spell check library for GTK+ applications
+EAPI=5
+HOMEPAGE=https://wiki.gnome.org/Projects/gspell
+IUSE=+introspection vala
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=>=app-text/enchant-1.6.0 >=app-text/iso-codes-0.35 >=dev-libs/glib-2.44:2 >=dev-libs/libxml2-2.5.0:2 >=x11-libs/gtk+-3.16:3 >=x11-libs/gtksourceview-3.16:3.0 introspection? ( >=dev-libs/gobject-introspection-1.42.0:= ) vala? ( || ( dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] dev-lang/vala:0.24[vapigen(+)] dev-lang/vala:0.22[vapigen(+)] dev-lang/vala:0.20[vapigen(+)] ) )
+SLOT=0
+SRC_URI=mirror://gnome/sources/gspell/0.1/gspell-0.1.1.tar.xz
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vala	335996addec48717e632dfd1f588ef1c	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=85fc54cd7d41316f2a6f919680931c3f

@@ -2269,6 +2269,7 @@ app-text/goldendict 1.0.1: Feature-rich dictionary lookup program
 app-text/groonga 4.0.7-r1 5.0.3: An Embeddable Fulltext Search Engine
 app-text/groonga-normalizer-mysql 1.0.6 1.0.9: Groonga plugin that provides MySQL compatible normalizers
 app-text/grutatxt 2.0.16-r1: A converter from plain text to HTML and other markup languages
+app-text/gspell 0.1.1: Spell check library for GTK+ applications
 app-text/gtkspell 2.0.16 3.0.4: Spell checking widget for GTK
 app-text/gtranslator 2.91.6 2.91.7: An enhanced gettext po file editor for GNOME
 app-text/gv 3.7.3-r1 3.7.3.90: Viewer for PostScript and PDF documents using Ghostscript
