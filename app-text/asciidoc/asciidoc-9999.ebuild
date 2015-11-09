@@ -32,7 +32,7 @@ RDEPEND=">=app-text/docbook-xsl-stylesheets-1.75
 		app-text/docbook-xml-dtd:4.5
 		app-text/dblatex
 		|| ( www-client/w3m www-client/lynx )
-		highlight? ( || ( dev-python/pygments[${PYTHON_USEDEP}] dev-util/source-highlight ) )
+		highlight? ( || ( dev-python/pygments[${PYTHON_USEDEP}] dev-util/source-highlight app-text/highlight ) )
 		${PYTHON_DEPS}
 "
 DEPEND="test? ( dev-util/source-highlight
