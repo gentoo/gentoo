@@ -3374,7 +3374,7 @@ dev-haskell/hspec-core 2.1.2 2.1.4: A Testing Framework for Haskell
 dev-haskell/hspec-discover 2.1.2 2.1.4: Automatically discover and run Hspec tests
 dev-haskell/hspec-expectations 0.3.2 0.3.3 0.5.0.1 0.6.1 0.6.1.1: Catchy combinators for HUnit
 dev-haskell/hspec-meta 1.7.2 1.8.1 1.8.3 1.10.0 2.0.0: A version of Hspec which is used to test Hspec itself
-dev-haskell/hsql 1.8.1 1.8.2: Database access from Haskell
+dev-haskell/hsql 1.8.2-r1: Database access from Haskell
 dev-haskell/hsql-mysql 1.8.1 1.8.2 1.8.3: MySQL driver for HSQL
 dev-haskell/hsql-odbc 1.8.1.1 1.8.2: A Haskell Interface to ODBC
 dev-haskell/hsql-postgresql 1.8.1 1.8.2: A Haskell Interface to PostgreSQL via the PQ library
