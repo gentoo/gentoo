@@ -17445,7 +17445,7 @@ www-client/qtweb 3.8.5_p108: Lightweight, fast, secure and portable browser for 
 www-client/qupzilla 1.8.6 1.8.6-r1: Qt WebKit web browser
 www-client/qutebrowser 0.2.1 0.3.0 0.4.1 0.4.1-r1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
 www-client/rekonq 2.4.2-r1: A browser based on qtwebkit
-www-client/seamonkey 2.35 2.38: Seamonkey Web Browser
+www-client/seamonkey 2.38 2.39: Seamonkey Web Browser
 www-client/seamonkey-bin 2.35 2.38: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 0.6-r1 0.6-r2 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
