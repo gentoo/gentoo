@@ -44,6 +44,14 @@
 >=mail-client/evolution-3.18.2
 >=gnome-extra/evolution-ews-3.18.2
 >=app-text/gspell-0.1.1
+>=games-puzzle/swell-foop-3.18.1
+>=games-board/gnome-mines-3.18.2
+>=games-arcade/gnome-nibbles-3.18.2
+>=sci-geosciences/gnome-maps-3.18.2
+>=gnome-extra/gnome-system-monitor-3.18.2
+>=gnome-extra/gucharmap-3.18.2
+>=app-accessibility/orca-3.18.2
+>=gnome-extra/gnome-calculator-3.18.2
 
 # Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
 # Not properly installed, dead for ages, upstream
