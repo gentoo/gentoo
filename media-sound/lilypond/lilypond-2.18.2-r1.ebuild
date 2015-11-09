@@ -77,6 +77,8 @@ src_prepare() {
 	# remove bundled texinfo file (fixes bug #448560)
 	rm tex/texinfo.tex || die
 
+	epatch_user
+
 	eautoreconf
 }
 
