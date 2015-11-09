@@ -30,6 +30,31 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
+# Not properly installed, dead for ages, upstream
+# ask people to use Zed Attack Proxy Project instead
+# Removal in a month. Bug #185919
+net-proxy/webscarab
+
+# Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
+# Nobody willing to maintain/bump it. Use qemu instead
+# Removal in a month. Bug #200003
+app-emulation/skyeye
+
+# Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
+# Upstream dead, buggy, there are many other bittorrent
+# clients in the tree. See bug #210520. Removal in a month.
+net-p2p/btpd
+
+# Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
+# Obsolete for a long time, see bug #231578.
+# Removal in a month.
+app-eselect/eselect-esd
+
+# Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
+# Dead for years, see bug #248489. Removal in a month.
+dev-tex/latex-unicode
+
 # Michał Górny <mgorny@gentoo.org> (08 Nov 2015)
 # Masked for testing.
 =dev-python/pypy-4.0.0
