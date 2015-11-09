@@ -7350,7 +7350,7 @@ dev-python/pastescript 2.0.2: A pluggable command-line frontend, including comma
 dev-python/path-py 7.7.1 8.1 8.1.1 8.1.2: A module wrapper for os.path
 dev-python/pathlib 1.0.1-r1: Object-oriented filesystem paths
 dev-python/pathtools 0.1.2: Pattern matching and various utilities for file systems paths
-dev-python/patsy 0.2.0 0.2.1 0.3.0 0.3.0-r1 0.4.0: Python module to describe statistical models and design matrices
+dev-python/patsy 0.2.0 0.2.1 0.3.0 0.3.0-r1 0.4.0 0.4.1: Python module to describe statistical models and design matrices
 dev-python/paver 1.2.3 1.2.4: Python-based software project scripting tool along the lines of Make
 dev-python/pbkdf2 1.3: Implementation of the password-based key derivation function, PBKDF2, specified in RSA PKCS#5 v2.0
 dev-python/pbr 0.8.2 0.8.2-r1 0.10.8 0.11.0 1.0.1 1.1.1 1.2.0 1.3.0 1.6.0 1.7.0 1.8.0 1.8.1: Inject some useful and sensible default behaviors into setuptools
@@ -7396,7 +7396,7 @@ dev-python/promise 0.2.2-r1: Bytecode optimisation using staticness assertions
 dev-python/prompt_toolkit 0.45 0.46 0.47 0.48 0.50 0.52 0.53 0.54: Building powerful interactive command lines in Python
 dev-python/protorpc 0.10.0: Google Protocol RPC
 dev-python/pssi 1.0-r1: Python Simple Smartcard Interpreter
-dev-python/psutil 1.2.1 2.1.3 3.0.1 3.1.1: Retrieve information on running processes and system utilization
+dev-python/psutil 1.2.1 2.1.3 3.0.1 3.1.1 3.2.2: Retrieve information on running processes and system utilization
 dev-python/psycopg 1.1.21-r1 2.5.3 2.5.4 2.6 2.6.1: PostgreSQL database adapter for Python
 dev-python/ptpython 0.20 0.21 0.22 0.24 0.25: Python REPL build on top of prompt_toolkit
 dev-python/ptyprocess 0.5: Run a subprocess in a pseudo terminal
@@ -7601,15 +7601,16 @@ dev-python/pyte 0.4.9: Simple VTXXX-compatible terminal emulator
 dev-python/pytest 2.7.2 2.7.3 2.8.0-r1 2.8.1 2.8.2 9999: simple powerful testing with Python
 dev-python/pytest-cache 1.0: mechanisms for caching across test runs
 dev-python/pytest-capturelog 0.7: py.test plugin to capture log messages
-dev-python/pytest-catchlog 1.1: py.test plugin to catch log messages, fork of pytest-capturelog
+dev-python/pytest-catchlog 1.1 1.2.0: py.test plugin to catch log messages, fork of pytest-capturelog
 dev-python/pytest-cov 1.6 1.8.1 2.1.0 2.2.0: py.test plugin for coverage reporting
-dev-python/pytest-django 2.8.0: A Django plugin for py.test
+dev-python/pytest-django 2.8.0 2.9.1: A Django plugin for py.test
 dev-python/pytest-localserver 0.3.4: Py.test plugin to test server connections locally
 dev-python/pytest-pythonpath 0.7: pytest plugin for adding to the PYTHONPATH from command line or configs
 dev-python/pytest-raisesregexp 2.0: Simple pytest plugin to look for regex in Exceptions
 dev-python/pytest-runner 2.1.2 2.5.1 2.6.1 2.6.2: Adds support for tests during installation of setup.py files
 dev-python/pytest-timeout 0.4: py.test plugin to abort hanging tests
 dev-python/pytest-xdist 1.13.1: Distributed testing and loop-on-failing modes
+dev-python/pytest-xprocess 0.9.1: Manage external processes across test runs
 dev-python/python-application 1.5.0: Basic building blocks for python applications
 dev-python/python-augeas 0.4.1 0.4.2_pre131218 0.5.0: Python bindings for Augeas
 dev-python/python-barbicanclient 3.0.1 3.0.3 3.3.0: Client library for Barbican API.
@@ -7992,7 +7993,7 @@ dev-python/websockify 0.6.0 0.7.0: WebSockets support for any application/server
 dev-python/webtest 1.4.3-r1 2.0.16 2.0.17 2.0.18: Helper to test WSGI applications
 dev-python/webut 0.1.0.2 0.1.0.2-r1: Miscellaneous utilities for nevow and twisted.web programming
 dev-python/wehjit 0.2.2-r1: A Python web-widget library
-dev-python/werkzeug 0.9.6 0.10 0.10.1 0.10.4: Collection of various utilities for WSGI applications
+dev-python/werkzeug 0.9.6 0.10 0.10.1 0.10.4 0.11: Collection of various utilities for WSGI applications
 dev-python/wheel 0.24.0 0.26.0: A built-package format for Python
 dev-python/whirlpool 0.3-r1: Bindings for whirlpool hash reference implementation
 dev-python/whisper 0.9.13: Fixed size round-robin style database
