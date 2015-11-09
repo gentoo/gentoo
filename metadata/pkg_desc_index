@@ -13760,7 +13760,7 @@ net-ftp/qshare 2.1.5-r1: FTP server with a service discovery feature
 net-ftp/scythia 0.9.3_p2: Just a small FTP client
 net-ftp/tftp-hpa 5.2 5.2-r1: port of the OpenBSD TFTP server
 net-ftp/tlswrap 1.04: TLSWRAP is a TLS/SSL FTP wrapper/proxy which allows to use TLS with every FTP client
-net-ftp/tnftp 20100108 20130505 20141104 20151004: NetBSD FTP client with several advanced features
+net-ftp/tnftp 20141104 20151004: NetBSD FTP client with several advanced features
 net-ftp/vsftpd 2.3.5 3.0.2 3.0.2-r1 3.0.2-r2 3.0.2-r3 3.0.2-r4 3.0.3: Very Secure FTP Daemon written with speed, size and security in mind
 net-ftp/weex 2.6.1.5-r1: Automates maintaining a web page or other FTP archive
 net-ftp/yafc 1.2.6: Console ftp client with a lot of nifty features
