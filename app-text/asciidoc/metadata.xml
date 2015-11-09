@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<herd>proxy-maintainers</herd>
 	<maintainer>
-		<email>djc@gentoo.org</email>
-		<name>Dirkjan Ochtman</name>
+		<email>marcec@gmx.de</email>
+		<name>Marc Joliet</name>
+		<description>Proxied maintainer. Assign bugs to him.</description>
 	</maintainer>
 	<use>
 		<flag name="highlight">Enable source code highlighting</flag>
