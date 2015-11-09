@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=!dedicated? ( media-libs/libsdl[sound,X,video] icu? ( dev-libs/icu:= ) truetype? ( media-libs/fontconfig media-libs/freetype:2 sys-libs/zlib ) ) lzo? ( dev-libs/lzo:2 ) iconv? ( virtual/libiconv ) png? ( media-libs/libpng:0 ) zlib? ( sys-libs/zlib ) virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=OpenTTD is a clone of Transport Tycoon Deluxe
+EAPI=5
+HOMEPAGE=http://www.openttd.org/
+IUSE=aplaymidi debug dedicated iconv icu lzo +openmedia +png cpu_flags_x86_sse +timidity +truetype zlib
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+PDEPEND=!dedicated? ( openmedia? ( games-misc/openmsx games-misc/opensfx ) aplaymidi? ( media-sound/alsa-utils ) !aplaymidi? ( timidity? ( media-sound/timidity++ ) ) ) openmedia? ( >=games-misc/opengfx-0.4.7 )
+RDEPEND=!dedicated? ( media-libs/libsdl[sound,X,video] icu? ( dev-libs/icu:= ) truetype? ( media-libs/fontconfig media-libs/freetype:2 sys-libs/zlib ) ) lzo? ( dev-libs/lzo:2 ) iconv? ( virtual/libiconv ) png? ( media-libs/libpng:0 ) zlib? ( sys-libs/zlib ) games-misc/games-envd
+RESTRICT=test
+SLOT=0
+SRC_URI=http://binaries.openttd.org/releases/1.5.2/openttd-1.5.2-source.tar.gz
+_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	43da5163ba106e87d22d2e7d6d67537f	games	4dae170e58f773c484e07d18ef441804	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=1c2a6693fe11f71d4981739a8b2d09fb
