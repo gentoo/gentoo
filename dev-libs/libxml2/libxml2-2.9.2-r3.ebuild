@@ -74,6 +74,8 @@ src_prepare() {
 	# Patches needed for prefix support
 	epatch "${FILESDIR}"/${PN}-2.7.1-catalog_path.patch
 
+	eprefixify catalog.c xmlcatalog.c runtest.c xmllint.c
+
 	# Fix build for Windows platform
 	epatch "${FILESDIR}"/${PN}-2.8.0_rc1-winnt.patch
 
