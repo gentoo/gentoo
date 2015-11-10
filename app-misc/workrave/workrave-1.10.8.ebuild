@@ -15,7 +15,7 @@ SRC_URI="https://github.com/rcaelers/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 
 # dbus support looks to be used only for trying to use panel applets on gnome3!
 IUSE="ayatana doc gnome gstreamer introspection mate nls pulseaudio test xfce"
