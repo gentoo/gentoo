@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install postinst postrm prepare setup
-DEPEND=virtual/python-imaging =dev-lang/python-2*
+DEPEND=dev-python/pillow =dev-lang/python-2*
 DESCRIPTION=pkpgcounter is a python generic PDL (Page Description Language) parser
 EAPI=3
 HOMEPAGE=http://www.pykota.com/software/pkpgcounter
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=virtual/python-imaging =dev-lang/python-2*
+RDEPEND=dev-python/pillow =dev-lang/python-2*
 SLOT=0
 SRC_URI=http://www.pykota.com/software/pkpgcounter/download/tarballs/pkpgcounter-3.50.tar.gz
 _eclasses_=distutils	def8c8eb435ec28fd9315114640f6c84	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=4840e35f8f9f7aa55dbdb0a91303dc6a
+_md5_=2a2591e8c467a63f13ff2650f40905e9

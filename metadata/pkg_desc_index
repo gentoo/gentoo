@@ -8020,7 +8020,7 @@ dev-python/xlsxwriter 0.7.3 0.7.4 0.7.6 0.7.7: Python module for creating Excel 
 dev-python/xlutils 1.5.2-r1: provides a collection of utilities for working with Excel files
 dev-python/xlwt 0.7.5 1.0.0: Python library to create spreadsheet files compatible with Excel
 dev-python/xmltodict 0.9.1 0.9.2: Makes working with XML feel like you are working with JSON
-dev-python/xmpppy 0.5.0_rc1 0.5.0_rc1-r2: Python library providing easy scripting with Jabber
+dev-python/xmpppy 0.5.0_rc1-r2: Python library providing easy scripting with Jabber
 dev-python/xvfbwrapper 0.2.2 0.2.4: Python wrapper for running a display inside X virtual framebuffer
 dev-python/yappi 0.93: Yet Another Python Profiler
 dev-python/yapps 2.2.0: An easy to use parser generator

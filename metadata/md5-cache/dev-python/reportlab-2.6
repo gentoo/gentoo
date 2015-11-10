@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=virtual/python-imaging media-fonts/ttf-bitstream-vera media-libs/libart_lgpl sys-libs/zlib app-arch/unzip python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DEPEND=dev-python/pillow media-fonts/ttf-bitstream-vera media-libs/libart_lgpl sys-libs/zlib app-arch/unzip python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 DESCRIPTION=Tools for generating printable PDF documents from any data source
 EAPI=5
 HOMEPAGE=http://www.reportlab.com/ https://pypi.python.org/pypi/reportlab
 IUSE=doc examples python_targets_python2_7
 KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=BSD
-RDEPEND=virtual/python-imaging media-fonts/ttf-bitstream-vera media-libs/libart_lgpl sys-libs/zlib python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+RDEPEND=dev-python/pillow media-fonts/ttf-bitstream-vera media-libs/libart_lgpl sys-libs/zlib python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=http://www.reportlab.com/ftp/reportlab-2.6.tar.gz http://www.reportlab.com/ftp/fonts/pfbfer-20070710.zip
 _eclasses_=distutils-r1	46506dd0dd992b3c89b0d00daabfd86c	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	prefix	e7f2b9c6e57342e5d25eac22fce23062	python-r1	fb656e31d5596be6ac85cde42dccfcb6	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=7bcf4886b06aea0048916334b901b116
+_md5_=5fb04130b25da12721ef5e7dfee1f987

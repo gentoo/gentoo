@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile install postinst prepare
-DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] virtual/python-imaging[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pillow[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 DESCRIPTION=HTMLgen - Python modules for the generation of HTML documents
 EAPI=5
 HOMEPAGE=http://starship.python.net/crew/friedrich/HTMLgen/html/main.html
 IUSE=doc python_targets_python2_7
 KEYWORDS=amd64 ia64 ppc x86
 LICENSE=BSD
-RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] virtual/python-imaging[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pillow[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=http://starship.python.net/crew/friedrich/HTMLgen.tgz
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	fb656e31d5596be6ac85cde42dccfcb6	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=4e2f4c55f6e462892e2b13a5c440b42d
+_md5_=b8ac242beecae5d4d7113e84afc92c2a
