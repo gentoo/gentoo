@@ -12,7 +12,8 @@ SRC_URI="https://github.com/DaveDavenport/${PN}/releases/download/${PV}/${P}.tar
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="i3"
+IUSE="i3 windowmode"
+REQUIRED_USE="i3? ( windowmode )"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -21,6 +22,7 @@ RDEPEND="
 	x11-libs/libXft
 	x11-libs/libXinerama
 	x11-libs/pango[X]
+	x11-libs/startup-notification
 	i3? ( x11-wm/i3 )
 "
 DEPEND="
@@ -39,7 +41,9 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC
-	econf $(usex i3 '' --disable-i3support)
+	econf \
+		$(use_enable windowmode) \
+		$(usex i3 '' --disable-i3support)
 }
 
 src_test() {
