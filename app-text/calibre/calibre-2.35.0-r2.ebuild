@@ -3,7 +3,11 @@
 # $Id$
 
 EAPI=5
-inherit eutils fdo-mime bash-completion-r1 multilib toolchain-funcs
+
+PYTHON_COMPAT=( python2_7 )
+PYTHON_REQ_USE="sqlite,ssl"
+
+inherit eutils fdo-mime bash-completion-r1 multilib toolchain-funcs python-single-r1
 
 DESCRIPTION="Ebook management application"
 HOMEPAGE="http://calibre-ebook.com/"
@@ -33,29 +37,27 @@ KEYWORDS="~amd64 ~arm ~x86"
 SLOT="0"
 IUSE="+udisks"
 
-COMMON_DEPEND="
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/podofo-0.8.2:=
 	>=app-text/poppler-0.26.5[qt5]
-	>=dev-lang/python-2.7.9:2.7[sqlite,ssl]
 	>=dev-libs/chmlib-0.40:=
 	dev-libs/glib:2
 	>=dev-libs/icu-4.4:=
-	>=dev-python/apsw-3.7.17[python_targets_python2_7(-)]
-	>=dev-python/beautifulsoup-3.0.5:python-2[python_targets_python2_7(-)]
-	|| (
-		>=dev-python/dnspython-1.6.0:0[python_targets_python2_7(-)]
-		virtual/python-dnspython[python_targets_python2_7(-)]
-	)
-	>=dev-python/cssselect-0.7.1[python_targets_python2_7(-)]
-	>=dev-python/cssutils-0.9.9[python_targets_python2_7(-)]
-	>=dev-python/dbus-python-1.2.0[python_targets_python2_7(-)]
-	>=dev-python/lxml-3.2.1[python_targets_python2_7(-)]
-	>=dev-python/mechanize-0.1.11[python_targets_python2_7(-)]
-	dev-python/netifaces[python_targets_python2_7(-)]
-	dev-python/psutil[python_targets_python2_7(-)]
-	>=dev-python/pygments-2.0.1[python_targets_python2_7(-)]
-	>=dev-python/python-dateutil-1.4.1[python_targets_python2_7(-)]
-	>=dev-python/PyQt5-5.3.1[gui,svg,webkit,widgets,network,printsupport,python_targets_python2_7(-)]
+	>=dev-python/apsw-3.7.17[${PYTHON_USEDEP}]
+	>=dev-python/beautifulsoup-3.0.5:python-2[${PYTHON_USEDEP}]
+	>=dev-python/cssselect-0.7.1[${PYTHON_USEDEP}]
+	>=dev-python/cssutils-0.9.9[${PYTHON_USEDEP}]
+	>=dev-python/dbus-python-1.2.0[${PYTHON_USEDEP}]
+	>=dev-python/lxml-3.2.1[${PYTHON_USEDEP}]
+	>=dev-python/mechanize-0.1.11[${PYTHON_USEDEP}]
+	dev-python/netifaces[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
+	dev-python/psutil[${PYTHON_USEDEP}]
+	>=dev-python/pygments-2.0.1[${PYTHON_USEDEP}]
+	>=dev-python/python-dateutil-1.4.1[${PYTHON_USEDEP}]
+	>=dev-python/PyQt5-5.3.1[gui,svg,webkit,widgets,network,printsupport,${PYTHON_USEDEP}]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
@@ -67,7 +69,7 @@ COMMON_DEPEND="
 	>=media-libs/libwmf-0.2.8
 	sys-libs/zlib
 	virtual/libusb:1=
-	dev-python/pillow[python_targets_python2_7(-)]
+	virtual/python-dnspython[${PYTHON_USEDEP}]
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXrender
@@ -76,7 +78,7 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	udisks? ( || ( sys-fs/udisks:2 sys-fs/udisks:0 ) )"
 DEPEND="${COMMON_DEPEND}
-	>=dev-python/setuptools-0.6_rc5
+	>=dev-python/setuptools-0.6_rc5[${PYTHON_USEDEP}]
 	>=virtual/podofo-build-0.8.2"
 
 src_prepare() {
@@ -137,8 +139,8 @@ src_install() {
 	exit 0
 	EOF
 
-	cp "${T}"/{kbuildsycoca,update-mime-database}
-	chmod +x "${T}"/{kbuildsycoca,update-mime-database}
+	cp "${T}"/{kbuildsycoca,update-mime-database} || die
+	chmod +x "${T}"/{kbuildsycoca,update-mime-database} || die
 
 	export QMAKE="${EPREFIX}/usr/$(get_libdir)/qt5/bin/qmake"
 
@@ -160,7 +162,7 @@ src_install() {
 	export XDG_CONFIG_HOME="${HOME}/.config"
 	export XDG_DATA_HOME="${HOME}/.local/share"
 	export CALIBRE_CONFIG_DIRECTORY="${XDG_CONFIG_HOME}/calibre"
-	mkdir -p "${XDG_DATA_HOME}" "${CALIBRE_CONFIG_DIRECTORY}"
+	mkdir -p "${XDG_DATA_HOME}" "${CALIBRE_CONFIG_DIRECTORY}" || die
 
 	tc-export CC CXX
 	# Bug #334243 - respect LDFLAGS when building extensions
@@ -174,9 +176,10 @@ src_install() {
 		[[ -e ${x} ]] && addpredict ${x}
 	done
 
-	dodir "/usr/$(get_libdir)/python2.7/site-packages" # for init_calibre.py
+	#dodir "/usr/$(get_libdir)/python2.7/site-packages" # for init_calibre.py
+	#dodir $(python_get_sitedir)
 	PATH=${T}:${PATH} PYTHONPATH=${S}/src${PYTHONPATH:+:}${PYTHONPATH} \
-	"${EPREFIX}"/usr/bin/python2.7 setup.py install \
+	"${PYTHON}" setup.py install \
 		--root="${D}" \
 		--prefix="${EPREFIX}/usr" \
 		--libdir="${EPREFIX}/usr/${libdir}" \
@@ -204,28 +207,26 @@ src_install() {
 	cd "${ED}"/usr/share/calibre/fonts/liberation || die
 	local x
 	for x in * ; do
-		[[ -f ${EROOT}usr/share/fonts/liberation-fonts/${x} ]] || continue
+		[[ -f ${EPREFIX}usr/share/fonts/liberation-fonts/${x} ]] || continue
 		ln -sf "../../../fonts/liberation-fonts/${x}" "${x}" || die
 	done
 
 	einfo "Converting python shebangs"
-	while read -r -d $'\0' ; do
-		local shebang=$(head -n1 "$REPLY")
-		if [[ ${shebang} == "#!"*python* ]] ; then
-			sed -i -e "1s:.*:#!${EPREFIX}/usr/bin/python2.7:" "$REPLY" || \
-				die "sed failed"
-		fi
-	done < <(find "${ED}" -type f -print0)
+	python_fix_shebang "${ED}"
 
 	einfo "Compiling python modules"
-	"${EPREFIX}"/usr/bin/python2.7 -m compileall -q -f \
-		-d "${EPREFIX}"/usr/lib/calibre "${ED}"usr/lib/calibre || die
+	python_optimize "${ED}"usr/lib/calibre
 
 	newinitd "${FILESDIR}"/calibre-server.init calibre-server
 	newconfd "${FILESDIR}"/calibre-server.conf calibre-server
 }
 
 pkg_postinst() {
+	fdo-mime_desktop_database_update
+	fdo-mime_mime_database_update
+}
+
+pkg_postrm() {
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
 }
