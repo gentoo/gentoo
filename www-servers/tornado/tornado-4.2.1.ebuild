@@ -18,14 +18,15 @@ KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples test"
 
 CDEPEND="
+	dev-python/certifi[${PYTHON_USEDEP}]
 	>=dev-python/pycurl-7.19.3.1[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/asyncio[${PYTHON_USEDEP}]' 'python3_3')
+	$(python_gen_cond_dep 'virtual/python-asyncio[${PYTHON_USEDEP}]' 'python3*')
 	$(python_gen_cond_dep 'dev-python/backports-ssl-match-hostname[${PYTHON_USEDEP}]' 'python2_7')
-	$(python_gen_cond_dep 'dev-python/certifi[${PYTHON_USEDEP}]' 'python2_7' 'python3_3')
-	$(python_gen_cond_dep 'dev-python/futures[${PYTHON_USEDEP}]' 'python2_7 pypy')
 	$(python_gen_cond_dep 'dev-python/twisted-names[${PYTHON_USEDEP}]' 'python2_7')
 	$(python_gen_cond_dep 'dev-python/twisted-web[${PYTHON_USEDEP}]' 'python2_7')
-	virtual/python-singledispatch
+	virtual/python-backports_abc[${PYTHON_USEDEP}]
+	virtual/python-futures[${PYTHON_USEDEP}]
+	virtual/python-singledispatch[${PYTHON_USEDEP}]
 "
 # dev-python/twisted-* only supports python2_7 currently
 DEPEND="
