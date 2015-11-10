@@ -22,7 +22,7 @@ IUSE=""
 RDEPEND="
 	virtual/python-imaging[tk,${PYTHON_USEDEP}]
 	<dev-python/numpy-1.9.0[${PYTHON_USEDEP}]
-	virtual/pmw[${PYTHON_USEDEP}]
+	virtual/python-pmw[${PYTHON_USEDEP}]
 	sci-libs/fftw:3.0
 	media-libs/hamlib
 	media-libs/portaudio

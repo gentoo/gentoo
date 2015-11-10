@@ -30,7 +30,7 @@ CDEPEND="
 	virtual/ffmpeg
 "
 RDEPEND="${CDEPEND}
-	virtual/dnspython[${PYTHON_USEDEP}]
+	virtual/python-dnspython[${PYTHON_USEDEP}]
 	dev-python/python-cjson[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/python-eventlib[${PYTHON_USEDEP}]
