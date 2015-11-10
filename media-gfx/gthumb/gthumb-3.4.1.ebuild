@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/gthumb"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="cdr exif gnome-keyring gstreamer http jpeg json lcms raw slideshow svg tiff test webkit webp"
 
 COMMON_DEPEND="
