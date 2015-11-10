@@ -19,7 +19,7 @@ IUSE="-i18n -ipython pdf print spell sound web"
 
 RDEPEND=">=dev-python/pygtk-2.22.0:2[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-0.7.9-r1[${PYTHON_USEDEP}]
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	i18n? ( dev-python/elib-intl[${PYTHON_USEDEP}] )
 	ipython? ( >=dev-python/ipython-0.13.2[${PYTHON_USEDEP}] )
 	pdf? (

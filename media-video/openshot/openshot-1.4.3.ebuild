@@ -24,7 +24,7 @@ RDEPEND="
 	dev-python/pygoocanvas[${PYTHON_USEDEP}]
 	dev-python/pygtk[${PYTHON_USEDEP}]
 	dev-python/pyxdg[${PYTHON_USEDEP}]
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	>=media-libs/mlt-0.8.2[ffmpeg,frei0r,gtk,melt,python,sdl,xml]
 	ffmpeg? (
 		libav? ( media-video/libav:=[encode,sdl,x264,mp3,theora] )

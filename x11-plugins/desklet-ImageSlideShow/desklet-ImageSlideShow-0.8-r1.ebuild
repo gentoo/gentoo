@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
-RDEPEND="${RDEPEND} virtual/python-imaging"
+RDEPEND="${RDEPEND} dev-python/pillow"
 DOCS="MANIFEST README"
 
 src_prepare() {

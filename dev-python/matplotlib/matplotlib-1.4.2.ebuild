@@ -48,7 +48,7 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	doc? (
 		app-text/dvipng
-		virtual/python-imaging[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/ipython[${PYTHON_USEDEP}]
 		dev-python/numpydoc[${PYTHON_USEDEP}]
 		dev-python/xlwt[${PY2_USEDEP}]

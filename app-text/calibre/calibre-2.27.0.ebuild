@@ -65,7 +65,7 @@ COMMON_DEPEND="
 	>=media-libs/libwmf-0.2.8
 	sys-libs/zlib
 	virtual/libusb:1=
-	virtual/python-imaging[python_targets_python2_7(-)]
+	dev-python/pillow[python_targets_python2_7(-)]
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXrender

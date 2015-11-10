@@ -18,7 +18,7 @@ IUSE=""
 
 RDEPEND=">=dev-python/django-1.4.13[${PYTHON_USEDEP}]
 		=dev-python/django-1.4*[${PYTHON_USEDEP}]
-		virtual/python-imaging[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
 		>=dev-python/django-pipeline-1.2.24[${PYTHON_USEDEP}]
 		>=dev-python/feedparser-5.1.2[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]

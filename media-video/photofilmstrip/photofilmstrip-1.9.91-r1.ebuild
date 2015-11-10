@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="cairo sdl"
 
 RDEPEND="dev-python/wxpython:2.8[cairo?,${PYTHON_USEDEP}]
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	media-video/mplayer[encode]
 	sdl? ( dev-python/pygame[${PYTHON_USEDEP}] )"
 

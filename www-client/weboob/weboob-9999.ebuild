@@ -39,7 +39,7 @@ RDEPEND="${DEPEND}
 	dev-python/mechanize[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/gdata[${PYTHON_USEDEP}]
 	dev-python/feedparser[${PYTHON_USEDEP}]
 	dev-python/termcolor[${PYTHON_USEDEP}]

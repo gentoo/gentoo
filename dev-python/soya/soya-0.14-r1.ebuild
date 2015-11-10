@@ -37,7 +37,7 @@ DEPEND="
 	>=media-libs/libsdl-1.2.8[opengl]
 	media-libs/openal
 	virtual/opengl
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 

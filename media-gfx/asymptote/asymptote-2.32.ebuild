@@ -36,7 +36,7 @@ RDEPEND="
 	X? (
 		${PYTHON_DEPS}
 		x11-misc/xdg-utils
-		virtual/python-imaging[tk,${PYTHON_USEDEP}]
+		dev-python/pillow[tk,${PYTHON_USEDEP}]
 		)
 	latex? (
 		virtual/latex-base

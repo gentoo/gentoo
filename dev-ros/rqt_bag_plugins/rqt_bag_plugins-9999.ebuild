@@ -19,7 +19,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-ros/rosbag[${PYTHON_USEDEP}]
 	dev-ros/roslib[${PYTHON_USEDEP}]
 	dev-ros/rospy[${PYTHON_USEDEP}]

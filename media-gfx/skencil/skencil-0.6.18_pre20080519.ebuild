@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="amd64 hppa ppc ppc64 sparc x86"
 IUSE="nls"
 
-DEPEND="virtual/python-imaging
+DEPEND="dev-python/pillow
 	dev-python/pyxml
 	dev-python/reportlab
 	dev-lang/tk

@@ -19,6 +19,6 @@ LICENSE="Apache-2.0"
 IUSE=""
 
 RDEPEND="
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	media-gfx/qrencode"
 DEPEND="${RDEPEND}"

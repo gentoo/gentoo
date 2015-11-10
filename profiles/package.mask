@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Justin Lecher <jlec@gentoo.org> (10 Nov 2015)
+# Compatibility virtual for transition from
+# dev-python/imaging to dev-python/pillow
+# obsolete now #508266
+virtual/python-imaging
+
 # Lars Wendler <polynomial-c@gentoo.org> (10 Nov 2015)
 # Masked apache-2.4.17 due to broken REDIRECT_URL
 # behavior. See Gentoo bug #565348 for more details.

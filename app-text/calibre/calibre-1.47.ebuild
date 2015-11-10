@@ -61,7 +61,7 @@ COMMON_DEPEND="
 	>=media-libs/libwmf-0.2.8
 	>=media-libs/libmtp-1.1.5:=
 	virtual/libusb:1=
-	virtual/python-imaging[python_targets_python2_7(-)]
+	dev-python/pillow[python_targets_python2_7(-)]
 	>=x11-misc/xdg-utils-1.0.2-r2"
 
 RDEPEND="${COMMON_DEPEND}

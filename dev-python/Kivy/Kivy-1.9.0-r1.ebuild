@@ -19,7 +19,7 @@ IUSE="cairo camera doc examples garden gstreamer spell"
 
 RDEPEND="
 	dev-python/pygame[${PYTHON_USEDEP}]
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	cairo? ( dev-python/pycairo[${PYTHON_USEDEP}] )
 	camera? ( media-libs/opencv )
 	garden? ( dev-python/kivy-garden[${PYTHON_USEDEP}] )

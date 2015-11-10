@@ -27,7 +27,7 @@ RDEPEND="
 	>=media-libs/opencv-2.4.8[python,${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	sci-libs/scipy[${PYTHON_USEDEP}]
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pygame[${PYTHON_USEDEP}]
 	shell? ( dev-python/ipython[${PYTHON_USEDEP}] )"
 

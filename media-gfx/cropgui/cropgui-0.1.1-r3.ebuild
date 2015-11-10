@@ -18,7 +18,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${PYTHON_DEPS}
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pygobject:2[${PYTHON_USEDEP}]
 	dev-python/pygtk:2[${PYTHON_USEDEP}]
 "

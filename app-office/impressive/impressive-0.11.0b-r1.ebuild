@@ -23,7 +23,7 @@ DEPEND=""
 RDEPEND="${PYTHON_DEPS}
 	app-text/pdftk
 	dev-python/pygame[${PYTHON_USEDEP}]
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	x11-apps/xrandr
 	|| (
 		app-text/mupdf

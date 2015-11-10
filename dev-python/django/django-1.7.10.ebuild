@@ -79,7 +79,7 @@ src_install() {
 	optfeature "PostgreSQL backend support" dev-python/psycopg:2
 	optfeature "GEO Django" sci-libs/gdal[geos]
 	optfeature "Memcached support" dev-python/pylibmc dev-python/python-memcached
-	optfeature "ImageField Support" virtual/python-imaging
+	optfeature "ImageField Support" dev-python/pillow
 	echo ""
 }
 
