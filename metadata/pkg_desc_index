@@ -4777,7 +4777,7 @@ dev-libs/libx86emu 1.1: A library for emulating x86
 dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories Specification paths
 dev-libs/libxdiff 0.23 0.23-r1: Library for creating diff files
 dev-libs/libxls 0.3.0_pre107: A library which can read Excel (xls) files
-dev-libs/libxml2 2.9.2-r1 2.9.2-r3: Version 2 of the library to manipulate XML files
+dev-libs/libxml2 2.9.2-r1 2.9.2-r4: Version 2 of the library to manipulate XML files
 dev-libs/libxr 1.0: Cross-platform XML-RPC client/server library written in C
 dev-libs/libxslt 1.1.28-r4: XSLT libraries and tools
 dev-libs/libyaml 0.1.6: YAML 1.1 parser and emitter written in C
@@ -6767,6 +6767,7 @@ dev-python/autopep8 1.0.4 1.1 1.1.1 1.2 1.2.1 9999: Automatically formats Python
 dev-python/axiom 0.6.0-r1 0.7.2 0.7.3: Object database implemented on top of SQLite
 dev-python/babelfish 0.4.0 0.5.1 0.5.3 9999: Python library to work with countries and languages
 dev-python/backports 1.0: Namespace for backported Python features
+dev-python/backports-abc 0.4: Backport of Python 3.5's 'collections.abc' module
 dev-python/backports-lzma 0.0.3: Backport of Python 3.3's lzma module for XZ/LZMA compressed files
 dev-python/backports-shutil_get_terminal_size 1.0.0-r1: A backport of the get_terminal_size function from Python 3.3's shutil
 dev-python/backports-ssl-match-hostname 3.4.0.2: Backport of the ssl.match_hostname function
@@ -7390,7 +7391,7 @@ dev-python/pp 1.6.4-r1: Parallel and distributed programming for Python
 dev-python/pretend 1.0.8: A library for stubbing in Python
 dev-python/pretty-yaml 14.05.7 15.5.7 15.6.3: PyYAML-based module to produce pretty and readable YAML-serialized data
 dev-python/prettytable 0.7.1-r1 0.7.2: Easily displaying tabular data in a visually appealing ASCII table format
-dev-python/process-tests 1.1.0 1.1.2: Tools for testing processes
+dev-python/process-tests 1.1.0 1.1.2 1.2.0: Tools for testing processes
 dev-python/processing 0.52-r1: Package for using processes, which mimics the threading module API
 dev-python/progress 1.2: Easy to use progress bars
 dev-python/progressbar 2.3-r1: Text progressbar library for python
@@ -17050,7 +17051,6 @@ virtual/commonlisp 0: Virtual for Common Lisp
 virtual/cron 0 0-r1: Virtual for cron
 virtual/daemontools 0: Virtual for daemontools
 virtual/dev-manager 0: Virtual for the device filesystem manager
-virtual/dnspython 1: A virtual for dnspython, for Python 2 & 3
 virtual/editor 0: Virtual for editor
 virtual/eject 0: Virtual for the eject command
 virtual/emacs 23 24: Virtual for GNU Emacs
@@ -17059,7 +17059,6 @@ virtual/fam 0 0-r1: A virtual package to choose between gamin and fam
 virtual/ffmpeg 0.10.3 0.10.3-r1 9 9-r1 9-r2: Virtual package for FFmpeg executable implementation
 virtual/fortran 0: Virtual for Fortran Compiler
 virtual/freedesktop-icon-theme 0: A virtual to choose between different icon themes
-virtual/funcsigs 0-r1: A Virtual for Python function signatures from PEP362
 virtual/glu 9.0 9.0-r1: Virtual for OpenGL utility library
 virtual/gnat 3.4 4.1 4.2 4.3 4.4: Virtual for the gnat compiler selection
 virtual/gnustep-back 0.22.0 0.23.0 0.24.0 0.24.1: Virtual for back-end component for the GNUstep GUI Library
@@ -17205,14 +17204,18 @@ virtual/perl-threads-shared 1.460.0 1.480.0: Virtual for threads-shared
 virtual/perl-version 0.990.900-r2: Virtual for version
 virtual/pkgconfig 0-r1: Virtual for the pkg-config implementation
 virtual/pmake 0: Virtual for BSD-like make
-virtual/pmw 1: A virtual for pmw, for Python 2 & 3
 virtual/podofo-build 0.9.2 0.9.3: Virtual package for building against PoDoFo
 virtual/pypy 2.4.0 2.5.1 2.6.0 4.0.0: A virtual for PyPy Python implementation
 virtual/pypy3 2.4.0: A virtual for PyPy3 Python implementation
+virtual/python-asyncio 0: A virtual for the Python 3.4+ asyncio module
+virtual/python-backports_abc 0: A virtual for the Python 3.3+ collections.abc module
+virtual/python-dnspython 1: A virtual for dnspython, for Python 2 & 3
+virtual/python-funcsigs 0-r1: A Virtual for Python function signatures from PEP362
 virtual/python-futures 0: A virtual for the Python concurrent.futures module
 virtual/python-greenlet 1.0: A virtual for Python greenlet module
 virtual/python-imaging 2: Virtual for Python Imaging Library
 virtual/python-pathlib 1.0: A virtual for Python pathlib module
+virtual/python-pmw 1: A virtual for pmw, for Python 2 & 3
 virtual/python-singledispatch 0: A virtual for the Python functools.singledispatch module
 virtual/qmail 1.03: Virtual for qmail
 virtual/ruby 1: Virtual ebuild for ruby
@@ -17517,7 +17520,7 @@ www-servers/spawn-fcgi 1.6.3-r1 1.6.3-r2 1.6.4: A FCGI spawner for lighttpd and 
 www-servers/thin 1.6.3 1.6.3-r1 1.6.4-r1: A fast and very simple Ruby web server
 www-servers/thttpd 2.26.4-r3 2.27.0 9999: Fork of thttpd, a small, fast, multiplexing webserver
 www-servers/tomcat 6.0.44 6.0.44-r2 7.0.59-r2 7.0.64 7.0.65 8.0.26 8.0.28-r1: Tomcat Servlet-3.1/JSP-2.3 Container
-www-servers/tornado 3.1.1 3.1.1-r1 4.0.1 4.0.2 4.1.0 4.1.0-r1 4.2 4.2.0_beta1 4.2.1: Tornado is a Python web framework and asynchronous networking library, ... .
+www-servers/tornado 3.1.1-r1 4.0.1 4.2.1 4.3: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.9 2.0.11.1 2.0.11.1-r1 2.0.11.2 2.0.11.2-r1: uWSGI server for Python web applications
 www-servers/varnish 3.0.7 4.0.3 4.1.0: Varnish is a state-of-the-art, high-performance HTTP accelerator
 www-servers/webfs 1.21-r3 1.21-r4: Lightweight HTTP server for static content

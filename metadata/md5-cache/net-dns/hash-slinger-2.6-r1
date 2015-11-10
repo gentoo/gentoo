@@ -5,9 +5,9 @@ HOMEPAGE=https://people.redhat.com/pwouters/hash-slinger/
 IUSE=ipsec +openpgp +ssh python_targets_python2_7
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
-RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/ipaddr[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/m2crypto[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] net-dns/unbound[python,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] virtual/dnspython[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ipsec? ( net-misc/libreswan[dnssec] ) openpgp? ( dev-python/python-gnupg[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) ssh? ( net-misc/openssh )
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/ipaddr[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/m2crypto[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] net-dns/unbound[python,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] virtual/python-dnspython[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ipsec? ( net-misc/libreswan[dnssec] ) openpgp? ( dev-python/python-gnupg[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) ssh? ( net-misc/openssh )
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=https://people.redhat.com/pwouters/hash-slinger/hash-slinger-2.6.tar.gz
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-r1	fb656e31d5596be6ac85cde42dccfcb6	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=27250e5e14dad0b3389efef380e722b9
+_md5_=8237a6e539fd4d007959a0631e733241
