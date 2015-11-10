@@ -2298,7 +2298,7 @@ app-text/jist 1.5.1: A ruby gem to publish a gist
 app-text/jmupdf 0.3.0 0.4.1 0.4.1-r1 9999: Java library for rendering PDF, XPS and CBZ (Comic Book) documents
 app-text/jpdftweak 0.9-r1: Swiss Army Knife for PDF files
 app-text/kbibtex 0.5.1 0.5.2 0.6: BibTeX editor for KDE to edit bibliographies used with LaTeX
-app-text/kchmviewer 6.0-r1 6.1 7.1 7.3: A feature rich chm file viewer, based on Qt
+app-text/kchmviewer 6.0-r1 7.3 7.4: A feature rich chm file viewer, based on Qt
 app-text/kding 0.6-r2: KDE port of Ding, a dictionary lookup program
 app-text/keepnote 0.7.9-r2: A note taking application
 app-text/kpaste 1.0: Command-line tool to paste to paste.kde.org
@@ -3938,7 +3938,7 @@ dev-java/jansi 1.5 1.11-r1: Jansi is a small java library that allows you to use
 dev-java/jansi-native 1.5: Native JNI component for dev-java/jansi
 dev-java/japitools 0.9.7-r1: Java API compatibility testing tools
 dev-java/jarbundler 1.8.1-r2 2.3.1: Jar Bundler Ant Task
-dev-java/jarjar 0.9 1.4: Tool for repackaging third-party jars
+dev-java/jarjar 1.4: Tool for repackaging third-party jars
 dev-java/java-apicheck 0_p20150907: Command line tool to check Java packages for API compatibility
 dev-java/java-config 2.2.0: Java environment configuration query tool
 dev-java/java-config-wrapper 0.16: Wrapper for java-config
