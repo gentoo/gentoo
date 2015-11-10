@@ -8508,7 +8508,7 @@ dev-ruby/daemons 1.2.3: Wrap existing ruby scripts to be run as a daemon
 dev-ruby/dalli 2.6.4 2.7.4 2.7.4-r1: A high performance pure Ruby client for accessing memcached servers
 dev-ruby/database_cleaner 1.4.1 1.5.0 1.5.1: Strategies for cleaning databases
 dev-ruby/date_validator 0.8.0 0.8.1: Simple, ORM agnostic, Ruby 1.9 compatible date validator for Rails 3
-dev-ruby/dbf 2.0.8 2.0.10 2.0.11 2.0.12 2.0.13: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
+dev-ruby/dbf 2.0.8 2.0.12 2.0.13 3.0.0: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
 dev-ruby/debug_inspector 0.0.2: A Ruby wrapper for the MRI 2.0 debug_inspector API
 dev-ruby/debugger-linecache 1.2.0: A module to read and cache file information of a Ruby program
 dev-ruby/deep_merge 1.0.1: A simple set of utility functions for Hash
@@ -8592,7 +8592,7 @@ dev-ruby/http-form_data 1.0.1: Utility-belt to build form data request bodies
 dev-ruby/http_parser_rb 0.6.0 0.6.0-r1: Simple callback-based HTTP request/response parser
 dev-ruby/httparty 0.13.4 0.13.5 0.13.7: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: A library supporting the full HTTP Authentication protocol as specified in RFC 2617
-dev-ruby/httpclient 2.5.3.2 2.5.3.3 2.6.0.1 2.7.0: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
+dev-ruby/httpclient 2.5.3.2 2.5.3.3 2.6.0.1 2.7.0 2.7.0.1: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
 dev-ruby/i18n 0.6.9-r1 0.6.11 0.7.0: Add Internationalization support to your Ruby application
 dev-ruby/imagesize 0.1.1_p20100902 0.1.1_p20100902-r1: Measure image size (GIF, PNG, JPEG, etc)
 dev-ruby/inifile 2.0.2-r1 3.0.0: Native Ruby package for reading and writing INI files
@@ -14527,7 +14527,7 @@ net-misc/smb4k 1.2.0 1.2.1: The advanced network neighborhood browser for KDE
 net-misc/smbc 1.2.2-r2: A text mode (ncurses) SMB network commander. Features: resume and UTF-8
 net-misc/snarf 7.0-r3: Small and fast CLI resource grabber with support for http, gopher, finger, and ftp protocols
 net-misc/sobby 0.4.8: Standalone Obby server
-net-misc/socat 1.7.3.0 2.0.0_beta8 9999: Multipurpose relay (SOcket CAT)
+net-misc/socat 1.7.3.0 1.7.3.0-r1 2.0.0_beta8 9999: Multipurpose relay (SOcket CAT)
 net-misc/sock 1.1: A shell interface to network sockets
 net-misc/socket 1.5: A shell-level interface to TCP sockets
 net-misc/sparkleshare 1.1.0: Git-based collaboration and file sharing tool
