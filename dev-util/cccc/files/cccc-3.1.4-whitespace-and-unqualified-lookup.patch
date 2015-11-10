@@ -1,0 +1,95 @@
+diff --git a/cccc/cccc_tbl.cc b/cccc/cccc_tbl.cc
+index df98e2b..c9d0bac 100644
+--- a/cccc/cccc_tbl.cc
++++ b/cccc/cccc_tbl.cc
+@@ -27,18 +27,18 @@
+ #define LINE_BUFFER_SIZE 1000
+ 
+ 
+-template <class T> CCCC_Table<T>::CCCC_Table() 
++template <class T> CCCC_Table<T>::CCCC_Table()
+ : sorted(true)
+ {
+-  iter_ = map_t::end(); 
++  iter_ = map_t::end();
+ }
+ 
+-template <class T> CCCC_Table<T>::~CCCC_Table() 
++template <class T> CCCC_Table<T>::~CCCC_Table()
+ {
+   // the container should manage the destruction of its own
+-  // nodes correctly, we just need to get rid of the 
++  // nodes correctly, we just need to get rid of the
+   // objects to which we hold pointers.
+-  // NB Although CCCC_Table holds pointers, it owns the 
++  // NB Although CCCC_Table holds pointers, it owns the
+   // objects they point to and is responsible for their disposal.
+   T* itemptr=first_item();
+   while(itemptr!=NULL)
+@@ -48,8 +48,8 @@ template <class T> CCCC_Table<T>::~CCCC_Table()
+     }
+ }
+ 
+-template<class T> 
+-int CCCC_Table<T>::get_count(const char* count_tag) 
++template<class T>
++int CCCC_Table<T>::get_count(const char* count_tag)
+ {
+   int retval=0;
+   T* itemptr=first_item();
+@@ -58,11 +58,11 @@ int CCCC_Table<T>::get_count(const char* count_tag)
+       retval+=itemptr->get_count(count_tag);
+       itemptr=next_item();
+     }
+-  
++
+   return retval;
+ }
+ 
+-template<class T> 
++template<class T>
+ T* CCCC_Table<T>::find(string name)
+ {
+   T *retval=NULL;
+@@ -74,7 +74,7 @@ T* CCCC_Table<T>::find(string name)
+   return retval;
+ }
+ 
+-template<class T> 
++template<class T>
+ T* CCCC_Table<T>::find_or_insert(T* new_item_ptr)
+ {
+   string new_key=new_item_ptr->key();
+@@ -92,17 +92,17 @@ T* CCCC_Table<T>::find_or_insert(T* new_item_ptr)
+ template<class T>
+ bool CCCC_Table<T>::remove(T* old_item_ptr)
+ {
+-  bool retval=false; 
++  bool retval=false;
+   typename map_t::iterator value_iterator=map_t::find(old_item_ptr->key());
+   if(value_iterator!=map_t::end())
+     {
+-      erase(value_iterator);
++      this->erase(value_iterator);
+       retval=true;
+     }
+   return retval;
+ }
+-   
+-template <class T> void CCCC_Table<T>::sort() 
++
++template <class T> void CCCC_Table<T>::sort()
+ {
+   if(sorted==false)
+     {
+@@ -133,8 +133,8 @@ template <class T> T* CCCC_Table<T>::next_item()
+ }
+ 
+ template <class T> int CCCC_Table<T>::records()
+-{ 
+-  return map_t::size(); 
++{
++  return map_t::size();
+ }
+ 
+ #endif // _CCCC_TBL_BODY
