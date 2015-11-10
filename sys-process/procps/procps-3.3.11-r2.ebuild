@@ -43,8 +43,8 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--bindir='${EPREFIX}'/bin \
-		--sbindir='${EPREFIX}'/sbin \
+		--bindir="${EPREFIX}"/bin \
+		--sbindir="${EPREFIX}"/sbin \
 		--docdir='$(datarootdir)'/doc/${PF} \
 		$(use_enable modern-top) \
 		$(use_with ncurses) \
