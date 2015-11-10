@@ -29,8 +29,7 @@ RDEPEND="
 	virtual/python-singledispatch[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( $(python_gen_cond_dep 'dev-python/singledispatch[${PYTHON_USEDEP}]' python2_7 python3_3) )"
+	dev-python/setuptools[${PYTHON_USEDEP}]"
 PDEPEND="dev-python/ipython[${PYTHON_USEDEP}]"
 
 # ggplot2 is an optional test dep but not in portage
