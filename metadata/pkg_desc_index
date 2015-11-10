@@ -17508,7 +17508,7 @@ www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for te
 www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.2.6 0.3 0.3-r1 9999: Pretty small HTTP server -- a command-line tool to share files
 www-servers/resin 4.0.44-r4 4.0.46: A fast Servlet and JSP engine
-www-servers/servefile 0.4.2 0.4.3: Serve a single file via HTTP
+www-servers/servefile 0.4.4: Serve a single file via HTTP
 www-servers/spawn-fcgi 1.6.3-r1 1.6.3-r2 1.6.4: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thin 1.6.3 1.6.3-r1 1.6.4-r1: A fast and very simple Ruby web server
 www-servers/thttpd 2.26.4-r3 2.27.0 9999: Fork of thttpd, a small, fast, multiplexing webserver
