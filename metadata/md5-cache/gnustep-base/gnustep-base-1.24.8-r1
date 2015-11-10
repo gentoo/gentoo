@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare pretend setup
+DEPEND=doc? ( virtual/texi2dvi dev-tex/latex2html app-text/texi2html ) >=gnustep-base/gnustep-make-2.6.0 ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) ) >=dev-libs/openssl-0.9.7:= icu? ( >=dev-libs/icu-4.0:= ) !libffi? ( dev-libs/ffcall gnustep-base/gnustep-make[-native-exceptions] ) libffi? ( virtual/libffi ) >=dev-libs/libxml2-2.6 >=dev-libs/libxslt-1.1 >=dev-libs/gmp-4.1:= >=sys-libs/zlib-1.2 zeroconf? ( net-dns/avahi ) virtual/pkgconfig
+DESCRIPTION=A library of general-purpose, non-graphical Objective C objects
+EAPI=5
+HOMEPAGE=http://www.gnustep.org
+IUSE=+gnutls +icu +libffi libressl +ssl zeroconf debug doc
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=doc? ( virtual/texi2dvi dev-tex/latex2html app-text/texi2html ) >=gnustep-base/gnustep-make-2.6.0 ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) ) >=dev-libs/openssl-0.9.7:= icu? ( >=dev-libs/icu-4.0:= ) !libffi? ( dev-libs/ffcall gnustep-base/gnustep-make[-native-exceptions] ) libffi? ( virtual/libffi ) >=dev-libs/libxml2-2.6 >=dev-libs/libxslt-1.1 >=dev-libs/gmp-4.1:= >=sys-libs/zlib-1.2 zeroconf? ( net-dns/avahi )
+SLOT=0
+SRC_URI=ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-base-1.24.8.tar.gz
+_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	gnustep-base	707840264bcc460d4e700dcc8c6aa746	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=a5dd92ea381e1d079cde791e51e70687
