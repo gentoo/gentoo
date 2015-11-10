@@ -13296,7 +13296,7 @@ net-analyzer/argus 3.0.8.1 3.0.8.2_rc2: network Audit Record Generation and Util
 net-analyzer/argus-clients 3.0.8: Clients for net-analyzer/argus
 net-analyzer/arp-scan 1.9: ARP scanning and fingerprinting tool
 net-analyzer/arp-sk 0.0.16-r2: A swiss knife tool for ARP
-net-analyzer/arping 2.15 2.15-r2: A utility to see if a specific IP address is taken and what MAC address owns it
+net-analyzer/arping 2.15 2.15-r2 2.15-r3: A utility to see if a specific IP address is taken and what MAC address owns it
 net-analyzer/arpoison 0.6-r2: A utility to poison ARP caches
 net-analyzer/arpon 2.7-r1 2.7.2: ArpON (Arp handler inspectiON) is a portable Arp handler
 net-analyzer/arptools 1.0.2: a collection of libnet and libpcap based ARP utilities
@@ -15705,7 +15705,7 @@ sci-mathematics/kodkodi 1.5.2: A text front-end for the Kodkod Java library
 sci-mathematics/lpsolve 5.5.2.0: Mixed Integer Linear Programming (MILP) solver
 sci-mathematics/lybniz 1.3.2: A function plotter program written in PyGTK
 sci-mathematics/mathomatic 15.8.5 16.0.1 16.0.5: Automatic algebraic manipulator
-sci-mathematics/maxima 5.34.1 5.36.1 5.37.2: Free computer algebra environment based on Macsyma
+sci-mathematics/maxima 5.34.1 5.36.1 5.37.3: Free computer algebra environment based on Macsyma
 sci-mathematics/minisat 2.1.0 2.2.0-r3: Small yet efficient SAT solver with reference paper
 sci-mathematics/mlpy 3.5.0: High-performance Python library for predictive modeling
 sci-mathematics/msieve 1.51 9999: A C library implementing a suite of algorithms to factor large integers
