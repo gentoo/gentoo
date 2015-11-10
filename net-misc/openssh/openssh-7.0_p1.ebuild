@@ -167,7 +167,6 @@ src_prepare() {
 
 src_configure() {
 	addwrite /dev/ptmx
-	addpredict /etc/skey/skeykeys # skey configure code triggers this
 
 	use debug && append-cppflags -DSANDBOX_SECCOMP_FILTER_DEBUG
 	use static && append-ldflags -static
