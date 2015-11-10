@@ -30,6 +30,6 @@ RDEPEND="app-text/poppler[introspection]
 	dev-util/glade[introspection,python]
 	sci-libs/scikits_learn[${PYTHON_USEDEP}]
 	sci-libs/scikits_image[${PYTHON_USEDEP}]
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	x11-libs/gtk+:3[introspection]"
 DEPEND="${RDEPEND}"

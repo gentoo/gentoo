@@ -105,7 +105,7 @@ RDEPEND="${COMMON_DEPEND}
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/pyinotify[python_targets_python2_7]
 	dev-python/pypam[python_targets_python2_7]
-	virtual/python-imaging[python_targets_python2_7]
+	dev-python/pillow[python_targets_python2_7]
 
 	x11-themes/gnome-themes-standard[gtk]
 	x11-themes/gnome-icon-theme-symbolic

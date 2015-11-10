@@ -7,3 +7,6 @@ move media-libs/libkface kde-apps/libkface
 move media-libs/libkgeomap kde-apps/libkgeomap
 move media-fonts/nanumfont media-fonts/nanum
 slotmove =dev-python/pyfltk-1.3.3 1 0
+move virtual/dnspython virtual/python-dnspython
+move virtual/funcsigs virtual/python-funcsigs
+move virtual/pmw virtual/python-pmw

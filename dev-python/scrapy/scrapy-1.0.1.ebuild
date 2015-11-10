@@ -20,7 +20,7 @@ IUSE="boto doc ibl test ssl"
 
 RDEPEND=">=dev-python/six-1.5.2[${PYTHON_USEDEP}]
 	dev-libs/libxml2[python,${PYTHON_USEDEP}]
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	ibl? ( dev-python/numpy[${PYTHON_USEDEP}] )
 	ssl? ( dev-python/pyopenssl[${PYTHON_USEDEP}] )

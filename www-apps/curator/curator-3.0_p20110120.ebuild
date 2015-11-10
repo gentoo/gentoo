@@ -19,7 +19,7 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}
-	virtual/python-imaging
+	dev-python/pillow
 	|| ( >=media-gfx/imagemagick-5.4.9 media-gfx/graphicsmagick[imagemagick] )"
 
 S="${WORKDIR}/curator-3.0_pf078f1686a78"

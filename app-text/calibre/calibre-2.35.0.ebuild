@@ -44,7 +44,7 @@ COMMON_DEPEND="
 	>=dev-python/beautifulsoup-3.0.5:python-2[python_targets_python2_7(-)]
 	|| (
 		>=dev-python/dnspython-1.6.0:0[python_targets_python2_7(-)]
-		virtual/dnspython[python_targets_python2_7(-)]
+		virtual/python-dnspython[python_targets_python2_7(-)]
 	)
 	>=dev-python/cssselect-0.7.1[python_targets_python2_7(-)]
 	>=dev-python/cssutils-0.9.9[python_targets_python2_7(-)]
@@ -67,7 +67,7 @@ COMMON_DEPEND="
 	>=media-libs/libwmf-0.2.8
 	sys-libs/zlib
 	virtual/libusb:1=
-	virtual/python-imaging[python_targets_python2_7(-)]
+	dev-python/pillow[python_targets_python2_7(-)]
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXrender

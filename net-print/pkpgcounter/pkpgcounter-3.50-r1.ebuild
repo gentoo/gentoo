@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="virtual/python-imaging"
+DEPEND="dev-python/pillow"
 RDEPEND="${DEPEND}"
 
 DOCS="BUGS CREDITS NEWS README PKG-INFO"

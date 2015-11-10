@@ -24,7 +24,7 @@ RDEPEND="${DEPEND}
 	>=dev-python/graphy-1.0[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.2.1[${PYTHON_USEDEP}]
 	>=dev-python/simplejson-2.1.2[${PYTHON_USEDEP}]
-	virtual/dnspython[${PYTHON_USEDEP}]
+	virtual/python-dnspython[${PYTHON_USEDEP}]
 "
 
 python_prepare_all() {

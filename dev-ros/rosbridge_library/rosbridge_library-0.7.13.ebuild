@@ -25,7 +25,7 @@ RDEPEND="
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/std_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-python/pymongo[${PYTHON_USEDEP}]
-	|| ( dev-python/imaging[${PYTHON_USEDEP}] virtual/python-imaging[${PYTHON_USEDEP}] )
+	dev-python/pillow[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
 	test? (

@@ -22,7 +22,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
 	>=dev-python/pygtk-2.14[${PYTHON_USEDEP}]
 	virtual/jpeg
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	x11-libs/gdk-pixbuf
 	!media-gfx/comix"
 

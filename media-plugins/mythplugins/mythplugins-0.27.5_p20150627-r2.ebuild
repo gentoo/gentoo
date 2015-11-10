@@ -75,7 +75,7 @@ DEPEND="!media-plugins/mytharchive
 	mythzoneminder? ( virtual/mysql )
 	mytharchive? (
 		app-cdr/dvd+rw-tools
-		virtual/python-imaging:=
+		dev-python/pillow:=
 		media-video/dvdauthor
 		media-video/mjpegtools[png]
 		media-video/transcode

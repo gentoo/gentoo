@@ -26,7 +26,7 @@ RDEPEND="dev-python/gst-python:0.10[${PYTHON_USEDEP}]
 	dev-python/twisted-core
 	dev-python/twisted-conch
 	media-gfx/xloadimage
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	x11-misc/devilspie"
 DEPEND=""
 

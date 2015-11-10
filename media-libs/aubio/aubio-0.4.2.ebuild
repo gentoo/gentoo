@@ -88,12 +88,6 @@ src_test() {
 src_install() {
 	waf-utils_src_install
 
-	if use python ; then
-		cd "${PYTHON_SRC_DIR}" || die
-		DOCS="" distutils-r1_src_install
-		newdoc README README.python
-	fi
-
 	if use doc; then
 		dohtml -r doc/full/html/.
 		dodoc doc/*.txt
@@ -102,5 +96,11 @@ src_install() {
 	if use examples; then
 		# install dist_noinst_SCRIPTS from Makefile.am
 		dodoc -r examples
+	fi
+
+	if use python ; then
+		cd "${PYTHON_SRC_DIR}" || die
+		DOCS="" distutils-r1_src_install
+		newdoc README README.python
 	fi
 }

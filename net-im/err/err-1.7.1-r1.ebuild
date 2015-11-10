@@ -25,7 +25,7 @@ RDEPEND="
 	dev-python/python-daemon[${PYTHON_USEDEP}]
 	dev-python/xmpppy
 	dev-python/yapsy[${PYTHON_USEDEP}]
-	virtual/dnspython[${PYTHON_USEDEP}]
+	virtual/python-dnspython[${PYTHON_USEDEP}]
 	irc? (
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
 		dev-python/twisted-core[${PYTHON_USEDEP}]

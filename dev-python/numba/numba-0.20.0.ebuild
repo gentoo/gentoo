@@ -21,7 +21,7 @@ RDEPEND="
 	dev-python/llvmlite[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.6[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python{2_7,3_3})
-	virtual/funcsigs[${PYTHON_USEDEP}]"
+	virtual/python-funcsigs[${PYTHON_USEDEP}]"
 DEPEND="test? ( ${RDEPEND} )
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 

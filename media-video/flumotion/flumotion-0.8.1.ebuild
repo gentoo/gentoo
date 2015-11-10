@@ -23,7 +23,7 @@ IUSE="doc test"
 # media-plugins/gst-plugins-libpng:0.10
 # dev-python/twisted-web
 # dev-python/twisted-names
-# dev-python/imaging
+# dev-python/pillow
 
 # These are from README
 RDEPEND="dev-python/gst-python:0.10

@@ -21,7 +21,7 @@ RDEPEND="
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	media-gfx/imagemagick
 	media-libs/lcms:2
-	virtual/python-imaging[${PYTHON_USEDEP}]"
+	dev-python/pillow[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	app-text/ghostscript-gpl"

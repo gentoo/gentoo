@@ -4,30 +4,29 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r1
 
-MY_PV=${PV/.0_beta/b}
-
-DESCRIPTION="Tornado is a Python web framework and asynchronous networking library, ... ."
-HOMEPAGE="http://www.tornadoweb.org/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${PN}-${MY_PV}.tar.gz -> ${P}.tar.gz"
+DESCRIPTION="Python web framework and asynchronous networking library"
+HOMEPAGE="http://www.tornadoweb.org/ https://pypi.python.org/pypi/tornado"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples test"
 
 CDEPEND="
 	dev-python/certifi[${PYTHON_USEDEP}]
-	>=dev-python/pycurl-7.18.2[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/asyncio[${PYTHON_USEDEP}]' 'python3_3')
+	>=dev-python/pycurl-7.19.3.1[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'virtual/python-asyncio[${PYTHON_USEDEP}]' 'python3*')
 	$(python_gen_cond_dep 'dev-python/backports-ssl-match-hostname[${PYTHON_USEDEP}]' 'python2_7')
-	$(python_gen_cond_dep 'dev-python/futures[${PYTHON_USEDEP}]' 'python2_7 pypy')
-	$(python_gen_cond_dep 'dev-python/singledispatch[${PYTHON_USEDEP}]' 'python2_7 python3_3')
 	$(python_gen_cond_dep 'dev-python/twisted-names[${PYTHON_USEDEP}]' 'python2_7')
 	$(python_gen_cond_dep 'dev-python/twisted-web[${PYTHON_USEDEP}]' 'python2_7')
+	virtual/python-backports_abc[${PYTHON_USEDEP}]
+	virtual/python-futures[${PYTHON_USEDEP}]
+	virtual/python-singledispatch[${PYTHON_USEDEP}]
 "
 # dev-python/twisted-* only supports python2_7 currently
 DEPEND="

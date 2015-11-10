@@ -25,7 +25,7 @@ COMMON_DEPEND=">=sci-libs/netcdf-4.0.1
 	>=sci-libs/hdf5-1.6.4
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/wxpython:2.8[${PYTHON_USEDEP}]
-	virtual/pmw[${PYTHON_USEDEP}]"
+	virtual/python-pmw[${PYTHON_USEDEP}]"
 DEPEND="${COMMON_DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="${COMMON_DEPEND}

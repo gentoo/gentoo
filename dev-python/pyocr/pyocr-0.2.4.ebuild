@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="cuneiform? ( app-text/cuneiform )
 	tesseract? ( app-text/tesseract )
-	virtual/python-imaging"
+	dev-python/pillow"
 DEPEND="${RDEPEND}"
 
 REQUIRED_USE="|| ( cuneiform tesseract )"

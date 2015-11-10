@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
-		virtual/python-imaging[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
 		)"
 
 #		app-text/pytextile[${PYTHON_USEDEP}]
@@ -77,7 +77,7 @@ src_install() {
 	optfeature "MySQL backend support in python 2.7 - 3.4" dev-python/mysql-connector-python
 	optfeature "PostgreSQL backend support" dev-python/psycopg:2
 	optfeature "Memcached support" dev-python/pylibmc dev-python/python-memcached
-	optfeature "ImageField Support" virtual/python-imaging
+	optfeature "ImageField Support" dev-python/pillow
 	echo ""
 }
 

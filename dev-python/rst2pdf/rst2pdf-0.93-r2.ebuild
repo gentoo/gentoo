@@ -18,7 +18,7 @@ KEYWORDS="~alpha amd64 ~arm hppa ~ppc ~ppc64 ~sparc x86"
 IUSE="svg"
 
 DEPEND="dev-python/docutils[${PYTHON_USEDEP}]
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pdfrw[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	>=dev-python/reportlab-2.6[${PYTHON_USEDEP}]

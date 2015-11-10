@@ -19,7 +19,7 @@ IUSE="doc test"
 
 CDEPEND="
 	>=dev-python/pbr-1.3[${PYTHON_USEDEP}]
-	virtual/funcsigs[${PYTHON_USEDEP}]"
+	virtual/python-funcsigs[${PYTHON_USEDEP}]"
 DEPEND="
 	>=dev-python/setuptools-17.1[${PYTHON_USEDEP}]
 	test? (

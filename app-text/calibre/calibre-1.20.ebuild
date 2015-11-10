@@ -49,7 +49,7 @@ COMMON_DEPEND="
 	>=dev-python/cssselect-0.7.1
 	>=dev-python/cssutils-0.9.9
 	>=dev-python/dbus-python-0.82.2
-	virtual/python-imaging
+	dev-python/pillow
 	>=dev-python/lxml-2.2.1
 	>=dev-python/mechanize-0.1.11
 	>=dev-python/python-dateutil-1.4.1[python_targets_python2_7(-)]

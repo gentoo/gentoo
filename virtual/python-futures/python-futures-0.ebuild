@@ -3,7 +3,9 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
+
 inherit python-r1
 
 DESCRIPTION="A virtual for the Python concurrent.futures module"
@@ -12,7 +14,7 @@ SRC_URI=""
 
 LICENSE=""
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ppc ~ppc64 x86"
 IUSE=""
 
 RDEPEND="${PYTHON_DEPS}

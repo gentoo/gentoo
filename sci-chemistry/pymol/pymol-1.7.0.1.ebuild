@@ -31,7 +31,7 @@ DEPEND="
 	media-libs/libpng:0=
 	media-video/mpeg-tools
 	sys-libs/zlib
-	virtual/pmw[${PYTHON_USEDEP}]
+	virtual/python-pmw[${PYTHON_USEDEP}]
 	apbs? (
 		sci-chemistry/apbs
 		sci-chemistry/pdb2pqr
