@@ -16,7 +16,7 @@ if [[ $PV == *9999 ]]; then
 	S="${WORKDIR}/${REPO}"
 	live_eclass="mercurial"
 else
-	KEYWORDS="~amd64 ~arm ~arm64 -x86"
+	KEYWORDS="amd64 ~arm ~arm64 -x86"
 	UPSTREAM_VER=
 	SECURITY_VER=7
 	# xen-tools's gentoo patches tarball
