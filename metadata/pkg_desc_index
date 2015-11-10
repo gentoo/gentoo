@@ -4082,7 +4082,7 @@ dev-java/junitperf 1.9.1-r1: Simple framework to write repeatable tests
 dev-java/junrar 0.6: Unrar java implementation
 dev-java/jupidator 0.6.0: Jupidator is a library/tool in Java for automatic updating of applications
 dev-java/jusb 0.4.4-r1: jUSB provides a Free Software Java API for USB
-dev-java/jutils 1.0.0: Common utilities for the Java Game Technology Group
+dev-java/jutils 1.0.0-r1: Common utilities for the Java Game Technology Group
 dev-java/jvmstat 3.0: Monitoring APIs and tools for monitoring the performance of the JVM in production environments
 dev-java/jvyaml 0.2.1-r1: Java YAML parser and emitter
 dev-java/jvyamlb 0.2.5: JvYAMLb, YAML processor extracted from JRuby
@@ -4278,7 +4278,7 @@ dev-java/txw2-runtime 20110809: TXW is a library that allows you to write XML do
 dev-java/typesafe-config 1.3.0 1.3.0-r1: a library of arguably useful Java utilities
 dev-java/unkrig-nullanalysis 0_pre1644: Some classes to test for various null conditions
 dev-java/validation-api 1.0.0: Bean Validation (JSR-303) API
-dev-java/vecmath 1.5.2 1.6.0_pre12: Sun J3D: 3D vector math package
+dev-java/vecmath 1.6.0_pre12: Sun J3D: 3D vector math package
 dev-java/velocity 1.7 1.7-r1: A Java-based template engine for easy creation/rendering of documents that format and present data
 dev-java/vldocking 3.0.5: Docking solution for Java Swing
 dev-java/webgraph 1.4.1-r1: WebGraph is a framework to study the web graph
@@ -9643,7 +9643,7 @@ dev-vcs/hgsvn 0.2.3-r1: A set of scripts to work locally on Subversion checkouts
 dev-vcs/hgview 1.7.1-r1 1.8.0 1.8.1 1.8.2: A Mercurial interactive history viewer
 dev-vcs/hub 1.12.4 2.2.0-r1 2.2.2: Command-line wrapper for git that makes you better at GitHub
 dev-vcs/kdesvn 1.6.0-r1: KDESvn is a frontend to the subversion vcs
-dev-vcs/mercurial 3.3.2 3.3.3 3.4.2 3.5.2 3.6 9999: Scalable distributed SCM
+dev-vcs/mercurial 3.3.2 3.3.3 3.4.2 3.5.2 3.6 3.6.1 9999: Scalable distributed SCM
 dev-vcs/mercurial-server 1.1 1.2 9999: Mercurial authentication and authorization tools
 dev-vcs/monotone 1.0-r4: Monotone Distributed Version Control System
 dev-vcs/mr 1.20140831.1 1.20141024 1.20150503: Multiple Repository management tool
@@ -9669,7 +9669,7 @@ dev-vcs/svnmailer 1.0.9-r1: A subversion commit notifier written in Python
 dev-vcs/tig 2.1.1: text mode interface for git
 dev-vcs/tkcvs 8.2.2 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9: A different patch queue manager
-dev-vcs/tortoisehg 3.3.2 3.3.3 3.4.2 3.5.1 3.5.2 9999: Set of graphical tools for Mercurial
+dev-vcs/tortoisehg 3.3.2 3.3.3 3.4.2 3.5.2 3.6 9999: Set of graphical tools for Mercurial
 dev-vcs/vcsh 1.20140508-r2 1.20141026 1.20150502: Manage config files in $HOME via fake bare git repositories
 dev-vcs/veracity 1.0.0.10517 1.1.0.10565: A modern and featureful DVCS (distributed version control system)
 games-action/0verkill 0.16-r3: a bloody 2D action deathmatch-like game in ASCII-ART
@@ -10788,7 +10788,7 @@ gnustep-libs/sqlclient 1.7.0: GNUstep lightweight database abstraction layer
 java-virtuals/ejb-api 0: Virtual for Enterprise JavaBeans API (javax.ejb)
 java-virtuals/interceptor-api 0: Virtual for Interceptor API (javax.interceptor)
 java-virtuals/jaf 1.1-r1: Virtual for JavaBeans Activation Framework (JAF)
-java-virtuals/javamail 1.0-r1 1.0-r2 1.0-r3: Virtual for javamail implementations
+java-virtuals/javamail 1.0-r4: Virtual for javamail implementations
 java-virtuals/jaxp-virtual 1.4-r1: Virtual for Java API for XML Processing (JAXP)
 java-virtuals/jdk-with-com-sun 20111111-r2 20111111-r3: Virtual ebuilds that require internal com.sun classes from a JDK
 java-virtuals/jms 1.1: Virtual for Java Message Service (JMS) API
@@ -12239,7 +12239,7 @@ media-libs/libv4l 0.8.9 0.9.5 0.9.5-r1 1.0.0 1.2.1 1.6.0 1.6.0-r1 1.6.2: Separat
 media-libs/libvisio 0.0.30 0.1.1 0.1.3 0.1.3-r1 9999: Library parsing the visio documents
 media-libs/libvisual 0.4.0-r3: Libvisual is an abstraction library that comes between applications and audio visualisation plugins
 media-libs/libvorbis 1.3.3 1.3.3-r1 1.3.4 1.3.5: The Ogg Vorbis sound file format library
-media-libs/libvpx 1.1.0 1.2.0_pre20130625 1.3.0 1.4.0: WebM VP8 Codec SDK
+media-libs/libvpx 1.3.0 1.4.0: WebM VP8 Codec SDK
 media-libs/libwebp 0.2.1 0.3.0 0.3.1 0.4.0 0.4.2: A lossy image compression format
 media-libs/libwmf 0.2.8.4-r5 0.2.8.4-r6: library for converting WMF files
 media-libs/libxmi 1.2 1.3: C/C++ function library for rasterizing 2-D vector graphics

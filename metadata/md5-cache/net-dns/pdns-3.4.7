@@ -4,11 +4,11 @@ DESCRIPTION=The PowerDNS Daemon
 EAPI=5
 HOMEPAGE=http://www.powerdns.com/
 IUSE=botan cryptopp debug doc geoip ldap lua mydns mysql opendbx postgres remote sqlite static tools tinydns test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=!static? ( net-libs/polarssl >=dev-libs/boost-1.34:= botan? ( =dev-libs/botan-1.10* ) cryptopp? ( dev-libs/crypto++ ) lua? ( dev-lang/lua:= ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:= ) ldap? ( >=net-nds/openldap-2.0.27-r4 ) sqlite? ( dev-db/sqlite:3 ) opendbx? ( dev-db/opendbx ) geoip? ( >=dev-cpp/yaml-cpp-0.5.1 dev-libs/geoip ) tinydns? ( >=dev-db/tinycdb-0.77 ) )
 REQUIRED_USE=mydns? ( mysql )
 SLOT=0
 SRC_URI=http://downloads.powerdns.com/releases/pdns-3.4.7.tar.bz2
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=2fc55a04b094debd5f78aaac58586eb9
+_md5_=fed621b1943d1f3f1436632262b2ee60
