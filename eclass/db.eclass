@@ -1,9 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-# This is a common location for functions used in the sys-libs/db ebuilds
-#
-# Bugs: maintainer-needed@gentoo.org
+
+# @ECLASS: db.eclass
+# @MAINTAINER:
+# base-system@gentoo.org
+# @BLURB: Internal eclass used by sys-libs/db ebuilds
 
 inherit eutils multilib multiprocessing
 
