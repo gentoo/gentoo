@@ -10,4 +10,4 @@ RDEPEND=>=dev-lisp/asdf-2.33-r3:=
 SLOT=0
 SRC_URI=x86? ( ftp://ftp.clozure.com/pub/release/1.11/ccl-1.11-linuxx86.tar.gz ) amd64? ( ftp://ftp.clozure.com/pub/release/1.11/ccl-1.11-linuxx86.tar.gz ) doc? ( http://ccl.clozure.com/docs/ccl.html )
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=5a158a4d15936d4b18f85826978e311e
+_md5_=a03c7186118d84aa5f31a6a355ce8ad3
