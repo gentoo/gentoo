@@ -16,11 +16,14 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gtk"
 REQUIRED_USE="gtk? ( python_targets_python2_7 )" # experimental gui only works with py2
 
-DEPEND=">=dev-python/msgpack-0.4.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/greenlet[${PYTHON_USEDEP}]' 'python*')
+DEPEND="
+	>=dev-python/msgpack-0.4.0[${PYTHON_USEDEP}]
+	virtual/python-greenlet[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/trollius[${PYTHON_USEDEP}]' python{2_7,3_3})
-	gtk? ( >=dev-python/click-3.0[${PYTHON_USEDEP}]
+	gtk? (
+		>=dev-python/click-3.0[${PYTHON_USEDEP}]
 		dev-python/pygobject:2
 		dev-python/pygtk:2
-		x11-libs/gtk+:2[introspection] )"
+		x11-libs/gtk+:2[introspection]
+	)"
 RDEPEND="${DEPEND}"
