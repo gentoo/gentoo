@@ -27,17 +27,16 @@ SRC_URI="ftp://ftp.proftpd.org/distrib/source/${P/_/}.tar.gz
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="acl authfile ban +caps case clamav copy ctrls deflate diskuse doc dso dynmasq exec ifsession ifversion ident ipv6
-	kerberos ldap linguas_bg_BG linguas_en_US linguas_fr_FR linguas_it_IT linguas_ja_JP linguas_ko_KR
-	linguas_ru_RU linguas_zh_CN linguas_zh_TW log_forensic memcache msg mysql ncurses nls openssl pam +pcre postgres qos radius
+	kerberos ldap libressl linguas_bg_BG linguas_en_US linguas_fr_FR linguas_it_IT linguas_ja_JP linguas_ko_KR
+	linguas_ru_RU linguas_zh_CN linguas_zh_TW log_forensic memcache msg mysql ncurses nls pam +pcre postgres qos radius
 	ratio readme rewrite selinux sftp shaper sitemisc snmp softquota sqlite ssl tcpd test trace unique_id vroot xinetd"
 # TODO: geoip
 REQUIRED_USE="ban? ( ctrls )
 	msg? ( ctrls )
-	sftp? ( openssl )
-	shaper? ( ctrls )
-	ssl? ( openssl )"
+	sftp? ( ssl )
+	shaper? ( ctrls )"
 
 CDEPEND="acl? ( virtual/acl )
 	caps? ( sys-libs/libcap )
@@ -48,7 +47,10 @@ CDEPEND="acl? ( virtual/acl )
 	mysql? ( virtual/mysql )
 	nls? ( virtual/libiconv )
 	ncurses? ( sys-libs/ncurses:0= )
-	openssl? ( dev-libs/openssl:0= )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:= )
+	)
 	pam? ( virtual/pam )
 	pcre? ( dev-libs/libpcre )
 	postgres? ( dev-db/postgresql:= )
@@ -196,7 +198,7 @@ src_configure() {
 		$(use_enable memcache) \
 		$(use_enable ncurses) \
 		$(use_enable nls) \
-		$(use_enable openssl) \
+		$(use_enable ssl openssl) \
 		$(use_enable pam auth-pam) \
 		$(use_enable pcre) \
 		$(use_enable test tests) \
