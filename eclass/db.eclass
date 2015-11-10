@@ -5,7 +5,7 @@
 #
 # Bugs: maintainer-needed@gentoo.org
 
-inherit eutils multilib
+inherit eutils multilib multiprocessing
 
 IUSE="doc test examples"
 
