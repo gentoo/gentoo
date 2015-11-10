@@ -4,14 +4,12 @@
 
 EAPI=5
 
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md docs/*"
-
-RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
 inherit ruby-fakegem
 
@@ -23,7 +21,3 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-
-all_ruby_prepare() {
-	sed -i -e '/fastercsv/d' ${RUBY_FAKEGEM_GEMSPEC} || die
-}

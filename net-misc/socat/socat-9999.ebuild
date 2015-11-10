@@ -14,11 +14,14 @@ EGIT_REPO_URI="git://repo.or.cz/${PN}.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="ssl readline ipv6 tcpd"
+IUSE="libressl ssl readline ipv6 tcpd"
 
 RDEPEND="
-	ssl? ( >=dev-libs/openssl-0.9.6 )
-	readline? ( >=sys-libs/readline-4.1 )
+	ssl? (
+		!libressl? ( dev-libs/openssl:* )
+		libressl? ( dev-libs/libressl )
+	)
+	readline? ( sys-libs/readline:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 "
 DEPEND="
