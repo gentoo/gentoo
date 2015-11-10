@@ -22,7 +22,7 @@ RDEPEND="dev-python/six[${PYTHON_USEDEP}]
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
-		>=www-servers/tornado-4.1[${PYTHON_USEDEP}]
+		>=www-servers/tornado-4.1[$(python_gen_usedep 'python*')]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}] )
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
