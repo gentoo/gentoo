@@ -178,11 +178,6 @@ dev-java/jakarta-jstl
 # Masked for removal in 30 days.
 =dev-lang/ruby-1.9*
 
-# Michael Palimaka <kensington@gentoo.org (9 Oct 2015)
-# Dead upstream. No consumers. Collides with other packages.
-# Bug #560932 and bug #557006. Masked for removal in 30 days.
-dev-libs/libhash
-
 # Patrice Clement <monsieurp@gentoo.org> (6 Oct 2015)
 # No update since 2008. Masked for removal in 30 days.
 # See bug #562370.
