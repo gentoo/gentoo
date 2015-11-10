@@ -1,14 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
+PYTHON_COMPAT=( python2_7 )
 
-SUPPORT_PYTHON_ABIS="1"
-PYTHON_DEPEND="2:2.6"
-RESTRICT_PYTHON_ABIS="3.*"
-
-inherit distutils
+inherit distutils-r1
 
 DESCRIPTION="Serve a single file via HTTP"
 HOMEPAGE="http://seba-geek.de/stuff/servefile/"
@@ -19,14 +16,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="ssl"
 
-DEPEND=""
-RDEPEND="( sys-apps/iproute2 sys-apps/net-tools )
+RDEPEND="
 	ssl? ( dev-python/pyopenssl )
 	sys-apps/grep
+	sys-apps/iproute2
+	sys-apps/net-tools
 	sys-apps/sed"
 
 src_install() {
-	distutils_src_install
+	distutils-r1_src_install
+
 	dodoc ChangeLog || die
 	doman ${PN}.1 || die
 }
