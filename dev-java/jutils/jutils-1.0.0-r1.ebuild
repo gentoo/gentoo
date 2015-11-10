@@ -13,7 +13,7 @@ HOMEPAGE="https://java.net/projects/jutils"
 SRC_URI="http://central.maven.org/maven2/net/java/${PN}/${PN}/${PV}/${P}-sources.jar"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~ppc ~ppc64"
+KEYWORDS="amd64 x86 ppc ppc64"
 IUSE=""
 
 RDEPEND=">=virtual/jre-1.6"
