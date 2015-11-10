@@ -11,12 +11,12 @@ SRC_URI="mirror://sourceforge/vice-emu/releases/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ppc ~sparc x86"
-IUSE="Xaw3d alsa ethernet ffmpeg fullscreen +gtk2 ipv6 lame nls oss png pulseaudio sdl +sdlsound threads vte zlib"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+IUSE="Xaw3d alsa ethernet ffmpeg fullscreen +gtk ipv6 lame nls oss png pulseaudio sdl +sdlsound threads vte zlib"
 
 # upstream says gtk3 and sdl2 shouldn't be exposed yet.
 #REQUIRED_USE="?? ( gtk2 gtk3 sdl )"
-REQUIRED_USE="?? ( gtk2 sdl )"
+REQUIRED_USE="?? ( gtk sdl )"
 
 GTK_COMMON="
 	x11-libs/pango
@@ -53,13 +53,13 @@ RDEPEND="
 		x11-libs/libXext
 		sys-libs/readline
 	)
-	gtk2? (
+	gtk? (
 		x11-libs/gtk+:2
 		vte? ( x11-libs/vte:0 )
 		x11-libs/gtkglext
 		${GTK_COMMON}
 	)
-	!sdl? ( !gtk2? (
+	!sdl? ( !gtk? (
 		x11-libs/libXmu
 		x11-libs/libXpm
 		x11-libs/libXt
@@ -72,7 +72,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	!sdl? (
 		fullscreen? ( x11-proto/xf86vidmodeproto )
-		!gtk2? (
+		!gtk? (
 			x11-libs/libICE
 			x11-libs/libSM
 		)
@@ -86,10 +86,7 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-autotools.patch \
-		"${FILESDIR}"/${P}-format.patch \
-		"${FILESDIR}"/${P}-xf86extensions.patch
+	epatch "${FILESDIR}"/${P}-autotools.patch
 	sed -i \
 		-e 's/building//' \
 		doc/Makefile.am || die
@@ -132,10 +129,10 @@ src_configure() {
 	# The gtk UI code has raw calls to XOpenDisplay and
 	# is missing -lX11 if vte doesn't pull it in.
 	#if use gtk2 || use gtk3 ; then
-	if use gtk2 ; then
+	if use gtk ; then
 		use vte || append-libs -lX11
 	fi
-	gui_arg+=" $(use_enable gtk2 gnomeui)"
+	gui_arg+=" $(use_enable gtk gnomeui)"
 	#gui_arg+=" $(use_enable gtk3 gnomeui3)"
 	gui_arg+=" $(use_enable Xaw3d xaw3d)"
 
