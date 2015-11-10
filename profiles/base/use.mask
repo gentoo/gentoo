@@ -264,25 +264,11 @@ coreaudio
 
 # Diego Pettenò <flameeyes@gentoo.org> (4 Jan 2007)
 # Mask the flags for PHP that are available only on x86
-sybase-ct
-ingres
-birdstep
-adabas
-filepro
-pfpro
-informix
-empress
-empress-bcs
 sybase
 frontbase
-dbmaker
-esoob
-solid
 # Shared with amd64
 oci8
-oracle7
 firebird
-db2
 
 # Robert Buchholz <rbu@gentoo.org> (03 Jun 2007)
 # Only works on x86 or amd64

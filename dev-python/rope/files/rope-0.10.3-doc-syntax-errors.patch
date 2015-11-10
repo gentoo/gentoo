@@ -1,0 +1,35 @@
+# Fix syntax errors in doc files
+diff --git a/docs/contributing.rst b/docs/contributing.rst
+index c6cb8a8..9efc3cc 100644
+--- a/docs/contributing.rst
++++ b/docs/contributing.rst
+@@ -45,7 +45,7 @@ about them, don't hesitate to discuss it in the mailing list.
+ Getting Ready For Python 3.0
+ ----------------------------
+
+-Checkout http://bitbucket.org/agr/rope_py3k Mercurial_ repository.
++Checkout http://bitbucket.org/agr/rope_py3k Mercurial repository.
+ Contributions are welcome.
+
+ Write Plugins For Other IDEs
+@@ -79,7 +79,7 @@ Source Repository
+ =================
+
+ Rope uses GitHub_. The repository exists at
+-`https://github.com/python-rope/rope`_.
++`https://github.com/python-rope/rope`.
+
+
+ Submitting patches
+diff --git a/docs/library.rst b/docs/library.rst
+index 390b9c8..ee918bc 100644
+--- a/docs/library.rst
++++ b/docs/library.rst
+@@ -72,7 +72,7 @@ In rope, files and folders in a project are accessed through
+ ``Change``\s (we'll talk about them later) use resources.
+
+ There are two options for creating a ``Resource`` for a path in a project.
+-The first approach uses the `Project.get_resource()`_ method.
++The first approach uses the `Project.get_resource()` method.
+
+ .. code-block:: python
