@@ -19,7 +19,7 @@ HOMEPAGE="http://sourceforge.net/projects/vbam/"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="cairo cpu_flags_x86_mmx ffmpeg gtk link lirc nls openal +sdl wxwidgets"
+IUSE="cairo ffmpeg gtk link lirc nls openal +sdl wxwidgets"
 REQUIRED_USE="|| ( sdl gtk wxwidgets )"
 
 RDEPEND=">=media-libs/libpng-1.4:0=
@@ -72,7 +72,6 @@ src_configure() {
 		$(cmake-utils_use_enable wxwidgets WX)
 		$(cmake-utils_use_enable x86 ASM_CORE)
 		$(cmake-utils_use_enable x86 ASM_SCALERS)
-		$(cmake-utils_use_enable cpu_flags_x86_mmx MMX)
 		-DCMAKE_SKIP_RPATH=ON
 		-DDATA_INSTALL_DIR=share/games/${PN}
 	)
