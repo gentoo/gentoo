@@ -19,7 +19,7 @@ SRC_URI="mirror://sourceforge/linux-gpib/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="isa pcmcia static debug guile perl php python tcl doc firmware"
 
 COMMONDEPEND="
