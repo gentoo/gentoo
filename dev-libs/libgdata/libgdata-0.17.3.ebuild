@@ -16,7 +16,7 @@ SLOT="0/22" # subslot = libgdata soname version
 IUSE="gnome +introspection static-libs test vala"
 REQUIRED_IUSE="vala? ( introspection )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 # gtk+ is needed for gdk
 # configure checks for gtk:3, but only uses it for demos which are not installed
