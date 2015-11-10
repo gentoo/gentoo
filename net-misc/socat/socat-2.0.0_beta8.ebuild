@@ -15,14 +15,11 @@ SRC_URI="http://www.dest-unreach.org/socat/download/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="libressl ssl readline ipv6 tcpd"
+IUSE="ssl readline ipv6 tcpd"
 
 DEPEND="
-	ssl? (
-		!libressl? ( dev-libs/openssl:* )
-		libressl? ( dev-libs/libressl:= )
-	)
-	readline? ( sys-libs/readline:= )
+	ssl? ( >=dev-libs/openssl-0.9.6 )
+	readline? ( >=sys-libs/readline-4.1 )
 	tcpd? ( sys-apps/tcp-wrappers )
 "
 RDEPEND="${DEPEND}"
