@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils flag-o-matic java-pkg-opt-2 multilib
 
-PATCHSET_VER="0"
+PATCHSET_VER="1"
 
 DESCRIPTION="free, small, and standard compliant Prolog compiler"
 HOMEPAGE="http://www.swi-prolog.org/"
@@ -16,7 +16,7 @@ SRC_URI="http://www.swi-prolog.org/download/stable/src/swipl-${PV}.tar.gz
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="archive debug doc +gmp hardened java minimal odbc +readline ssl static-libs test uuid zlib X"
+IUSE="archive debug doc +gmp hardened java libressl minimal odbc +readline ssl static-libs test uuid zlib X"
 
 RDEPEND="sys-libs/ncurses:=
 	archive? ( app-arch/libarchive )
@@ -24,7 +24,10 @@ RDEPEND="sys-libs/ncurses:=
 	odbc? ( dev-db/unixODBC )
 	readline? ( sys-libs/readline:= )
 	gmp? ( dev-libs/gmp:0 )
-	ssl? ( dev-libs/openssl:0 )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0 )
+		libressl? ( dev-libs/libressl )
+	)
 	java? ( >=virtual/jdk-1.5:= )
 	uuid? ( dev-libs/ossp-uuid )
 	X? (
