@@ -13296,7 +13296,7 @@ net-analyzer/argus 3.0.8.1 3.0.8.2_rc2: network Audit Record Generation and Util
 net-analyzer/argus-clients 3.0.8: Clients for net-analyzer/argus
 net-analyzer/arp-scan 1.9: ARP scanning and fingerprinting tool
 net-analyzer/arp-sk 0.0.16-r2: A swiss knife tool for ARP
-net-analyzer/arping 2.15 2.15-r2 2.15-r3: A utility to see if a specific IP address is taken and what MAC address owns it
+net-analyzer/arping 2.15 2.15-r2 2.15-r3 9999: ARP Ping
 net-analyzer/arpoison 0.6-r2: A utility to poison ARP caches
 net-analyzer/arpon 2.7-r1 2.7.2: ArpON (Arp handler inspectiON) is a portable Arp handler
 net-analyzer/arptools 1.0.2: a collection of libnet and libpcap based ARP utilities
