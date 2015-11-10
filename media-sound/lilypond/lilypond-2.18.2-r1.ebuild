@@ -13,13 +13,13 @@ HOMEPAGE="http://lilypond.org/"
 
 LICENSE="GPL-3 FDL-1.3"
 SLOT="0"
-KEYWORDS="amd64 ~hppa x86"
+KEYWORDS="~amd64 ~hppa ~x86"
 LANGS=" ca cs da de el eo es fi fr it ja nl ru sv tr uk vi zh_TW"
 IUSE="debug emacs profile vim-syntax ${LANGS// / linguas_}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND=">=app-text/ghostscript-gpl-8.15
-	>=dev-scheme/guile-1.8.2[deprecated,regex]
+	>=dev-scheme/guile-1.8.2:12[deprecated,regex]
 	media-fonts/urw-fonts
 	media-libs/fontconfig
 	media-libs/freetype:2
@@ -76,6 +76,8 @@ src_prepare() {
 
 	# remove bundled texinfo file (fixes bug #448560)
 	rm tex/texinfo.tex || die
+
+	epatch_user
 
 	eautoreconf
 }
