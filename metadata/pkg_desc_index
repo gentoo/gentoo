@@ -4648,7 +4648,6 @@ dev-libs/libgringotts 1.2.1: Needed by Gringotts
 dev-libs/libgudev 230: GObject bindings for libudev
 dev-libs/libgusb 0.2.6 0.2.7: GObject wrapper for libusb
 dev-libs/libgweather 3.14.3 3.14.4 3.16.1: Library to access weather information from online services
-dev-libs/libhash 1.0.3-r1: a small hash library written in C
 dev-libs/libhid 0.2.16-r4: Provides a generic and flexible way to access and interact with USB HID devices
 dev-libs/libhome 0.10.2-r1: libhome is a library providing a getpwnam() emulation
 dev-libs/libhtmlparse 0.1.13-r1: HTML parsing library. It takes HTML tags, text, and calls callbacks for each type of token
