@@ -88,6 +88,6 @@ src_install() {
 	doenvd "${ENVD}"
 
 	dodoc doc/release-notes.txt
-	dohtml "${DISTDIR}"/ccl.html
+	use doc && dohtml "${DISTDIR}"/ccl.html
 	use doc && dohtml -r examples
 }
