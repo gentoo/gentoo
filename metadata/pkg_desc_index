@@ -12261,7 +12261,7 @@ media-libs/opencollada 1.2.2_p20150207 9999: Stream based read/write library for
 media-libs/opencolorio 1.0.8 1.0.9 1.0.9-r1: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 2.4.9 2.4.10 3.0.0: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 2.4.9 2.4.10 2.4.11 3.0.0: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 1.7.0 2.0.1-r1 2.1.0 2.2.0: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r1 1.0.1-r2: OpenEXR CTL libraries
 media-libs/opengl-apple 3 4 5: Links to Apple's OpenGL X11 implementation
@@ -13746,7 +13746,7 @@ net-ftp/ncftp 3.2.5-r3: An extremely configurable ftp client
 net-ftp/netkit-ftpd 0.17-r8: The netkit FTP server with optional SSL support
 net-ftp/oftpd 0.3.7-r7 0.3.7-r8 0.3.7-r9 0.3.7-r10: Secure, small, anonymous only ftpd
 net-ftp/oneclickftp 0.5.1: The somehow different FTP client
-net-ftp/proftpd 1.3.5a: An advanced and very configurable FTP server
+net-ftp/proftpd 1.3.5a 1.3.5a-r1: An advanced and very configurable FTP server
 net-ftp/profxp 3_pre2-r2: FXP (server-to-server FTP) commandline client written in Perl
 net-ftp/pure-ftpd 1.0.40 1.0.41 1.0.42: Fast, production-quality, standard-conformant FTP server
 net-ftp/pureadmin 0.4-r1: GUI tool used to make the management of Pure-FTPd a little easier
