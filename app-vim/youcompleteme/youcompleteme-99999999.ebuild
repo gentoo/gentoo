@@ -33,7 +33,7 @@ COMMON_DEPEND="
 RDEPEND="
 	${COMMON_DEPEND}
 	dev-python/bottle[${PYTHON_USEDEP}]
-	dev-python/futures[${PYTHON_USEDEP}]
+	virtual/python-futures[${PYTHON_USEDEP}]
 	dev-python/jedi[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/sh[${PYTHON_USEDEP}]

@@ -17,7 +17,8 @@ KEYWORDS="~amd64"
 IUSE="+cython doc +libev +murmur test"
 
 RDEPEND="
-	$(python_gen_cond_dep '=dev-python/futures-2.2.0[${PYTHON_USEDEP}]' python2_7)
+	~dev-python/futures-2.2.0
+	virtual/python-futures[${PYTHON_USEDEP}]
 	>=dev-python/six-1.6[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}

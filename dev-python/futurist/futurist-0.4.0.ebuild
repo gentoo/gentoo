@@ -26,5 +26,5 @@ RDEPEND="
 	${CDEPEND}
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/monotonic-0.3[${PYTHON_USEDEP}]
-	>=dev-python/futures-3.0.0[$(python_gen_usedep 'python2_7')]
+	virtual/python-futures[${PYTHON_USEDEP}]
 	>=dev-python/contextlib2-0.4.0[${PYTHON_USEDEP}]"
