@@ -19,7 +19,7 @@ IUSE="alsa ao debug ipv6 kerberos libressl libsamplerate oss pcsc-lite xrandr"
 S=${WORKDIR}/${PN}-${MY_PV}
 
 RDEPEND="
-	!libressl? ( dev-libs/openssl:0 )
+	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:= )
 	x11-libs/libX11
 	x11-libs/libXext
