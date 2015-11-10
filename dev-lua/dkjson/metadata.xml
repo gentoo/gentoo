@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<longdescription lang="en">
+		dkjson is a module for encoding and decoding JSON data. It supports
+		UTF-8.
+
+		JSON (JavaScript Object Notation) is a format for serializing data
+		based on the syntax for JavaScript data structures.
+
+		dkjson is written in Lua without any dependencies, but
+		when LPeg is available dkjson uses it to speed up decoding.
+	</longdescription>
+</pkgmetadata>
