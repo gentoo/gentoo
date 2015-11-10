@@ -10,4 +10,4 @@ RDEPEND=!<sys-apps/sysvinit-2.88-r6 ncurses? ( >=sys-libs/ncurses-5.7-r7:=[unico
 SLOT=0/5
 SRC_URI=mirror://sourceforge/procps-ng/procps-ng-3.3.11.tar.xz https://gitlab.com/procps-ng/procps/commit/b2f49b105d23c833d733bf7dfb99cb98e4cae383.patch -> procps-3.3.11-remove_Unix98_output_limits.patch
 _eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=08de12123a5c857ff0d82614b389ba57
+_md5_=8df304687f69efa957b4a17d3a6cd6e9
