@@ -1,9 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-
 inherit autotools eutils
 
 MY_PV=${PV/_/-}
@@ -14,12 +13,14 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}-${MY_PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="alsa ao debug ipv6 kerberos libsamplerate oss pcsc-lite"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
+IUSE="alsa ao debug ipv6 kerberos libressl libsamplerate oss pcsc-lite xrandr"
 
 S=${WORKDIR}/${PN}-${MY_PV}
 
-RDEPEND=">=dev-libs/openssl-0.9.6b
+RDEPEND="
+	!libressl? ( dev-libs/openssl:0 )
+	libressl? ( dev-libs/libressl:= )
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXau
@@ -28,7 +29,8 @@ RDEPEND=">=dev-libs/openssl-0.9.6b
 	ao? ( >=media-libs/libao-0.8.6 )
 	kerberos? ( net-libs/libgssglue )
 	libsamplerate? ( media-libs/libsamplerate )
-	pcsc-lite? ( >=sys-apps/pcsc-lite-1.6.6 )"
+	pcsc-lite? ( >=sys-apps/pcsc-lite-1.6.6 )
+	xrandr? ( x11-libs/libXrandr )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-libs/libXt"
@@ -39,10 +41,9 @@ src_prepare() {
 	sed -i -e "s:${strip}::" Makefile.in \
 		|| die "sed failed in Makefile.in"
 
-	# Automagic dependency on libsamplerate
+	# Automagic dependencies
 	epatch "${FILESDIR}"/${PN}-1.6.0-sound_configure.patch
-	# bug #280923
-	epatch "${FILESDIR}"/${PN}-1.7.0-libao_crash.patch
+	epatch "${FILESDIR}"/${P}-xrandr_configure.patch
 
 	epatch_user
 
@@ -64,6 +65,7 @@ src_configure() {
 		$(use_with debug) \
 		$(use_with ipv6) \
 		$(use_with libsamplerate) \
+		$(use_with xrandr) \
 		$(use_enable kerberos credssp) \
 		$(use_enable pcsc-lite smartcard) \
 		${sound_conf}
@@ -72,13 +74,4 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install
 	dodoc doc/HACKING doc/TODO doc/keymapping.txt
-
-	# For #180313 - applies to versions >= 1.5.0
-	# Fixes sf.net bug
-	# http://sourceforge.net/tracker/index.php?func=detail&aid=1725634&group_id=24366&atid=381349
-	# check for next version to see if this needs to be removed
-	insinto /usr/share/rdesktop/keymaps
-	newins "${FILESDIR}/rdesktop-keymap-additional" additional
-	newins "${FILESDIR}/rdesktop-keymap-cs" cs
-	newins "${FILESDIR}/rdesktop-keymap-sk" sk
 }
