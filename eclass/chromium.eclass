@@ -140,7 +140,7 @@ chromium_pkg_postinst() {
 		elog "Depending on your desktop environment, you may need"
 		elog "to install additional packages to get icons on the Downloads page."
 		elog
-		elog "For KDE, the required package is kde-apps/oxygen-icons."
+		elog "For KDE, the required package is kde-frameworks/oxygen-icons."
 		elog
 		elog "For other desktop environments, try one of the following:"
 		elog " - x11-themes/gnome-icon-theme"

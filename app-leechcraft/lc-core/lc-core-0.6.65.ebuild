@@ -29,7 +29,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	dev-qt/qtsvg:4
 	|| (
-		kde-apps/oxygen-icons
+		kde-frameworks/oxygen-icons
 		x11-themes/kfaenza
 	 )"
 

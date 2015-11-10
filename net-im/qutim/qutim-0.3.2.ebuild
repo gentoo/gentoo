@@ -90,7 +90,7 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	xmpp? ( app-crypt/qca:2[gpg] )
 	oscar? ( app-crypt/qca:2[openssl] )
-	kde-apps/oxygen-icons
+	kde-frameworks/oxygen-icons
 "
 
 DOCS=( AUTHORS INSTALL ChangeLog )
