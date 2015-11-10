@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 
 DEPEND="dev-python/empy[${PYTHON_USEDEP}]
-	virtual/python-imaging[${PYTHON_USEDEP}]"
+	dev-python/pillow[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${PN}-pillow.patch" )

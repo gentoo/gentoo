@@ -21,7 +21,7 @@ IUSE="cdparanoia doc dvd encode fbcon flac gphoto2 jpeg lame lirc matrox mixer n
 
 RDEPEND="
 	dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pygame[${PYTHON_USEDEP}]
 	>=dev-python/twisted-core-2.5[${PYTHON_USEDEP}]
 	>=dev-python/twisted-web-0.6[${PYTHON_USEDEP}]

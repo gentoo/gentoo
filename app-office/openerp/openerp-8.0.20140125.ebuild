@@ -51,7 +51,7 @@ CDEPEND="!app-office/openerp-web
 	dev-python/unittest2[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
-	virtual/python-imaging[jpeg,${PYTHON_USEDEP}]
+	dev-python/pillow[jpeg,${PYTHON_USEDEP}]
 	${PYTHON_DEPS}
 	"
 

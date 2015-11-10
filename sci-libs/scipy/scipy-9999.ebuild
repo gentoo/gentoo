@@ -33,7 +33,7 @@ DEPEND="${CDEPEND}
 	"
 
 RDEPEND="${CDEPEND}
-	virtual/python-imaging[${PYTHON_USEDEP}]"
+	dev-python/pillow[${PYTHON_USEDEP}]"
 
 DOCS=( HACKING.rst.txt THANKS.txt )
 

@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-python/pyopenssl-0.13[${PYTHON_USEDEP}]
 	>=dev-python/axiom-0.7.0[${PYTHON_USEDEP}]
 	>=dev-python/cssutils-0.9.5[${PYTHON_USEDEP}]
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	>=dev-python/nevow-0.9.5[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2012j[${PYTHON_USEDEP}]
 	>=dev-python/twisted-core-14.0.0[${PYTHON_USEDEP}]

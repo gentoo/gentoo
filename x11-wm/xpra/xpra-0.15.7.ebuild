@@ -61,7 +61,7 @@ RDEPEND="${COMMON_DEPEND}
 	dev-python/ipython[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/rencode[${PYTHON_USEDEP}]
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	virtual/ssh
 	x11-apps/setxkbmap
 	x11-apps/xmodmap

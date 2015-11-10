@@ -16,7 +16,7 @@ IUSE=""
 
 DEPEND=">=dev-python/axiom-0.6.0-r1[${PYTHON_USEDEP}]
 	>=dev-python/cssutils-0.9.10-r1[${PYTHON_USEDEP}]
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	>=dev-python/nevow-0.10.0-r1[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2012j[${PYTHON_USEDEP}]
 	dev-python/twisted-core[${PYTHON_USEDEP}]

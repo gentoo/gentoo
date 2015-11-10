@@ -22,7 +22,7 @@ RDEPEND="app-text/silvercity
 	>=dev-db/metakit-2.4.9.2[python,${PYTHON_USEDEP}]
 	>=dev-python/cheetah-0.9.15[${PYTHON_USEDEP}]
 	>=dev-python/docutils-0.3[${PYTHON_USEDEP}]
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	>=dev-python/medusa-0.5.4[${PYTHON_USEDEP}]
 	>=dev-python/pyrex-0.5[${PYTHON_USEDEP}]
 	>=dev-python/soappy-0.11.1[${PYTHON_USEDEP}]

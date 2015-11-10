@@ -36,7 +36,7 @@ DEPEND="!media-plugins/mytharchive
 	=media-tv/mythtv-${PV}*:=[python]
 	mytharchive? (
 		app-cdr/dvd+rw-tools
-		virtual/python-imaging:=
+		dev-python/pillow:=
 		media-video/dvdauthor
 		media-video/mjpegtools[png]
 		media-video/transcode

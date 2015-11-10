@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="virtual/python-imaging
+RDEPEND="dev-python/pillow
 	dev-python/paste"
 DEPEND="${RDEPEND}
 	dev-python/setuptools

@@ -18,7 +18,7 @@ KEYWORDS="amd64 ppc x86"
 IUSE="cdparanoia doc dvd encode fbcon flac gphoto2 jpeg lame lirc matrox mixer nls tv vorbis xine X"
 
 RDEPEND="dev-python/beautifulsoup:python-2
-	virtual/python-imaging
+	dev-python/pillow
 	dev-python/pygame
 	>=dev-python/twisted-core-2.5
 	>=dev-python/twisted-web-0.6

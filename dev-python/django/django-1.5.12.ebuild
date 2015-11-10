@@ -22,7 +22,7 @@ IUSE="doc mysql postgres sqlite test"
 
 PY2_USEDEP=$(python_gen_usedep python2_7)
 PY23_USEDEP=$(python_gen_usedep python2_7 'python{3_3,3_4}')
-RDEPEND="virtual/python-imaging[${PYTHON_USEDEP}]
+RDEPEND="dev-python/pillow[${PYTHON_USEDEP}]
 	postgres? ( dev-python/psycopg:2[${PY23_USEDEP}] )
 	mysql? ( >=dev-python/mysql-python-1.2.3[${PY2_USEDEP}] )"
 DEPEND="${RDEPEND}

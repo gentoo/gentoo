@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="dev-python/html5lib[${PYTHON_USEDEP}]
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pyPdf[${PYTHON_USEDEP}]
 	dev-python/reportlab[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
