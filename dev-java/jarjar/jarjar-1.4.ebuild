@@ -12,7 +12,7 @@ SRC_URI="https://jarjar.googlecode.com/files/${PN}-src-${PV}.zip"
 HOMEPAGE="http://jarjar.sourceforge.net"
 LICENSE="GPL-2"
 SLOT="1"
-KEYWORDS="amd64 x86 ppc ppc64 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
+KEYWORDS="amd64 ~arm x86 ppc ppc64 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
 IUSE=""
 
 CDEPEND="
