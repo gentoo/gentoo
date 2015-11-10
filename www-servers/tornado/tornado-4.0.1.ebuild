@@ -17,9 +17,10 @@ SLOT="0"
 KEYWORDS="amd64 arm hppa ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="curl test"
 
-RDEPEND="curl? ( $(python_gen_cond_dep 'dev-python/pycurl[${PYTHON_USEDEP}]' python2_7) )
-		dev-python/certifi[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/backports-ssl-match-hostname[${PYTHON_USEDEP}]' python2_7 pypy)"
+RDEPEND="
+	curl? ( $(python_gen_cond_dep 'dev-python/pycurl[${PYTHON_USEDEP}]' python2_7) )
+	dev-python/certifi[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/backports-ssl-match-hostname[${PYTHON_USEDEP}]' python2_7 pypy)"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND}
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7 pypy)

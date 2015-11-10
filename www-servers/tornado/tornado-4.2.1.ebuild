@@ -23,9 +23,9 @@ CDEPEND="
 	$(python_gen_cond_dep 'dev-python/backports-ssl-match-hostname[${PYTHON_USEDEP}]' 'python2_7')
 	$(python_gen_cond_dep 'dev-python/certifi[${PYTHON_USEDEP}]' 'python2_7' 'python3_3')
 	$(python_gen_cond_dep 'dev-python/futures[${PYTHON_USEDEP}]' 'python2_7 pypy')
-	$(python_gen_cond_dep 'dev-python/singledispatch[${PYTHON_USEDEP}]' 'python2_7' 'python3_3')
 	$(python_gen_cond_dep 'dev-python/twisted-names[${PYTHON_USEDEP}]' 'python2_7')
 	$(python_gen_cond_dep 'dev-python/twisted-web[${PYTHON_USEDEP}]' 'python2_7')
+	virtual/python-singledispatch
 "
 # dev-python/twisted-* only supports python2_7 currently
 DEPEND="
