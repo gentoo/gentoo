@@ -4,13 +4,13 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 pypy )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r1
 
-DESCRIPTION="Tornado is a Python web framework and asynchronous networking library, ... ."
-HOMEPAGE="http://www.tornadoweb.org/"
-SRC_URI="https://github.com/tornadoweb/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+DESCRIPTION="Python web framework and asynchronous networking library"
+HOMEPAGE="http://www.tornadoweb.org/ https://pypi.python.org/pypi/tornado"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -18,12 +18,15 @@ KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples test"
 
 CDEPEND="
-	$(python_gen_cond_dep 'dev-python/pycurl[${PYTHON_USEDEP}]' python2_7)
 	dev-python/certifi[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/asyncio[${PYTHON_USEDEP}]' 'python3_3')
-	$(python_gen_cond_dep 'dev-python/backports-ssl-match-hostname[${PYTHON_USEDEP}]' python2_7 pypy)
-	$(python_gen_cond_dep 'dev-python/twisted-names[${PYTHON_USEDEP}]' python2_7)
-	$(python_gen_cond_dep 'dev-python/twisted-web[${PYTHON_USEDEP}]' python2_7)
+	>=dev-python/pycurl-7.19.3.1[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'virtual/python-asyncio[${PYTHON_USEDEP}]' 'python3*')
+	$(python_gen_cond_dep 'dev-python/backports-ssl-match-hostname[${PYTHON_USEDEP}]' 'python2_7')
+	$(python_gen_cond_dep 'dev-python/twisted-names[${PYTHON_USEDEP}]' 'python2_7')
+	$(python_gen_cond_dep 'dev-python/twisted-web[${PYTHON_USEDEP}]' 'python2_7')
+	virtual/python-backports_abc[${PYTHON_USEDEP}]
+	virtual/python-futures[${PYTHON_USEDEP}]
+	virtual/python-singledispatch[${PYTHON_USEDEP}]
 "
 # dev-python/twisted-* only supports python2_7 currently
 DEPEND="
@@ -41,7 +44,7 @@ RDEPEND="${CDEPEND}"
 
 python_prepare_all() {
 	local PATCHES=(
-		"${FILESDIR}"/${PV}-drop-intersphinx.patch
+		"${FILESDIR}"/drop-intersphinx.patch
 	)
 
 	distutils-r1_python_prepare_all
@@ -52,7 +55,7 @@ python_compile_all() {
 }
 
 python_test() {
-	"${PYTHON}" -m tornado.test.runtests || die "Tests fail with ${EPYTHON}"
+	"${PYTHON}" -m tornado.test.runtests || die "tests failed under ${EPYTHON}"
 }
 
 python_install_all() {

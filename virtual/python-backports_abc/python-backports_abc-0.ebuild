@@ -8,14 +8,16 @@ PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
 
 inherit python-r1
 
-DESCRIPTION="A virtual for the Python concurrent.futures module"
+DESCRIPTION="A virtual for the Python 3.3+ collections.abc module"
 HOMEPAGE=""
 SRC_URI=""
 
 LICENSE=""
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE=""
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 RDEPEND="${PYTHON_DEPS}
-	$(python_gen_cond_dep 'dev-python/futures[${PYTHON_USEDEP}]' python2_7 pypy)"
+	$(python_gen_cond_dep 'dev-python/backports-abc[${PYTHON_USEDEP}]' python2_7 python3_3 pypy)"

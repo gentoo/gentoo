@@ -173,7 +173,9 @@ multilib_src_install() {
 	if multilib_is_native_abi && use python; then
 		python_foreach_impl libxml2_py_emake \
 			DESTDIR="${D}" \
-			exampledir="${EPREFIX}"/usr/share/doc/${PF}/python/examples
+			docsdir="${EPREFIX}"/usr/share/doc/${PF}/python \
+			exampledir="${EPREFIX}"/usr/share/doc/${PF}/python/examples \
+			install
 		python_foreach_impl python_optimize
 	fi
 }
@@ -190,11 +192,6 @@ multilib_src_install_all() {
 
 	rm -rf "${ED}"/usr/share/doc/${P}
 	einstalldocs
-
-	if use python ; then
-		docinto python
-		dodoc "${S}"/python/TODO
-	fi
 
 	if ! use examples; then
 		rm -rf "${ED}"/usr/share/doc/${PF}/examples

@@ -27,7 +27,7 @@ IUSE="doc"
 
 RDEPEND="
 	>=dev-lang/tk-8.3.4:0=
-	virtual/pmw[${PYTHON_USEDEP}]"
+	virtual/python-pmw[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${MY_PV}"

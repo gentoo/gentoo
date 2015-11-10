@@ -26,7 +26,7 @@ DEPEND="
 		$(python_gen_cond_dep 'dev-python/epydoc[${PYTHON_USEDEP}]' python2_7)
 		|| (
 			dev-python/dnspython:0[${PYTHON_USEDEP}]
-			virtual/dnspython:0[${PYTHON_USEDEP}]
+			virtual/python-dnspython:0[${PYTHON_USEDEP}]
 		)
 	)"
 

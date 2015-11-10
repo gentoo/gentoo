@@ -23,7 +23,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/pycountry[${PYTHON_USEDEP}]
-		virtual/dnspython[${PYTHON_USEDEP}] )"
+		virtual/python-dnspython[${PYTHON_USEDEP}] )"
 RDEPEND=""
 
 RESTRICT="test"

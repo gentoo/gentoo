@@ -4,11 +4,11 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
+PYTHON_COMPAT=( python3_{3,4,5} )
 
 inherit python-r1
 
-DESCRIPTION="A virtual for the Python concurrent.futures module"
+DESCRIPTION="A virtual for the Python 3.4+ asyncio module"
 HOMEPAGE=""
 SRC_URI=""
 
@@ -17,5 +17,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86"
 IUSE=""
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 RDEPEND="${PYTHON_DEPS}
-	$(python_gen_cond_dep 'dev-python/futures[${PYTHON_USEDEP}]' python2_7 pypy)"
+	$(python_gen_cond_dep 'dev-python/asyncio[${PYTHON_USEDEP}]' python3_3)"

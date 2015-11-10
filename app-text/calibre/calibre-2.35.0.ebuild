@@ -44,7 +44,7 @@ COMMON_DEPEND="
 	>=dev-python/beautifulsoup-3.0.5:python-2[python_targets_python2_7(-)]
 	|| (
 		>=dev-python/dnspython-1.6.0:0[python_targets_python2_7(-)]
-		virtual/dnspython[python_targets_python2_7(-)]
+		virtual/python-dnspython[python_targets_python2_7(-)]
 	)
 	>=dev-python/cssselect-0.7.1[python_targets_python2_7(-)]
 	>=dev-python/cssutils-0.9.9[python_targets_python2_7(-)]
