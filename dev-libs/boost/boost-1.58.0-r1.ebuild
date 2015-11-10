@@ -74,10 +74,19 @@ create_user-config.jam() {
 	fi
 
 	if python_bindings_needed; then
+		# boost expects libpython$(pyver) and doesn't allow overrides
+		# and the build system is so creepy that it's easier just to
+		# provide a symlink (linker's going to use SONAME anyway)
+		# TODO: replace it with proper override one day
+		ln -f -s "$(python_get_library_path)" "${T}/lib${EPYTHON}$(get_libname)" || die
+
 		if tc-is-cross-compiler; then
 			python_configuration="using python : ${EPYTHON#python} : : ${SYSROOT:-${EROOT}}/usr/include/${EPYTHON} : ${SYSROOT:-${EROOT}}/usr/$(get_libdir) ;"
 		else
-			python_configuration="using python : : ${PYTHON} ;"
+			# note: we need to provide version explicitly because of
+			# a bug in the build system:
+			# https://github.com/boostorg/build/pull/104
+			python_configuration="using python : ${EPYTHON#python} : ${PYTHON} : $(python_get_includedir) : ${T} ;"
 		fi
 	fi
 
