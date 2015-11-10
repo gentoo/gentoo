@@ -183,16 +183,6 @@ dev-java/jakarta-jstl
 # Bug #560932 and bug #557006. Masked for removal in 30 days.
 dev-libs/libhash
 
-# Michael Palimaka <kensington@gentoo.org (9 Oct 2015)
-# Superceded by >=app-crypt/qca-2.1
-# Masked for removal in 30 days
-<app-crypt/qca-2.1
-app-crypt/qca-cyrus-sasl
-app-crypt/qca-gnupg
-app-crypt/qca-logger
-app-crypt/qca-ossl
-app-crypt/qca-pkcs11
-
 # Anthony G. Basile <blueness@gentoo.org> (6 Oct 2015)
 # Dead upstream for a long time.  Masked for removal
 # in 30 days.
