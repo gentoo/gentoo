@@ -31,6 +31,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-hashlib_ssl_deprecation.patch"
+	"${FILESDIR}/${P}-ssl_fields.patch"
 )
 
 python_install_all() {
