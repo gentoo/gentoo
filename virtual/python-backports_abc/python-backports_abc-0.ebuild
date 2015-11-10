@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python3_{3,4,5} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
 
 inherit python-r1
 
@@ -20,4 +20,4 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	$(python_gen_cond_dep 'dev-python/backports-abc[${PYTHON_USEDEP}]' python3_3)"
+	$(python_gen_cond_dep 'dev-python/backports-abc[${PYTHON_USEDEP}]' python2_7 python3_3 pypy)"
