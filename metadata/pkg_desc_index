@@ -14497,7 +14497,7 @@ net-misc/radvd 1.9.8 1.15 2.10 2.11 2.11-r1: Linux IPv6 Router Advertisement Dae
 net-misc/rancid 2.3.8: Really Awesome New Cisco confIg Differ
 net-misc/rancid-git 2.3.8: Really Awesome New Cisco confIg Differ with git extensions and support for colorized emails!
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
-net-misc/rdesktop 1.7.1 1.8.1 1.8.2 1.8.3 1.8.3-r1: A Remote Desktop Protocol Client
+net-misc/rdesktop 1.8.3 1.8.3-r1 1.8.3-r2: A Remote Desktop Protocol Client
 net-misc/redir 2.2.1: Redir is a port redirector
 net-misc/remmina 1.2.0_rc3 1.2.0_rc3-r1 9999: A GTK+ RDP, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r1: redirects TCP connections from one IP address and port to another
