@@ -26,9 +26,11 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="geoip gtk libnotify setproctitle sound webinterface"
 
-DEPEND=">=net-libs/rb_libtorrent-0.14.9[python]
+DEPEND="${PYTHON_DEPS}
+	>=net-libs/rb_libtorrent-0.14.9[python]
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-util/intltool"
-RDEPEND=">=net-libs/rb_libtorrent-0.14.9[python]
+RDEPEND="${DEPEND}
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
 	dev-python/pyxdg[${PYTHON_USEDEP}]
@@ -51,13 +53,14 @@ python_prepare_all() {
 	)
 
 	distutils-r1_python_prepare_all
+	python_fix_shebang .
 }
 
 _distutils-r1_create_setup_cfg() {
 	# bug 531370: deluge has its own plugin system. No need to relocate its egg info files.
 	# Override this call from the distutils-r1 eclass.
 	# This does not respect the distutils-r1 API. DONOT copy this example.
-	:
+	einfo "skip distutils-r1_create_setup_cfg"
 }
 
 python_install_all() {
