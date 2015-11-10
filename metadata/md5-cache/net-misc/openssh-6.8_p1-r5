@@ -11,4 +11,4 @@ REQUIRED_USE=pie? ( !static ) ssh1? ( ssl ) static? ( !kerberos !pam ) X509? ( !
 SLOT=0
 SRC_URI=mirror://openbsd/OpenSSH/portable/openssh-6.8p1.tar.gz mirror://gentoo/openssh-6.8_p1-sctp.patch.xz hpn? ( mirror://gentoo/openssh-6.8p1-r5-hpnssh14v5.tar.xz https://dev.gentoo.org/~vapier/dist/openssh-6.8p1-r5-hpnssh14v5.tar.xz mirror://sourceforge/hpnssh/openssh-6.8p1-r5-hpnssh14v5.tar.xz ) ldap? ( mirror://gentoo/openssh-lpk-6.8p1-0.3.14.patch.xz ) X509? ( http://roumenpetrov.info/openssh/x509-8.3.1/openssh-6.8p1+x509-8.3.1.diff.gz mirror://gentoo/openssh-6.8_p1-x509-8.3.1-glue.patch.xz )
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=4f13096f114d2bdb002442336eb33db3
+_md5_=c003c8530a3bde7d9ccdd70c5da3affa
