@@ -103,7 +103,7 @@ RDEPEND=">=app-text/hunspell-1.2
 	system-icu? ( >=dev-libs/icu-51.1:= )
 	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1 )
 	system-sqlite? ( >=dev-db/sqlite-3.8.9:3[secure-delete,debug=] )
-	system-libvpx? ( >=media-libs/libvpx-1.3.0[postproc] )
+	system-libvpx? ( >=media-libs/libvpx-1.3.0:0=[postproc] )
 "
 
 if [[ -n ${MOZCONFIG_OPTIONAL_GTK3} ]]; then
