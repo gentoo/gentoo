@@ -16,7 +16,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	sci-libs/ViSP:=
+	sci-libs/ViSP:=[xml]
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/roscpp
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
