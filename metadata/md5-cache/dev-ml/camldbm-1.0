@@ -3,10 +3,10 @@ DEPEND=|| ( >=sys-libs/gdbm-1.9.1-r2[berkdb] <sys-libs/gdbm-1.9.1-r2 ) >=dev-lan
 DESCRIPTION=OCaml binding to the NDBM/GDBM Unix databases
 EAPI=5
 HOMEPAGE=http://forge.ocamlcore.org/projects/camldbm/
-KEYWORDS=~amd64 ~arm ~ppc ~x86 ~amd64-fbsd ~x86-fbsd
+KEYWORDS=amd64 ~arm ~ppc ~x86 ~amd64-fbsd ~x86-fbsd
 LICENSE=LGPL-2-with-linking-exception
 RDEPEND=|| ( >=sys-libs/gdbm-1.9.1-r2[berkdb] <sys-libs/gdbm-1.9.1-r2 ) >=dev-lang/ocaml-3.12:=[ocamlopt] !<dev-lang/ocaml-4[gdbm]
 SLOT=0/1.0
 SRC_URI=http://forge.ocamlcore.org/frs/download.php/728/camldbm-1.0.tgz
 _eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=a9a72ea6b0e44a0f9e8facde67275a17
+_md5_=cfb773b4bc29ab6ffd5f9ee960b12b3e
