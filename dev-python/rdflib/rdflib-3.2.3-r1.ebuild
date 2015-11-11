@@ -5,7 +5,7 @@
 EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_3} )
-PYTHON_REQ_USE="sqlite?"
+PYTHON_REQ_USE="sqlite?,threads(+)"
 
 inherit distutils-r1
 
