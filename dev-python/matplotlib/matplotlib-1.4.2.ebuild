@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
-PYTHON_REQ_USE='tk?'
+PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 eutils flag-o-matic virtualx
 
