@@ -17,7 +17,7 @@ HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/JSS"
 SRC_URI="https://dev.gentoo.org/~chewi/distfiles/${P}.tar.bz2"
 LICENSE="MPL-1.1"
 SLOT="3.4"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="examples test"
 
 CDEPEND=">=dev-libs/nspr-4.7.1
