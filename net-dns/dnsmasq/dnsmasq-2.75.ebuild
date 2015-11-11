@@ -64,7 +64,9 @@ use_have() {
 	shift
 
 	while [[ ${uword} ]]; do
-		uword=${uword^^*}
+		# Switch to ^^ when we switch to EAPI=6.
+		#uword=${uword^^}
+		uword=$(tr '[:lower:]' '[:upper:]' <<<"${uword}")
 
 		if ! use "${useflag}"; then
 			echo -n " -DNO_${uword}"

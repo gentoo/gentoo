@@ -90,8 +90,9 @@ DOCS="Changelog"
 # https://github.com/clementine-player/Clementine/issues/3935
 RESTRICT="test"
 
+# Switch to ^ when we switch to EAPI=6.
 [[ ${PV} == *9999* ]] || \
-S="${WORKDIR}/${P^}"
+S="${WORKDIR}/C${P:1}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.2.3-namespaces.patch"

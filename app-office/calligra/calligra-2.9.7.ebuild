@@ -157,7 +157,10 @@ src_configure() {
 
 	# applications
 	for cal_ft in ${CAL_FTS}; do
-		use calligra_features_${cal_ft} && myproducts+=( ${cal_ft^^} )
+		# Switch to ^^ when we switch to EAPI=6.
+		#local prod=${cal_ft^^}
+		local prod=$(tr '[:lower:]' '[:upper:]' <<<"${cal_ft}")
+		use calligra_features_${cal_ft} && myproducts+=( "${prod}" )
 	done
 
 	local mycmakeargs=( -DPRODUCTSET="${myproducts[*]}" )

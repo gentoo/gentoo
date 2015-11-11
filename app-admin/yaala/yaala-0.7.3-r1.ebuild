@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,17 +28,20 @@ src_prepare() {
 src_install() {
 	dobin ${PN}
 
-	exeinto /usr/lib64/perl5/vendor_perl/${PN^}/
-	doexe lib/${PN^}/*.pm
+	# Switch to ^y when we switch to EAPI=6.
+	local mod="Y${PN:1}"
 
-	exeinto /usr/lib64/perl5/vendor_perl/${PN^}/Data/
-	doexe lib/${PN^}/Data/*.pm
+	exeinto /usr/lib64/perl5/vendor_perl/${mod}/
+	doexe lib/${mod}/*.pm
 
-	exeinto /usr/lib64/perl5/vendor_perl/${PN^}/Parser/
-	doexe lib/${PN^}/Parser/*.pm
+	exeinto /usr/lib64/perl5/vendor_perl/${mod}/Data/
+	doexe lib/${mod}/Data/*.pm
 
-	exeinto /usr/lib64/perl5/vendor_perl/${PN^}/Report/
-	doexe lib/${PN^}/Report/*.pm
+	exeinto /usr/lib64/perl5/vendor_perl/${mod}/Parser/
+	doexe lib/${mod}/Parser/*.pm
+
+	exeinto /usr/lib64/perl5/vendor_perl/${mod}/Report/
+	doexe lib/${mod}/Report/*.pm
 
 	dodoc AUTHORS CHANGELOG README{,.persistency,.selections}
 
