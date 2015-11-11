@@ -9,7 +9,7 @@ PYTHON_REQ_USE="tk"
 
 inherit eutils flag-o-matic multilib prefix python-single-r1 toolchain-funcs
 
-DESCRIPTION="Graphical NMR assignment and integration program for proteins, nucleic acids, and other polymers"
+DESCRIPTION="Graphical NMR assignment and integration program for large polymers"
 HOMEPAGE="http://www.cgl.ucsf.edu/home/sparky/"
 SRC_URI="http://www.cgl.ucsf.edu/home/sparky/distrib-${PV}/${PN}-source-${PV}.tar.gz"
 
@@ -18,7 +18,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
 
-RDEPEND="
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RDEPEND="${PYTHON_DEPS}
 	app-shells/tcsh
 	dev-lang/tcl:0=
 	dev-lang/tk:0="
@@ -45,7 +47,7 @@ src_prepare() {
 	epatch ${PATCHES[@]}
 
 	sed -i \
-		-e "s:^\(set PYTHON =\).*:\1 ${EPREFIX}/usr/bin/${EPYTHON}:g" \
+		-e "s:^\(set PYTHON =\).*:\1 ${PYTHON}:g" \
 		-e "s:^\(setenv SPARKY_INSTALL[[:space:]]*\).*:\1 ${EPREFIX}/usr/$(get_libdir)/${PN}:g" \
 		-e "s:tcl8.4:tcl${TKVER}:g" \
 		-e "s:tk8.4:tk${TKVER}:g" \
@@ -60,7 +62,7 @@ src_compile() {
 		PYTHON_VERSION="${PYVER}" \
 		PYTHON_PREFIX="${EPREFIX}/usr" \
 		PYTHON_LIB="${EPREFIX}/usr/$(get_libdir)" \
-		PYTHON_INC="${EPREFIX}/usr/include/${EPYTHON}" \
+		PYTHON_INC="$(python_get_includedir)" \
 		TK_PREFIX="${EPREFIX}/usr" \
 		TCLTK_VERSION="${TKVER}" \
 		TKLIBS="-L${EPREFIX}/usr/$(get_libdir)/ -ltk -ltcl -lX11" \
@@ -76,7 +78,7 @@ src_compile() {
 		PYTHON_VERSION="${PYVER}" \
 		PYTHON_PREFIX="${EPREFIX}/usr" \
 		PYTHON_LIB="${EPREFIX}/usr/$(get_libdir)" \
-		PYTHON_INC="${EPREFIX}/usr/include/${EPYTHON}" \
+		PYTHON_INC="$(python_get_includedir)" \
 		TK_PREFIX="${EPREFIX}/usr" \
 		TCLTK_VERSION="${TKVER}" \
 		TKLIBS="-L${EPREFIX}/usr/$(get_libdir)/ -ltk -ltcl -lX11" \
