@@ -90,21 +90,21 @@ src_prepare() {
 }
 
 src_configure() {
-		local disable
-		use gdbm     || disable+=" gdbm"
-		use ncurses  || disable+=" _curses _curses_panel"
-		use readline || disable+=" readline"
-		use sqlite   || disable+=" _sqlite3"
-		use ssl      || export PYTHON_DISABLE_SSL="1"
-		use tk       || disable+=" _tkinter"
-		use xml      || disable+=" _elementtree pyexpat" # _elementtree uses pyexpat.
-		export PYTHON_DISABLE_MODULES="${disable}"
+	local disable
+	use gdbm     || disable+=" gdbm"
+	use ncurses  || disable+=" _curses _curses_panel"
+	use readline || disable+=" readline"
+	use sqlite   || disable+=" _sqlite3"
+	use ssl      || export PYTHON_DISABLE_SSL="1"
+	use tk       || disable+=" _tkinter"
+	use xml      || disable+=" _elementtree pyexpat" # _elementtree uses pyexpat.
+	export PYTHON_DISABLE_MODULES="${disable}"
 
-		if ! use xml; then
-			ewarn "You have configured Python without XML support."
-			ewarn "This is NOT a recommended configuration as you"
-			ewarn "may face problems parsing any XML documents."
-		fi
+	if ! use xml; then
+		ewarn "You have configured Python without XML support."
+		ewarn "This is NOT a recommended configuration as you"
+		ewarn "may face problems parsing any XML documents."
+	fi
 
 	if [[ -n "${PYTHON_DISABLE_MODULES}" ]]; then
 		einfo "Disabled modules: ${PYTHON_DISABLE_MODULES}"
@@ -126,6 +126,7 @@ src_configure() {
 
 	# Export CXX so it ends up in /usr/lib/python3.X/config/Makefile.
 	tc-export CXX
+
 	# The configure script fails to use pkg-config correctly.
 	# http://bugs.python.org/issue15506
 	export ac_cv_path_PKG_CONFIG=$(tc-getPKG_CONFIG)
@@ -172,7 +173,8 @@ src_compile() {
 	touch Include/graminit.h Python/graminit.c || die
 
 	cd "${BUILD_DIR}" || die
-	emake CPPFLAGS="" CFLAGS="" LDFLAGS=""
+
+	emake CPPFLAGS= CFLAGS= LDFLAGS=
 
 	# Work around bug 329499. See also bug 413751 and 457194.
 	if has_version dev-libs/libffi[pax_kernel]; then
@@ -243,9 +245,9 @@ src_install() {
 		dosym "${abiver}" "/usr/bin/python${SLOT}"
 	fi
 
-		use elibc_uclibc && rm -fr "${libdir}/test"
-		use sqlite || rm -fr "${libdir}/"{sqlite3,test/test_sqlite*}
-		use tk || rm -fr "${ED}usr/bin/idle${SLOT}" "${libdir}/"{idlelib,tkinter,test/test_tk*}
+	use elibc_uclibc && rm -fr "${libdir}/test"
+	use sqlite || rm -fr "${libdir}/"{sqlite3,test/test_sqlite*}
+	use tk || rm -fr "${ED}usr/bin/idle${SLOT}" "${libdir}/"{idlelib,tkinter,test/test_tk*}
 
 	use threads || rm -fr "${libdir}/multiprocessing"
 	use wininst || rm -f "${libdir}/distutils/command/"wininst-*.exe
