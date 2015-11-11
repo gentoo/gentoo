@@ -878,7 +878,7 @@ python_wrapper_setup() {
 		rm -f "${workdir}"/pkgconfig/python{,2,3}.pc || die
 
 		local EPYTHON PYTHON PYTHON_CONFIG
-		python_export "${impl}" EPYTHON PYTHON PYTHON_CONFIG
+		python_export "${impl}" EPYTHON PYTHON
 
 		local pyver pyother
 		if python_is_python3; then
@@ -904,6 +904,8 @@ python_wrapper_setup() {
 
 		# CPython-specific
 		if [[ ${EPYTHON} == python* ]]; then
+			python_export "${impl}" PYTHON_CONFIG
+
 			cat > "${workdir}/bin/python-config" <<-_EOF_
 				#!/bin/sh
 				exec "${PYTHON_CONFIG}" "\${@}"
