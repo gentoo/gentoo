@@ -1,0 +1,11 @@
+--- source/unix/gtkui/gtkui.cpp.old	2015-11-11 09:13:57.417684436 +0100
++++ source/unix/gtkui/gtkui.cpp	2015-11-11 09:14:12.176407155 +0100
+@@ -317,7 +317,7 @@
+ 				GTK_DIALOG_DESTROY_WITH_PARENT,
+ 				GTK_MESSAGE_INFO,
+ 				GTK_BUTTONS_OK,
+-				message);
++				"%s", message);
+ 	gtk_dialog_run(GTK_DIALOG(messagewindow));
+ 	gtk_widget_destroy(messagewindow);
+ }
