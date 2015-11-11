@@ -366,11 +366,6 @@ dev-db/postgresql-server
 # Security mask, wrt bug #529728
 <app-antivirus/clamav-0.98.5
 
-# Justin Lecher <jlec@gentoo.org> (02 Dec 2014)
-# Not supported by upstream anymore
-# Revdeps broken, #531392
-net-analyzer/openvas-administrator
-
 # Richard Yao <ryao@gentoo.org> (29 Nov 2014)
 # Depends on media-libs/lcms:0, which has unspecified security vulnerabilities.
 # Masked until mscms.dll.so that links to media-libs/lcms:2 is backported from
