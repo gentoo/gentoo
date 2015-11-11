@@ -10,5 +10,5 @@ RDEPEND=>=sys-devel/gettext-0.12.1 gdata? ( >=dev-libs/libgdata-0.17.1 ) gtk3? (
 REQUIRED_USE=libcanberra? ( notification ) libindicate? ( notification ) libnotify? ( notification ) networkmanager? ( dbus ) smime? ( pgp )
 SLOT=0
 SRC_URI=http://www.claws-mail.org/download.php?file=releases/claws-mail-3.13.0.tar.xz
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	8644194de7be04932084752fb1327080	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	659e1453f79bca2ea00a2212631e5c33	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	8644194de7be04932084752fb1327080	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	8e7c81d776e0d31ec4e48f87aec4b975	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=76e1cb194bce2443b61c2fd329e3be86
