@@ -171,6 +171,7 @@ src_prepare() {
 		EPATCH_EXCLUDE="050_${PN}-5.0.2-nopie.patch"
 	fi
 
+	EPATCH_EXCLUDE="007_virtualbox-4.3.16-gsoap2813.patch" \
 	EPATCH_SUFFIX="patch" \
 	EPATCH_FORCE="yes" \
 	epatch "${WORKDIR}/patches"
@@ -289,26 +290,20 @@ src_install() {
 	# VBoxSVC and VBoxManage need to be pax-marked (bug #403453)
 	# VBoxXPCOMIPCD (bug #524202)
 	for each in VBox{Manage,SVC,XPCOMIPCD} ; do
-		if ! pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/${each} ; then
-			ewarn "Couldn't pax-mark /usr/$(get_libdir)/${PN}/${each}"
-		fi
+		pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/${each}
 	done
 
 	if ! use headless ; then
 		doins VBoxSDL
 		fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBoxSDL
 		fperms 4750 /usr/$(get_libdir)/${PN}/VBoxSDL
-		if ! pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxSDL ; then
-			ewarn "Couldn't pax-mark /usr/$(get_libdir)/${PN}/VBoxSDL"
-		fi
+		pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxSDL
 
 		if use opengl && use qt4 ; then
 			doins VBoxTestOGL
 			fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBoxTestOGL
 			fperms 0750 /usr/$(get_libdir)/${PN}/VBoxTestOGL
-			if ! pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxTestOGL ; then
-				ewarn "Couldn't pax-mark /usr/$(get_libdir)/${PN}/VBoxTestOGL"
-			fi
+			pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxTestOGL
 		fi
 
 		dosym /usr/$(get_libdir)/${PN}/VBox /usr/bin/VBoxSDL
@@ -317,9 +312,7 @@ src_install() {
 			doins VirtualBox
 			fowners root:vboxusers /usr/$(get_libdir)/${PN}/VirtualBox
 			fperms 4750 /usr/$(get_libdir)/${PN}/VirtualBox
-			if ! pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VirtualBox ; then
-				ewarn "Couldn't pax-mark /usr/$(get_libdir)/${PN}/VirtualBox"
-			fi
+			pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VirtualBox
 
 			dosym /usr/$(get_libdir)/${PN}/VBox /usr/bin/VirtualBox
 
@@ -338,9 +331,7 @@ src_install() {
 	doins VBoxHeadless
 	fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBoxHeadless
 	fperms 4750 /usr/$(get_libdir)/${PN}/VBoxHeadless
-	if ! pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxHeadless ; then
-		ewarn "Couldn't pax-mark /usr/$(get_libdir)/${PN}/VBoxHeadless"
-	fi
+	pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxHeadless
 
 	insinto /usr/$(get_libdir)/${PN}
 	# Install EFI Firmware files (bug #320757)
