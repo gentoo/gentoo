@@ -21,7 +21,9 @@ RDEPEND=">=dev-libs/dbus-glib-0.100
 		x11-libs/gtk+:3
 		x11-libs/libICE
 		x11-libs/libSM
-		x11-libs/vte:2.91"
+		x11-libs/vte:2.91
+		!x11-terms/roxterm:0"
+# slotted versions of roxterm need block one another due to file collisions. #565288
 DEPEND="${RDEPEND}
 		${PYTHON_DEPS}
 		dev-libs/libxslt
