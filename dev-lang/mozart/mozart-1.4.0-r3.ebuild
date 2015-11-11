@@ -23,7 +23,7 @@ IUSE="doc emacs examples gdbm static tcl threads tk"
 
 RDEPEND="
 	dev-lang/perl
-	dev-libs/gmp
+	dev-libs/gmp:0=
 	sys-libs/zlib
 	emacs? ( virtual/emacs )
 	gdbm? ( sys-libs/gdbm  )
