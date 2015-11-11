@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Justin Lecher <jlec@gentoo.org> (10 Nov 2015)
+# Vulnerable package CVE-2014-{1932,1933}
+# Bug: 507982
+dev-python/imaging
+
+# Justin Lecher <jlec@gentoo.org> (10 Nov 2015)
 # Compatibility virtual for transition from
 # dev-python/imaging to dev-python/pillow
 # obsolete now #508266

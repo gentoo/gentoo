@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci-physics</herd>
-<longdescription lang="en">
+  <herd>sci-physics</herd>
+  <longdescription lang="en">
   Geant simulates the passage of subatomic particles through matter, for
   instance, particle detectors. Geant 3 simulations are performed by
   linking Fortran code supplied by the user with the Geant libraries,
@@ -11,15 +11,15 @@
   Geant 4 is a complete rewrite in C++ with addition of other modern
   features and detectors.
 </longdescription>
-<use>
-  <flag name="data">Add a lot of standard physics data files for geant4</flag>
-  <flag name="dawn">Add support for <pkg>media-gfx/dawn</pkg> (3D postscript
+  <use>
+    <flag name="data">Add a lot of standard physics data files for geant4</flag>
+    <flag name="dawn">Add support for <pkg>media-gfx/dawn</pkg> (3D postscript
   rendering)</flag>
-  <flag name="gdml">Enable geometry markup language for xml</flag>
-  <flag name="geant3">Add compatibility for geant321 to geant4</flag>
-  <flag name="granular">Produce many small libraries instead of global ones</flag>
-  <flag name="inventor">Add support for Open Inventor SGI toolkit via Coin3D</flag>
-  <flag name="raytracerx">Enable raytracing for physics events</flag>
-  <flag name="vrml">Enable output of geant4 in vrml formats</flag>
-</use>
+    <flag name="gdml">Enable geometry markup language for xml</flag>
+    <flag name="geant3">Add compatibility for geant321 to geant4</flag>
+    <flag name="granular">Produce many small libraries instead of global ones</flag>
+    <flag name="inventor">Add support for Open Inventor SGI toolkit via Coin3D</flag>
+    <flag name="raytracerx">Enable raytracing for physics events</flag>
+    <flag name="vrml">Enable output of geant4 in vrml formats</flag>
+  </use>
 </pkgmetadata>
