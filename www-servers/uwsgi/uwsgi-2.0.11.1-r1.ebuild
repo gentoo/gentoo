@@ -5,6 +5,7 @@
 EAPI="5"
 
 PYTHON_COMPAT=( python2_7 python3_{3,4} pypy )
+PYTHON_REQ_USE="threads(+)"
 
 RUBY_OPTIONAL="yes"
 USE_RUBY="ruby19 ruby20 ruby21"
