@@ -9273,7 +9273,7 @@ dev-util/cdiff 0.9.6 0.9.7 9999: Colored, side-by-side diff terminal viewer
 dev-util/cflow 1.4: C function call hierarchy analyzer
 dev-util/cgdb 0.6.6 0.6.7: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
-dev-util/checkbashisms 2.0.0.2 2.0.0.2-r2: Perl script to check for commonly used bash features not defined by POSIX
+dev-util/checkbashisms 2.0.0.2 2.0.0.2-r2 2.15.9: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 4.4 5.4 5.5: A development tool to help programmers write Java code that adheres to a coding standard
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/cloc 1.60 1.62 1.64: Count Lines of Code
@@ -14037,7 +14037,7 @@ net-libs/libyahoo2 1.0.1: interface to the new Yahoo! Messenger protocol
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/libzrtpcpp 2.3.4 4.2.4: GNU RTP stack for the zrtp protocol developed by Phil Zimmermann
 net-libs/loudmouth 1.4.3-r2: Lightweight C Jabber library
-net-libs/mbedtls 2.1.2: Cryptographic library for embedded systems
+net-libs/mbedtls 2.1.2 2.2.0: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
 net-libs/miniupnpc 1.8 1.9.20150427 1.9.20150917-r1 1.9.20151008: UPnP client library and a simple UPnP client
 net-libs/nacl 0_p20110221: high-speed software library for network communication, encryption, decryption, signatures
