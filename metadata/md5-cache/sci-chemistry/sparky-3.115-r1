@@ -1,14 +1,15 @@
 DEFINED_PHASES=compile install prepare setup
-DEPEND=app-shells/tcsh dev-lang/tcl:0= dev-lang/tk:0=
-DESCRIPTION=Graphical NMR assignment and integration program for proteins, nucleic acids, and other polymers
+DEPEND=>=dev-lang/python-2.7.5-r2:2.7[tk] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] app-shells/tcsh dev-lang/tcl:0= dev-lang/tk:0=
+DESCRIPTION=Graphical NMR assignment and integration program for large polymers
 EAPI=5
 HOMEPAGE=http://www.cgl.ucsf.edu/home/sparky/
 IUSE=examples python_targets_python2_7
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=sparky
-RDEPEND=app-shells/tcsh dev-lang/tcl:0= dev-lang/tk:0=
+RDEPEND=>=dev-lang/python-2.7.5-r2:2.7[tk] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] app-shells/tcsh dev-lang/tcl:0= dev-lang/tk:0=
+REQUIRED_USE=python_targets_python2_7
 RESTRICT=mirror
 SLOT=0
 SRC_URI=http://www.cgl.ucsf.edu/home/sparky/distrib-3.115/sparky-source-3.115.tar.gz
 _eclasses_=eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	prefix	e7f2b9c6e57342e5d25eac22fce23062	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	8e7c81d776e0d31ec4e48f87aec4b975	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=8e0959bd2021fb352af2ded0158f9479
+_md5_=e2c2bb135f2f8e2cfd755c4e1db53ede
