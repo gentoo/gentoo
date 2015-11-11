@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst setup
-DEPEND=>=dev-libs/dbus-glib-0.100 dev-libs/glib:2 x11-libs/gtk+:3 x11-libs/libICE x11-libs/libSM x11-libs/vte:2.91 || ( dev-lang/python:3.4 >=dev-lang/python-3.3.2-r2:3.3 ) dev-libs/libxslt dev-python/lockfile virtual/pkgconfig || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) nls? ( app-text/po4a sys-devel/gettext ) >=sys-apps/sed-4
+DEPEND=>=dev-libs/dbus-glib-0.100 dev-libs/glib:2 x11-libs/gtk+:3 x11-libs/libICE x11-libs/libSM x11-libs/vte:2.91 !x11-terms/roxterm:0 || ( dev-lang/python:3.4 >=dev-lang/python-3.3.2-r2:3.3 ) dev-libs/libxslt dev-python/lockfile virtual/pkgconfig || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) nls? ( app-text/po4a sys-devel/gettext ) >=sys-apps/sed-4
 DESCRIPTION=A terminal emulator designed to integrate with the ROX environment
 EAPI=5
 HOMEPAGE=http://roxterm.sourceforge.net/
 IUSE=nls
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2 LGPL-3
-RDEPEND=>=dev-libs/dbus-glib-0.100 dev-libs/glib:2 x11-libs/gtk+:3 x11-libs/libICE x11-libs/libSM x11-libs/vte:2.91
+RDEPEND=>=dev-libs/dbus-glib-0.100 dev-libs/glib:2 x11-libs/gtk+:3 x11-libs/libICE x11-libs/libSM x11-libs/vte:2.91 !x11-terms/roxterm:0
 SLOT=1
 SRC_URI=mirror://sourceforge/roxterm/roxterm-3.1.5.tar.xz
 _eclasses_=eutils	8644194de7be04932084752fb1327080	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	60a62ae0ee8cd93b4ba99a4c1371eb8b	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=9655a4420b7958925ecbc8e449d21d0b
+_md5_=203fa393f10f63fbc966a3e4ace0e1b3
