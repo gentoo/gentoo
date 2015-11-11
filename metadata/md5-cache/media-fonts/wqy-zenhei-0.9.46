@@ -9,5 +9,5 @@ LICENSE=GPL-2-with-font-exception
 RESTRICT=binchecks strip test
 SLOT=0
 SRC_URI=mirror://sourceforge/project/wqy/wqy-zenhei-snapshot/0.9.46-May/wqy-zenhei-0.9.46-May.tar.bz2
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	font	cd7790315ca5b8c505e1e0513df6acce	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	font	cd7790315ca5b8c505e1e0513df6acce	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=4a3ba3a3b1901232cdb419e7775c3dd6

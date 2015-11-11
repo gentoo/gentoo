@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~arm ~ppc ~x86
 LICENSE=freedist
 SLOT=0
 SRC_URI=http://www.quivira-font.com/files/Quivira.otf -> quivira-4.0.otf doc? ( http://www.quivira-font.com/files/Quivira.pdf -> quivira-4.0.pdf http://www.quivira-font.com/files/QuiviraTestpage.pdf -> quivira-4.0-Testpage.pdf http://www.quivira-font.com/files/QuiviraCombining.pdf -> quivira-4.0-Combining.pdf http://www.quivira-font.com/files/QuiviraPUA.pdf -> quivira-4.0-PUA.pdf )
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	font	cd7790315ca5b8c505e1e0513df6acce	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	font	cd7790315ca5b8c505e1e0513df6acce	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=b75ee177e1f9bc30ab28758912bdc6c2

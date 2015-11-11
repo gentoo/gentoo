@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl app-admin/apache-tools app-admin/makepasswd virtual/perl-IO-Compress dev-perl/Archive-Zip dev-perl/libwww-perl >=app-arch/tar-1.13.20 app-arch/par2cmdline app-arch/gzip app-arch/bzip2 virtual/mta www-apache/mod_perl www-servers/apache net-misc/rsync >=dev-perl/File-RsyncP-0.68 rss? ( dev-perl/XML-RSS ) samba? ( net-fs/samba ) >=app-admin/webapp-config-1.50.15
 SLOT=0
 SRC_URI=mirror://sourceforge/backuppc/BackupPC-3.3.0.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	webapp	42c6ef7af496b228f9854b3c81e4b226
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	webapp	42c6ef7af496b228f9854b3c81e4b226
 _md5_=f065c92d039e5539bbc7027de5e4fe99

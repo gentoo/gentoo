@@ -8,5 +8,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Moose-1.990.0 >=dev-perl/Data-Stream-Bulk-0.60.0 dev-perl/DateTime-Format-HTTP dev-perl/Digest-HMAC dev-perl/Digest-MD5-File dev-perl/libwww-perl virtual/perl-IO dev-perl/LWP-UserAgent-Determined virtual/perl-MIME-Base64 >=dev-perl/Moose-0.850.0 >=dev-perl/MooseX-StrictConstructor-0.160.0 >=dev-perl/MooseX-Types-DateTime-MoreCoercions-0.70.0 dev-perl/regexp-common dev-perl/XML-LibXML dev-perl/URI dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/P/PF/PFIG/Net-Amazon-S3-0.56.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
 _md5_=3fcb68fc492271b51e8e028a5cd3bcb9

@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=dev-libs/libxml2:2 sci-libs/gsl sys-devel/gettext sys-libs/readline sys-libs/zlib virtual/libiconv cairo? ( x11-libs/cairo ) emacs? ( virtual/emacs ) gtk? ( gnome-base/libglade:2.0 x11-libs/gtk+:2 >=x11-libs/gtksourceview-2.2:2.0 ) ncurses? ( sys-libs/ncurses ) postgres? ( dev-db/postgresql[server] )
 SLOT=0
 SRC_URI=mirror://gnu/pspp/pspp-0.8.1.tar.gz
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	8644194de7be04932084752fb1327080	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=696d00a8259042184b6a6c7dfafa5ca0

@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=x11-libs/libXpm virtual/jpeg media-libs/libpng x11-apps/rgb
 SLOT=0
 SRC_URI=mirror://sourceforge/mcj/transfig.3.2.5d.tar.gz mirror://gentoo/fig2mpdf-1.1.2.tar.bz2
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=14a09110c7134d1c2a80480bad8f7ef3

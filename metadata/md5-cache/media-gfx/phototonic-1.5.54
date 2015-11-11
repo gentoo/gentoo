@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=dev-qt/qtwidgets:5 dev-qt/qtgui:5 dev-qt/qtcore:5 media-gfx/exiv2:= svg? ( dev-qt/qtsvg:5 ) tiff? ( dev-qt/qtimageformats:5 )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~yngwin/distfiles/phototonic-1.5.54.tar.xz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=d261c282cc5a154074a1be07eb67281a

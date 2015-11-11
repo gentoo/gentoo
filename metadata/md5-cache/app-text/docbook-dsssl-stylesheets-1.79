@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=app-text/sgml-common
 SLOT=0
 SRC_URI=mirror://sourceforge/docbook/docbook-dsssl-1.79.tar.bz2
-_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	sgml-catalog	b6e9d36507f43d79b6df9cb78d6eb4dd	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	sgml-catalog	b6e9d36507f43d79b6df9cb78d6eb4dd	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=4ee3467539933ebe204c0e1ad7d766f6

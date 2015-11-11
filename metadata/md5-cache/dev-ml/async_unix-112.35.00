@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=>=dev-lang/ocaml-4.00.0:= >=dev-ml/bin-prot-109.15.00:= >=dev-ml/comparelib-109.27.00:= >=dev-ml/herelib-109.15.00:= >=dev-ml/pa_ounit-109.27.00:= >=dev-ml/pipebang-109.15.00:= >=dev-ml/core-112.35.00:= >=dev-ml/async_kernel-112.35.00:= >=dev-ml/sexplib-109.20.00:= >=dev-ml/fieldslib-109.20.00:= dev-ml/pa_test:= dev-ml/camlp4:= >=dev-lang/ocaml-3.12:=[ocamlopt?]
 SLOT=0/112.35.00
 SRC_URI=http://ocaml.janestreet.com/ocaml-core/112.35/files/async_unix-112.35.00.tar.gz
-_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	43da5163ba106e87d22d2e7d6d67537f	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	oasis	dab31007fb098ff15db810bfe5001e64	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	8644194de7be04932084752fb1327080	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	oasis	dab31007fb098ff15db810bfe5001e64	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=c64306e06d7f234489b229977c04144d

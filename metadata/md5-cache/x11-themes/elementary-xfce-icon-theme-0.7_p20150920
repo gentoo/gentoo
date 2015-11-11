@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=public-domain GPL-1 GPL-2 GPL-3
 SLOT=0
 SRC_URI=https://github.com/shimmerproject/elementary-xfce/archive/b19b0b26fc2aba875fef5b06173423af48cbe563.tar.gz -> elementary-xfce-icon-theme-0.7_p20150920.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=e0d7a894882609d0321a077938c1f84f

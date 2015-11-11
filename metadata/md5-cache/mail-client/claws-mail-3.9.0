@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=>=x11-libs/gtk+-2.20:2 pda? ( >=app-pda/jpilot-0.99 ) ssl? ( >=net-libs/gnutls-2.2.0 ) ldap? ( >=net-nds/openldap-2.0.7 ) crypt? ( >=app-crypt/gpgme-0.4.5 ) dbus? ( >=dev-libs/dbus-glib-0.60 ) dillo? ( www-client/dillo ) spell? ( >=app-text/enchant-1.0.0 ) imap? ( >=net-libs/libetpan-0.57 ) nntp? ( >=net-libs/libetpan-0.57 ) startup-notification? ( x11-libs/startup-notification ) bogofilter? ( mail-filter/bogofilter ) session? ( x11-libs/libSM x11-libs/libICE ) smime? ( >=app-crypt/gpgme-0.4.5 ) app-misc/mime-types x11-misc/shared-mime-info
 SLOT=0
 SRC_URI=mirror://sourceforge/sylpheed-claws/claws-mail-3.9.0.tar.bz2
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	43da5163ba106e87d22d2e7d6d67537f	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	8644194de7be04932084752fb1327080	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=43c3c44b61ad22148bb185dd461dbb5c

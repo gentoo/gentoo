@@ -9,5 +9,5 @@ LICENSE=LGPL-2
 RDEPEND=>=dev-libs/ecore-1.7.10 >=dev-libs/eet-1.7.10 nls? ( sys-devel/gettext )
 SLOT=0
 SRC_URI=https://download.enlightenment.org/releases/eio-1.7.10.tar.bz2
-_eclasses_=enlightenment	c185b1fa0d87798fd07fb1cd85866b23	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=enlightenment	c185b1fa0d87798fd07fb1cd85866b23	eutils	8644194de7be04932084752fb1327080	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=46947d38aa13c0a0a07dbaefc91a0a0d

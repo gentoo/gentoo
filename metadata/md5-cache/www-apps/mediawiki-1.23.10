@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/php-5.3.2[json,mysql?,postgres?,session,xml,xmlreader] imagem
 RESTRICT=test
 SLOT=1.23.10
 SRC_URI=http://releases.wikimedia.org/mediawiki/1.23/mediawiki-1.23.10.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	webapp	42c6ef7af496b228f9854b3c81e4b226
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	webapp	42c6ef7af496b228f9854b3c81e4b226
 _md5_=41b2793e2f1f71ae3cc8f378de37b422

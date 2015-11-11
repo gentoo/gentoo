@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=!static? ( ncurses? ( >=sys-libs/ncurses-5.9-r3 amd64? ( >=sys-libs/ncurses-5.9-r3[abi_x86_32(-)] ) ) )
 SLOT=0
 SRC_URI=mirror://gentoo/grub-0.97.tar.gz mirror://gnu-alpha/grub/grub-0.97.tar.gz mirror://gentoo/splash.xpm.gz mirror://gentoo/grub-0.97-patches-1.14.tar.bz2
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	mount-boot	41ed556fa5641393d5323e421c8e5bcf	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	pax-utils	9dd3f9de6dccb2463faf55e568439d1c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	mount-boot	41ed556fa5641393d5323e421c8e5bcf	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	pax-utils	9dd3f9de6dccb2463faf55e568439d1c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=0b641013d154a1fd2dcb5725fc77ecc7

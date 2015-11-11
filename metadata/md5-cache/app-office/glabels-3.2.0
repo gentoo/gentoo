@@ -9,5 +9,5 @@ LICENSE=GPL-2 FDL-1.1 LGPL-2
 RDEPEND=>=dev-libs/glib-2.28.2:2 >=x11-libs/gtk+-3.0.9:3 >=dev-libs/libxml2-2.7.8:2 >=gnome-base/librsvg-2.32.0:2 >=x11-libs/cairo-1.10.0 >=x11-libs/pango-1.28.1 barcode? ( >=app-text/barcode-0.98 >=media-gfx/qrencode-3.1 ) eds? ( >=gnome-extra/evolution-data-server-2.30.3 )
 SLOT=0
 SRC_URI=mirror://gnome/sources/glabels/3.2/glabels-3.2.0.tar.xz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	8644194de7be04932084752fb1327080	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=fbc758faf9efc0c591a1dd2fc6fc41e3

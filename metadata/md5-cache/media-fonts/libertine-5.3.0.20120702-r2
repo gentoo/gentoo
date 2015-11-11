@@ -9,5 +9,5 @@ LICENSE=|| ( GPL-2-with-font-exception OFL-1.1 )
 RDEPEND=!<x11-libs/pango-1.20.4
 SLOT=0
 SRC_URI=mirror://sourceforge/linuxlibertine/LinLibertineOTF_5.3.0_2012_07_02.tgz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	font	cd7790315ca5b8c505e1e0513df6acce	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	8644194de7be04932084752fb1327080	font	cd7790315ca5b8c505e1e0513df6acce	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=845d704933cb576fd01bf93e2640f556

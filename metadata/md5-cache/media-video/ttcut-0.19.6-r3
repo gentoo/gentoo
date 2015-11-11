@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=media-libs/libmpeg2-0.4.0 dev-qt/qtgui:4 dev-qt/qtopengl:4 virtual/glu virtual/opengl media-video/mplayer >=media-video/ffmpeg-1.0.8[encode]
 SLOT=0
 SRC_URI=mirror://sourceforge/ttcut.berlios/ttcut-0.19.6.tar.gz
-_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	8644194de7be04932084752fb1327080	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=5b0b5d6bc436b4b32bf33c04d0dedcf0

@@ -6,5 +6,5 @@ KEYWORDS=alpha amd64 ~arm hppa ppc sparc x86
 LICENSE=GPL-2 LGPL-2 BSD
 SLOT=0
 SRC_URI=http://www.catb.org/~esr/terminfo/termtypes.tc.gz mirror://gentoo/termcap-2.0.8.tar.bz2 mirror://gentoo/termcap-2.0.8-patches-2.tar.bz2
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=f2dfff99cabd20b36dfec291e2895227

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=http://vico.kleinplanet.de/files/vc-fonts-20020207.tar.bz2 mirror://gentoo/bleed3.bdf.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	font	cd7790315ca5b8c505e1e0513df6acce	font-ebdftopcf	2152f6c46f91648120cdb689c0895d58	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	font	cd7790315ca5b8c505e1e0513df6acce	font-ebdftopcf	2152f6c46f91648120cdb689c0895d58	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=7efa09dd1b2805af9c45e72b8f1abf87

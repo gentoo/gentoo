@@ -10,5 +10,5 @@ RDEPEND=|| ( media-sound/pulseaudio media-libs/alsa-lib ) dev-libs/expat dev-lib
 RESTRICT=strip mirror
 SLOT=0
 SRC_URI=x86? ( https://dl.google.com/linux/talkplugin/deb/pool/main/g/google-talkplugin/google-talkplugin_5.41.0.0-1_i386.deb ) amd64? ( https://dl.google.com/linux/talkplugin/deb/pool/main/g/google-talkplugin/google-talkplugin_5.41.0.0-1_amd64.deb )
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	mozextension	3d8ee4835f89ff39d4666656aa603433	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	nsplugins	bf5bfcef1d2f0adad7e6230455df8e91	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	8644194de7be04932084752fb1327080	mozextension	3d8ee4835f89ff39d4666656aa603433	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	nsplugins	bf5bfcef1d2f0adad7e6230455df8e91	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=9bc185a0e6eb6ef6427ceeef9edeb814

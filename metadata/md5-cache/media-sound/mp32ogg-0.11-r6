@@ -7,5 +7,5 @@ LICENSE=Artistic
 RDEPEND=media-sound/mpg123 dev-perl/MP3-Info dev-perl/String-ShellQuote media-sound/vorbis-tools
 SLOT=0
 SRC_URI=ftp://ftp.faceprint.com/pub/software/scripts/mp32ogg
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=249eebdc0d14ce677acf075919c077e4

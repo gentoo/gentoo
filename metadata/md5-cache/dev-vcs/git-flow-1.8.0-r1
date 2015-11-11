@@ -7,5 +7,5 @@ LICENSE=BSD MIT
 RDEPEND=dev-vcs/git
 SLOT=0
 SRC_URI=https://github.com/petervanderdoes/gitflow/archive/1.8.0.tar.gz -> git-flow-1.8.0.tar.gz https://github.com/petervanderdoes/git-flow-completion/archive/0.5.1.tar.gz -> git-flow-completion-0.5.1.tar.gz
-_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=4b384598408d936ea0307391e32edfa9

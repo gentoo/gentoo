@@ -8,5 +8,5 @@ LICENSE=BSD-2
 RDEPEND=sys-apps/pcsc-lite
 SLOT=0
 SRC_URI=http://yubico.github.io/ykneo-ccid-tools/releases/ykneo-ccid-tools-0.0.0.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	udev	37ef89be271b9ae8aa64be024ddb39b5
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	udev	37ef89be271b9ae8aa64be024ddb39b5
 _md5_=10a1692e062a5e06e22a87916569f6e6

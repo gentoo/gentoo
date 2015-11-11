@@ -8,5 +8,5 @@ RDEPEND=!app-emulation/virtualbox-bin !=app-emulation/virtualbox-9999
 RESTRICT=mirror
 SLOT=0
 SRC_URI=http://download.virtualbox.org/virtualbox/4.3.30/VBoxGuestAdditions_4.3.30.iso
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=450b21d3ab1237b41793af76b07de007

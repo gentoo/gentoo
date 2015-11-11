@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=!<app-text/texlive-core-2010 !<dev-texlive/texlive-basic-2009 !app-text/ptex >=dev-libs/kpathsea-6.1.0_p20120701
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-20130530-source.tar.xz mirror://gentoo/texlive-module-dvips-2013.tar.xz doc? ( mirror://gentoo/texlive-module-dvips.doc-2013.tar.xz )
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	texlive-common	cf8d3d36261adafe564b821b75b34a05	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	texlive-common	cf8d3d36261adafe564b821b75b34a05	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=9c2a75d48004800e4c69d4646c07ef20

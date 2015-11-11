@@ -9,5 +9,5 @@ LICENSE=GPL-2 BSD LGPL-2 MIT BSD-1
 RDEPEND=>=app-arch/par2cmdline-0.4 >=dev-python/cheetah-2.0.1 dev-python/configobj dev-python/feedparser dev-python/gntp dev-python/pythonutils net-misc/wget rar? ( || ( app-arch/unrar app-arch/rar ) ) ssl? ( dev-python/pyopenssl ) unzip? ( >=app-arch/unzip-5.5.2 ) yenc? ( dev-python/yenc ) || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) || ( =dev-lang/python-2.7*[sqlite] =dev-lang/python-2.6*[sqlite] )
 SLOT=0
 SRC_URI=mirror://sourceforge/sabnzbdplus/SABnzbd-0.7.17-src.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=8c0347179d69dbb9e9e5a9258d29173b

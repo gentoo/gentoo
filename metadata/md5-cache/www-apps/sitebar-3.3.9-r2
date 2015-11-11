@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/httpd-php >=app-admin/webapp-config-1.50.15
 SLOT=3.3.9-r2
 SRC_URI=mirror://sourceforge/sitebar/SiteBar-3.3.9.tar.bz2 plugins? ( mirror://sourceforge/sitebar/SiteBarPluginIMAP_3.3.7_1.1.zip mirror://sourceforge/sitebar/SiteBarPluginLDAP_3.3.7_1.1.zip mirror://sourceforge/sitebar/SiteBarPluginMailGate_3.3.7_1.0.4.zip mirror://sourceforge/sitebar/SiteBarPluginMessenger_3.3.7_1.2.zip mirror://sourceforge/sitebar/SiteBarPluginXBELSync_3.3.7_1.1.zip )
-_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	webapp	42c6ef7af496b228f9854b3c81e4b226
+_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	webapp	42c6ef7af496b228f9854b3c81e4b226
 _md5_=916a95530675db5e2a3ce41f141a4b44

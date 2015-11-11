@@ -7,5 +7,5 @@ KEYWORDS=-* ~x64-macos ~x86-macos
 LICENSE=public-domain
 RDEPEND=>=dev-java/java-config-2.2.0 app-eselect/eselect-java
 SLOT=1.6
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	java-vm-2	82eb4c2a4b43108087d4d92d34d2bd0f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	9dd3f9de6dccb2463faf55e568439d1c	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	java-vm-2	82eb4c2a4b43108087d4d92d34d2bd0f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pax-utils	9dd3f9de6dccb2463faf55e568439d1c	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=71b2e23e003a010b83d49f955e44f2f8

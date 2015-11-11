@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=dev-lang/ocaml:=
 SLOT=0/2.2
 SRC_URI=http://tech.motion-twin.com/zip/xml-light-2.2.zip
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=82975624a66ecf28486fcd9b5f985b5c

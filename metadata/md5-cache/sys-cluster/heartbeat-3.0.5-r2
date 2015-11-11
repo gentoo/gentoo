@@ -10,5 +10,5 @@ PDEPEND=sys-cluster/resource-agents
 RDEPEND=sys-cluster/cluster-glue dev-libs/glib:2 virtual/ssh net-libs/gnutls snmp? ( net-analyzer/net-snmp ) =dev-lang/python-2*
 SLOT=0
 SRC_URI=http://hg.linux-ha.org/heartbeat-STABLE_3_0/archive/STABLE-3.0.5.tar.bz2
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	8644194de7be04932084752fb1327080	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=43c6017babc8a5e26b6163446f10de49

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-python/configobj dev-python/pygobject:2 dev-python/pygtk dev-python/pysvn dev-python/simplejson caja? ( dev-python/python-caja dev-python/dbus-python dev-python/gnome-vfs-python ) diff? ( dev-util/meld ) gedit? ( app-editors/gedit ) git? ( dev-python/dulwich ) nautilus? ( >=dev-python/nautilus-python-0.7.0 dev-python/dbus-python dev-python/gnome-vfs-python ) spell? ( dev-python/gtkspell-python ) thunar? ( dev-python/thunarx-python dev-python/dbus-python ) =dev-lang/python-2.7*
 SLOT=0
 SRC_URI=https://github.com/rabbitvcs/rabbitvcs/tarball/v0.16 -> rabbitvcs-0.16.tar.gz
-_eclasses_=distutils	def8c8eb435ec28fd9315114640f6c84	eutils	43da5163ba106e87d22d2e7d6d67537f	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd
+_eclasses_=distutils	def8c8eb435ec28fd9315114640f6c84	eutils	8644194de7be04932084752fb1327080	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd
 _md5_=b8e37a6cd61a13f3ae53db433af8614a

@@ -9,5 +9,5 @@ LICENSE=AGPL-3 Apache-2.0
 RDEPEND=app-arch/snappy >=dev-cpp/yaml-cpp-0.5.1 >=dev-libs/boost-1.50[threads(+)] >=dev-libs/libpcre-8.30[cxx] dev-util/google-perftools[-minimal] ssl? ( dev-libs/openssl:= )
 SLOT=0
 SRC_URI=https://github.com/mongodb/mongo-cxx-driver/archive/legacy-0.0-26compat-2.6.7.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	scons-utils	b7d634f772db55c8af429f50aeec6ee0	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	scons-utils	b7d634f772db55c8af429f50aeec6ee0	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=9b6d73027e874ed1f832a068807dc204

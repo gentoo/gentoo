@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=dev-ml/core:= dev-ml/fieldslib:= dev-ml/pa_ounit:= dev-ml/pa_test:= dev-ml/sexplib:= >=dev-lang/ocaml-3.12:=[ocamlopt?]
 SLOT=0/112.35.00
 SRC_URI=http://ocaml.janestreet.com/ocaml-core/112.35/files/incremental-112.35.00.tar.gz
-_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	43da5163ba106e87d22d2e7d6d67537f	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	oasis	dab31007fb098ff15db810bfe5001e64	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	8644194de7be04932084752fb1327080	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	oasis	dab31007fb098ff15db810bfe5001e64	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=40f6b65d6de35117c4f97bf242ffbcbf

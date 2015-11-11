@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-util/cmake >=dev-libs/openssl-1.0 media-libs/alsa-lib media-libs/libsdl[X,sound,video,alsa] media-libs/portaudio[alsa] media-libs/sdl-mixer media-libs/sdl-sound media-libs/x264:* media-video/ffmpeg:0[X] net-libs/sofia-sip dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 dev-qt/qtmultimedia:4 dev-qt/qtwebkit:4 pulseaudio? ( media-sound/pulseaudio )
 SLOT=0
 SRC_URI=https://github.com/Homer-Conferencing/Homer-Conferencing/archive/V0.25.tar.gz -> homer-0.25.tar.gz https://dev.gentoo.org/~hwoarang/distfiles/homer-0.25-ffmpeg2.patch
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=2f707f6175de1977efe220048cda2b44

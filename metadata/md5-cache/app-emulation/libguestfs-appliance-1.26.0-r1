@@ -8,5 +8,5 @@ LICENSE=GPL-2 LGPL-2
 RDEPEND=!<app-emulation/libguestfs-1.26.0
 SLOT=0
 SRC_URI=http://libguestfs.org/download/binaries/appliance/appliance-1.26.0.tar.xz
-_eclasses_=check-reqs	4f43fb72bc73bd58d75ec601713fae20	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=check-reqs	4f43fb72bc73bd58d75ec601713fae20	eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=f5c7e17f59bbd1765fa4e1aaf387097b

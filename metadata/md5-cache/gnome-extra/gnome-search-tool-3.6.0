@@ -8,5 +8,5 @@ LICENSE=GPL-2 FDL-1.1
 RDEPEND=dev-libs/atk >=dev-libs/glib-2.30:2 sys-apps/grep x11-libs/gdk-pixbuf >=x11-libs/gtk+-3:3 x11-libs/libICE x11-libs/libSM sys-apps/findutils || ( sys-apps/mlocate sys-freebsd/freebsd-ubin ) !<gnome-extra/gnome-utils-3.4
 SLOT=0
 SRC_URI=mirror://gnome/sources/gnome-search-tool/3.6/gnome-search-tool-3.6.0.tar.xz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	8644194de7be04932084752fb1327080	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=e459555b07a758ab55478bb1c65eb366

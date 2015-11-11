@@ -10,5 +10,5 @@ RDEPEND=sys-libs/readline:= sys-libs/ncurses:0= >=net-misc/curl-7.18.0 net-firew
 REQUIRED_USE=libvirtd? ( || ( lxc openvz qemu uml virtualbox xen ) ) lxc? ( caps libvirtd ) openvz? ( libvirtd ) qemu? ( libvirtd ) uml? ( libvirtd ) vepa? ( macvtap ) virtualbox? ( libvirtd ) xen? ( libvirtd ) virt-network? ( libvirtd ) firewalld? ( virt-network )
 SLOT=0/1.2.18
 SRC_URI=http://libvirt.org/sources/libvirt-1.2.18.tar.gz
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	8644194de7be04932084752fb1327080	libtool	7f78cd7d403808a350c9ae23f5821fb4	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=7826ae7c76eede7be88372df2dc1e8c1

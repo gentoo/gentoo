@@ -8,5 +8,5 @@ LICENSE=Artistic-2
 RDEPEND=dev-lang/mono
 SLOT=0
 SRC_URI=mirror://github/sorear/niecza/niecza-24.zip
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=3fac6d195881a11c2551dae2ec1cdc66

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=utils? ( dev-lang/perl )
 SLOT=0
 SRC_URI=http://unifoundry.com/pub/unifont-6.3.20131217/unifont-6.3.20131217.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	font	cd7790315ca5b8c505e1e0513df6acce	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	font	cd7790315ca5b8c505e1e0513df6acce	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=7360e3392feca31bf5609073c434ba4f

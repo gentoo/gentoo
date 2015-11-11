@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=~net-analyzer/nessus-libraries-2.2.9 ~net-analyzer/libnasl-2.2.9 tcpd? ( sys-apps/tcp-wrappers ) gtk? ( x11-libs/gtk+:2 ) prelude? ( dev-libs/libprelude ) !net-analyzer/nessus-client
 SLOT=0
 SRC_URI=ftp://ftp.nessus.org/pub/nessus/nessus-2.2.9/src/nessus-core-2.2.9.tar.gz
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	8644194de7be04932084752fb1327080	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=a9c199bd365555ca310b32f2ff4bc57d

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=net-im/jabber-base-0.01 >=dev-libs/expat-1.95 >=dev-libs/libyaml-0.1.4 >=dev-lang/erlang-15.2[ssl] odbc? ( dev-db/unixODBC ) ldap? ( =net-nds/openldap-2* ) >=dev-libs/openssl-0.9.8e captcha? ( media-gfx/imagemagick[truetype,png] ) zlib? ( >=sys-libs/zlib-1.2.3 ) >=sys-apps/shadow-4.1.4.2-r3 pam? ( virtual/pam )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~radhermit/dist/ejabberd-15.03.tar.xz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	ssl-cert	e90a74de57c48ea6c058b1cb3a735907	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	ssl-cert	e90a74de57c48ea6c058b1cb3a735907	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=27a173651dd5f473b615bbee95d0cabd

@@ -9,5 +9,5 @@ LICENSE=GPL-3 OFL-1.1
 RDEPEND=>=app-text/evince-3 dev-libs/libxml2:2 >=dev-scheme/guile-1.8 gnome-base/librsvg:2 media-libs/fontconfig:1.0 >=media-libs/libsmf-1.3 media-libs/libsndfile x11-libs/gtk+:3 x11-libs/gtksourceview:3.0 alsa? ( media-libs/alsa-lib ) jack? ( >=media-sound/jack-audio-connection-kit-0.102 ) fluidsynth? ( media-sound/fluidsynth ) portaudio? ( media-libs/portaudio media-libs/aubio sci-libs/fftw:3.0 media-libs/libsamplerate ) portmidi? ( media-libs/portmidi ) media-sound/lilypond
 SLOT=0
 SRC_URI=mirror://gnu/denemo/denemo-1.0.0.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=823bd959c9164eadc989f70ced0e8450

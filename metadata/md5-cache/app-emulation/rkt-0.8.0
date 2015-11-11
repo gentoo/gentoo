@@ -10,5 +10,5 @@ RDEPEND=!app-emulation/rocket
 REQUIRED_USE=^^ ( rkt_stage1_coreos rkt_stage1_src )
 SLOT=0
 SRC_URI=https://github.com/coreos/rkt/archive/v0.8.0.tar.gz -> rkt-0.8.0.tar.gz rkt_stage1_coreos? ( http://alpha.release.core-os.net/amd64-usr/738.1.0/coreos_production_pxe_image.cpio.gz -> rkt-pxe-738.1.0.img )
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=004d1c74fcea917e962fd0232bab7a61

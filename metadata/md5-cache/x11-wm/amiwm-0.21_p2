@@ -8,5 +8,5 @@ LICENSE=amiwm
 RDEPEND=x11-libs/libX11 x11-libs/libXmu x11-libs/libXext media-gfx/xloadimage x11-apps/xrdb x11-apps/xsetroot x11-terms/xterm
 SLOT=0
 SRC_URI=ftp://ftp.lysator.liu.se/pub/X11/wm/amiwm/amiwm0.21pl2.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=8bb3a8f3b5dc55cc80f48879ce429dbc

@@ -9,5 +9,5 @@ LICENSE=BSD-2 GPL-2+
 RDEPEND=>=gnome-base/librsvg-2.36.2 x11-libs/gtk+:2 >=x11-libs/libwnck-2.12:1 x11-libs/libX11 >=x11-libs/libxklavier-5 >=xfce-base/garcon-0.1.5 >=xfce-base/libxfce4ui-4.11 >=xfce-base/libxfce4util-4.11 >=xfce-base/xfce4-panel-4.11 >=xfce-base/xfce4-settings-4.11
 SLOT=0
 SRC_URI=mirror://xfce/src/panel-plugins/xfce4-xkb-plugin/0.7/xfce4-xkb-plugin-0.7.0.tar.bz2
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	xfconf	d842ab8b2140980394561496bf157447
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	8644194de7be04932084752fb1327080	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	xfconf	d842ab8b2140980394561496bf157447
 _md5_=08e1105041ef85dc392b335fe8c6e388

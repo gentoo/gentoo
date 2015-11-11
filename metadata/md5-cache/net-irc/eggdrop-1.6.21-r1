@@ -10,5 +10,5 @@ RDEPEND=dev-lang/tcl:0 sys-apps/gentoo-functions !vanilla? ( mysql? ( virtual/my
 REQUIRED_USE=vanilla? ( !mysql !postgres !ssl )
 SLOT=0
 SRC_URI=ftp://ftp.eggheads.org/pub/eggdrop/source/1.6/eggdrop1.6.21.tar.bz2 https://dev.gentoo.org/~binki/distfiles/net-irc/eggdrop/eggdrop-1.6.21-patches-1.0.tar.bz2
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=545db8a0bd1f7403e236e9d33d7aea55

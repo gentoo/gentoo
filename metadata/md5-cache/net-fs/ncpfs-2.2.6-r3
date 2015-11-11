@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=nls? ( sys-devel/gettext ) pam? ( virtual/pam ) php? ( || ( dev-lang/php virtual/httpd-php ) )
 SLOT=0
 SRC_URI=ftp://platan.vc.cvut.cz/pub/linux/ncpfs/ncpfs-2.2.6.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=eccf7a2244556670ad4373894b9debfd

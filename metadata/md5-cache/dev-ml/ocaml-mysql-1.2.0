@@ -9,5 +9,5 @@ LICENSE=LGPL-2
 RDEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt?] sys-libs/zlib >=virtual/mysql-4.0
 SLOT=0/1.2.0
 SRC_URI=https://forge.ocamlcore.org/frs/download.php/1500/ocaml-mysql-1.2.0.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=ec28814c14053e20c89c591185a0a9a7

@@ -9,5 +9,5 @@ PDEPEND=>=virtual/perl-CPAN-Meta-2.143.240 >=virtual/perl-Parse-CPAN-Meta-1.441.
 RDEPEND=>=virtual/perl-ExtUtils-Command-1.160.0 >=virtual/perl-ExtUtils-Install-1.520.0 >=virtual/perl-ExtUtils-Manifest-1.700.0 >=virtual/perl-File-Spec-0.800.0 dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/B/BI/BINGOS/ExtUtils-MakeMaker-7.04.tar.gz
-_eclasses_=alternatives	b19e1ec28e600fa497461bddfb9c1f16	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
+_eclasses_=alternatives	b19e1ec28e600fa497461bddfb9c1f16	eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
 _md5_=170309f69a93ac1deeb72a56da0870f3

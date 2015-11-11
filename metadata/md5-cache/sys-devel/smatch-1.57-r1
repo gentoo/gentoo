@@ -8,5 +8,5 @@ LICENSE=OSL-1.1
 RDEPEND=dev-db/sqlite
 SLOT=0
 SRC_URI=mirror://gentoo/smatch-1.57.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=edbb06206b485909cdd8ed31955e443f

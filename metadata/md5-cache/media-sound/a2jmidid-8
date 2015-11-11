@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/alsa-lib media-sound/jack-audio-connection-kit dbus? ( sys-apps/dbus ) =dev-lang/python-2*
 SLOT=0
 SRC_URI=http://download.gna.org/a2jmidid/a2jmidid-8.tar.bz2
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	waf-utils	ad1dd5b59c523843eebd3a9934c509ca
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	waf-utils	ad1dd5b59c523843eebd3a9934c509ca
 _md5_=2c80e8b085309419096a8a3517e6d975

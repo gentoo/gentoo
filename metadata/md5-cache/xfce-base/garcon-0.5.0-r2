@@ -9,5 +9,5 @@ LICENSE=LGPL-2 FDL-1.1
 RDEPEND=>=dev-libs/glib-2.30:= >=x11-libs/gtk+-2.24:2= >=x11-libs/gtk+-3.14:3= >=xfce-base/libxfce4ui-4.11.1:=[gtk3(+)] >=xfce-base/libxfce4util-4.11:=
 SLOT=0
 SRC_URI=mirror://xfce/src/libs/garcon/0.5/garcon-0.5.0.tar.bz2
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	xfconf	d842ab8b2140980394561496bf157447
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	8644194de7be04932084752fb1327080	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	xfconf	d842ab8b2140980394561496bf157447
 _md5_=e8f784708f5b93c4828d70484037e9ab

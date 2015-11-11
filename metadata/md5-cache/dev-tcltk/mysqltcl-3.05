@@ -8,5 +8,5 @@ LICENSE=HPND
 RDEPEND=dev-lang/tcl:0 >=virtual/mysql-4.1
 SLOT=0
 SRC_URI=http://www.xdobry.de/mysqltcl/mysqltcl-3.05.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=603a81e325564696af7bab6616cdac33

@@ -10,5 +10,5 @@ PDEPEND=~net-p2p/vuze-coreplugins-5.3.0.0
 RDEPEND=dev-java/commons-cli:1 dev-java/commons-lang:2.1 dev-java/json-simple:0 dev-java/log4j:0 dev-java/swt:3.8[cairo] >=virtual/jre-1.6:* >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 SLOT=0
 SRC_URI=mirror://sourceforge/azureus/vuze/Vuze_5300/Vuze_5300_source.zip
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	java-ant-2	7c5d0c274d390745f5033754a319f515	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	a96633177f44ee992b3fce360d1c4f16	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	8644194de7be04932084752fb1327080	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	java-ant-2	7c5d0c274d390745f5033754a319f515	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	a96633177f44ee992b3fce360d1c4f16	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=1c7f50ddf6569347d60c4e203f927bd6

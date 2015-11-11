@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=gdbm? ( sys-libs/gdbm ) !gdbm? ( sys-libs/db ) >=sys-libs/ncurses-5.2 net-libs/liblockfile >=app-misc/editor-wrapper-3 !!media-gfx/pixie
 SLOT=0
 SRC_URI=http://savannah.nongnu.org/download/nmh/nmh-1.3.tar.gz
-_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=34d4f48a324aec2e52c073231ea680aa

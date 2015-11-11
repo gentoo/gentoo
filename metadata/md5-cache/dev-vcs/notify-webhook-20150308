@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=dev-python/simplejson
 SLOT=0
 SRC_URI=https://github.com/metajack/notify-webhook/archive/1ff39853e59bb0ee37c4783da8dcf3ea14cef53f.tar.gz -> notify-webhook-20150308.tar.gz https://github.com/metajack/notify-webhook/compare/1ff3985...BCLibCoop:ee038b5.patch -> notify-webhook-20150308-1ff3985...BCLibCoop:ee038b5.patch
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=3d2c02fc597ce24f38a76b01bba5723e

@@ -9,5 +9,5 @@ LICENSE=SNNS-4.2
 RDEPEND=X? ( x11-libs/libXaw3d ) python? ( =dev-lang/python-2* )
 SLOT=0
 SRC_URI=http://www-ra.informatik.uni-tuebingen.de/downloads/SNNS/SNNSv4.2.tar.gz mirror://berlios/snns-dev/snns-4.2-20040227.patch.gz doc? ( http://www-ra.informatik.uni-tuebingen.de/downloads/SNNS/SNNSv4.2.Manual.pdf ) python? ( mirror://berlios/snns-dev/PySNNS-20040605.tar.gz mirror://berlios/snns-dev/PythonFunctionSupport-20050210.patch.gz )
-_eclasses_=distutils	def8c8eb435ec28fd9315114640f6c84	eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=distutils	def8c8eb435ec28fd9315114640f6c84	eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=803dc2a5e4b360d0fc5c9ff4d04544c5

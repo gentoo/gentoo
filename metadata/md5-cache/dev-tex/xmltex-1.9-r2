@@ -8,5 +8,5 @@ LICENSE=LPPL-1.2
 RDEPEND=virtual/latex-base !=dev-texlive/texlive-htmlxml-2007* virtual/latex-base
 SLOT=0
 SRC_URI=mirror://gentoo/xmltex-1.9.tar.gz
-_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	43da5163ba106e87d22d2e7d6d67537f	latex-package	20f17759e8808b666e37d3b1bbe2fa4d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	texlive-common	cf8d3d36261adafe564b821b75b34a05	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	8644194de7be04932084752fb1327080	latex-package	20f17759e8808b666e37d3b1bbe2fa4d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	texlive-common	cf8d3d36261adafe564b821b75b34a05	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=ffff3d08f9e68b880b853d22f1970b38

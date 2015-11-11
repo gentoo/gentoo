@@ -10,5 +10,5 @@ RDEPEND=>=sys-devel/binutils-2.14.90.0.6-r1
 RESTRICT=strip
 SLOT=0
 SRC_URI=mirror://gentoo/tigcc-0.96_beta7.tar.bz2 ftp://gcc.gnu.org/pub/gcc/snapshots/4.1-20060728/gcc-4.1-20060728.tar.bz2 mirror://kernel/linux/devel/binutils/binutils-2.16.1.tar.bz2 http://members.chello.at/gerhard.kofler/kevin/ti89prog/libfargo.zip http://members.chello.at/gerhard.kofler/kevin/ti89prog/flashosa.zip
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=cb49bb90739db44a17ecefe61cce0bfc

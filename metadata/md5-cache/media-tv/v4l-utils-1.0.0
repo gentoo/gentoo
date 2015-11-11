@@ -9,5 +9,5 @@ LICENSE=GPL-2+ LGPL-2.1+
 RDEPEND=>=media-libs/libv4l-1.0.0 qt4? ( dev-qt/qtgui:4 ) !media-tv/v4l2-ctl !<media-tv/ivtv-utils-1.4.0-r2
 SLOT=0
 SRC_URI=http://linuxtv.org/downloads/v4l-utils/v4l-utils-1.0.0.tar.bz2
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	udev	37ef89be271b9ae8aa64be024ddb39b5
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	udev	37ef89be271b9ae8aa64be024ddb39b5
 _md5_=f6bcd9af869fff6c708540b00b968005

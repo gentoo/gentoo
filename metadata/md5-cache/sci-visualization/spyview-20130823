@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=dev-libs/boost:= media-libs/netpbm x11-libs/fltk:1[opengl] app-text/ghostscript-gpl virtual/glu sci-visualization/gnuplot
 SLOT=0
 SRC_URI=http://nsweb.tn.tudelft.nl/gitweb/?p=spyview.git;a=snapshot;h=879615fcc662e8572f99854557010d014bb4651e;sf=tgz -> spyview-20130823.tgz
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=e3beaa850045a59dadf1299b84e7f7c1

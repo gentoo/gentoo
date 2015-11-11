@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=>=dev-haskell/cereal-0.2:=[profile?] dev-haskell/entropy:=[profile?] >=dev-haskell/tagged-0.1:=[profile?] dev-haskell/transformers:=[profile?] >=dev-lang/ghc-6.10.4:=
 SLOT=0/0.13
 SRC_URI=mirror://hackage/packages/archive/crypto-api/0.13/crypto-api-0.13.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	ghc-package	6165faf4ae46df43d5a9b0dd28ec8654	haskell-cabal	2d9bae28d8a91ec04d1bb1ef0071c64f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	8644194de7be04932084752fb1327080	ghc-package	6165faf4ae46df43d5a9b0dd28ec8654	haskell-cabal	2d9bae28d8a91ec04d1bb1ef0071c64f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=e12a3e421db492d477f1e31cfd05b3d1

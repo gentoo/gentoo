@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=sys-libs/ncurses
 SLOT=0
 SRC_URI=http://www.eee.metu.edu.tr/~canacar/pftop-0.7.tar.gz mirror://gentoo/pftop-0.7-patches-2.tar.bz2
-_eclasses_=bsdmk	2d20496ff432a0ca089345cf400e5c87	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	portability	3a50b3ec310b86914f98babecc8f89c6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=bsdmk	2d20496ff432a0ca089345cf400e5c87	eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	portability	3a50b3ec310b86914f98babecc8f89c6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=83be1523c93b12782010b6dfe6ea70b5

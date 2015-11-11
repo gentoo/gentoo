@@ -9,5 +9,5 @@ LICENSE=LGPL-3
 RDEPEND=gtk? ( x11-libs/gtk+:2 ) >=sys-apps/pcsc-lite-1.2.9 xpi? ( || ( >=www-client/firefox-bin-3.6.24 >=www-client/firefox-3.6.20 ) ) !app-misc/beid-runtime
 SLOT=0
 SRC_URI=http://eid.belgium.be/en/binaries/eid-mw-4.0.6-1620.tar_tcm406-258906.gz -> eid-mw-4.0.6-1620.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	mozextension	3d8ee4835f89ff39d4666656aa603433	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	8644194de7be04932084752fb1327080	mozextension	3d8ee4835f89ff39d4666656aa603433	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=7048f7b34d5e130563c07a8fc776cd73

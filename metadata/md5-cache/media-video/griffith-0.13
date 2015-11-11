@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-python/pillow gnome-base/libglade dev-python/pyxml >=dev-python/pygtk-2.6.1:2 dev-python/pygobject:2 >=dev-python/sqlalchemy-0.5.2 >=dev-python/reportlab-1.19 =dev-lang/python-2* =dev-lang/python-2*[sqlite]
 SLOT=0
 SRC_URI=https://launchpad.net/griffith/trunk/0.13/+download/griffith-0.13.tar.gz https://dev.gentoo.org/~hwoarang/distfiles/griffith-extra-artwork-0.9.4.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=e900f3c16cbb27465e603ac707bdeae3

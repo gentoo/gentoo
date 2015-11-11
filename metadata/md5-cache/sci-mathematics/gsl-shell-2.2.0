@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=>=sci-libs/gsl-1.14 virtual/blas >=x11-libs/agg-2.5 >=media-libs/freetype-2.4.10 sys-libs/readline || ( media-fonts/ubuntu-font-family media-fonts/freefont media-fonts/dejavu ) fox? ( x11-libs/fox:1.6 )
 SLOT=0
 SRC_URI=http://download.savannah.gnu.org/releases/gsl-shell/gsl-shell-2.2.0.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=db79bc8b6509c508ebb6cec53a4b3ea1

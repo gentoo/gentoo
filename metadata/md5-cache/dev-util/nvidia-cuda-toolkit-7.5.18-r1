@@ -8,5 +8,5 @@ LICENSE=NVIDIA-CUDA
 RDEPEND=>=sys-devel/gcc-4.7[cxx] >=x11-drivers/nvidia-drivers-352.39[uvm] debugger? ( sys-libs/libtermcap-compat sys-libs/ncurses[tinfo] ) eclipse? ( >=virtual/jre-1.6 ) profiler? ( >=virtual/jre-1.6 )
 SLOT=0/7.5.18
 SRC_URI=http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda_7.5.18_linux.run
-_eclasses_=check-reqs	4f43fb72bc73bd58d75ec601713fae20	cuda	005e306be76ac11f3468389ef2e4da10	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=check-reqs	4f43fb72bc73bd58d75ec601713fae20	cuda	005e306be76ac11f3468389ef2e4da10	eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=9bf213338f91da38521f95a371b1232a

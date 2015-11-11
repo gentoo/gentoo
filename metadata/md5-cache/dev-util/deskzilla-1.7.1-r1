@@ -10,5 +10,5 @@ RDEPEND=>=virtual/jre-1.5 dev-java/picocontainer:1 dev-java/javolution:4 >=dev-j
 RESTRICT=mirror
 SLOT=0
 SRC_URI=http://d1.almworks.com/.files/deskzilla-1_7_1_without_jre.tar.gz https://dev.gentoo.org/~ercpe/distfiles/dev-util/deskzilla/deskzilla_gentoo.license
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	a96633177f44ee992b3fce360d1c4f16	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	8644194de7be04932084752fb1327080	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	a96633177f44ee992b3fce360d1c4f16	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=8c25aa8ad4aa68f320af18772b1bf0bd

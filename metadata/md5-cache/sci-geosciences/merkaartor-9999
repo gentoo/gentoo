@@ -7,5 +7,5 @@ IUSE=debug exif gps libproxy qrcode linguas_ar linguas_cs linguas_de linguas_es 
 LICENSE=GPL-2
 RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsvg:4 dev-qt/qtwebkit:4 >=dev-qt/qtsingleapplication-2.6.1[X,qt4(+)] >=dev-libs/quazip-0.7[qt4(+)] >=sci-libs/gdal-1.6.0 >=sci-libs/proj-4.6 sys-libs/zlib exif? ( media-gfx/exiv2:= ) gps? ( >=sci-geosciences/gpsd-2.92[cxx] ) libproxy? ( net-libs/libproxy ) qrcode? ( media-gfx/zbar )
 SLOT=0
-_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	git-r3	1502b9838d043db47700b8120083e637	gnome2-utils	588052cacdf74572e68bdfeaece20534	l10n	714aaf78929eade946da5eaff7d2001a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	8644194de7be04932084752fb1327080	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	git-r3	1502b9838d043db47700b8120083e637	gnome2-utils	588052cacdf74572e68bdfeaece20534	l10n	714aaf78929eade946da5eaff7d2001a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=09c8a942d31ee857fa9a32c731d93c26

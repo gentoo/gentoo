@@ -9,5 +9,5 @@ LICENSE=LGPL-3 LGPL-2.1
 RDEPEND=!xenstore? ( app-emulation/xen-tools ) xenstore? ( !app-emulation/xen-tools )
 SLOT=0
 SRC_URI=http://updates.vmd.citrix.com/XenServer/5.6.0/rhel4x/SRPMS/xe-guest-utilities-5.6.0-595.src.rpm
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	rpm	514a1840ee796656311a029ea952faa9	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	8644194de7be04932084752fb1327080	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	rpm	514a1840ee796656311a029ea952faa9	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=7ba988139227e339ede9401b9d749f9a

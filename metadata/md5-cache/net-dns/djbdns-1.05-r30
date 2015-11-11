@@ -8,5 +8,5 @@ LICENSE=public-domain
 RDEPEND=sys-apps/ucspi-tcp virtual/daemontools selinux? ( sec-policy/selinux-djbdns )
 SLOT=0
 SRC_URI=http://cr.yp.to/djbdns/djbdns-1.05.tar.gz http://smarden.org/pape/djb/manpages/djbdns-1.05-man.tar.gz ipv6? ( http://www.fefe.de/dns/djbdns-1.05-test27.diff.bz2 )
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=65f27f9bf28946ba7be0e040997e825d

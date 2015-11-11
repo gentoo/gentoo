@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=usb? ( =virtual/libusb-0* ) lirc? ( app-misc/lirc ) irman? ( media-libs/libirman ) lcd_devices_graphlcd? ( app-misc/graphlcd-base app-misc/glcdprocdriver ) lcd_devices_g15? ( dev-libs/libg15 >=dev-libs/libg15render-1.1.1 ) lcd_devices_ncurses? ( sys-libs/ncurses ) lcd_devices_svga? ( media-libs/svgalib ) lcd_devices_ula200? ( >=dev-embedded/libftdi-0.7 =virtual/libusb-0* ) lcd_devices_xosd? ( x11-libs/xosd x11-libs/libX11 x11-libs/libXext ) lcd_devices_cfontzpacket? ( =virtual/libusb-0* ) lcd_devices_cwlinux? ( =virtual/libusb-0* ) lcd_devices_pyramid? ( =virtual/libusb-0* ) lcd_devices_picolcd? ( =virtual/libusb-0* ) lcd_devices_g15? ( app-misc/g15daemon )
 SLOT=0
 SRC_URI=mirror://sourceforge/lcdproc/lcdproc-0.5.2.tar.gz mirror://gentoo/lcdproc-0.5.2-patches.tar.gz
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	8644194de7be04932084752fb1327080	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=0732a6adc336288ab0ff4e5fed47fa26

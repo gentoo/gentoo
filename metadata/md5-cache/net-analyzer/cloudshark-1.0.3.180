@@ -7,5 +7,5 @@ LICENSE=GPL-2
 PDEPEND=net-analyzer/wireshark:=[lua] net-misc/curl
 SLOT=0
 SRC_URI=http://appliance.cloudshark.org/plugin/cloudshark-plugin-1.0.3-180.tgz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=bb3dbf535e9d8111a8a34e1b76185482

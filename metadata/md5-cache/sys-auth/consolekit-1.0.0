@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.40:2= >=sys-devel/gettext-0.19 sys-libs/zlib:= x11-libs/libX11:= acl? ( sys-apps/acl:= >=virtual/udev-200 ) cgroups? ( app-admin/cgmanager >=sys-libs/libnih-1.0.2[dbus] ) pam? ( virtual/pam ) policykit? ( >=sys-auth/polkit-0.110 ) kernel_linux? ( sys-apps/coreutils[acl?] ) selinux? ( sec-policy/selinux-consolekit )
 SLOT=0
 SRC_URI=https://github.com/ConsoleKit2/ConsoleKit2/releases/download/1.0.0/ConsoleKit2-1.0.0.tar.bz2 mirror://debian/pool/main/c/consolekit/consolekit_0.4.6-4.debian.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=433198959434ab0f40b1d2adca99730c

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 x11-libs/libXpm x11-libs/libXext
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~voyageur/distfiles/wmbutton-0.7.0.tar.gz branding? ( mirror://gentoo/wmbutton-buttons.xpm )
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=3d3c7a13abd5150c240d577668aa6160

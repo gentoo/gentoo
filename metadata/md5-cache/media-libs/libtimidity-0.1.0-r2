@@ -10,5 +10,5 @@ RDEPEND=ao? ( >=media-libs/libao-1.1.0-r2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/libtimidity/libtimidity-0.1.0.tar.bz2
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multilib-build	c47eec09e82c8a750127ff2abf0745b1	multilib-minimal	a93a9b4153a5f1c746bdd3b20ef9d834	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	8644194de7be04932084752fb1327080	libtool	7f78cd7d403808a350c9ae23f5821fb4	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multilib-build	c47eec09e82c8a750127ff2abf0745b1	multilib-minimal	a93a9b4153a5f1c746bdd3b20ef9d834	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=8951c7371bf51da4b879e4ab0a4dd854

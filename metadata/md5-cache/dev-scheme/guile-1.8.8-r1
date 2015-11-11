@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/gmp-4.1:0= >=sys-devel/libtool-1.5.6 sys-devel/gettext sys-li
 RESTRICT=!regex? ( test )
 SLOT=12
 SRC_URI=mirror://gnu/guile/guile-1.8.8.tar.gz
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=062fbd65117958b47c8b3c5d18383bb1

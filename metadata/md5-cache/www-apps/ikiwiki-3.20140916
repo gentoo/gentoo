@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-lang/perl-5.10 app-text/po4a dev-perl/HTML-Parser dev-perl/HTML-Scrubber dev-perl/HTML-Template dev-perl/URI dev-perl/Text-Markdown dev-perl/TimeDate dev-perl/YAML-LibYAML !minimal? ( dev-perl/CGI >=dev-perl/CGI-FormBuilder-3.0202 >=dev-perl/CGI-Session-4.14 dev-perl/Mail-Sendmail dev-perl/Term-ReadLine-Gnu dev-perl/XML-Simple media-gfx/imagemagick[perl] extras? ( dev-python/docutils dev-perl/Digest-SHA1 dev-perl/File-MimeInfo dev-perl/RPC-XML dev-perl/XML-Feed dev-perl/LWPx-ParanoidAgent dev-perl/Net-OpenID-Consumer ) ) dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://debian/pool/main/i/ikiwiki/ikiwiki_3.20140916.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
 _md5_=ae0525debbfc90e730a7bf9f8f823f22

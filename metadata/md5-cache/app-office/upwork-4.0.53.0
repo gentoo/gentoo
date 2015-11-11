@@ -8,5 +8,5 @@ LICENSE=ODESK
 RDEPEND=dev-libs/libgcrypt:11 media-libs/alsa-lib sys-libs/libcap virtual/udev x11-libs/gtk+:2 x11-libs/gtkglext
 SLOT=0
 SRC_URI=amd64? ( http://updates.team.odesk.com/binaries/v4_0_53_0_p5TnmGwLv5sZSuKB/upwork_x86_64.rpm -> upwork-4.0.53.0_x86_64.rpm ) x86? ( http://updates.team.odesk.com/binaries/v4_0_53_0_p5TnmGwLv5sZSuKB/upwork_i386.rpm -> upwork-4.0.53.0_i386.rpm )
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	rpm	514a1840ee796656311a029ea952faa9	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	rpm	514a1840ee796656311a029ea952faa9	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=bfdc4156645e66b9c3e8969a3c99256c

@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=dev-scheme/guile:12[deprecated(+)] x11-libs/gtk+:2 gnome-base/libglade:2.0 >=x11-libs/gtkglarea-1.90:2
 SLOT=0
 SRC_URI=mirror://gnu/guile-gtk/guile-gtk-2.1.tar.gz
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	43da5163ba106e87d22d2e7d6d67537f	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	virtualx	7d550983f9b6adb3e7091f4090ddae2f
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	8644194de7be04932084752fb1327080	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	virtualx	7d550983f9b6adb3e7091f4090ddae2f
 _md5_=7744ee47438641896a901c7959da627e

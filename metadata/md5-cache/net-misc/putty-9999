@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=!net-misc/pssh gtk? ( dev-libs/glib:2 x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/pango ) kerberos? ( virtual/krb5 )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jer/putty-icons.tar.bz2
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	43da5163ba106e87d22d2e7d6d67537f	git-r3	1502b9838d043db47700b8120083e637	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	8644194de7be04932084752fb1327080	git-r3	1502b9838d043db47700b8120083e637	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=b55ae7bd725542ef063cb8de4f03cb29

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=sys-devel/m4-1.4.16
 SLOT=0
 SRC_URI=mirror://gnu/bison/bison-3.0.3.tar.xz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=fa5941ec7d3ff3d3e014532f9138bb7b

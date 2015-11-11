@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXau x11-libs/libXdmcp x11-libs/libXpm
 SLOT=0
 SRC_URI=http://ftp.debian.org/debian/pool/main/w/wmtime/wmtime_1.0b2.orig.tar.gz http://ftp.debian.org/debian/pool/main/w/wmtime/wmtime_1.0b2-9.diff.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=ebc0e5daa4012d8d1192be009a9447a9

@@ -6,5 +6,5 @@ KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-interix ~a
 LICENSE=arj
 SLOT=0
 SRC_URI=mirror://freebsd/ports/local-distfiles/ache/unarj-2.65.tgz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=f7e872c11f7c0bcf5bbf50c5d20464fa

@@ -10,5 +10,5 @@ PDEPEND=mail? ( ~net-nds/gosa-plugin-mail-2.6.12 ) samba? ( ~net-nds/gosa-plugin
 RDEPEND=dev-lang/php[iconv,imap,ldap,mysql,session,zip] sys-devel/gettext virtual/httpd-php dev-perl/Crypt-SmbHash media-gfx/imagemagick
 SLOT=0
 SRC_URI=ftp://oss.gonicus.de/pub/gosa/gosa-core-2.6.12.tar.bz2 http://oss.gonicus.de/pub/gosa/gosa-core-2.6.12.tar.bz2 ftp://oss.gonicus.de/pub/gosa/archive/gosa-core-2.6.12.tar.bz2 http://oss.gonicus.de/pub/gosa/archive/gosa-core-2.6.12.tar.bz2
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=e20c5a009fedaa3c6950781fac99c5f8

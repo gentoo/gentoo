@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/chmlib-0.36 x11-libs/wxGTK:2.8[X]
 SLOT=0
 SRC_URI=mirror://sourceforge/xchm/xchm-1.23.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	wxwidgets	2a19d3cd9b18703ae9fb53123722061c
+_eclasses_=eutils	8644194de7be04932084752fb1327080	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	wxwidgets	2a19d3cd9b18703ae9fb53123722061c
 _md5_=8e70b76a2b03c540c716833aa141c04c

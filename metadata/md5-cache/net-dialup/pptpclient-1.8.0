@@ -10,5 +10,5 @@ RDEPEND=net-dialup/ppp dev-lang/perl tk? ( dev-perl/perl-tk ) sys-apps/iproute2
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/pptpclient/pptp-1.8.0.tar.gz https://dev.gentoo.org/~pinkbyte/distfiles/pptpclient/pptp-command-20130515.bz2
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=107c7f8ce836cd256a526a00c040f92a

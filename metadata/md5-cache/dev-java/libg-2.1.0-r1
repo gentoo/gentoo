@@ -10,5 +10,5 @@ RDEPEND=>=virtual/jre-1.5 >=dev-java/java-config-2.2.0
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/bndtools/bnd/archive/2.1.0.REL.tar.gz -> bndlib-2.1.0.tar.gz
-_eclasses_=eutils	43da5163ba106e87d22d2e7d6d67537f	java-ant-2	7c5d0c274d390745f5033754a319f515	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	a96633177f44ee992b3fce360d1c4f16	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	8644194de7be04932084752fb1327080	java-ant-2	7c5d0c274d390745f5033754a319f515	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	a96633177f44ee992b3fce360d1c4f16	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=1cdc8377aef338e4276ee92c27ea9d0f
