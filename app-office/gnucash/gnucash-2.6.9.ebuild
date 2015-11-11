@@ -79,16 +79,6 @@ src_configure() {
 		myconf+=" --disable-dbi"
 	fi
 
-	# guile wrongly exports LDFLAGS as LIBS which breaks modules
-	# Filter until a better ebuild is available, bug #202205
-	local GUILE_LIBS=""
-	local lib
-	for lib in $(guile-config link); do
-		if [ "${lib#-Wl}" = "$lib" ]; then
-			GUILE_LIBS="$GUILE_LIBS $lib"
-		fi
-	done
-
 	# gtkmm is experimental and shouldn't be enabled, upstream bug #684166
 	gnome2_src_configure \
 		$(use_enable debug) \
@@ -100,7 +90,7 @@ src_configure() {
 		--disable-gtkmm \
 		--enable-locale-specific-tax \
 		--disable-error-on-warning \
-		 GUILE_LIBS="${GUILE_LIBS}" ${myconf}
+		${myconf}
 }
 
 src_test() {
