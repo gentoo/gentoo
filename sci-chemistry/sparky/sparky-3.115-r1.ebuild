@@ -9,7 +9,7 @@ PYTHON_REQ_USE="tk"
 
 inherit eutils flag-o-matic multilib prefix python-single-r1 toolchain-funcs
 
-DESCRIPTION="Graphical NMR assignment and integration program for proteins, nucleic acids, and other polymers"
+DESCRIPTION="Graphical NMR assignment and integration program for large polymers"
 HOMEPAGE="http://www.cgl.ucsf.edu/home/sparky/"
 SRC_URI="http://www.cgl.ucsf.edu/home/sparky/distrib-${PV}/${PN}-source-${PV}.tar.gz"
 
