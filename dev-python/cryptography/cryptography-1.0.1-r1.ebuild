@@ -6,6 +6,7 @@ EAPI=5
 
 # only works with >=pypy-2.6
 PYTHON_COMPAT=( python2_7 python3_{3,4} pypy )
+PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
 
