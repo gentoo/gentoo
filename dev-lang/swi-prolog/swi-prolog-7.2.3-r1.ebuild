@@ -15,7 +15,7 @@ SRC_URI="http://www.swi-prolog.org/download/stable/src/swipl-${PV}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="archive debug doc +gmp hardened java libressl minimal odbc +readline ssl static-libs test uuid zlib X"
 
 RDEPEND="sys-libs/ncurses:=
