@@ -61,9 +61,13 @@ python_prepare_all(){
 	}
 
 	use_cvx() {
-		if use $1 ; then
+		local flag=$1
+		if use ${flag} ; then
+			# Switch to ^^ when we switch to EAPI=6.
+			#local uflag=${flag^^}
+			local uflag=$(tr '[:lower:]' '[:upper:]' <<<"${flag}")
 			sed -i \
-				-e "s/\(BUILD_${1^^} =\) 0/\1 1/" \
+				-e "s/\(BUILD_${uflag} =\) 0/\1 1/" \
 				setup.py || die
 		fi
 	}

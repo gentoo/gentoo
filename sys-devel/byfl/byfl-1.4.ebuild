@@ -8,7 +8,8 @@ inherit autotools-utils flag-o-matic
 
 if [ "${PV}" = "9999" ]; then
 	LLVM_VERSION="3.7.0"
-	EGIT_REPO_URI="git://github.com/losalamos/${PN^b}.git https://github.com/losalamos/${PN}.git"
+	# Switch to ^b when we switch to EAPI=6.
+	EGIT_REPO_URI="git://github.com/losalamos/B${PN:1}.git https://github.com/losalamos/${PN}.git"
 	inherit git-2
 	KEYWORDS=""
 	AUTOTOOLS_AUTORECONF=1

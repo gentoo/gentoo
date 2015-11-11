@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -47,7 +47,9 @@ use_have() {
 	fi
 
 	local UWORD=${2:-$1}
-	UWORD=${UWORD^^*}
+	# Switch to ^^ when we switch to EAPI=6.
+	#UWORD=${UWORD^^}
+	UWORD=$(tr '[:lower:]' '[:upper:]' <<<"${UWORD}")
 
 	if ! use ${1}; then
 		echo " -DNO_${UWORD}"

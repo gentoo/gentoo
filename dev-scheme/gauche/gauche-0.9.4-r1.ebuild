@@ -6,7 +6,8 @@ EAPI="5"
 
 inherit autotools eutils
 
-MY_P="${P^g}"
+# Switch to ^g when we switch to EAPI=6.
+MY_P="G${P:1}"
 
 DESCRIPTION="A Unix system friendly Scheme Interpreter"
 HOMEPAGE="http://practical-scheme.net/gauche/"

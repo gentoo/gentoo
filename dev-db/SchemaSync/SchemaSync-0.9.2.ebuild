@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,9 @@ DESCRIPTION="MySQL Schema Versioning and Migration Utility"
 HOMEPAGE="http://schemasync.org/"
 SRC_URI="http://www.schemasync.org/downloads/${P}.tar.gz"
 
-pn="${PN,,}"
+# Switch to ,, when we switch to EAPI=6.
+#pn="${PN,,}"
+pn="schemasync"
 
 LICENSE="Apache-2.0"
 SLOT="0"
