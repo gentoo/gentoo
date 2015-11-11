@@ -1,0 +1,33 @@
+From 06c9dba42097b06a18c81bb54a8da8b2bfaf991d Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Wed, 11 Nov 2015 20:01:14 +0100
+Subject: [PATCH 3/3] Disable static module for python module
+
+---
+ python/Makefile.am | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/python/Makefile.am b/python/Makefile.am
+index cc13c62..62afd1b 100644
+--- a/python/Makefile.am
++++ b/python/Makefile.am
+@@ -27,6 +27,7 @@ python_PYTHON = libxslt.py
+ pyexec_LTLIBRARIES = libxsltmod.la
+ 
+ libxsltmod_la_CPPFLAGS = \
++	-shared \
+ 	-I$(top_srcdir)/libxslt \
+ 	-I$(top_srcdir) \
+ 	-I$(top_srcdir)/libexslt \
+@@ -34,7 +35,7 @@ libxsltmod_la_CPPFLAGS = \
+ libxsltmod_la_SOURCES = libxslt.c types.c
+ nodist_libxsltmod_la_SOURCES = libxslt-py.c
+ libxsltmod_la_LIBADD = $(mylibs) $(PYTHON_LIBS)
+-libxsltmod_la_LDFLAGS =  $(WIN32_EXTRA_LDFLAGS) $(PYTHON_LDFLAGS) -module -avoid-version
++libxsltmod_la_LDFLAGS =  $(WIN32_EXTRA_LDFLAGS) $(PYTHON_LDFLAGS) -module -avoid-version -shared
+ 
+ libxslt.py: $(srcdir)/libxsl.py libxsltclass.py
+ 	cat $(srcdir)/libxsl.py libxsltclass.py > $@
+-- 
+2.6.3
+
