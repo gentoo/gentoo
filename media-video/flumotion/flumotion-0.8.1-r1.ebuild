@@ -23,7 +23,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # media-plugins/gst-plugins-libpng:0.10
 # dev-python/twisted-web
 # dev-python/twisted-names
-# dev-python/imaging
+# dev-python/pillow
 
 # These are from README
 RDEPEND="${PYTHON_DEPS}

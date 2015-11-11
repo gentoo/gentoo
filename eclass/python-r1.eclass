@@ -84,6 +84,9 @@ inherit multibuild python-utils-r1
 if ! declare -p PYTHON_COMPAT &>/dev/null; then
 	die 'PYTHON_COMPAT not declared.'
 fi
+if [[ $(declare -p PYTHON_COMPAT) != "declare -a"* ]]; then
+	die 'PYTHON_COMPAT must be an array.'
+fi
 
 # @ECLASS-VARIABLE: PYTHON_COMPAT_OVERRIDE
 # @INTERNAL

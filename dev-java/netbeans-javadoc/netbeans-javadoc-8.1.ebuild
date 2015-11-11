@@ -17,8 +17,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"
 
-# oracle-jdk-bin is needed because other jdks do not contain jre/lib/ext/jfxrt.jar
-DEPEND="dev-java/oracle-jdk-bin:1.7
+# oracle-jdk-bin is needed because of javafx which is not currently packaged separately
+DEPEND="dev-java/oracle-jdk-bin:1.8[javafx]
 	app-arch/unzip
 	dev-java/javahelp:0
 	dev-java/junit:4
@@ -42,7 +42,7 @@ DEPEND="dev-java/oracle-jdk-bin:1.7
 RDEPEND=""
 
 JAVA_PKG_BSFIX="off"
-JAVA_PKG_WANT_BUILD_VM="oracle-jdk-bin-1.7"
+JAVA_PKG_WANT_BUILD_VM="oracle-jdk-bin-1.8"
 JAVA_PKG_WANT_SOURCE="1.7"
 JAVA_PKG_WANT_TARGET="1.7"
 
@@ -158,8 +158,8 @@ src_prepare() {
 }
 
 src_compile() {
-	eant -f nbbuild/build.xml bootstrap || die
-	ANT_OPTS="-Xmx1536m" eant -f nbbuild/javadoctools/build.xml build-javadoc
+	eant -Dpermit.jdk8.builds=true -f nbbuild/build.xml bootstrap || die
+	ANT_OPTS="-Xmx1536m" eant -Dpermit.jdk8.builds=true -f nbbuild/javadoctools/build.xml build-javadoc
 }
 
 src_install() {

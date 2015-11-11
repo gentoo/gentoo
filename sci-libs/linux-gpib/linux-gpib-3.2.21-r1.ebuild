@@ -19,7 +19,7 @@ SRC_URI="mirror://sourceforge/linux-gpib/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="isa pcmcia static debug guile perl php python tcl doc firmware"
 
 COMMONDEPEND="
@@ -42,6 +42,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.16-perl.patch
 	"${FILESDIR}"/${PN}-3.2.16-reallydie.patch
 	"${WORKDIR}"/${PN}-3.2.21-ctrl-c.patch
+	"${FILESDIR}"/${PN}-3.2.21-build2.patch
 )
 
 pkg_setup () {

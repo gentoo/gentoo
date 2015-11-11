@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
 
 inherit distutils-r1
 
@@ -22,3 +22,7 @@ DEPEND="
 	dev-python/nose[${PYTHON_USEDEP}]
 	>=dev-python/coverage-3.4[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
+
+python_test() {
+	nosetests -v nosexcover/tests.py || die
+}

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,20 +14,20 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-src-with-libs.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 ~ppc ~ppc64"
 
 IUSE=""
 
 S="${WORKDIR}/${P}"
 
+RDEPEND=">=virtual/jre-1.6"
 DEPEND="app-arch/unzip
 	>=virtual/jdk-1.6"
-RDEPEND=">=virtual/jre-1.6"
 
 RESTRICT="test"
 
 java_prepare() {
-	rm lib/* || die
+	java-pkg_clean
 }
 
 src_install() {

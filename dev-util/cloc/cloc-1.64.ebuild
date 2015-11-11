@@ -4,6 +4,8 @@
 
 EAPI=5
 
+inherit eutils
+
 DESCRIPTION="Count Lines of Code"
 HOMEPAGE="http://cloc.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.pl mirror://sourceforge/${PN}/${PN}.1.pod"
@@ -27,9 +29,17 @@ src_unpack() { :; }
 
 src_prepare() {
 	pod2man "${DISTDIR}"/${PN}.1.pod > ${PN}.1 || die
+
+	# hacky, but otherwise we only get a symlink in distdir...
+	cp -L "${DISTDIR}"/${P}.pl "${WORKDIR}"/
+
+	# fix stuoid perl array error...  again...
+	if has_version '>=dev-lang/perl-5.22.0' ; then
+		epatch "${FILESDIR}"/${PN}-fix_stupid_perl_array_error_again.patch
+	fi
 }
 
 src_install() {
 	doman ${PN}.1
-	newbin "${DISTDIR}"/${P}.pl ${PN}
+	newbin "${WORKDIR}"/${P}.pl ${PN}
 }

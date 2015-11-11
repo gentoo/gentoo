@@ -57,7 +57,7 @@ RDEPEND="${COMMON_DEPEND}
 		kernel_linux? ( virtual/udev !<sys-fs/udev-114 )
 		scanner? (
 			>=dev-python/reportlab-2.6[${PYTHON_USEDEP}]
-			>=virtual/python-imaging-1[${PYTHON_USEDEP}]
+			>=dev-python/pillow-1[${PYTHON_USEDEP}]
 			X? ( || (
 				kde? ( kde-misc/skanlite )
 				media-gfx/xsane

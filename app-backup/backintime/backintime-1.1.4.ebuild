@@ -28,6 +28,8 @@ DEPEND="${RDEPEND}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-python-version-stderr.patch
+
 	#fix doc install location
 	sed -e "s:/doc/${PN}-common:/doc/${PF}:g" \
 		-i common/Makefile.template || die

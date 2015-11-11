@@ -85,7 +85,7 @@ RDEPEND=">=app-text/hunspell-1.2
 
 # firefox-31.0-patches-0.3 and above carry a patch making newer libvpx compatible
 case ${PATCHFF##*31.0-patches-} in
-	0.3)	RDEPEND+=" system-libvpx? ( >=media-libs/libvpx-1.3.0 )" ;;
+	0.3)	RDEPEND+=" system-libvpx? ( >=media-libs/libvpx-1.3.0:0= )" ;;
 	*)	RDEPEND+=" system-libvpx? ( =media-libs/libvpx-1.3.0* )" ;;
 esac
 

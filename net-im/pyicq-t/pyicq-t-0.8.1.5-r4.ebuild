@@ -23,7 +23,7 @@ RDEPEND="${DEPEND}
 	dev-python/twisted-words[${PYTHON_USEDEP}]
 	dev-python/twisted-web[${PYTHON_USEDEP}]
 	webinterface? ( >=dev-python/nevow-0.4.1[${PYTHON_USEDEP}] )
-	virtual/python-imaging[${PYTHON_USEDEP}]"
+	dev-python/pillow[${PYTHON_USEDEP}]"
 
 src_prepare() {
 	epatch "${FILESDIR}/${P}-python26-warnings.diff"

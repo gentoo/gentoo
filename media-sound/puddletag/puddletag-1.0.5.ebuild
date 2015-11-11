@@ -24,7 +24,7 @@ RDEPEND=">=dev-python/PyQt4-4.9.6-r2[${PYTHON_USEDEP},svg]
 	>=dev-python/configobj-4.7.2-r1[${PYTHON_USEDEP}]
 	acoustid? ( >=media-libs/chromaprint-0.6 )
 	musicbrainz? ( >=dev-python/python-musicbrainz-0.7.4-r1[${PYTHON_USEDEP}] )
-	cover? ( virtual/python-imaging[${PYTHON_USEDEP}] )
+	cover? ( dev-python/pillow[${PYTHON_USEDEP}] )
 	quodlibet? ( >=media-sound/quodlibet-2.5[${PYTHON_USEDEP}] )
 	>=dev-python/sip-4.14.2-r1:0[${PYTHON_USEDEP}]
 	>=dev-python/lxml-3.0.1[${PYTHON_USEDEP}]"

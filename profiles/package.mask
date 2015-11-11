@@ -30,6 +30,71 @@
 
 #--- END OF EXAMPLES ---
 
+# Justin Lecher <jlec@gentoo.org> (10 Nov 2015)
+# Compatibility virtual for transition from
+# dev-python/imaging to dev-python/pillow
+# obsolete now #508266
+virtual/python-imaging
+
+# Lars Wendler <polynomial-c@gentoo.org> (10 Nov 2015)
+# Masked apache-2.4.17 due to broken REDIRECT_URL
+# behavior. See Gentoo bug #565348 for more details.
+=www-servers/apache-2.4.17
+
+# Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
+# GNOME 3.18 mask (#561326)
+>=games-puzzle/gnome-sudoku-3.18
+>=games-arcade/gnome-robots-3.18
+>=games-puzzle/gnome-klotski-3.18
+>=sys-apps/gnome-disk-utility-3.18
+>=games-board/four-in-a-row-3.18
+>=app-misc/bijiben-3.18
+>=media-gfx/gnome-photos-3.18.2
+>=media-sound/gnome-sound-recorder-3.18.2
+>=gnome-extra/evolution-data-server-3.18.2
+>=mail-client/evolution-3.18.2
+>=gnome-extra/evolution-ews-3.18.2
+>=app-text/gspell-0.1.1
+>=games-puzzle/swell-foop-3.18.1
+>=games-board/gnome-mines-3.18.2
+>=games-arcade/gnome-nibbles-3.18.2
+>=sci-geosciences/gnome-maps-3.18.2
+>=gnome-extra/gnome-system-monitor-3.18.2
+>=gnome-extra/gucharmap-3.18.2
+>=app-accessibility/orca-3.18.2
+>=gnome-extra/gnome-calculator-3.18.2
+
+# Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
+# Not properly installed, dead for ages, upstream
+# ask people to use Zed Attack Proxy Project instead
+# Removal in a month. Bug #185919
+net-proxy/webscarab
+
+# Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
+# Nobody willing to maintain/bump it. Use qemu instead
+# Removal in a month. Bug #200003
+app-emulation/skyeye
+
+# Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
+# Upstream dead, buggy, there are many other bittorrent
+# clients in the tree. See bug #210520. Removal in a month.
+net-p2p/btpd
+
+# Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
+# Obsolete for a long time, see bug #231578.
+# Removal in a month.
+app-eselect/eselect-esd
+
+# Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
+# Dead for years, see bug #248489. Removal in a month.
+dev-tex/latex-unicode
+
+# Michał Górny <mgorny@gentoo.org> (08 Nov 2015)
+# Masked for testing.
+=dev-python/pypy-4.0.0
+=dev-python/pypy-bin-4.0.0
+=virtual/pypy-4.0.0
+
 # Patrice Clement <monsieurp@gentoo.org> (07 Nov 2015)
 # Duplicate package since it already exists as virtual/perl-Parse-CPAN-meta.
 # Masked for removal in 30 days.
@@ -112,26 +177,6 @@ dev-java/jakarta-jstl
 # 2015, bug 536852.
 # Masked for removal in 30 days.
 =dev-lang/ruby-1.9*
-
-# Michael Palimaka <kensington@gentoo.org (9 Oct 2015)
-# Dead upstream. No consumers. Collides with other packages.
-# Bug #560932 and bug #557006. Masked for removal in 30 days.
-dev-libs/libhash
-
-# Michael Palimaka <kensington@gentoo.org (9 Oct 2015)
-# Superceded by >=app-crypt/qca-2.1
-# Masked for removal in 30 days
-<app-crypt/qca-2.1
-app-crypt/qca-cyrus-sasl
-app-crypt/qca-gnupg
-app-crypt/qca-logger
-app-crypt/qca-ossl
-app-crypt/qca-pkcs11
-
-# Anthony G. Basile <blueness@gentoo.org> (6 Oct 2015)
-# Dead upstream for a long time.  Masked for removal
-# in 30 days.
-dev-util/elfsh
 
 # Patrice Clement <monsieurp@gentoo.org> (6 Oct 2015)
 # No update since 2008. Masked for removal in 30 days.

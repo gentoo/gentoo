@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit eutils git-r3 savedconfig toolchain-funcs
+inherit eutils git-r3 toolchain-funcs
 
 DESCRIPTION="a generic, highly customizable, and efficient menu for the X Window System"
 HOMEPAGE="http://tools.suckless.org/dmenu/"
@@ -15,50 +15,43 @@ KEYWORDS=""
 IUSE="xinerama"
 
 RDEPEND="
+	media-libs/fontconfig
 	x11-libs/libX11
+	x11-libs/libXft
 	xinerama? ( x11-libs/libXinerama )
 "
 DEPEND="${RDEPEND}
-	xinerama? ( virtual/pkgconfig )
+	virtual/pkgconfig
+	xinerama? ( x11-proto/xineramaproto )
+	x11-proto/xproto
 "
 
 src_prepare() {
-	# Respect our flags
-	sed -i \
-		-e '/^CFLAGS/{s|=.*|+= -ansi -pedantic -Wall $(INCS) $(CPPFLAGS)|}' \
-		-e '/^LDFLAGS/s|= -s|+=|' \
-		config.mk || die
-	# Make make verbose
 	sed -i \
 		-e 's|^	@|	|g' \
+		-e 's|${CC} -o|$(CC) $(CFLAGS) -o|g' \
 		-e '/^	echo/d' \
 		Makefile || die
 
-	restore_config config.def.h
+	epatch "${FILESDIR}"/${P}-gentoo.patch
+
 	epatch_user
 }
 
-src_configure() {
-	tc-export PKG_CONFIG
-}
-
 src_compile() {
-	emake \
-		CC=$(tc-getCC) \
+	emake CC=$(tc-getCC) \
+		"FREETYPEINC=$( $(tc-getPKG_CONFIG) --cflags x11 fontconfig xft 2>/dev/null )" \
+		"FREETYPELIBS=$( $(tc-getPKG_CONFIG) --libs x11 fontconfig xft 2>/dev/null )" \
 		"XINERAMAFLAGS=$(
 			usex xinerama "-DXINERAMA $(
-				${PKG_CONFIG} --cflags xinerama 2>/dev/null
+				$(tc-getPKG_CONFIG) --cflags xinerama 2>/dev/null
 			)" ''
 		)" \
 		"XINERAMALIBS=$(
-			usex xinerama "$(
-				${PKG_CONFIG} --libs xinerama 2>/dev/null
-			)" ''
+			usex xinerama "$( $(tc-getPKG_CONFIG) --libs xinerama 2>/dev/null)" ''
 		)"
 }
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX="/usr" install
-
-	save_config config.def.h
 }

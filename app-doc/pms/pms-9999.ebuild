@@ -10,7 +10,7 @@ EGIT_REPO_URI="git://anongit.gentoo.org/proj/${PN}.git
 	https://anongit.gentoo.org/git/proj/${PN}.git"
 
 DESCRIPTION="Gentoo Package Manager Specification (draft)"
-HOMEPAGE="https://wiki.gentoo.org/wiki/Project:PMS"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Package_Manager_Specification"
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="live"

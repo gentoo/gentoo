@@ -64,7 +64,7 @@ RDEPEND="${COMMON_DEPEND}
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/ipython[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	virtual/ssh
 	x11-apps/setxkbmap
 	x11-apps/xmodmap

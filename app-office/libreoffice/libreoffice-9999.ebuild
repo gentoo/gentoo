@@ -336,6 +336,7 @@ src_prepare() {
 	fi
 
 	epatch "${PATCHES[@]}"
+	epatch_user
 
 	AT_M4DIR="m4" eautoreconf
 	# hack in the autogen.sh

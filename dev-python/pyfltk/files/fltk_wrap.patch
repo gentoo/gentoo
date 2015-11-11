@@ -1,6 +1,5 @@
-diff -ur pyFltk-1.3.3.orig/python/fltk_wrap.cpp pyFltk-1.3.3/python/fltk_wrap.cpp
---- python/fltk_wrap.cpp        2015-01-03 18:31:21.000000000 +0800
-+++ python/fltk_wrap.cpp        2015-06-23 22:26:23.453212512 +0800
+--- a/python/fltk_wrap.cpp
++++ b/python/fltk_wrap.cpp
 @@ -144,7 +144,9 @@
  # define _SCL_SECURE_NO_DEPRECATE
  #endif

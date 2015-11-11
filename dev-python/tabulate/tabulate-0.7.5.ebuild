@@ -19,7 +19,7 @@ IUSE="test"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-	test? ( virtual/funcsigs[${PYTHON_USEDEP}] )
+	test? ( virtual/python-funcsigs[${PYTHON_USEDEP}] )
 "
 
 # Missing something:

@@ -1,0 +1,42 @@
+--- openttd-1.4.4/config.lib
++++ openttd-1.4.4/config.lib
+@@ -1450,12 +1450,6 @@
+ 			CFLAGS="-I/gg/os-include -noixemul -fstrict-aliasing -fexpensive-optimizations -mcpu=604 -fno-inline -mstring -mmultiple $CFLAGS"
+ 			LDFLAGS="$LDFLAGS -noixemul"
+ 		fi
+-
+-		if [ "$enable_profiling" = "0" ]; then
+-			# -fomit-frame-pointer and -pg do not go well together (gcc errors they are incompatible)
+-			CFLAGS="-fomit-frame-pointer $CFLAGS"
+-		fi
+-		CFLAGS="-O2 $CFLAGS"
+ 	else
+ 		OBJS_SUBDIR="debug"
+ 
+@@ -1466,14 +1460,6 @@
+ 				CFLAGS="$CFLAGS -G0"
+ 			fi
+ 		fi
+-		if [ $enable_debug -ge 2 ]; then
+-			CFLAGS="$CFLAGS -fno-inline"
+-		fi
+-		if [ $enable_debug -ge 3 ]; then
+-			CFLAGS="$CFLAGS -O0"
+-		else
+-			CFLAGS="$CFLAGS -O2"
+-		fi
+ 	fi
+ 
+ 	if [ $enable_debug -le 2 ]; then
+@@ -1498,11 +1484,6 @@
+ 		CFLAGS="$CFLAGS -fno-expensive-optimizations"
+ 	fi
+ 
+-	if [ "$enable_profiling" != "0" ]; then
+-		CFLAGS="$CFLAGS -pg"
+-		LDFLAGS="$LDFLAGS -pg"
+-	fi
+-
+ 	if [ "$with_threads" = "0" ]; then
+ 		CFLAGS="$CFLAGS -DNO_THREADS"
+ 	fi

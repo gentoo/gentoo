@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit multilib
+inherit multilib toolchain-funcs
 
 DESCRIPTION="Library for build EFI Applications"
 HOMEPAGE="http://gnu-efi.sourceforge.net/"
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/gnu-efi/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* amd64 ~ia64 x86"
+KEYWORDS="-* amd64 ia64 x86"
 IUSE="abi_x86_32 abi_x86_64"
 
 DEPEND="sys-apps/pciutils"

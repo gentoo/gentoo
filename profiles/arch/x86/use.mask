@@ -188,25 +188,10 @@ video_cards_newport
 
 # Diego Pettenò <flameeyes@gentoo.org> (4 Jan 2007)
 # Unmask the flags for PHP that are available only on x86
--fdftk
--sybase-ct
--ingres
--birdstep
--adabas
--filepro
--pfpro
--informix
--empress
--empress-bcs
 -sybase
 -frontbase
--dbmaker
--esoob
--solid
 # Shared with amd64
 -oci8
--oracle7
--db2
 
 # Robert Buchholz <rbu@gentoo.org> (03 Jun 2007)
 # Unmask as it works on x86

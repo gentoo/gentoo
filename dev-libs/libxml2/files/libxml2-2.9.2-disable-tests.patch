@@ -20,6 +20,15 @@ do not build test programs as we don't install them
  testdso_la_SOURCES = testdso.c
  testdso_la_LDFLAGS = -module -no-undefined -avoid-version -rpath $(libdir)
  
+@@ -202,7 +202,7 @@ runxmlconf_LDADD= $(LDADDS)
+ #testOOM_DEPENDENCIES = $(DEPS)
+ #testOOM_LDADD= $(LDADDS)
+ 
+-runtests:
++runtests: check_PROGRAMS
+ 	[ -d test   ] || $(LN_S) $(srcdir)/test   .
+ 	[ -d result ] || $(LN_S) $(srcdir)/result .
+ 	$(CHECKER) ./runtest$(EXEEXT) && $(CHECKER) ./testrecurse$(EXEEXT) &&$(CHECKER) ./testapi$(EXEEXT) && $(CHECKER) ./testchar$(EXEEXT)&& $(CHECKER) ./testdict$(EXEEXT) && $(CHECKER) ./runxmlconf$(EXEEXT)
 --- a/doc/examples/Makefile.am
 +++ b/doc/examples/Makefile.am
 @@ -13,7 +13,7 @@

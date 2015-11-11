@@ -1,0 +1,12 @@
+diff -Naur dblatex-0.3.7-orig/lib/dbtexmf/core/imagedata.py dblatex-0.3.7/lib/dbtexmf/core/imagedata.py
+--- dblatex-0.3.7-orig/lib/dbtexmf/core/imagedata.py	2015-08-07 10:47:53.000000000 +0100
++++ dblatex-0.3.7/lib/dbtexmf/core/imagedata.py	2015-11-08 22:36:41.771457222 +0000
+@@ -66,7 +66,7 @@
+ 
+ class SvgConverter(ImageConverter):
+     def convert(self, input, output, format, doexec=1):
+-        cmd = "inkscape -z -D --export-%s=%s \"%s\"" % (format, output, input)
++        cmd = "rsvg-convert -f %s -o \"%s\" \"%s\"" % (format, output, input)
+         return self.system(cmd, doexec)
+ 
+ 

@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Julian Ospald <hasufell@gentoo.org> (08 Nov 2015)
+# Requires net-libs/http-parser
+net-im/jabberd2 websocket
+
 # Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
 # Tests require non-keyworded qt5
 dev-qt/qtchooser test

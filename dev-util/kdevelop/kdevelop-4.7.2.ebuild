@@ -10,7 +10,7 @@ VIRTUALX_REQUIRED="test"
 EGIT_BRANCH="4.7"
 inherit kde4-base
 
-DESCRIPTION="Integrated Development Environment for Unix, supporting KDE/Qt, C/C++ and many other languages"
+DESCRIPTION="Integrated Development Environment, supporting KDE/Qt, C/C++ and much more"
 LICENSE="GPL-2 LGPL-2"
 IUSE="+cmake +cxx debug +gdbui okteta qthelp"
 

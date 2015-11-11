@@ -57,10 +57,10 @@ python_install_all() {
 
 	COMPLETION="${T}"/completion.tmp
 
-	${EPYTHON} pip/__init__.py completion --bash > "${COMPLETION}" || die
+	"${PYTHON}" pip/__init__.py completion --bash > "${COMPLETION}" || die
 	newbashcomp "${COMPLETION}" ${PN}
 
-	${EPYTHON} pip/__init__.py completion --zsh > "${COMPLETION}" || die
+	"${PYTHON}" pip/__init__.py completion --zsh > "${COMPLETION}" || die
 	insinto /usr/share/zsh/site-functions
 	newins "${COMPLETION}" _pip
 }

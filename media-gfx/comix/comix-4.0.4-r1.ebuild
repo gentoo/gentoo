@@ -19,7 +19,7 @@ KEYWORDS="amd64 ppc x86 ~x86-fbsd"
 IUSE="rar"
 
 DEPEND="${PYTHON_DEPS}
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	>=dev-python/pygtk-2.12[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
 	rar? ( || ( app-arch/unrar app-arch/rar ) )"

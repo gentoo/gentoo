@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/gemhome/rmagick"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~mips ~ppc ~ppc64 ~x86 ~x86-macos"
+KEYWORDS="amd64 ~hppa ~mips ~ppc ~ppc64 ~x86 ~x86-macos"
 IUSE="doc"
 
 # Since 2.13.3 rmagick now supports HDRI enabled, but with it enabled

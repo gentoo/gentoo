@@ -15,7 +15,7 @@ BASE_SRC_URI_STABLE="http://download.documentfoundation.org/${PN/-l10n/}/stable/
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
-# KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 IUSE="offlinehelp"
 
 #
@@ -45,11 +45,11 @@ RESTRICT="strip"
 
 S="${WORKDIR}"
 
-src_unpack() {
-	default
+src_prepare() {
+	local lang dir rpmdir
 
-	local lang dir rpmdir i
-	local ooextused=()
+	# First remove dictionaries, we want to use system ones.
+	find "${S}" -name *dict*.rpm -delete || die "Failed to remove dictionaries"
 
 	for lang in ${LANGUAGES}; do
 		# break away if not enabled; paludis support
@@ -60,21 +60,18 @@ src_unpack() {
 		# for english we provide just helppack, as translation is always there
 		if [[ ${lang} != en ]]; then
 			rpmdir="LibreOffice_${PV}_Linux_x86_rpm_langpack_${dir}/RPMS/"
-			[[ -d ${rpmdir} ]] || die "Missing directory: \"${rpmdir}\""
-			# First remove dictionaries, we want to use system ones.
-			rm -rf "${S}/${rpmdir}/"*dict*.rpm
-			rpm_unpack "./${rpmdir}/"*.rpm
+			[[ -d ${rpmdir} ]] || die "Missing directory: ${rpmdir}"
+			rpm_unpack ./${rpmdir}/*.rpm
 		fi
 		if [[ "${LANGUAGES_HELP}" =~ " ${lang} " ]] && use offlinehelp; then
 			[[ ${lang} == en ]] && dir="en-US"
 			rpmdir="LibreOffice_${PV}_Linux_x86_rpm_helppack_${dir}/RPMS/"
-			[[ -d ${rpmdir} ]] || die "Missing directory: \"${rpmdir}\""
-			rpm_unpack ./"${rpmdir}/"*.rpm
+			[[ -d ${rpmdir} ]] || die "Missing directory: ${rpmdir}"
+			rpm_unpack ./${rpmdir}/*.rpm
 		fi
 	done
 }
 
-src_prepare() { :; }
 src_configure() { :; }
 src_compile() { :; }
 
@@ -87,5 +84,6 @@ src_install() {
 		doins -r "${dir}"/*
 	fi
 	# remove extensions that are in the l10n for some weird reason
-	rm -rf "${ED}"/usr/$(get_libdir)/${PN/-l10n/}/share/extensions/
+	rm -rf "${ED}"usr/$(get_libdir)/${PN/-l10n/}/share/extensions/ || \
+		die "Failed to remove extensions"
 }

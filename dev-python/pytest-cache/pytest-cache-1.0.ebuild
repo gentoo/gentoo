@@ -15,9 +15,17 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 SLOT="0"
 LICENSE="MIT"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
+IUSE="test"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 	"
+
+# https://bitbucket.org/hpk42/pytest-cache/issues/12
+RESTRICT=test
+
+python_test() {
+	PYTEST_PLUGINS="pytest_cache" py.test -v -v || die
+}

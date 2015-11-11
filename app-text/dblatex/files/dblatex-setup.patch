@@ -1,0 +1,28 @@
+--- dblatex-0.3.7-orig/setup.py	2015-08-07 10:47:53.000000000 +0100
++++ dblatex-0.3.7/setup.py	2015-11-08 22:39:03.076213227 +0000
+@@ -23,7 +23,6 @@
+ from distutils import log
+ from subprocess import Popen, PIPE
+ sys.path.append("lib")
+-from contrib.debian.installer import DebianInstaller
+ 
+ #
+ # Build the command line script
+@@ -363,15 +362,12 @@
+                 status += "no"
+                 mis_stys.append(sty)
+             print status
+-            
++
+         if mis_stys:
+             raise OSError("not found: %s" % ", ".join(mis_stys))
+ 
+     def run(self):
+-        if self.install_layout == "deb":
+-            db = DebianInstaller(self)
+-        else:
+-            db = None
++        db = None
+ 
+         if not(db) and not(self.nodeps):
+             try:

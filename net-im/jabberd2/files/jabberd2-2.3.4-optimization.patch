@@ -1,0 +1,21 @@
+Re-allow the use of O3/Os, since it seems to have been an old compiler
+bug.
+
+See https://github.com/jabberd2/jabberd2/issues/34
+
+--- configure.ac
++++ configure.ac
+@@ -23,13 +23,6 @@
+     LIBS="$LIBS $lt_cv_dlopen_libs"
+ fi
+ 
+-# check for optimisation level
+-AC_MSG_CHECKING([CFLAGS optimization level])
+-[if echo $CFLAGS | grep '.*-O[3s].*' >/dev/null 2>&1; then]
+-    AC_MSG_ERROR([maximum allowed optimization level is -O2])
+-fi
+-AC_MSG_RESULT([fine])
+-
+ # extra paths
+ AC_ARG_WITH([extra_include_path], AC_HELP_STRING([--with-extra-include-path],
+                                            [use additional include paths]),

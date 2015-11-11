@@ -37,9 +37,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-twisted-backport2.patch
 )
 
-# https://github.com/testing-cabal/testtools/issues/156
-RESTRICT=test
-
 python_compile_all() {
 	use doc && emake -C doc html
 }

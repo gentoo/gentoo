@@ -18,7 +18,7 @@ KEYWORDS="amd64 ia64 ppc x86"
 IUSE="doc"
 
 DEPEND="${PYTHON_DEPS}
-	virtual/python-imaging[${PYTHON_USEDEP}]"
+	dev-python/pillow[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

@@ -45,8 +45,8 @@ COMMON_DEPEND="
 	!cairo? ( media-libs/libart_lgpl )
 	hunspell? ( app-text/hunspell )
 	pdf? ( app-text/podofo )
-	scripts? ( virtual/python-imaging[tk?,${PYTHON_USEDEP}] )
-	tk? ( virtual/python-imaging[tk?,${PYTHON_USEDEP}] )
+	scripts? ( dev-python/pillow[tk?,${PYTHON_USEDEP}] )
+	tk? ( dev-python/pillow[tk?,${PYTHON_USEDEP}] )
 "
 RDEPEND="${COMMON_DEPEND}
 	app-text/ghostscript-gpl"

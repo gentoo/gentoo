@@ -96,8 +96,7 @@ unset lo_xt
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 [[ ${PV} == *9999* ]] || \
-KEYWORDS=""
-# KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
@@ -343,6 +342,7 @@ src_prepare() {
 	fi
 
 	epatch "${PATCHES[@]}"
+	epatch_user
 
 	AT_M4DIR="m4" eautoreconf
 	# hack in the autogen.sh

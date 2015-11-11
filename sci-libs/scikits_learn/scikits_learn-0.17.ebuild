@@ -27,7 +27,7 @@ RDEPEND="
 	>=dev-python/numpy-1.6.1[lapack,${PYTHON_USEDEP}]
 	sci-libs/scikits[${PYTHON_USEDEP}]
 	>=sci-libs/scipy-0.9[${PYTHON_USEDEP}]
-	virtual/funcsigs[${PYTHON_USEDEP}]
+	virtual/python-funcsigs[${PYTHON_USEDEP}]
 	"
 DEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]

@@ -5,7 +5,7 @@
 EAPI=5
 inherit autotools eutils
 
-DESCRIPTION="easily lookup countries by IP addresses, even when Reverse DNS entries don't exist"
+DESCRIPTION="GeoIP Legacy C API"
 HOMEPAGE="https://github.com/maxmind/geoip-api-c"
 SRC_URI="
 	https://github.com/maxmind/${PN}-api-c/archive/v${PV}.tar.gz -> ${P}.tar.gz

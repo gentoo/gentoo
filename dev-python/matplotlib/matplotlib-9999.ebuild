@@ -62,7 +62,7 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	doc? (
 		app-text/dvipng
-		virtual/python-imaging[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/ipython[${PYTHON_USEDEP}]
 		dev-python/numpydoc[${PYTHON_USEDEP}]
 		dev-python/xlwt[${PYTHON_USEDEP}]
@@ -86,10 +86,7 @@ RDEPEND="${COMMON_DEPEND}
 			)
 		)
 	excel? ( dev-python/xlwt[${PYTHON_USEDEP}] )
-	fltk? (
-		$(python_gen_cond_dep 'dev-python/pyfltk[${PYTHON_USEDEP}]' python2_7)
-		$(python_gen_cond_dep 'dev-python/pyfltk[${PYTHON_USEDEP}]' 'python3*')
-		)
+	fltk? ( dev-python/pyfltk[${PYTHON_USEDEP}] )
 	gtk3? (
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		x11-libs/gtk+:3[introspection] )

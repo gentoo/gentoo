@@ -15,7 +15,7 @@ SRC_URI="https://github.com/MegaGlest/megaglest-source/releases/download/${PV}/m
 
 LICENSE="GPL-3 BitstreamVera"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug +editor fribidi cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 static +streflop +tools +unicode wxuniversal +model-viewer videos"
 
 RDEPEND="

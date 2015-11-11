@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-fbsd"
 IUSE="doc"
 
-RDEPEND="virtual/python-imaging
+RDEPEND="dev-python/pillow
 	gnome-base/libglade
 	dev-python/pyxml[${PYTHON_USEDEP}]
 	>=dev-python/pygtk-2.6.1:2[${PYTHON_USEDEP}]

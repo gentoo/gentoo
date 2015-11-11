@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="dev-python/html5lib[${PYTHON_USEDEP}]
-	virtual/python-imaging[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/PyPDF2[${PYTHON_USEDEP}]
 	>=dev-python/reportlab-2.2[${PYTHON_USEDEP}]
 	<dev-python/reportlab-3[${PYTHON_USEDEP}]"

@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/gtkextra/gtkextra-${PV}.tar.gz"
 
 LICENSE="FDL-1.1 LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+introspection static-libs test"
 
 RDEPEND="

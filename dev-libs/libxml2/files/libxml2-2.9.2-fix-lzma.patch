@@ -1,0 +1,114 @@
+From 18b8988511b0954272cac4d6c3e6724f9dbf6e0a Mon Sep 17 00:00:00 2001
+From: Daniel Veillard <veillard@redhat.com>
+Date: Tue, 3 Nov 2015 15:46:29 +0800
+Subject: [PATCH] Reenable xz support by default
+
+For https://bugzilla.gnome.org/show_bug.cgi?id=757466
+
+problem was introduced by commit f3f86ff465c92c79f834d7b981f3c7274a8bb5c8
+for https://bugzilla.gnome.org/show_bug.cgi?id=711026
+---
+ configure.ac |  3 +++
+ xmlIO.c      | 12 ++++++------
+ xzlib.c      |  6 ++++--
+ 3 files changed, 13 insertions(+), 8 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 14ac0a8..48e0577 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -445,6 +445,9 @@ else
+                 fi],
+                 [have_liblzma=no])
+ 	     LDFLAGS="${SAVE_LDFLAGS}"])
++    else
++	# we still need to check for lzma,h header
++	AC_CHECK_HEADERS([lzma.h])
+     fi
+ 
+     # Found the library via either method?
+diff --git a/xmlIO.c b/xmlIO.c
+index e628ab0..8b13184 100644
+--- a/xmlIO.c
++++ b/xmlIO.c
+@@ -1334,7 +1334,7 @@ xmlGzfileClose (void * context) {
+ }
+ #endif /* HAVE_ZLIB_H */
+ 
+-#ifdef HAVE_LZMA_H
++#ifdef LIBXML_LZMA_ENABLED
+ /************************************************************************
+  *									*
+  *		I/O for compressed file accesses			*
+@@ -1451,7 +1451,7 @@ xmlXzfileClose (void * context) {
+     if (ret < 0) xmlIOErr(0, "xzclose()");
+     return(ret);
+ }
+-#endif /* HAVE_LZMA_H */
++#endif /* LIBXML_LZMA_ENABLED */
+ 
+ #ifdef LIBXML_HTTP_ENABLED
+ /************************************************************************
+@@ -2328,10 +2328,10 @@ xmlRegisterDefaultInputCallbacks(void) {
+     xmlRegisterInputCallbacks(xmlGzfileMatch, xmlGzfileOpen,
+ 	                      xmlGzfileRead, xmlGzfileClose);
+ #endif /* HAVE_ZLIB_H */
+-#ifdef HAVE_LZMA_H
++#ifdef LIBXML_LZMA_ENABLED
+     xmlRegisterInputCallbacks(xmlXzfileMatch, xmlXzfileOpen,
+ 	                      xmlXzfileRead, xmlXzfileClose);
+-#endif /* HAVE_ZLIB_H */
++#endif /* LIBXML_LZMA_ENABLED */
+ 
+ #ifdef LIBXML_HTTP_ENABLED
+     xmlRegisterInputCallbacks(xmlIOHTTPMatch, xmlIOHTTPOpen,
+@@ -2683,7 +2683,7 @@ __xmlParserInputBufferCreateFilename(const char *URI, xmlCharEncoding enc) {
+ #endif
+ 	}
+ #endif
+-#ifdef HAVE_LZMA_H
++#ifdef LIBXML_LZMA_ENABLED
+ 	if ((xmlInputCallbackTable[i].opencallback == xmlXzfileOpen) &&
+ 		(strcmp(URI, "-") != 0)) {
+             ret->compressed = __libxml2_xzcompressed(context);
+@@ -3350,7 +3350,7 @@ xmlParserInputBufferGrow(xmlParserInputBufferPtr in, int len) {
+      * try to establish compressed status of input if not done already
+      */
+     if (in->compressed == -1) {
+-#ifdef HAVE_LZMA_H
++#ifdef LIBXML_LZMA_ENABLED
+ 	if (in->readcallback == xmlXzfileRead)
+             in->compressed = __libxml2_xzcompressed(in->context);
+ #endif
+diff --git a/xzlib.c b/xzlib.c
+index 1fab546..782957f 100644
+--- a/xzlib.c
++++ b/xzlib.c
+@@ -8,7 +8,7 @@
+  */
+ #define IN_LIBXML
+ #include "libxml.h"
+-#ifdef HAVE_LZMA_H
++#ifdef LIBXML_LZMA_ENABLED
+ 
+ #include <string.h>
+ #ifdef HAVE_ERRNO_H
+@@ -34,7 +34,9 @@
+ #ifdef HAVE_ZLIB_H
+ #include <zlib.h>
+ #endif
++#ifdef HAVE_LZMA_H
+ #include <lzma.h>
++#endif
+ 
+ #include "xzlib.h"
+ #include <libxml/xmlmemory.h>
+@@ -799,4 +801,4 @@ __libxml2_xzclose(xzFile file)
+     xmlFree(state);
+     return ret ? ret : LZMA_OK;
+ }
+-#endif /* HAVE_LZMA_H */
++#endif /* LIBXML_LZMA_ENABLED */
+-- 
+2.4.10
+

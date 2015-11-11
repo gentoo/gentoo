@@ -22,7 +22,7 @@ KEYWORDS=""
 IUSE="gnome sqlite X"
 
 RDEPEND="
-	virtual/dnspython[${PYTHON_USEDEP}]
+	virtual/python-dnspython[${PYTHON_USEDEP}]
 	gnome? ( dev-python/pygtk:2[${PYTHON_USEDEP}] )
 	X? (
 		dev-python/PyQt4[X,help,${PYTHON_USEDEP}]

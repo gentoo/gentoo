@@ -7,7 +7,7 @@ EAPI="5"
 inherit cmake-utils vcs-snapshot
 
 if [[ ${PV} != 9999* ]]; then
-	COMMIT="aa2181dcf2dd98693767ba738c5b2ad8c3d742d4"
+	COMMIT=""
 	SRC_URI="https://github.com/FreeRDP/FreeRDP/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
 else
@@ -22,8 +22,7 @@ HOMEPAGE="http://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="0/1.2"
-IUSE="alsa +client cpu_flags_x86_sse2 cups debug doc ffmpeg gstreamer jpeg
-	libressl neon pulseaudio server smartcard test usb wayland X xinerama xv"
+IUSE="alsa +client cpu_flags_x86_sse2 cups debug doc ffmpeg gstreamer jpeg libressl neon pulseaudio server smartcard systemd test usb wayland X xinerama xv"
 
 RDEPEND="
 	!libressl? ( dev-libs/openssl:0 )
@@ -65,6 +64,7 @@ RDEPEND="
 		)
 	)
 	smartcard? ( sys-apps/pcsc-lite )
+	systemd? ( sys-apps/systemd:0= )
 	wayland? ( dev-libs/wayland )
 	X? (
 		x11-libs/libX11
@@ -95,6 +95,7 @@ src_configure() {
 		$(cmake-utils_use_with pulseaudio PULSE)
 		$(cmake-utils_use_with server SERVER)
 		$(cmake-utils_use_with smartcard PCSC)
+		$(cmake-utils_use_with systemd LIBSYSTEMD)
 		$(cmake-utils_use_with cpu_flags_x86_sse2 SSE2)
 		$(cmake-utils_use usb CHANNEL_URBDRC)
 		$(cmake-utils_use_with X X11)

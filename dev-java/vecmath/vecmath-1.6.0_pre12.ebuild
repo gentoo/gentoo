@@ -14,12 +14,12 @@ MY_PV=$(replace_version_separator 3 '-')
 SRC_URI="https://github.com/hharrison/vecmath/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="1.6"
-KEYWORDS="~amd64 ~x86"
+SLOT="0"
+KEYWORDS="amd64 x86"
 IUSE=""
+
 DEPEND=">=virtual/jdk-1.6
-		dev-java/ant-core
-		"
+	dev-java/ant-core"
 RDEPEND=">=virtual/jre-1.6"
 
 S="${WORKDIR}/${PN}-${MY_PV}"

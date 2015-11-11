@@ -22,7 +22,7 @@ DEPEND="virtual/mta
 	virtual/httpd-cgi
 	|| (
 		dev-python/dnspython:0
-		virtual/dnspython
+		virtual/python-dnspython
 	)"
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-mailman )

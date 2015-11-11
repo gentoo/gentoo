@@ -15,11 +15,12 @@ KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="clock curl outputs taglib unicode visualizer"
 
 RDEPEND="
+	!dev-libs/boost:0/1.57.0
 	>=media-libs/libmpdclient-2.1
-	curl? ( net-misc/curl )
 	dev-libs/boost:=[nls,threads]
 	sys-libs/ncurses:=[unicode?]
 	sys-libs/readline:*
+	curl? ( net-misc/curl )
 	taglib? ( media-libs/taglib )
 	unicode? ( dev-libs/boost:=[icu] )
 	visualizer? ( sci-libs/fftw:3.0 )

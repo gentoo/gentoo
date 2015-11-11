@@ -175,7 +175,6 @@ static_use_with() {
 src_configure() {
 	local myconf=()
 	addwrite /dev/ptmx
-	addpredict /etc/skey/skeykeys #skey configure code triggers this
 
 	use static && append-ldflags -static
 

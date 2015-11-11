@@ -12,7 +12,7 @@ SRC_URI="https://www.monitoring-plugins.org/download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="gnutls ipv6 ldap mysql dns fping game postgres samba snmp ssh +ssl"
 
 # Most of the plugins use automagic dependencies, i.e. the plugin will

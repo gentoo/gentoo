@@ -22,7 +22,7 @@ CDEPEND="
 	dev-python/pygtk:2[${PYTHON_USEDEP}]
 	media-gfx/zbar:0[python,gtk,imagemagick,${PYTHON_USEDEP}]
 	media-gfx/qrencode-python[${PYTHON_USEDEP}]
-	virtual/python-imaging[${PYTHON_USEDEP}]"
+	dev-python/pillow[${PYTHON_USEDEP}]"
 
 DEPEND="
 	dev-python/docutils[${PYTHON_USEDEP}]
