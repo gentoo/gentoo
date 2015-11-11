@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 WANT_LIBTOOL="none"
 
 inherit autotools eutils flag-o-matic multilib pax-utils python-utils-r1 toolchain-funcs multiprocessing
@@ -25,27 +25,28 @@ IUSE="build elibc_uclibc examples gdbm hardened ipv6 libressl +ncurses +readline
 # run the bootstrap code on your dev box and include the results in the
 # patchset. See bug 447752.
 
-RDEPEND="app-arch/bzip2
-	app-arch/xz-utils
-	>=sys-libs/zlib-1.1.3
+RDEPEND="app-arch/bzip2:0=
+	app-arch/xz-utils:0=
+	>=sys-libs/zlib-1.1.3:0=
 	virtual/libffi
 	virtual/libintl
-	xml? ( >=dev-libs/expat-2.1 )
-	gdbm? ( sys-libs/gdbm[berkdb] )
+	gdbm? ( sys-libs/gdbm:0=[berkdb] )
 	ncurses? (
-		>=sys-libs/ncurses-5.2
-		readline? ( >=sys-libs/readline-4.1 )
+		>=sys-libs/ncurses-5.2:0=
+		readline? ( >=sys-libs/readline-4.1:0= )
 	)
-	sqlite? ( >=dev-db/sqlite-3.3.8:3 )
+	sqlite? ( >=dev-db/sqlite-3.3.8:3= )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:= )
 	)
 	tk? (
-		>=dev-lang/tk-8.0
-		dev-tcltk/blt
+		>=dev-lang/tcl-8.0:0=
+		>=dev-lang/tk-8.0:0=
+		dev-tcltk/blt:0=
 		dev-tcltk/tix
 	)
+	xml? ( >=dev-libs/expat-2.1:0= )
 	!!<sys-apps/sandbox-2.6-r1"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -56,6 +57,8 @@ PDEPEND="app-eselect/eselect-python
 	app-admin/python-updater"
 
 S="${WORKDIR}/${MY_P}"
+
+PYVER=${SLOT%/*}
 
 src_prepare() {
 	# Ensure that internal copies of expat, libffi and zlib are not used.
@@ -89,21 +92,21 @@ src_prepare() {
 }
 
 src_configure() {
-		local disable
-		use gdbm     || disable+=" gdbm"
-		use ncurses  || disable+=" _curses _curses_panel"
-		use readline || disable+=" readline"
-		use sqlite   || disable+=" _sqlite3"
-		use ssl      || export PYTHON_DISABLE_SSL="1"
-		use tk       || disable+=" _tkinter"
-		use xml      || disable+=" _elementtree pyexpat" # _elementtree uses pyexpat.
-		export PYTHON_DISABLE_MODULES="${disable}"
+	local disable
+	use gdbm     || disable+=" gdbm"
+	use ncurses  || disable+=" _curses _curses_panel"
+	use readline || disable+=" readline"
+	use sqlite   || disable+=" _sqlite3"
+	use ssl      || export PYTHON_DISABLE_SSL="1"
+	use tk       || disable+=" _tkinter"
+	use xml      || disable+=" _elementtree pyexpat" # _elementtree uses pyexpat.
+	export PYTHON_DISABLE_MODULES="${disable}"
 
-		if ! use xml; then
-			ewarn "You have configured Python without XML support."
-			ewarn "This is NOT a recommended configuration as you"
-			ewarn "may face problems parsing any XML documents."
-		fi
+	if ! use xml; then
+		ewarn "You have configured Python without XML support."
+		ewarn "This is NOT a recommended configuration as you"
+		ewarn "may face problems parsing any XML documents."
+	fi
 
 	if [[ -n "${PYTHON_DISABLE_MODULES}" ]]; then
 		einfo "Disabled modules: ${PYTHON_DISABLE_MODULES}"
@@ -125,6 +128,7 @@ src_configure() {
 
 	# Export CXX so it ends up in /usr/lib/python3.X/config/Makefile.
 	tc-export CXX
+
 	# The configure script fails to use pkg-config correctly.
 	# http://bugs.python.org/issue15506
 	export ac_cv_path_PKG_CONFIG=$(tc-getPKG_CONFIG)
@@ -171,7 +175,8 @@ src_compile() {
 	touch Include/graminit.h Python/graminit.c || die
 
 	cd "${BUILD_DIR}" || die
-	emake CPPFLAGS="" CFLAGS="" LDFLAGS=""
+
+	emake CPPFLAGS= CFLAGS= LDFLAGS=
 
 	# Work around bug 329499. See also bug 413751 and 457194.
 	if has_version dev-libs/libffi[pax_kernel]; then
@@ -211,7 +216,7 @@ src_test() {
 	done
 
 	elog "If you would like to run them, you may:"
-	elog "cd '${EPREFIX}/usr/$(get_libdir)/python${SLOT}/test'"
+	elog "cd '${EPREFIX}/usr/$(get_libdir)/python${PYVER}/test'"
 	elog "and run the tests separately."
 
 	if [[ ${result} -ne 0 ]]; then
@@ -220,7 +225,7 @@ src_test() {
 }
 
 src_install() {
-	local libdir=${ED}/usr/$(get_libdir)/python${SLOT}
+	local libdir=${ED}/usr/$(get_libdir)/python${PYVER}
 
 	cd "${BUILD_DIR}" || die
 
@@ -229,7 +234,7 @@ src_install() {
 	sed \
 		-e "s/\(CONFIGURE_LDFLAGS=\).*/\1/" \
 		-e "s/\(PY_LDFLAGS=\).*/\1/" \
-		-i "${libdir}/config-${SLOT}"*/Makefile || die "sed failed"
+		-i "${libdir}/config-${PYVER}"*/Makefile || die "sed failed"
 
 	# Fix collisions between different slots of Python.
 	rm -f "${ED}usr/$(get_libdir)/libpython3.so"
@@ -237,14 +242,14 @@ src_install() {
 	# Cheap hack to get version with ABIFLAGS
 	local abiver=$(cd "${ED}usr/include"; echo python*)
 	# Replace python3.X with a symlink if appropriate
-	if [[ ${abiver} != python${SLOT} ]]; then
-		rm "${ED}usr/bin/python${SLOT}" || die
-		dosym "${abiver}" "/usr/bin/python${SLOT}"
+	if [[ ${abiver} != python${PYVER} ]]; then
+		rm "${ED}usr/bin/python${PYVER}" || die
+		dosym "${abiver}" "/usr/bin/python${PYVER}"
 	fi
 
-		use elibc_uclibc && rm -fr "${libdir}/test"
-		use sqlite || rm -fr "${libdir}/"{sqlite3,test/test_sqlite*}
-		use tk || rm -fr "${ED}usr/bin/idle${SLOT}" "${libdir}/"{idlelib,tkinter,test/test_tk*}
+	use elibc_uclibc && rm -fr "${libdir}/test"
+	use sqlite || rm -fr "${libdir}/"{sqlite3,test/test_sqlite*}
+	use tk || rm -fr "${ED}usr/bin/idle${PYVER}" "${libdir}/"{idlelib,tkinter,test/test_tk*}
 
 	use threads || rm -fr "${libdir}/multiprocessing"
 	use wininst || rm -f "${libdir}/distutils/command/"wininst-*.exe
@@ -261,15 +266,15 @@ src_install() {
 		emake --no-print-directory -s -f - 2>/dev/null)
 	newins "${S}"/Tools/gdb/libpython.py "${libname}"-gdb.py
 
-	newconfd "${FILESDIR}/pydoc.conf" pydoc-${SLOT}
-	newinitd "${FILESDIR}/pydoc.init" pydoc-${SLOT}
+	newconfd "${FILESDIR}/pydoc.conf" pydoc-${PYVER}
+	newinitd "${FILESDIR}/pydoc.init" pydoc-${PYVER}
 	sed \
-		-e "s:@PYDOC_PORT_VARIABLE@:PYDOC${SLOT/./_}_PORT:" \
-		-e "s:@PYDOC@:pydoc${SLOT}:" \
-		-i "${ED}etc/conf.d/pydoc-${SLOT}" "${ED}etc/init.d/pydoc-${SLOT}" || die "sed failed"
+		-e "s:@PYDOC_PORT_VARIABLE@:PYDOC${PYVER/./_}_PORT:" \
+		-e "s:@PYDOC@:pydoc${PYVER}:" \
+		-i "${ED}etc/conf.d/pydoc-${PYVER}" "${ED}etc/init.d/pydoc-${PYVER}" || die "sed failed"
 
 	# for python-exec
-	python_export python${SLOT} EPYTHON PYTHON PYTHON_SITEDIR
+	python_export python${PYVER} EPYTHON PYTHON PYTHON_SITEDIR
 
 	# if not using a cross-compiler, use the fresh binary
 	if ! tc-is-cross-compiler; then
@@ -282,7 +287,7 @@ src_install() {
 }
 
 pkg_preinst() {
-	if has_version "<${CATEGORY}/${PN}-${SLOT}" && ! has_version ">=${CATEGORY}/${PN}-${SLOT}_alpha"; then
+	if has_version "<${CATEGORY}/${PN}-${PYVER}" && ! has_version ">=${CATEGORY}/${PN}-${PYVER}_alpha"; then
 		python_updater_warning="1"
 	fi
 }
