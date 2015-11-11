@@ -52,8 +52,8 @@ SRC_URI="${SRC_URI}
 
 ASM_DEPEND=">=dev-lang/yasm-1.1"
 
-RDEPEND=">=dev-libs/nss-3.19.2
-	>=dev-libs/nspr-4.10.8
+RDEPEND=">=dev-libs/nss-3.20.1
+	>=dev-libs/nspr-4.10.10
 	crypt? ( || (
 			( >=app-crypt/gnupg-2.0
 				|| (
