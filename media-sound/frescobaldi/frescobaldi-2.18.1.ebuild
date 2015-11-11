@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1 gnome2-utils
 
@@ -18,15 +18,10 @@ IUSE="portmidi"
 
 RDEPEND="dev-python/python-poppler-qt4[${PYTHON_USEDEP}]
 	dev-python/PyQt4[X,${PYTHON_USEDEP}]
+	>=dev-python/python-ly-0.9[${PYTHON_USEDEP}]
 	>=media-sound/lilypond-2.14.2
-	portmidi? ( $(python_gen_cond_dep 'media-libs/portmidi[${PYTHON_USEDEP}]' python2_7) )"
+	portmidi? ( media-libs/portmidi[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}"
-
-python_prepare_all() {
-	# Instructs install unconditionally for a Windows system
-	rm setup.cfg || die
-	distutils-r1_python_prepare_all
-}
 
 pkg_preinst() {
 	gnome2_icon_savelist
