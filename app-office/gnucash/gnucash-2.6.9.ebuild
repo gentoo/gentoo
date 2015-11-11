@@ -64,6 +64,9 @@ src_prepare() {
 	# Skip test that needs some locales to be present
 	sed -i -e '/test_suite_gnc_date/d' src/libqof/qof/test/test-qof.c || die
 
+	# Fix automagic on guile detection
+	epatch "${FILESDIR}"/${PN}-2.6.9-automagic-guile.patch
+
 	eautoreconf
 	gnome2_src_prepare
 }
@@ -86,6 +89,7 @@ src_configure() {
 		$(use_enable ofx) \
 		$(use_enable hbci aqbanking) \
 		$(use_enable python) \
+		--with-guile=1.8 \
 		--disable-doxygen \
 		--disable-gtkmm \
 		--enable-locale-specific-tax \
