@@ -31,7 +31,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND}
 		|| ( virtual/jre:1.8 virtual/jre:1.7 )
-		dev-python/mock[${PYTHON_USEDEP}]
+		~dev-python/mock-1.0.1[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/nosexcover[${PYTHON_USEDEP}]
