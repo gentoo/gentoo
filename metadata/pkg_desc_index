@@ -13763,7 +13763,7 @@ net-ftp/pybootd 1.5.0_pre20110524131526: Simplified BOOTP/DHCP/PXE/TFTP server
 net-ftp/qshare 2.1.5-r1: FTP server with a service discovery feature
 net-ftp/scythia 0.9.3_p2: Just a small FTP client
 net-ftp/tftp-hpa 5.2 5.2-r1: port of the OpenBSD TFTP server
-net-ftp/tlswrap 1.04: TLSWRAP is a TLS/SSL FTP wrapper/proxy which allows to use TLS with every FTP client
+net-ftp/tlswrap 1.04-r1: a TLS/SSL FTP wrapper/proxy which allows to use TLS with every FTP client
 net-ftp/tnftp 20141104 20151004: NetBSD FTP client with several advanced features
 net-ftp/vsftpd 2.3.5 3.0.2 3.0.2-r1 3.0.2-r2 3.0.2-r3 3.0.2-r4 3.0.3: Very Secure FTP Daemon written with speed, size and security in mind
 net-ftp/weex 2.6.1.5-r1: Automates maintaining a web page or other FTP archive
@@ -17678,7 +17678,7 @@ x11-drivers/xf86-video-openchrome 0.3.3: X.Org driver for VIA/S3G cards
 x11-drivers/xf86-video-opentegra 0.7.0: X.Org video driver for NVIDIA Tegra
 x11-drivers/xf86-video-qxl 0.1.3 0.1.4: QEMU QXL paravirt video driver
 x11-drivers/xf86-video-r128 6.9.1 6.9.2 6.10.0: ATI Rage128 video driver
-x11-drivers/xf86-video-rendition 4.2.5-r1: Rendition video driver
+x11-drivers/xf86-video-rendition 4.2.6: Rendition video driver
 x11-drivers/xf86-video-s3 0.6.5 0.6.5-r1: X.Org driver for s3 cards
 x11-drivers/xf86-video-s3virge 1.10.7: S3 ViRGE video driver
 x11-drivers/xf86-video-savage 2.3.8: S3 Savage video driver
