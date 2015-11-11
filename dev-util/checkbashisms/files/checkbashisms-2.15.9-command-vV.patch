@@ -1,0 +1,30 @@
+https://bugs.debian.org/733511
+
+From 50dac50bdfa7ab482bf2277cc1a620a62629c80c Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 10 Nov 2015 19:39:19 -0500
+Subject: [PATCH] checkbashisms: allow `command` to use -v/-V
+
+POSIX permits the -v/-V options:
+http://pubs.opengroup.org/onlinepubs/9699919799/utilities/command.html
+command [-p][-v|-V] command_name
+---
+ scripts/checkbashisms.pl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/checkbashisms.pl b/scripts/checkbashisms.pl
+index 045328c..fe64a6b 100755
+--- a/scripts/checkbashisms.pl
++++ b/scripts/checkbashisms.pl
+@@ -644,7 +644,7 @@ sub init_hashes {
+ 	qr';;?&' =>  q<;;& and ;& special case operators>,
+ 	$LEADIN . qr'jobs\s' =>  q<jobs>,
+ #	$LEADIN . qr'jobs\s+-[^lp]\s' =>  q<'jobs' with option other than -l or -p>,
+-	$LEADIN . qr'command\s+-[^p]\s' =>  q<'command' with option other than -p>,
++	$LEADIN . qr'command\s+-[^pvV]\s' =>  q<'command' with option other than -p/-v/-V>,
+ 	$LEADIN . qr'setvar\s' =>  q<setvar 'foo' 'bar' should be eval 'foo="'"$bar"'"'>,
+ 	$LEADIN . qr'trap\s+["\']?.*["\']?\s+.*(?:ERR|DEBUG|RETURN)' => q<trap with ERR|DEBUG|RETURN>,
+ 	$LEADIN . qr'(?:exit|return)\s+-\d' => q<exit|return with negative status code>,
+-- 
+2.6.2
+

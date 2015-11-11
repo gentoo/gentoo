@@ -1,0 +1,30 @@
+From 18cd946c5d43d010c3821a4620cf97dbc0406ed8 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 10 Nov 2015 19:40:24 -0500
+Subject: [PATCH] checkbashisms: allow `printf` to use %b
+
+POSIX permits the b conversion specifier character:
+http://pubs.opengroup.org/onlinepubs/9699919799/utilities/printf.html
+
+EXTENDED DESCRIPTION
+7. An additional conversion specifier character, b, shall be supported as follows.
+---
+ scripts/checkbashisms.pl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/checkbashisms.pl b/scripts/checkbashisms.pl
+index fe64a6b..0229752 100755
+--- a/scripts/checkbashisms.pl
++++ b/scripts/checkbashisms.pl
+@@ -689,7 +689,7 @@ sub init_hashes {
+ 	qr'\$\(\([\s\w$*/+-]*\w\-\-.*?\)\)'   => q<'$((n--))' should be '$n; $((n=n-1))'>,
+ 	qr'\$\(\([\s\w$*/+-]*\-\-\w.*?\)\)'   => q<'$((--n))' should be '$((n=n-1))'>,
+ 	qr'\$\(\([\s\w$*/+-]*\*\*.*?\)\)'   => q<exponentiation is not POSIX>,
+-	$LEADIN . qr'printf\s["\'][^"\']*?%[qb].+?["\']' => q<printf %q|%b>,
++	$LEADIN . qr'printf\s["\'][^"\']*?%q.+?["\']' => q<printf %q>,
+     );
+ 
+     %singlequote_bashisms = (
+-- 
+2.6.2
+
