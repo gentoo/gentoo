@@ -11,7 +11,7 @@ SRC_URI="https://launchpad.net/${PN}/2.2/${PV}/+download/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug nls"
 
 RDEPEND=">=dev-dotnet/dbus-sharp-0.8.0:2.0
