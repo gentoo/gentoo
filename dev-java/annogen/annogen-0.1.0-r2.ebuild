@@ -13,7 +13,7 @@ SRC_URI="http://dist.codehaus.org/${PN}/distributions/${P}.zip"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 
 CDEPEND="
 	dev-java/qdox:1.6
