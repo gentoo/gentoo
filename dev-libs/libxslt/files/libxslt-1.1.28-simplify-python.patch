@@ -1,0 +1,251 @@
+From 6fb632732a28fc5c5c8f20a7be8ded759acd8994 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Wed, 11 Nov 2015 17:49:07 +0100
+Subject: [PATCH] Simplify python setup in autoconf
+
+AM_PATH_PYTHON does most of the job without using pkg-config as expected
+from the rest of the autoconf script.
+---
+ Makefile.am        |  14 +++++--
+ configure.in       | 119 ++++++++++++++---------------------------------------
+ python/Makefile.am |  30 ++++----------
+ 3 files changed, 49 insertions(+), 114 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index e357f19..c396913 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2,9 +2,13 @@ SUBDIRS = \
+ 	libxslt \
+ 	libexslt \
+ 	xsltproc \
+-	doc \
+-	$(PYTHON_SUBDIR) \
+-	tests
++	doc
++
++if WITH_PYTHON
++SUBDIRS += python
++endif
++
++SUBDIRS += tests
+ 
+ DIST_SUBDIRS = libxslt libexslt xsltproc python doc tests
+ 
+@@ -51,7 +55,9 @@ tests: dummy
+ 	@echo '## Running the regression test suite'
+ 	@(cd tests ; $(MAKE) tests)
+ 	@(cd xsltproc ; $(MAKE) tests)
+-	@(if [ "$(PYTHON_SUBDIR)" != "" ] ; then cd python ; $(MAKE) tests ; fi)
++if WITH_PYTHON
++	@(cd python ; $(MAKE) tests)
++endif
+ 
+ valgrind:
+ 	@echo '## Running the regression tests under Valgrind'
+diff --git a/configure.in b/configure.in
+index e84ad4f..27c0e0e 100644
+--- a/configure.in
++++ b/configure.in
+@@ -291,90 +291,37 @@ dnl
+ dnl check for python
+ dnl
+ 
+-PYTHON_VERSION=
+-PYTHON_INCLUDES=
+-PYTHON_SITE_PACKAGES=
+-pythondir=
+-AC_ARG_WITH(python, [  --with-python[=DIR]    Build Python bindings if found])
+-if test "$with_python" != "no" ; then
+-    if test -x "$with_python/bin/python"
+-    then
+-        echo Found python in $with_python/bin/python
+-        PYTHON="$with_python/bin/python"
+-    else
+-	if test -x "$with_python"
+-	then
+-	    echo Found python in $with_python
+-	    PYTHON="$with_python"
+-	else
+-            if test -x "$PYTHON"
+-            then
+-                echo Found python in environment PYTHON=$PYTHON
+-                with_python=`$PYTHON -c "import sys; print sys.exec_prefix"`
+-	    else
+-	        AC_PATH_PROG(PYTHON, python python2.4 python2.3 python2.2 python2.1 python2.0 python1.6 python1.5)
+-	    fi
+-	fi
+-    fi
+-    if test "$PYTHON" != ""
+-    then
+-        echo "PYTHON is pointing at $PYTHON"
+-        PYTHON_VERSION=`$PYTHON -c "import sys; print sys.version[[0:3]]"`
+-	echo Found Python version $PYTHON_VERSION
+-	LIBXML2_PYTHON=`$PYTHON -c "try : import libxml2 ; print 1
+-except: print 0"`
+-	if test "$LIBXML2_PYTHON" = "1"
+-	then
+-	    echo Found libxml2-python module
+-	else
+-	    echo Warning: Missing libxml2-python
+-	fi
+-    fi
+-    if test "$PYTHON_VERSION" != ""
+-    then
+-	if test -r $with_python/include/python$PYTHON_VERSION/Python.h -a \
+-	   -d $with_python/lib/python$PYTHON_VERSION/site-packages
+-	then
+-	    PYTHON_INCLUDES=$with_python/include/python$PYTHON_VERSION
+-	    PYTHON_SITE_PACKAGES='$(libdir)/python$(PYTHON_VERSION)/site-packages'
+-	else
+-	    if test -r $prefix/include/python$PYTHON_VERSION/Python.h
+-	    then
+-	        PYTHON_INCLUDES=$prefix/include/python$PYTHON_VERSION
+-		PYTHON_SITE_PACKAGES='$(libdir)/python$(PYTHON_VERSION)/site-packages'
+-	    else
+-		if test -r /usr/include/python$PYTHON_VERSION/Python.h
+-		then
+-		    PYTHON_INCLUDES=/usr/include/python$PYTHON_VERSION
+-		    PYTHON_SITE_PACKAGES='$(libdir)/python$(PYTHON_VERSION)/site-packages'
+-		else
+-		    echo could not find python$PYTHON_VERSION/Python.h
+-		fi
+-	    fi
+-	    if test ! -d "$PYTHON_SITE_PACKAGES"
+-	    then
+-		    PYTHON_SITE_PACKAGES=`$PYTHON -c "from distutils import sysconfig; print sysconfig.get_python_lib()"`
+-	    fi
+-	fi
+-        PYTHON_LIBS=`python$PYTHON_VERSION-config --libs`
+-    fi
+-    if test "$with_python" != ""
+-    then
+-        pythondir='$(PYTHON_SITE_PACKAGES)'
+-    else
+-        pythondir='$(libdir)/python$(PYTHON_VERSION)/site-packages'
+-    fi
+-fi
+-AM_CONDITIONAL(WITH_PYTHON, test "$PYTHON_INCLUDES" != "")
+-if test "$PYTHON_INCLUDES" != ""
+-then
+-    PYTHON_SUBDIR=python
+-else
+-    PYTHON_SUBDIR=
+-fi
+-AC_SUBST(pythondir)
+-AC_SUBST(PYTHON_SUBDIR)
+-AC_SUBST(PYTHON_LIBS)
++AC_ARG_WITH([python],
++    AS_HELP_STRING([--with-python], [Build Python bindings if found])
++)
++
++AS_IF([test "$with_python" = "yes"],
++      [AM_PATH_PYTHON
++       AC_PATH_TOOL([PYTHON_CONFIG], [python$PYTHON_VERSION-config], [no])
++       AS_IF([test "$PYTHON_CONFIG" = "no"],
++             [AC_PATH_TOOL([PYTHON_CONFIG], [python-config], [no])])
++       AS_IF([test "$PYTHON_CONFIG" != "no"],
++             [PYTHON_CFLAGS=`$PYTHON_CONFIG --cflags`
++              PYTHON_LDFLAGS=`$PYTHON_CONFIG --ldflags`
++              PYTHON_LIBS=`$PYTHON_CONFIG --libs`],
++             [AC_MSG_ERROR([Missing python development files.])])
++       AC_MSG_CHECKING([libxml2 module in $PYTHON])
++	   LIBXML2_PYTHON=`$PYTHON -c "import sys;
++try:
++    import libxml2
++    sys.stdout.write('1')
++except:
++    sys.stdout.write('0')"`
++       AS_IF([test "$LIBXML2_PYTHON" = "1"],
++             [AC_MSG_RESULT([yes])],
++             [AC_MSG_RESULT([no])
++              AC_MSG_WARN([libxml2 python module not found, expect runtime errors])])
++      ])
++
++AM_CONDITIONAL([WITH_PYTHON], [test "$PYTHON" != ""])
++AC_SUBST([PYTHON_CFLAGS])
++AC_SUBST([PYTHON_LDFLAGS])
++AC_SUBST([PYTHON_LIBS])
+ 
+ AC_ARG_WITH(crypto, [  --with-crypto           Add crypto support to exslt (on)])
+ WITH_CRYPTO=0
+@@ -644,10 +591,6 @@ AC_SUBST(PYTHONSODV)
+ AC_SUBST(XML_CONFIG)
+ AC_SUBST(LIBXML_LIBS)
+ AC_SUBST(LIBXML_CFLAGS)
+-AC_SUBST(PYTHON)
+-AC_SUBST(PYTHON_VERSION)
+-AC_SUBST(PYTHON_INCLUDES)
+-AC_SUBST(PYTHON_SITE_PACKAGES)
+ 
+ XSLT_LIBDIR='-L${libdir}'
+ XSLT_INCLUDEDIR='-I${includedir}'
+diff --git a/python/Makefile.am b/python/Makefile.am
+index fa58b78..cc13c62 100644
+--- a/python/Makefile.am
++++ b/python/Makefile.am
+@@ -5,9 +5,9 @@ SUBDIRS= . tests
+ 
+ AM_CFLAGS = $(LIBXML_CFLAGS)
+ 
+-DOCS_DIR = $(datadir)/doc/libxslt-python-$(LIBXSLT_VERSION)
++docsdir = $(datadir)/doc/libxslt-python-$(LIBXSLT_VERSION)
+ # libxsltclass.txt is generated
+-DOCS = TODO
++dist_docs_DATA = TODO
+ 
+ EXTRA_DIST = 			\
+ 	libxslt.c		\
+@@ -16,43 +16,29 @@ EXTRA_DIST = 			\
+ 	libxml_wrap.h		\
+ 	libxslt_wrap.h		\
+ 	libxsl.py		\
+-	libxslt-python-api.xml	\
+-	$(DOCS)
+-
+-libxsltmod_la_LDFLAGS =  $(WIN32_EXTRA_LDFLAGS) -module -avoid-version
++	libxslt-python-api.xml
+ 
+ if WITH_PYTHON
+ mylibs = \
+ 	$(top_builddir)/libxslt/libxslt.la \
+ 	$(top_builddir)/libexslt/libexslt.la
+ 
+-all-local: libxslt.py
+-
+-python_LTLIBRARIES = libxsltmod.la
++python_PYTHON = libxslt.py
++pyexec_LTLIBRARIES = libxsltmod.la
+ 
+ libxsltmod_la_CPPFLAGS = \
+-	-I$(PYTHON_INCLUDES) \
+ 	-I$(top_srcdir)/libxslt \
+ 	-I$(top_srcdir) \
+-	-I../libexslt
++	-I$(top_srcdir)/libexslt \
++	$(PYTHON_CFLAGS)
+ libxsltmod_la_SOURCES = libxslt.c types.c
+ nodist_libxsltmod_la_SOURCES = libxslt-py.c
+ libxsltmod_la_LIBADD = $(mylibs) $(PYTHON_LIBS)
++libxsltmod_la_LDFLAGS =  $(WIN32_EXTRA_LDFLAGS) $(PYTHON_LDFLAGS) -module -avoid-version
+ 
+ libxslt.py: $(srcdir)/libxsl.py libxsltclass.py
+ 	cat $(srcdir)/libxsl.py libxsltclass.py > $@
+ 
+-install-data-local:
+-	$(MKDIR_P) $(DESTDIR)$(pythondir)
+-	$(INSTALL) -m 0644 libxslt.py $(DESTDIR)$(pythondir)
+-	$(MKDIR_P) $(DESTDIR)$(DOCS_DIR)
+-	@(for doc in $(DOCS) ; \
+-	   do $(INSTALL) -m 0644 $(srcdir)/$$doc $(DESTDIR)$(DOCS_DIR) ; done)
+-
+-uninstall-local:
+-	rm -f $(DESTDIR)$(pythondir)/libxslt.py
+-	rm -rf $(DESTDIR)$(DOCS_DIR)
+-
+ GENERATE = generator.py
+ API_DESC = $(top_srcdir)/doc/libxslt-api.xml $(srcdir)/libxslt-python-api.xml
+ GENERATED= libxsltclass.py \
+-- 
+2.6.3
+
