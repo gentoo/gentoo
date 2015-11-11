@@ -6697,7 +6697,7 @@ dev-python/Djblets 0.7.31: A collection of useful extensions for Django
 dev-python/Flask-KVSession 0.6.1 0.6.2: Transparent server-side session support for flask
 dev-python/GridDataFormats 0.2.2 0.2.5: Reading and writing of data on regular grids in Python
 dev-python/Kivy 1.9.0-r1: A software library for rapid development of hardware-accelerated multitouch applications
-dev-python/Numdifftools 0.9.12 0.9.13: Solves automatic numerical differentiation problems in one or more variables
+dev-python/Numdifftools 0.9.12 0.9.13 0.9.14: Solves automatic numerical differentiation problems in one or more variables
 dev-python/PyContracts 1.7.6: Declare constraints on function parameters and return values
 dev-python/PyECLib 1.0.7-r2: Messaging API for RPC and notifications over a number of different messaging transports
 dev-python/PyFoam 0.5.4-r2: Tool to analyze and plot the residual files of OpenFOAM computations
@@ -6862,7 +6862,7 @@ dev-python/crumbs 1.2.2-r1 2.0.0 2.0.1 2.0.2: Generalized all-in-one parameters 
 dev-python/cryptography 0.5.4 0.6.1 0.7.1-r1 0.7.2 0.8 0.8.1 0.8.2 0.9.2 0.9.3 1.0 1.0.1 1.0.1-r1 1.0.2 1.1: Library providing cryptographic recipes and primitives
 dev-python/cryptography-vectors 0.5.4 0.6.1 0.7 0.7.1 0.7.2 0.8 0.8.1 0.8.2 0.9 0.9.1 0.9.2 0.9.3 1.0 1.0.1 1.0.2 1.1: Test vectors for the cryptography package
 dev-python/cssselect 0.9.1: parses CSS3 Selectors and translates them to XPath 1.0
-dev-python/cssutils 0.9.10-r1 1.0: A CSS Cascading Style Sheets library
+dev-python/cssutils 0.9.10-r1 1.0 1.0.1: A CSS Cascading Style Sheets library
 dev-python/ctypesgen 0_p72-r1: Python wrapper generator for ctypes
 dev-python/curtsies 0.1.18 0.2.3: Curses-like terminal wrapper, with colored strings
 dev-python/cvxopt 1.1.6-r2: Python package for convex optimization
@@ -7991,7 +7991,7 @@ dev-python/websockify 0.6.0 0.7.0: WebSockets support for any application/server
 dev-python/webtest 1.4.3-r1 2.0.16 2.0.17 2.0.18: Helper to test WSGI applications
 dev-python/webut 0.1.0.2 0.1.0.2-r1: Miscellaneous utilities for nevow and twisted.web programming
 dev-python/wehjit 0.2.2-r1: A Python web-widget library
-dev-python/werkzeug 0.9.6 0.10 0.10.1 0.10.4 0.11: Collection of various utilities for WSGI applications
+dev-python/werkzeug 0.9.6 0.10 0.10.1 0.10.4 0.11.1: Collection of various utilities for WSGI applications
 dev-python/wheel 0.24.0 0.26.0: A built-package format for Python
 dev-python/whirlpool 0.3-r1: Bindings for whirlpool hash reference implementation
 dev-python/whisper 0.9.13: Fixed size round-robin style database
