@@ -10,7 +10,7 @@ SRC_URI="http://wirbel.htpc-forum.de/w_scan/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc examples"
 
 DEPEND=">=virtual/linuxtv-dvb-headers-5.8"
