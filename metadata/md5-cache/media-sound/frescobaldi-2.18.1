@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=dev-python/python-poppler-qt4[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/PyQt4[X,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/python-ly-0.9[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=media-sound/lilypond-2.14.2 portmidi? ( media-libs/portmidi[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=sys-apps/sed-4
+DESCRIPTION=A LilyPond sheet music text editor
+EAPI=5
+HOMEPAGE=http://www.frescobaldi.org/
+IUSE=portmidi python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 public-domain
+RDEPEND=dev-python/python-poppler-qt4[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/PyQt4[X,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/python-ly-0.9[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=media-sound/lilypond-2.14.2 portmidi? ( media-libs/portmidi[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=https://github.com/wbsoft/frescobaldi/releases/download/v2.18.1/frescobaldi-2.18.1.tar.gz
+_eclasses_=distutils-r1	46506dd0dd992b3c89b0d00daabfd86c	eutils	8644194de7be04932084752fb1327080	gnome2-utils	588052cacdf74572e68bdfeaece20534	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-r1	fb656e31d5596be6ac85cde42dccfcb6	python-utils-r1	9c405693f1f355a718700c5cffffd9e5	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=5850e85429df83da7233e0ab970aaa3d
