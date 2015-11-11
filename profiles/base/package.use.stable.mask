@@ -5,10 +5,6 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
-# Justin Lecher <jlec@gentoo.org> (27 Oct 2015)
-# No stable dev-python/PyQt5 for now
-dev-python/matplotlib qt5
-
 # Mike Gilbert <floppym@gentoo.org> (03 Oct 2015)
 # Unmask python3.5 for python-exec
 dev-lang/python-exec -python_targets_python3_5
@@ -36,10 +32,6 @@ app-emulation/vice ffmpeg
 # Pacho Ramos <pacho@gentoo.org> (13 May 2015)
 # texinfo-5 cannot be stabilized yet
 =dev-lang/gnat-gcc-4.6* doc
-
-# Justin Lecher <jlec@gentoo.org> (05 May 2015)
-# no stable qt5
-app-office/texmaker qt5
 
 # Jeroen Roovers <jer@gentoo.org> (26 Apr 2015)
 # mongodb support is nice, but dev-libs/mongo-c-driver upstream is not ready

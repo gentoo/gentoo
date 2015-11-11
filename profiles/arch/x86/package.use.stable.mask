@@ -18,6 +18,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Justin Lecher <jlec@gentoo.org> (27 Oct 2015)
+# No stable dev-python/PyQt5 for now
+# 552394
+dev-python/matplotlib qt5
+
 # Pacho Ramos <pacho@gentoo.org> (08 Mar 2015)
 # mayavi is broken, bug #500104
 dev-python/apptools test
