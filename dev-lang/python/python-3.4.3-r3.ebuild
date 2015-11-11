@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 WANT_LIBTOOL="none"
 
 inherit autotools eutils flag-o-matic multilib pax-utils python-utils-r1 toolchain-funcs multiprocessing
@@ -25,27 +25,28 @@ IUSE="build elibc_uclibc examples gdbm hardened ipv6 libressl +ncurses +readline
 # run the bootstrap code on your dev box and include the results in the
 # patchset. See bug 447752.
 
-RDEPEND="app-arch/bzip2
-	app-arch/xz-utils
-	>=sys-libs/zlib-1.1.3
+RDEPEND="app-arch/bzip2:0=
+	app-arch/xz-utils:0=
+	>=sys-libs/zlib-1.1.3:0=
 	virtual/libffi
 	virtual/libintl
-	xml? ( >=dev-libs/expat-2.1 )
-	gdbm? ( sys-libs/gdbm[berkdb] )
+	gdbm? ( sys-libs/gdbm:0=[berkdb] )
 	ncurses? (
-		>=sys-libs/ncurses-5.2
-		readline? ( >=sys-libs/readline-4.1 )
+		>=sys-libs/ncurses-5.2:0=
+		readline? ( >=sys-libs/readline-4.1:0= )
 	)
-	sqlite? ( >=dev-db/sqlite-3.3.8:3 )
+	sqlite? ( >=dev-db/sqlite-3.3.8:3= )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:= )
 	)
 	tk? (
-		>=dev-lang/tk-8.0
-		dev-tcltk/blt
+		>=dev-lang/tcl-8.0:0=
+		>=dev-lang/tk-8.0:0=
+		dev-tcltk/blt:0=
 		dev-tcltk/tix
 	)
+	xml? ( >=dev-libs/expat-2.1:0= )
 	!!<sys-apps/sandbox-2.6-r1"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
