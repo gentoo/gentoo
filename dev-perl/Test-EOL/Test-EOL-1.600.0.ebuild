@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="Check the correct line endings in your project"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="test"
 
 RDEPEND=""

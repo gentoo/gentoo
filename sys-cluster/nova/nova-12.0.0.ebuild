@@ -7,18 +7,20 @@ PYTHON_COMPAT=( python2_7 python3_4 )
 
 inherit distutils-r1 eutils linux-info multilib user
 
-DESCRIPTION="A cloud computing fabric controller (main part of an IaaS system) written in Python"
+DESCRIPTION="Cloud computing fabric controller (main part of an IaaS system) in Python"
 HOMEPAGE="https://launchpad.net/nova"
-SRC_URI="https://launchpad.net/${PN}/liberty/${PV}/+download/${P}.tar.gz
+SRC_URI="
+	https://launchpad.net/${PN}/liberty/${PV}/+download/${P}.tar.gz
 	https://dev.gentoo.org/~prometheanfire/dist/nova/liberty/nova.conf.sample -> liberty-nova.conf.sample"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+compute compute-only iscsi +kvm +memcached mysql +novncproxy openvswitch postgres +rabbitmq sqlite test xen"
-REQUIRED_USE="!compute-only? ( || ( mysql postgres sqlite ) )
-						compute-only? ( compute !rabbitmq !memcached !mysql !postgres !sqlite )
-						compute? ( ^^ ( kvm xen ) )"
+REQUIRED_USE="
+	!compute-only? ( || ( mysql postgres sqlite ) )
+	compute-only? ( compute !rabbitmq !memcached !mysql !postgres !sqlite )
+	compute? ( ^^ ( kvm xen ) )"
 
 CDEPEND=">=dev-python/pbr-1.8[${PYTHON_USEDEP}]"
 # need to package dev-python/sphinxcontrib-seqdiag
@@ -104,7 +106,7 @@ RDEPEND="
 	!~dev-python/routes-2.1[$(python_gen_usedep 'python2_7')]
 	<=dev-python/routes-2.2[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.0[${PYTHON_USEDEP}]
-	<=dev-python/cryptography-1.0.1-r9999[${PYTHON_USEDEP}]
+	<=dev-python/cryptography-1.1-r9999[${PYTHON_USEDEP}]
 	>=dev-python/webob-1.2.3[${PYTHON_USEDEP}]
 	<=dev-python/webob-1.4.1[${PYTHON_USEDEP}]
 	>=dev-python/greenlet-0.3.2[${PYTHON_USEDEP}]

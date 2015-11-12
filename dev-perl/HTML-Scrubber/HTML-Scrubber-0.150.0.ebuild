@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Perl extension for scrubbing/sanitizing html"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="test"
 
 RDEPEND="dev-perl/HTML-Parser"
