@@ -1,0 +1,13 @@
+diff --git a/atop-2.2-3/atopacct.service b/home/den/projects/gentoo/sys-process/atop/files/atopacct.service
+index f873bdd..1f51ec4 100644
+--- a/atop-2.2-3/atopacct.service
++++ b/home/den/projects/gentoo/sys-process/atop/files/atopacct.service
+@@ -8,7 +8,7 @@ Before=atop.service
+ [Service]
+ Type=forking
+ PIDFile=/var/run/atopacctd.pid
+-ExecStart=/sbin/atopacctd
++ExecStart=/usr/sbin/atopacctd
+ 
+ [Install]
+ WantedBy=multi-user.target
