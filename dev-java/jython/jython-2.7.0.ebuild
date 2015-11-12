@@ -156,8 +156,11 @@ src_install() {
 	EOF
 	chmod +x "${T}"/jython || die
 
-	python_export jython${SLOT} EPYTHON PYTHON_SITEDIR
-	local PYTHON="${T}"/jython
+	local -x PYTHON="${T}"/jython
+	# we can't get the path from the interpreter since it does some
+	# magic that fails on non-installed copy...
+	local PYTHON_SITEDIR=${EPREFIX}/usr/share/jython-${SLOT}/Lib/site-packages
+	python_export jython${SLOT} EPYTHON
 
 	# compile tests (everything else is compiled already)
 	# we're keeping it quiet since jython reports errors verbosely
@@ -165,7 +168,7 @@ src_install() {
 	python_optimize "${ED}${instdir}"/Lib/test &>/dev/null
 
 	# for python-exec
-	echo "EPYTHON='${EPYTHON}'" > epython.py
+	echo "EPYTHON='${EPYTHON}'" > epython.py || die
 	python_domodule epython.py
 
 	# some of the class files end up with newer timestamps than the files they
