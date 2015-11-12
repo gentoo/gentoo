@@ -277,7 +277,8 @@ src_install() {
 		-i "${ED}etc/conf.d/pydoc-${PYVER}" "${ED}etc/init.d/pydoc-${PYVER}" || die "sed failed"
 
 	# for python-exec
-	python_export python${PYVER} EPYTHON PYTHON PYTHON_SITEDIR
+	python_export python${PYVER} EPYTHON PYTHON
+	export PYTHON_SITEDIR="${EPREFIX}/usr/$(get_libdir)/python${PYVER}/site-packages"
 
 	# if not using a cross-compiler, use the fresh binary
 	if ! tc-is-cross-compiler; then

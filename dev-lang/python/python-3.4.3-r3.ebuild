@@ -275,6 +275,7 @@ src_install() {
 
 	# for python-exec
 	python_export python${PYVER} EPYTHON PYTHON PYTHON_SITEDIR
+	export PYTHON_SITEDIR="${EPREFIX}/usr/$(get_libdir)/python${PYVER}/site-packages"
 
 	# if not using a cross-compiler, use the fresh binary
 	if ! tc-is-cross-compiler; then
