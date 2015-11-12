@@ -15678,7 +15678,7 @@ sci-mathematics/bertini 1.4: Software for Numerical Algebraic Geometry
 sci-mathematics/cado-nfs 1.1 2.0 2.1 2.1.1: Number Field Sieve (NFS) implementation for factoring integers
 sci-mathematics/calc 2.12.1.5 2.12.2.2 2.12.4.3 2.12.4.4 2.12.4.13: Arbitrary precision C-like arithmetic system
 sci-mathematics/cgal 4.3 4.3-r1 4.6.1: C++ library for geometric algorithms and data structures
-sci-mathematics/coq 8.3_p1 8.4_p1 8.4_p2 8.4_p3 8.4_p5 8.4_p6: Proof assistant written in O'Caml
+sci-mathematics/coq 8.4_p5 8.4_p6: Proof assistant written in O'Caml
 sci-mathematics/cvc3 2.4.1: CVC3 is an automatic theorem prover for Satisfiability Modulo Theories (SMT) problems
 sci-mathematics/dataplot 20090821: Program for scientific visualization and statistical analyis
 sci-mathematics/diagrtb 2.64: Calculation of some eigenvectors of a large real, symmetrical, matrix
