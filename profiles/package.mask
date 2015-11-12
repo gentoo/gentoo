@@ -68,13 +68,14 @@ sci-chemistry/pymol-apbs-plugin
 # Michał Górny <mgorny@gentoo.org> (11 Nov 2015)
 # Cleaned up Python versions masked for testing:
 # - python-config-X.Y compatibility removed,
+# - python-exec symlinks added (to replace eselect-python's wrapper),
 # - ABIFLAGS reintroduced for 3.3+.
 # Resulting API/ABI change can break reverse dependencies, especially
 # if upstream hardcodes paths or library names.
-=dev-lang/python-2.7.10-r3
-=dev-lang/python-3.3.5-r3
-=dev-lang/python-3.4.3-r3
-=dev-lang/python-3.5.0-r2
+=dev-lang/python-2.7.10-r4
+=dev-lang/python-3.3.5-r4
+=dev-lang/python-3.4.3-r4
+=dev-lang/python-3.5.0-r3
 
 # Justin Lecher <jlec@gentoo.org> (10 Nov 2015)
 # Vulnerable package CVE-2014-{1932,1933}
