@@ -291,18 +291,18 @@ tc-env_build() {
 # 	ECONF_SOURCE=${S}
 # 	if tc-is-cross-compiler ; then
 # 		mkdir "${WORKDIR}"/${CBUILD}
-# 		pushd "${WORKDIR}"/${CBUILD} >/dev/null
+# 		pushd "${WORKDIR}"/${CBUILD} >/dev/null || die
 # 		econf_build --disable-some-unused-stuff
-# 		popd >/dev/null
+# 		popd >/dev/null || die
 # 	fi
 # 	... normal build paths ...
 # }
 # src_compile() {
 # 	if tc-is-cross-compiler ; then
-# 		pushd "${WORKDIR}"/${CBUILD} >/dev/null
+# 		pushd "${WORKDIR}"/${CBUILD} >/dev/null || die
 # 		emake one-or-two-build-tools
 # 		ln/mv build-tools to normal build paths in ${S}/
-# 		popd >/dev/null
+# 		popd >/dev/null || die
 # 	fi
 # 	... normal build paths ...
 # }
@@ -801,9 +801,9 @@ gen_usr_ldscript() {
 			[[ -n ${nowrite} ]] && chmod u-w "${ED}${libdir}/${tlib}"
 			# Now as we don't use GNU binutils and our linker doesn't
 			# understand linker scripts, just create a symlink.
-			pushd "${ED}/usr/${libdir}" > /dev/null
+			pushd "${ED}/usr/${libdir}" > /dev/null || die
 			ln -snf "../../${libdir}/${tlib}" "${lib}"
-			popd > /dev/null
+			popd > /dev/null || die
 			;;
 		*)
 			if ${auto} ; then

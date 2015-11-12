@@ -170,22 +170,22 @@ font_src_install() {
 		# if we have multiple FONT_S elements then we want to recreate the dir
 		# structure
 		for dir in ${FONT_S}; do
-			pushd "${dir}" > /dev/null
+			pushd "${dir}" > /dev/null || die
 			insinto "${FONTDIR}/${dir//${S}/}"
 			for suffix in ${FONT_SUFFIX}; do
 				doins *.${suffix}
 			done
 			font_xfont_config "${dir}"
-			popd > /dev/null
+			popd > /dev/null || die
 		done
 	else
-		pushd "${FONT_S}" > /dev/null
+		pushd "${FONT_S}" > /dev/null || die
 		insinto "${FONTDIR}"
 		for suffix in ${FONT_SUFFIX}; do
 			doins *.${suffix}
 		done
 		font_xfont_config
-		popd > /dev/null
+		popd > /dev/null || die
 	fi
 
 	font_fontconfig

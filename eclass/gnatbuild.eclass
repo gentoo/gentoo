@@ -378,9 +378,9 @@ gnatbuild_src_unpack() {
 
 #			this is only needed for gnat-gpl-4.1 and breaks for gnat-gcc, so
 #			this block was moved to corresponding ebuild
-#			pushd "${S}"/gnattools &> /dev/null
+#			pushd "${S}"/gnattools &> /dev/null || die
 #				eautoconf
-#			popd &> /dev/null
+#			popd &> /dev/null || die
 		;;
 
 		common_prep)

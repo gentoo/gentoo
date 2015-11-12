@@ -482,7 +482,7 @@ perl_link_duallife_scripts() {
 			alternatives_auto_makesym "/${i}${ff}" "/${i%.1}-[0-9]*"
 		done
 	else
-		pushd "${ED}" > /dev/null
+		pushd "${ED}" > /dev/null || die
 		for i in $(find usr/bin -maxdepth 1 -type f 2>/dev/null) ; do
 			mv ${i}{,-${PV}-${P}} || die
 			#DUALLIFESCRIPTS[${#DUALLIFESCRIPTS[*]}]=${i##*/}
@@ -492,7 +492,7 @@ perl_link_duallife_scripts() {
 			mv ${i} ${i%.1}-${PV}-${P}.1 || die
 			DUALLIFEMAN[${#DUALLIFEMAN[*]}]=${i}
 		done
-		popd > /dev/null
+		popd > /dev/null || die
 	fi
 }
 

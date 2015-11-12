@@ -193,14 +193,14 @@ xemacs-elisp-comp() {
 	tempdir=elc.$$
 	mkdir ${tempdir}
 	cp "$@" ${tempdir}
-	pushd ${tempdir}
+	pushd ${tempdir} || die
 
 	echo "(add-to-list 'load-path \"../\")" > script
 	${XEMACS_BATCH_CLEAN} -l script -f batch-byte-compile *.el
 	local ret=$?
 	mv *.elc ..
 
-	popd
+	popd || die
 	rm -fr ${tempdir}
 	return ${ret}
 }

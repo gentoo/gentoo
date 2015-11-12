@@ -192,7 +192,7 @@ mysql_lib_symlinks() {
 	einfo "Updating MySQL libraries symlinks"
 
 	reldir="${1}"
-	pushd "${reldir}/usr/$(get_libdir)" &> /dev/null
+	pushd "${reldir}/usr/$(get_libdir)" &> /dev/null || die
 
 	# dirlist must contain the less significative directory left
 	dirlist="mysql"
@@ -234,7 +234,7 @@ mysql_lib_symlinks() {
 		done
 	done
 
-	popd &> /dev/null
+	popd &> /dev/null || die
 }
 
 # @FUNCTION: mysql_init_vars

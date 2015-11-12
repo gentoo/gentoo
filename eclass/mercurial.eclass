@@ -158,7 +158,7 @@ mercurial_bootstrap() {
 	# Command to be executed after checkout and clone of the specified
 	# repository.
 	if [[ ${EHG_BOOTSTRAP} ]]; then
-		pushd "${S}" > /dev/null
+		pushd "${S}" > /dev/null || die
 		einfo "Starting bootstrap"
 
 		if [[ -f ${EHG_BOOTSTRAP} ]]; then
@@ -182,7 +182,7 @@ mercurial_bootstrap() {
 		fi
 
 		einfo "Bootstrap finished"
-		popd > /dev/null
+		popd > /dev/null || die
 	fi
 }
 

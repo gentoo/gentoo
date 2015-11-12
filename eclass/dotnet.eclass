@@ -118,11 +118,11 @@ dotnet_multilib_comply() {
 
 			if [[ -d "${dir}" && "$(find "${dir}" -name '*.pc')" != "" ]]
 			then
-				pushd "${dir}" &> /dev/null
+				pushd "${dir}" &> /dev/null || die
 				sed  -i -r -e 's:/(lib)([^a-zA-Z0-9]|$):/'"$(get_libdir)"'\2:g' \
 					*.pc \
 					|| die "Sedding some sense into pkgconfig files failed."
-				popd "${dir}" &> /dev/null
+				popd "${dir}" &> /dev/null || die
 			fi
 		done
 		if [[ -d "${ED}/usr/bin" ]]
