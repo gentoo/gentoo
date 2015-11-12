@@ -159,7 +159,7 @@ RDEPEND="
 	>=dev-python/castellan-0.2.0[${PYTHON_USEDEP}]
 	<=dev-python/castellan-0.2.1[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.0[${PYTHON_USEDEP}]
-	<=dev-python/cryptography-1.0.1-r9999[${PYTHON_USEDEP}]
+	<=dev-python/cryptography-1.1-r9999[${PYTHON_USEDEP}]
 "
 
 PATCHES=(
