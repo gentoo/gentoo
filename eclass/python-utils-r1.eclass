@@ -265,12 +265,6 @@ python_export() {
 	esac
 	debug-print "${FUNCNAME}: implementation: ${impl}"
 
-	# make sure it doesn't leave our function unless desired
-	if ! has PYTHON "${@}"; then
-		local PYTHON
-	fi
-	export PYTHON=${EPREFIX}/usr/bin/${impl}
-
 	for var; do
 		case "${var}" in
 			EPYTHON)
@@ -278,10 +272,11 @@ python_export() {
 				debug-print "${FUNCNAME}: EPYTHON = ${EPYTHON}"
 				;;
 			PYTHON)
-				# already exported above
+				export PYTHON=${EPREFIX}/usr/bin/${impl}
 				debug-print "${FUNCNAME}: PYTHON = ${PYTHON}"
 				;;
 			PYTHON_SITEDIR)
+				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
 				# sysconfig can't be used because:
 				# 1) pypy doesn't give site-packages but stdlib
 				# 2) jython gives paths with wrong case
@@ -289,6 +284,7 @@ python_export() {
 				debug-print "${FUNCNAME}: PYTHON_SITEDIR = ${PYTHON_SITEDIR}"
 				;;
 			PYTHON_INCLUDEDIR)
+				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
 				export PYTHON_INCLUDEDIR=$("${PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_inc())')
 				debug-print "${FUNCNAME}: PYTHON_INCLUDEDIR = ${PYTHON_INCLUDEDIR}"
 
@@ -298,6 +294,7 @@ python_export() {
 				fi
 				;;
 			PYTHON_LIBPATH)
+				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
 				export PYTHON_LIBPATH=$("${PYTHON}" -c 'import os.path, sysconfig; print(os.path.join(sysconfig.get_config_var("LIBDIR"), sysconfig.get_config_var("LDLIBRARY")) if sysconfig.get_config_var("LDLIBRARY") else "")')
 				debug-print "${FUNCNAME}: PYTHON_LIBPATH = ${PYTHON_LIBPATH}"
 
@@ -342,6 +339,7 @@ python_export() {
 
 				case "${impl}" in
 					python*)
+						[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
 						flags=$("${PYTHON}" -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS") or "")')
 						val=${PYTHON}${flags}-config
 						;;
