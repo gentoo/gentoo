@@ -13,7 +13,7 @@ SRC_URI="http://www.flintlib.org/${P}.tar.gz"
 RESTRICT="mirror"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="doc gc ntl static-libs test"
 
 RDEPEND="dev-libs/gmp
