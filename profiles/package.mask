@@ -45,6 +45,7 @@ sci-chemistry/pymol-apbs-plugin
 # Michał Górny <mgorny@gentoo.org> (11 Nov 2015)
 # Cleaned up Python versions masked for testing:
 # - python-config-X.Y compatibility removed,
+# - python-exec symlinks added (to replace eselect-python's wrapper),
 # - ABIFLAGS reintroduced for 3.3+.
 # Resulting API/ABI change can break reverse dependencies, especially
 # if upstream hardcodes paths or library names.

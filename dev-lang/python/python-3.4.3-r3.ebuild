@@ -274,7 +274,7 @@ src_install() {
 		-i "${ED}etc/conf.d/pydoc-${PYVER}" "${ED}etc/init.d/pydoc-${PYVER}" || die "sed failed"
 
 	# for python-exec
-	local vars=( EPYTHON PYTHON_SITEDIR )
+	local vars=( EPYTHON PYTHON_SITEDIR PYTHON_SCRIPTDIR )
 
 	# if not using a cross-compiler, use the fresh binary
 	if ! tc-is-cross-compiler; then
@@ -287,6 +287,27 @@ src_install() {
 	python_export "python${PYVER}" "${vars[@]}"
 	echo "EPYTHON='${EPYTHON}'" > epython.py || die
 	python_domodule epython.py
+
+	# python-exec wrapping support
+	local pymajor=${PYVER%.*}
+	mkdir -p "${D}${PYTHON_SCRIPTDIR}" || die
+	# python and pythonX
+	ln -s "../../../bin/${abiver}" \
+		"${D}${PYTHON_SCRIPTDIR}/python${pymajor}" || die
+	ln -s "python${pymajor}" \
+		"${D}${PYTHON_SCRIPTDIR}/python" || die
+	# python-config and pythonX-config
+	ln -s "../../../bin/${abiver}-config" \
+		"${D}${PYTHON_SCRIPTDIR}/python${pymajor}-config" || die
+	ln -s "python${pymajor}-config" \
+		"${D}${PYTHON_SCRIPTDIR}/python-config" || die
+	# 2to3, pydoc, pyvenv
+	ln -s "../../../bin/2to3-${PYVER}" \
+		"${D}${PYTHON_SCRIPTDIR}/2to3" || die
+	ln -s "../../../bin/pydoc${PYVER}" \
+		"${D}${PYTHON_SCRIPTDIR}/pydoc" || die
+	ln -s "../../../bin/pyvenv-${PYVER}" \
+		"${D}${PYTHON_SCRIPTDIR}/pyvenv" || die
 }
 
 pkg_preinst() {
