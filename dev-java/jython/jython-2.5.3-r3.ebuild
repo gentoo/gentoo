@@ -135,8 +135,8 @@ exec java -cp "$(java-pkg_getjars "${EANT_GENTOO_CLASSPATH}"):${EANT_GENTOO_CLAS
 _EOF_
 	chmod +x "${T}"/jython || die
 
+	local -x PYTHON="${T}"/jython
 	python_export jython${SLOT} EPYTHON PYTHON_SITEDIR
-	local PYTHON="${T}"/jython
 
 	# compile tests (everything else is compiled already)
 	# we're keeping it quiet since jython reports errors verbosely
@@ -144,6 +144,6 @@ _EOF_
 	python_optimize "${ED}"/usr/share/jython-${SLOT}/Lib/test &>/dev/null
 
 	# for python-exec
-	echo "EPYTHON='${EPYTHON}'" > epython.py
+	echo "EPYTHON='${EPYTHON}'" > epython.py || die
 	python_domodule epython.py
 }
