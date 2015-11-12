@@ -7,8 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1 git-r3 user
 
-DESCRIPTION="Services for discovering, registering, and retrieving
-virtual machine images"
+DESCRIPTION="Services for discovering, registering, and retrieving VM images"
 HOMEPAGE="https://launchpad.net/glance"
 EGIT_REPO_URI="https://github.com/openstack/glance.git"
 EGIT_BRANCH="stable/kilo"
