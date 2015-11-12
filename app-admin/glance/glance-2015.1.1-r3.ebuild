@@ -7,8 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1 user
 
-DESCRIPTION="Services for discovering, registering, and retrieving
-virtual machine images"
+DESCRIPTION="Services for discovering, registering, and retrieving VM images"
 HOMEPAGE="https://launchpad.net/glance"
 SRC_URI="https://launchpad.net/${PN}/kilo/${PV}/+download/${P}.tar.gz"
 
