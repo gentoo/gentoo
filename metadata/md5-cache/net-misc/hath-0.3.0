@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/cmdargs-0.10 >=dev-haskell/missingh-1.2 >=dev-haskell/split-0.2 >=dev-haskell/tasty-0.8 >=dev-haskell/tasty-hunit-0.8 >=dev-haskell/tasty-quickcheck-0.8.1 >=dev-lang/ghc-7.6.1 >=dev-haskell/cabal-1.16.0 test? ( dev-util/shelltestrunner ) >=dev-haskell/cabal-1.1.4
+DESCRIPTION=Hath manipulates network blocks in CIDR notation
+EAPI=5
+HOMEPAGE=http://hackage.haskell.org/package/hath
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=AGPL-3
+RDEPEND=>=dev-haskell/cmdargs-0.10 >=dev-haskell/missingh-1.2 >=dev-haskell/split-0.2 >=dev-haskell/tasty-0.8 >=dev-haskell/tasty-hunit-0.8 >=dev-haskell/tasty-quickcheck-0.8.1 >=dev-lang/ghc-7.6.1
+SLOT=0
+SRC_URI=mirror://hackage/packages/archive/hath/0.3.0/hath-0.3.0.tar.gz
+_eclasses_=eutils	8644194de7be04932084752fb1327080	ghc-package	6165faf4ae46df43d5a9b0dd28ec8654	haskell-cabal	2d9bae28d8a91ec04d1bb1ef0071c64f	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=b160ea31e76b37433260b8f9f126cc4c

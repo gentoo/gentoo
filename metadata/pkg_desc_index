@@ -14328,6 +14328,7 @@ net-misc/gvrpcd 1.3: A program for announcing VLANs using GVRP
 net-misc/gwget 1.0.4: GTK2 WGet Frontend
 net-misc/gwhois 20120626: generic whois
 net-misc/hashcash 1.22-r1: Utility to generate hashcash tokens
+net-misc/hath 0.3.0: Hath manipulates network blocks in CIDR notation
 net-misc/hlfl 0.60.1: High Level Firewall Language
 net-misc/hotot 0.9.8.14 0.9.8.14_p20130514 9999: lightweight & open source microblogging client
 net-misc/hsc 1.0b: An HTML preprocessor using ML syntax
