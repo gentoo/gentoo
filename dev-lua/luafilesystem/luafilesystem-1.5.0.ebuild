@@ -19,11 +19,11 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	sed -i \
+		-e "s|gcc|$(tc-getCC)|" \
 		-e "s|/usr/local|/usr|" \
 		-e "s|/lib|/$(get_libdir)|" \
 		-e "s|-O2|${CFLAGS}|" \
 		-e "/^LIB_OPTION/s|= |= ${LDFLAGS} |" \
-		-e "s|gcc|$(tc-getCC)|" \
 		config || die
 }
 
