@@ -17437,7 +17437,7 @@ www-client/firefox-bin 38.3.0 38.4.0 42.0: Firefox Web Browser
 www-client/google-chrome 46.0.2490.86_p1: The web browser from Google
 www-client/google-chrome-beta 47.0.2526.49_p1: The web browser from Google
 www-client/google-chrome-unstable 48.0.2560.0_p1: The web browser from Google
-www-client/httrack 3.45.4 3.48.21 3.48.21-r1: HTTrack Website Copier, Open Source Offline Browser
+www-client/httrack 3.48.21-r1: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/jumanji 0.0.0_p20111209 0.0.0_p20130103-r1 0.0.0_p20150527 9999: highly customizable and functional web browser with minimalistic and space saving interface
 www-client/links 2.8-r1 2.9 2.9-r1 2.10 2.11 2.12: A fast and lightweight web browser running in both graphics and text mode
