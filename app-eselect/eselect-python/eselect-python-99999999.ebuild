@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# Keep the EAPI low here because everything else depends on it.
-# We want to make upgrading simpler.
+EAPI=5
 
 if [[ ${PV} == "99999999" ]] ; then
 	inherit autotools git-r3
@@ -22,21 +21,26 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
-RDEPEND=">=app-admin/eselect-1.2.3"
+# TODO: add appropriate >= dep on python-exec
+RDEPEND=">=app-admin/eselect-1.2.3
+	dev-lang/python-exec:2
+	!<dev-lang/python-2.7.10-r3:2.7
+	!<dev-lang/python-3.3.5-r3:3.3
+	!<dev-lang/python-3.4.3-r3:3.4
+	!<dev-lang/python-3.5.0-r2:3.5"
 
-src_unpack() {
-	if [[ ${PV} == "99999999" ]] ; then
-		git-r3_src_unpack
-		cd "${S}"
-		eautoreconf
-	else
-		unpack ${A}
-	fi
+src_prepare() {
+	[[ ${PV} == "99999999" ]] && eautoreconf
 }
 
 src_install() {
 	keepdir /etc/env.d/python
 	emake DESTDIR="${D}" install || die
+
+	local f
+	for f in python{,2,3}{,-config} 2to3 pydoc pyvenv; do
+		dosym ../lib/python-exec/python-exec2 /usr/bin/"${f}"
+	done
 }
 
 pkg_postinst() {
