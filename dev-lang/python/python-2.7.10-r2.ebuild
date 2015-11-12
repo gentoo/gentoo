@@ -316,7 +316,7 @@ src_install() {
 		vars=( PYTHON "${vars[@]}" )
 	fi
 
-	python_export "python${PYVER}" "${vars[@]}"
+	python_export "python${SLOT}" "${vars[@]}"
 	echo "EPYTHON='${EPYTHON}'" > epython.py || die
 	python_domodule epython.py
 }
