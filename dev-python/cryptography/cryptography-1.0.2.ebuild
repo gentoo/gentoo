@@ -25,11 +25,11 @@ RDEPEND="
 	$(python_gen_cond_dep '>=dev-python/cffi-1.1.0:=[${PYTHON_USEDEP}]' 'python*')
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7 python3_3 pypy)
 	>=dev-python/idna-2.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/ipaddress[${PYTHON_USEDEP}]' python2_7 pypy)
 	>=dev-python/pyasn1-0.1.8[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.1[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '>=virtual/pypy-2.6.0' pypy )
+	virtual/python-ipaddress[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
