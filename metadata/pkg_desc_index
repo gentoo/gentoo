@@ -9321,7 +9321,7 @@ dev-util/cucumber-core 1.2.0 1.3.0: Executable feature scenarios
 dev-util/cucumber-rails 1.4.1 1.4.2: Executable feature scenarios for Rails
 dev-util/cunit 2.1-r1 2.1_p2 2.1_p2-r1: CUnit - C Unit Test Framework
 dev-util/cutils 1.6-r4: C language utilities
-dev-util/cwdiff 0.2.8 0.3.0 0.3.1: A script that wraps wdiff to support directories and colorize the output
+dev-util/cwdiff 0.2.8 0.3.0 0.3.1 0.4.0: A script that wraps wdiff to support directories and colorize the output
 dev-util/cyclo 2.1_pre1: Computes cyclomatic complexity metrics on C source code.
 dev-util/d-feet 0.3.9 0.3.10: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
@@ -17575,7 +17575,7 @@ x11-apps/xauth 1.0.9-r1 1.0.9-r2: X authority file utility
 x11-apps/xbacklight 1.2.1-r1: Sets backlight level using the RandR 1.2 BACKLIGHT output property
 x11-apps/xbiff 1.0.3: mailbox flag for X
 x11-apps/xcalc 1.0.5 1.0.6: scientific calculator for X
-x11-apps/xclipboard 1.1.2 1.1.3: interchange between cut buffer and selection
+x11-apps/xclipboard 1.1.3: interchange between cut buffer and selection
 x11-apps/xclock 1.0.7: analog / digital clock for X
 x11-apps/xcmsdb 1.0.4 1.0.5: Device Color Characterization utility for X Color Management System
 x11-apps/xconsole 1.0.6: monitor system console messages with X
@@ -18129,7 +18129,7 @@ x11-misc/xoo 0.7: A graphical wrapper around xnest
 x11-misc/xorg-cf-files 1.0.5: Old Imake-related build files
 x11-misc/xosview 1.16 1.17: X11 operating system viewer
 x11-misc/xpad 4.2 4.5.0: a sticky note application for jotting down things to remember
-x11-misc/xplanet 1.2.2 1.3.0 1.3.0-r1: Render images of the earth into the X root window
+x11-misc/xplanet 1.3.0 1.3.0-r1: Render images of the earth into the X root window
 x11-misc/xplanetFX 2.6.4 2.6.6: User-friendly interface to configure, run or daemonize xplanet with HQ capabilities
 x11-misc/xrestop 0.4: 'Top' like statistics of X11 client's server side resource usage
 x11-misc/xrmap 2.33-r1: a X client for generating images of the Earth and manipulating the CIA World data bank
