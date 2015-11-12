@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install preinst prepare setup test
+DEPEND=sys-libs/ncurses:= archive? ( app-arch/libarchive ) berkdb? ( >=sys-libs/db-4:= ) zlib? ( sys-libs/zlib ) odbc? ( dev-db/unixODBC ) readline? ( sys-libs/readline:= ) gmp? ( dev-libs/gmp:0 ) ssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) java? ( >=virtual/jdk-1.5:= ) uuid? ( dev-libs/ossp-uuid ) X? ( virtual/jpeg:0 x11-libs/libX11 x11-libs/libXft x11-libs/libXpm x11-libs/libXt x11-libs/libICE x11-libs/libSM ) X? ( x11-proto/xproto ) java? ( test? ( =dev-java/junit-3.8* ) ) java? ( >=dev-java/java-config-2.2.0 )
+DESCRIPTION=free, small, and standard compliant Prolog compiler
+EAPI=5
+HOMEPAGE=http://www.swi-prolog.org/
+IUSE=archive berkdb debug doc +gmp hardened java libressl minimal odbc +readline ssl static-libs test uuid zlib X elibc_FreeBSD java
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=LGPL-2.1
+RDEPEND=sys-libs/ncurses:= archive? ( app-arch/libarchive ) berkdb? ( >=sys-libs/db-4:= ) zlib? ( sys-libs/zlib ) odbc? ( dev-db/unixODBC ) readline? ( sys-libs/readline:= ) gmp? ( dev-libs/gmp:0 ) ssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) java? ( >=virtual/jdk-1.5:= ) uuid? ( dev-libs/ossp-uuid ) X? ( virtual/jpeg:0 x11-libs/libX11 x11-libs/libXft x11-libs/libXpm x11-libs/libXt x11-libs/libICE x11-libs/libSM ) java? ( >=dev-java/java-config-2.2.0 )
+SLOT=0
+SRC_URI=http://www.swi-prolog.org/download/devel/src/swipl-7.3.11.tar.gz mirror://gentoo/swi-prolog-7.3.11-gentoo-patchset-0.tar.gz
+_eclasses_=eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	a96633177f44ee992b3fce360d1c4f16	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=8d3acf039a8d968dd5e894d7490421cc
