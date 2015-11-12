@@ -20,8 +20,9 @@ RDEPEND="
 	sys-devel/binutils
 "
 
-S=${WORKDIR}/${PN}
 DOCS=( TODO debian/changelog )
+
+S=${WORKDIR}/${PN}
 
 src_unpack() {
 	unpack ${PN}_${PV}.tar.gz
