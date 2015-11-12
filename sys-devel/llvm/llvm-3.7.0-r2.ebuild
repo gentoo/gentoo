@@ -72,7 +72,7 @@ PDEPEND="clang? ( =sys-devel/clang-${PV}-r100 )"
 # pypy gives me around 1700 unresolved tests due to open file limit
 # being exceeded. probably GC does not close them fast enough.
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	lldb? ( clang )
+	lldb? ( clang xml )
 	test? ( || ( $(python_gen_useflags 'python*') ) )"
 
 S=${WORKDIR}/${P/_}.src
@@ -261,6 +261,12 @@ multilib_src_configure() {
 
 		-DHAVE_HISTEDIT_H=$(usex libedit)
 	)
+
+	if use clang; then
+		mycmakeargs+=(
+			-DCMAKE_DISABLE_FIND_PACKAGE_LibXml2=$(usex !xml)
+		)
+	fi
 
 	if use lldb; then
 		mycmakeargs+=(
