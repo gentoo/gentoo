@@ -20,7 +20,7 @@ SRC_URI="http://programmer-art.org/media/releases/arista-transcoder/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 # Making these USE-defaults since encoding for portable devices is a very
 # common use case for Arista. xvid is being added since it's required for
 # DVD ripping. No gst-plugins-x264 available at this time.

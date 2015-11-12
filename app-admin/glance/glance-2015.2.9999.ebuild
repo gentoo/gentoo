@@ -7,8 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_4 )
 
 inherit distutils-r1 git-r3 user
 
-DESCRIPTION="Services for discovering, registering, and retrieving
-virtual machine images"
+DESCRIPTION="Services for discovering, registering, and retrieving VM images"
 HOMEPAGE="https://launchpad.net/glance"
 EGIT_REPO_URI="https://github.com/openstack/glance.git"
 EGIT_BRANCH="stable/liberty"
@@ -159,7 +158,7 @@ RDEPEND="
 	>=dev-python/castellan-0.2.0[${PYTHON_USEDEP}]
 	<=dev-python/castellan-0.2.1[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.0[${PYTHON_USEDEP}]
-	<=dev-python/cryptography-1.0.1-r9999[${PYTHON_USEDEP}]
+	<=dev-python/cryptography-1.1-r9999[${PYTHON_USEDEP}]
 "
 
 PATCHES=(

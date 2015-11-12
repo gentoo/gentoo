@@ -101,10 +101,6 @@ kde-frameworks/kwallet gpg
 # Seems to link correctly, but fails to run. Bug #557354.
 =media-sound/qsampler-0.3.1 libgig
 
-# Justin Lecher <jlec@gentoo.org> (04 Aug 2015)
-# USE mask unsupported python implementations in django
-dev-python/south python_targets_python3_3 python_targets_python3_4 python_targets_pypy
-
 # James Le Cuirot <chewi@gentoo.org> (29 Jul 2015)
 # JavaFX and the browser plugin are not included on some platforms.
 dev-java/oracle-jdk-bin javafx nsplugin

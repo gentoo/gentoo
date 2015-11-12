@@ -597,7 +597,7 @@ epatch() {
 			(
 			_epatch_draw_line "***** ${patchname} *****"
 			echo
-			echo "PATCH COMMAND:  ${patch_cmd} < '${PATCH_TARGET}'"
+			echo "PATCH COMMAND:  ${patch_cmd} --dry-run -f < '${PATCH_TARGET}'"
 			echo
 			_epatch_draw_line "***** ${patchname} *****"
 			${patch_cmd} --dry-run -f < "${PATCH_TARGET}" 2>&1
@@ -612,6 +612,7 @@ epatch() {
 				_epatch_draw_line "***** ${patchname} *****"
 				echo
 				echo "ACTUALLY APPLYING ${patchname} ..."
+				echo "PATCH COMMAND:  ${patch_cmd} < '${PATCH_TARGET}'"
 				echo
 				_epatch_draw_line "***** ${patchname} *****"
 				${patch_cmd} < "${PATCH_TARGET}" 2>&1

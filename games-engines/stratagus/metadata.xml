@@ -2,6 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>games</herd>
+	<use>
+		<flag name="fluidsynth">compile with support for fluidsynth</flag>
+	</use>
 	<upstream>
 		<remote-id type="launchpad">stratagus</remote-id>
 		<remote-id type="sourceforge">stratagus</remote-id>

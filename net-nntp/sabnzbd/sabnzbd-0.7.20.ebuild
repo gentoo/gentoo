@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ EAPI="4"
 PYTHON_DEPEND="2:2.6"
 PYTHON_USE_WITH="sqlite"
 
-inherit eutils python user
+inherit eutils python user systemd
 
 MY_P="${P/sab/SAB}"
 
@@ -66,6 +66,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/use-system-configobj-and-feedparser.patch
 	epatch "${FILESDIR}"/growler-support-gntp-1.0.patch
 	epatch "${FILESDIR}"/par2cmdline.patch
+	epatch "${FILESDIR}"/disable_growl_by_default.patch
 
 	# remove bundled modules
 	rm -r sabnzbd/utils/{feedparser,configobj}.py || die
@@ -99,6 +100,8 @@ src_install() {
 	doins "${FILESDIR}/${PN}.ini"
 
 	dodoc {ABOUT,CHANGELOG,ISSUES,README}.txt Sample-PostProc.sh licenses/*
+
+	systemd_newunit "${FILESDIR}"/sabnzbd_at.service 'sabnzbd@.service'
 }
 
 pkg_postinst() {
@@ -110,6 +113,8 @@ pkg_postinst() {
 	einfo "to add a user to the sabnzbd group so it can edit sabnzbd files"
 	einfo ""
 	einfo "By default sabnzbd will listen on 127.0.0.1:8080"
+	einfo "As growl isn't default notification system on gentoo we disable it."
+	einfo "By default notifications are forwarded to the 23053 port(gntp)."
 }
 
 pkg_postrm() {

@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Markus Meier <maekke@gentoo.org> (10 Nov 2015)
+# unkeyworded deps, bug #555896
+sci-libs/armadillo mkl
+
 # James Le Cuirot <chewi@gentoo.org> (19 Oct 2015)
 # Issue with keywording sub-dependency jflex but this should be
 # resolved very shortly. Masking this now to unbreak the tree.

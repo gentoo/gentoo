@@ -30,6 +30,29 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (11 Nov 2015)
+# Mask latest xdebug{,-client} beta versions
+# Upstream keeps changing the tarballs causing Manifest errors.
+# wrt bug 565234
+>=dev-php/xdebug-2.4.0_beta1
+>=dev-php/xdebug-client-2.4.0_beta1
+
+# Michał Górny <mgorny@gentoo.org> (11 Nov 2015)
+# Cleaned up Python versions masked for testing:
+# - python-config-X.Y compatibility removed,
+# - ABIFLAGS reintroduced for 3.3+.
+# Resulting API/ABI change can break reverse dependencies, especially
+# if upstream hardcodes paths or library names.
+=dev-lang/python-2.7.10-r3
+=dev-lang/python-3.3.5-r3
+=dev-lang/python-3.4.3-r3
+=dev-lang/python-3.5.0-r2
+
+# Justin Lecher <jlec@gentoo.org> (10 Nov 2015)
+# Vulnerable package CVE-2014-{1932,1933}
+# Bug: 507982
+dev-python/imaging
+
 # Justin Lecher <jlec@gentoo.org> (10 Nov 2015)
 # Compatibility virtual for transition from
 # dev-python/imaging to dev-python/pillow
@@ -177,26 +200,6 @@ dev-java/jakarta-jstl
 # 2015, bug 536852.
 # Masked for removal in 30 days.
 =dev-lang/ruby-1.9*
-
-# Michael Palimaka <kensington@gentoo.org (9 Oct 2015)
-# Dead upstream. No consumers. Collides with other packages.
-# Bug #560932 and bug #557006. Masked for removal in 30 days.
-dev-libs/libhash
-
-# Michael Palimaka <kensington@gentoo.org (9 Oct 2015)
-# Superceded by >=app-crypt/qca-2.1
-# Masked for removal in 30 days
-<app-crypt/qca-2.1
-app-crypt/qca-cyrus-sasl
-app-crypt/qca-gnupg
-app-crypt/qca-logger
-app-crypt/qca-ossl
-app-crypt/qca-pkcs11
-
-# Anthony G. Basile <blueness@gentoo.org> (6 Oct 2015)
-# Dead upstream for a long time.  Masked for removal
-# in 30 days.
-dev-util/elfsh
 
 # Patrice Clement <monsieurp@gentoo.org> (6 Oct 2015)
 # No update since 2008. Masked for removal in 30 days.
@@ -369,11 +372,6 @@ dev-db/postgresql-server
 # Sergey Popov <pinkbyte@gentoo.org> (09 Dec 2014)
 # Security mask, wrt bug #529728
 <app-antivirus/clamav-0.98.5
-
-# Justin Lecher <jlec@gentoo.org> (02 Dec 2014)
-# Not supported by upstream anymore
-# Revdeps broken, #531392
-net-analyzer/openvas-administrator
 
 # Richard Yao <ryao@gentoo.org> (29 Nov 2014)
 # Depends on media-libs/lcms:0, which has unspecified security vulnerabilities.

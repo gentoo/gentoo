@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<longdescription lang="en">
+		An elegant, extensible, testing framework.
+		Ships with a large amount of useful asserts,
+		plus the ability to write your own. Output
+		in pretty or plain terminal format, JSON,
+		or TAP for CI integration. Great for TDD
+		and unit, integration, and functional tests.
+	</longdescription>
+</pkgmetadata>

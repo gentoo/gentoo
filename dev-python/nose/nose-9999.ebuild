@@ -11,6 +11,7 @@ inherit git-2
 #endif
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
+PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1 eutils
 
 DESCRIPTION="A unittest extension offering automatic test suite discovery and easy test authoring"

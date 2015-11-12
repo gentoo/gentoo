@@ -7,7 +7,9 @@ JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-pkg-simple versionator
 
-MY_PN="${PN^^}"
+# Switch to ^^ when we switch to EAPI=6.
+#MY_PN="${PN^^}"
+MY_PN="GROOVY"
 MY_PV="$(replace_all_version_separators _ ${PV})"
 MY_P="${MY_PN}_${MY_PV}"
 

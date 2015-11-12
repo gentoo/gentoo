@@ -57,12 +57,12 @@ src_configure() {
 			-DBINDINGS_ONLY=ON
 			-DBABEL_SYSTEM_LIBRARY="${EPREFIX}/usr/$(get_libdir)/libopenbabel.so"
 			-DOB_MODULE_PATH="${EPREFIX}/usr/$(get_libdir)/openbabel/${PV}"
-			-DLIB_INSTALL_DIR="${ED}/usr/$(get_libdir)/${EPYTHON}/site-packages"
+			-DLIB_INSTALL_DIR="${D}$(python_get_sitedir)"
 			-DPYTHON_BINDINGS=ON
 			-DPYTHON_EXECUTABLE=${PYTHON}
-			-DPYTHON_INCLUDE_DIR="${EPREFIX}/usr/include/${EPYTHON}"
-			-DPYTHON_INCLUDE_PATH="${EPREFIX}/usr/include/${EPYTHON}"
-			-DPYTHON_LIBRARY="${EPREFIX}/usr/$(get_libdir)/lib${EPYTHON}.so"
+			-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
+			-DPYTHON_INCLUDE_PATH="$(python_get_includedir)"
+			-DPYTHON_LIBRARY="$(python_get_library_path)"
 			-DENABLE_TESTS=ON
 		)
 

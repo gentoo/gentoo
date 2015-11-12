@@ -15,12 +15,10 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos \
-	~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="test"
 
 RDEPEND=""
-
 DEPEND="test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
 # Required for re-write of test suite
@@ -34,8 +32,13 @@ python_compile_all() {
 }
 
 python_test() {
-	# The suite via the Makefile appears to not cater to pypy
-	if [[ "${EPYTHON}" != pypy ]]; then
-		emake check
-	fi
+		# The suite via the Makefile appears to not cater to pypy
+	[[ ${EPYTHON} =~ pypy ]] && return
+
+	# prepare embedded executable
+	emake \
+		CC="$(tc-getCC)" \
+		PYINC="$(python_get_CFLAGS)" \
+		PYLIB="$(python_get_LIBS)" \
+		check
 }

@@ -126,6 +126,7 @@ _python_impl_supported() {
 # The path to Python site-packages directory.
 #
 # Set and exported on request using python_export().
+# Requires a proper build-time dependency on the Python implementation.
 #
 # Example value:
 # @CODE
@@ -138,6 +139,7 @@ _python_impl_supported() {
 # The path to Python include directory.
 #
 # Set and exported on request using python_export().
+# Requires a proper build-time dependency on the Python implementation.
 #
 # Example value:
 # @CODE
@@ -150,7 +152,8 @@ _python_impl_supported() {
 # The path to Python library.
 #
 # Set and exported on request using python_export().
-# Valid only for CPython.
+# Valid only for CPython. Requires a proper build-time dependency
+# on the Python implementation.
 #
 # Example value:
 # @CODE
@@ -185,6 +188,20 @@ _python_impl_supported() {
 # Example value:
 # @CODE
 # -lpython2.7
+# @CODE
+
+# @ECLASS-VARIABLE: PYTHON_CONFIG
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Path to the python-config executable.
+#
+# Set and exported on request using python_export().
+# Valid only for CPython. Requires a proper build-time dependency
+# on the Python implementation and on pkg-config.
+#
+# Example value:
+# @CODE
+# /usr/bin/python2.7-config
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_PKG_DEP
@@ -248,6 +265,12 @@ python_export() {
 	esac
 	debug-print "${FUNCNAME}: implementation: ${impl}"
 
+	# make sure it doesn't leave our function unless desired
+	if ! has PYTHON "${@}"; then
+		local PYTHON
+	fi
+	export PYTHON=${EPREFIX}/usr/bin/${impl}
+
 	for var; do
 		case "${var}" in
 			EPYTHON)
@@ -255,55 +278,32 @@ python_export() {
 				debug-print "${FUNCNAME}: EPYTHON = ${EPYTHON}"
 				;;
 			PYTHON)
-				export PYTHON=${EPREFIX}/usr/bin/${impl}
+				# already exported above
 				debug-print "${FUNCNAME}: PYTHON = ${PYTHON}"
 				;;
 			PYTHON_SITEDIR)
-				local dir
-				case "${impl}" in
-					python*|pypy|pypy3)
-						dir=/usr/$(get_libdir)/${impl}
-						;;
-					jython*)
-						dir=/usr/share/${impl/n/n-}/Lib
-						;;
-				esac
-
-				export PYTHON_SITEDIR=${EPREFIX}${dir}/site-packages
+				# sysconfig can't be used because:
+				# 1) pypy doesn't give site-packages but stdlib
+				# 2) jython gives paths with wrong case
+				export PYTHON_SITEDIR=$("${PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_lib())')
 				debug-print "${FUNCNAME}: PYTHON_SITEDIR = ${PYTHON_SITEDIR}"
 				;;
 			PYTHON_INCLUDEDIR)
-				local dir
-				case "${impl}" in
-					python*)
-						dir=/usr/include/${impl}
-						;;
-					pypy|pypy3)
-						dir=/usr/$(get_libdir)/${impl}/include
-						;;
-					*)
-						die "${impl} lacks header files"
-						;;
-				esac
-
-				export PYTHON_INCLUDEDIR=${EPREFIX}${dir}
+				export PYTHON_INCLUDEDIR=$("${PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_inc())')
 				debug-print "${FUNCNAME}: PYTHON_INCLUDEDIR = ${PYTHON_INCLUDEDIR}"
+
+				# Jython gives a non-existing directory
+				if [[ ! -d ${PYTHON_INCLUDEDIR} ]]; then
+					die "${impl} does not install any header files!"
+				fi
 				;;
 			PYTHON_LIBPATH)
-				local libname
-				case "${impl}" in
-					python*)
-						libname=lib${impl}
-						;;
-					*)
-						die "${impl} lacks a dynamic library"
-						;;
-				esac
-
-				local path=${EPREFIX}/usr/$(get_libdir)
-
-				export PYTHON_LIBPATH=${path}/${libname}$(get_libname)
+				export PYTHON_LIBPATH=$("${PYTHON}" -c 'import os.path, sysconfig; print(os.path.join(sysconfig.get_config_var("LIBDIR"), sysconfig.get_config_var("LDLIBRARY")) if sysconfig.get_config_var("LDLIBRARY") else "")')
 				debug-print "${FUNCNAME}: PYTHON_LIBPATH = ${PYTHON_LIBPATH}"
+
+				if [[ ! ${PYTHON_LIBPATH} ]]; then
+					die "${impl} lacks a (usable) dynamic library"
+				fi
 				;;
 			PYTHON_CFLAGS)
 				local val
@@ -336,6 +336,22 @@ python_export() {
 
 				export PYTHON_LIBS=${val}
 				debug-print "${FUNCNAME}: PYTHON_LIBS = ${PYTHON_LIBS}"
+				;;
+			PYTHON_CONFIG)
+				local flags val
+
+				case "${impl}" in
+					python*)
+						flags=$("${PYTHON}" -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS") or "")')
+						val=${PYTHON}${flags}-config
+						;;
+					*)
+						die "${impl}: obtaining ${var} not supported"
+						;;
+				esac
+
+				export PYTHON_CONFIG=${val}
+				debug-print "${FUNCNAME}: PYTHON_CONFIG = ${PYTHON_CONFIG}"
 				;;
 			PYTHON_PKG_DEP)
 				local d
@@ -455,6 +471,23 @@ python_get_LIBS() {
 
 	python_export "${@}" PYTHON_LIBS
 	echo "${PYTHON_LIBS}"
+}
+
+# @FUNCTION: python_get_PYTHON_CONFIG
+# @USAGE: [<impl>]
+# @DESCRIPTION:
+# Obtain and print the PYTHON_CONFIG location for the given
+# implementation. If no implementation is provided, ${EPYTHON} will be
+# used.
+#
+# Please note that this function can be used with CPython only.
+# It requires Python installed, and therefore proper build-time
+# dependencies need be added to the ebuild.
+python_get_PYTHON_CONFIG() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	python_export "${@}" PYTHON_CONFIG
+	echo "${PYTHON_CONFIG}"
 }
 
 # @FUNCTION: python_get_scriptdir
@@ -844,7 +877,7 @@ python_wrapper_setup() {
 		rm -f "${workdir}"/bin/2to3 || die
 		rm -f "${workdir}"/pkgconfig/python{,2,3}.pc || die
 
-		local EPYTHON PYTHON
+		local EPYTHON PYTHON PYTHON_CONFIG
 		python_export "${impl}" EPYTHON PYTHON
 
 		local pyver pyother
@@ -871,9 +904,11 @@ python_wrapper_setup() {
 
 		# CPython-specific
 		if [[ ${EPYTHON} == python* ]]; then
+			python_export "${impl}" PYTHON_CONFIG
+
 			cat > "${workdir}/bin/python-config" <<-_EOF_
 				#!/bin/sh
-				exec "${PYTHON}-config" "\${@}"
+				exec "${PYTHON_CONFIG}" "\${@}"
 			_EOF_
 			cp "${workdir}/bin/python-config" \
 				"${workdir}/bin/python${pyver}-config" || die

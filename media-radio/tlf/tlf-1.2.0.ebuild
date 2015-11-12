@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND="sys-libs/ncurses
+RDEPEND="sys-libs/ncurses:=
 	dev-libs/glib:2
 	media-libs/hamlib
 	media-sound/sox"
