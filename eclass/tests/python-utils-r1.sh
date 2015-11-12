@@ -105,7 +105,7 @@ test_var EPYTHON pypy3 pypy3
 test_var PYTHON pypy3 /usr/bin/pypy3
 if [[ -x /usr/bin/pypy3 ]]; then
 	test_var PYTHON_SITEDIR pypy3 "/usr/lib*/pypy3/site-packages"
-	test_var PYTHON_INCLUDEDIR pypy3 /usr/lib/pypy3/include
+	test_var PYTHON_INCLUDEDIR pypy3 "/usr/lib*/pypy3/include"
 fi
 test_var PYTHON_PKG_DEP pypy3 '*virtual/pypy3*:0='
 test_var PYTHON_SCRIPTDIR pypy3 /usr/lib/python-exec/pypy3
