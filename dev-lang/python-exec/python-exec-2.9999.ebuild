@@ -7,7 +7,7 @@ EAPI=5
 #if LIVE
 AUTOTOOLS_AUTORECONF=yes
 EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
-EGIT_BRANCH="python-exec2"
+EGIT_BRANCH="mgornys-eselect-python-hackery"
 
 inherit git-r3
 #endif

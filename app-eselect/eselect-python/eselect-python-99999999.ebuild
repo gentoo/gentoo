@@ -8,6 +8,7 @@
 if [[ ${PV} == "99999999" ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="git://anongit.gentoo.org/proj/${PN}.git"
+	EGIT_BRANCH="mgornys-hackery"
 else
 	SRC_URI="mirror://gentoo/${P}.tar.bz2
 		https://dev.gentoo.org/~floppym/dist/${P}.tar.bz2"
