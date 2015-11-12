@@ -104,7 +104,7 @@ RDEPEND="
 	!~dev-python/routes-2.1[$(python_gen_usedep 'python2_7')]
 	<=dev-python/routes-2.2[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.0[${PYTHON_USEDEP}]
-	<=dev-python/cryptography-1.0.1-r9999[${PYTHON_USEDEP}]
+	<=dev-python/cryptography-1.1-r9999[${PYTHON_USEDEP}]
 	>=dev-python/webob-1.2.3[${PYTHON_USEDEP}]
 	<=dev-python/webob-1.4.1[${PYTHON_USEDEP}]
 	>=dev-python/greenlet-0.3.2[${PYTHON_USEDEP}]
