@@ -51,7 +51,7 @@ RDEPEND="
 			x11-libs/libXxf86vm )
 		x11-libs/libX11
 		x11-libs/libXext
-		sys-libs/readline
+		sys-libs/readline:0
 	)
 	gtk? (
 		x11-libs/gtk+:2
