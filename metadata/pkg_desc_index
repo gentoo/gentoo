@@ -1319,7 +1319,7 @@ app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes
 app-emulation/uae 0.8.29-r2: The Umiquious Amiga Emulator
 app-emulation/vagrant 1.4.3-r2: A tool for building and distributing virtual machines using VirtualBox
 app-emulation/vboxgtk 0.8.2-r1: GTK frontend for VirtualBox
-app-emulation/vice 2.4 2.4.22: The Versatile Commodore 8-bit Emulator
+app-emulation/vice 2.4 2.4.20 2.4.22: The Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 1.1.0-r2 1.2.1 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 0.5.6 2.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.12: Detects if the current machine is running in a virtual machine
