@@ -137,6 +137,7 @@ media-libs/mesa video_cards_vmware
 
 # media-libs/libepoxy
 x11-base/xorg-server glamor wayland
+x11-drivers/xf86-video-ati glamor
 
 # x11-drivers/xf86-video-sis
 x11-base/xorg-drivers video_cards_sis

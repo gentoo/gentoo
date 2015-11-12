@@ -15,10 +15,7 @@ IUSE="+glamor udev"
 
 RDEPEND=">=x11-libs/libdrm-2.4.58[video_cards_radeon]
 	>=x11-libs/libpciaccess-0.8.0
-	glamor? ( || (
-		x11-base/xorg-server[glamor]
-		>=x11-libs/glamor-0.6
-	) )
+	glamor? ( x11-base/xorg-server[glamor] )
 	udev? ( virtual/udev )"
 DEPEND="${RDEPEND}
 	x11-proto/fontsproto

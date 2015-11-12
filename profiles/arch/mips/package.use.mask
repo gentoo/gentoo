@@ -29,6 +29,7 @@ app-doc/doxygen clang
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (16 Sep 2014)
 # Needs libepoxy keywording, bug #510940
 x11-base/xorg-server glamor wayland
+x11-drivers/xf86-video-ati glamor
 
 # Davide Pesavento <pesa@gentoo.org> (02 Jun 2014)
 # dev-qt/qtdeclarative:4 is not keyworded on mips
