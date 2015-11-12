@@ -2014,7 +2014,7 @@ app-office/taskcoach 1.3.18 1.3.27 1.3.29 1.3.32 1.3.32-r1 1.3.40: Simple person
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
 app-office/texmacs 1.0.7.21 1.99.1 1.99.2 1.99.2-r1: Wysiwyg text processor with high-quality maths
 app-office/texmaker 4.3 4.4.1 4.4.1-r1: A nice LaTeX-IDE
-app-office/texstudio 2.9.4 2.10.2 2.10.4: Free cross-platform LaTeX editor (fork from texmakerX)
+app-office/texstudio 2.10.2 2.10.4: Free cross-platform LaTeX editor (fork from texmakerX)
 app-office/unoconv 0.6 0.6.20131229 0.7 99999999: Convert between document formats supported by Libreoffice
 app-office/upwork 4.0.53.0 4.0.70.0: Project collaboration and tracking software for upwork.com
 app-office/wps-office 9.1.0.4961_alpha18_p1 9.1.0.4975_alpha19_p1: WPS Office is an office productivity suite
@@ -2231,7 +2231,7 @@ app-text/docbook-xsl-ns-stylesheets 1.78.0: XSL Stylesheets for Docbook
 app-text/docbook-xsl-stylesheets 1.78.0-r1 1.79.0: XSL Stylesheets for Docbook
 app-text/docbook2X 0.8.8-r4: Tools to convert docbook to man and info
 app-text/docx2txt 1.2 1.3 1.4: Convert MS Office docx files to plain text
-app-text/dos2unix 6.0.6 7.3-r1 7.3.1: Convert DOS or MAC text files to UNIX format or vice versa
+app-text/dos2unix 7.3-r1 7.3.1: Convert DOS or MAC text files to UNIX format or vice versa
 app-text/duali 0.2.0: Arabic dictionary based on the DICT protocol
 app-text/dvibook 20001129: DVI file utilities: dvibook, dviconcat, dvitodvi, and dviselect
 app-text/dvipdfm 0.13.2d-r1 0.13.2d-r2: DVI to PDF translator
@@ -4851,7 +4851,7 @@ dev-libs/qrosscore 0.3.1 9999: KDE-free version of Kross (core libraries and Qt 
 dev-libs/qrosspython 0.3.1 9999: Python scripting backend for Qross
 dev-libs/qtkeychain 0.5.0: Qt API for storing passwords securely
 dev-libs/quantlib 1.6: A comprehensive software framework for quantitative finance
-dev-libs/quazip 0.6.2-r1 0.7.1: A simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package
+dev-libs/quazip 0.7.1: A simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package
 dev-libs/radlib 2.12.0-r1: Rapid Application Development Library
 dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
 dev-libs/rasqal 0.9.29 0.9.32: library that handles Resource Description Framework (RDF)
@@ -11116,6 +11116,7 @@ kde-base/systemsettings 4.11.19 4.11.22: System settings utility
 kde-frameworks/attica 5.14.0 5.15.0: Framework providing access to Open Collaboration Services
 kde-frameworks/baloo 5.14.0 5.14.0-r1 5.15.0: Framework for searching and managing metadata
 kde-frameworks/bluez-qt 5.14.0 5.15.0: Qt wrapper for Bluez 5 DBus API
+kde-frameworks/breeze-icons 5.4.3: Breeze SVG icon theme
 kde-frameworks/extra-cmake-modules 5.14.0 5.15.0: Extra modules and scripts for CMake
 kde-frameworks/frameworkintegration 5.14.0 5.15.0 5.15.0-r1: Framework for integrating Qt applications with KDE workspaces
 kde-frameworks/kactivities 5.14.0 5.15.0 5.15.0-r1: Framework for working with KDE activities
@@ -11294,43 +11295,43 @@ kde-misc/wicd-client-kde 0.3.1-r1: Wicd client built on the KDE Development Plat
 kde-misc/yakuake 2.9.9-r2: A quake-style terminal emulator based on KDE konsole technology
 kde-misc/yawp 0.4.5: Yet Another Weather Plasmoid
 kde-misc/zanshin 0.2.1-r1 0.2.2: Todo management application for KDE
-kde-plasma/bluedevil 5.4.2: Bluetooth stack for KDE
-kde-plasma/breeze 5.4.2 5.4.2-r1: Breeze visual style for the Plasma desktop
-kde-plasma/kde-cli-tools 5.4.2: Tools based on KDE Frameworks 5 to better interact with the system
-kde-plasma/kde-gtk-config 5.4.2: KDE systemsettings kcm to set GTK application look&feel
-kde-plasma/kdecoration 5.4.2: Plugin based library to create window decorations
-kde-plasma/kdeplasma-addons 5.4.2: Extra Plasma applets and engines
-kde-plasma/kgamma 5.4.2: Screen gamma values kcontrol module
-kde-plasma/khelpcenter 5.4.2: The KDE Help Center
-kde-plasma/khotkeys 5.4.2: KDE workspace hotkey module
-kde-plasma/kinfocenter 5.4.2: A utility that provides information about a computer system
-kde-plasma/kmenuedit 5.4.2: KDE menu editor
-kde-plasma/kscreen 5.4.2: KDE screen management
-kde-plasma/ksshaskpass 5.4.2: KDE implementation of ssh-askpass with Kwallet integration
-kde-plasma/ksysguard 5.4.2: Network-enabled task manager and system monitor
-kde-plasma/kwallet-pam 5.4.2: KWallet PAM module to not enter password again
-kde-plasma/kwayland 5.4.2: Qt-style client and server library wrapper for Wayland libraries
-kde-plasma/kwayland-integration 5.4.2: Provides integration plugins for various KDE frameworks for Wayland
-kde-plasma/kwin 5.4.2: KDE window manager
-kde-plasma/kwrited 5.4.2: KDE daemon listening for wall and write messages
-kde-plasma/libkscreen 5.4.2: KDE screen management library
-kde-plasma/libksysguard 5.4.2: Task management and system monitoring library
-kde-plasma/milou 5.4.2: Dedicated search application built on top of Baloo
-kde-plasma/oxygen 5.4.2: KDE window manager theme
-kde-plasma/oxygen-fonts 5.4.2: Desktop/GUI font family for integrated use with the KDE desktop
-kde-plasma/plasma-desktop 5.4.2: KDE Plasma desktop
-kde-plasma/plasma-mediacenter 5.4.2: Unified media experience for any device capable of running KDE
-kde-plasma/plasma-meta 5.4.2: Merge this to pull in all Plasma 5 packages
-kde-plasma/plasma-nm 5.4.2: KDE Plasma applet for NetworkManager
-kde-plasma/plasma-pa 5.4.2: Plasma applet for audio volume management using PulseAudio
-kde-plasma/plasma-sdk 5.4.2: Useful applications for Plasma development
-kde-plasma/plasma-workspace 5.4.2: KDE Plasma workspace
-kde-plasma/plasma-workspace-wallpapers 5.4.2: Additional wallpapers for the Plasma workspace
-kde-plasma/polkit-kde-agent 5.4.2: PolKit agent module for KDE
-kde-plasma/powerdevil 5.4.2: Power management for KDE Plasma Shell
-kde-plasma/sddm-kcm 5.4.2: KDE control module for SDDM
-kde-plasma/systemsettings 5.4.2: System settings utility
-kde-plasma/user-manager 5.4.2: Simple system settings module to manage the users of your system
+kde-plasma/bluedevil 5.4.2 5.4.3: Bluetooth stack for KDE
+kde-plasma/breeze 5.4.2 5.4.2-r1 5.4.3: Breeze visual style for the Plasma desktop
+kde-plasma/kde-cli-tools 5.4.2 5.4.3: Tools based on KDE Frameworks 5 to better interact with the system
+kde-plasma/kde-gtk-config 5.4.2 5.4.3: KDE systemsettings kcm to set GTK application look&feel
+kde-plasma/kdecoration 5.4.2 5.4.3: Plugin based library to create window decorations
+kde-plasma/kdeplasma-addons 5.4.2 5.4.3: Extra Plasma applets and engines
+kde-plasma/kgamma 5.4.2 5.4.3: Screen gamma values kcontrol module
+kde-plasma/khelpcenter 5.4.2 5.4.3: The KDE Help Center
+kde-plasma/khotkeys 5.4.2 5.4.3: KDE workspace hotkey module
+kde-plasma/kinfocenter 5.4.2 5.4.3: A utility that provides information about a computer system
+kde-plasma/kmenuedit 5.4.2 5.4.3: KDE menu editor
+kde-plasma/kscreen 5.4.2 5.4.3: KDE screen management
+kde-plasma/ksshaskpass 5.4.2 5.4.3: KDE implementation of ssh-askpass with Kwallet integration
+kde-plasma/ksysguard 5.4.2 5.4.3: Network-enabled task manager and system monitor
+kde-plasma/kwallet-pam 5.4.2 5.4.3: KWallet PAM module to not enter password again
+kde-plasma/kwayland 5.4.2 5.4.3: Qt-style client and server library wrapper for Wayland libraries
+kde-plasma/kwayland-integration 5.4.2 5.4.3: Provides integration plugins for various KDE frameworks for Wayland
+kde-plasma/kwin 5.4.2 5.4.3: KDE window manager
+kde-plasma/kwrited 5.4.2 5.4.3: KDE daemon listening for wall and write messages
+kde-plasma/libkscreen 5.4.2 5.4.3: KDE screen management library
+kde-plasma/libksysguard 5.4.2 5.4.3: Task management and system monitoring library
+kde-plasma/milou 5.4.2 5.4.3: Dedicated search application built on top of Baloo
+kde-plasma/oxygen 5.4.2 5.4.3: KDE window manager theme
+kde-plasma/oxygen-fonts 5.4.2 5.4.3: Desktop/GUI font family for integrated use with the KDE desktop
+kde-plasma/plasma-desktop 5.4.2 5.4.3: KDE Plasma desktop
+kde-plasma/plasma-mediacenter 5.4.2 5.4.3: Unified media experience for any device capable of running KDE
+kde-plasma/plasma-meta 5.4.2 5.4.3: Merge this to pull in all Plasma 5 packages
+kde-plasma/plasma-nm 5.4.2 5.4.3: KDE Plasma applet for NetworkManager
+kde-plasma/plasma-pa 5.4.2 5.4.3: Plasma applet for audio volume management using PulseAudio
+kde-plasma/plasma-sdk 5.4.2 5.4.3: Useful applications for Plasma development
+kde-plasma/plasma-workspace 5.4.2 5.4.3: KDE Plasma workspace
+kde-plasma/plasma-workspace-wallpapers 5.4.2 5.4.3: Additional wallpapers for the Plasma workspace
+kde-plasma/polkit-kde-agent 5.4.2 5.4.3: PolKit agent module for KDE
+kde-plasma/powerdevil 5.4.2 5.4.3: Power management for KDE Plasma Shell
+kde-plasma/sddm-kcm 5.4.2 5.4.3: KDE control module for SDDM
+kde-plasma/systemsettings 5.4.2 5.4.3: System settings utility
+kde-plasma/user-manager 5.4.2 5.4.3: Simple system settings module to manage the users of your system
 lxde-base/lxappearance 0.5.2 0.5.3 0.5.4 0.5.5: LXDE GTK+ theme switcher
 lxde-base/lxappearance-obconf 0.2.1: LXAppearance plugin for configuring OpenBox
 lxde-base/lxde-common 0.5.5-r2 0.5.5-r3: LXDE Session default configuration files and nuoveXT2 iconset
