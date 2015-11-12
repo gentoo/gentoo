@@ -14,7 +14,7 @@ IUSE="doc +ocamlopt tk"
 LICENSE="MIT"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~ppc ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
 
 DEPEND=">=dev-lang/ocaml-4.02.1:=[ocamlopt?]
 	tk? ( dev-ml/labltk:= )"

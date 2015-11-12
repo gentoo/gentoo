@@ -17,7 +17,7 @@ LICENSE="QPL-1.0 LGPL-2"
 # Everytime ocaml is updated to a new version, everything ocaml must be rebuilt,
 # so here we go with the subslot.
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ~ppc ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="emacs latex ncurses +ocamlopt X xemacs"
 
 RDEPEND="
