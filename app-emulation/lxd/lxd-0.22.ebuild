@@ -8,13 +8,13 @@ DESCRIPTION="Fast, dense and secure container management"
 HOMEPAGE="https://linuxcontainers.org/lxd/introduction/"
 EGO_PN_PARENT="github.com/lxc"
 EGO_PN="${EGO_PN_PARENT}/lxd"
-SRC_URI="http://961db08fe45d5f5dd062-b8a7a040508aea6d369676e49b80719d.r29.cf2.rackcdn.com/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~stasibear/distfiles/${P}.tar.bz2"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
 PLOCALES="de fr ja"
-IUSE="btrfs +criu +daemon lvm nls test"
+IUSE="+daemon nls test"
 
 # IUSE and PLOCALES must be defined before l10n inherited
 inherit bash-completion-r1 eutils golang-build l10n systemd user vcs-snapshot
@@ -43,15 +43,6 @@ RDEPEND="
 		net-misc/rsync[xattr]
 		sys-apps/iproute2
 		virtual/acl
-		btrfs? (
-			sys-fs/btrfs-progs
-		)
-		criu? (
-			sys-process/criu
-		)
-		lvm? (
-			sys-fs/lvm2
-		)
 	)
 "
 
@@ -64,11 +55,6 @@ RDEPEND="
 # - since 0.15 gccgo is a supported compiler ('make gccgo').  It would
 #   be preferable for that support to go into the golang-build eclass not
 #   this package directly.
-# - Add apparmor USE.  There are some exec calls to apparmor_parser
-# - Test build with Go 1.4 & 1.5
-# - integrate "lxd shutdown" into initscript as custom action (default "stop"
-#   action should _not_ stop containers amirite?)
-#   "Perform a clean shutdown of LXD and all running containers"
 
 src_prepare() {
 	cd "${S}/src/${EGO_PN}"
@@ -157,10 +143,15 @@ pkg_postinst() {
 	# Ubuntu also defines an lxd user but it appears unused (the daemon
 	# must run as root)
 
-	if test -n "${REPLACING_VERSIONS}"; then
-		einfo
-		einfo "If you are upgrading from version 0.14 or older, note that the --tcp"
-		einfo "is no longer available in /etc/conf.d/lxd.  Instead, configure the"
-		einfo "listen address/port by setting the core.https_address server option."
-	fi
+	einfo
+	einfo "Though not strictly required, some features are enabled at run-time"
+	einfo "when the relevant helper programs are detected:"
+	einfo "- sys-apps/apparmor"
+	einfo "- sys-fs/btrfs-progs"
+	einfo "- sys-fs/lvm2"
+	einfo "- sys-fs/zfs"
+	einfo "- sys-process/criu"
+	einfo
+	einfo "Since these features can't be disabled at build-time they are"
+	einfo "not USE-conditional."
 }
