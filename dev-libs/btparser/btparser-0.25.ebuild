@@ -34,10 +34,8 @@ src_prepare() {
 }
 
 src_configure() {
-	# Configure checks for python.pc; our python-2.7 installs python-2.7.pc,
-	# while python-2.6 does not install any pkgconfig file.
-	export PYTHON_CFLAGS=$(python-config --includes)
-	export PYTHON_LIBS=$(python-config --libs)
+	export PYTHON_CFLAGS=$(python_get_CFLAGS)
+	export PYTHON_LIBS=$(python_get_LIBS)
 
 	gnome2_src_configure \
 		$(use_enable static-libs static)
