@@ -27,9 +27,9 @@ VENDOR_DEPEND="
 	>=dev-python/CacheControl-0.11.5[${PYTHON_USEDEP}]
 	>=dev-python/lockfile-0.10.2[${PYTHON_USEDEP}]
 	>=dev-python/progress-1.2[${PYTHON_USEDEP}]
-	>=dev-python/ipaddress-1.0.14[${PYTHON_USEDEP}]
 	>=dev-python/packaging-15.3[${PYTHON_USEDEP}]
 	>=dev-python/retrying-1.3.3[${PYTHON_USEDEP}]
+	virtual/python-ipaddress[${PYTHON_USEDEP}]
 "
 RDEPEND="${VENDOR_DEPEND}
 	>=dev-python/setuptools-18.2[${PYTHON_USEDEP}]
