@@ -105,7 +105,7 @@ app-admin/genromfs 0.5.2: Create space-efficient, small, read-only romfs filesys
 app-admin/gentoo-rsync-mirror 1.0-r4 1.0-r5: Ebuild for setting up a Gentoo rsync mirror
 app-admin/geolizer 2.01.10_p20070115-r1: Webserver log file analyzer
 app-admin/gkrellm 2.3.5-r3 2.3.6_rc1 2.3.6_rc1-r1: Single process stack of various system monitors
-app-admin/glance 11.0.0 2015.1.1-r3 2015.1.2 2015.1.9999 2015.2.9999: Services for discovering, registering, and retrieving virtual machine images
+app-admin/glance 11.0.0 2015.1.1-r3 2015.1.2 2015.1.9999 2015.2.9999: Services for discovering, registering, and retrieving VM images
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/grubconfig 1.28-r1: Simple Tool to configure Grub-Bootloader
 app-admin/gtkdiskfree 2.0.1-r1: Graphical tool to show free disk space
@@ -14879,7 +14879,7 @@ net-wireless/horst 4.2 9999: Small 802.11 wireless LAN analyzer
 net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
 net-wireless/hostapd 2.4-r2 2.4-r3 2.5: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.1-r1 9999: a tool for analysing captured signals, primarily from software-defined radio receivers
-net-wireless/irda-utils 0.9.18-r3 0.9.18-r4: IrDA management and handling utilities
+net-wireless/irda-utils 0.9.18-r4: IrDA management and handling utilities
 net-wireless/iw 3.17 4.0 4.3: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
 net-wireless/kismet 2013.03.1-r2 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-ubertooth 2015.09.2 2015.10.1 9999: Provides basic bluetooth support in kismet
@@ -16573,7 +16573,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 7.0.0 2015.1.1-r1 2015.1.2 2015.1.9999 2015.2.9999: A virtual network service for Openstack
-sys-cluster/nova 12.0.0 2015.1.1-r3 2015.1.2 2015.1.9999 2015.2.9999: A cloud computing fabric controller (main part of an IaaS system)
+sys-cluster/nova 12.0.0 2015.1.1-r3 2015.1.2 2015.1.9999 2015.2.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/open-mx 1.5.4: Open-MX - Myrinet Express over Generic Ethernet Hardware
