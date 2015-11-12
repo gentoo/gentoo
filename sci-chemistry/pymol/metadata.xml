@@ -6,7 +6,6 @@
     <email>jlec@gentoo.org</email>
   </maintainer>
   <use>
-    <flag name="apbs">Install the apbs plugin</flag>
     <flag name="web">Install Pymodule needed for web app support</flag>
   </use>
   <upstream>
