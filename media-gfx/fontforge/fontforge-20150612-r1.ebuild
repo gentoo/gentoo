@@ -42,7 +42,6 @@ RDEPEND="
 	X? (
 		x11-libs/libX11:0=
 		x11-libs/libXi:0=
-		x11-libs/libxkbui:0=
 		>=x11-libs/pango-1.10:0=[X]
 	)
 	!media-gfx/pfaedit
