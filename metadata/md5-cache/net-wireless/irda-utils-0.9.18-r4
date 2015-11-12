@@ -3,10 +3,10 @@ DEPEND=dev-libs/glib:2 >=sys-apps/pciutils-2.2.7-r1 sys-process/procps sys-apps/
 DESCRIPTION=IrDA management and handling utilities
 EAPI=5
 HOMEPAGE=http://irda.sourceforge.net
-KEYWORDS=amd64 ~arm ~ppc ~sh x86
+KEYWORDS=amd64 ~arm ppc ~sh x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 >=sys-apps/pciutils-2.2.7-r1 sys-process/procps sys-apps/setserial sys-apps/grep virtual/udev
 SLOT=0
 SRC_URI=mirror://sourceforge/irda/irda-utils-0.9.18.tar.gz
 _eclasses_=eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	udev	37ef89be271b9ae8aa64be024ddb39b5
-_md5_=27e2bf57d6e15a1ac37a2ae5ec71041b
+_md5_=1d3778dc2b08dacf434188796ea43aa9
