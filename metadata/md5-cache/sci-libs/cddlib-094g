@@ -4,10 +4,10 @@ DESCRIPTION=C implementation of the Double Description Method of Motzkin et al
 EAPI=5
 HOMEPAGE=http://www.ifor.math.ethz.ch/~fukuda/cdd_home/
 IUSE=doc static-libs
-KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/gmp-4.2.2:0=
 SLOT=0
 SRC_URI=ftp://ftp.ifor.math.ethz.ch/pub/fukuda/cdd/cddlib-094g.tar.gz
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	8644194de7be04932084752fb1327080	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=cd52b3b4c190edba3e4aafbea6a31daa
+_md5_=478835301b656bb79f7b61c431e99694
