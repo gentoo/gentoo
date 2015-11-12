@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Justin Lecher <jlec@gentoo.org> (12 Nov 2015)
+# deprecated version of the plugin. 
+# sci-chemistry/pymol includes the newer version
+sci-chemistry/pymol-apbs-plugin
+
 # Brian Evans <grknight@gentoo.org> (11 Nov 2015)
 # Mask latest xdebug{,-client} beta versions
 # Upstream keeps changing the tarballs causing Manifest errors.
