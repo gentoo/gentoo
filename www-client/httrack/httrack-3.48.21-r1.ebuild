@@ -12,7 +12,7 @@ SRC_URI="http://mirror.httrack.com/historical/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="static-libs"
 
 RDEPEND=">=sys-libs/zlib-1.2.5.1-r1
