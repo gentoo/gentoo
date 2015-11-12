@@ -30,12 +30,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Justin Lecher <jlec@gentoo.org> (10 Nov 2015)
-# <dev-python/cryptography-1.0.2: with python -O, 
-# openssl asserts are optimised out leading to undefined behaviour
-# 561696
-<dev-python/cryptography-1.0.2
-
 # Brian Evans <grknight@gentoo.org> (11 Nov 2015)
 # Mask latest xdebug{,-client} beta versions
 # Upstream keeps changing the tarballs causing Manifest errors.
