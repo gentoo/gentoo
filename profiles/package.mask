@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Patrice Clement <monsieurp@gentoo.org> (12 Nov 2015)
+# Upstream dead + ebuild was never stabilised.
+# Masked for removal in 30 days. See bug #276095.
+net-p2p/phex
+
+# Patrice Clement <monsieurp@gentoo.org> (12 Nov 2015)
 # Upstream is somewhat alive but has made compiling POI difficult to compile
 # and package. Further, POI is affected by a bunch of CVEs. It has solely two
 # deps that we are masking as well since both projects are not very trendy
