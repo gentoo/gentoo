@@ -99,6 +99,13 @@ src_install() {
 
 	### Webapps ###
 
+	# add missing docBase
+	local apps="host-manager manager"
+	for app in ${apps}; do
+		sed -i -e "s|=\"true\" >|=\"true\" docBase=\"\$\{catalina.home\}/webapps/${app}\" >|" \
+			output/build/webapps/${app}/META-INF/context.xml || die
+	done
+
 	insinto "${dest}"/webapps
 	doins -r output/build/webapps/{host-manager,manager,ROOT}
 	use extra-webapps && doins -r output/build/webapps/{docs,examples}
