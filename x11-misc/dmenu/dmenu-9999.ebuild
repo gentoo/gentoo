@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit eutils git-r3 toolchain-funcs
+inherit eutils git-r3 savedconfig toolchain-funcs
 
 DESCRIPTION="a generic, highly customizable, and efficient menu for the X Window System"
 HOMEPAGE="http://tools.suckless.org/dmenu/"
@@ -35,7 +35,7 @@ src_prepare() {
 
 	epatch "${FILESDIR}"/${P}-gentoo.patch
 
-	epatch_user
+	restore_config config.def.h
 }
 
 src_compile() {
@@ -54,4 +54,6 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX="/usr" install
+
+	save_config config.def.h
 }
