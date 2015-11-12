@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
-      <email>andrew@ahamilto.net</email>
-      <name>Andrew Hamilton</name>
-      <description>Maintainer. Assign bugs to him.</description>
-  </maintainer>
-  <maintainer>
-      <email>creffett@gentoo.org</email>
-      <name>Chris Reffett</name>
-      <description>Proxy maintainer. CC him on bugs.</description>
-  </maintainer>
-  <herd>proxy-maintainers</herd>
-  <herd>sysadmin</herd>
+	<maintainer>
+		<email>andrew@ahamilto.net</email>
+		<name>Andrew Hamilton</name>
+		<description>Maintainer. Assign bugs to him.</description>
+	</maintainer>
+	<maintainer>
+		<email>creffett@gentoo.org</email>
+		<name>Chris Reffett</name>
+		<description>Proxy maintainer. CC him on bugs.</description>
+	</maintainer>
+	<maintainer>
+		<email>nvinson234@gmail.com</email>
+		<name>Nicholas Vinson</name>
+		<description>Proxy maintainer to be assigned bugs</description>
+	</maintainer>
+	<herd>proxy-maintainers</herd>
+	<herd>sysadmin</herd>
 </pkgmetadata>
