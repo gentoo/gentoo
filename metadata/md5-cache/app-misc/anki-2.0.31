@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=>=dev-lang/python-2.7.5-r2:2.7[sqlite] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] dev-python/PyQt4[X,svg,webkit] >=dev-python/httplib2-0.7.4 dev-python/beautifulsoup:python-2 dev-python/send2trash recording? ( media-sound/lame >=dev-python/pyaudio-0.2.4 ) sound? ( media-video/mplayer ) latex? ( app-text/texlive app-text/dvipng )
 SLOT=0
 SRC_URI=http://ankisrs.net/download/mirror/anki-2.0.31.tgz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	8e7c81d776e0d31ec4e48f87aec4b975	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=779a0ec14e701c701e995e084f77c241

@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=>=net-wireless/gr-osmosdr-0.0.1 <net-wireless/gnuradio-3.7:=[grc,utils,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] >=net-wireless/rtl-sdr-0.5.0
 SLOT=0
 SRC_URI=http://www.sbrac.org/files/multimode-r1.00.tar.gz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	8e7c81d776e0d31ec4e48f87aec4b975	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=c63717ffc7e87dd8af48935b976556dd

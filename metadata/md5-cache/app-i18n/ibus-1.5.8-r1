@@ -11,5 +11,5 @@ REQUIRED_USE=|| ( gtk gtk3 X ) deprecated? ( python ) python? ( python_targets_p
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/ibus/ibus/releases/download/1.5.8/ibus-1.5.8.tar.gz
-_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	8644194de7be04932084752fb1327080	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	8e7c81d776e0d31ec4e48f87aec4b975	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vala	335996addec48717e632dfd1f588ef1c	virtualx	7d550983f9b6adb3e7091f4090ddae2f
+_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	8644194de7be04932084752fb1327080	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vala	335996addec48717e632dfd1f588ef1c	virtualx	7d550983f9b6adb3e7091f4090ddae2f
 _md5_=7ce89ee987d4237cd90a8fba534b19a8

@@ -10,5 +10,5 @@ RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/
 RESTRICT=binchecks strip
 SLOT=2.6.31_p9
 SRC_URI=mirror://kernel/linux/kernel/v2.6/linux-2.6.31.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/2.6.31-gnu/deblob-2.6.31 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/2.6.31-gnu/deblob-check -> deblob-check-2.6.31 ) http://pf.natalenko.name/sources/2.6.31/patch-2.6.31-pf9.bz2
-_eclasses_=eutils	8644194de7be04932084752fb1327080	kernel-2	7bbc05b42cbfd1ed8b4f9837d1e43df2	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	60a62ae0ee8cd93b4ba99a4c1371eb8b	python-utils-r1	8e7c81d776e0d31ec4e48f87aec4b975	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	8644194de7be04932084752fb1327080	kernel-2	7bbc05b42cbfd1ed8b4f9837d1e43df2	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	60a62ae0ee8cd93b4ba99a4c1371eb8b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=23c79866b5052af9798fb759c6764e20
