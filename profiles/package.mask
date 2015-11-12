@@ -30,6 +30,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (12 Nov 2015)
+# Upstream is somewhat alive but has made compiling POI difficult to compile
+# and package. Further, POI is affected by a bunch of CVEs. It has solely two
+# deps that we are masking as well since both projects are not very trendy
+# and/or alive. Masked for removal in 30 days. See bug #402757.
+dev-java/poi
+dev-java/dbunit
+dev-db/jxtray
+
 # Justin Lecher <jlec@gentoo.org> (12 Nov 2015)
 # deprecated version of the plugin. 
 # sci-chemistry/pymol includes the newer version
