@@ -21,7 +21,7 @@ SRC_URI="http://www.mathematik.uni-kl.de/ftp/pub/Math/${MY_PN}/SOURCES/${MY_DIR}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ppc x86 ~x86-linux ~x86-macos"
 IUSE="boost doc emacs examples python +readline"
 
 RDEPEND="dev-libs/gmp:0
