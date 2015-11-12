@@ -69,10 +69,11 @@ sci-chemistry/pymol-apbs-plugin
 # Cleaned up Python versions masked for testing:
 # - python-config-X.Y compatibility removed,
 # - python[23] choice is now stored in config file rather than symlink,
-# - python-exec symlinks added (to replace eselect-python's wrapper),
+# - eselect-python reworked to reuse python-exec and wrap all execs,
 # - ABIFLAGS reintroduced for 3.3+.
 # Resulting API/ABI change can break reverse dependencies, especially
 # if upstream hardcodes paths or library names.
+=app-eselect/eselect-python-20151117
 =dev-lang/python-2.7.10-r4
 =dev-lang/python-3.3.5-r4
 =dev-lang/python-3.4.3-r4
