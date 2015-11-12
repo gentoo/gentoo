@@ -96,10 +96,6 @@ will need to:
 	# Conflicts with -pg in a plugin, bug #266777
 	filter-flags -fomit-frame-pointer
 
-	# python2.7-configure in Fedora vs. python-configure in Gentoo
-	sed -e 's:$PYTHON-config:$PYTHON$PYTHON_VERSION-config:g' \
-		-i plugins/am-project/tests/anjuta.lst || die "sed failed"
-
 	# Do not build benchmarks, they are not installed and for dev purpose only
 	sed -e '/SUBDIRS =/ s/benchmark//' \
 		-i plugins/symbol-db/Makefile.{am,in} || die
