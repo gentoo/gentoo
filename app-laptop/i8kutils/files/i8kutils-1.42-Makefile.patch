@@ -1,0 +1,34 @@
+Fix a race condition causing parallel builds to sometimes fail.
+
+Both probe_i8k_calls_time and i8kctl contain a main() function, though
+i8kctl's is omitted when built with -DLIB so they can link without a
+conflict.  i8kctl is also a standalone exe so it is built twice, with
+and without -DLIB.  When building in parallel you can get into a 
+situation where the object file created by the probe_i8k_calls_time
+target gets overwritten with the one from i8kctl and bad things happen.
+Nothing actually uses the i8kctl.o that has main() so we can just not
+build it.
+
+Also move CFLAGS, CC, LDFLAGS respect out of the ebuild.
+
+--- a/Makefile
++++ b/Makefile
+@@ -17,13 +17,13 @@ ccflags-y = -Wall
+ 
+ all: i8kctl probe_i8k_calls_time
+ 
+-i8kctl: i8kctl.c i8kctl.o
+-	gcc -Wall i8kctl.c -o i8kctl
++i8kctl: i8kctl.c
++	$(CC) -Wall ${CFLAGS} -o i8kctl i8kctl.c
+ 
+ probe_i8k_calls_time: probe_i8k_calls_time.c
+-	gcc -Wall -c -g -DLIB i8kctl.c
+-	gcc -Wall -c -g -DLIB probe_i8k_calls_time.c
+-	gcc -o probe_i8k_calls_time i8kctl.o probe_i8k_calls_time.o
++	$(CC) -Wall ${CFLAGS} -c -DLIB i8kctl.c
++	$(CC) -Wall ${CFLAGS} -c -DLIB probe_i8k_calls_time.c
++	$(CC) -Wall ${CFLAGS} ${LDFLAGS} -o probe_i8k_calls_time i8kctl.o probe_i8k_calls_time.o
+ 
+ i8k:
+ 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
