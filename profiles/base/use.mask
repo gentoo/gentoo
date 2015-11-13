@@ -390,3 +390,10 @@ openrc-force
 # Mike Gilbert <floppym@gentoo.org> (19 Oct 2014)
 # sys-libs/libapparmor
 apparmor
+
+# Daniel Kuehn <lejonet@gentoo.org> (13 Nov 2015)
+# Masking sssd USE-flag globally and unmasking it on the tested arches
+# to stop minor arches from blocking major arches AND prevent the dropping
+# of keywords on sudo for said minor arches, in regards to ssd and sudo bugs
+# 540540 and 525674
+sssd

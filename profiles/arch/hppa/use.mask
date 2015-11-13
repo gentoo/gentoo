@@ -359,4 +359,10 @@ d3d
 # mask wayland since dev-libs/wayland isn't keyworded
 wayland
 
+# 2015/11/13 - Daniel Kuehn <lejonet@gentoo.org>
+# ACKED-BY: jer
+# Unmask sssd USE-flag as it is tested on this arch in regards to bugs
+# 540540 and 525674
+-sssd
+
 # DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.
