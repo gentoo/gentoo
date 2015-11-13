@@ -7673,7 +7673,7 @@ dev-python/python-mhash 1.4-r1: Python interface to libmhash
 dev-python/python-mpd 0.5.4: Python MPD client library
 dev-python/python-msrplib 0.18.0: Client library for MSRP protocol and its relay extension
 dev-python/python-musicbrainz 0.7.4-r1: Python Bindings for the MusicBrainz XML Web Service
-dev-python/python-musicbrainz-ngs 0.4: This library implements webservice bindings for the Musicbrainz NGS site
+dev-python/python-musicbrainz-ngs 0.4 0.5: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
 dev-python/python-nbxmpp 0.5.3: Python library to use Jabber/XMPP networks in a non-blocking way
 dev-python/python-neutronclient 2.3.6 2.4.0 2.6.0 3.0.0: A client for the OpenStack Quantum API
 dev-python/python-novaclient 2.17.0 2.17.0-r1 2.20.0 2.23.2 2.25.0 2.27.0 2.30.1 2.30.2: A client for the OpenStack Nova API
@@ -7958,7 +7958,7 @@ dev-python/txAMQP 0.6.2: Python library for communicating with AMQP peers using 
 dev-python/txaio 1.0.0: a helper library for writing code unmodified on both Twisted and asyncio
 dev-python/txsocksx 1.13.0.3 1.15.0.2: Twisted client endpoints for SOCKS{4,4a,5}
 dev-python/tzlocal 1.1.2 1.2: tzinfo object for the local timezone
-dev-python/uhashring 0.2: Full featured consistent hashing python library compatible with ketama
+dev-python/uhashring 0.4: Full featured consistent hashing python library compatible with ketama
 dev-python/ujson 1.33: Ultra fast JSON encoder and decoder for Python
 dev-python/unicodecsv 0.13.0 0.14.1: Drop-in replacement for python stdlib csv module supporting unicode
 dev-python/unidecode 0.04.17 0.04.18: Module providing ASCII transliterations of Unicode text
