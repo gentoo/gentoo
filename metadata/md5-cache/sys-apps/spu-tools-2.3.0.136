@@ -3,10 +3,10 @@ DEPEND=sys-libs/ncurses:0= sys-apps/help2man
 DESCRIPTION=CELL spu ps and top alike utilities
 EAPI=5
 HOMEPAGE=http://sourceforge.net/projects/libspe
-KEYWORDS=ppc ~ppc64
+KEYWORDS=ppc ppc64
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=mirror://sourceforge/libspe/spu-tools-2.3.0.136.tar.gz
 _eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=6edf70e3a8b724561a4302a858459c5a
+_md5_=6f206942831947b7280fdac11fbdddf0
