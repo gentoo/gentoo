@@ -11,14 +11,14 @@ SRC_URI="http://ncmpcpp.rybczak.net/stable/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ppc ppc64 sparc x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="clock curl outputs taglib unicode visualizer"
 
 RDEPEND="
 	>=media-libs/libmpdclient-2.1
 	curl? ( net-misc/curl )
 	dev-libs/boost:=[nls,threads]
-	sys-libs/ncurses[unicode?]
+	sys-libs/ncurses:=[unicode?]
 	sys-libs/readline:*
 	taglib? ( media-libs/taglib )
 	visualizer? ( sci-libs/fftw:3.0 )
