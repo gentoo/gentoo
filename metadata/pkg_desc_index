@@ -13623,7 +13623,7 @@ net-dialup/qtwvdialer 0.4.4_p20091228: Qt4 frontend for wvdial
 net-dialup/radiusclient 0.3.2 0.3.2-r1: A library for writing RADIUS clients accompanied with several client utilities
 net-dialup/radiusclient-ng 0.5.6-r1: RadiusClient NextGeneration - library for RADIUS clients accompanied with several client utilities
 net-dialup/rp-l2tp 0.4-r3: User-space implementation of L2TP for Linux and other UNIX systems
-net-dialup/rp-pppoe 3.8-r2 3.11-r2 3.11-r3: A user-mode PPPoE client and server suite for Linux
+net-dialup/rp-pppoe 3.8-r2 3.11-r2 3.11-r3 3.12: A user-mode PPPoE client and server suite for Linux
 net-dialup/sendpage 1.1.0-r2: Dialup alphapaging software
 net-dialup/sercd 3.0.0-r1: RFC2217-compliant serial port redirector
 net-dialup/speedtouch-usb 3.0.1.2-r3: Firmware, kernel driver and configuration instructions for Alcatel SpeedTouch USB modems
