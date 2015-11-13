@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21"
 
 RUBY_FAKEGEM_TASK_DOC=""
 
@@ -28,11 +28,11 @@ IUSE=""
 RUBY_S="rails-${PV}/${PN}"
 
 ruby_add_rdepend "
-	>=dev-ruby/i18n-0.7:0.7
+	>=dev-ruby/i18n-0.6.9:0.6
 	>=dev-ruby/json-1.7.7:0
 	>=dev-ruby/tzinfo-1.1:1
 	>=dev-ruby/minitest-5.1:5
-	>=dev-ruby/thread_safe-0.3.4:0"
+	>=dev-ruby/thread_safe-0.1:0"
 
 # memcache-client, nokogiri, and builder are not strictly
 # needed, but there are tests using this code.

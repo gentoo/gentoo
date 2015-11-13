@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -29,7 +29,7 @@ ruby_add_rdepend "
 	~dev-ruby/activesupport-${PV}
 	>=dev-ruby/builder-3.1:* =dev-ruby/builder-3*:*
 	>=dev-ruby/erubis-2.7.0
-	>=dev-ruby/rails-html-sanitizer-1.0.1:1
+	>=dev-ruby/rails-html-sanitizer-1.0.2:1
 	>=dev-ruby/rails-dom-testing-1.0.5:1
 "
 

@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -20,7 +20,7 @@ SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz
 
 LICENSE="MIT"
 SLOT="$(get_version_component_range 1-2)"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE=""
 
 RUBY_S="rails-${PV}/${PN}"
@@ -28,11 +28,8 @@ RUBY_S="rails-${PV}/${PN}"
 ruby_add_rdepend "
 	~dev-ruby/activesupport-${PV}
 	~dev-ruby/actionview-${PV}
-	>=dev-ruby/rack-1.6.0:1.6
-	>=dev-ruby/rack-test-0.6.2:0.6
-	>=dev-ruby/rails-html-sanitizer-1.0.1:1
-	>=dev-ruby/rails-dom-testing-1.0.5:1
-"
+	>=dev-ruby/rack-1.5.2:1.5
+	>=dev-ruby/rack-test-0.6.2:0.6"
 
 ruby_add_bdepend "
 	test? (
@@ -45,8 +42,7 @@ ruby_add_bdepend "
 all_ruby_prepare() {
 	# Remove items from the common Gemfile that we don't need for this
 	# test run. This also requires handling some gemspecs.
-	sed -i -e "/\(system_timer\|sdoc\|w3c_validators\|pg\|jquery-rails\|'mysql'\|journey\|ruby-prof\|stackprof\|benchmark-ips\|kindlerb\|turbolinks\|coffee-rails\|debugger\|sprockets-rails\|redcarpet\|bcrypt\|uglifier\|minitest\)/ s:^:#:" \
-		-e '/:job/,/end/ s:^:#:' \
+	sed -i -e "/\(system_timer\|sdoc\|w3c_validators\|pg\|jquery-rails\|'mysql'\|journey\|ruby-prof\|benchmark-ips\|kindlerb\|turbolinks\|coffee-rails\|debugger\|sprockets-rails\|redcarpet\|bcrypt\|uglifier\|minitest\|sprockets\|stackprof\)/ s:^:#:" \
 		-e '/group :doc/,/^end/ s:^:#:' ../Gemfile || die
 	rm ../Gemfile.lock || die
 }

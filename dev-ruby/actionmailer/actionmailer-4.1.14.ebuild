@@ -3,18 +3,16 @@
 # $Id$
 
 EAPI=5
-
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21"
 
 RUBY_FAKEGEM_TASK_DOC=""
-RUBY_FAKEGEM_DOCDIR=""
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.rdoc"
 
-RUBY_FAKEGEM_GEMSPEC="activemodel.gemspec"
+RUBY_FAKEGEM_GEMSPEC="actionmailer.gemspec"
 
 inherit ruby-fakegem versionator
 
-DESCRIPTION="A toolkit for building modeling frameworks like Active Record and Active Resource"
+DESCRIPTION="Framework for designing email-service layers"
 HOMEPAGE="https://github.com/rails/rails"
 SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz"
 
@@ -25,18 +23,11 @@ IUSE=""
 
 RUBY_S="rails-${PV}/${PN}"
 
-ruby_add_rdepend "
-	~dev-ruby/activesupport-${PV}
-	>=dev-ruby/builder-3.1:* =dev-ruby/builder-3*:*
-"
-
-ruby_add_bdepend "
-	test? (
-		>=dev-ruby/railties-4.0.0
-		dev-ruby/test-unit:2
-		>=dev-ruby/mocha-0.14.0:0.14
-		>=dev-ruby/bcrypt-ruby-3.1.7
-	)"
+ruby_add_rdepend "~dev-ruby/actionpack-${PV}
+	>=dev-ruby/mail-2.5.4:* =dev-ruby/mail-2*:*"
+ruby_add_bdepend "test? (
+	dev-ruby/mocha:0.14
+)"
 
 all_ruby_prepare() {
 	# Remove items from the common Gemfile that we don't need for this

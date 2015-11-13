@@ -4,17 +4,17 @@
 
 EAPI=5
 
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR=""
-RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.rdoc"
+RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
-RUBY_FAKEGEM_GEMSPEC="activemodel.gemspec"
+RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
 inherit ruby-fakegem versionator
 
-DESCRIPTION="A toolkit for building modeling frameworks like Active Record and Active Resource"
+DESCRIPTION="Job framework with pluggable queues"
 HOMEPAGE="https://github.com/rails/rails"
 SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz"
 
@@ -26,19 +26,19 @@ IUSE=""
 RUBY_S="rails-${PV}/${PN}"
 
 ruby_add_rdepend "
-	~dev-ruby/activesupport-${PV}:*
-	>=dev-ruby/builder-3.1:* =dev-ruby/builder-3*:*
+	~dev-ruby/activesupport-${PV}
+	>=dev-ruby/globalid-0.3.0
 "
 
 ruby_add_bdepend "
 	test? (
-		>=dev-ruby/railties-4.2.0
-		dev-ruby/test-unit:2
 		>=dev-ruby/mocha-0.14.0:0.14
-		>=dev-ruby/bcrypt-ruby-3.1.7
 	)"
 
 all_ruby_prepare() {
 	# Set test environment to our hand.
-	sed -i -e '/load_paths/d' test/cases/helper.rb || die "Unable to remove load paths"
+	sed -i -e '/load_paths/d' test/helper.rb || die "Unable to remove load paths"
+
+	# Remove all currently unpackaged queues.
+	sed -i -e 's/delayed_job qu que queue_classic resque sidekiq sneakers sucker_punch backburner//' Rakefile || die
 }

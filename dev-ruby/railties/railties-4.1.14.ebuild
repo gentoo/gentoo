@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21"
 
 RUBY_FAKEGEM_TASK_TEST="test:regular"
 RUBY_FAKEGEM_TASK_DOC=""
@@ -21,7 +21,7 @@ SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz
 
 LICENSE="MIT"
 SLOT="$(get_version_component_range 1-2)"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE=""
 
 RUBY_S="rails-${PV}/${PN}"
@@ -31,7 +31,7 @@ RUBY_S="rails-${PV}/${PN}"
 # investigation.
 RESTRICT="test"
 
-RDEPEND+=">=app-eselect/eselect-rails-0.21"
+RDEPEND+=" >=app-eselect/eselect-rails-0.20"
 
 ruby_add_rdepend "
 	~dev-ruby/activesupport-${PV}
