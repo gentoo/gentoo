@@ -15,8 +15,7 @@ DESCRIPTION="Backport of Python 3.5's 'collections.abc' module"
 HOMEPAGE="https://github.com/cython/backports_abc https://pypi.python.org/pypi/backports_abc/"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
-# https://github.com/cython/backports_abc/issues/4
-LICENSE="all-rights-reserved"
+LICENSE="PSF-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
