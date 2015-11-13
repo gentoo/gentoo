@@ -2,4 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>kde</herd>
+	<use>
+		<flag name="kwallet">Enable permanent storage of passwords for kpasswdserver with <pkg>kde-frameworks/kwallet</pkg></flag>
+	</use>
 </pkgmetadata>
