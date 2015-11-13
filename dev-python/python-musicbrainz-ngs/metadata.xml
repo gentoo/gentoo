@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<herd>proxy-maintainers</herd>
 	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
+		<email>gerion.entrup@t-online.de</email>
+		<name>Gerion Entrup</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<longdescription lang="en">
 This library implements webservice bindings for the Musicbrainz NGS site, also known as /ws/2.
