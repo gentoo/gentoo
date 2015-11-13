@@ -60,11 +60,11 @@ src_prepare() {
 }
 
 src_compile() {
-	local arch=$(uname -m)
-	local uos=$(uname)
+	arch=$(uname -m)
+	uos=$(uname)
 	# Switch to ,, when we switch to EAPI=6.
 	#local los=${uos,,}
-	local los=$(tr '[:upper:]' '[:lower:]' <<<"${uos}")
+	los=$(tr '[:upper:]' '[:lower:]' <<<"${uos}")
 	./build "${arch}-${los}" || die "build failed"
 }
 
