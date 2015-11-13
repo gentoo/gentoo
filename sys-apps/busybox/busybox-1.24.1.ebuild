@@ -22,7 +22,6 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug ipv6 livecd make-symlinks math mdev pam selinux sep-usr static syslog systemd"
-REQUIRED_USE="pam? ( !static )"
 RESTRICT="test"
 
 COMMON_DEPEND="!static? ( selinux? ( sys-libs/libselinux ) )
@@ -68,7 +67,7 @@ src_prepare() {
 
 	# patches go here!
 	epatch "${FILESDIR}"/${PN}-1.19.0-bb.patch
-#	epatch "${FILESDIR}"/${P}-*.patch
+	epatch "${FILESDIR}"/${P}-*.patch
 	cp "${FILESDIR}"/ginit.c init/ || die
 
 	# flag cleanup
@@ -132,6 +131,9 @@ src_configure() {
 		busybox_config_option n UDHCPC6
 	fi
 
+	if use static && use pam ; then
+		ewarn "You cannot have USE='static pam'.  Assuming static is more important."
+	fi
 	busybox_config_option $(usex static n pam) PAM
 	busybox_config_option static STATIC
 	busybox_config_option syslog {K,SYS}LOGD LOGGER

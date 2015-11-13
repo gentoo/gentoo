@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Mike Frysinger <vapier@gentoo.org> (12 Nov 2015)
+# We want busybox statically linked by default as it is the system rescue shell.
+# But we cannot statically link pam, so turn that off by default. #468580
+sys-apps/busybox -pam static
+
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org> (13 Feb 2011)
 # Disable deprecated bsddb module of Python 2 by default.
 =dev-lang/python-2* -berkdb
