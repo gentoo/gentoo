@@ -1,1 +1,1 @@
-sys-apps/busybox make-symlinks
+sys-apps/busybox make-symlinks static
