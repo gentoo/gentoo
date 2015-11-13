@@ -5608,7 +5608,7 @@ dev-perl/HTML-Packer 1.4.1 2.0.0: Another HTML code cleaner
 dev-perl/HTML-Parser 3.710.0-r1: Parse <HEAD> section of HTML documents
 dev-perl/HTML-Quoted 0.30.0-r1: Extract structure of quoted HTML mail message
 dev-perl/HTML-RewriteAttributes 0.50.0-r1: Perl module for concise attribute rewriting
-dev-perl/HTML-Scrubber 0.90.0-r1 0.150.0: Perl extension for scrubbing/sanitizing html
+dev-perl/HTML-Scrubber 0.150.0: Perl extension for scrubbing/sanitizing html
 dev-perl/HTML-SimpleParse 0.120.0-r1: A bare-bones HTML parser, similar to HTML::Parser, but with a couple important distinctions
 dev-perl/HTML-Strip 1.60.0-r1 2.90.0: Extension for stripping HTML markup from text
 dev-perl/HTML-Table 2.08a-r1: produces HTML tables
