@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install
+DEPEND=>=dev-lang/ocaml-4.02:=[ocamlopt?] >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=LR(1) parser generator for the OCaml language
+EAPI=5
+HOMEPAGE=http://gallium.inria.fr/~fpottier/menhir/
+IUSE=examples +ocamlopt
+KEYWORDS=~amd64 ~x86
+LICENSE=QPL-1.0 LGPL-2-with-linking-exception
+RDEPEND=>=dev-lang/ocaml-4.02:=[ocamlopt?]
+SLOT=0/20151112
+SRC_URI=http://gallium.inria.fr/~fpottier/menhir/menhir-20151112.tar.gz
+_eclasses_=findlib	9909e5ca0f77ff5b693885a3d7aeadb7
+_md5_=0ed0b785c2b6bce9d22c2b783f2c123f
