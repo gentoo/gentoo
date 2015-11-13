@@ -13,9 +13,9 @@ fi
 inherit bash-completion-r1 eutils
 
 if [[ "${PV}" == "9999" ]]; then
-	KEYWORDS="ia64 ppc x86"
+	KEYWORDS="ia64 ppc ppc64 x86"
 else
-	KEYWORDS="~alpha amd64 ~arm ia64 ppc x86"
+	KEYWORDS="~alpha amd64 ~arm ia64 ppc ppc64 x86"
 fi
 
 DESCRIPTION="Gentoo automatic kernel building scripts, reloaded"
