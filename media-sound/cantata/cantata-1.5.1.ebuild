@@ -30,7 +30,7 @@ REQUIRED_USE="
 RDEPEND="
 	sys-libs/zlib
 	x11-libs/libX11
-	kde-apps/oxygen-icons
+	kde-frameworks/oxygen-icons
 	cdda? ( media-sound/cdparanoia )
 	cddb? ( media-libs/libcddb )
 	kde? ( $(add_kdeapps_dep kwalletd) )

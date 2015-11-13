@@ -13,7 +13,7 @@ SLOT="4"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND="kde-apps/oxygen-icons"
+RDEPEND="kde-frameworks/oxygen-icons"
 
 S=${WORKDIR}
 

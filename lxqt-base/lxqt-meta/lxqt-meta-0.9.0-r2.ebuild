@@ -28,7 +28,7 @@ RDEPEND="
 	virtual/ttf-fonts
 	admin? ( ~lxqt-base/lxqt-admin-${PV} )
 	filemanager? ( ~x11-misc/pcmanfm-qt-${PV} )
-	icons? ( oxygen? ( kde-apps/oxygen-icons )
+	icons? ( oxygen? ( kde-frameworks/oxygen-icons )
 		!oxygen? ( virtual/freedesktop-icon-theme ) )
 	lightdm? ( x11-misc/lightdm )
 	lximage? ( media-gfx/lximage-qt )
@@ -41,7 +41,7 @@ RDEPEND="
 	sddm? ( >=x11-misc/sddm-0.10.0 )
 	ssh-askpass? ( ~lxqt-base/lxqt-openssh-askpass-${PV} )"
 
-# Note: we prefer kde-apps/oxygen-icons over other icon sets, as the initial
+# Note: we prefer kde-frameworks/oxygen-icons over other icon sets, as the initial
 # install expects oxygen icons, until the user specifies otherwise (bug 543380)
 
 S="${WORKDIR}"

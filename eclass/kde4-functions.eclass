@@ -36,7 +36,7 @@ esac
 # @DESCRIPTION:
 # This gets set to a non-zero value when a package is considered a kde or
 # kdevelop ebuild.
-if [[ ${CATEGORY} = kde-base || ${CATEGORY} = kde-apps ]]; then
+if [[ ${CATEGORY} = kde-base || ${CATEGORY} = kde-apps || ${CATEGORY} = kde-frameworks ]]; then
 	debug-print "${ECLASS}: KDEBASE ebuild recognized"
 	KDEBASE=kde-base
 elif [[ ${KMNAME-${PN}} = kdevelop ]]; then

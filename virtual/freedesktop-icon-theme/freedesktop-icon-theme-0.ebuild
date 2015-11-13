@@ -18,7 +18,7 @@ RDEPEND="|| (
 	x11-themes/faenza-icon-theme
 	lxde-base/lxde-icon-theme
 	x11-themes/tango-icon-theme
-	kde-apps/oxygen-icons
+	kde-frameworks/oxygen-icons
 	x11-themes/mate-icon-theme
 )
 "

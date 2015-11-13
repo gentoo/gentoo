@@ -5,6 +5,11 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Michael Palimaka <kensington@gentoo.org> (13 Nov 2015)
+# Requires unreleased dependencies
+kde-frameworks/knotifications speech
+kde-frameworks/ktextwidgets speech
+
 # Rick Farina <zerochaos@gentoo.org> (06 Oct 2015)
 # forward porting this patch is non-trivial, mask for now
 =net-wireless/wpa_supplicant-2.5 wimax

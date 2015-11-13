@@ -17,7 +17,7 @@ IUSE="minimal"
 
 RESTRICT="binchecks strip"
 
-RDEPEND="!minimal? ( || ( x11-themes/gnome-icon-theme kde-apps/oxygen-icons ) )"
+RDEPEND="!minimal? ( || ( x11-themes/gnome-icon-theme kde-frameworks/oxygen-icons ) )"
 DEPEND="dev-util/intltool
 	>=gnome-base/librsvg-2.34
 	sys-devel/gettext
