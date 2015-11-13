@@ -20,14 +20,15 @@ HOMEPAGE="http://www.virtualbox.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+additions alsa doc extensions headless java pam pulseaudio +opengl python +qt4 +sdk +udev vboxwebsrv vnc"
+IUSE="+additions alsa doc extensions headless java libressl pam pulseaudio +opengl python +qt4 +sdk +udev vboxwebsrv vnc"
 
 RDEPEND="!app-emulation/virtualbox-bin
 	~app-emulation/virtualbox-modules-${PV}
 	dev-libs/libIDL
 	>=dev-libs/libxslt-1.1.19
 	net-misc/curl
-	dev-libs/openssl:0=
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:= )
 	dev-libs/libxml2
 	media-libs/libpng:0=
 	media-libs/libvpx
@@ -48,7 +49,7 @@ RDEPEND="!app-emulation/virtualbox-bin
 		media-libs/libsdl:0[X,video]
 	)
 
-	java? ( || ( virtual/jre:1.7 virtual/jre:1.6 ) )
+	java? ( >=virtual/jre-1.6:= )
 	udev? ( >=virtual/udev-171 )
 	vnc? ( >=net-libs/libvncserver-0.9.9 )"
 DEPEND="${RDEPEND}
@@ -66,7 +67,7 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-fontsextra
 	)
-	java? ( || ( virtual/jdk:1.7 virtual/jdk:1.6 ) )
+	java? ( >=virtual/jre-1.6:= )
 	virtual/pkgconfig
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
 	!headless? ( x11-libs/libXinerama )
@@ -290,16 +291,14 @@ src_install() {
 	# VBoxSVC and VBoxManage need to be pax-marked (bug #403453)
 	# VBoxXPCOMIPCD (bug #524202)
 	for each in VBox{Manage,SVC,XPCOMIPCD} ; do
-		pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/${each} || die
+		pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/${each}
 	done
 
 	if ! use headless ; then
-		for each in VBox{SDL,Headless} ; do
-			doins ${each}
-			fowners root:vboxusers /usr/$(get_libdir)/${PN}/${each}
-			fperms 4750 /usr/$(get_libdir)/${PN}/${each}
-			pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/${each}
-		done
+		doins VBoxSDL
+		fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBoxSDL
+		fperms 4750 /usr/$(get_libdir)/${PN}/VBoxSDL
+		pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxSDL
 
 		if use opengl && use qt4 ; then
 			doins VBoxTestOGL
@@ -314,8 +313,7 @@ src_install() {
 			doins VirtualBox
 			fowners root:vboxusers /usr/$(get_libdir)/${PN}/VirtualBox
 			fperms 4750 /usr/$(get_libdir)/${PN}/VirtualBox
-			pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VirtualBox \
-				|| die
+			pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VirtualBox
 
 			dosym /usr/$(get_libdir)/${PN}/VBox /usr/bin/VirtualBox
 
@@ -327,13 +325,14 @@ src_install() {
 			newicon -s ${size} ${PN}-${size}px.png ${PN}.png
 		done
 		newicon ${PN}-48px.png ${PN}.png
+		doicon -s scalable ${PN}.svg
 		popd &>/dev/null || die
-	else
-		doins VBoxHeadless
-		fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBoxHeadless
-		fperms 4750 /usr/$(get_libdir)/${PN}/VBoxHeadless
-		pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxHeadless || die
 	fi
+
+	doins VBoxHeadless
+	fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBoxHeadless
+	fperms 4750 /usr/$(get_libdir)/${PN}/VBoxHeadless
+	pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxHeadless
 
 	insinto /usr/$(get_libdir)/${PN}
 	# Install EFI Firmware files (bug #320757)
