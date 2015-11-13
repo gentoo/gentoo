@@ -229,3 +229,9 @@ clvm
 # Pacho Ramos <pacho@gentoo.org> (08 Jan 2014)
 # Unmask systemd since it is keyworded here.
 -systemd
+
+# 2015/11/13 - Daniel Kuehn <lejonet@gentoo.org>
+# Unmask sssd USE-flag as it is tested on this arch in regards to bugs
+# 540540 and 525674
+-sssd
+
