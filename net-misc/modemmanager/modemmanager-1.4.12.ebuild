@@ -15,7 +15,7 @@ SRC_URI="http://www.freedesktop.org/software/ModemManager/ModemManager-${PV}.tar
 
 LICENSE="GPL-2+"
 SLOT="0/1" # subslot = dbus interface version, i.e. N in org.freedesktop.ModemManager${N}
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ppc ppc64 ~sparc x86"
 IUSE="+introspection mbim policykit +qmi qmi-newest vala"
 REQUIRED_USE="
 	qmi-newest? ( qmi )
