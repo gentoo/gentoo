@@ -15,8 +15,8 @@ SRC_PATH="stable"
 [[ ${PV} = *_rc* ]] && SRC_PATH="rc"
 
 SRC_URI="mirror://samba/${SRC_PATH}/${MY_P}.tar.gz"
-KEYWORDS="~amd64 ~x86"
-[[ ${PV} = *_rc* ]] && KEYWORDS=""
+KEYWORDS="~amd64 ~hppa ~x86"
+[[ ${PV} = *_rc* ]] && KEYWORDS="~hppa"
 
 DESCRIPTION="Samba Suite Version 4"
 HOMEPAGE="http://www.samba.org/"
