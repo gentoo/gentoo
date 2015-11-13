@@ -6724,6 +6724,7 @@ dev-python/SaltTesting 2014.8.5 2015.2.16 2015.5.8 2015.7.10: Required testing t
 dev-python/SchemaObject 0.5.3: A simple Python object interface to a MySQL database schema
 dev-python/WSME 0.6.2 0.8.0: Simplify the writing of REST APIs, and extend them with additional protocols.
 dev-python/XenAPI 1.2: Xen API SDK, for communication with Citrix XenServer and Xen Cloud Platform
+dev-python/aadict 0.2.2: An auto-attribute dict (and a couple of other useful dict functions)
 dev-python/addons 0.7: Dynamically extend other objects (formerly ObjectRoles)
 dev-python/adns-python 1.2.1-r1: Python bindings for ADNS
 dev-python/adodb-py 2.20-r1: Active Data Objects Data Base library for Python
@@ -6752,7 +6753,7 @@ dev-python/argh 0.25.0 0.26.0 0.26.1: A simple argparse wrapper
 dev-python/args 0.1.0: Command Arguments for Humans
 dev-python/arrayterator 1.0.1-r1: A buffered iterator for reading big arrays in small contiguous blocks
 dev-python/asciitable 0.8.0-r1: An extensible ASCII table reader
-dev-python/asset 0.6.1-r1 0.6.2 0.6.3: A package resource and symbol loading helper library
+dev-python/asset 0.6.1-r1 0.6.2 0.6.3 0.6.4: A package resource and symbol loading helper library
 dev-python/assets 0.1.1-r1: Cache-friendly asset management via content-hash-naming
 dev-python/astng 0.24.3: Abstract Syntax Tree for logilab packages
 dev-python/astor 0.3 0.4 0.4.1 0.5: Read/rewrite/write Python ASTs
@@ -7218,7 +7219,7 @@ dev-python/logutils 0.3.3: The logutils package provides a set of handlers for t
 dev-python/louie 1.1 1.1-r1: Signal dispatching mechanism for Python
 dev-python/lp_solve 5.5.2.0-r1: Python wrappers for lpsolve linear programming library
 dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine written in Python
-dev-python/lxml 3.4.1 3.4.4: A Pythonic binding for the libxml2 and libxslt libraries
+dev-python/lxml 3.4.1 3.4.4 3.5.0: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.6.1 0.7.0: LZ4 Bindings for Python
 dev-python/m2crypto 0.22.3-r4 0.22.3-r5: M2Crypto: A Python crypto and SSL toolkit
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
@@ -16315,7 +16316,7 @@ sys-apps/sg3_utils 1.40 1.41: Apps for querying the sg SCSI interface
 sys-apps/shadow 4.1.5.1-r1 4.2.1 4.2.1-r1: Utilities to deal with user accounts
 sys-apps/smartmontools 6.3 6.4 9999: Self-Monitoring, Analysis and Reporting Technology System (S.M.A.R.T.) monitoring tools
 sys-apps/sparc-utils 1.9-r4: Various sparc utilities from Debian GNU/Linux
-sys-apps/spu-tools 2.2.80_p95 2.3.0.136: CELL spu ps and top alike utilities
+sys-apps/spu-tools 2.3.0.136: CELL spu ps and top alike utilities
 sys-apps/stroke 0.1.3: A powerful tool to change file timestamps (including ctimes)
 sys-apps/superiotool 6637 99999999: util to detect Super I/O chips and functionality
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
