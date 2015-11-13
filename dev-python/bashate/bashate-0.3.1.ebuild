@@ -23,7 +23,7 @@ IUSE="test"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/pbr-0.8.0[${PYTHON_USEDEP}]
-	<dev-python/pbr-1.0[${PYTHON_USEDEP}]
+	<dev-python/pbr-2.0[${PYTHON_USEDEP}]
 "
 RDEPEND="
 	>=dev-python/Babel-0.9.6[${PYTHON_USEDEP}]
