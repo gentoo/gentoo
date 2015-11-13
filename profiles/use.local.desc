@@ -3295,7 +3295,6 @@ kde-apps/okular:chm - Enable support for Microsoft Compiled HTML Help files
 kde-apps/okular:dpi - DPI detection support for PDF rendering via x11-libs/libkscreen
 kde-apps/okular:ebook - Add E-Book support
 kde-apps/okular:mobi - Add mobipocket support
-kde-apps/oxygen-icons:sources - Additionally install the svg sources of the bitmap icons (needed for redistribution)
 kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
 kde-base/kde-meta:kdepim - Pull in KDE PIM
 kde-base/kde-meta:sdk - Pull in developer-specific meta-packages
@@ -3365,15 +3364,22 @@ kde-base/smokeqt:qwt - Compile bindings for x11-libs/qwt.
 kde-base/smokeqt:webkit - Compile bindings for dev-qt/qtwebkit.
 kde-base/smokeqt:xmlpatterns - Compile bindings for dev-qt/qtxmlpatterns.
 kde-base/systemsettings:kscreen - Use kde-misc/kscreen for screen management
+kde-frameworks/kded:man - Build and install man pages
 kde-frameworks/kdesignerplugin:designer - Build KF5 widgets plugin for QtDesigner
 kde-frameworks/kdesignerplugin:webkit - Build kdewebkit plugin for QtDesigner
 kde-frameworks/kfilemetadata:epub - Adds support for reading EPUB ebook metadata
 kde-frameworks/kimageformats:eps - Support the EPS graphics file format
 kde-frameworks/kinit:caps - Capabilities support for improved security and better OOM handling
+kde-frameworks/kinit:man - Build and install man pages
+kde-frameworks/kio:kwallet - Enable permanent storage of passwords for kpasswdserver with kde-frameworks/kwallet
+kde-frameworks/knotifications:speech - Enable text-to-speech notification support
 kde-frameworks/knotifyconfig:phonon - Add sound support via media-libs/phonon
+kde-frameworks/kservice:man - Build and install man pages
+kde-frameworks/ktextwidgets:speech - Enable text-to-speech support
 kde-frameworks/kwallet:gpg - Support wallets with GnuPG encryption in addition to the default blowfish-encrypted file
 kde-frameworks/kxmlgui:attica - Enable support for kde-frameworks/attica
 kde-frameworks/networkmanager-qt:teamd - Enable Teamd control support
+kde-frameworks/oxygen-icons:sources - Additionally install the svg sources of the bitmap icons (needed for redistribution)
 kde-frameworks/plasma:egl - Enable EGL support
 kde-frameworks/plasma:gles2 - Use GLES 2.0 or later instead of full OpenGL
 kde-frameworks/sonnet:aspell - Enable the app-text/aspell spell-checking backend

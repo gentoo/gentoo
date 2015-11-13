@@ -9,5 +9,5 @@ LICENSE=MIT ISC GPL-3 LGPL-2.1 public-domain || ( CC-BY-SA-3.0 LGPL-2.1 )
 RDEPEND=dev-libs/boost[threads(+)] dev-libs/openssl:0[-bindist] qrcode? ( media-gfx/qrencode ) upnp? ( net-libs/miniupnpc ) sys-libs/db:4.8[cxx] dev-qt/qtgui:4 dbus? ( dev-qt/qtdbus:4 )
 SLOT=0
 SRC_URI=mirror://sourceforge/ppcoin/ppcoin-0.4.0-linux.tar.gz -> ppcoin-0.4.0.tar.gz
-_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	8644194de7be04932084752fb1327080	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	588052cacdf74572e68bdfeaece20534	kde4-functions	7c6a6bcbd13275fc424ef9fb43ae5ad1	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	8644194de7be04932084752fb1327080	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	588052cacdf74572e68bdfeaece20534	kde4-functions	ff0ade3e22b20c6dc894347fad047336	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=85e9a929017814ed5b53719e0a9c774d
