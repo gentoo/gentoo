@@ -2269,7 +2269,7 @@ app-text/gtkspell 2.0.16 3.0.4: Spell checking widget for GTK
 app-text/gtranslator 2.91.6 2.91.7: An enhanced gettext po file editor for GNOME
 app-text/gv 3.7.3-r1 3.7.3.90: Viewer for PostScript and PDF documents using Ghostscript
 app-text/hd2u 1.0.3: Dos2Unix like text file converter
-app-text/highlight 3.3 3.9 3.12 3.16 3.17 3.18: converts source code to formatted text ((X)HTML, RTF, (La)TeX, XSL-FO, XML) with syntax highlight
+app-text/highlight 3.3 3.9 3.12 3.16 3.17 3.18 3.24: converts source code to formatted text ((X)HTML, RTF, (La)TeX, XSL-FO, XML) with syntax highlight
 app-text/hnb 1.9.18-r1: A program to organize many kinds of data in one place
 app-text/htag 0.0.24-r1: random signature maker
 app-text/html-xml-utils 6.9: A number of simple utilities for manipulating HTML and XML files
@@ -12087,7 +12087,7 @@ media-libs/jbig2dec 0.11-r1: A decoder implementation of the JBIG2 image compres
 media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
 media-libs/jpeg 6b-r12 8d-r1 8d-r2 9a: Library to load, handle and manipulate images in the JPEG format
-media-libs/kvazaar 0.7.1 9999: An open-source HEVC encoder
+media-libs/kvazaar 0.7.1 0.7.2 9999: An open-source HEVC encoder
 media-libs/ladspa-cmt 1.16-r4: CMT (computer music toolkit) LADSPA library plugins
 media-libs/ladspa-sdk 1.13-r1 1.13-r2: The Linux Audio Developer's Simple Plugin API
 media-libs/lasi 1.1.1: C++ library for postscript stream output
