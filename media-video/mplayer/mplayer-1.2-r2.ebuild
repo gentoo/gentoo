@@ -67,7 +67,7 @@ RDEPEND+="
 	bidi? ( dev-libs/fribidi )
 	bluray? ( >=media-libs/libbluray-0.2.1 )
 	bs2b? ( media-libs/libbs2b )
-	cdio? ( dev-libs/libcdio )
+	cdio? ( dev-libs/libcdio dev-libs/libcdio-paranoia )
 	cdparanoia? ( !cdio? ( media-sound/cdparanoia ) )
 	dga? ( x11-libs/libXxf86dga )
 	directfb? ( dev-libs/DirectFB )
