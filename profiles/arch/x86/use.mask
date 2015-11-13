@@ -5,6 +5,11 @@
 # Unmask the flag which corresponds to ARCH.
 -x86
 
+# 2015/11/13 - Daniel Kuehn <lejonet@gentoo.org>
+# Unmask sssd USE-flag as it is tested on this arch in regards to bugs
+# 540540 and 525674
+-sssd
+
 # cilk has been ported to this arch.
 -cilk
 
@@ -211,8 +216,4 @@ win64
 # fdk-aac is already keyworded here
 -fdk
 
-# 2015/11/13 - Daniel Kuehn <lejonet@gentoo.org>
-# Unmask sssd USE-flag as it is tested on this arch in regards to bugs
-# 540540 and 525674
--sssd
 

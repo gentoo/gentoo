@@ -1,6 +1,11 @@
 # PPC Specific use flags
 #
 
+# 2015/11/13 - Daniel Kuehn <lejonet@gentoo.org>
+# Unmask sssd USE-flag as it is tested on this arch in regards to bugs
+# 540540 and 525674
+-sssd
+
 # Jeroen Roovers <jer@gentoo.org> (22 Sep 2015)
 # sci-libs/mkl is not supported on PPC
 mkl
@@ -230,8 +235,4 @@ clvm
 # Unmask systemd since it is keyworded here.
 -systemd
 
-# 2015/11/13 - Daniel Kuehn <lejonet@gentoo.org>
-# Unmask sssd USE-flag as it is tested on this arch in regards to bugs
-# 540540 and 525674
--sssd
 
