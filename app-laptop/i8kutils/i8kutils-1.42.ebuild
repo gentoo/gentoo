@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit systemd toolchain-funcs
+inherit eutils systemd toolchain-funcs
 
 DESCRIPTION="Dell Inspiron and Latitude utilities"
 HOMEPAGE="https://launchpad.net/i8kutils"
@@ -13,7 +13,7 @@ SRC_URI="https://launchpad.net/i8kutils/trunk/${PV}/+download/${P/-/_}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples tk"
+IUSE="tk"
 
 DEPEND="tk? ( dev-lang/tk:0 )"
 RDEPEND="${DEPEND}
@@ -24,11 +24,8 @@ S="${WORKDIR}/${PN}"
 DOCS=( README.i8kutils )
 
 src_prepare() {
-	sed \
-		-e '/^CC/d' \
-		-e '/^CFLAGS/d' \
-		-e 's: -g : $(LDFLAGS) :g' \
-		-i Makefile || die
+	epatch "${FILESDIR}/${PN}-gcc5.patch"
+	epatch "${FILESDIR}/${P}-Makefile.patch"
 
 	tc-export CC
 }
@@ -36,10 +33,10 @@ src_prepare() {
 src_install() {
 	dobin i8kctl i8kfan
 	doman i8kctl.1
-
-	use examples && dodoc -r examples
+	dodoc README.i8kutils
 
 	newinitd "${FILESDIR}"/i8k.init-r1 i8k
+	newconfd "${FILESDIR}"/i8k.conf i8k
 
 	if use tk; then
 		dobin i8kmon
@@ -48,9 +45,9 @@ src_install() {
 		systemd_dounit "${FILESDIR}"/i8kmon.service
 	else
 		cat >> "${ED}"/etc/conf.d/i8k <<- EOF
+
 		# i8kmon disabled because the package was installed without USE=tk
 		NOMON=1
 		EOF
 	fi
-
 }
