@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="http://nongnu.org/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~ppc ~x86"
 fi
 
 DESCRIPTION="A vim-inspired file manager for the console"
@@ -22,6 +22,13 @@ LICENSE="GPL-3"
 SLOT="0"
 
 RDEPEND="virtual/pager"
+
+PATCHES=( "${FILESDIR}"/${PN}-1.6.1-w3mimgdisplay.patch )
+
+src_prepare() {
+	sed -i "s|share/doc/ranger|share/doc/${PF}|" setup.py doc/ranger.1 || die
+	distutils-r1_src_prepare
+}
 
 pkg_postinst() {
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
