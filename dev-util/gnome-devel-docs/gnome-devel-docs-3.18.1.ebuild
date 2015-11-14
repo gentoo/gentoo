@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,6 @@ inherit gnome2
 DESCRIPTION="Documentation for developing for the GNOME desktop environment"
 HOMEPAGE="https://developer.gnome.org/"
 
-# https://bugzilla.gnome.org/show_bug.cgi?id=735882
 LICENSE="FDL-1.1+ CC-BY-SA-3.0 CC-BY-SA-4.0"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
@@ -21,6 +20,7 @@ DEPEND="
 	app-text/docbook-xml-dtd:4.1.2
 	app-text/docbook-xml-dtd:4.2
 	dev-libs/libxslt
+	dev-util/itstool
 	sys-devel/gettext
 	virtual/pkgconfig
 "
@@ -29,5 +29,6 @@ DEPEND="
 RESTRICT="binchecks strip"
 
 src_configure() {
-	gnome2_src_configure ITSTOOL=$(type -P true)
+	# Wants to build demo samples
+	gnome2_src_configure ac_cv_path_CC=""
 }

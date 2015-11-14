@@ -6,9 +6,8 @@ EAPI="5"
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
-VALA_MIN_API_VERSION="0.18"
 
-inherit autotools eutils gnome2 linux-info multilib python-any-r1 vala versionator virtualx
+inherit autotools bash-completion-r1 eutils gnome2 linux-info multilib python-any-r1 vala versionator virtualx
 
 DESCRIPTION="A tagging metadata database, search tool and indexer"
 HOMEPAGE="https://wiki.gnome.org/Projects/Tracker"
@@ -35,7 +34,7 @@ RDEPEND="
 	>=app-i18n/enca-1.9
 	>=dev-db/sqlite-3.7.16:=
 	>=dev-libs/glib-2.40:2
-	>=dev-libs/gobject-introspection-0.9.5
+	>=dev-libs/gobject-introspection-0.9.5:=
 	>=dev-libs/icu-4.8.1.1:=
 	|| (
 		>=media-gfx/imagemagick-5.2.1[png,jpeg=]
@@ -80,7 +79,7 @@ RDEPEND="
 		>=app-text/poppler-0.16:=[cairo,utils]
 		>=x11-libs/gtk+-2.12:2 )
 	playlist? ( >=dev-libs/totem-pl-parser-3 )
-	rss? ( net-libs/libgrss:0.5 )
+	rss? ( net-libs/libgrss:0 )
 	stemmer? ( dev-libs/snowball-stemmer )
 	thunderbird? ( || (
 		>=mail-client/thunderbird-5.0
@@ -102,16 +101,12 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.40.0
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
-	gtk? ( >=dev-libs/libgee-0.3 )
+	gtk? ( >=dev-libs/libgee-0.3:0.8 )
 	test? (
 		>=dev-libs/dbus-glib-0.82-r1
 		>=sys-apps/dbus-1.3.1[X] )
 "
 PDEPEND="nautilus? ( ~gnome-extra/nautilus-tracker-tags-${PV} )"
-
-# configure mixes enable-compile-warnings and with-compile-warnings
-# See upstream bug #705315
-QA_CONFIGURE_OPTIONS="--enable-compile-warnings"
 
 function inotify_enabled() {
 	if linux_config_exists; then
@@ -134,9 +129,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Fix position of AM_CONDITIONAL, bug #550910, upstream bug #750368
-	epatch "${FILESDIR}"/${PN}-1.4.0-have-gstreamer-fix.patch
-
 	# Don't run 'firefox --version' or 'thunderbird --version'; it results in
 	# access violations on some setups (bug #385347, #385495).
 	create_version_script "www-client/firefox" "Mozilla Firefox" firefox-version.sh
@@ -194,6 +186,7 @@ src_configure() {
 		--enable-tracker-fts \
 		--enable-tracker-writeback \
 		--with-unicode-support=libicu \
+		--with-bash-completion-dir="$(get_bashcompdir)" \
 		$(use_enable cue libcue) \
 		$(use_enable eds miner-evolution) \
 		$(use_enable exif libexif) \

@@ -4,7 +4,6 @@
 
 EAPI="5"
 GCONF_DEBUG="no"
-VALA_MIN_API_VERSION="0.18"
 VALA_USE_DEPEND="vapigen"
 
 inherit gnome2 vala
@@ -17,7 +16,7 @@ SLOT="2/3-6" # subslot = 3-(libgweather-3 soname suffix)
 IUSE="glade +introspection vala"
 REQUIRED_USE="vala? ( introspection )"
 
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~x86-solaris"
 
 COMMON_DEPEND="
 	>=x11-libs/gtk+-3.13.5:3[introspection?]
@@ -28,7 +27,7 @@ COMMON_DEPEND="
 	>=sys-libs/timezone-data-2010k
 
 	glade? ( >=dev-util/glade-3.16:3.10 )
-	introspection? ( >=dev-libs/gobject-introspection-0.9.5 )
+	introspection? ( >=dev-libs/gobject-introspection-0.9.5:= )
 "
 RDEPEND="${COMMON_DEPEND}
 	!<gnome-base/gnome-applets-2.22.0

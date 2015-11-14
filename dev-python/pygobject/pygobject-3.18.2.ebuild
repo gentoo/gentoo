@@ -5,16 +5,16 @@
 EAPI="5"
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
-inherit gnome2 python-r1 virtualx
+inherit eutils gnome2 python-r1 virtualx
 
 DESCRIPTION="GLib's GObject library bindings for Python"
 HOMEPAGE="https://wiki.gnome.org/Projects/PyGObject"
 
 LICENSE="LGPL-2.1+"
 SLOT="3"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="+cairo examples test +threads"
 
 REQUIRED_USE="
@@ -22,14 +22,13 @@ REQUIRED_USE="
 	test? ( cairo )
 "
 
-COMMON_DEPEND="
+COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.38:2
-	>=dev-libs/gobject-introspection-1.38
+	>=dev-libs/gobject-introspection-1.39:=
 	virtual/libffi:=
 	cairo? (
 		>=dev-python/pycairo-1.10.0[${PYTHON_USEDEP}]
 		x11-libs/cairo )
-	${PYTHON_DEPS}
 "
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
@@ -41,8 +40,12 @@ DEPEND="${COMMON_DEPEND}
 		x11-libs/cairo[glib]
 		x11-libs/gdk-pixbuf:2[introspection]
 		x11-libs/gtk+:3[introspection]
-		x11-libs/pango[introspection] )
+		x11-libs/pango[introspection]
+		!sparc? ( python_targets_python2_7? ( dev-python/pyflakes[$(python_gen_usedep python2_7)] ) ) )
 "
+# FIXME: remove "!sparc?" automagic nonsense above when pyflakes is
+# keyworded on sparc, bug #553380
+
 # gnome-base/gnome-common required by eautoreconf
 
 # We now disable introspection support in slot 2 per upstream recommendation
@@ -63,10 +66,19 @@ src_configure() {
 	# Hard-enable libffi support since both gobject-introspection and
 	# glib-2.29.x rdepend on it anyway
 	# docs disabled by upstream default since they are very out of date
-	python_foreach_impl run_in_build_dir \
+	configuring() {
 		gnome2_src_configure \
 			$(use_enable cairo) \
 			$(use_enable threads thread)
+
+		# Pyflakes tests work only in python2, bug #516744
+		if use test && [[ ${EPYTHON} != python2.7 ]]; then
+			sed -e 's/if type pyflakes/if false/' \
+				-i Makefile || die "sed failed"
+		fi
+	}
+
+	python_foreach_impl run_in_build_dir configuring
 }
 
 src_compile() {
@@ -77,6 +89,7 @@ src_test() {
 	unset DBUS_SESSION_BUS_ADDRESS
 	export GIO_USE_VFS="local" # prevents odd issues with deleting ${T}/.gvfs
 	export GIO_USE_VOLUME_MONITOR="unix" # prevent udisks-related failures in chroots, bug #449484
+	export SKIP_PEP8="yes"
 
 	testing() {
 		export XDG_CACHE_HOME="${T}/${EPYTHON}"

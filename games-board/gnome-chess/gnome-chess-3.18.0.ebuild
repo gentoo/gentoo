@@ -4,7 +4,7 @@
 
 EAPI="5"
 GCONF_DEBUG="no"
-VALA_MIN_API_VERSION="0.24"
+VALA_MIN_API_VERSION="0.28"
 
 inherit gnome-games vala readme.gentoo
 
@@ -13,18 +13,18 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Chess"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 RDEPEND="
 	>=dev-libs/glib-2.40:2
 	>=gnome-base/librsvg-2.32
-	>=x11-libs/gtk+-3.13.2:3
+	>=x11-libs/gtk+-3.15:3
 "
 DEPEND="${RDEPEND}
 	$(vala_depend)
 	app-text/yelp-tools
-	dev-util/appdata-tools
+	dev-libs/appstream-glib
 	>=dev-util/intltool-0.50
 	sys-devel/gettext
 	virtual/pkgconfig
@@ -36,10 +36,6 @@ DOC_CONTENTS="For being able to play against computer you will
 src_prepare() {
 	vala_src_prepare
 	gnome-games_src_prepare
-}
-
-src_configure() {
-	gnome-games_src_configure APPDATA_VALIDATE=$(type -P true)
 }
 
 src_install() {

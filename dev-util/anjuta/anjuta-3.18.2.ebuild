@@ -8,7 +8,7 @@ GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 # libanjuta-language-vala.so links to a specific slot of libvala; we want to
 # avoid automagic behavior.
-VALA_MIN_API_VERSION="0.26"
+VALA_MIN_API_VERSION="0.28"
 VALA_MAX_API_VERSION="${VALA_MIN_API_VERSION}"
 
 inherit gnome2 flag-o-matic readme.gentoo python-single-r1 vala
@@ -18,14 +18,14 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Anjuta"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~sparc x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x86-fbsd"
 
 IUSE="debug devhelp glade +introspection packagekit subversion terminal test vala"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # FIXME: make python dependency non-automagic
 COMMON_DEPEND="
-	>=dev-libs/glib-2.34:2
+	>=dev-libs/glib-2.34:2[dbus]
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-3.10:3
 	>=dev-libs/libxml2-2.4.23
@@ -44,7 +44,7 @@ COMMON_DEPEND="
 
 	devhelp? ( >=dev-util/devhelp-3.7.4:= )
 	glade? ( >=dev-util/glade-3.12:3.10= )
-	introspection? ( >=dev-libs/gobject-introspection-0.9.5 )
+	introspection? ( >=dev-libs/gobject-introspection-0.9.5:= )
 	subversion? (
 		>=dev-vcs/subversion-1.8:=
 		>=net-libs/serf-1.2:1=

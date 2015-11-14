@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Five%20or%20more"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 COMMON_DEPEND="
@@ -25,7 +25,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	app-text/yelp-tools
-	dev-util/appdata-tools
+	dev-libs/appstream-glib
 	>=dev-util/intltool-0.50
 	sys-devel/gettext
 	virtual/pkgconfig

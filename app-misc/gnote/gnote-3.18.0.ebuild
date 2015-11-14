@@ -23,7 +23,7 @@ COMMON_DEPEND="
 	>=dev-cpp/glibmm-2.32:2
 	>=dev-cpp/gtkmm-3.10:3.0
 	>=dev-libs/boost-1.34
-	>=dev-libs/glib-2.32:2
+	>=dev-libs/glib-2.32:2[dbus]
 	>=dev-libs/libxml2-2:2
 	dev-libs/libxslt
 	>=sys-apps/util-linux-2.16:=
@@ -37,6 +37,7 @@ DEPEND="${DEPEND}
 	app-text/docbook-xml-dtd:4.1.2
 	dev-util/desktop-file-utils
 	>=dev-util/intltool-0.35.0
+	dev-util/itstool
 	virtual/pkgconfig
 "
 
@@ -59,8 +60,7 @@ src_configure() {
 	gnome2_src_configure \
 		--disable-static \
 		$(use_enable debug) \
-		$(use_with X x11-support) \
-		ITSTOOL=$(type -P true)
+		$(use_with X x11-support)
 }
 
 src_install() {

@@ -7,7 +7,7 @@ GCONF_DEBUG="no"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
 
-inherit eutils gnome2 python-single-r1 toolchain-funcs versionator
+inherit gnome2 python-single-r1 toolchain-funcs versionator
 
 DESCRIPTION="Introspection infrastructure for generating gobject library bindings for various languages"
 HOMEPAGE="https://wiki.gnome.org/Projects/GObjectIntrospection"
@@ -19,7 +19,7 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	test? ( cairo )
 "
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 # virtual/pkgconfig needed at runtime, bug #505408
 # We force glib and goi to be in sync by this way as explained in bug #518424
@@ -45,12 +45,6 @@ pkg_setup() {
 	python-single-r1_pkg_setup
 }
 
-src_prepare() {
-	# Prevent gjs crashes, bug #523608 (from 'master')
-	epatch "${FILESDIR}/${PN}-1.40.0-gjs-crash.patch"
-	gnome2_src_prepare
-}
-
 src_configure() {
 	if ! has_version "x11-libs/cairo[glib]"; then
 		# Bug #391213: enable cairo-gobject support even if it's not installed
@@ -62,8 +56,8 @@ src_configure() {
 	# To prevent crosscompiling problems, bug #414105
 	gnome2_src_configure \
 		--disable-static \
-		CC=$(tc-getCC) \
-		YACC=$(type -p yacc) \
+		CC="$(tc-getCC)" \
+		YACC="$(type -p yacc)" \
 		$(use_with cairo) \
 		$(use_enable doctool)
 }
