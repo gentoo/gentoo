@@ -180,6 +180,10 @@ video_cards_ilo
 # vmware wasn't added with mesa-8.0, but it should still be masked
 video_cards_vmware
 
+# Matt Turner <mattst88@gentoo.org> (13 Nov 2015)
+# radeonsi requires glamor support
+video_cards_radeonsi
+
 # Doug Goldstein <cardoe@gentoo.org> (3 Apr 2008)
 # nvidia-drivers specific feature which don't exist for ppc
 opengl-xvmc
