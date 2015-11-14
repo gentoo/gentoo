@@ -5,7 +5,7 @@
 EAPI=5
 
 MODULE_AUTHOR=LEEJO
-MODULE_VERSION=4.20
+MODULE_VERSION=4.22
 inherit perl-module
 
 DESCRIPTION="Simple Common Gateway Interface Class"
@@ -32,4 +32,4 @@ DEPEND="${RDEPEND}
 	)
 "
 
-SRC_TEST="do"
+SRC_TEST="do parallel"
