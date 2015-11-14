@@ -35,6 +35,7 @@
 	<flag name="mipsdspr1">Enables MIPS DSP ASE R1 optimizations.</flag>
 	<flag name="mipsdspr2">Enables MIPS DSP ASE R2 optimizations.</flag>
 	<flag name="mipsfpu">Enables floating point MIPS optimizations.</flag>
+	<flag name="mmal">Enables Multi-Media Abstraction Layer (MMAL) decoding support: Available e.g. on the Raspberry Pi.</flag>
 	<flag name="network">Enables network streaming support</flag>
 	<flag name="nvenc">Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.</flag>
 	<flag name="openh264">Enables H.264 encoding suppoprt via <pkg>media-libs/openh264</pkg>.</flag>
