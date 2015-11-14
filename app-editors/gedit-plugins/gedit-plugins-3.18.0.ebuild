@@ -5,19 +5,20 @@
 EAPI="5"
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes" # plugins are dlopened
-PYTHON_COMPAT=( python3_{3,4} )
+PYTHON_COMPAT=( python3_{3,4,5} )
 PYTHON_REQ_USE="xml"
+VALA_MIN_API_VERSION="0.28"
 
-inherit eutils gnome2 multilib python-r1
+inherit eutils gnome2 multilib python-r1 vala
 
 DESCRIPTION="Official plugins for gedit"
 HOMEPAGE="https://wiki.gnome.org/Apps/Gedit/ShippedPlugins"
 
 LICENSE="GPL-2+"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
-IUSE_plugins="charmap git terminal zeitgeist"
+IUSE_plugins="charmap git terminal vala zeitgeist"
 IUSE="+python ${IUSE_plugins}"
 # python-single-r1 would request disabling PYTHON_TARGETS on libpeas
 REQUIRED_USE="
@@ -29,14 +30,14 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=app-editors/gedit-3.14[python?]
+	>=app-editors/gedit-3.16[python?]
 	>=dev-libs/glib-2.32:2
 	>=dev-libs/libpeas-1.7.0[gtk,python?]
 	>=x11-libs/gtk+-3.9:3
-	>=x11-libs/gtksourceview-3.14:3.0
+	>=x11-libs/gtksourceview-3.17.3:3.0
 	python? (
 		${PYTHON_DEPS}
-		>=app-editors/gedit-3.14[introspection,${PYTHON_USEDEP}]
+		>=app-editors/gedit-3.16[introspection,${PYTHON_USEDEP}]
 		dev-libs/libpeas[${PYTHON_USEDEP}]
 		>=dev-python/dbus-python-0.82[${PYTHON_USEDEP}]
 		dev-python/pycairo[${PYTHON_USEDEP}]
@@ -49,10 +50,12 @@ RDEPEND="
 	charmap? ( >=gnome-extra/gucharmap-3:2.90[introspection] )
 	git? ( >=dev-libs/libgit2-glib-0.0.6 )
 	terminal? ( x11-libs/vte:2.91[introspection] )
+	vala? ( $(vala_depend) )
 	zeitgeist? ( >=gnome-extra/zeitgeist-0.9.12[introspection] )
 "
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.40.0
+	dev-util/itstool
 	sys-devel/gettext
 	virtual/pkgconfig
 "
@@ -61,10 +64,16 @@ pkg_setup() {
 	use python && [[ ${MERGE_TYPE} != binary ]] && python_setup
 }
 
+src_prepare() {
+	use vala && vala_src_prepare
+	gnome2_src_prepare
+}
+
 src_configure() {
 	gnome2_src_configure \
 		$(use_enable python) \
-		ITSTOOL=$(type -P true)
+		$(use_enable vala) \
+		$(use_enable zeitgeist)
 }
 
 src_install() {
@@ -80,7 +89,6 @@ src_install() {
 	clean_plugin charmap
 	clean_plugin git
 	clean_plugin terminal
-	clean_plugin zeitgeist
 }
 
 clean_plugin() {

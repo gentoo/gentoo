@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Seahorse"
 LICENSE="GPL-2+ FDL-1.1+"
 SLOT="0"
 IUSE="debug ldap zeroconf"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 
 COMMON_DEPEND="
 	>=app-crypt/gcr-3.11.91:=
@@ -25,15 +25,16 @@ COMMON_DEPEND="
 
 	net-misc/openssh
 	>=app-crypt/gpgme-1
-	>=app-crypt/gnupg-1.4
-	<app-crypt/gnupg-2.1
+	>=app-crypt/gnupg-2.0.12
 
 	ldap? ( net-nds/openldap:= )
 	zeroconf? ( >=net-dns/avahi-0.6:= )
 "
 DEPEND="${COMMON_DEPEND}
+	app-text/yelp-tools
 	dev-util/gdbus-codegen
 	>=dev-util/intltool-0.35
+	dev-util/itstool
 	sys-devel/gettext
 	virtual/pkgconfig
 "
@@ -62,6 +63,5 @@ src_configure() {
 		$(use_enable debug) \
 		$(use_enable ldap) \
 		$(use_enable zeroconf sharing) \
-		ITSTOOL=$(type -P true) \
 		VALAC=$(type -P true)
 }

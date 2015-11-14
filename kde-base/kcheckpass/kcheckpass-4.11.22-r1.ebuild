@@ -11,11 +11,15 @@ DESCRIPTION="A simple password checker, used by any software in need of user aut
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug pam"
 
-RDEPEND="
-	pam? (
+DEPEND="
+	pam? ( virtual/pam )
+"
+RDEPEND="${DEPEND}
+	pam? ( || (
 		>=kde-base/kdebase-pam-7
-		virtual/pam
-	)
+		kde-plasma/kscreenlocker
+		<kde-plasma/plasma-workspace-5.4.50
+	) )
 "
 
 src_prepare() {

@@ -5,7 +5,7 @@
 EAPI="5"
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes" # plugins are dlopened
-PYTHON_COMPAT=( python3_{3,4} )
+PYTHON_COMPAT=( python3_{3,4,5} )
 VALA_MIN_API_VERSION="0.26"
 VALA_USE_DEPEND="vapigen"
 
@@ -25,15 +25,15 @@ REQUIRED_USE="
 	python? ( ^^ ( $(python_gen_useflags '*') ) )
 "
 
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux"
 
 # X libs are not needed for OSX (aqua)
 COMMON_DEPEND="
 	>=dev-libs/libxml2-2.5.0:2
-	>=dev-libs/glib-2.40:2[dbus]
+	>=dev-libs/glib-2.44:2[dbus]
 	>=x11-libs/gtk+-3.16:3[introspection?]
-	>=x11-libs/gtksourceview-3.16:3.0[introspection?]
-	>=dev-libs/libpeas-1.7.0[gtk]
+	>=x11-libs/gtksourceview-3.17.3:3.0[introspection?]
+	>=dev-libs/libpeas-1.14.1[gtk]
 
 	gnome-base/gsettings-desktop-schemas
 	gnome-base/gvfs
@@ -59,6 +59,7 @@ DEPEND="${COMMON_DEPEND}
 	${vala_depend}
 	app-text/docbook-xml-dtd:4.1.2
 	>=app-text/scrollkeeper-0.3.11
+	app-text/yelp-tools
 	dev-libs/libxml2:2
 	>=dev-util/gtk-doc-am-1
 	>=dev-util/intltool-0.50.1
@@ -78,7 +79,7 @@ src_prepare() {
 }
 
 src_configure() {
-	DOCS="AUTHORS BUGS ChangeLog MAINTAINERS NEWS README"
+	DOCS="AUTHORS ChangeLog MAINTAINERS NEWS README"
 
 	gnome2_src_configure \
 		--disable-deprecations \
