@@ -1717,6 +1717,7 @@ dev-java/gnu-classpath:xml - Build with native XML backend
 dev-java/ibm-jdk-bin:javacomm - Enable Java Communications API support
 dev-java/icedtea:awt - Install non-headless AWT libraries, needed by some GUIs (used to be X flag)
 dev-java/icedtea:cacao - Use the CACAO virtual machine rather than HotSpot.
+dev-java/icedtea:headless-awt - Don't install the X backend for AWT, needed by some GUIs (used to be X flag)
 dev-java/icedtea:infinality - Enable better font rendering using fontconfig.
 dev-java/icedtea:jamvm - Use the JamVM virtual machine rather than HotSpot.
 dev-java/icedtea:jbootstrap - If possible, recompile the final IcedTea executables with itself.
