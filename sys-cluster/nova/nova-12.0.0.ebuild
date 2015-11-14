@@ -66,7 +66,7 @@ DEPEND="
 		<=dev-python/tempest-lib-0.9.0[${PYTHON_USEDEP}]
 		~dev-python/bandit-0.13.2[${PYTHON_USEDEP}]
 		>=dev-python/oslo-vmware-0.16.0[${PYTHON_USEDEP}]
-		<=dev-python/oslo-vmware-0.21.0[${PYTHON_USEDEP}]
+		<=dev-python/oslo-vmware-1.21.0[${PYTHON_USEDEP}]
 	)"
 
 # barbicanclient is in here for doc generation
