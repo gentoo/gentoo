@@ -155,6 +155,27 @@ virtual/python-imaging
 >=app-editors/gedit-3.18
 >=app-editors/ghex-3.18.0
 >=app-misc/geoclue-2.4.0
+>=app-misc/gnote-3.18.0
+>=app-misc/tracker-1.6.0
+>=gnome-extra/nautilus-tracker-tags-1.6.0
+>=gnome-extra/yelp-xsl-3.18.1
+>=app-text/yelp-tools-3.18.0
+>=dev-libs/vala-common-0.30.0
+>=dev-lang/vala-0.30.0
+>=dev-libs/appstream-glib-0.5.3
+>=dev-libs/gdl-3.18.0
+>=dev-libs/gobject-introspection-common-1.46.0
+>=dev-libs/gobject-introspection-1.46.0
+>=dev-libs/libgweather-3.18.1
+>=dev-python/pygobject-3.18.2
+>=dev-util/anjuta-3.18.2
+>=dev-util/devhelp-3.18.1
+>=dev-util/gnome-devel-docs-3.18.1
+>=games-board/gnome-chess-3.18.0
+>=games-board/gnome-mahjongg-3.18.0
+>=games-board/tali-3.18.0
+>=games-puzzle/five-or-more-3.18.0
+>=games-puzzle/gnome-tetravex-3.18.0
 
 # Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
 # Not properly installed, dead for ages, upstream
