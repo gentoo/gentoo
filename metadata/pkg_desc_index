@@ -10984,7 +10984,7 @@ kde-apps/ktux 4.14.3 15.08.1 15.08.2: KDE: screensaver featuring the Space-Farin
 kde-apps/kubrick 4.14.3: A game based on the "Rubik's Cube" puzzle
 kde-apps/kuiserver 4.14.3 15.08.1 15.08.2: KDE: Progress Info UI server
 kde-apps/kurifilter-plugins 4.14.3 15.08.1 15.08.2: KDE: Plugins to manage filtering URIs
-kde-apps/kuser 4.14.3 15.08.2: KDE application that helps you manage system users
+kde-apps/kuser 4.14.3 15.08.2 15.08.3: KDE application that helps you manage system users
 kde-apps/kwalletd 4.14.3-r2 15.08.1 15.08.2: KDE Password Server
 kde-apps/kwalletmanager 4.14.3: KDE Wallet Management Tool
 kde-apps/kwordquiz 4.14.3: KDE: A powerful flashcard and vocabulary learning program
