@@ -1,0 +1,176 @@
+From 7da7309d203e51fb03c002f87a9a6ddd8ee67978 Mon Sep 17 00:00:00 2001
+From: Debarshi Ray <debarshir@gnome.org>
+Date: Tue, 17 Feb 2015 13:22:11 +0100
+Subject: [PATCH 1/2] Revert "prefs: Remove dark theme pref"
+
+This reverts commit 5f6c514a8840a5d1b87a8c399defee3b5052ec18.
+---
+ src/org.gnome.Terminal.gschema.xml |  5 +++++
+ src/preferences.ui                 | 16 ++++++++++++++++
+ src/terminal-app.c                 |  4 ++++
+ src/terminal-prefs.c               |  9 ++++++++-
+ src/terminal-schemas.h             |  1 +
+ 5 files changed, 34 insertions(+), 1 deletion(-)
+
+Index: gnome-terminal-3.17.91/src/org.gnome.Terminal.gschema.xml
+===================================================================
+--- gnome-terminal-3.17.91.orig/src/org.gnome.Terminal.gschema.xml
++++ gnome-terminal-3.17.91/src/org.gnome.Terminal.gschema.xml
+@@ -658,6 +658,11 @@
+       <summary>Whether to show the menubar in new windows</summary>
+     </key>
+ 
++    <key name="dark-theme" type="b">
++      <default>false</default>
++      <summary>Whether to use a dark theme variant</summary>
++    </key>
++
+     <key name="new-terminal-mode" enum="org.gnome.Terminal.NewTerminalMode">
+       <default>'window'</default>
+       <summary>Whether to open new terminals as windows or tabs</summary>
+Index: gnome-terminal-3.17.91/src/preferences.ui
+===================================================================
+--- gnome-terminal-3.17.91.orig/src/preferences.ui
++++ gnome-terminal-3.17.91/src/preferences.ui
+@@ -99,6 +99,22 @@
+                   </packing>
+                 </child>
+                 <child>
++                  <object class="GtkCheckButton" id="dark-theme-checkbutton">
++                    <property name="label" translatable="yes">Use _dark theme variant</property>
++                    <property name="visible">True</property>
++                    <property name="can_focus">True</property>
++                    <property name="receives_default">False</property>
++                    <property name="use_underline">True</property>
++                    <property name="xalign">0</property>
++                    <property name="draw_indicator">True</property>
++                  </object>
++                  <packing>
++                    <property name="expand">False</property>
++                    <property name="fill">True</property>
++                    <property name="position">3</property>
++                  </packing>
++                </child>
++                <child>
+                   <object class="GtkBox" id="hbox140">
+                     <property name="visible">True</property>
+                     <property name="can_focus">False</property>
+Index: gnome-terminal-3.17.91/src/terminal-app.c
+===================================================================
+--- gnome-terminal-3.17.91.orig/src/terminal-app.c
++++ gnome-terminal-3.17.91/src/terminal-app.c
+@@ -409,6 +409,10 @@ terminal_app_init (TerminalApp *app)
+ 
+   /* Terminal global settings */
+   app->global_settings = g_settings_new (TERMINAL_SETTING_SCHEMA);
++  g_settings_bind (app->global_settings, TERMINAL_SETTING_DARK_THEME_KEY,
++                   gtk_settings_get_default (),
++                   "gtk-application-prefer-dark-theme",
++                   G_SETTINGS_BIND_GET);
+ 
+   /* Check if we need to migrate from gconf to dconf */
+   maybe_migrate_settings (app);
+Index: gnome-terminal-3.17.91/src/terminal-prefs.c
+===================================================================
+--- gnome-terminal-3.17.91.orig/src/terminal-prefs.c
++++ gnome-terminal-3.17.91/src/terminal-prefs.c
+@@ -560,7 +560,7 @@ terminal_prefs_show_preferences (GtkWind
+   GtkWidget *show_menubar_button, *disable_mnemonics_button, *disable_menu_accel_button;
+   GtkWidget *disable_shortcuts_button;
+   GtkWidget *tree_view_container, *new_button, *edit_button, *clone_button, *remove_button;
+-  GtkWidget *new_terminal_mode_combo;
++  GtkWidget *dark_theme_button, *new_terminal_mode_combo;
+   GtkWidget *default_hbox, *default_label;
+   GtkWidget *close_button, *help_button;
+   GtkTreeSelection *selection;
+@@ -584,6 +584,7 @@ terminal_prefs_show_preferences (GtkWind
+                                        "close-button", &close_button,
+                                        "help-button", &help_button,
+                                        "default-show-menubar-checkbutton", &show_menubar_button,
++                                       "dark-theme-checkbutton", &dark_theme_button,
+                                        "new-terminal-mode-combobox", &new_terminal_mode_combo,
+                                        "disable-mnemonics-checkbutton", &disable_mnemonics_button,
+                                        "disable-shortcuts-checkbutton", &disable_shortcuts_button,
+@@ -613,6 +614,12 @@ terminal_prefs_show_preferences (GtkWind
+                    "active",
+                    G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+ 
++  g_settings_bind (settings,
++                   TERMINAL_SETTING_DARK_THEME_KEY,
++                   dark_theme_button,
++                   "active",
++                   G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
++
+   g_settings_bind (settings,
+                    TERMINAL_SETTING_NEW_TERMINAL_MODE_KEY,
+                    new_terminal_mode_combo,
+Index: gnome-terminal-3.17.91/src/terminal-schemas.h
+===================================================================
+--- gnome-terminal-3.17.91.orig/src/terminal-schemas.h
++++ gnome-terminal-3.17.91/src/terminal-schemas.h
+@@ -68,6 +68,7 @@ G_BEGIN_DECLS
+ 
+ #define TERMINAL_SETTING_CONFIRM_CLOSE_KEY              "confirm-close"
+ #define TERMINAL_SETTING_DEFAULT_SHOW_MENUBAR_KEY       "default-show-menubar"
++#define TERMINAL_SETTING_DARK_THEME_KEY                 "dark-theme"
+ #define TERMINAL_SETTING_ENABLE_MENU_BAR_ACCEL_KEY      "menu-accelerator-enabled"
+ #define TERMINAL_SETTING_ENABLE_MNEMONICS_KEY           "mnemonics-enabled"
+ #define TERMINAL_SETTING_ENABLE_SHORTCUTS_KEY           "shortcuts-enabled"
+Index: gnome-terminal-3.17.91/help/C/pref-theme.page
+===================================================================
+--- /dev/null
++++ gnome-terminal-3.17.91/help/C/pref-theme.page
+@@ -0,0 +1,41 @@
++<page xmlns="http://projectmallard.org/1.0/"
++      xmlns:its="http://www.w3.org/2005/11/its"
++      type="guide"
++      id="pref-theme">
++
++  <info>
++    <link type="guide" xref="index#appearance"/>
++    <revision pkgversion="3.12" date="2014-02-26" status="review"/>
++
++    <credit type="author copyright">
++      <name>Ekaterina Gerasimova</name>
++      <email its:translate="no">kittykat3756@gmail.com</email>
++      <years>2014</years>
++    </credit>
++    <!--<credit type="copyright editor">
++      <name></name>
++      <email its:translate="no"></email>
++      <years></years>
++    </credit>-->
++
++    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
++
++    <desc>Use either the light or dark theme for <app>Terminal</app>.</desc>
++  </info>
++
++  <title>Chose the window theme</title>
++
++  <p>You can chose to use either the dark theme or the light theme for the
++  terminal window.</p>
++
++  <steps>
++    <item>
++      <p>Select
++      <guiseq><gui style="menu">Edit</gui><gui style="menuitem">Preferences</gui><gui style="tab">General</gui></guiseq>.</p>
++    </item>
++    <item>
++      <p>To use the dark theme, select <gui>Use dark theme variant</gui>.</p>
++    </item>
++  </steps>
++
++</page>
+Index: gnome-terminal-3.17.91/help/Makefile.am
+===================================================================
+--- gnome-terminal-3.17.91.orig/help/Makefile.am
++++ gnome-terminal-3.17.91/help/Makefile.am
+@@ -35,6 +35,7 @@ HELP_FILES = \
+ 	pref-profile-encoding.page \
+ 	pref-scrolling.page \
+ 	pref-tab-window.page \
++	pref-theme.page \
+ 	pref-user-input.page \
+ 	profile.page \
+ 	prob-reset.page \
