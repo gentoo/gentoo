@@ -30,6 +30,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (13 Nov 2015)
+# dev-perl/Coro is incompatible with Perl 5.22 and there is no fix
+# in sight. Masking it and its reverse dependencies for removal in
+# 30 days.
+dev-perl/Coro
+dev-perl/Net-Server-Coro
+dev-perl/Net-IMAP-Simple
+dev-perl/Net-IMAP-Simple-SSL
+
 # Patrice Clement <monsieurp@gentoo.org> (12 Nov 2015)
 # Upstream dead + ebuild was never stabilised.
 # Masked for removal in 30 days. See bug #276095.
