@@ -5,7 +5,7 @@
 EAPI=5
 
 MODULE_AUTHOR=TLINDEN
-MODULE_VERSION=2.56
+MODULE_VERSION=2.60
 inherit perl-module
 
 DESCRIPTION="Config file parser module"
@@ -22,4 +22,4 @@ DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
 
-SRC_TEST="do"
+SRC_TEST="do parallel"
