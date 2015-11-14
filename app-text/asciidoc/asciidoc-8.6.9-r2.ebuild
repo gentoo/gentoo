@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 
 inherit python-single-r1
 
-DESCRIPTION="A text document format for writing short documents, articles, books and UNIX man pages"
+DESCRIPTION="AsciiDoc is a plain text human readable/writable document format"
 HOMEPAGE="http://asciidoc.org/"
 SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"

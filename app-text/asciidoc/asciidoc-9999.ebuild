@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 [ "$PV" == "9999" ] && inherit mercurial autotools
 inherit python-single-r1
 
-DESCRIPTION="A text document format for writing short documents, articles, books and UNIX man pages"
+DESCRIPTION="AsciiDoc is a plain text human readable/writable document format"
 HOMEPAGE="http://www.methods.co.nz/asciidoc/"
 if [ "$PV" == "9999" ]; then
 	EHG_REPO_URI="https://asciidoc.googlecode.com/hg/"
