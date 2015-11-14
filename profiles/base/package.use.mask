@@ -847,7 +847,3 @@ media-video/vlc direct2d directx dshow dxva2 waveout wingdi
 media-video/vlc audioqueue ios-vout macosx macosx-audio macosx-dialog-provider macosx-eyetv macosx-quartztext macosx-qtkit macosx-vout
 # media-library does not build
 media-video/vlc media-library
-
-# Alexis Ballier <aballier@gentoo.org> <28 Apr 2011>
-# Requires ~arch libcelt and keywording
-<media-video/ffmpeg-2.0 celt
