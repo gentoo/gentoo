@@ -69,6 +69,10 @@ src_prepare() {
 	# https://bugzilla.libsdl.org/show_bug.cgi?id=1431
 	epatch "${FILESDIR}"/${P}-static-libs.patch \
 		"${FILESDIR}"/${P}-gles-wayland.patch
+	sed -i \
+		-e 's/configure.in/configure.ac/' \
+		Makefile.in || die
+	mv configure.{in,ac} || die
 	AT_M4DIR="/usr/share/aclocal acinclude" eautoreconf
 }
 
