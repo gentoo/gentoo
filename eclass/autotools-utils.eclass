@@ -89,6 +89,7 @@
 # Keep variable names synced with cmake-utils and the other way around!
 
 case ${EAPI:-0} in
+	6) die "${ECLASS}.eclass is banned in EAPI ${EAPI}";;
 	2|3|4|5) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac

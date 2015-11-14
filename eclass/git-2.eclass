@@ -13,6 +13,10 @@
 #
 # This eclass is DEPRECATED. Please use git-r3 instead.
 
+if [[ ${EAPI} == 6 ]]; then
+	die "${ECLASS}.eclass is banned in EAPI ${EAPI}"
+fi
+
 # This eclass support all EAPIs
 EXPORT_FUNCTIONS src_unpack
 

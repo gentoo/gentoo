@@ -21,6 +21,7 @@
 
 # EAPI=4 is required for meaningful MULTILIB_USEDEP.
 case ${EAPI:-0} in
+	6) die "${ECLASS}.eclass is banned in EAPI ${EAPI}";;
 	4|5) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
