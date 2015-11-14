@@ -10342,7 +10342,7 @@ games-puzzle/kiki 1.0.2-r2: Fun 3D puzzle game using SDL/OpenGL
 games-puzzle/krystaldrop 0.7.2: Free clone of an excellent NeoGeo puzzle game, Magical Drop
 games-puzzle/ksokoban 0.5.0_pre20120725 9999: The japanese warehouse keeper game
 games-puzzle/larry 1-r1: Leisure Suit Larry Reloaded
-games-puzzle/lightsoff 3.14.1 3.16.1 3.16.1.1: Turn off all the lights
+games-puzzle/lightsoff 3.16.1.1 3.18.0: Turn off all the lights
 games-puzzle/lmarbles 1.0.8: puzzle game inspired by Atomix and written in SDL
 games-puzzle/lpairs 1.0.4: A classical memory game
 games-puzzle/ltris 1.0.19: very polished Tetris clone
@@ -10363,7 +10363,7 @@ games-puzzle/pingus 0.7.6: free Lemmings clone
 games-puzzle/pipepanic 0.1.3: A simple pipe connecting game
 games-puzzle/pipewalker 0.9.4: Rotating pieces puzzle game
 games-puzzle/quadra 1.2.0: A tetris clone with multiplayer support
-games-puzzle/quadrapassel 3.14.0 3.16.1: Fit falling blocks together
+games-puzzle/quadrapassel 3.16.1 3.18.0: Fit falling blocks together
 games-puzzle/rezerwar 0.4.2: Puzzle game like the known tetromino and the average pipe games
 games-puzzle/scramble 0.9.5: Create as many words as you can before the time runs out
 games-puzzle/sdl-jewels 1.1.1: Swap and match 3 or more jewels in a line in order to score points
@@ -10623,7 +10623,7 @@ gnome-base/dconf-editor 3.16.1 3.18.2: Graphical tool for editing the dconf conf
 gnome-base/gconf 3.2.6-r3: GNOME configuration system and daemon
 gnome-base/gdm 3.14.2 3.16.2 3.16.4: GNOME Display Manager for managing graphical display servers and user logins
 gnome-base/gnome 3.14.0 3.16.0: Meta package for GNOME 3, merge this package to install
-gnome-base/gnome-common 3.12.0 3.14.0 3.14.0-r1: Common files for development of Gnome packages
+gnome-base/gnome-common 3.14.0-r1 3.18.0: Common files for development of Gnome packages
 gnome-base/gnome-control-center 3.16.3 3.18.2: GNOME's main interface to configure various aspects of the desktop
 gnome-base/gnome-core-apps 3.14.0 3.16.0: Sub-meta package for the core applications integrated with GNOME 3
 gnome-base/gnome-core-libs 3.14.0 3.16.0: Sub-meta package for the core libraries of GNOME 3
@@ -10633,11 +10633,11 @@ gnome-base/gnome-keyring 3.14.0 3.16.0-r1 3.18.3: Password and keyring managing 
 gnome-base/gnome-light 3.14.0 3.16.0: Meta package for GNOME-Light, merge this package to install
 gnome-base/gnome-menus 3.10.1-r1 3.13.3: Library for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
-gnome-base/gnome-session 3.14.0-r1 3.14.0-r2 3.16.0: Gnome session manager
+gnome-base/gnome-session 3.16.0 3.18.1.2: Gnome session manager
 gnome-base/gnome-settings-daemon 3.16.3 3.18.2: Gnome Settings Daemon
 gnome-base/gnome-shell 3.16.3 3.16.4: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r2 2.24.4-r3 2.24.4-r4: Gnome Virtual Filesystem
-gnome-base/gsettings-desktop-schemas 3.6.1 3.12.2 3.14.1 3.14.2 3.16.1: Collection of GSettings schemas for GNOME desktop
+gnome-base/gsettings-desktop-schemas 3.14.2 3.16.1 3.18.1: Collection of GSettings schemas for GNOME desktop
 gnome-base/gvfs 1.22.4 1.24.2 1.24.2-r1 1.26.2: Virtual filesystem implementation for gio
 gnome-base/libbonobo 2.24.3-r1: GNOME CORBA framework
 gnome-base/libbonoboui 2.24.5-r1: User Interface part of libbonobo
@@ -10649,7 +10649,7 @@ gnome-base/libgnomekbd 3.6.0: Gnome keyboard configuration library
 gnome-base/libgnomeprint 2.18.8-r1: Printer handling for Gnome
 gnome-base/libgnomeprintui 2.18.6-r1: User interface libraries for gnome print
 gnome-base/libgnomeui 2.24.5-r1: User Interface routines for Gnome
-gnome-base/libgtop 2.30.0: A library that provides top functionality to applications
+gnome-base/libgtop 2.30.0 2.32.0: A library that provides top functionality to applications
 gnome-base/librsvg 2.40.9 2.40.10 2.40.11: Scalable Vector Graphics (SVG) rendering library
 gnome-base/nautilus 3.16.2 3.18.2: A file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r4: ORBit2 is a high-performance CORBA ORB
@@ -10676,7 +10676,7 @@ gnome-extra/evolution-ews 3.12.11 3.16.3-r1 3.16.4 3.16.5 3.18.2: Evolution modu
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gdesklets-core 0.36.3-r4: GNOME Desktop Applets: Core library for desktop applets
 gnome-extra/gnome-activity-journal 0.8.0-r4 0.8.0-r5: Tool for easily browsing and finding files on your computer
-gnome-extra/gnome-boxes 3.14.3.1 3.16.2: Simple GNOME 3 application to access remote or virtual systems
+gnome-extra/gnome-boxes 3.16.2 3.18.1: Simple GNOME 3 application to access remote or virtual systems
 gnome-extra/gnome-builder 3.16.3: Builder attempts to be an IDE for writing software for GNOME
 gnome-extra/gnome-calculator 3.16.2 3.18.2: A calculator application for GNOME
 gnome-extra/gnome-calendar 3.16.2: Manage your online calendars with simple and modern interface
