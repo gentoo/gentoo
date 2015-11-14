@@ -11,7 +11,7 @@ inherit python-single-r1
 DESCRIPTION="AsciiDoc is a plain text human readable/writable document format"
 HOMEPAGE="http://asciidoc.org/"
 SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.gz"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~amd64 ~x86"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -23,7 +23,12 @@ RDEPEND=">=app-text/docbook-xsl-stylesheets-1.75
 		dev-libs/libxslt
 		graphviz? ( media-gfx/graphviz )
 		app-text/docbook-xml-dtd:4.5
-		highlight? ( || ( dev-python/pygments[${PYTHON_USEDEP}] dev-util/source-highlight ) )
+		app-text/dblatex
+		|| ( www-client/w3m www-client/lynx )
+		highlight? ( || ( dev-util/source-highlight \
+			dev-python/pygments[${PYTHON_USEDEP}] \
+			app-text/highlight )
+		)
 		${PYTHON_DEPS}
 "
 DEPEND="test? ( dev-util/source-highlight
