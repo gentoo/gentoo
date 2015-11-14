@@ -8153,7 +8153,7 @@ dev-ros/gencpp 0.5.3 9999: ROS C++ message definition and serialization generato
 dev-ros/geneus 2.2.4 9999: EusLisp ROS message and service generators
 dev-ros/genlisp 0.4.15 9999: Common-Lisp ROS message and service generators
 dev-ros/genmsg 0.5.6 9999: Python library for generating ROS message and service data structures for various languages
-dev-ros/genpy 0.5.5 0.5.6 9999: Python ROS message and service generators
+dev-ros/genpy 0.5.5 0.5.6 0.5.7 9999: Python ROS message and service generators
 dev-ros/geodesy 0.4.0 9999: Python and C++ interfaces for manipulating geodetic coordinates
 dev-ros/geographic_msgs 0.4.0 9999: ROS messages for Geographic Information Systems
 dev-ros/geometric_shapes 0.4.3 9999: Generic definitions of geometric shapes and bodies
@@ -8197,14 +8197,14 @@ dev-ros/laser_cb_detector 0.10.13 9999: Extracts checkerboard corners from a den
 dev-ros/laser_filters 1.8.0 9999: Assorted filters designed to operate on 2D planar laser scanners
 dev-ros/laser_geometry 1.6.4 9999: Class for converting from a 2D laser scan into a point cloud
 dev-ros/laser_proc 0.1.4 9999: Converts representations of sensor_msgs/LaserScan and sensor_msgs/MultiEchoLaserScan
-dev-ros/libmavconn 0.15.0 0.16.0 9999: MAVLink communication library
+dev-ros/libmavconn 0.15.0 0.16.0 0.16.1 9999: MAVLink communication library
 dev-ros/librviz_tutorial 0.9.2 9999: Tutorial showing how to compile your own C++ program with RViz displays and features
 dev-ros/map_msgs 1.13.0 9999: Messages commonly used in mapping packages
 dev-ros/map_server 1.13.0 1.13.1 9999: Offers map data as a ROS service
 dev-ros/mavlink-gbp-release 2015.10.10: MAVLink message marshaling library
-dev-ros/mavros 0.15.0 0.16.0 9999: MAVLink extendable communication node for ROS
-dev-ros/mavros_extras 0.15.0 0.16.0 9999: Extra nodes and plugins for mavros
-dev-ros/mavros_msgs 0.15.0 0.16.0 9999: Messages for MAVROS
+dev-ros/mavros 0.15.0 0.16.0 0.16.1 9999: MAVLink extendable communication node for ROS
+dev-ros/mavros_extras 0.15.0 0.16.0 0.16.1 9999: Extra nodes and plugins for mavros
+dev-ros/mavros_msgs 0.15.0 0.16.0 0.16.1 9999: Messages for MAVROS
 dev-ros/message_filters 1.11.14 1.11.15 9999: Set of message filters which take in messages and may output those messages at a later time
 dev-ros/message_generation 0.3.0 9999: Build-time dependencies for generating language bindings of messages
 dev-ros/message_runtime 0.4.12 9999: Package modeling the run-time dependencies for language bindings of messages
