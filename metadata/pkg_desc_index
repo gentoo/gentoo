@@ -5192,7 +5192,7 @@ dev-perl/CDB_File 0.970.0-r1 0.980.0: Tie to CDB (Bernstein's constant DB) files
 dev-perl/CDDB 1.220.0-r1 1.222.0-r1: high-level interface to cddb/freedb protocol
 dev-perl/CDDB-File 1.50.0-r1: Parse a CDDB/freedb data file
 dev-perl/CDDB_get 2.270.0-r1 2.280.0-r1: Read the CDDB entry for an audio CD in your drive
-dev-perl/CGI 3.650.0 4.200.0 4.210.0: Simple Common Gateway Interface Class
+dev-perl/CGI 3.650.0 4.210.0 4.220.0: Simple Common Gateway Interface Class
 dev-perl/CGI-Ajax 0.707.0: a perl-specific system for writing Asynchronous web applications
 dev-perl/CGI-Builder 1.360.0-r1: Framework to build simple or complex web-apps
 dev-perl/CGI-Emulate-PSGI 0.200.0 0.210.0: PSGI adapter for CGI
@@ -5219,7 +5219,7 @@ dev-perl/Cache-FastMmap 1.400.0: Uses an mmaped file to act as a shared memory i
 dev-perl/Cache-Memcached 1.290.0-r1 1.300.0-r1: Perl API for memcached
 dev-perl/Cache-Memcached-Fast 0.210.0-r1 0.230.0: Perl client for memcached, in C language
 dev-perl/Cache-Simple-TimedExpiry 0.270.0-r1: A lightweight cache with timed expiration
-dev-perl/Cairo 1.103.0 1.105.0: Perl interface to the cairo library
+dev-perl/Cairo 1.103.0 1.105.0 1.106.0: Perl interface to the cairo library
 dev-perl/Calendar-Simple 1.210.0-r1: Perl extension to create simple calendars
 dev-perl/Canary-Stability 2006: Canary to check perl compatibility for schmorp's modules
 dev-perl/Capture-Tiny 0.300.0: Capture STDOUT and STDERR from Perl, XS or external programs
@@ -5237,7 +5237,7 @@ dev-perl/Class-Accessor-Lite 0.50.0-r1: A minimalistic variant of Class::Accesso
 dev-perl/Class-Adapter 1.80.0-r1: Implementation of the "Adapter" Design Pattern
 dev-perl/Class-Autouse 2.10.0-r1: Runtime aspect loading of one or more classes
 dev-perl/Class-Base 0.50.0-r1: Useful base class for deriving other modules
-dev-perl/Class-C3 0.250.0-r1 0.280.0: A pragma to use the C3 method resolution order algortihm
+dev-perl/Class-C3 0.250.0-r1 0.280.0 0.300.0: A pragma to use the C3 method resolution order algortihm
 dev-perl/Class-C3-Componentised 1.1.0-r1: Load mix-ins or components to your C3-based class
 dev-perl/Class-C3-XS 0.130.0-r1: XS speedups for Class::C3
 dev-perl/Class-Container 0.120.0-r1: Class-Container module for perl
@@ -5283,13 +5283,13 @@ dev-perl/Config-ApacheFormat 1.200.0-r1: use Apache format config files
 dev-perl/Config-Auto 0.420.0-r1 0.440.0: Magical config file parser
 dev-perl/Config-AutoConf 0.310.0 0.311.0: A module to implement some of AutoConf macros in pure perl
 dev-perl/Config-Crontab 1.330.0-r1 1.400.0: Read/Write Vixie compatible crontab(5) files
-dev-perl/Config-General 2.520.0-r1 2.560.0 2.580.0: Config file parser module
+dev-perl/Config-General 2.520.0-r1 2.580.0 2.600.0: Config file parser module
 dev-perl/Config-Grammar 1.100.0-r1: A grammar-based, user-friendly config parser
 dev-perl/Config-IniFiles 2.830.0 2.870.0 2.880.0: A module for reading .ini-style configuration files
 dev-perl/Config-JSON 1.510.0 1.520.200: A JSON based config file system
 dev-perl/Config-Properties 1.770.0 1.800.0: Configuration using Java style properties
 dev-perl/Config-Simple 4.590.0-r1: Config::Simple - simple configuration file class
-dev-perl/Config-Tiny 2.160.0 2.220.0: Read/Write .ini style files with as little code as possible
+dev-perl/Config-Tiny 2.160.0 2.220.0 2.230.0: Read/Write .ini style files with as little code as possible
 dev-perl/ConfigReader 0.500.0-r1: Read directives from a configuration file
 dev-perl/Const-Fast 0.13.0 0.14.0 0.14.0-r1: Facility for creating read-only scalars, arrays, and hashes
 dev-perl/Context-Preserve 0.10.0-r1: Pass chained return values from subs, modifying their values, without losing context
