@@ -1,24 +1,11 @@
-diff --git a/Makefile.am b/Makefile.am
-index 1a605f7..6475886 100644
---- a/Makefile.am
-+++ b/Makefile.am
-@@ -1,7 +1,7 @@
- ACLOCAL_AMFLAGS = -I scripts/m4
- EXTRA_DIST = scripts/build-aux/config.rpath  debian build-debian.sh rpm doc
- 
--SUBDIRS=cardcomm/pkcs11/src doc/sdk/include/rsaref220 tests/unit plugins_tools/xpi plugins_tools/aboutmw/gtk
-+SUBDIRS=cardcomm/pkcs11/src doc/sdk/include/rsaref220 tests/unit plugins_tools/xpi
- 
- xpipackage:
- 	$(MAKE) -C plugins_tools/xpi xpipackage
-diff --git a/cardcomm/pkcs11/src/Makefile.am b/cardcomm/pkcs11/src/Makefile.am
-index b70e7f2..ac38944 100644
---- a/cardcomm/pkcs11/src/Makefile.am
-+++ b/cardcomm/pkcs11/src/Makefile.am
-@@ -165,30 +165,4 @@ libbeidpkcs11_la_SOURCES += \
+diff -ur eid-mw-4.1.4-v4.1.4-a/cardcomm/pkcs11/src/Makefile.am eid-mw-4.1.4-v4.1.4-b/cardcomm/pkcs11/src/Makefile.am
+--- eid-mw-4.1.4-v4.1.4-a/cardcomm/pkcs11/src/Makefile.am	2015-07-27 10:30:34.638418958 +0200
++++ eid-mw-4.1.4-v4.1.4-b/cardcomm/pkcs11/src/Makefile.am	2015-08-13 14:12:43.827586821 +0200
+@@ -164,29 +164,3 @@
+ 	dialogs/dialogsgtk/dlgs_gtk.cpp \
  	dialogs/dialogsgtk/single_dialog.c
  endif
- 
+-
 -libexec_PROGRAMS = beid-askpin beid-changepin beid-badpin beid-askaccess beid-spr-askpin beid-spr-changepin
 -
 -beid_askpin_SOURCES = dialogs/dialogsgtk/parent.c dialogs/dialogsgtk/beid-askpin.c
@@ -44,13 +31,10 @@ index b70e7f2..ac38944 100644
 -beid_spr_changepin_SOURCES = dialogs/dialogsgtk/parent.c dialogs/dialogsgtk/beid-spr-changepin.c
 -beid_spr_changepin_CPPFLAGS = -I$(dialogsdir)/dialogsgtk -I$(dialogsdir)/../common/dialogs -I$(dialogsdir)/dialogs @GTK_CFLAGS@
 -beid_spr_changepin_LDADD = @GTK_LIBS@
--
- pkgconfig_DATA=libbeidpkcs11.pc
-diff --git a/configure.ac b/configure.ac
-index 102c1c7..efdf0e2 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -56,11 +56,6 @@ then
+diff -ur eid-mw-4.1.4-v4.1.4-a/configure.ac eid-mw-4.1.4-v4.1.4-b/configure.ac
+--- eid-mw-4.1.4-v4.1.4-a/configure.ac	2015-07-27 10:30:34.641752294 +0200
++++ eid-mw-4.1.4-v4.1.4-b/configure.ac	2015-08-13 14:13:51.456736608 +0200
+@@ -55,11 +55,6 @@
  	fi
  fi
  
@@ -62,3 +46,15 @@ index 102c1c7..efdf0e2 100644
  ###########################################################################
  ####### read user-specific requests from --enable directives         ######
  ###########################################################################
+diff -ur eid-mw-4.1.4-v4.1.4-a/Makefile.am eid-mw-4.1.4-v4.1.4-b/Makefile.am
+--- eid-mw-4.1.4-v4.1.4-a/Makefile.am	2015-07-27 10:30:34.638418958 +0200
++++ eid-mw-4.1.4-v4.1.4-b/Makefile.am	2015-08-13 14:11:43.878340486 +0200
+@@ -1,7 +1,7 @@
+ ACLOCAL_AMFLAGS = -I scripts/m4
+ EXTRA_DIST = scripts/build-aux/config.rpath  debian build-debian.sh rpm doc
+ 
+-SUBDIRS=cardcomm/pkcs11/src tests/unit plugins_tools/xpi plugins_tools/aboutmw/gtk
++SUBDIRS=cardcomm/pkcs11/src tests/unit plugins_tools/xpi
+ 
+ xpipackage:
+ 	$(MAKE) -C plugins_tools/xpi xpipackage

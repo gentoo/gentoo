@@ -20,7 +20,7 @@ fi
 
 SLOT="0"
 LICENSE="LGPL-3"
-DESCRIPTION="Belgian Electronic Identity Card middleware by the Belgian Federal Government"
+DESCRIPTION="Electronic Identity Card middleware supplied by the Belgian Federal Government"
 
 HOMEPAGE="http://eid.belgium.be"
 
