@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-#Id$
+# $Id$
 
 EAPI=5
 inherit autotools eutils flag-o-matic
@@ -23,31 +23,31 @@ PATCHES=(
 )
 
 src_prepare() {
-		epatch "${PATCHES[@]}"
+	epatch "${PATCHES[@]}"
 
-        sed -e '/^AM_C_PROTOTYPES/d' \
-                -e 's/^AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' \
-                -i configure.ac || die #423125, 467544
+	sed -e '/^AM_C_PROTOTYPES/d' \
+		-e 's/^AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' \
+		-i configure.ac || die #423125, 467544
 
-        eautoreconf
+	eautoreconf
 }
 
 src_configure() {
-        append-cppflags -DPROTOTYPES #423125
+	append-cppflags -DPROTOTYPES #423125
 
-        if [[ ${CHOST} == *-interix* ]]; then
-                export ac_cv_header_inttypes_h=no
-                export ac_cv_func_iconv=no
-        fi
+	if [[ ${CHOST} == *-interix* ]]; then
+		export ac_cv_header_inttypes_h=no
+		export ac_cv_func_iconv=no
+	fi
 
-        econf
+	econf
 }
 
 src_install() {
-        emake \
-                DESTDIR="${D}" \
-                mandir="${EPREFIX}"/usr/share/man/ja \
-                install
+	emake \
+		DESTDIR="${D}" \
+		mandir="${EPREFIX}"/usr/share/man/ja \
+		install
 
-        dodoc ChangeLog Hacking_of_LHa
+	dodoc ChangeLog Hacking_of_LHa
 }
