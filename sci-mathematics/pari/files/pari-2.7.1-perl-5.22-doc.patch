@@ -1,0 +1,12 @@
+diff -U2 -r pari-2.7.1.orig/src/desc/doc_make pari-2.7.1/src/desc/doc_make
+--- pari-2.7.1.orig/src/desc/doc_make	2014-05-11 00:59:29.000000000 +0700
++++ pari-2.7.1/src/desc/doc_make	2015-11-15 00:51:11.494845695 +0600
+@@ -39,6 +39,6 @@
+         $v =~ s/(\w\w+)/\\var{$1}/g;
+         $v =~ s/\^([a-z])/\\hbox{\\kbd{\\pow}}$1/g;
+-        $v =~ s/\\var{flag}/\\fl/g;
+-        $v =~ s/\\var{(\d+)}/{$1}/g;
++        $v =~ s/\\var\{flag}/\\fl/g;
++        $v =~ s/\\var\{(\d+)}/{$1}/g;
+ 
+         $v = "\$($v)\$";
