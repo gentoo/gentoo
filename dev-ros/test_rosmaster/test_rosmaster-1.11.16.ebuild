@@ -25,6 +25,8 @@ DEPEND="${RDEPEND}
 	test? (	dev-ros/roslib[${PYTHON_USEDEP}] )
 "
 
+mycatkincmakeargs=( "-DCATKIN_ENABLE_TESTING=ON" )
+
 src_install() {
 	ros-catkin_src_install
 	dodir /usr/share/${PN}
