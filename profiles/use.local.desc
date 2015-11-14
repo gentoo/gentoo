@@ -6211,7 +6211,6 @@ net-misc/vinagre:rdp - Enable access to Windows RDP protocol using net-misc/rdes
 net-misc/vinagre:spice - Enable access to SPICE-enabled virtual machines
 net-misc/vinagre:ssh - Enable ssh plugin using x11-libs/vte
 net-misc/vinagre:telepathy - Enable access to remote desktop via a net-libs/telepathy-glib client
-net-misc/vino:libsecret - Enable app-crypt/libsecret support to store login credentials.
 net-misc/vino:telepathy - Enable desktop sharing through a telepathy client
 net-misc/vpnc:resolvconf - Enable support for DNS managing framework net-dns/openresolv
 net-misc/wget:ntlm - Enable support for NTLM (Windows-based) authorization
