@@ -114,6 +114,39 @@ virtual/python-imaging
 >=gnome-extra/gucharmap-3.18.2
 >=app-accessibility/orca-3.18.2
 >=gnome-extra/gnome-calculator-3.18.2
+>=gnome-base/dconf-editor-3.18.2
+>=media-gfx/eog-3.18.1
+>=app-text/evince-3.18.2
+>=dev-libs/libpeas-1.16
+>=x11-libs/gtksourceview-3.18
+>=app-editors/gedit-3.18.2
+>=gnome-base/gnome-keyring-3.18.3
+>=games-puzzle/gnome-taquin-3.18.2
+>=games-board/iagno-3.18.2
+>=net-misc/vinagre-3.18.2
+>=app-editors/latexila-3.18.1
+>=net-misc/vino-3.18.1
+>=gnome-extra/gnome-tweak-tool-3.18.1
+>=net-wireless/gnome-bluetooth-3.18.1
+>=gnome-extra/gnome-documents-3.18.2
+>=gnome-extra/gnome-getting-started-docs-3.18.2
+>=x11-libs/vte-0.42.1
+>=x11-terms/gnome-terminal-3.18.2
+>=app-accessibility/at-spi2-core-2.18.2
+>=dev-util/gdbus-codegen-2.46
+>=dev-libs/glib-2.46.2
+>=gnome-extra/gnome-contacts-3.18.1
+>=gnome-base/gnome-desktop-3.18
+>=net-libs/gnome-online-accounts-3.18.2.1
+>=gnome-base/gnome-settings-daemon-3.18.2
+>=gnome-base/gnome-control-center-3.18.2
+>=gnome-base/gvfs-1.26.2
+>=x11-libs/pango-1.38.1
+>=x11-libs/gtk+-3.18.4
+>=gnome-base/nautilus-3.18.2
+>=dev-cpp/libxmlpp-2.40.1
+>=dev-libs/libsigc++-2.6.2
+>=net-libs/libsoup-2.52.2
 
 # Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
 # Not properly installed, dead for ages, upstream
