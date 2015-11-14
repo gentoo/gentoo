@@ -16,6 +16,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/tf
 	dev-ros/pcl_ros
+	sci-libs/octomap
 	dev-ros/octomap_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
