@@ -13,7 +13,7 @@ LICENSE="|| ( GPL-2 BSD )"
 
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="ap dbus gnutls eap-sim fasteap +hs2-0 p2p ps3 qt4 qt5 readline selinux smartcard ssl tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
+IUSE="ap dbus gnutls eap-sim fasteap +hs2-0 libressl p2p ps3 qt4 qt5 readline selinux smartcard ssl tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
 REQUIRED_USE="fasteap? ( !gnutls !ssl ) smartcard? ( ssl ) ?? ( qt4 qt5 )"
 
 CDEPEND="dbus? ( sys-apps/dbus )
@@ -38,9 +38,17 @@ CDEPEND="dbus? ( sys-apps/dbus )
 		sys-libs/ncurses:0=
 		sys-libs/readline:0
 	)
-	ssl? ( dev-libs/openssl:0 )
-	!ssl? ( gnutls? ( net-libs/gnutls ) )
-	!ssl? ( !gnutls? ( dev-libs/libtommath ) )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0 )
+		libressl? ( dev-libs/libressl )
+	)
+	!ssl? (
+		gnutls? (
+			net-libs/gnutls
+			dev-libs/libgcrypt:*
+		)
+		!gnutls? ( dev-libs/libtommath )
+	)
 "
 DEPEND="${CDEPEND}
 	virtual/pkgconfig
@@ -156,6 +164,9 @@ src_configure() {
 	# Enabling background scanning.
 	Kconfig_style_config BGSCAN_SIMPLE
 	Kconfig_style_config BGSCAN_LEARN
+
+	# Enabling mesh networks.
+	Kconfig_style_config MESH
 
 	if use dbus ; then
 		Kconfig_style_config CTRL_IFACE_DBUS
