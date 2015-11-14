@@ -176,6 +176,13 @@ virtual/python-imaging
 >=games-board/tali-3.18.0
 >=games-puzzle/five-or-more-3.18.0
 >=games-puzzle/gnome-tetravex-3.18.0
+>=games-puzzle/lightsoff-3.18.0
+>=games-puzzle/quadrapassel-3.18.0
+>=gnome-base/gnome-common-3.18.0
+>=gnome-base/gnome-session-3.18.1.2
+>=gnome-base/gsettings-desktop-schemas-3.18.1
+>=gnome-base/libgtop-2.32.0
+>=gnome-extra/gnome-boxes-3.18.1
 
 # Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
 # Not properly installed, dead for ages, upstream
