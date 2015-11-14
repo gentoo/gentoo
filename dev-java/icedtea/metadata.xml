@@ -17,6 +17,7 @@
 <use>
   <flag name="awt">Install non-headless AWT libraries, needed by some GUIs (used to be X flag)</flag>
   <flag name="cacao">Use the CACAO virtual machine rather than HotSpot.</flag>
+  <flag name="headless-awt">Don't install the X backend for AWT, needed by some GUIs (used to be X flag)</flag>
   <flag name="infinality">Enable better font rendering using fontconfig.</flag>
   <flag name="jamvm">Use the JamVM virtual machine rather than HotSpot.</flag>
   <flag name="jbootstrap">If possible, recompile the final IcedTea executables with itself.</flag>

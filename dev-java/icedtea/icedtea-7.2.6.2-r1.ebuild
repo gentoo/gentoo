@@ -16,13 +16,13 @@ ICEDTEA_VER=$(get_version_component_range 2-4)
 ICEDTEA_BRANCH=$(get_version_component_range 2-3)
 ICEDTEA_PKG=icedtea-${ICEDTEA_VER}
 ICEDTEA_PRE=$(get_version_component_range _)
-CORBA_TARBALL="2545636482d6.tar.bz2"
-JAXP_TARBALL="ffbe529eeac7.tar.bz2"
-JAXWS_TARBALL="b9776fab65b8.tar.bz2"
-JDK_TARBALL="61d3e001dee6.tar.bz2"
-LANGTOOLS_TARBALL="9c6e1de67d7d.tar.bz2"
-OPENJDK_TARBALL="39b2c4354d0a.tar.bz2"
-HOTSPOT_TARBALL="b19bc5aeaa09.tar.bz2"
+CORBA_TARBALL="a4d55c5cec23.tar.bz2"
+JAXP_TARBALL="f1202fb27695.tar.bz2"
+JAXWS_TARBALL="14c411b1183c.tar.bz2"
+JDK_TARBALL="db69ae53157a.tar.bz2"
+LANGTOOLS_TARBALL="73356b81c5c7.tar.bz2"
+OPENJDK_TARBALL="601ca7147b8c.tar.bz2"
+HOTSPOT_TARBALL="f40363c11191.tar.bz2"
 
 CACAO_TARBALL="cacao-c182f119eaad.tar.gz"
 JAMVM_TARBALL="jamvm-ec18fb9e49e62dce16c5094ef1527eed619463aa.tar.gz"
@@ -57,14 +57,14 @@ SRC_URI="
 	${DROP_URL}/jamvm/${JAMVM_TARBALL} -> ${JAMVM_GENTOO_TARBALL}"
 
 LICENSE="Apache-1.1 Apache-2.0 GPL-1 GPL-2 GPL-2-with-linking-exception LGPL-2 MPL-1.0 MPL-1.1 public-domain W3C"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 RESTRICT="test"
 
-IUSE="+awt +alsa cacao cjk +cups debug doc examples +gtk infinality
+IUSE="+alsa cacao cjk +cups debug doc examples +gtk headless-awt infinality
 	jamvm javascript +jbootstrap kerberos +nsplugin nss pax_kernel
 	pulseaudio sctp selinux smartcard source +sunec test zero +webstart"
 
-REQUIRED_USE="gtk? ( awt )"
+REQUIRED_USE="gtk? ( !headless-awt )"
 
 # Ideally the following were optional at build time.
 ALSA_COMMON_DEP="
@@ -118,7 +118,6 @@ RDEPEND="${COMMON_DEP}
 	>=gnome-base/gsettings-desktop-schemas-3.12.2
 	media-fonts/dejavu
 	alsa? ( ${ALSA_COMMON_DEP} )
-	awt? ( ${X_COMMON_DEP} )
 	cjk? (
 		media-fonts/arphicfonts
 		media-fonts/baekmuk-fonts
@@ -127,6 +126,7 @@ RDEPEND="${COMMON_DEP}
 		media-fonts/sazanami
 	)
 	cups? ( ${CUPS_COMMON_DEP} )
+	!headless-awt? ( ${X_COMMON_DEP} )
 	selinux? ( sec-policy/selinux-java )"
 
 # Only ant-core-1.8.1 has fixed ant -diagnostics when xerces+xalan are not present.
@@ -264,6 +264,10 @@ src_configure() {
 			ewarn 'If so, please rebuild with USE="-cacao"'
 		fi
 		cacao_config="--enable-cacao"
+
+		# http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=2612
+		export DISTRIBUTION_PATCHES="${SLOT}-cacao-dynmaxheap.patch"
+		ln -snf "${FILESDIR}/${DISTRIBUTION_PATCHES}" || die
 	fi
 
 	# Turn on Zero if needed (non-HS/CACAO archs) or requested
@@ -283,10 +287,6 @@ src_configure() {
 	fi
 
 	unset JAVA_HOME JDK_HOME CLASSPATH JAVAC JAVACFLAGS
-
-	# https://bugs.gentoo.org/show_bug.cgi?id=561500
-	ln -s "${FILESDIR}/TryXShmAttach.patch" || die
-	export DISTRIBUTION_PATCHES="TryXShmAttach.patch"
 
 	econf ${config} \
 		--with-openjdk-src-zip="${DISTDIR}/${OPENJDK_GENTOO_TARBALL}" \
@@ -308,8 +308,8 @@ src_configure() {
 		--disable-hotspot-tests --disable-jdk-tests \
 		--enable-system-lcms --enable-system-jpeg \
 		--enable-system-zlib \
-		$(use_enable awt system-gif) \
-		$(use_enable awt system-png) \
+		$(use_enable !headless-awt system-gif) \
+		$(use_enable !headless-awt system-png) \
 		$(use_enable !debug optimizations) \
 		$(use_enable doc docs) \
 		$(use_enable gtk system-gtk) \
@@ -350,7 +350,7 @@ src_install() {
 		rm -v "${ddest}"/jre/lib/$(get_system_arch)/libjsoundalsa.* || die
 	fi
 
-	if ! use awt; then
+	if use headless-awt; then
 		rm -vr "${ddest}"/jre/lib/$(get_system_arch)/{xawt,libsplashscreen.*,libjavagtk.*} \
 		   "${ddest}"/{,jre/}bin/policytool "${ddest}"/bin/appletviewer || die
 	fi
