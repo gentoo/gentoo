@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=>=dev-libs/boost-1.48[python] >=media-libs/taglib-1.4 =dev-lang/python-2*
 SLOT=0
 SRC_URI=mirror://pypi/t/tagpy/tagpy-0.94.8.tar.gz
-_eclasses_=distutils	def8c8eb435ec28fd9315114640f6c84	eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=45ac62aac5d8eff60f92d1e72d653338

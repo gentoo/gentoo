@@ -6,5 +6,5 @@ HOMEPAGE=https://wiki.archlinux.org/index.php/Netctl https://www.archlinux.org/p
 LICENSE=GPL-3
 RDEPEND=>=app-shells/bash-4.0 >=net-dns/openresolv-3.5.4-r1 sys-apps/iproute2 sys-apps/systemd !<net-misc/dhcpcd-6.4.0
 SLOT=0
-_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	8644194de7be04932084752fb1327080	git-2	32530738ee006bc09e1ac93f6e73d719	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	8644194de7be04932084752fb1327080	git-2	df00117322129fb906bb0a53c3d6a020	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=837e942ba4b4de8ff94de0a354615f92

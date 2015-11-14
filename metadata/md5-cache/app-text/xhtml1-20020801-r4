@@ -7,5 +7,5 @@ KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=W3C
 SLOT=0
 SRC_URI=http://www.w3.org/TR/xhtml1/xhtml1.tgz
-_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	sgml-catalog	b6e9d36507f43d79b6df9cb78d6eb4dd	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	sgml-catalog	b6e9d36507f43d79b6df9cb78d6eb4dd	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=c4fc2df5556a5e5a500985380eb4a3f9

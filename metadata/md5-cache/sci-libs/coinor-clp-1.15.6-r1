@@ -9,5 +9,5 @@ LICENSE=EPL-1.0
 RDEPEND=sci-libs/coinor-osi:= sci-libs/coinor-utils:= glpk? ( sci-mathematics/glpk:= sci-libs/amd ) metis? ( || ( sci-libs/metis sci-libs/parmetis ) ) mumps? ( sci-libs/mumps ) sparse? ( sci-libs/cholmod )
 SLOT=0/1
 SRC_URI=http://www.coin-or.org/download/source/Clp/Clp-1.15.6.tgz
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	8644194de7be04932084752fb1327080	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	8644194de7be04932084752fb1327080	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=17e1c7f84439109ee94f0babf2e601c4

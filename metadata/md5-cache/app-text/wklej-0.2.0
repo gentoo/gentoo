@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=vim? ( app-editors/vim[python] ) || ( =dev-lang/python-3.3* =dev-lang/python-3.2* =dev-lang/python-3.1* =dev-lang/python-2.7* =dev-lang/python-2.6* )
 SLOT=0
 SRC_URI=http://wklej.org/m/apps/wklej-0.2.0.tar.gz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=9f4de411c77d937ca40c31648f91ce88

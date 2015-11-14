@@ -8,5 +8,5 @@ LICENSE=LGPL-2-with-linking-exception
 RDEPEND=|| ( >=sys-libs/gdbm-1.9.1-r2[berkdb] <sys-libs/gdbm-1.9.1-r2 ) >=dev-lang/ocaml-3.12:=[ocamlopt] !<dev-lang/ocaml-4[gdbm]
 SLOT=0/1.0
 SRC_URI=http://forge.ocamlcore.org/frs/download.php/728/camldbm-1.0.tgz
-_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=9abba65aed9f10e984a9aef26eefb0a7

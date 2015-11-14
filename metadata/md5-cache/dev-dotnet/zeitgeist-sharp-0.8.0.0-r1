@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=dev-dotnet/dbus-sharp:1.0 dev-dotnet/dbus-sharp-glib:1.0 dev-dotnet/glib-sharp dev-lang/mono gnome-extra/zeitgeist
 SLOT=0
 SRC_URI=https://launchpad.net/zeitgeist-sharp/0.8/0.8.0/+download/zeitgeist-sharp-0.8.0.0.tar.gz doc? ( https://launchpad.net/zeitgeist-sharp/0.8/0.8.0/+download/zeitgeist-sharp-docs-0.8.0.tar.gz )
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	8644194de7be04932084752fb1327080	libtool	7f78cd7d403808a350c9ae23f5821fb4	mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	8644194de7be04932084752fb1327080	libtool	7f78cd7d403808a350c9ae23f5821fb4	mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=68c7c46159d61a9d11d9c7fb1801d5c8

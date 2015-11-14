@@ -9,5 +9,5 @@ LICENSE=BSD GPL-2
 RDEPEND=games-misc/games-envd
 SLOT=0
 SRC_URI=http://corewar.co.uk/pihlaja/pmars-sdl/pmars-0.9.2-5.tar.gz
-_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	8644194de7be04932084752fb1327080	games	4dae170e58f773c484e07d18ef441804	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	8644194de7be04932084752fb1327080	games	4dae170e58f773c484e07d18ef441804	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=05e4c33ff0bae9f96c635b7e95cc8e0d

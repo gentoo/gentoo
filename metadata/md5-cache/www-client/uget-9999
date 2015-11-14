@@ -8,5 +8,5 @@ LICENSE=LGPL-2.1
 RDEPEND=dev-libs/libpcre >=dev-libs/glib-2.32:2 >=x11-libs/gtk+-3.4:3 curl? ( >=net-misc/curl-7.10 ) gnutls? ( net-libs/gnutls dev-libs/libgcrypt ) gstreamer? ( media-libs/gstreamer:0.10 ) libnotify? ( x11-libs/libnotify )
 REQUIRED_USE=|| ( aria2 curl )
 SLOT=0
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	8644194de7be04932084752fb1327080	git-2	32530738ee006bc09e1ac93f6e73d719	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	8644194de7be04932084752fb1327080	git-2	df00117322129fb906bb0a53c3d6a020	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=c6abf0e4bb265930713f264eac13afc5

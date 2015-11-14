@@ -7,5 +7,5 @@ IUSE=avahi ccache +dvb +dvbscan ffmpeg imagecache inotify uriparser xmltv zlib
 LICENSE=GPL-3
 RDEPEND=dev-libs/openssl:0= avahi? ( net-dns/avahi ) ccache? ( dev-util/ccache ) dvb? ( virtual/linuxtv-dvb-headers ) ffmpeg? ( virtual/ffmpeg ) uriparser? ( dev-libs/uriparser ) zlib? ( sys-libs/zlib ) virtual/pkgconfig dvbscan? ( media-tv/linuxtv-dvb-apps ) xmltv? ( media-tv/xmltv )
 SLOT=0
-_eclasses_=eutils	8644194de7be04932084752fb1327080	git-2	32530738ee006bc09e1ac93f6e73d719	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	8644194de7be04932084752fb1327080	git-2	df00117322129fb906bb0a53c3d6a020	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=66f79b71df0b5ee9e3d6177550fa0891

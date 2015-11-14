@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-vcs/bzr-2.5 >=dev-vcs/qbzr-0.23 gtk? ( dev-vcs/bzr-gtk ) =dev-lang/python-2*
 SLOT=0
 SRC_URI=https://launchpad.net/bzr-explorer/1.3/1.3.0/+download/bzr-explorer-1.3.0.tar.gz
-_eclasses_=distutils	def8c8eb435ec28fd9315114640f6c84	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=11f6615d9cc64694c990cf52989a2246

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-vcs/subversion-1.0.9 bazaar? ( >=dev-vcs/bzr-1.13 ) git? ( >=dev-vcs/git-1.5.4.4 ) dev-vcs/rcs =dev-lang/python-2* test? ( || ( =dev-lang/python-2*[berkdb] =dev-lang/python-2*[gdbm] ) )
 SLOT=0
 SRC_URI=http://cvs2svn.tigris.org/files/documents/1462/49237/cvs2svn-2.4.0.tar.gz
-_eclasses_=distutils	def8c8eb435ec28fd9315114640f6c84	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=192dc8df83224469cf5dbe58c9af6b30

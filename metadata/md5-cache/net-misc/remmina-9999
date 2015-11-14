@@ -7,5 +7,5 @@ IUSE=ayatana avahi crypt debug freerdp gnome-keyring nls ssh telepathy vte
 LICENSE=GPL-2
 RDEPEND=x11-libs/gtk+:3 >=dev-libs/glib-2.31.18:2 >=net-libs/libvncserver-0.9.8.2 x11-libs/libxkbfile x11-themes/gnome-icon-theme avahi? ( net-dns/avahi[gtk3] ) ayatana? ( dev-libs/libappindicator ) crypt? ( dev-libs/libgcrypt:0 ) freerdp? ( >=net-misc/freerdp-1.1.0_beta1_p20130710 <net-misc/freerdp-1.2 ) gnome-keyring? ( gnome-base/libgnome-keyring ) ssh? ( net-libs/libssh[sftp] ) telepathy? ( net-libs/telepathy-glib ) vte? ( x11-libs/vte:2.90 ) !net-misc/remmina-plugins
 SLOT=0
-_eclasses_=cmake-utils	f16fa5681153277df51f001deaf17ff8	eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	git-2	32530738ee006bc09e1ac93f6e73d719	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	f16fa5681153277df51f001deaf17ff8	eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	git-2	df00117322129fb906bb0a53c3d6a020	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=dadefd90d268ee88ef189c1e7af6568a

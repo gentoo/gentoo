@@ -6,5 +6,5 @@ HOMEPAGE=http://jean-francois.richard.name/ghh/
 LICENSE=GPL-2
 RDEPEND=x11-libs/gtk+:2 dev-libs/glib:2 gnome-base/libgnome app-text/gnome-doc-utils >=app-text/asciidoc-8 dev-python/pygtk:2 dev-vcs/git || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
 SLOT=0
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	git-2	32530738ee006bc09e1ac93f6e73d719	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	git-2	df00117322129fb906bb0a53c3d6a020	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=9684edfa9b888cb9d4c3324f900b90ee

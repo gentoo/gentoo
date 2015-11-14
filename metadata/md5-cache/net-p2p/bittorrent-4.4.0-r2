@@ -9,5 +9,5 @@ LICENSE=BitTorrent
 RDEPEND=>=dev-python/pycrypto-2.0 gtk? ( >=x11-libs/gtk+-2.6:2 >=dev-python/pygtk-2.6:2 ) || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) || ( =dev-lang/python-2.7*[threads] =dev-lang/python-2.6*[threads] =dev-lang/python-2.5*[threads] )
 SLOT=0
 SRC_URI=http://www.bittorrent.com/dl/BitTorrent-4.4.0.tar.gz
-_eclasses_=distutils	def8c8eb435ec28fd9315114640f6c84	eutils	8644194de7be04932084752fb1327080	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	06d7be3e54573292f012e3cc433d8297	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	8644194de7be04932084752fb1327080	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=f1864560c26a6fa7fdb5bcc86559d736

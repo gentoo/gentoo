@@ -6,5 +6,5 @@ HOMEPAGE=http://pinta-project.com
 LICENSE=MIT CC-BY-3.0
 RDEPEND=dev-dotnet/atk-sharp:2 dev-dotnet/gdk-sharp:2 dev-dotnet/glib-sharp:2 dev-dotnet/gtk-sharp:2 dev-dotnet/mono-addins[gtk] dev-dotnet/pango-sharp:2 dev-lang/mono x11-libs/cairo[X] x11-libs/gdk-pixbuf[X,jpeg,tiff] x11-themes/gnome-icon-theme
 SLOT=0
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	8644194de7be04932084752fb1327080	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	git-2	32530738ee006bc09e1ac93f6e73d719	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	8644194de7be04932084752fb1327080	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	git-2	df00117322129fb906bb0a53c3d6a020	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=300b567cd3e7d81eed86d9a170a396cb

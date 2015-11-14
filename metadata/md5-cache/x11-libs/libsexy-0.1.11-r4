@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=>=dev-libs/glib-2 >=x11-libs/gtk+-2.20:2 dev-libs/libxml2 >=x11-libs/pango-1.4 >=app-text/iso-codes-0.49
 SLOT=0
 SRC_URI=http://releases.chipx86.com/libsexy/libsexy/libsexy-0.1.11.tar.bz2
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	8644194de7be04932084752fb1327080	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	8644194de7be04932084752fb1327080	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=511ed0ee7b6c8c424eadf9f080ad765a

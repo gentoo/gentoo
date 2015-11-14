@@ -7,5 +7,5 @@ IUSE=asterisk +ssl +gsm-bs +gsm-ms ss5 +sip gsmhr misdn
 LICENSE=GPL-2
 RDEPEND=media-libs/opencore-amr asterisk? ( net-misc/asterisk ) ssl? ( dev-libs/openssl ) gsm-bs? ( net-wireless/openbsc ) sip? ( net-libs/sofia-sip ) gsm-ms? ( net-wireless/osmocom-bb )
 SLOT=0
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	git-2	32530738ee006bc09e1ac93f6e73d719	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	git-2	df00117322129fb906bb0a53c3d6a020	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=442cd5dc01f918187b0cc0262e6afb8f

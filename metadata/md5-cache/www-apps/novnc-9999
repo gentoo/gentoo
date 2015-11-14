@@ -6,5 +6,5 @@ HOMEPAGE=https://kanaka.github.com/noVNC/
 LICENSE=LGPL-3
 RDEPEND=dev-python/numpy
 SLOT=0
-_eclasses_=git-2	32530738ee006bc09e1ac93f6e73d719
+_eclasses_=git-2	df00117322129fb906bb0a53c3d6a020
 _md5_=b8522dd6a1d2f21f71778b70b8a5f1d2

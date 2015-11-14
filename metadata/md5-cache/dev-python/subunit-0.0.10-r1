@@ -9,5 +9,5 @@ LICENSE=Apache-2.0 BSD
 RDEPEND=>=dev-python/testtools-0.9.23[python_targets_pypy(-)?,python_targets_pypy3(-)?,python_targets_python3_3(-)?,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_pypy(+)?,python_single_target_pypy3(+)?,python_single_target_python3_3(+)?,python_single_target_python2_7(+)?]
 SLOT=0
 SRC_URI=https://launchpad.net/subunit/trunk/0.0.10/+download/subunit-0.0.10.tar.gz
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	0bf099a6e3dfeaf20a7a94504d8dd896	eutils	8644194de7be04932084752fb1327080	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	8644194de7be04932084752fb1327080	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=ab3ccb9d1b7307149e64fa9918ba960c

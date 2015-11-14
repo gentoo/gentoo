@@ -8,5 +8,5 @@ PDEPEND=virtual/commonlisp
 RDEPEND=!dev-lisp/cl-clx
 RESTRICT=mirror
 SLOT=0
-_eclasses_=common-lisp-3	732b3b6e2021a252e13158c86e4ea4d0	eutils	8644194de7be04932084752fb1327080	git-2	32530738ee006bc09e1ac93f6e73d719	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=common-lisp-3	732b3b6e2021a252e13158c86e4ea4d0	eutils	8644194de7be04932084752fb1327080	git-2	df00117322129fb906bb0a53c3d6a020	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=c282ebdf09d4ebdd228c2e8d2c59a611

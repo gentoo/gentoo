@@ -9,5 +9,5 @@ LICENSE=LPPL-1.3
 RDEPEND=dev-texlive/texlive-bibtexextra dev-texlive/texlive-latexextra virtual/latex-base
 SLOT=0
 SRC_URI=mirror://sourceforge/biblatex/biblatex-3.0.tds.tgz
-_eclasses_=base	9fc6743731ec1d8d8a5eb88ccd5944b6	eutils	8644194de7be04932084752fb1327080	latex-package	20f17759e8808b666e37d3b1bbe2fa4d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	8644194de7be04932084752fb1327080	latex-package	20f17759e8808b666e37d3b1bbe2fa4d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=ed93d274a7fd03b0f8779d1d2469539e
