@@ -147,6 +147,14 @@ virtual/python-imaging
 >=dev-cpp/libxmlpp-2.40.1
 >=dev-libs/libsigc++-2.6.2
 >=net-libs/libsoup-2.52.2
+>=media-video/totem-3.18.1
+>=app-crypt/gcr-3.18.0
+>=app-crypt/seahorse-3.18.0
+>=app-dicts/gnome-dictionary-3.18.0
+>=app-editors/gedit-plugins-3.18.0
+>=app-editors/gedit-3.18
+>=app-editors/ghex-3.18.0
+>=app-misc/geoclue-2.4.0
 
 # Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
 # Not properly installed, dead for ages, upstream
