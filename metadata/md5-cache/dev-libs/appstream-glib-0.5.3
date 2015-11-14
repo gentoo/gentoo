@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
+DEPEND=app-arch/gcab app-arch/libarchive dev-db/sqlite:3 >=dev-libs/glib-2.45.8:2 >=media-libs/fontconfig-2.11 >=media-libs/freetype-2.4:2 >=net-libs/libsoup-2.51.92:2.4 >=x11-libs/gdk-pixbuf-2.31.5:2 x11-libs/gtk+:3 x11-libs/pango dev-libs/libyaml introspection? ( >=dev-libs/gobject-introspection-0.9.8:= ) app-text/docbook-xml-dtd:4.3 dev-libs/libxslt >=dev-util/gtk-doc-am-1.9 >=dev-util/intltool-0.40 >=sys-devel/gettext-0.17 app-arch/xz-utils >=sys-apps/sed-4
+DESCRIPTION=Provides GObjects and helper methods to read and write AppStream metadata
+EAPI=5
+HOMEPAGE=http://people.freedesktop.org/~hughsient/appstream-glib/
+IUSE=+introspection nls
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2.1
+PDEPEND=>=dev-util/appdata-tools-0.1.8-r1
+RDEPEND=app-arch/gcab app-arch/libarchive dev-db/sqlite:3 >=dev-libs/glib-2.45.8:2 >=media-libs/fontconfig-2.11 >=media-libs/freetype-2.4:2 >=net-libs/libsoup-2.51.92:2.4 >=x11-libs/gdk-pixbuf-2.31.5:2 x11-libs/gtk+:3 x11-libs/pango dev-libs/libyaml introspection? ( >=dev-libs/gobject-introspection-0.9.8:= ) !<dev-util/appdata-tools-0.1.8-r1
+SLOT=0/8
+SRC_URI=http://people.freedesktop.org/~hughsient/appstream-glib/releases/appstream-glib-0.5.3.tar.xz
+_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	8644194de7be04932084752fb1327080	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=0ad4b218e0ee145a4ce8449876bc24d9

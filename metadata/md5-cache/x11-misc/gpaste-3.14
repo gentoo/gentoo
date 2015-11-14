@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst postrm preinst prepare unpack
-DEPEND=dev-util/appdata-tools >=dev-libs/glib-2.40:2 >=dev-libs/gobject-introspection-1.42.0 sys-apps/dbus >=x11-libs/gdk-pixbuf-2.26:2 >=x11-libs/gtk+-3.12:3 x11-libs/libX11 x11-libs/libXi gnome? ( gnome-base/gnome-control-center:2 media-libs/clutter x11-libs/pango ) dev-util/intltool virtual/pkgconfig vala? ( || ( dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] dev-lang/vala:0.24[vapigen(+)] dev-lang/vala:0.22[vapigen(+)] dev-lang/vala:0.20[vapigen(+)] ) ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DEPEND=dev-util/appdata-tools >=dev-libs/glib-2.40:2 >=dev-libs/gobject-introspection-1.42.0 sys-apps/dbus >=x11-libs/gdk-pixbuf-2.26:2 >=x11-libs/gtk+-3.12:3 x11-libs/libX11 x11-libs/libXi gnome? ( gnome-base/gnome-control-center:2 media-libs/clutter x11-libs/pango ) dev-util/intltool virtual/pkgconfig vala? ( || ( dev-lang/vala:0.30[vapigen(+)] dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] dev-lang/vala:0.24[vapigen(+)] dev-lang/vala:0.22[vapigen(+)] dev-lang/vala:0.20[vapigen(+)] ) ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
 DESCRIPTION=Clipboard management system
 EAPI=5
 HOMEPAGE=https://github.com/Keruspe/GPaste
@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=dev-util/appdata-tools >=dev-libs/glib-2.40:2 >=dev-libs/gobject-introspection-1.42.0 sys-apps/dbus >=x11-libs/gdk-pixbuf-2.26:2 >=x11-libs/gtk+-3.12:3 x11-libs/libX11 x11-libs/libXi gnome? ( gnome-base/gnome-control-center:2 media-libs/clutter x11-libs/pango ) gnome? ( gnome-base/gnome-shell )
 SLOT=0
 SRC_URI=https://github.com/Keruspe/GPaste/archive/v3.14.tar.gz -> gpaste-3.14.tar.gz
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	8644194de7be04932084752fb1327080	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vala	335996addec48717e632dfd1f588ef1c	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	8644194de7be04932084752fb1327080	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vala	15f7a43101d2ff0c6dcdab272c02f469	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd
 _md5_=39f43367b8f28bdcec6db12b5cb12683

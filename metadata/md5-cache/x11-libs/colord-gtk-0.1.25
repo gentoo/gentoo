@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=>=dev-libs/glib-2.28:2 >=media-libs/lcms-2.2:2= x11-libs/gdk-pixbuf:2[introspection?] x11-libs/gtk+:3[X(+),introspection?] x11-misc/colord:=[introspection?,vala?] introspection? ( >=dev-libs/gobject-introspection-0.9.8 ) app-arch/xz-utils dev-libs/libxslt >=dev-util/intltool-0.35 >=sys-devel/gettext-0.17 virtual/pkgconfig doc? ( app-text/docbook-xml-dtd:4.1.2 >=dev-util/gtk-doc-1.9 ) vala? ( || ( dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] dev-lang/vala:0.24[vapigen(+)] dev-lang/vala:0.22[vapigen(+)] dev-lang/vala:0.20[vapigen(+)] ) )
+DEPEND=>=dev-libs/glib-2.28:2 >=media-libs/lcms-2.2:2= x11-libs/gdk-pixbuf:2[introspection?] x11-libs/gtk+:3[X(+),introspection?] x11-misc/colord:=[introspection?,vala?] introspection? ( >=dev-libs/gobject-introspection-0.9.8 ) app-arch/xz-utils dev-libs/libxslt >=dev-util/intltool-0.35 >=sys-devel/gettext-0.17 virtual/pkgconfig doc? ( app-text/docbook-xml-dtd:4.1.2 >=dev-util/gtk-doc-1.9 ) vala? ( || ( dev-lang/vala:0.30[vapigen(+)] dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] dev-lang/vala:0.24[vapigen(+)] dev-lang/vala:0.22[vapigen(+)] dev-lang/vala:0.20[vapigen(+)] ) )
 DESCRIPTION=GTK support library for colord
 EAPI=5
 HOMEPAGE=http://www.freedesktop.org/software/colord/
@@ -11,5 +11,5 @@ REQUIRED_USE=vala? ( introspection )
 RESTRICT=test
 SLOT=0/1
 SRC_URI=http://www.freedesktop.org/software/colord/releases/colord-gtk-0.1.25.tar.xz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vala	335996addec48717e632dfd1f588ef1c
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vala	15f7a43101d2ff0c6dcdab272c02f469
 _md5_=8feb1de7578da79aeed59b08a26c099c
