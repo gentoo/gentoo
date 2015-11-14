@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Alexis Ballier <aballier@gentoo.org> (14 Nov 2015)
+# MMAL is available on the Raspberry Pi (armv6 & armv7 so far)
+media-video/ffmpeg -mmal
+
 # Markus Meier <maekke@gentoo.org> (10 Nov 2015)
 # unkeyworded deps, bug #555896
 sci-libs/armadillo mkl
