@@ -2174,7 +2174,7 @@ app-text/antiword 0.37-r1: free MS Word reader
 app-text/antixls 0.3b: It is used to print out an XLS file with minimal formatting, or extracts the data into CSV format
 app-text/apvlv 0.1.5: Alf's PDF Viewer Like Vim
 app-text/asa 1.1 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
-app-text/asciidoc 8.6.5 8.6.8-r1 8.6.9 8.6.9-r1 9999: A text document format for writing short documents, articles, books and UNIX man pages
+app-text/asciidoc 8.6.5 8.6.8-r1 8.6.9 8.6.9-r1 8.6.9-r2 9999: AsciiDoc is a plain text human readable/writable document format
 app-text/aspell 0.60.6.1-r1 0.60.6.1-r2: A spell checker replacement for ispell
 app-text/atril 1.8.0 1.8.1: Atril document viewer for MATE
 app-text/bact 0.13: Boosting Algorithm for Classification of Trees
