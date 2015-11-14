@@ -22,7 +22,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 
 IUSE="ipv6 libressl +nse system-lua ncat ndiff nls nmap-update nping ssl zenmap"
-NMAP_LINGUAS=( de fr hr it ja pl pt_BR ru )
+NMAP_LINGUAS=( de fr hr it ja pl pt_BR ru zh )
 IUSE+=" ${NMAP_LINGUAS[@]/#/linguas_}"
 
 REQUIRED_USE="
@@ -73,7 +73,8 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-5.21-python.patch \
 		"${FILESDIR}"/${PN}-6.46-uninstaller.patch \
 		"${FILESDIR}"/${PN}-6.47-no-libnl.patch \
-		"${FILESDIR}"/${PN}-6.49-no-FORTIFY_SOURCE.patch
+		"${FILESDIR}"/${PN}-6.49-no-FORTIFY_SOURCE.patch \
+		"${FILESDIR}"/${PN}-6.25-liblua-ar.patch
 
 	if use nls; then
 		local lingua=''
