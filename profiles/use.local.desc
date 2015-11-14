@@ -4651,6 +4651,7 @@ media-video/ffmpeg:libv4l - Uses media-libs/libv4l for video4linux instead of di
 media-video/ffmpeg:mipsdspr1 - Enables MIPS DSP ASE R1 optimizations.
 media-video/ffmpeg:mipsdspr2 - Enables MIPS DSP ASE R2 optimizations.
 media-video/ffmpeg:mipsfpu - Enables floating point MIPS optimizations.
+media-video/ffmpeg:mmal - Enables Multi-Media Abstraction Layer (MMAL) decoding support: Available e.g. on the Raspberry Pi.
 media-video/ffmpeg:network - Enables network streaming support
 media-video/ffmpeg:nvenc - Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.
 media-video/ffmpeg:openh264 - Enables H.264 encoding suppoprt via media-libs/openh264.
