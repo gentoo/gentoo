@@ -517,7 +517,7 @@ app-crypt/ekeyd 1.1.4-r2 1.1.5: Entropy Key userspace daemon
 app-crypt/elettra 1.0: Plausible deniable file cryptography
 app-crypt/etcd-ca 0_p20140903 0_p20150423 0_p20150423-r1: A simple certificate manager written in Go. Easy to use with limited capability
 app-crypt/fcrackzip 1.0: a zip password cracker
-app-crypt/gcr 3.12.2 3.14.0 3.16.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
+app-crypt/gcr 3.14.0 3.16.0 3.18.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
 app-crypt/gentoo-keys 201501052117: A Openpgp/gpg keyring of official Gentoo release media gpg keys
 app-crypt/gifshuffle 2.0: GIF colourmap steganography
 app-crypt/gkeys 0.1-r1 9999: An OpenPGP/GPG key management tool and python libs
@@ -587,7 +587,7 @@ app-crypt/sbsigntool 0.6 0.6-r1: Utilities for signing and verifying files for U
 app-crypt/scl011-bin 2.06: pcsc-lite driver for the German identification card (nPA)
 app-crypt/scrypt 1.1.6 1.2.0: A simple password-based encryption utility using the scrypt key derivation function
 app-crypt/scute 1.4.0: A PKCS #11 module for OpenPGP smartcards
-app-crypt/seahorse 3.14.1 3.16.0-r1: A GNOME application for managing encryption keys
+app-crypt/seahorse 3.16.0-r1 3.18.0: A GNOME application for managing encryption keys
 app-crypt/seahorse-sharing 3.8.0: Daemon for PGP public key sharing using DNS-SD and HKP
 app-crypt/sgeps 0_pre15: simple GnuPG-encrypted password store written in perl
 app-crypt/shash 0.2.6-r2: Generate or check digests or MACs of files
@@ -673,7 +673,7 @@ app-dicts/freedict-eng-swe 1.0: Freedict for language translation from English t
 app-dicts/freedict-fra-eng 1.0: Freedict for language translation from French to English
 app-dicts/freedict-ita-eng 1.0: Freedict for language translation from Italian to English
 app-dicts/gjiten 2.6-r3: A Japanese dictionary program for Gnome
-app-dicts/gnome-dictionary 3.14.2 3.16.2: Dictionary utility for GNOME
+app-dicts/gnome-dictionary 3.16.2 3.18.0: Dictionary utility for GNOME
 app-dicts/gwaei 3.0.2 3.2.0 3.6.2: Japanese-English Dictionary for GNOME
 app-dicts/hunspell-kk 1.1.2: Kazakh dictionaries for myspell/hunspell
 app-dicts/ipadic 2.7.0-r2: Japanese dictionary for ChaSen
@@ -1003,9 +1003,9 @@ app-editors/fb2edit 0.0.8 0.0.9: a WYSIWYG FictionBook (fb2) editor
 app-editors/fe 1.8 1.9: A small and easy to use folding editor
 app-editors/focuswriter 1.5.3 1.5.4: A fullscreen and distraction-free word processor
 app-editors/fte 20051115-r3 20110708: Lightweight text-mode editor
-app-editors/gedit 3.16.3 3.16.4: A text editor for the GNOME desktop
-app-editors/gedit-plugins 3.14.1 3.16.0: Official plugins for gedit
-app-editors/ghex 3.10.1: GNOME hexadecimal editor
+app-editors/gedit 3.16.4 3.18.2: A text editor for the GNOME desktop
+app-editors/gedit-plugins 3.16.0 3.18.0: Official plugins for gedit
+app-editors/ghex 3.10.1 3.18.0: GNOME hexadecimal editor
 app-editors/gobby 0.4.13 0.4.94: GTK-based collaborative editor
 app-editors/gummi 0.6.5 9999: Simple LaTeX editor for GTK+ users
 app-editors/gvim 7.4.273 7.4.769 7.4.827 9999: GUI version of the Vim text editor
@@ -1748,7 +1748,7 @@ app-misc/gcstar 1.7.0: Manage your collections of movies, games, books, music an
 app-misc/geekcode 1.7.3-r1: Geek code generator
 app-misc/geneweb 6.07: Genealogy software program with a Web interface
 app-misc/gentoo 0.20.6: A modern GTK+ based filemanager for any WM
-app-misc/geoclue 0.12.99 2.1.9 2.1.10 2.2.0: A geoinformation D-Bus service
+app-misc/geoclue 0.12.99 2.2.0 2.4.0: A geoinformation D-Bus service
 app-misc/getopt 1.1.6: getopt(1) replacement supporting GNU-style long options
 app-misc/glastree 1.04: glastree is a poor mans snapshot utility using hardlinks written in perl
 app-misc/glcdprocdriver 0.0.6: Glue library for the glcdlib LCDproc driver based on GraphLCD
@@ -11041,7 +11041,7 @@ kde-base/kactivitymanagerd 4.13.3-r1: KDE Activity Manager Daemon
 kde-base/kaddressbook 4.4.2015.06 4.14.8 4.14.10: The KDE Address Book
 kde-base/kalarm 4.4.2015.06 4.14.8 4.14.10: Personal alarm message, command and email scheduler for KDE
 kde-base/katepart 4.14.3: KDE Editor KPart
-kde-base/kcheckpass 4.11.19 4.11.22: A simple password checker, used by any software in need of user authentication
+kde-base/kcheckpass 4.11.19 4.11.22-r1: A simple password checker, used by any software in need of user authentication
 kde-base/kcminit 4.11.19 4.11.22: KCMInit - runs startups initialization for Control Modules
 kde-base/kde-env 4.14.3: Environment setting required for all KDE4 apps to run
 kde-base/kde-meta 4.14.3: KDE - merge this to pull in all split kde-base/* packages
@@ -13267,7 +13267,7 @@ media-video/subtitleripper 0.3.4-r4: DVD Subtitle Ripper for Linux
 media-video/super_demux 0.3: DVB transport stream TS to ES demultiplexer
 media-video/tcmplex-panteltje 0.4.7: audio video multiplexer for 8 audio channels
 media-video/tivodecode 0.2_pre4: TiVo File Decoder
-media-video/totem 3.16.3 3.16.4: Media player for GNOME
+media-video/totem 3.16.4 3.18.1: Media player for GNOME
 media-video/tovid 0.34 0.34_p20120123 0.35.2: A collection of DVD authoring tools
 media-video/transcode 1.1.7-r1 1.1.7-r2 1.1.7-r3: A suite of utilities for transcoding video and audio codecs in different containers
 media-video/tsmuxer 1.10.6-r1: Utility to create and demux TS and M2TS files
