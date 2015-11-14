@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=dev-ros/tf dev-ros/pcl_ros dev-ros/octomap_msgs[ros_messages_cxx(-)] dev-ros/sensor_msgs[ros_messages_cxx(-)] >=dev-vcs/git-1.8.2.1 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-util/catkin dev-python/empy
+DEPEND=dev-ros/tf dev-ros/pcl_ros sci-libs/octomap dev-ros/octomap_msgs[ros_messages_cxx(-)] dev-ros/sensor_msgs[ros_messages_cxx(-)] >=dev-vcs/git-1.8.2.1 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) dev-util/catkin dev-python/empy
 DESCRIPTION=Conversion functions between ROS / PCL and OctoMap's native types
 EAPI=5
 HOMEPAGE=http://wiki.ros.org/octomap_ros
 IUSE=test
 LICENSE=BSD
-RDEPEND=dev-ros/tf dev-ros/pcl_ros dev-ros/octomap_msgs[ros_messages_cxx(-)] dev-ros/sensor_msgs[ros_messages_cxx(-)] dev-util/catkin dev-python/empy
+RDEPEND=dev-ros/tf dev-ros/pcl_ros sci-libs/octomap dev-ros/octomap_msgs[ros_messages_cxx(-)] dev-ros/sensor_msgs[ros_messages_cxx(-)] dev-util/catkin dev-python/empy
 SLOT=0
 _eclasses_=cmake-utils	f16fa5681153277df51f001deaf17ff8	eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	git-r3	1502b9838d043db47700b8120083e637	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	ros-catkin	5bd0782bea06cf2dd93b07f40e0a5e09	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=6e19e8ceaad1adcef7801221c2be1dfb
+_md5_=5e7cd1d411d4d2bb1de2a3fb344724e5
