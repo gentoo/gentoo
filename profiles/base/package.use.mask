@@ -5,6 +5,11 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Alexis Ballier <aballier@gentoo.org> (14 Nov 2015)
+# MMAL is only available on the Raspberry Pi:
+# Mask it globally, unmask it on arm.
+media-video/ffmpeg mmal
+
 # Michael Palimaka <kensington@gentoo.org> (13 Nov 2015)
 # Requires unreleased dependencies
 kde-frameworks/knotifications speech
