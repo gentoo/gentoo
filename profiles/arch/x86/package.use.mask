@@ -21,10 +21,6 @@ sys-apps/systemd -gnuefi
 dev-java/oracle-jdk-bin -javafx -nsplugin
 dev-java/oracle-jre-bin -javafx -nsplugin
 
-# Gilles Dartiguelongue <eva@gentoo.org> (10 Jun 2015)
-# net-libs/dleyna-connector-dbus lack x86 keyword, bug #551634
->=media-plugins/grilo-plugins-0.2.14 upnp-av
-
 # Ben de Groot <yngwin@gentoo.org> (15 Mar 2015)
 # media-libs/libbdplus is keyworded on x86, so unmask the useflag
 media-libs/libbluray -bdplus
