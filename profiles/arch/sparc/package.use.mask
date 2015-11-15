@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
+# Missing keywords
+>=media-plugins/grilo-plugins-0.2.16 upnp-av
+
 # Julian Ospald <hasufell@gentoo.org> (08 Nov 2015)
 # Requires net-libs/http-parser
 net-im/jabberd2 websocket
