@@ -329,16 +329,6 @@ dev-java/jakarta-jstl
 # Masked for removal in 30 days.
 =dev-lang/ruby-1.9*
 
-# Patrice Clement <monsieurp@gentoo.org> (6 Oct 2015)
-# No update since 2008. Masked for removal in 30 days.
-# See bug #562370.
-dev-java/cos
-
-# Patrice Clement <monsieurp@gentoo.org> (6 Oct 2015)
-# Dead upstream. Masked for removal in 30 days.
-# See bug #562370.
-dev-java/commons-grant
-
 # Mike Pagano <mpagano@gentoo.org> (2 Oct 2015)
 # A regression in kernel 4.1.9 could lead to a system
 # lockup.  This has been fixed in gentoo-sources-4.1.9-r1
