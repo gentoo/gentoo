@@ -76,7 +76,7 @@ COMMON="
 	fftw? ( sci-libs/fftw:3.0= )
 	hls? (
 		media-libs/faac:=
-		media-libs/libvpx:=
+		<media-libs/libvpx-1.5.0:=
 		>=media-libs/x264-0.0.20111220:=
 	)
 	ieee1394? (
