@@ -37,8 +37,8 @@ RDEPEND="
 	>=dev-libs/gobject-introspection-0.9.5:=
 	>=dev-libs/icu-4.8.1.1:=
 	|| (
-		>=media-gfx/imagemagick-5.2.1[png,jpeg=]
-		media-gfx/graphicsmagick[imagemagick,png,jpeg=] )
+		>=media-gfx/imagemagick-5.2.1[png,jpeg?]
+		media-gfx/graphicsmagick[imagemagick,png,jpeg?] )
 	>=media-libs/libpng-1.2:0=
 	>=media-libs/libmediaart-1.9:2.0
 	>=x11-libs/pango-1:=
