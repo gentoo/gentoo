@@ -1141,6 +1141,24 @@ python_fix_shebang() {
 	done
 }
 
+# @FUNCTION: _python_check_locale_sanity
+# @USAGE: <locale>
+# @RETURN: 0 if sane, 1 otherwise
+# @DESCRIPTION:
+# Check whether the specified locale sanely maps between lowercase
+# and uppercase ASCII characters.
+_python_check_locale_sanity() {
+	local -x LC_CTYPE=${1}
+	local IFS=
+
+	local lc=( {a..z} )
+	local uc=( {A..Z} )
+	local input=${lc[*]}${uc[*]}
+
+	local output=$(tr '[:lower:][:upper:]' '[:upper:][:lower:]' <<<"${input}")
+	[[ ${output} == "${uc[*]}${lc[*]}" ]]
+}
+
 # @FUNCTION: python_export_utf8_locale
 # @RETURN: 0 on success, 1 on failure.
 # @DESCRIPTION:
@@ -1165,8 +1183,10 @@ python_export_utf8_locale() {
 
 		for lang in ${locales}; do
 			if [[ $(LC_CTYPE=${lang} locale charmap 2>/dev/null) == UTF-8 ]]; then
-				export LC_CTYPE=${lang}
-				return 0
+				if _python_check_locale_sanity "${lang}"; then
+					export LC_CTYPE=${lang}
+					return 0
+				fi
 			fi  
 		done
 
