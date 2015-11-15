@@ -33,17 +33,17 @@ RESTRICT="preserve-libs strip"
 QA_PREBUILT="opt/.*"
 
 # gsettings-desktop-schemas is needed for native proxy support. #431972
-RDEPEND=">=dev-libs/glib-2.40:2
+RDEPEND=">=dev-libs/glib-2.42:2
 	>=dev-libs/nss-3.16.1-r1
 	>=dev-libs/nspr-4.10
 	>=gnome-base/gsettings-desktop-schemas-3.12.2
 	media-fonts/dejavu
 	>=media-libs/fontconfig-2.11:1.0
-	>=media-libs/freetype-2.5.3:2
+	>=media-libs/freetype-2.5.5:2
 	>=media-libs/lcms-2.6:2
-	>=sys-devel/gcc-4.8.4
-	>=sys-libs/glibc-2.20
-	>=sys-libs/zlib-1.2.3-r1
+	>=sys-devel/gcc-4.9.3
+	>=sys-libs/glibc-2.21
+	>=sys-libs/zlib-1.2.8-r1
 	virtual/jpeg:62
 	alsa? ( >=media-libs/alsa-lib-1.0 )
 	!headless-awt? (
@@ -52,7 +52,7 @@ RDEPEND=">=dev-libs/glib-2.40:2
 		>=x11-libs/libX11-1.6
 		>=x11-libs/libXext-1.3
 		>=x11-libs/libXi-1.7
-		>=x11-libs/libXrender-0.9.4
+		>=x11-libs/libXrender-0.9.8
 		>=x11-libs/libXtst-1.2
 	)
 	cjk? (
@@ -64,8 +64,8 @@ RDEPEND=">=dev-libs/glib-2.40:2
 	)
 	cups? ( >=net-print/cups-2.0 )
 	gtk? (
-		>=dev-libs/atk-2.12
-		>=x11-libs/cairo-1.12
+		>=dev-libs/atk-2.16.0
+		>=x11-libs/cairo-1.14.2
 		x11-libs/gdk-pixbuf:2
 		>=x11-libs/gtk+-2.24:2
 		>=x11-libs/pango-1.36
