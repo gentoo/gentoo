@@ -183,6 +183,22 @@ virtual/python-imaging
 >=gnome-base/gsettings-desktop-schemas-3.18.1
 >=gnome-base/libgtop-2.32.0
 >=gnome-extra/gnome-boxes-3.18.1
+>=dev-libs/libgit2-glib-0.23.6
+>=gnome-extra/gnome-builder-3.18.1
+>=gnome-extra/gnome-calendar-3.18.1
+>=gnome-extra/gnome-characters-3.18.1
+>=gnome-extra/gnome-clocks-3.18.0
+>=gnome-extra/gnome-color-manager-3.18.0
+>=gnome-extra/gnome-logs-3.18.1
+>=gnome-extra/gnome-power-manager-3.18.0
+>=gnome-extra/gnome-user-docs-3.18.1
+>=gnome-extra/gnome-user-share-3.18.0
+>=gnome-extra/gnome-weather-3.18.1
+>=gnome-extra/gtkhtml-4.10.0
+>=gnome-extra/sushi-3.18.0
+>=gnome-extra/yelp-3.18.1
+>=gnome-extra/zenity-3.18.1.1
+>=media-gfx/gnome-screenshot-3.18.0
 
 # Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
 # Not properly installed, dead for ages, upstream
