@@ -18,7 +18,6 @@ IUSE=""
 
 RDEPEND="
 	app-text/texlive
-	dev-texlive/texlive-htmlxml
 	dev-texlive/texlive-latexextra
 	dev-texlive/texlive-latexrecommended
 	dev-texlive/texlive-mathextra
