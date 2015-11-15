@@ -2888,7 +2888,7 @@ dev-db/maxscale 1.2.0: A content aware, plug-able MySQL proxy server
 dev-db/metakit 2.4.9.7-r2: Embedded database library
 dev-db/mongodb 2.4.13 2.4.14 2.6.8 2.6.11 3.0.5 3.0.6 3.0.6-r1 3.0.7: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
-dev-db/mycli 1.4.0 9999: CLI for MySQL Database with auto-completion and syntax highlighting
+dev-db/mycli 1.4.0 1.5.2 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.6.2: A high-performance multi-threaded backup (and restore) toolset for MySQL and Drizzle
 dev-db/myodbc 5.2.7-r1 5.2.7-r2: ODBC driver for MySQL
 dev-db/mysql 5.5.46 5.6.26 5.6.27 5.6.27-r1: A fast, multi-threaded, multi-user SQL database server
