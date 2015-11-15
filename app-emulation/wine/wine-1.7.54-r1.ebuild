@@ -277,7 +277,7 @@ src_prepare() {
 	fi
 	sed -i '/^UPDATE_DESKTOP_DATABASE/s:=.*:=true:' tools/Makefile.in || die
 	if ! use run-exes; then
-		sed -i '/^MimeType/d' tools/wine.desktop || die #117785
+		sed -i '/^MimeType/d' loader/wine.desktop || die #117785
 	fi
 
 	# hi-res default icon, #472990, http://bugs.winehq.org/show_bug.cgi?id=24652
