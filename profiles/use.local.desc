@@ -3894,7 +3894,6 @@ media-libs/glfw:egl - Use EGL instead of GLX for GL context creation
 media-libs/gmtk:dconf - Enable support for gnome-base/dconf
 media-libs/grilo:network - Enable network access for media discovery using net-libs/libsoup
 media-libs/grilo:playlist - Enable support for playlists through dev-libs/totem-pl-parser
-media-libs/grilo:vala - Generate bindings for dev-lang/vala
 media-libs/gst-plugins-bad:egl - Enable EGL support
 media-libs/gst-plugins-bad:gles2 - Enable GLES2 support
 media-libs/gst-plugins-base:ivorbis - Enable integer based vorbis decoder.
@@ -6651,7 +6650,6 @@ sci-electronics/pulseview:decode - Enable decoding of protocols while capturing
 sci-electronics/sigrok-cli:decode - Enable decoding of protocols while capturing
 sci-electronics/splat:hires - Builds additional high resolution application 'rfsplat-hd'.
 sci-geosciences/gdal-grass:postgres - Include support for dev-db/postgresql
-sci-geosciences/geocode-glib:introspection - Use dev-libs/gobject-introspection for introspection
 sci-geosciences/gmt:gdal - Enable sci-libs/gdal library support
 sci-geosciences/gmt:gmtfull - Full resolution bathymetry database
 sci-geosciences/gmt:gmthigh - Add high resolution bathymetry database
