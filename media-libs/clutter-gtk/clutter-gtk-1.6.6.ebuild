@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,14 +13,14 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Clutter"
 LICENSE="LGPL-2.1+"
 
 SLOT="1.0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="examples +introspection"
 
 RDEPEND="
-	>=x11-libs/gtk+-3.6.0:3[introspection?]
-	>=media-libs/clutter-1.18.0:1.0[introspection?]
+	>=x11-libs/gtk+-3.8.0:3[introspection?]
+	>=media-libs/clutter-1.23.7:1.0[introspection?]
 	media-libs/cogl:1.0=[introspection?]
-	introspection? ( >=dev-libs/gobject-introspection-0.9.12 )
+	introspection? ( >=dev-libs/gobject-introspection-0.9.12:= )
 "
 DEPEND="${RDEPEND}
 	dev-util/gtk-doc-am

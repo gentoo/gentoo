@@ -13,14 +13,15 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Grilo"
 
 LICENSE="LGPL-2.1+"
 SLOT="0.2"
-KEYWORDS="~alpha amd64 ~ppc ~ppc64 x86"
-IUSE="daap +dvd flickr freebox gnome-online-accounts lua pocket thetvdb tracker upnp-av +vimeo +youtube"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+IUSE="daap +dvd flickr freebox gnome-online-accounts lua subtitles thetvdb tracker upnp-av +vimeo +youtube"
 
+# Bump gom requirement to avoid segfaults
 RDEPEND="
 	>=dev-libs/glib-2.36:2
-	>=media-libs/grilo-0.2.11:${SLOT}[network,playlist]
-	>=media-libs/libmediaart-0.1:1.0
-	>=dev-libs/gom-0.2.1
+	>=media-libs/grilo-0.2.12:${SLOT}[network,playlist]
+	media-libs/libmediaart:2.0
+	>=dev-libs/gom-0.3.1
 
 	dev-libs/gmime:2.6
 	dev-libs/json-glib
@@ -31,14 +32,11 @@ RDEPEND="
 	dvd? ( >=dev-libs/totem-pl-parser-3.4.1 )
 	flickr? ( net-libs/liboauth )
 	freebox? ( net-dns/avahi )
-	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.7.1 )
+	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.17.91 )
 	lua? (
-		>=dev-lang/lua-5.2
+		>=dev-lang/lua-5.3
 		app-arch/libarchive )
-	pocket? (
-		>=net-libs/gnome-online-accounts-3.11.4
-		>=net-libs/rest-0.7.90
-		>=dev-libs/totem-pl-parser-3.4.1 )
+	subtitles? ( net-libs/libsoup:2.4 )
 	thetvdb? (
 		app-arch/libarchive
 		dev-libs/libxml2 )
@@ -46,7 +44,9 @@ RDEPEND="
 	youtube? (
 		>=dev-libs/libgdata-0.9.1:=
 		dev-libs/totem-pl-parser )
-	upnp-av? ( net-libs/libsoup )
+	upnp-av? (
+		net-libs/libsoup:2.4
+		net-libs/dleyna-connector-dbus )
 	vimeo? (
 		dev-libs/totem-pl-parser )
 "
@@ -57,6 +57,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
+# FIXME: some unittests required python-dbusmock
 src_configure() {
 	# --enable-debug only changes CFLAGS, useless for us
 	# Plugins
@@ -65,8 +66,6 @@ src_configure() {
 		--disable-static \
 		--disable-debug \
 		--disable-uninstalled \
-		--enable-bliptv \
-		--enable-apple-trailers \
 		--enable-bookmarks \
 		--enable-filesystem \
 		--enable-gravatar \
@@ -85,7 +84,7 @@ src_configure() {
 		$(use_enable freebox) \
 		$(use_enable gnome-online-accounts goa) \
 		$(use_enable lua lua-factory) \
-		$(use_enable pocket) \
+		$(use_enable subtitles opensubtitles) \
 		$(use_enable thetvdb) \
 		$(use_enable tracker) \
 		$(use_enable upnp-av dleyna) \

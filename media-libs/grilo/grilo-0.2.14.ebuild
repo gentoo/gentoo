@@ -6,7 +6,7 @@ EAPI="5"
 GCONF_DEBUG="no" # --enable-debug only changes CFLAGS
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
-VALA_MIN_API_VERSION="0.12"
+VALA_MIN_API_VERSION="0.28"
 VALA_USE_DEPEND="vapigen"
 
 inherit gnome2 python-any-r1 vala
@@ -16,17 +16,17 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Grilo"
 
 LICENSE="LGPL-2.1+"
 SLOT="0.2/1" # subslot is libgrilo-0.2 soname suffix
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 IUSE="gtk examples +introspection +network playlist test vala"
 REQUIRED_USE="test? ( introspection )"
 
 RDEPEND="
-	>=dev-libs/glib-2.34:2
+	>=dev-libs/glib-2.43.1:2
 	dev-libs/libxml2:2
 	net-libs/liboauth
 	gtk? ( >=x11-libs/gtk+-3:3 )
-	introspection? ( >=dev-libs/gobject-introspection-0.9 )
+	introspection? ( >=dev-libs/gobject-introspection-0.9:= )
 	network? ( >=net-libs/libsoup-2.41.3:2.4 )
 	playlist? ( >=dev-libs/totem-pl-parser-3.4.1 )
 "

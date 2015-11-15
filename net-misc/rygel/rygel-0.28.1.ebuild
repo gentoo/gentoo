@@ -3,8 +3,8 @@
 # $Id$
 
 EAPI="5"
-GNOME2_LA_PUNT="yes"
 GCONF_DEBUG="no"
+GNOME2_LA_PUNT="yes"
 
 inherit gnome2 virtualx
 
@@ -13,22 +13,22 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Rygel"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="X +introspection +sqlite tracker test transcode"
 
 # The deps for tracker? and transcode? are just the earliest available
 # version at the time of writing this ebuild
 RDEPEND="
-	>=dev-libs/glib-2.34:2
+	>=dev-libs/glib-2.40.0:2
 	>=dev-libs/libgee-0.8:0.8
 	>=dev-libs/libxml2-2.7:2
 	>=media-libs/gupnp-dlna-0.9.4:2.0
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
-	>=media-libs/libmediaart-0.5:1.0
+	>=media-libs/libmediaart-0.7:2.0
 	media-plugins/gst-plugins-soup:1.0
 	>=net-libs/gssdp-0.13
-	>=net-libs/gupnp-0.19
+	>=net-libs/gupnp-0.20.14
 	>=net-libs/gupnp-av-0.12.4
 	>=net-libs/libsoup-2.44:2.4
 	>=sys-apps/util-linux-2.20
@@ -36,7 +36,7 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-1.33.4:= )
 	sqlite? (
 		>=dev-db/sqlite-3.5:3
-		dev-libs/libunistring
+		dev-libs/libunistring:=
 	)
 	tracker? ( >=app-misc/tracker-0.16:= )
 	transcode? (
@@ -55,16 +55,6 @@ DEPEND="${RDEPEND}
 # Maintainer only
 #	>=dev-lang/vala-0.22
 #   dev-libs/libxslt
-
-src_prepare() {
-	# runs gst-plugins-scanner on run with triggers sandbox violation
-	# trying to open dri
-	sed -e 's/rygel-media-engine-test$(EXEEXT)//' \
-		-e 's/rygel-playbin-renderer-test$(EXEEXT)//' \
-		-i tests/Makefile.in || die
-
-	gnome2_src_prepare
-}
 
 src_configure() {
 	# We defined xsltproc because man pages are provided by upstream
@@ -85,6 +75,7 @@ src_configure() {
 src_install() {
 	gnome2_src_install
 	# Autostart file is not placed correctly, bug #402745
+	# https://bugs.launchpad.net/ubuntu/+source/rygel/+bug/827030
 	insinto /etc/xdg/autostart
 	doins "${D}"/usr/share/applications/rygel.desktop
 	rm "${D}"/usr/share/applications/rygel.desktop

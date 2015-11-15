@@ -6,7 +6,7 @@ EAPI="5"
 GCONF_DEBUG="no"
 PYTHON_COMPAT=( python{3_3,3_4} )
 
-inherit gnome2 python-single-r1
+inherit gnome2 python-r1
 
 DESCRIPTION="Music management for Gnome"
 HOMEPAGE="https://wiki.gnome.org/Apps/Music"
@@ -44,14 +44,10 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.26
+	dev-util/itstool
 	virtual/pkgconfig
 "
 
-src_configure() {
-	gnome2_src_configure ITSTOOL="$(type -P true)"
-}
-
-src_install() {
-	gnome2_src_install
-	python_fix_shebang "${ED}"
+pkg_setup() {
+	python_setup
 }

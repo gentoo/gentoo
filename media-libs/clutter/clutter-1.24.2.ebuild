@@ -13,38 +13,35 @@ DESCRIPTION="Clutter is a library for creating graphical user interfaces"
 
 LICENSE="LGPL-2.1+ FDL-1.1+"
 SLOT="1.0"
-IUSE="aqua debug doc egl gtk +introspection test wayland +X"
+IUSE="aqua debug doc egl gtk +introspection test wayland X"
 REQUIRED_USE="
 	|| ( aqua wayland X )
 	wayland? ( egl )
 "
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 
 # NOTE: glx flavour uses libdrm + >=mesa-7.3
-# XXX: uprof needed for profiling
 # >=libX11-1.3.1 needed for X Generic Event support
 # do not depend on tslib, it does not build and is disable by default upstream
-# <dev-libs/libinput-0.8 due to Gnome bugzilla #742829
 RDEPEND="
-	>=dev-libs/glib-2.37.3:2
+	>=dev-libs/glib-2.44.0:2
 	>=dev-libs/atk-2.5.3[introspection?]
 	>=dev-libs/json-glib-0.12[introspection?]
-	>=media-libs/cogl-1.17.5:1.0=[introspection?,pango,wayland?]
-	>=x11-libs/cairo-1.12:=[aqua?,glib]
+	>=media-libs/cogl-1.21.2:1.0=[introspection?,pango,wayland?]
+	>=x11-libs/cairo-1.14:=[aqua?,glib]
 	>=x11-libs/pango-1.30[introspection?]
 
 	virtual/opengl
 	x11-libs/libdrm:=
 
 	egl? (
-		>=dev-libs/libinput-0.4
-		<dev-libs/libinput-0.8
+		>=dev-libs/libinput-0.19.0
 		media-libs/cogl[gles2,kms]
 		>=virtual/libgudev-136
 		x11-libs/libxkbcommon
 	)
 	gtk? ( >=x11-libs/gtk+-3.3.18:3[aqua?] )
-	introspection? ( >=dev-libs/gobject-introspection-0.9.6 )
+	introspection? ( >=dev-libs/gobject-introspection-1.39:= )
 	X? (
 		media-libs/fontconfig
 		>=x11-libs/libX11-1.3.1
@@ -65,11 +62,8 @@ DEPEND="${RDEPEND}
 		>=dev-util/gtk-doc-1.20
 		>=app-text/docbook-sgml-utils-0.6.14[jadetex]
 		dev-libs/libxslt )
-	test? ( x11-libs/gdk-pixbuf )"
-
-# Tests fail with both swrast and llvmpipe
-# They pass under r600g or i965, so the bug is in mesa
-#RESTRICT="test"
+	test? ( x11-libs/gdk-pixbuf )
+"
 
 src_prepare() {
 	# We only need conformance tests, the rest are useless for us
@@ -84,11 +78,11 @@ src_prepare() {
 src_configure() {
 	# XXX: Conformance test suite (and clutter itself) does not work under Xvfb
 	# (GLX error blabla)
-	# XXX: Profiling, coverage disabled for now
+	# XXX: coverage disabled for now
 	# XXX: What about cex100/win32 backends?
 	gnome2_src_configure \
-		--disable-profile \
 		--disable-maintainer-flags \
+		--disable-mir-backend \
 		--disable-gcov \
 		--disable-cex100-backend \
 		--disable-win32-backend \
