@@ -8972,7 +8972,7 @@ dev-ruby/yard 0.8.7.3 0.8.7.6: Documentation generation tool for the Ruby progra
 dev-ruby/zentest 4.9.5 4.11.0: ZenTest provides tools to support testing: zentest, unit_diff, autotest, multiruby, and Test::Rails
 dev-scheme/bigloo 3.0c_p4 3.4a_p3 3.6a: Bigloo is a Scheme implementation
 dev-scheme/c-wrapper 0.6.1: Foreign function interface for C and Objective-C libraries
-dev-scheme/chicken 4.8.0.3-r1 4.10.0-r1: Chicken is a Scheme interpreter and native Scheme to C compiler
+dev-scheme/chicken 4.10.0-r1: Chicken is a Scheme interpreter and native Scheme to C compiler
 dev-scheme/elk 3.99.8: Scheme implementation designed to be embeddable extension to C/C++ applications
 dev-scheme/escm 1.1: escm - Embedded Scheme Processor
 dev-scheme/gambit 4.6.2 4.6.3 4.6.4 4.6.5 4.6.7 4.6.9 4.7.0 4.7.0-r1: Gambit-C is a native Scheme to C compiler and interpreter
