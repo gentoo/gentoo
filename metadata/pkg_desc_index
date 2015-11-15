@@ -1338,7 +1338,7 @@ app-emulation/vmware-vix 1.11.4.744019: VMware VIX API for Linux
 app-emulation/vmware-workstation 9.0.3.1410761 10.0.6.2700073 11.1.2.2780323 11.1.2.2780323-r1: Emulate a complete PC on your PC without the usual performance overhead of most emulators
 app-emulation/vov 2.0.0: vov (Vov's Obsessive Von-Neumann) is a tool that emulates the behavior of a Von-Neumann machine
 app-emulation/vpcs 0.6: Simulate up to 9 PCs in place of VMware boxes in a Dynamips network
-app-emulation/wine 1.6.2 1.6.2-r1 1.7.3-r1 1.7.4-r1 1.7.8-r1 1.7.9-r1 1.7.10-r1 1.7.11-r1 1.7.12-r1 1.7.13-r1 1.7.14-r1 1.7.15-r1 1.7.16-r1 1.7.17-r1 1.7.18-r1 1.7.19-r2 1.7.20-r1 1.7.21-r1 1.7.22-r1 1.7.28-r1 1.7.29-r1 1.7.33-r1 1.7.34 1.7.35 1.7.36 1.7.37 1.7.38-r1 1.7.39-r1 1.7.40-r1 1.7.41 1.7.42 1.7.43 1.7.44 1.7.45 1.7.46 1.7.47 1.7.50 1.7.51 1.7.52 1.7.53 9999: Free implementation of Windows(tm) on Unix
+app-emulation/wine 1.6.2 1.6.2-r1 1.7.3-r1 1.7.4-r1 1.7.8-r1 1.7.9-r1 1.7.10-r1 1.7.11-r1 1.7.12-r1 1.7.13-r1 1.7.14-r1 1.7.15-r1 1.7.16-r1 1.7.17-r1 1.7.18-r1 1.7.19-r2 1.7.20-r1 1.7.21-r1 1.7.22-r1 1.7.28-r1 1.7.29-r1 1.7.33-r1 1.7.34 1.7.35 1.7.36 1.7.37 1.7.38-r1 1.7.39-r1 1.7.40-r1 1.7.41 1.7.42 1.7.43 1.7.44 1.7.45 1.7.46 1.7.47 1.7.50 1.7.51 1.7.52 1.7.53 1.7.54 9999: Free implementation of Windows(tm) on Unix
 app-emulation/winetricks 20151110 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4: HP48 Calculator Emulator
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
@@ -10610,7 +10610,7 @@ games-util/uz2unpack 0.1: UZ2 Decompressor for UT2003/UT2004
 games-util/vispatch 1.4.6: WaterVIS utility for glquake
 games-util/wiiload 0.5: load homebrew apps over the network to your Wii
 games-util/wit 2.30a 2.31a: A set of command line tools to manipulate Wii/GameCube ISO images and WBFS containers
-games-util/wxchtdecoder 1.5a: A program to decode .CHT files in Snes9x and ZSNES to plain text
+games-util/wxchtdecoder 1.5a 1.5a-r1: A program to decode .CHT files in Snes9x and ZSNES to plain text
 games-util/xboxdrv 0.8.5-r1 0.8.5-r2: Userspace Xbox 360 Controller driver
 games-util/xboxgw 1.082: Tunnels XBox system link games over the net
 games-util/xgame 1.7.1: Run games in a separate X session
@@ -14162,7 +14162,7 @@ net-mail/mswatch 1.2.0: A utility to watch mailstores for changes and initiate m
 net-mail/mu 0.9.9 0.9.9.5 0.9.9.6: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 2: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
-net-mail/notmuch 0.18.2 0.19-r1 0.20.2: Thread-based e-mail indexer, supporting quick search and tagging
+net-mail/notmuch 0.18.2 0.19-r1 0.20.2 0.21: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/offlineimap 6.5.5 6.5.6 6.5.7: Powerful IMAP/Maildir synchronization and reader support
 net-mail/peephole 1.5: A daemon that polls your POP servers, checking if there are messages from specific people
 net-mail/perdition 1.18: modular and fully featured POP3 and IMAP4 proxy
@@ -18618,7 +18618,7 @@ x11-wm/wmfs 201003 99999999: Window Manager From Scratch, A tiling window manage
 x11-wm/wmii 3.9.2-r4: A dynamic window manager for X11
 x11-wm/xmonad 0.11-r1 0.11-r3 0.11.1: A tiling window manager
 x11-wm/xmonad-contrib 0.11.2 0.11.4: Third party extensions for xmonad
-x11-wm/xpra 0.14.27 0.15.6 0.15.7: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
+x11-wm/xpra 0.14.27 0.15.6 0.15.7 0.15.8: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.10.2-r1 0.10.6 0.10.6-r1 0.10.7: Extensions, widgets and framework library with session support for the Xfce desktop environment
 xfce-base/garcon 0.2.1 0.5.0-r1 0.5.0-r2: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.10.0 4.12.1-r2: Unified widgets and session management libraries for the Xfce desktop environment

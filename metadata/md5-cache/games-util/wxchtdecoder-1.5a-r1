@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=x11-libs/wxGTK:3.0[X]
+DESCRIPTION=A program to decode .CHT files in Snes9x and ZSNES to plain text
+EAPI=5
+HOMEPAGE=http://games.technoplaza.net/chtdecoder/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/wxGTK:3.0[X]
+SLOT=0
+SRC_URI=mirror://gentoo/wxchtdecoder-1.5a.tar.bz2
+_eclasses_=eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	wxwidgets	2a19d3cd9b18703ae9fb53123722061c
+_md5_=c632eff35dad68784fda7fc4dadba4d9
