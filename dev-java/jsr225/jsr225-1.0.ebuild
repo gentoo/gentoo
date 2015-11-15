@@ -16,7 +16,7 @@ SRC_URI="https://github.com/cfoster/${MY_P}.0/raw/master/javax/xml/xquery/${MY_P
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 RDEPEND=">=virtual/jre-1.6"
