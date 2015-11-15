@@ -34,7 +34,7 @@ LICENSE="LGPL-2.1"
 IUSE="apparmor audit avahi +caps firewalld fuse glusterfs iscsi +libvirtd lvm \
 	lxc +macvtap nfs nls numa openvz parted pcap phyp policykit +qemu rbd sasl \
 	selinux systemd +udev uml +vepa virtualbox virt-network wireshark-plugins \
-	xen elibc_glibc"
+	xen"
 
 REQUIRED_USE="
 	firewalld? ( virt-network )
@@ -114,8 +114,7 @@ RDEPEND="
 	udev? (
 		virtual/udev
 		>=x11-libs/libpciaccess-0.10.9
-	)
-	elibc_glibc? ( || ( >=net-libs/libtirpc-0.2.2-r1 <sys-libs/glibc-2.14 ) )"
+	)"
 
 DEPEND="${RDEPEND}
 	app-text/xhtml1
