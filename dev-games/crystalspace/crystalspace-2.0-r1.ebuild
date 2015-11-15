@@ -26,7 +26,7 @@ COMMON_DEP="virtual/opengl
 	cg? ( media-gfx/nvidia-cg-toolkit )
 	ode? ( <dev-games/ode-0.12 )
 	cal3d? ( >=media-libs/cal3d-0.11 )
-	jpeg? ( virtual/jpeg )
+	jpeg? ( virtual/jpeg:0 )
 	bullet? ( sci-physics/bullet )
 	vorbis? ( media-libs/libvorbis )
 	speex? ( media-libs/libogg
