@@ -216,6 +216,15 @@ virtual/python-imaging
 >=x11-themes/gnome-themes-standard-3.18.0
 >=net-libs/webkit-gtk-2.10.4
 >=www-client/epiphany-3.18.0
+>=x11-wm/muffin-2.8.0
+>=gnome-extra/cinnamon-2.8.3
+>=gnome-extra/cinnamon-control-center-2.8.0
+>=gnome-extra/cinnamon-desktop-2.8.0
+>=gnome-extra/cinnamon-menus-2.8.0
+>=gnome-extra/cinnamon-screensaver-2.8.0
+>=gnome-extra/cinnamon-session-2.8.2
+>=gnome-extra/cinnamon-settings-daemon-2.8.1
+>=gnome-extra/cinnamon-translations-2.8.1
 
 # Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
 # Not properly installed, dead for ages, upstream
