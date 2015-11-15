@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=>=app-emulation/spice-protocol-0.12.10 virtual/pkgconfig || ( ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-python/pyparsing-1.5.6-r2[python_targets_python2_7(-),python_single_target_python2_7(+)] ) ( dev-lang/python:3.4 >=dev-python/pyparsing-1.5.6-r2[python_targets_python3_4(-),python_single_target_python3_4(+)] ) ) smartcard? ( app-emulation/qemu[smartcard] ) >=dev-libs/glib-2.22:2[static-libs(+)?] >=media-libs/celt-0.5.1.1:0.5.1[static-libs(+)?] media-libs/opus[static-libs(+)?] sys-libs/zlib[static-libs(+)?] virtual/jpeg:0=[static-libs(+)?] >=x11-libs/pixman-0.17.7[static-libs(+)?] !libressl? ( dev-libs/openssl:0[static-libs(+)?] ) libressl? ( dev-libs/libressl[static-libs(+)?] ) sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] ) client? ( media-libs/alsa-lib >=x11-libs/libXrandr-1.2 x11-libs/libX11 x11-libs/libXext >=x11-libs/libXinerama-1.0 x11-libs/libXfixes x11-libs/libXrender smartcard? ( app-emulation/qemu[smartcard] ) )
+DESCRIPTION=SPICE server and client
+EAPI=5
+HOMEPAGE=http://spice-space.org/
+IUSE=client libressl sasl smartcard static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-libs/glib-2.22:2[static-libs(+)?] >=media-libs/celt-0.5.1.1:0.5.1[static-libs(+)?] media-libs/opus[static-libs(+)?] sys-libs/zlib[static-libs(+)?] virtual/jpeg:0=[static-libs(+)?] >=x11-libs/pixman-0.17.7[static-libs(+)?] !libressl? ( dev-libs/openssl:0[static-libs(+)?] ) libressl? ( dev-libs/libressl[static-libs(+)?] ) sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] ) client? ( media-libs/alsa-lib >=x11-libs/libXrandr-1.2 x11-libs/libX11 x11-libs/libXext >=x11-libs/libXinerama-1.0 x11-libs/libXfixes x11-libs/libXrender smartcard? ( app-emulation/qemu[smartcard] ) )
+SLOT=0
+SRC_URI=http://spice-space.org/download/releases/spice-0.12.6.tar.bz2
+_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	60a62ae0ee8cd93b4ba99a4c1371eb8b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=1a699dd82273f3db819302c8d8f74f46
