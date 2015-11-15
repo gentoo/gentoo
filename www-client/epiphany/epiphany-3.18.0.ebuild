@@ -14,7 +14,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Web"
 # TODO: coverage
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+jit +nss test"
+IUSE="+jit nss test"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 COMMON_DEPEND="
