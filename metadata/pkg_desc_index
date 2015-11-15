@@ -3768,7 +3768,6 @@ dev-java/commons-discovery 0.4: Commons Discovery: Service Discovery component
 dev-java/commons-el 1.0-r3: EL is the JSP 2.0 Expression Language Interpreter from Apache
 dev-java/commons-email 1.4: Commons Email aims to provide an API for sending email.
 dev-java/commons-fileupload 1.3: Add robust, high-performance, file upload capability to your servlets and web applications
-dev-java/commons-grant 1.0: A small collection of hacks to make using Ant in an embedded envinronment much easier
 dev-java/commons-graph 0.1: A toolkit for managing graphs and graph based data structures
 dev-java/commons-httpclient 3.1-r1: The Jakarta Commons HttpClient library
 dev-java/commons-io 2.4: Commons-IO contains utility classes, stream implementations, file filters, and endian classes
@@ -3787,7 +3786,6 @@ dev-java/commons-vfs 1.0 2.0-r1: A single API for accessing various different fi
 dev-java/concurrent-util 1.3.4-r1: Utility classes commonly encountered in concurrent Java programming
 dev-java/constantine 0.7-r1: Provides Java values for common platform C constants
 dev-java/cortado 0.6.0: Multimedia framework for Java written by Fluendo
-dev-java/cos 20021105-r3: The com.oreilly.servlet package is a class library for servlet developers
 dev-java/cpptasks 1.0_beta5: Ant-tasks to compile various source languages and produce executables, shared and static libraries
 dev-java/css-validator 20120222: Check Cascading Style Sheets (CSS) and (X)HTML documents with style sheets
 dev-java/cssparser 0.9.17 0.9.18: API for parsing CSS 2 in Java
