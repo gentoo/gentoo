@@ -13,7 +13,7 @@ HOMEPAGE="https://git.gnome.org/browse/gnome-screenshot"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE=""
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux"
 
 # libcanberra 0.26-r2 is needed for gtk+:3 fixes
 COMMON_DEPEND="
@@ -39,12 +39,6 @@ DEPEND="${COMMON_DEPEND}
 DOC_CONTENTS="${P} saves screenshots in ~/Pictures/ and defaults to
 	non-interactive mode when launched from a terminal. If you want to choose
 	where to save the screenshot, run 'gnome-screenshot --interactive'"
-
-src_prepare() {
-	# filename-builder: use dash for time format separator (from 'master')
-	epatch "${FILESDIR}"/${PN}-3.14.0-use-dash.patch
-	gnome2_src_prepare
-}
 
 src_install() {
 	gnome2_src_install
