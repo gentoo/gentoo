@@ -15,7 +15,6 @@
 </maintainer>
 <longdescription>The IcedTea project provides a harness to build the source code from OpenJDK (http://openjdk.java.net) using Free Software build tools along with additional tools such as a browser plugin and Web Start support via NetX. </longdescription>
 <use>
-  <flag name="awt">Install non-headless AWT libraries, needed by some GUIs (used to be X flag)</flag>
   <flag name="cacao">Use the CACAO virtual machine rather than HotSpot.</flag>
   <flag name="headless-awt">Don't install the X backend for AWT, needed by some GUIs (used to be X flag)</flag>
   <flag name="infinality">Enable better font rendering using fontconfig.</flag>
