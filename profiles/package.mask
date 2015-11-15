@@ -225,6 +225,12 @@ virtual/python-imaging
 >=gnome-extra/cinnamon-session-2.8.2
 >=gnome-extra/cinnamon-settings-daemon-2.8.1
 >=gnome-extra/cinnamon-translations-2.8.1
+>=gnome-extra/cjs-2.8.0
+>=x11-wm/mutter-3.18.2
+>=gnome-base/gnome-shell-3.18
+>=gnome-extra/gnome-shell-extensions-3.18.2
+>=gnome-extra/gnome-shell-frippery-3.18.1
+>=gnome-base/gdm-3.18.0
 
 # Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
 # Not properly installed, dead for ages, upstream
