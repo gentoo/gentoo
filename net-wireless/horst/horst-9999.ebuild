@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="debug +pcap test"
 
-RDEPEND="sys-libs/ncurses
+RDEPEND="sys-libs/ncurses:0
 	pcap? ( net-libs/libpcap )"
 DEPEND="${RDEPEND}
 	test? ( sys-devel/sparse )"
@@ -30,7 +30,7 @@ src_compile() {
 
 src_install() {
 	dosbin ${PN}{,.sh}
-	dodoc README TODO
+	dodoc README.md TODO
 	doman ${PN}.1
 	insinto /etc
 	doins ${PN}.conf
