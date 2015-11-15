@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,8 +8,7 @@ inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="high performance network sniffer for packet inspection"
 HOMEPAGE="http://netsniff-ng.org/"
-MY_P=${P/_rc/-rc}
-SRC_URI="http://pub.${PN}.org/${PN}/${MY_P}.tar.xz"
+SRC_URI="http://pub.${PN}.org/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -31,12 +30,11 @@ DEPEND="${RDEPEND}
 	=net-libs/nacl-0_p20110221*
 	virtual/pkgconfig"
 
-S=${WORKDIR}/${MY_P}
-
 src_prepare() {
 	sed -e '/CFLAGS/s:?=:+=:' \
+		-e '/CPPFLAGS/s:?=:+=:' \
 		-e '/CFLAGS/s:\(-g\|-O2\|-O3\|-m\(arch\|tune\)=native\)::g' \
-		 -i Makefile || die
+		-i Makefile || die
 
 	if ! grep nacl-20110221 curvetun/nacl_build.sh >/dev/null ; then
 		die "have nacl-20110221, expected $(grep ${MY_NACL_P} curvetun/nacl_build.sh)"
@@ -50,7 +48,7 @@ src_prepare() {
 
 src_compile() {
 	emake CC="$(tc-getCC)" LD="$(tc-getCC)" CCACHE="" \
-		LEX=lex YAAC=bison STRIP=@true \
+		LEX=lex YAAC=bison STRIP=true \
 		Q= HARDENING=1
 }
 
