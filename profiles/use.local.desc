@@ -1715,7 +1715,6 @@ dev-java/gnu-classpath:gtk - Build with Gtk+ AWT peers
 dev-java/gnu-classpath:qt4 - Build with Qt4 AWT peers
 dev-java/gnu-classpath:xml - Build with native XML backend
 dev-java/ibm-jdk-bin:javacomm - Enable Java Communications API support
-dev-java/icedtea:awt - Install non-headless AWT libraries, needed by some GUIs (used to be X flag)
 dev-java/icedtea:cacao - Use the CACAO virtual machine rather than HotSpot.
 dev-java/icedtea:headless-awt - Don't install the X backend for AWT, needed by some GUIs (used to be X flag)
 dev-java/icedtea:infinality - Enable better font rendering using fontconfig.
