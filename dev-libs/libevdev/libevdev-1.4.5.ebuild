@@ -4,7 +4,7 @@
 
 EAPI=5
 XORG_MULTILIB=yes
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 
 inherit python-any-r1 xorg-2
 
