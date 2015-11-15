@@ -1,0 +1,56 @@
+From: Nicolás Alvarez <nicolas.alvarez@gmail.com>
+Date: Wed, 11 Nov 2015 05:52:37 +0000
+Subject: Revert "Call setgroups(0,0) before calling setgid()"
+X-Git-Url: http://quickgit.kde.org/?p=kinit.git&a=commitdiff&h=1086e110ae4c05af6704af0d56f93e8bb023eeff
+---
+Revert "Call setgroups(0,0) before calling setgid()"
+
+The reasoning for adding setgroups(0,0) was that when you drop privileges
+from root to regular user, there might be some extra groups left that, if
+not cleared, might grant the process privileges to do superuser things.
+
+However, this only happens if the process calls setgroups to alter its own
+supplementary groups while it's still running as root, and then drops
+privileges to a regular user. In that case there may be a security issue
+where the process ends up running as a regular user, but with supplemental
+groups the user doesn't normally belong to.
+
+Since start_kdeinit doesn't call setgroups to give itself superuser groups,
+there is no such security issue, and it doesn't need to clear the group
+list before dropping to a normal user.
+
+*In addition*, this was completely emptying the list of supplemental groups
+instead of setting them to what the user's groups actually are (eg. from
+getgrouplist), which means he would end up without 'plugdev', 'vboxusers',
+'wireshark', 'cdrom', and whatever other groups they may need for their
+software to work.
+
+CCMAIL:dvratil@redhat.com
+
+Daniel: if the latest version of rpmlint still complains about this use of
+setgid without setgroups, please file a bug against rpmlint.
+
+This reverts commit ff5ea1ab8568893c7d7b3a4518997080d3533308 from
+review 119011.
+---
+
+
+--- a/src/start_kdeinit/start_kdeinit.c
++++ b/src/start_kdeinit/start_kdeinit.c
+@@ -27,7 +27,6 @@
+ #include <string.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+-#include <grp.h>
+ #if HAVE_CAPABILITIES
+ #include <sys/capability.h>
+ #endif
+@@ -126,7 +125,6 @@
+         }
+         cap_free(caps);
+ #endif
+-	setgroups(0, 0); /* Remove any extraneous groups*/
+         if (setgid(getgid())) {
+             perror("setgid()");
+             return 1;
+
