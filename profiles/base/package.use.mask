@@ -17,7 +17,7 @@ kde-frameworks/ktextwidgets speech
 
 # Rick Farina <zerochaos@gentoo.org> (06 Oct 2015)
 # forward porting this patch is non-trivial, mask for now
-=net-wireless/wpa_supplicant-2.5 wimax
+>=net-wireless/wpa_supplicant-2.5 wimax
 
 # Nathan Phillip Brink <binki@gentoo.org> (26 Sep 2015)
 # git useflag requires dev-libs/libgit2 which few arches support
