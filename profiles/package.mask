@@ -204,6 +204,16 @@ virtual/python-imaging
 >=media-libs/clutter-gtk-1.6.6
 >=media-libs/grilo-0.2.14
 >=media-plugins/grilo-plugins-0.2.16
+>=media-sound/gnome-music-3.18.0
+>=media-sound/sound-juicer-3.18.0
+>=net-irc/polari-3.18.1
+>=net-libs/glib-networking-2.46.1
+>=net-misc/rygel-0.28.1
+>=sci-geosciences/geocode-glib-3.18.0
+>=sys-apps/baobab-3.18.1
+>=x11-themes/adwaita-icon-theme-3.18.0
+>=x11-themes/gnome-backgrounds-3.18.0
+>=x11-themes/gnome-themes-standard-3.18.0
 
 # Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
 # Not properly installed, dead for ages, upstream
