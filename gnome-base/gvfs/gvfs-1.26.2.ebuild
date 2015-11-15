@@ -29,7 +29,7 @@ RDEPEND="
 	>=dev-libs/glib-2.45.7:2
 	sys-apps/dbus
 	dev-libs/libxml2:2
-	>=dev-libs/libgdata-0.17.3:=
+	>=dev-libs/libgdata-0.17.3:=[gnome]
 	net-misc/openssh
 	afp? ( >=dev-libs/libgcrypt-1.2.2:0= )
 	archive? ( app-arch/libarchive:= )
