@@ -18,7 +18,7 @@ LICENSE="GPL-3"
 # Sub-slot corresponds to major wersion of libnotmuch.so.X.Y.  Bump of Y is
 # meant to be binary backward compatible.
 SLOT="0/4"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="
 	nmbug? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -111,7 +111,7 @@ src_configure() {
 		--bashcompletiondir="$(get_bashcompdir)"
 		--emacslispdir="${EPREFIX}/${SITELISP}/${PN}"
 		--emacsetcdir="${EPREFIX}/${SITEETC}/${PN}"
-		--with-gmime-version=2.6
+		--without-ruby
 		--zshcompletiondir="${EPREFIX}/usr/share/zsh/site-functions"
 		$(use_with emacs)
 	)
