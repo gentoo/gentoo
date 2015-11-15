@@ -15,20 +15,20 @@ SRC_URI="https://github.com/linuxmint/muffin/archive/${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="+introspection test xinerama"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 COMMON_DEPEND="
 	>=x11-libs/pango-1.2[X,introspection?]
-	>=x11-libs/cairo-1.10:=[X]
+	>=x11-libs/cairo-1.14:=[X]
 	x11-libs/gdk-pixbuf:2[introspection?]
-	>=x11-libs/gtk+-3.3.7:3[X,introspection?]
-	>=dev-libs/glib-2.25.10:2[dbus]
-	>=gnome-extra/cinnamon-desktop-2.3:0=[introspection?]
+	>=x11-libs/gtk+-3.9.12:3[X,introspection?]
+	>=dev-libs/glib-2.37.3:2[dbus]
+	>=gnome-extra/cinnamon-desktop-2.4:0=[introspection?]
 	>=gnome-base/gsettings-desktop-schemas-3.3.0[introspection?]
-	>=media-libs/clutter-1.9.10:1.0=[introspection?]
-	>=media-libs/cogl-1.9.6:1.0=[introspection?]
+	>=media-libs/clutter-1.14.3:1.0=[introspection?]
+	>=media-libs/cogl-1.13.3:1.0=[introspection?]
 	>=media-libs/libcanberra-0.26[gtk3]
-	>=x11-libs/libXcomposite-0.2
+	>=x11-libs/libXcomposite-0.3
 	>=x11-libs/startup-notification-0.7:=
 
 	x11-libs/libICE
@@ -48,10 +48,13 @@ COMMON_DEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.9.5:= )
 	xinerama? ( x11-libs/libXinerama )
 "
+# needs gtk-doc, not just -am, for gtk-doc.make
 DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 	>=app-text/gnome-doc-utils-0.8
 	sys-devel/gettext
+	dev-util/gtk-doc
+	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.35
 	virtual/pkgconfig
 	test? ( app-text/docbook-xml-dtd:4.5 )

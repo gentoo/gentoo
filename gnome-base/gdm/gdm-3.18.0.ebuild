@@ -22,10 +22,9 @@ LICENSE="
 
 SLOT="0"
 
-IUSE="accessibility audit branding fprint +introspection ipv6 plymouth selinux smartcard +systemd tcpd test wayland xinerama"
-REQUIRED_USE="wayland? ( systemd )"
+IUSE="accessibility audit branding fprint +introspection ipv6 plymouth selinux smartcard tcpd test wayland xinerama"
 
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86"
 
 # NOTE: x11-base/xorg-server dep is for X_SERVER_PATH etc, bug #295686
 # nspr used by smartcard extension
@@ -54,13 +53,10 @@ COMMON_DEPEND="
 	>=x11-misc/xdg-utils-1.0.2-r3
 
 	virtual/pam
-	systemd? ( >=sys-apps/systemd-186:0=[pam] )
-	!systemd? (
-		>=x11-base/xorg-server-1.14.3-r1
-		>=sys-auth/consolekit-0.4.5_p20120320-r2
-		!<sys-apps/openrc-0.12
-	)
-	sys-auth/pambase[systemd?]
+
+	>=sys-apps/systemd-186:0=[pam]
+
+	sys-auth/pambase[systemd]
 
 	audit? ( sys-process/audit )
 	introspection? ( >=dev-libs/gobject-introspection-0.9.12:= )
@@ -159,6 +155,7 @@ src_configure() {
 	! use plymouth && myconf="${myconf} --with-initial-vt=7"
 
 	gnome2_src_configure \
+		--enable-gdm-xsession \
 		--with-run-dir=/run/gdm \
 		--localstatedir="${EPREFIX}"/var \
 		--disable-static \
@@ -166,15 +163,12 @@ src_configure() {
 		--enable-authentication-scheme=pam \
 		--with-default-pam-config=exherbo \
 		--with-at-spi-registryd-directory="${EPREFIX}"/usr/libexec \
-		--with-consolekit-directory="${EPREFIX}"/usr/lib/ConsoleKit \
 		--without-xevie \
+		--enable-systemd-journal \
 		$(use_with audit libaudit) \
 		$(use_enable ipv6) \
 		$(use_with plymouth) \
 		$(use_with selinux) \
-		$(use_with systemd) \
-		$(use_with !systemd console-kit) \
-		$(use_enable systemd systemd-journal) \
 		$(systemd_with_unitdir) \
 		$(use_with tcpd tcp-wrappers) \
 		$(use_enable wayland wayland-support) \

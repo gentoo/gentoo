@@ -4,8 +4,9 @@
 
 EAPI="5"
 GCONF_DEBUG="yes"
+PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils gnome2
+inherit autotools eutils gnome2 multilib python-single-r1
 
 DESCRIPTION="Screensaver for Cinnamon"
 HOMEPAGE="http://cinnamon.linuxmint.com/"
@@ -14,15 +15,17 @@ SRC_URI="https://github.com/linuxmint/cinnamon-screensaver/archive/${PV}.tar.gz 
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="doc pam systemd"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 COMMON_DEPEND="
-	>=dev-libs/glib-2.25.6:2[dbus]
-	>=x11-libs/gtk+-2.99.3:3
-	>=gnome-extra/cinnamon-desktop-2.4:0=
+	>=dev-libs/glib-2.37.3:2[dbus]
+	>=x11-libs/gtk+-3.1.4:3[introspection]
+	>=gnome-extra/cinnamon-desktop-2.6.3:0=[systemd=]
 	>=gnome-base/gsettings-desktop-schemas-0.1.7
 	>=gnome-base/libgnomekbd-3.6
-	>=dev-libs/dbus-glib-0.71
+	>=dev-libs/dbus-glib-0.78
+
+	net-libs/webkit-gtk:3[introspection]
 
 	sys-apps/dbus
 	x11-libs/libxklavier
@@ -34,6 +37,8 @@ COMMON_DEPEND="
 	x11-libs/libXxf86vm
 	x11-themes/gnome-icon-theme-symbolic
 
+	${PYTHON_DEPS}
+
 	pam? ( virtual/pam )
 	systemd? ( >=sys-apps/systemd-31:0= )
 "
@@ -41,6 +46,8 @@ COMMON_DEPEND="
 RDEPEND="
 	!~gnome-extra/cinnamon-1.8.8.1
 	!systemd? ( sys-auth/consolekit )
+
+	dev-python/pygobject:3[${PYTHON_USEDEP}]
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.35
@@ -57,7 +64,19 @@ DEPEND="${COMMON_DEPEND}
 		app-text/docbook-xml-dtd:4.4 )
 "
 
+pkg_setup() {
+	python_setup
+}
+
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-2.6.3-automagic-logind.patch
+
+	# Fix xscreensaver paths for gentoo
+	sed -e "s#/usr/lib/xscreensaver/#${EPREFIX}/usr/$(get_libdir)/misc/xscreensaver/#" \
+		-i data/screensavers/xscreensaver@cinnamon.org/main || die
+
+	python_fix_shebang data/screensavers
+
 	epatch_user
 	eautoreconf
 	gnome2_src_prepare
@@ -68,7 +87,7 @@ src_configure() {
 	gnome2_src_configure \
 		$(use_enable doc docbook-docs) \
 		$(use_enable pam locking) \
-		$(use_with systemd) \
+		$(use_enable systemd logind) \
 		--with-mit-ext \
 		--with-pam-prefix=/etc \
 		--with-xf86gamma-ext \
@@ -76,4 +95,12 @@ src_configure() {
 	# Do not use --without-console-kit, it would provide no benefit: there is
 	# no build-time or run-time check for consolekit, $PN merely listens to
 	# consolekit's messages over dbus.
+}
+
+pkg_postinst() {
+	gnome2_pkg_postinst
+
+	if ! has_version x11-misc/xscreensaver; then
+		elog "${PN} can use screensavers from x11-misc/xscreensaver"
+	fi
 }

@@ -5,7 +5,7 @@
 EAPI="5"
 GCONF_DEBUG="yes"
 
-inherit gnome2
+inherit autotools eutils gnome2
 
 DESCRIPTION="Cinnamon's library for the Desktop Menu fd.o specification"
 HOMEPAGE="http://cinnamon.linuxmint.com/"
@@ -13,19 +13,27 @@ SRC_URI="https://github.com/linuxmint/cinnamon-menus/archive/${PV}.tar.gz -> ${P
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="+introspection"
 
 RDEPEND="
 	>=dev-libs/glib-2.29.15:2
-	introspection? ( >=dev-libs/gobject-introspection-0.9.5 )
+	introspection? ( >=dev-libs/gobject-introspection-0.9.5:= )
 "
 DEPEND="${RDEPEND}
+	dev-libs/gobject-introspection-common
 	>=dev-util/intltool-0.40
+	gnome-base/gnome-common
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+src_prepare() {
+	epatch_user
+	eautoreconf
+	gnome2_src_prepare
+}
 
 src_configure() {
 	DOCS="AUTHORS ChangeLog HACKING NEWS README"

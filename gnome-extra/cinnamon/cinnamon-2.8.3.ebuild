@@ -5,7 +5,7 @@
 EAPI="5"
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 PYTHON_REQ_USE="xml"
 
 inherit autotools eutils flag-o-matic gnome2 multilib pax-utils python-r1
@@ -27,8 +27,8 @@ IUSE="+nls +networkmanager" #+bluetooth
 # We need *both* python 2.7 and 3.x
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	python_targets_python2_7
-	|| ( python_targets_python3_3 python_targets_python3_4 )
-	"
+	|| ( python_targets_python3_3 python_targets_python3_4 python_targets_python3_5 )
+"
 
 KEYWORDS="~amd64 ~x86"
 
@@ -36,7 +36,7 @@ COMMON_DEPEND="
 	app-accessibility/at-spi2-atk:2
 	app-misc/ca-certificates
 	dev-libs/dbus-glib
-	>=dev-libs/glib-2.29.10:2[dbus]
+	>=dev-libs/glib-2.35.0:2[dbus]
 	>=dev-libs/gobject-introspection-0.10.1:=
 	>=dev-libs/json-glib-0.13.2
 	>=dev-libs/libcroco-0.6.2:0.6
@@ -144,7 +144,7 @@ pkg_setup() {
 src_prepare() {
 	# Fix backgrounds path as cinnamon doesn't provide them
 	# https://github.com/linuxmint/Cinnamon/issues/3575
-	epatch "${FILESDIR}"/${PN}-2.4.5-background.patch
+	epatch "${FILESDIR}"/${PN}-2.8.0-background.patch
 
 	# Fix automagic gnome-bluetooth dep, bug #398145
 	epatch "${FILESDIR}"/${PN}-2.2.6-automagic-gnome-bluetooth.patch
@@ -154,11 +154,11 @@ src_prepare() {
 
 	# Use wheel group instead of sudo (from Fedora/Arch)
 	# https://github.com/linuxmint/Cinnamon/issues/3576
-	epatch "${FILESDIR}"/${PN}-2.6.7-set-wheel.patch
+	epatch "${FILESDIR}"/${PN}-2.8.3-set-wheel.patch
 
 	# Fix GNOME 3.14 support (from Fedora/Arch)
 	# https://github.com/linuxmint/Cinnamon/issues/3577
-	epatch "${FILESDIR}"/${PN}-2.4.5-gnome-3.14.patch
+	epatch "${FILESDIR}"/${PN}-2.8.3-gnome-3.14.patch
 
 	# Use pkexec instead of gksu (from Arch)
 	# https://github.com/linuxmint/Cinnamon/issues/3565
@@ -168,17 +168,6 @@ src_prepare() {
 	# https://github.com/linuxmint/Cinnamon/issues/3579
 	sed -i 's/RequiredComponents=\(.*\)$/RequiredComponents=\1polkit-gnome-authentication-agent-1;/' \
 		files/usr/share/cinnamon-session/sessions/cinnamon*.session || die
-
-	# Gentoo uses /usr/$(get_libdir), not /usr/lib even for python
-	sed -e "s:/usr/lib/:/usr/$(get_libdir)/:" \
-		-e 's:"/usr/lib":"/usr/'"$(get_libdir)"'":' \
-		-i files/usr/share/polkit-1/actions/org.cinnamon.settings-users.policy \
-		-i files/usr/lib/*/*.py \
-		-i files/usr/lib/*/*/*.py \
-		-i files/usr/bin/* || die "sed failed"
-	if [[ "$(get_libdir)" != lib ]]; then
-		mv files/usr/lib "files/usr/$(get_libdir)" || die "mv failed"
-	fi
 
 	if ! use networkmanager; then
 		rm -rv files/usr/share/cinnamon/applets/network@cinnamon.org || die

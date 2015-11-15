@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+introspection systemd"
 
 COMMON_DEPEND="
-	>=dev-libs/glib-2.37.3:2
+	>=dev-libs/glib-2.37.3:2[dbus]
 	>=x11-libs/gdk-pixbuf-2.22:2[introspection?]
 	>=x11-libs/gtk+-3.3.16:3[introspection?]
 	>=x11-libs/libXext-1.1
@@ -28,7 +28,7 @@ COMMON_DEPEND="
 	x11-libs/libxkbfile
 	x11-misc/xkeyboard-config
 	>=gnome-base/gsettings-desktop-schemas-3.5.91
-	introspection? ( >=dev-libs/gobject-introspection-0.9.7 )
+	introspection? ( >=dev-libs/gobject-introspection-0.9.7:= )
 
 	${PYTHON_DEPS}
 "
@@ -51,12 +51,6 @@ pkg_setup() {
 src_prepare() {
 	epatch_user
 	eautoreconf
-
-	# Fix intltool unittest
-	echo "schemas/org.cinnamon.desktop.keybindings.gschema.xml.in.in" >> po/POTFILES.in
-	echo "schemas/org.cinnamon.desktop.keybindings.media-keys.gschema.xml.in.in" >> po/POTFILES.in
-	echo "schemas/org.cinnamon.desktop.notifications.gschema.xml.in.in" >> po/POTFILES.in
-	echo "schemas/org.cinnamon.desktop.privacy.gschema.xml.in.in" >> po/POTFILES.in
 
 	python_fix_shebang files
 	gnome2_src_prepare

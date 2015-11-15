@@ -74,13 +74,15 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 
 	gnome-base/gnome-common
+
+	app-arch/xz-utils
 "
 # Needed for autoreconf
 #	gnome-base/gnome-common
 
 src_prepare() {
 	# make some panels optional
-	epatch "${FILESDIR}"/${PN}-2.6.0-optional.patch
+	epatch "${FILESDIR}"/${PN}-2.8.0-optional.patch
 
 	epatch_user
 
