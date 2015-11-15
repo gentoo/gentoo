@@ -6,8 +6,9 @@ EAPI="5"
 CMAKE_MAKEFILE_GENERATOR="ninja"
 GCONF_DEBUG="no"
 PYTHON_COMPAT=( python2_7 )
+USE_RUBY="ruby19 ruby20 ruby21 ruby22"
 
-inherit check-reqs cmake-utils eutils flag-o-matic gnome2 pax-utils python-any-r1 toolchain-funcs versionator virtualx
+inherit check-reqs cmake-utils eutils flag-o-matic gnome2 pax-utils python-any-r1 ruby-single toolchain-funcs versionator virtualx
 
 MY_P="webkitgtk-${PV}"
 DESCRIPTION="Open source web browser engine"
@@ -16,25 +17,25 @@ SRC_URI="http://www.webkitgtk.org/releases/${MY_P}.tar.xz"
 
 LICENSE="LGPL-2+ BSD"
 SLOT="4/37" # soname version of libwebkit2gtk-4.0
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~x86-macos"
 
-IUSE="coverage doc +egl +geoloc +gstreamer +introspection +jit libsecret +opengl spell +webgl"
-# gles2 wayland X
-# bugs 372493, 416331
+IUSE="coverage doc +egl +geoloc gles2 gnome-keyring +gstreamer +introspection +jit +opengl spell wayland +webgl X"
 REQUIRED_USE="
 	geoloc? ( introspection )
+	gles2? ( egl )
 	introspection? ( gstreamer )
-	webgl? ( opengl )
+	webgl? ( ^^ ( gles2 opengl ) )
+	!webgl? ( ?? ( gles2 opengl ) )
+	|| ( wayland X )
 "
-#	gles2? ( egl )
-#	webgl? ( ^^ ( gles2 opengl ) )
-#	!webgl? ( ?? ( gles2 opengl ) )
-#	|| ( wayland X )
+
+# Tests fail to link for inexplicable reasons
+# https://bugs.webkit.org/show_bug.cgi?id=148210
+RESTRICT="test"
 
 # use sqlite, svg by default
 # Aqua support in gtk3 is untested
 # gtk2 is needed for plugin process support, should we add a USE flag to configure this?
-# gtk3-3.10 required for wayland
 RDEPEND="
 	dev-db/sqlite:3=
 	>=dev-libs/glib-2.36:2
@@ -46,45 +47,46 @@ RDEPEND="
 	>=media-libs/harfbuzz-0.9.18:=[icu(+)]
 	>=media-libs/libpng-1.4:0=
 	media-libs/libwebp:=
+	>=net-libs/gnutls-3
 	>=net-libs/libsoup-2.42:2.4[introspection?]
 	virtual/jpeg:0=
-	>=x11-libs/cairo-1.10.2:=[X]
-	>=x11-libs/gtk+-3.6.0:3[X,introspection?]
+	>=x11-libs/cairo-1.10.2:=
+	>=x11-libs/gtk+-3.14:3[introspection?]
+	x11-libs/libnotify
 	>=x11-libs/pango-1.30.0
-	x11-libs/libX11
-	x11-libs/libXrender
-	x11-libs/libXt
 
 	>=x11-libs/gtk+-2.24.10:2
 
 	egl? ( media-libs/mesa[egl] )
 	geoloc? ( >=app-misc/geoclue-2.1.5:2.0 )
+	gles2? ( media-libs/mesa[gles2] )
+	gnome-keyring? ( app-crypt/libsecret )
 	gstreamer? (
 		>=media-libs/gstreamer-1.2:1.0
 		>=media-libs/gst-plugins-base-1.2:1.0 )
-	introspection? ( >=dev-libs/gobject-introspection-1.32.0 )
-	libsecret? ( app-crypt/libsecret )
-	opengl? ( virtual/opengl )
+	introspection? ( >=dev-libs/gobject-introspection-1.32.0:= )
+	opengl? ( virtual/opengl
+		x11-libs/cairo[opengl] )
 	spell? ( >=app-text/enchant-0.22:= )
+	wayland? ( >=x11-libs/gtk+-3.14:3[wayland] )
 	webgl? (
 		x11-libs/cairo[opengl]
 		x11-libs/libXcomposite
 		x11-libs/libXdamage )
+	X? (
+		x11-libs/cairo[X]
+		>=x11-libs/gtk+-3.14:3[X]
+		x11-libs/libX11
+		x11-libs/libXrender
+		x11-libs/libXt )
 "
-#	gles2? ( media-libs/mesa[gles2] )
-#	wayland? ( >=x11-libs/gtk+-3.12:3[wayland] )
 
 # paxctl needed for bug #407085
 # Need real bison, not yacc
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
+	${RUBY_DEPS}
 	>=dev-lang/perl-5.10
-	|| (
-		virtual/rubygems[ruby_targets_ruby20]
-		virtual/rubygems[ruby_targets_ruby21]
-		virtual/rubygems[ruby_targets_ruby22]
-		virtual/rubygems[ruby_targets_ruby19]
-	)
 	>=app-accessibility/at-spi2-core-2.5.3
 	>=dev-libs/atk-2.8.0
 	>=dev-util/gtk-doc-am-1.10
@@ -129,11 +131,14 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Debian patches to fix support for some arches
-	# https://bugs.webkit.org/show_bug.cgi?id=129540
-	epatch "${FILESDIR}"/${PN}-2.6.0-{hppa,ia64}-platform.patch
-	# https://bugs.webkit.org/show_bug.cgi?id=129542
-	epatch "${FILESDIR}"/${PN}-2.6.0-ia64-malloc.patch
+	# https://bugs.gentoo.org/show_bug.cgi?id=555504
+	epatch "${FILESDIR}"/${PN}-2.8.5-fix-ia64-build.patch
+
+	# https://bugs.gentoo.org/show_bug.cgi?id=564352
+	epatch "${FILESDIR}"/${PN}-2.8.5-fix-alpha-build.patch
+
+	# https://bugs.webkit.org/show_bug.cgi?id=148379
+	epatch "${FILESDIR}"/${PN}-2.8.5-webkit2gtkinjectedbundle-j1.patch
 
 	gnome2_src_prepare
 }
@@ -148,6 +153,9 @@ src_configure() {
 	# It does not compile on alpha without this in LDFLAGS
 	# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=648761
 	use alpha && append-ldflags "-Wl,--no-relax"
+
+	# ld segfaults on ia64 with LDFLAGS --as-needed, bug #555504
+	use ia64 && append-ldflags "-Wl,--no-as-needed"
 
 	# Sigbuses on SPARC with mcpu and co., bug #???
 	use sparc && filter-flags "-mvis"
@@ -169,6 +177,9 @@ src_configure() {
 		append-cppflags "-D__STDC_LIMIT_MACROS"
 	fi
 
+	# Multiple rendering bugs on youtube, github, etc without this, bug #547224
+	append-flags $(test-flags -fno-strict-aliasing)
+
 	local ruby_interpreter=""
 
 	if has_version "virtual/rubygems[ruby_targets_ruby22]"; then
@@ -184,29 +195,34 @@ src_configure() {
 	# TODO: Check Web Audio support
 	# should somehow let user select between them?
 	#
-	# FTL_JIT requires llvm + libcxxabi
-	# $(cmake-utils_use_enable wayland WAYLAND_TARGET)
-	# $(cmake-utils_use_enable X X11_TARGET)
-	# $(cmake-utils_use_find_package gles2 OpenGLES2)
+	# FTL_JIT requires llvm
 	local mycmakeargs=(
 		$(cmake-utils_use_enable test API_TESTS)
 		$(cmake-utils_use_enable doc GTKDOC)
 		$(cmake-utils_use_enable geoloc GEOLOCATION)
+		$(cmake-utils_use_find_package gles2 OpenGLES2)
+		$(cmake-utils_use_enable gles2 GLES2)
 		$(cmake-utils_use_enable gstreamer VIDEO)
 		$(cmake-utils_use_enable gstreamer WEB_AUDIO)
 		$(cmake-utils_use_enable introspection)
 		$(cmake-utils_use_enable jit)
-		$(cmake-utils_use_enable libsecret CREDENTIAL_STORAGE)
+		$(cmake-utils_use_enable gnome-keyring CREDENTIAL_STORAGE)
 		$(cmake-utils_use_enable spell SPELLCHECK SPELLCHECK)
+		$(cmake-utils_use_enable wayland WAYLAND_TARGET)
 		$(cmake-utils_use_enable webgl WEBGL)
 		$(cmake-utils_use_find_package egl EGL)
 		$(cmake-utils_use_find_package opengl OpenGL)
+		$(cmake-utils_use_enable X X11_TARGET)
 		-DCMAKE_BUILD_TYPE=Release
-		-DENABLE_X11_TARGET=ON
 		-DPORT=GTK
 		-DENABLE_PLUGIN_PROCESS_GTK2=ON
 		${ruby_interpreter}
 	)
+	if $(tc-getLD) --version | grep -q "GNU gold"; then
+		mycmakeargs+=( -DUSE_LD_GOLD=ON )
+	else
+		mycmakeargs+=( -DUSE_LD_GOLD=OFF )
+	fi
 
 	cmake-utils_src_configure
 }

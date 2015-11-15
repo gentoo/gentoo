@@ -6,7 +6,7 @@ EAPI="5"
 GCONF_DEBUG="yes"
 GNOME2_LA_PUNT="yes"
 
-inherit autotools eutils gnome2 pax-utils versionator virtualx
+inherit eutils gnome2 pax-utils versionator virtualx
 
 DESCRIPTION="GNOME webbrowser based on Webkit"
 HOMEPAGE="https://wiki.gnome.org/Apps/Web"
@@ -14,19 +14,19 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Web"
 # TODO: coverage
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+jit +nss test"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+IUSE="+jit nss test"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 COMMON_DEPEND="
 	>=app-crypt/gcr-3.5.5
 	>=app-crypt/libsecret-0.14
 	>=app-text/iso-codes-0.35
-	>=dev-libs/glib-2.38:2
+	>=dev-libs/glib-2.38:2[dbus]
 	>=dev-libs/libxml2-2.6.12:2
 	>=dev-libs/libxslt-1.1.7
 	>=gnome-base/gsettings-desktop-schemas-0.0.1
 	>=net-dns/avahi-0.6.22[dbus]
-	>=net-libs/webkit-gtk-2.5.90:4[jit?]
+	>=net-libs/webkit-gtk-2.9.5:4[jit?]
 	>=net-libs/libsoup-2.48:2.4
 	>=x11-libs/gtk+-3.13:3
 	>=x11-libs/libnotify-0.5.1:=
@@ -36,8 +36,7 @@ COMMON_DEPEND="
 	x11-libs/libwnck:3
 	x11-libs/libX11
 
-	x11-themes/gnome-icon-theme
-	x11-themes/gnome-icon-theme-symbolic
+	x11-themes/adwaita-icon-theme
 
 	nss? ( dev-libs/nss )
 "
@@ -48,6 +47,7 @@ RDEPEND="${COMMON_DEPEND}
 # paxctl needed for bug #407085
 # eautoreconf requires gnome-common-3.5.5
 DEPEND="${COMMON_DEPEND}
+	app-text/yelp-tools
 	>=gnome-base/gnome-common-3.6
 	>=dev-util/intltool-0.50
 	dev-util/itstool
@@ -57,13 +57,13 @@ DEPEND="${COMMON_DEPEND}
 "
 
 src_prepare() {
-	# Fix missing symbol in webextension.so, bug #728972
-	epatch "${FILESDIR}"/${PN}-3.14.0-missing-symbol.patch
-
 	# Fix unittests
-	epatch "${FILESDIR}"/${PN}-3.14.0-unittest-*.patch
+	# https://bugzilla.gnome.org/show_bug.cgi?id=751591
+	epatch "${FILESDIR}"/${PN}-3.16.0-unittest-1.patch
 
-	eautoreconf
+	# https://bugzilla.gnome.org/show_bug.cgi?id=751593
+	epatch "${FILESDIR}"/${PN}-3.14.0-unittest-2.patch
+
 	gnome2_src_prepare
 }
 
@@ -91,7 +91,7 @@ src_test() {
 }
 
 src_install() {
-	DOCS="AUTHORS ChangeLog* HACKING MAINTAINERS NEWS README TODO"
+	DOCS="AUTHORS ChangeLog* NEWS README TODO"
 	gnome2_src_install
 	use jit && pax-mark m "${ED}usr/bin/epiphany"
 }
