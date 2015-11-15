@@ -4644,7 +4644,7 @@ dev-libs/libgcrypt 1.5.4-r1 1.5.4-r100 1.6.3-r4 1.6.3-r5 1.6.4: General purpose 
 dev-libs/libgdata 0.16.1 0.17.2 0.17.3: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.7 0.6.8 0.14.0 0.16.1 0.18.0: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.20.0-r1 0.21.5 0.22.3 0.23.2-r1 0.23.3 9999: A linkable library for Git
-dev-libs/libgit2-glib 0.0.12 0.0.16 0.0.24 0.22.0 0.22.8: Git library for GLib
+dev-libs/libgit2-glib 0.22.8 0.23.6: Git library for GLib
 dev-libs/libgpg-error 1.13 1.18 1.19 1.20: Contains error handling functions used by GnuPG software
 dev-libs/libgringotts 1.2.1: Needed by Gringotts
 dev-libs/libgudev 230: GObject bindings for libudev
@@ -9634,7 +9634,7 @@ dev-vcs/git-mantle 0.6: Generate an overview of changes on a branch
 dev-vcs/git-merge-changelog 20140223: Git merge driver for GNU style ChangeLog files
 dev-vcs/git-pimp 0.8: Code review or pull requests as patch email series
 dev-vcs/git-sh 1.1 1.3: A customized bash environment suitable for git work
-dev-vcs/gitg 0.2.7 0.3.2 3.14.0 3.14.1 3.16.1: git repository viewer for GNOME
+dev-vcs/gitg 3.16.1: git repository viewer for GNOME
 dev-vcs/github-pages-publish 0.1.2: A script that commits files from a directory to Github Pages
 dev-vcs/gitinspector 0.3.1 0.3.2 0.4.2: Statistical analysis tool for git repositories
 dev-vcs/gitolite 2.3.1-r1 3.6 3.6.1 3.6.2 3.6.2-r1 3.6.3 9999: Highly flexible server for git directory version tracker
@@ -10678,13 +10678,13 @@ gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gdesklets-core 0.36.3-r4: GNOME Desktop Applets: Core library for desktop applets
 gnome-extra/gnome-activity-journal 0.8.0-r4 0.8.0-r5: Tool for easily browsing and finding files on your computer
 gnome-extra/gnome-boxes 3.16.2 3.18.1: Simple GNOME 3 application to access remote or virtual systems
-gnome-extra/gnome-builder 3.16.3: Builder attempts to be an IDE for writing software for GNOME
+gnome-extra/gnome-builder 3.16.3 3.18.1: Builder attempts to be an IDE for writing software for GNOME
 gnome-extra/gnome-calculator 3.16.2 3.18.2: A calculator application for GNOME
-gnome-extra/gnome-calendar 3.16.2: Manage your online calendars with simple and modern interface
-gnome-extra/gnome-characters 3.16.2: Unicode character map viewer and library
-gnome-extra/gnome-clocks 3.16.1 3.16.2: Clocks application for GNOME
+gnome-extra/gnome-calendar 3.16.2 3.18.1: Manage your online calendars with simple and modern interface
+gnome-extra/gnome-characters 3.16.2 3.18.1: Unicode character map viewer and library
+gnome-extra/gnome-clocks 3.16.2 3.18.0: Clocks application for GNOME
 gnome-extra/gnome-color-chooser 0.2.5: GTK+/GNOME color customization tool
-gnome-extra/gnome-color-manager 3.12.3 3.14.2 3.16.0: Color profile manager for the GNOME desktop
+gnome-extra/gnome-color-manager 3.16.0 3.18.0: Color profile manager for the GNOME desktop
 gnome-extra/gnome-commander 1.4.2 1.4.6 1.4.7: A graphical, full featured, twin-panel file manager
 gnome-extra/gnome-contacts 3.16.2 3.18.1: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.6: Thumbnail generator for directories
@@ -10694,22 +10694,22 @@ gnome-extra/gnome-documents 3.16.4 3.18.2: A document manager application for GN
 gnome-extra/gnome-dvb-daemon 0.2.10: Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
 gnome-extra/gnome-getting-started-docs 3.16.2 3.18.2: Help a new user get started in GNOME
 gnome-extra/gnome-integration-spotify 20131013 20140907: GNOME integration for Spotify
-gnome-extra/gnome-logs 3.16.2: Log messages and event viewer
+gnome-extra/gnome-logs 3.16.2 3.18.1: Log messages and event viewer
 gnome-extra/gnome-packagekit 3.12.2: PackageKit client for the GNOME desktop
-gnome-extra/gnome-power-manager 3.14.1 3.16.1: GNOME power management service
+gnome-extra/gnome-power-manager 3.16.1 3.18.0: GNOME power management service
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extensions 3.14.4 3.16.1 3.16.2: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons 26 28: Shows legacy tray icons on top
 gnome-extra/gnome-shell-frippery 0.9.0 0.10.2 0.10.3: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-system-monitor 3.16.0 3.18.2: The Gnome System Monitor
 gnome-extra/gnome-tweak-tool 3.16.2 3.18.1: Tool to customize GNOME 3 options
-gnome-extra/gnome-user-docs 3.14.2 3.16.1: GNOME end user documentation
+gnome-extra/gnome-user-docs 3.16.1 3.18.1: GNOME end user documentation
 gnome-extra/gnome-user-share 3.14.2: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
-gnome-extra/gnome-weather 3.14.1 3.16.2.1: A weather application for GNOME
+gnome-extra/gnome-weather 3.16.2.1 3.18.1: A weather application for GNOME
 gnome-extra/gnome-web-photo 0.10.6: A tool to generate images and thumbnails from HTML files
 gnome-extra/gpointing-device-settings 1.5.1-r3: A GTK+ based configuration utility for the synaptics driver
-gnome-extra/gtkhtml 4.8.5: Lightweight HTML rendering/printing/editing engine
+gnome-extra/gtkhtml 4.8.5 4.10.0: Lightweight HTML rendering/printing/editing engine
 gnome-extra/gucharmap 3.0.1-r200 3.12.1 3.14.2 3.16.2 3.18.2: Unicode character map viewer and library
 gnome-extra/libgda 5.2.2 5.2.4: GNOME database access library
 gnome-extra/libgsf 1.14.33 1.14.34: The GNOME Structured File Library
@@ -10724,15 +10724,15 @@ gnome-extra/nm-applet 0.9.8.10-r1 1.0.2 1.0.4 1.0.6: GNOME applet for NetworkMan
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/polkit-gnome 0.105-r1: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.10.1 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
-gnome-extra/sushi 3.12.0 3.16.0: A quick previewer for Nautilus, the GNOME file manager
+gnome-extra/sushi 3.16.0 3.18.0: A quick previewer for Nautilus, the GNOME file manager
 gnome-extra/synapse 0.2.99.1: A program launcher in the style of GNOME Do
-gnome-extra/yelp 3.16.1: Help browser for GNOME
+gnome-extra/yelp 3.16.1 3.18.1: Help browser for GNOME
 gnome-extra/yelp-xsl 3.14.0 3.16.1 3.18.1: XSL stylesheets for yelp
 gnome-extra/zeitgeist 0.9.16: Service to log activities and present to other apps
 gnome-extra/zeitgeist-datasources 0.8.1: Plugins whose work is to push activities as events into Zeitgeist daemon
 gnome-extra/zeitgeist-explorer 0.2-r1: Monitor and inspect Zeitgeist's log at a low level - developer tool
 gnome-extra/zeitgeist-extensions 0.0.13-r2: Allow manipulating events before/after insertion as well as before fetching
-gnome-extra/zenity 3.14.0 3.16.3: Tool to display dialogs from the commandline and shell scripts
+gnome-extra/zenity 3.16.3 3.18.1.1: Tool to display dialogs from the commandline and shell scripts
 gnustep-apps/aclock 0.4.0: Analog dockapp clock for GNUstep
 gnustep-apps/addresses 0.4.7 0.4.8: Addresses is a Apple Addressbook work alike (standalone and for GNUMail)
 gnustep-apps/affiche 0.6.0-r3: Affiche allows people to 'stick' notes
@@ -11804,7 +11804,7 @@ media-gfx/gnofract4d 3.13 3.14 3.14-r1: A program for drawing beautiful mathemat
 media-gfx/gnome-font-viewer 3.14.1 3.16.2: Font viewer for GNOME
 media-gfx/gnome-photos 3.16.2 3.16.3 3.18.2: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0: A lightweight and fast raw image thumbnailer for GNOME
-media-gfx/gnome-screenshot 3.14.0-r1 3.16.2: Screenshot utility for GNOME
+media-gfx/gnome-screenshot 3.16.2 3.18.0: Screenshot utility for GNOME
 media-gfx/gnome-specimen 0.4-r1: Font preview application
 media-gfx/gozer 0.7-r2: tool for rendering arbitrary text as graphics, using ttfs and styles
 media-gfx/gphoto2 2.5.6 2.5.8: Free, redistributable digital camera software application
