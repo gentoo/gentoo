@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Matt Turner <mattst88@gentoo.org> (15 Nov 2015)
+# Missing keywords
+dev-util/perf numa
+
 # Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
 # Missing keywords
 media-sound/rhythmbox upnp-av

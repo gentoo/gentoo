@@ -38,7 +38,7 @@ SRC_URI+=" mirror://kernel/linux/kernel/v${LINUX_V}/${LINUX_SOURCES}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ppc ~x86"
 IUSE="audit debug +demangle +doc gtk numa perl python slang unwind"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
