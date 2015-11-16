@@ -6727,7 +6727,7 @@ dev-python/addons 0.7: Dynamically extend other objects (formerly ObjectRoles)
 dev-python/adns-python 1.2.1-r1: Python bindings for ADNS
 dev-python/adodb-py 2.20-r1: Active Data Objects Data Base library for Python
 dev-python/aioeventlet 0.4: asyncio event loop scheduling callbacks in eventlet
-dev-python/aiohttp 0.14.4-r1 0.17.4: http client/server for asyncio
+dev-python/aiohttp 0.14.4-r1 0.17.4 0.18.4: http client/server for asyncio
 dev-python/alabaster 0.7.6: A configurable sidebar-enabled Sphinx theme
 dev-python/aldryn-bootstrap3 0.5.1: django CMS plugins for bootstrap3 markup
 dev-python/alembic 0.6.7 0.7.4 0.7.6 0.7.7 0.8.2: database migrations tool, written by the author of SQLAlchemy
@@ -13373,7 +13373,7 @@ net-analyzer/hydra 8.1: Advanced parallized login hacker
 net-analyzer/ibmonitor 1.4: Interactive bandwidth monitor
 net-analyzer/icinga 1.13.3-r1: Nagios Fork - Check daemon, CGIs, docs, IDOutils
 net-analyzer/icinga-web 1.9.1-r1 1.10.0 1.10.0-r1 1.10.1 1.11.2: Icinga Web - new Web Interface
-net-analyzer/icinga2 2.3.10-r1 2.3.11 9999: Distributed, general purpose, network monitoring engine
+net-analyzer/icinga2 2.3.10-r1 2.3.11 2.4.0 9999: Distributed, general purpose, network monitoring engine
 net-analyzer/ifmetric 0.3 0.3-r1: Linux tool for setting metrics of all IPv4 routes attached to a given network interface at once
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
 net-analyzer/ifstatus 1.1.0-r1: A simple CLI program for displaying network statistics in real time
