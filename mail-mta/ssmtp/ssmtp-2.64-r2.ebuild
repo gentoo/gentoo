@@ -21,8 +21,8 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
 IUSE="ipv6 +ssl gnutls +mta"
 
 DEPEND="ssl? (
-		!gnutls? ( dev-libs/openssl )
-		gnutls? ( net-libs/gnutls )
+		!gnutls? ( dev-libs/openssl:0 )
+		gnutls? ( net-libs/gnutls[openssl] )
 	)"
 RDEPEND="${DEPEND}
 	net-mail/mailbase
