@@ -18,7 +18,7 @@ IUSE="doc +svg"
 # FIXME: svg support is automagic
 RDEPEND="
 	>=x11-libs/cairo-1.12.10[svg?,${MULTILIB_USEDEP}]
-	>=dev-libs/libsigc++-2.3.2:2[${MULTILIB_USEDEP}]
+	>=dev-libs/libsigc++-2.5.1:2[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
