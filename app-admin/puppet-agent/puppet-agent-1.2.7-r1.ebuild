@@ -38,6 +38,21 @@ RDEPEND="${CDEPEND}
 
 S=${WORKDIR}
 
+QA_PREBUILT="
+	/opt/puppetlabs/puppet
+	/opt/puppetlabs/puppet/lib/ruby/vendor_ruby/2.1.0/x86_64-linux/*
+	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/mathn/*
+	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/io/*
+	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/dl/*
+	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/racc/*
+	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/enc/*
+	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/json/ext/*
+	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/rbconfig/*
+	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/digest/*
+	/opt/puppetlabs/puppet/lib/engines/*
+	/opt/puppetlabs/puppet/lib/virt-what/*
+	/opt/puppetlabs/puppet/bin/*"
+
 pkg_setup() {
 	enewgroup puppet
 	enewuser puppet -1 -1 /var/run/puppet puppet
