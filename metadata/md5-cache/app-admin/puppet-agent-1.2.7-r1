@@ -4,11 +4,11 @@ DESCRIPTION=general puppet client utils along with mcollective hiera and facter
 EAPI=5
 HOMEPAGE=https://puppetlabs.com/
 IUSE=puppetdb selinux
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=Apache-2.0
 RDEPEND=!app-admin/augeas !app-admin/mcollective !app-admin/puppet !dev-ruby/hiera !dev-ruby/facter !app-emulation/virt-what sys-apps/dmidecode selinux? ( sys-libs/libselinux[ruby] sec-policy/selinux-puppet ) puppetdb? ( >=dev-ruby/puppetdb-termini-3.1.0 )
 RESTRICT=strip
 SLOT=0
 SRC_URI=amd64? ( http://apt.puppetlabs.com/pool/wheezy/PC1/p/puppet-agent/puppet-agent_1.2.7-1wheezy_amd64.deb ) x86? ( http://apt.puppetlabs.com/pool/wheezy/PC1/p/puppet-agent/puppet-agent_1.2.7-1wheezy_i386.deb )
 _eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=d94efd0c2bcd55024cad4539dff1e07d
+_md5_=e7e25288fa6e91945923b971c733f73c
