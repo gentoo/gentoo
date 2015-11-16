@@ -4,7 +4,7 @@ DESCRIPTION=Distribute compilation of C code across several machines on a networ
 EAPI=5
 HOMEPAGE=http://distcc.org/
 IUSE=avahi crossdev gnome gssapi gtk hardened ipv6 selinux xinetd python_targets_python2_7
-KEYWORDS=alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~sparc-fbsd ~x86-fbsd
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~sparc-fbsd ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] dev-libs/popt avahi? ( >=net-dns/avahi-0.6[dbus] ) gnome? ( >=gnome-base/libgnome-2 >=gnome-base/libgnomeui-2 x11-libs/gtk+:2 x11-libs/pango ) gssapi? ( net-libs/libgssglue ) gtk? ( x11-libs/gtk+:2 ) !net-misc/pump >=sys-devel/gcc-config-1.4.1 selinux? ( sec-policy/selinux-distcc ) xinetd? ( sys-apps/xinetd )
 REQUIRED_USE=python_targets_python2_7
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://distcc.googlecode.com/files/distcc-3.2rc1.tar.bz2
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f813d23e417656bf3917483643165d5a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=36d14f3534d3d7251296aacf1dfee13f
+_md5_=d2ce47bb58e77026074770c82d5e5d0a
