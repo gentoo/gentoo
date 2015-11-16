@@ -6,12 +6,12 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 pypy )
 
-inherit python-single-r1
+inherit readme.gentoo python-single-r1
 
 DESCRIPTION="AsciiDoc is a plain text human readable/writable document format"
 HOMEPAGE="http://asciidoc.org/"
 SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.gz"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -23,8 +23,6 @@ RDEPEND=">=app-text/docbook-xsl-stylesheets-1.75
 		dev-libs/libxslt
 		graphviz? ( media-gfx/graphviz )
 		app-text/docbook-xml-dtd:4.5
-		app-text/dblatex
-		|| ( www-client/w3m www-client/lynx )
 		highlight? ( || ( dev-util/source-highlight \
 			dev-python/pygments[${PYTHON_USEDEP}] \
 			app-text/highlight )
@@ -38,6 +36,11 @@ DEPEND="test? ( dev-util/source-highlight
 			app-text/dvipng
 			media-gfx/graphviz
 			${PYTHON_DEPS} )
+"
+
+DOC_CONTENTS="
+If you are going to use a2x, please also look at a2x(1) under
+REQUISITES for a list of runtime dependencies.
 "
 
 src_prepare() {
@@ -66,6 +69,7 @@ src_install() {
 
 	python_fix_shebang "${ED}"/usr/bin/*.py
 
+	readme.gentoo_create_doc
 	dodoc BUGS CHANGELOG README docbook-xsl/asciidoc-docbook-xsl.txt \
 			dblatex/dblatex-readme.txt filters/code/code-filter-readme.txt
 
