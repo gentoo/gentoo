@@ -14350,7 +14350,7 @@ net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding dev
 net-misc/igmpproxy 0.1-r1: Multicast Routing Daemon using only IGMP signalling (Internet Group Management Protocol)
 net-misc/iodine 0.7.0: IP over DNS tunnel
 net-misc/ip-sentinel 0.12: Prevent unauthorized usage of IPs in the local ethernet broadcastdomain by answering ARP-requests
-net-misc/ipcalc 0.41: calculates broadcast/network/etc... from an IP address and netmask
+net-misc/ipcalc 0.41: IP Calculator prints broadcast/network/etc for an IP address and netmask
 net-misc/iperf 2.0.5-r2 3.0.11 3.1_beta3: A TCP, UDP, and SCTP network bandwidth measurement tool
 net-misc/ipsc 0.4.3.2-r2: IP Subnet Calculator
 net-misc/ipsorcery 2.0.9-r1: Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets
@@ -14615,7 +14615,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/yaydl 1.5.2: Yet Another Youtube DownLoader which is downloading more than youtube
-net-misc/youtube-dl 2015.04.03 2015.11.10 2015.11.13: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2015.04.03 2015.11.13 2015.11.15: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.1 3.1.9 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
