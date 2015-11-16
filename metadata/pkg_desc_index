@@ -4394,7 +4394,7 @@ dev-lang/parrot 7.0.2 7.1.0 7.2.0 7.3.0 7.5.0: Virtual machine designed to effic
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.20.2 5.20.2-r1 5.22.0: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.4.45 5.5.29 5.5.30 5.6.13 5.6.14 5.6.15-r2 5.6.15-r3 7.0.0_rc4 7.0.0_rc5 7.0.0_rc6-r1 7.0.0_rc6-r2: The PHP language runtime engine: CLI, CGI, FPM/FastCGI, Apache2 and embed SAPIs
+dev-lang/php 5.4.45 5.5.29 5.5.30 5.6.13 5.6.14 5.6.15-r2 5.6.15-r3 7.0.0_rc7: The PHP language runtime engine: CLI, CGI, FPM/FastCGI, Apache2 and embed SAPIs
 dev-lang/pocl 0.11: PortableCL: opensource implementation of the OpenCL standard
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.10 2.7.10-r2 2.7.10-r3 3.3.5-r1 3.3.5-r2 3.3.5-r3 3.4.3 3.4.3-r2 3.4.3-r3 3.5.0-r1 3.5.0-r2: An interpreted, interactive, object-oriented programming language
