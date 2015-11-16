@@ -272,10 +272,6 @@ dev-perl/Parse-CPAN-Meta
 # Mask new versions of dev-php/pecl-yaml that only work with PHP-7+
 >=dev-php/pecl-yaml-2.0
 
-# Michael Orlitzky <mjo@gentoo.org> (05 Nov 2015)
-# Masked for testing: the ./configure handling was largely rewritten.
-=dev-lang/php-5.6.15-r3
-
 # Michał Górny <mgorny@gentoo.org> (30 Oct 2015)
 # Uses unsafe ioctls that could result in data corruption. Upstream
 # is working on replacing them in the wip/dedup-syscall branch.
