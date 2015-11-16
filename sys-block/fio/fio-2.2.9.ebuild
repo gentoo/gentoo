@@ -15,7 +15,7 @@ SRC_URI="http://brick.kernel.dk/snaps/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~ia64 ppc ppc64 x86"
+KEYWORDS="amd64 arm ia64 ppc ppc64 x86"
 IUSE="aio glusterfs gnuplot gtk numa rbd rdma static zlib"
 
 DEPEND="aio? ( dev-libs/libaio )

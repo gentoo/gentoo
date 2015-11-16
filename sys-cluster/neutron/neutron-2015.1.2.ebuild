@@ -154,11 +154,11 @@ pkg_config() {
 	fowners neutron:neutron /var/log neutron
 }
 
-sddrc_prepare() {
+src_prepare() {
 	sed -i '/^hacking/d' test-requirements.txt || die
 	# it's /bin/ip not /sbin/ip
 	sed -i 's/sbin\/ip\,/bin\/ip\,/g' etc/neutron/rootwrap.d/* || die
-	distutils-r1_src_prepare
+	distutils-r1_python_prepare_all
 }
 
 python_compile_all() {

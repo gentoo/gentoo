@@ -158,7 +158,7 @@ pkg_config() {
 src_prepare() {
 	#it's /bin/ip not /sbin/ip
 	sed -i 's/sbin\/ip\,/bin\/ip\,/g' etc/neutron/rootwrap.d/*
-	distutils-r1_src_prepare
+	distutils-r1_python_prepare_all
 }
 
 python_compile_all() {
