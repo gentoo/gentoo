@@ -1,0 +1,53 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /etc/init.d/cgconfig,v 1.1 2015/02/18 09:53:59 tokiclover Exp $
+
+CGCONFIGPARSER="/usr/sbin/cgconfigparser"
+CGCLASSIFY="/usr/sbin/cgclassify"
+:	${CG_CONFIGFILE:=/etc/cgroup/cgconfig.conf}
+description="Control Group Configuration Service"
+
+start()
+{
+	ebegin "Setting up CGroups"
+	${CGCONFIGPARSER} --load=${CG_CONFIGFILE} >/dev/null 2>&1
+	eend "$?"
+}
+
+start_post()
+{
+	# Classify PID according to the rules if requested
+	yesno "${CG_CLASSIFY}" || return 0
+	ebegin "Classifying PID to CGroups"
+	local pid
+	for pid in $(ps --no-headers -eL o tid); do
+		 ${CGCLASSIFY} ${pid}
+	done
+	eend "$?"
+}
+
+stop()
+{
+	cgconfig_umount
+}
+
+cgconfig_umount()
+{
+	local ctrl eq mnt_pnt mnt_pts
+
+	while read ctrl eq mnt_pnt; do
+		case "${ctrl}" in
+			(\#*)    continue    ;;
+			(mount*) mnt_pts=true;;
+			(\}*)    mnt_pts=    ;;
+			(*)
+				[ -n "${mnt_pts}" ] || continue
+				mnt_pnt="${mnt_pnt%;}"
+				ebegin "Unmounting ${mnt_pnt}"
+				umount "${mnt_pnt}"
+				eend "$?"
+				;;
+		esac
+	done < "${CG_CONFIGFILE}"
+}
