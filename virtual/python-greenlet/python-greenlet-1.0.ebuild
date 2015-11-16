@@ -14,7 +14,7 @@ SRC_URI=""
 
 LICENSE=""
 SLOT="0"
-KEYWORDS="~amd64 ~arm -hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm -hppa ~mips ppc ppc64 x86"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
