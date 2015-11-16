@@ -24,7 +24,6 @@ DEPEND="${RDEPEND}
 	~sys-fs/aufs-headers-${PV}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-version.patch
 	sed \
 		-e "/LDFLAGS += -static -s/d" \
 		-e "/CFLAGS/s:-O::g" \
