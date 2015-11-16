@@ -28,6 +28,7 @@ S=${WORKDIR}/${MY_P}
 
 EANT_EXTRA_ARGS="-Dcomponent.version=${PV}"
 JAVA_ANT_REWRITE_CLASSPATH="yes"
+JAVA_ANT_ENCODING="ISO-8859-1"
 
 java_prepare() {
 	# Setting java.io.tmpdir doesn't have effect unless we do this because the vm is forked
