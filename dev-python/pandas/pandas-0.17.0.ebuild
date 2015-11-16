@@ -81,6 +81,10 @@ RDEPEND="${CDEPEND}
 	)
 	R? ( dev-python/rpy[${PYTHON_USEDEP}] )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-testfix-backport.patch
+)
+
 python_prepare_all() {
 	# Prevent un-needed download during build
 	sed -e "/^              'sphinx.ext.intersphinx',/d" -i doc/source/conf.py || die
