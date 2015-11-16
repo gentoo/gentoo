@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		This package provides combinators for sequencing IO actions onto a thread pool. The
+		thread pool is guaranteed to contain no more unblocked threads than a user-specified upper limit, thus
+		minimizing contention.
+		
+		Furthermore, the parallel combinators can be used reentrantly - your parallel
+		actions can spawn more parallel actions - without violating this property of the thread pool.
+		
+		The package is inspired by the thread &lt;http://thread.gmane.org/gmane.comp.lang.haskell.cafe/56499/focus=56521&gt;.
+		Thanks to Neil Mitchell and Bulat Ziganshin for some of the code this package is based on.
+	</longdescription>
+</pkgmetadata>
