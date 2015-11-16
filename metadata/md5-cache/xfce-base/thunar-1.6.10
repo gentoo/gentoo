@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/perl-5.6 >=dev-libs/glib-2.30:= >=x11-libs/gdk-pixbuf-2.14:= 
 REQUIRED_USE=xfce_plugins_trash? ( dbus )
 SLOT=0
 SRC_URI=mirror://xfce/src/xfce/thunar/1.6/Thunar-1.6.10.tar.bz2
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	8644194de7be04932084752fb1327080	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	virtualx	7d550983f9b6adb3e7091f4090ddae2f	xfconf	d842ab8b2140980394561496bf157447
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f813d23e417656bf3917483643165d5a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	virtualx	7d550983f9b6adb3e7091f4090ddae2f	xfconf	d842ab8b2140980394561496bf157447
 _md5_=c9298f5814de1eaafc5266ae58ecd797

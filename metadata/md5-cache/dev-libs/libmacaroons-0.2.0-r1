@@ -11,5 +11,5 @@ REQUIRED_USE=test? ( python )
 RESTRICT=test
 SLOT=0
 SRC_URI=http://hyperdex.org/src/libmacaroons-0.2.0.tar.gz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=7259d4d9ad944e31db7b296bd2f82c73

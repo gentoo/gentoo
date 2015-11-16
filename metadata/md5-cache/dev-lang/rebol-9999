@@ -6,5 +6,5 @@ HOMEPAGE=http://rebol.com
 LICENSE=Apache-2.0
 RDEPEND=|| ( dev-lang/rebol dev-lang/rebol-bin )
 SLOT=0
-_eclasses_=eutils	8644194de7be04932084752fb1327080	git-2	df00117322129fb906bb0a53c3d6a020	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	git-2	df00117322129fb906bb0a53c3d6a020	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=d361bad5ca389051620f55f2876c4089

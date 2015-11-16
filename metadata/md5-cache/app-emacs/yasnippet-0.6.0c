@@ -9,5 +9,5 @@ LICENSE=MIT GPL-2
 RDEPEND=>=app-emacs/dropdown-list-20080316 >=virtual/emacs-23
 SLOT=0
 SRC_URI=https://yasnippet.googlecode.com/files/yasnippet-0.6.0c.tar.bz2 doc? ( https://yasnippet.googlecode.com/files/yasnippet-doc-0.6.0c.tar.bz2 )
-_eclasses_=elisp	484004c25306120b472b7dfdb0685c95	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=elisp	484004c25306120b472b7dfdb0685c95	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=b68ab7679dc6817f0dbfcb0aede1ccb4

@@ -10,5 +10,5 @@ RDEPEND=virtual/libffi >=virtual/jre-1.6 >=dev-java/java-config-2.2.0 source? ( 
 REQUIRED_USE=test? ( awt nio-buffers )
 SLOT=0
 SRC_URI=https://github.com/twall/jna/tarball/3.4.0 -> jna-3.4.0.tar.gz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	java-ant-2	7c5d0c274d390745f5033754a319f515	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	a96633177f44ee992b3fce360d1c4f16	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	java-ant-2	7c5d0c274d390745f5033754a319f515	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	a96633177f44ee992b3fce360d1c4f16	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=27b957a36adc4b52990539a20af83d1f

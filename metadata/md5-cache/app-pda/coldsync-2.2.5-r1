@@ -9,5 +9,5 @@ LICENSE=Artistic
 RDEPEND=perl? ( dev-lang/perl ) dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=http://www.coldsync.org/download/coldsync-2.2.5.tar.gz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
 _md5_=16c6bf7e9271b386a95d6ed240941f8c

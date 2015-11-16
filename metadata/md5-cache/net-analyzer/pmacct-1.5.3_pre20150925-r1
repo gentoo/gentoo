@@ -10,5 +10,5 @@ RDEPEND=net-libs/libpcap geoip? ( dev-libs/geoip ) geoipv2? ( dev-libs/libmaxmin
 REQUIRED_USE=?? ( geoip geoipv2 )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jer/pmacct-1.5.3_pre20150925.tar.gz
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=586becf60271b62b003e5ba2cfd2b12f

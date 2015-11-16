@@ -10,5 +10,5 @@ RDEPEND=dev-libs/jansson media-libs/a52dec media-libs/libass media-libs/libblura
 REQUIRED_USE=^^ ( fdk libav-aac )
 SLOT=0
 SRC_URI=http://handbrake.fr/rotation.php?file=HandBrake-0.10.2.tar.bz2 -> handbrake-0.10.2.tar.bz2
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	8644194de7be04932084752fb1327080	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	60a62ae0ee8cd93b4ba99a4c1371eb8b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f813d23e417656bf3917483643165d5a	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	60a62ae0ee8cd93b4ba99a4c1371eb8b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=0cbb754d3887b5aeaa9777273e7dbe2d

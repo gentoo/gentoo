@@ -8,5 +8,5 @@ LICENSE=MIT GPL-2
 RDEPEND=dev-python/demjson >=dev-python/morbid-0.8.4 dev-python/stomper dev-python/twisted-core dev-python/twisted-web =dev-lang/python-2*
 SLOT=0
 SRC_URI=mirror://pypi/o/orbited/orbited-0.7.10.tar.gz
-_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	3972ca401cf7dbb430df9995f5d8d580	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=bca4b78515122d77e935be95152ba7e3

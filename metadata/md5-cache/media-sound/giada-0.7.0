@@ -10,5 +10,5 @@ RDEPEND=media-libs/libsndfile >=media-libs/libsamplerate-0.1.8 media-libs/rtaudi
 REQUIRED_USE=|| ( alsa jack pulseaudio )
 SLOT=0
 SRC_URI=http://www.giadamusic.com/download-action.php?os=source&version=0.7.0 -> giada-0.7.0.tar.gz
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=4076e8a87b141f8ff66bdcb93fa402b2

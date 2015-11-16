@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/alsa-lib >=dev-cpp/gtkmm-2.4:2.4 >=dev-libs/libsigc++-2.2:2 jack? ( >=media-sound/jack-audio-connection-kit-0.90 ) lash? ( >=media-sound/lash-0.5 )
 SLOT=0
 SRC_URI=https://edge.launchpad.net/seq24/trunk/0.9.2/+download/seq24-0.9.2.tar.bz2
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=abf6ebc48c77fbdf566f7b5636928dfd

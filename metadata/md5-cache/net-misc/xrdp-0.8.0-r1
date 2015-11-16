@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=dev-libs/openssl:0= x11-libs/libX11:0= x11-libs/libXfixes:0= x11-libs/libXrandr:0= fuse? ( sys-fs/fuse:0= ) jpeg? ( virtual/jpeg:0= ) kerberos? ( virtual/krb5:0= ) pam? ( virtual/pam:0= ) pulseaudio? ( media-sound/pulseaudio:0= ) || ( net-misc/tigervnc:0=[server,xorgmodule] net-misc/x11rdp:0= )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~mgorny/dist/xrdp-0.8.0.tar.xz
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=3f93c5147f33c56cec9de6dc854c6b02

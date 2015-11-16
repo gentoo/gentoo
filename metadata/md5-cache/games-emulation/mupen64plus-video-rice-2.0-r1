@@ -9,5 +9,5 @@ LICENSE=GPL-2 LGPL-2.1
 RDEPEND=>=games-emulation/mupen64plus-core-2.0-r1:0= media-libs/libpng:0= media-libs/libsdl:0=[video] virtual/opengl:0=
 SLOT=0
 SRC_URI=https://github.com/mupen64plus/mupen64plus-video-rice/releases/download/2.0/mupen64plus-video-rice-src-2.0.tar.gz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=e5b6e7fc29c4aaa0b55d5a1d8269ace3

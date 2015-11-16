@@ -8,5 +8,5 @@ RDEPEND=app-arch/bzip2 sys-devel/gcc sys-libs/glibc sys-libs/zlib
 RESTRICT=mirror bindist strip
 SLOT=0
 SRC_URI=x86? ( https://fah.stanford.edu/file-releases/public/release/fahclient/centos-5.5-32bit/v7.3/fahclient_7.3.6-32bit-release.tar.bz2 ) amd64? ( https://fah.stanford.edu/file-releases/public/release/fahclient/centos-5.3-64bit/v7.3/fahclient_7.3.6-64bit-release.tar.bz2 )
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=3c0aaea43823b5adf947c6a0e5090ec3

@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/lzo app-arch/bzip2 sys-libs/zlib
 SLOT=0
 SRC_URI=http://ck.kolivas.org/apps/lrzip/lrzip-0.621.tar.bz2
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=d3b8ce12ad6946d92e25e18c73eaf532

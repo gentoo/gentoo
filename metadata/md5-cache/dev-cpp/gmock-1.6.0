@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND==dev-cpp/gtest-1.6.0*
 SLOT=0
 SRC_URI=https://googlemock.googlecode.com/files/gmock-1.6.0.zip
-_eclasses_=libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=363bb34980b58cd2a8c5f882d25e293f

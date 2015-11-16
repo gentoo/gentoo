@@ -8,5 +8,5 @@ KEYWORDS=~amd64
 LICENSE=MIT
 SLOT=0
 SRC_URI=https://github.com/tmbinc/bgrep/tarball/49b098be9548d174023ad05c10f6af9d02b8e18e -> tmbinc-bgrep-49b098b.tar.gz
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=b6b744d94c07ac3ea156dc2a3e807f91

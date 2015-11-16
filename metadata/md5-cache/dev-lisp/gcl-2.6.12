@@ -10,5 +10,5 @@ RDEPEND=emacs? ( virtual/emacs ) readline? ( sys-libs/readline ) athena? ( x11-l
 RESTRICT=strip
 SLOT=0
 SRC_URI=mirror://gnu/gcl/gcl-2.6.12.tar.gz https://dev.gentoo.org/~grozin/gcl-2.6.12-fedora.tar.bz2
-_eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=67851d6aeefb5faf97f6a33fd7080ffd

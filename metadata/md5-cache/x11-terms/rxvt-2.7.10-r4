@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 x11-libs/libXpm x11-libs/libXext motif? ( >=x11-libs/motif-2.3:0 )
 SLOT=0
 SRC_URI=mirror://sourceforge/rxvt/rxvt-2.7.10.tar.gz http://www.giga.it.okayama-u.ac.jp/~ishihara/opensource/rxvt-2.7.10-xim-fix.patch.gz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=832392956ad412df86b221ef096d2b67

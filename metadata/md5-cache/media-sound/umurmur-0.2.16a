@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=>=dev-libs/protobuf-c-1.0.0_rc2 dev-libs/libconfig gnutls? ( >=net-libs/gnutls-3.0.0 ) polarssl? ( >=net-libs/polarssl-1.0.0 ) !gnutls? ( !polarssl? ( dev-libs/openssl:0 ) )
 SLOT=0
 SRC_URI=https://github.com/umurmur/umurmur/archive/0.2.16a.tar.gz -> umurmur-0.2.16a.tar.gz
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	8644194de7be04932084752fb1327080	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	readme.gentoo	e37aea783a61ae55fab947df247eebea	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f813d23e417656bf3917483643165d5a	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	readme.gentoo	e37aea783a61ae55fab947df247eebea	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=71a5efd7807bbbeb62c3fdea6f056a9f

@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/lua-5.2 dev-libs/expat media-libs/fontconfig media-libs/flac 
 REQUIRED_USE=debug? ( X )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~hasufell/distfiles/mame0149s.zip http://www.netswarm.net/misc/sdlmame-ui.bdf.gz
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	games	4dae170e58f773c484e07d18ef441804	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-any-r1	60a62ae0ee8cd93b4ba99a4c1371eb8b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	games	4dae170e58f773c484e07d18ef441804	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	60a62ae0ee8cd93b4ba99a4c1371eb8b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=7f186a0c2560078b8eee6c8ae84be15a

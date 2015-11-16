@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=sys-kernel/linux-headers-2.6.24 !sys-cluster/dlm-headers !sys-cluster/dlm-kernel kernel_linux? ( virtual/modutils )
 SLOT=0
 SRC_URI=ftp://sources.redhat.com/pub/cluster/releases/cluster-2.03.11.tar.gz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	linux-mod	9e27971daa324852d78bc7d4d811afae	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	linux-mod	9e27971daa324852d78bc7d4d811afae	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=6b7bfaf6ff5057191af117dd76b2c1b1

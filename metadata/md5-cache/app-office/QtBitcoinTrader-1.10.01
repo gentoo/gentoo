@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=dev-libs/openssl:0 sys-libs/zlib dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtscript:5 dev-qt/qtwidgets:5 dev-qt/qtmultimedia:5
 SLOT=0
 SRC_URI=https://github.com/JulyIGHOR/QtBitcoinTrader/archive/v1.10.01.tar.gz -> QtBitcoinTrader-1.10.01.tar.gz
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	8644194de7be04932084752fb1327080	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f813d23e417656bf3917483643165d5a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	3972ca401cf7dbb430df9995f5d8d580	qmake-utils	05b63bb5c708c5903a9de5c58c8e43c8	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd
 _md5_=647fa2ca0bfe82704611c63970ae17fc

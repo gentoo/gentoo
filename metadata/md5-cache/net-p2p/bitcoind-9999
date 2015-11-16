@@ -7,5 +7,5 @@ IUSE=examples test upnp +wallet
 LICENSE=MIT
 RDEPEND=dev-libs/openssl:0[-bindist] >dev-libs/libsecp256k1-0.0.0_pre20150422 >=dev-libs/boost-1.52.0[threads(+)] upnp? ( net-libs/miniupnpc ) wallet? ( sys-libs/db:4.8[cxx] ) virtual/bitcoin-leveldb
 SLOT=0
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	bitcoincore	0e75b2c5641e07fcaea145ca163cc877	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	8644194de7be04932084752fb1327080	git-2	df00117322129fb906bb0a53c3d6a020	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	bitcoincore	0e75b2c5641e07fcaea145ca163cc877	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	f813d23e417656bf3917483643165d5a	git-2	df00117322129fb906bb0a53c3d6a020	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=f03006b4fdc385bc9379bd203c92adb6

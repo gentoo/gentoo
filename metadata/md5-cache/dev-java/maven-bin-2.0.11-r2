@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=>=virtual/jdk-1.4 || ( app-eselect/eselect-java app-eselect/eselect-maven ) >=dev-java/java-config-2.2.0
 SLOT=2.0
 SRC_URI=mirror://apache/maven/maven-2/2.0.11/binaries/apache-maven-2.0.11-bin.tar.bz2
-_eclasses_=eutils	8644194de7be04932084752fb1327080	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	a96633177f44ee992b3fce360d1c4f16	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	a96633177f44ee992b3fce360d1c4f16	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=a1c3eec23c2c7a8fb3b9e7f3503069ef

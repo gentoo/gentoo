@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/boost:0= dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsql:5 dev-qt/qtwebkit:5 >=media-gfx/exiv2-0.14:0= media-libs/lcms:2 media-libs/libpng:0= >=media-libs/libraw-0.13.4:= media-libs/ilmbase:= >=media-libs/openexr-1.2.2-r2:= >=media-libs/tiff-3.8.2-r2:0 sci-libs/fftw:3.0[threads] fits? ( sci-libs/ccfits ) sci-libs/gsl virtual/jpeg:0
 SLOT=0
 SRC_URI=mirror://sourceforge/qtpfsgui/luminance-hdr-2.4.0.tar.bz2
-_eclasses_=cmake-utils	f16fa5681153277df51f001deaf17ff8	eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	f16fa5681153277df51f001deaf17ff8	eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=75010dd3ed106fa6287085a84ca4b192

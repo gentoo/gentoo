@@ -10,5 +10,5 @@ RDEPEND=sys-libs/ncurses[unicode?] aac? ( media-libs/faad2 ) alsa? ( >=media-lib
 REQUIRED_USE=tremor? ( vorbis )
 SLOT=0
 SRC_URI=https://github.com/cmus/cmus/archive/v2.6.0.tar.gz -> cmus-2.6.0.tar.gz
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=149882745f0ea6ff60e62e34a6b82fda

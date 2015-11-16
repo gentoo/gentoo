@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=x11-libs/libX11 >=x11-misc/dmenu-4.4 apis? ( x11-misc/xbindkeys )
 SLOT=0
 SRC_URI=mirror://gentoo/musca-0.9.24_p20100226.tgz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	portability	3a50b3ec310b86914f98babecc8f89c6	savedconfig	7de7daa586f6bf361639e77d6f2299db	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	portability	3a50b3ec310b86914f98babecc8f89c6	savedconfig	7de7daa586f6bf361639e77d6f2299db	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=c5e011ffb7c0512bdeeedbb0e637c390

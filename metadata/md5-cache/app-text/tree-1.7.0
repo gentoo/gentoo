@@ -7,5 +7,5 @@ LICENSE=GPL-2
 RDEPEND=!=sci-biology/meme-4.8.1
 SLOT=0
 SRC_URI=ftp://mama.indstate.edu/linux/tree/tree-1.7.0.tgz
-_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=cc6ff4a27b875d8c5f8aa252b0b8ad37

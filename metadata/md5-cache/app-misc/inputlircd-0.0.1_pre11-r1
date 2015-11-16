@@ -6,5 +6,5 @@ KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://gentooexperimental.org/~genstef/dist/inputlircd-0.0.1_pre11.tar.bz2
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=9b022860adb24e7f310e02bbb7bcfc8a

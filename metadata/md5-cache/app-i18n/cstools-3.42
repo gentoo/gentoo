@@ -8,5 +8,5 @@ LICENSE=Artistic
 RDEPEND=dev-perl/MIME-tools dev-lang/perl[-build(-)]
 SLOT=0
 SRC_URI=http://www.adelton.com/perl/Cstools/Cstools-3.42.tar.gz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-app	f4e5d7e4162790fd8dca8dafe5a2eadf	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-app	f4e5d7e4162790fd8dca8dafe5a2eadf	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
 _md5_=5a7db158798f276d5ce01dc2cf9928e1

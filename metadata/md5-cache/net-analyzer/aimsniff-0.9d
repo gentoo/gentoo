@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl[gdbm] dev-perl/Net-Pcap dev-perl/NetPacket dev-perl/Unicode-String dev-perl/Proc-Daemon dev-perl/Proc-Simple dev-perl/DBI dev-perl/Unix-Syslog mysql? ( virtual/mysql dev-perl/DBD-mysql ) samba? ( net-fs/samba ) http? ( =www-servers/apache-2* ) >=app-admin/webapp-config-1.50.15
 SLOT=0.9d
 SRC_URI=mirror://sourceforge/aimsniff/aimsniff-0.9d.tar.gz http? ( mirror://sourceforge/aimsniff/was-0.1.2b.tar.gz )
-_eclasses_=depend.apache	e3c541cb90838388f81620d630c28f41	eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	webapp	42c6ef7af496b228f9854b3c81e4b226
+_eclasses_=depend.apache	e3c541cb90838388f81620d630c28f41	eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	webapp	42c6ef7af496b228f9854b3c81e4b226
 _md5_=846e04bd5741ef265142c107e3732d63

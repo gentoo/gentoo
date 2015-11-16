@@ -10,5 +10,5 @@ RDEPEND=jpeg? ( virtual/jpeg:0= ) mpi? ( virtual/mpi ) opengl? ( virtual/glu vir
 REQUIRED_USE=^^ ( opengl mpi )
 SLOT=0
 SRC_URI=http://jedi.ks.uiuc.edu/~johns/raytracer/files/0.99b6/tachyon-0.99b6.tar.gz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=d5b215f9b7f96eed83fd896b1acbde5a

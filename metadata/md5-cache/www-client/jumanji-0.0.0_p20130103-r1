@@ -9,5 +9,5 @@ LICENSE=ZLIB
 RDEPEND=dev-db/sqlite:3 dev-libs/glib:2 <dev-libs/girara-0.2.4:3 net-libs/webkit-gtk:3 x11-libs/gtk+:3 !www-client/jumanji:0
 SLOT=develop
 SRC_URI=https://git.pwmt.org/?p=jumanji.git;a=snapshot;h=963b309e9f91c6214f36c729514d5a08e7293310;sf=tgz -> jumanji-0.0.0_p20130103.tar.gz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	portability	3a50b3ec310b86914f98babecc8f89c6	savedconfig	7de7daa586f6bf361639e77d6f2299db	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	portability	3a50b3ec310b86914f98babecc8f89c6	savedconfig	7de7daa586f6bf361639e77d6f2299db	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd
 _md5_=b8b633b07873cfc00672ab17e4c584c5

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/jpeg media-libs/libpng background? ( x11-wm/afterstep ) x11-libs/libX11 x11-libs/libXext x11-libs/libICE
 SLOT=0
 SRC_URI=ftp://ftp.afterstep.org/apps/aterm/aterm-1.0.1.tar.bz2
-_eclasses_=eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=cdccff86caedf4b48c5c70e04874cfef

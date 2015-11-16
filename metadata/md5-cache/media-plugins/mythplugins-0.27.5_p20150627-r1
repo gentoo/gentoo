@@ -10,5 +10,5 @@ RDEPEND=!media-plugins/mytharchive !media-plugins/mythbrowser !media-plugins/myt
 REQUIRED_USE=cdda? ( mythmusic ) cdr? ( mythmusic cdda ) exif? ( mythgallery ) fftw? ( mythmusic ) mythmusic? ( vorbis ) mythnews? ( mythbrowser ) raw? ( mythgallery ) mythnetvision? ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=https://github.com/MythTV/mythtv/archive/v0.27.5.tar.gz -> mythtv-0.27.5.tar.gz https://dev.gentoo.org/~rich0/distfiles/mythplugins-0.27.5-9498257571e8158926b60a0eefc74568c4436823.tar.xz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=df18ce6b214ed1e0ca1742268666baa7

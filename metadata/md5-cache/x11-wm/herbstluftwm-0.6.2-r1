@@ -9,5 +9,5 @@ LICENSE=BSD-2
 RDEPEND=>=dev-libs/glib-2.24:2 x11-libs/libX11 x11-libs/libXext xinerama? ( x11-libs/libXinerama ) app-shells/bash zsh-completion? ( app-shells/zsh )
 SLOT=0
 SRC_URI=http://herbstluftwm.org/tarballs/herbstluftwm-0.6.2.tar.gz
-_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=4b956b7511369cb92b29b2d556f7da44

@@ -8,5 +8,5 @@ LICENSE=LGPL-2.1
 RDEPEND=dev-lang/php:* >=dev-php/pear-1.9.0
 SLOT=0
 SRC_URI=http://phpsavant.com/Savant2-2.4.3.tgz
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	php-pear-lib-r1	2d3324e4c86f07dd732ce0657b4a7ebb	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	php-pear-lib-r1	2d3324e4c86f07dd732ce0657b4a7ebb	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=c6c65da4380f504ed97c3fbc4bebc909

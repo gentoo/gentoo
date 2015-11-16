@@ -7,5 +7,5 @@ KEYWORDS=alpha ~amd64 ~hppa ~mips ppc sparc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://freedict.sourceforge.net/download/linux/fra-eng.tar.gz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	freedict	1cdd6e607bc12d575b61200cc2898bc9	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	freedict	1cdd6e607bc12d575b61200cc2898bc9	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=d500b957f27825d8aac2556288c06398

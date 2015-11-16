@@ -7,5 +7,5 @@ LICENSE=GPL-2 CC-BY-SA-3.0
 RDEPEND=~games-action/minetest-0.4.10[-dedicated] games-misc/games-envd
 SLOT=0
 SRC_URI=https://github.com/minetest/minetest_game/tarball/0.4.10 -> minetest_game-0.4.10.tar.gz
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	8644194de7be04932084752fb1327080	games	4dae170e58f773c484e07d18ef441804	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f813d23e417656bf3917483643165d5a	games	4dae170e58f773c484e07d18ef441804	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	vcs-snapshot	2ecbc36efd3f6b8486f63fcf8530c1bd
 _md5_=220a1ecff8390ff4786edf1675e38f81

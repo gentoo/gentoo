@@ -9,5 +9,5 @@ LICENSE=UoI-NCSA
 RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=http://llvm.org/releases/2.8/llvm-2.8.tgz -> llvm-2.8-r1.tgz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=5271f8f612d86cb00291a2f48903f7a3

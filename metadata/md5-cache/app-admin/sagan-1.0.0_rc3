@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/libpcre app-admin/sagan-rules[lognorm?] smtp? ( net-libs/libesmtp ) pcap? ( net-libs/libpcap ) mysql? ( virtual/mysql ) lognorm? ( dev-libs/liblognorm dev-libs/json-c dev-libs/libee dev-libs/libestr ) libdnet? ( dev-libs/libdnet ) snort? ( >=net-analyzer/snortsam-2.50 ) geoip? ( dev-libs/geoip )
 SLOT=0
 SRC_URI=http://sagan.quadrantsec.com/download/sagan-1.0.0RC3.tar.gz
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	8644194de7be04932084752fb1327080	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	f813d23e417656bf3917483643165d5a	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=9d3b720c53e8dcb9ef32d9e9a3780263

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-perl/File-MMagic-1.20 emacs? ( virtual/emacs ) linguas_ja? ( app-i18n/nkf || ( dev-perl/Text-Kakasi app-i18n/kakasi app-text/chasen app-text/mecab ) ) nls? ( virtual/libintl ) tk? ( dev-lang/tk www-client/lynx )
 SLOT=0
 SRC_URI=http://www.namazu.org/stable/namazu-2.0.21.tar.gz
-_eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=a356080ef046617ac3f0aa4ebbbf8c8f

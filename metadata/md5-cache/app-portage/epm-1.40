@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-lang/perl-5
 SLOT=0
 SRC_URI=https://www.gentoo.org/~fuzzyray/distfiles/epm-1.40.tar.gz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=1aab970dd0bd906d2c4a00f31057bdae

@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://gnu/freefont/freefont-ttf-20120503.zip mirror://gnu/freefont/freefont-otf-20120503.tar.gz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	font	cd7790315ca5b8c505e1e0513df6acce	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	font	cd7790315ca5b8c505e1e0513df6acce	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=19b485a21af1d940857ed6b7d488206b

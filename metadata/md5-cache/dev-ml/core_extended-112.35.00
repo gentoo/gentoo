@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1-with-linking-exception
 RDEPEND=>=dev-ml/core-112.35.00:= >=dev-ml/sexplib-109.20.00:= >=dev-ml/bin-prot-109.15.00:= >=dev-ml/fieldslib-109.20.00:= >=dev-ml/pa_ounit-109.27.00:= >=dev-ml/comparelib-109.27.00:= >=dev-ml/custom_printf-109.27.00:= >=dev-ml/pipebang-109.15.00:= >=dev-ml/textutils-109.35.00:= dev-ml/pa_test:= dev-ml/re2:= dev-ml/pa_bench:= dev-ml/camlp4:= >=dev-lang/ocaml-3.12:=[ocamlopt?]
 SLOT=0/112.35.00
 SRC_URI=http://ocaml.janestreet.com/ocaml-core/112.35/files/core_extended-112.35.00.tar.gz
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	8644194de7be04932084752fb1327080	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	oasis	dab31007fb098ff15db810bfe5001e64	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f813d23e417656bf3917483643165d5a	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	3972ca401cf7dbb430df9995f5d8d580	oasis	dab31007fb098ff15db810bfe5001e64	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=66534493aa926a41f5d899cd22e19315

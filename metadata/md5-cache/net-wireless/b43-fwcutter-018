@@ -6,5 +6,5 @@ KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://bues.ch/b43/fwcutter/b43-fwcutter-018.tar.bz2
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=edbfdfbcff6e6eb0b5c57aaba7ea1f7f

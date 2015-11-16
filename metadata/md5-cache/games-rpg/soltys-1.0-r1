@@ -9,5 +9,5 @@ LICENSE=Soltys
 RDEPEND=>=games-engines/scummvm-1.5 games-misc/games-envd
 SLOT=0
 SRC_URI=linguas_en? ( mirror://sourceforge/scummvm/soltys-en-v1.0.zip ) linguas_es? ( mirror://sourceforge/scummvm/soltys-es-v1.0.zip ) linguas_pl? ( mirror://sourceforge/scummvm/soltys-pl-v1.0.zip ) !linguas_en? ( !linguas_es? ( !linguas_pl? ( mirror://sourceforge/scummvm/soltys-en-v1.0.zip ) ) ) http://www.scummvm.org/images/cat-soltys.png
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	8644194de7be04932084752fb1327080	games	4dae170e58f773c484e07d18ef441804	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f813d23e417656bf3917483643165d5a	games	4dae170e58f773c484e07d18ef441804	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=32430dbd6a4ebc71c65d2c7a43418ddd

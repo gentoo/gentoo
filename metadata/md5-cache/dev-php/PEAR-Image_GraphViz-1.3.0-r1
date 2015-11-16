@@ -8,5 +8,5 @@ LICENSE=PHP-3
 RDEPEND=dev-lang/php:* >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=http://pear.php.net/get/Image_GraphViz-1.3.0.tgz
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	php-pear-r1	775902054fe3b812a6afa7cdde2e0b40	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	php-pear-r1	775902054fe3b812a6afa7cdde2e0b40	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=dd356e916e10c52eb9948958e7325a2f

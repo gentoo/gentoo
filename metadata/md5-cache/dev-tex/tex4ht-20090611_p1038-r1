@@ -9,5 +9,5 @@ LICENSE=LPPL-1.2
 RDEPEND=app-text/ghostscript-gpl media-gfx/imagemagick java? ( >=virtual/jre-1.5 ) virtual/latex-base java? ( >=dev-java/java-config-2.2.0 )
 SLOT=0
 SRC_URI=http://www.cse.ohio-state.edu/~gurari/TeX4ht/fix/tex4ht-1.0.2009_06_11_1038.tar.gz
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	8644194de7be04932084752fb1327080	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	a96633177f44ee992b3fce360d1c4f16	latex-package	20f17759e8808b666e37d3b1bbe2fa4d	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f813d23e417656bf3917483643165d5a	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	a96633177f44ee992b3fce360d1c4f16	latex-package	20f17759e8808b666e37d3b1bbe2fa4d	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=9ef96609d2b99b9d071b89cc006d9072

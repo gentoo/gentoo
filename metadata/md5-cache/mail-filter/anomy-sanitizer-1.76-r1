@@ -7,5 +7,5 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl >=virtual/perl-MIME-Base64-2.12-r2 >=dev-perl/Mail-Audit-2.1-r1 dev-perl/Convert-TNEF dev-perl/MIME-tools dev-perl/libwww-perl virtual/mta
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jlec/distfiles/sample_e-mail-architecture.png.tar http://mailtools.anomy.net/dist/anomy-sanitizer-1.76.tar.gz https://dev.gentoo.org/~pacho/maintainer-needed/sample_e-mail-architektur.flw
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=1eef8f637078bb63c9e843f3ada34324

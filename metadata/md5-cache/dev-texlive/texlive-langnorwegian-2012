@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-texlive/texlive-basic-2012 >=app-text/texlive-core-2012
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-module-hyphen-norwegian-2012.tar.xz mirror://gentoo/texlive-module-collection-langnorwegian-2012.tar.xz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	texlive-common	cf8d3d36261adafe564b821b75b34a05	texlive-module	9b17379edf5bdf6418f88d18496927ed	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	texlive-common	cf8d3d36261adafe564b821b75b34a05	texlive-module	9b17379edf5bdf6418f88d18496927ed	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=9fd3f129a90ace1eb902ea7ac8028870

@@ -9,5 +9,5 @@ LICENSE=PHP-2.02 PHP-3 LGPL-2.1 public-domain Apache-2.0 BSD
 RDEPEND=!minimal? ( >=dev-php/PEAR-XML_Beautifier-1.1-r1 ) >=dev-php/smarty-2.6.0 dev-lang/php >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=http://pear.php.net/get/PhpDocumentor-1.4.3.tgz
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	php-pear-r1	775902054fe3b812a6afa7cdde2e0b40	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	php-pear-r1	775902054fe3b812a6afa7cdde2e0b40	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=42b346ef61cec0239170c150cc4ee445

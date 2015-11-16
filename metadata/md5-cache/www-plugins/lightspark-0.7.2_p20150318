@@ -9,5 +9,5 @@ LICENSE=LGPL-3
 RDEPEND=>=dev-cpp/libxmlpp-2.33.1:2.6 >=dev-libs/boost-1.42 dev-libs/libpcre[cxx] media-fonts/liberation-fonts media-libs/libpng media-libs/libsdl >=sys-devel/gcc-4.6.0[cxx] >=sys-devel/llvm-3.4 x11-libs/cairo x11-libs/gtk+:2 x11-libs/libX11 x11-libs/pango curl? ( net-misc/curl ) ffmpeg? ( virtual/ffmpeg ) !gles? ( >=media-libs/glew-1.5.3 virtual/opengl ) gles? ( media-libs/mesa[gles2] ) pulseaudio? ( media-sound/pulseaudio ) rtmp? ( media-video/rtmpdump ) virtual/jpeg
 SLOT=0
 SRC_URI=mirror://gentoo/lightspark-0.7.2_p20150318.tar.gz
-_eclasses_=cmake-utils	f16fa5681153277df51f001deaf17ff8	eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	mozextension	3d8ee4835f89ff39d4666656aa603433	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	nsplugins	bf5bfcef1d2f0adad7e6230455df8e91	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	f16fa5681153277df51f001deaf17ff8	eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	mozextension	3d8ee4835f89ff39d4666656aa603433	multilib	3972ca401cf7dbb430df9995f5d8d580	nsplugins	bf5bfcef1d2f0adad7e6230455df8e91	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=5b3693c6064d2911732fa3c95a043b7f

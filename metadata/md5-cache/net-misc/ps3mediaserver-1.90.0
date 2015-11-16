@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=virtual/jre-1.6.0 media-libs/libmediainfo media-libs/libzen tsmuxer? ( media-video/tsmuxer ) transcode? ( media-video/mplayer[encode] )
 SLOT=0
 SRC_URI=mirror://sourceforge/project/ps3mediaserver/pms-1.90.0-generic-linux-unix.tar.gz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=5a5c062b18ce2cb51073785e2b4fa030

@@ -9,5 +9,5 @@ LICENSE=Apache-2.0 GPL-3
 RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://sourceforge/wqy/wqy-microhei-0.2.0-beta.tar.gz https://dev.gentoo.org/~dlan/distfiles/wqy-microhei.ttc.xd3
-_eclasses_=eutils	8644194de7be04932084752fb1327080	font	cd7790315ca5b8c505e1e0513df6acce	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	font	cd7790315ca5b8c505e1e0513df6acce	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=16629e3ba4b0a2e1b46f6f05bf9df09d

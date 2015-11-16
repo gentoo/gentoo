@@ -9,5 +9,5 @@ LICENSE=GPL-2 LGPL-2
 RDEPEND=dev-lang/perl dev-libs/libxml2:2 gnome-base/libglade:2.0 x11-libs/gtk+:2 x11-misc/shared-mime-info
 SLOT=0
 SRC_URI=mirror://sourceforge/rox/rox-filer-2.11.tar.bz2
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	virtualx	7d550983f9b6adb3e7091f4090ddae2f
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	virtualx	7d550983f9b6adb3e7091f4090ddae2f
 _md5_=43fb3c4eec317c962e49662b4f5770ca

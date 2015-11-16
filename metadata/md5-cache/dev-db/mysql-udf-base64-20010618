@@ -8,5 +8,5 @@ LICENSE=PHP-2.02
 RDEPEND=>=virtual/mysql-5.1
 SLOT=0
 SRC_URI=http://mirrors.sohu.com/mysql/Contrib/Old-Versions/mysql-udf-base64.c -> mysql-udf-base64-20010618.c http://mirrors.sohu.com/mysql/Contrib/Old-Versions/mysql-udf-base64.readme -> mysql-udf-base64-20010618.readme
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=0ae656c19b46ba7ecfe0aba1a2068c0e

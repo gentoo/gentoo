@@ -10,5 +10,5 @@ RDEPEND=app-crypt/mit-krb5[keyutils] dbus? ( sys-apps/dbus ) X? ( media-libs/fon
 RESTRICT=mirror strip
 SLOT=0
 SRC_URI=x86? ( https://spideroak.com/getbuild?platform=ubuntu&arch=i386&version=5.1.8 -> spideroak-bin-5.1.8_x86.deb ) amd64? ( https://spideroak.com/getbuild?platform=ubuntu&arch=x86_64&version=5.1.8 -> spideroak-bin-5.1.8_amd64.deb )
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
 _md5_=2932c8b5537b3706f8993231fbfc4e2e

@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/latex-base || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
 SLOT=0
 SRC_URI=http://iml.univ-mrs.fr/~beffara/soft/rubber/rubber-20090819.tar.gz
-_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	3972ca401cf7dbb430df9995f5d8d580	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=a302dca263dcdbf8e87f88d2e63e3e2c

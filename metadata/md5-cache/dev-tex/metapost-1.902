@@ -8,5 +8,5 @@ LICENSE=GPL-2 LGPL-3
 RDEPEND=>=dev-libs/kpathsea-6.1.0_p20120701 >=app-eselect/eselect-mpost-0.3 >=x11-libs/cairo-1.12 >x11-libs/pixman-0.18 media-libs/libpng:0=
 SLOT=0
 SRC_URI=https://foundry.supelec.fr/frs/download.php/file/15766/metapost-1.902-src.tar.bz2
-_eclasses_=eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=aa55ad348a3ee960596c908e30fa9920

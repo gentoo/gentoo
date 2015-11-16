@@ -7,5 +7,5 @@ LICENSE=GPL-2 BSD-2
 RDEPEND=app-portage/gentoolkit
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~flameeyes/check_glsa2/check_glsa2-20120930.tar.xz
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=392a83ae37b0b61fc7198f19602908ef

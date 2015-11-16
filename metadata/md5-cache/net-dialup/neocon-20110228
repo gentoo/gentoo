@@ -6,5 +6,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~radhermit/distfiles/neocon-20110228.tar.bz2
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=f83b49e0d5f868ac16a21c5a711d0cce

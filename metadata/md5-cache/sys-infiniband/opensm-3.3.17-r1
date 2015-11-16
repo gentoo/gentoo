@@ -9,5 +9,5 @@ LICENSE=|| ( GPL-2 BSD-2 )
 RDEPEND=sys-infiniband/libibmad:3.12 sys-infiniband/libibumad:3.12 tools? ( net-misc/iputils net-misc/openssh ) !sys-infiniband/opensm:0 !sys-infiniband/opensm:1.5.4.1 !sys-infiniband/opensm:3.5
 SLOT=3.12
 SRC_URI=https://www.openfabrics.org/downloads/OFED/ofed-3.12/OFED-3.12-rc1.tgz
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	8644194de7be04932084752fb1327080	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	openib	88d3cf78b98b3ff627670687fcb1c7e4	rpm	514a1840ee796656311a029ea952faa9	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f813d23e417656bf3917483643165d5a	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	openib	88d3cf78b98b3ff627670687fcb1c7e4	rpm	514a1840ee796656311a029ea952faa9	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=95baf4b4788d3be2eb2425ed9bb6f2aa

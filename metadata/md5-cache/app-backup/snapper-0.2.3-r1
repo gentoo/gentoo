@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/boost[threads] dev-libs/libxml2 dev-libs/icu:= sys-apps/acl sys-apps/dbus sys-apps/util-linux sys-libs/zlib virtual/libintl btrfs? ( <sys-fs/btrfs-progs-3.16 ) ext4? ( sys-fs/e2fsprogs ) lvm? ( sys-fs/lvm2 ) pam? ( sys-libs/pam ) xattr? ( sys-apps/attr )
 SLOT=0
 SRC_URI=ftp://ftp.suse.com/pub/projects/snapper/snapper-0.2.3.tar.bz2
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=f26ace5fcc962d50787a35c55c6146e6

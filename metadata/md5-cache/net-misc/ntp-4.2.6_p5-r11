@@ -10,5 +10,5 @@ PDEPEND=openntpd? ( net-misc/openntpd )
 RDEPEND=>=sys-libs/ncurses-5.2 >=sys-libs/readline-4.1 kernel_linux? ( caps? ( sys-libs/libcap ) ) zeroconf? ( net-dns/avahi[mdnsresponder-compat] ) !openntpd? ( !net-misc/openntpd ) snmp? ( net-analyzer/net-snmp ) ssl? ( dev-libs/openssl ) parse-clocks? ( net-misc/pps-tools ) selinux? ( sec-policy/selinux-ntp ) vim-syntax? ( app-vim/ntp-syntax )
 SLOT=0
 SRC_URI=http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/ntp-4.2.6p5.tar.gz mirror://gentoo/ntp-4.2.6p5-manpages.tar.bz2
-_eclasses_=eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=7dc8c3a9ea61ffcb4c96250c8975bc5e

@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-python/pygtk-2.4.1 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
 SLOT=0
 SRC_URI=mirror://sourceforge/denu/denu-2.3.2.tar.bz2
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=a88c731341f6b6bc692261d971836a01

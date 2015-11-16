@@ -6,5 +6,5 @@ HOMEPAGE=http://wiki.openmoko.org/wiki/Dfu-util
 LICENSE=GPL-2
 RDEPEND=virtual/libusb:1
 SLOT=0
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	git-2	df00117322129fb906bb0a53c3d6a020	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	git-2	df00117322129fb906bb0a53c3d6a020	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=8457cf80fc93ffc337e05766814a6135

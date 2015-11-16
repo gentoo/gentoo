@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=>=dev-ml/lwt-2.4.0:=[react] >=dev-ml/lambda-term-1.2:= >=dev-ml/zed-1.2:= >=dev-ml/cppo-1.0.1:= emacs? ( virtual/emacs ) camlp4? ( || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 ) ) >=dev-lang/ocaml-3.12:=[ocamlopt?]
 SLOT=0/1.16
 SRC_URI=https://github.com/diml/utop/archive/1.16.tar.gz -> utop-1.16.tar.gz
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	8644194de7be04932084752fb1327080	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	oasis	dab31007fb098ff15db810bfe5001e64	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	f813d23e417656bf3917483643165d5a	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	3972ca401cf7dbb430df9995f5d8d580	oasis	dab31007fb098ff15db810bfe5001e64	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=4c25e10e470e6fe75814ff0f645874db

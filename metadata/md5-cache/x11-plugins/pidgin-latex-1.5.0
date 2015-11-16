@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=net-im/pidgin[gtk] x11-libs/gtk+:2 virtual/latex-base app-text/dvipng
 SLOT=0
 SRC_URI=mirror://sourceforge/pidgin-latex/pidgin-latex_1.5.0.tar.bz2
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=b824f84b3bf00484dd866472d2b805c7

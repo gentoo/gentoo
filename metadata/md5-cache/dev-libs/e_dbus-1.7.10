@@ -9,5 +9,5 @@ LICENSE=BSD-2
 RDEPEND=>=dev-libs/efl-1.8.4 sys-apps/dbus connman? ( >=net-misc/connman-0.75 ) udev? ( || ( sys-power/upower sys-power/upower-pm-utils ) sys-fs/udisks:0 ) nls? ( sys-devel/gettext )
 SLOT=0
 SRC_URI=https://download.enlightenment.org/releases/e_dbus-1.7.10.tar.bz2
-_eclasses_=enlightenment	c185b1fa0d87798fd07fb1cd85866b23	eutils	8644194de7be04932084752fb1327080	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=enlightenment	c185b1fa0d87798fd07fb1cd85866b23	eutils	f813d23e417656bf3917483643165d5a	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=f93d0f74146c8f01d9039d0c55c83959

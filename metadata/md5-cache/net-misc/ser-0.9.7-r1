@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=mysql? ( virtual/mysql ) radius? ( >=net-dialup/radiusclient-ng-0.5.0 ) postgres? ( dev-db/postgresql:=[server] ) xmpp? ( dev-libs/expat ) ldap? ( net-nds/openldap ssl? ( dev-libs/openssl:0= ) )
 SLOT=0
 SRC_URI=http://ftp.iptel.org/pub/ser/0.9.7/src/ser-0.9.7_src.tar.gz mirror://gentoo/silomail-1.0-ser-0.9.0.tar.gz mirror://gentoo/ethz-1.0-ser-0.9.0.tar.gz ldap? ( mirror://gentoo/ldap-1.0-ser-0.9.0.tar.gz mirror://gentoo/ldaps-1.0-ser-0.9.0.tar.gz )
-_eclasses_=eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=719c8744b226d353f8cf94578daa85ec

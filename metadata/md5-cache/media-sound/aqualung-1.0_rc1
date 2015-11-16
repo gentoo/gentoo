@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/zlib app-arch/bzip2 dev-libs/libxml2 x11-libs/gtk+:2 alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) pulseaudio? ( media-sound/pulseaudio ) flac? ( media-libs/flac ) lame? ( media-sound/lame ) ffmpeg? ( >=virtual/ffmpeg-0.6.90 ) mac? ( media-sound/mac ) modplug? ( media-libs/libmodplug ) musepack? ( >=media-sound/musepack-tools-444 ) mp3? ( media-libs/libmad ) sndfile? ( media-libs/libsndfile ) speex? ( media-libs/speex media-libs/liboggz media-libs/libogg ) vorbis? ( media-libs/libvorbis media-libs/libogg ) wavpack? ( media-sound/wavpack ) ladspa? ( media-libs/liblrdf ) libsamplerate? ( media-libs/libsamplerate ) ifp? ( media-libs/libifp ) cdda? ( dev-libs/libcdio-paranoia ) cddb? ( media-libs/libcddb ) lua? ( dev-lang/lua:0= )
 SLOT=0
 SRC_URI=mirror://sourceforge/aqualung/aqualung-1.0-rc1.tar.gz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=5a9d08784155bf51c0420767b7479b87

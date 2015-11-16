@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RDEPEND=>=net-libs/gnutls-2.10.0:= =www-servers/apache-2*
 SLOT=0
 SRC_URI=http://www.outoforder.cc/downloads/mod_gnutls/mod_gnutls-0.5.10.tar.bz2
-_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	autotools	07e71b3b5690738ef7e8bc097077e00c	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	8644194de7be04932084752fb1327080	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	autotools	07e71b3b5690738ef7e8bc097077e00c	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	f813d23e417656bf3917483643165d5a	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=915a68a8777b628d79a14427abc39ca4

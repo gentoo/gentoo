@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=x11-libs/libnotify-0.3.2 net-im/pidgin[gtk] x11-libs/gtk+:2
 SLOT=0
 SRC_URI=mirror://sourceforge/gaim-libnotify/pidgin-libnotify-0.14.tar.gz mirror://debian/pool/main/p/pidgin-libnotify/pidgin-libnotify_0.14-4.debian.tar.gz
-_eclasses_=eutils	8644194de7be04932084752fb1327080	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=1ed8dbde566ff7285c934b9264c6b9be

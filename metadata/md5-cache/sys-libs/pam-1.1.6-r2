@@ -10,5 +10,5 @@ PDEPEND=sys-auth/pambase vim-syntax? ( app-vim/pam-syntax )
 RDEPEND=nls? ( virtual/libintl ) cracklib? ( >=sys-libs/cracklib-2.8.3 ) audit? ( sys-process/audit ) selinux? ( >=sys-libs/libselinux-1.28 ) berkdb? ( sys-libs/db ) elibc_glibc? ( >=sys-libs/glibc-2.7 nis? ( || ( >=net-libs/libtirpc-0.2.2-r1 <sys-libs/glibc-2.14 ) ) ) !<sys-apps/openrc-0.11.8 !sys-auth/openpam !sys-auth/pam_userdb
 SLOT=0
 SRC_URI=http://www.linux-pam.org/library/Linux-PAM-1.1.6.tar.bz2 http://www.linux-pam.org/documentation/Linux-PAM-1.1.6-docs.tar.bz2
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	8644194de7be04932084752fb1327080	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=63a0f9527174502ad10d3146ad4e61dc

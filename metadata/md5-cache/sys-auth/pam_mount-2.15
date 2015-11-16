@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=>=sys-libs/pam-0.99 >=sys-libs/libhx-3.12.1 >=dev-libs/libxml2-2.6 crypt? ( >=sys-fs/cryptsetup-1.1.0 ) ssl? ( >=dev-libs/openssl-0.9.8 ) selinux? ( sys-libs/libselinux ) >=sys-apps/util-linux-2.20
 SLOT=0
 SRC_URI=mirror://sourceforge/pam-mount/pam_mount-2.15.tar.xz
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=e4b9491a78819b0cc038e76e556522ef

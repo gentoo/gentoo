@@ -6,5 +6,5 @@ KEYWORDS=~amd64 ppc ~x86 ~ppc64
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://berlios/bcm43xx/bcm43xx-fwcutter-005.tar.bz2
-_eclasses_=multilib	df4e4d5cfd3d137d0c248e1991c0e4d6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=9e6444cb7c1c66093b27ae05b5fcb4e4
