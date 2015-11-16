@@ -11490,7 +11490,7 @@ mail-mta/postfix 2.10.9 2.11.7 3.0.2 3.0.2-r1 3.0.2-r2 3.0.3 3.0.3-r1 3.1_pre201
 mail-mta/qmail-ldap 1.03-r8: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.14.9 8.14.9-r1: Widely-used Mail Transport Agent (MTA)
-mail-mta/ssmtp 2.64-r2: Extremely simple MTA to get mail off the system to a Mailhub
+mail-mta/ssmtp 2.64-r2 2.64-r3: Extremely simple MTA to get mail off the system to a Mailhub
 mate-base/caja 1.8.1 1.8.2-r1: Caja file manager for the MATE desktop
 mate-base/libmatekbd 1.8.0: MATE keyboard configuration library
 mate-base/mate 1.8.0: Meta ebuild for MATE, a traditional desktop environment
