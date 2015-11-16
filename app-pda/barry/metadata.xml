@@ -14,7 +14,6 @@
 		<flag name="boost">Enable boost support</flag>
 		<flag name="desktop">Install the GUI desktop control panel</flag>
 		<flag name="gui">Install the GUI backup tool</flag>
-		<flag name="opensync">Install the barry-sync plugin for OpenSync 0.22</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">barry</remote-id>
