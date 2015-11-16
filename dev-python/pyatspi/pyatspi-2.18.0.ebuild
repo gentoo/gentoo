@@ -4,17 +4,17 @@
 
 EAPI="5"
 GCONF_DEBUG="no"
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 
 inherit eutils gnome2 python-r1
 
 DESCRIPTION="Python binding to at-spi library"
-HOMEPAGE="https://live.gnome.org/Accessibility"
+HOMEPAGE="https://wiki.gnome.org/Accessibility"
 
 # Note: only some of the tests are GPL-licensed, everything else is LGPL
 LICENSE="LGPL-2 GPL-2+"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="" # test
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

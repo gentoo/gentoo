@@ -4,7 +4,6 @@
 
 EAPI=5
 GCONF_DEBUG="no"
-#GNOME2_LA_PUNT="yes"
 
 inherit gnome2 multilib-minimal
 
@@ -13,13 +12,13 @@ HOMEPAGE="http://www.gtkmm.org"
 
 LICENSE="LGPL-2.1+"
 SLOT="1.4"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 ~sh ~sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 IUSE="doc"
 
 COMMON_DEPEND="
-	>=x11-libs/pango-1.32.5[${MULTILIB_USEDEP}]
-	>=dev-cpp/glibmm-2.36.0:2[${MULTILIB_USEDEP}]
-	>=dev-cpp/cairomm-1.10.0-r1[${MULTILIB_USEDEP}]
+	>=x11-libs/pango-1.38.0[${MULTILIB_USEDEP}]
+	>=dev-cpp/glibmm-2.46.1:2[${MULTILIB_USEDEP}]
+	>=dev-cpp/cairomm-1.12.0[${MULTILIB_USEDEP}]
 	>=dev-libs/libsigc++-2.3.2:2[${MULTILIB_USEDEP}]
 "
 DEPEND="${COMMON_DEPEND}
@@ -31,9 +30,6 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	!<dev-cpp/gtkmm-2.13:2.4
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-gtkmmlibs-20140508
-		!app-emulation/emul-linux-x86-gtkmmlibs[-abi_x86_32(-)] )
 "
 
 multilib_src_configure() {

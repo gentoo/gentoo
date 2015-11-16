@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,10 +8,10 @@ inherit multilib
 
 DESCRIPTION="Tools for Flash-Friendly File System (F2FS)"
 HOMEPAGE="https://git.kernel.org/?p=linux/kernel/git/jaegeuk/f2fs-tools.git;a=summary"
-SRC_URI="https://dev.gentoo.org/~blueness/f2fs-tools/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~blueness/f2fs-tools/${P}.tar.xz"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="0/0"
 KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
 IUSE=""
 

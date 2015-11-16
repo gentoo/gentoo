@@ -231,6 +231,15 @@ virtual/python-imaging
 >=gnome-extra/gnome-shell-extensions-3.18.2
 >=gnome-extra/gnome-shell-frippery-3.18.1
 >=gnome-base/gdm-3.18.0
+>=dev-cpp/glibmm-2.46.1
+>=dev-libs/atk-2.18.0
+>=dev-cpp/atkmm-2.24.1
+>=app-accessibility/at-spi2-atk-2.18.1
+>=dev-python/pyatspi-2.18.0
+>=dev-cpp/cairomm-1.12.0
+>=dev-cpp/pangomm-2.38.1
+>=dev-cpp/gtkmm-3.18.0
+>=dev-cpp/gtksourceviewmm-3.18.0
 
 # Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
 # Not properly installed, dead for ages, upstream
