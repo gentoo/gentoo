@@ -7414,6 +7414,7 @@ dev-python/pxml 0.2.11-r1 0.2.12: A python library and command-line tool to pret
 dev-python/py 1.4.30: library with cross-python path, ini-parsing, io, code, log facilities
 dev-python/py-amqp 1.4.5 1.4.6 1.4.7: Low-level AMQP client for Python (fork of amqplib)
 dev-python/py-bcrypt 0.4: py-bcrypt is an implementation of the OpenBSD Blowfish password hashing algorithm
+dev-python/py-gfm 0.1.1: Github-Flavored Markdown for Python-Markdown
 dev-python/py-notify 0.3.1-r1: Tools for implementing the Observer programming pattern in Python
 dev-python/py-smbpasswd 1.0.1 1.0.1-r1: This module can generate both LANMAN and NT password hashes, suitable for use with Samba
 dev-python/py-xmlrpc 0.8.8.3-r1 0.9: Fast XML-RPC implementation for Python
