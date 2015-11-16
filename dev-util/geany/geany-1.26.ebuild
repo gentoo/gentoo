@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,12 +14,18 @@ SRC_URI="http://download.geany.org/${P}.tar.bz2"
 
 LICENSE="GPL-2+ HPND"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="+vte"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+IUSE="gtk3 +vte"
 
-RDEPEND=">=x11-libs/gtk+-2.16:2
-	>=dev-libs/glib-2.20:2
-	vte? ( x11-libs/vte:0 )"
+RDEPEND=">=dev-libs/glib-2.28:2
+	!gtk3? (
+		>=x11-libs/gtk+-2.24:2
+		vte? ( x11-libs/vte:0 )
+	)
+	gtk3? (
+		>=x11-libs/gtk+-3.0:3
+		vte? ( x11-libs/vte:2.90 )
+	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	dev-util/intltool
@@ -39,6 +45,7 @@ src_configure() {
 	econf \
 		--disable-dependency-tracking \
 		--docdir="/usr/share/doc/${PF}" \
+		$(use_enable gtk3) \
 		$(use_enable vte)
 }
 

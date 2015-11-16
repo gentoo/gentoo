@@ -89,6 +89,7 @@ DEPEND="${RDEPEND}
 	>=dev-lang/perl-5.10
 	>=app-accessibility/at-spi2-core-2.5.3
 	>=dev-libs/atk-2.8.0
+	dev-libs/hyphen
 	>=dev-util/gtk-doc-am-1.10
 	>=dev-util/gperf-3.0.1
 	>=sys-devel/bison-2.4.3

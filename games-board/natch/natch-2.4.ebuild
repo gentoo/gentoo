@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
-DEPEND="sys-libs/ncurses"
+DEPEND="sys-libs/ncurses:0"
 RDEPEND=${DEPEND}
 
 S=${WORKDIR}/${MY_P}
