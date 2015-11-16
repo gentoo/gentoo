@@ -1,10 +1,10 @@
 [Unit]
 Description=Container hypervisor based on LXC
-After=cgmanager.service lxc.service
-Requires=cgmanager.service lxc.service
+After=cgmanager.service
+Requires=cgmanager.service
 
 [Service]
-ExecStart=/usr/bin/lxd --group lxd
+ExecStart=/usr/sbin/lxd --group lxd
 KillMode=process
 Restart=on-failure
 
