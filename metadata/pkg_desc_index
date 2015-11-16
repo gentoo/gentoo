@@ -3471,6 +3471,7 @@ dev-haskell/pandoc-citeproc 0.1.2.1 0.2 0.3.0.1 0.3.1 0.6 0.7.2: Supports using 
 dev-haskell/pandoc-types 1.12.3 1.12.4.5: Types for representing a structured document
 dev-haskell/pango 0.12.0 0.12.3 0.12.4-r1 0.12.5.0-r1 0.12.5.3 0.13.0.5 0.13.1.0: Binding to the Pango text rendering engine
 dev-haskell/parallel 1.1.0.1 3.2.0.3 3.2.0.6: Parallel programming library
+dev-haskell/parallel-io 0.3.3-r2: Combinators for executing IO actions in parallel on a thread pool
 dev-haskell/parsec 2.1.0.1 3.1.3 3.1.4 3.1.5 3.1.7 3.1.9: Monadic parser combinators
 dev-haskell/path-pieces 0.1.2 0.1.3 0.1.3.1 0.1.4 0.1.5 0.2.0: Components of paths
 dev-haskell/patience 0.1.1: Patience diff and longest increasing subsequence
@@ -14328,6 +14329,7 @@ net-misc/gupnp-tools 0.8.9 0.8.10: Free replacements of Intel UPnP tools that us
 net-misc/gvrpcd 1.3: A program for announcing VLANs using GVRP
 net-misc/gwget 1.0.4: GTK2 WGet Frontend
 net-misc/gwhois 20120626: generic whois
+net-misc/haeredes 0.4.4: Confirm delegation of NS and MX records
 net-misc/hashcash 1.22-r1: Utility to generate hashcash tokens
 net-misc/hath 0.3.0: Hath manipulates network blocks in CIDR notation
 net-misc/hlfl 0.60.1: High Level Firewall Language
