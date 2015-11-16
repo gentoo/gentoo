@@ -7336,7 +7336,7 @@ dev-python/oslo-sphinx 2.2.0-r1 2.5.0 3.0.0: OpenStack Sphinx Extensions and The
 dev-python/oslo-utils 1.0.0 1.1.0 1.2.1 1.3.0 1.4.0 1.5.0 2.4.0: Oslo Utility library
 dev-python/oslo-versionedobjects 0.10.0 0.11.0: The oslo.versionedobjects library provides a generic versioned object model that is RPC-friendly.
 dev-python/oslo-vmware 0.11.2 1.21.0: Oslo VMware library for OpenStack projects
-dev-python/oslotest 1.3.0 1.5.0 1.5.1 1.6.0 1.10.0: Oslo test framework
+dev-python/oslotest 1.3.0 1.5.0 1.5.1 1.6.0 1.10.0 1.12.0: Oslo test framework
 dev-python/osprofiler 0.3.0: OpenStack Profiler Library
 dev-python/pSQL 1.2.0 1.2.1: MySQL abstraction layer for python
 dev-python/packaging 15.3-r2: Core utilities for Python packages
