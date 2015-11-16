@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 VALA_MIN_API_VERSION="0.18"
 VALA_USE_DEPEND="vapigen"
 
-inherit eutils gnome2 python-r1 vala virtualx
+inherit eutils gnome2 python-single-r1 vala virtualx
 
 DESCRIPTION="GLib bindings for the Telepathy D-Bus protocol"
 HOMEPAGE="http://telepathy.freedesktop.org"
@@ -46,8 +46,6 @@ PDEPEND="
 "
 
 src_configure() {
-	python_export_best
-
 	gnome2_src_configure \
 		--disable-static \
 		--disable-installed-tests \
