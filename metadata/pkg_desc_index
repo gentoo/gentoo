@@ -15252,7 +15252,7 @@ sci-chemistry/icm 3.7.2e 3.7.3b: MolSoft LCC ICM Pro
 sci-chemistry/jmol 12.0.45-r1 12.2.27-r1: Java molecular viever for 3-D chemical structures
 sci-chemistry/ksdssp 040728 040728-r1: An open source implementation of sci-chemistry/dssp
 sci-chemistry/mars 1.2: Robust automatic backbone assignment of proteins
-sci-chemistry/massxpert 2.0.5 3.4.0: Software suite to predict/analyze mass spectrometric data on (bio)polymers
+sci-chemistry/massxpert 3.4.0: Software suite to predict/analyze mass spectrometric data on (bio)polymers
 sci-chemistry/mdanalysis 0.7.7: A python library to analyze and manipulate molecular dynamics trajectories
 sci-chemistry/mead 2.2.7 2.2.7-r1: Macroscopic Electrostatics with Atomic Detail
 sci-chemistry/mm-align 20120321: Protein Complex Structural Alignment
