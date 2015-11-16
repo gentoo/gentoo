@@ -1512,15 +1512,17 @@ path_exists() {
 # as necessary.
 #
 # Note that this function should not be used in the global scope.
-in_iuse() {
-	debug-print-function ${FUNCNAME} "${@}"
-	[[ ${#} -eq 1 ]] || die "Invalid args to ${FUNCNAME}()"
+if has "${EAPI:-0}" 0 1 2 3 4 5; then
+	in_iuse() {
+		debug-print-function ${FUNCNAME} "${@}"
+		[[ ${#} -eq 1 ]] || die "Invalid args to ${FUNCNAME}()"
 
-	local flag=${1}
-	local liuse=( ${IUSE} )
+		local flag=${1}
+		local liuse=( ${IUSE} )
 
-	has "${flag}" "${liuse[@]#[+-]}"
-}
+		has "${flag}" "${liuse[@]#[+-]}"
+	}
+fi
 
 # @FUNCTION: use_if_iuse
 # @USAGE: <flag>
@@ -1714,42 +1716,44 @@ prune_libtool_files() {
 #
 # Passing additional options to dodoc and dohtml is not supported.
 # If you needed such a thing, you need to call those helpers explicitly.
-einstalldocs() {
-	debug-print-function ${FUNCNAME} "${@}"
+if has "${EAPI:-0}" 0 1 2 3 4 5; then
+	einstalldocs() {
+		debug-print-function ${FUNCNAME} "${@}"
 
-	local dodoc_opts=-r
-	has ${EAPI} 0 1 2 3 && dodoc_opts=
+		local dodoc_opts=-r
+		has ${EAPI} 0 1 2 3 && dodoc_opts=
 
-	if ! declare -p DOCS &>/dev/null ; then
-		local d
-		for d in README* ChangeLog AUTHORS NEWS TODO CHANGES \
-				THANKS BUGS FAQ CREDITS CHANGELOG ; do
-			if [[ -s ${d} ]] ; then
-				dodoc "${d}" || die
+		if ! declare -p DOCS &>/dev/null ; then
+			local d
+			for d in README* ChangeLog AUTHORS NEWS TODO CHANGES \
+					THANKS BUGS FAQ CREDITS CHANGELOG ; do
+				if [[ -s ${d} ]] ; then
+					dodoc "${d}" || die
+				fi
+			done
+		elif [[ $(declare -p DOCS) == "declare -a"* ]] ; then
+			if [[ ${DOCS[@]} ]] ; then
+				dodoc ${dodoc_opts} "${DOCS[@]}" || die
 			fi
-		done
-	elif [[ $(declare -p DOCS) == "declare -a"* ]] ; then
-		if [[ ${DOCS[@]} ]] ; then
-			dodoc ${dodoc_opts} "${DOCS[@]}" || die
+		else
+			if [[ ${DOCS} ]] ; then
+				dodoc ${dodoc_opts} ${DOCS} || die
+			fi
 		fi
-	else
-		if [[ ${DOCS} ]] ; then
-			dodoc ${dodoc_opts} ${DOCS} || die
-		fi
-	fi
 
-	if [[ $(declare -p HTML_DOCS 2>/dev/null) == "declare -a"* ]] ; then
-		if [[ ${HTML_DOCS[@]} ]] ; then
-			dohtml -r "${HTML_DOCS[@]}" || die
+		if [[ $(declare -p HTML_DOCS 2>/dev/null) == "declare -a"* ]] ; then
+			if [[ ${HTML_DOCS[@]} ]] ; then
+				dohtml -r "${HTML_DOCS[@]}" || die
+			fi
+		else
+			if [[ ${HTML_DOCS} ]] ; then
+				dohtml -r ${HTML_DOCS} || die
+			fi
 		fi
-	else
-		if [[ ${HTML_DOCS} ]] ; then
-			dohtml -r ${HTML_DOCS} || die
-		fi
-	fi
 
-	return 0
-}
+		return 0
+	}
+fi
 
 check_license() { die "you no longer need this as portage supports ACCEPT_LICENSE itself"; }
 
