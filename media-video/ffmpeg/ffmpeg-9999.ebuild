@@ -65,7 +65,7 @@ fi
 FFMPEG_FLAG_MAP=(
 		+bzip2:bzlib cpudetection:runtime-cpudetect debug doc gnutls +gpl
 		+hardcoded-tables +iconv lzma +network openssl +postproc
-		samba:libsmbclient sdl:ffplay vaapi vdpau X:xlib xcb:libxcb
+		samba:libsmbclient sdl:ffplay sdl vaapi vdpau X:xlib xcb:libxcb
 		xcb:libxcb-shm xcb:libxcb-xfixes +zlib
 		# libavdevice options
 		cdio:libcdio iec61883:libiec61883 ieee1394:libdc1394 libcaca openal
