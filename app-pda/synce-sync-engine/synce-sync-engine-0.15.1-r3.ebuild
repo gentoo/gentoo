@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ SRC_URI="mirror://sourceforge/synce/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="opensync"
+IUSE=""
 
 RDEPEND="app-pda/synce-core[python]
 	>=dev-libs/librra-0.16[python]
@@ -25,11 +25,7 @@ RDEPEND="app-pda/synce-core[python]
 	dev-libs/libxml2[python]
 	dev-libs/libxslt[python]
 	dev-python/dbus-python
-	dev-python/pygobject:2
-	opensync? ( || (
-		>=app-pda/libopensync-0.39[python]
-		( =app-pda/libopensync-0.22*[python] app-pda/libopensync-plugin-python )
-		) )"
+	dev-python/pygobject:2"
 DEPEND=${RDEPEND}
 
 PYTHON_MODNAME=SyncEngine
@@ -48,26 +44,6 @@ src_install() {
 	doins config/syncengine.conf.xml || die
 
 	distutils_src_install
-
-	### opensync plug-in BEGIN
-	find "${ED}" -type d -name plugins -exec rm -rf {} +
-
-	if use opensync; then
-		local plug=plugins/synce-opensync-plugin-
-
-		if has_version ">=app-pda/libopensync-0.39"; then
-			insinto /usr/$(get_libdir)/libopensync1/python-plugins
-			newins ${plug}3x.py synce-plugin.py || die
-		else
-			# See OPENSYNC_PYTHONPLG_DIR variable in libopensync-python-plugin-0.22
-			# to verify path for python plugins.
-			insinto /usr/$(get_libdir)/opensync/python-plugins
-			newins ${plug}2x.py synce-plugin.py || die
-		fi
-
-		dodoc ${plug}3x.README || die
-	fi
-	### opensync plug-in END
 
 	rm -rf "${ED}"/usr/foobar
 }
