@@ -1,0 +1,24 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /etc/init.d/cgred,v 1.1 2015/02/14 09:53:59 tokiclover Exp $
+
+command="/usr/sbin/cgrulesengd"
+command_args="${CGRED_OPTS}"
+command_background="1"
+pidfile="/var/run/cgred.pid"
+description="CGroups Rules Engine Daemon"
+extra_started_commands="reload"
+
+depend()
+{
+	need cgconfig
+	use logger
+}
+
+reload()
+{
+	ebegin "Reloading CGroup Rules Engine Daemon"
+	kill -USR2 $(cat "${pidfile}")
+	eend $?
+}
