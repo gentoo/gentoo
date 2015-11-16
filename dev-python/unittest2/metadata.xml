@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>python</herd>
 	<upstream>
 		<remote-id type="pypi">unittest2</remote-id>
+		<remote-id type="github">testing-cabal/unittest-ext</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>proxy-maintainers</herd>
@@ -17,4 +17,8 @@
 		Kicad is an open source (GPL) software for the creation of electronic
 		schematic diagrams and printed circuit board artwork.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">KiCad/kicad-i18n</remote-id>
+		<remote-id type="launchpad">kicad</remote-id>
+	</upstream>
 </pkgmetadata>
