@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>sci</herd>
@@ -7,8 +7,9 @@
   Python interface.
   The predominant portion of PyAMG is written in Python with a smaller
   amount of supporting C++ code for performance critical operations.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="pypi">pyamg</remote-id>
+    <remote-id type="github">pyamg/pyamg</remote-id>
   </upstream>
 </pkgmetadata>

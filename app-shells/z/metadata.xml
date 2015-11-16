@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
@@ -10,4 +10,7 @@
 		learning phase, z will take you to the most 'frecent' directory that
 		matches ALL of the regexes given on the command line, in order.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">rupa/z</remote-id>
+	</upstream>
 </pkgmetadata>
