@@ -9898,7 +9898,7 @@ games-board/ascal 0.1.1: A game similar to Draughts but with some really cool en
 games-board/atakks 1.0: A clone of Ataxx
 games-board/awale 1.5: Free Awale - The game of all Africa
 games-board/biloba 0.9.3: a board game, up to 4 players, with AI and network
-games-board/blokish 0.9.4-r1: Open source clone of the four-player board game Blokus
+games-board/blokish 0.9.4-r1 0.9.4-r2: Open source clone of the four-player board game Blokus
 games-board/camato 0.7.4: A map editor for the game gnocatan
 games-board/capicity 1.0: A monopd compatible boardgame to play Monopoly-like games (previously named capitalism)
 games-board/ccgo 0.3.6.4: An IGS client written in C++
