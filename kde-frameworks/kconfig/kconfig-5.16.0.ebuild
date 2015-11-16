@@ -21,4 +21,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qtconcurrent:5 )
 "
 
+# bug 560086
+RESTRICT="test"
+
 DOCS=( DESIGN docs/DESIGN.kconfig docs/options.md )
