@@ -14,7 +14,7 @@ SRC_URI="http://spice-space.org/download/releases/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="client libressl sasl smartcard static-libs" # static
 
 # only the client links against libcacard, the libspice-server only uses the headers
