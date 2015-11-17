@@ -35,10 +35,14 @@ DEPEND="${RDEPEND}
 RDEPEND="${RDEPEND}
 	pam? ( >=sys-auth/pambase-20150213 )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.1.3-dots-in-usernames.patch 
+	"${FILESDIR}"/${P}-cross-size-checks.patch
+	"${FILESDIR}"/${P}-verbose-error-when-uid-doesnt-match.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-4.1.3-dots-in-usernames.patch #22920
-	epatch "${FILESDIR}"/${P}-cross-size-checks.patch
-	epatch "${FILESDIR}"/${P}-verbose-error-when-uid-doesnt-match.patch
+	epatch "${PATCHES[@]}"
 	epatch_user
 	# https://github.com/shadow-maint/shadow/pull/5
 	mv configure.{in,ac} || die
