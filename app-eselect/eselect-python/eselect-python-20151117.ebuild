@@ -40,14 +40,39 @@ src_install() {
 	done
 }
 
+pkg_preinst() {
+	local py
+
+	# Copy python[23] selection from the old format (symlink)
+	for py in 2 3; do
+		# default to none
+		declare -g "PREV_PYTHON${py}"=
+
+		if [[ -L ${EROOT}/usr/bin/python${py} ]]; then
+			local target=$(readlink "${EROOT}/usr/bin/python${py}")
+
+			# check if it's actually old eselect symlink
+			if [[ ${target} == python?.? ]]; then
+				declare -g "PREV_PYTHON${py}=${target}"
+			fi
+		fi
+	done
+}
+
 pkg_postinst() {
+	local py
+
 	if has_version 'dev-lang/python'; then
 		eselect python update --if-unset
 	fi
-	if has_version '=dev-lang/python-2*'; then
-		eselect python update --python2 --if-unset
-	fi
-	if has_version '=dev-lang/python-3*'; then
-		eselect python update --python3 --if-unset
-	fi
+
+	for py in 2 3; do
+		local pyvar=PREV_PYTHON${py}
+		if [[ -n ${!pyvar} ]]; then
+			einfo "Setting Python${py} to ${!pyvar}"
+			eselect python set "--python${py}" "${!pyvar}"
+		elif has_version "=dev-lang/python-${py}*"; then
+			eselect python update "--python${py}" --if-unset
+		fi
+	done
 }
