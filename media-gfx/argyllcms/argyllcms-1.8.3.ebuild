@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit base flag-o-matic multiprocessing toolchain-funcs udev
+inherit flag-o-matic multiprocessing toolchain-funcs udev
 
 MY_P="Argyll_V${PV}"
 
@@ -14,13 +14,13 @@ SRC_URI="http://www.argyllcms.com/${MY_P}_src.zip"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 hppa ~x86"
+KEYWORDS="~amd64 ~hppa ~x86"
 IUSE="doc"
 
 RDEPEND="
-	media-libs/tiff
+	media-libs/tiff:0
 	sys-libs/zlib
-	virtual/jpeg
+	virtual/jpeg:0
 	x11-libs/libX11
 	x11-libs/libXau
 	x11-libs/libXdmcp
@@ -36,6 +36,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-1.8.0-gcc5.patch
 	)
 
 src_compile() {
