@@ -11734,7 +11734,7 @@ media-gfx/apngasm 2.5 2.6 2.7: create an APNG from multiple PNG files
 media-gfx/apngdis 2.7 2.8: extract PNG frames from an APNG
 media-gfx/apngopt 1.2: optimize APNG images
 media-gfx/aqsis 1.8.2: Open source RenderMan-compliant 3D rendering solution
-media-gfx/argyllcms 1.6.3 1.7.0 1.8.0 1.8.2: Open source, ICC compatible color management system
+media-gfx/argyllcms 1.7.0 1.8.2 1.8.3: Open source, ICC compatible color management system
 media-gfx/arss 0.2.3: Analysis & Resynthesis Sound Spectrograph
 media-gfx/asymptote 2.32: A vector graphics language that provides a framework for technical drawing
 media-gfx/autopano-sift-C 2.5.1: SIFT algorithm for automatic panorama creation in C
