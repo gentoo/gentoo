@@ -41,10 +41,14 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-Makefile.patch \
 			"${FILESDIR}"/${P}-fix-gnustack.patch \
 			"${FILESDIR}"/${P}-lua-makefile.patch \
-			"${FILESDIR}"/${P}-config.mk.patch
+			"${FILESDIR}"/${P}-config.mk.patch \
+			"${FILESDIR}"/${P}-access-daemon.patch
 
 	# Set PREFIX path to include sandbox path
 	sed -e 's:^PREFIX = .*:PREFIX = '${D}'/usr:' -i config.mk || die
+
+	# Set the path to library directory.
+	sed -e 's:$(get_libdir):'$(get_libdir)':' -i config.mk || die "Cannot set library path!"
 
 	# Set correct LDFLAGS
 	sed -e '/LIBS/aSHARED_LFLAGS += -Wl,-soname,$@' \
@@ -85,4 +89,12 @@ src_install () {
 	fi
 
 	doman doc/*.1
+}
+
+pkg_postinst() {
+	fcaps_pkg_postinst
+	ewarn "To enable users to access performance counters it is necessary to"
+	ewarn "change the access permissions to /dev/cpu/msr[0]* devices."
+	ewarn "It can be accomplished by adding the following line to file"
+	ewarn "/etc/udev/rules.d/99-myrules.rules: KERNEL==\"msr[0-9]*\" MODE=\"0666\""
 }
