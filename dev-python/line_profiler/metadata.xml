@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <maintainer>
+    <email>marbre@linux.sungazer.de</email>
+    <name>Marius Brehler</name>
+  </maintainer>
+  <longdescription>
+    line_profiler is a module for doing line-by-line profiling of
+    functions. kernprof is a convenient script for running either
+    line_profiler or the Python standard library's cProfile or profile
+    modules, depending on what is available.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">line_profiler</remote-id>
+    <remote-id type="github">rkern/line_profiler</remote-id>
+  </upstream>
+</pkgmetadata>
