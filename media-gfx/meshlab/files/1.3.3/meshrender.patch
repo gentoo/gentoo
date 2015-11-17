@@ -1,0 +1,15 @@
+--- meshlab/src/meshlabplugins/render_gdp/meshrender.cpp	2014-02-07 10:38:28.000000000 +0100
++++ meshlab/src/meshlabplugins/render_gdb/meshrender.cpp	2015-11-15 22:17:39.848179962 +0100
+@@ -36,8 +36,11 @@
+ 	/*QAction * qaNone = new QAction("None", this); 
+ 	qaNone->setCheckable(false);
+ 	actionList << qaNone;*/
+-
++#if defined(Q_OS_LINUX)
++	QDir shadersDir = QDir("/usr/share/meshlab");
++#else
+ 	QDir shadersDir = QDir(qApp->applicationDirPath());
++#endif
+ #if defined(Q_OS_WIN)
+ 	if (shadersDir.dirName() == "debug" || shadersDir.dirName() == "release" || shadersDir.dirName() == "plugins"  )
+ 		shadersDir.cdUp();

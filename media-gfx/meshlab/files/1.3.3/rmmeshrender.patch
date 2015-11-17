@@ -1,0 +1,15 @@
+--- meshlab/src/plugins_unsupported/render_rm/rmmeshrender.cpp~	2013-05-22 17:08:53.000000000 +0200
++++ meshlab/src/plugins_unsupported/render_rm/rmmeshrender.cpp	2015-11-15 23:18:04.678143277 +0100
+@@ -63,7 +63,12 @@
+ 
+ void RmMeshShaderRenderPlugin::initActionList() {
+ 
++#if defined(Q_OS_LINUX)
++	QDir shadersDir = QDir("/usr/share/meshlab/shaders");
++#else
+ 	QDir shadersDir = QDir(qApp->applicationDirPath());
++#endif
++
+ #if defined(Q_OS_WIN)
+ 	if (shadersDir.dirName() == "debug" ||
+ 	    shadersDir.dirName() == "release" ||

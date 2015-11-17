@@ -36,7 +36,11 @@ src_prepare() {
 		"${FILESDIR}/${PV}"/lapack.patch \
 		"${FILESDIR}/${PV}"/mpir.patch \
 		"${FILESDIR}/${PV}"/qt-4.8.patch \
-		"${FILESDIR}/${PV}"/rpath.patch
+		"${FILESDIR}/${PV}"/rpath.patch \
+		"${FILESDIR}/${PV}"/pluginmanager.patch \
+		"${FILESDIR}/${PV}"/meshrender.patch \
+		"${FILESDIR}/${PV}"/rmmeshrender.patch \
+		"${FILESDIR}/${PV}"/rfx.patch
 }
 
 src_configure() {
