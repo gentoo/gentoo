@@ -4,9 +4,6 @@
 
 EAPI=5
 
-# jruby → not compatible, since it uses an extension, but there is a bug
-# open for it: https://github.com/rdp/ruby-prof/issues/36
-
 USE_RUBY="ruby19 ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_EXTRADOC="README.rdoc CHANGES"
@@ -53,8 +50,7 @@ each_ruby_configure() {
 each_ruby_compile() {
 	emake V=1 -Cext/ruby_prof || die "build failed"
 
-	mkdir lib/ruby_prof || die "unable to create directory for shared object"
-	cp ext/ruby_prof/*$(get_modname) lib/ruby_prof || die "copy of extension failed"
+	cp ext/ruby_prof/*$(get_modname) lib/ || die "copy of extension failed"
 }
 
 all_ruby_install() {
