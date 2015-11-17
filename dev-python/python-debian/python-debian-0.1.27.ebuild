@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} pypy )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
 
 inherit distutils-r1
 
@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.1.26-fix-tests.patch
-	)
+)
 
 python_compile_all() {
 	"${PYTHON}" lib/debian/doc-debtags > README.debtags || die
