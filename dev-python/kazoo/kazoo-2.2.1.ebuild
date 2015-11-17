@@ -17,11 +17,11 @@ KEYWORDS="amd64 x86"
 IUSE="doc gevent test"
 
 RDEPEND="
+	dev-python/six[${PYTHON_USEDEP}]
 	gevent? ( dev-python/gevent[$(python_gen_usedep 'python2*')] )
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( dev-python/mock[${PYTHON_USEDEP}] )
 "
