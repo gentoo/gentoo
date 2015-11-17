@@ -21,11 +21,9 @@ KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sp
 SLOT="0"
 IUSE="doc test"
 
-RDEPEND="
-	>=dev-python/pip-7.1.2[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	"
+RDEPEND=""
 DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
@@ -44,7 +42,7 @@ python_compile_all() {
 }
 
 python_test() {
-	py.test -vvx || die "Tests fail with ${EPYTHON}"
+	py.test -v -v || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {

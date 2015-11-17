@@ -21,6 +21,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-util/dbus-test-runner )"
 
 src_prepare() {
+	# https://bugs.launchpad.net/libindicator/+bug/1502925
 	epatch "${FILESDIR}"/${PN}-ldflags-spacing.patch
 	eautoreconf
 }

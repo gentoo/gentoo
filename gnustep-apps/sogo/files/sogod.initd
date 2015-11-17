@@ -1,0 +1,33 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+SOGOD_PID=/run/sogo/sogod.pid
+
+depend() {
+	need net
+	need memcached
+	after postgresql mysql
+	after slapd
+	after mta
+}
+
+start() {
+	checkpath -q -d -m 0755 -o sogo:sogo $(dirname "${SOGOD_PID}")
+	ebegin "Starting SOGo service"
+	start-stop-daemon --start --quiet \
+		--user sogo --exec /usr/sbin/sogod \
+		--	-WOWorkersCount ${SOGOD_WORKERS} \
+			-WOLogFile /var/log/sogo/sogod.log \
+			-WOPidFile "${SOGOD_PID}" \
+			"${SOGOD_OPTS}"
+	eend ${?}
+}
+
+stop() {
+	ebegin "Stopping SOGo service"
+	start-stop-daemon --stop \
+		--pidfile "${SOGOD_PID}"
+	eend ${?}
+}
