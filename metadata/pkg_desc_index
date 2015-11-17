@@ -13078,7 +13078,7 @@ media-sound/xmp 3.5.0: Extended Module Player
 media-sound/xnoise 0.2.21 9999: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.5: Digital vinyl emulation software
 media-sound/yoshimi 1.3.2 1.3.5.2: A software synthesizer based on ZynAddSubFX
-media-sound/zynaddsubfx 2.4.1 2.4.2 2.4.3 2.5.0 2.5.1: ZynAddSubFX is an opensource software synthesizer
+media-sound/zynaddsubfx 2.4.1 2.4.2 2.4.3 2.5.0 2.5.1 2.5.2: ZynAddSubFX is an opensource software synthesizer
 media-tv/channeleditor 1.9.2.1-r1: Editor for VDR channels.conf
 media-tv/dvbstream 0.7_pre20080516: simple command line tools for DVB cards. Includes a RTP multicast stream server
 media-tv/dvbstreamer 1.1-r1 2.0.0_rc1: DVB over UDP streaming solution
