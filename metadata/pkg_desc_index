@@ -16318,7 +16318,7 @@ sys-apps/sed 4.2.1-r1 4.2.2: Super-useful stream editor
 sys-apps/servicelog 1.0.1 1.1.11 1.1.13: Provides utilities for logging service-related events
 sys-apps/setserial 2.17-r4: Configure your serial ports with it
 sys-apps/sg3_utils 1.40 1.41: Apps for querying the sg SCSI interface
-sys-apps/shadow 4.1.5.1-r1 4.2.1 4.2.1-r1: Utilities to deal with user accounts
+sys-apps/shadow 4.1.5.1-r1 4.2.1 4.2.1-r1 4.2.1-r2: Utilities to deal with user accounts
 sys-apps/smartmontools 6.3 6.4 9999: Self-Monitoring, Analysis and Reporting Technology System (S.M.A.R.T.) monitoring tools
 sys-apps/sparc-utils 1.9-r4: Various sparc utilities from Debian GNU/Linux
 sys-apps/spu-tools 2.3.0.136: CELL spu ps and top alike utilities
