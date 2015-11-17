@@ -21,10 +21,10 @@ IUSE=""
 
 RDEPEND=">=app-admin/eselect-1.2.3
 	>=dev-lang/python-exec-2.1:2
-	!<dev-lang/python-2.7.10-r3:2.7
-	!<dev-lang/python-3.3.5-r3:3.3
-	!<dev-lang/python-3.4.3-r3:3.4
-	!<dev-lang/python-3.5.0-r2:3.5"
+	!<dev-lang/python-2.7.10-r4:2.7
+	!<dev-lang/python-3.3.5-r4:3.3
+	!<dev-lang/python-3.4.3-r4:3.4
+	!<dev-lang/python-3.5.0-r3:3.5"
 
 src_prepare() {
 	[[ ${PV} == "99999999" ]] && eautoreconf
