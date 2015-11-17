@@ -30,5 +30,9 @@ DOCS=( README.rst )
 PATCHES=( "${FILESDIR}"/${PN}-2.0-skip-cli-test.patch )
 
 python_test() {
+	# Sandbox violations
+	sed \
+		-e 's:test_system_logging:_&:g' \
+		-i ${PN}/tests.py || die
 	esetup.py test
 }
