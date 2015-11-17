@@ -11,7 +11,12 @@ location
 
 http://${VHOST_HOSTNAME}/${VHOST_APPDIR}
 
-and provide the credential required for the database access.
+and provide the credentials required for the database access.
+
+If you installed into a vhost, for the above address to be accurate,
+you need to pass -h "<host>" and -d "<install dir>" into webapp_config.
+The protocol is hardcoded, so you'll have to use https:// if you're
+using an SSL / TLS connection.
 
 SECURITY NOTICE: If you use SSL on your Drupal installation, you
 should enable the PHP configuration option 'session.cookie-secure'
