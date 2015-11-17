@@ -1,11 +1,12 @@
-DEFINED_PHASES=configure install
-DEPEND=x11-libs/gtk+:2 net-libs/gupnp virtual/pkgconfig sys-devel/gettext
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=x11-libs/gtk+:2 net-libs/gupnp virtual/pkgconfig sys-devel/gettext !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Collection of simple GTK+ widgets on top of GUPnP
-EAPI=2
+EAPI=5
 HOMEPAGE=http://gupnp.org
 KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2
 RDEPEND=x11-libs/gtk+:2 net-libs/gupnp
 SLOT=0
 SRC_URI=http://gupnp.org/sources/gupnp-ui/gupnp-ui-0.1.1.tar.gz
-_md5_=400762fdf6342e68e839ce549dc1ceff
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	f813d23e417656bf3917483643165d5a	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=6b0d5f53f2b6df9bfc232b2f84b556b8
