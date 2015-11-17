@@ -8589,7 +8589,7 @@ dev-ruby/highline 1.6.21 1.7.6 1.7.7 1.7.8: Highline is a high-level command-lin
 dev-ruby/hike 1.2.3 1.2.3-r1 2.1.2: Hike is a Ruby library for finding files in a set of paths
 dev-ruby/hipchat 1.4.0 1.5.1 1.5.2: Ruby library to interact with HipChat
 dev-ruby/hitimes 1.2.2 1.2.3: A fast, high resolution timer library
-dev-ruby/hoe 3.13.0 3.13.0-r1 3.13.1 3.14.1: Hoe extends rake to provide full project automation
+dev-ruby/hoe 3.13.0-r1 3.13.1 3.14.1: Hoe extends rake to provide full project automation
 dev-ruby/hoe-seattlerb 1.3.2-r1 1.3.3 1.3.4: Hoe plugins providing tasks used by seattle.rb
 dev-ruby/hpricot 0.8.6-r2 0.8.6-r3: A fast and liberal HTML parser for Ruby
 dev-ruby/html2haml 2.0.0: Convert HTML and HTML+Erb to Haml
@@ -8697,7 +8697,7 @@ dev-ruby/netrc 0.10.3 0.11.0: This library reads and writes .netrc files
 dev-ruby/network_interface 0.0.1-r1: network_interface layer from metasploit pcaprub
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
 dev-ruby/nio4r 1.0.1 1.1.0 1.1.1: A high performance selector API for monitoring IO objects
-dev-ruby/nokogiri 1.6.4.1 1.6.5 1.6.5-r1 1.6.6.2: Nokogiri is an HTML, XML, SAX, and Reader parser
+dev-ruby/nokogiri 1.6.4.1 1.6.5 1.6.5-r1 1.6.6.2 1.6.6.3: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r1 0.2.0-r2: Calculate the differences (added or removed nodes) between two XML/HTML documents
 dev-ruby/nokogumbo 1.4.1 1.4.2: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
@@ -8781,7 +8781,7 @@ dev-ruby/regexp_parser 0.3.1: A library for tokenizing, lexing, and parsing Ruby
 dev-ruby/request_store 1.0.5 1.1.0 1.2.0: Per-request global storage for Rack
 dev-ruby/rest-client 1.8.0 1.8.0-r1: Simple Simple HTTP and REST client for Ruby
 dev-ruby/rev 0.3.2-r1: Rev is an event library for Ruby, built on the libev event library
-dev-ruby/rexical 1.0.5-r2 1.0.5-r3: Rexical is a lexical scanner generator
+dev-ruby/rexical 1.0.5-r3: Rexical is a lexical scanner generator
 dev-ruby/rgen 0.6.6 0.6.6-r1 0.6.6-r2 0.7.0: Ruby Modelling and Generator Framework
 dev-ruby/riel 1.2.0-r1 1.2.0-r2: This library extends the core Ruby libraries
 dev-ruby/right_http_connection 1.3.0 1.3.0-r1 1.5.0: RightScale's robust HTTP/S connection module
@@ -8899,7 +8899,7 @@ dev-ruby/source_map 3.0.1: Provides an API for parsing, and an API for generatin
 dev-ruby/sparklines 0.5.2-r4 0.5.2-r5 0.5.2-r6: Create sparklines, small graphs to be used inline in texts
 dev-ruby/spork 0.9.2-r1 0.9.2-r2: Spork is Tim Harper's implementation of test server
 dev-ruby/spreadsheet 0.6.9: Ruby library to read and write spreadsheet documents
-dev-ruby/spring 1.3.6 1.4.0 1.4.1: Rails application preloader
+dev-ruby/spring 1.3.6 1.4.0 1.4.1 1.4.3: Rails application preloader
 dev-ruby/sprockets 2.2.3 2.11.3 2.12.3-r1 3.3.5 3.4.0: Ruby library for compiling and serving web assets
 dev-ruby/sprockets-rails 2.0.0 2.1.3 2.2.4 2.3.0 2.3.1-r1 2.3.2 2.3.3: Sprockets implementation for Rails 4.x (and beyond) Asset Pipeline
 dev-ruby/spy 0.4.1 0.4.2: A simple opinionated mocking framework
@@ -8917,7 +8917,7 @@ dev-ruby/tdiff 0.3.3 0.3.3-r1: Calculates the differences between two tree-like 
 dev-ruby/temple 0.6.10 0.7.6: An abstraction and a framework for compiling templates to pure Ruby
 dev-ruby/term-ansicolor 1.2.2-r1 1.3.0 1.3.0-r1 1.3.2: Small Ruby library that colors strings using ANSI escape sequences
 dev-ruby/termcolor 1.2.1-r1 1.2.2: a library for ANSI color formatting like HTML for output in terminal
-dev-ruby/test-unit 1.2.3-r1 1.2.3-r2 1.2.3-r3 2.5.5-r1 2.5.5-r2 3.1.3 3.1.4 3.1.5: An xUnit family unit testing framework for Ruby
+dev-ruby/test-unit 1.2.3-r1 1.2.3-r2 1.2.3-r3 2.5.5-r2 3.1.3 3.1.4 3.1.5: An xUnit family unit testing framework for Ruby
 dev-ruby/test-unit-rr 1.0.3 1.0.3-r1: RR adapter for Test::Unit
 dev-ruby/test_construct 2.0.1: Creates temporary files and directories for testing
 dev-ruby/test_declarative 0.0.5-r2: Simply adds a declarative test method syntax to test/unit
@@ -17641,7 +17641,7 @@ x11-base/xorg-server 1.12.4-r5 1.12.4-r7 1.15.2-r2 1.15.2-r4 1.16.4 1.16.4-r5 1.
 x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/afb-ucode 1.3.11: Binary blob microcode for Elite3D framebuffers to use X, required by xf86-video-sunffb
 x11-drivers/ati-drivers 14.12-r3 15.1 15.7-r1 15.9 15.9-r1: Ati precompiled drivers for Radeon Evergreen (HD5000 Series) and newer chipsets
-x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 304.128-r1 340.93-r1 346.96-r1 352.41-r1 352.55 355.11-r2 358.09: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 304.128-r1 304.131 340.93-r1 340.96 346.96-r1 352.55 352.63 355.11-r2 358.09 358.13: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-acecad 1.5.0: Acecad Flair input driver
 x11-drivers/xf86-input-aiptek 1.4.1: Aiptek USB Digital Tablet Input Driver for Linux
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
