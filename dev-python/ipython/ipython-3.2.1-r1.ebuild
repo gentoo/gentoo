@@ -145,6 +145,8 @@ python_install_all() {
 pkg_postinst() {
 	optfeature "sympyprinting" dev-python/sympy
 	optfeature "cythonmagic" dev-python/cython
+	optfeature "%lprun magic command" dev-python/line_profiler
+	optfeature "%mprun magic command" dev-python/memory_profiler
 	if use nbconvert; then
 		if ! has_version app-text/pandoc ; then
 			einfo "Node.js will be used to convert notebooks to other formats"
