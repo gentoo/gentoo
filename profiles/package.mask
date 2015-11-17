@@ -68,13 +68,17 @@ sci-chemistry/pymol-apbs-plugin
 # Michał Górny <mgorny@gentoo.org> (11 Nov 2015)
 # Cleaned up Python versions masked for testing:
 # - python-config-X.Y compatibility removed,
+# - python[23] choice is now stored in config file rather than symlink,
+# - eselect-python reworked to reuse python-exec and wrap all execs,
 # - ABIFLAGS reintroduced for 3.3+.
 # Resulting API/ABI change can break reverse dependencies, especially
 # if upstream hardcodes paths or library names.
-=dev-lang/python-2.7.10-r3
-=dev-lang/python-3.3.5-r3
-=dev-lang/python-3.4.3-r3
-=dev-lang/python-3.5.0-r2
+=app-eselect/eselect-python-20151117
+=dev-lang/python-2.7.10-r4
+=dev-lang/python-3.3.5-r4
+=dev-lang/python-3.4.3-r4
+=dev-lang/python-3.5.0-r3
+=dev-lang/python-exec-2.1
 
 # Justin Lecher <jlec@gentoo.org> (10 Nov 2015)
 # Vulnerable package CVE-2014-{1932,1933}
@@ -240,6 +244,11 @@ virtual/python-imaging
 >=dev-cpp/pangomm-2.38.1
 >=dev-cpp/gtkmm-3.18.0
 >=dev-cpp/gtksourceviewmm-3.18.0
+>=app-office/pinpoint-0.1.8
+>=dev-vcs/gitg-3.18.0
+>=gnome-extra/nemo-2.8.4
+>=media-video/cheese-3.18.1
+>=net-libs/libsoup-gnome-2.52.2
 
 # Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
 # Not properly installed, dead for ages, upstream

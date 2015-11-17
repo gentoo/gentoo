@@ -3,62 +3,67 @@
 # $Id$
 
 EAPI="5"
+WANT_AUTOMAKE="none"
 WANT_LIBTOOL="none"
 
 inherit autotools eutils flag-o-matic multilib pax-utils python-utils-r1 toolchain-funcs multiprocessing
 
-MY_P="Python-${PV/_/}"
-PATCHSET_VERSION="3.4.3-0"
+MY_P="Python-${PV}"
+PATCHSET_VERSION="${PV}-0"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="http://www.python.org/"
-SRC_URI="http://www.python.org/ftp/python/${PV%_rc*}/${MY_P}.tar.xz
-	https://dev.gentoo.org/~floppym/python/python-gentoo-patches-${PATCHSET_VERSION}.tar.xz"
+SRC_URI="http://www.python.org/ftp/python/${PV}/${MY_P}.tar.xz
+	https://dev.gentoo.org/~floppym/python/python-gentoo-patches-${PATCHSET_VERSION}.tar.xz
+	mirror://gentoo/python-gentoo-patches-${PATCHSET_VERSION}.tar.xz"
 
 LICENSE="PSF-2"
-SLOT="3.4/3.4m"
+SLOT="3.3/3.3m"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE="build elibc_uclibc examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl +threads tk wininst +xml"
+IUSE="build doc elibc_uclibc examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl +threads tk wininst +xml"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
 # If you need to apply a patch which requires python for bootstrapping, please
 # run the bootstrap code on your dev box and include the results in the
 # patchset. See bug 447752.
 
+PYVER=${SLOT%/*}
+
 RDEPEND="app-arch/bzip2:0=
 	app-arch/xz-utils:0=
 	>=sys-libs/zlib-1.1.3:0=
 	virtual/libffi
 	virtual/libintl
-	gdbm? ( sys-libs/gdbm:0=[berkdb] )
-	ncurses? (
-		>=sys-libs/ncurses-5.2:0=
-		readline? ( >=sys-libs/readline-4.1:0= )
+	!build? (
+		gdbm? ( sys-libs/gdbm:0=[berkdb] )
+		ncurses? (
+			>=sys-libs/ncurses-5.2:0=
+			readline? ( >=sys-libs/readline-4.1:0= )
+		)
+		sqlite? ( >=dev-db/sqlite-3.3.8:3= )
+		ssl? (
+			!libressl? ( dev-libs/openssl:0= )
+			libressl? ( dev-libs/libressl:= )
+		)
+		tk? (
+			>=dev-lang/tcl-8.0:0=
+			>=dev-lang/tk-8.0:0=
+			dev-tcltk/blt:0=
+			dev-tcltk/tix
+		)
+		xml? ( >=dev-libs/expat-2.1:0= )
 	)
-	sqlite? ( >=dev-db/sqlite-3.3.8:3= )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
-	tk? (
-		>=dev-lang/tcl-8.0:0=
-		>=dev-lang/tk-8.0:0=
-		dev-tcltk/blt:0=
-		dev-tcltk/tix
-	)
-	xml? ( >=dev-libs/expat-2.1:0= )
 	!!<sys-apps/sandbox-2.6-r1"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	>=sys-devel/autoconf-2.65
 	!sys-devel/gcc[libffi]"
-RDEPEND+=" !build? ( app-misc/mime-types )"
+RDEPEND+=" !build? ( app-misc/mime-types )
+	doc? ( dev-python/python-docs:${PYVER} )"
 PDEPEND="app-eselect/eselect-python
 	app-admin/python-updater"
 
 S="${WORKDIR}/${MY_P}"
-
-PYVER=${SLOT%/*}
 
 src_prepare() {
 	# Ensure that internal copies of expat, libffi and zlib are not used.
@@ -72,7 +77,7 @@ src_prepare() {
 	fi
 
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
-	epatch "${FILESDIR}/${PN}-3.4.3-ncurses-pkg-config.patch"
+	epatch "${FILESDIR}/${PN}-3.3.5-ncurses-pkg-config.patch"
 	epatch "${FILESDIR}/${PN}-3.4-gcc-5.patch" #547626
 
 	sed -i -e "s:@@GENTOO_LIBDIR@@:$(get_libdir):g" \
@@ -86,26 +91,38 @@ src_prepare() {
 		Modules/getpath.c \
 		setup.py || die "sed failed to replace @@GENTOO_LIBDIR@@"
 
+	# bug #514686
+	epatch "${FILESDIR}/${PN}-3.3-CVE-2014-4616.patch"
+
+	epatch "${FILESDIR}"/${PN}-3.3-libressl.patch
+
 	epatch_user
 
-	eautoreconf
+	eautoconf
+	eautoheader
 }
 
 src_configure() {
-	local disable
-	use gdbm     || disable+=" gdbm"
-	use ncurses  || disable+=" _curses _curses_panel"
-	use readline || disable+=" readline"
-	use sqlite   || disable+=" _sqlite3"
-	use ssl      || export PYTHON_DISABLE_SSL="1"
-	use tk       || disable+=" _tkinter"
-	use xml      || disable+=" _elementtree pyexpat" # _elementtree uses pyexpat.
-	export PYTHON_DISABLE_MODULES="${disable}"
+	if use build; then
+		# Disable extraneous modules with extra dependencies.
+		export PYTHON_DISABLE_MODULES="gdbm _curses _curses_panel readline _sqlite3 _tkinter _elementtree pyexpat"
+		export PYTHON_DISABLE_SSL="1"
+	else
+		local disable
+		use gdbm     || disable+=" gdbm"
+		use ncurses  || disable+=" _curses _curses_panel"
+		use readline || disable+=" readline"
+		use sqlite   || disable+=" _sqlite3"
+		use ssl      || export PYTHON_DISABLE_SSL="1"
+		use tk       || disable+=" _tkinter"
+		use xml      || disable+=" _elementtree pyexpat" # _elementtree uses pyexpat.
+		export PYTHON_DISABLE_MODULES="${disable}"
 
-	if ! use xml; then
-		ewarn "You have configured Python without XML support."
-		ewarn "This is NOT a recommended configuration as you"
-		ewarn "may face problems parsing any XML documents."
+		if ! use xml; then
+			ewarn "You have configured Python without XML support."
+			ewarn "This is NOT a recommended configuration as you"
+			ewarn "may face problems parsing any XML documents."
+		fi
 	fi
 
 	if [[ -n "${PYTHON_DISABLE_MODULES}" ]]; then
@@ -128,7 +145,6 @@ src_configure() {
 
 	# Export CXX so it ends up in /usr/lib/python3.X/config/Makefile.
 	tc-export CXX
-
 	# The configure script fails to use pkg-config correctly.
 	# http://bugs.python.org/issue15506
 	export ac_cv_path_PKG_CONFIG=$(tc-getPKG_CONFIG)
@@ -160,8 +176,7 @@ src_configure() {
 		--with-libc="" \
 		--enable-loadable-sqlite-extensions \
 		--with-system-expat \
-		--with-system-ffi \
-		--without-ensurepip
+		--with-system-ffi
 
 	if use threads && grep -q "#define POSIX_SEMAPHORES_NOT_ENABLED 1" pyconfig.h; then
 		eerror "configure has detected that the sem_open function is broken."
@@ -175,8 +190,7 @@ src_compile() {
 	touch Include/graminit.h Python/graminit.c || die
 
 	cd "${BUILD_DIR}" || die
-
-	emake CPPFLAGS= CFLAGS= LDFLAGS=
+	emake CPPFLAGS="" CFLAGS="" LDFLAGS=""
 
 	# Work around bug 329499. See also bug 413751 and 457194.
 	if has_version dev-libs/libffi[pax_kernel]; then
@@ -202,9 +216,8 @@ src_test() {
 		mv "${S}"/Lib/test/test_${test}.py "${T}"
 	done
 
-	local -x PYTHONDONTWRITEBYTECODE=
-	emake test EXTRATESTOPTS="-u-network" CPPFLAGS= CFLAGS= LDFLAGS= < /dev/tty
-	local result=$?
+	PYTHONDONTWRITEBYTECODE="" emake test EXTRATESTOPTS="-u -network" FLAGS="" CFLAGS="" LDFLAGS="" < /dev/tty
+	local result="$?"
 
 	for test in ${skipped_tests}; do
 		mv "${T}/test_${test}.py" "${S}"/Lib/test
@@ -219,7 +232,7 @@ src_test() {
 	elog "cd '${EPREFIX}/usr/$(get_libdir)/python${PYVER}/test'"
 	elog "and run the tests separately."
 
-	if [[ ${result} -ne 0 ]]; then
+	if [[ "${result}" -ne 0 ]]; then
 		die "emake test failed"
 	fi
 }
@@ -247,9 +260,13 @@ src_install() {
 		dosym "${abiver}" "/usr/bin/python${PYVER}"
 	fi
 
-	use elibc_uclibc && rm -fr "${libdir}/test"
-	use sqlite || rm -fr "${libdir}/"{sqlite3,test/test_sqlite*}
-	use tk || rm -fr "${ED}usr/bin/idle${PYVER}" "${libdir}/"{idlelib,tkinter,test/test_tk*}
+	if use build; then
+		rm -fr "${ED}usr/bin/idle${PYVER}" "${libdir}/"{idlelib,sqlite3,test,tkinter}
+	else
+		use elibc_uclibc && rm -fr "${libdir}/test"
+		use sqlite || rm -fr "${libdir}/"{sqlite3,test/test_sqlite*}
+		use tk || rm -fr "${ED}usr/bin/idle${PYVER}" "${libdir}/"{idlelib,tkinter,test/test_tk*}
+	fi
 
 	use threads || rm -fr "${libdir}/multiprocessing"
 	use wininst || rm -f "${libdir}/distutils/command/"wininst-*.exe
@@ -274,7 +291,7 @@ src_install() {
 		-i "${ED}etc/conf.d/pydoc-${PYVER}" "${ED}etc/init.d/pydoc-${PYVER}" || die "sed failed"
 
 	# for python-exec
-	local vars=( EPYTHON PYTHON_SITEDIR )
+	local vars=( EPYTHON PYTHON_SITEDIR PYTHON_SCRIPTDIR )
 
 	# if not using a cross-compiler, use the fresh binary
 	if ! tc-is-cross-compiler; then
@@ -287,6 +304,27 @@ src_install() {
 	python_export "python${PYVER}" "${vars[@]}"
 	echo "EPYTHON='${EPYTHON}'" > epython.py || die
 	python_domodule epython.py
+
+	# python-exec wrapping support
+	local pymajor=${PYVER%.*}
+	mkdir -p "${D}${PYTHON_SCRIPTDIR}" || die
+	# python and pythonX
+	ln -s "../../../bin/${abiver}" \
+		"${D}${PYTHON_SCRIPTDIR}/python${pymajor}" || die
+	ln -s "python${pymajor}" \
+		"${D}${PYTHON_SCRIPTDIR}/python" || die
+	# python-config and pythonX-config
+	ln -s "../../../bin/${abiver}-config" \
+		"${D}${PYTHON_SCRIPTDIR}/python${pymajor}-config" || die
+	ln -s "python${pymajor}-config" \
+		"${D}${PYTHON_SCRIPTDIR}/python-config" || die
+	# 2to3, pydoc, pyvenv
+	ln -s "../../../bin/2to3-${PYVER}" \
+		"${D}${PYTHON_SCRIPTDIR}/2to3" || die
+	ln -s "../../../bin/pydoc${PYVER}" \
+		"${D}${PYTHON_SCRIPTDIR}/pydoc" || die
+	ln -s "../../../bin/pyvenv-${PYVER}" \
+		"${D}${PYTHON_SCRIPTDIR}/pyvenv" || die
 }
 
 pkg_preinst() {
@@ -312,6 +350,8 @@ pkg_postinst() {
 		ewarn "You have just upgraded from an older version of Python."
 		ewarn
 		ewarn "Please adjust PYTHON_TARGETS (if so desired), and run emerge with the --newuse or --changed-use option to rebuild packages installing python modules."
+		ewarn
+		ewarn "For legacy packages, you should switch active version of Python and run 'python-updater [options]' to rebuild Python modules."
 	fi
 }
 
