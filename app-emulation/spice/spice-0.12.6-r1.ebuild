@@ -43,13 +43,16 @@ RDEPEND="
 DEPEND="
 	>=app-emulation/spice-protocol-0.12.10
 	virtual/pkgconfig
-	$(python_gen_any_dep \
-		'>=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]')
+	$(python_gen_any_dep '
+		>=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]
+		dev-python/six[${PYTHON_USEDEP}]
+	')
 	smartcard? ( app-emulation/qemu[smartcard] )
 	${RDEPEND}"
 
 python_check_deps() {
 	has_version ">=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]"
+	has_version "dev-python/six[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
