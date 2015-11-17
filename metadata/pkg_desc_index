@@ -8760,7 +8760,7 @@ dev-ruby/rails_autolink 1.1.6: This is an extraction of the auto_link method fro
 dev-ruby/railties 3.2.22 4.0.13 4.1.13 4.1.14 4.2.4 4.2.5: Tools for creating, working with, and running Rails applications
 dev-ruby/rainbow 1.1.4 1.1.4-r1 2.0.0 2.0.0-r1: Colorize printed text on ANSI terminals
 dev-ruby/rake 0.9.6-r1 10.3.2 10.4.0 10.4.2: Make-like scripting in Ruby
-dev-ruby/rake-compiler 0.9.2 0.9.5: Provide a standard and simplified way to build and package Ruby extensions
+dev-ruby/rake-compiler 0.9.2 0.9.2-r1 0.9.5: Provide a standard and simplified way to build and package Ruby extensions
 dev-ruby/rake-remote_task 2.2.1-r1 2.2.2 2.3.0: Vlad the Deployer's sexy brainchild is rake-remote_task, extending Rake with remote task goodness
 dev-ruby/rash 0.4.0-r2: Rash is an extension to Hashie
 dev-ruby/rb-gsl 1.16.0.3 1.16.0.4 1.16.0.5 1.16.0.6: Ruby interface to GNU Scientific Library
