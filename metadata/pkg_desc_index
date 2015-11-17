@@ -7238,6 +7238,7 @@ dev-python/mecab-python 0.996: Python binding for MeCab
 dev-python/mechanize 0.2.5-r1: Stateful programmatic web browsing in Python
 dev-python/medusa 0.5.4-r1: A framework for writing asynchronous long-running, high-performance network servers in Python
 dev-python/meld3 1.0.0 1.0.2: meld3 is an HTML/XML templating engine
+dev-python/memory_profiler 0.39: A module for monitoring memory usage of a python program
 dev-python/mergedict 0.2.0: A Python 'dict' with a merge() method
 dev-python/micawber 0.3.2 0.3.3: A small library for extracting rich content from urls
 dev-python/milk 0.5.1 0.5.3 0.6.1: Machine learning toolkit in Python
