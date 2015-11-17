@@ -1,0 +1,14 @@
+--- meshlab/src/common/pluginmanager.cpp~	2014-04-01 17:07:40.000000000 +0200
++++ meshlab/src/common/pluginmanager.cpp	2015-11-15 20:58:53.708227793 +0100
+@@ -178,7 +178,11 @@
+ 
+ QString PluginManager::getBaseDirPath()
+ {
++#if defined(Q_OS_LINUX)
++  QDir baseDir("/usr/lib/meshlab");
++#else
+   QDir baseDir(qApp->applicationDirPath());
++#endif
+ 
+ #if defined(Q_OS_WIN)
+   // Windows:

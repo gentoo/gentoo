@@ -210,7 +210,7 @@ src_unpack() {
 		fi
 	else
 		unpack ${P}.tar.bz2
-		use staging || use pulseaudio && unpack "${STAGING_P}.tar.gz"
+		use staging && unpack "${STAGING_P}.tar.gz"
 	fi
 
 	unpack "${WINE_GENTOO}.tar.bz2"
