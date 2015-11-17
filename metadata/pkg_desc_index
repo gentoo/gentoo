@@ -9328,7 +9328,7 @@ dev-util/cyclo 2.1_pre1: Computes cyclomatic complexity metrics on C source code
 dev-util/d-feet 0.3.9 0.3.10: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20150101 9.20150502 9.20150507 9.20150628 9.20150811 9.20151004 9.20151005: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debhelper 9.20150101 9.20151005 9.20151116: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.67 1.0.74 1.0.75: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 4.4.6-r1 4.4.6-r2 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
