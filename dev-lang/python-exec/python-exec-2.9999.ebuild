@@ -5,18 +5,19 @@
 EAPI=5
 
 #if LIVE
-AUTOTOOLS_AUTORECONF=yes
 EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
 EGIT_BRANCH="python-exec2"
 
-inherit git-r3
+inherit autotools git-r3
 #endif
 
 # Kids, don't do this at home!
 inherit python-utils-r1
 PYTHON_COMPAT=( "${_PYTHON_ALL_IMPLS[@]}" )
 
-inherit autotools-utils python-r1
+# Inherited purely to have PYTHON_TARGET flags which will satisfy USE
+# dependencies and trigger necessary rebuilds.
+inherit python-r1
 
 DESCRIPTION="Python script wrapper"
 HOMEPAGE="https://bitbucket.org/mgorny/python-exec/"
@@ -32,19 +33,23 @@ RDEPEND="!<dev-python/python-exec-10000"
 #if LIVE
 KEYWORDS=
 SRC_URI=
+
+src_prepare() {
+	eautoreconf
+}
 #endif
 
 src_configure() {
-	local pyimpls i EPYTHON
+	local pyimpls=() i EPYTHON
 	for i in "${PYTHON_COMPAT[@]}"; do
 		python_export "${i}" EPYTHON
-		pyimpls+=" ${EPYTHON}"
+		pyimpls+=( "${EPYTHON}" )
 	done
 
-	local myeconfargs=(
+	local myconf=(
 		--with-eprefix="${EPREFIX}"
-		--with-python-impls="${pyimpls}"
+		--with-python-impls="${pyimpls[*]}"
 	)
 
-	autotools-utils_src_configure
+	econf "${myconf[@]}"
 }
