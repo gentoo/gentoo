@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
 
 CDEPEND="
 	>=sys-devel/gcc-4.8:*
-	>=dev-libs/boost-1.54
+	>=dev-libs/boost-1.54[nls]
 	>=dev-cpp/yaml-cpp-0.5.1
 	dev-libs/openssl:*
 	sys-apps/util-linux
