@@ -2,7 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
+
+AUTOTOOLS_AUTORECONF=1
+AUTOTOOLS_IN_SOURCE_BUILD=1
+
+inherit autotools-utils
 
 DESCRIPTION="Collection of simple GTK+ widgets on top of GUPnP"
 HOMEPAGE="http://gupnp.org"
@@ -18,6 +23,10 @@ RDEPEND="x11-libs/gtk+:2
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/gettext"
+
+PATCHES=(
+       "${FILESDIR}"/${P}-underlinking.patch
+)
 
 src_configure() {
 	econf \

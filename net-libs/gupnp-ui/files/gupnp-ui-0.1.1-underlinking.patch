@@ -1,0 +1,25 @@
+--- configure.ac
++++ configure.ac
+@@ -11,7 +11,7 @@
+ AC_PROG_LIBTOOL
+ 
+ PKG_CHECK_MODULES(LIBGUPNP_UI, gupnp-1.0 >= 0.3 gtk+-2.0)
+-
++PKG_CHECK_MODULES(GSSDP, gssdp-1.0)
+ PKG_CHECK_MODULES(GTHREAD, gthread-2.0)
+ 
+ # Debugging
+--- tests/Makefile.am
++++ tests/Makefile.am
+@@ -1,9 +1,9 @@
+-AM_CFLAGS = $(LIBGUPNP_UI_CFLAGS) $(GTHREAD_CFLAGS) -I$(top_srcdir)
++AM_CFLAGS = $(LIBGUPNP_UI_CFLAGS) $(GTHREAD_CFLAGS) $(GSSDP_CFLAGS) -I$(top_srcdir)
+ 
+ noinst_PROGRAMS = test-view
+ 
+ test_view_SOURCES = test-view.c
+-test_view_LDADD   = $(top_builddir)/libgupnp-ui/libgupnp-ui-1.0.la $(GTHREAD_LIBS)
++test_view_LDADD   = $(top_builddir)/libgupnp-ui/libgupnp-ui-1.0.la $(GTHREAD_LIBS) $(GSSDP_LIBS)
+ 
+ CLEANFILES = $(BUILT_SOURCES)
+ DISTCLEANFILES = $(BUILT_SOURCES)
