@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 inherit multilib eutils
 
@@ -38,7 +38,7 @@ src_configure() {
 	export DEBUG=-DNDEBUG
 
 	econf \
-		--libdir=/$(get_libdir) \
-		--libexecdir=/usr/$(get_libdir) \
-		--sbindir=/sbin
+		--libdir="${EPREFIX}/$(get_libdir)" \
+		--libexecdir="${EPREFIX}/usr/$(get_libdir)" \
+		--sbindir="${EPREFIX}/sbin"
 }
