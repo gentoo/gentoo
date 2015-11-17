@@ -6851,7 +6851,7 @@ dev-python/cmd2 0.6.7 0.6.8: Extra features for standard library's cmd module
 dev-python/codetools 4.2.0: Enthought Tool Suite: Code analysis and execution tools
 dev-python/colander 1.0: A simple schema-based serialization and deserialization library
 dev-python/colorama 0.3.2 0.3.3: Makes ANSI escape character sequences for producing colored terminal text & cursor positioning
-dev-python/coloredlogs 1.0.1-r1 2.0 3.1 3.1.2 3.1.3 3.1.4: Colored stream handler for the logging module
+dev-python/coloredlogs 3.1.4 5.0: Colored stream handler for the logging module
 dev-python/colorlog 2.6.0: Log formatting with colors
 dev-python/colout 0.1: Adds color to arbitrary command output
 dev-python/columnize 0.3.5-r1 0.3.8: Format a simple (i.e. not nested) list into aligned columns
