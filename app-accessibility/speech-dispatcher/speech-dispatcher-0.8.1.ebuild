@@ -5,6 +5,7 @@
 EAPI=5
 
 PYTHON_COMPAT=( python3_3 python3_4 python3_5 )
+PYTHON_REQ_USE="threads(+)"
 
 inherit eutils python-r1
 

@@ -4,6 +4,7 @@
 
 EAPI=5
 
+# pypy doesn't get started in test run. Still required by www-servers/gunicorn
 PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} pypy )
 
 inherit distutils-r1 toolchain-funcs
@@ -18,8 +19,6 @@ KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-
 IUSE="test"
 
 RDEPEND=""
-# on <py2.7 the test suite uses SkipTest from nose,
-# so we need to run it using nose.
 DEPEND="test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
 DOCS=( HISTORY.rst README.rst )
@@ -42,10 +41,18 @@ python_test() {
 
 	cd "${BUILD_DIR}" || die
 
+	if [[ ${EPYTHON} =~ pypy ]]; then
+		# The suite via the Makefile appears to not cater to pypy
+		return
+	else
+		CPPFLAGS="${CPPFLAGS} $(python_get_CFLAGS)"
+		LDLIBS="$(python_get_LIBS)"
+	fi
+
 	# prepare embedded executable
 	emake tests/pyrun CC="$(tc-getCC)" \
-		CPPFLAGS="${CPPFLAGS} $(python-config --cflags)" \
-		LDLIBS="${LDLIBS} $(python-config --libs)"
+		CPPFLAGS="${CPPFLAGS}" \
+		LDLIBS="${LDLIBS}"
 
-	nosetests || die "Tests fail with ${EPYTHON}"
+	nosetests --verbose || die "Tests fail with ${EPYTHON}"
 }

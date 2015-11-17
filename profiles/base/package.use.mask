@@ -5,9 +5,19 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Alexis Ballier <aballier@gentoo.org> (14 Nov 2015)
+# MMAL is only available on the Raspberry Pi:
+# Mask it globally, unmask it on arm.
+media-video/ffmpeg mmal
+
+# Michael Palimaka <kensington@gentoo.org> (13 Nov 2015)
+# Requires unreleased dependencies
+kde-frameworks/knotifications speech
+kde-frameworks/ktextwidgets speech
+
 # Rick Farina <zerochaos@gentoo.org> (06 Oct 2015)
 # forward porting this patch is non-trivial, mask for now
-=net-wireless/wpa_supplicant-2.5 wimax
+>=net-wireless/wpa_supplicant-2.5 wimax
 
 # Nathan Phillip Brink <binki@gentoo.org> (26 Sep 2015)
 # git useflag requires dev-libs/libgit2 which few arches support
@@ -100,10 +110,6 @@ kde-frameworks/kwallet gpg
 # Ben de Groot <yngwin@gentoo.org> (12 Aug 2015)
 # Seems to link correctly, but fails to run. Bug #557354.
 =media-sound/qsampler-0.3.1 libgig
-
-# Justin Lecher <jlec@gentoo.org> (04 Aug 2015)
-# USE mask unsupported python implementations in django
-dev-python/south python_targets_python3_3 python_targets_python3_4 python_targets_pypy
 
 # James Le Cuirot <chewi@gentoo.org> (29 Jul 2015)
 # JavaFX and the browser plugin are not included on some platforms.
@@ -846,7 +852,3 @@ media-video/vlc direct2d directx dshow dxva2 waveout wingdi
 media-video/vlc audioqueue ios-vout macosx macosx-audio macosx-dialog-provider macosx-eyetv macosx-quartztext macosx-qtkit macosx-vout
 # media-library does not build
 media-video/vlc media-library
-
-# Alexis Ballier <aballier@gentoo.org> <28 Apr 2011>
-# Requires ~arch libcelt and keywording
-<media-video/ffmpeg-2.0 celt

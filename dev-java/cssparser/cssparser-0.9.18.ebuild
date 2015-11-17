@@ -10,12 +10,16 @@ HOMEPAGE="http://cssparser.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-sources.jar"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CDEPEND="dev-java/sac:0"
-DEPEND=">=virtual/jdk-1.6
-	${CDEPEND}"
-RDEPEND=">=virtual/jre-1.6
-	${CDEPEND}"
+
+DEPEND="
+	${CDEPEND}
+	>=virtual/jdk-1.6"
+
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
 
 JAVA_GENTOO_CLASSPATH="sac"

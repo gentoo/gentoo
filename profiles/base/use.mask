@@ -2,6 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Daniel Kuehn <lejonet@gentoo.org> (13 Nov 2015)
+# Masking sssd USE-flag globally and unmasking it on the tested arches
+# to stop minor arches from blocking major arches AND prevent the dropping
+# of keywords on sudo for said minor arches, in regards to ssd and sudo bugs
+# 540540 and 525674
+sssd
+
 # php 7 is still masked for testing
 php_targets_php7-0
 
@@ -264,25 +271,11 @@ coreaudio
 
 # Diego Pettenò <flameeyes@gentoo.org> (4 Jan 2007)
 # Mask the flags for PHP that are available only on x86
-sybase-ct
-ingres
-birdstep
-adabas
-filepro
-pfpro
-informix
-empress
-empress-bcs
 sybase
 frontbase
-dbmaker
-esoob
-solid
 # Shared with amd64
 oci8
-oracle7
 firebird
-db2
 
 # Robert Buchholz <rbu@gentoo.org> (03 Jun 2007)
 # Only works on x86 or amd64
@@ -404,3 +397,4 @@ openrc-force
 # Mike Gilbert <floppym@gentoo.org> (19 Oct 2014)
 # sys-libs/libapparmor
 apparmor
+

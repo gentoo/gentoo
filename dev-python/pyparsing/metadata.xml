@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>python</herd>
@@ -8,8 +8,9 @@
     use of regular expressions. The pyparsing module provides a library of
     classes that client code uses to construct the grammar directly in
     Python code.
-  </longdescription>
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">pyparsing</remote-id>
+		<remote-id type="pypi">pyparsing</remote-id>
 	</upstream>
 </pkgmetadata>

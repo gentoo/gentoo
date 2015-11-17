@@ -38,6 +38,7 @@ src_prepare() {
 		-e "/^BINDIR / s:=.*:=${GAMES_BINDIR}:" \
 		-e "/^DATADIR / s:=.*:=${GAMES_DATADIR}/${PN}:" \
 		Makefile || die
+	epatch "${FILESDIR}"/${P}-format.patch
 }
 
 src_install() {

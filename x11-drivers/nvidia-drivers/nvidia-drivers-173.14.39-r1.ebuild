@@ -214,7 +214,7 @@ pkg_setup() {
 		ewarn "Do not file a bug report about this."
 	fi
 
-	# Since Nvidia ships 3 different series of drivers, we need to give the user
+	# Since Nvidia ships many different series of drivers, we need to give the user
 	# some kind of guidance as to what version they should install. This tries
 	# to point the user in the right direction but can't be perfect. check
 	# nvidia-driver.eclass

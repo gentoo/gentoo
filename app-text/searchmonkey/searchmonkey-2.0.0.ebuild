@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,8 @@ MY_P=${PN}_v${PV}
 
 DESCRIPTION="Powerful text searches using regular expressions"
 HOMEPAGE="http://searchmonkey.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/${PN}/${MY_PN^}/${PV}%20%5Bstable%5D/${MY_P}.zip"
+# Switch to ^s when we switch to EAPI=6.
+SRC_URI="mirror://sourceforge/project/${PN}/S${MY_PN:1}/${PV}%20%5Bstable%5D/${MY_P}.zip"
 
 LICENSE="GPL-3"
 SLOT="2"

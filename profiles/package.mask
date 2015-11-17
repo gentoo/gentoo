@@ -30,6 +30,57 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (13 Nov 2015)
+# dev-perl/Coro is incompatible with Perl 5.22 and there is no fix
+# in sight. Masking it and its reverse dependencies for removal in
+# 30 days.
+dev-perl/Coro
+dev-perl/Net-Server-Coro
+dev-perl/Net-IMAP-Simple
+dev-perl/Net-IMAP-Simple-SSL
+
+# Patrice Clement <monsieurp@gentoo.org> (12 Nov 2015)
+# Upstream dead + ebuild was never stabilised.
+# Masked for removal in 30 days. See bug #276095.
+net-p2p/phex
+
+# Patrice Clement <monsieurp@gentoo.org> (12 Nov 2015)
+# Upstream is somewhat alive but has made compiling POI difficult to compile
+# and package. Further, POI is affected by a bunch of CVEs. It has solely two
+# deps that we are masking as well since both projects are not very trendy
+# and/or alive. Masked for removal in 30 days. See bug #402757.
+dev-java/poi
+dev-java/dbunit
+dev-db/jxtray
+
+# Justin Lecher <jlec@gentoo.org> (12 Nov 2015)
+# deprecated version of the plugin. 
+# sci-chemistry/pymol includes the newer version
+sci-chemistry/pymol-apbs-plugin
+
+# Brian Evans <grknight@gentoo.org> (11 Nov 2015)
+# Mask latest xdebug{,-client} beta versions
+# Upstream keeps changing the tarballs causing Manifest errors.
+# wrt bug 565234
+>=dev-php/xdebug-2.4.0_beta1
+>=dev-php/xdebug-client-2.4.0_beta1
+
+# Michał Górny <mgorny@gentoo.org> (11 Nov 2015)
+# Cleaned up Python versions masked for testing:
+# - python-config-X.Y compatibility removed,
+# - ABIFLAGS reintroduced for 3.3+.
+# Resulting API/ABI change can break reverse dependencies, especially
+# if upstream hardcodes paths or library names.
+=dev-lang/python-2.7.10-r3
+=dev-lang/python-3.3.5-r3
+=dev-lang/python-3.4.3-r3
+=dev-lang/python-3.5.0-r2
+
+# Justin Lecher <jlec@gentoo.org> (10 Nov 2015)
+# Vulnerable package CVE-2014-{1932,1933}
+# Bug: 507982
+dev-python/imaging
+
 # Justin Lecher <jlec@gentoo.org> (10 Nov 2015)
 # Compatibility virtual for transition from
 # dev-python/imaging to dev-python/pillow
@@ -63,6 +114,132 @@ virtual/python-imaging
 >=gnome-extra/gucharmap-3.18.2
 >=app-accessibility/orca-3.18.2
 >=gnome-extra/gnome-calculator-3.18.2
+>=gnome-base/dconf-editor-3.18.2
+>=media-gfx/eog-3.18.1
+>=app-text/evince-3.18.2
+>=dev-libs/libpeas-1.16
+>=x11-libs/gtksourceview-3.18
+>=app-editors/gedit-3.18.2
+>=gnome-base/gnome-keyring-3.18.3
+>=games-puzzle/gnome-taquin-3.18.2
+>=games-board/iagno-3.18.2
+>=net-misc/vinagre-3.18.2
+>=app-editors/latexila-3.18.1
+>=net-misc/vino-3.18.1
+>=gnome-extra/gnome-tweak-tool-3.18.1
+>=net-wireless/gnome-bluetooth-3.18.1
+>=gnome-extra/gnome-documents-3.18.2
+>=gnome-extra/gnome-getting-started-docs-3.18.2
+>=x11-libs/vte-0.42.1
+>=x11-terms/gnome-terminal-3.18.2
+>=app-accessibility/at-spi2-core-2.18.2
+>=dev-util/gdbus-codegen-2.46
+>=dev-libs/glib-2.46.2
+>=gnome-extra/gnome-contacts-3.18.1
+>=gnome-base/gnome-desktop-3.18
+>=net-libs/gnome-online-accounts-3.18.2.1
+>=gnome-base/gnome-settings-daemon-3.18.2
+>=gnome-base/gnome-control-center-3.18.2
+>=gnome-base/gvfs-1.26.2
+>=x11-libs/pango-1.38.1
+>=x11-libs/gtk+-3.18.4
+>=gnome-base/nautilus-3.18.2
+>=dev-cpp/libxmlpp-2.40.1
+>=dev-libs/libsigc++-2.6.2
+>=net-libs/libsoup-2.52.2
+>=media-video/totem-3.18.1
+>=app-crypt/gcr-3.18.0
+>=app-crypt/seahorse-3.18.0
+>=app-dicts/gnome-dictionary-3.18.0
+>=app-editors/gedit-plugins-3.18.0
+>=app-editors/gedit-3.18
+>=app-editors/ghex-3.18.0
+>=app-misc/geoclue-2.4.0
+>=app-misc/gnote-3.18.0
+>=app-misc/tracker-1.6.0
+>=gnome-extra/nautilus-tracker-tags-1.6.0
+>=gnome-extra/yelp-xsl-3.18.1
+>=app-text/yelp-tools-3.18.0
+>=dev-libs/vala-common-0.30.0
+>=dev-lang/vala-0.30.0
+>=dev-libs/appstream-glib-0.5.3
+>=dev-libs/gdl-3.18.0
+>=dev-libs/gobject-introspection-common-1.46.0
+>=dev-libs/gobject-introspection-1.46.0
+>=dev-libs/libgweather-3.18.1
+>=dev-python/pygobject-3.18.2
+>=dev-util/anjuta-3.18.2
+>=dev-util/devhelp-3.18.1
+>=dev-util/gnome-devel-docs-3.18.1
+>=games-board/gnome-chess-3.18.0
+>=games-board/gnome-mahjongg-3.18.0
+>=games-board/tali-3.18.0
+>=games-puzzle/five-or-more-3.18.0
+>=games-puzzle/gnome-tetravex-3.18.0
+>=games-puzzle/lightsoff-3.18.0
+>=games-puzzle/quadrapassel-3.18.0
+>=gnome-base/gnome-common-3.18.0
+>=gnome-base/gnome-session-3.18.1.2
+>=gnome-base/gsettings-desktop-schemas-3.18.1
+>=gnome-base/libgtop-2.32.0
+>=gnome-extra/gnome-boxes-3.18.1
+>=dev-libs/libgit2-glib-0.23.6
+>=gnome-extra/gnome-builder-3.18.1
+>=gnome-extra/gnome-calendar-3.18.1
+>=gnome-extra/gnome-characters-3.18.1
+>=gnome-extra/gnome-clocks-3.18.0
+>=gnome-extra/gnome-color-manager-3.18.0
+>=gnome-extra/gnome-logs-3.18.1
+>=gnome-extra/gnome-power-manager-3.18.0
+>=gnome-extra/gnome-user-docs-3.18.1
+>=gnome-extra/gnome-user-share-3.18.0
+>=gnome-extra/gnome-weather-3.18.1
+>=gnome-extra/gtkhtml-4.10.0
+>=gnome-extra/sushi-3.18.0
+>=gnome-extra/yelp-3.18.1
+>=gnome-extra/zenity-3.18.1.1
+>=media-gfx/gnome-screenshot-3.18.0
+>=media-libs/cogl-1.22.0
+>=media-libs/clutter-1.24.2
+>=media-libs/clutter-gtk-1.6.6
+>=media-libs/grilo-0.2.14
+>=media-plugins/grilo-plugins-0.2.16
+>=media-sound/gnome-music-3.18.0
+>=media-sound/sound-juicer-3.18.0
+>=net-irc/polari-3.18.1
+>=net-libs/glib-networking-2.46.1
+>=net-misc/rygel-0.28.1
+>=sci-geosciences/geocode-glib-3.18.0
+>=sys-apps/baobab-3.18.1
+>=x11-themes/adwaita-icon-theme-3.18.0
+>=x11-themes/gnome-backgrounds-3.18.0
+>=x11-themes/gnome-themes-standard-3.18.0
+>=net-libs/webkit-gtk-2.10.4
+>=www-client/epiphany-3.18.0
+>=x11-wm/muffin-2.8.0
+>=gnome-extra/cinnamon-2.8.3
+>=gnome-extra/cinnamon-control-center-2.8.0
+>=gnome-extra/cinnamon-desktop-2.8.0
+>=gnome-extra/cinnamon-menus-2.8.0
+>=gnome-extra/cinnamon-screensaver-2.8.0
+>=gnome-extra/cinnamon-session-2.8.2
+>=gnome-extra/cinnamon-settings-daemon-2.8.1
+>=gnome-extra/cinnamon-translations-2.8.1
+>=gnome-extra/cjs-2.8.0
+>=x11-wm/mutter-3.18.2
+>=gnome-base/gnome-shell-3.18
+>=gnome-extra/gnome-shell-extensions-3.18.2
+>=gnome-extra/gnome-shell-frippery-3.18.1
+>=gnome-base/gdm-3.18.0
+>=dev-cpp/glibmm-2.46.1
+>=dev-libs/atk-2.18.0
+>=dev-cpp/atkmm-2.24.1
+>=app-accessibility/at-spi2-atk-2.18.1
+>=dev-python/pyatspi-2.18.0
+>=dev-cpp/cairomm-1.12.0
+>=dev-cpp/pangomm-2.38.1
+>=dev-cpp/gtkmm-3.18.0
+>=dev-cpp/gtksourceviewmm-3.18.0
 
 # Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
 # Not properly installed, dead for ages, upstream
@@ -103,10 +280,6 @@ dev-perl/Parse-CPAN-Meta
 # Brian Evans <grknight@gentoo.org> (06 Nov 2015)
 # Mask new versions of dev-php/pecl-yaml that only work with PHP-7+
 >=dev-php/pecl-yaml-2.0
-
-# Michael Orlitzky <mjo@gentoo.org> (05 Nov 2015)
-# Masked for testing: the ./configure handling was largely rewritten.
-=dev-lang/php-5.6.15-r3
 
 # Michał Górny <mgorny@gentoo.org> (30 Oct 2015)
 # Uses unsafe ioctls that could result in data corruption. Upstream
@@ -177,36 +350,6 @@ dev-java/jakarta-jstl
 # 2015, bug 536852.
 # Masked for removal in 30 days.
 =dev-lang/ruby-1.9*
-
-# Michael Palimaka <kensington@gentoo.org (9 Oct 2015)
-# Dead upstream. No consumers. Collides with other packages.
-# Bug #560932 and bug #557006. Masked for removal in 30 days.
-dev-libs/libhash
-
-# Michael Palimaka <kensington@gentoo.org (9 Oct 2015)
-# Superceded by >=app-crypt/qca-2.1
-# Masked for removal in 30 days
-<app-crypt/qca-2.1
-app-crypt/qca-cyrus-sasl
-app-crypt/qca-gnupg
-app-crypt/qca-logger
-app-crypt/qca-ossl
-app-crypt/qca-pkcs11
-
-# Anthony G. Basile <blueness@gentoo.org> (6 Oct 2015)
-# Dead upstream for a long time.  Masked for removal
-# in 30 days.
-dev-util/elfsh
-
-# Patrice Clement <monsieurp@gentoo.org> (6 Oct 2015)
-# No update since 2008. Masked for removal in 30 days.
-# See bug #562370.
-dev-java/cos
-
-# Patrice Clement <monsieurp@gentoo.org> (6 Oct 2015)
-# Dead upstream. Masked for removal in 30 days.
-# See bug #562370.
-dev-java/commons-grant
 
 # Mike Pagano <mpagano@gentoo.org> (2 Oct 2015)
 # A regression in kernel 4.1.9 could lead to a system
@@ -370,11 +513,6 @@ dev-db/postgresql-server
 # Security mask, wrt bug #529728
 <app-antivirus/clamav-0.98.5
 
-# Justin Lecher <jlec@gentoo.org> (02 Dec 2014)
-# Not supported by upstream anymore
-# Revdeps broken, #531392
-net-analyzer/openvas-administrator
-
 # Richard Yao <ryao@gentoo.org> (29 Nov 2014)
 # Depends on media-libs/lcms:0, which has unspecified security vulnerabilities.
 # Masked until mscms.dll.so that links to media-libs/lcms:2 is backported from
@@ -387,7 +525,7 @@ www-apps/trac-downloads
 
 # Markos Chandras <hwoarang@gentoo.org> (18 Nov 2014)
 # Mask latest development version for testing
-=x11-misc/lightdm-1.16*
+=x11-misc/lightdm-1.17*
 
 # Mike Pagano <mpagano@gentoo.org> (16 Oct 2014)
 # A regression in kernels 3.17.0 lead to file system corruption

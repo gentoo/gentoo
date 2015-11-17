@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="pypi">rope</remote-id>
     <remote-id type="sourceforge">rope</remote-id>
+    <remote-id type="github">python-rope/rope</remote-id>
   </upstream>
 </pkgmetadata>

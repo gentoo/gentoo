@@ -18,7 +18,7 @@ DEPEND="dev-libs/glib:2
 	dev-libs/libxml2
 	dev-games/libmaitretarot
 	dev-games/libmt_client
-	sys-libs/ncurses"
+	sys-libs/ncurses:0"
 RDEPEND=${DEPEND}
 
 src_prepare() {

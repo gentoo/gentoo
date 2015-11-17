@@ -19,9 +19,10 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
 fi
 
-LICENSE="GPL-2"
+LICENSE="GPL-2" # GPL-2 only
 SLOT="0"
-IUSE="debug ipv6 livecd make-symlinks math mdev -pam selinux sep-usr +static syslog systemd"
+IUSE="debug ipv6 livecd make-symlinks math mdev pam selinux sep-usr static syslog systemd"
+REQUIRED_USE="pam? ( !static )"
 RESTRICT="test"
 
 COMMON_DEPEND="!static? ( selinux? ( sys-libs/libselinux ) )
@@ -30,7 +31,7 @@ DEPEND="${COMMON_DEPEND}
 	static? ( selinux? ( sys-libs/libselinux[static-libs(+)] ) )
 	>=sys-kernel/linux-headers-2.6.39"
 RDEPEND="${COMMON_DEPEND}
-mdev? ( !<sys-apps/openrc-0.13 )"
+	mdev? ( !<sys-apps/openrc-0.13 )"
 
 S=${WORKDIR}/${MY_P}
 
@@ -115,7 +116,6 @@ src_configure() {
 	busybox_config_option n BUILD_LIBBUSYBOX
 	busybox_config_option n FEATURE_CLEAN_UP
 	busybox_config_option n MONOTONIC_SYSCALL
-	busybox_config_option n START_STOP_DAEMON
 	busybox_config_option n USE_PORTABLE_CODE
 	busybox_config_option n WERROR
 
@@ -132,9 +132,6 @@ src_configure() {
 		busybox_config_option n UDHCPC6
 	fi
 
-	if use static && use pam ; then
-		ewarn "You cannot have USE='static pam'.  Assuming static is more important."
-	fi
 	busybox_config_option $(usex static n pam) PAM
 	busybox_config_option static STATIC
 	busybox_config_option syslog {K,SYS}LOGD LOGGER

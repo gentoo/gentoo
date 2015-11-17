@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="X"
 
-RDEPEND="sys-libs/ncurses
+RDEPEND="sys-libs/ncurses:0
 	X? ( x11-libs/libXaw )"
 DEPEND="${RDEPEND}
 	>=sys-devel/bison-1.34

@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
+# Missing keywords
+media-sound/rhythmbox upnp-av
+
 # Pacho Ramos <pacho@gentoo.org> (27 Oct 2015)
 # Missing keywords
 net-wireless/blueman appindicator
@@ -75,6 +79,7 @@ sys-apps/systemd xkb
 # Needs libepoxy keywording, bug #510940
 x11-base/xorg-server glamor wayland
 x11-drivers/xf86-video-nouveau glamor
+x11-drivers/xf86-video-ati glamor
 
 # Anthony G. Basile <blueness@gentoo.org> (17 Aug 2014)
 # This pulls in qemu[smartcard] which is masked

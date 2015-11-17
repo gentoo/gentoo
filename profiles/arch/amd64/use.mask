@@ -10,6 +10,11 @@
 # cilk has been ported to this arch.
 -cilk
 
+# 2015/11/13 - Daniel Kuehn <lejonet@gentoo.org>
+# Unmask sssd USE-flag as it is tested on this arch in regards to bugs
+# 540540 and 525674
+-sssd
+
 # Mike Gilbert <floppym@gentoo.org> (19 Oct 2014)
 # sys-libs/libapparmor
 -apparmor

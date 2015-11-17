@@ -31,6 +31,10 @@ DEPEND="${RDEPEND}
 		)
 	mpi? ( dev-python/mpi4py[${PYTHON_USEDEP}] )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-mpi4py2.backport
+)
+
 pkg_setup() {
 	use mpi && export CC=mpicc
 }

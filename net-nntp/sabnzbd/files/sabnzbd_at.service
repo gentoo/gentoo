@@ -1,0 +1,10 @@
+[Unit]
+Description=SABnzbd binary newsreader
+
+[Service]
+ExecStart=/usr/bin/sabnzbd --logging 1 --browser 0
+User=%I
+Group=%I
+
+[Install]
+WantedBy=multi-user.target

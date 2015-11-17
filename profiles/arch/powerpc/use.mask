@@ -1,6 +1,11 @@
 # PPC Specific use flags
 #
 
+# 2015/11/13 - Daniel Kuehn <lejonet@gentoo.org>
+# Unmask sssd USE-flag as it is tested on this arch in regards to bugs
+# 540540 and 525674
+-sssd
+
 # Jeroen Roovers <jer@gentoo.org> (22 Sep 2015)
 # sci-libs/mkl is not supported on PPC
 mkl
@@ -175,6 +180,10 @@ video_cards_ilo
 # vmware wasn't added with mesa-8.0, but it should still be masked
 video_cards_vmware
 
+# Matt Turner <mattst88@gentoo.org> (13 Nov 2015)
+# radeonsi requires glamor support
+video_cards_radeonsi
+
 # Doug Goldstein <cardoe@gentoo.org> (3 Apr 2008)
 # nvidia-drivers specific feature which don't exist for ppc
 opengl-xvmc
@@ -229,3 +238,5 @@ clvm
 # Pacho Ramos <pacho@gentoo.org> (08 Jan 2014)
 # Unmask systemd since it is keyworded here.
 -systemd
+
+

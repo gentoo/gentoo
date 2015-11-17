@@ -5,6 +5,7 @@
 EAPI=5
 # py2.5 dropped; Test file reveals py2.5 can't support a core file
 PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
 

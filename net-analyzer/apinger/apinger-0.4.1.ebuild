@@ -5,9 +5,14 @@
 EAPI=5
 inherit autotools
 
+# Switch to ^^ when we switch to EAPI=6.
+#MY_PN="${PN^^}"
+MY_PN="APINGER"
+MY_P="${MY_PN}_${PV//./_}"
+
 DESCRIPTION="Alarm Pinger"
 HOMEPAGE="https://github.com/Jajcus/apinger/"
-SRC_URI="${HOMEPAGE}archive/${PN^^}_${PV//./_}.tar.gz -> ${P}.tar.gz"
+SRC_URI="${HOMEPAGE}archive/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,7 +23,7 @@ DEPEND="
 	virtual/yacc
 "
 
-S=${WORKDIR}/${PN}-${PN^^}_${PV//./_}
+S="${WORKDIR}/${PN}-${MY_P}"
 
 DOCS=( AUTHORS ChangeLog NEWS README TODO )
 

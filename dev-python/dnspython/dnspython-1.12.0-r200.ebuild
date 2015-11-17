@@ -14,7 +14,7 @@ SRC_URI="http://www.dnspython.org/kits/${PV}/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="py2"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
 IUSE="examples test"
 
 RDEPEND="dev-python/pycrypto[${PYTHON_USEDEP}]

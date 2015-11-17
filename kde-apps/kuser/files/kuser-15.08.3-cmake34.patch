@@ -1,0 +1,24 @@
+From 0bf52af6a61097f45f3f8a440e709376cc9d89b2 Mon Sep 17 00:00:00 2001
+From: Michael Palimaka <kensington@gentoo.org>
+Date: Sun, 15 Nov 2015 04:32:18 +1100
+Subject: [PATCH] Fix build with cmake-3.4
+
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 44540e9..9c436e6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -16,6 +16,7 @@ include_directories (${QDBUS_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DI
+ find_package(KdepimLibs REQUIRED)
+ 
+ include(CheckFunctionExists)
++include(CheckIncludeFiles)
+ include(CheckLibraryExists)
+ 
+ include(TestBigEndian)
+-- 
+2.4.10
+

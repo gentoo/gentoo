@@ -359,7 +359,7 @@ pkg_postinst() {
 	einfo "This release of portage removed the new squashfs sync module "
 	einfo "introduced in portage-2.2.19."
 	einfo "Look for it to be released as an installable portage module soon."
-	einfo "This will allow it to develop at it's own pace partially independant"
-	einfo "of portage"
+	einfo "This will allow it to develop at its own pace partially independent"
+	einfo "of portage."
 	einfo ""
 }

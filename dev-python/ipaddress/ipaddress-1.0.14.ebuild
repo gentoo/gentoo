@@ -4,11 +4,11 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 pypy pypy3 )
 
 inherit distutils-r1
 
-DESCRIPTION="IPv4/IPv6 manipulation library, a port of the ipaddress module"
+DESCRIPTION="IPv4/IPv6 manipulation library, backport of the ipaddress module"
 HOMEPAGE="https://github.com/phihag/ipaddress"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

@@ -18,12 +18,12 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="Mozart"
-KEYWORDS="-amd64 ppc -ppc64 ~x86"
+KEYWORDS="-amd64 ppc -ppc64 x86"
 IUSE="doc emacs examples gdbm static tcl threads tk"
 
 RDEPEND="
 	dev-lang/perl
-	dev-libs/gmp
+	dev-libs/gmp:0=
 	sys-libs/zlib
 	emacs? ( virtual/emacs )
 	gdbm? ( sys-libs/gdbm  )

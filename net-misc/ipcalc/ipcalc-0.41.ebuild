@@ -4,7 +4,7 @@
 
 EAPI=5
 
-DESCRIPTION="calculates broadcast/network/etc... from an IP address and netmask"
+DESCRIPTION="IP Calculator prints broadcast/network/etc for an IP address and netmask"
 LICENSE="GPL-2+"
 HOMEPAGE="http://jodies.de/ipcalc"
 SRC_URI="${HOMEPAGE}-archive/${P}.tar.gz"

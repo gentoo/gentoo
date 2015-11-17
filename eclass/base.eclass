@@ -34,6 +34,7 @@ inherit eutils
 
 BASE_EXPF="src_unpack src_compile src_install"
 case "${EAPI:-0}" in
+	6) die "${ECLASS}.eclass is banned in EAPI ${EAPI}";;
 	2|3|4|5) BASE_EXPF+=" src_prepare src_configure" ;;
 	*) ;;
 esac

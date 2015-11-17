@@ -14,7 +14,7 @@ SRC_URI="https://launchpad.net/${PN}/liberty/${PV}/+download/${P}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+api +scheduler +volume iscsi lvm mysql +memcached postgres sqlite test"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 

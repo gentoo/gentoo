@@ -27,6 +27,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MYP}
 
 src_prepare () {
+	epatch "${FILESDIR}/${P}-gmp61-compat.patch"
 	epatch "${FILESDIR}/${P}-respect-flags.patch"
 	epatch "${FILESDIR}/${PN}-2.12.2-gcc49.patch"
 

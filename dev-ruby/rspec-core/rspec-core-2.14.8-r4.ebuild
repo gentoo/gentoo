@@ -36,9 +36,8 @@ ruby_add_bdepend "test? (
 		>=dev-ruby/rspec-mocks-2.12.0:2
 	)"
 
-# Skip yard for ruby20 for now since we don't support ruby20 eselected
-# yet and we can't bootstrap otherwise.
-USE_RUBY=${USE_RUBY/ruby20/} ruby_add_bdepend "doc? ( dev-ruby/yard )"
+# Skip yard for ruby21 for now since we can't bootstrap otherwise.
+USE_RUBY=${USE_RUBY/ruby21/} ruby_add_bdepend "doc? ( dev-ruby/yard )"
 
 all_ruby_prepare() {
 	# Don't set up bundler: it doesn't understand our setup.

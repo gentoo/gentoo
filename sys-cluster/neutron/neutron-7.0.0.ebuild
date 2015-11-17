@@ -13,7 +13,7 @@ SRC_URI="https://launchpad.net/${PN}/liberty/${PV}/+download/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="compute-only dhcp doc ipv6 l3 metadata openvswitch linuxbridge server test sqlite mysql postgres"
 REQUIRED_USE="!compute-only? ( || ( mysql postgres sqlite ) )
 						compute-only? ( !mysql !postgres !sqlite !dhcp !l3 !metadata !server
@@ -191,7 +191,7 @@ src_prepare() {
 	sed -i '/^hacking/d' test-requirements.txt || die
 	# it's /bin/ip not /sbin/ip
 	sed -i 's/sbin\/ip\,/bin\/ip\,/g' etc/neutron/rootwrap.d/* || die
-	distutils-r1_src_prepare_all
+	distutils-r1_python_prepare_all
 }
 
 python_compile_all() {

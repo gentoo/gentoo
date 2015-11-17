@@ -43,6 +43,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.7.0-no-automagic.patch
 	# sage-on-gentoo trac 15654: PARI discriminant speed depends on stack size
 	epatch "${FILESDIR}"/${PN}-2.7.0-slow-discriminant.patch
+	# fix building docs with perl-5.22
+	epatch "${FILESDIR}"/${PN}-2.7.1-perl-5.22-doc.patch
 
 	# disable default building of docs during install
 	sed -i \

@@ -16,7 +16,7 @@ SRC_URI="https://download.jetbrains.com/idea/${MY_PN}IU-${MY_PV}.tar.gz -> ${P}.
 
 LICENSE="IDEA IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal"
 IUSE=""
-KEYWORDS="amd64 ~x86" # No keywords for EAP versions. Code quality sucks.
+KEYWORDS="amd64 x86" # No keywords for EAP versions. Code quality sucks.
 
 DEPEND="!dev-util/${PN}:14
 	!dev-util/${PN}:15"

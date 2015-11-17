@@ -11,7 +11,7 @@ SRC_URI="http://94.247.144.115/repo/topicons/snapshot/topicons-${PV}.tar.xz -> $
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="

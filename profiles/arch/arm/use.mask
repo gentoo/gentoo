@@ -1,6 +1,11 @@
 # Unmask the flag which corresponds to ARCH.
 -arm
 
+# 2015/11/13 - Daniel Kuehn <lejonet@gentoo.org>
+# Unmask sssd USE-flag as it is tested on this arch in regards to bugs
+# 540540 and 525674
+-sssd
+
 # Unmask arm arch specific flags
 -iwmmxt
 
@@ -258,3 +263,4 @@ numa
 
 # toolkit for nvidia binary drivers
 cg
+

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>proxy-maintainers</herd>
@@ -7,4 +7,7 @@
 		<name>Ioan-Adrian Ratiu</name>
 		<description>Proxied maintainer. Assign bugs to him.</description>
 	</maintainer>
+	<upstream>
+		<remote-id type="launchpad">i8kutils</remote-id>
+	</upstream>
 </pkgmetadata>

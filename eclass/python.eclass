@@ -12,6 +12,10 @@
 # This eclass is DEPRECATED. Please use python-r1, python-single-r1
 # or python-any-r1 instead.
 
+if [[ ${EAPI} == 6 ]]; then
+	die "${ECLASS}.eclass is banned in EAPI ${EAPI}"
+fi
+
 if [[ ${_PYTHON_UTILS_R1} ]]; then
 	die 'python.eclass can not be used with python-r1 suite eclasses.'
 fi

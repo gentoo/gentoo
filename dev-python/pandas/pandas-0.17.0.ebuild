@@ -5,6 +5,7 @@
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
+PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 eutils flag-o-matic virtualx
 
@@ -79,6 +80,10 @@ RDEPEND="${CDEPEND}
 			dev-python/html5lib[${PYTHON_USEDEP}] )
 	)
 	R? ( dev-python/rpy[${PYTHON_USEDEP}] )"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-testfix-backport.patch
+)
 
 python_prepare_all() {
 	# Prevent un-needed download during build

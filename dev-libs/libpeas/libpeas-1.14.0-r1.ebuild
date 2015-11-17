@@ -5,7 +5,7 @@
 EAPI="5"
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 
 inherit autotools eutils gnome2 multilib python-r1 virtualx
 
@@ -77,7 +77,7 @@ src_configure() {
 			"--enable-python${v}"
 			# it is just 'PYTHON' for py3 in the build system
 			"PYTHON${v#3}=${PYTHON}"
-			"PYTHON${v}_CONFIG=${PYTHON}-config"
+			"PYTHON${v}_CONFIG=$(python_get_PYTHON_CONFIG)"
 		)
 	}
 	use python && python_foreach_impl python_configure

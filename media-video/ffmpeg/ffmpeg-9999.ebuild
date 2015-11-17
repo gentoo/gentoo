@@ -65,7 +65,7 @@ fi
 FFMPEG_FLAG_MAP=(
 		+bzip2:bzlib cpudetection:runtime-cpudetect debug doc gnutls +gpl
 		+hardcoded-tables +iconv lzma +network openssl +postproc
-		samba:libsmbclient sdl:ffplay vaapi vdpau X:xlib xcb:libxcb
+		samba:libsmbclient sdl:ffplay sdl vaapi vdpau X:xlib xcb:libxcb
 		xcb:libxcb-shm xcb:libxcb-xfixes +zlib
 		# libavdevice options
 		cdio:libcdio iec61883:libiec61883 ieee1394:libdc1394 libcaca openal
@@ -75,7 +75,7 @@ FFMPEG_FLAG_MAP=(
 		# decoders
 		amr:libopencore-amrwb amr:libopencore-amrnb fdk:libfdk-aac
 		jpeg2k:libopenjpeg bluray:libbluray celt:libcelt gme:libgme gsm:libgsm
-		modplug:libmodplug opus:libopus quvi:libquvi librtmp ssh:libssh
+		mmal modplug:libmodplug opus:libopus quvi:libquvi librtmp ssh:libssh
 		schroedinger:libschroedinger speex:libspeex vorbis:libvorbis vpx:libvpx
 		zvbi:libzvbi
 		# libavfilter options
@@ -208,6 +208,7 @@ RDEPEND="
 	libsoxr? ( >=media-libs/soxr-0.1.0[${MULTILIB_USEDEP}] )
 	libv4l? ( >=media-libs/libv4l-0.9.5[${MULTILIB_USEDEP}] )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1[${MULTILIB_USEDEP}] )
+	mmal? ( media-libs/raspberrypi-userland )
 	modplug? ( >=media-libs/libmodplug-0.8.8.4-r1[${MULTILIB_USEDEP}] )
 	openal? ( >=media-libs/openal-1.15.1[${MULTILIB_USEDEP}] )
 	opengl? ( >=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}] )
@@ -232,7 +233,7 @@ RDEPEND="
 		>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]
 		>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
 	)
-	vpx? ( >=media-libs/libvpx-1.2.0_pre20130625[${MULTILIB_USEDEP}] )
+	vpx? ( >=media-libs/libvpx-1.4.0:=[${MULTILIB_USEDEP}] )
 	X? (
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]

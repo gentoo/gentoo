@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -566,7 +566,7 @@ cvs_src_unpack() {
 	# Implement some of base_src_unpack's functionality; note however
 	# that base.eclass may not have been inherited!
 	if [[ -n ${PATCHES} ]] ; then
-		debug-print "${FUNCNAME}: PATCHES=${PATCHES,} S=${S}, autopatching"
+		debug-print "${FUNCNAME}: PATCHES=${PATCHES}, S=${S}, autopatching"
 		cd "${S}"
 		epatch ${PATCHES}
 		# Make sure we don't try to apply patches more than once,

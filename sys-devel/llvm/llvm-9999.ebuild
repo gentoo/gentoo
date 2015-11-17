@@ -37,7 +37,7 @@ COMMON_DEPEND="
 	libffi? ( >=virtual/libffi-3.0.13-r1:0=[${MULTILIB_USEDEP}] )
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}] )
 	ocaml? (
-		dev-lang/ocaml:0=
+		>=dev-lang/ocaml-4.00.0:0=
 		dev-ml/findlib
 		dev-ml/ocaml-ctypes )"
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
@@ -53,6 +53,7 @@ DEPEND="${COMMON_DEPEND}
 	kernel_Darwin? ( sys-libs/libcxx )
 	clang? ( xml? ( virtual/pkgconfig ) )
 	doc? ( dev-python/sphinx )
+	gold? ( sys-libs/binutils-libs )
 	libffi? ( virtual/pkgconfig )
 	lldb? ( dev-lang/swig )
 	!!<dev-python/configparser-3.3.0.2
@@ -67,7 +68,7 @@ PDEPEND="clang? ( =sys-devel/clang-${PV}-r100 )"
 # pypy gives me around 1700 unresolved tests due to open file limit
 # being exceeded. probably GC does not close them fast enough.
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	lldb? ( clang )
+	lldb? ( clang xml )
 	test? ( || ( $(python_gen_useflags 'python*') ) )"
 
 pkg_pretend() {
@@ -254,6 +255,12 @@ multilib_src_configure() {
 
 		-DHAVE_HISTEDIT_H=$(usex libedit)
 	)
+
+	if use clang; then
+		mycmakeargs+=(
+			-DCMAKE_DISABLE_FIND_PACKAGE_LibXml2=$(usex !xml)
+		)
+	fi
 
 	if use lldb; then
 		mycmakeargs+=(

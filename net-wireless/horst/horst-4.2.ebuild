@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug +pcap test"
 
-RDEPEND="sys-libs/ncurses
+RDEPEND="sys-libs/ncurses:0
 	pcap? ( net-libs/libpcap )"
 DEPEND="${RDEPEND}
 	test? ( sys-devel/sparse )"

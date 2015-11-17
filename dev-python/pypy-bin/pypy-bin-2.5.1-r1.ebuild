@@ -146,11 +146,14 @@ src_install() {
 
 	einfo "Generating caches and byte-compiling ..."
 
-	python_export pypy EPYTHON PYTHON PYTHON_SITEDIR
-	local PYTHON=${ED%/}${INSDESTTREE}/pypy-c
+	local -x PYTHON=${ED%/}${INSDESTTREE}/pypy-c
 	local -x LD_LIBRARY_PATH="${ED%/}${INSDESTTREE}"
+	# we can't use eclass function since PyPy is dumb and always gives
+	# paths relative to the interpreter
+	local PYTHON_SITEDIR=${EPREFIX}/usr/$(get_libdir)/pypy/site-packages
+	python_export pypy EPYTHON
 
-	echo "EPYTHON='${EPYTHON}'" > epython.py
+	echo "EPYTHON='${EPYTHON}'" > epython.py || die
 	python_domodule epython.py
 
 	# Generate Grammar and PatternGrammar pickles.

@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -62,7 +62,9 @@ src_prepare() {
 src_compile() {
 	arch=$(uname -m)
 	uos=$(uname)
-	los=${uos,,}
+	# Switch to ,, when we switch to EAPI=6.
+	#local los=${uos,,}
+	los=$(tr '[:upper:]' '[:lower:]' <<<"${uos}")
 	./build "${arch}-${los}" || die "build failed"
 }
 

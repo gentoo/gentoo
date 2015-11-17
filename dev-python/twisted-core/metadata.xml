@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<herd>python</herd>
 	<use>
-		<flag name='serial'>include serial port support</flag>
+		<flag name="serial">include serial port support</flag>
 	</use>
 	<longdescription>
 		Twisted is an asynchronous networking framework written in Python,

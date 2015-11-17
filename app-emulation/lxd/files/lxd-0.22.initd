@@ -1,0 +1,43 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+DAEMON=/usr/sbin/lxd
+PIDFILE=/run/lxd.pid
+
+extra_commands="shutdown"
+
+depend() {
+    need cgmanager
+    need net
+}
+
+start() {
+    ebegin "Starting lxd server"
+
+    start-stop-daemon --start \
+		      --pidfile ${PIDFILE} \
+		      --exec ${DAEMON} \
+		      --background \
+		      --make-pidfile \
+		      -- \
+		      ${LXD_OPTIONS}
+
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping lxd server"
+    start-stop-daemon --stop --quiet -R TERM/45 -p ${PIDFILE}
+    eend $?
+}
+
+shutdown() {
+    ebegin "Stopping lxd server and containers"
+    if ${DAEMON} shutdown; then
+	/etc/init.d/lxd zap
+	rm -f ${PIDFILE}
+    fi
+    eend $?
+}

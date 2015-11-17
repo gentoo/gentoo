@@ -12,7 +12,7 @@ SRC_URI="http://ftp.gluster.com/pub/gluster/${PN}/$(get_version_component_range 
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="emacs extras +fuse infiniband static-libs vim-syntax"
 
 RDEPEND="emacs? ( virtual/emacs )

@@ -5,6 +5,11 @@
 # Unmask the flag which corresponds to ARCH.
 -x86
 
+# 2015/11/13 - Daniel Kuehn <lejonet@gentoo.org>
+# Unmask sssd USE-flag as it is tested on this arch in regards to bugs
+# 540540 and 525674
+-sssd
+
 # cilk has been ported to this arch.
 -cilk
 
@@ -188,25 +193,10 @@ video_cards_newport
 
 # Diego Pettenò <flameeyes@gentoo.org> (4 Jan 2007)
 # Unmask the flags for PHP that are available only on x86
--fdftk
--sybase-ct
--ingres
--birdstep
--adabas
--filepro
--pfpro
--informix
--empress
--empress-bcs
 -sybase
 -frontbase
--dbmaker
--esoob
--solid
 # Shared with amd64
 -oci8
--oracle7
--db2
 
 # Robert Buchholz <rbu@gentoo.org> (03 Jun 2007)
 # Unmask as it works on x86
@@ -225,3 +215,5 @@ win64
 
 # fdk-aac is already keyworded here
 -fdk
+
+

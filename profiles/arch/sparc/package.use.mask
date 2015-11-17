@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
+# Missing keywords
+>=media-plugins/grilo-plugins-0.2.14 upnp-av
+
 # Julian Ospald <hasufell@gentoo.org> (08 Nov 2015)
 # Requires net-libs/http-parser
 net-im/jabberd2 websocket
@@ -97,6 +101,7 @@ sys-apps/systemd xkb
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (16 Sep 2014)
 # Needs libepoxy keywording, bug #510940
 x11-base/xorg-server glamor wayland
+x11-drivers/xf86-video-ati glamor
 
 # Maciej Mrozowski <reavertm@gentoo.org> (13 Aug 2014)
 # Missing keywords on dev-libs/protobuf-c (bug 519772)

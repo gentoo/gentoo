@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools eutils linux-info toolchain-funcs
 
 DESCRIPTION="interface bandwidth monitor"
-HOMEPAGE="http://www.infradead.org/~tgr/bmon/"
+HOMEPAGE="http://www.infradead.org/~tgr/bmon/ https://github.com/tgraf/bmon/"
 SRC_URI="
 	https://codeload.github.com/tgraf/${PN}/tar.gz/v${PV} -> ${P}.tar.gz
 "

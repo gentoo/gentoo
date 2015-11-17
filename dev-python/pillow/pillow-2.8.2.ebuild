@@ -5,7 +5,7 @@
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{3,4} pypy )
-PYTHON_REQ_USE='tk?'
+PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 eutils
 

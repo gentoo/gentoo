@@ -14,7 +14,7 @@ HOMEPAGE="http://epicsol.org/"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="archive ipv6 perl tcl ruby socks5 valgrind"
 
 RDEPEND="

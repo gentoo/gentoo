@@ -5,7 +5,7 @@
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{3,4} pypy )
-PYTHON_REQ_USE='sqlite?'
+PYTHON_REQ_USE='sqlite?,threads(+)'
 WEBAPP_NO_AUTO_INSTALL="yes"
 
 inherit bash-completion-r1 distutils-r1 eutils git-r3 versionator webapp

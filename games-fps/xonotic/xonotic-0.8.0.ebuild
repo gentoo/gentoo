@@ -5,7 +5,8 @@
 EAPI=5
 inherit eutils check-reqs games
 
-MY_PN="${PN^}"
+# Switch to ^ when we switch to EAPI=6.
+MY_PN="X${PN:1}"
 DESCRIPTION="Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine"
 HOMEPAGE="http://www.xonotic.org/"
 SRC_URI="http://dl.xonotic.org/${P}.zip"

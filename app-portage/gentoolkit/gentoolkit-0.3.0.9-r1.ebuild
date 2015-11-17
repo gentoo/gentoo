@@ -5,7 +5,7 @@
 EAPI="5"
 
 PYTHON_COMPAT=(python{2_7,3_3} pypy)
-PYTHON_REQ_USE="xml(+)"
+PYTHON_REQ_USE="xml(+),threads(+)"
 
 inherit distutils-r1
 

@@ -5,6 +5,7 @@
 EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_3} pypy )
+PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
 DESCRIPTION="Code coverage measurement for Python"

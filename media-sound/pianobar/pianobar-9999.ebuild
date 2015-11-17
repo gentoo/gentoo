@@ -42,7 +42,7 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX=/usr LIBDIR=/usr/$(get_libdir) DYNLINK=1 install
-	dodoc ChangeLog README
+	dodoc ChangeLog README.md
 
 	use static-libs || { rm "${D}"/usr/lib*/*.a || die; }
 

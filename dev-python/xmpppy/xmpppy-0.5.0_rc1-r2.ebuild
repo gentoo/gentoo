@@ -22,7 +22,7 @@ IUSE="doc"
 RDEPEND="
 	|| (
 		virtual/python-dnspython[${PYTHON_USEDEP}]
-		dev-python/pydns[${PYTHON_USEDEP}]
+		dev-python/pydns:2[${PYTHON_USEDEP}]
 	)"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"

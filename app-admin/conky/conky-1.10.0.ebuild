@@ -67,7 +67,7 @@ DEPEND="
 	app-text/docbook2X
 	"
 
-CONFIG_CHECK=IPV6
+CONFIG_CHECK=~IPV6
 
 DOCS=( README TODO ChangeLog NEWS AUTHORS )
 
