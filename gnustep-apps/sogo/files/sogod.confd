@@ -1,0 +1,6 @@
+# /etc/conf.d/sogod: config file for /etc/init.d/sogod
+
+SOGOD_WORKERS=3
+
+# Additional options for SOGo
+SOGOD_OPTS=""
