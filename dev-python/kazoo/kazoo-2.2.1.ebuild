@@ -17,6 +17,7 @@ KEYWORDS="amd64 x86"
 IUSE="doc gevent test"
 
 RDEPEND="
+	dev-python/six[${PYTHON_USEDEP}]
 	gevent? ( dev-python/gevent[$(python_gen_usedep 'python2*')] )
 "
 DEPEND="${RDEPEND}
