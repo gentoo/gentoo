@@ -240,6 +240,11 @@ virtual/python-imaging
 >=dev-cpp/pangomm-2.38.1
 >=dev-cpp/gtkmm-3.18.0
 >=dev-cpp/gtksourceviewmm-3.18.0
+>=app-office/pinpoint-0.1.8
+>=dev-vcs/gitg-3.18.0
+>=gnome-extra/nemo-2.8.4
+>=media-video/cheese-3.18.1
+>=net-libs/libsoup-gnome-2.52.2
 
 # Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
 # Not properly installed, dead for ages, upstream
