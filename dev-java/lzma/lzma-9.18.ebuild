@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/sevenzip/${PN}${PV/./}.tar.bz2"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=">=virtual/jre-1.6"
