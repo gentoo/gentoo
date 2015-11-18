@@ -693,6 +693,8 @@ _distutils-r1_run_foreach_impl() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	if [[ ${DISTUTILS_NO_PARALLEL_BUILD} ]]; then
+		[[ ${EAPI} == [45] ]] || die "DISTUTILS_NO_PARALLEL_BUILD is banned in EAPI ${EAPI}"
+
 		eqawarn "DISTUTILS_NO_PARALLEL_BUILD is no longer meaningful. Now all builds"
 		eqawarn "are non-parallel. Please remove it from the ebuild."
 
