@@ -30,6 +30,26 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (18 Nov 2015)
+# Ebuilds unfinished work-in-progress. Dead upstream.
+# Masked for removal in 30 days. Bug #550234.
+app-pda/libopensync
+app-pda/libopensync-plugin-file
+app-pda/libopensync-plugin-gnokii
+app-pda/libopensync-plugin-gpe
+app-pda/libopensync-plugin-irmc
+app-pda/libopensync-plugin-moto
+app-pda/libopensync-plugin-palm
+app-pda/libopensync-plugin-python
+app-pda/libopensync-plugin-sunbird
+app-pda/libopensync-plugin-synce-rra
+app-pda/libopensync-plugin-syncml
+app-pda/libopensync-plugin-vformat
+app-pda/libsyncml
+app-pda/msynctool
+app-pda/multisync-gui
+app-pda/osynctool
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (13 Nov 2015)
 # dev-perl/Coro is incompatible with Perl 5.22 and there is no fix
 # in sight. Masking it and its reverse dependencies for removal in
