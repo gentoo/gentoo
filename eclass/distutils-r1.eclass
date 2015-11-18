@@ -236,10 +236,13 @@ fi
 esetup.py() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	local die_args=()
+	[[ ${EAPI} != [45] ]] && die_args+=( -n )
+
 	set -- "${PYTHON:-python}" setup.py "${mydistutilsargs[@]}" "${@}"
 
 	echo "${@}" >&2
-	"${@}" || die
+	"${@}" || die "${die_args[@]}" || return ${?}
 }
 
 # @FUNCTION: distutils_install_for_testing
