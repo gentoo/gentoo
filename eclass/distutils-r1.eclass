@@ -343,7 +343,7 @@ distutils-r1_python_prepare_all() {
 distutils-r1_python_prepare() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	:
+	[[ ${EAPI} == [45] ]] || die "${FUNCNAME} is banned in EAPI 6 (it was a no-op)"
 }
 
 # @FUNCTION: distutils-r1_python_configure
@@ -352,7 +352,7 @@ distutils-r1_python_prepare() {
 distutils-r1_python_configure() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	:
+	[[ ${EAPI} == [45] ]] || die "${FUNCNAME} is banned in EAPI 6 (it was a no-op)"
 }
 
 # @FUNCTION: _distutils-r1_create_setup_cfg
