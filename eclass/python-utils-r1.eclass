@@ -280,12 +280,14 @@ python_export() {
 				# sysconfig can't be used because:
 				# 1) pypy doesn't give site-packages but stdlib
 				# 2) jython gives paths with wrong case
-				export PYTHON_SITEDIR=$("${PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_lib())')
+				PYTHON_SITEDIR=$("${PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_lib())') || die
+				export PYTHON_SITEDIR
 				debug-print "${FUNCNAME}: PYTHON_SITEDIR = ${PYTHON_SITEDIR}"
 				;;
 			PYTHON_INCLUDEDIR)
 				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
-				export PYTHON_INCLUDEDIR=$("${PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_inc())')
+				PYTHON_INCLUDEDIR=$("${PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_inc())') || die
+				export PYTHON_INCLUDEDIR
 				debug-print "${FUNCNAME}: PYTHON_INCLUDEDIR = ${PYTHON_INCLUDEDIR}"
 
 				# Jython gives a non-existing directory
@@ -295,7 +297,8 @@ python_export() {
 				;;
 			PYTHON_LIBPATH)
 				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
-				export PYTHON_LIBPATH=$("${PYTHON}" -c 'import os.path, sysconfig; print(os.path.join(sysconfig.get_config_var("LIBDIR"), sysconfig.get_config_var("LDLIBRARY")) if sysconfig.get_config_var("LDLIBRARY") else "")')
+				PYTHON_LIBPATH=$("${PYTHON}" -c 'import os.path, sysconfig; print(os.path.join(sysconfig.get_config_var("LIBDIR"), sysconfig.get_config_var("LDLIBRARY")) if sysconfig.get_config_var("LDLIBRARY") else "")') || die
+				export PYTHON_LIBPATH
 				debug-print "${FUNCNAME}: PYTHON_LIBPATH = ${PYTHON_LIBPATH}"
 
 				if [[ ! ${PYTHON_LIBPATH} ]]; then
@@ -308,7 +311,7 @@ python_export() {
 				case "${impl}" in
 					python*)
 						# python-2.7, python-3.2, etc.
-						val=$($(tc-getPKG_CONFIG) --cflags ${impl/n/n-})
+						val=$($(tc-getPKG_CONFIG) --cflags ${impl/n/n-}) || die
 						;;
 					*)
 						die "${impl}: obtaining ${var} not supported"
@@ -324,7 +327,7 @@ python_export() {
 				case "${impl}" in
 					python*)
 						# python-2.7, python-3.2, etc.
-						val=$($(tc-getPKG_CONFIG) --libs ${impl/n/n-})
+						val=$($(tc-getPKG_CONFIG) --libs ${impl/n/n-}) || die
 						;;
 					*)
 						die "${impl}: obtaining ${var} not supported"
@@ -340,7 +343,7 @@ python_export() {
 				case "${impl}" in
 					python*)
 						[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
-						flags=$("${PYTHON}" -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS") or "")')
+						flags=$("${PYTHON}" -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS") or "")') || die
 						val=${PYTHON}${flags}-config
 						;;
 					*)
@@ -579,7 +582,7 @@ python_optimize() {
 			if [[ ${f} == /* && -d ${D}${f} ]]; then
 				set -- "${D}${f}" "${@}"
 			fi
-		done < <("${PYTHON}" -c 'import sys; print("\0".join(sys.path))')
+		done < <("${PYTHON}" -c 'import sys; print("\0".join(sys.path))' || die)
 
 		debug-print "${FUNCNAME}: using sys.path: ${*/%/;}"
 	fi
@@ -1128,7 +1131,7 @@ python_fix_shebang() {
 				eerror "  requested impl: ${EPYTHON}"
 				die "${FUNCNAME}: conversion of incompatible shebang requested"
 			fi
-		done < <(find "${path}" -type f -print0)
+		done < <(find "${path}" -type f -print0 || die)
 
 		if [[ ! ${any_fixed} ]]; then
 			eqawarn "QA warning: ${FUNCNAME}, ${path#${D}} did not match any fixable files."
