@@ -682,7 +682,7 @@ python_newexe() {
 	(
 		dodir "${wrapd}"
 		exeinto "${d}"
-		newexe "${f}" "${newfn}" || die
+		newexe "${f}" "${newfn}" || return ${?}
 	)
 
 	# install the wrapper
@@ -814,7 +814,7 @@ python_domodule() {
 
 	(
 		insinto "${d}"
-		doins -r "${@}" || die
+		doins -r "${@}" || return ${?}
 	)
 
 	python_optimize "${ED}/${d}"
@@ -848,7 +848,7 @@ python_doheader() {
 
 	(
 		insinto "${d}"
-		doins -r "${@}" || die
+		doins -r "${@}" || return ${?}
 	)
 }
 
