@@ -4806,7 +4806,7 @@ dev-libs/mpfr 2.4.2_p3-r1 3.1.2_p10 3.1.3_p4: library for multiple-precision flo
 dev-libs/mps 1.106.2 1.110.0 1.111.0 1.114.0: Ravenbrook Memory Pool System
 dev-libs/msgpack 0.5.9 1.0.0 1.0.1 1.1.0: MessagePack is a binary-based efficient data interchange format
 dev-libs/nanomsg 0.5-r1 0.6: High-performance messaging interface for distributed applications
-dev-libs/nettle 2.7.1-r4 3.1.1: Low-level cryptographic library
+dev-libs/nettle 3.1.1: Low-level cryptographic library
 dev-libs/newt 0.52.15 0.52.18: Redhat's Newt windowing toolkit development files
 dev-libs/npth 1.1 1.2: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.1.1 0.1.2-r1: generate javascript to dom bindings from w3c webidl files
