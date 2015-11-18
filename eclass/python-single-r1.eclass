@@ -55,7 +55,7 @@ case "${EAPI:-0}" in
 			die "Unsupported EAPI=${EAPI:-4} (too old, allowed only on restricted set of packages) for ${ECLASS}"
 		fi
 		;;
-	5)
+	5|6)
 		# EAPI=5 is required for sane USE_EXPAND dependencies
 		;;
 	*)
