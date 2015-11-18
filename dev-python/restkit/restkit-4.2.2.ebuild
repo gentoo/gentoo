@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ppc64 x86"
+KEYWORDS="amd64 arm ppc ppc64 ~s390 ~sh x86"
 IUSE="+cli doc examples test"
 
 PY27_USEDEP="$(python_gen_usedep python2_7)"
