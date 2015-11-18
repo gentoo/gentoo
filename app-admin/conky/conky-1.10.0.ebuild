@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools eutils libtool cmake-utils linux-info
+inherit eutils cmake-utils linux-info
 
 DESCRIPTION="An advanced, highly configurable system monitor for X"
 HOMEPAGE="https://github.com/brndnmtthws/conky"
@@ -77,10 +77,10 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}/${P}-cmake.patch"
+	epatch "${FILESDIR}/${P}-includefiles.patch"
 
 	# Allow user patches #478482
-	# Only run autotools if user patched something
-	epatch_user && eautoreconf || elibtoolize
+	epatch_user
 }
 
 src_configure() {
