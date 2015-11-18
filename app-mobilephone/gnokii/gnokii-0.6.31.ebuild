@@ -9,10 +9,10 @@ inherit eutils linux-info autotools
 HOMEPAGE="http://www.gnokii.org/"
 if [ "$PV" != "9999" ]; then
 	SRC_URI="http://www.gnokii.org/download/${PN}/${P}.tar.bz2"
-	KEYWORDS="amd64 ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="amd64 hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 else
 	SRC_URI=""
-	KEYWORDS=""
+	KEYWORDS="hppa"
 	EGIT_REPO_URI="git://git.savannah.nongnu.org/${PN}.git
 		http://git.savannah.gnu.org/r/${PN}.git"
 	inherit git-2
