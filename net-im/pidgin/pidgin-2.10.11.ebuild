@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ~ia64 ppc ppc64 sparc x86 ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="dbus debug doc eds gadu gnutls +gstreamer +gtk idn meanwhile mxit"
 IUSE+=" networkmanager nls perl silc tcl tk spell sasl ncurses"
 IUSE+=" groupwise prediction python +xscreensaver zephyr zeroconf" # mono"
