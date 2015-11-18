@@ -150,6 +150,8 @@ fi
 # @ECLASS-VARIABLE: EXAMPLES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
+# OBSOLETE: this variable is deprecated and banned in EAPI 6
+#
 # An array containing examples installed into 'examples' doc
 # subdirectory. The files and directories listed there must exist
 # in the directory from which distutils-r1_python_install_all() is run
@@ -583,6 +585,8 @@ distutils-r1_python_install_all() {
 	einstalldocs
 
 	if declare -p EXAMPLES &>/dev/null; then
+		[[ ${EAPI} != [45] ]] && die "EXAMPLES are banned in EAPI ${EAPI}"
+
 		local INSDESTTREE=/usr/share/doc/${PF}/examples
 		doins -r "${EXAMPLES[@]}"
 		docompress -x "${INSDESTTREE}"
