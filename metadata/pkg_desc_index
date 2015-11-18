@@ -11156,7 +11156,7 @@ kde-frameworks/ki18n 5.15.0 5.16.0: Framework based on Gettext for international
 kde-frameworks/kiconthemes 5.15.0 5.16.0: Framework for icon theming and configuration
 kde-frameworks/kidletime 5.15.0 5.16.0: Framework for detection and notification of device idle time
 kde-frameworks/kimageformats 5.15.0 5.16.0: Framework providing additional format plugins for Qt's image I/O system
-kde-frameworks/kinit 5.15.0 5.16.0: Helper library to speed up start of applications on KDE work spaces
+kde-frameworks/kinit 5.15.0 5.16.0-r1: Helper library to speed up start of applications on KDE work spaces
 kde-frameworks/kio 5.15.0 5.16.0: Framework providing transparent file and data management
 kde-frameworks/kitemmodels 5.15.0 5.16.0: Framework providing data models to help with tasks such as sorting and filtering
 kde-frameworks/kitemviews 5.15.0 5.16.0: Framework providing additional widgets for item models
@@ -13934,7 +13934,7 @@ net-libs/glib-networking 2.42.1 2.44.0 2.46.1: Network-related giomodules for gl
 net-libs/gloox 1.0.9 1.0.13 1.0.14 1.0.14-r1: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.16.4.1 3.18.2.1: GNOME framework for accessing online accounts
-net-libs/gnutls 2.12.23-r6 3.3.17.1 3.3.18 3.4.5 3.4.6: A TLS 1.2 and SSL 3.0 implementation for the GNU project
+net-libs/gnutls 3.3.17.1 3.3.18 3.4.5 3.4.6: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.7.17 2.8.12 2.8.23 2.8.24 2.8.25: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 0.14.10 0.14.11: A GObject-based API for handling resource discovery and announcement over SSDP
