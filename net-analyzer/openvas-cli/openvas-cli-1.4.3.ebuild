@@ -6,7 +6,7 @@ EAPI=5
 
 inherit cmake-utils
 
-DL_ID=2141
+DL_ID=2209
 
 DESCRIPTION="A remote security scanner for Linux (OpenVAS-cli)"
 HOMEPAGE="http://www.openvas.org/"

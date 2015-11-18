@@ -6,11 +6,11 @@ EAPI=5
 
 inherit cmake-utils systemd
 
-MY_PN=openvassd
+MY_PN=openvasmd
 
-DL_ID=2071
+DL_ID=2195
 
-DESCRIPTION="A remote security scanner for Linux (OpenVAS-scanner)"
+DESCRIPTION="A remote security scanner for Linux (openvas-manager)"
 HOMEPAGE="http://www.openvas.org/"
 SRC_URI="http://wald.intevation.org/frs/download.php/${DL_ID}/${P/_beta/+beta}.tar.gz"
 
@@ -20,21 +20,16 @@ KEYWORDS=" ~amd64 ~arm ~ppc ~x86"
 IUSE=""
 
 RDEPEND="
-	app-crypt/gpgme
-	>=dev-libs/glib-2.16:2
-	dev-libs/libgcrypt:0
-	>=net-analyzer/openvas-libraries-8.0.2
-	!net-analyzer/openvas-plugins
-	!net-analyzer/openvas-server"
+	>=net-analyzer/openvas-libraries-8.0.5
+	>=dev-db/sqlite-3
+	!net-analyzer/openvas-administrator"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-S="${WORKDIR}"/${P/_beta/+beta}
+S="${WORKDIR}"/${P}
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.0.3-mkcertclient.patch
-	"${FILESDIR}"/${PN}-4.0.3-rulesdir.patch
-	"${FILESDIR}"/${PN}-4.0.3-run.patch
+	"${FILESDIR}"/${PN}-6.0.1-bsdsource.patch
 	)
 
 src_prepare() {
@@ -48,24 +43,20 @@ src_configure() {
 	local mycmakeargs=(
 		-DLOCALSTATEDIR="${EPREFIX}/var"
 		-DSYSCONFDIR="${EPREFIX}/etc"
-	)
+		)
 	cmake-utils_src_configure
 }
 
 src_install() {
 	cmake-utils_src_install
 
-	newinitd "${FILESDIR}"/${MY_PN}.init ${MY_PN}
-
-	insinto /etc/openvas
-	doins "${FILESDIR}"/${MY_PN}.conf "${FILESDIR}"/${MY_PN}-daemon.conf
+	insinto /etc/openvas/
+	doins "${FILESDIR}"/${MY_PN}-daemon.conf
 	dosym ../openvas/${MY_PN}-daemon.conf /etc/conf.d/${PN}
 
 	insinto /etc/logrotate.d
-	doins "${FILESDIR}"/${MY_PN}.logrotate
+	newins "${FILESDIR}"/${MY_PN}.logrotate ${MY_PN}
 
-	dodoc "${FILESDIR}"/openvas-nvt-sync-cron
-
-	systemd_newtmpfilesd "${FILESDIR}"/${MY_PN}.tmpfiles.d ${MY_PN}.conf
+	newinitd "${FILESDIR}"/${MY_PN}.init ${MY_PN}
 	systemd_dounit "${FILESDIR}"/${MY_PN}.service
 }

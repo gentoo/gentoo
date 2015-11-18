@@ -15,17 +15,16 @@ KEYWORDS=" ~amd64 ~x86"
 IUSE="+pdf"
 
 DEPEND="
-	>=net-analyzer/openvas-libraries-8.0.3
-	>=net-analyzer/openvas-scanner-5.0.3
-	>=net-analyzer/openvas-manager-6.0.3
-	>=net-analyzer/openvas-cli-1.4.0
+	>=net-analyzer/openvas-libraries-8.0.5
+	>=net-analyzer/openvas-scanner-5.0.4
+	>=net-analyzer/openvas-manager-6.0.6
+	>=net-analyzer/openvas-cli-1.4.3
 	net-analyzer/openvas-tools
 	pdf? (
 		app-text/htmldoc
 		dev-texlive/texlive-latexextra
 		virtual/latex-base
 	)"
-# greenbone-security-desktop is broken and unsupported upstream
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"
