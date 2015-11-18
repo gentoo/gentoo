@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<longdescription lang="en">
+		This go package allows you to change the color of text in the console.
+	</longdescription>
+</pkgmetadata>
