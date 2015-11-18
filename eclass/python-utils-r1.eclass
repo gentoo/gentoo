@@ -1041,12 +1041,14 @@ python_fix_shebang() {
 			local shebang i
 			local error= from=
 
+			# note: we can't ||die here since read will fail if file
+			# has no newline characters
 			IFS= read -r shebang <"${f}"
 
 			# First, check if it's shebang at all...
 			if [[ ${shebang} == '#!'* ]]; then
 				local split_shebang=()
-				read -r -a split_shebang <<<${shebang}
+				read -r -a split_shebang <<<${shebang} || die
 
 				# Match left-to-right in a loop, to avoid matching random
 				# repetitions like 'python2.7 python2'.
