@@ -603,6 +603,8 @@ python_setup() {
 python_export_best() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EAPI} == [45] ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}"
+
 	eqawarn "python_export_best() is deprecated. Please use python_setup instead,"
 	eqawarn "combined with python_export if necessary."
 
