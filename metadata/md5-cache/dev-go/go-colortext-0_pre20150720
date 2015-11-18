@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.4.2:=
+DESCRIPTION=Change the console foreground and background colors
+EAPI=5
+HOMEPAGE=https://github.com/daviddengcn/go-colortext
+KEYWORDS=~amd64
+LICENSE=BSD
+SLOT=0
+SRC_URI=https://github.com/daviddengcn/go-colortext/archive/3b18c85.tar.gz -> go-colortext-0_pre20150720.tar.gz
+_eclasses_=golang-base	59e300a2d8836a6e8d508276da0d570f	golang-build	1b49258a68ba3972a575490adf3b7b4c	golang-vcs-snapshot	b10a39b036bc9a2dbefc6e168689b5fd
+_md5_=ab0ed4c69ac65a38cbd4e692974b8a7f

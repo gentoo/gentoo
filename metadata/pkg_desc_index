@@ -976,7 +976,7 @@ app-doc/single-unix-specification 3 4-r1: The Single UNIX Specification, Version
 app-doc/tldp-howto 20100701 20120707: The Linux Documentation Project HOWTOs
 app-doc/vilearn 1.0: vilearn is an interactive vi tutorial comprised of 5 tutorials for the vi-impaired
 app-doc/xmltoman 0.4: Simple scripts for converting xml to groff or html
-app-doc/zeal 0.1.1: Offline documentation browser inspired by Dash
+app-doc/zeal 0.1.1 0.2.0: Offline documentation browser inspired by Dash
 app-doc/zsh-lovers 0.9.0: Tips, tricks and examples for the Z shell
 app-editors/XML-XSH2 2.1.6-r1: XML Editing Shell
 app-editors/adie 1.6.49 1.7.45 1.7.47 1.7.49: Text editor based on the FOX Toolkit
@@ -3110,6 +3110,7 @@ dev-games/tiled 0.12.3 0.14.2: A general purpose tile map editor
 dev-games/vamos 0.7.1: an automotive simulation framework
 dev-games/wfmath 1.0.1: Worldforge math library
 dev-go/blackfriday 1.2_p20150720 9999: a markdown processor implemented in Go
+dev-go/go-colortext 0_pre20150720: Change the console foreground and background colors
 dev-go/go-crypto 0_pre20150808 9999: Go supplementary cryptography libraries
 dev-go/go-eapache-queue 1.0.2 9999: Fast golang queue using ring-buffer
 dev-go/go-md2man 1.0.3: A utility to convert markdown to man pages
@@ -3123,6 +3124,7 @@ dev-go/go-sys 0_pre20150729 9999: Go packages for low-level interaction with the
 dev-go/go-text 0_pre20150806 9999: Go text processing support
 dev-go/go-tools 0_pre20150805 0_pre20150823-r1 0_pre20150902 9999: Go Tools
 dev-go/godep 0_pre20150807 29: dependency tool for go
+dev-go/gom 0_pre20151110: Go Dependency management system similar to bundle for ruby
 dev-go/sanitized-anchor-name 0_pre20150822 9999: A Go function to provide sanitized anchor names
 dev-go/sarama 1.4.3 9999: Sarama is a Go library for Apache Kafka
 dev-haskell/abstract-deque 0.2.2 0.3: Abstract, parameterized interface to mutable Deques
