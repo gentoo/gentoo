@@ -11,7 +11,7 @@ DESCRIPTION="A wrapper around PyFlakes, pep8 & mccabe"
 HOMEPAGE="https://bitbucket.org/tarek/flake8 https://pypi.python.org/pypi/flake8"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-KEYWORDS="alpha amd64 arm hppa ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 LICENSE="MIT"
 SLOT="0"

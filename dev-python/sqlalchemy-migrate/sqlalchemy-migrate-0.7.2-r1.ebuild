@@ -13,7 +13,7 @@ SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ia64 ~ppc ~ppc64 ~s390 ~sh sparc x86"
 IUSE=""
 
 DEPEND="dev-python/decorator[${PYTHON_USEDEP}]
