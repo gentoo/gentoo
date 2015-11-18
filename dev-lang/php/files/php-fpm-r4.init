@@ -13,7 +13,6 @@ extra_started_commands="reload"
 
 depend() {
 	need net
-	use apache2 lighttpd nginx
 }
 
 start() {
