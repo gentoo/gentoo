@@ -3,19 +3,12 @@
 <pkgmetadata>
   <herd>crypto</herd>
   <use>
-    <flag name="bindist">
-      Disallow building LZO support, because of a license
-      incompatibility with <pkg>dev-libs/lzo</pkg>
-    </flag>
     <flag name="crywrap" restrict="&gt;=net-libs/gnutls-3.2.10">
       Build the crywrap TLS proxy service
     </flag>
     <flag name="dane" restrict="&gt;=net-libs/gnutls-3.1.3">
       Build libgnutls-dane, implementing DNS-based Authentication of
       Named Entities. Requires <pkg>net-dns/unbound</pkg>
-    </flag>
-    <flag name="nettle" restrict="&lt;net-libs/gnutls-3">
-      Use <pkg>dev-libs/nettle</pkg> as crypto backend
     </flag>
     <flag name="openssl">
       Build openssl compatibility libraries

@@ -30,6 +30,8 @@ DEPEND="${RDEPEND}
 	x11-proto/xproto
 "
 
+PATCHES=( "${FILESDIR}/${P}-dont-wipe-groups.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package caps Libcap)
