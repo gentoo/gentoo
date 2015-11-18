@@ -48,8 +48,23 @@ src_configure() {
 }
 
 src_compile() {
-	einfo "Bootstrapping with bundled javacup ..."
-	EANT_GENTOO_CLASSPATH_EXTRA+=":${S}/bin/${MY_P:0:-1}.jar" eant
+	# Annoyingly javacup bundles an older version of itself that will
+	# break jflex if that has already been built against this newer
+	# version beforehand. Even more annoyingly, the binary download is
+	# built with Java 8, which isn't much use to us. We therefore use
+	# any installed javacup that is newer than the bundled version where
+	# possible. If this approach turns out to be unworkable then we may
+	# just have to use the bundled jflex for bootstrapping.
+	if has_version \>=${CATEGORY}/${PN}-0.11b:${SLOT}; then
+		# Use PORTAGE_QUIET to suppress a QA warning that is spurious
+		# thanks to has_version above. This is Portage-specific but
+		# showing the warning elsewhere isn't the end of the world.
+		einfo "Bootstrapping with installed javacup ..."
+		EANT_GENTOO_CLASSPATH_EXTRA+=":$(PORTAGE_QUIET=1 java-pkg_getjars --build-only javacup)" eant
+	else
+		einfo "Bootstrapping with bundled javacup ..."
+		EANT_GENTOO_CLASSPATH_EXTRA+=":${S}/bin/${MY_P:0:-1}.jar" eant
+	fi
 
 	# Clean everything except the new jar.
 	rm -rv java/ classes/ || die
