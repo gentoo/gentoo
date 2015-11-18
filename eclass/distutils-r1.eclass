@@ -79,7 +79,8 @@ esac
 
 if [[ ! ${_DISTUTILS_R1} ]]; then
 
-inherit eutils toolchain-funcs
+[[ ${EAPI} == [45] ]] && inherit eutils
+inherit toolchain-funcs
 
 if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 	inherit multiprocessing python-r1
