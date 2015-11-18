@@ -2435,7 +2435,7 @@ app-text/u2ps 0.8.4: A text to PostScript converter like a2ps, but supports UTF-
 app-text/unac 1.8.0: Library and command-line tool for removing accents from characters
 app-text/unpaper 5.1 6.1 6.1-r1 9999: Post-processor for scanned and photocopied book pages
 app-text/unrtf 0.21.9: Converts RTF files to various formats
-app-text/uudeview 0.5.20-r1: uu, xx, base64, binhex decoder
+app-text/uudeview 0.5.20-r1 0.5.20-r2: uu, xx, base64, binhex decoder
 app-text/uvconv 1.1.3b-r1: A small utility that converts among Vietnamese charsets
 app-text/vilistextum 2.6.9-r1: Html to ascii converter specifically programmed to get the best out of incorrect html
 app-text/vlna 1.5: Add nonbreakable spaces after some prepositions in Czech texts
