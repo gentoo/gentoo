@@ -312,9 +312,12 @@ _distutils-r1_disable_ez_setup() {
 distutils-r1_python_prepare_all() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	[[ ${PATCHES} ]] && epatch "${PATCHES[@]}"
-
-	epatch_user
+	if [[ ${EAPI} != [45] ]]; then
+		default
+	else
+		[[ ${PATCHES} ]] && epatch "${PATCHES[@]}"
+		epatch_user
+	fi
 
 	# by default, use in-source build if python_prepare() is used
 	if [[ ! ${DISTUTILS_IN_SOURCE_BUILD+1} ]]; then
