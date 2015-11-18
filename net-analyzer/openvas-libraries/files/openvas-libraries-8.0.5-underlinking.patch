@@ -1,9 +1,9 @@
- base/CMakeLists.txt | 4 ++--
- misc/CMakeLists.txt | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ base/CMakeLists.txt | 10 +++++-----
+ misc/CMakeLists.txt |  2 +-
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/base/CMakeLists.txt b/base/CMakeLists.txt
-index 07febee..512e813 100644
+index 07febee..40305b7 100644
 --- a/base/CMakeLists.txt
 +++ b/base/CMakeLists.txt
 @@ -73,7 +73,7 @@ if (BUILD_SHARED)
@@ -15,15 +15,21 @@ index 07febee..512e813 100644
    endif (MINGW)
  endif (BUILD_SHARED)
  
-@@ -89,7 +89,7 @@ add_custom_indent_targets (${FILES})
+@@ -87,10 +87,10 @@ add_custom_indent_targets (${FILES})
+ 
+ # Link the test-hosts executable
  # TODO: This is currently only built for BUILD_SHARED
- if (BUILD_SHARED)
-   add_executable (test-hosts test-hosts.c)
+-if (BUILD_SHARED)
+-  add_executable (test-hosts test-hosts.c)
 -  target_link_libraries (test-hosts openvas_base_shared ${GNUTLS_LDFLAGS} openvas_misc_shared ${GLIB_LDFLAGS})
-+  target_link_libraries (test-hosts openvas_base_shared ${GNUTLS_LDFLAGS} openvas_misc_shared openvas_omp_shared ${GLIB_LDFLAGS})
- endif (BUILD_SHARED)
+-endif (BUILD_SHARED)
++#if (BUILD_SHARED)
++#  add_executable (test-hosts test-hosts.c)
++#  target_link_libraries (test-hosts openvas_base_shared ${GNUTLS_LDFLAGS} openvas_misc_shared openvas_omp_shared ${GLIB_LDFLAGS})
++#endif (BUILD_SHARED)
  
  ## Install
+ if (BUILD_STATIC)
 diff --git a/misc/CMakeLists.txt b/misc/CMakeLists.txt
 index 7aaca2c..e7a0870 100644
 --- a/misc/CMakeLists.txt
