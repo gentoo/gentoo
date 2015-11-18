@@ -805,10 +805,10 @@ python_domodule() {
 		d=${PYTHON_SITEDIR#${EPREFIX}}/${python_moduleroot}
 	fi
 
-	local INSDESTTREE
-
-	insinto "${d}"
-	doins -r "${@}" || die
+	(
+		insinto "${d}"
+		doins -r "${@}" || die
+	)
 
 	python_optimize "${ED}/${d}"
 }
@@ -836,10 +836,10 @@ python_doheader() {
 
 	d=${PYTHON_INCLUDEDIR#${EPREFIX}}
 
-	local INSDESTTREE
-
-	insinto "${d}"
-	doins -r "${@}" || die
+	(
+		insinto "${d}"
+		doins -r "${@}" || die
+	)
 }
 
 # @FUNCTION: python_wrapper_setup
