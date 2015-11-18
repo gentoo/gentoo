@@ -665,6 +665,9 @@ python_newexe() {
 
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
 	[[ ${#} -eq 2 ]] || die "Usage: ${FUNCNAME} <path> <new-name>"
+	if [[ ${EAPI:-0} == [01234] ]]; then
+		die "python_do* and python_new* helpers are banned in EAPIs older than 5."
+	fi
 
 	local wrapd=${python_scriptroot:-${DESTTREE}/bin}
 
@@ -792,6 +795,9 @@ python_domodule() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
+	if [[ ${EAPI:-0} == [01234] ]]; then
+		die "python_do* and python_new* helpers are banned in EAPIs older than 5."
+	fi
 
 	local d
 	if [[ ${python_moduleroot} == /* ]]; then
@@ -830,6 +836,9 @@ python_doheader() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
+	if [[ ${EAPI:-0} == [01234] ]]; then
+		die "python_do* and python_new* helpers are banned in EAPIs older than 5."
+	fi
 
 	local d PYTHON_INCLUDEDIR=${PYTHON_INCLUDEDIR}
 	[[ ${PYTHON_INCLUDEDIR} ]] || python_export PYTHON_INCLUDEDIR
