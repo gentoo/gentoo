@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-MY_EXTRAS_VER="20150210-1758Z"
+EAPI=5
+MY_EXTRAS_VER="20151117-2040Z"
 BUILD="cmake"
 
 inherit toolchain-funcs java-pkg-opt-2 mysql-v2
@@ -89,6 +89,7 @@ src_test() {
 			binlog.binlog_statement_insert_delayed main.information_schema \
 			main.mysqld--help-notwin main.flush_read_lock_kill \
 			sys_vars.plugin_dir_basic main.openssl_1 \
+			main.mysqlhotcopy_archive main.mysqlhotcopy_myisam \
 			ndb.ndbinfo ndb_binlog.ndb_binlog_index ; do
 				mysql-v2_disable_test  "$t" "False positives in Gentoo"
 		done

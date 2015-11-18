@@ -3,7 +3,8 @@
 # $Id$
 
 EAPI=5
-MY_EXTRAS_VER="20150210-1758Z"
+MY_EXTRAS_VER="20151117-2040Z"
+SUBSLOT="18"
 
 inherit toolchain-funcs java-pkg-opt-2 mysql-multilib
 # only to make repoman happy. it is really set in the eclass
@@ -32,7 +33,7 @@ src_prepare() {
 }
 
 # Official test instructions:
-# USE='cluster extraengine perl ssl community' \
+# USE='extraengine perl openssl' \
 # FEATURES='test userpriv -usersandbox' \
 # ebuild mysql-cluster-X.X.XX.ebuild \
 # digest clean package
@@ -100,6 +101,7 @@ multilib_src_test() {
 			main.mysqld--help-notwinfuncs_1.is_triggers \
 			main.mysql_client_test \
 			mysqld--help-notwin \
+			main.mysqlhotcopy_archive main.mysqlhotcopy_myisam \
 			perfschema.binlog_edge_mix \
 			perfschema.binlog_edge_stmt \
 		; do
