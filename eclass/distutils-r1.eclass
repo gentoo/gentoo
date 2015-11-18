@@ -563,7 +563,9 @@ distutils-r1_python_install() {
 		fi
 	done
 	if [[ -d ${root}/usr/$(get_libdir)/pypy/share ]]; then
-		eqawarn "Package installs 'share' in PyPy prefix, see bug #465546."
+		local cmd=die
+		[[ ${EAPI} == [45] ]] && cmd=eqawarn
+		"${cmd}" "Package installs 'share' in PyPy prefix, see bug #465546."
 	fi
 
 	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
