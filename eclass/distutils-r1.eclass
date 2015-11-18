@@ -731,7 +731,10 @@ distutils-r1_src_prepare() {
 	fi
 
 	if [[ ! ${_DISTUTILS_DEFAULT_CALLED} ]]; then
-		eqawarn "QA warning: python_prepare_all() didn't call distutils-r1_python_prepare_all"
+		local cmd=die
+		[[ ${EAPI} == [45] ]] && cmd=eqawarn
+
+		"${cmd}" "QA: python_prepare_all() didn't call distutils-r1_python_prepare_all"
 	fi
 
 	if declare -f python_prepare >/dev/null; then
@@ -802,7 +805,10 @@ distutils-r1_src_install() {
 	fi
 
 	if [[ ! ${_DISTUTILS_DEFAULT_CALLED} ]]; then
-		eqawarn "QA warning: python_install_all() didn't call distutils-r1_python_install_all"
+		local cmd=die
+		[[ ${EAPI} == [45] ]] && cmd=eqawarn
+
+		"${cmd}" "QA: python_install_all() didn't call distutils-r1_python_install_all"
 	fi
 }
 
