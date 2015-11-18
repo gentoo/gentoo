@@ -526,6 +526,8 @@ python_foreach_impl() {
 python_parallel_foreach_impl() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EAPI} == [45] ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}"
+
 	if [[ ! ${_PYTHON_PARALLEL_WARNED} ]]; then
 		eqawarn "python_parallel_foreach_impl() is no longer meaningful. All runs"
 		eqawarn "are non-parallel now. Please replace the call with python_foreach_impl."
