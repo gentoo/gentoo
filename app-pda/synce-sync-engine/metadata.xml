@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>pda</herd>
-	<use>
-		<flag name="opensync">Enable OpenSync (<pkg>app-pda/libopensync</pkg>) python plug-in</flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">synce</remote-id>
 	</upstream>
