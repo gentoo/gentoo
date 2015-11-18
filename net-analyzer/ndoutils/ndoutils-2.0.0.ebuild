@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -56,15 +56,6 @@ DOCS=(
 
 src_install() {
 	default
-
-	local itarget
-	if has_version ">=net-analyzer/nagios-core-4.0" ; then
-		itarget="install-4x"
-	else
-		itarget="install-3x"
-	fi
-
-	emake -C src DESTDIR="${D}" "${itarget}"
 	emake DESTDIR="${D}" install-config
 
 	newinitd "${FILESDIR}"/ndo2db.init-nagios3 ndo2db
@@ -73,5 +64,5 @@ src_install() {
 pkg_postinst() {
 	elog "To include NDO in your Nagios setup you'll need to activate the NDO broker module"
 	elog "in /etc/nagios/nagios.cfg:"
-	elog "\tbroker_module=/usr/bin/ndomod.o config_file=/etc/nagios/ndomod.cfg"
+	elog "\tbroker_module=/usr/bin/ndomod-3x.o config_file=/etc/nagios/ndomod.cfg"
 }

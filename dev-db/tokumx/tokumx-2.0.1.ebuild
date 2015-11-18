@@ -21,6 +21,7 @@ IUSE="pax_kernel"
 
 RDEPEND="
 	dev-libs/jemalloc
+	!dev-libs/mongo-cxx-driver
 	>=dev-libs/boost-1.50[threads(+)]
 	>=dev-libs/libpcre-8.30[cxx]
 	net-libs/libpcap"

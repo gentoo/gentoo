@@ -16,7 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug sasl ssl static-libs"
 
-RDEPEND=">=dev-libs/boost-1.50[threads(+)]
+RDEPEND="!dev-db/tokumx
+	>=dev-libs/boost-1.50[threads(+)]
 	sasl? ( dev-libs/cyrus-sasl )
 	ssl? ( dev-libs/openssl:= )"
 DEPEND="${RDEPEND}"
