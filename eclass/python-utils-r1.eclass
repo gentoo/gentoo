@@ -567,9 +567,6 @@ python_optimize() {
 	local PYTHON=${PYTHON}
 	[[ ${PYTHON} ]] || python_export PYTHON
 
-	# Note: python2.6 can't handle passing files to compileall...
-	# TODO: we do not support 2.6 any longer
-
 	# default to sys.path
 	if [[ ${#} -eq 0 ]]; then
 		local f
