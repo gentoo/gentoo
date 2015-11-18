@@ -19,7 +19,7 @@
 #
 # Thanks for original eclass to Andrian Nord <NightNord@niifaq.ru>.
 #
-# Only EAPI >1 supported
+# Only EAPI >3 supported
 
 case ${EAPI:-0} in
 	4|5) ;;
@@ -68,15 +68,13 @@ EXPORT_FUNCTIONS "pkg_pretend"
 leechcraft_pkg_pretend() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	# 0.5.85 and later requires at least gcc 4.6
 	if [[ ${MERGE_TYPE} != binary ]]; then
+		# All in-tree versions require at least gcc 4.6
 		[[ $(gcc-major-version) -lt 4 ]] || \
 				( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 6 ]] ) \
 			&& die "Sorry, but gcc 4.6 or higher is required."
-	fi
-	if version_is_at_least 0.6.66 || ( [[ ${PN} == lc-monocle ]] && version_is_at_least 0.6.65 ); then
 		# 0.6.65 monocle and all later plugins require at least gcc 4.8
-		if [[ ${MERGE_TYPE} != binary ]]; then
+		if version_is_at_least 0.6.66 || ( [[ ${PN} == lc-monocle ]] && version_is_at_least 0.6.65 ); then
 			[[ $(gcc-major-version) -lt 4 ]] || \
 					( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 8 ]] ) \
 				&& die "Sorry, but gcc 4.8 or higher is required."
