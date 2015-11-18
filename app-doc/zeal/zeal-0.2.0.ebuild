@@ -18,15 +18,16 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	app-arch/libarchive
-	>=dev-qt/qtconcurrent-5.2.0:5
-	>=dev-qt/qtgui-5.4.0:5
-	>=dev-qt/qtnetwork-5.4.0
-	>=dev-qt/qtsql-5.4.0:5
-	>=dev-qt/qtwebkit-5.4.0:5
-	>=dev-qt/qtwidgets-5.4.0:5
-	>=dev-qt/qtx11extras-5.4.0:5
+	dev-qt/qtconcurrent:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtsql:5
+	dev-qt/qtwebkit:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtx11extras:5
 	>=x11-libs/xcb-util-keysyms-0.3.9
 "
+
 RDEPEND="
 	${DEPEND}
 	x11-themes/hicolor-icon-theme
