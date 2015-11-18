@@ -13,7 +13,7 @@ SRC_URI="http://www.lysator.liu.se/~nisse/archive/${P}.tar.gz"
 
 LICENSE="|| ( LGPL-3 LGPL-2.1 )"
 SLOT="0/6" # subslot = libnettle soname version
-KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~x86-solaris"
 IUSE="doc +gmp neon static-libs test cpu_flags_x86_aes"
 
 DEPEND="gmp? ( dev-libs/gmp:0[${MULTILIB_USEDEP}] )"
