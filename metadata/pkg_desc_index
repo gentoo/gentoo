@@ -7219,7 +7219,7 @@ dev-python/logutils 0.3.3: The logutils package provides a set of handlers for t
 dev-python/louie 1.1 1.1-r1: Signal dispatching mechanism for Python
 dev-python/lp_solve 5.5.2.0-r1: Python wrappers for lpsolve linear programming library
 dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine written in Python
-dev-python/lxml 3.4.1 3.4.4 3.5.0: A Pythonic binding for the libxml2 and libxslt libraries
+dev-python/lxml 3.4.4 3.5.0: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.6.1 0.7.0: LZ4 Bindings for Python
 dev-python/m2crypto 0.22.3-r4 0.22.3-r5: M2Crypto: A Python crypto and SSL toolkit
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
@@ -13369,7 +13369,7 @@ net-analyzer/gnu-netcat 0.7.1-r3: the GNU network swiss army knife
 net-analyzer/goaccess 0.5-r1 0.6.1 0.8.5 0.9: A real-time web log analyzer and interactive viewer that runs in a terminal
 net-analyzer/gr-fosphor 9999: gnuradio fosphor block (GPU spectrum display)
 net-analyzer/graphite-web 0.9.13-r1: Enterprise scalable realtime graphing
-net-analyzer/greenbone-security-assistant 5.0.7 5.0.8 6.0.3 6.0.4 6.0.5: Greenbone Security Assistant for openvas
+net-analyzer/greenbone-security-assistant 6.0.6: Greenbone Security Assistant for openvas
 net-analyzer/gsm-receiver 9999: GSM receiver block from the airprobe suite
 net-analyzer/gspoof 3.2-r2: A simple GTK/command line TCP/IP packet generator
 net-analyzer/hping 3_pre20051105-r3 3_pre20051105-r5: A ping-like TCP/IP packet assembler/analyzer
@@ -13485,11 +13485,11 @@ net-analyzer/nttcp 1.47-r1 1.47-r3: tool to test TCP and UDP throughput
 net-analyzer/odhcploc 20111021: Open DHCP Locator
 net-analyzer/oinkmaster 2.0: Rule management for SNORT
 net-analyzer/openbsd-netcat 1.84: the OpenBSD network swiss army knife
-net-analyzer/openvas 7.0.10 7.0.11 8.0.3 8.0.4: A remote security scanner
-net-analyzer/openvas-cli 1.3.1 1.4.0 1.4.2: A remote security scanner for Linux (OpenVAS-cli)
-net-analyzer/openvas-libraries 7.0.10 8.0.3 8.0.4: A remote security scanner for Linux (openvas-libraries)
-net-analyzer/openvas-manager 5.0.10 5.0.11 6.0.3 6.0.4 6.0.5: A remote security scanner for Linux (openvas-manager)
-net-analyzer/openvas-scanner 4.0.6 4.0.7 5.0.3 5.0.4: A remote security scanner for Linux (OpenVAS-scanner)
+net-analyzer/openvas 8.0.5: A remote security scanner
+net-analyzer/openvas-cli 1.4.3: A remote security scanner for Linux (OpenVAS-cli)
+net-analyzer/openvas-libraries 8.0.5: A remote security scanner for Linux (openvas-libraries)
+net-analyzer/openvas-manager 6.0.6: A remote security scanner for Linux (openvas-manager)
+net-analyzer/openvas-scanner 5.0.4: A remote security scanner for Linux (OpenVAS-scanner)
 net-analyzer/openvas-tools 0_pre20512: A remote security scanner for Linux (extra tools)
 net-analyzer/ospd 1.0.0: Collection of scanner wrappers for OpenVAS
 net-analyzer/ostinato 0.5.1: A packet generator and analyzer
