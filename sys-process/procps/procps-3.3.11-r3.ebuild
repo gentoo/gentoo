@@ -39,12 +39,11 @@ S="${WORKDIR}/${PN}-ng-${PV}"
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-3.3.8-kill-neg-pid.patch # http://crbug.com/255209
 	epatch "${DISTDIR}"/${P}-remove_Unix98_output_limits.patch # 555200
+	epatch "${FILESDIR}"/${P}-sysctl-manpage.patch # 565304
 }
 
 src_configure() {
 	econf \
-		--bindir="${EPREFIX}"/bin \
-		--sbindir="${EPREFIX}"/sbin \
 		--docdir='$(datarootdir)'/doc/${PF} \
 		$(use_enable modern-top) \
 		$(use_with ncurses) \
@@ -62,6 +61,9 @@ src_test() {
 src_install() {
 	default
 	#dodoc sysctl.conf
+
+	dodir /bin
+	mv "${ED}"/usr/bin/{ps,kill} "${ED}"/bin || die
 
 	gen_usr_ldscript -a procps
 	prune_libtool_files
