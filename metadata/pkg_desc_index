@@ -1311,7 +1311,7 @@ app-emulation/ski 1.3.2 1.3.2-r1: ia64 instruction set simulator
 app-emulation/skyeye 1.0.0: an ARM embedded hardware simulator
 app-emulation/softgun 0.21 0.22: ARM software emulator
 app-emulation/spectemu 0.99.3 0.99.3-r1: 48k ZX Spectrum Emulator
-app-emulation/spice 0.12.5-r1 0.12.6-r1: SPICE server and client
+app-emulation/spice 0.12.6-r1: SPICE server and client
 app-emulation/spice-protocol 0.12.3 0.12.9 0.12.10: Headers defining the SPICE protocol
 app-emulation/spice-vdagent 0.12.0 0.16.0: SPICE VD Linux Guest Agent
 app-emulation/spim 8.0-r1: MIPS Simulator
