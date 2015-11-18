@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools eutils libtool cmake-utils linux-info
+inherit eutils cmake-utils linux-info
 
 DESCRIPTION="An advanced, highly configurable system monitor for X"
 HOMEPAGE="https://github.com/brndnmtthws/conky"
@@ -77,41 +77,45 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}/${P}-cmake.patch"
+	epatch "${FILESDIR}/${P}-includefiles.patch"
 
 	# Allow user patches #478482
-	# Only run autotools if user patched something
-	epatch_user && eautoreconf || elibtoolize
+	epatch_user
 }
 
 src_configure() {
 	local mycmakeargs
 
 	if use X; then
-		mycmakeargs="-DBUILD_X11=ON"
-		mycmakeargs="${mycmakeargs} -DOWN_WINDOW=ON"
-		mycmakeargs="${mycmakeargs} -DBUILD_XDAMAGE=ON"
-		mycmakeargs="${mycmakeargs} -DBUILD_XDBE=ON"
-		mycmakeargs="${mycmakeargs} $(cmake-utils_use_build truetype XFT)"
-		mycmakeargs="${mycmakeargs} $(cmake-utils_use_build imlib IMLIB2)"
-		mycmakeargs="${mycmakeargs} -DBUILD_XSHAPE=ON"
-		mycmakeargs="${mycmakeargs} -DBUILD_ARGB=ON"
-		mycmakeargs="${mycmakeargs} $(cmake-utils_use_build lua-cairo LUA_CAIRO)"
-		mycmakeargs="${mycmakeargs} $(cmake-utils_use_build lua-imlib LUA_IMLIB2)"
-		mycmakeargs="${mycmakeargs} $(cmake-utils_use_build lua-rsvg LUA_RSVG)"
-		mycmakeargs="${mycmakeargs} $(cmake-utils_use_build nvidia)"
-		mycmakeargs="${mycmakeargs} $(cmake-utils_use_build audacious)"
-		mycmakeargs="${mycmakeargs} $(cmake-utils_use_build xmms2)"
+		mycmakeargs=(
+			-DBUILD_X11=ON
+			-DOWN_WINDOW=ON
+			-DBUILD_XDAMAGE=ON
+			-DBUILD_XDBE=ON
+			$(cmake-utils_use_build truetype XFT)
+			$(cmake-utils_use_build imlib IMLIB2)
+			-DBUILD_XSHAPE=ON
+			-DBUILD_ARGB=ON
+			$(cmake-utils_use_build lua-cairo LUA_CAIRO)
+			$(cmake-utils_use_build lua-imlib LUA_IMLIB2)
+			$(cmake-utils_use_build lua-rsvg LUA_RSVG)
+			$(cmake-utils_use_build nvidia)
+			$(cmake-utils_use_build audacious)
+			$(cmake-utils_use_build xmms2)
+		)
 	else
-		mycmakeargs="-DBUILD_X11=OFF"
-		mycmakeargs="${mycmakeargs} -DBUILD_NVIDIA=OFF"
-		mycmakeargs="${mycmakeargs} -DBUILD_LUA_CAIRO=OFF"
-		mycmakeargs="${mycmakeargs} -DBUILD_LUA_IMLIB2=OFF"
-		mycmakeargs="${mycmakeargs} -DBUILD_LUA_RSVG=OFF"
-		mycmakeargs="${mycmakeargs} -DBUILD_AUDACIOUS=OFF"
-		mycmakeargs="${mycmakeargs} -DBUILD_XMMS2=OFF"
+		mycmakeargs=(
+			-DBUILD_X11=OFF
+			-DBUILD_NVIDIA=OFF
+			-DBUILD_LUA_CAIRO=OFF
+			-DBUILD_LUA_IMLIB2=OFF
+			-DBUILD_LUA_RSVG=OFF
+			-DBUILD_AUDACIOUS=OFF
+			-DBUILD_XMMS2=OFF
+		)
 	fi
 
-	mycmakeargs="${mycmakeargs}
+	mycmakeargs+=(
 		$(cmake-utils_use_build apcupsd)
 		$(cmake-utils_use_build debug)
 		$(cmake-utils_use_build cmus)
@@ -142,7 +146,7 @@ src_configure() {
 		-DBUILD_AUDACIOUS_LEGACY=OFF
 		-DBUILD_BMPX=OFF
 		-DDOC_PATH=/usr/share/doc/${PF}
-	"
+	)
 
 	cmake-utils_src_configure
 }
