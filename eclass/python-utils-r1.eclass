@@ -894,7 +894,7 @@ python_wrapper_setup() {
 		# note: we don't use symlinks because python likes to do some
 		# symlink reading magic that breaks stuff
 		# https://bugs.gentoo.org/show_bug.cgi?id=555752
-		cat > "${workdir}/bin/python" <<-_EOF_
+		cat > "${workdir}/bin/python" <<-_EOF_ || die
 			#!/bin/sh
 			exec "${PYTHON}" "\${@}"
 		_EOF_
@@ -907,7 +907,7 @@ python_wrapper_setup() {
 		if [[ ${EPYTHON} == python* ]]; then
 			python_export "${impl}" PYTHON_CONFIG
 
-			cat > "${workdir}/bin/python-config" <<-_EOF_
+			cat > "${workdir}/bin/python-config" <<-_EOF_ || die
 				#!/bin/sh
 				exec "${PYTHON_CONFIG}" "\${@}"
 			_EOF_
@@ -929,7 +929,7 @@ python_wrapper_setup() {
 
 		local x
 		for x in "${nonsupp[@]}"; do
-			cat >"${workdir}"/bin/${x} <<__EOF__
+			cat >"${workdir}"/bin/${x} <<__EOF__ || die
 #!/bin/sh
 echo "${x} is not supported by ${EPYTHON}" >&2
 exit 127
