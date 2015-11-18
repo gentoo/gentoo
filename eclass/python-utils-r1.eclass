@@ -33,7 +33,8 @@ fi
 
 if [[ ! ${_PYTHON_UTILS_R1} ]]; then
 
-inherit eutils multilib toolchain-funcs
+[[ ${EAPI:-0} == [012345] ]] && inherit eutils
+inherit multilib toolchain-funcs
 
 # @ECLASS-VARIABLE: _PYTHON_ALL_IMPLS
 # @INTERNAL
@@ -1142,12 +1143,17 @@ python_fix_shebang() {
 		done < <(find -H "${path}" -type f -print0 || die)
 
 		if [[ ! ${any_fixed} ]]; then
-			eqawarn "QA warning: ${FUNCNAME}, ${path#${D}} did not match any fixable files."
+			local cmd=eerror
+			[[ ${EAPI:-0} == [012345] ]] && cmd=eqawarn
+
+			"${cmd}" "QA warning: ${FUNCNAME}, ${path#${D}} did not match any fixable files."
 			if [[ ${any_correct} ]]; then
-				eqawarn "All files have ${EPYTHON} shebang already."
+				"${cmd}" "All files have ${EPYTHON} shebang already."
 			else
-				eqawarn "There are no Python files in specified directory."
+				"${cmd}" "There are no Python files in specified directory."
 			fi
+
+			[[ ${cmd} == eerror ]] && die "${FUNCNAME} did not match any fixable files (QA warning fatal in EAPI ${EAPI})"
 		fi
 	done
 }
