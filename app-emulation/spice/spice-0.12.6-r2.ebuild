@@ -8,17 +8,16 @@ PYTHON_COMPAT=( python2_7 python3_4 )
 
 inherit eutils python-any-r1
 
-DESCRIPTION="SPICE server and client"
+DESCRIPTION="SPICE server"
 HOMEPAGE="http://spice-space.org/"
 SRC_URI="http://spice-space.org/download/releases/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="client libressl sasl smartcard static-libs" # static
+IUSE="libressl sasl smartcard static-libs"
 
-# only the client links against libcacard, the libspice-server only uses the headers
-# the client cannot be built statically since alsa and qemu[smartcard] are missing static-libs
+# the libspice-server only uses the headers of libcacard
 RDEPEND="
 	>=dev-libs/glib-2.22:2[static-libs(+)?]
 	>=media-libs/celt-0.5.1.1:0.5.1[static-libs(+)?]
@@ -28,17 +27,7 @@ RDEPEND="
 	>=x11-libs/pixman-0.17.7[static-libs(+)?]
 	!libressl? ( dev-libs/openssl:0[static-libs(+)?] )
 	libressl? ( dev-libs/libressl[static-libs(+)?] )
-	sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] )
-	client? (
-		media-libs/alsa-lib
-		>=x11-libs/libXrandr-1.2
-		x11-libs/libX11
-		x11-libs/libXext
-		>=x11-libs/libXinerama-1.0
-		x11-libs/libXfixes
-		x11-libs/libXrender
-		smartcard? ( app-emulation/qemu[smartcard] )
-	)"
+	sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] )"
 
 DEPEND="
 	>=app-emulation/spice-protocol-0.12.10
@@ -71,12 +60,9 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable static-libs static) \
-		$(use_enable client) \
 		$(use_with sasl) \
 		$(use_enable smartcard) \
-		--disable-gui \
-		--disable-static-linkage
-#		$(use_enable static static-linkage) \
+		--disable-gui
 }
 
 src_install() {
