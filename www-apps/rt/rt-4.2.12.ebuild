@@ -21,6 +21,7 @@ DEPEND="
 	>=dev-lang/perl-5.10.1
 
 	>=dev-perl/Apache-Session-1.53
+	>=dev-perl/CGI-4
 	>=dev-perl/CSS-Squish-0.06
 	>=dev-perl/Class-Accessor-0.34
 	>=dev-perl/Class-ReturnValue-0.550.0-r1
@@ -33,6 +34,7 @@ DEPEND="
 	>=dev-perl/HTML-Scrubber-0.08
 	>=dev-perl/HTTP-Server-Simple-0.34
 	>=dev-perl/HTTP-Server-Simple-Mason-0.14
+	>=dev-perl/Locale-Maketext-Lexicon-0.32
 	>=dev-perl/Log-Dispatch-2.410.0
 	>=dev-perl/MIME-tools-5.425
 	>=dev-perl/MailTools-1.60
@@ -44,8 +46,6 @@ DEPEND="
 	>=dev-perl/Tree-Simple-1.04
 	>=dev-perl/XML-RSS-1.05
 	>=dev-perl/dbix-searchbuilder-1.660.0
-	>=dev-perl/Locale-Maketext-Lexicon-0.32
-	>=dev-perl/CGI-4
 	>=virtual/perl-Digest-MD5-2.27
 	>=virtual/perl-Encode-2.730.0
 	>=virtual/perl-File-Spec-0.8
@@ -69,9 +69,9 @@ DEPEND="
 	dev-perl/Email-Address-List
 	dev-perl/File-ShareDir
 	dev-perl/File-Which
-	dev-perl/GD
 	dev-perl/GDGraph
 	dev-perl/GDTextUtil
+	dev-perl/GD[png,gif]
 	dev-perl/GnuPG-Interface
 	dev-perl/GraphViz
 	dev-perl/HTML-Format
@@ -95,6 +95,7 @@ DEPEND="
 	dev-perl/Starlet
 	dev-perl/String-ShellQuote
 	dev-perl/TermReadKey
+	dev-perl/Text-Autoformat
 	dev-perl/Text-Password-Pronounceable
 	dev-perl/Time-modules
 	dev-perl/TimeDate
@@ -103,7 +104,6 @@ DEPEND="
 	dev-perl/locale-maketext-fuzzy
 	dev-perl/net-server
 	dev-perl/regexp-common
-	dev-perl/Text-Autoformat
 	dev-perl/text-template
 	dev-perl/text-wrapper
 	virtual/perl-Digest
