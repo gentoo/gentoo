@@ -4326,7 +4326,7 @@ dev-lang/cilk 5.4.6-r1: Language for multithreaded parallel programming based on
 dev-lang/cll1h 0.6-r1: C<<1 programming language system
 dev-lang/clojure 1.5.1 1.6.0 1.7.0: Clojure is a dynamic programming language that targets the Java Virtual Machine
 dev-lang/closure-compiler-bin 20120305 20121212 20130227 20130411 20150126: JavaScript optimizing compiler
-dev-lang/coffee-script 1.9.3-r1: A little language that compiles into javascript
+dev-lang/coffee-script 1.9.3-r1 1.10.0: A little language that compiles into javascript
 dev-lang/confluence 0.10.6: Functional programming language for reactive system design (digital logic, hard-real-time software)
 dev-lang/crystal 0.7.7 0.8.0: The Crystal Programming Language
 dev-lang/dmd-bin 1.016 2.008-r1: Digital Mars D Compiler
