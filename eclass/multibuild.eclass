@@ -146,6 +146,8 @@ multibuild_foreach_variant() {
 multibuild_parallel_foreach_variant() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EAPI} == [45] ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}"
+
 	multibuild_foreach_variant "${@}"
 }
 
