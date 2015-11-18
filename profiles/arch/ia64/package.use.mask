@@ -2,6 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Justin Lecher <jlec@gentoo.org> (18 Nov 2015)
+# requires dev-python/restkit which requires
+# dev-python/socketpool which requires dev-python/gevent which requires
+# dev-python/greenlet which has not been ported
+dev-python/wsgiproxy2 test
+dev-python/pyquery test
+
 # Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
 # Missing keywords
 >=media-plugins/grilo-plugins-0.2.16 upnp-av
