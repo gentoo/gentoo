@@ -13,7 +13,7 @@ HOMEPAGE="http://toxygen.net/libgadu/"
 SRC_URI="https://github.com/wojtekka/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="amd64 arm ~mips ppc ppc64 sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 arm ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos"
 SLOT="0"
 IUSE="doc gnutls ssl static-libs test threads"
 
