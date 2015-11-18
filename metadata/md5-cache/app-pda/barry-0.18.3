@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare
-DEPEND=>=dev-cpp/libxmlpp-2.6 >=dev-libs/glib-2 >=dev-libs/libtar-1.2.11-r2 >=media-libs/libsdl-1.2 >=sys-fs/fuse-2.5 sys-libs/zlib virtual/libusb:1 boost? ( >=dev-libs/boost-1.33 ) desktop? ( >=net-libs/libgcal-0.9.6 ) gui? ( dev-cpp/glibmm:2 dev-cpp/gtkmm:2.4 dev-cpp/libglademm:2.4 ) opensync? ( ~app-pda/libopensync-0.22 ) virtual/pkgconfig doc? ( >=app-doc/doxygen-1.5.6 ) nls? ( >=sys-devel/gettext-0.18.1.1 ) >=sys-apps/sed-4 virtual/pkgconfig
+DEPEND=>=dev-cpp/libxmlpp-2.6 >=dev-libs/glib-2 >=dev-libs/libtar-1.2.11-r2 >=media-libs/libsdl-1.2 >=sys-fs/fuse-2.5 sys-libs/zlib virtual/libusb:1 boost? ( >=dev-libs/boost-1.33 ) desktop? ( >=net-libs/libgcal-0.9.6 ) gui? ( dev-cpp/glibmm:2 dev-cpp/gtkmm:2.4 dev-cpp/libglademm:2.4 ) virtual/pkgconfig doc? ( >=app-doc/doxygen-1.5.6 ) nls? ( >=sys-devel/gettext-0.18.1.1 ) >=sys-apps/sed-4 virtual/pkgconfig
 DESCRIPTION=Sync, backup, program management, and charging for BlackBerry devices
 EAPI=5
 HOMEPAGE=http://www.netdirect.ca/software/packages/barry/
-IUSE=boost desktop doc gui opensync nls static-libs
+IUSE=boost desktop doc gui nls static-libs
 KEYWORDS=~amd64 ~x86
 LICENSE=CC-BY-SA-3.0 GPL-2
-RDEPEND=>=dev-cpp/libxmlpp-2.6 >=dev-libs/glib-2 >=dev-libs/libtar-1.2.11-r2 >=media-libs/libsdl-1.2 >=sys-fs/fuse-2.5 sys-libs/zlib virtual/libusb:1 boost? ( >=dev-libs/boost-1.33 ) desktop? ( >=net-libs/libgcal-0.9.6 ) gui? ( dev-cpp/glibmm:2 dev-cpp/gtkmm:2.4 dev-cpp/libglademm:2.4 ) opensync? ( ~app-pda/libopensync-0.22 )
+RDEPEND=>=dev-cpp/libxmlpp-2.6 >=dev-libs/glib-2 >=dev-libs/libtar-1.2.11-r2 >=media-libs/libsdl-1.2 >=sys-fs/fuse-2.5 sys-libs/zlib virtual/libusb:1 boost? ( >=dev-libs/boost-1.33 ) desktop? ( >=net-libs/libgcal-0.9.6 ) gui? ( dev-cpp/glibmm:2 dev-cpp/gtkmm:2.4 dev-cpp/libglademm:2.4 )
 SLOT=0
 SRC_URI=mirror://sourceforge/barry/barry-0.18.3.tar.bz2
 _eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	f813d23e417656bf3917483643165d5a	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	udev	37ef89be271b9ae8aa64be024ddb39b5
-_md5_=e9b3e1c75bb16e5b14af4974b8328ac8
+_md5_=6194e2613f9dd28d387a04cd88c2d210

@@ -1,13 +1,12 @@
 DEFINED_PHASES=compile install postinst postrm prepare setup
-DEPEND=app-pda/synce-core[python] >=dev-libs/librra-0.16[python] >=dev-libs/librtfcomp-1.2[python] dev-libs/libxml2[python] dev-libs/libxslt[python] dev-python/dbus-python dev-python/pygobject:2 opensync? ( || ( >=app-pda/libopensync-0.39[python] ( =app-pda/libopensync-0.22*[python] app-pda/libopensync-plugin-python ) ) ) =dev-lang/python-2.7*
+DEPEND=app-pda/synce-core[python] >=dev-libs/librra-0.16[python] >=dev-libs/librtfcomp-1.2[python] dev-libs/libxml2[python] dev-libs/libxslt[python] dev-python/dbus-python dev-python/pygobject:2 =dev-lang/python-2.7*
 DESCRIPTION=A synchronization engine for SynCE
 EAPI=4
 HOMEPAGE=http://sourceforge.net/projects/synce/
-IUSE=opensync
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=app-pda/synce-core[python] >=dev-libs/librra-0.16[python] >=dev-libs/librtfcomp-1.2[python] dev-libs/libxml2[python] dev-libs/libxslt[python] dev-python/dbus-python dev-python/pygobject:2 opensync? ( || ( >=app-pda/libopensync-0.39[python] ( =app-pda/libopensync-0.22*[python] app-pda/libopensync-plugin-python ) ) ) =dev-lang/python-2.7*
+RDEPEND=app-pda/synce-core[python] >=dev-libs/librra-0.16[python] >=dev-libs/librtfcomp-1.2[python] dev-libs/libxml2[python] dev-libs/libxslt[python] dev-python/dbus-python dev-python/pygobject:2 =dev-lang/python-2.7*
 SLOT=0
 SRC_URI=mirror://sourceforge/synce/synce-sync-engine-0.15.1.tar.gz
 _eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	3972ca401cf7dbb430df9995f5d8d580	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=b3047461054ba8c6f8e9e57ec89036b5
+_md5_=97de978e0f02efc1cabe4a8da1b35a4a
