@@ -17039,7 +17039,7 @@ sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.2: A utility for parallelizing execution of shell functions
 sys-process/procenv 0.35 0.36 0.39: A command-line utility that simply dumps all attributes of its environment
 sys-process/procexp 1.5.277: Graphical process explorer
-sys-process/procps 3.3.9-r2 3.3.10-r1 3.3.11-r2: standard informational utilities and process-handling tools
+sys-process/procps 3.3.9-r2 3.3.10-r1 3.3.11-r3: standard informational utilities and process-handling tools
 sys-process/psinfo 0.12: Process information and statistics using the kernel /proc interface
 sys-process/psmisc 22.16 22.20 22.21-r2: A set of tools that use the proc filesystem
 sys-process/runit 2.1.1-r1 2.1.2: A UNIX init scheme with service supervision
