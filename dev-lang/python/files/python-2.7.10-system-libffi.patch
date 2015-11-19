@@ -1,0 +1,36 @@
+make sure we respect the system libffi setting in our build config.
+the compiler probing is fragile and can break in some situations.
+
+--- a/setup.py
++++ b/setup.py
+@@ -2069,7 +2069,7 @@ class PyBuildExt(build_ext):
+         return True
+ 
+     def detect_ctypes(self, inc_dirs, lib_dirs):
+-        self.use_system_libffi = False
++        self.use_system_libffi = ('--with-system-ffi' in sysconfig.get_config_var("CONFIG_ARGS"))
+         include_dirs = []
+         extra_compile_args = []
+         extra_link_args = []
+@@ -2113,7 +2113,7 @@ class PyBuildExt(build_ext):
+                              sources=['_ctypes/_ctypes_test.c'])
+         self.extensions.extend([ext, ext_test])
+ 
+-        if not '--with-system-ffi' in sysconfig.get_config_var("CONFIG_ARGS"):
++        if not self.use_system_libffi:
+             return
+ 
+         if host_platform == 'darwin':
+@@ -2141,10 +2141,10 @@ class PyBuildExt(build_ext):
+                     ffi_lib = lib_name
+                     break
+ 
+-        if ffi_inc and ffi_lib:
++        if ffi_inc:
+             ext.include_dirs.extend(ffi_inc)
++        if ffi_lib:
+             ext.libraries.append(ffi_lib)
+-            self.use_system_libffi = True
+ 
+ 
+ class PyBuildInstall(install):
