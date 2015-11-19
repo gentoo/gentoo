@@ -7767,6 +7767,7 @@ www-apps/viewvc:pygments - Add dev-python/pygments support for syntax highlighti
 www-apps/webdavcgi:rcs - Adds support for a revision controlled backend with RCS (dev-vcs/rcs)
 www-apps/wordpress:akismet - Installs Akismet comment spam plug-in
 www-apps/wordpress:themes - Installs themes (including default theme)
+www-client/chromium:gn - Use GN (generate ninja) instead of GYP for building
 www-client/chromium:gtk3 - Use gtk3 instead of gtk2
 www-client/chromium:hangouts - Enable support for Google Hangouts features such as screen sharing
 www-client/chromium:hidpi - Enable support for high-resolution screens (high dots per inch)
