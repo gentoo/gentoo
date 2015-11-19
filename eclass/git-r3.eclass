@@ -11,7 +11,7 @@
 # git as remote repository.
 
 case "${EAPI:-0}" in
-	0|1|2|3|4|5)
+	0|1|2|3|4|5|6)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -314,7 +314,7 @@ _git-r3_set_gitdir() {
 	if [[ ! -d ${EGIT3_STORE_DIR} ]]; then
 		(
 			addwrite /
-			mkdir -p "${EGIT3_STORE_DIR}" || die
+			mkdir -p "${EGIT3_STORE_DIR}"
 		) || die "Unable to create ${EGIT3_STORE_DIR}"
 	fi
 

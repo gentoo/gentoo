@@ -107,10 +107,6 @@ app-office/akonadi-server qt5
 # Gentoo bug: 554484
 >=dev-lang/mono-3.12.1 doc
 
-# Michael Palimaka <kensington@gentoo.org> (12 Aug 2015)
-# Requires unreleased dependency
-kde-frameworks/kwallet gpg
-
 # Ben de Groot <yngwin@gentoo.org> (12 Aug 2015)
 # Seems to link correctly, but fails to run. Bug #557354.
 =media-sound/qsampler-0.3.1 libgig
