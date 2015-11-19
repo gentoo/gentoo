@@ -8201,14 +8201,14 @@ dev-ros/laser_cb_detector 0.10.13 9999: Extracts checkerboard corners from a den
 dev-ros/laser_filters 1.8.0 9999: Assorted filters designed to operate on 2D planar laser scanners
 dev-ros/laser_geometry 1.6.4 9999: Class for converting from a 2D laser scan into a point cloud
 dev-ros/laser_proc 0.1.4 9999: Converts representations of sensor_msgs/LaserScan and sensor_msgs/MultiEchoLaserScan
-dev-ros/libmavconn 0.15.0 0.16.0 0.16.1 9999: MAVLink communication library
+dev-ros/libmavconn 0.15.0 0.16.0 0.16.1 0.16.2 9999: MAVLink communication library
 dev-ros/librviz_tutorial 0.9.2 9999: Tutorial showing how to compile your own C++ program with RViz displays and features
 dev-ros/map_msgs 1.13.0 9999: Messages commonly used in mapping packages
 dev-ros/map_server 1.13.0 1.13.1 9999: Offers map data as a ROS service
 dev-ros/mavlink-gbp-release 2015.10.10: MAVLink message marshaling library
-dev-ros/mavros 0.15.0 0.16.0 0.16.1 9999: MAVLink extendable communication node for ROS
-dev-ros/mavros_extras 0.15.0 0.16.0 0.16.1 9999: Extra nodes and plugins for mavros
-dev-ros/mavros_msgs 0.15.0 0.16.0 0.16.1 9999: Messages for MAVROS
+dev-ros/mavros 0.15.0 0.16.0 0.16.1 0.16.2 9999: MAVLink extendable communication node for ROS
+dev-ros/mavros_extras 0.15.0 0.16.0 0.16.1 0.16.2 9999: Extra nodes and plugins for mavros
+dev-ros/mavros_msgs 0.15.0 0.16.0 0.16.1 0.16.2 9999: Messages for MAVROS
 dev-ros/message_filters 1.11.14 1.11.15 1.11.16 9999: Set of message filters which take in messages and may output those messages at a later time
 dev-ros/message_generation 0.3.0 9999: Build-time dependencies for generating language bindings of messages
 dev-ros/message_runtime 0.4.12 9999: Package modeling the run-time dependencies for language bindings of messages
@@ -8253,7 +8253,7 @@ dev-ros/qt_gui_py_common 0.2.29 9999: Common functionality for ROS RQT GUI plugi
 dev-ros/random_numbers 0.3.0 9999: Wrappers for generating floating point values, integers, quaternions using boost libraries
 dev-ros/realtime_tools 1.9.1 9999: Set of tools that can be used from a hard realtime thread, without breaking the realtime behavior
 dev-ros/resource_retriever 1.11.6 9999: Retrieves data from url-format files
-dev-ros/rgbd_launch 2.1.0 9999: Launch files to open an RGBD device
+dev-ros/rgbd_launch 2.1.0 2.1.1 9999: Launch files to open an RGBD device
 dev-ros/robot_pose_ekf 1.13.0 1.13.1 9999: Estimate the 3D pose of a robot, based on (partial) pose measurements coming from different sources
 dev-ros/robot_pose_publisher 0.2.3 9999: A Simple Node to Publish the Robot's Position Relative to the Map using TFs
 dev-ros/robot_state_publisher 1.10.4 1.12.0 9999: Package for publishing the state of a robot to tf
