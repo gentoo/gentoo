@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=|| ( dev-libs/elfutils dev-libs/libelf ) dev-cpp/gtkmm:3.0 dev-cpp/gtksourceviewmm:3.0 dev-cpp/libxmlpp:2.6 dev-cpp/glibmm dev-cpp/pangomm dev-cpp/cairomm dev-libs/libsigc++:2 dev-libs/glib:2 system-binutils? ( >=sys-devel/binutils-2.25.1-r1:*[multitarget] ) net-misc/curl
 SLOT=0
 SRC_URI=mirror://gnu/binutils/binutils-2.23.2.tar.bz2
-_eclasses_=cmake-utils	f16fa5681153277df51f001deaf17ff8	eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	git-r3	1502b9838d043db47700b8120083e637	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	f16fa5681153277df51f001deaf17ff8	eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	git-r3	b00a846f415f26e5b66e5c44c7dc87dc	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=7d690fdff2960f9766b92059f0f89138

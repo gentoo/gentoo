@@ -7,5 +7,5 @@ IUSE=debug emacs +history sloppy +xft
 LICENSE=GPL-2
 RDEPEND=emacs? ( virtual/emacs ) history? ( sys-libs/readline:= ) xft? ( x11-libs/libXft ) virtual/perl-Pod-Parser x11-libs/libXinerama x11-libs/libXtst
 SLOT=0
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	f813d23e417656bf3917483643165d5a	git-r3	1502b9838d043db47700b8120083e637	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	f813d23e417656bf3917483643165d5a	git-r3	b00a846f415f26e5b66e5c44c7dc87dc	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=5079804f675b1993b313449e296c41c6

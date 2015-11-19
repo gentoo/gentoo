@@ -10830,6 +10830,7 @@ kde-apps/dragon 4.14.3 15.08.1 15.08.2: A simple video player
 kde-apps/drkonqi 4.14.3 15.08.1 15.08.2: KDE crash handler, gives the user feedback if a program crashed
 kde-apps/ffmpegthumbs 4.14.3 15.08.1 15.08.2: A FFmpeg based thumbnail Generator for Video Files
 kde-apps/filelight 4.14.3: Visualise disk usage with interactive map of concentric, segmented rings
+kde-apps/gpgmepp 15.08.3: C++ bindings for gpgme
 kde-apps/granatier 4.14.3: KDE Bomberman game
 kde-apps/gwenview 4.14.3: KDE image viewer
 kde-apps/jovie 4.14.3: Jovie is a text to speech application
