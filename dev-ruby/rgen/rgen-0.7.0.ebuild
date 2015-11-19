@@ -20,6 +20,8 @@ KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86"
 
 ruby_add_rdepend "dev-ruby/nokogiri"
 
+ruby_add_bdepend "doc? ( >=dev-ruby/rdoc-4.2.0 )"
+
 all_ruby_prepare() {
 	# Skip Bignum test since it fails on 64bit machines. Reported
 	# upstream: https://github.com/mthiede/rgen/pull/18
