@@ -21,7 +21,7 @@ COMMON_DEPEND="
 	app-text/hunspell
 	app-text/poppler:=[qt4?,qt5?]
 	>=dev-libs/quazip-0.7.1[qt4?,qt5?]
-	dev-qt/qtsingleapplication[qt4?,qt5?]
+	dev-qt/qtsingleapplication[X,qt4?,qt5?]
 	x11-libs/libX11
 	x11-libs/libXext
 	qt4? (
