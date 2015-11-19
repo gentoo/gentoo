@@ -12,7 +12,7 @@ HOMEPAGE="https://java.net/projects/rome"
 SRC_URI="https://rome.dev.java.net/source/browse/*checkout*/rome/www/dist/${P}-src.zip"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 EANT_JAVA_ENCODING="ISO-8859-1"
@@ -48,4 +48,3 @@ src_install() {
 	use doc && java-pkg_dojavadoc dist/docs/api
 	use source && java-pkg_dosrc src/java/*
 }
-
