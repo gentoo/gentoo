@@ -5,11 +5,17 @@
 EAPI=5
 inherit vim-plugin
 
+if [[ ${PV} == "9999" ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/scrooloose/syntastic.git"
+else
+	SRC_URI="https://github.com/scrooloose/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
+
 DESCRIPTION="vim plugin: syntax checking using external tools"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=2736 https://github.com/scrooloose/syntastic/"
-SRC_URI="https://github.com/scrooloose/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="WTFPL-2"
-KEYWORDS="amd64 x86"
 
 VIM_PLUGIN_HELPFILES="${PN}"
 
