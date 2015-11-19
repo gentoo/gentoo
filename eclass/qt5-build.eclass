@@ -10,7 +10,7 @@
 # @BLURB: Eclass for Qt5 split ebuilds.
 # @DESCRIPTION:
 # This eclass contains various functions that are used when building Qt5.
-# Requires EAPI 5.
+# Requires EAPI 5 or 6.
 
 case ${EAPI} in
 	5|6)	: ;;
@@ -19,7 +19,7 @@ esac
 
 inherit eutils flag-o-matic toolchain-funcs versionator virtualx
 
-if [[ ${EAPI} == 5 ]] ; then
+if [[ ${EAPI} == 5 ]]; then
 	inherit multilib
 fi
 
@@ -202,11 +202,10 @@ qt5-build_src_prepare() {
 	fi
 
 	if [[ ${EAPI} == 5 ]]; then
-		# apply patches
 		[[ ${PATCHES[@]} ]] && epatch "${PATCHES[@]}"
 		epatch_user
 	else
-		default_src_prepare
+		default
 	fi
 }
 
@@ -617,8 +616,7 @@ qt5_base_configure() {
 
 		# disable obsolete/unused X11-related flags
 		# (not shown in ./configure -help output)
-		-no-mitshm -no-xcursor -no-xfixes -no-xinerama -no-xinput
-		-no-xrandr -no-xshape -no-xsync -no-xvideo
+		-no-mitshm -no-xcursor -no-xfixes -no-xrandr -no-xshape -no-xsync
 
 		# always enable session management support: it doesn't need extra deps
 		# at configure time and turning it off is dangerous, see bug 518262
