@@ -7,10 +7,10 @@ ROS packages are properly configured without needed to source a shellrc file in
 every shell session. This can't be done with CMAKE_PREFIX_PATH which is way too
 generic.
 
-Index: catkin-0.6.9/cmake/all.cmake
+Index: catkin-0.6.16/cmake/all.cmake
 ===================================================================
---- catkin-0.6.9.orig/cmake/all.cmake
-+++ catkin-0.6.9/cmake/all.cmake
+--- catkin-0.6.16.orig/cmake/all.cmake
++++ catkin-0.6.16/cmake/all.cmake
 @@ -52,7 +52,11 @@ set(CMAKE_PREFIX_PATH_AS_IS ${CMAKE_PREF
  
  # list of unique catkin workspaces based on CMAKE_PREFIX_PATH
@@ -24,10 +24,10 @@ Index: catkin-0.6.9/cmake/all.cmake
    if(EXISTS "${path}/.catkin")
      list(FIND CATKIN_WORKSPACES ${path} _index)
      if(_index EQUAL -1)
-Index: catkin-0.6.11/python/catkin/workspace.py
+Index: catkin-0.6.16/python/catkin/workspace.py
 ===================================================================
---- catkin-0.6.11.orig/python/catkin/workspace.py
-+++ catkin-0.6.11/python/catkin/workspace.py
+--- catkin-0.6.16.orig/python/catkin/workspace.py
++++ catkin-0.6.16/python/catkin/workspace.py
 @@ -44,7 +44,7 @@ def get_workspaces():
      """
      # get all cmake prefix paths
@@ -37,10 +37,10 @@ Index: catkin-0.6.11/python/catkin/workspace.py
      # remove non-workspace paths
      workspaces = [path for path in paths if os.path.isfile(os.path.join(path, CATKIN_MARKER_FILE))]
      return workspaces
-Index: catkin-0.6.9/cmake/catkinConfig.cmake.in
+Index: catkin-0.6.16/cmake/catkinConfig.cmake.in
 ===================================================================
---- catkin-0.6.9.orig/cmake/catkinConfig.cmake.in
-+++ catkin-0.6.9/cmake/catkinConfig.cmake.in
+--- catkin-0.6.16.orig/cmake/catkinConfig.cmake.in
++++ catkin-0.6.16/cmake/catkinConfig.cmake.in
 @@ -64,6 +64,11 @@ if(catkin_FIND_COMPONENTS)
  
        # get search paths from CMAKE_PREFIX_PATH (which includes devel space)
@@ -53,3 +53,24 @@ Index: catkin-0.6.9/cmake/catkinConfig.cmake.in
        foreach(path ${CMAKE_PREFIX_PATH})
          if(IS_DIRECTORY ${path}/share/${component}/cmake)
            list(APPEND paths ${path}/share/${component}/cmake)
+Index: catkin-0.6.16/cmake/toplevel.cmake
+===================================================================
+--- catkin-0.6.16.orig/cmake/toplevel.cmake
++++ catkin-0.6.16/cmake/toplevel.cmake
+@@ -35,10 +35,15 @@ else()
+       string(REPLACE ":" ";" CMAKE_PREFIX_PATH $ENV{CMAKE_PREFIX_PATH})
+     endif()
+   endif()
++  if(NOT DEFINED CATKIN_PREFIX_PATH)
++    if(NOT "$ENV{CATKIN_PREFIX_PATH}" STREQUAL "")
++      string(REPLACE ":" ";" CATKIN_PREFIX_PATH $ENV{CATKIN_PREFIX_PATH})
++    endif()
++  endif()
+ 
+   # list of catkin workspaces
+   set(catkin_search_path "")
+-  foreach(path ${CMAKE_PREFIX_PATH})
++  foreach(path ${CMAKE_PREFIX_PATH} ${CATKIN_PREFIX_PATH})
+     if(EXISTS "${path}/.catkin")
+       list(FIND catkin_search_path ${path} _index)
+       if(_index EQUAL -1)
