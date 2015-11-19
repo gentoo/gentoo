@@ -6,7 +6,7 @@ EAPI=5
 
 inherit cmake-utils
 
-DESCRIPTION="Generic hash library implemented in C which supports multiple collision handling methods"
+DESCRIPTION="Generic C hash library which supports multiple collision handling methods"
 HOMEPAGE="http://www.pleyades.net/david/hashit.php"
 SRC_URI="http://www.pleyades.net/david/projects/${PN}/${P}.tar.bz2"
 
