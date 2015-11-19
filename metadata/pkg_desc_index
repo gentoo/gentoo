@@ -9294,7 +9294,7 @@ dev-util/checkbashisms 2.0.0.2 2.0.0.2-r2 2.15.9: Perl script to check for commo
 dev-util/checkstyle 4.4 5.4 5.5: A development tool to help programmers write Java code that adheres to a coding standard
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/cloc 1.60 1.62 1.64: Count Lines of Code
-dev-util/cmake 2.8.12.2-r1 3.2.2 3.3.1-r1 3.3.2-r1 3.4.0: Cross platform Make
+dev-util/cmake 2.8.12.2-r1 3.2.2 3.3.1-r1 3.3.2-r1 3.4.0-r1: Cross platform Make
 dev-util/cmake-fedora 0.8.1 1.3.0: cmake modules that provides helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.10 0.16: black box tests Unix command line tools
 dev-util/cmocka 0.3.1 0.3.1-r1 0.4.1 1.0.1: A unit testing framework for C
