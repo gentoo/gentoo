@@ -1,4 +1,1 @@
-CATKIN_PREFIX_PATH=/usr
-ROS_ROOT=/usr/share/ros
-ROS_PACKAGE_PATH=/usr/share
 ROS_MASTER_URI="http://localhost:11311/"
