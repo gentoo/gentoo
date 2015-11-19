@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI="5"
+GNOME2_LA_PUNT="yes"
 GCONF_DEBUG="no"
 
 inherit autotools eutils gnome2
@@ -48,4 +49,10 @@ src_configure() {
 		--disable-static \
 		--enable-bz2 \
 		--enable-lzma
+}
+
+src_install() {
+	gnome2_src_install
+	exeinto /usr/libexec/
+	doexe "${S}"/libyelp/yelp-groff
 }
