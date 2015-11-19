@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# NP-Hardass <np-hardass@gentoo.org> (19 Nov 2015)
+# Temporarily masking due to user requests in #565884
+>=app-emulation/wine-1.7.54 gstreamer
+
 # Jason Zaman <perfinion@gentoo.org> (06 Sep 2015)
 # This is masked in base/package.use.mask as Linux only.
 sys-auth/consolekit -cgroups
