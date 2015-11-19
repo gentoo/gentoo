@@ -90,6 +90,9 @@ catkin_src_install_internal() {
 
 src_install() {
 	python_foreach_impl catkin_src_install_internal
+
+	doenvd "${FILESDIR}/40catkin"
+
 	# needed to be considered as a workspace
 	touch "${ED}/usr/.catkin"
 }
