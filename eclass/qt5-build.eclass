@@ -503,11 +503,15 @@ qt5_base_configure() {
 		-release
 		-no-separate-debug-info
 
+		# no need to forcefully build host tools in optimized mode,
+		# just follow the overall debug/release build type
+		$([[ ${QT5_MINOR_VERSION} -ge 6 ]] && echo -no-optimized-tools)
+
 		# licensing stuff
 		-opensource -confirm-license
 
-		# let configure automatically figure out if C++11 is supported
-		#-c++11
+		# autodetect the highest supported version of the C++ standard
+		#-c++std <c++11|c++14|c++1z>
 
 		# build shared libraries
 		-shared
@@ -575,9 +579,6 @@ qt5_base_configure() {
 
 		# print verbose information about each configure test
 		-verbose
-
-		# doesn't actually matter since we override CXXFLAGS
-		#-no-optimized-qmake
 
 		# obsolete flag, does nothing
 		#-nis
