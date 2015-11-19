@@ -42,6 +42,7 @@ src_configure() {
 		--prefix="${GAMES_PREFIX}" \
 		--libdir="${GAMES_PREFIX}/lib" \
 		--datadir="${GAMES_DATADIR}" \
+		--disable-tremor \
 		$(use_enable flac) \
 		$(use_enable iconv) \
 		$(use_enable iconv freetype) \
