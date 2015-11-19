@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit base fdo-mime prefix qmake-utils
+inherit fdo-mime prefix qmake-utils
 
 DESCRIPTION="Free cross-platform LaTeX editor (fork from texmakerX)"
 HOMEPAGE="http://texstudio.sourceforge.net/"
