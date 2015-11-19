@@ -4553,7 +4553,7 @@ dev-libs/guiloader-c++ 2.21.0 2.99.0: C++ binding to GuiLoader library
 dev-libs/gumbo 0.9.2 0.9.3 0.9.4 0.10.1: An implementation of the HTML5 parsing algorithm implemented as a pure C99 library
 dev-libs/hammer 9999: Hammer is a parsing library, which is bit-oriented and features several parsing backends
 dev-libs/handystats 1.11.0 1.11.1 1.11.3: C++ library for collecting user-defined in-process runtime statistics with low overhead.
-dev-libs/hashit 0.9.7 0.9.7-r1: Generic hash library implemented in C which supports multiple collision handling methods
+dev-libs/hashit 0.9.7 0.9.7-r1: Generic C hash library which supports multiple collision handling methods
 dev-libs/hidapi 0.8.0_rc1_p20140719: A multi-platform library for USB and Bluetooth HID-Class devices
 dev-libs/hiredis 0.11.0 0.11.0-r1 0.13.1: Minimalistic C client library for the Redis database
 dev-libs/http-fetcher 1.1.0: small, robust, flexible library for downloading files via HTTP using the GET method
@@ -14042,7 +14042,7 @@ net-libs/libs3 2.0-r1: A C Library API for Amazon S3
 net-libs/libsignon-glib 1.12: GLib binding for the D-Bus API provided by signond
 net-libs/libsmi 0.4.8-r1 0.5.0: A Library to Access SMI MIB Information
 net-libs/libsoup 2.48.1 2.50.0 2.52.2: An HTTP library implementation in C
-net-libs/libsoup-gnome 2.48.1 2.50.0: GNOME plugin for libsoup
+net-libs/libsoup-gnome 2.48.1 2.50.0 2.52.2: GNOME plugin for libsoup
 net-libs/libsrtp 1.4.4-r1 1.4.4-r2 1.4.4_p20121108 1.4.4_p20121108-r1 1.5.2 1.5.2-r1: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/libssh 0.6.5 0.7.0-r1 0.7.1 0.7.2 9999: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.5.0 1.6.0 1.6.0-r1 9999: Library implementing the SSH2 protocol
