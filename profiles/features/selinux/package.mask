@@ -6,6 +6,8 @@
 sys-apps/systemd
 app-admin/calamares
 dev-python/python-systemd
+gnome-base/gdm
+gnome-base/gnome
 gnome-extra/gnome-logs
 gnome-extra/office-runner
 kde-misc/systemd-kcm
