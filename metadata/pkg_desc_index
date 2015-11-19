@@ -3777,7 +3777,7 @@ dev-java/commons-io 2.4: Commons-IO contains utility classes, stream implementat
 dev-java/commons-jelly 1.0-r8: A Java and XML based scripting and processing engine
 dev-java/commons-jexl 1.1-r1 2.1.1: Expression language engine, can be embedded in applications and frameworks
 dev-java/commons-jxpath 1.3-r1 1.3-r2: Applies XPath expressions to graphs of objects of all kinds
-dev-java/commons-lang 2.0-r2 2.6 3.1 3.3.2: Commons components to manipulate core java classes
+dev-java/commons-lang 2.0-r2 2.6 2.6-r1 3.1 3.3.2: Commons components to manipulate core java classes
 dev-java/commons-launcher 1.1-r1: Commons-launcher eliminates the need for a batch or shell script to launch a Java class
 dev-java/commons-logging 1.2: The Jakarta-Commons Logging package is an ultra-thin bridge between different logging libraries
 dev-java/commons-math 2.1-r1 3.2: Lightweight, self-contained mathematics and statistics components
@@ -4185,7 +4185,7 @@ dev-java/relaxngcc 1.12-r2 1.12-r3: RELAX NG Compiler Compiler
 dev-java/resin-servlet-api 3.0.25 3.1.12 4.0.26 4.0.27 4.0.44 4.0.46: Resin Servlet API 3.0/JSP API 2.1 implementation
 dev-java/rhino 1.7.7-r1: An open-source implementation of JavaScript written in Java
 dev-java/rngom 20051226: RNGOM is an open-source Java library for parsing RELAX NG grammars
-dev-java/rome 0.9 0.9-r1: Open source Atom/RSS Java utilities that make it easy to work in Java with most syndication formats
+dev-java/rome 0.9-r2: Open source Atom/RSS Java utilities that make it easy to work in Java with most syndication formats
 dev-java/rundoc 0.11: A Ant helper task for keeping documentation in source files
 dev-java/rxtx 2.1.7.2-r3 2.2_pre2: Native lib providing serial and parallel communication for Java
 dev-java/saaj 1.3.19-r1: SOAP with Attachments API for Java
@@ -4281,7 +4281,7 @@ dev-java/velocity 1.7 1.7-r1: A Java-based template engine for easy creation/ren
 dev-java/vldocking 3.0.5: Docking solution for Java Swing
 dev-java/webgraph 1.4.1-r1: WebGraph is a framework to study the web graph
 dev-java/werken-xpath 0.9.4_beta-r2 0.9.4_beta-r3: W3C XPath-Rec implementation for DOM4J
-dev-java/ws-commons-util 1.0.1: Utility classes that allow high performance XML processing based on SAX
+dev-java/ws-commons-util 1.0.1 1.0.1-r1: Utility classes that allow high performance XML processing based on SAX
 dev-java/wsdl4j 1.6.2: Web Services Description Language for Java Toolkit (WSDL4J)
 dev-java/wstx 3.2.9 3.2.9-r1: Woodstox is a high-performance validating namespace-aware XML-processor
 dev-java/xalan 2.7.2: Apache's XSLT processor for transforming XML documents into HTML, text, or other XML document types
