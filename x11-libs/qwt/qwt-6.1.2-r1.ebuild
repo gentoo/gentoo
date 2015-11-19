@@ -8,7 +8,7 @@ inherit eutils multibuild multilib qmake-utils
 
 MY_P="${PN}-${PV/_/-}"
 
-DESCRIPTION="2D plotting library for Qt4"
+DESCRIPTION="2D plotting library for Qt4 and Qt5"
 HOMEPAGE="http://qwt.sourceforge.net/"
 SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV/_/-}/${MY_P}.tar.bz2"
 
