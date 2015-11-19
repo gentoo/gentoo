@@ -81,6 +81,14 @@ DOCS=(README.rst AUTHORS)
 
 REQUIRED_USE="|| ( raet zeromq )"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2015.8.0-remove-pydsl-includes-test.patch"
+	"${FILESDIR}/${PN}-2015.8.0-remove-buggy-tests.patch"
+	"${FILESDIR}/${PN}-2015.5.5-auth-tests.patch"
+	"${FILESDIR}/${PN}-2015.5.5-cron-tests.patch"
+	"${FILESDIR}/${PN}-2015.5.5-remove-buggy-tests.patch"
+)
+
 python_prepare() {
 	# this test fails because it trys to "pip install distribute"
 	rm tests/unit/{modules,states}/zcbuildout_test.py \

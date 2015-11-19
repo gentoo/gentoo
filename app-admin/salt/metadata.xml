@@ -21,7 +21,6 @@ Between the remote execution system, and state management Salt addresses the
 backbone of cloud and data center management.
   </longdescription>
   <use>
-    <flag name="api">Enable support for salt-api.</flag>
     <flag name="cherrypy">Enable support for using cherrypy.</flag>
     <flag name="libcloud">Enable salt-cloud support via libcloud.</flag>
     <flag name="libvirt">Support managing virtual machines with app-emulation/libvirt.</flag>
