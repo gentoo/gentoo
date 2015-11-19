@@ -314,7 +314,7 @@ _git-r3_set_gitdir() {
 	if [[ ! -d ${EGIT3_STORE_DIR} ]]; then
 		(
 			addwrite /
-			mkdir -p "${EGIT3_STORE_DIR}" || die
+			mkdir -p "${EGIT3_STORE_DIR}"
 		) || die "Unable to create ${EGIT3_STORE_DIR}"
 	fi
 
