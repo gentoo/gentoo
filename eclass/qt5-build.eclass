@@ -13,11 +13,15 @@
 # Requires EAPI 5.
 
 case ${EAPI} in
-	5)	: ;;
+	5|6)	: ;;
 	*)	die "qt5-build.eclass: unsupported EAPI=${EAPI:-0}" ;;
 esac
 
-inherit eutils flag-o-matic multilib toolchain-funcs versionator virtualx
+inherit eutils flag-o-matic toolchain-funcs versionator virtualx
+
+if [[ ${EAPI} == 5 ]] ; then
+	inherit multilib
+fi
 
 HOMEPAGE="https://www.qt.io/"
 LICENSE="|| ( LGPL-2.1 LGPL-3 ) FDL-1.3"
@@ -197,9 +201,13 @@ qt5-build_src_prepare() {
 			src/{corelib/corelib,gui/gui}.pro || die "sed failed (optimize_full)"
 	fi
 
-	# apply patches
-	[[ ${PATCHES[@]} ]] && epatch "${PATCHES[@]}"
-	epatch_user
+	if [[ ${EAPI} == 5 ]]; then
+		# apply patches
+		[[ ${PATCHES[@]} ]] && epatch "${PATCHES[@]}"
+		epatch_user
+	else
+		default_src_prepare
+	fi
 }
 
 # @FUNCTION: qt5-build_src_configure
