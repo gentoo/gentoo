@@ -936,11 +936,11 @@ python_wrapper_setup() {
 
 		local x
 		for x in "${nonsupp[@]}"; do
-			cat >"${workdir}"/bin/${x} <<__EOF__ || die
-#!/bin/sh
-echo "${x} is not supported by ${EPYTHON}" >&2
-exit 127
-__EOF__
+			cat >"${workdir}"/bin/${x} <<-_EOF_ || die
+				#!/bin/sh
+				echo "${x} is not supported by ${EPYTHON}" >&2
+				exit 127
+			_EOF_
 			chmod +x "${workdir}"/bin/${x} || die
 		done
 
