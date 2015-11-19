@@ -15,7 +15,6 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-EANT_JAVA_ENCODING="ISO-8859-1"
 CDEPEND="dev-java/jdom:1.0"
 
 DEPEND="
@@ -28,8 +27,10 @@ RDEPEND="
 	${CDEPEND}
 	>=virtual/jre-1.6"
 
-JAVA_ANT_REWRITE_CLASSPATH="true"
 EANT_GENTOO_CLASSPATH="jdom-1.0"
+
+JAVA_ANT_REWRITE_CLASSPATH="true"
+JAVA_ANT_ENCODING="ISO-8859-1"
 
 java_prepare() {
 	# Patch build.xml so the tests pass
