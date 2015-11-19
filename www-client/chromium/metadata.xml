@@ -4,6 +4,7 @@
 	<herd>chromium</herd>
 	<longdescription>Chromium is the open-source web browser project behind Google Chrome</longdescription>
 	<use>
+		<flag name="gn">Use GN (generate ninja) instead of GYP for building</flag>
 		<flag name="gtk3">Use gtk3 instead of gtk2</flag>
 		<flag name="hangouts">Enable support for Google Hangouts features such as screen sharing</flag>
 		<flag name="hidpi">Enable support for high-resolution screens (high dots per inch)</flag>
