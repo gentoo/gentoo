@@ -5,7 +5,7 @@
 EAPI=5
 PYTHON_COMPAT=(python2_7)
 
-inherit eutils distutils-r1 systemd
+inherit eutils systemd distutils-r1
 
 DESCRIPTION="Salt is a remote execution and configuration manager"
 HOMEPAGE="http://saltstack.org/"
@@ -23,8 +23,8 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="api ldap libcloud libvirt gnupg keyring mako mongodb mysql nova"
-IUSE+=" openssl redis selinux timelib raet +zeromq test"
+IUSE="cherrypy ldap libcloud libvirt gnupg keyring mako mongodb mysql neutron nova"
+IUSE+=" openssl profile redis selinux test timelib raet +zeromq vim-syntax"
 
 RDEPEND="sys-apps/pciutils
 	dev-python/jinja[${PYTHON_USEDEP}]
@@ -33,27 +33,27 @@ RDEPEND="sys-apps/pciutils
 	dev-python/markupsafe[${PYTHON_USEDEP}]
 	>=dev-python/requests-1.0.0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	>=www-servers/tornado-4.2.1[${PYTHON_USEDEP}]
+	virtual/python-futures[${PYTHON_USEDEP}]
 	libcloud? ( >=dev-python/libcloud-0.14.0[${PYTHON_USEDEP}] )
 	mako? ( dev-python/mako[${PYTHON_USEDEP}] )
 	ldap? ( dev-python/python-ldap[${PYTHON_USEDEP}] )
 	openssl? ( dev-python/pyopenssl[${PYTHON_USEDEP}] )
 	libvirt? ( dev-python/libvirt-python[${PYTHON_USEDEP}] )
+	openssl? (
+		dev-libs/openssl:*[-bindist]
+		dev-python/pyopenssl[${PYTHON_USEDEP}]
+	)
 	raet? (
-		dev-python/libnacl[${PYTHON_USEDEP}]
-		dev-python/ioflo[${PYTHON_USEDEP}]
-		dev-python/raet[${PYTHON_USEDEP}]
+		>=dev-python/libnacl-1.0.0[${PYTHON_USEDEP}]
+		>=dev-python/ioflo-1.1.7[${PYTHON_USEDEP}]
+		>=dev-python/raet-0.6.0[${PYTHON_USEDEP}]
 	)
 	zeromq? (
 		>=dev-python/pyzmq-2.2.0[${PYTHON_USEDEP}]
-		>=dev-python/m2crypto-0.22.3[${PYTHON_USEDEP}]
-		dev-python/pycrypto[${PYTHON_USEDEP}]
+		>=dev-python/pycrypto-2.6.1[${PYTHON_USEDEP}]
 	)
-	api? (
-		|| (
-			dev-python/cherrypy[${PYTHON_USEDEP}]
-			www-servers/tornado[${PYTHON_USEDEP}]
-		)
-	)
+	cherrypy? ( >=dev-python/cherrypy-3.2.2[${PYTHON_USEDEP}] )
 	mongodb? ( dev-python/pymongo[${PYTHON_USEDEP}] )
 	keyring? ( dev-python/keyring[${PYTHON_USEDEP}] )
 	mysql? ( dev-python/mysql-python[${PYTHON_USEDEP}] )
@@ -61,12 +61,18 @@ RDEPEND="sys-apps/pciutils
 	selinux? ( sec-policy/selinux-salt )
 	timelib? ( dev-python/timelib[${PYTHON_USEDEP}] )
 	nova? ( >=dev-python/python-novaclient-2.17.0[${PYTHON_USEDEP}] )
-	gnupg? ( dev-python/python-gnupg[${PYTHON_USEDEP}] )"
+	neutron? ( >=dev-python/python-neutronclient-2.3.6[${PYTHON_USEDEP}] )
+	gnupg? ( dev-python/python-gnupg[${PYTHON_USEDEP}] )
+	profile? ( dev-python/yappi[${PYTHON_USEDEP}] )
+	vim-syntax? ( app-vim/salt-vim )"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/timelib[${PYTHON_USEDEP}]
+		>=dev-python/boto-2.32.1[${PYTHON_USEDEP}]
+		>=dev-python/moto-0.3.6[${PYTHON_USEDEP}]
 		>=dev-python/SaltTesting-2015.2.16[${PYTHON_USEDEP}]
 		${RDEPEND}
 	)"
@@ -78,16 +84,17 @@ REQUIRED_USE="|| ( raet zeromq )"
 python_prepare() {
 	# this test fails because it trys to "pip install distribute"
 	rm tests/unit/{modules,states}/zcbuildout_test.py \
-		|| die "Failed to remove broken tests"
+		tests/unit/modules/{rh_ip,win_network,random_org}_test.py
 }
 
 python_install_all() {
+	local svc
 	USE_SETUPTOOLS=1 distutils-r1_python_install_all
 
-	for s in minion master syndic $(use api && echo api); do
-		newinitd "${FILESDIR}"/${s}-initd-3 salt-${s}
-		newconfd "${FILESDIR}"/${s}-confd-1 salt-${s}
-		systemd_dounit "${FILESDIR}"/salt-${s}.service
+	for svc in minion master syndic api; do
+		newinitd "${FILESDIR}"/${svc}-initd-4 salt-${svc}
+		newconfd "${FILESDIR}"/${svc}-confd-1 salt-${svc}
+		systemd_dounit "${FILESDIR}"/salt-${svc}.service
 	done
 
 	insinto /etc/${PN}
