@@ -480,6 +480,7 @@ gnome2_disable_deprecation_warning() {
 	# The sort is important to ensure .am is listed before the respective .in for
 	# maintainer mode regeneration not kicking in due to .am being newer than .in
 	while read makefile ; do
+		[[ -f ${makefile} ]] || continue
 		if ! grep -qE "(DISABLE_DEPRECATED|GSEAL_ENABLE)" "${makefile}"; then
 			continue
 		fi
