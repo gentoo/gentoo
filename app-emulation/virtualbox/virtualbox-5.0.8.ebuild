@@ -31,7 +31,7 @@ RDEPEND="!app-emulation/virtualbox-bin
 	libressl? ( dev-libs/libressl:= )
 	dev-libs/libxml2
 	media-libs/libpng:0=
-	media-libs/libvpx
+	media-libs/libvpx:0=
 	sys-libs/zlib
 	!headless? (
 		qt4? (
