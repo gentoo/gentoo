@@ -26,6 +26,15 @@ PATCHES=(
 	"${FILESDIR}"/1.9.0-mapping.patch
 	)
 
+pkg_pretend() {
+	six_dir_check() {
+		local dir="${ROOT}"/$(python_get_sitedir)/six
+		[[ -d "${dir}" ]] \
+			&& die "${PN} doesn't work if ${dir} is a directory #546730"
+	}
+	python_foreach_impl six_dir_check
+}
+
 python_prepare_all() {
 	# https://bitbucket.org/gutworth/six/issues/139/
 	sed \
