@@ -21,18 +21,18 @@ SLOT="0"
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="cairo doc excel examples fltk gtk gtk3 latex pyside qt4 qt5 test tk wxwidgets"
+IUSE="cairo doc excel examples fltk gtk2 gtk3 latex pyside qt4 qt5 test tk wxwidgets"
 
 PY2_FLAGS="|| ( $(python_gen_useflags python2_7) )"
 REQUIRED_USE="
 	doc? ( ${PY2_FLAGS} )
 	excel? ( ${PY2_FLAGS} )
 	fltk? ( ${PY2_FLAGS} )
-	gtk? ( ${PY2_FLAGS} )
+	gtk2? ( ${PY2_FLAGS} )
 	wxwidgets? ( ${PY2_FLAGS} )
 	test? (
 		cairo fltk latex pyside qt5 qt4 tk wxwidgets
-		|| ( gtk gtk3 )
+		|| ( gtk2 gtk3 )
 		)"
 
 # #456704 -- a lot of py2-only deps
@@ -47,7 +47,7 @@ COMMON_DEPEND="
 	media-libs/freetype:2
 	media-libs/libpng:0
 	media-libs/qhull
-	gtk? (
+	gtk2? (
 		dev-libs/glib:2=
 		x11-libs/gdk-pixbuf
 		x11-libs/gtk+:2
@@ -123,10 +123,6 @@ use_setup() {
 		echo "${uword}agg = False"
 	fi
 }
-
-_PATCHES=(
-	"${FILESDIR}"/${P}-backport-GH5291-2462.patch
-)
 
 python_prepare_all() {
 # Generates test failures, but fedora does it
@@ -210,7 +206,7 @@ python_configure() {
 		cat >> "${BUILD_DIR}"/setup.cfg <<-EOF
 			six = False
 			$(use_setup fltk)
-			$(use_setup gtk)
+			$(use_setup gtk2 gtk)
 			$(use_setup gtk3)
 			$(use_setup wxwidgets wx)
 		EOF
