@@ -2261,8 +2261,8 @@ app-text/gnome-doc-utils 0.20.10-r1: A collection of documentation utilities for
 app-text/gnopaster 0.0.9: A submitter for gnopaste, a nopaste service like http://nopaste.info
 app-text/gocr 0.49 0.50: An OCR (Optical Character Recognition) reader
 app-text/goldendict 1.0.1: Feature-rich dictionary lookup program
-app-text/groonga 4.0.7-r1 5.0.3: An Embeddable Fulltext Search Engine
-app-text/groonga-normalizer-mysql 1.0.6 1.0.9: Groonga plugin that provides MySQL compatible normalizers
+app-text/groonga 4.0.7-r1 5.0.3 5.0.9: An Embeddable Fulltext Search Engine
+app-text/groonga-normalizer-mysql 1.0.6 1.0.9 1.1.0: Groonga plugin that provides MySQL compatible normalizers
 app-text/grutatxt 2.0.16-r1: A converter from plain text to HTML and other markup languages
 app-text/gspell 0.1.2: Spell check library for GTK+ applications
 app-text/gtkspell 2.0.16 3.0.4: Spell checking widget for GTK
@@ -9657,7 +9657,7 @@ dev-vcs/mercurial 3.3.2 3.3.3 3.4.2 3.5.2 3.6 3.6.1 9999: Scalable distributed S
 dev-vcs/mercurial-server 1.1 1.2 9999: Mercurial authentication and authorization tools
 dev-vcs/monotone 1.0-r4: Monotone Distributed Version Control System
 dev-vcs/mr 1.20140831.1 1.20141024 1.20150503: Multiple Repository management tool
-dev-vcs/notify-webhook 20140805 20150308: Git post-receive web hook notifier in Python.
+dev-vcs/notify-webhook 0.1.0: Git post-receive web hook notifier in Python.
 dev-vcs/pwclient 20121105131501 20141110122616: command line utility for interacting with patchwork repos
 dev-vcs/qbzr 0.23.0 0.23.1: Qt frontend for Bazaar
 dev-vcs/qct 1.7-r1: PyQt based commit tool for many VCSs
