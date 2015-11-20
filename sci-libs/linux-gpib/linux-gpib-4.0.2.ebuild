@@ -13,11 +13,12 @@ inherit eutils linux-mod autotools perl-module python-single-r1 toolchain-funcs 
 DESCRIPTION="Kernel module and driver library for GPIB (IEEE 488.2) hardware"
 HOMEPAGE="http://linux-gpib.sourceforge.net/"
 SRC_URI="mirror://sourceforge/linux-gpib/${P}.tar.gz
-	firmware? ( http://linux-gpib.sourceforge.net/firmware/gpib_firmware-2006-11-12.tar.gz )"
+	firmware? ( http://linux-gpib.sourceforge.net/firmware/gpib_firmware-2006-11-12.tar.gz )
+"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="isa pcmcia static debug guile perl php python tcl doc firmware"
 
 COMMONDEPEND="
@@ -36,7 +37,7 @@ DEPEND="${COMMONDEPEND}
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.2.15-build.patch
+	"${FILESDIR}"/${PN}-3.2.21-build.patch
 	"${FILESDIR}"/${PN}-3.2.16-perl.patch
 	"${FILESDIR}"/${PN}-3.2.16-reallydie.patch
 )
@@ -85,6 +86,7 @@ src_compile() {
 		DESTDIR="${D}" \
 		INSTALL_MOD_PATH="${D}" \
 		HOTPLUG_USB_CONF_DIR="${D}"/etc/hotplug/usb \
+		UDEV_RULES_DIR="${D}$(get_udevdir)"/rules.d \
 		USB_FIRMWARE_DIR="${D}"${FIRM_DIR} \
 		docdir=/usr/share/doc/${PF}/html
 }
@@ -96,6 +98,7 @@ src_install() {
 		DESTDIR="${D}" \
 		INSTALL_MOD_PATH="${D}" \
 		HOTPLUG_USB_CONF_DIR="${D}"/etc/hotplug/usb \
+		UDEV_RULES_DIR="${D}/$(get_udevdir)"/rules.d \
 		USB_FIRMWARE_DIR="${D}"${FIRM_DIR} \
 		docdir=/usr/share/doc/${PF}/html install
 
@@ -180,4 +183,10 @@ pkg_postinst () {
 		einfo ""
 	fi
 
+	if [[ $REPLACING_VERSIONS < "3.2.21-r1" ]]; then
+		ewarn "sci-libs/linux-gpib-3.2.21-r1 introduces incompatible changes to the kernel"
+		ewarn "interface. You may need to reboot to make sure the newly built driver modules"
+		ewarn "are used (some of the driver modules cannot be unloaded)."
+		ewarn "If you do not do this, every gpib call will just result in an error message."
+	fi
 }
