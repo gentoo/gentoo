@@ -11,10 +11,10 @@ SRC_URI="mirror://sourceforge/mikmod/${P}.tar.gz"
 
 LICENSE="LGPL-2+ LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ~ia64 ~mips ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="+alsa altivec coreaudio debug nas openal oss pulseaudio cpu_flags_x86_sse2 static-libs +threads"
 
-REQUIRED_USE="|| ( alsa oss coreaudio )"
+REQUIRED_USE="|| ( alsa coreaudio nas openal oss pulseaudio )"
 
 RDEPEND="alsa? ( >=media-libs/alsa-lib-1.0.27.2:=[${MULTILIB_USEDEP}] )
 	nas? ( >=media-libs/nas-1.9.4:=[${MULTILIB_USEDEP}] )
@@ -24,7 +24,12 @@ RDEPEND="alsa? ( >=media-libs/alsa-lib-1.0.27.2:=[${MULTILIB_USEDEP}] )
 	abi_x86_32? ( !<=app-emulation/emul-linux-x86-soundlibs-20130224-r3
 					!app-emulation/emul-linux-x86-soundlibs[-abi_x86_32(-)] )"
 DEPEND="${RDEPEND}
+	sys-apps/texinfo
 	oss? ( virtual/os-headers )"
+
+MULTILIB_CHOST_TOOLS=(
+	/usr/bin/libmikmod-config
+)
 
 multilib_src_configure() {
 	local mysimd="--disable-simd"
@@ -35,7 +40,7 @@ multilib_src_configure() {
 		mysimd="$(use_enable cpu_flags_x86_sse2 simd)"
 	fi
 
-	# sdl, sdl2: missing multilib supported ebuilds, temporarily disabled
+	# sdl, sdl2: missing multilib supported ebuilds, temporarily disabled, remember to update REQUIRED_USE
 	ECONF_SOURCE=${S} \
 	econf \
 		$(use_enable alsa) \

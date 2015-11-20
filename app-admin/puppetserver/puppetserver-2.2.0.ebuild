@@ -101,7 +101,4 @@ pkg_postinst() {
 	elog "puppet config set --section master rundir  /run/puppetlabs/puppetserver"
 	elog "puppet config set --section master pidfile /run/puppetlabs/puppetserver/puppetserver.pid"
 	elog "puppet config set --section master codedir /etc/puppetlabs/code"
-#	elog
-#	elog "the jruby needs it's own puppet gem installed..."
-#	elog "/opt/puppetlabs/server/apps/puppetserver/bin/puppetserver gem install puppet"
 }
