@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit python-single-r1
@@ -16,12 +17,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="sci-electronics/voacapl
-	dev-python/matplotlib[gtk]
-	dev-python/basemap"
+RDEPEND="
+	dev-python/matplotlib[gtk2,${PYTHON_USEDEP}]
+	dev-python/basemap[${PYTHON_USEDEP}]
+	sci-electronics/voacapl
+"
 DEPEND="${RDEPEND}"
-
-src_install() {
-	emake DESTDIR="${D}" install
-	dodoc AUTHORS ChangeLog NEWS TODO
-}
