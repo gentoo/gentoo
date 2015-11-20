@@ -77,8 +77,8 @@ src_install() {
 	# uncompressed, and there won't be any broken links. See bug #483336.
 	if use examples; then
 		cp -rL examples/website "${D}"/usr/share/doc/${PF}/examples || die
+		docompress -x /usr/share/doc/${PF}/examples
 	fi
-	docompress -x /usr/share/doc/${PF}/examples
 }
 
 src_test() {
