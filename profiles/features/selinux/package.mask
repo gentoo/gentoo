@@ -3,12 +3,18 @@
 # Jason Zaman <perfinion@gentoo.org> (27 Jun 2015)
 # SystemD has no support in the SELinux policy at the moment.
 # Please see: https://wiki.gentoo.org/wiki/SELinux/FAQ#Can_I_use_SELinux_with_SystemD.3F
+app-eselect/eselect-gnome-shell-extensions
 sys-apps/systemd
 app-admin/calamares
 dev-python/python-systemd
 gnome-base/gdm
 gnome-base/gnome
+gnome-base/gnome-light
 gnome-extra/gnome-logs
+gnome-extra/gnome-shell-extensions
+gnome-extra/gnome-shell-frippery
+gnome-extra/gnome-tweak-tool
+x11-themes/zukitwo-shell
 gnome-extra/office-runner
 kde-misc/systemd-kcm
 net-firewall/firewalld
