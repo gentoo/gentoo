@@ -2329,7 +2329,8 @@ dev-python/kombu:msgpack - Enables MessagePack (de)serializer for Python
 dev-python/kombu:sqs - Enables Amazon SQS transport module for Kombu
 dev-python/markdown:pygments - Enable fancy pygments support
 dev-python/matplotlib:excel - Pull dev-python/xlwt for the exceltools toolkit
-dev-python/matplotlib:gtk3 - Use x11-libs/gtk+:3 instead of x11-libs/gtk+:2
+dev-python/matplotlib:gtk2 - Enable x11-libs/gtk+:2 support
+dev-python/matplotlib:gtk3 - Enable x11-libs/gtk+:3 support
 dev-python/matplotlib:pyside - Qt support via dev-python/pyside
 dev-python/mpmath:matplotlib - Add support for dev-python/matplotlib
 dev-python/mwlib:server - Install the daemons required when using mwlib for generating PDFs on a MediaWiki instance.
