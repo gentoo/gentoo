@@ -16,4 +16,9 @@ encounter it on.
 non-Windows platforms to make and submit changes to the core MAME code, and we offer native
 implementations of MAME's multi-window GUI debugger on both Linux/Unix and Mac OS X.
 </longdescription>
+  <use>
+    <flag name="arcade">Enable the Multiple Arcade Machine Emulator for arcade games support</flag>
+    <flag name="tools">Build development tools shared between sdlmame and sdlmess</flag>
+    <flag name="mess">Enable the Multi Emulator Super System for game system support</flag>
+  </use>
 </pkgmetadata>
