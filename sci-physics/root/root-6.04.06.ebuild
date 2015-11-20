@@ -421,7 +421,7 @@ cleanup_install() {
 	rm -r etc/root/daemons || die
 	# these should be in PATH
 	mv etc/root/proof/utils/pq2/pq2* usr/bin/ || die
-	rm ${DOC_DIR#/}/{INSTALL,LICENSE} || die
+	rm ${DOC_DIR#/}/INSTALL || die
 	use examples || rm -r ${DOC_DIR#/}/examples || die
 
 	# clean hardcoded sandbox paths
@@ -448,11 +448,6 @@ src_install() {
 		python_optimize "${D}/usr/$(get_libdir)/root"
 	fi
 	use emacs && elisp-install ${PN} build/misc/*.{el,elc}
-	if use examples; then
-		# these should really be taken care of by the root make install
-		insinto ${DOC_DIR}/examples/tutorials/tmva
-		doins -r tmva/test
-	fi
 	doenvd 99root
 
 	# The build system installs Emacs support unconditionally in the wrong
@@ -465,12 +460,6 @@ src_install() {
 
 	# do not copress files used by ROOT's CLI (.credit, .demo, .license)
 	docompress -x "${DOC_DIR}"/{CREDITS,examples/tutorials}
-	# needed for .license command to work
-	cat > "${DOC_DIR}/LICENSE" <<- EOF
-	Please visit
-	https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html
-	for the full license test
-	EOF
 }
 
 pkg_postinst() {
