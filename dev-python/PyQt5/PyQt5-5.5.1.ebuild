@@ -23,7 +23,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 arm ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 
 # TODO: QtBluetooth, QtLocation, QtNfc, QtWebEngineWidgets
 IUSE="dbus debug declarative designer doc examples gles2 gui help multimedia
@@ -78,11 +78,6 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}
 
-src_prepare() {
-	# Avoid automagic dependency.
-	use dbus || rm -fr dbus
-}
-
 pyqt_use_enable() {
 	use "$1" || return
 
@@ -108,6 +103,7 @@ src_configure() {
 			--enable=QtCore
 			--enable=QtXml
 			$(pyqt_use_enable dbus QtDBus)
+			$(usex dbus '' --no-python-dbus)
 			$(pyqt_use_enable declarative QtQml QtQuick $(usex widgets QtQuickWidgets ''))
 			$(usex declarative '' --no-qml-plugin)
 			$(pyqt_use_enable designer)
