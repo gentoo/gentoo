@@ -448,11 +448,6 @@ src_install() {
 		python_optimize "${D}/usr/$(get_libdir)/root"
 	fi
 	use emacs && elisp-install ${PN} build/misc/*.{el,elc}
-	if use examples; then
-		# these should really be taken care of by the root make install
-		insinto ${DOC_DIR}/examples/tutorials/tmva
-		doins -r tmva/test
-	fi
 	doenvd 99root
 
 	# The build system installs Emacs support unconditionally in the wrong
