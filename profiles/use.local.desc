@@ -2919,6 +2919,9 @@ games-emulation/mupen64plus-video-glide64mk2:hires - Support hi-resolution textu
 games-emulation/mupen64plus-video-rice:gles2 - Use GLES2 instead of OpenGL
 games-emulation/pcsxr:cdio - Use libcdio for CD support
 games-emulation/pcsxr:sdl - Use SDL sound backend (other parts of SDL are used unconditionally)
+games-emulation/sdlmame:arcade - Enable the Multiple Arcade Machine Emulator for arcade games support
+games-emulation/sdlmame:mess - Enable the Multi Emulator Super System for game system support
+games-emulation/sdlmame:tools - Build development tools shared between sdlmame and sdlmess
 games-emulation/snes9x:netplay - Enable playing ROMs over the network (not recommended)
 games-emulation/snes9x:xrandr - Enable support for the X xrandr extension
 games-emulation/vbam:link - Enable GBA linking functionality

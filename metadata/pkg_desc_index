@@ -10024,7 +10024,7 @@ games-emulation/openmsx 0.9.1: MSX emulator that aims for perfection
 games-emulation/pcsx2 1.3.1 9999: A PlayStation 2 emulator
 games-emulation/pcsxr 1.9.94 1.9.94-r1: PCSX-Reloaded: a fork of PCSX, the discontinued Playstation emulator
 games-emulation/raine 0.51.9: R A I N E M680x0 Arcade Emulation
-games-emulation/sdlmame 0.148_p1-r1 0.149: Multiple Arcade Machine Emulator (SDL)
+games-emulation/sdlmame 0.148_p1-r1 0.149 0.167: Multiple Arcade Machine Emulator + Multi Emulator Super System (MESS)
 games-emulation/sdlmametools 0.148_p1 0.149: Set of development tools shared between sdlmame and sdlmess
 games-emulation/sdlmess 0.148_p1 0.149: Multi Emulator Super System (SDL)
 games-emulation/snes9x 1.53: Super Nintendo Entertainment System (SNES) emulator
