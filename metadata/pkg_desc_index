@@ -13166,7 +13166,7 @@ media-video/emovix 0.9.0: Micro Linux distro to boot from a CD and play every vi
 media-video/episoder 0.4.7: episoder is a tool to tell you when new episodes of your favourite TV shows are airing
 media-video/ffcast 2.4.1: Record screencasts using ffmpeg
 media-video/ffdiaporama 2.1 2.1-r1: Movie creator from photos and video clips
-media-video/ffmpeg 2.6.3 2.6.4 2.8.2 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
+media-video/ffmpeg 2.6.3 2.6.4 2.7.2 2.8.1 2.8.2 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
 media-video/ffmpeg2theora 0.29-r1 0.29-r2: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.0.8 2.0.10 2.1.0: Lightweight video thumbnailer that can be used by file managers
 media-video/flumotion 0.8.1 0.8.1-r1 0.10.1: Flumotion Streaming server
@@ -17404,7 +17404,7 @@ www-apps/nikola 7.2.0 7.6.0 7.6.1 7.6.2 7.6.3: A static website and blog generat
 www-apps/novnc 0.5 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/openwebstats 1.1: PHP stats application that reads Apache log files and imports the data to a MySQL database
 www-apps/otrs 4.0.12 4.0.13: OTRS is an Open source Ticket Request System
-www-apps/owncloud 5.0.19 6.0.9 7.0.11 8.0.9 8.1.4 8.2.0: Web-based storage application where all your data is under your own control
+www-apps/owncloud 5.0.19 6.0.9 7.0.11 8.0.9 8.1.4 8.2.0 8.2.1: Web-based storage application where all your data is under your own control
 www-apps/ownpaste 0.2.2-r1 9999: Private pastebin (server-side implementation)
 www-apps/pcgi 2.0_alpha5: Jeff Bauer's Persistent CGI
 www-apps/phpBB 3.0.10 3.0.11 3.0.12: phpBB is an open-source bulletin board package
