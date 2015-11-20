@@ -11608,7 +11608,7 @@ media-fonts/freefont 20120503: OpenType and TrueType Unicode fonts from the Free
 media-fonts/freefonts 0.10-r3: A Collection of Free Type1 Fonts
 media-fonts/fs-fonts 0.1_alpha3: Japanese TrueType fonts designed for screen and print
 media-fonts/gidole 2.0.2: Open source modern DIN fonts
-media-fonts/hack 2.010: A typeface designed for source code
+media-fonts/hack 2.010 2.018: A typeface designed for source code
 media-fonts/hermit 1.1 1.21: A monospace font designed to be clear, pragmatic and very readable
 media-fonts/heuristica 0.2.1: A font based on Adobe Utopia
 media-fonts/hkscs-ming 1.0_pre20030919-r2: Hong Kong SAR Government Official Reference Chinese Font that implements ISO10646 and HKSCS-2001
