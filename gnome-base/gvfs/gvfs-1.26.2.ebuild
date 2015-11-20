@@ -14,7 +14,7 @@ HOMEPAGE="https://git.gnome.org/browse/gvfs"
 LICENSE="LGPL-2+"
 SLOT="0"
 
-IUSE="afp archive bluray cdda fuse gnome-keyring gnome-online-accounts gphoto2 gtk +http ios mtp nfs samba systemd test +udev udisks zeroconf"
+IUSE="afp archive bluray cdda fuse +google gnome-keyring gnome-online-accounts gphoto2 gtk +http ios mtp nfs samba systemd test +udev udisks zeroconf"
 REQUIRED_USE="
 	cdda? ( udev )
 	mtp? ( udev )
@@ -29,7 +29,6 @@ RDEPEND="
 	>=dev-libs/glib-2.45.7:2
 	sys-apps/dbus
 	dev-libs/libxml2:2
-	>=dev-libs/libgdata-0.17.3:=[gnome]
 	net-misc/openssh
 	afp? ( >=dev-libs/libgcrypt-1.2.2:0= )
 	archive? ( app-arch/libarchive:= )
@@ -37,6 +36,7 @@ RDEPEND="
 	fuse? ( >=sys-fs/fuse-2.8.0 )
 	gnome-keyring? ( app-crypt/libsecret )
 	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.7.1 )
+	google? ( >=dev-libs/libgdata-0.17.3:=[gnome] )
 	gphoto2? ( >=media-libs/libgphoto2-2.4.7:= )
 	gtk? ( >=x11-libs/gtk+-3.0:3 )
 	http? ( >=net-libs/libsoup-2.42:2.4 )
@@ -109,6 +109,7 @@ src_configure() {
 		$(use_enable fuse) \
 		$(use_enable gnome-keyring keyring) \
 		$(use_enable gnome-online-accounts goa) \
+		$(use_enable google) \
 		$(use_enable gphoto2) \
 		$(use_enable gtk) \
 		$(use_enable ios afc) \
