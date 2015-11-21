@@ -15,10 +15,11 @@ SRC_URI="https://bitbucket.org/ariya/phantomjs/downloads/${P}-source.zip"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples"
+IUSE="examples libressl"
 
 RDEPEND="dev-libs/icu:=
-	dev-libs/openssl:0
+	!libressl? ( dev-libs/openssl:0 )
+	libressl? ( dev-libs/libressl )
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/gstreamer:1.0
