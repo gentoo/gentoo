@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (21 Nov 2015)
+# Upstream dead + superseded by app-text/tidy-html5.
+# Masked for removal in 30 days. See bug #564884.
+app-text/htmltidy
+
 # Michael Palimaka <kensington@gentoo.org> (18 Nov 2015)
 # Ebuilds unfinished work-in-progress. Dead upstream.
 # Masked for removal in 30 days. Bug #550234.
@@ -204,11 +209,6 @@ www-apache/mod_h2
 # in new version. Masked for removal in 30 days.
 =sci-geosciences/grass-6.4.2
 =sci-geosciences/gdal-grass-1.4.3-r1
-
-# Patrice Clement <monsieurp@gentoo.org> (18 Oct 2015)
-# Project discontinued by the ASF and now superseded by dev-java/tomcat-jstl-*
-# ebuilds. Masked for removal in 30 days. See bug #551032.
-dev-java/jakarta-jstl
 
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (16 Oct 2015)
 # Dev channel releases are only for people who are developers or want more
