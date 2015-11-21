@@ -11757,7 +11757,7 @@ media-gfx/cropgui 0.1.1-r3: GUI for lossless cropping of jpeg images
 media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
 media-gfx/cthumb 4.2: Create a statical HTML Image gallery with captions for each image
 media-gfx/cutycapt 0_p20120409: Qt WebKit Web Page Rendering Capture Utility
-media-gfx/darktable 1.6.6 1.6.7 1.6.8 1.6.9 2.0_rc1 9999: A virtual lighttable and darkroom for photographers
+media-gfx/darktable 1.6.6 1.6.7 1.6.8 1.6.9 2.0_rc2 9999: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b: 3D geometrical postscript renderer
 media-gfx/dcraw 9.24.4 9.25.0 9.26.0: Converts the native (RAW) format of various digital cameras into netpbm portable pixmap (.ppm) image
 media-gfx/digikam 4.4.0-r1 4.12.0 4.14.0: Digital photo management application for KDE
