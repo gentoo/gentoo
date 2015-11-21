@@ -2231,7 +2231,7 @@ app-text/docbook-xsl-ns-stylesheets 1.78.0: XSL Stylesheets for Docbook
 app-text/docbook-xsl-stylesheets 1.78.0-r1 1.79.0: XSL Stylesheets for Docbook
 app-text/docbook2X 0.8.8-r4: Tools to convert docbook to man and info
 app-text/docx2txt 1.2 1.3 1.4: Convert MS Office docx files to plain text
-app-text/dos2unix 7.3-r1 7.3.1: Convert DOS or MAC text files to UNIX format or vice versa
+app-text/dos2unix 7.3-r1 7.3.1 7.3.2: Convert DOS or MAC text files to UNIX format or vice versa
 app-text/duali 0.2.0: Arabic dictionary based on the DICT protocol
 app-text/dvibook 20001129: DVI file utilities: dvibook, dviconcat, dvitodvi, and dviselect
 app-text/dvipdfm 0.13.2d-r1 0.13.2d-r2: DVI to PDF translator
