@@ -17439,10 +17439,10 @@ www-apps/wordpress 4.2.4 4.3 4.3.1: Wordpress PHP and MySQL based content manage
 www-client/chromium 46.0.2490.86 47.0.2526.49 47.0.2526.58 48.0.2547.0 48.0.2552.0 48.0.2560.0: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20141005 1.0_pre20150227 1.0_pre20150519: A Mozilla-based web browser whose design is inspired by GNU Emacs
-www-client/dillo 3.0.4 3.0.4.1 3.0.5: Lean FLTK based web browser
+www-client/dillo 3.0.4 3.0.4.1 3.0.5 3.0.5-r1: Lean FLTK based web browser
 www-client/dooble 1.55: A Secure and Open Source Web Browser
 www-client/dwb 2013.03.30 2014.03.07 2014.03.07-r1 9999: Dynamic web browser based on WebKit and GTK+
-www-client/elinks 0.12_pre6-r1 9999: Advanced and well-established text-mode web browser
+www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.16.3 3.18.0: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1: Fetch is a simple, fast, and flexible HTTP download tool built on the HTTP Fetcher library
 www-client/firefox 38.2.0 38.3.0 38.4.0 42.0: Firefox Web Browser
@@ -17450,10 +17450,10 @@ www-client/firefox-bin 38.3.0 38.4.0 42.0: Firefox Web Browser
 www-client/google-chrome 46.0.2490.86_p1: The web browser from Google
 www-client/google-chrome-beta 47.0.2526.69_p1: The web browser from Google
 www-client/google-chrome-unstable 48.0.2564.10_p1: The web browser from Google
-www-client/httrack 3.48.21-r1: HTTrack Website Copier, Open Source Offline Browser
+www-client/httrack 3.48.21-r1 3.48.21-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/jumanji 0.0.0_p20111209 0.0.0_p20130103-r1 0.0.0_p20150527 9999: highly customizable and functional web browser with minimalistic and space saving interface
-www-client/links 2.8-r1 2.9 2.9-r1 2.10 2.11 2.12: A fast and lightweight web browser running in both graphics and text mode
+www-client/links 2.8-r1 2.9 2.9-r1 2.10 2.11 2.12 2.12-r1: A fast and lightweight web browser running in both graphics and text mode
 www-client/luakit 2012.09.13_p1-r1 9999: fast, small, webkit-gtk based micro-browser extensible by lua
 www-client/lynx 2.8.8_p2 2.8.9_pre4 2.8.9_pre6: An excellent console-based web browser with ssl support
 www-client/midori 0.5.10 0.5.11: A lightweight web browser based on WebKitGTK+
@@ -17463,10 +17463,10 @@ www-client/opera 12.16_p1860-r1 33.0.1990.43 33.0.1990.58 33.0.1990.115: A fast 
 www-client/opera-beta 33.0.1990.35 34.0.2036.3: A fast and secure web browser
 www-client/opera-developer 34.0.2036.2 34.0.2044.0: A fast and secure web browser
 www-client/otter 0.9.07 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
-www-client/phantomjs 1.9.8 2.0.0: A headless WebKit scriptable with a JavaScript API
+www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.11.1 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qtweb 3.8.5_p108: Lightweight, fast, secure and portable browser for the Web
-www-client/qupzilla 1.8.6 1.8.6-r1: Qt WebKit web browser
+www-client/qupzilla 1.8.6 1.8.6-r1 1.8.6-r2: Qt WebKit web browser
 www-client/qutebrowser 0.2.1 0.3.0 0.4.1 0.4.1-r1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
 www-client/rekonq 2.4.2-r1: A browser based on qtwebkit
 www-client/seamonkey 2.38 2.39: Seamonkey Web Browser

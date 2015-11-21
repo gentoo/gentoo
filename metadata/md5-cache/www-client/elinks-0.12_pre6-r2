@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=dev-libs/boehm-gc >=dev-libs/expat-1.95.4 bzip2? ( >=app-arch/bzip2-1.0.2 ) ssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) X? ( x11-libs/libX11 x11-libs/libXt ) zlib? ( >=sys-libs/zlib-1.1.4 ) lua? ( >=dev-lang/lua-5:0 ) gpm? ( >=sys-libs/ncurses-5.2:0 >=sys-libs/gpm-1.20.0-r5 ) guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated,discouraged] ) idn? ( net-dns/libidn ) perl? ( dev-lang/perl ) ruby? ( dev-lang/ruby:= dev-ruby/rubygems ) samba? ( net-fs/samba ) javascript? ( dev-lang/spidermonkey:0 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Advanced and well-established text-mode web browser
+EAPI=5
+HOMEPAGE=http://elinks.or.cz/
+IUSE=bittorrent bzip2 debug finger ftp gopher gpm guile idn ipv6 javascript libressl lua +mouse nls nntp perl ruby samba ssl unicode X zlib
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=dev-libs/boehm-gc >=dev-libs/expat-1.95.4 bzip2? ( >=app-arch/bzip2-1.0.2 ) ssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) X? ( x11-libs/libX11 x11-libs/libXt ) zlib? ( >=sys-libs/zlib-1.1.4 ) lua? ( >=dev-lang/lua-5:0 ) gpm? ( >=sys-libs/ncurses-5.2:0 >=sys-libs/gpm-1.20.0-r5 ) guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated,discouraged] ) idn? ( net-dns/libidn ) perl? ( dev-lang/perl ) ruby? ( dev-lang/ruby:= dev-ruby/rubygems ) samba? ( net-fs/samba ) javascript? ( dev-lang/spidermonkey:0 )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://elinks.or.cz/download/elinks-0.12pre6.tar.bz2 https://dev.gentoo.org/~spock/portage/distfiles/elinks-0.10.4.conf.bz2 https://dev.gentoo.org/~axs/distfiles/elinks-0.12_pre5-js185-patches.tar.bz2
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=39c2e3c22a42fa55f8eba80cf006b09b
