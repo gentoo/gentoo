@@ -13,7 +13,7 @@ EAPI=5
 GNOME2_LA_PUNT=yes
 GCONF_DEBUG=no
 
-inherit eutils gnome2
+inherit eutils flag-o-matic gnome2
 
 DESCRIPTION="A international dictionary supporting fuzzy and glob style matching"
 HOMEPAGE="http://stardict-4.sourceforge.net/"
@@ -32,7 +32,10 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.16:2
 	dev-libs/libsigc++:2=
 	sys-libs/zlib:=
+	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-2.20:2
+	x11-libs/libX11
+	x11-libs/pango
 	spell? ( >=app-text/enchant-1.2 )
 	tools? (
 		dev-libs/libpcre:=
@@ -51,6 +54,19 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+src_prepare() {
+	# From Fedora
+	# Remove unneeded sigc++ header files to make it sure
+	# that we are using system-wide libsigc++
+	# (and these does not work on gcc43)
+	find dict/src/sigc++* -name \*.h -or -name \*.cc | xargs rm -f || die
+
+	# libsigc++ started to require c++11 support
+	append-cxxflags "-std=c++11"
+
+	gnome2_src_prepare
+}
 
 src_configure() {
 	# Hint: EXTRA_ECONF="--enable-gnome-support" and manual install of
