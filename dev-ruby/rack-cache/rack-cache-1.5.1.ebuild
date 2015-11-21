@@ -20,7 +20,7 @@ SRC_URI="https://github.com/rtomayko/rack-cache/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="MIT"
 SLOT="1.2"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm ~ppc64"
 IUSE=""
 
 ruby_add_rdepend "dev-ruby/rack:*"
