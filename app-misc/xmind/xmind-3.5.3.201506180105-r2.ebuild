@@ -72,8 +72,7 @@ src_install() {
 		newicon -s ${res} "${WORKDIR}/xmind-icons/xmind.${res}.png" xmind.png
 	done
 
-	# make desktop entry
-	make_desktop_entry "xmind %F" XMind xmind Office "MimeType=application/x-xmind;"
+	make_desktop_entry ${PN} "XMind" ${PN} "Office" "MimeType=application/x-xmind;"
 }
 
 pkg_preinst() {
