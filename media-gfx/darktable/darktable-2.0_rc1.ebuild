@@ -4,16 +4,21 @@
 
 EAPI=5
 
-inherit cmake-utils flag-o-matic toolchain-funcs gnome2-utils fdo-mime git-r3 pax-utils eutils versionator
+inherit cmake-utils flag-o-matic toolchain-funcs gnome2-utils fdo-mime pax-utils eutils versionator
 
-EGIT_REPO_URI="git://github.com/darktable-org/darktable.git"
+DOC_PV="1.6.0"
+MY_PV="$(replace_version_separator 2 "")"
+MY_P="${PN}-$(replace_version_separator 2 ".")"
+MY_P_S="${PN}-$(replace_version_separator 2 "~")"
 
 DESCRIPTION="A virtual lighttable and darkroom for photographers"
 HOMEPAGE="http://www.darktable.org/"
+SRC_URI="https://github.com/darktable-org/${PN}/releases/download/release-${MY_PV}/${MY_P}.tar.xz
+	doc? ( https://github.com/darktable-org/${PN}/releases/download/release-${DOC_PV}/${PN}-usermanual.pdf -> ${PN}-usermanual-${DOC_PV}.pdf )"
 
 LICENSE="GPL-3 CC-BY-3.0"
 SLOT="0"
-#KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 LANGS=" af ca cs da de el es fi fr gl it ja nl pl pt_BR pt_PT ro ru sk sq sv th uk zh zh_CN"
 # TODO add lua once dev-lang/lua-5.2 is unmasked
 IUSE="colord cups cpu_flags_x86_sse3 doc flickr geo gphoto2 graphicsmagick jpeg2k kde libsecret
@@ -65,6 +70,8 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
+S="${WORKDIR}/${MY_P_S}"
+
 pkg_pretend() {
 	if use openmp ; then
 		tc-has-openmp || die "Please switch to an openmp compatible compiler"
@@ -109,6 +116,7 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
+	use doc && dodoc "${DISTDIR}"/${PN}-usermanual-${DOC_PV}.pdf
 
 	for lang in ${LANGS} ; do
 		use linguas_${lang} || rm -r "${ED}"/usr/share/locale/${lang}
