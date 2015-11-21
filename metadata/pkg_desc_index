@@ -495,7 +495,7 @@ app-crypt/asedriveiiie-serial 3.5: ASEDriveIIIe Serial Card Reader
 app-crypt/asedriveiiie-usb 3.5: ASEDriveIIIe USB Card Reader
 app-crypt/asekey 3.7: ASEKey USB SIM Card Reader
 app-crypt/bcrypt 1.1: A file encryption utility using Paul Kocher's implementation of the blowfish algorithm
-app-crypt/bcwipe 1.9.8: Secure file removal utility
+app-crypt/bcwipe 1.9.8 1.9.13: Secure file removal utility
 app-crypt/bestcrypt 2.0.0 2.0.4 2.0.6 2.0.9: commercially licensed transparent filesystem encryption
 app-crypt/bsign 0.4.5 0.4.5-r1: embed secure hashes (SHA1) and digital signatures (GNU Privacy Guard) into files
 app-crypt/cardpeek 0.7.1 0.7.2 0.8.2: Tool to read the contents of smartcards
