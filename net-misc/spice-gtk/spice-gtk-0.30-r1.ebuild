@@ -8,7 +8,7 @@ WANT_AUTOMAKE="1.12"
 VALA_MIN_API_VERSION="0.14"
 VALA_USE_DEPEND="vapigen"
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_4 )
 
 inherit autotools eutils multibuild python-single-r1 vala
 
@@ -67,11 +67,12 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	>=app-emulation/spice-protocol-0.12.10
-	dev-lang/python
-	dev-python/pyparsing
 	dev-perl/Text-CSV
+	dev-python/pyparsing[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 	>=dev-util/gtk-doc-am-1.14
 	>=dev-util/intltool-0.40.0
+	${PYTHON_DEPS}
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
