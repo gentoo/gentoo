@@ -23,7 +23,7 @@
 # plugin, consider adding media-plugins/gst-plugins-meta dependency, but
 # also list any packages that provide explicitly requested plugins.
 
-inherit eutils multilib multilib-minimal toolchain-funcs versionator
+inherit eutils multilib multilib-minimal toolchain-funcs versionator xdg-utils
 
 case "${EAPI:-0}" in
 	5)
@@ -132,11 +132,7 @@ DEPEND="${DEPEND} ${RDEPEND}"
 # >=dev-lang/orc-0.4.23 rely on environment variables to find a place to
 # allocate files to mmap.
 gstreamer_environment_reset() {
-	export XDG_RUNTIME_DIR="${T}/run"
-	mkdir -p "${XDG_RUNTIME_DIR}"
-	# This directory needs to be owned by the user, and chmod 0700
-	# http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
-	chmod 0700 "${XDG_RUNTIME_DIR}"
+	xdg_environment_reset
 }
 
 # @FUNCTION: gstreamer_get_plugins
