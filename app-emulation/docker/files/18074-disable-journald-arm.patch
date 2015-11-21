@@ -1,0 +1,30 @@
+diff --git a/daemon/logger/journald/journald.go b/daemon/logger/journald/journald.go
+index c729b56..97c379c 100644
+--- a/daemon/logger/journald/journald.go
++++ b/daemon/logger/journald/journald.go
+@@ -1,4 +1,4 @@
+-// +build linux
++// +build linux,!arm
+ 
+ // Package journald provides the log driver for forwarding server logs
+ // to endpoints that receive the systemd format.
+diff --git a/daemon/logger/journald/journald_unsupported.go b/daemon/logger/journald/journald_unsupported.go
+index d52ca92..8e9034a 100644
+--- a/daemon/logger/journald/journald_unsupported.go
++++ b/daemon/logger/journald/journald_unsupported.go
+@@ -1,4 +1,4 @@
+-// +build !linux
++// +build !linux linux,arm
+ 
+ package journald
+ 
+diff --git a/daemon/logger/journald/read.go b/daemon/logger/journald/read.go
+index 80c1fbd..0477c04 100644
+--- a/daemon/logger/journald/read.go
++++ b/daemon/logger/journald/read.go
+@@ -1,4 +1,4 @@
+-// +build linux,cgo,!static_build,journald
++// +build linux,cgo,!static_build,journald,!arm
+ 
+ package journald
+ 
