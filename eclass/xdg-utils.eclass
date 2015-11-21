@@ -58,6 +58,8 @@ xdg_environment_reset() {
 	# This directory needs to be owned by the user, and chmod 0700
 	# http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
 	chmod 0700 "${XDG_RUNTIME_DIR}"
+
+	unset DBUS_SESSION_BUS_ADDRESS
 }
 
 # @FUNCTION: xdg_desktopfiles_savelist
