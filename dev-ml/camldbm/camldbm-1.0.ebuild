@@ -12,7 +12,7 @@ SRC_URI="http://forge.ocamlcore.org/frs/download.php/728/${P}.tgz"
 
 LICENSE="LGPL-2-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ppc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="amd64 arm ppc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE=""
 
 DEPEND="|| ( >=sys-libs/gdbm-1.9.1-r2[berkdb] <sys-libs/gdbm-1.9.1-r2 )
