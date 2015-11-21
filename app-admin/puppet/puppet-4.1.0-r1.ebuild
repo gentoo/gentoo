@@ -21,7 +21,7 @@ IUSE="augeas diff doc emacs ldap rrdtool selinux shadow sqlite vim-syntax xemacs
 
 ruby_add_rdepend "
 	dev-ruby/hiera
-	>=dev-ruby/rgen-0.6.5 =dev-ruby/rgen-0.6*
+	>=dev-ruby/rgen-0.6.5
 	>=dev-ruby/facter-1.6.2 <dev-ruby/facter-3
 	dev-ruby/json
 	augeas? ( dev-ruby/ruby-augeas )
