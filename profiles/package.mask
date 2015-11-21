@@ -33,7 +33,8 @@
 # Patrice Clement <monsieurp@gentoo.org> (21 Nov 2015)
 # Upstream dead + superseded by app-text/tidy-html5.
 # Masked for removal in 30 days. See bug #564884.
-app-text/htmltidy
+# Not yet.
+# app-text/htmltidy
 
 # Michael Palimaka <kensington@gentoo.org> (18 Nov 2015)
 # Ebuilds unfinished work-in-progress. Dead upstream.
