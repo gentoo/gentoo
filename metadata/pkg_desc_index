@@ -1918,7 +1918,7 @@ app-misc/wipe 2.3.1: Secure file wiping utility based on Peter Gutman's patterns
 app-misc/worker 2.19.6: Worker Filemanager: Amiga Directory Opus 4 clone
 app-misc/workrave 1.10.6-r1 1.10.6-r2 1.10.8: Helpful utility to attack Repetitive Strain Injury (RSI)
 app-misc/wyrd 1.4.4 1.4.5 1.4.6: Text-based front-end to Remind
-app-misc/xmind 3.4.1.201401221918 3.5.1.201411201906 3.5.3.201506180105: A brainstorming and mind mapping software tool
+app-misc/xmind 3.4.1.201401221918 3.5.1.201411201906 3.5.3.201506180105-r2: A brainstorming and mind mapping software tool
 app-misc/yagtd 0.3.4 0.3.4-r1: CLI todo list manager based on the 'Getting Things Done' philosophy
 app-misc/ytree 1.97 1.98: A (curses-based) file manager
 app-misc/yworklog 0.0.7: Stack based utility with CLI interface helping to monitor time spent on tasks
@@ -14585,7 +14585,7 @@ net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Co
 net-misc/tlsdate 0.0.1 0.0.4 0.0.4-r1 0.0.4-r2 0.0.5 0.0.6 0.0.11 0.0.12 0.0.12-r1 0.0.12-r2 0.0.13: Update local time over HTTPS
 net-misc/tn5250 0.17.4: Telnet client for the IBM AS/400 that emulates 5250 terminals and printers
 net-misc/tokyotyrant 1.1.41-r1: A network interface to Tokyo Cabinet
-net-misc/tor 0.2.6.10 0.2.7.4_rc: Anonymizing overlay network for TCP
+net-misc/tor 0.2.6.10 0.2.7.5: Anonymizing overlay network for TCP
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
 net-misc/ucarp 1.5.2-r3 1.5.2-r4: Portable userland implementation of Common Address Redundancy Protocol (CARP)
 net-misc/udpcast 20120424 20120424-r1: Multicast file transfer tool
@@ -17385,7 +17385,7 @@ www-apps/jekyll-sass-converter 1.3.0: A basic Sass converter for Jekyll
 www-apps/jekyll-sitemap 0.8.1 0.9.0: Automatically generate a sitemap.xml for your Jekyll site
 www-apps/jekyll-watch 1.2.1 1.3.0: Rebuild your Jekyll site when a file changes with the --watch switch
 www-apps/joomla 3.4.3: Joomla is a powerful Open Source Content Management System
-www-apps/kibana-bin 4.0.3 4.1.1 4.1.2: visualize logs and time-stamped data
+www-apps/kibana-bin 4.1.3: Explore and visualize data
 www-apps/liquid_feedback_core 2.2.3 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.2 2.2.7 3.0.6: Internet platforms for proposition development and decision making
 www-apps/lxr 0.9.8-r1: general purpose source code indexer and cross-referener with a web-based frontend
