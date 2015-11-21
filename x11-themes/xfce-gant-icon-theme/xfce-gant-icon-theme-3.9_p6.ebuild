@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=5
 inherit gnome2-utils
 
 DESCRIPTION="Xfce Gant Icon Theme"
@@ -21,10 +22,10 @@ RESTRICT="binchecks strip"
 S=${WORKDIR}/Gant.Xfce
 
 src_install() {
-	dodoc README || die
+	dodoc README
 	rm -f icons/iconrc~ README || die
 	insinto /usr/share/icons/Gant.Xfce
-	doins -r * || die
+	doins -r *
 }
 
 pkg_preinst() { gnome2_icon_savelist; }
