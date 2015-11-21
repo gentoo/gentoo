@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=5
 inherit gnome2-utils versionator
 
-MY_PV=$(delete_all_version_separators ${PV})
+MY_PV="$(delete_all_version_separators ${PV})"
 
 DESCRIPTION="A scalable icon theme called Nou"
 HOMEPAGE="http://www.silvestre.com.ar/"
@@ -27,7 +28,7 @@ src_install() {
 	rm -f Nou/{AUTHORS,COPYING,DONATE,INSTALL,README,.icon-theme.cache}
 
 	insinto /usr/share/icons
-	doins -r Nou || die
+	doins -r Nou
 }
 
 pkg_preinst() { gnome2_icon_savelist; }
