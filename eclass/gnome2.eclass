@@ -10,7 +10,7 @@
 # Exports portage base functions used by ebuilds written for packages using the
 # GNOME framework. For additional functions, see gnome2-utils.eclass.
 
-inherit eutils fdo-mime libtool gnome.org gnome2-utils
+inherit eutils libtool gnome.org gnome2-utils xdg
 
 case "${EAPI:-0}" in
 	4|5)
@@ -74,6 +74,8 @@ gnome2_src_unpack() {
 # Prepare environment for build, fix build of scrollkeeper documentation,
 # run elibtoolize.
 gnome2_src_prepare() {
+	xdg_src_prepare
+
 	# Prevent assorted access violations and test failures
 	gnome2_environment_reset
 
@@ -225,6 +227,7 @@ gnome2_src_install() {
 # @DESCRIPTION:
 # Finds Icons, GConf and GSettings schemas for later handling in pkg_postinst
 gnome2_pkg_preinst() {
+	xdg_pkg_preinst
 	gnome2_gconf_savelist
 	gnome2_icon_savelist
 	gnome2_schemas_savelist
@@ -237,9 +240,8 @@ gnome2_pkg_preinst() {
 # Handle scrollkeeper, GConf, GSettings, Icons, desktop and mime
 # database updates.
 gnome2_pkg_postinst() {
+	xdg_pkg_postinst
 	gnome2_gconf_install
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
 	gnome2_icon_cache_update
 	gnome2_schemas_update
 	gnome2_scrollkeeper_update
@@ -255,8 +257,7 @@ gnome2_pkg_postinst() {
 # @DESCRIPTION:
 # Handle scrollkeeper, GSettings, Icons, desktop and mime database updates.
 gnome2_pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_pkg_postrm
 	gnome2_icon_cache_update
 	gnome2_schemas_update
 	gnome2_scrollkeeper_update
