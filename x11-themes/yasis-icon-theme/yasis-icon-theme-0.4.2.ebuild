@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=5
 inherit gnome2-utils
 
 DESCRIPTION="A scalable icon theme called Yasis"
@@ -18,14 +19,14 @@ DEPEND=""
 
 RESTRICT="binchecks strip"
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
 src_install() {
 	dodoc yasis/{AUTHORS,README}
 	rm -f yasis/{AUTHORS,COPYING,DONATE,INSTALL,README}
 
 	insinto /usr/share/icons
-	doins -r yasis || die
+	doins -r yasis
 }
 
 pkg_preinst() { gnome2_icon_savelist; }

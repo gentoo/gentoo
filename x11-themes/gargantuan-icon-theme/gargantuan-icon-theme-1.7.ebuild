@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=5
 inherit gnome2-utils
 
 DESCRIPTION="Gargantuan Icon Theme"
@@ -16,13 +17,13 @@ IUSE=""
 RDEPEND="x11-themes/hicolor-icon-theme"
 DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/gargantuan
+S="${WORKDIR}/gargantuan"
 
 src_install() {
-	dodoc README || die
+	dodoc README
 	rm -f index.theme~ index.theme.old icons/iconrc~ README || die
 	insinto /usr/share/icons/gargantuan
-	doins -r * || die
+	doins -r *
 }
 
 pkg_preinst() { gnome2_icon_savelist; }

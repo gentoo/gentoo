@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=5
 inherit gnome2-utils
 
 DESCRIPTION="A scalable icon theme called Nuovo"
@@ -25,7 +26,7 @@ src_install() {
 	rm -f Nuovo/{AUTHORS,Changelog,COPYING,DONATE,INSTALL,README}
 
 	insinto /usr/share/icons
-	doins -r Nuovo || die
+	doins -r Nuovo
 }
 
 pkg_preinst() { gnome2_icon_savelist; }
