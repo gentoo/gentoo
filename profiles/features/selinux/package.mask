@@ -9,7 +9,9 @@ app-admin/calamares
 dev-python/python-systemd
 gnome-base/gdm
 gnome-base/gnome
+gnome-base/gnome-extra-apps
 gnome-base/gnome-light
+gnome-base/gnome-shell
 gnome-extra/gnome-logs
 gnome-extra/gnome-shell-extensions
 gnome-extra/gnome-shell-frippery
