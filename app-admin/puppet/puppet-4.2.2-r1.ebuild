@@ -22,7 +22,7 @@ RESTRICT="test"
 
 ruby_add_rdepend "
 	dev-ruby/hiera
-	>=dev-ruby/rgen-0.6.5 =dev-ruby/rgen-0.6*
+	>=dev-ruby/rgen-0.6.5
 	dev-ruby/json
 	>=dev-ruby/facter-3.0.0
 	augeas? ( dev-ruby/ruby-augeas )
