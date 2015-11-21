@@ -2407,7 +2407,7 @@ app-text/silvercity 0.9.7 0.9.7-r1: A lexical analyser for many languages
 app-text/skribe 1.2l: Skribe is a text processor for technical documents written in scheme
 app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a large number of languages
 app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellchecking in mails, etc.)
-app-text/stardict 3.0.6 3.0.6-r1: A international dictionary supporting fuzzy and glob style matching
+app-text/stardict 3.0.6 3.0.6-r2: A international dictionary supporting fuzzy and glob style matching
 app-text/sword 1.6.2 1.7.2 1.7.3: Library for Bible reading software
 app-text/sword-modules 1: A collection of modules for the SWORD project
 app-text/t1utils 1.39: Type 1 Font utilities
