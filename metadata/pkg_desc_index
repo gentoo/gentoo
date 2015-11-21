@@ -17487,7 +17487,7 @@ www-misc/awstats 7.1_p20121017 7.1.1 7.3 7.4: AWStats is short for Advanced Web 
 www-misc/bookmarksync 0.3.4-r2: bookmarksync synchronizes various browser bookmark files
 www-misc/fcgiwrap 1.1.0-r1 9999: Simple FastCGI wrapper for CGI scripts (CGI support for nginx)
 www-misc/gurlchecker 0.13.1-r1: Gnome tool that checks links on web pages/sites
-www-misc/htdig 3.2.0_beta6-r3: HTTP/HTML indexing and searching system
+www-misc/htdig 3.2.0_beta6-r3 3.2.0_beta6-r4: HTTP/HTML indexing and searching system
 www-misc/litmus 0.13: WebDAV server protocol compliance test suite
 www-misc/log-toolkit 0.9.6: set of tools to manipulate and maintain webserver logfiles
 www-misc/mergelog 4.5-r2: A utility to merge apache logs in chronological order
