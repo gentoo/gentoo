@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer status="active">
+		<email>stasibear@gentoo.org</email>
+		<name>Erik Mackdanz</name>
+	</maintainer>
+	<maintainer>
+		<email>john@irc.tm</email>
+		<name>John Cooke</name>
+	</maintainer>
+	<longdescription>
+		LXCFS is a simple userspace filesystem designed to
+		provide a cgroupfs-like tree which is container aware
+		and a set of files which can be bind-mounted over
+		their /proc originals to provide cgroup-aware values.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">lxc/lxfs</remote-id>
+	</upstream>
+</pkgmetadata>
