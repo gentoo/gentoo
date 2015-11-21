@@ -1,12 +1,12 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
-inherit cmake-utils eutils
+inherit cmake-utils
 
-DESCRIPTION="a tool for analysing captured signals, primarily from software-defined radio receivers"
+DESCRIPTION="a tool for analysing captured signals from software-defined radio receivers"
 HOMEPAGE="https://github.com/miek/inspectrum"
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
@@ -27,8 +27,3 @@ RDEPEND="sci-libs/fftw:3.0=
 	dev-qt/qtcore:5"
 DEPEND="virtual/pkgconfig
 	${RDEPEND}"
-
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-cxxflags.patch
-	cmake-utils_src_prepare
-}

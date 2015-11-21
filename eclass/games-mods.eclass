@@ -9,6 +9,8 @@
 # MOD_DIR - Subdirectory name for the mod, if applicable
 # MOD_ICON - Custom icon for the mod, instead of the default
 
+[[ ${EAPI:-0} == [012] ]] || die "EAPI ${EAPI} not supported"
+
 inherit eutils games
 
 EXPORT_FUNCTIONS src_install pkg_postinst
