@@ -14890,7 +14890,7 @@ net-wireless/hidclient 20120728: Use your machine as a bluetooh keyboard/mouse
 net-wireless/horst 4.2 9999: Small 802.11 wireless LAN analyzer
 net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
 net-wireless/hostapd 2.4-r2 2.4-r3 2.5: IEEE 802.11 wireless LAN Host AP daemon
-net-wireless/inspectrum 0.1-r1 9999: a tool for analysing captured signals, primarily from software-defined radio receivers
+net-wireless/inspectrum 0.1.1 9999: a tool for analysing captured signals from software-defined radio receivers
 net-wireless/irda-utils 0.9.18-r4: IrDA management and handling utilities
 net-wireless/iw 3.17 4.0 4.3: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
 net-wireless/kismet 2013.03.1-r2 9999: IEEE 802.11 wireless LAN sniffer
