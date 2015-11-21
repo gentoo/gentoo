@@ -12478,7 +12478,7 @@ media-plugins/gst-plugins-shout2 0.10.31 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0 1.6.1: 
 media-plugins/gst-plugins-sidplay 0.10.19-r1 1.2.4-r1 1.4.5 1.6.0 1.6.1: plugin for gstreamer
 media-plugins/gst-plugins-smoothstreaming 1.2.4-r1 1.4.5 1.6.0 1.6.1: Smooth Streaming plugin
 media-plugins/gst-plugins-soundtouch 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0 1.6.1: GStreamer elements for beats-per-minute detection and pitch controlling
-media-plugins/gst-plugins-soup 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0 1.6.1: GStreamer plugin for HTTP client source/sink
+media-plugins/gst-plugins-soup 0.10.31-r1 0.10.31-r2 1.4.5 1.6.1: GStreamer plugin for HTTP client source/sink
 media-plugins/gst-plugins-speex 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0 1.6.1: GStreamer plugin to allow encoding and decoding of speex
 media-plugins/gst-plugins-taglib 0.10.31-r1 1.2.4-r1 1.4.5 1.6.0 1.6.1: GStreamer taglib based tag handler
 media-plugins/gst-plugins-theora 0.10.36 0.10.36-r1: plugin for gstreamer
