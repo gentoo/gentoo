@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare setup
+DEPEND=>=sys-boot/gnu-efi-3.0.2
+DESCRIPTION=The rEFInd UEFI Boot Manager by Rod Smith
+EAPI=5
+HOMEPAGE=http://www.rodsbooks.com/refind/
+IUSE=btrfs +ext2 +ext4 hfs +iso9660 ntfs reiserfs doc
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD GPL-2 GPL-3 FDL-1.3
+SLOT=0
+SRC_URI=mirror://sourceforge/project/refind/0.10.0/refind-src-0.10.0.tar.gz
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=7e55513d116351f05aa1c1fc1123a740
