@@ -4681,7 +4681,7 @@ dev-libs/libmacaroons 0.2.0-r1 0.3.0: Hyperdex macaroons support library
 dev-libs/libmail 0.3-r3: A mail handling library
 dev-libs/libmal 0.44.1: convenience library of the functions malsync distribution
 dev-libs/libmateweather 1.8.0: MATE library to access weather information from online services
-dev-libs/libmaxminddb 1.1.1: C library for the MaxMind DB file format
+dev-libs/libmaxminddb 1.1.2: C library for the MaxMind DB file format
 dev-libs/libmba 0.9.1-r3: A library of generic C modules
 dev-libs/libmcal 0.7-r5 0.7-r6: Modular Calendar Access Library
 dev-libs/libmcrypt 2.5.8-r2 2.5.8-r3: libmcrypt is a library that provides uniform interface to access several encryption algorithms
