@@ -64,7 +64,7 @@ src_install() {
 	fperms a+rx  "/opt/xmind/XMind/XMind"
 
 	exeinto /opt/bin
-	newexe "${FILESDIR}/xmind-wrapper" xmind
+	newexe "${FILESDIR}/xmind-wrapper-3.5.3" xmind
 
 	# install icons
 	local res
@@ -72,8 +72,7 @@ src_install() {
 		newicon -s ${res} "${WORKDIR}/xmind-icons/xmind.${res}.png" xmind.png
 	done
 
-	# make desktop entry
-	make_desktop_entry "xmind %F" XMind xmind Office "MimeType=application/x-xmind;"
+	make_desktop_entry ${PN} "XMind" ${PN} "Office" "MimeType=application/x-xmind;"
 }
 
 pkg_preinst() {
