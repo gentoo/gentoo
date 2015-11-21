@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@
 #  * GConf schemas management
 #  * scrollkeeper (old Gnome help system) management
 
-inherit eutils multilib
+inherit eutils multilib xdg-utils
 
 case "${EAPI:-0}" in
 	0|1|2|3|4|5) ;;
@@ -90,23 +90,13 @@ DEPEND=">=sys-apps/sed-4"
 # Reset various variables inherited from root's evironment to a reasonable
 # default for ebuilds to help avoid access violations and test failures.
 gnome2_environment_reset() {
+	xdg_environment_reset
+
 	# Respected by >=glib-2.30.1-r1
 	export G_HOME="${T}"
 
 	# GST_REGISTRY is to work around gst utilities trying to read/write /root
 	export GST_REGISTRY="${T}/registry.xml"
-
-	# XXX: code for resetting XDG_* directories should probably be moved into
-	# a separate function in a non-gnome eclass
-	export XDG_DATA_HOME="${T}/.local/share"
-	export XDG_CONFIG_HOME="${T}/.config"
-	export XDG_CACHE_HOME="${T}/.cache"
-	export XDG_RUNTIME_DIR="${T}/run"
-	mkdir -p "${XDG_DATA_HOME}" "${XDG_CONFIG_HOME}" "${XDG_CACHE_HOME}" \
-		"${XDG_RUNTIME_DIR}"
-	# This directory needs to be owned by the user, and chmod 0700
-	# http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
-	chmod 0700 "${XDG_RUNTIME_DIR}"
 }
 
 # @FUNCTION: gnome2_gconf_savelist
