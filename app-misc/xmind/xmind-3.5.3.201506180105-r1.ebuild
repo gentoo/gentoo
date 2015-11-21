@@ -64,7 +64,7 @@ src_install() {
 	fperms a+rx  "/opt/xmind/XMind/XMind"
 
 	exeinto /opt/bin
-	newexe "${FILESDIR}/xmind-wrapper" xmind
+	newexe "${FILESDIR}/xmind-wrapper-3.5.3" xmind
 
 	# install icons
 	local res
