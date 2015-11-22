@@ -5332,7 +5332,7 @@ dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interf
 dev-perl/Cwd-Guard 0.40.0: Temporary changing working directory (chdir)
 dev-perl/DBD-Pg 2.19.3-r1 3.3.0 3.4.2: PostgreSQL database driver for the DBI module
 dev-perl/DBD-SQLite 1.350.0-r1 1.460.0 1.480.0: Self Contained RDBMS in a DBI Driver
-dev-perl/DBD-mysql 4.20.0-r1 4.31.0 4.32.0: The Perl DBD:mysql Module
+dev-perl/DBD-mysql 4.31.0-r1 4.32.0-r1: The Perl DBD:mysql Module
 dev-perl/DBI 1.628.0 1.633.0 1.634.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r1: Interactive command shell for the DBI
 dev-perl/DBICx-TestDatabase 0.40.0: create a temporary database from a DBIx::Class::Schema
@@ -7329,7 +7329,7 @@ dev-python/oslo-concurrency 1.8.0 1.8.1 1.8.2 2.5.0: library for running multi-t
 dev-python/oslo-config 1.9.3 2.3.0 2.4.0: Oslo Configuration API
 dev-python/oslo-context 0.1.0 0.1.0-r1 0.2.0 0.3.0 0.6.0: Helpers to maintain useful information about a request context
 dev-python/oslo-db 1.0.2 1.4.1 1.7.1 1.7.2 1.8.0 1.9.0 2.6.0: OpenStack Common DB Code
-dev-python/oslo-i18n 1.0.0 1.3.1 1.4.0 1.5.0 1.6.0 2.6.0: oslo.i18n library
+dev-python/oslo-i18n 1.3.1 1.4.0 1.5.0 1.6.0 2.6.0 2.7.0: Oslo i18n library
 dev-python/oslo-log 0.3.0 1.0.0 1.1.0 1.10.0: OpenStack logging config library provides standardized configuration for all openstack projects.
 dev-python/oslo-messaging 1.4.1 1.5.1 1.7.0 1.8.0 1.8.2 1.8.3 1.9.0 1.10.0 2.4.0: Messaging API for RPC and notifications over a number of different messaging transports
 dev-python/oslo-middleware 0.4.0 0.5.0 1.0.0 1.1.0 1.2.0 1.3.0 2.8.0: Library includes components to be injected into wsgi pipelines to intercept request/response flows.
