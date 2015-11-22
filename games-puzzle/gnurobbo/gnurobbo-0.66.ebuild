@@ -18,9 +18,11 @@ DEPEND="media-libs/libsdl[sound,video,joystick]
 	media-libs/sdl-image[png]
 	media-libs/sdl-mixer[vorbis]
 	media-libs/sdl-ttf"
-RDEPEND="${DEPEND}"
+RDEPEND=${DEPEND}
 
-PATCHES=( "${FILESDIR}"/${P}-underlink.patch )
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-underlink.patch
+}
 
 src_compile() {
 	emake \

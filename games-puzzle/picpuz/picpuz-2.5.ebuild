@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils gnome2-utils games
 
 DESCRIPTION="A jigsaw puzzle program"
@@ -18,7 +18,11 @@ RDEPEND="x11-libs/gtk+:3"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${P}-build.patch "${FILESDIR}"/${P}-pthread-underlinking.patch )
+src_prepare() {
+	epatch \
+		"${FILESDIR}"/${P}-build.patch \
+		"${FILESDIR}"/${P}-pthread-underlinking.patch
+}
 
 src_compile() {
 	emake \
