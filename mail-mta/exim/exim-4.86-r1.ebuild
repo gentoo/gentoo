@@ -474,7 +474,7 @@ src_install () {
 	systemd_newunit "${FILESDIR}"/exim_at.service 'exim@.service'
 	systemd_newunit "${FILESDIR}"/exim-submission_at.service 'exim-submission@.service'
 
-	DIROPTIONS="-m 0750 -o ${MAILUSER} -g ${MAILGROUP}"
+	diropts -m 0750 -o ${MAILUSER} -g ${MAILGROUP}
 	dodir /var/log/${PN}
 }
 
