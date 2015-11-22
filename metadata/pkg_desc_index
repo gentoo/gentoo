@@ -9844,7 +9844,7 @@ games-arcade/nottetris2 1: The spiritual successor of the classic Tetris mixed w
 games-arcade/openbubbles 1.2: A clone of Evan Bailey's game Bubbles
 games-arcade/openmortal 0.7-r1: A spoof of the famous Mortal Kombat game
 games-arcade/opensonic 0.1.4-r1: A free open-source game based on the Sonic the Hedgehog universe
-games-arcade/opentyrian 2.1.20130907 20090702 20091025 20110517 20110517-r1: Open-source port of the DOS game Tyrian, vertical scrolling shooter
+games-arcade/opentyrian 2.1.20130907: Open-source port of the DOS game Tyrian, vertical scrolling shooter
 games-arcade/orthorobot 0: Nice perspective based puzzle game, where you flatten the view to move across gaps
 games-arcade/pachi 1.0: platform game inspired by games like Manic Miner and Jet Set Willy
 games-arcade/pacmanarena 0.15: a Pacman clone in full 3D with a few surprises. Rockets, bombs and explosions abound
