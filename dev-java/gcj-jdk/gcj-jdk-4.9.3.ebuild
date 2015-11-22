@@ -11,7 +11,7 @@ HOMEPAGE="https://www.gentoo.org/"
 SRC_URI=""
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm ~x86 ~x86-linux"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-linux"
 SLOT="0"
 IUSE="awt"
 
