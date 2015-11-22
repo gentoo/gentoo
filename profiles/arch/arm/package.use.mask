@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Markus Meier <maekke@gentoo.org> (22 Nov 2015)
+# unmask scanner for net-print/hplip, bug #518456
+net-print/hplip -scanner kde
+media-gfx/xsane ocr
+
 # Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
 # Missing keywords
 >=media-plugins/grilo-plugins-0.2.16 upnp-av
