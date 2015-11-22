@@ -6888,7 +6888,7 @@ dev-python/datashape 0.4.2 0.4.4 0.4.5 0.4.6: Language defining a data descripti
 dev-python/dbus-python 1.2.0-r1: Python bindings for the D-Bus messagebus
 dev-python/dbutils 1.1-r1: Database connections for multi-threaded environments
 dev-python/ddt 1.0.0: A library to multiply test cases
-dev-python/debtcollector 0.7.0: ... Python deprecation patterns and strategies that help you collect your technical debt ....
+dev-python/debtcollector 0.7.0 0.10.0: ... Python deprecation patterns and strategies that collect technical debt ....
 dev-python/decorator 4.0.2 4.0.4: Simplifies the usage of decorators for the average programmer
 dev-python/decoratortools 1.8-r1: Class, function, and metaclass decorators
 dev-python/deform 0.9.8 0.9.9: Another form generation library
