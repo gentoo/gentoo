@@ -976,7 +976,7 @@ app-doc/single-unix-specification 3 4-r1: The Single UNIX Specification, Version
 app-doc/tldp-howto 20100701 20120707: The Linux Documentation Project HOWTOs
 app-doc/vilearn 1.0: vilearn is an interactive vi tutorial comprised of 5 tutorials for the vi-impaired
 app-doc/xmltoman 0.4: Simple scripts for converting xml to groff or html
-app-doc/zeal 0.1.1 0.2.0: Offline documentation browser inspired by Dash
+app-doc/zeal 0.2.1: Offline documentation browser inspired by Dash
 app-doc/zsh-lovers 0.9.0: Tips, tricks and examples for the Z shell
 app-editors/XML-XSH2 2.1.6-r1: XML Editing Shell
 app-editors/adie 1.6.49 1.7.45 1.7.47 1.7.49: Text editor based on the FOX Toolkit
@@ -5986,6 +5986,7 @@ dev-perl/Perl-Critic-Dynamic 0.50.0-r1: Base class for dynamic Policies
 dev-perl/Perl-Critic-Nits 1.0.0-r1: policies of nits I like to pick
 dev-perl/Perl-Critic-Policy-Dynamic-NoIndirect 0.60.0-r1: Perl::Critic policy against indirect method calls
 dev-perl/Perl-Tags 0.280.0-r1 0.280.0-r2: Generate (possibly exuberant) Ctags style tags for Perl sourcecode
+dev-perl/Perl-Unsafe-Signals 0.30.0: Allow unsafe handling of signals in selected blocks
 dev-perl/Perl6-Junction 1.600.0: Perl6 style Junction operators in Perl5
 dev-perl/PerlIO-Layers 0.10.0 0.11.0: Querying your filehandle's capabilities
 dev-perl/PerlIO-eol 0.140.0-r1: PerlIO::eol - PerlIO layer for normalizing line endings
