@@ -228,7 +228,7 @@ app-admin/webmin 1.760: A web-based Unix systems administration interface
 app-admin/whowatch 1.8.5: interactive who-like program that displays information about users currently logged on in real time
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1 2.1-r1: Tail multiple logfiles at once, even if rotated
-app-admin/yaala 0.7.3-r1: Yet Another Log Analyzer
+app-admin/yaala 0.7.3-r1 0.7.3-r2: Yet Another Log Analyzer
 app-antivirus/clamav 0.98.5 0.98.6 0.98.7 0.98.7-r1: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 3.7.2 4.5.3: Downloads and installs third-party clamav signatures
 app-arch/advancecomp 1.15 1.16 1.17 1.19: Recompress ZIP, PNG and MNG using deflate 7-Zip, considerably improving compression
