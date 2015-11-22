@@ -8665,11 +8665,14 @@ dev-ruby/metasploit-payloads 1.0.9-r1 1.0.15 1.0.16: Compiled binaries for Metas
 dev-ruby/metasploit_data_models 1.2.5 1.2.9: The database layer for Metasploit
 dev-ruby/meterpreter_bins 0.0.22: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/method_source 0.8.2-r2 0.8.2-r3: Retrieve the source code for a method
-dev-ruby/mime-types 1.23 1.25.1 2.4.3 2.4.3-r1 2.5 2.6.1 2.6.2: Provides a mailcap-like MIME Content-Type lookup for Ruby
+dev-ruby/mime-types 1.23 1.25.1 2.4.3 2.6.2 3.0: Provides a mailcap-like MIME Content-Type lookup for Ruby
+dev-ruby/mime-types-data 3.2015.1120: Registry for information about MIME media type definitions
 dev-ruby/mimemagic 0.3.0: Fast mime detection by extension or content
 dev-ruby/mini_magick 4.2.10 4.3.3 4.3.5 4.3.6: Manipulate images with minimal use of memory
 dev-ruby/mini_shoulda 0.5.0-r1: A minimal shoulda DSL built on top of MiniTest::Spec
 dev-ruby/minitest 4.7.5-r1 4.7.5-r2 5.3.3-r1 5.5.1 5.6.1 5.7.0 5.8.0 5.8.1 5.8.2: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
+dev-ruby/minitest-bonus-assertions 2.0: Bonus assertions for minitest
+dev-ruby/minitest-pretty_diff 0.1: Pretty-print hashes and arrays before diffing them in MiniTest
 dev-ruby/mixlib-shellout 2.2.1 2.2.2 2.2.3: Run external commands on Unix or Windows
 dev-ruby/mocha 0.10.5-r1 0.10.5-r2 0.11.4 0.11.4-r1 0.12.7 0.12.10 0.12.10-r1 0.13.3 0.13.3-r1 0.13.3-r2 0.14.0 1.1.0: A Ruby library for mocking and stubbing using a syntax like that of JMock, and SchMock
 dev-ruby/modernizr 2.6.2: Neatly packaged Modernizr JS assets for use in Sprockets or the Rails 3 asset pipeline

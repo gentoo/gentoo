@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=dev-dotnet/libgdiplus dev-lang/mono media-libs/freetype:2[X] media-libs/libsdl[X,opengl,video] media-libs/openal virtual/jpeg:0 virtual/opengl cg? ( >=media-gfx/nvidia-cg-toolkit-2.1.0017 ) games-misc/games-envd
 SLOT=0
 SRC_URI=https://github.com/OpenRA/OpenRA/tarball/release-20120630 -> openra-20120630.tar.gz
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f813d23e417656bf3917483643165d5a	games	4dae170e58f773c484e07d18ef441804	gnome2-utils	588052cacdf74572e68bdfeaece20534	mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	games	0657bdc2419f46bd28c841221b32e2ab	gnome2-utils	588052cacdf74572e68bdfeaece20534	mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
 _md5_=1ef6f842ae7b61f36fe0cf88869970e1

@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEFINED_PHASES=compile configure install postinst preinst prepare setup
 DEPEND=app-arch/unzip
 DESCRIPTION=UT2004 Megapack - Megapack bonus pack
 EAPI=2
@@ -10,5 +10,5 @@ RDEPEND=games-misc/games-envd dedicated? ( || ( games-server/ut2004-ded games-fp
 RESTRICT=mirror strip
 SLOT=0
 SRC_URI=mirror://3dgamers/unrealtourn2k4/Missions/ut2004megapack-linux.tar.bz2 http://0day.icculus.org/ut2004/ut2004megapack-linux.tar.bz2 ftp://ftp.games.skynet.be/pub/misc/ut2004megapack-linux.tar.bz2 http://sonic-lux.net/data/mirror/ut2004/ut2004megapack-linux.tar.bz2
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f813d23e417656bf3917483643165d5a	games	4dae170e58f773c484e07d18ef441804	games-mods	926c26c3723d1136680b3196a162ff9e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	games	0657bdc2419f46bd28c841221b32e2ab	games-mods	926c26c3723d1136680b3196a162ff9e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=82a475f3aad92b6855775cbf5e92f4b7

@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test
 DEPEND=dev-libs/boost dev-libs/icu:= dev-libs/libxml2 dev-libs/nspr ~games-strategy/0ad-data-0.0.18_alpha media-libs/libpng:0 media-libs/libsdl2[X,opengl,video] net-libs/enet:1.3 net-libs/miniupnpc:= net-misc/curl sys-libs/zlib virtual/jpeg:0 virtual/opengl x11-libs/libX11 x11-libs/libXcursor editor? ( x11-libs/wxGTK:3.0[X,opengl] ) lobby? ( net-libs/gloox ) nvtt? ( media-gfx/nvidia-texture-tools ) sound? ( media-libs/libvorbis media-libs/openal ) || ( >=dev-lang/python-2.7.5-r2:2.7[threads,ssl] ) virtual/pkgconfig test? ( dev-lang/perl ) >=sys-apps/sed-4
 DESCRIPTION=A free, real-time strategy game
 EAPI=5
@@ -10,5 +10,5 @@ RDEPEND=dev-libs/boost dev-libs/icu:= dev-libs/libxml2 dev-libs/nspr ~games-stra
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/zero-ad/0ad-0.0.18-alpha-unix-build.tar.xz
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	games	4dae170e58f773c484e07d18ef441804	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	60a62ae0ee8cd93b4ba99a4c1371eb8b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	wxwidgets	2a19d3cd9b18703ae9fb53123722061c
+_eclasses_=eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	games	0657bdc2419f46bd28c841221b32e2ab	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	60a62ae0ee8cd93b4ba99a4c1371eb8b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	wxwidgets	2a19d3cd9b18703ae9fb53123722061c
 _md5_=b7e6ca26e3d5cc9fc5e0df34084dabf8
