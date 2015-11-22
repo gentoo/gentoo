@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils gnome2-utils games
 
 DESCRIPTION="A jigsaw puzzle program"
