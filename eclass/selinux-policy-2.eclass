@@ -229,12 +229,7 @@ selinux-policy-2_src_compile() {
 	for i in ${POLICY_TYPES}; do
 		# Support USE flags in builds
 		export M4PARAM="${makeuse}"
-		if [[ ${BASEPOL} == 2.20140311* ]]; then
-			# Parallel builds are broken in 2.20140311-r7 and earlier, bug 530178
-			emake -j1 NAME=$i -C "${S}"/${i} || die "${i} compile failed"
-		else
-			emake NAME=$i -C "${S}"/${i} || die "${i} compile failed"
-		fi
+		emake NAME=$i -C "${S}"/${i} || die "${i} compile failed"
 	done
 }
 
