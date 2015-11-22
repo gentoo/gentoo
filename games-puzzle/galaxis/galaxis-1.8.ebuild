@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit games
+inherit eutils games
 
 DESCRIPTION="A UNIX-hosted, curses-based clone of the nifty little Macintosh freeware game Galaxis"
 HOMEPAGE="http://www.catb.org/~esr/galaxis/"
@@ -14,10 +14,12 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE=""
 
-DEPEND=">=sys-libs/ncurses-5.3"
-RDEPEND="${DEPEND}"
+DEPEND=">=sys-libs/ncurses-5.3:0"
+RDEPEND=${DEPEND}
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-gentoo.patch
+}
 
 src_install() {
 	dogamesbin galaxis
