@@ -18,7 +18,11 @@ RDEPEND="x11-libs/gtk+:3"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${P}-build.patch "${FILESDIR}"/${P}-pthread-underlinking.patch )
+src_prepare() {
+	epatch \
+		"${FILESDIR}"/${P}-build.patch \
+		"${FILESDIR}"/${P}-pthread-underlinking.patch
+}
 
 src_compile() {
 	emake \
