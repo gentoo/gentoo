@@ -1,5 +1,5 @@
---- Makefile.old
-+++ Makefile
+--- alienwave.orig/Makefile
++++ alienwave/Makefile
 @@ -1,9 +1,7 @@
  # This file is part of Alienwave, a game by Alessandro Pira
  
@@ -14,7 +14,7 @@
  
  
  alienwave: $(OBJS)
--	$(CC) $(LIB) $(OBJS) -o alienwave
+-	$(CC) $(OBJS) $(LIB) -o alienwave
 -	strip alienwave
 +	$(CC) $(OBJS) $(LDFLAGS) $(LIB) -o alienwave
  
