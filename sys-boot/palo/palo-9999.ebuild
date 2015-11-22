@@ -40,5 +40,6 @@ src_install() {
 	doins iplboot
 
 	insinto /etc/kernel/postinst.d/
-	INSOPTIONS="-m 0744" doins "${FILESDIR}"/99palo
+	insopts -m 0744
+	doins "${FILESDIR}"/99palo
 }
