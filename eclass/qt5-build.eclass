@@ -17,11 +17,8 @@ case ${EAPI} in
 	*)	die "qt5-build.eclass: unsupported EAPI=${EAPI:-0}" ;;
 esac
 
+[[ ${EAPI} == 5 ]] && inherit multilib
 inherit eutils flag-o-matic toolchain-funcs versionator virtualx
-
-if [[ ${EAPI} == 5 ]]; then
-	inherit multilib
-fi
 
 HOMEPAGE="https://www.qt.io/"
 LICENSE="|| ( LGPL-2.1 LGPL-3 ) FDL-1.3"
@@ -241,12 +238,12 @@ qt5-build_src_test() {
 	# create a custom testrunner script that correctly sets
 	# {,DY}LD_LIBRARY_PATH before executing the given test
 	local testrunner=${QT5_BUILD_DIR}/gentoo-testrunner
-	cat <<-EOF > "${testrunner}"
+	cat > "${testrunner}" <<-_EOF_ || die
 	#!/bin/sh
 	export LD_LIBRARY_PATH="${QT5_BUILD_DIR}/lib:${QT5_LIBDIR}"
 	export DYLD_LIBRARY_PATH="${QT5_BUILD_DIR}/lib:${QT5_LIBDIR}"
 	"\$@"
-	EOF
+	_EOF_
 	chmod +x "${testrunner}"
 
 	_qt5_test_runner() {
@@ -291,7 +288,7 @@ qt5-build_src_install() {
 			|| die "sed failed (qconfig.h)"
 
 		# install qtchooser configuration file
-		cat > "${T}/qt5-${CHOST}.conf" <<-_EOF_
+		cat > "${T}/qt5-${CHOST}.conf" <<-_EOF_ || die
 			${QT5_BINDIR}
 			${QT5_LIBDIR}
 		_EOF_
