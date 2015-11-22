@@ -9915,7 +9915,7 @@ games-board/cgoban2 2.6.12: A Java client for the Kiseido Go Server, and a SGF e
 games-board/chessx 1.3.2: Qt5-based Chess Database Utility
 games-board/cockatrice 20120702: An open-source multiplatform software for playing card games over a network
 games-board/crafty 24.1: Bob Hyatt's strong chess engine
-games-board/domination 1.1.1.5 1.1.1.6: The well-known board game, written in java
+games-board/domination 1.1.1.6: The well-known board game, written in java
 games-board/eboard 1.1.1-r1: chess interface for POSIX systems
 games-board/four-in-a-row 3.16.2 3.18.2: Make lines of the same color to win
 games-board/freedoko 0.7.13: FreeDoko is a Doppelkopf-game
@@ -10314,7 +10314,7 @@ games-puzzle/construo 0.2.2: 2d construction toy with objects that react on phys
 games-puzzle/cutemaze 1.1.1: A simple, top-down game in which mazes are randomly generated
 games-puzzle/cuyo 2.1.1: highly addictive and remotely related to tetris
 games-puzzle/einstein 2.0: A puzzle game inspired by Albert Einstein
-games-puzzle/enigma 1.21 1.21-r1: puzzle game similar to Oxyd
+games-puzzle/enigma 1.21-r1: puzzle game similar to Oxyd
 games-puzzle/ensemblist 040126: Put together several primitives to build a given shape. (C.S.G. Game)
 games-puzzle/fbg 0.9-r1: A Tetris clone written in OpenGL
 games-puzzle/fish-fillets 1.0.1: Underwater puzzle game - find a safe way out
@@ -18118,7 +18118,7 @@ x11-misc/xdaliclock 2.41 2.43: Dali Clock is a digital clock. When a digit chang
 x11-misc/xdesktopwaves 1.3-r1: A cellular automata setting the background of your X Windows desktop under water
 x11-misc/xdg-user-dirs 0.15: A tool to help manage 'well known' user directories
 x11-misc/xdg-user-dirs-gtk 0.9 0.10: xdg-user-dirs-gtk integrates xdg-user-dirs into the Gnome desktop and Gtk+ applications
-x11-misc/xdg-utils 1.1.0_rc2 1.1.0_rc2-r1 1.1.0_rc3_p20150119 1.1.0_rc3_p20150825 1.1.1: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
+x11-misc/xdg-utils 1.1.0_rc2 1.1.0_rc2-r1 1.1.1: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
 x11-misc/xdialog 2.3.1: drop-in replacement for cdialog using GTK
 x11-misc/xdiskusage 1.48_p20111016: front end to xdu for viewing disk usage graphically under X11
 x11-misc/xdo 0.3 0.4: Small X utility to perform elementary actions on windows
