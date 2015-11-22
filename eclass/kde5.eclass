@@ -402,6 +402,10 @@ kde5_src_prepare() {
 	# only enable handbook when required
 	if ! use_if_iuse handbook ; then
 		comment_add_subdirectory ${KDE_DOC_DIR}
+
+		if [[ ${KDE_HANDBOOK} = forceoptional ]] ; then
+			punt_bogus_dep KF5 DocTools
+		fi
 	fi
 
 	# enable only the requested translations
@@ -435,19 +439,9 @@ kde5_src_prepare() {
 		rm -rf po
 	fi
 
-	# in frameworks, tests = manual tests so never
-	# build them
+	# in frameworks, tests = manual tests so never build them
 	if [[ ${CATEGORY} = kde-frameworks ]]; then
 		comment_add_subdirectory tests
-	fi
-
-	if [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma || ${CATEGORY} = kde-apps ]] ; then
-		# only build unit tests when required
-		if ! use_if_iuse test ; then
-			comment_add_subdirectory autotests
-			comment_add_subdirectory test
-			comment_add_subdirectory tests
-		fi
 	fi
 
 	case ${KDE_PUNT_BOGUS_DEPS} in
@@ -462,15 +456,18 @@ kde5_src_prepare() {
 			;;
 	esac
 
-	if [[ ${KDE_HANDBOOK} = forceoptional ]] ; then
-		if ! use_if_iuse handbook ; then
-			punt_bogus_dep KF5 DocTools
-		fi
-	fi
-
-	if [[ ${KDE_TEST} = forceoptional ]] ; then
-		if ! use_if_iuse test ; then
+	# only build unit tests when required
+	if ! use_if_iuse test ; then
+		if [[ ${KDE_TEST} = forceoptional ]] ; then
 			punt_bogus_dep Qt5 Test
+			# if forceoptional, also cover non-kde categories
+			comment_add_subdirectory autotests
+			comment_add_subdirectory test
+			comment_add_subdirectory tests
+		elif [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma || ${CATEGORY} = kde-apps ]] ; then
+			comment_add_subdirectory autotests
+			comment_add_subdirectory test
+			comment_add_subdirectory tests
 		fi
 	fi
 
