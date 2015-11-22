@@ -1266,7 +1266,7 @@ app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
 app-emulation/docker 1.6.1 1.6.2 1.7.1 1.8.1 1.8.2 1.9.0 9999: Docker complements kernel namespacing with a high-level API which operates at the process level
-app-emulation/docker-compose 1.2.0-r1 1.4.0: Multi-container orchestration for Docker
+app-emulation/docker-compose 1.2.0-r1 1.4.0 1.5.1: Multi-container orchestration for Docker
 app-emulation/docker-machine 0.4.1: Machine management for a container-centric world
 app-emulation/docker-swarm 0.4.0: A Docker-native clustering system
 app-emulation/domi 20060816: Scripts for building Xen domains
@@ -3854,7 +3854,7 @@ dev-java/freehep-xdr 2.0.3: High Energy Physics Java library - FreeHEP XDR Libra
 dev-java/freehep-xml 2.1.2: High Energy Physics Java library - FreeHEP XML Library
 dev-java/freemarker 2.3.13 2.3.13-r1 2.3.13-r2: FreeMarker is a template engine; a generic tool to generate text output based on templates
 dev-java/fscript 1.17-r1: Java based scripting engine designed to be embedded into other Java applications
-dev-java/gcj-jdk 4.8.4-r1 4.9.3: Java wrappers around GCJ
+dev-java/gcj-jdk 4.9.3: Java wrappers around GCJ
 dev-java/gjdoc 0.7.9-r3: A javadoc compatible Java source documentation generator
 dev-java/glassfish-connector-api 1.1.2.2.04: Java Transaction API
 dev-java/glassfish-deployment-api 1.2: J2EE Application Deployment Specification
