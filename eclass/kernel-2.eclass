@@ -160,15 +160,9 @@ handle_genpatches() {
 		if [[ "${i}" == "experimental" && -z ${K_EXP_GENPATCHES_PULL} && -z ${K_EXP_GENPATCHES_NOUSE} ]] ; then
 			use_cond_start="experimental? ( "
 			use_cond_end=" )"
-
-			if use experimental ; then
-				UNIPATCH_LIST_GENPATCHES+=" ${DISTDIR}/${tarball}"
-				debug-print "genpatches tarball: $tarball"
-			fi
-		else
-			UNIPATCH_LIST_GENPATCHES+=" ${DISTDIR}/${tarball}"
-			debug-print "genpatches tarball: $tarball"
 		fi
+		UNIPATCH_LIST_GENPATCHES+=" ${DISTDIR}/${tarball}"
+		debug-print "genpatches tarball: $tarball"
 		GENPATCHES_URI+=" ${use_cond_start}mirror://gentoo/${tarball}${use_cond_end}"
 	done
 }
