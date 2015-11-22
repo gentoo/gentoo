@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils games
 
 DESCRIPTION="Falling-blocks arcade game with a 2-player hotseat mode"
@@ -14,12 +14,15 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE=""
 
-DEPEND="media-libs/libsdl"
-RDEPEND="${DEPEND}"
+DEPEND="media-libs/libsdl[video]"
+RDEPEND=${DEPEND}
 
 # Removing error due to wrong detection of cross-compile mode
-PATCHES=( "${FILESDIR}/${P}"-config.patch )
 DOCS=( ChangeLog KNOWN_BUGS README TODO )
+
+src_prepare() {
+	epatch "${FILESDIR}/${P}"-config.patch
+}
 
 src_install() {
 	default
