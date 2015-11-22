@@ -9,8 +9,6 @@
 # MOD_DIR - Subdirectory name for the mod, if applicable
 # MOD_ICON - Custom icon for the mod, instead of the default
 
-[[ ${EAPI:-0} == [012] ]] || die "EAPI ${EAPI} not supported"
-
 inherit eutils games
 
 EXPORT_FUNCTIONS src_install pkg_postinst
@@ -113,7 +111,7 @@ games-mods_get_rdepend() {
 
 	case ${EAPI:-0} in
 		0|1) echo -n "${pkgs[@]}" ;;
-		2)
+		[23456])
 			local p
 			if [[ ${1} == "--ded" ]] ; then
 				echo -n "${DED_PKGS}"
@@ -126,6 +124,7 @@ games-mods_get_rdepend() {
 				done
 			fi
 			;;
+		*) die "EAPI ${EAPI} not supported"
 	esac
 
 	[[ ${#pkgs[@]} -gt 1 ]] && echo -n " )"
