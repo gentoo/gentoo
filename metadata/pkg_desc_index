@@ -3946,7 +3946,7 @@ dev-java/java-sdk-docs 1.6.0.30 1.7.0.80 1.8.0.66: Oracle's documentation bundle
 dev-java/java-service-wrapper 3.5.25-r1: A wrapper that makes it possible to install a Java Application as daemon
 dev-java/javacc 5.0-r1: Java Compiler Compiler - The Java Parser Generator
 dev-java/javacsv 2.1: Java library for reading and writing CSV and plain delimited text files
-dev-java/javacup 0.11a_beta20060608 0.11b_beta20150326 0.11b_p20151001: CUP Parser Generator for Java
+dev-java/javacup 0.11a_beta20060608 0.11b_p20151001: CUP Parser Generator for Java
 dev-java/javahelp 2.0.05_p63: The JavaHelp system online help system
 dev-java/javassist 2.6-r2 3.18.2: Javassist makes Java bytecode manipulation simple
 dev-java/javatoolkit 0.3.0-r9: Collection of Gentoo-specific tools for Java
@@ -9518,7 +9518,7 @@ dev-util/radare2 0.9.8 0.9.9 9999: Advanced command line hexadecimal editor and 
 dev-util/ragel 6.7-r1 6.8 6.9: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.1-r2 2.3: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 0.7.4 0.7.5: Command line tools for use with Review Board
-dev-util/re2c 0.13.5-r1 0.13.6 0.13.7.5 0.14.2 0.14.3: tool for generating C-based recognizers from regular expressions
+dev-util/re2c 0.13.5-r1 0.13.6 0.13.7.5 0.14.2 0.14.3 0.15.1: tool for generating C-based recognizers from regular expressions
 dev-util/rebar 2.3.1 2.4.0 2.5.0 2.5.1: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/rec 1.6: Reverse Engineering Compiler
 dev-util/redet 8.26: A regular expression development and execution tool
