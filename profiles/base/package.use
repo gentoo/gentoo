@@ -5,8 +5,9 @@
 # Pacho Ramos <pacho@gentoo.org> (26 Jul 2015)
 # Set here proper defaults to make the packages buildable by default, 
 # bugs #555930 and #472932
-media-sound/gnome-music python_single_target_python3_4
 gnome-extra/gnome-builder python_single_target_python3_4
+media-libs/lensfun python_single_target_python3_4
+media-sound/gnome-music python_single_target_python3_4
 media-video/pitivi python_single_target_python3_4
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (27 Jul 2012)
