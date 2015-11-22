@@ -20,7 +20,7 @@ IUSE="qt4 test"
 S=${WORKDIR}/${P}-stable
 
 COMMON_DEPEND="
-	dev-libs/openssl
+	dev-libs/openssl:*
 	x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11
