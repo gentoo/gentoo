@@ -19,7 +19,7 @@ SLOT="2"
 KEYWORDS="~amd64"
 IUSE=""
 
-ruby_add_bdepend "test? ( dev-ruby/minitest )"
+ruby_add_bdepend "test? ( dev-ruby/minitest dev-ruby/minitest-pretty_diff )"
 
 all_ruby_prepare() {
 	sed -i -e '/\(bisect\|focus\|moar\)/ s:^:#:' test/minitest_config.rb || die
