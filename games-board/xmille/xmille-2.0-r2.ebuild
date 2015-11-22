@@ -23,7 +23,10 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${P}.orig
 
-PATCHES=( "${WORKDIR}"/${PN}_${PV}-${DEB_PATCH_VER}.diff )
+src_prepare() {
+	epatch "${WORKDIR}"/${PN}_${PV}-${DEB_PATCH_VER}.diff
+
+}
 
 src_configure() {
 	xmkmf || die
