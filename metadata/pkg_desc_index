@@ -4933,7 +4933,7 @@ dev-lisp/asdf-binary-locations 20061018: An ASDF-Extension to specify where your
 dev-lisp/cl-clx 0.7.1 0.7.2 0.7.3: CLX is the Common Lisp interface to the X11 protocol primarily for SBCL
 dev-lisp/cl-ppcre 1.2.10 1.2.11 1.2.12 1.2.13 1.2.14 1.2.15 1.2.16: CL-PPCRE is a portable regular expression library for Common Lisp
 dev-lisp/clisp 2.48-r1 2.48-r2 2.49-r8: A portable, bytecode-compiled implementation of Common Lisp
-dev-lisp/clozurecl 1.9_p1-r1 1.10 1.11: Common Lisp implementation, derived from Digitool's MCL product
+dev-lisp/clozurecl 1.9_p1-r1 1.10 1.11 1.11-r1: 
 dev-lisp/clx 0.7.4 9999: A fork of crhodes' fork of danb's fork of the CLX library, an X11 client for Common Lisp
 dev-lisp/cmucl 20e: CMU Common Lisp is an implementation of ANSI Common Lisp
 dev-lisp/common-lisp-controller 4.27 5.13-r1: Common Lisp Controller
