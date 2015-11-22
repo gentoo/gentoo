@@ -1,9 +1,9 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-EAPI=4
 
-inherit games
+EAPI=5
+inherit eutils games
 
 DESCRIPTION="A remake of the Sinclair Spectrum game of the same name"
 HOMEPAGE="http://www.autismuk.freeserve.co.uk/"
@@ -14,10 +14,12 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
-DEPEND="media-libs/libsdl"
-RDEPEND="${DEPEND}"
+DEPEND="media-libs/libsdl[video]"
+RDEPEND=${DEPEND}
 
-PATCHES=( "${FILESDIR}"/${P}-underlink.patch )
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-underlink.patch
+}
 
 src_install() {
 	dogamesbin "${PN}/${PN}"

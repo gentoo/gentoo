@@ -20,7 +20,7 @@ IUSE="qt4 test"
 S=${WORKDIR}/${P}-stable
 
 COMMON_DEPEND="
-	dev-libs/openssl
+	dev-libs/openssl:*
 	x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11
@@ -50,10 +50,9 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.4.16_p1969-pthread.patch"
-	"${FILESDIR}/${PN}-1.4.17_p2055-test.patch"
-	"${FILESDIR}/${PN}-1.4.17_p2055-gentoo.patch"
-	"${FILESDIR}/${PN}-1.4.17_p2055-CSocketMultiplexer.patch"
+	"${FILESDIR}"/${PN}-1.4.16_p1969-pthread.patch
+	"${FILESDIR}"/${PN}-1.4.17_p2055-test.patch
+	"${FILESDIR}"/${PN}-1.7.5-gentoo.patch
 )
 
 src_prepare() {
@@ -61,7 +60,9 @@ src_prepare() {
 }
 
 src_configure() {
-	local mycmakeargs=$(cmake-utils_use_with test GENTOO_TEST)
+	local mycmakeargs=(
+		"$(cmake-utils_use_with test GENTOO_TEST)"
+	)
 	cmake-utils_src_configure
 
 	if use qt4 ; then
