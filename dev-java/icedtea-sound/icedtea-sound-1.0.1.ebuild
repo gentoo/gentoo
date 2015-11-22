@@ -13,7 +13,7 @@ SRC_URI="http://icedtea.classpath.org/download/source/${P}.tar.xz"
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc x86"
+KEYWORDS="amd64 ~arm ppc ~ppc64 x86"
 
 IUSE="+doc test"
 
