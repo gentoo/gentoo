@@ -5900,7 +5900,7 @@ dev-perl/Net-SNMP 6.0.1-r1: A SNMP Perl Module
 dev-perl/Net-SNPP 1.170.0-r1: libnet SNPP component
 dev-perl/Net-SSH-AuthorizedKeysFile 0.160.0-r1 0.170.0: Read and modify ssh's authorized_keys files
 dev-perl/Net-SSH2 0.550.0: Net::SSH2 - Support for the SSH 2 protocol via libssh2
-dev-perl/Net-SSLeay 1.650.0-r1: Net::SSLeay module for perl
+dev-perl/Net-SSLeay 1.650.0-r1 1.650.0-r2: Net::SSLeay module for perl
 dev-perl/Net-Server-Coro 1.300.0-r1: A co-operative multithreaded server using Coro
 dev-perl/Net-Server-Mail 0.210.0-r1: Class to easily create a mail server
 dev-perl/Net-Subnet 1.30.0: Fast IP-in-subnet matcher for IPv4 and IPv6, CIDR or mask
