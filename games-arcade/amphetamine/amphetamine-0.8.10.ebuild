@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils games
 
 DESCRIPTION="a cool Jump'n Run game offering some unique visual effects"
@@ -17,12 +17,14 @@ IUSE=""
 
 DEPEND="media-libs/libsdl[sound,video]
 	x11-libs/libXpm"
-RDEPEND="${DEPEND}"
+RDEPEND=${DEPEND}
 
-PATCHES=(
-	"${FILESDIR}"/${P}-build.patch
-	"${FILESDIR}"/${P}-64bit.patch
-)
+src_prepare() {
+	epatch \
+		"${FILESDIR}"/${P}-build.patch \
+		"${FILESDIR}"/${P}-64bit.patch
+	sed -i -e '55d' src/ObjInfo.cpp || die
+}
 
 src_compile() {
 	emake INSTALL_DIR="${GAMES_DATADIR}"/${PN}
