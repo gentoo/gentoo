@@ -15,7 +15,7 @@ SLOT="0"
 IUSE="debug jack alsa pulseaudio +qt5"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-DEPEND="
+RDEPEND="
 	qt5? (
 		dev-qt/qtwidgets:5
 		dev-qt/qtx11extras:5
@@ -27,7 +27,9 @@ DEPEND="
 	)
 	>=media-sound/fluidsynth-1.0.7a[jack?,alsa?,pulseaudio?]
 	x11-libs/libX11"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	qt5? ( dev-qt/linguist-tools:5 )
+"
 
 REQUIRED_USE="|| ( alsa jack pulseaudio )"
 

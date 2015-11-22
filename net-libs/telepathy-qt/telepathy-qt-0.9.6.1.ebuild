@@ -53,6 +53,8 @@ DOCS=( AUTHORS ChangeLog HACKING NEWS README )
 PATCHES=(
 	"${FILESDIR}/${PV}-default-source.patch"
 	"${FILESDIR}/${PV}-yes-release.patch"
+	"${FILESDIR}/${P}-gstreamer-1.5.patch"
+	"${FILESDIR}/${PN}-0.9.6.1-qtpath.patch"
 )
 
 pkg_setup() {
