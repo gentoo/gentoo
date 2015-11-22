@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
 DEPEND=dev-db/sqlite:3 luajit? ( >=dev-lang/luajit-2.0.0 ) !luajit? ( >=dev-lang/lua-5.1.0:0[deprecated] ) sys-libs/zlib !ncurses? ( !tiles? ( sys-libs/ncurses ) ) ncurses? ( sys-libs/ncurses ) tiles? ( media-fonts/dejavu media-libs/freetype:2 media-libs/libpng:0 media-libs/libsdl[X,opengl,video] media-libs/sdl-image[png] virtual/glu virtual/opengl ) dev-lang/perl sys-devel/flex virtual/pkgconfig virtual/yacc tiles? ( sys-libs/ncurses test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost ) ) >=sys-apps/sed-4
 DESCRIPTION=A role-playing roguelike game of exploration and treasure-hunting in dungeons
 EAPI=5
@@ -10,5 +10,5 @@ RDEPEND=dev-db/sqlite:3 luajit? ( >=dev-lang/luajit-2.0.0 ) !luajit? ( >=dev-lan
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/crawl-ref/Stone%20Soup/0.14.2/stone_soup-0.14.2-nodeps.tar.xz https://dev.gentoo.org/~hasufell/distfiles/stone-soup.png https://dev.gentoo.org/~hasufell/distfiles/stone-soup.svg
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	games	0657bdc2419f46bd28c841221b32e2ab	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	virtualx	7d550983f9b6adb3e7091f4090ddae2f
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f813d23e417656bf3917483643165d5a	games	4dae170e58f773c484e07d18ef441804	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	virtualx	7d550983f9b6adb3e7091f4090ddae2f
 _md5_=80a8295d17764ddf4f791a7b5f321d09
