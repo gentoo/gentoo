@@ -308,11 +308,6 @@ app-text/asciidoc test
 # Deps not Keyworded
 sci-chemistry/apbs fetk
 
-# Vlastimil Babka <caster@gentoo.org> (13 Oct 2010)
-# dev-util/systemtap not keyworded on ppc arches. Note that this currently applies for java-overlay
-# icedtea only, but the plan is to move it to main tree.
-dev-java/icedtea systemtap
-
 # Alexey Shvetsov <alexxy@gentoo.org> (22 Aug 2010)
 # sci-chemistry/msms not available for this arch
 sci-chemistry/vmd msms
