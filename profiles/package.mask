@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Sterrett <mr_bones_@gentoo.org> (22 Nov 2015)
+# Upstream is gone and doesn't build on modern systems.
+# Masked for removal on 20151222
+games-fps/imaze
+
 # Patrice Clement <monsieurp@gentoo.org> (21 Nov 2015)
 # Upstream dead + superseded by app-text/tidy-html5.
 # Masked for removal in 30 days. See bug #564884.
