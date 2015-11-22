@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit flag-o-matic games
+inherit eutils flag-o-matic games
 
 DESCRIPTION="Console based chess interface"
 HOMEPAGE="https://www.gnu.org/software/chess/chess.html"
@@ -14,7 +14,9 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE=""
 
-PATCHES=( "${FILESDIR}"/${P}-addbook.patch )
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-addbook.patch
+}
 
 src_configure() {
 	strip-flags # bug #199097
