@@ -16,7 +16,7 @@ IUSE="alsa debug hardened opengl"
 
 DEPEND="alsa? ( media-libs/alsa-lib )
 	opengl? ( virtual/glu virtual/opengl )
-	debug? ( sys-libs/ncurses )
+	debug? ( sys-libs/ncurses:0 )
 	media-libs/libpng:0
 	media-libs/libsdl[joystick,video,X]
 	media-libs/sdl-net
