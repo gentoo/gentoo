@@ -17,7 +17,8 @@
 if [[ -z ${_QMAKE_UTILS_ECLASS} ]]; then
 _QMAKE_UTILS_ECLASS=1
 
-inherit eutils multilib toolchain-funcs
+[[ ${EAPI:-0} == [012345] ]] && inherit multilib
+inherit eutils toolchain-funcs
 
 # @FUNCTION: qt4_get_bindir
 # @DESCRIPTION:
