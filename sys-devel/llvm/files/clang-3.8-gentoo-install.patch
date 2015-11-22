@@ -1,0 +1,14 @@
+---
+ tools/clang/tools/scan-view/scan-view   | 2 +-
+
+diff --git a/tools/clang/tools/scan-view/bin/scan-view b/tools/clang/tools/scan-view/bin/scan-view
+index fb27da6..1f8ddb8 100755
+--- a/tools/clang/tools/scan-view/bin/scan-view
++++ b/tools/clang/tools/scan-view/bin/scan-view
+@@ -66,2 +66,2 @@ def start_browser(port, options):
+-    import ScanView
++    from clang import ScanView
+     try:
+-- 
+1.8.4.4
+

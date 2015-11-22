@@ -29,9 +29,7 @@ diff --git a/lib/Headers/CMakeLists.txt b/lib/Headers/CMakeLists.txt
 index 7de5fbe..49f439b 100644
 --- a/tools/clang/lib/Headers/CMakeLists.txt
 +++ b/tools/clang/lib/Headers/CMakeLists.txt
-@@ -98,4 +98,4 @@ set_target_properties(clang-headers PROPERTIES FOLDER "Misc")
- install(
-   FILES ${files} ${CMAKE_CURRENT_BINARY_DIR}/arm_neon.h
+@@ -100,4 +100,4 @@ set_target_properties(clang-headers PROPERTIES FOLDER "Misc")
    PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ
 -  DESTINATION lib${LLVM_LIBDIR_SUFFIX}/clang/${CLANG_VERSION}/include)
 +  DESTINATION lib/clang/${CLANG_VERSION}/include)
