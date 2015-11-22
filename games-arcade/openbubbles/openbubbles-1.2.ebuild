@@ -14,11 +14,14 @@ SLOT="0"
 KEYWORDS="amd64 ~hppa x86 ~x86-fbsd"
 IUSE=""
 
-DEPEND="media-libs/libsdl
-	media-libs/sdl-image
+DEPEND="media-libs/libsdl[sound,video]
+	media-libs/sdl-image[png]
 	media-libs/sdl-gfx"
-RDEPEND="${DEPEND}"
-PATCHES=( "${FILESDIR}"/${P}-glibc2.10.patch )
+RDEPEND=${DEPEND}
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-glibc2.10.patch
+}
 
 src_install() {
 	default
