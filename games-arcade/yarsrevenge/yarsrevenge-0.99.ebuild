@@ -15,14 +15,16 @@ KEYWORDS="amd64 ~ppc sparc x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND="media-libs/libsdl[sound,joystick,video]"
-RDEPEND="${DEPEND}"
+RDEPEND=${DEPEND}
+
 S=${WORKDIR}/yar-${PV}
 
-PATCHES=(
-	"${FILESDIR}"/${PV}-math.patch
-	"${FILESDIR}"/${P}-gcc43.patch
-	"${FILESDIR}"/${P}-gcc44.patch
-)
+src_prepare() {
+	epatch \
+		"${FILESDIR}"/${PV}-math.patch \
+		"${FILESDIR}"/${P}-gcc43.patch \
+		"${FILESDIR}"/${P}-gcc44.patch
+}
 
 src_install() {
 	default
