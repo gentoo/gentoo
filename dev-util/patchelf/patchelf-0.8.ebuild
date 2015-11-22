@@ -13,7 +13,7 @@ HOMEPAGE="http://nixos.org/patchelf.html"
 SRC_URI="http://releases.nixos.org/${PN}/${P}/${P}.tar.bz2"
 
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 LICENSE="GPL-3"
 IUSE=""
 
