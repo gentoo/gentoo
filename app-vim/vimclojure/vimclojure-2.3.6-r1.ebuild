@@ -11,15 +11,17 @@ MY_PN="VimClojure"
 DESCRIPTION="vim plugin: Clojure syntax highlighting, filetype and indent settings"
 HOMEPAGE="https://github.com/vim-scripts/VimClojure"
 SRC_URI="https://github.com/vim-scripts/${MY_PN}/archive/${PV}.zip"
-
 SLOT="0"
 LICENSE="BSD"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+
+RDEPEND="!app-vim/slivm"
+
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_prepare() {
-	find "${S}" -type f -name \*.bat -exec rm -v {} \; || die
+	find . -type f -name \*.bat -exec rm -v {} \; || die
 }
 
 src_install() {
