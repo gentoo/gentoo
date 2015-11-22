@@ -19,12 +19,6 @@ RDEPEND="dev-perl/DBI
 	virtual/mysql[embedded?]"
 DEPEND="${RDEPEND}"
 
-if use test; then
-	SRC_TEST="do"
-else
-	SRC_TEST="skip"
-fi
-
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-print_embedded_options.patch
 }
@@ -41,16 +35,14 @@ src_configure() {
 }
 
 src_test() {
-	if use test; then
-		einfo
-		einfo "If tests fail, you have to configure your MySQL instance to create"
-		einfo "and grant some privileges to the test user."
-		einfo "You can run the following commands at the MySQL prompt: "
-		einfo "> CREATE USER 'test'@'localhost' IDENTIFIED BY 'test';"
-		einfo "> CREATE DATABASE test;"
-		einfo "> GRANT ALL PRIVILEGES ON test.* TO 'test'@'localhost';"
-		einfo
-		sleep 5
-		perl-module_src_test
-	fi
+	einfo
+	einfo "If tests fail, you have to configure your MySQL instance to create"
+	einfo "and grant some privileges to the test user."
+	einfo "You can run the following commands at the MySQL prompt: "
+	einfo "> CREATE USER 'test'@'localhost' IDENTIFIED BY 'test';"
+	einfo "> CREATE DATABASE test;"
+	einfo "> GRANT ALL PRIVILEGES ON test.* TO 'test'@'localhost';"
+	einfo
+	sleep 5
+	perl-module_src_test
 }

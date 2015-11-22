@@ -1,43 +1,45 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+# $Header: /var/cvsroot/gentoo-x86/dev-python/oslo-i18n/oslo-i18n-1.6.0.ebuild,v 1.1 2015/04/22 20:35:11 prometheanfire Exp $
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
 
-inherit distutils-r1
+inherit distutils-r1 vcs-snapshot
 
 MY_PN=${PN/-/.}
 
-DESCRIPTION="oslo.i18n library"
-HOMEPAGE="https://launchpad.net/oslo"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
-S="${WORKDIR}/${MY_PN}-${PV}"
+DESCRIPTION="Oslo i18n library"
+HOMEPAGE="http://launchpad.net/oslo"
+SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
+CDEPEND=">dev-python/oslotest-1.10.0[${PYTHON_USEDEP}]"
+CRDEPEND=">=dev-python/pbr-1.8[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/pbr[${PYTHON_USEDEP}]
+	${CRDEPEND}
 	test? (
-		<dev-python/hacking-0.10[${PYTHON_USEDEP}]
-		>=dev-python/hacking-0.9.2[${PYTHON_USEDEP}]
-		>=dev-python/oslotest-1.1[${PYTHON_USEDEP}]
+		${CDEPEND}
+		>=dev-python/mock-1.2[${PYTHON_USEDEP}]
+		>=dev-python/oslo-config-2.3.0[${PYTHON_USEDEP}]
 	)
 	doc? (
-		>=dev-python/oslo-sphinx-2.2.0[${PYTHON_USEDEP}]
-		>=dev-python/oslotest-1.1[${PYTHON_USEDEP}]
+		${CDEPEND}
+		>=dev-python/oslo-sphinx-2.5.0[${PYTHON_USEDEP}]
 		>=dev-python/sphinx-1.1.2[${PYTHON_USEDEP}]
 		!~dev-python/sphinx-1.2.0[${PYTHON_USEDEP}]
 		<dev-python/sphinx-1.3[${PYTHON_USEDEP}]
 	)
 "
 RDEPEND="
+	${CRDEPEND}
 	>=dev-python/Babel-1.3[${PYTHON_USEDEP}]
-	>=dev-python/six-1.7.0[${PYTHON_USEDEP}]
+	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 "
 
 python_compile_all() {
