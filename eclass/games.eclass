@@ -24,11 +24,11 @@
 if [[ -z ${_GAMES_ECLASS} ]]; then
 _GAMES_ECLASS=1
 
-inherit multilib toolchain-funcs eutils user
+inherit base multilib toolchain-funcs eutils user
 
 case ${EAPI:-0} in
 	0|1) EXPORT_FUNCTIONS pkg_setup src_compile pkg_preinst pkg_postinst ;;
-	2|3|4|5|6) EXPORT_FUNCTIONS pkg_setup src_configure src_compile pkg_preinst pkg_postinst ;;
+	2|3|4|5) EXPORT_FUNCTIONS pkg_setup src_configure src_compile pkg_preinst pkg_postinst ;;
 	*) die "no support for EAPI=${EAPI} yet" ;;
 esac
 
@@ -302,14 +302,12 @@ games_src_configure() {
 
 # @FUNCTION: games_src_compile
 # @DESCRIPTION:
-# This function is exported as src_compile().
+# Runs base_src_make(). This function is exported as src_compile().
 games_src_compile() {
 	case ${EAPI:-0} in
 		0|1) games_src_configure ;;
 	esac
-	if [[ -f Makefile || -f GNUmakefile || -f makefile ]]; then
-		emake "$@" || die
-	fi
+	base_src_make
 }
 
 # @FUNCTION: games_pkg_preinst
