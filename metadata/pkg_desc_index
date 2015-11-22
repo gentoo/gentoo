@@ -10096,7 +10096,7 @@ games-fps/glxquake-bin 0-r2: a binary that works with every 3D-graphics-card tha
 games-fps/imaze 1.4: Multi player, real time, 3D, labyrinth, run & shoot game
 games-fps/industri 1.01: Quake/Tenebrae based, single player game
 games-fps/legends 0.4.1.43-r1: Fast-paced first-person-shooter online multiplayer game, similar to Tribes
-games-fps/lsdldoom 1.4.4.4-r1 1.5: Port of ID's doom to SDL
+games-fps/lsdldoom 1.5: Port of ID's doom to SDL
 games-fps/nexuiz 2.5.2: Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
 games-fps/openarena 0.8.8: Open-source replacement for Quake 3 Arena
 games-fps/postal2 1409.2-r2: Postal 2: Share the Pain
@@ -14852,7 +14852,7 @@ net-voip/telepathy-salut 0.8.1: A link-local XMPP connection manager for Telepat
 net-voip/vidyodesktop 3.3.0.027-r1 3.3.0.127: Enterprise video conferencing platform
 net-voip/yate 5.4.0-r1 5.5.0-r1 9999: The Yate AV Suite
 net-wireless/adm8211 20060111: IEEE 802.11 wireless LAN driver for adm8211 based cards
-net-wireless/aircrack-ng 1.2_rc1-r1 1.2_rc2 9999: WLAN tools for breaking 802.11 WEP/WPA keys
+net-wireless/aircrack-ng 1.2_rc1-r1 1.2_rc2 1.2_rc3 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airpwn 1.4-r2: Tool for generic packet injection on 802.11
 net-wireless/airsnort 0.2.7e: 802.11b Wireless Packet Sniffer/WEP Cracker
 net-wireless/airtraf 1.1-r3: AirTraf 802.11b Wireless traffic sniffer
