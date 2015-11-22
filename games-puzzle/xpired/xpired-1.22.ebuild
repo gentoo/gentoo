@@ -17,11 +17,13 @@ IUSE=""
 DEPEND="media-libs/sdl-gfx
 	media-libs/sdl-image[jpeg]
 	media-libs/sdl-mixer[mod]"
-RDEPEND="${DEPEND}"
+RDEPEND=${DEPEND}
 
 S=${WORKDIR}/src
 
-PATCHES=( "${FILESDIR}"/${P}-ldflags.patch )
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-ldflags.patch
+}
 
 src_compile() {
 	emake \
