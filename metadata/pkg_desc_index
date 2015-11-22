@@ -17465,7 +17465,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.2-r1 3.3-r1: a free, open source web browser
 www-client/opera 12.16_p1860-r1 33.0.1990.43 33.0.1990.58 33.0.1990.115: A fast and secure web browser
 www-client/opera-beta 33.0.1990.35 34.0.2036.3: A fast and secure web browser
-www-client/opera-developer 34.0.2036.2 34.0.2044.0: A fast and secure web browser
+www-client/opera-developer 34.0.2044.0 35.0.2052.0: A fast and secure web browser
 www-client/otter 0.9.07 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.11.1 9999: Command line interface to (Gentoo) Bugzilla
