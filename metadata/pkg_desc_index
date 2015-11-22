@@ -2287,7 +2287,7 @@ app-text/info2html 2.0: Converts GNU .info files to HTML
 app-text/iso-codes 3.57 3.61 3.63: ISO language, territory, currency, script codes and their translations
 app-text/itex2mml 1.5.2: A LaTeX into XHTML/MathML converter
 app-text/jabref 2.10-r2 2.10-r3: Java GUI for managing BibTeX and other bibliographies
-app-text/jabref-bin 2.10 2.11_beta_rc2 2.11_beta_rc3 2.11_beta_rc3-r1 2.11_beta_rc4: Java GUI for managing BibTeX and other bibliographies
+app-text/jabref-bin 2.10 2.11_beta_rc2 2.11_beta_rc3 2.11_beta_rc3-r1 2.11_beta_rc4 2.11 2.11.1: Java GUI for managing BibTeX and other bibliographies
 app-text/jadetex 3.13-r6: TeX macros used by Jade TeX output
 app-text/jist 1.5.1: A ruby gem to publish a gist
 app-text/jmupdf 0.3.0 0.4.1 0.4.1-r1 9999: Java library for rendering PDF, XPS and CBZ (Comic Book) documents
@@ -14566,7 +14566,7 @@ net-misc/ssvnc 1.0.28 1.0.29: VNC viewer that adds encryption security to VNC co
 net-misc/stargazer 2.408: Billing system for small home and office networks
 net-misc/stone 2.3e-r1: A simple TCP/IP packet repeater
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
-net-misc/strongswan 5.3.2 5.3.4: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
+net-misc/strongswan 5.3.2 5.3.4 5.3.4-r1: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
 net-misc/stunnel 5.20 5.23 5.24 5.24-r1 5.26: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.6 1.2.6-r1 1.2.7: STUNTMAN is an open source implementation of the STUN protocol
 net-misc/suite3270 3.3.14_p11 3.3.15_p4 3.3.15_p7 3.3.15_p9 3.4_p4 3.4_p5 3.4_p6 3.4_p7 3.4_p8 3.4_p9: Complete 3270 access package
