@@ -10589,7 +10589,7 @@ games-util/catcodec 1.0.3: Decodes and encodes sample catalogues for OpenTTD
 games-util/datutil 2.46: Converter for dat files for Rom Managers
 games-util/deutex 4.4.0: A wad composer for Doom, Heretic, Hexen and Strife
 games-util/dfarc 3.12: Frontend and .dmod installer for GNU FreeDink
-games-util/dzip 2.9-r1 2.9-r2 2.9-r3: compressor/uncompressor for demo recordings from id's Quake
+games-util/dzip 2.9-r3: compressor/uncompressor for demo recordings from id's Quake
 games-util/etswitch 0.1.14: *nix minimizer for a few games
 games-util/fteqcc 2501: QC compiler
 games-util/gamepick 0.35: Launch opengl games with custom graphic settings
