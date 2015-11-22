@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Michael Palimaka <kensington@gentoo.org> (6 Dev 2015)
+# Requires unreleased dependencies
+=kde-apps/gwenview-15.08* kipi raw
+
 # Patrice Clement <monsieurp@gentoo.org> (27 Nov 2015)
 # Unsastified dependencies are upsetting repoman. Needs investigation.
 app-arch/cfv bittorrent
