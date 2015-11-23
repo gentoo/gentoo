@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Nigel's performance MONitor for CPU, memory, network, disks, etc..."
@@ -13,9 +13,8 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="sys-libs/ncurses"
-DEPEND="
-	${RDEPEND}
+RDEPEND="sys-libs/ncurses:0="
+DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
@@ -27,7 +26,7 @@ src_unpack() {
 
 src_compile() {
 	append-cppflags -DJFS -DGETUSER -DLARGEMEM -DPOWER
-	emake CC="$(tc-getCC)" LDLIBS="$( $(tc-getPKG_CONFIG) --libs ncurses)" ${PN}
+	emake CC="$(tc-getCC)" LDLIBS="$( $(tc-getPKG_CONFIG) --libs ncurses) -lm" ${PN}
 }
 
 src_install() {

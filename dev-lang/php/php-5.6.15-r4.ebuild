@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils autotools autotools-utils flag-o-matic versionator depend.apache apache-module db-use libtool systemd
+inherit eutils autotools flag-o-matic versionator depend.apache apache-module libtool systemd
 
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 
@@ -12,7 +12,7 @@ function php_get_uri ()
 {
 	case "${1}" in
 		"php-pre")
-			echo "http://downloads.php.net/ab/${2}"
+			echo "http://downloads.php.net/dsp/${2}"
 		;;
 		"php")
 			echo "http://www.php.net/distributions/${2}"
@@ -68,11 +68,11 @@ IUSE="${IUSE} bcmath berkdb bzip2 calendar cdb cjk
 	enchant exif frontbase +fileinfo +filter firebird
 	flatfile ftp gd gdbm gmp +hash +iconv imap inifile
 	intl iodbc ipv6 +json kerberos ldap ldap-sasl libedit mhash
-	mysql mysqli nls
+	mssql mysql libmysqlclient mysqli nls
 	oci8-instant-client odbc +opcache pcntl pdo +phar +posix postgres qdbm
 	readline recode selinux +session sharedmem
 	+simplexml snmp soap sockets spell sqlite ssl
-	sysvipc systemd tidy +tokenizer truetype unicode vpx wddx
+	sybase-ct sysvipc systemd tidy +tokenizer truetype unicode vpx wddx
 	+xml xmlreader xmlwriter xmlrpc xpm xslt zip zlib"
 
 DEPEND="
@@ -117,6 +117,11 @@ DEPEND="${DEPEND}
 	ldap? ( >=net-nds/openldap-1.2.11 )
 	ldap-sasl? ( dev-libs/cyrus-sasl >=net-nds/openldap-1.2.11 )
 	libedit? ( || ( sys-freebsd/freebsd-lib dev-libs/libedit ) )
+	mssql? ( dev-db/freetds[mssql] )
+	libmysqlclient? (
+		mysql? ( virtual/mysql )
+		mysqli? ( >=virtual/mysql-4.1 )
+	)
 	nls? ( sys-devel/gettext )
 	oci8-instant-client? ( dev-db/oracle-instantclient-basic )
 	odbc? ( >=dev-db/unixODBC-1.8.13 )
@@ -131,9 +136,11 @@ DEPEND="${DEPEND}
 	spell? ( >=app-text/aspell-0.50 )
 	sqlite? ( >=dev-db/sqlite-3.7.6.3 )
 	ssl? ( dev-libs/openssl:0 )
+	sybase-ct? ( dev-db/freetds )
 	tidy? ( app-text/htmltidy )
 	truetype? (
 		=media-libs/freetype-2*
+		>=media-libs/t1lib-5.0.0
 		!gd? (
 			virtual/jpeg:0 media-libs/libpng:0= sys-libs/zlib )
 	)
@@ -174,13 +181,16 @@ REQUIRED_USE="
 	ldap-sasl? ( ldap )
 	mhash? ( hash )
 	phar? ( hash )
+	libmysqlclient? ( || (
+		mysql
+		mysqli
+		pdo
+	) )
 
 	qdbm? ( !gdbm )
 	readline? ( !libedit )
-	recode? ( !imap !mysqli )
+	recode? ( !imap !mysql !mysqli )
 	sharedmem? ( !threads )
-
-	mysql? ( || ( mysqli pdo ) )
 
 	!cli? ( !cgi? ( !fpm? ( !apache2? ( !embed? ( cli ) ) ) ) )"
 
@@ -252,22 +262,14 @@ php_install_ini() {
 	fi
 
 	# SAPI-specific handling
-
 	if [[ "${sapi}" == "fpm" ]] ; then
-		[[ -z ${PHP_FPM_CONF_VER} ]] && PHP_FPM_CONF_VER=0
-		einfo "Installing FPM CGI config file php-fpm.conf"
+		einfo "Installing FPM config file php-fpm.conf"
 		insinto "${PHP_INI_DIR#${EPREFIX}}"
-		newins "${FILESDIR}/php-fpm-r${PHP_FPM_CONF_VER}.conf" php-fpm.conf
-
-		# Remove bogus /etc/php-fpm.conf.default (bug 359906)
-		rm -f "${ED}/etc/php-fpm.conf.default" || die
+		doins sapi/fpm/php-fpm.conf
 	fi
-
-	# Install PHP ini files into /usr/share/php
 
 	dodoc php.ini-development
 	dodoc php.ini-production
-
 }
 
 php_set_ini_dir() {
@@ -286,6 +288,14 @@ src_prepare() {
 	sed -e 's/PHP_UNAME=`uname -a | xargs`/PHP_UNAME=`uname -s -n -r -v | xargs`/g' \
 		-i configure.in || die "Failed to fix server platform name"
 
+	# Prevent PHP from activating the Apache config,
+	# as we will do that ourselves
+	sed -i \
+		-e "s,-i -a -n php${PHP_MV},-i -n php${PHP_MV},g" \
+		-e "s,-i -A -n php${PHP_MV},-i -n php${PHP_MV},g" \
+		configure sapi/apache2filter/config.m4 sapi/apache2handler/config.m4 \
+		|| die
+
 	# Patch PHP to support heimdal instead of mit-krb5
 	if has_version "app-crypt/heimdal" ; then
 		sed -e 's|gssapi_krb5|gssapi|g' -i acinclude.m4 \
@@ -293,6 +303,10 @@ src_prepare() {
 		sed -e 's|PHP_ADD_LIBRARY(k5crypto, 1, $1)||g' -i acinclude.m4 \
 			|| die "Failed to fix heimdal crypt library reference"
 	fi
+
+	# Fix a const crash in php-fpm, bug #564690.
+	# Only applies to php-5.6.15 and should be fixed in 5.6.16.
+	epatch "${FILESDIR}/fix-5.6.15-fpm-const-crash.patch"
 
 	# Add user patches #357637
 	epatch_user
@@ -349,6 +363,7 @@ src_configure() {
 		$(use_with xml libxml-dir "${EPREFIX}/usr")
 		$(use_enable unicode mbstring)
 		$(use_with crypt mcrypt "${EPREFIX}/usr")
+		$(use_with mssql mssql "${EPREFIX}/usr")
 		$(use_with unicode onig "${EPREFIX}/usr")
 		$(use_with ssl openssl "${EPREFIX}/usr")
 		$(use_with ssl openssl-dir "${EPREFIX}/usr")
@@ -366,6 +381,7 @@ src_configure() {
 		$(use_enable soap soap)
 		$(use_enable sockets sockets)
 		$(use_with sqlite sqlite3 "${EPREFIX}/usr")
+		$(use_with sybase-ct sybase-ct "${EPREFIX}/usr")
 		$(use_enable sysvipc sysvmsg)
 		$(use_enable sysvipc sysvsem)
 		$(use_enable sysvipc sysvshm)
@@ -402,6 +418,7 @@ src_configure() {
 	# Support for the GD graphics library
 	our_conf+=(
 		$(use_with truetype freetype-dir "${EPREFIX}/usr")
+		$(use_with truetype t1lib "${EPREFIX}/usr")
 		$(use_enable cjk gd-jis-conv)
 		$(use_with gd jpeg-dir "${EPREFIX}/usr")
 		$(use_with gd png-dir "${EPREFIX}/usr")
@@ -433,7 +450,10 @@ src_configure() {
 	# MySQL support
 	local mysqllib="mysqlnd"
 	local mysqlilib="mysqlnd"
+	use libmysqlclient && mysqllib="${EPREFIX}/usr"
+	use libmysqlclient && mysqlilib="${EPREFIX}/usr/bin/mysql_config"
 
+	our_conf+=( $(use_with mysql mysql "${mysqllib}") )
 	our_conf+=( $(use_with mysqli mysqli "${mysqlilib}") )
 
 	local mysqlsock="${EPREFIX}/var/run/mysqld/mysqld.sock"
@@ -453,6 +473,7 @@ src_configure() {
 	# PDO support
 	if use pdo ; then
 		our_conf+=(
+			$(use_with mssql pdo-dblib)
 			$(use_with mysql pdo-mysql "${mysqllib}")
 			$(use_with postgres pdo-pgsql)
 			$(use_with sqlite pdo-sqlite "${EPREFIX}/usr")
@@ -501,8 +522,9 @@ src_configure() {
 		use "${one_sapi}" || continue
 		php_set_ini_dir "${one_sapi}"
 
-		# The BUILD_DIR variable is used by autotools-utils to determine
-		# where to output the files that autotools creates.
+		# The BUILD_DIR variable is used to determine where to output
+		# the files that autotools creates. This was all originally
+		# based on the autotools-utils eclass.
 		BUILD_DIR="${WORKDIR}/sapis-build/${one_sapi}"
 		cp -r "${S}" "${BUILD_DIR}" || die
 		cd "${BUILD_DIR}" || die
@@ -532,12 +554,14 @@ src_configure() {
 			esac
 		done
 
-		# Construct the autotools-utils $myeconfargs array by
-		# concatenating $our_conf (the common args) and $sapi_conf (the
-		# SAPI-specific args).
+		# Construct the $myeconfargs array by concatenating $our_conf
+		# (the common args) and $sapi_conf (the SAPI-specific args).
 		local myeconfargs=( "${our_conf[@]}" )
 		myeconfargs+=( "${sapi_conf[@]}" )
-		autotools-utils_src_configure
+
+		pushd "${BUILD_DIR}" > /dev/null || die
+		econf "${myeconfargs[@]}"
+		popd > /dev/null || die
 	done
 }
 
@@ -593,7 +617,7 @@ src_install() {
 				# We're specifically not using emake install-sapi as libtool
 				# may cause unnecessary relink failures (see bug #351266)
 				insinto "${PHP_DESTDIR#${EPREFIX}}/apache2/"
-				newins ".libs/libphp${PHP_MV}$(get_libname)" \
+				newins ".libs/libphp5$(get_libname)" \
 					   "libphp${PHP_MV}$(get_libname)"
 				keepdir "/usr/$(get_libdir)/apache2/modules"
 			else

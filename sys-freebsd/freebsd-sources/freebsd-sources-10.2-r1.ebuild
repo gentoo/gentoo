@@ -26,7 +26,6 @@ EXTRACTONLY="
 	contrib/bmake/
 	usr.bin/bmake/
 "
-use zfs && EXTRACTONLY+="cddl/"
 
 RDEPEND="dtrace? ( >=sys-freebsd/freebsd-cddl-9.2_rc1 )
 	=sys-freebsd/freebsd-mk-defs-${RV}*
@@ -56,6 +55,9 @@ PATCHES=( "${FILESDIR}/${PN}-9.0-disable-optimization.patch"
 	"${FILESDIR}/${PN}-10.1-gcc48.patch" )
 
 pkg_setup() {
+	# Add the required source files.
+	use zfs && EXTRACTONLY+="cddl/ "
+
 	# WITHOUT_SSP= is required to boot kernel that compiled with newer gcc, bug #477914
 	[[ $(tc-getCC) == *gcc* ]] && mymakeopts="${mymakeopts} WITHOUT_SSP="
 	use zfs || mymakeopts="${mymakeopts} WITHOUT_CDDL="

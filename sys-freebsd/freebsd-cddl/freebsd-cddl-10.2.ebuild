@@ -25,7 +25,6 @@ EXTRACTONLY="
 	sbin/
 	sys/
 "
-use build && EXTRACTONLY+="include/"
 
 RDEPEND="=sys-freebsd/freebsd-lib-${RV}*
 	=sys-freebsd/freebsd-libexec-${RV}*
@@ -41,6 +40,11 @@ PATCHES=(
 	"${FILESDIR}/${PN}-10.2-libpaths.patch"
 	"${FILESDIR}/${PN}-10.2-underlink.patch"
 	)
+
+pkg_setup() {
+	# Add the required source files.
+	use build && EXTRACTONLY+="include/ "
+}
 
 src_prepare() {
 	if [[ ! -e "${WORKDIR}/include" ]]; then
