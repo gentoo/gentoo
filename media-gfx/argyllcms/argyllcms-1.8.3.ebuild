@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit flag-o-matic multiprocessing toolchain-funcs udev
+inherit eutils flag-o-matic multiprocessing toolchain-funcs udev
 
 MY_P="Argyll_V${PV}"
 
@@ -35,9 +35,9 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.8.0-gcc5.patch
-	)
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-1.8.0-gcc5.patch
+}
 
 src_compile() {
 	# Make it respect LDFLAGS

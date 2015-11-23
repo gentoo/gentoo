@@ -5,14 +5,13 @@
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
-
 inherit autotools eutils flag-o-matic multilib-minimal python-any-r1 versionator
 
 MY_P="${P/mit-}"
 P_DIR=$(get_version_component_range 1-2)
 DESCRIPTION="MIT Kerberos V"
 HOMEPAGE="http://web.mit.edu/kerberos/www/"
-SRC_URI="http://web.mit.edu/kerberos/dist/krb5/${P_DIR}/${MY_P}-signed.tar"
+SRC_URI="http://web.mit.edu/kerberos/dist/krb5/${P_DIR}/${MY_P}.tar.gz"
 
 LICENSE="openafs-krb5-a BSD MIT OPENLDAP BSD-2 HPND BSD-4 ISC RSA CC-BY-SA-3.0 || ( BSD-2 GPL-2+ )"
 SLOT="0"
@@ -55,11 +54,6 @@ S=${WORKDIR}/${MY_P}/src
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/krb5-config
 )
-
-src_unpack() {
-	unpack ${A}
-	unpack ./"${MY_P}".tar.gz
-}
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-1.12_warn_cflags.patch"
@@ -124,9 +118,12 @@ multilib_src_install_all() {
 		dodoc doc/pdf/*.pdf
 	fi
 
-	newinitd "${FILESDIR}"/mit-krb5kadmind.initd-r1 mit-krb5kadmind
-	newinitd "${FILESDIR}"/mit-krb5kdc.initd-r1 mit-krb5kdc
-	newinitd "${FILESDIR}"/mit-krb5kpropd.initd-r1 mit-krb5kpropd
+	newinitd "${FILESDIR}"/mit-krb5kadmind.initd-r2 mit-krb5kadmind
+	newinitd "${FILESDIR}"/mit-krb5kdc.initd-r2 mit-krb5kdc
+	newinitd "${FILESDIR}"/mit-krb5kpropd.initd-r2 mit-krb5kpropd
+	newconfd "${FILESDIR}"/mit-krb5kadmind.confd mit-krb5kadmind
+	newconfd "${FILESDIR}"/mit-krb5kdc.confd mit-krb5kdc
+	newconfd "${FILESDIR}"/mit-krb5kpropd.confd mit-krb5kpropd
 
 	insinto /etc
 	newins "${ED}/usr/share/doc/${PF}/examples/krb5.conf" krb5.conf.example
