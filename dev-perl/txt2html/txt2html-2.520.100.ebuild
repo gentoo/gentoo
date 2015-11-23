@@ -16,6 +16,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND="
+	!dev-perl/TextToHTML
 	virtual/perl-Getopt-Long
 	dev-perl/YAML-Syck
 "
