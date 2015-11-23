@@ -149,7 +149,16 @@ switch_profile() {
 	mkdir -p "${dstlib}"
 	rm -rf "${ROOT}/${BINPATH_LINKS}"/ldscripts
 	atomic_ln "${LIBPATH}/ldscripts" "${dstlib}" "ldscripts"
-	find -L "${dstlib}" -xtype l -name 'lib*' -exec rm -f {} +
+	find -L "${dstlib}" -xtype l -name 'lib*' -delete
+	# Detect older binutils w/broken rpaths. #562460
+	# We can hardcode the "/lib" part since that's what the binutils
+	# configure scripts have.  They did not include any other path.
+	if [[ $(scanelf -qF '%r#F' "${ROOT}/${BINPATH}/as") == */lib ]] ; then
+		ewarn "Old cross-binutils detected; please re-emerge to fix (see bug #562460)."
+		for x in lib* ; do
+			atomic_ln "${LIBPATH}/${x}" "${dstlib}" "${x}"
+		done
+	fi
 
 	#
 	# Clean out old generated include symlinks
