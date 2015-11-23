@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare prerm test unpack
+DEPEND=|| ( app-text/openjade app-text/opensp ) app-text/sgml-common dev-lang/perl:= || ( sys-apps/gawk sys-apps/mawk ) sys-apps/groff sys-devel/flex doc? ( dev-texlive/texlive-fontsrecommended virtual/latex-base ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/latex-base >=sys-apps/texinfo-4.2-r5 dev-lang/perl:=[-build(-)] >=app-text/sgml-common-0.6.3-r2
+DESCRIPTION=A toolset for processing LinuxDoc DTD SGML files
+EAPI=5
+HOMEPAGE=https://gitlab.com/agmartin/linuxdoc-tools
+IUSE=doc
+KEYWORDS=~amd64 ~ia64 ~ppc ~x86 ~x86-fbsd
+LICENSE=MIT SGMLUG
+RDEPEND=|| ( app-text/openjade app-text/opensp ) app-text/sgml-common dev-lang/perl:= || ( sys-apps/gawk sys-apps/mawk ) sys-apps/groff virtual/latex-base dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=https://gitlab.com/agmartin/linuxdoc-tools/repository/archive.tar.gz?ref=upstream/0.9.71 -> linuxdoc-tools-0.9.71.tar.gz
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f20548a2f7b0128068388cd2ec26708a	latex-package	20f17759e8808b666e37d3b1bbe2fa4d	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	sgml-catalog	b6e9d36507f43d79b6df9cb78d6eb4dd	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
+_md5_=ad0120383c4e8d87f0055f67ddbac687

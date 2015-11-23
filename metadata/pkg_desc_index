@@ -2316,7 +2316,7 @@ app-text/libwpd 0.9.9 0.10.0 0.10.0-r1 0.10.0-r2: WordPerfect Document import/ex
 app-text/libwpg 0.2.2 0.3.0: C++ library to read and parse graphics in WPG
 app-text/libwps 0.2.9 0.3.1 0.4.1 0.4.2: Microsoft Works file word processor format import filter library
 app-text/libxmlpatch 0.3.3: A set of tools to create and apply patch to XML files using XPath
-app-text/linuxdoc-tools 0.9.69 0.9.71: A toolset for processing LinuxDoc DTD SGML files
+app-text/linuxdoc-tools 0.9.69 0.9.71-r1: A toolset for processing LinuxDoc DTD SGML files
 app-text/llpp 20_p20140818 21 21_p20150427 9999: a graphical PDF viewer which aims to superficially resemble less(1)
 app-text/lodgeit 0.3_p20120507 0.3_p20120618-r1: Command-line interface to paste.pocoo.org
 app-text/logmerge 0.4_beta: Merge multiple logs such that multilined entries appear in chronological order without breaks
@@ -18011,7 +18011,7 @@ x11-misc/numlockx 1.2: Turns on numlock in X
 x11-misc/obconf 2.0.3_p20111019 2.0.4 9999: ObConf is a tool for configuring the Openbox window manager
 x11-misc/obconf-qt 0.1.0 0.9.0_p20150729: Openbox window manager configuration tool
 x11-misc/obmenu 1.0 1.0-r1: Menu editor designed for openbox
-x11-misc/obmenu-generator 0.61: A fast pipe/static menu generator for the Openbox Window Manager
+x11-misc/obmenu-generator 0.61 0.66: 
 x11-misc/obtheme 2013.2.20.2: A gui theme editor for openbox
 x11-misc/okindd 0.6.0 0.6.1: On Screen Display (OSD) for KDE 4.x - works on any Qt desktop
 x11-misc/openbox-menu 0.5.1 0.7.0: Another dynamic menu generator for Openbox
