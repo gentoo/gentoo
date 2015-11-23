@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI="5"
 
 inherit eutils flag-o-matic toolchain-funcs
 
-DOLILO_V="0.5"
+DOLILO_V="0.6"
 IUSE="static minimal pxeserial device-mapper"
 
 DESCRIPTION="Standard Linux boot loader"
@@ -20,7 +20,7 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="BSD GPL-2"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 
 DEPEND=">=sys-devel/bin86-0.15.5"
 RDEPEND="device-mapper? ( >=sys-fs/lvm2-2.02.45 )"
@@ -29,7 +29,7 @@ src_prepare() {
 	# this patch is needed when booting PXE and the device you're using
 	# emulates vga console via serial console.
 	# IE..  B.B.o.o.o.o.t.t.i.i.n.n.g.g....l.l.i.i.n.n.u.u.x.x and stair stepping.
-	use pxeserial && epatch "${FILESDIR}/${P}-novga.patch"
+	use pxeserial && epatch "${FILESDIR}/${PN}-24.1-novga.patch"
 
 	# Do not strip and have parallel make
 	# FIXME: images/Makefile does weird stuff
@@ -99,25 +99,26 @@ lilocheck() {
 	local rootpart="$(mount | grep -v "tmpfs" | grep -v "rootfs" | grep "on / " | cut -f1 -d " ")"
 
 	echo
-	einfon "Checking for LILO ..."
+	ebegin "Checking whether LILO can be safely updated"
 
 	if [ "$(whoami)" != "root" ]
 	then
-		echo; echo
-		eerror "Only root can check for LILO!"
+		eend 1
+		eerror "Only root can check for LILO"
 		return 1
 	fi
 
 	if [ -z "${rootpart}" ]
 	then
-		echo; echo
-		eerror "Could not determine root partition!"
+		eend 1
+		eerror "Could not determine root partition"
 		return 1
 	fi
 
 	if [ ! -f /etc/lilo.conf -o ! -x /sbin/lilo ]
 	then
-		echo " No"
+		eend 1
+		eerror "No LILO configuration in place"
 		return 1
 	fi
 
@@ -131,14 +132,22 @@ lilocheck() {
 
 	if ! dd if=${bootpart} ibs=16 count=1 2>&- | grep -q 'LILO'
 	then
-		echo; echo
-		ewarn "Yes, but I couldn't find a LILO signature on ${bootpart}"
+		eend 1
+		eerror "No LILO signature on ${bootpart}"
 		ewarn "Check your /etc/lilo.conf, or run /sbin/lilo by hand."
 		return 1
 	fi
 
-	echo " Yes, on ${bootpart}"
+	if grep -q "^[[:space:]]*password[[:space:]]*=[[:space:]]*\"\"" /etc/lilo.conf
+	then
+		eend 1
+		eerror "Interactive password entry configured"
+		ewarn "Run /sbin/lilo -p by hand."
+		return 1
+	fi
 
+	einfo "LILO on ${bootpart} is safe to update"
+	eend 0
 	return 0
 }
 
@@ -153,15 +162,13 @@ pkg_postinst() {
 	then
 		if lilocheck
 		then
-			einfo "Running DOLILO to complete the install ..."
+			einfo "Running DOLILO to complete the install"
 			# do not redirect to /dev/null because it may display some input
 			# prompt
 			/sbin/dolilo
 			if [ "$?" -ne 0 ]
 			then
-				echo
-				eerror "Running /sbin/dolilo failed!  Please check what the problem is"
-				eerror "before your next reboot."
+				eerror "You must manually configure and run LILO"
 			fi
 		fi
 		echo
@@ -169,8 +176,8 @@ pkg_postinst() {
 	if use !minimal; then
 		echo
 		einfo "Issue 'dolilo' instead of 'lilo' to have a friendly wrapper that"
-		einfo "handles mounting and unmounting /boot for you. It can do more then"
-		einfo "that when asked, edit /etc/conf.d/dolilo to harness it's full potential."
+		einfo "handles mounting and unmounting /boot for you. It can do more, "
+		einfo "edit /etc/conf.d/dolilo to harness its full potential."
 		echo
 	fi
 }
