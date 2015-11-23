@@ -12,3 +12,7 @@ depend() {
 	use logger
 	before amavisd-new snmpd
 }
+
+start_pre() {
+	checkpath -d -o amavis /run/amavis
+}
