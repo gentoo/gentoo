@@ -49,9 +49,9 @@ esac
 # Clean up environment for clean builds.
 xdg_environment_reset() {
 	# Prepare XDG base directories
-	export XDG_DATA_HOME="${T}/.local/share"
-	export XDG_CONFIG_HOME="${T}/.config"
-	export XDG_CACHE_HOME="${T}/.cache"
+	export XDG_DATA_HOME="${HOME}/.local/share"
+	export XDG_CONFIG_HOME="${HOME}/.config"
+	export XDG_CACHE_HOME="${HOME}/.cache"
 	export XDG_RUNTIME_DIR="${T}/run"
 	mkdir -p "${XDG_DATA_HOME}" "${XDG_CONFIG_HOME}" "${XDG_CACHE_HOME}" \
 		"${XDG_RUNTIME_DIR}" || die
