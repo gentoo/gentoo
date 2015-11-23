@@ -4,13 +4,13 @@
 
 EAPI=5
 
+AUTOTOOLS_AUTORECONF=1
+DISABLE_AUTOFORMATTING=1
+
+DISTUTILS_OPTIONAL=1
 # Python extension supports only Python2
 # See https://github.com/mrash/fwknop/issues/167
 PYTHON_COMPAT=( python2_7 )
-DISTUTILS_OPTIONAL=1
-AUTOTOOLS_AUTORECONF=1
-AUTOTOOLS_IN_SOURCE_BUILD=1
-DISABLE_AUTOFORMATTING=1
 
 inherit autotools-utils distutils-r1 linux-info readme.gentoo systemd
 
