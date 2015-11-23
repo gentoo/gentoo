@@ -1403,6 +1403,20 @@ built_with_use() {
 	[[ ${opt} = "-a" ]]
 }
 
+# If an overlay has eclass overrides, but doesn't actually override the
+# libtool.eclass, we'll have ECLASSDIR pointing to the active overlay's
+# eclass/ dir, but libtool.eclass is still in the main Gentoo tree.  So
+# add a check to locate the ELT-patches/ regardless of what's going on.
+# Note: Duplicated in libtool.eclass.
+_EUTILS_ECLASSDIR_LOCAL=${BASH_SOURCE[0]%/*}
+eutils_elt_patch_dir() {
+	local d="${ECLASSDIR}/ELT-patches"
+	if [[ ! -d ${d} ]] ; then
+		d="${_EUTILS_ECLASSDIR_LOCAL}/ELT-patches"
+	fi
+	echo "${d}"
+}
+
 # @FUNCTION: epunt_cxx
 # @USAGE: [dir to scan]
 # @DESCRIPTION:
@@ -1416,7 +1430,7 @@ epunt_cxx() {
 	ebegin "Removing useless C++ checks"
 	local f p any_found
 	while IFS= read -r -d '' f; do
-		for p in "${PORTDIR}"/eclass/ELT-patches/nocxx/*.patch ; do
+		for p in "$(eutils_elt_patch_dir)"/nocxx/*.patch ; do
 			if patch --no-backup-if-mismatch -p1 "${f}" "${p}" >/dev/null ; then
 				any_found=1
 				break

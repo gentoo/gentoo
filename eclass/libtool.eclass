@@ -21,8 +21,9 @@ _LIBTOOL_ECLASS=1
 # libtool.eclass, we'll have ECLASSDIR pointing to the active overlay's
 # eclass/ dir, but libtool.eclass is still in the main Gentoo tree.  So
 # add a check to locate the ELT-patches/ regardless of what's going on.
+# Note: Duplicated in eutils.eclass.
 _LIBTOOL_ECLASSDIR_LOCAL=${BASH_SOURCE[0]%/*}
-elt_patch_dir() {
+libtool_elt_patch_dir() {
 	local d="${ECLASSDIR}/ELT-patches"
 	if [[ ! -d ${d} ]] ; then
 		d="${_LIBTOOL_ECLASSDIR_LOCAL}/ELT-patches"
@@ -92,7 +93,7 @@ ELT_walk_patches() {
 	local ret=1
 	local file=$1
 	local patch_set=$2
-	local patch_dir="$(elt_patch_dir)/${patch_set}"
+	local patch_dir="$(libtool_elt_patch_dir)/${patch_set}"
 	local rem_int_dep=$3
 
 	[[ -z ${patch_set} ]] && return 1
@@ -106,7 +107,7 @@ ELT_walk_patches() {
 		sed_args+=( -e "s|@REM_INT_DEP@|${rem_int_dep}|g" )
 	fi
 
-	pushd "$(elt_patch_dir)" >/dev/null || die
+	pushd "$(libtool_elt_patch_dir)" >/dev/null || die
 
 	# Go through the patches in reverse order (newer version to older)
 	for patch in $(find "${patch_set}" -maxdepth 1 -type f | LC_ALL=C sort -r) ; do
