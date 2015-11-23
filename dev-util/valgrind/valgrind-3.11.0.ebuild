@@ -52,14 +52,11 @@ src_configure() {
 
 	# -fomit-frame-pointer	"Assembler messages: Error: junk `8' after expression"
 	#                       while compiling insn_sse.c in none/tests/x86
-	# -fpie                 valgrind seemingly hangs when built with pie on
-	#                       amd64 (bug #102157)
 	# -fstack-protector     more undefined references to __guard and __stack_smash_handler
 	#                       because valgrind doesn't link to glibc (bug #114347)
 	# -m64 -mx32			for multilib-portage, bug #398825
 	# -ggdb3                segmentation fault on startup
 	filter-flags -fomit-frame-pointer
-	filter-flags -fpie
 	filter-flags -fstack-protector
 	filter-flags -m64 -mx32
 	replace-flags -ggdb3 -ggdb2
