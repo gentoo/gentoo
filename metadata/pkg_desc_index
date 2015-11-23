@@ -16639,7 +16639,7 @@ sys-devel/ct-ng 1.21.0 1.22.0: crosstool-ng is a tool to build cross-compiling t
 sys-devel/dev86 0.16.19 0.16.21: Bruce's C compiler - Simple C compiler to generate 8086 code
 sys-devel/distcc 3.1-r10 3.2_rc1-r4: Distribute compilation of C code across several machines on a network
 sys-devel/dwz 0.9: DWARF optimization and duplicate removal tool
-sys-devel/flex 2.5.35 2.5.35_p10 2.5.37 2.5.38-r1 2.5.39 2.5.39-r1: The Fast Lexical Analyzer
+sys-devel/flex 2.5.39-r1 2.6.0: The Fast Lexical Analyzer
 sys-devel/gcc 2.95.3-r10 3.3.6-r1 3.4.6-r2 4.0.4 4.1.2 4.2.4-r1 4.3.6-r1 4.4.7 4.5.4 4.6.4 4.7.4 4.8.0 4.8.1-r1 4.8.2 4.8.3 4.8.4 4.8.5 4.9.0 4.9.1 4.9.2 4.9.3 5.1.0 5.2.0: The GNU Compiler Collection
 sys-devel/gcc-apple 4.0.1_p5493 4.2.1_p5664 4.2.1_p5666-r1 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
 sys-devel/gcc-config 1.4.1-r1 1.5-r1 1.5-r2 1.5.1 1.5.1-r1 1.6 1.7 1.7.1 1.7.2 1.7.3 1.8 1.8-r1: utility to manage compilers
@@ -16912,7 +16912,7 @@ sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r1 2.22-r1 9999: GNU libc6 (als
 sys-libs/gpm 1.20.6 1.20.6-r1 1.20.7 1.20.7-r1 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.3.3 4.12.0_beta 4.13.1: A multi-platform helper library for other libraries
 sys-libs/itx-bind 0.1-r2: the bind library for interix
-sys-libs/ldb 1.1.12 1.1.15 1.1.17-r1 1.1.20 1.1.21: An LDAP-like embedded database
+sys-libs/ldb 1.1.12 1.1.15 1.1.17-r1 1.1.21 1.1.23: An LDAP-like embedded database
 sys-libs/lib-compat 1.4.2-r1: Compatibility C++ and libc5 and libc6 libraries for very old programs
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
 sys-libs/libaal 1.0.5 1.0.5-r1 1.0.6: library required by reiser4progs
@@ -16963,7 +16963,7 @@ sys-libs/ncurses 5.9-r3 5.9-r4 5.9-r5 5.9-r99 5.9-r101 6.0 6.0-r1: console displ
 sys-libs/newlib 1.18.0 1.19.0 1.20.0 2.0.0 2.1.0 2.2.0 2.2.0.20150423 9999: Newlib is a C library intended for use on embedded systems
 sys-libs/nss-db 2.2.3_pre1-r2 2.2.3_pre1-r3 2.2.3_pre1-r4: Allows important system files to be stored in a fast database file rather than plain text
 sys-libs/nss-usrfiles 2.18.1: NSS module to read passwd/group files from CoreOS /usr location
-sys-libs/nss_wrapper 1.0.3: A wrapper for the user, group and hosts NSS API
+sys-libs/nss_wrapper 1.0.3 1.1.0: A wrapper for the user, group and hosts NSS API
 sys-libs/ntdb 1.0-r1: A not-so trivial keyword/data database system
 sys-libs/openhpi 2.12.0 3.0.0: Open source implementation of the Service Availability Forum (SAF) Hardware Platform Interface (HPI)
 sys-libs/openipmi 1.3.18 1.4.12 1.4.14 1.4.28 2.0.11 2.0.16 2.0.16-r1 2.0.18 2.0.18-r1: Library interface to IPMI
@@ -16974,9 +16974,9 @@ sys-libs/rvm 1.12 1.16 1.17: Recoverable Virtual Memory (used by Coda)
 sys-libs/slang 2.2.4 2.2.4-r1 2.3.0: A multi-platform programmer's library designed to allow a developer to create robust software
 sys-libs/suacomp 0.6.13 0.6.14 9999: library wrapping the interix lib-c to make it less buggy
 sys-libs/system-config-base 1-r1: system-config-* layout package
-sys-libs/talloc 2.1.0-r1 2.1.3 2.1.4: Samba talloc library
-sys-libs/tdb 1.3.0-r1 1.3.6 1.3.7: A simple database API
-sys-libs/tevent 0.9.21-r1 0.9.24 0.9.25: Samba tevent library
+sys-libs/talloc 2.1.0-r1 2.1.4 2.1.5: Samba talloc library
+sys-libs/tdb 1.3.0-r1 1.3.7 1.3.8: A simple database API
+sys-libs/tevent 0.9.21-r1 0.9.25 0.9.26: Samba tevent library
 sys-libs/timezone-data 2015e 2015f 2015g: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc 0.9.33.2-r15 0.9.33.9999 9999: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.1.0 1.1.1 1.2.0: A wrapper to fake privilege separation
