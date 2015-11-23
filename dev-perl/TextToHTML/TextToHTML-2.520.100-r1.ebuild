@@ -15,9 +15,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-perl/YAML-Syck
+RDEPEND="
+	!dev-perl/txt2html
+	dev-perl/YAML-Syck
 	virtual/perl-Getopt-Long
-	dev-perl/Getopt-ArgvFile"
+	dev-perl/Getopt-ArgvFile
+"
 DEPEND="${RDEPEND}
 	dev-perl/Module-Build"
 
