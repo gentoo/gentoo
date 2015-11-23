@@ -13495,7 +13495,7 @@ net-analyzer/openbsd-netcat 1.84: the OpenBSD network swiss army knife
 net-analyzer/openvas 8.0.5: A remote security scanner
 net-analyzer/openvas-cli 1.4.3: A remote security scanner for Linux (OpenVAS-cli)
 net-analyzer/openvas-libraries 8.0.5: A remote security scanner for Linux (openvas-libraries)
-net-analyzer/openvas-manager 6.0.6: A remote security scanner for Linux (openvas-manager)
+net-analyzer/openvas-manager 6.0.6-r1: A remote security scanner for Linux (openvas-manager)
 net-analyzer/openvas-scanner 5.0.4: A remote security scanner for Linux (OpenVAS-scanner)
 net-analyzer/openvas-tools 0_pre20512: A remote security scanner for Linux (extra tools)
 net-analyzer/ospd 1.0.0: Collection of scanner wrappers for OpenVAS
