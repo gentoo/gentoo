@@ -12,7 +12,7 @@ SRC_URI="http://fltk.org/pub/${PN}/${PV}/${P}-source.tar.gz"
 
 SLOT="1"
 LICENSE="FLTK LGPL-2"
-KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="cairo debug doc examples games +opengl static-libs +threads +xft +xinerama"
 
 RDEPEND="
