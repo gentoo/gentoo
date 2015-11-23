@@ -48,8 +48,14 @@ python_install() {
 	distutils-r1_python_install
 	# symlink the license, bug #341653
 	rm "${D}/$(python_get_sitedir)"/${PN}/{COPYING,AUTHORS,ChangeLog} || die
-	ln -s "${PORTDIR}"/licenses/${LICENSE} \
-		"${D}/$(python_get_sitedir)"/${PN}/COPYING || die
+	mkdir -p "${D}/$(python_get_sitedir)" || die
+	cat >> "${D}/$(python_get_sitedir)"/${PN}/COPYING <<- EOF
+	Please visit
+
+	https://www.gnu.org/licenses/gpl-2.0.html
+
+	for the full license text.
+	EOF
 }
 
 python_install_all() {
