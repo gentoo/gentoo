@@ -18,4 +18,5 @@ start_pre() {
 	if [[ -x ${command}-zmq && ! $amavisd_snmp_command ]]; then
 		command="${command}-zmq"
 	fi
+	checkpath -d -o amavis /run/amavis
 }
