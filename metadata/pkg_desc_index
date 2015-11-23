@@ -9577,7 +9577,7 @@ dev-util/uncrustify 0.59 0.61 0.61-r1 9999: C/C++/C#/D/Java/Pawn code indenter a
 dev-util/unifdef 2.10: remove #ifdef'ed lines from a file while otherwise leaving the file alone
 dev-util/universalindentgui 1.2.0-r1: Cross platform GUI for several code formatters, beautifiers and indenters
 dev-util/usb-robot 0.2.0: USB Reverse engineering tools
-dev-util/valgrind 3.7.0-r4 3.8.1 3.9.0 3.10.1 3.11.0: An open-source memory debugger for GNU/Linux
+dev-util/valgrind 3.10.1 3.11.0: An open-source memory debugger for GNU/Linux
 dev-util/valkyrie 2.0.0: Graphical front-end to the Valgrind suite of tools
 dev-util/vbindiff 3.0_beta1 3.0_beta4: Visual binary diff utility
 dev-util/vdkbuilder 2.4.0 2.5.0: The Visual Development Kit used for VDK Builder
