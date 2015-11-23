@@ -10,4 +10,4 @@ RDEPEND==sys-freebsd/freebsd-lib-10.2*[usb?,bluetooth?,abi_x86_32(-)?,abi_x86_64
 SLOT=0
 SRC_URI=mirror://freebsd/releases/i386/10.2-RELEASE/src.txz -> freebsd-src-10.2.tar.xz https://security.freebsd.org/patches/EN-15:12/netstat.patch -> freebsd-ubin-EN-1512-netstat.patch
 _eclasses_=bsdmk	2d20496ff432a0ca089345cf400e5c87	eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	freebsd	f8e66e6d6da923be35831f93abf8742b	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	3972ca401cf7dbb430df9995f5d8d580	multilib-build	c47eec09e82c8a750127ff2abf0745b1	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	portability	3a50b3ec310b86914f98babecc8f89c6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=99cb501579421748db373b43bcc40a9b
+_md5_=20de65d79c83b36b76387c3e4a4eb532
