@@ -18580,7 +18580,7 @@ x11-wm/aewm++ 1.1.5-r2: A window manager with more modern features than aewm but
 x11-wm/afterstep 2.2.9 2.2.12: A feature rich NeXTish window manager
 x11-wm/amiwm 0.21_p2: Windowmanager ala Amiga(R) Workbench(R)
 x11-wm/awesome 3.4.15 3.5.6-r1: A dynamic floating and tiling window manager
-x11-wm/blackbox 0.70.1 0.70.1-r1: A small, fast, full-featured window manager for X
+x11-wm/blackbox 0.70.1-r1: A small, fast, full-featured window manager for X
 x11-wm/bspwm 0.8.8-r1 0.8.9 0.9: Tiling window manager based on binary space partitioning
 x11-wm/compiz 0.8.8-r3: OpenGL window and compositing manager
 x11-wm/compiz-fusion 0.8.8: Compiz Fusion (meta)
