@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Brian Evans <grknight@gentoo.org> (23 Nov 2015)
+# unmask galera for dev-db/mariadb
+>=dev-db/mariadb-10.1.0 -galera
+
 # Agostino Sarubbo <ago@gentoo.org> (31 Jan 2012)
 # Mask because requires a lot of unstable depends not ready for the stabilization
 gnome-extra/nm-applet bluetooth
