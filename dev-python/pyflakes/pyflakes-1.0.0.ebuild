@@ -19,7 +19,7 @@ IUSE=""
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/fix-pypy-tests.patch )
+PATCHES=( "${FILESDIR}"/${PV}-fix-pypy-tests.patch )
 
 python_test() {
 	esetup.py test --quiet
