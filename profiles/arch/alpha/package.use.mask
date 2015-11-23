@@ -44,10 +44,6 @@ dev-db/percona-server tokudb tokudb-backup-plugin
 # version of sudo has the optional functionality.
 >=app-admin/sudo-1.8.6 sssd
 
-# Brian Evans <grknight@gentoo.org> (14 Sep 2015)
-# Mask new USE flags for mariadb which all arches do not yet have dependencies
->=dev-db/mariadb-10.1.0 innodb-snappy
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (10 Sep 2015)
 # Requires wifi USE flag, which is masked for this arch
 net-misc/networkmanager wext
