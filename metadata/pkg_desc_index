@@ -14600,7 +14600,7 @@ net-misc/unison 2.27.157 2.32.52 2.40.102 2.45.4 2.48.3: Two-way cross-platform 
 net-misc/unix2tcp 0.8.2: a connection forwarder that converts Unix sockets into TCP sockets
 net-misc/urlview 0.9: extracts urls from text and will send them to another app
 net-misc/usbip 3.19: Userspace utilities for a general USB device sharing system over IP networks
-net-misc/utelnetd 0.1.9-r1: A small Telnet daemon, derived from the Axis tools
+net-misc/utelnetd 0.1.9-r1 0.1.11: 
 net-misc/valve 1.0: Copies data while enforcing a specified maximum transfer rate
 net-misc/vconfig 1.9: 802.1Q vlan control utility
 net-misc/vde 2.2.2 2.3.1 2.3.2 2.3.2-r1 2.3.2-r2: Virtual distributed ethernet emulator for emulators like qemu, bochs, and uml
