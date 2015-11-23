@@ -3,11 +3,13 @@
 # $Id$
 
 EAPI=5
+
 AUTOTOOLS_AUTORECONF=1
 AUTOTOOLS_IN_SOURCE_BUILD=1
-
+# Source tarball has SHA1 of release in the name of the second topmost directory
 GIT_SHA1="5a46c4ced4ef899b398bcedf8ccd29d6f2584100"
-inherit autotools-utils perl-module sgml-catalog toolchain-funcs
+
+inherit autotools-utils latex-package perl-module sgml-catalog toolchain-funcs
 
 DESCRIPTION="A toolset for processing LinuxDoc DTD SGML files"
 HOMEPAGE="https://gitlab.com/agmartin/linuxdoc-tools"
@@ -34,6 +36,7 @@ DEPEND="${RDEPEND}
 "
 
 DOCS=( ChangeLog README )
+
 S="${WORKDIR}/${PN}-upstream/${PV}-${GIT_SHA1}"
 
 sgml-catalog_cat_include "/etc/sgml/linuxdoc.cat" \
@@ -53,7 +56,7 @@ src_configure() {
 	tc-export CC
 	local myeconfargs=(
 		--disable-docs
-		--with-texdir="/usr/share/texmf/tex/latex/misc"
+		--with-texdir="${TEXMF}/tex/latex/${PN}"
 		--with-perllibdir="${VENDOR_ARCH}"
 		--with-installed-iso-entities
 	)
@@ -71,4 +74,14 @@ src_install() {
 	export VARTEXFONTS="${T}/fonts"
 
 	autotools-utils_src_install
+}
+
+pkg_postinst() {
+	latex-package_pkg_postinst
+	sgml-catalog_pkg_postinst
+}
+
+pkg_postrm() {
+	latex-package_pkg_postrm
+	sgml-catalog_pkg_postrm
 }
