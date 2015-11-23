@@ -64,9 +64,10 @@ src_prepare() {
 	# we need to sed in the paxctl-ng -mr in the runtime/mono-wrapper.in so it doesn't
 	# get killed in the build process when MPROTECT is enabled. #286280
 	# RANDMMAP kills the build process to #347365
+	# use paxmark.sh to get PT/XT logic #532244
 	if use pax_kernel ; then
 		ewarn "We are disabling MPROTECT on the mono binary."
-		sed '/exec "/ i\paxctl-ng -mr "$r/@mono_runtime@"' -i "${S}"/runtime/mono-wrapper.in || die "Failed to sed mono-wrapper.in"
+		sed '/exec "/ i\paxmark.sh -mr "$r/@mono_runtime@"' -i "${S}"/runtime/mono-wrapper.in || die "Failed to sed mono-wrapper.in"
 	fi
 }
 

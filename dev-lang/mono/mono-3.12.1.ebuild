@@ -46,13 +46,14 @@ pkg_setup() {
 
 src_prepare() {
 	# we need to sed in the paxctl-ng -mr in the runtime/mono-wrapper.in so it don't
-	# get killed in the build proces when MPROTEC is enable. #286280
+	# get killed in the build proces when MPROTECT is enable. #286280
 	# RANDMMAP kill the build proces to #347365
+	# use paxmark.sh to get PT/XT logic #532244
 	if use pax_kernel ; then
 		ewarn "We are disabling MPROTECT on the mono binary."
 
 		# issue 9 : https://github.com/Heather/gentoo-dotnet/issues/9
-		sed '/exec "/ i\paxctl-ng -mr "$r/@mono_runtime@"' -i "${S}"/runtime/mono-wrapper.in || die "Failed to sed mono-wrapper.in"
+		sed '/exec "/ i\paxmark.sh -mr "$r/@mono_runtime@"' -i "${S}"/runtime/mono-wrapper.in || die "Failed to sed mono-wrapper.in"
 	fi
 
 	# mono build system can fail otherwise
