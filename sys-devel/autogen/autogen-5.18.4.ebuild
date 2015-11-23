@@ -19,6 +19,10 @@ RDEPEND=">=dev-scheme/guile-1.8
 	dev-libs/libxml2"
 DEPEND="${RDEPEND}"
 
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-5.18.4-tmp-log.patch #563352
+}
+
 src_configure() {
 	# suppress possibly incorrect -R flag
 	export ag_cv_test_ldflags=
