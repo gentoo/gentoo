@@ -1,4 +1,4 @@
-From 6fb632732a28fc5c5c8f20a7be8ded759acd8994 Mon Sep 17 00:00:00 2001
+From f8aeca1dca05c7053532c576add6ab4a472c5e4e Mon Sep 17 00:00:00 2001
 From: Gilles Dartiguelongue <eva@gentoo.org>
 Date: Wed, 11 Nov 2015 17:49:07 +0100
 Subject: [PATCH] Simplify python setup in autoconf
@@ -8,8 +8,8 @@ from the rest of the autoconf script.
 ---
  Makefile.am        |  14 +++++--
  configure.in       | 119 ++++++++++++++---------------------------------------
- python/Makefile.am |  30 ++++----------
- 3 files changed, 49 insertions(+), 114 deletions(-)
+ python/Makefile.am |  28 ++++---------
+ 3 files changed, 49 insertions(+), 112 deletions(-)
 
 diff --git a/Makefile.am b/Makefile.am
 index e357f19..c396913 100644
@@ -44,7 +44,7 @@ index e357f19..c396913 100644
  valgrind:
  	@echo '## Running the regression tests under Valgrind'
 diff --git a/configure.in b/configure.in
-index e84ad4f..27c0e0e 100644
+index e84ad4f..102c733 100644
 --- a/configure.in
 +++ b/configure.in
 @@ -291,90 +291,37 @@ dnl
@@ -162,7 +162,7 @@ index e84ad4f..27c0e0e 100644
 +              AC_MSG_WARN([libxml2 python module not found, expect runtime errors])])
 +      ])
 +
-+AM_CONDITIONAL([WITH_PYTHON], [test "$PYTHON" != ""])
++AM_CONDITIONAL([WITH_PYTHON], [test "$with_python" = "yes"])
 +AC_SUBST([PYTHON_CFLAGS])
 +AC_SUBST([PYTHON_LDFLAGS])
 +AC_SUBST([PYTHON_LIBS])
@@ -181,7 +181,7 @@ index e84ad4f..27c0e0e 100644
  XSLT_LIBDIR='-L${libdir}'
  XSLT_INCLUDEDIR='-I${includedir}'
 diff --git a/python/Makefile.am b/python/Makefile.am
-index fa58b78..cc13c62 100644
+index fa58b78..3a5ecd6 100644
 --- a/python/Makefile.am
 +++ b/python/Makefile.am
 @@ -5,9 +5,9 @@ SUBDIRS= . tests
@@ -196,7 +196,7 @@ index fa58b78..cc13c62 100644
  
  EXTRA_DIST = 			\
  	libxslt.c		\
-@@ -16,43 +16,29 @@ EXTRA_DIST = 			\
+@@ -16,10 +16,7 @@ EXTRA_DIST = 			\
  	libxml_wrap.h		\
  	libxslt_wrap.h		\
  	libxsl.py		\
@@ -208,11 +208,10 @@ index fa58b78..cc13c62 100644
  
  if WITH_PYTHON
  mylibs = \
- 	$(top_builddir)/libxslt/libxslt.la \
- 	$(top_builddir)/libexslt/libexslt.la
+@@ -28,31 +25,22 @@ mylibs = \
  
--all-local: libxslt.py
--
+ all-local: libxslt.py
+ 
 -python_LTLIBRARIES = libxsltmod.la
 +python_PYTHON = libxslt.py
 +pyexec_LTLIBRARIES = libxsltmod.la
