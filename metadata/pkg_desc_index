@@ -14159,7 +14159,7 @@ net-mail/maildirtree 0.6-r1: A utility that prints trees of Courier-style Maildi
 net-mail/mailfront 0.88 0.98 1.12 1.16: Mail server network protocol front-ends
 net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
 net-mail/mailman 2.1.20 2.1.20-r1: A python-based mailing list server with an extensive web interface
-net-mail/mailshears 0.0.2: Mangle your mail garden
+net-mail/mailshears 0.0.2-r1: Mangle your mail garden
 net-mail/mailsync 5.2.1: A mailbox synchronizer
 net-mail/mailutils 2.99.98: A useful collection of mail servers, clients, and filters
 net-mail/mairix 0.23: Indexes and searches Maildir/MH folders
@@ -18073,7 +18073,7 @@ x11-misc/tint2 0.11-r2: A lightweight panel/taskbar
 x11-misc/tintwizard 0.3.4-r1: GUI wizard which generates config files for tint2 panels
 x11-misc/tinymount 0.2.8: Simple graphical utility for disk mounting
 x11-misc/tinynotify-send 1.2.1-r1 9999: A notification sending utility (using libtinynotify)
-x11-misc/touchcal 0.50: Touchscreen calibration utility
+x11-misc/touchcal 0.50 0.80: 
 x11-misc/touchfreeze 0.2.5-r1: X11 touch pad driver configuration utility
 x11-misc/trayer 1.0-r1: Lightweight GTK+ based systray for UNIX desktop
 x11-misc/trayer-srg 1.1.5 1.1.6: trayer fork with multi monitor support, cleaned up codebase and other fancy stuff
