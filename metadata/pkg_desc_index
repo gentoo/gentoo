@@ -16626,7 +16626,7 @@ sys-devel/bc 1.06.95 1.06.95-r1 1.06.95-r2: Handy console-based calculator utili
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
 sys-devel/binutils 2.21.1-r1 2.22-r1 2.23.2 2.24-r3 2.25 2.25-r1 2.25.1-r1 9999: Tools necessary to build programs
 sys-devel/binutils-apple 3.1.2 3.2 3.2.6 4.2 4.2-r1 4.3 4.3-r1 5.1 6.1 6.3: Darwin assembler as(1) and static linker ld(1), Xcode Tools 6.3
-sys-devel/binutils-config 4-r2 4-r3 4-r4 5-r1: Utility to change the binutils version being used
+sys-devel/binutils-config 4-r2 4-r3 4-r4 5-r2: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.19.1 2.20.1 2.21.1-r1 2.22 2.23.1 2.23.2 2.24 2.25 2.25.1: binutils package for building 64bit kernels on HPPA
 sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.3-r1 3.0.4 3.0.4-r1: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20140214 20151010: NetBSD's portable make
@@ -16898,7 +16898,7 @@ sys-kernel/vserver-sources 2.3.0.36.32 2.3.6.5 2.3.6.8 2.3.6.11 2.3.6.14 2.3.7.3
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3: Standalone argp library for use with uclibc
-sys-libs/binutils-libs 2.25.1-r1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
+sys-libs/binutils-libs 2.25.1-r2: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/cracklib 2.9.1-r1 2.9.4 2.9.5 2.9.6: Password Checking Library
 sys-libs/csu 79 85: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/db 1.85-r3 3.2.9_p2 4.2.52_p5-r1 4.3.29_p1-r1 4.4.20_p4-r1 4.5.20_p2-r1 4.6.21_p4 4.7.25_p4 4.8.30-r1 4.8.30-r2 5.1.29-r1 5.3.28-r2 6.0.30-r1 6.0.35 6.1.26: Oracle Berkeley DB
