@@ -5,7 +5,6 @@
 EAPI=5
 
 AUTOTOOLS_AUTORECONF=1
-AUTOTOOLS_IN_SOURCE_BUILD=1
 
 inherit autotools-utils eutils flag-o-matic linux-info readme.gentoo systemd user
 
@@ -121,16 +120,16 @@ src_install() {
 
 	if use doc; then
 		dohtml doc/${PN}.html
-		dodoc doc/${PN}.dvi doc/${PN}.txt doc/${PN}.ps
+		dodoc doc/${PN}.{dvi,ps,txt}
 	fi
 
-	use sqlite && dodoc doc/sqlite3.table
 	use mysql && dodoc doc/mysql-*.sql
 	use postgres && dodoc doc/pgsql-*.sql
+	use sqlite && dodoc doc/sqlite3.table
 	doman ${PN}.8
 
 	insinto /etc
-	doins ${PN}.conf
+	doins "${BUILD_DIR}/${PN}.conf"
 	fowners root:ulogd /etc/ulogd.conf
 	fperms 640 /etc/ulogd.conf
 
