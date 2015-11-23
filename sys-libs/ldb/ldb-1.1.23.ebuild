@@ -18,9 +18,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~x86
 IUSE="doc"
 
 RDEPEND="dev-libs/popt
-	>=sys-libs/talloc-2.1.1[python]
-	>=sys-libs/tevent-0.9.22[python(+)]
-	>=sys-libs/tdb-1.3.4[python]
+	>=sys-libs/talloc-2.1.5[python]
+	>=sys-libs/tevent-0.9.26[python(+)]
+	>=sys-libs/tdb-1.3.8[python]
 	net-nds/openldap
 	!!<net-fs/samba-3.6.0[ldb]
 	!!>=net-fs/samba-4.0.0[ldb]

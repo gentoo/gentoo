@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=5
 
-inherit flag-o-matic
+inherit eutils flag-o-matic multilib-minimal
 
 DESCRIPTION="The Fast Lexical Analyzer"
 HOMEPAGE="http://flex.sourceforge.net/"
@@ -24,17 +24,45 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	use static && append-ldflags -static
+
+	multilib-minimal_src_configure
+}
+
+multilib_src_configure() {
 	# Do not install shared libs #503522
+	ECONF_SOURCE=${S} \
 	econf \
 		--disable-shared \
 		$(use_enable nls) \
 		--docdir='$(datarootdir)/doc/'${PF}
 }
 
-src_install() {
-	default
+multilib_src_compile() {
+	if multilib_is_native_abi; then
+		default
+	else
+		cd src || die
+		emake -f Makefile -f - lib <<< 'lib: $(lib_LTLIBRARIES)'
+	fi
+}
+
+multilib_src_test() {
+	multilib_is_native_abi && emake check
+}
+
+multilib_src_install() {
+	if multilib_is_native_abi; then
+		default
+	else
+		cd src || die
+		emake DESTDIR="${D}" install-libLTLIBRARIES install-includeHEADERS
+	fi
+}
+
+multilib_src_install_all() {
+	einstalldocs
 	dodoc ONEWS
-	find "${ED}" -name '*.la' -delete
+	prune_libtool_files --all
 	rm "${ED}"/usr/share/doc/${PF}/{COPYING,flex.pdf} || die
 	dosym flex /usr/bin/lex
 }
