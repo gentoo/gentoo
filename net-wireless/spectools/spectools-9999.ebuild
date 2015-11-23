@@ -38,7 +38,7 @@ DEPEND="${RDEPEND}
 # Maemo: Add hildon and bbus
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2011.08.1_p20150618-tinfo.patch
+	epatch "${FILESDIR}"/${PN}-2011.08.1_p20140618-tinfo.patch
 	mv configure.{in,ac} || die
 	eautoreconf
 }
