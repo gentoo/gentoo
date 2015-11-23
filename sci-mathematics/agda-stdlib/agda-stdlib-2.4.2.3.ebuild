@@ -59,7 +59,7 @@ src_test() {
 
 src_install() {
 	insinto usr/share/agda-stdlib
-	export INSOPTIONS=--preserve-timestamps
+	insopts --preserve-timestamps
 	doins -r src/*
 	dodoc -r html/*
 	elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
