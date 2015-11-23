@@ -39,7 +39,7 @@ DEPEND="${RDEPEND}
 	dev-python/docutils:0
 	virtual/pkgconfig:*"
 
-G2CONF="${G2CONF} $(use_enable debug) --disable-static"
+DOCS="AUTHORS ChangeLog NEWS README"
 
 CONFIG_CHECK="~INOTIFY_USER"
 
@@ -47,6 +47,8 @@ pkg_setup () {
 	python-single-r1_pkg_setup
 	check_extra_config
 	enewgroup dropbox
+
+	G2CONF="${G2CONF} $(use_enable debug) --disable-static"
 }
 
 src_prepare() {
@@ -62,8 +64,6 @@ src_prepare() {
 
 	AT_NOELIBTOOLIZE=yes eautoreconf
 }
-
-DOCS="AUTHORS ChangeLog NEWS README"
 
 src_install () {
 	python_fix_shebang caja-dropbox.in
