@@ -306,7 +306,7 @@ src_prepare() {
 	# Cheap hack to disable gettext .mo generation.
 	use nls || rm -f po/*.po
 
-	epatch "${FILESDIR}"/qemu-1.7.0-cflags.patch
+	epatch "${FILESDIR}"/qemu-2.5.0-cflags.patch
 	[[ -n ${BACKPORTS} ]] && \
 		EPATCH_FORCE=yes EPATCH_SUFFIX="patch" EPATCH_SOURCE="${S}/patches" \
 			epatch
