@@ -30,13 +30,6 @@ EXTRACTONLY="
 	etc/
 	gnu/
 "
-use nis && EXTRACTONLY+="libexec/"
-if use build ; then
-	EXTRACTONLY+="
-		sys/
-		include/
-	"
-fi
 
 RDEPEND="=sys-freebsd/freebsd-lib-${RV}*[usb?,bluetooth?,netware?]
 	=sys-freebsd/freebsd-libexec-${RV}*
@@ -60,6 +53,10 @@ S="${WORKDIR}/usr.sbin"
 IUSE="acpi atm audit bluetooth floppy ipv6 kerberos minimal netware nis pam ssl usb build"
 
 pkg_setup() {
+	# Add the required source files.
+	use nis && EXTRACTONLY+="libexec/ "
+	use build && EXTRACTONLY+="sys/ include/ "
+
 	# Release crunch is something like minimal. It seems to remove everything
 	# which is not needed to work.
 	use minimal && mymakeopts="${mymakeopts} RELEASE_CRUNCH= "

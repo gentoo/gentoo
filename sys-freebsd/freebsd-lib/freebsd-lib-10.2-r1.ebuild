@@ -32,8 +32,6 @@ EXTRACTONLY="
 	gnu/
 	secure/
 "
-use build && EXTRACTONLY+="sys/"
-use zfs && EXTRACTONLY+="cddl/"
 
 if [ "${CATEGORY#*cross-}" = "${CATEGORY}" ]; then
 	RDEPEND="ssl? ( dev-libs/openssl )
@@ -56,7 +54,7 @@ if [ "${CATEGORY#*cross-}" = "${CATEGORY}" ]; then
 		=sys-freebsd/freebsd-share-${RV}*
 		>=virtual/libiconv-0-r2"
 else
-	EXTRACTONLY+="sys/"
+	EXTRACTONLY+="sys/ "
 fi
 
 DEPEND="${DEPEND}
@@ -77,6 +75,10 @@ IUSE="atm bluetooth ssl hesiod ipv6 kerberos usb netware
 QA_DT_NEEDED="lib/libc.so.7 usr/lib32/libc.so.7"
 
 pkg_setup() {
+	# Add the required source files.
+	use build && EXTRACTONLY+="sys/ "
+	use zfs && EXTRACTONLY+="cddl/ "
+
 	[ -c /dev/zero ] || \
 		die "You forgot to mount /dev; the compiled libc would break."
 

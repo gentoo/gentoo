@@ -28,8 +28,6 @@ EXTRACTONLY="
 	bin/
 	include/
 "
-use zfs && EXTRACTONLY+="cddl/"
-use build && EXTRACTONLY+="sys/"
 
 RDEPEND="=sys-freebsd/freebsd-lib-${RV}*[usb?,bluetooth?,${MULTILIB_USEDEP}]
 	ssl? ( dev-libs/openssl )
@@ -94,6 +92,10 @@ REMOVE_SUBDIRS="bzip2 bzip2recover tar cpio
 	whois tftp man"
 
 pkg_setup() {
+	# Add the required source files.
+	use zfs && EXTRACTONLY+="cddl/ "
+	use build && EXTRACTONLY+="sys/ "
+
 	use atm || mymakeopts="${mymakeopts} WITHOUT_ATM= "
 	use audit || mymakeopts="${mymakeopts} WITHOUT_AUDIT= "
 	use bluetooth || mymakeopts="${mymakeopts} WITHOUT_BLUETOOTH= "
