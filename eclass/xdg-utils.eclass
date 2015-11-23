@@ -54,10 +54,10 @@ xdg_environment_reset() {
 	export XDG_CACHE_HOME="${T}/.cache"
 	export XDG_RUNTIME_DIR="${T}/run"
 	mkdir -p "${XDG_DATA_HOME}" "${XDG_CONFIG_HOME}" "${XDG_CACHE_HOME}" \
-		"${XDG_RUNTIME_DIR}"
+		"${XDG_RUNTIME_DIR}" || die
 	# This directory needs to be owned by the user, and chmod 0700
 	# http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
-	chmod 0700 "${XDG_RUNTIME_DIR}"
+	chmod 0700 "${XDG_RUNTIME_DIR}" || die
 
 	unset DBUS_SESSION_BUS_ADDRESS
 }
