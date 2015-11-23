@@ -164,6 +164,13 @@ tc-binutils_apply_patches() {
 			fi
 		fi
 		[[ ${#PATCHES[@]} -gt 0 ]] && epatch "${PATCHES[@]}"
+
+		# Make sure our explicit libdir paths don't get clobbered. #562460
+		sed -i \
+			-e 's:@bfdlibdir@:@libdir@:g' \
+			-e 's:@bfdincludedir@:@includedir@:g' \
+			{bfd,opcodes}/Makefile.in || die
+
 		epatch_user
 	fi
 
