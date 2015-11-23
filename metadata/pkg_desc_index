@@ -6455,7 +6455,7 @@ dev-perl/text-template 1.460.0-r1: Expand template text with embedded Perl
 dev-perl/text-wrapper 1.40.0-r1: Word wrap text by breaking long lines
 dev-perl/tie-encryptedhash 1.240.0-r1: Hashes (and objects based on hashes) with encrypting fields
 dev-perl/tkispell 0.180.0: Perl/Tk user interface for ispell
-dev-perl/txt2html 2.520.100: Convert plain text file to HTML.
+dev-perl/txt2html 2.520.100: Convert a plain text file to HTML
 dev-perl/wxperl 0.990.200-r1 0.991.700 0.992.700 0.992.700-r1: Perl bindings for wxGTK
 dev-perl/yaml 0.840.0-r1 0.900.0 1.140.0 1.150.0: YAML Ain't Markup Language (tm)
 dev-php/File_Iterator 1.3.1 1.3.4: FilterIterator implementation that filters files based on a list of suffixes
@@ -17508,7 +17508,7 @@ www-misc/urlwatch 1.16 1.17 1.18: A tool for monitoring webpages for updates
 www-misc/vdradmin-am 3.6.9 3.6.9-r3 3.6.10: WWW Admin for the Video Disk Recorder
 www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
-www-misc/xxv 1.6.1: WWW Admin for the VDR (Video Disk Recorder)
+www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.548: Adobe Flash Player
 www-plugins/chrome-binary-plugins 46.0.2490.86_p1 47.0.2526.69_beta1 48.0.2564.10_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
