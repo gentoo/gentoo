@@ -3,7 +3,7 @@
 <pkgmetadata>
 <herd>toolchain</herd>
 <use>
-	<flag name='64-bit-bfd'>Support 64-bit targets even on 32-bit hosts</flag>
+	<flag name='64-bit-bfd'>Support 64-bit targets even on 32-bit hosts (is ignored on 64-bit hosts)</flag>
 	<flag name='multitarget'>Enable all possible targets in libbfd</flag>
 </use>
 <upstream>
