@@ -7589,7 +7589,7 @@ sys-kernel/spl:debug-log - Enable additional diagnostics
 sys-kernel/tuxonice-sources:experimental - Apply experimental patches; for more information, see "https://wiki.gentoo.org/wiki/Project:Kernel/Experimental".
 sys-kernel/vanilla-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/vserver-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
-sys-libs/binutils-libs:64-bit-bfd - Support 64-bit targets even on 32-bit hosts
+sys-libs/binutils-libs:64-bit-bfd - Support 64-bit targets even on 32-bit hosts (is ignored on 64-bit hosts)
 sys-libs/binutils-libs:multitarget - Enable all possible targets in libbfd
 sys-libs/db:rpc - Enable rpc client/server
 sys-libs/freeipmi:nagios - Install a nagios plugin to check sensors' status.

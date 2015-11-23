@@ -1378,7 +1378,7 @@ app-eselect/eselect-opencl 1.1.0 1.1.0-r1 1.1.0-r2 1.1.0-r3: Utility to change t
 app-eselect/eselect-opengl 1.2.7 1.3.1-r4: Utility to change the OpenGL interface being used
 app-eselect/eselect-package-manager 20110108: Manages PACKAGE_MANAGER environment variable
 app-eselect/eselect-pdftex 0.3: pdftex module for eselect
-app-eselect/eselect-php 0.7.1-r4 0.7.1-r5: PHP eselect module
+app-eselect/eselect-php 0.7.1-r4 0.7.1-r6: PHP eselect module
 app-eselect/eselect-pinentry 0.4 0.5 0.6: Manage /usr/bin/pinentry symlink
 app-eselect/eselect-postgresql 1.2.1: Utility to select the default PostgreSQL slot
 app-eselect/eselect-python 20111108 20131210 20140115 20140125 20151117 99999999: Eselect module for management of multiple Python versions
