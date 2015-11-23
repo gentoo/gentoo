@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-2
 else
 	SRC_URI="https://dev.gentoo.org/~blueness/elfix/${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86"
+	KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86"
 fi
 
 DESCRIPTION="A suite of tools to work with ELF objects on Hardened Gentoo"
