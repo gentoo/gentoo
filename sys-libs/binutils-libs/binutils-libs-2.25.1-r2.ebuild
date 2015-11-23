@@ -6,7 +6,7 @@ EAPI="5"
 
 PATCHVER="1.1"
 
-inherit eutils multilib-minimal
+inherit eutils toolchain-funcs multilib-minimal
 
 MY_PN="binutils"
 MY_P="${MY_PN}-${PV}"
@@ -20,7 +20,7 @@ LICENSE="|| ( GPL-3 LGPL-3 )"
 # The shared lib SONAMEs use the ${PV} in them.
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd -sparc-fbsd ~x86-fbsd"
-IUSE="nls static-libs zlib"
+IUSE="64-bit-bfd multitarget nls static-libs zlib"
 
 COMMON_DEPEND="zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )"
 DEPEND="${COMMON_DEPEND}
@@ -57,6 +57,11 @@ multilib_src_configure() {
 		--with-bugurl="https://bugs.gentoo.org/"
 		--with-pkgversion="$(pkgversion)"
 		$(use_enable static-libs static)
+		# The binutils eclass enables this flag for all bi-arch builds,
+		# but other tools often don't care about that support.  Put it
+		# beyond a flag if people really want it, but otherwise leave
+		# it disabled as it can slow things down on 32bit arches. #438522
+		$(use_enable 64-bit-bfd)
 		# We only care about the libs, so disable programs. #528088
 		--disable-{binutils,etc,ld,gas,gold,gprof}
 		# Disable modules that are in a combined binutils/gdb tree. #490566
@@ -65,6 +70,8 @@ multilib_src_configure() {
 		# https://gcc.gnu.org/PR56750
 		--without-stage1-ldflags
 	)
+
+	use multitarget && myconf+=( --enable-targets=all --enable-64-bit-bfd )
 
 	use nls \
 		&& myconf+=( --without-included-gettext ) \
