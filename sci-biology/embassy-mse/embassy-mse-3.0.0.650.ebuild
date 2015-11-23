@@ -5,7 +5,6 @@
 EAPI=5
 
 EBO_DESCRIPTION="MSE - Multiple Sequence Screen Editor"
-EBO_EXTRA_ECONF="$(use_enable ncurses curses)"
 
 AUTOTOOLS_AUTORECONF=1
 
@@ -17,6 +16,11 @@ IUSE+=" ncurses"
 RDEPEND+=" ncurses? ( sys-libs/ncurses )"
 
 PATCHES=( "${FILESDIR}"/${P}_fix-build-system.patch )
+
+src_configure() {
+	EBO_EXTRA_ECONF="$(use_enable ncurses curses)"
+	emboss-r1_src_configure
+}
 
 src_install() {
 	autotools-utils_src_install
