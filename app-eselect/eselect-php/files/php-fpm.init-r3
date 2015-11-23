@@ -1,6 +1,7 @@
 #!/sbin/openrc-run
 
 extra_started_commands="reload"
+extra_commands="configtest"
 
 set_phpvars() {
 	PHPSLOT="${SVCNAME#php-fpm-}"
@@ -11,13 +12,14 @@ set_phpvars() {
 	fi
 
 	PHP_FPM_CONF="/etc/php/fpm-${PHPSLOT}/php-fpm.conf"
+	PHP_FPM_BIN="/usr/lib/${PHPSLOT}/bin/php-fpm"
 }
 
 start() {
         ebegin "Starting PHP FastCGI Process Manager"
 	set_phpvars
         start-stop-daemon --start --pidfile "${PHP_FPM_PID}" \
-			  --exec "/usr/lib/${PHPSLOT}/bin/php-fpm" \
+			  --exec "${PHP_FPM_BIN}" \
 			  -- \
 			  --fpm-config "${PHP_FPM_CONF}" \
 			  --pid "${PHP_FPM_PID}"
@@ -37,7 +39,7 @@ stop() {
 	set_phpvars
         start-stop-daemon --signal QUIT \
 			  --stop \
-			  --exec "/usr/lib/${PHPSLOT}/bin/php-fpm" \
+			  --exec "${PHP_FPM_BIN}" \
 			  --pidfile "${PHP_FPM_PID}"
         eend $?
 }
@@ -46,5 +48,12 @@ reload() {
     ebegin "Reloading PHP FastCGI Process Manager"
     set_phpvars
     [ -f "${PHP_FPM_PID}" ] && kill -USR2 $(cat "${PHP_FPM_PID}")
+    eend $?
+}
+
+configtest() {
+    ebegin "Testing PHP FastCGI Process Manager configuration"
+    set_phpvars
+    "${PHP_FPM_BIN}" --fpm-config "${PHP_FPM_CONF}" --test
     eend $?
 }

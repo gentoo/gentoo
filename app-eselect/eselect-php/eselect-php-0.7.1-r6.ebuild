@@ -15,15 +15,16 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="fpm apache2"
 
-RDEPEND="app-admin/eselect"
+# The "DirectoryIndex" line in 70_mod_php5.conf requires mod_dir.
+RDEPEND="app-admin/eselect
+	apache2? ( www-servers/apache[apache2_modules_dir] )"
 S="${WORKDIR}"
 
 want_apache
 
 src_install() {
-	mv eselect-php-${PV} php.eselect
 	insinto /usr/share/eselect/modules/
-	doins php.eselect
+	newins "eselect-php-${PV}" php.eselect
 
 	if use apache2 ; then
 		insinto "${APACHE_MODULES_CONFDIR#${EPREFIX}}"
@@ -32,7 +33,7 @@ src_install() {
 	fi
 
 	if use fpm ; then
-		newinitd "${FILESDIR}/php-fpm.init-r2" "php-fpm"
+		newinitd "${FILESDIR}/php-fpm.init-r3" "php-fpm"
 		systemd_dotmpfilesd "${FILESDIR}/php-fpm.conf"
 		exeinto /usr/libexec
 		doexe "${FILESDIR}/php-fpm-launcher"
