@@ -17,8 +17,7 @@ SRC_URI="http://savannah.nongnu.org/download/avr-libc/${P}.tar.bz2
 
 LICENSE="BSD"
 SLOT="0"
-#KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="doc crosscompile_opts_headers-only"
 
 DEPEND=">=sys-devel/crossdev-0.9.1"
