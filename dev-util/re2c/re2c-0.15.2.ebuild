@@ -16,6 +16,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~spa
 
 src_prepare() {
 	epatch_user
+	export ac_cv_path_BISON="no"
 }
 
 src_install() {
