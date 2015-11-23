@@ -15,7 +15,7 @@ SRC_URI="http://www.openclonk.org/builds/release/${PV}/openclonk-${PV}-src.tar.b
 
 LICENSE="BSD ISC CLONK-trademark LGPL-2.1 POSTGRESQL"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="dedicated doc"
 
 RDEPEND="
