@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/JEG2/highline"
 IUSE=""
 LICENSE="|| ( GPL-2 Ruby )"
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 all_ruby_prepare() {
 	# fix up gemspec file not to call git
