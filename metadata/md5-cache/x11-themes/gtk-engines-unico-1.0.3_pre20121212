@@ -8,5 +8,5 @@ LICENSE=LGPL-2.1+
 RDEPEND=>=dev-libs/glib-2.26:2 >=x11-libs/cairo-1.10[glib] >=x11-libs/gtk+-3.5.2:3
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~tetromino/distfiles/gtk-engines-unico/unico-1.0.3_pre20121212.tar.bz2
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=4019d4622c4659377d44b75e3f849852

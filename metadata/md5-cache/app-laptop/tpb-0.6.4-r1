@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libXt x11-libs/libXext xosd? ( >=x11-libs/xosd-2.2.0 )
 SLOT=0
 SRC_URI=http://savannah.nongnu.org/download/tpb/tpb-0.6.4.tar.gz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=06b68f07813b5519f12accbb3ce9b4b4

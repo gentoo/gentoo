@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=>=net-libs/liblockfile-1.03 virtual/mta mail-client/mailx-support !mail-client/nail !net-mail/mailutils
 SLOT=0
 SRC_URI=mirror://gentoo/mailx_8.1.2-0.20050715cvs.orig.tar.gz mirror://gentoo/mailx_8.1.2-0.20050715cvs-1.diff.gz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=d9844cde47b53f0996783fe16fb6819c

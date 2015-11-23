@@ -9,5 +9,5 @@ LICENSE=ZLIB
 RDEPEND=virtual/jpeg:0 media-libs/libpng:0 app-arch/bzip2 sys-libs/zlib virtual/opengl x11-libs/libX11 x11-libs/libXxf86vm
 SLOT=0
 SRC_URI=mirror://sourceforge/irrlicht/irrlicht-1.8.1.zip
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=453dd270488a68578ed70c8aac79d8c2

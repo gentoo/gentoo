@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses[unicode?] aac? ( media-libs/faad2 ) alsa? ( >=media-libs/alsa-lib-1.0.11 ) ao? ( media-libs/libao ) cue? ( media-libs/libcue ) cdio? ( dev-libs/libcdio-paranoia ) cddb? ( media-libs/libcddb ) discid? ( media-libs/libdiscid ) flac? ( media-libs/flac ) mad? ( >=media-libs/libmad-0.14 ) mikmod? ( media-libs/libmikmod:0 ) modplug? ( >=media-libs/libmodplug-0.7 ) mp4? ( >=media-libs/libmp4v2-1.9:0 ) musepack? ( >=media-sound/musepack-tools-444 ) pulseaudio? ( media-sound/pulseaudio ) vorbis? ( >=media-libs/libvorbis-1.0 ) wavpack? ( media-sound/wavpack ) wma? ( >=virtual/ffmpeg-0.10.2-r1 ) zsh-completion? ( app-shells/zsh ) pidgin? ( net-im/pidgin dev-python/dbus-python )
 SLOT=0
 SRC_URI=mirror://sourceforge/cmus/cmus-v2.5.0.tar.bz2
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=8c6e2e09872a1acb8ac57b7e357b05b2

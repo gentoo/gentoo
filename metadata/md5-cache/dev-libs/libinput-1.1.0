@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/libevdev-0.4 >=sys-libs/mtdev-1.1 virtual/libudev
 RESTRICT=test
 SLOT=0/10
 SRC_URI=http://www.freedesktop.org/software/libinput/libinput-1.1.0.tar.xz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	udev	37ef89be271b9ae8aa64be024ddb39b5
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	udev	37ef89be271b9ae8aa64be024ddb39b5
 _md5_=d629a9467b096ce03b59d69b19420c1d

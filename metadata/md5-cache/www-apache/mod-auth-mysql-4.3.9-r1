@@ -8,5 +8,5 @@ LICENSE=Apache-1.1
 RDEPEND=virtual/mysql !www-apache/mod_auth_mysql =www-servers/apache-2.2*
 SLOT=0
 SRC_URI=mirror://debian/pool/main/m/mod-auth-mysql/mod-auth-mysql_4.3.9.orig.tar.gz mirror://debian/pool/main/m/mod-auth-mysql/mod-auth-mysql_4.3.9-13.diff.gz
-_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=bbaac30fc16218e892d5189db44c6e8c

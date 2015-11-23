@@ -9,5 +9,5 @@ LICENSE=GPL-1 GPL-2
 RDEPEND=>=dev-texlive/texlive-basic-2013 >=app-text/texlive-core-2013
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-module-ethiop-2013.tar.xz mirror://gentoo/texlive-module-ethiop-t1-2013.tar.xz mirror://gentoo/texlive-module-fc-2013.tar.xz mirror://gentoo/texlive-module-hyphen-ethiopic-2013.tar.xz mirror://gentoo/texlive-module-collection-langafrican-2013.tar.xz doc? ( mirror://gentoo/texlive-module-ethiop.doc-2013.tar.xz mirror://gentoo/texlive-module-ethiop-t1.doc-2013.tar.xz mirror://gentoo/texlive-module-fc.doc-2013.tar.xz ) source? ( mirror://gentoo/texlive-module-ethiop.source-2013.tar.xz )
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	texlive-common	cf8d3d36261adafe564b821b75b34a05	texlive-module	9b17379edf5bdf6418f88d18496927ed	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	texlive-common	cf8d3d36261adafe564b821b75b34a05	texlive-module	9b17379edf5bdf6418f88d18496927ed	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=d8f311fdc2526913119d31d10554fd21

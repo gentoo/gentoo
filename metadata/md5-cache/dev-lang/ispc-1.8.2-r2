@@ -9,5 +9,5 @@ LICENSE=BSD BSD-2 UoI-NCSA
 RDEPEND=>=sys-devel/clang-3.4 >=sys-devel/llvm-3.4 <sys-devel/clang-3.7 <sys-devel/llvm-3.7
 SLOT=0
 SRC_URI=https://github.com/ispc/ispc/archive/v1.8.2.tar.gz -> ispc-1.8.2.tar.gz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	60a62ae0ee8cd93b4ba99a4c1371eb8b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	60a62ae0ee8cd93b4ba99a4c1371eb8b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=4a1b92a3d0d9e97be60ce566571ab0b5

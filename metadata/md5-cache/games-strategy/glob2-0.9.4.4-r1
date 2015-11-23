@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=>=dev-libs/boost-1.34[threads] dev-libs/fribidi media-libs/libsdl[opengl] media-libs/libvorbis media-libs/sdl-image[png] media-libs/sdl-net media-libs/sdl-ttf media-libs/speex virtual/glu virtual/opengl games-misc/games-envd
 SLOT=0
 SRC_URI=mirror://nongnu/glob2/0.9.4/glob2-0.9.4.4.tar.gz
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f813d23e417656bf3917483643165d5a	games	4dae170e58f773c484e07d18ef441804	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	3972ca401cf7dbb430df9995f5d8d580	scons-utils	b7d634f772db55c8af429f50aeec6ee0	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f20548a2f7b0128068388cd2ec26708a	games	4dae170e58f773c484e07d18ef441804	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	3972ca401cf7dbb430df9995f5d8d580	scons-utils	b7d634f772db55c8af429f50aeec6ee0	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=8ec19581f86d1ccab565a37fc5d7d035

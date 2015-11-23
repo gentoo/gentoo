@@ -10,5 +10,5 @@ RDEPEND=media-libs/libogg media-libs/libvorbis >=sys-libs/glibc-2.3 x11-libs/lib
 RESTRICT=mirror strip
 SLOT=0
 SRC_URI=x86? ( http://www.introversion.co.uk/defcon/downloads/defcon_1.6-1_i386.deb ) amd64? ( http://www.introversion.co.uk/defcon/downloads/defcon_1.6-1_amd64.deb )
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f813d23e417656bf3917483643165d5a	games	4dae170e58f773c484e07d18ef441804	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f20548a2f7b0128068388cd2ec26708a	games	4dae170e58f773c484e07d18ef441804	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=e976382f70911061068b32e574810ab6

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libXrender x11-libs/libX11 x11-libs/libXft x11-libs/libXtst x11-libs/libXpm media-libs/freetype dev-libs/expat sys-libs/zlib doc? ( app-text/docbook-sgml-utils )
 SLOT=0
 SRC_URI=ftp://ftp.yzu.edu.tw/mirror/pub2/ftp.handhelds.org/distributions/familiar/source/v0.8.4-rc1/sources/xkbd-0.8.15-CVS.tar.gz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=a90fa9c3f82ab15fdd0028818f70d775

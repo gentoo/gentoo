@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=app-arch/bzip2 >=dev-libs/libxml2-2.6.16 sys-libs/ncurses >=sys-libs/readline-4
 SLOT=0
 SRC_URI=http://corsair626.no-ip.org/microdc/microdc2-0.15.6.tar.gz mirror://debian/pool/main/m/microdc2/microdc2_0.15.6-1.debian.tar.gz
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f813d23e417656bf3917483643165d5a	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f20548a2f7b0128068388cd2ec26708a	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=944a75c2a7f624a9fe7c04d705b3355b

@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=|| ( media-video/ffmpeg:0 media-libs/libpostproc <media-video/libav-0.8.2-r1 ) >=virtual/ffmpeg-0.10 >=media-libs/libvorbis-1.1 >=media-libs/libogg-1.1 >=media-libs/libtheora-1.1[encode] kate? ( >=media-libs/libkate-0.3.7 )
 SLOT=0
 SRC_URI=http://www.v2v.cc/~j/ffmpeg2theora/downloads/ffmpeg2theora-0.29.tar.bz2
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	scons-utils	b7d634f772db55c8af429f50aeec6ee0	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	scons-utils	b7d634f772db55c8af429f50aeec6ee0	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=94b870097920aad9cd1590d540d2a4a9

@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=!static? ( libedit? ( dev-libs/libedit ) )
 SLOT=0
 SRC_URI=http://gondor.apana.org.au/~herbert/dash/files/dash-0.5.8.tar.gz mirror://debian/pool/main/d/dash/dash_0.5.8-1.diff.gz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=4ec37ae6ef2a434445ee8204b69f7edd

@@ -8,5 +8,5 @@ LICENSE=logtalk
 RDEPEND=xslt? ( dev-libs/libxslt ) fop? ( dev-java/fop )
 SLOT=0
 SRC_URI=http://logtalk.org/files/logtalk-3.00.0.tar.bz2
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=f4ac6e2bf18e3bef5e1d008b9166bbac

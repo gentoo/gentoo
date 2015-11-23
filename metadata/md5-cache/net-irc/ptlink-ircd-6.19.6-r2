@@ -8,5 +8,5 @@ KEYWORDS=~ppc ~sparc ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=ftp://ftp.sunsite.dk/projects/ptlink/ircd/PTlink6.19.6.tar.gz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	ssl-cert	e90a74de57c48ea6c058b1cb3a735907	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	ssl-cert	e90a74de57c48ea6c058b1cb3a735907	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=4d483a7564d40022d50791e09780fdd8

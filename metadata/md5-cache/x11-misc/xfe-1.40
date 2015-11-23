@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libpng:0 x11-libs/fox:1.6[truetype,png] x11-libs/libX11 x11-libs/libXft startup-notification? ( x11-libs/startup-notification )
 SLOT=0
 SRC_URI=mirror://sourceforge/xfe/xfe/1.40/xfe-1.40.tar.gz
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	l10n	714aaf78929eade946da5eaff7d2001a	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	l10n	714aaf78929eade946da5eaff7d2001a	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=1e09567b639e6fd96145cf1a3b09771e

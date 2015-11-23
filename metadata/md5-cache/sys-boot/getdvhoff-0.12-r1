@@ -7,5 +7,5 @@ KEYWORDS=-* ~mips
 LICENSE=all-rights-reserved
 SLOT=0
 SRC_URI=ftp://ftp.linux-mips.org/pub/linux/mips/people/skylark/sgibootcd-0.12.tar.bz2
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=22772163066a481814869deb11db05df

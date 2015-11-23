@@ -10,5 +10,5 @@ RDEPEND=x11-misc/xsel !static? ( >=app-text/mupdf-1.5:0= media-libs/openjpeg:2 m
 RESTRICT=!ocamlopt? ( strip )
 SLOT=0
 SRC_URI=http://repo.or.cz/w/llpp.git/snapshot/4fc967506989680faf64fb6c1dd0e0d13c678124.tar.gz -> llpp-20_p20140818.tar.gz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
 _md5_=86cc27babd21e401a71d71344d17f170

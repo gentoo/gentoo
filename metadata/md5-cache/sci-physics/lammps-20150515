@@ -10,5 +10,5 @@ RDEPEND=mpi? ( virtual/blas virtual/lapack virtual/mpi ) gzip? ( app-arch/gzip )
 REQUIRED_USE=python? ( || ( python_targets_python2_7 python_targets_python3_3 ) )
 SLOT=0
 SRC_URI=http://lammps.sandia.gov/tars/lammps-15May15.tar.gz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	3972ca401cf7dbb430df9995f5d8d580	python-r1	fb656e31d5596be6ac85cde42dccfcb6	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	3972ca401cf7dbb430df9995f5d8d580	python-r1	fb656e31d5596be6ac85cde42dccfcb6	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=5310287230881e2e26583993cab0be9d

@@ -9,5 +9,5 @@ RDEPEND==www-servers/apache-2*
 RESTRICT=test
 SLOT=0
 SRC_URI=http://www.openfusion.com.au/labs/dist/mod_auth_tkt/mod_auth_tkt-2.1.0.tar.gz
-_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=a3be531c9c7c3d119382d2064c9d9ef0

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=app-i18n/scim-1.4[-gtk3] dev-libs/wnn7sdk freewnn? ( app-i18n/freewnn )
 SLOT=0
 SRC_URI=http://nop.net-p.org/files/scim-wnn/scim-wnn-1.0.0.tar.gz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=3ef01516fb85da10ae16705d074a46db

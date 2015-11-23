@@ -9,5 +9,5 @@ PDEPEND=~net-wireless/pyrit-0.4.0
 RDEPEND=dev-libs/openssl net-libs/libpcap dev-util/nvidia-cuda-toolkit || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
 SLOT=0
 SRC_URI=https://pyrit.googlecode.com/files/cpyrit-cuda-0.4.0.tar.gz
-_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=e6b9fe359d97c21b08f51491a0930ce5

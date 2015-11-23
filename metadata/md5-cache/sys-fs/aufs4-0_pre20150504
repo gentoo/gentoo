@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=sys-fs/aufs-util !sys-fs/aufs !sys-fs/aufs2 !sys-fs/aufs3 kernel_linux? ( virtual/modutils )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jlec/distfiles/aufs4-standalone-0_pre20150504.tar.xz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	linux-mod	9e27971daa324852d78bc7d4d811afae	multilib	3972ca401cf7dbb430df9995f5d8d580	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	linux-mod	9e27971daa324852d78bc7d4d811afae	multilib	3972ca401cf7dbb430df9995f5d8d580	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=5f6909ef578512d1414282cfaa6ebf8b

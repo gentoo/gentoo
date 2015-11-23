@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=virtual/libusb:1 dev-libs/nss || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] x11-libs/gdk-pixbuf )
 SLOT=0
 SRC_URI=http://cgit.freedesktop.org/libfprint/libfprint/snapshot/v_0_5_0.tar.bz2 -> libfprint-0.5.0.tar.bz2
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f813d23e417656bf3917483643165d5a	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	udev	37ef89be271b9ae8aa64be024ddb39b5	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f20548a2f7b0128068388cd2ec26708a	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	udev	37ef89be271b9ae8aa64be024ddb39b5	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
 _md5_=b256ae7e5f471fc6a9b8e028e31955d4

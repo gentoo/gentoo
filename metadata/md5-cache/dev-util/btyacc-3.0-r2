@@ -6,5 +6,5 @@ KEYWORDS=~amd64 ~ppc ~x86 ~amd64-fbsd ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=freedist
 SLOT=0
 SRC_URI=http://www.siber.com/btyacc/btyacc-3-0.tar.gz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=33d527c6000aa6c473813e5dfdd02cd4

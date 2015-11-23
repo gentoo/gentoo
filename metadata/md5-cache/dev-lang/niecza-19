@@ -8,5 +8,5 @@ LICENSE=Artistic-2
 RDEPEND=dev-lang/mono
 SLOT=0
 SRC_URI=https://github.com/sorear/niecza/zipball/v19 -> niecza-19.zip
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=bb602641e552010e87469f8e741b0ee6

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-haskell/blaze-html-0.4.2:=[profile?] <dev-haskell/blaze-html-0.8:=[profile?] dev-haskell/mtl:=[profile?] dev-haskell/parsec:=[profile?] dev-haskell/utf8-string:=[profile?] >=dev-lang/ghc-7.4.1:= pcre-light? ( >=dev-haskell/pcre-light-0.4:=[profile?] <dev-haskell/pcre-light-0.5:=[profile?] ) !pcre-light? ( >=dev-haskell/regex-pcre-builtin-0.94.4.8.8.35:=[profile?] )
 SLOT=0/0.5.11
 SRC_URI=mirror://hackage/packages/archive/highlighting-kate/0.5.11/highlighting-kate-0.5.11.tar.gz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	ghc-package	6165faf4ae46df43d5a9b0dd28ec8654	haskell-cabal	2d9bae28d8a91ec04d1bb1ef0071c64f	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	ghc-package	6165faf4ae46df43d5a9b0dd28ec8654	haskell-cabal	2d9bae28d8a91ec04d1bb1ef0071c64f	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=bcfe71a020da9a707f71aa2c481839e6

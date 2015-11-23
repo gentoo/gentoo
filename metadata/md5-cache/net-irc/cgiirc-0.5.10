@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=app-admin/webapp-config-1.50.15
 SLOT=0.5.10
 SRC_URI=http://cgiirc.org/releases/cgiirc-0.5.10.tar.gz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	webapp	42c6ef7af496b228f9854b3c81e4b226
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	webapp	42c6ef7af496b228f9854b3c81e4b226
 _md5_=91be40dfb1e7b4c39da29a2754b2aaf2

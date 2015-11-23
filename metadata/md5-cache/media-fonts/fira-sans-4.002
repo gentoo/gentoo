@@ -8,5 +8,5 @@ KEYWORDS=amd64 arm ~arm64 x86
 LICENSE=OFL-1.1
 SLOT=0
 SRC_URI=http://www.carrois.com/downloads/fira_4_0/FiraFonts4002.zip
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	font	cd7790315ca5b8c505e1e0513df6acce	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	font	cd7790315ca5b8c505e1e0513df6acce	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=763f024310ddf93d8c53d891b9151b6f

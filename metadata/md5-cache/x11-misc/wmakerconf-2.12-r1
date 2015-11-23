@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/gtk+:2 >=x11-wm/windowmaker-0.95.2 imlib? ( media-libs/imlib ) perl? ( dev-lang/perl dev-perl/HTML-Parser || ( dev-perl/libwww-perl www-client/lynx net-misc/wget ) )
 SLOT=0
 SRC_URI=mirror://sourceforge/wmakerconf/wmakerconf_2.12.tar.gz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=e599a6db91cbd467896489cb85eff5c7

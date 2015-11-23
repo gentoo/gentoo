@@ -8,5 +8,5 @@ LICENSE=GPL-2 LGPL-2 BSD
 RDEPEND=sci-physics/cernlib x11-libs/libXaw >=x11-libs/motif-2.3:0 x11-libs/xbae virtual/fortran
 SLOT=0
 SRC_URI=mirror://debian/pool/main/p/paw/paw_2.14.04.dfsg.2.orig.tar.gz mirror://debian/pool/main/p/paw/paw_2.14.04.dfsg.2-8.debian.tar.gz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=9ed62f17485324a33ca4c58c05c8f41b

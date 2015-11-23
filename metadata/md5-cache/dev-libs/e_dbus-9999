@@ -7,5 +7,5 @@ IUSE=bluetooth +connman +libnotify ofono static-libs test-binaries +udev nls doc
 LICENSE=BSD-2
 RDEPEND=>=dev-libs/efl-1.8.4 sys-apps/dbus connman? ( >=net-misc/connman-0.75 ) udev? ( || ( sys-power/upower sys-power/upower-pm-utils ) sys-fs/udisks:0 ) nls? ( sys-devel/gettext )
 SLOT=0
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	enlightenment	c185b1fa0d87798fd07fb1cd85866b23	eutils	f813d23e417656bf3917483643165d5a	git-2	df00117322129fb906bb0a53c3d6a020	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	enlightenment	c185b1fa0d87798fd07fb1cd85866b23	eutils	f20548a2f7b0128068388cd2ec26708a	git-2	df00117322129fb906bb0a53c3d6a020	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=6e1cd65679dc5da72adca9601783528b

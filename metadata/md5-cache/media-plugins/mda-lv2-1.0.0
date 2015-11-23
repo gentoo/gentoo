@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=media-libs/lv2
 SLOT=0
 SRC_URI=http://download.drobilla.net/mda-lv2-1.0.0.tar.bz2
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-any-r1	60a62ae0ee8cd93b4ba99a4c1371eb8b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	waf-utils	ad1dd5b59c523843eebd3a9934c509ca
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-any-r1	60a62ae0ee8cd93b4ba99a4c1371eb8b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	waf-utils	ad1dd5b59c523843eebd3a9934c509ca
 _md5_=df3d6d1315b4c23f5730a823ed2c9dec

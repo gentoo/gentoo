@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql ) virtual/qmail
 SLOT=0
 SRC_URI=http://cr.yp.to/software/ezmlm-0.53.tar.gz http://www.ezmlm.org/archive/6.0.0/ezmlm-idx-6.0.0.tar.gz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	fixheadtails	2f44773656577fe2653bacc8bdcb2174	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	fixheadtails	2f44773656577fe2653bacc8bdcb2174	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=c7f8ace6cf68805dca99987964d5842c

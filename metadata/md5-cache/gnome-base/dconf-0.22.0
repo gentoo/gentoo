@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1+
 RDEPEND=>=dev-libs/glib-2.39.1:2 sys-apps/dbus X? ( >=dev-libs/libxml2-2.7.7:2 >=x11-libs/gtk+-3.4:3 )
 SLOT=0
 SRC_URI=mirror://gnome/sources/dconf/0.22/dconf-0.22.0.tar.xz
-_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	f813d23e417656bf3917483643165d5a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	7d550983f9b6adb3e7091f4090ddae2f
+_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	f20548a2f7b0128068388cd2ec26708a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	7d550983f9b6adb3e7091f4090ddae2f
 _md5_=d626fda5be3032533fb9ce9858416889

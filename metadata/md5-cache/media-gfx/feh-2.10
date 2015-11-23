@@ -9,5 +9,5 @@ LICENSE=feh
 RDEPEND=>=media-libs/giblib-1.2.4 media-libs/imlib2[X] >=media-libs/libpng-1.2:0= x11-libs/libX11 curl? ( net-misc/curl ) exif? ( media-libs/libexif ) xinerama? ( x11-libs/libXinerama ) virtual/jpeg:0
 SLOT=0
 SRC_URI=http://feh.finalrewind.org/feh-2.10.tar.bz2
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=b05d142399c10e2b2cd38c3fe43160c5

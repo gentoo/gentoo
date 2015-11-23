@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-lang/mono-2.10.5 dev-dotnet/libgdiplus[cairo]
 SLOT=0
 SRC_URI=mirror://sourceforge/keepass/KeePass-2.28-Source.zip
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	588052cacdf74572e68bdfeaece20534	mono-env	10809200679bcceefebac9e72bebb6e6	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	588052cacdf74572e68bdfeaece20534	mono-env	10809200679bcceefebac9e72bebb6e6	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=83428190c6b075854d8e38b357c6f124

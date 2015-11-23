@@ -10,5 +10,5 @@ RDEPEND=dev-python/pyalsaaudio[python_targets_python2_7(-)?,-python_single_targe
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=https://KochMorse.googlecode.com/files/KochMorse-0.99.6.tar.gz
-_eclasses_=distutils-r1	46506dd0dd992b3c89b0d00daabfd86c	eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=distutils-r1	46506dd0dd992b3c89b0d00daabfd86c	eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=73d1ea3a3a8328fc26f65e6d836bc19f

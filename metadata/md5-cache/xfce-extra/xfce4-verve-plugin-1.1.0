@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=xfce-base/exo-0.6:= >=xfce-base/libxfce4util-4.8:= >=xfce-base/libxfcegui4-4.8:= >=xfce-base/xfce4-panel-4.8:= dev-libs/glib:2= >=dev-libs/libpcre-5:= dbus? ( >=dev-libs/dbus-glib-0.98:= )
 SLOT=0
 SRC_URI=mirror://xfce/src/panel-plugins/xfce4-verve-plugin/1.1/xfce4-verve-plugin-1.1.0.tar.bz2
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f813d23e417656bf3917483643165d5a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	xfconf	d842ab8b2140980394561496bf157447
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f20548a2f7b0128068388cd2ec26708a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	xfconf	d842ab8b2140980394561496bf157447
 _md5_=66fd98be25ac69ff0a1f66928c85b4a8

@@ -8,5 +8,5 @@ LICENSE=Artistic GPL-2
 RDEPEND=>=sci-biology/bioperl-9999 !minimal? ( dev-perl/Algorithm-Diff dev-perl/XML-Twig dev-perl/IO-String dev-perl/IPC-Run ) dev-lang/perl:=[-build(-)]
 RESTRICT=test
 SLOT=0
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	git-2	df00117322129fb906bb0a53c3d6a020	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	git-2	df00117322129fb906bb0a53c3d6a020	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
 _md5_=580d88609d793360e4dac4df84e90155

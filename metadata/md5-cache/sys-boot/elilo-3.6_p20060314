@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=sys-boot/efibootmgr sys-fs/dosfstools
 SLOT=0
 SRC_URI=http://elilo.sourceforge.net/nightlies/elilo-nightly_2006-03-14.tgz mirror://debian/pool/main/e/elilo/elilo_3.6-1.diff.gz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=8b1c5e32642799739669a3324df81c78

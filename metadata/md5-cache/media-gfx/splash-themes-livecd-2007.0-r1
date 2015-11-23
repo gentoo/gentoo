@@ -9,5 +9,5 @@ RDEPEND=>=media-gfx/splashutils-1.4.1
 RESTRICT=binchecks strip
 SLOT=2007.0
 SRC_URI=https://dev.gentoo.org/~wolf31o2/sources/splash-themes-livecd/gentoo-livecd-2007.0-0.9.5.tar.bz2
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=b7a1752c75c23fe8c6158e7b443bb38e

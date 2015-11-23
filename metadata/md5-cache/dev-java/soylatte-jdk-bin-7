@@ -9,5 +9,5 @@ LICENSE=GPL-2-with-exceptions
 RDEPEND=dev-db/unixODBC >=dev-java/java-config-2.2.0 app-eselect/eselect-java
 SLOT=1.7
 SRC_URI=http://landonf.bikemonkey.org/static/soylatte/bsd-dist/openjdk7_darwin/openjdk7-macppc-2009-12-16-b4.tar.bz2
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	java-vm-2	82eb4c2a4b43108087d4d92d34d2bd0f	multilib	3972ca401cf7dbb430df9995f5d8d580	pax-utils	9dd3f9de6dccb2463faf55e568439d1c	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	java-vm-2	82eb4c2a4b43108087d4d92d34d2bd0f	multilib	3972ca401cf7dbb430df9995f5d8d580	pax-utils	9dd3f9de6dccb2463faf55e568439d1c	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=66b9bbe2a93f2e85bcc2157d72748f69

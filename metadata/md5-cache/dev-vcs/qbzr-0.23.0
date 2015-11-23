@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-vcs/bzr-2.5 >=dev-python/PyQt4-4.1[X] =dev-lang/python-2*
 SLOT=0
 SRC_URI=https://edge.launchpad.net/qbzr/0.23/0.23.0/+download/qbzr-0.23.0.tar.gz
-_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=225218dbe1ba46464fb1c466d5bf077d

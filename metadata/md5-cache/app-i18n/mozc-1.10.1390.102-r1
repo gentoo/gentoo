@@ -10,5 +10,5 @@ RDEPEND=dev-libs/glib:2 dev-libs/openssl x11-libs/libxcb emacs? ( virtual/emacs 
 RESTRICT=test
 SLOT=0
 SRC_URI=https://mozc.googlecode.com/files/mozc-1.10.1390.102.tar.bz2 https://protobuf.googlecode.com/files/protobuf-2.5.0.tar.bz2 test? ( https://googlemock.googlecode.com/files/gmock-1.6.0.zip https://googletest.googlecode.com/files/gtest-1.6.0.zip mirror://sourceforge/jsoncpp/jsoncpp-src-0.6.0-rc2.tar.gz )
-_eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=717008c1d8448570707a1962a7cb7c33

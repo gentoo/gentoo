@@ -9,5 +9,5 @@ LICENSE=|| ( GPL-2 LGPL-2 MPL-1.1 )
 RDEPEND=!dev-cpp/libcmis:0 !dev-cpp/libcmis:0.2 !dev-cpp/libcmis:0.3 !dev-cpp/libcmis:0.4 dev-libs/boost:= dev-libs/libxml2 net-misc/curl
 SLOT=0.5
 SRC_URI=mirror://sourceforge/libcmis/libcmis-0.5.0.tar.gz https://dev.gentoo.org/~dilfridge/distfiles/libcmis-0.5.0-gcc5.patch.gz
-_eclasses_=alternatives	b19e1ec28e600fa497461bddfb9c1f16	autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f813d23e417656bf3917483643165d5a	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=alternatives	b19e1ec28e600fa497461bddfb9c1f16	autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f20548a2f7b0128068388cd2ec26708a	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=2d2c750ce94de2673655b77e8f996dff

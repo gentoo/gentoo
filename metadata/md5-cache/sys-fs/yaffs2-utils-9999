@@ -5,5 +5,5 @@ EAPI=4
 HOMEPAGE=http://www.aleph1.co.uk/yaffs/
 LICENSE=GPL-2
 SLOT=0
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	git-2	df00117322129fb906bb0a53c3d6a020	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	git-2	df00117322129fb906bb0a53c3d6a020	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=f3a9cdd945e0fb705bd2ac3895c60a8f

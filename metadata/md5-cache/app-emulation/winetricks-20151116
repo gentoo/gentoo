@@ -10,5 +10,5 @@ RDEPEND=app-arch/cabextract app-arch/p7zip app-arch/unzip app-emulation/wine net
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/Winetricks/winetricks/archive/20151116.tar.gz -> winetricks-20151116.tar.gz gtk? ( https://dev.gentoo.org/~tetromino/distfiles/wine/winetricks-gentoo-2012.11.24.tar.bz2 ) kde? ( https://dev.gentoo.org/~tetromino/distfiles/wine/winetricks-gentoo-2012.11.24.tar.bz2 )
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=da019ac39919e8dca49d7c95fcc0a7e5

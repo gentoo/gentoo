@@ -8,5 +8,5 @@ LICENSE=BSD
 RESTRICT=test
 SLOT=0
 SRC_URI=http://www.jeenyus.net/linux/software/safecat/safecat-1.13.tar.gz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	fixheadtails	2f44773656577fe2653bacc8bdcb2174	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	fixheadtails	2f44773656577fe2653bacc8bdcb2174	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=37dbb9e091c8ba0dae24995af330579c

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 dev-libs/libgee:0 dev-libs/dbus-glib lxde-base/lxde-common sys-auth/polkit x11-libs/gtk+:2 x11-libs/libX11 sys-apps/dbus !lxde-base/lxsession-edit sys-apps/lsb-release upower? ( || ( sys-power/upower sys-power/upower-pm-utils ) )
 SLOT=0
 SRC_URI=mirror://sourceforge/lxde/lxsession-0.4.9.2.tar.gz
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f813d23e417656bf3917483643165d5a	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vala	15f7a43101d2ff0c6dcdab272c02f469
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f20548a2f7b0128068388cd2ec26708a	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vala	15f7a43101d2ff0c6dcdab272c02f469
 _md5_=4f1298cb873c2ff2e3660f059378adff

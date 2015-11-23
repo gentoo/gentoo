@@ -9,5 +9,5 @@ LICENSE=mplus-fonts public-domain
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=mirror://sourceforge/mdk-ut/umeplus-fonts-20150115.tar.lzma
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	font	cd7790315ca5b8c505e1e0513df6acce	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	font	cd7790315ca5b8c505e1e0513df6acce	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=b8828026aa6f983580a2614e35d919d1

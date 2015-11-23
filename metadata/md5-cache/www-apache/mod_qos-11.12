@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/libpcre dev-libs/openssl:0 media-libs/libpng:0= sys-libs/zlib =www-servers/apache-2*
 SLOT=0
 SRC_URI=mirror://sourceforge/mod-qos/mod_qos-11.12.tar.gz
-_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	autotools	07e71b3b5690738ef7e8bc097077e00c	depend.apache	e3c541cb90838388f81620d630c28f41	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	autotools	07e71b3b5690738ef7e8bc097077e00c	depend.apache	e3c541cb90838388f81620d630c28f41	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=0a456c24e9715ae97135bbe5669f4e1f

@@ -11,5 +11,5 @@ REQUIRED_USE=hvm? ( qemu ) python_targets_python2_7
 RESTRICT=test
 SLOT=0
 SRC_URI=http://bits.xensource.com/oss-xen/release/4.2.5/xen-4.2.5.tar.gz http://code.coreboot.org/p/seabios/downloads/get/seabios-1.6.3.2.tar.gz https://dev.gentoo.org/~dlan/distfiles/seabios-1.6.3.2.tar.gz https://dev.gentoo.org/~dlan/distfiles/xen-4.2.5-upstream-patches-9.tar.xz https://dev.gentoo.org/~dlan/distfiles/xen-security-patches-6.tar.xz https://dev.gentoo.org/~dlan/distfiles/xen-gentoo-patches-1.tar.xz
-_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	udev	37ef89be271b9ae8aa64be024ddb39b5
+_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	udev	37ef89be271b9ae8aa64be024ddb39b5
 _md5_=c0b0808bdccde528b0bb98c9f135f97d

@@ -9,5 +9,5 @@ LICENSE=GPL-1+ GPL-2+ BSD
 RDEPEND=>=app-eselect/eselect-emacs-1.16 sys-libs/ncurses:0 amd64? ( abi_x86_x32? ( >=sys-libs/ncurses-5.9-r3:0[abi_x86_x32(-)?] ) !abi_x86_x32? ( >=sys-libs/ncurses-5.9-r3:0[abi_x86_32(-)] ) )
 SLOT=18
 SRC_URI=ftp://ftp.gnu.org/old-gnu/emacs/emacs-18.59.tar.gz ftp://ftp.splode.com/pub/users/friedman/emacs/emacs-18.59-linux22x-elf-glibc21.diff.gz https://dev.gentoo.org/~ulm/emacs/emacs-18.59-patches-8.tar.bz2
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=3dbd4176805447df2042b35bd64f9632

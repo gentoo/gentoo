@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=sqlite? ( >=dev-db/sqlite-3.3 ) >=media-libs/libgig-3.3.0 media-libs/alsa-lib jack? ( media-sound/jack-audio-connection-kit )
 SLOT=0
 SRC_URI=http://download.linuxsampler.org/packages/linuxsampler-1.0.0.tar.bz2
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=6cc41d31d5620bf4c0a43e4ecf57271e

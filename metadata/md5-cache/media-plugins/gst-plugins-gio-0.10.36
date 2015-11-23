@@ -9,5 +9,5 @@ RDEPEND=>=dev-libs/glib-2.24:2 >=dev-libs/glib-2.6:2 media-libs/gstreamer:0.10 >
 RESTRICT=test
 SLOT=0.10
 SRC_URI=http://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-0.10.36.tar.xz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	gst-plugins-base	e225bcddde17cce6893ff3aaa542716b	gst-plugins10	f3148af149636376c6effba51f32c6f1	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	gst-plugins-base	e225bcddde17cce6893ff3aaa542716b	gst-plugins10	f3148af149636376c6effba51f32c6f1	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=31718bbfb800873d8e8fa093b12776d1

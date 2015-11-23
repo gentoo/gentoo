@@ -8,5 +8,5 @@ LICENSE=GPL-3+ FDL-1.1+
 RDEPEND=media-libs/taglib >=virtual/emacs-23
 SLOT=0
 SRC_URI=https://www.gnu.org/software/emms/download/emms-3.0.tar.gz
-_eclasses_=elisp	484004c25306120b472b7dfdb0685c95	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=elisp	484004c25306120b472b7dfdb0685c95	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=5cd82c6ed0e9d20e9580b3694e2a4082

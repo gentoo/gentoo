@@ -7,5 +7,5 @@ LICENSE=IBM
 RDEPEND=>=sys-apps/ibm-powerpc-utils-1.1.0 sys-libs/librtas virtual/logger
 SLOT=0
 SRC_URI=http://powerpc-utils.ozlabs.org/releases/powerpc-utils-papr-1.1.0.tar.gz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=43453b83d07cda4c2f234dfe33bce02a

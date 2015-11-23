@@ -9,5 +9,5 @@ LICENSE=BSD-2
 RDEPEND=>=dev-libs/eina-1.7.10 >=media-libs/freetype-2.3.9 fontconfig? ( media-libs/fontconfig ) gles? ( media-libs/mesa[gallium,gles2] ) gif? ( media-libs/giflib ) jpeg? ( virtual/jpeg ) png? ( media-libs/libpng:0= ) bidi? ( >=dev-libs/fribidi-0.19.1 ) directfb? ( >=dev-libs/DirectFB-0.9.16 ) tiff? ( media-libs/tiff ) wayland? ( dev-libs/wayland ) xpm? ( x11-libs/libXpm ) X? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXrender opengl? ( virtual/opengl ) ) !X? ( xcb? ( x11-libs/xcb-util ) ) eet? ( >=dev-libs/eet-1.7.10 ) nls? ( sys-devel/gettext )
 SLOT=0
 SRC_URI=https://download.enlightenment.org/releases/evas-1.7.10.tar.bz2
-_eclasses_=enlightenment	c185b1fa0d87798fd07fb1cd85866b23	eutils	f813d23e417656bf3917483643165d5a	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=enlightenment	c185b1fa0d87798fd07fb1cd85866b23	eutils	f20548a2f7b0128068388cd2ec26708a	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=2de54869d3dff03e1f05f7131f4021f9

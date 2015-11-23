@@ -11,5 +11,5 @@ REQUIRED_USE=memdebug? ( debug )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/jabberd2/jabberd2/releases/download/jabberd-2.3.2/jabberd-2.3.2.tar.xz
-_eclasses_=db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=b5147d9ad27302af371447ae28e5ca0e

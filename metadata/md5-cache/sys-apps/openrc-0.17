@@ -10,5 +10,5 @@ PDEPEND=netifrc? ( net-misc/netifrc )
 RDEPEND=kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-ubin-9.0_rc sys-process/fuser-bsd ) ) elibc_glibc? ( >=sys-libs/glibc-2.5 ) ncurses? ( sys-libs/ncurses:0= ) pam? ( sys-auth/pambase virtual/pam ) tools? ( dev-lang/perl ) audit? ( sys-process/audit ) kernel_linux? ( sys-process/psmisc !<sys-process/procps-3.3.9-r2 ) selinux? ( sys-apps/policycoreutils sys-libs/libselinux ) !<sys-apps/baselayout-2.1-r1 !<sys-fs/udev-init-scripts-27 !prefix? ( kernel_linux? ( || ( >=sys-apps/sysvinit-2.86-r6 sys-process/runit ) ) kernel_FreeBSD? ( sys-freebsd/freebsd-sbin ) ) selinux? ( sec-policy/selinux-base-policy sec-policy/selinux-openrc )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~williamh/dist/openrc-0.17.tar.bz2
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=159e7e4b90bbb92ca0115e26401bcb55

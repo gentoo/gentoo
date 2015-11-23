@@ -10,5 +10,5 @@ PDEPEND=app-dicts/aspell-en linguas_af? ( app-dicts/aspell-af ) linguas_be? ( ap
 RDEPEND=>=sys-libs/ncurses-5.2:0= nls? ( virtual/libintl ) !=app-dicts/aspell-en-0.5*
 SLOT=0
 SRC_URI=mirror://gnu/aspell/aspell-0.60.6.1.tar.gz
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f813d23e417656bf3917483643165d5a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=9155a1f1e3ad6a0012ea3579d25156e7

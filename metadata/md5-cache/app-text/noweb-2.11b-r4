@@ -9,5 +9,5 @@ LICENSE=noweb emacs? ( GPL-2 )
 RDEPEND=virtual/tex-base dev-lang/icon sys-apps/debianutils emacs? ( virtual/emacs )
 SLOT=0
 SRC_URI=http://www.eecs.harvard.edu/~nr/noweb/dist/noweb-2.11b.tgz
-_eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=075071b49f826a1697de9c0927de7f32

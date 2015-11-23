@@ -9,5 +9,5 @@ LICENSE=GPL-2 LGPL-2
 RDEPEND=dev-libs/dbus-glib >=dev-libs/glib-2.25.6:2 >=sys-apps/dbus-0.30 x11-libs/cairo x11-libs/libX11 x11-libs/pango x11-libs/libXxf86vm consolekit? ( sys-auth/consolekit ) dpms? ( x11-libs/libXext ) !gtk3? ( >=x11-libs/gtk+-2.24:2 ) gtk3? ( x11-libs/gtk+:3 ) screensaver? ( x11-libs/libXScrnSaver ) systemd? ( sys-apps/systemd ) upower? ( || ( sys-power/upower sys-power/upower-pm-utils ) ) x11-misc/lightdm
 SLOT=0
 SRC_URI=https://github.com/the-cavalry/light-locker/releases/download/v1.6.0/light-locker-1.6.0.tar.bz2
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	f813d23e417656bf3917483643165d5a	libtool	7f78cd7d403808a350c9ae23f5821fb4	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	f20548a2f7b0128068388cd2ec26708a	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=655b405bd4404da0b9b264ed0232230b

@@ -10,5 +10,5 @@ RDEPEND=>=sci-libs/netcdf-3.5.0 virtual/latex-base media-gfx/imagemagick[png] ap
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/gri/gri-2.12.19.tar.gz
-_eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=f8779aea7dfca4ddcd620a6ac9177cc9

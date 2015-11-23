@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=app-admin/elektra media-libs/ftgl media-libs/libXcm =media-libs/oyranos-0.9.5* media-libs/tiff:0 x11-libs/fltk x11-libs/libX11 x11-libs/libXinerama x11-libs/libXpm x11-libs/libXrandr x11-libs/libXxf86vm
 SLOT=0
 SRC_URI=https://github.com/oyranos-cms/icc-examin/archive/0.55.tar.gz -> icc_examin-0.55.tar.gz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=451c2532bac676bede1298bdbe819b4d

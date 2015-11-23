@@ -6,5 +6,5 @@ KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=richardson
 SLOT=0
 SRC_URI=http://kinemage.biochem.duke.edu/downloads/software/cluster/cluster.1.3.081231.src.tgz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=e2cc94e35ce7d16cf4250b1f642e00ac

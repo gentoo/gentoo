@@ -9,5 +9,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Class-Inspector >=dev-perl/IO-SessionData-1.30.0 dev-perl/libwww-perl virtual/perl-MIME-Base64 virtual/perl-Scalar-List-Utils dev-perl/Task-Weaken dev-perl/URI dev-perl/XML-Parser dev-perl/MIME-tools ssl? ( dev-perl/IO-Socket-SSL dev-perl/LWP-Protocol-https dev-perl/Crypt-SSLeay ) xmpp? ( dev-perl/Net-Jabber ) dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/P/PH/PHRED/SOAP-Lite-1.14.tar.gz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
 _md5_=efdf0327f3259e6f8f5ba1ed445bf56a

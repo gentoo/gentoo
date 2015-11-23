@@ -9,5 +9,5 @@ LICENSE=LGPL-2
 RDEPEND=dev-lang/php >=sys-devel/gettext-0.10.40 >=dev-libs/libxml2-2.4.21 >=www-apps/horde-pear-1.3 dev-php/PEAR-Log dev-php/PEAR-Mail_Mime mysql? ( dev-php/PEAR-DB ) >=app-admin/webapp-config-1.50.15
 SLOT=3.3.11
 SRC_URI=http://ftp.horde.org/pub/horde/horde-3.3.11.tar.gz
-_eclasses_=eutils	f813d23e417656bf3917483643165d5a	horde	dba235af1dc9c840cedcdb610bb52067	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	webapp	42c6ef7af496b228f9854b3c81e4b226
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	horde	dba235af1dc9c840cedcdb610bb52067	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	webapp	42c6ef7af496b228f9854b3c81e4b226
 _md5_=123d6389eeae59a981a221a21d0db714
