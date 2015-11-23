@@ -150,6 +150,11 @@ switch_profile() {
 	rm -rf "${ROOT}/${BINPATH_LINKS}"/ldscripts
 	atomic_ln "${LIBPATH}/ldscripts" "${dstlib}" "ldscripts"
 	find -L "${dstlib}" -xtype l -name 'lib*' -exec rm -f {} +
+	if [[ ${TARGET} != ${HOST} ]] ; then
+		for x in lib* ; do
+			atomic_ln "${LIBPATH}/${x}" "${dstlib}" "${x}"
+		done
+	fi
 
 	#
 	# Clean out old generated include symlinks
