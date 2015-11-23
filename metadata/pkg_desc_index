@@ -8672,7 +8672,7 @@ dev-ruby/mime-types-data 3.2015.1120: Registry for information about MIME media 
 dev-ruby/mimemagic 0.3.0: Fast mime detection by extension or content
 dev-ruby/mini_magick 4.2.10 4.3.3 4.3.5 4.3.6: Manipulate images with minimal use of memory
 dev-ruby/mini_shoulda 0.5.0-r1: A minimal shoulda DSL built on top of MiniTest::Spec
-dev-ruby/minitest 4.7.5-r1 4.7.5-r2 5.3.3-r1 5.5.1 5.6.1 5.7.0 5.8.0 5.8.1 5.8.2: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
+dev-ruby/minitest 4.7.5-r1 4.7.5-r2 5.3.3-r1 5.5.1 5.8.0 5.8.1 5.8.2 5.8.3: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
 dev-ruby/minitest-bonus-assertions 2.0: Bonus assertions for minitest
 dev-ruby/minitest-pretty_diff 0.1: Pretty-print hashes and arrays before diffing them in MiniTest
 dev-ruby/mixlib-shellout 2.2.1 2.2.2 2.2.3: Run external commands on Unix or Windows
@@ -8725,7 +8725,7 @@ dev-ruby/parslet 1.6.1 1.6.2 1.7.0 1.7.1: A small PEG based parser library
 dev-ruby/patron 0.4.18-r1 0.4.18-r2 0.4.20 0.5.0: Patron is a Ruby HTTP client library based on libcurl
 dev-ruby/pcaprub 0.11.3-r2 0.12.0-r1: Libpcap bindings for ruby compat
 dev-ruby/pdf-core 0.5.0 0.5.1 0.6.0: Implements low level PDF features for Prawn
-dev-ruby/pdf-inspector 1.1.0-r1 1.2.0: A tool for analyzing PDF output
+dev-ruby/pdf-inspector 1.1.0-r1 1.2.0 1.2.1: A tool for analyzing PDF output
 dev-ruby/pdf-reader 1.1.1-r1 1.3.3: PDF parser conforming as much as possible to the PDF specification from Adobe
 dev-ruby/permutation 0.1.8-r1: Library to perform different operations with permutations of sequences (strings, arrays, etc.)
 dev-ruby/pg 0.17.1 0.17.1-r1 0.18.2 0.18.3 0.18.4: Ruby extension library providing an API to PostgreSQL
@@ -14629,7 +14629,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/yaydl 1.5.2: Yet Another Youtube DownLoader which is downloading more than youtube
-net-misc/youtube-dl 2015.04.03 2015.11.13 2015.11.15: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2015.04.03 2015.11.15 2015.11.21: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.1 3.1.9 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
