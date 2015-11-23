@@ -9,16 +9,19 @@ MODULE_VERSION=2.5201
 
 inherit perl-module
 
-DESCRIPTION="Convert plain text file to HTML."
+DESCRIPTION="Convert a plain text file to HTML"
 
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="test"
+IUSE=""
 
-RDEPEND=""
+RDEPEND="
+	!dev-perl/TextToHTML
+	virtual/perl-Getopt-Long
+	dev-perl/YAML-Syck
+"
 DEPEND="${RDEPEND}
 	dev-perl/Module-Build
-	dev-perl/YAML-Syck
-	"
+"
 
 SRC_TEST="do"

@@ -48,7 +48,7 @@ RDEPEND=">=media-video/vdr-1.2.6
 	dev-perl/Net-XMPP
 	dev-perl/Proc-ProcessTable
 	dev-perl/SOAP-Lite
-	dev-perl/TextToHTML
+	dev-perl/txt2html
 	dev-perl/Template-GD
 	dev-perl/Template-Toolkit
 	dev-perl/XML-RSS
