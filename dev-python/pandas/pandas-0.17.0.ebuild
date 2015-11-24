@@ -111,6 +111,7 @@ python_test() {
 	local test_pandas='not network and not disabled'
 	[[ -n "${FAST_PANDAS}" ]] && test_pandas+=' and not slow'
 	pushd  "${BUILD_DIR}"/lib > /dev/null
+	"${EPYTHON}" -c "import pandas; pandas.show_versions()" || die
 	VIRTUALX_COMMAND="nosetests"
 	PYTHONPATH=. MPLCONFIGDIR=. \
 		virtualmake --verbosity=3 -A "${test_pandas}" pandas
