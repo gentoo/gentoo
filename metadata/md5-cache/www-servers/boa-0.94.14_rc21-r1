@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=sys-devel/bison sys-devel/flex doc? ( virtual/latex-base ) virtual/pkgconfig
+DESCRIPTION=A very small and very fast http daemon
+EAPI=5
+HOMEPAGE=http://www.boa.org/
+IUSE=doc
+KEYWORDS=~amd64 ~mips ~ppc ~sparc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.boa.org/boa-0.94.14rc21.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=606b9ec15032ead849d587b3f2f27cea

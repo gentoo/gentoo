@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install setup
+DEPEND=mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:* ) sqlite? ( dev-db/sqlite:3 ) oracle? ( dev-db/oracle-instantclient-basic ) firebird? ( dev-db/firebird )
+DESCRIPTION=OpenDBX - A database abstraction layer
+EAPI=5
+HOMEPAGE=http://www.linuxnetworks.de/doc/index.php/OpenDBX
+IUSE=firebird +mysql oracle postgres sqlite
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:* ) sqlite? ( dev-db/sqlite:3 ) oracle? ( dev-db/oracle-instantclient-basic ) firebird? ( dev-db/firebird )
+RESTRICT=firebird? ( bindist )
+SLOT=0
+SRC_URI=http://www.linuxnetworks.de/opendbx/download/opendbx-1.4.6.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_configure:- src_compile:- src_install:-
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=1d9cf8bea5f714d2829dc4df5383daa8

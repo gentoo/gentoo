@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=net-misc/wget !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=GeoIP Legacy C API
+EAPI=5
+HOMEPAGE=https://github.com/maxmind/geoip-api-c
+IUSE=static-libs
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~x86-macos
+LICENSE=LGPL-2.1 GPL-2 MaxMind2
+RDEPEND=net-misc/wget
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/maxmind/geoip-api-c/archive/v1.6.7.tar.gz -> geoip-1.6.7.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f20548a2f7b0128068388cd2ec26708a	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=6fe3678f71e95f1543dd6a79428c8eb4

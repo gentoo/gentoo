@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 >=media-gfx/exiv2-0.20:=[zlib] opencv? ( >=media-libs/opencv-2.4:=[qt4] ) raw? ( >=media-libs/libraw-0.14:= ) tiff? ( media-libs/tiff:0 ) webp? ( >=media-libs/libwebp-0.3.1:= ) zip? ( dev-libs/quazip ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Qt4-based image viewer
+EAPI=5
+HOMEPAGE=http://www.nomacs.org/
+IUSE=opencv raw tiff webp zip
+KEYWORDS=~amd64 ~amd64-linux
+LICENSE=GPL-3
+RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 >=media-gfx/exiv2-0.20:=[zlib] opencv? ( >=media-libs/opencv-2.4:=[qt4] ) raw? ( >=media-libs/libraw-0.14:= ) tiff? ( media-libs/tiff:0 ) webp? ( >=media-libs/libwebp-0.3.1:= ) zip? ( dev-libs/quazip )
+REQUIRED_USE=raw? ( opencv ) tiff? ( opencv )
+SLOT=0
+SRC_URI=mirror://sourceforge/nomacs/nomacs-2.4.4-source.tar.bz2
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	f16fa5681153277df51f001deaf17ff8	eutils	f20548a2f7b0128068388cd2ec26708a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=4491c0f86a4de4998900d31f4eb7096e

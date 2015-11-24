@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-perl/DateTime dev-perl/TimeDate dev-perl/DateTime-Format-Flexible dev-perl/DateTime-Format-ICal dev-perl/DateTime-Format-Natural virtual/perl-Scalar-List-Utils >=virtual/perl-ExtUtils-MakeMaker-6.31 test? ( dev-perl/Test-Most ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Parse a date/time string using the best method available
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/DateTimeX-Easy/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/DateTime dev-perl/TimeDate dev-perl/DateTime-Format-Flexible dev-perl/DateTime-Format-ICal dev-perl/DateTime-Format-Natural virtual/perl-Scalar-List-Utils dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RO/ROKR/DateTimeX-Easy-0.089.tar.gz
+_eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
+_md5_=cc14487f033ac889080d257edcb58a84

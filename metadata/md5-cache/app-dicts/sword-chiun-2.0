@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/unzip
+DESCRIPTION=Chinese Union Version Traditional
+EAPI=5
+HOMEPAGE=http://crosswire.org/sword/modules/ModInfo.jsp?modName=ChiUn
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+LICENSE=freedist
+RDEPEND=app-text/sword
+SLOT=0
+SRC_URI=mirror://gentoo/ChiUn-2.0.zip
+_eclass_exported_funcs=src_install:sword-module
+_eclasses_=sword-module	0a2b0800a67ad11742c7657239b19b20
+_md5_=cd297db558c91c5deb7f18186af68fe9

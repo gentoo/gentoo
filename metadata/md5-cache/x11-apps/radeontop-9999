@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure prepare unpack
+DEPEND=sys-libs/ncurses x11-libs/libpciaccess x11-libs/libdrm nls? ( sys-libs/ncurses[unicode] virtual/libintl ) virtual/pkgconfig nls? ( sys-devel/gettext ) >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Utility to view Radeon GPU utilization
+EAPI=5
+HOMEPAGE=https://github.com/clbr/radeontop
+IUSE=nls
+LICENSE=GPL-3
+RDEPEND=sys-libs/ncurses x11-libs/libpciaccess x11-libs/libdrm nls? ( sys-libs/ncurses[unicode] virtual/libintl )
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:-
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	git-r3	b00a846f415f26e5b66e5c44c7dc87dc	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=7cfd844bf687954fb836caa0478b6741

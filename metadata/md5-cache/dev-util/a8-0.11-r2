@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=>=dev-python/dbus-python-1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/logbook[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/psutil[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyyaml[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/pygtk-2.22[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/pygtkhelpers-0.4.3[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=x11-libs/vte-0.28.2-r206:0[python,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=sys-apps/sed-4
+DESCRIPTION=An ultra-lightweight IDE, that embeds Vim, a terminal emulator, and a file browser
+EAPI=5
+HOMEPAGE=https://github.com/aliafshar/a8
+IUSE=python_targets_python2_7
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=>=dev-python/dbus-python-1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/logbook[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/psutil[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyyaml[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/pygtk-2.22[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/pygtkhelpers-0.4.3[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=x11-libs/vte-0.28.2-r206:0[python,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] app-editors/gvim app-editors/vim python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=mirror://pypi/a/a8/a8-0.11.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=distutils-r1	46506dd0dd992b3c89b0d00daabfd86c	eutils	f20548a2f7b0128068388cd2ec26708a	gnome2-utils	588052cacdf74572e68bdfeaece20534	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-r1	fb656e31d5596be6ac85cde42dccfcb6	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=066f4c3d5b1bfc1adf8b66161297395f

@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=!mail-mta/courier net-mail/mailbase dev-libs/libpcre net-dns/libidn net-libs/courier-unicode gdbm? ( >=sys-libs/gdbm-1.8.0 ) mysql? ( net-libs/courier-authlib ) postgres? ( net-libs/courier-authlib ) ldap? ( net-libs/courier-authlib ) authlib? ( net-libs/courier-authlib ) fam? ( virtual/fam ) !gdbm? ( berkdb? ( >=sys-libs/db-3:* ) ) tools? ( !mail-mta/netqmail !net-mail/courier-imap !mail-mta/mini-qmail ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Mail delivery agent/filter
+EAPI=5
+HOMEPAGE=http://www.courier-mta.org/maildrop/
+IUSE=berkdb debug dovecot fam gdbm ldap mysql postgres static-libs authlib +tools trashquota
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=GPL-3
+RDEPEND=!mail-mta/courier net-mail/mailbase dev-libs/libpcre net-dns/libidn net-libs/courier-unicode gdbm? ( >=sys-libs/gdbm-1.8.0 ) mysql? ( net-libs/courier-authlib ) postgres? ( net-libs/courier-authlib ) ldap? ( net-libs/courier-authlib ) authlib? ( net-libs/courier-authlib ) fam? ( virtual/fam ) !gdbm? ( berkdb? ( >=sys-libs/db-3:* ) ) tools? ( !mail-mta/netqmail !net-mail/courier-imap !mail-mta/mini-qmail ) dev-lang/perl dovecot? ( net-mail/dovecot )
+REQUIRED_USE=mysql? ( authlib ) postgres? ( authlib ) ldap? ( authlib )
+SLOT=0
+SRC_URI=mirror://sourceforge/courier/maildrop-2.8.3.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=bc7d0b564629d623d421387cdb70c583

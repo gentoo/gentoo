@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install setup
+DEPEND=>=sys-libs/zlib-1.2.3:= !static? ( app-arch/bzip2:= ) acl? ( !static? ( sys-apps/attr:= ) ) gcrypt? ( dev-libs/libgcrypt:0= ) lzo? ( !static? ( dev-libs/lzo:= ) ) nls? ( virtual/libintl ) static? ( app-arch/bzip2[static-libs] ) static? ( sys-libs/zlib[static-libs] ) acl? ( static? ( sys-apps/attr[static-libs] ) ) lzo? ( static? ( dev-libs/lzo[static-libs] ) ) nls? ( sys-devel/gettext ) doc? ( app-doc/doxygen )
+DESCRIPTION=A full featured backup tool, aimed for disks (floppy,CDR(W),DVDR(W),zip,jazz etc.)
+EAPI=5
+HOMEPAGE=http://dar.linux.free.fr/
+IUSE=acl dar32 dar64 doc gcrypt lzo nls static static-libs
+KEYWORDS=~amd64 ~ppc ~sparc ~x86 ~amd64-linux
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/zlib-1.2.3:= !static? ( app-arch/bzip2:= ) acl? ( !static? ( sys-apps/attr:= ) ) gcrypt? ( dev-libs/libgcrypt:0= ) lzo? ( !static? ( dev-libs/lzo:= ) ) nls? ( virtual/libintl )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/dar/dar-2.4.10.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_configure:- src_install:-
+_eclasses_=confutils	18995f74ac4ffafb7ad853dfe133f209	eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=17b2abe4030c95350ad9c4c8ff2c081e

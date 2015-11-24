@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=virtual/perl-Memoize dev-perl/Tie-Array-Sorted dev-perl/Encode-compat dev-perl/File-Slurp dev-perl/Class-Virtual dev-perl/Class-Accessor virtual/perl-Time-Piece virtual/perl-File-Spec >=virtual/perl-Scalar-List-Utils-1.13 dev-perl/Lingua-Stem dev-perl/Bit-Vector-Minimal dev-perl/IO-stringy >=virtual/perl-Test-Harness-2.30 >=dev-perl/Module-Build-0.28 dev-lang/perl:=[-build(-)]
+DESCRIPTION=Plucene - the Perl lucene port
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Plucene/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Memoize dev-perl/Tie-Array-Sorted dev-perl/Encode-compat dev-perl/File-Slurp dev-perl/Class-Virtual dev-perl/Class-Accessor virtual/perl-Time-Piece virtual/perl-File-Spec >=virtual/perl-Scalar-List-Utils-1.13 dev-perl/Lingua-Stem dev-perl/Bit-Vector-Minimal dev-perl/IO-stringy dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/T/TM/TMTM/Plucene-1.25.tar.gz
+_eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:-
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
+_md5_=ed60b162ac3b5d2b920a1f1ec489dedb

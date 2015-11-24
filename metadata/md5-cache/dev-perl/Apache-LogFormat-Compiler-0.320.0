@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-perl/POSIX-strftime-Compiler-0.300.0 virtual/perl-Time-Local >=dev-lang/perl-5.8.4 >=dev-perl/Module-Build-0.380.0 virtual/perl-CPAN-Meta test? ( dev-perl/HTTP-Message dev-perl/Test-MockTime >=virtual/perl-Test-Simple-0.980.0 dev-perl/Test-Requires >=dev-perl/Try-Tiny-0.120.0 >=dev-perl/URI-1.600.0 ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Compile an Apache log format string to perl-code
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Apache-LogFormat-Compiler/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/POSIX-strftime-Compiler-0.300.0 virtual/perl-Time-Local >=dev-lang/perl-5.8.4 dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/K/KA/KAZEBURO/Apache-LogFormat-Compiler-0.32.tar.gz
+_eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
+_md5_=e4b78ef0ee07266e3e82714e234ed8e8

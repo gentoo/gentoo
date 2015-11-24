@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare test unpack
+DEPEND=dev-vcs/git
+DESCRIPTION=Wrapper to coreutil's install to preserve Filesystem Extended Attributes
+EAPI=5
+HOMEPAGE=https://dev.gentoo.org/~blueness/install-xattr/
+LICENSE=GPL-3
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-2 src_prepare:- src_compile:- src_test:- src_install:-
+_eclasses_=git-2	df00117322129fb906bb0a53c3d6a020	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=df91d70451ac2f2d2faffdc270003f89

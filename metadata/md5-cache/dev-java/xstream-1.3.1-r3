@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test
+DEPEND=>=virtual/jdk-1.6 app-arch/unzip test? ( dev-java/ant-junit:0 dev-java/ant-trax:0 dev-java/junit:4 dev-java/xml-writer:0 dev-java/commons-lang:2.1 dev-java/jmock:1.0 dev-java/jakarta-oro:2.0 dev-java/stax:0 dev-java/wstx:3.2 ) dev-java/cglib:3 dev-java/dom4j:1 dev-java/jdom:1.0 dev-java/joda-time:0 dev-java/xom:0 dev-java/xpp3:0 dev-java/xml-commons-external:1.3 dev-java/jettison:0 java-virtuals/stax-api:0 >=dev-java/java-config-2.2.0 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
+DESCRIPTION=A text-processing Java classes that serialize objects to XML and back again
+EAPI=5
+HOMEPAGE=http://xstream.codehaus.org/index.html
+IUSE=elibc_FreeBSD doc source test elibc_FreeBSD
+KEYWORDS=amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris
+LICENSE=BSD
+RDEPEND=>=virtual/jre-1.6 dev-java/cglib:3 dev-java/dom4j:1 dev-java/jdom:1.0 dev-java/joda-time:0 dev-java/xom:0 dev-java/xpp3:0 dev-java/xml-commons-external:1.3 dev-java/jettison:0 java-virtuals/stax-api:0 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://repository.codehaus.org/com/thoughtworks/xstream/xstream-distribution/1.3.1/xstream-distribution-1.3.1-src.zip
+_eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_postinst:- pkg_setup:java-pkg-2 src_prepare:java-pkg-2 src_configure:java-ant-2 src_compile:java-pkg-2 src_test:- src_install:-
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	java-ant-2	7c5d0c274d390745f5033754a319f515	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	a96633177f44ee992b3fce360d1c4f16	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=74193df55321d921d469e9c80b271ea9

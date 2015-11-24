@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=qd? ( sci-libs/qd:0=[fortran=] ) fortran? ( virtual/fortran ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Arbitrary precision float arithmetics and functions
+EAPI=5
+HOMEPAGE=http://crd.lbl.gov/~dhbailey/mpdist/
+IUSE=doc cpu_flags_x86_fma3 cpu_flags_x86_fma4 fortran qd static-libs
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=qd? ( sci-libs/qd:0=[fortran=] ) fortran? ( virtual/fortran )
+SLOT=0
+SRC_URI=http://crd.lbl.gov/~dhbailey/mpdist/arprec-2.2.17.tar.gz
+_eclass_exported_funcs=pkg_setup:fortran-2 src_prepare:autotools-utils src_configure:- src_compile:- src_test:autotools-utils src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	f20548a2f7b0128068388cd2ec26708a	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=78cfc70071868bcc4fe2dd531aaed5a4

@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 ) ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 )
+DESCRIPTION=vim plugin: fast file navigation for vim
+EAPI=5
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=3025 https://wincent.com/products/command-t
+IUSE=elibc_FreeBSD ruby_targets_ruby20 ruby_targets_ruby21 ruby_targets_ruby22
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=|| ( app-editors/vim[ruby] app-editors/gvim[ruby] ) || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 ) ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 )
+REQUIRED_USE=|| ( ruby_targets_ruby20 ruby_targets_ruby21 ruby_targets_ruby22 )
+SLOT=0
+SRC_URI=mirror://gentoo/command-t-1.11.4.tar.bz2 https://dev.gentoo.org/~radhermit/vim/command-t-1.11.4.tar.bz2
+_eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin pkg_setup:ruby-ng src_unpack:ruby-ng src_prepare:ruby-ng src_configure:ruby-ng src_compile:ruby-ng src_test:ruby-ng src_install:ruby-ng
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	java-utils-2	a96633177f44ee992b3fce360d1c4f16	multilib	3972ca401cf7dbb430df9995f5d8d580	ruby-ng	79b6c8cabcf1e455baae2f2168e8e370	ruby-utils	97c910cb6b087c64260df641a9b3de0c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	1bbfc3364a7588372fb4c21734f0cd96
+_md5_=1cd1a84b604dd433300d0ff417f82f35

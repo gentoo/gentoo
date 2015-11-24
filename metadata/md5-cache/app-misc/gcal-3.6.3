@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure
+DEPEND=app-arch/xz-utils nls? ( >=sys-devel/gettext-0.17 )
+DESCRIPTION=The GNU Calendar - a replacement for cal
+EAPI=5
+HOMEPAGE=https://www.gnu.org/software/gcal/
+IUSE=ncurses nls unicode
+KEYWORDS=amd64 ~arm ppc x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=GPL-3
+RDEPEND=nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=mirror://gnu/gcal/gcal-3.6.3.tar.xz
+_eclass_exported_funcs=src_configure:-
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=92426487b5f1ed0ac76380d078d85a0f

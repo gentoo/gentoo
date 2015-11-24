@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=A special version of RepBase used by RepeatMasker
+EAPI=5
+HOMEPAGE=http://repeatmasker.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=all-rights-reserved
+RESTRICT=fetch
+SLOT=0
+SRC_URI=repeatmaskerlibraries-20120418.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=b4d050c303955f9f4d69a65b4f42b2ad

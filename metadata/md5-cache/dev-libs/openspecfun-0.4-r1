@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare setup
+DEPEND=virtual/fortran
+DESCRIPTION=A collection of special mathematical functions
+EAPI=5
+HOMEPAGE=http://julialang.org/
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=MIT public-domain
+RDEPEND=virtual/fortran
+SLOT=0
+SRC_URI=https://github.com/JuliaLang/openspecfun/archive/v0.4.tar.gz -> openspecfun-0.4.tar.gz
+_eclass_exported_funcs=pkg_setup:fortran-2 src_prepare:- src_install:-
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=b9dce543df012a607236beed722d99da

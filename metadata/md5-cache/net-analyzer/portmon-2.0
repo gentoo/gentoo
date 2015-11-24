@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=Portmon is a network service monitoring daemon
+EAPI=5
+HOMEPAGE=http://aboleo.net/software/portmon/
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://aboleo.net/software/portmon/downloads/portmon-2.0.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
+_md5_=22846ac1a2e35f50c9a6d1036c9cac91

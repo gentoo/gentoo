@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-libs/protobuf-2.4.1 >=dev-libs/libpcre-8.12 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A DNA sequencing data management framework - C/C++ API
+EAPI=5
+HOMEPAGE=http://campagnelab.org/software/goby/
+IUSE=static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=dev-libs/protobuf-2.4.1 >=dev-libs/libpcre-8.12
+SLOT=0
+SRC_URI=http://chagall.med.cornell.edu/goby/releases/archive/release-goby_2.0.1/goby_2.0.1-cpp.zip
+_eclass_exported_funcs=src_prepare:- src_configure:autotools-utils src_compile:autotools-utils src_test:autotools-utils src_install:autotools-utils
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	f20548a2f7b0128068388cd2ec26708a	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=3119d3d694fd7478ab452660b5ae4d25

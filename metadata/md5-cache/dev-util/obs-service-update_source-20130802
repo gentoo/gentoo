@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare unpack
+DESCRIPTION=Open Build Service client module - update_source service
+EAPI=5
+HOMEPAGE=http://en.opensuse.org/openSUSE:OSC
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=net-misc/wget sys-apps/diffutils dev-util/osc dev-util/suse-build
+SLOT=0
+SRC_URI=https://api.opensuse.org/public/source/openSUSE:Tools/obs-service-update_source/update_source -> update_source-20130802 https://api.opensuse.org/public/source/openSUSE:Tools/obs-service-update_source/update_source.service -> update_source-20130802.service
+_eclass_exported_funcs=src_unpack:obs-service src_prepare:obs-service src_install:obs-service
+_eclasses_=obs-download	34254a75c71884fa169583d31466e857	obs-service	32d8ccd02ab40b202e196c2a20d1a8b8
+_md5_=be71029cf0d97178f5f0a035cfcddaf0

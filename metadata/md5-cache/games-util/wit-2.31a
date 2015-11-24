@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile prepare
+DEPEND=app-arch/bzip2 fuse? ( sys-fs/fuse ) zlib? ( sys-libs/zlib )
+DESCRIPTION=A set of command line tools to manipulate Wii/GameCube ISO images and WBFS containers
+EAPI=5
+HOMEPAGE=http://wit.wiimm.de/
+IUSE=+fuse +zlib
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-arch/bzip2 fuse? ( sys-fs/fuse ) zlib? ( sys-libs/zlib )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~radhermit/distfiles/wit-2.31a.tar.xz
+_eclass_exported_funcs=src_prepare:- src_compile:-
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=347412a4c4a1a37d4755494755d24cd0

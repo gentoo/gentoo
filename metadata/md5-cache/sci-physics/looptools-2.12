@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare setup
+DEPEND=virtual/fortran virtual/fortran
+DESCRIPTION=Tools for evaluation of scalar and tensor one-loop integrals
+EAPI=5
+HOMEPAGE=http://www.feynarts.de/looptools
+IUSE=doc static-libs
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=LGPL-3
+RDEPEND=virtual/fortran virtual/fortran
+SLOT=0/2.12
+SRC_URI=http://www.feynarts.de/looptools/LoopTools-2.12.tar.gz
+_eclass_exported_funcs=pkg_setup:fortran-2 src_prepare:- src_install:-
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=92529e6b1331d99d685da20b176d4a63

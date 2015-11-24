@@ -1,0 +1,13 @@
+DEFINED_PHASES=prepare
+DEPEND=sys-libs/ncurses:0=[unicode] virtual/pkgconfig
+DESCRIPTION=NCurses Disk Usage
+EAPI=5
+HOMEPAGE=http://dev.yorhel.nl/ncdu/
+KEYWORDS=amd64 arm ppc ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos
+LICENSE=MIT
+RDEPEND=sys-libs/ncurses:0=[unicode]
+SLOT=0
+SRC_URI=http://dev.yorhel.nl/download/ncdu-1.11.tar.gz
+_eclass_exported_funcs=src_prepare:-
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=8c005f81dfc4d70d52867714056329af

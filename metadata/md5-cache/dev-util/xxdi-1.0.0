@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Simple alternative to vim's 'xxd -i' mode
+EAPI=5
+HOMEPAGE=https://github.com/gregkh/xxdi
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl dev-perl/File-Slurp
+SLOT=0
+SRC_URI=https://github.com/gregkh/xxdi/archive/v001.tar.gz -> xxdi-1.0.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=3d41fb0b4d04fd6664a0d1c861858ed3

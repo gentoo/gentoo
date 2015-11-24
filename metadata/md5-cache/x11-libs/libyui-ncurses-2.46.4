@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sys-libs/ncurses x11-libs/libyui:0/6 dev-libs/boost sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=UI abstraction library - ncurses plugin
+EAPI=5
+HOMEPAGE=https://github.com/libyui/libyui-ncurses
+IUSE=static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=sys-libs/ncurses x11-libs/libyui:0/6
+SLOT=0/6
+SRC_URI=https://github.com/libyui/libyui-ncurses/archive/libyui-ncurses/master/2.46.4.tar.gz -> libyui-ncurses-2.46.4.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	f16fa5681153277df51f001deaf17ff8	eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=100ebd788fc5af331c64af97156684ef

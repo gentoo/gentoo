@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=|| ( dev-libs/libedit sys-libs/readline:= ) dev-libs/libpcre[jit?] jemalloc? ( dev-libs/jemalloc ) sys-libs/ncurses:= dev-python/docutils virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=Varnish is a state-of-the-art, high-performance HTTP accelerator
+EAPI=5
+HOMEPAGE=http://www.varnish-cache.org/
+IUSE=jemalloc jit static-libs python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_pypy
+KEYWORDS=amd64 ~mips x86
+LICENSE=BSD-2 GPL-2
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_pypy? ( virtual/pypy:0= ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_pypy(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_pypy(-)] || ( dev-libs/libedit sys-libs/readline:= ) dev-libs/libpcre[jit?] jemalloc? ( dev-libs/jemalloc ) sys-libs/ncurses:= sys-devel/gcc
+REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_pypy )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://repo.varnish-cache.org/source/varnish-4.0.3.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	f20548a2f7b0128068388cd2ec26708a	libtool	b75230758539a7da029e24afdb693960	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	3972ca401cf7dbb430df9995f5d8d580	python-r1	fb656e31d5596be6ac85cde42dccfcb6	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=422d42d0e69be000b6bca73ca5f5c58b

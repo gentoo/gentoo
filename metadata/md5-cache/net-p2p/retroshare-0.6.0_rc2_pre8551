@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=app-arch/bzip2 dev-db/sqlcipher dev-libs/openssl:0 gnome-base/libgnome-keyring net-libs/libmicrohttpd net-libs/libupnp sys-libs/zlib cli? ( dev-libs/protobuf net-libs/libssh[server] ) feedreader? ( dev-libs/libxml2 dev-libs/libxslt net-misc/curl ) qt5? ( x11-libs/libX11 x11-libs/libXScrnSaver dev-qt/designer:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtscript:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5 ) voip? ( <media-libs/opencv-3.0.0[-qt4] media-libs/speex ) dev-qt/qtcore:5 virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=P2P private sharing application
+EAPI=5
+HOMEPAGE=http://retroshare.sourceforge.net
+IUSE=cli feedreader +qt5 voip
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 GPL-3 Apache-2.0 LGPL-2.1
+RDEPEND=app-arch/bzip2 dev-db/sqlcipher dev-libs/openssl:0 gnome-base/libgnome-keyring net-libs/libmicrohttpd net-libs/libupnp sys-libs/zlib cli? ( dev-libs/protobuf net-libs/libssh[server] ) feedreader? ( dev-libs/libxml2 dev-libs/libxslt net-misc/curl ) qt5? ( x11-libs/libX11 x11-libs/libXScrnSaver dev-qt/designer:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtscript:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5 ) voip? ( <media-libs/opencv-3.0.0[-qt4] media-libs/speex )
+REQUIRED_USE=|| ( cli qt5 ) feedreader? ( qt5 ) voip? ( qt5 )
+SLOT=0
+SRC_URI=mirror://sourceforge/retroshare/retroshare_0.6.0.RC2~8551_src.tgz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	3972ca401cf7dbb430df9995f5d8d580	qmake-utils	bd69cb386c63df4642cf1392b50c8d81	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=d10909c50f04270727805f7cffb2acb2

@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=nss? ( dev-libs/nss curl? ( || ( net-misc/curl[ssl,curl_ssl_nss] net-misc/curl[-ssl] ) ) ) !nss? ( dev-libs/openssl curl? ( || ( net-misc/curl[ssl,curl_ssl_openssl] net-misc/curl[-ssl] ) ) ) net-misc/curl doc? ( app-doc/doxygen media-gfx/graphviz media-fonts/freefont ) virtual/pkgconfig
+DESCRIPTION=C library implementing the OAuth secure authentication protocol
+EAPI=5
+HOMEPAGE=http://liboauth.sourceforge.net/
+IUSE=curl doc bindist +nss
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x64-macos
+LICENSE=|| ( GPL-2 MIT )
+RDEPEND=nss? ( dev-libs/nss curl? ( || ( net-misc/curl[ssl,curl_ssl_nss] net-misc/curl[-ssl] ) ) ) !nss? ( dev-libs/openssl curl? ( || ( net-misc/curl[ssl,curl_ssl_openssl] net-misc/curl[-ssl] ) ) ) net-misc/curl
+REQUIRED_USE=bindist? ( nss )
+SLOT=0
+SRC_URI=mirror://sourceforge/project/liboauth/liboauth-1.0.1.tar.gz
+_eclass_exported_funcs=src_prepare:autotools-utils src_configure:- src_compile:- src_test:autotools-utils src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	f20548a2f7b0128068388cd2ec26708a	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=647d68ac80390762ae01df529cd0345b

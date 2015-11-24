@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/unzip
+DESCRIPTION=Merge multiple logs such that multilined entries appear in chronological order without breaks
+EAPI=5
+HOMEPAGE=https://github.com/ildar-shaimordanov/logmerge
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=https://logmerge.googlecode.com/files/logmerge-0.4-beta.zip
+_eclass_exported_funcs=src_install:-
+_md5_=09a0cf32042c89d1751a3b41252412da

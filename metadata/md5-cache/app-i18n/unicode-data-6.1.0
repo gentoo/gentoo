@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Unicode data from unicode.org
+EAPI=5
+HOMEPAGE=http://unicode.org/
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=unicode
+SLOT=0
+SRC_URI=mirror://debian/pool/main/u/unicode-data/unicode-data_6.1.0.orig.tar.gz
+_eclass_exported_funcs=src_unpack:- src_install:-
+_md5_=1c4bdbced2e0722dec5f966f2d4465f5

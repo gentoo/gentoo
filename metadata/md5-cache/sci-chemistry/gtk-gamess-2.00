@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=gnome-base/libglade:2.0 x11-libs/gtk+:2 dev-libs/libxml2:2 sci-chemistry/gamess virtual/pkgconfig
+DESCRIPTION=GUI for GAMESS, a General Atomic and Molecular Electronic Structure System
+EAPI=5
+HOMEPAGE=http://sourceforge.net/projects/gtk-gamess/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=gnome-base/libglade:2.0 x11-libs/gtk+:2 dev-libs/libxml2:2 sci-chemistry/gamess
+SLOT=0
+SRC_URI=mirror://sourceforge/gtk-gamess/gtk-gamess-2.00.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=0b4d15c53dc2599d0a33872f7d9d48ae

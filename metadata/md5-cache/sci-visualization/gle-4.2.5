@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare unpack
+DEPEND=sys-libs/ncurses X? ( x11-libs/libX11 ) qt4? ( dev-qt/qtopengl:4 ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0 ) tiff? ( media-libs/tiff:0 ) doc? ( dev-texlive/texlive-latexextra ) emacs? ( virtual/emacs ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Graphics Layout Engine
+EAPI=5
+HOMEPAGE=http://glx.sourceforge.net/
+IUSE=X qt4 jpeg png tiff doc emacs vim-syntax
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD-2 emacs? ( GPL-2 ) qt4? ( GPL-2 )
+RDEPEND=sys-libs/ncurses X? ( x11-libs/libX11 ) qt4? ( dev-qt/qtopengl:4 ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0 ) tiff? ( media-libs/tiff:0 ) doc? ( dev-texlive/texlive-latexextra ) emacs? ( virtual/emacs ) app-text/ghostscript-gpl virtual/latex-base vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/glx/gle-graphics-4.2.5f-src.tar.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_unpack:qt4-r2 src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	3fe4f8980633fd7bc69e9887209ba2fe	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	qmake-utils	bd69cb386c63df4642cf1392b50c8d81	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=a16ec91f43ad58306545187c0bf8bbde

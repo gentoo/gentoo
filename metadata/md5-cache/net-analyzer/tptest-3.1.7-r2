@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Internet bandwidth tester
+EAPI=5
+HOMEPAGE=http://tptest.sourceforge.net/
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/tptest/tptest-3.1.7.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=0db7962464aa456535146bc9e8a8abc9

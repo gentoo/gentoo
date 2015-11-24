@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare setup test
+DEPEND=dev-libs/libaio sys-apps/hwloc romio? ( net-fs/nfs-utils ) dev-lang/perl sys-devel/libtool fortran? ( virtual/fortran )
+DESCRIPTION=A high performance and portable MPI implementation
+EAPI=5
+HOMEPAGE=http://www.mcs.anl.gov/research/projects/mpich2/index.php
+IUSE=+cxx doc fortran mpi-threads romio threads
+KEYWORDS=amd64 hppa ppc ppc64 x86 ~amd64-linux ~x86-linux
+LICENSE=mpich2
+RDEPEND=dev-libs/libaio sys-apps/hwloc romio? ( net-fs/nfs-utils ) !sys-cluster/mpich !sys-cluster/openmpi fortran? ( virtual/fortran )
+SLOT=0
+SRC_URI=http://www.mcs.anl.gov/research/projects/mpich2/downloads/tarballs/1.5/mpich2-1.5.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_test:- src_install:-
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=3425f6586a5fd3a73589e739a498ff37

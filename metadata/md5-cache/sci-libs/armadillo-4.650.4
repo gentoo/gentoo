@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/boost arpack? ( sci-libs/arpack ) blas? ( virtual/blas ) lapack? ( virtual/lapack ) arpack? ( virtual/pkgconfig ) blas? ( virtual/pkgconfig ) hdf5? ( sci-libs/hdf5 ) lapack? ( virtual/pkgconfig ) mkl? ( sci-libs/mkl ) tbb? ( dev-cpp/tbb ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Streamlined C++ linear algebra library
+EAPI=5
+HOMEPAGE=http://arma.sourceforge.net/
+IUSE=arpack blas debug doc examples hdf5 lapack mkl tbb test
+KEYWORDS=~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=MPL-2.0
+PDEPEND=dev-libs/boost arpack? ( sci-libs/arpack ) blas? ( virtual/blas ) lapack? ( virtual/lapack ) hdf5? ( sci-libs/hdf5 ) mkl? ( sci-libs/mkl ) tbb? ( dev-cpp/tbb )
+RDEPEND=dev-libs/boost arpack? ( sci-libs/arpack ) blas? ( virtual/blas ) lapack? ( virtual/lapack )
+REQUIRED_USE=test? ( lapack )
+SLOT=0/4
+SRC_URI=mirror://sourceforge/arma/armadillo-4.650.4.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:- src_install:-
+_eclasses_=cmake-utils	f16fa5681153277df51f001deaf17ff8	eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=bfff8bcdba4469890ae029753b8d48bc

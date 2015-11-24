@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=>=dev-vcs/git-1.6.3.3 doc? ( app-text/asciidoc app-text/xmlto dev-lang/perl ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=Manage a stack of patches using GIT as a backend
+EAPI=5
+HOMEPAGE=https://stgit.org https://gna.org/projects/stgit
+IUSE=doc python_targets_python2_7
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=>=dev-vcs/git-1.6.3.3 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=http://download.gna.org/stgit/stgit-0.17.1.tar.gz https://dev.gentoo.org/~dlan/distfiles/stgit-0.17.1-upstream-patches-1.tar.xz
+_eclass_exported_funcs=pkg_setup:- src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:- src_test:distutils-r1 src_install:-
+_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	distutils-r1	46506dd0dd992b3c89b0d00daabfd86c	eutils	f20548a2f7b0128068388cd2ec26708a	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	python-r1	fb656e31d5596be6ac85cde42dccfcb6	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=52f50aa2c6b211e8d34568763e2b2827

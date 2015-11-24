@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
+DEPEND=x11-libs/gtk+:3 dev-libs/libunique:3 dev-libs/libxml2:2 libnotify? ( x11-libs/libnotify ) >=media-libs/gstreamer-0.10.31:0.10 >=media-libs/gst-plugins-base-0.10.31:0.10 media-plugins/gst-plugins-gio:0.10 media-plugins/gst-plugins-meta:0.10[flac?,mp3?,wavpack?] aac? ( media-plugins/gst-plugins-faac:0.10 ) nls? ( virtual/libintl ) >=app-text/gnome-doc-utils-0.17.2 gnome-base/gnome-common virtual/pkgconfig nls? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4
+DESCRIPTION=Audio converter for GNOME
+EAPI=5
+HOMEPAGE=http://gnac.sourceforge.net/
+IUSE=aac flac libnotify mp3 nls wavpack linguas_cs linguas_da linguas_de linguas_en_GB linguas_es linguas_gl linguas_fr linguas_he linguas_hu linguas_it linguas_lt linguas_nb linguas_pt_BR linguas_pl linguas_ro linguas_ru linguas_sl linguas_sv linguas_te linguas_tr linguas_zh_CN debug
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=x11-libs/gtk+:3 dev-libs/libunique:3 dev-libs/libxml2:2 libnotify? ( x11-libs/libnotify ) >=media-libs/gstreamer-0.10.31:0.10 >=media-libs/gst-plugins-base-0.10.31:0.10 media-plugins/gst-plugins-gio:0.10 media-plugins/gst-plugins-meta:0.10[flac?,mp3?,wavpack?] aac? ( media-plugins/gst-plugins-faac:0.10 ) nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=mirror://sourceforge/gnac/gnac-0.2.4.1.tar.bz2
+_eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_unpack:gnome2 src_prepare:- src_configure:- src_compile:gnome2 src_install:gnome2
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f20548a2f7b0128068388cd2ec26708a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=e23ca546e058045365b5b179d5c2ec9d

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=!<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/fortran
+DESCRIPTION=Lund Monte Carlo high-energy physics event generator
+EAPI=5
+HOMEPAGE=http://pythia6.hepforge.org/
+IUSE=doc examples static-libs
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+LICENSE=public-domain
+RDEPEND=virtual/fortran
+SLOT=6
+SRC_URI=https://dev.gentoo.org/~bicatali/distfiles/pythia-6.4.28.tar.xz ftp://root.cern.ch/root/pythia6.tar.gz doc? ( http://home.thep.lu.se/~torbjorn/pythia/lutp0613man2.pdf ) examples? ( mirror://gentoo/pythia-6.4.18-examples.tar.bz2 )
+_eclass_exported_funcs=pkg_setup:fortran-2 src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f20548a2f7b0128068388cd2ec26708a	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=0de096cf076c7f37ff5a8b3b73a8e498

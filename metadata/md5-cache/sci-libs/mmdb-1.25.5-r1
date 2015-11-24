@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DESCRIPTION=The Coordinate Library, designed to assist CCP4 developers in working with coordinate files
+EAPI=5
+HOMEPAGE=https://launchpad.net/mmdb/
+IUSE=static-libs
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
+LICENSE=GPL-2 LGPL-3
+SLOT=0
+SRC_URI=ftp://ftp.ccp4.ac.uk/opensource/mmdb-1.25.5.tar.gz
+_eclass_exported_funcs=src_prepare:autotools-utils src_configure:autotools-utils src_compile:autotools-utils src_test:autotools-utils src_install:autotools-utils
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	f20548a2f7b0128068388cd2ec26708a	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=16cab77310fd928457d1e002d9aff329

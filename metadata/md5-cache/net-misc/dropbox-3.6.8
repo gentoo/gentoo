@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst postrm preinst prepare unpack
+DEPEND=librsync-bundled? ( dev-util/patchelf ) >=sys-apps/sed-4 virtual/pkgconfig
+DESCRIPTION=Dropbox daemon (pretends to be GUI-less)
+EAPI=5
+HOMEPAGE=http://dropbox.com/
+IUSE=+librsync-bundled selinux X
+KEYWORDS=~amd64 ~x86 ~x86-linux
+LICENSE=CC-BY-ND-3.0 FTL MIT LGPL-2 openssl dropbox
+RDEPEND=X? ( dev-libs/glib:2 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtquick1:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 media-libs/libpng:1.2 sys-libs/zlib virtual/jpeg x11-libs/gtk+:2 x11-libs/libSM x11-libs/libXinerama x11-libs/libXxf86vm x11-libs/pango[X] x11-misc/wmctrl x11-themes/hicolor-icon-theme ) !librsync-bundled? ( net-libs/librsync ) selinux? ( sec-policy/selinux-dropbox ) app-arch/bzip2 dev-lang/python:2.7 dev-libs/popt net-misc/wget >=sys-devel/gcc-4.2.0 sys-libs/zlib || ( sys-libs/ncurses:5/5 sys-libs/ncurses:0/5 )
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=x86? ( http://dl-web.dropbox.com/u/17/dropbox-lnx.x86-3.6.8.tar.gz ) amd64? ( http://dl-web.dropbox.com/u/17/dropbox-lnx.x86_64-3.6.8.tar.gz )
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_unpack:- src_prepare:- src_install:-
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	3972ca401cf7dbb430df9995f5d8d580	pax-utils	9dd3f9de6dccb2463faf55e568439d1c	systemd	6b4f0cefa642270eded7e6ca816fd181	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=95e852519c517dd3f3b699c511279e32

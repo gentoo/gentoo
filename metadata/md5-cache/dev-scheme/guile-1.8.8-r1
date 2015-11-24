@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare
+DEPEND=>=dev-libs/gmp-4.1:0= >=sys-devel/libtool-1.5.6 sys-devel/gettext sys-libs/ncurses:0= emacs? ( virtual/emacs ) sys-apps/texinfo !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Scheme interpreter
+EAPI=5
+HOMEPAGE=https://www.gnu.org/software/guile/
+IUSE=networking +regex discouraged +deprecated emacs nls debug-freelist debug-malloc debug +threads
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-libs/gmp-4.1:0= >=sys-devel/libtool-1.5.6 sys-devel/gettext sys-libs/ncurses:0= emacs? ( virtual/emacs )
+RESTRICT=!regex? ( test )
+SLOT=12
+SRC_URI=mirror://gnu/guile/guile-1.8.8.tar.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=062fbd65117958b47c8b3c5d18383bb1

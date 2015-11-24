@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test
+DEPEND=>=dev-haskell/conduit-1.1:=[profile?] dev-haskell/monad-logger:=[profile?] >=dev-haskell/persistent-1.3:=[profile?] <dev-haskell/persistent-1.4:=[profile?] dev-haskell/resourcet:=[profile?] >=dev-haskell/tagged-0.2:=[profile?] >=dev-haskell/text-0.11:=[profile?] >=dev-haskell/transformers-0.2:=[profile?] >=dev-haskell/unordered-containers-0.2:=[profile?] >=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.8 test? ( >=dev-haskell/hspec-1.8 dev-haskell/hunit dev-haskell/monad-control >=dev-haskell/monad-logger-0.3 >=dev-haskell/persistent-sqlite-1.2 <dev-haskell/persistent-sqlite-1.4 >=dev-haskell/persistent-template-1.2 <dev-haskell/persistent-template-1.4 dev-haskell/quickcheck ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
+DESCRIPTION=Type-safe EDSL for SQL queries on persistent backends
+EAPI=5
+HOMEPAGE=https://github.com/meteficha/esqueleto
+IUSE=doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-haskell/conduit-1.1:=[profile?] dev-haskell/monad-logger:=[profile?] >=dev-haskell/persistent-1.3:=[profile?] <dev-haskell/persistent-1.4:=[profile?] dev-haskell/resourcet:=[profile?] >=dev-haskell/tagged-0.2:=[profile?] >=dev-haskell/text-0.11:=[profile?] >=dev-haskell/transformers-0.2:=[profile?] >=dev-haskell/unordered-containers-0.2:=[profile?] >=dev-lang/ghc-7.4.1:=
+RESTRICT=test
+SLOT=0/1.4.1.2
+SRC_URI=mirror://hackage/packages/archive/esqueleto/1.4.1.2/esqueleto-1.4.1.2.tar.gz
+_eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_prepare:- src_configure:- src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	ghc-package	6165faf4ae46df43d5a9b0dd28ec8654	haskell-cabal	2d9bae28d8a91ec04d1bb1ef0071c64f	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=934a42e3a6e6d80fc70d7b9fa2c0b860

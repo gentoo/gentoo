@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test unpack
+DEPEND=app-eselect/eselect-php[apache2] dev-lang/perl:= dev-lang/php[apache2,cgi,curl,inifile,pdo,mysql,mysqli,sockets] dev-libs/libpcre dev-perl/Archive-Zip dev-perl/DateManip dev-perl/DBD-mysql dev-perl/DBI dev-perl/URI-Encode dev-perl/libwww-perl sys-auth/polkit sys-libs/zlib virtual/ffmpeg virtual/jpeg virtual/mysql virtual/perl-ExtUtils-MakeMaker virtual/perl-Getopt-Long virtual/perl-Sys-Syslog virtual/perl-Time-HiRes www-servers/apache curl? ( net-misc/curl ) gcrypt? ( dev-libs/libgcrypt ) gnutls? ( net-libs/gnutls ) mmap? ( dev-perl/Sys-Mmap ) openssl? ( dev-libs/openssl ) vlc? ( media-video/vlc[live] ) =www-servers/apache-2* virtual/httpd-php dev-lang/perl:=[-build(-)] sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
+EAPI=5
+HOMEPAGE=http://www.zoneminder.com/
+IUSE=curl gcrypt gnutls +mmap +openssl vlc
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=app-eselect/eselect-php[apache2] dev-lang/perl:= dev-lang/php[apache2,cgi,curl,inifile,pdo,mysql,mysqli,sockets] dev-libs/libpcre dev-perl/Archive-Zip dev-perl/DateManip dev-perl/DBD-mysql dev-perl/DBI dev-perl/URI-Encode dev-perl/libwww-perl sys-auth/polkit sys-libs/zlib virtual/ffmpeg virtual/jpeg virtual/mysql virtual/perl-ExtUtils-MakeMaker virtual/perl-Getopt-Long virtual/perl-Sys-Syslog virtual/perl-Time-HiRes www-servers/apache curl? ( net-misc/curl ) gcrypt? ( dev-libs/libgcrypt ) gnutls? ( net-libs/gnutls ) mmap? ( dev-perl/Sys-Mmap ) openssl? ( dev-libs/openssl ) vlc? ( media-video/vlc[live] ) =www-servers/apache-2* virtual/httpd-php dev-lang/perl:=[-build(-)]
+REQUIRED_USE=|| ( openssl gnutls )
+SLOT=0
+SRC_URI=https://github.com/ZoneMinder/ZoneMinder/archive/v1.28.1.tar.gz -> zoneminder-1.28.1.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_unpack:base src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	cmake-utils	f16fa5681153277df51f001deaf17ff8	depend.apache	e3c541cb90838388f81620d630c28f41	depend.php	c595f1a83ba4052bfe96c06daee20004	eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=a0070f30f91fc57a9ee2d0f3d1d05ffd

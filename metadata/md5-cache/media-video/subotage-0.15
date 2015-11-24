@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Universal subtitle converter in bash
+EAPI=5
+HOMEPAGE=http://sourceforge.net/projects/subotage/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=mirror://sourceforge/subotage/subotage_0.15.tgz
+_eclass_exported_funcs=src_install:-
+_md5_=c187129a24bf6463c2731c549c28acd8

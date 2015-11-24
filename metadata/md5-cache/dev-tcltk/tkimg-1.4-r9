@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare test
+DEPEND=dev-lang/tk >=dev-tcltk/tcllib-1.11 media-libs/tiff:0= >=media-libs/libpng-1.6:0= >=sys-libs/zlib-1.2.7:= x11-libs/libX11 virtual/jpeg test? ( x11-apps/xhost media-fonts/font-misc-misc media-fonts/font-cursor-misc ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Adds a lot of image formats to Tcl/Tk
+EAPI=5
+HOMEPAGE=http://tkimg.sourceforge.net/
+IUSE=doc test static-libs test
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=dev-lang/tk >=dev-tcltk/tcllib-1.11 media-libs/tiff:0= >=media-libs/libpng-1.6:0= >=sys-libs/zlib-1.2.7:= x11-libs/libX11 virtual/jpeg
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~jlec/distfiles/tkimg-1.4-patchset-1.tar.xz mirror://sourceforge/tkimg/1.4/tkimg1.4.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_test:- src_install:-
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	virtualx	7d550983f9b6adb3e7091f4090ddae2f
+_md5_=c68d6fb0f6bc250ca22be389f9c25e2e

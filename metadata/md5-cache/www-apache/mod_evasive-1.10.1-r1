@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare setup
+DEPEND==www-servers/apache-2.4*
+DESCRIPTION=mod_evasive is an evasive maneuvers module to provide action in the event of an HTTP DoS
+EAPI=5
+HOMEPAGE=http://www.zdziarski.com/blog/?page_id=442
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND==www-servers/apache-2.4*
+SLOT=0
+SRC_URI=http://www.zdziarski.com/projects/mod_evasive/mod_evasive_1.10.1.tar.gz
+_eclass_exported_funcs=pkg_postinst:apache-module pkg_setup:depend.apache src_prepare:- src_compile:apache-module src_install:-
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=13a2f4ca8b5d00aa3c67f89b5dbf8eed

@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prepare setup
+DESCRIPTION=Sensor part of sguil Network Security Monitoring
+EAPI=5
+HOMEPAGE=http://sguil.sourceforge.net
+KEYWORDS=~x86
+LICENSE=GPL-2 QPL
+RDEPEND=>=dev-lang/tcl-8.3:0=[-threads] >=dev-tcltk/tclx-8.3 >=net-analyzer/barnyard-0.2.0-r1 >=net-analyzer/snort-2.4.1-r1 dev-ml/pcre-ocaml net-analyzer/sancp
+SLOT=0
+SRC_URI=mirror://sourceforge/sguil/sguil-sensor-0.8.0.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_install:-
+_eclasses_=user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=88e49496fb578061973b7418752cabfb

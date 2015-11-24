@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/unzip
+DESCRIPTION=Orthodoxy by Gilbert K. Chesterton (1874-1936)
+EAPI=5
+HOMEPAGE=http://crosswire.org/sword/modules/ModInfo.jsp?modName=Orthodoxy
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+LICENSE=public-domain
+RDEPEND=app-text/sword
+SLOT=0
+SRC_URI=mirror://gentoo/Orthodoxy-1.0.zip
+_eclass_exported_funcs=src_install:sword-module
+_eclasses_=sword-module	0a2b0800a67ad11742c7657239b19b20
+_md5_=71c94ad4d5c5d42035d4e6d7de735e4b

@@ -1,0 +1,12 @@
+DEFINED_PHASES=prepare
+DEPEND=net-libs/libpcap
+DESCRIPTION=Layer Four Traceroute: an advanced traceroute implementation
+EAPI=5
+HOMEPAGE=http://pwhois.org/lft/
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=VOSTROM
+RDEPEND=net-libs/libpcap
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~jer/lft-3.73.tar.gz
+_eclass_exported_funcs=src_prepare:-
+_md5_=b07ed687714bb9045dcc54cd58dc1781

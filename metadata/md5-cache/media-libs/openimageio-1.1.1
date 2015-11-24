@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=dev-libs/boost[python?] dev-libs/pugixml media-libs/glew media-libs/ilmbase media-libs/libpng:0 >=media-libs/libwebp-0.2.1 media-libs/openexr media-libs/tiff:0 sci-libs/hdf5 sys-libs/zlib virtual/jpeg jpeg2k? ( >=media-libs/openjpeg-1.5:0 ) colorio? ( >=media-libs/opencolorio-1.0.7 ) opencv? ( >=media-libs/opencv-2.3 || ( <media-libs/opencv-2.4.8 >media-libs/opencv-2.4.8[python?] ) ) opengl? ( virtual/glu virtual/opengl ) qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 ) tbb? ( dev-cpp/tbb ) truetype? ( >=media-libs/freetype-2 ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) python? ( =dev-lang/python-2.7* )
+DESCRIPTION=A library for reading and writing images
+EAPI=5
+HOMEPAGE=https://sites.google.com/site/openimageio/ https://github.com/OpenImageIO
+IUSE=jpeg2k colorio opencv opengl python qt4 tbb +truetype
+KEYWORDS=amd64 ~ppc64 x86
+LICENSE=BSD
+RDEPEND=dev-libs/boost[python?] dev-libs/pugixml media-libs/glew media-libs/ilmbase media-libs/libpng:0 >=media-libs/libwebp-0.2.1 media-libs/openexr media-libs/tiff:0 sci-libs/hdf5 sys-libs/zlib virtual/jpeg jpeg2k? ( >=media-libs/openjpeg-1.5:0 ) colorio? ( >=media-libs/opencolorio-1.0.7 ) opencv? ( >=media-libs/opencv-2.3 || ( <media-libs/opencv-2.4.8 >media-libs/opencv-2.4.8[python?] ) ) opengl? ( virtual/glu virtual/opengl ) qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 ) tbb? ( dev-cpp/tbb ) truetype? ( >=media-libs/freetype-2 ) python? ( =dev-lang/python-2.7* )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/OpenImageIO/oiio/tarball/Release-1.1.1 -> openimageio-1.1.1.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_unpack:vcs-snapshot src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	f16fa5681153277df51f001deaf17ff8	eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=0dbb29e15326e6c76c4a58e3e4934e2d

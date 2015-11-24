@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-perl/LaTeX-Driver dev-perl/LaTeX-Encode dev-perl/LaTeX-Table >=dev-perl/Template-Toolkit-2.16 virtual/latex-base virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Harness ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=LaTeX support for the Template Toolkit
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Template-Plugin-Latex/
+IUSE=test
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd
+LICENSE=|| ( Artistic GPL-2 )
+RDEPEND=dev-perl/LaTeX-Driver dev-perl/LaTeX-Encode dev-perl/LaTeX-Table >=dev-perl/Template-Toolkit-2.16 virtual/latex-base dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/E/EI/EINHVERFR/Template-Plugin-Latex-3.06.tar.gz
+_eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
+_md5_=81317606611079d63050664f1ebdffe4

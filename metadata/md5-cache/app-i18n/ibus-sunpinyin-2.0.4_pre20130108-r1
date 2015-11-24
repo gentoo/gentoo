@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup unpack
+DEPEND=app-i18n/ibus ~app-i18n/sunpinyin-2.0.4_pre20130108:= nls? ( virtual/libintl ) virtual/pkgconfig nls? ( sys-devel/gettext ) || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) dev-util/scons
+DESCRIPTION=The SunPinYin IMEngine for IBus Framework
+EAPI=5
+HOMEPAGE=https://sunpinyin.googlecode.com/
+IUSE=+nls
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1 CDDL
+RDEPEND=app-i18n/ibus ~app-i18n/sunpinyin-2.0.4_pre20130108:= nls? ( virtual/libintl ) || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~yngwin/distfiles/sunpinyin-2.0.4_pre20130108.tar.xz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:python src_unpack:- src_configure:- src_compile:- src_install:-
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	python	0c2c16ea4f9074d3248bd4365d03890c	scons-utils	b7d634f772db55c8af429f50aeec6ee0	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=d658a028f3f15cbc2641dd8288e1592d

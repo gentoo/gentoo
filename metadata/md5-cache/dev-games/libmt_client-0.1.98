@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DEPEND=dev-libs/glib:2 dev-libs/libxml2 dev-games/libmaitretarot
+DESCRIPTION=backend library for the maitretarot clients
+EAPI=5
+HOMEPAGE=http://www.nongnu.org/maitretarot/
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 dev-libs/libxml2 dev-games/libmaitretarot
+SLOT=0
+SRC_URI=http://savannah.nongnu.org/download/maitretarot/libmt_client.pkg/0.1.98/libmt_client-0.1.98.tar.bz2
+_eclass_exported_funcs=-
+_md5_=4b3cb8caa0ca934c72bc962c3e2f95d5

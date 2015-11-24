@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare setup
+DEPEND=dev-lang/php:* >=dev-php/pear-1.8.1
+DESCRIPTION=A shell for PHP with history and tab-completion
+EAPI=5
+HOMEPAGE=http://pear.php.net/PHP_Shell
+IUSE=auto-completion
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=>=dev-lang/php-5.3[tokenizer] auto-completion? ( dev-lang/php[readline] ) dev-lang/php:* >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=http://pear.php.net/get/PHP_Shell-0.3.2.tgz
+_eclass_exported_funcs=pkg_setup:php-pear-r1 src_prepare:- src_install:-
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	php-pear-r1	775902054fe3b812a6afa7cdde2e0b40	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=04ea5666264046e3b0278416e3808cdb

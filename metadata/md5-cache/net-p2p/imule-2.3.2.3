@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure postinst
+DEPEND=x11-libs/wxGTK:2.8 net-p2p/i2p >=net-libs/libupnp-1.6.6 sys-devel/flex sys-apps/texinfo >=dev-libs/crypto++-5.1
+DESCRIPTION=P2P sharing software which connects through I2P and Kad network
+EAPI=5
+HOMEPAGE=http://echelon.i2p/imule
+IUSE=webserver static-libs nls
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=x11-libs/wxGTK:2.8 net-p2p/i2p
+SLOT=0
+SRC_URI=http://echelon.i2p/imule/2.3.2.3/iMule-2.3.2.3-src.tbz https://dev.gentoo.org/~zlg/extra/net-p2p/imule/2015-03-22_nodes.dat
+_eclass_exported_funcs=pkg_postinst:- src_configure:-
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	wxwidgets	2a19d3cd9b18703ae9fb53123722061c
+_md5_=b5aedd885188a6f8e660cb5045d90270

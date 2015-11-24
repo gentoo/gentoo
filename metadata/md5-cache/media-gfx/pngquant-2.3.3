@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install
+DEPEND=media-libs/libpng:0= sys-libs/zlib:= lcms? ( media-libs/lcms:2 )
+DESCRIPTION=a command-line utility for converting 24/32-bit PNG images to paletted (8-bit) PNGs
+EAPI=5
+HOMEPAGE=http://pngquant.org/
+IUSE=debug lcms openmp cpu_flags_x86_sse2
+KEYWORDS=~amd64 ~x86
+LICENSE=HPND rwpng
+RDEPEND=media-libs/libpng:0= sys-libs/zlib:= lcms? ( media-libs/lcms:2 )
+SLOT=0
+SRC_URI=http://pngquant.org/pngquant-2.3.3-src.tar.bz2
+_eclass_exported_funcs=src_configure:- src_install:-
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=bcba0fd7529017d5d5ff5c5d77148064

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm preinst
+DEPEND=>=app-crypt/qca-2.1.0.3:2[openssl,qt4] dev-libs/qjson dev-libs/qoauth dev-qt/qtcore:4[ssl] dev-qt/qtdbus:4 dev-qt/qtgui:4 sys-apps/file >=sys-apps/sed-4
+DESCRIPTION=Qt-based client for the pump.io distributed social network
+EAPI=5
+HOMEPAGE=http://dianara.nongnu.org/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2+
+RDEPEND=>=app-crypt/qca-2.1.0.3:2[openssl,qt4] dev-libs/qjson dev-libs/qoauth dev-qt/qtcore:4[ssl] dev-qt/qtdbus:4 dev-qt/qtgui:4 sys-apps/file
+SLOT=0
+SRC_URI=mirror://nongnu/dianara/dianara-v1.3.1.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_configure:- src_install:-
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	3972ca401cf7dbb430df9995f5d8d580	qmake-utils	bd69cb386c63df4642cf1392b50c8d81	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=4733310c4f434d2e188c8f796a26f61a

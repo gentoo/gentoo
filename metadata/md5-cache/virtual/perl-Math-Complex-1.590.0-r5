@@ -1,0 +1,8 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for Math-Complex
+EAPI=5
+KEYWORDS=alpha amd64 arm ~hppa ia64 ~mips ppc ppc64 sparc x86
+RDEPEND=|| ( =dev-lang/perl-5.22* =dev-lang/perl-5.20* ~perl-core/Math-Complex-1.590.0 ) !<perl-core/Math-Complex-1.590.0 !>perl-core/Math-Complex-1.590.0-r999
+SLOT=0
+_eclass_exported_funcs=-
+_md5_=071bddb2354d58687d4d9035283f3608

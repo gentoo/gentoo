@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup unpack
+DEPEND=app-text/texlive-core dev-lang/lua media-libs/freetype:2 x11-libs/cairo dev-qt/qtcore:4 dev-qt/qtgui:4 virtual/pkgconfig
+DESCRIPTION=Drawing editor for creating figures in PDF or PS formats
+EAPI=5
+HOMEPAGE=http://ipe7.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=app-text/texlive-core dev-lang/lua media-libs/freetype:2 x11-libs/cairo dev-qt/qtcore:4 dev-qt/qtgui:4
+SLOT=0
+SRC_URI=mirror://sourceforge/ipe7/ipe/7.1.0/ipe-7.1.3-src.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_unpack:qt4-r2 src_prepare:- src_configure:qt4-r2 src_compile:- src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	qmake-utils	bd69cb386c63df4642cf1392b50c8d81	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=b4ec657547a9e40550bfd14d66c06122

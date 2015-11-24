@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup unpack
+DEPEND=dev-libs/boehm-gc >=dev-libs/expat-1.95.4 bzip2? ( >=app-arch/bzip2-1.0.2 ) ssl? ( >=dev-libs/openssl-0.9.6g:0= ) X? ( x11-libs/libX11 x11-libs/libXt ) zlib? ( >=sys-libs/zlib-1.1.4 ) lua? ( >=dev-lang/lua-5:0= ) gpm? ( >=sys-libs/ncurses-5.2:0= >=sys-libs/gpm-1.20.0-r5 ) guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated,discouraged] ) idn? ( net-dns/libidn ) perl? ( dev-lang/perl:= ) ruby? ( dev-lang/ruby:* dev-ruby/rubygems:* ) samba? ( net-fs/samba ) javascript? ( >=dev-lang/spidermonkey-1.8.5:0= ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Advanced and well-established text-mode web browser
+EAPI=5
+HOMEPAGE=http://elinks.or.cz/
+IUSE=bittorrent bzip2 debug finger ftp gopher gpm guile idn ipv6 javascript lua +mouse nls nntp perl ruby samba ssl unicode X zlib
+LICENSE=GPL-2
+RDEPEND=dev-libs/boehm-gc >=dev-libs/expat-1.95.4 bzip2? ( >=app-arch/bzip2-1.0.2 ) ssl? ( >=dev-libs/openssl-0.9.6g:0= ) X? ( x11-libs/libX11 x11-libs/libXt ) zlib? ( >=sys-libs/zlib-1.1.4 ) lua? ( >=dev-lang/lua-5:0= ) gpm? ( >=sys-libs/ncurses-5.2:0= >=sys-libs/gpm-1.20.0-r5 ) guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated,discouraged] ) idn? ( net-dns/libidn ) perl? ( dev-lang/perl:= ) ruby? ( dev-lang/ruby:* dev-ruby/rubygems:* ) samba? ( net-fs/samba ) javascript? ( >=dev-lang/spidermonkey-1.8.5:0= )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~spock/portage/distfiles/elinks-0.10.4.conf.bz2
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:python-any-r1 src_unpack:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	git-r3	b00a846f415f26e5b66e5c44c7dc87dc	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	60a62ae0ee8cd93b4ba99a4c1371eb8b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=9f04f87dc50c69c32486dae1f278967c

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND==sys-devel/llvm-3.3* dev-lang/perl sys-libs/readline dev-libs/libpcre dev-util/scons dev-libs/gmp sys-libs/libunwind dev-util/patchelf sci-libs/fftw sys-libs/zlib dev-libs/mpfr sci-libs/suitesparse sci-libs/arpack virtual/lapack virtual/blas
+DESCRIPTION=High-level, high-performance dynamic programming language for technical computing
+EAPI=5
+HOMEPAGE=http://julialang.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=sys-libs/readline
+SLOT=0
+SRC_URI=http://gentooexperimental.org/~patrick/julia-0.2.0.tar.bz2 http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/SFMT/dSFMT-src-2.2.tar.gz -> dsfmt-2.2.tar.gz https://double-conversion.googlecode.com/files/double-conversion-1.1.1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=5b97566c0d6a5c696416394ba3ac18ce

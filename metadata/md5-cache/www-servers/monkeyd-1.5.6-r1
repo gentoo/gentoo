@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=jemalloc? ( >=dev-libs/jemalloc-3.3.1 )
+DESCRIPTION=A small, fast, and scalable web server
+EAPI=5
+HOMEPAGE=http://www.monkey-project.com/
+IUSE=-debug jemalloc php minimal elibc_musl elibc_uclibc monkeyd_plugins_auth monkeyd_plugins_cheetah cgi monkeyd_plugins_dirlisting fastcgi +monkeyd_plugins_liana monkeyd_plugins_logger monkeyd_plugins_mandril
+KEYWORDS=amd64 arm ~mips ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=php? ( dev-lang/php ) cgi? ( dev-lang/php[cgi] )
+REQUIRED_USE=elibc_uclibc? ( !debug ) cgi? ( php )
+SLOT=0
+SRC_URI=http://monkey-project.com/releases/1.5/monkey-1.5.6.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=depend.php	c595f1a83ba4052bfe96c06daee20004	eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=817c2454294932077959d91d3749f557

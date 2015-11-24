@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=SNMP Trap Translator
+EAPI=5
+HOMEPAGE=http://www.snmptt.org/
+IUSE=mysql postgres
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl dev-perl/Config-IniFiles net-analyzer/net-snmp mysql? ( dev-perl/DBD-mysql ) postgres? ( dev-perl/DBD-Pg )
+SLOT=0
+SRC_URI=mirror://sourceforge/snmptt/snmptt_1.4.tgz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_md5_=bf82ca3203b8ad2c90d42f88954b669f

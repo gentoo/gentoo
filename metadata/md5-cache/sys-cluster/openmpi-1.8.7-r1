@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install preinst prepare setup test
+DEPEND=!sys-cluster/mpich !sys-cluster/mpich2 !sys-cluster/mpiexec dev-libs/libevent dev-libs/libltdl:0 >=sys-apps/hwloc-1.9.1[numa?] sys-libs/zlib cuda? ( dev-util/nvidia-cuda-toolkit ) elibc_FreeBSD? ( dev-libs/libexecinfo ) openmpi_fabrics_ofed? ( sys-infiniband/ofed ) openmpi_fabrics_knem? ( sys-cluster/knem ) openmpi_fabrics_open-mx? ( sys-cluster/open-mx ) openmpi_fabrics_psm? ( sys-infiniband/infinipath-psm ) openmpi_rm_pbs? ( sys-cluster/torque ) openmpi_rm_slurm? ( sys-cluster/slurm ) openmpi_ofed_features_rdmacm? ( sys-infiniband/librdmacm ) java? ( >=virtual/jdk-1.6 ) fortran? ( virtual/fortran ) java? ( >=dev-java/java-config-2.2.0 )
+DESCRIPTION=A high-performance message passing library (MPI)
+EAPI=5
+HOMEPAGE=http://www.open-mpi.org
+IUSE=cma cuda +cxx elibc_FreeBSD fortran heterogeneous ipv6 java mpi-threads numa romio threads vt openmpi_fabrics_ofed openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_psm openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_rdmacm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover elibc_FreeBSD java
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux
+LICENSE=BSD
+RDEPEND=!sys-cluster/mpich !sys-cluster/mpich2 !sys-cluster/mpiexec dev-libs/libevent dev-libs/libltdl:0 >=sys-apps/hwloc-1.9.1[numa?] sys-libs/zlib cuda? ( dev-util/nvidia-cuda-toolkit ) elibc_FreeBSD? ( dev-libs/libexecinfo ) openmpi_fabrics_ofed? ( sys-infiniband/ofed ) openmpi_fabrics_knem? ( sys-cluster/knem ) openmpi_fabrics_open-mx? ( sys-cluster/open-mx ) openmpi_fabrics_psm? ( sys-infiniband/infinipath-psm ) openmpi_rm_pbs? ( sys-cluster/torque ) openmpi_rm_slurm? ( sys-cluster/slurm ) openmpi_ofed_features_rdmacm? ( sys-infiniband/librdmacm ) java? ( >=virtual/jre-1.6 ) fortran? ( virtual/fortran ) java? ( >=dev-java/java-config-2.2.0 )
+REQUIRED_USE=openmpi_rm_slurm? ( !openmpi_rm_pbs ) openmpi_rm_pbs? ( !openmpi_rm_slurm ) openmpi_fabrics_psm? ( openmpi_fabrics_ofed ) openmpi_ofed_features_control-hdr-padding? ( openmpi_fabrics_ofed ) openmpi_ofed_features_connectx-xrc? ( openmpi_fabrics_ofed ) openmpi_ofed_features_udcm? ( openmpi_fabrics_ofed ) openmpi_ofed_features_rdmacm? ( openmpi_fabrics_ofed ) openmpi_ofed_features_dynamic-sl? ( openmpi_fabrics_ofed ) openmpi_ofed_features_failover? ( openmpi_fabrics_ofed )
+SLOT=0
+SRC_URI=http://www.open-mpi.org/software/ompi/v1.8/downloads/openmpi-1.8.7.tar.bz2
+_eclass_exported_funcs=pkg_preinst:java-pkg-opt-2 pkg_setup:- src_prepare:- src_configure:- src_test:- src_install:-
+_eclasses_=cuda	005e306be76ac11f3468389ef2e4da10	eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	a96633177f44ee992b3fce360d1c4f16	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=23ef4e4ec222e4ffa74973712296038c

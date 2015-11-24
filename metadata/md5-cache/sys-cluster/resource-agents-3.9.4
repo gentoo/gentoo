@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare unpack
+DEPEND=sys-apps/iproute2 sys-cluster/cluster-glue !<sys-cluster/heartbeat-3.0 libnet? ( net-libs/libnet:1.1 ) doc? ( dev-libs/libxslt app-text/docbook-xsl-stylesheets ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Resources pack for Heartbeat / Pacemaker
+EAPI=5
+HOMEPAGE=http://www.linux-ha.org/wiki/Resource_Agents
+IUSE=doc libnet rgmanager
+KEYWORDS=~amd64 ~hppa ~x86
+LICENSE=GPL-2
+RDEPEND=sys-apps/iproute2 sys-cluster/cluster-glue !<sys-cluster/heartbeat-3.0 libnet? ( net-libs/libnet:1.1 )
+SLOT=0
+SRC_URI=https://github.com/ClusterLabs/resource-agents/archive/v3.9.4.tar.gz -> resource-agents-3.9.4.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_unpack:base src_prepare:- src_configure:- src_compile:base src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f20548a2f7b0128068388cd2ec26708a	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=be9075bca91da7ba3170da231a171805

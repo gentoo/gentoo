@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=dev-libs/glib:2 >=dev-libs/libxml2-2.0 >=media-libs/fontconfig-2 x11-libs/libXft x11-libs/libXinerama x11-libs/libXrandr x11-libs/libXt >=x11-libs/pango-1.8[X] imlib? ( media-libs/imlib2 ) startup-notification? ( >=x11-libs/startup-notification-0.8 ) svg? ( gnome-base/librsvg:2 ) xdg? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyxdg[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) sys-devel/gettext virtual/pkgconfig x11-proto/xextproto x11-proto/xf86vidmodeproto x11-proto/xineramaproto !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A standards compliant, fast, light-weight, extensible window manager
+EAPI=5
+HOMEPAGE=http://openbox.org/
+IUSE=branding debug imlib nls session startup-notification static-libs svg xdg python_targets_python2_7
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~arm-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 >=dev-libs/libxml2-2.0 >=media-libs/fontconfig-2 x11-libs/libXft x11-libs/libXinerama x11-libs/libXrandr x11-libs/libXt >=x11-libs/pango-1.8[X] imlib? ( media-libs/imlib2 ) startup-notification? ( >=x11-libs/startup-notification-0.8 ) svg? ( gnome-base/librsvg:2 ) xdg? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyxdg[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] )
+REQUIRED_USE=xdg? ( || ( python_targets_python2_7 ) )
+SLOT=3
+SRC_URI=http://openbox.org/dist/openbox/openbox-3.6.1.tar.gz branding? ( https://dev.gentoo.org/~hwoarang/distfiles/surreal-gentoo.tar.gz )
+_eclass_exported_funcs=src_unpack:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f20548a2f7b0128068388cd2ec26708a	libtool	b75230758539a7da029e24afdb693960	multibuild	ce2c2ede0c914b77f5dfc4e2ff2d0249	multilib	3972ca401cf7dbb430df9995f5d8d580	python-r1	fb656e31d5596be6ac85cde42dccfcb6	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=3e08b5da0646aaeb076c167ccc72d73b

@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare prerm setup unpack
+DEPEND=!kernel_Darwin? ( >=sys-devel/gcc-2.95.3 ) kernel_linux? ( >=sys-devel/binutils-2.17 ) kernel_SunOS? ( >=sys-devel/binutils-2.17 ) >=dev-lang/perl-5.6.1 >=dev-libs/gmp-5 virtual/libffi !<dev-haskell/haddock-2.10.0 sys-libs/ncurses[unicode] ghcbootstrap? ( doc? ( app-text/docbook-xml-dtd:4.2 app-text/docbook-xml-dtd:4.5 app-text/docbook-xsl-stylesheets >=dev-libs/libxslt-1.1.2 ) ) !ghcbootstrap? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.14 ) ) ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=The Glasgow Haskell Compiler
+EAPI=5
+HOMEPAGE=http://www.haskell.org/ghc/
+IUSE=doc ghcbootstrap ghcmakebinary +gmp llvm binary elibc_glibc
+KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris
+LICENSE=BSD
+PDEPEND=!ghcbootstrap? ( =app-admin/haskell-updater-1.2* ) llvm? ( sys-devel/llvm )
+RDEPEND=!kernel_Darwin? ( >=sys-devel/gcc-2.95.3 ) kernel_linux? ( >=sys-devel/binutils-2.17 ) kernel_SunOS? ( >=sys-devel/binutils-2.17 ) >=dev-lang/perl-5.6.1 >=dev-libs/gmp-5 virtual/libffi !<dev-haskell/haddock-2.10.0 sys-libs/ncurses[unicode]
+REQUIRED_USE=ia64? ( !gmp )
+SLOT=0/7.4.2
+SRC_URI=!binary? ( http://www.haskell.org/ghc/dist/7.4.2/ghc-7.4.2-src.tar.bz2 ) !ghcbootstrap? ( alpha? ( http://code.haskell.org/~slyfox/ghc-alpha/ghc-bin-7.4.2-alpha.tbz2 ) amd64? ( http://code.haskell.org/~slyfox/ghc-amd64/ghc-bin-7.4.2-amd64-stable-glibc.tbz2 ) ia64? ( http://code.haskell.org/~slyfox/ghc-ia64/ghc-bin-7.4.2-ia64.tbz2 ) ppc? ( http://code.haskell.org/~slyfox/ghc-ppc/ghc-bin-7.4.2-ppc.tbz2 ) ppc64? ( http://code.haskell.org/~slyfox/ghc-ppc64/ghc-bin-7.4.2-ppc64.tbz2 ) sparc? ( http://code.haskell.org/~slyfox/ghc-sparc/ghc-bin-7.4.2-sparc.tbz2 ) x86? ( http://code.haskell.org/~slyfox/ghc-x86/ghc-bin-7.4.2-x86-stable-glibc.tbz2 ) )
+_eclass_exported_funcs=pkg_prerm:- pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	3fe4f8980633fd7bc69e9887209ba2fe	bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	f20548a2f7b0128068388cd2ec26708a	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	ghc-package	6165faf4ae46df43d5a9b0dd28ec8654	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	pax-utils	9dd3f9de6dccb2463faf55e568439d1c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=c6ab515709d52517d1536953c7c8a720

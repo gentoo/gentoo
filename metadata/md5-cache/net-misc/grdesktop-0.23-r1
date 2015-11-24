@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
+DEPEND=x11-libs/gtk+:2 >=gnome-base/libgnomeui-2 net-misc/rdesktop gnome-base/gconf:2 app-text/scrollkeeper virtual/pkgconfig app-arch/xz-utils >=sys-apps/sed-4
+DESCRIPTION=Gtk2 frontend for rdesktop
+EAPI=5
+HOMEPAGE=http://www.nongnu.org/grdesktop/
+KEYWORDS=amd64 ppc sparc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2 >=gnome-base/libgnomeui-2 net-misc/rdesktop gnome-base/gconf:2
+SLOT=0
+SRC_URI=http://savannah.nongnu.org/download/grdesktop/grdesktop-0.23.tar.gz
+_eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_unpack:gnome2 src_prepare:- src_configure:- src_compile:gnome2 src_install:gnome2
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	56d268cae832738430a9de86a5765fa1	gnome2-utils	588052cacdf74572e68bdfeaece20534	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=600e9c4046cff962c8dbae033bb4aacb

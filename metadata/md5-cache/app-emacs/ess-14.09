@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=app-text/texi2html virtual/latex-base >=virtual/emacs-23
+DESCRIPTION=Emacs Speaks Statistics
+EAPI=5
+HOMEPAGE=http://ess.r-project.org/
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~x86-macos
+LICENSE=GPL-2+ GPL-3+ Texinfo-manual
+RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=http://ess.r-project.org/downloads/ess/ess-14.09.tgz
+_eclass_exported_funcs=pkg_postrm:elisp pkg_postinst:elisp pkg_setup:elisp src_unpack:elisp src_prepare:elisp src_configure:elisp src_compile:- src_install:-
+_eclasses_=elisp	484004c25306120b472b7dfdb0685c95	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=a80e74c765c5d4fa5db278fe17551427

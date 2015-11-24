@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup
+DEPEND==dev-lang/python-2* >=sys-apps/sed-4
+DESCRIPTION=A upower based battery monitor for the system tray, similar to batterymon
+EAPI=5
+HOMEPAGE=https://code.google.com/p/batti-gtk/
+IUSE=libnotify
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-python/pygtk dev-python/dbus-python || ( sys-power/upower sys-power/upower-pm-utils ) x11-themes/gnome-icon-theme libnotify? ( x11-libs/libnotify ) =dev-lang/python-2*
+SLOT=0
+SRC_URI=https://batti-gtk.googlecode.com/files/batti-0.3.8.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:python src_prepare:- src_compile:distutils src_install:distutils
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	f20548a2f7b0128068388cd2ec26708a	gnome2-utils	588052cacdf74572e68bdfeaece20534	multilib	3972ca401cf7dbb430df9995f5d8d580	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=0788064286c9c19573302434bac612b2

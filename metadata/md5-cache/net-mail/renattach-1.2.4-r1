@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Filter that renames/deletes dangerous email attachments
+EAPI=5
+HOMEPAGE=http://www.pc-tools.net/unix/renattach/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.pc-tools.net/files/unix/renattach-1.2.4.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=a0c60ec5ace204b2ee669bcad5d3f1ab

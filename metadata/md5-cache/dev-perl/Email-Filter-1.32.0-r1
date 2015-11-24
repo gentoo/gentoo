@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-perl/Email-LocalDelivery dev-perl/Class-Trigger dev-perl/IPC-Run dev-perl/Email-Simple test? ( dev-perl/Test-Pod dev-perl/Test-Pod-Coverage ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Simple filtering of RFC2822 message format and headers
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Email-Filter/
+IUSE=test
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Email-LocalDelivery dev-perl/Class-Trigger dev-perl/IPC-Run dev-perl/Email-Simple dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Email-Filter-1.032.tar.gz
+_eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
+_md5_=0de37bdcd14b1b6eb1dd28a598a76ce4

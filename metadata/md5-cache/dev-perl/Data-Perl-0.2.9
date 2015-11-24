@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-perl/Class-Method-Modifiers dev-perl/List-MoreUtils virtual/perl-Scalar-List-Utils dev-perl/Module-Runtime dev-perl/Role-Tiny virtual/perl-parent dev-perl/strictures virtual/perl-ExtUtils-MakeMaker test? ( dev-perl/Test-Deep dev-perl/Test-Fatal dev-perl/Test-Output ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Base classes wrapping fundamental Perl data types
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Data-Perl/
+IUSE=test
+KEYWORDS=~amd64 ~hppa ~ppc ~x86 ~ppc-macos
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Class-Method-Modifiers dev-perl/List-MoreUtils virtual/perl-Scalar-List-Utils dev-perl/Module-Runtime dev-perl/Role-Tiny virtual/perl-parent dev-perl/strictures dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MA/MATTP/Data-Perl-0.002009.tar.gz
+_eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	d769539d9bace6eaca30af23bc2b4dde	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
+_md5_=61ed575082143ae5b0a4a142f748bccd

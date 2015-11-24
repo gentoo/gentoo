@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=sys-libs/zlib fortran? ( dev-lang/cfortran ) fortran? ( virtual/fortran )
+DESCRIPTION=C and Fortran library for manipulating FITS files
+EAPI=5
+HOMEPAGE=http://heasarc.gsfc.nasa.gov/docs/software/fitsio/fitsio.html
+IUSE=doc examples fortran static-libs +tools threads
+KEYWORDS=alpha amd64 hppa ppc ppc64 sparc x86 ~x64-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris
+LICENSE=MIT
+RDEPEND=sys-libs/zlib fortran? ( virtual/fortran )
+SLOT=0/1
+SRC_URI=https://dev.gentoo.org/~bicatali/distfiles/cfitsio-3.360.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	f20548a2f7b0128068388cd2ec26708a	fortran-2	eb14fa8f4c3b9977b8d26c2c653ca325	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=0d72c2fbce3aea1d28bb8e745352eb8c

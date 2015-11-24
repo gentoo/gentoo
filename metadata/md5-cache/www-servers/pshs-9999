@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure prepare unpack
+DEPEND=>=dev-libs/libevent-2:0= magic? ( sys-apps/file:0= ) qrcode? ( media-gfx/qrencode:0= ) ssl? ( >=dev-libs/libevent-2.1:0=[ssl] !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) upnp? ( net-libs/miniupnpc:0= ) netlink? ( sys-apps/iproute2 >=sys-kernel/linux-headers-2.6.27 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Pretty small HTTP server -- a command-line tool to share files
+EAPI=5
+HOMEPAGE=https://bitbucket.org/mgorny/pshs/
+IUSE=libressl +magic +netlink qrcode ssl upnp
+LICENSE=BSD
+RDEPEND=>=dev-libs/libevent-2:0= magic? ( sys-apps/file:0= ) qrcode? ( media-gfx/qrencode:0= ) ssl? ( >=dev-libs/libevent-2.1:0=[ssl] !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) upnp? ( net-libs/miniupnpc:0= )
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	f20548a2f7b0128068388cd2ec26708a	git-r3	b00a846f415f26e5b66e5c44c7dc87dc	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=814b1b9c987b2b3b5d1ad900678f3e0a
