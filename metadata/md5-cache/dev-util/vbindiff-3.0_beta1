@@ -8,4 +8,5 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses
 SLOT=0
 SRC_URI=http://www.cjmweb.net/vbindiff/vbindiff-3.0_beta1.tar.gz
+_eclass_exported_funcs=src_install:-
 _md5_=8488d85837beb72d6327f73f4f928181

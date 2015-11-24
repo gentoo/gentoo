@@ -9,4 +9,5 @@ LICENSE=LGPL-2.1 GPL-2
 RDEPEND=dev-libs/glib sys-libs/gdbm crypt? ( dev-libs/openssl ) snmp? ( net-analyzer/net-snmp ) perl? ( dev-lang/perl )
 SLOT=0
 SRC_URI=mirror://sourceforge/openipmi/OpenIPMI-1.4.28.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
 _md5_=79163856657a6174750f7b2b1ad33abe

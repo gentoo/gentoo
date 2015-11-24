@@ -7,4 +7,5 @@ LICENSE=freedist
 RDEPEND=>=dev-lang/perl-5.6 app-misc/mime-types
 SLOT=0
 SRC_URI=mirror://debian/pool/main/m/mime-support/mime-support_3.52-1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
 _md5_=29ea0cc90f7a052ac737be4af063f414

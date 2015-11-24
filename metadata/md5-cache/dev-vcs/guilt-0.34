@@ -10,4 +10,5 @@ RDEPEND=dev-vcs/git
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://kernel/linux/kernel/people/jsipek/guilt/guilt-0.34.tar.bz2 mirror://gentoo/guilt-manpages-0.34.tar.bz2
+_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
 _md5_=dfbdedbd71c202e32d07a2930a8eaea8

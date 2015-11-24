@@ -9,5 +9,6 @@ LICENSE=GPL-2
 RDEPEND=virtual/httpd-php mysql? ( >=virtual/mysql-4.1 ) >=app-admin/webapp-config-1.50.15
 SLOT=2.9.8m-r1
 SRC_URI=https://php-syslog-ng.googlecode.com/files/php-syslog-ng-2.9.8m.tar.gz
+_eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:webapp pkg_setup:webapp src_install:-
 _eclasses_=webapp	42c6ef7af496b228f9854b3c81e4b226
 _md5_=2261e6b206a5373f9c6ce288956439dd

@@ -8,4 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl dev-perl/net-server mail-filter/spamassassin
 SLOT=0
 SRC_URI=http://www.worlddesign.com/Content/rd/mta/spampd/spampd-2.30.tar.gz
+_eclass_exported_funcs=src_install:-
 _md5_=a8e27c31406591685ec80a74f6fbfebe

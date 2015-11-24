@@ -7,4 +7,5 @@ LICENSE=simpserver-test
 RESTRICT=strip
 SLOT=0
 SRC_URI=http://download.secway.com/public/products/simpserver/simpserver-2.1.0-linux-x86.tgz
+_eclass_exported_funcs=pkg_postinst:- src_compile:- src_install:-
 _md5_=70cb74397b04c44794e54cc5391088d9

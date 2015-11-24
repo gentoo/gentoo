@@ -9,4 +9,5 @@ LICENSE=GPL-2
 RDEPEND=gnutls? ( net-libs/gnutls ) net-dns/c-ares
 SLOT=0
 SRC_URI=mirror://berlios/sipsak/sipsak-0.9.6-1.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=f9716f2fdc2d038200b0b4d7fc04030c

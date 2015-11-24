@@ -8,4 +8,5 @@ LICENSE=GPL-2
 RDEPEND==app-pda/libopensync-0.22*
 SLOT=0
 SRC_URI=http://dev.gentooexperimental.org/~peper/distfiles/libopensync-plugin-gpe-0.22.tar.bz2
+_eclass_exported_funcs=src_install:-
 _md5_=3d8ddcc2138eb730836b51b06920bef1

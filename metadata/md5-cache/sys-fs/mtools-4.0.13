@@ -9,4 +9,5 @@ LICENSE=GPL-3
 RDEPEND=X? ( x11-libs/libICE x11-libs/libXau x11-libs/libSM x11-libs/libX11 x11-libs/libXt )
 SLOT=0
 SRC_URI=http://mtools.linux.lu/mtools-4.0.13.tar.bz2 mirror://gnu/mtools/mtools-4.0.13.tar.bz2
+_eclass_exported_funcs=src_compile:- src_install:-
 _md5_=13d7253e06a2b33e72464394e3512b72

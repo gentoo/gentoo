@@ -8,4 +8,5 @@ LICENSE=GPL-2
 RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=http://www.nanolx.org/downloads/fortunes-flashrider-0.90-BB-Styles-Edition.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_install:-
 _md5_=8f2dd0671cf41a86ca1d43a4b8a2d0c5

@@ -9,4 +9,5 @@ RDEPEND=dev-libs/libzip sys-fs/fuse
 RESTRICT=test
 SLOT=0
 SRC_URI=https://fuse-zip.googlecode.com/files/fuse-zip-0.2.12.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
 _md5_=227d5799f01b24c586df83b8bc49fd83

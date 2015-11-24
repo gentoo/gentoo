@@ -8,4 +8,5 @@ KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.physcip.uni-stuttgart.de/phy11733/download/quat-1.20.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
 _md5_=0952801a11095921b3816d207789ee2e

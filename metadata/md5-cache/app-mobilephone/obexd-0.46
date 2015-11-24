@@ -9,4 +9,5 @@ LICENSE=GPL-2
 RDEPEND=eds? ( gnome-extra/evolution-data-server ) !eds? ( dev-libs/libical ) >=net-wireless/bluez-4.99 >=dev-libs/openobex-1.4 >=dev-libs/glib-2.28:2 >=sys-apps/dbus-1.4 server? ( !app-mobilephone/obex-data-server )
 SLOT=0
 SRC_URI=mirror://kernel/linux/bluetooth/obexd-0.46.tar.xz
+_eclass_exported_funcs=src_configure:-
 _md5_=c5a12db9e8d61cc1134411985225bd92

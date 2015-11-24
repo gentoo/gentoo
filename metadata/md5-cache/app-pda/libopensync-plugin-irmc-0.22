@@ -10,4 +10,5 @@ RDEPEND=~app-pda/libopensync-0.22 dev-libs/glib:2 dev-libs/libxml2 >=dev-libs/op
 REQUIRED_USE=|| ( bluetooth irda )
 SLOT=0
 SRC_URI=http://www.opensync.org/download/releases/0.22/libopensync-plugin-irmc-0.22.tar.bz2
+_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=f8af40b7d41c437d51c22d75574cccbd

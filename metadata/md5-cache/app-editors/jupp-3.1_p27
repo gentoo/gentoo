@@ -9,4 +9,5 @@ LICENSE=GPL-1
 RDEPEND=ncurses? ( sys-libs/ncurses ) !app-editors/joe
 SLOT=0
 SRC_URI=https://www.mirbsd.org/MirOS/dist/jupp/joe-3.1jupp27.tgz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _md5_=5d14af475583e3897309ce4f882f9aa0

@@ -1,7 +1,0 @@
-DEFINED_PHASES=-
-DESCRIPTION=Virtual for IO-Socket-IP
-EAPI=5
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~ppc-macos ~x86-solaris
-RDEPEND=|| ( =dev-lang/perl-5.22* ~perl-core/IO-Socket-IP-0.370.0 ) !<perl-core/IO-Socket-IP-0.370.0 !>perl-core/IO-Socket-IP-0.370.0-r999
-SLOT=0
-_md5_=8e16ac4008d58d50c8bfbbd8606f964b

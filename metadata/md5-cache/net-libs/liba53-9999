@@ -1,9 +1,0 @@
-DEFINED_PHASES=install unpack
-DEPEND=dev-vcs/git
-DESCRIPTION=A5/3 Call encryption library
-EAPI=5
-HOMEPAGE=https://github.com/RangeNetworks/liba53
-LICENSE=GPL-2
-SLOT=0
-_eclasses_=git-2	df00117322129fb906bb0a53c3d6a020
-_md5_=f20995dd38efb966d13c7cb2c5cfa932

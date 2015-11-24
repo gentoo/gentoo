@@ -9,4 +9,5 @@ LICENSE=GPL-2 unicode
 RDEPEND=!<sys-freebsd/freebsd-share-7.2-r1
 SLOT=0
 SRC_URI=mirror://gnu/miscfiles/miscfiles-1.5.tar.gz mirror://gentoo/UnicodeData-6.1.0.txt.xz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
 _md5_=0cdb943a1ba7600c829bbd5a1033e0a2

@@ -7,4 +7,5 @@ LICENSE=sus3-copyright
 RESTRICT=mirror
 SLOT=3
 SRC_URI=http://www.opengroup.org/onlinepubs/009695399/download/susv3.tar.bz2
+_eclass_exported_funcs=src_install:-
 _md5_=03753a71fafeebe5d8e9ce627ed35014

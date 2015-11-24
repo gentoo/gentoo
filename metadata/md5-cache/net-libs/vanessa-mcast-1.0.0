@@ -8,4 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/vanessa-logger-0.0.6 >=net-libs/vanessa-socket-0.0.7
 SLOT=0
 SRC_URI=http://www.vergenet.net/linux/vanessa/download/vanessa_mcast/1.0.0/vanessa_mcast-1.0.0.tar.gz
+_eclass_exported_funcs=src_install:-
 _md5_=fc0e7ac0920b3711d86e11d4b51e044d

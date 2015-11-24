@@ -8,4 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-perl/Template-Toolkit virtual/perl-Getopt-Long
 SLOT=0
 SRC_URI=http://garminmapsearch.com/osm/osm2mp_v080.zip
+_eclass_exported_funcs=src_prepare:- src_install:-
 _md5_=e74506b6504d5b58da14e616c5b34f92

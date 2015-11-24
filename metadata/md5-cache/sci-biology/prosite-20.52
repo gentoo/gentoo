@@ -9,4 +9,5 @@ LICENSE=swiss-prot
 RDEPEND=emboss? ( sci-biology/emboss )
 SLOT=0
 SRC_URI=mirror://gentoo/prosite-20.52.tar.bz2
+_eclass_exported_funcs=src_compile:- src_install:-
 _md5_=99cc1069ef5cf28badb48f55a0ca904a

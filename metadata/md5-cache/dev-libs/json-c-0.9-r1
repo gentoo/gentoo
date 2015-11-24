@@ -8,4 +8,5 @@ LICENSE=MIT
 RDEPEND=!<dev-libs/jsoncpp-0.5.0-r1
 SLOT=0
 SRC_URI=http://oss.metaparadigm.com/json-c/json-c-0.9.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=ecb72d68a6415c65e1da22c6935f8cef

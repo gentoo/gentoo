@@ -9,5 +9,6 @@ LICENSE=GDLS
 RESTRICT=strip
 SLOT=0
 SRC_URI=mirror://sourceforge/stardict/stardict-jmdict-ja-en-2.4.2.tar.bz2
+_eclass_exported_funcs=src_compile:stardict src_install:stardict
 _eclasses_=stardict	f2fd36b0af07ceaba9852e6caec6ac7f
 _md5_=52187796ab8c27dee02c94b44e27753e

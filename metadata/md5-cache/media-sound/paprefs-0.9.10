@@ -9,4 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-cpp/gtkmm:2.4 dev-cpp/libglademm:2.4 >=dev-cpp/gconfmm-2.6 >=dev-libs/libsigc++-2.2:2 media-sound/pulseaudio[glib,gnome] || ( x11-themes/tango-icon-theme x11-themes/gnome-icon-theme )
 SLOT=0
 SRC_URI=http://freedesktop.org/software/pulseaudio/paprefs/paprefs-0.9.10.tar.xz
+_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=c4b5d1be3e647e1512409e20ab8fbf2d

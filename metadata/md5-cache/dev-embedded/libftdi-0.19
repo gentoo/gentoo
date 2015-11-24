@@ -9,4 +9,5 @@ LICENSE=LGPL-2
 RDEPEND=virtual/libusb:0 cxx? ( dev-libs/boost ) python? ( dev-lang/python )
 SLOT=0
 SRC_URI=http://www.intra2net.com/en/developer/libftdi/download/libftdi-0.19.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _md5_=b7fe7bc406a4c7c1269653f1fa076bdc

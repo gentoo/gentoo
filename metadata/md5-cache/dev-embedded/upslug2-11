@@ -6,4 +6,5 @@ KEYWORDS=amd64 ~arm x86
 LICENSE=MIT
 SLOT=0
 SRC_URI=mirror://sourceforge/nslu/upslug2-11.tar.gz
+_eclass_exported_funcs=src_install:-
 _md5_=cafa94edd9f55cba81eef12f90d47b89

@@ -9,4 +9,5 @@ LICENSE=GPL-2
 RDEPEND=net-dialup/ppp dev-util/dialog dev-lang/perl
 SLOT=0
 SRC_URI=mirror://debian/pool/main/p/pppconfig/pppconfig_2.3.17.tar.gz
+_eclass_exported_funcs=src_install:-
 _md5_=2e37f7b2c847b18655561ec0b50fe5ec

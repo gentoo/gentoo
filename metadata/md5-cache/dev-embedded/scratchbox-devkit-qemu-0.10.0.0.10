@@ -7,4 +7,5 @@ LICENSE=GPL-2
 RESTRICT=strip
 SLOT=0
 SRC_URI=http://scratchbox.org/download/files/sbox-releases/stable/tarball/scratchbox-devkit-qemu-0.10.0-0sb10-i386.tar.gz
+_eclass_exported_funcs=src_install:-
 _md5_=a0598fc07d62ca8fac2a0c9fe1b416cc

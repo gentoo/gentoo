@@ -9,4 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-lang/python-1.5
 SLOT=0
 SRC_URI=mirror://sourceforge/a-a-p/aap-1.076.zip
+_eclass_exported_funcs=src_unpack:- src_install:-
 _md5_=cb44b4c97a7fac4f99bce3a781872f5d

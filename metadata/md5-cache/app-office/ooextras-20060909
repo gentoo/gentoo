@@ -8,4 +8,5 @@ LICENSE=LGPL-2.1
 RDEPEND=virtual/ooo
 SLOT=0
 SRC_URI=mirror://sourceforge/ooextras/ooextras20060909.tgz
+_eclass_exported_funcs=pkg_postinst:- src_compile:- src_install:-
 _md5_=5250261e568575ea5f34e0a5fe29e237

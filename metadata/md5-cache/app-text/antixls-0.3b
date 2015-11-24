@@ -8,4 +8,5 @@ LICENSE=public-domain
 RDEPEND=dev-perl/Spreadsheet-ParseExcel
 SLOT=0
 SRC_URI=http://www.af0.net/~dan/repos/antixls-0.3b.perl
+_eclass_exported_funcs=src_install:-
 _md5_=8d5436cf6a7d7a473e670dd52bdd9fec

@@ -9,4 +9,5 @@ RDEPEND=virtual/jre
 RESTRICT=mirror
 SLOT=0
 SRC_URI=mirror://sabayon/app-admin/IAMCli-1.3.0.zip
+_eclass_exported_funcs=pkg_postinst:- src_unpack:- src_install:-
 _md5_=e42b7a581a39973422d6f61dfb7a6649

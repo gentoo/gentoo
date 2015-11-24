@@ -8,4 +8,5 @@ LICENSE=GPL-3
 RDEPEND=~mail-client/claws-mail-3.9.0
 SLOT=0
 SRC_URI=http://www.claws-mail.org/downloads/plugins/mailmbox-1.15.tar.gz
+_eclass_exported_funcs=src_install:-
 _md5_=c7dbe2bb9d2200e88a1a2392a21e8e98

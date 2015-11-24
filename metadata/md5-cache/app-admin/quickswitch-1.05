@@ -9,4 +9,5 @@ LICENSE=GPL-2
 RDEPEND=ncurses? ( dev-perl/CursesWidgets )
 SLOT=0
 SRC_URI=mirror://sourceforge/quickswitch/quickswitch-1.05.tar.gz
+_eclass_exported_funcs=src_install:-
 _md5_=20da52b69e7a87c5ec8ca939257e0807

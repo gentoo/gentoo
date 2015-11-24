@@ -6,4 +6,5 @@ KEYWORDS=x86 ~ppc
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://globin.cse.psu.edu/ftp/dist/sim4/sim4.tar.gz
+_eclass_exported_funcs=src_install:-
 _md5_=1f9553f10941eb2db6ae6c98bda33f30

@@ -10,4 +10,5 @@ RDEPEND=>=dev-libs/libxml2-2.7.4 >=dev-libs/libxslt-1.0.20 gcrypt? ( >=dev-libs/
 REQUIRED_USE=|| ( gcrypt gnutls nss openssl ) gnutls? ( gcrypt )
 SLOT=0
 SRC_URI=http://www.aleksey.com/xmlsec/download/xmlsec1-1.2.18.tar.gz
+_eclass_exported_funcs=src_configure:- src_test:- src_install:-
 _md5_=15d8482ea5765c16fc6aa28aabf835f1

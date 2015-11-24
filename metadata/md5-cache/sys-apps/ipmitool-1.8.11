@@ -9,4 +9,5 @@ LICENSE=BSD
 RDEPEND=dev-libs/openssl
 SLOT=0
 SRC_URI=mirror://sourceforge/ipmitool/ipmitool-1.8.11.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
 _md5_=b1b122552e5868745aac4744baa07031

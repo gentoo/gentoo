@@ -8,4 +8,5 @@ LICENSE=Artistic
 RDEPEND=>=dev-lang/perl-5.6.1 >=virtual/perl-libnet-1.11 >=sys-apps/sed-4 >=dev-perl/Net-DNS-0.12
 SLOT=0
 SRC_URI=http://www.topfx.com/dist/disspam-0.14.tar.gz
+_eclass_exported_funcs=src_unpack:- src_install:-
 _md5_=07796a7a6006bb933180b86a4d9e5bd9

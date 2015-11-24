@@ -6,4 +6,5 @@ IUSE=+symlink
 KEYWORDS=~amd64 ~x86
 LICENSE=public-domain
 SLOT=0
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- src_install:-
 _md5_=4f0466f56a15a5e87baeacb730d567a0

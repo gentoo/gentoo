@@ -7,4 +7,5 @@ LICENSE=GPL-2
 RDEPEND=>=app-admin/eselect-1.0.2 !<media-sound/esound-0.2.36-r2
 SLOT=0
 SRC_URI=mirror://gentoo/esd.eselect-20060719.bz2
+_eclass_exported_funcs=src_install:-
 _md5_=43db9e7c9b76c0af9902cdd19c46c5a9

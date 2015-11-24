@@ -8,4 +8,5 @@ LICENSE=LGPL-2.1
 RDEPEND=~app-pda/libopensync-0.22 dev-libs/glib:2 dev-libs/libxml2
 SLOT=0
 SRC_URI=http://www.opensync.org/download/releases/0.22/libopensync-plugin-file-0.22.tar.bz2
+_eclass_exported_funcs=src_install:-
 _md5_=c6ce1afdaf472c87e61d6888e83ea638

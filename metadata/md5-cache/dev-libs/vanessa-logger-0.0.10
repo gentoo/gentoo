@@ -6,4 +6,5 @@ KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.vergenet.net/linux/vanessa/download/vanessa_logger/0.0.10/vanessa_logger-0.0.10.tar.gz
+_eclass_exported_funcs=src_install:-
 _md5_=388e25467ebf445a7feb490c0fb4587b

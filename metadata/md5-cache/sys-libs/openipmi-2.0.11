@@ -10,4 +10,5 @@ RDEPEND=dev-libs/glib sys-libs/gdbm crypt? ( dev-libs/openssl ) snmp? ( net-anal
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/openipmi/OpenIPMI-2.0.11.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
 _md5_=a67ca1bb923449994969394f5fd81d05

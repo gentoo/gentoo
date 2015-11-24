@@ -9,4 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/openssl gtk? ( x11-libs/gtk+:2 app-admin/gkrellm:2 ) !gtk? ( x11-wm/windowmaker ) >=x11-libs/libX11-1 >=x11-libs/libXext-1 >=x11-libs/libXpm-3.5.4.2
 SLOT=0
 SRC_URI=http://www.earthmagic.org/files/wmium-1.0.9b.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _md5_=697c12d113b2e0715e8aab6cd778c056

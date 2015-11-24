@@ -8,4 +8,5 @@ LICENSE=BSD
 RDEPEND=net-misc/curl dev-libs/openssl virtual/shadow
 SLOT=0
 SRC_URI=http://www.murmeldjur.se/btpd/btpd-0.15.tar.gz http://people.su.se/~rnyberg/btpd/btpd-0.15.tar.gz
+_eclass_exported_funcs=src_install:-
 _md5_=7dcc8efc51b36690cb89d24969ba581c

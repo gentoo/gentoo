@@ -9,4 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=sci-libs/colamd
 SLOT=0
 SRC_URI=http://dev.gentooexperimental.org/~scarabeus/lpsolve-5.5.2.0.tar.xz
+_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=3615eda1f6eb65484e8ed462a93f53fc

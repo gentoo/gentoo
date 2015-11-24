@@ -9,4 +9,5 @@ LICENSE=GPL-2
 RDEPEND=X? ( >=x11-libs/wxGTK-2.6.0 ) >=dev-libs/libxml2-2.0.0 net-misc/curl virtual/libusb:0 sys-libs/readline
 SLOT=0
 SRC_URI=mirror://berlios/usbprog/usbprog-0.2.0.tar.bz2
+_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=039970cfcafddf4817dd87f27bec2d95

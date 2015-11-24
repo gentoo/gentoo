@@ -10,4 +10,5 @@ RDEPEND=dev-libs/glib:2 ssl? ( dev-libs/openssl )
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/sofia-sip/sofia-sip-1.12.11.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=9f916084269b2d5fdefeaf0365596221

@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DEPEND=sys-libs/ncurses:0= x11-libs/libX11 x11-libs/libXft x11-libs/libXinerama
+DESCRIPTION=Touchscreen calibration utility
+EAPI=6
+HOMEPAGE=http://touchcal.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=sys-libs/ncurses:0= x11-libs/libX11 x11-libs/libXft x11-libs/libXinerama
+SLOT=0
+SRC_URI=mirror://sourceforge/touchcal/touchcal_0.80.orig.tar.gz
+_eclass_exported_funcs=-
+_md5_=84382c1c145ecd262405270d87a79318

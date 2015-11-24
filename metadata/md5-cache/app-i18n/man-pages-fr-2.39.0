@@ -7,4 +7,5 @@ LICENSE=man-pages GPL-2+ BSD MIT LDP-1 public-domain
 RDEPEND=virtual/man
 SLOT=0
 SRC_URI=ftp://ftp.win.tue.nl/pub/linux-local/manpages/translations/man-pages-fr-2.39.0.tar.bz2
+_eclass_exported_funcs=src_compile:- src_install:-
 _md5_=ab9a977dd72740f300d5b7889f7041d2

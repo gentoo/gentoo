@@ -8,4 +8,5 @@ LICENSE=MIT
 RDEPEND=!<app-text/texlive-core-2010 !app-text/ptex >=dev-libs/kpathsea-6.1.0_p20120701
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-20130530-source.tar.xz
+_eclass_exported_funcs=src_configure:-
 _md5_=654caba9f2aaf1fa0902fe60a8ee61ef

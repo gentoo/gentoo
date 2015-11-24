@@ -8,4 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=media-sound/gmpc-0.20.0 dev-libs/libxml2 || ( x11-libs/gdk-pixbuf:2[jpeg] x11-libs/gtk+:2[jpeg] )
 SLOT=0
 SRC_URI=mirror://sourceforge/musicpd/gmpc-discogs-0.20.0.tar.gz
+_eclass_exported_funcs=src_install:-
 _md5_=ffbdcaa0e6c476ca00fd53e01f907a62

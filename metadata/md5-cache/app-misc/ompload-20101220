@@ -7,4 +7,5 @@ LICENSE=GPL-3
 RDEPEND=>=dev-lang/ruby-1.8 net-misc/curl
 SLOT=0
 SRC_URI=mirror://gentoo/ompload-20101220
+_eclass_exported_funcs=src_unpack:- src_install:-
 _md5_=132a2659dc2ee1a077869b6a7521fcb7

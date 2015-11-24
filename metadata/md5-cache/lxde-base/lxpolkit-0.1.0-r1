@@ -8,4 +8,5 @@ LICENSE=GPL-3
 RDEPEND=>=sys-auth/polkit-0.102 x11-libs/gtk+:3 !gnome-extra/polkit-gnome
 SLOT=0
 SRC_URI=mirror://sourceforge/project/lxde/LXPolkit/lxpolkit-0.1.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
 _md5_=8a44f6cb00941835051e2da59c7b5852

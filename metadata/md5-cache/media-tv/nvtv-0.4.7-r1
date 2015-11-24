@@ -9,4 +9,5 @@ LICENSE=GPL-2
 RDEPEND=sys-apps/pciutils[-zlib] gtk? ( x11-libs/gtk+:2 ) X? ( x11-libs/libXi x11-libs/libXmu x11-libs/libXxf86vm )
 SLOT=0
 SRC_URI=mirror://sourceforge/nv-tv-out/nvtv-0.4.7.tar.gz
+_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
 _md5_=b892ce3d54b45a89498ac31a513119af

@@ -9,4 +9,5 @@ LICENSE=GPL-3
 RDEPEND=~mail-client/claws-mail-3.9.0 nls? ( >=sys-devel/gettext-0.12.1 )
 SLOT=0
 SRC_URI=http://www.claws-mail.org/downloads/plugins/attachwarner-1.0.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
 _md5_=c46410fba4c158513e9bd4a0132ab692

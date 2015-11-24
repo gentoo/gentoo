@@ -8,4 +8,5 @@ LICENSE=GPL-2
 RDEPEND=app-portage/portage-utils
 SLOT=0
 SRC_URI=mirror://gentoo/java-config-wrapper-0.16.tar.bz2
+_eclass_exported_funcs=src_install:-
 _md5_=28f953d5ed0c1c714369630b23ec4698

@@ -8,4 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/openssl sys-apps/util-linux
 SLOT=0
 SRC_URI=http://blog.hansenpartnership.com/wp-uploads/2013/efitools-1.4.2.tar.gz
+_eclass_exported_funcs=-
 _md5_=e240d93cf035bf794203109fea287d57

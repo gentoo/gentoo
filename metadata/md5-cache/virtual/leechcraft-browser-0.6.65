@@ -4,4 +4,5 @@ EAPI=4
 KEYWORDS=~amd64 ~x86
 RDEPEND=app-leechcraft/lc-poshuku
 SLOT=0
+_eclass_exported_funcs=-
 _md5_=5fd1e406d9128db21086d2ad5ec3c6fa

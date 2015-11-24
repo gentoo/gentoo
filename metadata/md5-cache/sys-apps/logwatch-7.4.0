@@ -7,4 +7,5 @@ LICENSE=MIT
 RDEPEND=virtual/cron virtual/mta virtual/mailx dev-lang/perl dev-perl/Date-Calc dev-perl/DateManip dev-perl/Tie-IxHash dev-perl/Sys-CPU dev-perl/Sys-MemInfo
 SLOT=0
 SRC_URI=mirror://sourceforge/logwatch/logwatch-7.4.0/logwatch-7.4.0.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_install:-
 _md5_=6bf0ab604d86aa5f7105e9da7b6f6e41

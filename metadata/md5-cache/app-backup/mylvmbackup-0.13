@@ -7,4 +7,5 @@ LICENSE=GPL-2
 RDEPEND=dev-perl/Config-IniFiles >=sys-fs/lvm2-2.02.06 dev-perl/DBD-mysql virtual/mysql dev-perl/TimeDate
 SLOT=0
 SRC_URI=http://lenzg.net/mylvmbackup/mylvmbackup-0.13.tar.gz
+_eclass_exported_funcs=src_unpack:- src_install:-
 _md5_=7279a5ff1b35ac8620fecd85793ad0ba

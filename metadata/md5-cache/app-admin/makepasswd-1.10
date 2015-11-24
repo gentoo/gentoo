@@ -7,4 +7,5 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=mirror://debian/dists/potato/main/source/admin/makepasswd_1.10.orig.tar.gz
+_eclass_exported_funcs=src_install:-
 _md5_=885004623180dc904a742f61362e01f2

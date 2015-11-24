@@ -8,4 +8,5 @@ LICENSE=Oracle-BCLA-JavaSE
 RESTRICT=fetch
 SLOT=1.6
 SRC_URI=jce_policy-6.zip
+_eclass_exported_funcs=src_unpack:- src_install:-
 _md5_=932a460a2ea0cad9b6d82e09b7251014

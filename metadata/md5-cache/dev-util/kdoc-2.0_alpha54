@@ -9,4 +9,5 @@ RDEPEND=dev-lang/perl
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://gentoo/kdoc-2.0a54.tar.bz2
+_eclass_exported_funcs=src_install:-
 _md5_=4c6cfb902c7b030c681bcde04e59ce68

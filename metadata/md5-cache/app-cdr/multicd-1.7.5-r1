@@ -7,4 +7,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-lang/perl-5.8.6 virtual/cdrtools
 SLOT=0
 SRC_URI=http://danborn.net/multicd/multicd-1.7.5.tar.gz
+_eclass_exported_funcs=src_install:-
 _md5_=01d41d7fa9490dd983b21f2495fc1608

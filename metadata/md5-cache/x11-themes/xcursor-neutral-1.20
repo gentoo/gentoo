@@ -9,4 +9,5 @@ LICENSE=Artistic-2
 RDEPEND=x11-libs/libX11 x11-libs/libXcursor >=media-libs/libpng-1.2
 SLOT=0
 SRC_URI=http://kde-look.org/CONTENT/content-files/48837-Neutral_Plus_1.2.tar.bz2
+_eclass_exported_funcs=src_install:-
 _md5_=f2f8bbbf34f9c7908488d59282f57a26

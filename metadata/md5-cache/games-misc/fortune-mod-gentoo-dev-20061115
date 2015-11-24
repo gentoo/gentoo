@@ -7,4 +7,5 @@ LICENSE=GPL-2
 RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=http://ircd.oppresses.us/~avenj/files/gentoo-dev-20061115.gz
+_eclass_exported_funcs=src_compile:- src_install:-
 _md5_=bb0eca03b8db4c0164b75c42ce1fbb79

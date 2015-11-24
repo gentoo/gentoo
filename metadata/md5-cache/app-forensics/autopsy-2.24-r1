@@ -7,4 +7,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-lang/perl-5.8.0 >=app-forensics/sleuthkit-3.0.0 sys-apps/grep sys-apps/file
 SLOT=0
 SRC_URI=mirror://sourceforge/autopsy/autopsy-2.24.tar.gz
+_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
 _md5_=70b97608e4b97de34faf17111aa9f058

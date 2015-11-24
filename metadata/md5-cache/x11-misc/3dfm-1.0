@@ -8,4 +8,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/glu virtual/opengl media-libs/freeglut
 SLOT=0
 SRC_URI=mirror://sourceforge/innolab/3dfm-1.0.tar.gz
+_eclass_exported_funcs=src_install:-
 _md5_=bce007b40dd8313e5e2d0d2ab802e15b

@@ -8,4 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-cpp/gtkmm:2.4 dev-libs/libsigc++:2 >=media-sound/pulseaudio-0.9.7[glib] || ( x11-themes/tango-icon-theme x11-themes/gnome-icon-theme )
 SLOT=0
 SRC_URI=http://0pointer.de/lennart/projects/pavumeter/pavumeter-0.9.3.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=cc71025db0af017520e9c4100bff0ec0

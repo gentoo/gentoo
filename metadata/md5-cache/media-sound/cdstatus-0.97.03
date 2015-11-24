@@ -6,4 +6,5 @@ KEYWORDS=~amd64 ~ppc ppc64 x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/cdstatus/cdstatus-0.97.03.tar.gz
+_eclass_exported_funcs=pkg_postinst:-
 _md5_=7371d62287fd41cf35a5862665eea1c5

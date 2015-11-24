@@ -8,4 +8,5 @@ LICENSE=GPL-2
 RDEPEND=games-misc/fortune-mod
 SLOT=0
 SRC_URI=http://www.nanolx.org/downloads/fortunes-flashrider-1.00.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_install:-
 _md5_=a21aca88b69427bc3f3cdfac9620ba85

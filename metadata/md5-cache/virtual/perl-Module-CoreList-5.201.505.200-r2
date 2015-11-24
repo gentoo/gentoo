@@ -1,7 +1,0 @@
-DEFINED_PHASES=-
-DESCRIPTION=Virtual for Module-CoreList
-EAPI=5
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
-RDEPEND=|| ( =dev-lang/perl-5.22* ~perl-core/Module-CoreList-5.201.505.200 ) !<perl-core/Module-CoreList-5.201.505.200 !>perl-core/Module-CoreList-5.201.505.200-r999
-SLOT=0
-_md5_=96bf6b645d9864ceda710056f8d362cf

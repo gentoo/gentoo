@@ -9,5 +9,6 @@ LICENSE=GPL-2
 RESTRICT=strip
 SLOT=0
 SRC_URI=http://james.dyndns.ws/pub/Dictionary/StarDict-James/AnhViet109K.zip
+_eclass_exported_funcs=src_compile:stardict src_install:stardict
 _eclasses_=stardict	f2fd36b0af07ceaba9852e6caec6ac7f
 _md5_=80a1567404cd7c397ce6e764bcfce6db

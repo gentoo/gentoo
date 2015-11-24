@@ -9,4 +9,5 @@ LICENSE=GPL-2
 RDEPEND=kpathsea? ( virtual/tex-base )
 SLOT=0
 SRC_URI=http://www.lcdf.org/type/lcdf-typetools-2.97.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
 _md5_=4901dcb9027d7c5d0c738a9e63d29685

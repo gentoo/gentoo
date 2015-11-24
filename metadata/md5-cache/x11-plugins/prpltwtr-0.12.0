@@ -8,4 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=net-im/pidgin-2.6
 SLOT=0
 SRC_URI=https://prpltwtr.googlecode.com/files/prpltwtr-0.12.0.tar.gz
+_eclass_exported_funcs=-
 _md5_=44b837d34b8145f5f83e32bc2fbde792
