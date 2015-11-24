@@ -84,11 +84,13 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2015.5.5-auth-tests.patch"
 	"${FILESDIR}/${PN}-2015.5.5-cron-tests.patch"
 	"${FILESDIR}/${PN}-2015.5.5-remove-buggy-tests.patch"
+	"${FILESDIR}/${PN}-2015.5.7-tmpdir.patch"
 )
 
 python_prepare() {
 	# this test fails because it trys to "pip install distribute"
-	rm tests/unit/{modules,states}/zcbuildout_test.py tests/unit/modules/{rh_ip,win_network}_test.py \
+	rm tests/unit/{modules,states}/zcbuildout_test.py \
+		tests/unit/modules/{rh_ip,win_network}_test.py \
 		|| die "Failed to remove broken tests"
 }
 
@@ -107,11 +109,24 @@ python_install_all() {
 }
 
 python_test() {
+	local tempdir
 	# testsuite likes lots of files
 	ulimit -n 3072
 
-	# using ${T} for the TMPDIR makes some tests needs paths that exceed PATH_MAX
-	USE_SETUPTOOLS=1 SHELL="/bin/bash" TMPDIR="/tmp" \
-		${EPYTHON} tests/runtests.py \
-		--unit-tests --no-report --verbose || die "testing failed"
+	# ${T} is too long a path for the tests to work
+	tempdir="$(mktemp -dup /tmp salt-XXX)"
+	mkdir "${T}/$(basename "${tempdir}")"
+
+	(
+		cleanup() { rm -f "${tempdir}"; }
+		trap cleanup EXIT
+
+		addwrite "${tempdir}"
+		ln -s "$(realpath --relative-to=/tmp "${T}/$(basename "${tempdir}")")" "${tempdir}"
+
+		USE_SETUPTOOLS=1 SHELL="/bin/bash" TMPDIR="${tempdir}" \
+			${EPYTHON} tests/runtests.py \
+			--unit-tests --no-report --verbose
+
+	) || die "testing failed"
 }
