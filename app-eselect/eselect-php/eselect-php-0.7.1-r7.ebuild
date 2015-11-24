@@ -33,7 +33,7 @@ src_install() {
 	fi
 
 	if use fpm ; then
-		newinitd "${FILESDIR}/php-fpm.init-r3" "php-fpm"
+		newinitd "${FILESDIR}/php-fpm.init-r4" "php-fpm"
 		systemd_dotmpfilesd "${FILESDIR}/php-fpm.conf"
 		exeinto /usr/libexec
 		doexe "${FILESDIR}/php-fpm-launcher"
