@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 inherit eutils multilib libtool flag-o-matic toolchain-funcs multilib-minimal
 
@@ -27,7 +27,7 @@ REQUIRED_USE="readline? ( !libedit )
 RDEPEND="bzip2? ( app-arch/bzip2 )
 	zlib? ( sys-libs/zlib )
 	libedit? ( dev-libs/libedit )
-	readline? ( sys-libs/readline )"
+	readline? ( sys-libs/readline:0= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	userland_GNU? ( >=sys-apps/findutils-4.4.0 )"
@@ -44,10 +44,6 @@ MULTILIB_CHOST_TOOLS=(
 )
 
 src_prepare() {
-	local pc
-	for pc in *.pc.in ; do
-		echo "Libs.private: @PTHREAD_CFLAGS@" >> ${pc} #454478
-	done
 	sed -i -e "s:-lpcre ::" libpcrecpp.pc.in || die
 	elibtoolize
 }

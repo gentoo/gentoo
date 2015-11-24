@@ -34,7 +34,7 @@ pkg_setup() {
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.8.3-shared.patch
 	epatch "${FILESDIR}"/${PN}-2.8.17-config.patch
-	epatch "${FILESDIR}"/${P}-sharedlua.patch
+	epatch "${FILESDIR}"/${PN}-2.8.19-sharedlua.patch
 
 	# Copy lua modules into build dir
 	cp "${S}"/deps/lua/src/{fpconv,lua_bit,lua_cjson,lua_cmsgpack,lua_struct,strbuf}.c "${S}"/src || die
@@ -101,7 +101,7 @@ src_install() {
 	newconfd "${FILESDIR}/redis.confd" redis
 	newinitd "${FILESDIR}/redis.initd-4" redis
 
-	systemd_dounit "${FILESDIR}/redis.service"
+	systemd_newunit "${FILESDIR}/redis.service-2" redis.service
 	systemd_newtmpfilesd "${FILESDIR}/redis.tmpfiles" redis.conf
 
 	dodoc 00-RELEASENOTES BUGS CONTRIBUTING MANIFESTO README
