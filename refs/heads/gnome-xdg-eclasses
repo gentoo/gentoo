@@ -1,13 +1,13 @@
 certificate version 0.1
-pusher C6085806 1448391006 +0100
+pusher C6085806 1448392079 +0100
 pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1448391006-a4641255eaabf02e13a8
+nonce 1448392079-f49863c24bde64eee407
 
-eb01e473ab6b9448dcb1ff670cc7ae7a5706d777 141792aaa5ad65cc5dc72d248e7be4d37ce028bc refs/heads/gnome-xdg-eclasses
+141792aaa5ad65cc5dc72d248e7be4d37ce028bc e7649a8af18c210b6141558dfb4840da04e90715 refs/heads/gnome-xdg-eclasses
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iEYEABEKAAYFAlZUsV8ACgkQ1fmVwcYIWAb6/wCggWhO0E3W/sTzH3jcLUsDRulG
-XmMAoNW/R8IL/zPm51xO/qMcoZbLwHe/
-=dsc5
+iEYEABEKAAYFAlZUtZAACgkQ1fmVwcYIWAZvxgCguFioVuo6A9kPQeBElYaXJrTH
+cRoAn0rlswKuiGkt5wFHigS1hgvMo2uK
+=AJdy
 -----END PGP SIGNATURE-----
