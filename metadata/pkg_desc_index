@@ -14172,7 +14172,7 @@ net-mail/mlmmj 1.2.17.1 1.2.18.0 1.2.18.1 1.2.19.0: Mailing list managing made j
 net-mail/mpack 1.6-r3: Command-line MIME encoding and decoding utilities
 net-mail/mpop 1.0.29 1.2.0 1.2.2: A small, fast, and portable POP3 client
 net-mail/mswatch 1.2.0: A utility to watch mailstores for changes and initiate mailbox syncs
-net-mail/mu 0.9.9 0.9.9.5 0.9.9.6: Set of tools to deal with Maildirs, in particular, searching and indexing
+net-mail/mu 0.9.9 0.9.9.5 0.9.9.6 0.9.15: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 2: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.18.2 0.19-r1 0.20.2 0.21: Thread-based e-mail indexer, supporting quick search and tagging
