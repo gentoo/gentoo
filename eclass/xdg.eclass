@@ -32,7 +32,7 @@ DEPEND="
 xdg_src_prepare() {
 	xdg_environment_reset
 
-	has ${EAPI:-0} 6 && eapply_user
+	has ${EAPI:-0} 6 && default
 }
 
 # @FUNCTION: xdg_pkg_preinst
