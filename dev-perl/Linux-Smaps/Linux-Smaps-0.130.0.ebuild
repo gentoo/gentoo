@@ -17,3 +17,8 @@ IUSE=""
 CONFIG_CHECK="~MMU ~PROC_PAGE_MONITOR"
 
 SRC_TEST="do parallel"
+
+# Remove dubious tests.
+PERL_RM_FILES=(
+	t/0{3,4}.t
+)
