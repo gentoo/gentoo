@@ -1,0 +1,19 @@
+the curses test logic does not provide a fallback case when trying to run
+the curses test program.  set that here to true since we know the deps are
+sane via the ebuild.
+
+we could patch aclocal.m4, but this package doesn't rebuild autotools atm.
+
+--- a/configure
++++ b/configure
+@@ -20146,9 +20146,7 @@
+   echo "$as_me:20146: \$? = $ac_status" >&5
+   (exit $ac_status); }; }; then
+   if test "$cross_compiling" = yes; then
+-  { { echo "$as_me:20149: error: cannot run test program while cross compiling" >&5
+-echo "$as_me: error: cannot run test program while cross compiling" >&2;}
+-   { (exit 1); exit 1; }; }
++cf_have_ncuconfig=yes
+ else
+   cat >conftest.$ac_ext <<_ACEOF
+ #line 20154 "configure"
