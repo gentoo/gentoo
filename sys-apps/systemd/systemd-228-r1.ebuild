@@ -4,18 +4,15 @@
 
 EAPI=5
 
-AUTOTOOLS_AUTORECONF=yes
-AUTOTOOLS_PRUNE_LIBTOOL_FILES=all
-
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~ia64 ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
-inherit autotools-utils bash-completion-r1 linux-info multilib \
+inherit autotools bash-completion-r1 linux-info multilib \
 	multilib-minimal pam systemd toolchain-funcs udev user
 
 DESCRIPTION="System and service manager for Linux"
@@ -29,9 +26,9 @@ IUSE="acl apparmor audit cryptsetup curl elfutils gcrypt gnuefi http
 
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
 
-MINKV="3.8"
+MINKV="3.11"
 
-COMMON_DEPEND=">=sys-apps/util-linux-2.26:0=[${MULTILIB_USEDEP}]
+COMMON_DEPEND=">=sys-apps/util-linux-2.27.1:0=[${MULTILIB_USEDEP}]
 	sys-libs/libcap:0=[${MULTILIB_USEDEP}]
 	!<sys-libs/glibc-2.16
 	acl? ( sys-apps/acl:0= )
@@ -51,7 +48,7 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.26:0=[${MULTILIB_USEDEP}]
 		sys-libs/zlib:0=
 	)
 	kmod? ( >=sys-apps/kmod-15:0= )
-	lz4? ( >=app-arch/lz4-0_p119:0=[${MULTILIB_USEDEP}] )
+	lz4? ( >=app-arch/lz4-0_p131:0=[${MULTILIB_USEDEP}] )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1:0=[${MULTILIB_USEDEP}] )
 	nat? ( net-firewall/iptables:0= )
 	pam? ( virtual/pam:= )
@@ -88,25 +85,14 @@ DEPEND="${COMMON_DEPEND}
 	>=sys-devel/binutils-2.23.1
 	>=sys-devel/gcc-4.6
 	>=sys-kernel/linux-headers-${MINKV}
-	ia64? ( >=sys-kernel/linux-headers-3.9 )
 	virtual/pkgconfig
 	gnuefi? ( >=sys-boot/gnu-efi-3.0.2 )
-	test? ( >=sys-apps/dbus-1.6.8-r1:0 )"
-
-if [[ -n ${AUTOTOOLS_AUTORECONF} ]]; then
-	DEPEND+="
-		app-text/docbook-xml-dtd:4.2
-		app-text/docbook-xml-dtd:4.5
-		app-text/docbook-xsl-stylesheets
-		dev-libs/libxslt:0
-		>=dev-libs/libgcrypt-1.4.5:0"
-fi
-
-PATCHES=(
-	"${FILESDIR}/218-Dont-enable-audit-by-default.patch"
-	"${FILESDIR}/224-0001-networkd-fix-neworkd-crash.patch"
-	"${FILESDIR}/224-0002-Use-getxpid-syscall-on-alpha-for-raw_getpid.patch"
-)
+	test? ( >=sys-apps/dbus-1.6.8-r1:0 )
+	app-text/docbook-xml-dtd:4.2
+	app-text/docbook-xml-dtd:4.5
+	app-text/docbook-xsl-stylesheets
+	dev-libs/libxslt:0
+"
 
 pkg_pretend() {
 	local CONFIG_CHECK="~AUTOFS4_FS ~BLK_DEV_BSG ~CGROUPS
@@ -158,8 +144,11 @@ src_unpack() {
 src_prepare() {
 	# Bug 463376
 	sed -i -e 's/GROUP="dialout"/GROUP="uucp"/' rules/*.rules || die
-
-	autotools-utils_src_prepare
+	epatch "${FILESDIR}/218-Dont-enable-audit-by-default.patch"
+	epatch "${FILESDIR}/228-noclean-tmp.patch"
+	epatch "${FILESDIR}/CVE-2015-7510.patch"
+	epatch_user
+	eautoreconf
 }
 
 src_configure() {
@@ -167,6 +156,9 @@ src_configure() {
 	MY_UDEVDIR=$(get_udevdir)
 	# Fix systems broken by bug #509454.
 	[[ ${MY_UDEVDIR} ]] || MY_UDEVDIR=/lib/udev
+
+	# Prevent conflicts with i686 cross toolchain, bug 559726
+	tc-export AR CC NM OBJCOPY RANLIB
 
 	multilib-minimal_src_configure
 }
@@ -248,7 +240,7 @@ multilib_src_configure() {
 	# Work around bug 463846.
 	tc-export CC
 
-	autotools-utils_src_configure
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_compile() {
@@ -268,6 +260,10 @@ multilib_src_compile() {
 
 multilib_src_test() {
 	multilib_is_native_abi || continue
+
+	# Needed for bus-related tests
+	local -x SANDBOX_WRITE=${SANDBOX_WRITE}
+	addwrite /sys/fs/kdbus
 
 	default
 }
