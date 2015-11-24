@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@
 #  * GConf schemas management
 #  * scrollkeeper (old Gnome help system) management
 
-inherit eutils multilib
+inherit eutils multilib xdg-utils
 
 case "${EAPI:-0}" in
 	0|1|2|3|4|5) ;;
@@ -90,23 +90,13 @@ DEPEND=">=sys-apps/sed-4"
 # Reset various variables inherited from root's evironment to a reasonable
 # default for ebuilds to help avoid access violations and test failures.
 gnome2_environment_reset() {
+	xdg_environment_reset
+
 	# Respected by >=glib-2.30.1-r1
 	export G_HOME="${T}"
 
 	# GST_REGISTRY is to work around gst utilities trying to read/write /root
 	export GST_REGISTRY="${T}/registry.xml"
-
-	# XXX: code for resetting XDG_* directories should probably be moved into
-	# a separate function in a non-gnome eclass
-	export XDG_DATA_HOME="${T}/.local/share"
-	export XDG_CONFIG_HOME="${T}/.config"
-	export XDG_CACHE_HOME="${T}/.cache"
-	export XDG_RUNTIME_DIR="${T}/run"
-	mkdir -p "${XDG_DATA_HOME}" "${XDG_CONFIG_HOME}" "${XDG_CACHE_HOME}" \
-		"${XDG_RUNTIME_DIR}"
-	# This directory needs to be owned by the user, and chmod 0700
-	# http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
-	chmod 0700 "${XDG_RUNTIME_DIR}"
 }
 
 # @FUNCTION: gnome2_gconf_savelist
@@ -116,9 +106,9 @@ gnome2_environment_reset() {
 # This function should be called from pkg_preinst.
 gnome2_gconf_savelist() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
-	pushd "${ED}" &> /dev/null
+	pushd "${ED}" > /dev/null || die
 	export GNOME2_ECLASS_SCHEMAS=$(find 'etc/gconf/schemas/' -name '*.schemas' 2> /dev/null)
-	popd &> /dev/null
+	popd > /dev/null || die
 }
 
 # @FUNCTION: gnome2_gconf_install
@@ -210,9 +200,9 @@ gnome2_gconf_uninstall() {
 # This function should be called from pkg_preinst.
 gnome2_icon_savelist() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
-	pushd "${ED}" &> /dev/null
+	pushd "${ED}" > /dev/null || die
 	export GNOME2_ECLASS_ICONS=$(find 'usr/share/icons' -maxdepth 1 -mindepth 1 -type d 2> /dev/null)
-	popd &> /dev/null
+	popd > /dev/null || die
 }
 
 # @FUNCTION: gnome2_icon_cache_update
@@ -331,9 +321,9 @@ gnome2_omf_fix() {
 # This function should be called from pkg_preinst.
 gnome2_scrollkeeper_savelist() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
-	pushd "${ED}" &> /dev/null
+	pushd "${ED}" > /dev/null || die
 	export GNOME2_ECLASS_SCROLLS=$(find 'usr/share/omf' -type f -name "*.omf" 2> /dev/null)
-	popd &> /dev/null
+	popd > /dev/null || die
 }
 
 # @FUNCTION: gnome2_scrollkeeper_update
@@ -366,9 +356,9 @@ gnome2_scrollkeeper_update() {
 # This function should be called from pkg_preinst.
 gnome2_schemas_savelist() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
-	pushd "${ED}" &>/dev/null
+	pushd "${ED}" > /dev/null || die
 	export GNOME2_ECLASS_GLIB_SCHEMAS=$(find 'usr/share/glib-2.0/schemas' -name '*.gschema.xml' 2>/dev/null)
-	popd &>/dev/null
+	popd > /dev/null || die
 }
 
 # @FUNCTION: gnome2_schemas_update
@@ -402,9 +392,9 @@ gnome2_schemas_update() {
 # This function should be called from pkg_preinst.
 gnome2_gdk_pixbuf_savelist() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
-	pushd "${ED}" 1>/dev/null
+	pushd "${ED}" > /dev/null || die
 	export GNOME2_ECLASS_GDK_PIXBUF_LOADERS=$(find usr/lib*/gdk-pixbuf-2.0 -type f 2>/dev/null)
-	popd 1>/dev/null
+	popd > /dev/null || die
 }
 
 # @FUNCTION: gnome2_gdk_pixbuf_update
@@ -496,7 +486,7 @@ gnome2_disable_deprecation_warning() {
 		fi
 	done < <(find "${S}" -name "Makefile.in" \
 		-o -name "Makefile.am" -o -name "Makefile.decl" \
-		| sort; echo configure)
+		| sort; [[ -f "${S}"/configure ]] && echo configure)
 # TODO: sedding configure.ac can trigger maintainer mode; bug #439602
 #		-o -name "configure.ac" -o -name "configure.in" \
 #		| sort; echo configure)
