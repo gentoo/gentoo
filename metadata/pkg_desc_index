@@ -2908,7 +2908,6 @@ dev-db/mysql-udf-ipv6 0.4: IPv6 and internationalized domain (IDNA) functions fo
 dev-db/mysql-workbench 6.3.3 6.3.4: MySQL Workbench
 dev-db/mysqltuner 1.2.0: MySQLTuner is a high-performance MySQL tuning script
 dev-db/mytop 1.6-r4: mytop - a top clone for mysql
-dev-db/octopus 3.0.1-r3 3.0.1-r4: A Java-based Extraction, Transformation, and Loading (ETL) tool
 dev-db/odbtp 1.1.4: Fast, efficient TCP/IP protocol for connecting to Win32-based databases from any platform
 dev-db/opendbx 1.4.5-r1 1.4.6-r1 1.5.0-r1: OpenDBX - A database abstraction layer
 dev-db/oracle-instantclient-basic 10.2.0.3-r1 11.2.0.2 11.2.0.3 11.2.0.4: Oracle 11g Instant Client with SDK
