@@ -18570,7 +18570,7 @@ x11-themes/xcursor-neutral 1.20: "Neutral_Plus", the standard X.Org mouse cursor
 x11-themes/xcursor-themes 1.0.4: X.Org cursor themes: whiteglass, redglass and handhelds
 x11-themes/xfce-gant-icon-theme 3.9_p6: Xfce Gant Icon Theme
 x11-themes/xfwm4-themes 4.10.0: Additional themes for the Xfce window manager
-x11-themes/xxv-skins 1.6.1: Additional skins for XXV
+x11-themes/xxv-skins 1.6.1-r1: Additional skins for XXV
 x11-themes/yasis-icon-theme 0.4.2: A scalable icon theme called Yasis
 x11-themes/zukini 20120806: Unified look for GTK+ 2.x, GTK+ 3.x, gnome-shell, metacity and more
 x11-themes/zukitwo 2013.12.10 2014.10.22: Theme for GNOME 2 and 3
