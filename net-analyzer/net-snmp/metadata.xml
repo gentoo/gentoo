@@ -1,29 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>netmon</herd>
-  <use>
-    <flag name="elf">Enable the use of elf utils to check uptime on some systems</flag>
-    <flag name="mfd-rewrites">Use MFD rewrites of mib modules where available</flag>
-    <flag name="rpm">
-      Enable monitoring of <pkg>app-arch/rpm</pkg>. This flag requires
-      the bzip2 and zlib flags to be enabled as well.
-    </flag>
-    <flag name="ucd-compat">
-      Build UCD compatibility library. Increases significantly the
-      install size.
-    </flag>
-    <flag name="pci">
-      Use libpci (from <pkg>sys-apps/pciutils</pkg>) to look up
-      network interface description. This feature is only available on
-      Linux.
-    </flag>
-    <flag name="netlink">
-      Use <pkg>dev-libs/libnl</pkg> to fetch TCP statistics instead of
-      using /proc/net/tcp (Linux only).
-    </flag>
-  </use>
-  <upstream>
-    <remote-id type="sourceforge">net-snmp</remote-id>
-  </upstream>
+<herd>netmon</herd>
+<use>
+<flag name="elf">Enable the use of elf utils to check uptime on some systems</flag>
+<flag name="mfd-rewrites">Use MFD rewrites of mib modules where available</flag>
+<flag name="netlink">Use <pkg>dev-libs/libnl</pkg> to fetch TCP statistics instead of using /proc/net/tcp (Linux only).</flag>
+<flag name="pci">Use libpci (from <pkg>sys-apps/pciutils</pkg>) to look up network interface description. This feature is only available on Linux.</flag>
+<flag name="rpm">Enable monitoring of <pkg>app-arch/rpm</pkg>. This flag requires the bzip2 and zlib flags to be enabled as well.</flag>
+<flag name="ucd-compat">Build UCD compatibility library. Increases significantly the install size.</flag>
+<flag name='smux'>Enable support for the legacy smux protocol (superseded by agentx)</flag>
+</use>
+<upstream>
+<remote-id type="sourceforge">net-snmp</remote-id>
+</upstream>
 </pkgmetadata>
