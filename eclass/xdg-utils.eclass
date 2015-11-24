@@ -69,6 +69,10 @@ xdg_environment_reset() {
 xdg_desktop_database_update() {
 	local updater="${EROOT}${DESKTOP_DATABASE_UPDATE_BIN}"
 
+	if [[ ${EBUILD_PHASE} != post* ]] ; then
+		die "xdg_desktop_database_update must be used in pkg_post* phases."
+	fi
+
 	if [[ ! -x "${updater}" ]] ; then
 		debug-print "${updater} is not executable"
 		return
@@ -85,6 +89,10 @@ xdg_desktop_database_update() {
 # Creates a general list of mime types from several sources
 xdg_mimeinfo_database_update() {
 	local updater="${EROOT}${MIMEINFO_DATABASE_UPDATE_BIN}"
+
+	if [[ ${EBUILD_PHASE} != post* ]] ; then
+		die "xdg_mimeinfo_database_update must be used in pkg_post* phases."
+	fi
 
 	if [[ ! -x "${updater}" ]] ; then
 		debug-print "${updater} is not executable"
