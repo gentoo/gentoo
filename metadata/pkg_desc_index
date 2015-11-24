@@ -5054,8 +5054,8 @@ dev-ml/ocaml-pcap 0.3.3: Read and write pcap-formatted network packet traces.
 dev-ml/ocaml-re 1.3.1 1.3.2 1.4.0 1.4.1: Regular expression library for OCaml
 dev-ml/ocaml-safepass 1.2: A library offering facilities for the safe storage of user passwords
 dev-ml/ocaml-sha 1.8 1.9: A binding for SHA interface code in OCaml
-dev-ml/ocaml-sqlite3 2.0.4 2.0.5 2.0.7 2.0.9 4.0.0 4.0.1: A package for ocaml that provides access to SQLite databases
-dev-ml/ocaml-ssl 0.4.6 0.4.7 0.5.1: OCaml bindings for OpenSSL
+dev-ml/ocaml-sqlite3 2.0.4 2.0.5 2.0.7 2.0.9 4.0.0 4.0.1 4.0.2: A package for ocaml that provides access to SQLite databases
+dev-ml/ocaml-ssl 0.4.6 0.4.7 0.5.1 0.5.2: OCaml bindings for OpenSSL
 dev-ml/ocaml-text 0.6 0.8: Library for dealing with 'text'
 dev-ml/ocaml-uri 1.9.1-r1: RFC3986 URI parsing library for OCaml
 dev-ml/ocamldap 2.2: an implementation of the Light Weight Directory Access Protocol
@@ -8154,7 +8154,7 @@ dev-ros/gazebo_plugins 2.5.1 9999: Robot-independent Gazebo plugins for sensors,
 dev-ros/gazebo_ros 2.5.1 9999: ROS plugins that offer message and service publishers for interfacing with gazebo
 dev-ros/gazebo_ros_control 2.5.1 9999: ROS control plugins for gazebo
 dev-ros/gencpp 0.5.3 9999: ROS C++ message definition and serialization generators
-dev-ros/geneus 2.2.4 9999: EusLisp ROS message and service generators
+dev-ros/geneus 2.2.4 2.2.5 9999: EusLisp ROS message and service generators
 dev-ros/genlisp 0.4.15 9999: Common-Lisp ROS message and service generators
 dev-ros/genmsg 0.5.6 9999: Python library for generating ROS message and service data structures for various languages
 dev-ros/genpy 0.5.5 0.5.6 0.5.7 9999: Python ROS message and service generators
@@ -8253,7 +8253,7 @@ dev-ros/qt_gui_py_common 0.2.29 9999: Common functionality for ROS RQT GUI plugi
 dev-ros/random_numbers 0.3.0 9999: Wrappers for generating floating point values, integers, quaternions using boost libraries
 dev-ros/realtime_tools 1.9.1 9999: Set of tools that can be used from a hard realtime thread, without breaking the realtime behavior
 dev-ros/resource_retriever 1.11.6 9999: Retrieves data from url-format files
-dev-ros/rgbd_launch 2.1.0 2.1.1 9999: Launch files to open an RGBD device
+dev-ros/rgbd_launch 2.1.0 2.1.1 2.2.0 9999: Launch files to open an RGBD device
 dev-ros/robot_pose_ekf 1.13.0 1.13.1 9999: Estimate the 3D pose of a robot, based on (partial) pose measurements coming from different sources
 dev-ros/robot_pose_publisher 0.2.3 9999: A Simple Node to Publish the Robot's Position Relative to the Map using TFs
 dev-ros/robot_state_publisher 1.10.4 1.12.0 9999: Package for publishing the state of a robot to tf
