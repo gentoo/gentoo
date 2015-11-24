@@ -62,17 +62,6 @@ xdg_environment_reset() {
 	unset DBUS_SESSION_BUS_ADDRESS
 }
 
-# @FUNCTION: xdg_desktopfiles_savelist
-# @DESCRIPTION:
-# Find the .desktop files about to be installed and save their location
-# in the XDG_ECLASS_DESKTOPFILES environment variable.
-# This function should be called from pkg_preinst.
-xdg_desktopfiles_savelist() {
-	pushd "${D}" > /dev/null || die
-	export XDG_ECLASS_DESKTOPFILES=$(find 'usr/share/applications' -type f 2> /dev/null)
-	popd > /dev/null || die
-}
-
 # @FUNCTION: fdo-xdg_desktop_database_update
 # @DESCRIPTION:
 # Updates the .desktop files database.
@@ -85,25 +74,9 @@ xdg_desktop_database_update() {
 		return
 	fi
 
-	if [[ -z "${XDG_ECLASS_DESKTOPFILES}" ]]; then
-		debug-print "No .desktop files to add to database"
-		return
-	fi
-
 	ebegin "Updating .desktop files database"
 	"${updater}" -q "${EROOT}${DESKTOP_DATABASE_DIR}"
 	eend $?
-}
-
-# @FUNCTION: xdg_mimeinfo_savelist
-# @DESCRIPTION:
-# Find the mime information files about to be installed and save their location
-# in the XDG_ECLASS_MIMEINFOFILES environment variable.
-# This function should be called from pkg_preinst.
-xdg_mimeinfo_savelist() {
-	pushd "${D}" > /dev/null || die
-	export XDG_ECLASS_MIMEINFOFILES=$(find 'usr/share/mime' -type f 2> /dev/null)
-	popd > /dev/null || die
 }
 
 # @FUNCTION: xdg_mimeinfo_database_update
@@ -115,11 +88,6 @@ xdg_mimeinfo_database_update() {
 
 	if [[ ! -x "${updater}" ]] ; then
 		debug-print "${updater} is not executable"
-		return
-	fi
-
-	if [[ -z "${XDG_ECLASS_MIMEINFOFILES}" ]]; then
-		debug-print "No mime info files to add to database"
 		return
 	fi
 
