@@ -10,6 +10,7 @@
   world data analysis in Python. 
 </longdescription>
   <use>
+    <flag name="full-support">Pull all packages to give pandas full support</flag>
     <flag name="excel">Pull a few Python packages for Microsoft Excel i/o</flag>
     <flag name="html">Enable HTML i/o via <pkg>dev-python/beautifulsoup</pkg></flag>
     <flag name="R">Enable support for R via <pkg>dev-python/rpy</pkg></flag>

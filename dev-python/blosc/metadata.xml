@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci</herd>
-<longdescription lang="en">
+  <herd>sci</herd>
+  <longdescription lang="en">
   blosc is a high performance compressor optimized
   for binary data. It has been designed to transmit data to the
   processor cache faster than the traditional, non-compressed, direct
@@ -12,7 +12,7 @@
   regular-spaced values, etc.
   python-blosc a Python package that wraps Blosc.
 </longdescription>
-<upstream>
-  <remote-id type="pypi">blosc</remote-id>
-</upstream>
+  <upstream>
+    <remote-id type="pypi">blosc</remote-id>
+  </upstream>
 </pkgmetadata>
