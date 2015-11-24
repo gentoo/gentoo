@@ -78,7 +78,7 @@ xdg_desktop_database_update() {
 		return
 	fi
 
-	ebegin "Updating .desktop files database ..."
+	ebegin "Updating .desktop files database"
 	"${updater}" -q "${EROOT}${DESKTOP_DATABASE_DIR}"
 	eend $?
 }
@@ -99,7 +99,7 @@ xdg_mimeinfo_database_update() {
 		return
 	fi
 
-	ebegin "Updating shared mime info database ..."
+	ebegin "Updating shared mime info database"
 	"${updater}" "${EROOT}${MIMEINFO_DATABASE_DIR}"
 	eend $?
 }
