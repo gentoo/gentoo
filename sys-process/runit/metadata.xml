@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
-<maintainer>
-<email>
-williamh@gentoo.org
-</email>
-</maintainer>
 <herd>base-system</herd>
+<maintainer>
+	<email>williamh@gentoo.org</email>
+</maintainer>
 </pkgmetadata>

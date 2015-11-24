@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
-  <herd>base-system</herd>
-  <use>
-    <flag name="nologin">Do not include login support when connecting partimaged</flag>
-  </use>
-  <upstream>
-    <remote-id type="sourceforge">partimage</remote-id>
-  </upstream>
+<herd>base-system</herd>
+<use>
+	<flag name='nologin'>Do not include login support when connecting partimaged</flag>
+</use>
+<upstream>
+	<remote-id type='sourceforge'>partimage</remote-id>
+</upstream>
 </pkgmetadata>

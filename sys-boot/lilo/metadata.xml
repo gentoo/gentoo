@@ -1,14 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
 <herd>base-system</herd>
 <maintainer>
- <email>chainsaw@gentoo.org</email>
- <name>Tony Vroon</name>
+	<email>chainsaw@gentoo.org</email>
 </maintainer>
 <use>
- <flag name='device-mapper'>Enable support for device-mapper from <pkg>sys-fs/lvm2</pkg></flag>
- <flag name='minimal'>Do not install the dolilo helper script</flag>
- <flag name='pxeserial'>Avoid character echo on PXE serial console</flag>
+	<flag name='device-mapper'>Enable support for device-mapper from <pkg>sys-fs/lvm2</pkg></flag>
+	<flag name='minimal'>Do not install the dolilo helper script</flag>
+	<flag name='pxeserial'>Avoid character echo on PXE serial console</flag>
 </use>
 </pkgmetadata>

@@ -24,7 +24,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~arm-linux ~x86-linux"
-IUSE="acl caps gmp multicall nls selinux static userland_BSD vanilla xattr"
+IUSE="acl caps gmp hostname kill multicall nls selinux static userland_BSD vanilla xattr"
 
 LIB_DEPEND="acl? ( sys-apps/acl[static-libs] )
 	caps? ( sys-libs/libcap )
@@ -32,18 +32,23 @@ LIB_DEPEND="acl? ( sys-apps/acl[static-libs] )
 	xattr? ( !userland_BSD? ( sys-apps/attr[static-libs] ) )"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs]} )
 	selinux? ( sys-libs/libselinux )
-	nls? ( virtual/libintl )
+	nls? ( virtual/libintl )"
+DEPEND="${RDEPEND}
+	static? ( ${LIB_DEPEND} )
+	app-arch/xz-utils"
+RDEPEND+="
+	hostname? ( !sys-apps/net-tools[hostname] )
+	kill? (
+		!sys-apps/util-linux[kill]
+		!sys-process/procps[kill]
+	)
 	!app-misc/realpath
 	!<sys-apps/util-linux-2.13
 	!sys-apps/stat
 	!net-mail/base64
 	!sys-apps/mktemp
 	!<app-forensics/tct-1.18-r1
-	!<net-fs/netatalk-2.0.3-r4
-"
-DEPEND="${RDEPEND}
-	static? ( ${LIB_DEPEND} )
-	app-arch/xz-utils"
+	!<net-fs/netatalk-2.0.3-r4"
 
 src_prepare() {
 	if ! use vanilla ; then
@@ -87,8 +92,8 @@ src_configure() {
 		--with-packager="Gentoo" \
 		--with-packager-version="${PVR} (p${PATCH_VER:-0})" \
 		--with-packager-bug-reports="https://bugs.gentoo.org/" \
-		--enable-install-program="arch" \
-		--enable-no-install-program="groups,hostname,kill,su,uptime" \
+		--enable-install-program="arch,$(usev hostname),$(usev kill)" \
+		--enable-no-install-program="groups,$(usev !hostname),$(usev !kill),su,uptime" \
 		--enable-largefile \
 		$(use caps || echo --disable-libcap) \
 		$(use_enable nls) \

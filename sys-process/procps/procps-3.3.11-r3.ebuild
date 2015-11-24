@@ -18,16 +18,21 @@ https://gitlab.com/procps-ng/procps/commit/b2f49b105d23c833d733bf7dfb99cb98e4cae
 LICENSE="GPL-2"
 SLOT="0/5" # libprocps.so
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~ia64-linux ~x86-linux"
-IUSE="+ncurses modern-top nls selinux static-libs systemd test unicode"
+IUSE="+kill +ncurses modern-top nls selinux static-libs systemd test unicode"
 
-RDEPEND="!<sys-apps/sysvinit-2.88-r6
-	ncurses? ( >=sys-libs/ncurses-5.7-r7:=[unicode?] )
+RDEPEND="ncurses? ( >=sys-libs/ncurses-5.7-r7:=[unicode?] )
 	selinux? ( sys-libs/libselinux )
 	systemd? ( >=sys-apps/systemd-209 )"
 DEPEND="${RDEPEND}
 	ncurses? ( virtual/pkgconfig )
 	systemd? ( virtual/pkgconfig )
 	test? ( dev-util/dejagnu )"
+RDEPEND+="
+	kill? (
+		!sys-apps/coreutils[kill]
+		!sys-apps/util-linux[kill]
+	)
+	!<sys-apps/sysvinit-2.88-r6"
 
 S="${WORKDIR}/${PN}-ng-${PV}"
 
@@ -45,6 +50,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		--docdir='$(datarootdir)'/doc/${PF} \
+		$(use_enable kill) \
 		$(use_enable modern-top) \
 		$(use_with ncurses) \
 		$(use_enable nls) \
@@ -63,7 +69,10 @@ src_install() {
 	#dodoc sysctl.conf
 
 	dodir /bin
-	mv "${ED}"/usr/bin/{ps,kill} "${ED}"/bin || die
+	mv "${ED}"/usr/bin/ps "${ED}"/bin/ || die
+	if use kill; then
+		mv "${ED}"/usr/bin/kill "${ED}"/bin/ || die
+	fi
 
 	gen_usr_ldscript -a procps
 	prune_libtool_files

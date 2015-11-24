@@ -1,29 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
-	<herd>base-system</herd>
-	<maintainer>
-		<email>chutzpah@gentoo.org</email>
-		<name>Patrick McLean</name>
-	</maintainer>
-	<maintainer>
-		<email>ssuominen@gentoo.org</email>
-		<name>Samuli Suominen</name>
-	</maintainer>
-	<longdescription lang="en">
+<herd>base-system</herd>
+<maintainer>
+	<email>chutzpah@gentoo.org</email>
+</maintainer>
+<maintainer>
+	<email>ssuominen@gentoo.org</email>
+</maintainer>
+<longdescription lang='en'>
 The ntfs-3g driver is an open source, GPL licensed, third generation Linux 
 NTFS driver for 32-bit, little-endian architectures which was implemented 
 by the Linux-NTFS project. It provides full read-write access to NTFS, 
 excluding access to encrypted files, writing compressed files, changing 
 file ownership, access right.
-	</longdescription>
-	<use>
-		<flag name='external-fuse'>Use external FUSE library instead of internal
-		one. Must be disabled for unprivileged mounting to work.</flag>
-		<flag name='ntfsdecrypt'>Build and install the ntfsdecrypt application.</flag>
-		<flag name='ntfsprogs'>Include internal version of ntfsprogs.</flag>
-	</use>
-	<upstream>
-		<remote-id type="cpe">cpe:/a:ntfs-3g:ntfs-3g</remote-id>
-	</upstream>
+</longdescription>
+<use>
+	<flag name='external-fuse'>
+		Use external FUSE library instead of internal one. Must be disabled
+		for unprivileged mounting to work.
+	</flag>
+	<flag name='ntfsdecrypt'>Build and install the ntfsdecrypt application.</flag>
+	<flag name='ntfsprogs'>Include internal version of ntfsprogs.</flag>
+</use>
+<upstream>
+	<remote-id type='cpe'>cpe:/a:ntfs-3g:ntfs-3g</remote-id>
+</upstream>
 </pkgmetadata>

@@ -19,16 +19,18 @@ HOMEPAGE="http://net-tools.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ipv6 nls selinux static"
+IUSE="+arp +hostname ipv6 nis nls plipconfig selinux slattach static"
 
-RDEPEND="!<sys-apps/openrc-0.9.9.3
-	selinux? ( sys-libs/libselinux )"
+RDEPEND="selinux? ( sys-libs/libselinux )"
 DEPEND="${RDEPEND}
 	selinux? ( virtual/pkgconfig )
 	app-arch/xz-utils"
 if [[ ${PV} == "9999" ]]; then
 	DEPEND+=" nls? ( sys-devel/gettext )"
 fi
+RDEPEND+="
+	hostname? ( !sys-apps/coreutils[hostname] )
+	!<sys-apps/openrc-0.9.9.3"
 
 maint_pkg_create() {
 	cd /usr/local/src/net-tools
@@ -71,4 +73,32 @@ src_configure() {
 	fi
 	tc-export AR CC
 	yes "" | ./configure.sh config.in || die
+}
+
+src_install() {
+	default
+
+	# TODO: Make these into config knobs upstream.
+	if ! use arp ; then
+		rm "${ED}"/sbin/{,r}arp "${ED}"/usr/share/man/man8/{,r}arp.8* || die
+	fi
+	if ! use hostname ; then
+		if use nis ; then
+			# Since all the tools are symlinks, repoint them.
+			rm "${ED}"/bin/domainname || die
+			cp -p "${ED}"/bin/{host,domain}name || die
+			dosym domainname /bin/nisdomainname
+			dosym domainname /bin/ypdomainname
+		fi
+		rm "${ED}"/bin/{host,dnsdomain}name "${ED}"/usr/share/man/man1/{host,dnsdomain}name.1* || die
+	fi
+	if ! use nis ; then
+		rm "${ED}"/bin/{,nis,yp}domainname "${ED}"/usr/share/man/man1/{,nis,yp}domainname.1* || die
+	fi
+	if ! use plipconfig ; then
+		rm "${ED}"/sbin/plipconfig "${ED}"/usr/share/man/man8/plipconfig.8* || die
+	fi
+	if ! use slattach ; then
+		rm "${ED}"/sbin/slattach "${ED}"/usr/share/man/man8/slattach.8* || die
+	fi
 }

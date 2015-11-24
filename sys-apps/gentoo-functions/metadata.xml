@@ -1,20 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
-	<maintainer>
-		<email>williamh@gentoo.org</email>
-		<name>William Hubbs</name>
-	</maintainer>
-	<maintainer>
-		<email>blueness@gentoo.org</email>
-		<name>Anthony G. Basile</name>
-	</maintainer>
-	<herd>base-system</herd>
-	<longdescription lang="en">
-		This package contains base shell functions which are required by
-		all Gentoo systems.
-	</longdescription>
-	<upstream>
-		<remote-id type="github">gentoo/gentoo-functions</remote-id>
-	</upstream>
+<herd>base-system</herd>
+<maintainer>
+	<email>williamh@gentoo.org</email>
+</maintainer>
+<maintainer>
+	<email>blueness@gentoo.org</email>
+</maintainer>
+<longdescription lang='en'>
+	This package contains base shell functions which are required by
+	all Gentoo systems.
+</longdescription>
+<upstream>
+	<remote-id type='github'>gentoo/gentoo-functions</remote-id>
+</upstream>
 </pkgmetadata>

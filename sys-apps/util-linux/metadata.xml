@@ -1,20 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
-	<herd>base-system</herd>
-	<use>
-		<flag name="caps">build setpriv helper (run programs with diff capabilities)</flag>
-		<flag name="cramfs">build mkfs/fsck helpers for cramfs filesystems</flag>
-		<flag name="cytune">build cytune for Cyclades-Z multiport serial cards</flag>
-		<flag name="fdformat">build fdformat (floppy disk format)</flag>
-		<flag name="pam">build runuser helper</flag>
-		<flag name="suid">
+<herd>base-system</herd>
+<use>
+	<flag name='caps'>build setpriv helper (run programs with diff capabilities)</flag>
+	<flag name='cramfs'>build mkfs/fsck helpers for cramfs filesystems</flag>
+	<flag name='cytune'>build cytune for Cyclades-Z multiport serial cards</flag>
+	<flag name='fdformat'>build fdformat (floppy disk format)</flag>
+	<flag name='kill'>build the kill program</flag>
+	<flag name='pam'>build runuser helper</flag>
+	<flag name='suid'>
 		install mount/umount as setuid so non-root users may mount/umount devices,
 		and wall/write as setgid so non-root users can notify other users
 	</flag>
-		<flag name="tty-helpers">install the mesg/wall/write tools for talking to local users</flag>
-	</use>
-	<upstream>
-		<remote-id type="cpe">cpe:/a:andries_brouwer:util-linux</remote-id>
-	</upstream>
+	<flag name='tty-helpers'>install the mesg/wall/write tools for talking to local users</flag>
+</use>
+<upstream>
+	<remote-id type='cpe'>cpe:/a:andries_brouwer:util-linux</remote-id>
+</upstream>
 </pkgmetadata>

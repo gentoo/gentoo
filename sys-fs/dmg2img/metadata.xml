@@ -1,13 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
 <herd>base-system</herd>
 <maintainer>
-<email>josejx@gentoo.org</email>
-<name>Joseph Jezak</name>
+	<email>josejx@gentoo.org</email>
 </maintainer>
-<longdescription lang="en">
- dmg2img is an application that can convert .dmg files, popular on Mac OSX
- systems, to HFS+ disk images, suitable for mounting on Linux systems.
+<longdescription lang='en'>
+	dmg2img is an application that can convert .dmg files, popular on Mac OSX
+	systems, to HFS+ disk images, suitable for mounting on Linux systems.
 </longdescription>
 </pkgmetadata>

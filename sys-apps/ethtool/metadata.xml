@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
 <herd>base-system</herd>
-<longdescription lang="en">
+<longdescription lang='en'>
 	ethtool is a Linux utility for controlling network drivers and hardware,
 	particularly for wired Ethernet devices. It can be used to:
 		* Get identification and diagnostic information

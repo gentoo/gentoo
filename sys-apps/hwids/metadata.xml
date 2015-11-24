@@ -1,23 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
-  <herd>base-system</herd>
-  <maintainer>
-    <email>flameeyes@gentoo.org</email>
-  </maintainer>
-  <maintainer>
-    <email>gregkh@gentoo.org</email>
-  </maintainer>
-  <maintainer>
-    <email>floppym@gentoo.org</email>
-  </maintainer>
-  <use>
-    <flag name="net">Install the oui.txt and iab.txt databases</flag>
-    <flag name="pci">Install the pci.ids database</flag>
-    <flag name="usb">Install the usb.ids database</flag>
-    <flag name="udev">Install hwdb.d rules for udev</flag>
-  </use>
-  <upstream>
-    <remote-id type="github">gentoo/hwids</remote-id>
-  </upstream>
+<herd>base-system</herd>
+<maintainer>
+	<email>flameeyes@gentoo.org</email>
+</maintainer>
+<maintainer>
+	<email>gregkh@gentoo.org</email>
+</maintainer>
+<maintainer>
+	<email>floppym@gentoo.org</email>
+</maintainer>
+<use>
+	<flag name='net'>Install the oui.txt and iab.txt databases</flag>
+	<flag name='pci'>Install the pci.ids database</flag>
+	<flag name='usb'>Install the usb.ids database</flag>
+	<flag name='udev'>Install hwdb.d rules for udev</flag>
+</use>
+<upstream>
+	<remote-id type='github'>gentoo/hwids</remote-id>
+</upstream>
 </pkgmetadata>

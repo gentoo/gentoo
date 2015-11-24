@@ -1,17 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
-	<herd>base-system</herd>
-	<maintainer>
-		<email>ssuominen@gentoo.org</email>
-		<name>Samuli Suominen</name>
-	</maintainer>
-	<maintainer>
-		<email>floppym@gentoo.org</email>
-		<name>Mike Gilbert</name>
-	</maintainer>
-	<upstream>
-		<remote-id type="google-code">exfat</remote-id>
-		<remote-id type="github">relan/exfat</remote-id>
-	</upstream>
+<herd>base-system</herd>
+<maintainer>
+	<email>ssuominen@gentoo.org</email>
+</maintainer>
+<maintainer>
+	<email>floppym@gentoo.org</email>
+</maintainer>
+<upstream>
+	<remote-id type='google-code'>exfat</remote-id>
+	<remote-id type='github'>relan/exfat</remote-id>
+</upstream>
 </pkgmetadata>

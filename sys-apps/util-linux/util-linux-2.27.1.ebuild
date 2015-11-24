@@ -25,16 +25,9 @@ HOMEPAGE="https://www.kernel.org/pub/linux/utils/util-linux/"
 
 LICENSE="GPL-2 LGPL-2.1 BSD-4 MIT public-domain"
 SLOT="0"
-IUSE="caps +cramfs fdformat ncurses nls pam python selinux slang static-libs +suid systemd test tty-helpers udev unicode"
+IUSE="caps +cramfs fdformat kill ncurses nls pam python selinux slang static-libs +suid systemd test tty-helpers udev unicode"
 
-RDEPEND="!sys-process/schedutils
-	!sys-apps/setarch
-	!<sys-apps/sysvinit-2.88-r7
-	!sys-block/eject
-	!<sys-libs/e2fsprogs-libs-1.41.8
-	!<sys-fs/e2fsprogs-1.41.8
-	!<app-shells/bash-completion-1.3-r2
-	caps? ( sys-libs/libcap-ng )
+RDEPEND="caps? ( sys-libs/libcap-ng )
 	cramfs? ( sys-libs/zlib )
 	ncurses? ( >=sys-libs/ncurses-5.2-r2:0=[unicode?] )
 	pam? ( sys-libs/pam )
@@ -52,6 +45,18 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	test? ( sys-devel/bc )
 	virtual/os-headers"
+RDEPEND+="
+	kill? (
+		!sys-apps/coreutils[kill]
+		!sys-process/procps[kill]
+	)
+	!sys-process/schedutils
+	!sys-apps/setarch
+	!<sys-apps/sysvinit-2.88-r7
+	!sys-block/eject
+	!<sys-libs/e2fsprogs-libs-1.41.8
+	!<sys-fs/e2fsprogs-1.41.8
+	!<app-shells/bash-completion-1.3-r2"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -103,7 +108,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable cramfs) \
 		$(multilib_native_use_enable fdformat) \
 		--with-ncurses=$(multilib_native_usex ncurses $(usex unicode auto yes) no) \
-		--disable-kill \
+		$(use_enable kill) \
 		--disable-login \
 		$(multilib_native_use_enable tty-helpers mesg) \
 		--disable-nologin \

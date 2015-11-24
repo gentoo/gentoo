@@ -1,10 +1,11 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
-  <herd>base-system</herd>
-  <longdescription>The libcap-ng library is intended to make programming with
-  POSIX capabilities much easier than the traditional libcap library. It
-  includes utilities that can analyse all currently running applications and
-  print out any capabilities and whether or not it has an open ended bounding
-  set.</longdescription>
+<herd>base-system</herd>
+<longdescription>
+	The libcap-ng library is intended to make programming with POSIX
+	capabilities much easier than the traditional libcap library. It includes
+	utilities that can analyse all currently running applications and print
+	out any capabilities and whether or not it has an open ended bounding set.
+</longdescription>
 </pkgmetadata>

@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
-	<herd>base-system</herd>
-	<longdescription lang="en">
-		Endpoint turns a Linux machine with one or more firewire cards into an SBP-2
-		device. The advantage is that you can use any file or device the linux
-		machine supports as storage, and that multiple clients can sit on separate
-		buses so they can get the full bandwidth of the bus.
-	</longdescription>
+<herd>base-system</herd>
+<longdescription lang='en'>
+	Endpoint turns a Linux machine with one or more firewire cards into an SBP-2
+	device. The advantage is that you can use any file or device the linux
+	machine supports as storage, and that multiple clients can sit on separate
+	buses so they can get the full bandwidth of the bus.
+</longdescription>
 </pkgmetadata>
 

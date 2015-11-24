@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
-	<herd>base-system</herd>
-	<use>
-		<flag name="netlink">Compile daemon receiving quota messages via netlink</flag>
-		<flag name="rpc">Enable quota interaction via RPC</flag>
-	</use>
-	<upstream>
-		<remote-id type="sourceforge">linuxquota</remote-id>
-	</upstream>
+<herd>base-system</herd>
+<use>
+	<flag name='netlink'>Compile daemon receiving quota messages via netlink</flag>
+	<flag name='rpc'>Enable quota interaction via RPC</flag>
+</use>
+<upstream>
+	<remote-id type='sourceforge'>linuxquota</remote-id>
+</upstream>
 </pkgmetadata>

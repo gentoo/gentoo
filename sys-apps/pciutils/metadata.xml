@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
-	<herd>base-system</herd>
-	<use>
-		<flag name='dns'>Enable support for querying the central database of PCI IDs using DNS</flag>
-		<flag name='kmod'>Enable <pkg>sys-apps/kmod</pkg> support for the -k switch in lspci command</flag>
-		<flag name='zlib'>Support compressed pci.ids database</flag>
-	</use>
+<herd>base-system</herd>
+<use>
+	<flag name='dns'>Enable support for querying the central database of PCI IDs using DNS</flag>
+	<flag name='kmod'>Enable <pkg>sys-apps/kmod</pkg> support for the -k switch in lspci command</flag>
+	<flag name='zlib'>Support compressed pci.ids database</flag>
+</use>
 </pkgmetadata>

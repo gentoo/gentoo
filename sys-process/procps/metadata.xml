@@ -1,14 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
-    <herd>base-system</herd>
-    <use>
-        <flag name="modern-top">Enables new startup defaults of top. Keeps old 
-		defaults if disabled</flag>
-        <flag name="ncurses">Build programs that use ncurses: top, slabtop, 
-		watch</flag>
-    </use>
-    <upstream>
-        <remote-id type="sourceforge">procps</remote-id>
-    </upstream>
+<herd>base-system</herd>
+<use>
+	<flag name='kill'>Build the kill program</flag>
+	<flag name='modern-top'>Enables new startup defaults of top. Keeps old defaults if disabled</flag>
+	<flag name='ncurses'>Build programs that use ncurses: top, slabtop, watch</flag>
+</use>
+<upstream>
+	<remote-id type='sourceforge'>procps</remote-id>
+</upstream>
 </pkgmetadata>

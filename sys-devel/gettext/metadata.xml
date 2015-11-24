@@ -1,11 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
 <herd>base-system</herd>
 <use>
- <flag name="cvs">When running `autopoint`, use cvs to store the internal development files;
-                  this requires cvs at runtime, but will be faster/smaller than raw archives</flag>
- <flag name="git">When running `autopoint`, use git to store the internal development files;
-                  this requires git at runtime, but will be faster/smaller than raw archives</flag>
+	<flag name='cvs'>
+		When running `autopoint`, use cvs to store the internal development files;
+		this requires cvs at runtime, but will be faster/smaller than raw archives
+	</flag>
+	<flag name='git'>
+		When running `autopoint`, use git to store the internal development files;
+		this requires git at runtime, but will be faster/smaller than raw archives
+	</flag>
 </use>
 </pkgmetadata>
