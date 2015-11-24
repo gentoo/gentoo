@@ -86,9 +86,10 @@ makeopts_loadavg() {
 	# This assumes the first .* will be more greedy than the second .*
 	# since POSIX doesn't specify a non-greedy match (i.e. ".*?").
 	local lavg=$(echo " $* " | sed -r -n \
-		-e 's:.*[[:space:]](-l|--load-average[=[:space:]])[[:space:]]*([0-9]+|[0-9]+\.[0-9]+)[^0-9.]*:\2:p' \
-		-e 's:.*[[:space:]](-l|--load-average)[[:space:]].*:999:p')
-	echo ${lavg:-1}
+		-e 's:.*[[:space:]](-l|--(load-average|max-load)[=[:space:]])[[:space:]]*([0-9]+|[0-9]+\.[0-9]+).*:\3:p' \
+		-e 's:.*[[:space:]](-l|--(load-average|max-load))[[:space:]].*:999:p')
+	# Default to 999 since the default is to not use a load limit.
+	echo ${lavg:-999}
 }
 
 # @FUNCTION: multijob_init
