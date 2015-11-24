@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Perl interface to the Linode.com API"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 DEPEND="test? ( virtual/perl-Test-Simple )
