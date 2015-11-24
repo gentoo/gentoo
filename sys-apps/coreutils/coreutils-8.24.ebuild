@@ -24,7 +24,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~arm-linux ~x86-linux"
-IUSE="acl caps gmp kill multicall nls selinux static userland_BSD vanilla xattr"
+IUSE="acl caps gmp hostname kill multicall nls selinux static userland_BSD vanilla xattr"
 
 LIB_DEPEND="acl? ( sys-apps/acl[static-libs] )
 	caps? ( sys-libs/libcap )
@@ -37,6 +37,7 @@ DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )
 	app-arch/xz-utils"
 RDEPEND+="
+	hostname? ( !sys-apps/net-tools[hostname] )
 	kill? (
 		!sys-apps/util-linux[kill]
 		!sys-process/procps[kill]
@@ -91,8 +92,8 @@ src_configure() {
 		--with-packager="Gentoo" \
 		--with-packager-version="${PVR} (p${PATCH_VER:-0})" \
 		--with-packager-bug-reports="https://bugs.gentoo.org/" \
-		--enable-install-program="arch,$(usev kill)" \
-		--enable-no-install-program="groups,hostname,$(usev !kill),su,uptime" \
+		--enable-install-program="arch,$(usev hostname),$(usev kill)" \
+		--enable-no-install-program="groups,$(usev !hostname),$(usev !kill),su,uptime" \
 		--enable-largefile \
 		$(use caps || echo --disable-libcap) \
 		$(use_enable nls) \
