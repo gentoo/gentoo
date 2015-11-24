@@ -16,7 +16,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 
 IUSE="doc static-libs"
 
