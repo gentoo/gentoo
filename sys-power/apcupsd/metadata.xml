@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
-	<maintainer>
-		<email>mattm@gentoo.org</email>
-		<name>Matthew Marlowe</name>
-	</maintainer>
-	<longdescription>
+<herd>base-system</herd>
+<maintainer>
+	<email>mattm@gentoo.org</email>
+</maintainer>
+<longdescription lang='en'>
 Apcupsd can be used for power mangement and controlling most of 
 APC's UPS models on Unix and Windows machines. Apcupsd works with 
 most of APC's Smart-UPS models as well as most simple signalling 
@@ -16,8 +16,7 @@ will follow when the battery is exhausted, a timeout (seconds)
 expires, or runtime expires based on internal APC calculations 
 determined by power consumption rates.
 </longdescription>
-	<herd>base-system</herd>
-	<upstream>
-		<remote-id type="sourceforge">apcupsd</remote-id>
-	</upstream>
+<upstream>
+	<remote-id type='sourceforge'>apcupsd</remote-id>
+</upstream>
 </pkgmetadata>

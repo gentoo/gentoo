@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
-	<herd>base-system</herd>
-	<maintainer>
-		<email>ssuominen@gentoo.org</email>
-		<name>Samuli Suominen</name>
-	</maintainer>
-	<upstream>
-		<remote-id type="sourceforge">extundelete</remote-id>
-	</upstream>
+<herd>base-system</herd>
+<maintainer>
+	<email>ssuominen@gentoo.org</email>
+</maintainer>
+<upstream>
+	<remote-id type='sourceforge'>extundelete</remote-id>
+</upstream>
 </pkgmetadata>

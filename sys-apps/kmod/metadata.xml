@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
-	<herd>base-system</herd>
-	<maintainer>
-		<email>udev-bugs@gentoo.org</email>
-	</maintainer>
-	<use>
-		<flag name='lzma'>Enable support for XZ compressed modules</flag>
-		<flag name='tools'>Install module loading/unloading tools.</flag>
-		<flag name='zlib'>Enable support for gzipped modules</flag>
-	</use>
+<herd>base-system</herd>
+<maintainer>
+	<email>udev-bugs@gentoo.org</email>
+</maintainer>
+<use>
+	<flag name='lzma'>Enable support for XZ compressed modules</flag>
+	<flag name='tools'>Install module loading/unloading tools.</flag>
+	<flag name='zlib'>Enable support for gzipped modules</flag>
+</use>
 </pkgmetadata>

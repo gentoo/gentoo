@@ -1,18 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
-	<herd>base-system</herd>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
-		<email>idella4@gentoo.org</email>
-		<name>Ian Delaney</name>
-	</maintainer>
-	<maintainer>
-		<email>gokturk@binghamton.edu</email>
-		<name>Gokturk Yuksek</name>
-		<description>Proxy maintainer, CC him on bugs.</description>
-	</maintainer>
-	<upstream>
-		<remote-id type="sourceforge">gkernel</remote-id>
-	</upstream>
+<herd>base-system</herd>
+<herd>proxy-maintainers</herd>
+<maintainer>
+	<email>idella4@gentoo.org</email>
+</maintainer>
+<maintainer>
+	<email>gokturk@binghamton.edu</email>
+	<name>Gokturk Yuksek</name>
+	<description>Proxy maintainer, CC him on bugs.</description>
+</maintainer>
+<upstream>
+	<remote-id type='sourceforge'>gkernel</remote-id>
+</upstream>
 </pkgmetadata>
