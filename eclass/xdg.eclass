@@ -43,8 +43,19 @@ xdg_src_prepare() {
 xdg_pkg_preinst() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
 	pushd "${ED}" > /dev/null || die
-	export XDG_ECLASS_DESKTOPFILES=( $(find 'usr/share/applications' -type f -print0 2> /dev/null) )
-	export XDG_ECLASS_MIMEINFOFILES=( $(find 'usr/share/mime' -type f -print0 2> /dev/null) )
+
+	local f
+	XDG_ECLASS_DESKTOPFILES=()
+	while IFS= read -r -d '' f; do
+		XDG_ECLASS_DESKTOPFILES+=( ${f} )
+	done < <(find 'usr/share/applications' -type f -print0 2>/dev/null)
+
+	XDG_ECLASS_MIMEINFOFILES=()
+	while IFS= read -r -d '' f; do
+		XDG_ECLASS_MIMEINFOFILES+=( ${f} )
+	done < <(find 'usr/share/mime' -type f -print0 2>/dev/null)
+
+	export XDG_ECLASS_DESKTOPFILES XDG_ECLASS_MIMEINFOFILES
 	popd > /dev/null || die
 }
 
@@ -52,13 +63,13 @@ xdg_pkg_preinst() {
 # @DESCRIPTION:
 # Handle desktop and mime info database updates.
 xdg_pkg_postinst() {
-	if [[ -n "${XDG_ECLASS_DESKTOPFILES}" ]]; then
+	if [[ ${#XDG_ECLASS_DESKTOPFILES[@]} -gt 0 ]]; then
 		xdg_desktop_database_update
 	else
 		debug-print "No .desktop files to add to database"
 	fi
 
-	if [[ -n "${XDG_ECLASS_MIMEINFOFILES}" ]]; then
+	if [[ ${#XDG_ECLASS_MIMEINFOFILES[@]} -gt 0 ]]; then
 		xdg_mimeinfo_database_update
 	else
 		debug-print "No mime info files to add to database"
@@ -69,13 +80,13 @@ xdg_pkg_postinst() {
 # @DESCRIPTION:
 # Handle desktop and mime info database updates.
 xdg_pkg_postrm() {
-	if [[ -n "${XDG_ECLASS_DESKTOPFILES}" ]]; then
+	if [[ ${#XDG_ECLASS_DESKTOPFILES[@]} -gt 0 ]]; then
 		xdg_desktop_database_update
 	else
 		debug-print "No .desktop files to add to database"
 	fi
 
-	if [[ -n "${XDG_ECLASS_MIMEINFOFILES}" ]]; then
+	if [[ ${#XDG_ECLASS_MIMEINFOFILES[@]} -gt 0 ]]; then
 		xdg_mimeinfo_database_update
 	else
 		debug-print "No mime info files to add to database"
