@@ -13712,7 +13712,7 @@ net-firewall/firewalld 0.3.10 0.3.13 0.3.14.2: A firewall daemon with D-BUS inte
 net-firewall/fwanalog 0.6.4: Script to parse firewall logs and analyze them with Analog
 net-firewall/fwbuilder 5.0.1.3592-r1 5.1.0.3599: A firewall GUI
 net-firewall/fwipsec 0.4.2-r1: Firewall scripts that control iptables, FreeS/WAN, and squid
-net-firewall/fwknop 2.6.7: Single Packet Authorization and Port Knocking application
+net-firewall/fwknop 2.6.7-r1 2.6.7-r2: Single Packet Authorization and Port Knocking application
 net-firewall/gshield 2.8-r3: iptables firewall configuration system
 net-firewall/ipkungfu 0.5.2-r1 0.6.1: A nice iptables firewall script
 net-firewall/ipsec-tools 0.8.0-r5 0.8.1-r1 0.8.2: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
