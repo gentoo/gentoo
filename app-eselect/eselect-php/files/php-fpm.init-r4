@@ -6,7 +6,7 @@ extra_commands="configtest"
 set_phpvars() {
 	PHPSLOT="${SVCNAME#php-fpm-}"
 	PHP_FPM_PID="/run/php-fpm-${PHPSLOT}.pid"
-	if [ ${PHPSLOT} = 'php-fpm' ] ; then
+	if [ "${PHPSLOT}" = "php-fpm" ] ; then
 		PHPSLOT="$(eselect php show fpm)"
 		PHP_FPM_PID="/run/php-fpm.pid"
 	fi
@@ -16,6 +16,9 @@ set_phpvars() {
 }
 
 start() {
+        # If configtest fails, we don't have to sit around for five
+        # seconds waiting for a pid to show up.
+        configtest || return $?
         ebegin "Starting PHP FastCGI Process Manager"
 	set_phpvars
         start-stop-daemon --start --pidfile "${PHP_FPM_PID}" \
@@ -45,6 +48,7 @@ stop() {
 }
 
 reload() {
+    configtest || return $?
     ebegin "Reloading PHP FastCGI Process Manager"
     set_phpvars
     [ -f "${PHP_FPM_PID}" ] && kill -USR2 $(cat "${PHP_FPM_PID}")
@@ -54,6 +58,13 @@ reload() {
 configtest() {
     ebegin "Testing PHP FastCGI Process Manager configuration"
     set_phpvars
-    "${PHP_FPM_BIN}" --fpm-config "${PHP_FPM_CONF}" --test
-    eend $?
+    # Hide the "test is successful" message (which goes to stderr) if
+    # the test passed, but show the entire output if the test failed
+    # because it may contain hints about the problem.
+    OUTPUT=$( "${PHP_FPM_BIN}" --fpm-config "${PHP_FPM_CONF}" --test 2>&1 )
+
+    # Save this so `echo` doesn't clobber it.
+    local exit_code=$?
+    [ $exit_code -ne 0 ] && echo "${OUTPUT}" >&2
+    eend $exit_code
 }
