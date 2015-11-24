@@ -51,7 +51,7 @@ src_prepare() {
 	# Fix doc install path.
 	sed -e \
 		"s%/share/doc/linuxdoc-tools%/share/doc/${PF}%" \
-		-i Makefile.in
+		-i Makefile.in || die
 
 	# Upstream developers unconditionally build docs during the install phase.
 	# The only sane solution in this case is to patch things out from Makefile.
