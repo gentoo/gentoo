@@ -16,9 +16,9 @@ depend() {
 	use logger
 	if [ "${rc_need+set}" = "set" ]; then
 		: # Do nothing, the user has explicitly set rc_need
-	else
+	elif [ -f "${FWKNOPD_CONFIG}" ]; then
 		local x warn_intf
-		for x in $(awk '/^PCAP_INTF/{ sub(";$", ""); print $2 }' "${FWKNOPD_CONFIG}" 2>/dev/null); do
+		for x in $(awk '/^[[:blank:]]*PCAP_INTF/{ sub(";$", ""); print $2 }' "${FWKNOPD_CONFIG}" 2>/dev/null); do
 			warn_intf="${warn_intf} ${x}"
 		done
 		if [ -n "${warn_intf}" ]; then
@@ -28,8 +28,8 @@ depend() {
 			ewarn "where FOO is the following interface(s):"
 			ewarn "${warn_intf}"
 		else
-			# if PCAP_INTF and PCAP_FILE are not set, then fwknopd uses eth0
-			if ! grep -q '^PCAP_FILE' "${FWKNOPD_CONFIG}"; then
+			# If PCAP_INTF and PCAP_FILE are not set, then fwknopd uses eth0
+			if ! grep -q '^[[:blank:]]*PCAP_FILE' "${FWKNOPD_CONFIG}"; then
 				need net
 				ewarn "You are not binding any interface in PCAP_INTF statement in your fwknopd.conf,"
 				ewarn "neither you are providing PCAP_FILE option. Thus fwknopd will listen on eth0."

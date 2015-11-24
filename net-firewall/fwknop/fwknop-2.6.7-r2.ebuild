@@ -4,13 +4,13 @@
 
 EAPI=5
 
+AUTOTOOLS_AUTORECONF=1
+DISABLE_AUTOFORMATTING=1
+
+DISTUTILS_OPTIONAL=1
 # Python extension supports only Python2
 # See https://github.com/mrash/fwknop/issues/167
 PYTHON_COMPAT=( python2_7 )
-DISTUTILS_OPTIONAL=1
-AUTOTOOLS_AUTORECONF=1
-AUTOTOOLS_IN_SOURCE_BUILD=1
-DISABLE_AUTOFORMATTING=1
 
 inherit autotools-utils distutils-r1 linux-info readme.gentoo systemd
 
@@ -23,21 +23,20 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="client extras firewalld gdbm gpg iptables python server udp-server"
 
-RDEPEND="
+DEPEND="
 	client? ( net-misc/wget[ssl] )
+	firewalld? ( net-firewall/firewalld[${PYTHON_USEDEP}] )
+	gdbm? ( sys-libs/gdbm )
 	gpg? (
+		app-crypt/gpgme
 		dev-libs/libassuan
 		dev-libs/libgpg-error
 	)
-	python? ( ${PYTHON_DEPS} )
-"
-DEPEND="${RDEPEND}
-	gdbm? ( sys-libs/gdbm )
-	gpg? ( app-crypt/gpgme )
-	firewalld? ( net-firewall/firewalld[${PYTHON_USEDEP}] )
 	iptables? ( net-firewall/iptables )
+	python? ( ${PYTHON_DEPS} )
 	server? ( !udp-server? ( net-libs/libpcap ) )
 "
+RDEPEND="${DEPEND}"
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -48,6 +47,7 @@ REQUIRED_USE="
 "
 
 DOCS=( ChangeLog README.md )
+
 DOC_CONTENTS="
 Example configuration files were installed in /etc/fwknopd directory.
 Please edit them to fit your needs and then remove the .example suffix.
@@ -113,7 +113,7 @@ src_install() {
 	prune_libtool_files --modules
 
 	if use server; then
-		newinitd "${FILESDIR}/fwknopd.init" fwknopd
+		newinitd "${FILESDIR}/fwknopd.init-r1" fwknopd
 		newconfd "${FILESDIR}/fwknopd.confd" fwknopd
 		systemd_dounit extras/systemd/fwknopd.service
 		systemd_newtmpfilesd extras/systemd/fwknopd.tmpfiles.conf fwknopd.conf
