@@ -16,7 +16,7 @@
 #  * XDG mime information database management
 
 case "${EAPI:-0}" in
-	4|5|6) ;;
+	0|1|2|3|4|5|6) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 

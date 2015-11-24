@@ -15,7 +15,7 @@
 inherit xdg-utils
 
 case "${EAPI:-0}" in
-	4|5|6)
+	0|1|2|3|4|5|6)
 		EXPORT_FUNCTIONS src_prepare pkg_preinst pkg_postinst pkg_postrm
 		;;
 	*) die "EAPI=${EAPI} is not supported" ;;
@@ -41,8 +41,11 @@ xdg_src_prepare() {
 # Locations are stored in XDG_ECLASS_DESKTOPFILES and XDG_ECLASS_MIMEINFOFILES
 # respectively.
 xdg_pkg_preinst() {
-	export XDG_ECLASS_DESKTOPFILES=( $(cd "${D}" && find 'usr/share/applications' -type f -print0 2> /dev/null) )
-	export XDG_ECLASS_MIMEINFOFILES=( $(cd "${D}" && find 'usr/share/mime' -type f -print0 2> /dev/null) )
+	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
+	pushd "${ED}" > /dev/null || die
+	export XDG_ECLASS_DESKTOPFILES=( $(find 'usr/share/applications' -type f -print0 2> /dev/null) )
+	export XDG_ECLASS_MIMEINFOFILES=( $(find 'usr/share/mime' -type f -print0 2> /dev/null) )
+	popd > /dev/null || die
 }
 
 # @FUNCTION: xdg_pkg_postinst
