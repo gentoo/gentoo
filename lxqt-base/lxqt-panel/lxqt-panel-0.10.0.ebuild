@@ -60,6 +60,8 @@ src_configure() {
 	for i in clock colorpicker cpuload desktopswitch dom kbindicator mainmenu mount \
 		networkmonitor quicklaunch screensaver sensors showdesktop statusnotifier \
 		sysstat taskbar tray volume worldclock; do
+		#Switch to ^^ when we switch to EAPI=6.
+		#y=${i^^}
 		y=$(tr '[:lower:]' '[:upper:]' <<< "${i}")
 		mycmakeargs+=( $(cmake-utils_use ${i} ${y}_PLUGIN) )
 	done
