@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit eutils multilib systemd toolchain-funcs
+inherit eutils flag-o-matic multilib systemd toolchain-funcs
 
 DESCRIPTION="System performance tools for Linux"
 HOMEPAGE="http://pagesperso-orange.fr/sebastien.godard/"
@@ -12,7 +12,7 @@ SRC_URI="${HOMEPAGE}${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="debug +doc isag nls lm_sensors selinux"
+IUSE="debug +doc isag nls lm_sensors selinux static"
 
 CDEPEND="
 	isag? (
@@ -46,6 +46,7 @@ src_prepare() {
 			fi
 		done
 	fi
+
 	epatch \
 		"${FILESDIR}"/${PN}-10.0.4-flags.patch \
 		"${FILESDIR}"/${PN}-11.0.4-cron.patch
@@ -53,6 +54,8 @@ src_prepare() {
 
 src_configure() {
 	tc-export AR
+	use static && append-ldflags -static
+
 	sa_lib_dir=/usr/$(get_libdir)/sa \
 		conf_dir=/etc \
 		rcdir=${SYSSTAT_FAKE_RC_DIR} \
