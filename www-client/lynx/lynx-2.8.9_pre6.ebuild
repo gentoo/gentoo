@@ -53,6 +53,7 @@ pkg_setup() {
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.8.6-mint.patch
 	epatch "${FILESDIR}"/${PN}-2.8.8_p1-parallel.patch
+	epatch "${FILESDIR}"/${PN}-2.8.9-cross-curses.patch
 }
 
 src_configure() {
@@ -76,7 +77,7 @@ src_configure() {
 		$(use_enable unicode japanese-utf8) \
 		$(use_with bzip2 bzlib) \
 		$(usex ssl "--with-$(usex gnutls gnutls ssl)=${EPREFIX}/usr" "") \
-		$(usex unicode "--with-screen=ncursesw" "")
+		--with-screen=$(usex unicode "ncursesw" "ncurses")
 }
 
 src_install() {

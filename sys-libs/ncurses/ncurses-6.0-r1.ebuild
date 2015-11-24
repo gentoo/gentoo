@@ -188,7 +188,7 @@ do_configure() {
 
 src_compile() {
 	# See comments in src_configure.
-	if ! ROOT=/ has_version "~sys-libs/${P}" ; then
+	if ! ROOT=/ has_version "~sys-libs/${P}:0" ; then
 		BUILD_DIR="${WORKDIR}" \
 		do_compile cross -C progs tic
 	fi
