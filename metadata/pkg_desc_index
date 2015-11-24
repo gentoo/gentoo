@@ -17533,7 +17533,7 @@ www-servers/gunicorn 19.1.1 19.3.0:
 www-servers/hiawatha 9.8 9.14 9.14-r1 9.15: 
 www-servers/lighttpd 1.4.35 1.4.35-r1 1.4.35-r2 1.4.37 1.4.37-r1: 
 www-servers/mongoose 5.3: 
-www-servers/monkeyd 1.5.6-r1 1.6.5 9999: 
+www-servers/monkeyd 1.5.6-r1 1.6.6 9999: 
 www-servers/nginx 1.8.0 1.9.6 1.9.7: 
 www-servers/ocsigenserver 2.5-r2 2.6: 
 www-servers/pathod 0.10 0.11.1 0.12.0: 
