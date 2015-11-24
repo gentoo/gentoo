@@ -4,11 +4,11 @@ DESCRIPTION=Perl interface to the Linode.com API
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/WebService-Linode/
 IUSE=test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/JSON dev-perl/libwww-perl dev-perl/LWP-Protocol-https dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MI/MIKEGRB/WebService-Linode-0.28.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-module	1cfb38bf68a24c8394e41d2f53003146	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
-_md5_=5592b3800a65cb9e6bcc2df7181dd572
+_md5_=b1a458ea90f5d4fc071a241998d036cc

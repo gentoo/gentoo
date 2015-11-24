@@ -6437,7 +6437,7 @@ dev-perl/net-ssh-perl 1.360.0-r1: Perl client Interface to SSH
 dev-perl/ogg-vorbis-header 0.30.0-r1: This module presents an object-oriented interface to Ogg Vorbis Comments and Information
 dev-perl/p5-Palm 1.12.0-r1: Perl Module for Palm Pilots
 dev-perl/pcsc-perl 1.4.13-r1: A Perl Module for PC/SC SmartCard access
-dev-perl/perl-ldap 0.630.0 0.640.0 0.650.0: A collection of perl modules which provide an object-oriented interface to LDAP servers
+dev-perl/perl-ldap 0.630.0 0.650.0: A collection of perl modules which provide an object-oriented interface to LDAP servers
 dev-perl/perl-mozldap 1.5.2: Mozilla PerLDAP
 dev-perl/perl-tk 804.32.0-r1 804.33.0: A Perl Module for Tk
 dev-perl/perltidy 20130922.0.0 20140711.0.0: Perl script indenter and beautifier
