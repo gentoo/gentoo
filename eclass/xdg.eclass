@@ -37,25 +37,45 @@ xdg_src_prepare() {
 
 # @FUNCTION: xdg_pkg_preinst
 # @DESCRIPTION:
-# Finds .desktop and mime info files for later handling in pkg_postinst
+# Finds .desktop and mime info files for later handling in pkg_postinst.
+# Locations are stored in XDG_ECLASS_DESKTOPFILES and XDG_ECLASS_MIMEINFOFILES
+# respectively.
 xdg_pkg_preinst() {
-	xdg_desktopfiles_savelist
-	xdg_mimeinfo_savelist
+	export XDG_ECLASS_DESKTOPFILES=( $(cd "${D}" && find 'usr/share/applications' -type f -print0 2> /dev/null) )
+	export XDG_ECLASS_MIMEINFOFILES=( $(cd "${D}" && find 'usr/share/mime' -type f -print0 2> /dev/null) )
 }
 
 # @FUNCTION: xdg_pkg_postinst
 # @DESCRIPTION:
 # Handle desktop and mime info database updates.
 xdg_pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
+	if [[ -n "${XDG_ECLASS_DESKTOPFILES}" ]]; then
+		xdg_desktop_database_update
+	else
+		debug-print "No .desktop files to add to database"
+	fi
+
+	if [[ -n "${XDG_ECLASS_MIMEINFOFILES}" ]]; then
+		xdg_mimeinfo_database_update
+	else
+		debug-print "No mime info files to add to database"
+	fi
 }
 
 # @FUNCTION: xdg_pkg_postrm
 # @DESCRIPTION:
 # Handle desktop and mime info database updates.
 xdg_pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
+	if [[ -n "${XDG_ECLASS_DESKTOPFILES}" ]]; then
+		xdg_desktop_database_update
+	else
+		debug-print "No .desktop files to add to database"
+	fi
+
+	if [[ -n "${XDG_ECLASS_MIMEINFOFILES}" ]]; then
+		xdg_mimeinfo_database_update
+	else
+		debug-print "No mime info files to add to database"
+	fi
 }
 
