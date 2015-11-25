@@ -8,4 +8,4 @@ RDEPEND=>=app-admin/eselect-1.2.3 >=dev-lang/python-exec-2.1:2 !<dev-lang/python
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~mgorny/dist/eselect-python-20151117.tar.bz2
 _eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_prepare:- src_install:-
-_md5_=b957a44ceae6aa66c48f76092c2f20f0
+_md5_=e23e316d4c83fa00bb0b5380d47e0c3f
