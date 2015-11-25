@@ -41,11 +41,8 @@ DEPEND="${COMMON_DEPEND}
 		x11-libs/gdk-pixbuf:2[introspection]
 		x11-libs/gtk+:3[introspection]
 		x11-libs/pango[introspection]
-		!sparc? ( python_targets_python2_7? ( dev-python/pyflakes[$(python_gen_usedep python2_7)] ) ) )
+		python_targets_python2_7? ( dev-python/pyflakes[$(python_gen_usedep python2_7)] ) )
 "
-# FIXME: remove "!sparc?" automagic nonsense above when pyflakes is
-# keyworded on sparc, bug #553380
-
 # gnome-base/gnome-common required by eautoreconf
 
 # We now disable introspection support in slot 2 per upstream recommendation
