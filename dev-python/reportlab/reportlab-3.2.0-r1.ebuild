@@ -2,27 +2,24 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
-# Tests crash with pypy
+PYTHON_COMPAT=( python{2_7,3_3,3_4} ) # Tests crash with pypy
 
 inherit distutils-r1 flag-o-matic prefix
 
 DESCRIPTION="Tools for generating printable PDF documents from any data source"
 HOMEPAGE="http://www.reportlab.com/"
-SRC_URI="
-	mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz
+SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz
 	http://www.reportlab.com/ftp/fonts/pfbfer-20070710.zip"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="doc examples"
 
 RDEPEND="
-	>=dev-python/pillow-2.4.0[tiff,${PYTHON_USEDEP}]
-	media-fonts/dejavu
+	>=dev-python/pillow-2.4.0[tiff,truetype,${PYTHON_USEDEP}]
 	media-libs/libart_lgpl
 	sys-libs/zlib
 "
@@ -30,6 +27,10 @@ DEPEND="${RDEPEND}
 	>=dev-python/setuptools-2.2[${PYTHON_USEDEP}]
 	app-arch/unzip
 "
+
+PATCHES=(
+	"${FILESDIR}"/reportlab-no-pip.patch
+)
 
 src_unpack() {
 	unpack ${P}.tar.gz
@@ -39,7 +40,6 @@ src_unpack() {
 
 python_prepare_all() {
 	sed -i \
-		-e "s|/usr/lib/X11/fonts/TrueType/|${EPREFIX}/usr/share/fonts/dejavu/|" \
 		-e 's|/usr/local/Acrobat|/opt/Acrobat|g' \
 		-e 's|%(HOME)s/fonts|%(HOME)s/.fonts|g' \
 		src/reportlab/rl_config.py || die
