@@ -1,0 +1,48 @@
+--- src/ssl.cpp.orig	2010-11-01 03:42:51.000000000 +0300
++++ src/ssl.cpp	2015-11-25 15:32:23.923057317 +0300
+@@ -99,35 +99,7 @@
+     return 0;
+ }
+ 
+-extern "C" {
+-    static int _wrap_mutex_init(void **priv)
+-    {
+-        return _gcry_mutex_init((Mutex **)(priv));
+-    }
+-
+-    static int _wrap_mutex_destroy(void **priv)
+-    {
+-        return _gcry_mutex_destroy((Mutex **)(priv));
+-    }
+-
+-    static int _wrap_mutex_lock(void **priv)
+-    {
+-        return _gcry_mutex_lock((Mutex **)(priv));
+-    }
+-
+-    static int _wrap_mutex_unlock(void **priv)
+-    {
+-        return _gcry_mutex_unlock((Mutex **)(priv));
+-    }
+-
+-    static struct gcry_thread_cbs _gcry_threads =
+-    {
+-        GCRY_THREAD_OPTION_PTHREAD, NULL,
+-        _wrap_mutex_init, _wrap_mutex_destroy,
+-        _wrap_mutex_lock, _wrap_mutex_unlock
+-    };
+-
+-};
++GCRY_THREAD_OPTION_PTHREAD_IMPL;
+ 
+ #endif
+ 
+@@ -135,7 +107,7 @@
+ public:
+     _ssl_global() {
+ #ifndef WIN32
+-        gcry_control(GCRYCTL_SET_THREAD_CBS, &_gcry_threads);
++        gcry_control(GCRYCTL_SET_THREAD_CBS, &gcry_threads_pthread);
+ #endif
+         gnutls_global_init();
+     }
