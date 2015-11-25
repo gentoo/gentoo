@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,10 +17,10 @@ RDEPEND="x11-libs/libXrandr
 	x11-libs/fox-wrapper
 	>=sys-devel/autoconf-2.67
 	bzip2? ( app-arch/bzip2 )
-	jpeg? ( virtual/jpeg )
+	jpeg? ( virtual/jpeg:= )
 	opengl? ( virtual/glu virtual/opengl )
-	png? ( media-libs/libpng )
-	tiff? ( media-libs/tiff )
+	png? ( media-libs/libpng:0= )
+	tiff? ( media-libs/tiff:0= )
 	truetype? ( media-libs/freetype:2
 		x11-libs/libXft )
 	zlib? ( sys-libs/zlib )"

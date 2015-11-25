@@ -1,24 +1,24 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=5
 
 inherit eutils fox
 
 LICENSE="LGPL-2.1"
 SLOT="1.6"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="+bzip2 +jpeg +opengl +png tiff +truetype +zlib"
 
 RDEPEND="x11-libs/libXrandr
 	x11-libs/libXcursor
 	x11-libs/fox-wrapper
 	bzip2? ( >=app-arch/bzip2-1.0.2 )
-	jpeg? ( virtual/jpeg )
+	jpeg? ( virtual/jpeg:= )
 	opengl? ( virtual/glu virtual/opengl )
-	png? ( >=media-libs/libpng-1.2.5 )
-	tiff? ( >=media-libs/tiff-3.5.7 )
+	png? ( >=media-libs/libpng-1.2.5:0= )
+	tiff? ( >=media-libs/tiff-3.5.7:0= )
 	truetype? ( =media-libs/freetype-2*
 		x11-libs/libXft )
 	zlib? ( >=sys-libs/zlib-1.1.4 )"
