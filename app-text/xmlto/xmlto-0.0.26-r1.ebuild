@@ -16,7 +16,7 @@ IUSE="latex"
 
 RDEPEND=">=app-text/docbook-xsl-stylesheets-1.62.0-r1
 	app-text/docbook-xml-dtd:4.2
-	app-shells/bash
+	app-shells/bash:0
 	dev-libs/libxslt
 	sys-apps/sed
 	|| ( >=sys-apps/coreutils-6.10-r1 sys-freebsd/freebsd-ubin )
