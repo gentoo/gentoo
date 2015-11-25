@@ -17,7 +17,7 @@ REQUIRED_USE="gnutls? ( ssl )"
 
 RDEPEND="ssl? ( gnutls? ( dev-libs/libgcrypt:0
 			net-libs/gnutls )
-		!gnutls? ( dev-libs/openssl ) )
+		!gnutls? ( dev-libs/openssl:0 ) )
 	sys-libs/zlib"
 DEPEND="doc? ( >=app-doc/doxygen-1.3.6 )
 	${RDEPEND}"
