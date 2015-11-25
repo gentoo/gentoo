@@ -17,7 +17,7 @@ REQUIRED_USE="gnutls? ( ssl )"
 
 RDEPEND="ssl? ( gnutls? ( dev-libs/libgcrypt:0
 			net-libs/gnutls )
-		!gnutls? ( dev-libs/openssl ) )
+		!gnutls? ( dev-libs/openssl:0 ) )
 	sys-libs/zlib"
 DEPEND="doc? ( >=app-doc/doxygen-1.3.6 )
 	${RDEPEND}"
@@ -28,7 +28,9 @@ src_prepare() {
 		"${FILESDIR}/1.8.0-glibc212.patch" \
 		"${FILESDIR}/1.8.1-autoconf-update.patch" \
 		"${FILESDIR}/1.8.1-fix-buffer-overflow.patch" \
-		"${FILESDIR}/1.8.1-parallel-build.patch"
+		"${FILESDIR}/1.8.1-parallel-build.patch" \
+		"${FILESDIR}/1.8.1-libgcrypt.patch"
+	epatch_user
 	eautoreconf
 }
 
