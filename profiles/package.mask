@@ -106,12 +106,12 @@ sci-chemistry/pymol-apbs-plugin
 # - ABIFLAGS reintroduced for 3.3+.
 # Resulting API/ABI change can break reverse dependencies, especially
 # if upstream hardcodes paths or library names.
-=app-eselect/eselect-python-20151117
+>=app-eselect/eselect-python-20151117
 =dev-lang/python-2.7.10-r4
 =dev-lang/python-3.3.5-r4
 =dev-lang/python-3.4.3-r4
 =dev-lang/python-3.5.0-r3
-=dev-lang/python-exec-2.1
+>=dev-lang/python-exec-2.1
 
 # Justin Lecher <jlec@gentoo.org> (10 Nov 2015)
 # Vulnerable package CVE-2014-{1932,1933}
