@@ -21,19 +21,10 @@ case "${EAPI:-0}" in
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
-# @ECLASS-VARIABLE: XDG_ECLASS_SKIP_DEPEND
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Allow skipping addition of utilities to DEPEND.
-# Used to break dependency loop with glib.
-: ${XDG_ECLASS_SKIP_DEPEND:="no"}
-
-if [[ ${XDG_ECLASS_SKIP_DEPEND} != yes ]] ; then
 DEPEND="
 	dev-util/desktop-file-utils
 	x11-misc/shared-mime-info
 "
-fi
 
 # @FUNCTION: xdg_src_prepare
 # @DESCRIPTION:
