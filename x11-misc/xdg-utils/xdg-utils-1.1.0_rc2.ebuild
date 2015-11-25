@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,8 +21,7 @@ RDEPEND="dev-util/desktop-file-utils
 	x11-apps/xprop
 	x11-apps/xset
 	perl? ( dev-perl/File-MimeInfo )"
-DEPEND="app-text/xmlto
-	|| ( www-client/links www-client/lynx virtual/w3m )"
+DEPEND=">=app-text/xmlto-0.0.26-r1"
 
 DOCS="README RELEASE_NOTES TODO" # ChangeLog is bogus, see git instead
 
