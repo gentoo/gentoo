@@ -15,6 +15,7 @@ GCONF_DEBUG="yes"
 # Completely useless with or without USE static-libs, people need to use
 # pkg-config
 GNOME2_LA_PUNT="yes"
+XDG_ECLASS_SKIP_DEPEND="yes"
 
 inherit autotools bash-completion-r1 gnome2 libtool eutils flag-o-matic	multilib \
 	pax-utils python-r1 toolchain-funcs versionator virtualx linux-info multilib-minimal
