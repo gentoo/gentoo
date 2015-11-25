@@ -27,20 +27,8 @@ RDEPEND="ldap? ( >=net-nds/openldap-2.4.38-r1[${MULTILIB_USEDEP}] )
 			app-misc/ca-certificates
 		)
 		curl_ssl_gnutls? (
-			|| (
-				(
-					>=net-libs/gnutls-3.2.15[static-libs?,${MULTILIB_USEDEP}]
-					>=dev-libs/nettle-2.6[${MULTILIB_USEDEP}]
-				)
-				(
-					=net-libs/gnutls-2.12*[nettle,static-libs?,${MULTILIB_USEDEP}]
-					>=dev-libs/nettle-2.6[${MULTILIB_USEDEP}]
-				)
-				(
-					=net-libs/gnutls-2.12*[-nettle,static-libs?,${MULTILIB_USEDEP}]
-					>=dev-libs/libgcrypt-1.5.3[static-libs?,${MULTILIB_USEDEP}]
-				)
-			)
+			>=net-libs/gnutls-3.2.15[static-libs?,${MULTILIB_USEDEP}]
+			>=dev-libs/nettle-2.6[${MULTILIB_USEDEP}]
 			app-misc/ca-certificates
 		)
 		curl_ssl_libressl? (
