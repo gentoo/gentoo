@@ -7763,7 +7763,7 @@ dev-python/regendoc 0.5 0.6.1: Check/update simple file/shell examples in docume
 dev-python/regex 2015.07.12 2015.07.19: Alternative regular expression module to replace re
 dev-python/remoteobjects 99999999: subclassable Python objects for working with JSON REST APIs
 dev-python/rencode 1.0.3: similar to bencode from the BitTorrent project
-dev-python/reportlab 2.6 3.1.44-r1 3.2.0: Tools for generating printable PDF documents from any data source
+dev-python/reportlab 2.6 3.1.44-r2 3.2.0-r1: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.6-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.7.1: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/repoze-who 2.2: repoze.who is an identification and authentication framework for WSGI.
