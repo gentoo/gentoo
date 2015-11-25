@@ -35,7 +35,12 @@ src_install() {
 	emake DESTDIR="${D}" install || die
 
 	local f
-	for f in python{,2,3}{,-config} 2to3 pydoc pyvenv; do
+	for f in python{,2,3}; do
+		# can't use symlinks here since random stuff
+		# loves to do readlink on sys.executable...
+		newbin "${EPREFIX}/usr/lib/python-exec/python-exec2" "${f}"
+	done
+	for f in python{,2,3}-config 2to3 pydoc pyvenv; do
 		dosym ../lib/python-exec/python-exec2 /usr/bin/"${f}"
 	done
 }
