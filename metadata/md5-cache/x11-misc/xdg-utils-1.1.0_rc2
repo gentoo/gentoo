@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst
-DEPEND=app-text/xmlto || ( www-client/links www-client/lynx virtual/w3m )
+DEPEND=>=app-text/xmlto-0.0.26-r1
 DESCRIPTION=Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
 EAPI=5
 HOMEPAGE=http://portland.freedesktop.org/
@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://people.freedesktop.org/~rdieter/xdg-utils/xdg-utils-1.1.0-rc2.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
-_md5_=e8f04aed128be4832595e8d18f689ecc
+_md5_=d1c0c70dfd12f76efe67b4ebafb1178b
