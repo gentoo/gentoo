@@ -15,7 +15,7 @@ SLOT="2/10" # libgtop soname version
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
 IUSE="+introspection"
 
-RDEPEND=">=dev-libs/glib-2.6:2"
+RDEPEND=">=dev-libs/glib-2.26:2"
 DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.4
 	>=dev-util/intltool-0.35
