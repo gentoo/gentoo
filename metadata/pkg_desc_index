@@ -979,7 +979,7 @@ app-doc/xmltoman 0.4: Simple scripts for converting xml to groff or html
 app-doc/zeal 0.2.1: Offline documentation browser inspired by Dash
 app-doc/zsh-lovers 0.9.0: Tips, tricks and examples for the Z shell
 app-editors/XML-XSH2 2.1.6-r1: XML Editing Shell
-app-editors/adie 1.6.49 1.7.45 1.7.47 1.7.49: Text editor based on the FOX Toolkit
+app-editors/adie 1.6.49 1.6.50 1.7.49 1.7.53: Text editor based on the FOX Toolkit
 app-editors/aee 2.2.15b: An easy to use text editor
 app-editors/amyedit 1.0-r2: AmyEdit is a LaTeX editor
 app-editors/beaver 0.4.1: Beaver is an Early AdVanced EditoR
