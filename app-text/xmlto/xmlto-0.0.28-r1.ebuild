@@ -5,7 +5,7 @@
 EAPI=5
 inherit eutils
 
-DESCRIPTION="script for converting XML and DocBook formatted documents to a variety of output formats"
+DESCRIPTION="script for converting XML and DocBook documents to a variety of output formats"
 HOMEPAGE="https://fedorahosted.org/xmlto/"
 SRC_URI="https://fedorahosted.org/releases/${PN:0:1}/${PN:1:1}/${PN}/${P}.tar.bz2"
 
@@ -22,6 +22,7 @@ RDEPEND=">=app-text/docbook-xsl-stylesheets-1.62.0-r1
 	|| ( >=sys-apps/coreutils-6.10-r1 sys-freebsd/freebsd-ubin )
 	|| ( sys-apps/util-linux app-misc/getopt )
 	|| ( sys-apps/which sys-freebsd/freebsd-ubin )
+	|| ( virtual/w3m www-client/lynx www-client/elinks )
 	latex? ( >=app-text/passivetex-1.25 >=dev-tex/xmltex-1.9-r2 )"
 # We only depend on flex when we patch the imput lexer.
 DEPEND="${RDEPEND}"
