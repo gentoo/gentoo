@@ -8747,7 +8747,7 @@ dev-ruby/psych 2.0.13 2.0.15: A libyaml wrapper for Ruby
 dev-ruby/puppetdb-termini 3.0.1-r2 3.1.0: Library needed to connect puppet to puppetdb
 dev-ruby/pygments_rb 0.6.2 0.6.3: Pygments syntax highlighting in ruby
 dev-ruby/qed 2.9.1 2.9.2: QED (Quality Ensured Demonstrations) is a TDD/BDD framework
-dev-ruby/racc 1.4.11 1.4.12 1.4.13: A LALR(1) parser generator for Ruby
+dev-ruby/racc 1.4.11 1.4.12 1.4.13 1.4.14: A LALR(1) parser generator for Ruby
 dev-ruby/rack 1.4.7 1.5.5 1.6.4: A modular Ruby webserver interface
 dev-ruby/rack-attack 4.2.0 4.3.0: A DSL for blocking & throttling abusive clients
 dev-ruby/rack-cache 1.2-r1 1.3.0 1.5.1: A drop-in component to enable HTTP caching for Rack-based applications that produce freshness info
