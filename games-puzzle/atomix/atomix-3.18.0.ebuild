@@ -15,13 +15,10 @@ IUSE=""
 
 RDEPEND="
 	>=dev-libs/glib-2.36:2
-	>=dev-libs/libxml2-2.4.23
 	>=x11-libs/gdk-pixbuf-2.0.5:2
-	>=x11-libs/gtk+-3.10:3
-"
+	>=x11-libs/gtk+-3.10:3"
 DEPEND="${RDEPEND}
 	dev-libs/appstream-glib
 	>=dev-util/intltool-0.40
 	sys-devel/gettext
-	virtual/pkgconfig
-"
+	virtual/pkgconfig"

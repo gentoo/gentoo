@@ -171,7 +171,6 @@ src_install()
 	fi
 	for x in ${bin_path}/*; do
 		f=${x##*/}
-		einfo dosym ../lib/go/${bin_path}/${f} /usr/bin/${f}
 		dosym ../lib/go/${bin_path}/${f} /usr/bin/${f}
 	done
 	dodoc AUTHORS CONTRIBUTORS PATENTS README.md

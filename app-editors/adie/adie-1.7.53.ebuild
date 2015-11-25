@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,5 +13,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
-DEPEND="~x11-libs/fox-${PV}"
+DEPEND="~x11-libs/fox-${PV}
+	x11-libs/libICE
+	x11-libs/libSM"
 RDEPEND="${DEPEND}"
