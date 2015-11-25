@@ -21,10 +21,13 @@ case "${EAPI:-0}" in
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
+# Avoid dependency loop as both depend on glib-2
+if [[ ${CATEGORY}/${P} != dev-libs/glib-2.* ]] ; then
 DEPEND="
 	dev-util/desktop-file-utils
 	x11-misc/shared-mime-info
 "
+fi
 
 # @FUNCTION: xdg_src_prepare
 # @DESCRIPTION:
