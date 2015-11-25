@@ -9,7 +9,7 @@ inherit eutils cmake-utils python-single-r1
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
-	inherit git-2
+	inherit git-r3
 else
 	SRC_URI="http://sigrok.org/download/source/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
@@ -23,12 +23,13 @@ SLOT="0"
 IUSE="+decode static"
 REQUIRED_USE="decode? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND=">=dev-libs/glib-2.28.0
-	>=sci-libs/libsigrok-0.3.0
+RDEPEND="
+	dev-libs/boost:0=
+	dev-libs/glib:2
+	>=sci-libs/libsigrok-0.4.0
 	dev-qt/qtgui:4
-	>=dev-libs/boost-1.42
 	decode? (
-		>=sci-libs/libsigrokdecode-0.3.0
+		>=sci-libs/libsigrokdecode-0.4.0
 		${PYTHON_DEPS}
 	)"
 DEPEND="${RDEPEND}
