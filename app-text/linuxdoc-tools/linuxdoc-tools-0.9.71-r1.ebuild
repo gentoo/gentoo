@@ -39,14 +39,13 @@ DOCS=( ChangeLog README )
 
 S="${WORKDIR}/${PN}-upstream/${PV}-${GIT_SHA1}"
 
-sgml-catalog_cat_include "/etc/sgml/linuxdoc.cat" \
-	"/usr/share/linuxdoc-tools/linuxdoc-tools.catalog"
+sgml-catalog_cat_include "/etc/sgml/linuxdoc.cat" "/usr/share/${PN}/${PN}.catalog"
 
 src_prepare() {
 	# Use Gentoo doc install path.
 	sed -i \
 		-e "s%/share/doc/linuxdoc-tools%/share/doc/${PF}%" \
-		Makefile.in
+		Makefile.in || die
 
 	autotools-utils_src_prepare
 }
