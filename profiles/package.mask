@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergey Popov <pinkbyte@gentoo.org> (25 Nov 2015)
+# Dead upstream, security issues, see bug #557856
+# Removal in a month
+net-p2p/bittorrent
+
 # Andreas K. Huettel <dilfridge@gentoo.org> (22 Nov 2015)
 # txt2html got accidentally packaged twice, as TextToHTML
 # and as txt2html. Masking the version with nonstandard PN
