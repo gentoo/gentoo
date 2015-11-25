@@ -54,6 +54,7 @@ go_arch()
 	local portage_arch=$(tc-arch $@)
 	case "${portage_arch}" in
 		x86)	echo 386;;
+		x64-*)	echo amd64;;
 		*)		echo "${portage_arch}";;
 	esac
 }
@@ -150,28 +151,28 @@ src_test()
 
 src_install()
 {
-	local bin_path="${GOBIN}"
-	if go_cross_compile; then
-		bin_path="${GOBIN}/$(go_tuple)"
-	fi
-	dobin "${bin_path}"/*
-	dodoc AUTHORS CONTRIBUTORS PATENTS README.md
+	local bin_path f x
 
-	dodir /usr/lib/go /usr/lib/go/pkg /usr/lib/go/pkg/tool
+	dodir /usr/lib/go
 	insinto /usr/lib/go
 
 	# There is a known issue which requires the source tree to be installed [1].
 	# Once this is fixed, we can consider using the doc use flag to control
 	# installing the doc and src directories.
 	# [1] https://golang.org/issue/2775
-	doins -r doc lib src
+	doins -r bin doc lib pkg src
+	fperms -R +x /usr/lib/go/bin /usr/lib/go/pkg/tool
 
-	# Selectively install pkg directory to exclude the bootstrap build
-	insinto /usr/lib/go/pkg
-	doins -r pkg/include "pkg/$(go_tuple)"
-	insinto /usr/lib/go/pkg/tool
-	doins -r "pkg/tool/$(go_tuple)"
-	fperms -R +x /usr/lib/go/pkg/tool
+	if go_cross_compile; then
+		bin_path="bin/$(go_tuple)"
+	else
+		bin_path=bin
+	fi
+	for x in ${bin_path}/*; do
+		f=${x##*/}
+		dosym ../lib/go/${bin_path}/${f} /usr/bin/${f}
+	done
+	dodoc AUTHORS CONTRIBUTORS PATENTS README.md
 }
 
 pkg_preinst()
