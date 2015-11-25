@@ -116,7 +116,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-20150426-root.patch
 	local relp=$(echo "${EPREFIX}" | sed -e 's:[^/]\+:..:g')
 	sed -i \
-		-e '/="$ROOT/s:ROOT/:ROOT'"${EPREFIX}"'/:' \
+		-e '/="$ROOT/s:ROOT:ROOT'"${EPREFIX}"':' \
 		-e '/RELPATH="\.\./s:"$:'"${relp}"'":' \
 		usr/sbin/update-ca-certificates || die
 
