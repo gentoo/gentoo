@@ -15377,7 +15377,7 @@ sci-electronics/pcb 20140316: GPL Electronic Design Automation: Printed Circuit 
 sci-electronics/petrify 4.2-r1: Synthesize Petri nets into asynchronous circuits
 sci-electronics/plcedit 2.2.1: Qt4 notepad for PLC programming
 sci-electronics/puff 20100127: microwave CAD software
-sci-electronics/pulseview 0.2.0 9999: Qt based logic analyzer GUI for sigrok
+sci-electronics/pulseview 0.2.0-r1 9999: Qt based logic analyzer GUI for sigrok
 sci-electronics/qelectrotech 0.30 9999: Qt4 application to design electric diagrams
 sci-electronics/qucs 0.0.17.130503: Quite Universal Circuit Simulator in Qt4
 sci-electronics/sigrok-cli 0.5.0 9999: Command-line client for the sigrok logic analyzer software
