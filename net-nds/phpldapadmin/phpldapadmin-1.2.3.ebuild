@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit webapp depend.php
+inherit webapp
 
 DESCRIPTION="phpLDAPadmin is a web-based tool for managing all aspects of your LDAP server"
 HOMEPAGE="http://phpldapadmin.sourceforge.net"
@@ -15,10 +15,10 @@ KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
 IUSE=""
 
 RDEPEND="dev-lang/php[hash,ldap,session,xml,nls]
-		 || ( <dev-lang/php-5.3[pcre] >=dev-lang/php-5.3 )"
+		 || ( <dev-lang/php-5.3[pcre] >=dev-lang/php-5.3 )
+	virtual/httpd-php"
 
 need_httpd_cgi
-need_php_httpd
 
 src_prepare() {
 	mv config/config.php.example config/config.php
