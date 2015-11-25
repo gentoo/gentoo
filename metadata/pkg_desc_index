@@ -14302,7 +14302,7 @@ net-misc/dibbler 0.8.4 1.0.0_rc2 1.0.0 1.0.1: Portable DHCPv6 implementation (se
 net-misc/directvnc 0.7.6-r1 0.7.8: Very thin VNC client for unix framebuffer systems
 net-misc/dleyna-server 0.5.0: library for implementing services that allow clients to discover, browse and manipulate DLNA Servers
 net-misc/dnetstats 1.2.6-r3: Qt4 network monitor utility
-net-misc/dropbear 2014.66 2015.67 2015.68: small SSH 2 client/server designed for small memory environments
+net-misc/dropbear 2014.66 2015.67 2015.68 2015.69: small SSH 2 client/server designed for small memory environments
 net-misc/dropbox 2.10.2 3.6.8: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
@@ -14870,7 +14870,7 @@ net-wireless/bluedevil 2.1.1: Bluetooth stack for KDE
 net-wireless/blueman 2.0-r1 9999: GTK+ Bluetooth Manager, designed to be simple and intuitive for everyday bluetooth tasks
 net-wireless/bluez 4.101-r9 5.33 5.34 5.35 5.35-r1: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
-net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141 6.30.223.141-r1 6.30.223.141-r2 6.30.223.248-r1 6.30.223.248-r2 6.30.223.248-r3 6.30.223.248-r4 6.30.223.271-r1: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
+net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141 6.30.223.141-r1 6.30.223.141-r2 6.30.223.248-r1 6.30.223.248-r2 6.30.223.248-r3 6.30.223.248-r4 6.30.223.271-r1 6.30.223.271-r2: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
 net-wireless/bss 0.8: Bluetooth stack smasher / fuzzer
 net-wireless/btcrack 9999: linux port of Thierry Zollers' BTCrack
 net-wireless/chillispot 1.1.0: open source captive portal or wireless LAN access point controller
