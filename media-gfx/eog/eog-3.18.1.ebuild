@@ -6,7 +6,7 @@ EAPI="5"
 GCONF_DEBUG="yes"
 GNOME2_LA_PUNT="yes"
 
-inherit eutils gnome2
+inherit gnome2
 
 DESCRIPTION="The Eye of GNOME image viewer"
 HOMEPAGE="https://wiki.gnome.org/Apps/EyeOfGnome"
