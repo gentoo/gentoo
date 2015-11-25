@@ -36,13 +36,13 @@ CDEPEND="
 	<dev-python/texttable-0.9[${PYTHON_USEDEP}]
 	>=dev-python/websocket-client-0.32.0[${PYTHON_USEDEP}]
 	<dev-python/websocket-client-1.0[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '>=dev-python/enum34-1.0.4[${PYTHON_USEDEP}]' 'python2_7' )
+	$(python_gen_cond_dep '<dev-python/enum34-2[${PYTHON_USEDEP}]' 'python2_7' )
 "
 DEPEND="
 	test? (
 		${CDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '>=dev-python/enum34-1.0.4[${PYTHON_USEDEP}]' 'python2_7' )
-		$(python_gen_cond_dep '<dev-python/enum34-2[${PYTHON_USEDEP}]' 'python2_7' )
 		$(python_gen_cond_dep '>=dev-python/mock-1.0.1[${PYTHON_USEDEP}]' 'python2_7' )
 	)
 "
