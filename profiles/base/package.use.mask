@@ -121,11 +121,6 @@ dev-java/oracle-jre-bin javafx nsplugin
 app-text/cmigemo emacs
 www-client/w3m migemo
 
-# Anthony G. Basile <blueness@gentoo.org> (04 Jul 2015)
-# USE=http2 depends on net-libs/nghttp2 which was recently
-# added to the tree and is still not stable.  Bug #552618.
-net-misc/curl http2
-
 # Gilles Dartiguelongue <eva@gentoo.org> (25 May 2015)
 # webkit fails to build with USE=wayland, bug #549228
 # https://bugs.webkit.org/show_bug.cgi?id=142879
