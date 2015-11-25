@@ -1,0 +1,13 @@
+certificate version 0.1
+pusher C6085806 1448452422 +0100
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1448452422-203382c1ad96394b76c6
+
+0000000000000000000000000000000000000000 07a38073431bb2510c02cca2d21e461e2c65ad8a refs/heads/xdg-eclass-glib-dependency-loop
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iEYEABEKAAYFAlZVoUYACgkQ1fmVwcYIWAZLRQCfXmcK3GDA+AChRGR8AtwThxuk
+5JIAn2QsiLmS376PjOmPWVj21ibOfSG7
+=mNGz
+-----END PGP SIGNATURE-----
