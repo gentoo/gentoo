@@ -26,10 +26,10 @@ REQUIRED_USE="decode? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="
 	dev-libs/boost:0=
 	dev-libs/glib:2
-	>=sci-libs/libsigrok-0.3.0
+	>=sci-libs/libsigrok-0.4.0
 	dev-qt/qtgui:4
 	decode? (
-		>=sci-libs/libsigrokdecode-0.3.0
+		>=sci-libs/libsigrokdecode-0.4.0
 		${PYTHON_DEPS}
 	)"
 DEPEND="${RDEPEND}
