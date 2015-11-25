@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit eutils webapp depend.php
+inherit eutils webapp
 
 DESCRIPTION="Web-based configuration tool written to configure Nagios"
 HOMEPAGE="http://www.lilacplatform.com"
@@ -18,9 +18,8 @@ RDEPEND="
 	>=net-analyzer/nagios-3.0
 	>=virtual/mysql-5.0
 	dev-lang/php[curl,json,mysql,pcntl,pdo,posix,simplexml]
+	virtual/httpd-php
 "
-
-need_php_httpd
 
 src_install() {
 	webapp_src_preinst
