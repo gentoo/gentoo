@@ -6,22 +6,23 @@ EAPI=5
 inherit eutils versionator
 
 SLOT="0"
-PV_STRING="$(get_version_component_range 4-6)" # Always name EAP-versions with '_pre' for clarity!
+PV_STRING="$(get_version_component_range 4-6)"
 MY_PV="$(get_version_component_range 1-3)"
 MY_PN="idea"
 
 DESCRIPTION="A complete toolset for web, mobile and enterprise development"
 HOMEPAGE="http://www.jetbrains.com/idea"
-SRC_URI="https://download.jetbrains.com/idea/${MY_PN}IU-15-PublicPreview.tar.gz -> ${P}.tar.gz"
+SRC_URI="http://download-cf.jetbrains.com/idea/${MY_PN}IU-${MY_PV}.tar.gz -> ${MY_PN}IU-${PV_STRING}.tar.gz"
 
-LICENSE="IDEA IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal"
+LICENSE="IDEA
+	|| ( IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )"
 IUSE=""
-KEYWORDS="~amd64 ~x86" # No keywords for EAP versions. Code quality sucks.
+KEYWORDS="amd64 x86"
 
 DEPEND="!dev-util/${PN}:14
 	!dev-util/${PN}:15"
 RDEPEND="${DEPEND}
-	>=virtual/jdk-1.7"
+	>=virtual/jdk-1.7:*"
 S="${WORKDIR}/${MY_PN}-IU-${PV_STRING}"
 
 QA_TEXTRELS="opt/${PN}-${MY_PV}/bin/libbreakgen.so"
@@ -49,20 +50,20 @@ QA_WX_LOAD="
 
 src_prepare() {
 	if ! use amd64; then
-		rm -rf plugins/tfsIntegration/lib/native/linux/x86_64
+		rm -r plugins/tfsIntegration/lib/native/linux/x86_64 || die
 	fi
 	if ! use arm; then
-		rm bin/fsnotifier-arm
-		rm -rf plugins/tfsIntegration/lib/native/linux/arm
+		rm bin/fsnotifier-arm || die
+		rm -r plugins/tfsIntegration/lib/native/linux/arm || die
 	fi
 	if ! use ppc; then
-		rm -rf plugins/tfsIntegration/lib/native/linux/ppc
+		rm -r plugins/tfsIntegration/lib/native/linux/ppc || die
 	fi
 	if ! use x86; then
-		rm -rf plugins/tfsIntegration/lib/native/linux/x86
+		rm -r plugins/tfsIntegration/lib/native/linux/x86 || die
 	fi
-	rm -rf plugins/tfsIntegration/lib/native/solaris
-	rm -rf plugins/tfsIntegration/lib/native/hpux
+	rm -r plugins/tfsIntegration/lib/native/solaris || die
+	rm -r plugins/tfsIntegration/lib/native/hpux || die
 }
 
 src_install() {
@@ -75,16 +76,6 @@ src_install() {
 	make_wrapper "${PN}" "${dir}/bin/${MY_PN}.sh"
 
 	# recommended by: https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
-	mkdir -p "${D}/etc/sysctl.d/"
-	echo "fs.inotify.max_user_watches = 524288" > "${D}/etc/sysctl.d/30-idea-inotify-watches.conf"
-}
-
-pkg_postinst() {
-	if [[ "$(get_version_component_range 7)x" = "prex" ]]
-	then
-		ewarn "Be aware, this is a release from their EAP. According to JetBrains, the code"
-		ewarn "quality of such releases may be considerably below of what you might usually"
-		ewarn "be used to from beta releases."
-		ewarn "Don't use it for critical tasks. You have been warned."
-	fi
+	mkdir -p "${D}/etc/sysctl.d/" || die
+	echo "fs.inotify.max_user_watches = 524288" > "${D}/etc/sysctl.d/30-idea-inotify-watches.conf" || die
 }
