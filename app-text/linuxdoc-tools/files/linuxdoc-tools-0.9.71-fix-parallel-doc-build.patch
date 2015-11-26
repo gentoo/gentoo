@@ -1,0 +1,185 @@
+See https://gitlab.com/agmartin/linuxdoc-tools/issues/4
+
+diff --git a/Makefile.in b/Makefile.in
+index adb85d0..7038d97 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -83,13 +83,14 @@ ifneq ($(BUILDDOC_FORMATS),)
+ #    -- Build documentation
+ 	@echo "Building documentation ..."
+ 	(cd doc; \
++		MAKE="$(MAKE)" \
+ 		PREFIX=$(prefix) \
+ 		BUILD_ISO_ENTITIES=$(BUILD_ISO_ENTITIES) \
+ 		BUILD_ENTITY_MAP=$(BUILD_ENTITY_MAP) \
+-	 	PKGPERL5LIB=$(CURDIR)/perl5lib \
+-	 	PKGDATADIR=$(CURDIR)/lib \
++		PKGPERL5LIB=$(CURDIR)/perl5lib \
++		PKGDATADIR=$(CURDIR)/lib \
+ 		PKGENTITYMAPDIR=$(CURDIR)/entity-map \
+-	 	BUILDDOC_FORMATS="$(BUILDDOC_FORMATS)" \
++		BUILDDOC_FORMATS="$(BUILDDOC_FORMATS)" \
+ 		sh Makedoc.sh)
+ endif
+ 
+diff --git a/doc/Makedoc.sh b/doc/Makedoc.sh
+index b7e2efb..da4be99 100644
+--- a/doc/Makedoc.sh
++++ b/doc/Makedoc.sh
+@@ -33,7 +33,7 @@ if [ "${BUILD_ENTITY_MAP}" = "true" ]; then
+     # Create a modified EntityMap.pm with entity-map location in doc
+     # build temporary dir. Need to properly install entity-map there.
+     mkdir $TMPDIR/Text
+-    make -C ../entity-map install DESTDIR="$TMPDIR"
++    ${MAKE} -C ../entity-map install DESTDIR="$TMPDIR"
+     sed < ../entity-map/EntityMap.pm.in > $TMPDIR/Text/EntityMap.pm \
+ 	-e 's|\@localentitymapdir\@|'${TMPDIR}'/usr/share/entity-map|g' \
+ 	-e 's|\@entitymapdir\@|'${TMPDIR}'/usr/share/entity-map/0.1.0|g'
+@@ -49,7 +49,7 @@ fi
+ if [ "${BUILD_ISO_ENTITIES}" = "true" ]; then
+     # --without-installed-iso-entities: Install iso-entities in
+     # "$TMPDIR/usr" and set it as iso-entities prefix.
+-    make -C ../iso-entities install DESTDIR="$TMPDIR"
++    ${MAKE} -C ../iso-entities install DESTDIR="$TMPDIR"
+     ISOENTITIES_PREFIX="${TMPDIR}/usr"
+ else
+     # --with-installed-iso-entities: Use system prefix.
+@@ -88,45 +88,42 @@ fi
+ 
+ # Build actual documentation
+ echo "- Building documentation for formats: ${BUILDDOC_FORMATS}" >&2
++BUILDDOC_MAKE=""
+ for docformat in ${BUILDDOC_FORMATS}; do
+     case ${docformat} in
+ 	txt)
+-	    echo "- Building txt docs" >&2
+ 	    if [ -n "`which groff`" ]; then
+-		$TMPDIR/linuxdoc --backend=txt --filter --blanks=1 ./guide.sgml
++		echo "- Add to build list: guide.txt" >&2
++		BUILDDOC_MAKE="${BUILDDOC_MAKE} guide.txt"
+ 	    else
+ 		echo "- ++ Warning: groff not available, cannot build \"${docformat}\" format." >&2
+ 	    fi
+ 	    ;;
+ 	pdf)
+-	    echo "- Building pdf docs" >&2
+-	    $TMPDIR/linuxdoc --backend=latex --output=pdf \
+-			     --pass="\usepackage{times}" ./guide.sgml
++	    echo "- Add to build list: guide.pdf" >&2
++	    BUILDDOC_MAKE="${BUILDDOC_MAKE} guide.pdf"
+ 	    ;;
+ 	info)
+-	    echo "- Building info docs" >&2
+-	    $TMPDIR/linuxdoc --backend=info ./guide.sgml
++	    echo "- Add to build list: guide.info" >&2
++	    BUILDDOC_MAKE="${BUILDDOC_MAKE} guide.info"
+ 	    ;;
+ 	lyx)
+-	    echo "- Building lyx docs" >&2
+-	    $TMPDIR/linuxdoc --backend=lyx ./guide.sgml
++	    echo "- Add to build list: guide.lyx" >&2
++	    BUILDDOC_MAKE="${BUILDDOC_MAKE} guide.lyx"
+ 	    ;;
+ 	html)
+-	    echo "- Building html docs" >&2
+-	    $TMPDIR/linuxdoc --imagebuttons --backend=html ./guide.sgml \
+-		&& mv -f ./guide*.html ./html
++	    echo "- Add to build list: guide.html" >&2
++	    BUILDDOC_MAKE="${BUILDDOC_MAKE} html/guide.html"
+ 	    ;;
+ 	rtf)
+-	    echo "- Building rtf docs" >&2
+-	    $TMPDIR/linuxdoc --backend=rtf ./guide.sgml && if [ ! -d ./rtf ]; \
+-		then mkdir -m 755 ./rtf; fi && mv -f ./guide*.rtf ./rtf
++	    echo "- Add to build list: guide.rtf" >&2
++	    BUILDDOC_MAKE="${BUILDDOC_MAKE} rtf/guide.rtf"
+ 	    ;;
+ 	dvi+ps)
+ 	    echo "- Building latex docs" >&2
+ 	    if [ -n "`which latex`" ]; then
+-		echo "- Building dvi docs" >&2
+-		$TMPDIR/linuxdoc --backend=latex --output=dvi \
+-				 --pass="\usepackage{times}" ./guide.sgml
++		echo "- Add to build list: guide.dvi" >&2
++		BUILDDOC_MAKE="${BUILDDOC_MAKE} guide.dvi"
+ 
+ 		if [ -n "`which dvips`" ]; then
+ 		    echo "   + dvips" >&2
+@@ -137,9 +134,13 @@ for docformat in ${BUILDDOC_FORMATS}; do
+ 			    DVIPS_PAPER="letter"
+ 			fi
+ 		    fi
+-		    dvips -t ${DVIPS_PAPER} -o ./guide.ps ./guide.dvi
+-		    if [ -n "`which gzip`" -a -f ./guide.ps ]; then
+-			gzip -fn ./guide.ps
++
++		    if [ -n "`which gzip`" ]; then
++			echo "- Add to build list: guide.ps.gz" >&2
++			BUILDDOC_MAKE="${BUILDDOC_MAKE} guide.ps.gz"
++		    else
++			echo "- Add to build list: guide.ps" >&2
++			BUILDDOC_MAKE="${BUILDDOC_MAKE} guide.ps"
+ 		    fi
+ 		else
+ 		    echo "- ++ Warning: dvips not available, cannot build \"guide.ps\"." >&2
+@@ -156,7 +157,9 @@ for docformat in ${BUILDDOC_FORMATS}; do
+     esac
+ done
+ 
++${MAKE} TMPDIR="${TMPDIR}" DVIPS_PAPER="${DVIPS_PAPER}" ${BUILDDOC_MAKE}
++
+ # Remove temporary directory.
+-rm -rf $TMPDIR
++rm -rf "${TMPDIR}"
+ 
+ exit 0
+diff --git a/doc/Makefile b/doc/Makefile
+new file mode 100644
+index 0000000..79c5382
+--- /dev/null
++++ b/doc/Makefile
+@@ -0,0 +1,44 @@
++
++
++%.txt: %.sgml
++	@echo "- Building txt docs" >&2
++	$(TMPDIR)/linuxdoc --backend=txt --filter --blanks=1 $<
++
++%.pdf: %.sgml
++	@echo "- Building pdf docs" >&2
++	$(TMPDIR)/linuxdoc --backend=latex \
++			--output=pdf \
++			--pass="\usepackage{times}" $<
++
++%.info: %.sgml
++	@echo "- Building info docs" >&2
++	$(TMPDIR)/linuxdoc --backend=info $<
++
++%.lyx: %.sgml
++	@echo "- Building lyx docs" >&2
++	$(TMPDIR)/linuxdoc --backend=lyx $<
++
++html/%.html: %.sgml
++	@echo "- Building html docs" >&2
++	$(TMPDIR)/linuxdoc --imagebuttons --backend=html $<
++	mv -f ./guide*.html ./html
++
++rtf/%.rtf: %.sgml
++	@echo "- Building rtf docs" >&2
++	$(TMPDIR)/linuxdoc --backend=rtf $<
++	mkdir -m 755 -p ./rtf
++	mv -f ./guide*.rtf ./rtf
++
++%.dvi: %.sgml
++	@echo "- Building dvi docs" >&2
++	$(TMPDIR)/linuxdoc --backend=latex \
++			--output=dvi \
++			--pass="\usepackage{times}" $<
++
++%.ps: %.dvi
++	@echo "- Building ps docs" >&2
++	dvips -t $(DVIPS_PAPER) -o $@ $<
++
++%.ps.gz: %.ps
++	@echo "- Building ps.gz docs" >&2
++	gzip -fn $<

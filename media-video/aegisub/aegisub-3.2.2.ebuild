@@ -13,7 +13,10 @@ inherit autotools-utils fdo-mime gnome2-utils l10n toolchain-funcs wxwidgets
 
 DESCRIPTION="Advanced subtitle editor"
 HOMEPAGE="http://www.aegisub.org/"
-SRC_URI="http://ftp.aegisub.org/pub/releases/${P}.tar.xz"
+SRC_URI="
+	http://ftp.aegisub.org/pub/releases/${P}.tar.xz
+	ftp://ftp.aegisub.org/pub/releases/${P}.tar.xz
+"
 
 LICENSE="BSD"
 SLOT="0"
