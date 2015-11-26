@@ -21,6 +21,6 @@
     display manager</flag>
     <flag name="ssh-askpass">Install <pkg>lxqt-base/lxqt-openssh-askpass</pkg>
     user password prompt tool</flag>
-	  <flag name="sudo">Install <pkg>lxqt-base/lxqt-sudo</pkg></flag>
+    <flag name="sudo">Install <pkg>lxqt-base/lxqt-sudo</pkg></flag>
   </use>
 </pkgmetadata>
