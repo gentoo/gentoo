@@ -182,16 +182,9 @@ src_configure() {
 	fi
 
 	if use cuda; then
-		if [[ "$(gcc-version)" > "4.7" ]]; then
-			ewarn "CUDA and >=sys-devel/gcc-4.8 do not play well together. Disabling CUDA support."
-			mycmakeargs+=( "-DWITH_CUDA=OFF" )
-			mycmakeargs+=( "-DWITH_CUBLAS=OFF" )
-			mycmakeargs+=( "-DWITH_CUFFT=OFF" )
-		else
-			mycmakeargs+=( "-DWITH_CUDA=ON" )
-			mycmakeargs+=( "-DWITH_CUBLAS=ON" )
-			mycmakeargs+=( "-DWITH_CUFFT=ON" )
-		fi
+		mycmakeargs+=( "-DWITH_CUDA=ON" )
+		mycmakeargs+=( "-DWITH_CUBLAS=ON" )
+		mycmakeargs+=( "-DWITH_CUFFT=ON" )
 	else
 		mycmakeargs+=( "-DWITH_CUDA=OFF" )
 		mycmakeargs+=( "-DWITH_CUBLAS=OFF" )
