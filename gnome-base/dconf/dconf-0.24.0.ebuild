@@ -23,6 +23,8 @@ RDEPEND="
 	sys-apps/dbus
 "
 DEPEND="${RDEPEND}
+	app-text/docbook-xml-dtd:4.2
+	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
 	dev-util/gdbus-codegen
 	>=dev-util/gtk-doc-am-1.15
