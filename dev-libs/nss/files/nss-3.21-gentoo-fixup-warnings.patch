@@ -1,0 +1,11 @@
+diff -urN a/nss/coreconf/Linux.mk b/nss/coreconf/Linux.mk
+--- a/nss/coreconf/Linux.mk	2015-11-15 09:25:06.672786048 -0600
++++ b/nss/coreconf/Linux.mk	2015-11-15 09:29:26.682774456 -0600
+@@ -130,6 +130,7 @@
+ 		OPTIMIZER += -gdwarf-2
+ 	endif
+ endif
++OPTIMIZER += -fno-strict-aliasing
+ endif
+ 
+ ifndef COMPILER_TAG
