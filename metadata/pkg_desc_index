@@ -5735,7 +5735,7 @@ dev-perl/Locale-gettext 1.50.0-r1: A Perl module for accessing the GNU locale ut
 dev-perl/LockFile-Simple 0.208.0-r1: File locking module for Perl
 dev-perl/Log-Agent 0.307.0-r1 1.0.0: A general logging framework
 dev-perl/Log-Any 0.150.0 1.32.0: Bringing loggers and listeners together
-dev-perl/Log-Dispatch 2.410.0 2.440.0 2.450.0: Dispatches messages to multiple Log::Dispatch::* objects
+dev-perl/Log-Dispatch 2.410.0 2.450.0 2.510.0: Dispatches messages to multiple Log::Dispatch::* objects
 dev-perl/Log-Log4perl 1.420.0-r1 1.460.0: Log4j implementation for Perl
 dev-perl/Log-TraceMessages 1.400.0-r1: Logging/debugging aid
 dev-perl/MARC-Charset 1.350.0-r1: convert MARC-8 encoded strings to UTF-8
@@ -5761,7 +5761,7 @@ dev-perl/Mail-Builder 2.80.0-r1: Easily create plaintext/html e-mail messages wi
 dev-perl/Mail-Builder-Simple 0.160.0-r1: Send UTF-8 HTML and text email using templates
 dev-perl/Mail-DKIM 0.400.0: Mail::DKIM - Signs/verifies Internet mail using DKIM message signatures
 dev-perl/Mail-DomainKeys 1.0.0-r1: A perl implementation of DomainKeys
-dev-perl/Mail-IMAPClient 3.350.0: IMAP client module for Perl
+dev-perl/Mail-IMAPClient 3.350.0 3.370.0: IMAP client module for Perl
 dev-perl/Mail-ListDetector 1.40.0-r1: Perl extension for detecting mailing list messages
 dev-perl/Mail-Mbox-MessageParser 1.500.200-r1 1.510.500: A fast and simple mbox folder reader
 dev-perl/Mail-POP3Client 2.180.0-r1 2.190.0: POP3 client module for Perl
@@ -10628,7 +10628,7 @@ games-util/xgame 1.7.1: Run games in a separate X session
 games-util/xgame-gtk2 2.0.2: Run games in a separate X session
 games-util/xgamer 0.6.2: A launcher for starting games in a second X session
 games-util/xqf 1.0.5 1.0.6.2: A server browser for many FPS games (frontend for qstat)
-gnome-base/dconf 0.20.0 0.22.0 0.24.0: Simple low-level configuration system
+gnome-base/dconf 0.24.0: Simple low-level configuration system
 gnome-base/dconf-editor 3.16.1 3.18.2: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r3: GNOME configuration system and daemon
 gnome-base/gdm 3.16.4 3.18.2: GNOME Display Manager for managing graphical display servers and user logins
@@ -11426,7 +11426,7 @@ mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.0.5 1.0.6: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/squirrelmail 1.4.23_pre20140426: Webmail for nuts!
 mail-client/sylpheed 3.4.2 3.4.3 3.4.3-r1: A lightweight email client and newsreader
-mail-client/thunderbird 24.8.0 31.8.0 38.2.0 38.3.0: Thunderbird Mail Client
+mail-client/thunderbird 24.8.0 31.8.0 38.2.0 38.3.0 38.4.0: Thunderbird Mail Client
 mail-client/thunderbird-bin 31.8.0 38.1.0 38.2.0 38.3.0: Thunderbird Mail Client
 mail-client/trojita 0.4.1 0.5 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
