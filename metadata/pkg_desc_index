@@ -518,7 +518,7 @@ app-crypt/elettra 1.0: Plausible deniable file cryptography
 app-crypt/etcd-ca 0_p20140903 0_p20150423 0_p20150423-r1: A simple certificate manager written in Go. Easy to use with limited capability
 app-crypt/fcrackzip 1.0: a zip password cracker
 app-crypt/gcr 3.14.0 3.16.0 3.18.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
-app-crypt/gentoo-keys 201501052117: A Openpgp/gpg keyring of official Gentoo release media gpg keys
+app-crypt/gentoo-keys 201511260245: A Openpgp/gpg keyring of official Gentoo release media gpg keys
 app-crypt/gifshuffle 2.0: GIF colourmap steganography
 app-crypt/gkeys 0.1-r1 9999: An OpenPGP/GPG key management tool and python libs
 app-crypt/gkeys-gen 0.1-r1 9999: Tool for generating OpenPGP/GPG keys using a specifications file
