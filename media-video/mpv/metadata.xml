@@ -9,6 +9,11 @@
 		<email>maksbotan@gentoo.org</email>
 	</maintainer>
 	<maintainer>
+		<email>itumaykin+gentoo@gmail.com</email>
+		<name>Coacher</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
+	</maintainer>
+	<maintainer>
 		<email>nikoli@gmx.us</email>
 	</maintainer>
 	<herd>video</herd>
