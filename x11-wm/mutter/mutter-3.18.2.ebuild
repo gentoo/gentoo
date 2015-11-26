@@ -22,7 +22,7 @@ COMMON_DEPEND="
 	>=x11-libs/cairo-1.10[X]
 	>=x11-libs/gtk+-3.9.11:3[X,introspection?]
 	>=dev-libs/glib-2.36.0:2[dbus]
-	>=media-libs/clutter-1.23.4:1.0[introspection?]
+	>=media-libs/clutter-1.23.4:1.0[X,introspection?]
 	>=media-libs/cogl-1.17.1:1.0=[introspection?]
 	>=media-libs/libcanberra-0.26[gtk3]
 	>=x11-libs/startup-notification-0.7
