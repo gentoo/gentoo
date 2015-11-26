@@ -1,0 +1,21 @@
+# HG changeset patch
+# User Felix Janda <felix.janda@posteo.de>
+# Date 1429558773 -7200
+#      Mon Apr 20 21:39:33 2015 +0200
+# Node ID 12494ff1de6cd7020c134d97b0b1ca81feb20520
+# Parent  c5cb946571388f1643ab0fb04b3bfacd93cf818e
+Fix compilation with musl libc - try 2
+
+diff -r c5cb94657138 -r 12494ff1de6c pr/src/misc/prnetdb.c
+--- a/pr/src/misc/prnetdb.c	Mon Apr 20 14:37:29 2015 -0400
++++ b/pr/src/misc/prnetdb.c	Mon Apr 20 21:39:33 2015 +0200
+@@ -63,8 +63,7 @@
+ 
+ #if defined(SOLARIS) || (defined(BSDI) && defined(_REENTRANT)) \
+ 	|| (defined(LINUX) && defined(_REENTRANT) \
+-        && !(defined(__GLIBC__) && __GLIBC__ >= 2) \
+-        && !defined(ANDROID))
++        && defined(__GLIBC__) && __GLIBC__ < 2)
+ #define _PR_HAVE_GETPROTO_R
+ #define _PR_HAVE_GETPROTO_R_POINTER
+ #endif
