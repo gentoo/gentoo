@@ -10,9 +10,11 @@ AUTOTOOLS_IN_SOURCE_BUILD=1
 inherit autotools-utils eutils flag-o-matic linux-info readme.gentoo systemd user
 
 DESCRIPTION="A userspace logging daemon for netfilter/iptables related logging"
-HOMEPAGE="http://netfilter.org/projects/ulogd/index.html"
-SRC_URI="ftp://ftp.netfilter.org/pub/${PN}/${P}.tar.bz2
-		http://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2"
+HOMEPAGE="https://netfilter.org/projects/ulogd/index.html"
+SRC_URI="
+	https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2
+	ftp://ftp.netfilter.org/pub/${PN}/${P}.tar.bz2
+"
 
 LICENSE="GPL-2"
 SLOT="0"
