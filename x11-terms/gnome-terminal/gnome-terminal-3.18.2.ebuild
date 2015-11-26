@@ -18,7 +18,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~
 
 # FIXME: automagic dependency on gtk+[X]
 RDEPEND="
-	>=dev-libs/glib-2.40.0:2[dbus]
+	>=dev-libs/glib-2.42:2[dbus]
 	>=x11-libs/gtk+-3.10:3[X]
 	>=x11-libs/vte-0.42.1:2.91
 	>=gnome-base/dconf-0.14

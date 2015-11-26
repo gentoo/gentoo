@@ -12,26 +12,22 @@ HOMEPAGE="http://www.gtkmm.org"
 
 LICENSE="LGPL-2.1+"
 SLOT="3.0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~sh sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="aqua doc examples test wayland +X"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
+IUSE="aqua doc examples test wayland X"
 REQUIRED_USE="|| ( aqua wayland X )"
 
-COMMON_DEPEND="
-	>=dev-cpp/glibmm-2.41.2:2[${MULTILIB_USEDEP}]
-	>=x11-libs/gtk+-3.14:3[aqua?,wayland?,X?,${MULTILIB_USEDEP}]
+RDEPEND="
+	>=dev-cpp/glibmm-2.46.1:2[${MULTILIB_USEDEP}]
+	>=x11-libs/gtk+-3.18.0:3[aqua?,wayland?,X?,${MULTILIB_USEDEP}]
 	>=x11-libs/gdk-pixbuf-2.28:2[${MULTILIB_USEDEP}]
-	>=dev-cpp/atkmm-2.22.7[${MULTILIB_USEDEP}]
-	>=dev-cpp/cairomm-1.10.0-r1[${MULTILIB_USEDEP}]
-	>=dev-cpp/pangomm-2.34.0:1.4[${MULTILIB_USEDEP}]
+	>=dev-cpp/atkmm-2.24.1[${MULTILIB_USEDEP}]
+	>=dev-cpp/cairomm-1.12.0[${MULTILIB_USEDEP}]
+	>=dev-cpp/pangomm-2.38.1:1.4[${MULTILIB_USEDEP}]
 	>=dev-libs/libsigc++-2.3.2:2[${MULTILIB_USEDEP}]
 "
-RDEPEND="${COMMON_DEPEND}
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-gtkmmlibs-20140508
-		!app-emulation/emul-linux-x86-gtkmmlibs[-abi_x86_32(-)] )
-"
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	virtual/pkgconfig
+	examples? ( >=media-libs/libepoxy-1.2[${MULTILIB_USEDEP}] )
 	doc? (
 		media-gfx/graphviz
 		dev-libs/libxslt

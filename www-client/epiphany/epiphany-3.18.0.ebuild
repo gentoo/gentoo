@@ -49,6 +49,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	app-text/yelp-tools
 	>=gnome-base/gnome-common-3.6
+	dev-libs/appstream-glib
 	>=dev-util/intltool-0.50
 	dev-util/itstool
 	sys-apps/paxctl

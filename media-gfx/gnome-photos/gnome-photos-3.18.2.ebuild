@@ -4,8 +4,9 @@
 
 EAPI="5"
 GCONF_DEBUG="no"
+PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 virtualx
+inherit gnome2 python-any-r1 virtualx
 
 DESCRIPTION="Access, organize and share your photos on GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Photos"
@@ -43,6 +44,10 @@ DEPEND="${RDEPEND}
 "
 # eautoreconf
 #	app-text/yelp-tools
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_configure() {
 	gnome2_src_configure \
