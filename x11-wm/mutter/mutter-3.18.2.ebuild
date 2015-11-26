@@ -41,7 +41,7 @@ COMMON_DEPEND="
 	x11-libs/libXfixes
 	>=x11-libs/libXi-1.7.4
 	x11-libs/libXinerama
-	x11-libs/libXrandr
+	>=x11-libs/libXrandr-1.5
 	x11-libs/libXrender
 	x11-libs/libxcb
 	x11-libs/libxkbfile
@@ -65,7 +65,6 @@ COMMON_DEPEND="
 		x11-base/xorg-server[wayland] )
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-util/gtk-doc-am-1.15
 	>=dev-util/intltool-0.41
 	sys-devel/gettext
 	virtual/pkgconfig
