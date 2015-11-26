@@ -14072,7 +14072,7 @@ net-libs/net6 1.3.14: Network access framework for IPv4/IPv6 written in C++
 net-libs/netembryo 0.1.1: a network abstraction library
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
 net-libs/nfqueue-bindings 0.5: High-level language bindings for libnetfilter_queue
-net-libs/nghttp2 1.0.5 1.2.1 1.2.1-r1 1.3.2 1.3.4 9999: HTTP/2 C Library
+net-libs/nghttp2 1.0.5 1.2.1 1.2.1-r1 1.3.2 1.3.4 1.4.0 9999: HTTP/2 C Library
 net-libs/nodejs 0.12.6 0.12.7 4.1.1 4.2.2 5.0.0: Evented IO for V8 Javascript
 net-libs/obby 0.4.8: Library for collaborative text editing
 net-libs/onion 0.7 9999: C library to create simple HTTP servers and Web Applications
@@ -16964,7 +16964,7 @@ sys-libs/ncurses 5.9-r3 5.9-r4 5.9-r5 5.9-r99 5.9-r101 6.0 6.0-r1: console displ
 sys-libs/newlib 1.18.0 1.19.0 1.20.0 2.0.0 2.1.0 2.2.0 2.2.0.20150423 9999: Newlib is a C library intended for use on embedded systems
 sys-libs/nss-db 2.2.3_pre1-r2 2.2.3_pre1-r3 2.2.3_pre1-r4: Allows important system files to be stored in a fast database file rather than plain text
 sys-libs/nss-usrfiles 2.18.1: NSS module to read passwd/group files from CoreOS /usr location
-sys-libs/nss_wrapper 1.0.3 1.1.0: A wrapper for the user, group and hosts NSS API
+sys-libs/nss_wrapper 1.0.3 1.1.0 1.1.1: A wrapper for the user, group and hosts NSS API
 sys-libs/ntdb 1.0-r1: A not-so trivial keyword/data database system
 sys-libs/openhpi 2.12.0 3.0.0: Open source implementation of the Service Availability Forum (SAF) Hardware Platform Interface (HPI)
 sys-libs/openipmi 1.3.18 1.4.12 1.4.14 1.4.28 2.0.11 2.0.16 2.0.16-r1 2.0.18 2.0.18-r1: Library interface to IPMI
