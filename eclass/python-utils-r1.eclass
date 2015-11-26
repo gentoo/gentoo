@@ -1133,7 +1133,7 @@ python_fix_shebang() {
 				eerror "  requested impl: ${EPYTHON}"
 				die "${FUNCNAME}: conversion of incompatible shebang requested"
 			fi
-		done < <(find "${path}" -type f -print0 || die)
+		done < <(find -H "${path}" -type f -print0 || die)
 
 		if [[ ! ${any_fixed} ]]; then
 			eqawarn "QA warning: ${FUNCNAME}, ${path#${D}} did not match any fixable files."
