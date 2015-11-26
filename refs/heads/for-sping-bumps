@@ -1,0 +1,13 @@
+certificate version 0.1
+pusher C6085806 1448538303 +0100
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1448538303-fd1fc3cb4cb4fe6270f6
+
+0000000000000000000000000000000000000000 04a572769996594f76fe3a11b9ba45f51647f744 refs/heads/for-sping-bumps
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iEYEABEKAAYFAlZW8L8ACgkQ1fmVwcYIWAYYxgCff7r4f6vMPta4XwHhilWB/eua
+Ec0AoMl1VGKptDNGXD0+WwvcfHXVLPta
+=QFNM
+-----END PGP SIGNATURE-----
