@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="GPL-2 LGPL-2.1+ PSF-2.4 openssl wxWinLL-3.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="vlc"
 
 RDEPEND="
