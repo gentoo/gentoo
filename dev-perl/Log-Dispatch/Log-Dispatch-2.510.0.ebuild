@@ -5,7 +5,7 @@
 EAPI=5
 
 MODULE_AUTHOR=DROLSKY
-MODULE_VERSION=2.44
+MODULE_VERSION=2.51
 inherit perl-module
 
 DESCRIPTION="Dispatches messages to multiple Log::Dispatch::* objects"
@@ -13,19 +13,17 @@ DESCRIPTION="Dispatches messages to multiple Log::Dispatch::* objects"
 LICENSE="Artistic-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~ppc-aix"
-IUSE="ithreads test"
-# see bug 545998 about the use flag ithreads
+IUSE="test"
 
 RDEPEND="
 	virtual/perl-Carp
 	dev-perl/Devel-GlobalDestruction
 	>=dev-perl/Dist-CheckConflicts-0.20.0
+	virtual/perl-Encode
 	dev-perl/Module-Runtime
-	dev-perl/Params-Validate
+	>=dev-perl/Params-Validate-1.30.0
 	virtual/perl-Scalar-List-Utils
 	>=virtual/perl-Sys-Syslog-0.280.0
-	virtual/perl-threads-shared
-	ithreads? ( virtual/perl-threads )
 "
 DEPEND="${RDEPEND}
 	>=dev-perl/Dist-CheckConflicts-0.20.0
@@ -42,4 +40,4 @@ DEPEND="${RDEPEND}
 	)
 "
 
-SRC_TEST="do"
+SRC_TEST="do parallel"
