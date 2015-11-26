@@ -37,14 +37,14 @@ DEPEND="${RDEPEND}
 
 DOCS=( ChangeLog README )
 
-S="${WORKDIR}/${PN}-upstream/${PV}-${GIT_SHA1}"
+PATCHES=( "${FILESDIR}/${P}-fix-parallel-doc-build.patch" )
 
-sgml-catalog_cat_include "/etc/sgml/linuxdoc.cat" "/usr/share/${PN}/${PN}.catalog"
+S="${WORKDIR}/${PN}-upstream/${PV}-${GIT_SHA1}"
 
 src_prepare() {
 	# Use Gentoo doc install path.
 	sed -i \
-		-e "s%/share/doc/linuxdoc-tools%/share/doc/${PF}%" \
+		-e "s%/share/doc/${PN}%/share/doc/${PF}%" \
 		Makefile.in || die
 
 	autotools-utils_src_prepare
@@ -74,6 +74,8 @@ src_install() {
 
 	autotools-utils_src_install
 }
+
+sgml-catalog_cat_include "/etc/sgml/linuxdoc.cat" "/usr/share/${PN}/${PN}.catalog"
 
 pkg_postinst() {
 	latex-package_pkg_postinst
