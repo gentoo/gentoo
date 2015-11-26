@@ -659,7 +659,7 @@ make_gcc_hard() {
 			ewarn "PIE has not been enabled by default"
 			gcc_hard_flags+=" -DEFAULT_SSP"
 		else
-			# do nothing if hardened is't supported, but don't die either
+			# do nothing if hardened isn't supported, but don't die either
 			ewarn "hardened is not supported for this arch in this gcc version"
 			return 0
 		fi
