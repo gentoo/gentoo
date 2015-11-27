@@ -22,7 +22,7 @@ case "${EAPI:-0}" in
 		;;
 esac
 
-inherit eutils
+[[ ${EAPI} == [2345] ]] && inherit eutils
 
 # @ECLASS-VARIABLE: VIRTUALX_REQUIRED
 # @DESCRIPTION:
@@ -58,6 +58,8 @@ case ${VIRTUALX_REQUIRED} in
 		RDEPEND=""
 		;;
 	optional|tests)
+		[[ ${EAPI} == [2345] ]] \
+			|| die 'Values "optional" and "tests" for VIRTUALX_REQUIRED are banned in EAPI > 5'
 		# deprecated section YAY.
 		eqawarn "VIRTUALX_REQUIRED=optional and VIRTUALX_REQUIRED=tests are deprecated."
 		eqawarn "You can drop the variable definition completely from ebuild,"
@@ -89,8 +91,12 @@ esac
 virtualmake() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	[[ ${EAPI} == [2345] ]] \
+		|| die "${FUNCNAME} is unsupported in EAPI > 5, please use virtx"
+
 	# backcompat for maketype
 	if [[ -n ${maketype} ]]; then
+		[[ ${EAPI} == [2345] ]] || die "maketype is banned in EAPI > 5"
 		eqawarn "ebuild is exporting \$maketype=${maketype}"
 		eqawarn "Ebuild should be migrated to use 'virtx command' instead."
 		VIRTUALX_COMMAND=${maketype}
@@ -203,6 +209,9 @@ virtx() {
 Xmake() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	[[ ${EAPI} == [2345] ]] \
+		|| die "${FUNCNAME} is unsupported in EAPI > 5, please use 'virtx emake -j1 ....'"
+
 	eqawarn "you should not execute make directly"
 	eqawarn "rather execute Xemake -j1 if you have issues with parallel make"
 	VIRTUALX_COMMAND="emake -j1" virtualmake "$@"
@@ -214,6 +223,9 @@ Xmake() {
 Xemake() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	[[ ${EAPI} == [2345] ]] \
+		|| die "${FUNCNAME} is unsupported in EAPI > 5, please use 'virtx emake ....'"
+
 	VIRTUALX_COMMAND="emake" virtualmake "$@"
 }
 
@@ -222,6 +234,9 @@ Xemake() {
 # Same as "econf", but set up the Xvfb hack if needed.
 Xeconf() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	[[ ${EAPI} == [2345] ]] \
+		|| die "${FUNCNAME} is unsupported in EAPI > 5, please use 'virtx econf ....'"
 
 	VIRTUALX_COMMAND="econf" virtualmake "$@"
 }
