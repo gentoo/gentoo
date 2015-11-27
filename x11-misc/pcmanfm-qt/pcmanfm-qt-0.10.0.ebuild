@@ -11,7 +11,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="git://git.lxde.org/git/lxde/${PN}"
 else
 	SRC_URI="https://downloads.lxqt.org/lxqt/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64   ~x86"
 fi
 
 DESCRIPTION="Fast lightweight tabbed filemanager (Qt port)"
