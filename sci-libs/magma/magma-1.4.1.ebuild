@@ -24,7 +24,6 @@ REQUIRED_USE="?? ( fermi kepler )"
 RDEPEND="
 	dev-util/nvidia-cuda-toolkit
 	virtual/cblas
-	virtual/fortran
 	virtual/lapack"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
