@@ -20,6 +20,8 @@ case "${EAPI:-0}" in
 		;;
 esac
 
+if [[ ! ${_VIRTUAL_X} ]]; then
+
 # @ECLASS-VARIABLE: VIRTUALX_REQUIRED
 # @DESCRIPTION:
 # Variable specifying the dependency on xorg-server and xhost.
@@ -195,3 +197,6 @@ Xeconf() {
 
 	VIRTUALX_COMMAND="econf" virtualmake "$@"
 }
+
+_VIRTUAL_X=1
+fi
