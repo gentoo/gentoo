@@ -38,7 +38,7 @@ RDEPEND="
 	fltk? ( x11-libs/fltk:1[threads?] )
 	image? ( media-libs/libpng:0= )
 	jack? ( media-sound/jack-audio-connection-kit )
-	java? ( >=virtual/jdk-1.5 )
+	java? ( virtual/jdk )
 	keyboard? ( x11-libs/fltk:1[threads?] )
 	linear? ( sci-mathematics/gmm )
 	lua? (
