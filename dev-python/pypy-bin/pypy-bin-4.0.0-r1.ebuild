@@ -60,7 +60,7 @@ RDEPEND="
 	dev-libs/libffi:0
 	dev-libs/openssl:0[-bindist]
 	sys-libs/glibc:2.2
-	=sys-libs/ncurses-5*:0
+	sys-libs/ncurses:0/6
 	sys-libs/zlib:0
 	gdbm? ( sys-libs/gdbm:0= )
 	sqlite? ( dev-db/sqlite:3= )
@@ -84,8 +84,12 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/1.9-scripts-location.patch" \
+	epatch "${FILESDIR}/4.0.0-gentoo-path.patch" \
 		"${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
+
+	sed -e "s^@EPREFIX@^${EPREFIX}^" \
+		-e "s^@libdir@^$(get_libdir)^" \
+		-i lib-python/2.7/distutils/command/install.py || die
 
 	# apply CPython stdlib patches
 	pushd lib-python/2.7 > /dev/null || die
@@ -165,7 +169,7 @@ src_install() {
 		|| die "Generation of Grammar and PatternGrammar pickles failed"
 
 	# Generate cffi modules
-	# Please keep in sync with pypy/tool/release/package.py!
+	# Please keep in sync with pypy/tool/build_cffi_imports.py!
 #cffi_build_scripts = {
 #    "sqlite3": "_sqlite3_build.py",
 #    "audioop": "_audioop_build.py",
