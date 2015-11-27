@@ -57,6 +57,7 @@ case ${VIRTUALX_REQUIRED} in
 		RDEPEND=""
 		;;
 	optional|tests)
+		[[ ${EAPI} == [2345] ]] || die 'Values "optional" and "tests" are unsupported for VIRTUALX_REQUIRED'
 		# deprecated section YAY.
 		eqawarn "VIRTUALX_REQUIRED=optional and VIRTUALX_REQUIRED=tests are deprecated."
 		eqawarn "You can drop the variable definition completely from ebuild,"
@@ -174,6 +175,9 @@ virtualmake() {
 # Deprecated call.
 Xmake() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	[[ ${EAPI} == [2345] ]] \
+		|| die "${FUNCNAME} is removed in EAPI > 5; use Xemake -j1 instead"
 
 	eqawarn "you should not execute make directly"
 	eqawarn "rather execute Xemake -j1 if you have issues with parallel make"
