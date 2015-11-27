@@ -50,7 +50,6 @@ VIRTUALX_DEPEND="${VIRTUALX_DEPEND}
 # (within virtualmake function).
 : ${VIRTUALX_COMMAND:="emake"}
 
-
 case ${VIRTUALX_REQUIRED} in
 	manual)
 		;;
