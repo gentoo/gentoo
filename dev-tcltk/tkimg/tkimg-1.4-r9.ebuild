@@ -1,10 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-
-VIRTUALX_USE=test
 
 inherit eutils multilib prefix toolchain-funcs virtualx
 
@@ -22,13 +20,13 @@ KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
 IUSE="doc test static-libs"
 
 RDEPEND="
-	dev-lang/tk
+	dev-lang/tk:=
 	>=dev-tcltk/tcllib-1.11
 	media-libs/tiff:0=
 	>=media-libs/libpng-1.6:0=
 	>=sys-libs/zlib-1.2.7:=
 	x11-libs/libX11
-	virtual/jpeg"
+	virtual/jpeg:="
 DEPEND="${RDEPEND}
 	test? (
 		x11-apps/xhost
