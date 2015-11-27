@@ -15,9 +15,8 @@ DESCRIPTION="High-Energy Physics event generator"
 HOMEPAGE="http://herwig.hepforge.org/"
 SRC_URI="http://www.hepforge.org/archive/herwig/${MYP}.tar.bz2"
 
-LICENSE="GPL-2"
-
 SLOT="0/15"
+LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="c++11 fastjet static-libs"
 
@@ -29,8 +28,7 @@ RDEPEND="
 	<=sci-physics/looptools-2.8:0=
 	>=sci-physics/thepeg-1.9.2:0=
 	fastjet? ( sci-physics/fastjet:0= )"
-DEPEND="${RDEPEND}
-	virtual/fortran"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MYP}"
 
@@ -53,7 +51,8 @@ src_configure() {
 	autotools-utils_src_configure
 }
 
-pkg_preinst () {
+src_install() {
+	autotools-utils_src_install
 	sed -i -e "s|${ED}||g" "${ED}"/usr/share/herwig++/defaults/PDF.in || die
 	sed -i -e "s|${ED}||g" "${ED}"/usr/share/herwig++/HerwigDefaults.rpo || die
 }
