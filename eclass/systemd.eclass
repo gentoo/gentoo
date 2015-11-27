@@ -313,6 +313,9 @@ systemd_enable_ntpunit() {
 # @FUNCTION: systemd_with_unitdir
 # @USAGE: [<configure-option-name>]
 # @DESCRIPTION:
+# Note: deprecated and banned in EAPI 6. Please use full --with-...=
+# parameter for improved ebuild readability.
+#
 # Output '--with-systemdsystemunitdir' as expected by systemd-aware configure
 # scripts. This function always succeeds. Its output may be quoted in order
 # to preserve whitespace in paths. systemd_to_myeconfargs() is preferred over
@@ -323,6 +326,8 @@ systemd_enable_ntpunit() {
 # argument to this function (`$(systemd_with_unitdir systemdunitdir)'). Please
 # remember to report a bug upstream as well.
 systemd_with_unitdir() {
+	[[ ${EAPI:-0} != [012345] ]] && die "${FUNCNAME} is banned in EAPI ${EAPI}, use --with-${1:-systemdsystemunitdir}=\"\$(systemd_get_systemunitdir)\" instead"
+
 	debug-print-function ${FUNCNAME} "${@}"
 	local optname=${1:-systemdsystemunitdir}
 
@@ -331,10 +336,15 @@ systemd_with_unitdir() {
 
 # @FUNCTION: systemd_with_utildir
 # @DESCRIPTION:
+# Note: deprecated and banned in EAPI 6. Please use full --with-...=
+# parameter for improved ebuild readability.
+#
 # Output '--with-systemdsystemutildir' as used by some packages to install
 # systemd helpers. This function always succeeds. Its output may be quoted
 # in order to preserve whitespace in paths.
 systemd_with_utildir() {
+	[[ ${EAPI:-0} != [012345] ]] && die "${FUNCNAME} is banned in EAPI ${EAPI}, use --with-systemdutildir=\"\$(systemd_get_utildir)\" instead"
+
 	debug-print-function ${FUNCNAME} "${@}"
 
 	echo --with-systemdutildir="$(systemd_get_utildir)"
