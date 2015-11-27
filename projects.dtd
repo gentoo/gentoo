@@ -1,0 +1,14 @@
+<!ELEMENT projects (project)*>
+<!ELEMENT project (email,name,url,description,subproject*,member*)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT url (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT member (email,name,role)>
+<!ATTLIST member
+          is-lead CDATA #FIXED "1">
+<!ELEMENT role (#PCDATA)>
+<!ELEMENT subproject (#PCDATA)>
+<!ATTLIST subproject
+          inherit-members CDATA #FIXED "1"
+          ref CDATA #REQUIRED>
