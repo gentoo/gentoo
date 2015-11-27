@@ -1,0 +1,15 @@
+Index: catkin-0.6.16/cmake/all.cmake
+===================================================================
+--- catkin-0.6.16.orig/cmake/all.cmake
++++ catkin-0.6.16/cmake/all.cmake
+@@ -108,6 +108,10 @@ endif()
+ # include CMake functions
+ include(CMakeParseArguments)
+ 
++# include GNUInstallDirs for LIBDIR
++# https://bugs.gentoo.org/show_bug.cgi?id=566670
++include(GNUInstallDirs)
++
+ # functions/macros: list_append_unique, safe_execute_process
+ # python-integration: catkin_python_setup.cmake, interrogate_setup_dot_py.py, templates/__init__.py.in, templates/script.py.in, templates/python_distutils_install.bat.in, templates/python_distutils_install.sh.in, templates/safe_execute_install.cmake.in
+ foreach(filename
