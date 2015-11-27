@@ -15,13 +15,12 @@
 # inherit systemd
 #
 # src_configure() {
-#	local myeconfargs=(
+#	local myconf=(
 #		--enable-foo
-#		--disable-bar
-#		"$(systemd_with_unitdir)"
+#		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 #	)
 #
-#	econf "${myeconfargs[@]}"
+#	econf "${myconf[@]}"
 # }
 # @CODE
 
