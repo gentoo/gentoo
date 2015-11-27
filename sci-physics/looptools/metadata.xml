@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci-physics</herd>
-<longdescription>
+  <herd>sci-physics</herd>
+  <longdescription>
   A package for evaluation of scalar and tensor one-loop integrals 
   based on the FF package by G.J. van Oldenborgh.
   It features an easy Fortran, C++, and Mathematica interface 

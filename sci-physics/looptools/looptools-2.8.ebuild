@@ -18,9 +18,6 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc static-libs"
 
-DEPEND="virtual/fortran"
-RDEPEND="${DEPEND}"
-
 S="${WORKDIR}/${MYP}"
 
 src_prepare() {
@@ -34,6 +31,8 @@ src_install() {
 	default
 	# another one of these package building archive with pic
 	# no: ooptools is not a typo
-	use static-libs || rm "${ED}"/usr/$(get_libdir)/libooptools.a
+	if use static-libs; then
+		rm "${ED}"/usr/$(get_libdir)/libooptools.a || die
+	fi
 	use doc && dodoc manual/*.pdf
 }
