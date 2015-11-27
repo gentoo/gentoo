@@ -1,0 +1,11 @@
+[Unit]
+Description=Racoon IKEv1 key management daemon for IPSEC
+After=syslog.target network.target
+Requires=ipsec.service
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/racoon -f /etc/racoon/racoon.conf
+
+[Install]
+WantedBy=multi-user.target
