@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>dlcampbell@gmx.com</email>
+		<name>Daniel Campbell</name>
+	</maintainer>
+	<longdescription lang="en">
+		SMTube is a Qt-based frontend to Youtube and other video services
+		that allows you to play videos directly in a variety of media players.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">smtube</remote-id>
+	</upstream>
+	<use>
+		<flag name="qt5">Build using Qt 5 instead of Qt 4</flag>
+	</use>
+</pkgmetadata>
