@@ -22,9 +22,13 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
+VM_LINGUAS=( as bg bn_IN bs ca cmn cs da de en_GB es fi fr gu hi hr hu is
+	it ja kn ko ml mr ms nb nl or pa pl pt pt_BR ro ru sk sr sr@latin sv ta te
+	tr uk vi zh_CN zh_TW )
+
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="gnome-keyring gtk policykit sasl"
+IUSE="gnome-keyring gtk policykit sasl ${VM_LINGUAS[@]/#/linguas_}"
 
 RDEPEND="!app-emulation/virtinst
 	dev-python/libvirt-python[${PYTHON_USEDEP}]
@@ -54,6 +58,11 @@ DOCS=( README NEWS )
 
 src_prepare() {
 	distutils-r1_src_prepare
+
+	local lang
+	for lang in ${VM_LINGUAS[@]}; do
+		use linguas_${lang} || rm -v "po/${lang}.po" || die
+	done
 }
 
 distutils-r1_python_compile() {
@@ -64,10 +73,13 @@ distutils-r1_python_compile() {
 		--default-graphics=spice
 }
 
-python_install_all() {
-	distutils-r1_python_install_all
+src_install() {
+	local mydistutilsargs=( --no-update-icon-cache --no-compile-schemas )
+
+	distutils-r1_src_install
+
 	python_fix_shebang \
-		"${ED}"/usr/share/virt-manager/virt-{clone,convert,image,install,manager}
+		"${ED}"/usr/share/virt-manager/virt-{clone,convert,install,manager}
 }
 
 pkg_preinst() {
