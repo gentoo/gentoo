@@ -94,6 +94,9 @@ pkg_setup() {
 src_prepare() {
 	epatch "${FILESDIR}"/csound-6.05-python.patch
 
+	# bug #566064
+	epatch "${FILESDIR}"/csound-6.05-underlinking.patch
+
 	sed -e '/set(PLUGIN_INSTALL_DIR/s/-${APIVERSION}//' \
 		-e '/-O3/d' \
 		-i CMakeLists.txt || die
