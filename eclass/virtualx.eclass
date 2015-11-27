@@ -9,6 +9,8 @@
 # Original author: Martin Schlemmer <azarah@gentoo.org>
 # @BLURB: This eclass can be used for packages that needs a working X environment to build.
 
+if [[ ! ${_VIRTUAL_X} ]]; then
+
 case "${EAPI:-0}" in
 	0|1)
 		die "virtualx.eclass: EAPI ${EAPI} is too old."
@@ -195,3 +197,6 @@ Xeconf() {
 
 	VIRTUALX_COMMAND="econf" virtualmake "$@"
 }
+
+_VIRTUAL_X=1
+fi
