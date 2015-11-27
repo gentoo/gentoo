@@ -12747,7 +12747,7 @@ media-sound/codecgraph 20120114: Generates a graph based on the ALSA description
 media-sound/combine_wave 0.3.1-r1: sync up 2 audio ch. and/or combine 2 mono audio ch. into one stereo wave ch
 media-sound/coquillo 1.12: GUI audio tagger based on Qt4 and taglib
 media-sound/cplay 1.49: A Curses front-end for various audio players
-media-sound/csound 5.19.01 6.02 6.03.2 6.04 6.05.0: A sound design and signal processing system providing facilities for composition and performance
+media-sound/csound 6.02 6.04 6.05.0: A sound design and signal processing system providing facilities for composition and performance
 media-sound/cvoicecontrol 0.9_alpha 0.9_alpha-r1: Console based speech recognition system
 media-sound/dagrab 0.513: fixed point cd ripper
 media-sound/darkice 1.2: A live audio streamer
