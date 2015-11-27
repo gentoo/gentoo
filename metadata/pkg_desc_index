@@ -5746,7 +5746,7 @@ dev-perl/MIME-Base32 1.20.0: Base32 encoder / decoder
 dev-perl/MIME-Charset 1.9.3: Charset Informations for MIME
 dev-perl/MIME-EncWords 1.12.6-r1: Deal with RFC 2047 encoded words (improved)
 dev-perl/MIME-Lite 3.29.0-r1: Low-calorie MIME generator
-dev-perl/MIME-Types 2.040.0 2.090.0 2.110.0: Definition of MIME types
+dev-perl/MIME-Types 2.040.0 2.090.0 2.110.0 2.120.0: Definition of MIME types
 dev-perl/MIME-tools 5.504.0 5.506.0: A Perl module for parsing and creating MIME entities
 dev-perl/MLDBM 2.40.0-r1: A multidimensional/tied hash Perl Module
 dev-perl/MLDBM-Sync 0.300.0-r1: Safe concurrent access to MLDBM databases
@@ -5782,7 +5782,7 @@ dev-perl/Math-Derivative 0.10.0-r1: 1st and 2nd order differentiation of data
 dev-perl/Math-GMP 2.60.0-r1: High speed arbitrary size integer math
 dev-perl/Math-ModInt 0.7.0: modular integer arithmetic
 dev-perl/Math-NumberCruncher 5.0.0: Collection of useful math-related functions
-dev-perl/Math-Random 0.710.0-r1: Random Number Generators
+dev-perl/Math-Random 0.710.0-r1 0.720.0: Random Number Generators
 dev-perl/Math-Random-ISAAC 1.4.0-r1: Perl interface to the ISAAC PRNG algorithm
 dev-perl/Math-Random-ISAAC-XS 1.4.0-r1: C implementation of the ISAAC PRNG algorithm
 dev-perl/Math-Random-MT 1.160.0-r1: The Mersenne Twister PRNG
@@ -5801,13 +5801,13 @@ dev-perl/Module-Find 0.110.0-r1 0.130.0: Find and use installed modules in a (su
 dev-perl/Module-Implementation 0.60.0-r1: Loads one of several alternate underlying implementations for a module
 dev-perl/Module-Install 1.60.0-r1 1.140.0 1.160.0: Standalone, extensible Perl module installer
 dev-perl/Module-Install-AuthorTests 0.2.0: Designate tests only run by module authors
-dev-perl/Module-Locate 1.760.0-r1 1.790.0: Locate modules in the same fashion as require and use
+dev-perl/Module-Locate 1.760.0-r1 1.790.0 1.800.0: Locate modules in the same fashion as require and use
 dev-perl/Module-Manifest 1.80.0-r1: Parse and examine a Perl distribution MANIFEST file
-dev-perl/Module-Pluggable 4.700.0 4.800.0 5.100.0: Automatically give your module the ability to have plugins
+dev-perl/Module-Pluggable 4.700.0 4.800.0 5.100.0 5.200.0: Automatically give your module the ability to have plugins
 dev-perl/Module-Refresh 0.170.0-r1: Refresh %INC files when updated on disk
 dev-perl/Module-Runtime 0.13.0-r1 0.14.0: Runtime module handling
 dev-perl/Module-Runtime-Conflicts 0.2.0: Provide information on conflicts for Module::Runtime
-dev-perl/Module-ScanDeps 1.120.0 1.190.0: Recursively scan Perl code for dependencies
+dev-perl/Module-ScanDeps 1.120.0 1.190.0 1.200.0: Recursively scan Perl code for dependencies
 dev-perl/Module-Signature 0.770.0 0.790.0: Module signature file manipulation
 dev-perl/Module-Starter 1.600.0-r1 1.710.0: A simple starter kit for any module
 dev-perl/Module-Util 1.90.0: Module name tools and transformations
