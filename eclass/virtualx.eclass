@@ -22,6 +22,8 @@ esac
 
 if [[ ! ${_VIRTUAL_X} ]]; then
 
+inherit eutils
+
 # @ECLASS-VARIABLE: VIRTUALX_REQUIRED
 # @DESCRIPTION:
 # Variable specifying the dependency on xorg-server and xhost.
