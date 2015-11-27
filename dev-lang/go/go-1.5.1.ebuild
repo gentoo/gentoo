@@ -113,7 +113,6 @@ src_prepare()
 		sed -i -e 's/"-Werror",//g' src/cmd/dist/build.go ||
 			die 'sed failed'
 	fi
-	epatch "${FILESDIR}"/${P}-darwin-sysctl.patch
 	epatch_user
 }
 
