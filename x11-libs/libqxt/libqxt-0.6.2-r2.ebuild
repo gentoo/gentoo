@@ -6,7 +6,7 @@ EAPI=5
 
 inherit multilib qmake-utils qt4-r2
 
-DESCRIPTION="The Qt eXTension library provides cross-platform utility classes for the Qt toolkit"
+DESCRIPTION="Extension library providing cross-platform utility classes for the Qt toolkit"
 HOMEPAGE="http://libqxt.org/"
 SRC_URI="http://dev.libqxt.org/libqxt/get/v${PV}.tar.bz2 -> ${P}.tar.bz2"
 
