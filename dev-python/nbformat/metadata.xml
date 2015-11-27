@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <longdescription>
+    Jupyther nbformat contains the reference implementation of the
+    Jupyter Notebook format, and Python APIs for working with
+    notebooks. There is also a JSON schema for notebook format
+    versions &gt;= 3.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">nbformat</remote-id>
+    <remote-id type="github">jupyter/nbformat</remote-id>
+  </upstream>
+</pkgmetadata>
