@@ -130,6 +130,7 @@ bashcomp_alias() {
 	shift
 
 	for f; do
-		dosym "${base}" "$(_bash-completion-r1_get_bashcompdir)/${f}"
+		dosym "${base}" "$(_bash-completion-r1_get_bashcompdir)/${f}" \
+			|| return
 	done
 }
