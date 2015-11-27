@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,6 +8,17 @@
 # @AUTHOR:
 # Original author: Martin Schlemmer <azarah@gentoo.org>
 # @BLURB: This eclass can be used for packages that needs a working X environment to build.
+
+case "${EAPI:-0}" in
+	0|1)
+		die "virtualx.eclass: EAPI ${EAPI} is too old."
+		;;
+	2|3|4|5)
+		;;
+	*)
+		die "virtualx.eclass: EAPI ${EAPI} is not supported yet."
+		;;
+esac
 
 # @ECLASS-VARIABLE: VIRTUALX_REQUIRED
 # @DESCRIPTION:
@@ -35,7 +46,6 @@ VIRTUALX_DEPEND="${VIRTUALX_DEPEND}
 # (within virtualmake function).
 : ${VIRTUALX_COMMAND:="emake"}
 
-has "${EAPI:-0}" 0 1 && die "virtualx eclass require EAPI=2 or newer."
 
 case ${VIRTUALX_REQUIRED} in
 	manual)
