@@ -15,7 +15,7 @@ case "${EAPI:-0}" in
 	0|1)
 		die "virtualx.eclass: EAPI ${EAPI} is too old."
 		;;
-	2|3|4|5)
+	2|3|4|5|6)
 		;;
 	*)
 		die "virtualx.eclass: EAPI ${EAPI} is not supported yet."
