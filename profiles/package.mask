@@ -155,10 +155,10 @@ app-eselect/eselect-esd
 dev-tex/latex-unicode
 
 # Michał Górny <mgorny@gentoo.org> (08 Nov 2015)
-# Masked for testing.
-=dev-python/pypy-4.0.0
-=dev-python/pypy-bin-4.0.0
-=virtual/pypy-4.0.0
+# Masked for testing (and 4.0.1 binpkg build).
+>=dev-python/pypy-4.0.0
+>=dev-python/pypy-bin-4.0.0
+>=virtual/pypy-4.0.0
 
 # Patrice Clement <monsieurp@gentoo.org> (07 Nov 2015)
 # Duplicate package since it already exists as virtual/perl-Parse-CPAN-meta.
