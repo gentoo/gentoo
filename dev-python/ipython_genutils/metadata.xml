@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <longdescription>
+    This package contains some common utilities shared by Jupyter and
+    IPython projects during The Big Split. As soon as possible, those
+    packages will remove their dependency on this, and this repo will
+    go away. No packages outside IPython/Jupyter should depend on it.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">ipython_genutils</remote-id>
+    <remote-id type="github">ipython/ipython_genutils</remote-id>
+  </upstream>
+</pkgmetadata>
