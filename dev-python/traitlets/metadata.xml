@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <longdescription>
+    A lightweight pure-Python derivative of Enthought Traits,
+    used for configuring Python objects. This package powers
+    the config system of IPython and Jupyter.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">traitlets</remote-id>
+    <remote-id type="github">ipython/traitlets</remote-id>
+  </upstream>
+</pkgmetadata>
