@@ -15643,7 +15643,7 @@ sci-libs/punc 1.5: Portable Understructure for Numerical Computing
 sci-libs/pycifrw 3.6.2 4.1.1: Reading and writing CIF (Crystallographic Information Format) files
 sci-libs/pymmlib 1.2.1: Toolkit and library for the analysis and manipulation of macromolecular structural models
 sci-libs/pyshp 1.2.0 9999: Pure Python read/write support for ESRI Shapefile format
-sci-libs/qd 2.3.13 2.3.14: Quad-double and double-double float arithmetics
+sci-libs/qd 2.3.14: Quad-double and double-double float arithmetics
 sci-libs/qfits 6.2.0: ESO stand-alone C library offering easy access to FITS files
 sci-libs/qrupdate 1.1.0 1.1.1 1.1.2: Library for updating of QR and Cholesky decompositions
 sci-libs/rosetta-db 3.4: Essential database for rosetta
