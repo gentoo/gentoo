@@ -22,6 +22,8 @@ case "${EAPI:-0}" in
 		;;
 esac
 
+inherit eutils
+
 # @ECLASS-VARIABLE: VIRTUALX_REQUIRED
 # @DESCRIPTION:
 # Variable specifying the dependency on xorg-server and xhost.
@@ -58,15 +60,15 @@ case ${VIRTUALX_REQUIRED} in
 		;;
 	optional|tests)
 		# deprecated section YAY.
-		ewarn "QA: VIRTUALX_REQUIRED=optional and VIRTUALX_REQUIRED=tests are deprecated."
-		ewarn "QA: You can drop the variable definition completely from ebuild,"
-		ewarn "QA: because it is default behaviour."
+		eqawarn "VIRTUALX_REQUIRED=optional and VIRTUALX_REQUIRED=tests are deprecated."
+		eqawarn "You can drop the variable definition completely from ebuild,"
+		eqawarn "because it is default behaviour."
 
 		if [[ -n ${VIRTUALX_USE} ]]; then
 			# so they like to specify the useflag
-			ewarn "QA: VIRTUALX_USE variable is deprecated."
-			ewarn "QA: Please read eclass manpage to find out how to use VIRTUALX_REQUIRED"
-			ewarn "QA: to achieve the same behaviour."
+			eqawarn "VIRTUALX_USE variable is deprecated."
+			eqawarn "Please read eclass manpage to find out how to use VIRTUALX_REQUIRED"
+			eqawarn "to achieve the same behaviour."
 		fi
 
 		[[ -z ${VIRTUALX_USE} ]] && VIRTUALX_USE="test"
@@ -97,9 +99,9 @@ virtualmake() {
 
 	# backcompat for maketype
 	if [[ -n ${maketype} ]]; then
-		ewarn "QA: ebuild is exporting \$maketype=${maketype}"
-		ewarn "QA: Ebuild should be migrated to use VIRTUALX_COMMAND=${maketype} instead."
-		ewarn "QA: Setting VIRTUALX_COMMAND to \$maketype conveniently for now."
+		eqawarn "ebuild is exporting \$maketype=${maketype}"
+		eqawarn "Ebuild should be migrated to use VIRTUALX_COMMAND=${maketype} instead."
+		eqawarn "Setting VIRTUALX_COMMAND to \$maketype conveniently for now."
 		VIRTUALX_COMMAND=${maketype}
 	fi
 
@@ -175,8 +177,8 @@ virtualmake() {
 Xmake() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	ewarn "QA: you should not execute make directly"
-	ewarn "QA: rather execute Xemake -j1 if you have issues with parallel make"
+	eqawarn "you should not execute make directly"
+	eqawarn "rather execute Xemake -j1 if you have issues with parallel make"
 	VIRTUALX_COMMAND="emake -j1" virtualmake "$@"
 }
 
