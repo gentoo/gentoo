@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <longdescription>
+Install the Jupyter system, including the notebook, qtconsole, and the IPython kernel.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">jupyter</remote-id>
+    <remote-id type="github">jupyter/jupyter</remote-id>
+  </upstream>
+</pkgmetadata>
