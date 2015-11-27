@@ -39,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}/tests.patch"
 	"${FILESDIR}/distutils.patch"
 	"${FILESDIR}/catkin_prefix_path.patch"
+	"${FILESDIR}/gnuinstalldirs.patch"
 )
 
 src_prepare() {
