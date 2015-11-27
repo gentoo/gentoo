@@ -4,22 +4,18 @@
 
 EAPI=5
 
-BITCOINCORE_COMMITHASH="047a89831760ff124740fe9f58411d57ee087078"
-BITCOINCORE_LJR_DATE="20150311"
+BITCOINCORE_COMMITHASH="7e278929df53e1fb4191bc5ba3176a177ce718bf"
+BITCOINCORE_LJR_DATE="20151118"
 BITCOINCORE_IUSE=""
+BITCOINCORE_NEED_LIBSECP256K1=1
 inherit bitcoincore
 
-DESCRIPTION="Command-line JSON-RPC client specifically designed for talking to Bitcoin Core Daemon"
+DESCRIPTION="Command-line Bitcoin transaction tool"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 
-src_prepare() {
-	bitcoincore_prepare
-	bitcoincore_autoreconf
-}
-
 src_configure() {
 	bitcoincore_conf \
-		--enable-util-cli
+		--enable-util-tx
 }
