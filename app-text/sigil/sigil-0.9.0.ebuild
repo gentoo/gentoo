@@ -5,17 +5,16 @@
 EAPI=5
 CMAKE_MIN_VERSION="3.0"
 
-# Sigil supports Python 3.5 already. Include it when we have the deps for it.
+# Sigil supports Python 3.5 already. Include it when our deps support it.
 PYTHON_COMPAT=( python3_4 )
 
 inherit eutils cmake-utils python-single-r1
 
 MY_PN="Sigil"
-MY_PV="0.8.901"
 
 DESCRIPTION="Sigil is a multi-platform WYSIWYG ebook editor for ePub format"
 HOMEPAGE="http://sigil-ebook.com/"
-SRC_URI="https://github.com/Sigil-Ebook/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Sigil-Ebook/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -23,7 +22,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	dev-libs/boost[threads]
+	app-text/hunspell
+	dev-libs/boost[threads,${PYTHON_USEDEP}]
 	dev-libs/libpcre[pcre16]
 	dev-libs/xerces-c[icu]
 	dev-python/chardet[${PYTHON_USEDEP}]
@@ -54,7 +54,7 @@ DEPEND="${RDEPEND}
 	>=dev-qt/linguist-tools-5.4:5
 "
 
-S="${WORKDIR}/${MY_PN}-${MY_PV}"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 DOCS=( ChangeLog.txt README.md )
 
