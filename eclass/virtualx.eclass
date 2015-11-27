@@ -13,7 +13,7 @@ case "${EAPI:-0}" in
 	0|1)
 		die "virtualx eclass require EAPI=2 or newer."
 		;;
-	2|3|4|5)
+	2|3|4|5|6)
 		;;
 	*)
 		die "EAPI ${EAPI} is not supported yet."
