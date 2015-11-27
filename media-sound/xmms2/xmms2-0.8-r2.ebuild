@@ -113,6 +113,8 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}"-cython-0.19.1.patch
 	epatch "${FILESDIR}/${P}"-memset.patch
 	epatch "${FILESDIR}/${P}"-ffmpeg2.patch #536232
+	epatch "${FILESDIR}/${P}"-cpython.patch
+	epatch "${FILESDIR}/${P}"-modpug.patch #536046
 
 	if has_version dev-libs/libcdio-paranoia; then
 		sed -i -e 's:cdio/cdda.h:cdio/paranoia/cdda.h:' src/plugins/cdda/cdda.c || die

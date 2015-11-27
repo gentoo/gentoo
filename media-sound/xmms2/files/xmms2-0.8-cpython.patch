@@ -1,0 +1,9 @@
+diff --git a/src/clients/lib/python/cython_include/cxmmsclient.pxd b/src/clients/lib/python/cython_include/cxmmsclient.pxd
+index 66390a7..629bc7f 100644
+--- a/src/clients/lib/python/cython_include/cxmmsclient.pxd
++++ b/src/clients/lib/python/cython_include/cxmmsclient.pxd
+@@ -30,3 +30,3 @@ cdef extern from "xmmsc/xmmsc_idnumbers.h":
+ 
+-	ctypedef enum xmmsc_collection_changed_actions_t:
++	ctypedef enum xmms_collection_changed_actions_t:
+ 		XMMS_COLLECTION_CHANGED_ADD

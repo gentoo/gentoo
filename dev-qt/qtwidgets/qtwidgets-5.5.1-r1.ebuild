@@ -21,6 +21,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-vlc-video-output.patch" # bug 563458
+)
+
 QT5_TARGET_SUBDIRS=(
 	src/tools/uic
 	src/widgets
