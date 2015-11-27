@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,7 @@ PATCHES=( "${FILESDIR}"/${PN}-2.3.13-autotools.patch )
 
 src_configure() {
 	local myeconfargs=(
-		$(use_enable fortran enable_fortran)
+		$(use_enable fortran)
 	)
 	autotools-utils_src_configure
 }
