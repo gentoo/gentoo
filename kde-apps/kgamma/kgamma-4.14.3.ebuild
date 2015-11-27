@@ -17,3 +17,5 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	x11-proto/xf86vidmodeproto
 "
+
+PATCHES=( "${FILESDIR}/${P}-cmake34.patch" )

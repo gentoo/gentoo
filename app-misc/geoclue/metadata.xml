@@ -14,5 +14,6 @@
     <flag name="plazes">Install plazes.com provider</flag>
     <flag name="skyhook">Install skyhookwireless.com provider</flag>
     <flag name="yahoo-geo">Install Yahoo geolocation provider</flag>
+    <flag name="zeroconf">Enable retrieval of GPS location from Android devices with https://wiki.gnome.org/Apps/GeoclueShare</flag>
   </use>
 </pkgmetadata>

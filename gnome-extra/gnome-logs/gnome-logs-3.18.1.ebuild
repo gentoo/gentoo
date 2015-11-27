@@ -4,8 +4,9 @@
 
 EAPI="5"
 GCONF_DEBUG="no"
+PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2
+inherit gnome2 python-any-r1 virtualx
 
 DESCRIPTION="Log messages and event viewer"
 HOMEPAGE="https://wiki.gnome.org/Apps/Logs"
@@ -13,7 +14,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Logs"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="test"
 
 RDEPEND="
 	>=dev-libs/glib-2.43.90:2
@@ -27,4 +28,17 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.50
 	dev-util/itstool
 	virtual/pkgconfig
+	test? ( dev-util/dogtail )
 "
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
+
+src_configure() {
+	gnome2_src_configure $(use_enable test tests)
+}
+
+src_test() {
+	Xemake check
+}

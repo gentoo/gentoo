@@ -20,7 +20,4 @@
     <remote-id type="cpan-module">Log::Dispatch::Screen</remote-id>
     <remote-id type="cpan-module">Log::Dispatch::Syslog</remote-id>
   </upstream>
-  <use>
-    <flag name='ithreads'>Ensure perl is built with threads for Syslog 'lock' feature</flag>
-  </use>
 </pkgmetadata>

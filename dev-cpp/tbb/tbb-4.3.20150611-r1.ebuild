@@ -77,6 +77,8 @@ local_src_compile() {
 	case ${MULTILIB_ABI_FLAG} in
 		abi_x86_64) arch=x86_64 ;;
 		abi_x86_32) arch=ia32 ;;
+		abi_ppc_64) arch=ppc64 ;;
+		abi_ppc_32) arch=ppc32 ;;
 	esac
 
 	case "$(tc-getCXX)" in

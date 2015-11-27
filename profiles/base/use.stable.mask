@@ -12,6 +12,9 @@ python_single_target_python3_5
 
 # Justin Lecher <jlec@gentoo.org> (30 Sep 2015)
 # No stable libressl yet
+# Addendum: also mask the USE_EXPAND flag,
+# Anthony G. Basile <blueness@gentoo.org> (26 Nov 2015)
+curl_ssl_libressl
 libressl
 
 # Hans de Graaff <graaff@gentoo.org> (28 Sep 2015)

@@ -8,7 +8,6 @@ inherit gnome2 multilib-minimal
 
 DESCRIPTION="GObject bindings for libudev"
 HOMEPAGE="https://wiki.gnome.org/Projects/libgudev"
-SRC_URI="https://download.gnome.org/sources/libgudev/${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/0"
@@ -24,11 +23,9 @@ RDEPEND="${DEPEND}
 	!sys-apps/systemd[gudev(-)]"
 
 multilib_src_configure() {
-	local G2CONF="
-		$(multilib_native_use_enable introspection)
+	ECONF_SOURCE=${S} gnome2_src_configure \
+		$(multilib_native_use_enable introspection) \
 		$(use_enable static-libs static)
-	"
-	ECONF_SOURCE=${S} gnome2_src_configure
 }
 
 multilib_src_install() {

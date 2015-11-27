@@ -20,6 +20,10 @@ RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-pypy-test-backport.patch
+)
+
 python_prepare_all() {
 	# Disable test failing with dev-python/pyxml installed.
 	if has_version dev-python/pyxml; then
@@ -35,8 +39,6 @@ python_prepare_all() {
 }
 
 python_test() {
-	# https://bitbucket.org/cthedot/cssutils/issues/55
-	[[ "${EPYTHON}" =~ "pypy" ]] && return
 	ln -s "${S}/sheets" "${BUILD_DIR}/sheets" || die
 	# esetup.py test
 	# exclude tests that connect to the network

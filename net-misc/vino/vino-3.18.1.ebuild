@@ -55,7 +55,6 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	gnome2_src_configure \
-		--with-gcrypt \
 		$(use_enable ipv6) \
 		$(use_with crypt gcrypt) \
 		$(use_with gnome-keyring secret) \

@@ -7,6 +7,8 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 PYTHON_REQ_USE="threads(+)"
 
+VIRTUALX_REQUIRED="manual"
+
 inherit distutils-r1 eutils flag-o-matic virtualx
 
 DESCRIPTION="Powerful data structures for data analysis and statistics"
@@ -63,6 +65,7 @@ DEPEND="${MINIMAL_DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/cython-0.19.1[${PYTHON_USEDEP}]
 	doc? (
+		${VIRTUALX_DEPEND}
 		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/ipython[${PYTHON_USEDEP}]
@@ -79,6 +82,7 @@ DEPEND="${MINIMAL_DEPEND}
 		x11-misc/xclip
 	)
 	test? (
+		${VIRTUALX_DEPEND}
 		${RECOMMENDED_DEPEND}
 		${OPTIONAL_DEPEND}
 		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
@@ -115,9 +119,10 @@ python_compile_all() {
 	# To build docs the need be located in $BUILD_DIR,
 	# else PYTHONPATH points to unusable modules.
 	if use doc; then
+		VIRTUALX_COMMAND="${EPYTHON}"
 		cd "${BUILD_DIR}"/lib || die
 		cp -ar "${S}"/doc . && cd doc || die
-		LANG=C PYTHONPATH=. "${EPYTHON}" make.py html || die
+		LANG=C PYTHONPATH=. virtualmake make.py html || die
 	fi
 }
 

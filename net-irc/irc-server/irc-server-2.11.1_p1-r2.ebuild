@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.irc.org/irc/server/${MY_P}.tgz
 
 LICENSE="GPL-1"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="zlib ipv6"
 
 RDEPEND="sys-libs/ncurses
