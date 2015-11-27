@@ -296,7 +296,7 @@ systemd_enable_ntpunit() {
 		if [[ ! -f "${D}${unitdir}/${s}" ]]; then
 			die "ntp-units.d provider ${s} not installed (yet?) in \${D}."
 		fi
-		echo "${s}" >> "${T}"/${ntpunit_name}.list
+		echo "${s}" >> "${T}"/${ntpunit_name}.list || die
 	done
 
 	(
