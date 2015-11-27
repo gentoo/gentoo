@@ -4584,7 +4584,7 @@ dev-libs/libIDL 0.8.14: CORBA tree builder
 dev-libs/libRocket 1.2.1_p20130110 1.2.1_p20130110-r1 1.3.0.0 9999: A HTML/CSS User Interface library
 dev-libs/libaio 0.3.110: Asynchronous input/output library that uses the kernels native interface
 dev-libs/libappindicator 12.10.0-r1 12.10.0-r200 12.10.0-r300: A library to allow applications to export a menu into the Unity Menu bar
-dev-libs/libassuan 2.1.1 2.1.2 2.1.3 2.2.0 2.2.1 2.3.0: IPC library used by GnuPG and GPGME
+dev-libs/libassuan 2.1.1 2.1.2 2.1.3 2.2.0 2.2.1 2.3.0 2.4.1: IPC library used by GnuPG and GPGME
 dev-libs/libatasmart 0.19 0.19-r1: A small and lightweight parser library for ATA S.M.A.R.T. hard disks
 dev-libs/libatomic_ops 1.1 1.2 1.2-r1 7.2_alpha4 7.2_alpha6 7.2d 7.4.0 7.4.2: Implementation for atomic memory update operations
 dev-libs/libattica 0.4.2: A library providing access to Open Collaboration Services
@@ -10317,7 +10317,7 @@ games-puzzle/construo 0.2.2: 2d construction toy with objects that react on phys
 games-puzzle/cutemaze 1.1.1: A simple, top-down game in which mazes are randomly generated
 games-puzzle/cuyo 2.1.1: highly addictive and remotely related to tetris
 games-puzzle/einstein 2.0: A puzzle game inspired by Albert Einstein
-games-puzzle/enigma 1.21-r1: puzzle game similar to Oxyd
+games-puzzle/enigma 1.21-r1 1.21-r2: puzzle game similar to Oxyd
 games-puzzle/ensemblist 040126: Put together several primitives to build a given shape. (C.S.G. Game)
 games-puzzle/fbg 0.9-r1: A Tetris clone written in OpenGL
 games-puzzle/fish-fillets 1.0.1: Underwater puzzle game - find a safe way out
@@ -14306,7 +14306,7 @@ net-misc/dibbler 0.8.4 1.0.0_rc2 1.0.0 1.0.1: Portable DHCPv6 implementation (se
 net-misc/directvnc 0.7.6-r1 0.7.8: Very thin VNC client for unix framebuffer systems
 net-misc/dleyna-server 0.5.0: library for implementing services that allow clients to discover, browse and manipulate DLNA Servers
 net-misc/dnetstats 1.2.6-r3: Qt4 network monitor utility
-net-misc/dropbear 2014.66 2015.67 2015.68 2015.69: small SSH 2 client/server designed for small memory environments
+net-misc/dropbear 2014.66 2015.67 2015.68 2015.70: small SSH 2 client/server designed for small memory environments
 net-misc/dropbox 2.10.2 3.6.8: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
