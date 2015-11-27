@@ -353,7 +353,7 @@ systemd_with_utildir() {
 # @FUNCTION: systemd_update_catalog
 # @DESCRIPTION:
 # Update the journald catalog. This needs to be called after installing
-# or removing catalog files.
+# or removing catalog files. This must be called in pkg_post* phases.
 #
 # If systemd is not installed, no operation will be done. The catalog
 # will be (re)built once systemd is installed.
@@ -361,6 +361,9 @@ systemd_with_utildir() {
 # See: http://www.freedesktop.org/wiki/Software/systemd/catalog
 systemd_update_catalog() {
 	debug-print-function ${FUNCNAME} "${@}"
+
+	[[ ${EBUILD_PHASE} == post* ]] \
+		|| die "${FUNCNAME} disallowed during ${EBUILD_PHASE_FUNC:-${EBUILD_PHASE}}"
 
 	# Make sure to work on the correct system.
 
