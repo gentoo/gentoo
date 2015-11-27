@@ -39,6 +39,9 @@ set_options() {
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-0.46-dbscp.patch
 	sed -i \
+		-e '/if test/s:==:=:' \
+		configure || die
+	sed -i \
 		-e '/SFTPSERVER_PATH/s:".*":"/usr/lib/misc/sftp-server":' \
 		options.h || die
 	sed -i \
