@@ -21,7 +21,7 @@ SUPP_RL=(   .    .     y               .    .         y     )
 # . - just --enable-<lisp>, <flag> - --enable-<flag>
 CONF_FLAG=( .    .     .               ecl  ccl       .     )
 # patch file version; . - no patch
-PATCH_V=(   0    0     .               1    1         0     )
+PATCH_V=(   1    1     .               2    2         1     )
 
 IUSE="latex emacs tk nls unicode xemacs X ${LISPS[*]}"
 
@@ -57,22 +57,16 @@ n=${#LISPS[*]}
 for ((n--; n >= 0; n--)); do
 	LISP=${LISPS[${n}]}
 	RDEPEND="${RDEPEND} ${LISP}? ( $(depends ${n}) )"
-	if (( ${n} > 0 )); then
-		DEF_DEP="${DEF_DEP} !${LISP}? ( "
-	fi
+	DEF_DEP="${DEF_DEP} !${LISP}? ( "
 done
 
 # default lisp
-if use arm; then
-	DEF_LISP=2 # gcl
-else
-	DEF_LISP=0 # sbcl
-fi
-
-DEF_DEP="${DEF_DEP} `depends ${DEF_LISP}`"
+DEF_LISP=0 # sbcl
+ARM_LISP=2 # gcl
+DEF_DEP="${DEF_DEP} arm? ( `depends ${ARM_LISP}` ) !arm? ( `depends ${DEF_LISP}` )"
 
 n=${#LISPS[*]}
-for ((n--; n > 0; n--)); do
+for ((n--; n >= 0; n--)); do
 	DEF_DEP="${DEF_DEP} )"
 done
 
@@ -101,7 +95,7 @@ pkg_setup() {
 
 src_prepare() {
 	local n PATCHES v
-	PATCHES=( imaxima-0 rmaxima-0 wish-1 xdg-utils-0 )
+	PATCHES=( imaxima-0 rmaxima-0 wish-1 xdg-utils-0 db-0 )
 
 	n=${#PATCHES[*]}
 	for ((n--; n >= 0; n--)); do

@@ -20,5 +20,6 @@ RDEPEND="
 	dev-cpp/eigen:3
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/cmake_modules
 "
 DEPEND="${RDEPEND}"

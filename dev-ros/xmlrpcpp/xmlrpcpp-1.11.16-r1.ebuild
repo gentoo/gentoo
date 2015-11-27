@@ -24,4 +24,10 @@ src_configure() {
 	# Hack so that proper -I are added
 	sed -e "s#_include_dirs \"include\"#_include_dirs \"include;${EPREFIX}/usr/include/xmlrpcpp\"#" \
 		-i "${BUILD_DIR}/catkin_generated/installspace/xmlrpcppConfig.cmake" ||	die
+
+	sed -e "s#/usr/include#/usr/include;${EPREFIX}/usr/include/xmlrpcpp#g" \
+		-i "${BUILD_DIR}/catkin_generated/pkg.installspace.context.pc.py" || die
+
+	sed -e "s#/usr/include#/usr/include -I${EPREFIX}/usr/include/xmlrpcpp#g" \
+		-i "${BUILD_DIR}/./catkin_generated/installspace/xmlrpcpp.pc" || die
 }
