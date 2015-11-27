@@ -1,0 +1,53 @@
+commit a4b1930b506274e328ee26cd6287965cb496062b
+Author: Steven Yi <stevenyi@gmail.com>
+Date:   Mon Sep 28 18:21:22 2015 -0400
+
+    modified make_utility and targets for csound-bin and mixer-bin to use add libm for linking when on Linux [fixes #526]
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2b16079..18a6ad1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -97,6 +97,10 @@ endfunction(make_executable)
+ function(make_utility name srcs)
+     make_executable(${name} "${srcs}" "${CSOUNDLIB}")
+     add_dependencies(${name} ${CSOUNDLIB})
++ 
++    if(LINUX)
++        target_link_libraries(${name} m)
++    endif()
+ endfunction()
+ 
+ 
+diff --git a/frontends/CMakeLists.txt b/frontends/CMakeLists.txt
+index d0e3a21..b31f37a 100644
+--- a/frontends/CMakeLists.txt
++++ b/frontends/CMakeLists.txt
+@@ -43,6 +43,9 @@ endfunction(make_plugin_frontend)
+ 
+ # We need a different name to avoid clashes with float libcsound
+ make_executable(csound-bin "${CS_MAIN_SRCS}" "${CSOUNDLIB}" csound)
++if(LINUX)
++  target_link_libraries(csound-bin m)
++endif()
+ 
+ message(STATUS "Building csLadspa")
+ 
+diff --git a/util/CMakeLists.txt b/util/CMakeLists.txt
+index 25089cc..ebf0aa5 100644
+--- a/util/CMakeLists.txt
++++ b/util/CMakeLists.txt
+@@ -23,9 +23,11 @@ if(BUILD_UTILITIES)
+     make_utility(hetro       het_main.c)
+     make_utility(lpanal      lpc_main.c)
+     make_utility(lpc_export  lpcx_main.c)
+-    target_link_libraries(lpc_export m)
+     make_utility(lpc_import  lpci_main.c)
+-    make_executable(mixer-bin   mixer_main.c   "${CSOUNDLIB}" mixer)
++    if(LINUX)
++      make_executable(mixer-bin   mixer_main.c   "${CSOUNDLIB}" mixer)
++    endif()
++    target_link_libraries(mixer-bin m)
+     make_utility(pvanal      pvc_main.c)
+     make_utility(pvlook      pvl_main.c)
+     make_utility(pv_export   pvx_main.c)
