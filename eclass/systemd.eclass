@@ -34,16 +34,32 @@ esac
 
 DEPEND="virtual/pkgconfig"
 
+# @FUNCTION: _systemd_get_dir
+# @USAGE: <variable-name> <fallback-directory>
+# @INTERNAL
+# @DESCRIPTION:
+# Try to obtain the <variable-name> variable from systemd.pc.
+# If pkg-config or systemd is not installed, return <fallback-directory>
+# instead.
+_systemd_get_dir() {
+	[[ ${#} -eq 2 ]] || die "Usage: ${FUNCNAME} <variable-name> <fallback-directory>"
+	local variable=${1} fallback=${2} d
+
+	if $(tc-getPKG_CONFIG) --exists systemd; then
+		d=$($(tc-getPKG_CONFIG) --variable="${variable}" systemd) || die
+	else
+		d=${fallback}
+	fi
+
+	echo "${d}"
+}
+
 # @FUNCTION: _systemd_get_unitdir
 # @INTERNAL
 # @DESCRIPTION:
 # Get unprefixed unitdir.
 _systemd_get_unitdir() {
-	if $(tc-getPKG_CONFIG) --exists systemd; then
-		echo "$($(tc-getPKG_CONFIG) --variable=systemdsystemunitdir systemd)"
-	else
-		echo /usr/lib/systemd/system
-	fi
+	_systemd_get_dir systemdsystemunitdir /usr/lib/systemd/system
 }
 
 # @FUNCTION: systemd_get_unitdir
@@ -62,11 +78,7 @@ systemd_get_unitdir() {
 # @DESCRIPTION:
 # Get unprefixed userunitdir.
 _systemd_get_userunitdir() {
-	if $(tc-getPKG_CONFIG) --exists systemd; then
-		echo "$($(tc-getPKG_CONFIG) --variable=systemduserunitdir systemd)"
-	else
-		echo /usr/lib/systemd/user
-	fi
+	_systemd_get_dir systemduserunitdir /usr/lib/systemd/user
 }
 
 # @FUNCTION: systemd_get_userunitdir
@@ -86,11 +98,7 @@ systemd_get_userunitdir() {
 # @DESCRIPTION:
 # Get unprefixed utildir.
 _systemd_get_utildir() {
-	if $(tc-getPKG_CONFIG) --exists systemd; then
-		echo "$($(tc-getPKG_CONFIG) --variable=systemdutildir systemd)"
-	else
-		echo /usr/lib/systemd
-	fi
+	_systemd_get_dir systemdutildir /usr/lib/systemd
 }
 
 # @FUNCTION: systemd_get_utildir
