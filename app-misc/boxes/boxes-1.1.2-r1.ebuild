@@ -21,7 +21,7 @@ DEPEND="
 	"
 
 src_prepare() {
-	append-cflags -Iregexp -I. -ansi
+	append-cflags -Iregexp -I. -ansi -std=c99
 	append-ldflags -Lregexp
 	sed \
 		-e 's:STRIP=true:STRIP=false:g' \
