@@ -8096,7 +8096,7 @@ dev-qt/qtwayland 5.4.2 5.5.1: Wayland platform plugin for Qt
 dev-qt/qtwebchannel 5.4.2 5.5.1: Qt5 framework module for integrating C++ and QML applications with HTML/JavaScript clients
 dev-qt/qtwebkit 4.8.6-r1 4.8.7 4.10.4 5.4.2 5.5.1: WebKit rendering library for the Qt5 framework (deprecated)
 dev-qt/qtwebsockets 5.4.2 5.5.1: Implementation of the WebSocket protocol for the Qt5 framework
-dev-qt/qtwidgets 5.4.2 5.5.1: Set of UI elements for creating classic desktop-style user interfaces for the Qt5 framework
+dev-qt/qtwidgets 5.4.2 5.5.1 5.5.1-r1: Set of components for creating classic desktop-style UIs for the Qt5 framework
 dev-qt/qtx11extras 5.4.2 5.5.1: Linux/X11-specific support library for the Qt5 framework
 dev-qt/qtxml 5.4.2 5.5.1: SAX and DOM implementation library for the Qt5 framework
 dev-qt/qtxmlpatterns 4.8.6-r1 4.8.7 5.4.2 5.5.1: XPath, XQuery, and XSLT support library for the Qt5 framework
