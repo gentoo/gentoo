@@ -6,7 +6,7 @@ EAPI=5
 QT5_MODULE="qtbase"
 inherit qt5-build
 
-DESCRIPTION="Set of UI elements for creating classic desktop-style user interfaces for the Qt5 framework"
+DESCRIPTION="Set of components for creating classic desktop-style UIs for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86"
