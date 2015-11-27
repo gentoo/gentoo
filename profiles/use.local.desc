@@ -439,6 +439,8 @@ app-doc/csound-manual:html - Install HTML documentation
 app-doc/doxygen:clang - support for sys-devel/clang assisted parsing
 app-doc/doxygen:dot - allow to create dot graphs using media-gfx/graphviz
 app-doc/doxygen:doxysearch - build doxyindexer and doxysearch.cgi
+app-doc/kicad-doc:html - Generate documentation in HTML format
+app-doc/kicad-doc:pdf - Generate documentation in PDF format
 app-doc/linuxfromscratch:htmlsingle - Install all-on-one-page HTML version.
 app-doc/pms:binary - Download pre-built files instead of building from sources
 app-doc/pms:html - Generate PMS as .html as well
