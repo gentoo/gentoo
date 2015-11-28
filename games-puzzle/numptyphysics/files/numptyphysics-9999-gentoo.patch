@@ -52,21 +52,6 @@ diff -ru numptyphysics-9999.orig/mk/silent.mk numptyphysics-9999/mk/silent.mk
 +    SILENTMSG := @echo -e
      SILENTCMD := @
  endif
-diff -ru numptyphysics-9999.orig/platform/gl/gl.mk numptyphysics-9999/platform/gl/gl.mk
---- numptyphysics-9999.orig/platform/gl/gl.mk	2015-11-25 22:27:36.172864469 -0500
-+++ numptyphysics-9999/platform/gl/gl.mk	2015-11-25 22:28:12.925578842 -0500
-@@ -3,9 +3,9 @@
- LIBS += -framework OpenGL
- else
- ifneq ($(wildcard $(patsubst %,%/libGL.so.1,/usr/lib /usr/lib64 /usr/lib/*)),)
--add_pkgconfig(gl)
-+$(eval $(call add_pkgconfig,gl))
- else
--add_pkgconfig(glesv2)
-+$(eval $(call add_pkgconfig,glesv2))
- CFLAGS += -DUSE_OPENGL_ES
- CXXFLAGS += -DUSE_OPENGL_ES
- endif
 diff -ru numptyphysics-9999.orig/src/Os.cpp numptyphysics-9999/src/Os.cpp
 --- numptyphysics-9999.orig/src/Os.cpp	2015-11-25 22:27:36.183864084 -0500
 +++ numptyphysics-9999/src/Os.cpp	2015-11-25 22:29:17.177331313 -0500
