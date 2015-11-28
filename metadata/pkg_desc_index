@@ -17819,7 +17819,7 @@ x11-libs/libnotify 0.7.6-r1: A library for sending desktop notifications
 x11-libs/liboglappth 0.98 1.0.0: A library for creating portable OpenGL applications with easy-to-code scene setup and selection
 x11-libs/libpciaccess 0.13.3 0.13.4: Library providing generic access to the PCI bus and devices
 x11-libs/libproplist 0.10.1-r4: An library to mimic property list functionality from the GNUstep environment
-x11-libs/libqxt 0.6.2-r2: The Qt eXTension library provides cross-platform utility classes for the Qt toolkit
+x11-libs/libqxt 0.6.2-r2: Extension library providing cross-platform utility classes for the Qt toolkit
 x11-libs/librfm 5.3.16.3: the basic library used by some rfm applications, such as Rodent filemanager
 x11-libs/libsexy 0.1.11-r3 0.1.11-r4: Sexy GTK+ Widgets
 x11-libs/libsvg-cairo 0.1.6: Render SVG content using cairo
