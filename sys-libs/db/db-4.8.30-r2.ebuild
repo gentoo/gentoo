@@ -88,16 +88,6 @@ src_prepare() {
 		-e "s/__EDIT_DB_VERSION__/$DB_VERSION/g" configure || die
 }
 
-src_configure() {
-	# Add linker versions to the symbols. Easier to do, and safer than header file
-	# mumbo jumbo.
-	if use userland_GNU ; then
-		append-ldflags -Wl,--default-symver
-	fi
-
-	multilib-minimal_src_configure
-}
-
 multilib_src_configure() {
 	local myconf=()
 
@@ -108,6 +98,12 @@ multilib_src_configure() {
 		local CFLAGS=${CFLAGS} CXXFLAGS=${CXXFLAGS}
 		replace-flags -O0 -O2
 		is-flagq -O[s123] || append-flags -O2
+	fi
+
+	# Add linker versions to the symbols. Easier to do, and safer than header file
+	# mumbo jumbo.
+	if use userland_GNU ; then
+		append-ldflags -Wl,--default-symver
 	fi
 
 	# use `set` here since the java opts will contain whitespace
