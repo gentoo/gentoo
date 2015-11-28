@@ -5,7 +5,7 @@
 EAPI=5
 inherit qt5-build
 
-DESCRIPTION="Qt5 framework module for integrating C++ and QML applications with HTML/JavaScript clients"
+DESCRIPTION="Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~x86"
