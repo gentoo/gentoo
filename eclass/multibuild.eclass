@@ -17,7 +17,7 @@ case "${EAPI:-0}" in
 	0|1|2|3)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
-	4|5)
+	4|5|6)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -145,6 +145,8 @@ multibuild_foreach_variant() {
 # function.
 multibuild_parallel_foreach_variant() {
 	debug-print-function ${FUNCNAME} "${@}"
+
+	[[ ${EAPI} == [45] ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}"
 
 	multibuild_foreach_variant "${@}"
 }

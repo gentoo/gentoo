@@ -20,7 +20,7 @@
 # https://wiki.gentoo.org/wiki/Project:Python/python-utils-r1
 
 case "${EAPI:-0}" in
-	0|1|2|3|4|5)
+	0|1|2|3|4|5|6)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -33,7 +33,8 @@ fi
 
 if [[ ! ${_PYTHON_UTILS_R1} ]]; then
 
-inherit eutils multilib toolchain-funcs
+[[ ${EAPI:-0} == [012345] ]] && inherit eutils multilib
+inherit toolchain-funcs
 
 # @ECLASS-VARIABLE: _PYTHON_ALL_IMPLS
 # @INTERNAL
@@ -280,12 +281,14 @@ python_export() {
 				# sysconfig can't be used because:
 				# 1) pypy doesn't give site-packages but stdlib
 				# 2) jython gives paths with wrong case
-				export PYTHON_SITEDIR=$("${PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_lib())')
+				PYTHON_SITEDIR=$("${PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_lib())') || die
+				export PYTHON_SITEDIR
 				debug-print "${FUNCNAME}: PYTHON_SITEDIR = ${PYTHON_SITEDIR}"
 				;;
 			PYTHON_INCLUDEDIR)
 				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
-				export PYTHON_INCLUDEDIR=$("${PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_inc())')
+				PYTHON_INCLUDEDIR=$("${PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_inc())') || die
+				export PYTHON_INCLUDEDIR
 				debug-print "${FUNCNAME}: PYTHON_INCLUDEDIR = ${PYTHON_INCLUDEDIR}"
 
 				# Jython gives a non-existing directory
@@ -295,7 +298,8 @@ python_export() {
 				;;
 			PYTHON_LIBPATH)
 				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
-				export PYTHON_LIBPATH=$("${PYTHON}" -c 'import os.path, sysconfig; print(os.path.join(sysconfig.get_config_var("LIBDIR"), sysconfig.get_config_var("LDLIBRARY")) if sysconfig.get_config_var("LDLIBRARY") else "")')
+				PYTHON_LIBPATH=$("${PYTHON}" -c 'import os.path, sysconfig; print(os.path.join(sysconfig.get_config_var("LIBDIR"), sysconfig.get_config_var("LDLIBRARY")) if sysconfig.get_config_var("LDLIBRARY") else "")') || die
+				export PYTHON_LIBPATH
 				debug-print "${FUNCNAME}: PYTHON_LIBPATH = ${PYTHON_LIBPATH}"
 
 				if [[ ! ${PYTHON_LIBPATH} ]]; then
@@ -308,7 +312,7 @@ python_export() {
 				case "${impl}" in
 					python*)
 						# python-2.7, python-3.2, etc.
-						val=$($(tc-getPKG_CONFIG) --cflags ${impl/n/n-})
+						val=$($(tc-getPKG_CONFIG) --cflags ${impl/n/n-}) || die
 						;;
 					*)
 						die "${impl}: obtaining ${var} not supported"
@@ -324,7 +328,7 @@ python_export() {
 				case "${impl}" in
 					python*)
 						# python-2.7, python-3.2, etc.
-						val=$($(tc-getPKG_CONFIG) --libs ${impl/n/n-})
+						val=$($(tc-getPKG_CONFIG) --libs ${impl/n/n-}) || die
 						;;
 					*)
 						die "${impl}: obtaining ${var} not supported"
@@ -340,7 +344,7 @@ python_export() {
 				case "${impl}" in
 					python*)
 						[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
-						flags=$("${PYTHON}" -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS") or "")')
+						flags=$("${PYTHON}" -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS") or "")') || die
 						val=${PYTHON}${flags}-config
 						;;
 					*)
@@ -564,9 +568,6 @@ python_optimize() {
 	local PYTHON=${PYTHON}
 	[[ ${PYTHON} ]] || python_export PYTHON
 
-	# Note: python2.6 can't handle passing files to compileall...
-	# TODO: we do not support 2.6 any longer
-
 	# default to sys.path
 	if [[ ${#} -eq 0 ]]; then
 		local f
@@ -579,7 +580,7 @@ python_optimize() {
 			if [[ ${f} == /* && -d ${D}${f} ]]; then
 				set -- "${D}${f}" "${@}"
 			fi
-		done < <("${PYTHON}" -c 'import sys; print("\0".join(sys.path))')
+		done < <("${PYTHON}" -c 'import sys; print("\0".join(sys.path))' || die)
 
 		debug-print "${FUNCNAME}: using sys.path: ${*/%/;}"
 	fi
@@ -665,6 +666,9 @@ python_newexe() {
 
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
 	[[ ${#} -eq 2 ]] || die "Usage: ${FUNCNAME} <path> <new-name>"
+	if [[ ${EAPI:-0} == [01234] ]]; then
+		die "python_do* and python_new* helpers are banned in EAPIs older than 5."
+	fi
 
 	local wrapd=${python_scriptroot:-${DESTTREE}/bin}
 
@@ -678,7 +682,7 @@ python_newexe() {
 	(
 		dodir "${wrapd}"
 		exeinto "${d}"
-		newexe "${f}" "${newfn}" || die
+		newexe "${f}" "${newfn}" || return ${?}
 	)
 
 	# install the wrapper
@@ -792,6 +796,9 @@ python_domodule() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
+	if [[ ${EAPI:-0} == [01234] ]]; then
+		die "python_do* and python_new* helpers are banned in EAPIs older than 5."
+	fi
 
 	local d
 	if [[ ${python_moduleroot} == /* ]]; then
@@ -805,10 +812,10 @@ python_domodule() {
 		d=${PYTHON_SITEDIR#${EPREFIX}}/${python_moduleroot}
 	fi
 
-	local INSDESTTREE
-
-	insinto "${d}"
-	doins -r "${@}" || die
+	(
+		insinto "${d}"
+		doins -r "${@}" || return ${?}
+	)
 
 	python_optimize "${ED}/${d}"
 }
@@ -830,16 +837,19 @@ python_doheader() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
+	if [[ ${EAPI:-0} == [01234] ]]; then
+		die "python_do* and python_new* helpers are banned in EAPIs older than 5."
+	fi
 
 	local d PYTHON_INCLUDEDIR=${PYTHON_INCLUDEDIR}
 	[[ ${PYTHON_INCLUDEDIR} ]] || python_export PYTHON_INCLUDEDIR
 
 	d=${PYTHON_INCLUDEDIR#${EPREFIX}}
 
-	local INSDESTTREE
-
-	insinto "${d}"
-	doins -r "${@}" || die
+	(
+		insinto "${d}"
+		doins -r "${@}" || return ${?}
+	)
 }
 
 # @FUNCTION: python_wrapper_setup
@@ -891,7 +901,7 @@ python_wrapper_setup() {
 		# note: we don't use symlinks because python likes to do some
 		# symlink reading magic that breaks stuff
 		# https://bugs.gentoo.org/show_bug.cgi?id=555752
-		cat > "${workdir}/bin/python" <<-_EOF_
+		cat > "${workdir}/bin/python" <<-_EOF_ || die
 			#!/bin/sh
 			exec "${PYTHON}" "\${@}"
 		_EOF_
@@ -904,7 +914,7 @@ python_wrapper_setup() {
 		if [[ ${EPYTHON} == python* ]]; then
 			python_export "${impl}" PYTHON_CONFIG
 
-			cat > "${workdir}/bin/python-config" <<-_EOF_
+			cat > "${workdir}/bin/python-config" <<-_EOF_ || die
 				#!/bin/sh
 				exec "${PYTHON_CONFIG}" "\${@}"
 			_EOF_
@@ -926,11 +936,11 @@ python_wrapper_setup() {
 
 		local x
 		for x in "${nonsupp[@]}"; do
-			cat >"${workdir}"/bin/${x} <<__EOF__
-#!/bin/sh
-echo "${x} is not supported by ${EPYTHON}" >&2
-exit 127
-__EOF__
+			cat >"${workdir}"/bin/${x} <<-_EOF_ || die
+				#!/bin/sh
+				echo "${x} is not supported by ${EPYTHON}" >&2
+				exit 127
+			_EOF_
 			chmod +x "${workdir}"/bin/${x} || die
 		done
 
@@ -1038,12 +1048,14 @@ python_fix_shebang() {
 			local shebang i
 			local error= from=
 
+			# note: we can't ||die here since read will fail if file
+			# has no newline characters
 			IFS= read -r shebang <"${f}"
 
 			# First, check if it's shebang at all...
 			if [[ ${shebang} == '#!'* ]]; then
 				local split_shebang=()
-				read -r -a split_shebang <<<${shebang}
+				read -r -a split_shebang <<<${shebang} || die
 
 				# Match left-to-right in a loop, to avoid matching random
 				# repetitions like 'python2.7 python2'.
@@ -1128,17 +1140,40 @@ python_fix_shebang() {
 				eerror "  requested impl: ${EPYTHON}"
 				die "${FUNCNAME}: conversion of incompatible shebang requested"
 			fi
-		done < <(find "${path}" -type f -print0)
+		done < <(find -H "${path}" -type f -print0 || die)
 
 		if [[ ! ${any_fixed} ]]; then
-			eqawarn "QA warning: ${FUNCNAME}, ${path#${D}} did not match any fixable files."
+			local cmd=eerror
+			[[ ${EAPI:-0} == [012345] ]] && cmd=eqawarn
+
+			"${cmd}" "QA warning: ${FUNCNAME}, ${path#${D}} did not match any fixable files."
 			if [[ ${any_correct} ]]; then
-				eqawarn "All files have ${EPYTHON} shebang already."
+				"${cmd}" "All files have ${EPYTHON} shebang already."
 			else
-				eqawarn "There are no Python files in specified directory."
+				"${cmd}" "There are no Python files in specified directory."
 			fi
+
+			[[ ${cmd} == eerror ]] && die "${FUNCNAME} did not match any fixable files (QA warning fatal in EAPI ${EAPI})"
 		fi
 	done
+}
+
+# @FUNCTION: _python_check_locale_sanity
+# @USAGE: <locale>
+# @RETURN: 0 if sane, 1 otherwise
+# @DESCRIPTION:
+# Check whether the specified locale sanely maps between lowercase
+# and uppercase ASCII characters.
+_python_check_locale_sanity() {
+	local -x LC_CTYPE=${1}
+	local IFS=
+
+	local lc=( {a..z} )
+	local uc=( {A..Z} )
+	local input=${lc[*]}${uc[*]}
+
+	local output=$(tr '[:lower:][:upper:]' '[:upper:][:lower:]' <<<"${input}")
+	[[ ${output} == "${uc[*]}${lc[*]}" ]]
 }
 
 # @FUNCTION: python_export_utf8_locale
@@ -1165,8 +1200,10 @@ python_export_utf8_locale() {
 
 		for lang in ${locales}; do
 			if [[ $(LC_CTYPE=${lang} locale charmap 2>/dev/null) == UTF-8 ]]; then
-				export LC_CTYPE=${lang}
-				return 0
+				if _python_check_locale_sanity "${lang}"; then
+					export LC_CTYPE=${lang}
+					return 0
+				fi
 			fi  
 		done
 

@@ -47,7 +47,7 @@ case "${EAPI:-0}" in
 			die "Unsupported EAPI=${EAPI:-4} (too old, allowed only on restricted set of packages) for ${ECLASS}"
 		fi
 		;;
-	5)
+	5|6)
 		# EAPI=5 is required for sane USE_EXPAND dependencies
 		;;
 	*)
@@ -63,6 +63,7 @@ elif [[ ${_PYTHON_ANY_R1} ]]; then
 	die 'python-r1.eclass can not be used with python-any-r1.eclass.'
 fi
 
+[[ ${EAPI} == [45] ]] && inherit eutils
 inherit multibuild python-utils-r1
 
 # @ECLASS-VARIABLE: PYTHON_COMPAT
@@ -526,6 +527,8 @@ python_foreach_impl() {
 python_parallel_foreach_impl() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EAPI} == [45] ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}"
+
 	if [[ ! ${_PYTHON_PARALLEL_WARNED} ]]; then
 		eqawarn "python_parallel_foreach_impl() is no longer meaningful. All runs"
 		eqawarn "are non-parallel now. Please replace the call with python_foreach_impl."
@@ -600,6 +603,8 @@ python_setup() {
 # EPYTHON & PYTHON will be exported.
 python_export_best() {
 	debug-print-function ${FUNCNAME} "${@}"
+
+	[[ ${EAPI} == [45] ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}"
 
 	eqawarn "python_export_best() is deprecated. Please use python_setup instead,"
 	eqawarn "combined with python_export if necessary."

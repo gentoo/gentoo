@@ -47,7 +47,7 @@ case "${EAPI:-0}" in
 	0|1|2|3)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
-	4|5)
+	4|5|6)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -79,7 +79,8 @@ esac
 
 if [[ ! ${_DISTUTILS_R1} ]]; then
 
-inherit eutils toolchain-funcs
+[[ ${EAPI} == [45] ]] && inherit eutils
+inherit toolchain-funcs
 
 if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 	inherit multiprocessing python-r1
@@ -150,6 +151,8 @@ fi
 # @ECLASS-VARIABLE: EXAMPLES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
+# OBSOLETE: this variable is deprecated and banned in EAPI 6
+#
 # An array containing examples installed into 'examples' doc
 # subdirectory. The files and directories listed there must exist
 # in the directory from which distutils-r1_python_install_all() is run
@@ -236,10 +239,13 @@ fi
 esetup.py() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	local die_args=()
+	[[ ${EAPI} != [45] ]] && die_args+=( -n )
+
 	set -- "${PYTHON:-python}" setup.py "${mydistutilsargs[@]}" "${@}"
 
 	echo "${@}" >&2
-	"${@}" || die
+	"${@}" || die "${die_args[@]}" || return ${?}
 }
 
 # @FUNCTION: distutils_install_for_testing
@@ -309,9 +315,12 @@ _distutils-r1_disable_ez_setup() {
 distutils-r1_python_prepare_all() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	[[ ${PATCHES} ]] && epatch "${PATCHES[@]}"
-
-	epatch_user
+	if [[ ${EAPI} != [45] ]]; then
+		default
+	else
+		[[ ${PATCHES} ]] && epatch "${PATCHES[@]}"
+		epatch_user
+	fi
 
 	# by default, use in-source build if python_prepare() is used
 	if [[ ! ${DISTUTILS_IN_SOURCE_BUILD+1} ]]; then
@@ -337,7 +346,7 @@ distutils-r1_python_prepare_all() {
 distutils-r1_python_prepare() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	:
+	[[ ${EAPI} == [45] ]] || die "${FUNCNAME} is banned in EAPI 6 (it was a no-op)"
 }
 
 # @FUNCTION: distutils-r1_python_configure
@@ -346,7 +355,7 @@ distutils-r1_python_prepare() {
 distutils-r1_python_configure() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	:
+	[[ ${EAPI} == [45] ]] || die "${FUNCNAME} is banned in EAPI 6 (it was a no-op)"
 }
 
 # @FUNCTION: _distutils-r1_create_setup_cfg
@@ -557,7 +566,9 @@ distutils-r1_python_install() {
 		fi
 	done
 	if [[ -d ${root}/usr/$(get_libdir)/pypy/share ]]; then
-		eqawarn "Package installs 'share' in PyPy prefix, see bug #465546."
+		local cmd=die
+		[[ ${EAPI} == [45] ]] && cmd=eqawarn
+		"${cmd}" "Package installs 'share' in PyPy prefix, see bug #465546."
 	fi
 
 	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
@@ -575,6 +586,8 @@ distutils-r1_python_install_all() {
 	einstalldocs
 
 	if declare -p EXAMPLES &>/dev/null; then
+		[[ ${EAPI} != [45] ]] && die "EXAMPLES are banned in EAPI ${EAPI}"
+
 		local INSDESTTREE=/usr/share/doc/${PF}/examples
 		doins -r "${EXAMPLES[@]}"
 		docompress -x "${INSDESTTREE}"
@@ -681,6 +694,8 @@ _distutils-r1_run_foreach_impl() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	if [[ ${DISTUTILS_NO_PARALLEL_BUILD} ]]; then
+		[[ ${EAPI} == [45] ]] || die "DISTUTILS_NO_PARALLEL_BUILD is banned in EAPI ${EAPI}"
+
 		eqawarn "DISTUTILS_NO_PARALLEL_BUILD is no longer meaningful. Now all builds"
 		eqawarn "are non-parallel. Please remove it from the ebuild."
 
@@ -717,7 +732,10 @@ distutils-r1_src_prepare() {
 	fi
 
 	if [[ ! ${_DISTUTILS_DEFAULT_CALLED} ]]; then
-		eqawarn "QA warning: python_prepare_all() didn't call distutils-r1_python_prepare_all"
+		local cmd=die
+		[[ ${EAPI} == [45] ]] && cmd=eqawarn
+
+		"${cmd}" "QA: python_prepare_all() didn't call distutils-r1_python_prepare_all"
 	fi
 
 	if declare -f python_prepare >/dev/null; then
@@ -788,7 +806,10 @@ distutils-r1_src_install() {
 	fi
 
 	if [[ ! ${_DISTUTILS_DEFAULT_CALLED} ]]; then
-		eqawarn "QA warning: python_install_all() didn't call distutils-r1_python_install_all"
+		local cmd=die
+		[[ ${EAPI} == [45] ]] && cmd=eqawarn
+
+		"${cmd}" "QA: python_install_all() didn't call distutils-r1_python_install_all"
 	fi
 }
 
