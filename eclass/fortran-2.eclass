@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,6 +26,8 @@
 # inherit fortran-2
 #
 # FORTRAN_NEED_OPENMP=1
+
+if [[ ! ${_FORTRAN_2_CLASS} ]]; then
 
 # @ECLASS-VARIABLE: FORTRAN_NEED_OPENMP
 # @DESCRIPTION:
@@ -60,17 +62,37 @@ for _f_use in ${FORTRAN_NEEDED}; do
 	case ${_f_use} in
 		always)
 			DEPEND+=" virtual/fortran"
+			RDEPEND+=" virtual/fortran"
 			break
 			;;
 		no)
 			break
 			;;
+		test)
+			DEPEND+=" ${_f_use}? ( virtual/fortran )"
+			;;
 		*)
 			DEPEND+=" ${_f_use}? ( virtual/fortran )"
+			RDEPEND+=" ${_f_use}? ( virtual/fortran )"
 			;;
 	esac
 done
-RDEPEND="${DEPEND}"
+
+# @FUNCTION: fortran_int64_abi_fflags
+# @DESCRIPTION: Return the Fortran compiler flag to enable 64 bit integers for
+# array indices
+# @CODE
+fortran_int64_abi_fflags() {
+	debug-print-function ${FUNCNAME} "${@}"
+	_FC=$(tc-getFC)
+	if [[ ${_FC} == *gfortran* ]]; then
+		echo "-fdefault-integer-8"
+	elif [[ ${_FC} == ifort ]]; then
+		echo "-integer-size 64"
+	else
+		die "Compiler flag for 64bit interger for ${_FC} unknown"
+	fi
+}
 
 # @FUNCTION: _fortran_write_testsuite
 # @INTERNAL
@@ -208,23 +230,23 @@ _fortran_test_function() {
 # _The_ fortran-2_pkg_setup() code
 _fortran-2_pkg_setup() {
 	for _f_use in ${FORTRAN_NEEDED}; do
-   	case ${_f_use} in
-      	always)
+	case ${_f_use} in
+		always)
+			_fortran_test_function && break
+			;;
+		no)
+			einfo "Forcing fortran support off"
+			break
+			;;
+		*)
+			if use ${_f_use}; then
 				_fortran_test_function && break
-	         ;;
-   	   no)
-				einfo "Forcing fortran support off"
-				break
-	         ;;
-   	   *)
-				if use ${_f_use}; then
-					_fortran_test_function && break
-				else
-					unset FC
-					unset F77
-				fi
-   	      ;;
-	   esac
+			else
+				unset FC
+				unset F77
+			fi
+			;;
+		esac
 	done
 }
 
@@ -254,3 +276,5 @@ case ${EAPI:-0} in
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
+_FORTRAN_2_ECLASS=1
+fi
