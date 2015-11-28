@@ -77,6 +77,22 @@ for _f_use in ${FORTRAN_NEEDED}; do
 	esac
 done
 
+# @FUNCTION: fortran_int64_abi_fflags
+# @DESCRIPTION: Return the Fortran compiler flag to enable 64 bit integers for
+# array indices
+# @CODE
+fortran_int64_abi_fflags() {
+	debug-print-function ${FUNCNAME} "${@}"
+	_FC=$(tc-getFC)
+	if [[ ${_FC} == *gfortran* ]]; then
+		echo "-fdefault-integer-8"
+	elif [[ ${_FC} == ifort ]]; then
+		echo "-integer-size 64"
+	else
+		die "Compiler flag for 64bit interger for ${_FC} unknown"
+	fi
+}
+
 # @FUNCTION: _fortran_write_testsuite
 # @INTERNAL
 # @DESCRIPTION:
