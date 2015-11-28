@@ -11,10 +11,10 @@ inherit distutils-r1
 DESCRIPTION="Core common functionality of Jupyter projects"
 HOMEPAGE="http://jupyter.org"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-KEYWORDS="~amd64 ~x86"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 RDEPEND="
@@ -24,7 +24,6 @@ DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7)
 	)
 	"
