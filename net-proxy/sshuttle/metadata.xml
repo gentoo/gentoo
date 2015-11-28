@@ -6,6 +6,6 @@
     <name>Tim Harder</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">apenwarr/sshuttle</remote-id>
+    <remote-id type="github">sshuttle/sshuttle</remote-id>
   </upstream>
 </pkgmetadata>
