@@ -70,6 +70,7 @@ for _f_use in ${FORTRAN_NEEDED}; do
 			;;
 		test)
 			DEPEND+=" ${_f_use}? ( virtual/fortran )"
+			;;
 		*)
 			DEPEND+=" ${_f_use}? ( virtual/fortran )"
 			RDEPEND+=" ${_f_use}? ( virtual/fortran )"
