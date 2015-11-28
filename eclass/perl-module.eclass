@@ -131,9 +131,15 @@ perl-module_src_unpack() {
 # This function is to be called during the ebuild src_prepare() phase.
 perl-module_src_prepare() {
 	debug-print-function $FUNCNAME "$@"
-	[[ ${PATCHES[@]} ]] && epatch "${PATCHES[@]}"
-	debug-print "$FUNCNAME: applying user patches"
-	epatch_user
+
+	if [[ ${EAPI:-0} == 5 ]] ; then
+		[[ ${PATCHES[@]} ]] && epatch "${PATCHES[@]}"
+		debug-print "$FUNCNAME: applying user patches"
+		epatch_user
+	else
+		default
+	fi
+
 	if [[ ${PERL_RM_FILES[@]} ]]; then
 		debug-print "$FUNCNAME: stripping unneeded files"
 		perl_rm_files "${PERL_RM_FILES[@]}"
