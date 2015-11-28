@@ -15745,7 +15745,7 @@ sci-mathematics/gretl 1.9.14 1.9.90: Regression, econometrics and time-series li
 sci-mathematics/gsl-shell 2.2.0: Lua interactive shell for sci-libs/gsl
 sci-mathematics/gwnum 277: George Woltman's GWNUM library
 sci-mathematics/isabelle 2011.1 2011.1-r2 2012-r1 2013-r2 2013.2-r1: Isabelle is a generic proof assistant
-sci-mathematics/jags 3.4.0: Just Another Gibbs Sampler for Bayesian MCMC simulation
+sci-mathematics/jags 3.4.0 4.0.0: Just Another Gibbs Sampler for Bayesian MCMC simulation
 sci-mathematics/kodkod 1.5.2: a constraint solver for relational logic
 sci-mathematics/kodkodi 1.5.2: A text front-end for the Kodkod Java library
 sci-mathematics/lpsolve 5.5.2.0: Mixed Integer Linear Programming (MILP) solver
@@ -16845,7 +16845,7 @@ sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
 sys-fs/traydevice 1.5 1.5.2 1.6.2 1.6.2-r1: A little desktop application displaying systray icon for UDisks
 sys-fs/treesize 0.54.1: A disk consumption analyzing tool
-sys-fs/udev 216 217 218 219 220-r3 222 224 224-r1 224-r2 225 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
+sys-fs/udev 216 217 218 219 220-r3 222 224 224-r1 224-r2 225 228 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 27 29 30 9999: udev startup scripts for openrc
 sys-fs/udftools 1.0.0b-r9 1.0.0b-r10: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 0.6.2 0.6.4 1.1.1: An automatic disk mounting service using udisks
