@@ -231,7 +231,7 @@ src_install() {
 	keepdir /var/lib/racoon
 	newconfd "${FILESDIR}"/racoon.conf.d-r2 racoon
 	newinitd "${FILESDIR}"/racoon.init.d-r3 racoon
-	systemd_dounit "${FILESDIR}/ipsec.service"
+	systemd_dounit "${FILESDIR}/ipsec-tools.service"
 	systemd_dounit "${FILESDIR}/racoon.service"
 	use pam && newpamd "${FILESDIR}"/racoon.pam.d racoon
 
