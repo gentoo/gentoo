@@ -37,21 +37,48 @@ case "${EAPI:-0}" in
 			RDEPEND="${DEPEND}"
 			;;
 		esac
+
+		case "${PERL_EXPORT_PHASE_FUNCTIONS:-yes}" in
+			yes)
+				EXPORT_FUNCTIONS ${PERL_EXPF}
+				;;
+			no)
+				debug-print "PERL_EXPORT_PHASE_FUNCTIONS=no"
+				;;
+			*)
+				die "PERL_EXPORT_PHASE_FUNCTIONS=${PERL_EXPORT_PHASE_FUNCTIONS} is not supported by perl-module.eclass"
+				;;
+		esac
+		;;
+	6)
+		[[ ${CATEGORY} == "perl-core" ]] && \
+			PERL_EXPF+=" pkg_postinst pkg_postrm"
+
+		case "${GENTOO_DEPEND_ON_PERL:-yes}" in
+			yes)
+				DEPEND="dev-lang/perl:="
+				RDEPEND="dev-lang/perl:="
+				;;
+			noslotop)
+				DEPEND="dev-lang/perl"
+				RDEPEND="dev-lang/perl"
+				;;
+		esac
+
+		if [[ "${GENTOO_DEPEND_ON_PERL_SUBSLOT}" ]]; then
+			eerror "GENTOO_DEPEND_ON_PERL_SUBSLOT is banned in EAPI=6. If you don't want a slot operator"
+			die    "set GENTOO_DEPEND_ON_PERL=noslotop instead."
+		fi
+
+		if [[ "${PERL_EXPORT_PHASE_FUNCTIONS}" ]]; then
+			eerror "PERL_EXPORT_PHASE_FUNCTIONS is banned in EAPI=6. Use perl-module.eclass if you need"
+			die    "phase functions, perl-functions.eclass if not."
+		fi
+
+		EXPORT_FUNCTIONS ${PERL_EXPF}
 		;;
 	*)
 		die "EAPI=${EAPI} is not supported by perl-module.eclass"
-		;;
-esac
-
-case "${PERL_EXPORT_PHASE_FUNCTIONS:-yes}" in
-	yes)
-		EXPORT_FUNCTIONS ${PERL_EXPF}
-		;;
-	no)
-		debug-print "PERL_EXPORT_PHASE_FUNCTIONS=no"
-		;;
-	*)
-		die "PERL_EXPORT_PHASE_FUNCTIONS=${PERL_EXPORT_PHASE_FUNCTIONS} is not supported by perl-module.eclass"
 		;;
 esac
 
