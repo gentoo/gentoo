@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <longdescription>
+    Core common functionality of Jupyter projects.
+    This package contains base application classes and configuration
+    inhertited by other projects. It doesn't do much on its own.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">jupyter_core</remote-id>
+    <remote-id type="github">jupyter/jupyter_core</remote-id>
+  </upstream>
+</pkgmetadata>

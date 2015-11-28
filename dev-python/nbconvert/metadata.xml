@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <longdescription>
+    Jupyter NBConvert converts Jupyter notebooks to various other
+    formats via Jinja templates.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">nbconvert</remote-id>
+    <remote-id type="github">jupyter/nbconvert</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <longdescription>
+  	Interactive HTML widgets for Jupyter notebooks and the IPython
+  	kernel.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">ipywidgets</remote-id>
+    <remote-id type="github">ipython/ipywidgets</remote-id>
+  </upstream>
+</pkgmetadata>
