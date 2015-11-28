@@ -11,10 +11,10 @@ inherit distutils-r1
 DESCRIPTION="Test utilities for code working with files and commands"
 HOMEPAGE="http://jupyter.org"
 SRC_URI="https://github.com/jupyter/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~x86"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 DEPEND="
