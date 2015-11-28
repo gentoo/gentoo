@@ -74,7 +74,6 @@ SRC_TEST="skip"
 PREFER_BUILDPL="yes"
 
 pm_echovar=""
-perlinfo_done=false
 
 # @FUNCTION: perl-module_src_unpack
 # @USAGE: perl-module_src_unpack
@@ -237,7 +236,7 @@ perl-module_src_test() {
 			export HARNESS_OPTIONS=j$(makeopts_jobs)
 			einfo "Test::Harness Jobs=$(makeopts_jobs)"
 		fi
-		${perlinfo_done} || perl_set_version
+		perl_set_version
 		if [[ -f Build ]] ; then
 			./Build test verbose=${TEST_VERBOSE:-0} || die "test failed"
 		elif [[ -f Makefile ]] ; then
