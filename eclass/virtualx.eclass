@@ -92,9 +92,10 @@ virtualmake() {
 	local i=0
 	local retval=0
 	local OLD_SANDBOX_ON="${SANDBOX_ON}"
-	local XVFB=$(type -p Xvfb)
-	local XHOST=$(type -p xhost)
+	local XVFB XHOST XDISPLAY
 	local xvfbargs="-screen 0 1280x1024x24"
+	XVFB=$(type -p Xvfb) || die
+	XHOST=$(type -p xhost) || die
 
 	# backcompat for maketype
 	if [[ -n ${maketype} ]]; then
