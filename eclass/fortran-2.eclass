@@ -213,23 +213,23 @@ _fortran_test_function() {
 # _The_ fortran-2_pkg_setup() code
 _fortran-2_pkg_setup() {
 	for _f_use in ${FORTRAN_NEEDED}; do
-   	case ${_f_use} in
-      	always)
+	case ${_f_use} in
+		always)
+			_fortran_test_function && break
+			;;
+		no)
+			einfo "Forcing fortran support off"
+			break
+			;;
+		*)
+			if use ${_f_use}; then
 				_fortran_test_function && break
-	         ;;
-   	   no)
-				einfo "Forcing fortran support off"
-				break
-	         ;;
-   	   *)
-				if use ${_f_use}; then
-					_fortran_test_function && break
-				else
-					unset FC
-					unset F77
-				fi
-   	      ;;
-	   esac
+			else
+				unset FC
+				unset F77
+			fi
+			;;
+		esac
 	done
 }
 
