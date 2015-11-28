@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,11 +11,11 @@ MYP="JAGS-${PV}"
 DESCRIPTION="Just Another Gibbs Sampler for Bayesian MCMC simulation"
 HOMEPAGE="http://mcmc-jags.sourceforge.net/"
 SRC_URI="mirror://sourceforge/project/mcmc-jags/JAGS/4.x/Source/${MYP}.tar.gz"
-LICENSE="GPL-2"
-IUSE="doc"
 
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+LICENSE="GPL-2"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+IUSE="doc"
 
 RDEPEND="
 	virtual/blas
@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}
 	doc? (
 		virtual/latex-base
 		dev-texlive/texlive-latexextra
-		)"
+	)"
 
 S="${WORKDIR}/${MYP}"
 
@@ -38,7 +38,7 @@ src_configure() {
 }
 
 src_compile() {
-	autotools-utils_src_compile all $(use doc && echo docs)
+	autotools-utils_src_compile all $(usex doc docs "")
 }
 
 src_install() {
