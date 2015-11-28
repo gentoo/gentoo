@@ -139,7 +139,9 @@ perl-module_src_prepare() {
 perl-module_src_configure() {
 	debug-print-function $FUNCNAME "$@"
 
-	[[ ${SRC_PREP} = yes ]] && return 0
+	if [[ ${EAPI:-0} == 5 && ${SRC_PREP} == yes ]]; then
+		return 0
+	fi
 	SRC_PREP="yes"
 
 	perl_check_env
