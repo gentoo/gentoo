@@ -3430,16 +3430,18 @@ kde-plasma/plasma-workspace:qalculate - Enable Qalculate runner using sci-libs/l
 kde-plasma/plasma-workspace:systemmonitor - Enables the system monitor dialog for the Plasma workspace
 lxde-base/lxdm:consolekit - Enables support for authorization using consolekit
 lxde-base/lxdm:gtk3 - Use GTK+3 instead of 2
-lxqt-base/lxqt-meta:admin - Install app-admin/lxqt-admin
+lxqt-base/lxqt-meta:about - Install lxqt-base/lxqt-about
+lxqt-base/lxqt-meta:admin - Install lxqt-base/lxqt-admin
 lxqt-base/lxqt-meta:filemanager - Install x11-misc/pcmanfm-qt file manager
 lxqt-base/lxqt-meta:icons - Install an icon theme
 lxqt-base/lxqt-meta:lightdm - Install x11-misc/lightdm display manager
 lxqt-base/lxqt-meta:lximage - Install media-gfx/lximage-qt image viewer
 lxqt-base/lxqt-meta:minimal - Do not install x11-wm/openbox window manager
-lxqt-base/lxqt-meta:oxygen - Prefer kde-apps/oxygen-icons (default)
+lxqt-base/lxqt-meta:oxygen - Prefer kde-frameworks/oxygen-icons (default)
 lxqt-base/lxqt-meta:powermanagement - Install lxqt-base/lxqt-powermanagement package
 lxqt-base/lxqt-meta:sddm - Install x11-misc/sddm display manager
-lxqt-base/lxqt-meta:ssh-askpass - Install net-misc/lxqt-openssh-askpass user password prompt tool
+lxqt-base/lxqt-meta:ssh-askpass - Install lxqt-base/lxqt-openssh-askpass user password prompt tool
+lxqt-base/lxqt-meta:sudo - Install lxqt-base/lxqt-sudo
 lxqt-base/lxqt-panel:clock - Build clock plugin
 lxqt-base/lxqt-panel:colorpicker - Build colorpicker plugin
 lxqt-base/lxqt-panel:cpuload - Build cpuload plugin
@@ -3453,6 +3455,7 @@ lxqt-base/lxqt-panel:quicklaunch - Build quicklaunch plugin
 lxqt-base/lxqt-panel:screensaver - Build screensaver plugin
 lxqt-base/lxqt-panel:sensors - Build sensors plugin
 lxqt-base/lxqt-panel:showdesktop - Build showdesktop plugin
+lxqt-base/lxqt-panel:statusnotifier - Build statusnotifier plugin
 lxqt-base/lxqt-panel:sysstat - Build sysstat plugin
 lxqt-base/lxqt-panel:taskbar - Build taskbar plugin
 lxqt-base/lxqt-panel:teatime - Build teatime plugin
