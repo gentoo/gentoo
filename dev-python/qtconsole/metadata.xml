@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <longdescription>
+    A rich Qt-based console for working with Jupyter kernels,
+    supporting rich media output, session export, and more.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">qtconsole</remote-id>
+    <remote-id type="github">jupyter/qtconsole</remote-id>
+  </upstream>
+</pkgmetadata>

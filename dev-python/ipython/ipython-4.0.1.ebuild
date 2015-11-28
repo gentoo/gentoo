@@ -15,50 +15,31 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="doc examples matplotlib mongodb notebook nbconvert octave qt4 +smp test wxwidgets"
+KEYWORDS="~amd64 ~x86"
+IUSE="doc examples matplotlib mongodb notebook nbconvert qt4 +smp test wxwidgets"
 
 REQUIRED_USE="
-	test? ( doc matplotlib mongodb notebook nbconvert octave qt4 wxwidgets )
+	test? ( doc matplotlib mongodb notebook nbconvert qt4 wxwidgets )
 	doc? ( mongodb )"
 
 CDEPEND="
 	dev-python/decorator[${PYTHON_USEDEP}]
 	dev-python/pexpect[${PYTHON_USEDEP}]
+	dev-python/pickleshare[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
 	dev-python/simplegeneric[${PYTHON_USEDEP}]
+	dev-python/traitlets[${PYTHON_USEDEP}]
 	matplotlib? ( dev-python/matplotlib[${PYTHON_USEDEP}] )
 	mongodb? ( <dev-python/pymongo-3[${PYTHON_USEDEP}] )
-	octave? ( dev-python/oct2py[${PYTHON_USEDEP}] )
-	smp? ( >=dev-python/pyzmq-13[${PYTHON_USEDEP}] )
 	wxwidgets? ( $(python_gen_cond_dep 'dev-python/wxpython:*[${PYTHON_USEDEP}]' python2_7) )"
+
 RDEPEND="${CDEPEND}
 	notebook? (
-		dev-libs/mathjax
-		dev-python/jinja[${PYTHON_USEDEP}]
-		>=dev-python/jsonschema-2.0[${PYTHON_USEDEP}]
-		>=dev-python/mistune-0.5[${PYTHON_USEDEP}]
-		dev-python/pygments[${PYTHON_USEDEP}]
-		>=dev-python/pyzmq-13[${PYTHON_USEDEP}]
-		>=dev-python/terminado-0.3.3[${PYTHON_USEDEP}]
-		>=www-servers/tornado-4.0[${PYTHON_USEDEP}]
+		dev-python/notebook[${PYTHON_USEDEP}]
+		dev-python/ipywidgets[${PYTHON_USEDEP}]
 	)
-	nbconvert? (
-		|| ( >=net-libs/nodejs-0.9.12 >=app-text/pandoc-1.12.1 )
-		dev-python/jinja[${PYTHON_USEDEP}]
-		>=dev-python/jsonschema-2.0[${PYTHON_USEDEP}]
-		>=dev-python/mistune-0.5[${PYTHON_USEDEP}]
-		dev-python/pygments[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]
-	)
-	qt4? (
-		|| (
-			dev-python/PyQt4[${PYTHON_USEDEP},svg]
-			dev-python/PyQt5[${PYTHON_USEDEP},svg]
-			dev-python/pyside[${PYTHON_USEDEP},svg]
-		)
-		dev-python/pygments[${PYTHON_USEDEP}]
-		>=dev-python/pyzmq-13[${PYTHON_USEDEP}] )"
+	nbconvert? ( dev-python/nbconvert[${PYTHON_USEDEP}] )
+	qt4? ( dev-python/qtconsole )"
 DEPEND="${CDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
@@ -69,6 +50,8 @@ DEPEND="${CDEPEND}
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		>=www-servers/tornado-4.0[${PYTHON_USEDEP}]
+		dev-python/testpath[${PYTHON_USEDEP}]
+		x11-base/xorg-server[xvfb]
 	)
 	doc? (
 		dev-python/cython[${PYTHON_USEDEP}]
@@ -82,12 +65,11 @@ DEPEND="${CDEPEND}
 		>=www-servers/tornado-4.0[${PYTHON_USEDEP}]
 	)"
 
+PDEPEND="
+	smp? ( dev-python/ipyparallel[${PYTHON_USEDEP}] )"
+
 PATCHES=(
 	"${FILESDIR}"/2.1.0-substitute-files.patch
-	"${FILESDIR}/${P}"-set-mime-type-on-files.patch
-	"${FILESDIR}/${P}"-set-model-mimetype-even-when-content-False.patch
-	"${FILESDIR}/${P}"-only-redirect-to-editor-for-text-documents.patch
-	"${FILESDIR}/${P}"-Don-t-redirect-from-edit-to-files.patch
 	)
 
 DISTUTILS_IN_SOURCE_BUILD=1
@@ -124,8 +106,6 @@ python_test() {
 
 python_install() {
 	distutils-r1_python_install
-	use notebook && \
-		ln -sf "${EPREFIX}/usr/share/mathjax" "${D}$(python_get_sitedir)/IPython/html/static/mathjax"
 
 	# Create ipythonX.Y symlinks.
 	# TODO:

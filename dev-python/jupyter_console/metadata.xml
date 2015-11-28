@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <longdescription>
+    A terminal-based console frontend for Jupyter kernels.
+    This code is based on the single-process IPython terminal.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">jupyter_console</remote-id>
+    <remote-id type="github">jupyter/jupyter_console</remote-id>
+  </upstream>
+</pkgmetadata>

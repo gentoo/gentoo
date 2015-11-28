@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <longdescription>
+    The Jupyter HTML notebook is a web-based notebook environment
+    for interactive computing.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">notebook</remote-id>
+  </upstream>
+</pkgmetadata>
