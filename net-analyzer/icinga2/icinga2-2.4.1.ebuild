@@ -29,7 +29,7 @@ RDEPEND="
 		net-analyzer/nagios-plugins
 	) )
 	classicui? ( net-analyzer/icinga[web] )
-	studio? ( >=x11-libs/wxGTK-2.9.0.0 )"
+	studio? ( x11-libs/wxGTK:2.9 )"
 
 REQUIRED_USE="!minimal? ( || ( mysql postgres ) )"
 
