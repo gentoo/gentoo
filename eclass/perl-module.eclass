@@ -15,9 +15,20 @@
 # All exported functions from perl-functions.eclass (inherited here)
 # explicitly also belong to the interface of perl-module.eclass.
 
-inherit eutils multiprocessing unpacker perl-functions
+case "${EAPI:-0}" in
+	5)
+		inherit eutils multiprocessing unpacker perl-functions
+		PERL_EXPF="src_unpack src_prepare src_configure src_compile src_test src_install"
+		;;
+	6)
+		inherit eutils multiprocessing perl-functions
+		PERL_EXPF="src_prepare src_configure src_compile src_test src_install"
+		;;
+	*)
+		die "EAPI=${EAPI} is not supported by perl-module.eclass"
+		;;
+esac
 
-PERL_EXPF="src_unpack src_prepare src_configure src_compile src_test src_install"
 
 case "${EAPI:-0}" in
 	5)
@@ -109,7 +120,7 @@ pm_echovar=""
 # This function is to be called during the ebuild src_unpack() phase.
 perl-module_src_unpack() {
 	debug-print-function $FUNCNAME "$@"
-
+	[[ ${EAPI:-0} == 5 ]] || die "perl-module_src_unpack is banned in EAPI=6 or later"
 	unpacker_src_unpack
 }
 
