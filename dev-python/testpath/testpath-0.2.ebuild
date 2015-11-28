@@ -35,7 +35,7 @@ python_prepare_all() {
 		sed -e "/^    'sphinx.ext.intersphinx',/d" -i doc/conf.py || die
 	fi
 
-distutils-r1_python_prepare_all
+	distutils-r1_python_prepare_all
 }
 
 python_compile_all() {
