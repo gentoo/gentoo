@@ -8093,7 +8093,7 @@ dev-qt/qtsvg 4.8.6-r1 4.8.7 5.4.2 5.5.1: SVG rendering library for the Qt5 frame
 dev-qt/qttest 4.8.6-r1 4.8.7 5.4.2 5.5.1: Unit testing library for the Qt5 framework
 dev-qt/qttranslations 4.8.6-r1 4.8.7 5.4.2 5.5.1: Translation files for the Qt5 framework
 dev-qt/qtwayland 5.4.2 5.5.1: Wayland platform plugin for Qt
-dev-qt/qtwebchannel 5.4.2 5.5.1: Qt5 framework module for integrating C++ and QML applications with HTML/JavaScript clients
+dev-qt/qtwebchannel 5.4.2 5.5.1: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
 dev-qt/qtwebkit 4.8.6-r1 4.8.7 4.10.4 5.4.2 5.5.1: WebKit rendering library for the Qt5 framework (deprecated)
 dev-qt/qtwebsockets 5.4.2 5.5.1: Implementation of the WebSocket protocol for the Qt5 framework
 dev-qt/qtwidgets 5.4.2 5.5.1 5.5.1-r1: Set of components for creating classic desktop-style UIs for the Qt5 framework
@@ -14838,7 +14838,7 @@ net-proxy/squidclamav 6.8 6.10: HTTP Antivirus for Squid based on ClamAv and ICA
 net-proxy/squidguard 1.4-r4 1.5_beta-r1: Combined filter, redirector and access controller plugin for Squid
 net-proxy/squirm 1.26-r1: A redirector for Squid
 net-proxy/sshproxy 0.6.0_beta2-r2: sshproxy is an ssh gateway to apply ACLs on ssh connections
-net-proxy/sshuttle 0.61-r3: Transparent proxy server that works as a poor man's VPN using ssh
+net-proxy/sshuttle 0.61-r3 0.73: Transparent proxy server that works as a poor man's VPN using ssh
 net-proxy/tayga 0.9.2: out-of-kernel stateless NAT64 implementation based on TUN
 net-proxy/tinyproxy 1.8.3-r3: A lightweight HTTP/SSL proxy
 net-proxy/torsocks 1.2-r2 2.1.0: Use most socks-friendly applications with Tor
