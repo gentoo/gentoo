@@ -11,5 +11,5 @@ REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=mirror://sourceforge/sgmltools-lite/sgmltools-lite-3.0.3.tar.gz mirror://sourceforge/sgmltools-lite/nw-eps-icons-0.0.1.tar.gz
 _eclass_exported_funcs=pkg_prerm:sgml-catalog pkg_postrm:- pkg_postinst:- pkg_setup:python-single-r1 src_unpack:base src_prepare:- src_configure:base src_compile:- src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	f0877a50e1277a64cd4fe5855250102b	python-utils-r1	7d52f592fc09a002ea150d69507b5bad	sgml-catalog	b6e9d36507f43d79b6df9cb78d6eb4dd	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	eecf1a199b07109ebdf640d647bd145a	python-utils-r1	a129d192eea594e3262bf9266246f052	sgml-catalog	b6e9d36507f43d79b6df9cb78d6eb4dd	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=876a1e5a8ada1a8133480f8788a63d76
