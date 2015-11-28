@@ -11,7 +11,7 @@ HOMEPAGE="http://www.canonware.com/jemalloc/"
 SRC_URI="http://www.canonware.com/download/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/2"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~x86 ~x64-macos"
 IUSE="debug static-libs stats"
 HTML_DOCS=( doc/jemalloc.html )
