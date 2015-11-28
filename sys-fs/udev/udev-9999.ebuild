@@ -29,7 +29,7 @@ IUSE="acl +kmod selinux static-libs"
 
 RESTRICT="test"
 
-COMMON_DEPEND=">=sys-apps/util-linux-2.24
+COMMON_DEPEND=">=sys-apps/util-linux-2.27.1[${MULTILIB_USEDEP}]
 	sys-libs/libcap[${MULTILIB_USEDEP}]
 	acl? ( sys-apps/acl )
 	kmod? ( >=sys-apps/kmod-16 )
