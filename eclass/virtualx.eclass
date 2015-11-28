@@ -89,6 +89,40 @@ esac
 virtualmake() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	# backcompat for maketype
+	if [[ -n ${maketype} ]]; then
+		eqawarn "ebuild is exporting \$maketype=${maketype}"
+		eqawarn "Ebuild should be migrated to use 'virtx command' instead."
+		VIRTUALX_COMMAND=${maketype}
+	fi
+
+	virtx "${VIRTUALX_COMMAND}" "${@}"
+}
+
+
+# @FUNCTION: virtx
+# @USAGE: <command> [command arguments]
+# @DESCRIPTION:
+# Start new Xvfb session and run commands in it.
+#
+# Example:
+#
+# @CODE
+# src_test() {
+# 	virtx default
+# }
+# @CODE
+#
+# @CODE
+# python_test() {
+# 	virtx py.test --verbose
+# }
+# @CODE
+virtx() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	[[ $# -lt 1 ]] && die "${FUNCNAME} needs at least one argument"
+
 	local i=0
 	local retval=0
 	local OLD_SANDBOX_ON="${SANDBOX_ON}"
@@ -96,14 +130,6 @@ virtualmake() {
 	local xvfbargs="-screen 0 1280x1024x24"
 	XVFB=$(type -p Xvfb) || die
 	XHOST=$(type -p xhost) || die
-
-	# backcompat for maketype
-	if [[ -n ${maketype} ]]; then
-		eqawarn "ebuild is exporting \$maketype=${maketype}"
-		eqawarn "Ebuild should be migrated to use VIRTUALX_COMMAND=${maketype} instead."
-		eqawarn "Setting VIRTUALX_COMMAND to \$maketype conveniently for now."
-		VIRTUALX_COMMAND=${maketype}
-	fi
 
 	debug-print "${FUNCNAME}: running Xvfb hack"
 	export XAUTHORITY=
@@ -154,10 +180,10 @@ virtualmake() {
 	# to kill Xvfb
 	debug-print "${FUNCNAME}: ${VIRTUALX_COMMAND} \"$@\""
 	if has "${EAPI}" 2 3; then
-		${VIRTUALX_COMMAND} "$@"
+		"$@"
 		retval=$?
 	else
-		nonfatal ${VIRTUALX_COMMAND} "$@"
+		nonfatal "$@"
 		retval=$?
 	fi
 
