@@ -114,12 +114,12 @@ python_test() {
 	# Failure of some modules only in python3.4 
 	local fail
 	run_tests() {
-		pushd ${TEST_DIR} > /dev/null
+		pushd ${TEST_DIR} > /dev/null || die
 		"${PYTHON}" -m IPython.testing.iptestcontroller --all || fail=1
-		popd > /dev/null
+		popd > /dev/null || die
 	}
 	VIRTUALX_COMMAND=run_tests virtualmake
-		[[ ${fail} ]] && die "Tests fail with ${EPYTHON}"
+	[[ ${fail} ]] && die "Tests fail with ${EPYTHON}"
 }
 
 python_install() {
