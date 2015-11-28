@@ -9636,7 +9636,7 @@ dev-vcs/git-bzr-ng 0_pre20120130 0_pre20120822: Git subcommand providing a bidir
 dev-vcs/git-cola 2.2.1 2.3 2.4: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.3 0.4 0.5.0: transparent file encryption in git
 dev-vcs/git-deploy 6.0.1_p20131024: make deployments so easy that you'll let new hires do them on their first day
-dev-vcs/git-flow 0.4.1 1.8.0-r1: Git extensions to provide high-level repository operations for Vincent Driessen's branching model
+dev-vcs/git-flow 1.8.0-r1: Git extensions to provide high-level repository operations for Vincent Driessen's branching model
 dev-vcs/git-imerge 0.7.0: Incremental merge for git
 dev-vcs/git-mailz 0.12 0.14: Send a collection of patches as emails
 dev-vcs/git-mantle 0.6: Generate an overview of changes on a branch
@@ -13719,7 +13719,7 @@ net-firewall/fwipsec 0.4.2-r1: Firewall scripts that control iptables, FreeS/WAN
 net-firewall/fwknop 2.6.7-r1 2.6.7-r2: Single Packet Authorization and Port Knocking application
 net-firewall/gshield 2.8-r3: iptables firewall configuration system
 net-firewall/ipkungfu 0.5.2-r1 0.6.1: A nice iptables firewall script
-net-firewall/ipsec-tools 0.8.0-r5 0.8.1-r1 0.8.2 0.8.2-r1: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
+net-firewall/ipsec-tools 0.8.0-r5 0.8.1-r1 0.8.2 0.8.2-r2: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
 net-firewall/ipset 6.15 6.16 6.16.1 6.17 6.19 6.20.1 6.21.1 6.24: IPset tool for iptables, successor to ippool
 net-firewall/ipt_netflow 2.1: Netflow iptables module
 net-firewall/iptables 1.4.17 1.4.21-r1 1.4.21-r2 1.4.21-r3: Linux kernel (2.4+) firewall, NAT and packet mangling tools
