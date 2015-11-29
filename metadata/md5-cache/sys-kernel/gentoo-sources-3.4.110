@@ -11,5 +11,5 @@ RESTRICT=binchecks strip
 SLOT=3.4.110
 SRC_URI=mirror://kernel/linux/kernel/v3.x/linux-3.4.tar.xz mirror://gentoo/genpatches-3.4-93.base.tar.xz mirror://gentoo/genpatches-3.4-93.extras.tar.xz
 _eclass_exported_funcs=pkg_preinst:kernel-2 pkg_postrm:- pkg_postinst:- pkg_setup:kernel-2 src_unpack:kernel-2 src_compile:kernel-2 src_test:kernel-2 src_install:kernel-2
-_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	kernel-2	a4c66611301c7fdf1c78202ab683fb1b	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	63d890c175bcc4604e8327cef1dec948	python-utils-r1	a129d192eea594e3262bf9266246f052	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	kernel-2	a4c66611301c7fdf1c78202ab683fb1b	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	63d890c175bcc4604e8327cef1dec948	python-utils-r1	8ec5e254835cd148a8a87f4aaf53b17f	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=a4e83526a60657a2731894cccecf14f7
