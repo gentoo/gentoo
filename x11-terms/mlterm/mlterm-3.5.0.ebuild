@@ -19,11 +19,11 @@ RDEPEND="x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11
 	bidi? ( dev-libs/fribidi )
-	cairo? ( x11-libs/cairo )
+	cairo? ( x11-libs/cairo[X] )
 	canna? ( app-i18n/canna )
 	fcitx? ( app-i18n/fcitx )
 	freewnn? ( app-i18n/freewnn )
-	gtk? ( >=x11-libs/gtk+-2 )
+	gtk? ( >=x11-libs/gtk+-2:= )
 	ibus? ( app-i18n/ibus )
 	libssh2? ( net-libs/libssh2 )
 	m17n-lib? ( dev-libs/m17n-lib )
