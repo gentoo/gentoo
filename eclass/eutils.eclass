@@ -1614,7 +1614,8 @@ check_license() {
 	die "you no longer need this as portage supports ACCEPT_LICENSE itself"
 }
 
-if has "${EAPI:-0}" 0 1 2; then
+case ${EAPI:-0} in
+0|1|2)
 
 # @FUNCTION: epause
 # @USAGE: [seconds]
@@ -1646,7 +1647,8 @@ ebeep() {
 	fi
 }
 
-else
+;;
+*)
 
 ebeep() {
 	ewarn "QA Notice: ebeep is not defined in EAPI=${EAPI}, please file a bug at https://bugs.gentoo.org"
@@ -1656,9 +1658,11 @@ epause() {
 	ewarn "QA Notice: epause is not defined in EAPI=${EAPI}, please file a bug at https://bugs.gentoo.org"
 }
 
-fi
+;;
+esac
 
-if has "${EAPI:-0}" 0 1 2 3 4; then
+case ${EAPI:-0} in
+0|1|2|3|4)
 
 # @FUNCTION: usex
 # @USAGE: <USE flag> [true output] [false output] [true suffix] [false suffix]
@@ -1669,9 +1673,11 @@ if has "${EAPI:-0}" 0 1 2 3 4; then
 # otherwise echo [false output][false suffix] (defaults to "no").
 usex() { use "$1" && echo "${2-yes}$4" || echo "${3-no}$5" ; } #382963
 
-fi
+;;
+esac
 
-if has "${EAPI:-0}" 0 1 2 3 4 5; then
+case ${EAPI:-0} in
+0|1|2|3|4|5)
 
 # @VARIABLE: EPATCH_USER_SOURCE
 # @DESCRIPTION:
@@ -1821,4 +1827,5 @@ in_iuse() {
 	has "${flag}" "${liuse[@]#[+-]}"
 }
 
-fi
+;;
+esac
