@@ -109,10 +109,6 @@ pkg_pretend()
 
 src_prepare()
 {
-	if [[ ${PV} != 9999 ]]; then
-		sed -i -e 's/"-Werror",//g' src/cmd/dist/build.go ||
-			die 'sed failed'
-	fi
 	epatch_user
 }
 
