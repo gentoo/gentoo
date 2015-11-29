@@ -11,5 +11,5 @@ REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=http://download.calibre-ebook.com/2.43.0/calibre-2.43.0.tar.xz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:python-single-r1 src_prepare:- src_install:-
-_eclasses_=bash-completion-r1	b1fc4d30333bb528c8abb4332bb70ea6	eutils	f20548a2f7b0128068388cd2ec26708a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	eecf1a199b07109ebdf640d647bd145a	python-utils-r1	8ec5e254835cd148a8a87f4aaf53b17f	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	f20548a2f7b0128068388cd2ec26708a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	eecf1a199b07109ebdf640d647bd145a	python-utils-r1	8ec5e254835cd148a8a87f4aaf53b17f	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=a847e895ee6fa3b81d48f0f4d4f33830

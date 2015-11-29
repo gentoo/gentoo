@@ -9,5 +9,5 @@ RDEPEND=dev-libs/boost:= >=dev-qt/qtsingleapplication-2.6.1_p20130904-r1[qt4?,qt
 REQUIRED_USE=^^ ( qt4 qt5 ) dbus? ( X )
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:- src_compile:qt4-r2 src_install:qt4-r2
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f20548a2f7b0128068388cd2ec26708a	git-r3	b00a846f415f26e5b66e5c44c7dc87dc	multibuild	706332a8d833c077e1aa37faa1ebf162	multilib	3972ca401cf7dbb430df9995f5d8d580	python-r1	ead0b4e7f0f35d7ae8b91da6e3822535	python-utils-r1	8ec5e254835cd148a8a87f4aaf53b17f	qmake-utils	bd69cb386c63df4642cf1392b50c8d81	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	f20548a2f7b0128068388cd2ec26708a	git-r3	e6443022d06c4de81a14e017bdfcc306	multibuild	706332a8d833c077e1aa37faa1ebf162	multilib	3972ca401cf7dbb430df9995f5d8d580	python-r1	ead0b4e7f0f35d7ae8b91da6e3822535	python-utils-r1	8ec5e254835cd148a8a87f4aaf53b17f	qmake-utils	bd69cb386c63df4642cf1392b50c8d81	qt4-r2	cb2cb5856695b300266b425da70e82d8	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=15bc5a20f1a9abd21393f401c0c79dec
