@@ -39,6 +39,7 @@ src_compile() {
 
 src_install() {
 	dobin bin/autojump
+	python_replicate_script "${ED}"/usr/bin/autojump
 
 	insinto /etc/profile.d
 	doins bin/"${PN}".sh
