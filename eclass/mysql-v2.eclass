@@ -209,9 +209,11 @@ SLOT="0"
 case "${BUILD}" in
 	"autotools")
 		IUSE="big-tables debug embedded minimal +perl selinux ssl static test"
+		RESTRICT="!test? ( test )"
 		;;
 	"cmake")
 		IUSE="debug embedded minimal +perl selinux ssl static static-libs test"
+		RESTRICT="!test? ( test )"
 		;;
 esac
 

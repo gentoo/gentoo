@@ -268,6 +268,7 @@ case ${CPPUNIT_REQUIRED} in
 		;;
 	optional)
 		IUSE+=" test"
+		RESTRICT+=" !test? ( test )"
 		DEPEND+=" test? ( ${cppuintdepend} )"
 		;;
 	*) ;;

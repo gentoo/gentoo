@@ -144,6 +144,7 @@ fi
 
 if [[ -n "${CABAL_TEST_SUITE}" ]]; then
 	IUSE="${IUSE} test"
+	RESTRICT="!test? ( test )"
 fi
 
 # We always use a standalone version of Cabal, rather than the one that comes

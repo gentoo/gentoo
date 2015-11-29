@@ -96,13 +96,16 @@ fi
 if [[ -z "${DISTUTILS_DISABLE_TEST_DEPENDENCY}" ]]; then
 	if [[ "${DISTUTILS_SRC_TEST}" == "nosetests" ]]; then
 		IUSE="test"
+		RESTRICT="!test? ( test )"
 		DEPEND+="${DEPEND:+ }test? ( dev-python/nose )"
 	elif [[ "${DISTUTILS_SRC_TEST}" == "py.test" ]]; then
 		IUSE="test"
+		RESTRICT="!test? ( test )"
 		DEPEND+="${DEPEND:+ }test? ( dev-python/pytest )"
 	# trial requires an argument, which is usually equal to "${PN}".
 	elif [[ "${DISTUTILS_SRC_TEST}" =~ ^trial(\ .*)?$ ]]; then
 		IUSE="test"
+		RESTRICT="!test? ( test )"
 		DEPEND+="${DEPEND:+ }test? ( dev-python/twisted-core )"
 	fi
 fi

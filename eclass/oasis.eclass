@@ -60,7 +60,10 @@ esac
 IUSE="+ocamlopt"
 [ -n "${OASIS_NO_DEBUG}" ]   || IUSE="${IUSE} debug"
 [ -n "${OASIS_BUILD_DOCS}" ] && IUSE="${IUSE} doc"
-[ -n "${OASIS_BUILD_TESTS}" ] && IUSE="${IUSE} test"
+if [ -n "${OASIS_BUILD_TESTS}" ]; then
+	IUSE="${IUSE} test"
+	RESTRICT="!test? ( test )"
+fi
 
 DEPEND="${RDEPEND}"
 

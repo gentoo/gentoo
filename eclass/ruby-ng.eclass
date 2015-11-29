@@ -207,7 +207,10 @@ ruby_add_rdepend() {
 	# Add the dependency as a test-dependency since we're going to
 	# execute the code during test phase.
 	DEPEND="${DEPEND} test? ( ${dependency} )"
-	has test "$IUSE" || IUSE="${IUSE} test"
+	if ! has test "$IUSE"; then
+		IUSE="${IUSE} test"
+		RESTRICT="${RESTRICT} !test? ( test )"
+	fi
 }
 
 # @FUNCTION: ruby_add_bdepend
