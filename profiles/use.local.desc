@@ -2762,6 +2762,7 @@ dev-util/suse-build:symlink - Provide compatibility symlinks with original openS
 dev-util/sysdig:modules - Build kernel modules needed for tracing local events. Disable this only if you intend to use sysdig purely to work with dumpfiles.
 dev-util/trace-cmd:udis86 - Enable support for dev-libs/udis86 disassembler library
 dev-util/universalindentgui:html - Add support for HTML files
+dev-util/weka:svm - Enable support for Support Vector Machines (SVM) through sci-libs/libsvm
 dev-vcs/bzr:sftp - Enable sftp support
 dev-vcs/bzr-gtk:gpg - Support signing with GnuPG.
 dev-vcs/bzr-gtk:nautilus - Integrate with Nautilus file manager
