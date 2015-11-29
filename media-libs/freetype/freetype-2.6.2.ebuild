@@ -5,6 +5,8 @@
 EAPI=5
 inherit autotools-multilib flag-o-matic multilib toolchain-funcs
 
+INFINALITY_PATCH="03-infinality-2.6.2-2015.11.28.patch"
+
 DESCRIPTION="A high-quality and portable font engine"
 HOMEPAGE="http://www.freetype.org/"
 SRC_URI="mirror://sourceforge/freetype/${P/_/}.tar.bz2
@@ -13,7 +15,7 @@ SRC_URI="mirror://sourceforge/freetype/${P/_/}.tar.bz2
 		mirror://nongnu/freetype/ft2demos-${PV}.tar.bz2 )
 	doc?	( mirror://sourceforge/freetype/${PN}-doc-${PV}.tar.bz2
 		mirror://nongnu/freetype/${PN}-doc-${PV}.tar.bz2 )
-	infinality? ( https://dev.gentoo.org/~polynomial-c/${P}-infinality-patches.tar.xz )"
+	infinality? ( https://dev.gentoo.org/~polynomial-c/${INFINALITY_PATCH}.xz )"
 
 LICENSE="|| ( FTL GPL-2+ )"
 SLOT="2"
@@ -42,13 +44,13 @@ PDEPEND="infinality? ( media-libs/fontconfig-infinality )"
 src_prepare() {
 	enable_option() {
 		sed -i -e "/#define $1/a #define $1" \
-			include/config/ftoption.h \
+			include/${PN}/config/ftoption.h \
 			|| die "unable to enable option $1"
 	}
 
 	disable_option() {
 		sed -i -e "/#define $1/ { s:^:/*:; s:$:*/: }" \
-			include/config/ftoption.h \
+			include/${PN}/config/ftoption.h \
 			|| die "unable to disable option $1"
 	}
 
@@ -56,8 +58,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.3.2-enable-valid.patch
 
 	if use infinality; then
-		EPATCH_SOURCE="${WORKDIR}/${P}-infinality-patches" EPATCH_SUFFIX="patch" \
-			EPATCH_FORCE="yes" epatch
+		epatch "${WORKDIR}/${INFINALITY_PATCH}"
 
 		# FT_CONFIG_OPTION_SUBPIXEL_RENDERING is already enabled in freetype-2.4.11
 		enable_option TT_CONFIG_OPTION_SUBPIXEL_HINTING
