@@ -30,6 +30,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Ian Delaney <idella4@gentoo.org> (29 Nov 2015)
+# versions of 4.2.x supporting the hypervisor for x85
+# no longer supported upstream. The purging of 4.2.x
+# has been held off longer than required already.
+# Unless otherwise directed, masked for removal in 30 days
+<=app-emulation/xen-4.2.5-r12
+<=app-emulation/xen-tools-4.2.5-r11
+=app-emulation/xen-pvgrub-4.2.5
+
 # Sergey Popov <pinkbyte@gentoo.org> (25 Nov 2015)
 # Dead upstream, security issues, see bug #557856
 # Removal in a month
