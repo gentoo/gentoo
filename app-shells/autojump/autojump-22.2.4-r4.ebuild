@@ -27,6 +27,10 @@ src_prepare() {
 		-e "s:/usr/local/share:/usr/share:" \
 		-i bin/autojump.sh || die
 
+	# autojump_argparse is only there for Python 2.6 compatibility
+	sed -e "s:autojump_argparse:argparse:" \
+		-i bin/autojump || die
+
 	# upstream fixes to the autojump.fish script; the first patch is needed for
 	# the second patch to apply
 	epatch "${FILESDIR}/autojump-22.4.4-fix-autojump.fish-bugs.patch"
@@ -51,7 +55,7 @@ src_install() {
 	insinto /usr/share/zsh/site-functions
 	doins bin/_j
 
-	python_foreach_impl python_domodule bin/autojump_argparse.py bin/autojump_data.py bin/autojump_utils.py
+	python_foreach_impl python_domodule bin/autojump_data.py bin/autojump_utils.py
 	if use python; then
 		python_foreach_impl python_domodule tools/autojump_ipython.py
 		einfo 'This tool provides "j" for ipython, please add'
