@@ -5748,7 +5748,7 @@ dev-perl/MIME-Charset 1.9.3: Charset Informations for MIME
 dev-perl/MIME-EncWords 1.12.6-r1: Deal with RFC 2047 encoded words (improved)
 dev-perl/MIME-Lite 3.29.0-r1: Low-calorie MIME generator
 dev-perl/MIME-Types 2.040.0 2.090.0 2.110.0 2.120.0: Definition of MIME types
-dev-perl/MIME-tools 5.504.0 5.506.0: A Perl module for parsing and creating MIME entities
+dev-perl/MIME-tools 5.504.0 5.506.0 5.507.0: A Perl module for parsing and creating MIME entities
 dev-perl/MLDBM 2.40.0-r1: A multidimensional/tied hash Perl Module
 dev-perl/MLDBM-Sync 0.300.0-r1: Safe concurrent access to MLDBM databases
 dev-perl/MP3-Info 1.240.0-r1: A Perl module to manipulate/fetch info from MP3 files
@@ -5800,6 +5800,7 @@ dev-perl/Module-Build-Tiny 0.39.0: A tiny replacement for Module::Build
 dev-perl/Module-Build-XSUtil 0.140.0: A Module::Build class for building XS modules
 dev-perl/Module-Find 0.110.0-r1 0.130.0: Find and use installed modules in a (sub)category
 dev-perl/Module-Implementation 0.60.0-r1: Loads one of several alternate underlying implementations for a module
+dev-perl/Module-Info 0.350.0-r1 0.370.0: Information about Perl modules
 dev-perl/Module-Install 1.60.0-r1 1.140.0 1.160.0: Standalone, extensible Perl module installer
 dev-perl/Module-Install-AuthorTests 0.2.0: Designate tests only run by module authors
 dev-perl/Module-Locate 1.760.0-r1 1.790.0 1.800.0: Locate modules in the same fashion as require and use
@@ -6428,7 +6429,6 @@ dev-perl/math-pari 2.10.806.50-r1 2.10.808: Perl interface to PARI
 dev-perl/maybe 0.20.200-r1: Use a Perl module and ignore error if can't be loaded
 dev-perl/mecab-perl 0.996: Perl binding for MeCab
 dev-perl/mime-construct 1.900.0-r1: construct and optionally mail MIME messages
-dev-perl/module-info 0.350.0-r1: Information about Perl modules
 dev-perl/mogilefs-server 2.700.0-r2: Server for the MogileFS distributed file system
 dev-perl/namespace-autoclean 0.130.0-r1 0.240.0: Keep imports out of your namespace
 dev-perl/namespace-clean 0.210.0-r1 0.250.0: Keep imports and functions out of your namespace
