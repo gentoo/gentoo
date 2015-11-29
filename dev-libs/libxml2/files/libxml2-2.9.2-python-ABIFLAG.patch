@@ -1,0 +1,16 @@
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 14ac0a8..f787b12 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -844,7 +844,7 @@ if test "$with_python" != "no" ; then
+     fi
+     if test "$PYTHON" != ""
+     then
+-        PYTHON_VERSION=`$PYTHON -c "from distutils import sysconfig; print(sysconfig.get_python_version())"`
++        PYTHON_VERSION=`$PYTHON -c "import sysconfig; print(sysconfig.get_config_var('LDVERSION') or sysconfig.get_config_var('py_version_short'))"`
+ 	PYTHON_INCLUDES=`$PYTHON -c "from distutils import sysconfig; print(sysconfig.get_python_inc())"`
+ # does not work as it produce a /usr/lib/python path instead of/usr/lib64/python
+ #

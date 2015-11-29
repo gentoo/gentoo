@@ -90,6 +90,8 @@ src_prepare() {
 	# https://bugs.gentoo.org/show_bug.cgi?id=738751
 	epatch "${FILESDIR}"/${PN}-2.9.2-icu-pkgconfig.patch
 
+	epatch "${FILESDIR}"/${P}-python-ABIFLAG.patch
+
 	# Important patches from master
 	epatch \
 		"${FILESDIR}"/${PN}-2.9.2-revert-missing-initialization.patch \
