@@ -9435,7 +9435,7 @@ dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, prov
 dev-util/jenkins-bin 1.625.2 1.638: Extensible continuous integration server
 dev-util/jif 3.1_rc1: JIF is an IDE for the creation of text adventures based on Graham Nelson's Inform standard
 dev-util/kbuild 0.1.9998_pre20120806 0.1.9998_pre20131130 9999: A makefile framework for writing simple makefiles for complex tasks
-dev-util/kdbg 2.5.4 2.5.5: A graphical debugger interface
+dev-util/kdbg 2.5.5: A graphical debugger interface
 dev-util/kdevelop 4.7.1-r1 4.7.2: Integrated Development Environment, supporting KDE/Qt, C/C++ and much more
 dev-util/kdevelop-pg-qt 1.0.0-r2 1.1.0: A LL(1) parser generator used mainly by KDevelop language plugins
 dev-util/kdevelop-php 1.7.1 1.7.2: PHP plugin for KDevelop 4
