@@ -35,17 +35,6 @@
        {
           /* This is a complete echoed packet */
           if (g_params.verify && (mem_check(header->data, bulk_tx_data[ctrl_received % NUM_BULK_BUFS], g_params.blocksize) != 0))
---- interface/vchiq_arm/CMakeLists.txt.old	2015-02-20 21:23:05.736777755 +0100
-+++ interface/vchiq_arm/CMakeLists.txt	2015-02-20 21:24:11.335832941 +0100
-@@ -3,7 +3,7 @@
-             vchiq_lib.c vchiq_util.c)
- 
- # pull in VCHI cond variable emulation
--target_link_libraries(vchiq_arm)
-+target_link_libraries(vchiq_arm vcos)
- 
- install(TARGETS vchiq_arm DESTINATION lib)
- #install(FILES etc/10-vchiq.rules DESTINATION /etc/udev/rules.d)
 --- makefiles/cmake/vmcs.cmake.old	2015-02-21 14:31:57.608527445 +0100
 +++ makefiles/cmake/vmcs.cmake	2015-02-21 14:32:09.358363958 +0100
 @@ -10,7 +10,7 @@
