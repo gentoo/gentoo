@@ -34,7 +34,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="sys-devel/gettext
 	sys-devel/bin86
-	sys-apps/texinfo"
+	sys-apps/texinfo
+	x11-libs/pixman"
 
 RDEPEND=">=app-emulation/xen-4.2.1"
 
