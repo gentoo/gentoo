@@ -7982,7 +7982,7 @@ dev-python/tzlocal 1.1.2 1.2: tzinfo object for the local timezone
 dev-python/uhashring 0.4: Full featured consistent hashing python library compatible with ketama
 dev-python/ujson 1.33: Ultra fast JSON encoder and decoder for Python
 dev-python/unicodecsv 0.13.0 0.14.1: Drop-in replacement for python stdlib csv module supporting unicode
-dev-python/unidecode 0.04.17 0.04.18: Module providing ASCII transliterations of Unicode text
+dev-python/unidecode 0.04.18: Module providing ASCII transliterations of Unicode text
 dev-python/unittest2 1.0.1-r1 1.1.0: The new features in unittest backported to Python 2.4+
 dev-python/uritemplate 0.6: Python implementation of RFC6570, URI Template
 dev-python/urlgrabber 3.9.1-r2 3.10.1: Python module for downloading files
@@ -8538,7 +8538,7 @@ dev-ruby/daemons 1.2.3: Wrap existing ruby scripts to be run as a daemon
 dev-ruby/dalli 2.6.4 2.7.4 2.7.4-r1: A high performance pure Ruby client for accessing memcached servers
 dev-ruby/database_cleaner 1.4.1 1.5.0 1.5.1: Strategies for cleaning databases
 dev-ruby/date_validator 0.8.0 0.8.1: Simple, ORM agnostic, Ruby 1.9 compatible date validator for Rails 3
-dev-ruby/dbf 2.0.8 2.0.12 2.0.13 3.0.0: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
+dev-ruby/dbf 2.0.8 2.0.12 2.0.13 3.0.0 3.0.1: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
 dev-ruby/debug_inspector 0.0.2: A Ruby wrapper for the MRI 2.0 debug_inspector API
 dev-ruby/debugger-linecache 1.2.0: A module to read and cache file information of a Ruby program
 dev-ruby/deep_merge 1.0.1: A simple set of utility functions for Hash
@@ -8648,7 +8648,7 @@ dev-ruby/levenshtein 0.2.2-r1 0.2.2-r2: Levenshtein distance algorithm
 dev-ruby/libxml 2.8.0 2.8.0-r1: Ruby libxml with a user friendly API, akin to REXML, but feature complete and significantly faster
 dev-ruby/liquid 2.6.2 3.0.4 3.0.6: Template engine for Ruby
 dev-ruby/liquid-c 3.0.0: Liquid performance extension in C
-dev-ruby/listen 0.7.3-r1 0.7.3-r2 1.3.1-r2 1.3.1-r3 2.8.5 2.8.6 2.8.6-r1 3.0.3 3.0.4: Listens to file modifications and notifies you about the changes
+dev-ruby/listen 0.7.3-r1 0.7.3-r2 1.3.1-r2 1.3.1-r3 2.8.5 2.8.6 2.8.6-r1 3.0.3 3.0.4 3.0.5: Listens to file modifications and notifies you about the changes
 dev-ruby/litc 1.0.3-r1: A tiny ruby module for Amazon EC2 intance metadata
 dev-ruby/little-plugger 1.1.3-r2 1.1.4: Module that provides Gem based plugin management
 dev-ruby/locale 2.1.0-r1 2.1.0-r2 2.1.1 2.1.2: A pure ruby library which provides basic APIs for localization
@@ -8812,7 +8812,7 @@ dev-ruby/riel 1.2.0-r1 1.2.0-r2: This library extends the core Ruby libraries
 dev-ruby/right_http_connection 1.3.0 1.3.0-r1 1.5.0: RightScale's robust HTTP/S connection module
 dev-ruby/rinku 1.7.3: A Ruby library that does autolinking
 dev-ruby/ritex 1.0.1: Converts expressions from WebTeX into MathML
-dev-ruby/rjb 1.5.3: Rjb is a Ruby-Java software bridge
+dev-ruby/rjb 1.5.3 1.5.4: Rjb is a Ruby-Java software bridge
 dev-ruby/rkelly-remix 0.0.6 0.0.7: RKelly Remix is a fork of the RKelly JavaScript parser
 dev-ruby/rmagick 2.13.2-r1 2.13.4 2.15.4: An interface between Ruby and the ImageMagick(TM) image processing library
 dev-ruby/robots 0.10.1-r2: A simple Ruby library to parse robots.txt
@@ -14649,7 +14649,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/yaydl 1.5.2: Yet Another Youtube DownLoader which is downloading more than youtube
-net-misc/youtube-dl 2015.04.03 2015.11.15 2015.11.21: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2015.04.03 2015.11.21 2015.11.27.1: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.1 3.1.9 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -15541,6 +15541,7 @@ sci-libs/colpack 1.0.6 1.0.8 1.0.9: C++ algorithms for specialized vertex colori
 sci-libs/coot-data 3: Data for the Crystallographic Object-Oriented Toolkit
 sci-libs/cqrlib 1.1.2-r1: An ANSI C implementation of a utility library for quaternion arithmetic and quaternion rotation math
 sci-libs/cxsparse 2.2.1 2.2.6 3.1.1 3.1.2: Extended sparse matrix package
+sci-libs/dcmtk 3.6.0: The DICOM Toolkit
 sci-libs/deap 0.9.1 1.0.0: Distributed Evolutionary Algorithms in Python
 sci-libs/djbfft 0.76-r2: Extremely fast library for floating-point convolution
 sci-libs/dlib 18.7 18.15: Numerical and networking C++ library
@@ -17427,7 +17428,7 @@ www-apps/moodle 2.7.11 2.8.9 2.9.3: The Moodle Course Management System
 www-apps/mypictures 20040202 20040202-r1: Simple photo-gallery for websites
 www-apps/mythweb 0.26.0 0.27 0.27.5: PHP scripts intended to manage MythTV from a web browser
 www-apps/nanoblogger 3.2.3 3.3 3.5_rc1: Small and simple weblog engine written in Bash for the command-line
-www-apps/nanoc 3.7.5 3.7.5-r1 3.8.0: nanoc is a simple but very flexible static site generator written in Ruby
+www-apps/nanoc 3.7.5 3.8.0: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nikola 7.2.0 7.6.0 7.6.1 7.6.2 7.6.3: A static website and blog generator
 www-apps/novnc 0.5 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/openwebstats 1.1: PHP stats application that reads Apache log files and imports the data to a MySQL database
@@ -17488,8 +17489,8 @@ www-client/midori 0.5.10 0.5.11: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.2-r1 3.3-r1: a free, open source web browser
 www-client/opera 12.16_p1860-r1 33.0.1990.43 33.0.1990.58 33.0.1990.115: A fast and secure web browser
-www-client/opera-beta 33.0.1990.35 34.0.2036.3: A fast and secure web browser
-www-client/opera-developer 34.0.2044.0 35.0.2052.0: A fast and secure web browser
+www-client/opera-beta 34.0.2036.3 34.0.2036.16: A fast and secure web browser
+www-client/opera-developer 35.0.2052.0 35.0.2060.0: A fast and secure web browser
 www-client/otter 0.9.07 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.11.1 9999: Command line interface to (Gentoo) Bugzilla
@@ -18450,7 +18451,7 @@ x11-terms/root-tail 1.2-r3: Terminal to display (multiple) log files on the root
 x11-terms/roxterm 2.6.3 2.6.5 2.9.3-r1 3.1.5: A terminal emulator designed to integrate with the ROX environment
 x11-terms/rxvt 2.7.10-r4: A nice small x11 terminal
 x11-terms/rxvt-unicode 9.21 9999: rxvt clone with xft and unicode support
-x11-terms/sakura 3.2.0 3.2.1 3.3.0: sakura is a terminal emulator based on GTK and VTE
+x11-terms/sakura 3.2.0 3.2.1 3.3.0 3.3.2: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.5 0.6 0.6-r1 9999: simple terminal implementation for X
 x11-terms/terminator 0.97-r1 0.98: Multiple GNOME terminals in one window
 x11-terms/terminology 0.7.0 0.8.0 0.9.1 9999: Feature rich terminal emulator using the Enlightenment Foundation Libraries
