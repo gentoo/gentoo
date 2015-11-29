@@ -14,13 +14,15 @@ inherit check-reqs chromium eutils flag-o-matic multilib multiprocessing pax-uti
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="http://chromium.org/"
-SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}-lite.tar.xz"
+SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz"
 
 LICENSE="BSD hotwording? ( no-source-code )"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="cups gnome gnome-keyring gtk3 +hangouts hidpi hotwording kerberos neon pic +proprietary-codecs pulseaudio selinux +system-ffmpeg +tcmalloc widevine"
+IUSE="cups gn gnome gnome-keyring gtk3 +hangouts hidpi hotwording kerberos neon pic +proprietary-codecs pulseaudio selinux +system-ffmpeg +tcmalloc widevine"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
+
+REQUIRED_USE="gn? ( kerberos !system-ffmpeg )"
 
 # Native Client binaries are compiled with different set of flags, bug #452066.
 QA_FLAGS_IGNORED=".*\.nexe"
@@ -29,39 +31,27 @@ QA_FLAGS_IGNORED=".*\.nexe"
 # right tools for it, bug #469144 .
 QA_PRESTRIPPED=".*\.nexe"
 
-RDEPEND=">=app-accessibility/speech-dispatcher-0.8:=
+RDEPEND="
 	app-arch/bzip2:=
-	app-arch/snappy:=
 	cups? ( >=net-print/cups-1.3.11:= )
 	>=dev-libs/elfutils-0.149
 	dev-libs/expat:=
 	dev-libs/glib:=
-	>=dev-libs/icu-55.1:=
 	>=dev-libs/jsoncpp-0.5.0-r1:=
-	>=dev-libs/libevent-1.4.13:=
-	dev-libs/libxml2:=[icu]
-	dev-libs/libxslt:=
 	dev-libs/nspr:=
 	>=dev-libs/nss-3.14.3:=
-	dev-libs/re2:=
 	gnome? ( >=gnome-base/gconf-2.24.0:= )
 	gnome-keyring? ( >=gnome-base/libgnome-keyring-3.12:= )
 	>=media-libs/alsa-lib-1.0.19:=
-	media-libs/flac:=
 	media-libs/fontconfig:=
 	media-libs/freetype:=
-	media-libs/harfbuzz:=[icu(+)]
 	media-libs/libexif:=
-	>=media-libs/libjpeg-turbo-1.2.0-r1:=
-	media-libs/libpng:0=
-	>=media-libs/libwebp-0.4.0:=
 	media-libs/speex:=
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? ( >=media-video/ffmpeg-2.7.2:=[opus,vorbis,vpx] )
 	sys-apps/dbus:=
 	sys-apps/pciutils:=
 	>=sys-libs/libcap-2.22:=
-	sys-libs/zlib:=[minizip]
 	virtual/udev
 	x11-libs/cairo:=
 	x11-libs/gdk-pixbuf:=
@@ -81,7 +71,22 @@ RDEPEND=">=app-accessibility/speech-dispatcher-0.8:=
 	x11-libs/libXScrnSaver:=
 	x11-libs/libXtst:=
 	x11-libs/pango:=
-	kerberos? ( virtual/krb5 )"
+	kerberos? ( virtual/krb5 )
+	!gn? (
+		>=app-accessibility/speech-dispatcher-0.8:=
+		app-arch/snappy:=
+		>=dev-libs/icu-55.1:=
+		>=dev-libs/libevent-1.4.13:=
+		dev-libs/libxml2:=[icu]
+		dev-libs/libxslt:=
+		dev-libs/re2:=
+		media-libs/flac:=
+		media-libs/harfbuzz:=[icu(+)]
+		>=media-libs/libjpeg-turbo-1.2.0-r1:=
+		media-libs/libpng:0=
+		>=media-libs/libwebp-0.4.0:=
+		sys-libs/zlib:=[minizip]
+	)"
 DEPEND="${RDEPEND}
 	!arm? (
 		dev-lang/yasm
@@ -185,23 +190,42 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# if ! use arm; then
-	#	mkdir -p out/Release/gen/sdk/toolchain || die
-	#	# Do not preserve SELinux context, bug #460892 .
-	#	cp -a --no-preserve=context /usr/$(get_libdir)/nacl-toolchain-newlib \
-	#		out/Release/gen/sdk/toolchain/linux_x86_newlib || die
-	#	touch out/Release/gen/sdk/toolchain/linux_x86_newlib/stamp.untar || die
-	# fi
-
-	epatch "${FILESDIR}/${PN}-system-ffmpeg-r0.patch"
+	epatch "${FILESDIR}/${PN}-system-ffmpeg-r1.patch"
 	epatch "${FILESDIR}/${PN}-system-jinja-r7.patch"
-	epatch "${FILESDIR}/chromium-widevine-r1.patch"
+	epatch "${FILESDIR}/${PN}-widevine-r1.patch"
+	epatch "${FILESDIR}/${PN}-last-commit-position-r0.patch"
+	epatch "${FILESDIR}/${PN}-snapshot-toolchain-r0.patch"
+	epatch "${FILESDIR}/${PN}-rpath-r0.patch"
 
 	epatch_user
 
 	local conditional_bundled_libraries=""
 	if ! use system-ffmpeg; then
 		conditional_bundled_libraries+=" third_party/ffmpeg"
+	fi
+	if use gn; then
+		conditional_bundled_libraries+="
+			third_party/adobe
+			third_party/ffmpeg
+			third_party/flac
+			third_party/harfbuzz-ng
+			third_party/icu
+			third_party/jinja2
+			third_party/libevent
+			third_party/libjpeg_turbo
+			third_party/libpng
+			third_party/libwebp
+			third_party/libxml
+			third_party/libxslt
+			third_party/markupsafe
+			third_party/re2
+			third_party/snappy
+			third_party/speech-dispatcher
+			third_party/usb_ids
+			third_party/xdg-utils
+			third_party/yasm
+			third_party/zlib
+		"
 	fi
 
 	# Remove most bundled libraries. Some are still needed.
@@ -307,28 +331,23 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=""
+	local myconf_gyp=""
+	local myconf_gn=""
+
+	# GN needs explicit config for Debug/Release as opposed to inferring it from build directory.
+	myconf_gn+=" is_debug=false"
 
 	# Never tell the build system to "enable" SSE2, it has a few unexpected
 	# additions, bug #336871.
-	myconf+=" -Ddisable_sse2=1"
+	myconf_gyp+=" -Ddisable_sse2=1"
 
 	# Disable nacl, we can't build without pnacl (http://crbug.com/269560).
-	myconf+=" -Ddisable_nacl=1"
-
-	# Disable glibc Native Client toolchain, we don't need it (bug #417019).
-	# myconf+=" -Ddisable_glibc=1"
-
-	# TODO: also build with pnacl
-	# myconf+=" -Ddisable_pnacl=1"
-
-	# It would be awkward for us to tar the toolchain and get it untarred again
-	# during the build.
-	# myconf+=" -Ddisable_newlib_untar=1"
+	myconf_gyp+=" -Ddisable_nacl=1"
+	myconf_gn+=" enable_nacl=false"
 
 	# Make it possible to remove third_party/adobe.
 	echo > "${T}/flapper_version.h" || die
-	myconf+=" -Dflapper_version_h_file=${T}/flapper_version.h"
+	myconf_gyp+=" -Dflapper_version_h_file=${T}/flapper_version.h"
 
 	# Use system-provided libraries.
 	# TODO: use_system_hunspell (upstream changes needed).
@@ -339,7 +358,7 @@ src_configure() {
 	# TODO: use_system_protobuf (bug #525560).
 	# TODO: use_system_ssl (http://crbug.com/58087).
 	# TODO: use_system_sqlite (http://crbug.com/22208).
-	myconf+="
+	myconf_gyp+="
 		-Duse_system_bzip2=1
 		-Duse_system_ffmpeg=$(usex system-ffmpeg 1 0)
 		-Duse_system_flac=1
@@ -361,17 +380,17 @@ src_configure() {
 		-Duse_system_zlib=1"
 
 	# Needed for system icu - we don't need additional data files.
-	myconf+=" -Dicu_use_data_file_flag=0"
+	myconf_gyp+=" -Dicu_use_data_file_flag=0"
 
 	# TODO: patch gyp so that this arm conditional is not needed.
 	if ! use arm; then
-		myconf+="
+		myconf_gyp+="
 			-Duse_system_yasm=1"
 	fi
 
 	# Optional dependencies.
 	# TODO: linux_link_kerberos, bug #381289.
-	myconf+="
+	myconf_gyp+="
 		$(gyp_use cups)
 		$(gyp_use gnome use_gconf)
 		$(gyp_use gnome-keyring use_gnome_keyring)
@@ -385,31 +404,35 @@ src_configure() {
 		$(gyp_use tcmalloc use_allocator tcmalloc none)
 		$(gyp_use widevine enable_widevine)"
 
+	myconf_gn+=" use_cups=$(usex cups true false)"
+
 	# Use explicit library dependencies instead of dlopen.
 	# This makes breakages easier to detect by revdep-rebuild.
-	myconf+="
+	myconf_gyp+="
 		-Dlinux_link_gsettings=1
 		-Dlinux_link_libpci=1
 		-Dlinux_link_libspeechd=1
 		-Dlibspeechd_h_prefix=speech-dispatcher/"
 
 	# TODO: use the file at run time instead of effectively compiling it in.
-	myconf+="
+	myconf_gyp+="
 		-Dusb_ids_path=/usr/share/misc/usb.ids"
 
 	# Save space by removing DLOG and DCHECK messages (about 6% reduction).
-	myconf+="
+	myconf_gyp+="
 		-Dlogging_like_official_build=1"
 
 	if [[ $(tc-getCC) == *clang* ]]; then
-		myconf+=" -Dclang=1"
+		myconf_gyp+=" -Dclang=1"
+		myconf_gn+=" is_clang=true"
 	else
-		myconf+=" -Dclang=0"
+		myconf_gyp+=" -Dclang=0"
+		myconf_gn+=" is_clang=false"
 	fi
 
 	# Never use bundled gold binary. Disable gold linker flags for now.
 	# Do not use bundled clang.
-	myconf+="
+	myconf_gyp+="
 		-Dclang_use_chrome_plugins=0
 		-Dhost_clang=0
 		-Dlinux_use_bundled_binutils=0
@@ -417,13 +440,13 @@ src_configure() {
 		-Dlinux_use_gold_flags=0"
 
 	ffmpeg_branding="$(usex proprietary-codecs Chrome Chromium)"
-	myconf+=" -Dproprietary_codecs=1 -Dffmpeg_branding=${ffmpeg_branding}"
+	myconf_gyp+=" -Dproprietary_codecs=1 -Dffmpeg_branding=${ffmpeg_branding}"
 
 	# Set up Google API keys, see http://www.chromium.org/developers/how-tos/api-keys .
 	# Note: these are for Gentoo use ONLY. For your own distribution,
 	# please get your own set of keys. Feel free to contact chromium@gentoo.org
 	# for more info.
-	myconf+=" -Dgoogle_api_key=AIzaSyDEAOvatFo0eTgsV_ZlEzx0ObmepsMzfAc
+	myconf_gyp+=" -Dgoogle_api_key=AIzaSyDEAOvatFo0eTgsV_ZlEzx0ObmepsMzfAc
 		-Dgoogle_default_client_id=329227923882.apps.googleusercontent.com
 		-Dgoogle_default_client_secret=vgKG0NNv7GoDpbtoFNLxCUXu"
 
@@ -441,32 +464,33 @@ src_configure() {
 		local CTARGET=${CTARGET:-${CHOST}}
 		if [[ $(tc-is-softfloat) == "no" ]]; then
 
-			myconf+=" -Darm_float_abi=hard"
+			myconf_gyp+=" -Darm_float_abi=hard"
 		fi
 		filter-flags "-mfpu=*"
-		use neon || myconf+=" -Darm_fpu=${ARM_FPU:-vfpv3-d16}"
+		use neon || myconf_gyp+=" -Darm_fpu=${ARM_FPU:-vfpv3-d16}"
 
 		if [[ ${CTARGET} == armv[78]* ]]; then
-			myconf+=" -Darmv7=1"
+			myconf_gyp+=" -Darmv7=1"
 		else
-			myconf+=" -Darmv7=0"
+			myconf_gyp+=" -Darmv7=0"
 		fi
-		myconf+=" -Dsysroot=
+		myconf_gyp+=" -Dsysroot=
 			$(gyp_use neon arm_neon)
 			-Ddisable_nacl=1"
 	else
 		die "Failed to determine target arch, got '$myarch'."
 	fi
 
-	myconf+=" -Dtarget_arch=${target_arch}"
+	myconf_gyp+=" -Dtarget_arch=${target_arch}"
 
 	# Make sure that -Werror doesn't get added to CFLAGS by the build system.
 	# Depending on GCC version the warnings are different and we don't want
 	# the build to fail because of that.
-	myconf+=" -Dwerror="
+	myconf_gyp+=" -Dwerror="
+	myconf_gn+=" treat_warnings_as_errors=false"
 
 	# Disable fatal linker warnings, bug 506268.
-	myconf+=" -Ddisable_fatal_linker_warnings=1"
+	myconf_gyp+=" -Ddisable_fatal_linker_warnings=1"
 
 	# Avoid CFLAGS problems, bug #352457, bug #390147.
 	if ! use custom-cflags; then
@@ -499,7 +523,8 @@ src_configure() {
 	export TMPDIR="${WORKDIR}/temp"
 	mkdir -p -m 755 "${TMPDIR}" || die
 
-	if ! use system-ffmpeg; then
+	# TODO: also do this for GN bundled ffmpeg build.
+	if ! use system-ffmpeg && ! use gn; then
 		local build_ffmpeg_args=""
 		if use pic && [[ "${ffmpeg_target_arch}" == "ia32" ]]; then
 			build_ffmpeg_args+=" --disable-asm"
@@ -520,8 +545,13 @@ src_configure() {
 	touch chrome/test/data/webui/i18n_process_css_test.html || die
 
 	einfo "Configuring Chromium..."
-	build/linux/unbundle/replace_gyp_files.py ${myconf} || die
-	egyp_chromium ${myconf} || die
+	if use gn; then
+		tools/gn/bootstrap/bootstrap.py -v --gn-gen-args "${myconf_gn}" || die
+		out/Release/gn gen --args="${myconf_gn}" out/Release || die
+	else
+		build/linux/unbundle/replace_gyp_files.py ${myconf_gyp} || die
+		egyp_chromium ${myconf_gyp} || die
+	fi
 }
 
 eninja() {
@@ -544,9 +574,11 @@ eninja() {
 src_compile() {
 	local ninja_targets="chrome chrome_sandbox chromedriver"
 
-	# Build mksnapshot and pax-mark it.
-	eninja -C out/Release mksnapshot || die
-	pax-mark m out/Release/mksnapshot
+	if ! use gn; then
+		# Build mksnapshot and pax-mark it.
+		eninja -C out/Release mksnapshot || die
+		pax-mark m out/Release/mksnapshot
+	fi
 
 	# Even though ninja autodetects number of CPUs, we respect
 	# user's options, for debugging with -j 1 or any other reason.
@@ -603,6 +635,10 @@ src_install() {
 	insinto "${CHROMIUM_HOME}"
 	doins out/Release/*.bin || die
 	doins out/Release/*.pak || die
+
+	if use gn; then
+		doins out/Release/icudtl.dat || die
+	fi
 
 	doins -r out/Release/locales || die
 	doins -r out/Release/resources || die
