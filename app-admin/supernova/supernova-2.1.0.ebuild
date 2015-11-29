@@ -28,6 +28,7 @@ RDEPEND="
 	dev-python/configobj[${PYTHON_USEDEP}]
 	>=dev-python/keyring-0.9.2[${PYTHON_USEDEP}]
 	dev-python/python-novaclient[${PYTHON_USEDEP}]
+	dev-python/rackspace-novaclient[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
 
@@ -38,8 +39,6 @@ python_compile_all() {
 }
 
 python_test() {
-	distutils_install_for_testing
-	cd "${TEST_DIR}"/lib || die
 	py.test || die "tests failed under ${EPYTHON}"
 }
 
