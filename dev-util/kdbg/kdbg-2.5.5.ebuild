@@ -20,6 +20,7 @@ IUSE="debug"
 RDEPEND="sys-devel/gdb"
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-cmake34.patch" )
 DOCS=( BUGS README ReleaseNotes-${PV} TODO )
 
 src_prepare() {
