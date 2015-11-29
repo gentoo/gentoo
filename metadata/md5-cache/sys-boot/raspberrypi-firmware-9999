@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst preinst unpack
+DEPEND=>=dev-vcs/git-1.8.2.1
+DESCRIPTION=Raspberry PI boot loader and firmware
+EAPI=5
+HOMEPAGE=https://github.com/raspberrypi/firmware
+LICENSE=GPL-2 raspberrypi-videocore-bin
+RDEPEND=!sys-boot/raspberrypi-loader
+RESTRICT=binchecks strip
+SLOT=0
+_eclass_exported_funcs=pkg_preinst:- pkg_postinst:readme.gentoo src_unpack:git-r3 src_install:-
+_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	git-r3	e6443022d06c4de81a14e017bdfcc306	multilib	3972ca401cf7dbb430df9995f5d8d580	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=64ebffa87944b97370485efc8fa10c29
