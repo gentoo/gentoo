@@ -26,7 +26,7 @@
 inherit toolchain-funcs
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5) ;;
+	0|1|2|3|4|5|6) ;;
 	*) die "EAPI ${EAPI} unsupported (yet)."
 esac
 
@@ -41,12 +41,13 @@ _bash-completion-r1_get_bashdir() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	if $(tc-getPKG_CONFIG) --exists bash-completion &>/dev/null; then
-		local path="$($(tc-getPKG_CONFIG) --variable=$1 bash-completion)"
+		local path
+		path=$($(tc-getPKG_CONFIG) --variable="${1}" bash-completion) || die
 		# we need to return unprefixed, so strip from what pkg-config returns
 		# to us, bug #477692
 		echo "${path#${EPREFIX}}"
 	else
-		echo $2
+		echo "${2}"
 	fi
 }
 
@@ -129,6 +130,7 @@ bashcomp_alias() {
 	shift
 
 	for f; do
-		dosym "${base}" "$(_bash-completion-r1_get_bashcompdir)/${f}"
+		dosym "${base}" "$(_bash-completion-r1_get_bashcompdir)/${f}" \
+			|| return
 	done
 }

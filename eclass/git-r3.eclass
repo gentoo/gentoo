@@ -581,11 +581,11 @@ git-r3_fetch() {
 			if [[ ${remote_ref} == HEAD ]]; then
 				# HEAD
 				fetch_l=HEAD
-			elif [[ ${remote_ref} == refs/heads/* ]]; then
-				# regular branch
+			elif [[ ${remote_ref} == refs/* ]]; then
+				# regular branch, tag or some other explicit ref
 				fetch_l=${remote_ref}
 			else
-				# tag or commit...
+				# tag or commit id...
 				# let ls-remote figure it out
 				local tagref=$(git ls-remote "${r}" "refs/tags/${remote_ref}")
 
@@ -594,8 +594,8 @@ git-r3_fetch() {
 					# tag
 					fetch_l=refs/tags/${remote_ref}
 				else
-					# commit
-					# so we need to fetch the branch
+					# commit id
+					# so we need to fetch the whole branch
 					if [[ ${branch} ]]; then
 						fetch_l=${branch}
 					else
@@ -697,7 +697,7 @@ git-r3_fetch() {
 	[[ ${success} ]] || die "Unable to fetch from any of EGIT_REPO_URI"
 
 	# submodules can reference commits in any branch
-	# always use the 'clone' mode to accomodate that, bug #503332
+	# always use the 'mirror' mode to accomodate that, bug #503332
 	local EGIT_CLONE_TYPE=mirror
 
 	# recursively fetch submodules
@@ -918,10 +918,9 @@ git-r3_peek_remote_ref() {
 	for r in "${repos[@]}"; do
 		einfo "Peeking \e[1m${remote_ref}\e[22m on \e[1m${r}\e[22m ..." >&2
 
-		local is_branch lookup_ref
-		if [[ ${remote_ref} == refs/heads/* || ${remote_ref} == HEAD ]]
+		local lookup_ref
+		if [[ ${remote_ref} == refs/* || ${remote_ref} == HEAD ]]
 		then
-			is_branch=1
 			lookup_ref=${remote_ref}
 		else
 			# ls-remote by commit is going to fail anyway,
