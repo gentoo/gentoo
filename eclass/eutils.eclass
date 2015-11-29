@@ -350,12 +350,6 @@ EPATCH_FORCE="no"
 # List of patches not to apply.	 Note this is only file names,
 # and not the full path.  Globs accepted.
 
-# @VARIABLE: EPATCH_USER_SOURCE
-# @DESCRIPTION:
-# Location for user patches, see the epatch_user function.
-# Should be set by the user. Don't set this in ebuilds.
-: ${EPATCH_USER_SOURCE:=${PORTAGE_CONFIGROOT%/}/etc/portage/patches}
-
 # @FUNCTION: epatch
 # @USAGE: [options] [patches] [dirs of patches]
 # @DESCRIPTION:
@@ -669,6 +663,13 @@ epatch() {
 	: # everything worked
 }
 
+if has "${EAPI:-0}" 0 1 2 3 4 5; then
+# @VARIABLE: EPATCH_USER_SOURCE
+# @DESCRIPTION:
+# Location for user patches, see the epatch_user function.
+# Should be set by the user. Don't set this in ebuilds.
+: ${EPATCH_USER_SOURCE:=${PORTAGE_CONFIGROOT%/}/etc/portage/patches}
+
 # @FUNCTION: epatch_user
 # @USAGE:
 # @DESCRIPTION:
@@ -731,6 +732,7 @@ epatch_user() {
 epatch_user_death_notice() {
 	ewarn "!!! User patches were applied to this build!"
 }
+fi
 
 # @FUNCTION: emktemp
 # @USAGE: [temp dir]
