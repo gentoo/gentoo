@@ -304,10 +304,6 @@ src_prepare() {
 			|| die "Failed to fix heimdal crypt library reference"
 	fi
 
-	# Fix a const crash in php-fpm, bug #564690.
-	# Only applies to php-5.6.15 and should be fixed in 5.6.16.
-	epatch "${FILESDIR}/fix-5.6.15-fpm-const-crash.patch"
-
 	# Add user patches #357637
 	epatch_user
 
