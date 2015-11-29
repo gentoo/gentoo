@@ -136,7 +136,7 @@ LDSO_ARCH=$(basename $LDSO_PATH)
 LDSO_NAME=${LDSO_ARCH%.so.1}
 ETC_LDSO_PATH=/etc/${LDSO_NAME}.path
 
-X=$(mktemp --tmpdir=/tmp ${LDSO_NAME}.XXXXXX)
+X=$(mktemp -p /tmp ${LDSO_NAME}.XXXXXX)
 for d in $drs; do
 	echo $d >> $X
 done
