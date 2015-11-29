@@ -1,0 +1,63 @@
+--- dcmimgle/libsrc/CMakeLists.txt.orig	2010-10-14 12:19:24.416833916 +0200
++++ dcmimgle/libsrc/CMakeLists.txt	2010-10-14 12:18:51.682258692 +0200
+@@ -1,5 +1,5 @@
+ # create library from source files
+ ADD_LIBRARY(dcmimgle dcmimage dibaslut diciefn dicielut didislut didispfn didocu digsdfn digsdlut diimage diinpx diluptab dimo1img dimo2img dimoimg dimoimg3 dimoimg4 dimoimg5 dimomod dimoopx dimopx diovdat diovlay diovlimg diovpln diutils)
+-
++TARGET_LINK_LIBRARIES(dcmimgle dcmdata)
+ # declare installation files
+ INSTALL_TARGETS(${INSTALL_LIBDIR} dcmimgle)
+--- dcmpstat/libsrc/CMakeLists.txt.orig	2010-10-14 12:26:05.324680803 +0200
++++ dcmpstat/libsrc/CMakeLists.txt	2010-10-14 12:26:35.309298272 +0200
+@@ -1,5 +1,5 @@
+ # create library from source files
+ ADD_LIBRARY(dcmpstat dcmpstat dviface dvpsab dvpsabl dvpsal dvpsall dvpscf dvpscu dvpscul dvpsda dvpsdal dvpsfs dvpsga dvpsgal dvpsgl dvpsgll dvpsgr dvpsgrl dvpshlp dvpsib dvpsibl dvpsmsg dvpsov dvpsovl dvpspl dvpspl2 dvpspll dvpspr dvpsprt dvpsri dvpsril dvpsrs dvpsrsl dvpssp dvpsspl dvpssv dvpssvl dvpstat dvpstx dvpstxl dvpsvl dvpsvll dvpsvw dvpsvwl dvsighdl)
+-
++TARGET_LINK_LIBRARIES(dcmpstat dcmdsig dcmtls dcmsr)
+ # declare installation files
+ INSTALL_TARGETS(${INSTALL_LIBDIR} dcmpstat)
+--- dcmsign/libsrc/CMakeLists.txt.orig	2010-10-14 12:37:02.149984538 +0200
++++ dcmsign/libsrc/CMakeLists.txt	2010-10-14 12:38:53.602332737 +0200
+@@ -1,5 +1,5 @@
+ # create library from source files
+ ADD_LIBRARY(dcmdsig dcsignat siautopr sibrsapr sicert sicertvf sicreapr sidsa simaccon simd5 sinullpr siprivat siripemd sirsa sisha1 sisprof sitypes)
+-
++TARGET_LINK_LIBRARIES(dcmdsig ${OPENSSL_LIBS})
+ # declare installation files
+ INSTALL_TARGETS(${INSTALL_LIBDIR} dcmdsig)
+--- dcmimage/libsrc/CMakeLists.txt.orig	2010-10-14 12:45:06.926394516 +0200
++++ dcmimage/libsrc/CMakeLists.txt	2010-10-14 12:46:05.197437359 +0200
+@@ -1,5 +1,5 @@
+ # create library from source files
+ ADD_LIBRARY(dcmimage diargimg dicmyimg dicoimg dicoopx dicopx dihsvimg dilogger dipalimg dipipng dipitiff diqtctab diqtfs diqthash diqthitl diqtpbox diquant diregist dirgbimg diybrimg diyf2img diyp2img)
+-
++TARGET_LINK_LIBRARIES(dcmimage ${LIBTIFF_LIBS} ${LIBPNG_LIBS})
+ # declare installation files
+ INSTALL_TARGETS(${INSTALL_LIBDIR} dcmimage)
+--- dcmdata/libsrc/CMakeLists.txt.orig	2010-10-14 12:44:00.991741511 +0200
++++ dcmdata/libsrc/CMakeLists.txt	2010-10-14 12:44:55.918954304 +0200
+@@ -1,5 +1,5 @@
+ # create library from source files
+ ADD_LIBRARY(dcmdata cmdlnarg dcbytstr dcchrstr dccodec dcdatset dcddirif dcdicdir dcdicent dcdict dcdictzz dcdirrec dcelem dcerror dcfilefo dchashdi dcistrma dcistrmb dcistrmf dcistrmz dcitem dclist dcmetinf dcobject dcostrma dcostrmb dcostrmf dcostrmz dcpcache dcpixel dcpixseq dcpxitem dcrleccd dcrlecce dcrlecp dcrledrg dcrleerg dcrlerp dcsequen dcstack dcswap dctag dctagkey dctypes dcuid dcwcache dcvm dcvr dcvrae dcvras dcvrat dcvrcs dcvrda dcvrds dcvrdt dcvrfd dcvrfl dcvris dcvrlo dcvrlt dcvrobow dcvrof dcvrpn dcvrpobw dcvrsh dcvrsl dcvrss dcvrst dcvrtm dcvrui dcvrul dcvrulup dcvrus dcvrut dcxfer dcpath vrscan vrscanl)
+-
++TARGET_LINK_LIBRARIES(dcmdata ${ZLIB_LIBS})
+ # declare installation files
+ INSTALL_TARGETS(${INSTALL_LIBDIR} dcmdata)
+--- dcmsr/libsrc/CMakeLists.txt.orig	2010-10-14 14:45:48.736866802 +0200
++++ dcmsr/libsrc/CMakeLists.txt	2010-10-14 14:46:40.910215801 +0200
+@@ -1,5 +1,5 @@
+ # create library from source files
+ ADD_LIBRARY(dcmsr dsrcitem dsrcodtn dsrcodvl dsrcomtn dsrcomvl dsrcontn dsrcsidl dsrdattn dsrdoc dsrdoctn dsrdoctr dsrdtitn dsrimgfr dsrimgtn dsrimgvl dsrnumtn dsrnumvl dsrpnmtn dsrreftn dsrscogr dsrsc3gr dsrscotn dsrsc3tn dsrscovl dsrsc3vl dsrsoprf dsrstrvl dsrtcodt dsrtcosp dsrtcotn dsrtcoto dsrtcovl dsrtextn dsrtimtn dsrtncsr dsrtree dsrtypes dsruidtn dsrwavch dsrwavtn dsrwavvl dsrxmlc dsrxmld dsriodcc dsrbascc dsrenhcc dsrcomcc dsrkeycc dsrmamcc dsrchecc dsrcolcc dsrprocc dsrxrdcc dsrspecc dsrmaccc)
+-
++TARGET_LINK_LIBRARIES(dcmsr ${LIBXML_LIBS})
+ # declare installation files
+ INSTALL_TARGETS(${INSTALL_LIBDIR} dcmsr)
+--- dcmtls/libsrc/CMakeLists.txt.orig	2012-11-11 19:19:00.832767189 -0800
++++ dcmtls/libsrc/CMakeLists.txt	2012-11-11 19:29:43.887972426 -0800
+@@ -1,5 +1,6 @@
+ # create library from source files
+ ADD_LIBRARY(dcmtls tlslayer tlstrans tlsscu)
+ 
++TARGET_LINK_LIBRARIES(dcmtls ${OPENSSL_LIBS})
+ # declare installation files
+ INSTALL_TARGETS(${INSTALL_LIBDIR} dcmtls)
