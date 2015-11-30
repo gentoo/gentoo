@@ -181,7 +181,7 @@ src_install() {
 			"${T}/mame.ini" || die
 	done
 	# -- Directories
-	for f in {cfg,nvram,memcard,input,state,snapshot,diff,commit} ; do
+	for f in {cfg,nvram,memcard,input,state,snapshot,diff,comment} ; do
 		sed -i \
 			-e "s:\(${f}_directory\)[ \t]*\(.*\):\1 \t\t\$HOME/.${PN}/\2:" \
 			"${T}/mame.ini" || die
@@ -203,8 +203,8 @@ src_install() {
 
 	dodoc docs/{config,mame,newvideo}.txt
 	keepdir \
-		"${GAMES_DATADIR}/${PN}"/{ctrlr,cheats,roms,samples,artwork,crosshair} \
-		"${GAMES_SYSCONFDIR}/${PN}"/{ctrlr,cheats}
+		"${GAMES_DATADIR}/${PN}"/{ctrlr,cheat,roms,samples,artwork,crosshair} \
+		"${GAMES_SYSCONFDIR}/${PN}"/{ctrlr,cheat}
 
 	if use tools ; then
 		for f in castool chdman floptool imgtool jedutil ldresample ldverify romcmp testkeys ; do
