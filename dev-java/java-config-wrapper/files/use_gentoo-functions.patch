@@ -1,0 +1,14 @@
+--- java-config-wrapper-0.16/src/shell/java-check-environment
++++ java-config-wrapper-0.16/src/shell/java-check-environment
+@@ -1,6 +1,10 @@
+ #!/bin/bash
+ 
+-source /etc/init.d/functions.sh
++functions_script="/lib/gentoo/functions.sh"
++source ${functions_script} || {
++	echo "Could not source ${functions_script}!" 1>&2
++	exit 1
++}
+ 
+ # Used to update the global result.
+ update_result() {
