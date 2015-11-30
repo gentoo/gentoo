@@ -27,7 +27,7 @@ else
 	SLOT="$(get_version_component_range 1).$(get_version_component_range 2)"
 fi
 
-DESCRIPTION="Advanced open-source framework for developing, testing, and using vulnerability exploit code"
+DESCRIPTION="Advanced framework for developing, testing, and using vulnerability exploit code"
 HOMEPAGE="http://www.metasploit.org/"
 LICENSE="BSD"
 IUSE="development +java oracle +pcap test"
@@ -44,13 +44,13 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/builder:3
 	dev-ruby/bundler
 	dev-ruby/filesize
-	=dev-ruby/jsobfu-0.3*
+	dev-ruby/jsobfu:0.3.0
 	dev-ruby/json
 	dev-ruby/kissfft
 	dev-ruby/metasm:1.0.2
 	dev-ruby/metasploit_data_models:1.2.9
 	dev-ruby/meterpreter_bins:0.0.22
-	dev-ruby/metasploit-payloads:1.0.16
+	dev-ruby/metasploit-payloads:1.0.17
 	dev-ruby/metasploit-credential:1.0.1
 	>=dev-ruby/metasploit-concern-1.0.0:1.0
 	>=dev-ruby/metasploit-model-1.0.0:1.0

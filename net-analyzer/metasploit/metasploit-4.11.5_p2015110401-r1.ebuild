@@ -27,7 +27,7 @@ else
 	SLOT="$(get_version_component_range 1).$(get_version_component_range 2)"
 fi
 
-DESCRIPTION="Advanced open-source framework for developing, testing, and using vulnerability exploit code"
+DESCRIPTION="Advanced framework for developing, testing, and using vulnerability exploit code"
 HOMEPAGE="http://www.metasploit.org/"
 LICENSE="BSD"
 IUSE="development +java oracle +pcap test"
@@ -43,22 +43,24 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/bcrypt-ruby
 	dev-ruby/builder:3
 	dev-ruby/bundler
-	=dev-ruby/jsobfu-0.2*
+	dev-ruby/filesize
+	dev-ruby/jsobfu:0.2.1
 	dev-ruby/json
 	dev-ruby/kissfft
-	=dev-ruby/metasploit_data_models-1.2.5
+	dev-ruby/metasm:1.0.2
+	dev-ruby/metasploit_data_models:1.2.9
 	dev-ruby/meterpreter_bins:0.0.22
-	dev-ruby/metasploit-payloads:1.0.9
-	=dev-ruby/metasploit-credential-1.0.0:1.0
+	dev-ruby/metasploit-payloads:1.0.15
+	dev-ruby/metasploit-credential:1.0.1
 	>=dev-ruby/metasploit-concern-1.0.0:1.0
 	>=dev-ruby/metasploit-model-1.0.0:1.0
 	dev-ruby/msgpack
 	dev-ruby/nokogiri
-	dev-ruby/recog:2.0.6
+	dev-ruby/recog:2.0.14
 	=dev-ruby/rkelly-remix-0.0.6
 	dev-ruby/sqlite3
 	>=dev-ruby/pg-0.11
-	dev-ruby/packetfu:1.1.9
+	dev-ruby/packetfu:1.1.11
 	>=dev-ruby/rubyzip-1.1
 	dev-ruby/rb-readline-r7
 	dev-ruby/robots
