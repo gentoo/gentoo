@@ -24,7 +24,7 @@ IUSE="doc examples test"
 PY2_USEDEP=$(python_gen_usedep python2_7)
 RDEPEND=">=dev-python/celery-3.1.15[${PYTHON_USEDEP}]
 	>dev-python/django-1.4[${PYTHON_USEDEP}]
-	<=dev-python/django-1.7.10[${PYTHON_USEDEP}]
+	<=dev-python/django-1.7.11[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
