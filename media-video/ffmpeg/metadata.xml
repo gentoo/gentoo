@@ -24,6 +24,7 @@
 	<flag name="flite">Adds a text-to-speech filter based on <pkg>app-accessibility/flite</pkg>.</flag>
 	<flag name="frei0r">Enable frei0r wrapping in libavfilter</flag>
 	<flag name="fribidi">Enables fribidi support in the drawtext filter.</flag>
+	<flag name="gcrypt">Enables gcrypt support: Needed for rtmp(t)e support if openssl, librtmp or gmp is not used.</flag>
 	<flag name="gme">Enables support for <pkg>media-libs/game-music-emu</pkg> for playing various video game music formats.</flag>
 	<flag name="gpl">Build GPL code. Should be enabled unless you require LGPL binaries.</flag>
 	<flag name="hardcoded-tables">Use pre-calculated tables rather than calculating them on the fly.</flag>

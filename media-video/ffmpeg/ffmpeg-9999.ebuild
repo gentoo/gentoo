@@ -42,6 +42,10 @@ LICENSE="
 		gpl? ( GPL-3 )
 		!gpl? ( LGPL-3 )
 	)
+	gmp? (
+		gpl? ( GPL-3 )
+		!gpl? ( LGPL-3 )
+	)
 	encode? (
 		aac? (
 			gpl? ( GPL-3 )
@@ -63,8 +67,8 @@ fi
 # or $(use_enable foo foo) if no :bar is set.
 # foo is added to IUSE.
 FFMPEG_FLAG_MAP=(
-		+bzip2:bzlib cpudetection:runtime-cpudetect debug doc gnutls +gpl
-		+hardcoded-tables +iconv lzma +network openssl +postproc
+		+bzip2:bzlib cpudetection:runtime-cpudetect debug doc gcrypt gnutls gmp
+		+gpl +hardcoded-tables +iconv lzma +network openssl +postproc
 		samba:libsmbclient sdl:ffplay sdl vaapi vdpau X:xlib xcb:libxcb
 		xcb:libxcb-shm xcb:libxcb-xfixes +zlib
 		# libavdevice options
@@ -188,7 +192,9 @@ RDEPEND="
 	fontconfig? ( >=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}] )
 	frei0r? ( media-plugins/frei0r-plugins )
 	fribidi? ( >=dev-libs/fribidi-0.19.6[${MULTILIB_USEDEP}] )
+	gcrypt? ( >=dev-libs/libgcrypt-1.6:0=[${MULTILIB_USEDEP}] )
 	gme? ( >=media-libs/game-music-emu-0.6.0[${MULTILIB_USEDEP}] )
+	gmp? ( >=dev-libs/gmp-6:0=[${MULTILIB_USEDEP}] )
 	gnutls? ( >=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP}] )
 	gsm? ( >=media-sound/gsm-1.0.13-r1[${MULTILIB_USEDEP}] )
 	iconv? ( >=virtual/libiconv-0-r1[${MULTILIB_USEDEP}] )
@@ -342,6 +348,7 @@ multilib_src_configure() {
 
 	# Decoders
 	use amr && myconf+=( --enable-version3 )
+	use gmp && myconf+=( --enable-version3 )
 	use fdk && use gpl && myconf+=( --enable-nonfree )
 
 	for i in "${ffuse[@]#+}" ; do
