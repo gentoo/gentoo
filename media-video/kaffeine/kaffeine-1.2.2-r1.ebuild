@@ -28,7 +28,10 @@ RDEPEND="${DEPEND}"
 
 DOCS=( Changelog NOTES )
 
-PATCHES=( "${FILESDIR}/${PN}-1.2.2-gcc4.7.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.2.2-gcc4.7.patch"
+	"${FILESDIR}/${PN}-1.3.1-cmake34.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(

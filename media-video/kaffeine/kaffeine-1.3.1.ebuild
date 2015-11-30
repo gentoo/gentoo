@@ -29,7 +29,7 @@ RDEPEND="${DEPEND}"
 
 DOCS=( Changelog NOTES )
 
-PATCHES=( )
+PATCHES=( "${FILESDIR}/${P}-cmake34.patch" )
 
 src_configure() {
 	local mycmakeargs=(
