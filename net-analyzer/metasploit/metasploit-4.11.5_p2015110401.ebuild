@@ -27,7 +27,7 @@ else
 	SLOT="$(get_version_component_range 1).$(get_version_component_range 2)"
 fi
 
-DESCRIPTION="Advanced open-source framework for developing, testing, and using vulnerability exploit code"
+DESCRIPTION="Advanced framework for developing, testing, and using vulnerability exploit code"
 HOMEPAGE="http://www.metasploit.org/"
 LICENSE="BSD"
 IUSE="development +java oracle +pcap test"
