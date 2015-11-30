@@ -58,8 +58,6 @@ src_install() {
 	python_foreach_impl python_domodule bin/autojump_data.py bin/autojump_utils.py
 	if use python; then
 		python_foreach_impl python_domodule tools/autojump_ipython.py
-		einfo 'This tool provides "j" for ipython, please add'
-		einfo '"import autojump_ipython" to your ipy_user_conf.py.'
 	fi
 
 	doman docs/"${PN}.1"
@@ -67,6 +65,12 @@ src_install() {
 }
 
 pkg_postinst() {
+	if use python; then
+		elog 'This tool provides "j" for ipython, please add'
+		elog '"import autojump_ipython" to your ipy_user_conf.py.'
+		elog
+	fi
+
 	elog 'If you use app-shells/fish, add the following code to your'
 	elog 'config.fish to get autojump support:'
 	elog 'if test -f /usr/share/autojump/autojump.fish'
