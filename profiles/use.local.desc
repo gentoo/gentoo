@@ -5058,6 +5058,13 @@ net-analyzer/snort:side-channel - Enables Snort's the side channel.
 net-analyzer/snort:sourcefire - Enables Sourcefire specific build options, which include --enable-perfprofiling and --enable-ppm.
 net-analyzer/snort:targetbased - Enables support in snort for using a host attibute XML file (attribute_table.dtd). This file needs to be created by the user and should define the IP address, operating system, and services for all hosts on the monitored network. This is cumbersome, but can improve intrusion detection accuracy.
 net-analyzer/snort:zlib - Enables HTTP inspection of compressed web traffic. Requires dynamicplugin be enabled.
+net-analyzer/suricata:af-packet - Enable AF_PACKET support
+net-analyzer/suricata:control-socket - Enable unix socket
+net-analyzer/suricata:cuda - Enable NVIDIA Cuda computations support
+net-analyzer/suricata:luajit - Enable Luajit support
+net-analyzer/suricata:nflog - Enable libnetfilter_log support
+net-analyzer/suricata:nfqueue - Enable AF_PACKET support
+net-analyzer/suricata:rules - Enable AF_PACKET support
 net-analyzer/symon:perl - Enables a generic perl symux client
 net-analyzer/symon:symon - Enables the system monitor. Offers no functionality but monitoring and forwarding of measured data
 net-analyzer/symon:symux - Enables the multiplexer which stores incoming symon streams on disk in RRD (net-analyzer/rrdtool) files
