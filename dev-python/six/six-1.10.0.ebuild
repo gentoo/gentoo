@@ -26,7 +26,21 @@ PATCHES=(
 	"${FILESDIR}"/1.9.0-mapping.patch
 	)
 
+# Run twice.
+# pkg_pretend to catch as early as possible, but be forgiving if 
+# python impl is not installed allready.
+# pkg_setup to catch them all
 pkg_pretend() {
+	six_dir_check() {
+		local dir="${ROOT}"/$(python_get_sitedir)/six
+		type -p "${PYTHON}" > /dev/null || return 0
+		[[ -d "${dir}" ]] \
+			&& die "${PN} doesn't work if ${dir} is a directory #546730"
+	}
+	python_foreach_impl six_dir_check
+}
+
+pkg_setup() {
 	six_dir_check() {
 		local dir="${ROOT}"/$(python_get_sitedir)/six
 		[[ -d "${dir}" ]] \
