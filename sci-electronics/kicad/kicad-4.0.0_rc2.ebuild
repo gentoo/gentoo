@@ -15,8 +15,8 @@ HOMEPAGE="http://www.kicad-pcb.org"
 SERIES=$(get_version_component_range 1-2)
 MY_PV=$(replace_version_separator 3 '-')
 
-LIB_REVISION="bd0ec6a20c7cc0556093f60eac723e4505947784"
-I18N_REVISION="bf793d30d64f4e75ea7a109ea434c1a27926b158"
+LIB_REVISION="b6c80fa4ae2bf5762794ab1dcecccf94786b6d40"
+I18N_REVISION="f84a5a79136a2c781e951a069f1ab34687a5bb37"
 
 SRC_URI="https://launchpad.net/${PN}/${SERIES}/${MY_PV}/+download/${PN}-${MY_PV}.tar.xz
 	!minimal? ( https://github.com/KiCad/${PN}-library/tarball/${LIB_REVISION} -> ${P}-library.tar.gz )
@@ -178,6 +178,7 @@ pkg_postinst() {
 	fi
 	elog ""
 	elog "You may want to emerge media-gfx/wings if you want to create 3D models of components."
+	elog "For PDF or HTML help emerge app-doc/kicad-doc package."
 }
 
 pkg_postrm() {
