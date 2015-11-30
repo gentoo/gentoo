@@ -10,5 +10,5 @@ RDEPEND=emacs? ( virtual/emacs )
 SLOT=0
 SRC_URI=mirror://sourceforge/bashdb/pydb-1.26.tar.bz2
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:- src_configure:-
-_eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	eecf1a199b07109ebdf640d647bd145a	python-utils-r1	8ec5e254835cd148a8a87f4aaf53b17f	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	eecf1a199b07109ebdf640d647bd145a	python-utils-r1	435d2b9a60ae5a1c3b65737c621716e2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=f026bd7bc4c2bdb7ca78143356a48089
