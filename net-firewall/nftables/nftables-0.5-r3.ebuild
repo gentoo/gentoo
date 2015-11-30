@@ -58,5 +58,5 @@ src_install() {
 	newinitd "${FILESDIR}"/${PN}.init-r2 ${PN}
 	keepdir /var/lib/nftables
 
-	systemd_dounit "${FILESDIR}"/systemd/${PN}{,-{re,}store}.service
+	systemd_dounit "${FILESDIR}"/systemd/${PN}.service
 }
