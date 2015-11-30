@@ -1189,19 +1189,27 @@ python_export_utf8_locale() {
 	type locale >/dev/null || return 0
 
 	if [[ $(locale charmap) != UTF-8 ]]; then
-		if [[ -n ${LC_ALL} ]]; then
-			ewarn "LC_ALL is set to a locale with a charmap other than UTF-8."
-			ewarn "This may trigger build failures in some python packages."
-			return 1
-		fi
-
 		# Try English first, then everything else.
 		local lang locales="en_US.UTF-8 $(locale -a)"
 
 		for lang in ${locales}; do
-			if [[ $(LC_CTYPE=${lang} locale charmap 2>/dev/null) == UTF-8 ]]; then
+			if [[ $(LC_ALL=${lang} locale charmap 2>/dev/null) == UTF-8 ]]; then
 				if _python_check_locale_sanity "${lang}"; then
 					export LC_CTYPE=${lang}
+					if [[ -n ${LC_ALL} ]]; then
+						export LC_NUMERIC=${LC_ALL}
+						export LC_TIME=${LC_ALL}
+						export LC_COLLATE=${LC_ALL}
+						export LC_MONETARY=${LC_ALL}
+						export LC_MESSAGES=${LC_ALL}
+						export LC_PAPER=${LC_ALL}
+						export LC_NAME=${LC_ALL}
+						export LC_ADDRESS=${LC_ALL}
+						export LC_TELEPHONE=${LC_ALL}
+						export LC_MEASUREMENT=${LC_ALL}
+						export LC_IDENTIFICATION=${LC_ALL}
+						export LC_ALL=
+					fi
 					return 0
 				fi
 			fi  
