@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 inherit eutils fdo-mime toolchain-funcs
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 IUSE="doc examples fasttree fatlines judy lzma packed tcl"
 LICENSE="GPL-2 MIT"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="dev-libs/glib:2
 	x11-libs/gtk+:2
@@ -53,7 +53,7 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" install
-	dodoc ANALOG_README.TXT SYSTEMVERILOG_README.TXT CHANGELOG.TXT
+	dodoc ChangeLog README
 	if use doc ; then
 		insinto /usr/share/doc/${PF}
 		doins "doc/${PN}.odt"
