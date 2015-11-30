@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://pypi/n/nbconvert/nbconvert-4.1.0.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=distutils-r1	79bc5f4de403751e472e01fdfd98d587	eutils	f20548a2f7b0128068388cd2ec26708a	multibuild	706332a8d833c077e1aa37faa1ebf162	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	ead0b4e7f0f35d7ae8b91da6e3822535	python-utils-r1	8ec5e254835cd148a8a87f4aaf53b17f	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=6f39b680f465830024481d5cff737f50
+_md5_=ebddc7866f605e6aa63965abf9f4b7ef
