@@ -58,19 +58,29 @@ _systemd_get_dir() {
 # @INTERNAL
 # @DESCRIPTION:
 # Get unprefixed unitdir.
-_systemd_get_unitdir() {
+_systemd_get_systemunitdir() {
 	_systemd_get_dir systemdsystemunitdir /usr/lib/systemd/system
+}
+
+# @FUNCTION: systemd_get_systemunitdir
+# @DESCRIPTION:
+# Output the path for the systemd system unit directory (not including
+# ${D}).  This function always succeeds, even if systemd is not
+# installed.
+systemd_get_systemunitdir() {
+	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
+	debug-print-function ${FUNCNAME} "${@}"
+
+	echo "${EPREFIX}$(_systemd_get_systemunitdir)"
 }
 
 # @FUNCTION: systemd_get_unitdir
 # @DESCRIPTION:
-# Output the path for the systemd unit directory (not including ${D}).
-# This function always succeeds, even if systemd is not installed.
+# Deprecated alias for systemd_get_systemunitdir.
 systemd_get_unitdir() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
-	debug-print-function ${FUNCNAME} "${@}"
+	[[ ${EAPI} == [012345] ]] || die "${FUNCNAME} is banned in EAPI 6, use systemd_get_systemunitdir instead"
 
-	echo "${EPREFIX}$(_systemd_get_unitdir)"
+	systemd_get_systemunitdir
 }
 
 # @FUNCTION: _systemd_get_userunitdir
@@ -122,7 +132,7 @@ systemd_dounit() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
-		insinto "$(_systemd_get_unitdir)"
+		insinto "$(_systemd_get_systemunitdir)"
 		doins "${@}"
 	)
 }
@@ -136,7 +146,7 @@ systemd_newunit() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
-		insinto "$(_systemd_get_unitdir)"
+		insinto "$(_systemd_get_systemunitdir)"
 		newins "${@}"
 	)
 }
@@ -247,7 +257,7 @@ systemd_enable_service() {
 
 	local target=${1}
 	local service=${2}
-	local ud=$(_systemd_get_unitdir)
+	local ud=$(_systemd_get_systemunitdir)
 	local destname=${service##*/}
 
 	dodir "${ud}"/"${target}".wants && \
@@ -281,7 +291,7 @@ systemd_enable_ntpunit() {
 		die "The .list suffix is appended implicitly to ntpunit.d name."
 	fi
 
-	local unitdir=$(systemd_get_unitdir)
+	local unitdir=$(systemd_get_systemunitdir)
 	local s
 	for s in "${services[@]}"; do
 		if [[ ! -f "${D}${unitdir}/${s}" ]]; then
@@ -317,7 +327,7 @@ systemd_with_unitdir() {
 	debug-print-function ${FUNCNAME} "${@}"
 	local optname=${1:-systemdsystemunitdir}
 
-	echo --with-${optname}="$(systemd_get_unitdir)"
+	echo --with-${optname}="$(systemd_get_systemunitdir)"
 }
 
 # @FUNCTION: systemd_with_utildir
@@ -344,7 +354,7 @@ systemd_to_myeconfargs() {
 
 	myeconfargs=(
 		"${myeconfargs[@]}"
-		--with-systemdsystemunitdir="$(systemd_get_unitdir)"
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 	)
 }
 
