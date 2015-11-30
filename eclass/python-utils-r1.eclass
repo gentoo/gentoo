@@ -1170,7 +1170,7 @@ _python_check_locale_sanity() {
 
 	local lc=( {a..z} )
 	local uc=( {A..Z} )
-	local input=${lc[*]}${uc[*]}
+	local input="${lc[*]}${uc[*]}"
 
 	local output=$(tr '[:lower:][:upper:]' '[:upper:][:lower:]' <<<"${input}")
 	[[ ${output} == "${uc[*]}${lc[*]}" ]]
