@@ -15389,7 +15389,7 @@ sci-electronics/irsim 9.7.79 9.7.87 9.7.93: IRSIM is a "switch-level" simulator
 sci-electronics/iverilog 0.9.6 0.9.7: A Verilog simulation and synthesis tool
 sci-electronics/kicad 4.0.0_rc1 4.0.0_rc2: Electronic Schematic and PCB design tools.
 sci-electronics/klayout 0.23.10: Viewer and editor for GDS and OASIS integrated circuit layouts
-sci-electronics/linsmith 0.99.28: Smith charting program, mainly designed for educational use
+sci-electronics/linsmith 0.99.28 0.99.30: Smith charting program, mainly designed for educational use
 sci-electronics/magic 7.5.202-r1 7.5.231 8.0.138 8.0.207: The VLSI design CAD tool
 sci-electronics/netgen 1.3.11 1.4.52: LVS tool (layout versus schematic comparison)
 sci-electronics/ngspice 26: The Next Generation Spice (Electronic Circuit Simulator)
