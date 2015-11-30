@@ -44,7 +44,7 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/builder:3
 	dev-ruby/bundler
 	dev-ruby/filesize
-	=dev-ruby/jsobfu-0.3*
+	dev-ruby/jsobfu:0.3.0
 	dev-ruby/json
 	dev-ruby/kissfft
 	dev-ruby/metasm:1.0.2
