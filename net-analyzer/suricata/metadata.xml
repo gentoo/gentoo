@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>slis@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="af-packet">Enable AF_PACKET support</flag>
+    <flag name="control-socket">Enable unix socket</flag>
+    <flag name="cuda">Enable NVIDIA Cuda computations support</flag>
+    <flag name="luajit">Enable Luajit support</flag>
+    <flag name="nflog">Enable libnetfilter_log support</flag>
+    <flag name="nfqueue">Enable AF_PACKET support</flag>
+    <flag name="rules">Enable AF_PACKET support</flag>
+  </use>
+</pkgmetadata>
