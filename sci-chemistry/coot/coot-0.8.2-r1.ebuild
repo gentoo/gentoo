@@ -18,8 +18,9 @@ MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="Crystallographic Object-Oriented Toolkit for model building, completion and validation"
 HOMEPAGE="https://www2.mrc-lmb.cam.ac.uk/Personal/pemsley/coot/"
-SRC_URI="http://www2.mrc-lmb.cam.ac.uk/Personal/pemsley/coot/source/releases/${MY_P}.tar.gz
-	test? ( https://www2.mrc-lmb.cam.ac.uk/Personal/pemsley/coot/data/greg-data.tar.gz -> ${PN}-greg-data.tar.gz )"
+SRC_URI="
+	http://www2.mrc-lmb.cam.ac.uk/Personal/pemsley/coot/source/releases/${MY_P}.tar.gz
+	test? ( https://www2.mrc-lmb.cam.ac.uk/Personal/pemsley/coot/data/greg-data.tar.gz -> ${P}-greg-data.tar.gz )"
 
 SLOT="0"
 LICENSE="GPL-3"
