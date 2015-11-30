@@ -12,7 +12,7 @@ SRC_URI="http://mirror.lihnidos.org/GNU/savannah/davfs2/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 RESTRICT="test"
 
