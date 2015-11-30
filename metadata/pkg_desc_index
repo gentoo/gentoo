@@ -8680,7 +8680,7 @@ dev-ruby/metasm 1.0.2-r3: cross-architecture assembler, disassembler, linker, an
 dev-ruby/metasploit-concern 1.0.0: Metasploit concern allows you to define concerns in app/concerns.
 dev-ruby/metasploit-credential 1.0.0 1.0.1: Code for modeling and managing credentials in Metasploit
 dev-ruby/metasploit-model 1.0.0: Common code, such as validators and mixins
-dev-ruby/metasploit-payloads 1.0.9-r1 1.0.15 1.0.16: Compiled binaries for Metasploit's Meterpreter
+dev-ruby/metasploit-payloads 1.0.9-r1 1.0.15 1.0.16 1.0.17: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/metasploit_data_models 1.2.5 1.2.9: The database layer for Metasploit
 dev-ruby/meterpreter_bins 0.0.22: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/method_source 0.8.2-r2 0.8.2-r3: Retrieve the source code for a method
@@ -13436,7 +13436,7 @@ net-analyzer/macchanger 1.7.0: Utility for viewing/manipulating the MAC address 
 net-analyzer/masscan 1.0.3-r1: Mass IP port scanner
 net-analyzer/mate-netspeed 1.8.0: Applet showing network traffic for MATE
 net-analyzer/mbrowse 0.4.3: MBrowse is a graphical MIB browser
-net-analyzer/metasploit 4.11.4_p2015090201-r1 4.11.5_p2015110401 9999: Advanced open-source framework for developing, testing, and using vulnerability exploit code
+net-analyzer/metasploit 4.11.4_p2015090201-r2 4.11.5_p2015110401-r1 9999: Advanced framework for developing, testing, and using vulnerability exploit code
 net-analyzer/mk-livestatus 1.2.2_p3: Nagios/Icinga event broker module that allows quick/direct access to your status data
 net-analyzer/monitoring-plugins 2.1.1 2.1.2: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
