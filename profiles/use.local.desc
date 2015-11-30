@@ -4648,6 +4648,7 @@ media-video/ffmpeg:fdk - Use external fdk-aac library for AAC encoding
 media-video/ffmpeg:flite - Adds a text-to-speech filter based on app-accessibility/flite.
 media-video/ffmpeg:frei0r - Enable frei0r wrapping in libavfilter
 media-video/ffmpeg:fribidi - Enables fribidi support in the drawtext filter.
+media-video/ffmpeg:gcrypt - Enables gcrypt support: Needed for rtmp(t)e support if openssl, librtmp or gmp is not used.
 media-video/ffmpeg:gme - Enables support for media-libs/game-music-emu for playing various video game music formats.
 media-video/ffmpeg:gpl - Build GPL code. Should be enabled unless you require LGPL binaries.
 media-video/ffmpeg:hardcoded-tables - Use pre-calculated tables rather than calculating them on the fly.
