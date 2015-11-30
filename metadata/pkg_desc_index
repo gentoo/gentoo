@@ -6908,7 +6908,7 @@ dev-python/django-annoying 0.7.6-r1 0.7.7 0.8.2: This is django application that
 dev-python/django-appconf 0.6 1.0.1: A helper class for handling configuration defaults of packaged apps gracefully
 dev-python/django-auth-ldap 1.2.2 1.2.6: Django LDAP authentication backend
 dev-python/django-baker 0.11-r2: Management command that generates views, forms, urls, admin, and templates for models
-dev-python/django-celery 3.1.16: Celery Integration for Django
+dev-python/django-celery 3.1.16 3.1.17: Celery Integration for Django
 dev-python/django-classy-tags 0.6.2: Class based template tags for Django
 dev-python/django-cms 3.1.2: A Django application for managing hierarchical pages of content
 dev-python/django-compressor 1.4 1.5: Compresses linked and inline javascript or CSS into a single cached file
