@@ -48,6 +48,10 @@ RDEPEND="media-libs/libsdl2[opengl,video]
 DEPEND="${DEPEND}
 	virtual/pkgconfig"
 
+src_unpack() {
+	git-r3_src_unpack
+}
+
 src_prepare() {
 	append-cxxflags -std=c++11 -Isrc
 	epatch "${FILESDIR}"/${P}-gentoo.patch
