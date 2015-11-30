@@ -7,7 +7,7 @@ inherit xorg-2
 
 DESCRIPTION="QEMU QXL paravirt video driver"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="xspice"
 
 RDEPEND="xspice? ( app-emulation/spice )

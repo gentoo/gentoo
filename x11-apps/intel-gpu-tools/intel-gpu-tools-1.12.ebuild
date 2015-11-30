@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{3_3,3_4} )
 inherit python-single-r1 xorg-2
 
 DESCRIPTION="Intel GPU userland tools"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="python test-programs unwind video_cards_nouveau"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="test"

@@ -8,7 +8,7 @@ inherit xorg-2
 
 DESCRIPTION="X.Org xmag application"
 
-KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE=""
 
 RDEPEND="x11-libs/libXaw

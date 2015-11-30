@@ -19,7 +19,7 @@ if [[ $PV = 9999* ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="http://people.freedesktop.org/~chadversary/waffle/files/release/${P}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm ~x86"
 fi
 
 LICENSE="BSD-2"
