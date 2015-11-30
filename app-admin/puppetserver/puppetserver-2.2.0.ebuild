@@ -52,7 +52,7 @@ src_install() {
 	doins ext/config/request-logging.xml
 	insinto /etc/puppetlabs/puppetserver/conf.d
 	doins ext/config/conf.d/puppetserver.conf
-	doins ext/config/conf.d/ca.conf
+	doins ext/config/conf.d/auth.conf
 	doins ext/config/conf.d/global.conf
 	doins ext/config/conf.d/web-routes.conf
 	doins ext/config/conf.d/webserver.conf

@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.0.0-docs-Makefile.patch
+	"${FILESDIR}"/${P}-docs-Makefile.patch
 )
 
 RDEPEND="
