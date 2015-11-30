@@ -35,6 +35,8 @@ python_prepare_all() {
 		-e '/tests_require/d' \
 		-i setup.py || die
 
+	EPATCH_OPTS="--binary"
+
 	distutils-r1_python_prepare_all
 }
 
