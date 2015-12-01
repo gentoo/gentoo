@@ -24,7 +24,7 @@ RDEPEND="dev-util/desktop-file-utils
 	x11-apps/xprop
 	x11-apps/xset
 	perl? ( dev-perl/File-MimeInfo )"
-DEPEND=">=app-text/xmlto-0.0.26-r1"
+DEPEND=">=app-text/xmlto-0.0.26-r1[text(+)]"
 
 DOCS="README RELEASE_NOTES TODO" # ChangeLog is bogus, see git instead
 
