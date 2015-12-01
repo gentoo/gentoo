@@ -21,7 +21,7 @@ CDEPEND="
 	sasl? ( virtual/gsasl )
 	ssl? (
 		gnutls? ( net-libs/gnutls )
-		!gnutls? ( dev-libs/openssl )
+		!gnutls? ( dev-libs/openssl:0 )
 	)
 "
 

@@ -10,13 +10,12 @@ inherit distutils-r1 eutils virtualx
 
 DESCRIPTION="Computer Algebra System in pure Python"
 HOMEPAGE="http://sympy.org"
-SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.gz
-	https://dev.gentoo.org/~grozin/${P}-system-mpmath.patch.gz"
+SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-macos"
-IUSE="doc examples gtk imaging ipython latex mathml opengl pdf png pyglet +system-mpmath test texmacs theano"
+IUSE="doc examples gtk imaging ipython latex mathml opengl pdf png pyglet test texmacs theano"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	doc? ( python_targets_python2_7 )"
@@ -38,7 +37,6 @@ RDEPEND="
 	)
 	opengl? ( dev-python/pyopengl[${PYTHON_USEDEP}] )
 	pyglet? ( $(python_gen_cond_dep 'dev-python/pyglet[${PYTHON_USEDEP}]' python2_7) )
-	system-mpmath? ( >=dev-python/mpmath-0.18[${PYTHON_USEDEP}] )
 	texmacs? ( app-office/texmacs )
 	theano? ( $(python_gen_cond_dep 'dev-python/theano[${PYTHON_USEDEP}]' python2_7) )
 "
@@ -48,11 +46,9 @@ DEPEND="${RDEPEND}
 	test? ( ${RDEPEND} dev-python/pytest[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
-	epatch "${FILESDIR}"/${P}-doc-makefile.patch
-	if use system-mpmath; then
-		rm -r sympy/mpmath doc/src/modules/mpmath || die
-		epatch "${WORKDIR}"/${P}-system-mpmath.patch
-	fi
+	epatch "${FILESDIR}"/${PN}-0.7.6-doc-makefile.patch
+	epatch "${FILESDIR}"/${P}-sphinx-1.3.1.patch
+	epatch "${FILESDIR}"/${P}-zeta.patch
 	distutils-r1_python_prepare_all
 }
 
