@@ -4296,9 +4296,10 @@ media-sound/easytag:opus - Enable support for media-libs/opus and media-libs/opu
 media-sound/ecasound:lv2 - Add support for Ladspa V2
 media-sound/ecasound:oil - Use dev-libs/liboil for inner loop optimizations
 media-sound/fapg:xspf - Enable support for saving XSPF playlists.
-media-sound/flacon:mac - Add support for Monkey's Audio files
+media-sound/flacon:mac - Add support for Monkey's Audio input files
+media-sound/flacon:opus - Add support for Opus output files
 media-sound/flacon:replaygain - Support for Replay Gain metadata, for relative volume adjustment
-media-sound/flacon:tta - Add support for True Audio encoding
+media-sound/flacon:tta - Add support for True Audio input files
 media-sound/forked-daapd:itunes - Enable support for iTunes library XML
 media-sound/forked-daapd:lastfm - Enable LastFM scrobbling support
 media-sound/forked-daapd:mpd - Enable streaming to mpd
