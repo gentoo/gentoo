@@ -22,7 +22,7 @@ if [[ $PV = 9999* ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="http://wayland.freedesktop.org/releases/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm ~x86 ~arm-linux"
+	KEYWORDS="amd64 ~arm x86 ~arm-linux"
 fi
 
 LICENSE="MIT CC-BY-SA-3.0"

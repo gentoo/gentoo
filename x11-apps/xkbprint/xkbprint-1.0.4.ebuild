@@ -7,7 +7,7 @@ EAPI=5
 inherit xorg-2
 
 DESCRIPTION="Print an XKB keyboard description"
-KEYWORDS="amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86"
 IUSE=""
 RDEPEND="x11-libs/libxkbfile
 	x11-libs/libX11"
