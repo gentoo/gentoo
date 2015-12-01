@@ -12,7 +12,7 @@ HOMEPAGE="http://freedesktop.org/Software/xapps"
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/${P}.tar.bz2"
 
 LICENSE="BSD"
-KEYWORDS="amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND="
