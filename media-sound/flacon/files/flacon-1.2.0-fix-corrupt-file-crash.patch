@@ -1,0 +1,22 @@
+From 01bf112e4bfd0718829b7dc6f83de6fbceb3ac0c Mon Sep 17 00:00:00 2001
+From: "sokoloff (Alexander)" <sokoloff.a@gmail.com>
+Date: Fri, 18 Sep 2015 20:15:16 +0300
+Subject: [PATCH] Fix crash if audio file is corrupt
+
+---
+ disk.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/disk.cpp b/disk.cpp
+index 99c7dff..23d7ab2 100644
+--- a/disk.cpp
++++ b/disk.cpp
+@@ -577,7 +577,7 @@ bool Disk::replaceAudioFile(const QString &fileName, bool force)
+         audio = 0;
+     }
+ 
+-    if (force || audio->isValid())
++    if (force || audio)
+     {
+         delete mAudioFile;
+         mAudioFile = audio;
