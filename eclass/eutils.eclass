@@ -20,50 +20,6 @@ _EUTILS_ECLASS=1
 
 inherit multilib toolchain-funcs
 
-if has "${EAPI:-0}" 0 1 2; then
-
-# @FUNCTION: epause
-# @USAGE: [seconds]
-# @DESCRIPTION:
-# Sleep for the specified number of seconds (default of 5 seconds).  Useful when
-# printing a message the user should probably be reading and often used in
-# conjunction with the ebeep function.  If the EPAUSE_IGNORE env var is set,
-# don't wait at all. Defined in EAPIs 0 1 and 2.
-epause() {
-	[[ -z ${EPAUSE_IGNORE} ]] && sleep ${1:-5}
-}
-
-# @FUNCTION: ebeep
-# @USAGE: [number of beeps]
-# @DESCRIPTION:
-# Issue the specified number of beeps (default of 5 beeps).  Useful when
-# printing a message the user should probably be reading and often used in
-# conjunction with the epause function.  If the EBEEP_IGNORE env var is set,
-# don't beep at all. Defined in EAPIs 0 1 and 2.
-ebeep() {
-	local n
-	if [[ -z ${EBEEP_IGNORE} ]] ; then
-		for ((n=1 ; n <= ${1:-5} ; n++)) ; do
-			echo -ne "\a"
-			sleep 0.1 &>/dev/null ; sleep 0,1 &>/dev/null
-			echo -ne "\a"
-			sleep 1
-		done
-	fi
-}
-
-else
-
-ebeep() {
-	ewarn "QA Notice: ebeep is not defined in EAPI=${EAPI}, please file a bug at https://bugs.gentoo.org"
-}
-
-epause() {
-	ewarn "QA Notice: epause is not defined in EAPI=${EAPI}, please file a bug at https://bugs.gentoo.org"
-}
-
-fi
-
 # @FUNCTION: eqawarn
 # @USAGE: [message]
 # @DESCRIPTION:
@@ -349,12 +305,6 @@ EPATCH_FORCE="no"
 # @DESCRIPTION:
 # List of patches not to apply.	 Note this is only file names,
 # and not the full path.  Globs accepted.
-
-# @VARIABLE: EPATCH_USER_SOURCE
-# @DESCRIPTION:
-# Location for user patches, see the epatch_user function.
-# Should be set by the user. Don't set this in ebuilds.
-: ${EPATCH_USER_SOURCE:=${PORTAGE_CONFIGROOT%/}/etc/portage/patches}
 
 # @FUNCTION: epatch
 # @USAGE: [options] [patches] [dirs of patches]
@@ -667,69 +617,6 @@ epatch() {
 
 	[[ ${SINGLE_PATCH} == "no" ]] && einfo "Done with patching"
 	: # everything worked
-}
-
-# @FUNCTION: epatch_user
-# @USAGE:
-# @DESCRIPTION:
-# Applies user-provided patches to the source tree. The patches are
-# taken from /etc/portage/patches/<CATEGORY>/<P-PR|P|PN>[:SLOT]/, where the first
-# of these three directories to exist will be the one to use, ignoring
-# any more general directories which might exist as well. They must end
-# in ".patch" to be applied.
-#
-# User patches are intended for quick testing of patches without ebuild
-# modifications, as well as for permanent customizations a user might
-# desire. Obviously, there can be no official support for arbitrarily
-# patched ebuilds. So whenever a build log in a bug report mentions that
-# user patches were applied, the user should be asked to reproduce the
-# problem without these.
-#
-# Not all ebuilds do call this function, so placing patches in the
-# stated directory might or might not work, depending on the package and
-# the eclasses it inherits and uses. It is safe to call the function
-# repeatedly, so it is always possible to add a call at the ebuild
-# level. The first call is the time when the patches will be
-# applied.
-#
-# Ideally, this function should be called after gentoo-specific patches
-# have been applied, so that their code can be modified as well, but
-# before calls to e.g. eautoreconf, as the user patches might affect
-# autotool input files as well.
-epatch_user() {
-	[[ $# -ne 0 ]] && die "epatch_user takes no options"
-
-	# Allow multiple calls to this function; ignore all but the first
-	local applied="${T}/epatch_user.log"
-	[[ -e ${applied} ]] && return 2
-
-	# don't clobber any EPATCH vars that the parent might want
-	local EPATCH_SOURCE check
-	for check in ${CATEGORY}/{${P}-${PR},${P},${PN}}{,:${SLOT}}; do
-		EPATCH_SOURCE=${EPATCH_USER_SOURCE}/${CTARGET}/${check}
-		[[ -r ${EPATCH_SOURCE} ]] || EPATCH_SOURCE=${EPATCH_USER_SOURCE}/${CHOST}/${check}
-		[[ -r ${EPATCH_SOURCE} ]] || EPATCH_SOURCE=${EPATCH_USER_SOURCE}/${check}
-		if [[ -d ${EPATCH_SOURCE} ]] ; then
-			EPATCH_SOURCE=${EPATCH_SOURCE} \
-			EPATCH_SUFFIX="patch" \
-			EPATCH_FORCE="yes" \
-			EPATCH_MULTI_MSG="Applying user patches from ${EPATCH_SOURCE} ..." \
-			epatch
-			echo "${EPATCH_SOURCE}" > "${applied}"
-			has epatch_user_death_notice ${EBUILD_DEATH_HOOKS} || EBUILD_DEATH_HOOKS+=" epatch_user_death_notice"
-			return 0
-		fi
-	done
-	echo "none" > "${applied}"
-	return 1
-}
-# @FUNCTION: epatch_user_death_notice
-# @INTERNAL
-# @DESCRIPTION:
-# Include an explicit notice in the die message itself that user patches were
-# applied to this build.
-epatch_user_death_notice() {
-	ewarn "!!! User patches were applied to this build!"
 }
 
 # @FUNCTION: emktemp
@@ -1519,25 +1406,6 @@ path_exists() {
 	esac
 }
 
-# @FUNCTION: in_iuse
-# @USAGE: <flag>
-# @DESCRIPTION:
-# Determines whether the given flag is in IUSE. Strips IUSE default prefixes
-# as necessary.
-#
-# Note that this function should not be used in the global scope.
-if has "${EAPI:-0}" 0 1 2 3 4 5; then
-	in_iuse() {
-		debug-print-function ${FUNCNAME} "${@}"
-		[[ ${#} -eq 1 ]] || die "Invalid args to ${FUNCNAME}()"
-
-		local flag=${1}
-		local liuse=( ${IUSE} )
-
-		has "${flag}" "${liuse[@]#[+-]}"
-	}
-fi
-
 # @FUNCTION: use_if_iuse
 # @USAGE: <flag>
 # @DESCRIPTION:
@@ -1548,17 +1416,6 @@ use_if_iuse() {
 	in_iuse $1 || return 1
 	use $1
 }
-
-# @FUNCTION: usex
-# @USAGE: <USE flag> [true output] [false output] [true suffix] [false suffix]
-# @DESCRIPTION:
-# Proxy to declare usex for package managers or EAPIs that do not provide it
-# and use the package manager implementation when available (i.e. EAPI >= 5).
-# If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
-# otherwise echo [false output][false suffix] (defaults to "no").
-if has "${EAPI:-0}" 0 1 2 3 4; then
-	usex() { use "$1" && echo "${2-yes}$4" || echo "${3-no}$5" ; } #382963
-fi
 
 # @FUNCTION: prune_libtool_files
 # @USAGE: [--all|--modules]
@@ -1706,71 +1563,6 @@ prune_libtool_files() {
 	fi
 }
 
-# @FUNCTION: einstalldocs
-# @DESCRIPTION:
-# Install documentation using DOCS and HTML_DOCS.
-#
-# If DOCS is declared and non-empty, all files listed in it are
-# installed. The files must exist, otherwise the function will fail.
-# In EAPI 4 and subsequent EAPIs DOCS may specify directories as well,
-# in other EAPIs using directories is unsupported.
-#
-# If DOCS is not declared, the files matching patterns given
-# in the default EAPI implementation of src_install will be installed.
-# If this is undesired, DOCS can be set to empty value to prevent any
-# documentation from being installed.
-#
-# If HTML_DOCS is declared and non-empty, all files and/or directories
-# listed in it are installed as HTML docs (using dohtml).
-#
-# Both DOCS and HTML_DOCS can either be an array or a whitespace-
-# separated list. Whenever directories are allowed, '<directory>/.' may
-# be specified in order to install all files within the directory
-# without creating a sub-directory in docdir.
-#
-# Passing additional options to dodoc and dohtml is not supported.
-# If you needed such a thing, you need to call those helpers explicitly.
-if has "${EAPI:-0}" 0 1 2 3 4 5; then
-	einstalldocs() {
-		debug-print-function ${FUNCNAME} "${@}"
-
-		local dodoc_opts=-r
-		has ${EAPI} 0 1 2 3 && dodoc_opts=
-
-		if ! declare -p DOCS &>/dev/null ; then
-			local d
-			for d in README* ChangeLog AUTHORS NEWS TODO CHANGES \
-					THANKS BUGS FAQ CREDITS CHANGELOG ; do
-				if [[ -s ${d} ]] ; then
-					dodoc "${d}" || die
-				fi
-			done
-		elif [[ $(declare -p DOCS) == "declare -a"* ]] ; then
-			if [[ ${DOCS[@]} ]] ; then
-				dodoc ${dodoc_opts} "${DOCS[@]}" || die
-			fi
-		else
-			if [[ ${DOCS} ]] ; then
-				dodoc ${dodoc_opts} ${DOCS} || die
-			fi
-		fi
-
-		if [[ $(declare -p HTML_DOCS 2>/dev/null) == "declare -a"* ]] ; then
-			if [[ ${HTML_DOCS[@]} ]] ; then
-				dohtml -r "${HTML_DOCS[@]}" || die
-			fi
-		else
-			if [[ ${HTML_DOCS} ]] ; then
-				dohtml -r ${HTML_DOCS} || die
-			fi
-		fi
-
-		return 0
-	}
-fi
-
-check_license() { die "you no longer need this as portage supports ACCEPT_LICENSE itself"; }
-
 # @FUNCTION: optfeature
 # @USAGE: <short description> <package atom to match> [other atoms]
 # @DESCRIPTION:
@@ -1817,3 +1609,223 @@ optfeature() {
 }
 
 fi
+
+check_license() {
+	die "you no longer need this as portage supports ACCEPT_LICENSE itself"
+}
+
+case ${EAPI:-0} in
+0|1|2)
+
+# @FUNCTION: epause
+# @USAGE: [seconds]
+# @DESCRIPTION:
+# Sleep for the specified number of seconds (default of 5 seconds).  Useful when
+# printing a message the user should probably be reading and often used in
+# conjunction with the ebeep function.  If the EPAUSE_IGNORE env var is set,
+# don't wait at all. Defined in EAPIs 0 1 and 2.
+epause() {
+	[[ -z ${EPAUSE_IGNORE} ]] && sleep ${1:-5}
+}
+
+# @FUNCTION: ebeep
+# @USAGE: [number of beeps]
+# @DESCRIPTION:
+# Issue the specified number of beeps (default of 5 beeps).  Useful when
+# printing a message the user should probably be reading and often used in
+# conjunction with the epause function.  If the EBEEP_IGNORE env var is set,
+# don't beep at all. Defined in EAPIs 0 1 and 2.
+ebeep() {
+	local n
+	if [[ -z ${EBEEP_IGNORE} ]] ; then
+		for ((n=1 ; n <= ${1:-5} ; n++)) ; do
+			echo -ne "\a"
+			sleep 0.1 &>/dev/null ; sleep 0,1 &>/dev/null
+			echo -ne "\a"
+			sleep 1
+		done
+	fi
+}
+
+;;
+*)
+
+ebeep() {
+	ewarn "QA Notice: ebeep is not defined in EAPI=${EAPI}, please file a bug at https://bugs.gentoo.org"
+}
+
+epause() {
+	ewarn "QA Notice: epause is not defined in EAPI=${EAPI}, please file a bug at https://bugs.gentoo.org"
+}
+
+;;
+esac
+
+case ${EAPI:-0} in
+0|1|2|3|4)
+
+# @FUNCTION: usex
+# @USAGE: <USE flag> [true output] [false output] [true suffix] [false suffix]
+# @DESCRIPTION:
+# Proxy to declare usex for package managers or EAPIs that do not provide it
+# and use the package manager implementation when available (i.e. EAPI >= 5).
+# If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
+# otherwise echo [false output][false suffix] (defaults to "no").
+usex() { use "$1" && echo "${2-yes}$4" || echo "${3-no}$5" ; } #382963
+
+;;
+esac
+
+case ${EAPI:-0} in
+0|1|2|3|4|5)
+
+# @VARIABLE: EPATCH_USER_SOURCE
+# @DESCRIPTION:
+# Location for user patches, see the epatch_user function.
+# Should be set by the user. Don't set this in ebuilds.
+: ${EPATCH_USER_SOURCE:=${PORTAGE_CONFIGROOT%/}/etc/portage/patches}
+
+# @FUNCTION: epatch_user
+# @USAGE:
+# @DESCRIPTION:
+# Applies user-provided patches to the source tree. The patches are
+# taken from /etc/portage/patches/<CATEGORY>/<P-PR|P|PN>[:SLOT]/, where the first
+# of these three directories to exist will be the one to use, ignoring
+# any more general directories which might exist as well. They must end
+# in ".patch" to be applied.
+#
+# User patches are intended for quick testing of patches without ebuild
+# modifications, as well as for permanent customizations a user might
+# desire. Obviously, there can be no official support for arbitrarily
+# patched ebuilds. So whenever a build log in a bug report mentions that
+# user patches were applied, the user should be asked to reproduce the
+# problem without these.
+#
+# Not all ebuilds do call this function, so placing patches in the
+# stated directory might or might not work, depending on the package and
+# the eclasses it inherits and uses. It is safe to call the function
+# repeatedly, so it is always possible to add a call at the ebuild
+# level. The first call is the time when the patches will be
+# applied.
+#
+# Ideally, this function should be called after gentoo-specific patches
+# have been applied, so that their code can be modified as well, but
+# before calls to e.g. eautoreconf, as the user patches might affect
+# autotool input files as well.
+epatch_user() {
+	[[ $# -ne 0 ]] && die "epatch_user takes no options"
+
+	# Allow multiple calls to this function; ignore all but the first
+	local applied="${T}/epatch_user.log"
+	[[ -e ${applied} ]] && return 2
+
+	# don't clobber any EPATCH vars that the parent might want
+	local EPATCH_SOURCE check
+	for check in ${CATEGORY}/{${P}-${PR},${P},${PN}}{,:${SLOT}}; do
+		EPATCH_SOURCE=${EPATCH_USER_SOURCE}/${CTARGET}/${check}
+		[[ -r ${EPATCH_SOURCE} ]] || EPATCH_SOURCE=${EPATCH_USER_SOURCE}/${CHOST}/${check}
+		[[ -r ${EPATCH_SOURCE} ]] || EPATCH_SOURCE=${EPATCH_USER_SOURCE}/${check}
+		if [[ -d ${EPATCH_SOURCE} ]] ; then
+			EPATCH_SOURCE=${EPATCH_SOURCE} \
+			EPATCH_SUFFIX="patch" \
+			EPATCH_FORCE="yes" \
+			EPATCH_MULTI_MSG="Applying user patches from ${EPATCH_SOURCE} ..." \
+			epatch
+			echo "${EPATCH_SOURCE}" > "${applied}"
+			has epatch_user_death_notice ${EBUILD_DEATH_HOOKS} || EBUILD_DEATH_HOOKS+=" epatch_user_death_notice"
+			return 0
+		fi
+	done
+	echo "none" > "${applied}"
+	return 1
+}
+
+# @FUNCTION: epatch_user_death_notice
+# @INTERNAL
+# @DESCRIPTION:
+# Include an explicit notice in the die message itself that user patches were
+# applied to this build.
+epatch_user_death_notice() {
+	ewarn "!!! User patches were applied to this build!"
+}
+
+# @FUNCTION: einstalldocs
+# @DESCRIPTION:
+# Install documentation using DOCS and HTML_DOCS.
+#
+# If DOCS is declared and non-empty, all files listed in it are
+# installed. The files must exist, otherwise the function will fail.
+# In EAPI 4 and subsequent EAPIs DOCS may specify directories as well,
+# in other EAPIs using directories is unsupported.
+#
+# If DOCS is not declared, the files matching patterns given
+# in the default EAPI implementation of src_install will be installed.
+# If this is undesired, DOCS can be set to empty value to prevent any
+# documentation from being installed.
+#
+# If HTML_DOCS is declared and non-empty, all files and/or directories
+# listed in it are installed as HTML docs (using dohtml).
+#
+# Both DOCS and HTML_DOCS can either be an array or a whitespace-
+# separated list. Whenever directories are allowed, '<directory>/.' may
+# be specified in order to install all files within the directory
+# without creating a sub-directory in docdir.
+#
+# Passing additional options to dodoc and dohtml is not supported.
+# If you needed such a thing, you need to call those helpers explicitly.
+einstalldocs() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local dodoc_opts=-r
+	has ${EAPI} 0 1 2 3 && dodoc_opts=
+
+	if ! declare -p DOCS &>/dev/null ; then
+		local d
+		for d in README* ChangeLog AUTHORS NEWS TODO CHANGES \
+				THANKS BUGS FAQ CREDITS CHANGELOG ; do
+			if [[ -s ${d} ]] ; then
+				dodoc "${d}" || die
+			fi
+		done
+	elif [[ $(declare -p DOCS) == "declare -a"* ]] ; then
+		if [[ ${DOCS[@]} ]] ; then
+			dodoc ${dodoc_opts} "${DOCS[@]}" || die
+		fi
+	else
+		if [[ ${DOCS} ]] ; then
+			dodoc ${dodoc_opts} ${DOCS} || die
+		fi
+	fi
+
+	if [[ $(declare -p HTML_DOCS 2>/dev/null) == "declare -a"* ]] ; then
+		if [[ ${HTML_DOCS[@]} ]] ; then
+			dohtml -r "${HTML_DOCS[@]}" || die
+		fi
+	else
+		if [[ ${HTML_DOCS} ]] ; then
+			dohtml -r ${HTML_DOCS} || die
+		fi
+	fi
+
+	return 0
+}
+
+# @FUNCTION: in_iuse
+# @USAGE: <flag>
+# @DESCRIPTION:
+# Determines whether the given flag is in IUSE. Strips IUSE default prefixes
+# as necessary.
+#
+# Note that this function should not be used in the global scope.
+in_iuse() {
+	debug-print-function ${FUNCNAME} "${@}"
+	[[ ${#} -eq 1 ]] || die "Invalid args to ${FUNCNAME}()"
+
+	local flag=${1}
+	local liuse=( ${IUSE} )
+
+	has "${flag}" "${liuse[@]#[+-]}"
+}
+
+;;
+esac
