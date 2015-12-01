@@ -30,7 +30,7 @@ src_compile() {
 
 src_install() {
 	dosbin ${PN}{,.sh}
-	dodoc README.md TODO
+	dodoc README.md
 	doman ${PN}.1
 	insinto /etc
 	doins ${PN}.conf
