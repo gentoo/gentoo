@@ -487,6 +487,7 @@ app-cdr/xcdroast 0.98_alpha16 0.98_alpha16-r1: Lightweight cdrtools front-end fo
 app-cdr/xdvdfs-tools 2.1-r1: Tools for manipulating Xbox ISO images
 app-cdr/xfburn 0.5.2 0.5.4: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
+app-crypt/acme 9999: An implementation of the ACME protocol
 app-crypt/acr38u 1.7.11-r1 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
 app-crypt/aescrypt 3.0.6b: Advanced file encryption using AES
 app-crypt/aespipe 2.3e 2.4c-r1: Encrypts data from stdin to stdout
@@ -542,6 +543,7 @@ app-crypt/keybase 0.8.13 0.8.18 0.8.22 0.8.23 0.8.24: Client for keybase.io
 app-crypt/keylookup 2.2 2.2-r9999: A tool to fetch PGP keys from keyservers
 app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
 app-crypt/kstart 4.1: Modified versions of kinit for refreshing kerberos tickets automatically
+app-crypt/letsencrypt 9999: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/libscrypt 1.19 1.20: Shared library to impliment the scrypt algorithm. See http://www.tarsnap.com/scrypt.html.
 app-crypt/libsecret 0.18.3: GObject library for accessing the freedesktop.org Secret Service API
 app-crypt/libu2f-host 0.0.2 0.0.4 1.0.0: Yubico Universal 2nd Factor (U2F) Host C Library
@@ -8062,6 +8064,8 @@ dev-python/zake 0.2.1: A python package that works to provide a nice set of test
 dev-python/zbase32 1.1.5: base32 encoder/decoder (not RFC 3548 compliant)
 dev-python/zc-buildout 2.3.1: System for managing development buildouts
 dev-python/zfec 1.4.24: Fast erasure codec which can be used with the command-line, C, Python, or Haskell
+dev-python/zope-component 4.2.2: Zope Component Architecture
+dev-python/zope-event 4.0.3: Event publishing / dispatch, used by Zope Component Architecture
 dev-python/zope-interface 4.1.1 4.1.2 4.1.3: Interfaces for Python
 dev-python/zsi 2.1_alpha1-r1: Web Services for Python
 dev-qt/assistant 4.8.6-r1 4.8.7 5.4.2 5.5.1: Tool for viewing on-line documentation in Qt help file format
@@ -9433,7 +9437,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 1.625.2 1.638: Extensible continuous integration server
+dev-util/jenkins-bin 1.625.2 1.638 1.639: Extensible continuous integration server
 dev-util/jif 3.1_rc1: JIF is an IDE for the creation of text adventures based on Graham Nelson's Inform standard
 dev-util/kbuild 0.1.9998_pre20120806 0.1.9998_pre20131130 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.5: A graphical debugger interface
