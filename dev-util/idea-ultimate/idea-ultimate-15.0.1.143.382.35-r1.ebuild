@@ -12,12 +12,12 @@ MY_PN="idea"
 
 DESCRIPTION="A complete toolset for web, mobile and enterprise development"
 HOMEPAGE="http://www.jetbrains.com/idea"
-SRC_URI="http://download-cf.jetbrains.com/idea/${MY_PN}IU-${PV_STRING}.tar.gz"
+SRC_URI="http://download-cf.jetbrains.com/idea/${MY_PN}IU-${MY_PV}.tar.gz -> ${MY_PN}IU-${PV_STRING}.tar.gz"
 
 LICENSE="IDEA
 	|| ( IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )"
 IUSE=""
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="!dev-util/${PN}:14
 	!dev-util/${PN}:15"
