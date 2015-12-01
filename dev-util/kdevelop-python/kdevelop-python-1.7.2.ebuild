@@ -14,7 +14,7 @@ inherit kde4-base python-any-r1
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/kdevelop/${KDEVELOP_VERSION}/src/${MY_P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	S=${WORKDIR}/${MY_P}
 fi
 
