@@ -4640,7 +4640,7 @@ dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the 
 dev-libs/libg15render 1.2-r2 9999: Small library for display text and graphics on a Logitech G15 keyboard
 dev-libs/libgamin 0.1.10-r4 0.1.10-r5: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.10.1 0.11.1: Provides functionality for gaming input devices
-dev-libs/libgcrypt 1.6.3-r4 1.6.3-r5 1.6.4: General purpose crypto library based on the code used in GnuPG
+dev-libs/libgcrypt 1.5.4-r100 1.6.3-r4 1.6.3-r5 1.6.4: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.16.1 0.17.2 0.17.3: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.7 0.6.8 0.14.0 0.16.1 0.18.0: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.20.0-r1 0.21.5 0.22.3 0.23.2-r1 0.23.3 0.23.4 9999: A linkable library for Git
@@ -7914,7 +7914,7 @@ dev-python/suds 0.4-r1 0.6 0.6-r1: Lightweight SOAP client (Jurko's fork) (py3 s
 dev-python/sudsds 1.0.1-r1: Lightweight SOAP client - Czech NIC labs fork
 dev-python/sure 1.2.3 1.2.5 1.2.5-r1: utility belt for automated testing in python for python
 dev-python/symboltype 1.0: Gives access to the peak.util.symbols module
-dev-python/sympy 0.7.4.1 0.7.6 0.7.6.1: Computer Algebra System in pure Python
+dev-python/sympy 0.7.6.1 0.7.6.1-r1: Computer Algebra System in pure Python
 dev-python/tablib 0.9.11 0.10.0: A format-agnostic tabular dataset library written in Python
 dev-python/tabulate 0.7.2 0.7.3 0.7.5: Pretty-print tabular data
 dev-python/tagpy 0.94.8-r1 2013.1: Python Bindings for TagLib
@@ -11514,7 +11514,7 @@ mail-mta/courier 0.71 0.74.0 0.74.1 0.74.1-r1 0.75.0 0.75.0-r1: An MTA designed 
 mail-mta/esmtp 1.2 1.2-r1: esmtp is a user configurable relay-only Mail Transfer Agent (MTA) with a sendmail compatible syntax
 mail-mta/exim 4.84 4.85 4.86 4.86-r1 4.86-r2: A highly configurable, drop-in replacement for sendmail
 mail-mta/mini-qmail 1.05 1.05-r1 1.06: a small null client that forwards mail via QMQP to a full qmail server
-mail-mta/msmtp 1.4.31-r1 1.4.32 1.6.0 1.6.1 1.6.2: An SMTP client and SMTP plugin for mail user agents such as Mutt
+mail-mta/msmtp 1.6.1 1.6.2 1.6.3: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06 1.06-r1 1.06-r2 1.06-r3 1.06-r4: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 5.7.3_p1 5.7.3_p1-r1: Lightweight but featured SMTP daemon from OpenBSD
