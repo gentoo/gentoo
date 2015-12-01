@@ -10,5 +10,5 @@ RDEPEND=parrot? ( >=dev-lang/parrot-6.7.0:=[unicode] ) >=dev-lang/nqp-2015.01[pa
 SLOT=0
 SRC_URI=http://rakudo.org/downloads/rakudo/rakudo-2015.02.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
-_eclasses_=eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=5a952fd2ed0521f34824765c8ed33af8

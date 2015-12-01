@@ -11,5 +11,5 @@ REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=mirror://sabayon/sys-apps/entropy-254.tar.bz2
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	eecf1a199b07109ebdf640d647bd145a	python-utils-r1	435d2b9a60ae5a1c3b65737c621716e2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	eecf1a199b07109ebdf640d647bd145a	python-utils-r1	435d2b9a60ae5a1c3b65737c621716e2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=eb6fe39d47c0d91794062bd0689ced16

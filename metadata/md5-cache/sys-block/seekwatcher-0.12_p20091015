@@ -9,5 +9,5 @@ RDEPEND=dev-python/matplotlib dev-python/numpy >=sys-block/btrace-0.0.2007073016
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~slyfox/seekwatcher-0.12_p20091015.tar.gz
 _eclass_exported_funcs=pkg_postrm:distutils pkg_postinst:- pkg_setup:- src_prepare:- src_compile:distutils src_install:distutils
-_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=ba1ee9a84ecd08055b8ffa6d5fdeef6e
