@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Sterrett <mr_bones_@gentoo.org> (01 Dec 2015)
+# No release since 2005; upstream is gone; doesn't build
+# on modern systems.
+# Masked for removal on 20151231
+games-emulation/gnomeboyadvance
+
 # Sergey Popov <pinkbyte@gentoo.org> (25 Nov 2015)
 # Dead upstream, security issues, see bug #557856
 # Removal in a month
