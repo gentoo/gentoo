@@ -4194,6 +4194,7 @@ media-sound/abcde:normalize - Add support for normalizing audio file volume leve
 media-sound/abcde:opus - Support opus encoding using opusenc
 media-sound/abcde:replaygain - Support for Replay Gain metadata, for relative volume adjustment
 media-sound/abcm2ps:pango - Use the pango library to render fonts with non-latin characters
+media-sound/alsa-utils:bat - install basic audio tester (BAT) util
 media-sound/alsa-utils:libsamplerate - install utils that use libsamplerate (e.g. alsaloop)
 media-sound/alsa-utils:ncurses - install utils that use ncurses (e.g. alsamixer)
 media-sound/alsaplayer:id3tag - Enables ID3 tagging with id3tag library
