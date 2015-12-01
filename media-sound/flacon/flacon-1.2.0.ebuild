@@ -4,18 +4,18 @@
 
 EAPI=5
 
-# Ignore rudimentary et, uz@Latn, zh_TW translation(s)
-PLOCALES="cs_CZ cs de es_MX es fr gl hu it ja_JP lt nb pl_PL pl pt_BR pt_PT ro_RO ru sr tr uk zh_CN"
+# Ignore rudimentary uz@Latn, zh_TW translation(s)
+PLOCALES="cs_CZ cs de es_MX es fr gl hu it ja_JP lt pl_PL pl pt_BR pt_PT ro_RO ru sr tr uk zh_CN"
 
-inherit cmake-utils fdo-mime gnome2-utils l10n git-r3
+inherit cmake-utils fdo-mime gnome2-utils l10n
 
 DESCRIPTION="Extracts audio tracks from an audio CD image to separate tracks"
 HOMEPAGE="https://flacon.github.io/"
-EGIT_REPO_URI="git://github.com/${PN}/${PN}.git"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="aac flac mac mp3 opus qt4 qt5 replaygain tta vorbis wavpack"
 
 DEPEND="
@@ -48,10 +48,16 @@ RDEPEND="${DEPEND}
 
 REQUIRED_USE="^^ ( qt4 qt5 )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-qpainter-error.patch"
+	"${FILESDIR}/${P}-fix-corrupt-file-crash.patch"
+	"${FILESDIR}/${P}-fix-disks-or-tracks-number-change-crash.patch"
+)
+
 src_prepare() {
-	# Ignore rudimentary et, uz@Latn, zh_TW translation(s)
+	# Ignore rudimentary uz@Latn, zh_TW translation(s)
 	rm "translations/${PN}_uz@Latn.desktop" || die
-	rm "translations/${PN}"_{et,zh_TW}.ts || die
+	rm "translations/${PN}_zh_TW.ts" || die
 
 	remove_locale() {
 		rm "translations/${PN}_${1}."{ts,desktop} || die
