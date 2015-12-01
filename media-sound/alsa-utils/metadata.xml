@@ -6,6 +6,7 @@
     <email>alsa-bugs@gentoo.org</email>
   </maintainer>
   <use>
+    <flag name="bat">install basic audio tester (BAT) util</flag>
     <flag name="libsamplerate">install utils that use libsamplerate (e.g. alsaloop)</flag>
     <flag name="ncurses">install utils that use ncurses (e.g. alsamixer)</flag>
   </use>
