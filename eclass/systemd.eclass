@@ -15,46 +15,71 @@
 # inherit systemd
 #
 # src_configure() {
-#	local myeconfargs=(
+#	local myconf=(
 #		--enable-foo
-#		--disable-bar
-#		"$(systemd_with_unitdir)"
+#		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 #	)
 #
-#	econf "${myeconfargs[@]}"
+#	econf "${myconf[@]}"
 # }
 # @CODE
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5) ;;
+	0|1|2|3|4|5|6) ;;
 	*) die "${ECLASS}.eclass API in EAPI ${EAPI} not yet established."
 esac
 
 DEPEND="virtual/pkgconfig"
 
+# @FUNCTION: _systemd_get_dir
+# @USAGE: <variable-name> <fallback-directory>
+# @INTERNAL
+# @DESCRIPTION:
+# Try to obtain the <variable-name> variable from systemd.pc.
+# If pkg-config or systemd is not installed, return <fallback-directory>
+# instead.
+_systemd_get_dir() {
+	[[ ${#} -eq 2 ]] || die "Usage: ${FUNCNAME} <variable-name> <fallback-directory>"
+	local variable=${1} fallback=${2} d
+
+	if $(tc-getPKG_CONFIG) --exists systemd; then
+		d=$($(tc-getPKG_CONFIG) --variable="${variable}" systemd) || die
+	else
+		d=${fallback}
+	fi
+
+	echo "${d}"
+}
+
 # @FUNCTION: _systemd_get_unitdir
 # @INTERNAL
 # @DESCRIPTION:
 # Get unprefixed unitdir.
-_systemd_get_unitdir() {
-	if $(tc-getPKG_CONFIG) --exists systemd; then
-		echo "$($(tc-getPKG_CONFIG) --variable=systemdsystemunitdir systemd)"
-	else
-		echo /usr/lib/systemd/system
-	fi
+_systemd_get_systemunitdir() {
+	_systemd_get_dir systemdsystemunitdir /usr/lib/systemd/system
+}
+
+# @FUNCTION: systemd_get_systemunitdir
+# @DESCRIPTION:
+# Output the path for the systemd system unit directory (not including
+# ${D}).  This function always succeeds, even if systemd is not
+# installed.
+systemd_get_systemunitdir() {
+	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
+	debug-print-function ${FUNCNAME} "${@}"
+
+	echo "${EPREFIX}$(_systemd_get_systemunitdir)"
 }
 
 # @FUNCTION: systemd_get_unitdir
 # @DESCRIPTION:
-# Output the path for the systemd unit directory (not including ${D}).
-# This function always succeeds, even if systemd is not installed.
+# Deprecated alias for systemd_get_systemunitdir.
 systemd_get_unitdir() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
-	debug-print-function ${FUNCNAME} "${@}"
+	[[ ${EAPI} == [012345] ]] || die "${FUNCNAME} is banned in EAPI 6, use systemd_get_systemunitdir instead"
 
-	echo "${EPREFIX}$(_systemd_get_unitdir)"
+	systemd_get_systemunitdir
 }
 
 # @FUNCTION: _systemd_get_userunitdir
@@ -62,11 +87,7 @@ systemd_get_unitdir() {
 # @DESCRIPTION:
 # Get unprefixed userunitdir.
 _systemd_get_userunitdir() {
-	if $(tc-getPKG_CONFIG) --exists systemd; then
-		echo "$($(tc-getPKG_CONFIG) --variable=systemduserunitdir systemd)"
-	else
-		echo /usr/lib/systemd/user
-	fi
+	_systemd_get_dir systemduserunitdir /usr/lib/systemd/user
 }
 
 # @FUNCTION: systemd_get_userunitdir
@@ -86,11 +107,7 @@ systemd_get_userunitdir() {
 # @DESCRIPTION:
 # Get unprefixed utildir.
 _systemd_get_utildir() {
-	if $(tc-getPKG_CONFIG) --exists systemd; then
-		echo "$($(tc-getPKG_CONFIG) --variable=systemdutildir systemd)"
-	else
-		echo /usr/lib/systemd
-	fi
+	_systemd_get_dir systemdutildir /usr/lib/systemd
 }
 
 # @FUNCTION: systemd_get_utildir
@@ -114,7 +131,7 @@ systemd_dounit() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
-		insinto "$(_systemd_get_unitdir)"
+		insinto "$(_systemd_get_systemunitdir)"
 		doins "${@}"
 	)
 }
@@ -128,7 +145,7 @@ systemd_newunit() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
-		insinto "$(_systemd_get_unitdir)"
+		insinto "$(_systemd_get_systemunitdir)"
 		newins "${@}"
 	)
 }
@@ -239,7 +256,7 @@ systemd_enable_service() {
 
 	local target=${1}
 	local service=${2}
-	local ud=$(_systemd_get_unitdir)
+	local ud=$(_systemd_get_systemunitdir)
 	local destname=${service##*/}
 
 	dodir "${ud}"/"${target}".wants && \
@@ -273,13 +290,13 @@ systemd_enable_ntpunit() {
 		die "The .list suffix is appended implicitly to ntpunit.d name."
 	fi
 
-	local unitdir=$(systemd_get_unitdir)
+	local unitdir=$(systemd_get_systemunitdir)
 	local s
 	for s in "${services[@]}"; do
 		if [[ ! -f "${D}${unitdir}/${s}" ]]; then
 			die "ntp-units.d provider ${s} not installed (yet?) in \${D}."
 		fi
-		echo "${s}" >> "${T}"/${ntpunit_name}.list
+		echo "${s}" >> "${T}"/${ntpunit_name}.list || die
 	done
 
 	(
@@ -296,6 +313,9 @@ systemd_enable_ntpunit() {
 # @FUNCTION: systemd_with_unitdir
 # @USAGE: [<configure-option-name>]
 # @DESCRIPTION:
+# Note: deprecated and banned in EAPI 6. Please use full --with-...=
+# parameter for improved ebuild readability.
+#
 # Output '--with-systemdsystemunitdir' as expected by systemd-aware configure
 # scripts. This function always succeeds. Its output may be quoted in order
 # to preserve whitespace in paths. systemd_to_myeconfargs() is preferred over
@@ -306,44 +326,34 @@ systemd_enable_ntpunit() {
 # argument to this function (`$(systemd_with_unitdir systemdunitdir)'). Please
 # remember to report a bug upstream as well.
 systemd_with_unitdir() {
+	[[ ${EAPI:-0} != [012345] ]] && die "${FUNCNAME} is banned in EAPI ${EAPI}, use --with-${1:-systemdsystemunitdir}=\"\$(systemd_get_systemunitdir)\" instead"
+
 	debug-print-function ${FUNCNAME} "${@}"
 	local optname=${1:-systemdsystemunitdir}
 
-	echo --with-${optname}="$(systemd_get_unitdir)"
+	echo --with-${optname}="$(systemd_get_systemunitdir)"
 }
 
 # @FUNCTION: systemd_with_utildir
 # @DESCRIPTION:
+# Note: deprecated and banned in EAPI 6. Please use full --with-...=
+# parameter for improved ebuild readability.
+#
 # Output '--with-systemdsystemutildir' as used by some packages to install
 # systemd helpers. This function always succeeds. Its output may be quoted
 # in order to preserve whitespace in paths.
 systemd_with_utildir() {
+	[[ ${EAPI:-0} != [012345] ]] && die "${FUNCNAME} is banned in EAPI ${EAPI}, use --with-systemdutildir=\"\$(systemd_get_utildir)\" instead"
+
 	debug-print-function ${FUNCNAME} "${@}"
 
 	echo --with-systemdutildir="$(systemd_get_utildir)"
 }
 
-# @FUNCTION: systemd_to_myeconfargs
-# @DESCRIPTION:
-# Add '--with-systemdsystemunitdir' as expected by systemd-aware configure
-# scripts to the myeconfargs variable used by autotools-utils eclass. Handles
-# quoting automatically.
-systemd_to_myeconfargs() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	eqawarn 'systemd_to_myeconfargs() is deprecated and will be removed on 2013-10-11.'
-	eqawarn 'Please use $(systemd_with_unitdir) instead.'
-
-	myeconfargs=(
-		"${myeconfargs[@]}"
-		--with-systemdsystemunitdir="$(systemd_get_unitdir)"
-	)
-}
-
 # @FUNCTION: systemd_update_catalog
 # @DESCRIPTION:
 # Update the journald catalog. This needs to be called after installing
-# or removing catalog files.
+# or removing catalog files. This must be called in pkg_post* phases.
 #
 # If systemd is not installed, no operation will be done. The catalog
 # will be (re)built once systemd is installed.
@@ -351,6 +361,9 @@ systemd_to_myeconfargs() {
 # See: http://www.freedesktop.org/wiki/Software/systemd/catalog
 systemd_update_catalog() {
 	debug-print-function ${FUNCNAME} "${@}"
+
+	[[ ${EBUILD_PHASE} == post* ]] \
+		|| die "${FUNCNAME} disallowed during ${EBUILD_PHASE_FUNC:-${EBUILD_PHASE}}"
 
 	# Make sure to work on the correct system.
 
