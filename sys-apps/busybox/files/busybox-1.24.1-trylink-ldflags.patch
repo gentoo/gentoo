@@ -1,0 +1,32 @@
+From 77e2bde6a50f0f6b9b3c9983c86e661a9872b5f6 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 1 Dec 2015 11:25:10 -0500
+Subject: [PATCH] trylink: include LDFLAGS when checking linkage
+
+The user might be including options in their LDFLAGS (like -fuse-ld=gold)
+that change the behavior of the linker and thus change the results of the
+flag tests.  Make sure we include the user's LDFLAGS when running these
+tests so we filter out flags that will fail when used later on.
+
+URL: https://bugs.gentoo.org/499712
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ scripts/trylink | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/trylink b/scripts/trylink
+index 6e1187e..3c431ed 100755
+--- a/scripts/trylink
++++ b/scripts/trylink
+@@ -54,7 +54,7 @@ check_cc() {
+     # "eval" may be needed if CFLAGS can contain
+     # '... -D"BB_VER=KBUILD_STR(1.N.M)" ...'
+     # and we need shell to process quotes!
+-    $CC $CFLAGS $1 "$tempname".c -o "$tempname" >/dev/null 2>&1
++    $CC $CFLAGS $LDFLAGS $1 "$tempname".c -o "$tempname" >/dev/null 2>&1
+     r=$?
+     rm -f "$tempname" "$tempname".c "$tempname".o
+     return $r
+-- 
+2.6.2
+
