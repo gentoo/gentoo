@@ -10293,7 +10293,7 @@ games-misc/opensfx 0.2.3: OpenSFX data files for OpenTTD
 games-misc/papers-please 1.1.65: A Dystopian Document Thriller
 games-misc/qlife 1.1: Simulates the classical Game of Life invented by John Conway
 games-misc/rfksay 0.1: Like cowsay, but different because it involves robots and kittens
-games-misc/robotfindskitten 1.7320508.406: Help robot find kitten
+games-misc/robotfindskitten 1.7320508.406 2.7182818.701: Help robot find kitten
 games-misc/sdljoytest 11102003: SDL app to test joysticks and game controllers
 games-misc/sex 1.0: Spouts silly mad-lib-style porn-like text
 games-misc/sound-of-sorting 0.6.3 0.6.5 0.6.6_pre20151107: Visualization and Audibilization of Sorting Algorithms
