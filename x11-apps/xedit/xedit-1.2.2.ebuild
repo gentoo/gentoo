@@ -7,7 +7,7 @@ EAPI=5
 inherit xorg-2
 
 DESCRIPTION="simple text editor for X"
-KEYWORDS="amd64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~mips ~ppc ~ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libXaw
