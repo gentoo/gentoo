@@ -1,0 +1,31 @@
+--- build.xml.orig	2015-12-01 21:10:36.689000000 +0000
++++ build.xml	2015-12-01 21:11:05.642000000 +0000
+@@ -9,11 +9,7 @@
+ 	<property name="srczip" value="jtidy-${version}-sources.zip"/>
+ 	<property name="allzip" value="jtidy-${version}.zip"/>
+ 	
+-	<target name="clean">
+-		<delete dir="${target}"/>
+-	</target>
+-	
+-	<target name="jar" depends="clean">
++  <target name="jar">
+ 		<mkdir dir="${target}"/>
+ 		<mkdir dir="${bin}"/>
+ 		<javac srcdir="${src}" destdir="${bin}" source="1.4" target="1.4"/>
+@@ -30,13 +26,13 @@
+ 		</jar>
+ 	</target>
+ 	
+-	<target name="javadoc" depends="clean">
++  <target name="javadoc">
+ 		<javadoc sourcepath="${src}" destdir="${target}/${doc}" windowtitle=" JTidy ${version} " doctitle="JTidy ${version} API documentation">
+ 			<tag name="todo" scope="all" description="To do:"/>
+ 		</javadoc>
+ 	</target>
+ 	
+-	<target name="src" depends="clean">
++  <target name="src">
+ 		<zip destfile="${target}/${srczip}">
+ 			<fileset dir=".">
+ 				<include name="${src}/**"/>
