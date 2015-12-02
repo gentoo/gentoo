@@ -5,7 +5,7 @@
 EAPI="5"
 
 DESCRIPTION="Static code analyser for PHP"
-LICENSE="GPL-3"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
