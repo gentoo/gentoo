@@ -5,6 +5,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Mike Gilbert <floppym@gentoo.org> (02 Dec 2015)
+# Needs unstable ffmpeg.
+=www-client/chromium-47* system-ffmpeg
+
 # Mike Gilbert <floppym@gentoo.org> (03 Oct 2015)
 # Unmask python3.5 for python-exec
 dev-lang/python-exec -python_targets_python3_5
