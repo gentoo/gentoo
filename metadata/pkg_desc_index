@@ -6627,7 +6627,7 @@ dev-php/mockery 0.9.0: Simple yet flexible PHP mock object framework for use in 
 dev-php/onphp 1.0.10: onPHP is the LGPL'ed multi-purpose object-oriented PHP framework
 dev-php/pear 1.9.4 1.9.5 1.10.0_alpha2: PEAR - PHP Extension and Application Repository
 dev-php/pecl-amqp 1.4.0: PHP Bindings for AMQP 0-9-1 compatible brokers
-dev-php/pecl-apcu 4.0.7 4.0.7-r1: Stripped down version of APC supporting only user cache
+dev-php/pecl-apcu 4.0.7 4.0.7-r1 4.0.8: Stripped down version of APC supporting only user cache
 dev-php/pecl-bbcode 1.0.3_beta1-r1: A quick and efficient BBCode Parsing Library
 dev-php/pecl-cairo 0.3.2: Cairo bindings for PHP
 dev-php/pecl-crack 0.4-r4: PHP interface to the cracklib libraries
