@@ -10445,7 +10445,7 @@ games-roguelike/scourge 0.21.1: A graphical rogue-like adventure game
 games-roguelike/slashem 0.0.772: Super Lotsa Added Stuff Hack - Extended Magic. A Nethack Variant
 games-roguelike/stone-soup 0.14.2-r1 0.16.2: Dungeon Crawl Stone Soup is a role-playing roguelike game of exploration and treasure-hunting in dungeons
 games-roguelike/tome 2.3.5: save the world from Morgoth and battle evil (or become evil ;])
-games-roguelike/tomenet 4.5.9: A MMORPG based on the works of J.R.R. Tolkien
+games-roguelike/tomenet 4.5.9 4.6.0: A MMORPG based on the works of J.R.R. Tolkien
 games-roguelike/wrogue 0.8.0b: Gothic science fantasy roguelike game
 games-roguelike/zangband 2.7.4c: An enhanced version of the Roguelike game Angband
 games-rpg/a-bird-story 20141106: Indie adventure short of a boy's memories, dream, and imagination
