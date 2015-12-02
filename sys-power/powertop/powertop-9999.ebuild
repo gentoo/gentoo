@@ -95,7 +95,11 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eautoreconf
+	if [[ ${PV} == "9999" ]] ; then
+		eautoreconf
+	else
+		default
+	fi
 }
 
 src_configure() {

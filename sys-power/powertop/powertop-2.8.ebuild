@@ -94,6 +94,14 @@ pkg_setup() {
 	fi
 }
 
+src_prepare() {
+	if [[ ${PV} == "9999" ]] ; then
+		eautoreconf
+	else
+		default
+	fi
+}
+
 src_configure() {
 	export ac_cv_search_delwin=$(usex unicode -lncursesw -lncurses)
 	econf $(use_enable nls)
