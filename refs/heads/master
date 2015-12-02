@@ -1,26 +1,25 @@
 certificate version 0.1
-pusher 0xEE05E6F6A48F6136 1449086329 -0800
-pushee git+ssh://git.gentoo.org/repo/gentoo
-nonce 1449086329-6338877047d707b6f9f5
+pusher EFB4464E! 1449086923 +0100
+pushee git.gentoo.org:repo/gentoo
+nonce 1449086923-5e6ff37e5c90c8a2aa76
 
-8eff1b80294e92ebc2f0273980ccabdc615f85f3 820fdc9407bdaa93ca642f7a67ac1e0d5694ff2c refs/heads/master
+820fdc9407bdaa93ca642f7a67ac1e0d5694ff2c 0d74df1e9a28fe9f9785b926a7c69ba3b29f5a01 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v2.1
-Comment: Robbat2 @ Orbis-Terrarum Networks - The text below is a digital signature. If it doesn't make any sense to you, ignore it.
+Version: GnuPG v2
 
-iQJ8BAABCgBmBQJWX015XxSAAAAAAC4AKGlzc3Vlci1mcHJAbm90YXRpb25zLm9w
-ZW5wZ3AuZmlmdGhob3JzZW1hbi5uZXRCREVCQjZBNTJGMTU2RkRGMzE2OEQ5MTEx
-OTM5NUYyM0M1ODgyNkM0AAoJEBk5XyPFiCbEA/0QAJwFJUFE3ymq1ScOX27M+jBP
-3se/PQE2o1IwE7VP5mXzGfPKKjjIGhfqa8RTbApJS6jcXZohptlAeA6TvXQUmdOV
-F+Rp2WLQ1K4NC0z2eUk0XMLfVvTptl5oAqnDkXwWsIcP4hUzhIVLL6sk3g+gWS+A
-bQKZrF69UBZ5r4L6jLtoYmiQP9uO6ACfoU1P7+D+IkEufby8GErjFlx+Pm3jrVbe
-hLWfAjq8PmCvzSUuZ3InltKnUijAmpMfTOKufvbdoQqXjpNmvJehD1SCY/anz24I
-IsqEyzbvMMjscxZCESytVWiMBIUON0ZnaOkcr9hXvf3kqk3Qp5bnoDWuJt0frJY9
-aSjjueym1CzoccUui9dUKXhdeTSW43ajRFpF6foG7am6YA4ulHIUVDDcvhVgV8C8
-K8fSOWqbYExjDpxDk03YKdRownE/DXiAvRWDsjJRdigYfz3MizUp7NhpnTjhFtLL
-dMBHuEcxJUbA4P8ryBF0kAufvkpZFSqeK2HnlfcgZxHYcWABeKja+nVgkAg2j0tj
-HwEGb4U+QQ6KLJE2W0ZgjxaBQ0ujdX4KriiAkdv4RzKcbzZmCeBijFKKwv9S/0kL
-VBwhbhJCLCZR35mI6riuRH1oct15ZzrFYAjSxSXxtaI6WkIhvA9QKeA2i389Fdqn
-xm+jLOeydewH+8VYTNGd
-=dGkV
+iQJ8BAABCgBmBQJWX0/LXxSAAAAAAC4AKGlzc3Vlci1mcHJAbm90YXRpb25zLm9w
+ZW5wZ3AuZmlmdGhob3JzZW1hbi5uZXQ2REJCMDdDQzRGMERBRDA2RUEwQUZFNDFC
+MDdBMUFFQUVGQjQ0NjRFAAoJELB6GurvtEZO1jYP/RsWaFKkkkiukg/bNffwVntN
+mTBnjhWTjitpiqMyTa0EFlyMeO84t3Jqp+S5FTBIKqkEv1KSMDvr2tffumpZrvHw
+mA/DmHqixjKKFMUuJyOq8vmUgRy/AbaWg3NEJCVJ+hznFxLquTpO/sImVb4/0Pui
+AW4mwYNiE0hAiXdQkR8hw2Uu+n3yS1E0r0PJ81TA9bakOKS9/UwEAGIaEeXhIX6G
+Lpwmblg2b6A9WeT/EqEq2Okleo0jvHqBAB+kpjeXA5n44dOp46mJsyGgU/HrV2w6
+eDVYigoDk8X+6M2bAFEzBPusinmShRv8kS5uzR/9hKXGCDeEmTY8Q3O7T4NKZ3uO
+WXWwXtpKLfbioMSdVjNYD5B23RrZndwAzpyuUDkwTEmWvQybp2iN7sVuTgd1Ue4n
+lF2CFZW8n8kkN/+J4/ld/2WAH0MNIZ05igSPJ5WmPJpgkYedNOVie87NVQQE9Klu
+mXNkCHf1rtV5DR870Yt7FyErJZH+n74seFOTDJcUpehsHpnUyrBV+L+yT0gkVYqB
+9JlBbjlcnEOJWcViWT7NsonaEh7qJgtX5DCmRdBeKVokMNdI/xL1uOkaG0+DfyO1
+djnmA0viDbGu/it6rSby6jcirto5uQrMZMWpshCcjZtbO+wv4MvdcUinfg6evG/h
+p6/1XvxmurBb6f04DwgM
+=4YDG
 -----END PGP SIGNATURE-----
