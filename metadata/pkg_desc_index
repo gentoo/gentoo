@@ -9525,7 +9525,7 @@ dev-util/pkgcheck 0.5 0.5.1 9999: pkgcore-based QA utility
 dev-util/pkgconf 0.9.11 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29 9999: Package config system that manages compile/link flags
 dev-util/pkgconfig-openbsd 20130507-r1: A perl based version of pkg-config from OpenBSD
-dev-util/plan9port 20130320 20140304 20140306: Port of many Plan 9 programs and libraries
+dev-util/plan9port 20140306 20140306-r1: Port of many Plan 9 programs and libraries
 dev-util/pmd 4.2.5: A Java source code analyzer
 dev-util/pmk 0.10.4: Aims to be an alternative to GNU autoconf
 dev-util/premake 3.7 4.3-r1: A makefile generation tool
