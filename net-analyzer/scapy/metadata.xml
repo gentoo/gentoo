@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>netmon</herd>
-<maintainer>
-<email>ikelos@gentoo.org</email>
-<name>Mike Auty</name>
-</maintainer>
-<longdescription lang="en">
+	<herd>netmon</herd>
+	<maintainer>
+		<email>ikelos@gentoo.org</email>
+		<name>Mike Auty</name>
+	</maintainer>
+	<longdescription lang="en">
 Scapy is a powerful interactive packet manipulation program.
 </longdescription>
-<use>
-<flag name='pyx'>Enable <pkg>dev-python/pyx</pkg> support for psdump/pdfdump commands</flag>
-<flag name='visual'>Enable <pkg>dev-python/visual</pkg> support for 3d graphs</flag>
-<flag name='tcpreplay'>Enable <pkg>net-analyzer/tcpreply</pkg> support for fast packet replay</flag>
-</use>
+	<use>
+		<flag name="pyx">Enable <pkg>dev-python/pyx</pkg> support for psdump/pdfdump commands</flag>
+		<flag name="visual">Enable <pkg>dev-python/visual</pkg> support for 3d graphs</flag>
+		<flag name="tcpreplay">Enable <pkg>net-analyzer/tcpreply</pkg> support for fast packet replay</flag>
+	</use>
 </pkgmetadata>
