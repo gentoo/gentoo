@@ -9541,7 +9541,7 @@ dev-util/radare2 0.9.8 0.9.9 9999: Advanced command line hexadecimal editor and 
 dev-util/ragel 6.7-r1 6.8 6.9: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.1-r2 2.3: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 0.7.4 0.7.5: Command line tools for use with Review Board
-dev-util/re2c 0.13.5-r1 0.13.6 0.13.7.5 0.14.2 0.14.3 0.15.2: tool for generating C-based recognizers from regular expressions
+dev-util/re2c 0.13.5-r1 0.13.6 0.13.7.5 0.14.2 0.14.3 0.15.2 0.15.3: tool for generating C-based recognizers from regular expressions
 dev-util/rebar 2.3.1 2.4.0 2.5.0 2.5.1: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/rec 1.6: Reverse Engineering Compiler
 dev-util/redet 8.26: A regular expression development and execution tool
