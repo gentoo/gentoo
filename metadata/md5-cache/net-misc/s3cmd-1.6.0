@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=Command line client for Amazon S3
+EAPI=5
+HOMEPAGE=http://s3tools.org/s3cmd
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~x86 ~x64-macos
+LICENSE=GPL-2
+RDEPEND=dev-python/python-dateutil[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/python-magic[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=mirror://sourceforge/s3tools/s3cmd-1.6.0.tar.gz
+_eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=distutils-r1	79bc5f4de403751e472e01fdfd98d587	eutils	d9bd2ddd85a58e470b49ca997e255a4c	multibuild	706332a8d833c077e1aa37faa1ebf162	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	ead0b4e7f0f35d7ae8b91da6e3822535	python-utils-r1	435d2b9a60ae5a1c3b65737c621716e2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=6f0a3d045d50510d9ad0a7c3afaf7396
