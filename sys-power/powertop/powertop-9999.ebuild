@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit eutils linux-info autotools
+inherit eutils linux-info
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://github.com/fenrus75/powertop.git"
 	inherit git-2 autotools
@@ -19,7 +19,7 @@ HOMEPAGE="https://01.org/powertop/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="unicode X"
+IUSE="nls unicode X"
 
 COMMON_DEPEND="
 	dev-libs/libnl:3
@@ -100,5 +100,5 @@ src_prepare() {
 
 src_configure() {
 	export ac_cv_search_delwin=$(usex unicode -lncursesw -lncurses)
-	default
+	econf $(use_enable nls)
 }
