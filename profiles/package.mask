@@ -209,16 +209,6 @@ dev-java/castor
 # apache-2.4.17 includes support for http2 now.
 www-apache/mod_h2
 
-# Amy Winston <amynka@gentoo.org> (21 Oct 2015)
-# gdal-grass-1.4.3-r1 fails to build. New version added.
-# Masked for removal in 30 days.
-# Ian Delaney <idella4@gwntoo.org (18 Oct 2015)
-# Amy Winston <amynka@gentoo.org> (18 Oct 2015)
-# Fails to build for ages. Lot of bugs repaired
-# in new version. Masked for removal in 30 days.
-=sci-geosciences/grass-6.4.2
-=sci-geosciences/gdal-grass-1.4.3-r1
-
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (16 Oct 2015)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
