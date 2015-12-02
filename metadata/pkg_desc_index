@@ -10322,7 +10322,7 @@ games-puzzle/amoebax 0.2.1: a cute and addictive action-puzzle game, similar to 
 games-puzzle/anagramarama 0.2: Create as many words as you can before the time runs out
 games-puzzle/angrydd 1.0.1-r1: Angry, Drunken Dwarves, a falling blocks game similar to Puzzle Fighter
 games-puzzle/arrows 0.6: simple maze-like game where you navigate around and destroy arrows
-games-puzzle/atomix 2.14.0 3.16.0 3.18.0: a game where you build full molecules, from simple inorganic to extremely complex organic ones
+games-puzzle/atomix 3.18.0: a game where you build full molecules, from simple inorganic to extremely complex organic ones
 games-puzzle/bastet 0.43: a simple, evil, ncurses-based Tetris(R) clone
 games-puzzle/biniax2 1.30: Logic game with arcade and tactics modes
 games-puzzle/braincurses 0.5b: An ncurses-based mastermind clone
