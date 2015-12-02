@@ -4,8 +4,9 @@
 
 EAPI=5
 
-KDE_HANDBOOK="true"
-KDE_TEST="true"
+KDE_GCC_MINIMAL="4.9"
+KDE_HANDBOOK="forceoptional"
+KDE_TEST="forceoptional"
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
@@ -15,9 +16,9 @@ HOMEPAGE="http://www.skrooge.org/"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64"
-IUSE="activities ofx"
+IUSE="activities crypt ofx"
 
-RDEPEND="
+COMMON_DEPEND="
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
@@ -25,33 +26,26 @@ RDEPEND="
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep kdbusaddons)
 	$(add_frameworks_dep kdelibs4support)
-	$(add_frameworks_dep kdesignerplugin)
-	$(add_frameworks_dep kguiaddons)
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kiconthemes)
 	$(add_frameworks_dep kio)
 	$(add_frameworks_dep kitemviews)
-	$(add_frameworks_dep kjobwidgets)
 	$(add_frameworks_dep knewstuff)
 	$(add_frameworks_dep knotifications)
 	$(add_frameworks_dep knotifyconfig)
 	$(add_frameworks_dep kparts)
 	$(add_frameworks_dep krunner)
+	$(add_frameworks_dep kservice)
+	$(add_frameworks_dep ktextwidgets)
 	$(add_frameworks_dep kwallet)
 	$(add_frameworks_dep kwidgetsaddons)
-	$(add_frameworks_dep kwindowsystem)
 	$(add_frameworks_dep kxmlgui)
 	app-crypt/qca:2[qt5]
-	dev-db/sqlite:3
 	dev-libs/grantlee:5
-	dev-libs/libxslt
-	dev-libs/qjson
-	dev-qt/designer:5
 	dev-qt/qtconcurrent:5
 	dev-qt/qtdbus:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtscript:5
 	dev-qt/qtsql:5
@@ -59,13 +53,26 @@ RDEPEND="
 	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	x11-misc/shared-mime-info
 	activities? ( $(add_frameworks_dep kactivities) )
+	crypt? ( dev-db/sqlcipher )
+	!crypt? ( dev-db/sqlite:3 )
 	ofx? ( >=dev-libs/libofx-0.9.1 )
-	!app-office/skrooge:4
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
+	$(add_frameworks_dep kdesignerplugin)
+	$(add_frameworks_dep kguiaddons)
+	$(add_frameworks_dep kjobwidgets)
+	$(add_frameworks_dep kwindowsystem)
 	dev-libs/boost
+	dev-libs/libxslt
+	dev-libs/qjson
+	dev-qt/designer:5
+	dev-qt/qtnetwork:5
+	virtual/pkgconfig
+	x11-misc/shared-mime-info
+"
+RDEPEND="${COMMON_DEPEND}
+	!app-office/skrooge:4
 "
 
 # upstream does not ship tests in releases
@@ -77,6 +84,7 @@ DOCS=( AUTHORS CHANGELOG README TODO )
 
 src_configure() {
 	local mycmakeargs=(
+		-DSKG_CIPHER=$(usex crypt)
 		$(cmake-utils_use_find_package activities KF5Activities)
 		$(cmake-utils_use_find_package ofx LibOfx)
 	)
