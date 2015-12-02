@@ -5,7 +5,6 @@
 EAPI="5"
 
 PYTHON_COMPAT=( python2_7 )
-DISTUTILS_SINGLE_IMPL=true
 
 inherit eutils distutils-r1
 
