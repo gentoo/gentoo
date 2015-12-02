@@ -2347,7 +2347,7 @@ app-text/openlp 2.0.4 2.0.5: Free church presentation software
 app-text/opensp 1.5.2-r3 1.5.2-r4: A free, object-oriented toolkit for SGML parsing and entity management
 app-text/ots 0.5.0-r1: Open source Text Summarizer, as used in newer releases of abiword and kword
 app-text/pandoc 1.12.1-r1 1.12.2.1 1.12.3.1 1.12.3.3 1.12.4 1.12.4.2-r1 1.13.1-r3 1.13.2 1.13.2-r1 1.13.2.1 1.14.0.4 1.15.0.6: Conversion between markup formats
-app-text/paperwork 0.2.3 0.2.4: a personal document manager for scanned documents (and PDFs)
+app-text/paperwork 0.2.3 0.2.4 0.2.5: a personal document manager for scanned documents (and PDFs)
 app-text/paps 0.6.8-r1: Unicode-aware text to PostScript converter
 app-text/par 1.52: a paragraph reformatter, vaguely similar to fmt, but better
 app-text/passivetex 1.25: A namespace-aware XML parser written in Tex
@@ -7562,7 +7562,7 @@ dev-python/pyndex 0.3.2a 0.3.2a-r1: Simple and fast Python full-text indexer (ak
 dev-python/pynotifier 0.7.0-r2: pyNotifier provides an implementation of a notifier/event scheduler
 dev-python/pynut 1.2: An abstraction class written in Python to access NUT (Network UPS Tools) server
 dev-python/pynzb 0.1.0-r1: Unified API for parsing NZB files
-dev-python/pyocr 0.2.4 0.3.0: an optical character recognition (OCR) tool wrapper for python
+dev-python/pyocr 0.2.4 0.3.0 0.3.1: an optical character recognition (OCR) tool wrapper for python
 dev-python/pyodbc 3.0.7-r1: python ODBC module to connect to almost any database
 dev-python/pyode 1.2.0_p20100322-r1: Python bindings to the ODE physics engine
 dev-python/pyoembed 0.1.1 9999: Python library for oEmbed with auto-discovered and manually added providers
@@ -15833,7 +15833,7 @@ sci-physics/herwig 6.5.21: High Energy Physics Event Generator
 sci-physics/herwig++ 2.7.1: High-Energy Physics event generator
 sci-physics/hoomd-blue 1.0.2: a general-purpose particle simulation toolkit
 sci-physics/jaxodraw 2.0.1-r1: Java program for drawing Feynman diagrams
-sci-physics/lammps 20150210 20150515 20150515-r1 20150810 20150904 20150909 20150911 20150924 20151005 20151022 20151023 20151026 20151031 20151106: Large-scale Atomic/Molecular Massively Parallel Simulator
+sci-physics/lammps 20150210 20150515 20150515-r1 20150810 20150904 20150909 20150911 20150924 20151005 20151022 20151023 20151026 20151031 20151106 20151120: Large-scale Atomic/Molecular Massively Parallel Simulator
 sci-physics/lhapdf 5.8.4 6.1.5: Les Houches Parton Density Function unified library
 sci-physics/lightspeed 1.2a-r1: OpenGL interactive relativistic simulator
 sci-physics/looptools 2.8 2.12: Tools for evaluation of scalar and tensor one-loop integrals
