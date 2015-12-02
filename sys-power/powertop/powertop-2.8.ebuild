@@ -4,14 +4,14 @@
 
 EAPI="5"
 
-inherit eutils linux-info autotools
+inherit eutils linux-info
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://github.com/fenrus75/powertop.git"
 	inherit git-2 autotools
 	SRC_URI=""
 else
-	SRC_URI="https://01.org/powertop/sites/default/files/downloads/${P}.tar.gz"
-	KEYWORDS="amd64 arm ppc sparc x86 ~amd64-linux ~x86-linux"
+	SRC_URI="https://01.org/sites/default/files/downloads/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="tool that helps you find what software is using the most power"
@@ -19,12 +19,12 @@ HOMEPAGE="https://01.org/powertop/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="unicode X"
+IUSE="nls unicode X"
 
 COMMON_DEPEND="
 	dev-libs/libnl:3
 	sys-apps/pciutils
-	sys-libs/ncurses[unicode?]
+	sys-libs/ncurses:=[unicode?]
 "
 
 DEPEND="${COMMON_DEPEND}
@@ -95,16 +95,14 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/powertop-2.4-tinfo.patch
-	eautoreconf
+	if [[ ${PV} == "9999" ]] ; then
+		eautoreconf
+	else
+		default
+	fi
 }
 
 src_configure() {
 	export ac_cv_search_delwin=$(usex unicode -lncursesw -lncurses)
-	default
-}
-
-src_install() {
-	default
-	keepdir /var/cache/powertop
+	econf $(use_enable nls)
 }
