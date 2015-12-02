@@ -8,8 +8,8 @@ EAPI="5"
 #//------------------------------------------------------------------------------
 
 # Version Data
-GITDATE="20150830"			# Date of diff between kernel.org and lmo GIT
-GENPATCHREV="3"				# Tarball revision for patches
+GITDATE="20151004"			# Date of diff between kernel.org and lmo GIT
+GENPATCHREV="4"				# Tarball revision for patches
 
 # Directories
 S="${WORKDIR}/linux-${OKV}-${GITDATE}"
@@ -20,7 +20,7 @@ K_SECURITY_UNSUPPORTED="yes"
 K_NOUSENAME="yes"
 K_NOSETEXTRAVERSION="yes"
 K_NOUSEPR="yes"
-K_BASE_VER="4.0"
+K_BASE_VER="4.2"
 ETYPE="sources"
 
 # Inherit Eclasses

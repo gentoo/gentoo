@@ -8,8 +8,8 @@ EAPI="5"
 #//------------------------------------------------------------------------------
 
 # Version Data
-GITDATE="20150830"			# Date of diff between kernel.org and lmo GIT
-GENPATCHREV="2"				# Tarball revision for patches
+GITDATE="20151126"			# Date of diff between kernel.org and lmo GIT
+GENPATCHREV="1"				# Tarball revision for patches
 
 # Directories
 S="${WORKDIR}/linux-${OKV}-${GITDATE}"
@@ -20,12 +20,16 @@ K_SECURITY_UNSUPPORTED="yes"
 K_NOUSENAME="yes"
 K_NOSETEXTRAVERSION="yes"
 K_NOUSEPR="yes"
-K_BASE_VER="4.0"
+K_BASE_VER="4.3"
 ETYPE="sources"
 
 # Inherit Eclasses
 inherit kernel-2 eutils
 detect_version
+
+# EPATCH Vars
+# XXX: Required to properly apply Impact/Odyssey driver patches.
+EPATCH_OPTS="-F3"
 
 # Version Data
 F_KV="${PVR}"
