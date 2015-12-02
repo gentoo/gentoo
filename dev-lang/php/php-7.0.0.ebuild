@@ -410,8 +410,10 @@ src_configure() {
 		$(use_with gd jpeg-dir "${EPREFIX}/usr")
 		$(use_with gd png-dir "${EPREFIX}/usr")
 		$(use_with xpm xpm-dir "${EPREFIX}/usr")
-		$(use_with vpx vpx-dir "${EPREFIX}/usr")
 	)
+	if use vpx; then
+		our_conf+=( --with-vpx-dir="${EPREFIX}/usr" )
+	fi
 	# enable gd last, so configure can pick up the previous settings
 	our_conf+=( $(use_with gd gd) )
 
