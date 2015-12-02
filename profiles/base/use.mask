@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Brian Evans <grknight@gentoo.org> (2 Dec 2015)
+# php 5.4 is end of life, masked for removal
+php_targets_php5-4
+
 # Daniel Kuehn <lejonet@gentoo.org> (13 Nov 2015)
 # Masking sssd USE-flag globally and unmasking it on the tested arches
 # to stop minor arches from blocking major arches AND prevent the dropping
