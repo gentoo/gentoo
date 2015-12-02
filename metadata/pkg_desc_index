@@ -10313,7 +10313,7 @@ games-mud/lyntin 4.2-r1: tintin mud client clone implemented in Python
 games-mud/mudix 4.3-r1: A small, stable MUD client for the console
 games-mud/powwow 1.2.16: PowWow Console MUD Client
 games-mud/tf 50_beta8-r1: A small, flexible, screen-oriented MUD client (aka TinyFugue)
-games-mud/tintin 2.01.0: (T)he k(I)cki(N) (T)ickin d(I)kumud clie(N)t
+games-mud/tintin 2.01.0 2.01.1: (T)he k(I)cki(N) (T)ickin d(I)kumud clie(N)t
 games-mud/tkmoo 0.3.32: MOO Client written in Tcl/Tk
 games-mud/trebuchet 1.075: A crossplatform TCL/TK based MUD client
 games-mud/wxmud 9999: Cross-platform MUD client
