@@ -10,7 +10,7 @@ inherit xorg-2
 
 DESCRIPTION="Tests for compliance with X RENDER extension"
 
-KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ppc ~ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libXrender
