@@ -7,19 +7,22 @@ EAPI=5
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 PYTHON_COMPAT=( python2_7 pypy )
 
-inherit check-reqs cmake-utils eutils flag-o-matic git-r3 multilib \
+inherit check-reqs cmake-utils eutils flag-o-matic multilib \
 	multilib-minimal python-r1 toolchain-funcs pax-utils
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="http://llvm.org/"
-SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/llvm.git
-	https://github.com/llvm-mirror/llvm.git"
+SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz
+	clang? ( http://llvm.org/releases/${PV}/compiler-rt-${PV}.src.tar.xz
+		http://llvm.org/releases/${PV}/cfe-${PV}.src.tar.xz
+		http://llvm.org/releases/${PV}/clang-tools-extra-${PV}.src.tar.xz )
+	lldb? ( http://llvm.org/releases/${PV}/lldb-${PV}.src.tar.xz )
+	!doc? ( http://dev.gentoo.org/~voyageur/distfiles/${P}-manpages.tar.bz2 )"
 
 LICENSE="UoI-NCSA"
 SLOT="0/${PV}"
-KEYWORDS=""
-IUSE="clang debug +doc gold libedit +libffi lldb multitarget ncurses ocaml
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+IUSE="clang debug doc gold libedit +libffi lldb multitarget ncurses ocaml
 	python +static-analyzer test xml video_cards_radeon kernel_Darwin"
 
 COMMON_DEPEND="
@@ -39,7 +42,8 @@ COMMON_DEPEND="
 	ocaml? (
 		>=dev-lang/ocaml-4.00.0:0=
 		dev-ml/findlib
-		dev-ml/ocaml-ctypes )"
+		dev-ml/ocaml-ctypes
+		!!<=sys-devel/llvm-3.7.0-r1[ocaml] )"
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
 DEPEND="${COMMON_DEPEND}
 	dev-lang/perl
@@ -70,6 +74,8 @@ PDEPEND="clang? ( =sys-devel/clang-${PV}-r100 )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	lldb? ( clang xml )
 	test? ( || ( $(python_gen_useflags 'python*') ) )"
+
+S=${WORKDIR}/${P/_}.src
 
 pkg_pretend() {
 	# in megs
@@ -124,40 +130,30 @@ pkg_setup() {
 }
 
 src_unpack() {
-	if use clang; then
-		git-r3_fetch "http://llvm.org/git/compiler-rt.git
-			https://github.com/llvm-mirror/compiler-rt.git"
-		git-r3_fetch "http://llvm.org/git/clang.git
-			https://github.com/llvm-mirror/clang.git"
-		git-r3_fetch "http://llvm.org/git/clang-tools-extra.git
-			https://github.com/llvm-mirror/clang-tools-extra.git"
-	fi
-	if use lldb; then
-		git-r3_fetch "http://llvm.org/git/lldb.git
-			https://github.com/llvm-mirror/lldb.git"
-	fi
-	git-r3_fetch
+	default
 
 	if use clang; then
-		git-r3_checkout http://llvm.org/git/compiler-rt.git \
-			"${S}"/projects/compiler-rt
-		git-r3_checkout http://llvm.org/git/clang.git \
-			"${S}"/tools/clang
-		git-r3_checkout http://llvm.org/git/clang-tools-extra.git \
-			"${S}"/tools/clang/tools/extra
+		mv "${WORKDIR}"/cfe-${PV/_}.src "${S}"/tools/clang \
+			|| die "clang source directory move failed"
+		mv "${WORKDIR}"/compiler-rt-${PV/_}.src "${S}"/projects/compiler-rt \
+			|| die "compiler-rt source directory move failed"
+		mv "${WORKDIR}"/clang-tools-extra-${PV/_}.src "${S}"/tools/clang/tools/extra \
+			|| die "clang-tools-extra source directory move failed"
 	fi
+
 	if use lldb; then
-		git-r3_checkout http://llvm.org/git/lldb.git \
-			"${S}"/tools/lldb
+		mv "${WORKDIR}"/lldb-${PV/_}.src "${S}"/tools/lldb \
+			|| die "lldb source directory move failed"
 	fi
-	git-r3_checkout
 }
 
 src_prepare() {
 	# Make ocaml warnings non-fatal, bug #537308
 	sed -e "/RUN/s/-warn-error A//" -i test/Bindings/OCaml/*ml  || die
 	# Fix libdir for ocaml bindings install, bug #559134
-	epatch "${FILESDIR}"/cmake/${PN}-3.7.0-ocaml-multilib.patch
+	epatch "${FILESDIR}"/cmake/${P}-ocaml-multilib.patch
+	# Do not build/install ocaml docs with USE=-doc, bug #562008
+	epatch "${FILESDIR}"/cmake/${P}-ocaml-build_doc.patch
 
 	# Make it possible to override Sphinx HTML install dirs
 	# https://llvm.org/bugs/show_bug.cgi?id=23780
@@ -171,9 +167,6 @@ src_prepare() {
 	# https://llvm.org/bugs/show_bug.cgi?id=18341
 	epatch "${FILESDIR}"/cmake/0004-cmake-Do-not-install-libgtest.patch
 
-	# Allow custom cmake build types (like 'Gentoo')
-	epatch "${FILESDIR}"/cmake/${PN}-3.8-allow_custom_cmake_build_types.patch
-
 	# Fix llvm-config for shared linking and sane flags
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
 	epatch "${FILESDIR}"/llvm-3.7-llvm-config.patch
@@ -182,12 +175,19 @@ src_prepare() {
 		# Automatically select active system GCC's libraries, bugs #406163 and #417913
 		epatch "${FILESDIR}"/clang-3.5-gentoo-runtime-gcc-detection-v3.patch
 
-		epatch "${FILESDIR}"/clang-3.8-gentoo-install.patch
+		epatch "${FILESDIR}"/clang-3.6-gentoo-install.patch
+
+		sed -i -e "s^@EPREFIX@^${EPREFIX}^" \
+			tools/clang/tools/scan-build/scan-build || die
 
 		# Install clang runtime into /usr/lib/clang
 		# https://llvm.org/bugs/show_bug.cgi?id=23792
-		epatch "${FILESDIR}"/cmake/clang-0001-Install-clang-runtime-into-usr-lib-without-suffix-3.8.patch
+		epatch "${FILESDIR}"/cmake/clang-0001-Install-clang-runtime-into-usr-lib-without-suffix.patch
 		epatch "${FILESDIR}"/cmake/compiler-rt-0001-cmake-Install-compiler-rt-into-usr-lib-without-suffi.patch
+
+		# Do not force -march flags on arm platforms
+		# https://bugs.gentoo.org/show_bug.cgi?id=562706
+		epatch "${FILESDIR}"/cmake/${P}-compiler_rt_arm_march_flags.patch
 
 		# Make it possible to override CLANG_LIBDIR_SUFFIX
 		# (that is used only to find LLVMgold.so)
@@ -205,6 +205,15 @@ src_prepare() {
 		# https://llvm.org/bugs/show_bug.cgi?id=18841
 		sed -e 's/add_subdirectory(readline)/#&/' \
 			-i tools/lldb/scripts/Python/modules/CMakeLists.txt || die
+
+		# Fix Python paths, bugs #562436 and #562438
+		epatch "${FILESDIR}"/${PN}-3.7-lldb_python.patch
+		sed -e "s/GENTOO_LIBDIR/$(get_libdir)/" \
+			-i tools/lldb/scripts/Python/finishSwigPythonLLDB.py || die
+
+		# Fix build with ncurses[tinfo], #560474
+		# http://llvm.org/viewvc/llvm-project?view=revision&revision=247842
+		epatch "${FILESDIR}"/cmake/${P}-lldb_tinfo.patch
 	fi
 
 	# User patches
@@ -386,7 +395,7 @@ src_install() {
 
 	if use clang; then
 		# note: magic applied in multilib_src_install()!
-		CLANG_VERSION=3.8
+		CLANG_VERSION=${PV%.*}
 
 		MULTILIB_CHOST_TOOLS+=(
 			/usr/bin/clang
@@ -409,8 +418,8 @@ multilib_src_install() {
 	cmake-utils_src_install
 
 	if multilib_is_native_abi; then
-		# Install docs.
-		#use doc && dohtml -r "${S}"/docs/_build/html/
+		# Install man pages.
+		use doc || doman "${WORKDIR}"/${P}-manpages/*.1
 
 		# Symlink the gold plugin.
 		if use gold; then
@@ -465,9 +474,22 @@ multilib_src_install_all() {
 	if use clang; then
 		pushd tools/clang >/dev/null || die
 
+		if use static-analyzer ; then
+			pushd tools/scan-build >/dev/null || die
+
+			dobin ccc-analyzer scan-build
+			dosym ccc-analyzer /usr/bin/c++-analyzer
+			doman scan-build.1
+
+			insinto /usr/share/llvm
+			doins scanview.css sorttable.js
+
+			popd >/dev/null || die
+		fi
+
 		python_inst() {
 			if use static-analyzer ; then
-				pushd tools/scan-view/bin >/dev/null || die
+				pushd tools/scan-view >/dev/null || die
 
 				python_doscript scan-view
 
@@ -476,8 +498,6 @@ multilib_src_install_all() {
 				python_domodule *.py Resources
 
 				popd >/dev/null || die
-
-				# TODO: remove files installed in /usr/share
 			fi
 
 			if use python ; then
