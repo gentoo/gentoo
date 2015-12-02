@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-	</maintainer>
+		<herd>proxy-maintainers</herd>
+		<maintainer>
+		<email>mike@michaellawrenceit.com</email>
+		<name>Michael R. Lawrence</name>
+		<description>proxy maintainer and recipient of bugs</description>
+		<longdescription lang="en">A GUI that Makes the operation Of FSarchiver and backing up Hardrives super Easy
+		</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">qt4-fsarchiver</remote-id>
 	</upstream>
