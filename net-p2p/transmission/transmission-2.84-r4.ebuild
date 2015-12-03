@@ -15,7 +15,7 @@ SRC_URI="http://download.transmissionbt.com/${PN}/files/${P}.tar.xz"
 LICENSE="|| ( GPL-2 GPL-3 Transmission-OpenSSL-exception ) GPL-2 MIT"
 SLOT=0
 IUSE="ayatana gtk lightweight systemd qt4 qt5 xfs"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux"
+KEYWORDS="amd64 ~arm ~mips ppc ppc64 x86 ~x86-fbsd ~amd64-linux"
 
 RDEPEND=">=dev-libs/libevent-2.0.10:=
 	dev-libs/openssl:0=
@@ -31,16 +31,16 @@ RDEPEND=">=dev-libs/libevent-2.0.10:=
 		)
 	systemd? ( sys-apps/systemd:= )
 	qt4? (
-		dev-qt/qtcore:4=
-		dev-qt/qtgui:4=
-		dev-qt/qtdbus:4=
+		dev-qt/qtcore:4
+		dev-qt/qtgui:4
+		dev-qt/qtdbus:4
 		)
 	qt5? (
-		dev-qt/qtcore:5=
-		dev-qt/qtdbus:5=
-		dev-qt/qtgui:5=
-		dev-qt/qtnetwork:5=
-		dev-qt/qtwidgets:5=
+		dev-qt/qtcore:5
+		dev-qt/qtdbus:5
+		dev-qt/qtgui:5
+		dev-qt/qtnetwork:5
+		dev-qt/qtwidgets:5
 		)"
 DEPEND="${RDEPEND}
 	>=dev-libs/glib-2.32
@@ -48,6 +48,7 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/os-headers
 	virtual/pkgconfig
+	qt5? ( dev-qt/linguist-tools:5 )
 	xfs? ( sys-fs/xfsprogs )"
 
 REQUIRED_USE="ayatana? ( gtk ) ?? ( qt4 qt5 )"
@@ -73,6 +74,8 @@ src_prepare() {
 	sed -i -e '1iQMAKE_CXXFLAGS += -std=c++11' qt/qtr.pro || die
 
 	epatch "${FILESDIR}/2.84-miniupnp14.patch"
+	epatch "${FILESDIR}/2.84-libevent-2.1.5.patch"
+	epatch "${FILESDIR}/2.84-node_alloc-segfault.patch"
 
 	epatch_user
 	eautoreconf
@@ -99,10 +102,11 @@ src_compile() {
 	emake
 
 	if use qt4 || use qt5; then
-		use qt4 && local -x QT_SELECT=4
-		use qt5 && local -x QT_SELECT=5
+		local qt_bindir
+		use qt4 && qt_bindir=$(qt4_get_bindir)
+		use qt5 && qt_bindir=$(qt5_get_bindir)
 		emake -C qt
-		lrelease qt/translations/*.ts || die
+		"${qt_bindir}"/lrelease qt/translations/*.ts || die
 	fi
 }
 
