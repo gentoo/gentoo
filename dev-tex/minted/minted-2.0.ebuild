@@ -6,7 +6,7 @@ EAPI=5
 
 inherit latex-package
 
-DESCRIPTION="LaTeX package that facilitates expressive syntax highlighting in using the powerful Pygments library"
+DESCRIPTION="LaTeX package for source code syntax highlighting"
 HOMEPAGE="https://github.com/gpoore/minted"
 SRC_URI="https://github.com/gpoore/minted/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
