@@ -18,5 +18,6 @@ RDEPEND="
 	dev-ros/cv_bridge
 	dev-ros/image_geometry
 	dev-ros/opencv_tests
+	dev-ros/opencv_apps
 "
 DEPEND="${RDEPEND}"
