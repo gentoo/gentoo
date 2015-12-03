@@ -43,7 +43,7 @@ else
 	inherit bash-completion-r1 eutils
 	SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.xz
 		${COMMON_URI}"
-	KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+	KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86"
 fi
 
 DESCRIPTION="Gentoo automatic kernel building scripts"
