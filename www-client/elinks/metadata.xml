@@ -9,7 +9,9 @@
 	<use>
 		<flag name='bittorrent'>Enable support for the BitTorrent protocol</flag>
 		<flag name='finger'>Enable support for the finger protocol</flag>
+		<flag name='gc'>Enable garbage collection support via <pkg>dev-libs/boehm-gc</pkg></flag>
 		<flag name='gopher'>Enable support for the gopher protocol</flag>
 		<flag name='mouse'>Make elinks to grab all mouse events</flag>
+		<flag name='xml'>Enable support for bookmarks via <pkg>dev-libs/expat</pkg></flag>
 	</use>
 </pkgmetadata>
