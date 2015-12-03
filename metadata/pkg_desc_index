@@ -14779,7 +14779,7 @@ net-p2p/smet2html 0.1: Convert eDonkey2000 server.met to html
 net-p2p/soulseek-qt 20131106-r1: Official binary Qt SoulSeek client
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6: A torrent file parser
-net-p2p/transmission 2.84 2.84-r1 2.84-r3: A Fast, Easy and Free BitTorrent client
+net-p2p/transmission 2.84-r4: A Fast, Easy and Free BitTorrent client
 net-p2p/transmission-remote-cli 1.6.3 1.7.0: Ncurses interface for the Transmission BitTorrent client
 net-p2p/transmission-remote-gtk 1.0 1.1.1: GTK+ client for management of the Transmission BitTorrent client, over HTTP RPC
 net-p2p/tribler 6.0.3 6.3.3-r1: Bittorrent client that does not require a website to discover content
