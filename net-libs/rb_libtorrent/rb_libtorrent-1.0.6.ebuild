@@ -17,7 +17,7 @@ MY_PV=$(replace_all_version_separators '_' )
 S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="C++ BitTorrent implementation focusing on efficiency and scalability"
-HOMEPAGE="http://www.rasterbar.com/products/libtorrent/"
+HOMEPAGE="http://libtorrent.org"
 SRC_URI="https://github.com/arvidn/libtorrent/releases/download/libtorrent-${MY_PV}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
