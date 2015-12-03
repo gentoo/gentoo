@@ -83,8 +83,7 @@ multilib_src_install() {
 	fi
 
 	if multilib_is_native_abi && use java; then
-		java-pkg_dojar "${BUILD_DIR}"/.libs/${PN}-j2se-${PV}.jar
-		doenvd "${FILESDIR}"/90${PN}
+		java-pkg_dojar "${BUILD_DIR}"/.libs/${PN}-j2se-*.jar
 	fi
 }
 
