@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/python2-${PN}/python2-${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="python-2"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 IUSE="doc examples"
 
 RDEPEND="dev-util/dialog"
