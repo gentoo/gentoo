@@ -4,15 +4,24 @@
 
 EAPI=5
 
-inherit autotools java-pkg-opt-2 flag-o-matic eutils multilib-minimal
+if [ "${PV#9999}" != "${PV}" ] ; then
+	VCSECLASS="git-r3"
+	KEYWORDS=""
+	EGIT_REPO_URI="git://git.videolan.org/libbluray.git"
+	SRC_URI=""
+else
+	VCSECLASS=""
+	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+	SRC_URI="http://ftp.videolan.org/pub/videolan/libbluray/${PV}/${P}.tar.bz2"
+fi
+
+inherit autotools ${VCSECLASS} java-pkg-opt-2 flag-o-matic eutils multilib-minimal
 
 DESCRIPTION="Blu-ray playback libraries"
 HOMEPAGE="http://www.videolan.org/developers/libbluray.html"
-SRC_URI="http://ftp.videolan.org/pub/videolan/libbluray/${PV}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="aacs bdplus +fontconfig java static-libs +truetype utils +xml"
 
 COMMON_DEPEND="
@@ -76,7 +85,7 @@ multilib_src_install() {
 	if multilib_is_native_abi && use utils; then
 		dobin index_dump mobj_dump mpls_dump
 		cd .libs/
-		dobin bd_info bdsplice clpi_dump hdmv_test libbluray_test list_titles sound_dump
+		dobin index_dump mobj_dump mpls_dump bd_info bdsplice clpi_dump hdmv_test libbluray_test list_titles sound_dump
 		if use java; then
 			dobin bdj_test
 		fi
