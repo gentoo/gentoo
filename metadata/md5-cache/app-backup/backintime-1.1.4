@@ -4,7 +4,7 @@ DESCRIPTION=A simple backup system inspired by TimeVault and FlyBack, with a GUI
 EAPI=5
 HOMEPAGE=http://backintime.le-web.org/
 IUSE=qt4 python_targets_python3_3 python_targets_python3_4 python_single_target_python3_3 python_single_target_python3_4
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=python_single_target_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_single_target_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_5(-),-python_single_target_python2_7(-),python_single_target_python3_3(+)?,python_single_target_python3_4(+)?] dev-python/dbus-python[python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_5(-),-python_single_target_python2_7(-),python_single_target_python3_3(+)?,python_single_target_python3_4(+)?] dev-python/keyring[python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_5(-),-python_single_target_python2_7(-),python_single_target_python3_3(+)?,python_single_target_python3_4(+)?] net-misc/openssh net-misc/rsync[xattr,acl]
 REQUIRED_USE=^^ ( python_single_target_python3_3 python_single_target_python3_4 ) python_single_target_python3_3? ( python_targets_python3_3 ) python_single_target_python3_4? ( python_targets_python3_4 )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://backintime.le-web.org/download/backintime/backintime-1.1.4.tar.gz
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	eecf1a199b07109ebdf640d647bd145a	python-utils-r1	435d2b9a60ae5a1c3b65737c621716e2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=7b7134fc93222845ef213b798c44fc37
+_md5_=47d62e442a09cb61b6ff0adb4fc20050
