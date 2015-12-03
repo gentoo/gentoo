@@ -10,5 +10,5 @@ RDEPEND=virtual/libusb:0 >=dev-libs/libg15-1.2.4 >=dev-libs/libg15render-1.2 per
 SLOT=0
 SRC_URI=mirror://sourceforge/g15daemon/g15daemon-1.9.5.3.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_test:perl-module src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	d9bd2ddd85a58e470b49ca997e255a4c	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	c33a06e499e64c25a40c02377173ce37	perl-module	f6f618e05c3182f044c96da774b0c4e9	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	d9bd2ddd85a58e470b49ca997e255a4c	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	bb696d2fa83d594dd8a900d0cb858a95	perl-module	f6f618e05c3182f044c96da774b0c4e9	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=cbfc17b2119d6b3578d361a49a9447e0
