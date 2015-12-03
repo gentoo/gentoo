@@ -6,6 +6,7 @@
     <flag name='aacs'>Add support for decryption of AACS</flag>
     <flag name='bdplus'>Use <pkg>media-libs/libbdplus</pkg> for BD+ decryption</flag>
     <flag name='java'>Add support for BD-J</flag>
+	<flag name='udf'>Add UDF (Universal Disk Format) support</flag>
     <flag name='utils'>Install command-line utilities and examples</flag>
   </use>
 </pkgmetadata>
