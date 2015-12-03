@@ -24,7 +24,7 @@ IUSE="debug +modules qt4 static-libs pax_kernel gdm-hack"
 LICENSE="AMD GPL-2 QPL-1.0"
 KEYWORDS="-* amd64 x86"
 
-RESTRICT="bindist test fetch"
+RESTRICT="bindist test"
 
 RDEPEND="
 	<=x11-base/xorg-server-1.17.49[-minimal]
