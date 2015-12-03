@@ -1,0 +1,102 @@
+--- LVM2.2.02.129/configure.in
++++ LVM2.2.02.129/configure.in
+@@ -1287,6 +1287,7 @@
+ 			   fi])
+ 	if test "$BLKID_WIPING" = yes; then
+ 		BLKID_PC="blkid"
++		BLKID_STATIC_LIBS=`$PKG_CONFIG --static --libs $BLKID_PC`
+ 		DEFAULT_USE_BLKID_WIPING=1
+ 		AC_DEFINE([BLKID_WIPING_SUPPORT], 1, [Define to 1 to use libblkid detection of signatures when wiping.])
+ 	else
+@@ -1332,6 +1333,7 @@
+ if test "$UDEV_SYNC" = yes; then
+ 	pkg_config_init
+ 	PKG_CHECK_MODULES(UDEV, libudev >= 143, [UDEV_PC="libudev"])
++	UDEV_STATIC_LIBS=`$PKG_CONFIG --static --libs libudev`
+ 	AC_DEFINE([UDEV_SYNC_SUPPORT], 1, [Define to 1 to enable synchronisation with udev processing.])
+ fi
+ 
+@@ -1558,19 +1560,32 @@
+ if test "$SELINUX" = yes; then
+ 	AC_CHECK_LIB([sepol], [sepol_check_context], [
+ 		AC_DEFINE([HAVE_SEPOL], 1, [Define to 1 if sepol_check_context is available.])
+-		SELINUX_LIBS="-lsepol"])
++		SEPOL_LIBS="-lsepol"])
++
++	dnl -- init pkgconfig if required
++	if  test x$PKGCONFIG_INIT != x1; then
++		pkg_config_init
++	fi
++	PKG_CHECK_MODULES(SELINUX, libselinux, [
++		SELINUX_PC="libselinux"
++		SELINUX_STATIC_LIBS=`$PKG_CONFIG --static --libs libselinux`
++		SELINUX_LIBS="$SELINUX_LIBS $SEPOL_LIBS"
++		AC_DEFINE([HAVE_SELINUX], 1, [Define to 1 to include support for selinux.])
++	],[
++		dnl -- old non-pkgconfig method, is buggy with static builds
+ 
+ 	AC_CHECK_LIB([selinux], [is_selinux_enabled], [
+ 		AC_CHECK_HEADERS([selinux/selinux.h],, hard_bailout)
+ 		AC_CHECK_HEADERS([selinux/label.h])
+ 		AC_DEFINE([HAVE_SELINUX], 1, [Define to 1 to include support for selinux.])
+-		SELINUX_LIBS="-lselinux $SELINUX_LIBS"
++		SELINUX_LIBS="-lselinux $SEPOL_LIBS"
+ 		SELINUX_PC="libselinux"
+ 		HAVE_SELINUX=yes ], [
+ 		AC_MSG_WARN(Disabling selinux)
+ 		SELINUX_LIBS=
+ 		SELINUX_PC=
+ 		HAVE_SELINUX=no ])
++	])
+ fi
+ 
+ ################################################################################
+@@ -1902,6 +1917,7 @@
+ ################################################################################
+ AC_SUBST(APPLIB)
+ AC_SUBST(AWK)
++AC_SUBST(BLKID_STATIC_LIBS)
+ AC_SUBST(BLKID_PC)
+ AC_SUBST(BUILD_CMIRRORD)
+ AC_SUBST(BUILD_DMEVENTD)
+@@ -2005,6 +2021,7 @@
+ AC_SUBST(SALCK_CFLAGS)
+ AC_SUBST(SALCK_LIBS)
+ AC_SUBST(SELINUX_LIBS)
++AC_SUBST(SELINUX_STATIC_LIBS)
+ AC_SUBST(SELINUX_PC)
+ AC_SUBST(SNAPSHOTS)
+ AC_SUBST(STATICDIR)
+@@ -2020,6 +2037,7 @@
+ AC_SUBST(CACHE_DUMP_CMD)
+ AC_SUBST(CACHE_REPAIR_CMD)
+ AC_SUBST(CACHE_RESTORE_CMD)
++AC_SUBST(UDEV_STATIC_LIBS)
+ AC_SUBST(UDEV_PC)
+ AC_SUBST(UDEV_RULES)
+ AC_SUBST(UDEV_SYNC)
+--- LVM2.2.02.129/make.tmpl.in
++++ LVM2.2.02.129/make.tmpl.in
+@@ -43,7 +43,7 @@
+ 
+ LIBS = @LIBS@
+ # Extra libraries always linked with static binaries
+-STATIC_LIBS = $(SELINUX_LIBS) $(UDEV_LIBS) $(BLKID_LIBS)
++STATIC_LIBS = $(SELINUX_STATIC_LIBS) $(UDEV_STATIC_LIBS) $(BLKID_STATIC_LIBS)
+ DEFS += @DEFS@
+ # FIXME set this only where it's needed, not globally?
+ CFLAGS ?= @COPTIMISE_FLAG@ @CFLAGS@
+@@ -58,10 +58,13 @@
+ PTHREAD_LIBS = @PTHREAD_LIBS@
+ READLINE_LIBS = @READLINE_LIBS@
+ SELINUX_LIBS = @SELINUX_LIBS@
++SELINUX_STATIC_LIBS = @SELINUX_STATIC_LIBS@
+ UDEV_CFLAGS = @UDEV_CFLAGS@
+ UDEV_LIBS = @UDEV_LIBS@
++UDEV_STATIC_LIBS = @UDEV_STATIC_LIBS@
+ BLKID_CFLAGS = @BLKID_CFLAGS@
+ BLKID_LIBS = @BLKID_LIBS@
++BLKID_STATIC_LIBS = @BLKID_STATIC_LIBS@
+ VALGRIND_CFLAGS = @VALGRIND_CFLAGS@
+ TESTING = @TESTING@
+ 

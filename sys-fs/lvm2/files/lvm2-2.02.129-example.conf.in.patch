@@ -1,0 +1,52 @@
+Maintainer note: Forward ported without editing from lvm2-2.02.108-example.conf.in.patch to apply cleanly.
+
+--- LVM2.2.02.129/conf/example.conf.in
++++ LVM2.2.02.129/conf/example.conf.in
+@@ -128,6 +128,9 @@
+ 	# Example
+ 	# Accept every block device:
+ 	# filter = [ "a|.*/|" ]
++	# Gentoo: we exclude /dev/nbd by default, because it makes a lot of kernel
++	# noise when you probed while not available.
++	filter = [ "r|/dev/nbd.*|", "a/.*/" ]
+ 	# Reject the cdrom drive:
+ 	# filter = [ "r|/dev/cdrom|" ]
+ 	# Work with just loopback devices, e.g. for testing:
+@@ -620,7 +623,8 @@
+ 	# tools need to be installed with .lvm1 suffices, e.g. vgscan.lvm1.
+ 	# They will stop working once the lvm2 on-disk metadata format is used.
+ 	# This configuration option has an automatic default value.
+-	# fallback_to_lvm1 = @DEFAULT_FALLBACK_TO_LVM1@
++	# Gentoo: the LVM tools are a seperate package.
++	fallback_to_lvm1 = 0
+ 
+ 	# Configuration option global/format.
+ 	# The default metadata format that commands should use.
+@@ -1413,7 +1417,7 @@
+ 
+ # Configuration section metadata.
+ # This configuration section has an automatic default value.
+-# metadata {
++metadata {
+ 
+ 	# Configuration option metadata/pvmetadatacopies.
+ 	# Number of copies of metadata to store on each PV.
+@@ -1431,7 +1435,8 @@
+ 	# 
+ 	# This configuration option is advanced.
+ 	# This configuration option has an automatic default value.
+-	# pvmetadatacopies = 1
++	# Gentoo: enable for data safety, but PV resize is then disabled.
++	# pvmetadatacopies = 2
+ 
+ 	# Configuration option metadata/vgmetadatacopies.
+ 	# Number of copies of metadata to maintain for each VG.
+@@ -1486,7 +1491,7 @@
+ 	# 
+ 	# This configuration option is advanced.
+ 	# This configuration option does not have a default value defined.
+-# }
++}
+ 
+ # Configuration section report.
+ # LVM report command output formatting.
