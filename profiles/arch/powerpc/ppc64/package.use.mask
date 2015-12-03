@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Justin Lecher <jlec@gentoo.org> (3 Dec 2015)
+# Missing keywords on deps #567458
+kde-apps/kalzium editor
+
 # Michael Palimaka <kensington@gentoo.org> (17 Oct 2015)
 # Unkeyworded dependencies
 dev-qt/qtwebkit webchannel
