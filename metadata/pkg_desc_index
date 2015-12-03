@@ -4095,7 +4095,7 @@ dev-java/libg 2.1.0-r1: Lots of small utilities for bndlib, a swiss army knife f
 dev-java/libmatthew-java 0.7.2-r1: A selection of libraries for Java
 dev-java/libmso 0.1: Java library to detect printers
 dev-java/libreadline-java 0.8.0-r3: A JNI-wrapper to GNU Readline
-dev-java/log4j 1.2.16 1.2.17-r2 1.2.17-r3: A low-overhead robust logging package for Java
+dev-java/log4j 1.2.17-r3: A low-overhead robust logging package for Java
 dev-java/logback 1.0.13-r1: A generic, reliable, fast & flexible logging framework for Java
 dev-java/lucene 1.4.3-r3 1.9.1 2.1.0-r1 2.1.0-r2 2.2.0 2.2.0-r1 2.3.0 2.3.1 2.3.2 2.3.2-r1 2.3.2-r2 2.4.0 2.4.1 2.4.1-r1 2.9.1-r1 2.9.4 3.0.0 3.0.3 3.4.0 3.5.0 3.6.2: High-performance, full-featured text search engine library written entirely in Java
 dev-java/lucene-analyzers 1.9.1-r1 2.3.2: Lucene Analyzers additions
@@ -4112,7 +4112,7 @@ dev-java/microba 0.4.4: Swing components for date operations and palettes
 dev-java/miglayout 4.0: Easy to use yet very powerful Java Swing layout manager
 dev-java/milton-api 2.5.1.5 2.6.5.5: Milton WebDav library
 dev-java/milton-mail-api 2.5.1.5-r1: Milton WebDav library
-dev-java/mimepull 1.8: Pull API for parsing MIME messages
+dev-java/mimepull 1.8 1.9.6: Pull API for parsing MIME messages
 dev-java/mina-core 1.1.7: Apache MINA Project
 dev-java/minlog 1.2: Minimal overhead Java logging
 dev-java/mockito 1.9.5-r1: A mocking framework for Java
@@ -4160,7 +4160,7 @@ dev-java/oracle-jdk-bin 1.7.0.80 1.8.0.65 1.8.0.66: Oracle's Java SE Development
 dev-java/oracle-jre-bin 1.7.0.80 1.8.0.66: Oracle's Java SE Runtime Environment
 dev-java/oscache 2.0.2-r3: OSCache is a widely used, high performance J2EE caching framework
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
-dev-java/osgi-core-api 5.0.0: OSGi Service Platform Core API (Companion Code)
+dev-java/osgi-core-api 5.0.0 5.0.0-r1: OSGi Service Platform Core API (Companion Code)
 dev-java/osgi-enterprise-api 5.0.0: OSGi Enterprise Release 5 Companion Code
 dev-java/osgi-foundation 1.2.0-r1: OSGi R4 Foundation EE by Apache Felix
 dev-java/osgi-obr 1.0.2: OSGi Service OBR by Apache

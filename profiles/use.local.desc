@@ -1754,7 +1754,6 @@ dev-java/jython:readline - Use GNU readline instead of jline
 dev-java/jython:servletapi - Add optional support for servlet-api
 dev-java/log4j:javamail - Build the SMTPAppender
 dev-java/log4j:jms - Build the JMSAppender
-dev-java/log4j:jmx - Build org.apace.log4j.jmx
 dev-java/logback:tomcat - Builds Apache Tomcat support
 dev-java/lucene:contrib - Include extra functionality from contrib/
 dev-java/miglayout:swt - Add support for the SWT toolkit.
