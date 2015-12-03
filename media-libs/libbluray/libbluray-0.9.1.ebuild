@@ -22,7 +22,7 @@ HOMEPAGE="http://www.videolan.org/developers/libbluray.html"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="aacs bdplus +fontconfig java static-libs +truetype utils +xml"
+IUSE="aacs bdplus +fontconfig java static-libs +truetype udf utils +xml"
 
 COMMON_DEPEND="
 	xml? ( >=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}] )
@@ -75,6 +75,7 @@ multilib_src_configure() {
 		$(use_with fontconfig) \
 		$(use_with truetype freetype) \
 		$(use_enable static-libs static) \
+		$(use_enable udf) \
 		$(use_with xml libxml2) \
 		${myconf}
 }
