@@ -36,7 +36,10 @@ DEPEND="${COMMON_DEPEND}
 
 RDEPEND="${COMMON_DEPEND}
 	!=sys-apps/grep-2.13*
-	!kernel-builtin? ( =sys-fs/zfs-kmod-${PV}* )
+	!kernel-builtin? (
+		=sys-fs/zfs-kmod-${PV}*
+		!<sys-fs/zfs-kmod-0.6.5.3-r1
+		)
 	!sys-fs/zfs-fuse
 	!prefix? ( virtual/udev )
 	test-suite? (
@@ -197,6 +200,22 @@ pkg_postinst() {
 		rm "${EROOT}etc/runlevels/shutdown/zfs-shutdown"
 	fi
 
+	einfo "sys-kernel/spl-0.6.5.3-r1, sys-fs/zfs-kmod-0.6.5.3-r1 and "
+	einfo "sys-fs/zfs-0.6.5.3-r1 have introduced a partial stable "
+	einfo "/dev/zfs API developed by ClusterHQ. This means that situations "
+	einfo "arising from the kernel modules and userland tools being "
+	einfo "mismatched on future updates will not cause problems."
+	einfo
+	einfo "In specific, this should solve the failure to mount filesystems when "
+	einfo "old modules are cached in an old initramfs provided that those "
+	einfo "modules support this API"
+	if use rootfs
+	then
+		einfo
+		ewarn "The older modules will *NOT* work with the new userland code."
+		ewarn "It is very important that you update your initramfs after this "
+		ewarn "update."
+	fi
 }
 
 pkg_postrm() {
