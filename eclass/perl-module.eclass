@@ -29,6 +29,13 @@ case "${EAPI:-0}" in
 		;;
 esac
 
+# @ECLASS-VARIABLE: GENTOO_DEPEND_ON_PERL
+# @DESCRIPTION:
+# This variable controls whether a runtime and build time dependency on
+# dev-lang/perl is automatically added by the eclass. It defaults to yes.
+# Set to no to disable, set to noslotop to add a perl dependency without
+# slot operator (EAPI=6). All packages installing into the vendor_perl
+# path must use yes here.
 
 case "${EAPI:-0}" in
 	5)
@@ -95,17 +102,58 @@ esac
 
 LICENSE="${LICENSE:-|| ( Artistic GPL-1+ )}"
 
-if [[ -n ${MY_PN} || -n ${MY_PV} || -n ${MODULE_VERSION} ]] ; then
-	: ${MY_P:=${MY_PN:-${PN}}-${MY_PV:-${MODULE_VERSION:-${PV}}}}
-	S=${MY_S:-${WORKDIR}/${MY_P}}
-fi
+# @ECLASS-VARIABLE: DIST_NAME
+# @DESCRIPTION:
+# (EAPI=6) This variable provides a way to override PN for the calculation of S,
+# SRC_URI, and HOMEPAGE. Defaults to PN.
 
-[[ -z "${SRC_URI}" && -z "${MODULE_A}" ]] && \
-	MODULE_A="${MY_P:-${P}}.${MODULE_A_EXT:-tar.gz}"
-[[ -z "${SRC_URI}" && -n "${MODULE_AUTHOR}" ]] && \
-	SRC_URI="mirror://cpan/authors/id/${MODULE_AUTHOR:0:1}/${MODULE_AUTHOR:0:2}/${MODULE_AUTHOR}/${MODULE_SECTION:+${MODULE_SECTION}/}${MODULE_A}"
-[[ -z "${HOMEPAGE}" ]] && \
-	HOMEPAGE="http://search.cpan.org/dist/${MY_PN:-${PN}}/"
+# @ECLASS-VARIABLE: DIST_VERSION
+# @DESCRIPTION:
+# (EAPI=6) This variable provides a way to override PV for the calculation of S and SRC_URI.
+# Use it to provide the non-normalized, upstream version number. Defaults to PV.
+# Named MODULE_VERSION in EAPI=5.
+
+# @ECLASS-VARIABLE: DIST_A_EXT
+# @DESCRIPTION:
+# (EAPI=6) This variable provides a way to override the distfile extension for the calculation of
+# SRC_URI. Defaults to tar.gz. Named MODULE_A_EXT in EAPI=5.
+
+# @ECLASS-VARIABLE: DIST_A
+# @DESCRIPTION:
+# (EAPI=6) This variable provides a way to override the distfile name for the calculation of
+# SRC_URI. Defaults to ${DIST_NAME}-${DIST_VERSION}.${DIST_A_EXT} Named MODULE_A in EAPI=5.
+
+# @ECLASS-VARIABLE: DIST_AUTHOR
+# @DESCRIPTION:
+# (EAPI=6) This variable sets the module author name for the calculation of
+# SRC_URI. Named MODULE_AUTHOR in EAPI=5.
+
+if [[ ${EAPI:-0} = 5 ]] ; then
+	if [[ -n ${MY_PN} || -n ${MY_PV} || -n ${MODULE_VERSION} ]] ; then
+		: ${MY_P:=${MY_PN:-${PN}}-${MY_PV:-${MODULE_VERSION:-${PV}}}}
+		S=${MY_S:-${WORKDIR}/${MY_P}}
+	fi
+	MODULE_NAME=${MY_PN:-${PN}}
+	MODULE_P=${MY_P:-${P}}
+
+	[[ -z "${SRC_URI}" && -z "${MODULE_A}" ]] && \
+		MODULE_A="${MODULE_P}.${MODULE_A_EXT:-tar.gz}"
+	[[ -z "${SRC_URI}" && -n "${MODULE_AUTHOR}" ]] && \
+		SRC_URI="mirror://cpan/authors/id/${MODULE_AUTHOR:0:1}/${MODULE_AUTHOR:0:2}/${MODULE_AUTHOR}/${MODULE_SECTION:+${MODULE_SECTION}/}${MODULE_A}"
+	[[ -z "${HOMEPAGE}" ]] && \
+		HOMEPAGE="http://search.cpan.org/dist/${MODULE_NAME}/"
+else
+	DIST_NAME=${DIST_NAME:-${PN}}
+	DIST_P=${DIST_NAME}-${DIST_VERSION:-${PV}}
+	S=${WORKDIR}/${DIST_P}
+
+	[[ -z "${SRC_URI}" && -z "${DIST_A}" ]] && \
+		DIST_A="${DIST_P}.${DIST_A_EXT:-tar.gz}"
+	[[ -z "${SRC_URI}" && -n "${DIST_AUTHOR}" ]] && \
+		SRC_URI="mirror://cpan/authors/id/${DIST_AUTHOR:0:1}/${DIST_AUTHOR:0:2}/${DIST_AUTHOR}/${DIST_SECTION:+${DIST_SECTION}/}${DIST_A}"
+	[[ -z "${HOMEPAGE}" ]] && \
+		HOMEPAGE="http://search.cpan.org/dist/${DIST_NAME}/"
+fi
 
 SRC_PREP="no"
 SRC_TEST="skip"
