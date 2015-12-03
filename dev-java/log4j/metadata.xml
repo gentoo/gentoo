@@ -5,6 +5,5 @@
   <use>
     <flag name="javamail">Build the SMTPAppender</flag>
     <flag name="jms">Build the JMSAppender</flag>
-    <flag name="jmx">Build org.apace.log4j.jmx</flag>
   </use>
 </pkgmetadata>
