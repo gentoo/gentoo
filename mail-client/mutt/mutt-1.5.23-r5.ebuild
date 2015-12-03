@@ -11,7 +11,7 @@ PATCHSET_REV="-r5"
 DESCRIPTION="A small but very powerful text-based mail client"
 HOMEPAGE="http://www.mutt.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
-	mirror://bitbucket/${PN}/${PN}/downloads/${P}.tar.gz
+	https://bitbucket.org/${PN}/${PN}/downloads/${P}.tar.gz
 	ftp://ftp.mutt.org/mutt/devel/${P}.tar.gz
 	mirror://gentoo/${P}-gentoo-patches${PATCHSET_REV}.tar.bz2
 	https://dev.gentoo.org/~grobian/distfiles/${P}-gentoo-patches${PATCHSET_REV}.tar.bz2"
