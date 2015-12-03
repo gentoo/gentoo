@@ -45,7 +45,9 @@ else
 		${OVMF_PATCHSET_URI} )
 	${UPSTREAM_PATCHSET_URI}
 	${SECURITY_PATCHSET_URI}
-	${GENTOO_PATCHSET_URI}"
+	${GENTOO_PATCHSET_URI}
+	https://dev.gentoo.org/~idella4/distfiles/xen-security-patches-0.tar.gz"
+
 	S="${WORKDIR}/xen-${MY_PV}"
 fi
 
@@ -164,7 +166,7 @@ pkg_setup() {
 src_prepare() {
 	# Upstream's patchset
 	if [[ -n ${UPSTREAM_VER} ]]; then
-		einfo "Try to apply Xen Upstream patcheset"
+		einfo "Try to apply Xen Upstream patch set"
 		EPATCH_SUFFIX="patch" \
 		EPATCH_FORCE="yes" \
 		EPATCH_OPTS="-p1" \
@@ -173,7 +175,7 @@ src_prepare() {
 
 	# Security patchset
 	if [[ -n ${SECURITY_VER} ]]; then
-		einfo "Try to apply Xen Security patcheset"
+		einfo "Try to apply Xen Security patch set"
 		source "${WORKDIR}"/patches-security/${PV}.conf
 		# apply main xen patches
 		for i in ${XEN_SECURITY_MAIN}; do
@@ -215,7 +217,7 @@ src_prepare() {
 
 	# Gentoo's patchset
 	if [[ -n ${GENTOO_VER} && -n ${GENTOO_GPV} ]]; then
-		einfo "Try to apply Gentoo specific patcheset"
+		einfo "Try to apply Gentoo specific patch set"
 		source "${FILESDIR}"/gentoo-patches.conf
 		_gpv=_gpv_${PN/-/_}_${PV//./}_${GENTOO_GPV}
 		for i in ${!_gpv}; do
@@ -227,7 +229,7 @@ src_prepare() {
 
 	# Ovmf's patchset
 	if [[ -n ${OVMF_VER} ]] && use ovmf; then
-		einfo "Try to apply Ovmf patcheset"
+		einfo "Try to apply Ovmf patch set"
 		pushd "${WORKDIR}"/ovmf-*/ > /dev/null
 		EPATCH_SUFFIX="patch" \
 		EPATCH_FORCE="yes" \
