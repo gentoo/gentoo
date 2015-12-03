@@ -14029,7 +14029,7 @@ net-libs/liblockfile 1.09: Implements functions designed to lock the standard ma
 net-libs/libmapi 1.0: Portable open-source implementations of Exchange protocols
 net-libs/libmbim 1.6.0 1.10.0 1.12.2 9999: MBIM modem protocol helper library
 net-libs/libmediawiki 4.4.0 4.12.0 4.13.0: KDE C++ interface for MediaWiki based web service as wikipedia.org
-net-libs/libmicrohttpd 0.9.42 0.9.45-r1: A small C library that makes it easy to run an HTTP server as part of another application
+net-libs/libmicrohttpd 0.9.42 0.9.45-r1 0.9.46: A small C library that makes it easy to run an HTTP server as part of another application
 net-libs/libmirisdr 9999: Software for the Mirics MSi2500 + MSi001 SDR platform
 net-libs/libmm-qt 1.0.1-r1: Modemmanager bindings for Qt
 net-libs/libmnl 1.0.3-r1: Minimalistic netlink library
@@ -14596,7 +14596,7 @@ net-misc/stargazer 2.408: Billing system for small home and office networks
 net-misc/stone 2.3e-r1: A simple TCP/IP packet repeater
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
 net-misc/strongswan 5.3.2 5.3.4 5.3.4-r1: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
-net-misc/stunnel 5.20 5.23 5.24 5.24-r1 5.26: TLS/SSL - Port Wrapper
+net-misc/stunnel 5.24 5.24-r1 5.26 5.27: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.6 1.2.6-r1 1.2.7: STUNTMAN is an open source implementation of the STUN protocol
 net-misc/suite3270 3.3.14_p11 3.3.15_p4 3.3.15_p7 3.3.15_p9 3.4_p4 3.4_p5 3.4_p6 3.4_p7 3.4_p8 3.4_p9: Complete 3270 access package
 net-misc/switzerland 0.1.0: Network Testing Tool
