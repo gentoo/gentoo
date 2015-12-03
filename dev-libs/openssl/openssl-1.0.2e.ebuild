@@ -63,7 +63,6 @@ src_prepare() {
 		epatch "${FILESDIR}"/${PN}-1.0.2-ipv6.patch
 		epatch "${FILESDIR}"/${PN}-1.0.2a-x32-asm.patch #542618
 		epatch "${FILESDIR}"/${PN}-1.0.1p-default-source.patch #554338
-		epatch "${FILESDIR}"/${PN}-1.0.2e-pod2man.patch
 
 		epatch_user #332661
 	fi
