@@ -6,11 +6,7 @@ EAPI=5
 
 inherit latex-package
 
-<<<<<<< 1b4109b06fe34ac39f3fc55996d66a9b6cc8d809
 DESCRIPTION="LaTeX package for source code syntax highlighting"
-=======
-DESCRIPTION="Expressive syntax highlighting in using the powerful Pygments library"
->>>>>>> dev-tex/minted: Chop DESCRIPTION to 80 chars
 HOMEPAGE="https://code.google.com/p/minted/"
 SRC_URI="https://minted.googlecode.com/files/${PN}-v${PV}.zip"
 
