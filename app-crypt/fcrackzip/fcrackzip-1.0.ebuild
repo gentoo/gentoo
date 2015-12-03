@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=3
+EAPI=5
 
 DESCRIPTION="a zip password cracker"
 HOMEPAGE="http://oldhome.schmorp.de/marc/fcrackzip.html"
@@ -21,7 +21,6 @@ src_prepare() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-	mv -vf "${D}"/usr/bin/{zipinfo,fcrack-zipinfo} || die
-	dodoc AUTHORS ChangeLog NEWS README
+	default
+	mv "${ED}"/usr/bin/{zipinfo,fcrack-zipinfo} || die
 }
