@@ -32,6 +32,7 @@ DEPEND="
 "
 
 RDEPEND="${DEPEND}
+	!<sys-kernel/spl-0.6.5.3-r1
 	!sys-fs/zfs-fuse
 "
 
