@@ -1,0 +1,63 @@
+upstream removed the local pod2man logic in master, but didn't in the 1.0.2e
+release.  yet they also dropped the pod2mantest helper in the 1.0.2e release
+which makes it uninstallable.  backport part of the master changes.
+
+note: this is based on top of other Gentoo parallel patches
+
+From a4a934119dd213e16c9d8b11150a4815604c13bb Mon Sep 17 00:00:00 2001
+From: Rich Salz <rsalz@openssl.org>
+Date: Wed, 10 Dec 2014 17:10:59 -0500
+Subject: [PATCH] Remove old private pod2man
+
+Include Richard's point to remove the 'sh -c' wrapper
+
+Reviewed-by: Richard Levitte <levitte@openssl.org>
+---
+ Makefile.org         |    9 +-
+ util/pod2man.pl      | 1184 --------------------------------------------------
+ util/pod2mantest     |   58 ---
+ util/pod2mantest.pod |   15 -
+ 4 files changed, 4 insertions(+), 1262 deletions(-)
+ delete mode 100755 util/pod2man.pl
+ delete mode 100755 util/pod2mantest
+ delete mode 100644 util/pod2mantest.pod
+
+diff --git a/Makefile.org b/Makefile.org
+index 8bb7e01..7c802e8 100644
+--- a/Makefile.org
++++ b/Makefile.org
+@@ -716,7 +716,6 @@ install_docs:
+ 	done
+ 
+ install_docs: install_dirs
+-	@pod2man="`cd ./util; ./pod2mantest $(PERL)`"; \
+ 	here="`pwd`"; \
+ 	filecase=; \
+ 	case "$(PLATFORM)" in DJGPP|Cygwin*|mingw*|darwin*-*-cc) \
+@@ -727,9 +726,9 @@ install_docs:
+ 		sec=`$(PERL) util/extract-section.pl 1 < $$i`; \
+ 		echo "installing man$$sec/$$fn.$${sec}$(MANSUFFIX)"; \
+ 		(cd `$(PERL) util/dirname.pl $$i`; \
+-		sh -c "$$pod2man \
++		pod2man \
+ 			--section=$$sec --center=OpenSSL \
+-			--release=$(VERSION) `basename $$i`") \
++			--release=$(VERSION) `basename $$i`) \
+ 			>  $(INSTALL_PREFIX)$(MANDIR)/man$$sec/$$fn.$${sec}$(MANSUFFIX); \
+ 		$(PERL) util/extract-names.pl < $$i | \
+ 			(grep -v $$filecase "^$$fn\$$"; true) | \
+@@ -744,9 +743,9 @@ install_docs:
+ 		sec=`$(PERL) util/extract-section.pl 3 < $$i`; \
+ 		echo "installing man$$sec/$$fn.$${sec}$(MANSUFFIX)"; \
+ 		(cd `$(PERL) util/dirname.pl $$i`; \
+-		sh -c "$$pod2man \
++		pod2man \
+ 			--section=$$sec --center=OpenSSL \
+-			--release=$(VERSION) `basename $$i`") \
++			--release=$(VERSION) `basename $$i`) \
+ 			>  $(INSTALL_PREFIX)$(MANDIR)/man$$sec/$$fn.$${sec}$(MANSUFFIX); \
+ 		$(PERL) util/extract-names.pl < $$i | \
+ 			(grep -v $$filecase "^$$fn\$$"; true) | \
+-- 
+2.6.2
+
