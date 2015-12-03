@@ -17,14 +17,15 @@ SRC_URI="https://dev.gentoo.org/~spock/portage/distfiles/elinks-0.10.4.conf.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="bittorrent bzip2 debug finger ftp gopher gpm guile idn ipv6 \
-	  javascript lua +mouse nls nntp perl ruby samba ssl unicode X zlib"
+IUSE="bittorrent bzip2 debug finger ftp gc gopher gpm guile idn ipv6
+	  javascript lua +mouse nls nntp perl ruby samba ssl unicode X xml zlib"
 RESTRICT="test"
 
-DEPEND="dev-libs/boehm-gc
-	>=dev-libs/expat-1.95.4
+DEPEND="
 	bzip2? ( >=app-arch/bzip2-1.0.2 )
+	gc? ( dev-libs/boehm-gc )
 	ssl? ( >=dev-libs/openssl-0.9.6g:0= )
+	xml? ( >=dev-libs/expat-1.95.4 )
 	X? ( x11-libs/libX11 x11-libs/libXt )
 	zlib? ( >=sys-libs/zlib-1.1.4 )
 	lua? ( >=dev-lang/lua-5:0= )
@@ -91,6 +92,7 @@ src_configure() {
 		$(use_with gpm) \
 		$(use_with zlib) \
 		$(use_with bzip2 bzlib) \
+		$(use_with gc) \
 		$(use_with X x) \
 		$(use_with lua) \
 		$(use_with guile) \
@@ -107,6 +109,7 @@ src_configure() {
 		$(use_enable finger) \
 		$(use_enable samba smb) \
 		$(use_enable mouse) \
+		$(use_enable xml xbel) \
 		${myconf}
 }
 
