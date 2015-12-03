@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
 inherit distutils-r1
 
@@ -20,3 +20,10 @@ IUSE=""
 RDEPEND="sys-apps/file[-python]"
 DEPEND="${DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
+
+# https://github.com/ahupp/python-magic/issues/97
+RESTRICT="test"
+
+python_test() {
+	esetup.py test
+}
