@@ -14673,7 +14673,7 @@ net-nds/lat 1.2.3: LDAP Administration Tool, allows you to browse LDAP-based dir
 net-nds/ldapvi 1.7-r1 1.7_p20101214: Manage LDAP entries with a text editor
 net-nds/led 1.111: led is a general purpose LDAP editor
 net-nds/nsscache 0.23: commandline tool to sync directory services to local cache
-net-nds/openldap 2.3.43-r3 2.3.43-r4 2.4.38-r2 2.4.39 2.4.40 2.4.40-r2 2.4.40-r4 2.4.42 2.4.42-r1: LDAP suite of application and development tools
+net-nds/openldap 2.3.43-r3 2.3.43-r4 2.4.38-r2 2.4.39 2.4.40 2.4.40-r2 2.4.40-r4 2.4.42 2.4.42-r1 2.4.43: LDAP suite of application and development tools
 net-nds/phpldapadmin 1.2.3 1.2.3-r1: phpLDAPadmin is a web-based tool for managing all aspects of your LDAP server
 net-nds/portmap 6.0 9999: Netkit - portmapper
 net-nds/rpcbind 0.2.0-r1 0.2.1-r1 0.2.2-r1 0.2.3 0.2.3-r1 9999: portmap replacement which supports RPC over various protocols
@@ -14771,7 +14771,7 @@ net-p2p/ppcoind 0.4.0: Cryptocurrency forked from Bitcoin which aims to be energ
 net-p2p/primecoin-qt 0.1.2-r1: Cryptocurrency forked from Bitcoin which aims to be energy efficiency
 net-p2p/primecoind 0.1.2-r1: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/pybitmessage 0.4.2 0.4.3 0.4.3-r1 0.4.4 9999: P2P communications protocol
-net-p2p/qbittorrent 3.1.9.2-r1 3.1.12 3.2.0 3.2.3 3.2.4 3.2.5 9999: BitTorrent client in C++ and Qt
+net-p2p/qbittorrent 3.1.9.2-r1 3.1.12 3.2.0 3.2.3 3.2.4 3.2.5 3.2.5-r1 9999: BitTorrent client in C++ and Qt
 net-p2p/retroshare 0.5.5c 0.6.0_rc2_pre8551 0.6.9999: P2P private sharing application
 net-p2p/rtorrent 0.9.3 0.9.4-r1 0.9.6: BitTorrent Client using libtorrent
 net-p2p/saku 3.11.0-r1: a clone of P2P anonymous BBS shinGETsu
