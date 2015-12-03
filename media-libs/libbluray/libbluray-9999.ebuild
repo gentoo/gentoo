@@ -75,7 +75,6 @@ multilib_src_install() {
 	emake DESTDIR="${D}" install
 
 	if multilib_is_native_abi && use utils; then
-		dobin index_dump mobj_dump mpls_dump
 		cd .libs/
 		dobin index_dump mobj_dump mpls_dump bd_info bdsplice clpi_dump hdmv_test libbluray_test list_titles sound_dump
 		if use java; then
