@@ -28,9 +28,7 @@ else
 	SRC_URI="http://bits.xensource.com/oss-xen/release/${MY_PV}/${MY_P}.tar.gz
 		${UPSTREAM_PATCHSET_URI}
 		${SECURITY_PATCHSET_URI}
-		${GENTOO_PATCHSET_URI}
-		https://dev.gentoo.org/~idella4/distfiles/${PN}-security-patches.tar.gz"
-
+		${GENTOO_PATCHSET_URI}"
 fi
 
 inherit mount-boot flag-o-matic python-any-r1 toolchain-funcs eutils ${live_eclass}
