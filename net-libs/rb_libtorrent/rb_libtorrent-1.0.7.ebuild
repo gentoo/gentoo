@@ -9,15 +9,16 @@ PYTHON_REQ_USE="threads"
 DISTUTILS_OPTIONAL=true
 AUTOTOOLS_AUTORECONF=true
 
-inherit autotools-utils multilib distutils-r1
+inherit autotools-utils multilib distutils-r1 versionator
 
 MY_P=${P/rb_/}
 MY_P=${MY_P/torrent/torrent-rasterbar}
+MY_PV=$(replace_all_version_separators '_' )
 S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="C++ BitTorrent implementation focusing on efficiency and scalability"
 HOMEPAGE="http://libtorrent.org"
-SRC_URI="mirror://sourceforge/libtorrent/${MY_P}.tar.gz"
+SRC_URI="https://github.com/arvidn/libtorrent/releases/download/libtorrent-${MY_PV}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -40,7 +41,9 @@ DEPEND="${RDEPEND}
 
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.0.2-python.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.2-python.patch
+)
 
 AUTOTOOLS_IN_SOURCE_BUILD=1
 
