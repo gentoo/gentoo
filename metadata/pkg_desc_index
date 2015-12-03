@@ -212,7 +212,7 @@ app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer ad
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.12 0.14 0.15: Log parsing and notification program
-app-admin/testdisk 7.0 7.0-r1 7.0-r2 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
+app-admin/testdisk 7.0-r2 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11 2.11-r1: Files which haven't been accessed in a given period of time are removed from specified directories
 app-admin/tripwire 2.4.2.2-r3: Open Source File Integrity Checker and IDS
@@ -18011,7 +18011,7 @@ x11-misc/ktsuss 2: Graphical version of su written in C and GTK+ 2
 x11-misc/launchy 2.5: utility that merges application menus, your desktop and even your file manager
 x11-misc/light-locker 1.6.0: A simple locker using lightdm
 x11-misc/lightdm 1.10.5 1.12.3 1.14.4 1.15.3 1.16.6 1.17.2: A lightweight display manager
-x11-misc/lightdm-gtk-greeter 1.3.1-r1 1.6.1 1.9.0 2.0.0 2.0.1: LightDM GTK+ Greeter
+x11-misc/lightdm-gtk-greeter 1.3.1-r1 1.6.1 1.9.0 2.0.0 2.0.1 2.0.1-r1: LightDM GTK+ Greeter
 x11-misc/lightdm-kde 0.3.2.1: LightDM KDE greeter
 x11-misc/lineak-defaultplugin 0.9.0-r1: Mute/unmute and other macros for LINEAK
 x11-misc/lineak-xosdplugin 0.9.0-r1: Xosd plugin for LINEAK
