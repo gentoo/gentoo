@@ -8,7 +8,7 @@ inherit libtool multilib-minimal eutils
 
 DESCRIPTION="A graphics library for fast image creation"
 HOMEPAGE="http://libgd.org/ http://www.boutell.com/gd/"
-SRC_URI="mirror://bitbucket/libgd/gd-libgd/downloads/lib${P}.tar.xz"
+SRC_URI="https://bitbucket.org/libgd/gd-libgd/downloads/lib${P}.tar.xz"
 
 LICENSE="gd IJG HPND BSD"
 SLOT="2/3"
