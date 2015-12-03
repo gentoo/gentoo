@@ -60,24 +60,15 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	local myconf
-	if multilib_is_native_abi && use java; then
-		export JAVACFLAGS="$(java-pkg_javac-args)"
-		append-cflags "$(java-pkg_get-jni-cflags)"
-		myconf="--enable-bdjava"
-	else
-		myconf="--disable-bdjava"
-	fi
-
 	ECONF_SOURCE="${S}" econf \
 		--disable-optimizations \
 		$(multilib_native_use_enable utils examples) \
+		$(multilib_native_use_enable java bdjava) \
 		$(use_with fontconfig) \
 		$(use_with truetype freetype) \
 		$(use_enable static-libs static) \
 		$(use_enable udf) \
-		$(use_with xml libxml2) \
-		${myconf}
+		$(use_with xml libxml2)
 }
 
 multilib_src_install() {
