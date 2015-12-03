@@ -1,0 +1,11 @@
+--- lib/Psh.pm	2007-07-21 16:40:44.000000000 +1200
++++ lib/Psh.pm	2015-07-18 05:30:29.840928282 +1200
+@@ -367,7 +367,7 @@
+ 
+ sub defined_and_nonempty
+ {
+-	if (!defined(@_))    { return 0; }
++	if (!@_)             { return 0; }
+ 	if (scalar(@_) == 0) { return 0; }
+ 
+ 	if (scalar(@_) == 1) {
