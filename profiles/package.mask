@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (03 Dec 2015)
+# Broken and outdated. Let's see off these 3 packages.
+# Masked for removal in 30 days. See bug #567326.
+app-text/epubcheck
+dev-java/css-validator
+dev-java/jigsaw
+
 # Brian Evans <grknight@gentoo.org> (02 Dec 2015)
 # All current targets are masked.
 # New version only works on PHP7.
