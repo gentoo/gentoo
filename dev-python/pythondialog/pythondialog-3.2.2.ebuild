@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/pythondialog//${PV}/python3-${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc sparc x86"
+KEYWORDS="alpha amd64 ~arm ia64 ppc sparc x86"
 IUSE="doc examples"
 
 RDEPEND="dev-util/dialog"

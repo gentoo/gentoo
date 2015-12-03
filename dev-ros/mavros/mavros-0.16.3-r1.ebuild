@@ -24,6 +24,7 @@ RDEPEND="
 	dev-ros/libmavconn
 	dev-ros/rosconsole_bridge
 	dev-libs/boost:=
+	dev-ros/eigen_conversions
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/mavros_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/diagnostic_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]

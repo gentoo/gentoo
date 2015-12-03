@@ -3,21 +3,18 @@
 # $Id$
 
 EAPI=5
-ROS_REPO_URI="https://github.com/ros-perception/vision_opencv"
+ROS_REPO_URI="https://github.com/ros-drivers/audio_common"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
+CATKIN_HAS_MESSAGES=yes
+PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
 inherit ros-catkin
 
-DESCRIPTION="Converts between ROS Image messages and OpenCV images"
+DESCRIPTION="Messages for transmitting audio via ROS"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="
-	dev-ros/cv_bridge
-	dev-ros/image_geometry
-	dev-ros/opencv_tests
-	dev-ros/opencv_apps
-"
+RDEPEND=""
 DEPEND="${RDEPEND}"
