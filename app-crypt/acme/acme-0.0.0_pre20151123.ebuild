@@ -20,7 +20,7 @@ else
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
-DESCRIPTION="An implementation of the Automatic Certificate Management Environment (ACME) protocol"
+DESCRIPTION="An implementation of the ACME protocol"
 HOMEPAGE="https://github.com/letsencrypt/letsencrypt https://letsencrypt.org/"
 
 LICENSE="Apache-2.0"
