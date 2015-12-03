@@ -9,6 +9,17 @@
 : ${GENTOO_DEPEND_ON_PERL_SUBSLOT:="no"}
 inherit perl-module
 
+case "${EAPI:-0}" in
+	5)
+		;;
+	6)
+		die "EAPI=${EAPI} is not supported by perl-app.eclass. Please use perl-module.eclass instead."
+		;;
+	*)
+		die "EAPI=${EAPI} is not supported by perl-app.eclass"
+		;;
+esac
+
 # @FUNCTION: perl-app_src_prep
 # @USAGE: perl-app_src_prep
 # @DESCRIPTION:

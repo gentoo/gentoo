@@ -18,7 +18,7 @@
 [[ ${CATEGORY} == "perl-core" ]] && inherit alternatives
 
 case "${EAPI:-0}" in
-	5)
+	5|6)
 		;;
 	*)
 		die "EAPI=${EAPI} is not supported by perl-functions.eclass"
