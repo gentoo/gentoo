@@ -7133,6 +7133,7 @@ dev-python/idna 1.1 2.0: Internationalized Domain Names in Applications (IDNA)
 dev-python/ijson 1.1 2.0 2.1 2.2: Iterative JSON parser with a Pythonic interface
 dev-python/imapclient 0.12 0.13: easy-to-use, pythonic, and complete IMAP client library
 dev-python/imdbpy 4.9-r1 5.0: Python package to access the IMDb movie database
+dev-python/iminuit 1.2: Minuit numerical function minimization in Python
 dev-python/importing 1.10: Import objects dynamically, lazily, weakly, and more
 dev-python/iniparse 0.4-r1: Better INI parser for Python
 dev-python/inotifyx 0.2.2: Python bindings to the Linux inotify file system event monitoring API
