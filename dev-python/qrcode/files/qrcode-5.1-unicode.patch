@@ -1,0 +1,34 @@
+From 0a9f17d3afb0ff01f68c2276ec0844d329a6add9 Mon Sep 17 00:00:00 2001
+From: Chris Beaven <smileychris@gmail.com>
+Date: Mon, 3 Nov 2014 10:56:14 -0600
+Subject: [PATCH] Fix script piping to stdout in Python 3
+
+Fixes #66
+---
+ qrcode/console_scripts.py | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/qrcode/console_scripts.py b/qrcode/console_scripts.py
+index d215993..c51463b 100755
+--- a/qrcode/console_scripts.py
++++ b/qrcode/console_scripts.py
+@@ -57,7 +57,18 @@ def main(args=sys.argv[1:]):
+         return
+ 
+     img = qr.make_image(image_factory=image_factory)
+-    img.save(sys.stdout)
++
++    sys.stdout.flush()
++    if sys.version_info[0] >= 3:
++        buff = sys.stdout.buffer
++    else:
++        if sys.platform == 'win32':
++            import os
++            import msvcrt
++            msvcrt.setmode(sys.stdout.fileno(), os.O_BINARY)
++        buff = sys.stdout
++
++    img.save(buff)
+ 
+ 
+ if __name__ == "__main__":
