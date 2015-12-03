@@ -23,6 +23,7 @@ IUSE="doc examples test"
 RDEPEND="
 	>=dev-python/logilab-common-0.53.0[${PYTHON_USEDEP}]
 	>=dev-python/astroid-1.3.6[${PYTHON_USEDEP}]
+	<dev-python/astroid-1.4[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
