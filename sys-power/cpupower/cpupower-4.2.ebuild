@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit multilib toolchain-funcs
+inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="Shows and sets processor power related values"
 HOMEPAGE="https://www.kernel.org/"
@@ -40,6 +40,12 @@ src_compile() {
 		LDFLAGS="${LDFLAGS}"
 		OPTIMIZATION="${CFLAGS}"
 	)
+
+	if [[ -n ${LINGUAS+set} ]]; then
+		strip-linguas -i po
+		myemakeargs+=( LANGUAGES="${LINGUAS}" )
+	fi
+
 	emake "${myemakeargs[@]}"
 }
 
