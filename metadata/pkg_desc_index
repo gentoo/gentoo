@@ -487,7 +487,7 @@ app-cdr/xcdroast 0.98_alpha16 0.98_alpha16-r1: Lightweight cdrtools front-end fo
 app-cdr/xdvdfs-tools 2.1-r1: Tools for manipulating Xbox ISO images
 app-cdr/xfburn 0.5.2 0.5.4: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
-app-crypt/acme 0.0.0_pre20151123 9999: An implementation of the Automatic Certificate Management Environment (ACME) protocol
+app-crypt/acme 0.1.0 9999: An implementation of the Automatic Certificate Management Environment (ACME) protocol
 app-crypt/acr38u 1.7.11-r1 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
 app-crypt/aescrypt 3.0.6b: Advanced file encryption using AES
 app-crypt/aespipe 2.3e 2.4c-r1: Encrypts data from stdin to stdout
@@ -543,7 +543,7 @@ app-crypt/keybase 0.8.13 0.8.18 0.8.22 0.8.23 0.8.24 0.8.25: Client for keybase.
 app-crypt/keylookup 2.2 2.2-r9999: A tool to fetch PGP keys from keyservers
 app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
 app-crypt/kstart 4.1: Modified versions of kinit for refreshing kerberos tickets automatically
-app-crypt/letsencrypt 0.0.0_pre20151123 9999: Let's Encrypt client to automate deployment of X.509 certificates
+app-crypt/letsencrypt 0.1.0 9999: Let's Encrypt client to automate deployment of X.509 certificates
 app-crypt/libscrypt 1.19 1.20: Shared library to impliment the scrypt algorithm. See http://www.tarsnap.com/scrypt.html.
 app-crypt/libsecret 0.18.3: GObject library for accessing the freedesktop.org Secret Service API
 app-crypt/libu2f-host 0.0.2 0.0.4 1.0.0: Yubico Universal 2nd Factor (U2F) Host C Library
@@ -4821,7 +4821,7 @@ dev-libs/openct 0.6.20-r3 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.5 1.7.1: An implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.12.2-r2 0.13.0 0.14.0 0.15.0: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.4-r1: A collection of special mathematical functions
-dev-libs/openssl 0.9.8z_p7 1.0.1p 1.0.2a 1.0.2b 1.0.2c 1.0.2d 1.0.2d-r2: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 0.9.8z_p7 0.9.8z_p8 1.0.1p 1.0.2a 1.0.2b 1.0.2c 1.0.2d 1.0.2d-r2 1.0.2e: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r2 1.6.2-r4: An ISO-C:1999 API and corresponding CLI for the generation of DCE 1.1, ISO/IEC 11578:1996 and RFC 4122 compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/papi 5.3.0 5.4.0: Performance Application Programming Interface
@@ -14330,7 +14330,7 @@ net-misc/dibbler 0.8.4 1.0.0_rc2 1.0.0 1.0.1: Portable DHCPv6 implementation (se
 net-misc/directvnc 0.7.6-r1 0.7.8: Very thin VNC client for unix framebuffer systems
 net-misc/dleyna-server 0.5.0: library for implementing services that allow clients to discover, browse and manipulate DLNA Servers
 net-misc/dnetstats 1.2.6-r3: Qt4 network monitor utility
-net-misc/dropbear 2014.66 2015.67 2015.68 2015.70: small SSH 2 client/server designed for small memory environments
+net-misc/dropbear 2014.66 2015.67 2015.68 2015.71: small SSH 2 client/server designed for small memory environments
 net-misc/dropbox 2.10.2 3.6.8: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
