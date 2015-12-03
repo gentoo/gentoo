@@ -29,14 +29,28 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="dbus debug declarative designer doc examples gles2 gui help multimedia
 	network opengl positioning printsupport sensors serialport sql svg
 	testlib webchannel webkit websockets widgets x11extras xmlpatterns"
+
+# The requirements below were extracted from configure.py
+# and from the output of 'grep -r "%Import " "${S}"/sip'
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
+	declarative? ( gui network )
+	designer? ( widgets )
+	help? ( gui widgets )
+	multimedia? ( gui network )
+	opengl? ( gui widgets )
 	positioning? ( gui )
+	printsupport? ( widgets )
 	sensors? ( gui )
 	serialport? ( gui )
 	sql? ( widgets )
+	svg? ( gui widgets )
 	testlib? ( widgets )
 	webchannel? ( network )
+	webkit? ( gui network printsupport widgets )
+	websockets? ( network )
+	widgets? ( gui )
+	xmlpatterns? ( network )
 "
 
 # Minimal supported version of Qt.
