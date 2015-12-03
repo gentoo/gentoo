@@ -7687,7 +7687,7 @@ dev-python/python-levenshtein 0.10.2-r1 0.11.1 0.11.2 0.12.0: Functions for fast
 dev-python/python-linux-procfs 0.4.6 9999: Python classes to extract information from the Linux kernel /proc files
 dev-python/python-ly 0.9.2: Tool and library for manipulating LilyPond files
 dev-python/python-lzo 1.08-r1: Python interface to lzo
-dev-python/python-magic 0.4.6-r1 0.4.10: Access the libmagic file type identification library
+dev-python/python-magic 0.4.10: Access the libmagic file type identification library
 dev-python/python-memcached 1.53-r1 1.54 1.57: Pure python memcached client
 dev-python/python-mhash 1.4-r1: Python interface to libmhash
 dev-python/python-mpd 0.5.4: Python MPD client library
