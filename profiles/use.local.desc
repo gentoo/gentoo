@@ -7819,8 +7819,10 @@ www-client/dwb:gtk3 - Link against x11-libs/gtk+:3 instead of x11-libs/gtk+:2
 www-client/dwb:libsecret - Enable libsecret support to store login credentials
 www-client/elinks:bittorrent - Enable support for the BitTorrent protocol
 www-client/elinks:finger - Enable support for the finger protocol
+www-client/elinks:gc - Enable garbage collection support via dev-libs/boehm-gc
 www-client/elinks:gopher - Enable support for the gopher protocol
 www-client/elinks:mouse - Make elinks to grab all mouse events
+www-client/elinks:xml - Enable support for bookmarks via dev-libs/expat
 www-client/epiphany:nss - Import passwords from older gecko based www-client/epiphany keyring.
 www-client/firefox:bindist - Disable official Firefox branding (icons, name) which are not binary-redistributable according to upstream.
 www-client/firefox:custom-optimization - Fine-tune custom compiler optimizations (-Os, -O0, -O1, -O2, -O3)
