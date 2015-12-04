@@ -13,14 +13,15 @@ SRC_URI="mirror://sourceforge/qterm/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
+IUSE="libressl"
 
 RDEPEND="
 	>=dev-qt/qtcore-4.5:4
 	>=dev-qt/qtdbus-4.5:4
 	>=dev-qt/qtgui-4.5:4[qt3support]
 	>=dev-qt/qtscript-4.5:4
-	dev-libs/openssl:0
+	!libressl? ( dev-libs/openssl:0 )
+	libressl? ( dev-libs/libressl )
 	x11-libs/libX11
 "
 DEPEND="${RDEPEND}
