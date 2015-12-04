@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare unpack
+DEPEND=!<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-devel/m4-1.4.3 >=sys-devel/libtool-1.5.18 php_targets_php7-0? ( dev-lang/php:7.0 ) php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php5-5? ( dev-lang/php:5.5 )
+DESCRIPTION=A PHP debugging and profiling extension
+EAPI=5
+HOMEPAGE=http://www.xdebug.org/
+IUSE=php_targets_php7-0 php_targets_php5-6 php_targets_php5-5
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~x86
+LICENSE=Xdebug
+RDEPEND=~dev-php/xdebug-client-2.4.0_rc2 php_targets_php7-0? ( dev-lang/php:7.0 ) php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php5-5? ( dev-lang/php:5.5 )
+REQUIRED_USE=|| ( php_targets_php7-0 php_targets_php5-6 php_targets_php5-5 )
+SLOT=0
+SRC_URI=http://pecl.php.net/get/xdebug-2.4.0RC2.tgz
+_eclass_exported_funcs=pkg_postinst:- src_unpack:php-ext-source-r2 src_prepare:php-ext-source-r2 src_configure:php-ext-source-r2 src_compile:php-ext-source-r2 src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	d9bd2ddd85a58e470b49ca997e255a4c	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	php-ext-source-r2	74e9367fec569b8fe0935b103506d117	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=9cc014d27da6e869c74a7e2745170d4b
