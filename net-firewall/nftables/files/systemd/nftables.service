@@ -1,6 +1,14 @@
 [Unit]
 Description=Store and restore nftables firewall rules
+Before=network.target
+Before=shutdown.target
+
+# Service section basedon Example 3 from systemd.service(5) man page.
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/libexec/nftables/nftables.sh load /var/lib/nftables/rules-save
+ExecStop=/usr/libexec/nftables/nftables.sh store /var/lib/nftables/rules-save
 
 [Install]
-Also=nftables-store.service
-Also=nftables-restore.service
+WantedBy=basic.target

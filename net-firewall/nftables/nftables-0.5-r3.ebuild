@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools linux-info eutils
+inherit autotools linux-info eutils systemd
 
 DESCRIPTION="Linux kernel (3.13+) firewall, NAT and packet mangling tools"
 HOMEPAGE="http://netfilter.org/projects/nftables/"
@@ -51,7 +51,12 @@ src_configure() {
 src_install() {
 	default
 
+	dodir /usr/libexec/${PN}
+	cp -p "${FILESDIR}"/libexec/${PN}.sh "${D}"/usr/libexec/${PN}/${PN}.sh
+
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	newinitd "${FILESDIR}"/${PN}.init-r1 ${PN}
+	newinitd "${FILESDIR}"/${PN}.init-r2 ${PN}
 	keepdir /var/lib/nftables
+
+	systemd_dounit "${FILESDIR}"/systemd/${PN}.service
 }
