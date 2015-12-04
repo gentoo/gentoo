@@ -96,9 +96,9 @@ DEPEND="${COMMON_DEPEND}
 		sys-power/iasl )
 	dev-lang/perl
 	app-misc/pax-utils
-	dev-python/markdown[${PYTHON_USEDEP}]
 	doc? (
 		app-doc/doxygen
+		dev-python/markdown[${PYTHON_USEDEP}]
 		dev-tex/latex2html[png,gif]
 		media-gfx/graphviz
 		dev-tex/xcolor
