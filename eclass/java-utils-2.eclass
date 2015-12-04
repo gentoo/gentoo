@@ -1802,8 +1802,8 @@ ejunit_() {
 	if [[ "${junit}" == "junit-4" ]] ; then
 		runner=org.junit.runner.JUnitCore
 	fi
-	debug-print "Calling: java -cp \"${cp}\" -Djava.awt.headless=true ${runner} ${@}"
-	java -cp "${cp}" -Djava.awt.headless=true ${runner} "${@}" || die "Running junit failed"
+	debug-print "Calling: java -cp \"${cp}\" -Djava.io.tmpdir=\"${T}\" -Djava.awt.headless=true ${runner} ${@}"
+	java -cp "${cp}" -Djava.io.tmpdir="${T}/" -Djava.awt.headless=true ${runner} "${@}" || die "Running junit failed"
 }
 
 # @FUNCTION: ejunit
