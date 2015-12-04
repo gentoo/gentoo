@@ -3,15 +3,15 @@
 # $Id$
 
 EAPI=5
-inherit eutils git-r3 systemd toolchain-funcs
+inherit eutils systemd toolchain-funcs
 
 DESCRIPTION="NTP client and server programs"
 HOMEPAGE="http://chrony.tuxfamily.org/"
-EGIT_REPO_URI="git://git.tuxfamily.org/gitroot/chrony/chrony.git"
+SRC_URI="http://download.tuxfamily.org/${PN}/${P/_/-}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="caps +cmdmon ipv6 libedit +ntp +phc +pps readline +refclock +rtc selinux +adns"
 REQUIRED_USE="
 	?? ( libedit readline )
