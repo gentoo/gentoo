@@ -5,6 +5,10 @@
 		<email>hasufell@gentoo.org</email>
 		<name>Julian Ospald</name>
 	</maintainer>
+	<maintainer>
+		<email>blueness@gentoo.org</email>
+		<name>Anthony G. Basile</name>
+	</maintainer>
 	<natural-name>LibreSSL</natural-name>
 	<longdescription lang="en">
 		LibreSSL is a version of the TLS/crypto stack forked from OpenSSL in
