@@ -8,7 +8,7 @@ EAPI="5"
 #//------------------------------------------------------------------------------
 
 # Version Data
-GITDATE="20151004"			# Date of diff between kernel.org and lmo GIT
+GITDATE="20151126"			# Date of diff between kernel.org and lmo GIT
 GENPATCHREV="4"				# Tarball revision for patches
 
 # Directories
