@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=!dedicated? ( virtual/jpeg:0 media-libs/openal media-libs/libvorbis media-libs/freetype:2 virtual/glu virtual/opengl dga? ( x11-libs/libXxf86dga ) vidmode? ( x11-libs/libXxf86vm ) zlib? ( sys-libs/zlib ) net-misc/curl ) !dedicated? ( dga? ( x11-proto/xf86dgaproto ) vidmode? ( x11-proto/xf86vidmodeproto ) ) virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=Fast-paced multiplayer deathmatch game
+EAPI=5
+HOMEPAGE=http://red.planetarena.org/
+IUSE=dedicated +dga +vidmode +zlib
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 free-noncomm
+RDEPEND=!dedicated? ( virtual/jpeg:0 media-libs/openal media-libs/libvorbis media-libs/freetype:2 virtual/glu virtual/opengl dga? ( x11-libs/libXxf86dga ) vidmode? ( x11-libs/libXxf86vm ) zlib? ( sys-libs/zlib ) net-misc/curl ) games-misc/games-envd
+SLOT=0
+SRC_URI=http://icculus.org/alienarena/Files/alienarena-7.66-linux20130827.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:games src_unpack:base src_prepare:base src_configure:- src_compile:games src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	d9bd2ddd85a58e470b49ca997e255a4c	games	4dae170e58f773c484e07d18ef441804	gnome2-utils	968e31c6fcd13eb2eaf6852e88dfdd36	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=9c830084e53a623cfb85547220f58cfb

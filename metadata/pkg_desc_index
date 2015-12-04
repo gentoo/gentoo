@@ -10088,7 +10088,7 @@ games-fps/aaquake2 0.1: text mode Quake II
 games-fps/aaut 1: ascii mode unreal tournament
 games-fps/alephone 20100424 20120514: An enhanced version of the game engine from the classic Mac game, Marathon
 games-fps/alephone-infinity 20080622: Aleph One - Marathon Infinity
-games-fps/alienarena 20120629 20130207: Fast-paced multiplayer deathmatch game
+games-fps/alienarena 20120629 20130207 20130827: Fast-paced multiplayer deathmatch game
 games-fps/avp 20150214: Linux port of Aliens vs Predator
 games-fps/blackshades 20070723: you control a psychic bodyguard, and try to protect the VIP
 games-fps/darkplaces 20110628 20130304: Enhanced engine for iD Software's Quake 1
@@ -14301,7 +14301,7 @@ net-misc/cgminer 4.7.0 4.8.0 4.9.0 4.9.1 4.9.2: Bitcoin CPU/GPU/FPGA/ASIC miner 
 net-misc/cgterm 1.6: Connect to C64 telnet BBS's with the correct colours and font
 net-misc/charm 1.9.1 1.9.2-r1: A text based livejournal client
 net-misc/chrome-remote-desktop 44.0.2403.44 45.0.2454.17-r2: access remote computers via Chrome!
-net-misc/chrony 2.1.1 2.2 9999: NTP client and server programs
+net-misc/chrony 2.1.1 2.2 2.2-r1 9999: NTP client and server programs
 net-misc/clamz 0.4 0.5: Command-line downloader for the Amazon.com MP3 music store
 net-misc/clipgrab 3.4.9-r1 3.4.11: Download from various internet video services like Youtube etc.
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
@@ -18112,7 +18112,7 @@ x11-misc/unclutter 8-r2 8-r3: Hides mouse pointer while not in use
 x11-misc/urxvt-font-size 1.1 9999: Perl extension for rxvt-unicode to change the font size on the fly
 x11-misc/urxvt-perls 2.2: Perl extensions for rxvt-unicode
 x11-misc/util-macros 1.17.1 1.18.0 1.19.0: X.Org autotools utility macros
-x11-misc/vdpauinfo 0.0.6 0.1 0.9-r1 1.0: Displays info about your card's VDPAU support
+x11-misc/vdpauinfo 1.0: Displays info about your card's VDPAU support
 x11-misc/viewglob 2.0.4-r1: Graphical display of directories and globs referenced at the shell prompt
 x11-misc/virtualgl 2.3.3 2.4.1 2.4.1-r1: Run OpenGL applications remotely with full 3D hardware acceleration
 x11-misc/vnc2swf 0.5.0-r1: A tool for recording Flash SWF movies from VNC sessions
