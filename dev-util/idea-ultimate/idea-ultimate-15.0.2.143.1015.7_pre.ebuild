@@ -25,28 +25,7 @@ RDEPEND="${DEPEND}
 	>=virtual/jdk-1.7:*"
 S="${WORKDIR}/${MY_PN}-IU-${PV_STRING}"
 
-QA_TEXTRELS="opt/${PN}-${MY_PV}/bin/libbreakgen.so"
-QA_PRESTRIPPED="opt/${PN}-${MY_PV}/lib/libpty/linux/x86/libpty.so
-	opt/${PN}-${MY_PV}/lib/libpty/linux/x86_64/libpty.so
-	opt/${PN}-${MY_PV}/bin/libyjpagent-linux.so
-	opt/${PN}-${MY_PV}/bin/libyjpagent-linux64.so"
-QA_WX_LOAD="
-	opt/${PN}-${MY_PV}/bin/fsnotifier-arm
-	opt/${PN}-${MY_PV}/plugins/tfsIntegration/lib/native/linux/ppc/libnative_auth.so
-	opt/${PN}-${MY_PV}/plugins/tfsIntegration/lib/native/linux/ppc/libnative_console.so
-	opt/${PN}-${MY_PV}/plugins/tfsIntegration/lib/native/linux/ppc/libnative_filesystem.so
-	opt/${PN}-${MY_PV}/plugins/tfsIntegration/lib/native/linux/ppc/libnative_misc.so
-	opt/${PN}-${MY_PV}/plugins/tfsIntegration/lib/native/linux/ppc/libnative_synchronization.so
-	opt/${PN}-${MY_PV}/plugins/tfsIntegration/lib/native/solaris/sparc/libnative_auth.so
-	opt/${PN}-${MY_PV}/plugins/tfsIntegration/lib/native/solaris/sparc/libnative_console.so
-	opt/${PN}-${MY_PV}/plugins/tfsIntegration/lib/native/solaris/sparc/libnative_filesystem.so
-	opt/${PN}-${MY_PV}/plugins/tfsIntegration/lib/native/solaris/sparc/libnative_misc.so
-	opt/${PN}-${MY_PV}/plugins/tfsIntegration/lib/native/solaris/sparc/libnative_synchronization.so
-	opt/${PN}-${MY_PV}/plugins/tfsIntegration/lib/native/solaris/x86/libnative_auth.so
-	opt/${PN}-${MY_PV}/plugins/tfsIntegration/lib/native/solaris/x86/libnative_console.so
-	opt/${PN}-${MY_PV}/plugins/tfsIntegration/lib/native/solaris/x86/libnative_filesystem.so
-	opt/${PN}-${MY_PV}/plugins/tfsIntegration/lib/native/solaris/x86/libnative_misc.so
-	opt/${PN}-${MY_PV}/plugins/tfsIntegration/lib/native/solaris/x86/libnative_synchronization.so"
+QA_PREBUILT="opt/${PN}-${MY_PV}/*"
 
 src_prepare() {
 	if ! use amd64; then
@@ -73,9 +52,9 @@ src_install() {
 	doins -r *
 	fperms 755 "${dir}"/bin/{idea.sh,fsnotifier{,64}}
 
-	make_wrapper "${PN}" "${dir}/bin/${MY_PN}.sh" || die
-	newicon "bin/${MY_PN}.png" "${PN}.png" || die
-	make_desktop_entry "${PN}" "IntelliJ Idea Ultimate" "${PN}" "Development;IDE;" || die
+	make_wrapper "${PN}" "${dir}/bin/${MY_PN}.sh"
+	newicon "bin/${MY_PN}.png" "${PN}.png"
+	make_desktop_entry "${PN}" "IntelliJ Idea Ultimate" "${PN}" "Development;IDE;"
 
 	# recommended by: https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
 	mkdir -p "${D}/etc/sysctl.d/" || die
