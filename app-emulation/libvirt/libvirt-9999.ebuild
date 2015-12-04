@@ -218,7 +218,7 @@ src_prepare() {
 	fi
 
 	epatch \
-		"${FILESDIR}"/${PN}-1.2.9-do_not_use_sysconf.patch \
+		"${FILESDIR}"/${PN}-1.2.22-do_not_use_sysconf.patch \
 		"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch \
 		"${FILESDIR}"/${PN}-1.2.17-fix_paths_for_apparmor.patch
 
