@@ -33,3 +33,4 @@ RDEPEND="${RDEPEND}
 	media-libs/gst-plugins-good:0.10
 	media-libs/gst-plugins-base:0.10
 "
+PATCHES=( "${FILESDIR}/test.patch" )
