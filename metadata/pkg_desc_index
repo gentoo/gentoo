@@ -248,7 +248,7 @@ app-arch/createrepo 0.10.3: Creates a common rpm-metadata repository
 app-arch/deb2targz 1-r2: Convert a .deb file to a .tar.gz archive
 app-arch/defluff 0.3.2: deflate huffman optimizer
 app-arch/deltarpm 3.6_pre20110223-r1: tools to create and apply deltarpms
-app-arch/dpkg 1.17.25 1.17.26 1.18.2 1.18.3: Package maintenance system for Debian
+app-arch/dpkg 1.17.25 1.17.26 1.18.3: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
 app-arch/dump 0.4.44-r1: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.8.0 1.8.0-r1 1.8.1-r1: Engrampa archive manager for MATE
@@ -8531,13 +8531,13 @@ dev-ruby/connection_pool 2.2.0: Generic connection pooling for Ruby
 dev-ruby/contracts 0.10.1 0.11.0 0.12.0: provides contracts for Ruby
 dev-ruby/coolio 1.4.1: A high performance event framework for Ruby which uses the libev C library
 dev-ruby/countdownlatch 1.0.0-r1: Synchronization aid that allows threads to wait until a set of operations in other threads completes
-dev-ruby/crack 0.4.2 0.4.2-r1: Really simple JSON and XML parsing, ripped from Merb and Rails
+dev-ruby/crack 0.4.2 0.4.2-r1 0.4.3: Really simple JSON and XML parsing, ripped from Merb and Rails
 dev-ruby/crass 1.0.2: A Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification
 dev-ruby/creole 0.5.0: Creole-to-HTML converter for Creole, the lightweight markup language
 dev-ruby/cri 2.4.1 2.6.1 2.7.0: Cri is a library for building easy-to-use commandline tools
 dev-ruby/css_parser 1.3.5-r1 1.3.6: Sass-based Stylesheet Framework
 dev-ruby/curb 0.8.6 0.8.8: Ruby-language bindings for libcurl
-dev-ruby/d3_rails 3.5.5 3.5.6: Ruby on Rails integration for the Javascript Data Visualization Framework, D3
+dev-ruby/d3_rails 3.5.6 3.5.10: Ruby on Rails integration for the Javascript Data Visualization Framework, D3
 dev-ruby/daemon_controller 1.1.8 1.2.0 1.2.0-r1: A library for starting and stopping specific daemons programmatically in a robust manner
 dev-ruby/daemons 1.2.3: Wrap existing ruby scripts to be run as a daemon
 dev-ruby/dalli 2.6.4 2.7.4 2.7.4-r1: A high performance pure Ruby client for accessing memcached servers
@@ -8698,7 +8698,7 @@ dev-ruby/mini_shoulda 0.5.0-r1: A minimal shoulda DSL built on top of MiniTest::
 dev-ruby/minitest 4.7.5-r1 4.7.5-r2 5.3.3-r1 5.5.1 5.8.0 5.8.1 5.8.2 5.8.3: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
 dev-ruby/minitest-bonus-assertions 2.0: Bonus assertions for minitest
 dev-ruby/minitest-pretty_diff 0.1: Pretty-print hashes and arrays before diffing them in MiniTest
-dev-ruby/mixlib-shellout 2.2.1 2.2.2 2.2.3: Run external commands on Unix or Windows
+dev-ruby/mixlib-shellout 2.2.1 2.2.2 2.2.3 2.2.5: Run external commands on Unix or Windows
 dev-ruby/mocha 0.10.5-r1 0.10.5-r2 0.11.4 0.11.4-r1 0.12.7 0.12.10 0.12.10-r1 0.13.3 0.13.3-r1 0.13.3-r2 0.14.0 1.1.0: A Ruby library for mocking and stubbing using a syntax like that of JMock, and SchMock
 dev-ruby/modernizr 2.6.2: Neatly packaged Modernizr JS assets for use in Sprockets or the Rails 3 asset pipeline
 dev-ruby/moneta 0.7.20 0.8.0: A unified interface to key/value stores
@@ -17496,7 +17496,7 @@ www-client/midori 0.5.10 0.5.11: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.2-r1 3.3-r1: a free, open source web browser
 www-client/opera 12.16_p1860-r1 33.0.1990.43 33.0.1990.58 33.0.1990.115: A fast and secure web browser
-www-client/opera-beta 34.0.2036.3 34.0.2036.16: A fast and secure web browser
+www-client/opera-beta 34.0.2036.16 34.0.2036.24: A fast and secure web browser
 www-client/opera-developer 35.0.2052.0 35.0.2060.0 35.0.2064.0: A fast and secure web browser
 www-client/otter 0.9.07 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
