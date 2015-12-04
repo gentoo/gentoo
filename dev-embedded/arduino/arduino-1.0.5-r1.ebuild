@@ -64,7 +64,7 @@ src_install() {
 
 	if use examples; then
 		java-pkg_doexamples examples
-		docompress -x /usr/share/doc/${P}/examples/
+		docompress -x /usr/share/doc/${PF}/examples/
 	fi
 
 	if use doc; then
