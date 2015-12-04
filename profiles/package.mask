@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Robin H. Johnson <robbat2@gentoo.org> (04 Dec 2015)
+# Much early testing needed
+>=sys-cluster/ceph-9
+
 # Patrice Clement <monsieurp@gentoo.org> (03 Dec 2015)
 # Broken and outdated. Let's see off these 3 packages.
 # Masked for removal in 30 days. See bug #567326.
