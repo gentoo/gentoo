@@ -51,7 +51,7 @@ else
 	S="${WORKDIR}/xen-${MY_PV}"
 fi
 
-inherit bash-completion-r1 eutils flag-o-matic multilib python-single-r1 toolchain-funcs udev ${live_eclass}
+inherit bash-completion-r1 eutils flag-o-matic multilib python-single-r1 toolchain-funcs ${live_eclass}
 
 DESCRIPTION="Xend daemon and tools"
 HOMEPAGE="http://xen.org/"
@@ -125,8 +125,7 @@ RDEPEND="${COMMON_DEPEND}
 	screen? (
 		app-misc/screen
 		app-admin/logrotate
-	)
-	virtual/udev"
+	)"
 
 # hvmloader is used to bootstrap a fully virtualized kernel
 # Approved by QA team in bug #144032
@@ -424,11 +423,6 @@ src_install() {
 
 	# for xendomains
 	keepdir /etc/xen/auto
-
-	# Temp QA workaround
-	dodir "$(get_udevdir)"
-	mv "${D}"/etc/udev/* "${D}/$(get_udevdir)"
-	rm -rf "${D}"/etc/udev
 
 	# Remove files failing QA AFTER emake installs them, avoiding seeking absent files
 	find "${D}" \( -name openbios-sparc32 -o -name openbios-sparc64 \
