@@ -4226,7 +4226,7 @@ dev-java/squareness-jlf 2.3.0-r1: Squareness Java Look and Feel
 dev-java/stax 1.2.0: A standard XML processing API that allows you to stream XML data from and to your application
 dev-java/stax-ex 1.0-r4 1.7.6: Extensions to complement JSR-173 StAX API
 dev-java/stax2-api 4.0.0 4.0.0-r1: Extended Stax (STandard Api for Xml procesing) API
-dev-java/stringtemplate 3.2 3.2.1: A Java template engine
+dev-java/stringtemplate 3.2 3.2.1-r1: A Java template engine
 dev-java/struts 2.3.15.2: A powerful Model View Controller Framework for JSP/Servlets
 dev-java/struts-core 2.3.15.2: A powerful Model View Controller Framework for JSP/Servlets: Core
 dev-java/struts-plugins 2.3.15.2: A powerful Model View Controller Framework for JSP/Servlets: Plugins
@@ -12032,7 +12032,7 @@ media-libs/aubio 0.4.1 0.4.2: Library for audio labelling
 media-libs/audiofile 0.3.5 0.3.6-r1: An elegant API for accessing audio files
 media-libs/avidemux-core 2.6.2-r1 2.6.3 2.6.4 2.6.5 2.6.7 2.6.8 9999: Core libraries for a video editor designed for simple cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.6.2-r2 2.6.3 2.6.4 2.6.4-r1 2.6.5 2.6.5-r1 2.6.7 2.6.8 9999: Plugins for avidemux; a video editor designed for simple cutting, filtering and encoding tasks
-media-libs/babl 0.1.10-r1 0.1.12 9999: A dynamic, any to any, pixel format conversion library
+media-libs/babl 0.1.10-r1 0.1.12 0.1.14 9999: A dynamic, any to any, pixel format conversion library
 media-libs/bio2jack 0.9-r1: A library for porting blocked I/O OSS/ALSA audio applications to JACK
 media-libs/blib 1.1.7-r1: blib is a library full of useful things to hack the Blinkenlights
 media-libs/cal3d 0.11.0-r1: Cal3D is a skeletal based character animation library
@@ -12083,7 +12083,7 @@ media-libs/game-music-emu 0.6.0-r1: Video game music file emulators
 media-libs/ganv 1.4.2: A GTK+ widget for interactive graph-like environments
 media-libs/gavl 1.2.0 1.4.0 1.4.0-r1: library for handling uncompressed audio and video data
 media-libs/gd 2.0.35-r3 2.0.35-r4 2.1.1 2.1.1-r1: A graphics library for fast image creation
-media-libs/gegl 0.2.0-r2 0.3.0 9999: A graph based image processing framework
+media-libs/gegl 0.2.0-r2 0.3.0 0.3.2 9999: A graph based image processing framework
 media-libs/gexiv2 0.6.1 0.10.2 0.10.3: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 4.1.6-r2 4.1.6-r3 4.2.3 4.2.3-r1 5.0.6 5.1.0 5.1.1: Library to handle, display and manipulate GIF images
