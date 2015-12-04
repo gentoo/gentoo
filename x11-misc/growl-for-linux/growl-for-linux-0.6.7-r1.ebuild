@@ -13,12 +13,14 @@ SRC_URI="mirror://github/mattn/growl-for-linux/${P}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="libressl"
 
 RDEPEND="dev-db/sqlite:3
 	dev-libs/dbus-glib
 	dev-libs/glib:2
 	dev-libs/libxml2
-	dev-libs/openssl:0
+	!libressl? ( dev-libs/openssl:0 )
+	libressl? ( dev-libs/libressl )
 	net-misc/curl
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}
