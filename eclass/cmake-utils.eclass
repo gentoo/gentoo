@@ -468,7 +468,7 @@ enable_cmake-utils_src_configure() {
 		if $(version_is_at_least 3.4.0 $(get_version_component_range 1-3 ${PV})) ; then
 			includes="<INCLUDES>"
 		fi
-	elif has_version \>=dev-util/cmake-3.4.0_rc1 ; then
+	elif ROOT=/ has_version \>=dev-util/cmake-3.4.0_rc1 ; then
 		includes="<INCLUDES>"
 	fi
 	cat > "${build_rules}" <<- _EOF_ || die
