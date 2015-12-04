@@ -38,7 +38,5 @@ DEPEND="
 DISTUTILS_IN_SOURCE_BUILD=1
 
 python_test() {
-	pushd build/lib > /dev/null || die
-	PYTHONPATH=. pytest --verbose || die "Tests fail with ${EPYTHON}"
-	popd > /dev/null || die
+	${EPYTHON} -m unittest discover -p "unittest*.py" --verbose || die
 }
