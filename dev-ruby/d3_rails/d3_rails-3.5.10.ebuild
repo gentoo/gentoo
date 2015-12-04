@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21"
 
 RUBY_FAKEGEM_RECIPE_TEST="none"
 RUBY_FAKEGEM_RECIPE_DOC="none"
@@ -20,4 +20,4 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-ruby_add_rdepend ">=dev-ruby/railties-3.1"
+ruby_add_rdepend ">=dev-ruby/railties-3.1:*"
