@@ -1,7 +1,7 @@
 [Unit]
 Description=Racoon IKEv1 key management daemon for IPSEC
 After=syslog.target network.target
-Requires=ipsec.service
+Requires=ipsec-tools.service
 
 [Service]
 Type=forking
