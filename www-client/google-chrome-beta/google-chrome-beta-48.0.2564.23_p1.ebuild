@@ -36,6 +36,7 @@ KEYWORDS="-* ~amd64 ~x86"
 IUSE="+plugins"
 RESTRICT="bindist mirror strip"
 
+DEPEND="app-admin/chrpath"
 RDEPEND="
 	app-arch/bzip2
 	app-misc/ca-certificates
@@ -89,7 +90,7 @@ are not displayed properly:
 Depending on your desktop environment, you may need
 to install additional packages to get icons on the Downloads page.
 
-For KDE, the required package is kde-base/oxygen-icons.
+For KDE, the required package is kde-frameworks/oxygen-icons.
 
 For other desktop environments, try one of the following:
 - x11-themes/gnome-icon-theme
@@ -125,6 +126,9 @@ src_install() {
 	for size in 16 22 24 32 48 64 128 256 ; do
 		newicon -s ${size} "${CHROME_HOME}/product_logo_${size}.png" ${PN}.png
 	done
+
+	# Work around RPATH=$ORIGIN QA check
+	chrpath -d "${CHROME_HOME}/chrome-sandbox" || die
 
 	insinto /
 	doins -r opt usr
