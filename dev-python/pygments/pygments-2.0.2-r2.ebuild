@@ -36,6 +36,7 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}"/${PV}-shell-injection-backport.patch
 	"${FILESDIR}"/${PV}-shell-injection-backport2.patch
+	"${FILESDIR}"/${PV}-bytes-decode.patch
 )
 
 python_compile_all() {
