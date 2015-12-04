@@ -3,10 +3,6 @@
 <pkgmetadata>
 	<herd>qt</herd>
 	<herd>video</herd>
-	<maintainer>
-		<email>hwoarang@gentoo.org</email>
-		<name>Markos Chandras</name>
-	</maintainer>
 	<use>
 		<flag name="download">Enable support for downloading YouTube videos</flag>
 	</use>
