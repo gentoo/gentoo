@@ -15,11 +15,11 @@ SRC_URI="https://github.com/joelthelion/${PN}/archive/release-v${PV}.tar.gz -> $
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~ppc ~ppc64"
-IUSE="python test"
+IUSE="ipython test"
 
 # Not all tests pass. Need investigation.
 RESTRICT="test"
-RDEPEND="python? ( ${PYTHON_DEPS} )"
+RDEPEND="ipython? ( ${PYTHON_DEPS} )"
 DEPEND="test? ( dev-python/flake8 dev-python/tox )"
 
 src_prepare() {
@@ -56,7 +56,7 @@ src_install() {
 	doins bin/_j
 
 	python_foreach_impl python_domodule bin/autojump_data.py bin/autojump_utils.py
-	if use python; then
+	if use ipython; then
 		python_foreach_impl python_domodule tools/autojump_ipython.py
 	fi
 
@@ -65,7 +65,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use python; then
+	if use ipython; then
 		elog 'This tool provides "j" for ipython, please add'
 		elog '"import autojump_ipython" to your ipy_user_conf.py.'
 		elog
