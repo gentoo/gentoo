@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,12 +14,14 @@ HOMEPAGE="https://mattn.github.com/growl-for-linux/"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS=""
+IUSE="libressl"
 
 RDEPEND="dev-db/sqlite:3
 	dev-libs/dbus-glib
 	dev-libs/glib:2
 	dev-libs/libxml2
-	dev-libs/openssl
+	!libressl? ( dev-libs/openssl:0 )
+	libressl? ( dev-libs/libressl )
 	net-misc/curl
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}
