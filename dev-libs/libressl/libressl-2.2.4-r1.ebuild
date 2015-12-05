@@ -22,6 +22,8 @@ PDEPEND="app-misc/ca-certificates"
 src_prepare() {
 	touch crypto/Makefile.in
 
+	epatch "${FILESDIR}"/${P}-clientcert.patch
+
 	sed -i \
 		-e '/^[ \t]*CFLAGS=/s#-g ##' \
 		-e '/^[ \t]*CFLAGS=/s#-g"#"#' \
