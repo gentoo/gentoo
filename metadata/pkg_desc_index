@@ -4030,7 +4030,7 @@ dev-java/jnlp-api 6.0.18: JNLP API classes, repackaged from the icedtea-web fork
 dev-java/jnr-constants 0.8.3-r1 0.8.6: A set of platform constants (e.g. errno values)
 dev-java/jnr-enxio 0.7-r1: Java Native Runtime Enhanced X-platform I/O
 dev-java/jnr-ffi 0.5.10 0.6.0 0.7.11-r1 1.0.10 2.0.2: An abstracted interface to invoking native functions from java
-dev-java/jnr-netdb 1.0.1 1.1.4: Network services database access for java
+dev-java/jnr-netdb 1.1.4: Network services database access for java
 dev-java/jnr-posix 1.1.8-r1 2.4.0 3.0.10: Lightweight cross-platform POSIX emulation layer for Java
 dev-java/jnr-unixsocket 0.6-r1: Unix sockets for Java
 dev-java/jnr-x86asm 0.1 1.0.1 1.0.2: A pure-java port of asmjit
