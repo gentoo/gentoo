@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/celluloid/nio4r"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE=""
 
 # Note that nio4r bundles a patched copy of libev, and without these
