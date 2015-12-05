@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit latex-package java-utils-2 java-pkg-2 java-ant-2 eutils
+inherit latex-package java-pkg-2 java-ant-2 eutils
 
 DESCRIPTION="Extract annotations from pdf files"
 HOMEPAGE="http://www.ctan.org/tex-archive/macros/latex/contrib/pax/"
@@ -45,6 +45,7 @@ PATCHES=(
 )
 
 java_prepare() {
+	java-pkg_clean
 	epatch "${PATCHES[@]}"
 }
 
