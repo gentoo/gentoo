@@ -31,7 +31,7 @@ CDEPEND="
 	gnome-base/librsvg:2
 	media-gfx/exiv2:0=[xmp]
 	media-libs/lcms:2
-	>=media-libs/lensfun-0.2.3
+	>=media-libs/lensfun-0.2.3:0=
 	media-libs/libpng:0=
 	media-libs/tiff:0
 	net-misc/curl
