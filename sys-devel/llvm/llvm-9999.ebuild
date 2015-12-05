@@ -254,6 +254,9 @@ multilib_src_configure() {
 	if use clang; then
 		mycmakeargs+=(
 			-DCMAKE_DISABLE_FIND_PACKAGE_LibXml2=$(usex !xml)
+			# libgomp support fails to find headers without explicit -I
+			# furthermore, it provides only syntax checking
+			-DCLANG_DEFAULT_OPENMP_RUNTIME=libomp
 		)
 	fi
 
@@ -481,8 +484,7 @@ multilib_src_install_all() {
 }
 
 pkg_postinst() {
-	if use clang; then
-		elog "To enable OpenMP support in clang, install sys-libs/libomp"
-		elog "and use the '-fopenmp=libomp' command line option"
+	if use clang && ! has_version 'sys-libs/libomp'; then
+		elog "To enable OpenMP support in clang, install sys-libs/libomp."
 	fi
 }
