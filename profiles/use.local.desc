@@ -6684,9 +6684,7 @@ sci-geosciences/gpsd:latency_timing - support latency timing information
 sci-geosciences/gpsd:ntp - Enable net-misc/ntp shared memory interface and PPS kernel support for GPS time
 sci-geosciences/gpsd:shm - export gpsd over shared memory
 sci-geosciences/gpsd:sockets - export gpsd over unix sockets
-sci-geosciences/grass:gdal - Use sci-libs/gdal for import and export of most external raster and vector map formats
 sci-geosciences/grass:geos - Use sci-libs/geos for v.buffer and adds extended options to the v.select module
-sci-geosciences/grass:gmath - Enable gmath wrapper for BLAS/Lapack (virtual/blas, virtual/lapack)
 sci-geosciences/grass:liblas - Include support for LAS and LAZ encoded LiDAR files through sci-geosciences/liblas
 sci-geosciences/grass:opencl - Enable OpenCL support
 sci-geosciences/gshhs:data - Add earth data with sci-geosciences/gshhs-data
