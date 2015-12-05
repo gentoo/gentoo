@@ -1,0 +1,21 @@
+From: Gokturk Yuksek <gokturk@binghamton.edu>
+Subject: [PATCH] Link against stdlib to resolve fortified functions
+
+When '-fstack-protector-strong' is included in CFLAGS, the function
+'__stack_chk_fail_local' needs to be pulled from libc. However, upstream
+uses '-nostdlib' to avoid linking against any C library or gcc libs. Remove
+'-nostdlib' and '-nostartfiles' to pull the required symbols from libc.
+
+Gentoo-Bug: https://bugs.gentoo.org/show_bug.cgi?id=558406
+
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -4,7 +4,7 @@
+ usrlibdir=$(libdir)
+ 
+ CFLAGS ?= -g -fomit-frame-pointer -O2
+-CFLAGS += -nostdlib -nostartfiles -Wall -I. -fPIC
++CFLAGS += -Wall -I. -fPIC
+ CFLAGS += $(CPPFLAGS)
+ SO_CFLAGS=-shared $(CFLAGS)
+ L_CFLAGS=$(CFLAGS)
