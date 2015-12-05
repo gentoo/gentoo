@@ -4,22 +4,25 @@
 
 EAPI=5
 
-inherit cmake-utils flag-o-matic toolchain-funcs gnome2-utils fdo-mime pax-utils eutils
+inherit cmake-utils flag-o-matic toolchain-funcs gnome2-utils fdo-mime pax-utils eutils versionator
 
 DOC_PV="1.6.0"
+MY_PV="$(replace_version_separator 2 "")"
+MY_P="${PN}-$(replace_version_separator 2 ".")"
+MY_P_S="${PN}-$(replace_version_separator 2 "~")"
 
 DESCRIPTION="A virtual lighttable and darkroom for photographers"
 HOMEPAGE="http://www.darktable.org/"
-SRC_URI="https://github.com/darktable-org/${PN}/releases/download/release-${PV}/${P}.tar.xz
+SRC_URI="https://github.com/darktable-org/${PN}/releases/download/release-${MY_PV}/${MY_P}.tar.xz
 	doc? ( https://github.com/darktable-org/${PN}/releases/download/release-${DOC_PV}/${PN}-usermanual.pdf -> ${PN}-usermanual-${DOC_PV}.pdf )"
 
 LICENSE="GPL-3 CC-BY-3.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-LANGS=" ca cs da de el es fr it ja nl pl pt_BR pt_PT ru sq sv uk"
+LANGS=" af ca cs da de el es fi fr gl it ja nl pl pt_BR pt_PT ro ru sk sq sv th uk zh_CN"
 # TODO add lua once dev-lang/lua-5.2 is unmasked
-IUSE="colord cpu_flags_x86_sse3 doc flickr geo gphoto2 graphicsmagick jpeg2k kde libsecret
-nls opencl openmp openexr pax_kernel +rawspeed +slideshow +squish web-services webp
+IUSE="colord cups cpu_flags_x86_sse3 doc flickr geo gphoto2 graphicsmagick jpeg2k kde libsecret
+nls opencl openmp openexr pax_kernel +slideshow webp
 ${LANGS// / linguas_}"
 
 # sse3 support is required to build darktable
@@ -27,21 +30,22 @@ REQUIRED_USE="cpu_flags_x86_sse3"
 
 CDEPEND="
 	dev-db/sqlite:3
-	>=dev-libs/glib-2.28:2
+	dev-libs/json-glib
 	dev-libs/libxml2:2
+	dev-libs/pugixml:0=
 	gnome-base/librsvg:2
 	media-gfx/exiv2:0=[xmp]
 	media-libs/lcms:2
-	>=media-libs/lensfun-0.2.3
+	>=media-libs/lensfun-0.2.3:0=
 	media-libs/libpng:0=
 	media-libs/tiff:0
 	net-misc/curl
 	virtual/jpeg:0
 	x11-libs/cairo
-	x11-libs/gdk-pixbuf:2
-	x11-libs/gtk+:2
+	x11-libs/gtk+:3
 	x11-libs/pango
 	colord? ( x11-misc/colord:0= )
+	cups? ( net-print/cups )
 	flickr? ( media-libs/flickcurl )
 	geo? ( net-libs/libsoup:2.4 )
 	gphoto2? ( media-libs/libgphoto2:= )
@@ -49,7 +53,6 @@ CDEPEND="
 	jpeg2k? ( media-libs/openjpeg:0 )
 	libsecret? (
 		>=app-crypt/libsecret-0.18
-		dev-libs/json-glib
 	)
 	opencl? ( virtual/opencl )
 	openexr? ( media-libs/openexr:0= )
@@ -58,7 +61,6 @@ CDEPEND="
 		virtual/glu
 		virtual/opengl
 	)
-	web-services? ( dev-libs/json-glib )
 	webp? ( media-libs/libwebp:0= )"
 RDEPEND="${CDEPEND}
 	x11-themes/gtk-engines:2
@@ -67,6 +69,8 @@ DEPEND="${CDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
+
+S="${WORKDIR}/${MY_P_S}"
 
 pkg_pretend() {
 	if use openmp ; then
@@ -88,6 +92,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_use colord COLORD)
+		$(cmake-utils_use_build cups PRINT)
 		$(cmake-utils_use_use flickr FLICKR)
 		$(cmake-utils_use_use geo GEO)
 		$(cmake-utils_use_use gphoto2 CAMERA_SUPPORT)
@@ -95,15 +100,11 @@ src_configure() {
 		$(cmake-utils_use_use jpeg2k OPENJPEG)
 		$(cmake-utils_use_use kde KWALLET)
 		$(cmake-utils_use_use libsecret LIBSECRET)
-		$(cmake-utils_use_use libsecret GLIBJSON)
 		$(cmake-utils_use_use nls NLS)
 		$(cmake-utils_use_use opencl OPENCL)
 		$(cmake-utils_use_use openexr OPENEXR)
 		$(cmake-utils_use_use openmp OPENMP)
-		$(cmake-utils_use !rawspeed DONT_USE_RAWSPEED)
-		$(cmake-utils_use_use squish SQUISH)
 		$(cmake-utils_use_build slideshow SLIDESHOW)
-		$(cmake-utils_use_use web-services GLIBJSON)
 		$(cmake-utils_use_use webp WEBP)
 		-DUSE_LUA=OFF
 		-DCUSTOM_CFLAGS=ON
