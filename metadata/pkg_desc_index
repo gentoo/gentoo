@@ -18078,6 +18078,7 @@ x11-misc/screen-message 0.23: Display a multi-line message large, fullscreen, bl
 x11-misc/screengrab 1.0 1.2.1-r1: Qt application for getting screenshots
 x11-misc/sddm 0.11.0-r4 0.12.0-r1 0.13.0-r1: Simple Desktop Display Manager
 x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewer for X windows
+x11-misc/sent 0.2: Simple plaintext presentation tool
 x11-misc/set_opacity 1.0 9999: Tool for set real compositing for windows through window's id, process' pid etc.
 x11-misc/shared-mime-info 1.4 1.4-r1 1.5: The Shared MIME-info Database specification
 x11-misc/shutter 0.90 0.90.1 0.91 0.93 0.93.1: Feature-rich screenshot program
