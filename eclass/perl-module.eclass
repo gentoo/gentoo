@@ -24,7 +24,7 @@ case "${EAPI:-0}" in
 		PERL_EXPF="src_unpack src_prepare src_configure src_compile src_test src_install"
 		;;
 	6)
-		inherit eutils multiprocessing perl-functions
+		inherit multiprocessing perl-functions
 		PERL_EXPF="src_prepare src_configure src_compile src_test src_install"
 		;;
 	*)
@@ -197,7 +197,6 @@ perl-module_src_prepare() {
 		perl_rm_files "${PERL_RM_FILES[@]}"
 	fi
 	perl_fix_osx_extra
-	esvn_clean
 }
 
 # @FUNCTION: perl-module_src_configure
@@ -231,22 +230,14 @@ perl-module_src_configure() {
 		if grep -q '\(use\|require\)\s*Module::Build::Tiny' Build.PL ; then
 			einfo "Using Module::Build::Tiny"
 			if [[ ${DEPEND} != *dev-perl/Module-Build-Tiny* && ${PN} != Module-Build-Tiny ]]; then
-				eqawarn "QA Notice: The ebuild uses Module::Build::Tiny but doesn't depend on it."
-				eqawarn " Add dev-perl/Module-Build-Tiny to DEPEND!"
-				if [[ -n ${PERLQAFATAL} ]]; then
-					eerror "Bailing out due to PERLQAFATAL=1";
-					die
-				fi
+				eerror "QA Notice: The ebuild uses Module::Build::Tiny but doesn't depend on it."
+				die    " Add dev-perl/Module-Build-Tiny to DEPEND!"
 			fi
 		else
 			einfo "Using Module::Build"
 			if [[ ${DEPEND} != *virtual/perl-Module-Build* && ${DEPEND} != *dev-perl/Module-Build* && ${PN} != Module-Build ]] ; then
-				eqawarn "QA Notice: The ebuild uses Module::Build but doesn't depend on it."
-				eqawarn " Add dev-perl/Module-Build to DEPEND!"
-				if [[ -n ${PERLQAFATAL} ]]; then
-					eerror "Bailing out due to PERLQAFATAL=1";
-					die
-				fi
+				eerror "QA Notice: The ebuild uses Module::Build but doesn't depend on it."
+				die    " Add dev-perl/Module-Build to DEPEND!"
 			fi
 		fi
 		set -- \
@@ -436,9 +427,8 @@ perl-module_src_install() {
 perl-module_pkg_postinst() {
 	debug-print-function $FUNCNAME "$@"
 	if [[ ${CATEGORY} != perl-core ]] ; then
-		eqawarn "perl-module.eclass: You are calling perl-module_pkg_postinst outside the perl-core category."
-		eqawarn "   This does not do anything; the call can be safely removed."
-		return 0
+		eerror "perl-module.eclass: You are calling perl-module_pkg_postinst outside the perl-core category."
+		die    "   This does not do anything; the call can be removed."
 	fi
 	perl_link_duallife_scripts
 }
@@ -453,9 +443,8 @@ perl-module_pkg_postinst() {
 perl-module_pkg_postrm() {
 	debug-print-function $FUNCNAME "$@"
 	if [[ ${CATEGORY} != perl-core ]] ; then
-		eqawarn "perl-module.eclass: You are calling perl-module_pkg_postrm outside the perl-core category."
-		eqawarn "   This does not do anything; the call can be safely removed."
-		return 0
+		eerror "perl-module.eclass: You are calling perl-module_pkg_postrm outside the perl-core category."
+		die    "   This does not do anything; the call can be removed."
 	fi
 	perl_link_duallife_scripts
 }
