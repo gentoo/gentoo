@@ -77,7 +77,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.3.4-endian.patch
+	epatch \
+		"${FILESDIR}"/${PN}-0.3.4-endian.patch \
+		"${FILESDIR}"/${P}-underlinking.patch
 
 	# FIXME: the following should be proper patch sent to upstream
 	# fix OSX loadable module filename extension
