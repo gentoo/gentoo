@@ -19,8 +19,8 @@ HOMEPAGE="http://grass.osgeo.org/"
 SRC_URI="http://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="7"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="X blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl opengl openmp png postgres readline sqlite threads tiff truetype"
 
 RDEPEND="${PYTHON_DEPS}
@@ -84,6 +84,7 @@ PATCHES=(
 	"${FILESDIR}/${P}"-include-errno.patch
 	"${FILESDIR}/${P}"-declare-inespg.patch
 	"${FILESDIR}/${PV}"-sec-format.patch
+	"${FILESDIR}/${P}"-soname.patch
 )
 
 pkg_setup() {
@@ -124,6 +125,8 @@ src_prepare() {
 	# see upstream https://trac.osgeo.org/grass/ticket/2779
 	sed -e 's:\(#include <ogr_api.h>\):#ifdef HAVE_OGR\n\1\n#endif:' \
 		-i "${S}/vector/v.external/main.c" || die "failed to sed main.c"
+
+	epatch "${PATCHES[@]}"
 
 	epatch_user
 	eautoconf
