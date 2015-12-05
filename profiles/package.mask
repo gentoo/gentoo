@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (05 Dec 2015)
+# Upstream dead: no update since 2007.
+# Masked for removal in 30 days. See bug #567580.
+dev-java/jpf
+dev-java/jpfcodegen
+
 # Robin H. Johnson <robbat2@gentoo.org> (04 Dec 2015)
 # Much early testing needed
 >=sys-cluster/ceph-9

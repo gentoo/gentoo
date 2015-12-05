@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,17 +14,20 @@ HOMEPAGE="http://simplyhtml.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${MY_PN}_src_${MY_PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
 IUSE=""
 
-CDEPEND="dev-java/javahelp:0
+CDEPEND="
+	dev-java/javahelp:0
 	dev-java/gnu-regexp:1"
 
-DEPEND=">=virtual/jdk-1.6
-	${CDEPEND}"
+DEPEND="
+	${CDEPEND}
+	>=virtual/jdk-1.6"
 
-RDEPEND=">=virtual/jre-1.6
-	${CDEPEND}"
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
