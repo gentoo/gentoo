@@ -1,0 +1,50 @@
+From 81d7607e5159275a9b693a170f7767ffcb548a1b Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sat, 5 Dec 2015 01:14:37 +0100
+Subject: [PATCH] Do not disable deprecated APIs
+
+---
+ configure.ac | 27 ---------------------------
+ 1 file changed, 27 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 4de6e53..8528e87 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -2111,33 +2111,6 @@ MIME_TYPES="$MIME_TYPES;"
+ AC_SUBST(MIME_TYPES)
+ 
+ 
+-#########################
+-# Disable deprecated APIs
+-#########################
+-
+-CPPFLAGS="${CPPFLAGS} -DGIMP_DISABLE_DEPRECATED -DBABL_DISABLE_DEPRECATED -DGSEAL_ENABLE"
+-
+-# Make sure not to disable deprecated APIs for unreleased versions.
+-# We must build without problems with future releases of libraries
+-# and disabling deprecated API risks breaking the build
+-
+-if test "x$have_glib_2_43" != "xyes"; then
+-  CPPFLAGS="${CPPFLAGS} -DG_DISABLE_DEPRECATED"
+-fi
+-
+-if test "x$have_gtk_2_26" != "xyes"; then
+-  CPPFLAGS="${CPPFLAGS} -DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED"
+-fi
+-
+-if test "x$have_gdk_pixbuf_2_31" != "xyes"; then
+-  CPPFLAGS="${CPPFLAGS} -DGDK_PIXBUF_DISABLE_DEPRECATED"
+-fi
+-
+-if test "x$have_pango_1_32" != "xyes"; then
+-  CPPFLAGS="${CPPFLAGS} -DPANGO_DISABLE_DEPRECATED"
+-fi
+-
+-
+ ############################
+ # Require multihead safe API
+ ############################
+-- 
+2.6.3
+
