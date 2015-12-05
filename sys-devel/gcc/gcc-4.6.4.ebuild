@@ -28,8 +28,4 @@ src_prepare() {
 	fi
 
 	toolchain_src_prepare
-
-	use vanilla && return 0
-
-	[[ ${CHOST} == ${CTARGET} ]] && epatch "${FILESDIR}"/gcc-spec-env.patch
 }
