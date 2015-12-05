@@ -7,13 +7,16 @@
 # perl@gentoo.org
 # @AUTHOR:
 # Seemant Kulleen <seemant@gentoo.org>
-# Andreas K. Huettel <dilfridge@gentoo.org>
-# @BLURB: eclass for perl modules
+# Andreas K. Hüttel <dilfridge@gentoo.org>
+# @BLURB: eclass for installing Perl module distributions
 # @DESCRIPTION:
-# The perl-module eclass is designed to allow easier installation of perl
-# modules, and their incorporation into the Gentoo Linux system.
+# The perl-module eclass is designed to allow easier installation of Perl
+# module distributions, and their incorporation into the Gentoo Linux system.
 # All exported functions from perl-functions.eclass (inherited here)
 # explicitly also belong to the interface of perl-module.eclass.
+# If your package does not use any Perl-specific build system (as, e.g.,
+# ExtUtils::MakeMaker or Module::Build), we recommend to use perl-functions.eclass
+# instead.
 
 case "${EAPI:-0}" in
 	5)
