@@ -84,7 +84,7 @@ PATCHES=(
 	"${FILESDIR}/${P}"-include-errno.patch
 	"${FILESDIR}/${P}"-declare-inespg.patch
 	"${FILESDIR}/${PV}"-sec-format.patch
-	"${FILESDIR}"/grass-7.0.2-soname.patch
+	"${FILESDIR}/${P}"-soname.patch
 )
 
 pkg_setup() {
@@ -125,6 +125,8 @@ src_prepare() {
 	# see upstream https://trac.osgeo.org/grass/ticket/2779
 	sed -e 's:\(#include <ogr_api.h>\):#ifdef HAVE_OGR\n\1\n#endif:' \
 		-i "${S}/vector/v.external/main.c" || die "failed to sed main.c"
+
+	epatch "${PATCHES[@]}"
 
 	epatch_user
 	eautoconf
