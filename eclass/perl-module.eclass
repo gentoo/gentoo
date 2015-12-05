@@ -142,6 +142,8 @@ if [[ ${EAPI:-0} = 5 ]] ; then
 		SRC_URI="mirror://cpan/authors/id/${MODULE_AUTHOR:0:1}/${MODULE_AUTHOR:0:2}/${MODULE_AUTHOR}/${MODULE_SECTION:+${MODULE_SECTION}/}${MODULE_A}"
 	[[ -z "${HOMEPAGE}" ]] && \
 		HOMEPAGE="http://search.cpan.org/dist/${MODULE_NAME}/"
+
+	SRC_TEST="skip"
 else
 	DIST_NAME=${DIST_NAME:-${PN}}
 	DIST_P=${DIST_NAME}-${DIST_VERSION:-${PV}}
@@ -156,7 +158,6 @@ else
 fi
 
 SRC_PREP="no"
-SRC_TEST="skip"
 PREFER_BUILDPL="yes"
 
 pm_echovar=""
@@ -301,41 +302,80 @@ perl-module_src_compile() {
 	fi
 }
 
+# @ECLASS-VARIABLE: DIST_TEST
+# @DESCRIPTION:
+# (EAPI=6) Variable that controls if tests are run in the test phase
+# at all, and if yes under which conditions. Defaults to "do parallel"
+# If neither "do" nor "parallel" is recognized, tests are skipped.
+# (In EAPI=5 the variable is called SRC_TEST, defaults to "skip", and
+# recognizes fewer options.)
+# The following space-separated keywords are recognized:
+#   do       : run tests
+#   parallel : run tests in parallel
+#   verbose  : increase test verbosity
+#   network  : do not try to disable network tests
+
+# @ECLASS-VARIABLE: DIST_TEST_OVERRIDE
+# @DESCRIPTION:
+# (EAPI=6) Variable that controls if tests are run in the test phase
+# at all, and if yes under which conditions. It is intended for use in
+# make.conf or the environment by ebuild authors during testing, and
+# accepts the same values as DIST_TEST. If set, it overrides DIST_TEST
+# completely. DO NOT USE THIS IN EBUILDS!
+
 # @FUNCTION: perl-module_src-test
 # @USAGE: perl-module_src_test()
 # @DESCRIPTION:
-# This code attempts to work out your threadingness from MAKEOPTS
-# and apply them to Test::Harness.
-#
-# If you want more verbose testing, set TEST_VERBOSE=1
-# in your bashrc | /etc/portage/make.conf | ENV
-#
-# or ebuild writers:
-# If you wish to enable default tests w/ 'make test' ,
-#
-#  SRC_TEST="do"
-#
-# If you wish to have threads run in parallel ( using the users makeopts )
-# all of the following have been tested to work.
-#
-#  SRC_TEST="do parallel"
-#  SRC_TEST="parallel"
-#  SRC_TEST="parallel do"
-#  SRC_TEST=parallel
-#
+# This code attempts to work out your threadingness and runs tests
+# according to the settings of DIST_TEST using Test::Harness.
 perl-module_src_test() {
 	debug-print-function $FUNCNAME "$@"
-	if has 'do' ${SRC_TEST} || has 'parallel' ${SRC_TEST} ; then
-		if has "${TEST_VERBOSE:-0}" 0 && has 'parallel' ${SRC_TEST} ; then
+	local my_test_control
+	local my_test_verbose
+
+	if [[ ${EAPI:-0} = 5 ]] ; then
+		my_test_control=${SRC_TEST}
+		my_test_verbose=${TEST_VERBOSE:-0}
+		if has 'do' ${my_test_control} || has 'parallel' ${my_test_control} ; then
+			if has "${my_test_verbose}" 0 && has 'parallel' ${my_test_control} ; then
+				export HARNESS_OPTIONS=j$(makeopts_jobs)
+				einfo "Test::Harness Jobs=$(makeopts_jobs)"
+			fi
+		else
+			einfo Skipping tests due to SRC_TEST=${SRC_TEST}
+			return 0
+		fi
+	else
+		[[ -n "${DIST_TEST_OVERRIDE}" ]] && ewarn DIST_TEST_OVERRIDE is set to ${DIST_TEST_OVERRIDE}
+		my_test_control=${DIST_TEST_OVERRIDE:-${DIST_TEST:-do parallel}}
+
+		if ! has 'do' ${my_test_control} && ! has 'parallel' ${my_test_control} ; then
+			einfo Skipping tests due to DIST_TEST=${my_test_control}
+			return 0
+		fi
+
+		if has verbose ${my_test_control} ; then
+			my_test_verbose=1
+		else
+			my_test_verbose=0
+		fi
+
+		if has parallel ${my_test_control} ; then
 			export HARNESS_OPTIONS=j$(makeopts_jobs)
 			einfo "Test::Harness Jobs=$(makeopts_jobs)"
 		fi
-		perl_set_version
-		if [[ -f Build ]] ; then
-			./Build test verbose=${TEST_VERBOSE:-0} || die "test failed"
-		elif [[ -f Makefile ]] ; then
-			emake test TEST_VERBOSE=${TEST_VERBOSE:-0} || die "test failed"
+
+		# this might sometimes work...
+		if ! has network ${my_test_control} ; then
+			export NO_NETWORK_TESTING=1
 		fi
+	fi
+
+	perl_set_version
+	if [[ -f Build ]] ; then
+		./Build test verbose=${my_test_verbose} || die "test failed"
+	elif [[ -f Makefile ]] ; then
+		emake test TEST_VERBOSE=${my_test_verbose} || die "test failed"
 	fi
 }
 
