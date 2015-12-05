@@ -7,19 +7,6 @@ EAPI="5"
 PATCH_VER="1.3"
 UCLIBC_VER="1.0"
 
-# Hardened gcc 4 stuff
-PIE_VER="0.5.2"
-SPECS_VER="0.2.0"
-SPECS_GCC_VER="4.4.3"
-# arch/libc configurations known to be stable with {PIE,SSP}-by-default
-PIE_GLIBC_STABLE="x86 amd64 mips ppc ppc64 arm ia64"
-PIE_UCLIBC_STABLE="x86 arm amd64 ppc ppc64"
-SSP_STABLE="amd64 x86 mips ppc ppc64 arm"
-# uclibc need tls and nptl support for SSP support
-# uclibc need to be >= 0.9.32
-SSP_UCLIBC_STABLE="x86 amd64 ppc ppc64 arm"
-#end Hardened stuff
-
 inherit eutils toolchain
 
 KEYWORDS="alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
@@ -41,8 +28,4 @@ src_prepare() {
 	fi
 
 	toolchain_src_prepare
-
-	use vanilla && return 0
-
-	[[ ${CHOST} == ${CTARGET} ]] && epatch "${FILESDIR}"/gcc-spec-env.patch
 }
