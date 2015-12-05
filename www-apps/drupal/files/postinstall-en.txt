@@ -27,4 +27,15 @@ CVE-2008-3661
 http://www.php.net/manual/en/session.configuration.php#ini.session.cookie-secure
 http://drupal.org/node/315703
 
+To run Drupal on a web server[1] other than apache, one needs to do
+some work, mostly related to adding the configuration in the .htaccess
+files to the web server config files and enabling redirection.
+For lighttpd you may want to check [2][3] and for nginx [4][5].
+
+ [1] - https://www.drupal.org/requirements/webserver
+ [2] - https://groups.drupal.org/lighttpd
+ [3] - https://www.drupal.org/node/43782
+ [4] - https://www.drupal.org/node/1030854
+ [5] - https://www.nginx.com/resources/wiki/start/topics/recipes/drupal/
+
 After that you can start to use drupal.
