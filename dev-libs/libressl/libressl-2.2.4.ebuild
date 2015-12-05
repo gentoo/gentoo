@@ -12,7 +12,7 @@ SRC_URI="http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${P}.tar.gz"
 
 LICENSE="ISC openssl"
 SLOT="0/35" # reflects ABI of libcrypto.so and libssl.so
-KEYWORDS="~amd64 ~hppa ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86"
 IUSE="+asm static-libs"
 
 RDEPEND="!dev-libs/openssl:0"
