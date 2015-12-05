@@ -1,0 +1,28 @@
+From f2f7a29ba5aceaa38a285f15c3fe8b481d05b357 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sat, 5 Dec 2015 01:15:22 +0100
+Subject: [PATCH] Sync version string
+
+.. with
+m4_define([gimp_micro_version], [2])
+above
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 8528e87..21d86a3 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -20,7 +20,7 @@ m4_define([gimp_binary_age],
+           [m4_eval(100 * gimp_minor_version + gimp_micro_version)])
+ 
+ # For overriding the version string. Comment out if not needed.
+-# m4_define([gimp_version], [2.9.1])
++# m4_define([gimp_version], [2.9.2])
+ 
+ # This is the X.Y used in -lgimp-X.Y
+ m4_define([gimp_api_version], [2.0])
+-- 
+2.6.3
+
