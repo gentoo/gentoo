@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_RECIPE_TEST="none"
 
@@ -24,6 +24,11 @@ IUSE=""
 RDEPEND+=">=dev-libs/gumbo-0.10"
 
 ruby_add_rdepend ">=dev-ruby/nokogiri-1.6.5-r1"
+
+all_ruby_prepare() {
+	# We compile without rpath support by default so add that back in for this specific case.
+	sed -i -e '/gentoo-release/,/end/ s/+= " /+= " -Wl,-R -Wl,#{nokogiri_ext} /' ext/nokogumboc/extconf.rb || die
+}
 
 each_ruby_configure() {
 	${RUBY} -Cext/nokogumboc extconf.rb || die
