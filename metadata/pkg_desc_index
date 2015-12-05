@@ -3983,7 +3983,7 @@ dev-java/jdbc-jaybird 2.1.5-r1 2.1.5-r2 2.1.6 2.2.7 2.2.8: JDBC Type 2 and 4 dri
 dev-java/jdbc-mssqlserver 4.0.2206.100: JDBC driver for Microsoft SQL Server
 dev-java/jdbc-mysql 5.1.14 5.1.18 5.1.23 5.1.26: MySQL JDBC driver
 dev-java/jdbc-oracle-bin 9.2.0.8 10.1.0.5 10.2.0.3 10.2.0.4: JDBC 3.0 Drivers for Oracle
-dev-java/jdbc-postgresql 9.2_p1003 9.2_p1004 9.3_p1100 9.4_p1204 9.4_p1205: JDBC Driver for PostgreSQL
+dev-java/jdbc-postgresql 9.2_p1003 9.2_p1004 9.3_p1100 9.4_p1205 9.4_p1206: JDBC Driver for PostgreSQL
 dev-java/jdbc2-stdext 2.0-r3: A standard set of libs for Server-Side JDBC support
 dev-java/jdbm 0.12-r2: Jdbm aims to be for Java what GDBM is for Perl, Python, C, ...
 dev-java/jdepend 2.9-r5: JDepend traverses Java class file directories and generates design quality metrics per package
@@ -3994,7 +3994,7 @@ dev-java/jebl 2013.02.18 9999: Java Evolutionary Biology Library
 dev-java/jempbox 0.2.0 1.7.1: An open source Java library for parsing font files
 dev-java/jettison 1.0 1.3.7: A JSON StAX implementation
 dev-java/jexcelapi 2.6.8 2.6.8-r1: A Java API to read, write, and modify Excel spreadsheets
-dev-java/jffi 1.0.11 1.0.11-r1 1.2.9: An optimized Java interface to libffi
+dev-java/jffi 1.0.11-r1 1.2.9: An optimized Java interface to libffi
 dev-java/jflex 1.6.0-r2 1.6.1: JFlex is a lexical analyzer generator for Java
 dev-java/jformatstring 2.0.3: Compile time checking for Java format strings
 dev-java/jfreechart 1.0.13 1.0.14 1.0.19: JFreeChart is a free Java class library for generating charts
@@ -9142,7 +9142,7 @@ dev-tex/minted 1.7 2.0 2.1: LaTeX package for source code syntax highlighting
 dev-tex/newlfm 8.3-r1: Extensive LaTeX class for writing letters
 dev-tex/notoccite 20000720: Stop citations in figures, tables and contents changing citation order
 dev-tex/oesch 20080712: Metafont font used in Austrian schools for hand writing
-dev-tex/pdfannotextractor 0.1l: Extract annotations from pdf files
+dev-tex/pdfannotextractor 0.1l-r1: Extract annotations from pdf files
 dev-tex/pgf 2.10 3.0.0 3.0.1: pgf -- The TeX Portable Graphic Format
 dev-tex/polytable 0.8.2: tabular-like environments with named columns
 dev-tex/ppower4 0.9.6: Post-process presentations in PDF format which were prepared using (La)TeX to add dynamic effects
