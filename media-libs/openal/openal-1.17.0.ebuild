@@ -35,9 +35,7 @@ S=${WORKDIR}/${MY_P}
 
 DOCS="alsoftrc.sample env-vars.txt hrtf.txt ChangeLog README"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	epatch "${FILESDIR}/${P}-jackfix.patch"
 }
 
