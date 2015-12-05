@@ -40,7 +40,6 @@ RESTRICT="test" # Requires external postgresql server setup
 S="${WORKDIR}/postgresql-jdbc-${MY_PV}.src"
 
 JAVA_ANT_REWRITE_CLASSPATH="yes"
-JAVA_ANT_ENCODING="UTF-8"
 EANT_DOC_TARGET="publicapi"
 
 java_prepare() {
