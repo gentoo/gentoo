@@ -234,6 +234,7 @@ _python_set_globals() {
 	fi
 }
 _python_set_globals
+unset -f _python_set_globals
 
 # @FUNCTION: _python_validate_useflags
 # @INTERNAL
