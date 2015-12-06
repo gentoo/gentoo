@@ -14,6 +14,7 @@ HOMEPAGE="https://github.com/tesseract-ocr"
 SRC_URI="https://github.com/${MY_PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	${URI_PREFIX}eng.traineddata -> eng.traineddata-${PV}
 	doc? ( https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.02-doc-html.tar.gz )
+	math? ( ${URI_PREFIX}equ.traineddata -> equ.traineddata-${PV} )
 	linguas_ar? ( ${URI_PREFIX}ara.traineddata -> ara.traineddata-${PV} )
 	linguas_bg? ( ${URI_PREFIX}bul.traineddata -> bul.traineddata-${PV} )
 	linguas_ca? ( ${URI_PREFIX}cat.traineddata -> cat.traineddata-${PV} )
@@ -61,12 +62,20 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 
-IUSE="doc examples jpeg opencl osd png +scrollview static-libs tiff -webp linguas_ar linguas_bg linguas_ca linguas_chr linguas_cs linguas_de linguas_da linguas_el linguas_es linguas_fi linguas_fr linguas_he linguas_hi linguas_hu linguas_id linguas_it linguas_jp linguas_ko linguas_lt linguas_lv linguas_nl linguas_no linguas_pl linguas_pt linguas_ro linguas_ru linguas_sk linguas_sl linguas_sr linguas_sv linguas_th linguas_tl linguas_tr linguas_uk linguas_vi linguas_zh_CN linguas_zh_TW"
+IUSE="doc examples jpeg math opencl osd png +scrollview static-libs tiff training -webp linguas_ar linguas_bg linguas_ca linguas_chr linguas_cs linguas_de linguas_da linguas_el linguas_es linguas_fi linguas_fr linguas_he linguas_hi linguas_hu linguas_id linguas_it linguas_jp linguas_ko linguas_lt linguas_lv linguas_nl linguas_no linguas_pl linguas_pt linguas_ro linguas_ru linguas_sk linguas_sl linguas_sr linguas_sv linguas_th linguas_tl linguas_tr linguas_uk linguas_vi linguas_zh_CN linguas_zh_TW"
 
-# With opencl tiff is necessary regardless of leptonica status   <-- Check this
+# With opencl USE=tiff is necessary in leptonica
 DEPEND=">=media-libs/leptonica-1.71[zlib,tiff?,jpeg?,png?,webp?]
 		opencl? ( virtual/opencl
-				  media-libs/tiff:0 )"
+				  media-libs/tiff:0
+				  >=media-libs/leptonica-1.71[zlib,tiff,jpeg?,png?,webp?]
+				)
+	training? (
+	  dev-libs/icu
+	  x11-libs/pango
+	  x11-libs/cairo
+	)
+"
 RDEPEND="${DEPEND}"
 
 DOCS=(AUTHORS ChangeLog NEWS README ReleaseNotes )
@@ -86,14 +95,26 @@ src_unpack() {
 src_configure() {
 	local myeconfargs=(
 		$(use_enable opencl) \
-		$(use_enable scrollview graphics) \
-		--disable-dependency-tracking
-	)
+		$(use_enable scrollview graphics)
+		)
 	autotools-utils_src_configure
 }
 
+src_compile() {
+	default
+	if use training; then
+		emake training
+	fi
+	}
+
 src_install() {
 	autotools-utils_src_install
+
+	if use training; then
+		pushd "${BUILD_DIR}"
+		emake DESTDIR="${D}" training-install
+		popd
+	fi
 
 	if use examples; then
 		insinto /usr/share/doc/${PF}/examples

@@ -4,17 +4,20 @@
 
 EAPI=5
 
-MY_PV=${PV/_/-}
-
 PYTHON_COMPAT=( python2_7 )
-PYTHON_REQ_USE='xml,threads'
+PYTHON_REQ_USE='ncurses,xml,threads'
+
+inherit eutils bash-completion-r1 flag-o-matic multilib python-single-r1 toolchain-funcs versionator
+
+MY_PV=${PV/_/-}
+MAJOR_V="$(get_version_component_range 1-2)"
 
 if [[ $PV == *9999 ]]; then
+	inherit git-r3
 	KEYWORDS=""
-	REPO="xen-unstable.hg"
-	EHG_REPO_URI="http://xenbits.xensource.com/${REPO}"
+	REPO="xen.git"
+	EGIT_REPO_URI="git://xenbits.xen.org/${REPO}"
 	S="${WORKDIR}/${REPO}"
-	live_eclass="mercurial"
 else
 	KEYWORDS="~amd64 ~arm ~arm64 -x86"
 	UPSTREAM_VER=0
@@ -51,14 +54,12 @@ else
 	S="${WORKDIR}/xen-${MY_PV}"
 fi
 
-inherit bash-completion-r1 eutils flag-o-matic multilib python-single-r1 toolchain-funcs ${live_eclass}
-
-DESCRIPTION="Xend daemon and tools"
+DESCRIPTION="Xen tools including QEMU and xl"
 HOMEPAGE="http://xen.org/"
 DOCS=( README docs/README.xen-bugtool )
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="0/${MAJOR_V}"
 # Inclusion of IUSE ocaml on stabalizing requires maintainer of ocaml to (get off his hands and) make
 # >=dev-lang/ocaml-4 stable
 # Masked in profiles/eapi-5-files instead
@@ -85,7 +86,6 @@ DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 	api? ( dev-libs/libxml2
 		net-misc/curl )
-	pygrub? ( ${PYTHON_DEPS//${PYTHON_REQ_USE}/ncurses} )
 	ovmf? ( ${PYTHON_DEPS//${PYTHON_REQ_USE}/sqlite} )
 	!amd64? ( >=sys-apps/dtc-1.4.0 )
 	amd64? ( sys-devel/bin86
@@ -120,7 +120,7 @@ DEPEND="${COMMON_DEPEND}
 		>=dev-lang/ocaml-4 )"
 
 RDEPEND="${COMMON_DEPEND}
-	sys-apps/iproute2
+	sys-apps/iproute2[-minimal]
 	net-misc/bridge-utils
 	screen? (
 		app-misc/screen
@@ -263,6 +263,11 @@ src_prepare() {
 				-e 's/CFLAGS\(.*\)=\(.*\)-g3*\s\(.*\)/CFLAGS\1=\2 \3/' \
 				-e 's/CFLAGS\(.*\)=\(.*\)-O2\(.*\)/CFLAGS\1=\2\3/' \
 				-i {} + || die "failed to re-set custom-cflags"
+	else
+		unset CFLAGS
+		unset LDFLAGS
+		unset ASFLAGS
+		unset CPPFLAGS
 	fi
 
 	if ! use pygrub; then
@@ -344,7 +349,9 @@ src_configure() {
 		$(use_enable api xenapi) \
 		$(use_enable ovmf) \
 		$(use_enable ocaml ocamltools) \
+		--with-xenstored=$(usex ocaml 'oxenstored' 'xenstored') \
 		"
+
 	use system-seabios && myconf+=" --with-system-seabios=/usr/share/seabios/bios.bin"
 	use qemu || myconf+=" --with-system-qemu"
 	use amd64 && myconf+=" --enable-qemu-traditional"
@@ -356,13 +363,10 @@ src_compile() {
 	local myopt
 	use debug && myopt="${myopt} debug=y"
 
-	use custom-cflags || unset CFLAGS
 	if test-flag-CC -fno-strict-overflow; then
 		append-flags -fno-strict-overflow
 	fi
 
-	unset LDFLAGS
-	unset CFLAGS
 	emake V=1 CC="$(tc-getCC)" LD="$(tc-getLD)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" -C tools ${myopt}
 
 	use doc && emake -C docs txt html
@@ -437,19 +441,6 @@ pkg_postinst() {
 	elog "Recommended to utilise the xencommons script to config sytem At boot"
 	elog "Add by use of rc-update on completion of the install"
 
-	# TODO: we need to have the current Python slot here.
-	if ! has_version "dev-lang/python[ncurses]"; then
-		echo
-		ewarn "NB: Your dev-lang/python is built without USE=ncurses."
-		ewarn "Please rebuild python with USE=ncurses to make use of xenmon.py."
-	fi
-
-	if has_version "sys-apps/iproute2[minimal]"; then
-		echo
-		ewarn "Your sys-apps/iproute2 is built with USE=minimal. Networking"
-		ewarn "will not work until you rebuild iproute2 without USE=minimal."
-	fi
-
 	if ! use hvm; then
 		echo
 		elog "HVM (VT-x and AMD-V) support has been disabled. If you need hvm"
@@ -462,11 +453,5 @@ pkg_postinst() {
 		elog "build of qemu.  This allows for app-emulation/qemu to be emerged concurrently"
 		elog "with the qemu capable xen.  It is up to the user to distinguish between and utilise"
 		elog "the qemu-bridge-helper and the xen-bridge-helper.  File bugs of any issues that arise"
-	fi
-
-	if grep -qsF XENSV= "${ROOT}/etc/conf.d/xend"; then
-		echo
-		elog "xensv is broken upstream (Gentoo bug #142011)."
-		elog "Please remove '${ROOT%/}/etc/conf.d/xend', as it is no longer needed."
 	fi
 }
