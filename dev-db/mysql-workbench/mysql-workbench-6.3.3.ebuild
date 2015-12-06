@@ -36,7 +36,7 @@ CDEPEND="${PYTHON_DEPS}
 		gnome-base/libglade:2.0
 		>=x11-libs/cairo-1.5.12[glib,svg]
 		dev-libs/libsigc++:2
-		dev-libs/boost
+		dev-libs/boost[nls]
 		>=dev-cpp/ctemplate-0.95
 		>=dev-libs/libxml2-2.6.2:2
 		dev-libs/libzip
