@@ -6,11 +6,10 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils multilib mount-boot flag-o-matic python-any-r1 toolchain-funcs versionator
+inherit eutils multilib mount-boot flag-o-matic python-any-r1 toolchain-funcs
 
 MY_PV=${PV/_/-}
 MY_P=${PN}-${PV/_/-}
-MAJOR_V="$(get_version_component_range 1-2)"
 
 if [[ $PV == *9999 ]]; then
 	inherit git-r3
@@ -39,7 +38,7 @@ fi
 DESCRIPTION="The Xen virtual machine monitor"
 HOMEPAGE="http://xen.org/"
 LICENSE="GPL-2"
-SLOT="0/${MAJOR_V}"
+SLOT="0"
 IUSE="custom-cflags debug efi flask"
 
 DEPEND="${PYTHON_DEPS}
