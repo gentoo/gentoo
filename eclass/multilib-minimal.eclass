@@ -25,7 +25,7 @@
 
 # EAPI=4 is required for meaningful MULTILIB_USEDEP.
 case ${EAPI:-0} in
-	4|5) ;;
+	4|5|6) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
