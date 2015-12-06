@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Anthony G. Basile <blueness@gentoo.org> (06 Dec 2015)
+# Masked until we deal with SSLv3, bug #567554
+=dev-libs/libressl-2.3*
+
 # Ian Delaney <idella4@gentoo.org> (06 Dec 2015)
 # Masked due to support of the hypervisor dropped in arch x86
 # rdep packages use.masked for xen under arch
