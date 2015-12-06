@@ -582,6 +582,7 @@ python_setup() {
 		done
 	}
 	python_foreach_impl _python_try_impl
+	unset -f _python_try_impl
 
 	if [[ ! ${best_impl} ]]; then
 		eerror "${FUNCNAME}: none of the enabled implementation matched the patterns."
@@ -619,6 +620,7 @@ python_export_best() {
 		best=${MULTIBUILD_VARIANT}
 	}
 	multibuild_for_best_variant _python_set_best
+	unset -f _python_set_best
 
 	debug-print "${FUNCNAME}: Best implementation is: ${best}"
 	python_export "${best}" "${@}"
@@ -653,6 +655,7 @@ python_replicate_script() {
 
 	local files=( "${@}" )
 	python_foreach_impl _python_replicate_script
+	unset -f _python_replicate_script
 
 	# install the wrappers
 	local f
