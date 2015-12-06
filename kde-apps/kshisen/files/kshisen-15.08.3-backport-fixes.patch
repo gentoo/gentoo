@@ -1,0 +1,47 @@
+diff -u b/CMakeLists.txt b/CMakeLists.txt
+--- b/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -9,7 +9,7 @@
+ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+ 
+ find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Gui )
+-find_package(KF5 REQUIRED COMPONENTS CoreAddons DBusAddons XmlGui Config KIO DNSSD NewStuff Declarative DocTools )
++find_package(KF5 REQUIRED COMPONENTS DBusAddons XmlGui Config DocTools )
+ 
+ include(FeatureSummary)
+ include(ECMAddAppIcon)
+@@ -25,7 +25,6 @@
+ 
+ find_package(KF5KMahjongglib REQUIRED)
+ find_package(KF5KDEGames 4.9.0 REQUIRED)
+-find_package(Phonon4Qt5 REQUIRED)
+ 
+ add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
+ add_definitions(-DTRANSLATION_DOMAIN="kshisen")
+diff -u b/src/CMakeLists.txt b/src/CMakeLists.txt
+--- b/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -15,10 +15,8 @@
+ 
+ add_executable( kshisen ${kshisen_SRCS} )
+ 
+-include_directories(${PHONON_INCLUDES})
+-
+-target_link_libraries(kshisen Qt5::Gui KF5::CoreAddons KF5::KIOWidgets KF5::DNSSD Phonon::phonon4qt5 
+-                              KF5::XmlGui KF5::I18n KF5KDEGames KF5KDEGamesPrivate KF5KMahjongglib KF5::DBusAddons)
++target_link_libraries(kshisen Qt5::Gui KF5::XmlGui KF5::I18n KF5KDEGames
++                              KF5KDEGamesPrivate KF5KMahjongglib KF5::DBusAddons)
+ 
+ install( TARGETS kshisen ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
+ 
+--- a/src/board.h
++++ b/src/board.h
+@@ -39,8 +39,6 @@
+ #include <QSize>
+ #include <QWidget>
+ 
+-#include <phonon/mediaobject.h>
+-
+ // used in board.cpp and app.cpp, thus defined here
+ static int sizeX[6] = {14, 16, 18, 24, 26, 30};
+ static int sizeY[6] = { 6,  9,  8, 12, 14, 16};
