@@ -1197,6 +1197,7 @@ app-text/stardict:qqwry - Enable QQWry plugin, which provides information (in Ch
 app-text/stardict:tools - Build and install the extra stardict tools
 app-text/tesseract:linguas_chr - Enable support for the Cherokee language.
 app-text/tesseract:linguas_jp - Enable support for Japanese.
+app-text/tesseract:math - Enable support for recognition of equations.
 app-text/tesseract:opencl - Enable opencl support for speedup using GPU computation.
 app-text/tesseract:osd - Enable support orientation and script detection.
 app-text/tesseract:scrollview - Enable graphics support (ScrollView).
