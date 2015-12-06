@@ -25,6 +25,7 @@ case ${EAPI:-0} in
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
+[[ ${EAPI} == [45] ]] && inherit eutils
 inherit multibuild multilib
 
 # @ECLASS-VARIABLE: _MULTILIB_FLAGS
