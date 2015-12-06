@@ -32,6 +32,10 @@ DEPEND="${RDEPEND}
 #		>=dev-haskell/test-framework-hunit-0.2
 #		>=dev-haskell/test-framework-quickcheck2-0.2 )
 
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-deepseq-1.4.patch
+}
+
 src_configure() {
 	haskell-cabal_src_configure \
 		--flag=-developer
