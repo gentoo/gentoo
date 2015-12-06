@@ -1270,7 +1270,7 @@ app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
 app-emulation/docker 1.6.1 1.6.2 1.7.1 1.8.1 1.8.2 1.9.0 1.9.1 9999: Docker complements kernel namespacing with a high-level API which operates at the process level
 app-emulation/docker-compose 1.2.0-r1 1.4.0 1.5.1: Multi-container orchestration for Docker
-app-emulation/docker-machine 0.4.1: Machine management for a container-centric world
+app-emulation/docker-machine 0.4.1 0.5.2: Machine management for a container-centric world
 app-emulation/docker-swarm 0.4.0: A Docker-native clustering system
 app-emulation/domi 20060816: Scripts for building Xen domains
 app-emulation/dosemu 1.4.1_pre20091009 1.4.1_pre20130107-r3: DOS Emulator
@@ -12803,7 +12803,7 @@ media-sound/fluid-soundfont 3.1: The Fluid R3 soundfont
 media-sound/fluidsynth 1.1.6 1.1.6-r1: Fluidsynth is a software real-time synthesizer based on the Soundfont 2 specifications
 media-sound/fmdrv 1.0.7: Console mode MIDI player with builtin userland OPL2 driver
 media-sound/fmtools 2.0.7: A collection of programs for controlling v4l radio card drivers
-media-sound/forked-daapd 23.2: A DAAP (iTunes) media server
+media-sound/forked-daapd 23.2-r1: A DAAP (iTunes) media server
 media-sound/freebirth 0.3.2-r1: Free software bass synthesizer step sequencer
 media-sound/freewheeling 0.6: A live looping instrument using SDL and jack
 media-sound/frescobaldi 2.0.16 2.18.1: A LilyPond sheet music text editor
