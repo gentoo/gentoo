@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/cliapp[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/fuse-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/larch[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >dev-python/paramiko-1.13.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyyaml[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/tracing[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/ttystatus[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=A backup program that supports encryption and deduplication
+EAPI=5
+HOMEPAGE=http://obnam.org/
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/cliapp[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/fuse-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/larch[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >dev-python/paramiko-1.13.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyyaml[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/tracing[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/ttystatus[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=http://git.liw.fi/cgi-bin/cgit/cgit.cgi/obnam/snapshot/obnam-1.18.2.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:- src_test:distutils-r1 src_install:-
+_eclasses_=distutils-r1	79bc5f4de403751e472e01fdfd98d587	eutils	d9bd2ddd85a58e470b49ca997e255a4c	multibuild	706332a8d833c077e1aa37faa1ebf162	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	ead0b4e7f0f35d7ae8b91da6e3822535	python-utils-r1	f3baf35c6cae79e417b3f91e00bc075c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=f3fdf6ab9116fa789beb97f593bd12d3

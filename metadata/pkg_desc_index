@@ -372,7 +372,7 @@ app-backup/kbackup 0.8-r1: KBackup is a program that lets you back up any direct
 app-backup/luckybackup 0.4.7-r1 0.4.8: Powerful and flexible backup (and syncing) tool, using RSync and Qt4
 app-backup/mirdir 2.1-r1: Mirdir allows to synchronize two directory trees in a fast way
 app-backup/mylvmbackup 0.11 0.13 0.14: mylvmbackup is a tool for quickly creating backups of MySQL server's data files using LVM snapshots
-app-backup/obnam 1.9 1.16 1.17: A backup program that supports encryption and deduplication
+app-backup/obnam 1.17 1.18.2: A backup program that supports encryption and deduplication
 app-backup/pdumpfs 1.3-r2: a daily backup system similar to Plan9's dumpfs
 app-backup/qt4-fsarchiver 0.6.19.6 0.6.19.7: Qt4 frontend for fsarchiver
 app-backup/rdiff-backup 1.2.8-r1 1.3.3 1.3.3-r1: Local/remote mirroring+incremental backup
@@ -9324,7 +9324,7 @@ dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/cloc 1.60 1.62 1.64: Count Lines of Code
 dev-util/cmake 2.8.12.2-r1 3.2.2 3.3.1-r1 3.3.2-r1 3.4.0-r1 3.4.1: Cross platform Make
 dev-util/cmake-fedora 0.8.1 1.3.0: cmake modules that provides helper macros and targets for linux, especially fedora developers
-dev-util/cmdtest 0.10 0.16: black box tests Unix command line tools
+dev-util/cmdtest 0.16 0.18: black box tests Unix command line tools
 dev-util/cmocka 0.3.1 0.3.1-r1 0.4.1 1.0.1: A unit testing framework for C
 dev-util/cmt 1.26: Cross platform configuration management environment
 dev-util/coccigrep 1.10 1.11 1.12 1.13: A semantic grep for the C language
@@ -16215,7 +16215,7 @@ sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 3.1.8 4.0.2 4.1.2 4.1.3: GNU awk pattern-matching language
 sys-apps/gentoo-functions 0.7 0.8 0.9 0.10 9999: base functions required by all gentoo systems
 sys-apps/gentoo-systemd-integration 2 4 9999: systemd integration files for Gentoo
-sys-apps/gnome-disk-utility 3.16.2 3.18.2: Disk Utility for GNOME using udisks
+sys-apps/gnome-disk-utility 3.16.2 3.18.2 3.18.3.1: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
 sys-apps/gptfdisk 0.8.10 1.0.0 1.0.1: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201506081912 3.1.201507041117 3.1.201507191652: Administrative interface for the grsecurity Role Based Access Control system
