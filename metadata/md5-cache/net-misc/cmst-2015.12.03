@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5
+DESCRIPTION=Qt GUI for Connman with system tray icon
+EAPI=6
+HOMEPAGE=https://github.com/andrew-bibb/cmst
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 net-misc/connman
+SLOT=0
+SRC_URI=https://github.com/andrew-bibb/cmst/archive/cmst-2015.12.03.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	qmake-utils	bd69cb386c63df4642cf1392b50c8d81	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=4398ba988c6e4602ce6e0fc85011bf7a
