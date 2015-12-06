@@ -23,7 +23,8 @@ RDEPEND=">=dev-libs/icu-4.3.1:=
 		<dev-lang/spidermonkey-1.8.7
 		selinux? ( sec-policy/selinux-couchdb )"
 
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+		sys-devel/autoconf-archive"
 RESTRICT=test
 
 S="${WORKDIR}/apache-${P}"
