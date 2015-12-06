@@ -21,7 +21,7 @@ IUSE="doc"
 
 COMMON_DEP="
 	dev-java/antlr:0
-	dev-java/antlr:4
+	dev-java/antlr:3
 	dev-java/fontbox:1.7
 	dev-java/jempbox:1.7
 	dev-java/log4j:0
@@ -58,7 +58,7 @@ java_prepare() {
 }
 
 src_compile() {
-	local EXTERNAL_JARS="antlr,antlr-4,fontbox-1.7,jempbox-1.7,log4j,spin,microba,glazedlists"
+	local EXTERNAL_JARS="antlr,antlr-3,fontbox-1.7,jempbox-1.7,log4j,spin,microba,glazedlists"
 	local CLASSPATH="$(java-pkg_getjars --with-dependencies ${EXTERNAL_JARS})"
 	eant \
 		-Dgentoo.classpath=${CLASSPATH} \
