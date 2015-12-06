@@ -390,8 +390,8 @@ python_gen_cond_dep() {
 				# (since python_gen_usedep() will not return ${PYTHON_USEDEP}
 				#  the code is run at most once)
 				if [[ ${dep} == *'${PYTHON_USEDEP}'* ]]; then
-					local PYTHON_USEDEP=$(python_gen_usedep "${@}")
-					dep=${dep//\$\{PYTHON_USEDEP\}/${PYTHON_USEDEP}}
+					local usedep=$(python_gen_usedep "${@}")
+					dep=${dep//\$\{PYTHON_USEDEP\}/${usedep}}
 				fi
 
 				matches+=( "python_targets_${impl}? ( ${dep} )" )
