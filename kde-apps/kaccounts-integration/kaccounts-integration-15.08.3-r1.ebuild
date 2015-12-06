@@ -39,3 +39,5 @@ DEPEND="${RDEPEND}
 
 # bug #549444
 RESTRICT="test"
+
+PATCHES=( "${FILESDIR}/${P}-telepathy.patch" )
