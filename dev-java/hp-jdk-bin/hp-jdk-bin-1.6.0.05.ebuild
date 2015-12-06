@@ -38,13 +38,13 @@ SRC_URI="
 
 S=${WORKDIR}
 
-# not for metadata use:
-use hppa-hpux   && JDK_DIST=${PA_JDK_DIST}
-use ia64-hpux   && JDK_DIST=${IA_JDK_DIST}
-#use hppa64-hpux && JDK_DIST=${PA_JDK_DIST}
-#use ia64w-hpux  && JDK_DIST=${IA_JDK_DIST}
-
 pkg_nofetch() {
+	# not for metadata use:
+	use hppa-hpux   && JDK_DIST=${PA_JDK_DIST}
+	use ia64-hpux   && JDK_DIST=${IA_JDK_DIST}
+	#use hppa64-hpux && JDK_DIST=${PA_JDK_DIST}
+	#use ia64w-hpux  && JDK_DIST=${IA_JDK_DIST}
+
 	einfo "Due to license restrictions, we cannot redistribute or fetch the distfiles."
 	einfo "Please visit"
 	einfo "    ${DOWNLOADPAGE}"
