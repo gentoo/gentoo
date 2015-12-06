@@ -17,7 +17,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
-RDEPEND=">=dev-python/django-1.6[${PYTHON_USEDEP}]"
+# Does not support django-1.9
+RDEPEND=">=dev-python/django-1.6[${PYTHON_USEDEP}]
+		<dev-python/django-1.9[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
