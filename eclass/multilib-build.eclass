@@ -246,6 +246,8 @@ multilib_parallel_foreach_abi() {
 multilib_for_best_abi() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EAPI} == [45] ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}, use multilib_is_native_abi() instead"
+
 	eqawarn "QA warning: multilib_for_best_abi() function is deprecated and should"
 	eqawarn "not be used. The multilib_is_native_abi() check may be used instead."
 
@@ -579,6 +581,8 @@ multilib_is_native_abi() {
 # Deprecated synonym for multilib_is_native_abi
 multilib_build_binaries() {
 	debug-print-function ${FUNCNAME} "${@}"
+
+	[[ ${EAPI} == [45] ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}, use multilib_is_native_abi() instead"
 
 	eqawarn "QA warning: multilib_build_binaries is deprecated. Please use the equivalent"
 	eqawarn "multilib_is_native_abi function instead."
