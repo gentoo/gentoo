@@ -3979,7 +3979,7 @@ dev-java/jcommander 1.32 1.48: Command line parsing framework for Java
 dev-java/jcommon 1.0.18 1.0.23: JCommon is a collection of useful classes used by JFreeChart, JFreeReport and other projects
 dev-java/jcs 2.0: JCS is a distributed caching system written in Java for server-side Java applications
 dev-java/jdbc-informix 3.00.3: JDBC Type 4 Drivers for Informix
-dev-java/jdbc-jaybird 2.1.5-r1 2.1.5-r2 2.1.6 2.2.7 2.2.8: JDBC Type 2 and 4 drivers for Firebird SQL server
+dev-java/jdbc-jaybird 2.1.5-r1 2.2.9: JDBC Type 2 and 4 drivers for Firebird SQL server
 dev-java/jdbc-mssqlserver 4.0.2206.100: JDBC driver for Microsoft SQL Server
 dev-java/jdbc-mysql 5.1.14 5.1.18 5.1.23 5.1.26: MySQL JDBC driver
 dev-java/jdbc-oracle-bin 9.2.0.8 10.1.0.5 10.2.0.3 10.2.0.4: JDBC 3.0 Drivers for Oracle
