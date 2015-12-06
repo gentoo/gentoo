@@ -255,6 +255,7 @@ _python_single_set_globals() {
 	fi
 }
 _python_single_set_globals
+unset -f _python_single_set_globals
 
 # @FUNCTION: python_gen_usedep
 # @USAGE: <pattern> [...]
