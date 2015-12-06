@@ -244,7 +244,7 @@ src_install() {
 		# pkg_preinst, see bug #491414
 		insinto /etc/modprobe.d
 		newins "${FILESDIR}"/nvidia-169.07 nvidia.conf
-		use uvm && doins "${FILESDIR}"/nvidia-uvm.conf
+		doins "${FILESDIR}"/nvidia-rmmod.conf
 
 		# Ensures that our device nodes are created when not using X
 		exeinto "$(get_udevdir)"

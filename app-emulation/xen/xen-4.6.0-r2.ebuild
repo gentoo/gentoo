@@ -6,13 +6,17 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
+inherit eutils multilib mount-boot flag-o-matic python-any-r1 toolchain-funcs versionator
+
 MY_PV=${PV/_/-}
 MY_P=${PN}-${PV/_/-}
+MAJOR_V="$(get_version_component_range 1-2)"
 
 if [[ $PV == *9999 ]]; then
+	inherit git-r3
 	KEYWORDS=""
-	EGIT_REPO_URI="git://xenbits.xen.org/${PN}.git"
-	live_eclass="git-2"
+	EGIT_REPO_URI="git://xenbits.xen.org/xen.git"
+	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~arm ~arm64 -x86"
 	UPSTREAM_VER=0
@@ -32,13 +36,11 @@ else
 		https://dev.gentoo.org/~idella4/distfiles/${PN}-security-patches.tar.gz"
 fi
 
-inherit mount-boot flag-o-matic python-any-r1 toolchain-funcs eutils ${live_eclass}
-
 DESCRIPTION="The Xen virtual machine monitor"
 HOMEPAGE="http://xen.org/"
 LICENSE="GPL-2"
-SLOT="0"
-IUSE="custom-cflags debug efi flask xsm"
+SLOT="0/${MAJOR_V}"
+IUSE="custom-cflags debug efi flask"
 
 DEPEND="${PYTHON_DEPS}
 	efi? ( >=sys-devel/binutils-2.22[multitarget] )
@@ -51,19 +53,14 @@ RESTRICT="test"
 # Approved by QA team in bug #144032
 QA_WX_LOAD="boot/xen-syms-${PV}"
 
-REQUIRED_USE="flask? ( xsm )
-	arm? ( debug )"
+REQUIRED_USE="arm? ( debug )"
 
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	python-any-r1_pkg_setup
 	if [[ -z ${XEN_TARGET_ARCH} ]]; then
-		if use x86 && use amd64; then
-			die "Confusion! Both x86 and amd64 are set in your use flags!"
-		elif use x86; then
-			export XEN_TARGET_ARCH="x86_32"
-		elif use amd64; then
+		if use amd64; then
 			export XEN_TARGET_ARCH="x86_64"
 		elif use arm; then
 			export XEN_TARGET_ARCH="arm32"
@@ -77,8 +74,6 @@ pkg_setup() {
 	if use flask ; then
 		export "XSM_ENABLE=y"
 		export "FLASK_ENABLE=y"
-	elif use xsm ; then
-		export "XSM_ENABLE=y"
 	fi
 }
 
@@ -172,6 +167,9 @@ src_install() {
 	fi
 
 	emake LDFLAGS="$(raw-ldflags)" DESTDIR="${D}" -C xen ${myopt} install
+
+	# make install likes to throw in some extra EFI bits if it built
+	use efi || rm -rf "${D}/usr/$(get_libdir)/efi"
 }
 
 pkg_postinst() {
