@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=virtual/perl-Data-Dumper >=virtual/perl-Digest-MD5-2.500.0 >=dev-perl/Inline-0.46 python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),python_single_target_python3_4(+)?,python_single_target_python3_5(+)?,python_single_target_python2_7(+)?] virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Simple virtual/perl-Test ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Easy implementation of Python extensions
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Inline-Python/
+IUSE=test python_targets_python3_4 python_targets_python3_5 python_targets_python2_7 python_single_target_python3_4 python_single_target_python3_5 python_single_target_python2_7
+KEYWORDS=~amd64 ~sparc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Data-Dumper >=virtual/perl-Digest-MD5-2.500.0 >=dev-perl/Inline-0.46 python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),python_single_target_python3_4(+)?,python_single_target_python3_5(+)?,python_single_target_python2_7(+)?] dev-lang/perl:=[-build(-)]
+REQUIRED_USE=^^ ( python_single_target_python3_4 python_single_target_python3_5 python_single_target_python2_7 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 ) python_single_target_python2_7? ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/N/NI/NINE/Inline-Python-0.49.tar.gz
+_eclass_exported_funcs=pkg_setup:python-single-r1 src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	bb696d2fa83d594dd8a900d0cb858a95	perl-module	f6f618e05c3182f044c96da774b0c4e9	python-single-r1	eecf1a199b07109ebdf640d647bd145a	python-utils-r1	f3baf35c6cae79e417b3f91e00bc075c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
+_md5_=74a10fe18b89e2160419945af67da457
