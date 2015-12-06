@@ -6404,6 +6404,7 @@ dev-perl/digest-md2 2.30.0-r1: Perl interface to the MD2 Algorithm
 dev-perl/encoding-warnings 0.110.0-r1: Warn on implicit encoding conversions
 dev-perl/enum 1.16.0-r1: C style enumerated types and bitmask flags in Perl
 dev-perl/extutils-pkgconfig 1.140.0 1.150.0: Simplistic perl interface to pkg-config
+dev-perl/forks 0.360.0: Emulate threads with fork
 dev-perl/frontier-rpc 0.07_beta4-r1: Perform remote procedure calls using extensible markup language
 dev-perl/glib-perl 1.301.0 1.305.0 1.310.0 1.313.0: Glib - Perl wrappers for the GLib utility and Object libraries
 dev-perl/gnome2-canvas 1.2.0-r1: Perl interface to the Gnome Canvas
