@@ -6,13 +6,16 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
+inherit eutils mount-boot flag-o-matic python-any-r1 toolchain-funcs
+
 MY_PV=${PV/_/-}
 MY_P=${PN}-${PV/_/-}
 
 if [[ $PV == *9999 ]]; then
+	inherit git-r3
 	KEYWORDS=""
-	EGIT_REPO_URI="git://xenbits.xen.org/${PN}.git"
-	live_eclass="git-2"
+	EGIT_REPO_URI="git://xenbits.xen.org/xen.git"
+	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~arm ~arm64 -x86"
 	UPSTREAM_VER=0
@@ -31,8 +34,6 @@ else
 		${GENTOO_PATCHSET_URI}
 		https://dev.gentoo.org/~idella4/distfiles/${PN}-security-patches.tar.gz"
 fi
-
-inherit mount-boot flag-o-matic python-any-r1 toolchain-funcs eutils ${live_eclass}
 
 DESCRIPTION="The Xen virtual machine monitor"
 HOMEPAGE="http://xen.org/"
