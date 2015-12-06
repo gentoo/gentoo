@@ -40,7 +40,7 @@ DESCRIPTION="The Xen virtual machine monitor"
 HOMEPAGE="http://xen.org/"
 LICENSE="GPL-2"
 SLOT="0/${MAJOR_V}"
-IUSE="custom-cflags debug efi flask xsm"
+IUSE="custom-cflags debug efi flask"
 
 DEPEND="${PYTHON_DEPS}
 	efi? ( >=sys-devel/binutils-2.22[multitarget] )
@@ -53,8 +53,7 @@ RESTRICT="test"
 # Approved by QA team in bug #144032
 QA_WX_LOAD="boot/xen-syms-${PV}"
 
-REQUIRED_USE="flask? ( xsm )
-	arm? ( debug )"
+REQUIRED_USE="arm? ( debug )"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -75,8 +74,6 @@ pkg_setup() {
 	if use flask ; then
 		export "XSM_ENABLE=y"
 		export "FLASK_ENABLE=y"
-	elif use xsm ; then
-		export "XSM_ENABLE=y"
 	fi
 }
 
