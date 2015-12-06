@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (06 Dec 2015)
+# Masked for testing.
+=sys-apps/dbus-1.10*
+
 # Patrice Clement <monsieurp@gentoo.org> (06 Dec 2015)
 # We maintain old versions which were never stabilised
 # and are too far behind for a trivial version bump.
