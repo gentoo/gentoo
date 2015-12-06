@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit multilib flag-o-matic user systemd
 
@@ -27,7 +27,7 @@ DEPEND="
 	pam? ( virtual/pam )
 	ssl? (
 		!polarssl? (
-			!libressl? ( >=dev-libs/openssl-0.9.7 )
+			!libressl? ( >=dev-libs/openssl-0.9.7:* )
 			libressl? ( dev-libs/libressl )
 		)
 		polarssl? ( >=net-libs/polarssl-1.2.10 )
