@@ -126,6 +126,7 @@ _multilib_build_set_globals() {
 	declare -g -r MULTILIB_USEDEP=${usedeps// /,}
 }
 _multilib_build_set_globals
+unset -f _multilib_build_set_globals
 
 # @FUNCTION: multilib_get_enabled_abis
 # @DESCRIPTION:
