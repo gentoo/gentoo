@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils mount-boot flag-o-matic python-any-r1 toolchain-funcs versionator
+inherit eutils multilib mount-boot flag-o-matic python-any-r1 toolchain-funcs versionator
 
 MY_PV=${PV/_/-}
 MY_P=${PN}-${PV/_/-}
@@ -170,6 +170,9 @@ src_install() {
 	fi
 
 	emake LDFLAGS="$(raw-ldflags)" DESTDIR="${D}" -C xen ${myopt} install
+
+	# make install likes to throw in some extra EFI bits if it built
+	use efi || rm -rf "${D}/usr/$(get_libdir)/efi"
 }
 
 pkg_postinst() {
