@@ -3234,8 +3234,10 @@ kde-apps/cantor:analitza - Enable kde-base/analitza backend support
 kde-apps/cantor:qalculate - Enable sci-libs/libqalculate backend support
 kde-apps/dolphin:thumbnail - Enables video thumbnail generation
 kde-apps/dolphin-plugins:bazaar - Enable support for the bazaar VCS
+kde-apps/dolphin-plugins:dropbox - Enable support for the dropbox fileviewer plugin
+kde-apps/dolphin-plugins:git - Enable support for the git VCS
 kde-apps/dolphin-plugins:mercurial - Enable support for the mercurial VCS
-kde-apps/gwenview:kipi - Support for the KDE Image Plugin Interface.
+kde-apps/gwenview:kipi - Support for the KDE Image Plugin Interface
 kde-apps/kaccessible:speechd - Enable support for the speech-dispatcher speech synthesizer
 kde-apps/kalzium:editor - Enable the embedded molecule editor/viewer
 kde-apps/kalzium:solver - Enable the equation solver
@@ -3259,6 +3261,7 @@ kde-apps/kget:webkit - Enable KdeWebkit browser plugin using kde-misc/kwebkitpar
 kde-apps/kig:scripting - Support Python scripting
 kde-apps/kio-extras:phonon - Enable file audio preview plugin using media-libs/phonon
 kde-apps/kio-extras:sftp - Enable SFTP protocol support using net-libs/libssh
+kde-apps/kmines:phonon - Add sound support via media-libs/phonon
 kde-apps/kmix:canberra - Enable sound event support using media-libs/libcanberra
 kde-apps/konqueror:bookmarks - Add dependency on bookmark package.
 kde-apps/kopete:addbookmarks - Automatically add incoming urls to bookmarks.
