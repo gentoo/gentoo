@@ -115,7 +115,7 @@ fi
 # 	dev-lang/python:2.6[gdbm] )
 # @CODE
 
-_python_build_set_globals() {
+_python_any_set_globals() {
 	local usestr i PYTHON_PKG_DEP
 	[[ ${PYTHON_REQ_USE} ]] && usestr="[${PYTHON_REQ_USE}]"
 
@@ -135,7 +135,7 @@ _python_build_set_globals() {
 	done
 	PYTHON_DEPS="|| ( ${PYTHON_DEPS})"
 }
-_python_build_set_globals
+_python_any_set_globals
 
 # @ECLASS-VARIABLE: PYTHON_USEDEP
 # @DESCRIPTION:
