@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (06 Dec 2015)
+# We maintain old versions which were never stabilised
+# and are too far behind for a trivial version bump.
+# Masked for removal in 30 days. See bug #161440.
+dev-java/webgraph
+dev-java/mg4j
+
 # Anthony G. Basile <blueness@gentoo.org> (06 Dec 2015)
 # Masked until we deal with SSLv3, bug #567554
 =dev-libs/libressl-2.3*
