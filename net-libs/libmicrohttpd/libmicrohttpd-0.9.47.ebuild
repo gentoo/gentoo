@@ -36,7 +36,6 @@ src_configure() {
 		--enable-bauth \
 		--enable-dauth \
 		--disable-examples \
-		--disable-spdy \
 		--enable-postprocessor \
 		--runstatedir=/run \
 		$(use_enable epoll) \
