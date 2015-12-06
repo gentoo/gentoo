@@ -60,11 +60,7 @@ S="${WORKDIR}/${MY_P}"
 pkg_setup() {
 	python-any-r1_pkg_setup
 	if [[ -z ${XEN_TARGET_ARCH} ]]; then
-		if use x86 && use amd64; then
-			die "Confusion! Both x86 and amd64 are set in your use flags!"
-		elif use x86; then
-			export XEN_TARGET_ARCH="x86_32"
-		elif use amd64; then
+		if use amd64; then
 			export XEN_TARGET_ARCH="x86_64"
 		elif use arm; then
 			export XEN_TARGET_ARCH="arm32"
