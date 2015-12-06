@@ -7,14 +7,15 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans Enterprise cluster"
 HOMEPAGE="http://netbeans.org/"
-SLOT="8.1"
-SOURCE_URL="http://download.netbeans.org/netbeans/8.1/final/zip/netbeans-8.1-201510222201-src.zip"
+SLOT="8.0"
+SOURCE_URL="http://download.netbeans.org/netbeans/8.0.2/final/zip/netbeans-8.0.2-201411181905-src.zip"
 SRC_URI="${SOURCE_URL}
-	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.1-build.xml.patch.bz2
+	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.0.2-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/8BFEBCD4B39B87BBE788B4EECED068C8DBE75822-aws-java-sdk-1.2.1.jar
 	http://hg.netbeans.org/binaries/BA8A45A96AFE07D914DE153E0BB137DCDC7734F6-el-impl.jar
 	http://hg.netbeans.org/binaries/33B0D0945555A06B74931DEACF9DB1A4AE2A3EC4-glassfish-jspparser-4.0.jar
 	http://hg.netbeans.org/binaries/D813E05A06B587CD0FE36B00442EAB03C1431AA9-glassfish-logging-2.0.jar
+	http://hg.netbeans.org/binaries/75C30C488AD2A18A82C7FE3829F4A33FC7841643-glassfish-tooling-sdk-0.3-b054-246345.jar
 	http://hg.netbeans.org/binaries/3D74BFB229C259E2398F2B383D5425CB81C643F0-httpclient-4.1.1.jar
 	http://hg.netbeans.org/binaries/33FC26C02F8043AB0EDE19EADC8C9885386B255C-httpcore-4.1.jar
 	http://hg.netbeans.org/binaries/D6F416983EA13C334D5C599A9045414ECAF5D66D-javaee-api-6.0.jar
@@ -59,7 +60,7 @@ CDEPEND="~dev-java/netbeans-ide-${PV}
 	dev-java/commons-fileupload:0
 	dev-java/commons-logging:0
 	dev-java/glassfish-deployment-api:1.2"
-DEPEND=">=virtual/jdk-1.7
+DEPEND="virtual/jdk:1.7
 	app-arch/unzip
 	${CDEPEND}
 	dev-java/javahelp:0
@@ -68,26 +69,21 @@ DEPEND=">=virtual/jdk-1.7
 	dev-java/tomcat-servlet-api:2.3"
 RDEPEND=">=virtual/jdk-1.7
 	${CDEPEND}
-	dev-java/antlr:0[java]
+	dev-java/antlr:0[java(+)]
 	dev-java/bsf:2.3
-	dev-java/cglib:3
 	dev-java/commons-beanutils:1.7
 	dev-java/commons-collections:0
 	dev-java/commons-digester:0
 	dev-java/commons-io:1
 	dev-java/commons-validator:0
-	dev-java/glassfish-persistence:0
-	dev-java/guava:14
-	dev-java/jakarta-oro:2.0
-	dev-java/osgi-core-api:0
-	dev-java/validation-api:1.0"
+	dev-java/jakarta-oro:2.0"
 #	dev-java/commons-chain:1.1 in overlay
 
 INSTALL_DIR="/usr/share/${PN}-${SLOT}"
 
 EANT_BUILD_XML="nbbuild/build.xml"
 EANT_BUILD_TARGET="rebuild-cluster"
-EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.enterprise -Dext.binaries.downloaded=true -Dpermit.jdk8.builds=true"
+EANT_EXTRA_ARGS="-Drebuild.cluster.name=nb.cluster.enterprise -Dext.binaries.downloaded=true"
 EANT_FILTER_COMPILER="ecj-3.3 ecj-3.4 ecj-3.5 ecj-3.6 ecj-3.7"
 JAVA_PKG_BSFIX="off"
 
@@ -97,13 +93,14 @@ src_unpack() {
 	einfo "Deleting bundled jars..."
 	find -name "*.jar" -type f -delete
 
-	unpack netbeans-8.1-build.xml.patch.bz2
+	unpack netbeans-8.0.2-build.xml.patch.bz2
 
 	pushd "${S}" >/dev/null || die
 	ln -s "${DISTDIR}"/8BFEBCD4B39B87BBE788B4EECED068C8DBE75822-aws-java-sdk-1.2.1.jar libs.amazon/external/aws-java-sdk-1.2.1.jar || die
 	ln -s "${DISTDIR}"/BA8A45A96AFE07D914DE153E0BB137DCDC7734F6-el-impl.jar libs.elimpl/external/el-impl.jar || die
 	ln -s "${DISTDIR}"/33B0D0945555A06B74931DEACF9DB1A4AE2A3EC4-glassfish-jspparser-4.0.jar web.jspparser/external/glassfish-jspparser-4.0.jar || die
 	ln -s "${DISTDIR}"/D813E05A06B587CD0FE36B00442EAB03C1431AA9-glassfish-logging-2.0.jar libs.glassfish_logging/external/glassfish-logging-2.0.jar || die
+	ln -s "${DISTDIR}"/75C30C488AD2A18A82C7FE3829F4A33FC7841643-glassfish-tooling-sdk-0.3-b054-246345.jar libs.glassfish.sdk/external/glassfish-tooling-sdk-0.3-b054-246345.jar || die
 	ln -s "${DISTDIR}"/3D74BFB229C259E2398F2B383D5425CB81C643F0-httpclient-4.1.1.jar libs.amazon/external/httpclient-4.1.1.jar || die
 	ln -s "${DISTDIR}"/33FC26C02F8043AB0EDE19EADC8C9885386B255C-httpcore-4.1.jar libs.amazon/external/httpcore-4.1.jar || die
 	ln -s "${DISTDIR}"/D6F416983EA13C334D5C599A9045414ECAF5D66D-javaee-api-6.0.jar javaee.api/external/javaee-api-6.0.jar || die
@@ -138,11 +135,11 @@ src_prepare() {
 	einfo "Deleting bundled class files..."
 	find -name "*.class" -type f | xargs rm -vf
 
-	epatch netbeans-8.1-build.xml.patch
+	epatch netbeans-8.0.2-build.xml.patch
 
 	# Support for custom patches
-	if [ -n "${NETBEANS9999_PATCHES_DIR}" -a -d "${NETBEANS9999_PATCHES_DIR}" ] ; then
-		local files=`find "${NETBEANS9999_PATCHES_DIR}" -type f`
+	if [ -n "${NETBEANS80_PATCHES_DIR}" -a -d "${NETBEANS80_PATCHES_DIR}" ] ; then
+		local files=`find "${NETBEANS80_PATCHES_DIR}" -type f`
 
 		if [ -n "${files}" ] ; then
 			einfo "Applying custom patches:"
@@ -160,7 +157,7 @@ src_prepare() {
 	java-pkg_jar-from --into libs.amazon/external commons-logging commons-logging.jar commons-logging-1.1.1.jar
 	java-pkg_jar-from --into libs.commons_fileupload/external commons-fileupload commons-fileupload.jar commons-fileupload-1.3.jar
 	java-pkg_jar-from --build-only --into javaee7.api/external jsr181 jsr181.jar jsr181-api.jar
-	java-pkg_jar-from --build-only --into libs.junit4/external junit-4 junit.jar junit-4.12.jar
+	java-pkg_jar-from --build-only --into libs.junit4/external junit-4 junit.jar junit-4.10.jar
 	java-pkg_jar-from --build-only --into web.monitor/external tomcat-servlet-api-2.3 servlet.jar servlet-2.3.jar
 
 	einfo "Linking in other clusters..."
@@ -225,20 +222,6 @@ src_install() {
 	pushd "${D}"/${instdir} >/dev/null || die
 	rm commons-codec-1.3.jar && dosym /usr/share/commons-codec/lib/commons-codec.jar ${instdir}/commons-codec-1.3.jar || die
 	rm commons-logging-1.1.1.jar && dosym /usr/share/commons-logging/lib/commons-logging.jar ${instdir}/commons-logging-1.1.1.jar || die
-	popd >/dev/null || die
-
-	local instdir=${INSTALL_DIR}/modules/ext/javaee7-endorsed
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm jsr181-api.jar && dosym /usr/share/jsr181/lib/jsr181.jar ${instdir}/jsr181-api.jar || die
-	popd >/dev/null || die
-
-	local instdir=${INSTALL_DIR}/modules/ext/jersey2/ext
-	pushd "${D}"/${instdir} >/dev/null || die
-	rm cglib-2.2.0-b21.jar && dosym /usr/share/cglib-3/lib/cglib.jar ${instdir}/cglib-2.2.0-b21.jar || die
-	rm guava-14.0.1.jar && dosym /usr/share/guava-14/lib/guava.jar ${instdir}/guava-14.0.1.jar || die
-	rm org.osgi.core-4.2.0.jar && dosym /usr/share/osgi-core-api/lib/osgi-core-api.jar ${instdir}/org.osgi.core-4.2.0.jar || die
-	rm persistence-api-1.0.jar && dosym /usr/share/glassfish-persistence/lib/glassfish-persistence.jar ${instdir}/persistence-api-1.0.jar || die
-	rm validation-api-1.1.0.Final.jar && dosym /usr/share/validation-api-1.0/lib/validation-api.jar ${instdir}/validation-api-1.1.0.Final.jar || die
 	popd >/dev/null || die
 
 	local instdir=${INSTALL_DIR}/modules/ext/jsf-1_2

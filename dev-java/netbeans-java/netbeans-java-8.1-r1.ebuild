@@ -59,7 +59,7 @@ DEPEND=">=virtual/jdk-1.7
 RDEPEND=">=virtual/jdk-1.7
 	${CDEPEND}
 	dev-java/absolutelayout:0
-	dev-java/antlr:0[java]
+	dev-java/antlr:0[java(+)]
 	dev-java/c3p0:0
 	dev-java/commons-cli:1
 	dev-java/commons-collections:0

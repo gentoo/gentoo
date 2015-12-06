@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,7 @@ KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
 
 COMMON_DEP="
 	dev-java/jdom:0
-	>=dev-java/antlr-2.7.7:0[java]"
+	>=dev-java/antlr-2.7.7-r7:0"
 DEPEND=">=virtual/jdk-1.4
 	${COMMON_DEP}"
 RDEPEND=">=virtual/jre-1.4
@@ -42,13 +42,11 @@ java_prepare() {
 	epatch "${FILESDIR}"/${P}-jpp-tests.patch
 	epatch "${FILESDIR}"/${P}-gentoo.patch
 
-	# API updates to support jdom:1.0
+	# API updates to support jdom-1
 	epatch "${FILESDIR}"/${P}-jdom-1.0.patch
 
-	cd "${S}"/lib
-	# In here we have ant starter scripts
-	rm -fr bin
-	rm -f *.jar
+	java-pkg_clean
+	rm -rv lib/bin || die
 }
 
 src_install() {

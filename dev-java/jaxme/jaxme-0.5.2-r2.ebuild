@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="5"
 
 JAVA_PKG_IUSE="doc source"
 
@@ -19,14 +19,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
-COMMON_DEP="dev-java/antlr:0[java]
-	>=dev-java/xerces-2.7
-	=dev-java/junit-3.8*
+COMMON_DEP=">=dev-java/antlr-2.7.7-r7:0
 	>=dev-java/log4j-1.2.8:0
+	dev-java/junit:0
 	dev-java/xmldb:0"
-RDEPEND=">=virtual/jre-1.5
+
+RDEPEND=">=virtual/jre-1.6
+	dev-java/xerces:2
 	${COMMON_DEP}"
-DEPEND=">=virtual/jdk-1.5
+
+DEPEND=">=virtual/jdk-1.6
 	dev-db/hsqldb:0
 	${COMMON_DEP}"
 
@@ -41,7 +43,6 @@ java_prepare() {
 	java-pkg_jarfrom antlr
 	java-pkg_jarfrom junit
 	java-pkg_jarfrom log4j log4j.jar log4j-1.2.8.jar
-	java-pkg_jarfrom xerces-2
 	java-pkg_jarfrom xmldb xmldb-api.jar xmldb-api-20021118.jar
 	java-pkg_jarfrom xmldb xmldb-api-sdk.jar xmldb-api-sdk-20021118.jar
 	java-pkg_jarfrom --build-only ant-core ant.jar ant-1.5.4.jar
@@ -76,13 +77,17 @@ src_compile() {
 }
 
 src_install() {
+	# Not entirely optional but this avoids a warning at build time and
+	# RDEPEND will enforce its presence anyway.
+	java-pkg_register-optional-dependency xerces-2
+
 	pushd dist > /dev/null
 	for jar in *.jar; do
 		java-pkg_newjar ${jar} ${jar/-${PV}/}
 	done
 	popd > /dev/null
 
-	dodoc NOTICE || die
+	dodoc NOTICE
 
 	if use doc; then
 		java-pkg_dojavadoc dist/doc/api
