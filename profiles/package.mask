@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ian Delaney <idella4@gentoo.org> (06 Dec 2015)
+# Masked due to support of the hypervisor dropped in arch x86
+# rdep packages use.masked for xen under arch
+<=app-emulation/xen-4.2.5-r12
+<=app-emulation/xen-tools-4.2.5-r11
+
 # Patrice Clement <monsieurp@gentoo.org> (05 Dec 2015)
 # Upstream dead: no update since 2007.
 # Masked for removal in 30 days. See bug #567580.
