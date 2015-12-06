@@ -6,6 +6,9 @@ sys-libs/musl
 sys-libs/glibc
 sys-libs/pam
 
+# busybox-1.24 is broken on uclibc, bug #567598
+=sys-apps/busybox-1.24*
+
 # DT_RUNPATH is broken on uclibc, bug #561684
 >sys-devel/binutils-config-4-r2
 
