@@ -1,0 +1,81 @@
+From 7cf35d1e8bb8dedb710e4a60bada2739d60306d0 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Mon, 5 Oct 2015 23:10:45 +0100
+Subject: [PATCH 1/2] Allow ANTLR 3.5 to work
+
+This involves a harmless backwards-compatible adjustment to the
+grammar. I can't explain why this is necessary but this might help.
+
+http://stackoverflow.com/questions/20057063/follow-set-in-is-undefined-in-generated-parser
+---
+ src/RSP.g | 34 +++++++++++++++++-----------------
+ 1 file changed, 17 insertions(+), 17 deletions(-)
+
+diff --git a/src/RSP.g b/src/RSP.g
+index 435de16..6a27536 100644
+--- a/src/RSP.g
++++ b/src/RSP.g
+@@ -43,43 +43,43 @@ strcrit	:	FIELD strop STR			->	^(strop FIELD STR)
+ 	|	FIELD NOT strop STR		->	^(NOT ^(strop FIELD STR))
+ 	;
+ 
+-strop	:	EQUAL
+-	|	INCLUDES
+-	|	STARTSW
+-	|	ENDSW
++strop	:	equal=EQUAL
++	|	includes=INCLUDES
++	|	startsw=STARTSW
++	|	endsw=ENDSW
+ 	;
+ 
+ intcrit	:	FIELD intop INT			->	^(intop FIELD INT)
+ 	|	FIELD NOT intop INT		->	^(NOT ^(intop FIELD INT))
+ 	;
+ 
+-intop	:	EQUAL
+-	|	LESS
+-	|	GREATER
+-	|	LTE
+-	|	GTE
++intop	:	equal=EQUAL
++	|	less=LESS
++	|	greater=GREATER
++	|	lte=LTE
++	|	gte=GTE
+ 	;
+ 
+ datecrit:	FIELD dateop datespec		->	^(dateop FIELD datespec)
+ 	;
+ 
+-dateop	:	BEFORE
+-	|	AFTER
++dateop	:	before=BEFORE
++	|	after=AFTER
+ 	;
+ 
+ datespec:	dateref
+ 	|	INT dateintval dateop dateref	->	^(dateop dateref INT dateintval)
+ 	;
+ 
+-dateref	:	DATE
+-	|	TODAY
++dateref	:	date=DATE
++	|	today=TODAY
+ 	;
+ 
+ dateintval
+-	:	DAY
+-	|	WEEK
+-	|	MONTH
+-	|	YEAR
++	:	day=DAY
++	|	week=WEEK
++	|	month=MONTH
++	|	year=YEAR
+ 	;
+ 
+ QUOTE	:	'"';
+-- 
+2.4.3
+
