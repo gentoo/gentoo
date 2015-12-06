@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,9 +18,8 @@ KEYWORDS="amd64 x86"
 IUSE="debug"
 
 RDEPEND="
+	$(add_kdebase_dep kdepim-common-libs)
 	$(add_kdebase_dep kdepimlibs)
-	|| ( ( $(add_kdebase_dep akonadi) )
-	     ( $(add_kdebase_dep kdepim-common-libs) ) )
 "
 DEPEND="${RDEPEND}"
 
