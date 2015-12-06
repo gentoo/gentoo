@@ -273,6 +273,7 @@ multilib_check_headers() {
 	local cksum cksum_prev
 	local cksum_file=${T}/.multilib_header_cksum
 	cksum=$(_multilib_header_cksum) || die
+	unset -f _multilib_header_cksum
 
 	if [[ -f ${cksum_file} ]]; then
 		cksum_prev=$(< "${cksum_file}") || die
