@@ -20,8 +20,8 @@ IUSE="qt4 qt5 test"
 REQUIRED_USE="^^ ( qt4 qt5 )"
 
 RDEPEND="
+	dev-cpp/antlr-cpp:2=
 	dev-db/sqlite:3
-	dev-java/antlr:0[cxx]
 	dev-libs/qcustomplot[qt5=]
 	x11-libs/qscintilla
 	qt4? (
