@@ -10,14 +10,14 @@ inherit eutils java-pkg-2 java-ant-2
 MY_PN="${PN/jdbc-/}"
 DESCRIPTION="JDBC Type 2 and 4 drivers for Firebird SQL server"
 HOMEPAGE="http://jaybirdwiki.firebirdsql.org/"
-SRC_URI="https://github.com/FirebirdSQL/${MY_PN}/archive/v${PV}.zip"
+SRC_URI="https://github.com/FirebirdSQL/${MY_PN}/archive/v${PV}.zip -> Jaybird-${PV}-src.zip"
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~ppc"
 IUSE="jni"
 
 CDEPEND="dev-java/junit:4
-	dev-java/antlr:4
+	dev-java/antlr:3.5
 	dev-java/log4j:0
 	dev-java/glassfish-connector-api:0"
 
@@ -58,7 +58,7 @@ java_prepare() {
 }
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
-EANT_GENTOO_CLASSPATH="antlr:4,glassfish-connector-api,log4j"
+EANT_GENTOO_CLASSPATH="antlr-3.5,glassfish-connector-api,log4j"
 EANT_BUILD_TARGET="jars"
 EANT_DOC_TARGET="javadocs"
 
