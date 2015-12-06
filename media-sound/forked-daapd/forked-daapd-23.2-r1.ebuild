@@ -20,8 +20,8 @@ IUSE="alsa flac itunes lastfm mpd musepack"
 # Note: mpd support appears to be standalone, e.g. --enable-mpd doesn't
 # result in additional linkage.
 RDEPEND="
-	>=dev-libs/antlr-c-3.1.3
 	dev-db/sqlite:3
+	dev-libs/antlr-c:0
 	dev-libs/confuse
 	dev-libs/libevent
 	dev-libs/libgcrypt:0
@@ -38,8 +38,7 @@ RDEPEND="
 "
 
 DEPEND="
-	dev-java/antlr:3
-	virtual/jre
+	dev-java/antlr:3.5
 	${RDEPEND}
 "
 
@@ -49,13 +48,17 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Required until upstream accepts https://github.com/ejurgensen/forked-daapd/pull/179
+	# Fixed in 23.3.
 	epatch "${FILESDIR}/${P}-fix-arg-enable.patch"
+
+	# https://github.com/ejurgensen/forked-daapd/pull/185
+	epatch "${FILESDIR}/antlr-3.5.patch"
 
 	eautoreconf
 }
 
 src_configure() {
+	ac_cv_prog_ANTLR=antlr3.5 \
 	econf \
 		--with-alsa \
 		$(use_enable flac) \
