@@ -8160,7 +8160,7 @@ dev-ros/costmap_2d 1.13.0 1.13.1 9999: Creates a 2D costmap from sensor data
 dev-ros/cpp_common 0.5.6 9999: C++ code for doing things that are not necessarily ROS related
 dev-ros/cv_bridge 1.11.8 1.11.9 9999: Converts between ROS Image messages and OpenCV images
 dev-ros/depth_image_proc 1.12.14 9999: Nodelets for processing depth images such as those produced by OpenNI camera
-dev-ros/depthimage_to_laserscan 1.0.7 9999: Converts a depth image to a laser scan for use with navigation and localization
+dev-ros/depthimage_to_laserscan 1.0.7-r1 9999: Converts a depth image to a laser scan for use with navigation and localization
 dev-ros/diagnostic_aggregator 1.8.8 9999: Aggregates ROS diagnostics
 dev-ros/diagnostic_analysis 1.8.8 9999: Converts diagnostics data into a series of CSV files
 dev-ros/diagnostic_common_diagnostics 1.8.8 9999: Generic nodes for monitoring a linux host
@@ -14267,7 +14267,7 @@ net-misc/aria2 1.15.2 1.16.3 1.16.5 1.18.0 1.18.5 1.18.7 1.18.9 1.19.0 1.19.2: A
 net-misc/arm 1.4.5.0-r2 1.4.5.0_p20140714-r2: A ncurses-based status monitor for Tor relays
 net-misc/arpd 0.2-r1: ARP server which claims all unassigned addresses (for network monitoring or simulation)
 net-misc/arpsponge 3.12.2: Sweeps up stray ARP queries from a peering LAN
-net-misc/asterisk 11.17.1 11.18.0 11.19.0 11.19.0-r1 11.19.0-r2 13.3.2 13.4.0 13.5.0 13.5.0-r1 13.5.0-r2: Asterisk: A Modular Open Source PBX System
+net-misc/asterisk 11.17.1 11.18.0 11.19.0 11.19.0-r1 11.19.0-r2 11.20.0 13.3.2 13.4.0 13.5.0 13.5.0-r1 13.5.0-r2 13.6.0: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22: Core sounds for asterisk
 net-misc/asterisk-extra-sounds 1.4.11: Extra sounds for asterisk
 net-misc/asterisk-g729 11.0.3.1.5 11.0.3.1.6: G.729 codec and supporting files for asterisk
