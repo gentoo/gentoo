@@ -17,7 +17,7 @@ LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-lang/php:*[cli,pcre(+),xml,zlib]"
+DEPEND=">=dev-lang/php-5.4:*[cli,xml,zlib]"
 
 RDEPEND="${DEPEND}"
 

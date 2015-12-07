@@ -32,9 +32,8 @@ pkg_postinst() {
 
 	# Update PEAR/PECL channels as needed, add new ones to the list if needed
 	elog "Updating PEAR/PECL channels"
-	local pearchans="pear.php.net pecl.php.net components.ez.no
-	pear.propelorm.org pear.phing.info	pear.symfony-project.com
-	pear.phpontrax.com pear.agavi.org"
+	local pearchans="pear.php.net pecl.php.net pear.phing.info pear.symfony-project.com
+	pear.agavi.org"
 
 	for chan in ${pearchans} ; do
 		pear channel-discover ${chan}

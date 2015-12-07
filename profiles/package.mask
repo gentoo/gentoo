@@ -286,12 +286,6 @@ www-apache/mod_h2
 =net-misc/iputils-20150815
 =net-misc/iputils-20150815-r1
 
-# Brian Evans <grknight@gentoo.org> (16 Aug 2015)
-# Mask new PEAR installer as it is likely to break
-# many old scripts
->=dev-php/pear-1.10.0_alpha1
->=dev-php/PEAR-PEAR-1.10.0_alpha1
-
 # Sebastian Pipping <sping@gentoo.org> (8 Aug 2015)
 # Upcoming, too young to go into testing unmasked
 dev-libs/iniparser:4
