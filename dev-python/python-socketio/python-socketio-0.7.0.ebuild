@@ -18,7 +18,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND=">=dev-python/six-1.9.0[${PYTHON_USEDEP}]
-	>=dev-python/python-engineio-0.7.0[${PYTHON_USEDEP}]"
+	>=dev-python/python-engineio-0.7.0[${PYTHON_USEDEP}]
+	!dev-python/gevent-socketio"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
