@@ -30,6 +30,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Ian Delaney <idella4@gentoo.org> (07 Dec 2015)
+# "The drizzle project is long dead, it should be removed,
+# along with dev-php/pecl-drizzle", note by grknight
+# in Bug #501060
+# Masked for removal in 30 days.
+dev-db/drizzle
+dev-php/pecl-drizzle
+
 # Michael Orlitzky <mjo@gentoo.org> (06 Dec 2015)
 # Masked for testing of the new apache2/php7 support.
 >=app-eselect/eselect-php-0.8.0
