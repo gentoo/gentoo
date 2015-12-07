@@ -1,0 +1,14 @@
+filebeat:
+  prospectors:
+  -
+      paths:
+        - /var/log/*.log
+        - /var/log/debug
+        - /var/log/messages
+        - /var/log/syslog
+      input_type: log
+
+output:
+  elasticsearch:
+    hosts: ["localhost:9200"]
+    index: "logstash"
