@@ -8,7 +8,7 @@ inherit autotools eutils multilib versionator
 MY_PV=796b552e8a32cc8e63d40dfb94b8a6209731060b
 DESCRIPTION="High Quality Reverb and Impulse Response Convolution library including XMMS/Audacious Effect plugins"
 HOMEPAGE="https://savannah.nongnu.org/projects/freeverb3"
-SRC_URI="http://git.savannah.gnu.org/cgit/${PN}.git/snapshot/${PN}-${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://www.hartwork.org/public/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
