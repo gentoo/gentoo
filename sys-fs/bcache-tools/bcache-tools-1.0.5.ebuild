@@ -22,7 +22,7 @@ src_prepare() {
 	tc-export CC
 	sed \
 		-e '/^CFLAGS/s:-O2::' \
-		-e '/^CFLAGS/s:-g::' \
+		-e '/^CFLAGS/s:-g:-std=gnu89:' \
 		-i Makefile || die
 }
 
