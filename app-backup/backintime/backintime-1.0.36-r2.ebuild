@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit eutils python-single-r1
 
-DESCRIPTION="A simple backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4"
+DESCRIPTION="Backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4"
 HOMEPAGE="http://backintime.le-web.org/"
 SRC_URI="http://${PN}.le-web.org/download/${PN}/${P}.tar.gz"
 
