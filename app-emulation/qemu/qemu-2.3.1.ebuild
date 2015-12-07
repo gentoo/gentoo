@@ -129,7 +129,7 @@ CDEPEND="
 	systemtap? ( dev-util/systemtap )
 	usbredir? ( >=sys-apps/usbredir-0.6 )
 	virtfs? ( sys-libs/libcap )
-	xen? ( app-emulation/xen-tools )"
+	xen? ( app-emulation/xen-tools:= )"
 DEPEND="${CDEPEND}
 	dev-lang/perl
 	=dev-lang/python-2*

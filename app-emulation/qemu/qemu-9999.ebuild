@@ -156,7 +156,7 @@ CDEPEND="
 	qemu_softmmu_targets_x86_64? ( ${X86_FIRMWARE_DEPEND} )
 	python? ( ${PYTHON_DEPS} )
 	systemtap? ( dev-util/systemtap )
-	xen? ( app-emulation/xen-tools )"
+	xen? ( app-emulation/xen-tools:= )"
 DEPEND="${CDEPEND}
 	dev-lang/perl
 	=dev-lang/python-2*
