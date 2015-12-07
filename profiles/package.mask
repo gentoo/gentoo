@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (06 Dec 2015)
+# Masked for testing of the new apache2/php7 support.
+>=app-eselect/eselect-php-0.8.0
+
 # Mike Gilbert <floppym@gentoo.org> (06 Dec 2015)
 # Masked for testing.
 =sys-apps/dbus-1.10*
