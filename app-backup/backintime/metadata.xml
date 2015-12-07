@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-	<email>xmw@gentoo.org</email>
-	<name>Michael Weber</name>
-</maintainer>
-<longdescription lang="en">
+	<maintainer>
+		<email>xmw@gentoo.org</email>
+		<name>Michael Weber</name>
+	</maintainer>
+	<longdescription lang="en">
 Back In Time is a simple backup tool for Linux inspired from “flyback project” and “TimeVault”. The backup is done by taking snapshots of a specified set of directories.
-Currently there are two GUI available: Gnome and KDE 4 (>= 4.1).
+Currently there are two GUI available: Gnome and KDE 4 (&gt;= 4.1).
 
 All you have to do is configure:
   Where to save snapshot

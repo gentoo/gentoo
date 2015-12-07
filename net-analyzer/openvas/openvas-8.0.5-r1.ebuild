@@ -11,10 +11,11 @@ HOMEPAGE="http://www.openvas.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+pdf"
 
-DEPEND="
+RDEPEND="
+	dev-db/redis
 	>=net-analyzer/openvas-libraries-8.0.5
 	>=net-analyzer/openvas-scanner-5.0.4
 	>=net-analyzer/openvas-manager-6.0.6
@@ -25,7 +26,6 @@ DEPEND="
 		dev-texlive/texlive-latexextra
 		virtual/latex-base
 	)"
-RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"
 
