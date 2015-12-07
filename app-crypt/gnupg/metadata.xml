@@ -24,6 +24,10 @@
       Build mta support using
       <pkg>virtual/mta</pkg>.
     </flag>
+    <flag name='tofu'>
+      Enable support for Trust of First use trust model; requires
+      <pkg>dev-db/sqlite</pkg>.
+    </flag>
     <flag name='tools'>
       Install extra tools.
     </flag>
