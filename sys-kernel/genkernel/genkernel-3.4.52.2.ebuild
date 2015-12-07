@@ -38,7 +38,7 @@ then
 	inherit git-2 bash-completion-r1 eutils
 	S="${WORKDIR}/${PN}"
 	SRC_URI="${COMMON_URI}"
-	KEYWORDS="arm ppc"
+	KEYWORDS=""
 else
 	inherit bash-completion-r1 eutils
 	SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.xz
