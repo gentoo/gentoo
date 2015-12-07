@@ -3951,7 +3951,7 @@ dev-java/javahelp 2.0.05_p63: The JavaHelp system online help system
 dev-java/javassist 2.6-r2 3.18.2: Javassist makes Java bytecode manipulation simple
 dev-java/javatoolkit 0.3.0-r9: Collection of Gentoo-specific tools for Java
 dev-java/javax-inject 1-r1 1-r2: Dependency injection for Java (JSR-330)
-dev-java/javolution 2.2.4-r1 2.2.4-r2 4.0.2 4.0.2-r1 6.0.0: Java Solution for Real-Time and Embedded Systems
+dev-java/javolution 4.0.2-r1 6.0.0: Java Solution for Real-Time and Embedded Systems
 dev-java/jax-ws 2.0.1-r1: Reference implementation of the Java API for XML Web Services
 dev-java/jax-ws-api 2.0: JAXWS 2.0 API Final Release
 dev-java/jax-ws-tools 2.0.1-r1: Reference implementation of the Java API for XML Web Services
