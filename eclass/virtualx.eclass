@@ -111,6 +111,16 @@ virtualmake() {
 # @DESCRIPTION:
 # Start new Xvfb session and run commands in it.
 #
+# IMPORTANT: The command is run nonfatal !!!
+#
+# This means we are checking for the return code and raise an exception if it
+# isn't 0. So you need to make sure that all commands return a proper
+# code and not just die. All eclass function used should support nonfatal
+# calls properly.
+#
+# The rational behind this is the tear down of the started Xfvb session. A
+# straight die would leave a running session behind.
+#
 # Example:
 #
 # @CODE
@@ -122,6 +132,17 @@ virtualmake() {
 # @CODE
 # python_test() {
 # 	virtx py.test --verbose
+# }
+# @CODE
+#
+# @CODE
+# my_test() {
+#   some_command
+#   return $?
+# }
+#
+# src_test() {
+#   virtx my_test
 # }
 # @CODE
 virtx() {
