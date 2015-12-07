@@ -3918,7 +3918,7 @@ dev-java/jackson-databind 2.5.1-r1 2.5.2: High-performance JSON processor
 dev-java/jackson-dataformat-xml 2.5.1 2.5.2: XML data format extension for Jackson
 dev-java/jackson-dataformat-yaml 2.5.1: YAML data format extension for Jackson
 dev-java/jackson-module-jaxb-annotations 2.5.1 2.5.2: JAXB alternative to native Jackson annotations
-dev-java/jacl 1.4.1: Jacl is an implementation of Tcl written in Java
+dev-java/jacl 1.4.1 1.4.1-r1: Jacl is an implementation of Tcl written in Java
 dev-java/jacoco 0.7.5: Java Code Coverage library.
 dev-java/jad-bin 1.5.8e-r1: Jad - The fast JAva Decompiler
 dev-java/jade 3.3-r1 3.3-r2: JADE is FIPA-compliant Java Agent Development Environment
@@ -3938,7 +3938,7 @@ dev-java/jarbundler 1.8.1-r2 2.3.1: Jar Bundler Ant Task
 dev-java/jarjar 1.4: Tool for repackaging third-party jars
 dev-java/java-apicheck 0_p20150907: Command line tool to check Java packages for API compatibility
 dev-java/java-config 2.2.0: Java environment configuration query tool
-dev-java/java-config-wrapper 0.16: Wrapper for java-config
+dev-java/java-config-wrapper 0.16 0.16-r1: Wrapper for java-config
 dev-java/java-dep-check 0.3-r1: Java Dependency checker
 dev-java/java-getopt 1.0.14: Java command line option parser
 dev-java/java-gnome 4.0.19 4.0.20 4.1.3: Java bindings for GTK and GNOME
