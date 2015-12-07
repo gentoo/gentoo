@@ -146,6 +146,8 @@ src_prepare() {
 src_configure() {
 	local myconf=''
 
+	addpredict /var/lib/logrotate.status
+
 	if use clientonly; then
 		myconf="${myconf} \
 			$(use_enable clientonly client-only) \
