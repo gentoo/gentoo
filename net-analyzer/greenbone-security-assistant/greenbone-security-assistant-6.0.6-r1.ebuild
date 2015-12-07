@@ -54,7 +54,7 @@ src_install() {
 
 	insinto /etc/openvas
 	doins "${FILESDIR}"/${MY_PN}-daemon.conf
-	dosym ../openvas/${MY_PN}-daemon.conf /etc/conf.d/${PN}
+	dosym ../openvas/${MY_PN}-daemon.conf /etc/conf.d/${MY_PN}
 
 	insinto /etc/logrotate.d
 	doins "${FILESDIR}"/${MY_PN}.logrotate
