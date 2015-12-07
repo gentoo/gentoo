@@ -25,6 +25,7 @@ SLOT="4"
 IUSE="addressbook debug doc gphoto2 mysql semantic-desktop +thumbnails video"
 
 CDEPEND="
+	$(add_kdebase_dep kdelibs '' 4.14.14)
 	kde-apps/kdebase-kioslaves:4
 	kde-apps/libkdcraw:4=
 	kde-apps/libkexiv2:4=
