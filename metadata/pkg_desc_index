@@ -3976,7 +3976,7 @@ dev-java/jclasslib 3.0-r1: A bytecode viewer is a tool
 dev-java/jcmdline 1.0.2-r2: Library for parsing/handling of command line parameters
 dev-java/jcodings 1.0.4 1.0.5 1.0.11: Byte-based encoding support library for Java
 dev-java/jcommander 1.32 1.48: Command line parsing framework for Java
-dev-java/jcommon 1.0.18 1.0.23: JCommon is a collection of useful classes used by JFreeChart, JFreeReport and other projects
+dev-java/jcommon 1.0.23: JCommon is a collection of useful classes used by JFreeChart, JFreeReport and other projects
 dev-java/jcs 2.0: JCS is a distributed caching system written in Java for server-side Java applications
 dev-java/jdbc-informix 3.00.3: JDBC Type 4 Drivers for Informix
 dev-java/jdbc-jaybird 2.1.5-r1 2.2.9: JDBC Type 2 and 4 drivers for Firebird SQL server
@@ -3997,7 +3997,7 @@ dev-java/jexcelapi 2.6.8 2.6.8-r1: A Java API to read, write, and modify Excel s
 dev-java/jffi 1.0.11-r1 1.2.9: An optimized Java interface to libffi
 dev-java/jflex 1.6.0-r2 1.6.1: JFlex is a lexical analyzer generator for Java
 dev-java/jformatstring 2.0.3: Compile time checking for Java format strings
-dev-java/jfreechart 1.0.13 1.0.14 1.0.19: JFreeChart is a free Java class library for generating charts
+dev-java/jfreechart 1.0.19: JFreeChart is a free Java class library for generating charts
 dev-java/jfreesvg 2.1-r1 3.0: JFreeSVG is a fast, light-weight, vector graphics library for the Java platform
 dev-java/jgoodies-animation 1.2.0 1.2.0-r1: JGoodies Animation Library
 dev-java/jgoodies-binding 1.1.2 1.1.2-r1: A Java library to bind object properties with UI components
