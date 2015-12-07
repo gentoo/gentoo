@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (07 Dec 2015)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-49
+
 # Michael Orlitzky <mjo@gentoo.org> (06 Dec 2015)
 # Masked for testing of the new apache2/php7 support.
 >=app-eselect/eselect-php-0.8.0
@@ -250,11 +255,6 @@ sys-fs/bedup
 # Mike Frysinger <vapier@gentoo.org> (18 Oct 2015)
 # apache-2.4.17 includes support for http2 now.
 www-apache/mod_h2
-
-# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (16 Oct 2015)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-48
 
 # Hans de Graaff <graaff@gentoo.org> (11 Oct 2015)
 # Ruby 1.9 is no longer maintained upstream since January
