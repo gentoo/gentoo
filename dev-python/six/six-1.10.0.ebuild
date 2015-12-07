@@ -33,7 +33,8 @@ PATCHES=(
 pkg_pretend() {
 	six_dir_check() {
 		type -p "${PYTHON}" > /dev/null || return 0
-		local dir="${ROOT}"/$(python_get_sitedir)/six
+		local dir="${ROOT%/}$(python_get_sitedir)"/six
+		echo "${dir}"
 		[[ -d "${dir}" ]] \
 			&& die "${PN} doesn't work if ${dir} is a directory #546730"
 	}
@@ -42,7 +43,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	six_dir_check() {
-		local dir="${ROOT}"/$(python_get_sitedir)/six
+		local dir="${ROOT%/}$(python_get_sitedir)"/six
 		[[ -d "${dir}" ]] \
 			&& die "${PN} doesn't work if ${dir} is a directory #546730"
 	}
