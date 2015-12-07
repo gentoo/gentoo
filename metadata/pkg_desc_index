@@ -13403,7 +13403,7 @@ net-analyzer/gnu-netcat 0.7.1-r3: the GNU network swiss army knife
 net-analyzer/goaccess 0.5-r1 0.6.1 0.8.5 0.9: A real-time web log analyzer and interactive viewer that runs in a terminal
 net-analyzer/gr-fosphor 9999: gnuradio fosphor block (GPU spectrum display)
 net-analyzer/graphite-web 0.9.13-r1: Enterprise scalable realtime graphing
-net-analyzer/greenbone-security-assistant 6.0.6: Greenbone Security Assistant for openvas
+net-analyzer/greenbone-security-assistant 6.0.6-r1: Greenbone Security Assistant for openvas
 net-analyzer/gsm-receiver 9999: GSM receiver block from the airprobe suite
 net-analyzer/gspoof 3.2-r2: A simple GTK/command line TCP/IP packet generator
 net-analyzer/hping 3_pre20051105-r3 3_pre20051105-r5: A ping-like TCP/IP packet assembler/analyzer
@@ -13522,8 +13522,8 @@ net-analyzer/openbsd-netcat 1.84: the OpenBSD network swiss army knife
 net-analyzer/openvas 8.0.5: A remote security scanner
 net-analyzer/openvas-cli 1.4.3: A remote security scanner for Linux (OpenVAS-cli)
 net-analyzer/openvas-libraries 8.0.5: A remote security scanner for Linux (openvas-libraries)
-net-analyzer/openvas-manager 6.0.6-r1: A remote security scanner for Linux (openvas-manager)
-net-analyzer/openvas-scanner 5.0.4: A remote security scanner for Linux (OpenVAS-scanner)
+net-analyzer/openvas-manager 6.0.6-r2: A remote security scanner for Linux (openvas-manager)
+net-analyzer/openvas-scanner 5.0.4-r1: A remote security scanner for Linux (OpenVAS-scanner)
 net-analyzer/openvas-tools 0_pre20512: A remote security scanner for Linux (extra tools)
 net-analyzer/ospd 1.0.0: Collection of scanner wrappers for OpenVAS
 net-analyzer/ostinato 0.5.1: A packet generator and analyzer
@@ -13744,7 +13744,7 @@ net-firewall/fwipsec 0.4.2-r1: Firewall scripts that control iptables, FreeS/WAN
 net-firewall/fwknop 2.6.7-r1 2.6.7-r2: Single Packet Authorization and Port Knocking application
 net-firewall/gshield 2.8-r3: iptables firewall configuration system
 net-firewall/ipkungfu 0.5.2-r1 0.6.1: A nice iptables firewall script
-net-firewall/ipsec-tools 0.8.0-r5 0.8.1-r1 0.8.2 0.8.2-r3: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
+net-firewall/ipsec-tools 0.8.2 0.8.2-r4: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
 net-firewall/ipset 6.15 6.16 6.16.1 6.17 6.19 6.20.1 6.21.1 6.24: IPset tool for iptables, successor to ippool
 net-firewall/ipt_netflow 2.1: Netflow iptables module
 net-firewall/iptables 1.4.17 1.4.21-r1 1.4.21-r2 1.4.21-r3 1.4.21-r4: Linux kernel (2.4+) firewall, NAT and packet mangling tools
@@ -15126,7 +15126,7 @@ sci-biology/embassy-clustalomega 1.1.0: EMBOSS integrated version of Clustal Ome
 sci-biology/embassy-domainatrix 0.1.650: EMBOSS integrated version of Protein domain analysis add-on package
 sci-biology/embassy-domalign 0.1.650: EMBOSS integrated version of Protein domain alignment add-on package
 sci-biology/embassy-domsearch 0.1.650: EMBOSS integrated version of Protein domain search add-on package
-sci-biology/embassy-emnu 1.05.650: EMBOSS integrated version of Simple menu of EMBOSS applications
+sci-biology/embassy-emnu 1.05.650-r1: EMBOSS integrated version of Simple menu of EMBOSS applications
 sci-biology/embassy-esim4 1.0.0.650: EMBOSS integrated version of sim4 - Alignment of cDNA and genomic DNA
 sci-biology/embassy-hmmer 2.3.2.650: EMBOSS integrated version of Wrappers for HMMER - Biological sequence analysis with profile HMMs
 sci-biology/embassy-iprscan 4.3.1.650: EMBOSS integrated version of InterProScan motif detection add-on package
