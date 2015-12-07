@@ -19,5 +19,5 @@ PATCHES=( "${FILESDIR}"/${P}_fix-build-system.patch )
 
 src_configure() {
 	EBO_EXTRA_ECONF="$(use_enable ncurses curses)"
-	emboss_src_configure
+	emboss-r1_src_configure
 }
