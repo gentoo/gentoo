@@ -14,12 +14,12 @@ SRC_URI="mirror://sourceforge/jfreegraphics2d/${P}.zip"
 
 LICENSE="GPL-3"
 SLOT="2.1"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="debug"
 
-DEPEND=">=virtual/jdk-1.7
+DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip"
-RDEPEND=">=virtual/jre-1.7"
+RDEPEND=">=virtual/jre-1.6"
 
 java_prepare() {
 	find "${WORKDIR}" -name '*.jar' -print -delete || die
