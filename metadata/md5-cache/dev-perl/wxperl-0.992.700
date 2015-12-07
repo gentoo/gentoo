@@ -10,5 +10,5 @@ RDEPEND=>=dev-perl/Alien-wxWidgets-0.250.0 >=virtual/perl-File-Spec-0.820.0 dev-
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MD/MDOOTSON/Wx-0.9927.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
-_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	bb696d2fa83d594dd8a900d0cb858a95	perl-module	f6f618e05c3182f044c96da774b0c4e9	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813	virtualx	c041371b397e091a9127257a2836b37f	wxwidgets	2a19d3cd9b18703ae9fb53123722061c
+_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	bb696d2fa83d594dd8a900d0cb858a95	perl-module	f6f618e05c3182f044c96da774b0c4e9	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813	virtualx	e0b4d88543a7001a6b55bc2c81dcfd48	wxwidgets	2a19d3cd9b18703ae9fb53123722061c
 _md5_=bbc1bc611dfafe28f1b998fd361316d7
