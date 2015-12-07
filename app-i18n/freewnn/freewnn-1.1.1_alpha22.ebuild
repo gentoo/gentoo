@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge.jp/freewnn/59257/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~hppa ~ia64 ppc ~ppc64 ~sparc x86"
 IUSE="X ipv6"
 
 DEPEND="X? ( x11-libs/libX11 x11-libs/libXmu x11-libs/libXt )"
