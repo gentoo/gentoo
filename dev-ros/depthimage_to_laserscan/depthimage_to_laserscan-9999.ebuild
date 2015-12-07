@@ -18,6 +18,7 @@ RDEPEND="
 	dev-ros/roscpp
 	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
 	dev-ros/image_geometry
+	dev-ros/image_transport
 	dev-ros/nodelet
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
