@@ -190,12 +190,13 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-system-ffmpeg-r0.patch"
+	epatch "${FILESDIR}/${PN}-system-ffmpeg-r1.patch"
 	epatch "${FILESDIR}/${PN}-system-jinja-r7.patch"
 	epatch "${FILESDIR}/${PN}-widevine-r1.patch"
-	epatch "${FILESDIR}/${PN}-werror-r0.patch"
 	epatch "${FILESDIR}/${PN}-last-commit-position-r0.patch"
 	epatch "${FILESDIR}/${PN}-snapshot-toolchain-r0.patch"
+	epatch "${FILESDIR}/${PN}-rpath-r0.patch"
+	epatch "${FILESDIR}/${PN}-system-icu-r0.patch"
 
 	epatch_user
 
@@ -333,6 +334,9 @@ src_prepare() {
 src_configure() {
 	local myconf_gyp=""
 	local myconf_gn=""
+
+	# GN needs explicit config for Debug/Release as opposed to inferring it from build directory.
+	myconf_gn+=" is_debug=false"
 
 	# Never tell the build system to "enable" SSE2, it has a few unexpected
 	# additions, bug #336871.
@@ -632,6 +636,10 @@ src_install() {
 	insinto "${CHROMIUM_HOME}"
 	doins out/Release/*.bin || die
 	doins out/Release/*.pak || die
+
+	if use gn; then
+		doins out/Release/icudtl.dat || die
+	fi
 
 	doins -r out/Release/locales || die
 	doins -r out/Release/resources || die
