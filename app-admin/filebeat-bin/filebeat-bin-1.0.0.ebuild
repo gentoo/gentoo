@@ -36,11 +36,11 @@ src_install() {
 
 	fperms 0750 /var/lib/${MY_PN}
 
-	insinto /etc/${MY_PN}
-	doins "${FILESDIR}/filebeat.yml.example"
-
 	newconfd "${FILESDIR}/${MY_PN}.confd" ${MY_PN}
 	newinitd "${FILESDIR}/${MY_PN}.initd" ${MY_PN}
+
+	insinto /etc/${MY_PN}
+	newins ${MY_PN}.yml ${MY_PN}.yml.example
 
 	dobin ${MY_PN}
 }
