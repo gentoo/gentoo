@@ -22,6 +22,7 @@ IUSE=""
 RDEPEND="
 	>=net-analyzer/openvas-libraries-8.0.5
 	>=dev-db/sqlite-3
+	dev-db/redis
 	!net-analyzer/openvas-administrator"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
