@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/jfreegraphics2d/${P}.zip"
 
 LICENSE="GPL-3"
 SLOT="3.0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="debug"
 
 DEPEND=">=virtual/jdk-1.6
