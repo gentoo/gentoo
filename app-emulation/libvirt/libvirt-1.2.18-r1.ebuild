@@ -104,7 +104,7 @@ RDEPEND="sys-libs/readline:=
 	systemd? ( sys-apps/systemd )
 	virtualbox? ( || ( app-emulation/virtualbox >=app-emulation/virtualbox-bin-2.2.0 ) )
 	wireshark-plugins? ( net-analyzer/wireshark:= )
-	xen? ( app-emulation/xen-tools app-emulation/xen )
+	xen? ( app-emulation/xen-tools:= app-emulation/xen )
 	udev? ( virtual/udev >=x11-libs/libpciaccess-0.10.9 )
 	virt-network? ( net-dns/dnsmasq[script]
 		net-misc/radvd

@@ -22,7 +22,17 @@ RDEPEND="
 src_install() {
 	dosbin restart_services
 	doman restart_services.1
+	keepdir /etc/restart_services.d
 	insinto /etc
 	doins restart_services.conf
 	dodoc README CHANGES
+
+	sed -i 's/^#include/include/' "${D}"/etc/restart_services.conf
+	cat>"${D}"/etc/restart_services.d/00-local.conf<<-EOF
+	# You may put your local changes here or in any other *.conf file
+	# in this directory so you can leave /etc/restart_services.conf as is.
+	# Example:
+	# *extend* SV_ALWAYS to match 'myservice'
+	# SV_ALWAYS+=( myservice )
+	EOF
 }
