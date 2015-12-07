@@ -9,7 +9,7 @@ FILEBEAT_STATEDIR="${FILEBEAT_STATEDIR:-/var/lib/filebeat}"
 FILEBEAT_OPTS="${FILEBEAT_OPTS:-}"
 
 command="/usr/bin/filebeat"
-command_args="${FILEBEAT_OPTS}"
+command_args="-c ${FILEBEAT_CONFIG} ${FILEBEAT_OPTS}"
 extra_commands="checkconfig"
 command_background="true"
 start_stop_daemon_args="--user ${FILEBEAT_USER}:${FILEBEAT_GROUP} \
