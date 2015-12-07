@@ -6,31 +6,32 @@ EAPI=5
 
 inherit cmake-utils systemd
 
-MY_PN=openvasmd
+MY_PN=gsad
 
-DL_ID=2195
+DL_ID=2200
 
-DESCRIPTION="A remote security scanner for Linux (openvas-manager)"
+DESCRIPTION="Greenbone Security Assistant for openvas"
 HOMEPAGE="http://www.openvas.org/"
-SRC_URI="http://wald.intevation.org/frs/download.php/${DL_ID}/${P/_beta/+beta}.tar.gz"
+SRC_URI="http://wald.intevation.org/frs/download.php/${DL_ID}/${P}.tar.gz"
 
 SLOT="0"
-LICENSE="GPL-2"
+LICENSE="GPL-2+ BSD MIT"
 KEYWORDS=" ~amd64 ~arm ~ppc ~x86"
 IUSE=""
 
 RDEPEND="
-	>=net-analyzer/openvas-libraries-8.0.5
-	>=dev-db/sqlite-3
-	!net-analyzer/openvas-administrator"
+	dev-libs/libgcrypt:0
+	dev-libs/libxslt
+	>=net-analyzer/openvas-libraries-8.0.3
+	net-libs/libmicrohttpd[messages]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-S="${WORKDIR}"/${P}
-
 PATCHES=(
-	"${FILESDIR}"/${PN}-6.0.1-bsdsource.patch
+	"${FILESDIR}"/${PN}-5.0.3-run.patch
 	)
+
+S="${WORKDIR}"/${P}
 
 src_prepare() {
 	sed \
@@ -43,20 +44,21 @@ src_configure() {
 	local mycmakeargs=(
 		-DLOCALSTATEDIR="${EPREFIX}/var"
 		-DSYSCONFDIR="${EPREFIX}/etc"
-		)
+	)
 	cmake-utils_src_configure
 }
 
 src_install() {
 	cmake-utils_src_install
+	newinitd "${FILESDIR}"/${MY_PN}.init ${MY_PN}
 
-	insinto /etc/openvas/
+	insinto /etc/openvas
 	doins "${FILESDIR}"/${MY_PN}-daemon.conf
-	dosym ../openvas/${MY_PN}-daemon.conf /etc/conf.d/${PN}
+	dosym ../openvas/${MY_PN}-daemon.conf /etc/conf.d/${MY_PN}
 
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}"/${MY_PN}.logrotate ${MY_PN}
+	doins "${FILESDIR}"/${MY_PN}.logrotate
 
-	newinitd "${FILESDIR}"/${MY_PN}.init ${MY_PN}
+	systemd_newtmpfilesd "${FILESDIR}"/${MY_PN}.tmpfiles.d ${MY_PN}.conf
 	systemd_dounit "${FILESDIR}"/${MY_PN}.service
 }

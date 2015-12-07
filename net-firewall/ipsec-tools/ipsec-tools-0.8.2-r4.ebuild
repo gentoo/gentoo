@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
 
-inherit eutils flag-o-matic autotools linux-info pam
+inherit eutils flag-o-matic autotools linux-info pam systemd
 
 DESCRIPTION="A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation"
 HOMEPAGE="http://ipsec-tools.sourceforge.net/"
@@ -12,22 +12,24 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~mips ppc ppc64 x86"
-IUSE="hybrid idea ipv6 kerberos ldap nat pam rc5 readline selinux stats"
+KEYWORDS="~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~x86"
+IUSE="hybrid idea ipv6 kerberos ldap libressl nat pam rc5 readline selinux stats"
 
-RDEPEND="
-	dev-libs/openssl
+CDEPEND="
+	!libressl? ( dev-libs/openssl:0 )
+	libressl? ( dev-libs/libressl )
 	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap )
 	pam? ( sys-libs/pam )
-	readline? ( sys-libs/readline )
-	selinux? (
-		sys-libs/libselinux
-		sec-policy/selinux-ipsec
-	)"
+	readline? ( sys-libs/readline:0= )
+	selinux? ( sys-libs/libselinux )"
 
-DEPEND="${RDEPEND}
+DEPEND="${CDEPEND}
 	>=sys-kernel/linux-headers-2.6.30"
+
+RDEPEND="${CDEPEND}
+	selinux? ( sec-policy/selinux-ipsec )
+"
 
 pkg_preinst() {
 	if has_version "<${CATEGORY}/${PN}-0.8.0-r5" ; then
@@ -230,6 +232,8 @@ src_install() {
 	keepdir /var/lib/racoon
 	newconfd "${FILESDIR}"/racoon.conf.d-r2 racoon
 	newinitd "${FILESDIR}"/racoon.init.d-r3 racoon
+	systemd_dounit "${FILESDIR}/ipsec-tools.service"
+	systemd_dounit "${FILESDIR}/racoon.service"
 	use pam && newpamd "${FILESDIR}"/racoon.pam.d racoon
 
 	insinto /etc
