@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Sergey Popov <pinkbyte@gentoo.org> (7 Dec 2015)
+# IPoE driver does not build properly
+net-dialup/accel-ppp ipoe
+
 # Michael Palimaka <kensington@gentoo.org> (6 Dev 2015)
 # Requires unreleased dependencies
 =kde-apps/gwenview-15.08* kipi raw
