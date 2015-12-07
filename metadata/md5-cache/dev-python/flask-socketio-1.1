@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-python/flask-0.9[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] dev-python/python-socketio[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] dev-python/setuptools[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] test? ( dev-python/coverage[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)]
+DESCRIPTION=Socket.IO integration for Flask applications.
+EAPI=5
+HOMEPAGE=https://flask-socketio.readthedocs.org/ https://github.com/miguelgrinberg/Flask-SocketIO/ https://pypi.python.org/pypi/Flask-SocketIO
+IUSE=test python_targets_python2_7 python_targets_python3_4
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=>=dev-python/flask-0.9[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] dev-python/python-socketio[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_4 )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://pypi/F/Flask-SocketIO/Flask-SocketIO-1.1.tar.gz -> flask-socketio-1.1.tar.gz
+_eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=distutils-r1	79bc5f4de403751e472e01fdfd98d587	eutils	d9bd2ddd85a58e470b49ca997e255a4c	multibuild	706332a8d833c077e1aa37faa1ebf162	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	ead0b4e7f0f35d7ae8b91da6e3822535	python-utils-r1	f3baf35c6cae79e417b3f91e00bc075c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=c8df22408fd81be37c7ea8e1c9633b7c

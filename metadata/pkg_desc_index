@@ -7044,7 +7044,7 @@ dev-python/flask-restful 0.2.12 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4: Simple framework 
 dev-python/flask-restless 0.15.0 0.16.0 0.17.0: Flask extension for easy ReSTful API generation
 dev-python/flask-script 2.0.5: Flask support for writing external scripts
 dev-python/flask-security 1.7.4: Simple security for Flask apps
-dev-python/flask-socketio 0.6.0: Socket.IO integration for Flask applications.
+dev-python/flask-socketio 0.6.0 1.1: Socket.IO integration for Flask applications.
 dev-python/flask-sqlalchemy 0.16-r1 1.0 1.0-r1 2.0: SQLAlchemy support for Flask applications
 dev-python/flask-testing 0.4.1 0.4.2: Unit testing for Flask
 dev-python/flask-themes 0.1.3-r1: Infrastructure for theming support in Flask applications
