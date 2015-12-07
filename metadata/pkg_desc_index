@@ -14853,7 +14853,7 @@ net-proxy/obfsproxy 0.2.11 0.2.12 0.2.13: An obfuscating proxy using Tor's plugg
 net-proxy/oops 1.5.24_pre20050503-r4 1.5.24_pre20050503-r5: An advanced multithreaded caching web proxy
 net-proxy/pingtunnel 0.72: Tunnel TCP over ICMP
 net-proxy/piper 1.14: Piper (a tool for manipulating SOCKS5 servers)
-net-proxy/polipo 1.1.1 1.1.1-r1 9999: A caching web proxy
+net-proxy/polipo 1.1.1 1.1.1-r1 1.1.1-r2 9999: A caching web proxy
 net-proxy/privoxy 3.0.23: A web proxy with advanced filtering capabilities for protecting privacy against Internet junk
 net-proxy/ratproxy 1.58: A semi-automated, largely passive web application security audit tool
 net-proxy/rejik 3.2.10: A squid redirector used for blocking unwanted content
