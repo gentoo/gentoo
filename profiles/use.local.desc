@@ -185,6 +185,8 @@ app-admin/lastpass-cli:pinentry - Use app-crypt/pinentry to prompt for passwords
 app-admin/logrotate:acl - Installs acl support
 app-admin/logrotate:cron - Installs cron file
 app-admin/logrotate:selinux - Installs Security Enhanced Linux support
+app-admin/logstash-bin:all-plugins - contains the standard distribution package plus all plugins
+app-admin/logstash-bin:standard - standard distribution package
 app-admin/mate-system-tools:caja - Adds support for the Caja file manager
 app-admin/mate-system-tools:nfs - Adds support for NFS shares
 app-admin/matter:entropy - Add Entropy support

@@ -132,7 +132,7 @@ app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
 app-admin/logrotate 3.8.9 3.8.9-r1 3.9.1 3.9.1-r1: Rotates, compresses, and mails system logs
 app-admin/logsentry 1.1.1 1.1.1-r1: automatically monitor system logs and mail security violations on a periodic basis
 app-admin/logstalgia 1.0.3-r1 1.0.6: Replays or streams an access_log as a retro arcade game-like simulation
-app-admin/logstash-bin 1.4.5 1.5.4 1.5.5: Tool for managing events and logs
+app-admin/logstash-bin 1.5.5 2.1.0: Tool for managing events and logs
 app-admin/logstash-forwarder 0.4.0-r1: Collects logs locally in preparation for processing elsewhere
 app-admin/logsurfer+ 1.8-r1: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
@@ -17533,7 +17533,7 @@ www-misc/multisort 1.1-r1: multisort takes any number of httpd logfiles in the C
 www-misc/nx_util 0.52.1 0.53.1: Whitelist & Reports generation for Naxsi (Web Application Firewall module for Nginx)
 www-misc/profile-sync-daemon 5.45.1: Symlinks and syncs browser profile dirs to RAM
 www-misc/reflector 2011.05.13.1: archlinux's take on mirrorselect
-www-misc/shellinabox 2.18: Web server that can export arbitrary command line tools to a web based terminal emulator
+www-misc/shellinabox 2.18 2.19: Web server that can export arbitrary command line tools to a web based terminal emulator
 www-misc/surl 0.7.1.1: URL shortening command line application that supports various sites
 www-misc/urlwatch 1.16 1.17 1.18: A tool for monitoring webpages for updates
 www-misc/vdradmin-am 3.6.9 3.6.9-r3 3.6.10: WWW Admin for the Video Disk Recorder
