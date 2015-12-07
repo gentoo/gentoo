@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 inherit eutils base qt4-r2 multilib autotools
 
@@ -12,11 +12,13 @@ SRC_URI="mirror://sourceforge/fwbuilder/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE=""
+IUSE="libressl"
 
-DEPEND=">=dev-qt/qtgui-4.3:4
-	dev-libs/openssl
-	dev-libs/elfutils"
+DEPEND="
+	!libressl? ( dev-libs/openssl:0 )
+	libressl? ( dev-libs/libressl )
+	dev-libs/elfutils
+	>=dev-qt/qtgui-4.3:4"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
