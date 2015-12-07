@@ -3992,7 +3992,7 @@ dev-java/jdom-jaxen 1.0-r1: Jaxen binding for jdom
 dev-java/jdynamite 1.2-r1: Dynamic Template in Java
 dev-java/jebl 2013.02.18 9999: Java Evolutionary Biology Library
 dev-java/jempbox 0.2.0 1.7.1: An open source Java library for parsing font files
-dev-java/jettison 1.0 1.3.7: A JSON StAX implementation
+dev-java/jettison 1.3.7: A JSON StAX implementation
 dev-java/jexcelapi 2.6.8 2.6.8-r1: A Java API to read, write, and modify Excel spreadsheets
 dev-java/jffi 1.0.11-r1 1.2.9: An optimized Java interface to libffi
 dev-java/jflex 1.6.0-r2 1.6.1: JFlex is a lexical analyzer generator for Java
