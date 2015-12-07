@@ -41,7 +41,7 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 src_prepare() {
 	# use our system vim dir
 	sed -e '/^# define SYS_VIMRC_FILE/s|$VIM|'"${EPREFIX}"'/etc/vim|' \
-		-i src/nvim/os/unix_defs.h || die
+		-i src/nvim/globals.h || die
 
 	# add eclass to bash filetypes
 	sed -e 's|*.ebuild|*.ebuild,*.eclass|' -i runtime/filetype.vim || die
