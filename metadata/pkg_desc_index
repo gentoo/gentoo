@@ -16388,7 +16388,7 @@ sys-apps/ultracopier 0.2.0.16: Advanced file copying tool
 sys-apps/unscd 0.51 0.52-r2: simple & stable nscd replacement
 sys-apps/usb_modeswitch 2.2.0_p20140529 2.2.3_p20150627 2.2.5 2.2.6: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
 sys-apps/usbmon 6-r1: Userland for USB monitoring framework
-sys-apps/usbredir 0.4.3 0.4.4 0.5 0.5.1 0.6 0.7 9999: A simple TCP daemon and set of libraries for the usbredir protocol (redirecting USB traffic)
+sys-apps/usbredir 0.7 0.7.1 9999: A simple TCP daemon and set of libraries for the usbredir protocol (redirecting USB traffic)
 sys-apps/usbutils 007 008 008-r1: USB enumeration utilities
 sys-apps/usermode-utilities 20070815-r3: Tools for use with Usermode Linux virtual machines
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
