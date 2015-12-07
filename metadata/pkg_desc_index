@@ -7197,10 +7197,10 @@ dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
 dev-python/kivy-garden 0.1.1: Kivys Garden tool to manage flowers
 dev-python/kiwi 1.9.39.2 1.9.40: Kiwi is a pure Python framework and set of enhanced PyGTK widgets
 dev-python/kiwisolver 0.1.3: An efficient C++ implementation of the Cassowary constraint solving algorithm
-dev-python/kombu 2.5.16 3.0.23 3.0.24 3.0.26 3.0.28 3.0.29: AMQP Messaging Framework for Python
+dev-python/kombu 2.5.16 3.0.23 3.0.24 3.0.26 3.0.28 3.0.29 3.0.30: AMQP Messaging Framework for Python
 dev-python/larch 1.20130808 1.20131130: Copy-on-write B-tree data structure
 dev-python/lazy-object-proxy 1.2.1: A fast and thorough lazy object proxy
-dev-python/ldap3 0.9.9 0.9.9.1 0.9.9.2: A strictly RFC 4511 conforming LDAP V3 pure Python client
+dev-python/ldap3 0.9.9 0.9.9.1 0.9.9.2 1.0.1: A strictly RFC 4511 conforming LDAP V3 pure Python client
 dev-python/ldappool 1.0: A connection pool for python-ldap
 dev-python/lesscpy 0.9j 0.10.2: A compiler written in Python for the LESS language
 dev-python/libasyncns-python 0.7.1-r1: Python bindings for libasyncns
@@ -7432,7 +7432,7 @@ dev-python/pudge 0.1.3-r1: A documentation generator for Python projects, using 
 dev-python/pupynere 1.0.15-r1: Pupynere is a PUre PYthon NEtcdf REader
 dev-python/pxml 0.2.11-r1 0.2.12: A python library and command-line tool to prettify and colorize XML
 dev-python/py 1.4.30 1.4.31: library with cross-python path, ini-parsing, io, code, log facilities
-dev-python/py-amqp 1.4.5 1.4.6 1.4.7: Low-level AMQP client for Python (fork of amqplib)
+dev-python/py-amqp 1.4.5 1.4.6 1.4.7 1.4.8: Low-level AMQP client for Python (fork of amqplib)
 dev-python/py-bcrypt 0.4: py-bcrypt is an implementation of the OpenBSD Blowfish password hashing algorithm
 dev-python/py-gfm 0.1.1: Github-Flavored Markdown for Python-Markdown
 dev-python/py-notify 0.3.1-r1: Tools for implementing the Observer programming pattern in Python
