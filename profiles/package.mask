@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org (08 Dec 2015)
+# Dead upstream. Vulnerable. Masked for removal in 30 days.
+# Bug 537524
+app-arch/ppmd
+
 # James Le Cuirot <chewi@gentoo.org> (07 Dec 2015)
 # Dead project with no revdeps. Removal in 30 days.
 dev-java/jscience
