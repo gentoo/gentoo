@@ -1,9 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="2"
-inherit depend.apache depend.php webapp
+inherit depend.apache webapp
 
 DESCRIPTION="Web-based solution for managing scientific literature, references and citations"
 HOMEPAGE="http://www.refbase.net/"
@@ -18,7 +18,6 @@ DEPEND="|| ( <dev-lang/php-5.3[pcre] >=dev-lang/php-5.3 )
 RDEPEND="${DEPEND}"
 
 need_apache
-need_php
 
 pkg_setup() {
 	webapp_pkg_setup
