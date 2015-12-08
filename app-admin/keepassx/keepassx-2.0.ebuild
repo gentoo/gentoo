@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,6 @@ IUSE="test"
 DEPEND="
 	dev-libs/libgcrypt:0=
 	dev-qt/qtcore:4
-	dev-qt/qtdbus:4
 	dev-qt/qtgui:4
 	dev-qt/qttest:4
 	sys-libs/zlib
