@@ -64,7 +64,7 @@ src_prepare() {
 
 	# Handle optional minimal install.
 	if use minimal; then
-		# remove tempaltes as they are not needed to run binaries
+		# remove templates as they are not needed to run binaries
 		sed -e '/add_subdirectory( template )/d' -i CMakeLists.txt || die "sed failed"
 	else
 		# create a link to the parts library in the main project folder
