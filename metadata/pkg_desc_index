@@ -7844,7 +7844,7 @@ dev-python/setproctitle 1.1.8 1.1.9: Allow customization of the process title
 dev-python/setuptools 18.4 18.5 18.6.1 18.7 18.7.1 9999: a collection of extensions to Distutils
 dev-python/setuptools-git 1.0 1.1: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
-dev-python/setuptools_scm 1.8.0 1.9.0: package to manage versions by scm tags via setuptools
+dev-python/setuptools_scm 1.8.0 1.9.0 1.10.0: package to manage versions by scm tags via setuptools
 dev-python/sexpdata 0.0.3: a simple S-expression parser/serializer
 dev-python/sh 1.07 1.08 1.09 1.11: Python subprocess interface
 dev-python/shiboken 1.2.2: A tool for creating Python bindings for C++ libraries
@@ -9526,7 +9526,7 @@ dev-util/perf 3.8-r1 3.12 3.13.1-r1 3.15.5 4.1.5-r1: Userland tools for Linux Pe
 dev-util/pida 0.6.2-r1: Gtk and/or Vim-based Python Integrated Development Application
 dev-util/piklab 0.16.2: IDE for applications based on PIC and dsPIC microcontrollers
 dev-util/pkgcheck 0.5 0.5.1 9999: pkgcore-based QA utility
-dev-util/pkgconf 0.9.11 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
+dev-util/pkgconf 0.9.11 0.9.12 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29 9999: Package config system that manages compile/link flags
 dev-util/pkgconfig-openbsd 20130507-r1: A perl based version of pkg-config from OpenBSD
 dev-util/plan9port 20140306 20140306-r1: Port of many Plan 9 programs and libraries
