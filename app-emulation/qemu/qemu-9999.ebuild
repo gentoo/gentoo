@@ -123,7 +123,7 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 		)
 	)
 	seccomp? ( >=sys-libs/libseccomp-2.1.0[static-libs(+)] )
-	smartcard? ( dev-libs/nss !app-emulation/libcacard )
+	smartcard? ( >=app-emulation/libcacard-2.5.0[static-libs(+)] )
 	snappy? ( app-arch/snappy[static-libs(+)] )
 	spice? (
 		>=app-emulation/spice-protocol-0.12.3
