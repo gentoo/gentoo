@@ -4046,7 +4046,7 @@ dev-java/jrexx 1.1.1-r1: Regular expression API for textual pattern matching bas
 dev-java/jrobin 1.6.0-r1: JRobin is a 100% pure Java alternative to RRDTool
 dev-java/jrrd 1.0.1-r1: Java Interface to Tobias Oetiker's RRDtool
 dev-java/jruby 1.7.12: Java-based Ruby interpreter implementation
-dev-java/jsap 2.1: Java Simple Arguments Parser (JSAP)
+dev-java/jsap 2.1 2.1-r1: Java Simple Arguments Parser (JSAP)
 dev-java/jsch 0.1.49 0.1.52: JSch is a pure Java implementation of SSH2
 dev-java/jscience 1.0.4-r1: Java Tools and Libraries for the Advancement of Sciences
 dev-java/json 20150729: Java implementation of the JavaScript Object Notation
