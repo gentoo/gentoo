@@ -2,7 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>java</herd>
-<maintainer><email>maintainer-wanted@gentoo.org</email></maintainer>
 <longdescription>A P2P file-sharing application designed to work on top of the I2P or Kad network stacks.</longdescription>
 <use>
 <flag name="nls">Adds Native Language Support using GNU gettext.</flag>
