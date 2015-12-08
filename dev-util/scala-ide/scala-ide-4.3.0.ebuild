@@ -11,8 +11,8 @@ S_PACK="${PN/-/}-pack"
 # scala-ide -> scala-SDK-${PV}
 S_SDK="${PN%-*}-SDK-${PV}"
 
-SRC_URI_AMD64="http://downloads.typesafe.com/${S_PACK}/${PV}-vfinal-luna-211-20150728/${S_SDK}-vfinal-2.11-linux.gtk.x86_64.tar.gz"
-SRC_URI_X86="http://downloads.typesafe.com/${S_PACK}/${PV}-vfinal-luna-211-20150728/${S_SDK}-vfinal-2.11-linux.gtk.x86_64.tar.gz"
+SRC_URI_AMD64="http://downloads.typesafe.com/${S_PACK}/${PV}-vfinal-luna-211-20151201/${S_SDK}-vfinal-2.11-linux.gtk.x86_64.tar.gz"
+SRC_URI_X86="http://downloads.typesafe.com/${S_PACK}/${PV}-vfinal-luna-211-20151201/${S_SDK}-vfinal-2.11-linux.gtk.x86.tar.gz"
 
 DESCRIPTION="The Scala IDE"
 HOMEPAGE="http://www.scala-ide.org"
