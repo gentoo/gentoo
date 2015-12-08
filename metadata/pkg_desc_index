@@ -6940,7 +6940,7 @@ dev-python/django-pipeline 1.3.26 1.5.4: An asset packaging library for Django
 dev-python/django-piston 0.2.3-r1 9999: A mini-framework for Django for creating RESTful APIs
 dev-python/django-recaptcha 1.0.3 1.0.4: Django recaptcha form field/widget app
 dev-python/django-registration 0.8-r1 1.0: An extensible user-registration application for Django
-dev-python/django-sekizai 0.8.2: Django Template Blocks with extra functionality
+dev-python/django-sekizai 0.8.2 0.9.0: Django Template Blocks with extra functionality
 dev-python/django-select2 3.2.1 4.0.0 4.2.2 4.3.1: A Django integration of Select2
 dev-python/django-setuptest 0.1.6: Simple test suite enabling Django app testing via setup.py
 dev-python/django-social-auth 0.7.28: An easy to setup social authentication/authorization mechanism for Django projects
@@ -16745,7 +16745,7 @@ sys-freebsd/freebsd-ubin 8.2-r1 9.1-r2 9.1-r3 10.2-r1: FreeBSD's base system sou
 sys-freebsd/freebsd-usbin 8.2-r2 9.1-r1 10.2-r4: FreeBSD /usr/sbin tools
 sys-freebsd/ubin-wrappers 0: /usr/bin wrapper scripts for FreeBSD script compatibility
 sys-freebsd/virtio-kmod 0.228301-r1: Virtio drivers from FreeBSD Ports' emulators/virtio-kmod
-sys-fs/archivemount 0.8.3 0.8.4 0.8.5: Mount archives using libarchive and FUSE
+sys-fs/archivemount 0.8.3 0.8.4 0.8.5 0.8.7: Mount archives using libarchive and FUSE
 sys-fs/arm-fdisk 3.0.6 3.0.6-r1: edit disk partitions on Acorn machines
 sys-fs/atari-fdisk 0.7.1.5.1 0.7.1.5.4: create and edit the partition table of a disk partitioned in Atari format
 sys-fs/aufs-headers 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116: User space headers for aufs3
