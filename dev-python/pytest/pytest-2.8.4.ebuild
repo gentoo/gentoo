@@ -54,9 +54,6 @@ python_prepare_all() {
 		-e 's:test_logging_initialized_in_test:_&:g' \
 		-i testing/test_capture.py || die
 
-	find \( -name __pycache__ -o -name "*.pyc" -o -name "*.pyo" \) \
-		-exec rm -rvf '{}' + || die
-
 	distutils-r1_python_prepare_all
 }
 
