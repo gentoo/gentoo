@@ -34,7 +34,7 @@ KEYWORDS="amd64 x86 ~x86-fbsd"
 IUSE="custom-cflags ncurses netboot static"
 
 LIB_DEPEND="ncurses? ( >=sys-libs/ncurses-5.9-r3:0[static-libs(+),abi_x86_32(-)] )"
-RDEPEND="!static? ( ${LIB_DEPEND//static-libs(+),/} )"
+RDEPEND="!static? ( ${LIB_DEPEND//[static-libs(+),/=[} )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
 
