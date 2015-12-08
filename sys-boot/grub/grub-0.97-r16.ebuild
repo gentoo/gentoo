@@ -67,6 +67,21 @@ src_prepare() {
 		|| die
 
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}"/patch
+
+	# Work around issue where the default CFLAGS fail with gcc-4.9.3 (possibly newer), force -O0 instead
+	# bug 564890, 566638
+	if [[ $(gcc-major-version) -ge 5 || $(gcc-major-version) -eq 4 && $(gcc-minor-version) -ge 9 ]]; then
+		if use custom-cflags; then
+			ewarn "You are using custom cflags with gcc-4.9 or newer."
+			ewarn "Be aware the result may segfault at runtime due to unknown optimization"
+			ewarn "incompatibilities."
+		else
+			einfo "Forcing -O0 to get around optimization issue caused by gcc-4.9 and newer with -O2"
+			sed -i	-e "/CFLAGS/s/-O2/-O0/" \
+				"${S}"/configure.ac || die
+		fi
+	fi
+
 	rm -f "${S}"/aclocal.m4 # seems to keep bug 418287 away
 	eautoreconf
 }
