@@ -2138,7 +2138,7 @@ app-shells/fish 2.1.1 2.1.2 2.2.0: fish is the Friendly Interactive SHell
 app-shells/gentoo-bashcomp 20101217-r1 20121024 20140911: Gentoo-specific bash command-line completions (emerge, ebuild, equery, repoman, layman, etc)
 app-shells/gentoo-zsh-completions 20141115 20150103 99999999: Gentoo specific zsh completion support (includes emerge and ebuild commands)
 app-shells/heirloom-sh 050706: Heirloom Bourne Shell, derived from OpenSolaris code SVR4/SVID3
-app-shells/hstr 1.17: Shell history suggest box - easily view, navigate, search and manage your command history
+app-shells/hstr 1.17 1.18: Shell history suggest box - easily view, navigate, search and manage your command history
 app-shells/ksh 93.20110208 93.20120229 93.20140606 93.20140625: The Original Korn Shell, 1993 revision (ksh93)
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
 app-shells/mksh 50d 50d-r1 50e 50f 51 9999: MirBSD Korn Shell
@@ -3779,7 +3779,7 @@ dev-java/commons-io 2.4: Commons-IO contains utility classes, stream implementat
 dev-java/commons-jelly 1.0-r8: A Java and XML based scripting and processing engine
 dev-java/commons-jexl 1.1-r1 2.1.1: Expression language engine, can be embedded in applications and frameworks
 dev-java/commons-jxpath 1.3-r1 1.3-r2: Applies XPath expressions to graphs of objects of all kinds
-dev-java/commons-lang 2.0-r2 2.6 2.6-r1 3.1 3.3.2: Commons components to manipulate core java classes
+dev-java/commons-lang 2.0-r2 2.0-r3 2.6-r1 3.1 3.3.2: Commons components to manipulate core java classes
 dev-java/commons-launcher 1.1-r1: Commons-launcher eliminates the need for a batch or shell script to launch a Java class
 dev-java/commons-logging 1.2: The Jakarta-Commons Logging package is an ultra-thin bridge between different logging libraries
 dev-java/commons-math 2.1-r1 3.2: Lightweight, self-contained mathematics and statistics components
@@ -3857,7 +3857,7 @@ dev-java/fscript 1.17-r1: Java based scripting engine designed to be embedded in
 dev-java/gcj-jdk 4.9.3: Java wrappers around GCJ
 dev-java/gjdoc 0.7.9-r3: A javadoc compatible Java source documentation generator
 dev-java/glassfish-connector-api 1.1.2.2.04: Java Transaction API
-dev-java/glassfish-deployment-api 1.2: J2EE Application Deployment Specification
+dev-java/glassfish-deployment-api 1.2 3.1.1: J2EE Application Deployment Specification V.1.2
 dev-java/glassfish-ejb-api 3.2: Project GlassFish Enterprise JavaBean API
 dev-java/glassfish-interceptor-api 3.1: Project GlassFish Interceptor API
 dev-java/glassfish-jms-api 1.1.2.2.04: Java Transaction API
@@ -4727,7 +4727,7 @@ dev-libs/libqzeitgeist 0.8.0: Qt interface to the Zeitgeist event tracking syste
 dev-libs/librelp 1.2.7-r1: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.2.1 0.92.3: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.0.13-r1: Generic library for reporting software bugs
-dev-libs/libressl 2.2.4-r1 2.3.1-r1: Free version of the SSL/TLS protocol forked from OpenSSL
+dev-libs/libressl 2.2.4-r1 2.2.5 2.3.1-r1: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/librevenge 0.0.1 0.0.2 9999: A helper library for REVerse ENGineered formats filters
 dev-libs/libroadnav 0.19: A library capable of plotting streetmaps and providing driving directions for US addresses
 dev-libs/librra 0.16: Implements the RRA protocol, for syncing pre WM-2005 PIM data, and files for all versions
@@ -9382,7 +9382,7 @@ dev-util/dogtail 0.9.0-r2: GUI test tool and automation framework using accessib
 dev-util/dropwatch 1.4-r1: A utility to interface to the kernel to monitor for dropped network packets
 dev-util/duma 2.5.13 2.5.15-r1: DUMA (Detect Unintended Memory Access) is a memory debugging library
 dev-util/dwarves 1.10_p20140618 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
-dev-util/dwdiff 2.0.9 2.0.10 2.1.0: A front-end for the diff program that operates at the word level instead of the line level
+dev-util/dwdiff 2.1.0: A front-end for the diff program that operates at the word level instead of the line level
 dev-util/eclipse-sdk 3.5.1-r1: Eclipse SDK
 dev-util/eggy 0.3.3-r1: An IDE/editor for several programming languages, including Python, Java, C, Perl and others
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
@@ -9561,7 +9561,7 @@ dev-util/rosinstall 0.7.6 0.7.7 9999: Command-line tools for maintaining a works
 dev-util/rosinstall_generator 0.1.11 9999: Generates rosinstall files containing information about repositories with ROS packages/stacks
 dev-util/rpmdevtools 8.3 8.3-r1 8.5: Collection of rpm packaging related utilities
 dev-util/sasm 2.2 9999: Simple crossplatform IDE for NASM assembly language
-dev-util/scala-ide 4.1.0 4.1.1: The Scala IDE
+dev-util/scala-ide 4.1.0 4.3.0: The Scala IDE
 dev-util/scanmem 0.15.2 0.15.3: Locate and modify variables in executing processes
 dev-util/schroot 1.6.3 1.6.5 1.6.5-r1 1.6.10-r3: Utility to execute commands in a chroot environment
 dev-util/scons 2.3.5 2.4.0 2.4.1: Extensible Python-based build utility
@@ -17055,7 +17055,7 @@ sys-process/at 3.1.14 3.1.16 3.1.16-r1: Queues jobs for later execution
 sys-process/atop 1.27_p3 2.0.2 2.1 2.2: Resource-specific view of processes
 sys-process/audit 1.7.18 2.0.5 2.1.3-r1 2.2.2-r2 2.2.2-r3 2.4.1 2.4.1-r1 2.4.3 2.4.3-r1: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.09 0.09-r2 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
-sys-process/criu 1.6.1 1.7.2: utility to checkpoint/restore a process tree
+sys-process/criu 1.6.1 1.7.2 1.8: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.3 0.3.4 0.3.5-r1 0.3.6 0.3.7-r1: base for all cron ebuilds
 sys-process/cronie 1.5.0 1.5.0-r1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.5: Utilities to assist running batch processing jobs
