@@ -16,7 +16,7 @@
 # qtbz2 -s -j ${PKGDIR}/${CAT}/${PF}.tbz2 && \
 # mv ${PF}.tar.bz2 ${DISTDIR}/grub-static-${PVR}.tar.bz2
 
-EAPI="4"
+EAPI="5"
 
 inherit eutils mount-boot toolchain-funcs linux-info flag-o-matic autotools pax-utils multiprocessing
 
@@ -33,11 +33,8 @@ SLOT="0"
 KEYWORDS="amd64 x86 ~x86-fbsd"
 IUSE="custom-cflags ncurses netboot static"
 
-LIB_DEPEND="ncurses? (
-		>=sys-libs/ncurses-5.9-r3[static-libs(+)]
-		amd64? ( >=sys-libs/ncurses-5.9-r3[abi_x86_32(-)] )
-	)"
-RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)\]/} )"
+LIB_DEPEND="ncurses? ( >=sys-libs/ncurses-5.9-r3:0[static-libs(+),abi_x86_32(-)] )"
+RDEPEND="!static? ( ${LIB_DEPEND//static-libs(+),/} )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
 
