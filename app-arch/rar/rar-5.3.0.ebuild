@@ -1,13 +1,14 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-EAPI=4
+
+EAPI=5
 MY_PV="${PV/0_beta/b}"
 DESCRIPTION="RAR compressor/uncompressor"
 HOMEPAGE="http://www.rarsoft.com/"
-URI_x86="http://www.rarlab.com/rar/rarlinux-${MY_PV}.tar.gz"
-URI_amd64="http://www.rarlab.com/rar/rarlinux-x64-${MY_PV}.tar.gz"
-URI_w64="http://www.rarlab.com/rar/winrar-x64-${MY_PV//.}.exe"
+URI_x86="http://www.rarsoft.com/rar/rarlinux-${MY_PV}.tar.gz"
+URI_amd64="http://www.rarsoft.com/rar/rarlinux-x64-${MY_PV}.tar.gz"
+URI_w64="http://www.rarsoft.com/rar/winrar-x64-${MY_PV//.}.exe"
 SRC_URI="x86? ( ${URI_x86} )
 	amd64? ( ${URI_amd64} )
 	all_sfx? (
