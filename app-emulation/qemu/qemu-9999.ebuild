@@ -34,7 +34,7 @@ kernel_linux kernel_FreeBSD lzo ncurses nfs nls numa opengl +pin-upstream-blobs
 +png pulseaudio python \
 rbd sasl +seccomp sdl sdl2 selinux smartcard snappy spice ssh static static-softmmu
 static-user systemtap tci test +threads usb usbredir +uuid vde +vhost-net \
-virtfs +vnc vte xattr xen xfs"
+virgl virtfs +vnc vte xattr xen xfs"
 
 COMMON_TARGETS="aarch64 alpha arm cris i386 m68k microblaze microblazeel mips
 mips64 mips64el mipsel or32 ppc ppc64 s390x sh4 sh4eb sparc sparc64 unicore32
@@ -134,6 +134,7 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 	usbredir? ( >=sys-apps/usbredir-0.6[static-libs(+)] )
 	uuid? ( >=sys-apps/util-linux-2.16.0[static-libs(+)] )
 	vde? ( net-misc/vde[static-libs(+)] )
+	virgl? ( media-libs/virglrenderer[static-libs(+)] )
 	virtfs? ( sys-libs/libcap )
 	xfs? ( sys-fs/xfsprogs[static-libs(+)] )"
 USER_LIB_DEPEND="${COMMON_LIB_DEPEND}"
@@ -395,6 +396,7 @@ qemu_src_configure() {
 		$(conf_softmmu uuid)
 		$(conf_softmmu vde)
 		$(conf_softmmu vhost-net)
+		$(conf_softmmu virgl virglrenderer)
 		$(conf_softmmu virtfs)
 		$(conf_softmmu vnc)
 		$(conf_softmmu vte)

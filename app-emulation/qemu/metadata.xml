@@ -42,6 +42,7 @@
 		<flag name="uuid">Enable UUID support in the vdi block driver</flag>
 		<flag name="vde">Enable VDE-based networking</flag>
 		<flag name="vhost-net">Enable accelerated networking using vhost-net, see http://www.linux-kvm.org/page/VhostNet</flag>
+		<flag name="virgl">Enable experimental Virgil 3d (virtual software GPU)</flag>
 		<flag name="virtfs">Enable VirtFS via virtio-9p-pci / fsdev. See http://wiki.qemu.org/Documentation/9psetup</flag>
 		<flag name="vte">Enable terminal support (<pkg>x11-libs/vte</pkg>) in the GTK+ interface</flag>
 		<flag name="xattr">Add support for getting and setting POSIX extended attributes, through
