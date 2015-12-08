@@ -1,5 +1,5 @@
 DEFINED_PHASES=install postinst prepare prerm setup
-DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
+DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
 DESCRIPTION=dotProject is a PHP web-based project management framework
 EAPI=5
 HOMEPAGE=http://www.dotproject.net/
@@ -10,5 +10,5 @@ RDEPEND=app-text/poppler[utils] dev-php/PEAR-Date virtual/httpd-php >=app-admin/
 SLOT=2.1.7-r1
 SRC_URI=mirror://sourceforge/dotproject/dotproject-2.1.7.tar.gz
 _eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:webapp pkg_setup:webapp src_prepare:- src_install:-
-_eclasses_=depend.php	c595f1a83ba4052bfe96c06daee20004	eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	webapp	42c6ef7af496b228f9854b3c81e4b226
-_md5_=93b05da09297f9e41219d728d8923589
+_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	webapp	42c6ef7af496b228f9854b3c81e4b226
+_md5_=8bb06c2246c40468e8ae2bf76b6b99f0
