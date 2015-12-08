@@ -6920,7 +6920,7 @@ dev-python/django-durationfield 0.5.2: Reusable app for adding a DurationField t
 dev-python/django-endless-pagination 2.0: Tools supporting ajax, multiple and lazy pagination, Twitter-style and Digg-style pagination
 dev-python/django-evolution 0.6.9 0.7.4 0.7.5: A Django application that will run cron jobs for other django apps
 dev-python/django-extensions 1.5.6 1.5.7 1.5.9: Django Command Extensions
-dev-python/django-filer 0.9.12: A file management application for django that makes handling of files and images a breeze.
+dev-python/django-filer 0.9.12 1.0.4: File management application for django that makes handling of files and images
 dev-python/django-formtools 1.0: High-level abstractions for Django forms
 dev-python/django-grappelli 2.7.1: A jazzy skin for the Django Admin-Interface
 dev-python/django-haystack 2.2.0 2.3.1: Pluggable search for Django
