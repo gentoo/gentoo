@@ -87,7 +87,7 @@ DEPEND="${RDEPEND}
 	grub_platforms_qemu? ( media-libs/freetype:2 )
 	grub_platforms_ieee1275? ( media-libs/freetype:2 )
 	grub_platforms_loongson? ( media-libs/freetype:2 )
-	grub_platforms_xen? ( app-emulation/xen-tools )
+	grub_platforms_xen? ( app-emulation/xen-tools:= )
 	static? (
 		app-arch/xz-utils[static-libs(+)]
 		truetype? (
