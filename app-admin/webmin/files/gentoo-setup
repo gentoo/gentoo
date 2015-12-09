@@ -94,13 +94,15 @@ if [ "$upgrading" = 1 ]; then
 	real_os_type=`grep "^real_os_type=" $config_dir/config | sed -e 's/real_os_type=//g'`
 	real_os_version=`grep "^real_os_version=" $config_dir/config | sed -e 's/real_os_version=//g'`
 
-	# Get port, ssl, no_ssl2, no_ssl3, ssl_redirect, no_sslcompression and keyfile
+	# Get port, ssl, no_ssl2, no_ssl3, ssl_redirect, no_sslcompression, no_tls1, no_tls1_1 and keyfile
 	port=`grep "^port=" $config_dir/miniserv.conf | sed -e 's/port=//g'`
 	ssl=`grep "^ssl=" $config_dir/miniserv.conf | sed -e 's/ssl=//g'`
 	no_ssl2=`grep "^no_ssl2=" $config_dir/miniserv.conf | sed -e 's/no_ssl2=//g'`
 	no_ssl3=`grep "^no_ssl3=" $config_dir/miniserv.conf | sed -e 's/no_ssl3=//g'`
 	ssl_redirect=`grep "^ssl_redirect=" $config_dir/miniserv.conf | sed -e 's/ssl_redirect=//g'`
 	no_sslcompression=`grep "^no_sslcompression=" $config_dir/miniserv.conf | sed -e 's/no_sslcompression=//g'`
+	no_tls1=`grep "^no_tls1=" $config_dir/miniserv.conf | sed -e 's/no_tls1=//g'`
+	no_tls1_1=`grep "^no_tls1_1=" $config_dir/miniserv.conf | sed -e 's/no_tls1_1=//g'`
 	keyfile=`grep "^keyfile=" $config_dir/miniserv.conf | sed -e 's/keyfile=//g'`
 
 	# Update ACLs
@@ -145,6 +147,8 @@ else
 	echo "no_ssl3=$no_ssl3" >> $cfile
 	echo "ssl_redirect=$ssl_redirect" >> $cfile
 	echo "no_sslcompression=$no_sslcompression" >> $cfile
+	echo "no_tls1=$no_tls1" >> $cfile
+	echo "no_tls1_1=$no_tls1_1" >> $cfile
 	echo "keyfile=$keyfile" >> $cfile
 	echo "env_WEBMIN_CONFIG=$config_dir" >> $cfile
 	echo "env_WEBMIN_VAR=$var_dir" >> $cfile
@@ -318,6 +322,16 @@ fi
 grep no_ssl3= $config_dir/miniserv.conf >/dev/null
 if [ "$?" != "0" ]; then
 	echo no_ssl3=1 >> $config_dir/miniserv.conf
+fi
+
+grep no_tls1= $config_dir/miniserv.conf >/dev/null
+if [ "$?" != "0" ]; then
+    echo no_tls1=1 >> $config_dir/miniserv.conf
+fi
+
+grep no_tls1_1= $config_dir/miniserv.conf >/dev/null
+if [ "$?" != "0" ]; then
+    echo no_tls1_1=1 >> $config_dir/miniserv.conf
 fi
 
 # Make Perl crypt MD5 the default

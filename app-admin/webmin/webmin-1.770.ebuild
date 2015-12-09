@@ -129,7 +129,7 @@ src_install() {
 		-e "s:%conf%:${EROOT}etc/webmin/miniserv.conf:" \
 		-e "s:%config%:${EROOT}etc/webmin/config:" \
 		-e "s:%perllib%:${EROOT}usr/libexec/webmin:" \
-		"${ED}$(_systemd_get_unitdir)/webmin.service" \
+		"${ED}$(_systemd_get_systemunitdir)/webmin.service" \
 		|| die "Failed to patch the webmin systemd service file"
 
 	# Setup pam
@@ -286,12 +286,15 @@ pkg_config(){
 	export os_version='*'
 	export real_os_type='Gentoo Linux'
 	export real_os_version='Any version'
-	# Forcing 'ssl', 'no_ssl2', 'no_ssl3', 'ssl_redirect' and 'no_sslcompression' for tightening security
+	# Forcing 'ssl', 'no_ssl2', 'no_ssl3', 'ssl_redirect', 'no_sslcompression',
+	# 'no_tls1' and 'no_tls1_1' for tightening security
 	export ssl=1
 	export no_ssl2=1
 	export no_ssl3=1
 	export ssl_redirect=1
 	export no_sslcompression=1
+	export no_tls1=1
+	export no_tls1_1=1
 	export keyfile="${EROOT}etc/ssl/webmin/server.pem"
 	export port=10000
 
