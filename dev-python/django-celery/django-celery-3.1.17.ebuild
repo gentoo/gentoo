@@ -21,7 +21,6 @@ IUSE="doc examples test"
 # with ValueError: save() prohibited to prevent data loss due to
 # unsaved related object 'interval'.
 
-PY2_USEDEP=$(python_gen_usedep python2_7)
 RDEPEND=">=dev-python/celery-3.1.15[${PYTHON_USEDEP}]
 	>dev-python/django-1.4[${PYTHON_USEDEP}]
 	<dev-python/django-1.9[${PYTHON_USEDEP}]
@@ -32,16 +31,12 @@ DEPEND="${RDEPEND}
 		dev-python/django-nose[${PYTHON_USEDEP}]
 		>=dev-python/coverage-3.0[${PYTHON_USEDEP}]
 		dev-python/nose-cover3[${PYTHON_USEDEP}]
-		dev-python/mock[${PY2_USEDEP}]
-		dev-python/python-memcached[${PY2_USEDEP}] )
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/python-memcached[${PYTHON_USEDEP}] )
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/sphinxcontrib-issuetracker[${PY2_USEDEP}]
-		dev-python/python-memcached[${PY2_USEDEP}]
+		dev-python/sphinxcontrib-issuetracker[${PYTHON_USEDEP}]
+		dev-python/python-memcached[${PYTHON_USEDEP}]
 	)"
-
-PY27_REQUSE="$(python_gen_useflags 'python2.7')"
-REQUIRED_USE="
-	doc? ( ${PY27_REQUSE} )"
 
 python_compile_all() {
 	use doc && emake -C docs html
