@@ -19,10 +19,12 @@ IUSE="gnome pax_kernel pulseaudio"
 RESTRICT="mirror strip"
 
 DEPEND=""
+# zenety needed for filepicker
 RDEPEND="
 	${DEPEND}
 	dev-libs/nss
 	gnome-base/gconf
+	gnome-extra/zenity
 	media-libs/alsa-lib
 	media-libs/harfbuzz
 	media-libs/fontconfig
