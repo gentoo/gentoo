@@ -6,20 +6,18 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils multilib mount-boot flag-o-matic python-any-r1 toolchain-funcs
-
 MY_PV=${PV/_/-}
 MY_P=${PN}-${PV/_/-}
 
 if [[ $PV == *9999 ]]; then
-	inherit git-r3
 	KEYWORDS=""
-	EGIT_REPO_URI="git://xenbits.xen.org/xen.git"
-	SRC_URI=""
+	EGIT_REPO_URI="git://xenbits.xen.org/${PN}.git"
+	live_eclass="git-2"
 else
 	KEYWORDS="~amd64 ~arm ~arm64 -x86"
-	UPSTREAM_VER=0
-	SECURITY_VER=
+	UPSTREAM_VER=
+	SECURITY_VER=0
+	SEC_VER=1
 	GENTOO_VER=
 
 	[[ -n ${UPSTREAM_VER} ]] && \
@@ -32,18 +30,21 @@ else
 		${UPSTREAM_PATCHSET_URI}
 		${SECURITY_PATCHSET_URI}
 		${GENTOO_PATCHSET_URI}
-		https://dev.gentoo.org/~idella4/distfiles/${PN}-security-patches.tar.gz"
+		https://dev.gentoo.org/~idella4/distfiles/xen-security-patches-${SEC_VER}.tar.gz"
+
 fi
+
+inherit mount-boot flag-o-matic python-any-r1 toolchain-funcs eutils ${live_eclass}
 
 DESCRIPTION="The Xen virtual machine monitor"
 HOMEPAGE="http://xen.org/"
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="custom-cflags debug efi flask"
+IUSE="custom-cflags debug efi flask xsm"
 
 DEPEND="${PYTHON_DEPS}
 	efi? ( >=sys-devel/binutils-2.22[multitarget] )
-	!efi? ( >=sys-devel/binutils-2.22 )"
+	!efi? ( >=sys-devel/binutils-2.22[-multitarget] )"
 RDEPEND=""
 PDEPEND="~app-emulation/xen-tools-${PV}"
 
@@ -52,14 +53,19 @@ RESTRICT="test"
 # Approved by QA team in bug #144032
 QA_WX_LOAD="boot/xen-syms-${PV}"
 
-REQUIRED_USE="arm? ( debug )"
+REQUIRED_USE="flask? ( xsm )
+	arm? ( debug )"
 
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	python-any-r1_pkg_setup
 	if [[ -z ${XEN_TARGET_ARCH} ]]; then
-		if use amd64; then
+		if use x86 && use amd64; then
+			die "Confusion! Both x86 and amd64 are set in your use flags!"
+		elif use x86; then
+			export XEN_TARGET_ARCH="x86_32"
+		elif use amd64; then
 			export XEN_TARGET_ARCH="x86_64"
 		elif use arm; then
 			export XEN_TARGET_ARCH="arm32"
@@ -73,6 +79,8 @@ pkg_setup() {
 	if use flask ; then
 		export "XSM_ENABLE=y"
 		export "FLASK_ENABLE=y"
+	elif use xsm ; then
+		export "XSM_ENABLE=y"
 	fi
 }
 
@@ -87,15 +95,18 @@ src_prepare() {
 
 	if [[ -n ${SECURITY_VER} ]]; then
 		einfo "Try to apply Xen Security patcheset"
-		source "${WORKDIR}"/patches-security/${PV}.conf
 		# apply main xen patches
+		# Add patches from tarball in devspace ~idella4 to those from ~dlan
+		mkdir "${WORKDIR}"/patches-security/xen || die
+		mv "${WORKDIR}"/{xsa156-4.5.patch,xsa15[8-9].patch,xsa160-4.6.patch} \
+			"${WORKDIR}"/patches-security/xen || die
+		XEN_SECURITY_MAIN="xsa156-4.5.patch xsa15[8-9].patch xsa160-4.6.patch"
 		for i in ${XEN_SECURITY_MAIN}; do
 			EPATCH_SUFFIX="patch" \
 			EPATCH_FORCE="yes" \
 				epatch "${WORKDIR}"/patches-security/xen/$i
 		done
 	fi
-	epatch "${WORKDIR}"/xsa156.patch
 
 	# Gentoo's patchset
 	if [[ -n ${GENTOO_VER} ]]; then
@@ -104,12 +115,11 @@ src_prepare() {
 			epatch "${WORKDIR}"/patches-gentoo
 	fi
 
-	epatch "${FILESDIR}"/${PN}-4.6-efi.patch
-
 	# Drop .config
 	sed -e '/-include $(XEN_ROOT)\/.config/d' -i Config.mk || die "Couldn't	drop"
 
 	if use efi; then
+		epatch "${FILESDIR}"/${PN}-4.5-efi.patch
 		export EFI_VENDOR="gentoo"
 		export EFI_MOUNTPOINT="boot"
 	fi
@@ -146,8 +156,6 @@ src_configure() {
 		replace-flags -O3 -O2
 	else
 		unset CFLAGS
-		unset LDFLAGS
-		unset ASFLAGS
 	fi
 }
 
@@ -166,9 +174,6 @@ src_install() {
 	fi
 
 	emake LDFLAGS="$(raw-ldflags)" DESTDIR="${D}" -C xen ${myopt} install
-
-	# make install likes to throw in some extra EFI bits if it built
-	use efi || rm -rf "${D}/usr/$(get_libdir)/efi"
 }
 
 pkg_postinst() {
