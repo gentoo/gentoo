@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <upstream>
+    <remote-id type="pypi">abstract_rendering</remote-id>
+    <maintainer status="unknown">
+      <email>jcottam@indiana.edu</email>
+      <name>Joseph Cottam</name>
+    </maintainer>
+  </upstream>
+</pkgmetadata>

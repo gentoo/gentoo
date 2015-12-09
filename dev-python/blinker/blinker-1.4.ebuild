@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+EAPI=5
+
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
 
 inherit distutils-r1
 
@@ -19,15 +20,10 @@ IUSE="doc test"
 DEPEND="test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
 python_test() {
-	nosetests || die "Testing failed with ${EPYTHON}"
+	nosetests -v || die "Testing failed with ${EPYTHON}"
 }
 
 python_install_all() {
+	use doc && HTML_DOCS=( docs/html/. )
 	distutils-r1_python_install_all
-	if use doc; then
-		pushd docs/html > /dev/null
-		insinto /usr/share/doc/${PF}/html
-		doins -r [a-z]* _static
-		popd > /dev/null
-	fi
 }
