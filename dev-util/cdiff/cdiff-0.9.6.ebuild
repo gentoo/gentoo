@@ -8,20 +8,14 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
 inherit distutils-r1
 
-if [[ "${PV}" != *"9999"* ]] ; then
-	KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-else
-	KEYWORDS=""
-	EGIT_REPO_URI="https://github.com/ymattw/cdiff.git"
-	inherit git-r3
-fi
-
-DESCRIPTION="Colored, side-by-side diff terminal viewer"
+DESCRIPTION="Term based view of colored, incremental diff in a Git/Mercurial/Svn workspace"
 HOMEPAGE="https://github.com/ymattw/${PN}"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+IUSE=""
 
 DEPEND="
 	!<app-misc/colordiff-1.0.13-r1
