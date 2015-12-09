@@ -219,7 +219,7 @@ src_prepare() {
 	# User patches
 	epatch_user
 
-	python_setup
+	python_setup 'python*'
 
 	# Native libdir is used to hold LLVMgold.so
 	NATIVE_LIBDIR=$(get_libdir)
