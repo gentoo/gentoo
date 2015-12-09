@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
-DEPEND=>=dev-python/pygame-1.5.5[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)]
+DEPEND=>=dev-python/pygame-1.5.5[python_targets_python2_7(-)?,-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_jython2_7(-),python_single_target_python2_7(+)]
 DESCRIPTION=Quiet Console Town puts you in the place of the mayor of a budding new console RPG city
 EAPI=5
 HOMEPAGE=https://packages.gentoo.org/package/games-simulation/qct
@@ -11,5 +11,5 @@ REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=http://www.sourcefiles.org/Games/Role_Play/qct-0.7.tar.gz
 _eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:- src_unpack:base src_prepare:- src_configure:games src_compile:games src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	d9bd2ddd85a58e470b49ca997e255a4c	games	4dae170e58f773c484e07d18ef441804	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	eecf1a199b07109ebdf640d647bd145a	python-utils-r1	f3baf35c6cae79e417b3f91e00bc075c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	d9bd2ddd85a58e470b49ca997e255a4c	games	4dae170e58f773c484e07d18ef441804	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	ca40cb914622e9992594549e6730cf37	python-utils-r1	a5050c5c19fd08ed14d5d9f1792154fc	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=926bb4be385910b24927445a70fe4ed0

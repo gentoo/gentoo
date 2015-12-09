@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install postinst postrm setup test
-DEPEND=|| ( >=dev-lang/python-2.7.5-r2:2.7 dev-lang/python:3.4 >=dev-lang/python-3.3.2-r2:3.3 ) dev-util/re2c doc? ( app-text/asciidoc app-doc/doxygen dev-libs/libxslt ) test? ( dev-cpp/gtest )
+DEPEND=|| ( dev-lang/python:3.4 >=dev-lang/python-3.3.2-r2:3.3 >=dev-lang/python-2.7.5-r2:2.7 ) dev-util/re2c doc? ( app-text/asciidoc app-doc/doxygen dev-libs/libxslt ) test? ( dev-cpp/gtest )
 DESCRIPTION=A small build system similar to make
 EAPI=5
 HOMEPAGE=https://github.com/martine/ninja
@@ -10,5 +10,5 @@ RDEPEND=emacs? ( virtual/emacs ) vim-syntax? ( || ( app-editors/vim app-editors/
 SLOT=0
 SRC_URI=https://github.com/martine/ninja/archive/v1.6.0.tar.gz -> ninja-1.6.0.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:python-any-r1 src_compile:- src_test:- src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	63d890c175bcc4604e8327cef1dec948	python-utils-r1	f3baf35c6cae79e417b3f91e00bc075c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	d48ce17f8005e9e5ca321f002d0fea6b	python-utils-r1	a5050c5c19fd08ed14d5d9f1792154fc	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=50f6f988b3aad2903395292b9873b581

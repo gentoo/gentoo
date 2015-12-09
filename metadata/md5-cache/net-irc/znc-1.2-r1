@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile configure install postinst prepare setup unpack
-DEPEND=virtual/pkgconfig perl? ( dev-lang/swig ) python? ( >=dev-lang/swig-2.0.8 ) perl? ( >=dev-lang/perl-5.10 ) python? ( >=dev-lang/python-3.3.2-r2:3.3 >=dev-lang/python-exec-2:=[python_targets_python3_3(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python2_7(-),python_single_target_python3_3(+)] ) sasl? ( >=dev-libs/cyrus-sasl-2 ) ssl? ( >=dev-libs/openssl-0.9.7d:0 ) tcl? ( dev-lang/tcl:0= )
+DEPEND=virtual/pkgconfig perl? ( dev-lang/swig ) python? ( >=dev-lang/swig-2.0.8 ) perl? ( >=dev-lang/perl-5.10 ) python? ( >=dev-lang/python-3.3.2-r2:3.3 >=dev-lang/python-exec-2:=[python_targets_python3_3(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_jython2_7(-),python_single_target_python3_3(+)] ) sasl? ( >=dev-libs/cyrus-sasl-2 ) ssl? ( >=dev-libs/openssl-0.9.7d:0 ) tcl? ( dev-lang/tcl:0= )
 DESCRIPTION=An advanced IRC Bouncer
 EAPI=5
 HOMEPAGE=http://znc.in
 IUSE=daemon debug ipv6 perl python ssl sasl tcl python_targets_python3_3
 KEYWORDS=amd64 ~arm x86
 LICENSE=GPL-2
-RDEPEND=perl? ( >=dev-lang/perl-5.10 ) python? ( >=dev-lang/python-3.3.2-r2:3.3 >=dev-lang/python-exec-2:=[python_targets_python3_3(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python2_7(-),python_single_target_python3_3(+)] ) sasl? ( >=dev-libs/cyrus-sasl-2 ) ssl? ( >=dev-libs/openssl-0.9.7d:0 ) tcl? ( dev-lang/tcl:0= )
+RDEPEND=perl? ( >=dev-lang/perl-5.10 ) python? ( >=dev-lang/python-3.3.2-r2:3.3 >=dev-lang/python-exec-2:=[python_targets_python3_3(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_jython2_7(-),python_single_target_python3_3(+)] ) sasl? ( >=dev-libs/cyrus-sasl-2 ) ssl? ( >=dev-libs/openssl-0.9.7d:0 ) tcl? ( dev-lang/tcl:0= )
 REQUIRED_USE=python? ( python_targets_python3_3 )
 SLOT=0
 SRC_URI=http://znc.in/releases/znc-1.2.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_unpack:base src_prepare:- src_configure:- src_compile:base src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	eecf1a199b07109ebdf640d647bd145a	python-utils-r1	f3baf35c6cae79e417b3f91e00bc075c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	ca40cb914622e9992594549e6730cf37	python-utils-r1	a5050c5c19fd08ed14d5d9f1792154fc	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=424bb58f58d8538bb19e61a175dbfab3

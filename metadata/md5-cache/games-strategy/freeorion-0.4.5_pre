@@ -10,5 +10,5 @@ RDEPEND=!dev-games/gigi media-libs/libsdl2 >=dev-libs/boost-1.47[python] media-l
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~tomka/files/freeorion-0.4.5_pre.tar.bz2
 _eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:- src_unpack:base src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	cmake-utils	1516dea29599084732555943ddf12880	eutils	d9bd2ddd85a58e470b49ca997e255a4c	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	games	4dae170e58f773c484e07d18ef441804	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	63d890c175bcc4604e8327cef1dec948	python-utils-r1	f3baf35c6cae79e417b3f91e00bc075c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	cmake-utils	1516dea29599084732555943ddf12880	eutils	d9bd2ddd85a58e470b49ca997e255a4c	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	games	4dae170e58f773c484e07d18ef441804	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	d48ce17f8005e9e5ca321f002d0fea6b	python-utils-r1	a5050c5c19fd08ed14d5d9f1792154fc	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=5bd519f468844fd4cb8c5ec7df59858c

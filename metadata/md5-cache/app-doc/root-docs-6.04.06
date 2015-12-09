@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=ftp://root.cern.ch/root/root_v6.04.06.source.tar.gz math? ( http://tmva.sourceforge.net/docu/TMVAUsersGuide.pdf -> TMVAUsersGuide-v4.2.0.pdf http://root.cern.ch/download/doc/RooFit_Users_Manual_2.91-33.pdf http://root.cern.ch/drupal/sites/default/files/roofit_quickstart_3.00.pdf ) api? ( http://root.cern.ch/drupal/sites/default/files/images/root6-banner.jpg http://root.cern.ch/drupal/sites/all/themes/newsflash/images/info.png )
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	63d890c175bcc4604e8327cef1dec948	python-utils-r1	f3baf35c6cae79e417b3f91e00bc075c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	virtualx	e0b4d88543a7001a6b55bc2c81dcfd48
+_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	d48ce17f8005e9e5ca321f002d0fea6b	python-utils-r1	a5050c5c19fd08ed14d5d9f1792154fc	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	virtualx	e0b4d88543a7001a6b55bc2c81dcfd48
 _md5_=9239cd5a315582cc2120e313837c3163

@@ -1,14 +1,14 @@
 DEFINED_PHASES=setup
-DEPEND=dev-python/matplotlib[gtk2,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] dev-python/basemap[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] sci-electronics/voacapl
+DEPEND=dev-python/matplotlib[gtk2,python_targets_python2_7(-)?,-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_jython2_7(-),python_single_target_python2_7(+)] dev-python/basemap[python_targets_python2_7(-)?,-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_jython2_7(-),python_single_target_python2_7(+)] sci-electronics/voacapl
 DESCRIPTION=Scripts to prepare and plot VOACAP propagation predictions
 EAPI=5
 HOMEPAGE=http://www.qsl.net/hz1jw/pythonprop
 IUSE=python_targets_python2_7
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
-RDEPEND=dev-python/matplotlib[gtk2,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] dev-python/basemap[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] sci-electronics/voacapl
+RDEPEND=dev-python/matplotlib[gtk2,python_targets_python2_7(-)?,-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_jython2_7(-),python_single_target_python2_7(+)] dev-python/basemap[python_targets_python2_7(-)?,-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_jython2_7(-),python_single_target_python2_7(+)] sci-electronics/voacapl
 SLOT=0
 SRC_URI=mirror://sourceforge/pythonprop/pythonprop-0.13.tar.gz
 _eclass_exported_funcs=pkg_setup:python-single-r1
-_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	eecf1a199b07109ebdf640d647bd145a	python-utils-r1	f3baf35c6cae79e417b3f91e00bc075c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	ca40cb914622e9992594549e6730cf37	python-utils-r1	a5050c5c19fd08ed14d5d9f1792154fc	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=c5fabfcc826b0b5ba560a6bf8851ce23

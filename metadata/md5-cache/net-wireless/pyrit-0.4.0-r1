@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=dev-libs/openssl net-libs/libpcap test? ( >=net-analyzer/scapy-2[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] ) >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)]
+DEPEND=dev-libs/openssl net-libs/libpcap test? ( >=net-analyzer/scapy-2[python_targets_python2_7(-)?,-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_jython2_7(-),python_single_target_python2_7(+)] ) >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_jython2_7(-),python_single_target_python2_7(+)]
 DESCRIPTION=GPU-accelerated attack against WPA-PSK authentication
 EAPI=5
 HOMEPAGE=https://code.google.com/p/pyrit/
 IUSE=cuda opencl test python_targets_python2_7
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
-RDEPEND=>=net-analyzer/scapy-2 opencl? ( net-wireless/cpyrit-opencl ) cuda? ( net-wireless/cpyrit-cuda ) >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)]
+RDEPEND=>=net-analyzer/scapy-2 opencl? ( net-wireless/cpyrit-opencl ) cuda? ( net-wireless/cpyrit-cuda ) >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_jython2_7(-),python_single_target_python2_7(+)]
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=https://pyrit.googlecode.com/files/pyrit-0.4.0.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:- src_install:distutils-r1
-_eclasses_=distutils-r1	79bc5f4de403751e472e01fdfd98d587	eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	eecf1a199b07109ebdf640d647bd145a	python-utils-r1	f3baf35c6cae79e417b3f91e00bc075c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=distutils-r1	ad2c2233bbbe5ff87ac352969fabd418	eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	ca40cb914622e9992594549e6730cf37	python-utils-r1	a5050c5c19fd08ed14d5d9f1792154fc	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=a123a22eb29195db7bc454d36dbaed8e

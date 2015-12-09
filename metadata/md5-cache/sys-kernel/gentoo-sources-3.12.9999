@@ -10,5 +10,5 @@ RESTRICT=binchecks strip
 SLOT=3.12.9999
 SRC_URI=https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.12.tar.xz
 _eclass_exported_funcs=pkg_preinst:subversion pkg_postrm:- pkg_postinst:- pkg_setup:kernel-2 src_unpack:- src_prepare:- src_compile:kernel-2 src_test:kernel-2 src_install:kernel-2
-_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	git-r3	0961ca04f93a7ae0e4c4a0b2b8c3be99	kernel-2	a4c66611301c7fdf1c78202ab683fb1b	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	63d890c175bcc4604e8327cef1dec948	python-utils-r1	f3baf35c6cae79e417b3f91e00bc075c	subversion	4fee0a764150bb4dda27ed4d2c4ed7ce	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	git-r3	0961ca04f93a7ae0e4c4a0b2b8c3be99	kernel-2	a4c66611301c7fdf1c78202ab683fb1b	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	d48ce17f8005e9e5ca321f002d0fea6b	python-utils-r1	a5050c5c19fd08ed14d5d9f1792154fc	subversion	4fee0a764150bb4dda27ed4d2c4ed7ce	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=c14cb6aa9f4f8082a9ecf8b1dbba25d0
