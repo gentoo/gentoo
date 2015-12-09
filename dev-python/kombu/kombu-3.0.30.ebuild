@@ -65,6 +65,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-NA-tests-fix.patch
 	)
 
+pkg_setup() {
+	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( python2.7 )
+}
+
 python_prepare_all() {
 	https://github.com/celery/kombu/issues/246
 	sed -e 's:kombu.transports:kombu.transport:' -i funtests/tests/test_django.py
