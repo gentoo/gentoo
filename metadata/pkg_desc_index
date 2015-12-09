@@ -5018,7 +5018,7 @@ dev-ml/extlib 1.5.4 1.6.1 1.7.0-r1: Standard library extensions for O'Caml
 dev-ml/facile 1.1 1.1.1: A constraint programming library on integer and integer set finite domains written in OCaml
 dev-ml/faillib 109.60.00 111.17.00: Syntax extension for inserting the current location
 dev-ml/fieldslib 109.20.03 113.00.00: Folding over record fields
-dev-ml/findlib 1.4 1.5.5 1.5.5-r1 1.5.6: OCaml tool to find/use non-standard packages
+dev-ml/findlib 1.4 1.5.5 1.5.5-r1 1.5.6 1.6.1: OCaml tool to find/use non-standard packages
 dev-ml/fort 0.4.2: provides an environment for testing programs and Objective Caml modules
 dev-ml/gd4o 1.0_alpha5: OCaml interface to the GD graphics library
 dev-ml/herelib 109.35.00 109.35.02 112.35.00: Syntax extension for inserting the current location
@@ -5032,7 +5032,7 @@ dev-ml/lablgl 1.04-r1 1.05: Objective CAML interface for OpenGL
 dev-ml/lablgtk 2.18.0-r1 2.18.2 2.18.3: Objective CAML interface for Gtk+2
 dev-ml/labltk 8.06.0: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/lambda-term 1.8 1.9: A cross-platform library for manipulating the terminal
-dev-ml/lwt 2.4.3 2.4.6 2.5.0: Cooperative light-weight thread library for OCaml
+dev-ml/lwt 2.4.3 2.4.6 2.5.0 2.5.1: Cooperative light-weight thread library for OCaml
 dev-ml/macaque 0.7.2: DSL for SQL Queries in Caml
 dev-ml/menhir 20151012 20151023 20151026 20151030 20151103 20151112: LR(1) parser generator for the OCaml language
 dev-ml/mirage-profile 0.5: Collect profiling information
