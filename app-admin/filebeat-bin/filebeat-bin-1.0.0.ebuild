@@ -15,10 +15,6 @@ SRC_URI="amd64? ( https://download.elastic.co/beats/${MY_PN}/${MY_P}-x86_64.tar.
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
-
-DEPEND=""
-RDEPEND="${DEPEND}"
 
 src_unpack() {
 	if use amd64; then
