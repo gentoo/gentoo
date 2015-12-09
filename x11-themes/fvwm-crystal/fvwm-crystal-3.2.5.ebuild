@@ -25,6 +25,8 @@ RDEPEND="${PYTHON_DEPS}
 	virtual/awk
 	x11-apps/xwd"
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 src_install() {
 	emake \
 		DESTDIR="${D}" \
