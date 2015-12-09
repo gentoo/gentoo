@@ -8038,7 +8038,7 @@ dev-python/whisper 0.9.13: Fixed size round-robin style database
 dev-python/whoosh 2.6.0 2.7.0: Fast, pure-Python full text indexing, search and spell checking library
 dev-python/winpdb 1.4.8 1.4.8-r1: Graphical Python debugger
 dev-python/workerpool 0.9.2-r1 0.9.4: Module for distributing jobs to a pool of worker threads
-dev-python/wrapt 1.10.5: Module for decorators, wrappers and monkey patching
+dev-python/wrapt 1.10.5 1.10.6: Module for decorators, wrappers and monkey patching
 dev-python/ws4py 0.3.4 9999: WebSocket client and server library for Python 2 and 3 as well as PyPy
 dev-python/wsaccel 0.6.2: Accelerator for ws4py, AutobahnPython and tornado
 dev-python/wsgiintercept 0.9.0 0.9.1 0.10.0 0.10.2: WSGI application in place of a real URI for testing
@@ -9318,7 +9318,7 @@ dev-util/cccc 3.1.4-r1: Source code metrics (line counts, complexity, etc) for J
 dev-util/ccglue 0.3.1 0.6.0: Produce cross-reference files from cscope and ctags for use with app-vim/cctree
 dev-util/ccmalloc 0.4.0-r2: A easy-to-use memory debugging library
 dev-util/cdecl 2.5-r2: Turn English phrases to C or C++ declarations
-dev-util/cdiff 0.9.6 0.9.7 9999: Colored, side-by-side diff terminal viewer
+dev-util/cdiff 0.9.6 0.9.7 9999: Term based view of colored, incremental diff in a Git/Mercurial/Svn workspace
 dev-util/cflow 1.4: C function call hierarchy analyzer
 dev-util/cgdb 0.6.6 0.6.7: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
@@ -11340,7 +11340,7 @@ kde-misc/yawp 0.4.5: Yet Another Weather Plasmoid
 kde-misc/zanshin 0.2.1-r1 0.2.2: Todo management application for KDE
 kde-plasma/bluedevil 5.4.3 5.5.0: Bluetooth stack for KDE
 kde-plasma/breeze 5.4.3 5.5.0: Breeze visual style for the Plasma desktop
-kde-plasma/breeze-gtk 5.5.0: Official GTK+ port of KDE's Breeze widget style
+kde-plasma/breeze-gtk 5.5.0.1: Official GTK+ port of KDE's Breeze widget style
 kde-plasma/kde-cli-tools 5.4.3 5.5.0: Tools based on KDE Frameworks 5 to better interact with the system
 kde-plasma/kde-gtk-config 5.4.3 5.5.0: KDE systemsettings kcm to set GTK application look&feel
 kde-plasma/kdecoration 5.4.3 5.5.0: Plugin based library to create window decorations
