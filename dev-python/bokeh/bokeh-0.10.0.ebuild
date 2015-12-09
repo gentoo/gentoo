@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
-inherit distutils-r1 readme.gentoo
+inherit distutils-r1
 
 DESCRIPTION="Statistical and novel interactive HTML plots for Python"
 HOMEPAGE="http://bokeh.pydata.org/ http://github.com/bokeh/bokeh http://pypi.python.org/pypi/bokeh"
@@ -56,8 +56,6 @@ python_test() {
 }
 
 python_install_all() {
-	readme.gentoo_create_doc
-
 	use examples && local EXAMPLES=( examples/. )
 
 	distutils-r1_python_install_all
