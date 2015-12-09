@@ -1,0 +1,26 @@
+From 97ced66da372737ae5d36d86c9bc0c6fe684d842 Mon Sep 17 00:00:00 2001
+From: Eike Hein <hein@kde.org>
+Date: Tue, 8 Dec 2015 20:26:26 +0100
+Subject: [PATCH] Fix migration of multiple favorites.
+
+BUG:356398
+---
+ desktoppackage/contents/updates/obsolete_kickoffrc.js | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/desktoppackage/contents/updates/obsolete_kickoffrc.js b/desktoppackage/contents/updates/obsolete_kickoffrc.js
+index aae077f..d92cae9 100644
+--- a/desktoppackage/contents/updates/obsolete_kickoffrc.js
++++ b/desktoppackage/contents/updates/obsolete_kickoffrc.js
+@@ -1,7 +1,7 @@
+ var kickoffConfig = ConfigFile("kickoffrc");
+ 
+ kickoffConfig.group = "Favorites";
+-var favorites = kickoffConfig.readEntry("FavoriteURLs");
++var favorites = kickoffConfig.readEntry("FavoriteURLs").split(',');
+ 
+ kickoffConfig.group = "SystemApplications";
+ var systemApplications = kickoffConfig.readEntry("DesktopFiles").split(',');
+-- 
+2.4.10
+
