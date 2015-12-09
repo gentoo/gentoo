@@ -46,8 +46,6 @@ DEPEND="${REDEPEND}
 		$(python_gen_cond_dep '>=dev-python/mock-1.0.1[${PYTHON_USEDEP}]' python2_7)
 	)
 	"
-DOCS=( CHANGELOG QUICKSTART.md README.md )
-
 python_test() {
 	cd "${BUILD_DIR}"/lib || die
 	# exclude server tests for now
