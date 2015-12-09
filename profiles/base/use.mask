@@ -331,10 +331,8 @@ dxr3
 
 # Ralph Sennhauser <sera@gentoo.org> (31 Jul 2012)
 # Unmask in arch specific profiles when jython implementaton is available.
-python_targets_jython2_5
 python_targets_jython2_7
 python_targets_jython3_1
-python_single_target_jython2_5
 python_single_target_jython2_7
 python_single_target_jython3_1
 

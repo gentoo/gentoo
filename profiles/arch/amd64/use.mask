@@ -57,8 +57,6 @@
 
 # Ralph Sennhauser <sera@gentoo.org> (31 Jul 2012)
 # Keyworded on amd64
--python_targets_jython2_5
--python_single_target_jython2_5
 -python_targets_jython2_7
 -python_single_target_jython2_7
 
