@@ -35,6 +35,10 @@ S=${WORKDIR}/${MY_P}
 
 DOCS="alsoftrc.sample env-vars.txt hrtf.txt ChangeLog README"
 
+src_prepare() {
+	epatch "${FILESDIR}/${P}-jackfix.patch"
+}
+
 src_configure() {
 	# -DEXAMPLES=OFF to avoid FFmpeg dependency wrt #481670
 	my_configure() {
