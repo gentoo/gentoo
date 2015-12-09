@@ -10,7 +10,7 @@ inherit eutils wxwidgets
 MY_P="${PN}-v${PV}"
 
 DESCRIPTION="GUI frontend for Ngspice and Gnucap"
-HOMEPAGE="http://www.geda.seul.org/tools/gspiceui/"
+HOMEPAGE="http://sourceforge.net/projects/gspiceui/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
