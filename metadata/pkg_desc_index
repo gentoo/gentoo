@@ -11364,7 +11364,7 @@ kde-plasma/libksysguard 5.4.3 5.5.0: Task management and system monitoring libra
 kde-plasma/milou 5.4.3 5.5.0: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.4.3 5.5.0: KDE window manager theme
 kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE desktop
-kde-plasma/plasma-desktop 5.4.3 5.5.0: KDE Plasma desktop
+kde-plasma/plasma-desktop 5.4.3 5.5.0-r1: KDE Plasma desktop
 kde-plasma/plasma-mediacenter 5.4.3 5.5.0: Unified media experience for any device capable of running KDE
 kde-plasma/plasma-meta 5.4.3 5.5.0: Merge this to pull in all Plasma 5 packages
 kde-plasma/plasma-nm 5.4.3 5.5.0: KDE Plasma applet for NetworkManager
