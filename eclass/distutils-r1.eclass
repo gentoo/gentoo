@@ -678,6 +678,7 @@ _distutils-r1_run_common_phase() {
 			done
 		}
 		python_foreach_impl _distutils_try_impl
+		unset -f _distutils_try_impl
 
 		local PYTHON_COMPAT=( "${best_impl}" )
 	fi

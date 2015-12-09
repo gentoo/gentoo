@@ -216,8 +216,8 @@ _python_set_globals() {
 	optflags+=,${flags_st[@]/%/(-)}
 
 	IUSE=${flags[*]}
-	PYTHON_REQUIRED_USE="|| ( ${flags[*]} )"
-	PYTHON_USEDEP=${optflags// /,}
+	declare -g -r PYTHON_REQUIRED_USE="|| ( ${flags[*]} )"
+	declare -g -r PYTHON_USEDEP=${optflags// /,}
 
 	# 1) well, python-exec would suffice as an RDEP
 	# but no point in making this overcomplex, BDEP doesn't hurt anyone
@@ -232,8 +232,10 @@ _python_set_globals() {
 	else
 		PYTHON_DEPS+="dev-lang/python-exec:2[${PYTHON_USEDEP}]"
 	fi
+	readonly PYTHON_DEPS
 }
 _python_set_globals
+unset -f _python_set_globals
 
 # @FUNCTION: _python_validate_useflags
 # @INTERNAL
@@ -389,8 +391,8 @@ python_gen_cond_dep() {
 				# (since python_gen_usedep() will not return ${PYTHON_USEDEP}
 				#  the code is run at most once)
 				if [[ ${dep} == *'${PYTHON_USEDEP}'* ]]; then
-					local PYTHON_USEDEP=$(python_gen_usedep "${@}")
-					dep=${dep//\$\{PYTHON_USEDEP\}/${PYTHON_USEDEP}}
+					local usedep=$(python_gen_usedep "${@}")
+					dep=${dep//\$\{PYTHON_USEDEP\}/${usedep}}
 				fi
 
 				matches+=( "python_targets_${impl}? ( ${dep} )" )
@@ -581,6 +583,7 @@ python_setup() {
 		done
 	}
 	python_foreach_impl _python_try_impl
+	unset -f _python_try_impl
 
 	if [[ ! ${best_impl} ]]; then
 		eerror "${FUNCNAME}: none of the enabled implementation matched the patterns."
@@ -618,6 +621,7 @@ python_export_best() {
 		best=${MULTIBUILD_VARIANT}
 	}
 	multibuild_for_best_variant _python_set_best
+	unset -f _python_set_best
 
 	debug-print "${FUNCNAME}: Best implementation is: ${best}"
 	python_export "${best}" "${@}"
@@ -652,6 +656,7 @@ python_replicate_script() {
 
 	local files=( "${@}" )
 	python_foreach_impl _python_replicate_script
+	unset -f _python_replicate_script
 
 	# install the wrappers
 	local f

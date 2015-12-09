@@ -25,12 +25,13 @@
 
 # EAPI=4 is required for meaningful MULTILIB_USEDEP.
 case ${EAPI:-0} in
-	4|5) ;;
+	4|5|6) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
 
-inherit eutils multilib-build
+[[ ${EAPI} == [45] ]] && inherit eutils
+inherit multilib-build
 
 EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 
