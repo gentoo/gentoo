@@ -24,6 +24,6 @@ python_test() {
 }
 
 python_install_all() {
-	HTML_DOCS=( docs/html/. )
+	use doc && HTML_DOCS=( docs/html/. )
 	distutils-r1_python_install_all
 }
