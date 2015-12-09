@@ -8,5 +8,8 @@ inherit kde5
 
 DESCRIPTION="Official GTK+ port of KDE's Breeze widget style"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/breeze-gtk"
+SRC_URI="mirror://kde/stable/plasma/5.5.0/${P}.tar.xz"
 KEYWORDS=" ~amd64 ~x86"
 IUSE=""
+
+S=${WORKDIR}/${PN}-5.5.0
