@@ -225,7 +225,7 @@ app-admin/verynice 1.1-r2: A tool for dynamically adjusting the nice-level of pr
 app-admin/watchfolder 0.3.3: Watches directories and processes files, similar to the watchfolder option of Acrobat Distiller
 app-admin/webalizer 2.23.05 2.23.08: Webserver log file analyzer
 app-admin/webapp-config 1.52-r1 1.53-r2 1.54-r1 9999: Gentoo's installer for web-based applications
-app-admin/webmin 1.760: A web-based Unix systems administration interface
+app-admin/webmin 1.770: A web-based Unix systems administration interface
 app-admin/whowatch 1.8.5: interactive who-like program that displays information about users currently logged on in real time
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1 2.1-r1: Tail multiple logfiles at once, even if rotated
@@ -11454,7 +11454,7 @@ mail-client/nail 12.4 12.4-r2 12.4-r3: an enhanced mailx-compatible mail client
 mail-client/nmh 1.3-r3: New MH mail reader
 mail-client/novell-groupwise-client 8.0.2.96933: Novell Groupwise Client for Linux
 mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
-mail-client/roundcube 1.0.5 1.0.6: A browser-based multilingual IMAP client with an application-like user interface
+mail-client/roundcube 1.0.5 1.0.6 1.1.3: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/squirrelmail 1.4.23_pre20140426: Webmail for nuts!
 mail-client/sylpheed 3.4.2 3.4.3 3.4.3-r1: A lightweight email client and newsreader
 mail-client/thunderbird 24.8.0 31.8.0 38.2.0 38.3.0 38.4.0: Thunderbird Mail Client
