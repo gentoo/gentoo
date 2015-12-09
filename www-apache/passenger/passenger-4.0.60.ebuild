@@ -13,7 +13,7 @@ SRC_URI="http://s3.amazonaws.com/phusion-passenger/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug"
 
 ruby_add_bdepend "dev-ruby/rake"
