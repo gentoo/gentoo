@@ -208,12 +208,6 @@ multilib_src_install() {
 	use howl-compat && dosym avahi-compat-howl.pc /usr/$(get_libdir)/pkgconfig/howl.pc
 	use mdnsresponder-compat && dosym avahi-compat-libdns_sd/dns_sd.h /usr/include/dns_sd.h
 
-	# Needed for running on systemd properly, bug #537000
-	# https://github.com/lathiat/avahi/issues/29
-	if multilib_is_native_abi; then
-		ln -s avahi-daemon.service "${D}$(systemd_get_unitdir)"/dbus-org.freedesktop.Avahi.service || die
-	fi
-
 	if multilib_is_native_abi && use doc; then
 		dohtml -r doxygen/html/. || die
 		insinto /usr/share/devhelp/books/avahi

@@ -18,7 +18,7 @@ SRC_URI="http://avahi.org/download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-linux"
 IUSE="autoipd bookmarks dbus doc gdbm gtk gtk3 howl-compat +introspection ipv6 kernel_linux mdnsresponder-compat mono nls python qt4 selinux test utils"
 
 REQUIRED_USE="
@@ -120,6 +120,9 @@ src_prepare() {
 	# Fix build under various locales, bug #501664
 	epatch "${FILESDIR}"/${P}-fix-locale-build.patch
 
+	# Fix "Invalid response packet from host", bug #559408.
+	epatch "${FILESDIR}"/${P}-invalid_packet.patch
+
 	# Drop DEPRECATED flags, bug #384743
 	sed -i -e 's:-D[A-Z_]*DISABLE_DEPRECATED=1::g' avahi-ui/Makefile.am || die
 
@@ -213,11 +216,6 @@ multilib_src_install() {
 
 	use howl-compat && dosym avahi-compat-howl.pc /usr/$(get_libdir)/pkgconfig/howl.pc
 	use mdnsresponder-compat && dosym avahi-compat-libdns_sd/dns_sd.h /usr/include/dns_sd.h
-
-	# Needed for running on systemd properly, bug #537000
-	if multilib_is_native_abi; then
-		ln -s avahi-daemon.service "${D}$(systemd_get_unitdir)"/dbus-org.freedesktop.Avahi.service || die
-	fi
 
 	if multilib_is_native_abi && use doc; then
 		dohtml -r doxygen/html/. || die
