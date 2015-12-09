@@ -110,6 +110,7 @@ DISTUTILS_IN_SOURCE_BUILD=1
 
 pkg_setup() {
 	unset DISPLAY # bug #278524
+	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( python2.7 )
 }
 
 use_setup() {

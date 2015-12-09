@@ -31,6 +31,10 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="doc? ( || ( $(python_gen_useflags 'python2*') ) )"
 
+pkg_setup() {
+	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( python2.7 )
+}
+
 python_compile_all() {
 	if use doc; then
 		# we can't use Makefile since it relies on hardcoded paths
