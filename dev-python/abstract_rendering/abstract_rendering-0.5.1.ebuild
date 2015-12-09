@@ -10,12 +10,12 @@ inherit distutils-r1
 
 DESCRIPTION="Rendering as a binning process"
 HOMEPAGE="
-	https://github.com/JosephCottam/AbstractRendering
+	https://github.com/ContinuumIO/abstract_rendering
 	http://pypi.python.org/pypi/abstract_rendering
 "
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
-LICENSE="BSD"
+LICENSE="uni_indiana"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
