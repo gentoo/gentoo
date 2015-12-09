@@ -35,8 +35,12 @@ S=${WORKDIR}/${MY_P}
 
 DOCS="alsoftrc.sample env-vars.txt hrtf.txt ChangeLog README"
 
+PATCHES=(
+	"${FILESDIR}/${P}-jackfix.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}/${P}-jackfix.patch"
+	epatch "${PATCHES[@]}"
 }
 
 src_configure() {
