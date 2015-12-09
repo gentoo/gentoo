@@ -19,15 +19,8 @@ IUSE="examples"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
-
-cython_dep() {
-	local flag
-	for flag in $(python_gen_useflags 'python*'); do
-		DEPEND+=" ${flag}? ( dev-python/cython[${flag}(-)] )"
-	done
-}
-cython_dep
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/cython[${PYTHON_USEDEP}]' 'python*')"
 
 python_compile() {
 	if [[ ${EPYTHON} != python3* ]]; then
