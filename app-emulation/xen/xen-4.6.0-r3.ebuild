@@ -90,7 +90,7 @@ src_prepare() {
 		einfo "Try to apply Xen Security patcheset"
 		# apply main xen patches
 		# Add patches from tarball in devspace ~idella4 to those from ~dlan
-		# Leav this commented for now as a record of an approach; wip
+		# Leave this commented for now as a record of an approach; wip
 		#mkdir "${WORKDIR}"/patches-security/xen || die
 		#mv "${WORKDIR}"/{xsa15[6-9].patch,xsa160-4.6.patch} \
 		#	"${WORKDIR}"/patches-security/xen || die
