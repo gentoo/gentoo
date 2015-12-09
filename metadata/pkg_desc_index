@@ -4113,7 +4113,7 @@ dev-java/microba 0.4.4: Swing components for date operations and palettes
 dev-java/miglayout 4.0: Easy to use yet very powerful Java Swing layout manager
 dev-java/milton-api 2.5.1.5 2.6.5.5: Milton WebDav library
 dev-java/milton-mail-api 2.5.1.5-r1: Milton WebDav library
-dev-java/mimepull 1.8 1.9.6: Pull API for parsing MIME messages
+dev-java/mimepull 1.8 1.9.6-r1: Pull API for parsing MIME messages
 dev-java/mina-core 1.1.7: Apache MINA Project
 dev-java/minlog 1.2: Minimal overhead Java logging
 dev-java/mockito 1.9.5-r1: A mocking framework for Java
