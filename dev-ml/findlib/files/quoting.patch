@@ -1,0 +1,15 @@
+Proper quoting for install man.
+
+Index: findlib-1.6.1/Makefile
+===================================================================
+--- findlib-1.6.1.orig/Makefile
++++ findlib-1.6.1/Makefile
+@@ -71,7 +71,7 @@ findlib.conf: findlib.conf.in
+ 
+ .PHONY: install-doc
+ install-doc:
+-	mkdir -p "$(prefix)$(OCAMLFIND_MAN)/man1" "$(prefix)$(OCAMLFIND_MAN)/man3 $(prefix)$(OCAMLFIND_MAN)/man5"
++	mkdir -p "$(prefix)$(OCAMLFIND_MAN)/man1" "$(prefix)$(OCAMLFIND_MAN)/man3" "$(prefix)$(OCAMLFIND_MAN)/man5"
+ 	-cp doc/ref-man/ocamlfind.1 "$(prefix)$(OCAMLFIND_MAN)/man1"
+ 	-cp doc/ref-man/META.5 doc/ref-man/site-lib.5 doc/ref-man/findlib.conf.5 "$(prefix)$(OCAMLFIND_MAN)/man5"
+ 
