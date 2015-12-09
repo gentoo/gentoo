@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 DEPEND="
-	>=virtual/jdk-1.6"
+	>=virtual/jdk-1.7"
 
 RDEPEND="
-	>=virtual/jre-1.6"
+	>=virtual/jre-1.7"
