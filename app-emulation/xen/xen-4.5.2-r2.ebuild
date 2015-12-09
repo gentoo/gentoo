@@ -96,7 +96,7 @@ src_prepare() {
 	if [[ -n ${SECURITY_VER} ]]; then
 		einfo "Try to apply Xen Security patcheset"
 		# apply main xen patches
-		# Add patches from tarball in devspace ~idella4 to those form ~dlan9
+		# Add patches from tarball in devspace ~idella4 to those from ~dlan
 		mkdir "${WORKDIR}"/patches-security/xen || die
 		mv "${WORKDIR}"/{xsa156-4.5.patch,xsa15[8-9].patch,xsa160-4.6.patch} \
 			"${WORKDIR}"/patches-security/xen || die

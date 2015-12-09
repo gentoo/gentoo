@@ -19,7 +19,7 @@ if [[ $PV == *9999 ]]; then
 else
 	KEYWORDS="~amd64 ~arm ~arm64 -x86"
 	UPSTREAM_VER=0
-	SECURITY_VER=
+	SECURITY_VER=0
 	SEC_VER=1
 	GENTOO_VER=
 
@@ -90,14 +90,15 @@ src_prepare() {
 		einfo "Try to apply Xen Security patcheset"
 		# apply main xen patches
 		# Add patches from tarball in devspace ~idella4 to those from ~dlan
-		mkdir "${WORKDIR}"/patches-security/xen || die
-		mv "${WORKDIR}"/{xsa15[6-9].patch,xsa160-4.6.patch} \
-			"${WORKDIR}"/patches-security/xen || die
+		# Leav this commented for now as a record of an approach; wip
+		#mkdir "${WORKDIR}"/patches-security/xen || die
+		#mv "${WORKDIR}"/{xsa15[6-9].patch,xsa160-4.6.patch} \
+		#	"${WORKDIR}"/patches-security/xen || die
 		XEN_SECURITY_MAIN="xsa156.patch xsa15[8-9].patch xsa160-4.6.patch"
 		for i in ${XEN_SECURITY_MAIN}; do
 			EPATCH_SUFFIX="patch" \
 			EPATCH_FORCE="yes" \
-				epatch "${WORKDIR}"/patches-security/xen/$i
+				epatch "${WORKDIR}"/$i
 		done
 	fi
 
