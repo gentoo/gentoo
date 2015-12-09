@@ -14,7 +14,7 @@ test_var() {
 	tbegin "${var} for ${impl}"
 
 	local ${var}
-	python_export ${impl} ${var}
+	python_export ${impl} PYTHON ${var}
 	[[ ${!var} == ${expect} ]] || eerror "(${impl}: ${var}: ${!var} != ${expect}"
 
 	tend ${?}
