@@ -175,7 +175,6 @@ test_is "_python_impl_supported pypy1_9" 1
 test_is "_python_impl_supported pypy2_0" 1
 test_is "_python_impl_supported pypy" 0
 test_is "_python_impl_supported pypy3" 0
-test_is "_python_impl_supported jython2_5" 0
 test_is "_python_impl_supported jython2_7" 0
 
 rm "${tmpfile}"
