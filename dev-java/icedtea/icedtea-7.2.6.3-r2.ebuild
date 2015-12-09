@@ -16,13 +16,13 @@ ICEDTEA_VER=$(get_version_component_range 2-4)
 ICEDTEA_BRANCH=$(get_version_component_range 2-3)
 ICEDTEA_PKG=icedtea-${ICEDTEA_VER}
 ICEDTEA_PRE=$(get_version_component_range _)
-CORBA_TARBALL="a4d55c5cec23.tar.bz2"
-JAXP_TARBALL="f1202fb27695.tar.bz2"
-JAXWS_TARBALL="14c411b1183c.tar.bz2"
-JDK_TARBALL="db69ae53157a.tar.bz2"
-LANGTOOLS_TARBALL="73356b81c5c7.tar.bz2"
-OPENJDK_TARBALL="601ca7147b8c.tar.bz2"
-HOTSPOT_TARBALL="f40363c11191.tar.bz2"
+CORBA_TARBALL="9a3ca529125a.tar.bz2"
+JAXP_TARBALL="f7bf82fcbd09.tar.bz2"
+JAXWS_TARBALL="39ef53b9c403.tar.bz2"
+JDK_TARBALL="5215185a1d57.tar.bz2"
+LANGTOOLS_TARBALL="91fdb0c83e50.tar.bz2"
+OPENJDK_TARBALL="f0e7f22f09ef.tar.bz2"
+HOTSPOT_TARBALL="c3cde6774003.tar.bz2"
 
 CACAO_TARBALL="cacao-c182f119eaad.tar.gz"
 JAMVM_TARBALL="jamvm-ec18fb9e49e62dce16c5094ef1527eed619463aa.tar.gz"
@@ -372,6 +372,7 @@ src_install() {
 		dosym /usr/libexec/icedtea-web/javaws ${dest}/bin/javaws
 		dosym /usr/libexec/icedtea-web/javaws ${dest}/jre/bin/javaws
 	fi
+	dosym /usr/share/doc/${PF} /usr/share/doc/${PN}${SLOT}
 
 	# Fix the permissions.
 	find "${ddest}" \! -type l \( -perm /111 -exec chmod 755 {} \; -o -exec chmod 644 {} \; \) || die
@@ -386,13 +387,6 @@ src_install() {
 	./generate-cacerts.pl "${ddest}/bin/keytool" all.crt || die
 	cp -vRP cacerts "${ddest}/jre/lib/security/" || die
 	chmod 644 "${ddest}/jre/lib/security/cacerts" || die
-
-	# OpenJDK7 should be able to use fontconfig instead, but wont hurt to
-	# install it anyway. Bug 390663
-	cp "${FILESDIR}"/fontconfig.Gentoo.properties.src "${T}"/fontconfig.Gentoo.properties || die
-	eprefixify "${T}"/fontconfig.Gentoo.properties
-	insinto "${dest}"/jre/lib
-	doins "${T}"/fontconfig.Gentoo.properties
 
 	set_java_env "${FILESDIR}/icedtea.env"
 	java-vm_sandbox-predict /proc/self/coredump_filter
