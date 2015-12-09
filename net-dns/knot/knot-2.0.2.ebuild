@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils user
+inherit bash-completion-r1 eutils systemd user
 
 DESCRIPTION="High-performance authoritative-only DNS server"
 HOMEPAGE="http://www.knot-dns.cz/"
@@ -12,7 +12,7 @@ SRC_URI="https://secure.nic.cz/files/knot-dns/${P/_/-}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="debug dnstap doc caps +fastparser idn systemd"
 
 RDEPEND="
@@ -34,8 +34,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${P/_/-}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${PV}-spell-enable-vars-correctly.patch"
-	epatch "${FILESDIR}/${PV}-dont-create-extra-directories.patch"
+	epatch "${FILESDIR}/2.0.2-dont-create-extra-directories.patch"
 }
 
 src_configure() {
@@ -43,6 +42,7 @@ src_configure() {
 		--with-storage="${EPREFIX}/var/lib/${PN}" \
 		--with-rundir="${EPREFIX}/var/run/${PN}" \
 		--with-lmdb \
+		--with-bash-completions="$(get_bashcompdir)" \
 		$(use_enable fastparser) \
 		$(use_enable debug debug server,zones,ns,loader,dnssec) \
 		$(use_enable debug debuglevel details) \
@@ -88,6 +88,7 @@ src_install() {
 	fi
 
 	newinitd "${FILESDIR}/knot.init" knot
+	systemd_dounit "${FILESDIR}/knot.service"
 }
 
 pkg_postinst() {
