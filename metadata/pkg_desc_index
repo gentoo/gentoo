@@ -2057,7 +2057,7 @@ app-pda/libopensync-plugin-sunbird 0.22: OpenSync Sunbird Plugin
 app-pda/libopensync-plugin-synce-rra 0.22.2: OpenSync SynCE RRA Plugin
 app-pda/libopensync-plugin-syncml 0.39 9999: OpenSync SyncML Plugin
 app-pda/libopensync-plugin-vformat 0.39 9999: OpenSync VFormat Plugin
-app-pda/libplist 1.11: Support library to deal with Apple Property Lists (Binary & XML)
+app-pda/libplist 1.11 1.11-r1: Support library to deal with Apple Property Lists (Binary & XML)
 app-pda/libsyncml 0.5.4 9999: Implementation of the SyncML protocol
 app-pda/libusbmuxd 1.0.9: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-pda/msynctool 0.22: OpenSync msync tool
@@ -8692,7 +8692,7 @@ dev-ruby/metasm 1.0.2-r3: cross-architecture assembler, disassembler, linker, an
 dev-ruby/metasploit-concern 1.0.0: Metasploit concern allows you to define concerns in app/concerns.
 dev-ruby/metasploit-credential 1.0.0 1.0.1: Code for modeling and managing credentials in Metasploit
 dev-ruby/metasploit-model 1.0.0: Common code, such as validators and mixins
-dev-ruby/metasploit-payloads 1.0.9-r1 1.0.15 1.0.16 1.0.17: Compiled binaries for Metasploit's Meterpreter
+dev-ruby/metasploit-payloads 1.0.9-r1 1.0.15 1.0.16 1.0.17 1.0.19: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/metasploit_data_models 1.2.5 1.2.9: The database layer for Metasploit
 dev-ruby/meterpreter_bins 0.0.22: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/method_source 0.8.2-r2 0.8.2-r3: Retrieve the source code for a method
