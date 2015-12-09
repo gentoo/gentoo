@@ -10,5 +10,5 @@ RDEPEND=>=media-libs/phonon-4.5
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~dilfridge/distfiles/phonon-qt7-0_pre20110424.tar.bz2
 _eclass_exported_funcs=src_unpack:base src_prepare:- src_configure:base src_compile:base src_test:cmake-utils src_install:base
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	cmake-utils	f16fa5681153277df51f001deaf17ff8	eutils	d9bd2ddd85a58e470b49ca997e255a4c	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	cmake-utils	1516dea29599084732555943ddf12880	eutils	d9bd2ddd85a58e470b49ca997e255a4c	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=8a56cbb870672e382f74a9d928a2d6d7
