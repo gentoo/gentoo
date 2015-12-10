@@ -35,8 +35,14 @@ src_prepare() {
 	python_foreach_impl prepare_gst
 }
 
+myeconf() {
+	local flag
+	flag="$(${PYTHON} -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS") or "")')"
+	PYTHON="${EPYTHON}${flag}" econf
+}
+
 src_configure() {
-	ECONF_SOURCE="${S}" python_foreach_impl run_in_build_dir econf
+	ECONF_SOURCE="${S}" python_foreach_impl run_in_build_dir myeconf
 }
 
 src_compile() {
