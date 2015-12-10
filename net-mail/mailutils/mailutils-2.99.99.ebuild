@@ -15,8 +15,9 @@ SRC_URI="mirror://gnu-alpha/mailutils/${P}.tar.xz"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~x86 ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="berkdb bidi +clients gdbm sasl guile ipv6 kerberos ldap mysql nls pam postgres
-python servers ssl static-libs +threads tcpd tokyocabinet"
+IUSE="berkdb bidi +clients gdbm sasl guile ipv6 kerberos kyotocabinet ldap \
+	mysql nls pam postgres python servers ssl static-libs +threads tcpd \
+	tokyocabinet"
 
 # Drop the libtool dep once libltdl goes stable.
 RDEPEND="!mail-client/nmh
@@ -32,6 +33,7 @@ RDEPEND="!mail-client/nmh
 	gdbm? ( sys-libs/gdbm )
 	guile? ( dev-scheme/guile:* )
 	kerberos? ( virtual/krb5 )
+	kyotocabinet? ( dev-db/kyotocabinet )
 	ldap? ( net-nds/openldap )
 	mysql? ( virtual/mysql )
 	nls? ( sys-devel/gettext )
@@ -87,6 +89,7 @@ src_configure() {
 		$(use_enable static-libs static) \
 		$(use_enable threads pthread) \
 		$(use_with tokyocabinet) \
+		$(use_with kyotocabinet) \
 		$(use_enable servers build-servers) \
 		$(use_enable clients build-clients) \
 		--with-mail-spool=/var/spool/mail \
