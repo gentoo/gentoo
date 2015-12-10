@@ -175,7 +175,7 @@ app-admin/puppetserver 2.1.2 2.2.0 2.2.1: Puppet Server is the next-generation a
 app-admin/pwcrypt 1.2.2 1.2.2-r1: An improved version of cli-crypt (encrypts data sent to it from the cli)
 app-admin/pwgen 2.07: Password Generator
 app-admin/pydf 10-r1 12: Enhanced df with colors
-app-admin/python-updater 0.11 0.12 0.13 9999: Script used to reinstall Python packages after changing of active Python versions
+app-admin/python-updater 0.11 0.12 0.13 0.14 9999: Script used to reinstall Python packages after changing active Python versions
 app-admin/qpage 3.3: Sends messages to an alphanumeric pager via TAP protocol
 app-admin/quickswitch 1.05: Utility to switch network profiles on the fly
 app-admin/r10k 1.1.3-r1 1.5.1: Puppet environment and module deployment
