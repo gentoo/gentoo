@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (10 Dec 2015)
+# Relies on dead ISP API. Dead upstream. Masked for removal in 30 days.
+# Bug 567532
+x11-plugins/wmium
+
 # Michael Sterrett <mr_bones_@gentoo.org> (09 Dec 2015)
 # Unneeded now that lugaru is open-source. (bug #505610)
 # Masked for removal on 20160108
@@ -154,20 +159,6 @@ app-pda/msynctool
 app-pda/multisync-gui
 app-pda/osynctool
 
-# Patrice Clement <monsieurp@gentoo.org> (12 Nov 2015)
-# Upstream dead + ebuild was never stabilised.
-# Masked for removal in 30 days. See bug #276095.
-net-p2p/phex
-
-# Patrice Clement <monsieurp@gentoo.org> (12 Nov 2015)
-# Upstream is somewhat alive but has made compiling POI difficult to compile
-# and package. Further, POI is affected by a bunch of CVEs. It has solely two
-# deps that we are masking as well since both projects are not very trendy
-# and/or alive. Masked for removal in 30 days. See bug #402757.
-dev-java/poi
-dev-java/dbunit
-dev-db/jxtray
-
 # Justin Lecher <jlec@gentoo.org> (12 Nov 2015)
 # deprecated version of the plugin. 
 # sci-chemistry/pymol includes the newer version
@@ -195,12 +186,6 @@ virtual/python-imaging
 # Masked apache-2.4.17 due to broken REDIRECT_URL
 # behavior. See Gentoo bug #565348 for more details.
 =www-servers/apache-2.4.17
-
-# Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
-# Not properly installed, dead for ages, upstream
-# ask people to use Zed Attack Proxy Project instead
-# Removal in a month. Bug #185919
-net-proxy/webscarab
 
 # Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
 # Nobody willing to maintain/bump it. Use qemu instead
