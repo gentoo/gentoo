@@ -14770,7 +14770,6 @@ net-p2p/nap 1.5.4-r1: Console Napster/OpenNap client
 net-p2p/ncdc 1.18.1 1.19 1.19.1 9999: ncurses directconnect client
 net-p2p/nicotine+ 1.2.16 1.2.16-r1: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
-net-p2p/phex 3.2.0.102-r1: java gnutella file-sharing application
 net-p2p/phxd 0.1.0_pre23092005: Next generation Hotline server in python. kang's branch
 net-p2p/ppcoin-qt 0.4.0: Cryptocurrency forked from Bitcoin which aims to be energy efficiency
 net-p2p/ppcoind 0.4.0: Cryptocurrency forked from Bitcoin which aims to be energy efficiency
@@ -14874,7 +14873,6 @@ net-proxy/tinyproxy 1.8.3-r3: A lightweight HTTP/SSL proxy
 net-proxy/torsocks 1.2-r2 2.1.0: Use most socks-friendly applications with Tor
 net-proxy/tsocks 1.8_beta5-r5 1.8_beta5-r8: Transparent SOCKS v4 proxying library
 net-proxy/ufdbguard 1.24-r1 1.29: ufdbGuard is a redirector for the Squid internet proxy
-net-proxy/webscarab 20070504: A framework for analysing applications that communicate using the HTTP and HTTPS protocols
 net-proxy/wwwoffle 2.9i: Web caching proxy suitable for non-permanent Internet connections
 net-proxy/ziproxy 3.3.1: A forwarding, non-caching, compressing web proxy server
 net-voip/blink 1.4.1: A state of the art, easy to use SIP client
