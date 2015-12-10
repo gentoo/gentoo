@@ -5,6 +5,7 @@
 EAPI=5
 
 KDE_TEST="forceoptional"
+QT_MINIMAL="5.5.0"
 VIRTUALX_REQUIRED="test"
 inherit kde5 pam
 
