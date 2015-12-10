@@ -62,6 +62,14 @@ src_prepare() {
 		-e "/add_subdirectory(autotests)/ s/^/#/" greeter/CMakeLists.txt || die
 }
 
+src_test() {
+	# requires running environment
+	local myctestargs=(
+		-E x11LockerTest
+	)
+	kde5_src_test
+}
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package pam)
