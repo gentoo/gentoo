@@ -17,33 +17,49 @@ SLOT="4"
 KEYWORDS=""
 IUSE="audiofile dcc_video +dcc_voice debug doc gsm +ipc ipv6 kde +nls oss +perl +phonon profile +python +qt-dbus spell +ssl theora +transparency webkit"
 
-RDEPEND=">=dev-qt/qtcore-4.6:4
-	>=dev-qt/qtgui-4.6:4
-	>=dev-qt/qtsql-4.6:4
+RDEPEND="dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtmultimedia:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtprintsupport:5
+	dev-qt/qtsql:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtx11extras:5
+	dev-qt/qtxml:5
 	sys-libs/zlib
 	x11-libs/libX11
-	dcc_video? (
-		media-libs/libv4l
-		theora? ( media-libs/libogg media-libs/libtheora )
+	dcc_video? ( dev-qt/qtmultimedia:5[widgets] )
+	kde? (
+		kde-frameworks/kcoreaddons:5
+		kde-frameworks/ki18n:5
+		kde-frameworks/knotifications:5
+		kde-frameworks/kservice:5
+		kde-frameworks/kwindowsystem:5
+		kde-frameworks/kxmlgui:5
 	)
-	kde? ( >=kde-base/kdelibs-4 )
 	oss? ( audiofile? ( media-libs/audiofile ) )
 	perl? ( dev-lang/perl )
-	phonon? ( || ( media-libs/phonon[qt4] >=dev-qt/qtphonon-4.6:4 ) )
-	qt-dbus? ( >=dev-qt/qtdbus-4.6:4 )
+	phonon? ( media-libs/phonon:0[qt5] )
+	qt-dbus? ( dev-qt/qtdbus:5 )
 	spell? ( app-text/enchant )
 	ssl? ( dev-libs/openssl )
-	webkit? ( >=dev-qt/qtwebkit-4.6:4 )"
+	theora? (
+		media-libs/libogg
+		media-libs/libtheora
+		media-libs/libvorbis
+	)
+	webkit? ( dev-qt/qtwebkit:5 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-proto/scrnsaverproto
+	kde? ( kde-frameworks/extra-cmake-modules:5 )
 	nls? ( sys-devel/gettext )
 	doc? ( app-doc/doxygen )"
 RDEPEND="${RDEPEND}
 	gsm? ( media-sound/gsm )"
 REQUIRED_USE="audiofile? ( oss ) theora? ( dcc_video )"
 
-DOCS="ChangeLog doc/FAQ"
+DOCS=(ChangeLog doc/FAQ)
 
 pkg_setup() {
 	if use python; then
@@ -79,7 +95,7 @@ src_configure() {
 		$(cmake-utils_use_want gsm GSM)
 		$(cmake-utils_use_want ipc IPC)
 		$(cmake-utils_use_want ipv6 IPV6)
-		$(cmake-utils_use_want kde KDE4)
+		$(cmake-utils_use_want kde KDE)
 		$(cmake-utils_use_want nls GETTEXT)
 		$(cmake-utils_use_want oss OSS)
 		$(cmake-utils_use_want perl PERL)
@@ -92,6 +108,9 @@ src_configure() {
 		$(cmake-utils_use_want theora OGG_THEORA)
 		$(cmake-utils_use_want transparency TRANSPARENCY)
 		$(cmake-utils_use_want webkit QTWEBKIT)
+
+		# COMPILE_SVG_SUPPORT not used in source code.
+		-DWANT_QTSVG=OFF
 	)
 
 	cmake-utils_src_configure
