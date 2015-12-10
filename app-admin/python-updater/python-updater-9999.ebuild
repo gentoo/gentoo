@@ -8,7 +8,7 @@ if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 fi
 
-DESCRIPTION="Script used to reinstall Python packages after changing of active Python versions"
+DESCRIPTION="Script used to reinstall Python packages after changing active Python versions"
 HOMEPAGE="https://www.gentoo.org/proj/en/Python/"
 if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="git://anongit.gentoo.org/proj/python-updater.git"
