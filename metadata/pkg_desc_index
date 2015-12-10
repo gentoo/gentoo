@@ -15343,7 +15343,7 @@ sci-chemistry/pymol-plugins-bni-tools 0.25.1 0.27: Gives Pymol additional functi
 sci-chemistry/pymol-plugins-caver 2.1.2: Calculation of pathways from buried cavities to outside solvent in protein structures
 sci-chemistry/pymol-plugins-dssp 110430 110430-r1: DSSP Plugin for PyMOL
 sci-chemistry/pymol-plugins-dynamics 1.2.0 2.0.4: Molecular dynamics in Pymol
-sci-chemistry/pymol-plugins-emovie 1.0.4: eMovie is a plug-in tool for the molecular visualization program PyMOL
+sci-chemistry/pymol-plugins-emovie 1.0.4: PyMOL plugin for convinient movie creation
 sci-chemistry/pymol-plugins-msms 100415 100415-r1: GUI for MSMS and displaying its results in PyMOL
 sci-chemistry/pymol-plugins-promol 3.0.2-r1: Fast and accurate regognition of active sites
 sci-chemistry/pymol-plugins-psico 3.1-r1: Pymol ScrIpt COllection
