@@ -21,3 +21,5 @@ RDEPEND=">=app-i18n/fcitx-4.2.8
 	dev-qt/qtwidgets:5
 	kde-frameworks/extra-cmake-modules"
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}/${PN}-qt-5.5-compatibility-fix.patch" )
