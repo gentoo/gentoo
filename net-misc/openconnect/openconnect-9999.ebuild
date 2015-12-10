@@ -9,7 +9,7 @@ PYTHON_REQ_USE="xml"
 
 if [[ "${PV}" = "9999" ]]; then
 	EGIT_REPO_URI="git://git.infradead.org/users/dwmw2/${PN}.git"
-	inherit git-r3
+	inherit git-r3 autotools
 else
 	ARCHIVE_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
@@ -72,13 +72,16 @@ src_unpack() {
 	if [[ ${PV} = 9999 ]]; then
 		git-r3_src_unpack
 	fi
-	unpack "${A}"
+	unpack ${A}
+}
+
+src_prepare() {
+	if [[ "${PV}" = 9999 ]]; then
+		eautoreconf
+	fi
 }
 
 src_configure() {
-	if [[ "${PV}" = 9999 ]]; then
-		./autogen.sh || die "autogen failed"
-	fi
 	strip-linguas $ILINGUAS
 	echo ${LINGUAS} > po/LINGUAS
 	if ! use doc; then
