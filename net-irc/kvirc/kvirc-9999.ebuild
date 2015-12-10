@@ -57,7 +57,7 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 RDEPEND="${RDEPEND}
 	gsm? ( media-sound/gsm )"
-REQUIRED_USE="audiofile? ( oss ) theora? ( dcc_video )"
+REQUIRED_USE="audiofile? ( oss )"
 
 DOCS=(ChangeLog doc/FAQ)
 
