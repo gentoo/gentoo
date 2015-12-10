@@ -31,6 +31,7 @@ SLOT="4"
 IUSE="cdr calendar crypt debug expoblending gpssync +imagemagick ipod mediawiki panorama redeyes scanner upnp videoslideshow vkontakte"
 
 COMMONDEPEND="
+	$(add_kdebase_dep kdelibs '' 4.14.14)
 	kde-apps/libkipi:4
 	kde-apps/libkdcraw:4=
 	kde-apps/libkexiv2:4=
