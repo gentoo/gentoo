@@ -1,0 +1,23 @@
+From 78c482b3fdfe558da74657893a3bcd1ece6d7758 Mon Sep 17 00:00:00 2001
+From: Weng Xuetian <wengxt@gmail.com>
+Date: Thu, 2 Jul 2015 20:02:17 -0700
+Subject: [PATCH] [qt5] fixes #6
+
+use macro instead of string literal and fix compatibility issue with qt5.5
+---
+ platforminputcontext/main.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/platforminputcontext/main.h b/platforminputcontext/main.h
+index 1492d72..9938da1 100644
+--- a/platforminputcontext/main.h
++++ b/platforminputcontext/main.h
+@@ -29,7 +29,7 @@ class QFcitxPlatformInputContextPlugin : public QPlatformInputContextPlugin
+ {
+     Q_OBJECT
+ public:
+-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QPlatformInputContextFactoryInterface" FILE "fcitx.json")
++    Q_PLUGIN_METADATA(IID QPlatformInputContextFactoryInterface_iid FILE "fcitx.json")
+     QStringList keys() const;
+     QFcitxPlatformInputContext *create(const QString& system, const QStringList& paramList);
+ };
