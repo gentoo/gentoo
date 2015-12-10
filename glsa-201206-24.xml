@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">apache tomcat</product>
   <announced>June 24, 2012</announced>
-  <revised>June 24, 2012: 1</revised>
+  <revised>December 10, 2015: 2</revised>
   <bug>272566</bug>
   <bug>273662</bug>
   <bug>303719</bug>
@@ -24,8 +24,7 @@
     <package name="www-servers/tomcat" auto="yes" arch="*">
       <unaffected range="rge">6.0.35</unaffected>
       <unaffected range="ge">7.0.23</unaffected>
-      <vulnerable range="rlt">5.5.34</vulnerable>
-      <vulnerable range="rlt">6.0.35</vulnerable>
+      <unaffected range="rge">6.0.44</unaffected>
       <vulnerable range="lt">7.0.23</vulnerable>
     </package>
   </affected>
@@ -42,7 +41,7 @@
       hijack a session, to bypass authentication, to inject webscript, to
       enumerate valid usernames, to read, modify and overwrite arbitrary files,
       to bypass intended access restrictions, to delete work-directory files,
-      to discover the server's hostname or IP, to bypass read permissions for
+      to discover the server’s hostname or IP, to bypass read permissions for
       files or HTTP headers, to read or write files outside of the intended
       working directory, and to obtain sensitive information by reading a log
       file.
@@ -100,8 +99,8 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2011-5064">CVE-2011-5064</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0022">CVE-2012-0022</uri>
   </references>
-  <metadata timestamp="Fri, 07 Oct 2011 23:38:00 +0000" tag="requester">craig</metadata>
-  <metadata timestamp="Sun, 24 Jun 2012 14:10:42 +0000" tag="submitter">
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:00 +0000">craig</metadata>
+  <metadata tag="submitter" timestamp="Thu, 10 Dec 2015 17:20:24 +0000">
     keytoaster
   </metadata>
 </glsa>
