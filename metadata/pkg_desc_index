@@ -11456,7 +11456,7 @@ mail-client/roundcube 1.0.5 1.0.6 1.1.3: A browser-based multilingual IMAP clien
 mail-client/squirrelmail 1.4.23_pre20140426: Webmail for nuts!
 mail-client/sylpheed 3.4.2 3.4.3 3.4.3-r1: A lightweight email client and newsreader
 mail-client/thunderbird 24.8.0 31.8.0 38.2.0 38.3.0 38.4.0: Thunderbird Mail Client
-mail-client/thunderbird-bin 31.8.0 38.1.0 38.2.0 38.3.0: Thunderbird Mail Client
+mail-client/thunderbird-bin 31.8.0 38.1.0 38.2.0 38.3.0 38.4.0: Thunderbird Mail Client
 mail-client/trojita 0.4.1 0.5 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1 1.6.0 1.6.0-r1: sendmail milter for amavisd-new
@@ -15861,7 +15861,7 @@ sci-visualization/fityk 1.2.1 1.2.9: General-purpose nonlinear curve fitting and
 sci-visualization/g3data 1.5.4: Tool for extracting data from graphs
 sci-visualization/gcalc 3.1_rc1: Java Mathematical Graphing System
 sci-visualization/gfsview 20120706-r1: Graphical viewer for Gerris simulation files
-sci-visualization/ggobi 2.1.8 2.1.9-r1 2.1.10: Visualization program for exploring high-dimensional data
+sci-visualization/ggobi 2.1.8 2.1.9-r1 2.1.10 2.1.11: Visualization program for exploring high-dimensional data
 sci-visualization/gle 4.2.4c 4.2.5: Graphics Layout Engine
 sci-visualization/gnuplot 4.6.5 5.0.1 5.0.1-r1: Command-line driven interactive plotting program
 sci-visualization/grace 5.1.22-r2 5.1.22-r3 5.1.23 5.1.23-r1: Motif based XY-plotting tool
