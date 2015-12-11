@@ -216,8 +216,8 @@ _python_set_globals() {
 	optflags+=,${flags_st[@]/%/(-)}
 
 	IUSE=${flags[*]}
-	readonly PYTHON_REQUIRED_USE="|| ( ${flags[*]} )"
-	readonly PYTHON_USEDEP=${optflags// /,}
+	declare -g -r PYTHON_REQUIRED_USE="|| ( ${flags[*]} )"
+	declare -g -r PYTHON_USEDEP=${optflags// /,}
 
 	# 1) well, python-exec would suffice as an RDEP
 	# but no point in making this overcomplex, BDEP doesn't hurt anyone
