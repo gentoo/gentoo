@@ -10,5 +10,5 @@ RDEPEND=>=media-libs/libsndfile-1.0.25-r1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_
 SLOT=0
 SRC_URI=mirror://sourceforge/bs2b/libbs2b-3.1.0.tar.bz2
 _eclass_exported_funcs=src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
-_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	multibuild	706332a8d833c077e1aa37faa1ebf162	multilib	3972ca401cf7dbb430df9995f5d8d580	multilib-build	b178443b75d170a983f0ab968c959339	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	multibuild	706332a8d833c077e1aa37faa1ebf162	multilib	3972ca401cf7dbb430df9995f5d8d580	multilib-build	cc50f13537fdf0250cef77fac43afd62	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=31f0ea586e9468fa732ebf0778871381

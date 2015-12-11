@@ -1,5 +1,5 @@
 DEFINED_PHASES=setup unpack
-DEPEND=test? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) ) >=dev-vcs/git-1.8.2.1
+DEPEND=test? ( || ( ) ) >=dev-vcs/git-1.8.2.1
 DESCRIPTION=C/C++/C#/D/Java/Pawn code indenter and beautifier
 EAPI=5
 HOMEPAGE=http://uncrustify.sourceforge.net/
@@ -7,5 +7,5 @@ IUSE=test
 LICENSE=GPL-2
 SLOT=0
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_unpack:git-r3
-_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	git-r3	0961ca04f93a7ae0e4c4a0b2b8c3be99	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	d48ce17f8005e9e5ca321f002d0fea6b	python-utils-r1	a5050c5c19fd08ed14d5d9f1792154fc	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	git-r3	0961ca04f93a7ae0e4c4a0b2b8c3be99	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	18215b242007be1e9d7fd95683aaf4c0	python-utils-r1	8839d3b63783f5eebbe020034404fae1	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=ef197a041550e2c4a1a7ba285fc589c7
