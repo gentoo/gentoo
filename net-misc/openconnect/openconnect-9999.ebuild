@@ -7,7 +7,9 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
 
-if [[ "${PV}" = "9999" ]]; then
+inherit eutils java-pkg-opt-2 linux-info python-any-r1 readme.gentoo
+
+if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="git://git.infradead.org/users/dwmw2/${PN}.git"
 	inherit git-r3 autotools
 else
@@ -17,8 +19,6 @@ fi
 VPNC_VER=20140806
 SRC_URI="${ARCHIVE_URI}
 	ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-${VPNC_VER}.tar.gz"
-
-inherit eutils java-pkg-opt-2 linux-info python-any-r1 readme.gentoo
 
 DESCRIPTION="Free client for Cisco AnyConnect SSL VPN software"
 HOMEPAGE="http://www.infradead.org/openconnect.html"
@@ -69,16 +69,17 @@ pkg_setup() {
 }
 
 src_unpack() {
-	if [[ ${PV} = 9999 ]]; then
+	if [[ ${PV} == 9999 ]]; then
 		git-r3_src_unpack
 	fi
 	unpack ${A}
 }
 
 src_prepare() {
-	if [[ "${PV}" = 9999 ]]; then
+	if [[ ${PV} == 9999 ]]; then
 		eautoreconf
 	fi
+	epatch_user
 }
 
 src_configure() {
