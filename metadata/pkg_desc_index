@@ -11523,7 +11523,7 @@ mail-filter/tmda 1.1.12: Python-based SPAM reduction system
 mail-filter/zdkimfilter 1.1: DKIM filter for Courier-MTA
 mail-mta/courier 0.71 0.74.0 0.74.1 0.74.1-r1 0.75.0 0.75.0-r1: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2 1.2-r1: esmtp is a user configurable relay-only Mail Transfer Agent (MTA) with a sendmail compatible syntax
-mail-mta/exim 4.84 4.85 4.86 4.86-r1 4.86-r2: A highly configurable, drop-in replacement for sendmail
+mail-mta/exim 4.84 4.85 4.86 4.86-r1 4.86-r2 4.87_rc1: A highly configurable, drop-in replacement for sendmail
 mail-mta/mini-qmail 1.05 1.05-r1 1.06: a small null client that forwards mail via QMQP to a full qmail server
 mail-mta/msmtp 1.6.1 1.6.2 1.6.3: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06 1.06-r1 1.06-r2 1.06-r3 1.06-r4: qmail -- a secure, reliable, efficient, simple message transfer agent
@@ -14623,7 +14623,7 @@ net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Co
 net-misc/tlsdate 0.0.1 0.0.4 0.0.4-r1 0.0.4-r2 0.0.5 0.0.6 0.0.11 0.0.12 0.0.12-r1 0.0.12-r2 0.0.13: Update local time over HTTPS
 net-misc/tn5250 0.17.4: Telnet client for the IBM AS/400 that emulates 5250 terminals and printers
 net-misc/tokyotyrant 1.1.41-r1: A network interface to Tokyo Cabinet
-net-misc/tor 0.2.6.10 0.2.7.5: Anonymizing overlay network for TCP
+net-misc/tor 0.2.6.10 0.2.7.5 0.2.7.6: Anonymizing overlay network for TCP
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
 net-misc/ucarp 1.5.2-r3 1.5.2-r4: Portable userland implementation of Common Address Redundancy Protocol (CARP)
 net-misc/udpcast 20120424 20120424-r1: Multicast file transfer tool
