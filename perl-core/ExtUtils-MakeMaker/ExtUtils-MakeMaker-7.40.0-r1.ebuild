@@ -23,6 +23,7 @@ RDEPEND="${DEPEND}"
 PDEPEND="
 	>=virtual/perl-CPAN-Meta-2.143.240
 	>=virtual/perl-Parse-CPAN-Meta-1.441.400
+	virtual/perl-Test-Harness
 "
 
 PATCHES=(
