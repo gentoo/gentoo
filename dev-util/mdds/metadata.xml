@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="google-code">multidimalgorithm</remote-id>
 	</upstream>
+	<use>
+		<flag name="valgrind">Add support for memory debugging using <pkg>dev-util/valgrind</pkg></flag>
+	</use>
 </pkgmetadata>
