@@ -216,8 +216,8 @@ _python_set_globals() {
 	optflags+=,${flags_st[@]/%/(-)}
 
 	IUSE=${flags[*]}
-	declare -g -r PYTHON_REQUIRED_USE="|| ( ${flags[*]} )"
-	declare -g -r PYTHON_USEDEP=${optflags// /,}
+	PYTHON_REQUIRED_USE="|| ( ${flags[*]} )"
+	PYTHON_USEDEP=${optflags// /,}
 
 	# 1) well, python-exec would suffice as an RDEP
 	# but no point in making this overcomplex, BDEP doesn't hurt anyone
@@ -232,7 +232,7 @@ _python_set_globals() {
 	else
 		PYTHON_DEPS+="dev-lang/python-exec:2[${PYTHON_USEDEP}]"
 	fi
-	readonly PYTHON_DEPS
+	readonly PYTHON_DEPS PYTHON_REQUIRED_USE PYTHON_USEDEP
 }
 _python_set_globals
 unset -f _python_set_globals

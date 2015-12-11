@@ -133,7 +133,8 @@ _python_any_set_globals() {
 
 		PYTHON_DEPS="${PYTHON_PKG_DEP} ${PYTHON_DEPS}"
 	done
-	declare -g -r PYTHON_DEPS="|| ( ${PYTHON_DEPS})"
+	PYTHON_DEPS="|| ( ${PYTHON_DEPS})"
+	readonly PYTHON_DEPS
 }
 _python_any_set_globals
 unset -f _python_any_set_globals

@@ -40,12 +40,13 @@ inherit toolchain-funcs
 # @INTERNAL
 # @DESCRIPTION:
 # All supported Python implementations, most preferred last.
-declare -g -r _PYTHON_ALL_IMPLS=(
+_PYTHON_ALL_IMPLS=(
 	python2_7
 	python3_3 python3_4 python3_5
 	pypy pypy3
 	jython2_7
 )
+readonly _PYTHON_ALL_IMPLS
 
 # @FUNCTION: _python_impl_supported
 # @USAGE: <impl>
