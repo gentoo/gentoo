@@ -6873,8 +6873,8 @@ dev-python/cov-core 1.7 1.15.0: plugin core for use by pytest-cov, nose-cov and 
 dev-python/coverage 3.6 3.7 3.7.1 4.0 4.0.1 4.0.2 4.0.3: Code coverage measurement for Python
 dev-python/crcmod 1.7-r2: Python CRC Generator module
 dev-python/crumbs 1.2.2-r1 2.0.0 2.0.1 2.0.2: Generalized all-in-one parameters module
-dev-python/cryptography 1.0.2 1.1 1.1.1: Library providing cryptographic recipes and primitives
-dev-python/cryptography-vectors 1.0.2 1.1 1.1.1: Test vectors for the cryptography package
+dev-python/cryptography 1.0.2 1.1 1.1.1 1.1.2: Library providing cryptographic recipes and primitives
+dev-python/cryptography-vectors 1.0.2 1.1 1.1.1 1.1.2: Test vectors for the cryptography package
 dev-python/cssselect 0.9.1: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssutils 0.9.10-r1 1.0 1.0.1: A CSS Cascading Style Sheets library
 dev-python/ctypesgen 0_p72-r1: Python wrapper generator for ctypes
@@ -8046,7 +8046,7 @@ dev-python/wstools 0.4.3: WSDL parsing services package for Web Services for Pyt
 dev-python/wtf-peewee 0.2.3: Small python ORM
 dev-python/wtforms 2.0.1 2.0.2: Flexible forms validation and rendering library for python web development
 dev-python/wxpython 2.8.12.1-r2 2.9.4.1-r2 3.0.0.0 3.0.1.1 3.0.2.0: A blending of the wxWindows C++ class library with Python
-dev-python/xcffib 0.3.4: A drop in replacement for xpyb, an XCB python binding
+dev-python/xcffib 0.3.4 0.4.0: A drop in replacement for xpyb, an XCB python binding
 dev-python/xhtml2pdf 0.0.5-r1 0.0.6-r1: PDF generator using HTML and CSS
 dev-python/xlrd 0.9.3 0.9.3-r1 0.9.4: Library for developers to extract data from Microsoft Excel (tm) spreadsheet files
 dev-python/xlsxwriter 0.7.3 0.7.4 0.7.6 0.7.7: Python module for creating Excel XLSX files
