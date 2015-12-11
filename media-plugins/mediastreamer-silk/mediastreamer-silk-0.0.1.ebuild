@@ -12,7 +12,7 @@ inherit autotools eutils
 DESCRIPTION="SILK (skype codec) implementation for Linphone"
 HOMEPAGE="http://www.linphone.org"
 SRC_URI="mirror://nongnu/linphone/plugins/sources/${MY_PN}-${PV}.tar.gz
-	http://developer.skype.com/silk/${SDK_FILE}"
+	http://www.yxplayer.net/files/${SDK_FILE}"
 
 LICENSE="GPL-2+ Clear-BSD SILK-patent-license"
 SLOT="0"
