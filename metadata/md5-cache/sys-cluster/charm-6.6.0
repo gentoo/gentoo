@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install postinst prepare setup test
-DEPEND=mpi? ( virtual/mpi ) doc? ( >=app-text/poppler-0.12.3-r3[utils] dev-tex/latex2html virtual/tex-base || ( ) media-libs/netpbm || ( ) ) virtual/fortran
+DEPEND=mpi? ( virtual/mpi ) doc? ( >=app-text/poppler-0.12.3-r3[utils] dev-tex/latex2html virtual/tex-base || ( ( >=dev-lang/python-3.3.2-r2:3.3 >=dev-python/beautifulsoup-4[python_targets_python3_3(-),python_single_target_python3_3(+)] dev-python/lxml[python_targets_python3_3(-),python_single_target_python3_3(+)] ) ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-python/beautifulsoup-4[python_targets_python2_7(-),python_single_target_python2_7(+)] dev-python/lxml[python_targets_python2_7(-),python_single_target_python2_7(+)] ) ) media-libs/netpbm || ( >=dev-lang/python-3.3.2-r2:3.3 >=dev-lang/python-2.7.5-r2:2.7 ) ) virtual/fortran
 DESCRIPTION=Message-passing parallel language and runtime system
 EAPI=5
 HOMEPAGE=http://charm.cs.uiuc.edu/
@@ -11,5 +11,5 @@ REQUIRED_USE=doc? ( ) cmkopt? ( !charmdebug !charmtracing ) charmproduction? ( !
 SLOT=0
 SRC_URI=http://charm.cs.uiuc.edu/distrib/charm-6.6.0.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_compile:- src_test:- src_install:-
-_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	fortran-2	5cc7c979568f0b4f6ef324628a6465d5	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-any-r1	18215b242007be1e9d7fd95683aaf4c0	python-utils-r1	8839d3b63783f5eebbe020034404fae1	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	fortran-2	5cc7c979568f0b4f6ef324628a6465d5	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-any-r1	0ee3a2b43a7ff470ba57bc6e0ee386b3	python-utils-r1	832cb17726d498a182de6b9ee2adc0dc	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=8764f3973df977f17cef5328f3c01868

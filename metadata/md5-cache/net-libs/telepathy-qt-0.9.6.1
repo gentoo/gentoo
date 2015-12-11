@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=farstream? ( >=net-libs/telepathy-farstream-0.2.2 >=net-libs/telepathy-glib-0.18.0 ) qt4? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtxml:5 ) !net-libs/telepathy-qt4 || ( ) virtual/pkgconfig test? ( dev-libs/dbus-glib dev-libs/glib:2 dev-python/dbus-python qt4? ( dev-qt/qttest:4 ) qt5? ( dev-qt/qttest:5 ) ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DEPEND=farstream? ( >=net-libs/telepathy-farstream-0.2.2 >=net-libs/telepathy-glib-0.18.0 ) qt4? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtxml:5 ) !net-libs/telepathy-qt4 || ( >=dev-lang/python-2.7.5-r2:2.7 ) virtual/pkgconfig test? ( dev-libs/dbus-glib dev-libs/glib:2 dev-python/dbus-python qt4? ( dev-qt/qttest:4 ) qt5? ( dev-qt/qttest:5 ) ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DESCRIPTION=Qt bindings for the Telepathy D-Bus protocol
 EAPI=5
 HOMEPAGE=http://telepathy.freedesktop.org/
@@ -11,5 +11,5 @@ REQUIRED_USE=|| ( qt4 qt5 )
 SLOT=0
 SRC_URI=http://telepathy.freedesktop.org/releases/telepathy-qt/telepathy-qt-0.9.6.1.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_prepare:cmake-utils src_configure:- src_compile:- src_test:- src_install:-
-_eclasses_=cmake-utils	8f9b4a16a74424949f28dee874ec2d34	eutils	d9bd2ddd85a58e470b49ca997e255a4c	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multibuild	706332a8d833c077e1aa37faa1ebf162	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	18215b242007be1e9d7fd95683aaf4c0	python-utils-r1	8839d3b63783f5eebbe020034404fae1	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	e0b4d88543a7001a6b55bc2c81dcfd48
+_eclasses_=cmake-utils	8f9b4a16a74424949f28dee874ec2d34	eutils	d9bd2ddd85a58e470b49ca997e255a4c	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multibuild	706332a8d833c077e1aa37faa1ebf162	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	0ee3a2b43a7ff470ba57bc6e0ee386b3	python-utils-r1	832cb17726d498a182de6b9ee2adc0dc	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	e0b4d88543a7001a6b55bc2c81dcfd48
 _md5_=eec6c18ad9fe180ae21a8d110bcd42c2

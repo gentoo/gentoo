@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install postinst postrm preinst setup test unpack
-DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( ) )
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
 DESCRIPTION=Full Linux 4.0 kernel sources with the CONFIG_PREEMPT_RT patch
 EAPI=5
 HOMEPAGE=https://www.kernel.org/ https://www.gentoo.org/ https://www.kernel.org/pub/linux/kernel/projects/rt/ http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags
@@ -11,5 +11,5 @@ RESTRICT=binchecks strip
 SLOT=4.0.5_p4
 SRC_URI=mirror://kernel/linux/kernel/v4.x/patch-4.0.5.xz mirror://kernel/linux/kernel/v4.x/linux-4.0.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.0-gnu/deblob-4.0 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.0-gnu/deblob-check -> deblob-check-4.0 ) mirror://kernel/linux/kernel/projects/rt/4.0/patch-4.0.5-rt4.patch.xz mirror://kernel/linux/kernel/projects/rt/4.0/older/patch-4.0.5-rt4.patch.xz
 _eclass_exported_funcs=pkg_preinst:kernel-2 pkg_postrm:kernel-2 pkg_postinst:- pkg_setup:kernel-2 src_unpack:kernel-2 src_compile:kernel-2 src_test:kernel-2 src_install:kernel-2
-_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	kernel-2	a4c66611301c7fdf1c78202ab683fb1b	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	18215b242007be1e9d7fd95683aaf4c0	python-utils-r1	8839d3b63783f5eebbe020034404fae1	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	kernel-2	a4c66611301c7fdf1c78202ab683fb1b	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	0ee3a2b43a7ff470ba57bc6e0ee386b3	python-utils-r1	832cb17726d498a182de6b9ee2adc0dc	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=ff81d6be690b9cc4ca0e38901d79e62d
