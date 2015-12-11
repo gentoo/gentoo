@@ -24,7 +24,7 @@ done
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="7"
-KEYWORDS="-* ~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="-* amd64 ~arm ~ppc ~ppc64 x86"
 
 IUSE="+alsa cjk +cups doc examples +gtk headless-awt nsplugin nss pulseaudio selinux source webstart"
 REQUIRED_USE="gtk? ( !headless-awt ) nsplugin? ( !headless-awt )"
