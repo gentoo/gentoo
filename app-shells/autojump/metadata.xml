@@ -9,4 +9,7 @@
     <bugs-to>https://github.com/joelthelion/autojump/issues</bugs-to>
     <remote-id type="github">joelthelion/autojump</remote-id>
   </upstream>
+  <use>
+    <flag name="ipython">Add support for <pkg>dev-python/ipython</pkg></flag>
+  </use>
 </pkgmetadata>

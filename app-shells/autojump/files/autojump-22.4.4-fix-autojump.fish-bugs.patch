@@ -1,0 +1,67 @@
+From f09d23e30d3159db18872a3e8f8f579ed9e77231 Mon Sep 17 00:00:00 2001
+From: David Frascone <David.Frascone@dishdigital.com>
+Date: Tue, 9 Jun 2015 14:32:38 -0600
+Subject: [PATCH] Fixed some bugs in fish script
+
+OSTYPE was not being set correctly.  It is in bash, not sh.
+    Since the value is unlikely to change, I read it once and
+    stored it globally
+Test logic was backward in jo function, causing error to always
+    be printed, unless you did NOT specify a directory name.
+---
+ bin/autojump.fish | 20 ++++++++++++--------
+ 1 file changed, 12 insertions(+), 8 deletions(-)
+
+diff --git a/bin/autojump.fish b/bin/autojump.fish
+index 2cf5001..19cb27e 100644
+--- a/bin/autojump.fish
++++ b/bin/autojump.fish
+@@ -5,6 +5,11 @@ if test -d ~/.autojump
+     set -x PATH ~/.autojump/bin $PATH
+ end
+ 
++# Set ostype, if not set
++if not set -q OSTYPE
++    set -gx OSTYPE (bash -c 'echo ${OSTYPE}')
++end
++
+ 
+ # enable tab completion
+ complete -x -c j -a '(autojump --complete (commandline -t))'
+@@ -34,7 +39,7 @@ end
+ # misc helper functions
+ function __aj_err
+     # TODO(ting|#247): set error file location
+-    echo $argv 1>&2; false
++    echo -e $argv 1>&2; false
+ end
+ 
+ # default autojump command
+@@ -73,11 +78,7 @@ end
+ function jo
+     set -l output (autojump $argv)
+     if test -d "$output"
+-        __aj_err "autojump: directory '"$argv"' not found"
+-        __aj_err "\n$output\n"
+-        __aj_err "Try `autojump --help` for more information."
+-    else
+-        switch (sh -c 'echo ${OSTYPE}')
++        switch $OSTYPE
+             case 'linux*'
+                 xdg-open (autojump $argv)
+             case 'darwin*'
+@@ -85,9 +86,12 @@ function jo
+             case cygwin
+                 cygstart "" (cygpath -w -a (pwd))
+             case '*'
+-                __aj_error "Unknown operating system: '"$OSTYPE"'"
++                __aj_error "Unknown operating system: \"$OSTYPE\""
+         end
+-        echo end
++    else
++        __aj_err "autojump: directory '"$argv"' not found"
++        __aj_err "\n$output\n"
++        __aj_err "Try `autojump --help` for more information."
+     end
+ end
+ 
