@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/topfunky/gruff"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-macos"
+KEYWORDS="amd64 ~x86 ~x86-macos"
 IUSE=""
 
 RUBY_PATCHES=(
