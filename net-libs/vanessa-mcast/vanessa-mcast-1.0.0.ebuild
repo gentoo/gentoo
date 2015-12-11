@@ -5,8 +5,8 @@
 MY_PN="${PN/-/_}"
 MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Multicast Helper Library"
-HOMEPAGE="http://www.vergenet.net/linux/vanessa/"
-SRC_URI="http://www.vergenet.net/linux/vanessa/download/${MY_PN}/${PV}/${MY_P}.tar.gz"
+HOMEPAGE="http://horms.net/projects/vanessa/"
+SRC_URI="http://horms.net/projects/vanessa/download/${MY_PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -5,8 +5,8 @@
 MY_PN="${PN/-/_}"
 MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Generic logging layer that to log to syslog, an open file handle or a file name"
-HOMEPAGE="http://www.vergenet.net/linux/vanessa/"
-SRC_URI="http://www.vergenet.net/linux/vanessa/download/${MY_PN}/${PV}/${MY_P}.tar.gz"
+HOMEPAGE="http://horms.net/projects/vanessa/"
+SRC_URI="http://horms.net/projects/vanessa/download/${MY_PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
