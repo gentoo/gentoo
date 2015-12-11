@@ -5,6 +5,12 @@
     <email>robbat2@gentoo.org</email>
     <name>Robin H. Johnson</name>
   </maintainer>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>gokturk@binghamton.edu</email>
+    <name>Gokturk Yuksek</name>
+    <description>Proxied maintainer; set to assignee in all bugs</description>
+  </maintainer>
   <longdescription lang="en">
 	</longdescription>
   <use>

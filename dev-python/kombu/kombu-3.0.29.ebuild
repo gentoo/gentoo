@@ -66,7 +66,7 @@ PATCHES=(
 	)
 
 python_prepare_all() {
-	https://github.com/celery/kombu/issues/246
+	# https://github.com/celery/kombu/issues/246
 	sed -e 's:kombu.transports:kombu.transport:' -i funtests/tests/test_django.py
 	distutils-r1_python_prepare_all
 }
