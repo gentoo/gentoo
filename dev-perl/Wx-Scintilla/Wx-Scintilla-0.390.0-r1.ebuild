@@ -22,6 +22,7 @@ IUSE=""
 RDEPEND="
 	dev-perl/Alien-wxWidgets
 	dev-perl/wxperl
+	x11-libs/wxGTK:${WX_GTK_VER}
 "
 DEPEND="${RDEPEND}
 	>=dev-perl/ExtUtils-XSpp-0.160.200
