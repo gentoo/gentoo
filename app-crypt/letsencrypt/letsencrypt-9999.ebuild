@@ -5,16 +5,22 @@
 EAPI=5
 PYTHON_COMPAT=(python2_7)
 
-EGIT_REPO_URI="https://github.com/letsencrypt/letsencrypt.git"
+if [[ ${PV} == 9999* ]]; then
+	EGIT_REPO_URI="https://github.com/letsencrypt/letsencrypt.git"
+	inherit git-r3
+	KEYWORDS=""
+else
+	SRC_URI="https://github.com/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64"
+fi
 
-inherit git-r3 distutils-r1
+inherit distutils-r1
 
 DESCRIPTION="Let's encrypt client to automate deployment of X.509 certificates"
 HOMEPAGE="https://github.com/letsencrypt/letsencrypt https://letsencrypt.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
 IUSE="test"
 
 RDEPEND=">=app-crypt/acme-${PV}[${PYTHON_USEDEP}]

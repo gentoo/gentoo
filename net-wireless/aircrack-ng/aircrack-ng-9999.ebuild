@@ -58,7 +58,8 @@ REQUIRED_USE="airdrop-ng? ( ${PYTHON_REQUIRED_USE} )
 
 src_compile() {
 	if [[ $($(tc-getCC) --version) == clang* ]] ; then
-		die "Please use gcc, upstream bug http://trac.aircrack-ng.org/ticket/1144"
+		#https://bugs.gentoo.org/show_bug.cgi?id=472890
+		filter-flags -frecord-gcc-switches
 	fi
 
 	if [[ ${PV} == "9999" ]] ; then
