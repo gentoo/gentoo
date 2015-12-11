@@ -76,10 +76,10 @@ src_unpack() {
 }
 
 src_prepare() {
+	epatch_user
 	if [[ ${PV} == 9999 ]]; then
 		eautoreconf
 	fi
-	epatch_user
 }
 
 src_configure() {
