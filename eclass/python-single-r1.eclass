@@ -238,7 +238,7 @@ _python_single_set_globals() {
 			PYTHON_DEPS+="python_single_target_${i}? ( ${PYTHON_PKG_DEP} ) "
 		done
 	fi
-	declare -g -r PYTHON_USEDEP=${optflags// /,}
+	readonly PYTHON_USEDEP=${optflags// /,}
 
 	# 1) well, python-exec would suffice as an RDEP
 	# but no point in making this overcomplex, BDEP doesn't hurt anyone
