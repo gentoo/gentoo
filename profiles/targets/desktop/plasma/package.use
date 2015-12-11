@@ -43,6 +43,7 @@ kde-apps/kdebase-runtime-meta -crash-reporter minimal
 kde-apps/kdesu -handbook
 kde-apps/knetattach -handbook
 kde-apps/konsole:4 -handbook minimal
+kde-apps/kwalletmanager:4 minimal
 kde-apps/solid-runtime -bluetooth
 kde-base/baloo minimal
 kde-base/kactivities minimal
@@ -74,6 +75,7 @@ net-news/rssguard -qt4
 >=net-news/quiterss-0.17.7 -qt4
 net-p2p/bitcoin-qt -qt4
 >=net-p2p/qbittorrent-3.2.0 -qt4
+>=net-wireless/wpa_supplicant-2.5 -qt4
 >=sci-geosciences/qlandkartegt-1.8.0 -qt4
 sci-visualization/kst -qt4
 www-client/qupzilla -kde -qt4
