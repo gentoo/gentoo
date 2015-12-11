@@ -38,7 +38,7 @@ inherit multibuild multilib
 # Please contact multilib before modifying this list. This way we can
 # ensure that every *preliminary* work is done and the multilib can be
 # extended safely.
-declare -g -r _MULTILIB_FLAGS=(
+readonly _MULTILIB_FLAGS=(
 	abi_x86_32:x86,x86_fbsd,x86_freebsd,x86_linux,x86_macos,x86_solaris
 	abi_x86_64:amd64,amd64_fbsd,x64_freebsd,amd64_linux,x64_macos,x64_solaris
 	abi_x86_x32:x32
@@ -124,7 +124,7 @@ _multilib_build_set_globals() {
 	local usedeps=${flags[@]/%/(-)?}
 
 	IUSE=${flags[*]}
-	declare -g -r MULTILIB_USEDEP=${usedeps// /,}
+	readonly MULTILIB_USEDEP=${usedeps// /,}
 }
 _multilib_build_set_globals
 unset -f _multilib_build_set_globals
