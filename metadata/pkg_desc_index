@@ -2803,7 +2803,7 @@ dev-cpp/gmock 1.4.0 1.5.0 1.6.0 1.7.0 1.7.0-r1: Google's C++ mocking framework
 dev-cpp/gnome-vfsmm 2.26.0: C++ bindings for gnome-vfs
 dev-cpp/gstreamermm 0.10.11 1.0.10 1.4.3: C++ interface for GStreamer
 dev-cpp/gtest 1.6.0 1.6.0-r1 1.6.0-r2 1.7.0: Google C++ Testing Framework
-dev-cpp/gtkglextmm 1.2.0-r1: C++ bindings for gtkglext
+dev-cpp/gtkglextmm 1.2.0-r1 1.2.0-r2: C++ bindings for gtkglext
 dev-cpp/gtkmm 2.24.4-r2 2.24.4-r3 3.16.0 3.18.0 3.18.0-r1: C++ interface for GTK+
 dev-cpp/gtkmm-utils 0.4.1: Utility functions, classes and widgets written on top of gtkmm and glibmm.
 dev-cpp/gtksourceviewmm 2.10.3 3.12.0 3.18.0: C++ bindings for gtksourceview
