@@ -101,8 +101,8 @@ src_prepare() {
 	# Call dot with -Teps instead of -Tps for EPS generation - bug #282150
 	sed -i -e '/addJob("ps"/ s/"ps"/"eps"/g' src/dot.cpp || die
 
-	# prefix search tools patch, plus OSX fixes
 	epatch "${FILESDIR}"/${PN}-1.8.9.1-empty-line-sigsegv.patch #454348
+	epatch "${FILESDIR}"/${P}-fix_flex_check.patch #567018
 
 	epatch "${FILESDIR}"/${P}-link_with_pthread.patch
 
