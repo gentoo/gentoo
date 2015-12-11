@@ -43,8 +43,10 @@ PDEPEND="
 	>=app-admin/perl-cleaner-2.5
 	>=virtual/perl-File-Temp-0.230.400-r2
 	>=virtual/perl-Data-Dumper-2.154.0
+	virtual/perl-Test-Harness
 "
 # bug 390719, bug 523624
+# virtual/perl-Test-Harness is here for the bundled ExtUtils::MakeMaker
 
 S="${WORKDIR}/${MY_P}"
 
