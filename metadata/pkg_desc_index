@@ -4045,7 +4045,7 @@ dev-java/jrexx 1.1.1-r1: Regular expression API for textual pattern matching bas
 dev-java/jrobin 1.6.0-r1: JRobin is a 100% pure Java alternative to RRDTool
 dev-java/jrrd 1.0.1-r1: Java Interface to Tobias Oetiker's RRDtool
 dev-java/jruby 1.7.12: Java-based Ruby interpreter implementation
-dev-java/jsap 2.1 2.1-r1: Java Simple Arguments Parser (JSAP)
+dev-java/jsap 2.1 2.1-r1 2.1-r2: Java Simple Arguments Parser (JSAP)
 dev-java/jsch 0.1.49 0.1.52: JSch is a pure Java implementation of SSH2
 dev-java/jscience 1.0.4-r1: Java Tools and Libraries for the Advancement of Sciences
 dev-java/json 20150729: Java implementation of the JavaScript Object Notation
@@ -12305,7 +12305,7 @@ media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/mash 0.2.0-r1: A library for rendering 3D models with Clutter
 media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 7.10.3 10.2.8 10.3.7-r1 10.3.7-r2 10.6.9 11.0.4 11.0.5 11.0.6 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 7.10.3 10.2.8 10.3.7-r1 10.3.7-r2 10.6.9 11.0.6 11.0.7 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.4-r1 0.4.5: An Open Source library for Flash movie generation
 media-libs/mlt 0.9.0 0.9.8: An open source multimedia framework, designed and developed for television broadcasting
 media-libs/musicbrainz 2.1.5 3.0.2 3.0.3 4.0.3 5.0.1: The MusicBrainz Client Library (for accessing the latest XML based web service)
