@@ -63,7 +63,7 @@ REQUIRED_USE="
 # xorriso (dev-libs/libisoburn): Used on runtime for mkrescue
 RDEPEND="
 	app-arch/xz-utils
-	>=sys-libs/ncurses-5.2-r5
+	>=sys-libs/ncurses-5.2-r5:0=
 	debug? (
 		sdl? ( media-libs/libsdl )
 	)
