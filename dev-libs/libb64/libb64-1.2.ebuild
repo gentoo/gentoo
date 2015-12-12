@@ -8,7 +8,7 @@ DESCRIPTION="Fast Base64 encoding/decoding routines"
 HOMEPAGE="http://libb64.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.src.zip"
 
-LICENSE="public-domain"
+LICENSE="CC-PD"
 # static library, so always rebuild
 SLOT="0/${PVR}"
 KEYWORDS="~amd64 ~x86"
