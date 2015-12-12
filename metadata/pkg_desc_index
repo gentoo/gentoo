@@ -6733,7 +6733,7 @@ dev-python/addons 0.7: Dynamically extend other objects (formerly ObjectRoles)
 dev-python/adns-python 1.2.1-r1: Python bindings for ADNS
 dev-python/adodb-py 2.20-r1: Active Data Objects Data Base library for Python
 dev-python/aioeventlet 0.4: asyncio event loop scheduling callbacks in eventlet
-dev-python/aiohttp 0.14.4-r1 0.17.4 0.18.4: http client/server for asyncio
+dev-python/aiohttp 0.17.4 0.18.4 0.19.0: http client/server for asyncio
 dev-python/alabaster 0.7.6: A configurable sidebar-enabled Sphinx theme
 dev-python/aldryn-bootstrap3 0.5.1: django CMS plugins for bootstrap3 markup
 dev-python/alembic 0.6.7 0.7.4 0.7.6 0.7.7 0.8.2: database migrations tool, written by the author of SQLAlchemy
