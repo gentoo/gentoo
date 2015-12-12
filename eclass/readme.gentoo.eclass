@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,13 +28,16 @@ case "${EAPI:-0}" in
 		# EAPI>=4 is required for REPLACING_VERSIONS preventing us
 		# from needing to export another pkg_preinst phase to save has_version
 		# result. Also relies on EAPI >=4 default src_install phase.
+		EXPORT_FUNCTIONS src_install pkg_postinst
+		;;
+	6)
+		# Stop exporting default functions as discussed at:
+		# https://bugs.gentoo.org/show_bug.cgi?id=520094
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
 		;;
 esac
-
-EXPORT_FUNCTIONS src_install pkg_postinst
 
 # @ECLASS-VARIABLE: DISABLE_AUTOFORMATTING
 # @DEFAULT_UNSET
