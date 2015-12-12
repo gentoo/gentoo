@@ -72,6 +72,24 @@ if [[ ! ${_PYTHON_ANY_R1} ]]; then
 # PYTHON_COMPAT=( python{2_5,2_6,2_7} )
 # @CODE
 
+# @ECLASS-VARIABLE: PYTHON_COMPAT_OVERRIDE
+# @INTERNAL
+# @DESCRIPTION:
+# This variable can be used when working with ebuilds to override
+# the in-ebuild PYTHON_COMPAT. It is a string naming the implementation
+# which will be used to build the package. It needs to be specified
+# in the calling environment, and not in ebuilds.
+#
+# It should be noted that in order to preserve metadata immutability,
+# PYTHON_COMPAT_OVERRIDE does not affect dependencies. The value of
+# EPYTHON and eselect-python preferences are ignored. Dependencies need
+# to be satisfied manually.
+#
+# Example:
+# @CODE
+# PYTHON_COMPAT_OVERRIDE='pypy' emerge -1v dev-python/bar
+# @CODE
+
 # @ECLASS-VARIABLE: PYTHON_REQ_USE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -252,6 +270,23 @@ _python_EPYTHON_supported() {
 # This function will call python_check_deps() if defined.
 python_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
+
+	# support developer override
+	if [[ ${PYTHON_COMPAT_OVERRIDE} ]]; then
+		local impls=( ${PYTHON_COMPAT_OVERRIDE} )
+		[[ ${#impls[@]} -eq 1 ]] || die "PYTHON_COMPAT_OVERRIDE must name exactly one implementation for python-any-r1"
+
+		ewarn "WARNING: PYTHON_COMPAT_OVERRIDE in effect. The following Python"
+		ewarn "implementation will be used:"
+		ewarn
+		ewarn "	${PYTHON_COMPAT_OVERRIDE}"
+		ewarn
+		ewarn "Dependencies won't be satisfied, and EPYTHON/eselect-python will be ignored."
+
+		python_export "${impls[0]}" EPYTHON PYTHON
+		python_wrapper_setup
+		return
+	fi
 
 	# first, try ${EPYTHON}... maybe it's good enough for us.
 	if [[ ${EPYTHON} ]]; then
