@@ -1752,13 +1752,13 @@ app-misc/gcstar 1.7.0: Manage your collections of movies, games, books, music an
 app-misc/geekcode 1.7.3-r1: Geek code generator
 app-misc/geneweb 6.07: Genealogy software program with a Web interface
 app-misc/gentoo 0.20.6: A modern GTK+ based filemanager for any WM
-app-misc/geoclue 0.12.99 2.2.0 2.4.0 2.4.0-r1: A geoinformation D-Bus service
+app-misc/geoclue 0.12.99 2.2.0 2.4.0-r1 2.4.1: A geoinformation D-Bus service
 app-misc/getopt 1.1.6: getopt(1) replacement supporting GNU-style long options
 app-misc/glastree 1.04: glastree is a poor mans snapshot utility using hardlinks written in perl
 app-misc/glcdprocdriver 0.0.6: Glue library for the glcdlib LCDproc driver based on GraphLCD
 app-misc/glimpse 4.18.5 4.18.6: A index/query system to search a large set of files quickly
 app-misc/gnomecatalog 0.3.4.2-r1: Cataloging software for CDs and DVDs
-app-misc/gnote 3.16.2 3.18.0 3.18.0-r1: Desktop note-taking application
+app-misc/gnote 3.16.2 3.18.0-r1 3.18.1: Desktop note-taking application
 app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency of most daily tasks
 app-misc/gnutu 2.5: GNU Student's Timetable for polish users
 app-misc/golly 2.4 2.4-r1 2.5 2.6 2.7 2.7-r1: simulator for Conway's Game of Life and other cellular automata
@@ -1902,7 +1902,7 @@ app-misc/towitoko 2.0.7-r2: This library provides a driver for using Towitoko sm
 app-misc/tpconfig 3.1.3: Touchpad config for ALPS and Synaptics TPs. Controls tap/click behaviour
 app-misc/tpipe 1.6: Command to duplicate standard input to more than one program
 app-misc/tprint 1.1.0-r1: Transparent Print Utility for terminals
-app-misc/tracker 1.4.1 1.6.0: A tagging metadata database, search tool and indexer
+app-misc/tracker 1.4.1 1.6.0 1.6.1: A tagging metadata database, search tool and indexer
 app-misc/trash-cli 0.12.9.14-r2: Python scripts to manipulate trash cans via the command line
 app-misc/ttyrec 1.0.8-r1: tty recorder
 app-misc/ttysnoop 0.12d: Tool to snoop on login tty's through another tty-device or pseudo-tty
@@ -2788,7 +2788,7 @@ dev-ada/xmlada 1.0-r4 2.2.0 2.2.0-r1: XML library for Ada
 dev-cpp/ETL 0.04.15: ETL is a multi-platform class and template library
 dev-cpp/antlr-cpp 2.7.7: The ANTLR 2 C++ Runtime
 dev-cpp/asio 1.4.5 1.4.8-r1: Asynchronous Network Library
-dev-cpp/atkmm 2.22.7-r1 2.24.1: C++ interface for the ATK library
+dev-cpp/atkmm 2.22.7-r1 2.24.1 2.24.2: C++ interface for the ATK library
 dev-cpp/cairomm 1.10.0-r1 1.12.0 1.12.0-r1: C++ bindings for the Cairo vector graphics library
 dev-cpp/clucene 2.3.3.4-r5: High-performance, full-featured text search engine based off of lucene in C++
 dev-cpp/commoncpp2 1.8.1-r1: C++ framework offering portable support for threading, sockets, file access, daemons, persistence, serial I/O, XML parsing, and system services
@@ -2797,7 +2797,7 @@ dev-cpp/eigen 2.0.17 3.1.3 3.2.5 3.2.6: C++ template library for linear algebra:
 dev-cpp/gccxml 0.9.0_pre20120309 0.9.0_pre20131217: XML output extension to GCC
 dev-cpp/gconfmm 2.28.3: C++ bindings for GConf
 dev-cpp/gflags 2.1.1-r1 2.1.2 9999: Google's C++ argument parsing library
-dev-cpp/glibmm 2.44.0 2.46.1: C++ interface for glib2
+dev-cpp/glibmm 2.44.0 2.46.1 2.46.2: C++ interface for glib2
 dev-cpp/glog 0.3.1 0.3.2 0.3.3 0.3.3-r1: Google's C++ logging library
 dev-cpp/gmock 1.4.0 1.5.0 1.6.0 1.7.0 1.7.0-r1: Google's C++ mocking framework
 dev-cpp/gnome-vfsmm 2.26.0: C++ bindings for gnome-vfs
@@ -2825,7 +2825,7 @@ dev-cpp/libxsd-frontend 1.18.0-r3: A compiler frontend for the W3C XML Schema de
 dev-cpp/luabind 0.9.1: Creates bindings for lua on c++
 dev-cpp/lucene++ 3.0.7: C++ port of Java Lucene library, a high-performance, full-featured text search engine
 dev-cpp/metslib 0.5.3: Metaheuristic modeling framework and optimization toolkit
-dev-cpp/mm-common 0.9.7 0.9.8: Build infrastructure and utilities for GNOME C++ bindings
+dev-cpp/mm-common 0.9.8 0.9.9: Build infrastructure and utilities for GNOME C++ bindings
 dev-cpp/muParser 2.2.2 2.2.3: Library for parsing mathematical expressions
 dev-cpp/pangomm 2.36.0 2.38.1: C++ interface for pango
 dev-cpp/pficommon 1.3.1.0: General purpose C++ library for PFI
@@ -4520,7 +4520,7 @@ dev-libs/fcgi 2.4.1_pre0910052249-r2: FastCGI Developer's Kit
 dev-libs/fddl 20111124: Free Decision Diagram Library
 dev-libs/ferrisloki 3.0.13: Loki C++ library from Modern C++ Design
 dev-libs/ffcall 1.10 1.10-r2 1.10-r5: foreign function call libraries
-dev-libs/folks 0.10.1-r1 0.11.1: Library for aggregating people from multiple sources
+dev-libs/folks 0.11.1 0.11.2: Library for aggregating people from multiple sources
 dev-libs/freexl 1.0.0e: Simple XLS data extraction library
 dev-libs/fribidi 0.19.5-r1 0.19.6 0.19.7: A free implementation of the unicode bidirectional algorithm
 dev-libs/fstrm 0.2.0-r1: Frame Streams implementation in C
@@ -4642,7 +4642,7 @@ dev-libs/libgcrypt 1.5.4-r1 1.5.4-r100 1.6.3-r4 1.6.3-r5 1.6.4: General purpose 
 dev-libs/libgdata 0.16.1 0.17.2 0.17.3: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.7 0.6.8 0.14.0 0.16.1 0.18.0: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.20.0-r1 0.21.5 0.22.3 0.23.2-r1 0.23.3 0.23.4 9999: A linkable library for Git
-dev-libs/libgit2-glib 0.22.8 0.23.6: Git library for GLib
+dev-libs/libgit2-glib 0.22.8 0.23.6 0.23.8: Git library for GLib
 dev-libs/libgpg-error 1.13 1.18 1.19 1.20: Contains error handling functions used by GnuPG software
 dev-libs/libgringotts 1.2.1: Needed by Gringotts
 dev-libs/libgudev 230: GObject bindings for libudev
@@ -9414,10 +9414,10 @@ dev-util/gource 0.39 0.40 0.43: A software version control visualization tool
 dev-util/gperf 3.0.4: A perfect hash function generator
 dev-util/gprof2dot 0_p20130517: Converts profiling output to dot graphs
 dev-util/gquilt 0.25-r1: A Python/GTK wrapper for quilt
-dev-util/gtk-builder-convert 2.24.25 2.24.27 2.24.28: Converts Glade files to GtkBuilder XML format
+dev-util/gtk-builder-convert 2.24.28 2.24.29: Converts Glade files to GtkBuilder XML format
 dev-util/gtk-doc 1.21 1.24: GTK+ Documentation Generator
 dev-util/gtk-doc-am 1.21 1.24: Automake files from gtk-doc
-dev-util/gtk-update-icon-cache 3.14.13 3.16.5 3.16.7: GTK update icon cache
+dev-util/gtk-update-icon-cache 3.16.7 3.18.4: GTK update icon cache
 dev-util/heaptrack 9999: A fast heap memory profiler
 dev-util/howdoi 1.1.7: A code search tool
 dev-util/httpup 0.4.0k: synchronisation tool for http file repositories
@@ -9471,7 +9471,7 @@ dev-util/lttng-ust 2.5.0 2.5.1 2.6.0_rc2: Linux Trace Toolkit - UST library
 dev-util/makeheaders 0_p4: simple utility that will automatically generate header files
 dev-util/makepp 1.18 1.40.1a 1.50_pre110621 2.0-r1 2.0.98.4 2.0.98.5: GNU make replacement
 dev-util/mdds 0.10.3 0.11.2-r1 0.12.0 0.12.1 9999: A collection of multi-dimensional data structure and indexing algorithm
-dev-util/meld 3.14.0 3.14.1: A graphical diff and merge tool
+dev-util/meld 3.14.1 3.14.2: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
 dev-util/metro 1.5.1: release metatool used for creating Gentoo and Funtoo releases
 dev-util/min-cscope 16.1.0: Interactively examine a C program
@@ -10687,7 +10687,7 @@ gnome-base/libgnomeprint 2.18.8-r1: Printer handling for Gnome
 gnome-base/libgnomeprintui 2.18.6-r1: User interface libraries for gnome print
 gnome-base/libgnomeui 2.24.5-r1: User Interface routines for Gnome
 gnome-base/libgtop 2.30.0 2.32.0: A library that provides top functionality to applications
-gnome-base/librsvg 2.40.9 2.40.10 2.40.11: Scalable Vector Graphics (SVG) rendering library
+gnome-base/librsvg 2.40.11 2.40.12: Scalable Vector Graphics (SVG) rendering library
 gnome-base/nautilus 3.16.2 3.18.2 3.18.2-r1: A file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r4: ORBit2 is a high-performance CORBA ORB
 gnome-extra/activity-log-manager 0.9.7 0.9.7-r1: GUI which lets you easily control what gets logged by Zeitgeist
@@ -10754,9 +10754,9 @@ gnome-extra/nautilus-actions 3.2.3 3.2.4: Configures programs to be launched whe
 gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.1 3.8.2: A nautilus extension for sending files to locations
 gnome-extra/nautilus-share 0.7.3-r1: A nautilus plugin to easily share folders over the SMB protocol
-gnome-extra/nautilus-tracker-tags 1.4.1 1.6.0: Nautilus extension to tag files for Tracker
+gnome-extra/nautilus-tracker-tags 1.4.1 1.6.0 1.6.1: Nautilus extension to tag files for Tracker
 gnome-extra/nemo 2.6.7 2.8.4: A file manager for Cinnamon, forked from Nautilus
-gnome-extra/nm-applet 0.9.8.10-r1 1.0.2 1.0.4 1.0.6: GNOME applet for NetworkManager
+gnome-extra/nm-applet 1.0.6 1.0.8: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/polkit-gnome 0.105-r1: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.10.1 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
@@ -12157,7 +12157,7 @@ media-libs/libcanberra 0.30-r4 0.30-r5: Portable sound event library
 media-libs/libcdaudio 0.99.12-r1: Library of cd audio related routines
 media-libs/libcddb 1.3.2 1.3.2-r1: A library for accessing a CDDB server
 media-libs/libcdr 0.0.14 0.0.16 0.1.0 0.1.1 9999: Library parsing the Corel cdr documents
-media-libs/libchamplain 0.12.9 0.12.10 0.12.10-r1 0.12.11: Clutter based world map renderer
+media-libs/libchamplain 0.12.11 0.12.12: Clutter based world map renderer
 media-libs/libclalsadrv 1.2.2 2.0.0: ALSA driver C++ access library
 media-libs/libclastfm 0.5: C API library to the last.fm web service (unofficial)
 media-libs/libclthreads 1.0.2 2.2.1 2.4.0 2.4.0-r1: An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
@@ -13276,7 +13276,7 @@ media-video/parole 0.5.4 0.6.1 0.7.0 0.8.0-r1 0.8.1: a simple media player based
 media-video/pgcedit 0.8.6: DVD IFO and Menu editor
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
 media-video/photofilmstrip 1.9.91-r1: Movie slideshow creator using Ken Burns effect
-media-video/pitivi 0.94: A non-linear video editor using the GStreamer multimedia framework
+media-video/pitivi 0.94 0.95: A non-linear video editor using the GStreamer multimedia framework
 media-video/plasma-mediacenter 1.3.0: Unified media experience for any device capable of running KDE
 media-video/projectx 0.91.0.10: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/pymp 1.1: a lean, flexible frontend to mplayer written in python
@@ -13978,7 +13978,7 @@ net-libs/gnome-online-accounts 3.16.4.1 3.18.2.1: GNOME framework for accessing 
 net-libs/gnutls 3.3.17.1 3.3.18 3.3.19 3.4.5 3.4.6 3.4.7: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.7.17 2.8.12 2.8.23 2.8.26 2.8.27: A cross-platform open source C and C++ SDK for SOAP/XML Web services
-net-libs/gssdp 0.14.10 0.14.11: A GObject-based API for handling resource discovery and announcement over SSDP
+net-libs/gssdp 0.14.11 0.14.12.1: A GObject-based API for handling resource discovery and announcement over SSDP
 net-libs/gtk-vnc 0.5.3 0.5.4: VNC viewer widget for GTK
 net-libs/gupnp 0.20.13 0.20.14: An object-oriented framework for creating UPnP devs and control points
 net-libs/gupnp-av 0.12.6 0.12.7: Utility library aiming to ease the handling UPnP A/V profiles
@@ -14371,7 +14371,7 @@ net-misc/gsasl 1.8.0-r1: The GNU SASL client, server, and library
 net-misc/gsutil 3.42 4.13 4.14 4.15: command line tool for interacting with cloud storage services
 net-misc/gtkvncviewer 0.4: A small GTK tool to connect to VNC servers
 net-misc/guacamole-server 0.8.3 0.9.0 0.9.2 0.9.3 0.9.7 0.9.8: This is the proxy-daemon used by www-apps/guacamole
-net-misc/gupnp-tools 0.8.9 0.8.10: Free replacements of Intel UPnP tools that use GUPnP
+net-misc/gupnp-tools 0.8.10 0.8.11: Free replacements of Intel UPnP tools that use GUPnP
 net-misc/gvrpcd 1.3: A program for announcing VLANs using GVRP
 net-misc/gwget 1.0.4: GTK2 WGet Frontend
 net-misc/gwhois 20120626: generic whois
@@ -14484,13 +14484,13 @@ net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netprofiles-ims 0.1.0134: The Netprofiles Interface Management System (IMS) is an easy way to manage multiple network configurations for your wired or wireless network cards
 net-misc/netsed 0.01b: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
-net-misc/networkmanager 1.0.2-r1 1.0.6 1.0.6-r1: Universal network configuration daemon for laptops, desktops, servers and virtualization hosts
-net-misc/networkmanager-openconnect 0.9.10.0 0.9.10.0-r1 1.0.0 1.0.2: NetworkManager OpenConnect plugin
-net-misc/networkmanager-openswan 1.0.2 1.0.6: NetworkManager Openswan plugin
-net-misc/networkmanager-openvpn 1.0.2 1.0.6-r1: NetworkManager OpenVPN plugin
-net-misc/networkmanager-pptp 1.0.2 1.0.6: NetworkManager PPTP plugin
+net-misc/networkmanager 1.0.6-r1 1.0.8: A set of co-operative tools that make networking simple and straightforward
+net-misc/networkmanager-openconnect 1.0.2 1.0.8: NetworkManager OpenConnect plugin
+net-misc/networkmanager-openswan 1.0.6 1.0.8: NetworkManager Openswan plugin
+net-misc/networkmanager-openvpn 1.0.6-r1 1.0.8: NetworkManager OpenVPN plugin
+net-misc/networkmanager-pptp 1.0.6 1.0.8: NetworkManager PPTP plugin
 net-misc/networkmanager-sstp 0.9.8: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
-net-misc/networkmanager-vpnc 1.0.2 1.0.6: NetworkManager VPNC plugin
+net-misc/networkmanager-vpnc 1.0.6 1.0.8: NetworkManager VPNC plugin
 net-misc/ng-utils 0.6: A collection of small tools for accessing netgroup contents
 net-misc/npapi-sdk 0.27 0.27.2 9999: NPAPI headers bundle
 net-misc/nstx 1.1_beta6-r3: IP over DNS tunnel
@@ -14694,7 +14694,7 @@ net-news/amphetadesk 0.93.1: AmphetaDesk is a free syndicated news aggregator
 net-news/blam 1.8.9 1.8.12: A RSS aggregator written in C#
 net-news/canto-curses 0.9.3: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.1: Daemon part of Canto-NG RSS reader
-net-news/liferea 1.8.8 1.8.11 1.10.8 1.10.9 1.10.12: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
+net-news/liferea 1.8.8 1.8.11 1.10.8 1.10.9 1.10.12 1.10.17: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsbeuter 2.9: A RSS/Atom feed reader for the text console
 net-news/quiterss 0.16.2 0.17.6 0.17.7 0.18.2 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.19 2.20: Rawdog - RSS Aggregator Without Delusions Of Grandeur
@@ -17485,7 +17485,7 @@ www-client/dillo 3.0.4 3.0.4.1 3.0.5 3.0.5-r1: Lean FLTK based web browser
 www-client/dooble 1.55: A Secure and Open Source Web Browser
 www-client/dwb 2013.03.30 2014.03.07 2014.03.07-r1 9999: Dynamic web browser based on WebKit and GTK+
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 9999: Advanced and well-established text-mode web browser
-www-client/epiphany 3.16.3 3.18.0: GNOME webbrowser based on Webkit
+www-client/epiphany 3.16.3 3.18.0 3.18.2: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1: Fetch is a simple, fast, and flexible HTTP download tool built on the HTTP Fetcher library
 www-client/firefox 38.2.0 38.3.0 38.4.0 42.0-r2: Firefox Web Browser
 www-client/firefox-bin 38.3.0 38.4.0 42.0: Firefox Web Browser
@@ -17780,7 +17780,7 @@ x11-libs/glamor 0.6.0 0.6.0-r1: OpenGL based 2D rendering acceleration library
 x11-libs/gnome-pty-helper 0.36.3 0.38.3 0.40.2: GNOME Setuid helper for opening ptys
 x11-libs/goffice 0.8.17-r1 0.8.17-r2 0.10.23 0.10.24: A library of document-centric objects and utilities
 x11-libs/goocanvas 1.0.0 2.0.2: Canvas widget for GTK+ using the cairo 2D library for drawing
-x11-libs/gtk+ 1.2.10-r13 2.24.28-r1 3.14.13 3.16.6 3.16.7 3.18.5: Gimp ToolKit +
+x11-libs/gtk+ 1.2.10-r13 2.24.28-r1 2.24.29 3.16.7 3.18.5 3.18.6: Gimp ToolKit +
 x11-libs/gtk+extra 3.0.5 3.2.0: Useful Additional GTK+ widgets
 x11-libs/gtk-mac-integration 2.0.5: Menubar, doc and app bundle integration for GTK+
 x11-libs/gtkdatabox 0.9.2.0: Gtk+ Widgets for live display of large amounts of fluctuating numerical data
