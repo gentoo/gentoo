@@ -1325,7 +1325,7 @@ app-emulation/vagrant 1.4.3-r2: A tool for building and distributing virtual mac
 app-emulation/vboxgtk 0.8.2-r1: GTK frontend for VirtualBox
 app-emulation/vice 2.4 2.4.20 2.4.22: The Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 1.1.0-r2 1.2.1 1.3.0-r1 9999: A graphical tool for administering virtual machines
-app-emulation/virt-viewer 0.5.6 2.0: Graphical console client for connecting to virtual machines
+app-emulation/virt-viewer 2.0 3.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.12: Detects if the current machine is running in a virtual machine
 app-emulation/virtualbox 4.3.28 4.3.32 4.3.34 5.0.8 5.0.10: Family of powerful x86 virtualization products for enterprise as well as home use
 app-emulation/virtualbox-additions 4.3.28 4.3.32 4.3.34 5.0.8 5.0.10: CD image containing guest additions for VirtualBox
@@ -8519,7 +8519,7 @@ dev-ruby/cocaine 0.5.5 0.5.7 0.5.8: A small library for doing command lines
 dev-ruby/coderay 1.1.0-r1 1.1.0-r2: A Ruby library for syntax highlighting
 dev-ruby/coffee-rails 3.2.2 4.0.1 4.1.0: Coffee Script adapter for the Rails asset pipeline
 dev-ruby/coffee-script 2.2.0-r1 2.4.1: Ruby CoffeeScript is a bridge to the official CoffeeScript compiler
-dev-ruby/coffee-script-source 1.7.1 1.9.1.1 1.9.3: Ruby CoffeeScript is a bridge to the official CoffeeScript compiler
+dev-ruby/coffee-script-source 1.7.1 1.9.1.1 1.9.3 1.10.0: Ruby CoffeeScript is a bridge to the official CoffeeScript compiler
 dev-ruby/color 1.7.1 1.7.1-r1 1.8: Colour management with Ruby
 dev-ruby/colorator 0.1-r1: Colorize your text in the terminal
 dev-ruby/colored 1.2: Console coloring
