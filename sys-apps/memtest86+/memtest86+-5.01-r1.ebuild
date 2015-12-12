@@ -27,6 +27,8 @@ src_prepare() {
 	sed -e "s/scp memtest.bin root@192.168.0.12:\/srv\/tftp\/mt86plus//g" -i Makefile
 	epatch "${FILESDIR}/${P}-gcc-473.patch" \
 		   "${FILESDIR}/${P}-hardcoded_cc.patch"
+	epatch "${FILESDIR}"/${P}-io-extern-inline.patch #548312
+	epatch "${FILESDIR}"/${P}-reboot-def.patch #548312
 
 	if use serial ; then
 		sed -i \
