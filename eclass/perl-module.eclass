@@ -18,7 +18,7 @@
 # ExtUtils::MakeMaker or Module::Build), we recommend to use perl-functions.eclass
 # instead.
 
-case "${EAPI:-0}" in
+case ${EAPI:-0} in
 	5)
 		inherit eutils multiprocessing unpacker perl-functions
 		PERL_EXPF="src_unpack src_prepare src_configure src_compile src_test src_install"
@@ -40,9 +40,9 @@ esac
 # slot operator (EAPI=6). All packages installing into the vendor_perl
 # path must use yes here.
 
-case "${EAPI:-0}" in
+case ${EAPI:-0} in
 	5)
-		[[ ${CATEGORY} == "perl-core" ]] && \
+		[[ ${CATEGORY} == perl-core ]] && \
 			PERL_EXPF+=" pkg_postinst pkg_postrm"
 
 		case "${GENTOO_DEPEND_ON_PERL:-yes}" in
@@ -72,7 +72,7 @@ case "${EAPI:-0}" in
 		esac
 		;;
 	6)
-		[[ ${CATEGORY} == "perl-core" ]] && \
+		[[ ${CATEGORY} == perl-core ]] && \
 			PERL_EXPF+=" pkg_postinst pkg_postrm"
 
 		case "${GENTOO_DEPEND_ON_PERL:-yes}" in
@@ -99,7 +99,7 @@ case "${EAPI:-0}" in
 		EXPORT_FUNCTIONS ${PERL_EXPF}
 		;;
 	*)
-		die "EAPI=${EAPI} is not supported by perl-module.eclass"
+		die "EAPI=${EAPI:-0} is not supported by perl-module.eclass"
 		;;
 esac
 
@@ -131,7 +131,7 @@ LICENSE="${LICENSE:-|| ( Artistic GPL-1+ )}"
 # (EAPI=6) This variable sets the module author name for the calculation of
 # SRC_URI. Named MODULE_AUTHOR in EAPI=5.
 
-if [[ ${EAPI:-0} = 5 ]] ; then
+if [[ ${EAPI:-0} == 5 ]]; then
 	if [[ -n ${MY_PN} || -n ${MY_PV} || -n ${MODULE_VERSION} ]] ; then
 		: ${MY_P:=${MY_PN:-${PN}}-${MY_PV:-${MODULE_VERSION:-${PV}}}}
 		S=${MY_S:-${WORKDIR}/${MY_P}}
@@ -327,7 +327,7 @@ perl-module_src_test() {
 	local my_test_control
 	local my_test_verbose
 
-	if [[ ${EAPI:-0} = 5 ]] ; then
+	if [[ ${EAPI:-0} == 5 ]] ; then
 		my_test_control=${SRC_TEST}
 		my_test_verbose=${TEST_VERBOSE:-0}
 		if has 'do' ${my_test_control} || has 'parallel' ${my_test_control} ; then
