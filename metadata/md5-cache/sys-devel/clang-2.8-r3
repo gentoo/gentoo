@@ -10,5 +10,5 @@ RDEPEND=~sys-devel/llvm-2.8[debug=,multitarget=]
 SLOT=0
 SRC_URI=http://llvm.org/releases/2.8/llvm-2.8.tgz -> llvm-2.8-r1.tgz http://llvm.org/releases/2.8/clang-2.8.tgz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
-_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	python	6db27cc2b9cbfa3f47e984065ead123f	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=ef0370574fe6f937622426e67c86bead

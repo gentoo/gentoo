@@ -10,5 +10,5 @@ RDEPEND=dev-lang/perl libffi? ( virtual/libffi ) vim-syntax? ( || ( app-editors/
 SLOT=0
 SRC_URI=http://llvm.org/releases/3.0/llvm-3.0.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	pax-utils	9dd3f9de6dccb2463faf55e568439d1c	python	0c2c16ea4f9074d3248bd4365d03890c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	pax-utils	9dd3f9de6dccb2463faf55e568439d1c	python	6db27cc2b9cbfa3f47e984065ead123f	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=c22571bbb56421cfeaf06be665961d0d
