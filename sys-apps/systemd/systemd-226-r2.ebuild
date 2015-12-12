@@ -147,6 +147,7 @@ src_prepare() {
 	epatch "${FILESDIR}/218-Dont-enable-audit-by-default.patch"
 	epatch "${FILESDIR}/226-noclean-tmp.patch"
 	epatch "${FILESDIR}/CVE-2015-7510.patch"
+	epatch "${FILESDIR}/226-kcmp.patch"
 	epatch_user
 	eautoreconf
 }
