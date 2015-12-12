@@ -9,7 +9,7 @@ inherit toolchain-funcs readme.gentoo
 DESCRIPTION="Linux Port of OpenBSD Single-key Password System"
 HOMEPAGE="http://www.openbsd.org/faq/faq8.html#SKey"
 SRC_URI="mirror://gentoo/${P}.tar.bz2
-	https://dev.gentoo.org/~ulm/distfiles/${P}-patches-4.tar.xz"
+	https://dev.gentoo.org/~ulm/distfiles/${P}-patches-5.tar.xz"
 
 LICENSE="BSD MIT RSA BEER-WARE"
 SLOT="0"
@@ -22,7 +22,7 @@ RDEPEND="dev-lang/perl
 	virtual/perl-Time-Local
 	sys-libs/cracklib"
 
-PATCHES="patch"
+PATCHES="../patch"
 
 src_configure() {
 	tc-export CC
