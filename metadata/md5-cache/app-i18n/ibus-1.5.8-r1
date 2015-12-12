@@ -12,5 +12,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/ibus/ibus/releases/download/1.5.8/ibus-1.5.8.tar.gz
 _eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_test:- src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	d9bd2ddd85a58e470b49ca997e255a4c	gnome2-utils	968e31c6fcd13eb2eaf6852e88dfdd36	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	caecf590709cc0fcf0b6582bdc49150f	python-utils-r1	832cb17726d498a182de6b9ee2adc0dc	readme.gentoo	e37aea783a61ae55fab947df247eebea	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vala	15f7a43101d2ff0c6dcdab272c02f469	virtualx	e0b4d88543a7001a6b55bc2c81dcfd48	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	d9bd2ddd85a58e470b49ca997e255a4c	gnome2-utils	968e31c6fcd13eb2eaf6852e88dfdd36	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	caecf590709cc0fcf0b6582bdc49150f	python-utils-r1	832cb17726d498a182de6b9ee2adc0dc	readme.gentoo	e5d2a927438e9fb4a284c50646d1ba85	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vala	15f7a43101d2ff0c6dcdab272c02f469	virtualx	e0b4d88543a7001a6b55bc2c81dcfd48	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
 _md5_=7ce89ee987d4237cd90a8fba534b19a8
