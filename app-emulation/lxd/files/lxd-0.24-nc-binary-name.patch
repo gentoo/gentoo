@@ -1,0 +1,11 @@
+--- lxd/rsync.go.orig	2015-11-11 20:54:37.402700202 -0600
++++ lxd/rsync.go	2015-11-11 20:55:06.704698199 -0600
+@@ -91,7 +91,7 @@
+ 	 * command (i.e. the command to run on --server). However, we're
+ 	 * hardcoding that at the other end, so we can just ignore it.
+ 	 */
+-	rsyncCmd := fmt.Sprintf("sh -c \"nc -U %s\"", f.Name())
++	rsyncCmd := fmt.Sprintf("sh -c \"nc.openbsd -U %s\"", f.Name())
+ 	cmd := exec.Command(
+ 		"rsync",
+ 		"-arvP",
