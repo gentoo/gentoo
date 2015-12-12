@@ -313,13 +313,9 @@ python_setup() {
 	done
 
 	# fallback to best installed impl.
-	local rev_impls=()
-	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		rev_impls=( "${i}" "${rev_impls[@]}" )
-	done
-
-	for i in "${rev_impls[@]}"; do
-		python_export "${i}" EPYTHON PYTHON
+	# (reverse iteration over _PYTHON_SUPPORTED_IMPLS)
+	for (( i = ${#_PYTHON_SUPPORTED_IMPLS[@]} - 1; i >= 0; i-- )); do
+		python_export "${_PYTHON_SUPPORTED_IMPLS[i]}" EPYTHON PYTHON
 		if _python_EPYTHON_supported "${EPYTHON}"; then
 			python_wrapper_setup
 			return
