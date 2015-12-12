@@ -25,7 +25,7 @@ RDEPEND="media-libs/libpng:0
 	net-misc/curl
 	sys-libs/zlib
 	virtual/glu
-	virtual/jpeg:62
+	virtual/jpeg:0
 	virtual/libintl
 	virtual/opengl
 	x11-libs/libX11
@@ -62,9 +62,9 @@ src_compile() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	DOCS="AUTHORS CHANGELOG.md README.md TODO.md" \
+		cmake-utils_src_install
 	doicon -s 64 "${DISTDIR}"/${PN}.png
-	dodoc AUTHORS CHANGELOG.md README.md TODO.md
 	prepgamesdirs
 }
 
