@@ -96,6 +96,25 @@ if [[ ! ${_PYTHON_SINGLE_R1} ]]; then
 # PYTHON_COMPAT=( python2_7 python3_{3,4} )
 # @CODE
 
+# @ECLASS-VARIABLE: PYTHON_COMPAT_OVERRIDE
+# @INTERNAL
+# @DESCRIPTION:
+# This variable can be used when working with ebuilds to override
+# the in-ebuild PYTHON_COMPAT. It is a string naming the implementation
+# which package will be built for. It needs to be specified
+# in the calling environment, and not in ebuilds.
+#
+# It should be noted that in order to preserve metadata immutability,
+# PYTHON_COMPAT_OVERRIDE does not affect IUSE nor dependencies.
+# The state of PYTHON_TARGETS and PYTHON_SINGLE_TARGET is ignored,
+# and the implementation in PYTHON_COMPAT_OVERRIDE is built instead.
+# Dependencies need to be satisfied manually.
+#
+# Example:
+# @CODE
+# PYTHON_COMPAT_OVERRIDE='pypy' emerge -1v dev-python/bar
+# @CODE
+
 # @ECLASS-VARIABLE: PYTHON_REQ_USE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -400,6 +419,23 @@ python_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	unset EPYTHON
+
+	# support developer override
+	if [[ ${PYTHON_COMPAT_OVERRIDE} ]]; then
+		local impls=( ${PYTHON_COMPAT_OVERRIDE} )
+		[[ ${#impls[@]} -eq 1 ]] || die "PYTHON_COMPAT_OVERRIDE must name exactly one implementation for python-single-r1"
+
+		ewarn "WARNING: PYTHON_COMPAT_OVERRIDE in effect. The following Python"
+		ewarn "implementation will be used:"
+		ewarn
+		ewarn "	${PYTHON_COMPAT_OVERRIDE}"
+		ewarn
+		ewarn "Dependencies won't be satisfied, and PYTHON_SINGLE_TARGET flags will be ignored."
+
+		python_export "${impls[0]}" EPYTHON PYTHON
+		python_wrapper_setup
+		return
+	fi
 
 	if [[ ${#_PYTHON_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
 		if use "python_targets_${_PYTHON_SUPPORTED_IMPLS[0]}"; then
