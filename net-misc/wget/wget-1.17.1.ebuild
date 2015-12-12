@@ -9,8 +9,7 @@ inherit flag-o-matic python-any-r1 toolchain-funcs
 
 DESCRIPTION="Network utility to retrieve files from the WWW"
 HOMEPAGE="https://www.gnu.org/software/wget/"
-SRC_URI="mirror://gnu/wget/${P}.tar.xz
-	http://git.savannah.gnu.org/cgit/wget.git/patch/?id=2cfcadf5e6d5c444765aa460915ae27109a8dbce -> ${PN}-1.17-fix_disabled_ipv6.patch"
+SRC_URI="mirror://gnu/wget/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -47,10 +46,6 @@ DOCS=( AUTHORS MAILING-LIST NEWS README doc/sample.wgetrc )
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
-}
-
-src_prepare() {
-	epatch "${DISTDIR}"/${P}-fix_disabled_ipv6.patch
 }
 
 src_configure() {

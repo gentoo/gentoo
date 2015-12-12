@@ -14,7 +14,7 @@ then
 	inherit git-r3
 	KEYWORDS=""
 else
-	SRC_URI="https://${PN}-emu.googlecode.com/files/${P}-src.zip"
+	SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${PV}.zip -> ${P}.zip"
 	KEYWORDS="~amd64"
 fi
 
@@ -23,35 +23,61 @@ HOMEPAGE="https://www.dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa ao bluetooth doc ffmpeg lto +lzo openal opengl openmp portaudio pulseaudio"
+IUSE="alsa ao bluetooth doc egl +evdev ffmpeg llvm log lto openal pch portaudio profile pulseaudio qt5 sdl upnp +wxwidgets"
 
 RDEPEND=">=media-libs/glew-1.10
 	>=media-libs/libsfml-2.1
-	>=net-libs/miniupnpc-1.8
+	>net-libs/enet-1.3.7
+	>=net-libs/mbedtls-2.1.1
+	sys-libs/glibc
 	sys-libs/readline:=
+	sys-libs/zlib
 	x11-libs/libXext
+	x11-libs/libXi
 	x11-libs/libXrandr
-	media-libs/libsdl2[haptic,joystick]
-	net-libs/polarssl[havege]
+	virtual/libusb:1
+	virtual/opengl
 	alsa? ( media-libs/alsa-lib )
 	ao? ( media-libs/libao )
 	bluetooth? ( net-wireless/bluez )
-	ffmpeg? ( virtual/ffmpeg
-			!!>=media-video/libav-10 )
-	lzo? ( dev-libs/lzo )
-	openal? ( media-libs/openal )
-	opengl? ( virtual/opengl )
+	egl? ( media-libs/mesa[egl] )
+	evdev? (
+			dev-libs/libevdev
+			virtual/udev
+	)
+	ffmpeg? (
+			virtual/ffmpeg
+			!!>=media-video/libav-10
+	)
+	llvm? ( sys-devel/llvm )
+	openal? (
+			media-libs/openal
+			media-libs/libsoundtouch
+	)
 	portaudio? ( media-libs/portaudio )
+	profile? ( dev-util/oprofile )
 	pulseaudio? ( media-sound/pulseaudio )
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+	)
+	sdl? ( media-libs/libsdl2[haptic,joystick] )
+	upnp? ( >=net-libs/miniupnpc-1.7 )
+	wxwidgets? (
+				dev-libs/glib:2
+				x11-libs/gtk+:2
+				x11-libs/wxGTK:${WX_GTK_VER}[opengl,X]
+	)
 	"
 DEPEND="${RDEPEND}
+	>=dev-util/cmake-2.8.8
+	>=sys-devel/gcc-4.9.0
 	app-arch/zip
 	media-gfx/nvidia-cg-toolkit
 	media-libs/freetype
-	media-libs/libsoundtouch
-	>net-libs/enet-1.3.7
-	>=sys-devel/gcc-4.9.0
-	x11-libs/wxGTK:${WX_GTK_VER}
+	sys-devel/gettext
+	virtual/pkgconfig
 	"
 
 pkg_pretend() {
@@ -79,6 +105,9 @@ src_prepare() {
 	fi
 	if use !bluetooth; then
 		sed -i -e '/check_lib(BLUEZ/d' CMakeLists.txt || die
+	fi
+	if use !llvm; then
+		sed -i -e '/include(FindLLVM/d' CMakeLists.txt || die
 	fi
 	if use !openal; then
 		sed -i -e '/include(FindOpenAL/d' CMakeLists.txt || die
@@ -111,6 +140,10 @@ src_prepare() {
 
 src_configure() {
 
+	if use wxwidgets; then
+		need-wxwidgets unicode
+	fi
+
 	local mycmakeargs=(
 		"-DDOLPHIN_WC_REVISION=${PV}"
 		"-DCMAKE_INSTALL_PREFIX=${GAMES_PREFIX}"
@@ -119,8 +152,16 @@ src_configure() {
 		"-Dplugindir=$(games_get_libdir)/${PN}"
 		"-DUSE_SHARED_ENET=ON"
 		$( cmake-utils_use ffmpeg ENCODE_FRAMEDUMPS )
+		$( cmake-utils_use log FASTLOG )
+		$( cmake-utils_use profile OPROFILING )
+		$( cmake-utils_use_disable wxwidgets WX )
+		$( cmake-utils_use_enable evdev EVDEV )
 		$( cmake-utils_use_enable lto LTO )
-		$( cmake-utils_use openmp OPENMP )
+		$( cmake-utils_use_enable pch PCH )
+		$( cmake-utils_use_enable qt5 QT )
+		$( cmake-utils_use_enable sdl SDL )
+		$( cmake-utils_use_use egl EGL )
+		$( cmake-utils_use_use upnp UPNP )
 	)
 
 	cmake-utils_src_configure
