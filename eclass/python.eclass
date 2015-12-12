@@ -345,19 +345,7 @@ _python_initialize_prefix_variables() {
 unset PYTHON_SANITY_CHECKS_EXECUTED PYTHON_SKIP_SANITY_CHECKS
 
 _python_initial_sanity_checks() {
-	if [[ "$(declare -p PYTHON_SANITY_CHECKS_EXECUTED 2> /dev/null)" != "declare -- PYTHON_SANITY_CHECKS_EXECUTED="* || " ${FUNCNAME[@]:1} " =~ " "(python_set_active_version|python_pkg_setup)" " && -z "${PYTHON_SKIP_SANITY_CHECKS}" ]]; then
-		# Ensure that /usr/bin/python and /usr/bin/python-config are valid.
-		if [[ "$(readlink "${EPREFIX}/usr/bin/python")" != "python-wrapper" ]]; then
-			eerror "'${EPREFIX}/usr/bin/python' is not a valid symlink."
-			eerror "Use \`eselect python set \${python_interpreter}\` to fix this problem."
-			die "'${EPREFIX}/usr/bin/python' is not a valid symlink"
-		fi
-		if [[ "$(<"${EPREFIX}/usr/bin/python-config")" != *"Gentoo python-config wrapper script"* ]]; then
-			eerror "'${EPREFIX}/usr/bin/python-config' is not a valid script"
-			eerror "Use \`eselect python set \${python_interpreter}\` to fix this problem."
-			die "'${EPREFIX}/usr/bin/python-config' is not a valid script"
-		fi
-	fi
+	:
 }
 
 _python_final_sanity_checks() {
