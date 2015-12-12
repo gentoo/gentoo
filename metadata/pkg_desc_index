@@ -16461,7 +16461,7 @@ sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklo
 sys-auth/polkit-qt 0.112.0-r1: PolicyKit Qt4 API wrapper library
 sys-auth/realtime-base 0.1: Sets up realtime scheduling
 sys-auth/rtkit 0.11-r1: Realtime Policy and Watchdog Daemon
-sys-auth/skey 1.1.5-r9: Linux Port of OpenBSD Single-key Password System
+sys-auth/skey 1.1.5-r9 1.1.5-r10: Linux Port of OpenBSD Single-key Password System
 sys-auth/sssd 1.9.6-r3 1.9.7 1.12.1 1.12.4 1.12.5 1.13.0 1.13.1: System Security Services Daemon provides access to identity and authentication
 sys-auth/tfm-fingerprint 1.0: TouchChip TFM/ESS FingerPrint BSP
 sys-auth/thinkfinger 0.3-r3: Support for the UPEK/SGS Thomson Microelectronics fingerprint reader, often seen in Thinkpads
