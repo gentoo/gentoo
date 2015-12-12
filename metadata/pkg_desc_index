@@ -11979,7 +11979,7 @@ media-gfx/scantailor 0.9.10 0.9.11.1: A interactive post-processing tool for sca
 media-gfx/scrot 0.8-r1 0.8_p13: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
 media-gfx/shotwell 0.22.0 0.22.0-r1: Open source photo manager for GNOME
-media-gfx/simple-scan 3.16.2: Simple document scanning utility
+media-gfx/simple-scan 3.16.2 3.18.2: Simple document scanning utility
 media-gfx/skencil 0.6.18_pre20080519 1.0_alpha784: Interactive X11 vector drawing program
 media-gfx/smile 1.0: Slideshow Maker In Linux Environement
 media-gfx/splash-themes-gentoo 20101212-r1 20101212-r2: A collection of Gentoo themes for splashutils
@@ -14147,7 +14147,7 @@ net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.4.0 0.5.0: HTTP web service mocking library
 net-libs/vanessa-mcast 1.0.0: Multicast Helper Library
 net-libs/vanessa-socket 0.0.12 0.0.13: Simplifies TCP/IP socket operations
-net-libs/webkit-gtk 2.4.9 2.4.9-r200 2.8.5 2.10.4 2.10.4-r1: Open source web browser engine
+net-libs/webkit-gtk 2.4.9 2.4.9-r200 2.8.5 2.10.4-r1: Open source web browser engine
 net-libs/wt 3.3.4: C++ library for developing interactive web applications
 net-libs/wvstreams 4.6.1-r2 4.6.1-r3: A network programming library in C++
 net-libs/xrootd 3.3.6 4.1.1: Extended ROOT remote file server
@@ -16461,7 +16461,7 @@ sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklo
 sys-auth/polkit-qt 0.112.0-r1: PolicyKit Qt4 API wrapper library
 sys-auth/realtime-base 0.1: Sets up realtime scheduling
 sys-auth/rtkit 0.11-r1: Realtime Policy and Watchdog Daemon
-sys-auth/skey 1.1.5-r9 1.1.5-r10: Linux Port of OpenBSD Single-key Password System
+sys-auth/skey 1.1.5-r9: Linux Port of OpenBSD Single-key Password System
 sys-auth/sssd 1.9.6-r3 1.9.7 1.12.1 1.12.4 1.12.5 1.13.0 1.13.1: System Security Services Daemon provides access to identity and authentication
 sys-auth/tfm-fingerprint 1.0: TouchChip TFM/ESS FingerPrint BSP
 sys-auth/thinkfinger 0.3-r3: Support for the UPEK/SGS Thomson Microelectronics fingerprint reader, often seen in Thinkpads
