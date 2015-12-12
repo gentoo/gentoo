@@ -485,7 +485,8 @@ sys-block/afacli
 
 # Mikle Kolyada <zlogene@gentoo.org> (27 Jun 2014)
 # Masked for proper testing. (Major updates in the code).
-=dev-perl/PortageXS-0.02.12
+~dev-perl/PortageXS-0.02.12
+~dev-perl/PortageXS-0.2.12
 
 # Robin H. Johnson <robbat2@gentoo.org> (21 Jun 2014)
 # Needs work, but infra needs it for new VM boxes
