@@ -6007,7 +6007,7 @@ dev-perl/Pod-Readme 0.110.0-r1: Convert POD to README file
 dev-perl/Pod-Spell 1.10.0-r1: A formatter for spellchecking Pod
 dev-perl/Pod-Strip 1.20.0: Remove POD from Perl code
 dev-perl/Pod-Tests 1.190.0-r1: Extracts embedded tests and code examples from POD
-dev-perl/PortageXS 0.02.10-r4 0.02.12: Portage abstraction layer for perl
+dev-perl/PortageXS 0.02.10-r4 0.2.10-r5 0.2.12-r1: Portage abstraction layer for perl
 dev-perl/PostScript 0.60.0-r1: An object that may be used to construct a block of text in PostScript
 dev-perl/PostScript-Simple 0.70.0-r1: Allows you to have a simple method of writing PostScript files from Perl
 dev-perl/Probe-Perl 0.10.0-r1: Information about the currently running perl
