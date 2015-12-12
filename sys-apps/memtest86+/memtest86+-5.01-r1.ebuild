@@ -29,6 +29,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-no-scp.patch
 	epatch "${FILESDIR}"/${P}-io-extern-inline.patch #548312
 	epatch "${FILESDIR}"/${P}-reboot-def.patch #548312
+	epatch "${FILESDIR}"/${P}-no-clean.patch #557890
 
 	if use serial ; then
 		sed -i \
