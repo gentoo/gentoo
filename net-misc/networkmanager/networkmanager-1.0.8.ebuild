@@ -12,7 +12,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 inherit autotools bash-completion-r1 eutils gnome2 linux-info multilib python-any-r1 systemd \
 	user readme.gentoo toolchain-funcs vala versionator virtualx udev multilib-minimal
 
-DESCRIPTION="Universal network configuration daemon for laptops, desktops, servers and virtualization hosts"
+DESCRIPTION="A set of co-operative tools that make networking simple and straightforward"
 HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
 
 LICENSE="GPL-2+"
