@@ -201,10 +201,10 @@ src_prepare() {
 			-i tools/lldb/scripts/Python/modules/CMakeLists.txt || die
 	fi
 
-	python_setup
-
 	# User patches
 	epatch_user
+
+	python_setup
 
 	# Native libdir is used to hold LLVMgold.so
 	NATIVE_LIBDIR=$(get_libdir)
