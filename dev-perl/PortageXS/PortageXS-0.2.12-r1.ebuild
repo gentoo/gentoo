@@ -1,6 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
 EAPI=5
 
 MODULE_AUTHOR=KENTNL
@@ -15,14 +16,18 @@ LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="minimal"
 
-DEPEND="dev-perl/Module-Build
+DEPEND="
+	dev-perl/Module-Build
 	virtual/perl-Term-ANSIColor
 	dev-perl/Shell-EnvImporter
-	!minimal? ( dev-perl/IO-Socket-SSL
-		    virtual/perl-Sys-Syslog )"
+	!minimal? (
+		dev-perl/IO-Socket-SSL
+		virtual/perl-Sys-Syslog
+	)
+"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PV}/${P}-prefix.patch
+	epatch "${FILESDIR}"/0.02.12/${PN}-0.02.12-prefix.patch
 
 	eprefixify \
 		lib/PortageXS/examples/getParamFromFile.pl \
@@ -41,7 +46,8 @@ src_prepare() {
 	fi
 }
 
-pkg_preinst() {
+src_install() {
+	perl-module_src_install
 	if use !minimal ; then
 		cp -r "${S}"/usr "${D}${EPREFIX}" || die
 	fi
