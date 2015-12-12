@@ -71,12 +71,6 @@ if [[ ! ${_PYTHON_ANY_R1} ]]; then
 # @CODE
 # PYTHON_COMPAT=( python{2_5,2_6,2_7} )
 # @CODE
-if ! declare -p PYTHON_COMPAT &>/dev/null; then
-	die 'PYTHON_COMPAT not declared.'
-fi
-if [[ $(declare -p PYTHON_COMPAT) != "declare -a"* ]]; then
-	die 'PYTHON_COMPAT must be an array.'
-fi
 
 # @ECLASS-VARIABLE: PYTHON_REQ_USE
 # @DEFAULT_UNSET
@@ -119,16 +113,10 @@ _python_any_set_globals() {
 	local usestr i PYTHON_PKG_DEP
 	[[ ${PYTHON_REQ_USE} ]] && usestr="[${PYTHON_REQ_USE}]"
 
-	# check for invalid PYTHON_COMPAT
-	for i in "${PYTHON_COMPAT[@]}"; do
-		# the function simply dies on invalid impl
-		_python_impl_supported "${i}"
-	done
+	_python_set_impls
 
 	PYTHON_DEPS=
-	for i in "${_PYTHON_ALL_IMPLS[@]}"; do
-		has "${i}" "${PYTHON_COMPAT[@]}" || continue
-
+	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		python_export "${i}" PYTHON_PKG_DEP
 
 		PYTHON_DEPS="${PYTHON_PKG_DEP} ${PYTHON_DEPS}"
@@ -209,9 +197,7 @@ python_gen_any_dep() {
 	[[ ${depstr} ]] || die "No dependency string provided"
 
 	local PYTHON_PKG_DEP out=
-	for i in "${_PYTHON_ALL_IMPLS[@]}"; do
-		has "${i}" "${PYTHON_COMPAT[@]}" || continue
-
+	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		local PYTHON_USEDEP="python_targets_${i}(-),python_single_target_${i}(+)"
 		python_export "${i}" PYTHON_PKG_DEP
 
@@ -242,7 +228,7 @@ _python_EPYTHON_supported() {
 			;;
 	esac
 
-	if has "${i}" "${PYTHON_COMPAT[@]}"; then
+	if has "${i}" "${_PYTHON_SUPPORTED_IMPLS[@]}"; then
 		if python_is_installed "${i}"; then
 			if declare -f python_check_deps >/dev/null; then
 				local PYTHON_USEDEP="python_targets_${i}(-),python_single_target_${i}(+)"
@@ -293,10 +279,8 @@ python_setup() {
 
 	# fallback to best installed impl.
 	local rev_impls=()
-	for i in "${_PYTHON_ALL_IMPLS[@]}"; do
-		if has "${i}" "${PYTHON_COMPAT[@]}"; then
-			rev_impls=( "${i}" "${rev_impls[@]}" )
-		fi
+	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
+		rev_impls=( "${i}" "${rev_impls[@]}" )
 	done
 
 	for i in "${rev_impls[@]}"; do

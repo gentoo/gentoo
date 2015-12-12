@@ -95,12 +95,6 @@ if [[ ! ${_PYTHON_SINGLE_R1} ]]; then
 # @CODE
 # PYTHON_COMPAT=( python2_7 python3_{3,4} )
 # @CODE
-if ! declare -p PYTHON_COMPAT &>/dev/null; then
-	die 'PYTHON_COMPAT not declared.'
-fi
-if [[ $(declare -p PYTHON_COMPAT) != "declare -a"* ]]; then
-	die 'PYTHON_COMPAT must be an array.'
-fi
 
 # @ECLASS-VARIABLE: PYTHON_REQ_USE
 # @DEFAULT_UNSET
@@ -186,34 +180,24 @@ fi
 # @CODE
 
 _python_single_set_globals() {
-	local impls=()
-	local unimpls=()
+	_python_set_impls
 
 	PYTHON_DEPS=
 	local i PYTHON_PKG_DEP
-	for i in "${_PYTHON_ALL_IMPLS[@]}"; do
-		has "${i}" "${PYTHON_COMPAT[@]}" \
-			&& impls+=( "${i}" ) \
-			|| unimpls+=( "${i}" )
-	done
 
-	if [[ ${#impls[@]} -eq 0 ]]; then
-		die "No supported implementation in PYTHON_COMPAT."
-	fi
-
-	local flags_mt=( "${impls[@]/#/python_targets_}" )
-	local flags=( "${impls[@]/#/python_single_target_}" )
-	local unflags=( "${unimpls[@]/#/-python_single_target_}" )
+	local flags_mt=( "${_PYTHON_SUPPORTED_IMPLS[@]/#/python_targets_}" )
+	local flags=( "${_PYTHON_SUPPORTED_IMPLS[@]/#/python_single_target_}" )
+	local unflags=( "${_PYTHON_UNSUPPORTED_IMPLS[@]/#/-python_single_target_}" )
 
 	local optflags=${flags_mt[@]/%/(-)?},${unflags[@]/%/(-)}
 
 	IUSE="${flags_mt[*]}"
 
-	if [[ ${#impls[@]} -eq 1 ]]; then
+	if [[ ${#_PYTHON_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
 		# There is only one supported implementation; set IUSE and other
 		# variables without PYTHON_SINGLE_TARGET.
 		PYTHON_REQUIRED_USE="${flags_mt[*]}"
-		python_export "${impls[0]}" PYTHON_PKG_DEP
+		python_export "${_PYTHON_SUPPORTED_IMPLS[0]}" PYTHON_PKG_DEP
 		PYTHON_DEPS="${PYTHON_PKG_DEP} "
 		# Force on the python_single_target_* flag for this impl, so
 		# that any dependencies that inherit python-single-r1 and
@@ -228,7 +212,7 @@ _python_single_set_globals() {
 		# on this package.
 		optflags+=,${flags[@]/%/(+)?}
 
-		for i in "${impls[@]}"; do
+		for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 			# The chosen targets need to be in PYTHON_TARGETS as well.
 			# This is in order to enforce correct dependencies on packages
 			# supporting multiple implementations.
@@ -288,9 +272,7 @@ python_gen_usedep() {
 	local impl pattern
 	local matches=()
 
-	for impl in "${PYTHON_COMPAT[@]}"; do
-		_python_impl_supported "${impl}" || continue
-
+	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		for pattern; do
 			if [[ ${impl} == ${pattern} ]]; then
 				matches+=(
@@ -331,9 +313,7 @@ python_gen_useflags() {
 	local impl pattern
 	local matches=()
 
-	for impl in "${PYTHON_COMPAT[@]}"; do
-		_python_impl_supported "${impl}" || continue
-
+	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		for pattern; do
 			if [[ ${impl} == ${pattern} ]]; then
 				matches+=( "python_single_target_${impl}" )
@@ -380,9 +360,7 @@ python_gen_cond_dep() {
 	local dep=${1}
 	shift
 
-	for impl in "${PYTHON_COMPAT[@]}"; do
-		_python_impl_supported "${impl}" || continue
-
+	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		for pattern; do
 			if [[ ${impl} == ${pattern} ]]; then
 				# substitute ${PYTHON_USEDEP} if used
@@ -411,20 +389,15 @@ python_setup() {
 
 	unset EPYTHON
 
-	local impl impls=()
-	for impl in "${PYTHON_COMPAT[@]}"; do
-		_python_impl_supported "${impl}" || continue
-		impls+=( "${impl}" )
-	done
-
-	if [[ ${#impls[@]} -eq 1 ]]; then
-		if use "python_targets_${impls[0]}"; then
+	if [[ ${#_PYTHON_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
+		if use "python_targets_${_PYTHON_SUPPORTED_IMPLS[0]}"; then
 			# Only one supported implementation, enable it explicitly
-			python_export "${impls[0]}" EPYTHON PYTHON
+			python_export "${_PYTHON_SUPPORTED_IMPLS[0]}" EPYTHON PYTHON
 			python_wrapper_setup
 		fi
 	else
-		for impl in "${impls[@]}"; do
+		local impl
+		for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 			if use "python_single_target_${impl}"; then
 				if [[ ${EPYTHON} ]]; then
 					eerror "Your PYTHON_SINGLE_TARGET setting lists more than a single Python"
@@ -452,14 +425,14 @@ python_setup() {
 
 	if [[ ! ${EPYTHON} ]]; then
 		eerror "No Python implementation selected for the build. Please set"
-		if [[ ${#impls[@]} -eq 1 ]]; then
+		if [[ ${#_PYTHON_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
 			eerror "the PYTHON_TARGETS variable in your make.conf to include one"
 		else
 			eerror "the PYTHON_SINGLE_TARGET variable in your make.conf to one"
 		fi
 		eerror "of the following values:"
 		eerror
-		eerror "${impls[@]}"
+		eerror "${_PYTHON_SUPPORTED_IMPLS[@]}"
 		echo
 		die "No supported Python implementation in PYTHON_SINGLE_TARGET/PYTHON_TARGETS."
 	fi
