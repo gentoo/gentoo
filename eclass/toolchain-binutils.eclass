@@ -89,6 +89,7 @@ else
 	LICENSE="|| ( GPL-2 LGPL-2 )"
 fi
 IUSE="cxx multislot multitarget nls static-libs test vanilla"
+RESTRICT="!test? ( test )"
 if version_is_at_least 2.19 ; then
 	IUSE+=" zlib"
 fi

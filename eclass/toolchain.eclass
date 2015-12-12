@@ -132,6 +132,7 @@ fi
 
 IUSE="multislot regression-test vanilla"
 IUSE_DEF=( nls nptl )
+RESTRICT+=" !test? ( test )"
 
 if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	IUSE+=" altivec debug"

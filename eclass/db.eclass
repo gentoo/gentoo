@@ -10,6 +10,7 @@
 inherit eutils multilib multiprocessing
 
 IUSE="doc test examples"
+RESTRICT="!test? ( test )"
 
 EXPORT_FUNCTIONS src_test
 

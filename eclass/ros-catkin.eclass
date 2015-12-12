@@ -56,6 +56,7 @@ if [ -n "${PYTHON_COMPAT}" ] ; then
 fi
 
 IUSE="test"
+RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-util/catkin${CATKIN_PYTHON_USEDEP}
 	dev-python/empy${CATKIN_PYTHON_USEDEP}

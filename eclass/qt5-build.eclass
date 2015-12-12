@@ -67,6 +67,7 @@ EGIT_REPO_URI=(
 [[ ${QT5_BUILD_TYPE} == live ]] && inherit git-r3
 
 IUSE="debug test"
+RESTRICT="!test? ( test )"
 
 [[ ${PN} == qtwebkit ]] && RESTRICT+=" mirror" # bug 524584
 [[ ${QT5_BUILD_TYPE} == release ]] && RESTRICT+=" test" # bug 457182
