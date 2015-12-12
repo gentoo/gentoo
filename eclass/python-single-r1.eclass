@@ -310,13 +310,19 @@ python_gen_usedep() {
 python_gen_useflags() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local impl pattern
+	local flag_prefix impl pattern
 	local matches=()
+
+	if [[ ${#_PYTHON_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
+		flag_prefix=python_targets
+	else
+		flag_prefix=python_single_target
+	fi
 
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		for pattern; do
 			if [[ ${impl} == ${pattern} ]]; then
-				matches+=( "python_single_target_${impl}" )
+				matches+=( "${flag_prefix}_${impl}" )
 				break
 			fi
 		done
@@ -354,8 +360,14 @@ python_gen_useflags() {
 python_gen_cond_dep() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local impl pattern
+	local flag_prefix impl pattern
 	local matches=()
+
+	if [[ ${#_PYTHON_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
+		flag_prefix=python_targets
+	else
+		flag_prefix=python_single_target
+	fi
 
 	local dep=${1}
 	shift
@@ -371,7 +383,7 @@ python_gen_cond_dep() {
 					dep=${dep//\$\{PYTHON_USEDEP\}/${usedep}}
 				fi
 
-				matches+=( "python_single_target_${impl}? ( ${dep} )" )
+				matches+=( "${flag_prefix}_${impl}? ( ${dep} )" )
 				break
 			fi
 		done
