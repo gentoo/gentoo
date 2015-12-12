@@ -1,0 +1,13 @@
+the reboot func is used elsewhere, so don't mark it inline
+
+--- a/lib.c
++++ b/lib.c
+@@ -33,7 +33,7 @@ struct ascii_map_str {
+         int keycode;
+ };
+ 
+-inline void reboot(void)
++void reboot(void)
+ {
+ 	
+ 	/* tell the BIOS to do a cold start */
