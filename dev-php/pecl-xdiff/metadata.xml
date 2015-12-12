@@ -2,4 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>php</herd>
+  <upstream>
+    <remote-id type="github">php/pecl-text-xdiff</remote-id>
+  </upstream>
 </pkgmetadata>
