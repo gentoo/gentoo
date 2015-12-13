@@ -8,8 +8,8 @@ inherit eutils
 MY_P=${PN}-3.0-${PV}
 
 DESCRIPTION="A library for registering global keyboard shortcuts"
-HOMEPAGE="http://kaizer.se/wiki/keybinder/"
-SRC_URI="http://kaizer.se/publicfiles/${PN}/${MY_P}.tar.gz"
+HOMEPAGE="https://github.com/engla/keybinder"
+SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="3"
