@@ -68,6 +68,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}/kdepim-4.14.10-fix-cmake-3.4.patch"
+
 	use handbook && epatch "${FILESDIR}/${PN}-4.14.10-handbook.patch"
 
 	kde4-meta_src_prepare
@@ -76,8 +78,8 @@ src_prepare() {
 src_install() {
 	kde4-meta_src_install
 	# colliding with kdepim-common-libs
-	rm -rf "${ED}"/usr/share/kde4/servicetypes/calendarplugin.desktop
-	rm -rf "${ED}"/usr/share/kde4/servicetypes/calendardecoration.desktop
+	rm -rf "${ED}"usr/share/kde4/servicetypes/calendarplugin.desktop || die
+	rm -rf "${ED}"usr/share/kde4/servicetypes/calendardecoration.desktop || die
 }
 
 pkg_postinst() {

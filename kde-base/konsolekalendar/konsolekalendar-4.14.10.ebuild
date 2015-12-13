@@ -46,3 +46,5 @@ KMEXTRACTONLY="
 "
 
 KMLOADLIBS="kdepim-common-libs"
+
+PATCHES=( "${FILESDIR}/kdepim-4.14.10-fix-cmake-3.4.patch" )
