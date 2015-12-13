@@ -41,9 +41,9 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable ftdi libftdi) \
-		$(use_enable serial libserialport) \
-		$(use_enable usb libusb) \
+		$(use_with ftdi libftdi) \
+		$(use_with serial libserialport) \
+		$(use_with usb libusb) \
 		$(use_enable static-libs static)
 }
 
