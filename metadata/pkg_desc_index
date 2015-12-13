@@ -8827,7 +8827,7 @@ dev-ruby/rinku 1.7.3: A Ruby library that does autolinking
 dev-ruby/ritex 1.0.1: Converts expressions from WebTeX into MathML
 dev-ruby/rjb 1.5.3 1.5.4: Rjb is a Ruby-Java software bridge
 dev-ruby/rkelly-remix 0.0.6 0.0.7: RKelly Remix is a fork of the RKelly JavaScript parser
-dev-ruby/rmagick 2.13.2-r1 2.13.4 2.15.4: An interface between Ruby and the ImageMagick(TM) image processing library
+dev-ruby/rmagick 2.13.4 2.15.4: An interface between Ruby and the ImageMagick(TM) image processing library
 dev-ruby/robots 0.10.1-r2: A simple Ruby library to parse robots.txt
 dev-ruby/rouge 1.9.0 1.9.1 1.10.1: Yet-another-markdown-parser but fast, pure Ruby, using a strict syntax definition
 dev-ruby/rqrcode 0.6.0 0.7.0: Library for encoding QR Codes
@@ -17369,7 +17369,7 @@ www-apache/mod_xsendfile 1.0_beta1: Apache2 module that processes X-SENDFILE hea
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
 www-apache/modsecurity-crs 2.2.6-r1 2.2.7: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p3: Run virtual hosts under separate users/groups
-www-apache/passenger 4.0.53 4.0.59 4.0.59-r1 4.0.60 5.0.18 5.0.20 5.0.20-r1 5.0.21 5.0.22: Passenger (a.k.a. mod_rails) makes deployment of Ruby on Rails applications a breeze
+www-apache/passenger 4.0.60 5.0.22: Passenger (a.k.a. mod_rails) makes deployment of Ruby on Rails applications a breeze
 www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/389-dsgw 1.1.10: 389 Directory Server Gateway Web Application
 www-apps/Apache-Gallery 1.0_rc3: Apache gallery for mod_perl
