@@ -10,7 +10,7 @@ inherit kde5
 
 DESCRIPTION="Kate is an advanced text editor"
 HOMEPAGE="https://www.kde.org/applications/utilities/kate http://kate-editor.org"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=" ~amd64 ~x86"
 IUSE="+addons"
 
 DEPEND="
@@ -54,6 +54,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${PN}-15.08.3-fix-lingering-processes.patch" )
+
 src_prepare() {
 	kde5_src_prepare
 
@@ -62,7 +64,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_build addons)
+		-DBUILD_ADDONS=$(usex addons)
 		-DBUILD_kwrite=FALSE
 	)
 
