@@ -6791,7 +6791,7 @@ dev-python/beanstalkc 0.4.0 0.4.0-r1: A simple beanstalkd client library
 dev-python/beautifulsoup 3.1.0.1-r2 3.2.1-r1 4.3.2 4.4.0 4.4.1: Provides pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
 dev-python/behave 1.2.4 1.2.5: behaviour-driven development, Python style
 dev-python/bicyclerepair 0.9-r3: Bicycle Repair Man is the Python Refactoring Browser
-dev-python/billiard 3.3.0.18 3.3.0.19 3.3.0.20 3.3.0.21: Python multiprocessing fork
+dev-python/billiard 3.3.0.18 3.3.0.19 3.3.0.20 3.3.0.21 3.3.0.22: Python multiprocessing fork
 dev-python/biplist 0.8 0.9: A binary plist parser/generator for Python
 dev-python/bitarray 0.8.1: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.1: A pure Python module for creation and analysis of binary data
@@ -6855,7 +6855,7 @@ dev-python/cloudlib 0.4.0 0.5.0: Cloud middleware for in application use.
 dev-python/cmd2 0.6.7 0.6.8: Extra features for standard library's cmd module
 dev-python/codetools 4.2.0: Enthought Tool Suite: Code analysis and execution tools
 dev-python/colander 1.0: A simple schema-based serialization and deserialization library
-dev-python/colorama 0.3.3: ANSI escape character sequences for colored terminal text & cursor positioning
+dev-python/colorama 0.3.3 0.3.5: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/coloredlogs 3.1.4 5.0: Colored stream handler for the logging module
 dev-python/colorlog 2.6.0: Log formatting with colors
 dev-python/colout 0.1: Adds color to arbitrary command output
@@ -6893,7 +6893,7 @@ dev-python/dbus-python 1.2.0-r1: Python bindings for the D-Bus messagebus
 dev-python/dbutils 1.1-r1: Database connections for multi-threaded environments
 dev-python/ddt 1.0.0: A library to multiply test cases
 dev-python/debtcollector 0.7.0 0.10.0: ... Python deprecation patterns and strategies that collect technical debt ....
-dev-python/decorator 4.0.2 4.0.4: Simplifies the usage of decorators for the average programmer
+dev-python/decorator 4.0.2 4.0.4 4.0.6: Simplifies the usage of decorators for the average programmer
 dev-python/decoratortools 1.8-r1: Class, function, and metaclass decorators
 dev-python/deform 0.9.8 0.9.9: Another form generation library
 dev-python/defusedxml 0.4.1-r1: XML bomb protection for Python stdlib modules, an xml serialiser
@@ -7201,7 +7201,7 @@ dev-python/kiwisolver 0.1.3: An efficient C++ implementation of the Cassowary co
 dev-python/kombu 3.0.24 3.0.26 3.0.29 3.0.30: AMQP Messaging Framework for Python
 dev-python/larch 1.20130808 1.20131130: Copy-on-write B-tree data structure
 dev-python/lazy-object-proxy 1.2.1: A fast and thorough lazy object proxy
-dev-python/ldap3 0.9.9 0.9.9.1 0.9.9.2 1.0.1: A strictly RFC 4511 conforming LDAP V3 pure Python client
+dev-python/ldap3 0.9.9 0.9.9.1 0.9.9.2 1.0.1 1.0.2: A strictly RFC 4511 conforming LDAP V3 pure Python client
 dev-python/ldappool 1.0: A connection pool for python-ldap
 dev-python/lesscpy 0.9j 0.10.2: A compiler written in Python for the LESS language
 dev-python/libasyncns-python 0.7.1-r1: Python bindings for libasyncns
@@ -7628,10 +7628,10 @@ dev-python/pysvn 1.7.9 1.7.10: Object-oriented python bindings for subversion
 dev-python/pysyck 0.61.2-r1: Python bindings for the Syck YAML parser and emitter
 dev-python/pytables 3.1.1-r2 3.2.0 3.2.1 3.2.1.1 3.2.2: Hierarchical datasets for Python
 dev-python/pyte 0.4.9: Simple VTXXX-compatible terminal emulator
-dev-python/pytest 2.7.2 2.8.2 2.8.3 2.8.4 9999: simple powerful testing with Python
+dev-python/pytest 2.7.2 2.8.2 2.8.3 2.8.4 2.8.5 9999: simple powerful testing with Python
 dev-python/pytest-cache 1.0: mechanisms for caching across test runs
 dev-python/pytest-capturelog 0.7: py.test plugin to capture log messages
-dev-python/pytest-catchlog 1.1 1.2.0: py.test plugin to catch log messages, fork of pytest-capturelog
+dev-python/pytest-catchlog 1.1 1.2.0 1.2.1: py.test plugin to catch log messages, fork of pytest-capturelog
 dev-python/pytest-cov 1.6 1.8.1 2.1.0 2.2.0: py.test plugin for coverage reporting
 dev-python/pytest-django 2.8.0 2.9.1: A Django plugin for py.test
 dev-python/pytest-localserver 0.3.4: Py.test plugin to test server connections locally
@@ -7815,7 +7815,7 @@ dev-python/rosdistro 0.4.2 9999: Tools to work with catkinized rosdistro files
 dev-python/rospkg 1.0.35 1.0.37-r1 1.0.38 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.1-r1 2.2: A Python re-implementation of Rails routes system, mapping URL's to Controllers/Actions
 dev-python/rply 0.7.3 0.7.4: Pure python parser generator that also works with RPython
-dev-python/rpy 2.6.2 2.7.2 2.7.3 2.7.4: Python interface to the R Programming Language
+dev-python/rpy 2.6.2 2.7.2 2.7.3 2.7.4 2.7.5: Python interface to the R Programming Language
 dev-python/rpyc 3.2.3-r1: Remote Python Call (RPyC), a transparent and symmetric RPC library
 dev-python/rsa 3.1.4-r1 3.2 3.2.3: Pure-Python RSA implementation
 dev-python/rst2pdf 0.93-r2: Tool for transforming reStructuredText to PDF using ReportLab
@@ -7842,10 +7842,10 @@ dev-python/sepolgen 1.2.1-r1 1.2.2 9999: SELinux policy generation library
 dev-python/serpent 1.7 1.9 1.10 1.11: A simple serialization library based on ast.literal_eval
 dev-python/service_identity 14.0.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.9: Allow customization of the process title
-dev-python/setuptools 18.4 18.5 18.6.1 18.7 18.7.1 9999: a collection of extensions to Distutils
+dev-python/setuptools 18.4 18.5 18.6.1 18.7 18.7.1 18.8 9999: a collection of extensions to Distutils
 dev-python/setuptools-git 1.0 1.1: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
-dev-python/setuptools_scm 1.8.0 1.9.0 1.10.0: package to manage versions by scm tags via setuptools
+dev-python/setuptools_scm 1.8.0 1.9.0 1.10.0 1.10.1: package to manage versions by scm tags via setuptools
 dev-python/sexpdata 0.0.3: a simple S-expression parser/serializer
 dev-python/sh 1.07 1.08 1.09 1.11: Python subprocess interface
 dev-python/shiboken 1.2.2: A tool for creating Python bindings for C++ libraries
@@ -7896,7 +7896,7 @@ dev-python/sphinxcontrib-programoutput 0.8: Extension to sphinx to include progr
 dev-python/sphinxcontrib-spelling 2.1.2: Sphinx spelling extension
 dev-python/sphinxtogithub 1.0.0 1.1.0: A python script for preparing the html output of Sphinx documentation for github pages
 dev-python/spyder 2.3.4 2.3.5.2: Python IDE with matlab-like features
-dev-python/sqlalchemy 0.7.10 0.9.8 1.0.8 1.0.9: Python SQL toolkit and Object Relational Mapper
+dev-python/sqlalchemy 0.7.10 0.9.8 1.0.8 1.0.9 1.0.10: Python SQL toolkit and Object Relational Mapper
 dev-python/sqlalchemy-migrate 0.7.2-r1 0.9.2 0.9.5 0.10.0: SQLAlchemy Schema Migration Tools
 dev-python/sqlite3dbm 0.1.4-r1: An sqlite-backed dictionary
 dev-python/sqlitecachec 1.1.4-r1: sqlite cacher for python applications
@@ -7932,7 +7932,7 @@ dev-python/tempest-lib 0.3.0 0.4.0 0.5.0 0.7.0 0.9.0: A library to assist in cre
 dev-python/tempita 0.5.3: A very small text templating language
 dev-python/termcolor 1.1.0-r1: ANSII Color formatting for output in terminal
 dev-python/terminado 0.5: Terminals served to term.js using Tornado websockets
-dev-python/testfixtures 3.0.0 4.1.1 4.1.2 4.3.3 4.4.0 4.6.0: A collection of helpers and mock objects for unit tests and doc tests
+dev-python/testfixtures 3.0.0 4.1.1 4.1.2 4.3.3 4.4.0 4.6.0 4.7.0: A collection of helpers and mock objects for unit tests and doc tests
 dev-python/testify 0.5.7 0.7.2: A more pythonic replacement for the unittest module and nose
 dev-python/testpath 0.2: Test utilities for code working with files and commands
 dev-python/testrepository 0.0.18-r1 0.0.20: A repository of test results
