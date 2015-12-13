@@ -11334,7 +11334,7 @@ kde-misc/stock-quote 2.1-r2: Displays stock quotes pulled from the Yahoo! server
 kde-misc/synaptiks 0.8.1-r4: Touchpad configuration and management tool for KDE
 kde-misc/systemd-kcm 0.7.0 1.2.1: KDE control module for systemd
 kde-misc/takeoff 1.0: A tablet desktop style app launcher
-kde-misc/tellico 2.3.10: A collection manager for the KDE environment
+kde-misc/tellico 2.3.10 2.3.11: A collection manager for the KDE environment
 kde-misc/wacomtablet 2.1.0: KControl module for Wacom tablets
 kde-misc/wicd-client-kde 0.3.1-r1: Wicd client built on the KDE Development Platform
 kde-misc/yakuake 2.9.9-r2: A quake-style terminal emulator based on KDE konsole technology
