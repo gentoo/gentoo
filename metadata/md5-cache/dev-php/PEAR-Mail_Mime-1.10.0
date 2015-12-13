@@ -1,0 +1,14 @@
+DEFINED_PHASES=install setup test
+DEPEND=dev-lang/php:* >=dev-php/pear-1.8.1
+DESCRIPTION=Create and manipulate mime messages with PHP
+EAPI=5
+HOMEPAGE=http://pear.php.net/Mail_Mime
+IUSE=test
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=BSD
+RDEPEND=dev-lang/php:* >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=http://pear.php.net/get/Mail_Mime-1.10.0.tgz
+_eclass_exported_funcs=pkg_setup:php-pear-r1 src_test:- src_install:php-pear-r1
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	php-pear-r1	a9c774888f87b59856e139e796fa7501	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=8af48fea3a06be9414ce67d23059ba78
