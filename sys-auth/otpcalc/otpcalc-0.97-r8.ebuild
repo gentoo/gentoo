@@ -44,6 +44,7 @@ src_install() {
 	dosym otpCalc /usr/bin/otpcalc
 	doman otpCalc.1
 	newman - otpcalc.1 <<< ".so man1/otpCalc.1"
-	domenu "${FILESDIR}/${PN}.desktop"
+	insinto /usr/share/applications
+	doins "${FILESDIR}/${PN}.desktop"
 	dodoc BUGS ChangeLog TODO
 }
