@@ -6333,6 +6333,10 @@ net-p2p/bitcoind:upnp - Enable Universal Plug and Play
 net-p2p/bitcoind:wallet - Enable wallet support
 net-p2p/bitcoind:xt - Enable Mike Hearn's Bitcoin XT patches
 net-p2p/bitcoind:zeromq - Report blocks and transactions via zeromq
+net-p2p/bitcoinxt-qt:ljr - Enable Luke Dashjr's patches
+net-p2p/bitcoinxt-qt:logrotate - Use app-admin/logrotate for rotating logs
+net-p2p/bitcoinxt-qt:qrcode - Enable generation of QR Codes for receiving payments
+net-p2p/bitcoinxt-qt:wallet - Enable wallet support
 net-p2p/bitcoinxtd:doc - Include documentatio
 net-p2p/bitcoinxtd:logrotate - Use app-admin/logrotate for rotating logs
 net-p2p/bitcoinxtd:upnp - Enable Universal Plug and Play

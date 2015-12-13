@@ -8477,7 +8477,9 @@ dev-ruby/async_sinatra 1.2.0: Asynchronous response API for Sinatra and Thin
 dev-ruby/atomic 1.1.16 1.1.99: An atomic reference implementation for JRuby, Rubinius, and MRI
 dev-ruby/awesome_print 1.2.0-r2 1.6.1: Ruby library that pretty prints Ruby objects in full color with proper indentation
 dev-ruby/aws-s3 0.6.3: Client library for Amazon's Simple Storage Service's REST API
-dev-ruby/aws-sdk 1.66.0: Official SDK for Amazon Web Services
+dev-ruby/aws-sdk 1.66.0 2.2.5: Official SDK for Amazon Web Services
+dev-ruby/aws-sdk-core 2.2.5: Official SDK for Amazon Web Services
+dev-ruby/aws-sdk-resources 2.2.5: Official SDK for Amazon Web Services
 dev-ruby/bacon 1.2.0-r1 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
 dev-ruby/barby 0.6.2 0.6.2-r1: Ruby barcode generator that doesn't rely on 3rd party libraries
 dev-ruby/bcat 0.6.2-r1 0.6.2-r2: A pipe to browser utility for use at the shell and within editors like Vim or Emacs
@@ -14726,7 +14728,8 @@ net-p2p/amule 2.3.1 2.3.1-r1: aMule, the all-platform eMule p2p client
 net-p2p/bitcoin-cli 0.10.2 0.11.0 0.11.1 0.11.2 9999: Command-line JSON-RPC client specifically designed for talking to Bitcoin Core Daemon
 net-p2p/bitcoin-qt 0.10.2 0.10.2-r1 0.11.0 0.11.1 0.11.2 9999: An end-user Qt GUI for the Bitcoin crypto-currency
 net-p2p/bitcoind 0.10.2 0.10.2-r1 0.11.0 0.11.1 0.11.2 9999: Original Bitcoin crypto-currency wallet for automated services
-net-p2p/bitcoinxtd 0.11.0 0.11.0d: BitcoinXT crypto-currency wallet for automated services
+net-p2p/bitcoinxt-qt 0.11.0d: BitcoinXT crypto-currency GUI wallet
+net-p2p/bitcoinxtd 0.11.0d: BitcoinXT crypto-currency wallet for automated services
 net-p2p/bitflu 1.50 1.51 1.52: BitTorrent client, written in Perl and is designed to run as a daemon
 net-p2p/bittornado 0.3.18-r2 0.3.18-r3: TheShad0w's experimental BitTorrent client
 net-p2p/bittorrent 4.4.0-r2 4.4.0-r3: Tool for distributing files via a distributed network of nodes
@@ -17505,7 +17508,7 @@ www-client/netsurf 3.2-r1 3.3-r1: a free, open source web browser
 www-client/opera 12.16_p1860-r1 33.0.1990.43 33.0.1990.58 33.0.1990.115: A fast and secure web browser
 www-client/opera-beta 34.0.2036.16 34.0.2036.24: A fast and secure web browser
 www-client/opera-developer 35.0.2052.0 35.0.2060.0 35.0.2064.0: A fast and secure web browser
-www-client/otter 0.9.07 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
+www-client/otter 0.9.07 0.9.08 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.11.1 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qtweb 3.8.5_p108: Lightweight, fast, secure and portable browser for the Web
