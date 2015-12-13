@@ -22,6 +22,11 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	test? ( sys-devel/bison )"
 
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-out-of-tree-build.patch #567332
+	epatch "${FILESDIR}"/${P}-out-of-tree-test.patch #567332
+}
+
 src_configure() {
 	use static && append-ldflags -static
 
