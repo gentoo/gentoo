@@ -26,6 +26,7 @@ DEPEND="
 	dev-qt/qtsql:5
 	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
+	dev-qt/qtxmlpatterns:5
 "
 RDEPEND="
 	${DEPEND}

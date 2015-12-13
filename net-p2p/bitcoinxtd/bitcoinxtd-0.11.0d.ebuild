@@ -16,14 +16,15 @@ SRC_URI="https://github.com/bitcoinxt/bitcoinxt/archive/v${My_PV}.tar.gz -> ${P}
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~x86 ~amd64-linux ~x86-linux"
-IUSE="+doc +ssl +logrotate +upnp +wallet"
+IUSE="+doc libressl +logrotate +ssl +upnp +wallet"
 
-OPENSSL_DEPEND="dev-libs/openssl:0[-bindist]"
+OPENSSL_DEPEND="
+	!libressl? ( dev-libs/openssl:0[-bindist] )
+	libressl? ( dev-libs/libressl )"
 WALLET_DEPEND="media-gfx/qrencode sys-libs/db:$(db_ver_to_slot "${DB_VER}")[cxx]"
 
 RDEPEND="
 	app-shells/bash:0
-	sys-apps/sed
 	dev-libs/boost[threads(+)]
 	dev-libs/glib:2
 	dev-libs/crypto++
@@ -98,8 +99,8 @@ src_install() {
 	if [ -f "${ROOT}${my_data}/bitcoin.conf" ]; then
 		elog "${EROOT}${my_data}/bitcoin.conf already installed - not overwriting it"
 	else
+		doins "${FILESDIR}/bitcoin.conf"
 		elog "default ${EROOT}${my_data}/bitcoin.conf installed - you will need to edit it"
-		newins "${FILESDIR}/bitcoin.conf" bitcoin.conf
 		fowners bitcoinxt:bitcoinxt "${my_data}/bitcoin.conf"
 		fperms 400 "${my_data}/bitcoin.conf"
 	fi
