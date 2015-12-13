@@ -4176,7 +4176,7 @@ dev-java/proguard 4.5 4.7 4.8 5.2.1: Free Java class file shrinker, optimizer, a
 dev-java/qdox 1.6.3 1.12-r1 1.12.1-r1: Parser for extracting class/interface/method definitions
 dev-java/radeox 1.0_beta2-r1: Radeox Wiki render engine
 dev-java/rat 0.11: Apache Rat is a release audit tool, focused on licenses.
-dev-java/reflectasm 1.09: High performance Java reflection
+dev-java/reflectasm 1.11.0: High performance Java reflection
 dev-java/reflections 0.9.9: Java runtime metadata analysis
 dev-java/relaxng-datatype 1.0-r1: Interface between RELAX NG validators and datatype libraries
 dev-java/relaxngcc 1.12-r2 1.12-r3: RELAX NG Compiler Compiler
