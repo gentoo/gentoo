@@ -14,10 +14,10 @@ HOMEPAGE="https://wiki.gnome.org/Projects/libgdata"
 LICENSE="LGPL-2.1+"
 SLOT="0/22" # subslot = libgdata soname version
 IUSE="gnome +introspection static-libs test vala"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 REQUIRED_IUSE="vala? ( introspection )"
 
-# gtk+ is needed for gdk
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+
 # configure checks for gtk:3, but only uses it for demos which are not installed
 RDEPEND="
 	>=dev-libs/glib-2.32:2
@@ -57,7 +57,6 @@ src_configure() {
 
 src_test() {
 	unset ORBIT_SOCKETDIR
-	unset DBUS_SESSION_BUS_ADDRESS
 	export GSETTINGS_BACKEND="memory" #486412
 	dbus-launch emake check
 }
