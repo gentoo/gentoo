@@ -23,12 +23,13 @@ HOMEPAGE="https://www.dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa ao bluetooth doc egl +evdev ffmpeg llvm log lto openal pch portaudio profile pulseaudio qt5 sdl upnp +wxwidgets"
+IUSE="alsa ao bluetooth doc egl +evdev ffmpeg llvm log lto openal +pch portaudio profile pulseaudio qt5 sdl upnp +wxwidgets"
 
-RDEPEND=">=media-libs/glew-1.10
-	>=media-libs/libsfml-2.1
+RDEPEND=">=media-libs/libsfml-2.1
 	>net-libs/enet-1.3.7
 	>=net-libs/mbedtls-2.1.1
+	dev-libs/lzo
+	media-libs/libpng:=
 	sys-libs/glibc
 	sys-libs/readline:=
 	sys-libs/zlib
@@ -74,7 +75,6 @@ DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.8.8
 	>=sys-devel/gcc-4.9.0
 	app-arch/zip
-	media-gfx/nvidia-cg-toolkit
 	media-libs/freetype
 	sys-devel/gettext
 	virtual/pkgconfig

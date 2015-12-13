@@ -166,10 +166,10 @@ pkg_pretend() {
 
 	# Check build requirements, bug #541816 and bug #471810 .
 	CHECKREQS_MEMORY="3G"
-	CHECKREQS_DISK_BUILD="5G"
+	CHECKREQS_DISK_BUILD="10G"
 	eshopts_push -s extglob
 	if is-flagq '-g?(gdb)?([1-9])'; then
-		CHECKREQS_DISK_BUILD="25G"
+		CHECKREQS_DISK_BUILD="30G"
 	fi
 	eshopts_pop
 	check-reqs_pkg_pretend
