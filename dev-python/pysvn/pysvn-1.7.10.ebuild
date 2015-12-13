@@ -28,7 +28,9 @@ python_prepare() {
 	rm -r Import || die
 
 	# http://pysvn.tigris.org/source/browse/pysvn?view=rev&revision=1469
-	sed -e "s/PYSVN_HAS_SVN_CLIENT_CTX_T__CONFLICT_FUNC_16/PYSVN_HAS_SVN_CLIENT_CTX_T__CONFLICT_FUNC_1_6/" -i Source/pysvn_svnenv.hpp
+	sed \
+		-e "s/PYSVN_HAS_SVN_CLIENT_CTX_T__CONFLICT_FUNC_16/PYSVN_HAS_SVN_CLIENT_CTX_T__CONFLICT_FUNC_1_6/" \
+		-i Source/pysvn_svnenv.hpp || die
 }
 
 python_configure() {
