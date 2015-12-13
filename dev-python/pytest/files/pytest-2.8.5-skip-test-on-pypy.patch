@@ -1,0 +1,602 @@
+ testing/acceptance_test.py    |  5 +++++
+ testing/python/collect.py     |  3 +++
+ testing/python/fixture.py     | 14 ++++++++++++++
+ testing/python/integration.py |  1 +
+ testing/python/metafunc.py    |  3 +++
+ testing/test_assertion.py     |  5 +++++
+ testing/test_assertrewrite.py |  3 +++
+ testing/test_capture.py       |  6 ++++++
+ testing/test_collection.py    |  1 +
+ testing/test_config.py        |  3 +++
+ testing/test_conftest.py      |  3 +++
+ testing/test_doctest.py       |  7 ++++++-
+ testing/test_helpconfig.py    |  1 +
+ testing/test_junitxml.py      |  1 +
+ testing/test_mark.py          |  1 +
+ testing/test_monkeypatch.py   |  1 +
+ testing/test_skipping.py      |  3 +++
+ testing/test_terminal.py      |  2 ++
+ testing/test_unittest.py      |  3 +++
+ 19 files changed, 65 insertions(+), 1 deletion(-)
+
+diff --git a/testing/acceptance_test.py b/testing/acceptance_test.py
+index c9e8fbf..0815a01 100644
+--- a/testing/acceptance_test.py
++++ b/testing/acceptance_test.py
+@@ -127,6 +127,7 @@ class TestGeneralUsage:
+             "*ERROR: not found:*%s" %(p2.basename,)
+         ])
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_issue486_better_reporting_on_conftest_load_failure(self, testdir):
+         testdir.makepyfile("")
+         testdir.makeconftest("import qwerty")
+@@ -209,6 +210,8 @@ class TestGeneralUsage:
+         result = testdir.runpython(p)
+         assert not result.ret
+ 
++    # https://github.com/pytest-dev/pytest/issues/1162
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_issue109_sibling_conftests_not_loaded(self, testdir):
+         sub1 = testdir.tmpdir.mkdir("sub1")
+         sub2 = testdir.tmpdir.mkdir("sub2")
+@@ -350,6 +353,7 @@ class TestGeneralUsage:
+         res = testdir.runpytest(p.basename)
+         assert res.ret == 0
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_unknown_option(self, testdir):
+         result = testdir.runpytest("--qwlkej")
+         result.stderr.fnmatch_lines("""
+@@ -657,6 +661,7 @@ class TestDurations:
+         ])
+ 
+ 
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ class TestDurationWithFixture:
+     source = """
+         import time
+diff --git a/testing/python/collect.py b/testing/python/collect.py
+index df4ecc2..9458971 100644
+--- a/testing/python/collect.py
++++ b/testing/python/collect.py
+@@ -27,6 +27,7 @@ class TestModule:
+             "*HINT*",
+         ])
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_import_prepend_append(self, testdir, monkeypatch):
+         syspath = list(sys.path)
+         monkeypatch.setattr(sys, "path", syspath)
+@@ -57,6 +58,7 @@ class TestModule:
+         pytest.raises(ImportError, lambda: modcol.obj)
+ 
+ class TestClass:
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_class_with_init_warning(self, testdir):
+         testdir.makepyfile("""
+             class TestClass1:
+@@ -659,6 +661,7 @@ class TestConftestCustomization:
+         l = modcol.collect()
+         assert '_hello' not in l
+ 
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ def test_setup_only_available_in_subdir(testdir):
+     sub1 = testdir.mkpydir("sub1")
+     sub2 = testdir.mkpydir("sub2")
+diff --git a/testing/python/fixture.py b/testing/python/fixture.py
+index 9f14a23..6d09271 100644
+--- a/testing/python/fixture.py
++++ b/testing/python/fixture.py
+@@ -83,6 +83,7 @@ class TestFillFixtures:
+             "*1 passed*"
+         ])
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_conftest_funcargs_only_available_in_subdir(self, testdir):
+         sub1 = testdir.mkpydir("sub1")
+         sub2 = testdir.mkpydir("sub2")
+@@ -606,6 +607,7 @@ class TestRequestBasic:
+         reprec = testdir.inline_run("-v")
+         reprec.assertoutcome(passed=3)
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_fixtures_sub_subdir_normalize_sep(self, testdir):
+         # this tests that normalization of nodeids takes place
+         b = testdir.mkdir("tests").mkdir("unit")
+@@ -953,6 +955,7 @@ class TestFixtureUsages:
+             "*2 passed*"
+         ])
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_factory_uses_unknown_funcarg_as_dependency_error(self, testdir):
+         testdir.makepyfile("""
+             import pytest
+@@ -1049,6 +1052,7 @@ class TestFixtureUsages:
+         reprec = testdir.inline_run()
+         reprec.assertoutcome(passed=2)
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_usefixtures_seen_in_showmarkers(self, testdir):
+         result = testdir.runpytest("--markers")
+         result.stdout.fnmatch_lines("""
+@@ -1157,6 +1161,7 @@ class TestFixtureManagerParseFactories:
+         reprec = testdir.inline_run("-s")
+         reprec.assertoutcome(passed=1)
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_parsefactories_relative_node_ids(self, testdir):
+         # example mostly taken from:
+         # https://mail.python.org/pipermail/pytest-dev/2014-September/002617.html
+@@ -1305,6 +1310,7 @@ class TestAutouseDiscovery:
+         reprec = testdir.inline_run("-s")
+         reprec.assertoutcome(failed=0, passed=0)
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_autouse_in_conftests(self, testdir):
+         a = testdir.mkdir("a")
+         b = testdir.mkdir("a1")
+@@ -1890,6 +1896,7 @@ class TestFixtureMarker:
+         l = reprec.getcalls("pytest_runtest_call")[0].item.module.l
+         assert l == [1,1,2,2]
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_module_parametrized_ordering(self, testdir):
+         testdir.makeconftest("""
+             import pytest
+@@ -1936,6 +1943,7 @@ class TestFixtureMarker:
+             test_mod1.py::test_func1[m2] PASSED
+         """)
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_class_ordering(self, testdir):
+         testdir.makeconftest("""
+             import pytest
+@@ -1984,6 +1992,7 @@ class TestFixtureMarker:
+             test_class_ordering.py::TestClass::test_3[2-b] PASSED
+         """)
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_parametrize_separated_order_higher_scope_first(self, testdir):
+         testdir.makepyfile("""
+             import pytest
+@@ -2028,6 +2037,7 @@ class TestFixtureMarker:
+         pprint.pprint(list(zip(l, expected)))
+         assert l == expected
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_parametrized_fixture_teardown_order(self, testdir):
+         testdir.makepyfile("""
+             import pytest
+@@ -2065,6 +2075,7 @@ class TestFixtureMarker:
+         """)
+         assert "error" not in result.stdout.str()
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_fixture_finalizer(self, testdir):
+         testdir.makeconftest("""
+             import pytest
+@@ -2385,6 +2396,7 @@ class TestErrors:
+             "*1 error*",
+         ])
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_issue498_fixture_finalizer_failing(self, testdir):
+         testdir.makepyfile("""
+             import pytest
+@@ -2431,6 +2443,7 @@ class TestErrors:
+             "*1 error*",
+         ])
+ 
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ class TestShowFixtures:
+     def test_funcarg_compat(self, testdir):
+         config = testdir.parseconfigure("--funcargs")
+@@ -2561,6 +2574,7 @@ class TestShowFixtures:
+         """)
+ 
+ 
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ class TestContextManagerFixtureFuncs:
+     def test_simple(self, testdir):
+         testdir.makepyfile("""
+diff --git a/testing/python/integration.py b/testing/python/integration.py
+index 33ea26d..fe43016 100644
+--- a/testing/python/integration.py
++++ b/testing/python/integration.py
+@@ -202,6 +202,7 @@ class TestMockDecoration:
+ 
+ 
+ class TestReRunTests:
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_rerun(self, testdir):
+         testdir.makeconftest("""
+             from _pytest.runner import runtestprotocol
+diff --git a/testing/python/metafunc.py b/testing/python/metafunc.py
+index 38629c7..8e74bce 100644
+--- a/testing/python/metafunc.py
++++ b/testing/python/metafunc.py
+@@ -475,6 +475,7 @@ class TestMetafunc:
+         reprec = testdir.inline_run()
+         reprec.assertoutcome(passed=2)
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_parametrize_class_scenarios(self, testdir):
+         testdir.makepyfile("""
+         # same as doc/en/example/parametrize scenario example
+@@ -766,6 +767,7 @@ class TestMetafuncFunctional:
+             "*test_function*advanced*FAILED",
+         ])
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_parametrize_without_ids(self, testdir):
+         testdir.makepyfile("""
+             import pytest
+@@ -835,6 +837,7 @@ class TestMetafuncFunctional:
+         reprec = testdir.runpytest()
+         reprec.assert_outcomes(passed=1)
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_generate_tests_only_done_in_subdir(self, testdir):
+         sub1 = testdir.mkpydir("sub1")
+         sub2 = testdir.mkpydir("sub2")
+diff --git a/testing/test_assertion.py b/testing/test_assertion.py
+index 96da579..c1f270c 100644
+--- a/testing/test_assertion.py
++++ b/testing/test_assertion.py
+@@ -120,6 +120,7 @@ class TestAssert_reprcompare:
+             """)
+         ]
+     )
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_iterable_full_diff(self, left, right, expected):
+         """Test the full diff assertion failure explanation.
+ 
+@@ -348,6 +349,7 @@ class TestFormatExplanation:
+         assert util.format_explanation(expl) == res
+ 
+ 
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ def test_python25_compile_issue257(testdir):
+     testdir.makepyfile("""
+         def test_rewritten():
+@@ -559,6 +561,7 @@ def test_warn_missing(testdir):
+         "*WARNING*assert statements are not executed*",
+     ])
+ 
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ def test_recursion_source_decode(testdir):
+     testdir.makepyfile("""
+         def test_something():
+@@ -573,6 +576,7 @@ def test_recursion_source_decode(testdir):
+         <Module*>
+     """)
+ 
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ def test_AssertionError_message(testdir):
+     testdir.makepyfile("""
+         def test_hello():
+@@ -587,6 +591,7 @@ def test_AssertionError_message(testdir):
+     """)
+ 
+ @pytest.mark.skipif(PY3, reason='This bug does not exist on PY3')
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ def test_set_with_unsortable_elements():
+     # issue #718
+     class UnsortableKey(object):
+diff --git a/testing/test_assertrewrite.py b/testing/test_assertrewrite.py
+index e690e34..56d17d5 100644
+--- a/testing/test_assertrewrite.py
++++ b/testing/test_assertrewrite.py
+@@ -307,6 +307,7 @@ class TestAssertionRewrite:
+             assert g(**{x : 2})
+         assert getmsg(f, ns) == """assert g(**{'a': 2})"""
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_attribute(self):
+         class X(object):
+             g = 3
+@@ -343,6 +344,7 @@ class TestAssertionRewrite:
+             assert b < c
+         getmsg(f, must_pass=True)
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_len(self):
+         def f():
+             l = list(range(10))
+@@ -641,6 +643,7 @@ class TestAssertionRewriteHookDetails(object):
+ 
+         assert _read_pyc(source, str(pyc)) is None  # no error
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_reload_is_same(self, testdir):
+         # A file that will be picked up during collecting.
+         testdir.tmpdir.join("file.py").ensure()
+diff --git a/testing/test_capture.py b/testing/test_capture.py
+index 66dff1e..5c914ac 100644
+--- a/testing/test_capture.py
++++ b/testing/test_capture.py
+@@ -479,6 +479,8 @@ class TestCaptureFixture:
+         assert 'closed' not in result.stderr.str()
+ 
+ 
++# https://github.com/pytest-dev/pytest/issues/1162
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ def test_setup_failure_does_not_kill_capturing(testdir):
+     sub1 = testdir.mkpydir("sub1")
+     sub1.join("conftest.py").write(py.code.Source("""
+@@ -518,6 +520,7 @@ def test_capture_conftest_runtest_setup(testdir):
+     assert 'hello19' not in result.stdout.str()
+ 
+ 
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ def test_capture_badoutput_issue412(testdir):
+     testdir.makepyfile("""
+         import os
+@@ -897,6 +900,7 @@ class TestStdCaptureFD(TestStdCapture):
+     pytestmark = needsosdup
+     captureclass = staticmethod(StdCaptureFD)
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_simple_only_fd(self, testdir):
+         testdir.makepyfile("""
+             import os
+@@ -981,6 +985,7 @@ def test_fdcapture_tmpfile_remains_the_same(tmpfile, use):
+     assert capfile2 == capfile
+ 
+ @needsosdup
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ def test_close_and_capture_again(testdir):
+     testdir.makepyfile("""
+         import os
+@@ -1001,6 +1006,7 @@ def test_close_and_capture_again(testdir):
+ 
+ 
+ @pytest.mark.parametrize('method', ['SysCapture', 'FDCapture'])
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ def test_capturing_and_logging_fundamentals(testdir, method):
+     if method == "StdCaptureFD" and not hasattr(os, 'dup'):
+         pytest.skip("need os.dup")
+diff --git a/testing/test_collection.py b/testing/test_collection.py
+index 4e4609e..eb731fb 100644
+--- a/testing/test_collection.py
++++ b/testing/test_collection.py
+@@ -287,6 +287,7 @@ class TestCustomConftests:
+             "*test_x*"
+         ])
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_pytest_collect_file_from_sister_dir(self, testdir):
+         sub1 = testdir.mkpydir("sub1")
+         sub2 = testdir.mkpydir("sub2")
+diff --git a/testing/test_config.py b/testing/test_config.py
+index 2e53776..7729717 100644
+--- a/testing/test_config.py
++++ b/testing/test_config.py
+@@ -47,6 +47,7 @@ class TestParseIni:
+         ])
+ 
+     @pytest.mark.parametrize("name", "setup.cfg tox.ini pytest.ini".split())
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_ini_names(self, testdir, name):
+         testdir.tmpdir.join(name).write(py.std.textwrap.dedent("""
+             [pytest]
+@@ -55,6 +56,7 @@ class TestParseIni:
+         config = testdir.parseconfig()
+         assert config.getini("minversion") == "1.0"
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_toxini_before_lower_pytestini(self, testdir):
+         sub = testdir.tmpdir.mkdir("sub")
+         sub.join("tox.ini").write(py.std.textwrap.dedent("""
+@@ -418,6 +420,7 @@ class TestWarning:
+         reprec = testdir.inline_run()
+         reprec.assertoutcome(passed=1)
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_warn_on_test_item_from_request(self, testdir):
+         testdir.makepyfile("""
+             import pytest
+diff --git a/testing/test_conftest.py b/testing/test_conftest.py
+index 2be942e..72308b7 100644
+--- a/testing/test_conftest.py
++++ b/testing/test_conftest.py
+@@ -204,6 +204,7 @@ def test_conftest_import_order(testdir, monkeypatch):
+     assert conftest._getconftestmodules(sub) == [ct1, ct2]
+ 
+ 
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ def test_fixture_dependency(testdir, monkeypatch):
+     ct1 = testdir.makeconftest("")
+     ct1 = testdir.makepyfile("__init__.py")
+@@ -241,6 +242,7 @@ def test_fixture_dependency(testdir, monkeypatch):
+     result.stdout.fnmatch_lines(["*1 passed*"])
+ 
+ 
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ def test_conftest_found_with_double_dash(testdir):
+     sub = testdir.mkdir("sub")
+     sub.join("conftest.py").write(py.std.textwrap.dedent("""
+@@ -259,6 +261,7 @@ def test_conftest_found_with_double_dash(testdir):
+     """)
+ 
+ 
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ class TestConftestVisibility:
+     def _setup_tree(self, testdir):  # for issue616
+         # example mostly taken from:
+diff --git a/testing/test_doctest.py b/testing/test_doctest.py
+index 7fcdf22..fba5685 100644
+--- a/testing/test_doctest.py
++++ b/testing/test_doctest.py
+@@ -224,6 +224,7 @@ class TestDoctests:
+         reprec = testdir.inline_run(p, )
+         reprec.assertoutcome(passed=1)
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_doctestmodule_with_fixtures(self, testdir):
+         p = testdir.makepyfile("""
+             '''
+@@ -235,6 +236,7 @@ class TestDoctests:
+         reprec = testdir.inline_run(p, "--doctest-modules")
+         reprec.assertoutcome(passed=1)
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_doctestmodule_three_tests(self, testdir):
+         p = testdir.makepyfile("""
+             '''
+@@ -260,6 +262,7 @@ class TestDoctests:
+         reprec = testdir.inline_run(p, "--doctest-modules")
+         reprec.assertoutcome(passed=3)
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_doctestmodule_two_tests_one_fail(self, testdir):
+         p = testdir.makepyfile("""
+             class MyClass:
+@@ -432,6 +435,7 @@ class TestDoctestSkips:
+ 
+         return makeit
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_one_skipped(self, testdir, makedoctest):
+         makedoctest("""
+             >>> 1 + 1  # doctest: +SKIP
+@@ -501,6 +505,7 @@ class TestDoctestAutoUseFixtures:
+ 
+     @pytest.mark.parametrize('scope', SCOPES)
+     @pytest.mark.parametrize('enable_doctest', [True, False])
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_fixture_scopes(self, testdir, scope, enable_doctest):
+         """Test that auto-use fixtures work properly with doctest modules.
+         See #1057 and #1100.
+@@ -579,4 +584,4 @@ class TestDoctestAutoUseFixtures:
+         """)
+         result = testdir.runpytest('--doctest-modules')
+         assert 'FAILURES' not in str(result.stdout.str())
+-        result.stdout.fnmatch_lines(['*=== 1 passed in *'])
+\ No newline at end of file
++        result.stdout.fnmatch_lines(['*=== 1 passed in *'])
+diff --git a/testing/test_helpconfig.py b/testing/test_helpconfig.py
+index 3f03c05..442b2ba 100644
+--- a/testing/test_helpconfig.py
++++ b/testing/test_helpconfig.py
+@@ -14,6 +14,7 @@ def test_version(testdir, pytestconfig):
+             "*at*",
+         ])
+ 
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ def test_help(testdir):
+     result = testdir.runpytest("--help")
+     assert result.ret == 0
+diff --git a/testing/test_junitxml.py b/testing/test_junitxml.py
+index 7a03b5a..0650f77 100644
+--- a/testing/test_junitxml.py
++++ b/testing/test_junitxml.py
+@@ -174,6 +174,7 @@ class TestPython:
+             classname="test_classname_instance.TestClass",
+             name="test_method")
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_classname_nested_dir(self, testdir):
+         p = testdir.tmpdir.ensure("sub", "test_hello.py")
+         p.write("def test_func(): 0/0")
+diff --git a/testing/test_mark.py b/testing/test_mark.py
+index 5cb66e7..93d8c1b 100644
+--- a/testing/test_mark.py
++++ b/testing/test_mark.py
+@@ -133,6 +133,7 @@ def test_markers_option(testdir):
+         "*a1some*another marker",
+     ])
+ 
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ def test_markers_option_with_plugin_in_current_dir(testdir):
+     testdir.makeconftest('pytest_plugins = "flip_flop"')
+     testdir.makepyfile(flip_flop="""\
+diff --git a/testing/test_monkeypatch.py b/testing/test_monkeypatch.py
+index e55aae3..14791d8 100644
+--- a/testing/test_monkeypatch.py
++++ b/testing/test_monkeypatch.py
+@@ -232,6 +232,7 @@ def test_chdir_double_undo(mp, tmpdir):
+     mp.undo()
+     assert os.getcwd() == tmpdir.strpath
+ 
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ def test_issue185_time_breaks(testdir):
+     testdir.makepyfile("""
+         import time
+diff --git a/testing/test_skipping.py b/testing/test_skipping.py
+index 93adf6e..4740bf6 100644
+--- a/testing/test_skipping.py
++++ b/testing/test_skipping.py
+@@ -263,6 +263,7 @@ class TestXFail:
+         result = testdir.runpytest(p, "--runxfail")
+         result.stdout.fnmatch_lines("*1 pass*")
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_xfail_imperative_in_setup_function(self, testdir):
+         p = testdir.makepyfile("""
+             import pytest
+@@ -671,6 +672,7 @@ def test_xfail_test_setup_exception(testdir):
+     assert 'xfailed' in result.stdout.str()
+     assert 'xpassed' not in result.stdout.str()
+ 
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ def test_imperativeskip_on_xfail_test(testdir):
+     testdir.makepyfile("""
+         import pytest
+@@ -694,6 +696,7 @@ def test_imperativeskip_on_xfail_test(testdir):
+         *2 skipped*
+     """)
+ 
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ class TestBooleanCondition:
+     def test_skipif(self, testdir):
+         testdir.makepyfile("""
+diff --git a/testing/test_terminal.py b/testing/test_terminal.py
+index 2c7437c..6f2d6e4 100644
+--- a/testing/test_terminal.py
++++ b/testing/test_terminal.py
+@@ -264,6 +264,7 @@ class TestCollectonly:
+             "*   <Function 'test_method'*>",
+         ])
+ 
++    @pytest.mark.skipif('"__pypy__" in sys.modules')
+     def test_collectonly_error(self, testdir):
+         p = testdir.makepyfile("import Errlkjqweqwe")
+         result = testdir.runpytest("--collect-only", p)
+@@ -726,6 +727,7 @@ def test_tbstyle_native_setup_error(testdir):
+             '*File *test_tbstyle_native_setup_error.py", line *, in setup_error_fixture*'
+             ])
+ 
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ def test_terminal_summary(testdir):
+     testdir.makeconftest("""
+         def pytest_terminal_summary(terminalreporter):
+diff --git a/testing/test_unittest.py b/testing/test_unittest.py
+index d7b862e..90e3e1f 100644
+--- a/testing/test_unittest.py
++++ b/testing/test_unittest.py
+@@ -14,6 +14,7 @@ def test_simple_unittest(testdir):
+     assert reprec.matchreport("testpassing").passed
+     assert reprec.matchreport("test_failing").failed
+ 
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ def test_runTest_method(testdir):
+     testdir.makepyfile("""
+         import unittest
+@@ -705,6 +706,7 @@ def test_issue333_result_clearing(testdir):
+     reprec.assertoutcome(failed=1)
+ 
+ @pytest.mark.skipif("sys.version_info < (2,7)")
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ def test_unittest_raise_skip_issue748(testdir):
+     testdir.makepyfile(test_foo="""
+         import unittest
+@@ -720,6 +722,7 @@ def test_unittest_raise_skip_issue748(testdir):
+     """)
+ 
+ @pytest.mark.skipif("sys.version_info < (2,7)")
++@pytest.mark.skipif('"__pypy__" in sys.modules')
+ def test_unittest_skip_issue1169(testdir):
+     testdir.makepyfile(test_foo="""
+         import unittest
