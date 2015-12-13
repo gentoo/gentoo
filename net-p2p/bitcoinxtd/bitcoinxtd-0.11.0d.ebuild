@@ -16,9 +16,11 @@ SRC_URI="https://github.com/bitcoinxt/bitcoinxt/archive/v${My_PV}.tar.gz -> ${P}
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~x86 ~amd64-linux ~x86-linux"
-IUSE="+doc +logrotate +ssl +upnp +wallet"
+IUSE="+doc libressl +logrotate +ssl +upnp +wallet"
 
-OPENSSL_DEPEND="dev-libs/openssl:0[-bindist]"
+OPENSSL_DEPEND="
+	!libressl? ( dev-libs/openssl:0[-bindist] )
+	libressl? ( dev-libs/libressl )"
 WALLET_DEPEND="media-gfx/qrencode sys-libs/db:$(db_ver_to_slot "${DB_VER}")[cxx]"
 
 RDEPEND="
