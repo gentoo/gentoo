@@ -40,6 +40,7 @@ S=${WORKDIR}/${MY_PN}_linux
 
 gamesdir="${GAMES_PREFIX_OPT}/${PN}"
 QA_PRESTRIPPED="${gamesdir}/libs/Dwarf_Fortress"
+RESTRICT="strip"
 
 pkg_setup() {
 	games_pkg_setup
