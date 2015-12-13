@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit toolchain-funcs readme.gentoo
+inherit toolchain-funcs readme.gentoo-r1
 
 DESCRIPTION="Linux Port of OpenBSD Single-key Password System"
 HOMEPAGE="http://www.openbsd.org/faq/faq8.html#SKey"
