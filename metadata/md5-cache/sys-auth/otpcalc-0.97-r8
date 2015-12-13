@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=http://killa.net/infosec/otpCalc/otpCalc-0.97.tar.gz https://dev.gentoo.org/~ulm/distfiles/otpcalc-0.97-patches-1.tar.xz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=d6a754abdc20b603bd1dd73cceb27460
+_md5_=90d390c3f8b5e09b66a9a742c60e7ac0
