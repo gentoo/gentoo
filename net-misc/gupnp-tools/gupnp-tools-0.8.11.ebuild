@@ -22,7 +22,6 @@ RDEPEND="
 	>=net-libs/gupnp-0.20.14
 	>=net-libs/gupnp-av-0.5.5
 	net-libs/libsoup:2.4
-	sys-apps/util-linux
 	>=x11-libs/gtk+-3.10:3
 	>=x11-libs/gtksourceview-3.2:3.0
 "
