@@ -75,8 +75,10 @@ vmware-bundle_extract-component() {
 				echo -n '.'
 				file_path="${dest}/${file_path}"
 				mkdir -p "$(dirname "${file_path}")" || die
-				tail -c+$((offset+component_dataOffset+file_offset+1)) "${component}" 2> /dev/null |
-					head -c$((file_compressedSize)) | gzip -cd > "${file_path}" || die
+				if [[ ${file_compressedSize} -gt 0 ]] ; then
+					tail -c+$((offset+component_dataOffset+file_offset+1)) "${component}" 2> /dev/null |
+						head -c$((file_compressedSize)) | gzip -cd > "${file_path}" || die
+				fi
 			fi
 		done
 	echo
