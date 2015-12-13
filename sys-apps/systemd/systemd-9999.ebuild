@@ -329,7 +329,7 @@ multilib_src_install_all() {
 	# If we install these symlinks, there is no way for the sysadmin to remove them
 	# permanently.
 	rm "${D}"/etc/systemd/system/multi-user.target.wants/systemd-networkd.service || die
-	rm "${D}"/etc/systemd/system/multi-user.target.wants/systemd-resolved.service || die
+	rm -f "${D}"/etc/systemd/system/multi-user.target.wants/systemd-resolved.service || die
 	rm -r "${D}"/etc/systemd/system/network-online.target.wants || die
 	rm -r "${D}"/etc/systemd/system/sockets.target.wants || die
 	rm -r "${D}"/etc/systemd/system/sysinit.target.wants || die
