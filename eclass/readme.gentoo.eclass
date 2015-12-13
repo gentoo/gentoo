@@ -14,6 +14,8 @@
 # shown via elog messages. With this eclass, those elog messages will only be
 # shown at first package installation and a file for later reviewing will be
 # installed under /usr/share/doc/${PF}
+#
+# This eclass is DEPRECATED. Please use readme.gentoo-r1 instead.
 
 if [[ -z ${_README_GENTOO_ECLASS} ]]; then
 _README_GENTOO_ECLASS=1
@@ -31,8 +33,11 @@ case "${EAPI:-0}" in
 		EXPORT_FUNCTIONS src_install pkg_postinst
 		;;
 	6)
-		# Stop exporting default functions as discussed at:
-		# https://bugs.gentoo.org/show_bug.cgi?id=520094
+		die "Unsupported EAPI=${EAPI} for ${ECLASS}"
+		die "Please migrate to readme.gentoo-r1.eclass and note	that"
+		die "it stops to export any ebuild phases and, then, you will"
+		die "need to ensure readme.gentoo_create_doc is called in"
+		die "src_install and readme.gentoo_print_elog in pkg_postinst"
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
