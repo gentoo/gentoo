@@ -12,7 +12,8 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="x11-proto/xcb-proto
+RDEPEND="
+	x11-proto/xcb-proto
 	x11-libs/libxcb
 	x11-libs/xcb-util
 	x11-libs/libXfixes
@@ -32,5 +33,5 @@ DEPEND="x11-proto/xcb-proto
 	x11-libs/pango
 	dev-libs/glib:2"
 
-RDEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	!dev-tcltk/tcllib"

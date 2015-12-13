@@ -15,7 +15,8 @@
 # shown at first package installation and a file for later reviewing will be
 # installed under /usr/share/doc/${PF}
 #
-# This eclass is DEPRECATED. Please use readme.gentoo-r1 instead.
+# You need to call readme.gentoo_create_doc in src_install phase and
+# readme.gentoo_print_elog in pkg_postinst
 
 if [[ -z ${_README_GENTOO_ECLASS} ]]; then
 _README_GENTOO_ECLASS=1
@@ -23,21 +24,10 @@ _README_GENTOO_ECLASS=1
 inherit eutils
 
 case "${EAPI:-0}" in
-	0|1|2|3)
+	0|1|2|3|4|5)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
-	4|5)
-		# EAPI>=4 is required for REPLACING_VERSIONS preventing us
-		# from needing to export another pkg_preinst phase to save has_version
-		# result. Also relies on EAPI >=4 default src_install phase.
-		EXPORT_FUNCTIONS src_install pkg_postinst
-		;;
 	6)
-		die "Unsupported EAPI=${EAPI} for ${ECLASS}"
-		die "Please migrate to readme.gentoo-r1.eclass and note	that"
-		die "it stops to export any ebuild phases and, then, you will"
-		die "need to ensure readme.gentoo_create_doc is called in"
-		die "src_install and readme.gentoo_print_elog in pkg_postinst"
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -115,24 +105,6 @@ readme.gentoo_print_elog() {
 		elog "installed. Please look at ${EPREFIX}/usr/share/doc/${PF}/README.gentoo*"
 		elog "for future reference)"
 	fi
-}
-
-
-# @FUNCTION: readme.gentoo_src_install
-# @DESCRIPTION:
-# Install generated doc file automatically.
-readme.gentoo_src_install() {
-	debug-print-function ${FUNCNAME} "${@}"
-	default
-	readme.gentoo_create_doc
-}
-
-# @FUNCTION: readme.gentoo_pkg_postinst
-# @DESCRIPTION:
-# Show elog messages from from just generated doc file.
-readme.gentoo_pkg_postinst() {
-	debug-print-function ${FUNCNAME} "${@}"
-	readme.gentoo_print_elog
 }
 
 fi
