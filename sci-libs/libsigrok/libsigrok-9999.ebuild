@@ -19,13 +19,14 @@ HOMEPAGE="http://sigrok.org/wiki/Libsigrok"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="ftdi serial static-libs test usb"
+IUSE="ftdi parport serial static-libs test usb"
 
 # We also support librevisa, but that isn't in the tree ...
 LIB_DEPEND=">=dev-libs/glib-2.32.0[static-libs(+)]
 	>=dev-libs/libzip-0.8[static-libs(+)]
 	dev-cpp/glibmm:2[static-libs(+)]
 	ftdi? ( >=dev-embedded/libftdi-0.16[static-libs(+)] )
+	parport? ( sys-libs/libieee1284[static-libs(+)] )
 	serial? ( dev-libs/libserialport[static-libs(+)] )
 	usb? ( virtual/libusb:1[static-libs(+)] )"
 RDEPEND="!static-libs? ( ${LIB_DEPEND//\[static-libs(+)]} )
@@ -42,6 +43,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_with ftdi libftdi) \
+		$(use_with parport libieee1284) \
 		$(use_with serial libserialport) \
 		$(use_with usb libusb) \
 		$(use_enable static-libs static)
