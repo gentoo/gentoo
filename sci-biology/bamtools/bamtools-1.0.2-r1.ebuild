@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit cmake-utils
 
@@ -15,19 +15,34 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="sys-libs/zlib"
-RDEPEND="${DEPEND}"
+RDEPEND="
+	dev-libs/jsoncpp
+	sys-libs/zlib"
+DEPEND="${RDEPEND}"
+
+src_prepare() {
+	sed \
+		-e '/third_party/d' \
+		-i src/CMakeLists.txt || die
+	rm -r src/third_party || die
+
+	sed \
+		-e 's:json.h:json/json.h:g' \
+		-i src/toolkit/bamtools_filter.cpp || die
+
+	cmake-utils_src_prepare
+}
 
 src_install() {
+	local i
 	for i in bin/bamtools-${PV} lib/libbamtools.so.${PV} lib/libbamtools-utils.so.${PV}; do
 		TMPDIR="$(pwd)" scanelf -Xr $i || die
 	done
 
 	dobin bin/bamtools
-	dolib lib/*
-	insinto /usr/include/bamtools/api
-	doins include/api/*
-	insinto /usr/include/bamtools/shared
-	doins include/shared/*
+	dolib.so lib/*so*
+	use static-libs && dolib.a lib/*a
+	insinto /usr/include/bamtools
+	doins include/api include/shared
 	dodoc README
 }
