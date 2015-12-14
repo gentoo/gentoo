@@ -17079,7 +17079,7 @@ sys-process/lsof 4.87-r1 4.88-r1 4.89: Lists open files for running Unix process
 sys-process/memwatch 0.0.2: Interactive memory viewer
 sys-process/minit 0.9.1 0.10: a small yet feature-complete init
 sys-process/nmon 15g 15h: Nigel's performance MONitor for CPU, memory, network, disks, etc...
-sys-process/numactl 2.0.9 2.0.10 2.0.10-r1 2.0.10-r2: Utilities and libraries for NUMA systems
+sys-process/numactl 2.0.9 2.0.10-r2 2.0.11: Utilities and libraries for NUMA systems
 sys-process/numad 0.5 0.5-r1 0.5-r2 9999: The NUMA daemon that manages application locality
 sys-process/parallel 20150522 20150622 20150822: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/pidof-bsd 20050501-r4: pidof(1) utility for *BSD
