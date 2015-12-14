@@ -13,23 +13,28 @@ SRC_URI="ftp://oss.sgi.com/www/projects/libnuma/download/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 # ARM lacks the __NR_migrate_pages syscall.
-KEYWORDS="~amd64 -arm ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="~amd64 -arm ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux"
 IUSE=""
 
 ECONF_SOURCE=${S}
 
 src_prepare() {
-	eautoreconf
 	epatch "${FILESDIR}"/${PN}-2.0.8-cpuid-pic.patch #456238
+	epatch "${FILESDIR}"/${PN}-2.0.10-numademo-cflags.patch #540856
+	eautoreconf
+	# We need to copy the sources or else tests will fail
+	multilib_copy_sources
 }
 
-src_test() {
-	if [ -d /sys/devices/system/node ]; then
-		einfo "The only generically safe test is regress2."
-		einfo "The other test cases require 2 NUMA nodes."
-		emake regress2
-	else
-		ewarn "You do not have baseline NUMA support in your kernel, skipping tests."
+multilib_src_test() {
+	if multilib_is_native_abi ; then
+		if [ -d /sys/devices/system/node ]; then
+			einfo "The only generically safe test is regress2."
+			einfo "The other test cases require 2 NUMA nodes."
+			emake regress2
+		else
+			ewarn "You do not have baseline NUMA support in your kernel, skipping tests."
+		fi
 	fi
 }
 
