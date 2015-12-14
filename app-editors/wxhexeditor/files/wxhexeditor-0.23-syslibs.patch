@@ -1,0 +1,84 @@
+Use system copies of mhash and udis86.
+Also pass -fopenmp when linking to avoid build errors.
+
+--- a/Makefile
++++ b/Makefile
+@@ -3,9 +3,9 @@ WXCONFIG = wx-config
+ #CXX ?= `$(WXCONFIG) --cxx`
+ CC = `$(WXCONFIG) --cc`
+ CXX = `$(WXCONFIG) --cxx`
+-LDFLAGS += -lgomp
++LDFLAGS += -fopenmp -lgomp
+ #add this ldflags for WinConsole  "-Wl,--subsystem,console -mconsole" for win-debug
+-WXCXXFLAGS= `$(WXCONFIG) --cxxflags` -Iudis86 -Imhash/include -MMD -fopenmp
++WXCXXFLAGS= `$(WXCONFIG) --cxxflags` -MMD -fopenmp
+ WXLDFLAGS = `$(WXCONFIG) --libs` `$(WXCONFIG) --libs aui` `$(WXCONFIG) --libs core`
+ RC = `$(WXCONFIG) --rescomp`
+ #RC = x86_64-w64-mingw32-windres --define WX_CPU_AMD64
+@@ -25,7 +25,7 @@ SOURCES= src/HexEditorGui.cpp \
+ 			src/HexEditorCtrl/wxHexCtrl/Tag.cpp\
+ 			src/HexEditorCtrl/HexEditorCtrlGui.cpp\
+ 			src/HexEditorFrame.cpp
+-LIBS = udis86/libudis86/.libs/libudis86.a mhash/lib/.libs/libmhash.a
++LIBS = -ludis86 -lmhash
+ OBJECTS=$(SOURCES:.cpp=.o)
+ DEPENDS=$(OBJECTS:.o=.d)
+ LANGUAGEDIRS=`ls -l ./locale | grep ^d | sed s/.*\ //g;`
+@@ -36,7 +36,7 @@ EXECUTABLE=wxHexEditor
+ EXECUTABLE_WIN=$(EXECUTABLE).exe
+ EXECUTABLE_DIR_MAC=$(EXECUTABLE).app
+ 
+-PREFIX      = /usr/local
++PREFIX      = /usr
+ BINDIR      = $(PREFIX)/bin
+ DATADIR     = $(PREFIX)/share
+ LOCALEDIR   = $(DATADIR)/locale
+@@ -63,15 +63,6 @@ langs: $(MOBJECTS)
+ %.mo : %.po
+ 	$(MSGFMT) $< -o $@
+ 
+-udis86/libudis86/.libs/libudis86.a:
+-	cd udis86;./autogen.sh
+-	cd udis86;./configure --host=$(HOST) CFLAGS="$(CFLAGS)" CXXFLAGS="$(CXXFLAGS)" CPPFLAGS="$(CPPFLAGS)"
+-	cd udis86/libudis86; $(MAKE) $(MFLAGS)
+-
+-mhash/lib/.libs/libmhash.a:
+-	cd mhash; ./configure --host=$(HOST) CFLAGS="$(CFLAGS)" CXXFLAGS="$(CXXFLAGS)" CPPFLAGS="$(CPPFLAGS)"
+-	cd mhash; $(MAKE) $(MFLAGS)
+-
+ win: $(RESOURCES) $(EXECUTABLE_WIN)
+ 
+ #Stack override required for file comparison function...
+--- a/src/HexDialogs.cpp
++++ b/src/HexDialogs.cpp
+@@ -24,7 +24,7 @@
+ #define NANINT 0xFFFFFFFFFFFFFFFFLL
+ #include "HexDialogs.h"
+ #include <wx/progdlg.h>
+-#include "../mhash/include/mhash.h"
++#include <mhash.h>
+ 
+ #ifdef _OPENMP_
+    #include <omp.h>
+--- a/src/HexEditor.h
++++ b/src/HexEditor.h
+@@ -25,7 +25,7 @@
+ #ifndef _wxHexEditor_h_
+ #define _wxHexEditor_h_
+ 
+-#include "../mhash/include/mhash.h"
++#include <mhash.h>
+ 
+ #include <wx/ffile.h>
+ #include <wx/clipbrd.h>
+--- a/src/HexPanels.h
++++ b/src/HexPanels.h
+@@ -27,7 +27,7 @@
+ #include "HexEditorFrame.h"
+ #include "HexEditorCtrl/HexEditorCtrl.h"
+ #include "HexEditorCtrl/wxHexCtrl/wxHexCtrl.h"
+-#include "../udis86/udis86.h"
++#include <udis86.h>
+ 
+ #ifdef WX_GCH
+ #include <wx_pch.h>
