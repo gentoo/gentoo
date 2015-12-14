@@ -53,6 +53,14 @@ src_install () {
 		elisp-install ${PN} mu4e/*.el mu4e/*.elc
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 	fi
+	# TODO: Add guile man page when guile-2 is available.
+	doman man/mu-add.1 man/mu-bookmarks.5 man/mu-cfind.1 man/mu-easy.1 \
+		  man/mu-extract.1 man/mu-find.1 man/mu-help.1 man/mu-index.1 \
+		  man/mu-mkdir.1 man/mu-remove.1 man/mu-server.1 man/mu-verify.1 \
+		  man/mu-view.1 man/mu.1
+	if use gui; then
+		dobin man/mug.1
+	fi
 }
 
 src_test () {
