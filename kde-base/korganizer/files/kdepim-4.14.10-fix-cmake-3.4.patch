@@ -1,0 +1,23 @@
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 13 Dec 2015 09:20:24 +0000
+Subject: Fix configure with >=cmake-3.4
+X-Git-Url: http://quickgit.kde.org/?p=kdepim.git&a=commitdiff&h=91275a772e51a4031b8f34bc83652b5e60478624
+---
+Fix configure with >=cmake-3.4
+
+REVIEW: 126334
+---
+
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,6 +3,8 @@
+ 
+ # where to look first for cmake modules. This line must be the first one or cmake will use the system's FindFoo.cmake
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules")
++
++include(CheckIncludeFiles)
+ 
+ ############### Build Options ###############
+ 
+
