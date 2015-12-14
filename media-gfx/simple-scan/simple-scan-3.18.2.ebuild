@@ -21,7 +21,7 @@ IUSE="colord"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.32:2
-	dev-libs/libgusb
+	dev-libs/libgusb[vala]
 	>=media-gfx/sane-backends-1.0.20:=
 	>=sys-libs/zlib-1.2.3.1:=
 	virtual/jpeg:0=
