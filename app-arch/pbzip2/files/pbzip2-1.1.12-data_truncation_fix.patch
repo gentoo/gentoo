@@ -1,0 +1,142 @@
+https://bugs.launchpad.net/pbzip2/+bug/1524909
+https://bugs.gentoo.org/567952
+
+
+=== modified file 'pbzip2.cpp'
+--- pbzip2.cpp	2014-12-21 10:20:27 +0000
++++ pbzip2.cpp	2015-12-11 00:14:31 +0000
+@@ -2083,6 +2083,17 @@
+ 	return 0;
+ }
+ 
++void close_streams(FILE *stream, FILE *zStream)
++{
++	if (stream != NULL)
++		fflush(stream);
++
++	if (zStream != NULL && zStream != stdin)
++		fclose(zStream);
++	if (stream != NULL && stream != stdout)
++		fclose(stream);
++}
++
+ /*
+  *********************************************************
+  */
+@@ -2125,9 +2136,7 @@
+ 	// check file stream for errors
+ 	if (ferror(zStream))
+ 	{
+-		if (zStream != stdin)
+-			fclose(zStream);
+-
++		close_streams(stream, zStream);
+ 		handle_error(EF_EXIT, -1,
+ 				"pbzip2: *ERROR: Problem with input stream of file [%s]!  Aborting...\n", InFilename);
+ 		return -1;
+@@ -2155,9 +2164,7 @@
+ 	// check file stream for errors
+ 	if (ferror(stream))
+ 	{
+-		if (stream != stdout)
+-			fclose(stream);
+-		
++		close_streams(stream, zStream);
+ 		handle_error(EF_EXIT, -1,
+ 				"pbzip2: *ERROR: Problem with output stream of file [%s]!  Aborting...\n", InFilename);
+ 		return -1;
+@@ -2169,10 +2176,7 @@
+ 		if (syncGetTerminateFlag() != 0)
+ 		{
+ 			fprintf (stderr, "directdecompress: terminating1 - terminateFlag set\n");
+-			if (zStream != stdin)
+-				fclose(zStream);
+-			if (stream != stdout)
+-				fclose(stream);
++			close_streams(stream, zStream);
+ 			return -1;
+ 		}
+ 
+@@ -2180,11 +2184,8 @@
+ 		if (bzf == NULL || bzerr != BZ_OK)
+ 		{
+ 			ret = testBZ2ErrorHandling(bzerr, bzf, streamNo);
+-			if (zStream != stdin)
+-				fclose(zStream);
+-			if (stream != stdout)
+-				fclose(stream);
+-			
++			close_streams(stream, zStream);
++	
+ 			if (ret != 0)
+ 			{
+ 				syncSetTerminateFlag(1);
+@@ -2200,10 +2201,7 @@
+ 			if (syncGetTerminateFlag() != 0)
+ 			{
+ 				fprintf (stderr, "directdecompress: terminating2 - terminateFlag set\n");
+-				if (zStream != stdin)
+-					fclose(zStream);
+-				if (stream != stdout)
+-					fclose(stream);
++				close_streams(stream, zStream);
+ 				return -1;
+ 			}
+ 
+@@ -2225,11 +2223,8 @@
+ 						if (ferror(zStream))
+ 						{
+ 							ret = testBZ2ErrorHandling(bzerr, bzf, streamNo);
+-							if (zStream != stdin)
+-								fclose(zStream);
+-							if (stream != stdout)
+-								fclose(stream);
+-							
++							close_streams(stream, zStream);
++
+ 							if (ret != 0)
+ 							{
+ 								syncSetTerminateFlag(1);
+@@ -2242,11 +2237,8 @@
+ 						if (ferror(stream))
+ 						{
+ 							ret = testBZ2ErrorHandling(bzerr, bzf, streamNo);
+-							if (zStream != stdin)
+-								fclose(zStream);
+-							if (stream != stdout)
+-								fclose(stream);
+-							
++							close_streams(stream, zStream);
++
+ 							if (ret != 0)
+ 							{
+ 								syncSetTerminateFlag(1);
+@@ -2263,11 +2255,8 @@
+ 			if (ferror(stream))
+ 			{
+ 				ret = testBZ2ErrorHandling(bzerr, bzf, streamNo);
+-				if (zStream != stdin)
+-					fclose(zStream);
+-				if (stream != stdout)
+-					fclose(stream);
+-				
++				close_streams(stream, zStream);
++
+ 				if (ret != 0)
+ 				{
+ 					syncSetTerminateFlag(1);
+@@ -2278,11 +2267,8 @@
+ 		if (bzerr != BZ_STREAM_END)
+ 		{
+ 			ret = testBZ2ErrorHandling(bzerr, bzf, streamNo);
+-			if (zStream != stdin)
+-				fclose(zStream);
+-			if (stream != stdout)
+-				fclose(stream);
+-			
++			close_streams(stream, zStream);
++
+ 			if (ret != 0)
+ 			{
+ 				syncSetTerminateFlag(1);
+
