@@ -10,13 +10,11 @@ inherit eutils multilib toolchain-funcs perl-functions python-any-r1
 
 DESCRIPTION="easy hugepage access"
 HOMEPAGE="https://github.com/libhugetlbfs/libhugetlbfs"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-# Switch to github tarball w/next release.
-#SRC_URI="https://github.com/libhugetlbfs/libhugetlbfs/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/libhugetlbfs/libhugetlbfs/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~s390 ~x86"
 IUSE="perl static-libs test"
 
 DEPEND="test? ( ${PYTHON_DEPS} )"
@@ -26,7 +24,7 @@ src_prepare() {
 	perl_set_version
 
 	epatch "${FILESDIR}"/${PN}-2.9-build.patch #332517
-	epatch "${FILESDIR}"/${PN}-2.6-noexec-stack.patch
+	epatch "${FILESDIR}"/${PN}-2.20-noexec-stack.patch
 	epatch "${FILESDIR}"/${PN}-2.6-fixup-testsuite.patch
 	sed -i \
 		-e '/^PREFIX/s:/local::' \
@@ -42,6 +40,10 @@ src_prepare() {
 			-e "/^LIB\(32\)/s:=.*:= lib32:" \
 				Makefile
 	fi
+
+	# Tarballs from github don't have the version set.
+	# https://github.com/libhugetlbfs/libhugetlbfs/issues/7
+	[[ -f version ]] || echo "${PV}" > version
 }
 
 src_compile() {
