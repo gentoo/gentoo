@@ -74,13 +74,6 @@ multilib_src_test() {
 		retstatus_unit=$?
 		[[ $retstatus_unit -eq 0 ]] || eerror "test-unit failed"
 
-		# Create a symlink to provided binaries so the tests can find them when client-libs is off
-		if ! use client-libs ; then
-			ln -srf /usr/bin/my_print_defaults "${BUILD_DIR}/client/my_print_defaults" || die
-			ln -srf /usr/bin/perror "${BUILD_DIR}/client/perror" || die
-			mysql-multilib_disable_test main.perror "String mismatch due to not building local perror"
-		fi
-
 		# Ensure that parallel runs don't die
 		export MTR_BUILD_THREAD="$((${RANDOM} % 100))"
 		# Enable parallel testing, auto will try to detect number of cores

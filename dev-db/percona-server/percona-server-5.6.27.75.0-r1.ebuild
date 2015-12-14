@@ -96,13 +96,6 @@ multilib_src_test() {
 		# create directories because mysqladmin might right out of order
 		mkdir -p "${T}"/var-tests{,/log}
 
-		# Create a symlink to provided binaries so the tests can find them when client-libs is off
-		if ! use client-libs ; then
-			ln -srf /usr/bin/my_print_defaults "${BUILD_DIR}/client/my_print_defaults" || die
-			ln -srf /usr/bin/perror "${BUILD_DIR}/client/perror" || die
-			mysql-multilib_disable_test main.perror "String mismatch due to not building local perror"
-		fi
-
 		# These are failing in Percona 5.6 for now and are believed to be
 		# false positives:
 		#
