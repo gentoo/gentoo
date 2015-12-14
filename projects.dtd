@@ -13,7 +13,7 @@
 <!ELEMENT member (email,name,role)>
 <!-- is-lead="1" indicates that the member is the project's lead -->
 <!ATTLIST member
-          is-lead CDATA #FIXED "1">
+          is-lead (0|1) "1">
 <!-- Project member role -->
 <!ELEMENT role (#PCDATA)>
 <!-- Subproject of a project -->
@@ -22,5 +22,5 @@
 	from the subproject -->
 <!-- ref="" references the subproject by the contact e-mail address -->
 <!ATTLIST subproject
-          inherit-members CDATA #FIXED "1"
+          inherit-members (0|1) "1"
           ref CDATA #REQUIRED>
