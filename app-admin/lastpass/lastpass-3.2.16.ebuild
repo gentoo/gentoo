@@ -8,11 +8,13 @@ inherit eutils
 DESCRIPTION="Online password manager and form filler that makes web browsing easier and more secure"
 HOMEPAGE="https://lastpass.com/misc_download2.php"
 # sadly, upstream has no versioned distfiles
-MAINDISTFILE=lplinux.tar.bz2
+DIST_MAIN=lplinux-${PV}.tar.bz2
+DIST_CRX=lpchrome_linux-${PV}.crx # Use by both firefox+chrome/chromimum code
+DIST_XPI=lp_linux-${PV}.xpi
 SRC_URI="
-	https://lastpass.com/${MAINDISTFILE} -> ${P}.tar.bz2
-	https://lastpass.com/lpchrome_linux.crx -> lpchrome_linux-${PV}.crx
-	firefox? ( https://lastpass.com/lp_linux.xpi -> lp_linux-${PV}.xpi )"
+	https://lastpass.com/lplinux.tar.bz2 -> ${DIST_MAIN}
+	https://lastpass.com/lpchrome_linux.crx -> ${DIST_CRX}
+	firefox? ( https://lastpass.com/lp_linux.xpi -> ${DIST_XPI} )"
 
 LICENSE="LastPass"
 SLOT="0"
@@ -43,11 +45,11 @@ QA_PREBUILT="
 S="${WORKDIR}"
 
 src_unpack() {
-	unpack ${P}.tar.bz2
+	unpack ${DIST_MAIN}
 	mkdir -p "${S}"/crx || die
 	# bug #524864: strip Chrome CRX header
 	# otherwise the unzip warning can be fatal in some cases
-	dd bs=306 skip=1 if="${DISTDIR}"/lpchrome_linux-${PV}.crx of="${T}"/lpchrome_linux.zip 2>/dev/null || die
+	dd bs=306 skip=1 if="${DISTDIR}"/${DIST_CRX} of="${T}"/lpchrome_linux.zip 2>/dev/null || die
 	unzip -qq -o "${T}"/lpchrome_linux.zip -d "${S}"/crx || die
 }
 
@@ -85,23 +87,20 @@ src_install() {
 	}
 	EOF
 
-	if use chromium; then
-		insinto /etc/chromium/policies/managed
+	for d in \
+		$(usex chromium /etc/chromium '') \
+		$(usex chrome /etc/opt/chrome '') \
+		; do
+		insinto ${d}/policies/managed
 		doins "${T}"/lastpass_policy.json
-		insinto /etc/opt/chrome/native-messaging-hosts/
+		insinto ${d}/native-messaging-hosts
 		doins "${T}"/com.lastpass.nplastpass.json
-	fi
-	if use chrome; then
-		insinto /etc/opt/chrome/policies/managed/
-		doins "${T}"/lastpass_policy.json
-		insinto /etc/chromium/native-messaging-hosts
-		doins "${T}"/com.lastpass.nplastpass.json
-	fi
+	done
 
 	if use firefox; then
 		d="$D/usr/$(get_libdir)/firefox/browser/extensions/support@lastpass.com"
 		mkdir -p $d || die
-		unzip -qq -o "${DISTDIR}/lp_linux-${PV}.xpi" -d "$d" || die
+		unzip -qq -o "${DISTDIR}/${DIST_XPI}" -d "$d" || die
 	fi
 }
 
