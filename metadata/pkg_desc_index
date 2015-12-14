@@ -11937,7 +11937,7 @@ media-gfx/photoqt 1.3: Simple but powerful Qt-based image viewer
 media-gfx/phototonic 1.5.54 1.6.6 1.6.17: Image viewer and organizer
 media-gfx/pictureflow 0.1.0: Qt widget to display images with animated transition effect
 media-gfx/picturewall 1.0-r1: Qt4 picture viewer and image searching tool using google.com
-media-gfx/pinta 1.4 1.6 1.6-r1 9999: Simple Painting for Gtk
+media-gfx/pinta 1.4 1.6 1.6-r1 1.6-r2 9999: Simple Painting for Gtk
 media-gfx/pixels2pgf 0.1 9999: Convert pixel images (e.g. QRCode) to PGF/Tikz rectangles
 media-gfx/pixie 2.2.6-r1: RenderMan like photorealistic renderer
 media-gfx/plantuml 7999: PlantUML is used to draw UML diagram, using a simple and human readable text description
