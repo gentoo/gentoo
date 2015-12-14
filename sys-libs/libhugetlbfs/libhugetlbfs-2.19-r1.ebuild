@@ -51,8 +51,8 @@ src_compile() {
 
 src_install() {
 	default
-	use static-libs || rm -f "${D}"/usr/$(get_libdir)/*.a
-	rm "${D}"/usr/bin/oprofile* || die
+	use static-libs || rm -f "${ED}"/usr/$(get_libdir)/*.a
+	rm "${ED}"/usr/bin/oprofile* || die
 }
 
 src_test_alloc_one() {
