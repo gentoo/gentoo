@@ -16,7 +16,7 @@ SRC_URI="https://github.com/openid/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-macos"
+KEYWORDS="amd64 ~ppc ~x86 ~x86-macos"
 IUSE="test"
 
 all_ruby_prepare() {
