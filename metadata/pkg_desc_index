@@ -123,7 +123,7 @@ app-admin/keepass 2.30: A free, open source, light-weight and easy-to-use passwo
 app-admin/keepassx 0.4.3 0.4.4 2.0_beta2 2.0: Qt password manager compatible with its Win32 and Pocket PC versions
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 2.7 2.8 3.0: A command line interface to KeePass database files
-app-admin/lastpass 3.1.61: Online password manager and form filler that makes web browsing easier and more secure
+app-admin/lastpass 3.2.16: Online password manager and form filler that makes web browsing easier and more secure
 app-admin/lastpass-cli 0.6.0: Interfaces with LastPass.com from the command line.
 app-admin/lib_users 0.9: Checks /proc for libraries being mapped but marked as deleted
 app-admin/lnav 0.6.1 0.6.2 0.7.0 0.7.1: A curses-based tool for viewing and analyzing log files
