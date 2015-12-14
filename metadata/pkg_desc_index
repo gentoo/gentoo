@@ -5530,6 +5530,7 @@ dev-perl/File-ShareDir-Install 0.90.0: Install shared files
 dev-perl/File-Slurp 9999.190.0-r1: Efficient Reading/Writing of Complete Files
 dev-perl/File-Slurp-Tiny 0.4.0: A simple, sane and efficient file slurper
 dev-perl/File-Slurp-Unicode 0.7.1-r1: Reading/Writing of Complete Files with Character Encoding Support
+dev-perl/File-Slurper 0.0.800: A simple, sane and efficient module to slurp a file
 dev-perl/File-Sort 1.10.0-r1: Sort a file or merge sort multiple files
 dev-perl/File-Stat-Bits 1.10.0-r1: File stat bit mask constants
 dev-perl/File-Stat-Moose 0.60.0-r1: Status info for a file - Moose-based
@@ -5777,7 +5778,7 @@ dev-perl/MailTools 2.120.0-r1 2.140.0: Manipulation of electronic mail addresses
 dev-perl/Math-Base-Convert 0.80.0: Very fast base to base conversion
 dev-perl/Math-Base36 0.120.0-r1 0.140.0: Encoding and decoding of base36 strings
 dev-perl/Math-Bezier 0.10.0-r1: Solution of Bezier Curves
-dev-perl/Math-BigInt-GMP 1.380.0: Use the GMP library for Math::BigInt routines
+dev-perl/Math-BigInt-GMP 1.380.0 1.460.0: Use the GMP library for Math::BigInt routines
 dev-perl/Math-Calc-Units 1.70.0-r1: Human-readable unit-aware calculator
 dev-perl/Math-Derivative 0.10.0-r1: 1st and 2nd order differentiation of data
 dev-perl/Math-GMP 2.60.0-r1: High speed arbitrary size integer math
@@ -5786,7 +5787,7 @@ dev-perl/Math-NumberCruncher 5.0.0: Collection of useful math-related functions
 dev-perl/Math-Random 0.710.0-r1 0.720.0: Random Number Generators
 dev-perl/Math-Random-ISAAC 1.4.0-r1: Perl interface to the ISAAC PRNG algorithm
 dev-perl/Math-Random-ISAAC-XS 1.4.0-r1: C implementation of the ISAAC PRNG algorithm
-dev-perl/Math-Random-MT 1.160.0-r1: The Mersenne Twister PRNG
+dev-perl/Math-Random-MT 1.170.0: The Mersenne Twister PRNG
 dev-perl/Math-Random-Secure 0.60.0-r1: Cryptographically-secure, cross-platform replacement for rand()
 dev-perl/Math-Round 0.60.0-r1: Perl extension for rounding numbers
 dev-perl/Math-Spline 0.10.0-r1: Cubic Spline Interpolation of data
@@ -6003,7 +6004,7 @@ dev-perl/Plucene 1.250.0-r1 1.250.0-r2: Plucene - the Perl lucene port
 dev-perl/Pod-Abstract 0.200.0-r1: Abstract document tree for Perl POD documents
 dev-perl/Pod-Coverage 0.230.0-r1: Checks if the documentation of a module is comprehensive
 dev-perl/Pod-LaTeX 0.610.0: Convert Pod data to formatted LaTeX
-dev-perl/Pod-POM 0.280.0-r1 0.290.0: POD Object Model
+dev-perl/Pod-POM 0.280.0-r1 0.290.0 2.10.0: POD Object Model
 dev-perl/Pod-Readme 0.110.0-r1: Convert POD to README file
 dev-perl/Pod-Spell 1.10.0-r1: A formatter for spellchecking Pod
 dev-perl/Pod-Strip 1.20.0: Remove POD from Perl code
@@ -13722,7 +13723,7 @@ net-dns/namecoin-qt 0.3.72 0.3.80: A P2P network based domain name system
 net-dns/namecoind 0.3.72 0.3.80: A P2P network based domain name system
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
 net-dns/noip-updater 2.1.9-r1: no-ip.com dynamic DNS updater
-net-dns/nsd 3.2.18 4.1.0: An authoritative only, high performance, open source name server
+net-dns/nsd 3.2.18 3.2.20 4.1.0 4.1.7: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.17 1.3.18 1.4.7 1.4.8.2: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.6.1 3.6.2 3.7.0 3.7.2: A framework for managing DNS information
