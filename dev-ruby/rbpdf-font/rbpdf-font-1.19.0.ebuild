@@ -14,7 +14,7 @@ RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Ruby on Rails RBPDF plugin"
+DESCRIPTION="Font files for the Ruby on Rails RBPDF plugin"
 HOMEPAGE="https://github.com/naitoh/rbpdf"
 
 LICENSE="LGPL-2.1+"
