@@ -1,11 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
-WX_GTK_VER="2.8"
+EAPI="5"
 
-inherit eutils toolchain-funcs wxwidgets
+PLOCALES="ar cs de es fr hu_HU it ja_JP nl_NL pl pt_BR ro ru tr zh_CN"
+
+inherit eutils l10n toolchain-funcs wxwidgets
 
 MY_PN="wxHexEditor"
 
@@ -18,9 +19,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="app-crypt/mhash
+DEPEND="
+	app-crypt/mhash
 	dev-libs/udis86
-	x11-libs/wxGTK:2.8[X]"
+	x11-libs/wxGTK:3.0[X]"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_PN}"
@@ -31,5 +33,14 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-makefile.patch
+	WX_GTK_VER="3.0" need-wxwidgets unicode
+	epatch "${FILESDIR}"/${P}-syslibs.patch
+
+	do_kill_locale() {
+		rm -r "${S}"/locale/${1}
+	}
+
+	rm "${S}"/locale/wxHexEditor.pot
+	l10n_find_plocales_changes "${S}"/locale '' ''
+	l10n_for_each_disabled_locale_do do_kill_locale
 }
