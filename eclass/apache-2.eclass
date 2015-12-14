@@ -368,7 +368,7 @@ check_upgrade() {
 		eerror "(${EROOT}etc/apache2/apache2-builtin-mods) exists on your"
 		eerror "system."
 		eerror
-		eerror "Please read https://www.gentoo.org/doc/en/apache-upgrading.xml"
+		eerror "Please read https://wiki.gentoo.org/wiki/Project:Apache/Upgrading"
 		eerror "for detailed information how to convert this file to the new"
 		eerror "APACHE2_MODULES USE_EXPAND variable."
 		eerror
