@@ -9,7 +9,7 @@ inherit eutils multilib perl-functions python-any-r1 toolchain-funcs
 
 DESCRIPTION="easy hugepage access"
 HOMEPAGE="https://github.com/libhugetlbfs/libhugetlbfs"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/libhugetlbfs/libhugetlbfs/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -38,6 +38,12 @@ src_prepare() {
 		sed -i \
 			-e "/^LIB\(32\)/s:=.*:= lib32:" \
 				Makefile || die "sed failed"
+	fi
+
+	# Workaround for https://github.com/libhugetlbfs/libhugetlbfs/issues/7
+	if [ ! -f "${S}"/version ] ; then
+		einfo "Creating version file ..."
+		echo ${PV} > "${S}"/version || die "Failed to create version file"
 	fi
 }
 
