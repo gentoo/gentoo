@@ -28,6 +28,7 @@ src_prepare() {
 		-e '/^PREFIX/s:/local::' \
 		-e '1iBUILDTYPE = NATIVEONLY' \
 		-e '1iV = 1' \
+		-e '/gzip.*MANDIR/d' \
 		-e "/^LIB\(32\)/s:=.*:= $(get_libdir):" \
 		-e '/^CC\(32\|64\)/s:=.*:= $(CC):' \
 		-e "/^PMDIR = .*\/perl5\/TLBC/s::PMDIR = ${VENDOR_LIB}\/TLBC:" \
