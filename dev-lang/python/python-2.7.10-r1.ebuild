@@ -46,7 +46,7 @@ RDEPEND="app-arch/bzip2
 		) )
 		gdbm? ( sys-libs/gdbm[berkdb] )
 		ncurses? (
-			>=sys-libs/ncurses-5.2
+			>=sys-libs/ncurses-5.2:0
 			readline? ( >=sys-libs/readline-4.1 )
 		)
 		sqlite? ( >=dev-db/sqlite-3.3.8:3 )

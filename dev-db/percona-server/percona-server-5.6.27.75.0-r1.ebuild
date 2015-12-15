@@ -131,7 +131,7 @@ multilib_src_test() {
 			engines/funcs.db_alter_collate_ascii engines/funcs.db_alter_collate_utf8 \
 			engines/funcs.db_create_character_set engines/funcs.db_create_character_set_collate \
 			main.percona_bug1289599 main.mysqlhotcopy_archive main.mysqlhotcopy_myisam ; do
-				mysql-multilib_disable_test  "$t" "False positives in Gentoo"
+				mysql-multilib-r1_disable_test  "$t" "False positives in Gentoo"
 		done
 
 		# Run mysql tests

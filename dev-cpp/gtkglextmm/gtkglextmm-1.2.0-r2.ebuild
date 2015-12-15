@@ -5,7 +5,7 @@
 EAPI=5
 GCONF_DEBUG="yes"
 
-inherit eutils gnome2
+inherit eutils flag-o-matic gnome2
 
 DESCRIPTION="C++ bindings for gtkglext"
 HOMEPAGE="https://projects.gnome.org/gtkglext/"
@@ -36,6 +36,7 @@ src_prepare() {
 		die "sed Makefile.in failed"
 
 	gnome2_src_prepare
+	append-cxxflags -std=c++11 #568024
 }
 
 src_install() {

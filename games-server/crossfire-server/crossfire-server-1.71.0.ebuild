@@ -28,6 +28,7 @@ RDEPEND=${DEPEND}
 src_prepare() {
 	rm -f "${WORKDIR}"/maps/Info/combine.pl # bug #236205
 	ln -s "${WORKDIR}/arch" "${S}/lib" || die
+	epatch "${FILESDIR}"/${P}-format.patch
 }
 
 src_configure() {

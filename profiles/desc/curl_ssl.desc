@@ -3,12 +3,13 @@
 # $Id$
 
 # This file contains descriptions of CURL_SSL USE_EXPAND flags for net-misc/curl
-#spnego - Use SPNEGO fbopenssl - to be added
+# spnego - Use SPNEGO fbopenssl - to be added
 
 axtls - Use axTLS
 gnutls - Use GnuTLS
-nss - Use Mozilla's Network Security Services 
 libressl - Use LibreSSL
+mbedtls - Use mbed TLS
+nss - Use Mozilla's Network Security Services 
 openssl - Use OpenSSL
-polarssl - Use Polar SSL
+polarssl - Use PolarSSL
 winssl - Use WinSSL (only with elibc_Winnt) 

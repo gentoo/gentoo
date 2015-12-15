@@ -3,8 +3,7 @@
 # $Id$
 
 EAPI="5"
-
-inherit gnome2
+inherit flag-o-matic gnome2
 
 DESCRIPTION="C++ interface for GStreamer"
 HOMEPAGE="http://gstreamer.freedesktop.org/bindings/cplusplus.html"
@@ -47,6 +46,7 @@ src_prepare() {
 	fi
 
 	gnome2_src_prepare
+	append-cxxflags -std=c++11 #568254 , fixed in master
 }
 
 src_configure() {
@@ -55,5 +55,5 @@ src_configure() {
 
 src_test() {
 	# running tests in parallel fails
-	emake -j1 check || die
+	emake -j1 check
 }

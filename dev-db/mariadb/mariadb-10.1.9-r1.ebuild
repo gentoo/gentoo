@@ -167,7 +167,7 @@ multilib_src_test() {
 			binlog.binlog_statement_insert_delayed main.information_schema \
 			main.mysqld--help plugins.cracklib_password_check \
 			funcs_1.is_triggers funcs_1.is_tables_mysql funcs_1.is_columns_mysql ; do
-				mysql-multilib_disable_test  "$t" "False positives in Gentoo"
+				mysql-multilib-r1_disable_test  "$t" "False positives in Gentoo"
 		done
 
 		# Run mysql tests
