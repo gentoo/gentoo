@@ -6,7 +6,7 @@ EAPI="5"
 GCONF_DEBUG="no"
 GNOME_TARBALL_SUFFIX="bz2"
 
-inherit gnome2
+inherit flag-o-matic gnome2
 
 DESCRIPTION="C++ bindings for libgnomecanvas"
 HOMEPAGE="http://www.gtkmm.org"
@@ -32,6 +32,7 @@ src_prepare() {
 			die "sed Makefile.in failed"
 	fi
 	gnome2_src_prepare
+	append-cxxflags -std=c++11 #568300
 }
 
 src_compile() {
