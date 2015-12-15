@@ -301,17 +301,14 @@ src_prepare() {
 	use nls || rm -f po/*.po
 
 	epatch "${FILESDIR}"/qemu-1.7.0-cflags.patch
-	epatch "${FILESDIR}"/${PN}-2.4.0-block-mirror-crash.patch #558396
-	epatch "${FILESDIR}"/${PN}-2.4.0-CVE-2015-7295-{1,2,3}.patch #560760
-	epatch "${FILESDIR}"/${PN}-2.4.0-CVE-2015-6855.patch #560422
+	epatch "${FILESDIR}"/${PN}-2.4.1-CVE-2015-{7504,7512}.patch #567144
+	epatch "${FILESDIR}"/${PN}-2.4.1-CVE-2015-8345.patch #566792
+	epatch "${FILESDIR}"/${PN}-2.4.1-CVE-2015-8504.patch #567828
+	epatch "${FILESDIR}"/${PN}-2.4.1-CVE-2015-7549.patch #568214
+	epatch "${FILESDIR}"/${PN}-2.4-mips-* #563162
 	[[ -n ${BACKPORTS} ]] && \
 		EPATCH_FORCE=yes EPATCH_SUFFIX="patch" EPATCH_SOURCE="${S}/patches" \
 			epatch
-
-	# MIPS specific fixes. Bug #563162
-	for x in "${FILESDIR}"/${PN}-2.4-mips-*; do
-		epatch "${x}"
-	done
 
 	# Fix ld and objcopy being called directly
 	tc-export AR LD OBJCOPY
