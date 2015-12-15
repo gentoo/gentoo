@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare pretend test
+DEPEND=bzip2? ( app-arch/bzip2 ) >=x11-libs/gtk+-2.24.18:2 >=dev-cpp/gtkmm-2.12:2.4 >=dev-cpp/glibmm-2.16:2 dev-libs/expat dev-libs/libsigc++:2 media-libs/libcanberra[gtk] media-libs/tiff media-libs/libpng media-libs/libiptcdata media-libs/lcms:2 sci-libs/fftw:3.0 sys-libs/zlib virtual/jpeg app-arch/xz-utils virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=A powerful cross-platform raw image processing program
+EAPI=5
+HOMEPAGE=http://www.rawtherapee.com/
+IUSE=bzip2 openmp
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=bzip2? ( app-arch/bzip2 ) >=x11-libs/gtk+-2.24.18:2 >=dev-cpp/gtkmm-2.12:2.4 >=dev-cpp/glibmm-2.16:2 dev-libs/expat dev-libs/libsigc++:2 media-libs/libcanberra[gtk] media-libs/tiff media-libs/libpng media-libs/libiptcdata media-libs/lcms:2 sci-libs/fftw:3.0 sys-libs/zlib virtual/jpeg
+SLOT=0
+SRC_URI=http://rawtherapee.com/shared/source/rawtherapee-4.2.tar.xz
+_eclass_exported_funcs=pkg_pretend:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	b657a2689df4f46725711250cf9c8a32	eutils	d9bd2ddd85a58e470b49ca997e255a4c	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=9cf07c47f35acf3cd20161006844d86b
