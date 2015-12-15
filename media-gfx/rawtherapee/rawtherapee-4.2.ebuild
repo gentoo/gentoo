@@ -33,6 +33,10 @@ DEPEND="${RDEPEND}
 	app-arch/xz-utils
 	virtual/pkgconfig"
 
+PATCHES=(
+        "${FILESDIR}"/${P}-cxx11.patch # Upstream patch for fixing bug #568136
+)
+
 pkg_pretend() {
 	if use openmp ; then
 		tc-has-openmp || die "Please switch to an openmp compatible compiler"
