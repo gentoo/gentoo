@@ -251,7 +251,7 @@ app-arch/defluff 0.3.2: deflate huffman optimizer
 app-arch/deltarpm 3.6_pre20110223-r1: tools to create and apply deltarpms
 app-arch/dpkg 1.17.25 1.17.26 1.18.3: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
-app-arch/dump 0.4.44-r1: Dump/restore ext2fs backup utilities
+app-arch/dump 0.4.44-r1 0.4.44-r2: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.8.0 1.8.0-r1 1.8.1-r1: Engrampa archive manager for MATE
 app-arch/fastjar 0.98-r2 0.98-r3: A jar program written in C
 app-arch/file-roller 3.14.2 3.16.3 3.16.4: Archive manager for GNOME
@@ -325,7 +325,7 @@ app-arch/unzip 5.52-r2 6.0-r3: unzipper for pkzip-compressed files
 app-arch/upx-bin 3.91: Ultimate Packer for eXecutables (binary version with proprietary NRV compression)
 app-arch/upx-ucl 3.91: Ultimate Packer for eXecutables (free version using UCL compression and not NRV)
 app-arch/vimball 0.5.1 9999: a command-line vimball archive extractor
-app-arch/xar 1.5.2-r1: An easily extensible archive format
+app-arch/xar 1.5.2-r1 1.5.2-r2: An easily extensible archive format
 app-arch/xarchiver 0.5.4: a GTK+ based and advanced archive manager that can be used with Thunar
 app-arch/xdms 1.3.2: xDMS - Amiga DMS disk image decompressor
 app-arch/xz-utils 5.0.8 5.2.0 5.2.1-r1 5.2.2 9999: utils for managing LZMA compressed files
@@ -9447,7 +9447,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 1.625.3 1.641: Extensible continuous integration server
+dev-util/jenkins-bin 1.625.3 1.641 1.642: Extensible continuous integration server
 dev-util/jif 3.1_rc1: JIF is an IDE for the creation of text adventures based on Graham Nelson's Inform standard
 dev-util/kbuild 0.1.9998_pre20120806 0.1.9998_pre20131130 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.5: A graphical debugger interface
@@ -12404,7 +12404,7 @@ media-libs/tremor 0_pre20120120 0_pre20130223 0_pre20130223-r1: A fixed-point ve
 media-libs/tse3 0.3.1-r1: TSE3 Sequencer library
 media-libs/urt 3.1b-r1: the Utah Raster Toolkit is a library for dealing with raster images
 media-libs/vamp-plugin-sdk 2.5 2.6 2.6-r1: Audio processing plugin system for plugins that extract descriptive information from audio data
-media-libs/varconf 0.6.6 0.6.7: A configuration system designed for the STAGE server
+media-libs/varconf 0.6.6 0.6.7 0.6.7-r1: A configuration system designed for the STAGE server
 media-libs/vigra 1.9.0 1.10.0: C++ computer vision library with emphasize on customizable algorithms and data structures
 media-libs/vips 7.26.3 7.26.7: VIPS Image Processing Library
 media-libs/virglrenderer 0.2.0 9999: library used implement a virtual 3D GPU used by qemu
