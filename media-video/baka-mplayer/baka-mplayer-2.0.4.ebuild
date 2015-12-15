@@ -7,7 +7,7 @@ inherit qmake-utils
 
 DESCRIPTION="Cross-platform libmpv-based multimedia player with uncluttered design"
 HOMEPAGE="http://bakamplayer.u8sand.net/"
-SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.tar.gz"
+SRC_URI="https://github.com/u8sand/Baka-MPlayer/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -31,9 +31,14 @@ src_prepare() {
 	# no need to install license
 	sed -e '/^INSTALLS/s:license::' -i src/Baka-MPlayer.pro || die
 	# put manual in our docdir
-	sed -e '/^manual.path/s:yer:yer-'${PV}':' -i src/Baka-MPlayer.pro || die
+	sed -e '/^manual.path/s:'${PN}':'${PF}':' -i src/Baka-MPlayer.pro || die
 }
 
 src_configure() {
-	eqmake5 INSTROOT="${D}" CONFIG+=install_translations src/Baka-MPlayer.pro
+	eqmake5 \
+		INSTROOT="${D}" \
+		CONFIG+=install_translations \
+		lrelease="$(qt5_get_bindir)"/lrelease \
+		lupdate="$(qt5_get_bindir)"/lupdate \
+		src/Baka-MPlayer.pro
 }

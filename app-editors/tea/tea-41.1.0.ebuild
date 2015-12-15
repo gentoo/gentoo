@@ -1,15 +1,15 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 PLOCALES="de fr ru"
 
-inherit eutils l10n qt4-r2
+inherit eutils l10n qmake-utils
 
 DESCRIPTION="Small, lightweight Qt text editor"
-HOMEPAGE="http://semiletov.org/tea/"
-SRC_URI="http://semiletov.org/${PN}/dloads/${P}.tar.bz2"
+HOMEPAGE="http://tea.ourproject.org/ http://semiletov.org/tea/"
+SRC_URI="http://tea.ourproject.org/dloads/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -17,9 +17,9 @@ KEYWORDS="~amd64 ~ia64 ~x86 ~x86-fbsd"
 IUSE="aspell hunspell"
 
 RDEPEND="
-	sys-libs/zlib
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
+	sys-libs/zlib
 	aspell? ( app-text/aspell )
 	hunspell? ( app-text/hunspell )
 "
@@ -31,15 +31,14 @@ DOCS=( AUTHORS ChangeLog NEWS TODO )
 
 src_configure() {
 	eqmake4 src.pro \
-		PREFIX="${EPREFIX}/usr/bin" \
-		USE_ASPELL=$(use aspell && echo true || echo false) \
-		USE_HUNSPELL=$(use hunspell && echo true || echo false)
+		$(use aspell || echo CONFIG+=noaspell) \
+		$(use hunspell || echo CONFIG+=nohunspell)
 }
 
 src_install() {
-	qt4-r2_src_install
+	dobin bin/tea
 
-	newicon icons/tea_icon_v2.png ${PN}.png
+	newicon icons/tea-icon-v3-01.png ${PN}.png
 	make_desktop_entry ${PN} 'Tea Editor'
 
 	# translations
