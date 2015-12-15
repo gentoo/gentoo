@@ -1,0 +1,34 @@
+commit e966180fbba1812f8050a743351036d573c19b1f
+Author: Ryan Hill <rhill@gentoo.org>
+Date:   Sun Sep 13 06:17:43 2015 -0600
+
+    Fix build failure with GCC 5 and Qt 5.4.2.
+    
+    Recent versions of GCC (>=5.1) will sometimes emit copy relocations when
+	compiling with -fPIE, which causes some Qt applications to crash.  As of
+	5.4.2 all code built against Qt must instead be compiled with -fPIC.
+    
+    Enabling CMAKE_POSITION_INDEPENDENT_CODE will cause cmake to add -fPIC or
+    -fPIE depending on the type of object being built.  The try_compile() test
+    for -fvisibility=hidden support is creating an executable so -fPIE is used
+    which makes Qt throw a fit.
+    
+    Gentoo-Bug: https://bugs.gentoo.org/555866
+    See-Also:   https://bugreports.qt.io/browse/QTBUG-45755
+---
+ cmake/FindPhononInternal.cmake | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/cmake/FindPhononInternal.cmake
++++ b/cmake/FindPhononInternal.cmake
+@@ -109,8 +109,8 @@ else (NOT PHONON_BUILD_PHONON4QT5) # Qt5
+     find_package(Qt5Widgets)
+     macro_log_feature(Qt5Widgets_FOUND "Qt5 Widgets (qtbase)" "" "" TRUE)
+ 
+-    if (Qt5_POSITION_INDEPENDENT_CODE)
+-      set(CMAKE_POSITION_INDEPENDENT_CODE ON)
++    if(Qt5_POSITION_INDEPENDENT_CODE AND CMAKE_CXX_COMPILE_OPTIONS_PIC)
++      set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_COMPILE_OPTIONS_PIC}")
+     endif()
+ 
+     #---- compat

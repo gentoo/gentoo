@@ -58,7 +58,10 @@ PDEPEND="
 	vlc? ( >=media-libs/phonon-vlc-0.8.0[qt4?,qt5?] )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-4.7.0-plugin-install.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-4.7.0-plugin-install.patch"
+	"${FILESDIR}/${P}-gcc5.patch"
+)
 
 pkg_setup() {
 	MULTIBUILD_VARIANTS=( $(usev qt4) $(usev qt5) )
