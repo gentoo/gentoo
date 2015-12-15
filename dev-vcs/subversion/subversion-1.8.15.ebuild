@@ -117,7 +117,7 @@ pkg_setup() {
 	if use ruby ; then
 		local rbslot
 		RB_VER=""
-		for rbslot in 2.2 2.1 2.0 1.9 ; do
+		for rbslot in $(sed 's@\([[:digit:]]\+\)\([[:digit:]]\)@\1.\2@' <<< ${USE_RUBY/ruby}) ; do
 			if has_version dev-lang/ruby:${rbslot} ;  then
 				RB_VER="${rbslot/.}"
 				break
