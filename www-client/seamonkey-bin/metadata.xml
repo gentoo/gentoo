@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>mozilla</herd>
-	<maintainer>
-		<email>jdhore@gentoo.org</email>
-		<name>Jeff Horelick</name>
-	</maintainer>
+    <herd>mozilla</herd>
+    <maintainer>
+	<email>jdhore@gentoo.org</email>
+	<name>Jeff Horelick</name>
+    </maintainer>
+    <maintainer>
+	<email>elizabeth@interlinked.me</email>
+	<name>Elizabeth Myers</name>
+	<description>Proxied maintainer; set to assignee in all bugs</description>
+    </maintainer>
 </pkgmetadata>
