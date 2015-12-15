@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# José María Alonso Josa <nimiux@gentoo.org> (15 Dec 2015)
+# Refers to same package as dev-lisp/clx
+# Masked for removal in 30 days, bug 568188
+dev-lisp/cl-clx
+
 # Andreas K. Huettel <dilfridge@gentoo.org> (11 Dec 2015)
 # Ancient, smells funny, disowned by upstream, needs syck
 # Masked for removal in 30 days, bug 565012
