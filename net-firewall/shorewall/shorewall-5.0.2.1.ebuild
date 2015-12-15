@@ -6,8 +6,7 @@ EAPI="5"
 
 inherit eutils linux-info prefix systemd versionator
 
-DESCRIPTION='The Shoreline Firewall, commonly known as Shorewall, is'
-DESCRIPTION+=' a high-level tool for configuring Netfilter'
+DESCRIPTION='A high-level tool for configuring Netfilter'
 HOMEPAGE="http://www.shorewall.net/"
 LICENSE="GPL-2"
 SLOT="0"
