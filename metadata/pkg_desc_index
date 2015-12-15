@@ -956,7 +956,7 @@ app-doc/gimp-help 2.6.1: GNU Image Manipulation Program help files
 app-doc/gnucash-docs 2.6.7 2.6.9: Documentation package for GnuCash
 app-doc/halibut 1.0 1.1: yet another free document preparation system
 app-doc/jargon 4.4.7: A compendium of hacker slang illuminating many aspects of hackish tradition, folklore, and humor
-app-doc/kicad-doc 4.0.0_rc1 4.0.0_rc2 4.0.0: Electronic Schematic and PCB design tools manuals
+app-doc/kicad-doc 4.0.0_rc1 4.0.0_rc2 4.0.0 4.0.1: Electronic Schematic and PCB design tools manuals
 app-doc/lapack-docs 3.1.1: Documentation reference and man pages for lapack implementations
 app-doc/linkers-and-loaders 1: the Linkers and Loaders book
 app-doc/linux-device-drivers 2 3: howto write linux device drivers (updated for Linux 2.6)
@@ -13771,7 +13771,7 @@ net-firewall/quicktables 2.3: a quick iptables script generator
 net-firewall/rtsp-conntrack 3.7: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r1: iptables firewall generator (fork of firehol)
 net-firewall/shapecfg 36: configuration tool for setting traffic bandwidth parameters
-net-firewall/shorewall 4.6.10.1 4.6.13 4.6.13.1 5.0.1.1: The Shoreline Firewall, commonly known as Shorewall, is a high-level tool for configuring Netfilter
+net-firewall/shorewall 4.6.10.1 4.6.13 4.6.13.1 5.0.2.1: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.34_pre805-r2: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r3: Provides graphical frontend to ufw
 net-firewall/xtables-addons 1.47.1 2.8 2.9 2.10: extensions not yet accepted in the main kernel/iptables (patch-o-matic(-ng) successor)
@@ -15404,7 +15404,7 @@ sci-electronics/gtkwave 3.3.65 3.3.66 3.3.68: A wave viewer for LXT, LXT2, VZT, 
 sci-electronics/gwave 20090213-r1: Analog waveform viewer for SPICE-like simulations
 sci-electronics/irsim 9.7.79 9.7.87 9.7.93: IRSIM is a "switch-level" simulator
 sci-electronics/iverilog 0.9.6 0.9.7: A Verilog simulation and synthesis tool
-sci-electronics/kicad 4.0.0_rc1 4.0.0_rc2 4.0.0: Electronic Schematic and PCB design tools.
+sci-electronics/kicad 4.0.0_rc1 4.0.0_rc2 4.0.0 4.0.1: Electronic Schematic and PCB design tools.
 sci-electronics/klayout 0.23.10: Viewer and editor for GDS and OASIS integrated circuit layouts
 sci-electronics/linsmith 0.99.28 0.99.30: Smith charting program, mainly designed for educational use
 sci-electronics/magic 7.5.202-r1 7.5.231 8.0.138 8.0.207: The VLSI design CAD tool
