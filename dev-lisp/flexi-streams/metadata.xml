@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>common-lisp</herd>
+	<longdescription lang="en">
+		FLEXI-STREAMS implements "virtual" bivalent streams that can be
+		layered atop real binary or bivalent streams and that can be used
+		to read and write character data in various single- or multi-octet
+		encodings which can be changed on the fly. It also supplies
+		in-memory binary streams which are similar to string streams. 
+	</longdescription>
+</pkgmetadata>
