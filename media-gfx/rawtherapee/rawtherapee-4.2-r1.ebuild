@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	# Upstream patches for fixing build with current libstdc++
 	# A newer snapshot/version will make this unneeded
-        "${FILESDIR}"/${P}-cxx11.patch
+	"${FILESDIR}"/${P}-cxx11.patch
 	"${FILESDIR}"/${P}-CVE-2015-3885.patch
 	"${FILESDIR}"/${P}-build-cxx11.patch
 	"${FILESDIR}"/${P}-build-cxx11-2.patch
