@@ -5,7 +5,7 @@
 EAPI=5
 
 MY_P="${PN}-v${PV}"
-inherit toolchain-funcs
+inherit toolchain-funcs eutils
 
 DESCRIPTION="Port multiplexer - accept both HTTPS and SSH connections on the same port"
 HOMEPAGE="http://www.rutschle.net/tech/sslh.shtml"
@@ -24,6 +24,10 @@ DEPEND="${RDEPEND}"
 RESTRICT="test"
 
 S=${WORKDIR}/${MY_P}
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-version-deps.patch
+}
 
 src_compile() {
 	emake \

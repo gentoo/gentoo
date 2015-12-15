@@ -1,0 +1,13 @@
+make sure the files using version.h depend on it being generated first
+
+--- a/Makefile
++++ b/Makefile
+@@ -39,7 +39,7 @@
+ 
+ all: sslh $(MAN) echosrv
+ 
+-.c.o: *.h
++.c.o: *.h version.h
+ 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $<
+ 
+ version.h:
