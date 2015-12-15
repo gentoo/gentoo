@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools-utils
+inherit autotools-utils flag-o-matic
 
 DESCRIPTION="A library for par2, extracted from par2cmdline"
 HOMEPAGE="https://launchpad.net/libpar2/"
@@ -23,3 +23,8 @@ DOCS=( AUTHORS ChangeLog README )
 
 # Needed to install all headers properly (bug #391815)
 AUTOTOOLS_IN_SOURCE_BUILD=1
+
+src_prepare() {
+	autotools-utils_src_prepare
+	append-cxxflags -std=c++11 #567498
+}
