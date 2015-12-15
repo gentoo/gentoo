@@ -624,10 +624,6 @@ pkg_postinst() {
 	fi
 
 	fcaps cap_net_admin /usr/libexec/qemu-bridge-helper
-	if use virtfs && [ -n "${softmmu_targets}" ]; then
-		local virtfs_caps="cap_chown,cap_dac_override,cap_fowner,cap_fsetid,cap_setgid,cap_mknod,cap_setuid"
-		fcaps ${virtfs_caps} /usr/bin/virtfs-proxy-helper
-	fi
 }
 
 pkg_info() {
