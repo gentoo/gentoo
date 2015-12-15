@@ -1,0 +1,47 @@
+Author: Philip Rinn <rinni@inventati.org>
+Description: Fix build with sigc++ >= 2.5.2
+Last-update: 2015-11-03
+--- a/rtgui/adjuster.cc
++++ b/rtgui/adjuster.cc
+@@ -17,7 +17,7 @@
+  *  along with RawTherapee.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ #include "adjuster.h"
+-#include <sigc++/class_slot.h>
++#include <sigc++/slot.h>
+ #include <cmath>
+ #include "multilangmgr.h"
+ #include "../rtengine/rtengine.h"
+--- a/rtgui/thresholdadjuster.cc
++++ b/rtgui/thresholdadjuster.cc
+@@ -17,7 +17,7 @@
+  *  along with RawTherapee.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ #include "thresholdadjuster.h"
+-#include <sigc++/class_slot.h>
++#include <sigc++/slot.h>
+ #include <cmath>
+ #include "multilangmgr.h"
+ #include "../rtengine/rtengine.h"
+--- a/rtgui/preferences.cc
++++ b/rtgui/preferences.cc
+@@ -16,7 +16,7 @@
+  *  You should have received a copy of the GNU General Public License
+  *  along with RawTherapee.  If not, see <http://www.gnu.org/licenses/>.
+  */
+-#include <sigc++/class_slot.h>
++#include <sigc++/slot.h>
+ #include "preferences.h"
+ #include "multilangmgr.h"
+ #include "splash.h"
+--- a/rtgui/tonecurve.cc
++++ b/rtgui/tonecurve.cc
+@@ -18,7 +18,7 @@
+  */
+ #include "tonecurve.h"
+ #include "adjuster.h"
+-#include <sigc++/class_slot.h>
++#include <sigc++/slot.h>
+ #include <iomanip>
+ #include "ppversion.h"
+ #include "edit.h"
