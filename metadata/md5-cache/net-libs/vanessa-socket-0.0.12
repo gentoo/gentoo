@@ -2,12 +2,12 @@ DEFINED_PHASES=compile install
 DEPEND=>=dev-libs/vanessa-logger-0.0.6
 DESCRIPTION=Simplifies TCP/IP socket operations
 EAPI=0
-HOMEPAGE=http://www.vergenet.net/linux/vanessa/
+HOMEPAGE=http://horms.net/projects/vanessa/
 KEYWORDS=~amd64 ~ppc x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/vanessa-logger-0.0.6
 SLOT=0
-SRC_URI=http://www.vergenet.net/linux/vanessa/download/vanessa_socket/0.0.12/vanessa_socket-0.0.12.tar.gz
+SRC_URI=http://horms.net/projects/vanessa/download/vanessa_socket/0.0.12/vanessa_socket-0.0.12.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
 _eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=58e1aebd91a56c4b7741262610ce253e
+_md5_=72bf1e48eba3535576d2a99e7ed22476
