@@ -200,7 +200,7 @@ multilib_src_configure() {
 		--disable-versioned-symbols \
 		--without-cyassl \
 		--without-darwinssl \
-		--with-mbedtls \
+		--without-mbedtls \
 		$(use_with idn libidn) \
 		$(use_with kerberos gssapi "${EPREFIX}"/usr) \
 		$(use_with metalink libmetalink) \
