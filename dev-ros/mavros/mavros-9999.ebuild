@@ -31,5 +31,6 @@ RDEPEND="
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	>=dev-ros/mavlink-gbp-release-2015.12.12
 "
 DEPEND="${RDEPEND}"
