@@ -556,8 +556,11 @@ enable_cmake-utils_src_configure() {
 	# Convert mycmakeargs to an array, for backwards compatibility
 	# Make the array a local variable since <=portage-2.1.6.x does not
 	# support global arrays (see bug #297255).
-	if [[ $(declare -p mycmakeargs 2>&-) != "declare -a mycmakeargs="* ]]; then
-		eqawarn "Declaring mycmakeargs as a variable is deprecated. Please use an array instead."
+	local mycmakeargstype=$(declare -p mycmakeargs 2>&-)
+	if [[ "${mycmakeargstype}" != "declare -a mycmakeargs="* ]]; then
+		if [[ -n "${mycmakeargstype}" ]] ; then
+			eqawarn "Declaring mycmakeargs as a variable is deprecated. Please use an array instead."
+		fi
 		local mycmakeargs_local=(${mycmakeargs})
 	else
 		local mycmakeargs_local=("${mycmakeargs[@]}")
