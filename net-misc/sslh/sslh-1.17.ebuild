@@ -19,7 +19,8 @@ IUSE="caps tcpd"
 RDEPEND="caps? ( sys-libs/libcap )
 	tcpd? ( sys-apps/tcp-wrappers )
 	dev-libs/libconfig"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	sys-apps/help2man"
 
 RESTRICT="test"
 
