@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>net-fs</herd>
+	<herd>net-fs</herd>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>gokturk@binghamton.edu</email>
+		<name>Gokturk 'gokturk' Yuksek</name>
+		<description>Maintainer. Assign bugs on him</description>
+	</maintainer>	
 </pkgmetadata>
