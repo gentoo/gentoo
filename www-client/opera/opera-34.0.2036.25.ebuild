@@ -5,8 +5,8 @@
 EAPI=5
 CHROMIUM_LANGS="
 	af az be bg bn ca cs da de el en_GB en_US es_419 es fil fi fr_CA fr fy gd
-	hi hr hu id it ja kk ko lt lv me mk ms nb nl nn pa pl pt_BR pt_PT ro ru sk
-	sr sv sw ta te th tr uk uz vi zh_CN zh_TW zu
+	he hi hr hu id it ja kk ko lt lv me mk ms nb nl nn pa pl pt_BR pt_PT ro ru
+	sk sr sv sw ta te th tr uk uz vi zh_CN zh_TW zu
 "
 inherit chromium multilib unpacker
 
@@ -16,16 +16,16 @@ LICENSE="OPERA-2014"
 SLOT="0"
 SRC_URI_BASE="http://get.geo.opera.com/pub/"
 SRC_URI="
-	amd64?	( "${SRC_URI_BASE}${PN}/${PV}/linux/${PN}_${PV}_amd64.deb" )
-	x86?	( "${SRC_URI_BASE}${PN}/${PV}/linux/${PN}_${PV}_i386.deb" )
+	amd64? ( "${SRC_URI_BASE}${PN}/desktop/${PV}/linux/${PN}-stable_${PV}_amd64.deb" )
 "
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 RDEPEND="
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
+	>=dev-libs/openssl-1.0.1:0
 	gnome-base/gconf:2
 	media-libs/alsa-lib
 	media-libs/fontconfig
@@ -33,6 +33,7 @@ RDEPEND="
 	net-misc/curl
 	net-print/cups
 	sys-apps/dbus
+	sys-libs/libcap
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:2
@@ -60,20 +61,13 @@ src_unpack() {
 }
 
 src_prepare() {
-	case ${ARCH} in
-		amd64)
-			mv usr/lib/x86_64-linux-gnu usr/$(get_libdir) || die
-			rm -r usr/lib || die
-			;;
-		x86)
-			mv usr/lib/i386-linux-gnu/${PN} usr/$(get_libdir)/ || die
-			;;
-	esac
+	mv usr/lib/x86_64-linux-gnu usr/$(get_libdir) || die
+	rm -r usr/lib || die
 
 	rm usr/bin/${PN} || die
 
-	rm usr/share/doc/${PN}/copyright || die
-	mv usr/share/doc/${PN} usr/share/doc/${PF} || die
+	rm usr/share/doc/${PN}-stable/copyright || die
+	mv usr/share/doc/${PN}-stable usr/share/doc/${PF} || die
 
 	pushd "${OPERA_HOME}/localization" > /dev/null || die
 	chromium_remove_language_paks
