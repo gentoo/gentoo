@@ -1,0 +1,16 @@
+don't run the clean target when building all as we run into parallel races:
+ - memtest kicks off building of a bunch of .o files
+ - clean runs in parallel which runs `rm` and deletes some of the new .o
+ - memtest goes to link and fails because objects are missing
+
+--- a/Makefile
++++ b/Makefile
+@@ -19,7 +19,7 @@
+ OBJS= head.o reloc.o main.o test.o init.o lib.o patn.o screen_buffer.o \
+       config.o memsize.o error.o smp.o cpuid.o vmem.o random.o
+ 
+-all: clean memtest.bin memtest
++all: memtest.bin memtest
+ 
+ # Link it statically once so I know I don't have undefined
+ # symbols and then link it dynamically so I have full
