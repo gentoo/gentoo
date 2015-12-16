@@ -7,8 +7,4 @@
     <name>Ferenc Erki</name>
     <description>Proxied maintainer; set to assignee in all bugs</description>
   </maintainer>
-  <maintainer>
-    <email>chainsaw@gentoo.org</email>
-    <name>Tony Vroon</name>
-  </maintainer>
 </pkgmetadata>
