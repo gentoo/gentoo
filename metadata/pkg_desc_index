@@ -13791,7 +13791,7 @@ net-fs/nfstest 1.0.2: Tools for testing either the NFS client or the NFS server
 net-fs/openafs 1.6.12-r1 1.6.14: The OpenAFS distributed file system
 net-fs/openafs-kernel 1.6.12-r1 1.6.14: The OpenAFS distributed file system kernel module
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
-net-fs/samba 3.5.21 3.5.22 3.6.25 4.0.26-r1 4.1.21 4.2.5 4.2.6 4.3.1 4.3.2: Samba Suite Version 4
+net-fs/samba 3.5.21 3.5.22 3.6.25 4.1.22 4.2.7 4.3.3: Samba Suite Version 4
 net-fs/smbnetfs 0.5.3b 0.6.0 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/smbtatools 1.2.6: Tools for configuration and query of SMB Traffic Analyzer
@@ -16956,7 +16956,7 @@ sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r1 2.22-r1 9999: GNU libc6 (als
 sys-libs/gpm 1.20.6 1.20.6-r1 1.20.7 1.20.7-r1 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.3.3 4.12.0_beta 4.13.1: A multi-platform helper library for other libraries
 sys-libs/itx-bind 0.1-r2: the bind library for interix
-sys-libs/ldb 1.1.12 1.1.15 1.1.17-r1 1.1.21 1.1.23: An LDAP-like embedded database
+sys-libs/ldb 1.1.12 1.1.15 1.1.17-r1 1.1.24: An LDAP-like embedded database
 sys-libs/lib-compat 1.4.2-r1: Compatibility C++ and libc5 and libc6 libraries for very old programs
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
 sys-libs/libaal 1.0.5 1.0.5-r1 1.0.6: library required by reiser4progs
