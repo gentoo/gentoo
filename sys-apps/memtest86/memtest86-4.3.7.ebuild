@@ -20,6 +20,9 @@ BOOTDIR=/boot/memtest86
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-4.3.3-build-nopie.patch #66630 + #206726
+	epatch "${FILESDIR}"/${PN}-4.3.7-io-extern-inline.patch #548312 #568292
+	epatch "${FILESDIR}"/${PN}-4.3.7-reboot-def.patch #548312 #568292
+	epatch "${FILESDIR}"/${PN}-4.3.7-no-clean.patch #557890
 
 	sed -i -e 's,0x10000,0x100000,' memtest.lds || die
 
