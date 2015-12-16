@@ -4132,7 +4132,7 @@ dev-java/netbeans-extide 8.0.2 8.1: Netbeans ExtIDE Cluster
 dev-java/netbeans-groovy 8.0.2 8.1: Netbeans Groovy Cluster
 dev-java/netbeans-harness 8.0.2 8.1: Netbeans Harness
 dev-java/netbeans-ide 8.0.2 8.1: Netbeans IDE Cluster
-dev-java/netbeans-java 8.0.2-r2 8.0.2-r4 8.1-r1: Netbeans Java Cluster
+dev-java/netbeans-java 8.0.2-r2 8.0.2-r4 8.1-r2: Netbeans Java Cluster
 dev-java/netbeans-javacard 8.0.2 8.1: Netbeans JavaCard Cluster
 dev-java/netbeans-javadoc 8.0.2 8.1: Netbeans JavaDocs
 dev-java/netbeans-javafx 8.0.2 8.1: Netbeans JavaFX Cluster
@@ -15846,7 +15846,7 @@ sci-physics/herwig 6.5.21: High Energy Physics Event Generator
 sci-physics/herwig++ 2.7.1: High-Energy Physics event generator
 sci-physics/hoomd-blue 1.0.2: a general-purpose particle simulation toolkit
 sci-physics/jaxodraw 2.0.1-r1: Java program for drawing Feynman diagrams
-sci-physics/lammps 20150210 20150515 20150515-r1 20150810 20150904 20150909 20150911 20150924 20151005 20151022 20151023 20151026 20151031 20151106 20151120: Large-scale Atomic/Molecular Massively Parallel Simulator
+sci-physics/lammps 20150210 20150515 20150515-r1 20150810 20150904 20150909 20150911 20150924 20151005 20151022 20151023 20151026 20151031 20151106 20151120 20151207 20151208: Large-scale Atomic/Molecular Massively Parallel Simulator
 sci-physics/lhapdf 5.8.4 6.1.5: Les Houches Parton Density Function unified library
 sci-physics/lightspeed 1.2a-r1: OpenGL interactive relativistic simulator
 sci-physics/looptools 2.8 2.12: Tools for evaluation of scalar and tensor one-loop integrals
