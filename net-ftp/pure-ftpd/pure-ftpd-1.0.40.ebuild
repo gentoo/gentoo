@@ -30,7 +30,7 @@ DEPEND="caps? ( sys-libs/libcap )
 	xinetd? ( virtual/inetd )"
 
 RDEPEND="${DEPEND}
-	dev-libs/libsodium
+	dev-libs/libsodium:=
 	net-ftp/ftpbase
 	selinux? ( sec-policy/selinux-ftp )"
 
