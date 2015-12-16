@@ -41,6 +41,8 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 "
 
+PATCHES=( "${FILESDIR}/${PN}-15.08.3-fix-lingering-processes.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package bzip2 BZip2)
