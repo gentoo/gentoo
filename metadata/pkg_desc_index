@@ -10853,7 +10853,7 @@ java-virtuals/transaction-api 1.1: Virtual for Transaction API (javax.transactio
 java-virtuals/xmlrpc-api 0: Virtual for XML RPC API (javax.xml.rpc)
 kde-apps/amor 4.14.3 15.08.3: KDE: Amusing Misuse Of Resources - desktop-dwelling creature
 kde-apps/analitza 4.14.3: KDE library for mathematical features
-kde-apps/ark 4.14.3-r1 15.08.3: KDE Archiving tool
+kde-apps/ark 4.14.3-r1 15.08.3-r1: KDE Archiving tool
 kde-apps/artikulate 4.14.3: Language learning application that helps improving pronunciation skills
 kde-apps/attica 4.14.3 15.08.3: Open Collaboration Services provider management
 kde-apps/audiocd-kio 4.14.3 15.08.3: KDE kioslaves from the kdemultimedia package
