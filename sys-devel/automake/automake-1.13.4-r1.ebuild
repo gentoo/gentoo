@@ -8,26 +8,37 @@ inherit eutils
 
 DESCRIPTION="Used to generate Makefile.in from Makefile.am"
 HOMEPAGE="https://www.gnu.org/software/automake/"
-SRC_URI="mirror://gnu/${PN}/${P}.tar.bz2"
+SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 # Use Gentoo versioning for slotting.
-SLOT="${PV:0:3}"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd"
+SLOT="${PV:0:4}"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE=""
 
 RDEPEND="dev-lang/perl
 	>=sys-devel/automake-wrapper-10
 	>=sys-devel/autoconf-2.69
 	sys-devel/gnuconfig"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	sys-apps/help2man"
 
 src_prepare() {
 	export WANT_AUTOCONF=2.5
-	epatch "${FILESDIR}"/${P}-test-fixes.patch #159557
-	epatch "${FILESDIR}"/${PN}-1.10-ccnoco-ldflags.patch #203914
-	epatch "${FILESDIR}"/${PN}-1.5-CVE-2009-4029.patch #295357
-	epatch "${FILESDIR}"/${PN}-1.5-perl-5.11.patch
+	epatch "${FILESDIR}"/${PN}-1.13-dyn-ithreads.patch
+	epatch "${FILESDIR}"/${PN}-1.13-perl-escape-curly-bracket.patch
+}
+
+src_configure() {
+	econf --docdir=/usr/share/doc/${PF} HELP2MAN=true
+}
+
+src_compile() {
+	emake APIVERSION="${SLOT}" pkgvdatadir="/usr/share/${PN}-${SLOT}"
+}
+
+src_test() {
+	emake check
 }
 
 # slot the info pages.  do this w/out munging the source so we don't have
@@ -60,9 +71,16 @@ slot_info_pages() {
 }
 
 src_install() {
-	default
+	emake DESTDIR="${D}" install \
+		APIVERSION="${SLOT}" pkgvdatadir="/usr/share/${PN}-${SLOT}"
 	slot_info_pages
-	rm -f "${D}"/usr/bin/{aclocal,automake}
+	rm "${D}"/usr/share/aclocal/README || die
+	rmdir "${D}"/usr/share/aclocal || die
+	dodoc AUTHORS ChangeLog NEWS README THANKS
+
+	rm \
+		"${D}"/usr/bin/{aclocal,automake} \
+		"${D}"/usr/share/man/man1/{aclocal,automake}.1 || die
 
 	# remove all config.guess and config.sub files replacing them
 	# w/a symlink to a specific gnuconfig version
