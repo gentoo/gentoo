@@ -6,17 +6,13 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 
-inherit python-single-r1 waf-utils multilib linux-info systemd eutils
+inherit python-single-r1 waf-utils multilib linux-info systemd base
 
 MY_PV="${PV/_rc/rc}"
 MY_P="${PN}-${MY_PV}"
 
-SRC_PATH="stable"
-[[ ${PV} = *_rc* ]] && SRC_PATH="rc"
-
-SRC_URI="mirror://samba/${SRC_PATH}/${MY_P}.tar.gz"
-KEYWORDS="~amd64 ~hppa ~x86"
-[[ ${PV} = *_rc* ]] && KEYWORDS="~hppa"
+SRC_URI="mirror://samba/stable/${MY_P}.tar.gz"
+KEYWORDS="~amd64 ~arm64 ~hppa ~x86"
 
 DESCRIPTION="Samba Suite Version 4"
 HOMEPAGE="http://www.samba.org/"
@@ -24,28 +20,26 @@ LICENSE="GPL-3"
 
 SLOT="0"
 
-IUSE="acl addc addns ads aio avahi client cluster cups dmapi fam gnutls iprint
-ldap pam quota selinux syslog +system-mitkrb5 systemd test winbind"
+IUSE="acl addns ads aio avahi client cluster cups dmapi fam gnutls iprint
+ldap quota selinux syslog systemd test winbind"
 
 # sys-apps/attr is an automagic dependency (see bug #489748)
 # sys-libs/pam is an automagic dependency (see bug #489770)
 CDEPEND="${PYTHON_DEPS}
+	>=app-crypt/heimdal-1.5[-ssl,-threads]
 	dev-libs/iniparser:0
 	dev-libs/popt
 	sys-libs/readline:=
 	virtual/libiconv
 	dev-python/subunit[${PYTHON_USEDEP}]
-	>=net-libs/socket_wrapper-1.1.2
 	sys-apps/attr
 	sys-libs/libcap
-	>=sys-libs/ldb-1.1.20
-	sys-libs/ncurses:0=
-	>=sys-libs/nss_wrapper-1.0.2
 	>=sys-libs/ntdb-1.0[python,${PYTHON_USEDEP}]
+	>=sys-libs/ldb-1.1.24
+	sys-libs/ncurses:0=
+	>=sys-libs/tdb-1.2.12[python,${PYTHON_USEDEP}]
 	>=sys-libs/talloc-2.1.2[python,${PYTHON_USEDEP}]
-	>=sys-libs/tdb-1.3.6[python,${PYTHON_USEDEP}]
-	>=sys-libs/tevent-0.9.25
-	>=sys-libs/uid_wrapper-1.0.1
+	>=sys-libs/tevent-0.9.18
 	sys-libs/zlib
 	virtual/pam
 	acl? ( virtual/acl )
@@ -58,8 +52,6 @@ CDEPEND="${PYTHON_DEPS}
 	gnutls? ( dev-libs/libgcrypt:0
 		>=net-libs/gnutls-1.4.0 )
 	ldap? ( net-nds/openldap )
-	system-mitkrb5? ( app-crypt/mit-krb5 )
-	!system-mitkrb5? ( >=app-crypt/heimdal-1.5[-ssl] )
 	systemd? ( sys-apps/systemd:0= )"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
@@ -68,21 +60,27 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-samba )
 "
 
-REQUIRED_USE="addc? ( gnutls !system-mitkrb5 )
-	ads? ( acl gnutls ldap )
+REQUIRED_USE="ads? ( acl ldap )
 	${PYTHON_REQUIRED_USE}"
+
+RESTRICT="mirror"
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}/${PN}-4.2.3-heimdal_compilefix.patch" )
-
 CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-4.1.14-named.conf.dlz.patch"
+	"${FILESDIR}/${PN}-4.0.19-automagic_aio_fix.patch"
+	# support libsystemd (instead of libsystemd-daemon), bug #526362
+	"${FILESDIR}/${PN}-4.1.14-libsystemd.patch"
+)
 
 WAF_BINARY="${S}/buildtools/bin/waf"
 
 pkg_setup() {
 	python-single-r1_pkg_setup
-	if use aio ; then
+	if use aio; then
 		if ! linux_config_exists || ! linux_chkconfig_present AIO; then
 				ewarn "You must enable AIO support in your kernel config, "
 				ewarn "to be able to support asynchronous I/O. "
@@ -94,62 +92,48 @@ pkg_setup() {
 				ewarn "and recompile your kernel..."
 		fi
 	fi
-	if ! use pam ; then
-		ewarn "You have pam USE flag disabled!"
-		ewarn "Unfortunately we still have to hard depend on virtual/pam as samba upstream"
-		ewarn "still unconditionally links libauth4-samba4.so library to libpam.so once being"
-		ewarn "found on the sytem."
-		ewarn "Disabling the pam USE flag only disables installation of samba's pam authenti-"
-		ewarn "cation modules."
-	fi
-}
-
-src_prepare() {
-	epatch ${PATCHES[@]}
 }
 
 src_configure() {
-	local myconf=()
-	myconf=(
-		--enable-fhs
-		--sysconfdir=/etc
-		--localstatedir=/var
-		--with-modulesdir=/usr/$(get_libdir)/samba
-		--with-piddir=/var/run/${PN}
-		--bundled-libraries=NONE
-		--builtin-libraries=NONE
-		--disable-rpath
-		--disable-rpath-install
-		--nopyc
-		--nopyo
-		$(use_with acl acl-support)
-		$(usex addc '' '--without-ad-dc')
-		$(use_with addns dnsupdate)
-		$(use_with ads)
-		$(usex ads '--with-shared-modules=idmap_ad' '')
-		$(use_with aio aio-support)
-		$(usex cluster '--with-ctdb-dir=/usr' '')
-		$(use_enable avahi)
-		$(use_with cluster cluster-support)
-		$(use_enable cups)
-		$(use_with dmapi)
-		$(use_with fam)
-		$(use_enable gnutls)
-		$(use_enable iprint)
-		$(use_with ldap)
-		$(use_with pam)
-		$(use_with pam pam_smbpass)
-		$(usex pam "--with-pammodulesdir=/$(get_libdir)/security" '')
-		$(use_with quota quotas)
-		$(use_with syslog)
-		$(use_with systemd)
-		$(usex system-mitkrb5 '--with-system-mitkrb5' '')
+	local myconf=''
+	use "cluster" && myconf+=" --with-ctdb-dir=/usr"
+	use "test" && myconf+=" --enable-selftest"
+	myconf="${myconf} \
+		--enable-fhs \
+		--sysconfdir=/etc \
+		--localstatedir=/var \
+		--with-modulesdir=/usr/$(get_libdir)/samba \
+		--with-pammodulesdir=/$(get_libdir)/security \
+		--with-piddir=/var/run/${PN} \
+		--disable-rpath \
+		--disable-rpath-install \
+		--nopyc \
+		--nopyo \
+		--bundled-libraries=NONE \
+		--builtin-libraries=NONE \
+		$(use_with addns dnsupdate) \
+		$(use_with acl acl-support) \
+		$(use_with ads) \
+		$(use_with aio aio-support) \
+		$(use_enable avahi) \
+		$(use_with cluster cluster-support) \
+		$(use_enable cups) \
+		$(use_with dmapi) \
+		$(use_with fam) \
+		$(use_enable gnutls) \
+		$(use_enable iprint) \
+		$(use_with ldap) \
+		--with-pam \
+		--with-pam_smbpass \
+		$(use_with quota quotas) \
+		$(use_with syslog) \
+		$(use_with systemd) \
 		$(use_with winbind)
-		$(usex test '--enable-selftest' '')
-	)
+		"
+	use "ads" && myconf+=" --with-shared-modules=idmap_ad"
 
 	CPPFLAGS="-I${SYSROOT}/usr/include/et ${CPPFLAGS}" \
-		waf-utils_src_configure ${myconf[@]}
+		waf-utils_src_configure ${myconf}
 }
 
 src_install() {
@@ -192,6 +176,6 @@ pkg_postinst() {
 
 	elog "For further information and migration steps make sure to read "
 	elog "http://samba.org/samba/history/${P}.html "
-	elog "http://samba.org/samba/history/${PN}-4.2.0.html and"
+	elog "http://samba.org/samba/history/${PN}-4.1.0.html and"
 	elog "http://wiki.samba.org/index.php/Samba4/HOWTO "
 }
