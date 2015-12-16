@@ -1,0 +1,37 @@
+http://debbugs.gnu.org/cgi/bugreport.cgi?bug=21001
+
+From 34163794a58b5bd91c5d6bd9adf5437571c7a479 Mon Sep 17 00:00:00 2001
+From: Pavel Raiskup <praiskup@redhat.com>
+Date: Tue, 7 Jul 2015 10:54:24 +0200
+Subject: [PATCH] bin/automake: escape '{' in regexp pattern
+
+Based on perlre(1) documentation:
+.. in Perl v5.26, literal uses of a curly bracket will be required
+to be escaped, say by preceding them with a backslash ("\{" ) or
+enclosing them within square brackets ("[{]") ..
+
+References:
+https://bugzilla.redhat.com/1239379
+
+* bin/automake.in (substitute_ac_subst_variables): Escape the
+occurrence of '{' character.
+---
+ bin/automake.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bin/automake.in b/bin/automake.in
+index 0c29184..c294ced 100644
+--- a/bin/automake.in
++++ b/bin/automake.in
+@@ -3898,7 +3898,7 @@ sub substitute_ac_subst_variables_worker
+ sub substitute_ac_subst_variables ($)
+ {
+   my ($text) = @_;
+-  $text =~ s/\${([^ \t=:+{}]+)}/&substitute_ac_subst_variables_worker ($1)/ge;
++  $text =~ s/\$\{([^ \t=:+{}]+)}/&substitute_ac_subst_variables_worker ($1)/ge;
+   return $text;
+ }
+ 
+-- 
+2.1.0
+
