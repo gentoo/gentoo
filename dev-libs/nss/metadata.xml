@@ -4,7 +4,7 @@
 <herd>mozilla</herd>
 <use>
   <flag name='cacert'>
-    Include root certs from CAcert (http://http://www.cacert.org/) and
+    Include root/class3 certs from CAcert (http://http://www.cacert.org/) and
     Software in the Public Interest (http://www.spi-inc.org/)
   </flag>
   <flag name='nss-pem'>Add support for libnsspem</flag>
