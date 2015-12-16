@@ -21,8 +21,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux"
 IUSE="contrib cuda doc +eigen examples ffmpeg gstreamer gtk ieee1394 ipp jpeg jpeg2k libav opencl openexr opengl openmp pch png +python qt4 qt5 testprograms threads tiff v4l vtk xine"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
-	qt4? ( !qt5 )
-	qt5? ( !qt4 )
+	?? ( qt4 qt5 )
 "
 
 # The following logic is intrinsic in the build system, but we do not enforce
