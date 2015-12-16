@@ -11,7 +11,7 @@ FORTRAN_NEEDED=lapack
 
 inherit distutils-r1 eutils flag-o-matic fortran-2 multilib multiprocessing toolchain-funcs versionator
 
-DOC_PV="1.9.1"
+DOC_PV="1.10.1"
 DOC_P="${PN}-${DOC_PV}"
 
 DESCRIPTION="Fast array and numerical python library"
@@ -40,7 +40,7 @@ DEPEND="${RDEPEND}
 DISTUTILS_IN_SOURCE_BUILD=1
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.9.2-no-hardcode-blas.patch
+	"${FILESDIR}"/${P}-no-hardcode-blas.patch
 )
 
 src_unpack() {
@@ -110,12 +110,8 @@ python_prepare_all() {
 
 	# we don't have f2py-3.3
 	sed \
-		-e "/f2py_cmd/s:'f2py'.*:'f2py':g" \
+		-e "/f2py_cmd/s:'f2py'.*:'f2py'\]:g" \
 		-i numpy/tests/test_scripts.py || die
-
-	sed \
-		-e "s:\"cblas\":\"$(pc_libs cblas)\":g" \
-		-i numpy/distutils/system_info.py || die
 
 	distutils-r1_python_prepare_all
 }
