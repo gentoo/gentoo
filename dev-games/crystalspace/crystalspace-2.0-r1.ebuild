@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/crystal/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="3ds alsa bullet cal3d cegui cg doc java jpeg mng ode png speex truetype vorbis wxwidgets"
 
 COMMON_DEP="virtual/opengl
