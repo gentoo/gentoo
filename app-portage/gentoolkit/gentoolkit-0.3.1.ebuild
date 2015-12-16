@@ -7,19 +7,17 @@ EAPI="5"
 PYTHON_COMPAT=(python{2_7,3_3,3_4,3_5} pypy)
 PYTHON_REQ_USE="xml(+),threads(+)"
 
-inherit distutils-r1 git-r3
-
-EGIT_REPO_URI="git://anongit.gentoo.org/proj/gentoolkit.git"
+inherit distutils-r1
 
 DESCRIPTION="Collection of administration scripts for Gentoo"
 HOMEPAGE="https://www.gentoo.org/proj/en/portage/tools/index.xml"
-SRC_URI=""
+SRC_URI="http://dev.gentoo.org/~dolsen/releases/gentoolkit/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 DEPEND="sys-apps/portage[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
@@ -31,8 +29,8 @@ RDEPEND="${DEPEND}
 
 python_prepare_all() {
 	python_setup
-	echo VERSION="9999-${EGIT_VERSION}" "${PYTHON}" setup.py set_version
-	VERSION="9999-${EGIT_VERSION}" "${PYTHON}" setup.py set_version
+	echo VERSION="${PVR}" "${PYTHON}" setup.py set_version
+	VERSION="${PVR}" "${PYTHON}" setup.py set_version
 	distutils-r1_python_prepare_all
 }
 
