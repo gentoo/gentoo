@@ -21,9 +21,9 @@ RDEPEND="
 	dev-libs/libxdg-basedir
 	dev-db/sqlite:3
 	dev-games/ode
-	dev-lang/lua[deprecated]
-	virtual/jpeg
-	media-libs/libpng
+	dev-lang/lua:0[deprecated]
+	virtual/jpeg:0
+	media-libs/libpng:0
 	dev-libs/libxml2
 	media-libs/libsdl[joystick,opengl]
 	media-libs/sdl-mixer[vorbis]
@@ -55,7 +55,6 @@ src_configure() {
 	has_version 'dev-games/ode[double-precision]' && append-flags -DdDOUBLE
 
 	egamesconf \
-		--disable-dependency-tracking \
 		--enable-threads=posix \
 		$(use_enable nls) \
 		--localedir=/usr/share/locale \
