@@ -28,7 +28,7 @@ RDEPEND="
 	sci-libs/umfpack:0=
 	dsdp? ( sci-libs/dsdp:0= )
 	fftw? ( sci-libs/fftw:3.0= )
-	glpk? ( sci-mathematics/glpk:0= )
+	glpk? ( >=sci-mathematics/glpk-4.49:0= )
 	gsl? ( sci-libs/gsl:0= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -36,9 +36,6 @@ DEPEND="${RDEPEND}
 
 python_prepare_all(){
 	epatch "${FILESDIR}"/${P}-setup.patch
-
-	has_version ">=sci-mathematics/glpk-4.49" && \
-		epatch "${FILESDIR}"/${PN}-1.1.6-glpk449.patch
 
 	rm -r src/C/SuiteSparse*/ || die
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -52,7 +52,7 @@ python_configure() {
 	local myopts=()
 	use opengl && myopts+=( --cuda-enable-gl )
 
-	mkdir "${BUILD_DIR}" || die
+	[[ -d "${BUILD_DIR}" ]] || mkdir "${BUILD_DIR}" || die
 	cd "${BUILD_DIR}" || die
 	[[ -e ./siteconf.py ]] && rm -f ./siteconf.py
 	"${EPYTHON}" "${S}"/configure.py \
