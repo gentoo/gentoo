@@ -6,7 +6,7 @@ EAPI=5
 
 DB_VER="4.8"
 
-inherit autotools db-use eutils systemd user
+inherit autotools db-use eutils flag-o-matic systemd user
 
 MyPV="${PV/_/-}"
 MyPN="litecoin"
@@ -51,6 +51,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# To avoid executable GNU stack.
+	append-ldflags -Wl,-z,noexecstack
+
 	local my_econf=
 	if use upnp; then
 		my_econf="${my_econf} --with-miniupnpc --enable-upnp-default"
