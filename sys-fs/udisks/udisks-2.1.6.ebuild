@@ -19,10 +19,10 @@ COMMON_DEPEND="
 	>=dev-libs/libatasmart-0.19
 	>=sys-auth/polkit-0.110
 	virtual/acl
-	virtual/libgudev:=
+	>=virtual/libgudev-165:=
 	virtual/udev
 	introspection? ( >=dev-libs/gobject-introspection-1.30:= )
-	systemd? ( sys-apps/systemd )
+	systemd? ( >=sys-apps/systemd-209 )
 "
 # gptfdisk -> src/udiskslinuxpartition.c -> sgdisk (see also #412801#c1)
 # util-linux -> mount, umount, swapon, swapoff (see also #403073)
@@ -41,6 +41,7 @@ DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
 	>=dev-util/gdbus-codegen-2.32
+	>=dev-util/gtk-doc-am-1.3
 	dev-util/intltool
 	>=sys-kernel/linux-headers-3.1
 	virtual/pkgconfig
