@@ -5,7 +5,7 @@
 EAPI=5
 inherit eutils confutils flag-o-matic
 
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 DESCRIPTION="Fast, production-quality, standard-conformant FTP server"
 HOMEPAGE="http://www.pureftpd.org/"
@@ -15,7 +15,7 @@ SRC_URI="ftp://ftp.pureftpd.org/pub/${PN}/releases/${P}.tar.bz2
 LICENSE="BSD"
 SLOT="0"
 
-IUSE="anondel anonperm anonren anonres caps charconv implicittls ldap mysql noiplog pam paranoidmsg postgres resolveids selinux ssl sysquota vchroot xinetd"
+IUSE="anondel anonperm anonren anonres caps charconv implicittls ldap libressl mysql noiplog pam paranoidmsg postgres resolveids selinux ssl sysquota vchroot xinetd"
 
 REQUIRED_USE="implicittls? ( ssl )"
 
@@ -25,7 +25,10 @@ DEPEND="caps? ( sys-libs/libcap )
 	mysql? ( virtual/mysql )
 	pam? ( virtual/pam )
 	postgres? ( dev-db/postgresql:= )
-	ssl? ( >=dev-libs/openssl-0.9.6g:0=[-bindist] )
+	ssl? (
+		!libressl? ( >=dev-libs/openssl-0.9.6g:0=[-bindist] )
+		libressl? ( dev-libs/libressl:= )
+	)
 	sysquota? ( sys-fs/quota[-rpc] )
 	xinetd? ( virtual/inetd )"
 
