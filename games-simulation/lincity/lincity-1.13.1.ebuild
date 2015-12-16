@@ -23,17 +23,13 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
 src_prepare() {
-	sed -i \
-		-e '/^localedir/s:$(datadir):/usr/share:' \
-		po/Makefile.in.in \
-		intl/Makefile.in \
-		|| die 'sed failed'
+	epatch "${FILESDIR}"/${P}-build.patch
 }
 
 src_configure() {
 	egamesconf \
-		--with-gzip \
 		$(use_enable nls) \
+		--with-gzip \
 		--with-x
 }
 
@@ -44,7 +40,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 	dodoc Acknowledgements CHANGES README* TODO
 	make_desktop_entry xlincity Lincity
 	dogamesbin xlincity

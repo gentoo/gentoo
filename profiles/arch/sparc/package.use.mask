@@ -2,10 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# Anthony G. Basile <blueness@gentoo.org> (25 Nov 2015)
-# mask http2 on net-misc/curl until stabilized, bug #558734
-net-misc/curl http2
-
 # Justin Lecher <jlec@gentoo.org> (18 Nov 2015)
 # requires dev-python/restkit which requires
 # dev-python/socketpool which requires dev-python/gevent which requires
