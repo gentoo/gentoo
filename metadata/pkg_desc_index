@@ -8610,7 +8610,7 @@ dev-ruby/git 1.2.9.1 1.2.9.1-r1: Library for using Git in Ruby
 dev-ruby/github_api 0.11.3 0.11.3-r1 0.12.4: A Ruby wrapper for the GitHub REST API v3
 dev-ruby/globalid 0.3.3 0.3.5 0.3.6: Reference models by URI
 dev-ruby/gnuplot 2.6.2-r2: Gnuplot drawing library - Ruby Bindings
-dev-ruby/gpgme 2.0.8 2.0.9 2.0.10: Ruby language binding for GnuPG Made Easy
+dev-ruby/gpgme 2.0.10 2.0.11: Ruby language binding for GnuPG Made Easy
 dev-ruby/gruff 0.5.1 0.5.1-r1 0.6.0: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 4.0.6 4.0.6-r1 4.0.7: A ruby web page templating engine
 dev-ruby/hashdiff 0.2.2 0.2.3: Simple Hash extension to make working with nested hashes easier and less error-prone
@@ -8974,7 +8974,7 @@ dev-ruby/tidy_table 0.0.5-r3 0.0.5-r4: Tool to convert an array of struct into a
 dev-ruby/tilt 1.4.1 1.4.1-r2 2.0.1-r1: A thin interface over a Ruby template engines to make their usage as generic as possible
 dev-ruby/timecop 0.7.1 0.7.4 0.8.0: A gem providing 'time travel' and 'time freezing' capabilities
 dev-ruby/timers 4.0.1 4.1.0 4.1.1: Pure Ruby one-shot and periodic timers
-dev-ruby/tins 0.13.1 1.6.0 1.7.0 1.8.0: All the stuff that isn't good enough for a real library
+dev-ruby/tins 0.13.1 1.6.0 1.7.0 1.8.0 1.8.1: All the stuff that isn't good enough for a real library
 dev-ruby/tokyocabinet 1.29.1: Ruby bindings for Tokyo Cabinet
 dev-ruby/toml 0.1.2: A sane configuration format
 dev-ruby/transaction-simple 1.4.0.2-r1 1.4.0.2-r2: Provides transaction support at the object level
@@ -9370,7 +9370,7 @@ dev-util/cyclo 2.1_pre1: Computes cyclomatic complexity metrics on C source code
 dev-util/d-feet 0.3.9 0.3.10: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20150101 9.20151005 9.20151116 9.20151117: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debhelper 9.20150101 9.20151117 9.20151126: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.67 1.0.74 1.0.75: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 4.4.6-r1 4.4.6-r2 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
