@@ -258,15 +258,17 @@ _calculate_src_uri() {
 		kde-frameworks)
 			SRC_URI="mirror://kde/stable/frameworks/${PV%.*}/${_kmname}-${PV}.tar.xz" ;;
 		kde-plasma)
+			local plasmapv=$(get_version_component_range 1-3)
+
 			case ${PV} in
 				5.?.[6-9]? )
 					# Plasma 5 beta releases
-					SRC_URI="mirror://kde/unstable/plasma/${PV}/${_kmname}-${PV}.tar.xz"
+					SRC_URI="mirror://kde/unstable/plasma/${plasmapv}/${_kmname}-${PV}.tar.xz"
 					RESTRICT+=" mirror"
 					;;
 				*)
 					# Plasma 5 stable releases
-					SRC_URI="mirror://kde/stable/plasma/${PV}/${_kmname}-${PV}.tar.xz" ;;
+					SRC_URI="mirror://kde/stable/plasma/${plasmapv}/${_kmname}-${PV}.tar.xz" ;;
 			esac
 			;;
 	esac
