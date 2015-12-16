@@ -76,6 +76,10 @@ src_prepare() {
 		-e 's:DEFINES += CHECK_UPGRADED:#DEFINES += CHECK_UPGRADED:' \
 		-i "${S}"/src/smplayer.pro || die "sed failed"
 
+	# Turn off nasty share widget
+	sed -e 's:DEFINES += SHAREWIDGET:#DEFINES += SHAREWIDGET:' \
+		-i "${S}"/src/smplayer.pro || die "sed failed"
+
 	# Turn off youtube support (which pulls in extra dependencies) if unwanted
 	if ! use streaming ; then
 		sed -e 's:DEFINES += YOUTUBE_SUPPORT:#DEFINES += YOUTUBE_SUPPORT:' \

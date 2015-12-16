@@ -11,10 +11,10 @@ MY_P="${P//-}"
 
 DESCRIPTION="Jacl is an implementation of Tcl written in Java"
 HOMEPAGE="http://tcljava.sourceforge.net"
-SRC_URI="mirror://sourceforge/tcljava/${MY_P}.tar.gz"
+SRC_URI="mirror://sourceforge/tcljava/${MY_P}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="doc"
 
 CDEPEND=">=dev-lang/tcl-8.4.5:*"

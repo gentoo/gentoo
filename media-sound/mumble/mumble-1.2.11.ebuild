@@ -17,10 +17,11 @@ SRC_URI="http://mumble.info/snapshot/${MY_P}.tar.gz"
 LICENSE="BSD MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+alsa +dbus debug g15 oss pch portaudio pulseaudio speech zeroconf"
+IUSE="+alsa +dbus debug g15 libressl oss pch portaudio pulseaudio speech zeroconf"
 
 RDEPEND=">=dev-libs/boost-1.41.0
-	>=dev-libs/openssl-1.0.0b
+	!libressl? ( >=dev-libs/openssl-1.0.0b:0 )
+	libressl? ( dev-libs/libressl )
 	>=dev-libs/protobuf-2.2.0
 	>=media-libs/libsndfile-1.0.20[-minimal]
 	>=media-libs/opus-1.0.1
