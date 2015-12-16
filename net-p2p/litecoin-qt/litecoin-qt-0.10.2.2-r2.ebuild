@@ -34,7 +34,7 @@ RDEPEND="
 		net-libs/miniupnpc
 	)
 	sys-libs/db:$(db_ver_to_slot "${DB_VER}")[cxx]
-	<=dev-libs/leveldb-1.15.0-r1
+	>=dev-libs/leveldb-1.18-r1
 	!qt5? (
 		dev-qt/qtgui:4
 		dbus? (
@@ -57,7 +57,9 @@ DOCS="doc/README.md doc/release-notes.md"
 S="${WORKDIR}/${MyP}"
 
 src_prepare() {
-	epatch "${FILESDIR}/0.9.0-sys_leveldb.patch"
+	epatch "${FILESDIR}"/0.9.0-sys_leveldb.patch
+	epatch "${FILESDIR}"/litecoind-0.10.2.2-memenv_h.patch
+	epatch "${FILESDIR}"/litecoin-miniupnpc-abi.patch
 	eautoreconf
 	rm -r src/leveldb
 
@@ -106,9 +108,9 @@ src_configure() {
 		--without-libs \
 		--without-utils \
 		--without-daemon  \
-        --with-gui=$(usex qt5 qt5 qt4) \
-        $(use_with dbus qtdbus)  \
-        $(use_with qrcode qrencode)  \
+		--with-gui=$(usex qt5 qt5 qt4) \
+		$(use_with dbus qtdbus)  \
+		$(use_with qrcode qrencode)  \
 		${my_econf}
 }
 
