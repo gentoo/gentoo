@@ -17495,8 +17495,8 @@ www-client/dwb 2013.03.30 2014.03.07 2014.03.07-r1 9999: Dynamic web browser bas
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.16.3 3.18.0 3.18.2: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1: Fetch is a simple, fast, and flexible HTTP download tool built on the HTTP Fetcher library
-www-client/firefox 38.2.0 38.3.0 38.4.0 42.0-r2: Firefox Web Browser
-www-client/firefox-bin 38.3.0 38.4.0 42.0: Firefox Web Browser
+www-client/firefox 38.4.0 38.5.0 43.0: Firefox Web Browser
+www-client/firefox-bin 38.3.0 38.4.0 38.5.0 43.0: Firefox Web Browser
 www-client/google-chrome 47.0.2526.106_p1: The web browser from Google
 www-client/google-chrome-beta 48.0.2564.41_p1: The web browser from Google
 www-client/google-chrome-unstable 49.0.2587.3_p1: The web browser from Google
