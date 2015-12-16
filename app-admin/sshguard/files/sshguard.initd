@@ -12,7 +12,7 @@ SSHGUARD_PIDFILE=${SSHGUARD_PIDFILE:-/var/run/${SVCNAME}.pid}
 
 start() {
 	ebegin "Starting sshguard"
-	[[ -z ${SSHGUARD_WAIT} ]] && SSHGUARD_WAIT=999
+	[ -z "${SSHGUARD_WAIT}" ] && SSHGUARD_WAIT=999
 	start-stop-daemon --start --wait ${SSHGUARD_WAIT} --background --quiet --exec \
 		/usr/sbin/sshguard -- -i ${SSHGUARD_PIDFILE} ${SSHGUARD_OPTS}
 	eend $?
