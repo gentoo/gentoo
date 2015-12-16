@@ -1,14 +1,17 @@
 --- a/src/Properties.cpp
 +++ b/src/Properties.cpp
-@@ -1169,7 +1169,11 @@
+@@ -1169,11 +1169,13 @@
  
  	FXbool confirm = false;
  	
 +#ifdef STARTUP_NOTIFICATION
  	if (executable && snbutton->getCheck() != sndisable_prev)
-+#else
-+	if (executable)
-+#endif
  	{
  		confirm = true;
  	}
+-	
++#endif
++
+     FXbool cond;
+     if (edit) // Condition is not the same if edit exist or not
+     {
