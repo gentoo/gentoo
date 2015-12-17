@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>common-lisp</herd>
+	<longdescription>
+		CL-PPCRE is a portable regular expression library for Common Lisp
+		which has the following features: 
+
+		* compatible with Perl
+		* fast (outperforms Perl) 
+		* portable (ANSI Common Lisp)
+		* thread-safe 
+		* includes convenience features
+		* well-documented.
+	</longdescription>
+</pkgmetadata>
