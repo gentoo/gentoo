@@ -3,7 +3,10 @@
 <pkgmetadata>
   <herd>python</herd>
   <upstream>
-    <remote-id type="bitbucket">pytest-dev/pytest-xprocess</remote-id>
-    <remote-id type="pypi">pytest-xprocess</remote-id>
+    <remote-id type="pypi">pytest-httpbin</remote-id>
+    <maintainer status="unknown">
+      <email>me@kevinmccarthy.org</email>
+      <name>Kevin McCarthy</name>
+    </maintainer>
   </upstream>
 </pkgmetadata>

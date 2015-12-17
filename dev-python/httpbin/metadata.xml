@@ -3,7 +3,10 @@
 <pkgmetadata>
   <herd>python</herd>
   <upstream>
-    <remote-id type="bitbucket">pytest-dev/pytest-xprocess</remote-id>
-    <remote-id type="pypi">pytest-xprocess</remote-id>
+    <remote-id type="pypi">httpbin</remote-id>
+    <maintainer status="unknown">
+      <email>httpbin@runscope.com</email>
+      <name>Runscope</name>
+    </maintainer>
   </upstream>
 </pkgmetadata>
