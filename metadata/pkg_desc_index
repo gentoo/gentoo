@@ -1304,8 +1304,8 @@ app-emulation/openstack-guest-agents-unix 1.39.0 1.39.0-r1 1.39.0-r2 1.39.1: Ope
 app-emulation/phpvirtualbox 4.1.11 4.2.7 4.3.0 5.0.3: Web-based administration for VirtualBox in PHP
 app-emulation/playonlinux 4.2.4 4.2.6 4.2.8: Set of scripts to easily install and use Windows games and software
 app-emulation/q4wine 1.0-r3 1.1_p2-r1: Qt4 GUI configuration tool for Wine
-app-emulation/qemu 2.3.0-r5 2.3.0-r6 2.3.0-r7 2.3.1 2.3.1-r1 2.4.0-r1 2.4.0-r2 2.4.0.1 2.4.0.1-r1 2.4.0.1-r2 2.4.1 2.4.1-r1 2.4.1-r2 9999: QEMU + Kernel-based Virtual Machine userland tools
-app-emulation/qemu-guest-agent 2.3.0 2.3.1 2.4.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
+app-emulation/qemu 2.4.1-r2 2.5.0 9999: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu-guest-agent 2.3.0 2.3.1 2.4.0 2.5.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qtemu 1.0.5: A graphical user interface for QEMU written in Qt4
 app-emulation/rex-client 9999: Remote EXexcution agent
 app-emulation/rkt 0.8.0 9999: A CLI for running app containers, and an implementation of the App Container Spec.
@@ -7868,7 +7868,7 @@ dev-python/simplesettings 0.5-r1: Simple settings initialization
 dev-python/simpletal 4.2-r1 5.1-r1 5.2: Stand alone Python implementation of the Zope TAL, TALES and METAL specs for HTML/XML templates
 dev-python/simpy 2.3.1-r1 3.0.3 3.0.8: Simulation in Python is an object-oriented, process-based discrete-event simulation language
 dev-python/singledispatch 3.4.0.3: A library to bring functools.singledispatch from Python 3.4 to Python 2.6-3.3
-dev-python/sip 4.16.2 4.16.9 4.17 4.9999: Python extension module generator for C and C++ libraries
+dev-python/sip 4.16.2 4.16.9 4.17-r1 4.9999: Python extension module generator for C and C++ libraries
 dev-python/six 1.9.0-r1 1.10.0 9999: Python 2 and 3 compatibility library
 dev-python/skype4py 1.0.35-r1: Python wrapper for the Skype API
 dev-python/sleekxmpp 1.3.0 1.3.1: Python library for XMPP
@@ -9445,7 +9445,7 @@ dev-util/injectso 0.2-r1: Inject shared libraries into running processes under S
 dev-util/insight 6.8.1 6.8.1-r1: A graphical interface to the GNU debugger
 dev-util/intel-ocl-sdk 2.0.31360 4.4.0.117-r1: Intel's implementation of the OpenCL standard
 dev-util/intel2gas 1.3.3-r3: Converts assembler source from Intel (NASM), to AT&T (gas)
-dev-util/intltool 0.50.2-r1 0.51.0: Internationalization Tool Collection
+dev-util/intltool 0.50.2-r1 0.51.0 0.51.0-r1: Internationalization Tool Collection
 dev-util/its4 1.1.1: ITS4: Software Security Tool
 dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext files and ITS rules
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
@@ -15851,7 +15851,7 @@ sci-physics/herwig 6.5.21: High Energy Physics Event Generator
 sci-physics/herwig++ 2.7.1: High-Energy Physics event generator
 sci-physics/hoomd-blue 1.0.2: a general-purpose particle simulation toolkit
 sci-physics/jaxodraw 2.0.1-r1: Java program for drawing Feynman diagrams
-sci-physics/lammps 20150210 20150515 20150515-r1 20150810 20150904 20150909 20150911 20150924 20151005 20151022 20151023 20151026 20151031 20151106 20151120 20151207 20151208 20151209: Large-scale Atomic/Molecular Massively Parallel Simulator
+sci-physics/lammps 20150210 20150515 20150515-r1 20150810 20150904 20150909 20150911 20150924 20151005 20151022 20151023 20151026 20151031 20151106 20151120 20151207 20151208 20151209 20151211: Large-scale Atomic/Molecular Massively Parallel Simulator
 sci-physics/lhapdf 5.8.4 6.1.5: Les Houches Parton Density Function unified library
 sci-physics/lightspeed 1.2a-r1: OpenGL interactive relativistic simulator
 sci-physics/looptools 2.8 2.12: Tools for evaluation of scalar and tensor one-loop integrals
