@@ -40,7 +40,7 @@ UIDEPEND="
 	x11-proto/xproto"
 RDEPEND="
 	sys-libs/zlib
-	virtual/jpeg:62
+	virtual/jpeg:0
 	media-libs/libpng:0
 	net-misc/curl
 	~dev-libs/d0_blind_id-0.5
