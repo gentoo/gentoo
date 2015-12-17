@@ -33,3 +33,5 @@ games-fps/quake3-bin
 games-fps/quake3-demo
 games-fps/rtcwmp-demo
 games-fps/soldieroffortune
+games-puzzle/world-of-goo
+games-puzzle/world-of-goo-demo

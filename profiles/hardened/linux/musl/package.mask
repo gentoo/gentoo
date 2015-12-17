@@ -24,6 +24,7 @@ games-action/shadowgrounds-bin
 games-action/shadowgrounds-survivor-bin
 games-action/trine-bin
 games-arcade/marbleblastgold-demo
+games-puzzle/hoh-bin
 games-puzzle/world-of-goo
 games-puzzle/world-of-goo-demo
 games-strategy/defcon-demo
