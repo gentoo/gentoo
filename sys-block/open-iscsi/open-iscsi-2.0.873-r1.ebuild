@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit versionator linux-info eutils flag-o-matic toolchain-funcs
+inherit versionator linux-info eutils flag-o-matic toolchain-funcs udev
 
 MY_P="${PN}-$(replace_version_separator 2 "-")"
 
@@ -84,8 +84,7 @@ src_install() {
 	newins "${FILESDIR}"/initiatorname.iscsi initiatorname.iscsi.example
 
 	# udev pieces
-	insinto /lib/udev/rules.d
-	doins "${FILESDIR}"/99-iscsi.rules
+	udev_dorules "${FILESDIR}"/99-iscsi.rules
 	exeinto /etc/udev/scripts
 	doexe "${FILESDIR}"/iscsidev.sh
 
