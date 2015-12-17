@@ -53,6 +53,7 @@ src_prepare() {
 
 src_configure() {
 	use debug && append-cppflags -DDEBUG_TCP -DDEBUG_SCSI
+	append-lfs-flags
 
 	cd utils/open-isns || die
 
