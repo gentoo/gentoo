@@ -16,8 +16,8 @@ IUSE="doc ipv6 mikmod opengl sdl static-libs vorbis"
 
 # opengl keyword does not drop the GL/GLU requirement.
 # Autoconf files need to be fixed
-RDEPEND="media-libs/libpng
-	virtual/jpeg
+RDEPEND="media-libs/libpng:0
+	virtual/jpeg:0
 	virtual/glu
 	virtual/opengl
 	sdl? (
