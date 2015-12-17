@@ -12,7 +12,7 @@ SRC_URI="https://github.com/ioerror/tlsdate/tarball/${P} -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~mips ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~s390 ~sh ~sparc ~x86"
 IUSE="dbus +seccomp static-libs"
 
 DEPEND="dev-libs/openssl
