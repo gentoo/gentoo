@@ -24,7 +24,7 @@ DEPEND="
 	x11-libs/libXmu
 	virtual/glu
 	virtual/opengl
-	virtual/jpeg"
+	virtual/jpeg:0"
 RDEPEND=${DEPEND}
 
 src_prepare() {
