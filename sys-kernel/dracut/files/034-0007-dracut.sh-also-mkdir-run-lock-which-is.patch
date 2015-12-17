@@ -1,0 +1,25 @@
+From be723725cd6ea1c41b52c1bff5a569eb8cd0c76d Mon Sep 17 00:00:00 2001
+From: Harald Hoyer <harald@redhat.com>
+Date: Wed, 16 Oct 2013 11:31:54 +0200
+Subject: [PATCH 07/12] dracut.sh: also mkdir /run/lock, which is copied to
+
+---
+ dracut.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dracut.sh b/dracut.sh
+index e28b929..309aa7d 100755
+--- a/dracut.sh
++++ b/dracut.sh
+@@ -1081,7 +1081,7 @@ if [[ $kernel_only != yes ]]; then
+         fi
+     done
+ 
+-    for d in dev proc sys sysroot root run run/lock run/initramfs; do
++    for d in dev proc sys sysroot root run run/log run/lock run/initramfs; do
+         if [ -L "/$d" ]; then
+             inst_symlink "/$d"
+         else
+-- 
+1.8.4.3
+

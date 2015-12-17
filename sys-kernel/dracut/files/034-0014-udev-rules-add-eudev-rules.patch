@@ -1,0 +1,29 @@
+From 29f735ac0e54421d1518b8d0f730523ebb7e6d5a Mon Sep 17 00:00:00 2001
+From: Alexander Tsoy <alexander@tsoy.me>
+Date: Wed, 25 Dec 2013 14:00:26 +0400
+Subject: [PATCH] udev-rules: add eudev rules
+
+eudev configured with "--enable-modules --disable-libkmod" installs
+80-drivers-modprobe.rules instead of 80-drivers.rules
+
+https://bugs.gentoo.org/show_bug.cgi?id=494188
+---
+ modules.d/95udev-rules/module-setup.sh | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/modules.d/95udev-rules/module-setup.sh b/modules.d/95udev-rules/module-setup.sh
+index 88c3da2..ebc4447 100755
+--- a/modules.d/95udev-rules/module-setup.sh
++++ b/modules.d/95udev-rules/module-setup.sh
+@@ -39,6 +39,8 @@ install() {
+     prepare_udev_rules 59-persistent-storage.rules 61-persistent-storage.rules
+     # debian udev rules
+     inst_rules 91-permissions.rules
++    # eudev rules
++    inst_rules 80-drivers-modprobe.rules
+ 
+     {
+         for i in cdrom tape dialout floppy; do
+-- 
+1.8.3.2
+

@@ -1,0 +1,31 @@
+From 0c89bcc27516803d68444488ede3d513ba982039 Mon Sep 17 00:00:00 2001
+From: Alexander Tsoy <alexander@tsoy.me>
+Date: Wed, 9 Oct 2013 06:39:46 +0400
+Subject: [PATCH 6/6] resume: fix swap detection in hostonly
+
+Check for other possible fs types. This fixes swap detection when using
+TuxOnIce kernel.
+
+Note that parse-resume.sh generate udev rules with support for
+ID_FS_TYPE=suspend, but we do not include it here, because it is
+libvolume_id thing and host_fs_types is populated using blkid.
+---
+ modules.d/95resume/module-setup.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules.d/95resume/module-setup.sh b/modules.d/95resume/module-setup.sh
+index 518ebf0..a1ddb46 100755
+--- a/modules.d/95resume/module-setup.sh
++++ b/modules.d/95resume/module-setup.sh
+@@ -6,7 +6,7 @@ check() {
+     # No point trying to support resume, if no swap partition exist
+     [[ $hostonly ]] || [[ $mount_needs ]] && {
+         for fs in "${host_fs_types[@]}"; do
+-            [[ $fs = swap ]] && return 0
++            [[ $fs =~ ^(swap|swsuspend|swsupend)$ ]] && return 0
+         done
+         return 255
+     }
+-- 
+1.8.3.2
+

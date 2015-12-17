@@ -1,0 +1,42 @@
+From 45e5079d4be0ac1a977bc41dcda423fcfa3280fc Mon Sep 17 00:00:00 2001
+From: Harald Hoyer <harald@redhat.com>
+Date: Tue, 8 Oct 2013 15:03:40 +0200
+Subject: [PATCH 1/5] dracut.sh: do not bail out, if kernel modules dir is
+ missing
+
+and only print a warning message
+---
+ dracut.sh | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/dracut.sh b/dracut.sh
+index e135dfc..d9533dd 100755
+--- a/dracut.sh
++++ b/dracut.sh
+@@ -496,17 +496,18 @@ if [[ $regenerate_all == "yes" ]]; then
+         ((ret+=$?))
+     done
+     exit $ret
+-elif [[ $kernel ]]; then
+-    if ! [[ -d /lib/modules/$kernel ]] && [[ $no_kernel != yes ]]; then
+-        printf -- "Kernel version $kernel has no modules in /lib/modules/$kernel\n" >&2
+-        exit 1
+-    fi
+ fi
+ 
+ if ! [[ $kernel ]]; then
+     kernel=$(uname -r)
+ fi
+ 
++if [[ $kernel ]]; then
++    if ! [[ -d /lib/modules/$kernel ]] && [[ $no_kernel != yes ]]; then
++        printf -- "Kernel version $kernel has no module directory /lib/modules/$kernel\n" >&2
++    fi
++fi
++
+ if ! [[ $outfile ]]; then
+     [[ -f /etc/machine-id ]] && read MACHINE_ID < /etc/machine-id
+ 
+-- 
+1.8.3.2
+
