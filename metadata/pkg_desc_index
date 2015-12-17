@@ -13559,6 +13559,7 @@ net-analyzer/pypacker 2.4 2.9: Fast and simple packet creation and parsing libra
 net-analyzer/quidscor 1.2.48-r1: Qualys IDS Correlation Daemon
 net-analyzer/raddump 0.3.1: RADIUS packet interpreter
 net-analyzer/rain 1.2.9_beta1: powerful tool for testing stability of hardware and software utilizing IP protocols
+net-analyzer/ripe-atlas-tools 1.2.1: The official command-line client for RIPE Atlas
 net-analyzer/rrdcollect 0.2.9: Read system statistical data and feed it to RRDtool
 net-analyzer/rrdtool 1.4.8-r1 1.4.8-r3 1.4.9 1.5.3 1.5.3-r1 1.5.4 1.5.5: A system to store and display time-series data
 net-analyzer/rtpbreak 1.3a-r1: Detects, reconstructs and analyzes any RTP session through heuristics over the UDP network traffic
@@ -14134,6 +14135,7 @@ net-libs/qxmpp 0.7.4 0.7.5 0.7.6 0.7.6-r1 0.8.0 0.8.2 9999: A cross-platform C++
 net-libs/rabbitmq-c 0.3.0 0.5.0: RabbitMQ C client
 net-libs/rb_libtorrent 0.16.17 0.16.17-r2 0.16.19 1.0.4 1.0.5 1.0.6 1.0.7: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/rest 0.7.92-r1 0.7.92-r2 0.7.93: Helper library for RESTful services
+net-libs/ripe-atlas-sagan 1.1.8: A parsing library for RIPE Atlas result strings
 net-libs/roadrunner 0.9.1: RoadRunner library provides API for using Blocks Extensible Exchange Protocol
 net-libs/rpc2 2.0 2.8 2.10: Remote procedure call package for IP/UDP (used by Coda)
 net-libs/serf 1.3.8: HTTP client library
@@ -17519,6 +17521,7 @@ www-client/qtweb 3.8.5_p108: Lightweight, fast, secure and portable browser for 
 www-client/qupzilla 1.8.6 1.8.6-r1 1.8.6-r2 1.8.9: Qt WebKit web browser
 www-client/qutebrowser 0.2.1 0.3.0 0.4.1 0.4.1-r1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
 www-client/rekonq 2.4.2-r1: A browser based on qtwebkit
+www-client/ripe-atlas-cousteau 1.0.6: A Python wrapper around the RIPE Atlas API
 www-client/seamonkey 2.38 2.39: Seamonkey Web Browser
 www-client/seamonkey-bin 2.38 2.39: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 0.6-r1 0.6-r2 9999: a simple web browser based on WebKit/GTK+
