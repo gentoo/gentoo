@@ -48,7 +48,7 @@ DEPEND="${RDEPEND}
 	x11-proto/xproto
 	x11-proto/xextproto
 	doc? ( app-text/linuxdoc-tools )
-	nls? ( >=sys-devel/gettext-0.19.2 )
+	nls? ( >=sys-devel/gettext-0.19.5 )
 	truetype? ( >=media-libs/freetype-2.0.9 )
 	xinerama? ( x11-proto/xineramaproto )
 "
@@ -62,7 +62,6 @@ pkg_setup() {
 }
 
 PATCHES=(
-	# Fedora patches
 	"${FILESDIR}"/${PN}-1.3.10-menu.patch
 )
 
@@ -80,8 +79,7 @@ src_prepare() {
 }
 
 src_configure() {
-	if use truetype
-	then
+	if use truetype ; then
 		myconf="${myconf} --enable-gradients --enable-shape --enable-shaped-decorations"
 	else
 		myconf="${myconf} --disable-xfreetype --enable-corefonts
@@ -101,7 +99,7 @@ src_configure() {
 
 	CXXFLAGS="${CXXFLAGS}" econf ${myconf}
 
-	sed -i "s:/icewm-\$(VERSION)::" src/Makefile || die "patch failed"
+	sed -i "s:/icewm-\$(VERSION)::" src/Makefile || die
 	sed -i "s:ungif:gif:" src/Makefile || die "libungif fix failed"
 }
 
@@ -124,7 +122,4 @@ src_install(){
 
 	exeinto /etc/X11/Sessions
 	doexe "${FILESDIR}/icewm"
-
-	insinto /usr/share/xsessions
-	doins "${FILESDIR}/IceWM.desktop"
 }
