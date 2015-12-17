@@ -2,11 +2,12 @@ Title: Python ABIFLAGS rebuild needed
 Author: Mike Gilbert <floppym@gentoo.org>
 Content-Type: text/plain
 Posted: 2015-12-16
-Revision: 1
+Revision: 2
 News-Item-Format: 1.0
 Display-If-Installed: =dev-lang/python-3.3.5-r4
 Display-If-Installed: =dev-lang/python-3.3.5-r5
 Display-If-Installed: =dev-lang/python-3.3.5-r6
+Display-If-Installed: =dev-lang/python-3.3.5-r7
 Display-If-Installed: =dev-lang/python-3.3.5-r8
 Display-If-Installed: =dev-lang/python-3.3.5-r9
 Display-If-Installed: ~dev-lang/python-3.3.6
