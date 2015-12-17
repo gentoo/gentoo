@@ -21,11 +21,11 @@ RDEPEND=">=media-libs/skstream-0.3.9
 	>=dev-games/mercator-0.3.3
 	dev-libs/libgcrypt:0
 	dev-libs/libsigc++:2
-	sys-libs/ncurses
-	sys-libs/readline
+	sys-libs/ncurses:0
+	sys-libs/readline:0
 	>=media-libs/atlas-c++-0.6.3
 	>=media-libs/varconf-0.6.4
-	dev-db/postgresql"
+	dev-db/postgresql:="
 DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.40
 	dev-libs/libxml2
