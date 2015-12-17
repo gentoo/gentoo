@@ -52,6 +52,8 @@ src_prepare() {
 }
 
 src_configure() {
+	use debug && append-cppflags -DDEBUG_TCP -DDEBUG_SCSI
+
 	cd utils/open-isns || die
 
 	# SSL (--with-security) is broken
@@ -60,11 +62,11 @@ src_configure() {
 }
 
 src_compile() {
-	use debug && append-flags -DDEBUG_TCP -DDEBUG_SCSI
-
+	# Stuffing CPPFLAGS into CFLAGS isn't entirely correct, but the build
+	# is messed up already here, so it's not making it that much worse.
 	KSRC="${KV_DIR}" CFLAGS="" \
 	emake \
-		OPTFLAGS="${CFLAGS}" \
+		OPTFLAGS="${CFLAGS} ${CPPFLAGS}" \
 		AR="$(tc-getAR)" CC="$(tc-getCC)" \
 		user
 }
