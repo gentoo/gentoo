@@ -30,7 +30,7 @@ app-accessibility/powiedz 1.0-r2: Polish speech synthesizer based on rsynth
 app-accessibility/simon 0.4.0 0.4.1: Open-source speech recognition program for replacing mouse and keyboard
 app-accessibility/sound-icons 0.1: a collection of Sound Icons for speech-dispatcher
 app-accessibility/speakup 3.1.6_p201011120508 9999: The speakup linux kernel based screen reader
-app-accessibility/speech-dispatcher 0.8.1: Speech synthesis interface
+app-accessibility/speech-dispatcher 0.8.1 0.8.3: Speech synthesis interface
 app-accessibility/speech-tools 2.1-r2 2.1-r3: Speech tools for Festival Text to Speech engine
 app-accessibility/speechd-el 2.5: Emacs speech support
 app-accessibility/speechd-up 0.4-r3: Interface between speakup and speech-dispatcher
