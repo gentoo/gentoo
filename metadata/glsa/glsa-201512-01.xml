@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201512-01">
+  <title>Dnsmasq: Denial of Service</title>
+  <synopsis>A vulnerability in Dnsmasq can lead to a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">dnsmasq</product>
+  <announced>December 17, 2015</announced>
+  <revised>December 17, 2015: 1</revised>
+  <bug>547966</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/dnsmasq" auto="yes" arch="*">
+      <unaffected range="ge">2.72-r2</unaffected>
+      <vulnerable range="lt">2.72-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Dnsmasq is a lightweight, easy to configure DNS forwarder and DHCP
+      server. 
+    </p>
+  </background>
+  <description>
+    <p>An out-of-bounds read vulnerability has been found in the tcp_request
+      function in Dnsmasq.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted DNS request, possibly
+      resulting in a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Dnsmasq users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dns/dnsmasq-2.72-r2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3294">CVE-2015-3294</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 04 Aug 2015 14:11:32 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 17 Dec 2015 15:30:29 +0000">ackle</metadata>
+</glsa>
