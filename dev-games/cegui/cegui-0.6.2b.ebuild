@@ -23,7 +23,7 @@ RDEPEND="dev-libs/libpcre
 	expat? ( dev-libs/expat )
 	irrlicht? ( dev-games/irrlicht )
 	lua? (
-		dev-lang/lua
+		dev-lang/lua:0
 		dev-lua/toluapp
 	)
 	opengl? (
