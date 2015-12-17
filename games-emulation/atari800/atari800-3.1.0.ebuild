@@ -16,7 +16,7 @@ KEYWORDS="amd64 ~ppc x86"
 IUSE="ncurses oss opengl readline +sdl +sound"
 
 NOTSDL_DEPS="
-	sys-libs/ncurses
+	sys-libs/ncurses:0
 	sound? (
 		!oss? ( media-libs/libsdl[sound] )
 	)"
