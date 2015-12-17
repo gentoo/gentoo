@@ -13,15 +13,15 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 
-RDEPEND="
+DEPEND="
 	media-libs/fontconfig
-	media-libs/libpng:*
 	x11-libs/libX11
 	x11-libs/libXft
 "
 
-DEPEND="
-	${RDEPEND}
+RDEPEND="
+	${DEPEND}
+	!savedconfig? ( media-gfx/farbfeld )
 
 "
 
