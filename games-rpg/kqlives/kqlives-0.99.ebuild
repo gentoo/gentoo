@@ -20,7 +20,7 @@ RDEPEND=">=x11-libs/gtk+-2.8:2
 	>=gnome-base/libglade-2.4
 	media-libs/allegro:0
 	media-libs/aldumb
-	dev-lang/lua
+	dev-lang/lua:0
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
