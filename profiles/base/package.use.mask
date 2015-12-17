@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Brian Evans <grknight@gentoo.org> (17 Dec 2015)
+# Drizzle is slated for removal
+sys-cluster/gearmand drizzle
+
 # Sergey Popov <pinkbyte@gentoo.org> (7 Dec 2015)
 # IPoE driver does not build properly
 net-dialup/accel-ppp ipoe

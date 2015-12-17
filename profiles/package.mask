@@ -30,6 +30,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (17 Dec 2015)
+# "The drizzle project is long dead, it should be removed,
+# along with dev-php/pecl-drizzle", by grknight
+# in Bug #501060
+# Try 2 acked by idella4
+# Masked for removal in 30 days.
+dev-db/drizzle
+dev-php/pecl-drizzle
+
 # José María Alonso Josa <nimiux@gentoo.org> (15 Dec 2015)
 # Refers to same package as dev-lisp/clx
 # Masked for removal in 30 days, bug 568188

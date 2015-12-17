@@ -29,18 +29,18 @@ HOMEPAGE="http://www.qemu.org http://www.linux-kvm.org"
 LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
 IUSE="accessibility +aio alsa bluetooth +caps +curl debug +fdt glusterfs \
-gtk gtk2 infiniband iscsi +jpeg \
+gnutls gtk gtk2 infiniband iscsi +jpeg \
 kernel_linux kernel_FreeBSD lzo ncurses nfs nls numa opengl +pin-upstream-blobs
 +png pulseaudio python \
 rbd sasl +seccomp sdl sdl2 selinux smartcard snappy spice ssh static static-softmmu
-static-user systemtap tci test +threads tls usb usbredir +uuid vde +vhost-net \
-virtfs +vnc vte xattr xen xfs"
+static-user systemtap tci test +threads usb usbredir +uuid vde +vhost-net \
+virgl virtfs +vnc vte xattr xen xfs"
 
 COMMON_TARGETS="aarch64 alpha arm cris i386 m68k microblaze microblazeel mips
 mips64 mips64el mipsel or32 ppc ppc64 s390x sh4 sh4eb sparc sparc64 unicore32
 x86_64"
 IUSE_SOFTMMU_TARGETS="${COMMON_TARGETS} lm32 moxie ppcemb tricore xtensa xtensaeb"
-IUSE_USER_TARGETS="${COMMON_TARGETS} armeb mipsn32 mipsn32el ppc64abi32 ppc64le sparc32plus"
+IUSE_USER_TARGETS="${COMMON_TARGETS} armeb mipsn32 mipsn32el ppc64abi32 ppc64le sparc32plus tilegx"
 
 use_softmmu_targets=$(printf ' qemu_softmmu_targets_%s' ${IUSE_SOFTMMU_TARGETS})
 use_user_targets=$(printf ' qemu_user_targets_%s' ${IUSE_USER_TARGETS})
@@ -65,6 +65,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 # The attr lib isn't always linked in (although the USE flag is always
 # respected).  This is because qemu supports using the C library's API
 # when available rather than always using the extranl library.
+#
+# Older versions of gnutls are supported, but it's simpler to just require
+# the latest versions.  This is also why we require nettle.
 COMMON_LIB_DEPEND=">=dev-libs/glib-2.0[static-libs(+)]
 	sys-libs/zlib[static-libs(+)]
 	xattr? ( sys-apps/attr[static-libs(+)] )"
@@ -78,6 +81,10 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
 	fdt? ( >=sys-apps/dtc-1.4.0[static-libs(+)] )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.0[static-libs(+)] )
+	gnutls? (
+		dev-libs/nettle[static-libs(+)]
+		>=net-libs/gnutls-3.0[static-libs(+)]
+	)
 	gtk? (
 		gtk2? (
 			x11-libs/gtk+:2
@@ -116,18 +123,18 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 		)
 	)
 	seccomp? ( >=sys-libs/libseccomp-2.1.0[static-libs(+)] )
-	smartcard? ( dev-libs/nss !app-emulation/libcacard )
+	smartcard? ( >=app-emulation/libcacard-2.5.0[static-libs(+)] )
 	snappy? ( app-arch/snappy[static-libs(+)] )
 	spice? (
 		>=app-emulation/spice-protocol-0.12.3
 		>=app-emulation/spice-0.12.0[static-libs(+)]
 	)
 	ssh? ( >=net-libs/libssh2-1.2.8[static-libs(+)] )
-	tls? ( net-libs/gnutls[static-libs(+)] )
 	usb? ( >=virtual/libusb-1-r2[static-libs(+)] )
 	usbredir? ( >=sys-apps/usbredir-0.6[static-libs(+)] )
 	uuid? ( >=sys-apps/util-linux-2.16.0[static-libs(+)] )
 	vde? ( net-misc/vde[static-libs(+)] )
+	virgl? ( media-libs/virglrenderer[static-libs(+)] )
 	virtfs? ( sys-libs/libcap )
 	xfs? ( sys-fs/xfsprogs[static-libs(+)] )"
 USER_LIB_DEPEND="${COMMON_LIB_DEPEND}"
@@ -300,18 +307,10 @@ src_prepare() {
 	# Cheap hack to disable gettext .mo generation.
 	use nls || rm -f po/*.po
 
-	epatch "${FILESDIR}"/qemu-1.7.0-cflags.patch
-	epatch "${FILESDIR}"/${PN}-2.4.0-block-mirror-crash.patch #558396
-	epatch "${FILESDIR}"/${PN}-2.4.0-CVE-2015-7295-{1,2,3}.patch #560760
-	epatch "${FILESDIR}"/${PN}-2.4.0-CVE-2015-6855.patch #560422
+	epatch "${FILESDIR}"/qemu-2.5.0-cflags.patch
 	[[ -n ${BACKPORTS} ]] && \
 		EPATCH_FORCE=yes EPATCH_SUFFIX="patch" EPATCH_SOURCE="${S}/patches" \
 			epatch
-
-	# MIPS specific fixes. Bug #563162
-	for x in "${FILESDIR}"/${PN}-2.4-mips-*; do
-		epatch "${x}"
-	done
 
 	# Fix ld and objcopy being called directly
 	tc-export AR LD OBJCOPY
@@ -372,6 +371,7 @@ qemu_src_configure() {
 		$(conf_softmmu curl)
 		$(conf_softmmu fdt)
 		$(conf_softmmu glusterfs)
+		$(conf_softmmu gnutls)
 		$(conf_softmmu gtk)
 		$(conf_softmmu infiniband rdma)
 		$(conf_softmmu iscsi libiscsi)
@@ -387,16 +387,16 @@ qemu_src_configure() {
 		$(conf_softmmu sasl vnc-sasl)
 		$(conf_softmmu sdl)
 		$(conf_softmmu seccomp)
-		$(conf_softmmu smartcard smartcard-nss)
+		$(conf_softmmu smartcard)
 		$(conf_softmmu snappy)
 		$(conf_softmmu spice)
 		$(conf_softmmu ssh libssh2)
-		$(conf_softmmu tls vnc-tls)
 		$(conf_softmmu usb libusb)
 		$(conf_softmmu usbredir usb-redir)
 		$(conf_softmmu uuid)
 		$(conf_softmmu vde)
 		$(conf_softmmu vhost-net)
+		$(conf_softmmu virgl virglrenderer)
 		$(conf_softmmu virtfs)
 		$(conf_softmmu vnc)
 		$(conf_softmmu vte)
@@ -570,12 +570,12 @@ src_install() {
 	doins "${FILESDIR}/bridge.conf"
 
 	# Remove the docdir placed qmp-commands.txt
-	mv "${ED}/usr/share/doc/${PF}/html/qmp-commands.txt" "${S}/docs/qmp/"
+	mv "${ED}/usr/share/doc/${PF}/html/qmp-commands.txt" "${S}/docs/" || die
 
 	cd "${S}"
 	dodoc Changelog MAINTAINERS docs/specs/pci-ids.txt
 	newdoc pc-bios/README README.pc-bios
-	dodoc docs/qmp/*.txt
+	dodoc docs/qmp-*.txt
 
 	if [[ -n ${softmmu_targets} ]]; then
 		# Remove SeaBIOS since we're using the SeaBIOS packaged one
