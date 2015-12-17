@@ -5,4 +5,7 @@
 <email>jer@gentoo.org</email>
 <name>Jeroen Roovers</name>
 </maintainer>
+<use>
+<flag name='savedconfig'>Without a saved config.h, this package depends on <pkg>media-gfx/farbfeld</pkg> for image conversions</flag>
+</use>
 </pkgmetadata>
