@@ -26,7 +26,7 @@ if [[ ${PV} != 9999 ]]; then
 			https://dev.gentoo.org/~floppym/dist/${P}.tar.xz"
 		S=${WORKDIR}/${P%_*}
 	fi
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="git://git.sv.gnu.org/grub.git
