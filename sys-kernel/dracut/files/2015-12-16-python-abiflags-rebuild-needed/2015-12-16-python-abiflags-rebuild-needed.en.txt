@@ -1,0 +1,46 @@
+Title: Python ABIFLAGS rebuild needed
+Author: Mike Gilbert <floppym@gentoo.org>
+Content-Type: text/plain
+Posted: 2015-12-16
+Revision: 2
+News-Item-Format: 1.0
+Display-If-Installed: =dev-lang/python-3.3.5-r4
+Display-If-Installed: =dev-lang/python-3.3.5-r5
+Display-If-Installed: =dev-lang/python-3.3.5-r6
+Display-If-Installed: =dev-lang/python-3.3.5-r7
+Display-If-Installed: =dev-lang/python-3.3.5-r8
+Display-If-Installed: =dev-lang/python-3.3.5-r9
+Display-If-Installed: ~dev-lang/python-3.3.6
+Display-If-Installed: =dev-lang/python-3.4.3-r4
+Display-If-Installed: =dev-lang/python-3.4.3-r5
+Display-If-Installed: =dev-lang/python-3.4.3-r6
+Display-If-Installed: =dev-lang/python-3.4.3-r7
+Display-If-Installed: =dev-lang/python-3.4.3-r8
+Display-If-Installed: =dev-lang/python-3.4.3-r9
+Display-If-Installed: ~dev-lang/python-3.4.4
+Display-If-Installed: =dev-lang/python-3.5.0-r3
+Display-If-Installed: =dev-lang/python-3.5.0-r4
+Display-If-Installed: =dev-lang/python-3.5.0-r5
+Display-If-Installed: =dev-lang/python-3.5.0-r6
+Display-If-Installed: =dev-lang/python-3.5.0-r7
+Display-If-Installed: =dev-lang/python-3.5.0-r8
+Display-If-Installed: =dev-lang/python-3.5.0-r9
+Display-If-Installed: ~dev-lang/python-3.5.1
+
+For several years, Gentoo has been patching python3 in a way that is
+incompatible with PEP 3149 [1]. Gentoo has been enabling the PyMalloc feature,
+but our python packages have not carried the appropriate ABI flag.
+
+We have removed this patch from the most recent dev-lang/python ebuilds at
+the time of this writing. One result of this is that any packages which
+install python extension modules must be rebuilt.
+
+You should rebuild affected packages using the following command.
+
+emerge -1v $(find /usr/lib*/python3* -name '*cpython-3[3-5].so')
+
+You may experience build failures in related packages until this has been
+completed.
+
+References:
+[1] https://www.python.org/dev/peps/pep-3149/

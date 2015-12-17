@@ -1,0 +1,41 @@
+Title: New 13.0 profiles and deprecation of 10.0 profiles
+Author: Andreas K. Huettel <dilfridge@gentoo.org>
+Content-Type: text/plain
+Posted: 2013-02-10
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Profile: default/linux/alpha/10.0/server
+Display-If-Profile: default/linux/amd64/10.0/server
+Display-If-Profile: default/linux/arm/10.0/server
+Display-If-Profile: default/linux/arm/10.0/armv4/server
+Display-If-Profile: default/linux/arm/10.0/armv4t/server
+Display-If-Profile: default/linux/arm/10.0/armv5te/server
+Display-If-Profile: default/linux/arm/10.0/armv6j/server
+Display-If-Profile: default/linux/arm/10.0/armv7a/server
+Display-If-Profile: default/linux/hppa/10.0/server
+Display-If-Profile: default/linux/ia64/10.0/server
+Display-If-Profile: default/linux/m68k/10.0/server
+Display-If-Profile: default/linux/powerpc/ppc32/10.0/server
+Display-If-Profile: default/linux/powerpc/ppc64/10.0/32bit-userland/server
+Display-If-Profile: default/linux/powerpc/ppc64/10.0/64bit-userland/server
+Display-If-Profile: default/linux/s390/10.0/server
+Display-If-Profile: default/linux/s390/10.0/server/s390x
+Display-If-Profile: default/linux/sh/10.0/server
+Display-If-Profile: default/linux/sparc/10.0/server
+Display-If-Profile: default/linux/x86/10.0/server
+
+We have generated a new set of profiles for Gentoo installation. These are now
+called 13.0 instead of 10.0. Everyone should upgrade as soon as possible (but
+please make sure sys-apps/portage is updated to current stable *before* you
+switch profile).
+This brings (nearly) no user-visible changes. Some new files have been added
+to the profile directories that make it possible for the developers to do more
+fine-grained use flag masking (see PMS-5 for the details), and this formally
+requires a new profile tree with EAPI=5.
+In the course of this change, the "server" profiles will be removed; they do
+not exist in the 13.0 tree anymore. You should migrate to the corresponding
+parent profile. This may change the default value of some use-flags. The
+specific setting in "server" was 
+  USE="-perl -python snmp truetype xml"
+You may want to check the setting of these flags after switching profile, but
+otherwise nothing changes.

@@ -1,0 +1,28 @@
+Title: Python 3.1
+Author: Arfrever Frehtes Taifersar Arahesis <Arfrever@gentoo.org>
+Content-Type: text/plain
+Posted: 2010-03-25
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: =dev-lang/python-3.1*
+
+Python 3 is a new major version of Python and is intentionally incompatible
+with Python 2. Many external modules have not been ported yet to Python 3,
+so Python 2 still needs to be installed. You can benefit from having Python 3
+installed without setting Python 3.1 as main active version of Python.
+Currently you should not set Python 3.1 as main active version of Python.
+When setting it becomes recommended, a separate news item will be created
+to notify users.
+
+Although Python 3.1 should not be set as main active version of Python,
+you should run python-updater after installation of Python 3.1. By default,
+modules that support both Python 2 and Python 3 are installed for both
+the active version of Python 2 and the active version of Python 3 when both
+Python 2 and Python 3 are installed.
+
+It is recommended to use a UTF-8 locale to avoid potential problems. Especially
+C and POSIX locales are discouraged. If locale has not been explicitly set,
+then POSIX locale is used, so you should ensure that locale has been set.
+Problems occurring only with non-UTF-8 locales should be reported directly
+to upstream developers of given packages.
+See http://www.gentoo.org/doc/en/utf-8.xml for more information about UTF-8.

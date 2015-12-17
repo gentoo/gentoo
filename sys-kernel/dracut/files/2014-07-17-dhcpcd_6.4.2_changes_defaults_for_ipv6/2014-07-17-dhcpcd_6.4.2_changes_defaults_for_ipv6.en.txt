@@ -1,0 +1,27 @@
+Title: dhcpcd >= 6.4.2 changes defaults for IPv6
+Author: William Hubbs <williamh@gentoo.org>
+Content-Type: text/plain
+Posted: 2014-07-17
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <=net-misc/dhcpcd-6.4.2
+
+dhcpcd-6.4.2 and newer supports IPv6 stable private addresses when using
+IPv6 stateless address autoconfiguration (SLAAC) as described in
+RFC-7217 [1]. The configuration file shipped with dhcpcd activates this
+feature by default, because it means that a machine cannot be tracked
+across multiple networks since its address will no longer be based on
+the hardware address of the interface.
+
+I received a report in testing that IPv6 connectivity was lost due
+to this change [2]. If you are concerned about losing IPv6 connectivity,
+temporarily comment out the line in dhcpcd.conf that says
+"slaac private" until you can adjust to the new configuration.
+
+See the references below for why the upstream default is to use stable
+private instead of hardware-based addresses.
+
+[1] http://tools.ietf.org/html/rfc7217
+[2] https://bugs.gentoo.org/show_bug.cgi?id=514198
+[3] http://tools.ietf.org/html/draft-ietf-6man-default-iids-00
+[4] http://mail-index.netbsd.org/tech-net/2014/06/04/msg004572.html

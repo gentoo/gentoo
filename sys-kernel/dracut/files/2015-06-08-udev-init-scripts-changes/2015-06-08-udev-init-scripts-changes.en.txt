@@ -1,0 +1,20 @@
+Title: udev-init-scripts-29 important changes
+Author: William Hubbs <williamh@gentoo.org>
+Content-Type: text/plain
+Posted: 2015-06-08
+Revision: 2
+News-Item-Format: 1.0
+Display-If-Installed: <=sys-fs/udev-init-scripts-29
+
+In udev-init-scripts-29 and newer, the udev service script has been
+split into udev, udev-settle and udev-trigger.
+
+This means the settings in /etc/conf.d/udev have also been migrated
+to the appropriate /etc/conf.d files, so be careful when you update your
+configuration settings.
+
+udev and udev-trigger will be added to your sysinit runlevel, but not
+udev-settle. udev-settle should not be added to a runlevel. Instead, if
+a service needs this, it should add "need udev-settle" to its
+dependencies.
+

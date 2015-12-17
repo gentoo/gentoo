@@ -1,0 +1,62 @@
+Title: Future Support of hardened-sources Kernel
+Author: Anthony G. Basile <blueness@gentoo.org>
+Content-Type: text/plain
+Posted: 2015-10-21
+Revision: 3
+News-Item-Format: 1.0
+Display-If-Installed: sys-kernel/hardened-sources
+Display-If-Profile: hardened/linux/amd64
+Display-If-Profile: hardened/linux/amd64/no-multilib
+Display-If-Profile: hardened/linux/amd64/no-multilib/selinux
+Display-If-Profile: hardened/linux/amd64/selinux
+Display-If-Profile: hardened/linux/amd64/x32
+Display-If-Profile: hardened/linux/arm/armv6j
+Display-If-Profile: hardened/linux/arm/armv7a
+Display-If-Profile: hardened/linux/ia64
+Display-If-Profile: hardened/linux/musl/amd64
+Display-If-Profile: hardened/linux/musl/amd64/x32
+Display-If-Profile: hardened/linux/musl/arm/armv7a
+Display-If-Profile: hardened/linux/musl/mips
+Display-If-Profile: hardened/linux/musl/mips/mipsel
+Display-If-Profile: hardened/linux/musl/ppc
+Display-If-Profile: hardened/linux/musl/x86
+Display-If-Profile: hardened/linux/powerpc/ppc32
+Display-If-Profile: hardened/linux/powerpc/ppc64/32bit-userland
+Display-If-Profile: hardened/linux/powerpc/ppc64/64bit-userland
+Display-If-Profile: hardened/linux/uclibc/amd64
+Display-If-Profile: hardened/linux/uclibc/arm/armv7a
+Display-If-Profile: hardened/linux/uclibc/mips
+Display-If-Profile: hardened/linux/uclibc/mips/mipsel
+Display-If-Profile: hardened/linux/uclibc/ppc
+Display-If-Profile: hardened/linux/uclibc/x86
+Display-If-Profile: hardened/linux/x86
+Display-If-Profile: hardened/linux/x86/selinux
+
+For many years, the Grsecurity team [1] has been supporting two versions of
+their security patches against the Linux kernel, a stable and a testing
+version, and Gentoo has made both of these available to our users through the
+hardened-sources package.  However, on August 26 of this year, the team
+announced they would no longer be making the stable version publicly
+available, citing trademark infringement by a major embedded systems company
+as the reason. [2]  The stable patches are now only available to sponsors of
+Grsecurity and can no longer be distributed in Gentoo.  However, the team did
+assure us that they would continue to release and support the testing version
+as they have in the past.
+
+What does this means for users of hardened-sources?  Gentoo will continue to
+make the testing version available through our hardened-sources package but we
+will have to drop support for the 3.x series.  In a few days, those ebuilds
+will be removed from the tree and you will be required to upgrade to a 4.x
+series kernel.  Since the hardened-sources package only installs the kernel
+source tree, you can continue using a currently built 3.x series kernel but
+bear in mind that we cannot support you, nor will upstream.  Also keep in mind
+that the 4.x series will not be as reliable as the 3.x series was, so
+reporting bugs promptly will be even more important.  Gentoo will continue to
+work closely with upstream to stay on top of any problems, but be prepared for
+the occasional "bad" kernel.  The more reporting we receive from our users,
+the better we will be able to decide which hardened-sources kernels to mark
+stable and which to drop.
+
+Refs.
+[1] https://grsecurity.net
+[2] https://grsecurity.net/announce.php

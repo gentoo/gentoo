@@ -1,0 +1,30 @@
+Title: UPower loses hibernate / suspend to systemd
+Author: Samuli Suominen <ssuominen@gentoo.org>
+Content-Type: text/plain
+Posted: 2014-06-03
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <sys-power/upower-0.99.0
+
+UPower discontinued hibernate and suspend support in favor of systemd.
+Because of this, we have created a compability package at
+sys-power/upower-pm-utils which will give you the old UPower with
+sys-power/pm-utils support back.
+Some desktops have integrated the sys-power/pm-utils support directly
+to their code, like Xfce, and as a result, they work also with the new
+UPower as expected.
+
+All non-systemd users are recommended to choose between:
+
+# emerge --oneshot --noreplace 'sys-power/upower-pm-utils'
+
+or
+
+# emerge --oneshot --noreplace '>=sys-power/upower-0.99.0'
+
+However, all systemd users are recommended to stay with sys-power/upower.
+
+A small tip for GNOME _and_ systemd users, only 3.12 and newer support 0.99,
+so if you see the package manager pulling in sys-power/upower-pm-utils
+while using old GNOME, like 2.32 or 3.10, you _can_ prevent it by adding
+a package.mask entry for >=sys-power/upower-0.99

@@ -1,0 +1,25 @@
+Title: MySQL 5.1 unmasking and upgrade procedures
+Author: Robin H. Johnson <robbat2@gentoo.org>
+Content-Type: text/plain
+Posted: 2010-02-21
+Revision: 5
+News-Item-Format: 1.0
+Display-If-Installed: <dev-db/mysql-5.1
+
+The 5.1 series of MySQL is going to be unmasked at the same time as the release
+of this news item. When upgrading from an older major version (including 5.0),
+you will be required to rebuild everything linked to the libmysqlclient.so.15
+and libmysqlclient_r.so.15.
+
+You can do this by installing app-portage/gentoolkit and running:
+# revdep-rebuild --library libmysqlclient.so.15
+# revdep-rebuild --library libmysqlclient_r.so.15
+
+If you use the Portage 2.2 series, you may also use:
+# emerge @preserved-rebuild
+
+The official upgrade documentation is available here:
+http://dev.mysql.com/doc/refman/5.1/en/upgrading.html
+
+Note that existing databases may need converting as well, again including those
+upgrading from 5.0 to 5.1. Details are in the update documentation.
