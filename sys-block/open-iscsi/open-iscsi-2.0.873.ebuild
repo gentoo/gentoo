@@ -69,7 +69,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" sbindir="${ROOT}usr/sbin/" install
+	emake DESTDIR="${ED}" sbindir="/usr/sbin" install
 
 	dodoc README THANKS
 
