@@ -24,7 +24,7 @@ RDEPEND="sdl? ( >=media-libs/libsdl-1.2.0[opengl?,sound?,video] )
 	ncurses? ( ${NOTSDL_DEPS} )
 	!sdl? ( !ncurses? ( ${NOTSDL_DEPS} ) )
 	readline? ( sys-libs/readline:0
-		sys-libs/ncurses )
+		sys-libs/ncurses:0 )
 	media-libs/libpng:0
 	sys-libs/zlib"
 DEPEND="${RDEPEND}
