@@ -18,7 +18,7 @@ RESTRICT="test"
 RDEPEND="media-libs/libsdl2[sound,joystick,opengl,video]
 	media-libs/sdl2-ttf
 	media-libs/libpng:0
-	virtual/jpeg
+	virtual/jpeg:0
 	media-libs/libvorbis
 	virtual/opengl
 	dev-games/physfs
