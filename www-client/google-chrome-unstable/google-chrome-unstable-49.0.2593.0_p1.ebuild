@@ -6,7 +6,7 @@ EAPI="5"
 
 CHROMIUM_LANGS="am ar bg bn ca cs da de el en_GB es es_LA et fa fi fil fr gu he
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt_BR pt_PT ro ru sk sl sr
-	sv sw ta te th tr uk vi zh_CN zh_TW"
+	sv sw ta te th tr uk vi zh_CN zh_TW fake_bidi"
 
 inherit readme.gentoo chromium eutils multilib pax-utils unpacker
 
