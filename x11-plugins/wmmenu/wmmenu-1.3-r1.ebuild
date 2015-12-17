@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="x11-libs/gdk-pixbuf
+RDEPEND="x11-libs/gdk-pixbuf[X]
 	>=x11-libs/libdockapp-0.7:="
 DEPEND="${RDEPEND}"
 
