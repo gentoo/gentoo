@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
 IUSE="alsa oss"
 
-DEPEND="sys-libs/ncurses
+DEPEND="sys-libs/ncurses:0
 	alsa? ( oss? ( media-libs/alsa-oss ) )"
 RDEPEND="${DEPEND}"
 
