@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~ppc-macos"
 IUSE=""
 
-RDEPEND="sys-libs/ncurses"
+RDEPEND="sys-libs/ncurses:0"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
