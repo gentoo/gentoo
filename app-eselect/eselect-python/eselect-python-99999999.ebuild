@@ -40,7 +40,7 @@ src_install() {
 		# loves to do readlink on sys.executable...
 		newbin "${EPREFIX}/usr/lib/python-exec/python-exec2" "${f}"
 	done
-	for f in python{,2,3}-config 2to3 pydoc pyvenv; do
+	for f in python{,2,3}-config 2to3 idle pydoc pyvenv; do
 		dosym ../lib/python-exec/python-exec2 /usr/bin/"${f}"
 	done
 }

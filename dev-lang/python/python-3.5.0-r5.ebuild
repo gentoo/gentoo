@@ -8,7 +8,7 @@ WANT_LIBTOOL="none"
 inherit autotools eutils flag-o-matic multilib pax-utils python-utils-r1 toolchain-funcs
 
 MY_P="Python-${PV/_/}"
-PATCHSET_VERSION="3.5.1-0"
+PATCHSET_VERSION="3.5.0-0"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="http://www.python.org/"
@@ -244,10 +244,14 @@ src_install() {
 
 	# Cheap hack to get version with ABIFLAGS
 	local abiver=$(cd "${ED}usr/include"; echo python*)
-	# Replace python3.X with a symlink if appropriate
 	if [[ ${abiver} != python${PYVER} ]]; then
+		# Replace python3.X with a symlink to python3.Xm
 		rm "${ED}usr/bin/python${PYVER}" || die
 		dosym "${abiver}" "/usr/bin/python${PYVER}"
+		# Create python3.X-config symlink
+		dosym "${abiver}-config" "/usr/bin/python${PYVER}-config"
+		# Create python-3.5m.pc symlink
+		dosym "python-${PYVER}.pc" "/usr/$(get_libdir)/pkgconfig/${abiver/${PYVER}/-${PYVER}}.pc"
 	fi
 
 	use elibc_uclibc && rm -fr "${libdir}/test"
@@ -311,10 +315,11 @@ src_install() {
 		"${D}${PYTHON_SCRIPTDIR}/pydoc" || die
 	ln -s "../../../bin/pyvenv-${PYVER}" \
 		"${D}${PYTHON_SCRIPTDIR}/pyvenv" || die
-
-	# Compatibility link for stuff that calls ${PYTHON}-config
-	# Remove this when all revdeps have been fixed to not do that.
-	dosym "${abiver}-config" "/usr/bin/python${PYVER}-config"
+	# idle
+	if use tk; then
+		ln -s "../../../bin/idle${PYVER}" \
+			"${D}${PYTHON_SCRIPTDIR}/idle" || die
+	fi
 }
 
 pkg_preinst() {
