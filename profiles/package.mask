@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (18 Dec 2015)
+# Contains privilege escalation vulnerability that could be used to
+# execute random Python code passed via D-Bus as root. Bug #568644.
+<net-wireless/blueman-2.0.3
+
 # Michael Sterrett <mr_bones_@gentoo.org> (18 Dec 2015)
 # Unmaintained and no reason to use it or keep it around
 # when games-roguelike/rogue is a better choice.
