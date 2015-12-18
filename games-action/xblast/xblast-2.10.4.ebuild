@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit autotools games
 
 # Change these as releases changes
@@ -49,8 +49,7 @@ src_install() {
 
 	# Images
 	dodir "${IMAGE_INSTALL_DIR}"
-	cp -pPR "${WORKDIR}/${IMAGES}"/* "${D}/${IMAGE_INSTALL_DIR}" \
-		|| die "cp failed"
+	cp -pPR "${WORKDIR}/${IMAGES}"/* "${D}/${IMAGE_INSTALL_DIR}" || die
 
 	# Levels
 	insinto "${GAMES_DATADIR}/xblast/level"
