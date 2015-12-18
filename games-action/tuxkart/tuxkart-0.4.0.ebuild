@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit games
 
 DESCRIPTION="A racing game starring Tux, the linux penguin"
@@ -29,16 +29,13 @@ src_prepare() {
 	# apparently <sys/perm.h> doesn't exist on alpha
 	if use alpha; then
 		sed -i \
-			-e '/#include <sys\/perm.h>/d' src/gfx.cxx \
-			|| die "sed src/gfx.cxx failed"
+			-e '/#include <sys\/perm.h>/d' src/gfx.cxx || die
 	fi
 	sed -i \
 		-e "/^plib_suffix/ s/-lplibul/-lplibul -lplibjs/" \
-		-e "s/-malign-double//; s/-O6//" configure \
-		|| die "sed configure failed"
+		-e "s/-malign-double//; s/-O6//" configure || die
 	sed -i \
-		-e "/^bindir/s/=.*/=@bindir@/" src/Makefile.in \
-		|| die "sed src/Makefile.in failed"
+		-e "/^bindir/s/=.*/=@bindir@/" src/Makefile.in || die
 }
 
 src_configure() {
