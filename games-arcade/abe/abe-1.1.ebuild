@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils toolchain-funcs games
 
 DESCRIPTION="A scrolling, platform-jumping, key-collecting, ancient pyramid exploring game"
@@ -14,10 +14,10 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86 ~x86-fbsd"
 IUSE=""
 
-DEPEND="media-libs/libsdl
+DEPEND="media-libs/libsdl[sound,video]
 	x11-libs/libXi
 	media-libs/sdl-mixer[vorbis]"
-RDEPEND="${DEPEND}"
+RDEPEND=${DEPEND}
 
 src_unpack() {
 	unpack ${A}
@@ -29,8 +29,7 @@ src_prepare() {
 	sed -i \
 		-e "/^TR_CFLAGS/d" \
 		-e "/^TR_CXXFLAGS/d" \
-		configure \
-		|| die "sed failed"
+		configure || die
 	epatch "${FILESDIR}"/${P}-settings.patch
 }
 
