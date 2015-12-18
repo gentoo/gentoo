@@ -36,6 +36,7 @@ IUSE="custom-cflags ncurses netboot static"
 LIB_DEPEND="ncurses? ( >=sys-libs/ncurses-5.9-r3:0[static-libs(+),abi_x86_32(-)] )"
 RDEPEND="!static? ( ${LIB_DEPEND//[static-libs(+),/=[} )"
 DEPEND="${RDEPEND}
+	virtual/pkgconfig
 	static? ( ${LIB_DEPEND} )"
 
 pkg_setup() {
@@ -69,6 +70,7 @@ src_prepare() {
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}"/patch
 	# bug 564890, 566638
 	epatch "${FILESDIR}"/grub-0.97-Add-esp-to-list-of-clobbered-registers.patch
+	epatch "${FILESDIR}"/grub-0.97-ncurses-pkgconfig.patch
 
 	rm -f "${S}"/aclocal.m4 # seems to keep bug 418287 away
 	eautoreconf
