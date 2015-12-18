@@ -3,6 +3,7 @@
 <pkgmetadata>
   <herd>ruby</herd>
   <upstream>
-    <remote-id type="github">mperham/dalli</remote-id>
+    <remote-id type="github">petergoldstein/dalli</remote-id>
   </upstream>
 </pkgmetadata>
+
