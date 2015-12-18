@@ -309,5 +309,14 @@ pkg_postinst() {
 		optfeature "Detect other operating systems (grub-mkconfig)" sys-boot/os-prober
 		optfeature "Create rescue media (grub-mkrescue)" dev-libs/libisoburn
 		optfeature "Enable RAID device detection" sys-fs/mdadm
+	else
+		local v
+		for v in ${REPLACING_VERSIONS}; do
+			if ! version_is_at_least 2.02_beta2-r8 ${v}; then
+				ewarn "Please re-run grub2-install to address a security flaw when using"
+				ewarn "username/password authentication in grub."
+				ewarn "See bug 568326 for more information."
+			fi
+		done
 	fi
 }
