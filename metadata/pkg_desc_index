@@ -7710,7 +7710,7 @@ dev-python/python-novaclient 2.17.0 2.17.0-r1 2.20.0 2.23.2 2.25.0 2.27.0 2.30.1
 dev-python/python-nss 0.16.0: Python bindings for Network Security Services (NSS)
 dev-python/python-oembed 0.2.1-r1 0.2.2: A Python library that implements an OEmbed consumer
 dev-python/python-openid 2.2.5-r1: OpenID support for servers and consumers
-dev-python/python-openstackclient 1.0.4 1.6.0 1.7.1: A client for the OpenStack APIs
+dev-python/python-openstackclient 1.0.4 1.6.0 1.7.1 1.7.2: A client for the OpenStack APIs
 dev-python/python-pam 0.1.4: A python interface to the PAM library on linux using ctypes
 dev-python/python-poppler 0.12.1-r4: Python bindings to the Poppler PDF library
 dev-python/python-poppler-qt4 0.18.1: A python binding for libpoppler-qt4
@@ -17140,7 +17140,7 @@ virtual/gsasl 2: Virtual for the GNU SASL library
 virtual/httpd-basic 0-r1 0-r2: Virtual for static HTML-enabled webservers
 virtual/httpd-cgi 0-r1 0-r2: Virtual for CGI-enabled webservers
 virtual/httpd-fastcgi 0-r1: Virtual for FastCGI-enabled webservers
-virtual/httpd-php 5.4-r1 5.4-r2 5.5 5.6 7.0: Virtual to provide PHP-enabled webservers
+virtual/httpd-php 5.4-r1 5.5 5.6 7.0: Virtual to provide PHP-enabled webservers
 virtual/imap-c-client 0 1: Virtual for IMAP c-client
 virtual/inetd 0: Virtual for the internet super-server daemon
 virtual/jdk 1.6.0-r2 1.7.0 1.8.0: Virtual for Java Development Kit (JDK)
