@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils games
 
 DESCRIPTION="Flight of the Amazon Queen - a 2D point-and-click adventure game set in the 1940s"
