@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Sterrett <mr_bones_@gentoo.org> (18 Dec 2015)
+# Unmaintained and no reason to use it or keep it around
+# when games-roguelike/rogue is a better choice.
+# Masked for removal on 20160117
+games-misc/bsd-games-non-free
+
 # Brian Evans <grknight@gentoo.org> (17 Dec 2015)
 # "The drizzle project is long dead, it should be removed,
 # along with dev-php/pecl-drizzle", by grknight
