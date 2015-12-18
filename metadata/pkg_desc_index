@@ -204,7 +204,7 @@ app-admin/supervisor 3.1.3: A system for controlling process state under UNIX
 app-admin/swatch 3.2.3-r2: Perl-based system log watcher
 app-admin/sxid 4.2-r1: suid, sgid file and directory checking
 app-admin/sysklogd 1.5.1: Standard log daemons
-app-admin/syslog-ng 3.4.8 3.6.2 3.6.4 3.7.1 3.7.1-r1 3.7.2: syslog replacement with advanced filtering features
+app-admin/syslog-ng 3.4.8 3.6.2 3.6.4 3.7.2: syslog replacement with advanced filtering features
 app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/syslogread 0.92-r1: Syslog message handling tools
 app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via network
@@ -1323,7 +1323,7 @@ app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes
 app-emulation/uae 0.8.29-r2: The Umiquious Amiga Emulator
 app-emulation/vagrant 1.4.3-r2: A tool for building and distributing virtual machines using VirtualBox
 app-emulation/vboxgtk 0.8.2-r1: GTK frontend for VirtualBox
-app-emulation/vice 2.4 2.4.20 2.4.22: The Versatile Commodore 8-bit Emulator
+app-emulation/vice 2.4.20 2.4.22: The Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 1.1.0-r2 1.2.1 1.3.0-r1 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 2.0 3.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.12: Detects if the current machine is running in a virtual machine
@@ -3085,21 +3085,21 @@ dev-games/crystalspace 2.0 2.0-r1: Portable 3D Game Development Kit written in C
 dev-games/etrophy 0.5.1: Library for managing scores, trophies and unlockables,stores them and provides views to display them
 dev-games/flatzebra 0.1.6: A generic game engine for 2D double-buffering animation
 dev-games/flinker 1.72: GBA cart writing utility by Jeff Frohwein
-dev-games/goatee 0.2.0-r1 0.3.0: A monadic take on a 2,500-year-old board game - library
+dev-games/goatee 0.3.0: A monadic take on a 2,500-year-old board game - library
 dev-games/gtkradiant 1.5.0_pre20060302: FPS level editor
 dev-games/guichan 0.8.2: a portable C++ GUI library designed for games using Allegro, SDL and/or OpenGL
 dev-games/hawknl 1.68-r2: A cross-platform network library designed for games
 dev-games/hdl_dump 0.8.6.20060901: game installer for playstation 2 HD Loader
 dev-games/higan-ananke 094: A higan helper library needed for extra rom load options
 dev-games/hlsdk 2.3: Half-Life Software Development Kit for mod authors
-dev-games/irrlicht 1.8.1 1.8.1-r1: open source high performance realtime 3D engine written in C++
+dev-games/irrlicht 1.8.1-r1: open source high performance realtime 3D engine written in C++
 dev-games/libmaitretarot 0.1.98: backend library for the maitretarot games
 dev-games/libmt_client 0.1.98: backend library for the maitretarot clients
 dev-games/libnw 1.30.02: Tools and libraries for NWN file manipulation
 dev-games/mercator 0.3.3: WorldForge library primarily aimed at terrain
 dev-games/mygui 3.2.2: A library for creating GUIs for games
 dev-games/newton 2.36: an integrated solution for real time simulation of physics environments
-dev-games/ode 0.11.1 0.12: Open Dynamics Engine SDK
+dev-games/ode 0.11.1 0.12 0.13: Open Dynamics Engine SDK
 dev-games/ogre 1.9.0-r1: Object-oriented Graphics Rendering Engine
 dev-games/ois 1.3: Object-oriented Input System - A cross-platform C++ input handling library
 dev-games/openscenegraph 3.2.1 3.2.1-r1 3.2.1-r2: Open source high performance 3D graphics toolkit
@@ -6044,7 +6044,7 @@ dev-perl/Role-Basic 0.130.0: Just roles. Nothing else
 dev-perl/Role-Tiny 1.3.2 2.0.0 2.0.1: Roles. Like a nouvelle cuisine portion size slice of Moose
 dev-perl/Roman 1.230.0-r1 1.240.0: Perl module for conversion between Roman and Arabic numerals
 dev-perl/Router-Simple 0.140.0-r1: Simple HTTP router
-dev-perl/SDL 2.540-r1 2.544 2.546: Simple DirectMedia Layer (SDL) bindings for perl
+dev-perl/SDL 2.546: Simple DirectMedia Layer (SDL) bindings for perl
 dev-perl/SGMLSpm 1.03-r7: Perl library for parsing the output of nsgmls
 dev-perl/SNMP_Session 1.13-r2: A SNMP Perl Module
 dev-perl/SOAP-Lite 1.040.0-r1 1.140.0 1.190.0: Simple and lightweight interface to the SOAP protocol (sic) both on client and server side
@@ -9774,13 +9774,13 @@ games-action/mutantstorm-demo 1.33: shoot through crazy psychedelic 3D environme
 games-action/nighthawk 2.2: A tribute to Paradroid by Andrew Braybrook
 games-action/noiz2sa 0.51a: Abstract Shooting Game
 games-action/openastromenace 1.3.2: Modern 3D space shooter with spaceship upgrade possibilities
-games-action/openclonk 5.5.1 6.1: A free multiplayer action game where you control clonks
+games-action/openclonk 6.1: A free multiplayer action game where you control clonks
 games-action/openlierox 0.58_rc3: Real-time excessive Worms-clone
 games-action/orbital-eunuchs-sniper 1.30: Snipe terrorists from your orbital base
 games-action/phobiaii 1.1: Just a moment ago, you were safe inside your ship, behind five inch armour
 games-action/poopmup 1.2: You are now free to fly around the city and poop on passers-by
 games-action/postalplus 1: Ultraviolent and controversial game featuring the Postal Dude
-games-action/powermanga 0.91 0.93 0.93.1: An arcade 2D shoot-em-up game
+games-action/powermanga 0.91 0.93.1: An arcade 2D shoot-em-up game
 games-action/rafkill 1.2.3: space shoot-em-up game
 games-action/rrootage 0.23a: Abstract shooter - defeat auto-created huge battleships
 games-action/rune 1.07-r2: Viking hack and slay game
@@ -9878,7 +9878,7 @@ games-arcade/moleinvasion 0.4-r1: Mole infested 2D platform game
 games-arcade/monkey-bubble 0.4.0: A Puzzle Bobble clone
 games-arcade/monster-masher 1.8.1-r2: Squash the monsters with your levitation worker gnome
 games-arcade/mrrescue 1.02b: Arcade styled 2d action game centered around evacuating civilians from burning buildings
-games-arcade/netris 0.52 0.52-r1: Classic networked version of T*tris
+games-arcade/netris 0.52-r1: Classic networked version of T*tris
 games-arcade/nibbles 0.0.4: An ncurses-based Nibbles clone
 games-arcade/ninvaders 0.1.1: ASCII space invaders clone
 games-arcade/njam 1.25: Multi or single-player network Pacman-like game in SDL
@@ -10067,12 +10067,12 @@ games-emulation/openmsx 0.9.1: MSX emulator that aims for perfection
 games-emulation/pcsx2 1.3.1 9999: A PlayStation 2 emulator
 games-emulation/pcsxr 1.9.94 1.9.94-r1: PCSX-Reloaded: a fork of PCSX, the discontinued Playstation emulator
 games-emulation/raine 0.51.9: R A I N E M680x0 Arcade Emulation
-games-emulation/sdlmame 0.148_p1-r1 0.149 0.167 0.168: Multiple Arcade Machine Emulator + Multi Emulator Super System (MESS)
+games-emulation/sdlmame 0.148_p1-r1 0.149 0.168: Multiple Arcade Machine Emulator + Multi Emulator Super System (MESS)
 games-emulation/sdlmametools 0.148_p1 0.149: Set of development tools shared between sdlmame and sdlmess
 games-emulation/sdlmess 0.148_p1 0.149: Multi Emulator Super System (SDL)
 games-emulation/snes9x 1.53: Super Nintendo Entertainment System (SNES) emulator
 games-emulation/stella 4.0: Stella Atari 2600 VCS Emulator
-games-emulation/vbam 1.8.0.1228 2.0.0_pre1507 9999: Game Boy, GBC, and GBA emulator forked from VisualBoyAdvance
+games-emulation/vbam 2.0.0_pre1507 9999: Game Boy, GBC, and GBA emulator forked from VisualBoyAdvance
 games-emulation/vgba 4.8: Gameboy Advance (GBA) emulator for Linux
 games-emulation/virtualjaguar 2.1.2-r1: an Atari Jaguar emulator
 games-emulation/visualboyadvance 1.7.2-r3: gameboy, gameboy color, and gameboy advance emulator
@@ -10084,7 +10084,7 @@ games-engines/exult 9999: an Ultima 7 game engine that runs on modern operating 
 games-engines/frobtads 1.2.2: Curses-based interpreter and development tools for TADS 2 and TADS 3 text adventures
 games-engines/frotz 2.43: Curses based interpreter for Z-code based text games
 games-engines/gargoyle 2011.1: An Interactive Fiction (IF) player supporting all major formats
-games-engines/gemrb 0.8.2 0.8.3: Reimplementation of the Infinity engine
+games-engines/gemrb 0.8.3: Reimplementation of the Infinity engine
 games-engines/love 0.7.2-r1 0.8.0 9999: A framework for 2D games in Lua
 games-engines/nazghul 0.7.1: A computer role-playing game (CRPG) engine with game called HaximA
 games-engines/odamex 0.7.0: An online multiplayer, free software engine for Doom and Doom II
@@ -10103,10 +10103,10 @@ games-fps/aaquake2 0.1: text mode Quake II
 games-fps/aaut 1: ascii mode unreal tournament
 games-fps/alephone 20100424 20120514: An enhanced version of the game engine from the classic Mac game, Marathon
 games-fps/alephone-infinity 20080622: Aleph One - Marathon Infinity
-games-fps/alienarena 20120629 20130207 20130827: Fast-paced multiplayer deathmatch game
+games-fps/alienarena 20120629 20130827: Fast-paced multiplayer deathmatch game
 games-fps/avp 20150214: Linux port of Aliens vs Predator
 games-fps/blackshades 20070723: you control a psychic bodyguard, and try to protect the VIP
-games-fps/darkplaces 20110628 20130304: Enhanced engine for iD Software's Quake 1
+games-fps/darkplaces 20110628 20130304 20140513: Enhanced engine for iD Software's Quake 1
 games-fps/doom-data 1-r1: collection of doom wad files from id
 games-fps/doom3 1.3.1304-r1: 3rd installment of the classic iD 3D first-person shooter
 games-fps/doom3-cdoom 1.3.1: Doom 3 Classic Doom - Doom 1 conversion for Doom 3
@@ -10229,7 +10229,7 @@ games-fps/ut2004-unwheel 0_beta5: UT2004 UnWheel - multiplayer driving mod focus
 games-fps/warsow 1.5.1-r1: Multiplayer FPS based on the QFusion engine (evolved from Quake 2)
 games-fps/wolfgl 0.93-r1: Wolfenstein and Spear of Destiny port using OpenGL
 games-fps/worldofpadman 1.6: A cartoon style multiplayer first-person shooter
-games-fps/xonotic 0.8.0 0.8.1: Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
+games-fps/xonotic 0.8.1: Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
 games-kids/childsplay 0.90.2-r1: A suite of educational games for young children
 games-kids/crayon-physics 55: 2D physics puzzle/sandbox game with drawing
 games-kids/cubetest 0.9.4: A program to train your spatial insight
@@ -10300,10 +10300,10 @@ games-misc/ggencoder 0.91a: Utility to encode and decode Game Genie (tm) codes
 games-misc/gtklife 5.1: A Conway's Life simulator for Unix
 games-misc/katawa-shoujo 1.3: Bishoujo-style visual novel set in the fictional Yamaku High School for disabled children
 games-misc/little-inferno 20130509: Throw your toys into your fire, and play with them as they burn
-games-misc/lolcat 42.1.0 42.1.43: Rainbows and unicorns!
+games-misc/lolcat 42.1.43: Rainbows and unicorns!
 games-misc/lucidlife 0.9.2: A Conway's Life simulator written in GTK+2 - fork from Gtklife
 games-misc/nyancat 1.2.1: Nyan Cat Telnet Server
-games-misc/opengfx 0.5.2 0.5.3: OpenGFX data files for OpenTTD
+games-misc/opengfx 0.5.3: OpenGFX data files for OpenTTD
 games-misc/openmsx 0.3.1-r1: An ambiguously named music replacement set for OpenTTD
 games-misc/opensfx 0.2.3: OpenSFX data files for OpenTTD
 games-misc/papers-please 1.1.65: A Dystopian Document Thriller
@@ -10493,7 +10493,7 @@ games-rpg/gwiz 0.8: clone of old-school Wizardry(tm) games by SirTech
 games-rpg/kqlives 0.99: A console-style role playing game
 games-rpg/lure 1.1: Lure of the Temptress
 games-rpg/mana 0.6.1: A fully free and open source MMORPG game client
-games-rpg/manaplus 1.5.8.15 1.5.10.24 1.5.11.21: OpenSource 2D MMORPG client for Evol Online and The Mana World
+games-rpg/manaplus 1.5.8.15 1.5.11.21: OpenSource 2D MMORPG client for Evol Online and The Mana World
 games-rpg/nwmouse 20090906.183839: Hardware mouse cursors for Neverwinter Nights
 games-rpg/nwmovies 20090223.080954: Play Neverwinter Nights movies inside the Linux client
 games-rpg/nwn 1.68-r5 1.68-r6 1.69-r1: role-playing game set in a huge medieval fantasy world of Dungeons and Dragons
@@ -10542,7 +10542,7 @@ games-simulation/gl117 1.3.2: An action flight simulator
 games-simulation/lincity 1.13.1: city/country simulation game for X and Linux SVGALib
 games-simulation/lincity-ng 2.0: city/country simulation game for X and opengl
 games-simulation/micropolis 1.0: Free version of the well-known city building simulation
-games-simulation/openttd 1.5.0 1.5.2 1.5.3: OpenTTD is a clone of Transport Tycoon Deluxe
+games-simulation/openttd 1.5.0 1.5.3: OpenTTD is a clone of Transport Tycoon Deluxe
 games-simulation/planets 0.1.13: a simple interactive planetary system simulator
 games-simulation/pmars-sdl 0.9.2e: Portable redcode simulator's sdl port for core war
 games-simulation/qct 0.7-r1: Quiet Console Town puts you in the place of the mayor of a budding new console RPG city
@@ -10568,7 +10568,7 @@ games-sports/vdrift 20120722: A driving simulation made with drift racing in min
 games-sports/xmoto 0.5.11: A challenging 2D motocross platform game
 games-strategy/0ad 0.0.18_alpha-r4: A free, real-time strategy game
 games-strategy/0ad-data 0.0.18_alpha: Data files for 0ad
-games-strategy/asc 2.6.0.0 2.6.0.0-r1: turn based strategy game designed in the tradition of the Battle Isle series
+games-strategy/asc 2.6.0.0-r1: turn based strategy game designed in the tradition of the Battle Isle series
 games-strategy/attal 0.10.1: turn-based strategy game project
 games-strategy/boswars 2.7-r1: Futuristic real-time strategy game
 games-strategy/coldwar 1.0.1-r1: Third-person sneaker like Splinter Cell
@@ -10594,7 +10594,7 @@ games-strategy/heroes3-demo 1.3.1a: turn-based 2D medieval combat
 games-strategy/ja2-stracciatella 0.12.1_p7072: A port of Jagged Alliance 2 to SDL
 games-strategy/ja2-stracciatella-data 1: A port of Jagged Alliance 2 to SDL (data files)
 games-strategy/knights-demo 1.32-r1: Anglo-Saxon medieval army battles and resource management
-games-strategy/lgeneral 1.2.4 1.3.0: A Panzer General clone written in SDL
+games-strategy/lgeneral 1.3.0: A Panzer General clone written in SDL
 games-strategy/lightyears 1.4-r1: a single-player game with a science-fiction theme
 games-strategy/liquidwar 5.6.4-r1: unique multiplayer wargame
 games-strategy/liquidwar6 0.4.3681 0.4.3681-r1: Unique multiplayer wargame between liquids
@@ -10626,7 +10626,7 @@ games-strategy/wesnoth 1.12.4 1.12.5: Battle for Wesnoth - A fantasy turn-based 
 games-strategy/widelands 0.17: A game similar to Settlers 2
 games-strategy/xbattle 5.4.1: A multi-player game of strategy and coordination
 games-strategy/xbattleai 1.2.2-r1: A multi-player game of strategy and coordination
-games-util/antimicro 2.10.1 2.19.2 2.20.2: Map keyboard and mouse buttons to gamepad buttons
+games-util/antimicro 2.10.1 2.20.2: Map keyboard and mouse buttons to gamepad buttons
 games-util/atlas 0.4.9_p20140320: Chart Program to use with Flightgear Flight Simulator
 games-util/biounzip 1.1a: Unpacks BioZip archives
 games-util/catcodec 1.0.3: Decodes and encodes sample catalogues for OpenTTD
@@ -10665,7 +10665,7 @@ games-util/xboxgw 1.082: Tunnels XBox system link games over the net
 games-util/xgame 1.7.1: Run games in a separate X session
 games-util/xgame-gtk2 2.0.2: Run games in a separate X session
 games-util/xgamer 0.6.2: A launcher for starting games in a second X session
-games-util/xqf 1.0.5 1.0.6.2: A server browser for many FPS games (frontend for qstat)
+games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
 gnome-base/dconf 0.24.0: Simple low-level configuration system
 gnome-base/dconf-editor 3.16.1 3.18.2: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r3: GNOME configuration system and daemon
@@ -12040,7 +12040,7 @@ media-libs/aalib 1.4_rc5-r6: A ASCII-Graphics Library
 media-libs/adplug 2.2.1: A free, cross-platform, hardware independent AdLib sound player library
 media-libs/aften 0.0.8: An A/52 (AC-3) audio encoder
 media-libs/aldumb 0.9.3: Allegro support for DUMB (an IT, XM, S3M, and MOD player library)
-media-libs/allegro 4.4.2-r1 5.0.8-r1 5.0.11: A game programming library
+media-libs/allegro 4.4.2-r1 5.0.11: A game programming library
 media-libs/alsa-lib 1.0.27.2 1.0.28 1.0.29 1.1.0: Advanced Linux Sound Architecture Library
 media-libs/alsa-oss 1.0.25 1.0.25-r1 1.0.28: Advanced Linux Sound Architecture OSS compatibility layer
 media-libs/alure 1.2: The OpenAL Utility Toolkit
@@ -12279,7 +12279,7 @@ media-libs/libreplaygain 477 477-r1: Replay Gain library from Musepack
 media-libs/librosprite 0.1.1 0.1.2-r1: framebuffer abstraction library, written in C
 media-libs/libsamplerate 0.1.8-r1: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
 media-libs/libsbsms 2.0.0 2.0.1 2.0.2: A library for high quality time and pitch scale modification
-media-libs/libsdl 1.2.15-r8 1.2.15-r9: Simple Direct Media Layer
+media-libs/libsdl 1.2.15-r9: Simple Direct Media Layer
 media-libs/libsdl2 2.0.3-r200: Simple Direct Media Layer
 media-libs/libsfml 1.6-r1 2.3.2: Simple and Fast Multimedia Library (SFML)
 media-libs/libshout 2.3.1 2.3.1-r1: library for connecting and sending data to icecast servers
@@ -12372,7 +12372,7 @@ media-libs/schroedinger 1.0.11-r1: C-based libraries for the Dirac video codec
 media-libs/sdif 3.8.6: The Sound Description Interchange Format Library deals with audio and wave processing
 media-libs/sdl-gfx 2.0.25: Graphics drawing primitives library for SDL
 media-libs/sdl-image 1.2.12-r1: image file loading library
-media-libs/sdl-mixer 1.2.12-r3 1.2.12-r4: Simple Direct Media Layer Mixer Library
+media-libs/sdl-mixer 1.2.12-r4: Simple Direct Media Layer Mixer Library
 media-libs/sdl-net 1.2.8-r1: Simple Direct Media Layer Network Support Library
 media-libs/sdl-pango 0.1.2: connect the text rendering engine of GNOME to SDL
 media-libs/sdl-sound 1.0.3-r1: A library that handles the decoding of sound file formats
