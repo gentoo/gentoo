@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit versionator linux-info eutils flag-o-matic toolchain-funcs
+inherit versionator linux-info eutils flag-o-matic toolchain-funcs udev
 
 MY_P="${PN}-$(replace_version_separator 2 "-")"
 
@@ -14,7 +14,7 @@ SRC_URI="http://www.open-iscsi.org/bits/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug slp"
 
 DEPEND="slp? ( net-libs/openslp )"
@@ -46,11 +46,15 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-Makefiles.patch
+	epatch "${FILESDIR}"/${P}-memset.patch
 
 	sed -i -e 's:^\(iscsid.startup\)\s*=.*:\1 = /usr/sbin/iscsid:' etc/iscsid.conf || die
 }
 
 src_configure() {
+	use debug && append-cppflags -DDEBUG_TCP -DDEBUG_SCSI
+	append-lfs-flags
+
 	cd utils/open-isns || die
 
 	# SSL (--with-security) is broken
@@ -59,11 +63,11 @@ src_configure() {
 }
 
 src_compile() {
-	use debug && append-flags -DDEBUG_TCP -DDEBUG_SCSI
-
+	# Stuffing CPPFLAGS into CFLAGS isn't entirely correct, but the build
+	# is messed up already here, so it's not making it that much worse.
 	KSRC="${KV_DIR}" CFLAGS="" \
 	emake \
-		OPTFLAGS="${CFLAGS}" \
+		OPTFLAGS="${CFLAGS} ${CPPFLAGS}" \
 		AR="$(tc-getAR)" CC="$(tc-getCC)" \
 		user
 }
@@ -80,8 +84,7 @@ src_install() {
 	newins "${FILESDIR}"/initiatorname.iscsi initiatorname.iscsi.example
 
 	# udev pieces
-	insinto /lib/udev/rules.d
-	doins "${FILESDIR}"/99-iscsi.rules
+	udev_dorules "${FILESDIR}"/99-iscsi.rules
 	exeinto /etc/udev/scripts
 	doexe "${FILESDIR}"/iscsidev.sh
 
