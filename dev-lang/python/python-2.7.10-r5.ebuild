@@ -337,6 +337,11 @@ src_install() {
 		"${D}${PYTHON_SCRIPTDIR}/2to3" || die
 	ln -s "../../../bin/pydoc${SLOT}" \
 		"${D}${PYTHON_SCRIPTDIR}/pydoc" || die
+	# idle
+	if use tk; then
+		ln -s "../../../bin/idle${PYVER}" \
+			"${D}${PYTHON_SCRIPTDIR}/idle" || die
+	fi
 }
 
 pkg_preinst() {
