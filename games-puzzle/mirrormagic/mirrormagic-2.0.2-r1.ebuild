@@ -27,8 +27,10 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-gcc41.patch \
 		"${FILESDIR}"/${P}-parallel.patch \
-		"${FILESDIR}"/${P}-64bit.patch
-	rm -f ${PN}
+		"${FILESDIR}"/${P}-64bit.patch \
+		"${FILESDIR}"/${P}-gcc5.patch \
+		"${FILESDIR}"/${P}-editor.patch
+	rm -f ${PN} || die
 }
 
 src_compile() {
@@ -41,7 +43,7 @@ src_compile() {
 		EXTRA_LDFLAGS="${LDFLAGS}" \
 		RO_GAME_DIR="${GAMES_DATADIR}"/${PN} \
 		RW_GAME_DIR="${GAMES_STATEDIR}"/${PN} \
-		TARGET=$(use sdl && echo sdl || echo x11)
+		TARGET=$(usex sdl sdl x11)
 }
 
 src_install() {

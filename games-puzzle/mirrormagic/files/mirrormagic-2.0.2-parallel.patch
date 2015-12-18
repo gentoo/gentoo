@@ -1,5 +1,5 @@
---- src/Makefile.old	2010-06-03 09:43:15.000000000 +0200
-+++ src/Makefile	2010-06-03 09:43:42.000000000 +0200
+--- src/Makefile.old
++++ src/Makefile
 @@ -146,7 +146,7 @@
  endif
  
