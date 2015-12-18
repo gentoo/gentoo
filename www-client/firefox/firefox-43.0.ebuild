@@ -314,9 +314,11 @@ src_install() {
 		|| die
 
 	# Augment this with hwaccel prefs
-	use hwaccel && cat "${FILESDIR}"/gentoo-hwaccel-prefs.js-1 >> \
+	if use hwaccel ; then
+		cat "${FILESDIR}"/gentoo-hwaccel-prefs.js-1 >> \
 		"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" \
 		|| die
+	fi
 
 	# Set default path to search for dictionaries.
 	echo "pref(\"spellchecker.dictionary_path\", ${DICTPATH});" \
