@@ -4,7 +4,9 @@
 
 EAPI="4"
 
-inherit eutils flag-o-matic toolchain-funcs
+PYTHON_COMPAT=( python2_7 )
+
+inherit eutils flag-o-matic toolchain-funcs python-any-r1
 
 DESCRIPTION="GNU utilities for finding files"
 HOMEPAGE="https://www.gnu.org/software/findutils/"
@@ -18,7 +20,12 @@ IUSE="debug nls selinux static"
 RDEPEND="selinux? ( sys-libs/libselinux )
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
+	test? ( ${PYTHON_DEPS} )
 	nls? ( sys-devel/gettext )"
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-test-bashisms.patch #531020
