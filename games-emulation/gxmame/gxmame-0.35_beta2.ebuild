@@ -35,6 +35,10 @@ src_prepare() {
 		-e "s:-O2:${CFLAGS}:" \
 		configure || die
 	sed -i \
+		-e '/Icon/s/\.png//' \
+		-e '/Categories/s/Application;//' \
+		gxmame.desktop.in || die
+	sed -i \
 		-e 's:COPYING::' \
 		-e "s:^docdir = .*:docdir = /usr/share/doc/${PF}:" \
 		-e "s:^htmldir = .*:htmldir = /usr/share/doc/${PF}/html:" \
