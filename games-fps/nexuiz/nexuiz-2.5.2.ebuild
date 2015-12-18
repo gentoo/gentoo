@@ -22,7 +22,7 @@ IUSE="alsa dedicated maps opengl sdl"
 UIRDEPEND="media-libs/libogg
 	media-libs/libvorbis
 	media-libs/libtheora
-	>=media-libs/libpng-1.4
+	>=media-libs/libpng-1.4:0
 	media-libs/libmodplug
 	x11-libs/libX11
 	x11-libs/libXau
