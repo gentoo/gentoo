@@ -38,7 +38,7 @@ UIDEPEND="x11-proto/xextproto
 	x11-proto/xf86dgaproto
 	x11-proto/xf86vidmodeproto
 	x11-proto/xproto"
-RDEPEND="virtual/jpeg
+RDEPEND="virtual/jpeg:0
 	net-misc/curl
 	opengl? ( ${UIRDEPEND} )
 	!dedicated? ( !opengl? ( ${UIRDEPEND} ) )"
