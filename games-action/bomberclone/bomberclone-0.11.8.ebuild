@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils autotools games
 
 DESCRIPTION="BomberMan clone with network game support"
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~mips ppc ppc64 x86"
 IUSE="X"
 
-DEPEND=">=media-libs/libsdl-1.1.0
+DEPEND=">=media-libs/libsdl-1.1.0[video]
 	media-libs/sdl-image[png]
 	media-libs/sdl-mixer[mod]
 	X? ( x11-libs/libXt )"
@@ -24,6 +24,7 @@ src_prepare() {
 	ecvs_clean
 	epatch "${FILESDIR}"/${P}-underlink.patch \
 		"${FILESDIR}"/${P}-gcc52.patch
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
@@ -33,8 +34,7 @@ src_configure() {
 		--datadir="${GAMES_DATADIR_BASE}"
 	sed -i \
 		-e "/PACKAGE_DATA_DIR/ s:/usr/games/share/games/:${GAMES_DATADIR}/:" \
-		config.h \
-		|| die
+		config.h || die
 }
 
 src_install() {
