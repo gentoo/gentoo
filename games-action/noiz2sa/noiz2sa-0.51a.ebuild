@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils games
 
 DESCRIPTION="Abstract Shooting Game"
@@ -27,10 +27,9 @@ src_prepare(){
 	sed -i \
 		-e "s:/.noiz2sa.prf:/noiz2sa.prf:" \
 		-e "s:getenv(\"HOME\"):\"${GAMES_STATEDIR}\":" \
-		attractmanager.c \
-		|| die "sed failed"
+		attractmanager.c || die
 
-	cp makefile.lin Makefile || die "Failed copying Makefile"
+	cp makefile.lin Makefile || die
 }
 
 src_install(){
@@ -38,7 +37,7 @@ src_install(){
 
 	dogamesbin ${PN}
 	dodir "${datadir}" "${GAMES_STATEDIR}"
-	cp -r ../noiz2sa_share/* "${D}/${datadir}" || die "cp failed"
+	cp -r ../noiz2sa_share/* "${D}/${datadir}" || die
 	dodoc ../readme*
 	touch "${D}${GAMES_STATEDIR}/${PN}.prf"
 	fperms 660 "${GAMES_STATEDIR}/${PN}.prf"
