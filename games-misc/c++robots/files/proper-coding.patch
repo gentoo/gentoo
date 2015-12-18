@@ -1,51 +1,51 @@
---- Makefile.orig	2003-01-01 23:36:19.000000000 -0500
-+++ Makefile	2003-01-01 23:39:32.000000000 -0500
-@@ -1,8 +1,9 @@
+--- c++robots.orig/Makefile
++++ c++robots/Makefile
+@@ -1,38 +1,37 @@
  CFLAGS=-g
 +LDFLAGS=
  PROGRAMS=combat 
  ROBOTS=cylon tracker target
  
 -CC=g++ -g
-+CC=g++
- 
+-
  all: $(PROGRAMS) $(ROBOTS)
  
-@@ -10,29 +11,29 @@
+ clean:
  	rm -f $(PROGRAMS) $(ROBOTS) *.o core
  
  combat:	combat.o 
 -	$(CC) $(CFLAGS) -o $@ combat.o -lm
-+	$(CC) -o $@ $(LDFLAGS) combat.o -lm
++	$(CXX) -o $@ $(LDFLAGS) combat.o -lm
  
  combat.o:	combat.c 
- 	$(CC) $(CFLAGS) -c combat.c
+-	$(CC) $(CFLAGS) -c combat.c
++	$(CXX) $(CXXFLAGS) -c combat.c
  
  robots.o: robots.C robots.h
 -	g++ -c robots.C
-+	$(CC) $(CFLAGS) -c robots.C
++	$(CXX) $(CXXFLAGS) -c robots.C
  
  cylon: cylon.o robots.o
 -	g++ -static -o $@ cylon.o robots.o 
-+	$(CC) -o $@ $(LDFLAGS) cylon.o robots.o 
++	$(CXX) -o $@ $(LDFLAGS) cylon.o robots.o 
  
  cylon.o: cylon.c robots.h
 -	g++ -c cylon.c
-+	$(CC) $(CFLAGS) -c cylon.c
++	$(CXX) $(CXXFLAGS) -c cylon.c
  
  tracker: tracker.o robots.o
 -	g++ -static -o $@ tracker.o robots.o 
-+	$(CC) -o $@ $(LDFLAGS) tracker.o robots.o 
++	$(CXX) -o $@ $(LDFLAGS) tracker.o robots.o 
  
  tracker.o: tracker.c robots.h
 -	g++ -c tracker.c
-+	$(CC) $(CFLAGS) -c tracker.c
++	$(CXX) $(CXXFLAGS) -c tracker.c
  
  target: target.o robots.o
 -	g++ -static -o $@ target.o robots.o 
-+	$(CC) -o $@ $(LDFLAGS) target.o robots.o 
++	$(CXX) -o $@ $(LDFLAGS) target.o robots.o 
  
  target.o: target.c robots.h
 -	g++ -c target.c
-+	$(CC) $(CFLAGS) -c target.c
++	$(CXX) $(CXXFLAGS) -c target.c
  

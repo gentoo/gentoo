@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-
+EAPI=5
 inherit cdrom check-reqs games
 
 DESCRIPTION="A port of Jagged Alliance 2 to SDL (data files)"
@@ -15,7 +14,6 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND="games-strategy/ja2-stracciatella"
 DEPEND="app-arch/unshield"
 
 S=${WORKDIR}
