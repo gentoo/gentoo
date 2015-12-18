@@ -28,7 +28,7 @@ IUSE=""
 
 RDEPEND="x11-libs/libICE
 	x11-libs/libX11
-	media-libs/libpng"
+	media-libs/libpng:0"
 DEPEND="${RDEPEND}
 	x11-libs/libXt"
 
