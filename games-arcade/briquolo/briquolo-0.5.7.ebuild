@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils games
 
 DESCRIPTION="Breakout with 3D representation based on OpenGL"
@@ -16,10 +16,10 @@ IUSE="nls"
 
 RDEPEND="virtual/opengl
 	virtual/glu
-	media-libs/libsdl
+	media-libs/libsdl[joystick,sound,video]
 	media-libs/sdl-mixer
 	media-libs/sdl-ttf
-	media-libs/libpng
+	media-libs/libpng:0
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
@@ -30,22 +30,18 @@ src_prepare() {
 	# no thanks we'll take care of it.
 	sed -i \
 		-e '/^SUBDIRS/s/desktop//' \
-		Makefile.in \
-		|| die "sed Makefile.in failed"
+		Makefile.in || die
 	sed -i \
 		-e "/CXXFLAGS/s:-O3:${CXXFLAGS}:" \
 		-e 's:=.*share/locale:=/usr/share/locale:' \
-		configure \
-		|| die "sed configure failed"
+		configure || die
 	sed -i \
 		-e 's:$(datadir)/locale:/usr/share/locale:' \
-		po/Makefile.in.in \
-		|| die "sed Makefile.in.in failed"
+		po/Makefile.in.in || die
 }
 
 src_configure() {
-	egamesconf \
-		$(use_enable nls)
+	egamesconf $(use_enable nls)
 }
 
 src_install() {
