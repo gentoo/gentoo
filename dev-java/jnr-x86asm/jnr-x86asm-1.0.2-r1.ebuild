@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jnr/${PN}/archive/${PV}.zip -> ${P}.zip"
 
 LICENSE="MIT"
 SLOT="1.0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 DEPEND=">=virtual/jdk-1.6"
