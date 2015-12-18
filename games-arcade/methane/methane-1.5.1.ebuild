@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils games
 
 DESCRIPTION="Port from an old amiga game"
@@ -22,7 +22,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-gentoo.patch
 	sed -i \
 		-e "s:@GENTOO_DATADIR@:${GAMES_DATADIR}:" \
-		sources/target.cpp
+		sources/target.cpp || die
 
 	# fix weird parallel make issue wrt #450422
 	mkdir build || die

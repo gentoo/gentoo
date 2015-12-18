@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils games
 
 MY_PN="rRootage"
@@ -22,7 +22,7 @@ DEPEND="virtual/opengl
 	media-libs/libsdl[video]
 	media-libs/sdl-mixer[vorbis]
 	>=dev-libs/libbulletml-0.0.3"
-RDEPEND="${DEPEND}"
+RDEPEND=${DEPEND}
 
 S=${WORKDIR}/${MY_PN}/src
 
@@ -37,12 +37,11 @@ src_prepare() {
 		-e "/^CPPFLAGS/s/MORE_CFLAGS/MORE_CXXFLAGS/" \
 		-e "s/ -mwindows//" \
 		-e "s:-I./bulletml/:-I/usr/include/bulletml:" \
-		makefile.lin > Makefile || die "sed failed"
+		makefile.lin > Makefile || die
 
 	sed -i \
 		-e "s:/usr/share/games:${GAMES_DATADIR}:" \
-		barragemanager.cc screen.c soundmanager.c \
-		|| die "sed failed"
+		barragemanager.cc screen.c soundmanager.c || die
 }
 
 src_compile() {
@@ -54,7 +53,7 @@ src_compile() {
 src_install() {
 	newgamesbin rr ${PN}
 	dodir "${GAMES_DATADIR}/${MY_PN}"
-	cp -r ../rr_share/* "${D}/${GAMES_DATADIR}/${MY_PN}" || die "cp failed"
+	cp -r ../rr_share/* "${D}/${GAMES_DATADIR}/${MY_PN}" || die
 	dodoc ../readme*
 	prepgamesdirs
 }

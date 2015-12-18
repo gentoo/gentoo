@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils scons-utils games
 
 DESCRIPTION="space shoot-em-up game"
@@ -16,7 +16,7 @@ IUSE=""
 
 DEPEND="<media-libs/allegro-5
 	media-libs/aldumb"
-RDEPEND="${DEPEND}"
+RDEPEND=${DEPEND}
 
 src_prepare() {
 	rm -f {data,music}/.sconsign
@@ -27,8 +27,7 @@ src_prepare() {
 		"${FILESDIR}"/${P}-ldflags.patch
 	sed -i \
 		-e "/^#define INSTALL_DIR/s:\.:${GAMES_DATADIR}:" \
-		src/defs.cpp \
-		|| die "sed failed"
+		src/defs.cpp || die
 }
 
 src_compile() {

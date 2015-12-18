@@ -1,7 +1,8 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-EAPI=4
+
+EAPI=5
 inherit eutils games
 
 DESCRIPTION="Multiplayer, networked game of little tanks with really big weapons"
@@ -17,20 +18,16 @@ DEPEND="media-libs/libggi"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	sed -i 's:-g -O2::' configure \
-		|| die "sed configure failed"
+	sed -i 's:-g -O2::' configure || die
 	cd src
 	epatch "${FILESDIR}"/${P}-gcc-3.4.patch
-	sed -i "s:/etc/koth:${GAMES_SYSCONFDIR}:" cfgfile.h \
-		|| die "sed cfgfile.h failed"
-	sed -i 's:(uint16):(uint16_t):' gfx.c gfx.h \
-		|| die "sed gfx.c gfx.h failed"
+	sed -i "s:/etc/koth:${GAMES_SYSCONFDIR}:" cfgfile.h || die
+	sed -i 's:(uint16):(uint16_t):' gfx.c gfx.h || die
 }
 
-DOCS="AUTHORS ChangeLog NEWS README doc/*.txt"
-
 src_install() {
-	default
+	DOCS="AUTHORS ChangeLog NEWS README doc/*.txt" \
+		default
 	insinto "${GAMES_SYSCONFDIR}"
 	doins src/koth.cfg
 	prepgamesdirs

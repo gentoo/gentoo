@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-
+EAPI=5
 inherit cmake-utils eutils games
 
 MY_PN=opensnc
@@ -11,29 +10,23 @@ MY_P=${MY_PN}-src-${PV}
 
 DESCRIPTION="A free open-source game based on the Sonic the Hedgehog universe"
 HOMEPAGE="http://opensnc.sourceforge.net/"
-SRC_URI="${MY_P}.tar.gz"
+SRC_URI="https://sourceforge.net/projects/opensnc/files/Open%20Sonic/${PV}/opensnc-src-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
-RESTRICT="fetch" # unsure about legality of graphics
+RESTRICT="mirror" # unsure about legality of graphics
 
 DEPEND="media-libs/allegro:0[X,jpeg,png,vorbis]
 	media-libs/libogg
 	media-libs/libpng:0
 	media-libs/libvorbis
 	sys-libs/zlib
-	virtual/jpeg"
+	virtual/jpeg:0"
+RDEPEND=${DEPEND}
 
 S=${WORKDIR}/${MY_P}
-
-pkg_nofetch() {
-	einfo "Please download ${SRC_URI} from:"
-	einfo "http://sourceforge.net/projects/opensnc/files/Open%20Sonic/0.1.4/"
-	einfo "and move it to ${DISTDIR}"
-	echo
-}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PF}-cmake.patch

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils toolchain-funcs games
 
 DESCRIPTION="You are now free to fly around the city and poop on passers-by"
@@ -26,13 +26,13 @@ S=${WORKDIR}/${PN}
 src_prepare() {
 	sed -i \
 		-e "s:textures/:${GAMES_DATADIR}/${PN}/:" \
-		includes/textureLoader.h || die "sed failed"
+		includes/textureLoader.h || die
 	sed -i \
 		-e "s:config/:${GAMES_SYSCONFDIR}/:" \
-		myConfig.h || die "sed failed"
+		myConfig.h || die
 	sed -i \
 		-e '/clear/d' \
-		Makefile || die "sed failed" # bug #120907
+		Makefile || die # bug #120907
 
 	epatch \
 		"${FILESDIR}"/${P}-freeglut.patch \

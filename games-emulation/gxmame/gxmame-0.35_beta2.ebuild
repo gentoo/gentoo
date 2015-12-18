@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils games
 
 MY_P="${PN}-${PV/_beta/beta}"
@@ -27,13 +27,17 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-glib-single-include.patch
-	epatch "${FILESDIR}"/${P}-ovflfix.patch
+	epatch \
+		"${FILESDIR}"/${P}-glib-single-include.patch \
+		"${FILESDIR}"/${P}-ovflfix.patch
 	sed -i \
 		-e "s:-O2 -fomit-frame-pointer -ffast-math:${CFLAGS}:" \
 		-e "s:-O2:${CFLAGS}:" \
-		configure \
-		|| die "sed failed"
+		configure || die
+	sed -i \
+		-e '/Icon/s/\.png//' \
+		-e '/Categories/s/Application;//' \
+		gxmame.desktop.in || die
 	sed -i \
 		-e 's:COPYING::' \
 		-e "s:^docdir = .*:docdir = /usr/share/doc/${PF}:" \
@@ -45,23 +49,19 @@ src_prepare() {
 		-e "s:^Graphicsdir = .*:Graphicsdir = /usr/share/applications:" \
 		-e "/DDATADIR/s:\$(datadir):/usr/share/pixmaps:" \
 		-e "/DPACKAGE_LOCALE_DIR/s:\$(datadir):/usr/share:" \
-		Makefile.in html/Makefile.in src/Makefile.in po/Makefile.in.in \
-		|| die "sed failed"
-	sed -i \
-		-e 's/"gxmame"/""/' src/gui.c \
-		|| die "sed failed"
+		Makefile.in html/Makefile.in src/Makefile.in po/Makefile.in.in || die
+	sed -i -e 's/"gxmame"/""/' src/gui.c || die
 }
 
 src_configure() {
 	egamesconf \
-		--disable-dependency-tracking \
 		--with-xmame-dir="${GAMES_DATADIR}"/xmame \
 		$(use_enable nls) \
 		$(use_enable joystick)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc AUTHORS BUGS ChangeLog NEWS README TODO
+	DOCS="AUTHORS BUGS ChangeLog NEWS README TODO" \
+		default
 	prepgamesdirs
 }

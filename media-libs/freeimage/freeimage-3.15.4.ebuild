@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
-
+EAPI=5
 inherit toolchain-funcs eutils multilib
 
 MY_PN=FreeImage
@@ -24,15 +23,15 @@ IUSE="jpeg jpeg2k mng openexr png raw static-libs tiff"
 # The tiff/ilmbase isn't a typo.  The TIFF plugin cheats and
 # uses code from it to handle 16bit<->float conversions.
 RDEPEND="sys-libs/zlib
-	jpeg? ( virtual/jpeg )
+	jpeg? ( virtual/jpeg:0 )
 	jpeg2k? ( media-libs/openjpeg:0 )
 	mng? ( media-libs/libmng )
 	openexr? ( media-libs/openexr )
-	png? ( media-libs/libpng )
+	png? ( media-libs/libpng:0 )
 	raw? ( media-libs/libraw )
 	tiff? (
 		media-libs/ilmbase
-		media-libs/tiff
+		media-libs/tiff:0
 	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

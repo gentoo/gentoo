@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit flag-o-matic eutils autotools-utils
 
 MY_P=ClanLib-${PV}
@@ -19,15 +19,15 @@ REQUIRED_USE="opengl? ( X )"
 
 RDEPEND="sys-libs/zlib
 	X? (
-		media-libs/libpng
-		virtual/jpeg
+		media-libs/libpng:0
+		virtual/jpeg:0
 		media-libs/freetype
 		media-libs/fontconfig
 		opengl? ( virtual/opengl )
 		app-arch/bzip2
 		x11-libs/libX11
 	)
-	sqlite? ( dev-db/sqlite )
+	sqlite? ( dev-db/sqlite:0 )
 	sound? ( media-libs/alsa-lib )
 	mikmod? (
 		media-libs/libmikmod

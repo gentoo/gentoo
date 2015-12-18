@@ -9,7 +9,7 @@
 # Since we don't compile or install any of the bundled fonts, their licenses
 # don't apply. (Fonts are installed through dependencies instead.)
 
-EAPI=4
+EAPI=5
 inherit eutils multiprocessing toolchain-funcs gnome2-utils games
 
 DESCRIPTION="An Interactive Fiction (IF) player supporting all major formats"
@@ -29,7 +29,7 @@ RDEPEND="
 	media-libs/sdl-mixer
 	media-libs/sdl-sound[modplug,mp3,vorbis]
 	sys-libs/zlib
-	virtual/jpeg
+	virtual/jpeg:0
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}
 	app-arch/unzip
