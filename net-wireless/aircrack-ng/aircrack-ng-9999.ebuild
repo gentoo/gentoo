@@ -68,6 +68,7 @@ src_compile() {
 
 	emake \
 	CC="$(tc-getCC)" \
+	CXX="$(tc-getCXX)" \
 	AR="$(tc-getAR)" \
 	LD="$(tc-getLD)" \
 	RANLIB="$(tc-getRANLIB)" \
