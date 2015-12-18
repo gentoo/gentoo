@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ppc x86"
 IUSE=""
 
-RDEPEND="sys-libs/ncurses"
+RDEPEND="sys-libs/ncurses:0"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 

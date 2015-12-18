@@ -19,7 +19,7 @@ DEPEND="media-libs/libsdl[sound,video]
 	media-libs/sdl-image[png]
 	media-libs/sdl-ttf
 	media-libs/sdl-mixer[vorbis]
-	sys-libs/ncurses
+	sys-libs/ncurses:0
 	sys-libs/readline:0"
 RDEPEND="${DEPEND}"
 

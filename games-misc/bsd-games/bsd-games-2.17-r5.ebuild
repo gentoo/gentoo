@@ -19,7 +19,7 @@ IUSE=""
 RDEPEND="!games-misc/wtf
 	!app-misc/banner
 	!games-puzzle/hangman
-	sys-libs/ncurses
+	sys-libs/ncurses:0
 	sys-apps/miscfiles"
 DEPEND="${RDEPEND}
 	sys-devel/flex

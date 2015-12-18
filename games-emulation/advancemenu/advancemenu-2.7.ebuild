@@ -16,7 +16,7 @@ IUSE="alsa debug fbcon ncurses oss sdl slang truetype"
 
 RDEPEND="dev-libs/expat
 	alsa? ( media-libs/alsa-lib )
-	ncurses? ( sys-libs/ncurses )
+	ncurses? ( sys-libs/ncurses:0 )
 	sdl? ( media-libs/libsdl )
 	slang? ( >=sys-libs/slang-1.4 )
 	!sdl? ( ( !fbcon? ( media-libs/libsdl ) ) )

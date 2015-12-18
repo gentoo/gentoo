@@ -14,7 +14,7 @@ KEYWORDS="amd64 hppa ppc x86 ~x86-linux ~ppc-macos ~x86-macos"
 SLOT="0"
 IUSE="X"
 
-RDEPEND="sys-libs/ncurses
+RDEPEND="sys-libs/ncurses:0
 	X? ( x11-libs/libICE x11-libs/libX11 x11-libs/libSM )"
 DEPEND="${RDEPEND}
 	X? ( x11-proto/xproto )"

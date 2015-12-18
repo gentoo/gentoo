@@ -3,7 +3,6 @@
 # $Id$
 
 EAPI=5
-
 inherit cmake-utils games
 
 MY_P=ValyriaTear-${PV/_rc/-rc}
@@ -20,7 +19,7 @@ IUSE="debug editor nls"
 
 RDEPEND="
 	dev-cpp/luabind
-	dev-lang/lua
+	dev-lang/lua:0
 	media-libs/libpng:0=
 	media-libs/libsdl[X,joystick,opengl,video]
 	media-libs/libvorbis
