@@ -4,24 +4,25 @@
 
 # AMD64 Team <amd64@gentoo.org>
 # Mask packages that rely on amd64 multilib
+=app-editors/emacs-18*
+=games-action/lugaru-1.0c-r1
+>=app-i18n/atokx3-3.0.0
+>=dev-java/sun-j2me-bin-2.5.2.01
 app-accessibility/mbrola
 app-accessibility/perlbox-voice
 app-arch/stuffit
 app-benchmarks/cpuburn
-=app-editors/emacs-18*
 app-emulation/crossover-bin
 app-emulation/crossover-office-bin
 app-emulation/crossover-office-pro-bin
 app-emulation/playonlinux
 app-emulation/q4wine
->=app-i18n/atokx3-3.0.0
-app-office/ooextras
 app-emulation/winetricks
-app-text/acroread
 app-office/lotus-notes
+app-office/ooextras
+app-text/acroread
 dev-embedded/libftd2xx
 dev-embedded/openocd
->=dev-java/sun-j2me-bin-2.5.2.01
 dev-lang/dmd-bin
 dev-lang/icc
 dev-lang/idb
@@ -32,25 +33,30 @@ dev-util/android-sdk-update-manager
 dev-util/android-studio
 dev-util/biew
 games-action/awesomenauts
+games-action/beathazardultra
+games-action/brutal-legend
 games-action/cs2d
 games-action/descent3
 games-action/descent3-demo
 games-action/heretic2
 games-action/heretic2-demo
 games-action/hotline-miami
-games-action/lugaru
+games-action/intrusion2
 games-action/lugaru-demo
 games-action/mutantstorm-demo
 games-action/phobiaii
 games-action/rune
 games-action/shadowgrounds-bin
 games-action/shadowgrounds-survivor-bin
+games-action/solar2
 games-action/spacetripper-demo
+games-action/swordandsworcery
 games-action/trine2
 games-arcade/aquaria
 games-arcade/barbarian-bin
-games-arcade/jardinains
+games-arcade/dynamitejack
 games-arcade/gish-demo
+games-arcade/jardinains
 games-arcade/thinktanks-demo
 games-emulation/caps
 games-emulation/nestra
@@ -58,6 +64,7 @@ games-emulation/pcsx2
 games-emulation/zinc
 games-emulation/zsnes
 games-fps/avp
+games-fps/doom3
 games-fps/doom3-cdoom
 games-fps/doom3-chextrek
 games-fps/doom3-data
@@ -70,12 +77,11 @@ games-fps/doom3-lms
 games-fps/doom3-mitm
 games-fps/doom3-phantasm
 games-fps/doom3-roe
-games-fps/doom3
+games-fps/enemy-territory
 games-fps/enemy-territory-etpro
 games-fps/enemy-territory-fortress
 games-fps/enemy-territory-omnibot
 games-fps/enemy-territory-truecombat
-games-fps/enemy-territory
 games-fps/etqw-bin
 games-fps/etqw-data
 games-fps/etqw-demo
@@ -101,10 +107,15 @@ games-fps/unreal-tournament
 games-fps/ut2003
 games-fps/ut2003-demo
 games-fps/ut2004-demo
+games-kids/crayon-physics
+games-misc/little-inferno
+games-misc/papers-please
 games-puzzle/drod-bin
 games-puzzle/hoh-bin
 games-roguelike/adom
 games-roguelike/dwarf-fortress
+games-rpg/dear-esther
+games-rpg/dungeon-defenders
 games-rpg/eschalon-book-1-demo
 games-rpg/nwmouse
 games-rpg/nwmovies
@@ -147,18 +158,19 @@ net-misc/ps3mediaserver
 net-print/cndrvcups-common-lb
 net-print/cndrvcups-lb
 sci-biology/foldingathome
-sci-electronics/eagle
 sci-chemistry/cara-bin
 sci-chemistry/cyana
 sci-chemistry/icm
 sci-chemistry/icm-browser
 sci-chemistry/mars
+sci-electronics/eagle
 sci-libs/ipp
 sys-apps/memtest86
 sys-apps/memtest86+
 sys-libs/lib-compat-loki
 www-plugins/nspluginwrapper
 www-plugins/pipelight
+
 
 # AMD64 Team; <amd64@gentoo.org>
 # grub-1 is not available on no-multilib-profiles
