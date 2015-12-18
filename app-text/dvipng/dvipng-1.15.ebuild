@@ -17,7 +17,7 @@ IUSE="truetype test"
 
 RDEPEND="
 	dev-libs/kpathsea:=
-	media-libs/gd[jpeg,png]
+	media-libs/gd:2=[jpeg,png]
 	media-libs/libpng:0=
 	virtual/latex-base
 	sys-libs/zlib
