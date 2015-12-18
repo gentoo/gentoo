@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 inherit eutils games rpm
 
 DS="${PV/*_pre}"
@@ -33,7 +33,7 @@ src_install() {
 	local dir="${GAMES_PREFIX_OPT}/${PN}"
 	dodir "${dir}"
 
-	cp -pPR * "${D}/${dir}/"
+	cp -pPR * "${D}/${dir}/" || die
 	games_make_wrapper q3map2 ./q3map2.x86 "${dir}"
 	games_make_wrapper radiant ./radiant.x86 "${dir}"
 
