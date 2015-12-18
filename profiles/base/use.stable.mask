@@ -5,6 +5,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Brian Evans <grknight@gentoo.org> (18 Dec 2015)
+# Needs dev-lang/php:7.0 stable
+php_targets_php7-0
+
 # Mike Gilbert <floppym@gentoo.org> (02 Oct 2015)
 # Needs dev-lang/python:3.5 stable
 python_targets_python3_5

@@ -13,9 +13,6 @@ php_targets_php5-4
 # 540540 and 525674
 sssd
 
-# php 7 is still masked for testing
-php_targets_php7-0
-
 # cilk has been ported only to x86 systems
 cilk
 
