@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
-    <email>maintainer-needed@gentoo.org</email>
-  </maintainer>
-  <upstream>
-    <remote-id type="sourceforge">librsync</remote-id>
-  </upstream>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>axelgenus@gmail.com</email>
+		<name>Alessandro Calorì</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">librsync</remote-id>
+	</upstream>
 </pkgmetadata>
