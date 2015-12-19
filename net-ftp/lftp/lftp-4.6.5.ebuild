@@ -22,8 +22,8 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=sys-libs/ncurses-5.1
-	>=sys-libs/readline-5.1
+	>=sys-libs/ncurses-5.1:=
+	>=sys-libs/readline-5.1:=
 	dev-libs/expat
 	sys-libs/zlib
 	convert-mozilla-cookies? ( dev-perl/DBI )
@@ -34,7 +34,7 @@ RDEPEND="
 	)
 	ssl? (
 		gnutls? ( >=net-libs/gnutls-1.2.3 )
-		openssl? ( >=dev-libs/openssl-0.9.6 )
+		openssl? ( dev-libs/openssl:0 )
 	)
 	verify-file? (
 		dev-perl/string-crc32
