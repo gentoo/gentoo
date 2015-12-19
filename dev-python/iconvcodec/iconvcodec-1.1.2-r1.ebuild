@@ -9,7 +9,8 @@ inherit distutils-r1
 
 DESCRIPTION="Python Codecs for Iconv Encodings"
 HOMEPAGE="http://cjkpython.i18n.org/"
-SRC_URI="mirror://berlios/cjkpython/${P}.tar.gz"
+#SRC_URI="mirror://berlios/cjkpython/${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
