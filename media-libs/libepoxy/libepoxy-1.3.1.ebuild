@@ -19,10 +19,10 @@ inherit autotools-multilib ${GIT_ECLASS} python-any-r1
 DESCRIPTION="Epoxy is a library for handling OpenGL function pointer management for you"
 HOMEPAGE="https://github.com/anholt/libepoxy"
 if [[ ${PV} = 9999* ]]; then
-	KEYWORDS=""
+	KEYWORDS="arm"
 	SRC_URI=""
 else
-	KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc ~ppc64 ~sparc x86"
+	KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ~ppc64 ~sparc x86"
 	SRC_URI="https://github.com/anholt/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 

@@ -19,10 +19,10 @@ HOMEPAGE="http://wayland.freedesktop.org/"
 
 if [[ $PV = 9999* ]]; then
 	SRC_URI="${SRC_PATCHES}"
-	KEYWORDS=""
+	KEYWORDS="arm"
 else
 	SRC_URI="http://wayland.freedesktop.org/releases/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm x86 ~arm-linux"
+	KEYWORDS="amd64 arm x86 ~arm-linux"
 fi
 
 LICENSE="MIT CC-BY-SA-3.0"
