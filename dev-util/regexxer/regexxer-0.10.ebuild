@@ -4,7 +4,8 @@
 
 EAPI=5
 GCONF_DEBUG=no
-inherit autotools eutils gnome2
+
+inherit autotools eutils flag-o-matic gnome2
 
 DESCRIPTION="An interactive tool for performing search and replace operations"
 HOMEPAGE="http://regexxer.sourceforge.net/"
@@ -22,9 +23,9 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/gettext"
 
-DOCS=( AUTHORS ChangeLog NEWS README )
-
 src_prepare() {
+	append-cxxflags -std=c++11
+
 	epatch "${FILESDIR}"/${P}-glib-2.32.patch
 	epatch "${FILESDIR}"/${P}-sandbox.patch
 	eautoreconf
