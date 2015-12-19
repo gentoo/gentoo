@@ -1,0 +1,42 @@
+From 529a388ebb1b4e9d6ad8a1bb61dd8211833a5976 Mon Sep 17 00:00:00 2001
+From: Denis Lisov <dennis.lissov@gmail.com>
+Date: Sat, 19 Dec 2015 19:13:58 +0300
+Subject: [PATCH] libsandbox: fix old_malloc_size check on realloc
+
+Realloc uses SB_MALLOC_TO_SIZE assuming it returns the usable size,
+while it is really the mmap size, which is greater. Thus it may fail
+to reallocate even if required.
+
+URL: https://bugs.gentoo.org/568714
+Signed-off-by: Denis Lisov <dennis.lissov@gmail.com>
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ libsandbox/memory.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/libsandbox/memory.c b/libsandbox/memory.c
+index 8581128..a2d69a2 100644
+--- a/libsandbox/memory.c
++++ b/libsandbox/memory.c
+@@ -40,7 +40,8 @@ static int sb_munmap(void *addr, size_t length)
+ 
+ #define SB_MALLOC_TO_MMAP(ptr) ((void*)((uintptr_t)(ptr) - MIN_ALIGN))
+ #define SB_MMAP_TO_MALLOC(ptr) ((void*)((uintptr_t)(ptr) + MIN_ALIGN))
+-#define SB_MALLOC_TO_SIZE(ptr) (*((size_t*)SB_MALLOC_TO_MMAP(ptr)))
++#define SB_MALLOC_TO_MMAP_SIZE(ptr) (*((size_t*)SB_MALLOC_TO_MMAP(ptr)))
++#define SB_MALLOC_TO_SIZE(ptr) (SB_MALLOC_TO_MMAP_SIZE(ptr) - MIN_ALIGN)
+ 
+ void *malloc(size_t size)
+ {
+@@ -57,7 +58,7 @@ void free(void *ptr)
+ {
+ 	if (ptr == NULL)
+ 		return;
+-	if (munmap(SB_MALLOC_TO_MMAP(ptr), SB_MALLOC_TO_SIZE(ptr)))
++	if (munmap(SB_MALLOC_TO_MMAP(ptr), SB_MALLOC_TO_MMAP_SIZE(ptr)))
+ 		sb_ebort("sandbox memory corruption with free(%p): %s\n",
+ 			ptr, strerror(errno));
+ }
+-- 
+2.6.2
+

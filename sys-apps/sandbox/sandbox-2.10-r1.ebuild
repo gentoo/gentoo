@@ -46,6 +46,7 @@ sb_foreach_abi() {
 src_unpack() {
 	unpacker
 	cd "${S}"
+	epatch "${FILESDIR}"/${P}-memory-corruption.patch #568714
 	epatch_user
 }
 
