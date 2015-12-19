@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit versionator toolchain-funcs
+inherit versionator toolchain-funcs eutils
 
 MY_PV=$(get_version_component_range 1-3)
 DEB_PV=$(get_version_component_range 4-5)
@@ -18,6 +18,11 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 m68k ~mips ~ppc ~s390 ~sh ~sparc ~x86"
 IUSE=""
 
 S=${WORKDIR}/${PN}-${MY_PV}
+
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-0.7.1.5.4-prompt-logic.patch
+	epatch "${FILESDIR}"/${PN}-0.7.1.5.4-gcc-5-inline.patch
+}
 
 src_compile() {
 	emake \
