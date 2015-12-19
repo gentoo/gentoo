@@ -19,7 +19,7 @@ src_compile() { :; } # emake does bad things here
 
 src_install() {
 	doman -i18n=it man-pages/man[1-9]/* binutils/man[1-9]/* inetutils/man[1-9]/* \
-	               util-linux/man[1-9]/* misc/man[1-9]/*
+		util-linux/man[1-9]/* misc/man[1-9]/*
 
 	dodoc description README CHANGELOG
 }
