@@ -1988,10 +1988,10 @@ app-office/kmymoney 4.7.2: Personal finance manager for KDE
 app-office/kraft 0.58 0.59: Software for operating a small business, helping create documents such as offers and invoices
 app-office/ledger 2.6.3-r1 3.1 3.1-r1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 4.3.2-r1: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 4.4.6.3 4.4.9999 5.0.3.2 5.0.9999 9999: A full office productivity suite
+app-office/libreoffice 4.4.6.3 4.4.9999 5.0.3.2 5.0.4.2 5.0.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 5.0.3.2: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 5.0.3.2: LibreOffice, a full office productivity suite. Binary package, debug info
-app-office/libreoffice-l10n 4.4.6.3 5.0.3.2: Translations for the Libreoffice suite
+app-office/libreoffice-l10n 4.4.6.3 5.0.3.2 5.0.4.2: Translations for the Libreoffice suite
 app-office/lotus-notes 8.5.3: Commercial fork of openoffice.org with extra features for company usage
 app-office/lyx 1.6.10 2.0.8.1 2.1.3 2.1.4: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a: An X11 based presentation tool
@@ -4393,7 +4393,7 @@ dev-lang/orc 0.4.23 0.4.24: The Oil Runtime Compiler, a just-in-time compiler fo
 dev-lang/parrot 7.0.2 7.1.0 7.2.0 7.3.0 7.5.0: Virtual machine designed to efficiently compile and execute bytecode for dynamic languages
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
-dev-lang/perl 5.20.2 5.20.2-r1 5.22.0: Larry Wall's Practical Extraction and Report Language
+dev-lang/perl 5.20.2 5.20.2-r1 5.22.0 5.22.1: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 5.4.45 5.5.30 5.6.14 5.6.16 7.0.0 7.0.1: The PHP language runtime engine: CLI, CGI, FPM/FastCGI, Apache2 and embed SAPIs
 dev-lang/pocl 0.11: PortableCL: opensource implementation of the OpenCL standard
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2: Poly/ML is a full implementation of Standard ML
@@ -17233,7 +17233,7 @@ virtual/perl-Math-BigInt-FastCalc 0.310.0-r1: Virtual for Math-BigInt-FastCalc
 virtual/perl-Math-BigRat 0.260.600 0.260.800: Virtual for Math-BigRat
 virtual/perl-Math-Complex 1.590.0-r5: Virtual for Math-Complex
 virtual/perl-Memoize 1.30.0-r2: Virtual for Memoize
-virtual/perl-Module-CoreList 5.201.502.140-r1 5.201.505.200-r2: Virtual for Module-CoreList
+virtual/perl-Module-CoreList 5.201.502.140-r1 5.201.505.200-r3 5.201.512.130: Virtual for Module-CoreList
 virtual/perl-Module-Load 0.320.0-r1: Virtual for Module-Load
 virtual/perl-Module-Load-Conditional 0.620.0 0.640.0: Virtual for Module-Load-Conditional
 virtual/perl-Module-Loaded 0.80.0-r5: Virtual for Module-Loaded
@@ -17249,7 +17249,7 @@ virtual/perl-Pod-Simple 3.280.0-r2 3.290.0: Virtual for Pod-Simple
 virtual/perl-Safe 2.370.0 2.390.0: Virtual for Safe
 virtual/perl-Scalar-List-Utils 1.380.0 1.410.0: Virtual for Scalar::Util and List::Util, also distributed as Scalar::List::Utils
 virtual/perl-Socket 2.13.0 2.18.0: Virtual for Socket
-virtual/perl-Storable 2.490.100-r1 2.530.0: Virtual for Storable
+virtual/perl-Storable 2.490.100-r1 2.530.0-r1 2.530.100: Virtual for Storable
 virtual/perl-Sys-Syslog 0.330.0-r2: Virtual for Sys-Syslog
 virtual/perl-Term-ANSIColor 4.20.0-r3 4.30.0: Virtual for Term-ANSIColor
 virtual/perl-Term-ReadLine 1.140.0 1.150.0: Virtual for Term-ReadLine
