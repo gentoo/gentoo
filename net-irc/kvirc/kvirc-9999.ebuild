@@ -15,7 +15,7 @@ EGIT_REPO_URI="https://github.com/kvirc/KVIrc"
 LICENSE="kvirc"
 SLOT="4"
 KEYWORDS=""
-IUSE="audiofile dcc_video +dcc_voice debug doc gsm +ipc ipv6 kde +nls oss +perl +phonon profile +python +qt-dbus spell +ssl theora +transparency webkit"
+IUSE="audiofile +dbus dcc_video +dcc_voice debug doc gsm +ipc ipv6 kde +nls oss +perl +phonon profile +python spell +ssl theora +transparency webkit"
 
 RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -28,6 +28,7 @@ RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtxml:5
 	sys-libs/zlib
 	x11-libs/libX11
+	dbus? ( dev-qt/qtdbus:5 )
 	dcc_video? ( dev-qt/qtmultimedia:5[widgets] )
 	kde? (
 		kde-frameworks/kcoreaddons:5
@@ -40,7 +41,6 @@ RDEPEND="dev-qt/qtcore:5
 	oss? ( audiofile? ( media-libs/audiofile ) )
 	perl? ( dev-lang/perl )
 	phonon? ( media-libs/phonon:0[qt5] )
-	qt-dbus? ( dev-qt/qtdbus:5 )
 	spell? ( app-text/enchant )
 	ssl? ( dev-libs/openssl )
 	theora? (
@@ -88,6 +88,7 @@ src_configure() {
 		-DWANT_ENV_FLAGS=1
 		-DWANT_VERBOSE=1
 		$(cmake-utils_use_want audiofile AUDIOFILE)
+		$(cmake-utils_use_want dbus QTDBUS)
 		$(cmake-utils_use_want dcc_video DCC_VIDEO)
 		$(cmake-utils_use_want dcc_voice DCC_VOICE)
 		$(cmake-utils_use_want debug DEBUG)
@@ -102,7 +103,6 @@ src_configure() {
 		$(cmake-utils_use_want phonon PHONON)
 		$(cmake-utils_use_want profile MEMORY_PROFILE)
 		$(cmake-utils_use_want python PYTHON)
-		$(cmake-utils_use_want qt-dbus QTDBUS)
 		$(cmake-utils_use_want spell SPELLCHECKER)
 		$(cmake-utils_use_want ssl OPENSSL)
 		$(cmake-utils_use_want theora OGG_THEORA)
