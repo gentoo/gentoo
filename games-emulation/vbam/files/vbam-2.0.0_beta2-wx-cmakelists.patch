@@ -1,0 +1,14 @@
+--- a/src/wx/CMakeLists.txt.old	2015-12-30 12:15:01.421560801 -0500
++++ b/src/wx/CMakeLists.txt	2015-12-30 12:16:24.812411444 -0500
+@@ -168,10 +168,11 @@
+ )
+ IF(WIN32)
+     INSTALL(PROGRAMS ${PROJECT_BINARY_DIR}/visualboyadvance-m${CMAKE_EXECUTABLE_SUFFIX} DESTINATION ${CMAKE_BINARY_DIR})
+ ENDIF(WIN32)
+ IF(NOT WIN32 AND NOT APPLE)
++    INSTALL(PROGRAMS ${PROJECT_BINARY_DIR}/visualboyadvance-m${CMAKE_EXECUTABLE_SUFFIX} DESTINATION usr/bin)
+     INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/wxvbam.desktop DESTINATION share/applications)
+ ENDIF(NOT WIN32 AND NOT APPLE)
+ 
+ if(APPLE)
+     # this should set ROM file types correctly
