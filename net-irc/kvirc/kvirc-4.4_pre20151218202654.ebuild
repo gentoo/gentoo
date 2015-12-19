@@ -16,7 +16,7 @@ if [[ "${PV}" == "9999" ]]; then
 else
 	inherit vcs-snapshot
 
-	KVIRC_GIT_REVISION=""
+	KVIRC_GIT_REVISION="d1e304ba1fdd27645af53573f9ed96b44199dfd3"
 	KVIRC_GIT_SOURCES_DATE="${PV#*_pre}"
 	KVIRC_GIT_SOURCES_DATE="$(printf "%04u-%02u-%02u" ${KVIRC_GIT_SOURCES_DATE:0:4} ${KVIRC_GIT_SOURCES_DATE:4:2} ${KVIRC_GIT_SOURCES_DATE:6:2})"
 fi
@@ -31,7 +31,7 @@ fi
 
 LICENSE="kvirc"
 SLOT="4"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="audiofile +dbus dcc_video +dcc_voice debug doc gsm +ipc ipv6 kde +nls oss +perl +phonon profile +python spell +ssl theora +transparency webkit"
 
 RDEPEND="dev-qt/qtcore:5
