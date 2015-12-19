@@ -20,8 +20,8 @@ IUSE="+lua +pbf"
 DEPEND="
 	app-arch/bzip2
 	dev-db/postgresql:=
+	dev-libs/expat
 	dev-libs/boost
-	dev-libs/libxml2:2
 	sci-libs/geos
 	sci-libs/proj
 	sys-libs/zlib
