@@ -7,7 +7,8 @@ inherit db-use eutils flag-o-matic multilib
 
 DESCRIPTION="A simple and fast GB and BIG5 Chinese XIM server"
 HOMEPAGE="http://developer.berlios.de/projects/xsim/"
-SRC_URI="mirror://berlios/xsim/${P}.tar.gz"
+#SRC_URI="mirror://berlios/xsim/${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

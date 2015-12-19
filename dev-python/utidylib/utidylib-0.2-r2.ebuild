@@ -12,7 +12,8 @@ MY_P="uTidylib-${PV}"
 
 DESCRIPTION="TidyLib Python wrapper"
 HOMEPAGE="http://sourceforge.net/projects/utidylib/"
-SRC_URI="mirror://berlios/${PN}/${MY_P}.zip"
+#SRC_URI="mirror://berlios/${PN}/${MY_P}.zip"
+SRC_URI="mirror://gentoo/${MY_P}.zip"
 
 LICENSE="MIT"
 SLOT="0"
