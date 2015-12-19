@@ -7,7 +7,7 @@ EAPI="5"
 inherit eutils toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
-	ESVN_REPO_URI="https://sdcc.svn.sourceforge.net/svnroot/sdcc/trunk/sdcc"
+	ESVN_REPO_URI="https://svn.code.sourceforge.net/p/sdcc/code/trunk/sdcc"
 	inherit subversion
 	docs_compile() { return 0; }
 else
