@@ -23,7 +23,9 @@ IUSE="static-libs test"
 
 RDEPEND=">=x11-libs/libdrm-2.4.50
 	media-libs/libepoxy"
+# We need autoconf-archive for @CODE_COVERAGE_RULES@. #568624
 DEPEND="${RDEPEND}
+	sys-devel/autoconf-archive
 	>=x11-misc/util-macros-1.8
 	test? ( >=dev-libs/check-0.9.4 )"
 
