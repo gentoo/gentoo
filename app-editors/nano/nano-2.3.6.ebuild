@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="GNU GPL'd Pico clone with more functionality"
-HOMEPAGE="http://www.nano-editor.org/ https://www.gentoo.org/doc/en/nano-basics-guide.xml"
+HOMEPAGE="http://www.nano-editor.org/ https://wiki.gentoo.org/wiki/Nano/Basics_Guide"
 
 LICENSE="GPL-3"
 SLOT="0"
