@@ -5,12 +5,29 @@
 EAPI="5"
 PYTHON_DEPEND="python? 2"
 
-inherit cmake-utils flag-o-matic git-r3 multilib python
+inherit cmake-utils flag-o-matic multilib python
+
+if [[ "${PV}" == "9999" ]]; then
+	inherit git-r3
+
+	EGIT_REPO_URI="https://github.com/kvirc/KVIrc"
+	KVIRC_GIT_REVISION=""
+	KVIRC_GIT_SOURCES_DATE=""
+else
+	inherit vcs-snapshot
+
+	KVIRC_GIT_REVISION=""
+	KVIRC_GIT_SOURCES_DATE="${PV#*_pre}"
+	KVIRC_GIT_SOURCES_DATE="$(printf "%04u-%02u-%02u" ${KVIRC_GIT_SOURCES_DATE:0:4} ${KVIRC_GIT_SOURCES_DATE:4:2} ${KVIRC_GIT_SOURCES_DATE:6:2})"
+fi
 
 DESCRIPTION="Advanced IRC Client"
 HOMEPAGE="http://www.kvirc.net/ https://github.com/kvirc/KVIrc"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/kvirc/KVIrc"
+if [[ "${PV}" == "9999" ]]; then
+	SRC_URI=""
+else
+	SRC_URI="https://github.com/kvirc/KVIrc/archive/${KVIRC_GIT_REVISION}.tar.gz -> ${P}.tar.gz"
+fi
 
 LICENSE="kvirc"
 SLOT="4"
@@ -69,8 +86,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	KVIRC_GIT_REVISION="$(git show -s --format=%H)"
-	KVIRC_GIT_SOURCES_DATE="$(git show -s --format=%cd --date=short)"
+	if [[ "${PV}" == "9999" ]]; then
+		KVIRC_GIT_REVISION="$(git show -s --format=%H)"
+		KVIRC_GIT_SOURCES_DATE="$(git show -s --format=%cd --date=short)"
+	fi
 	einfo "Setting of revision number to ${KVIRC_GIT_REVISION} ${KVIRC_GIT_SOURCES_DATE}"
 	sed -e "/#define KVI_DEFAULT_FRAME_CAPTION/s/KVI_VERSION/& \" (${KVIRC_GIT_REVISION} ${KVIRC_GIT_SOURCES_DATE})\"/" -i src/kvirc/ui/KviMainWindow.cpp || die "Setting of revision number failed"
 }
