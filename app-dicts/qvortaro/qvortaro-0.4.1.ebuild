@@ -7,7 +7,8 @@ inherit eutils qt4-r2
 
 DESCRIPTION="Esperanto Dictionary"
 HOMEPAGE="http://qvortaro.berlios.de/"
-SRC_URI="mirror://berlios/qvortaro/${P}.tar.gz"
+#SRC_URI="mirror://berlios/qvortaro/${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

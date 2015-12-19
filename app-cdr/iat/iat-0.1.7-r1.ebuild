@@ -6,7 +6,8 @@ EAPI="2"
 
 DESCRIPTION="BIN, MDF, PDI, CDI, NRG, and B5I converters"
 HOMEPAGE="http://iat.berlios.de"
-SRC_URI="mirror://berlios/${PN}/${P}.tar.bz2"
+#SRC_URI="mirror://berlios/${PN}/${P}.tar.bz2"
+SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

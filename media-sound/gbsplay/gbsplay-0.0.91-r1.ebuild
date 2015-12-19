@@ -11,7 +11,8 @@ inherit l10n toolchain-funcs
 
 DESCRIPTION="Nintendo Gameboy sound player for GBS format"
 HOMEPAGE="http://gbsplay.berlios.de"
-SRC_URI="mirror://berlios/${PN}/${P}.tar.gz"
+#SRC_URI="mirror://berlios/${PN}/${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

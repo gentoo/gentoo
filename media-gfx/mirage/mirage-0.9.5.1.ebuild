@@ -12,7 +12,8 @@ inherit distutils eutils
 
 DESCRIPTION="A fast and simple image viewer based on python and GTK+"
 HOMEPAGE="http://mirageiv.berlios.de/"
-SRC_URI="mirror://berlios/mirageiv/${P}.tar.bz2"
+#SRC_URI="mirror://berlios/mirageiv/${P}.tar.bz2"
+SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

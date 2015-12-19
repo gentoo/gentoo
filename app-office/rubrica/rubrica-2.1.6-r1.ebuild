@@ -12,8 +12,9 @@ LICENSE="GPL-3"
 HOMEPAGE="http://rubrica.berlios.de/"
 SLOT="0"
 KEYWORDS="~amd64 x86"
+#	mirror://berlios/${PN}/${MY_PN}-${PV}.tar.bz2
 SRC_URI="
-	mirror://berlios/${PN}/${MY_PN}-${PV}.tar.bz2
+	mirror://gentoo/${MY_PN}-${PV}.tar.bz2
 	mirror://gentoo/${P}-hu.po.bz2
 "
 

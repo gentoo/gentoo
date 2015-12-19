@@ -6,7 +6,8 @@ inherit toolchain-funcs
 
 DESCRIPTION="BlindWrite image to ISO image file converter"
 HOMEPAGE="http://developer.berlios.de/projects/b5i2iso/"
-SRC_URI="mirror://berlios/${PN}/${PN}.tar.bz2"
+#SRC_URI="mirror://berlios/${PN}/${PN}.tar.bz2"
+SRC_URI="mirror://gentoo/${PN}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

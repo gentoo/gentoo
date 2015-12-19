@@ -16,11 +16,14 @@ MYPYTHONPATCH="PythonFunctionSupport-20050210.patch"
 
 DESCRIPTION="Stuttgart Neural Network Simulator"
 HOMEPAGE="http://www-ra.informatik.uni-tuebingen.de/SNNS/"
+#	mirror://berlios/snns-dev/${MYPATCH}.patch.gz
+#	python? ( mirror://berlios/snns-dev/${MYPYTHONEXT}.tar.gz
+#			  mirror://berlios/snns-dev/${MYPYTHONPATCH}.gz )"
 SRC_URI="http://www-ra.informatik.uni-tuebingen.de/downloads/SNNS/${MY_P}.tar.gz
-	mirror://berlios/snns-dev/${MYPATCH}.patch.gz
+	mirror://gentoo/${MYPATCH}.patch.gz
 	doc? ( http://www-ra.informatik.uni-tuebingen.de/downloads/SNNS/${MY_P}.Manual.pdf )
-	python? ( mirror://berlios/snns-dev/${MYPYTHONEXT}.tar.gz
-			  mirror://berlios/snns-dev/${MYPYTHONPATCH}.gz )"
+	python? ( mirror://gentoo/${MYPYTHONEXT}.tar.gz
+			  mirror://gentoo/${MYPYTHONPATCH}.gz )"
 
 LICENSE="SNNS-${PV}"
 KEYWORDS="amd64 ppc x86"
