@@ -15,7 +15,7 @@ SRC_URI=""
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="+lua +pbf"
+IUSE="+lua"
 
 DEPEND="
 	app-arch/bzip2
@@ -26,6 +26,5 @@ DEPEND="
 	sci-libs/proj
 	sys-libs/zlib
 	lua? ( dev-lang/lua:= )
-	pbf? ( dev-libs/protobuf-c )
 "
 RDEPEND="${DEPEND}"
