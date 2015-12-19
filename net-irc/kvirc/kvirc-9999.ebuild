@@ -8,7 +8,7 @@ PYTHON_DEPEND="python? 2"
 inherit cmake-utils flag-o-matic git-r3 multilib python
 
 DESCRIPTION="Advanced IRC Client"
-HOMEPAGE="http://www.kvirc.net/"
+HOMEPAGE="http://www.kvirc.net/ https://github.com/kvirc/KVIrc"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/kvirc/KVIrc"
 
@@ -26,8 +26,9 @@ RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
-	sys-libs/zlib
+	sys-libs/zlib:0=
 	x11-libs/libX11
+	audiofile? ( media-libs/audiofile )
 	dbus? ( dev-qt/qtdbus:5 )
 	dcc_video? ( dev-qt/qtmultimedia:5[widgets] )
 	kde? (
@@ -38,11 +39,10 @@ RDEPEND="dev-qt/qtcore:5
 		kde-frameworks/kwindowsystem:5
 		kde-frameworks/kxmlgui:5
 	)
-	oss? ( audiofile? ( media-libs/audiofile ) )
 	perl? ( dev-lang/perl )
 	phonon? ( media-libs/phonon:0[qt5] )
 	spell? ( app-text/enchant )
-	ssl? ( dev-libs/openssl )
+	ssl? ( dev-libs/openssl:0= )
 	theora? (
 		media-libs/libogg
 		media-libs/libtheora
@@ -52,9 +52,9 @@ RDEPEND="dev-qt/qtcore:5
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-proto/scrnsaverproto
+	doc? ( app-doc/doxygen )
 	kde? ( kde-frameworks/extra-cmake-modules:5 )
-	nls? ( sys-devel/gettext )
-	doc? ( app-doc/doxygen )"
+	nls? ( sys-devel/gettext )"
 RDEPEND="${RDEPEND}
 	gsm? ( media-sound/gsm )"
 REQUIRED_USE="audiofile? ( oss )"
