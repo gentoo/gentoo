@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<name>Elizabeth Myers</name>
+		<email>elizabeth@interlinked.me</email>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
+	</maintainer>
 </pkgmetadata>
