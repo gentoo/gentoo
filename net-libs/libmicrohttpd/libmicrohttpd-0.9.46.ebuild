@@ -6,7 +6,7 @@ EAPI="5"
 
 MY_P="${P/_/}"
 
-DESCRIPTION="A small C library that makes it easy to run an HTTP server as part of another application"
+DESCRIPTION="Small C library to run an HTTP server as part of another application"
 HOMEPAGE="https://www.gnu.org/software/libmicrohttpd/"
 SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz"
 
