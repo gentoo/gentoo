@@ -233,33 +233,22 @@ multibuild_merge_root() {
 	local dest=${2}
 
 	local ret
+	local cp_args=()
 
-	if use userland_BSD; then
-		# Most of BSD variants fail to copy broken symlinks, #447370
-		# also, they do not support --version
-
-		tar -C "${src}" -f - -c . \
-			| tar -x -f - -C "${dest}"
-		[[ ${PIPESTATUS[*]} == '0 0' ]]
-		ret=${?}
+	# note: BSD outputs joint args like -apvX, so only -a is safe
+	if cp --help 2>&1 | grep -q -- -a &>/dev/null; then
+		cp_args+=( -a )
 	else
-		local cp_args=()
-
-		# note: BSD outputs joint args like -apvX, so only -a is safe
-		if cp --help 2>&1 | grep -q -- -a &>/dev/null; then
-			cp_args+=( -a )
-		else
-			cp_args+=( -P -R -p )
-		fi
-
-		if cp --help 2>&1 | grep -q -- --reflink; then
-			# enable reflinking if possible to make this faster
-			cp_args+=( --reflink=auto )
-		fi
-
-		cp "${cp_args[@]}" "${src}"/. "${dest}"/
-		ret=${?}
+		cp_args+=( -P -R -p )
 	fi
+
+	if cp --help 2>&1 | grep -q -- --reflink; then
+		# enable reflinking if possible to make this faster
+		cp_args+=( --reflink=auto )
+	fi
+
+	cp "${cp_args[@]}" "${src}"/. "${dest}"/
+	ret=${?}
 
 	if [[ ${ret} -ne 0 ]]; then
 		die "${MULTIBUILD_VARIANT:-(unknown)}: merging image failed."
