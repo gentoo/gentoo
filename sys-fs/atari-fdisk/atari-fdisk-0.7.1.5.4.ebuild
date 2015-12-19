@@ -14,7 +14,10 @@ SRC_URI="mirror://debian/pool/main/a/${PN}/${PN}_${MY_PV}-${DEB_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc s390 sh sparc x86"
+# Note: The code assumes sizeof(long) == 4 everywhere.  If you try to
+# use this on 64bit systems (where sizeof(long) == 8), then misbehavior
+# and memory corruption will ensue.
+KEYWORDS="-* m68k x86"
 IUSE=""
 
 S=${WORKDIR}/${PN}-${MY_PV}
