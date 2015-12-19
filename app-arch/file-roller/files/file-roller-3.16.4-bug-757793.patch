@@ -1,0 +1,25 @@
+From b9308bac8f93c047d0ce7a3b52e9b5f09adf2c86 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sun, 6 Dec 2015 15:23:31 +0100
+Subject: [PATCH] Stop mis-treating p7zip 15.09 as pre-4.55 (#757793)
+
+---
+ src/fr-command-7z.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/fr-command-7z.c b/src/fr-command-7z.c
+index fc33d4d..1befbf5 100644
+--- a/src/fr-command-7z.c
++++ b/src/fr-command-7z.c
+@@ -98,7 +98,7 @@ list__process_line (char     *line,
+ 			strncpy (version, ver_start, ver_len);
+ 			version[ver_len] = 0;
+ 
+-			if (strcmp (version, "4.55") < 0)
++			if ((strcmp (version, "4.55") < 0) && (ver_len > 1) && (version[1] == '.'))
+ 				self->old_style = TRUE;
+ 			else
+ 				self->old_style = FALSE;
+-- 
+2.6.3
+
