@@ -195,7 +195,7 @@ multibuild_copy_sources() {
 
 	_multibuild_create_source_copy() {
 		einfo "${MULTIBUILD_VARIANT}: copying to ${BUILD_DIR}"
-		cp -pr "${cp_args[@]}" \
+		cp -p -R "${cp_args[@]}" \
 			"${_MULTIBUILD_INITIAL_BUILD_DIR}" "${BUILD_DIR}" || die
 	}
 
