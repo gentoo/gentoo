@@ -223,7 +223,7 @@ multilib_src_configure() {
 	fi
 
 	if use egl; then
-		myconf+="--with-egl-platforms=x11$(use wayland && echo ",wayland")$(use gbm && echo ",drm") "
+		myconf+=" --with-egl-platforms=x11$(use wayland && echo ",wayland")$(use gbm && echo ",drm")"
 	fi
 
 	if use gallium; then
@@ -236,7 +236,7 @@ multilib_src_configure() {
 			$(use_enable xa)
 			$(use_enable xvmc)
 		"
-		use vaapi && myconf+="--with-va-libdir=/usr/$(get_libdir)/va/drivers"
+		use vaapi && myconf+=" --with-va-libdir=/usr/$(get_libdir)/va/drivers"
 
 		gallium_enable swrast
 		gallium_enable video_cards_vmware svga
@@ -268,7 +268,7 @@ multilib_src_configure() {
 
 	# x86 hardened pax_kernel needs glx-read-only-text, bug 240956
 	if [[ ${ABI} == x86 ]]; then
-		myconf+="$(use_enable pax_kernel glx-read-only-text)"
+		myconf+=" $(use_enable pax_kernel glx-read-only-text)"
 	fi
 
 	# on abi_x86_32 hardened we need to have asm disable
