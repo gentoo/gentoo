@@ -66,5 +66,7 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
-	python_fix_shebang "${ED}"/usr/bin
+	if use python; then
+		python_fix_shebang "${ED}"/usr/bin
+	fi
 }
