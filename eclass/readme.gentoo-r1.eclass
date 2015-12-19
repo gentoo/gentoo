@@ -21,8 +21,6 @@
 if [[ -z ${_README_GENTOO_ECLASS} ]]; then
 _README_GENTOO_ECLASS=1
 
-inherit eutils
-
 case "${EAPI:-0}" in
 	0|1|2|3)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
@@ -61,15 +59,16 @@ readme.gentoo_create_doc() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	if [[ -n "${DOC_CONTENTS}" ]]; then
-		eshopts_push
-		set -f
 		if [[ -n "${DISABLE_AUTOFORMATTING}" ]]; then
-			echo "${DOC_CONTENTS}" > "${T}"/README.gentoo
+			echo "${DOC_CONTENTS}" > "${T}"/README.gentoo || die
 		else
+			local saved_flags=$-
+			set -f				# disable filename expansion in echo arguments
 			echo -e ${DOC_CONTENTS} | fold -s -w 70 \
 				| sed 's/[[:space:]]*$//' > "${T}"/README.gentoo
+			assert
+			set +f -${saved_flags}
 		fi
-		eshopts_pop
 	elif [[ -f "${FILESDIR}/README.gentoo-${SLOT%/*}" ]]; then
 		cp "${FILESDIR}/README.gentoo-${SLOT%/*}" "${T}"/README.gentoo || die
 	elif [[ -f "${FILESDIR}/README.gentoo${README_GENTOO_SUFFIX}" ]]; then
