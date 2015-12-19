@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools eutils git-r3
+inherit autotools eutils git-r3 flag-o-matic
 
 DESCRIPTION="featureful ncurses based MPD client inspired by ncmpc"
 HOMEPAGE="http://ncmpcpp.rybczak.net/"
@@ -16,7 +16,6 @@ KEYWORDS=""
 IUSE="clock curl outputs taglib unicode visualizer"
 
 RDEPEND="
-	!dev-libs/boost:0/1.57.0
 	>=media-libs/libmpdclient-2.1
 	dev-libs/boost:=[nls,threads]
 	sys-libs/ncurses:=[unicode?]
@@ -32,12 +31,14 @@ DEPEND="
 "
 
 src_prepare() {
+	epatch ${FILESDIR}/circumvent-boost-1.57-bug.patch
 	sed -i -e '/^docdir/d' {,doc/}Makefile.am || die
 	sed -i -e 's|COPYING||g' Makefile.am || die
 	eautoreconf
 }
 
 src_configure() {
+	append-cxxflags -fpermissive
 	econf \
 		$(use_enable clock) \
 		$(use_enable outputs) \

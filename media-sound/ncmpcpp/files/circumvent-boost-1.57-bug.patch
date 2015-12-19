@@ -1,0 +1,52 @@
+diff --git a/src/interfaces.h b/src/interfaces.h
+index 97329fb..37485b4 100644
+--- a/src/interfaces.h
++++ b/src/interfaces.h
+@@ -21,6 +21,8 @@
+ #ifndef NCMPCPP_INTERFACES_H
+ #define NCMPCPP_INTERFACES_H
+ 
++#include <boost/iterator/iterator_facade.hpp>
++using namespace boost::iterators::detail;
+ #include <boost/range/detail/any_iterator.hpp>
+ #include <boost/tuple/tuple.hpp>
+ #include <string>
+diff --git a/src/menu.h b/src/menu.h
+index c7410bc..f6d5ca0 100644
+--- a/src/menu.h
++++ b/src/menu.h
+@@ -23,6 +23,8 @@
+ 
+ #include <boost/iterator/indirect_iterator.hpp>
+ #include <boost/iterator/transform_iterator.hpp>
++#include <boost/iterator/iterator_facade.hpp>
++using namespace boost::iterators::detail;
+ #include <boost/range/detail/any_iterator.hpp>
+ #include <cassert>
+ #include <functional>
+diff --git a/src/search_engine.cpp b/src/search_engine.cpp
+index 222e93e..9140af0 100644
+--- a/src/search_engine.cpp
++++ b/src/search_engine.cpp
+@@ -19,6 +19,8 @@
+  ***************************************************************************/
+ 
+ #include <array>
++#include <boost/iterator/iterator_facade.hpp>
++using namespace boost::iterators::detail;
+ #include <boost/range/detail/any_iterator.hpp>
+ #include <iomanip>
+ 
+diff --git a/src/song_list.h b/src/song_list.h
+index 17c67de..0311a01 100644
+--- a/src/song_list.h
++++ b/src/song_list.h
+@@ -21,6 +21,8 @@
+ #ifndef NCMPCPP_SONG_LIST_H
+ #define NCMPCPP_SONG_LIST_H
+ 
++#include <boost/iterator/iterator_facade.hpp>
++using namespace boost::iterators::detail;
+ #include <boost/range/detail/any_iterator.hpp>
+ #include <boost/tuple/tuple.hpp>
+ #include "menu.h"

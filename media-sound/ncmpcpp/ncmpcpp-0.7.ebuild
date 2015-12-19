@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit eutils
+inherit eutils flag-o-matic
 
 DESCRIPTION="featureful ncurses based MPD client inspired by ncmpc"
 HOMEPAGE="http://ncmpcpp.rybczak.net/"
@@ -15,7 +15,6 @@ KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="clock curl outputs taglib unicode visualizer"
 
 RDEPEND="
-	!dev-libs/boost:0/1.57.0
 	>=media-libs/libmpdclient-2.1
 	dev-libs/boost:=[nls,threads]
 	sys-libs/ncurses:=[unicode?]
@@ -31,11 +30,13 @@ DEPEND="
 "
 
 src_prepare() {
+	epatch ${FILESDIR}/circumvent-boost-1.57-bug.patch
 	sed -i -e '/^docdir/d' {,doc/}Makefile{.am,.in} || die
 	sed -i -e 's|COPYING||g' Makefile{.am,.in} || die
 }
 
 src_configure() {
+	append-cxxflags -fpermissive
 	econf \
 		$(use_enable clock) \
 		$(use_enable outputs) \
