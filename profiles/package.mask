@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (21 Dec 2015)
+# Preparation for the Perl 5.22.1 version bump; work in
+# progress
+=dev-lang/perl-5.22.1
+=virtual/perl-Module-CoreList-5.201.512.130
+=virtual/perl-Storable-2.530.100
+
 # Michał Górny <mgorny@gentoo.org> (18 Dec 2015)
 # Contains privilege escalation vulnerability that could be used to
 # execute random Python code passed via D-Bus as root. Bug #568644.
