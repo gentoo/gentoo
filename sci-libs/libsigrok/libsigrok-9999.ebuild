@@ -24,6 +24,7 @@ IUSE="ftdi serial static-libs test usb"
 # We also support librevisa, but that isn't in the tree ...
 LIB_DEPEND=">=dev-libs/glib-2.32.0[static-libs(+)]
 	>=dev-libs/libzip-0.8[static-libs(+)]
+	dev-cpp/glibmm:2[static-libs(+)]
 	ftdi? ( >=dev-embedded/libftdi-0.16[static-libs(+)] )
 	serial? ( dev-libs/libserialport[static-libs(+)] )
 	usb? ( virtual/libusb:1[static-libs(+)] )"
