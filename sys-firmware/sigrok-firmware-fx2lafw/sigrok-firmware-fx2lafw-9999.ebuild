@@ -24,7 +24,7 @@ IUSE="binary"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-	!binary? ( >=dev-embedded/sdcc-2.9.0 )"
+	!binary? ( >=dev-embedded/sdcc-2.9.0[device-lib(+),mcs51(+)] )"
 
 src_unpack() {
 	[[ ${PV} == "9999" ]] && git-2_src_unpack || default

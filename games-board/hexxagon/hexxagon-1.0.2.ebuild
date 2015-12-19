@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit eutils games
+inherit eutils flag-o-matic games
 
 DESCRIPTION="Clone of the original DOS game"
 HOMEPAGE="http://www.nesqi.se/"
@@ -19,6 +19,10 @@ RDEPEND="dev-cpp/glibmm:2
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+src_prepare() {
+	append-cxxflags -std=c++11
+}
 
 src_install() {
 	emake DESTDIR="${D}" install

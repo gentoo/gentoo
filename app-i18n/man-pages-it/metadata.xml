@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-<email>maintainer-needed@gentoo.org</email>
-</maintainer>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>axelgenus@gmail.com</email>
+		<name>Alessandro Calorì</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>giulio@pluto.it</email>
+		</maintainer>
+	</upstream>
+	<longdescription lang="en">
+		A somewhat comprehensive collection of Italian Linux man pages.
+	</longdescription>
 </pkgmetadata>

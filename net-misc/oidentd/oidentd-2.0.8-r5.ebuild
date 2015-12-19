@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,8 @@ IUSE="debug ipv6 masquerade"
 
 src_prepare() {
 	epatch "${FILESDIR}/${P}-masquerading.patch" \
-		"${FILESDIR}/${P}-bind-to-ipv6-too.patch"
+		"${FILESDIR}/${P}-bind-to-ipv6-too.patch" \
+		"${FILESDIR}/${P}-gcc5.patch"
 }
 
 src_configure() {

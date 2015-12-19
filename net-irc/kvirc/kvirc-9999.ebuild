@@ -5,17 +5,34 @@
 EAPI="5"
 PYTHON_DEPEND="python? 2"
 
-inherit cmake-utils flag-o-matic git-r3 multilib python
+inherit cmake-utils flag-o-matic multilib python
+
+if [[ "${PV}" == "9999" ]]; then
+	inherit git-r3
+
+	EGIT_REPO_URI="https://github.com/kvirc/KVIrc"
+	KVIRC_GIT_REVISION=""
+	KVIRC_GIT_SOURCES_DATE=""
+else
+	inherit vcs-snapshot
+
+	KVIRC_GIT_REVISION=""
+	KVIRC_GIT_SOURCES_DATE="${PV#*_pre}"
+	KVIRC_GIT_SOURCES_DATE="$(printf "%04u-%02u-%02u" ${KVIRC_GIT_SOURCES_DATE:0:4} ${KVIRC_GIT_SOURCES_DATE:4:2} ${KVIRC_GIT_SOURCES_DATE:6:2})"
+fi
 
 DESCRIPTION="Advanced IRC Client"
-HOMEPAGE="http://www.kvirc.net/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/kvirc/KVIrc"
+HOMEPAGE="http://www.kvirc.net/ https://github.com/kvirc/KVIrc"
+if [[ "${PV}" == "9999" ]]; then
+	SRC_URI=""
+else
+	SRC_URI="https://github.com/kvirc/KVIrc/archive/${KVIRC_GIT_REVISION}.tar.gz -> ${P}.tar.gz"
+fi
 
 LICENSE="kvirc"
 SLOT="4"
 KEYWORDS=""
-IUSE="audiofile dcc_video +dcc_voice debug doc gsm +ipc ipv6 kde +nls oss +perl +phonon profile +python +qt-dbus spell +ssl theora +transparency webkit"
+IUSE="audiofile +dbus dcc_video +dcc_voice debug doc gsm +ipc ipv6 kde +nls oss +perl +phonon profile +python spell +ssl theora +transparency webkit"
 
 RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -26,8 +43,10 @@ RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
-	sys-libs/zlib
+	sys-libs/zlib:0=
 	x11-libs/libX11
+	audiofile? ( media-libs/audiofile )
+	dbus? ( dev-qt/qtdbus:5 )
 	dcc_video? ( dev-qt/qtmultimedia:5[widgets] )
 	kde? (
 		kde-frameworks/kcoreaddons:5
@@ -37,12 +56,10 @@ RDEPEND="dev-qt/qtcore:5
 		kde-frameworks/kwindowsystem:5
 		kde-frameworks/kxmlgui:5
 	)
-	oss? ( audiofile? ( media-libs/audiofile ) )
 	perl? ( dev-lang/perl )
 	phonon? ( media-libs/phonon:0[qt5] )
-	qt-dbus? ( dev-qt/qtdbus:5 )
 	spell? ( app-text/enchant )
-	ssl? ( dev-libs/openssl )
+	ssl? ( dev-libs/openssl:0= )
 	theora? (
 		media-libs/libogg
 		media-libs/libtheora
@@ -52,9 +69,9 @@ RDEPEND="dev-qt/qtcore:5
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-proto/scrnsaverproto
+	doc? ( app-doc/doxygen )
 	kde? ( kde-frameworks/extra-cmake-modules:5 )
-	nls? ( sys-devel/gettext )
-	doc? ( app-doc/doxygen )"
+	nls? ( sys-devel/gettext )"
 RDEPEND="${RDEPEND}
 	gsm? ( media-sound/gsm )"
 REQUIRED_USE="audiofile? ( oss )"
@@ -69,8 +86,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	KVIRC_GIT_REVISION="$(git show -s --format=%H)"
-	KVIRC_GIT_SOURCES_DATE="$(git show -s --format=%cd --date=short)"
+	if [[ "${PV}" == "9999" ]]; then
+		KVIRC_GIT_REVISION="$(git show -s --format=%H)"
+		KVIRC_GIT_SOURCES_DATE="$(git show -s --format=%cd --date=short)"
+	fi
 	einfo "Setting of revision number to ${KVIRC_GIT_REVISION} ${KVIRC_GIT_SOURCES_DATE}"
 	sed -e "/#define KVI_DEFAULT_FRAME_CAPTION/s/KVI_VERSION/& \" (${KVIRC_GIT_REVISION} ${KVIRC_GIT_SOURCES_DATE})\"/" -i src/kvirc/ui/KviMainWindow.cpp || die "Setting of revision number failed"
 }
@@ -88,6 +107,7 @@ src_configure() {
 		-DWANT_ENV_FLAGS=1
 		-DWANT_VERBOSE=1
 		$(cmake-utils_use_want audiofile AUDIOFILE)
+		$(cmake-utils_use_want dbus QTDBUS)
 		$(cmake-utils_use_want dcc_video DCC_VIDEO)
 		$(cmake-utils_use_want dcc_voice DCC_VOICE)
 		$(cmake-utils_use_want debug DEBUG)
@@ -102,7 +122,6 @@ src_configure() {
 		$(cmake-utils_use_want phonon PHONON)
 		$(cmake-utils_use_want profile MEMORY_PROFILE)
 		$(cmake-utils_use_want python PYTHON)
-		$(cmake-utils_use_want qt-dbus QTDBUS)
 		$(cmake-utils_use_want spell SPELLCHECKER)
 		$(cmake-utils_use_want ssl OPENSSL)
 		$(cmake-utils_use_want theora OGG_THEORA)
