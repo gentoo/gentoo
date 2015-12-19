@@ -13,6 +13,8 @@ KEYWORDS="~amd64 ~x86"
 
 # Supported lisps, number 0 is the default
 LISPS=( sbcl cmucl     gcl ecls   clisp clozurecl )
+# Version restrictions, . means no restrictions
+REST=( "<=dev-lisp/sbcl-1.3.0" . . . . . )
 # command name: . means just ${LISP}
 COMS=(  .    lisp      .   ecl    .     ccl       )
 
@@ -25,9 +27,19 @@ RDEPEND="X? ( x11-libs/libXpm x11-libs/libICE )
 n=${#LISPS[*]}
 for ((n--; n > 0; n--)); do
 	LISP=${LISPS[$n]}
-	RDEPEND="${RDEPEND} ${LISP}? ( dev-lisp/${LISP}:= ) !${LISP}? ("
+	if [ "${REST[$n]}" = "." ]; then
+		DEP="dev-lisp/${LISP}"
+	else
+		DEP="${REST[$n]}"
+	fi
+	RDEPEND="${RDEPEND} ${LISP}? ( ${DEP}:= ) !${LISP}? ("
 done
-RDEPEND="${RDEPEND} dev-lisp/${LISPS[0]}:="
+if [ "${REST[0]}" = "." ]; then
+	DEP="dev-lisp/${LISPS[0]}"
+else
+	DEP="${REST[0]}"
+fi
+RDEPEND="${RDEPEND} ${DEP}:="
 n=${#LISPS[*]}
 for ((n--; n > 0; n--)); do
 	RDEPEND="${RDEPEND} )"
