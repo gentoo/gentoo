@@ -419,7 +419,7 @@ _distutils-r1_create_setup_cfg() {
 _distutils-r1_copy_egg_info() {
 	mkdir -p "${BUILD_DIR}" || die
 	# stupid freebsd can't do 'cp -t ${BUILD_DIR} {} +'
-	find -name '*.egg-info' -type d -exec cp -pr {} "${BUILD_DIR}"/ ';' || die
+	find -name '*.egg-info' -type d -exec cp -R -p {} "${BUILD_DIR}"/ ';' || die
 }
 
 # @FUNCTION: distutils-r1_python_compile
