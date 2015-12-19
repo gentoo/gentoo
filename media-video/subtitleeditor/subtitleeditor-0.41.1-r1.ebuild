@@ -65,6 +65,8 @@ src_configure() {
 	# Avoid using --enable-debug as it mocks with CXXFLAGS and LDFLAGS
 	use debug && append-flags -DDEBUG
 
+	append-cxxflags -std=c++11
+
 	gnome2_src_configure \
 		--disable-debug \
 		$(use_enable nls) \
