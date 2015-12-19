@@ -254,7 +254,7 @@ app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a gi
 app-arch/dump 0.4.44-r1 0.4.44-r2: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.8.0 1.8.0-r1 1.8.1-r1: Engrampa archive manager for MATE
 app-arch/fastjar 0.98-r2 0.98-r3: A jar program written in C
-app-arch/file-roller 3.14.2 3.16.3 3.16.4: Archive manager for GNOME
+app-arch/file-roller 3.14.2 3.16.3 3.16.4 3.16.4-r1: Archive manager for GNOME
 app-arch/freeze 2.5.0-r1: Freeze/unfreeze compression program
 app-arch/funzix 1.0: unpacker for the bogus ZIX format
 app-arch/gcab 0.6: Library and tool for working with Microsoft Cabinet (CAB) files
