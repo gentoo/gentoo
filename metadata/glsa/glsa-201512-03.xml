@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201512-03">
+  <title>GRUB: Authentication bypass</title>
+  <synopsis>GRUB's authentication prompt can be bypassed by entering a sequence
+    of backspace characters.
+  </synopsis>
+  <product type="ebuild">grub</product>
+  <announced>December 19, 2015</announced>
+  <revised>December 19, 2015: 1</revised>
+  <bug>568326</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-boot/grub" auto="no" arch="*">
+      <unaffected range="ge">2.02_beta2-r8</unaffected>
+      <unaffected range="rge">0.97</unaffected>
+      <vulnerable range="lt">2.02_beta2-r8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GNU GRUB is a multiboot boot loader used by most Linux systems.</p>
+  </background>
+  <description>
+    <p>An integer underflow in GRUB’s username/password authentication code
+      has been discovered.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker with access to the system console may bypass the username
+      prompt by entering a sequence of backspace characters, allowing them e.g.
+      to get full access to GRUB’s console or to load a customized kernel.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GRUB 2.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-boot/grub-2.02_beta2-r8"
+    </code>
+    
+    <p>After upgrading, make sure to run the grub2-install command with options
+      appropriate for your system. See the GRUB2 Quick Start guide in the
+      references below for examples. Your system will be vulnerable until this
+      action is performed.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8370">CVE-2015-8370</uri>
+    <uri link="https://wiki.gentoo.org/wiki/GRUB2_Quick_Start">GRUB2 Quick
+      Start guide
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 19 Dec 2015 13:09:44 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 19 Dec 2015 14:20:07 +0000">
+    keytoaster
+  </metadata>
+</glsa>
