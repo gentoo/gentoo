@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<herd>proxy-maintainers</herd>
 	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
+		<email>axelgenus@gmail.com</email>
+		<name>Alessandro Calorì</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">acpiclient</remote-id>
 	</upstream>
+	<longdescription lang="en">
+		Attempts to replicate the functionality of the 'old' apm command
+		on ACPI systems, including battery and thermal information. Does not
+		support ACPI suspending, only displays information about ACPI devices.
+	</longdescription>
 </pkgmetadata>
