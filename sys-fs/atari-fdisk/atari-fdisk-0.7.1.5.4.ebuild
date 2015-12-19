@@ -28,6 +28,7 @@ src_compile() {
 	emake \
 		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
+		CC="$(tc-getCC)" \
 		COMPILE_ARCH=m68k
 }
 
