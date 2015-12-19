@@ -14049,7 +14049,7 @@ net-libs/liblockfile 1.09: Implements functions designed to lock the standard ma
 net-libs/libmapi 1.0: Portable open-source implementations of Exchange protocols
 net-libs/libmbim 1.6.0 1.10.0 1.12.2 9999: MBIM modem protocol helper library
 net-libs/libmediawiki 4.4.0 4.12.0 4.13.0: KDE C++ interface for MediaWiki based web service as wikipedia.org
-net-libs/libmicrohttpd 0.9.42 0.9.45-r1 0.9.46 0.9.47: A small C library that makes it easy to run an HTTP server as part of another application
+net-libs/libmicrohttpd 0.9.42 0.9.45-r1 0.9.46 0.9.47 0.9.48: Small C library to run an HTTP server as part of another application
 net-libs/libmirisdr 9999: Software for the Mirics MSi2500 + MSi001 SDR platform
 net-libs/libmm-qt 1.0.1-r1: Modemmanager bindings for Qt
 net-libs/libmnl 1.0.3-r1: Minimalistic netlink library
@@ -17492,7 +17492,7 @@ www-apps/webdavcgi 0.8.3 0.8.4: A Perl CGI for accessing and sharing files, or c
 www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.2 2.3.3: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
-www-apps/wordpress 4.2.4 4.3 4.3.1: Wordpress PHP and MySQL based content management system (CMS)
+www-apps/wordpress 4.2.4 4.3 4.3.1 4.4: Wordpress PHP and MySQL based content management system (CMS)
 www-client/chromium 47.0.2526.106 48.0.2564.10 48.0.2564.23 48.0.2564.41 49.0.2587.3: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20141005 1.0_pre20150227 1.0_pre20150519: A Mozilla-based web browser whose design is inspired by GNU Emacs
