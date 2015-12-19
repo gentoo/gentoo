@@ -1,0 +1,22 @@
+From ccbd6cf1934056386772debba8583bc9b3721072 Mon Sep 17 00:00:00 2001
+From: Uffe Jakobsen <uffe@uffe.org>
+Date: Mon, 22 Oct 2012 12:03:22 +0200
+Subject: [PATCH] Fix build on FreeBSD (cmake file typo)
+
+---
+ examples/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/examples/CMakeLists.txt b/examples/CMakeLists.txt
+index 6793d89..1263c62 100644
+--- a/examples/CMakeLists.txt
++++ b/examples/CMakeLists.txt
+@@ -2,7 +2,7 @@ option(EXAMPLES "Build example programs" ON)
+ 
+ if (EXAMPLES)
+     # Includes
+-    include( ${CMAKE_CURRENT_SOURCE_DIR}
++    include_directories( ${CMAKE_CURRENT_SOURCE_DIR}
+             ${CMAKE_CURRENT_BINARY_DIR}
+             )
+ 
