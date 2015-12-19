@@ -8554,7 +8554,7 @@ dev-ruby/curb 0.8.8: Ruby-language bindings for libcurl
 dev-ruby/d3_rails 3.5.6 3.5.10: Ruby on Rails integration for the Javascript Data Visualization Framework, D3
 dev-ruby/daemon_controller 1.2.0-r1: A library for starting and stopping specific daemons programmatically in a robust manner
 dev-ruby/daemons 1.2.3: Wrap existing ruby scripts to be run as a daemon
-dev-ruby/dalli 2.6.4 2.7.4 2.7.4-r1: A high performance pure Ruby client for accessing memcached servers
+dev-ruby/dalli 2.6.4 2.7.4 2.7.4-r1 2.7.5: A high performance pure Ruby client for accessing memcached servers
 dev-ruby/database_cleaner 1.4.1 1.5.0 1.5.1: Strategies for cleaning databases
 dev-ruby/date_validator 0.8.0 0.8.1: Simple, ORM agnostic, Ruby 1.9 compatible date validator for Rails 3
 dev-ruby/dbf 2.0.8 2.0.12 2.0.13 3.0.0 3.0.1: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
@@ -8744,7 +8744,7 @@ dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation 
 dev-ruby/nio4r 1.0.1 1.1.0 1.1.1: A high performance selector API for monitoring IO objects
 dev-ruby/nokogiri 1.6.4.1 1.6.6.2 1.6.6.3 1.6.6.4 1.6.7 1.6.7.1: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r1 0.2.0-r2: Calculate the differences (added or removed nodes) between two XML/HTML documents
-dev-ruby/nokogumbo 1.4.1 1.4.6: A Nokogiri interface to the Gumbo HTML5 parser
+dev-ruby/nokogumbo 1.4.1 1.4.6 1.4.7: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
 dev-ruby/ntlm-http 0.1.1-r1 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/oauth 0.4.7-r2: A RubyGem for implementing both OAuth clients and servers
@@ -8787,7 +8787,7 @@ dev-ruby/pygments_rb 0.6.2 0.6.3: Pygments syntax highlighting in ruby
 dev-ruby/qed 2.9.1 2.9.2: QED (Quality Ensured Demonstrations) is a TDD/BDD framework
 dev-ruby/racc 1.4.11 1.4.12 1.4.13 1.4.14: A LALR(1) parser generator for Ruby
 dev-ruby/rack 1.4.7 1.5.5 1.6.4: A modular Ruby webserver interface
-dev-ruby/rack-attack 4.2.0 4.3.0: A DSL for blocking & throttling abusive clients
+dev-ruby/rack-attack 4.2.0 4.3.0 4.3.1: A DSL for blocking & throttling abusive clients
 dev-ruby/rack-cache 1.2-r1 1.3.0 1.5.1: A drop-in component to enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-mount 0.8.3-r2: A stackable dynamic tree based Rack router
 dev-ruby/rack-openid 1.3.1 1.4.2: Provides a more HTTPish API around the ruby-openid library
@@ -16369,7 +16369,7 @@ sys-apps/rsbac-admin 1.4.9: Rule Set Based Access Control (RSBAC) Admin Tools
 sys-apps/s390-tools 1.17.0 1.23.1: User space utilities for the zSeries (s390) Linux kernel and device drivers
 sys-apps/s6 2.1.3.0: skarnet.org's small and secure supervision software suite
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
-sys-apps/sandbox 1.6-r2 2.3-r1 2.4 2.5 2.6-r1 2.7 2.8 2.9: sandbox'd LD_PRELOAD hack
+sys-apps/sandbox 1.6-r2 2.3-r1 2.4 2.5 2.6-r1 2.7 2.8 2.9 2.10: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.07 1.08-r1 1.09: Utility to output and modify parameters on a SCSI device, like hdparm
 sys-apps/secilc 9999: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.2.1-r1 4.2.2: Super-useful stream editor
