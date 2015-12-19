@@ -5042,7 +5042,7 @@ dev-ml/oasis 0.3.0 0.4.1 0.4.4 0.4.5: OASIS is a tool to integrate a configure, 
 dev-ml/ocaml-augeas 0.5: Ocaml bindings for Augeas
 dev-ml/ocaml-autoconf 1.1: autoconf macros to support configuration of OCaml programs and libraries
 dev-ml/ocaml-base64 2.0.0: Library for radix-64 representation (de)coding
-dev-ml/ocaml-cstruct 1.7.0-r3: Map OCaml arrays onto C-like structs
+dev-ml/ocaml-cstruct 1.7.0-r3 1.7.1: Map OCaml arrays onto C-like structs
 dev-ml/ocaml-ctypes 0.4.1-r1: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.10 0.0.11: This project uses type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dns 0.15.3 0.16.0: A pure OCaml implementation of the DNS protocol
@@ -5087,7 +5087,7 @@ dev-ml/pcre-ocaml 6.2.5 7.0.2 7.0.4 7.1.3 7.1.5 7.1.6: Perl Compatibility Regula
 dev-ml/pgocaml 1.7.1 2.1 2.2: PG'OCaml is a set of OCaml bindings for the PostgreSQL database
 dev-ml/pipebang 110.01.00 113.00.00: Syntax extension to transform x |! f into f x
 dev-ml/pomap 3.0.2 3.0.3 3.0.5: Partially Ordered Map ADT for O'Caml
-dev-ml/postgresql-ocaml 2.0.5 2.0.6 3.2.0 3.2.1: A package for ocaml that provides access to PostgreSQL databases
+dev-ml/postgresql-ocaml 2.0.5 2.0.6 3.2.0 3.2.1 3.2.2: A package for ocaml that provides access to PostgreSQL databases
 dev-ml/pxp 1.2.4 1.2.7: validating XML parser library for O'Caml
 dev-ml/qcheck 0.4.0.1: QuickCheck inspired property-based testing for OCaml
 dev-ml/re2 112.35.00 113.00.00: OCaml bindings for RE2
@@ -5109,7 +5109,7 @@ dev-ml/variantslib 109.15.00 109.15.02: OCaml variants as first class values
 dev-ml/xml-light 2.2-r1 2.2-r2 2.2-r3: Minimal Xml parser and printer for OCaml
 dev-ml/xmlm 1.1.1 1.2.0: Ocaml XML manipulation module
 dev-ml/xstr 0.2.1: Thread-safe implementation of string searching/matching/splitting
-dev-ml/yojson 1.2.0 1.2.1 1.2.3: JSON parsing and pretty-printing library for OCaml
+dev-ml/yojson 1.2.0 1.2.1 1.2.3 1.3.0: JSON parsing and pretty-printing library for OCaml
 dev-ml/zarith 1.3-r1 1.4 1.4.1: Arithmetic and logic operations over arbitrary-precision integers
 dev-ml/zed 1.2 1.4: Zed is an abstract engine for text edition
 dev-perl/Ace 1.920.0-r1: Object-Oriented Access to ACEDB Databases
@@ -7725,7 +7725,7 @@ dev-python/python-socketio 0.7.0: Python implementation of the Socket.IO realtim
 dev-python/python-sqlparse 0.1.10 0.1.13 0.1.14 0.1.15 0.1.16 0.1.18: A non-validating SQL parser module for Python
 dev-python/python-stdnum 0.9 1.1: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 2.0.3 2.1.0 2.2.0-r1: Python bindings to the OpenStack Object Storage API
-dev-python/python-systemd 230: Python module for native access to the systemd facilities
+dev-python/python-systemd 230 231: Python module for native access to the systemd facilities
 dev-python/python-termstyle 0.1.10: console colouring for python
 dev-python/python-troveclient 1.0.5 1.3.0: This is a client for the OpenStack Trove API, a scalable relational database service
 dev-python/python-tvrage 0.4.1: Python client for the tvrage.com XML API
@@ -15757,7 +15757,7 @@ sci-mathematics/fann 2.1.0_beta-r1 2.2.0: Fast Artificial Neural Network Library
 sci-mathematics/flint 2.3 2.4.3 2.4.4-r1 2.4.5: Fast Library for Number Theory
 sci-mathematics/form 4.1: Symbolic Manipulation System
 sci-mathematics/freemat 4.2: Environment for rapid engineering and scientific processing
-sci-mathematics/fricas 1.2.6 1.2.7: FriCAS is a fork of Axiom computer algebra system
+sci-mathematics/fricas 1.2.7-r1: FriCAS is a fork of Axiom computer algebra system
 sci-mathematics/frobby 0.9.0-r1: Software system and project for computations with monomial ideals
 sci-mathematics/genius 1.0.17 1.0.19: Genius Mathematics Tool and the GEL Language
 sci-mathematics/geogebra 4.1.120.0: Mathematics software for geometry
