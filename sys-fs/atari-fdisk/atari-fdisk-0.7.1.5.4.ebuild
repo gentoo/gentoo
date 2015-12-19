@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI="5"
+
 inherit versionator toolchain-funcs
 
 MY_PV=$(get_version_component_range 1-3)
@@ -15,16 +17,13 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 m68k ~mips ~ppc ~s390 ~sh ~sparc ~x86"
 IUSE=""
 
-DEPEND=""
-
 S=${WORKDIR}/${PN}-${MY_PV}
 
 src_compile() {
 	emake \
 		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
-		COMPILE_ARCH=m68k \
-		|| die
+		COMPILE_ARCH=m68k
 }
 
 src_install() {
@@ -33,10 +32,10 @@ src_install() {
 
 	into /
 	if [[ $(tc-arch) == "m68k" ]] ; then
-		dosbin fdisk || die "sbin fdisk failed"
+		dosbin fdisk
 		dosym fdisk /sbin/atari-fdisk
 		dosym atari-fdisk.8 /usr/share/man/man8/fdisk.8
 	else
-		dosbin atari-fdisk || die "sbin atari-fdisk failed"
+		dosbin atari-fdisk
 	fi
 }
