@@ -7,7 +7,8 @@ inherit eutils
 
 DESCRIPTION="lcd-stuff is a client for lcdproc that displays RSS, Weather, MPD and new mail"
 HOMEPAGE="http://lcd-stuff.berlios.de/"
-SRC_URI="mirror://berlios/${PN}/${P}.tar.bz2"
+#SRC_URI="mirror://berlios/${PN}/${P}.tar.bz2"
+SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 KEYWORDS="amd64 x86"
 SLOT="0"

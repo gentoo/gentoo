@@ -10,7 +10,8 @@ inherit python autotools user eutils
 
 DESCRIPTION="GPS daemon and library to support USB/serial GPS devices and various GPS/mapping clients"
 HOMEPAGE="http://gpsd.berlios.de/"
-SRC_URI="mirror://berlios/gpsd/${P}.tar.gz"
+#SRC_URI="mirror://berlios/gpsd/${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

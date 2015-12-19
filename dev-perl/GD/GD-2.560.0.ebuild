@@ -2,28 +2,29 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=LDS
-MODULE_VERSION=2.50
+DIST_AUTHOR=LDS
+DIST_VERSION=2.56
 inherit perl-module
 
-DESCRIPTION="interface to Thomas Boutell's gd library"
+DESCRIPTION="Interface to Thomas Boutell's gd library"
 
-LICENSE="|| ( Artistic-2 GPL-1 GPL-2 GPL-3 )" # Artistic-2 or GPL1+
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="animgif gif jpeg png truetype xpm"
 
-RDEPEND=">=media-libs/gd-2.0.33
+RDEPEND="
+	virtual/perl-Math-Complex
+	>=media-libs/gd-2.0.33
 	png? (
 		media-libs/gd[png]
-		media-libs/libpng
+		media-libs/libpng:0
 		sys-libs/zlib
 	)
 	jpeg? (
 		media-libs/gd[jpeg]
-		virtual/jpeg
+		virtual/jpeg:0
 	)
 	truetype? (
 		media-libs/gd[truetype]
@@ -33,12 +34,14 @@ RDEPEND=">=media-libs/gd-2.0.33
 		media-libs/gd[xpm]
 		x11-libs/libXpm
 	)
-	gif? ( media-libs/giflib )"
+	gif? ( media-libs/giflib )
+"
 DEPEND="${RDEPEND}
-	dev-perl/Module-Build
+	virtual/perl-ExtUtils-CBuilder
+	virtual/perl-ExtUtils-MakeMaker
 "
 
-SRC_TEST=do
+PREFER_BUILDPL="no"
 
 src_prepare(){
 	perl-module_src_prepare
@@ -50,7 +53,7 @@ src_configure() {
 	local myconf
 	use gif && use animgif && myconf+=",ANIMGIF"
 	use jpeg && myconf+=",JPEG"
-	use truetype && myconf+=",FREETYPE"
+	use truetype && myconf+=",FT"
 	use png && myconf+=",PNG"
 	use xpm && myconf+=",XPM"
 	use gif && myconf+=",GIF"

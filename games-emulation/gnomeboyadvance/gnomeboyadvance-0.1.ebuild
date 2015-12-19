@@ -8,7 +8,8 @@ inherit python games
 
 DESCRIPTION="A GNOME Python frontend to VisualBoyAdvance"
 HOMEPAGE="http://developer.berlios.de/projects/gnomeboyadvance/"
-SRC_URI="mirror://berlios/${PN}/${P}.tar.bz2"
+#SRC_URI="mirror://berlios/${PN}/${P}.tar.bz2"
+SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

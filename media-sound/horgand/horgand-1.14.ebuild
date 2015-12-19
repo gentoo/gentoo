@@ -7,7 +7,8 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="Opensource software organ"
 HOMEPAGE="http://horgand.berlios.de"
-SRC_URI="mirror://berlios/${PN}/${P}.tar.gz"
+#SRC_URI="mirror://berlios/${PN}/${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

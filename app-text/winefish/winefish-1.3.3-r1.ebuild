@@ -10,7 +10,8 @@ MY_PV=${PV/%[[:alpha:]]/}
 
 DESCRIPTION="LaTeX editor based on Bluefish"
 HOMEPAGE="http://winefish.berlios.de/"
-SRC_URI="mirror://berlios/${PN}/${P}.tgz"
+#SRC_URI="mirror://berlios/${PN}/${P}.tgz"
+SRC_URI="mirror://gentoo/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
