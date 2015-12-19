@@ -32,6 +32,7 @@ RDEPEND="!static-libs? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	static-libs? ( ${LIB_DEPEND} )"
 DEPEND="${LIB_DEPEND//\[static-libs(+)]}
 	test? ( >=dev-libs/check-0.9.4 )
+	>=dev-lang/swig-3.0.6
 	virtual/pkgconfig"
 
 src_prepare() {
