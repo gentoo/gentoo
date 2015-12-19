@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-inherit autotools-utils
+EAPI=5
+inherit autotools-utils flag-o-matic
 
 DESCRIPTION="A generic touchscreen calibration program for X.Org"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/xinput_calibrator"
@@ -23,6 +23,8 @@ DEPEND="x11-libs/libX11
 RDEPEND="${DEPEND}"
 
 src_configure() {
+	append-cxxflags -std=c++11 #566594
+
 	local myeconfargs=(
 		--with-gui=$(use gtk && echo "gtkmm" || echo "x11")
 	)

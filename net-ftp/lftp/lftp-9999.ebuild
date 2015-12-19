@@ -83,7 +83,7 @@ src_configure() {
 
 src_install() {
 	# FIXME: MKDIR_P is not getting picked up in po/Makefile
-	emake DESTDIR="${D}" mkdir_p="mkdir -p"
+	emake DESTDIR="${D}" mkdir_p="mkdir -p" install
 
 	local script
 	for script in {convert-mozilla-cookies,verify-file}; do
