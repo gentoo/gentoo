@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+inherit flag-o-matic
 
 DESCRIPTION="Pulseaudio Volume Control, GTK based mixer for Pulseaudio"
 HOMEPAGE="http://freedesktop.org/software/pulseaudio/pavucontrol/"
@@ -29,6 +30,7 @@ DEPEND="${RDEPEND}
 "
 
 src_configure() {
+	append-cxxflags -std=c++11 #567216
 	econf \
 		--docdir=/usr/share/doc/${PF} \
 		--htmldir=/usr/share/doc/${PF}/html \
