@@ -30,7 +30,7 @@ media-gfx/graphviz python
 dev-qt/qtcore icu
 
 # Required by kde-plasma/kwin
-media-libs/mesa egl
+media-libs/mesa egl wayland
 
 # Allow certain KDE 4 components to be coinstalled with Plasma 5
 <dev-util/kdevelop-4.8.0 -gdbui

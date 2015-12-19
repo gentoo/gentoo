@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -66,5 +66,7 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
-	python_fix_shebang "${ED}"/usr/bin
+	if use python; then
+		python_fix_shebang "${ED}"/usr/bin
+	fi
 }

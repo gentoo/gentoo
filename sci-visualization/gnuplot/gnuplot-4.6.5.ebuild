@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -33,19 +33,19 @@ RDEPEND="
 	cairo? (
 		x11-libs/cairo
 		x11-libs/pango )
-	gd? ( >=media-libs/gd-2.0.35-r3[png] )
+	gd? ( >=media-libs/gd-2.0.35-r3:2=[png] )
 	ggi? ( media-libs/libggi )
 	latex? (
 		virtual/latex-base
 		lua? (
 			dev-tex/pgf
 			>=dev-texlive/texlive-latexrecommended-2008-r2 ) )
-	lua? ( dev-lang/lua )
+	lua? ( dev-lang/lua:0 )
 	plotutils? ( media-libs/plotutils )
 	qt4? ( >=dev-qt/qtcore-4.5:4
 		>=dev-qt/qtgui-4.5:4
 		>=dev-qt/qtsvg-4.5:4 )
-	readline? ( sys-libs/readline )
+	readline? ( sys-libs/readline:0 )
 	svga? ( media-libs/svgalib )
 	wxwidgets? (
 		x11-libs/wxGTK:2.8[X]

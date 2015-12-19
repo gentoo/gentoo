@@ -1,0 +1,96 @@
+From 86f039f8c78f87edd6346265010abc679d9283a9 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Fri, 18 Dec 2015 12:14:08 +0200
+Subject: [PATCH] build: allow installing man(1) even with --disable-doc
+
+Currently these man pages are installed only if --enable-doc
+is provided, while these are not actually docs, do not require any
+special dependency, nor consume large space.
+
+This adds --enable-manpages to enable/disable manpages installation, and
+install the man(1) regardless of --disable-doc.
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+Signed-off-by: Nikos Mavrogiannopoulos <nmav@redhat.com>
+
+---
+ Makefile.am              |  4 ++++
+ configure.ac             | 11 +++++++++++
+ doc/Makefile.am          |  2 +-
+ doc/manpages/Makefile.am |  2 ++
+ 5 files changed, 19 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 19fcb90..b94af06 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -42,6 +42,10 @@ if HAVE_GUILE
+ SUBDIRS += guile
+ endif
+ 
++if ENABLE_MANPAGES
++SUBDIRS += doc/manpages
++endif
++
+ if ENABLE_DOC
+ SUBDIRS += doc
+ endif
+diff --git a/configure.ac b/configure.ac
+index e634236..0b1625b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -51,6 +51,16 @@ AC_ARG_ENABLE(doc,
+     enable_doc=$enableval, enable_doc=yes)
+ AM_CONDITIONAL(ENABLE_DOC, test "$enable_doc" != "no")
+ 
++AC_ARG_ENABLE(manpages,
++  AS_HELP_STRING([--enable-manpages], [install manpages even if disable-doc is given]),
++    enable_manpages=$enableval,enable_manpages=auto)
++
++if test "${enable_manpages}" = "auto";then
++  enable_manpages="${enable_doc}"
++fi
++
++AM_CONDITIONAL(ENABLE_MANPAGES, test "$enable_manpages" != "no")
++
+ AC_ARG_ENABLE(tools,
+   AS_HELP_STRING([--disable-tools], [don't compile any tools]),
+     enable_tools=$enableval, enable_tools=yes)
+@@ -920,6 +930,7 @@ AC_MSG_NOTICE([summary of build options:
+   Local libopts:        ${included_libopts}
+   Local libtasn1:       ${included_libtasn1}
+   Use nettle-mini:      ${mini_nettle}
++  Documentation:        ${enable_doc} (manpages: ${enable_manpages})
+ ])
+ 
+ AC_MSG_NOTICE([External hardware support:
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+index 1e99dd0..05c2188 100644
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -24,7 +24,7 @@ EXTRA_DIST = TODO certtool.cfg gnutls.pdf gnutls.html	\
+ 	gnutls-guile.pdf gnutls-guile.html stamp_enums stamp_functions \
+ 	doc.mk
+ 
+-SUBDIRS = examples cyclo scripts manpages credentials latex
++SUBDIRS = examples cyclo scripts credentials latex
+ if ENABLE_GTK_DOC
+ SUBDIRS += reference
+ endif
+diff --git a/doc/manpages/Makefile.am b/doc/manpages/Makefile.am
+index 8a1613d..10365a9 100644
+--- a/doc/manpages/Makefile.am
++++ b/doc/manpages/Makefile.am
+@@ -1127,7 +1127,9 @@ APIMANS += gnutls_x509_trust_list_verify_crt.3
+ APIMANS += gnutls_x509_trust_list_verify_crt2.3
+ APIMANS += gnutls_x509_trust_list_verify_named_crt.3
+ 
++if ENABLE_DOC
+ dist_man_MANS += $(APIMANS)
++endif
+ 
+ $(APIMANS): stamp_mans
+ 
+-- 
+2.4.10
+

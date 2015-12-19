@@ -39,6 +39,10 @@ src_prepare() {
 	sed -e "/^SUBDIRS/s/doc//" -i Makefile.in || die
 }
 
+src_compile() {
+	autotools-utils_src_compile CXXFLAGS+=-std=c++11 #566456
+}
+
 src_install() {
 	autotools-utils_src_install docdir="/usr/share/doc/${PF}"
 

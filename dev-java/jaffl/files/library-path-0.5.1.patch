@@ -1,9 +1,0 @@
---- src/com/kenai/jaffl/provider/Library.java	2010-06-04 10:55:00.000000000 +1200
-+++ src/com/kenai/jaffl/provider/Library.java	2010-06-04 10:55:49.000000000 +1200
-@@ -53,5 +53,6 @@
-         userLibraryPath.addAll(getPropertyPaths("jaffl.library.path"));
-         // Add JNA paths for compatibility
-         userLibraryPath.addAll(getPropertyPaths("jna.library.path"));
-+	userLibraryPath.addAll(getPropertyPaths("java.library.path"));
-     }
- }

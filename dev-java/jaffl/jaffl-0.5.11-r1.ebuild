@@ -16,7 +16,7 @@ SRC_URI="https://github.com/jnr/jnr-ffi/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 CDEPEND="
 	dev-java/asm:3
@@ -39,6 +39,11 @@ DEPEND="
 
 JAR_VERSION=$(get_version_component_range 1-2)
 
+PATCHES=(
+	"${FILESDIR}"/${P}-library-path.patch
+	"${FILESDIR}"/${P}-GNUmakefile.patch
+)
+
 src_unpack() {
 	default
 	mv * "${P}" || die
@@ -48,8 +53,7 @@ java_prepare() {
 	# Don't choke on errors from generating the Javadoc
 	cd "${S}" || die
 
-	epatch "${FILESDIR}"/${P}-library-path.patch
-	epatch "${FILESDIR}"/${P}-GNUmakefile.patch
+	epatch "${PATCHES[@]}"
 
 	rm -vf lib/{.,junit*}/*.jar || die
 
@@ -83,7 +87,7 @@ src_test() {
 }
 
 src_install() {
-	java-pkg_newjar dist/${PN}-${JAR_VERSION}.jar
+	java-pkg_newjar "dist/${PN}-${JAR_VERSION}.jar"
 
 	use doc && java-pkg_dojavadoc dist/javadoc
 	use source && java-pkg_dosrc src/*

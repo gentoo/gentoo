@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
-inherit autotools-utils fdo-mime gnome2-utils eutils
+inherit autotools-utils fdo-mime flag-o-matic gnome2-utils eutils
 
 DESCRIPTION="Periodic table viewer that provides detailed information on the chemical elements"
 HOMEPAGE="http://freecode.com/projects/gelemental/"
@@ -45,6 +45,7 @@ PATCHES=(
 AUTOTOOLS_IN_SOURCE_BUILD=1
 
 src_configure() {
+	append-cxxflags -std=c++11 #566450
 	local myeconfargs=( $(use_enable doc api-docs) )
 	autotools-utils_src_configure
 }

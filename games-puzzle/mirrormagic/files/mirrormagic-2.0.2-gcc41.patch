@@ -1,5 +1,5 @@
---- src/main.h.old	2006-05-19 22:24:24.000000000 +0200
-+++ src/main.h	2006-05-19 22:25:57.000000000 +0200
+--- src/main.h.old
++++ src/main.h
 @@ -459,7 +459,6 @@
  #endif
  extern struct HiScore		highscore[];
