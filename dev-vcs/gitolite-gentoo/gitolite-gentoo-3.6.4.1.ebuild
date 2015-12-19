@@ -28,7 +28,7 @@ DEPEND="dev-lang/perl
 	virtual/perl-File-Temp
 	>=dev-vcs/git-1.6.6"
 RDEPEND="${DEPEND}
-	!dev-vcs/gitolite-gentoo
+	!dev-vcs/gitolite
 	vim-syntax? ( app-vim/gitolite-syntax )
 	selinux? ( sec-policy/selinux-gitosis )
 	>=dev-perl/Net-SSH-AuthorizedKeysFile-0.17
