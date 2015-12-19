@@ -2814,7 +2814,7 @@ dev-cpp/libbinio 1.4: Binary I/O stream class library
 dev-cpp/libcmis 0.5.0 0.5.0-r1 9999: C++ client library for the CMIS interface
 dev-cpp/libcult 1.4.6-r1: A collection of C++ libraries
 dev-cpp/libfrontend-elements 1.1.4: A collection of elementary building blocks for implementing compiler frontends in c++
-dev-cpp/libglademm 2.6.7 2.6.7-r1: C++ bindings for libglade
+dev-cpp/libglademm 2.6.7-r1 2.6.7-r2: C++ bindings for libglade
 dev-cpp/libgnomecanvasmm 2.26.0-r1: C++ bindings for libgnomecanvas
 dev-cpp/libgnomemm 2.30.0: C++ bindings for libgnome
 dev-cpp/libgnomeuimm 2.28.0-r1: C++ bindings for libgnomeui
