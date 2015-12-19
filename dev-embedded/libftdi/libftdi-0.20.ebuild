@@ -35,7 +35,7 @@ src_prepare() {
 		-e '/SET(LIB_SUFFIX /d' \
 		CMakeLists.txt || die
 
-	epatch "${FILESDIR}"/${P}-cmake-include.patch
+	epatch "${FILESDIR}"/${P}-cmake-{include,version}.patch
 }
 
 src_configure() {
