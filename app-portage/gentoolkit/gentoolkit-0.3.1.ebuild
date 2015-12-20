@@ -7,7 +7,7 @@ EAPI="5"
 PYTHON_COMPAT=(python{2_7,3_3,3_4,3_5} pypy)
 PYTHON_REQ_USE="xml(+),threads(+)"
 
-inherit distutils-r1
+inherit distutils-r1 eutils
 
 DESCRIPTION="Collection of administration scripts for Gentoo"
 HOMEPAGE="https://www.gentoo.org/proj/en/portage/tools/index.xml"
@@ -28,6 +28,7 @@ RDEPEND="${DEPEND}
 	sys-apps/grep"
 
 python_prepare_all() {
+	epatch "${FILESDIR}/0.3.1-setup.py-print.patch"
 	python_setup
 	echo VERSION="${PVR}" "${PYTHON}" setup.py set_version
 	VERSION="${PVR}" "${PYTHON}" setup.py set_version
