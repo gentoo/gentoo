@@ -8527,7 +8527,7 @@ dev-ruby/cliver 0.3.2: An easy way to detect and use command-line dependencies
 dev-ruby/cmdparse 2.0.6 2.0.6-r1 3.0.1: Advanced command line parser supporting commands
 dev-ruby/cocaine 0.5.5 0.5.7 0.5.8: A small library for doing command lines
 dev-ruby/coderay 1.1.0-r1 1.1.0-r2: A Ruby library for syntax highlighting
-dev-ruby/coffee-rails 3.2.2 4.0.1 4.1.0: Coffee Script adapter for the Rails asset pipeline
+dev-ruby/coffee-rails 3.2.2 4.0.1 4.1.0 4.1.1: Coffee Script adapter for the Rails asset pipeline
 dev-ruby/coffee-script 2.2.0-r1 2.4.1: Ruby CoffeeScript is a bridge to the official CoffeeScript compiler
 dev-ruby/coffee-script-source 1.7.1 1.9.1.1 1.9.3 1.10.0: Ruby CoffeeScript is a bridge to the official CoffeeScript compiler
 dev-ruby/color 1.7.1 1.7.1-r1 1.8: Colour management with Ruby
