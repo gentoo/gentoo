@@ -21,17 +21,20 @@ RDEPEND="
 	media-libs/libart_lgpl
 	x11-libs/libX11
 	x11-libs/libXt
-	kexiv2? ( $(add_kdeapps_dep libkexiv2) )
 	virtual/glu
 	virtual/opengl
+	kexiv2? ( $(add_kdeapps_dep libkexiv2) )
 	xscreensaver? ( x11-misc/xscreensaver )
 "
 DEPEND="${RDEPEND}
 	eigen? ( dev-cpp/eigen:2 )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-xscreensaver.patch"
-	"${FILESDIR}/${PN}-4.5.95-webcollage.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-xscreensaver.patch"
+	"${FILESDIR}/${PN}-4.5.95-webcollage.patch"
+	"${FILESDIR}/${PN}-15.08.3-missing-include.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
