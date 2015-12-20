@@ -5623,7 +5623,7 @@ dev-perl/HTTP-Headers-Fast 0.190.0: Faster implementation of HTTP::Headers
 dev-perl/HTTP-Message 6.30.0-r1 6.40.0-r1 6.60.0-r1: Base class for Request/Response
 dev-perl/HTTP-Negotiate 6.0.1-r1: HTTP content negotiation
 dev-perl/HTTP-Response-Encoding 0.60.0-r1: Adds encoding() to HTTP::Response
-dev-perl/HTTP-Server-Simple 0.440.0-r1 0.500.0: Lightweight HTTP Server
+dev-perl/HTTP-Server-Simple 0.440.0-r1 0.500.0 0.510.0: Lightweight HTTP Server
 dev-perl/HTTP-Server-Simple-Mason 0.140.0-r1: An abstract baseclass for a standalone mason server
 dev-perl/HTTPD-User-Manage 1.660.0-r1: Perl module for managing access control of web servers
 dev-perl/Hash-Merge 0.120.0 0.200.0: Merges arbitrarily deep hashes into a single hash
@@ -5723,7 +5723,7 @@ dev-perl/Locale-Msgfmt 0.150.0-r1: Compile .po files to .mo files
 dev-perl/Locale-PO 0.230.0 0.270.0: Perl module for manipulating .po entries from GNU gettext
 dev-perl/Locale-gettext 1.50.0-r1: A Perl module for accessing the GNU locale utilities
 dev-perl/LockFile-Simple 0.208.0-r1: File locking module for Perl
-dev-perl/Log-Agent 0.307.0-r1 1.0.0: A general logging framework
+dev-perl/Log-Agent 0.307.0-r1 1.0.0 1.1.0: A general logging framework
 dev-perl/Log-Any 0.150.0 1.32.0: Bringing loggers and listeners together
 dev-perl/Log-Dispatch 2.410.0 2.450.0 2.510.0: Dispatches messages to multiple Log::Dispatch::* objects
 dev-perl/Log-Log4perl 1.420.0-r1 1.460.0: Log4j implementation for Perl
