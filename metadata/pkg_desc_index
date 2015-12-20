@@ -5583,7 +5583,7 @@ dev-perl/HTML-Clean 0.800.0-r1: Cleans up HTML code for web browsers, not humans
 dev-perl/HTML-Element-Extended 1.180.0-r1: Extension for manipulating a table composed of HTML::Element style components
 dev-perl/HTML-FillInForm 2.200.0-r1 2.210.0: Populates HTML Forms with data
 dev-perl/HTML-Form 6.30.0-r1: Class that represents an HTML form element
-dev-perl/HTML-Format 2.100.0-r1 2.110.0: HTML Formatter
+dev-perl/HTML-Format 2.100.0-r1 2.110.0 2.140.0: HTML Formatter
 dev-perl/HTML-FormatText-WithLinks 0.140.0 0.150.0: HTML to text conversion with links as footnotes
 dev-perl/HTML-FormatText-WithLinks-AndTables 0.20.0 0.60.0: Converts HTML to text with tables intact
 dev-perl/HTML-FromText 2.50.0-r1: Convert plain text to HTML
@@ -6395,7 +6395,7 @@ dev-perl/enum 1.16.0-r1: C style enumerated types and bitmask flags in Perl
 dev-perl/extutils-pkgconfig 1.140.0 1.150.0: Simplistic perl interface to pkg-config
 dev-perl/forks 0.360.0: Emulate threads with fork
 dev-perl/frontier-rpc 0.07_beta4-r1: Perform remote procedure calls using extensible markup language
-dev-perl/glib-perl 1.301.0 1.305.0 1.310.0 1.313.0: Glib - Perl wrappers for the GLib utility and Object libraries
+dev-perl/glib-perl 1.301.0 1.305.0 1.313.0 1.314.0: Glib - Perl wrappers for the GLib utility and Object libraries
 dev-perl/gnome2-canvas 1.2.0-r1: Perl interface to the Gnome Canvas
 dev-perl/gnome2-perl 1.42.0-r1 1.45.0: Perl interface to the 2.x series of the Gnome libraries
 dev-perl/gnome2-vfs-perl 1.81.0-r1: Perl interface to the 2.x series of the Gnome Virtual File System libraries
