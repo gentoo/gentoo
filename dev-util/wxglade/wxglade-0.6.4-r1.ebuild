@@ -25,8 +25,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 S="${WORKDIR}/${MY_P}"
 
-RESTRICT_PYTHON_ABIS="3.*"
-
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-wxversion.patch
 }
@@ -48,7 +46,7 @@ src_install() {
 
 	python_copy_sources
 
-	installation() {
+	#installation() {
 		pydir=$(python_get_sitedir)/${PN}
 		insinto "${pydir}"
 		doins "${S}"/credits.txt
@@ -58,10 +56,11 @@ src_install() {
 		dosym /usr/share/doc/${PF}/html "${pydir}"/docs
 		#|| die "doc symlink failed"
 		fperms 775 "${pydir}"/wxglade.py
-		dosym "${pydir}"/wxglade.py /usr/bin/wxglade-$(python_get_version)
+		#dosym "${pydir}"/wxglade.py /usr/bin/wxglade
+		#-$(python_get_version)
 		#\ || die "main symlink failed"
-	}
-	python_execute_function -s installation
+	#}
+	#python_execute_function -s installation
 
 	python_generate_wrapper_scripts -E -f -q "${D}"usr/bin/wxglade
 
