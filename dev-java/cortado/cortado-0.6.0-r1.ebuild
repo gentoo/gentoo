@@ -12,7 +12,7 @@ SRC_URI="http://downloads.xiph.org/releases/cortado/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 RDEPEND=">=virtual/jre-1.6"
 DEPEND=">=virtual/jdk-1.6
@@ -21,8 +21,8 @@ DEPEND=">=virtual/jdk-1.6
 EANT_BUILD_TARGET="stripped"
 
 src_prepare() {
-	echo "#!/bin/sh" > scripts/get-revision
-	echo "echo ${PV}"    >> scripts/get-revision
+	echo "#!/bin/sh" > scripts/get-revision || die
+	echo "echo ${PV}" >> scripts/get-revision || die
 }
 
 src_install() {
