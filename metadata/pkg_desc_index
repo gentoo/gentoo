@@ -352,7 +352,7 @@ app-backup/dar 2.3.8 2.4.2 2.4.9 2.4.10 2.4.11 2.4.12 2.4.13 2.4.17: A full feat
 app-backup/deja-dup 32.0-r1 34.0: Simple backup tool using duplicity back-end
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
 app-backup/duplicity 0.6.22 0.6.23-r1 0.6.24 0.6.25 0.6.26: Secure backup system using gnupg to encrypt data
-app-backup/duply 1.9.2 1.10 1.10.1 1.11: A shell frontend for duplicity
+app-backup/duply 1.9.2 1.10 1.10.1 1.11 1.11.1: A shell frontend for duplicity
 app-backup/flexbackup 1.2.1-r12: Flexible backup script using perl
 app-backup/fsarchiver 0.6.19: Flexible filesystem archiver for backup and deployment tool
 app-backup/furball 0.5: A handy backup script utilizing tar
@@ -1048,7 +1048,7 @@ app-editors/pluma 1.8.0 1.8.1: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.0_pre20090420-r1: QEmacs is a very small but powerful UNIX editor
 app-editors/qwriter 0.1.9 0.1.9-r1: Advanced text editor with syntax highlighting
 app-editors/qxmledit 0.8.8.1: Qt4 XML Editor
-app-editors/retext 4.1.3 5.0.2 5.1.0 5.2.0 5.2.1 9999: Simple editor for Markdown and reStructuredText
+app-editors/retext 4.1.3 5.0.2 5.1.0 5.2.0 5.2.1 5.3.0 9999: Simple editor for Markdown and reStructuredText
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
 app-editors/scite 3.5.5 3.6.1: A very powerful editor for programmers
 app-editors/shed 1.12 1.13 1.15: Simple Hex EDitor
@@ -6752,7 +6752,7 @@ dev-python/astng 0.24.3: Abstract Syntax Tree for logilab packages
 dev-python/astor 0.3 0.4 0.4.1 0.5: Read/rewrite/write Python ASTs
 dev-python/astroid 1.3.8 1.4.1: Abstract Syntax Tree for logilab packages
 dev-python/astropy 1.0.4 1.0.6: Core functionality for performing astrophysics with Python
-dev-python/astropy-helpers 0.4.1 1.0.3 1.0.5: Helpers for Astropy and Affiliated packages
+dev-python/astropy-helpers 0.4.1 1.0.3 1.0.5 1.0.6: Helpers for Astropy and Affiliated packages
 dev-python/async 0.6.2: Async Framework
 dev-python/asyncio 3.4.2 3.4.3: reference implementation of PEP 3156
 dev-python/atom 0.3.10: Memory efficient Python objects
@@ -7617,7 +7617,7 @@ dev-python/pysvg 0.2.1-r1: Python SVG document creation library
 dev-python/pysvn 1.7.9 1.7.10 1.8.0: Object-oriented python bindings for subversion
 dev-python/pysyck 0.61.2-r1: Python bindings for the Syck YAML parser and emitter
 dev-python/pytables 3.1.1-r2 3.2.0 3.2.1 3.2.1.1 3.2.2: Hierarchical datasets for Python
-dev-python/pyte 0.4.9: Simple VTXXX-compatible terminal emulator
+dev-python/pyte 0.4.9 0.4.10: Simple VTXXX-compatible terminal emulator
 dev-python/pytest 2.7.2 2.8.2 2.8.3 2.8.4 2.8.5 9999: simple powerful testing with Python
 dev-python/pytest-cache 1.0: mechanisms for caching across test runs
 dev-python/pytest-capturelog 0.7: py.test plugin to capture log messages
@@ -7911,7 +7911,7 @@ dev-python/subunit 1.1.0 1.2.0: A streaming protocol for test results
 dev-python/subvertpy 0.9.1: Alternative Python bindings for Subversion
 dev-python/suds 0.4-r1 0.6 0.6-r1: Lightweight SOAP client (Jurko's fork) (py3 support) (active development)
 dev-python/sudsds 1.0.1-r1: Lightweight SOAP client - Czech NIC labs fork
-dev-python/sure 1.2.3 1.2.5 1.2.5-r1: Utility belt for automated testing in python for python
+dev-python/sure 1.2.3 1.2.5 1.2.5-r1 1.2.24: Utility belt for automated testing in python for python
 dev-python/symboltype 1.0: Gives access to the peak.util.symbols module
 dev-python/sympy 0.7.6.1 0.7.6.1-r1: Computer Algebra System in pure Python
 dev-python/tablib 0.9.11 0.10.0: A format-agnostic tabular dataset library written in Python
@@ -7985,7 +7985,7 @@ dev-python/unidecode 0.04.18: Module providing ASCII transliterations of Unicode
 dev-python/unittest2 1.0.1-r1 1.1.0: The new features in unittest backported to Python 2.4+
 dev-python/uritemplate 0.6: Python implementation of RFC6570, URI Template
 dev-python/urlgrabber 3.9.1-r2 3.10.1: Python module for downloading files
-dev-python/urllib3 1.9.1 1.10 1.10.3 1.10.4 1.12: HTTP library with thread-safe connection pooling, file post, and more
+dev-python/urllib3 1.9.1 1.10 1.10.3 1.10.4 1.12 1.13.1: HTTP library with thread-safe connection pooling, file post, and more
 dev-python/urwid 1.2.2 1.3.0 1.3.1: Curses-based user interface library for Python
 dev-python/utidylib 0.2-r2: TidyLib Python wrapper
 dev-python/utmp 0.4: utmp/wtmp reader
@@ -8022,7 +8022,7 @@ dev-python/websockify 0.6.0 0.7.0: WebSockets support for any application/server
 dev-python/webtest 1.4.3-r1 2.0.16 2.0.17 2.0.18: Helper to test WSGI applications
 dev-python/webut 0.1.0.2 0.1.0.2-r1: Miscellaneous utilities for nevow and twisted.web programming
 dev-python/wehjit 0.2.2-r1: A Python web-widget library
-dev-python/werkzeug 0.9.6 0.10 0.10.1 0.10.4 0.11.1 0.11.2: Collection of various utilities for WSGI applications
+dev-python/werkzeug 0.9.6 0.10 0.10.1 0.10.4 0.11.1 0.11.2 0.11.3: Collection of various utilities for WSGI applications
 dev-python/wheel 0.24.0 0.26.0: A built-package format for Python
 dev-python/whirlpool 0.3-r1: Bindings for whirlpool hash reference implementation
 dev-python/whisper 0.9.13: Fixed size round-robin style database
@@ -10917,7 +10917,7 @@ kde-apps/kdegraphics-mobipocket 4.14.3 15.08.3: Library to support mobipocket eb
 kde-apps/kdemultimedia-meta 4.14.3 15.08.3: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
 kde-apps/kdenetwork-filesharing 4.14.3 15.08.3: kcontrol filesharing config module for SMB
 kde-apps/kdenetwork-meta 4.14.3: kdenetwork - merge this to pull in all kdenetwork-derived packages
-kde-apps/kdenlive 0.9.8 0.9.10 15.08.3: Non-linear video editing suite by KDE
+kde-apps/kdenlive 0.9.8 0.9.10 15.08.3 15.12.0: Non-linear video editing suite by KDE
 kde-apps/kdepasswd 4.14.3 15.08.3: KDE GUI for passwd
 kde-apps/kdepim-l10n 15.08.3: KDE PIM internationalization package
 kde-apps/kdesdk-kioslaves 4.14.3 15.08.3: kioslaves from kdesdk package
@@ -15290,7 +15290,7 @@ sci-chemistry/gamessq 1.2: Simple job manager for GAMESS-US
 sci-chemistry/gelemental 1.2.0 1.2.0-r1: Periodic table viewer that provides detailed information on the chemical elements
 sci-chemistry/ghemical 2.99.2-r2 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-chemistry/gopenmol 3.00-r2 3.00-r3: Tool for the visualization and analysis of molecular structures
-sci-chemistry/gperiodic 2.0.10 2.0.10-r2: Periodic table application for Linux
+sci-chemistry/gperiodic 2.0.10-r2 3.0.1: Periodic table application for Linux
 sci-chemistry/gromacs 5.0.4 5.0.4-r1 5.0.5 5.0.6 5.0.7 5.1 5.1.1: The ultimate molecular dynamics simulation package
 sci-chemistry/gsim 21.3: Programm for visualisation and processing of experimental and simulated NMR spectra
 sci-chemistry/gtk-gamess 2.00: GUI for GAMESS, a General Atomic and Molecular Electronic Structure System
