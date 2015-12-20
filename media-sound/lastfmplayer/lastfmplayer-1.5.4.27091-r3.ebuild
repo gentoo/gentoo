@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit eutils multilib readme.gentoo toolchain-funcs qt4-r2
+inherit eutils multilib readme.gentoo toolchain-funcs qmake-utils qt4-r2
 
 MY_P="${P/lastfmplayer/lastfm}+dfsg"
 
@@ -84,7 +84,7 @@ src_compile() {
 		einfo "Building DBUS plugin"
 		emake -C "${S}"/src/dbus || die "failed to build dbus extension"
 	fi
-	cd i18n; lrelease *.ts
+	cd i18n; "$(qt4_get_bindir)"/lrelease *.ts
 }
 
 src_install() {
