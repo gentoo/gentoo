@@ -26,7 +26,7 @@ RDEPEND="
 	dev-libs/libltdl:0
 	>=media-libs/fontconfig-2.3.95
 	>=media-libs/freetype-2.1.10
-	>=media-libs/gd-2.0.34[fontconfig,jpeg,png,truetype,zlib]
+	>=media-libs/gd-2.0.34:=[fontconfig,jpeg,png,truetype,zlib]
 	>=media-libs/libpng-1.2:0
 	!<=sci-chemistry/cluster-1.3.081231
 	virtual/jpeg:0
