@@ -88,6 +88,11 @@ src_prepare() {
 		-e "s^@libdir@^$(get_libdir)^" \
 		-i lib-python/3/distutils/command/install.py || die
 
+	# apply CPython stdlib patches
+	pushd lib-python/3 > /dev/null || die
+	epatch "${FILESDIR}"/21_all_distutils_c++.patch
+	popd > /dev/null || die
+
 	epatch_user
 }
 
