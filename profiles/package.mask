@@ -30,6 +30,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrick Lauer <patrick@gentoo.org> (20 Dec 2015)
+# Mask TOFU release that doesn't work #567768 and friends
+=app-crypt/gkeys-gen-0.1-r1
+
+# Patrick Lauer <patrick@gentoo.org> (20 Dec 2015)
+# Ebuild uninstallable #557090
+=app-crypt/gkeys-0.1-r1
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (21 Dec 2015)
 # Preparation for the Perl 5.22.1 version bump; work in
 # progress
