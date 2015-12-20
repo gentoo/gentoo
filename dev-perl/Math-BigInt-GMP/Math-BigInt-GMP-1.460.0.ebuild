@@ -15,7 +15,7 @@ KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
 IUSE=""
 
 RDEPEND=">=virtual/perl-Math-BigInt-1.999.709
-	 >=dev-libs/gmp-4.0.0"
+	 >=dev-libs/gmp-4.0.0:0"
 DEPEND="${RDEPEND}"
 
 PERL_RM_FILES=(

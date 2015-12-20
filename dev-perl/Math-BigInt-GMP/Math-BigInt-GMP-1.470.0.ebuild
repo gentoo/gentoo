@@ -17,18 +17,9 @@ IUSE="test"
 RDEPEND="
 	>=virtual/perl-Math-BigInt-1.999.709
 	>=virtual/perl-XSLoader-0.20.0
-	>=dev-libs/gmp-4.0.0
+	>=dev-libs/gmp-4.0.0:0
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? ( >=virtual/perl-Test-Simple-0.470.0 )
 "
-
-#PERL_RM_FILES=(
-#	t/bigfltpm.t
-#	t/bigintpm.t
-#	t/biglog.t
-#)
-#
-
-DIST_TEST="do"
