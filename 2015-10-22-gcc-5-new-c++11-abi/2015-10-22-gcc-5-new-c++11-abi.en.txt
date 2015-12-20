@@ -2,7 +2,7 @@ Title: GCC 5 Defaults to the New C++11 ABI
 Author: Mike Frysinger <vapier@gentoo.org>
 Content-Type: text/plain
 Posted: 2015-10-22
-Revision: 1
+Revision: 2
 News-Item-Format: 1.0
 Display-If-Installed: >=sys-devel/gcc-5
 
@@ -13,7 +13,12 @@ into link time errors that include lines similar to:
 Or you might see linkage failures with "std::__cxx11::string" in the output.
 
 These are signs that you need to rebuild packages using the new C++ ABI.
-You can quickly do so by using revdep-rebuild (from gentoolkit) like so:
+You can quickly do so by using revdep-rebuild (from gentoolkit).
+
+For gentoolkit-0.3.1 or higher:
+# revdep-rebuild --library 'libstdc++.so.6' -- --exclude gcc
+
+For previous versions of gentoolkit:
 # revdep-rebuild --library 'libstdc\+\+\.so\.6' -- --exclude gcc
 
 For more details, feel free to peruse:
