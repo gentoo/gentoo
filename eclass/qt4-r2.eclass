@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,11 +8,13 @@
 # @BLURB: Eclass for Qt4-based packages, second edition.
 # @DESCRIPTION:
 # This eclass contains various functions that may be useful when
-# dealing with packages using Qt4 libraries. Requires EAPI=2 or later.
+# dealing with packages using Qt4 libraries. Supports only EAPIs
+# 2, 3, 4, and 5. Use qmake-utils.eclass in EAPI 6 and later.
 
 case ${EAPI} in
 	2|3|4|5) : ;;
-	*)	 die "qt4-r2.eclass: unsupported EAPI=${EAPI:-0}" ;;
+	6) die "qt4-r2.eclass is banned in EAPI 6 and later" ;;
+	*) die "qt4-r2.eclass: unsupported EAPI=${EAPI:-0}" ;;
 esac
 
 inherit base eutils qmake-utils
