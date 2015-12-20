@@ -5766,7 +5766,7 @@ dev-perl/MailTools 2.120.0-r1 2.140.0: Manipulation of electronic mail addresses
 dev-perl/Math-Base-Convert 0.80.0: Very fast base to base conversion
 dev-perl/Math-Base36 0.120.0-r1 0.140.0: Encoding and decoding of base36 strings
 dev-perl/Math-Bezier 0.10.0-r1: Solution of Bezier Curves
-dev-perl/Math-BigInt-GMP 1.380.0 1.460.0: Use the GMP library for Math::BigInt routines
+dev-perl/Math-BigInt-GMP 1.380.0 1.460.0 1.470.0: Use the GMP library for Math::BigInt routines
 dev-perl/Math-Calc-Units 1.70.0-r1: Human-readable unit-aware calculator
 dev-perl/Math-Derivative 0.10.0-r1: 1st and 2nd order differentiation of data
 dev-perl/Math-GMP 2.60.0-r1: High speed arbitrary size integer math
@@ -14985,7 +14985,7 @@ perl-core/HTTP-Tiny 0.43.0: A small, simple, correct HTTP/1.1 client
 perl-core/IO-Zlib 1.100.0: IO:: style interface to Compress::Zlib
 perl-core/Locale-Maketext-Simple 0.210.0-r1: Locale::Maketext::Simple - Simple interface to Locale::Maketext::Lexicon
 perl-core/MIME-Base64 3.140.0-r1: A base64/quoted-printable encoder/decoder Perl Modules
-perl-core/Math-BigInt 1.999.300: Arbitrary size floating point math package
+perl-core/Math-BigInt 1.999.300 1.999.710: Arbitrary size floating point math package
 perl-core/Math-Complex 1.590.0: complex numbers and associated mathematical functions
 perl-core/Memoize 1.30.0-r1: Generic Perl function result caching system
 perl-core/Module-CoreList 5.201.502.140 5.201.505.200: what modules shipped with versions of perl
@@ -17212,7 +17212,7 @@ virtual/perl-JSON-PP 2.272.30 2.273.0: Virtual for JSON-PP
 virtual/perl-Locale-Maketext 1.250.0 1.260.0: Virtual for Locale-Maketext
 virtual/perl-Locale-Maketext-Simple 0.210.0-r6: Virtual for Locale-Maketext-Simple
 virtual/perl-MIME-Base64 3.140.0-r1 3.150.0: Virtual for MIME-Base64
-virtual/perl-Math-BigInt 1.999.300 1.999.700: Virtual for Math-BigInt
+virtual/perl-Math-BigInt 1.999.300 1.999.700 1.999.710: Virtual for Math-BigInt
 virtual/perl-Math-BigInt-FastCalc 0.310.0-r1: Virtual for Math-BigInt-FastCalc
 virtual/perl-Math-BigRat 0.260.600 0.260.800: Virtual for Math-BigRat
 virtual/perl-Math-Complex 1.590.0-r5: Virtual for Math-Complex
