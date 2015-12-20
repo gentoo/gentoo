@@ -276,12 +276,6 @@ sys-fs/bedup
 # apache-2.4.17 includes support for http2 now.
 www-apache/mod_h2
 
-# Hans de Graaff <graaff@gentoo.org> (11 Oct 2015)
-# Ruby 1.9 is no longer maintained upstream since January
-# 2015, bug 536852.
-# Masked for removal in 30 days.
-=dev-lang/ruby-1.9*
-
 # Mike Pagano <mpagano@gentoo.org> (2 Oct 2015)
 # A regression in kernel 4.1.9 could lead to a system
 # lockup.  This has been fixed in gentoo-sources-4.1.9-r1
