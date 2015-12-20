@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>graphics</herd>
+  <herd>graphics</herd>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>alex_y_xu@yahoo.ca</email>
+    <name>Alex Xu</name>
+    <description>Proxied maintainer</description>
+  </maintainer>
 </pkgmetadata>
