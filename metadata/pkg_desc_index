@@ -2045,25 +2045,9 @@ app-pda/jpilot-mail 0.1.7: jpilot-Mail is a jpilot plugin to deliver mail from t
 app-pda/jpilot-plucker 0.02: Plucker plugin for jpilot
 app-pda/jpilot-syncmal 0.81: Syncmal plugin for jpilot
 app-pda/libimobiledevice 1.1.6: Support library to communicate with Apple iPhone/iPod Touch devices
-app-pda/libopensync 0.22 0.22-r1 0.36-r2 0.39-r1 9999: OpenSync synchronisation framework library
-app-pda/libopensync-plugin-file 0.22 0.36 0.39 9999: OpenSync File Plugin
-app-pda/libopensync-plugin-gnokii 0.22 0.36 9999: OpenSync Gnokii Plugin
-app-pda/libopensync-plugin-gpe 0.22 0.36 9999: OpenSync Gpe Plugin
-app-pda/libopensync-plugin-irmc 0.22 9999: OpenSync IrMC plugin
-app-pda/libopensync-plugin-moto 0.22: Motorola plug-in for OpenSync
-app-pda/libopensync-plugin-palm 0.22 9999: OpenSync Palm Plugin
-app-pda/libopensync-plugin-python 0.22 9999: OpenSync Python Module
-app-pda/libopensync-plugin-sunbird 0.22: OpenSync Sunbird Plugin
-app-pda/libopensync-plugin-synce-rra 0.22.2: OpenSync SynCE RRA Plugin
-app-pda/libopensync-plugin-syncml 0.39 9999: OpenSync SyncML Plugin
-app-pda/libopensync-plugin-vformat 0.39 9999: OpenSync VFormat Plugin
 app-pda/libplist 1.11 1.11-r1: Support library to deal with Apple Property Lists (Binary & XML)
-app-pda/libsyncml 0.5.4 9999: Implementation of the SyncML protocol
 app-pda/libusbmuxd 1.0.9: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
-app-pda/msynctool 0.22: OpenSync msync tool
-app-pda/multisync-gui 0.91.0 0.92.0_pre20080531: OpenSync multisync-gui
 app-pda/orange 0.4: A tool and library for extracting cabs from executable installers
-app-pda/osynctool 0.39 9999: Command line interface for OpenSync
 app-pda/p3nfs 5.19-r2 5.19-r3: Symbian to Unix and Linux communication program
 app-pda/pilot-link 0.12.5-r1: suite of tools for moving data between a Palm device and a desktop
 app-pda/synce-core 0.16-r1: Base libraries, including RAPI protocol, tools and dccm daemon
