@@ -596,7 +596,7 @@ app-crypt/sgeps 0_pre15: simple GnuPG-encrypted password store written in perl
 app-crypt/shash 0.2.6-r2: Generate or check digests or MACs of files
 app-crypt/shishi 1.0.1 1.0.1-r1 1.0.1-r2 1.0.2: A free implementation of the Kerberos 5 network security system
 app-crypt/sign 1.0.7: File signing and signature verification utility
-app-crypt/signing-party 1.1.4 1.1.11-r1 2.0 2.1: A collection of several tools related to OpenPGP
+app-crypt/signing-party 1.1.4 1.1.11-r1 2.0 2.1 2.2: A collection of several tools related to OpenPGP
 app-crypt/simple-tpm-pk11 0.03 0.04: Simple PKCS11 provider for TPM chips
 app-crypt/ssdeep 2.10 2.11.1 2.12 2.13: Computes context triggered piecewise hashes (fuzzy hashes)
 app-crypt/ssh-multiadd 1.3.2 1.3.2-r1: Adds multiple ssh keys to the ssh authentication agent
@@ -10900,8 +10900,8 @@ kde-apps/kdeartwork-iconthemes 4.14.3 15.08.3: Icon themes for kde
 kde-apps/kdeartwork-kscreensaver 4.14.3 15.08.3: Extra screensavers for kde
 kde-apps/kdeartwork-meta 4.14.3 15.08.3: kdeartwork - merge this to pull in all kdeartwork-derived packages
 kde-apps/kdeartwork-styles 4.14.3 15.08.3: Extra KWin styles and window decorations
-kde-apps/kdeartwork-wallpapers 4.14.3 15.08.3: Wallpapers from kde
-kde-apps/kdeartwork-weatherwallpapers 4.14.3 15.08.3: Weather aware wallpapers. Changes with weather outside
+kde-apps/kdeartwork-wallpapers 4.14.3 15.08.3 15.08.3-r1: Wallpapers from kde
+kde-apps/kdeartwork-weatherwallpapers 4.14.3 15.08.3 15.08.3-r1: Weather aware wallpapers. Changes with weather outside
 kde-apps/kdebase-data 4.14.3 4.14.3-r1 15.08.3: Icons, localization data and various .desktop files from kdebase
 kde-apps/kdebase-desktoptheme 4.14.3 15.08.3: Oxygen KDE4 desktop theme
 kde-apps/kdebase-kioslaves 4.14.3 15.08.3: KDE VFS framework - kioslaves present a filesystem-like view of arbitrary data
