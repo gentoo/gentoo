@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-MY_PN=Glib
-MODULE_AUTHOR=XAOC
-MODULE_VERSION=1.310
+DIST_NAME=Glib
+DIST_AUTHOR=XAOC
+DIST_VERSION=1.314
 inherit perl-module
 
 DESCRIPTION="Glib - Perl wrappers for the GLib utility and Object libraries"
@@ -27,5 +27,3 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	dev-perl/Log-Agent
 "
-
-SRC_TEST="do"
