@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 PYTHON_REQ_USE="ncurses(+)"
 
 inherit distutils-r1 linux-info
@@ -19,6 +19,7 @@ KEYWORDS="amd64 arm hppa ~ia64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 CONFIG_CHECK="~TASK_IO_ACCOUNTING ~TASK_DELAY_ACCT ~TASKSTATS ~VM_EVENT_COUNTERS"
+
 DOCS=( NEWS README THANKS ChangeLog )
 
 PATCHES=( "${FILESDIR}"/${P}-setup.py3.patch )

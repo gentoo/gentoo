@@ -15,24 +15,24 @@ inherit autotools-utils fortran-2 python-single-r1
 
 DESCRIPTION="Reference implementation of the Dirfile, format for time-ordered binary data"
 HOMEPAGE="http://getdata.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.xz"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 debug fortran lzma python perl static-libs"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-DEPEND="${PYTHON_DEPS}
+DEPEND="
 	bzip2? ( app-arch/bzip2 )
 	lzma? ( app-arch/xz-utils )
+	python? ( ${PYTHON_DEPS} )
 	perl? ( dev-lang/perl )"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-serial-test.patch
-	"${FILESDIR}"/${P}-out-of-source.patch
 	)
 
 src_configure() {
