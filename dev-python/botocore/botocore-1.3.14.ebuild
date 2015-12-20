@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 python3_4 )
+PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
 
 inherit distutils-r1 vcs-snapshot
 
@@ -33,7 +33,7 @@ DEPEND="
 	)
 	test? (
 		${CDEPEND}
-		dev-python/mock[${PYTHON_USEDEP}]
+		~dev-python/mock-1.0.1[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 	)
 "
