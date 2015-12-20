@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ncurses(+)] ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3[ncurses(+)] ) python_targets_python3_4? ( dev-lang/python:3.4[ncurses(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)]
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ncurses(+)] ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3[ncurses(+)] ) python_targets_python3_4? ( dev-lang/python:3.4[ncurses(+)] ) python_targets_python3_5? ( dev-lang/python:3.5[ncurses(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
 DESCRIPTION=Top-like UI used to show which process is using the I/O
 EAPI=5
 HOMEPAGE=http://guichaz.free.fr/iotop/
-IUSE=python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
+IUSE=python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_python3_5
 KEYWORDS=amd64 arm hppa ~ia64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
-RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ncurses(+)] ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3[ncurses(+)] ) python_targets_python3_4? ( dev-lang/python:3.4[ncurses(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)]
-REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 )
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ncurses(+)] ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3[ncurses(+)] ) python_targets_python3_4? ( dev-lang/python:3.4[ncurses(+)] ) python_targets_python3_5? ( dev-lang/python:3.5[ncurses(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_python3_5 )
 SLOT=0
 SRC_URI=http://guichaz.free.fr/iotop/files/iotop-0.6.tar.bz2
 _eclass_exported_funcs=pkg_setup:- src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=distutils-r1	4e8ac1ba76ddacd8f7c0289aa586a34c	eutils	d9bd2ddd85a58e470b49ca997e255a4c	linux-info	8f92e5ac1a1da684c5450b1b21a1f56a	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	98eaa2ec9918bbf0571252d6c6d894f2	python-utils-r1	832cb17726d498a182de6b9ee2adc0dc	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=b3802ee949165d9021afa64824d5571e
+_md5_=ae7b7b3ef8e7fcf4be77f6b7253ebee7
