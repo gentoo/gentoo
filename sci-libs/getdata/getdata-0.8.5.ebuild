@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ AUTOTOOLS_AUTORECONF=true
 FORTRAN_STANDARD="95"
 FORTRAN_NEEDED=fortran
 
-inherit autotools-utils fortran-2 python-r1
+inherit autotools-utils fortran-2 python-single-r1
 
 DESCRIPTION="Reference implementation of the Dirfile, format for time-ordered binary data"
 HOMEPAGE="http://getdata.sourceforge.net/"
