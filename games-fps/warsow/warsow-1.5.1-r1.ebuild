@@ -41,7 +41,7 @@ RDEPEND=">=dev-libs/libRocket-1.2.1_p20130110
 		x11-libs/libXrandr
 		x11-libs/libXxf86dga
 		x11-libs/libXxf86vm
-		virtual/jpeg
+		virtual/jpeg:0
 		virtual/opengl
 		openal? ( media-libs/openal )
 	)"
