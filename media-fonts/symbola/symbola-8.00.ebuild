@@ -14,7 +14,7 @@ SRC_URI="http://users.teilar.gr/~g1951d/${MY_PN}.zip -> ${P}.zip"
 LICENSE="Unicode_Fonts_for_Ancient_Scripts"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~x86"
 IUSE="doc"
 
 DEPEND="app-arch/unzip"

@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	need-wxwidgets unicode
-	
+
 	if [ $(gcc-major-version) -lt "4" ] ; then
 		die "You need to activate at least gcc:4.7"
 	fi

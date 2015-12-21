@@ -12,7 +12,6 @@
 </longdescription>
   <use>
     <flag name="bundled-libs">Use internal copy of <pkg>x11-libs/qwtpolar</pkg></flag>
-    <flag name="grass">Add support for <pkg>sci-geosciences/grass</pkg></flag>
     <flag name="spatialite">Enable Spatial DBMS over sqlite <pkg>dev-db/spatialite</pkg></flag>
   </use>
 </pkgmetadata>

@@ -92,7 +92,7 @@ src_install() {
 		dosym ../../../asciidoc/images /usr/share/doc/${PF}/examples
 	fi
 
-	readme.gentoo.create_doc
+	readme.gentoo_create_doc
 	dodoc BUGS CHANGELOG README docbook-xsl/asciidoc-docbook-xsl.txt \
 			dblatex/dblatex-readme.txt filters/code/code-filter-readme.txt
 }

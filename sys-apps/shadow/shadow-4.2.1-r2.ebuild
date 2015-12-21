@@ -36,7 +36,7 @@ RDEPEND="${RDEPEND}
 	pam? ( >=sys-auth/pambase-20150213 )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.1.3-dots-in-usernames.patch 
+	"${FILESDIR}"/${PN}-4.1.3-dots-in-usernames.patch
 	"${FILESDIR}"/${P}-cross-size-checks.patch
 	"${FILESDIR}"/${P}-verbose-error-when-uid-doesnt-match.patch
 )

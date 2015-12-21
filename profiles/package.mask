@@ -30,6 +30,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (21 Dec 2015)
+# Masked for testing, see bug #448242.
+=sci-mathematics/maxima-5.37.3-r2
+
+# Hans de Graaff <graaff@gentoo.org> (21 Dec 2015)
+# Mask until issues with non-standard bin dir have been resolved.
+=dev-ruby/bundler-1.11*
+
 # Patrick Lauer <patrick@gentoo.org> (20 Dec 2015)
 # Mask TOFU release that doesn't work #567768 and friends
 =app-crypt/gkeys-gen-0.1-r1
@@ -37,13 +45,6 @@
 # Patrick Lauer <patrick@gentoo.org> (20 Dec 2015)
 # Ebuild uninstallable #557090
 =app-crypt/gkeys-0.1-r1
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (21 Dec 2015)
-# Preparation for the Perl 5.22.1 version bump; work in
-# progress
-=dev-lang/perl-5.22.1
-=virtual/perl-Module-CoreList-5.201.512.130
-=virtual/perl-Storable-2.530.100
 
 # Michał Górny <mgorny@gentoo.org> (18 Dec 2015)
 # Contains privilege escalation vulnerability that could be used to

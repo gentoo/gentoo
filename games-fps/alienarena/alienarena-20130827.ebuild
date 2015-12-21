@@ -8,7 +8,8 @@ inherit eutils gnome2-utils games
 MY_PN=alienarena-7.66
 DESCRIPTION="Fast-paced multiplayer deathmatch game"
 HOMEPAGE="http://red.planetarena.org/"
-SRC_URI="http://icculus.org/alienarena/Files/${MY_PN}-linux${PV}.tar.gz"
+SRC_URI="http://icculus.org/alienarena/Files/${MY_PN}-linux${PV}.tar.gz
+	http://red.planetarena.org/files/${MY_PN}-linux${PV}.tar.gz"
 
 LICENSE="GPL-2 free-noncomm"
 SLOT="0"

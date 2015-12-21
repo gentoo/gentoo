@@ -14,9 +14,6 @@
 	<longdescription>
 		Vanilla prepatch/rc sources, for people who like to have the latest kernel available
 	</longdescription>
-	<use>
-	  	<flag name='deblob'>Remove binary blobs from kernel sources to provide libre license compliance.</flag>
-	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
 	</upstream>

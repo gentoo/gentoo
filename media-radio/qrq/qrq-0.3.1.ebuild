@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="pulseaudio"
 
-DEPEND="sys-libs/ncurses
+DEPEND="sys-libs/ncurses:*
 	pulseaudio? ( media-sound/pulseaudio )"
 RDEPEND="${DEPEND}"
 

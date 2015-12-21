@@ -56,7 +56,7 @@ ASM_DEPEND=">=dev-lang/yasm-1.1"
 
 CDEPEND="
 	>=dev-libs/nss-3.19.2
-	>=dev-libs/nspr-4.10.8
+	>=dev-libs/nspr-4.10.10
 	!x11-plugins/enigmail
 	crypt?  ( || (
 		( >=app-crypt/gnupg-2.0

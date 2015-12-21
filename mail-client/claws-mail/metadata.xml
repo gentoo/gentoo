@@ -3,8 +3,8 @@
 <pkgmetadata>
 	<herd>net-mail</herd>
 	<maintainer>
-		<email>fauli@gentoo.org</email>
-		<name>Christian Faulhammer</name>
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
 	</maintainer>
 	<use>
 		<flag name="archive">Enable archiving plugin</flag>

@@ -32,6 +32,9 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
+	# remove unused dependency
+	sed -e "/xml \\\/d" -i src/signond/signond.pro || die
+
 	# ensure qt5 version of binary is used
 	sed -e "s|qdbusxml2cpp|$(qt5_get_bindir)/&|" -i src/signond/signond.pro || die
 

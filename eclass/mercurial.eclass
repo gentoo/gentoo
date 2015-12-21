@@ -112,7 +112,7 @@ mercurial_fetch() {
 		die "failed to create ${EHG_STORE_DIR}/${EHG_PROJECT}"
 	chmod -f g+rw "${EHG_STORE_DIR}/${EHG_PROJECT}" || \
 		echo "Warning: failed to chmod g+rw ${EHG_PROJECT}"
-	cd "${EHG_STORE_DIR}/${EHG_PROJECT}" || \
+	pushd "${EHG_STORE_DIR}/${EHG_PROJECT}" > /dev/null || \
 		die "failed to cd to ${EHG_STORE_DIR}/${EHG_PROJECT}"
 
 	# Clone/update repository:
@@ -122,12 +122,13 @@ mercurial_fetch() {
 			rm -rf "${module}"
 			die "failed to clone ${EHG_REPO_URI}"
 		}
-		cd "${module}"
 	elif [[ -z "${EHG_OFFLINE}" ]]; then
 		einfo "Updating ${EHG_STORE_DIR}/${EHG_PROJECT}/${module} from ${EHG_REPO_URI}"
-		cd "${module}" || die "failed to cd to ${module}"
+		pushd "${module}" > /dev/null || die "failed to cd to ${module}"
 		${EHG_PULL_CMD} "${EHG_REPO_URI}" || die "update failed"
+		popd > /dev/null || die
 	fi
+	popd > /dev/null || die
 
 	# Checkout working copy:
 	einfo "Creating working directory in ${sourcedir} (target revision: ${EHG_REVISION})"
