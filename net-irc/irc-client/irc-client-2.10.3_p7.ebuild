@@ -16,9 +16,9 @@ IUSE="ipv6"
 
 DEPEND="sys-libs/ncurses
 	sys-libs/zlib"
-# This and irc-client both install /usr/bin/irc #247987
+# This and ircci both install /usr/bin/irc #247987
 RDEPEND="${DEPEND}
-	!net-irc/irc-client"
+	!net-irc/ircii"
 
 S=${WORKDIR}/${MY_P}
 
