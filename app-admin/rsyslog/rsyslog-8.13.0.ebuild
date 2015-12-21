@@ -31,7 +31,7 @@ else
 		http://www.rsyslog.com/files/download/${PN}/${P}.tar.gz
 		doc? ( http://www.rsyslog.com/files/download/${PN}/${PN}-doc-${PV}.tar.gz )
 	"
-	KEYWORDS="~amd64 ~arm ~hppa ~x86"
+	KEYWORDS="~amd64 ~arm hppa ~x86"
 
 	PATCHES+=( "${FILESDIR}"/${BRANCH}/50-${PN}-8.12.0-fix-re_extract.patch )
 	PATCHES+=( "${FILESDIR}"/${BRANCH}/50-${PN}-8.13.0-lookup-table-reload-bugfix.patch )
