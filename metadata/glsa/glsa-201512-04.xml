@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">openssh</product>
   <announced>December 20, 2015</announced>
-  <revised>December 20, 2015: 1</revised>
+  <revised>December 21, 2015: 4</revised>
   <bug>553724</bug>
   <bug>555518</bug>
   <bug>557340</bug>
@@ -36,11 +36,11 @@
     <p>There is no known workaround at this time.</p>
   </workaround>
   <resolution>
-    <p>All OpenSSH users should upgrade to the latest version:</p>
+    <p>All openssh users should upgrade to the latest version:</p>
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose "&gt;=net-misc/openssh-6.9_p1-r2"
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/openssh-7.1_p1-r2"
     </code>
     
   </resolution>
@@ -52,5 +52,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6565">CVE-2015-6565</uri>
   </references>
   <metadata tag="requester" timestamp="Wed, 22 Jul 2015 17:49:28 +0000">Zlogene</metadata>
-  <metadata tag="submitter" timestamp="Sun, 20 Dec 2015 15:20:30 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Mon, 21 Dec 2015 15:58:43 +0000">ackle</metadata>
 </glsa>
