@@ -33,7 +33,6 @@ src_prepare() {
 	epatch "${FILESDIR}/${PV}-make-var-instead-of-cmd.patch"
 	epatch "${FILESDIR}/${PV}-to-work-with-kernel-3.18.patch"
 
-
 	local flag switch
 
 	for flag in ${IUSE_PLUGINS}; do
