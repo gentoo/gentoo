@@ -17,7 +17,7 @@ KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 RDEPEND=">=dev-libs/libax25-0.0.12_rc2
-	sys-libs/ncurses"
+	sys-libs/ncurses:="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	!media-sound/listen
