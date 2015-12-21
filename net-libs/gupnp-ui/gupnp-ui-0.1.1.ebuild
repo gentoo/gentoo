@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
 PATCHES=(
-       "${FILESDIR}"/${P}-underlinking.patch
+	"${FILESDIR}"/${P}-underlinking.patch
 )
 
 src_configure() {

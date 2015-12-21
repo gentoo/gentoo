@@ -169,7 +169,6 @@ src_compile() {
 	multilib-minimal_src_compile
 }
 
-
 multilib_src_compile() {
 	local t
 	for t in "${NCURSES_TARGETS[@]}" ; do
