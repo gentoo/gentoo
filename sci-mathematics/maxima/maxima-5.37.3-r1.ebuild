@@ -162,7 +162,7 @@ src_install() {
 	dosym ../${PN}/${PV}/doc /usr/share/doc/${PF} || die
 
 	if use emacs; then
-		elisp-site-file-install "${FILESDIR}"/50maxima-gentoo.el || die
+		elisp-site-file-install "${FILESDIR}"/50maxima-gentoo-0.el || die
 	fi
 
 	# if we use ecls, build an ecls library for maxima
