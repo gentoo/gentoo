@@ -21,7 +21,6 @@
     <flag name="texmacs">Add <pkg>app-office/texmacs</pkg>
   interface</flag>
     <flag name="theano">Add support for <pkg>dev-python/theano</pkg></flag>
-    <flag name="system-mpmath">Use mpmath from portage instead of the bundled one</flag>
   </use>
   <upstream>
     <remote-id type="pypi">sympy</remote-id>

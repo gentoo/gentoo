@@ -18,8 +18,8 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="${RDEPEND}
+	dev-ros/rostest[${PYTHON_USEDEP}]
 	test? (
-		dev-ros/rostest[${PYTHON_USEDEP}]
 		dev-ros/roslaunch[${PYTHON_USEDEP}]
 		dev-python/rospkg[${PYTHON_USEDEP}]
 	)

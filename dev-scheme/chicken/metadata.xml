@@ -18,8 +18,4 @@ standard, the Revised5 Report on the Algorithmic Language Scheme (R5RS ), and
 includes many enhancements and extensions. CHICKEN runs on MacOS X, Windows, and
 many Unix flavours.
 </longdescription>
-<use>
-	<flag name="parallel-build">Enable testing parallel build mode added in 
-		4.7.3 version. Can still be not working</flag>
-</use>
 </pkgmetadata>

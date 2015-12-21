@@ -3,8 +3,6 @@
 <pkgmetadata>
 	<herd>gnome</herd>
 	<use>
-		<flag name="l10n">Pull in <pkg>gnome-extra/cinnamon-translations</pkg> for
-		localization support</flag>
 		<flag name="packagekit">Use packagekit to search for programs to open
 		unknown file types</flag>
 		<flag name="tracker">Add support for <pkg>app-misc/tracker</pkg> search</flag>
