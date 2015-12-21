@@ -2126,7 +2126,7 @@ app-shells/heirloom-sh 050706: Heirloom Bourne Shell, derived from OpenSolaris c
 app-shells/hstr 1.17 1.18 1.19: Shell history suggest box - easily view, navigate, search and manage your command history
 app-shells/ksh 93.20110208 93.20120229 93.20140606 93.20140625: The Original Korn Shell, 1993 revision (ksh93)
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
-app-shells/mksh 50d 50d-r1 50e 50f 51 9999: MirBSD Korn Shell
+app-shells/mksh 50d 50d-r1 50e 50f 51 52 9999: MirBSD Korn Shell
 app-shells/mpibash 1.2 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
 app-shells/pdmenu 1.3.4: A simple console menu program
 app-shells/pdsh 2.18-r1 2.26: A high-performance, parallel remote shell utility
@@ -4880,7 +4880,7 @@ dev-libs/unibilium 1.1.2 1.1.4: A very basic terminfo library
 dev-libs/urdfdom 0.3.0 9999: URDF (U-Robot Description Format) library
 dev-libs/urdfdom_headers 0.3.0 9999: URDF (U-Robot Description Format) headers
 dev-libs/uriparser 0.7.9 0.8.0 0.8.1 0.8.2 0.8.3 0.8.4: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
-dev-libs/userspace-rcu 0.7.12 0.7.13 0.8.4 0.8.5 0.8.6: userspace RCU (read-copy-update) library
+dev-libs/userspace-rcu 0.7.12 0.7.13 0.8.4 0.8.5 0.8.6 0.9.1: userspace RCU (read-copy-update) library
 dev-libs/ustr 1.0.4-r5 1.0.4-r7: Low-overhead managed string library for C
 dev-libs/utfcpp 2.3.4: A simple, portable and lightweight generic library for handling UTF-8 encoded strings.
 dev-libs/uthash 1.9.7 1.9.9: An easy-to-use hash implementation for C programmers
@@ -16377,7 +16377,7 @@ sys-apps/texinfo 4.13-r2 5.2 6.0: The GNU info program and utilities
 sys-apps/the_silver_searcher 0.29.1 0.31.0: A code-searching tool similar to ack, but faster
 sys-apps/timer_entropyd 0.2: A timer-based entropy generator
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
-sys-apps/toybox 0.4.7 0.4.8 0.4.9 0.4.9-r1 0.5.0 0.5.1 0.5.2 0.6.0 9999: Common linux commands in a multicall binary
+sys-apps/toybox 0.4.7 0.4.8 0.4.9 0.4.9-r1 0.5.0 0.5.1 0.5.2 0.6.0 0.6.1 9999: Common linux commands in a multicall binary
 sys-apps/tuned 2.4.1 2.5.0 2.5.1: Daemon for monitoring and adaptive tuning of system devices
 sys-apps/tuxonice-userui 1.1-r2: User Interface for TuxOnIce
 sys-apps/uam 0.3 0.3.1 0.3.2 9999: Simple udev-based automounter for removable USB media
