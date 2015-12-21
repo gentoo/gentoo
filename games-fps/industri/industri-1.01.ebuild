@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 inherit eutils toolchain-funcs games
 
 DESCRIPTION="Quake/Tenebrae based, single player game"
@@ -20,7 +20,7 @@ RDEPEND="virtual/opengl
 	x11-libs/libXext
 	x11-libs/libX11
 	x11-libs/libXxf86vm
-	media-libs/libpng
+	media-libs/libpng:0
 	cdinstall? ( games-fps/quake1-data )"
 DEPEND="${RDEPEND}
 	x11-proto/xf86dgaproto
@@ -33,15 +33,14 @@ S=${WORKDIR}/industri_BIN
 
 src_prepare() {
 	mv linux/Makefile{.i386linux,}
-	sed -i -e "s:-mpentiumpro.*:${CFLAGS} \\\\:" linux/Makefile || die "sed failed"
+	sed -i -e "s:-mpentiumpro.*:${CFLAGS} \\\\:" linux/Makefile || die
 
 	# Remove duplicated typedefs #71841
 	for typ in PFNGLFLUSHVERTEXARRAYRANGEAPPLEPROC PFNGLVERTEXARRAYRANGEAPPLEPROC ; do
 		if echo '#include <GL/gl.h>' | $(tc-getCC) -E - 2>/dev/null | grep -sq ${typ} ; then
 			sed -i \
 				-e "/^typedef.*${typ}/d" \
-				glquake.h \
-				|| die "sed failed"
+				glquake.h || die
 		fi
 	done
 
@@ -58,27 +57,25 @@ src_compile() {
 	emake \
 		-C linux \
 		MASTER_DIR="${GAMES_DATADIR}"/quake1 \
-		build_release \
-		|| die "emake failed"
+		build_release
 }
 
 src_install() {
-	newgamesbin linux/release*/bin/industri.run industri || die
-	dogamesbin "${FILESDIR}"/industri.pretty || die
+	newgamesbin linux/release*/bin/industri.run industri
+	dogamesbin "${FILESDIR}"/industri.pretty
 	insinto /usr/share/icons
-	doins industri.ico quake.ico || die
+	doins industri.ico quake.ico
 	dodoc linux/README
 	cd "${WORKDIR}"/${PN}
 	dodoc *.txt
 	insinto "${GAMES_DATADIR}"/quake1/${PN}
-	doins *.pak *.cfg || die
+	doins *.pak *.cfg
 	prepgamesdirs
 }
 
 pkg_postinst() {
 	games_pkg_postinst
-	if ! use cdinstall
-	then
+	if ! use cdinstall ; then
 		elog "You need to copy pak0.pak to ${GAMES_DATADIR}/quake1 to play."
 	fi
 }

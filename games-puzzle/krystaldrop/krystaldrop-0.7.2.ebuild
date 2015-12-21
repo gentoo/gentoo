@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils games
 
 DESCRIPTION="Free clone of an excellent NeoGeo puzzle game, Magical Drop"
@@ -16,12 +16,12 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="virtual/opengl
-	media-libs/libsdl
-	media-libs/sdl-image
+	media-libs/libsdl[opengl,video]
+	media-libs/sdl-image[jpeg,png]
 	media-libs/sdl-mixer
 	media-libs/sdl-ttf
 	dev-libs/libxml2"
-RDEPEND="${DEPEND}"
+RDEPEND=${DEPEND}
 
 S=${WORKDIR}/${PN}
 
@@ -39,14 +39,13 @@ src_prepare() {
 
 	sed -i \
 		-e "/^EXEDIR:=/ s|$|/bin|" \
-		-e "/^INSTALL_PREFIX:=/ s|$|${D}|" Makefile \
-		|| die "sed Makefile failed"
+		-e "/^INSTALL_PREFIX:=/ s|$|${D}|" \
+		Makefile || die
 
 	# fix the high score location
 	sed -i \
 		-e "s:BINDIR:\"${GAMES_STATEDIR}/${PN}\":" \
-		Sources/KrystalDrop/Controller/HighScoresController.cpp \
-		|| die "sed HighScoresController.cpp failed"
+		Sources/KrystalDrop/Controller/HighScoresController.cpp || die
 }
 
 src_install() {

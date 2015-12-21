@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit eutils versionator toolchain-funcs flag-o-matic cmake-utils games
+inherit eutils versionator cmake-utils games
 
 MY_PV=build$(get_version_component_range 2)
 MY_P=${PN}-${MY_PV}-src
@@ -16,13 +16,13 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE=""
 
-DEPEND="dev-lang/lua
+DEPEND="dev-lang/lua:0
 	media-libs/libsdl[video]
 	media-libs/sdl-image[jpeg,png]
 	media-libs/sdl-mixer[vorbis]
 	media-libs/sdl-gfx
 	media-libs/sdl-net
-	media-libs/libpng
+	media-libs/libpng:0
 	sys-libs/zlib
 	media-libs/glew
 	media-libs/sdl-ttf
@@ -43,21 +43,6 @@ src_prepare() {
 	sed -i -e '74i#define OF(x) x' src/io/filesystem/{un,}zip.h || die
 	sed -i -e '22i#define OF(x) x' src/io/filesystem/ioapi.h || die
 	sed -i -e '/Boost_USE_STATIC_LIBS/s:ON:OFF:' CMakeLists.txt || die
-
-	# how do I hate boost? Let me count the ways...
-	local boost_ver=$(best_version ">=dev-libs/boost-1.37")
-
-	boost_ver=${boost_ver/*boost-/}
-	boost_ver=${boost_ver%.*}
-	boost_ver=${boost_ver/./_}
-
-	einfo "Using boost version ${boost_ver}"
-	append-cxxflags \
-		-I/usr/include/boost-${boost_ver}
-	append-ldflags \
-		-L/usr/$(get_libdir)/boost-${boost_ver}
-	export BOOST_INCLUDEDIR="/usr/include/boost-${boost_ver}"
-	export BOOST_LIBRARYDIR="/usr/$(get_libdir)/boost-${boost_ver}"
 }
 
 src_configure() {

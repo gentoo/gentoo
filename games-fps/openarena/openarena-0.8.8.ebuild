@@ -18,7 +18,7 @@ IUSE="+curl +openal +vorbis"
 RDEPEND="virtual/opengl
 	media-libs/libsdl[joystick,opengl,video]
 	media-libs/speex
-	virtual/jpeg
+	virtual/jpeg:0
 	x11-libs/libXext
 	x11-libs/libX11
 	x11-libs/libXau
