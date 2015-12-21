@@ -92,7 +92,7 @@ src_configure() {
 		$(cmake-utils_use examples OGRE_BUILD_SAMPLES)
 		$(cmake-utils_use examples OGRE_INSTALL_SAMPLES_SOURCE)
 		-DOGRE_BUILD_TESTS=FALSE
-		$(usex threads "-DOGRE_CONFIG_THREADS=2" "-DOGRE_CONFIG_THREADS=0")
+		-DOGRE_CONFIG_THREADS=$(usex threads 2 0)
 		$(cmake-utils_use tools OGRE_BUILD_TOOLS)
 		$(cmake-utils_use zip OGRE_CONFIG_ENABLE_ZIP)
 	)

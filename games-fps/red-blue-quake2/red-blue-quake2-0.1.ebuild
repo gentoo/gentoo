@@ -1,8 +1,8 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-EAPI=2
 
+EAPI=5
 inherit eutils games
 
 DESCRIPTION="red-blue Quake II !  play quake2 w/3d glasses !"
@@ -25,11 +25,13 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PV}-gentoo.patch \
 		"${FILESDIR}/${P}"-gcc41.patch \
 		"${FILESDIR}/${P}"-ldflags.patch
-	sed -i "s:GENTOO_DIR:$(games_get_libdir)/${PN}:" sys_linux.c \
-		|| die "sed failed"
-	sed -i "s:/etc/quake2.conf:${GAMES_SYSCONFDIR}/${PN}.conf:" \
-		sys_linux.c vid_so.c \
-		|| die "sed failed"
+	sed -i \
+		-e "s:GENTOO_DIR:$(games_get_libdir)/${PN}:" \
+		sys_linux.c || die
+	sed -i \
+		-e "s:/etc/quake2.conf:${GAMES_SYSCONFDIR}/${PN}.conf:" \
+		sys_linux.c vid_so.c || die
+	echo "$(games_get_libdir)"/${PN} > "${T}"/${PN}.conf || die
 }
 
 src_compile() {
@@ -37,22 +39,20 @@ src_compile() {
 	emake \
 		GENTOO_CFLAGS="${CFLAGS}" \
 		GENTOO_DATADIR="${GAMES_DATADIR}"/quake2/baseq2/ \
-		build_release \
-		|| die "emake failed"
+		build_release
 }
 
 src_install() {
 	cd release*
 
 	exeinto "$(games_get_libdir)"/${PN}
-	doexe gamei386.so ref_softx.so || die "doexe failed"
+	doexe gamei386.so ref_softx.so
 	exeinto "$(games_get_libdir)"/${PN}/ctf
-	doexe ctf/gamei386.so || die "doexe failed"
-	newgamesbin quake2 red-blue-quake2 || die "newgamesbin failed"
+	doexe ctf/gamei386.so
+	newgamesbin quake2 red-blue-quake2
 
 	insinto "${GAMES_SYSCONFDIR}"
-	echo "$(games_get_libdir)"/${PN} > ${PN}.conf
-	doins ${PN}.conf || die "doins failed"
+	doins "${T}"/${PN}.conf
 
 	prepgamesdirs
 }
