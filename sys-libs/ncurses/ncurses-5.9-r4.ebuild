@@ -21,7 +21,7 @@ DEPEND="gpm? ( sys-libs/gpm )"
 #	berkdb? ( sys-libs/db )"
 # Block the older ncurses that installed all files w/SLOT=5. #557472
 RDEPEND="${DEPEND}
-	!<=sys-libs/ncurses-5.9-r4:0
+	!<=sys-libs/ncurses-5.9-r4:5
 	!<x11-terms/rxvt-unicode-9.06-r3
 	abi_x86_32? (
 		!<=app-emulation/emul-linux-x86-baselibs-20130224-r12
