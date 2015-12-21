@@ -26,7 +26,7 @@ UIDEPEND="alsa? ( media-libs/alsa-lib )
 	sdl? ( media-libs/libsdl )
 	virtual/jpeg
 	media-libs/libogg
-	media-libs/libpng:0
+	media-libs/libpng
 	media-libs/libvorbis
 	sys-libs/zlib
 	x11-libs/libX11

@@ -10,7 +10,7 @@ MOD_DIR="hamsterbash"
 
 inherit unpacker games games-mods
 
-HOMEPAGE="http://www.moddb.com/mods/hamsterbash"
+HOMEPAGE="http://www.eigensoft.com/hamsterbash.htm"
 SRC_URI="http://server088.eigensoft.com/HamsterBashFinal.zip"
 
 LICENSE="freedist"

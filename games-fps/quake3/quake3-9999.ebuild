@@ -7,9 +7,9 @@
 # quake3-VER_alphaREV  -> git snapshot REV for version VER
 # quake3-VER           -> normal quake release
 
-EAPI=5
-inherit eutils flag-o-matic toolchain-funcs games
-[[ "${PV}" == 9999* ]] && inherit git-r3
+EAPI=2
+inherit eutils flag-o-matic games toolchain-funcs
+[[ "${PV}" == 9999* ]] && inherit git-2
 
 MY_PN="ioquake3"
 MY_PV="${PV}"
@@ -45,7 +45,9 @@ RDEPEND="${DEPEND}
 	games-fps/quake3-data
 	teamarena? ( games-fps/quake3-teamarena )"
 
-if [[ "${PV}" != 9999* ]] ; then
+if [[ "${PV}" == 9999* ]] ; then
+	S="${WORKDIR}/trunk"
+else
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -96,17 +98,18 @@ src_compile() {
 		USE_MUMBLE=$(buildit mumble) \
 		USE_OPENAL=$(buildit openal) \
 		USE_OPENAL_DLOPEN=0 \
-		USE_VOIP=$(buildit voice)
+		USE_VOIP=$(buildit voice) \
+		|| die "emake failed"
 }
 
 src_install() {
-	dodoc BUGS ChangeLog id-readme.txt md4-readme.txt NOTTODO README.md TODO voip-readme.txt
+	dodoc BUGS ChangeLog id-readme.txt md4-readme.txt NOTTODO README.md opengl2-readme.txt TODO voip-readme.txt || die
 	if use voice ; then
-		dodoc voip-readme.txt
+		dodoc voip-readme.txt || die
 	fi
 
 	if use opengl || ! use dedicated ; then
-		doicon misc/quake3.svg
+		doicon misc/quake3.svg || die
 		make_desktop_entry quake3 "Quake III Arena"
 		#use smp && make_desktop_entry quake3-smp "Quake III Arena (SMP)"
 	fi
@@ -115,8 +118,8 @@ src_install() {
 	local exe
 	for exe in ioquake3 ioquake3-smp ioq3ded ; do
 		if [[ -x ${exe} ]] ; then
-			dogamesbin ${exe}
-			dosym ${exe} "${GAMES_BINDIR}/${exe/io}"
+			dogamesbin ${exe} || die "dogamesbin ${exe}"
+			dosym ${exe} "${GAMES_BINDIR}/${exe/io}" || die "dosym ${exe}"
 		fi
 	done
 
@@ -124,7 +127,7 @@ src_install() {
 	# this should be done through 'dogameslib', but
 	# for this some files need to be patched
 	exeinto "${GAMES_DATADIR}/${PN}"
-	doexe renderer*.so
+	doexe renderer*.so || die 'install renderers failed'
 
 	prepgamesdirs
 }
