@@ -113,7 +113,7 @@ src_install() {
 	prune_libtool_files --modules
 
 	if use server; then
-		newinitd "${FILESDIR}/fwknopd.init-r1" fwknopd
+		newinitd "${FILESDIR}/fwknopd.init" fwknopd
 		newconfd "${FILESDIR}/fwknopd.confd" fwknopd
 		systemd_dounit extras/systemd/fwknopd.service
 		systemd_newtmpfilesd extras/systemd/fwknopd.tmpfiles.conf fwknopd.conf
