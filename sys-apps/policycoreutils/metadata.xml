@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>selinux</herd>
+	<maintainer>
+		<email>selinux@gentoo.org</email>
+		<name>SELinux Team</name>
+	</maintainer>
 	<longdescription>
 		Policycoreutils contains the policy core utilities that are required
 		for basic operation of a SELinux system.  These utilities include

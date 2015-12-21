@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>selinux</herd>
+	<maintainer>
+		<email>selinux@gentoo.org</email>
+		<name>SELinux Team</name>
+	</maintainer>
 	<longdescription>
 		Gentoo SELinux base policy.  This contains policy for a system at the end of system installation.
 		There is no extra policy in this package.
