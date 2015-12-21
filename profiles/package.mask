@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Sterrett <mr_bones_@gentoo.org> (21 Dec 2015)
+# Vanished from the internet. (bug #561148)
+# Masked for removal on 20160120
+games-fps/ut2004-ultraduel
+
 # Ulrich Müller <ulm@gentoo.org> (21 Dec 2015)
 # Masked for testing, see bug #448242.
 =sci-mathematics/maxima-5.37.3-r2
