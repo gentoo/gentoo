@@ -1,0 +1,12 @@
+DEFINED_PHASES=pretend
+DEPEND=dev-libs/ocl-icd sys-devel/llvm[clang] sys-apps/hwloc virtual/pkgconfig
+DESCRIPTION=PortableCL: opensource implementation of the OpenCL standard
+EAPI=5
+HOMEPAGE=http://portablecl.org/
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=dev-libs/ocl-icd sys-devel/llvm[clang] sys-apps/hwloc
+SLOT=0
+SRC_URI=http://portablecl.org/downloads/pocl-0.12.tar.gz
+_eclass_exported_funcs=pkg_pretend:-
+_md5_=060782fa81aa6e4549a28b044a0dac42
