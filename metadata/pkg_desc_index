@@ -6750,7 +6750,7 @@ dev-python/asset 0.6.1-r1 0.6.2 0.6.3 0.6.4: A package resource and symbol loadi
 dev-python/assets 0.1.1-r1: Cache-friendly asset management via content-hash-naming
 dev-python/astng 0.24.3: Abstract Syntax Tree for logilab packages
 dev-python/astor 0.3 0.4 0.4.1 0.5: Read/rewrite/write Python ASTs
-dev-python/astroid 1.3.8 1.4.1: Abstract Syntax Tree for logilab packages
+dev-python/astroid 1.3.8 1.4.1 1.4.2: Abstract Syntax Tree for logilab packages
 dev-python/astropy 1.0.4 1.0.6: Core functionality for performing astrophysics with Python
 dev-python/astropy-helpers 0.4.1 1.0.3 1.0.5 1.0.6: Helpers for Astropy and Affiliated packages
 dev-python/async 0.6.2: Async Framework
@@ -7535,7 +7535,7 @@ dev-python/pylibacl 0.5.0-r1: POSIX ACLs (Access Control Lists) for Python
 dev-python/pyliblzma 0.5.3-r1: Python bindings for liblzma
 dev-python/pylibmc 1.4.3 1.5.0: Libmemcached wrapper written as a Python extension
 dev-python/pylibpcap 0.6.4 0.6.4-r1: Python interface to libpcap
-dev-python/pylint 1.4.4 1.4.5 1.5.1: Python code static checker
+dev-python/pylint 1.4.4 1.4.5 1.5.1 1.5.2: Python code static checker
 dev-python/pylirc 0.0.5-r1: lirc module for Python
 dev-python/pylons 1.0.1-r1 1.0.2: Pylons Web Framework
 dev-python/pyltxml 1.3-r1: Bindings for LTXML libraries
@@ -16749,8 +16749,8 @@ sys-fs/arm-fdisk 3.0.6 3.0.6-r1: edit disk partitions on Acorn machines
 sys-fs/atari-fdisk 0.7.1.5.4: create and edit the partition table of a disk partitioned in Atari format
 sys-fs/aufs-headers 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116: User space headers for aufs3
 sys-fs/aufs-util 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116: Utilities are always necessary for aufs
-sys-fs/aufs3 3_p20150406 3_p20150420 3_p20150504 3_p20150511 3_p20150518 3_p20150525 3_p20150608 3_p20150622 3_p20151012 3_p20151102 3_p20151109 3_p20151116: An entirely re-designed and re-implemented Unionfs
-sys-fs/aufs4 0_pre20150420 0_pre20150504 0_pre20150511 0_pre20150518 0_pre20150525 0_pre20150608 0_pre20150622 0_pre20150629 0_pre20150928 0_pre20151012 0_pre20151102 0_pre20151109 0_pre20151116: An entirely re-designed and re-implemented Unionfs
+sys-fs/aufs3 3_p20150406 3_p20150420 3_p20150504 3_p20150511 3_p20150518 3_p20150525 3_p20150608 3_p20150622 3_p20151012 3_p20151102 3_p20151109 3_p20151116 3_p20151221: An entirely re-designed and re-implemented Unionfs
+sys-fs/aufs4 0_pre20150420 0_pre20150504 0_pre20150511 0_pre20150518 0_pre20150525 0_pre20150608 0_pre20150622 0_pre20150629 0_pre20150928 0_pre20151012 0_pre20151102 0_pre20151109 0_pre20151116 0_pre20151221: An entirely re-designed and re-implemented Unionfs
 sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
 sys-fs/avfs 1.0.1 1.0.2 1.0.3: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: A bash script that uses udisks to handle removable devices without dependencies on any GUI
