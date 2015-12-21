@@ -27,10 +27,7 @@ RDEPEND=">=app-eselect/eselect-emacs-1.16
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-PATCHES=(
-	"../${P}-linux22x-elf-glibc21.diff"
-	"../patch"
-	)
+PATCHES="../${P}-linux22x-elf-glibc21.diff ../patch"
 
 src_configure() {
 	# autoconf? What's autoconf? We are living in 1992. ;-)
