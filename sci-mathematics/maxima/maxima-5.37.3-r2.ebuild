@@ -10,7 +10,7 @@ DESCRIPTION="Free computer algebra environment based on Macsyma"
 HOMEPAGE="http://maxima.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2 GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 
@@ -31,16 +31,18 @@ for lang in ${LANGS}; do
 	IUSE="${IUSE} linguas_${lang}"
 done
 
-RDEPEND="X? ( x11-misc/xdg-utils
+# texlive-latexrecommended needed by imaxima for breqn.sty
+RDEPEND="!app-emacs/imaxima
+	X? ( x11-misc/xdg-utils
 		 sci-visualization/gnuplot[gd]
 		 tk? ( dev-lang/tk:0 ) )
 	latex? ( virtual/latex-base )
 	emacs? ( virtual/emacs
-		latex? ( app-emacs/auctex ) )
+		latex? ( app-emacs/auctex
+			app-text/ghostscript-gpl
+			dev-texlive/texlive-latexrecommended ) )
 	xemacs? ( app-editors/xemacs
-		latex? ( app-emacs/auctex ) )"
-
-PDEPEND="emacs? ( app-emacs/imaxima )"
+		latex? ( app-xemacs/auctex ) )"
 
 # generating lisp dependencies
 depends() {
@@ -95,7 +97,7 @@ pkg_setup() {
 
 src_prepare() {
 	local n PATCHES v
-	PATCHES=( imaxima-0 rmaxima-0 wish-1 xdg-utils-0 db-0 )
+	PATCHES=( rmaxima-0 wish-1 xdg-utils-0 db-0 )
 
 	n=${#PATCHES[*]}
 	for ((n--; n >= 0; n--)); do
@@ -141,6 +143,11 @@ src_configure() {
 	econf ${CONFS} $(use_with tk wish) --with-lispdir="${EPREFIX}/${SITELISP}"/${PN}
 }
 
+src_compile() {
+	emake
+	use emacs && elisp-compile interfaces/emacs/{emaxima,imaxima}/*.el
+}
+
 src_install() {
 	docompress -x /usr/share/info
 	emake DESTDIR="${D}" emacsdir="${EPREFIX}/${SITELISP}/${PN}" install
@@ -148,6 +155,8 @@ src_install() {
 	use tk && make_desktop_entry xmaxima xmaxima \
 		/usr/share/${PN}/${PV}/xmaxima/maxima-new.png \
 		"Science;Math;Education"
+
+	rm -f "${ED}"/${SITELISP}/${PN}/emaxima.sty
 
 	if use latex; then
 		insinto ${TEXMF}/tex/latex/emaxima
@@ -157,12 +166,19 @@ src_install() {
 	# do not use dodoc because interfaces can't read compressed files
 	# read COPYING before attempt to remove it from dodoc
 	insinto /usr/share/${PN}/${PV}/doc
-	doins AUTHORS COPYING README README.lisps || die
+	doins AUTHORS COPYING README README.lisps
 	dodir /usr/share/doc
-	dosym ../${PN}/${PV}/doc /usr/share/doc/${PF} || die
+	dosym ../${PN}/${PV}/doc /usr/share/doc/${PF}
 
 	if use emacs; then
-		elisp-site-file-install "${FILESDIR}"/50maxima-gentoo-0.el || die
+		elisp-install ${PN} interfaces/emacs/{emaxima,imaxima}/*.{el,elc,lisp}
+		elisp-site-file-install "${FILESDIR}"/50maxima-gentoo-1.el
+		insinto /usr/share/${PN}/${PV}/doc/imaxima
+		doins interfaces/emacs/imaxima/README
+		doins -r interfaces/emacs/imaxima/imath-example
+	else
+		# remove any emacs files installed by the build system
+		rm -rf "${ED}"/usr/share/emacs
 	fi
 
 	# if we use ecls, build an ecls library for maxima

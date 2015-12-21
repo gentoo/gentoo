@@ -1,6 +1,3 @@
-
-;;; maxima site-lisp configuration
-
 (add-to-list 'load-path "@SITELISP@")
 (autoload 'maxima-mode "maxima" "Maxima mode" t)
 (autoload 'maxima "maxima" "Maxima interactive" t)
