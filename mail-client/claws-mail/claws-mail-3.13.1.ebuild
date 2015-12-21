@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 AUTOTOOLS_AUTORECONF=yes
@@ -12,18 +12,18 @@ inherit autotools-utils multilib gnome2-utils eutils python-single-r1
 DESCRIPTION="An email client (and news reader) based on GTK+"
 HOMEPAGE="http://www.claws-mail.org/"
 
-SRC_URI="mirror://sourceforge/${PN}/Claws%20Mail/${PV}/${P}.tar.xz"
+SRC_URI="http://www.claws-mail.org/download.php?file=releases/${P}.tar.xz"
 
 SLOT="0"
 LICENSE="GPL-3"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 
-IUSE="archive bogofilter calendar clamav dbus debug doc gdata gtk3 +imap ipv6 ldap +libcanberra +libindicate +libnotify networkmanager nntp +notification pda pdf perl +pgp python rss session smime spamassassin spam-report spell +gnutls startup-notification valgrind webkit xface"
-REQUIRED_USE="networkmanager? ( dbus )
-	smime? ( pgp )
-	libcanberra? ( notification )
+IUSE="archive bogofilter calendar clamav dbus debug doc gdata gtk3 +imap ipv6 ldap +libcanberra +libindicate +libnotify networkmanager nntp +notification pda pdf perl +pgp python rss session sieve smime spamassassin spam-report spell +gnutls startup-notification valgrind webkit xface"
+REQUIRED_USE="libcanberra? ( notification )
 	libindicate? ( notification )
-	libnotify? ( notification )"
+	libnotify? ( notification )
+	networkmanager? ( dbus )
+	smime? ( pgp )"
 
 # Plugins are all integrated or dropped since 3.9.1
 PLUGINBLOCK="!!mail-client/claws-mail-acpi-notifier
@@ -49,7 +49,7 @@ PLUGINBLOCK="!!mail-client/claws-mail-acpi-notifier
 	!!mail-client/claws-mail-pdf-viewer"
 
 COMMONDEPEND=">=sys-devel/gettext-0.12.1
-	gdata? ( >=dev-libs/libgdata-0.6.4 )
+	gdata? ( >=dev-libs/libgdata-0.17.1 )
 	gtk3? ( x11-libs/gtk+:3 )
 	!gtk3? ( >=x11-libs/gtk+-2.20:2 )
 	pda? ( >=app-pda/jpilot-0.99 )
@@ -71,7 +71,7 @@ COMMONDEPEND=">=sys-devel/gettext-0.12.1
 		libnotify? ( x11-libs/libnotify )
 		libcanberra? (  media-libs/libcanberra[gtk] )
 		libindicate? ( dev-libs/libindicate:3[gtk] )
-		dev-libs/glib
+		dev-libs/glib:2
 	)
 	smime? ( >=app-crypt/gpgme-0.4.5 )
 	calendar? ( >=net-misc/curl-7.9.7 )
@@ -91,7 +91,7 @@ RDEPEND="${COMMONDEPEND}
 	pdf? ( app-text/ghostscript-gpl )
 	clamav? ( app-antivirus/clamav )
 	networkmanager? ( net-misc/networkmanager )
-	perl? ( dev-lang/perl )
+	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS}
 		>=dev-python/pygtk-2.10.3 )
 	rss? ( net-misc/curl
@@ -129,10 +129,11 @@ src_configure() {
 		$(use_enable python python-plugin)
 		$(use_enable rss rssyl-plugin)
 		$(use_enable spamassassin spamassassin-plugin)
+		$(use_enable sieve managesieve-plugin)
 		$(use_enable smime smime-plugin)
 		$(use_enable spam-report spam_report-plugin)
 		$(use_enable webkit fancy-plugin)
-		--enable-new-addrbook
+		--enable-alternate-addressbook
 		--enable-nls
 		--enable-acpi_notifier-plugin
 		--enable-address_keeper-plugin
@@ -144,7 +145,6 @@ src_configure() {
 		--enable-tnef_parse-plugin
 		--disable-generic-umpc
 		--disable-bsfilter-plugin
-		--disable-geolocation-plugin
 	)
 
 	# libetpan is needed if user wants nntp or imap functionality
@@ -165,12 +165,12 @@ src_install() {
 	# => also install it in /usr/share/pixmaps for other desktop envs
 	# => also install higher resolution icons in /usr/share/icons/hicolor/...
 	insinto /usr/share/pixmaps
-	doins ${PN}.png || die
+	doins ${PN}.png
 	local res resdir
 	for res in 64x64 128x128 ; do
 		resdir="/usr/share/icons/hicolor/${res}/apps"
 		insinto ${resdir}
-		newins ${PN}-${res}.png ${PN}.png || die
+		newins ${PN}-${res}.png ${PN}.png
 	done
 
 	docinto tools
@@ -181,8 +181,8 @@ src_install() {
 	einfo "Installing extra tools"
 	cd "${S}"/tools
 	exeinto /usr/$(get_libdir)/${PN}/tools
-	doexe *.pl *.py *.conf *.sh || die
-	doexe tb2claws-mail update-po uudec uuooffice || die
+	doexe *.pl *.py *.conf *.sh
+	doexe tb2claws-mail update-po uudec uuooffice
 
 	# kill useless files
 	rm -f "${D}"/usr/lib*/claws-mail/plugins/*.{a,la}
