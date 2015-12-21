@@ -7,7 +7,7 @@ inherit eutils cmake-utils games
 
 DESCRIPTION="3D arcade with unique fighting system and anthropomorphic characters"
 HOMEPAGE="https://bitbucket.org/osslugaru/lugaru/wiki/Home"
-SRC_URI="${P}.tar.bz2"
+SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2+ free-noncomm CC-BY-SA-3.0"
 SLOT="0"
