@@ -343,6 +343,11 @@ qemu_src_configure() {
 		--disable-guest-agent
 		--disable-strip
 		--disable-werror
+		# We support gnutls/nettle for crypto operations.  It is possible
+		# to use gcrypt when gnutls/nettle are disabled (but not when they
+		# are enabled), but it's not really worth the hassle.  Disable it
+		# all the time to avoid automatically detecting it. #568856
+		--disable-gcrypt
 		--python="${PYTHON}"
 		--cc="$(tc-getCC)"
 		--cxx="$(tc-getCXX)"
@@ -372,6 +377,7 @@ qemu_src_configure() {
 		$(conf_softmmu fdt)
 		$(conf_softmmu glusterfs)
 		$(conf_softmmu gnutls)
+		$(conf_softmmu gnutls nettle)
 		$(conf_softmmu gtk)
 		$(conf_softmmu infiniband rdma)
 		$(conf_softmmu iscsi libiscsi)

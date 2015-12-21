@@ -132,8 +132,19 @@ debug-print-kernel2-variables() {
 #Eclass functions only from here onwards ...
 #==============================================================
 handle_genpatches() {
-	local tarball
+	local tarball want_unipatch_list
 	[[ -z ${K_WANT_GENPATCHES} || -z ${K_GENPATCHES_VER} ]] && return 1
+
+	if [[ -n ${1} ]]; then
+		# set UNIPATCH_LIST_GENPATCHES only on explicit request
+		# since that requires 'use' call which can be used only in phase
+		# functions, while the function is also called in global scope
+		if [[ ${1} == --set-unipatch-list ]]; then
+			want_unipatch_list=1
+		else
+			die "Usage: ${FUNCNAME} [--set-unipatch-list]"
+		fi
+	fi
 
 	debug-print "Inside handle_genpatches"
 	local OKV_ARRAY
@@ -161,11 +172,11 @@ handle_genpatches() {
 			use_cond_start="experimental? ( "
 			use_cond_end=" )"
 
-			if use experimental ; then
+			if [[ -n ${want_unipatch_list} ]] && use experimental ; then
 				UNIPATCH_LIST_GENPATCHES+=" ${DISTDIR}/${tarball}"
 				debug-print "genpatches tarball: $tarball"
 			fi
-		else
+		elif [[ -n ${want_unipatch_list} ]]; then
 			UNIPATCH_LIST_GENPATCHES+=" ${DISTDIR}/${tarball}"
 			debug-print "genpatches tarball: $tarball"
 		fi
@@ -1232,6 +1243,8 @@ kernel-2_src_unpack() {
 	universal_unpack
 	debug-print "Doing unipatch"
 
+	# request UNIPATCH_LIST_GENPATCHES in phase since it calls 'use'
+	handle_genpatches --set-unipatch-list
 	[[ -n ${UNIPATCH_LIST} || -n ${UNIPATCH_LIST_DEFAULT} || -n ${UNIPATCH_LIST_GENPATCHES} ]] && \
 		unipatch "${UNIPATCH_LIST_DEFAULT} ${UNIPATCH_LIST_GENPATCHES} ${UNIPATCH_LIST}"
 

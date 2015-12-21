@@ -30,12 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (21 Dec 2015)
-# Preparation for the Perl 5.22.1 version bump; work in
-# progress
-=dev-lang/perl-5.22.1
-=virtual/perl-Module-CoreList-5.201.512.130
-=virtual/perl-Storable-2.530.100
+# Patrick Lauer <patrick@gentoo.org> (20 Dec 2015)
+# Mask TOFU release that doesn't work #567768 and friends
+=app-crypt/gkeys-gen-0.1-r1
+
+# Patrick Lauer <patrick@gentoo.org> (20 Dec 2015)
+# Ebuild uninstallable #557090
+=app-crypt/gkeys-0.1-r1
 
 # Michał Górny <mgorny@gentoo.org> (18 Dec 2015)
 # Contains privilege escalation vulnerability that could be used to
@@ -267,12 +268,6 @@ sys-fs/bedup
 # Mike Frysinger <vapier@gentoo.org> (18 Oct 2015)
 # apache-2.4.17 includes support for http2 now.
 www-apache/mod_h2
-
-# Hans de Graaff <graaff@gentoo.org> (11 Oct 2015)
-# Ruby 1.9 is no longer maintained upstream since January
-# 2015, bug 536852.
-# Masked for removal in 30 days.
-=dev-lang/ruby-1.9*
 
 # Mike Pagano <mpagano@gentoo.org> (2 Oct 2015)
 # A regression in kernel 4.1.9 could lead to a system
@@ -793,25 +788,6 @@ kde-misc/kgtk
 # - no SLOTting yet!
 =dev-scheme/guile-2.0.0
 
-# Ryan Hill <dirtyepic@gentoo.org> (30 Mar 2011)
-# Masked indefinitely (until 0.40 is released).
-# https://bugs.gentoo.org/354423
->=app-pda/libopensync-0.30
->=app-pda/libopensync-plugin-file-0.30
->=app-pda/libopensync-plugin-irmc-0.30
->=app-pda/libopensync-plugin-palm-0.30
->=app-pda/libopensync-plugin-python-0.30
-app-pda/libopensync-plugin-syncml
-app-pda/libopensync-plugin-vformat
-app-pda/osynctool
-
-# Ryan Hill <dirtyepic@gentoo.org> (30 Mar 2011)
-# Work in progress
-# https://bugs.gentoo.org/show_bug.cgi?id=354423
-app-pda/libopensync-plugin-gnokii
-app-pda/libopensync-plugin-gpe
-app-pda/multisync-gui
-
 # Markos Chandras <hwoarang@gentoo.org> (01 Nov 2010)
 # Masking alpha releases
 net-analyzer/ncrack
@@ -855,17 +831,6 @@ sys-auth/pam_keystore
 # available in the tree.
 ~app-i18n/skk-jisyo-9999
 =app-misc/sleepyhead-9999
-=app-pda/libsyncml-9999
-=app-pda/libopensync-9999
-=app-pda/osynctool-9999
-=app-pda/libopensync-plugin-file-9999
-=app-pda/libopensync-plugin-gnokii-9999
-=app-pda/libopensync-plugin-gpe-9999
-=app-pda/libopensync-plugin-irmc-9999
-=app-pda/libopensync-plugin-palm-9999
-=app-pda/libopensync-plugin-python-9999
-=app-pda/libopensync-plugin-syncml-9999
-=app-pda/libopensync-plugin-vformat-9999
 app-portage/layman-dbtools
 =www-plugins/google-talkplugin-9999
 

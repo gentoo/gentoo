@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils qt4-r2
+inherit eutils qmake-utils qt4-r2
 
 MY_PN="zyGrib"
 
@@ -37,7 +37,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_prepare() {
 	sed -i 's,INSTALLDIR=$(HOME)/zyGrib,INSTALLDIR=$(DESTDIR)/opt/zyGrib,' Makefile
-	sed -i 's,QMAKE=/usr/bin/qmake-qt4,QMAKE=/usr/bin/qmake,' Makefile
+	sed -i "s,QMAKE=/usr/bin/qmake-qt4,QMAKE=$(qt4_get_bindir)/qmake," Makefile
 }
 
 src_install() {

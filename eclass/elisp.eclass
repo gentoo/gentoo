@@ -65,13 +65,21 @@
 # DOCS="blah.txt ChangeLog" is automatically used to install the given
 # files by dodoc in src_install().
 
-inherit elisp-common eutils
+inherit elisp-common
 
 case ${EAPI:-0} in
-	0|1) EXPORT_FUNCTIONS src_{unpack,compile,install} \
-		pkg_{setup,postinst,postrm} ;;
-	*) EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,install} \
-		pkg_{setup,postinst,postrm} ;;
+	0|1)
+		inherit eutils
+		EXPORT_FUNCTIONS src_{unpack,compile,install} \
+			pkg_{setup,postinst,postrm} ;;
+	2|3|4|5)
+		inherit eutils
+		EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,install} \
+			pkg_{setup,postinst,postrm} ;;
+	6)
+		EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,install} \
+			pkg_{setup,postinst,postrm} ;;
+	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
 esac
 
 DEPEND=">=virtual/emacs-${NEED_EMACS:-23}"
@@ -117,21 +125,28 @@ elisp_src_unpack() {
 # for in the current working dir, WORKDIR, and FILESDIR.
 
 elisp_src_prepare() {
-	local patch
+	local patch file
 	for patch in ${ELISP_PATCHES}; do
 		if [[ -f ${patch} ]]; then
-			epatch "${patch}"
+			file="${patch}"
 		elif [[ -f ${WORKDIR}/${patch} ]]; then
-			epatch "${WORKDIR}/${patch}"
+			file="${WORKDIR}/${patch}"
 		elif [[ -f ${FILESDIR}/${patch} ]]; then
-			epatch "${FILESDIR}/${patch}"
+			file="${FILESDIR}/${patch}"
 		else
 			die "Cannot find ${patch}"
 		fi
+		case ${EAPI:-0} in
+			0|1|2|3|4|5) epatch "${file}" ;;
+			6) eapply "${file}" ;;
+		esac
 	done
 
 	# apply any user patches
-	epatch_user
+	case ${EAPI:-0} in
+		0|1|2|3|4|5) epatch_user ;;
+		6) eapply_user ;;
+	esac
 
 	if [[ -n ${ELISP_REMOVE} ]]; then
 		rm ${ELISP_REMOVE} || die
