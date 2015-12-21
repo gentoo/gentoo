@@ -35,7 +35,7 @@ src_prepare() {
 		-e '/^CFLAGS/d;/^CXXFLAGS/d' \
 		-e 's|$${SHARED_LIB_FLAG}|& $(LDFLAGS)|g' \
 		Makefile || die
-	if use blas; then 
+	if use blas; then
 		sed -i -e 's:blas/blas.a::g' Makefile || die
 	fi
 }
