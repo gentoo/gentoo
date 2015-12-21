@@ -22,7 +22,7 @@ RDEPEND="dev-lang/perl
 	virtual/perl-Time-Local
 	sys-libs/cracklib"
 
-PATCHES="../patch"
+PATCHES=( "../patch" )
 
 src_configure() {
 	tc-export CC
