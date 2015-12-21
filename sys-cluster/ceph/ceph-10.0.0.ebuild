@@ -16,7 +16,7 @@ else
 fi
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 
-inherit check-reqs autotools eutils multilib python-single-r1 udev readme.gentoo systemd ${scm_eclass}
+inherit check-reqs autotools eutils multilib python-single-r1 udev user readme.gentoo systemd ${scm_eclass}
 
 DESCRIPTION="Ceph distributed filesystem"
 HOMEPAGE="http://ceph.com/"
@@ -75,7 +75,6 @@ STRIP_MASK="/usr/lib*/rados-classes/*"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.79-libzfs.patch
 )
-CHECKREQS_DISK_BUILD="1400M"
 
 check-reqs_export_vars() {
 	# check-reqs does not support use flags, and there is a lot of variability
@@ -93,10 +92,16 @@ check-reqs_export_vars() {
 	fi
 }
 
+user_setup() {
+	enewgroup ceph
+	enewuser ceph -1 -1 /var/lib/ceph ceph
+}
+
 pkg_setup() {
 	python_setup
 	check-reqs_export_vars
 	check-reqs_pkg_setup
+	user_setup
 }
 
 src_prepare() {
@@ -132,6 +137,7 @@ src_configure() {
 		--without-librocksdb
 		$(use_with lttng )
 		$(use_with babeltrace)
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 	)
 
 	use jemalloc || \
@@ -158,21 +164,19 @@ src_install() {
 	keepdir /var/lib/${PN}/tmp
 	keepdir /var/log/${PN}/stat
 
+	fowners ceph:ceph /var/lib/ceph
+
 	newinitd "${FILESDIR}/rbdmap.initd" rbdmap
 	newinitd "${FILESDIR}/${PN}.initd-r1" ${PN}
 	newconfd "${FILESDIR}/${PN}.confd-r1" ${PN}
 
-	systemd_dounit           "${FILESDIR}/ceph.target"
-	systemd_newunit          "${FILESDIR}/ceph-mds_at.service"      "ceph-mds@.service"
 	systemd_install_serviced "${FILESDIR}/ceph-mds_at.service.conf" "ceph-mds@.service"
-	systemd_newunit          "${FILESDIR}/ceph-osd_at.service"      "ceph-osd@.service"
 	systemd_install_serviced "${FILESDIR}/ceph-osd_at.service.conf" "ceph-osd@.service"
-	systemd_newunit          "${FILESDIR}/ceph-mon_at.service"      "ceph-mon@.service"
 	systemd_install_serviced "${FILESDIR}/ceph-mon_at.service.conf" "ceph-mon@.service"
 
 	python_fix_shebang \
 		"${ED}"/usr/sbin/{ceph-disk,ceph-create-keys} \
-		"${ED}"/usr/bin/{ceph,ceph-rest-api}
+		"${ED}"/usr/bin/{ceph,ceph-rest-api,ceph-detect-init,ceph-brag}
 
 	#install udev rules
 	udev_dorules udev/50-rbd.rules

@@ -16,3 +16,10 @@
    net-misc/ntp
    net-misc/openntpd
    net-misc/chrony
+
+4) Starting from version 9.0.x, Ceph daemons run as ‘ceph’ user instead root.
+   In order to fix this, we suggest to stop ceph daemons, and fix ownership
+
+    chown -R ceph:ceph /var/lib/ceph
+
+    https://ceph.com/releases/v9-2-0-infernalis-released/

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,9 +24,6 @@ DOCS=( Changes README )
 
 src_prepare() {
 	sed -i -e "/^include_HEADERS/s/ event.h//" Makefile.am || die
-
-	# bug #493050
-	sed -i -e "/^AM_INIT_AUTOMAKE/a\ " configure.ac || die
 
 	# bug #411847
 	epatch "${FILESDIR}/${PN}-pc.patch"
