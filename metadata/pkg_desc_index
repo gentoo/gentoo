@@ -416,7 +416,7 @@ app-benchmarks/phoronix-test-suite 4.8.4 4.8.5: Phoronix's comprehensive, cross-
 app-benchmarks/piozone 1.0-r3: A hard-disk benchmarking tool
 app-benchmarks/pipebench 0.40 0.40-r1: Measures the speed of stdin/stdout communication
 app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
-app-benchmarks/siege 3.0.6 3.1.0: A HTTP regression testing and benchmarking utility
+app-benchmarks/siege 3.0.6 3.1.0 3.1.3: A HTTP regression testing and benchmarking utility
 app-benchmarks/spew 1.0.8 1.0.8-r1: Measures I/O performance and/or generates I/O load
 app-benchmarks/stress 1.0.1 1.0.4 1.0.4-r1: Imposes stressful loads on different aspects of the system
 app-benchmarks/sysbench 0.4.12-r1: System performance benchmark
