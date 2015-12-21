@@ -22,7 +22,7 @@ is_type_valid() {
 }
 
 start_pre() {
-        checkpath -d -q $(dirname ${pidfile})
+        checkpath -d -q -o ceph $(dirname ${pidfile})
 }
 
 start() {
@@ -31,18 +31,18 @@ start() {
 		eerror "Please give valid Ceph Server Type: mds, mon, osd"
 		return 1
 	fi
-	${command} ${command_args}
+	start-stop-daemon --start -exec ${command} --user ceph --group ceph -- ${command_args}
 	eend $?
 }
 
 stop() {
 	ebegin "Stopping Ceph ${type}.${id}"
-	start-stop-daemon --stop --pidfile ${pidfile}
+	start-stop-daemon --stop --user ceph --group ceph --pidfile ${pidfile}
 	eend $?
 }
 
 reload() {
 	ebegin "Reloading Ceph ${type}.${id}"
-	start-stop-daemon --signal 1 --pidfile ${pidfile}
+	start-stop-daemon --signal 1 --user ceph --group ceph --pidfile ${pidfile}
 	eend $?
 }
