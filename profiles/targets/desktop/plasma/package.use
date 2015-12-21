@@ -35,6 +35,7 @@ media-libs/mesa egl wayland
 # Allow certain KDE 4 components to be coinstalled with Plasma 5
 <dev-util/kdevelop-4.8.0 -gdbui
 kde-apps/kcontrol -handbook
+kde-apps/kde-wallpapers minimal
 kde-apps/kde4-l10n minimal
 kde-apps/kdeartwork-meta minimal
 kde-apps/kdebase-kioslaves minimal
