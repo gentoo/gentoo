@@ -12,11 +12,13 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc x86"
-IUSE="alsa ncurses pulseaudio suid qt4"
+KEYWORDS="~alpha ~amd64 ~ppc ~x86"
+IUSE="alsa ncurses pulseaudio suid qt5"
 
-RDEPEND="ncurses? ( sys-libs/ncurses:* )
-	qt4? ( dev-qt/qtgui:4[qt3support] )
+RDEPEND="ncurses? ( sys-libs/ncurses:= )
+	qt5? ( dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5 )
 	alsa? ( media-libs/alsa-lib )
 	pulseaudio? ( media-sound/pulseaudio )"
 DEPEND="${RDEPEND}
@@ -33,7 +35,7 @@ src_configure() {
 		$(use_enable pulseaudio ) \
 		$(use_enable alsa ) \
 		$(use_enable ncurses cwcp ) \
-		$(use_enable qt4 xcwcp )
+		$(use_enable qt5 xcwcp )
 }
 
 src_install() {
@@ -45,7 +47,7 @@ src_install() {
 		if use ncurses ; then
 			fperms 711 /usr/bin/cwcp
 		fi
-		if use qt4 ; then
+		if use qt5 ; then
 			fperms 711 /usr/bin/xcwcp
 		fi
 	fi
