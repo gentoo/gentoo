@@ -11,4 +11,4 @@ SLOT=0/3
 SRC_URI=https://github.com/cjlin1/liblinear/archive/v210.tar.gz -> liblinear-210.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=fc563e82bd6e7a0528ed861158d1db7f
+_md5_=30390011271803edfbedaf3e24d320f2

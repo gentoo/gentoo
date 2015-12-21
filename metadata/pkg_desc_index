@@ -2060,7 +2060,7 @@ app-portage/deltup 0.4.5-r1 0.4.6: Delta-Update - patch system for updating sour
 app-portage/demerge 0.047-r1: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r2 9999: A utility to maintain package.unmask entries up-to-date with masks
 app-portage/distpatch 0.1.1: Distfile Patching Support for Gentoo Linux (tools)
-app-portage/eclass-manpages 20150814: collection of Gentoo eclass manpages
+app-portage/eclass-manpages 20150814 20150814-r1: collection of Gentoo eclass manpages
 app-portage/eix 0.30.4 0.30.7 0.30.8 0.30.10 0.30.11 0.31.1 0.31.2 0.31.3 0.31.4: Search and query ebuilds, portage incl. local settings, ext. overlays and more
 app-portage/elogv 0.7.6.1-r1 0.7.6.2 0.7.6.3 0.7.6.4 0.7.6.5 0.7.6.6: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 0.6.2-r3 2.1-r1 2.1-r2 2.6 2.6-r1: Elog viewer for Gentoo
@@ -8385,7 +8385,7 @@ dev-ros/test_rosbag 1.11.14 1.11.15 1.11.16 9999: Unit tests for rosbag
 dev-ros/test_rosbag_storage 1.11.14 1.11.15 1.11.16 9999: Unit tests for rosbag_storage
 dev-ros/test_roscpp 1.11.14 1.11.15 1.11.16 9999: Unit tests for roscpp
 dev-ros/test_rosgraph 1.11.14 1.11.15 1.11.16 9999: Unit tests for rosgraph
-dev-ros/test_roslaunch 1.11.14 1.11.15 1.11.16 9999: Unit tests for roslaunch
+dev-ros/test_roslaunch 1.11.16-r1 9999: Unit tests for roslaunch
 dev-ros/test_roslib_comm 1.11.14 1.11.15 1.11.16 9999: Unit tests for roslib
 dev-ros/test_rosmaster 1.11.14 1.11.15 1.11.16 9999: Unit tests for rosmaster
 dev-ros/test_rosparam 1.11.14 1.11.15 1.11.16 9999: Unit tests for rosparam
