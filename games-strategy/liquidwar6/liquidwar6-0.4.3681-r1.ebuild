@@ -16,7 +16,7 @@ SRC_URI="http://www.ufoot.org/download/liquidwar/v6/${MY_PV}/${MY_P}.tar.gz
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="doc gles2 gtk libcaca +maps nls +ogg openmp readline test"
 
 # yes, cunit is rdep
