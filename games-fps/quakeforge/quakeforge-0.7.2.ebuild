@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit eutils autotools games
+inherit base eutils autotools games
 
 DESCRIPTION="A new 3d engine based off of id Softwares's legendary Quake and QuakeWorld game engine"
 HOMEPAGE="http://www.quakeforge.net/"
@@ -27,7 +27,7 @@ RDEPEND="
 		x11-libs/libXext
 		x11-libs/libXxf86vm
 	)
-	ncurses? ( sys-libs/ncurses:0 )
+	ncurses? ( sys-libs/ncurses )
 	vorbis? ( media-libs/libogg media-libs/libvorbis )
 	zlib? ( sys-libs/zlib )
 	xv? (

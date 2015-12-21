@@ -2,8 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils flag-o-matic toolchain-funcs games
+# quake3-9999          -> latest svn
+# quake3-9999.REV      -> use svn REV
+# quake3-VER_alphaREV  -> svn snapshot REV for version VER
+# quake3-VER           -> normal quake release
+
+EAPI=2
+inherit eutils flag-o-matic games toolchain-funcs
+[[ "${PV}" == 9999* ]] && inherit subversion
 
 MY_PN="ioquake3"
 MY_PV="${PV}"
@@ -11,7 +17,8 @@ MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Quake III Arena - 3rd installment of the classic id 3D first-person shooter"
 HOMEPAGE="http://ioquake3.org/"
-SRC_URI="http://ioquake3.org/files/${MY_PV}/${MY_P}.tar.bz2"
+[[ "${PV}" != 9999* ]] && SRC_URI="http://ioquake3.org/files/${MY_PV}/${MY_P}.tar.bz2"
+ESVN_REPO_URI="svn://svn.icculus.org/quake3/trunk"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -37,7 +44,11 @@ RDEPEND="${DEPEND}
 	games-fps/quake3-data
 	teamarena? ( games-fps/quake3-teamarena )"
 
-S="${WORKDIR}/${MY_P}"
+if [[ "${PV}" == 9999* ]] ; then
+	S="${WORKDIR}/trunk"
+else
+	S="${WORKDIR}/${MY_P}"
+fi
 
 my_arch() {
 	case "${ARCH}" in
@@ -52,9 +63,15 @@ my_platform() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-bots.patch
+	if [[ "${PV}" == 9999* ]] ; then
+		# Workaround for the version string
+		ln -s "${ESVN_WC_PATH}/.svn" .svn || die "ln ${ESVN_WC_PATH}/.svn"
+	else
+		epatch "${FILESDIR}"/${P}-bots.patch
+	fi
+
 	einfo "Fixing libspeex linking..."
-	sed -i -e 's/\(-lspeex\)/\1 -lspeexdsp/' Makefile || die
+	sed -i -e 's/\(-lspeex\)/\1 -lspeexdsp/' Makefile || die "sed failed"
 
 	# Use system jpeg library
 #	epatch "${FILESDIR}"/${P}-remove-bundled-jpeg.patch
@@ -90,18 +107,20 @@ src_compile() {
 		USE_MUMBLE=$(buildit mumble) \
 		USE_OPENAL=$(buildit openal) \
 		USE_OPENAL_DLOPEN=0 \
-		USE_VOIP=$(buildit voice)
+		USE_VOIP=$(buildit voice) \
+		|| die "emake failed"
 }
 
 src_install() {
-	dodoc BUGS ChangeLog id-readme.txt md4-readme.txt NOTTODO README TODO
+	dodoc BUGS ChangeLog id-readme.txt md4-readme.txt NOTTODO README TODO || die
 	if use voice ; then
-		dodoc voip-readme.txt
+		dodoc voip-readme.txt || die
 	fi
 
 	if use opengl || ! use dedicated ; then
-		doicon misc/quake3.svg
+		doicon misc/quake3.svg || die
 		make_desktop_entry quake3 "Quake III Arena"
+		#use smp && make_desktop_entry quake3-smp "Quake III Arena (SMP)"
 	fi
 
 	cd build/release-$(my_platform)-$(my_arch) || die
@@ -109,8 +128,8 @@ src_install() {
 	for exe in {ioquake3,ioquake3-smp,ioq3ded}.$(my_arch) ; do
 		if [[ -x ${exe} ]] ; then
 			target=${exe%.*}
-			newgamesbin ${exe} ${target}
-			dosym ${target} "${GAMES_BINDIR}/${target/io}"
+			newgamesbin ${exe} ${target} || die "newgamesbin ${target}"
+			dosym ${target} "${GAMES_BINDIR}/${target/io}" || die "dosym ${target}"
 		fi
 	done
 
