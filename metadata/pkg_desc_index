@@ -9387,7 +9387,7 @@ dev-util/eric 4.5.25-r1 5.5.2: A full featured Python IDE using PyQt4 and QScint
 dev-util/exmap 0.10 0.10-r1: A memory analysis kernel module with userland tool
 dev-util/fatrace 0.4 0.5 0.9 0.10: report file access events from all running processes
 dev-util/febootstrap 2.11: Fedora bootstrap scripts
-dev-util/fhist 1.16 1.19: File history and comparison tools
+dev-util/fhist 1.16 1.19 1.21: File history and comparison tools
 dev-util/filepp 1.6.0 1.8.0: a generic file preprocessor with a CPP-like syntax
 dev-util/findbugs 3.0.1: Find Bugs in Java Programs
 dev-util/fix-la-relink-command 0.1.1: Helps prevent .la files from relinking to libraries outside a build tree
