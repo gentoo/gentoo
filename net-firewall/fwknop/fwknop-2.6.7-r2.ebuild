@@ -77,11 +77,6 @@ src_prepare() {
 	fi
 
 	autotools-utils_src_prepare
-
-	if use python; then
-		cd "${S}"/python || die
-		distutils-r1_src_prepare
-	fi
 }
 
 src_configure() {
