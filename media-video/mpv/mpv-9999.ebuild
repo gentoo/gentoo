@@ -129,12 +129,12 @@ pkg_pretend() {
 	fi
 
 	if use openal; then
-		ewarn "You have enabled the openal audio output which is a fallback"
+		ewarn "You have enabled the openal audio output, which is a fallback"
 		ewarn "and disabled by upstream."
 	fi
 
 	if use sdl; then
-		ewarn "You have enabled the sdl video and audio outputs which are fallbacks"
+		ewarn "You have enabled the sdl video and audio outputs, which are fallbacks"
 		ewarn "and disabled by upstream."
 	fi
 
@@ -144,7 +144,8 @@ pkg_pretend() {
 		einfo "provided by media-video/libav."
 	fi
 
-	einfo "For additional format support you need to enable the support on your"
+	einfo "mpv optionally supports many different audio and video formats."
+	einfo "You will need to enable support for the desired formats in your"
 	einfo "libavcodec/libavformat provider:"
 	einfo "    media-video/ffmpeg or media-video/libav"
 }
