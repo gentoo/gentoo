@@ -186,6 +186,5 @@ pkg_postrm() {
 	use gtk && gnome2_query_immodules_gtk2
 	use gtk3 && gnome2_query_immodules_gtk3
 	use gconf && gnome2_schemas_update
-	gnome2_schemas_savelist
 	gnome2_icon_cache_update
 }
