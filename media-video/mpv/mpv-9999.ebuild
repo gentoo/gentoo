@@ -8,11 +8,11 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 PYTHON_REQ_USE='threads(+)'
 inherit eutils python-any-r1 waf-utils pax-utils fdo-mime gnome2-utils
 
-WAF_V="1.8.12"
+WAF_PV='1.8.12'
 
 DESCRIPTION="Media player based on MPlayer and mplayer2"
 HOMEPAGE="https://mpv.io/"
-SRC_URI="https://waf.io/pub/release/waf-${WAF_V}"
+SRC_URI="https://waf.io/pub/release/waf-${WAF_PV}"
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI+=" https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -151,7 +151,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cp "${DISTDIR}"/waf-${WAF_V} "${S}"/waf || die
+	cp "${DISTDIR}/waf-${WAF_PV}" "${S}"/waf || die
 	chmod 0755 "${S}"/waf || die
 	epatch_user
 }
