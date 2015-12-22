@@ -1293,8 +1293,8 @@ app-emulation/libcacard 0.1.2 2.5.1: virtual Common Access Card (CAC) library em
 app-emulation/libguestfs 1.26.1 1.28.3 1.28.5 1.28.5-r1: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.26.0-r1 1.28.1 1.28.1-r1: VM appliance disk image used in libguestfs package
 app-emulation/libspectrum 1.0.0 1.1.1: Spectrum emulation library
-app-emulation/libvirt 1.2.18-r1 1.2.21-r1 9999: C toolkit to manipulate virtual machines
-app-emulation/libvirt-glib 0.2.0 0.2.1 0.2.2: GLib and GObject mappings for libvirt
+app-emulation/libvirt 1.2.21-r1 9999: C toolkit to manipulate virtual machines
+app-emulation/libvirt-glib 0.2.2: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.2-r2 0.0.3: Provides SNMP functionality for libvirt
 app-emulation/lxc 1.0.6-r1 1.0.7 1.0.8 1.1.0-r6 1.1.1-r1 1.1.2 1.1.2-r1 1.1.2-r2 1.1.3 1.1.4 1.1.5: LinuX Containers userspace utilities
 app-emulation/lxd 0.22 0.23 0.24: Fast, dense and secure container management
@@ -4643,7 +4643,7 @@ dev-libs/libidmef 1.0.3: Implementation of the IDMEF XML draft
 dev-libs/libindicate 12.10.1-r1 12.10.1-r2: A library to raise flags on DBus for other components of the desktop to pick up and visualize
 dev-libs/libindicate-qt 0.2.5.91: Qt wrapper for libindicate library
 dev-libs/libindicator 12.10.0-r200 12.10.0-r300 12.10.1-r200 12.10.1-r201 12.10.1-r300 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
-dev-libs/libinput 0.9.0 1.0.1 1.1.0 1.1.1 1.1.2: Library to handle input devices in Wayland
+dev-libs/libinput 0.9.0 1.0.1 1.1.0 1.1.1 1.1.2 1.1.3: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.6: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.3.8 1.4.0: Enables creation and expansion of ISO-9660 filesystems on all CD/DVD media supported by libburn
 dev-libs/libisofs 1.3.8 1.4.0: libisofs is an open-source library for reading, mastering and writing optical discs
@@ -7206,7 +7206,7 @@ dev-python/libnacl 1.4.0 1.4.3: Python ctypes wrapper for libsodium
 dev-python/libnatpmp 20130911 20140401-r1 20150609: Python module for libnatpmp, an alternative protocol to UPnP IGD
 dev-python/librharris 0.1.14-r1: Python Internet Programming Library
 dev-python/librsvg-python 2.32.0-r1: Python bindings for the librsvg library
-dev-python/libvirt-python 1.2.18 1.2.21 9999: libvirt Python bindings
+dev-python/libvirt-python 1.2.21 9999: libvirt Python bindings
 dev-python/libwnck-python 2.32.0-r1: Python bindings for the libwnck library
 dev-python/line_profiler 1.0 9999: Line-by-line profiler
 dev-python/linecache2 1.0.0: Backports of the linecache module
@@ -9440,7 +9440,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 1.625.3 1.641 1.642: Extensible continuous integration server
+dev-util/jenkins-bin 1.625.3 1.641 1.642 1.643: Extensible continuous integration server
 dev-util/jif 3.1_rc1: JIF is an IDE for the creation of text adventures based on Graham Nelson's Inform standard
 dev-util/kbuild 0.1.9998_pre20120806 0.1.9998_pre20131130 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.5: A graphical debugger interface
@@ -11087,7 +11087,7 @@ kde-base/kdebase-cursors 4.11.19 4.11.22: oxygen cursors from kdebase
 kde-base/kdebase-pam 9: pam.d files used by several KDE components
 kde-base/kdebase-startkde 4.11.19 4.11.22: Startkde script, which starts a complete KDE session, and associated scripts
 kde-base/kdebindings-meta 4.14.3: KDE bindings - merge this to pull in all kdebindings-derived packages
-kde-base/kdelibs 4.14.8 4.14.13-r1 4.14.14: KDE libraries needed by all KDE programs
+kde-base/kdelibs 4.14.8 4.14.13-r1 4.14.14 4.14.15: KDE libraries needed by all KDE programs
 kde-base/kdepim-common-libs 4.14.8 4.14.10: Common libraries for KDE PIM apps
 kde-base/kdepim-icons 4.4.2015.06 4.14.8 4.14.10: KDE PIM icons
 kde-base/kdepim-kresources 4.4.2015.06 4.14.8 4.14.10: KDE PIM groupware plugin collection
@@ -17818,7 +17818,7 @@ x11-libs/libXfont 1.4.9 1.5.1: X.Org Xfont library
 x11-libs/libXfont2 2.0.1: X.Org Xfont library
 x11-libs/libXfontcache 1.0.5-r1: X.Org Xfontcache library
 x11-libs/libXft 2.3.1-r1 2.3.2: X.Org Xft library
-x11-libs/libXi 1.7.2 1.7.4 1.7.5: X.Org Xi library
+x11-libs/libXi 1.7.4 1.7.5 1.7.6: X.Org Xi library
 x11-libs/libXinerama 1.1.3: X.Org Xinerama library
 x11-libs/libXmu 1.1.1 1.1.1-r1 1.1.2: X.Org Xmu library
 x11-libs/libXp 1.0.2 1.0.3: X.Org Xp library
@@ -18185,7 +18185,7 @@ x11-misc/xmountains 2.9: Fractal terrains of snow-capped mountains near water
 x11-misc/xnee 3.19: Program suite to record, replay and distribute user actions
 x11-misc/xnots 0.2.1-r1 9999: A desktop sticky note program for the unix geek
 x11-misc/xoo 0.7: A graphical wrapper around xnest
-x11-misc/xorg-cf-files 1.0.5: Old Imake-related build files
+x11-misc/xorg-cf-files 1.0.5 1.0.6: Old Imake-related build files
 x11-misc/xosview 1.16 1.17: X11 operating system viewer
 x11-misc/xpad 4.2 4.5.0: a sticky note application for jotting down things to remember
 x11-misc/xplanet 1.3.0 1.3.0-r1: Render images of the earth into the X root window
