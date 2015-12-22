@@ -83,7 +83,7 @@ COMMON_DEPEND="
 	pulseaudio? ( media-sound/pulseaudio )
 	rubberband? ( >=media-libs/rubberband-1.8.0 )
 	samba? ( net-fs/samba )
-	sdl? ( media-libs/libsdl2[threads] )
+	sdl? ( media-libs/libsdl2[sound,threads,video,X?,wayland?] )
 	v4l? ( media-libs/libv4l )
 	wayland? (
 		>=dev-libs/wayland-1.6.0
@@ -193,7 +193,7 @@ src_configure() {
 		$(usex luajit '--lua=luajit' '')
 
 		# Audio outputs
-		$(use_enable sdl sdl2)	# SDL output is fallback for platforms where nothing better is available
+		$(use_enable sdl sdl2)	# Listed under audio, but also includes video
 		--disable-sdl1
 		$(use_enable oss oss-audio)
 		--disable-rsound		# Only available in overlays
