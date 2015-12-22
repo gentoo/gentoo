@@ -159,6 +159,7 @@ src_configure() {
 		$(use_enable libmpv libmpv-shared)
 
 		--disable-libmpv-static
+		--disable-static-build
 		--disable-build-date	# Create reproducible build
 		--disable-optimize		# Do not add '-O2' to CFLAGS
 		--disable-debug-build	# Do not add '-g' to CFLAGS
@@ -199,8 +200,12 @@ src_configure() {
 		$(use_enable jack)
 		$(use_enable openal)
 		$(use_enable alsa)
+		--disable-coreaudio
+		--disable-dsound
+		--disable-wasapi
 
 		# Video outputs
+		--disable-cocoa
 		$(use_enable wayland)
 		$(use_enable X x11)
 		$(use_enable xscreensaver xss)
