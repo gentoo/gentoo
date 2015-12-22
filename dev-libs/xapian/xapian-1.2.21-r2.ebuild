@@ -4,6 +4,8 @@
 
 EAPI="5"
 
+inherit eutils
+
 MY_P="${PN}-core-${PV}"
 
 DESCRIPTION="Xapian Probabilistic Information Retrieval library"
@@ -56,6 +58,8 @@ src_install() {
 	use doc || rm -rf "${D}usr/share/doc/${PF}"
 
 	dodoc AUTHORS HACKING PLATFORMS README NEWS
+
+	prune_libtool_files --all
 }
 
 src_test() {

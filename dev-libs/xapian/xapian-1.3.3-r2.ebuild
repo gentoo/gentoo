@@ -61,7 +61,7 @@ src_install() {
 
 	dodoc AUTHORS HACKING PLATFORMS README NEWS
 
-	prune_libtool_files
+	prune_libtool_files --all
 }
 
 src_test() {
