@@ -97,7 +97,7 @@ RDEPEND="
 			egl? ( media-libs/mesa[egl] )
 		)
 		lcms? ( >=media-libs/lcms-2.6:2 )
-		vaapi? ( >=x11-libs/libva-0.34.0[X(+)] )
+		vaapi? ( >=x11-libs/libva-1.2.0[X] )
 		vdpau? ( >=x11-libs/libvdpau-0.2 )
 		xinerama? ( x11-libs/libXinerama )
 		xscreensaver? ( x11-libs/libXScrnSaver )
