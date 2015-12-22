@@ -56,10 +56,7 @@ RDEPEND="
 	sys-libs/zlib
 	alsa? ( >=media-libs/alsa-lib-1.0.18 )
 	bluray? ( >=media-libs/libbluray-0.3.0 )
-	cdda? (
-		dev-libs/libcdio
-		dev-libs/libcdio-paranoia
-	)
+	cdda? ( dev-libs/libcdio-paranoia )
 	drm? ( x11-libs/libdrm )
 	dvb? ( virtual/linuxtv-dvb-headers )
 	dvd? (
