@@ -21,4 +21,5 @@ src_install() {
 	emake DESTDIR="${D}" install
 	dodoc ChangeLog
 	doman fuse/mount.exfat-fuse.8
+	dosym mount.exfat-fuse.8 /usr/share/man/man8/mount.exfat.8
 }
