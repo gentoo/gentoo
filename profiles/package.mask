@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (22 Dec 2015)
+# No longer works. Dead upstream. Masked for removal in 30 days.
+# Bug 507914
+app-doc/ebookmerge
+
 # Michael Sterrett <mr_bones_@gentoo.org> (21 Dec 2015)
 # Vanished from the internet. (bug #561148)
 # Masked for removal on 20160120
