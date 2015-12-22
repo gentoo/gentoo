@@ -125,26 +125,29 @@ RDEPEND+="
 
 pkg_pretend() {
 	if ! use libass; then
-		ewarn "You have disabled the libass flag. No OSD or subtitles will be displayed."
+		ewarn "You have disabled the libass support."
+		ewarn "OSD and subtitles won't be available."
 	fi
 
 	if use openal; then
-		ewarn "You have enabled the openal audio output which is a fallback"
-		ewarn "and disabled by upstream."
+		ewarn "You have enabled the openal audio output. Be warned that"
+		ewarn "this output is considered experimental by upstream."
 	fi
 
 	if use sdl; then
-		ewarn "You have enabled the sdl video and audio outputs which are fallbacks"
-		ewarn "and disabled by upstream."
+		ewarn "You have enabled the sdl video and audio outputs. Note that"
+		ewarn "upstream provides these outputs for compatibility reasons only."
+		ewarn "You probably don't need them under the normal circumstances."
 	fi
 
 	if use libav; then
 		einfo "You have enabled media-video/libav instead of media-video/ffmpeg."
-		einfo "Upstream recommends media-video/ffmpeg, as some functionality is not"
-		einfo "provided by media-video/libav."
+		einfo "Upstream recommends media-video/ffmpeg, as some functionality"
+		einfo "is not provided by media-video/libav."
 	fi
 
-	einfo "For additional format support you need to enable the support on your"
+	einfo "mpv optionally supports many different audio and video formats."
+	einfo "You will need to enable support for the desired formats in your"
 	einfo "libavcodec/libavformat provider:"
 	einfo "    media-video/ffmpeg or media-video/libav"
 }
