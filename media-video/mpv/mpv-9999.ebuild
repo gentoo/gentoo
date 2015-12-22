@@ -94,6 +94,7 @@ COMMON_DEPEND="
 		x11-libs/libXext
 		>=x11-libs/libXrandr-1.2.0
 		opengl? (
+			x11-libs/libXdamage
 			virtual/opengl
 			egl? ( media-libs/mesa[egl] )
 		)
