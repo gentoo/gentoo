@@ -8,7 +8,7 @@ inherit java-pkg-2
 
 DESCRIPTION="sbt, a build tool for Scala."
 HOMEPAGE="http://scala-sbt.org"
-SRC_URI="http://repo.scala-sbt.org/scalasbt/sbt-native-packages/org/scala-sbt/sbt/${PV}/sbt.tgz"
+SRC_URI="https://dl.bintray.com/sbt/native-packages/sbt/${PV}/${PN/-bin}-${PV}.tgz"
 
 LICENSE="BSD"
 SLOT="0.12"
