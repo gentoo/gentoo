@@ -64,6 +64,7 @@ COMMON_DEPEND="
 		>=media-libs/libdvdnav-4.2.0
 		>=media-libs/libdvdread-4.1.3
 	)
+	egl? ( media-libs/mesa[egl,wayland(-)?] )
 	enca? ( app-i18n/enca )
 	iconv? ( virtual/libiconv )
 	jack? ( media-sound/jack-audio-connection-kit )
@@ -86,7 +87,6 @@ COMMON_DEPEND="
 	v4l? ( media-libs/libv4l )
 	wayland? (
 		>=dev-libs/wayland-1.6.0
-		media-libs/mesa[egl,wayland]
 		>=x11-libs/libxkbcommon-0.3.0
 	)
 	X? (
@@ -96,7 +96,6 @@ COMMON_DEPEND="
 		opengl? (
 			x11-libs/libXdamage
 			virtual/opengl
-			egl? ( media-libs/mesa[egl] )
 		)
 		lcms? ( >=media-libs/lcms-2.6:2 )
 		vaapi? ( >=x11-libs/libva-1.2.0[X] )
