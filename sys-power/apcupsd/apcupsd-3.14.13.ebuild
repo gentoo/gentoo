@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit eutils linux-info flag-o-matic systemd udev
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/apcupsd/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x86-fbsd"
-IUSE="snmp +usb cgi nls gnome kernel_linux systemd"
+IUSE="snmp +usb cgi nls gnome kernel_linux"
 
 DEPEND="
 	||	( >=sys-apps/util-linux-2.23[tty-helpers(-)]
@@ -42,9 +42,6 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-3.14.9-aliasing.patch"
-	if use snmp; then
-		epatch "${FILESDIR}/${PN}-snmp-5.7.2.patch"
-	fi
 }
 
 src_configure() {
@@ -83,7 +80,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "installed failed"
+	emake DESTDIR="${D}" install
 	rm -f "${D}"/etc/init.d/halt
 
 	insinto /etc/apcupsd
@@ -99,10 +96,8 @@ src_install() {
 	newinitd "${FILESDIR}/${PN}.init.4" "${PN}"
 	newinitd "${FILESDIR}/${PN}.powerfail.init" "${PN}".powerfail
 
-	if use systemd; then
-		systemd_dounit "${FILESDIR}"/${PN}.service
-		systemd_dotmpfilesd "${FILESDIR}"/${PN}-tmpfiles.conf
-	fi
+	systemd_dounit "${FILESDIR}"/${PN}.service
+	systemd_dotmpfilesd "${FILESDIR}"/${PN}-tmpfiles.conf
 
 	# remove hal settings, we don't really want to have it around still.
 	rm -r "${D}"/usr/share/hal

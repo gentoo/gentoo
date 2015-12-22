@@ -3,7 +3,8 @@
 # $Id$
 
 EAPI=4
-inherit gnome2-utils
+
+inherit flag-o-matic gnome2-utils
 
 DESCRIPTION="Hard disk drive health inspection tool"
 HOMEPAGE="http://gsmartcontrol.sourceforge.net/home/"
@@ -24,6 +25,10 @@ DEPEND="${COMMON_DEPEND}
 	test? ( dev-util/gtk-builder-convert )"
 
 DOCS="TODO" # See 'dist_doc_DATA' value in Makefile.am
+
+src_prepare() {
+	append-cxxflags -std=c++11
+}
 
 src_configure() {
 	econf \
