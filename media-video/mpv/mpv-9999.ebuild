@@ -229,6 +229,7 @@ src_configure() {
 
 		# HWaccels
 		$(use_enable vaapi vaapi-hwaccel)
+		# Automagic VDPAU HW acceleration. See Gentoo bug 558870.
 
 		# TV features
 		$(use_enable v4l tv)
