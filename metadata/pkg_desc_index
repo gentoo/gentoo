@@ -284,7 +284,7 @@ app-arch/p7zip 9.20.1-r5 9.38.1-r2 9.38.1-r3 15.09: Port of 7-Zip archiver for U
 app-arch/par 1.1: Parchive archive fixing tool
 app-arch/par2cmdline 0.6.3 0.6.11 0.6.12 0.6.13: A PAR-2.0 file verification and repair tool
 app-arch/pax 3.4.12.16 3.4.12.16-r1: pax (Portable Archive eXchange) is the POSIX standard archive tool
-app-arch/pbzip2 1.1.12 1.1.12-r1: Parallel bzip2 (de)compressor using libbz2
+app-arch/pbzip2 1.1.12 1.1.12-r1 1.1.13: Parallel bzip2 (de)compressor using libbz2
 app-arch/pdlzip 1.5: Public-domain version of lzip compressor
 app-arch/pdv 1.5.1-r2: build a self-extracting and self-installing binary package
 app-arch/pet2tgz 0.3: Puppy Linux .pet to .tar.gz converter
@@ -2092,7 +2092,7 @@ app-portage/install-mask 0.1.1 9999: Handle INSTALL_MASK setting in make.conf
 app-portage/kuroo4 0.90.4 0.90.5: Graphical Portage frontend based on KDE4/Qt4
 app-portage/layman 2.0.0-r1 2.0.0-r3 2.1.0-r3 2.2.0-r7 2.3.0-r1 9999: Tool to manage Gentoo overlays
 app-portage/layman-dbtools 0_p20100322: Tools to work with layman-global.txt/repositories.xml like files
-app-portage/maintainer-helper 0.1.2: An application to help with ebuild maintenance
+app-portage/maintainer-helper 0.1.2 0.1.2-r1: An application to help with ebuild maintenance
 app-portage/metagen 0.6.2-r1 0.6.3 9999: metadata.xml generator for ebuilds
 app-portage/mirrorselect 2.2.0.1 2.2.2 2.2.2-r2 9999: Tool to help select distfiles mirrors for Gentoo
 app-portage/overlint 0.5.2 0.5.3: Simple tool for static analysis of overlays
@@ -14902,7 +14902,7 @@ net-wireless/bladerf 2015.02 2015.07 9999: Libraries for supporing the BladeRF h
 net-wireless/bladerf-firmware 1.7.1 1.8.0: bladeRF FX3 firmware images
 net-wireless/bladerf-fpga 0.0.6 0.1.1-r1 0.1.2 0.3.4: bladeRF FPGA bitstreams
 net-wireless/bluedevil 2.1.1: Bluetooth stack for KDE
-net-wireless/blueman 2.0-r1 2.0.3 9999: GTK+ Bluetooth Manager, designed to be simple and intuitive for everyday bluetooth tasks
+net-wireless/blueman 2.0.3 9999: GTK+ Bluetooth Manager, designed to be simple and intuitive for everyday bluetooth tasks
 net-wireless/bluez 4.101-r9 5.33 5.34 5.35 5.35-r1 5.36: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141 6.30.223.141-r1 6.30.223.141-r2 6.30.223.248-r1 6.30.223.248-r2 6.30.223.248-r3 6.30.223.248-r4 6.30.223.271-r1 6.30.223.271-r2: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
@@ -16785,7 +16785,7 @@ sys-fs/ecryptfs-utils 104 108: eCryptfs userspace utilities
 sys-fs/encfs 1.7.5 1.8.1: An implementation of encrypted filesystem in user-space using FUSE
 sys-fs/etcd-fs 0_p20140620: Use etcd as a FUSE filesystem
 sys-fs/eudev 1.9-r2 1.10-r2 3.1.2 3.1.2-r1 3.1.2-r10 3.1.5 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
-sys-fs/exfat-utils 1.0.1 1.1.0 1.1.1 1.2.1 1.2.2: exFAT filesystem utilities
+sys-fs/exfat-utils 1.0.1 1.1.1 1.2.1 1.2.2 1.2.3: exFAT filesystem utilities
 sys-fs/ext3grep 0.10.2: Recover deleted files on an ext3 file system
 sys-fs/ext4magic 0.3.2: Linux admin tool, can help to recover deleted or overwritten files on ext3 and ext4 filesystems
 sys-fs/extundelete 0.2.0-r1 0.2.0-r2 0.2.4: A utility to undelete files from an ext3 or ext4 partition
@@ -16794,7 +16794,7 @@ sys-fs/fatsort 1.3: Sorts files on FAT16/32 partitions, ideal for basic audio pl
 sys-fs/fur 0.5: A RAPI (SynCE) based FUSE module
 sys-fs/fuse 2.9.3 2.9.4: An interface for filesystems implemented in userspace
 sys-fs/fuse-convmvfs 0.2.6: FUSE file system to convert filename charset
-sys-fs/fuse-exfat 1.0.1 1.1.0 1.2.1 1.2.2: exFAT filesystem FUSE module
+sys-fs/fuse-exfat 1.0.1 1.1.0 1.2.2 1.2.3: exFAT filesystem FUSE module
 sys-fs/fuse-zip 0.2.12 0.2.13 0.3.0 0.4.0: FUSE file system to navigate, extract, create and modify ZIP archives
 sys-fs/fuse4bsd 0.3.0 0.3.9_pre1: Fuse for FreeBSD
 sys-fs/fuseiso 20070708-r1: Fuse module to mount ISO9660
@@ -17001,7 +17001,7 @@ sys-libs/ncurses 5.9-r3 5.9-r4 5.9-r5 5.9-r99 5.9-r101 6.0 6.0-r1: console displ
 sys-libs/newlib 1.18.0 1.19.0 1.20.0 2.0.0 2.1.0 2.2.0 2.2.0.20150423 9999: Newlib is a C library intended for use on embedded systems
 sys-libs/nss-db 2.2.3_pre1-r2 2.2.3_pre1-r3 2.2.3_pre1-r4: Allows important system files to be stored in a fast database file rather than plain text
 sys-libs/nss-usrfiles 2.18.1: NSS module to read passwd/group files from CoreOS /usr location
-sys-libs/nss_wrapper 1.0.3 1.1.0 1.1.1: A wrapper for the user, group and hosts NSS API
+sys-libs/nss_wrapper 1.1.1 1.1.2: A wrapper for the user, group and hosts NSS API
 sys-libs/ntdb 1.0-r1: A not-so trivial keyword/data database system
 sys-libs/openhpi 2.12.0 3.0.0: Open source implementation of the Service Availability Forum (SAF) Hardware Platform Interface (HPI)
 sys-libs/openipmi 1.3.18 1.4.12 1.4.14 1.4.28 2.0.11 2.0.16 2.0.16-r1 2.0.18 2.0.18-r1: Library interface to IPMI
@@ -17023,7 +17023,7 @@ sys-power/acpi 1.6 1.7: Displays information about ACPI devices
 sys-power/acpi_call 1.1.0 1.1.0-r1 9999: A kernel module that enables you to call ACPI methods
 sys-power/acpid 2.0.23 2.0.25: Daemon for Advanced Configuration and Power Interface
 sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a replacement for the apm tool
-sys-power/apcupsd 3.14.8-r2 3.14.10-r6 3.14.12 3.14.12-r1: APC UPS daemon with integrated tcp/ip remote shutdown
+sys-power/apcupsd 3.14.8-r2 3.14.12-r1 3.14.13: APC UPS daemon with integrated tcp/ip remote shutdown
 sys-power/athcool 0.3.12: small utility to toggle Powersaving mode for AMD Athlon/Duron processors
 sys-power/bbswitch 0.8: Toggle discrete NVIDIA Optimus graphics card
 sys-power/cpudyn 1.0.1: A daemon to control laptop power consumption via cpufreq and disk standby
