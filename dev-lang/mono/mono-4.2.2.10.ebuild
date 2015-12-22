@@ -39,7 +39,7 @@ S="${WORKDIR}/${PN}-$(get_version_component_range 1-3)"
 
 pkg_pretend() {
 	# If CONFIG_SYSVIPC is not set in your kernel .config, mono will hang while compiling.
-	# See https://bugs.gentoo.org/261869 for more info."
+	# See http://bugs.gentoo.org/261869 for more info."
 	CONFIG_CHECK="SYSVIPC"
 	use kernel_linux && check_extra_config
 }
@@ -51,14 +51,13 @@ pkg_setup() {
 
 src_prepare() {
 	# we need to sed in the paxctl-ng -mr in the runtime/mono-wrapper.in so it don't
-	# get killed in the build proces when MPROTECT is enable. #286280
+	# get killed in the build proces when MPROTEC is enable. #286280
 	# RANDMMAP kill the build proces to #347365
-	# use paxmark.sh to get PT/XT logic #532244
 	if use pax_kernel ; then
 		ewarn "We are disabling MPROTECT on the mono binary."
 
 		# issue 9 : https://github.com/Heather/gentoo-dotnet/issues/9
-		sed '/exec "/ i\paxmark.sh -mr "$r/@mono_runtime@"' -i "${S}"/runtime/mono-wrapper.in || die "Failed to sed mono-wrapper.in"
+		sed '/exec "/ i\paxctl-ng -mr "$r/@mono_runtime@"' -i "${S}"/runtime/mono-wrapper.in || die "Failed to sed mono-wrapper.in"
 	fi
 
 	# mono build system can fail otherwise
@@ -68,10 +67,6 @@ src_prepare() {
 	# http://osdir.com/ml/general/2015-05/msg20808.html
 	epatch "${FILESDIR}/add_missing_vb_portable_targets.patch"
 
-	# Fix build on big-endian machines
-	# https://bugzilla.xamarin.com/show_bug.cgi?id=31779
-	epatch "${FILESDIR}/${PN}-4.0.2.5-fix-decimal-ms-on-big-endian.patch"
-
 	# Fix build when sgen disabled
 	# https://bugzilla.xamarin.com/show_bug.cgi?id=32015
 	epatch "${FILESDIR}/${PN}-4.0.2.5-fix-mono-dis-makefile-am-when-without-sgen.patch"
@@ -80,9 +75,11 @@ src_prepare() {
 	# https://github.com/mono/mono/compare/f967c79926900343f399c75624deedaba460e544^...8f379f0c8f98493180b508b9e68b9aa76c0c5bdf
 	epatch "${FILESDIR}/${PN}-4.0.2.5-fix-ppc-atomic-add-i4.patch"
 
-	autotools-utils_src_prepare
-
 	epatch "${FILESDIR}/systemweb3.patch"
+	epatch "${FILESDIR}/fix-for-GitExtensions-issue-2710.patch"
+	epatch "${FILESDIR}/fix-for-bug36724.patch"
+
+	autotools-utils_src_prepare
 }
 
 src_configure() {
