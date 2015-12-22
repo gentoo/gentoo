@@ -63,7 +63,7 @@ COMMON_DEPEND="
 	dvb? ( virtual/linuxtv-dvb-headers )
 	dvd? (
 		>=media-libs/libdvdnav-4.2.0
-		>=media-libs/libdvdread-4.1.3
+		>=media-libs/libdvdread-4.1.0
 	)
 	egl? ( media-libs/mesa[egl,wayland(-)?] )
 	enca? ( app-i18n/enca )
