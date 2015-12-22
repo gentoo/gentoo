@@ -13,16 +13,16 @@ WAF_V="1.8.12"
 DESCRIPTION="Media player based on MPlayer and mplayer2"
 HOMEPAGE="https://mpv.io/"
 SRC_URI="https://waf.io/pub/release/waf-${WAF_V}"
-DOCS=( README.md etc/example.conf etc/input.conf )
 
-if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI="https://github.com/mpv-player/mpv.git"
-	inherit git-r3
-else
+if [[ ${PV} != *9999* ]]; then
 	SRC_URI+=" https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
-	DOCS+=( RELEASE_NOTES )
+	DOCS=( RELEASE_NOTES )
+else
+	EGIT_REPO_URI="https://github.com/mpv-player/mpv.git"
+	inherit git-r3
 fi
+DOCS+=( README.md etc/example.conf etc/input.conf )
 
 # See Copyright in source tarball and bug #506946. Waf is BSD, libmpv is ISC.
 LICENSE="GPL-2+ BSD ISC"
