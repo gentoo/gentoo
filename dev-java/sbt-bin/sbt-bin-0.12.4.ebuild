@@ -10,7 +10,7 @@ SRC_URI="http://repo.scala-sbt.org/scalasbt/sbt-native-packages/org/scala-sbt/sb
 
 LICENSE="BSD"
 SLOT="0.12"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 IUSE=""
 

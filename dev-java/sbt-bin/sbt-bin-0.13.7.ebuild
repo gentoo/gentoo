@@ -10,7 +10,7 @@ SRC_URI="http://dl.bintray.com/sbt/native-packages/sbt/${PV}/${PN/-bin}-${PV}.tg
 
 LICENSE="BSD"
 SLOT="0.13"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 IUSE=""
 
