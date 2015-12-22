@@ -3,14 +3,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 KIBANA_USER=${KIBANA_USER:-kibana}
+KIBANA_CONFIG=${KIBANA_CONFIG:-/etc/kibana/kibana.yml}
 
 command="/opt/kibana/bin/kibana"
-command_args="--elasticsearch ${ES_INSTANCE}"
+command_args="--elasticsearch ${ES_INSTANCE} --config ${KIBANA_CONFIG}"
 
 pidfile="/run/kibana.pid"
 command_background="true"
 start_stop_daemon_args="--user=\"${KIBANA_USER}\" --stdout /var/log/kibana/kibana.log --stderr /var/log/kibana/kibana.err"
 
 start_pre() {
-        checkpath -d -o "${KIBANA_USER}" -m750 "/var/log/kibana"
+	checkpath -d -o "${KIBANA_USER}" -m750 "/var/log/kibana"
 }
