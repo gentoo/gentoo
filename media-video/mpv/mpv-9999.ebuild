@@ -29,8 +29,8 @@ DOCS+=( README.md etc/example.conf etc/input.conf )
 LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
 IUSE="+alsa archive bluray cdda +cli doc drm dvb +dvd egl +enca encode +iconv
-jack jpeg lcms +libass libav libcaca libguess libmpv lua luajit openal
-+opengl oss pulseaudio pvr raspberry-pi rubberband samba sdl selinux v4l vaapi
+jack jpeg lcms +libass libav libcaca libguess libmpv lua luajit openal +opengl
+oss pulseaudio pvr raspberry-pi rubberband samba sdl selinux test v4l vaapi
 vdpau vf-dlopen wayland +X xinerama +xscreensaver xv"
 
 REQUIRED_USE="
@@ -111,6 +111,7 @@ DEPEND="${CDEPEND}
 	dev-python/docutils
 	virtual/pkgconfig
 	doc? ( dev-python/rst2pdf )
+	test? ( >=dev-util/cmocka-1.0.0 )
 "
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-mplayer )
@@ -161,11 +162,11 @@ src_configure() {
 		--disable-build-date	# keep build reproducible
 		--disable-optimize	# do not add '-O2' to CFLAGS
 		--disable-debug-build	# do not add '-g' to CFLAGS
-		--disable-test		# avoid dev-util/cmocka automagic
 
 		$(use_enable doc pdf-build)
 		$(use_enable vf-dlopen vf-dlopen-filters)
 		$(use_enable cli zsh-comp)
+		$(use_enable test)
 
 		# optional features
 		$(use_enable iconv)
@@ -254,4 +255,13 @@ pkg_postinst() {
 pkg_postrm() {
 	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
+}
+
+src_test() {
+	cd "${S}"/build/test || die
+	for test in *; do
+		if [ -x "${test}" ]; then
+			$(${test}) || die "Test suite failed"
+		fi
+	done
 }
