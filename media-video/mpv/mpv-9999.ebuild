@@ -44,7 +44,7 @@ REQUIRED_USE="
 	opengl? ( X )
 	pvr? ( v4l )
 	v4l? ( || ( alsa oss ) )
-	vaapi? ( X )
+	vaapi? ( || ( X wayland ) )
 	vdpau? ( X )
 	wayland? ( egl )
 	xinerama? ( X )
@@ -88,6 +88,7 @@ CDEPEND="
 	samba? ( net-fs/samba )
 	sdl? ( media-libs/libsdl2[sound,threads,video,X?,wayland?] )
 	v4l? ( media-libs/libv4l )
+	vaapi? ( >=x11-libs/libva-1.4.0[X?,wayland?] )
 	wayland? (
 		>=dev-libs/wayland-1.6.0
 		>=x11-libs/libxkbcommon-0.3.0
@@ -100,7 +101,6 @@ CDEPEND="
 			x11-libs/libXdamage
 			virtual/opengl
 		)
-		vaapi? ( >=x11-libs/libva-1.2.0[X] )
 		vdpau? ( >=x11-libs/libvdpau-0.2 )
 		xinerama? ( x11-libs/libXinerama )
 		xscreensaver? ( x11-libs/libXScrnSaver )
@@ -221,7 +221,9 @@ src_configure() {
 		$(use_enable wayland gl-wayland)
 		$(use_enable vdpau)
 		$(usex vdpau "$(use_enable opengl vdpau-gl-x11)" '--disable-vdpau-gl-x11')
-		$(use_enable vaapi)
+		$(use_enable vaapi)		# See below for vaapi-x-egl
+		$(usex vaapi "$(use_enable X vaapi-x11)" '--disable-vaapi-x11')
+		$(usex vaapi "$(use_enable wayland vaapi-wayland)" '--disable-vaapi-wayland')
 		$(usex vaapi "$(use_enable opengl vaapi-glx)" '--disable-vaapi-glx')
 		$(use_enable libcaca caca)
 		$(use_enable drm)
@@ -240,6 +242,13 @@ src_configure() {
 		$(use_enable pvr)
 		$(use_enable dvb dvbin)
 	)
+
+	if use vaapi && use X && use egl; then
+		mywafargs+=(--enable-vaapi-x-egl)
+	else
+		mywafargs+=(--disable-vaapi-x-egl)
+	fi
+
 	waf-utils_src_configure "${mywafargs[@]}"
 }
 
