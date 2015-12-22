@@ -32,8 +32,7 @@ RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 src_prepare() {
 	if epatch_user || [[ ! -e configure ]] ; then
 		# git generation
-		./xlat/gen.sh || die
-		./generate_mpers_am.sh || die
+		./xlat/gen.sh
 		eautoreconf
 		[[ ! -e CREDITS ]] && cp CREDITS{.in,}
 	fi
