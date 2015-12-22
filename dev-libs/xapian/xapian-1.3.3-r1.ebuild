@@ -18,6 +18,8 @@ IUSE="doc static-libs -cpu_flags_x86_sse +cpu_flags_x86_sse2 +brass +chert +inme
 DEPEND="sys-libs/zlib"
 RDEPEND="${DEPEND}"
 
+REQUIRED_USE="inmemory? ( chert )"
+
 S="${WORKDIR}/${MY_P}"
 
 src_configure() {
