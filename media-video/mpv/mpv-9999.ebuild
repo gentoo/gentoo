@@ -110,11 +110,6 @@ DEPEND="${RDEPEND}
 	dev-python/docutils
 	virtual/pkgconfig
 	doc-pdf? ( dev-python/rst2pdf )
-	X? (
-		x11-proto/videoproto
-		xinerama? ( x11-proto/xineramaproto )
-		xscreensaver? ( x11-proto/scrnsaverproto )
-	)
 "
 RDEPEND+="
 	selinux? ( sec-policy/selinux-mplayer )
