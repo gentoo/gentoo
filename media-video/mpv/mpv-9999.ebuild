@@ -6,9 +6,10 @@ EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 PYTHON_REQ_USE='threads(+)'
-inherit eutils python-any-r1 waf-utils pax-utils fdo-mime gnome2-utils
 
 WAF_PV='1.8.12'
+
+inherit eutils fdo-mime gnome2-utils pax-utils python-any-r1 waf-utils
 
 DESCRIPTION="Media player based on MPlayer and mplayer2"
 HOMEPAGE="https://mpv.io/"
