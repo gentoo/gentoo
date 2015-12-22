@@ -30,8 +30,8 @@ LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
 IUSE="+alsa archive bluray cdda +cli doc drm dvb +dvd egl +enca encode +iconv
 jack jpeg lcms +libass libav libcaca libguess libmpv lua luajit openal +opengl
-oss pulseaudio pvr raspberry-pi rubberband samba sdl selinux test v4l vaapi
-vdpau vf-dlopen wayland +X xinerama +xscreensaver xv"
+oss pulseaudio pvr raspberry-pi rubberband samba sdl selinux test uchardet v4l
+vaapi vdpau vf-dlopen wayland +X xinerama +xscreensaver xv"
 
 REQUIRED_USE="
 	|| ( cli libmpv )
@@ -42,6 +42,7 @@ REQUIRED_USE="
 	luajit? ( lua )
 	opengl? ( || ( wayland X ) )
 	pvr? ( v4l )
+	uchardet? ( iconv )
 	vaapi? ( X )
 	vdpau? ( X )
 	wayland? ( opengl )
@@ -84,6 +85,7 @@ COMMON_DEPEND="
 	rubberband? ( >=media-libs/rubberband-1.8.0 )
 	samba? ( net-fs/samba )
 	sdl? ( media-libs/libsdl2[sound,threads,video,X?,wayland?] )
+	uchardet? ( dev-libs/uchardet )
 	v4l? ( media-libs/libv4l )
 	wayland? (
 		>=dev-libs/wayland-1.6.0
@@ -184,6 +186,7 @@ src_configure() {
 		$(use_enable cdda)
 		$(use_enable enca)
 		$(use_enable libguess)
+		$(use_enable uchardet)
 		$(use_enable rubberband)
 		$(use_enable lcms lcms2)
 		--disable-vapoursynth	# Only available in overlays

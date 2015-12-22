@@ -37,6 +37,7 @@
 		<flag name="raspberry-pi">Enable support for the Raspberry Pi</flag>
 		<flag name="rubberband">Enable high quality pitch correction via <pkg>media-libs/rubberband</pkg></flag>
 		<flag name="sdl">Enable <pkg>media-libs/libsdl2</pkg> based video and audio outputs</flag>
+		<flag name="uchardet">Enable subtitles charset discovery via <pkg>dev-libs/uchardet</pkg></flag>
 		<flag name="vf-dlopen">Install additional video filters for using with -vf dlopen</flag>
 	</use>
 	<upstream>
