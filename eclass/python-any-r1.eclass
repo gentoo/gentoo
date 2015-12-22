@@ -71,12 +71,24 @@ if [[ ! ${_PYTHON_ANY_R1} ]]; then
 # @CODE
 # PYTHON_COMPAT=( python{2_5,2_6,2_7} )
 # @CODE
-if ! declare -p PYTHON_COMPAT &>/dev/null; then
-	die 'PYTHON_COMPAT not declared.'
-fi
-if [[ $(declare -p PYTHON_COMPAT) != "declare -a"* ]]; then
-	die 'PYTHON_COMPAT must be an array.'
-fi
+
+# @ECLASS-VARIABLE: PYTHON_COMPAT_OVERRIDE
+# @INTERNAL
+# @DESCRIPTION:
+# This variable can be used when working with ebuilds to override
+# the in-ebuild PYTHON_COMPAT. It is a string naming the implementation
+# which will be used to build the package. It needs to be specified
+# in the calling environment, and not in ebuilds.
+#
+# It should be noted that in order to preserve metadata immutability,
+# PYTHON_COMPAT_OVERRIDE does not affect dependencies. The value of
+# EPYTHON and eselect-python preferences are ignored. Dependencies need
+# to be satisfied manually.
+#
+# Example:
+# @CODE
+# PYTHON_COMPAT_OVERRIDE='pypy' emerge -1v dev-python/bar
+# @CODE
 
 # @ECLASS-VARIABLE: PYTHON_REQ_USE
 # @DEFAULT_UNSET
@@ -119,16 +131,10 @@ _python_any_set_globals() {
 	local usestr i PYTHON_PKG_DEP
 	[[ ${PYTHON_REQ_USE} ]] && usestr="[${PYTHON_REQ_USE}]"
 
-	# check for invalid PYTHON_COMPAT
-	for i in "${PYTHON_COMPAT[@]}"; do
-		# the function simply dies on invalid impl
-		_python_impl_supported "${i}"
-	done
+	_python_set_impls
 
 	PYTHON_DEPS=
-	for i in "${_PYTHON_ALL_IMPLS[@]}"; do
-		has "${i}" "${PYTHON_COMPAT[@]}" || continue
-
+	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		python_export "${i}" PYTHON_PKG_DEP
 
 		PYTHON_DEPS="${PYTHON_PKG_DEP} ${PYTHON_DEPS}"
@@ -209,9 +215,7 @@ python_gen_any_dep() {
 	[[ ${depstr} ]] || die "No dependency string provided"
 
 	local PYTHON_PKG_DEP out=
-	for i in "${_PYTHON_ALL_IMPLS[@]}"; do
-		has "${i}" "${PYTHON_COMPAT[@]}" || continue
-
+	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		local PYTHON_USEDEP="python_targets_${i}(-),python_single_target_${i}(+)"
 		python_export "${i}" PYTHON_PKG_DEP
 
@@ -242,7 +246,7 @@ _python_EPYTHON_supported() {
 			;;
 	esac
 
-	if has "${i}" "${PYTHON_COMPAT[@]}"; then
+	if has "${i}" "${_PYTHON_SUPPORTED_IMPLS[@]}"; then
 		if python_is_installed "${i}"; then
 			if declare -f python_check_deps >/dev/null; then
 				local PYTHON_USEDEP="python_targets_${i}(-),python_single_target_${i}(+)"
@@ -266,6 +270,23 @@ _python_EPYTHON_supported() {
 # This function will call python_check_deps() if defined.
 python_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
+
+	# support developer override
+	if [[ ${PYTHON_COMPAT_OVERRIDE} ]]; then
+		local impls=( ${PYTHON_COMPAT_OVERRIDE} )
+		[[ ${#impls[@]} -eq 1 ]] || die "PYTHON_COMPAT_OVERRIDE must name exactly one implementation for python-any-r1"
+
+		ewarn "WARNING: PYTHON_COMPAT_OVERRIDE in effect. The following Python"
+		ewarn "implementation will be used:"
+		ewarn
+		ewarn "	${PYTHON_COMPAT_OVERRIDE}"
+		ewarn
+		ewarn "Dependencies won't be satisfied, and EPYTHON/eselect-python will be ignored."
+
+		python_export "${impls[0]}" EPYTHON PYTHON
+		python_wrapper_setup
+		return
+	fi
 
 	# first, try ${EPYTHON}... maybe it's good enough for us.
 	if [[ ${EPYTHON} ]]; then
@@ -292,15 +313,9 @@ python_setup() {
 	done
 
 	# fallback to best installed impl.
-	local rev_impls=()
-	for i in "${_PYTHON_ALL_IMPLS[@]}"; do
-		if has "${i}" "${PYTHON_COMPAT[@]}"; then
-			rev_impls=( "${i}" "${rev_impls[@]}" )
-		fi
-	done
-
-	for i in "${rev_impls[@]}"; do
-		python_export "${i}" EPYTHON PYTHON
+	# (reverse iteration over _PYTHON_SUPPORTED_IMPLS)
+	for (( i = ${#_PYTHON_SUPPORTED_IMPLS[@]} - 1; i >= 0; i-- )); do
+		python_export "${_PYTHON_SUPPORTED_IMPLS[i]}" EPYTHON PYTHON
 		if _python_EPYTHON_supported "${EPYTHON}"; then
 			python_wrapper_setup
 			return

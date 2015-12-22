@@ -84,6 +84,55 @@ _python_impl_supported() {
 	esac
 }
 
+# @FUNCTION: _python_set_impls
+# @INTERNAL
+# @DESCRIPTION:
+# Check PYTHON_COMPAT for well-formedness and validity, then set
+# two global variables:
+#
+# - _PYTHON_SUPPORTED_IMPLS containing valid implementations supported
+#   by the ebuild (PYTHON_COMPAT - dead implementations),
+#
+# - and _PYTHON_UNSUPPORTED_IMPLS containing valid implementations that
+#   are not supported by the ebuild.
+#
+# Implementations in both variables are ordered using the pre-defined
+# eclass implementation ordering.
+#
+# This function must be called once in global scope by an eclass
+# utilizing PYTHON_COMPAT.
+_python_set_impls() {
+	local i
+
+	if ! declare -p PYTHON_COMPAT &>/dev/null; then
+		die 'PYTHON_COMPAT not declared.'
+	fi
+	if [[ $(declare -p PYTHON_COMPAT) != "declare -a"* ]]; then
+		die 'PYTHON_COMPAT must be an array.'
+	fi
+	for i in "${PYTHON_COMPAT[@]}"; do
+		# trigger validity checks
+		_python_impl_supported "${i}"
+	done
+
+	_PYTHON_SUPPORTED_IMPLS=()
+	_PYTHON_UNSUPPORTED_IMPLS=()
+
+	for i in "${_PYTHON_ALL_IMPLS[@]}"; do
+		if has "${i}" "${PYTHON_COMPAT[@]}"; then
+			_PYTHON_SUPPORTED_IMPLS+=( "${i}" )
+		else
+			_PYTHON_UNSUPPORTED_IMPLS+=( "${i}" )
+		fi
+	done
+
+	if [[ ${#_PYTHON_SUPPORTED_IMPLS[@]} -eq 0 ]]; then
+		die "No supported implementation in PYTHON_COMPAT."
+	fi
+
+	readonly _PYTHON_SUPPORTED_IMPLS _PYTHON_UNSUPPORTED_IMPLS
+}
+
 # @ECLASS-VARIABLE: PYTHON
 # @DEFAULT_UNSET
 # @DESCRIPTION:
