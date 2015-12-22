@@ -1440,18 +1440,18 @@ app-i18n/dbskkd-cdb 2.00: Yet another Dictionary server for the SKK Japanese-inp
 app-i18n/enca 1.13-r3 1.14-r1 1.14-r2: ENCA detects the character coding of a file and converts it if desired
 app-i18n/fbiterm 0.5-r2: Framebuffer internationalized terminal emulator
 app-i18n/fbterm 1.7-r1: Fast terminal emulator for the Linux framebuffer
-app-i18n/fcitx 4.2.7 4.2.8.5 4.2.8.6: Flexible Contect-aware Input Tool with eXtension support
-app-i18n/fcitx-anthy 0.1.1 0.2.1: Japanese Anthy module for Fcitx
+app-i18n/fcitx 4.2.7 4.2.8.5 4.2.8.6 4.2.9: Flexible Contect-aware Input Tool with eXtension support
+app-i18n/fcitx-anthy 0.1.1 0.2.1 0.2.2: Japanese Anthy module for Fcitx
 app-i18n/fcitx-chewing 0.2.0 0.2.2: Chewing module for Fcitx
 app-i18n/fcitx-cloudpinyin 0.3.1 0.3.4: A fcitx module to look up pinyin candidate words on the internet
 app-i18n/fcitx-configtool 0.4.6 0.4.8: A GTK+ GUI configuration tool for fcitx
 app-i18n/fcitx-hangul 0.2.1 0.3.0: Korean Hangul module for Fcitx
 app-i18n/fcitx-libpinyin 0.2.1 0.3.1: Libpinyin module for Fcitx
-app-i18n/fcitx-qt5 1.0.2: Qt5 input module for Fcitx
+app-i18n/fcitx-qt5 1.0.2-r1 1.0.4: Qt5 input module for Fcitx
 app-i18n/fcitx-rime 0.2.0 0.3.1: Rime support for Fcitx
 app-i18n/fcitx-sunpinyin 0.4.0 0.4.1: Sunpinyin module for fcitx
 app-i18n/fcitx-table-extra 0.3.3 0.3.6 0.3.7: Extra tables for Fcitx, including Boshiamy, Zhengma, Cangjie and Quick
-app-i18n/fcitx-unikey 0.2.0 0.2.4: Vietnamese Unikey module for Fcitx
+app-i18n/fcitx-unikey 0.2.0 0.2.4 0.2.5: Vietnamese Unikey module for Fcitx
 app-i18n/freewnn 1.1.1_alpha21-r1 1.1.1_alpha22: Network-Extensible Kana-to-Kanji Conversion System
 app-i18n/ibus 1.5.5 1.5.8-r1 1.5.9-r1 1.5.10 1.5.11: Intelligent Input Bus for Linux / Unix OS
 app-i18n/ibus-anthy 1.2.7-r1 1.5.4: Japanese input method Anthy IMEngine for IBus Framework
@@ -1486,7 +1486,7 @@ app-i18n/jfbterm 0.4.7-r4: The J Framebuffer Terminal/Multilingual Enhancement w
 app-i18n/kakasi 2.3.4-r1: Converts Japanese text between kanji, kana, and romaji
 app-i18n/kanjipad 2.0.0: Japanese handwriting recognition tool
 app-i18n/kcc 1.0: A Kanji code converter
-app-i18n/kcm-fcitx 0.4.2 0.4.3 0.5.0: KDE configuration module for Fcitx
+app-i18n/kcm-fcitx 0.4.2 0.4.3 0.5.0 0.5.2: KDE configuration module for Fcitx
 app-i18n/kde-l10n-scripts 9999: Set of scripts to manage KDE translation files
 app-i18n/kimera 2.11-r1: A Japanese input method which supports the XIM protocol
 app-i18n/kinput2 3.1-r1 3.1-r2: A Japanese input server which supports the XIM protocol
