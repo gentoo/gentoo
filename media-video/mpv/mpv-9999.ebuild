@@ -51,24 +51,9 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	libav? ( >=media-video/libav-11:0=[encode?,threads,vaapi?,vdpau?] )
 	!libav? ( >=media-video/ffmpeg-2.4.0:0=[encode?,threads,vaapi?,vdpau?] )
+	libav? ( >=media-video/libav-11:0=[encode?,threads,vaapi?,vdpau?] )
 	sys-libs/zlib
-	X? (
-		x11-libs/libX11
-		x11-libs/libXext
-		>=x11-libs/libXrandr-1.2.0
-		opengl? (
-			virtual/opengl
-			egl? ( media-libs/mesa[egl] )
-		)
-		lcms? ( >=media-libs/lcms-2.6:2 )
-		vaapi? ( >=x11-libs/libva-0.34.0[X(+)] )
-		vdpau? ( >=x11-libs/libvdpau-0.2 )
-		xinerama? ( x11-libs/libXinerama )
-		xscreensaver? ( x11-libs/libXScrnSaver )
-		xv? ( x11-libs/libXv )
-	)
 	alsa? ( >=media-libs/alsa-lib-1.0.18 )
 	bluray? ( >=media-libs/libbluray-0.3.0 )
 	cdio? (
@@ -78,8 +63,8 @@ RDEPEND="
 	drm? ( x11-libs/libdrm )
 	dvb? ( virtual/linuxtv-dvb-headers )
 	dvd? (
-		>=media-libs/libdvdread-4.1.3
 		>=media-libs/libdvdnav-4.2.0
+		>=media-libs/libdvdread-4.1.3
 	)
 	enca? ( app-i18n/enca )
 	iconv? ( virtual/libiconv )
@@ -106,12 +91,27 @@ RDEPEND="
 		media-libs/mesa[egl,wayland]
 		>=x11-libs/libxkbcommon-0.3.0
 	)
+	X? (
+		x11-libs/libX11
+		x11-libs/libXext
+		>=x11-libs/libXrandr-1.2.0
+		opengl? (
+			virtual/opengl
+			egl? ( media-libs/mesa[egl] )
+		)
+		lcms? ( >=media-libs/lcms-2.6:2 )
+		vaapi? ( >=x11-libs/libva-0.34.0[X(+)] )
+		vdpau? ( >=x11-libs/libvdpau-0.2 )
+		xinerama? ( x11-libs/libXinerama )
+		xscreensaver? ( x11-libs/libXScrnSaver )
+		xv? ( x11-libs/libXv )
+	)
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	virtual/pkgconfig
 	>=dev-lang/perl-5.8
 	dev-python/docutils
+	virtual/pkgconfig
 	doc-pdf? ( dev-python/rst2pdf )
 	X? (
 		x11-proto/videoproto
