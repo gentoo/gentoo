@@ -171,9 +171,9 @@ src_configure() {
 		$(use_enable test)
 
 		$(use_enable iconv)
-		$(use_enable libguess)
 		$(use_enable samba libsmbclient)
 		$(use_enable lua)
+		$(usex luajit '--lua=luajit' '')
 		$(use_enable libass)
 		$(use_enable libass libass-osd)
 		$(use_enable encode encoding)
@@ -182,6 +182,7 @@ src_configure() {
 		$(use_enable dvd dvdnav)
 		$(use_enable cdda)
 		$(use_enable enca)
+		$(use_enable libguess)
 		$(use_enable rubberband)
 		$(use_enable lcms lcms2)
 		--disable-vapoursynth	# Only available in overlays
@@ -190,7 +191,6 @@ src_configure() {
 
 		--enable-libavfilter
 		--enable-libavdevice
-		$(usex luajit '--lua=luajit' '')
 
 		# Audio outputs
 		$(use_enable sdl sdl2)	# Listed under audio, but also includes video
