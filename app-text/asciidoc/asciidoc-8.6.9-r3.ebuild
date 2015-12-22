@@ -70,10 +70,9 @@ src_install() {
 }
 
 src_test() {
-	cd tests || die
-	local -x ASCIIDOC_PY=../asciidoc.py
-	"${PYTHON}" test${PN}.py update || die
-	"${PYTHON}" test${PN}.py run || die
+	local -x ASCIIDOC_PY=asciidoc.py
+	"${PYTHON}" tests/test${PN}.py update || die
+	"${PYTHON}" tests/test${PN}.py run || die
 }
 
 pkg_postinst() {
