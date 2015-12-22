@@ -17,7 +17,7 @@ KEYWORDS="alpha amd64 arm ~mips ppc ppc64 ~sh sparc x86 ~x86-interix ~amd64-linu
 IUSE="examples"
 
 DEPEND="
-	>=net-libs/librsync-0.9.7
+	~net-libs/librsync-0.9.7
 "
 RDEPEND="
 	dev-python/pyxattr[${PYTHON_USEDEP}]
