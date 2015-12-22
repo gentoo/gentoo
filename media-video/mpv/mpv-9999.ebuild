@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 PYTHON_REQ_USE='threads(+)'
 inherit eutils python-any-r1 waf-utils pax-utils fdo-mime gnome2-utils
@@ -159,13 +160,16 @@ src_configure() {
 	local mywafargs=(
 		--confdir="${EPREFIX}"/etc/${PN}
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}
+
 		$(usex cli '' '--disable-cplayer')
 		$(use_enable libmpv libmpv-shared)
+
 		--disable-libmpv-static
 		--disable-build-date	# keep build reproducible
 		--disable-optimize	# do not add '-O2' to CFLAGS
 		--disable-debug-build	# do not add '-g' to CFLAGS
 		--disable-test		# avoid dev-util/cmocka automagic
+
 		$(use_enable doc-pdf pdf-build)
 		$(use_enable vf-dlopen vf-dlopen-filters)
 		$(use_enable cli zsh-comp)
@@ -187,6 +191,7 @@ src_configure() {
 		$(use_enable lcms lcms2)
 		--disable-vapoursynth	# vapoursynth is not packaged
 		--disable-vapoursynth-lazy
+
 		--enable-libavfilter
 		--enable-libavdevice
 		$(usex luajit '--lua=luajit' '')
