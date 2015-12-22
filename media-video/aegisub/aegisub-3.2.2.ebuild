@@ -63,6 +63,7 @@ REQUIRED_USE="
 PATCHES=(
 	"${FILESDIR}/${P}-fix-lua-regexp.patch"
 	"${FILESDIR}/${P}-unbundle-luajit.patch"
+	"${FILESDIR}/${P}-add-missing-pthread-flags.patch"
 	"${FILESDIR}/${P}-respect-user-compiler-flags.patch"
 )
 

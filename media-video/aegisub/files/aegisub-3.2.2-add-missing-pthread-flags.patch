@@ -1,0 +1,16 @@
+diff --git a/tools/Makefile b/tools/Makefile
+index 81bcef3..f9a6cd3 100644
+--- a/tools/Makefile
++++ b/tools/Makefile
+@@ -7,8 +7,9 @@ PROGRAM += $(d)osx-bundle-restart-helper
+ endif
+ 
+ repack-thes-dict_OBJ  := $(d)repack-thes-dict.o $(TOP)lib/libaegisub.a
+-repack-thes-dict_LIBS := $(LIBS_BOOST) $(LIBS_ICU)
+-repack-thes-dict_CPPFLAGS := -I$(TOP) -I$(TOP)libaegisub/include $(CFLAGS_ICU)
++repack-thes-dict_LIBS := $(LIBS_BOOST) $(LIBS_ICU) $(LIBS_PTHREAD)
++repack-thes-dict_CPPFLAGS := -I$(TOP) -I$(TOP)libaegisub/include \
++	$(CFLAGS_ICU) $(CFLAGS_PTHREAD)
+ 
+ PROGRAM += $(d)repack-thes-dict
+ 

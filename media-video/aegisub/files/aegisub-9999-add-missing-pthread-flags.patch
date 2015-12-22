@@ -1,0 +1,14 @@
+diff --git a/tools/Makefile b/tools/Makefile
+index d9f64b8..f9a6cd3 100644
+--- a/tools/Makefile
++++ b/tools/Makefile
+@@ -8,7 +8,8 @@ endif
+ 
+ repack-thes-dict_OBJ  := $(d)repack-thes-dict.o $(TOP)lib/libaegisub.a
+ repack-thes-dict_LIBS := $(LIBS_BOOST) $(LIBS_ICU) $(LIBS_PTHREAD)
+-repack-thes-dict_CPPFLAGS := -I$(TOP) -I$(TOP)libaegisub/include $(CFLAGS_ICU)
++repack-thes-dict_CPPFLAGS := -I$(TOP) -I$(TOP)libaegisub/include \
++	$(CFLAGS_ICU) $(CFLAGS_PTHREAD)
+ 
+ PROGRAM += $(d)repack-thes-dict
+ 
