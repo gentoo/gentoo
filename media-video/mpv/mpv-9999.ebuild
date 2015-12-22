@@ -123,7 +123,7 @@ RDEPEND+="
 	selinux? ( sec-policy/selinux-mplayer )
 "
 
-pkg_setup() {
+pkg_pretend() {
 	if ! use libass; then
 		ewarn "You have disabled the libass flag. No OSD or subtitles will be displayed."
 	fi
@@ -147,8 +147,6 @@ pkg_setup() {
 	einfo "For additional format support you need to enable the support on your"
 	einfo "libavcodec/libavformat provider:"
 	einfo "    media-video/ffmpeg or media-video/libav"
-
-	python-any-r1_pkg_setup
 }
 
 src_prepare() {
