@@ -50,7 +50,7 @@ REQUIRED_USE="
 	xv? ( X )
 "
 
-RDEPEND="
+CDEPEND="
 	!libav? ( >=media-video/ffmpeg-2.4.0:0=[encode?,threads,vaapi?,vdpau?] )
 	libav? ( >=media-video/libav-11:0=[encode?,threads,vaapi?,vdpau?] )
 	sys-libs/zlib
@@ -104,14 +104,14 @@ RDEPEND="
 		xv? ( x11-libs/libXv )
 	)
 "
-DEPEND="${RDEPEND}
+DEPEND="${CDEPEND}
 	${PYTHON_DEPS}
 	>=dev-lang/perl-5.8
 	dev-python/docutils
 	virtual/pkgconfig
 	doc? ( dev-python/rst2pdf )
 "
-RDEPEND+="
+RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-mplayer )
 "
 
