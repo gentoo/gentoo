@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4} pypy pypy3 )
 
 inherit distutils-r1
 
@@ -18,12 +18,7 @@ IUSE="test"
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? (
-		dev-python/eventlet[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/pbr[${PYTHON_USEDEP}]
-	)"
+	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 # pypi tarball does not contain tests
 RESTRICT="test"
