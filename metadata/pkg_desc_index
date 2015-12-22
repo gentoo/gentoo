@@ -5192,7 +5192,7 @@ dev-perl/CGI-Simple 1.113.0-r1 1.115.0: A Simple totally OO CGI interface that i
 dev-perl/CHI 0.590.0 0.600.0: Unified cache handling interface
 dev-perl/CPAN-Changes 0.270.0 0.300.0 0.400.2: Read and write Changes files
 dev-perl/CPAN-Checksums 2.80.0-r1: Write a CHECKSUMS file for a directory as on CPAN
-dev-perl/CPAN-Meta-Check 0.4.0 0.9.0-r1: Verify requirements in a CPAN::Meta object
+dev-perl/CPAN-Meta-Check 0.9.0-r1 0.12.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.9-r1 1.111.11: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.330.0-r1: Inject modules into a CPAN::Mini mirror
 dev-perl/CPAN-Perl-Releases 2.340.0: Mapping Perl releases on CPAN to the location of the tarballs
@@ -5407,7 +5407,7 @@ dev-perl/Devel-GlobalDestruction 0.120.0 0.130.0: Provides function returning th
 dev-perl/Devel-Hide 0.0.900: Forces the unavailability of specified Perl modules (for testing)
 dev-perl/Devel-LexAlias 0.50.0: Alias lexical variables
 dev-perl/Devel-NYTProf 5.60.0 6.10.0 6.20.0: Powerful feature-rich perl source code profiler
-dev-perl/Devel-OverloadInfo 0.2.0: Introspect overloaded operators
+dev-perl/Devel-OverloadInfo 0.2.0 0.4.0: Introspect overloaded operators
 dev-perl/Devel-PatchPerl 1.380.0: Patch perl source a la Devel::PPPort's buildperl.pl
 dev-perl/Devel-REPL 1.3.14-r1 1.3.27: A modern perl interactive shell
 dev-perl/Devel-Refactor 0.50.0-r1: Perl extension for refactoring Perl code
@@ -5815,7 +5815,7 @@ dev-perl/MooX-HandlesVia 0.1.7: NativeTrait-like behavior for Moo
 dev-perl/MooX-Types-MooseLike 0.250.0 0.270.0: Some Moosish types and a type builder
 dev-perl/MooX-Types-MooseLike-Numeric 1.20.0: Moo types for numbers
 dev-perl/MooX-late 0.15.0: Easily translate Moose code to Moo
-dev-perl/Moose 2.60.400-r1 2.140.500: A postmodern object system for Perl 5
+dev-perl/Moose 2.60.400-r1 2.140.500 2.160.400: A postmodern object system for Perl 5
 dev-perl/MooseX-Aliases 0.110.0-r1: Easy aliasing of methods and attributes in Moose
 dev-perl/MooseX-ClassAttribute 0.260.0 0.270.0: Declare class attributes Moose-style
 dev-perl/MooseX-ConfigFromFile 0.110.0 0.130.0: An abstract Moose role for setting attributes from a configfile
