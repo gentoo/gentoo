@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>base-system</herd>
-<upstream>
-	<remote-id type="cpe">cpe:/a:samba:rsync</remote-id>
-</upstream>
+	<herd>base-system</herd>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:samba:rsync</remote-id>
+	</upstream>
+	<use>
+		<flag name="stunnel">Provide helper scripts for using rsync via >=net-misc/stunnel-4</flag>
+	</use>
 </pkgmetadata>
