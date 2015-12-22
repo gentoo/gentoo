@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -11,29 +11,38 @@ HOMEPAGE="http://scala-sbt.org"
 SRC_URI="https://dl.bintray.com/sbt/native-packages/sbt/${PV}/${PN/-bin}-${PV}.tgz"
 
 LICENSE="BSD"
-SLOT="0.13"
+SLOT="0"
 KEYWORDS="~amd64"
 
 IUSE=""
 
-DEPEND=">=virtual/jre-1.7"
-RDEPEND="${DEPEND}"
+DEPEND=""
+RDEPEND="
+	>=virtual/jre-1.7
+	!dev-java/sbt"
 
 src_unpack() {
 	default
+	mv "${WORKDIR}/sbt" "${S}" || die
+}
 
-	mv "${WORKDIR}/${PN/-bin}" "${S}" || die
+java_prepare() {
+	java-pkg_init_paths_
 }
 
 src_install() {
-	local dest="/opt/${P}"
+	local dest="${JAVA_PKG_SHAREPATH}"
 
-	# Remove Windows batch file
-	rm -f "${S}/bin/sbt.bat" || die
+	rm -f bin/sbt.bat || die
+	sed -i -e 's#bin/sbt-launch.jar#lib/sbt-launch.jar#g;' \
+		bin/sbt-launch-lib.bash || die
+
+	insinto "${dest}/lib"
+	doins bin/* || die
 
 	insinto "${dest}"
-	doins -r bin conf || die
-	fperms 0755 "${dest}/bin/sbt" || die
+	doins -r conf || die
 
-	dosym "${dest}/bin/sbt" /usr/bin/sbt || die
+	fperms 0755 "${dest}/lib/sbt" || die
+	dosym "${dest}/lib/sbt" /usr/bin/sbt || die
 }
