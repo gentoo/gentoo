@@ -11,8 +11,8 @@ inherit eutils python-any-r1 waf-utils pax-utils fdo-mime gnome2-utils
 WAF_V="1.8.12"
 
 DESCRIPTION="Media player based on MPlayer and mplayer2"
-HOMEPAGE="http://mpv.io/"
-SRC_URI="http://ftp.waf.io/pub/release/waf-${WAF_V}"
+HOMEPAGE="https://mpv.io/"
+SRC_URI="https://waf.io/pub/release/waf-${WAF_V}"
 DOCS=( README.md etc/example.conf etc/input.conf )
 
 if [[ ${PV} == *9999* ]]; then
