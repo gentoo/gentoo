@@ -161,16 +161,15 @@ src_configure() {
 		$(use_enable libmpv libmpv-shared)
 
 		--disable-libmpv-static
-		--disable-build-date	# keep build reproducible
-		--disable-optimize	# do not add '-O2' to CFLAGS
-		--disable-debug-build	# do not add '-g' to CFLAGS
+		--disable-build-date	# Create reproducible build
+		--disable-optimize		# Do not add '-O2' to CFLAGS
+		--disable-debug-build	# Do not add '-g' to CFLAGS
 
 		$(use_enable doc pdf-build)
 		$(use_enable vf-dlopen vf-dlopen-filters)
 		$(use_enable cli zsh-comp)
 		$(use_enable test)
 
-		# optional features
 		$(use_enable iconv)
 		$(use_enable libguess)
 		$(use_enable samba libsmbclient)
@@ -185,7 +184,7 @@ src_configure() {
 		$(use_enable enca)
 		$(use_enable rubberband)
 		$(use_enable lcms lcms2)
-		--disable-vapoursynth	# vapoursynth is not packaged
+		--disable-vapoursynth	# Only available in overlays
 		--disable-vapoursynth-lazy
 		$(use_enable archive libarchive)
 
@@ -193,17 +192,17 @@ src_configure() {
 		--enable-libavdevice
 		$(usex luajit '--lua=luajit' '')
 
-		# audio outputs
+		# Audio outputs
 		$(use_enable sdl sdl2)	# SDL output is fallback for platforms where nothing better is available
 		--disable-sdl1
 		$(use_enable oss oss-audio)
-		--disable-rsound	# media-sound/rsound is in pro-audio overlay only
+		--disable-rsound		# Only available in overlays
 		$(use_enable pulseaudio pulse)
 		$(use_enable jack)
 		$(use_enable openal)
 		$(use_enable alsa)
 
-		# video outputs
+		# Video outputs
 		$(use_enable wayland)
 		$(use_enable X x11)
 		$(use_enable xscreensaver xss)
@@ -224,10 +223,10 @@ src_configure() {
 		$(use_enable jpeg)
 		$(use_enable raspberry-pi rpi)
 
-		# hwaccels
+		# HWaccels
 		$(use_enable vaapi vaapi-hwaccel)
 
-		# tv features
+		# TV features
 		$(use_enable v4l tv)
 		$(use_enable v4l tv-v4l2)
 		$(use_enable v4l libv4l2)
