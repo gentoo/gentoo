@@ -10,4 +10,4 @@ RDEPEND=sys-libs/zlib
 SLOT=0/1.2.22
 SRC_URI=http://oligarchy.co.uk/xapian/1.2.21/xapian-core-1.2.21.tar.xz
 _eclass_exported_funcs=src_configure:- src_test:- src_install:-
-_md5_=d16d35f8a9e6e5ca9d4430c3971d812c
+_md5_=ef7a80a011f3ee84491285c9032d15ff
