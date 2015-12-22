@@ -56,7 +56,7 @@ src_compile() {
 
 src_test() {
 	cd test || die "test suite missing"
-	$(qt4_get_bindir)/qmake || die "test suite configure failed"
+	"$(qt4_get_bindir)"/qmake || die "test suite configure failed"
 	emake
 
 	if [ -e $HOME/.classified_ads/sqlite_db ]; then
@@ -65,7 +65,7 @@ src_test() {
 	fi
 	./testca
 	result=$?
-	rm $HOME/.classified_ads/sqlite_db || true
+	rm -f $HOME/.classified_ads/sqlite_db
 
 	if [ -e $HOME/.classified_ads/sqlite_db.backup ]; then
 		mv $HOME/.classified_ads/sqlite_db.backup $HOME/.classified_ads/sqlite_db \
