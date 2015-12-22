@@ -251,7 +251,7 @@ src_install() {
 	waf-utils_src_install
 
 	if use cli && use luajit; then
-		pax-mark -m "${ED}"usr/bin/mpv
+		pax-mark -m "${ED}usr/bin/${PN}"
 	fi
 }
 
