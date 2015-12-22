@@ -1,14 +1,14 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-EGIT_REPO_URI="git://github.com/krieger-od/whdd.git"
+EAPI=5
+EGIT_REPO_URI="git://github.com/whdd/whdd.git"
 
-inherit cmake-utils git-2
+inherit eutils git-2
 
 DESCRIPTION="Diagnostic and recovery tool for block devices"
-HOMEPAGE="https://github.com/krieger-od/whdd"
+HOMEPAGE="https://whdd.github.io"
 
 LICENSE="GPL-2"
 SLOT="0"
