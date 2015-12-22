@@ -12,7 +12,7 @@ SRC_URI="http://stedolan.github.io/jq/download/source/${P}.tar.gz"
 
 LICENSE="MIT CC-BY-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 ~x64-macos"
 IUSE="static-libs test"
 
 DEPEND="sys-devel/bison
