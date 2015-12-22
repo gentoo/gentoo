@@ -3,12 +3,12 @@
 # $Id$
 
 EAPI=4
-EGIT_REPO_URI="git://github.com/krieger-od/whdd.git"
+EGIT_REPO_URI="git://github.com/whdd/whdd.git"
 
-inherit cmake-utils git-2
+inherit eutils git-2
 
 DESCRIPTION="Diagnostic and recovery tool for block devices"
-HOMEPAGE="https://github.com/krieger-od/whdd"
+HOMEPAGE="https://whdd.github.io"
 
 LICENSE="GPL-2"
 SLOT="0"
