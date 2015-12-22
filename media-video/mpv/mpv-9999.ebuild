@@ -28,7 +28,7 @@ DOCS+=( README.md etc/example.conf etc/input.conf )
 # See Copyright in source tarball and bug #506946. Waf is BSD, libmpv is ISC.
 LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
-IUSE="+alsa bluray cdda +cli doc-pdf drm dvb +dvd egl +enca encode +iconv
+IUSE="+alsa bluray cdda +cli doc drm dvb +dvd egl +enca encode +iconv
 jack jpeg lcms +libass libav libcaca libguess libmpv lua luajit openal
 +opengl oss pulseaudio pvr raspberry-pi rubberband samba sdl selinux v4l vaapi
 vdpau vf-dlopen wayland +X xinerama +xscreensaver xv"
@@ -109,7 +109,7 @@ DEPEND="${RDEPEND}
 	>=dev-lang/perl-5.8
 	dev-python/docutils
 	virtual/pkgconfig
-	doc-pdf? ( dev-python/rst2pdf )
+	doc? ( dev-python/rst2pdf )
 "
 RDEPEND+="
 	selinux? ( sec-policy/selinux-mplayer )
@@ -162,7 +162,7 @@ src_configure() {
 		--disable-debug-build	# do not add '-g' to CFLAGS
 		--disable-test		# avoid dev-util/cmocka automagic
 
-		$(use_enable doc-pdf pdf-build)
+		$(use_enable doc pdf-build)
 		$(use_enable vf-dlopen vf-dlopen-filters)
 		$(use_enable cli zsh-comp)
 
