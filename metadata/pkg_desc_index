@@ -8052,7 +8052,7 @@ dev-python/xmpppy 0.5.0_rc1-r2: Python library providing easy scripting with Jab
 dev-python/xonsh 0.2.3: An exotic, usable shell
 dev-python/xvfbwrapper 0.2.2 0.2.4: Python wrapper for running a display inside X virtual framebuffer
 dev-python/yappi 0.93: Yet Another Python Profiler
-dev-python/yapps 2.2.0: An easy to use parser generator
+dev-python/yapps 2.2.0 2.2.0-r1: An easy to use parser generator
 dev-python/yapsy 1.10.423 1.11.023 1.11.223: A fat-free DIY Python plugin management toolkit
 dev-python/yenc 0.4.0-r1: Module providing raw yEnc encoding/decoding
 dev-python/yolk 0.4.3-r1: Tool and library for querying PyPI and locally installed Python packages
@@ -11756,7 +11756,7 @@ media-fonts/vollkorn 2.1: Vollkorn, the free and healthy typeface for bread and 
 media-fonts/webby-fonts 1: A small proportional bitmap font for use in webpages
 media-fonts/wqy-bitmapfont 1.0.0_rc1: WenQuanYi Bitmap Song CJK font
 media-fonts/wqy-microhei 0.2.0_beta 0.2.0_beta-r1: A droid derived Sans-Serif style CJK font
-media-fonts/wqy-unibit 1.1.0_p1: WenQuanYi Unibit CJK font
+media-fonts/wqy-unibit 1.1.0_p1 1.1.0_p1-r1: WenQuanYi Unibit CJK font
 media-fonts/wqy-zenhei 0.9.46: WenQuanYi Hei-Ti Style (sans-serif) Chinese outline font
 media-fonts/x11fonts-jmk 3.0-r1: This package contains character-cell fonts for use with X
 media-fonts/zh-kcfonts 1.05-r3: Kuo Chauo Chinese Fonts collection in BIG5 encoding
@@ -16408,7 +16408,7 @@ sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-apps/yum 3.4.3_p20130218 3.4.3_p20130218-r1: automatic updater and package installer/remover for rpm systems
 sys-apps/zorroutils 0.04: Zorro bus utility for Amigas running 2.1 and later kernels
 sys-auth/bioapi 1.2.3-r2 1.2.4: Framework for biometric-based authentication
-sys-auth/consolekit 0.4.6 1.0.0 1.0.0-r1 9999: Framework for defining and tracking users, login sessions and seats
+sys-auth/consolekit 0.4.6 1.0.0-r1 9999: Framework for defining and tracking users, login sessions and seats
 sys-auth/fingerprint-gui 1.07: Use Fingerprint Devices with Linux
 sys-auth/fprint_demo 0.4: a simple GTK+ application to demonstrate and test libfprint's capabilities
 sys-auth/fprintd 0.2.0-r1 0.4.1 0.5.0 0.5.1 0.6.0: D-Bus service to access fingerprint readers
