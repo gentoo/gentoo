@@ -19,6 +19,7 @@
 	<herd>video</herd>
 	<herd>proxy-maintainers</herd>
 	<use>
+		<flag name="archive">Enable support for various archive formats via <pkg>app-arch/libarchive</pkg></flag>
 		<flag name="bluray">Enable playback of Blu-ray filesystems</flag>
 		<flag name="bs2b">Enable Bauer stereophonic-to-binaural headphone filter</flag>
 		<flag name="cli">Build mpv CLI player</flag>

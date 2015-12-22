@@ -28,7 +28,7 @@ DOCS+=( README.md etc/example.conf etc/input.conf )
 # See Copyright in source tarball and bug #506946. Waf is BSD, libmpv is ISC.
 LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
-IUSE="+alsa bluray cdda +cli doc drm dvb +dvd egl +enca encode +iconv
+IUSE="+alsa archive bluray cdda +cli doc drm dvb +dvd egl +enca encode +iconv
 jack jpeg lcms +libass libav libcaca libguess libmpv lua luajit openal
 +opengl oss pulseaudio pvr raspberry-pi rubberband samba sdl selinux v4l vaapi
 vdpau vf-dlopen wayland +X xinerama +xscreensaver xv"
@@ -55,6 +55,7 @@ COMMON_DEPEND="
 	libav? ( >=media-video/libav-11:0=[encode?,threads,vaapi?,vdpau?] )
 	sys-libs/zlib
 	alsa? ( >=media-libs/alsa-lib-1.0.18 )
+	archive? ( >=app-arch/libarchive-3.0.0:= )
 	bluray? ( >=media-libs/libbluray-0.3.0 )
 	cdda? ( dev-libs/libcdio-paranoia )
 	drm? ( x11-libs/libdrm )
@@ -185,6 +186,7 @@ src_configure() {
 		$(use_enable lcms lcms2)
 		--disable-vapoursynth	# vapoursynth is not packaged
 		--disable-vapoursynth-lazy
+		$(use_enable archive libarchive)
 
 		--enable-libavfilter
 		--enable-libavdevice
