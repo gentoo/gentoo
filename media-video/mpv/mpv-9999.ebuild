@@ -9,7 +9,7 @@ PYTHON_REQ_USE='threads(+)'
 
 WAF_PV='1.8.12'
 
-inherit eutils fdo-mime gnome2-utils pax-utils python-any-r1 waf-utils
+inherit eutils fdo-mime gnome2-utils pax-utils python-any-r1 toolchain-funcs waf-utils
 
 DESCRIPTION="Media player based on MPlayer and mplayer2"
 HOMEPAGE="https://mpv.io/"
@@ -120,6 +120,10 @@ RDEPEND="${CDEPEND}
 "
 
 pkg_pretend() {
+	if [[ ${MERGE_TYPE} != "binary" ]] && ! tc-has-tls && use vaapi && use egl; then
+		die "Your compiler lacks C++11 TLS support. Use GCC>=4.8.0 or Clang>=3.3."
+	fi
+
 	if ! use libass; then
 		ewarn "You have disabled the libass flag. No OSD or subtitles will be displayed."
 	fi
