@@ -6,13 +6,13 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 pypy )
 
-[ "$PV" == "9999" ] && inherit mercurial autotools
+[ "$PV" == "9999" ] && inherit git-r3 autotools
 inherit readme.gentoo python-single-r1
 
 DESCRIPTION="AsciiDoc is a plain text human readable/writable document format"
 HOMEPAGE="http://www.methods.co.nz/asciidoc/"
 if [ "$PV" == "9999" ]; then
-	EHG_REPO_URI="https://asciidoc.googlecode.com/hg/"
+	EGIT_REPO_URI="https://github.com/asciidoc/asciidoc.git"
 	SRC_URI=""
 	KEYWORDS=""
 else
