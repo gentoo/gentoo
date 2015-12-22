@@ -28,6 +28,7 @@ DOCS+=( README.md etc/example.conf etc/input.conf )
 # See Copyright in source tarball and bug #506946. Waf is BSD, libmpv is ISC.
 LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
+# Here 'opengl' stands for GLX, 'egl' stands for any EGL-based output
 IUSE="+alsa archive bluray cdda +cli doc drm dvb +dvd egl +enca encode +iconv
 jack jpeg lcms +libass libav libcaca libguess libmpv lua luajit openal +opengl
 oss pulseaudio pvr raspberry-pi rubberband samba sdl selinux test v4l vaapi
@@ -35,12 +36,12 @@ vdpau vf-dlopen wayland +X xinerama +xscreensaver xv"
 
 REQUIRED_USE="
 	|| ( cli libmpv )
-	egl? ( opengl X )
+	egl? ( || ( X wayland ) )
 	enca? ( iconv )
-	lcms? ( opengl )
+	lcms? ( || ( opengl egl ) )
 	libguess? ( iconv )
 	luajit? ( lua )
-	opengl? ( || ( wayland X ) )
+	opengl? ( X )
 	pvr? ( v4l )
 	v4l? ( || ( alsa oss ) )
 	vaapi? ( X )
@@ -70,6 +71,7 @@ CDEPEND="
 	iconv? ( virtual/libiconv )
 	jack? ( media-sound/jack-audio-connection-kit )
 	jpeg? ( virtual/jpeg:0 )
+	lcms? ( >=media-libs/lcms-2.6:2 )
 	libass? (
 		>=media-libs/libass-0.12.1:=[fontconfig,harfbuzz]
 		virtual/ttf-fonts
@@ -98,7 +100,6 @@ CDEPEND="
 			x11-libs/libXdamage
 			virtual/opengl
 		)
-		lcms? ( >=media-libs/lcms-2.6:2 )
 		vaapi? ( >=x11-libs/libva-1.2.0[X] )
 		vdpau? ( >=x11-libs/libvdpau-0.2 )
 		xinerama? ( x11-libs/libXinerama )
@@ -215,10 +216,9 @@ src_configure() {
 		$(use_enable xv)
 		$(use_enable xinerama)
 		$(use_enable X xrandr)
-		$(usex X "$(use_enable opengl gl-x11)" '--disable-gl-x11')
-		$(use_enable egl egl-x11)
+		$(use_enable opengl gl-x11)
+		$(usex egl "$(use_enable X egl-x11)" '--disable-egl-x11')
 		$(use_enable wayland gl-wayland)
-		$(use_enable opengl gl)
 		$(use_enable vdpau)
 		$(usex vdpau "$(use_enable opengl vdpau-gl-x11)" '--disable-vdpau-gl-x11')
 		$(use_enable vaapi)
