@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils user autotools-utils linux-info systemd readme.gentoo
 
-BACKPORTS=""
+BACKPORTS="20151222"
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
