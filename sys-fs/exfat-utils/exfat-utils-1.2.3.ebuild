@@ -17,4 +17,6 @@ src_install() {
 	emake DESTDIR="${D}" install
 	dodoc ChangeLog
 	doman dump/dumpexfat.8 fsck/exfatfsck.8 label/exfatlabel.8 mkfs/mkexfatfs.8
+	dosym exfatfsck.8 /usr/share/man/man8/fsck.exfat.8
+	dosym mkexfatfs.8 /usr/share/man/man8/mkfs.exfat.8
 }
