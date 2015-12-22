@@ -411,6 +411,64 @@ python_gen_cond_dep() {
 	echo "${matches[@]}"
 }
 
+# @FUNCTION: python_gen_impl_dep
+# @USAGE: [<requested-use-flags> [<impl-pattern>...]]
+# @DESCRIPTION:
+# Output a dependency on Python implementations with the specified USE
+# dependency string appended, or no USE dependency string if called
+# without the argument (or with empty argument). If any implementation
+# patterns are passed, the output dependencies will be generated only
+# for the implementations matching them.
+#
+# Use this function when you need to request different USE flags
+# on the Python interpreter depending on package's USE flags. If you
+# only need a single set of interpreter USE flags, just set
+# PYTHON_REQ_USE and use ${PYTHON_DEPS} globally.
+#
+# Example:
+# @CODE
+# PYTHON_COMPAT=( python{2_7,3_{3,4}} pypy )
+# RDEPEND="foo? ( $(python_gen_impl_dep 'xml(+)') )"
+# @CODE
+#
+# It will cause the variable to look like:
+# @CODE
+# RDEPEND="foo? (
+#   python_single_target_python2_7? (
+#     dev-lang/python:2.7[xml(+)] )
+#	python_single_target_pypy? (
+#     dev-python/pypy[xml(+)] ) )"
+# @CODE
+python_gen_impl_dep() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local impl pattern
+	local matches=()
+
+	if [[ ${#_PYTHON_SUPPORTED_IMPLS[@]} -eq 1 ]]; then
+		flag_prefix=python_targets
+	else
+		flag_prefix=python_single_target
+	fi
+
+	local PYTHON_REQ_USE=${1}
+	shift
+
+	local patterns=( "${@-*}" )
+	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
+		for pattern in "${patterns[@]}"; do
+			if [[ ${impl} == ${pattern} ]]; then
+				local PYTHON_PKG_DEP
+				python_export "${impl}" PYTHON_PKG_DEP
+				matches+=( "${flag_prefix}_${impl}? ( ${PYTHON_PKG_DEP} )" )
+				break
+			fi
+		done
+	done
+
+	echo "${matches[@]}"
+}
+
 # @FUNCTION: python_setup
 # @DESCRIPTION:
 # Determine what the selected Python implementation is and set
