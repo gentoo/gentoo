@@ -182,6 +182,7 @@ src_configure() {
 		$(use_enable cdda)
 		$(use_enable enca)
 		$(use_enable libguess)
+		--disable-uchardet		# Disable uchardet until #569114 is fixed
 		$(use_enable rubberband)
 		$(use_enable lcms lcms2)
 		--disable-vapoursynth	# Only available in overlays
