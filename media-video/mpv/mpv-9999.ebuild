@@ -29,15 +29,17 @@ DOCS+=( README.md etc/example.conf etc/input.conf )
 LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
 # Here 'opengl' stands for GLX, 'egl' stands for any EGL-based output
-IUSE="+alsa archive bluray cdda +cli doc drm dvb +dvd egl +enca encode +iconv
-	jack jpeg lcms +libass libav libcaca libguess libmpv lua luajit openal
-	+opengl oss pulseaudio raspberry-pi rubberband samba sdl selinux test
-	uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama +xscreensaver xv"
+IUSE="+alsa archive bluray cdda +cli doc drm dvb +dvd egl +enca encode gbm
+	+iconv jack jpeg lcms +libass libav libcaca libguess libmpv lua luajit
+	openal +opengl oss pulseaudio raspberry-pi rubberband samba sdl selinux
+	test uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama +xscreensaver
+	xv"
 
 REQUIRED_USE="
 	|| ( cli libmpv )
-	egl? ( || ( X wayland ) )
+	egl? ( || ( gbm X wayland ) )
 	enca? ( iconv )
+	gbm? ( drm egl )
 	lcms? ( || ( opengl egl ) )
 	libguess? ( iconv )
 	luajit? ( lua )
@@ -66,7 +68,7 @@ COMMON_DEPEND="
 		>=media-libs/libdvdnav-4.2.0
 		>=media-libs/libdvdread-4.1.0
 	)
-	egl? ( media-libs/mesa[egl,wayland(-)?] )
+	egl? ( media-libs/mesa[egl,gbm(-)?,wayland(-)?] )
 	iconv? (
 		virtual/libiconv
 		enca? ( app-i18n/enca )
@@ -218,6 +220,8 @@ src_configure() {
 
 		# Video outputs
 		--disable-cocoa
+		$(use_enable drm)
+		$(use_enable gbm)
 		$(use_enable wayland)
 		$(use_enable X x11)
 		$(use_enable xscreensaver xss)
@@ -227,6 +231,7 @@ src_configure() {
 		$(use_enable X xrandr)
 		$(use_enable opengl gl-x11)
 		$(usex egl "$(use_enable X egl-x11)" '--disable-egl-x11')
+		$(usex egl "$(use_enable gbm egl-drm)" '--disable-egl-drm')
 		$(use_enable wayland gl-wayland)
 		$(use_enable vdpau)
 		$(usex vdpau "$(use_enable opengl vdpau-gl-x11)" '--disable-vdpau-gl-x11')
@@ -235,7 +240,6 @@ src_configure() {
 		$(usex vaapi "$(use_enable wayland vaapi-wayland)" '--disable-vaapi-wayland')
 		$(usex vaapi "$(use_enable opengl vaapi-glx)" '--disable-vaapi-glx')
 		$(use_enable libcaca caca)
-		$(use_enable drm)
 		$(use_enable jpeg)
 		$(use_enable raspberry-pi rpi)
 
