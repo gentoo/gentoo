@@ -29,7 +29,7 @@ RDEPEND="
 	jemalloc? ( dev-libs/jemalloc )
 	utils? (
 		>=dev-libs/libev-4.15
-		>=dev-libs/openssl-1.0.2
+		>=dev-libs/openssl-1.0.2[-bindist]
 		>=sys-libs/zlib-1.2.3
 	)
 	xml? ( >=dev-libs/libxml2-2.7.7 )"
