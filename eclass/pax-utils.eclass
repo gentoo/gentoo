@@ -73,33 +73,35 @@ pax-mark() {
 	[[ "${flags//[!z]}" ]] && dodefault="yes"
 
 	if has PT ${PAX_MARKINGS}; then
-		_pax_list_files einfo "$@"
+		# Uncomment to list all files to be marked
+		# _pax_list_files einfo "$@"
 		for f in "$@"; do
 
 			# First try paxctl -> this might try to create/convert program headers.
-			if type -p paxctl > /dev/null; then
-				einfo "PT PaX marking -${flags} ${f} with paxctl"
+			if type -p paxctl >/dev/null; then
+				einfo "PT_PAX marking -${flags} ${f} with paxctl"
 				# First, try modifying the existing PAX_FLAGS header.
-				paxctl -q${flags} "${f}" && continue
+				paxctl -q${flags} "${f}" >/dev/null 2>&1 && continue
 				# Second, try creating a PT_PAX header (works on ET_EXEC).
 				# Even though this is less safe, most exes need it. #463170
-				paxctl -qC${flags} "${f}" && continue
+				paxctl -qC${flags} "${f}" >/dev/null 2>&1 && continue
 				# Third, try stealing the (unused under PaX) PT_GNU_STACK header
-				paxctl -qc${flags} "${f}" && continue
+				paxctl -qc${flags} "${f}" >/dev/null 2>&1 && continue
 			fi
 
 			# Next try paxctl-ng -> this will not create/convert any program headers.
-			if type -p paxctl-ng > /dev/null && paxctl-ng -L ; then
-				einfo "PT PaX marking -${flags} ${f} with paxctl-ng"
+			if type -p paxctl-ng >/dev/null && paxctl-ng -L ; then
+				einfo "PT_PAX marking -${flags} ${f} with paxctl-ng"
 				flags="${flags//z}"
-				[[ ${dodefault} == "yes" ]] && paxctl-ng -L -z "${f}"
+				[[ ${dodefault} == "yes" ]] && paxctl-ng -L -z "${f}" >/dev/null 2>&1
 				[[ "${flags}" ]] || continue
-				paxctl-ng -L -${flags} "${f}" && continue
+				paxctl-ng -L -${flags} "${f}" >/dev/null 2>&1 && continue
 			fi
 
 			# Finally fall back on scanelf.
-			if type -p scanelf > /dev/null && [[ ${PAX_MARKINGS} != "none" ]]; then
-				scanelf -Xxz ${flags} "$f"
+			if type -p scanelf >/dev/null && [[ ${PAX_MARKINGS} != "none" ]]; then
+				einfo "PT_PAX marking -${flags} ${f} with scanelf"
+				scanelf -Xxz ${flags} "$f" >/dev/null 2>&1
 			# We failed to set PT_PAX flags.
 			elif [[ ${PAX_MARKINGS} != "none" ]]; then
 				elog "Failed to set PT_PAX markings -${flags} ${f}."
@@ -109,24 +111,25 @@ pax-mark() {
 	fi
 
 	if has XT ${PAX_MARKINGS}; then
-		_pax_list_files einfo "$@"
+		# Uncomment to list all files to be marked
+		# _pax_list_files einfo "$@"
 		flags="${flags//z}"
 		for f in "$@"; do
 
 			# First try paxctl-ng.
-			if type -p paxctl-ng > /dev/null && paxctl-ng -l ; then
-				einfo "XT PaX marking -${flags} ${f} with paxctl-ng"
-				[[ ${dodefault} == "yes" ]] && paxctl-ng -d "${f}"
+			if type -p paxctl-ng >/dev/null && paxctl-ng -l ; then
+				einfo "XATTR_PAX marking -${flags} ${f} with paxctl-ng"
+				[[ ${dodefault} == "yes" ]] && paxctl-ng -d "${f}" >/dev/null 2>&1
 				[[ "${flags}" ]] || continue
-				paxctl-ng -l -${flags} "${f}" && continue
+				paxctl-ng -l -${flags} "${f}" >/dev/null 2>&1 && continue
 			fi
 
 			# Next try setfattr.
-			if type -p setfattr > /dev/null; then
+			if type -p setfattr >/dev/null; then
 				[[ "${flags//[!Ee]}" ]] || flags+="e" # bug 447150
-				einfo "XT PaX marking -${flags} ${f} with setfattr"
-				[[ ${dodefault} == "yes" ]] && setfattr -x "user.pax.flags" "${f}"
-				setfattr -n "user.pax.flags" -v "${flags}" "${f}" && continue
+				einfo "XATTR_PAX marking -${flags} ${f} with setfattr"
+				[[ ${dodefault} == "yes" ]] && setfattr -x "user.pax.flags" "${f}" >/dev/null 2>&1
+				setfattr -n "user.pax.flags" -v "${flags}" "${f}" >/dev/null 2>&1 && continue
 			fi
 
 			# We failed to set XATTR_PAX flags.
