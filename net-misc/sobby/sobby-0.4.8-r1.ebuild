@@ -16,7 +16,7 @@ IUSE="zeroconf"
 RDEPEND="
 	>=dev-cpp/glibmm-2.6
 	>=dev-libs/libsigc++-2.0
-	>=dev-libs/gmp-4.1.4
+	>=dev-libs/gmp-4.1.4:0
 	>=dev-cpp/libxmlpp-2.6
 	>=net-libs/net6-1.3.12
 	>=net-libs/obby-0.4.6[zeroconf=]
