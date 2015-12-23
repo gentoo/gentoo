@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -50,9 +50,9 @@ all_ruby_prepare() {
 	# Make sure we get the expected version of minitest.
 	echo 'gem "minitest", "~> 4.0"' > test/test_0000.rb || die
 
-	# Avoid one test failing on ruby22 since that is the only thing
-	# holding up adding it to the tree.
-	sed -i -e '/test_parse_entries_bad_time/,/^  end/ s:^:#:' test/test_rdoc_parser_changelog.rb || die
+	# Remove tests for code that is not included and not listed in Manifest.txt
+	rm -f test/test_rdoc_i18n_{locale,text}.rb \
+	   test/test_rdoc_generator_pot* || die
 }
 
 all_ruby_compile() {
@@ -72,7 +72,7 @@ each_ruby_compile() {
 }
 
 each_ruby_test() {
-	${RUBY} -Ilib -S testrb test/test_*.rb || die
+	${RUBY} -Ilib:. -e 'Dir["test/test_*.rb"].each{|f| require f}' || die
 }
 
 all_ruby_install() {
@@ -81,7 +81,7 @@ all_ruby_install() {
 	for bin in rdoc ri; do
 		ruby_fakegem_binwrapper $bin /usr/bin/$bin-2
 
-		for version in 19 20 21 22; do
+		for version in 20 21 22; do
 			if use ruby_targets_ruby${version}; then
 				ruby_fakegem_binwrapper $bin /usr/bin/${bin}${version}
 				sed -i -e "1s/env ruby/ruby${version}/" \
@@ -89,4 +89,10 @@ all_ruby_install() {
 			fi
 		done
 	done
+}
+
+pkg_postinst() {
+	if [[ ! -n $(readlink "${ROOT}"usr/bin/rdoc) ]] ; then
+		eselect ruby set $(eselect --brief --colour=no ruby show | head -n1)
+	fi
 }
