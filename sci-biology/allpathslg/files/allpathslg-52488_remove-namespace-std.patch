@@ -1,0 +1,1750 @@
+Remove 'using namespace std' causing massive havoc with newly
+introduced std::align in GCC-5. Fix bug
+https://bugs.gentoo.org/show_bug.cgi?id=568440
+
+--- allpathslg-52488/src/agp/AgpFile.cc
++++ allpathslg-52488/src/agp/AgpFile.cc
+@@ -4,6 +4,8 @@
+ #include "agp/AgpFile.h"
+ #include "TokenizeString.h"
+ 
++using std::cerr;
++
+ char agp_contig::TypeChar_() const
+ {
+     switch ( type_ )
+--- allpathslg-52488/src/agp/AgpFile.h
++++ allpathslg-52488/src/agp/AgpFile.h
+@@ -9,6 +9,8 @@
+ 
+ #include "agp/AgpMods.h"
+ 
++using std::max;
++
+ class agp_entry
+ {
+  public:
+--- allpathslg-52488/src/agp/AgpMods.cc
++++ allpathslg-52488/src/agp/AgpMods.cc
+@@ -7,6 +7,8 @@
+ 
+ #include "system/System.h"
+ 
++using std::istrstream;
++
+ bool 
+ agp_mods::SuperShouldBeRemoved( int super_id ) const
+ {
+--- allpathslg-52488/src/agp/AgpMods.h
++++ allpathslg-52488/src/agp/AgpMods.h
+@@ -7,6 +7,8 @@
+ #include "String.h"
+ #include "Vec.h"
+ 
++using std::swap;
++
+ // The class contig_range provides begin and end positions on a
+ // contig.  If the end position is before the begin position, the
+ // range is considered reversed.  If a length is provided, the range
+--- allpathslg-52488/src/allpaths_cache/CacheReadsMerge.cc
++++ allpathslg-52488/src/allpaths_cache/CacheReadsMerge.cc
+@@ -56,6 +56,8 @@
+ #include "feudal/VirtualMasterVec.h"
+ #include "random/Shuffle.h"
+ 
++using std::map;
++
+ typedef VirtualMasterVec<BaseVec> VBaseVecVec;
+ typedef VirtualMasterVec<QualVec> VQualVecVec;
+ 
+--- allpathslg-52488/src/AnAssemblyClass.h
++++ allpathslg-52488/src/AnAssemblyClass.h
+@@ -19,6 +19,8 @@
+ #include "ReadLocation.h"
+ #include "ReadPairing.h"
+ 
++using std::map;
++
+ class assembly;
+ 
+ class super {
+--- allpathslg-52488/src/efasta/EfastaTools.cc
++++ allpathslg-52488/src/efasta/EfastaTools.cc
+@@ -19,6 +19,8 @@
+ #include "math/Array.h"
+ #include <iostream>
+ 
++using std::set;
++
+ #define Err(message)                                      \
+ {    cout << message << endl << "\nInvalid.\n" << endl;   \
+      TracebackThisProcess( );    }
+--- allpathslg-52488/src/Equiv.cc
++++ allpathslg-52488/src/Equiv.cc
+@@ -9,6 +9,8 @@
+ #include "Equiv.h"
+ #include "Vec.h"
+ 
++using std::swap;
++
+ bool equivalence_relation::equiv(int a, int b) const
+ {    if ( a == b ) return true;
+      int c = a;
+--- allpathslg-52488/src/FastaFilestream.cc
++++ allpathslg-52488/src/FastaFilestream.cc
+@@ -13,6 +13,8 @@
+ 
+ #include <strstream>
+ 
++using std::string;
++
+ template <typename vecT, typename seqT, typename convT, typename verifT>
+ FastaFilestream<vecT,seqT,convT,verifT>::FastaFilestream( const String& filename,
+                                                           FastaNameParser* name_parser )
+--- allpathslg-52488/src/FastaFilestreamPreview.cc
++++ allpathslg-52488/src/FastaFilestreamPreview.cc
+@@ -11,6 +11,8 @@
+ 
+ #include <algorithm>
+ 
++using std::streamoff;
++
+ FastaFilestreamPreview::FastaFilestreamPreview(istream& filestream)
+   : max_sequence_size_(0), start_offset_(0)
+ {
+--- allpathslg-52488/src/FastaFilestreamPreview.h
++++ allpathslg-52488/src/FastaFilestreamPreview.h
+@@ -12,6 +12,8 @@
+ 
+ #include "Vec.h"
+ 
++using std::streampos;
++
+ // FastaFilestreamPreview understands just enough about the fasta
+ // format to be able to count the number of sequences in the specified
+ // filestream and to know where each sequence starts in that filestream.
+--- allpathslg-52488/src/Fastavector.cc
++++ allpathslg-52488/src/Fastavector.cc
+@@ -14,6 +14,8 @@
+ #include <istream>
+ #include <string>
+ 
++using std::max;
++
+ // Split this into chunks, separated by gaps ('n'), and return each chunk as a
+ // gapless fastavector.
+ // TODO: generalize this into a templatized STL algorithm.
+--- allpathslg-52488/src/Fastavector.h
++++ allpathslg-52488/src/Fastavector.h
+@@ -24,6 +24,9 @@
+ #include <iostream>
+ #include <unistd.h>
+ 
++using std::string;
++using std::istringstream;
++
+ typedef std::tuple<String, int, int> FastaRegion;
+ 
+ class fastaindex {
+--- allpathslg-52488/src/FetchReads.cc
++++ allpathslg-52488/src/FetchReads.cc
+@@ -36,6 +36,8 @@
+ #include "Qualvector.h"
+ #include "random/Random.h"
+ 
++using std::istringstream;
++
+ // Heuristic constants:
+ 
+ namespace
+--- allpathslg-52488/src/feudal/BaseVec.cc
++++ allpathslg-52488/src/feudal/BaseVec.cc
+@@ -21,6 +21,7 @@
+ using std::ostream;
+ using std::cout;
+ using std::endl;
++using std::max_element;
+ 
+ // Cap: in a given basevector, replace any sequence of N > n identical
+ // bases by n of the same base.
+--- allpathslg-52488/src/graph/Digraph.cc
++++ allpathslg-52488/src/graph/Digraph.cc
+@@ -17,6 +17,9 @@
+ #include "graph/Digraph.h"
+ #include "math/Functions.h"
+ 
++using std::make_pair;
++using std::priority_queue;
++
+ void digraph::TransferEdges( int v, int w, const Bool enter_only )
+ {    ForceAssert( v != w );
+ 
+--- allpathslg-52488/src/graph/Digraph.h
++++ allpathslg-52488/src/graph/Digraph.h
+@@ -52,6 +52,8 @@
+ #include "system/TraceVal.h"
+ #include <cstddef>
+ 
++using std::function;
++
+ typedef pair<int, int> VertexPair;
+ 
+ typedef int vrtx_t;
+--- allpathslg-52488/src/graph/DigraphTemplate.h
++++ allpathslg-52488/src/graph/DigraphTemplate.h
+@@ -34,6 +34,8 @@
+ #include "graph/Digraph.h"
+ #include <cstddef>
+ 
++using std::make_pair;
++
+ template<class E> vec<int> digraphE<E>:: EdgesBoundedBy( const int e1, const int e2,
+      const vec<int>& to_left, const vec<int>& to_right ) const
+ {    int v = to_right[e1], w = to_left[e2];
+--- allpathslg-52488/src/graph/GraphAlgorithms.h
++++ allpathslg-52488/src/graph/GraphAlgorithms.h
+@@ -9,7 +9,7 @@
+ #ifndef GRAPH__GRAPH_ALGORITHMS__H_
+ #define GRAPH__GRAPH_ALGORITHMS__H_
+ 
+-
++using std::map;
+ 
+ // -------------- Union Find ---------------
+ //
+--- allpathslg-52488/src/IndexedAlignmentPlusVector.h
++++ allpathslg-52488/src/IndexedAlignmentPlusVector.h
+@@ -15,6 +15,8 @@
+ 
+ #include "Alignment.h"
+ 
++using std::streampos;
++using std::streamoff;
+ 
+ // This class encapsulates the header information for both vectors and indices.
+ 
+--- allpathslg-52488/src/kmers/kmer_parcels/KmerParcelsClasses.h
++++ allpathslg-52488/src/kmers/kmer_parcels/KmerParcelsClasses.h
+@@ -6,6 +6,9 @@
+ //   Institute is not responsible for its use, misuse, or functionality.     //
+ ///////////////////////////////////////////////////////////////////////////////
+ 
++using std::hex;
++using std::dec;
++
+ // ---------------------------------
+ // NaifTimer
+ // ---------------------------------
+--- allpathslg-52488/src/kmers/naif_kmer/KernelErrorFinder.h
++++ allpathslg-52488/src/kmers/naif_kmer/KernelErrorFinder.h
+@@ -13,8 +13,8 @@
+ #include "kmers/naif_kmer/LockedBlocks.h"
+ #include "kmers/naif_kmer/Kmers.h"
+ 
+-
+-
++using std::make_pair;
++using std::stringstream;
+ 
+ 
+ 
+--- allpathslg-52488/src/kmers/naif_kmer/Kmers.h
++++ allpathslg-52488/src/kmers/naif_kmer/Kmers.h
+@@ -14,7 +14,7 @@
+ 
+ #include "kmers/naif_kmer/KmerFunctions.h"
+ 
+-
++using std::string;
+ 
+ // ---- 256 random 64bit numbers to compute hash key 
+ 
+--- allpathslg-52488/src/layout/ContigActualloc.h
++++ allpathslg-52488/src/layout/ContigActualloc.h
+@@ -17,6 +17,8 @@
+ #include "system/Crash.h"
+ #include "Misc.h"
+ 
++using std::set;
++using std::map;
+ 
+ //
+ // Class contig_actualloc
+--- allpathslg-52488/src/lookup/ImperfectLookup.h
++++ allpathslg-52488/src/lookup/ImperfectLookup.h
+@@ -51,6 +51,8 @@
+ #include "lookup/LookupTools.h"
+ #include "lookup/AlignCollector.h"
+ 
++using std::auto_ptr;
++
+ class TaskTimer;
+ 
+ 
+--- allpathslg-52488/src/lookup/LookAlign.cc
++++ allpathslg-52488/src/lookup/LookAlign.cc
+@@ -29,6 +29,8 @@
+ #include "random/Random.h"
+ #include "system/ParsedArgs.h"
+ 
++using std::istrstream;
++
+ String QUERY("QUERY");
+ 
+ void look_align::ResetFromAlign(const align & al, const basevector & b1,
+--- allpathslg-52488/src/lookup/LookupTable.h
++++ allpathslg-52488/src/lookup/LookupTable.h
+@@ -18,6 +18,8 @@
+ 
+ #include <set>
+ 
++using std::set;
++
+ typedef pair<unsigned int, unsigned int> LocSeq;
+ 
+ ///
+--- allpathslg-52488/src/lookup/QueryLookupTableCore.cc
++++ allpathslg-52488/src/lookup/QueryLookupTableCore.cc
+@@ -465,6 +465,9 @@
+ #include "system/ParsedArgs.h"
+ #include "system/file/FileReader.h"
+ 
++using std::istrstream;
++using std::less_equal;
++
+ #define ABORT(MSG)                                 \
+ {    out << MSG << "  Abort." << endl << endl;     \
+      exit(1);    }
+--- allpathslg-52488/src/lookup/ShortQueryLookup.cc
++++ allpathslg-52488/src/lookup/ShortQueryLookup.cc
+@@ -32,6 +32,8 @@
+ #include "lookup/AlignCollector.h"
+ #include "lookup/ImperfectLookup.h"
+ 
++using std::ios_base;
++
+ // Run an alignment processing chain: seqs -> look -> receiver -> aligns
+ // That is, look turns seqs into hits, which receiver accepts
+ // and turns into alignments which are passed to aligns.  The
+--- allpathslg-52488/src/Map.h
++++ allpathslg-52488/src/Map.h
+@@ -23,7 +23,7 @@
+ #include <unordered_map>
+ #include <ext/hash_map>
+ using namespace __gnu_cxx;
+-
++using std::map;
+ 
+ template <class K, class V, class C=std::less<K>>
+ using StdMap = std::map<K,V,C,typename DefaultAllocator<std::pair<K const,V>>::type>;
+--- allpathslg-52488/src/math/Array.h
++++ allpathslg-52488/src/math/Array.h
+@@ -13,6 +13,8 @@
+ #include "Vec.h"
+ #include "Map.h"
+ 
++using std::fill;
++
+ // ==============================================================================
+ // A fixed-size simple c-style 2D array that allocates faster than vec< vec<T> >
+ // The elements are uninitialized.
+--- allpathslg-52488/src/math/Functions.cc
++++ allpathslg-52488/src/math/Functions.cc
+@@ -10,7 +10,7 @@
+ #include "STLExtensions.h"
+ #include "math/Functions.h"
+ 
+-
++using std::make_pair;
+ 
+ 
+ /*  CombineNormalDistribution              Filipe Ribeiro 2009-06-22
+--- allpathslg-52488/src/math/Functions.h
++++ allpathslg-52488/src/math/Functions.h
+@@ -15,6 +15,10 @@
+ #include <cmath>
+ #include <numeric>
+ 
++using std::min;
++using std::cerr;
++using std::swap;
++
+ // ===========================================================================
+ //
+ // Min functions
+--- allpathslg-52488/src/math/HoInterval.cc
++++ allpathslg-52488/src/math/HoInterval.cc
+@@ -10,6 +10,8 @@
+ #include "math/HoInterval.h"
+ #include "STLExtensions.h"
+ 
++using std::make_pair;
++
+ bool ho_interval::Merge(const ho_interval & o) {
+   if (!Meets(*this,o)) return false;
+   *this = Span(*this, o);
+--- allpathslg-52488/src/math/HoInterval.h
++++ allpathslg-52488/src/math/HoInterval.h
+@@ -14,6 +14,8 @@
+ #include "feudal/MasterVec.h"
+ #include "feudal/SerfVec.h"
+ 
++using std::max;
++
+ /// Class: ho_interval
+ /// A half-open interval [a, b).
+ class ho_interval {
+--- allpathslg-52488/src/math/IntFunction.h
++++ allpathslg-52488/src/math/IntFunction.h
+@@ -21,6 +21,8 @@
+ 
+ #include "MainTools.h"
+ 
++using std::deque;
++using std::fixed;
+ 
+ #define __INT_FUNCTION_BINARY_VERSION__ 2
+ 
+--- allpathslg-52488/src/PackAlign.h
++++ allpathslg-52488/src/PackAlign.h
+@@ -133,6 +133,8 @@
+ #include "pairwise_aligners/Mutmer.h"
+ #include "feudal/BinaryStream.h"
+ 
++using std::make_pair;
++
+ const int Bits2  = 3, Bits3  = 7, Bits4 = 15, Bits10 = 1023, Bits12 = 4095, 
+   Bits16 = 65535;
+ 
+--- allpathslg-52488/src/PairsManager.h
++++ allpathslg-52488/src/PairsManager.h
+@@ -61,6 +61,7 @@
+ #include "feudal/BinaryStream.h"
+ #include <cstddef>
+ 
++using std::make_pair;
+ 
+ class PairsManager; // forward declaration
+ 
+--- allpathslg-52488/src/pairwise_aligners/MakeAlignsMethod.cc
++++ allpathslg-52488/src/pairwise_aligners/MakeAlignsMethod.cc
+@@ -19,6 +19,9 @@
+ #include "pairwise_aligners/AlignFromMutmers.h"
+ #include "pairwise_aligners/SmithWatBandedA.h"
+ 
++using std::map;
++using std::set;
++
+ // If there's a perfect match of length at least perf but we produced no proper 
+ // alignment, use banded Smith-Waterman to create one.
+ 
+--- allpathslg-52488/src/pairwise_aligners/MatchList.cc
++++ allpathslg-52488/src/pairwise_aligners/MatchList.cc
+@@ -9,6 +9,8 @@
+ 
+ #include "pairwise_aligners/MatchList.h"
+ 
++using std::max;
++
+ bool MatchList::FindMatchInSorted( const int id1, const Match& newMatch ) const 
+ {
+   const vec<Match>& sortedMatches = m_sortedMatches[id1];
+--- allpathslg-52488/src/paths/AlignHyperKmerPath.cc
++++ allpathslg-52488/src/paths/AlignHyperKmerPath.cc
+@@ -23,6 +23,9 @@
+ #include "paths/KmerBaseBroker.h"
+ #include "paths/KmerPath.h"
+ 
++using std::ostringstream;
++using std::set;
++
+ // Function: AlignHyperKmerPath
+ //
+ // AlignHyperKmerPath takes a HyperKmerPath h, whose KmerPath edges are assumed
+--- allpathslg-52488/src/paths/CAltFasta.cc
++++ allpathslg-52488/src/paths/CAltFasta.cc
+@@ -11,7 +11,7 @@
+ #include "paths/FixSomeIndelsUtils.h"
+ #include "efasta/EfastaTools.h"
+ 
+-
++using std::set;
+ 
+ /**
+  * CAltFasta
+--- allpathslg-52488/src/paths/ChangeLibraryStats.cc
++++ allpathslg-52488/src/paths/ChangeLibraryStats.cc
+@@ -47,8 +47,10 @@
+     
+     int libID = pairs.libraryID( libName );
+     ForceAssertLt( libID, nLibraries); ForceAssertGe( libID, 0 );
+-    cout << "old: " << PRINT4( libName, libID, pairs.getLibrarySep(libID), pairs.getLibrarySD(libID) );
+-    cout << "new: " << PRINT4( libName, libID, sep, dev );
++    cout << "old: ";
++	PRINT4( libName, libID, pairs.getLibrarySep(libID), pairs.getLibrarySD(libID) );
++    cout << "new: ";
++	PRINT4( libName, libID, sep, dev );
+     pairs.changeLibrarySepSd( libID, sep, dev );
+   }
+   in.close();
+--- allpathslg-52488/src/paths/CorrectLongReadsTools.h
++++ allpathslg-52488/src/paths/CorrectLongReadsTools.h
+@@ -16,6 +16,8 @@
+ #include "paths/LongReadTools.h"
+ #include "paths/Uniseq.h"
+ 
++using std::map;
++
+ class heuristics {
+ 
+      public:
+--- allpathslg-52488/src/paths/ExtendUnipathSeqs.cc
++++ allpathslg-52488/src/paths/ExtendUnipathSeqs.cc
+@@ -13,6 +13,9 @@
+ 
+ #include <set>
+ 
++using std::set;
++using std::back_inserter;
++
+ void ExtendUnipathSeqs( const vecKmerPath& unipaths,
+                         const vecUnipathSeq& unipathSeqs,
+                         vecUnipathSeq& extendedUnipathSeqs,
+--- allpathslg-52488/src/paths/FindErrorsCore.cc
++++ allpathslg-52488/src/paths/FindErrorsCore.cc
+@@ -20,6 +20,8 @@
+ #include "kmers/naif_kmer/KernelPreCorrector.h"
+ #include "system/WorklistN.h"
+ 
++using std::map;
++
+ static inline 
+ String Tag(String S = "FEC") { return Date() + " (" + S + "): "; } 
+ 
+--- allpathslg-52488/src/paths/FindErrorsCore.h
++++ allpathslg-52488/src/paths/FindErrorsCore.h
+@@ -14,7 +14,7 @@
+ 
+ #include "kmers/KmerSpectra.h"
+ 
+-
++using std::set;
+ 
+ class PC_Params
+ {
+--- allpathslg-52488/src/paths/FindUnipathSeedsLG.cc
++++ allpathslg-52488/src/paths/FindUnipathSeedsLG.cc
+@@ -16,6 +16,8 @@
+ #include "paths/simulation/Placement.h"
+ #include <thread>
+ 
++using std::ostringstream;
++
+ // A whole bunch of variables that are shared by parallel threads.
+ 
+ static const digraphE<fsepdev>* FG_ptr;
+--- allpathslg-52488/src/paths/FindUnipathSeedsLG.h
++++ allpathslg-52488/src/paths/FindUnipathSeedsLG.h
+@@ -19,7 +19,7 @@
+ #include "paths/simulation/Placement.h" // placement
+ #include "paths/UnipathNhoodLG.h" // sepdev, fsepdev
+ 
+-
++using std::string;
+ 
+ enum SeedStatus
+   { SEED_GOOD, SEED_ISOLATED, SEED_SHORT, SEED_HIGH_CN, SEED_ZERO_CN, SEED_RC_ON_REF, SEED_REDUNDANT, SEED_RC_OF_SEED };
+--- allpathslg-52488/src/paths/FixLocal.cc
++++ allpathslg-52488/src/paths/FixLocal.cc
+@@ -88,6 +88,8 @@
+ #include "paths/Unipath.h"
+ #include "paths/FindErrorsCore.h"
+ 
++using std::ostringstream;
++
+ void AddToPileup( const read_loc& rl, const basevector& b, const qualvector& q,
+      const basevector& tig, vec<dumbcall>& calls )
+ {    align a;
+--- allpathslg-52488/src/paths/FragmentFillerDefs.h
++++ allpathslg-52488/src/paths/FragmentFillerDefs.h
+@@ -28,6 +28,8 @@
+ #include <set>
+ #include <time.h>
+ 
++using std::map;
++
+ namespace
+ {
+ 
+--- allpathslg-52488/src/paths/GetHomes.cc
++++ allpathslg-52488/src/paths/GetHomes.cc
+@@ -17,6 +17,8 @@
+ #include "paths/Uniseq.h"
+ #include "util/SearchFastb2Core.h"
+ 
++using std::ostringstream;
++
+ class vepath {
+ 
+      public:
+--- allpathslg-52488/src/paths/HyperFastavector.cc
++++ allpathslg-52488/src/paths/HyperFastavector.cc
+@@ -14,6 +14,8 @@
+ #include "feudal/BinaryStream.h"
+ #include <thread>
+ 
++using std::ostringstream;
++
+ // Order a pair of vec<int>s lexicographically using subset relation.
+ 
+ struct order_vecint_binsubset_pair
+--- allpathslg-52488/src/paths/HyperKmerPathCleaner.cc
++++ allpathslg-52488/src/paths/HyperKmerPathCleaner.cc
+@@ -11,6 +11,7 @@
+ #include "paths/HyperKmerPathCleaner.h"
+ #include <set>
+ 
++using std::set;
+ 
+ void HyperKmerPathCleaner::CleanUpGraph( HyperKmerPath& ans ) const {
+ 
+--- allpathslg-52488/src/paths/InsertWalker.h
++++ allpathslg-52488/src/paths/InsertWalker.h
+@@ -34,7 +34,7 @@
+ #include "paths/KmerPath.h"
+ #include "TaskTimer.h" // TaskTimer
+ 
+-
++using std::set;
+ 
+ 
+ 
+--- allpathslg-52488/src/paths/InternalMergeImpl.cc
++++ allpathslg-52488/src/paths/InternalMergeImpl.cc
+@@ -17,7 +17,7 @@
+ #include "paths/InternalMergeImpl.h"
+ #include "graph/Digraph.h"
+ 
+-
++using std::set;
+ 
+ 
+ /*******************************************************************************
+--- allpathslg-52488/src/paths/KmerAlignSet.h
++++ allpathslg-52488/src/paths/KmerAlignSet.h
+@@ -12,6 +12,8 @@
+ #include "Basevector.h"
+ #include "CoreTools.h"
+ 
++using std::make_pair;
++
+ // KmerAlignSet.  It represents a set of alignments of a read to unibases, although
+ // in principle the 'read' could be any sequence and the 'unibases' could be any set
+ // of sequences.
+--- allpathslg-52488/src/paths/KmerBaseBroker.h
++++ allpathslg-52488/src/paths/KmerBaseBroker.h
+@@ -20,6 +20,8 @@
+ #include <algorithm>  // for set_union
+ #include <map>
+ 
++using std::map;
++
+ /**
+    Class: KmerBaseBrokerTemplate
+ 
+--- allpathslg-52488/src/paths/KmerPathDatabase.cc
++++ allpathslg-52488/src/paths/KmerPathDatabase.cc
+@@ -4,6 +4,8 @@
+ #include "feudal/BinaryStream.h"
+ #include <map>
+ 
++using std::map;
++
+ // Methods of class KmerPathDatabaseTemplate.
+ 
+ template <class TAG>
+--- allpathslg-52488/src/paths/KmerPath.h
++++ allpathslg-52488/src/paths/KmerPath.h
+@@ -22,6 +22,8 @@
+ #include "HashSimple.h"
+ #include "graph/Digraph.h"
+ 
++using std::make_pair;
++
+ class KmerPathLoc;  // forward declaration
+ 
+ /**
+--- allpathslg-52488/src/paths/KmerPathInterval.cc
++++ allpathslg-52488/src/paths/KmerPathInterval.cc
+@@ -128,11 +128,11 @@
+ }
+ 
+ template void Contains( const vec<tagged_rpint>& segs, kmer_id_t index, 
+-               vec<longlong>& answer, bool append, int cap );
++               vec<longlong>& answer, bool append = false, int cap = -1 );
+ template void Contains( const vec<big_tagged_rpint>& segs, kmer_id_t index, 
+-               vec<longlong>& answer, bool append, int cap );
++               vec<longlong>& answer, bool append = false, int cap = -1 );
+ template void Contains( const vec<new_tagged_rpint>& segs, kmer_id_t index, 
+-               vec<longlong>& answer, bool append, int cap );
++               vec<longlong>& answer, bool append = false, int cap = -1 );
+ 
+ // Overload Contains() with a second version that looks for all intervals overlapping
+ // a given KmerPathInterval, instead of a single kmer.
+@@ -203,11 +203,11 @@
+ }
+ 
+ template void Contains( const vec<tagged_rpint>& segs, KmerPathInterval rpi, 
+-     vec<longlong>& answer, bool append, int cap );
++     vec<longlong>& answer, bool append = false, int cap = -1 );
+ template void Contains( const vec<big_tagged_rpint>& segs, KmerPathInterval rpi, 
+-     vec<longlong>& answer, bool append, int cap );
++     vec<longlong>& answer, bool append = false, int cap = -1 );
+ template void Contains( const vec<new_tagged_rpint>& segs, KmerPathInterval rpi, 
+-     vec<longlong>& answer, bool append, int cap );
++     vec<longlong>& answer, bool append = false, int cap = -1 );
+ 
+ // This will efficiently find a single instance of the requested kmer.  
+ // Intended for base lookup, where you don't need to find all of them.
+--- allpathslg-52488/src/paths/KmerPathInterval.h
++++ allpathslg-52488/src/paths/KmerPathInterval.h
+@@ -8,6 +8,8 @@
+ #include "CommonSemanticTypes.h"
+ #include "feudal/BinaryStreamTraits.h"
+ 
++using std::max;
++
+ // Portability note: endianness
+ // The implementations here would need to be changed for big endian architectures.
+ 
+@@ -116,6 +118,15 @@
+    To do: check that "gaps in kmer paths are not used for assembly from short reads"
+    is true.
+ */
++
++class KmerPathInterval;
++
++template<class TAG>
++void Contains( const vec<TAG>& segs, kmer_id_t index, vec<longlong>& answer, bool append = false, int cap = -1 );
++
++template<class TAG>
++void Contains( const vec<TAG>& segs, KmerPathInterval rpi, vec<longlong>& answer, bool append = false, int cap = -1 );
++
+ class KmerPathInterval {
+  public:
+   KmerPathInterval( ) { }
+@@ -364,11 +375,11 @@
+ 
+      template<class TAG>
+      friend void Contains( const vec<TAG>& segs, kmer_id_t index,
+-          vec<longlong>& answer, bool append = false, int cap = -1 );
++          vec<longlong>& answer, bool append, int cap );
+ 
+      template<class TAG>
+      friend void Contains( const vec<TAG>& segs, KmerPathInterval rpi,
+-          vec<longlong>& answer, bool append = false, int cap = -1 );
++          vec<longlong>& answer, bool append, int cap );
+ 
+      template<class TAG>
+      friend longlong Instance( const vec<TAG>& segs, kmer_id_t k );
+@@ -491,11 +502,11 @@
+ 
+      template<class TAG>
+      friend void Contains( const vec<TAG>& segs, kmer_id_t index,
+-          vec<longlong>& answer, bool append = false, int cap = -1 );
++          vec<longlong>& answer, bool append, int cap );
+ 
+      template<class TAG>
+      friend void Contains( const vec<TAG>& segs, KmerPathInterval rpi,
+-          vec<longlong>& answer, bool append = false, int cap = -1 );
++          vec<longlong>& answer, bool append, int cap );
+ 
+      template<class TAG>
+      friend longlong Instance( const vec<TAG>& segs, kmer_id_t k );
+@@ -622,11 +633,11 @@
+ 
+      template<class TAG>
+      friend void Contains( const vec<TAG>& segs, kmer_id_t index,
+-          vec<longlong>& answer, bool append = false, int cap = -1 );
++          vec<longlong>& answer, bool append, int cap );
+ 
+      template<class TAG>
+      friend void Contains( const vec<TAG>& segs, KmerPathInterval rpi,
+-          vec<longlong>& answer, bool append = false, int cap = -1 );
++          vec<longlong>& answer, bool append, int cap );
+ 
+      template<class TAG>
+      friend kmer_id_t Instance( const vec<TAG>& segs, kmer_id_t k );
+--- allpathslg-52488/src/paths/KPatch.cc
++++ allpathslg-52488/src/paths/KPatch.cc
+@@ -32,6 +32,8 @@
+ #include "paths/AssemblyEdit.h"
+ #include "paths/GetNexts.h"
+ 
++using std::ostringstream;
++
+ template<int K> void PatchMe( const vec<basevector>& jbases_sorted,
+      const vec<int64_t>& jbases_sorted_id, const PairsManager& jpairs,
+      const vec< triple<int64_t,int,int> >& jaligns, const vec<superb>& scaffolds,
+--- allpathslg-52488/src/paths/LinkingPairs.cc
++++ allpathslg-52488/src/paths/LinkingPairs.cc
+@@ -9,6 +9,8 @@
+ #include "paths/LinkingPairs.h"
+ #include "math/Array.h"
+ 
++using std::multiset;
++
+ void LinkingPairs::Init(int nlibs_, const vec<int>& lens )
+ {
+   nlibs = nlibs_;
+--- allpathslg-52488/src/paths/long/EvalByReads.cc
++++ allpathslg-52488/src/paths/long/EvalByReads.cc
+@@ -19,6 +19,8 @@
+ #include <queue>
+ #include <omp.h>
+ 
++using std::priority_queue;
++
+ namespace {
+     struct CompareReadPlaceByQsum {
+         bool operator() (const read_place& a, const read_place& b) 
+--- allpathslg-52488/src/paths/long/EvalCorrected.cc
++++ allpathslg-52488/src/paths/long/EvalCorrected.cc
+@@ -25,6 +25,8 @@
+ #include "paths/long/MakeKmerStuff.h"
+ #include "random/Random.h"
+ 
++using std::set;
++
+ void EvalCorrected( 
+      const VecEFasta& corrected0,             // corrected reads
+      const vec<int>& cid,                     // ids of corrected reads
+--- allpathslg-52488/src/paths/long/fosmid/Fosmids.cc
++++ allpathslg-52488/src/paths/long/fosmid/Fosmids.cc
+@@ -15,6 +15,9 @@
+ #include "paths/long/fosmid/Fosmids.h"
+ #include "math/HoInterval.h"
+ 
++using std::istringstream;
++using std::ostringstream;
++
+ vec<int> ChrSizes(void)
+ {
+      return {249250621,243199373,198022430,191154276,180915260,171115067,
+--- allpathslg-52488/src/paths/long/KmerAlign.cc
++++ allpathslg-52488/src/paths/long/KmerAlign.cc
+@@ -12,6 +12,8 @@
+ #include "Equiv.h"
+ #include "VecUtilities.h"
+ 
++using std::map;
++
+ void KmerAlign( 
+         const vec< pair<int,int> > & offset, 
+         vec< pair<int,int> > & aligns,
+--- allpathslg-52488/src/paths/long/OverlapReads.cc
++++ allpathslg-52488/src/paths/long/OverlapReads.cc
+@@ -10,6 +10,10 @@
+ #include "FeudalMimic.h"
+ #include <queue>
+ 
++using std::max;
++using std::queue;
++using std::make_pair;
++
+ // ================================ static methods =============================
+ 
+ // If tail b1[len1-overlap:len1) is the same as head b2[0: overlap)
+--- allpathslg-52488/src/paths/long/RefTraceTools.cc
++++ allpathslg-52488/src/paths/long/RefTraceTools.cc
+@@ -10,6 +10,8 @@
+ #include "VecUtilities.h"
+ #include "math/HoInterval.h"
+ 
++using std::get;
++
+ void CreateHBPlus(const HyperBasevector& hb, const vec<int>& inv,
+         HyperBasevector& hbp, vec<pair<int,Bool>>& hbp_to_hb) 
+ {
+--- allpathslg-52488/src/paths/long/ultra/ConsensusScoreModel.cc
++++ allpathslg-52488/src/paths/long/ultra/ConsensusScoreModel.cc
+@@ -12,6 +12,8 @@
+ #include "VecUtilities.h"
+ #include <map>
+ 
++using std::map;
++
+ ConsensusScoreModel::ConsensusScoreModel( double del_rate, double ins_rate, double sub_rate,
+        bool ignore_matching_score, bool score_fast )
+ {
+--- allpathslg-52488/src/paths/long/VariantCallTools.cc
++++ allpathslg-52488/src/paths/long/VariantCallTools.cc
+@@ -27,6 +27,8 @@
+ #include "paths/long/VariantReadSupport.h"
+ #include "kmers/KMer.h"
+ 
++using std::stack;
++
+ namespace {
+ 
+ bool IsBubbleEdge(int eid, const HyperBasevector& hb, const vec<int>& to_left,
+--- allpathslg-52488/src/paths/long/VariantReadSupport.cc
++++ allpathslg-52488/src/paths/long/VariantReadSupport.cc
+@@ -23,6 +23,11 @@
+ #include "paths/long/ReadOriginTracker.h"
+ #include "paths/long/EvalByReads.h"
+ 
++using std::get;
++using std::make_tuple;
++using std::ignore;
++using std::tie;
++
+ namespace {
+ void CalcLengthProbSimple(vec<double>&vOut,const double dProbIns_len, const double dProbDel_len, const uint64_t org_length){
+     const double dProbIns=dProbIns_len;
+--- allpathslg-52488/src/paths/long/VariantReadSupport.h
++++ allpathslg-52488/src/paths/long/VariantReadSupport.h
+@@ -5,6 +5,8 @@
+ #include "Qualvector.h"
+ #include "paths/HyperBasevector.h"
+ 
++using std::tuple;
++
+ // forward declaration
+ class read_place;
+ class ReadOriginTracker;
+--- allpathslg-52488/src/paths/long/Variants.cc
++++ allpathslg-52488/src/paths/long/Variants.cc
+@@ -22,6 +22,8 @@
+ #include "paths/long/VariantFilters.h"
+ #include "paths/long/VariantPostProcess.h"
+ 
++using std::set;
++
+ int MarkVariants( HyperEfasta& he, const vec<VariantSignature>& v_signatures,
+      const long_logging& logc )
+ {    double clock = WallClockTime( );
+--- allpathslg-52488/src/paths/LongReadTools.h
++++ allpathslg-52488/src/paths/LongReadTools.h
+@@ -17,6 +17,8 @@
+ #include "kmers/KmerRecord.h"
+ #include "paths/AssemblyEdit.h"
+ 
++using std::ostringstream;
++
+ // A gap patcher is defined by left and right ints u1 and u2, and a BaseVec r,
+ // whose left end aligns to u1 starting at tpos1 and whose right end aligns to u2
+ // ending at tpos2, where the positions are in terms of the BaseVecs associated
+--- allpathslg-52488/src/paths/MakeScaffoldsCloseBest.cc
++++ allpathslg-52488/src/paths/MakeScaffoldsCloseBest.cc
+@@ -29,6 +29,8 @@
+ #include "paths/reporting/CLinkBundle.h"
+ #include <sstream>
+ 
++using std::ostringstream;
++
+ // An slink is a link between scaffolds.  The first scaffold is not represented
+ // in the object.
+ 
+--- allpathslg-52488/src/paths/Mixmer.cc
++++ allpathslg-52488/src/paths/Mixmer.cc
+@@ -73,6 +73,9 @@
+ #include "util/ReadTracker.h"
+ #include "util/SearchFastb2Core.h"
+ 
++using std::ostringstream;
++using std::istrstream;
++
+ // CorrectErrors.
+ 
+ void CorrectErrors( vecbasevector& bases, vecqualvector& quals,
+--- allpathslg-52488/src/paths/MuxGraph.cc
++++ allpathslg-52488/src/paths/MuxGraph.cc
+@@ -6,6 +6,7 @@
+ 
+ #include <set>
+ 
++using std::set;
+ 
+ // Functions to translate pathIds to nodeIds and back.
+ 
+--- allpathslg-52488/src/paths/MuxSearchAgent.h
++++ allpathslg-52488/src/paths/MuxSearchAgent.h
+@@ -15,6 +15,10 @@
+ #include "paths/MuxSearchState.h"
+ #include "paths/MuxSearchPolicy.h"
+ 
++using std::hex;
++using std::dec;
++using std::mem_fun;
++
+ /// The search agent directed by the SearchDirector of a
+ /// KmerPathMuxSearcher.
+ ///
+--- allpathslg-52488/src/paths/MuxSearchPolicy.h
++++ allpathslg-52488/src/paths/MuxSearchPolicy.h
+@@ -29,6 +29,7 @@
+ #include <hash_set>
+ #endif
+ 
++using std::map;
+ 
+ ////////////////////////////////////////////////////////////////////////////
+ ///
+--- allpathslg-52488/src/paths/OffsetTracker.cc
++++ allpathslg-52488/src/paths/OffsetTracker.cc
+@@ -10,6 +10,8 @@
+ #include "paths/OffsetTracker.h"
+ #include <queue>
+ 
++using std::priority_queue;
++
+ MutableOffsetTracker::MutableOffsetTracker( const vecUnipathSeq& unipathSeqs, 
+                                             const MuxGraph& inverseMuxGraph,
+                                             const int firstSuperSeq,
+--- allpathslg-52488/src/paths/PairDistFitting.h
++++ allpathslg-52488/src/paths/PairDistFitting.h
+@@ -38,7 +38,7 @@
+ //
+ template <class T>
+ void MostProbableGap( const T& distr, const int len1, const int len2, const vec< pair< int, int > >& links, 
+-    int& gap, int& std, bool verbose=false )
++    int& gap, int& std, bool verbose )
+ {
+   ForceAssertGt( links.isize(), 0 );
+   // find the averge of x1 + x2 ( <x1+x2> = <L> - g in the ideal case )
+--- allpathslg-52488/src/paths/PairDistModels.h
++++ allpathslg-52488/src/paths/PairDistModels.h
+@@ -23,6 +23,8 @@
+ #include <map>
+ #include "math/IntDistribution.h"
+ 
++using std::map;
++
+ // =====================================================
+ // Class ProbFuncInterface
+ //
+--- allpathslg-52488/src/paths/PatcherCottageCore.cc
++++ allpathslg-52488/src/paths/PatcherCottageCore.cc
+@@ -22,6 +22,8 @@
+ #include "system/AllOfOutput.h"
+ #include "system/SharedMem.h"
+ 
++using std::ostringstream;
++
+ void PatcherCottageCore( basevector L, basevector R, const int sep,
+      const int dev, vecbasevector& reads, vecqualvector& quals,
+      vec< pair<int,int> >& pairs, String& report,      
+--- allpathslg-52488/src/paths/PolymorphismRemoveCore.h
++++ allpathslg-52488/src/paths/PolymorphismRemoveCore.h
+@@ -19,7 +19,7 @@
+ 
+ #include "kmers/naif_kmer/KmerFreqAffixesMap.h"
+ 
+-
++using std::map;
+ 
+ typedef Kmer29                     Kmer_t;
+ typedef KmerFreqAffixes<Kmer_t>    KmerRec_t;
+--- allpathslg-52488/src/paths/ReadsToPathsCoreX.cc
++++ allpathslg-52488/src/paths/ReadsToPathsCoreX.cc
+@@ -20,6 +20,8 @@
+ #include "paths/MakeAlignsPathsParallelX.h"
+ #include "paths/ReadsToPathsCoreX.h"
+ 
++using std::map;
++
+ static inline 
+ String Tag(String S = "RTPCX") { return Date() + " (" + S + "): "; } 
+ 
+--- allpathslg-52488/src/paths/RemodelGapTools.cc
++++ allpathslg-52488/src/paths/RemodelGapTools.cc
+@@ -18,6 +18,9 @@
+ #include "paths/RemodelGapTools.h"
+ #include "random/NormalDistribution.h"
+ 
++using std::istringstream;
++using std::ostringstream;
++
+ // GapComp
+ //
+ // d = possible gap
+--- allpathslg-52488/src/paths/reporting/CLinkBundle.cc
++++ allpathslg-52488/src/paths/reporting/CLinkBundle.cc
+@@ -8,6 +8,8 @@
+ 
+ #include "paths/reporting/CLinkBundle.h"
+ 
++using std::make_pair;
++
+ /**
+  * CLinkBundle
+  * Constructor
+--- allpathslg-52488/src/paths/reporting/CSuperLinks.cc
++++ allpathslg-52488/src/paths/reporting/CSuperLinks.cc
+@@ -15,6 +15,8 @@
+ #include "paths/reporting/COffset.h"
+ #include "paths/reporting/CSuperLinks.h"
+ 
++using std::set;
++
+ /**
+  * class CSuperLinks
+  * Constructor
+--- allpathslg-52488/src/paths/reporting/MapSeeds.cc
++++ allpathslg-52488/src/paths/reporting/MapSeeds.cc
+@@ -24,7 +24,7 @@
+ #include "paths/simulation/Placement.h"
+ #include "feudal/BinaryStream.h"
+ 
+-
++using std::ostringstream;
+ 
+ // MakeDepend: dependency QueryLookupTable
+ 
+--- allpathslg-52488/src/paths/SamplePairedReadDistributions.cc
++++ allpathslg-52488/src/paths/SamplePairedReadDistributions.cc
+@@ -68,6 +68,8 @@
+ #include "math/IntDistribution.h"
+ #include "math/IntFrequencies.h"
+ 
++using std::list;
++
+ static inline 
+ String Tag(String S = "SPRD") { return Date() + " (" + S + "): "; } 
+ 
+--- allpathslg-52488/src/paths/SamplePairedReadStats.cc
++++ allpathslg-52488/src/paths/SamplePairedReadStats.cc
+@@ -46,6 +46,8 @@
+ #include "paths/HyperBasevector.h"
+ #include "paths/ReadsToPathsCoreX.h"
+ 
++using std::list;
++
+ // auxiliary routines    -------------------------------
+ void pair_alignment_data( const PairsManager& pairs, const vecbasevector& reads, const VecQualNibbleVec &quals,
+ 			  FirstLookupFinderECJ& lfinder, FirstLookupFilterECJ& lfilter,
+--- allpathslg-52488/src/paths/SimpleGapCloser.cc
++++ allpathslg-52488/src/paths/SimpleGapCloser.cc
+@@ -44,6 +44,8 @@
+ #include "paths/Unipath.h"
+ #include "system/AllOfOutput.h"
+ 
++using std::ostringstream;
++
+ class bridge {
+ 
+      public:
+--- allpathslg-52488/src/paths/SimpleWalk.cc
++++ allpathslg-52488/src/paths/SimpleWalk.cc
+@@ -15,6 +15,9 @@
+ #include "paths/PairedPair.h"
+ #include "paths/SimpleWalk.h"
+ 
++using std::make_pair;
++using std::priority_queue;
++
+ namespace
+ {
+ 
+--- allpathslg-52488/src/paths/simulation/VCF.cc
++++ allpathslg-52488/src/paths/simulation/VCF.cc
+@@ -16,6 +16,8 @@
+ #include "system/Assert.h"
+ #include <utility>
+ 
++using std::istringstream;
++
+ namespace {
+ 
+ // split - tokenize a string based on a separator and return a vector of strings representing the
+--- allpathslg-52488/src/paths/simulation/VCF.h
++++ allpathslg-52488/src/paths/simulation/VCF.h
+@@ -21,7 +21,8 @@
+ 
+ using std::string;
+ using std::vector;
+-
++using std::ostringstream;
++using std::map;
+ 
+ // VCFWriter use a streamlined data structure compared to VCF, which was hard coded to use VCFChromosome
+ class VCFWriter
+--- allpathslg-52488/src/paths/SubmissionPrep.cc
++++ allpathslg-52488/src/paths/SubmissionPrep.cc
+@@ -21,6 +21,8 @@
+ #include "paths/AssemblyCleanupTools.h"
+ #include "math/HoInterval.h"
+ 
++using std::ostringstream;
++
+ /**
+  * SubmissionPrep
+  *
+--- allpathslg-52488/src/paths/SubsumptionList.cc
++++ allpathslg-52488/src/paths/SubsumptionList.cc
+@@ -2,6 +2,8 @@
+ 
+ #include "paths/SubsumptionList.h"
+ 
++using std::back_inserter;
++
+ // Functions to translate pathIds to indexes and back.
+ 
+ OrientedKmerPathId  PathIdFromIndex( int index ) 
+--- allpathslg-52488/src/paths/SuperBaseVector.h
++++ allpathslg-52488/src/paths/SuperBaseVector.h
+@@ -10,6 +10,8 @@
+ #include <numeric>
+ #include <functional>
+ 
++using std::mem_fun_ref;
++
+ /// A simple class which holds a series of basevectors with
+ /// (possibly negative) gaps between them.  This is what a 
+ /// KmerPath logically maps to in sequence space.  The function
+--- allpathslg-52488/src/paths/UnibaseCopyNumber3.cc
++++ allpathslg-52488/src/paths/UnibaseCopyNumber3.cc
+@@ -43,7 +43,7 @@
+ #include <omp.h>
+ // MakeDepend: library OMP
+ 
+-
++using std::istrstream;
+ 
+ // Check if the gap size from u1 to u2 is the same as from u2* to u1*.
+ void CheckGaps(
+--- allpathslg-52488/src/paths/UnipathEval.cc
++++ allpathslg-52488/src/paths/UnipathEval.cc
+@@ -35,6 +35,9 @@
+ #include <omp.h>
+ // MakeDepend: library OMP
+ 
++using std::ostringstream;
++using std::list;
++
+ typedef double gc_t;
+ typedef int unipath_size_t;
+ typedef BinsVec2 < unipath_size_t, gc_t, PredictionStats > bin2PredStat;
+--- allpathslg-52488/src/paths/UnipathFixerTools.cc
++++ allpathslg-52488/src/paths/UnipathFixerTools.cc
+@@ -33,6 +33,8 @@
+ #include "util/SearchFastb2Core.h"
+ #include <vector>
+ 
++using std::ostringstream;
++
+ size_t const PCottageJoinData::HEADER;
+ 
+ void AlignReadsToUnipaths( const String& run_dir, const String& jump_reads,
+--- allpathslg-52488/src/paths/UnipathNhoodCommon.cc
++++ allpathslg-52488/src/paths/UnipathNhoodCommon.cc
+@@ -12,6 +12,8 @@
+ #include "paths/simulation/Placement.h"
+ #include <sstream>
+ 
++using std::ostringstream;
++
+ /**
+    Function: PrintNhood
+ 
+--- allpathslg-52488/src/paths/UnipathPatcher.cc
++++ allpathslg-52488/src/paths/UnipathPatcher.cc
+@@ -47,6 +47,8 @@
+ #include "paths/UnipathFixerTools.h"
+ #include "system/SharedMem.h"
+ 
++using std::istrstream;
++
+ void GapStatsAlt( vec<int> gap, vec<int> gapdev, int& gap_ave, int& gapdev_ave )
+ {
+      // If there are less than six gaps, we directly compute their mean.
+--- allpathslg-52488/src/paths/Uniseq.cc
++++ allpathslg-52488/src/paths/Uniseq.cc
+@@ -498,7 +498,7 @@
+           const gapster& gx = G( ).EdgeObjectByIndexFrom( x, 0 );
+           uniseq p = Vert(x);
+           int y = From(x)[0];
+-          if ( !To(y).size( ) == 2 ) continue;
++          if ( !(To(y).size( ) == 2) ) continue;
+           int e = -1;
+           for ( int j = 0; j < To(y).isize( ); j++ )
+                if ( To(y)[j] != x ) e = j;
+@@ -518,7 +518,7 @@
+           const gapster& gx = G( ).EdgeObjectByIndexTo( x, 0 );
+           uniseq p = Vert(x);
+           int y = To(x)[0];
+-          if ( !From(y).size( ) == 2 ) continue;
++          if ( !(From(y).size( ) == 2) ) continue;
+           int e = -1;
+           for ( int j = 0; j < From(y).isize( ); j++ )
+                if ( From(y)[j] != x ) e = j;
+--- allpathslg-52488/src/paths/Useq.cc
++++ allpathslg-52488/src/paths/Useq.cc
+@@ -10,6 +10,8 @@
+ #include "CoreTools.h"
+ #include "paths/Useq.h"
+ 
++using std::make_pair;
++
+ int useq::Kmers( ) const
+ {    Assert( unibases_ != 0 );
+      int kmers = 0;
+--- allpathslg-52488/src/PrintAlignment.h
++++ allpathslg-52488/src/PrintAlignment.h
+@@ -14,6 +14,8 @@
+ #include "CoreTools.h"
+ #include "Qualvector.h"
+ 
++using std::ostringstream;
++
+ void PrintBlanks( ostream& out, int n );
+ 
+ template<class BASEVEC>
+--- allpathslg-52488/src/Qualvector.cc
++++ allpathslg-52488/src/Qualvector.cc
+@@ -10,6 +10,8 @@
+ #include "FastIfstream.h"
+ #include "Qualvector.h"
+ 
++using std::istrstream;
++
+ /// \file
+ /// \ingroup grp_quals
+ /// \copydoc Qualvector.h
+--- allpathslg-52488/src/ReadLocation.cc
++++ allpathslg-52488/src/ReadLocation.cc
+@@ -16,6 +16,9 @@
+ #include "Vec.h"
+ #include "system/file/FileReader.h"
+ 
++using std::streampos;
++using std::map;
++
+ void read_location::ForceInBounds( ostream * out_ptr )
+ {    if ( (int) LengthOfRead( ) > LengthOfContig( ) )
+      {    if ( out_ptr )
+--- allpathslg-52488/src/ReadLocationUtil.cc
++++ allpathslg-52488/src/ReadLocationUtil.cc
+@@ -9,7 +9,7 @@
+ #include "STLExtensions.h"
+ #include "VecAlignmentPlus.h"
+ 
+-
++using std::map;
+ 
+ int AlignsCount( const vec<read_location> &locs,
+ 		 int loc_id,
+--- allpathslg-52488/src/reporting/ScaffoldLayout.cc
++++ allpathslg-52488/src/reporting/ScaffoldLayout.cc
+@@ -21,6 +21,8 @@
+ #include <omp.h>
+ // MakeDepend: library OMP
+ 
++using std::ostringstream;
++
+ int main(int argc, char **argv)
+ {
+      RunTime( );
+--- allpathslg-52488/src/SeqInterval.cc
++++ allpathslg-52488/src/SeqInterval.cc
+@@ -9,6 +9,7 @@
+ #include "SeqInterval.h"
+ #include "Vec.h"
+ 
++using std::min;
+ 
+ /*
+  * seq_interval
+--- allpathslg-52488/src/SeqInterval.h
++++ allpathslg-52488/src/SeqInterval.h
+@@ -14,7 +14,10 @@
+ #include <algorithm>
+ #include <iostream>
+ 
+-using namespace std;
++using std::binary_function;
++using std::ostream;
++using std::istream;
++using std::max;
+ 
+ /*
+  * class seq_interval
+--- allpathslg-52488/src/Set.h
++++ allpathslg-52488/src/Set.h
+@@ -16,6 +16,8 @@
+ #include <iostream>
+ #include <set>
+ 
++using std::set;
++
+ template <class T, class C=std::less<T>>
+ using StdSet = std::set<T,C,typename DefaultAllocator<T>::type>;
+ 
+--- allpathslg-52488/src/ShortVector.h
++++ allpathslg-52488/src/ShortVector.h
+@@ -14,6 +14,8 @@
+ #include "system/Types.h"
+ #include "feudal/BinaryStream.h"
+ 
++using std::uninitialized_fill_n;
++
+ // ================================================================================
+ //
+ // A shortvector holds a list of up to 255 things of any type T.  
+--- allpathslg-52488/src/STLExtensions.h
++++ allpathslg-52488/src/STLExtensions.h
+@@ -9,8 +9,6 @@
+ #ifndef STLEXTENSIONS_H
+ #define STLEXTENSIONS_H
+ 
+-using namespace std;
+-
+ #include <functional>
+ #include <vector>
+ #include <bitset>
+@@ -21,6 +19,14 @@
+ #include "feudal/BinaryStream.h"
+ #include "system/StaticAssert.h"
+ 
++using std::binary_function;
++using std::unary_function;
++using std::pair;
++using std::bitset;
++using std::initializer_list;
++using std::vector;
++using std::ostream;
++
+ /// minimum<T> is a function object.  
+ ///
+ /// If f is an object of class minimum<T> and x and y are objects of
+--- allpathslg-52488/src/system/MiscUtil.cc
++++ allpathslg-52488/src/system/MiscUtil.cc
+@@ -21,6 +21,8 @@
+ #include "system/HTMLUtils.h"
+ #include "system/Utils.h"
+ 
++using std::list;
++
+ static Bool makeOnlyIfNeeded = True;
+ 
+ void SetMakeOnlyIfNeeded( Bool newMakeOnlyIfNeeded ) {
+--- allpathslg-52488/src/system/MiscUtil.h
++++ allpathslg-52488/src/system/MiscUtil.h
+@@ -27,6 +27,9 @@
+ #include "CommonSemanticTypes.h"
+ #include "graph/Digraph.h"
+ 
++using std::map;
++using std::set;
++
+ // Semantic type: shellcmd_t
+ // The name of a shell command.
+ SemanticType( String, shellcmd_t );
+--- allpathslg-52488/src/system/ParsedArgs.cc
++++ allpathslg-52488/src/system/ParsedArgs.cc
+@@ -26,6 +26,9 @@
+ #include "system/HostName.h"
+ #include "system/UseGDB.h"
+ 
++using std::istrstream;
++using std::mem_fun_ref;
++
+ #ifndef FatalErr
+      #define FatalErr(message) { cout << message << endl << endl; exit(-1); }
+ #endif
+--- allpathslg-52488/src/system/ParsedArgs.h
++++ allpathslg-52488/src/system/ParsedArgs.h
+@@ -97,6 +97,8 @@
+ #include "TokenizeString.h"
+ #include "ParseSet.h"
+ 
++using std::stringstream;
++
+ class parsed_arg_help {
+ 
+  public:
+--- allpathslg-52488/src/system/ProcBuf.cc
++++ allpathslg-52488/src/system/ProcBuf.cc
+@@ -15,6 +15,8 @@
+ #include <sys/wait.h>
+ #include <unistd.h>
+ 
++using std::ios_base;
++
+ namespace
+ {
+ size_t const BUFFER_SIZE = 8192;
+--- allpathslg-52488/src/system/RunTime.cc
++++ allpathslg-52488/src/system/RunTime.cc
+@@ -41,6 +41,10 @@
+      #include <unwind.h>
+ #endif
+ 
++using std::strstream;
++using std::hex;
++using std::setw;
++
+ /// ===========================================================================
+ ///
+ /// ReturnAddress(i), where 0 <= i <= 100: get the return address.  The
+--- allpathslg-52488/src/system/RunTime.h
++++ allpathslg-52488/src/system/RunTime.h
+@@ -14,6 +14,8 @@
+ #include "system/Exit.h"
+ #include "system/Types.h"
+ 
++using std::ostream;
++
+ typedef void ArachneSignalHandler(int, siginfo_t*, void*);
+ 
+ void arachne_signal_handler( int signal_number, siginfo_t* info, void* context,
+--- allpathslg-52488/src/system/System.cc
++++ allpathslg-52488/src/system/System.cc
+@@ -36,6 +36,10 @@
+ 
+ #include <dirent.h>
+ 
++using std::istringstream;
++using std::istream_iterator;
++using std::ostringstream;
++
+ int SystemInternal( String command, const char *shell,
+                         int* pStatus, int* pErrNo )
+ {
+@@ -1088,7 +1092,7 @@
+ 
+ bool isReadable( String const& filename )
+ {    ifstream ifs(filename.c_str());
+-     return ifs;    }
++     return static_cast<bool>(ifs);    }
+ 
+ int Glob( const String& x, vector<String>& xs )
+ {    glob_t globbuf;
+--- allpathslg-52488/src/system/System.h
++++ allpathslg-52488/src/system/System.h
+@@ -21,6 +21,18 @@
+ #include "system/Exit.h"
+ #include "system/file/TempFile.h"
+ 
++using std::vector;
++using std::ostream;
++using std::ofstream;
++using std::ifstream;
++using std::istream;
++using std::ios;
++using std::cout;
++using std::flush;
++using std::endl;
++using std::setprecision;
++using std::fixed;
++
+ #ifndef InputErr
+      #define InputErr(message)                                \
+      cout << "\nFatal error at " << Date() << ": " << message \
+--- allpathslg-52488/src/system/TraceVal.h
++++ allpathslg-52488/src/system/TraceVal.h
+@@ -25,6 +25,9 @@
+ #include "system/Assert.h"
+ #include "system/Exit.h"
+ 
++using std::cout;
++using std::endl;
++
+ // Macros: Tracing macros
+ //   TRACEVAL_ON - undefine if you're not doing tracing
+ //   TRACEVAL_STOP_TRACING_COPIES -- call before an operation that shuffles
+--- allpathslg-52488/src/system/Types.h
++++ allpathslg-52488/src/system/Types.h
+@@ -14,7 +14,7 @@
+ #include <cstdlib>
+ #include <netinet/in.h>
+ 
+-using namespace std;
++
+ 
+ // This assumes that all suns run Solaris...
+ #if __sun == 1
+--- allpathslg-52488/src/system/WorklistUtils.cc
++++ allpathslg-52488/src/system/WorklistUtils.cc
+@@ -32,6 +32,10 @@
+ #include <sys/resource.h>
+ #include <unistd.h>
+ 
++using std::istringstream;
++using std::istream_iterator;
++using std::min;
++
+ namespace
+ {
+     pthread_t gMainThread;
+--- allpathslg-52488/src/util/FastaParser.cc
++++ allpathslg-52488/src/util/FastaParser.cc
+@@ -22,6 +22,7 @@
+ 
+ using std::string;
+ using std::vector;
++using std::istringstream;
+ 
+ char* FastaParser::readLine()
+ {
+--- allpathslg-52488/src/util/FastaParser.h
++++ allpathslg-52488/src/util/FastaParser.h
+@@ -24,6 +24,8 @@
+ #include <fstream>
+ #include <vector>
+ 
++using std::max;
++
+ /// Base class for the parsers for sequence, quality, and bits which follow.
+ class FastaParser
+ {
+--- allpathslg-52488/src/util/FastbStats.cc
++++ allpathslg-52488/src/util/FastbStats.cc
+@@ -18,6 +18,8 @@
+ 
+ #include "random/Random.h"
+ 
++using std::map;
++
+ typedef VirtualMasterVec<BaseVec> VBaseVecVec;
+ 
+ 
+--- allpathslg-52488/src/util/Happening.cc
++++ allpathslg-52488/src/util/Happening.cc
+@@ -25,6 +25,8 @@
+ #include "FastIfstream.h"
+ #include "MainTools.h"
+ 
++using std::istringstream;
++
+ vec<String> tracebacks;
+ Bool TALLYG;
+ 
+--- allpathslg-52488/src/util/MemMonitor.cc
++++ allpathslg-52488/src/util/MemMonitor.cc
+@@ -21,7 +21,7 @@
+ #include <signal.h>
+ #include <time.h>
+ 
+-using namespace std;
++using std::string;
+ 
+ // convertion factors between jiffies and seconds (check your system!!!)
+ const double sec_jif = 100.0;
+--- allpathslg-52488/src/util/Quala2Qualb.cc
++++ allpathslg-52488/src/util/Quala2Qualb.cc
+@@ -11,6 +11,8 @@
+ #include "FastIfstream.h"
+ #include "Qualvector.h"
+ 
++using std::istrstream;
++
+ int main(int argc, char *argv[])
+ {
+   RunTime();
+--- allpathslg-52488/src/util/QualbStats.cc
++++ allpathslg-52488/src/util/QualbStats.cc
+@@ -20,6 +20,7 @@
+ #include "Qualvector.h"
+ #include "Basevector.h"
+ 
++using std::scientific;
+ 
+ #define NQ 256
+ 
+--- allpathslg-52488/src/util/ReadTrack.cc
++++ allpathslg-52488/src/util/ReadTrack.cc
+@@ -33,6 +33,9 @@
+ #include "util/ReadTracker.h"
+ #include "util/RunCommand.h"
+ 
++using std::map;
++using std::set;
++
+ // Return filename portion of path (after last slash)
+ String basename(const String path)
+ {
+--- allpathslg-52488/src/util/ReadTracker.cc
++++ allpathslg-52488/src/util/ReadTracker.cc
+@@ -11,6 +11,9 @@
+ #include "VecUtilities.h"
+ #include "util/ReadTracker.h"
+ 
++using std::string;
++using std::istringstream;
++
+ unsigned int 
+ ReadTracker::AddSource(String s)
+ {
+--- allpathslg-52488/src/util/RunCommand.cc
++++ allpathslg-52488/src/util/RunCommand.cc
+@@ -14,6 +14,8 @@
+ #include <unistd.h>
+ #include <sstream>
+ 
++using std::ostringstream;
++
+ /**
+  * RunCommand
+  */
+--- allpathslg-52488/src/util/TextTable.cc
++++ allpathslg-52488/src/util/TextTable.cc
+@@ -13,6 +13,8 @@
+ #include <sstream>
+ #include <iterator>
+ 
++using std::max;
++
+ vec<vec<String> > TextTable::GetTable( ) const {
+     vec<vec<String> > table;
+     for ( size_t i = 0; i < lines.size(); ++i ) {
+--- allpathslg-52488/src/util/TextTable.h
++++ allpathslg-52488/src/util/TextTable.h
+@@ -33,6 +33,8 @@
+ #include "Vec.h"
+ #include "feudal/TrackingAllocator.h"
+ 
++using std::string;
++
+ class TextTable {
+ public:
+     // == Special types to draw line and manipulate tables ==
+--- allpathslg-52488/src/Vec.h
++++ allpathslg-52488/src/Vec.h
+@@ -50,6 +50,11 @@
+ #include "Compare.h"
+ #include "system/file/FileReader.h"
+ 
++using std::numeric_limits;
++using std::ostream_iterator;
++using std::setfill;
++using std::setw;
++
+ /////////////////////////////////////////////////////////////////////////////
+ //
+ //  vec Class Declaration and Template Definitions
+--- allpathslg-52488/src/VecOverlap.cc
++++ allpathslg-52488/src/VecOverlap.cc
+@@ -12,6 +12,9 @@
+ #include "STLExtensions.h"
+ #include <numeric>
+ 
++using std::max;
++using std::make_pair;
++
+ // Represents the suffix of the index'th word starting at the pos'th
+ // character.
+ template <class T>
+--- allpathslg-52488/src/VecUtilities.h
++++ allpathslg-52488/src/VecUtilities.h
+@@ -37,6 +37,9 @@
+ #include "Vec.h"
+ #include <cstddef>
+ 
++using std::less;
++using std::equal_to;
++using std::greater;
+ 
+ /////////////////////////////////////////////////////////////////////////////
+ //
