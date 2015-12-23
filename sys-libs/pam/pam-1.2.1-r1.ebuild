@@ -88,6 +88,8 @@ pkg_pretend() {
 src_unpack() {
 	# Upstream didn't release a new doc tarball (since nothing changed?).
 	unpack ${MY_PN}-1.2.0-docs.tar.bz2
+	# Update timestamps to avoid regenerating at build time. #569338
+	find -type f -exec touch -r "${T}" {} + || die
 	mv Linux-PAM-1.2.{0,1} || die
 	unpack ${MY_P}.tar.bz2
 }
