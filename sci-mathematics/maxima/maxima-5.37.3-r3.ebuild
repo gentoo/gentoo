@@ -195,7 +195,7 @@ pkg_postinst() {
 
 pkg_postrm() {
 	if use emacs; then
-		lisp-site-regen
+		elisp-site-regen
 		mktexlsr
 	fi
 }
