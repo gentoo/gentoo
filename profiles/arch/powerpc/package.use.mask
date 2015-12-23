@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Mike Frysinger <vapier@gentoo.org> (22 Dec 2015)
+# Needs keywording. #569254
+net-firewall/iptables nftables
+
 # Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
 # Missing keywords
 media-sound/rhythmbox upnp-av
