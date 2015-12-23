@@ -35,14 +35,12 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	default_src_prepare
+	default
 
 	eautoreconf
 }
 
 src_configure() {
-	local myeconfargs=(
+	econf \
 		$(use_enable openmp)
-	)
-	default_src_configure
 }
