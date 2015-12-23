@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit vdr-plugin-2
+inherit flag-o-matic vdr-plugin-2
 
 VERSION="1312" # every bump, new version
 
@@ -21,6 +21,10 @@ DEPEND=">=media-video/vdr-2.0.0[menuorg]
 	dev-cpp/libxmlpp:2.6
 	dev-cpp/glibmm"
 RDEPEND="${DEPEND}"
+
+src_compile() {
+	emake CXXFLAGS+=-std=c++11
+}
 
 src_install() {
 	vdr-plugin-2_src_install
