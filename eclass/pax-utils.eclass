@@ -73,12 +73,13 @@ pax-mark() {
 	[[ "${flags//[!z]}" ]] && dodefault="yes"
 
 	if has PT ${PAX_MARKINGS}; then
-		_pax_list_files einfo "$@"
+		# Uncomment to list all files to be marked
+		# _pax_list_files einfo "$@"
 		for f in "$@"; do
 
 			# First try paxctl -> this might try to create/convert program headers.
 			if type -p paxctl > /dev/null; then
-				einfo "PT PaX marking -${flags} ${f} with paxctl"
+				einfo "PT_PAX marking -${flags} ${f} with paxctl"
 				# First, try modifying the existing PAX_FLAGS header.
 				paxctl -q${flags} "${f}" && continue
 				# Second, try creating a PT_PAX header (works on ET_EXEC).
@@ -90,7 +91,7 @@ pax-mark() {
 
 			# Next try paxctl-ng -> this will not create/convert any program headers.
 			if type -p paxctl-ng > /dev/null && paxctl-ng -L ; then
-				einfo "PT PaX marking -${flags} ${f} with paxctl-ng"
+				einfo "PT_PAX marking -${flags} ${f} with paxctl-ng"
 				flags="${flags//z}"
 				[[ ${dodefault} == "yes" ]] && paxctl-ng -L -z "${f}"
 				[[ "${flags}" ]] || continue
@@ -99,6 +100,7 @@ pax-mark() {
 
 			# Finally fall back on scanelf.
 			if type -p scanelf > /dev/null && [[ ${PAX_MARKINGS} != "none" ]]; then
+				einfo "PT_PAX marking -${flags} ${f} with scanelf"
 				scanelf -Xxz ${flags} "$f"
 			# We failed to set PT_PAX flags.
 			elif [[ ${PAX_MARKINGS} != "none" ]]; then
@@ -109,13 +111,14 @@ pax-mark() {
 	fi
 
 	if has XT ${PAX_MARKINGS}; then
-		_pax_list_files einfo "$@"
+		# Uncomment to list all files to be marked
+		# _pax_list_files einfo "$@"
 		flags="${flags//z}"
 		for f in "$@"; do
 
 			# First try paxctl-ng.
 			if type -p paxctl-ng > /dev/null && paxctl-ng -l ; then
-				einfo "XT PaX marking -${flags} ${f} with paxctl-ng"
+				einfo "XATTR_PAX marking -${flags} ${f} with paxctl-ng"
 				[[ ${dodefault} == "yes" ]] && paxctl-ng -d "${f}"
 				[[ "${flags}" ]] || continue
 				paxctl-ng -l -${flags} "${f}" && continue
@@ -124,7 +127,7 @@ pax-mark() {
 			# Next try setfattr.
 			if type -p setfattr > /dev/null; then
 				[[ "${flags//[!Ee]}" ]] || flags+="e" # bug 447150
-				einfo "XT PaX marking -${flags} ${f} with setfattr"
+				einfo "XATTR_PAX marking -${flags} ${f} with setfattr"
 				[[ ${dodefault} == "yes" ]] && setfattr -x "user.pax.flags" "${f}"
 				setfattr -n "user.pax.flags" -v "${flags}" "${f}" && continue
 			fi
