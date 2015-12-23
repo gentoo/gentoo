@@ -5,10 +5,10 @@
 EAPI="5"
 WANT_LIBTOOL="none"
 
-inherit autotools eutils flag-o-matic multilib pax-utils python-utils-r1 toolchain-funcs
+inherit autotools eutils flag-o-matic multilib pax-utils python-utils-r1 toolchain-funcs multiprocessing
 
 MY_P="Python-${PV/_/}"
-PATCHSET_VERSION="3.5.1-0"
+PATCHSET_VERSION="3.4.3-0"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="http://www.python.org/"
@@ -16,7 +16,7 @@ SRC_URI="http://www.python.org/ftp/python/${PV%_rc*}/${MY_P}.tar.xz
 	https://dev.gentoo.org/~floppym/python/python-gentoo-patches-${PATCHSET_VERSION}.tar.xz"
 
 LICENSE="PSF-2"
-SLOT="3.5/3.5m"
+SLOT="3.4/3.4m"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="build elibc_uclibc examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl +threads tk wininst +xml"
 
@@ -50,9 +50,11 @@ RDEPEND="app-arch/bzip2:0=
 	!!<sys-apps/sandbox-2.6-r1"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	!sys-devel/gcc[libffi(-)]"
+	>=sys-devel/autoconf-2.65
+	!sys-devel/gcc[libffi]"
 RDEPEND+=" !build? ( app-misc/mime-types )"
-PDEPEND=">=app-eselect/eselect-python-20151117-r1"
+PDEPEND=">=app-eselect/eselect-python-20151117-r1
+	app-admin/python-updater"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -71,21 +73,18 @@ src_prepare() {
 
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
 	epatch "${FILESDIR}/${PN}-3.4.3-ncurses-pkg-config.patch"
-	epatch "${FILESDIR}/3.5-secondary-targets.patch"
+	epatch "${FILESDIR}/${PN}-3.4-gcc-5.patch" #547626
 
 	sed -i -e "s:@@GENTOO_LIBDIR@@:$(get_libdir):g" \
-		configure.ac \
 		Lib/distutils/command/install.py \
 		Lib/distutils/sysconfig.py \
 		Lib/site.py \
 		Lib/sysconfig.py \
 		Lib/test/test_site.py \
 		Makefile.pre.in \
-		Modules/getpath.c \
 		Modules/Setup.dist \
+		Modules/getpath.c \
 		setup.py || die "sed failed to replace @@GENTOO_LIBDIR@@"
-
-	#sed -i -e 's/\$(GRAMMAR_H): \$(GRAMMAR_INPUT) \$(PGEN)/$(GRAMMAR_H): \$(GRAMMAR_INPUT)/' Makefile.pre.in || die
 
 	epatch_user
 
@@ -148,23 +147,21 @@ src_configure() {
 	mkdir -p "${BUILD_DIR}" || die
 	cd "${BUILD_DIR}" || die
 
-	local myeconfargs=(
-		--with-fpectl
-		--enable-shared
-		$(use_enable ipv6)
-		$(use_with threads)
-		--infodir='${prefix}/share/info'
-		--mandir='${prefix}/share/man'
-		--with-computed-gotos
-		--with-dbmliborder="${dbmliborder}"
-		--with-libc=
-		--enable-loadable-sqlite-extensions
+	ECONF_SOURCE="${S}" OPT="" \
+	econf \
+		--with-fpectl \
+		--enable-shared \
+		$(use_enable ipv6) \
+		$(use_with threads) \
+		--infodir='${prefix}/share/info' \
+		--mandir='${prefix}/share/man' \
+		--with-computed-gotos \
+		--with-dbmliborder="${dbmliborder}" \
+		--with-libc="" \
+		--enable-loadable-sqlite-extensions \
+		--with-system-expat \
+		--with-system-ffi \
 		--without-ensurepip
-		--with-system-expat
-		--with-system-ffi
-	)
-
-	ECONF_SOURCE="${S}" OPT="" econf "${myeconfargs[@]}"
 
 	if use threads && grep -q "#define POSIX_SEMAPHORES_NOT_ENABLED 1" pyconfig.h; then
 		eerror "configure has detected that the sem_open function is broken."
@@ -174,8 +171,8 @@ src_configure() {
 }
 
 src_compile() {
-	# Avoid regenerating these for cross-compiles
-	touch Include/graminit.h Python/graminit.c Python/importlib.h Python/importlib_external.h || die
+	# Avoid invoking pgen for cross-compiles.
+	touch Include/graminit.h Python/graminit.c || die
 
 	cd "${BUILD_DIR}" || die
 
@@ -304,8 +301,13 @@ src_install() {
 	ln -s "python${pymajor}" \
 		"${D}${PYTHON_SCRIPTDIR}/python" || die
 	# python-config and pythonX-config
-	ln -s "../../../bin/${abiver}-config" \
-		"${D}${PYTHON_SCRIPTDIR}/python${pymajor}-config" || die
+	# note: we need to create a wrapper rather than symlinking it due
+	# to some random dirname(argv[0]) magic performed by python-config
+	cat > "${D}${PYTHON_SCRIPTDIR}/python${pymajor}-config" <<-EOF || die
+		#!/bin/sh
+		exec "${abiver}-config" "\${@}"
+	EOF
+	chmod +x "${D}${PYTHON_SCRIPTDIR}/python${pymajor}-config" || die
 	ln -s "python${pymajor}-config" \
 		"${D}${PYTHON_SCRIPTDIR}/python-config" || die
 	# 2to3, pydoc, pyvenv
