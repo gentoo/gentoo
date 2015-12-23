@@ -245,7 +245,7 @@ app-arch/cabextract 1.6: Extracts files from Microsoft cabinet archive files
 app-arch/cfv 1.18.2 1.18.3-r1: Utility to test and create .sfv, .csv, .crc and md5sum files
 app-arch/cksfv 1.3.12 1.3.13 1.3.14: SFV checksum utility (simple file verification)
 app-arch/cpio 2.11-r3 2.12: A file archival tool which can also read and write tar files
-app-arch/createrepo 0.10.3: Creates a common rpm-metadata repository
+app-arch/createrepo 0.10.3 0.10.4: Creates a common rpm-metadata repository
 app-arch/deb2targz 1-r2: Convert a .deb file to a .tar.gz archive
 app-arch/defluff 0.3.2: deflate huffman optimizer
 app-arch/deltarpm 3.6_pre20110223-r1: tools to create and apply deltarpms
