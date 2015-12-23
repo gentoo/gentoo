@@ -2871,7 +2871,7 @@ dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-contrib 1.1.13 1.1.14: Contribution database for the m17n library
 dev-db/m17n-db 1.5.2 1.5.5 1.6.2-r1 1.6.3 1.6.4: Database for the m17n library
 dev-db/maatkit 7540-r1: essential command-line utilities for MySQL
-dev-db/mariadb 5.5.46 10.0.21 10.0.21-r1 10.0.22 10.0.22-r1 10.1.9 10.1.9-r1: An enhanced, drop-in replacement for MySQL
+dev-db/mariadb 5.5.46 10.0.21 10.0.22 10.0.22-r1 10.0.23 10.1.9 10.1.9-r1: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-galera 10.0.22: An enhanced, drop-in replacement for MySQL with Galera Replication
 dev-db/maxscale 1.2.0: A content aware, plug-able MySQL proxy server
 dev-db/metakit 2.4.9.7-r2: Embedded database library
@@ -15767,7 +15767,7 @@ sci-mathematics/kodkodi 1.5.2: A text front-end for the Kodkod Java library
 sci-mathematics/lpsolve 5.5.2.0: Mixed Integer Linear Programming (MILP) solver
 sci-mathematics/lybniz 1.3.2: A function plotter program written in PyGTK
 sci-mathematics/mathomatic 15.8.5 16.0.1 16.0.5: Automatic algebraic manipulator
-sci-mathematics/maxima 5.34.1 5.37.3-r1 5.37.3-r3: Free computer algebra environment based on Macsyma
+sci-mathematics/maxima 5.34.1 5.37.3-r3: Free computer algebra environment based on Macsyma
 sci-mathematics/minisat 2.1.0 2.2.0-r3: Small yet efficient SAT solver with reference paper
 sci-mathematics/mlpy 3.5.0: High-performance Python library for predictive modeling
 sci-mathematics/msieve 1.51 9999: A C library implementing a suite of algorithms to factor large integers
