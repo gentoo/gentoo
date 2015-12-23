@@ -5,7 +5,7 @@
 EAPI=5
 GCONF_DEBUG="no"
 
-inherit autotools eutils gnome2
+inherit autotools eutils flag-o-matic gnome2
 
 DESCRIPTION="Squash the monsters with your levitation worker gnome"
 HOMEPAGE="http://people.iola.dk/olau/monster-masher/"
@@ -40,6 +40,8 @@ src_prepare() {
 
 	# build with newer glib - bug #424313
 	sed -i -e 's:glib/gtypes:glib:' src/pixbuf-drawing.hpp || die
+
+	append-cxxflags -std=c++11
 
 	eautoreconf
 	gnome2_src_prepare

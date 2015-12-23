@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit autotools libtool gnome2-utils games
+inherit autotools flag-o-matic libtool gnome2-utils games
 
 DESCRIPTION="Chinese chess with gtkmm and c++"
 HOMEPAGE="https://code.google.com/p/gmchess/"
@@ -28,6 +28,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cxxflags -std=c++11
 	egamesconf \
 		--disable-static \
 		--localedir='/usr/share/locale'
