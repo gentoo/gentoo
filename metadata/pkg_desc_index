@@ -440,7 +440,7 @@ app-cdr/cddetect 2.1: A tool for detecting the type of a CD/DVD without mounting
 app-cdr/cdemu 2.1.1 3.0.0: Command-line tool for controlling cdemu-daemon
 app-cdr/cdemu-daemon 2.1.1 3.0.2: Daemon of the CDEmu optical media image mounting suite
 app-cdr/cdlabelgen 4.0.0 4.1.0: CD cover, tray card and envelope generator
-app-cdr/cdrdao 1.2.3-r1: Burn CDs in disk-at-once mode -- with optional GUI frontend
+app-cdr/cdrdao 1.2.3-r1 1.2.3-r2: Burn CDs in disk-at-once mode -- with optional GUI frontend
 app-cdr/cdrkit 1.1.11-r2: A set of tools for CD/DVD reading and recording, including cdrecord
 app-cdr/cdrtools 3.01_alpha17 3.01_alpha24 3.01_alpha31 3.02_alpha02: A set of tools for CD/DVD reading and recording, including cdrecord
 app-cdr/cdw 0.8.0 9999: An ncurses based console frontend for cdrtools and dvd+rw-tools
@@ -1010,7 +1010,7 @@ app-editors/fte 20051115-r3 20110708: Lightweight text-mode editor
 app-editors/gedit 3.16.4 3.18.2: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.16.0 3.18.0: Official plugins for gedit
 app-editors/ghex 3.10.1 3.18.0: GNOME hexadecimal editor
-app-editors/gobby 0.4.13 0.4.94: GTK-based collaborative editor
+app-editors/gobby 0.4.13 0.4.13-r1 0.4.94: GTK-based collaborative editor
 app-editors/gummi 0.6.5 9999: Simple LaTeX editor for GTK+ users
 app-editors/gvim 7.4.273 7.4.769 7.4.827 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55: ncurses based hex editor
@@ -2800,8 +2800,8 @@ dev-cpp/libcult 1.4.6-r1: A collection of C++ libraries
 dev-cpp/libfrontend-elements 1.1.4: A collection of elementary building blocks for implementing compiler frontends in c++
 dev-cpp/libglademm 2.6.7-r1 2.6.7-r2: C++ bindings for libglade
 dev-cpp/libgnomecanvasmm 2.26.0-r1: C++ bindings for libgnomecanvas
-dev-cpp/libgnomemm 2.30.0: C++ bindings for libgnome
-dev-cpp/libgnomeuimm 2.28.0-r1: C++ bindings for libgnomeui
+dev-cpp/libgnomemm 2.30.0 2.30.0-r1: C++ bindings for libgnome
+dev-cpp/libgnomeuimm 2.28.0-r1 2.28.0-r2: C++ bindings for libgnomeui
 dev-cpp/libjson-rpc-cpp 0.5.0 9999: JSON-RPC (1.0 & 2.0) framework for C++
 dev-cpp/libmcpp 2.7.2-r1: A portable C++ preprocessor
 dev-cpp/libxmlpp 2.38.1 2.40.1: C++ wrapper for the libxml2 XML parser library
@@ -14110,7 +14110,7 @@ net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP pr
 net-libs/nfqueue-bindings 0.5: High-level language bindings for libnetfilter_queue
 net-libs/nghttp2 1.0.5 1.2.1 1.2.1-r1 1.3.2 1.3.4 1.4.0 1.5.0 9999: HTTP/2 C Library
 net-libs/nodejs 0.12.6 0.12.7 4.1.1 4.2.2 5.0.0: Evented IO for V8 Javascript
-net-libs/obby 0.4.8: Library for collaborative text editing
+net-libs/obby 0.4.8 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.7 9999: C library to create simple HTTP servers and Web Applications
 net-libs/opal 3.10.11 3.12.4: C++ class library normalising numerous telephony protocols
 net-libs/openmq-cclient 4.4.1: C-Client Library for Open Source Java Message Service (JMS)
@@ -14586,7 +14586,7 @@ net-misc/slimrat 9999: Linux Rapidshare downloader
 net-misc/smb4k 1.2.0 1.2.1: The advanced network neighborhood browser for KDE
 net-misc/smbc 1.2.2-r2: A text mode (ncurses) SMB network commander. Features: resume and UTF-8
 net-misc/snarf 7.0-r3: Small and fast CLI resource grabber with support for http, gopher, finger, and ftp protocols
-net-misc/sobby 0.4.8: Standalone Obby server
+net-misc/sobby 0.4.8 0.4.8-r1: Standalone Obby server
 net-misc/socat 1.7.3.0 2.0.0_beta8 9999: Multipurpose relay (SOcket CAT)
 net-misc/sock 1.1: A shell interface to network sockets
 net-misc/socket 1.5: A shell-level interface to TCP sockets
@@ -14665,7 +14665,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/yaydl 1.5.2: Yet Another Youtube DownLoader which is downloading more than youtube
-net-misc/youtube-dl 2015.04.03 2015.11.27.1 2015.12.13: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2015.04.03 2015.11.27.1 2015.12.13 2015.12.21: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.1 3.1.9 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
