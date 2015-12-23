@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DESCRIPTION=Encrypts data from stdin to stdout
+EAPI=5
+HOMEPAGE=http://loop-aes.sourceforge.net
+IUSE=+asm cpu_flags_x86_aes cpu_flags_x86_padlock static
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris
+LICENSE=GPL-2
+RDEPEND=app-arch/sharutils app-crypt/gnupg
+SLOT=0
+SRC_URI=http://loop-aes.sourceforge.net/aespipe/aespipe-v2.4d.tar.bz2
+_eclass_exported_funcs=src_configure:-
+_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=38de5d9ff7dd34a6398f645ef39c97c9
