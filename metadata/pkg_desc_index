@@ -15091,7 +15091,7 @@ sci-biology/ApE 2.0.7-r1: A Plasmid Editor
 sci-biology/GBrowse 2.48-r1: Generic Model Organism Database Project - The Generic Genome Browser
 sci-biology/aaindex 9.1: Amino acid indices and similarity matrices
 sci-biology/abyss 1.3.3 1.3.4 1.3.6: Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler
-sci-biology/allpathslg 42337 47093 52415: De novo assembly of whole-genome shotgun microreads
+sci-biology/allpathslg 42337 47093 52415 52488: De novo assembly of whole-genome shotgun microreads
 sci-biology/amap 2.2-r2: Protein multiple-alignment-based sequence annealing
 sci-biology/amos 3.1.0 3.1.0-r1: A Modular, Open-Source whole genome assembler
 sci-biology/arb 5.1-r1 5.2 5.3: Tools for DNA/RNA sequence database handling and data analysis, phylogenetic analysis
