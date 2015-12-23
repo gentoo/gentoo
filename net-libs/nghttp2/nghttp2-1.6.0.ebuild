@@ -21,7 +21,7 @@ HOMEPAGE="https://nghttp2.org/"
 
 LICENSE="MIT"
 SLOT="0/1.14" # <C++>.<C> SONAMEs
-IUSE="cxx debug hpack-tools jemalloc static-libs test +threads utils xml"
+IUSE="cxx debug hpack-tools jemalloc libressl static-libs test +threads utils xml"
 
 RDEPEND="
 	cxx? ( dev-libs/boost[${MULTILIB_USEDEP},threads] )
@@ -29,7 +29,8 @@ RDEPEND="
 	jemalloc? ( dev-libs/jemalloc )
 	utils? (
 		>=dev-libs/libev-4.15
-		>=dev-libs/openssl-1.0.2
+		!libressl? ( >=dev-libs/openssl-1.0.2:0[-bindist] )
+		libressl? ( dev-libs/libressl )
 		>=sys-libs/zlib-1.2.3
 	)
 	xml? ( >=dev-libs/libxml2-2.7.7 )"
