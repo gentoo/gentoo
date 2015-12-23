@@ -1,5 +1,3 @@
-Index: supertux-0.1.3/src/tile.cpp
-===================================================================
 --- supertux-0.1.3.orig/src/tile.cpp
 +++ supertux-0.1.3/src/tile.cpp
 @@ -99,7 +99,11 @@ void TileManager::load_tileset(std::stri

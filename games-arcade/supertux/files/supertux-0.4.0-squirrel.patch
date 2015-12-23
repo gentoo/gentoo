@@ -1,0 +1,20 @@
+--- supertux-0.4.0.orig/external/squirrel/CMakeLists.txt
++++ supertux-0.4.0/external/squirrel/CMakeLists.txt
+@@ -65,8 +65,6 @@
+ 
+ # the squirrel sources are out of our control so don't be too pedantic about
+ # them
+-SET(CMAKE_CXX_FLAGS "")
+-SET(CMAKE_C_FLAGS "")
+ 
+ ## define a target for building the library
+ 
+@@ -82,8 +80,3 @@
+ set(LIB_SUBDIR "lib${LIB_SUFFIX}"
+ 	CACHE STRING "Subdirectory of prefix into which libraries are installed (e.g., lib32, lib64)")
+ 
+-INSTALL(TARGETS squirrel
+-    RUNTIME DESTINATION bin
+-	ARCHIVE DESTINATION ${LIB_SUBDIR}
+-	LIBRARY DESTINATION ${LIB_SUBDIR}
+-	COMPONENT squirrel)
