@@ -23,7 +23,7 @@ CONF_FLAG=( .    .     .               ecl  ccl       .     )
 # patch file version; . - no patch
 PATCH_V=(   1    1     .               2    2         1     )
 
-IUSE="latex emacs tk nls unicode xemacs X ${LISPS[*]}"
+IUSE="emacs tk nls unicode X ${LISPS[*]}"
 
 # Languages
 LANGS="es pt pt_BR"
@@ -36,13 +36,11 @@ RDEPEND="!app-emacs/imaxima
 	X? ( x11-misc/xdg-utils
 		 sci-visualization/gnuplot[gd]
 		 tk? ( dev-lang/tk:0 ) )
-	latex? ( virtual/latex-base )
 	emacs? ( virtual/emacs
-		latex? ( app-emacs/auctex
-			app-text/ghostscript-gpl
-			dev-texlive/texlive-latexrecommended ) )
-	xemacs? ( app-editors/xemacs
-		latex? ( app-xemacs/auctex ) )"
+		virtual/latex-base
+		app-emacs/auctex
+		app-text/ghostscript-gpl
+		dev-texlive/texlive-latexrecommended )"
 
 # generating lisp dependencies
 depends() {
@@ -90,6 +88,7 @@ pkg_setup() {
 	done
 
 	if [ -z "${NLISPS}" ]; then
+		use arm && DEF_LISP=${ARM_LISP}
 		ewarn "No lisp specified in USE flags, choosing ${LISPS[${DEF_LISP}]} as default"
 		NLISPS=${DEF_LISP}
 	fi
@@ -97,7 +96,7 @@ pkg_setup() {
 
 src_prepare() {
 	local n PATCHES v
-	PATCHES=( rmaxima-0 wish-1 xdg-utils-0 db-0 )
+	PATCHES=( emacs-0 rmaxima-0 wish-2 xdg-utils-0 db-0 )
 
 	n=${#PATCHES[*]}
 	for ((n--; n >= 0; n--)); do
@@ -140,7 +139,10 @@ src_configure() {
 		done
 	fi
 
-	econf ${CONFS} $(use_with tk wish) --with-lispdir="${EPREFIX}/${SITELISP}"/${PN}
+	econf ${CONFS} \
+		$(use_with tk wish) \
+		$(use_enable emacs) \
+		--with-lispdir="${EPREFIX}/${SITELISP}/${PN}"
 }
 
 src_compile() {
@@ -156,13 +158,6 @@ src_install() {
 		/usr/share/${PN}/${PV}/xmaxima/maxima-new.png \
 		"Science;Math;Education"
 
-	rm -f "${ED}"/${SITELISP}/${PN}/emaxima.sty
-
-	if use latex; then
-		insinto ${TEXMF}/tex/latex/emaxima
-		doins interfaces/emacs/emaxima/emaxima.sty
-	fi
-
 	# do not use dodoc because interfaces can't read compressed files
 	# read COPYING before attempt to remove it from dodoc
 	insinto /usr/share/${PN}/${PV}/doc
@@ -173,12 +168,14 @@ src_install() {
 	if use emacs; then
 		elisp-install ${PN} interfaces/emacs/{emaxima,imaxima}/*.{el,elc,lisp}
 		elisp-site-file-install "${FILESDIR}"/50maxima-gentoo-1.el
+
+		rm "${ED}"/${SITELISP}/${PN}/emaxima.sty || die
+		insinto ${TEXMF}/tex/latex/emaxima
+		doins interfaces/emacs/emaxima/emaxima.sty
+
 		insinto /usr/share/${PN}/${PV}/doc/imaxima
 		doins interfaces/emacs/imaxima/README
 		doins -r interfaces/emacs/imaxima/imath-example
-	else
-		# remove any emacs files installed by the build system
-		rm -rf "${ED}"/usr/share/emacs
 	fi
 
 	# if we use ecls, build an ecls library for maxima
@@ -190,11 +187,15 @@ src_install() {
 }
 
 pkg_postinst() {
-	use emacs && elisp-site-regen
-	use latex && mktexlsr
+	if use emacs; then
+		elisp-site-regen
+		mktexlsr
+	fi
 }
 
 pkg_postrm() {
-	use emacs && elisp-site-regen
-	use latex && mktexlsr
+	if use emacs; then
+		lisp-site-regen
+		mktexlsr
+	fi
 }
