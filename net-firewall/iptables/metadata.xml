@@ -5,6 +5,7 @@
 <use>
 	<flag name='conntrack'>Build against <pkg>net-libs/libnetfilter_conntrack</pkg> when enables the connlabel matcher</flag>
 	<flag name='netlink'>Build against libnfnetlink which enables the nfnl_osf util</flag>
+	<flag name='nftables'>Support nftables kernel interface</flag>
 	<flag name='pcap'>Build against <pkg>net-libs/libpcap</pkg> which enables the nfbpf_compile util</flag>
 </use>
 <longdescription>
