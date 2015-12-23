@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit autotools eutils multilib flag-o-matic
 
 DESCRIPTION="Lightweight audio player"
@@ -53,6 +53,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cxxflags -std=c++11
 	econf \
 		--disable-shared \
 		$(use_enable syslog logging) \
