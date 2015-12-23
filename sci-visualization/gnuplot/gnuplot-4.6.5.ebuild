@@ -143,7 +143,7 @@ src_configure() {
 
 src_compile() {
 	# Prevent access violations, see bug 201871
-	VARTEXFONTS="${T}/fonts"
+	export VARTEXFONTS="${T}/fonts"
 
 	# We believe that the following line is no longer needed.
 	# In case of problems file a bug report at bugs.gentoo.org.
