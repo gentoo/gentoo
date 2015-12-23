@@ -6933,7 +6933,7 @@ dev-python/django-piston 0.2.3-r1 9999: A mini-framework for Django for creating
 dev-python/django-recaptcha 1.0.3 1.0.4: Django recaptcha form field/widget app
 dev-python/django-registration 0.8-r1 1.0: An extensible user-registration application for Django
 dev-python/django-sekizai 0.8.2 0.9.0: Django Template Blocks with extra functionality
-dev-python/django-select2 3.2.1 4.0.0 4.2.2 4.3.1: A Django integration of Select2
+dev-python/django-select2 3.2.1 4.0.0 4.2.2 4.3.1 5.5.0: A Django integration of Select2
 dev-python/django-setuptest 0.1.6: Simple test suite enabling Django app testing via setup.py
 dev-python/django-social-auth 0.7.28: An easy to setup social authentication/authorization mechanism for Django projects
 dev-python/django-tables2 0.16.0 0.16.0-r1 1.0.4 1.0.5: Table/data-grid framework for Django
@@ -6944,7 +6944,7 @@ dev-python/django-treebeard 3.0: Efficient tree implementations for Django 1.6+
 dev-python/django-two-factor-auth 1.1.1 1.2.1: User-friendly Two-Factor Authentication for Django
 dev-python/django-xslt 0.4.5-r1: an XSLT template system for Django
 dev-python/django_polymorphic 0.7.2: Seamless Polymorphic Inheritance for Django Models
-dev-python/djangocms-admin-style 0.2.8: Adds pretty CSS styles for the django CMS admin interface.
+dev-python/djangocms-admin-style 0.2.8: Adds pretty CSS styles for the django CMS admin interface
 dev-python/djangocms-file 0.1: File plugin for django CMS
 dev-python/djangocms-flash 0.2.0: Flash plugin for django CMS
 dev-python/djangocms-inherit 0.1: Inherit plugin for django CMS
