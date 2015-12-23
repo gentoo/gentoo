@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+DEPEND=dev-games/physfs dev-libs/boost:= media-libs/glew:= virtual/opengl media-libs/libvorbis media-libs/openal >=media-libs/libsdl2-2.0.1[joystick,video] >=media-libs/sdl2-image-2.0.0[png,jpeg] >=net-misc/curl-7.21.7 virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=A game similar to Super Mario Bros.
+EAPI=5
+HOMEPAGE=http://supertuxproject.org/
+IUSE=debug
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+ GPL-3+ ZLIB MIT CC-BY-SA-2.0 CC-BY-SA-3.0
+RDEPEND=dev-games/physfs dev-libs/boost:= media-libs/glew:= virtual/opengl media-libs/libvorbis media-libs/openal >=media-libs/libsdl2-2.0.1[joystick,video] >=media-libs/sdl2-image-2.0.0[png,jpeg] >=net-misc/curl-7.21.7 games-misc/games-envd
+SLOT=0
+SRC_URI=https://github.com/SuperTux/supertux/releases/download/v0.4.0/supertux-0.4.0.tar.bz2
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:base src_prepare:base src_configure:- src_compile:- src_test:cmake-utils src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	cmake-utils	b657a2689df4f46725711250cf9c8a32	eutils	d9bd2ddd85a58e470b49ca997e255a4c	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	games	4dae170e58f773c484e07d18ef441804	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=9bdbc0f3e859e87dc87a67d864f2996f
