@@ -42,7 +42,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-build.patch"
+	epatch "${FILESDIR}/${PN}-2.0.6-build.patch"
 }
 
 src_compile() {

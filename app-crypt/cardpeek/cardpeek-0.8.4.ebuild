@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,10 +16,10 @@ KEYWORDS=""
 IUSE=""
 
 RDEPEND="sys-apps/pcsc-lite
-	=dev-lang/lua-5.2*
+	dev-lang/lua:5.2
 	x11-libs/gtk+:3
 	net-misc/curl
-	dev-libs/openssl"
+	dev-libs/openssl:*"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
