@@ -10690,7 +10690,7 @@ gnome-base/librsvg 2.40.11 2.40.12: Scalable Vector Graphics (SVG) rendering lib
 gnome-base/nautilus 3.16.2 3.18.2 3.18.2-r1 3.18.3 3.18.4: A file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r4: ORBit2 is a high-performance CORBA ORB
 gnome-extra/activity-log-manager 0.9.7 0.9.7-r1: GUI which lets you easily control what gets logged by Zeitgeist
-gnome-extra/assogiate 0.2.1: assoGiate is an editor of the file types database for GNOME
+gnome-extra/assogiate 0.2.1 0.2.1-r1: assoGiate is an editor of the file types database for GNOME
 gnome-extra/at-spi 2.12.0 2.14.0: The Gnome Accessibility Toolkit
 gnome-extra/avant-window-navigator 0.4.2: A dock-like bar which sits at the bottom of the screen
 gnome-extra/avant-window-navigator-extras 0.4.0: Applets for the Avant Window Navigator
