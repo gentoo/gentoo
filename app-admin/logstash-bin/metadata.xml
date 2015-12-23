@@ -3,10 +3,6 @@
 <pkgmetadata>
 	<herd>proxy-maintainers</herd>
 	<maintainer>
-		<email>idella4@gentoo.org</email>
-		<name>Ian Delaney</name>
-	</maintainer>
-	<maintainer>
 		<email>hydrapolic@gmail.com</email>
 		<name>Tomas Mozes</name>
 		<description>Proxy maintainer</description>
@@ -15,4 +11,7 @@
 		<flag name="standard">standard distribution package</flag>
 		<flag name="all-plugins">contains the standard distribution package plus all plugins</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">elastic/logstash</remote-id>
+	</upstream>
 </pkgmetadata>
