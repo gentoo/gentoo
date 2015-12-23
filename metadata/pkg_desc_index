@@ -1814,7 +1814,7 @@ app-misc/ltunify 0.2-r1: Tool for working with Logitech Unifying receivers and d
 app-misc/lxsplit 0.2.4: Command-line file splitter/joiner for Linux
 app-misc/magneto-loader 254: Official Sabayon Linux Entropy Notification Applet Loader
 app-misc/matew 1.9: Make Album The Easy Way (Matew) is an HTML/CSS generator for static image albums
-app-misc/mc 4.8.11 4.8.12 4.8.13 4.8.13-r1 4.8.14 4.8.15 9999: GNU Midnight Commander is a text based file manager
+app-misc/mc 4.8.14 4.8.15 9999: GNU Midnight Commander is a text based file manager
 app-misc/media-player-info 21-r1 22: A repository of data files describing media player capabilities
 app-misc/mediacrush-cli 1.1.2 9999: A bash script for working with MediaCrush from a shell
 app-misc/mencal 2.3: A calendar that can be used to track menstruation (or other) cycles conveniently
@@ -15767,7 +15767,7 @@ sci-mathematics/kodkodi 1.5.2: A text front-end for the Kodkod Java library
 sci-mathematics/lpsolve 5.5.2.0: Mixed Integer Linear Programming (MILP) solver
 sci-mathematics/lybniz 1.3.2: A function plotter program written in PyGTK
 sci-mathematics/mathomatic 15.8.5 16.0.1 16.0.5: Automatic algebraic manipulator
-sci-mathematics/maxima 5.34.1 5.37.3-r1 5.37.3-r2: Free computer algebra environment based on Macsyma
+sci-mathematics/maxima 5.34.1 5.37.3-r1 5.37.3-r3: Free computer algebra environment based on Macsyma
 sci-mathematics/minisat 2.1.0 2.2.0-r3: Small yet efficient SAT solver with reference paper
 sci-mathematics/mlpy 3.5.0: High-performance Python library for predictive modeling
 sci-mathematics/msieve 1.51 9999: A C library implementing a suite of algorithms to factor large integers
@@ -16917,7 +16917,7 @@ sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 9999: Gen
 sys-kernel/genkernel-next 35 55 60 63: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.4.110 3.4.9999 3.10.92 3.10.93 3.10.94 3.12.49 3.12.50 3.12.9999 3.14.56 3.14.57 3.14.58 3.18.21 3.18.22 3.18.23 3.18.24 3.18.25 4.0.4 4.0.9 4.1.12 4.1.13 4.1.14 4.1.15 4.2.4 4.2.5 4.2.6 4.2.7 4.2.8 4.3.0 4.3.2 4.3.3: Full sources including the Gentoo patchset for the 4.3 kernel tree
 sys-kernel/git-sources 4.4_rc1 4.4_rc2 4.4_rc3 4.4_rc4 4.4_rc5 4.4_rc6: The very latest -git version of the Linux kernel
-sys-kernel/hardened-sources 4.1.7-r1 4.2.6-r5 4.2.6-r6 4.2.6-r7 4.2.6-r8 4.2.7 4.3.3-r1 4.3.3-r2: Hardened kernel sources (kernel series 4.3)
+sys-kernel/hardened-sources 4.1.7-r1 4.2.6-r8 4.2.7 4.3.3-r2: Hardened kernel sources (kernel series 4.3)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.1 0.1.3: Kernel config generator
 sys-kernel/linux-docs 3.4.104 3.10.58 3.12.30 3.14.22 4.1.12 4.2.5 4.3: Developer documentation generated from the Linux kernel
