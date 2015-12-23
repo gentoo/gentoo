@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-
-inherit eutils
+EAPI=5
+inherit eutils flag-o-matic
 
 DESCRIPTION="Utility functions, classes and widgets written on top of gtkmm and
 glibmm."
@@ -28,5 +27,11 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cxxflags -std=c++11
 	econf $(use_enable doc documentation)
+}
+
+src_install() {
+	default
+	prune_libtool_files
 }
