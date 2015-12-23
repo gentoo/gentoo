@@ -3,24 +3,86 @@
 # $Id$
 
 EAPI="5"
-MY_EXTRAS_VER="20150717-1707Z"
-HAS_TOOLS_PATCH="1"
+MY_EXTRAS_VER="20151223-1501Z"
+# The wsrep API version must match between upstream WSREP and sys-cluster/galera major number
+WSREP_REVISION="25"
 SUBSLOT="18"
+MYSQL_PV_MAJOR="5.6"
 
-inherit toolchain-funcs mysql-multilib
-IUSE="${IUSE}"
+inherit toolchain-funcs mysql-multilib-r1
+
+HOMEPAGE="http://mariadb.org/"
+DESCRIPTION="An enhanced, drop-in replacement for MySQL"
+
+IUSE="bindist odbc oqgraph pam sphinx tokudb xml"
+RESTRICT="!bindist? ( bindist )"
+
+REQUIRED_USE="tokudb? ( jemalloc ) static? ( !pam )"
 
 # REMEMBER: also update eclass/mysql*.eclass before committing!
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 # When MY_EXTRAS is bumped, the index should be revised to exclude these.
-EPATCH_EXCLUDE=''
+EPATCH_EXCLUDE='20004_all_mariadb-filter-tokudb-flags-10.0.7.patch'
 
-DEPEND="|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )"
-RDEPEND="${RDEPEND}"
+COMMON_DEPEND="
+	!bindist? ( >=sys-libs/readline-4.1:0=	)
+	server? (
+		extraengine? (
+			odbc? ( dev-db/unixODBC:0= )
+			xml? ( dev-libs/libxml2:2= )
+		)
+		oqgraph? ( >=dev-libs/boost-1.40.0:0= dev-libs/judy:0= )
+		pam? ( virtual/pam:0= )
+	)
+	>=dev-libs/libpcre-8.35:3=
+"
+DEPEND="|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
+	${COMMON_DEPEND}"
+RDEPEND="${RDEPEND} ${COMMON_DEPEND}
+	perl? ( !dev-db/mytop
+		virtual/perl-Getopt-Long
+		dev-perl/TermReadKey
+		virtual/perl-Term-ANSIColor
+		virtual/perl-Time-HiRes )
+"
+MULTILIB_WRAPPED_HEADERS+=( /usr/include/mysql/mysql_version.h )
+
+src_configure(){
+	# bug 508724 mariadb cannot use ld.gold
+	tc-ld-disable-gold
+	local MYSQL_CMAKE_NATIVE_DEFINES=(
+			-DWITH_JEMALLOC=$(usex jemalloc system)
+			-DWITH_PCRE=system
+	)
+	if use server ; then
+		# Federated{,X} must be treated special otherwise they will not be built as plugins
+		if ! use extraengine ; then
+			MYSQL_CMAKE_NATIVE_DEFINES+=(
+				-DWITHOUT_FEDERATED=1
+				-DWITHOUT_FEDERATEDX=1 )
+		fi
+
+		MYSQL_CMAKE_NATIVE_DEFINES+=(
+			$(mysql-cmake_use_plugin oqgraph OQGRAPH)
+			$(mysql-cmake_use_plugin sphinx SPHINX)
+			$(mysql-cmake_use_plugin tokudb TOKUDB)
+			$(mysql-cmake_use_plugin pam AUTH_PAM)
+			-DWITHOUT_CASSANDRA=0
+			$(mysql-cmake_use_plugin extraengine SEQUENCE)
+			$(mysql-cmake_use_plugin extraengine SPIDER)
+			$(mysql-cmake_use_plugin extraengine CONNECT)
+			-DCONNECT_WITH_MYSQL=1
+			-DCONNECT_WITH_LIBXML2=$(usex xml)
+			-DCONNECT_WITH_ODBC=$(usex odbc)
+			-DWITHOUT_MROONGA=1
+		)
+	fi
+	mysql-multilib-r1_src_configure
+}
 
 # Official test instructions:
-# USE='embedded extraengine perl openssl static-libs community' \
+# USE='embedded extraengine perl server openssl static-libs' \
 # FEATURES='test userpriv -usersandbox' \
 # ebuild mariadb-X.X.XX.ebuild \
 # digest clean package
@@ -53,13 +115,6 @@ multilib_src_test() {
 		cmake-utils_src_test
 		retstatus_unit=$?
 		[[ $retstatus_unit -eq 0 ]] || eerror "test-unit failed"
-
-		# Create a symlink to provided binaries so the tests can find them when client-libs is off
-		if ! use client-libs ; then
-			ln -srf /usr/bin/my_print_defaults "${BUILD_DIR}/client/my_print_defaults" || die
-			ln -srf /usr/bin/perror "${BUILD_DIR}/client/perror" || die
-			mysql-multilib_disable_test main.perror "String mismatch due to not building local perror"
-		fi
 
 		# Ensure that parallel runs don't die
 		export MTR_BUILD_THREAD="$((${RANDOM} % 100))"
@@ -94,11 +149,11 @@ multilib_src_test() {
 			main.mysqld--help main.bootstrap \
 			archive.mysqlhotcopy_archive main.mysqlhotcopy_myisam \
 			funcs_1.is_triggers funcs_1.is_tables_mysql funcs_1.is_columns_mysql ; do
-				mysql-multilib_disable_test  "$t" "False positives in Gentoo"
+				mysql-multilib-r1_disable_test  "$t" "False positives in Gentoo"
 		done
 
 		# Run mysql tests
-		pushd "${TESTDIR}"
+		pushd "${TESTDIR}" || die
 
 		# run mysql-test tests
 		perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder
@@ -107,7 +162,7 @@ multilib_src_test() {
 		[[ $retstatus_tests -eq 0 ]] || eerror "tests failed"
 		has usersandbox $FEATURES && eerror "Some tests may fail with FEATURES=usersandbox"
 
-		popd
+		popd || die
 
 		# Cleanup is important for these testcases.
 		pkill -9 -f "${S}/ndb" 2>/dev/null
