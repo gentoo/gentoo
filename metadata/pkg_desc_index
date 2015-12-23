@@ -8805,7 +8805,7 @@ dev-ruby/rbpdf-font 1.19.0: Font files for the Ruby on Rails RBPDF plugin
 dev-ruby/rbtree 0.4.2: Ruby/RBTree module
 dev-ruby/rcairo 1.14.1 1.14.1-r1 1.14.3: Ruby bindings for cairo
 dev-ruby/rdiscount 1.6.8-r2 1.6.8-r3 2.1.7 2.1.7.1 2.1.8: Implementation of John Gruber's Markdown
-dev-ruby/rdoc 4.0.1-r2 4.1.2 4.1.2-r1 4.2.0: An extended version of the RDoc library from Ruby 1.8
+dev-ruby/rdoc 4.0.1-r2 4.2.0 4.2.1: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r1 0.6.38-r2: A multipurpose documentation format for Ruby
 dev-ruby/recog 2.0.6-r1 2.0.14-r1: Pattern recognition for hosts, services, and content
 dev-ruby/redcarpet 3.2.3 3.3.2 3.3.3: A Ruby wrapper for Upskirt
@@ -8987,7 +8987,7 @@ dev-ruby/unf_ext 0.0.6-r1 0.0.6-r2 0.0.7.1: Unicode Normalization Form support l
 dev-ruby/unindent 1.0: Ruby method to unindent strings
 dev-ruby/uuidtools 2.1.4-r1 2.1.5: Simple library to generate UUIDs
 dev-ruby/vcard 0.2.12: Ruby vcard support extracted from Vpim
-dev-ruby/vcr 1.11.3 2.9.3 3.0.0: Records your test suite's HTTP interactions and replay them during future test runs.
+dev-ruby/vcr 1.11.3 2.9.3 3.0.0 3.0.1: Records your test suite's HTTP interactions and replay them during test runs
 dev-ruby/vlad 2.6.3 2.6.4 2.6.5: Pragmatic application deployment automation, without mercy
 dev-ruby/warden 1.2.3 1.2.4: General Rack Authentication Framework
 dev-ruby/watch 0.1.0: A dirt simple mechanism to tell if files have changed
