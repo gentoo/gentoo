@@ -5,7 +5,7 @@
 EAPI=5
 WANT_AUTOCONF="2.1"
 MOZ_ESR=""
-MOZ_LIGHTNING_VER="4.0.2"
+MOZ_LIGHTNING_VER="4.0.5"
 MOZ_LIGHTNING_GDATA_VER="1.9"
 
 # This list can be updated using scripts/get_langs.sh from the mozilla overlay
@@ -27,7 +27,7 @@ EMVER="1.8.2"
 
 # Patches
 PATCH="thunderbird-38.0-patches-0.1"
-PATCHFF="firefox-38.0-patches-04"
+PATCHFF="firefox-38.0-patches-05"
 
 MOZ_HTTP_URI="http://ftp.mozilla.org/pub/${PN}/releases"
 
@@ -37,16 +37,18 @@ inherit flag-o-matic toolchain-funcs mozconfig-v6.38 makeedit multilib autotools
 DESCRIPTION="Thunderbird Mail Client"
 HOMEPAGE="http://www.mozilla.com/en-US/thunderbird/"
 
-KEYWORDS="~alpha amd64 ~arm ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="bindist crypt hardened ldap lightning +minimal mozdom selinux"
 RESTRICT="!bindist? ( bindist )"
 
+# URI for upstream lightning package (when it is available)
+#${MOZ_HTTP_URI/${PN}/calendar/lightning}/${MOZ_LIGHTNING_VER}/linux/lightning.xpi -> lightning-${MOZ_LIGHTNING_VER}.xpi
 PATCH_URIS=( https://dev.gentoo.org/~{anarchy,axs,polynomial-c}/mozilla/patchsets/{${PATCH},${PATCHFF}}.tar.xz )
 SRC_URI="${SRC_URI}
 	${MOZ_HTTP_URI}/${MOZ_PV}/source/${MOZ_P}.source.tar.bz2
-	${MOZ_HTTP_URI/${PN}/calendar/lightning}/${MOZ_LIGHTNING_VER}/linux/lightning.xpi -> lightning-${MOZ_LIGHTNING_VER}.xpi
+	https://dev.gentoo.org/~axs/distfiles/lightning-${MOZ_LIGHTNING_VER}.tar.xz
 	lightning? ( https://dev.gentoo.org/~axs/distfiles/gdata-provider-${MOZ_LIGHTNING_GDATA_VER}.tar.xz )
 	crypt? ( http://www.enigmail.net/download/source/enigmail-${EMVER}.tar.gz )
 	${PATCH_URIS[@]}"
@@ -55,7 +57,7 @@ ASM_DEPEND=">=dev-lang/yasm-1.1"
 
 CDEPEND="
 	>=dev-libs/nss-3.19.2
-	>=dev-libs/nspr-4.10.8
+	>=dev-libs/nspr-4.10.10
 	!x11-plugins/enigmail
 	crypt?  ( || (
 		( >=app-crypt/gnupg-2.0
@@ -118,7 +120,9 @@ src_unpack() {
 	# Unpack language packs
 	mozlinguas_src_unpack
 
-	xpi_unpack lightning-${MOZ_LIGHTNING_VER}.xpi
+	# this version of lightning is a .tar.xz, no xpi needed
+	#xpi_unpack lightning-${MOZ_LIGHTNING_VER}.xpi
+
 	# this version of gdata-provider is a .tar.xz , no xpi needed
 	#use lightning && xpi_unpack gdata-provider-${MOZ_LIGHTNING_GDATA_VER}.xpi
 }
@@ -133,6 +137,8 @@ src_prepare() {
 	pushd "${S}"/mozilla &>/dev/null || die
 	EPATCH_SUFFIX="patch" \
 	EPATCH_FORCE="yes" \
+	EPATCH_EXCLUDE="8010_bug114311-freetype26.patch
+			8011_bug1194520-freetype261_until_moz43.patch" \
 	epatch "${WORKDIR}/firefox"
 	popd &>/dev/null || die
 
@@ -190,6 +196,9 @@ src_configure() {
 
 	mozconfig_init
 	mozconfig_config
+
+	# We want rpath support to prevent unneeded hacks on different libc variants
+	append-ldflags -Wl,-rpath="${MOZILLA_FIVE_HOME}"
 
 	# It doesn't compile on alpha without this LDFLAGS
 	use alpha && append-ldflags "-Wl,--no-relax"
