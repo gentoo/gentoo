@@ -68,7 +68,7 @@ DEPEND="dev-libs/lzo:2
 	api? ( dev-libs/libxml2
 		net-misc/curl )
 	${PYTHON_DEPS}
-	pygrub? ( ${PYTHON_DEPS//${PYTHON_REQ_USE}/ncurses} )
+	pygrub? ( $(python_gen_impl_dep ncurses) )
 	sys-devel/bin86
 	sys-devel/dev86
 	dev-lang/perl

@@ -87,8 +87,8 @@ DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 	api? ( dev-libs/libxml2
 		net-misc/curl )
-	pygrub? ( ${PYTHON_DEPS//${PYTHON_REQ_USE}/ncurses} )
-	ovmf? ( ${PYTHON_DEPS//${PYTHON_REQ_USE}/sqlite} )
+	pygrub? ( $(python_gen_impl_dep ncurses) )
+	ovmf? ( $(python_gen_impl_dep sqlite) )
 	!amd64? ( >=sys-apps/dtc-1.4.0 )
 	amd64? ( sys-devel/bin86
 		system-seabios? ( sys-firmware/seabios )

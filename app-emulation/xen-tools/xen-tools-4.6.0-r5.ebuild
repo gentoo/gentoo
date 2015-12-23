@@ -90,7 +90,7 @@ DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 	api? ( dev-libs/libxml2
 		net-misc/curl )
-	ovmf? ( ${PYTHON_DEPS//${PYTHON_REQ_USE}/sqlite} )
+	ovmf? ( $(python_gen_impl_dep sqlite) )
 	!amd64? ( >=sys-apps/dtc-1.4.0 )
 	amd64? ( sys-devel/bin86
 		system-seabios? ( sys-firmware/seabios )
