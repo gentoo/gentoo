@@ -133,7 +133,7 @@ app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
 app-admin/logrotate 3.8.9 3.8.9-r1 3.9.1 3.9.1-r1: Rotates, compresses, and mails system logs
 app-admin/logsentry 1.1.1 1.1.1-r1: automatically monitor system logs and mail security violations on a periodic basis
 app-admin/logstalgia 1.0.3-r1 1.0.6: Replays or streams an access_log as a retro arcade game-like simulation
-app-admin/logstash-bin 1.5.5 2.1.0: Tool for managing events and logs
+app-admin/logstash-bin 1.5.6 2.1.0 2.1.1: Tool for managing events and logs
 app-admin/logstash-forwarder 0.4.0-r1: Collects logs locally in preparation for processing elsewhere
 app-admin/logsurfer+ 1.8-r1: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
@@ -6661,7 +6661,7 @@ dev-php/pecl-timezonedb 2014.7 2015.7: Timezone Database to be used with PHP's d
 dev-php/pecl-translit 0.6.1-r1: Transliterates non-latin character sets to latin
 dev-php/pecl-uploadprogress 1.0.3.1-r1 1.0.3.1-r2: An extension to track progress of a file upload
 dev-php/pecl-uuid 1.0.3-r2 1.0.4: A wrapper around libuuid
-dev-php/pecl-xdiff 1.5.2-r2: PHP extension for generating diff files
+dev-php/pecl-xdiff 1.5.2-r3: PHP extension for generating diff files
 dev-php/pecl-xrange 1.3.2-r1: Implementation of weak references
 dev-php/pecl-yaml 1.2.0 2.0.0_rc5: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
 dev-php/pecl-yaz 1.1.6 1.1.9: This extension implements a Z39.50 client for PHP using the YAZ toolkit
