@@ -88,6 +88,7 @@ pkg_setup() {
 	done
 
 	if [ -z "${NLISPS}" ]; then
+		use arm && DEF_LISP=${ARM_LISP}
 		ewarn "No lisp specified in USE flags, choosing ${LISPS[${DEF_LISP}]} as default"
 		NLISPS=${DEF_LISP}
 	fi
