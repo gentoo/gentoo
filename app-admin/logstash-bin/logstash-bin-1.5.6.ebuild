@@ -14,7 +14,6 @@ SRC_URI="https://download.elastic.co/${MY_PN}/${MY_PN}/${MY_P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 RESTRICT="strip"
 QA_PREBUILT="opt/logstash/vendor/jruby/lib/jni/*/libjffi*.so"
@@ -36,10 +35,10 @@ src_install() {
 	fperms 0755 "/opt/${MY_PN}/bin/${MY_PN}" "/opt/${MY_PN}/vendor/jruby/bin/jruby"
 
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}/${MY_PN}.logrotate" "${MY_PN}"
+	newins "${FILESDIR}/${MY_PN}.logrotate" ${MY_PN}
 
-	newconfd "${FILESDIR}/${MY_PN}.confd-r1" "${MY_PN}"
-	newinitd "${FILESDIR}/${MY_PN}.initd-r1" "${MY_PN}"
+	newconfd "${FILESDIR}/${MY_PN}.confd-r1" ${MY_PN}
+	newinitd "${FILESDIR}/${MY_PN}.initd-r1" ${MY_PN}
 }
 
 pkg_postinst() {
