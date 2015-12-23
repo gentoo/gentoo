@@ -17,10 +17,8 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE=""
 
-RDEPEND="
-	dev-python/django-select2
-"
+RDEPEND="dev-python/django-select2[${PYTHON_USEDEP}]"
 DEPEND="
 	${RDEPEND}
-	dev-python/setuptools
+	dev-python/setuptools[${PYTHON_USEDEP}]
 "

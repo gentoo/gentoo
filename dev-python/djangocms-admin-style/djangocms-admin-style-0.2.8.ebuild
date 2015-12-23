@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{3,4}} )
 
 inherit distutils-r1
 
-DESCRIPTION="Adds pretty CSS styles for the django CMS admin interface."
+DESCRIPTION="Adds pretty CSS styles for the django CMS admin interface"
 HOMEPAGE="https://pypi.python.org/pypi/djangocms-admin-style"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
@@ -21,5 +21,5 @@ RDEPEND=""
 
 DEPEND="
 	${RDEPEND}
-	dev-python/setuptools
+	dev-python/setuptools[${PYTHON_USEDEP}]
 "
