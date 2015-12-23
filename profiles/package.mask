@@ -47,7 +47,7 @@ games-fps/ut2004-ultraduel
 
 # Ulrich Müller <ulm@gentoo.org> (21 Dec 2015)
 # Masked for testing, see bug #448242.
-=sci-mathematics/maxima-5.37.3-r2
+=sci-mathematics/maxima-5.37.3-r3
 
 # Hans de Graaff <graaff@gentoo.org> (21 Dec 2015)
 # Mask until issues with non-standard bin dir have been resolved.
