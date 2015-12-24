@@ -11,7 +11,7 @@ if [[ "${PV}" == "9999" ]] ; then
 	EGIT_URI_APPEND="${PN}"
 else
 	SRC_URI="https://download.enlightenment.org/rel/libs/${PN}/${MY_P}.tar.xz"
-	EKEY_STATE="snap"
+	EKEY_STATE="release"
 fi
 
 inherit enlightenment
