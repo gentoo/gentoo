@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit eutils toolchain-funcs flag-o-matic
+inherit eutils toolchain-funcs libtool flag-o-matic
 
 MY_PV="${PV/_/-}"
 MY_P="util-linux-${MY_PV}"
