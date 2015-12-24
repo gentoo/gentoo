@@ -62,6 +62,8 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-tcp_wrappers.patch"
 	# bug 567976
 	sed -i -e /AM_GNU_GETTEXT_VERSION/s/0.18/0.19/ configure.ac || die
+	# add missing tests so that make check doesn't fail
+	cp "${FILESDIR}"/{hdr,nohdr,twomsg,weed}.at "${S}"/readmsg/tests || die
 	if use mysql; then
 		sed -i -e /^INCLUDES/"s:$:$(mysql_config --include):" \
 			sql/Makefile.am || die
@@ -73,7 +75,6 @@ src_configure() {
 	append-flags -fno-strict-aliasing
 
 	# maildir is the Gentoo default
-	# but fails tests. So set it in config file instead.
 	econf MU_DEFAULT_SCHEME=maildir \
 		CURSES_LIBS="$($(tc-getPKG_CONFIG) --libs ncurses)" \
 		$(use_with berkdb berkeley-db) \
