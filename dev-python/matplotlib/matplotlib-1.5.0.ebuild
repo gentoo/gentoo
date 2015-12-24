@@ -47,6 +47,12 @@ COMMON_DEPEND="
 	media-libs/freetype:2
 	media-libs/libpng:0
 	media-libs/qhull
+	cairo? (
+		|| (
+			dev-python/pycairo[${PYTHON_USEDEP}]
+			dev-python/cairocffi[${PYTHON_USEDEP}]
+			)
+		)
 	gtk2? (
 		dev-libs/glib:2=
 		x11-libs/gdk-pixbuf
@@ -80,12 +86,6 @@ DEPEND="${COMMON_DEPEND}
 
 RDEPEND="${COMMON_DEPEND}
 	>=dev-python/pyparsing-1.5.6[${PYTHON_USEDEP}]
-	cairo? (
-		|| (
-			dev-python/pycairo[${PYTHON_USEDEP}]
-			dev-python/cairocffi[${PYTHON_USEDEP}]
-			)
-		)
 	excel? ( dev-python/xlwt[${PYTHON_USEDEP}] )
 	fltk? ( dev-python/pyfltk[${PYTHON_USEDEP}] )
 	gtk3? (
