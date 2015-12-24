@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
-
-inherit eutils versionator autotools gnome2
+EAPI=5
+inherit eutils flag-o-matic versionator autotools gnome2
 
 DESCRIPTION="Me TV is a GTK desktop application for watching digital television"
 HOMEPAGE="http://me-tv.sourceforge.net/"
@@ -15,7 +14,9 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE="http"
-RDEPEND=">=dev-cpp/gconfmm-2.6
+
+RDEPEND="
+	>=dev-cpp/gconfmm-2.6
 	dev-cpp/gtkmm:2.4
 	dev-cpp/libxmlpp:2.6
 	dev-libs/libunique:1
@@ -25,12 +26,14 @@ RDEPEND=">=dev-cpp/gconfmm-2.6
 	>=media-video/vlc-1.1.8
 	media-libs/gstreamer:0.10
 	media-plugins/gst-plugins-xvideo:0.10
-	media-libs/gst-plugins-base:0.10"
-
+	media-libs/gst-plugins-base:0.10
+"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 src_prepare() {
+	append-cxxflags -std=c++11
 	epatch "${FILESDIR}"/${P}-gcc47.patch
 	eautoreconf
 }
