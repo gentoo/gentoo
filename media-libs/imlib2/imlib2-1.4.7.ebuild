@@ -11,7 +11,7 @@ if [[ ${PV} != "9999" ]] ; then
 	EKEY_STATE="snap"
 fi
 
-inherit enlightenment toolchain-funcs multilib-minimal
+inherit enlightenment toolchain-funcs multilib-minimal eutils
 
 DESCRIPTION="Version 2 of an advanced replacement library for libraries like libXpm"
 HOMEPAGE="https://www.enlightenment.org/"
@@ -36,6 +36,11 @@ DEPEND="${RDEPEND}
 		>=x11-proto/xextproto-7.2.1-r1[${MULTILIB_USEDEP}]
 		>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]
 	)"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-headers.patch #563732
+	enlightenment_src_prepare
+}
 
 multilib_src_configure() {
 	# imlib2 has diff configure options for x86/amd64 mmx
