@@ -19,7 +19,12 @@ IUSE=""
 
 RDEPEND="media-libs/taglib
 	media-sound/mpg123
-	media-sound/qmmp
-	dev-qt/qtgui:4"
+	>=media-sound/qmmp-1.0.0
+	dev-qt/qtgui:5
+	dev-qt/qtx11extras:5
+	dev-qt/qtwidgets:5"
 DEPEND="${RDEPEND}
-	dev-lang/yasm"
+	dev-lang/yasm
+	dev-qt/linguist-tools:5"
+
+#PATCHES=( )
