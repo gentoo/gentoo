@@ -48,7 +48,7 @@ DEPEND="${RDEPEND}
 	x11-proto/xproto
 	x11-proto/xextproto
 	doc? ( app-text/linuxdoc-tools )
-	nls? ( >=sys-devel/gettext-0.19.5 )
+	nls? ( >=sys-devel/gettext-0.19.6 )
 	truetype? ( >=media-libs/freetype-2.0.9 )
 	xinerama? ( x11-proto/xineramaproto )
 "

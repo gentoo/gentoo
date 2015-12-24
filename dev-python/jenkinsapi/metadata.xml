@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>proxy-maintainers</herd>
-  <maintainer>
-    <email>idella4@gentoo.org</email>
-  </maintainer>
-  <maintainer>
-    <email>hydrapolic@gmail.com</email>
-    <name>Tomas Mozes</name>
-    <description>Proxy maintainer and target for all bugs</description>
-  </maintainer>
-  <upstream>
-    <remote-id type="github">salimfadhley/jenkinsapi</remote-id>
-  </upstream>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>hydrapolic@gmail.com</email>
+		<name>Tomas Mozes</name>
+		<description>Proxy maintainer</description>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">salimfadhley/jenkinsapi</remote-id>
+	</upstream>
 </pkgmetadata>

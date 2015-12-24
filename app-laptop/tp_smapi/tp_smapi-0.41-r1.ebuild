@@ -62,6 +62,7 @@ src_compile() {
 	# So we need to ensure that appended user CLAGS do not re-enable SSE
 	# https://bugs.gentoo.org/show_bug.cgi?id=492964
 	replace-flags '-msse*' ''
+	replace-flags '-mssse3' ''
 
 	linux-mod_src_compile
 }

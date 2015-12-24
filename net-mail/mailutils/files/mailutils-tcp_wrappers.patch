@@ -1,0 +1,22 @@
+--- a/maidag/maidag.c	2015-07-02 22:45:39.000000000 +0300
++++ b/maidag/maidag.c	2015-12-22 11:55:17.000000000 +0200
+@@ -518,7 +518,9 @@
+   
+   mu_gocs_register ("sieve", mu_sieve_module_init);
+ 
++#ifdef WITH_LIBWRAP
+   mu_tcpwrapper_cfg_init ();
++#endif
+   mu_acl_cfg_init ();
+   mu_m_server_cfg_init (NULL);
+   maidag_cfg_init ();
+@@ -531,7 +533,9 @@
+ 
+   mu_m_server_create (&server, program_version);
+   mu_m_server_set_conn (server, lmtp_connection);
++#ifdef WITH_LIBWRAP
+   mu_m_server_set_prefork (server, mu_tcp_wrapper_prefork);
++#endif
+   mu_m_server_set_mode (server, MODE_INTERACTIVE);
+   mu_m_server_set_max_children (server, 20);
+   mu_m_server_set_timeout (server, 600);

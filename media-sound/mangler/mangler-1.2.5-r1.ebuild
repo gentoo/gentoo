@@ -3,8 +3,7 @@
 # $Id$
 
 EAPI=5
-
-inherit toolchain-funcs
+inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="Open source VOIP client capable of connecting to Ventrilo 3.x servers"
 HOMEPAGE="http://www.mangler.org/"
@@ -35,8 +34,8 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	tc-export CC
+	append-cxxflags -std=c++11
 	econf \
-		--disable-dependency-tracking \
 		$(use_enable static-libs static) \
 		$(use_enable gsm) \
 		$(use_enable speex) \
@@ -50,8 +49,6 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc AUTHORS ChangeLog
-
-	find "${D}" -name '*.la' -exec rm -f '{}' +
+	default
+	prune_libtool_files
 }

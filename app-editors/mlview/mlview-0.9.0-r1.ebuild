@@ -6,7 +6,7 @@ EAPI=5
 GCONF_DEBUG="no"
 GNOME_TARBALL_SUFFIX="bz2"
 
-inherit autotools eutils gnome2
+inherit autotools eutils flag-o-matic gnome2
 
 DESCRIPTION="XML editor for the GNOME environment"
 HOMEPAGE="http://www.nongnu.org/mlview/mlview-internals.html"
@@ -57,6 +57,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cxxflags -std=c++11
 	gnome2_src_configure \
 		--disable-static \
 		$(use_enable debug)

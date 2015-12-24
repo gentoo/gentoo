@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python2_{6,7} )
+PYTHON_COMPAT=( python2_7 )
 inherit autotools eutils python-single-r1 python-utils-r1
 
 DESCRIPTION="Geometry engine library for Geographic Information Systems"

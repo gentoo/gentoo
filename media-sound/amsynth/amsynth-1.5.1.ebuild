@@ -3,8 +3,7 @@
 # $Id$
 
 EAPI=5
-
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Virtual analogue synthesizer"
 HOMEPAGE="https://github.com/nixxcode/amsynth/"
@@ -41,6 +40,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cxxflags -std=c++11
 	econf \
 		CFLAGS="" \
 		CXXFLAGS="${CXXFLAGS}" \
