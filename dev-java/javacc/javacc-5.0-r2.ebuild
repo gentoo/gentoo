@@ -33,7 +33,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.0-javadoc.patch
 )
 
-
 JAVA_ANT_REWRITE_CLASSPATH="yes"
 JAVA_ANT_CLASSPATH_TAGS+=" javadoc"
 
