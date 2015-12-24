@@ -3840,7 +3840,7 @@ dev-java/fscript 1.17-r1: Java based scripting engine designed to be embedded in
 dev-java/gcj-jdk 4.9.3: Java wrappers around GCJ
 dev-java/gjdoc 0.7.9-r3: A javadoc compatible Java source documentation generator
 dev-java/glassfish-connector-api 1.1.2.2.04: Java Transaction API
-dev-java/glassfish-deployment-api 1.2 3.1.1: J2EE Application Deployment Specification V.1.2
+dev-java/glassfish-deployment-api 3.1.1: J2EE Application Deployment Specification V.1.2
 dev-java/glassfish-ejb-api 3.2: Project GlassFish Enterprise JavaBean API
 dev-java/glassfish-interceptor-api 3.1: Project GlassFish Interceptor API
 dev-java/glassfish-jms-api 1.1.2.2.04: Java Transaction API
@@ -3927,7 +3927,7 @@ dev-java/java-getopt 1.0.14: Java command line option parser
 dev-java/java-gnome 4.0.19 4.0.20 4.1.3: Java bindings for GTK and GNOME
 dev-java/java-sdk-docs 1.6.0.30 1.7.0.80 1.8.0.66: Oracle's documentation bundle (including API) for Java SE
 dev-java/java-service-wrapper 3.5.25-r1: A wrapper that makes it possible to install a Java Application as daemon
-dev-java/javacc 5.0-r1: Java Compiler Compiler - The Java Parser Generator
+dev-java/javacc 5.0-r1 5.0-r2: Java Compiler Compiler - The Java Parser Generator
 dev-java/javacsv 2.1: Java library for reading and writing CSV and plain delimited text files
 dev-java/javacup 0.11a_beta20060608 0.11b_p20151001: CUP Parser Generator for Java
 dev-java/javahelp 2.0.05_p63: The JavaHelp system online help system
@@ -3964,7 +3964,7 @@ dev-java/jcs 2.0: JCS is a distributed caching system written in Java for server
 dev-java/jdbc-informix 3.00.3: JDBC Type 4 Drivers for Informix
 dev-java/jdbc-jaybird 2.1.5-r1 2.2.9: JDBC Type 2 and 4 drivers for Firebird SQL server
 dev-java/jdbc-mssqlserver 4.0.2206.100: JDBC driver for Microsoft SQL Server
-dev-java/jdbc-mysql 5.1.14 5.1.18 5.1.23 5.1.26: MySQL JDBC driver
+dev-java/jdbc-mysql 5.1.26: MySQL JDBC driver
 dev-java/jdbc-oracle-bin 9.2.0.8 10.1.0.5 10.2.0.3 10.2.0.4: JDBC 3.0 Drivers for Oracle
 dev-java/jdbc-postgresql 9.2_p1003 9.2_p1004 9.3_p1100 9.4_p1205 9.4_p1206: JDBC Driver for PostgreSQL
 dev-java/jdbc2-stdext 2.0-r3: A standard set of libs for Server-Side JDBC support
@@ -4044,6 +4044,7 @@ dev-java/jsr225 1.0: XQuery API for Java
 dev-java/jsr250 1.0-r1: JSR 250 Common Annotations
 dev-java/jsr305 3.0.1: Annotations for Software Defect Detection in Java
 dev-java/jsr311-api 1.1.1: JAX-RS: Java API for RESTful Web Services
+dev-java/jsr322 1.5: Java EE Connector Architecture
 dev-java/jsr67 1.3: SAAJ 1.3 (AKA JSR-67 MR3) API
 dev-java/jsr93 1.0-r2: Java API for XML Registries (JAXR) - API
 dev-java/jss 4.3.2: Network Security Services for Java (JSS)
