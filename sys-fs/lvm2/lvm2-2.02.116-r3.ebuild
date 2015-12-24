@@ -31,7 +31,10 @@ RDEPEND="${DEPEND_COMMON}
 	!!sys-fs/clvm
 	!!sys-fs/lvm-user
 	>=sys-apps/util-linux-2.16
-	lvm2create_initrd? ( sys-apps/makedev )
+	lvm2create_initrd? (
+		app-arch/cpio
+		sys-apps/makedev
+	)
 	thin? ( >=sys-block/thin-provisioning-tools-0.3.0 )"
 # note: thin- 0.3.0 is required to avoid --disable-thin_check_needs_check
 # USE 'static' currently only works with eudev, bug 520450
