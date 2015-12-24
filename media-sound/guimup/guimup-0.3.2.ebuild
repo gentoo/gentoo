@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-
-inherit eutils
+EAPI=5
+inherit eutils flag-o-matic
 
 MY_P=${P/-/_}
 
@@ -16,14 +15,19 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-DOCS="ChangeLog README NEWS AUTHORS"
 
 RDEPEND=">=dev-cpp/gtkmm-3.2.0:3.0
-		dev-libs/libunique:3
-		>=media-libs/libmpdclient-2.3
-		>=net-libs/libsoup-2.36"
+	dev-libs/libunique:3
+	>=media-libs/libmpdclient-2.3
+	>=net-libs/libsoup-2.36
+"
 DEPEND="${RDEPEND}
-		virtual/pkgconfig"
+	virtual/pkgconfig
+"
+
+src_prepare() {
+	append-cxxflags -std=c++11
+}
 
 src_install() {
 	default
