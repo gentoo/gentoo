@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="Pattern recognition for hosts, services, and content"
-HOMEPAGE="https://github.com/rapid7/${PN}"
+HOMEPAGE="https://github.com/rapid7/recog"
 
 LICENSE="BSD-2"
 SLOT="${PV}"

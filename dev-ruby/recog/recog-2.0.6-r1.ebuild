@@ -8,7 +8,7 @@ RUBY_FAKEGEM_BINWRAP=""
 inherit ruby-fakegem
 
 DESCRIPTION="Pattern recognition for hosts, services, and content"
-HOMEPAGE="https://github.com/rapid7/${PN}"
+HOMEPAGE="https://github.com/rapid7/recog"
 SRC_URI="mirror://rubygems/${P}.gem"
 
 LICENSE="BSD"
