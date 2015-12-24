@@ -15,7 +15,7 @@ IUSE="apache2 ldap mysql nginx postgres"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND=">=net-analyzer/icinga2-2.1.1
-		dev-lang/php:*[apache2?,cli,gd,json,intl,ldap?,mysql?,pdo,postgres?,sockets,ssl,xslt,xml]
+		dev-lang/php:5.6[apache2?,cli,gd,json,intl,ldap?,mysql?,pdo,postgres?,sockets,ssl,xslt,xml]
 		dev-php/pecl-imagick
 		apache2? ( >=www-servers/apache-2.4.0 )
 		nginx? ( >=www-servers/nginx-1.7.0:* )"
