@@ -37,9 +37,6 @@ src_install() {
 	dodoc CHANGES.txt README.txt TODO.txt
 	newicon icons/icon.xpm wxglade.xpm
 	#|| die "installing wxglade.xpm failed"
-	doman "${S}"/debian/wxglade.1
-	#|| die "installing man failed"
-	rm -rf "${S}"/debian || die
 	dohtml -r "${S}"/docs/*
 	#|| die "installing docs failied"
 	rm -rf "${S}"/docs || die
