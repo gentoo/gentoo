@@ -13,7 +13,7 @@ SRC_URI="https://repo1.maven.org/maven2/org/glassfish/javax.enterprise.deploy/${
 
 LICENSE="|| ( CDDL GPL-2 )"
 SLOT="1.2"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 DEPEND="
