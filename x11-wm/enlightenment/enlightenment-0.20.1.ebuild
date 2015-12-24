@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_URI_APPEND="${PN}"
 else
 	SRC_URI="https://download.enlightenment.org/rel/apps/${PN}/${MY_P}.tar.xz"
-	EKEY_STATE="live"
+	EKEY_STATE="snap"
 fi
 
 inherit enlightenment
@@ -50,8 +50,8 @@ RDEPEND="
 		>=x11-libs/pixman-0.31.1
 		>=x11-libs/libxkbcommon-0.3.1
 	)
-	>=dev-libs/efl-${PV}[X]
-	>=media-libs/elementary-${PV}
+	>=dev-libs/efl-1.15.2[X]
+	>=media-libs/elementary-1.15
 	x11-libs/xcb-util-keysyms"
 DEPEND="${RDEPEND}"
 

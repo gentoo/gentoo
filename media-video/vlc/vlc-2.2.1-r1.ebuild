@@ -34,10 +34,8 @@ fi
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-8" # vlc - vlccore
 
-if [ "${PV%9999}" = "${PV}" ] ; then
+if [[ ${PV} != *9999 ]] ; then
 	KEYWORDS="amd64 ~arm ppc ppc64 -sparc x86 ~x86-fbsd"
-else
-	KEYWORDS="amd64 ppc ppc64 x86"
 fi
 
 IUSE="a52 aalib alsa altivec atmo +audioqueue +avcodec
