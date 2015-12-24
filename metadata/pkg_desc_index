@@ -2337,7 +2337,7 @@ app-text/paps 0.6.8-r1: Unicode-aware text to PostScript converter
 app-text/par 1.52: a paragraph reformatter, vaguely similar to fmt, but better
 app-text/passivetex 1.25: A namespace-aware XML parser written in Tex
 app-text/pastebinit 1.4.1: A software that lets you send anything you want directly to a pastebin from the command line.
-app-text/pdf2djvu 0.8.2 0.9.1: A tool to create DjVu files from PDF files
+app-text/pdf2djvu 0.8.2 0.9.1 0.9.3: A tool to create DjVu files from PDF files
 app-text/pdf2html 1.4: Converts pdf files to html files
 app-text/pdf2oo 20090715: Converts pdf files to odf
 app-text/pdfgrep 1.3.2 1.4.1-r1: A tool similar to grep which searches text in PDFs
