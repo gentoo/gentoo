@@ -60,11 +60,13 @@ src_prepare() {
 	echo "#!/bin/sh" > build-aux/py-compile
 	epatch "${FILESDIR}/${PN}-2.99.98-readline-6.3.patch" #503954
 	epatch "${FILESDIR}/${PN}-tcp_wrappers.patch"
+	# bug 567976
+	sed -i -e /AM_GNU_GETTEXT_VERSION/s/0.18/0.19/ configure.ac || die
 	if use mysql; then
 		sed -i -e /^INCLUDES/"s:$:$(mysql_config --include):" \
 			sql/Makefile.am || die
-			eautoreconf
 	fi
+	eautoreconf
 }
 
 src_configure() {
