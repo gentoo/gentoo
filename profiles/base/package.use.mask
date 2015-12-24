@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Manuel Rüger <mrueg@gentoo.org> (24 Dec 2015)
+# media-tv/xawtv is masked for removal
+net-im/ayttm webcam
+
 # Brian Evans <grknight@gentoo.org> (17 Dec 2015)
 # Drizzle is slated for removal
 sys-cluster/gearmand drizzle
