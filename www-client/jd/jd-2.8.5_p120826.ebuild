@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit eutils autotools autotools-utils
+inherit eutils autotools autotools-utils flag-o-matic
 
 MY_P="${P/_p/-}"
 MY_P="${MY_P/_/-}"
@@ -38,6 +38,7 @@ S="${WORKDIR}/${MY_P}"
 AUTOTOOLS_AUTORECONF=1
 
 src_configure() {
+	append-cxxflags -std=c++11
 	# use gnomeui sm instead of Xorg SM/ICE
 	local myeconfargs=(
 		--with-xdgopen

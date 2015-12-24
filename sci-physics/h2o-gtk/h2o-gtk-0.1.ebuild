@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-
-inherit autotools-utils
+EAPI=5
+inherit autotools-utils flag-o-matic
 
 DESCRIPTION="GTK+ UI for libh2o -- water & steam properties"
 HOMEPAGE="https://bitbucket.org/mgorny/h2o-gtk/"
@@ -19,3 +18,8 @@ RDEPEND="dev-cpp/gtkmm
 	>=sci-libs/libh2oxx-0.2
 	sci-libs/plotmm"
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	autotools-utils_src_prepare
+	append-cxxflags -std=c++11
+}

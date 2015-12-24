@@ -3,10 +3,9 @@
 # $Id$
 
 EAPI="5"
-
 PYTHON_DEPEND="2:2.7"
 
-inherit fdo-mime eutils python
+inherit fdo-mime eutils flag-o-matic python
 
 DESCRIPTION="Gnome application to organise documents or references, and to generate BibTeX bibliography files"
 HOMEPAGE="https://launchpad.net/referencer"
@@ -41,6 +40,7 @@ src_prepare () {
 }
 
 src_configure() {
+	append-cxxflags -std=c++11
 	econf --disable-update-mime-database --enable-python
 }
 
