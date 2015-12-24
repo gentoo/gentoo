@@ -13306,7 +13306,7 @@ media-video/submux-dvd 0.5.2: A subtitle multiplexer, muxes subtitles into .vob
 media-video/subotage 0.15: Universal subtitle converter in bash
 media-video/subsync 0.0.1: subsync is an program that synchronizes srt subtitle files
 media-video/subtitlecomposer 0.5.6: Text-based subtitles editor
-media-video/subtitleeditor 0.41.1-r1: GTK+2 subtitle editing tool
+media-video/subtitleeditor 0.41.1-r1 0.52.1: GTK+3 subtitle editing tool
 media-video/subtitler-yuv 0.6.5: for mjpegtools for adding subtitles, pictures, and effects embedded in the picture
 media-video/subtitleripper 0.3.4-r4: DVD Subtitle Ripper for Linux
 media-video/super_demux 0.3: DVB transport stream TS to ES demultiplexer
