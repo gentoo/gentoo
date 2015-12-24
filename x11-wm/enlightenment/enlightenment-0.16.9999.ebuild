@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -64,8 +64,7 @@ src_configure() {
 	econf \
 		$(use_enable nls) \
 		$(use_enable dbus) \
-		$(use_enable pulseaudio sound-pulse) \
-		--disable-sound-esound \
+		$(use_enable pulseaudio sound pulse) \
 		$(use_enable pango) \
 		$(use_enable xinerama) \
 		$(use_enable xrandr) \
