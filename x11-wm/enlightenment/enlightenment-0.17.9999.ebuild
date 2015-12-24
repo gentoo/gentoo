@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_URI_APPEND="${PN}"
 else
 	SRC_URI="https://download.enlightenment.org/rel/apps/${PN}/${MY_P}.tar.xz"
-	EKEY_STATE="snap"
+	EKEY_STATE="live"
 fi
 
 inherit enlightenment
@@ -19,7 +19,6 @@ inherit enlightenment
 DESCRIPTION="Enlightenment DR17 window manager"
 
 LICENSE="BSD-2"
-KEYWORDS="~amd64 ~arm ~x86"
 SLOT="0.17/${PV%%_*}"
 
 # The @ is just an anchor to expand from
