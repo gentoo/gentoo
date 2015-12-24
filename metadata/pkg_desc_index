@@ -8729,7 +8729,7 @@ dev-ruby/net-ssh-multi 1.2.0-r1 1.2.1: A library for controlling multiple Net::S
 dev-ruby/netrc 0.10.3 0.11.0: This library reads and writes .netrc files
 dev-ruby/network_interface 0.0.1-r1: network_interface layer from metasploit pcaprub
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
-dev-ruby/nio4r 1.0.1 1.1.0 1.1.1: A high performance selector API for monitoring IO objects
+dev-ruby/nio4r 1.1.1 1.2.0: A high performance selector API for monitoring IO objects
 dev-ruby/nokogiri 1.6.4.1 1.6.6.2 1.6.6.3 1.6.6.4 1.6.7 1.6.7.1: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r1 0.2.0-r2: Calculate the differences (added or removed nodes) between two XML/HTML documents
 dev-ruby/nokogumbo 1.4.1 1.4.6 1.4.7: A Nokogiri interface to the Gumbo HTML5 parser
@@ -8737,7 +8737,7 @@ dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
 dev-ruby/ntlm-http 0.1.1-r1 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/oauth 0.4.7-r2: A RubyGem for implementing both OAuth clients and servers
 dev-ruby/oauth2 1.0.0: Ruby wrapper for the OAuth 2.0 protocol built with a similar style to the original OAuth gem
-dev-ruby/omniauth 1.2.2-r1: A generalized Rack framework for multiple-provider authentication
+dev-ruby/omniauth 1.2.2-r1 1.3.1: A generalized Rack framework for multiple-provider authentication
 dev-ruby/open4 1.3.3 1.3.4: Open3::popen3 with exit status
 dev-ruby/optionable 0.2.0: Robust options validation for Ruby methods
 dev-ruby/org-ruby 0.9.9 0.9.12: Ruby routines for parsing org-mode files
@@ -17368,7 +17368,7 @@ www-apache/mod_xsendfile 1.0_beta1: Apache2 module that processes X-SENDFILE hea
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
 www-apache/modsecurity-crs 2.2.6-r1 2.2.7: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p3: Run virtual hosts under separate users/groups
-www-apache/passenger 4.0.60 5.0.22: Passenger (a.k.a. mod_rails) makes deployment of Ruby on Rails applications a breeze
+www-apache/passenger 4.0.60 5.0.22 5.0.23: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/389-dsgw 1.1.10: 389 Directory Server Gateway Web Application
 www-apps/Apache-Gallery 1.0_rc3: Apache gallery for mod_perl
