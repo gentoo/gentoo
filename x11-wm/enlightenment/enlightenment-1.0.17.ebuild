@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 if [[ ${PV} == *9999 ]] ; then
 	ESVN_REPO_URI="https://svn.enlightenment.org/svn/e/trunk/E16/e"
 	inherit subversion autotools
