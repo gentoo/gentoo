@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Manuel Rüger <mrueg@rueg.eu> (24 Dec 2015)
+# Effectively unmaintained, multiple bugs
+# Bug 288611,358013,413987,468186,480854,528750,548480,566226
+# Masked for removal in 30 days.
+media-tv/xawtv
+
 # Michael Palimaka <kensington@gentoo.org> (22 Dec 2015)
 # Fails to build. Dead upstream. Masked for removal in 30 days.
 # Bug 566446
