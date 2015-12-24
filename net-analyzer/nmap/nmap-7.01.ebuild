@@ -96,6 +96,11 @@ src_prepare() {
 		-e '/^ALL_LINGUAS =/{s|$| id|g;s|jp|ja|g}' \
 		Makefile.in || die
 
+	sed -i \
+		-e '/rm -f $@/d' \
+		$(find . -name Makefile.in) \
+		|| die
+
 	# Fix desktop files wrt bug #432714
 	sed -i \
 		-e '/^Encoding/d' \
@@ -126,6 +131,11 @@ src_configure() {
 }
 
 src_compile() {
+	local directory
+	for directory in . libnetutil ncat nmap-update nping nsock/src; do
+		emake -C "${directory}" makefile.dep
+	done
+
 	emake \
 		AR=$(tc-getAR) \
 		RANLIB=$(tc-getRANLIB)
