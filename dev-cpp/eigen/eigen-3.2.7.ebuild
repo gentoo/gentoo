@@ -30,19 +30,18 @@ src_prepare() {
 		-e "/add_subdirectory(lapack/d" \
 		|| die "sed disable unused bundles failed"
 
-	cmake-utils_src_prepare
-}
+	sed -i -e "/Unknown build type/d" CMakeLists.txt || die
 
-src_configure() {
-	CMAKE_BUILD_TYPE="release"
-	cmake-utils_src_configure
+	sed \
+		-e '/Cflags/s|:.*|: -I${CMAKE_INSTALL_PREFIX}/${INCLUDE_INSTALL_DIR}|g' \
+		-i eigen3.pc.in || die
+
+	cmake-utils_src_prepare
 }
 
 src_compile() {
 	cmake-utils_src_compile
-	if use doc; then
-		cmake-utils_src_compile doc
-	fi
+	use doc && cmake-utils_src_compile doc
 }
 
 src_test() {
@@ -58,10 +57,7 @@ src_test() {
 
 src_install() {
 	cmake-utils_src_install
-	if use doc; then
-		cd "${BUILD_DIR}"/doc
-		dohtml -r html/*
-	fi
+	use doc && dodoc -r "${BUILD_DIR}"/doc/html
 
 	# Debian installs it and some projects started using it.
 	insinto /usr/share/cmake/Modules/
