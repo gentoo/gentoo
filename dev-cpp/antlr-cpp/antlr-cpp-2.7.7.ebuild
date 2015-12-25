@@ -22,6 +22,7 @@ LICENSE="public-domain"
 SLOT="2"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc examples static-libs"
+RESTRICT="test" # No tests but test target blows up!
 
 DEPEND="doc? ( app-doc/doxygen )"
 RDEPEND="!!dev-java/antlr:0[cxx]"
