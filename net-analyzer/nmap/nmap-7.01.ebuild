@@ -132,7 +132,11 @@ src_configure() {
 
 src_compile() {
 	local directory
-	for directory in . libnetutil ncat nmap-update nping nsock/src; do
+	for directory in . libnetutil nsock/src \
+		$(usex ncat ncat '') \
+		$(usex nmap-update nmap-update '') \
+		$(usex nping nping '')
+	do
 		emake -C "${directory}" makefile.dep
 	done
 
