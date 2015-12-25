@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=ILMARI
-MODULE_VERSION=0.09
+DIST_AUTHOR=ETHER
+DIST_VERSION=0.15
 inherit perl-module
 
 DESCRIPTION="Extensions to MooseX::Types::DateTime"
@@ -18,16 +18,18 @@ RDEPEND="
 	>=dev-perl/DateTime-0.430.200
 	>=dev-perl/DateTimeX-Easy-0.85.0
 	>=dev-perl/Moose-0.410.0
-	>=dev-perl/MooseX-Types-0.140.0
-	>=dev-perl/MooseX-Types-DateTime-0.70.0
 	>=dev-perl/MooseX-Types-0.40.0
+	>=dev-perl/MooseX-Types-DateTime-0.70.0
 	>=dev-perl/Time-Duration-Parse-0.60.0
-	>=dev-perl/namespace-clean-0.80.0
+	virtual/perl-if
+	>=dev-perl/namespace-clean-0.190.0
 "
 DEPEND="${RDEPEND}
+	>=dev-perl/Module-Build-Tiny-0.7.0
 	test? (
-		>=dev-perl/Test-Exception-0.270.0
+		virtual/perl-ExtUtils-MakeMaker
+		virtual/perl-File-Spec
+		dev-perl/Test-Fatal
 		|| ( >=virtual/perl-Test-Simple-1.1.10 >=dev-perl/Test-use-ok-0.20.0 )
-	)"
-
-SRC_TEST=do
+	)
+"
