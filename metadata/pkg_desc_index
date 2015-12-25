@@ -1673,7 +1673,7 @@ app-misc/bgrep 0_p20110121: grep-like tool to search for binary strings
 app-misc/bijiben 3.16.2 3.18.2: Note editor designed to remain simple to use
 app-misc/binclock 1.5: Displays a binary clock in your terminal
 app-misc/binwalk 2.0.1: A tool for identifying files embedded inside firmware images
-app-misc/birthday 1.6.2: Displays a list of events happening in the near future
+app-misc/birthday 1.6.2 1.6.2-r1: Displays a list of events happening in the near future
 app-misc/bottlerocket 0.04c-r1: CLI interface to the X-10 Firecracker Kit
 app-misc/boxes 1.1.2-r1: Draw any kind of boxes around your text
 app-misc/brewtarget 2.0.2 2.1.0: Application to create and manage beer recipes
@@ -1938,7 +1938,7 @@ app-mobilephone/gammu 1.33.0 1.33.0-r1: A tool to handle your cellular phone
 app-mobilephone/ganyremote 6.0.1 6.3.3: Gnome frontend to Anyremote
 app-mobilephone/gnocky 0.0.7: GTK-2 version of gnokii
 app-mobilephone/gnokii 0.6.29 0.6.31 9999: user space driver and tools for use with mobile phones
-app-mobilephone/gnome-phone-manager 0.69-r1: A program created to allow you to control aspects of your mobile phone from your GNOME desktop
+app-mobilephone/gnome-phone-manager 0.69-r1: Allows you to control aspects of your mobile phone from your GNOME desktop
 app-mobilephone/gsmlib 1.11_pre041028: Library and applications to access GSM mobile phones
 app-mobilephone/heimdall 1.4.0 1.4.1 9999: Tool suite used to flash firmware onto Samsung Galaxy S devices
 app-mobilephone/kannel 1.4.3-r1 1.5.0: Powerful SMS and WAP gateway
@@ -6753,7 +6753,7 @@ dev-python/asset 0.6.1-r1 0.6.2 0.6.3 0.6.4: A package resource and symbol loadi
 dev-python/assets 0.1.1-r1: Cache-friendly asset management via content-hash-naming
 dev-python/astng 0.24.3: Abstract Syntax Tree for logilab packages
 dev-python/astor 0.3 0.4 0.4.1 0.5: Read/rewrite/write Python ASTs
-dev-python/astroid 1.3.8 1.4.1 1.4.2: Abstract Syntax Tree for logilab packages
+dev-python/astroid 1.3.8 1.4.1 1.4.2 1.4.3: Abstract Syntax Tree for logilab packages
 dev-python/astropy 1.0.4 1.0.6: Core functionality for performing astrophysics with Python
 dev-python/astropy-helpers 0.4.1 1.0.3 1.0.5 1.0.6: Helpers for Astropy and Affiliated packages
 dev-python/async 0.6.2: Async Framework
@@ -7398,7 +7398,7 @@ dev-python/pkginfo 1.2.1: Provides an API for querying the distutils metadata wr
 dev-python/pkipplib 0.07-r1: Pkipplib is a Python module which parses IPP requests
 dev-python/placefinder 0.3: Yahoo! BOSS PlaceFinder Python Client
 dev-python/platinfo 0.15.0-r1: Determines and returns consistent names for platforms
-dev-python/plumbum 1.5.0: A library for shell script-like programs in python
+dev-python/plumbum 1.5.0 1.6.0: A library for shell script-like programs in python
 dev-python/ply 3.4-r1 3.6-r1 3.8: Python Lex-Yacc library
 dev-python/plyr 1.0.6: A python wrapper for Glyr
 dev-python/pmw 1.3.3-r2 2.0.0-r2 2.0.1: Toolkit for building high-level compound widgets in Python using the Tkinter module
@@ -7813,7 +7813,7 @@ dev-python/rospkg 1.0.35 1.0.37-r1 1.0.38 9999: Standalone Python library for th
 dev-python/routes 2.1-r1 2.2: A Python re-implementation of Rails routes system, mapping URL's to Controllers/Actions
 dev-python/rply 0.7.3 0.7.4: Pure python parser generator that also works with RPython
 dev-python/rpy 2.6.2 2.7.2 2.7.3 2.7.4 2.7.5: Python interface to the R Programming Language
-dev-python/rpyc 3.2.3-r1: Remote Python Call (RPyC), a transparent and symmetric RPC library
+dev-python/rpyc 3.2.3-r1 3.3.0: Remote Python Call (RPyC), a transparent and symmetric RPC library
 dev-python/rsa 3.1.4-r1 3.2 3.2.3: Pure-Python RSA implementation
 dev-python/rst2pdf 0.93-r2: Tool for transforming reStructuredText to PDF using ReportLab
 dev-python/rtf2xml 1.33-r1: Converts a Microsoft RTF file to structured XML
@@ -7869,7 +7869,7 @@ dev-python/smmap 0.8.3 0.9.0: A pure git implementation of a sliding window memo
 dev-python/snakefood 1.3.1-r1: Generate dependency graphs from Python code
 dev-python/snakeoil 0.6.4 0.6.5 9999: Miscellaneous python utility code
 dev-python/snappy 0.5-r2: Python library for the snappy compression library from Google
-dev-python/snowballstemmer 1.2.0: Stemmer algorithms generated from Snowball algorithms
+dev-python/snowballstemmer 1.2.0 1.2.1: Stemmer algorithms generated from Snowball algorithms
 dev-python/soappy 0.12.5-r2 0.12.20 0.12.22: SOAP Services for Python
 dev-python/socketio-client 0.6.5: A socket.io client library for Python
 dev-python/socketpool 0.5.3: A simple Python socket pool
@@ -8632,7 +8632,7 @@ dev-ruby/http_parser_rb 0.6.0 0.6.0-r1: Simple callback-based HTTP request/respo
 dev-ruby/httparty 0.13.4 0.13.5 0.13.7: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: A library supporting the full HTTP Authentication protocol as specified in RFC 2617
 dev-ruby/httpclient 2.6.0.1 2.7.0.1: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
-dev-ruby/i18n 0.6.9-r1 0.6.11 0.7.0: Add Internationalization support to your Ruby application
+dev-ruby/i18n 0.6.9-r1 0.6.11 0.7.0 0.7.0-r1: Add Internationalization support to your Ruby application
 dev-ruby/imagesize 0.1.1_p20100902 0.1.1_p20100902-r1: Measure image size (GIF, PNG, JPEG, etc)
 dev-ruby/inifile 2.0.2-r1 3.0.0: Native Ruby package for reading and writing INI files
 dev-ruby/instantiator 0.0.6: Instantiate an arbitrary Ruby class
@@ -12735,7 +12735,7 @@ media-sound/amarok 2.8.0-r3: Advanced audio player based on KDE framework
 media-sound/ams 2.0.1 2.1.1: Alsa Modular Software Synthesizer
 media-sound/amsynth 1.3.2 1.5.1: Virtual analogue synthesizer
 media-sound/apetag 1.12: Command-line ape 2.0 tagger
-media-sound/apulse 0.1.4 0.1.6 0.1.6-r1: PulseAudio emulation for ALSA
+media-sound/apulse 0.1.4 0.1.6 0.1.6-r1 0.1.7: PulseAudio emulation for ALSA
 media-sound/aqualung 1.0_rc1 1.0: Music player for a wide range of formats designed for gapless playback
 media-sound/ardour 2.8.14-r1 2.8.16 3.5.308-r1 3.5.357 3.5.380 3.5.403 4.0-r2 4.1 4.2-r1 4.4 9999: Digital Audio Workstation
 media-sound/ario 1.5.1 1.5.1-r1: a GTK2 MPD (Music Player Daemon) client inspired by Rythmbox
@@ -13588,7 +13588,7 @@ net-analyzer/squidsites 1.01-r2: A tool that parses Squid access log file and ge
 net-analyzer/squidview 0.80: Interactive console program to analyse squid logs
 net-analyzer/ssldump 0.9-r2: An SSLv3/TLS network protocol analyzer
 net-analyzer/sslscan 1.8.2: Fast SSL port scanner
-net-analyzer/sslsniff 0.8-r1: MITM all SSL connections on a LAN and dynamically generates certs
+net-analyzer/sslsniff 0.8-r2: MITM all SSL connections on a LAN and dynamically generates certs
 net-analyzer/ssmping 0.9.1: Tool for testing multicast connectivity
 net-analyzer/suricata 2.0.10: High performance Network IDS, IPS and Network Security Monitoring engine
 net-analyzer/symon 2.86-r1 2.87: Performance and information monitoring tool
@@ -14963,7 +14963,7 @@ net-wireless/rfswitch 1.3: Drivers for software based wireless radio switches
 net-wireless/rtl-sdr 0.5.0 0.5.3 0.5.3-r1 0.5.3_p20150730 9999: turns your Realtek RTL2832 based DVB dongle into a SDR receiver
 net-wireless/spectools 2011.08.1-r2 2011.08.1_p20140618-r1 9999: Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
 net-wireless/ubertooth 2015.09.2 2015.10.1 9999: An open source wireless development platform suitable for Bluetooth experimentation
-net-wireless/uhd 3.8.2: Universal Software Radio Peripheral (USRP) Hardware Driver
+net-wireless/uhd 3.8.2 3.8.5: Universal Software Radio Peripheral (USRP) Hardware Driver
 net-wireless/wavemon 0.7.5 0.7.6: Ncurses based monitor for IEEE 802.11 wireless LAN cards
 net-wireless/wepattack 0.1.3-r3: WLAN tool for breaking 802.11 WEP keys
 net-wireless/wepdecrypt 0.8-r2: Enhanced version of WepAttack a tool for breaking 802.11 WEP keys
@@ -15174,7 +15174,7 @@ sci-biology/maq 0.7.1 0.7.1-r1: Mapping and Assembly with Qualities - mapping So
 sci-biology/maqview 0.2.5-r2: GUI for sci-biology/maq, a short read mapping assembler
 sci-biology/mauve 9999: Multiple genome alignment with large-scale evolutionary events (GUI component)
 sci-biology/mauvealigner 9999: Multiple genome alignment with large-scale evolutionary events (aligner component)
-sci-biology/mcl 08.312 12.135: A Markov Cluster Algorithm implementation
+sci-biology/mcl 08.312 12.135 14.137: A Markov Cluster Algorithm implementation
 sci-biology/meme 4.8.1-r2: The MEME/MAST system - Motif discovery and search
 sci-biology/mira 4.0.2: Whole Genome Shotgun and EST Sequence Assembler for Sanger, 454 and Solexa / Illumina
 sci-biology/mosaik 1.0.1367 1.0.1388: A reference-guided aligner for next-generation sequencing technologies
@@ -15222,7 +15222,7 @@ sci-biology/sibsim4 0.20: A rewrite and improvement upon sim4, a DNA-mRNA aligne
 sci-biology/sim4 20030921 20030921-r1: A program to align cDNA and genomic DNA
 sci-biology/snpfile 2.0.1 2.0.1-r1: A library and API for manipulating large SNP datasets
 sci-biology/stride 20011129-r1: Protein secondary structure assignment from atomic coordinates
-sci-biology/t-coffee 9.03.1318-r1 11.00: A multiple sequence alignment package
+sci-biology/t-coffee 9.03.1318-r1 11.00-r1: A multiple sequence alignment package
 sci-biology/tophat 1.0.12 1.4.1 2.0.0 2.0.2 2.0.8 2.0.9: A fast splice junction mapper for RNA-Seq reads
 sci-biology/transfac 3.2: A database of eucaryotic transcription factors
 sci-biology/tree-puzzle 5.2: Maximum likelihood analysis for nucleotide, amino acid, and two-state data
@@ -15364,7 +15364,7 @@ sci-chemistry/surf 1.0: Solvent accesible Surface calculator
 sci-chemistry/theseus 2.0.6 3.0.0 3.3.0: Maximum likelihood superpositioning and analysis of macromolecular structures
 sci-chemistry/threeV 1.2: 3V: Voss Volume Voxelator
 sci-chemistry/tinker 7.1.2: Molecular modeling package that includes force fields, such as AMBER and CHARMM
-sci-chemistry/tm-align 20140601: Quick & Accurate Structural Alignment
+sci-chemistry/tm-align 20140601 20150914: Quick & Accurate Structural Alignment
 sci-chemistry/viewmol 2.4.1-r2: Open-source graphical front end for computational chemistry programs
 sci-chemistry/vmd 1.9.2: Visual Molecular Dynamics
 sci-chemistry/votca-csg 1.2.2 1.2.4-r1 1.3_rc1: Votca coarse-graining engine
@@ -15616,7 +15616,7 @@ sci-libs/libghemical 2.00 2.99.1 3.0.0: Chemical quantum mechanics and molecular
 sci-libs/libh2o 0.2.1 9999: Library of routines for IF97 water & steam properties
 sci-libs/libh2oxx 0.2 9999: C++ bindings for libh2o
 sci-libs/libint 1.1.4-r1 1.1.6 2.0.5: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
-sci-libs/libmems 1.6 1.6_p1 9999: Library for sci-biology/mauve
+sci-libs/libmems 1.6_p1-r1 9999: Library for sci-biology/mauve
 sci-libs/libmuscle 3.7-r1 3.7-r2 9999: Library for sci-biology/mauve
 sci-libs/libnova 0.12.3 0.14.0 0.15.0: Celestial Mechanics and Astronomical Calculation Library
 sci-libs/liborigin 20110829: Library for reading OriginLab OPJ project files
@@ -15769,7 +15769,7 @@ sci-mathematics/kodkodi 1.5.2: A text front-end for the Kodkod Java library
 sci-mathematics/lpsolve 5.5.2.0: Mixed Integer Linear Programming (MILP) solver
 sci-mathematics/lybniz 1.3.2: A function plotter program written in PyGTK
 sci-mathematics/mathomatic 15.8.5 16.0.1 16.0.5: Automatic algebraic manipulator
-sci-mathematics/maxima 5.34.1 5.37.3-r3: Free computer algebra environment based on Macsyma
+sci-mathematics/maxima 5.34.1 5.37.3-r4: Free computer algebra environment based on Macsyma
 sci-mathematics/minisat 2.1.0 2.2.0-r3: Small yet efficient SAT solver with reference paper
 sci-mathematics/mlpy 3.5.0: High-performance Python library for predictive modeling
 sci-mathematics/msieve 1.51 9999: A C library implementing a suite of algorithms to factor large integers
@@ -16215,7 +16215,7 @@ sys-apps/fakeroot 1.18.4 1.19 1.20 1.20.2: A fake root environment by means of L
 sys-apps/fakeroot-ng 0.17 0.18 0.18-r1: A utility to run commands with fake root privileges
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/file 5.22 5.22-r1 5.23 5.24 5.25 9999: identify a file's format by scanning binary data for patterns
-sys-apps/findutils 4.4.2-r1 4.4.2-r2 4.5.14-r1 4.5.15 4.5.16: GNU utilities for finding files
+sys-apps/findutils 4.4.2-r1 4.4.2-r2 4.5.16 4.5.17: GNU utilities for finding files
 sys-apps/flashrom 0.9.6.1 0.9.7 0.9.8 9999: Utility for reading, writing, erasing and verifying flash ROM chips
 sys-apps/flock 2.19: Manage locks from shell scripts
 sys-apps/fwcrv 0.1.0: FireWire CSR Config ROM Viewer
@@ -16925,7 +16925,7 @@ sys-kernel/kergen 0.1.1 0.1.3: Kernel config generator
 sys-kernel/linux-docs 3.4.104 3.10.58 3.12.30 3.14.22 4.1.12 4.2.5 4.3: Developer documentation generated from the Linux kernel
 sys-kernel/linux-firmware 20140603 20140809 20140902 20141009 20150206 20150320 20150812 99999999: Linux firmware files
 sys-kernel/linux-headers 2.4.33.3 2.4.36 3.18 3.19 4.0 4.1 4.2 4.3: Linux system headers
-sys-kernel/mips-sources 4.2.6 4.3.0: Linux-Mips GIT sources for MIPS-based machines, dated 20151126
+sys-kernel/mips-sources 4.2.8 4.3.3: Linux-Mips GIT sources for MIPS-based machines, dated 20151126
 sys-kernel/openvz-sources 2.6.32.108.5 2.6.32.108.8 2.6.32.111.12 2.6.32.112.15: Kernel sources with OpenVZ patchset
 sys-kernel/pf-sources 2.6.31_p9 2.6.32_p16 2.6.33_p4 2.6.34_p7 2.6.35_p11 2.6.36_p6 2.6.37_p6 2.6.38_p8 2.6.39_p4 3.0.7-r2 3.1.6-r2 3.2.7 3.3.6 3.4.6 3.5.4 3.6.12 3.7.5 3.8.2 3.9.5 3.10.1 3.11.4 3.12.4 3.13.3 3.14_p4 3.15_p5 3.16_p4 3.17_p4 3.19_p1 4.0_p6 4.1_p1 4.2_p3: Linux kernel fork with new features, including the -ck patchset (BFS), BFQ, TuxOnIce and UKSM
 sys-kernel/raspberrypi-image 3.10.24_pre-r20131212 3.10.38_pre-r20140427 3.10.9999 3.12.36_pre-r20150206 3.18.10_pre-r20150330 3.18.14_pre-r20150520 3.19.3_pre-r20150327 3.19.3_pre-r20150413 4.0.4_pre-r20150523: Raspberry PI precompiled kernel and modules

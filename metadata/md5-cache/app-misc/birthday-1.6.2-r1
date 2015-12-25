@@ -1,11 +1,11 @@
-DEFINED_PHASES=compile install unpack
+DEFINED_PHASES=compile prepare
 DESCRIPTION=Displays a list of events happening in the near future
-EAPI=0
+EAPI=6
 HOMEPAGE=http://sourceforge.net/projects/birthday/
-KEYWORDS=amd64 ppc ppc64 sparc x86
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/birthday/birthday-1.6.2.tar.bz2
-_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
+_eclass_exported_funcs=src_prepare:- src_compile:-
 _eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=56f75c2820cb229669c1c53e08b82c61
+_md5_=0f7f300db4730b90f471189302bc1fa6
