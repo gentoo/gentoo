@@ -5814,7 +5814,7 @@ dev-perl/MongoDB 0.701.4 0.708.0.0 0.708.3.0: Official MongoDB Driver for Perl
 dev-perl/Monitoring-Plugin 0.380.0 0.390.0: Modules to streamline Nagios, Icinga, Shinken, etc. plugins
 dev-perl/Moo 1.4.2 2.0.0 2.0.2: Minimalist Object Orientation (with Moose compatiblity)
 dev-perl/MooX-HandlesVia 0.1.7: NativeTrait-like behavior for Moo
-dev-perl/MooX-Types-MooseLike 0.250.0 0.270.0: Some Moosish types and a type builder
+dev-perl/MooX-Types-MooseLike 0.270.0 0.290.0: Some Moosish types and a type builder
 dev-perl/MooX-Types-MooseLike-Numeric 1.20.0: Moo types for numbers
 dev-perl/MooX-late 0.15.0: Easily translate Moose code to Moo
 dev-perl/Moose 2.60.400-r1 2.140.500 2.160.400: A postmodern object system for Perl 5
@@ -5833,13 +5833,13 @@ dev-perl/MooseX-StrictConstructor 0.190.0: Make your object constructors blow up
 dev-perl/MooseX-Types 0.360.0 0.460.0: Organise your Moose types in libraries
 dev-perl/MooseX-Types-DateTime 0.70.0: DateTime related constraints and coercions for Moose
 dev-perl/MooseX-Types-DateTime-ButMaintained 0.160.0: DateTime related constraints and coercions for Moose
-dev-perl/MooseX-Types-DateTime-MoreCoercions 0.90.0 0.110.0: Extensions to MooseX::Types::DateTime
+dev-perl/MooseX-Types-DateTime-MoreCoercions 0.110.0 0.150.0: Extensions to MooseX::Types::DateTime
 dev-perl/MooseX-Types-DateTimeX 0.60.0 0.100.0: Extensions to MooseX::Types::DateTime::ButMaintained
-dev-perl/MooseX-Types-JSON 0.20.0: JSON datatype for Moose
+dev-perl/MooseX-Types-JSON 0.20.0 1.0.0: JSON datatype for Moose
 dev-perl/MooseX-Types-Path-Class 0.60.0: A Path::Class type library for Moose
 dev-perl/MooseX-Types-Path-Tiny 0.2.0 0.11.0: Path::Tiny types and coercions for Moose
 dev-perl/MooseX-Types-Stringlike 0.1.0: Moose type constraints for strings or string-like objects
-dev-perl/Mouse 0.970.0-r1 1.50.0 2.4.1: Moose minus the antlers
+dev-perl/Mouse 0.970.0-r1 2.4.1 2.4.5: Moose minus the antlers
 dev-perl/MouseX-Types 0.60.0: Organize your Mouse types in libraries
 dev-perl/Mozilla-CA 20130114: Mozilla's CA cert bundle in PEM format
 dev-perl/MusicBrainz-DiscID 0.30.0-r1: Perl interface for the MusicBrainz libdiscid library
