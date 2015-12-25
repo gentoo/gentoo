@@ -15,7 +15,7 @@ HOMEPAGE="https://rubygems.org/gems/ruby-oci8/"
 
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 RDEPEND+=" dev-db/oracle-instantclient-basic"
