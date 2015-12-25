@@ -23,6 +23,8 @@ RDEPEND="${DEPEND}
 	x11-misc/colord
 "
 
+PATCHES=( "${FILESDIR}/${P}-cmake34.patch" )
+
 pkg_postinst() {
 	kde4-base_pkg_postinst
 	if ! has_version "gnome-extra/gnome-color-manager"; then
