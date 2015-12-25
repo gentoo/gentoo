@@ -34,7 +34,7 @@
 # Old versions lacks multilib support and proper subslots
 # Masked for removal
 <dev-libs/boost-1.55.0
-<dev-libs/boost-build-1.55.0
+<dev-util/boost-build-1.55.0
 
 # Manuel Rüger <mrueg@rueg.eu> (24 Dec 2015)
 # Effectively unmaintained, multiple bugs
