@@ -52,6 +52,8 @@ src_prepare() {
 	# Custom changes for gentoo
 	epatch "${FILESDIR}/${PN}-3.21-gentoo-fixups.patch"
 	epatch "${FILESDIR}/${PN}-3.21-gentoo-fixup-warnings.patch"
+	epatch "${FILESDIR}/${PN}-3.21-hppa-byte_order.patch"
+
 	if use cacert ; then
 		epatch "${DISTDIR}/${PN}-3.14.1-add_spi+cacerts_ca_certs.patch"
 		epatch "${FILESDIR}/${PN}-3.21-cacert-class3.patch" #521462
