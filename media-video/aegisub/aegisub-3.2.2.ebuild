@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="alsa debug +ffmpeg +fftw openal oss portaudio pulseaudio spell"
 
 # configure.ac specifies minimal versions for some of the dependencies below.

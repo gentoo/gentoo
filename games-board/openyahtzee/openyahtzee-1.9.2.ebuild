@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/openyahtzee/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 RDEPEND="x11-libs/wxGTK:${WX_GTK_VER}[X]"
