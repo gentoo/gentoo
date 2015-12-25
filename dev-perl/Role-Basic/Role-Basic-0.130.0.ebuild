@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,8 @@ IUSE="test"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
+	dev-perl/Module-Build
 	test? ( virtual/perl-Test-Simple )
 "
 
-SRC_TEST="do"
+SRC_TEST="do parallel"
