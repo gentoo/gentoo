@@ -17,4 +17,5 @@ IUSE=""
 DEPEND="dev-perl/common-sense"
 RDEPEND="${DEPEND}"
 
+# Tests trigger stack overflow in sandbox code, see bug 553918
 SRC_TEST=skip

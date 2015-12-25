@@ -19,4 +19,5 @@ DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
 
+# Tests trigger stack overflow in sandbox code, see bug 553918
 SRC_TEST=skip
