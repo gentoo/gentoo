@@ -28,6 +28,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-boost.patch
 	"${FILESDIR}"/${P}-gcc-4.7.patch
 	"${FILESDIR}"/${P}-broken-constness.patch
+	"${FILESDIR}"/${P}-format-security.patch
 	)
 
 src_prepare() {
