@@ -2304,7 +2304,7 @@ app-text/libwpd 0.9.9 0.10.0 0.10.0-r1 0.10.0-r2: WordPerfect Document import/ex
 app-text/libwpg 0.2.2 0.3.0: C++ library to read and parse graphics in WPG
 app-text/libwps 0.2.9 0.3.1 0.4.1 0.4.2: Microsoft Works file word processor format import filter library
 app-text/libxmlpatch 0.3.3: A set of tools to create and apply patch to XML files using XPath
-app-text/linuxdoc-tools 0.9.69 0.9.71-r1: A toolset for processing LinuxDoc DTD SGML files
+app-text/linuxdoc-tools 0.9.71-r1: A toolset for processing LinuxDoc DTD SGML files
 app-text/llpp 20_p20140818 21 21_p20150427 9999: a graphical PDF viewer which aims to superficially resemble less(1)
 app-text/lodgeit 0.3_p20120507 0.3_p20120618-r1: Command-line interface to paste.pocoo.org
 app-text/logmerge 0.4_beta: Merge multiple logs such that multilined entries appear in chronological order without breaks
@@ -2866,7 +2866,7 @@ dev-db/libdbi-drivers 0.9.0: The libdbi-drivers project maintains drivers for li
 dev-db/libiodbc 3.52.8-r2: ODBC Interface for Linux
 dev-db/libodbc++ 0.2.5-r2: C++ class library that provides a subset of the well-known JDBC 2.0(tm) and runs on top of ODBC
 dev-db/libzdb 2.11.1 2.11.2 2.11.3 2.12 3.0: A thread safe high level multi-database connection pool library
-dev-db/lmdb 0.9.14 0.9.15 0.9.16: An ultra-fast, ultra-compact key-value embedded data store
+dev-db/lmdb 0.9.14 0.9.15 0.9.16 0.9.17: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-contrib 1.1.13 1.1.14: Contribution database for the m17n library
 dev-db/m17n-db 1.5.2 1.5.5 1.6.2-r1 1.6.3 1.6.4: Database for the m17n library
