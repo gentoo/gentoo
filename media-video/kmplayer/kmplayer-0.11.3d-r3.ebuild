@@ -38,7 +38,10 @@ RDEPEND="${DEPEND}
 	media-video/mplayer
 "
 
-PATCHES=( "${FILESDIR}/${P}-kdelibs-4.14.11.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-cmake34.patch"
+	"${FILESDIR}/${P}-kdelibs-4.14.11.patch"
+)
 
 src_prepare() {
 	use npp && epatch "${FILESDIR}/${PN}-flash.patch"
