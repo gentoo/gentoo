@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/blokish/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
