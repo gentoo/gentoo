@@ -1,0 +1,18 @@
+commit ec9bdbd443d2ee15e6a9da335b74039c01153d7a
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Tue Dec 22 21:47:08 2015 +0100
+
+    Relax cmake version requirement to rest of plasma
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 240f497..9af6b67 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,6 +3,6 @@ project(breeze-gtk)
+ set(PROJECT_VERSION_MAJOR 5)
+ 
+-cmake_minimum_required(VERSION 3.2)
++cmake_minimum_required(VERSION 2.8.12)
+ 
+ find_package(ECM 0.0.9 REQUIRED NO_MODULE)
+ include(FeatureSummary)

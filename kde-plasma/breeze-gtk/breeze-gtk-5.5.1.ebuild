@@ -11,3 +11,5 @@ HOMEPAGE="https://projects.kde.org/projects/kde/workspace/breeze-gtk"
 LICENSE="LGPL-2.1+"
 KEYWORDS=" ~amd64 ~x86"
 IUSE=""
+
+PATCHES=( "${FILESDIR}/${PN}-5.5.2-cmake-version.patch" )
