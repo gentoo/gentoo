@@ -15,7 +15,7 @@ LICENSE="GPL-2 LGPL-2"
 IUSE="+cmake +cxx debug +gdbui okteta qthelp"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	KEYWORDS="amd64 ~ppc ~x86"
+	KEYWORDS="amd64 ~ppc x86"
 fi
 
 DEPEND="
