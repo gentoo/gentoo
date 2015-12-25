@@ -1,14 +1,14 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI=6
 
 inherit autotools
 
 DESCRIPTION="Library for sci-biology/mauve"
 HOMEPAGE="http://gel.ahabs.wisc.edu/mauve/"
-SRC_URI="mirror://gentoo/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 SLOT="0"
 LICENSE="GPL-2"
@@ -23,10 +23,15 @@ DEPEND="${CDEPEND}
 	doc? ( app-doc/doxygen )"
 RDEPEND="${CDEPEND}"
 
-src_prepare() {
-	eautoreconf
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${P}-boost.patch
+	"${FILESDIR}"/${P}-gcc-4.7.patch
+	"${FILESDIR}"/${P}-broken-constness.patch
+	"${FILESDIR}"/${P}-format-security.patch
+	)
 
-src_install() {
-	emake install DESTDIR="${D}" || die
+src_prepare() {
+	default
+	eautoreconf
 }

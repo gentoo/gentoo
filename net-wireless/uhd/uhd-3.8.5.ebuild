@@ -22,8 +22,8 @@ SLOT="0/1"
 IUSE=""
 RDEPEND="virtual/libusb:1
 	dev-lang/orc
-	<dev-libs/boost-1.58.0:=
-	sys-libs/ncurses
+	dev-libs/boost:=
+	sys-libs/ncurses:0
 	"
 DEPEND="${RDEPEND}
 	dev-python/cheetah

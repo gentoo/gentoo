@@ -26,7 +26,7 @@ PATCH_V=(   1    1     .               2    2         1     )
 IUSE="emacs tk nls unicode X ${LISPS[*]}"
 
 # Languages
-LANGS="es pt pt_BR"
+LANGS="de es pt pt_BR"
 for lang in ${LANGS}; do
 	IUSE="${IUSE} linguas_${lang}"
 done

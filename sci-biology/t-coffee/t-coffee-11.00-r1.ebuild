@@ -31,6 +31,9 @@ src_prepare() {
 		-e '/@/s:.*;:\t:g' \
 		-e '/Linking/s:$(CC):$(CC) $(CFLAGS) $(LDFLAGS):g' \
 		-i t_coffee_source/makefile || die
+	epatch \
+		"${FILESDIR}"/${P}-mayhem.patch \
+		"${FILESDIR}"/${P}-set_proper_dir_permissions.patch
 }
 
 src_compile() {

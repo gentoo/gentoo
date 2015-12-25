@@ -31,11 +31,6 @@ src_prepare() {
 	# Don't build or install locate because it conflicts with slocate,
 	# which is a secure version of locate.  See bug 18729
 	sed -i '/^SUBDIRS/s/locate//' Makefile.in
-
-	# Disable gnulib build test that has no impact on the source.
-	# Re-enable w/next version bump (and gnulib is updated). #554728
-	[[ ${PV} != "4.5.15" ]] && die "re-enable test #554728"
-	echo 'exit 0' > tests/test-update-copyright.sh || die
 }
 
 src_configure() {

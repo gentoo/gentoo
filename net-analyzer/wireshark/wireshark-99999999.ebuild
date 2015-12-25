@@ -13,8 +13,8 @@ LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="
-	adns +caps crypt doc doc-pdf geoip +gtk3 ipv6 kerberos lua +netlink +pcap
-	portaudio +qt4 qt5 sbc selinux smi cpu_flags_x86_sse4_2 ssl zlib
+	adns +caps cpu_flags_x86_sse4_2 crypt doc doc-pdf geoip +gtk3 ipv6 kerberos
+	lua +netlink +pcap portaudio +qt4 qt5 sbc selinux smi ssl zlib
 "
 REQUIRED_USE="
 	ssl? ( crypt )
@@ -97,9 +97,9 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${PN}-1.6.13-ldflags.patch \
 		"${FILESDIR}"/${PN}-1.11.0-oldlibs.patch \
-		"${FILESDIR}"/${PN}-1.99.0.1975-sse4_2.patch \
 		"${FILESDIR}"/${PN}-99999999-pkgconfig.patch \
-		"${FILESDIR}"/${PN}-1.99.8-qtchooser.patch
+		"${FILESDIR}"/${PN}-1.99.8-qtchooser.patch \
+		"${FILESDIR}"/${PN}-2.1.0-sse4_2.patch
 
 	epatch_user
 

@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=6
+
 inherit toolchain-funcs
 
 DESCRIPTION="Displays a list of events happening in the near future"
@@ -10,13 +12,10 @@ SRC_URI="mirror://sourceforge/birthday/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
+src_prepare() {
 	# Don't strip, install in correct share dir and respect CFLAGS
 	sed \
 		-e "s:install -s:install:g" -e "s:#SHARE:SHARE:g" -e "s:-O2:${CFLAGS}:g" \
@@ -24,12 +23,10 @@ src_unpack() {
 	sed \
 		-e 's:grep -v:grep --binary-files=text -v:g' \
 		-i runtest.sh || die
+
+	default
 }
 
 src_compile() {
-	emake CC=$(tc-getCC) || die "emake failed"
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	emake CC=$(tc-getCC)
 }
