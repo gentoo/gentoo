@@ -1,9 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-PYTHON_DEPEND="2"
 
 inherit autotools eutils
 
@@ -14,27 +13,31 @@ SRC_URI="http://thoughtcrime.org/software/sslsniff/${P}.tar.gz"
 LICENSE="GPL-3" # plus OpenSSL exception
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="dev-libs/boost:=
-	dev-libs/log4cpp
-	dev-libs/openssl"
+	dev-libs/log4cpp:=
+	dev-libs/openssl:0"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.6-asneeded.patch
+DOCS=( AUTHORS README )
 
-	#stolen from http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=652756
-	epatch \
-		"${FILESDIR}"/${P}-fix-compatibility-with-boost-1.47-and-higher.patch \
-		"${FILESDIR}"/${P}-underlinking.patch
+# last two patches are taken from http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=652756
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.6-asneeded.patch
+	"${FILESDIR}"/${P}-error-redefinition.patch
+	"${FILESDIR}"/${P}-fix-compatibility-with-boost-1.47-and-higher.patch
+	"${FILESDIR}"/${P}-underlinking.patch
+)
+
+src_prepare() {
+	epatch ${PATCHES[@]}
+	epatch_user
 
 	eautoreconf
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS README
+	default
 
 	insinto /usr/share/sslsniff
 	doins leafcert.pem IPSCACLASEA1.crt
