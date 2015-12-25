@@ -13,8 +13,9 @@ LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="
-	adns +caps cpu_flags_x86_sse4_2 crypt doc doc-pdf geoip +gtk3 ipv6 kerberos
-	lua +netlink +pcap portaudio +qt4 qt5 sbc selinux smi ssl zlib
+	adns androiddump +caps cpu_flags_x86_sse4_2 crypt doc doc-pdf geoip +gtk3
+	ipv6 kerberos lua +netlink +pcap portaudio +qt4 qt5 sbc selinux smi ssl
+	tfshark zlib
 "
 REQUIRED_USE="
 	ssl? ( crypt )
@@ -151,7 +152,10 @@ src_configure() {
 	# dumpcap requires libcap
 	# --disable-profile-build bugs #215806, #292991, #479602
 	econf \
+		$(use androiddump && use pcap && echo --enable-androiddump-use-libpcap=yes) \
+		$(use_enable androiddump) \
 		$(use_enable ipv6) \
+		$(use_enable tfshark) \
 		$(use_with adns c-ares) \
 		$(use_with caps libcap) \
 		$(use_with crypt gcrypt) \
