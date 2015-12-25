@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.duckcorp.org/bip/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug freenode noctcp oidentd vim-syntax"
 
 COMMON_DEPEND="
