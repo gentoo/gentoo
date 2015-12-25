@@ -36,14 +36,14 @@ src_configure() {
 }
 
 src_compile() {
-	emake LDLIBS+=" -pthread"
+	emake LDLIBS+=" -pthread" || die
 }
 
 src_install() {
-	emake DESTDIR="${ED}" prefix="${EROOT}usr" mandir="${EROOT}usr/share/man" install
+	emake DESTDIR="${ED}" prefix="${EROOT}usr" mandir="${EROOT}usr/share/man" install || die
 
 	mv "${ED}"usr/$(get_libdir)/liblmdb.so{,.0} || die
 	dosym liblmdb.so.0 "${EROOT}"usr/$(get_libdir)/liblmdb.so
 
-	use static-libs || rm -f "${ED}"usr/$(get_libdir)/liblmdb.a
+	use static-libs || rm "${ED}"usr/$(get_libdir)/liblmdb.a || die
 }
