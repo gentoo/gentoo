@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="GPL-3 MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc static-libs"
 
 RDEPEND="
