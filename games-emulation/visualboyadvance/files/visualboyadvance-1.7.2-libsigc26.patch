@@ -1,0 +1,17 @@
+From: Etienne Millon <me@emillon.org>
+Subject: Remove deprecated header in sigccompat.h
+
+libsigc++ 2.5.2 removed the <sigc++/object.h> header as it was useless.
+Removing the #include directive makes the build succeed with later versions of
+libsigc++.
+
+--- a/src/gtk/sigccompat.h
++++ b/src/gtk/sigccompat.h
+@@ -25,7 +25,6 @@
+ #include <sigc++/connection.h>
+ 
+ #include <sigc++/slot.h>
+-#include <sigc++/object.h>
+ #include <sigc++/functors/mem_fun.h>
+ 
+ 
