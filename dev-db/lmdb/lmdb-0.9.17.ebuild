@@ -23,10 +23,10 @@ S="${WORKDIR}/${PN}-LMDB_${PV}/libraries/liblmdb"
 src_prepare() {
 	sed -i -e "s/^CC.*/CC = $(tc-getCC)/" \
 		-e "s/^CFLAGS.*/CFLAGS = ${CFLAGS}/" \
-		-e "s/ar rs/$(tc-getAR) rs/" \
-		-e "s:^prefix.*:prefix = /usr:" \
-		-e "s:/man/:/share/man/:" \
+		-e "s/^AR.*/AR = $(tc-getAR)/" \
+		-e "/mkdir/s:lib:$(get_libdir):" \
 		-e "/for f/s:lib:$(get_libdir):" \
+		-e "s:prefix)/man:mandir):" \
 		-e "s:shared:shared -Wl,-soname,liblmdb.so.0:" \
 		"${S}/Makefile" || die
 }
@@ -40,11 +40,10 @@ src_compile() {
 }
 
 src_install() {
-	mkdir -p "${D}"/usr/{bin,$(get_libdir),include,share/man/man1} || die
-	default
+	emake DESTDIR="${ED}" prefix="${EROOT}usr" mandir="${EROOT}usr/share/man" install || die
 
-	mv "${D}"/usr/$(get_libdir)/liblmdb.so{,.0} || die
-	dosym liblmdb.so.0 /usr/$(get_libdir)/liblmdb.so
+	mv "${ED}"usr/$(get_libdir)/liblmdb.so{,.0} || die
+	dosym liblmdb.so.0 "${EROOT}"usr/$(get_libdir)/liblmdb.so
 
-	use static-libs || rm "${D}"/usr/$(get_libdir)/liblmdb.a || die
+	use static-libs || rm "${ED}"usr/$(get_libdir)/liblmdb.a || die
 }
