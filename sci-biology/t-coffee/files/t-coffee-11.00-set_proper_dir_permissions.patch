@@ -1,0 +1,35 @@
+Author: Andreas Tille <tille@debian.org>
+Last-Update: Mon, 21 Dec 2015 21:30:36 +0100
+Bug-Debian: https://bugs.debian.org/751579
+Description: When creating subdirectories in $HOME do not
+ make these world writable but keep users umask
+
+--- a/t_coffee_source/util_lib/util.c
++++ b/t_coffee_source/util_lib/util.c
+@@ -7714,6 +7714,10 @@ int my_mkdir ( char *dir_in)
+   int a, buf;
+   char *dir;
+ 
++  static char *home = getenv ("HOME");
++  static mode_t oldmask = umask(0);
++  int change_umask = 0;
++  if (strncmp (dir_in, home, strlen(home))==0) change_umask = 1;
+ 
+   dir=(char*)vcalloc ( strlen (dir_in)+strlen (get_home_4_tcoffee())+100, sizeof (char));
+   sprintf ( dir, "%s", dir_in);
+@@ -7733,10 +7737,11 @@ int my_mkdir ( char *dir_in)
+ 
+ 	  if (access(dir, F_OK)==-1)
+ 	    {
+-		  mode_t oldmask = umask(0);
+-	      mkdir (dir, S_IRWXU | S_IRWXG | S_IRWXO);
+-	      umask(oldmask);
+-
++	      if ( change_umask == 1 ) mkdir (dir, 0777-oldmask);
++	      else {
++	        mkdir (dir, S_IRWXU | S_IRWXG | S_IRWXO);
++	        umask(oldmask);
++	      }
+ 	      if ( access (dir, F_OK)==-1)
+ 		{
+ 		  myexit(fprintf_error ( stderr, "\nERROR: Could Not Create Directory %s [FATAL:%s]", dir, PROGRAM));	}
