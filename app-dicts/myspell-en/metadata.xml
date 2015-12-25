@@ -3,8 +3,8 @@
 <pkgmetadata>
 	<herd>proxy-maintainers</herd>
 	<maintainer>
-		<name>Elizabeth Myers</name>
 		<email>elizabeth@interlinked.me</email>
+		<name>Elizabeth Myers</name>
 		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 </pkgmetadata>
