@@ -7626,7 +7626,7 @@ dev-python/pystache 0.5.3 0.5.4: Mustache for Python
 dev-python/pystatgrab 0.6: pystatgrab is a set of Python bindings for the libstatgrab library
 dev-python/pystdf 1.3.1-r1: Python module that makes it easy to work with STDF
 dev-python/pysvg 0.2.1-r1: Python SVG document creation library
-dev-python/pysvn 1.7.9 1.7.10 1.8.0: Object-oriented python bindings for subversion
+dev-python/pysvn 1.8.0: Object-oriented python bindings for subversion
 dev-python/pysyck 0.61.2-r1: Python bindings for the Syck YAML parser and emitter
 dev-python/pytables 3.1.1-r2 3.2.0 3.2.1 3.2.1.1 3.2.2: Hierarchical datasets for Python
 dev-python/pyte 0.4.9 0.4.10: Simple VTXXX-compatible terminal emulator
@@ -17437,7 +17437,7 @@ www-apps/jekyll 2.5.3: A simple, blog aware, static site generator
 www-apps/jekyll-coffeescript 1.0.1: A CoffeeScript Converter for Jekyll
 www-apps/jekyll-gist 1.3.5: Liquid tag for displaying GitHub Gists in Jekyll sites
 www-apps/jekyll-paginate 1.1.0: Default pagination generator for Jekyll
-www-apps/jekyll-sass-converter 1.3.0: A basic Sass converter for Jekyll
+www-apps/jekyll-sass-converter 1.4.0: A basic Sass converter for Jekyll
 www-apps/jekyll-sitemap 0.8.1 0.9.0: Automatically generate a sitemap.xml for your Jekyll site
 www-apps/jekyll-watch 1.2.1 1.3.0: Rebuild your Jekyll site when a file changes with the --watch switch
 www-apps/joomla 3.4.3: Joomla is a powerful Open Source Content Management System
