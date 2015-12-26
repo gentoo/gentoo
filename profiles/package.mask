@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (26 Dec 2015)
+# Dead upstream (last activity in 2003)
+# Nothing in the tree depends on it
+# Masked for removal
+dev-perl/SpeedyCGI
+
 # Sergey Popov <pinkbyte@gentoo.org> (25 Dec 2015)
 # Old versions lacks multilib support and proper subslots
 # Masked for removal
