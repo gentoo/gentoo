@@ -295,8 +295,7 @@ src_configure() {
 		--disable-static
 		--disable-werror
 
-		--docdir=/usr/share/doc/${PF}
-		--htmldir=/usr/share/doc/${PF}/html
+		--with-html-subdir=${PF}/html
 		--localstatedir=/var
 	)
 
