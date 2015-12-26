@@ -183,4 +183,8 @@ pkg_postinst() {
 	elog " http://en.gentoo-wiki.com/wiki/Xen/"
 
 	use efi && einfo "The efi executable is installed in boot/efi/gentoo"
+
+	elog "You can optionally block the installation of /boot/xen-syms by an entry"
+	elog "in folder /etc/portage/env using the portage's feature INSTALL_MASK"
+	elog "e.g. echo ${msg} > /etc/portage/env/xen.conf"
 }

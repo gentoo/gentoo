@@ -177,9 +177,14 @@ src_install() {
 }
 
 pkg_postinst() {
+	local msg="INSTALL_MASK=/boot/xen-syms"
 	elog "Official Xen Guide and the unoffical wiki page:"
 	elog " https://wiki.gentoo.org/wiki/Xen"
 	elog " http://en.gentoo-wiki.com/wiki/Xen/"
 
 	use efi && einfo "The efi executable is installed in boot/efi/gentoo"
+
+	elog "You can optionally block the installation of /boot/xen-syms by an entry"
+	elog "in folder /etc/portage/env using the portage's feature INSTALL_MASK"
+	elog "e.g. echo ${msg} > /etc/portage/env/xen.conf"
 }
