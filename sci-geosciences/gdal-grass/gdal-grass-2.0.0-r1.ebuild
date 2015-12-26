@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="postgres"
 RDEPEND="
 	>=sci-libs/gdal-2.0.0
-	>=sci-geosciences/grass-7.0.1-r3
+	sci-geosciences/grass:0=
 "
 DEPEND="${RDEPEND}
 	dev-libs/expat
