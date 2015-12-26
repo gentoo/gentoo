@@ -1,0 +1,27 @@
+#!/sbin/runscript
+# Copyright 2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+RUNDIR=/var/run/rmilter
+PIDFILE=$RUNDIR/rmilter.pid
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	mkdir -m0750 -p $RUNDIR
+	chown rmilter:rmilter $RUNDIR
+	chmod g+s $RUNDIR
+	rm -f $RUNDIR/$SVCNAME.sock
+	start-stop-daemon --start --quiet --pidfile $PIDFILE -u rmilter \
+						--exec /usr/sbin/rmilter -- -c /etc/rmilter/rmilter.conf
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --quiet --pidfile $PIDFILE
+	eend $?
+}
