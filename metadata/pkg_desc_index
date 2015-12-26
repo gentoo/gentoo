@@ -14984,6 +14984,7 @@ net-wireless/yatebts 4.0.0-r3 5.0.0 9999: The Yate GSM base station
 perl-core/CPAN-Meta 2.143.240: The distribution metadata for a CPAN dist
 perl-core/CPAN-Meta-Requirements 2.125.0-r1: A set of version requirements for a CPAN dist
 perl-core/Data-Dumper 2.154.0: Stringified perl data structures, suitable for both printing and eval
+perl-core/Devel-PPPort 3.310.0: Perl/Pollution/Portability
 perl-core/Digest 1.170.0-r1: Modules that calculate message digests
 perl-core/Digest-MD5 2.530.0: MD5 message digest algorithm
 perl-core/Digest-SHA 5.880.0: Perl extension for SHA-1/224/256/384/512
@@ -15005,6 +15006,7 @@ perl-core/Math-Complex 1.590.0: complex numbers and associated mathematical func
 perl-core/Memoize 1.30.0-r1: Generic Perl function result caching system
 perl-core/Module-CoreList 5.201.502.140 5.201.505.200: what modules shipped with versions of perl
 perl-core/Module-Loaded 0.80.0-r1: Mark modules as loaded or unloaded
+perl-core/Module-Metadata 1.0.26: Gather package and POD information from perl module files
 perl-core/Package-Constants 0.60.0: List all constants declared in a package
 perl-core/Params-Check 0.380.0-r1: A generic input parsing/checking mechanism
 perl-core/Pod-Simple 3.280.0: Framework for parsing Pod
