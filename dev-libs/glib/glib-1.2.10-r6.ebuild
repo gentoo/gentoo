@@ -57,6 +57,7 @@ multilib_src_configure() {
 	# this package doesn't contain any significant binaries, build the
 	# whole thing with -fPIC (23 Apr 2004 agriffis)
 	append-flags -fPIC
+	append-cflags -std=gnu89
 
 	ECONF_SOURCE="${S}" \
 	gnome2_src_configure \
