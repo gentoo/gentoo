@@ -246,14 +246,13 @@ qt5-build_src_test() {
 	_EOF_
 	chmod +x "${testrunner}"
 
-	_qt5_test_runner() {
+	local testcmd=(
 		qt5_foreach_target_subdir emake TESTRUNNER="'${testrunner}'" check
-	}
-
+	)
 	if [[ ${VIRTUALX_REQUIRED} == test ]]; then
-		VIRTUALX_COMMAND="_qt5_test_runner" virtualmake
+		virtx "${testcmd[@]}"
 	else
-		_qt5_test_runner
+		"${testcmd[@]}"
 	fi
 }
 
