@@ -12,7 +12,7 @@ inherit eutils python gnome2 multilib vala
 DESCRIPTION="Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer"
 HOMEPAGE="https://wiki.gnome.org/action/show/Projects/DVBDaemon"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64"
 IUSE="nls totem vala"
