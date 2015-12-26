@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/enigma-game/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="nls"
 
 COMMON_DEPS="media-libs/sdl-ttf
