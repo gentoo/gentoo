@@ -11,7 +11,7 @@ SRC_URI="https://github.com/dinhviethoa/${PN}/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ppc ~ppc64 ~sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="berkdb debug gnutls ipv6 liblockfile sasl ssl static-libs"
 
 DEPEND="berkdb? ( sys-libs/db:= )
