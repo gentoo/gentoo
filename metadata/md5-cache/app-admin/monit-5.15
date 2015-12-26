@@ -4,11 +4,11 @@ DESCRIPTION=a utility for monitoring and managing daemons or similar programs ru
 EAPI=5
 HOMEPAGE=http://mmonit.com/monit/
 IUSE=pam ssl
-KEYWORDS=amd64 ~ppc ~ppc64 x86 ~amd64-linux
+KEYWORDS=amd64 ppc ~ppc64 x86 ~amd64-linux
 LICENSE=GPL-3
 RDEPEND=ssl? ( dev-libs/openssl:0= )
 SLOT=0
 SRC_URI=http://mmonit.com/monit/dist/monit-5.15.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=ff94779e8e2486752d5b9f64c5893754
+_md5_=6f21bda5bd4bdac641adae061a92e1c1
