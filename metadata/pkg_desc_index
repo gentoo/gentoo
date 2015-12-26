@@ -5644,6 +5644,7 @@ dev-perl/IO-CaptureOutput 1.110.400: Capture STDOUT and STDERR from Perl code, s
 dev-perl/IO-Digest 0.110.0-r2: IO::Digest - Calculate digests while reading or writing
 dev-perl/IO-Event 0.813.0: Tied Filehandles for Nonblocking IO with Object Callbacks
 dev-perl/IO-HTML 1.00.0 1.1.0: Open an HTML file with automatic charset detection
+dev-perl/IO-Interactive 0.0.6: Utilities for interactive I/O
 dev-perl/IO-Interface 1.60.0-r1: Perl extension for access to network card configuration information
 dev-perl/IO-LockedFile 0.230.0-r1: Supply object methods for locking files
 dev-perl/IO-Multiplex 1.130.0-r1 1.160.0: Manage IO on many file handles
@@ -5841,7 +5842,7 @@ dev-perl/MooseX-Types-Path-Tiny 0.2.0 0.11.0: Path::Tiny types and coercions for
 dev-perl/MooseX-Types-Stringlike 0.1.0: Moose type constraints for strings or string-like objects
 dev-perl/Mouse 0.970.0-r1 2.4.1 2.4.5: Moose minus the antlers
 dev-perl/MouseX-Types 0.60.0: Organize your Mouse types in libraries
-dev-perl/Mozilla-CA 20130114: Mozilla's CA cert bundle in PEM format
+dev-perl/Mozilla-CA 20130114 20150826: Mozilla's CA cert bundle in PEM format
 dev-perl/MusicBrainz-DiscID 0.30.0-r1: Perl interface for the MusicBrainz libdiscid library
 dev-perl/Nagios-Plugin 0.360.0-r1: A family of perl modules to streamline writing Nagios plugins
 dev-perl/Net-ARP 1.0.9: Perl extension for creating ARP packets
@@ -6124,7 +6125,10 @@ dev-perl/Template-Tiny 1.120.0-r1: Template Toolkit reimplemented in as little c
 dev-perl/Template-Toolkit 2.250.0-r1 2.260.0: The Template Toolkit
 dev-perl/Template-XML 2.170.0-r1: XML plugins for the Template Toolkit
 dev-perl/Term-ANSIScreen 1.500.0-r1: Terminal control using ANSI escape sequences
+dev-perl/Term-Encoding 0.20.0: Detect encoding of the current terminal
 dev-perl/Term-ProgressBar 2.140.0-r1 2.150.0 2.160.0 2.170.0: Perl module for Term-ProgressBar
+dev-perl/Term-ProgressBar-Quiet 0.310.0: Provide a progress meter if run interactively
+dev-perl/Term-ProgressBar-Simple 0.30.0: Simple progess bars
 dev-perl/Term-ReadLine-Gnu 1.200.0-r2 1.226.0 1.270.0: GNU Readline XS library wrapper
 dev-perl/Term-ReadLine-Perl 1.30.300-r1: Quick implementation of readline utilities
 dev-perl/Term-ReadLine-TTYtter 1.4: Quick implementation of readline utilities for ttytter
@@ -6423,8 +6427,8 @@ dev-perl/maybe 0.20.200-r1: Use a Perl module and ignore error if can't be loade
 dev-perl/mecab-perl 0.996: Perl binding for MeCab
 dev-perl/mime-construct 1.900.0-r1: construct and optionally mail MIME messages
 dev-perl/mogilefs-server 2.700.0-r2: Server for the MogileFS distributed file system
-dev-perl/namespace-autoclean 0.130.0-r1 0.240.0: Keep imports out of your namespace
-dev-perl/namespace-clean 0.210.0-r1 0.250.0: Keep imports and functions out of your namespace
+dev-perl/namespace-autoclean 0.130.0-r1 0.240.0 0.280.0: Keep imports out of your namespace
+dev-perl/namespace-clean 0.210.0-r1 0.250.0 0.260.0: Keep imports and functions out of your namespace
 dev-perl/net-server 2.7.0-r1 2.8.0: Extensible, general Perl server engine
 dev-perl/net-sftp 0.100.0-r1: Secure File Transfer Protocol client
 dev-perl/net-ssh-perl 1.360.0-r1: Perl client Interface to SSH
