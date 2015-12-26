@@ -1,0 +1,24 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+description="libvirt virtual machine logging manager"
+command="/usr/sbin/virtlogd"
+command_args="-d"
+pidfile="/var/run/virtlogd.pid"
+
+extra_started_commands="reload"
+description_reload="re-exec the daemon, while maintaining open connections"
+
+
+depend() {
+    after ntp-client ntpd nfs nfsmount corosync
+}
+
+reload() {
+    ebegin "re-exec() virtlogd"
+
+    start-stop-daemon --signal SIGUSR1 \
+      --exec "${command}" --pidfile "${pidfile}"
+}

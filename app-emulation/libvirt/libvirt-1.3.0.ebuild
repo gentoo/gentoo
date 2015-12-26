@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils user autotools-utils linux-info systemd readme.gentoo
 
-BACKPORTS="20151222"
+BACKPORTS="20151222" # CVE-2015-5313
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -24,7 +24,7 @@ else
 	SRC_URI+=" ${BACKPORTS:+
 		https://dev.gentoo.org/~cardoe/distfiles/${P}-${BACKPORTS}.tar.xz
 		https://dev.gentoo.org/~tamiko/distfiles/${P}-${BACKPORTS}.tar.xz}"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 	SLOT="0/${PV}"
 fi
 
@@ -218,7 +218,7 @@ src_prepare() {
 	fi
 
 	epatch \
-		"${FILESDIR}"/${PN}-1.2.9-do_not_use_sysconf.patch \
+		"${FILESDIR}"/${P}-do_not_use_sysconf.patch \
 		"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch \
 		"${FILESDIR}"/${PN}-1.2.17-fix_paths_for_apparmor.patch
 
@@ -295,8 +295,7 @@ src_configure() {
 		--disable-static
 		--disable-werror
 
-		--docdir=/usr/share/doc/${PF}
-		--htmldir=/usr/share/doc/${PF}/html
+		--with-html-subdir=${PF}/html
 		--localstatedir=/var
 	)
 
@@ -313,6 +312,10 @@ src_configure() {
 		# bug #377279
 		(cd .gnulib && git reset --hard > /dev/null)
 	fi
+
+	# Workaround: Sometimes this subdirectory is missing and leads to a
+	# build failure.
+	mkdir -p "${BUILD_DIR}"/docs/internals
 }
 
 src_test() {
@@ -346,6 +349,7 @@ src_install() {
 	newinitd "${S}/libvirtd.init" libvirtd || die
 	newinitd "${FILESDIR}/libvirt-guests.init-r1" libvirt-guests || die
 	newinitd "${FILESDIR}/virtlockd.init-r1" virtlockd || die
+	newinitd "${FILESDIR}/virtlogd.init-r1" virtlogd || die
 
 	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd || die
 	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests || die
