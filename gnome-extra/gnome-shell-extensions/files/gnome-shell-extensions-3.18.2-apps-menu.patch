@@ -1,0 +1,29 @@
+From 1958ce779467f03672e8d72afa45e2ab14bee5f5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Florian=20M=C3=BCllner?= <fmuellner@gnome.org>
+Date: Wed, 16 Dec 2015 22:32:59 +0100
+Subject: apps-menu: Remove unused variable
+
+https://bugzilla.gnome.org/show_bug.cgi?id=759004
+---
+ extensions/apps-menu/extension.js | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/extensions/apps-menu/extension.js b/extensions/apps-menu/extension.js
+index 3180f3a..925d344 100644
+--- a/extensions/apps-menu/extension.js
++++ b/extensions/apps-menu/extension.js
+@@ -405,10 +405,8 @@ const ApplicationsButton = new Lang.Class({
+                     continue;
+                 }
+                 let app = appSys.lookup_app(id);
+-                if (appInfo.should_show()) {
+-                    let menu_id = dir.get_menu_id();
++                if (appInfo.should_show())
+                     this.applicationsByCategory[categoryId].push(app);
+-                }
+             } else if (nextType == GMenu.TreeItemType.DIRECTORY) {
+                 let subdir = iter.get_directory();
+                 if (!subdir.get_is_nodisplay())
+-- 
+cgit v0.11.2
+
