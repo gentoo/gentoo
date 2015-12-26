@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Jeroen Roovers <jer@gentoo.org> (26 Dec 2015)
+# Mask until >sys-cluster/ceph-0.94 goes stable
+net-analyzer/rrdtool rados
+
 # Justin Lecher <jlec@gentoo.org> (3 Dec 2015)
 # Missing keywords on deps #567458
 kde-apps/kalzium editor
