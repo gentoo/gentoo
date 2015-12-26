@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 inherit ssl-cert eutils pam autotools
 
@@ -13,9 +13,12 @@ SRC_URI="http://www.conserver.com/${P}.tar.gz"
 LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="kerberos pam ssl tcpd debug"
+IUSE="kerberos libressl pam ssl tcpd debug"
 
-DEPEND="ssl? ( >=dev-libs/openssl-0.9.6g )
+DEPEND="ssl? (
+		!libressl? ( dev-libs/openssl:0 )
+		libressl? ( dev-libs/libressl )
+	)
 	pam? ( virtual/pam )
 	tcpd? ( sys-apps/tcp-wrappers )
 	debug? ( dev-libs/dmalloc )
