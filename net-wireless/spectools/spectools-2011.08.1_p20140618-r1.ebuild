@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools eutils toolchain-funcs udev
+inherit autotools eutils flag-o-matic toolchain-funcs udev
 
 MY_PN=${PN}
 MY_PV=${PV/\./-}
@@ -41,6 +41,11 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-tinfo.patch
 	mv configure.{in,ac} || die
 	eautoreconf
+}
+
+src_configure() {
+	append-cflags -std=gnu89
+	default
 }
 
 # Please note that upstream removed the --with-gtk-version option
