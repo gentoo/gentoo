@@ -52,6 +52,7 @@ enabled-extensions gsettings key from the command line or a script."
 
 src_prepare() {
 	# Revert commit because of https://bugs.gentoo.org/show_bug.cgi?id=567126
+	# https://bugzilla.gnome.org/show_bug.cgi?id=759879
 	epatch -R "${FILESDIR}"/${PN}-3.18.2-revert-encodings.patch
 	gnome2_src_prepare
 }
