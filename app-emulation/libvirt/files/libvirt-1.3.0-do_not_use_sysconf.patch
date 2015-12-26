@@ -14,7 +14,7 @@ index be1b5a9..5ce0e1e 100644
  	rm -f $(DESTDIR)$(sysconfdir)/sysconfig/libvirtd
  	rmdir $(DESTDIR)$(sysconfdir)/sysconfig || :
 diff --git a/daemon/libvirtd.service.in b/daemon/libvirtd.service.in
-index 9e67e43..68a32f8 100644
+index 608221c..63708f4 100644
 --- a/daemon/libvirtd.service.in
 +++ b/daemon/libvirtd.service.in
 @@ -12,8 +12,7 @@ Documentation=http://libvirt.org
@@ -56,6 +56,20 @@ index 57089b0..ace0c83 100644
 +ExecStart=@sbindir@/virtlockd
  ExecReload=/bin/kill -USR1 $MAINPID
  # Loosing the locks is a really bad thing that will
+ # cause the machine to be fenced (rebooted), so make
+diff --git a/src/logging/virtlogd.service.in b/src/logging/virtlogd.service.in
+index a264d3a..b467884 100644
+--- a/src/logging/virtlogd.service.in
++++ b/src/logging/virtlogd.service.in
+@@ -5,8 +5,7 @@ Documentation=man:virtlogd(8)
+ Documentation=http://libvirt.org
+ 
+ [Service]
+-EnvironmentFile=-/etc/sysconfig/virtlogd
+-ExecStart=@sbindir@/virtlogd $VIRTLOGD_ARGS
++ExecStart=@sbindir@/virtlogd
+ ExecReload=/bin/kill -USR1 $MAINPID
+ # Loosing the logs is a really bad thing that will
  # cause the machine to be fenced (rebooted), so make
 diff --git a/tools/Makefile.am b/tools/Makefile.am
 index 9180564..e72d5f4 100644
