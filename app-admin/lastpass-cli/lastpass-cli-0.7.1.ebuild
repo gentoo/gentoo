@@ -11,11 +11,12 @@ HOMEPAGE="https://github.com/lastpass/lastpass-cli"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
-IUSE="X +pinentry"
+IUSE="libressl X +pinentry"
 
 RDEPEND="
 	X? ( || ( x11-misc/xclip x11-misc/xsel ) )
-	dev-libs/openssl:0
+	!libressl? ( dev-libs/openssl:0 )
+	libressl? ( dev-libs/libressl )
 	net-misc/curl
 	dev-libs/libxml2
 	pinentry? ( app-crypt/pinentry )

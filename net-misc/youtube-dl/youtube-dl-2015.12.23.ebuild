@@ -30,12 +30,12 @@ src_prepare() {
 			youtube_dl/version.py || die
 		# these have single line import statements
 		local xxx=(
-			alphaporno anysex behindkink drtuber eporner eroprofile extremetube
-			fourtube foxgay goshgay hellporno hentaistigma hornbunny keezmovies
-			mofosex motherless porn91 pornhd pornotube pornovoisines pornoxo
-			redtube sexykarma sexu sunporno slutload spankbang spankwire thisav
-			trutube tube8 vporn xbef xnxx xtube xvideos xxxymovies youjizz
-			youporn
+			alphaporno anysex behindkink chaturbate drtuber eporner eroprofile
+			extremetube fourtube foxgay goshgay hellporno hentaistigma
+			hornbunny keezmovies mofosex motherless porn91 pornhd pornotube
+			pornovoisines pornoxo redtube sexykarma sexu sunporno slutload
+			spankbang spankwire thisav trutube tube8 vporn xbef xnxx xtube
+			xvideos xxxymovies youjizz youporn
 		)
 		# these have multi-line import statements
 		local mxxx=(
