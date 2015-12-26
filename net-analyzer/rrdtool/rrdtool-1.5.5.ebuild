@@ -141,6 +141,10 @@ src_compile() {
 	use python && distutils-r1_src_compile
 }
 
+src_test() {
+	default
+}
+
 src_install() {
 	default
 
