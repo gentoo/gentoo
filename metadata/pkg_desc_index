@@ -5126,7 +5126,7 @@ dev-perl/Apache2-AuthenNTLM 0.20.0-r1: Apache2::AuthenNTLM - Perform Microsoft N
 dev-perl/App-CLI 0.313.0-r1: Dispatcher module for command line interface programs
 dev-perl/App-Nopaste 1.4.0: Easy access to any pastebin
 dev-perl/App-cpanminus 1.703.900: Get, unpack, build and install modules from CPAN
-dev-perl/App-perlbrew 0.730.0: Manage perl installations in your $HOME
+dev-perl/App-perlbrew 0.730.0 0.740.0: Manage perl installations in your $HOME
 dev-perl/AppConfig 1.660.0-r1 1.710.0: Perl5 module for reading configuration files and parsing command line arguments
 dev-perl/Archive-Any 0.94.100: Single interface to deal with file archives
 dev-perl/Archive-Extract 0.720.0: Generic archive extracting mechanism
@@ -15584,7 +15584,7 @@ sci-libs/freesteam 2.0 9999: Open source implementation of IF97 steam tables
 sci-libs/galib 2.4.6 2.4.7: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
 sci-libs/gaul-devel 0.1849-r1 0.1849-r2: Genetic Algorithm Utility Library
-sci-libs/gdal 1.11.1-r3 1.11.2 2.0.0 2.0.0-r1: Translator library for raster geospatial data formats (includes OGR support)
+sci-libs/gdal 1.11.1-r3 1.11.2 2.0.0 2.0.0-r1 2.0.1: Translator library for raster geospatial data formats (includes OGR support)
 sci-libs/geos 3.4.1-r1 3.4.2-r1 3.5.0: Geometry engine library for Geographic Information Systems
 sci-libs/gerris 20120731 20130531 20131206: Gerris Flow Solver
 sci-libs/getdata 0.8.5 0.9.0: Reference implementation of the Dirfile, format for time-ordered binary data
