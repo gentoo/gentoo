@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite(-)?"
 WANT_AUTOCONF="2.1"
 
-inherit eutils gnome2 multilib python-single-r1 versionator wxwidgets autotools
+inherit eutils gnome2 fdo-mime multilib python-single-r1 versionator wxwidgets autotools
 
 MY_PM=${PN}$(get_version_component_range 1-2 ${PV})
 MY_PM=${MY_PM/.}
@@ -19,7 +19,7 @@ HOMEPAGE="http://grass.osgeo.org/"
 SRC_URI="http://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="0/7.0.1-r5"
 KEYWORDS="~amd64 ~x86"
 IUSE="X blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl opengl openmp png postgres readline sqlite threads tiff truetype"
 
