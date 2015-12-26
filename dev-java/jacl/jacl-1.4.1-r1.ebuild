@@ -40,7 +40,7 @@ src_configure() {
 }
 
 src_compile() {
-	rm -rf src/{Test.java,empty,tests} || die
+	rm -rf src/{Test.java,empty,tests,janino} || die
 	java-pkg-simple_src_compile
 	mv src/jacl/tcl src/ || die
 	java-pkg_addres "${PN}.jar" src/ -name "*.tcl"
