@@ -5104,10 +5104,10 @@ dev-perl/Algorithm-Annotate 0.100.0-r1: Represent a series of changes in annotat
 dev-perl/Algorithm-C3 0.90.0: A module for merging hierarchies using the C3 algorithm
 dev-perl/Algorithm-ClusterPoints 0.80.0: Find clusters inside a set of points
 dev-perl/Algorithm-Dependency 1.110.0-r1: Toolkit for implementing dependency systems
-dev-perl/Algorithm-Diff 1.190.200-r1 1.190.300: Compute intelligent differences between two files / lists
+dev-perl/Algorithm-Diff 1.190.300: Compute intelligent differences between two files / lists
 dev-perl/Algorithm-Munkres 0.80.0-r1: Munkres solution to classical Assignment problem
 dev-perl/Alien-SDL 1.446.0: building, finding and using SDL binaries
-dev-perl/Alien-wxWidgets 0.640.0-r1 0.670.0: Building, finding and using wxWidgets binaries
+dev-perl/Alien-wxWidgets 0.670.0: Building, finding and using wxWidgets binaries
 dev-perl/Any-Moose 0.210.0 0.260.0: Use Moose or Mouse modules (DEPRECATED)
 dev-perl/AnyEvent 7.40.0-r1 7.80.0 7.110.0: Provides a uniform interface to various event loops
 dev-perl/AnyEvent-CacheDNS 0.80.0: Simple DNS resolver with caching
@@ -12126,7 +12126,7 @@ media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.2 0.10.3: Library providing DLNA-related functionality for MediaServers
 media-libs/hal-flash 0.2.0_rc1: A libhal stub library forwarding to UDisks for www-plugins/adobe-flash to play DRM content
 media-libs/hamlib 1.2.15.3-r1 3.0: Ham radio backend rig control libraries
-media-libs/harfbuzz 0.9.41 1.0.6 9999: An OpenType text shaping engine
+media-libs/harfbuzz 0.9.41 1.0.6 1.1.2 9999: An OpenType text shaping engine
 media-libs/herqq 1.0.0-r2: A software library for building UPnP devices
 media-libs/hupnp-ng 9999: A software library for building UPnP devices, fork of herqq
 media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing/offset
