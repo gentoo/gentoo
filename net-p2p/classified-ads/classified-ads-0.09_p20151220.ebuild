@@ -58,25 +58,18 @@ src_test() {
 	cd test || die "test suite missing"
 	"$(qt4_get_bindir)"/qmake || die "test suite configure failed"
 	emake
-
-	if [ -e $HOME/.classified_ads/sqlite_db ]; then
-		mv $HOME/.classified_ads/sqlite_db $HOME/.classified_ads/sqlite_db.backup \
-			|| die "datafile backup failed"
-	fi
+	# test suite will create files under $HOME, set $HOME to point to
+	# safe location, ideas stolen from
+	# eclass/distutils-r1.eclass func distutils_install_for_testing
+	BACKUP_HOME=$HOME
+	export HOME=${BUILD_DIR}/tmp
+	mkdir -p $HOME || true
 	./testca
 	result=$?
-	rm -f $HOME/.classified_ads/sqlite_db
-
-	if [ -e $HOME/.classified_ads/sqlite_db.backup ]; then
-		mv $HOME/.classified_ads/sqlite_db.backup $HOME/.classified_ads/sqlite_db \
-			|| die "datafile restore failed"
-	fi
-
+	export HOME=$BACKUP_HOME
 	if [ $result != "0" ]; then
-		die "test failed with code $result"
+		die "test suite failed with error code " `echo $result`
 	fi
-
-	return $result
 }
 
 src_install() {
