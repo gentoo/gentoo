@@ -1,0 +1,27 @@
+From 4befe76fbdb76aa6a986297ef71d1601b2ced42e Mon Sep 17 00:00:00 2001
+From: Josselin Mouette <joss@debian.org>
+Date: Sun, 14 Dec 2014 20:36:36 +0100
+Subject: desktop-entries: fix trivial bug in handling of multiple desktops in
+ XDG_CURRENT_DESKTOP.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=741505
+---
+ libmenu/desktop-entries.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libmenu/desktop-entries.c b/libmenu/desktop-entries.c
+index bd4f886..a463d79 100644
+--- a/libmenu/desktop-entries.c
++++ b/libmenu/desktop-entries.c
+@@ -97,7 +97,7 @@ get_current_desktops (void)
+ 
+       desktops = g_getenv ("XDG_CURRENT_DESKTOP");
+ 
+-      if (desktops)
++      if (!desktops)
+         desktops = "";
+ 
+       tmp = g_strsplit (desktops, ":", 0);
+-- 
+cgit v0.11.2
+
