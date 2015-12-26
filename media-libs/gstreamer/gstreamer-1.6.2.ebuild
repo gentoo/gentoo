@@ -18,7 +18,7 @@ IUSE="+caps +introspection nls +orc test"
 RDEPEND="
 	>=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
 	caps? ( sys-libs/libcap )
-	introspection? ( >=dev-libs/gobject-introspection-1.31.1 )
+	introspection? ( >=dev-libs/gobject-introspection-1.31.1:= )
 "
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
