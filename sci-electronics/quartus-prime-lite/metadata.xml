@@ -1,0 +1,8 @@
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>brendan@horan.hk</email>
+		<name>Brendan Horan</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
+	</maintainer>
+</pkgmetadata>
