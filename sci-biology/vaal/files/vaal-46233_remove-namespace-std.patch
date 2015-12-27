@@ -1,0 +1,911 @@
+Remove 'using namespace std' causing massive havoc with newly
+introduced std::align in GCC-5. Fix bug
+https://bugs.gentoo.org/show_bug.cgi?id=568438
+
+--- vaal-46233/src/efasta/EfastaTools.cc
++++ vaal-46233/src/efasta/EfastaTools.cc
+@@ -18,6 +18,8 @@
+ #include "math/Functions.h"
+ #include "math/Array.h"
+ 
++using std::set;
++
+ #define Err(message)                                      \
+ {    cout << message << endl << "\nInvalid.\n" << endl;   \
+      TracebackThisProcess( );    }
+--- vaal-46233/src/Equiv.cc
++++ vaal-46233/src/Equiv.cc
+@@ -9,6 +9,8 @@
+ #include "Equiv.h"
+ #include "Vec.h"
+ 
++using std::swap;
++
+ bool equivalence_relation::equiv(int a, int b) const
+ {    if ( a == b ) return true;
+      int c = a;
+--- vaal-46233/src/FastaFilestream.cc
++++ vaal-46233/src/FastaFilestream.cc
+@@ -13,6 +13,8 @@
+ 
+ #include <strstream>
+ 
++using std::string;
++
+ template <typename vecT, typename seqT, typename convT, typename verifT>
+ FastaFilestream<vecT,seqT,convT,verifT>::FastaFilestream( const String& filename,
+                                                           FastaNameParser* name_parser )
+--- vaal-46233/src/FastaFilestreamPreview.cc
++++ vaal-46233/src/FastaFilestreamPreview.cc
+@@ -11,6 +11,8 @@
+ 
+ #include <algorithm>
+ 
++using std::streamoff;
++
+ FastaFilestreamPreview::FastaFilestreamPreview(istream& filestream)
+   : max_sequence_size_(0), start_offset_(0)
+ {
+--- vaal-46233/src/FastaFilestreamPreview.h
++++ vaal-46233/src/FastaFilestreamPreview.h
+@@ -12,6 +12,8 @@
+ 
+ #include "Vec.h"
+ 
++using std::streampos;
++
+ // FastaFilestreamPreview understands just enough about the fasta
+ // format to be able to count the number of sequences in the specified
+ // filestream and to know where each sequence starts in that filestream.
+--- vaal-46233/src/Fastavector.cc
++++ vaal-46233/src/Fastavector.cc
+@@ -14,6 +14,8 @@
+ #include <istream>
+ #include <string>
+ 
++using std::max;
++
+ // Split this into chunks, separated by gaps ('n'), and return each chunk as a
+ // gapless fastavector.
+ // TODO: generalize this into a templatized STL algorithm.
+--- vaal-46233/src/Fastavector.h
++++ vaal-46233/src/Fastavector.h
+@@ -24,6 +24,9 @@
+ #include <iostream>
+ #include <unistd.h>
+ 
++using std::string;
++using std::istringstream;
++
+ typedef std::tuple<String, int, int> FastaRegion;
+ 
+ class fastaindex {
+--- vaal-46233/src/FetchReads.cc
++++ vaal-46233/src/FetchReads.cc
+@@ -36,6 +36,8 @@
+ #include "Qualvector.h"
+ #include "random/Random.h"
+ 
++using std::istringstream;
++
+ // Heuristic constants:
+ 
+ namespace
+--- vaal-46233/src/feudal/BaseVec.cc
++++ vaal-46233/src/feudal/BaseVec.cc
+@@ -21,6 +21,7 @@
+ using std::ostream;
+ using std::cout;
+ using std::endl;
++using std::max_element;
+ 
+ // Cap: in a given basevector, replace any sequence of N > n identical
+ // bases by n of the same base.
+--- vaal-46233/src/graph/Digraph.cc
++++ vaal-46233/src/graph/Digraph.cc
+@@ -16,6 +16,8 @@
+ #include "graph/Digraph.h"
+ #include "math/Functions.h"
+ 
++using std::make_pair;
++
+ Bool digraph::HasEdge( int v, int w ) const {
+   return find( from_[v].begin(),  from_[v].end(), w ) != from_[v].end();
+ }
+--- vaal-46233/src/graph/DigraphTemplate.h
++++ vaal-46233/src/graph/DigraphTemplate.h
+@@ -34,6 +34,8 @@
+ #include "graph/Digraph.h"
+ #include <cstddef>
+ 
++using std::make_pair;
++
+ template<class E> vec<int> digraphE<E>::EdgesConnectedTo( const vec<int>& v ) const
+ {    vec<int> G = VerticesConnectedTo(v), e;
+      for ( int x = 0; x < G.isize( ); x++ )
+--- vaal-46233/src/IndexedAlignmentPlusVector.cc
++++ vaal-46233/src/IndexedAlignmentPlusVector.cc
+@@ -9,6 +9,8 @@
+ #include "IndexedAlignmentPlusVector.h"
+ #include "VecAlignmentPlus.h"
+ 
++using std::streamoff;
++
+ // These strings are at the head of the vector and index files for verification purposes.
+ 
+ const String VecAlignmentPlusHeaderIO::mStrVectorHeader( "alignment_plus vector V.2\n" );
+--- vaal-46233/src/IndexedAlignmentPlusVector.h
++++ vaal-46233/src/IndexedAlignmentPlusVector.h
+@@ -15,6 +15,7 @@
+ 
+ #include "Alignment.h"
+ 
++using std::streampos;
+ 
+ // This class encapsulates the header information for both vectors and indices.
+ 
+--- vaal-46233/src/kmers/kmer_parcels/KmerParcelsBuilder.cc
++++ vaal-46233/src/kmers/kmer_parcels/KmerParcelsBuilder.cc
+@@ -10,6 +10,7 @@
+ #include "kmers/KmerParcels.h"
+ #include "system/WorklistN.h"
+ 
++using std::fixed;
+ 
+ inline String Tag(String S = "KPs") { return Date() + " (" + S + "): "; } 
+ 
+--- vaal-46233/src/kmers/kmer_parcels/KmerParcelsClasses.h
++++ vaal-46233/src/kmers/kmer_parcels/KmerParcelsClasses.h
+@@ -6,6 +6,9 @@
+ //   Institute is not responsible for its use, misuse, or functionality.     //
+ ///////////////////////////////////////////////////////////////////////////////
+ 
++using std::hex;
++using std::dec;
++
+ // ---------------------------------
+ // NaifTimer
+ // ---------------------------------
+--- vaal-46233/src/kmers/kmer_parcels/KmerParcelsStatistics.h
++++ vaal-46233/src/kmers/kmer_parcels/KmerParcelsStatistics.h
+@@ -10,7 +10,7 @@
+ #ifndef KMERS__KMER_PARCELS__KMER_PARCELS_STATISTICS_H
+ #define KMERS__KMER_PARCELS__KMER_PARCELS_STATISTICS_H
+ 
+-
++using std::map;
+ 
+ // --------------------------------------
+ // MapOfCounters
+--- vaal-46233/src/layout/ContigActualloc.h
++++ vaal-46233/src/layout/ContigActualloc.h
+@@ -17,6 +17,8 @@
+ #include "system/Crash.h"
+ #include "Misc.h"
+ 
++using std::set;
++using std::map;
+ 
+ //
+ // Class contig_actualloc
+--- vaal-46233/src/lookup/ImperfectLookup.h
++++ vaal-46233/src/lookup/ImperfectLookup.h
+@@ -52,6 +52,8 @@
+ #include "lookup/AlignCollector.h"
+ #include "solid/Solid.h"
+ 
++using std::unique_ptr;
++
+ class TaskTimer;
+ 
+ 
+@@ -534,7 +536,7 @@
+       aligns.resize( nqueries );
+     }
+ 
+-    auto_ptr<TaskTimer> t1, t2;
++    unique_ptr<TaskTimer> t1, t2;
+ 
+     if ( m_instr_level & IO_TIMER != 0 ) t1.reset( new TaskTimer() );
+     if ( m_instr_level & CPU_TIMER != 0 ) t2.reset( new TaskTimer() );
+--- vaal-46233/src/lookup/LookAlign.cc
++++ vaal-46233/src/lookup/LookAlign.cc
+@@ -29,6 +29,8 @@
+ #include "random/Random.h"
+ #include "system/ParsedArgs.h"
+ 
++using std::istrstream;
++
+ String QUERY("QUERY");
+ 
+ void look_align::ResetFromAlign(const align & al, const basevector & b1,
+--- vaal-46233/src/lookup/LookAlignFinder.h
++++ vaal-46233/src/lookup/LookAlignFinder.h
+@@ -12,6 +12,8 @@
+ #include "lookup/LookAlign.h"
+ #include "Vec.h"
+ 
++using std::set;
++
+ /**
+    Class: LookAlignFinder
+ 
+--- vaal-46233/src/lookup/LookAlignSort.h
++++ vaal-46233/src/lookup/LookAlignSort.h
+@@ -15,6 +15,8 @@
+ 
+ #include <functional>
+ 
++using std::set;
++
+ /// Read in look_aligns from file, sort, and load into vecs
+ /// \param fname name of look_align text file
+ /// \param aligns vector into which to put the alignments
+--- vaal-46233/src/lookup/LookupTable.h
++++ vaal-46233/src/lookup/LookupTable.h
+@@ -18,6 +18,8 @@
+ 
+ #include <set>
+ 
++using std::set;
++
+ typedef pair<unsigned int, unsigned int> LocSeq;
+ 
+ ///
+--- vaal-46233/src/lookup/QueryLookupTableCore.cc
++++ vaal-46233/src/lookup/QueryLookupTableCore.cc
+@@ -456,6 +456,9 @@
+ #include "system/ParsedArgs.h"
+ #include "system/file/FileReader.h"
+ 
++using std::istrstream;
++using std::less_equal;
++
+ #define ABORT(MSG)                                 \
+ {    out << MSG << "  Abort." << endl << endl;     \
+      exit(1);    }
+--- vaal-46233/src/lookup/ShortQueryLookup.cc
++++ vaal-46233/src/lookup/ShortQueryLookup.cc
+@@ -32,6 +32,8 @@
+ #include "lookup/AlignCollector.h"
+ #include "lookup/ImperfectLookup.h"
+ 
++using std::ios_base;
++
+ // Run an alignment processing chain: seqs -> look -> receiver -> aligns
+ // That is, look turns seqs into hits, which receiver accepts
+ // and turns into alignments which are passed to aligns.  The
+--- vaal-46233/src/Map.h
++++ vaal-46233/src/Map.h
+@@ -21,7 +21,7 @@
+ #include <map>
+ #include <ext/hash_map>
+ using namespace __gnu_cxx;
+-
++using std::map;
+ 
+ ///Return true if k is a key in map m
+ template<class Key, class Value, typename Cmp> 
+--- vaal-46233/src/math/Array.h
++++ vaal-46233/src/math/Array.h
+@@ -12,6 +12,9 @@
+ #include "CoreTools.h"
+ #include "Vec.h"
+ 
++using std::map;
++using std::fill;
++
+ // ==============================================================================
+ // A fixed-size simple c-style 2D array that allocates faster than vec< vec<T> >
+ // The elements are uninitialized.
+--- vaal-46233/src/math/Functions.cc
++++ vaal-46233/src/math/Functions.cc
+@@ -10,8 +10,8 @@
+ #include "STLExtensions.h"
+ #include "math/Functions.h"
+ 
+-
+-
++using std::isfinite;
++using std::make_pair;
+ 
+ /*  CombineNormalDistribution              Filipe Ribeiro 2009-06-22
+  *
+--- vaal-46233/src/math/Functions.h
++++ vaal-46233/src/math/Functions.h
+@@ -14,6 +14,10 @@
+ #include <cmath>
+ #include <numeric>
+ 
++using std::min;
++using std::cerr;
++using std::swap;
++
+ // ===========================================================================
+ //
+ // Min functions
+--- vaal-46233/src/math/HoInterval.cc
++++ vaal-46233/src/math/HoInterval.cc
+@@ -10,6 +10,8 @@
+ #include "math/HoInterval.h"
+ #include "STLExtensions.h"
+ 
++using std::make_pair;
++
+ bool ho_interval::Merge(const ho_interval & o) {
+   if (!Meets(*this,o)) return false;
+   *this = Span(*this, o);
+--- vaal-46233/src/math/HoInterval.h
++++ vaal-46233/src/math/HoInterval.h
+@@ -14,6 +14,8 @@
+ #include "feudal/MasterVec.h"
+ #include "feudal/SerfVec.h"
+ 
++using std::max;
++
+ /// Class: ho_interval
+ /// A half-open interval [a, b).
+ class ho_interval {
+--- vaal-46233/src/PackAlign.h
++++ vaal-46233/src/PackAlign.h
+@@ -133,6 +133,8 @@
+ #include "pairwise_aligners/Mutmer.h"
+ #include "feudal/BinaryStream.h"
+ 
++using std::make_pair;
++
+ const int Bits2  = 3, Bits3  = 7, Bits4 = 15, Bits10 = 1023, Bits12 = 4095, 
+   Bits16 = 65535;
+ 
+--- vaal-46233/src/pairwise_aligners/MakeAlignsMethod.cc
++++ vaal-46233/src/pairwise_aligners/MakeAlignsMethod.cc
+@@ -19,6 +19,9 @@
+ #include "pairwise_aligners/AlignFromMutmers.h"
+ #include "pairwise_aligners/SmithWatBandedA.h"
+ 
++using std::map;
++using std::set;
++
+ // If there's a perfect match of length at least perf but we produced no proper 
+ // alignment, use banded Smith-Waterman to create one.
+ 
+--- vaal-46233/src/pairwise_aligners/MatchList.cc
++++ vaal-46233/src/pairwise_aligners/MatchList.cc
+@@ -9,6 +9,8 @@
+ 
+ #include "pairwise_aligners/MatchList.h"
+ 
++using std::max;
++
+ bool MatchList::FindMatchInSorted( const int id1, const Match& newMatch ) const 
+ {
+   const vec<Match>& sortedMatches = m_sortedMatches[id1];
+--- vaal-46233/src/pairwise_aligners/SuffixTree.h
++++ vaal-46233/src/pairwise_aligners/SuffixTree.h
+@@ -23,6 +23,8 @@
+ #include <list>
+ #include <string>
+ 
++using std::list;
++
+ /**
+  * Implementation of a suffix tree for basevectors.
+  * This is a data structure for exact (sub)string matching.
+--- vaal-46233/src/paths/AlignHyperKmerPath.cc
++++ vaal-46233/src/paths/AlignHyperKmerPath.cc
+@@ -23,6 +23,9 @@
+ #include "paths/KmerBaseBroker.h"
+ #include "paths/KmerPath.h"
+ 
++using std::ostringstream;
++using std::set;
++
+ // Function: AlignHyperKmerPath
+ //
+ // AlignHyperKmerPath takes a HyperKmerPath h, whose KmerPath edges are assumed
+--- vaal-46233/src/paths/AlignSeqsToHyper.cc
++++ vaal-46233/src/paths/AlignSeqsToHyper.cc
+@@ -26,6 +26,7 @@
+ #include "paths/ReadsToPathsCoreX.h"
+ #include "paths/SeqOnHyper.h"
+ 
++using std::multimap;
+ 
+ // Local class: simple_align
+ //
+--- vaal-46233/src/paths/HyperKmerPath.cc
++++ vaal-46233/src/paths/HyperKmerPath.cc
+@@ -19,6 +19,8 @@
+ #include "paths/HyperKmerPath.h"
+ #include "paths/KmerBaseBroker.h"
+ 
++using std::ostrstream;
++using std::ends;
+ 
+ void HyperKmerPath::ReduceLoops( )
+ {    for ( int v = 0; v < N( ); v++ )
+--- vaal-46233/src/paths/KmerBaseBroker.h
++++ vaal-46233/src/paths/KmerBaseBroker.h
+@@ -20,6 +20,8 @@
+ #include <algorithm>  // for set_union
+ #include <map>
+ 
++using std::map;
++
+ /**
+    Class: KmerBaseBrokerTemplate
+ 
+--- vaal-46233/src/paths/KmerPath.h
++++ vaal-46233/src/paths/KmerPath.h
+@@ -22,6 +22,8 @@
+ #include "HashSimple.h"
+ #include "graph/Digraph.h"
+ 
++using std::make_pair;
++
+ class KmerPathLoc;  // forward declaration
+ 
+ /**
+--- vaal-46233/src/paths/KmerPathInterval.h
++++ vaal-46233/src/paths/KmerPathInterval.h
+@@ -8,6 +8,8 @@
+ #include "CommonSemanticTypes.h"
+ #include "feudal/BinaryStreamTraits.h"
+ 
++using std::max;
++
+ // Portability note: endianness
+ // The implementations here would need to be changed for big endian architectures.
+ 
+@@ -285,6 +287,12 @@
+    Models <tagged read path interval>.
+ */
+ // TODO: potentially dangerous truncation of index by PathId, ReadId
++template<class TAG>
++void Contains( const vec<TAG>& segs, kmer_id_t index, vec<longlong>& answer, bool append = false, int cap = -1 );
++
++template<class TAG>
++void Contains( const vec<TAG>& segs, KmerPathInterval rpi, vec<longlong>& answer, bool append = false, int cap = -1 );
++
+ class tagged_rpint {
+ 
+      public: /* PUBLIC METHODS */
+@@ -362,11 +370,11 @@
+ 
+      template<class TAG>
+      friend void Contains( const vec<TAG>& segs, kmer_id_t index,
+-          vec<longlong>& answer, bool append = false, int cap = -1 );
++          vec<longlong>& answer, bool append, int cap );
+ 
+      template<class TAG>
+      friend void Contains( const vec<TAG>& segs, KmerPathInterval rpi,
+-          vec<longlong>& answer, bool append = false, int cap = -1 );
++          vec<longlong>& answer, bool append, int cap );
+ 
+      template<class TAG>
+      friend longlong Instance( const vec<TAG>& segs, kmer_id_t k );
+@@ -489,11 +497,11 @@
+ 
+      template<class TAG>
+      friend void Contains( const vec<TAG>& segs, kmer_id_t index,
+-          vec<longlong>& answer, bool append = false, int cap = -1 );
++          vec<longlong>& answer, bool append, int cap );
+ 
+      template<class TAG>
+      friend void Contains( const vec<TAG>& segs, KmerPathInterval rpi,
+-          vec<longlong>& answer, bool append = false, int cap = -1 );
++          vec<longlong>& answer, bool append, int cap );
+ 
+      template<class TAG>
+      friend longlong Instance( const vec<TAG>& segs, kmer_id_t k );
+@@ -620,11 +628,11 @@
+ 
+      template<class TAG>
+      friend void Contains( const vec<TAG>& segs, kmer_id_t index,
+-          vec<longlong>& answer, bool append = false, int cap = -1 );
++          vec<longlong>& answer, bool append, int cap );
+ 
+      template<class TAG>
+      friend void Contains( const vec<TAG>& segs, KmerPathInterval rpi,
+-          vec<longlong>& answer, bool append = false, int cap = -1 );
++          vec<longlong>& answer, bool append, int cap );
+ 
+      template<class TAG>
+      friend kmer_id_t Instance( const vec<TAG>& segs, kmer_id_t k );
+--- vaal-46233/src/paths/ReadsToPathsCoreX.cc
++++ vaal-46233/src/paths/ReadsToPathsCoreX.cc
+@@ -20,6 +20,8 @@
+ #include "paths/MakeAlignsPathsParallelX.h"
+ #include "paths/ReadsToPathsCoreX.h"
+ 
++using std::map;
++
+ static inline 
+ String Tag(String S = "RTPCX") { return Date() + " (" + S + "): "; } 
+ 
+--- vaal-46233/src/paths/SuperBaseVector.h
++++ vaal-46233/src/paths/SuperBaseVector.h
+@@ -10,6 +10,8 @@
+ #include <numeric>
+ #include <functional>
+ 
++using std::mem_fun_ref;
++
+ /// A simple class which holds a series of basevectors with
+ /// (possibly negative) gaps between them.  This is what a 
+ /// KmerPath logically maps to in sequence space.  The function
+--- vaal-46233/src/polymorphism/VAAL2.cc
++++ vaal-46233/src/polymorphism/VAAL2.cc
+@@ -42,7 +42,7 @@
+ #include "feudal/BinaryStream.h"
+ #include "feudal/VirtualMasterVec.h"
+ 
+-using namespace std;
++
+ 
+ // Trim reads so that they contain only kmers in the unipaths.
+ 
+--- vaal-46233/src/polymorphism/VAAL3.cc
++++ vaal-46233/src/polymorphism/VAAL3.cc
+@@ -29,6 +29,8 @@
+ #include "polymorphism/VAALTools.h"
+ #include "solexa/SolexaTools.h"
+ 
++using std::ostringstream;
++
+ int main( int argc, char *argv[] )
+ {
+      RunTime( );
+--- vaal-46233/src/PrintAlignment.h
++++ vaal-46233/src/PrintAlignment.h
+@@ -14,6 +14,8 @@
+ #include "CoreTools.h"
+ #include "Qualvector.h"
+ 
++using std::ostringstream;
++
+ void PrintBlanks( ostream& out, int n );
+ 
+ template<class BASEVEC>
+--- vaal-46233/src/Qualvector.cc
++++ vaal-46233/src/Qualvector.cc
+@@ -10,6 +10,8 @@
+ #include "FastIfstream.h"
+ #include "Qualvector.h"
+ 
++using std::istrstream;
++
+ /// \file
+ /// \ingroup grp_quals
+ /// \copydoc Qualvector.h
+--- vaal-46233/src/SeqInterval.cc
++++ vaal-46233/src/SeqInterval.cc
+@@ -9,6 +9,8 @@
+ #include "SeqInterval.h"
+ #include "Vec.h"
+ 
++using std::max;
++using std::min;
+ 
+ /*
+  * seq_interval
+--- vaal-46233/src/SeqInterval.h
++++ vaal-46233/src/SeqInterval.h
+@@ -14,7 +14,9 @@
+ #include <algorithm>
+ #include <iostream>
+ 
+-using namespace std;
++using std::binary_function;
++using std::ostream;
++using std::istream;
+ 
+ /*
+  * class seq_interval
+--- vaal-46233/src/Set.h
++++ vaal-46233/src/Set.h
+@@ -16,7 +16,7 @@
+ #include <set>
+ #include "CoreTools.h"
+ 
+-using namespace std;
++using std::set;
+ 
+ template<class T> bool Member( const set<T>& the_set, const T& value )
+ {    return the_set.find(value) != the_set.end( );    }  // Breaks cxx 
+--- vaal-46233/src/ShortVector.h
++++ vaal-46233/src/ShortVector.h
+@@ -14,6 +14,8 @@
+ #include "system/Types.h"
+ #include "feudal/BinaryStream.h"
+ 
++using std::uninitialized_fill_n;
++
+ // ================================================================================
+ //
+ // A shortvector holds a list of up to 255 things of any type T.  
+--- vaal-46233/src/solexa/FourBase2.h
++++ vaal-46233/src/solexa/FourBase2.h
+@@ -15,6 +15,10 @@
+ #include "feudal/MasterVec.h"
+ #include "feudal/SerfVec.h"
+ 
++using std::max_element;
++using std::min_element;
++using std::accumulate;
++
+ class four_base2 {
+ 
+ public:
+--- vaal-46233/src/solexa/FourBase.cc
++++ vaal-46233/src/solexa/FourBase.cc
+@@ -9,6 +9,9 @@
+ 
+ #include "solexa/FourBase.h"
+ 
++using std::string;
++using std::istringstream;
++
+ int four_base::Call( ) const
+ {
+     int result = 0;
+--- vaal-46233/src/solexa/FourBase.h
++++ vaal-46233/src/solexa/FourBase.h
+@@ -16,6 +16,8 @@
+ #include "feudal/MasterVec.h"
+ #include "feudal/SerfVec.h"
+ 
++using std::max;
++
+ /*
+    Class: four_base
+ 
+--- vaal-46233/src/solexa/SolexaMetrics.h
++++ vaal-46233/src/solexa/SolexaMetrics.h
+@@ -42,6 +42,8 @@
+ #include "CommonSemanticTypes.h"
+ #include <map>
+ 
++using std::map;
++
+ /// Definition of general macros.
+ 
+ class solexa_metric_db {
+--- vaal-46233/src/solexa/SolexaTools.cc
++++ vaal-46233/src/solexa/SolexaTools.cc
+@@ -20,6 +20,8 @@
+ #include "FastaFileset.h"
+ #include "util/BaitMap.h"
+ 
++using std::ostringstream;
++
+ void SolexaPredictorParameters::SetFromFile(const String & fname) {
+   Ifstream(is, fname);
+   String params = Slurp(is);
+--- vaal-46233/src/STLExtensions.h
++++ vaal-46233/src/STLExtensions.h
+@@ -9,7 +9,7 @@
+ #ifndef STLEXTENSIONS_H
+ #define STLEXTENSIONS_H
+ 
+-using namespace std;
++
+ 
+ #include <functional>
+ #include <vector>
+@@ -21,6 +21,13 @@
+ #include "feudal/BinaryStream.h"
+ #include "system/StaticAssert.h"
+ 
++using std::binary_function;
++using std::unary_function;
++using std::pair;
++using std::bitset;
++using std::vector;
++using std::ostream;
++
+ /// minimum<T> is a function object.  
+ ///
+ /// If f is an object of class minimum<T> and x and y are objects of
+--- vaal-46233/src/system/ParsedArgs.cc
++++ vaal-46233/src/system/ParsedArgs.cc
+@@ -26,6 +26,9 @@
+ #include "system/HostName.h"
+ #include "system/UseGDB.h"
+ 
++using std::istrstream;
++using std::mem_fun_ref;
++
+ #ifndef FatalErr
+      #define FatalErr(message) { cout << message << endl << endl; exit(-1); }
+ #endif
+--- vaal-46233/src/system/ParsedArgs.h
++++ vaal-46233/src/system/ParsedArgs.h
+@@ -97,6 +97,8 @@
+ #include "TokenizeString.h"
+ #include "ParseSet.h"
+ 
++using std::stringstream;
++
+ class parsed_arg_help {
+ 
+  public:
+--- vaal-46233/src/system/ProcBuf.cc
++++ vaal-46233/src/system/ProcBuf.cc
+@@ -15,6 +15,8 @@
+ #include <sys/wait.h>
+ #include <unistd.h>
+ 
++using std::ios_base;
++
+ namespace
+ {
+ size_t const BUFFER_SIZE = 8192;
+--- vaal-46233/src/system/RunTime.cc
++++ vaal-46233/src/system/RunTime.cc
+@@ -41,6 +41,10 @@
+      #include <unwind.h>
+ #endif
+ 
++using std::strstream;
++using std::hex;
++using std::setw;
++
+ /// ===========================================================================
+ ///
+ /// ReturnAddress(i), where 0 <= i <= 100: get the return address.  The
+--- vaal-46233/src/system/RunTime.h
++++ vaal-46233/src/system/RunTime.h
+@@ -14,6 +14,8 @@
+ #include "system/Exit.h"
+ #include "system/Types.h"
+ 
++using std::ostream;
++
+ typedef void ArachneSignalHandler(int, siginfo_t*, void*);
+ 
+ void arachne_signal_handler( int signal_number, siginfo_t* info, void* context,
+--- vaal-46233/src/system/System.cc
++++ vaal-46233/src/system/System.cc
+@@ -35,6 +35,11 @@
+ 
+ #include <dirent.h>
+ 
++using std::istringstream;
++using std::istream_iterator;
++using std::ostrstream;
++using std::ends;
++
+ int SystemInternal( String command, const char *shell )
+ {
+   flush(cout);
+--- vaal-46233/src/system/System.h
++++ vaal-46233/src/system/System.h
+@@ -21,6 +21,17 @@
+ #include "system/Exit.h"
+ #include "system/file/TempFile.h"
+ 
++using std::vector;
++using std::ostream;
++using std::ofstream;
++using std::cout;
++using std::flush;
++using std::endl;
++using std::istream;
++using std::ifstream;
++using std::ios;
++using std::setprecision;
++
+ #ifndef InputErr
+      #define InputErr(message)                                               \
+      {    cout << "\nFatal error at " << Date( ) << ": " << message << endl; \
+--- vaal-46233/src/system/TraceVal.h
++++ vaal-46233/src/system/TraceVal.h
+@@ -24,6 +24,9 @@
+ #include "system/Types.h"
+ #include "system/Assert.h"
+ 
++using std::cout;
++using std::endl;
++
+ // Macros: Tracing macros
+ //   TRACEVAL_ON - undefine if you're not doing tracing
+ //   TRACEVAL_STOP_TRACING_COPIES -- call before an operation that shuffles
+--- vaal-46233/src/system/Types.h
++++ vaal-46233/src/system/Types.h
+@@ -14,7 +14,7 @@
+ #include <cstdlib>
+ #include <netinet/in.h>
+ 
+-using namespace std;
++
+ 
+ // This assumes that all suns run Solaris...
+ #if __sun == 1
+--- vaal-46233/src/util/BaitMap.cc
++++ vaal-46233/src/util/BaitMap.cc
+@@ -236,7 +236,7 @@
+ bool BaitMap::write(String file_name)
+ {
+     std::ofstream out(file_name.c_str());
+-    ForceAssert(out);
++    ForceAssert(static_cast<bool>(out));
+ 
+     for (unsigned int i = 0; i < this->size(); i++)
+     {
+@@ -250,7 +250,7 @@
+     }
+ 
+     out.close();
+-    ForceAssert(out);
++    ForceAssert(static_cast<bool>(out));
+ 
+     return true;
+ }
+@@ -260,7 +260,7 @@
+ bool BaitMap::write_names(String file_name)
+ {
+     std::ofstream out(file_name.c_str());
+-    ForceAssert(out);
++    ForceAssert(static_cast<bool>(out));
+ 
+     for (unsigned int i = 0; i < this->size(); i++)
+     {
+@@ -268,7 +268,7 @@
+     }
+ 
+     out.close();
+-    ForceAssert(out);
++    ForceAssert(static_cast<bool>(out));
+ 
+     return true;
+ }
+--- vaal-46233/src/util/BaitMap.h
++++ vaal-46233/src/util/BaitMap.h
+@@ -20,6 +20,8 @@
+ 
+ #include <map>
+ 
++using std::map;
++
+ class BaitMap
+ {
+ public:
+--- vaal-46233/src/util/Qualb.cc
++++ vaal-46233/src/util/Qualb.cc
+@@ -10,6 +10,8 @@
+ #include "FastIfstream.h"
+ #include "Qualvector.h"
+ 
++using std::istrstream;
++
+ int main( int argc, char *argv[] )
+ {
+      RunTime( );
+--- vaal-46233/src/Vec.h
++++ vaal-46233/src/Vec.h
+@@ -48,6 +48,14 @@
+ #include "Compare.h"
+ #include "system/file/FileReader.h"
+ 
++using std::initializer_list;
++using std::numeric_limits;
++using std::ostream_iterator;
++using std::less;
++using std::equal_to;
++using std::setfill;
++using std::setw;
++
+ /////////////////////////////////////////////////////////////////////////////
+ //
+ //  vec Class Declaration and Template Definitions
+--- vaal-46233/src/VecUtilities.h
++++ vaal-46233/src/VecUtilities.h
+@@ -37,6 +37,7 @@
+ #include "Vec.h"
+ #include <cstddef>
+ 
++using std::greater;
+ 
+ /////////////////////////////////////////////////////////////////////////////
+ //
