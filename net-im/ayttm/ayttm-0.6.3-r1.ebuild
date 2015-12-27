@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit autotools eutils multilib
 
 DESCRIPTION="A multi-protocol instant messaging client"
@@ -16,7 +16,7 @@ IUSE="crypt icq irc xmpp lj msn nls oscar smtp webcam xscreensaver yahoo"
 
 CDEPEND="app-text/enchant
 	dev-libs/glib:2
-	dev-libs/openssl
+	dev-libs/openssl:0
 	virtual/libiconv
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:2
