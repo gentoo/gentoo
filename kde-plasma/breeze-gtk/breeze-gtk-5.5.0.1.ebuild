@@ -12,4 +12,6 @@ SRC_URI="mirror://kde/stable/plasma/5.5.0/${P}.tar.xz"
 KEYWORDS=" ~amd64 ~x86"
 IUSE=""
 
+PATCHES=( "${FILESDIR}/${PN}-5.5.2-cmake-version.patch" )
+
 S=${WORKDIR}/${PN}-5.5.0
