@@ -75,6 +75,8 @@ esac
 check_reqs() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	[[ ${EAPI:-0} == [012345] ]] || die "${FUNCNAME} is banned in EAPI > 5"
+
 	echo
 	eqawarn "Package calling old ${FUNCNAME} function."
 	eqawarn "Please file a bug against the package."
