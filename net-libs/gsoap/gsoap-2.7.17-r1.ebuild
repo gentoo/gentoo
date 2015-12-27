@@ -56,7 +56,7 @@ src_install() {
 
 	dohtml changelog.html
 
-	rm -rf "${D}"/usr/lib*/*.la
+	prune_libtool_files --all
 
 	if use examples; then
 		rm -rf gsoap/samples/Makefile* gsoap/samples/*/Makefile* gsoap/samples/*/*.o
