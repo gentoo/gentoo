@@ -16,7 +16,8 @@ SRC_URI="http://www.makemkv.com/download/${MY_P}.tar.gz
 LICENSE="LGPL-2.1 MPL-1.1 MakeMKV-EULA openssl"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libav multilib qt4"
+IUSE="libav multilib qt4 qt5"
+REQUIRED_USE="?? ( qt4 qt5 )"
 
 QA_PREBUILT="opt/bin/makemkvcon opt/bin/mmdtsdec"
 
@@ -26,10 +27,15 @@ RDEPEND="
 	dev-libs/openssl:0
 	sys-libs/zlib
 	qt4? (
-		virtual/opengl
 		dev-qt/qtcore:4
 		dev-qt/qtdbus:4
 		dev-qt/qtgui:4
+	)
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtdbus:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
 	)
 	!libav? ( >=media-video/ffmpeg-1.0.0:0= )
 	libav? ( >=media-video/libav-0.8.9:0= )
@@ -40,14 +46,25 @@ S=${WORKDIR}/makemkv-oss-${PV}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-{makefile,path}.patch
+
+	# Qt5 always trumps Qt4 if it is available. There are no configure
+	# options or variables to control this and there is no publicly
+	# available configure.ac either.
+	if use qt4; then
+		epatch "${FILESDIR}"/${PN}-qt4.patch
+	elif use qt5; then
+		epatch "${FILESDIR}"/${PN}-qt5.patch
+	fi
 }
 
 src_configure() {
+	# See bug #439380.
 	replace-flags -O* -Os
-	local args=""
-	use qt4 || args="--disable-gui"
-	if [[ -x ${ECONF_SOURCE:-.}/configure ]] ; then
-		econf $args
+
+	if use qt4 || use qt5; then
+		econf --enable-gui
+	else
+		econf --disable-gui
 	fi
 }
 
@@ -68,7 +85,7 @@ src_install() {
 	dosym libmmbd.so.0    /usr/$(get_libdir)/libmmbd.so.0.${PV}
 	into /opt
 
-	if use qt4; then
+	if use qt4 || use qt5; then
 		dobin out/makemkv
 
 		local res
