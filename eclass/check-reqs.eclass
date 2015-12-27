@@ -71,7 +71,7 @@ esac
 
 # @FUNCTION: check_reqs
 # @DESCRIPTION:
-# Obsolete function executing all the checks and priting out results
+# Obsolete function executing all the checks and printing out results
 check_reqs() {
 	debug-print-function ${FUNCNAME} "$@"
 
