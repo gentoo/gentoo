@@ -325,7 +325,6 @@ src_install() {
 	if use frontend; then
 		webapp_src_preinst
 		cp -R frontends/php/* "${D}/${MY_HTDOCSDIR}"
-		webapp_postinst_txt en "${FILESDIR}/"1.6.6/postinstall-en.txt
 		webapp_configfile \
 			"${MY_HTDOCSDIR}"/include/db.inc.php \
 			"${MY_HTDOCSDIR}"/include/config.inc.php
