@@ -18,8 +18,8 @@ KEYWORDS="amd64 x86"
 IUSE="debug"
 
 RDEPEND="
-	$(add_kdebase_dep kdepim-common-libs)
-	$(add_kdebase_dep kdepimlibs)
+	$(add_kdeapps_dep kdepim-common-libs)
+	$(add_kdeapps_dep kdepimlibs)
 "
 DEPEND="${RDEPEND}"
 

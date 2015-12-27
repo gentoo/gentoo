@@ -48,7 +48,7 @@ CDEPEND="
 	virtual/jpeg
 	dev-qt/qtgui:4
 	|| ( dev-qt/qtsql:4[mysql] dev-qt/qtsql:4[sqlite] )
-	addressbook? ( $(add_kdebase_dep kdepimlibs) )
+	addressbook? ( $(add_kdeapps_dep kdepimlibs) )
 	gphoto2? ( media-libs/libgphoto2:= )
 	mysql? ( virtual/mysql )
 	semantic-desktop? (

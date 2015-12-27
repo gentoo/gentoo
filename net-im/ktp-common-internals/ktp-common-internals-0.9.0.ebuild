@@ -30,7 +30,7 @@ DEPEND="
 		>=net-libs/libotr-4.0.0
 	)
 	semantic-desktop? (
-		$(add_kdebase_dep kdepimlibs)
+		$(add_kdeapps_dep kdepimlibs)
 		>=net-libs/libkpeople-0.3.0:=
 	)
 "

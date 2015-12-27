@@ -13,3 +13,31 @@ move kde-apps/oxygen-icons kde-frameworks/oxygen-icons
 slotmove =dev-ruby/rack-cache-1.3.0 1.3 1.2
 move dev-perl/module-info dev-perl/Module-Info
 slotmove =sci-geosciences/grass-7* 7 0
+move kde-base/akonadiconsole kde-apps/akonadiconsole
+move kde-base/akregator kde-apps/akregator
+move kde-base/blogilo kde-apps/blogilo
+move kde-base/calendarjanitor kde-apps/calendarjanitor
+move kde-base/kabcclient kde-apps/kabcclient
+move kde-base/kaddressbook kde-apps/kaddressbook
+move kde-base/kalarm kde-apps/kalarm
+move kde-base/kdepim-common-libs kde-apps/kdepim-common-libs
+move kde-base/kdepim-icons kde-apps/kdepim-icons
+move kde-base/kdepim-kresources kde-apps/kdepim-kresources
+move kde-base/kdepim-l10n kde-apps/kdepim-l10n
+move kde-base/kdepim-meta kde-apps/kdepim-meta
+move kde-base/kdepim-runtime kde-apps/kdepim-runtime
+move kde-base/kdepim-wizards kde-apps/kdepim-wizards
+move kde-base/kdepimlibs kde-apps/kdepimlibs
+move kde-base/kjots kde-apps/kjots
+move kde-base/kleopatra kde-apps/kleopatra
+move kde-base/kmail kde-apps/kmail
+move kde-base/knode kde-apps/knode
+move kde-base/knotes kde-apps/knotes
+move kde-base/konsolekalendar kde-apps/konsolekalendar
+move kde-base/kontact kde-apps/kontact
+move kde-base/korganizer kde-apps/korganizer
+move kde-base/ktimetracker kde-apps/ktimetracker
+move kde-base/ktnef kde-apps/ktnef
+move kde-base/libkdepim kde-apps/libkdepim
+move kde-base/libkleo kde-apps/libkleo
+move kde-base/libkpgp kde-apps/libkpgp

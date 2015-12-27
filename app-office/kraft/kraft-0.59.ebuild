@@ -22,7 +22,7 @@ DEPEND="
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
 	dev-qt/qtsql:4[mysql,sqlite]
-	$(add_kdebase_dep kdepimlibs)
+	$(add_kdeapps_dep kdepimlibs)
 "
 RDEPEND="${DEPEND}"
 

@@ -38,7 +38,7 @@ COMMONDEPEND="
 	x11-libs/libXrender
 	gps? ( >=sci-geosciences/gpsd-2.37 )
 	json? ( dev-libs/qjson )
-	kdepim? ( $(add_kdebase_dep kdepimlibs) )
+	kdepim? ( $(add_kdeapps_dep kdepimlibs) )
 	python? (
 		${PYTHON_DEPS}
 		>=dev-python/PyQt4-4.4.0[X,${PYTHON_USEDEP}]
