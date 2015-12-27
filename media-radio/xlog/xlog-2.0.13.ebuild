@@ -36,6 +36,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# fix underlinking
+	sed -i -e "s:HAMLIB_LIBS@:HAMLIB_LIBS@ -lm:g" src/Makefile.am || die
+	eautoreconf
 	# mime-update causes file collisions if enabled
 	econf --disable-mime-update --disable-desktop-update \
 		--docdir=/usr/share/doc/${PF}
