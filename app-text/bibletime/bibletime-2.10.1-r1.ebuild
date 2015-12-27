@@ -55,6 +55,7 @@ src_prepare() {
 	sed -e "s:Dictionary;Qt:Dictionary;Office;TextTools;Utility;Qt:" \
 	    -i cmake/platforms/linux/bibletime.desktop.cmake || die "fixing .desktop file failed"
 	epatch "${FILESDIR}/${PN}-2.10.1-qt5-printsupport.patch"
+	epatch "${FILESDIR}/${PN}-2.10.1-qt55.patch"
 }
 
 src_configure() {
