@@ -21,7 +21,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="doc gost gssapi idn ipv6 libressl readline seccomp ssl urandom xml"
 # no PKCS11 currently as it requires OpenSSL to be patched, also see bug 409687
 
-REQUIRED_USE="gost? ( ssl )"
+REQUIRED_USE="gost? ( !libressl ssl )"
 
 DEPEND="
 	ssl? (
@@ -45,6 +45,7 @@ RESTRICT="test"
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-9.5.0_p1-lwconfig.patch #231247
 	epatch "${FILESDIR}"/${PN}-9.10.2-openssl.patch #417129
+	epatch "${FILESDIR}"/${P}-libressl.patch #563648
 
 	# Disable tests for now, bug 406399
 	sed -i '/^SUBDIRS/s:tests::' bin/Makefile.in lib/Makefile.in || die
