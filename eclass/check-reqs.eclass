@@ -76,10 +76,10 @@ check_reqs() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	echo
-	ewarn "QA: Package calling old ${FUNCNAME} function."
-	ewarn "QA: Please file a bug against the package."
-	ewarn "QA: It should call check-reqs_pkg_pretend and check-reqs_pkg_setup"
-	ewarn "QA: and possibly use EAPI=4 or later."
+	eqawarn "Package calling old ${FUNCNAME} function."
+	eqawarn "Please file a bug against the package."
+	eqawarn "It should call check-reqs_pkg_pretend and check-reqs_pkg_setup"
+	eqawarn "and possibly use EAPI=4 or later."
 	echo
 
 	check-reqs_pkg_setup "$@"
@@ -194,9 +194,9 @@ check-reqs_get_number() {
 	# Check for unset units and warn about them.
 	# Backcompat.
 	if [[ ${size} == ${1} ]]; then
-		ewarn "QA: Package does not specify unit for the size check"
-		ewarn "QA: Assuming mebibytes."
-		ewarn "QA: File bug against the package. It should specify the unit."
+		eqawarn "Package does not specify unit for the size check"
+		eqawarn "Assuming mebibytes."
+		eqawarn "File bug against the package. It should specify the unit."
 	fi
 
 	echo ${size}
