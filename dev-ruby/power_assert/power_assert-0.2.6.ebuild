@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="README.rdoc"
@@ -18,6 +18,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 
 SLOT="0"
 IUSE=""
+
+RUBY_PATCHES=( ${P}-ruby23-tests.patch )
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/d' Rakefile || die
