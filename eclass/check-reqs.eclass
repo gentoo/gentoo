@@ -136,6 +136,8 @@ check-reqs_run() {
 	# some people are *censored*
 	unset CHECKREQS_FAILED
 
+	[[ ${EAPI:-0} == [0123] ]] && local MERGE_TYPE=""
+
 	# use != in test, because MERGE_TYPE only exists in EAPI 4 and later
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		[[ -n ${CHECKREQS_MEMORY} ]] && \
