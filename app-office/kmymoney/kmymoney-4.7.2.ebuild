@@ -27,7 +27,7 @@ COMMON_DEPEND="
 	>=app-office/libalkimia-4.3.2
 	dev-libs/gmp:0
 	dev-libs/libgpg-error
-	$(add_kdebase_dep kdepimlibs)
+	$(add_kdeapps_dep kdepimlibs)
 	x11-misc/shared-mime-info
 	calendar? ( dev-libs/libical:= )
 	hbci? (

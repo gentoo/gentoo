@@ -11,7 +11,7 @@ KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug minimal"
 
 DEPEND="
-	$(add_kdebase_dep kdepimlibs)
+	$(add_kdeapps_dep kdepimlibs)
 	$(add_kdebase_dep kfilemetadata)
 	dev-libs/qjson
 	=dev-libs/xapian-1.2*[chert]

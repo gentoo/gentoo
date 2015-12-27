@@ -26,7 +26,7 @@ RDEPEND="
 	dev-libs/qjson
 	dev-qt/qtdbus:4
 	media-libs/qimageblitz
-	addressbook? ( $(add_kdebase_dep kdepimlibs) )
+	addressbook? ( $(add_kdeapps_dep kdepimlibs) )
 	cddb? ( $(add_kdeapps_dep libkcddb) )
 	pdf? ( app-text/poppler[qt4] )
 	scanner? ( $(add_kdeapps_dep libksane) )

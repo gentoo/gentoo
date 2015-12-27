@@ -13,7 +13,7 @@ HOMEPAGE="https://techbase.kde.org/Development/Languages/Smoke"
 
 DEPEND="
 	$(add_kdebase_dep smokeqt)
-	akonadi? ( $(add_kdebase_dep kdepimlibs) )
+	akonadi? ( $(add_kdeapps_dep kdepimlibs) )
 	attica? ( dev-libs/libattica )
 	kate? ( $(add_kdeapps_dep kate) )
 	okular? ( $(add_kdeapps_dep okular) )

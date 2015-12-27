@@ -48,7 +48,7 @@ COMMONDEPEND="
 	infowidget? ( dev-libs/geoip )
 	mediaplayer? ( >=media-libs/taglib-1.5 )
 	plasma? ( $(add_kdebase_dep libtaskmanager) )
-	rss? ( $(add_kdebase_dep kdepimlibs) )
+	rss? ( $(add_kdeapps_dep kdepimlibs) )
 	shutdown? ( $(add_kdebase_dep libkworkspace) )
 "
 DEPEND="${COMMONDEPEND}

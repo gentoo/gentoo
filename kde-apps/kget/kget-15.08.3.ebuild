@@ -17,7 +17,7 @@ RDEPEND="
 	$(add_kdeapps_dep libkonq)
 	$(add_kdebase_dep libkworkspace '' 4.11)
 	bittorrent? ( >=net-libs/libktorrent-1.0.3 )
-	gpg? ( || ( $(add_kdeapps_dep gpgmepp) $(add_kdebase_dep kdepimlibs) ) )
+	gpg? ( || ( $(add_kdeapps_dep gpgmepp) $(add_kdeapps_dep kdepimlibs) ) )
 	mms? ( media-libs/libmms )
 	sqlite? ( dev-db/sqlite:3 )
 	webkit? ( >=kde-misc/kwebkitpart-0.9.6:4 )
