@@ -411,6 +411,26 @@ strip-flags() {
 	return 0
 }
 
+# @FUNCTION: strip-all-flags
+# @DESCRIPTION:
+# Strip *FLAGS of everything.  This runs over all
+# flags returned by all_flag_vars().
+strip-all-flags() {
+	local var
+
+	for var in $(all-flag-vars) ; do
+
+		if [[ ! -z ${!var} ]] ; then
+			einfo "strip-all-flags: ${var} stripped"
+		fi
+
+		eval unset ${var}
+
+	done
+
+	return 0
+}
+
 test-flag-PROG() {
 	local comp=$1
 	local lang=$2

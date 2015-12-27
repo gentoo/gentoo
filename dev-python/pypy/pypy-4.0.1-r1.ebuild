@@ -4,21 +4,20 @@
 
 EAPI=5
 
-# pypy3 needs to be built using python 2
 PYTHON_COMPAT=( python2_7 pypy )
-EHG_PROJECT="pypy"
-EHG_REPO_URI="https://bitbucket.org/pypy/pypy"
-EHG_REVISION="py3k"
-inherit check-reqs eutils flag-o-matic mercurial multilib multiprocessing pax-utils python-any-r1 toolchain-funcs versionator
+inherit check-reqs eutils flag-o-matic multilib multiprocessing pax-utils python-any-r1 toolchain-funcs versionator
+
+CPY_PATCHSET_VERSION="2.7.10-0"
 
 DESCRIPTION="A fast, compliant alternative implementation of the Python language"
 HOMEPAGE="http://pypy.org/"
-SRC_URI=""
+SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${P}-src.tar.bz2
+	https://dev.gentoo.org/~floppym/python/python-gentoo-patches-${CPY_PATCHSET_VERSION}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0/$(get_version_component_range 1-2 ${PV})"
-KEYWORDS=""
-IUSE="bzip2 custom-cflags gdbm +jit low-memory ncurses sandbox shadowstack sqlite cpu_flags_x86_sse2 test tk"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+IUSE="bzip2 custom-cflags doc gdbm +jit low-memory ncurses sandbox shadowstack sqlite cpu_flags_x86_sse2 test tk"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	virtual/libffi:0=
@@ -33,10 +32,11 @@ RDEPEND=">=sys-libs/zlib-1.1.3:0=
 		dev-lang/tk:0=
 		dev-tcltk/tix:0=
 	)
-	!dev-python/pypy3-bin:0"
+	!dev-python/pypy-bin:0"
 DEPEND="${RDEPEND}
-	low-memory? ( virtual/pypy:0 )
-	!low-memory? ( ${PYTHON_DEPS} )"
+	doc? ( dev-python/sphinx )
+	${PYTHON_DEPS}
+	test? ( dev-python/pytest )"
 PDEPEND="app-admin/python-updater"
 
 S="${WORKDIR}/${P}-src"
@@ -44,6 +44,16 @@ S="${WORKDIR}/${P}-src"
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		if use low-memory; then
+			if ! python_is_installed pypy; then
+				eerror "USE=low-memory requires a (possibly old) version of dev-python/pypy"
+				eerror "or dev-python/pypy-bin being installed. Please install it using e.g.:"
+				eerror
+				eerror "  $ emerge -1v dev-python/pypy-bin"
+				eerror
+				eerror "before attempting to build dev-python/pypy[low-memory]."
+				die "dev-python/pypy-bin (or dev-python/pypy) needs to be installed for USE=low-memory"
+			fi
+
 			CHECKREQS_MEMORY="1750M"
 			use amd64 && CHECKREQS_MEMORY="3500M"
 		else
@@ -59,24 +69,19 @@ pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		pkg_pretend
 
-		# unset to allow forcing pypy below :)
-		use low-memory && local EPYTHON=
-		if python_is_installed pypy && [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]]; then
-			einfo "Using PyPy to perform the translation."
-			local EPYTHON=pypy
-		else
-			einfo "Using ${EPYTHON:-python2} to perform the translation. Please note that upstream"
-			einfo "recommends using PyPy for that. If you wish to do so, please install"
-			einfo "virtual/pypy and ensure that EPYTHON variable is unset."
+		if python_is_installed pypy; then
+			if [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]] || use low-memory; then
+				einfo "Using already-installed PyPy to perform the translation."
+				local EPYTHON=pypy
+			else
+				einfo "Using ${EPYTHON} to perform the translation. Please note that upstream"
+				einfo "recommends using PyPy for that. If you wish to do so, please unset"
+				einfo "the EPYTHON variable."
+			fi
 		fi
 
 		python-any-r1_pkg_setup
 	fi
-}
-
-src_unpack() {
-	default
-	mercurial_src_unpack
 }
 
 src_prepare() {
@@ -86,11 +91,13 @@ src_prepare() {
 
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
 		-e "s^@libdir@^$(get_libdir)^" \
-		-i lib-python/3/distutils/command/install.py || die
+		-i lib-python/2.7/distutils/command/install.py || die
 
 	# apply CPython stdlib patches
-	pushd lib-python/3 > /dev/null || die
-	epatch "${FILESDIR}"/21_all_distutils_c++.patch
+	pushd lib-python/2.7 > /dev/null || die
+	epatch "${FILESDIR}"/2.5.0_all_distutils_cxx.patch \
+		"${WORKDIR}"/patches/22_all_turkish_locale.patch \
+		"${WORKDIR}"/patches/62_all_xml.use_pyxml.patch
 	popd > /dev/null || die
 
 	epatch_user
@@ -166,36 +173,43 @@ src_compile() {
 	echo -e "\033[1m${@}\033[0m"
 	"${@}" || die "compile error"
 
-	#use doc && emake -C pypy/doc/ html
+	use doc && emake -C pypy/doc/ html
 	pax-mark m "${ED%/}${INSDESTTREE}/pypy-c"
+}
+
+src_test() {
+	# (unset)
+	local -x PYTHONDONTWRITEBYTECODE
+
+	./pypy-c ./pypy/test_all.py --pypy=./pypy-c lib-python || die
 }
 
 src_install() {
 	einfo "Installing PyPy ..."
-	insinto "/usr/$(get_libdir)/pypy3"
+	insinto "/usr/$(get_libdir)/pypy"
 	doins -r include lib_pypy lib-python pypy-c libpypy-c.so
 	fperms a+x ${INSDESTTREE}/pypy-c ${INSDESTTREE}/libpypy-c.so
 	pax-mark m "${ED%/}${INSDESTTREE}/pypy-c" "${ED%/}${INSDESTTREE}/libpypy-c.so"
-	dosym ../$(get_libdir)/pypy3/pypy-c /usr/bin/pypy3
+	dosym ../$(get_libdir)/pypy/pypy-c /usr/bin/pypy
 	dodoc README.rst
 
 	if ! use gdbm; then
 		rm -r "${ED%/}${INSDESTTREE}"/lib_pypy/gdbm.py \
-			"${ED%/}${INSDESTTREE}"/lib-python/*3/test/test_gdbm.py || die
+			"${ED%/}${INSDESTTREE}"/lib-python/*2.7/test/test_gdbm.py || die
 	fi
 	if ! use sqlite; then
-		rm -r "${ED%/}${INSDESTTREE}"/lib-python/*3/sqlite3 \
+		rm -r "${ED%/}${INSDESTTREE}"/lib-python/*2.7/sqlite3 \
 			"${ED%/}${INSDESTTREE}"/lib_pypy/_sqlite3.py \
-			"${ED%/}${INSDESTTREE}"/lib-python/*3/test/test_sqlite.py || die
+			"${ED%/}${INSDESTTREE}"/lib-python/*2.7/test/test_sqlite.py || die
 	fi
 	if ! use tk; then
-		rm -r "${ED%/}${INSDESTTREE}"/lib-python/*3/{idlelib,tkinter} \
+		rm -r "${ED%/}${INSDESTTREE}"/lib-python/*2.7/{idlelib,lib-tk} \
 			"${ED%/}${INSDESTTREE}"/lib_pypy/_tkinter \
-			"${ED%/}${INSDESTTREE}"/lib-python/*3/test/test_{tcl,tk,ttk*}.py || die
+			"${ED%/}${INSDESTTREE}"/lib-python/*2.7/test/test_{tcl,tk,ttk*}.py || die
 	fi
 
 	# Install docs
-	#use doc && dohtml -r pypy/doc/_build/html/
+	use doc && dohtml -r pypy/doc/_build/html/
 
 	einfo "Generating caches and byte-compiling ..."
 
@@ -203,8 +217,8 @@ src_install() {
 	local -x LD_LIBRARY_PATH="${ED%/}${INSDESTTREE}"
 	# we can't use eclass function since PyPy is dumb and always gives
 	# paths relative to the interpreter
-	local PYTHON_SITEDIR=${EPREFIX}/usr/$(get_libdir)/pypy3/site-packages
-	python_export pypy3 EPYTHON
+	local PYTHON_SITEDIR=${EPREFIX}/usr/$(get_libdir)/pypy/site-packages
+	python_export pypy EPYTHON
 
 	echo "EPYTHON='${EPYTHON}'" > epython.py || die
 	python_domodule epython.py
