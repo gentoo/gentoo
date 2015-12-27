@@ -199,13 +199,14 @@ check-reqs_get_number() {
 
 	local unit=${1:(-1)}
 	local size=${1%[GMT]}
+	local msg=eerror
+	[[ ${EAPI:-0} == [012345] ]] && msg=eqawarn
 
 	# Check for unset units and warn about them.
 	# Backcompat.
 	if [[ ${size} == ${1} ]]; then
-		eqawarn "Package does not specify unit for the size check"
-		eqawarn "Assuming mebibytes."
-		eqawarn "File bug against the package. It should specify the unit."
+		${msg} "Package does not specify unit for the size check"
+		${msg} "File bug against the package. It should specify the unit."
 	fi
 
 	echo ${size}
