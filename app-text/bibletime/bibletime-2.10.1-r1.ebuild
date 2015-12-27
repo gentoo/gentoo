@@ -18,7 +18,7 @@ IUSE="debug qt5"
 # RESTRICT="test"
 
 RDEPEND="
-	>=app-text/sword-1.6.0
+	>=app-text/sword-1.7.0
 	>=dev-cpp/clucene-2.3.3.4
 	qt5? (
 		dev-qt/qtcore:5
