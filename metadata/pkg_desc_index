@@ -27,7 +27,7 @@ app-accessibility/perlbox-voice 0.09-r2: A voice enabled application to bring yo
 app-accessibility/pidgin-festival 2.4: A plugin for pidgin which enables text-to-speech output of conversations using festival
 app-accessibility/pocketsphinx 0.8: Large open source vocabulary, speaker-independent continuous speech recognition engine
 app-accessibility/powiedz 1.0-r2: Polish speech synthesizer based on rsynth
-app-accessibility/simon 0.4.0 0.4.1: Open-source speech recognition program for replacing mouse and keyboard
+app-accessibility/simon 0.4.1: Open-source speech recognition program for replacing mouse and keyboard
 app-accessibility/sound-icons 0.1: a collection of Sound Icons for speech-dispatcher
 app-accessibility/speakup 3.1.6_p201011120508 9999: The speakup linux kernel based screen reader
 app-accessibility/speech-dispatcher 0.8.1 0.8.3: Speech synthesis interface
@@ -147,7 +147,7 @@ app-admin/mcollective 2.8.0: Framework to build server orchestration or parallel
 app-admin/metalog 3-r1: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 0.2.4 0.2.5: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1: MongoDB MMS agents
-app-admin/mongo-tools 3.0.5 3.0.6 3.0.7 3.0.8: A high-performance, open source, schema-free document-oriented database
+app-admin/mongo-tools 3.0.5 3.0.6 3.0.7 3.0.8 3.2.0: A high-performance, open source, schema-free document-oriented database
 app-admin/monit 5.8 5.12.2 5.14 5.15 5.15-r1: a utility for monitoring and managing daemons or similar programs running on a Unix system
 app-admin/multilog-watch 1.12: Watches a multilog file for irregularities
 app-admin/newsyslog 1.1: a highly configurable program for managing and archiving log files
@@ -2876,7 +2876,7 @@ dev-db/mariadb 5.5.46 5.5.47 10.0.21 10.0.22 10.0.22-r1 10.0.23 10.1.9 10.1.9-r1
 dev-db/mariadb-galera 10.0.22: An enhanced, drop-in replacement for MySQL with Galera Replication
 dev-db/maxscale 1.2.0: A content aware, plug-able MySQL proxy server
 dev-db/metakit 2.4.9.7-r2: Embedded database library
-dev-db/mongodb 2.4.13 2.4.14 2.6.8 2.6.11 3.0.5 3.0.6 3.0.6-r1 3.0.7 3.0.8: A high-performance, open source, schema-free document-oriented database
+dev-db/mongodb 2.4.13 2.4.14 2.6.8 2.6.11 3.0.5 3.0.6 3.0.6-r1 3.0.7 3.0.8 3.2.0: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.4.0 1.5.2 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.6.2: A high-performance multi-threaded backup (and restore) toolset for MySQL and Drizzle
@@ -7101,7 +7101,7 @@ dev-python/graph-tool 2.2.44 9999: An efficient python module for manipulation a
 dev-python/graphcanvas 4.0.2-r1: Enthought Tool Suite: Interactive Graph (network) Visualization
 dev-python/graphy 1.0-r1: Simple Chart Library for Python
 dev-python/greenlet 0.4.2 0.4.3 0.4.4 0.4.5 0.4.6 0.4.7 0.4.9: Lightweight in-process concurrent programming
-dev-python/gst-python 0.10.22-r1 1.2.1 1.4.0 1.6.0 1.6.1: A Python Interface to GStreamer
+dev-python/gst-python 0.10.22-r1 1.2.1 1.4.0 1.6.1 1.6.2: A Python Interface to GStreamer
 dev-python/gtkspell-python 2.25.3-r1: GtkSpell bindings for Python
 dev-python/guessit 0.5.4 0.6.2 0.7.1 0.9.3 9999: library for guessing information from video files
 dev-python/guppy 0.1.10-r1: Guppy-PE -- A Python Programming Environment
@@ -15307,7 +15307,7 @@ sci-chemistry/freeon 1.0.8-r1 1.0.10: An experimental suite of programs for line
 sci-chemistry/gabedit 2.4.6 2.4.7 2.4.8: GUI for computational chemistry packages
 sci-chemistry/gamess 20110811.1: A powerful quantum chemistry package
 sci-chemistry/gamessq 1.2: Simple job manager for GAMESS-US
-sci-chemistry/gelemental 1.2.0 1.2.0-r1: Periodic table viewer that provides detailed information on the chemical elements
+sci-chemistry/gelemental 1.2.0-r1: Periodic table viewer with detailed information on the chemical elements
 sci-chemistry/ghemical 2.99.2-r2 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-chemistry/gopenmol 3.00-r2 3.00-r3: Tool for the visualization and analysis of molecular structures
 sci-chemistry/gperiodic 2.0.10-r2 3.0.1: Periodic table application for Linux
