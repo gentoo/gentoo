@@ -21,7 +21,9 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-headers.patch \
-		"${FILESDIR}"/${P}-gentoo.patch
+		"${FILESDIR}"/${P}-gentoo.patch \
+		"${FILESDIR}"/${P}-gcc-5.patch \
+		"${FILESDIR}"/${P}-qa-const-char.patch
 }
 
 src_compile() {
