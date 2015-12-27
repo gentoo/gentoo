@@ -6819,7 +6819,7 @@ dev-python/cachetools 1.1.0 1.1.5: Extensible memoizing collections and decorato
 dev-python/cairocffi 0.7.2: CFFI-based drop-in replacement for Pycairo
 dev-python/cangjie 1.1 1.2: The Python bindings to libcangjie
 dev-python/capturer 2.1 2.1.1: Easily capture stdout/stderr of the current process and subprocesses
-dev-python/carbon 0.9.12-r1 0.9.13: Backend data caching and persistence daemon for Graphite
+dev-python/carbon 0.9.12-r1 0.9.13 0.9.14: Backend data caching and persistence daemon for Graphite
 dev-python/carrot 0.10.7-r1: AMQP Messaging Framework for Python
 dev-python/cassandra-driver 2.7.2: DataStax python driver for Apache Cassandra
 dev-python/castellan 0.2.1: Generic Key Manager interface for OpenStack
@@ -8038,7 +8038,7 @@ dev-python/wehjit 0.2.2-r1: A Python web-widget library
 dev-python/werkzeug 0.9.6 0.10 0.10.1 0.10.4 0.11.1 0.11.2 0.11.3: Collection of various utilities for WSGI applications
 dev-python/wheel 0.24.0 0.26.0: A built-package format for Python
 dev-python/whirlpool 0.3-r1: Bindings for whirlpool hash reference implementation
-dev-python/whisper 0.9.13: Fixed size round-robin style database
+dev-python/whisper 0.9.13 0.9.15: Fixed size round-robin style database
 dev-python/whoosh 2.6.0 2.7.0: Fast, pure-Python full text indexing, search and spell checking library
 dev-python/winpdb 1.4.8 1.4.8-r1: Graphical Python debugger
 dev-python/workerpool 0.9.2-r1 0.9.4: Module for distributing jobs to a pool of worker threads
