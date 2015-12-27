@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 EHG_PROJECT="pypy"
 EHG_REPO_URI="https://bitbucket.org/pypy/pypy"
 EHG_REVISION="py3k"
-inherit check-reqs eutils mercurial multilib multiprocessing pax-utils python-any-r1 toolchain-funcs versionator
+inherit check-reqs eutils flag-o-matic mercurial multilib multiprocessing pax-utils python-any-r1 toolchain-funcs versionator
 
 DESCRIPTION="A fast, compliant alternative implementation of the Python language"
 HOMEPAGE="http://pypy.org/"
@@ -18,7 +18,7 @@ SRC_URI=""
 LICENSE="MIT"
 SLOT="0/$(get_version_component_range 1-2 ${PV})"
 KEYWORDS=""
-IUSE="bzip2 gdbm +jit low-memory ncurses sandbox shadowstack sqlite cpu_flags_x86_sse2 test tk"
+IUSE="bzip2 custom-cflags gdbm +jit low-memory ncurses sandbox shadowstack sqlite cpu_flags_x86_sse2 test tk"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	virtual/libffi:0=
@@ -94,6 +94,15 @@ src_prepare() {
 	popd > /dev/null || die
 
 	epatch_user
+}
+
+src_configure() {
+
+	# pypy is sensitive to cflags (asmgcroot/shadowstack)
+	if ! use custom-cflags; then
+		strip-all-flags
+	fi
+
 }
 
 src_compile() {
