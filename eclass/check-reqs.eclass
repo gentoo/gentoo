@@ -159,12 +159,12 @@ check-reqs_run() {
 	fi
 }
 
-# @FUNCTION: check-reqs_get_mebibytes
+# @FUNCTION: check-reqs_get_kibibytes
 # @INTERNAL
 # @DESCRIPTION:
-# Internal function that returns number in mebibytes.
-# Returns 1024 for 1G or 1048576 for 1T.
-check-reqs_get_mebibytes() {
+# Internal function that returns number in KiB.
+# Returns 1024**2 for 1G or 1024**3 for 1T.
+check-reqs_get_kibibytes() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -z ${1} ]] && die "Usage: ${FUNCNAME} [size]"
@@ -173,9 +173,10 @@ check-reqs_get_mebibytes() {
 	local size=${1%[GMT]}
 
 	case ${unit} in
-		G) echo $((1024 * size)) ;;
-		[M0-9]) echo ${size} ;;
-		T) echo $((1024 * 1024 * size)) ;;
+		G) echo $((1024 * 1024 * size)) ;;
+		M) echo $((1024 * size)) ;;
+		T) echo $((1024 * 1024 * 1024 * size)) ;;
+		[0-9]) echo $((1024 * size)) ;;
 		*)
 			die "${FUNCNAME}: Unknown unit: ${unit}"
 		;;
@@ -275,7 +276,7 @@ check-reqs_memory() {
 			actual_memory=$(echo $actual_memory | sed -e 's/^[^:=]*[:=]//' )
 	fi
 	if [[ -n ${actual_memory} ]] ; then
-		if [[ ${actual_memory} -lt $((1024 * $(check-reqs_get_mebibytes ${size}))) ]] ; then
+		if [[ ${actual_memory} -lt $(check-reqs_get_kibibytes ${size}) ]] ; then
 			eend 1
 			check-reqs_unsatisfied \
 				${size} \
@@ -300,16 +301,16 @@ check-reqs_disk() {
 
 	local path=${1}
 	local size=${2}
-	local space_megs
+	local space_kbi
 
 	check-reqs_start_phase \
 		${size} \
 		"disk space at \"${path}\""
 
-	space_megs=$(df -Pm "${1}" 2>/dev/null | awk 'FNR == 2 {print $4}')
+	space_kbi=$(df -Pk "${1}" 2>/dev/null | awk 'FNR == 2 {print $4}')
 
-	if [[ $? == 0 && -n ${space_megs} ]] ; then
-		if [[ ${space_megs} -lt $(check-reqs_get_mebibytes ${size}) ]] ; then
+	if [[ $? == 0 && -n ${space_kbi} ]] ; then
+		if [[ ${space_kbi} -lt $(check-reqs_get_kibibytes ${size}) ]] ; then
 			eend 1
 			check-reqs_unsatisfied \
 				${size} \
