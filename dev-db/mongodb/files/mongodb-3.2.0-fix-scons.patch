@@ -1,0 +1,30 @@
+--- a/SConstruct	2015-12-02 20:01:34.000000000 +0100
++++ b/SConstruct	2015-12-27 17:06:45.563739544 +0100
+@@ -1371,7 +1371,6 @@
+     env.Append( CCFLAGS=["-fno-omit-frame-pointer",
+                          "-fPIC",
+                          "-fno-strict-aliasing",
+-                         "-ggdb",
+                          "-pthread",
+                          "-Wall",
+                          "-Wsign-compare",
+@@ -1382,8 +1381,9 @@
+         if not has_option("disable-warnings-as-errors"):
+             env.Append( CCFLAGS=["-Werror"] )
+ 
+-    env.Append( CXXFLAGS=["-Wnon-virtual-dtor", "-Woverloaded-virtual"] )
+     env.Append( LINKFLAGS=["-fPIC", "-pthread"] )
++    env.Append( CXXFLAGS=os.environ['CXXFLAGS'] )
++    env.Append( LINKFLAGS=os.environ['LDFLAGS'] )
+ 
+     # SERVER-9761: Ensure early detection of missing symbols in dependent libraries at program
+     # startup.
+@@ -1398,7 +1398,7 @@
+         env.Append( SHLINKFLAGS=["-Wl,-z,now"] )
+         env.Append( LINKFLAGS=["-rdynamic"] )
+ 
+-    env.Append( LIBS=[] )
++    env.Append( LIBS=['pcre', 'pcrecpp', 'snappy', 'yaml-cpp'] )
+ 
+     #make scons colorgcc friendly
+     for key in ('HOME', 'TERM'):
