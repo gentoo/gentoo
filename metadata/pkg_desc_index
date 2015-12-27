@@ -336,6 +336,7 @@ app-arch/zpaq 6.41 6.49 6.53 7.04: Journaling incremental deduplicating archivin
 app-arch/zpaq-extras 2 3: A set of additional compression profiles for app-arch/zpaq
 app-arch/zpipe 2.01-r1: Pipe compressor/decompressor for ZPAQ
 app-backup/amanda 3.3.3 3.3.3-r1 3.3.5 3.3.7: The Advanced Maryland Automatic Network Disk Archiver
+app-backup/attic 0.16 9999: Attic is a deduplicating backup program written in Python.
 app-backup/backintime 1.0.24-r2 1.0.36-r2 1.0.40 1.1.4 1.1.8: Backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4
 app-backup/backup-manager 0.7.5 0.7.10.1-r2: Backup Manager is a command line backup tool for GNU/Linux
 app-backup/backupninja 1.0.1: lightweight, extensible meta-backup system
