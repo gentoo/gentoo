@@ -38,6 +38,8 @@
 # These checks should probably mostly work on non-Linux, and they should
 # probably degrade gracefully if they don't. Probably.
 
+if [[ ! ${_CHECK_REQS_ECLASS_} ]]; then
+
 inherit eutils
 
 # @ECLASS-VARIABLE: CHECKREQS_MEMORY
@@ -353,3 +355,6 @@ check-reqs_unsatisfied() {
 	# Internal, do not set yourself.
 	CHECKREQS_FAILED="true"
 }
+
+_CHECK_REQS_ECLASS_=1
+fi
