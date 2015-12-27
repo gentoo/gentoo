@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (27 Dec 2015)
+# Fails to build. Dead upstream. Masked for removal in 30 days.
+# Bug 541522
+dev-util/pmk
+
 # Mikle Kolyada <zlogene@gentoo.org> (26 Dec 2015)
 # Dead upstream (last activity in 2003)
 # Nothing in the tree depends on it
