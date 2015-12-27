@@ -65,7 +65,7 @@ inherit eutils
 EXPORT_FUNCTIONS pkg_setup
 case "${EAPI:-0}" in
 	0|1|2|3) ;;
-	4|5) EXPORT_FUNCTIONS pkg_pretend ;;
+	4|5|6) EXPORT_FUNCTIONS pkg_pretend ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
