@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit autotools-utils fdo-mime flag-o-matic gnome2-utils eutils
 
-DESCRIPTION="Periodic table viewer that provides detailed information on the chemical elements"
+DESCRIPTION="Periodic table viewer with detailed information on the chemical elements"
 HOMEPAGE="http://freecode.com/projects/gelemental/"
 SRC_URI="
 	http://www.kdau.com/files/${P}.tar.bz2

@@ -1,0 +1,20 @@
+From: Peter Grasch <me@bedahr.org>
+Date: Sat, 25 Jul 2015 08:45:03 +0000
+Subject: Adding OpenCV include directories to include path
+X-Git-Url: http://quickgit.kde.org/?p=simon.git&a=commitdiff&h=b4e663e5cc36511b15ef20865c723182cd3d88c9
+---
+Adding OpenCV include directories to include path
+---
+
+
+--- a/cmake/FindOpenCV.cmake
++++ b/cmake/FindOpenCV.cmake
+@@ -61,6 +61,7 @@
+ 		
+                 ## Include the standard CMake script
+                 include("${OpenCV_DIR}/OpenCVConfig.cmake")
++                include_directories(${OpenCV_INCLUDE_DIRS})
+                  
+                 ## Search for a specific version
+                 set(CVLIB_SUFFIX "${OpenCV_VERSION_MAJOR}${OpenCV_VERSION_MINOR}${OpenCV_VERSION_PATCH}")
+

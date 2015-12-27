@@ -17,12 +17,12 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-
 IUSE="test"
 
 RDEPEND="
-	dev-libs/libxml2
 	>=dev-python/pygobject-3:3[${PYTHON_USEDEP}]
-	>=media-libs/gstreamer-1.6:1.0
-	>=media-libs/gst-plugins-base-1.6:1.0
+	>=media-libs/gstreamer-${PV}:1.0[introspection]
+	>=media-libs/gst-plugins-base-${PV}:1.0[introspection]
 "
 DEPEND="${RDEPEND}
+	app-arch/xz-utils
 	virtual/pkgconfig
 "
 # XXX: unittests are not ported to 1.0 yet.

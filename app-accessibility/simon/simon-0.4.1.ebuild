@@ -51,11 +51,12 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-libdir.patch \
-		"${FILESDIR}"/${P}-linguas.patch \
-		"${FILESDIR}"/${P}-sphinx.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-libdir.patch
+	"${FILESDIR}"/${P}-linguas.patch
+	"${FILESDIR}"/${P}-sphinx.patch
+	"${FILESDIR}"/${P}-opencv-include.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
