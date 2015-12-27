@@ -108,6 +108,7 @@ check-reqs_pkg_pretend() {
 }
 
 # @FUNCTION: check-reqs_prepare
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function that checks the variables that should be defined.
 check-reqs_prepare() {
@@ -124,6 +125,7 @@ check-reqs_prepare() {
 }
 
 # @FUNCTION: check-reqs_run
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function that runs the check based on variable settings.
 check-reqs_run() {
@@ -158,6 +160,7 @@ check-reqs_run() {
 }
 
 # @FUNCTION: check-reqs_get_mebibytes
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function that returns number in mebibytes.
 # Returns 1024 for 1G or 1048576 for 1T.
@@ -180,6 +183,7 @@ check-reqs_get_mebibytes() {
 }
 
 # @FUNCTION: check-reqs_get_number
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function that returns the numerical value without the unit.
 # Returns "1" for "1G" or "150" for "150T".
@@ -203,6 +207,7 @@ check-reqs_get_number() {
 }
 
 # @FUNCTION: check-reqs_get_unit
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function that return the unit without the numerical value.
 # Returns "GiB" for "1G" or "TiB" for "150T".
@@ -224,6 +229,7 @@ check-reqs_get_unit() {
 }
 
 # @FUNCTION: check-reqs_output
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function that prints the warning and dies if required based on
 # the test results.
@@ -246,6 +252,7 @@ check-reqs_output() {
 }
 
 # @FUNCTION: check-reqs_memory
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function that checks size of RAM.
 check-reqs_memory() {
@@ -283,6 +290,7 @@ check-reqs_memory() {
 }
 
 # @FUNCTION: check-reqs_disk
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function that checks space on the harddrive.
 check-reqs_disk() {
@@ -316,6 +324,7 @@ check-reqs_disk() {
 }
 
 # @FUNCTION: check-reqs_start_phase
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function that inform about started check
 check-reqs_start_phase() {
@@ -331,6 +340,7 @@ check-reqs_start_phase() {
 }
 
 # @FUNCTION: check-reqs_unsatisfied
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function that inform about check result.
 # It has different output between pretend and setup phase,
