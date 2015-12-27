@@ -62,7 +62,7 @@ src_configure() {
 		-DUSE_QT_WEBKIT=ON
 	)
 	if use !qt5; then
-		mycmakeargs+=(-DBT_FORCE_USE_QT4=)
+		mycmakeargs+=(-DBT_FORCE_USE_QT4=ON)
 	fi
 
 	cmake-utils_src_configure
