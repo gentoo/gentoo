@@ -29,7 +29,7 @@ DOCS+=( README.md etc/example.conf etc/input.conf )
 LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
 # Here 'opengl' stands for GLX, 'egl' stands for any EGL-based output
-IUSE="+alsa archive bluray cdda +cli doc drm dvb +dvd egl +enca encode gbm
+IUSE="+alsa archive bluray cdda +cli doc drm dvb +dvd +egl +enca encode gbm
 	+iconv jack jpeg lcms +libass libav libcaca libguess libmpv lua luajit
 	openal +opengl oss pulseaudio raspberry-pi rubberband samba sdl selinux
 	test uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama +xscreensaver
