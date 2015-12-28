@@ -20,6 +20,7 @@ IUSE=""
 
 PATCHES=(
 	"${FILESDIR}"/${P}-unbundle.patch
+	"${FILESDIR}"/${P}-online.patch
 )
 
 python_prepare_all() {
@@ -29,20 +30,24 @@ python_prepare_all() {
 		tests/test_shutil.py* \
 		tests/test_sysconfig.py* || die
 
+	distutils-r1_python_prepare_all
+
 	# Broken tests
 	# 1 fails due to it being sensitive to dictionary ordering
 	# inconsistency between code and test
 	sed \
 		-e 's:test_dependency_finder:_&:g' \
-		-e 's:test_abi:_&:g' \
 		-i tests/*py || die
 
-	distutils-r1_python_prepare_all
+	# Gentoo still doesn't report correct ABI
+	sed \
+		-e 's:test_abi:_&:g' \
+		-i tests/*py || die
 }
 
 python_test() {
 	sed \
 		-e '/PIP_AVAILABLE/s:True:False:g' \
 		-i tests/*py || die
-	PYTHONHASHSEED=0 esetup.py test
+	SKIP_ONLINE=True PYTHONHASHSEED=0 esetup.py test
 }

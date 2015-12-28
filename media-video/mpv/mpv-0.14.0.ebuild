@@ -160,6 +160,9 @@ pkg_pretend() {
 src_prepare() {
 	cp "${DISTDIR}/waf-${WAF_PV}" "${S}"/waf || die
 	chmod +x "${S}"/waf || die
+
+	epatch "${FILESDIR}/${PN}-fix-include-in-tests.patch"
+	epatch "${FILESDIR}/${P}-support-GNU-__thread.patch"
 	epatch_user
 }
 
