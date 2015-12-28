@@ -13,13 +13,17 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A Java Matrix Package"
 HOMEPAGE="http://math.nist.gov/javanumerics/jama/"
-SRC_URI="http://math.nist.gov/javanumerics/${PN}/${MY_P}.tar.gz"
+SRC_URI="http://math.nist.gov/javanumerics/${PN}/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86 ~ppc ~ppc64"
 
 DEPEND=">=virtual/jdk-1.6"
 RDEPEND=">=virtual/jre-1.6"
 
 S="${WORKDIR}"
+
+java_prepare() {
+	java-pkg_clean
+}
