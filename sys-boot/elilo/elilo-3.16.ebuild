@@ -30,6 +30,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-3.16-elilo-loop.patch #299665
+
 	# The patches Debian had were merged upstream.
 	#epatch debian/patches/*.diff
 
