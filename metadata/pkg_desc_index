@@ -5174,8 +5174,8 @@ dev-perl/Bit-Vector-Minimal 1.300.0-r1: Object-oriented wrapper around vec()
 dev-perl/Boulder 1.300.0-r1: An API for hierarchical tag/value structures
 dev-perl/Business-FedEx-DirectConnect 1.10.0-r1: Interface to FedEx Ship Manager Direct
 dev-perl/Business-ISBN 2.50.0-r1: Work with ISBN as objects
-dev-perl/Business-ISBN-Data 20120719.1.0-r1 20140910.2.0: Data pack for Business::ISBN
-dev-perl/Business-ISMN 1.110.0-r1 1.130.0: International Standard Music Numbers
+dev-perl/Business-ISBN-Data 20140910.2.0: Data pack for Business::ISBN
+dev-perl/Business-ISMN 1.130.0: International Standard Music Numbers
 dev-perl/Business-ISSN 0.910.0-r1: Object and functions to work with International Standard Serial Numbers
 dev-perl/Business-Tax-VAT-Validation 1.20.0: A class for european VAT numbers validation
 dev-perl/Business-UPS 2.10.0-r1: A UPS Interface Module
