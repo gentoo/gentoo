@@ -17,6 +17,13 @@ case ${EAPI} in
 	*)	die "qt5-build.eclass: unsupported EAPI=${EAPI:-0}" ;;
 esac
 
+# @ECLASS-VARIABLE: VIRTUALX_REQUIRED
+# @DESCRIPTION:
+# For proper description see virtualx.eclass man page.
+# Here we redefine default value to be manual, if your package needs virtualx
+# for tests you should proceed with setting VIRTUALX_REQUIRED=test.
+: ${VIRTUALX_REQUIRED:=manual}
+
 [[ ${EAPI} == 5 ]] && inherit multilib
 inherit eutils flag-o-matic toolchain-funcs versionator virtualx
 
@@ -122,13 +129,6 @@ esac
 # to generate the per-package list of enabled QT_CONFIG features and macro
 # definitions, which are then merged together with all other Qt5 packages
 # installed on the system to obtain the global qconfig.{h,pri} files.
-
-# @ECLASS-VARIABLE: VIRTUALX_REQUIRED
-# @DESCRIPTION:
-# For proper description see virtualx.eclass man page.
-# Here we redefine default value to be manual, if your package needs virtualx
-# for tests you should proceed with setting VIRTUALX_REQUIRED=test.
-: ${VIRTUALX_REQUIRED:=manual}
 
 
 ######  Phase functions  ######
