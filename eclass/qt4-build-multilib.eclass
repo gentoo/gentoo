@@ -4,7 +4,7 @@
 
 # @ECLASS: qt4-build-multilib.eclass
 # @MAINTAINER:
-# Qt herd <qt@gentoo.org>
+# qt@gentoo.org
 # @AUTHOR:
 # Davide Pesavento <pesa@gentoo.org>
 # @BLURB: Eclass for Qt4 split ebuilds with multilib support.
