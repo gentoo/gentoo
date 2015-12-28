@@ -1,50 +1,45 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit autotools eutils
 
-MY_P="${PN}-2.8"
+MY_P="${PN}-2.7"
 
-DESCRIPTION="A cross-platform open source C and C++ SDK to ease the development of SOAP/XML Web services"
+DESCRIPTION="A cross-platform open source C and C++ SDK for SOAP/XML Web services"
 HOMEPAGE="http://gsoap2.sourceforge.net"
 SRC_URI="mirror://sourceforge/gsoap2/gsoap_${PV}.zip"
 
 LICENSE="GPL-2 gSOAP"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc debug examples ipv6 gnutls +ssl"
+IUSE="doc debug examples +ssl"
 
 DEPEND="app-arch/unzip
 	sys-devel/flex
-	sys-devel/bison
-	sys-libs/zlib
-	gnutls? ( net-libs/gnutls )
-	ssl? ( dev-libs/openssl )"
-RDEPEND=""
+	sys-devel/bison"
+RDEPEND="sys-libs/zlib
+	ssl? ( dev-libs/openssl:0= )"
 
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	# Fix Pre-ISO headers
+	epatch "${FILESDIR}/${PN}-2.7-fix-pre-iso-headers.patch"
 	epatch "${FILESDIR}/${PN}-2.7.10-fedora-install_soapcpp2_wsdl2h_aux.patch"
 
-	# Fix configure.in for >=automake-1.13
-	sed 's@AM_CONFIG_HEADER@AC_CONFIG_HEADERS@' -i configure.in || die
+	# causes compilation of app-emulation/virtualbox-ose[vboxwebsrv] to
+	# break (bug #320901):
+	#epatch "${FILESDIR}/${PN}-2.7.15-use_libtool.patch"
 
 	eautoreconf
 }
 
 src_configure() {
-	local myconf=
-	use ssl || myconf+="--disable-ssl "
-	use gnutls && myconf+="--enable-gnutls "
-	use ipv6 && myconf+="--enable-ipv6 "
 	econf \
-		${myconf} \
-		$(use_enable debug) \
+		$(use_enable ssl openssl) \
 		$(use_enable examples samples)
 }
 
@@ -61,10 +56,10 @@ src_install() {
 
 	dohtml changelog.html
 
-	find "${D}"/usr/ -name "*.la" -exec rm {} \;
+	prune_libtool_files --all
 
 	if use examples; then
-		rm -rf gsoap/samples/Makefile* gsoap/samples/*/Makefile* gsoap/samples/*/*.o
+		rm -rf gsoap/samples/Makefile* gsoap/samples/*/Makefile* gsoap/samples/*/*.o || die
 		insinto /usr/share/doc/${PF}/examples
 		doins -r gsoap/samples/*
 	fi
