@@ -17,6 +17,26 @@ case ${EAPI} in
 	*)	die "qt5-build.eclass: unsupported EAPI=${EAPI:-0}" ;;
 esac
 
+# @ECLASS-VARIABLE: QT5_MODULE
+# @DESCRIPTION:
+# The upstream name of the module this package belongs to. Used for
+# SRC_URI and EGIT_REPO_URI. Must be defined before inheriting the eclass.
+: ${QT5_MODULE:=${PN}}
+
+# @ECLASS-VARIABLE: QT5_TARGET_SUBDIRS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Array variable containing the source directories that should be built.
+# All paths must be relative to ${S}.
+
+# @ECLASS-VARIABLE: QT5_GENTOO_CONFIG
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Array of <useflag:feature:macro> triplets that are evaluated in src_install
+# to generate the per-package list of enabled QT_CONFIG features and macro
+# definitions, which are then merged together with all other Qt5 packages
+# installed on the system to obtain the global qconfig.{h,pri} files.
+
 # @ECLASS-VARIABLE: VIRTUALX_REQUIRED
 # @DESCRIPTION:
 # For proper description see virtualx.eclass man page.
@@ -34,12 +54,6 @@ QT5_MINOR_VERSION=$(get_version_component_range 2)
 readonly QT5_MINOR_VERSION
 
 SLOT="5"
-
-# @ECLASS-VARIABLE: QT5_MODULE
-# @DESCRIPTION:
-# The upstream name of the module this package belongs to. Used for
-# SRC_URI and EGIT_REPO_URI. Must be defined before inheriting the eclass.
-: ${QT5_MODULE:=${PN}}
 
 case ${PV} in
 	5.9999)
@@ -76,6 +90,14 @@ EGIT_REPO_URI=(
 )
 [[ ${QT5_BUILD_TYPE} == live ]] && inherit git-r3
 
+# @ECLASS-VARIABLE: QT5_BUILD_DIR
+# @DESCRIPTION:
+# Build directory for out-of-source builds.
+case ${QT5_BUILD_TYPE} in
+	live)    : ${QT5_BUILD_DIR:=${S}_build} ;;
+	release) : ${QT5_BUILD_DIR:=${S}} ;; # workaround for bug 497312
+esac
+
 IUSE="debug test"
 
 [[ ${PN} == qtwebkit ]] && RESTRICT+=" mirror" # bug 524584
@@ -92,48 +114,10 @@ RDEPEND="
 	dev-qt/qtchooser
 "
 
-EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install src_test pkg_postinst pkg_postrm
-
-
-# @ECLASS-VARIABLE: PATCHES
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Array variable containing all the patches to be applied. This variable
-# is expected to be defined in the global scope of ebuilds. Make sure to
-# specify the full path. This variable is used in src_prepare phase.
-#
-# Example:
-# @CODE
-#	PATCHES=(
-#		"${FILESDIR}/mypatch.patch"
-#		"${FILESDIR}/mypatch2.patch"
-#	)
-# @CODE
-
-# @ECLASS-VARIABLE: QT5_TARGET_SUBDIRS
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Array variable containing the source directories that should be built.
-# All paths must be relative to ${S}.
-
-# @ECLASS-VARIABLE: QT5_BUILD_DIR
-# @DESCRIPTION:
-# Build directory for out-of-source builds.
-case ${QT5_BUILD_TYPE} in
-	live)    : ${QT5_BUILD_DIR:=${S}_build} ;;
-	release) : ${QT5_BUILD_DIR:=${S}} ;; # workaround for bug 497312
-esac
-
-# @ECLASS-VARIABLE: QT5_GENTOO_CONFIG
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Array of <useflag:feature:macro> triplets that are evaluated in src_install
-# to generate the per-package list of enabled QT_CONFIG features and macro
-# definitions, which are then merged together with all other Qt5 packages
-# installed on the system to obtain the global qconfig.{h,pri} files.
-
 
 ######  Phase functions  ######
+
+EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install src_test pkg_postinst pkg_postrm
 
 # @FUNCTION: qt5-build_src_unpack
 # @DESCRIPTION:
