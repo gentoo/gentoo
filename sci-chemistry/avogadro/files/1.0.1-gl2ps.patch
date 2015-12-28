@@ -1,0 +1,39 @@
+diff --git a/avogadro/src/CMakeLists.txt b/avogadro/src/CMakeLists.txt
+index 75b6dfb..d87ac2c 100644
+--- a/avogadro/src/CMakeLists.txt
++++ b/avogadro/src/CMakeLists.txt
+@@ -45,7 +45,7 @@ endif(ENABLE_UPDATE_CHECKER)
+ FILE(GLOB projectDelegates_SRCS "projectdelegates/*.cpp")
+ set(avogadro_SRCS ${avogadro_SRCS} ${projectDelegates_SRCS})
+ # Add GL2PS to the executable
+-set(avogadro_SRCS ${avogadro_SRCS} "../gl2ps/gl2ps.c")
++#set(avogadro_SRCS ${avogadro_SRCS} "../gl2ps/gl2ps.c")
+ 
+ if( WIN32 )
+   set(avogadro_SRCS ${avogadro_SRCS} windows/avogadro.rc)
+diff --git a/avogadro/src/mainwindow.cpp b/avogadro/src/mainwindow.cpp
+index 66785fd..2933953 100644
+--- a/avogadro/src/mainwindow.cpp
++++ b/avogadro/src/mainwindow.cpp
+@@ -51,7 +51,7 @@
+ //#endif
+ 
+ // Include the GL2PS header
+-#include "../gl2ps/gl2ps.h"
++#include <gl2ps.h>
+ 
+ #include <avogadro/pluginmanager.h>
+ 
+diff --git a/libavogadro/src/CMakeLists.txt b/libavogadro/src/CMakeLists.txt
+index cce8ece..cc084fb 100644
+--- a/libavogadro/src/CMakeLists.txt
++++ b/libavogadro/src/CMakeLists.txt
+@@ -152,7 +152,7 @@ endforeach(headerFile ${libavogadro_HDRS})
+ add_library(avogadro SHARED ${libavogadro_SRCS} ${libavogadro_QM} ${pythontool_RC_SRCS})
+ set_target_properties(avogadro
+   PROPERTIES VERSION ${Avogadro_VERSION_FULL} SOVERSION 1 )
+-target_link_libraries(avogadro ${AVO_LINK_LIBRARIES})
++target_link_libraries(avogadro ${AVO_LINK_LIBRARIES} gl2ps)
+ 
+ install(TARGETS avogadro DESTINATION ${LIB_INSTALL_DIR})
+ install(FILES ${libavogadro_HDRS}
