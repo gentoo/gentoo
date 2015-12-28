@@ -68,8 +68,12 @@ COMMON_DEPEND="
 		>=media-libs/libdvdread-4.1.0
 	)
 	egl? ( media-libs/mesa[egl,wayland(-)?] )
-	enca? ( app-i18n/enca )
-	iconv? ( virtual/libiconv )
+	iconv? (
+		virtual/libiconv
+		enca? ( app-i18n/enca )
+		libguess? ( >=app-i18n/libguess-1.0 )
+		uchardet? ( dev-libs/uchardet )
+	)
 	jack? ( media-sound/jack-audio-connection-kit )
 	jpeg? ( virtual/jpeg:0 )
 	lcms? ( >=media-libs/lcms-2.6:2 )
@@ -78,7 +82,6 @@ COMMON_DEPEND="
 		virtual/ttf-fonts
 	)
 	libcaca? ( >=media-libs/libcaca-0.99_beta18 )
-	libguess? ( >=app-i18n/libguess-1.0 )
 	lua? (
 		!luajit? ( || ( =dev-lang/lua-5.1*:= =dev-lang/lua-5.2*:= ) )
 		luajit? ( dev-lang/luajit:2 )
@@ -88,7 +91,6 @@ COMMON_DEPEND="
 	rubberband? ( >=media-libs/rubberband-1.8.0 )
 	samba? ( net-fs/samba )
 	sdl? ( media-libs/libsdl2[sound,threads,video,X?,wayland?] )
-	uchardet? ( dev-libs/uchardet )
 	v4l? ( media-libs/libv4l )
 	wayland? (
 		>=dev-libs/wayland-1.6.0
