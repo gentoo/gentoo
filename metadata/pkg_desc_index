@@ -4361,7 +4361,7 @@ dev-lang/mercury-extras 11.01 11.07 11.07.1 11.07.2 13.05 13.05.1 13.05.2: Addit
 dev-lang/mlton 20130715: Standard ML optimizing compiler and libraries
 dev-lang/mmix 20131017: Donald Knuth's MMIX Assembler and Simulator
 dev-lang/moarvm 2015.01 2015.02 2015.03 2015.04 2015.05 2015.06 2015.07 2015.11 9999: A 6model-based VM for NQP and Rakudo Perl 6
-dev-lang/mono 2.10.9-r2 3.12.1 4.0.5.1 4.2.1.124 4.2.2.10: Mono runtime and class libraries, a C# compiler/interpreter
+dev-lang/mono 2.10.9-r2 3.12.1 4.0.5.1 4.2.1.124 4.2.2.10 4.2.2.10-r1: Mono runtime and class libraries, a C# compiler/interpreter
 dev-lang/mono-basic 2.10: Visual Basic .NET Runtime and Class Libraries
 dev-lang/mozart 1.4.0-r3: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 1.4.0-r1: The Mozart Standard Library
@@ -13777,7 +13777,7 @@ net-firewall/nftables 0.5-r2: Linux kernel (3.13+) firewall, NAT and packet mang
 net-firewall/nufw 2.2.22-r1: An enterprise grade authenticating firewall based on netfilter
 net-firewall/pftop 0.5 0.7 0.7-r1 0.7-r2: Pftop: curses-based utility for real-time display of active states and rule statistics for pf
 net-firewall/pglinux 2.2.4 2.3.0: Privacy oriented firewall application
-net-firewall/psad 2.2.5 2.4.1 2.4.2: Port Scanning Attack Detection daemon
+net-firewall/psad 2.2.5 2.4.1 2.4.2 2.4.3: Port Scanning Attack Detection daemon
 net-firewall/quicktables 2.3: a quick iptables script generator
 net-firewall/rtsp-conntrack 3.7: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r1: iptables firewall generator (fork of firehol)
@@ -14284,7 +14284,7 @@ net-misc/aget 0.4.1-r1: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to reduce the length of the prefix list
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
 net-misc/aiccu 2007.01.15-r5: AICCU Client to configure an IPv6 tunnel to SixXS
-net-misc/apt-cacher-ng 0.8.6 0.8.7: Yet another implementation of an HTTP proxy for Debian/Ubuntu software packages written in C++
+net-misc/apt-cacher-ng 0.8.6 0.8.7 0.8.8: Yet another implementation of an HTTP proxy for Debian/Ubuntu software packages written in C++
 net-misc/apt-proxy 1.3.0: Caching proxy for the Debian package system
 net-misc/aria2 1.15.2 1.16.3 1.16.5 1.18.0 1.18.5 1.18.7 1.18.9 1.19.0 1.19.2: A download utility with segmented downloading with BitTorrent support
 net-misc/arm 1.4.5.0-r2 1.4.5.0_p20140714-r2: A ncurses-based status monitor for Tor relays
@@ -14631,7 +14631,7 @@ net-misc/tcpsound 0.3.1-r1: Play sounds in response to network traffic
 net-misc/teamviewer 9.0.32150 10.0.41499-r1: All-In-One Solution for Remote Access and Support over the Internet
 net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 support
 net-misc/termpkg 3.3.9.1 3.3.9.1-r1: Termpkg, the Poor Man's Terminal Server
-net-misc/termtter 2.2.2: Termtter is a terminal based Twitter client
+net-misc/termtter 2.2.3: Termtter is a terminal based Twitter client
 net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
 net-misc/tigervnc 1.3.1-r1 1.3.1-r2 1.3.1-r3 1.3.1-r4 1.4.2-r1 1.4.2-r2: Remote desktop viewer display system
