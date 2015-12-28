@@ -23,3 +23,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+
+python_test() {
+	esetup.py test
+}
