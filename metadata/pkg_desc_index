@@ -9690,7 +9690,7 @@ dev-vcs/gitstats 0_pre131024 9999: Statistics generator for git
 dev-vcs/gti 9999: A silly git launcher, basically. Inspired by sl
 dev-vcs/guilt 0.32 0.34: A series of bash scripts which add a quilt-like interface to git
 dev-vcs/hg-fast-export 20140328 20140706 20150816: mercurial to git converter using git-fast-import
-dev-vcs/hg-git 0.7.0 0.8.0 0.8.1 0.8.2: push to and pull from a Git repository using Mercurial
+dev-vcs/hg-git 0.7.0 0.8.2 0.8.3: push to and pull from a Git repository using Mercurial
 dev-vcs/hgsubversion 1.4 1.8.2 1.8.3 9999: hgsubversion is a Mercurial extension for working with Subversion repositories
 dev-vcs/hgsvn 0.2.3-r1: A set of scripts to work locally on Subversion checkouts using Mercurial
 dev-vcs/hgview 1.7.1-r1 1.8.0 1.8.1 1.8.2: A Mercurial interactive history viewer
@@ -17379,7 +17379,7 @@ www-apache/mod_umask 0.1.0: Sets the Unix umask of the Apache2 webserver process
 www-apache/mod_vdbh 1.0.3-r1: An Apache2 module for mass virtual hosting using a MySQL database
 www-apache/mod_vhost_ldap 2.4.0: Store and configure Apache virtual hosts using LDAP
 www-apache/mod_whatkilledus 2.01: Debug segmentation faults in Apache threads
-www-apache/mod_wsgi 4.4.9 4.4.10 4.4.13: An Apache2 module for running Python WSGI applications
+www-apache/mod_wsgi 4.4.9 4.4.13 4.4.21: An Apache2 module for running Python WSGI applications
 www-apache/mod_xml2enc 1.0.3: An Apache2 module to provide libxml2 encoding
 www-apache/mod_xsendfile 1.0_beta1: Apache2 module that processes X-SENDFILE headers registered by the original output handler
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
