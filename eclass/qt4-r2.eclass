@@ -4,7 +4,7 @@
 
 # @ECLASS: qt4-r2.eclass
 # @MAINTAINER:
-# Qt herd <qt@gentoo.org>
+# qt@gentoo.org
 # @BLURB: Eclass for Qt4-based packages, second edition.
 # @DESCRIPTION:
 # This eclass contains various functions that may be useful when
