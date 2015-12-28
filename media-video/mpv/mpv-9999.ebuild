@@ -141,9 +141,9 @@ pkg_pretend() {
 	fi
 
 	if use libav; then
-		einfo "You have enabled media-video/libav instead of media-video/ffmpeg."
-		einfo "Upstream recommends media-video/ffmpeg, as some functionality"
-		einfo "is not provided by media-video/libav."
+		elog "You have enabled media-video/libav instead of media-video/ffmpeg."
+		elog "Upstream recommends media-video/ffmpeg, as some functionality"
+		elog "is not provided by media-video/libav."
 	fi
 
 	einfo "mpv optionally supports many different audio and video formats."
