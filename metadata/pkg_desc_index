@@ -5963,7 +5963,6 @@ dev-perl/Parallel-Prefork 0.140.0-r1: A simple prefork server framework
 dev-perl/Params-Classify 0.13.0-r1: Argument type classification
 dev-perl/Params-Util 1.60.0-r1: Utility functions to aid in parameter checking
 dev-perl/Params-Validate 1.70.0-r1 1.80.0: A module to provide a flexible system for validation method/function call parameters
-dev-perl/Parse-CPAN-Meta 1.441.700: Parse META.yml and META.json CPAN metadata files
 dev-perl/Parse-ErrorString-Perl 0.190.0-r1: Parse error messages from the perl interpreter
 dev-perl/Parse-ExuberantCTags 1.20.0-r1: Efficiently parse exuberant ctags files
 dev-perl/Parse-RecDescent 1.967.9-r1: Parse::RecDescent - generate recursive-descent parsers
