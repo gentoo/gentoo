@@ -9560,7 +9560,7 @@ dev-util/ragel 6.7-r1 6.8 6.9: Compiles finite state machines from regular langu
 dev-util/rats 2.1-r2 2.3: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 0.7.4 0.7.5: Command line tools for use with Review Board
 dev-util/re2c 0.13.5-r1 0.13.6 0.13.7.5 0.14.2 0.14.3 0.15.2 0.15.3: tool for generating C-based recognizers from regular expressions
-dev-util/rebar 2.3.1 2.4.0 2.5.0 2.5.1: A sophisticated build-tool for Erlang projects that follows OTP principles
+dev-util/rebar 2.3.1 2.4.0 2.5.0 2.5.1 2.6.0: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/rec 1.6: Reverse Engineering Compiler
 dev-util/redet 8.26: A regular expression development and execution tool
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
@@ -13914,7 +13914,7 @@ net-irc/eggdrop 1.6.21-r1: An IRC bot extensible with C or TCL
 net-irc/eiwic 1.1.4: A modular IRC bot written in C
 net-irc/emech 3.0.3-r1: UNIX compatible IRC bot programmed in the C language
 net-irc/epic4 2.10.1: Epic4 IRC Client
-net-irc/epic5 1.1.10 1.1.10-r1: Epic5 IRC Client
+net-irc/epic5 1.1.10-r1: Epic5 IRC Client
 net-irc/hexchat 2.10.2 2.10.2-r1 9999: Graphical IRC client based on XChat
 net-irc/ii 1.6 1.7: A minimalist FIFO and filesystem-based IRC client
 net-irc/iip 1.2: Proxy server for encrypted anonymous IRC-like network
