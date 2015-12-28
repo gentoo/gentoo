@@ -6722,6 +6722,8 @@ sci-geosciences/merkaartor:libproxy - Use net-libs/libproxy for getting the HTTP
 sci-geosciences/merkaartor:qrcode - Enable QR code scanning with media-gfx/zbar
 sci-geosciences/osm2pgsql:pbf - Add support for importing the new "Protocolbuffer Binary Format"
 sci-geosciences/qgis:bundled-libs - Use internal copy of x11-libs/qwtpolar
+sci-geosciences/qgis:grass - Add support for sci-geosciences/grass
+sci-geosciences/qgis:mapserver - Determines whether mapserver should be built
 sci-geosciences/qgis:spatialite - Enable Spatial DBMS over sqlite dev-db/spatialite
 sci-geosciences/qlandkartegt:dmtx - Enable libdmtx support for summarizing waypoints as 2D barcode
 sci-geosciences/qlandkartegt:gpsbabel - Enable support for wide range of geodata file formats
