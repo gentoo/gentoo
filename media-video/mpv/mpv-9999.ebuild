@@ -152,7 +152,7 @@ pkg_pretend() {
 
 src_prepare() {
 	cp "${DISTDIR}/waf-${WAF_PV}" "${S}"/waf || die
-	chmod 0755 "${S}"/waf || die
+	chmod +x "${S}"/waf || die
 	epatch_user
 }
 
