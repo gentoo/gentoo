@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/503838
+http://gcc.gnu.org/PR60465
+https://sourceware.org/ml/libc-alpha/2015-12/msg00556.html
+https://trofi.github.io/posts/189-glibc-on-ia64-or-how-relocations-bootstrap.html
+
+newer versions of gcc generate relocations in the elf_get_dynamic_info func
+which glibc relies on to populate some info structs.  those structs are then
+used by ldso to process relocations in itself.  glibc requires that there are
+no relocations until that point (*after* elf_get_dynamic_info), so we end up
+crashing during elf_get_dynamic_info because the relocation has not yet been
+processed.
+
+this hack shuffles the code in a way that tricks gcc into not generating the
+relocation.  we need to figure out something better for upstream.
+
+--- a/elf/get-dynamic-info.h
++++ b/elf/get-dynamic-info.h
+@@ -66,8 +66,12 @@ elf_get_dynamic_info (struct link_map *l, ElfW(Dyn) *temp)
+ 	info[DT_VALTAGIDX (dyn->d_tag) + DT_NUM + DT_THISPROCNUM
+ 	     + DT_VERSIONTAGNUM + DT_EXTRANUM] = dyn;
+       else if ((d_tag_utype) DT_ADDRTAGIDX (dyn->d_tag) < DT_ADDRNUM)
+-	info[DT_ADDRTAGIDX (dyn->d_tag) + DT_NUM + DT_THISPROCNUM
+-	     + DT_VERSIONTAGNUM + DT_EXTRANUM + DT_VALNUM] = dyn;
++	{
++	  d_tag_utype i =
++	      DT_ADDRTAGIDX (dyn->d_tag) + DT_NUM + DT_THISPROCNUM
++	      + DT_VERSIONTAGNUM + DT_EXTRANUM + DT_VALNUM;
++	  info[i] = dyn;
++	}
+       ++dyn;
+     }
+ 
