@@ -1,0 +1,17 @@
+commit 867334395765ae7d2765e0834f9fd3dd5de53cab
+Author: Ilya Tumaykin <itumaykin@gmail.com>
+Date:   Tue Dec 22 17:10:12 2015 +0300
+
+    tests: fix #include
+
+diff --git a/test/gl_video.c b/test/gl_video.c
+index 253ab35..97fee94 100644
+--- a/test/gl_video.c
++++ b/test/gl_video.c
+@@ -1,5 +1,5 @@
+ #include "test_helpers.h"
+-#include "video/out/gl_video.h"
++#include "video/out/opengl/video.h"
+ 
+ static void test_scale_ambient_lux_limits(void **state) {
+     float x;
