@@ -30,9 +30,9 @@ LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
 # Here 'opengl' stands for GLX, 'egl' stands for any EGL-based output
 IUSE="+alsa archive bluray cdda +cli doc drm dvb +dvd egl +enca encode +iconv
-jack jpeg lcms +libass libav libcaca libguess libmpv lua luajit openal +opengl
-oss pulseaudio pvr raspberry-pi rubberband samba sdl selinux test uchardet v4l
-vaapi vdpau vf-dlopen wayland +X xinerama +xscreensaver xv"
+	jack jpeg lcms +libass libav libcaca libguess libmpv lua luajit openal
+	+opengl oss pulseaudio pvr raspberry-pi rubberband samba sdl selinux test
+	uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama +xscreensaver xv"
 
 REQUIRED_USE="
 	|| ( cli libmpv )
