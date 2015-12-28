@@ -5167,9 +5167,9 @@ dev-perl/Benchmark-Timer 0.710.700: Perl code benchmarking tool
 dev-perl/BerkeleyDB 0.540.0 0.550.0: This module provides Berkeley DB interface for Perl
 dev-perl/Bio-ASN1-EntrezGene 1.91.0-r1: Regular expression-based Perl Parser for NCBI Entrez Gene
 dev-perl/Bio-Das 1.170.0-r1: Interface to Distributed Annotation System
-dev-perl/Bio-Graphics 2.370.0-r1 2.390.0: Generate images from Bio::Seq objects for visualization purposes
-dev-perl/Bio-SamTools 1.390.0-r1 1.410.0: Read SAM/BAM database files
-dev-perl/Bit-Vector 7.200.0-r1 7.300.0 7.400.0: Efficient bit vector, set of integers and big int math library
+dev-perl/Bio-Graphics 2.390.0: Generate images from Bio::Seq objects for visualization purposes
+dev-perl/Bio-SamTools 1.410.0 1.420.0: Read SAM/BAM database files
+dev-perl/Bit-Vector 7.200.0-r1 7.400.0: Efficient bit vector, set of integers and big int math library
 dev-perl/Bit-Vector-Minimal 1.300.0-r1: Object-oriented wrapper around vec()
 dev-perl/Boulder 1.300.0-r1: An API for hierarchical tag/value structures
 dev-perl/Business-FedEx-DirectConnect 1.10.0-r1: Interface to FedEx Ship Manager Direct
