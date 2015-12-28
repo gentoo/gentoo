@@ -29,7 +29,8 @@ RDEPEND="
 		dev-python/sip[${PYTHON_USEDEP}]
 	)"
 DEPEND="${RDEPEND}
-	dev-cpp/eigen:2"
+	virtual/pkgconfig
+	dev-cpp/eigen"
 
 # https://sourceforge.net/p/avogadro/bugs/653/
 RESTRICT="test"
