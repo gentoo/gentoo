@@ -12556,7 +12556,7 @@ media-plugins/kipi-plugins 4.4.0 4.12.0 4.14.0: Plugins for the KDE Image Plugin
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.0.1 2.1.0: A libvisual graphical music visualization plugin similar to milkdrop
-media-plugins/live 2012.01.07 2012.09.13 2013.02.11 2015.08.07 2015.10.12 2015.10.29 2015.11.09: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
+media-plugins/live 2012.01.07 2012.09.13 2013.02.11 2015.08.07 2015.10.12 2015.10.29 2015.11.09 2015.12.22: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
 media-plugins/mcp-plugins 0.4.0 0.4.0-r1: MCP ladspa plugins package. Includes moogvcf, phaser & chorus
 media-plugins/mda-lv2 1.0.0 1.2.2: LV2 port of the MDA plugins by Paul Kellett
 media-plugins/mediastreamer-amr 0.0.1: mediastreamer plugin: add AMR Narrow Band support
@@ -13268,7 +13268,7 @@ media-video/mjpegtools 2.1.0-r2: Tools for MJPEG video
 media-video/mjpg-streamer 0_pre20120421 0_pre20120621 0_pre20120621-r1: MJPG-streamer takes JPGs from Linux-UVC compatible webcams
 media-video/mkclean 0.8.6-r1 0.8.7: mkclean is a command line tool to clean and optimize Matroska files
 media-video/mkvalidator 0.3.7-r1 0.4.0 0.4.1 0.4.2 0.5.0: mkvalidator is a command line tool to verify Matroska files for spec conformance
-media-video/mkvtoolnix 6.6.0 8.2.0-r1 8.3.0 8.4.0 8.5.0 8.5.1 8.5.2 8.6.1: Tools to create, alter, and inspect Matroska files
+media-video/mkvtoolnix 8.5.2 8.6.1: Tools to create, alter, and inspect Matroska files
 media-video/motion 3.2.12-r2 3.2.12-r3: A software motion detector
 media-video/motiontrack 0.1.3: A set of tools that detect motion between two images
 media-video/movit 1.1 1.1.1 1.1.2 1.1.3 1.2.0: Modern Video Toolkit
@@ -17524,7 +17524,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.2-r1 3.3-r1: a free, open source web browser
 www-client/opera 12.16_p1860-r1 33.0.1990.115 34.0.2036.25: A fast and secure web browser
 www-client/opera-beta 34.0.2036.24 35.0.2066.10: A fast and secure web browser
-www-client/opera-developer 35.0.2064.0 36.0.2072.0: A fast and secure web browser
+www-client/opera-developer 35.0.2064.0 36.0.2072.0 36.0.2079.0: A fast and secure web browser
 www-client/otter 0.9.07 0.9.08 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.11.1 9999: Command line interface to (Gentoo) Bugzilla
@@ -17535,7 +17535,7 @@ www-client/rekonq 2.4.2-r1: A browser based on qtwebkit
 www-client/ripe-atlas-cousteau 1.0.6: A Python wrapper around the RIPE Atlas API
 www-client/seamonkey 2.38 2.39: Seamonkey Web Browser
 www-client/seamonkey-bin 2.38 2.39: Mozilla Application Suite - web browser, email, HTML editor, IRC
-www-client/surf 0.6-r1 0.6-r2 9999: a simple web browser based on WebKit/GTK+
+www-client/surf 0.6-r1 0.6-r2 0.7 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/uzbl 2012.05.14 2012.05.14-r1 9999: Web interface tools which adhere to the unix philosophy.
