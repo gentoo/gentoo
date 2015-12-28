@@ -96,7 +96,8 @@ src_configure() {
 		myeconfargs+=( $(use_enable luajit) )
 	fi
 
-	LIBS+="-lrt -lnuma"
+# this should be used when pf_ring use flag support will be added
+# 	LIBS+="-lrt -lnuma"
 
 	econf LIBS="${LIBS}" ${myeconfargs[@]}
 }
