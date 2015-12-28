@@ -22,12 +22,16 @@ DEPEND="${PYTHON_DEPS}
 	dev-python/cliapp[${PYTHON_USEDEP}]
 	dev-python/fuse-python[${PYTHON_USEDEP}]
 	dev-python/larch[${PYTHON_USEDEP}]
-	>dev-python/paramiko-1.13.0[${PYTHON_USEDEP}]
+	dev-python/paramiko[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/tracing[${PYTHON_USEDEP}]
 	dev-python/ttystatus[${PYTHON_USEDEP}]
 	"
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	epatch "${FILESDIR}/${P}-obnamlib-sftp-Add-prefetch-size-argument.patch"
+}
 
 src_compile() {
 	addwrite /proc/self/comm

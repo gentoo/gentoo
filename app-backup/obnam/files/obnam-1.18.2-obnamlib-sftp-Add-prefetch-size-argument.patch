@@ -1,0 +1,31 @@
+From 738e9291ed15980bdac568fc5f9507a43897ba52 Mon Sep 17 00:00:00 2001
+From: Kyle Manna <kyle@kylemanna.com>
+Date: Fri, 6 Nov 2015 08:12:50 -0800
+Subject: [PATCH] obnamlib: sftp: Add prefetch size argument
+
+Paramiko made this argument required in v1.16.  Details at
+https://github.com/paramiko/paramiko/commit/49072f3537a8981e9d448c22481a1d2b92c03643
+
+Attempt to fetch the entire file.  I'm unsure if this is the original
+intent.  If the entire file isn't to be fetched, then the prefetch() is
+probably not needed.
+---
+ obnamlib/plugins/sftp_plugin.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/obnamlib/plugins/sftp_plugin.py b/obnamlib/plugins/sftp_plugin.py
+index c4d5c2f..a5bc72b 100644
+--- a/obnamlib/plugins/sftp_plugin.py
++++ b/obnamlib/plugins/sftp_plugin.py
+@@ -555,7 +555,7 @@ class SftpFS(obnamlib.VirtualFileSystem):
+     def cat(self, pathname):
+         self._delay()
+         f = self.open(pathname, 'rb')
+-        f.prefetch()
++        f.prefetch(self.lstat(pathname).st_size)
+         chunks = []
+         while True:
+             chunk = f.read(self.chunk_size)
+-- 
+2.6.2
+
