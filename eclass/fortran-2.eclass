@@ -77,6 +77,7 @@ for _f_use in ${FORTRAN_NEEDED}; do
 			;;
 	esac
 done
+unset _f_use
 
 # @FUNCTION: fortran_int64_abi_fflags
 # @DESCRIPTION: Return the Fortran compiler flag to enable 64 bit integers for
