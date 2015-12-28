@@ -45,9 +45,9 @@ RDEPEND="
 	fontconfig? ( media-libs/fontconfig )
 	fribidi? ( dev-libs/fribidi )
 	gif? ( media-libs/giflib )
-	glib? ( dev-libs/glib )
+	glib? ( dev-libs/glib:2= )
 	gnutls? ( net-libs/gnutls )
-	!gnutls? ( ssl? ( dev-libs/openssl ) )
+	!gnutls? ( ssl? ( dev-libs/openssl:0= ) )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
@@ -56,7 +56,7 @@ RDEPEND="
 	ibus? ( app-i18n/ibus )
 	jpeg2k? ( media-libs/openjpeg:0 )
 	!oldlua? ( >=dev-lang/luajit-2.0.0 )
-	oldlua? ( dev-lang/lua )
+	oldlua? ( dev-lang/lua:* )
 	physics? ( >=sci-physics/bullet-2.80 )
 	pixman? ( x11-libs/pixman )
 	png? ( media-libs/libpng:0= )
@@ -68,7 +68,7 @@ RDEPEND="
 	)
 	sound? ( media-libs/libsndfile )
 	systemd? ( sys-apps/systemd )
-	tiff? ( media-libs/tiff )
+	tiff? ( media-libs/tiff:0= )
 	tslib? ( x11-libs/tslib )
 	wayland? (
 		>=dev-libs/wayland-1.3.0
@@ -108,7 +108,7 @@ RDEPEND="
 	sys-apps/dbus
 	>=sys-apps/util-linux-2.20.0
 	sys-libs/zlib
-	virtual/jpeg
+	virtual/jpeg:0=
 
 	!dev-libs/ecore
 	!dev-libs/edbus
