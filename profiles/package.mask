@@ -272,11 +272,6 @@ app-eselect/eselect-esd
 # Dead for years, see bug #248489. Removal in a month.
 dev-tex/latex-unicode
 
-# Patrice Clement <monsieurp@gentoo.org> (07 Nov 2015)
-# Duplicate package since it already exists as virtual/perl-Parse-CPAN-meta.
-# Masked for removal in 30 days.
-dev-perl/Parse-CPAN-Meta
-
 # Michał Górny <mgorny@gentoo.org> (30 Oct 2015)
 # Uses unsafe ioctls that could result in data corruption. Upstream
 # is working on replacing them in the wip/dedup-syscall branch.
