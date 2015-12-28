@@ -14,23 +14,32 @@ SRC_URI="https://github.com/jline/${PN}/archive/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
-CDEPEND="dev-java/jansi:0
+CDEPEND="
+	dev-java/jansi:0
 	dev-java/jansi-native:0"
 
-DEPEND="${CDEPEND}
-	>=virtual/jdk-1.6
-	test? ( dev-java/junit:4 )"
+DEPEND="
+	test? (
+		dev-java/junit:4
+	)
+	${CDEPEND}
+	>=virtual/jdk-1.6"
 
-RDEPEND="${CDEPEND}
+RDEPEND="
+	${CDEPEND}
 	>=virtual/jre-1.6"
 
 S="${WORKDIR}/${PN}2-${P}"
 
 JAVA_SRC_DIR="src/main/java"
-JAVA_GENTOO_CLASSPATH="jansi,jansi-native"
+
+JAVA_GENTOO_CLASSPATH="
+	jansi
+	jansi-native
+"
 
 java_prepare() {
 	# Easier to use java-pkg-simple.
