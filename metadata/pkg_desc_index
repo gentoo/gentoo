@@ -5159,11 +5159,11 @@ dev-perl/B-Hooks-EndOfScope 0.120.0-r1 0.150.0: Execute code after a scope finis
 dev-perl/B-Hooks-OP-Check 0.190.0-r1: Wrap OP check callbacks
 dev-perl/B-Hooks-Parser 0.160.0: Interface to perls parser variables
 dev-perl/B-Keywords 1.130.0-r1 1.140.0 1.150.0: Lists of reserved barewords and symbol names
-dev-perl/B-OPCheck 0.290.0-r1 0.300.0: PL_check hacks using Perl callbacks
-dev-perl/B-Utils 0.260.0 0.270.0: Helper functions for op tree manipulation
+dev-perl/B-OPCheck 0.300.0: PL_check hacks using Perl callbacks
+dev-perl/B-Utils 0.270.0: Helper functions for op tree manipulation
 dev-perl/BSD-Resource 1.290.700-r1 1.290.800: Perl module for BSD process resource limit and priority functions
 dev-perl/BZ-Client 1.72.0: A client for the Bugzilla web services API.
-dev-perl/Benchmark-Timer 0.710.600 0.710.700: Perl code benchmarking tool
+dev-perl/Benchmark-Timer 0.710.700: Perl code benchmarking tool
 dev-perl/BerkeleyDB 0.540.0 0.550.0: This module provides Berkeley DB interface for Perl
 dev-perl/Bio-ASN1-EntrezGene 1.91.0-r1: Regular expression-based Perl Parser for NCBI Entrez Gene
 dev-perl/Bio-Das 1.170.0-r1: Interface to Distributed Annotation System
