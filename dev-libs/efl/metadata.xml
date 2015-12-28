@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>enlightenment</herd>
-<use>
-	<flag name="bmp">Enable WBMP image loader.</flag>
-	<flag name="drm">Enable DRM engine.</flag>
-	<flag name="eet">Enable Eet image loader.</flag>
-	<flag name="egl">Enable EGL rendering.</flag>
-	<flag name="fribidi">Enable bidirectional text support.</flag>
-	<flag name="gles">Enable the OpenGL ES GL implementation.</flag>
-	<flag name="glib">Enable <pkg>dev-libs/glib</pkg> support.</flag>
-	<flag name="harfbuzz">Enable complex text shaping and layout support.</flag>
-	<flag name="ibus">Enable Intelligent Input Bus.</flag>
-	<flag name="ico">Enable Ico image loader.</flag>
-	<flag name="oldlua">USE <pkg>dev-lang/lua</pkg> instead of <pkg>dev-lang/luajit</pkg></flag>
-	<flag name="physics">Enable Bullet physics effects and support.</flag>
-	<flag name="pixman">Enable PixMan for software rendering.</flag>
-	<flag name="ppm">Enable PMAPS image loader.</flag>
-	<flag name="psd">Enable PSD image loader.</flag>
-	<flag name="scim">Enable Smart Common Input Method.</flag>
-	<flag name="tga">Enable Tga image loader.</flag>
-	<flag name="tslib">Enable <pkg>x11-libs/tslib</pkg> for touchscreen events.</flag>
-	<flag name="v4l2">Enable Video4Linux2 support.</flag>
-	<flag name='valgrind'>Enable usage of <pkg>dev-util/valgrind</pkg> in debug</flag>
-	<flag name="webp">Enable WebP image loader.</flag>
-	<flag name="xim">Enable X Input Method.</flag>
-</use>
+	<herd>enlightenment</herd>
+	<use>
+		<flag name="bmp">Enable WBMP image loader.</flag>
+		<flag name="drm">Enable DRM engine.</flag>
+		<flag name="eet">Enable Eet image loader.</flag>
+		<flag name="egl">Enable EGL rendering.</flag>
+		<flag name="fribidi">Enable bidirectional text support.</flag>
+		<flag name="gles">Enable the OpenGL ES GL implementation.</flag>
+		<flag name="glib">Enable <pkg>dev-libs/glib</pkg> support.</flag>
+		<flag name="harfbuzz">Enable complex text shaping and layout support.</flag>
+		<flag name="ibus">Enable Intelligent Input Bus.</flag>
+		<flag name="ico">Enable Ico image loader.</flag>
+		<flag name="oldlua">USE <pkg>dev-lang/lua</pkg> instead of <pkg>dev-lang/luajit</pkg></flag>
+		<flag name="physics">Enable Bullet physics effects and support.</flag>
+		<flag name="pixman">Enable PixMan for software rendering.</flag>
+		<flag name="ppm">Enable PMAPS image loader.</flag>
+		<flag name="psd">Enable PSD image loader.</flag>
+		<flag name="scim">Enable Smart Common Input Method.</flag>
+		<flag name="tga">Enable Tga image loader.</flag>
+		<flag name="tslib">Enable <pkg>x11-libs/tslib</pkg> for touchscreen events.</flag>
+		<flag name="v4l2">Enable Video4Linux2 support.</flag>
+		<flag name="valgrind">Enable usage of <pkg>dev-util/valgrind</pkg> in debug</flag>
+		<flag name="webp">Enable WebP image loader.</flag>
+		<flag name="xim">Enable X Input Method.</flag>
+	</use>
 </pkgmetadata>
