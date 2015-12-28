@@ -7274,7 +7274,7 @@ dev-python/mockldap 0.2.3 0.2.5 0.2.6: A simple mock implementation of python-ld
 dev-python/mongoengine 0.8.3: A Python Object-Document-Mapper for working with MongoDB
 dev-python/monotonic 0.2 0.3 0.4: An implementation of time.monotonic() for Python 2 & < 3.3
 dev-python/morbid 0.8.7.3 0.8.7.3-r1: A Twisted-based publish/subscribe messaging server that uses the STOMP protocol
-dev-python/more-itertools 2.2: More routines for operating on iterables, beyond itertools
+dev-python/more-itertools 2.2 2.2-r1: More routines for operating on iterables, beyond itertools
 dev-python/moto 0.3.8 0.4.3 0.4.8: Mock library for boto
 dev-python/mox 0.5.3-r1: A mock object framework for Python, loosely based on EasyMock for Java
 dev-python/mox3 0.7.0 0.7.0-r1 0.10.0 0.12.0: Mock object framework for Python
@@ -7847,7 +7847,7 @@ dev-python/sepolgen 1.2.1-r1 1.2.2 9999: SELinux policy generation library
 dev-python/serpent 1.7 1.9 1.10 1.11: A simple serialization library based on ast.literal_eval
 dev-python/service_identity 14.0.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.9: Allow customization of the process title
-dev-python/setuptools 18.4 18.5 18.6.1 18.7 18.7.1 18.8 18.8.1 19.1.1 9999: a collection of extensions to Distutils
+dev-python/setuptools 18.4 18.5 18.6.1 18.7 18.7.1 18.8 18.8.1 19.1.1 19.2 9999: a collection of extensions to Distutils
 dev-python/setuptools-git 1.0 1.1: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.8.0 1.9.0 1.10.0 1.10.1: package to manage versions by scm tags via setuptools
