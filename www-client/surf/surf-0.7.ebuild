@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ SRC_URI="http://dl.suckless.org/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 COMMON_DEPEND="
 	dev-libs/glib:2
@@ -29,6 +29,10 @@ RDEPEND="
 	${COMMON_DEPEND}
 	x11-apps/xprop
 	x11-misc/dmenu
+	!savedconfig? (
+		net-misc/curl
+		x11-terms/st
+	)
 "
 
 pkg_setup() {
@@ -45,9 +49,12 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.patch
+	epatch "${FILESDIR}"/${PN}-0.7-gentoo.patch
+
 	epatch_user
+
 	restore_config config.h
+
 	tc-export CC PKG_CONFIG
 }
 
