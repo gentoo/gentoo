@@ -1,5 +1,5 @@
---- supertux.desktop.orig	2010-11-07 23:29:26.058571005 -0500
-+++ supertux.desktop	2010-11-07 23:30:09.457350053 -0500
+--- supertux.desktop.orig
++++ supertux.desktop
 @@ -1,7 +1,6 @@
  [Desktop Entry]
  Type=Application

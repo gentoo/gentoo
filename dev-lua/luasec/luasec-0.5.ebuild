@@ -12,7 +12,7 @@ SRC_URI="https://github.com/brunoos/luasec/archive/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm ~x86"
+KEYWORDS="amd64 arm x86"
 IUSE=""
 
 RDEPEND="

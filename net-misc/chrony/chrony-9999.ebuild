@@ -96,7 +96,7 @@ src_install() {
 
 	doinfo chrony.info*
 
-	newinitd "${FILESDIR}"/chronyd.init chronyd
+	newinitd "${FILESDIR}"/chronyd.init-r1 chronyd
 	newconfd "${FILESDIR}"/chronyd.conf chronyd
 
 	insinto /etc/${PN}

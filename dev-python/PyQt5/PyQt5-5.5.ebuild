@@ -29,6 +29,8 @@ KEYWORDS="amd64 arm ~x86"
 IUSE="dbus debug declarative designer doc examples gles2 gui help multimedia
 	network opengl positioning printsupport sensors serialport sql svg
 	testlib webchannel webkit websockets widgets x11extras xmlpatterns"
+
+# The requirements below were extracted from configure.py
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	positioning? ( gui )

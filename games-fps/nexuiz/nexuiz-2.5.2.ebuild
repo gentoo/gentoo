@@ -22,7 +22,7 @@ IUSE="alsa dedicated maps opengl sdl"
 UIRDEPEND="media-libs/libogg
 	media-libs/libvorbis
 	media-libs/libtheora
-	>=media-libs/libpng-1.4
+	>=media-libs/libpng-1.4:0
 	media-libs/libmodplug
 	x11-libs/libX11
 	x11-libs/libXau
@@ -38,7 +38,7 @@ UIDEPEND="x11-proto/xextproto
 	x11-proto/xf86dgaproto
 	x11-proto/xf86vidmodeproto
 	x11-proto/xproto"
-RDEPEND="virtual/jpeg
+RDEPEND="virtual/jpeg:0
 	net-misc/curl
 	opengl? ( ${UIRDEPEND} )
 	!dedicated? ( !opengl? ( ${UIRDEPEND} ) )"

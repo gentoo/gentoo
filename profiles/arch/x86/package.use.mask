@@ -6,10 +6,9 @@
 
 # Ian Delaney <idella4@gentoo.org> (02 Dec 2015)
 # mask revdeps of xen that emply a hypervisor in arch x86
-app-emulation/xen-pvgrub -abi_x86_32
-app-emulation/libvirt -abi_x86_32
-sys-cluster/nova -abi_x86_32
-app-emulation/ganeti -abi_x86_32
+app-emulation/libvirt xen
+sys-cluster/nova xen
+app-emulation/ganeti xen
 
 # Nathan Phillip Brink <binki@gentoo.org> (26 Sep 2015)
 # git useflag requires dev-libs/libgit2 which few arches support

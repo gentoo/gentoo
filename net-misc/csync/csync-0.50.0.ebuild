@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,6 +29,8 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	cmake-utils_src_prepare
 
+	sed -e "s/__FUNCTION__/__func__/" -i \
+		src/csync_log.h tests/csync_tests/check_csync_log.c || die
 	# proper docdir
 	sed -e "s:/doc/${PN}:/doc/${PF}:" \
 		-i doc/CMakeLists.txt || die

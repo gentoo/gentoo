@@ -1,0 +1,44 @@
+From fe6b9c7b2511ba5ebc15542b0b7280c55e17ffa4 Mon Sep 17 00:00:00 2001
+From: Georgy Kirichenko <kirichenkoga@gmail.com>
+Date: Fri, 4 Dec 2015 14:00:36 -0500
+Subject: [PATCH] [createaccount] Fix wrongly set username on a service instead
+ of account
+
+BUG: 354949
+FIXED-IN: 15.12.0
+---
+ src/jobs/createaccount.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/jobs/createaccount.cpp b/src/jobs/createaccount.cpp
+index b55264b..22aff1b 100644
+--- a/src/jobs/createaccount.cpp
++++ b/src/jobs/createaccount.cpp
+@@ -141,8 +141,8 @@ void CreateAccount::pluginFinished(const QString &screenName, const QString &sec
+ 
+     m_done = true;
+ 
+-    m_identity->storeCredentials();
+     connect(m_identity, &SignOn::Identity::credentialsStored, m_identity, &SignOn::Identity::queryInfo);
++    m_identity->storeCredentials();
+ }
+ 
+ void CreateAccount::pluginError(const QString &error)
+@@ -177,12 +177,12 @@ void CreateAccount::info(const SignOn::IdentityInfo &info)
+         return;
+     }
+ 
++    m_account->selectService();
++
+     if (m_account->displayName().isEmpty()) {
+         m_account->setDisplayName(info.userName());
+     }
+     m_account->setValue("username", info.userName());
+-
+-    m_account->selectService();
+     m_account->setCredentialsId(info.id());
+ 
+     Accounts::AuthData authData = m_accInfo->authData();
+-- 
+2.4.10
+

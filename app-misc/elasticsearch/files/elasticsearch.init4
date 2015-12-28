@@ -67,7 +67,7 @@ start() {
 	checkpath -d -o "${ES_USER}" -m750 "$(dirname "${PIDFILE}")"
 	checkpath -d -o "${ES_USER}" -m750 "${ES_BASE_PATH}"
 	checkpath -d -o "${ES_USER}" -m750 "${ES_LOG_PATH}"
-	
+
 	start-stop-daemon --start \
 		--background \
 		--chdir "${ES_BASE_PATH}" \

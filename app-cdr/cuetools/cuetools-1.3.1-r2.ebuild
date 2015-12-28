@@ -8,7 +8,8 @@ inherit eutils
 
 DESCRIPTION="Utilities to manipulate and convert cue and toc files"
 HOMEPAGE="http://developer.berlios.de/projects/cuetools/"
-SRC_URI="mirror://berlios/${PN}/${P}.tar.gz
+#SRC_URI="mirror://berlios/${PN}/${P}.tar.gz
+SRC_URI="mirror://gentoo/${P}.tar.gz
 	mirror://gentoo/${P}-debian.patch.bz2"
 
 LICENSE="GPL-2"

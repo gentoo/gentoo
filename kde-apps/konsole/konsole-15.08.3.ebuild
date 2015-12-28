@@ -48,7 +48,8 @@ DEPEND="
 	X? ( x11-libs/libX11 )
 "
 RDEPEND="${DEPEND}
-	!kde-apps/konsole:4[-minimal(-),handbook]
+	!kde-apps/konsole:4[handbook]
+	!kde-apps/konsole:4[-minimal(-)]
 "
 
 src_configure() {

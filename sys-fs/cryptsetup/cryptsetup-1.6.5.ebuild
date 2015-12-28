@@ -119,6 +119,6 @@ pkg_postinst() {
 		elog "Users using cryptsetup-1.0.x (dm-crypt plain) volumes must use"
 		elog "a compatibility mode when using cryptsetup-1.1.x. This can be"
 		elog "done by specifying the cipher (-c), key size (-s) and hash (-h)."
-		elog "For more info, see https://code.google.com/p/cryptsetup/wiki/FrequentlyAskedQuestions#6._Issues_with_Specific_Versions_of_cryptsetup"
+		elog "For more info, see https://gitlab.com/cryptsetup/cryptsetup/wikis/FrequentlyAskedQuestions#8-issues-with-specific-versions-of-cryptsetup"
 	fi
 }

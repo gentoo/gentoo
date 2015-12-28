@@ -20,7 +20,7 @@ HOMEPAGE="http://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit cryptsetup curl elfutils gcrypt gnuefi http
+IUSE="acl apparmor audit cryptsetup curl elfutils +gcrypt gnuefi http
 	idn importd +kdbus +kmod +lz4 lzma nat pam policykit
 	qrcode +seccomp selinux ssl sysv-utils test vanilla xkb"
 
@@ -329,7 +329,7 @@ multilib_src_install_all() {
 	# If we install these symlinks, there is no way for the sysadmin to remove them
 	# permanently.
 	rm "${D}"/etc/systemd/system/multi-user.target.wants/systemd-networkd.service || die
-	rm "${D}"/etc/systemd/system/multi-user.target.wants/systemd-resolved.service || die
+	rm -f "${D}"/etc/systemd/system/multi-user.target.wants/systemd-resolved.service || die
 	rm -r "${D}"/etc/systemd/system/network-online.target.wants || die
 	rm -r "${D}"/etc/systemd/system/sockets.target.wants || die
 	rm -r "${D}"/etc/systemd/system/sysinit.target.wants || die

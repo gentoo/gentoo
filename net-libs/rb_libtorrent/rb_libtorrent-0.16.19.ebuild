@@ -16,7 +16,7 @@ MY_P=${MY_P/torrent/torrent-rasterbar}
 S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="C++ BitTorrent implementation focusing on efficiency and scalability"
-HOMEPAGE="http://www.rasterbar.com/products/libtorrent/"
+HOMEPAGE="http://libtorrent.org"
 SRC_URI="mirror://sourceforge/libtorrent/${MY_P}.tar.gz"
 
 LICENSE="BSD"

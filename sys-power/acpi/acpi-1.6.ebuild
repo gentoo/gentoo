@@ -4,7 +4,7 @@
 
 EAPI=5
 
-DESCRIPTION="Attempts to replicate the functionality of the 'old' apm command on ACPI systems"
+DESCRIPTION="Displays information about ACPI devices"
 HOMEPAGE="http://sourceforge.net/projects/acpiclient/"
 SRC_URI="mirror://sourceforge/acpiclient/${P}.tar.gz"
 

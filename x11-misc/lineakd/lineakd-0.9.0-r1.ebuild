@@ -7,7 +7,7 @@ inherit eutils multilib
 
 MY_P=${P/.0/}
 
-DESCRIPTION="Linux support for Easy Access and Internet Keyboards features X11 support"
+DESCRIPTION="Linux support for Easy Access and Internet Keyboards"
 HOMEPAGE="http://lineak.sourceforge.net"
 SRC_URI="mirror://sourceforge/lineak/${MY_P}.tar.gz"
 

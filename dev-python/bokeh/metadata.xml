@@ -12,5 +12,9 @@
   <upstream>
     <remote-id type="pypi">bokeh</remote-id>
     <remote-id type="github">ContinuumIO/bokeh</remote-id>
+    <maintainer status="unknown">
+      <email>info@continuum.io</email>
+      <name>Continuum Analytics</name>
+    </maintainer>
   </upstream>
 </pkgmetadata>

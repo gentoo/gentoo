@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit eutils games
+inherit eutils flag-o-matic games
 
 MY_PN="GNUDoku"
 MY_P=${MY_PN}-${PV}
@@ -25,6 +25,7 @@ S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-gcc43.patch
+	append-cxxflags -std=c++11
 	sed -i \
 		-e "s:\$(CXX):\$(CXX) ${CXXFLAGS} ${LDFLAGS}:" \
 		Makefile \

@@ -10,7 +10,7 @@ KDE_LINGUAS="ca cs da de en_GB es et lt nl pl pt pt_BR sk sv uk"
 MY_P="SymbolEditor-${PV}"
 inherit kde4-base
 
-DESCRIPTION="Program to create libraries of QPainterPath objects with hints on how to render them"
+DESCRIPTION="Application to create libraries of QPainterPath objects with redering hints"
 HOMEPAGE="https://userbase.kde.org/SymbolEditor"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${MY_P}-1.tar.bz2"
 

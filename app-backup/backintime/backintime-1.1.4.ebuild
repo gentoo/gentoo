@@ -4,17 +4,17 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python3_2 python3_3 python3_4 )
+PYTHON_COMPAT=( python3_3 python3_4 )
 
 inherit eutils python-single-r1
 
-DESCRIPTION="A simple backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4"
+DESCRIPTION="Backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4"
 HOMEPAGE="http://backintime.le-web.org/"
 SRC_URI="http://${PN}.le-web.org/download/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="qt4"
 
 RDEPEND="${PYTHON_DEPS}

@@ -1,0 +1,11 @@
+--- Source/OpenGL_Windows.cpp.orig	2015-01-14 23:57:19.799186785 -0500
++++ Source/OpenGL_Windows.cpp	2015-01-14 23:57:36.022643953 -0500
+@@ -1330,7 +1330,7 @@
+ 
+     // !!! FIXME: we could use a Win32 API for this.  --ryan.
+ #ifndef WIN32
+-    chdirToAppPath(argv[0]);
++    chdir("@GENTOO_DIR@");
+ #endif
+ 
+ 	LOGFUNC;

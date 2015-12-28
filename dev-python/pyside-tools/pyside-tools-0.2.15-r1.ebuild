@@ -11,7 +11,7 @@ VIRTUALX_COMMAND="cmake-utils_src_test"
 inherit eutils cmake-utils python-r1 vcs-snapshot virtualx
 
 DESCRIPTION="PySide development tools (lupdate, rcc, uic)"
-HOMEPAGE="http://qt-project.org/wiki/PySide"
+HOMEPAGE="https://wiki.qt.io/Pyside"
 SRC_URI="https://github.com/PySide/Tools/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD GPL-2"
@@ -20,13 +20,15 @@ KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="
+	${PYTHON_DEPS}
 	>=dev-python/pyside-1.2.0[X,${PYTHON_USEDEP}]
 	>=dev-python/shiboken-1.2.0[${PYTHON_USEDEP}]
-	>=dev-qt/qtcore-4.7.0:4
-	>=dev-qt/qtgui-4.7.0:4
-	${PYTHON_DEPS}"
+	dev-qt/qtcore:4
+	dev-qt/qtgui:4
+"
 DEPEND="${RDEPEND}
-	test? ( virtual/pkgconfig )"
+	test? ( virtual/pkgconfig )
+"
 
 src_prepare() {
 	epatch "${FILESDIR}"/0.2.13-fix-pysideuic-test-and-install.patch

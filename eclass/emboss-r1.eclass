@@ -26,11 +26,12 @@
 # inherit emboss-r1
 
 # @ECLASS-VARIABLE: EBO_DESCRIPTION
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Should be set. Completes the generic description of the embassy module as follows:
 #
-# EMBOSS integrated version of ${EBO_DESCRIPTION},
-# e.g.
+# EMBOSS integrated version of ${EBO_DESCRIPTION}, e.g.
+#
 # "EMBOSS integrated version of applications from the CBS group"
 #
 # Defaults to the upstream name of the module.
@@ -80,7 +81,7 @@ if [[ ${PN} == embassy-* ]]; then
 	S="${WORKDIR}"/${EF}
 fi
 
-# @FUNCTION: emboss_src_prepare
+# @FUNCTION: emboss-r1_src_prepare
 # @DESCRIPTION:
 # Does the following things
 #
@@ -96,7 +97,7 @@ emboss-r1_src_prepare() {
 	autotools-utils_src_prepare
 }
 
-# @FUNCTION: emboss_src_configure
+# @FUNCTION: emboss-r1_src_configure
 # @DESCRIPTION:
 # runs econf with following options.
 #

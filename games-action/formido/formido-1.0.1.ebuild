@@ -1,7 +1,8 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-EAPI=4
+
+EAPI=5
 inherit eutils toolchain-funcs games
 
 DESCRIPTION="A shooting game in the spirit of Phobia games"
@@ -14,10 +15,10 @@ SLOT=0
 KEYWORDS="amd64 ppc x86"
 IUSE=""
 
-DEPEND="media-libs/libsdl
+DEPEND="media-libs/libsdl[sound,video]
 	media-libs/sdl-image
 	media-libs/sdl-mixer"
-RDEPEND="${DEPEND}"
+RDEPEND=${DEPEND}
 
 src_unpack() {
 	unpack ${P}.tar.gz
@@ -32,8 +33,7 @@ src_prepare() {
 		-e "/^LINKFLAGS=/s:=.*:=${LDFLAGS}:" \
 		-e "s:\${DATDIR}:${GAMES_DATADIR}/${PN}/data:" \
 		-e "s:\${DEFCONFIGDIR}:${GAMES_DATADIR}/${PN}:" \
-		Makefile \
-		|| die "sed failed"
+		Makefile || die
 }
 
 src_install() {

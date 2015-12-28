@@ -6,7 +6,7 @@ EAPI=4
 PYTHON_DEPEND="python? 2"
 LANGS="de fr ja ru uk zh_TW"
 
-inherit eutils python qt4-r2
+inherit eutils python qmake-utils qt4-r2
 
 DESCRIPTION="Cross platform GUI for several code formatters, beautifiers and indenters"
 HOMEPAGE="http://universalindent.sourceforge.net/"
@@ -47,8 +47,8 @@ pkg_setup() {
 
 src_prepare() {
 	# correct translation binaries
-	sed -e "s/lupdate-qt4/lupdate/" \
-		-e "s/lrelease-qt4/lrelease/" \
+	sed -e "s|lupdate-qt4|$(qt4_get_bindir)/lupdate|" \
+		-e "s|lrelease-qt4|$(qt4_get_bindir)/lrelease|" \
 		-i UniversalIndentGUI.pro || die "sed pro translation binary"
 
 	if use debug; then

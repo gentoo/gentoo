@@ -20,7 +20,7 @@ RDEPEND="sys-fs/udisks:2
 	libnotify? ( >=x11-libs/libnotify-0.7 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )"
+	|| ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[imagemagick,png] )"
 
 DOCS="ChangeLog"
 

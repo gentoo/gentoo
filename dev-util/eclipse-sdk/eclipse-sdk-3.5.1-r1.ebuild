@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -74,11 +74,11 @@ pkg_setup() {
 }
 
 src_unpack() {
-	CHECKREQS_MEMORY="1536"
+	CHECKREQS_MEMORY="1536M"
 	if use doc || use source ; then
-		CHECKREQS_DISK_BUILD="3072"
+		CHECKREQS_DISK_BUILD="3072M"
 	else
-		CHECKREQS_DISK_BUILD="1536"
+		CHECKREQS_DISK_BUILD="1536M"
 	fi
 	check_reqs
 

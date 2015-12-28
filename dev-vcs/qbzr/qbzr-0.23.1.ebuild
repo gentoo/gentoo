@@ -33,8 +33,6 @@ src_test() {
 }
 
 pkg_postinst() {
-	distutils_pkg_postinst
-
 	elog
 	elog "To enable spellchecking in qcommit, please, install >=dev-python/pyenchant-1.5.0"
 	elog " # emerge -a >=dev-python/pyenchant-1.5.0"

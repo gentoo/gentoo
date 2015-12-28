@@ -78,6 +78,10 @@ prefix_src_archives() {
 EGIT_REPO_URI="git://anongit.gentoo.org/proj/portage.git
 	https://github.com/gentoo/portage.git"
 
+pkg_setup() {
+	use epydoc && DISTUTILS_ALL_SUBPHASE_IMPLS=( python2.7 )
+}
+
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 

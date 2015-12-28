@@ -1,0 +1,8 @@
+/var/lib/bitcoinxt/.bitcoinxt/debug.log {
+	missingok
+	weekly
+	sharedscripts
+	postrotate
+		killall -HUP bitcoinxtd
+	endscript
+}

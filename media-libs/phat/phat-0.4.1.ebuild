@@ -6,7 +6,8 @@ EAPI=2
 
 DESCRIPTION="PHAT is a collection of GTK+ widgets geared toward pro-audio apps"
 HOMEPAGE="http://phat.berlios.de"
-SRC_URI="mirror://berlios/${PN}/${P}.tar.gz"
+#SRC_URI="mirror://berlios/${PN}/${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

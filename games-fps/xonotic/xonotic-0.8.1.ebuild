@@ -13,7 +13,7 @@ SRC_URI="http://dl.xonotic.org/${P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="alsa debug dedicated doc ode sdl"
 
 UIRDEPEND="
@@ -40,7 +40,7 @@ UIDEPEND="
 	x11-proto/xproto"
 RDEPEND="
 	sys-libs/zlib
-	virtual/jpeg:62
+	virtual/jpeg:0
 	media-libs/libpng:0
 	net-misc/curl
 	~dev-libs/d0_blind_id-0.5

@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>blueness@gentoo.org</email>
+		<name>Anthony G. Basile</name>
+	</maintainer>
+	<maintainer>
+		<email>rono@sentuny.com</email>
+		<name>Ron OHara</name>
+	</maintainer>
+	<use>
+		<flag name="logrotate">Use app-admin/logrotate for rotating logs</flag>
+		<flag name="ljr">Enable Luke Dashjr's patches</flag>
+		<flag name="qrcode">Enable generation of QR Codes for receiving payments</flag>
+		<flag name="wallet">Enable wallet support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">bitcoinxt/bitcoinxt</remote-id>
+	</upstream>
+</pkgmetadata>

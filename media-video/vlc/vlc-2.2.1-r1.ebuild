@@ -34,10 +34,8 @@ fi
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-8" # vlc - vlccore
 
-if [ "${PV%9999}" = "${PV}" ] ; then
+if [[ ${PV} != *9999 ]] ; then
 	KEYWORDS="amd64 ~arm ppc ppc64 -sparc x86 ~x86-fbsd"
-else
-	KEYWORDS="amd64 ppc ppc64 x86"
 fi
 
 IUSE="a52 aalib alsa altivec atmo +audioqueue +avcodec
@@ -124,9 +122,11 @@ RDEPEND="
 		projectm? ( media-libs/libprojectm:0 media-fonts/dejavu:0 )
 		pulseaudio? ( >=media-sound/pulseaudio-1:0 )
 		qt4? ( >=dev-qt/qtgui-4.6:4 >=dev-qt/qtcore-4.6:4 )
-		qt5? ( >=dev-qt/qtgui-5.1:5 >=dev-qt/qtcore-5.1:5 >=dev-qt/qtwidgets-5.1:5  >=dev-qt/qtx11extras-5.1:5 )
+		qt5? ( >=dev-qt/qtgui-5.1:5 >=dev-qt/qtcore-5.1:5 >=dev-qt/qtwidgets-5.1:5
+			>=dev-qt/qtx11extras-5.1:5 )
 		rdp? ( >=net-misc/freerdp-1.0.1:0=[client] )
-		samba? ( || ( >=net-fs/samba-3.4.6:0[smbclient] >=net-fs/samba-4:0[client] ) )
+		samba? ( || ( ( >=net-fs/samba-3.4.6:0[smbclient] <net-fs/samba-4.0.0_alpha1:0[smbclient] )
+			>=net-fs/samba-4.0.0_alpha1:0[client] ) )
 		schroedinger? ( >=media-libs/schroedinger-1.0.10:0 )
 		sdl? ( >=media-libs/libsdl-1.2.10:0
 			sdl-image? ( >=media-libs/sdl-image-1.2.10:0 sys-libs/zlib:0 ) )

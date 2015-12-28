@@ -6,6 +6,7 @@
 		<name>Bernard Cafarelli</name>
 	</maintainer>
 	<use>
+		<flag name="dolphin">Install the <pkg>kde-apps/dolphin</pkg> extension</flag>
 		<flag name="nautilus">Install the <pkg>gnome-base/nautilus</pkg> extension</flag>
 		<flag name="sftp">Enable sftp transfer support via <pkg>net-libs/libssh</pkg></flag>
 	</use>

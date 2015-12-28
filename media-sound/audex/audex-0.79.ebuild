@@ -9,8 +9,8 @@ nl pl pt pt_BR ru sk sv tr ug uk zh_CN"
 inherit kde4-base
 
 DESCRIPTION="KDE based CDDA extraction tool"
-HOMEPAGE="http://kde.maniatek.com/audex/"
-SRC_URI="http://kde.maniatek.com/${PN}/files/${P}.tar.xz"
+HOMEPAGE="https://userbase.kde.org/Audex"
+SRC_URI="mirror://gentoo/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="4"

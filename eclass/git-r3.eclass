@@ -821,6 +821,7 @@ git-r3_checkout() {
 		"${@}" || die "git checkout ${remote_ref:-${new_commit_id}} failed"
 	}
 	git-r3_sub_checkout
+	unset -f git-r3_sub_checkout
 
 	local old_commit_id=$(
 		git rev-parse --quiet --verify refs/git-r3/"${local_id}"/__old__

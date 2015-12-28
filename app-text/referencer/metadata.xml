@@ -5,6 +5,7 @@
 	<maintainer>
 		<email>dominik.kriegner+gentoo@gmail.com</email>
 		<name>Dominik Kriegner</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<longdescription lang="en">
 </longdescription>

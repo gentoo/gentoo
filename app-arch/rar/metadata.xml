@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-	<email>jdhore@gentoo.org</email>
-	<name>Jeff Horelick</name>
-</maintainer>
-<use>
- <flag name='all_sfx'>
-	Install all SFX (Self-Extracting) files rather than just the native
-	format (allows creation of Windows EXEs on Linux ELF systems)
- </flag>
-</use>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>jdhore@gentoo.org</email>
+		<name>Jeff Horelick</name>
+	</maintainer>
+	<maintainer>
+		<email>elizabeth@interlinked.me</email>
+		<name>Elizabeth Myers</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
+	</maintainer>
+	<use>
+		<flag name='all_sfx'>
+			Install all SFX (Self-Extracting) files rather than just the native
+			format (allows creation of Windows EXEs on Linux ELF systems)
+		</flag>
+	</use>
 </pkgmetadata>

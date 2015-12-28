@@ -34,7 +34,9 @@ RDEPEND=">=media-libs/gd-2.0.33
 		x11-libs/libXpm
 	)
 	gif? ( media-libs/giflib )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-perl/Module-Build
+"
 
 SRC_TEST=do
 

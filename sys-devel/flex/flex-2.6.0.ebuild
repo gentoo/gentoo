@@ -22,6 +22,19 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	test? ( sys-devel/bison )"
 
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-out-of-tree-build.patch #567332
+	epatch "${FILESDIR}"/${P}-out-of-tree-test.patch #567332
+
+	# Disable running in the tests/ subdir as it has a bunch of built sources
+	# that cannot be made conditional (automake limitation). #568842
+	if ! use test ; then
+		sed -i \
+			-e '/^SUBDIRS =/,/^$/{/tests/d}' \
+			Makefile.in || die
+	fi
+}
+
 src_configure() {
 	use static && append-ldflags -static
 

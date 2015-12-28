@@ -5,10 +5,10 @@
 EAPI=5
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 )
 
 inherit check-reqs cmake-utils eutils flag-o-matic git-r3 multilib \
-	multilib-minimal python-r1 toolchain-funcs pax-utils
+	multilib-minimal python-single-r1 toolchain-funcs pax-utils
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="http://llvm.org/"
@@ -25,12 +25,9 @@ IUSE="clang debug +doc gold libedit +libffi lldb multitarget ncurses ocaml
 COMMON_DEPEND="
 	sys-libs/zlib:0=
 	clang? (
-		python? ( ${PYTHON_DEPS} )
-		static-analyzer? (
-			dev-lang/perl:*
-			${PYTHON_DEPS}
-		)
+		static-analyzer? ( dev-lang/perl:* )
 		xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
+		${PYTHON_DEPS}
 	)
 	gold? ( >=sys-devel/binutils-2.22:*[cxx] )
 	libedit? ( dev-libs/libedit:0=[${MULTILIB_USEDEP}] )
@@ -68,8 +65,7 @@ PDEPEND="clang? ( =sys-devel/clang-${PV}-r100 )"
 # pypy gives me around 1700 unresolved tests due to open file limit
 # being exceeded. probably GC does not close them fast enough.
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	lldb? ( clang xml )
-	test? ( || ( $(python_gen_useflags 'python*') ) )"
+	lldb? ( clang xml )"
 
 pkg_pretend() {
 	# in megs
@@ -174,11 +170,13 @@ src_prepare() {
 	# Allow custom cmake build types (like 'Gentoo')
 	epatch "${FILESDIR}"/cmake/${PN}-3.8-allow_custom_cmake_build_types.patch
 
+	# Fix llvm-config for shared linking and sane flags
+	# https://bugs.gentoo.org/show_bug.cgi?id=565358
+	epatch "${FILESDIR}"/llvm-3.8-llvm-config.patch
+
 	if use clang; then
 		# Automatically select active system GCC's libraries, bugs #406163 and #417913
 		epatch "${FILESDIR}"/clang-3.5-gentoo-runtime-gcc-detection-v3.patch
-
-		epatch "${FILESDIR}"/clang-3.8-gentoo-install.patch
 
 		# Install clang runtime into /usr/lib/clang
 		# https://llvm.org/bugs/show_bug.cgi?id=23792
@@ -217,7 +215,7 @@ multilib_src_configure() {
 	if use multitarget; then
 		targets=all
 	else
-		targets='host;CppBackend'
+		targets='host;BPF;CppBackend'
 		use video_cards_radeon && targets+=';AMDGPU'
 	fi
 
@@ -256,6 +254,9 @@ multilib_src_configure() {
 	if use clang; then
 		mycmakeargs+=(
 			-DCMAKE_DISABLE_FIND_PACKAGE_LibXml2=$(usex !xml)
+			# libgomp support fails to find headers without explicit -I
+			# furthermore, it provides only syntax checking
+			-DCLANG_DEFAULT_OPENMP_RUNTIME=libomp
 		)
 	fi
 
@@ -454,48 +455,36 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	insinto /usr/share/vim/vimfiles
-	doins -r utils/vim/*/
+	doins -r utils/vim/*/.
 	# some users may find it useful
 	dodoc utils/vim/vimrc
 
 	if use clang; then
 		pushd tools/clang >/dev/null || die
 
-		python_inst() {
-			if use static-analyzer ; then
-				pushd tools/scan-view/bin >/dev/null || die
+		if use python ; then
+			pushd bindings/python/clang >/dev/null || die
 
-				python_doscript scan-view
+			python_moduleinto clang
+			python_domodule *.py
 
-				touch __init__.py || die
-				python_moduleinto clang
-				python_domodule *.py Resources
+			popd >/dev/null || die
+		fi
 
-				popd >/dev/null || die
+		# AddressSanitizer symbolizer (currently separate)
+		dobin "${S}"/projects/compiler-rt/lib/asan/scripts/asan_symbolize.py
 
-				# TODO: remove files installed in /usr/share
-			fi
-
-			if use python ; then
-				pushd bindings/python/clang >/dev/null || die
-
-				python_moduleinto clang
-				python_domodule *.py
-
-				popd >/dev/null || die
-			fi
-
-			# AddressSanitizer symbolizer (currently separate)
-			python_doscript "${S}"/projects/compiler-rt/lib/asan/scripts/asan_symbolize.py
-		}
-		python_foreach_impl python_inst
 		popd >/dev/null || die
+
+		python_fix_shebang "${ED}"
+		if use static-analyzer; then
+			python_optimize "${ED}"usr/share/scan-view
+		fi
 	fi
 }
 
 pkg_postinst() {
-	if use clang; then
-		elog "To enable OpenMP support in clang, install sys-libs/libomp"
-		elog "and use the '-fopenmp=libomp' command line option"
+	if use clang && ! has_version 'sys-libs/libomp'; then
+		elog "To enable OpenMP support in clang, install sys-libs/libomp."
 	fi
 }

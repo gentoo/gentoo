@@ -4,6 +4,7 @@
 <herd>dev-embedded</herd>
 <use>
  <flag name='ftdi'>Enable drivers that need libftdi</flag>
+ <flag name='parport'>Enable drivers that are parallel (IEEE1284) based</flag>
  <flag name='serial'>Enable drivers that are serial (RS232) based</flag>
 </use>
 </pkgmetadata>

@@ -41,11 +41,12 @@ inherit toolchain-funcs
 # @DESCRIPTION:
 # All supported Python implementations, most preferred last.
 _PYTHON_ALL_IMPLS=(
-	jython2_5 jython2_7
-	pypy pypy3
-	python3_3 python3_4 python3_5
 	python2_7
+	python3_3 python3_4 python3_5
+	pypy pypy3
+	jython2_7
 )
+readonly _PYTHON_ALL_IMPLS
 
 # @FUNCTION: _python_impl_supported
 # @USAGE: <impl>
@@ -67,7 +68,7 @@ _python_impl_supported() {
 	# keep in sync with _PYTHON_ALL_IMPLS!
 	# (not using that list because inline patterns shall be faster)
 	case "${impl}" in
-		python2_7|python3_[345]|jython2_[57])
+		python2_7|python3_[345]|jython2_7)
 			return 0
 			;;
 		pypy1_[89]|pypy2_0|python2_[56]|python3_[12])
@@ -81,6 +82,55 @@ _python_impl_supported() {
 		*)
 			die "Invalid implementation in PYTHON_COMPAT: ${impl}"
 	esac
+}
+
+# @FUNCTION: _python_set_impls
+# @INTERNAL
+# @DESCRIPTION:
+# Check PYTHON_COMPAT for well-formedness and validity, then set
+# two global variables:
+#
+# - _PYTHON_SUPPORTED_IMPLS containing valid implementations supported
+#   by the ebuild (PYTHON_COMPAT - dead implementations),
+#
+# - and _PYTHON_UNSUPPORTED_IMPLS containing valid implementations that
+#   are not supported by the ebuild.
+#
+# Implementations in both variables are ordered using the pre-defined
+# eclass implementation ordering.
+#
+# This function must be called once in global scope by an eclass
+# utilizing PYTHON_COMPAT.
+_python_set_impls() {
+	local i
+
+	if ! declare -p PYTHON_COMPAT &>/dev/null; then
+		die 'PYTHON_COMPAT not declared.'
+	fi
+	if [[ $(declare -p PYTHON_COMPAT) != "declare -a"* ]]; then
+		die 'PYTHON_COMPAT must be an array.'
+	fi
+	for i in "${PYTHON_COMPAT[@]}"; do
+		# trigger validity checks
+		_python_impl_supported "${i}"
+	done
+
+	_PYTHON_SUPPORTED_IMPLS=()
+	_PYTHON_UNSUPPORTED_IMPLS=()
+
+	for i in "${_PYTHON_ALL_IMPLS[@]}"; do
+		if has "${i}" "${PYTHON_COMPAT[@]}"; then
+			_PYTHON_SUPPORTED_IMPLS+=( "${i}" )
+		else
+			_PYTHON_UNSUPPORTED_IMPLS+=( "${i}" )
+		fi
+	done
+
+	if [[ ${#_PYTHON_SUPPORTED_IMPLS[@]} -eq 0 ]]; then
+		die "No supported implementation in PYTHON_COMPAT."
+	fi
+
+	readonly _PYTHON_SUPPORTED_IMPLS _PYTHON_UNSUPPORTED_IMPLS
 }
 
 # @ECLASS-VARIABLE: PYTHON
@@ -368,8 +418,6 @@ python_export() {
 						PYTHON_PKG_DEP='virtual/pypy:0=';;
 					pypy3)
 						PYTHON_PKG_DEP='virtual/pypy3:0=';;
-					jython2.5)
-						PYTHON_PKG_DEP='>=dev-java/jython-2.5.3-r2:2.5';;
 					jython2.7)
 						PYTHON_PKG_DEP='dev-java/jython:2.7';;
 					*)
@@ -1189,19 +1237,27 @@ python_export_utf8_locale() {
 	type locale >/dev/null || return 0
 
 	if [[ $(locale charmap) != UTF-8 ]]; then
-		if [[ -n ${LC_ALL} ]]; then
-			ewarn "LC_ALL is set to a locale with a charmap other than UTF-8."
-			ewarn "This may trigger build failures in some python packages."
-			return 1
-		fi
-
 		# Try English first, then everything else.
 		local lang locales="en_US.UTF-8 $(locale -a)"
 
 		for lang in ${locales}; do
-			if [[ $(LC_CTYPE=${lang} locale charmap 2>/dev/null) == UTF-8 ]]; then
+			if [[ $(LC_ALL=${lang} locale charmap 2>/dev/null) == UTF-8 ]]; then
 				if _python_check_locale_sanity "${lang}"; then
 					export LC_CTYPE=${lang}
+					if [[ -n ${LC_ALL} ]]; then
+						export LC_NUMERIC=${LC_ALL}
+						export LC_TIME=${LC_ALL}
+						export LC_COLLATE=${LC_ALL}
+						export LC_MONETARY=${LC_ALL}
+						export LC_MESSAGES=${LC_ALL}
+						export LC_PAPER=${LC_ALL}
+						export LC_NAME=${LC_ALL}
+						export LC_ADDRESS=${LC_ALL}
+						export LC_TELEPHONE=${LC_ALL}
+						export LC_MEASUREMENT=${LC_ALL}
+						export LC_IDENTIFICATION=${LC_ALL}
+						export LC_ALL=
+					fi
 					return 0
 				fi
 			fi  

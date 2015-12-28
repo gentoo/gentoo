@@ -35,7 +35,7 @@ RDEPEND="
 	dev-libs/libxslt
 	sys-libs/readline:0=
 	sys-libs/ncurses:0=
-	berkdb?   ( sys-libs/db )
+	berkdb?   ( sys-libs/db:* )
 	firebird? ( dev-db/firebird )
 	gtk? (
 		>=x11-libs/gtk+-3.0.0:3

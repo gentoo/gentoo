@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit autotools games
 
 DESCRIPTION="Clone of the 1981 Night Stalker video game by Mattel Electronics"
@@ -23,8 +23,7 @@ src_prepare() {
 		-e "/^pkgsounddir/ s:sounds.*:\$(PACKAGE)/sounds:" \
 		-e "/^desktopentrydir/ s:=.*:=/usr/share/applications:" \
 		-e "/^pixmapdir/ s:=.*:=/usr/share/pixmaps:" \
-		src/Makefile.am \
-		|| die
+		src/Makefile.am || die
 	eautoreconf
 }
 

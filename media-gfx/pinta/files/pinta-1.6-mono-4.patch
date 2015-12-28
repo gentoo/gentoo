@@ -1,0 +1,70 @@
+diff -Naur pinta-1.6_orig/Pinta/Pinta.csproj pinta-1.6/Pinta/Pinta.csproj
+--- pinta-1.6_orig/Pinta/Pinta.csproj	2015-03-01 23:07:57.000000000 +0100
++++ pinta-1.6/Pinta/Pinta.csproj	2015-12-12 15:02:28.796155090 +0100
+@@ -80,7 +80,7 @@
+     <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+       <Package>gtk-sharp-2.0</Package>
+     </Reference>
+-    <Reference Include="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL" />
++    <Reference Include="Mono.Posix, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL" />
+     <Reference Include="System" />
+     <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+       <Package>gtk-sharp-2.0</Package>
+diff -Naur pinta-1.6_orig/Pinta.Core/Pinta.Core.csproj pinta-1.6/Pinta.Core/Pinta.Core.csproj
+--- pinta-1.6_orig/Pinta.Core/Pinta.Core.csproj	2015-03-01 23:07:57.000000000 +0100
++++ pinta-1.6/Pinta.Core/Pinta.Core.csproj	2015-12-12 15:02:28.798155090 +0100
+@@ -55,7 +55,7 @@
+     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+   </PropertyGroup>
+   <ItemGroup>
+-    <Reference Include="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL" />
++    <Reference Include="Mono.Posix, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL" />
+     <Reference Include="System" />
+     <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+     <Reference Include="System.Core" />
+diff -Naur pinta-1.6_orig/Pinta.Effects/Pinta.Effects.csproj pinta-1.6/Pinta.Effects/Pinta.Effects.csproj
+--- pinta-1.6_orig/Pinta.Effects/Pinta.Effects.csproj	2015-03-01 23:07:57.000000000 +0100
++++ pinta-1.6/Pinta.Effects/Pinta.Effects.csproj	2015-12-12 15:02:28.797155090 +0100
+@@ -58,7 +58,7 @@
+     <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+     <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+     <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+-    <Reference Include="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL" />
++    <Reference Include="Mono.Posix, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL" />
+     <Reference Include="System" />
+     <Reference Include="System.Core">
+     </Reference>
+diff -Naur pinta-1.6_orig/Pinta.Gui.Widgets/Pinta.Gui.Widgets.csproj pinta-1.6/Pinta.Gui.Widgets/Pinta.Gui.Widgets.csproj
+--- pinta-1.6_orig/Pinta.Gui.Widgets/Pinta.Gui.Widgets.csproj	2015-03-01 23:07:57.000000000 +0100
++++ pinta-1.6/Pinta.Gui.Widgets/Pinta.Gui.Widgets.csproj	2015-12-12 15:02:28.797155090 +0100
+@@ -54,7 +54,7 @@
+     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+   </PropertyGroup>
+   <ItemGroup>
+-    <Reference Include="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL" />
++    <Reference Include="Mono.Posix, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL" />
+     <Reference Include="System" />
+     <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+     <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+diff -Naur pinta-1.6_orig/Pinta.Install.proj pinta-1.6/Pinta.Install.proj
+--- pinta-1.6_orig/Pinta.Install.proj	2015-03-01 23:14:37.000000000 +0100
++++ pinta-1.6/Pinta.Install.proj	2015-12-12 15:05:20.974156635 +0100
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
++<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+ 
+   <!-- Set some paths -->
+   <PropertyGroup>
+diff -Naur pinta-1.6_orig/Pinta.Tools/Pinta.Tools.csproj pinta-1.6/Pinta.Tools/Pinta.Tools.csproj
+--- pinta-1.6_orig/Pinta.Tools/Pinta.Tools.csproj	2015-03-01 23:07:57.000000000 +0100
++++ pinta-1.6/Pinta.Tools/Pinta.Tools.csproj	2015-12-12 15:02:28.795155090 +0100
+@@ -54,7 +54,7 @@
+     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+   </PropertyGroup>
+   <ItemGroup>
+-    <Reference Include="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL" />
++    <Reference Include="Mono.Posix, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL" />
+     <Reference Include="System" />
+     <Reference Include="System.Core" />
+     <Reference Include="System.Xml" />

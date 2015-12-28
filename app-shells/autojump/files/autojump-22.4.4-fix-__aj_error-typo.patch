@@ -1,0 +1,22 @@
+From d188d7e6757a4d0cad619b6d5ab729fdc59b1593 Mon Sep 17 00:00:00 2001
+From: Scott Olson <scott@scott-olson.org>
+Date: Mon, 6 Jul 2015 23:12:35 -0400
+Subject: [PATCH] Fix typo (__aj_error -> __aj_err).
+
+---
+ bin/autojump.fish | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bin/autojump.fish b/bin/autojump.fish
+index ead7ea1..b16ef01 100644
+--- a/bin/autojump.fish
++++ b/bin/autojump.fish
+@@ -91,7 +91,7 @@ function jo
+             case cygwin
+                 cygstart "" (cygpath -w -a (pwd))
+             case '*'
+-                __aj_error "Unknown operating system: \"$OSTYPE\""
++                __aj_err "Unknown operating system: \"$OSTYPE\""
+         end
+     else
+         __aj_err "autojump: directory '"$argv"' not found"

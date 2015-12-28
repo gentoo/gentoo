@@ -1,0 +1,47 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+FILEBEAT_USER="${FILEBEAT_USER:-root}"
+FILEBEAT_GROUP="${FILEBEAT_GROUP:-root}"
+FILEBEAT_CONFIG="${FILEBEAT_CONFIG:-/etc/filebeat/filebeat.yml}"
+FILEBEAT_STATEDIR="${FILEBEAT_STATEDIR:-/var/lib/filebeat}"
+FILEBEAT_OPTS="${FILEBEAT_OPTS:-}"
+
+command="/usr/bin/filebeat"
+command_args="-c ${FILEBEAT_CONFIG} ${FILEBEAT_OPTS}"
+extra_commands="checkconfig"
+command_background="true"
+start_stop_daemon_args="--user ${FILEBEAT_USER}:${FILEBEAT_GROUP} \
+	--chdir ${FILEBEAT_STATEDIR}"
+pidfile="/run/filebeat/filebeat.pid"
+
+depend() {
+	use net
+	after elasticsearch
+}
+
+checkconfig() {
+	if [ ! -e ${FILEBEAT_CONFIG} ]; then
+		eend "Please create a configuration file at ${FILEBEAT_CONFIG}"
+		return 1
+	fi
+	
+	ebegin "Checking your configuration"
+	${command} ${command_args} -configtest
+	eend $? "Configuration error. Please fix your configuration files."
+}
+
+start_pre() {
+	checkconfig || return 1
+
+	checkpath -d -o "${FILEBEAT_USER}":"${FILEBEAT_GROUP}" -m750 "$(dirname "${pidfile}")"
+	checkpath -d -o "${FILEBEAT_USER}":"${FILEBEAT_GROUP}" -m750 "${FILEBEAT_STATEDIR}"
+}
+
+stop() {
+	ebegin "Stopping filebeat"
+	start-stop-daemon --stop \
+		--pidfile=${pidfile} \
+		--retry=TERM/5/KILL/5
+}

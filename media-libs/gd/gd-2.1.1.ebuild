@@ -8,11 +8,11 @@ inherit libtool multilib-minimal eutils
 
 DESCRIPTION="A graphics library for fast image creation"
 HOMEPAGE="http://libgd.org/ http://www.boutell.com/gd/"
-SRC_URI="mirror://bitbucket/libgd/gd-libgd/downloads/lib${P}.tar.xz"
+SRC_URI="https://bitbucket.org/libgd/gd-libgd/downloads/lib${P}.tar.xz"
 
 LICENSE="gd IJG HPND BSD"
 SLOT="2/3"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="fontconfig jpeg png static-libs truetype webp xpm zlib"
 
 # fontconfig has prefixed font paths, details see bug #518970

@@ -16,8 +16,8 @@ KEYWORDS="amd64 ppc x86"
 IUSE="opengl vorbis"
 
 RDEPEND="media-libs/libsdl[opengl?,video]
-	dev-lang/lua
-	virtual/jpeg
+	dev-lang/lua:0
+	virtual/jpeg:0
 	media-libs/libpng:0
 	media-libs/sdl-image[jpeg,png]
 	media-libs/sdl-mixer[vorbis?]

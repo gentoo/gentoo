@@ -5,7 +5,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils flag-o-matic java-pkg-opt-2 multilib python-single-r1
+inherit autotools eutils flag-o-matic java-pkg-opt-2 multilib python-single-r1 qmake-utils
 
 DESCRIPTION="Open Source Graph Visualization Software"
 HOMEPAGE="http://www.graphviz.org/"
@@ -26,7 +26,7 @@ RDEPEND="
 	dev-libs/libltdl:0
 	>=media-libs/fontconfig-2.3.95
 	>=media-libs/freetype-2.1.10
-	>=media-libs/gd-2.0.34[fontconfig,jpeg,png,truetype,zlib]
+	>=media-libs/gd-2.0.34:=[fontconfig,jpeg,png,truetype,zlib]
 	>=media-libs/libpng-1.2:0
 	!<=sci-chemistry/cluster-1.3.081231
 	virtual/jpeg:0
@@ -165,6 +165,9 @@ src_prepare() {
 
 	# replace the whitespace with tabs
 	sed -i -e 's:  :\t:g' doc/info/Makefile.am || die
+
+	# use correct version of qmake. bug #567236
+	sed -i -e "/AC_CHECK_PROGS(QMAKE/a AC_SUBST(QMAKE,$(qt4_get_bindir)/qmake)" configure.ac || die
 
 	# workaround for http://www.graphviz.org/mantisbt/view.php?id=1895
 	use elibc_FreeBSD && append-flags $(test-flags -fno-builtin-sincos)

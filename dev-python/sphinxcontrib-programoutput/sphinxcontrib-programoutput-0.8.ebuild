@@ -3,7 +3,8 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
 
 inherit distutils-r1
 
@@ -30,10 +31,10 @@ python_compile_all() {
 }
 
 python_test() {
-	py.test || die
+	py.test -v -v || die
 }
 
 python_install_all() {
-	use doc && local HTML_DOCS=( doc/_build/html )
+	use doc && local HTML_DOCS=( doc/_build/html/. )
 	distutils-r1_python_install_all
 }

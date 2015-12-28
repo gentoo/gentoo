@@ -45,6 +45,7 @@ DEPEND="dev-util/intltool
 "
 
 src_prepare() {
+	epatch "${FILESDIR}/${P}-fix-configure-srtp-check.patch"
 	eautoreconf
 }
 

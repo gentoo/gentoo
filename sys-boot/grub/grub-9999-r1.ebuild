@@ -63,7 +63,7 @@ REQUIRED_USE="
 # xorriso (dev-libs/libisoburn): Used on runtime for mkrescue
 RDEPEND="
 	app-arch/xz-utils
-	>=sys-libs/ncurses-5.2-r5
+	>=sys-libs/ncurses-5.2-r5:0=
 	debug? (
 		sdl? ( media-libs/libsdl )
 	)
@@ -82,7 +82,7 @@ DEPEND="${RDEPEND}
 	sys-apps/help2man
 	sys-apps/texinfo
 	fonts? ( media-libs/freetype:2 )
-	grub_platforms_xen? ( app-emulation/xen-tools )
+	grub_platforms_xen? ( app-emulation/xen-tools:= )
 	static? (
 		app-arch/xz-utils[static-libs(+)]
 		truetype? (

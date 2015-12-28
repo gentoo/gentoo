@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
-inherit eutils gnome2-utils
+EAPI=5
+inherit eutils flag-o-matic gnome2-utils
 
 DESCRIPTION="A guitar tuning program that uses Schmitt-triggering for quick feedback"
 HOMEPAGE="https://www.gentoo.org/"
@@ -20,11 +20,14 @@ RDEPEND="dev-cpp/glibmm:2
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-S=${WORKDIR}/${PN}
+S="${WORKDIR}/${PN}"
+
+src_prepare() {
+	append-cxxflags -std=c++11
+}
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS ChangeLog README
+	default
 	make_desktop_entry ${PN} Guitune guitune_logo
 }
 

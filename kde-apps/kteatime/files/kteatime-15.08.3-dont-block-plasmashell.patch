@@ -1,0 +1,10 @@
+--- a/src/org.kde.kteatime.desktop
++++ b/src/org.kde.kteatime.desktop
+@@ -140,6 +140,5 @@
+ Terminal=false
+ X-DocPath=kteatime/index.html
+ X-KDE-StartupNotify=true
+-X-DBUS-StartupType=Multi
+ Categories=Qt;KDE;Utility;
+ 
+

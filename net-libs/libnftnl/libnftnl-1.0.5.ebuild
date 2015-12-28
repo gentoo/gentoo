@@ -12,7 +12,7 @@ SRC_URI="http://netfilter.org/projects/${PN}/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/4"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE="examples json static-libs test xml"
 
 RDEPEND=">=net-libs/libmnl-1.0.0

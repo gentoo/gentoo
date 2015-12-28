@@ -16,6 +16,7 @@ IUSE="test"
 
 RDEPEND="dev-perl/HTML-Parser"
 DEPEND="${REPEND}
+	dev-perl/Module-Build
 	test? (
 		dev-perl/Test-Memory-Cycle
 		dev-perl/Test-CPAN-Meta

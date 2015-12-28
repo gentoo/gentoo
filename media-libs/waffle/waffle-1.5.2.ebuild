@@ -16,10 +16,10 @@ DESCRIPTION="Library that allows selection of GL API and of window system at run
 HOMEPAGE="http://people.freedesktop.org/~chadversary/waffle/"
 
 if [[ $PV = 9999* ]]; then
-	KEYWORDS=""
+	KEYWORDS="arm"
 else
 	SRC_URI="http://people.freedesktop.org/~chadversary/waffle/files/release/${P}/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm x86"
+	KEYWORDS="amd64 arm x86"
 fi
 
 LICENSE="BSD-2"

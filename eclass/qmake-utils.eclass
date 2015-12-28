@@ -4,7 +4,7 @@
 
 # @ECLASS: qmake-utils.eclass
 # @MAINTAINER:
-# Qt herd <qt@gentoo.org>
+# qt@gentoo.org
 # @AUTHOR:
 # Davide Pesavento <pesa@gentoo.org>
 # @BLURB: Common functions for qmake-based packages.

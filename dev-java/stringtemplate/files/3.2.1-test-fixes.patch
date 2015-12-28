@@ -1,0 +1,53 @@
+https://github.com/antlr/stringtemplate3/pull/3
+
+--- test/org/antlr/stringtemplate/test/TestStringTemplate.java.orig	2015-09-18 22:04:18.131902875 +0100
++++ test/org/antlr/stringtemplate/test/TestStringTemplate.java	2015-09-18 22:04:21.651848456 +0100
+@@ -36,6 +36,10 @@
+ import java.text.SimpleDateFormat;
+ import java.util.*;
+ 
++import org.junit.FixMethodOrder;
++import org.junit.runners.MethodSorters;
++
++@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+ public class TestStringTemplate extends TestCase {
+     static final String newline = System.getProperty("line.separator");
+ 
+@@ -87,7 +91,7 @@
+ 		assertEquals(expecting,I.toString());
+ 	}
+ 
+-	public void testNoGroupLoader() throws Exception {
++	public void testAaaNoGroupLoader() throws Exception {
+ 		// this also tests the group loader
+ 		StringTemplateErrorListener errors = new ErrorBuffer();
+ 		String tmpdir = System.getProperty("java.io.tmpdir");
+@@ -2214,8 +2218,12 @@
+ 		s.add("2");
+ 		s.add("3");
+ 		st.setAttribute("items", s);
+-		expecting = "<li>3</li><li>2</li><li>1</li>";
+-		assertEquals(expecting, st.toString());
++		String[] split = st.toString().split("(</?li>){1,2}");
++		Arrays.sort(split);
++		assertEquals("",  split[0]);
++		assertEquals("1", split[1]);
++		assertEquals("2", split[2]);
++		assertEquals("3", split[3]);
+ 	}
+ 
+ 	public void testDumpMapAndSet() throws Exception {
+@@ -2235,8 +2243,11 @@
+ 		s.add("2");
+ 		s.add("3");
+ 		st.setAttribute("items", s);
+-		expecting = "3,2,1";
+-		assertEquals(expecting, st.toString());
++		String[] split = st.toString().split(",");
++		Arrays.sort(split);
++		assertEquals("1", split[0]);
++		assertEquals("2", split[1]);
++		assertEquals("3", split[2]);
+ 	}
+ 
+ 	public class Connector3 {

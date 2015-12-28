@@ -13,7 +13,7 @@ This patch has been mailed to upstream. No reply at this time. Status unknown.
  
  # Options for the compiler: A high optimization level is suggested
 -CFLAGS = -g -O -W -Wall -ansi -pedantic # --coverage
-+CFLAGS += -W -Wall -ansi -pedantic # --coverage
++override CFLAGS += -W -Wall -ansi -pedantic # --coverage
  
 -all: libjbig.a libjbig85.a tstcodec tstcodec85
 +ifeq ($(shell uname),Darwin)
@@ -81,7 +81,7 @@ This patch has been mailed to upstream. No reply at this time. Status unknown.
  
  # Options for the compiler: A high optimization level is suggested
 -CFLAGS = -O2 -W -Wno-unused-result
-+CFLAGS += -W
++override CFLAGS += -W
  # CFLAGS = -O -g -W -Wall -Wno-unused-result -ansi -pedantic # -DDEBUG
  
  export CC CFLAGS
@@ -106,8 +106,8 @@ This patch has been mailed to upstream. No reply at this time. Status unknown.
  # Options for the compiler
 -CFLAGS = -g -O -W -Wall -Wno-unused-result -ansi -pedantic # --coverage
 -CPPFLAGS = -I../libjbig 
-+CFLAGS += -W -Wall -Wno-unused-result -ansi -pedantic # --coverage
-+CPPFLAGS += -I../libjbig 
++override CFLAGS += -W -Wall -Wno-unused-result -ansi -pedantic # --coverage
++override CPPFLAGS += -I../libjbig
  
  .SUFFIXES: .1 .5 .txt $(SUFFIXES)
  .PHONY: txt test test82 test85 clean

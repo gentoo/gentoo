@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit autotools eutils games
 
 DESCRIPTION="a bloody 2D action deathmatch-like game in ASCII-ART"
@@ -15,7 +15,7 @@ KEYWORDS="amd64 ia64 ppc sparc x86"
 IUSE="X"
 
 DEPEND="X? ( x11-libs/libXpm )"
-RDEPEND="${DEPEND}"
+RDEPEND=${DEPEND}
 
 src_prepare() {
 	epatch \
@@ -27,14 +27,11 @@ src_prepare() {
 		"${FILESDIR}"/${P}-CC.patch \
 		"${FILESDIR}"/${P}-underflow-check.patch #136222 \
 	sed -i \
-		-e "s:data/:${GAMES_DATADIR}/${PN}/data/:" cfg.h \
-		|| die "sed failed"
+		-e "s:data/:${GAMES_DATADIR}/${PN}/data/:" cfg.h || die
 	sed -i \
-		-e "s:@CFLAGS@ -O3 :@CFLAGS@ :" Makefile.in \
-		|| die "sed failed"
+		-e "s:@CFLAGS@ -O3 :@CFLAGS@ :" Makefile.in || die
 	sed -i \
-		-e "/gettimeofday/s/getopt/getopt calloc/" configure.in \
-		|| die "sed failed"
+		-e "/gettimeofday/s/getopt/getopt calloc/" configure.in || die
 	eautoreconf
 }
 

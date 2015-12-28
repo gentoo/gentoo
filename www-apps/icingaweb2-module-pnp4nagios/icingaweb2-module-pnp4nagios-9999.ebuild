@@ -6,9 +6,9 @@ EAPI="5"
 
 inherit git-2
 
-DESCRIPTION="Icinga Web 2 - Frontend for icinga2"
+DESCRIPTION="Icinga Web 2 plugin for pnp4nagios"
 HOMEPAGE="http://www.icinga.org/"
-EGIT_REPO_URI="https://github.com/Icinga/icingaweb2-module-pnp4nagios.git"
+EGIT_REPO_URI="https://github.com/Icinga/icingaweb2-module-pnp.git"
 EGIT_BRANCH="master"
 
 LICENSE="GPL-2"
@@ -21,6 +21,6 @@ DEPEND=">=net-analyzer/icinga2-2.1.1
 RDEPEND="${DEPEND}"
 
 src_install() {
-	mkdir -p "${D}/usr/share/icingaweb2/modules/pnp4nagios"
-	cp -R "${S}"/* "${D}/usr/share/icingaweb2/modules/pnp4nagios"
+	mkdir -p "${D}/usr/share/icingaweb2/modules/pnp"
+	cp -R "${S}"/* "${D}/usr/share/icingaweb2/modules/pnp"
 }

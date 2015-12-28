@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit games
 
 DESCRIPTION="a multi system emulator for many console and handheld video game systems"

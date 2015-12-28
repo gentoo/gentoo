@@ -5,8 +5,16 @@
     <email>robbat2@gentoo.org</email>
     <name>Robin H. Johnson</name>
   </maintainer>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>gokturk@binghamton.edu</email>
+    <name>Gokturk Yuksek</name>
+    <description>Proxied maintainer; set to assignee in all bugs</description>
+  </maintainer>
   <longdescription lang="en">
-	</longdescription>
+    Lastpass is an online password manager, password generator, form
+    filler and secure notes service.
+  </longdescription>
   <use>
     <flag name="firefox">Support for <pkg>www-client/firefox</pkg></flag>
     <flag name="chromium">Support for <pkg>www-client/chromium</pkg></flag>

@@ -1,0 +1,14 @@
+[Unit]
+Description=Knot high-performance DNS Server
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/knotd
+ExecReload=/usr/sbin/knotc reload
+ExecStop=/usr/sbin/knotc stop
+PrivateTmp=true
+RuntimeDirectory=knot
+RuntimeDirectoryMode=750
+
+[Install]
+WantedBy=multi-user.target

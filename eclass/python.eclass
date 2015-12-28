@@ -345,19 +345,7 @@ _python_initialize_prefix_variables() {
 unset PYTHON_SANITY_CHECKS_EXECUTED PYTHON_SKIP_SANITY_CHECKS
 
 _python_initial_sanity_checks() {
-	if [[ "$(declare -p PYTHON_SANITY_CHECKS_EXECUTED 2> /dev/null)" != "declare -- PYTHON_SANITY_CHECKS_EXECUTED="* || " ${FUNCNAME[@]:1} " =~ " "(python_set_active_version|python_pkg_setup)" " && -z "${PYTHON_SKIP_SANITY_CHECKS}" ]]; then
-		# Ensure that /usr/bin/python and /usr/bin/python-config are valid.
-		if [[ "$(readlink "${EPREFIX}/usr/bin/python")" != "python-wrapper" ]]; then
-			eerror "'${EPREFIX}/usr/bin/python' is not a valid symlink."
-			eerror "Use \`eselect python set \${python_interpreter}\` to fix this problem."
-			die "'${EPREFIX}/usr/bin/python' is not a valid symlink"
-		fi
-		if [[ "$(<"${EPREFIX}/usr/bin/python-config")" != *"Gentoo python-config wrapper script"* ]]; then
-			eerror "'${EPREFIX}/usr/bin/python-config' is not a valid script"
-			eerror "Use \`eselect python set \${python_interpreter}\` to fix this problem."
-			die "'${EPREFIX}/usr/bin/python-config' is not a valid script"
-		fi
-	fi
+	:
 }
 
 _python_final_sanity_checks() {
@@ -808,10 +796,6 @@ _python_calculate_PYTHON_ABIS() {
 			python_version="$("${EPREFIX}/usr/bin/python" -c 'from sys import version_info; print(".".join(str(x) for x in version_info[:2]))')"
 
 			if has_version "=dev-lang/python-2*"; then
-				if [[ "$(readlink "${EPREFIX}/usr/bin/python2")" != "python2."* ]]; then
-					die "'${EPREFIX}/usr/bin/python2' is not a valid symlink"
-				fi
-
 				python2_version="$("${EPREFIX}/usr/bin/python2" -c 'from sys import version_info; print(".".join(str(x) for x in version_info[:2]))')"
 
 				support_python_major_version="0"
@@ -831,10 +815,6 @@ _python_calculate_PYTHON_ABIS() {
 			fi
 
 			if has_version "=dev-lang/python-3*"; then
-				if [[ "$(readlink "${EPREFIX}/usr/bin/python3")" != "python3."* ]]; then
-					die "'${EPREFIX}/usr/bin/python3' is not a valid symlink"
-				fi
-
 				python3_version="$("${EPREFIX}/usr/bin/python3" -c 'from sys import version_info; print(".".join(str(x) for x in version_info[:2]))')"
 
 				support_python_major_version="0"

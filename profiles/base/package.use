@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Justin Lecher <jlec@gentoo.org> (08 Dec 2015)
+# Only py3 and single target supported
+app-backup/backintime python_single_target_python3_4
+dev-util/devhelp python_single_target_python3_4
+
 # Pacho Ramos <pacho@gentoo.org> (26 Jul 2015)
 # Set here proper defaults to make the packages buildable by default, 
 # bugs #555930 and #472932

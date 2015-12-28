@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
-    <email>jdhore@gentoo.org</email>
-    <name>Jeff Horelick</name>
-  </maintainer>
-  <use>
-    <flag name="pkg-config">Install as a replacement for dev-util/pkgconfig</flag>
-    <flag name="strict">Adhere to POSIX pkg-config specification. Useful for finding uses of non-standard pkg-config invocations.</flag>
-  </use>
-  <upstream>
-    <remote-id type="github">pkgconf/pkgconf</remote-id>
-  </upstream>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>jdhore@gentoo.org</email>
+		<name>Jeff Horelick</name>
+	</maintainer>
+	<maintainer>
+		<email>elizabeth@interlinked.me</email>
+		<name>Elizabeth Myers</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
+	</maintainer>
+	<use>
+		<flag name="pkg-config">Install as a replacement for dev-util/pkgconfig</flag>
+		<flag name="strict">Adhere to POSIX pkg-config specification. Useful for finding uses of
+non-standard pkg-config invocations</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">pkgconf/pkgconf</remote-id>
+	</upstream>
 </pkgmetadata>

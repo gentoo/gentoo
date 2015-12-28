@@ -29,6 +29,7 @@ src_prepare() {
 		-e 's/-print-file-name=libstdc++.a//' \
 		-e '/sed/ s/\([gO]\[0-9\]\)\*/\1\\+/' \
 		-e "/DEF_FAST_FLAGS=/s:=\".*\":=\"${CFLAGS}\":g" \
+		-e 's/2.95\* | 2.96\* | 3\.\* | 4\.\* )/2.95\* | 2.96\* | \[3-9\]\.\* )/g' \
 		-i src/build-system/configure || die
 	epatch "${FILESDIR}"/${P}-gcc47.patch
 }

@@ -85,11 +85,12 @@ php-pear-r1_src_install() {
 
 	cd "${S}"
 
+	# metadata_dir needs to be set relative to ${D} for >=dev-php/PEAR-PEAR-1.10
 	if [[ -f "${WORKDIR}"/package2.xml ]] ; then
 		mv -f "${WORKDIR}/package2.xml" "${S}"
 		if has_version '>=dev-php/PEAR-PEAR-1.7.0' ; then
 			local WWW_DIR="/usr/share/webapps/${PN}/${PVR}/htdocs"
-			peardev -d php_bin="${PHP_BIN}" -d www_dir="${WWW_DIR}" \
+			peardev -d php_bin="${PHP_BIN}" -d www_dir="${WWW_DIR}" -d metadata_dir="/usr/share/php" \
 				install --force --loose --nodeps --offline --packagingroot="${D}" \
 				"${S}/package2.xml" || die "Unable to install PEAR package"
 		else
@@ -100,7 +101,7 @@ php-pear-r1_src_install() {
 		mv -f "${WORKDIR}/package.xml" "${S}"
 		if has_version '>=dev-php/PEAR-PEAR-1.7.0' ; then
 			local WWW_DIR="/usr/share/webapps/${PN}/${PVR}/htdocs"
-			peardev -d php_bin="${PHP_BIN}" -d www_dir="${WWW_DIR}" \
+			peardev -d php_bin="${PHP_BIN}" -d www_dir="${WWW_DIR}" -d metadata_dir="/usr/share/php" \
 				install --force --loose --nodeps --offline --packagingroot="${D}" \
 				"${S}/package.xml" || die "Unable to install PEAR package"
 		else

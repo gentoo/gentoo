@@ -45,7 +45,7 @@ RDEPEND="
 	gif? ( media-libs/giflib )
 	gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 )
 	imlib2? ( media-libs/imlib2 )
-	jpeg? ( virtual/jpeg )
+	jpeg? ( virtual/jpeg:0= )
 	jpeg2k? ( media-libs/jasper[jpeg] )
 	mad? ( media-libs/libmad )
 	mng? ( media-libs/libmng )
@@ -53,7 +53,6 @@ RDEPEND="
 	opengl? ( media-libs/mesa[gbm,egl?,gles2?] x11-libs/libdrm )
 	png? ( media-libs/libpng:0 )
 	sdl? ( media-libs/libsdl )
-	swfdec? ( media-libs/swfdec )
 	tiff? ( media-libs/tiff:0 )
 	timidity? (
 		media-libs/libtimidity

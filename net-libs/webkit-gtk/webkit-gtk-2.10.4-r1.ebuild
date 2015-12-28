@@ -39,6 +39,7 @@ RESTRICT="test"
 # use sqlite, svg by default
 # Aqua support in gtk3 is untested
 # gtk2 is needed for plugin process support, should we add a USE flag to configure this?
+# Dependencies found at Sources/cmake/OptionsGTK.cmake
 RDEPEND="
 	dev-db/sqlite:3=
 	>=dev-libs/glib-2.36:2

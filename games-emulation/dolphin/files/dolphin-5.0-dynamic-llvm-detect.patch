@@ -1,0 +1,54 @@
+From 1515497ab88dc2452ed0db20a4610663cd04ff21 Mon Sep 17 00:00:00 2001
+From: comex <comexk@gmail.com>
+Date: Tue, 7 Jul 2015 07:49:46 -0400
+Subject: [PATCH] Make the LLVM detect script verify that the dynamic library actually exists.
+
+For some dumb reason, llvm-config doesn't provide the flags to link
+against the dynamic library copy of LLVM (as opposed to static), so the
+script has to guess the library name.  However, in some installations
+(such as mine), there is no dynamic copy, which caused Dolphin to fail
+to link.  Change the script to do a link test.  If it fails, one option
+would be to fall back on static linking, but I just have it fail to
+detect LLVM, because statically linking Dolphin against LLVM is really
+not a great idea - huge binary, long link time.
+---
+ CMakeTests/FindLLVM.cmake | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeTests/FindLLVM.cmake b/CMakeTests/FindLLVM.cmake
+index 7fe664f..cfcfaed 100644
+--- a/CMakeTests/FindLLVM.cmake
++++ b/CMakeTests/FindLLVM.cmake
+@@ -1,6 +1,9 @@
+ # This file only exists because LLVM's cmake files are broken.
+ # This affects both LLVM 3.4 and 3.5.
+ # Hopefully when they fix their cmake system we don't need this garbage.
++
++include(CheckLibraryExists)
++
+ list(APPEND LLVM_CONFIG_EXECUTABLES "llvm-config")
+ list(APPEND LLVM_CONFIG_EXECUTABLES "llvm-config-3.5")
+ list(APPEND LLVM_CONFIG_EXECUTABLES "llvm-config-3.4")
+@@ -11,13 +14,16 @@ foreach(LLVM_CONFIG_NAME ${LLVM_CONFIG_EXECUTABLES})
+ 		execute_process(COMMAND ${LLVM_CONFIG_EXE} --version OUTPUT_VARIABLE LLVM_PACKAGE_VERSION
+ 			OUTPUT_STRIP_TRAILING_WHITESPACE )
+ 		if (${LLVM_PACKAGE_VERSION} VERSION_GREATER "3.3")
+-			set(LLVM_FOUND 1)
+ 			execute_process(COMMAND ${LLVM_CONFIG_EXE} --includedir OUTPUT_VARIABLE LLVM_INCLUDE_DIRS
+ 				OUTPUT_STRIP_TRAILING_WHITESPACE )
+ 			execute_process(COMMAND ${LLVM_CONFIG_EXE} --ldflags OUTPUT_VARIABLE LLVM_LDFLAGS
+ 				OUTPUT_STRIP_TRAILING_WHITESPACE )
+-			set(LLVM_LIBRARIES "${LLVM_LDFLAGS} -lLLVM-${LLVM_PACKAGE_VERSION}")
+-			break()
++			check_library_exists(LLVM-${LLVM_PACKAGE_VERSION} LLVMVerifyFunction "${LLVM_LDFLAGS}" HAVE_DYNAMIC_LLVM_${LLVM_PACKAGE_VERSION})
++			if (HAVE_DYNAMIC_LLVM_${LLVM_PACKAGE_VERSION})
++				set(LLVM_LIBRARIES "${LLVM_LDFLAGS} -lLLVM-${LLVM_PACKAGE_VERSION}")
++				set(LLVM_FOUND 1)
++				break()
++			endif()
+ 		endif()
+ 	endif()
+ endforeach()
+-- 
+2.6.2
+

@@ -8,13 +8,14 @@ USE_RUBY="ruby19 ruby20 ruby21 ruby22"
 inherit multilib ruby-fakegem
 
 RUBY_FAKEGEM_EXTRADOC="NEWS README.md ChangeLog"
+RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
 DESCRIPTION="A Ruby library for Oracle OCI8"
 HOMEPAGE="https://rubygems.org/gems/ruby-oci8/"
 
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 RDEPEND+=" dev-db/oracle-instantclient-basic"

@@ -32,6 +32,8 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-2.0.13-desktop-update.patch"
 	# Drop -Werror
 	sed -i -e "s:-Werror::" configure.ac || die
+	# fix underlinking
+	sed -i -e "s:HAMLIB_LIBS@:HAMLIB_LIBS@ -lm:g" src/Makefile.am || die
 	eautoreconf
 }
 

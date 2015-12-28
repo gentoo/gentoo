@@ -15,7 +15,7 @@ KEYWORDS="alpha amd64 hppa ppc sparc x86"
 IUSE=""
 
 RDEPEND=">=virtual/perl-Math-BigInt-1.999.300
-	 >=dev-libs/gmp-4.0.0"
+	 >=dev-libs/gmp-4.0.0:0"
 DEPEND="${RDEPEND}"
 
 SRC_TEST="do"

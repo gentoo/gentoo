@@ -19,6 +19,7 @@
 		<flag name='opcache'>Enables built-in opcode cache, replacing pecl-apc et.al</flag>
 		<flag name='pdo'>Enable the bundled PDO extensions</flag>
 		<flag name='phar'>Enables the phar extension to provide phar archive support</flag>
+		<flag name='phpdbg'>Enable the PHP Debug Command Line SAPI (like gdb for php)</flag>
 		<flag name='xmlreader'>Enable XMLReader support</flag>
 		<flag name='xmlwriter'>Enable XMLWriter support</flag>
 		<flag name='xslt'>Enable the XSL extension</flag>

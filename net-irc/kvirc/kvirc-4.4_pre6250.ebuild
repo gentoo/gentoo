@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,13 +14,14 @@ SRC_URI="http://people.apache.org/~Arfrever/gentoo/${P}.tar.xz"
 LICENSE="kvirc"
 SLOT="4"
 KEYWORDS="~alpha amd64 ~ppc ~ppc64 x86"
-IUSE="audiofile dcc_video +dcc_voice debug doc gsm +ipc ipv6 kde +nls oss +perl +phonon profile +python +qt-dbus +ssl theora +transparency webkit"
+IUSE="audiofile +dbus dcc_video +dcc_voice debug doc gsm +ipc ipv6 kde +nls oss +perl +phonon profile +python +ssl theora +transparency webkit"
 
 RDEPEND=">=dev-qt/qtcore-4.6:4
 	>=dev-qt/qtgui-4.6:4
 	>=dev-qt/qtsql-4.6:4
 	sys-libs/zlib
 	x11-libs/libX11
+	dbus? ( >=dev-qt/qtdbus-4.6:4 )
 	dcc_video? (
 		media-libs/libv4l
 		theora? ( media-libs/libogg media-libs/libtheora )
@@ -29,7 +30,6 @@ RDEPEND=">=dev-qt/qtcore-4.6:4
 	oss? ( audiofile? ( media-libs/audiofile ) )
 	perl? ( dev-lang/perl )
 	phonon? ( || ( media-libs/phonon[qt4] >=dev-qt/qtphonon-4.6:4 ) )
-	qt-dbus? ( >=dev-qt/qtdbus-4.6:4 )
 	ssl? ( dev-libs/openssl )
 	webkit? ( >=dev-qt/qtwebkit-4.6:4 )"
 DEPEND="${RDEPEND}
@@ -72,6 +72,7 @@ src_configure() {
 		-DWANT_ENV_FLAGS=1
 		-DWANT_VERBOSE=1
 		$(cmake-utils_use_want audiofile AUDIOFILE)
+		$(cmake-utils_use_want dbus QTDBUS)
 		$(cmake-utils_use_want dcc_video DCC_VIDEO)
 		$(cmake-utils_use_want dcc_voice DCC_VOICE)
 		$(cmake-utils_use_want debug DEBUG)
@@ -86,7 +87,6 @@ src_configure() {
 		$(cmake-utils_use_want phonon PHONON)
 		$(cmake-utils_use_want profile MEMORY_PROFILE)
 		$(cmake-utils_use_want python PYTHON)
-		$(cmake-utils_use_want qt-dbus QTDBUS)
 		$(cmake-utils_use_want ssl OPENSSL)
 		$(cmake-utils_use_want theora OGG_THEORA)
 		$(cmake-utils_use_want transparency TRANSPARENCY)

@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
+inherit eutils
+
 DESCRIPTION="Worldforge math library"
 HOMEPAGE="http://www.worldforge.org/dev/eng/libraries/wfmath"
 SRC_URI="mirror://sourceforge/worldforge/${P}.tar.bz2"
@@ -17,24 +19,16 @@ DEPEND="doc? ( app-doc/doxygen )
 	virtual/pkgconfig"
 
 src_configure() {
-	econf \
-		$(use_enable static-libs static)
+	econf $(use_enable static-libs static)
 }
 
 src_compile() {
 	emake
-	if use doc; then
-		emake -C doc docs
-	fi
+	use doc && emake -C doc docs
 }
 
 src_install() {
 	default
-	if use doc; then
-		dohtml doc/html/*
-	fi
-	if ! use static-libs ; then
-		find "${D}" -type f -name '*.la' -exec rm {} + \
-			|| die "la removal failed"
-	fi
+	use doc && dohtml doc/html/*
+	prune_libtool_files
 }

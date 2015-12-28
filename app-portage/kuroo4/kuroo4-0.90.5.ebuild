@@ -20,5 +20,5 @@ DEPEND="dev-db/sqlite:3"
 RDEPEND="${DEPEND}
 	app-portage/gentoolkit
 	$(add_kdeapps_dep kdesu)
-	$(add_kdeapps_dep kompare)
+	kde-apps/kompare:*
 "

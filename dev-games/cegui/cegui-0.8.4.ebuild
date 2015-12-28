@@ -31,7 +31,7 @@ RDEPEND="
 	freeimage? ( media-libs/freeimage )
 	irrlicht? ( dev-games/irrlicht )
 	lua? (
-		dev-lang/lua
+		dev-lang/lua:0
 		dev-lua/toluapp
 	)
 	ogre? ( >=dev-games/ogre-1.7 )

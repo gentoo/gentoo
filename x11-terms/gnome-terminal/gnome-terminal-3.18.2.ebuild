@@ -34,6 +34,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	app-text/yelp-tools
 	dev-libs/libxml2
+	dev-util/desktop-file-utils
 	dev-util/gdbus-codegen
 	dev-util/itstool
 	>=dev-util/intltool-0.50

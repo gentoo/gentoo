@@ -1,0 +1,26 @@
+Index: aclocal.m4
+===================================================================
+--- aclocal.m4	(revision 66647)
++++ aclocal.m4	(working copy)
+@@ -488,7 +488,7 @@
+     case $host in
+         *-linux-* | *-gnu* | *-kfreebsd*-gnu)
+ 	    SHLIB_CFLAGS="-fPIC"
+-            SHLIB_LD_FLAGS=""
++            SHLIB_LD_FLAGS="-Wl,-soname,\$(notdir \$[@])"
+ 	    SHLIB_SUFFIX=".so"
+ 	    SHLIB_LD="${CC} -shared"
+             LDFLAGS="-Wl,--export-dynamic"
+Index: configure
+===================================================================
+--- configure	(revision 66647)
++++ configure	(working copy)
+@@ -1481,7 +1481,7 @@
+     case $host in
+         *-linux-* | *-gnu* | *-kfreebsd*-gnu)
+ 	    SHLIB_CFLAGS="-fPIC"
+-            SHLIB_LD_FLAGS=""
++            SHLIB_LD_FLAGS="-Wl,-soname,\$(notdir \$@)"
+ 	    SHLIB_SUFFIX=".so"
+ 	    SHLIB_LD="${CC} -shared"
+             LDFLAGS="-Wl,--export-dynamic"

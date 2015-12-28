@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/supertuxkart/SuperTuxKart/${PV}/${P}-src.tar.xz
 
 LICENSE="GPL-3 CC-BY-SA-3.0 CC-BY-2.0 public-domain ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="debug fribidi wiimote"
 
 # don't unbundle irrlicht and bullet
@@ -25,7 +25,7 @@ RDEPEND="media-libs/libpng:0
 	net-misc/curl
 	sys-libs/zlib
 	virtual/glu
-	virtual/jpeg:62
+	virtual/jpeg:0
 	virtual/libintl
 	virtual/opengl
 	x11-libs/libX11
@@ -62,9 +62,9 @@ src_compile() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	DOCS="AUTHORS CHANGELOG.md README.md TODO.md" \
+		cmake-utils_src_install
 	doicon -s 64 "${DISTDIR}"/${PN}.png
-	dodoc AUTHORS CHANGELOG.md README.md TODO.md
 	prepgamesdirs
 }
 

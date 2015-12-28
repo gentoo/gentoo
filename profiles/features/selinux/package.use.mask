@@ -13,6 +13,7 @@ app-portage/gentoolkit python_targets_pypy python_targets_pypy3
 app-portage/layman python_targets_pypy python_targets_pypy3
 app-admin/webapp-config python_targets_pypy python_targets_pypy3
 app-portage/diffmask python_targets_pypy python_targets_pypy3
+app-portage/flaggie python_targets_pypy python_targets_pypy3
 
 # Jason Zaman <perfinion@gentoo.org> (27 Jun 2015)
 # SystemD has no support in the SELinux policy at the moment.

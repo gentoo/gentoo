@@ -8,7 +8,7 @@ XORG_DRI=always
 inherit xorg-2
 
 DESCRIPTION="Driver for Adreno mobile GPUs"
-KEYWORDS="~arm"
+KEYWORDS="arm"
 IUSE=""
 
 RDEPEND=">=media-libs/mesa-10.2[xa]

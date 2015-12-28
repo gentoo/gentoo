@@ -34,7 +34,7 @@ RDEPEND="
 	cairo? (
 		x11-libs/cairo
 		x11-libs/pango )
-	gd? ( >=media-libs/gd-2.0.35-r3[png] )
+	gd? ( >=media-libs/gd-2.0.35-r3:2=[png] )
 	ggi? ( media-libs/libggi )
 	latex? (
 		virtual/latex-base
@@ -143,7 +143,7 @@ src_configure() {
 
 src_compile() {
 	# Prevent access violations, see bug 201871
-	VARTEXFONTS="${T}/fonts"
+	export VARTEXFONTS="${T}/fonts"
 
 	# We believe that the following line is no longer needed.
 	# In case of problems file a bug report at bugs.gentoo.org.

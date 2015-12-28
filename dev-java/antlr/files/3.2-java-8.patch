@@ -1,0 +1,32 @@
+diff -Naur antlr-3.3.orig/tool/src/main/java/org/antlr/tool/CompositeGrammar.java antlr-3.3/tool/src/main/java/org/antlr/tool/CompositeGrammar.java
+--- antlr-3.3.orig/tool/src/main/java/org/antlr/tool/CompositeGrammar.java	2010-11-30 01:54:04.000000000 +0000
++++ antlr-3.3/tool/src/main/java/org/antlr/tool/CompositeGrammar.java	2015-10-03 14:28:50.063497181 +0100
+@@ -219,7 +219,9 @@
+ 	public List<Grammar> getIndirectDelegates(Grammar g) {
+ 		List<Grammar> direct = getDirectDelegates(g);
+ 		List<Grammar> delegates = getDelegates(g);
+-		delegates.removeAll(direct);
++		if (direct != null) {
++			delegates.removeAll(direct);
++		}
+ 		return delegates;
+ 	}
+ 
+@@ -389,7 +391,7 @@
+ 		Set<String> localRuleDefs = new HashSet<String>();
+ 		Set<String> overrides = new HashSet<String>();
+ 		// compute set of non-overridden rules for this delegate
+-		for (Rule r : p.grammar.getRules()) {
++		for (Rule r : (Collection<Rule>) p.grammar.getRules()) {
+ 			if ( !ruleDefs.contains(r.name) ) {
+ 				localRuleDefs.add(r.name);
+ 			}
+@@ -409,7 +411,7 @@
+ 
+ 		// pass larger set of defined rules to delegates
+ 		if ( p.children!=null ) {
+-			for (CompositeGrammarTree delegate : p.children) {
++			for (CompositeGrammarTree delegate : (List<CompositeGrammarTree>) p.children) {
+ 				_minimizeRuleSet(ruleDefs, delegate);
+ 			}
+ 		}

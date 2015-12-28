@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ RDEPEND="dev-db/sqlite:3
 	dev-libs/dbus-glib
 	dev-libs/glib:2
 	dev-libs/libxml2
-	dev-libs/openssl
+	dev-libs/openssl:0
 	net-misc/curl
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}

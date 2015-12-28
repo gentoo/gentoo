@@ -20,7 +20,7 @@ RDEPEND="
 	virtual/perl-version
 "
 DEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
+	dev-perl/Module-Build
 	test? ( virtual/perl-Test-Simple )
 "
 

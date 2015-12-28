@@ -24,7 +24,7 @@ IUSE="alsa debug +ffmpeg +fftw openal oss portaudio pulseaudio spell"
 # However, most of these minimal versions date back to 2006-2010 yy.
 # Such version specifiers are meaningless nowadays, so they are omitted.
 RDEPEND="
-	>=dev-lang/luajit-2.0.4:2=
+	>=dev-lang/luajit-2.0.4:2
 	>=dev-libs/boost-1.50.0:=[icu,nls,threads]
 	>=dev-libs/icu-4.8.1.1:=
 	>=x11-libs/wxGTK-3.0.0:${WX_GTK_VER}[X,opengl,debug?]
@@ -60,6 +60,7 @@ REQUIRED_USE="
 PATCHES=(
 	"${FILESDIR}/${PN}-3.2.2-fix-lua-regexp.patch"
 	"${FILESDIR}/${P}-unbundle-luajit.patch"
+	"${FILESDIR}/${P}-add-missing-pthread-flags.patch"
 	"${FILESDIR}/${P}-respect-user-compiler-flags.patch"
 )
 

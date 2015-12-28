@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils games
 
 CDOGS_DATA="cdogs-data-2007-07-06"
@@ -11,31 +11,30 @@ HOMEPAGE="http://lumaki.com/code/cdogs"
 SRC_URI="http://icculus.org/cdogs-sdl/files/src/${P}.tar.bz2
 	http://icculus.org/cdogs-sdl/files/data/${CDOGS_DATA}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND="media-libs/libsdl
+DEPEND="media-libs/libsdl[video]
 	media-libs/sdl-mixer"
+RDPEND=${DEPEND}
 
 S=${WORKDIR}/${P}/src
 
 src_unpack() {
 	unpack ${A}
-	mv ${CDOGS_DATA} ${P}/data || die "Failed moving data around"
+	mv ${CDOGS_DATA} ${P}/data || die
 }
 
 src_prepare() {
 	sed -i \
 		-e "/^CF_OPT/d" \
 		-e "/^CC/d" \
-		Makefile \
-		|| die "sed failed"
+		Makefile || die
 	sed -i \
 		-e "/\bopen(/s/)/, 0666)/" \
-		files.c \
-		|| die "sed failed"
+		files.c || die
 	epatch "${FILESDIR}"/${P}-64bit.patch
 }
 

@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit depend.php webapp
+inherit webapp
 
 DESCRIPTION="A CalDAV and CardDAV Server"
 HOMEPAGE="http://davical.org/"
@@ -24,7 +24,6 @@ RDEPEND="app-admin/pwgen
 	>=dev-php/awl-0.51
 	virtual/httpd-php"
 
-need_php5
 need_httpd
 
 src_prepare() {
@@ -39,7 +38,7 @@ src_compile() {
 src_install() {
 	webapp_src_preinst
 
-	dodoc-php INSTALL README debian/README.Debian \
+	dodoc INSTALL README debian/README.Debian \
 		testing/README.regression_tests TODO debian/changelog
 
 	einfo "Installing web files"

@@ -10,7 +10,7 @@ DESCRIPTION="Provides classes to deal with creation and manipulation of mime mes
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86"
 IUSE=""
 
 DEPEND=">=dev-lang/php-5.0:*"

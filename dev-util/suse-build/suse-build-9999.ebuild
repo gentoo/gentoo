@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -56,5 +56,5 @@ src_install() {
 	find . -type f -exec sed -i 's|/usr/lib/build|/usr/libexec/suse-build|' {} +
 
 	# create symlink for default build config
-	dosym /usr/libexec/suse-build/configs/sl13.2.conf /usr/libexec/suse-build/configs/default.conf
+	dosym /usr/libexec/suse-build/configs/sl42.1.conf /usr/libexec/suse-build/configs/default.conf
 }

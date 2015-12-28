@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit autotools flag-o-matic games
 
 DESCRIPTION="A fast-paced multiplayer deathmatch arcade game"
@@ -17,22 +17,20 @@ IUSE="gtk editor"
 DEPEND="media-libs/libsdl[video]
 	media-libs/sdl-mixer
 	gtk? ( x11-libs/gtk+:2 )"
-RDEPEND="${DEPEND}"
+RDEPEND=${DEPEND}
 
 src_prepare() {
 	sed -i \
 		-e "/appicondir/s:\$(prefix):/usr:" \
 		-e "/desktopdir/s:\$(prefix):/usr:" \
 		$(find icons -name Makefile.am) \
-		Makefile.am \
-		|| die "sed failed"
+		Makefile.am || die
 	sed -i \
 		-e "s:\$*[({]prefix[})]/share:${GAMES_DATADIR}:" \
 		configure.in \
 		graphics/Makefile.am \
 		levels/Makefile.am \
-		sounds/Makefile.am \
-		|| die "sed failed"
+		sounds/Makefile.am || die
 	epatch "${FILESDIR}"/${P}-fpe.patch
 	eautoreconf
 }
@@ -40,7 +38,6 @@ src_prepare() {
 src_configure() {
 	filter-flags -fforce-addr
 	egamesconf \
-		--disable-dependency-tracking \
 		--disable-launcher1 \
 		$(use_enable gtk launcher2) \
 		$(use_enable editor)

@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
-
+EAPI=5
 GAME="enemy-territory"
 MOD_DESC="a team-based realism modification"
 MOD_NAME="True Combat"
@@ -13,7 +12,7 @@ MOD_ICON="tce_icon_pc.ico"
 inherit games games-mods
 
 MY_PV=${PV/.}
-HOMEPAGE="http://truecombat.com/"
+HOMEPAGE="http://www.truecombatelite.com/"
 SRC_URI="http://dragons-perch.net/tce/tcetest049.zip
 	http://freeserver.name/files/installer/linux/tcetest049.zip
 	http://mirror.rosvosektori.net/tcetest049.zip

@@ -1,11 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<use>
-		<flag name="kipi">Support for the KDE Image Plugin Interface.</flag>
-	</use>
 	<herd>kde</herd>
-	<upstream>
-		<remote-id type="sourceforge">gwenview</remote-id>
-	</upstream>
+	<use>
+		<flag name="kipi">Support for the KDE Image Plugin Interface</flag>
+	</use>
 </pkgmetadata>

@@ -3,15 +3,14 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 python3_{3,4} pypy )
+
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
 
 inherit distutils-r1 vcs-snapshot
 
-DESCRIPTION="utility belt for automated testing in python for python"
+DESCRIPTION="Utility belt for automated testing in python for python"
 HOMEPAGE="https://github.com/gabrielfalcao/sure"
 SRC_URI="https://github.com/gabrielfalcao/${PN}/archive/${PV}.tar.gz -> ${P}-r1.tar.gz"
-
-S="${WORKDIR}/${P}-r1"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -28,15 +27,12 @@ DEPEND="
 "
 RDEPEND="${CDEPEND}"
 
+S="${WORKDIR}/${P}-r1"
+
 python_prepare_all() {
-	ebegin 'patching setup.py'
 	sed \
 		-e "82s/read_version()/'${PV}'/" \
-		-i setup.py
-	STATUS=$?
-	eend ${STATUS}
-	[[ ${STATUS} -gt 0 ]] && die
-
+		-i setup.py || die
 	distutils-r1_python_prepare_all
 }
 

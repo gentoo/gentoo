@@ -25,6 +25,7 @@ RDEPEND="
 	virtual/perl-Time-HiRes
 "
 DEPEND="${RDEPEND}
+	dev-perl/Module-Build
 	dev-perl/File-Slurp
 	test? ( dev-perl/Test-SharedFork )
 "

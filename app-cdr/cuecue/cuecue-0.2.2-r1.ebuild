@@ -8,7 +8,8 @@ inherit base eutils flag-o-matic
 
 DESCRIPTION="Cuecue is a suite to convert .cue + [.ogg|.flac|.wav|.mp3] to .cue + .bin"
 HOMEPAGE="http://cuecue.berlios.de/"
-SRC_URI="mirror://berlios/cuecue/${P}.tar.gz"
+#SRC_URI="mirror://berlios/cuecue/${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

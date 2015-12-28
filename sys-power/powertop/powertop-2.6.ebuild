@@ -24,7 +24,7 @@ IUSE="unicode X"
 COMMON_DEPEND="
 	dev-libs/libnl:3
 	sys-apps/pciutils
-	sys-libs/ncurses[unicode?]
+	sys-libs/ncurses:*[unicode?]
 "
 
 DEPEND="${COMMON_DEPEND}

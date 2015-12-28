@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-
-inherit eutils
+EAPI=5
+inherit eutils flag-o-matic
 
 IUSE=""
 if [[ ${PV} == *9999* ]]; then
@@ -42,6 +41,8 @@ src_prepare() {
 	epatch "${DISTDIR}/${P}-learning.patch.gz"
 	# pthreads build fix, bug #423305
 	epatch "${FILESDIR}/${P}-pthreads-build-fix.patch"
+
+	append-cxxflags -std=c++11
 }
 
 src_install() {

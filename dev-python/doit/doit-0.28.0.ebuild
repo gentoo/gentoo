@@ -27,9 +27,6 @@ DEPEND="test? ( ${RDEPEND}
 		dev-python/pyflakes[${PYTHON_USEDEP}]
 		dev-python/coverage[${PYTHON_USEDEP}] )"
 
-PY27_REQUSE="$(python_gen_useflags 'python2.7')"
-REQUIRED_USE="doc? ( ${PY27_REQUSE} )"
-
 # Required for test phase
 DISTUTILS_IN_SOURCE_BUILD=1
 

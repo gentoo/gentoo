@@ -12,21 +12,24 @@ HOMEPAGE="http://commons.apache.org/email/"
 SRC_URI="mirror://apache/commons/email/source/${P}-src.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
+IUSE=""
 
 # Requires a slew of packages we don't ship yet.
 RESTRICT="test"
 
 CDEPEND="dev-java/oracle-javamail:0"
 
-RDEPEND=">=virtual/jre-1.6
-	${CDEPEND}"
-DEPEND=">=virtual/jdk-1.6
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
+
+DEPEND="
+	${CDEPEND}
 	test? (
 		dev-java/ant-junit:0
 	)
-	${CDEPEND}"
-IUSE=""
+	>=virtual/jdk-1.6"
 
 S="${WORKDIR}/${P}-src"
 
@@ -44,7 +47,7 @@ src_test() {
 }
 
 src_install() {
-	java-pkg_newjar target/${P}.jar ${PN}.jar
+	java-pkg_newjar "target/${P}.jar" "${PN}.jar"
 	dodoc {NOTICE,README,RELEASE-NOTES}.txt || die
 	use doc && java-pkg_dojavadoc target/site/apidocs
 	use source && java-pkg_dosrc src/main/java

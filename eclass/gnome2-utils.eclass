@@ -97,6 +97,9 @@ gnome2_environment_reset() {
 
 	# GST_REGISTRY is to work around gst utilities trying to read/write /root
 	export GST_REGISTRY="${T}/registry.xml"
+
+	# Ensure we don't rely on dconf/gconf while building, bug #511946
+	export GSETTINGS_BACKEND="memory" 
 }
 
 # @FUNCTION: gnome2_gconf_savelist

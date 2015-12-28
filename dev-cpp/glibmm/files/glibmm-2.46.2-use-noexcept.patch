@@ -1,0 +1,29 @@
+From 6c7c14875d0f1d249abcccb0033297c8d48619dc Mon Sep 17 00:00:00 2001
+From: Murray Cumming <murrayc@murrayc.com>
+Date: Sun, 29 Nov 2015 21:32:46 +0100
+Subject: Gio::Application: Destructor: Use noexcept in the implementation too.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Bug #758798 (Émeric MASCHINO)
+---
+ gio/src/application.ccg | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gio/src/application.ccg b/gio/src/application.ccg
+index 9fb5866..c7488ac 100644
+--- a/gio/src/application.ccg
++++ b/gio/src/application.ccg
+@@ -278,7 +278,7 @@ Application::Application(const Glib::ustring& application_id, ApplicationFlags f
+ 
+ }
+ 
+-Application::~Application()
++Application::~Application() noexcept
+ {
+   // Delete all OptionArgCallbackData instances that belong to this application.
+   std::lock_guard<std::mutex> lock(option_arg_callback_data_mutex);
+-- 
+cgit v0.11.2
+

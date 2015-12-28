@@ -22,8 +22,8 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=sys-libs/ncurses-5.1
-	>=sys-libs/readline-5.1
+	>=sys-libs/ncurses-5.1:=
+	>=sys-libs/readline-5.1:=
 	dev-libs/expat
 	sys-libs/zlib
 	convert-mozilla-cookies? ( dev-perl/DBI )
@@ -34,7 +34,7 @@ RDEPEND="
 	)
 	ssl? (
 		gnutls? ( >=net-libs/gnutls-1.2.3 )
-		openssl? ( >=dev-libs/openssl-0.9.6 )
+		openssl? ( dev-libs/openssl:0 )
 	)
 	verify-file? (
 		dev-perl/string-crc32
@@ -58,10 +58,11 @@ DOCS=(
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}"/${PN}-4.5.3-autopoint.patch \
 		"${FILESDIR}"/${PN}-4.5.5-am_config_header.patch
 
 	gnulib-tool --update || die
+
+	chmod +x build-aux/git-version-gen || die
 
 	eautoreconf
 	elibtoolize # for Darwin bundles
@@ -81,7 +82,9 @@ src_configure() {
 }
 
 src_install() {
-	default
+	# FIXME: MKDIR_P is not getting picked up in po/Makefile
+	emake DESTDIR="${D}" mkdir_p="mkdir -p" install
+
 	local script
 	for script in {convert-mozilla-cookies,verify-file}; do
 		use ${script} || { rm "${ED}"/usr/share/${PN}/${script} || die ;}

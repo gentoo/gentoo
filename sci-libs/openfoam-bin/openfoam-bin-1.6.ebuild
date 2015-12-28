@@ -10,9 +10,6 @@ MY_PN="OpenFOAM"
 MY_PV=$(get_version_component_range 1-2)
 MY_P="${MY_PN}-${MY_PV}"
 
-use x86 && WM_OPTIONS="linuxGccDPOpt"
-use amd64 && WM_OPTIONS="linux64GccDPOpt"
-
 DESCRIPTION="Open Field Operation and Manipulation - CFD Simulation Toolbox"
 HOMEPAGE="http://www.opencfd.co.uk/openfoam/"
 SRC_URI="mirror://sourceforge/foam/${MY_P}.General.gtgz -> ${MY_P}.General.tgz
@@ -72,6 +69,9 @@ src_configure() {
 
 	sed -i -e "s|WM_MPLIB:=OPENMPI|WM_MPLIB:="${WM_MPLIB}"|" etc/bashrc
 	sed -i -e "s|setenv WM_MPLIB OPENMPI|setenv WM_MPLIB "${WM_MPLIB}"|" etc/cshrc
+
+	use x86 && WM_OPTIONS="linuxGccDPOpt"
+	use amd64 && WM_OPTIONS="linux64GccDPOpt"
 
 	mv lib/${WM_OPTIONS}/$MPI_VERSION* lib/${WM_OPTIONS}/$MPI_VERSION
 }

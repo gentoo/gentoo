@@ -29,6 +29,7 @@ src_prepare() {
 		-e "/^libgamesdir:=/s:/games:/${PN}:" \
 		-e "/^datagamesdir:=/s:/games:/${PN}:" \
 		config/config.mk.in || die
+	epatch "${FILESDIR}"/${P}-format.patch
 }
 
 src_install() {

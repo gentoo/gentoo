@@ -1,0 +1,15 @@
+there is a function called "primary_possible" which is used to set the
+"prim_possible" variable a few lines before this, but the logic will
+incorrectly test "primary_possible" instead of "prim_possible".
+
+--- a/menufuncs.c
++++ b/menufuncs.c
+@@ -599,7 +599,7 @@ void new_partition( void )
+ 	}
+ 	else if (!ext_possible)
+ 	    make_ext = 0;
+-	else if (!primary_possible)
++	else if (!prim_possible)
+ 	    make_ext = 1;
+ 	else
+ 	    /* Create an extended partition if this is the 4th part. (to avoid

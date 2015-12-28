@@ -1,0 +1,16 @@
+ pygments/formatters/img.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pygments/formatters/img.py b/pygments/formatters/img.py
+index db5bee3..12d53cd 100644
+--- a/pygments/formatters/img.py
++++ b/pygments/formatters/img.py
+@@ -84,7 +84,7 @@ class FontManager(object):
+         if not exit:
+             lines = out.splitlines()
+             if lines:
+-                path = lines[0].strip().strip(':')
++                path = lines[0].decode().strip().strip(':')
+                 return path
+ 
+     def _create_nix(self):

@@ -11,7 +11,7 @@ SRC_URI="http://www.mavetju.org/download/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~mips"
+KEYWORDS="amd64 ~mips x86"
 
 RDEPEND="net-libs/libpcap"
 DEPEND="

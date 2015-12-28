@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,14 +15,15 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+introspection vala"
+REQUIRED_IUSE="vala? ( introspection )"
 
 RDEPEND="
 	>=app-text/enchant-1.6.0
 	>=app-text/iso-codes-0.35
 	>=dev-libs/glib-2.44:2
 	>=dev-libs/libxml2-2.5.0:2
-	>=x11-libs/gtk+-3.16:3
-	>=x11-libs/gtksourceview-3.16:3.0
+	>=x11-libs/gtk+-3.16:3[introspection?]
+	>=x11-libs/gtksourceview-3.16:3.0[introspection?]
 	introspection? ( >=dev-libs/gobject-introspection-1.42.0:= )
 	vala? ( $(vala_depend) )
 "

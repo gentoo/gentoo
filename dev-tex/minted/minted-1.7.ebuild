@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit latex-package
 
-DESCRIPTION="LaTeX package that facilitates expressive syntax highlighting in using the powerful Pygments library"
+DESCRIPTION="LaTeX package for source code syntax highlighting"
 HOMEPAGE="https://code.google.com/p/minted/"
 SRC_URI="https://minted.googlecode.com/files/${PN}-v${PV}.zip"
 

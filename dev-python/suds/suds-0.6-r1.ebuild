@@ -27,6 +27,10 @@ RDEPEND=""
 
 DOCS=( README.rst notes/{argument_parsing.rst,readme.txt,traversing_client_data.rst} )
 
+pkg_setup() {
+	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( python2.7 )
+}
+
 python_compile_all() {
 	# to say that it's both, because it kinda is...
 	! use doc || epydoc -n "Suds - ${DESCRIPTION}" -o doc suds || die

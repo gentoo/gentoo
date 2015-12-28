@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,9 +26,10 @@ DEPEND="
 	lua? ( virtual/pkgconfig )
 "
 
-if use capi; then
-	S="${WORKDIR}"/${P}.c4
-fi
+src_unpack() {
+	default
+	use capi && S="${WORKDIR}"/${P}.c4
+}
 
 src_prepare() {
 	# apply patches

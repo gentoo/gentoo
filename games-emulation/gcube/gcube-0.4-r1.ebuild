@@ -17,7 +17,7 @@ IUSE=""
 DEPEND="virtual/opengl
 	media-libs/libsdl[sound,joystick,video]
 	virtual/jpeg:0
-	sys-libs/ncurses
+	sys-libs/ncurses:0
 	sys-libs/zlib"
 RDEPEND="${DEPEND}"
 

@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit games
+inherit games eutils
 
 DESCRIPTION="server for the french tarot game maitretarot"
 HOMEPAGE="http://www.nongnu.org/maitretarot/"
@@ -18,6 +18,10 @@ DEPEND="dev-libs/glib:2
 	dev-libs/libxml2
 	dev-games/libmaitretarot"
 RDEPEND=${DEPEND}
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-format.patch
+}
 
 src_configure() {
 	egamesconf \

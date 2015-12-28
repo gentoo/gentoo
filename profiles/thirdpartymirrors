@@ -35,7 +35,7 @@ qmail		http://ds9a.nl/qmail http://infobase.ibase.com.hk/qmail http://mirror.hud
 quakeunity	http://www.mirrorservice.org/sites/quakeunity.com http://games.mirrors.tds.net/pub/planetquake3
 rubyforge	http://files.rubyforge.vm.bytemark.co.uk
 rubygems	https://rubygems.org/gems
-ruby      http://cache.ruby-lang.org/pub/ruby/ https://ftp.ruby-lang.org/pub/ruby/ http://www.dnsbalance.ring.gr.jp/archives/lang/ruby/ http://ruby.taobao.org/mirrors/ruby/ ftp://ftp.fu-berlin.de/unix/languages/ruby/
+ruby      https://cache.ruby-lang.org/pub/ruby/ http://ruby.taobao.org/mirrors/ruby/ ftp://ftp.fu-berlin.de/unix/languages/ruby/
 samba		http://ftp.samba.org/pub/samba ftp://au1.samba.org/pub/samba ftp://ca.samba.org/pub/samba ftp://de.samba.org/pub/samba ftp://fi.samba.org/pub/samba ftp://ftp.azc.uam.mx/mirrors/samba  ftp://ftp.samba.gr.jp/pub/samba ftp://gd.tuwien.ac.at/infosys/servers/samba ftp://it.samba.org/pub/samba ftp://pl.samba.org/pub/samba
 sabayon         http://sabayon.c3sl.ufpr.br/distfiles http://ftp.nluug.nl/pub/os/Linux/distr/sabayonlinux/distfiles http://ftp.rnl.ist.utl.pt/pub/sabayon/distfiles http://ftp.fsn.hu/pub/linux/distributions/sabayon/distfiles http://ftp.nluug.nl/pub/os/Linux/distr/sabayonlinux/distfiles http://cross-lfs.sabayonlinux.org/distfiles http://sabayon.mirror.dkm.cz/pub/sabayon/distfiles http://mirror.internode.on.net/pub/sabayon/distfiles http://na.mirror.garr.it/mirrors/sabayonlinux/distfiles http://distfiles.sabayon.org
 slang		ftp://space.mit.edu/pub/davis/slang ftp://ftp.fu-berlin.de/pub/unix/misc/slang ftp://ftp.ntua.gr/pub/lang/slang/slang

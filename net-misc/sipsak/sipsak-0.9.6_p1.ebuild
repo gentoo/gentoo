@@ -6,7 +6,8 @@ EAPI=2
 
 DESCRIPTION="small command line tool for testing SIP applications and devices"
 HOMEPAGE="http://sipsak.org/"
-SRC_URI="mirror://berlios/sipsak/${P/_p/-}.tar.gz"
+#SRC_URI="mirror://berlios/sipsak/${P/_p/-}.tar.gz"
+SRC_URI="mirror://gentoo/${P/_p/-}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

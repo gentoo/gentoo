@@ -25,5 +25,7 @@ PATCHES=( "${FILESDIR}"/${P}-unbundle.patch )
 
 src_install() {
 	cmake-utils_src_install
-	use static-libs || rm "${ED}"/usr/$(get_libdir)/*.a
+	if ! use static-libs; then
+		rm "${ED}"/usr/$(get_libdir)/*.a || die
+	fi
 }

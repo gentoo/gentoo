@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc ~x86"
+KEYWORDS="amd64 ppc ppc x86"
 IUSE="debug libffi"
 
 DEPEND="dev-java/gnu-classpath:0.98

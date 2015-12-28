@@ -1,0 +1,70 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+depend() {
+	use dns
+}
+
+checkconfig() {
+	# Note that /etc/chrony/chrony.keys is *NOT* checked. This
+	# is because the user may have specified another key
+	# file, and we don't want to force the user to use that
+	# exact name for the key file.
+	if [ ! -f "${CFGFILE}" ] ; then
+		eerror "Please create ${CFGFILE} and the"
+		eerror "chrony key file (usually /etc/chrony/chrony.keys)"
+		eerror "by using the"
+		eerror ""
+		eerror "        chrony.conf.example"
+		eerror "        chrony.keys.example"
+		eerror ""
+		eerror "files (from the documentation directory)"
+		eerror "as templates."
+		return 1
+	else
+		# Actually, I tried it, and chrony seems to ignore the pidfile
+		# option. I'm going to leave it here anyway, since you never
+		# know if it might be handy
+		PIDFILE=`awk '/^ *pidfile/{print $2}' "${CFGFILE}"`
+	fi
+	return 0
+}
+
+setxtrarg() {
+	if [ -c /dev/rtc ]; then
+		grep -q '^rtcfile' "${CFGFILE}" && ARGS="${ARGS} -s"
+	fi
+	grep -q '^dumponexit$' "${CFGFILE}" && ARGS="${ARGS} -r"
+	return 0
+}
+
+start() {
+	checkconfig || return $?
+	setxtrarg
+
+	[ -n "${PIDFILE}" ] || PIDFILE=/run/chronyd.pid
+
+	ebegin "Starting chronyd"
+	start-stop-daemon \
+		--start \
+		--quiet \
+		--exec /usr/sbin/chronyd \
+		--pidfile "${PIDFILE}" \
+		-- -f "${CFGFILE}" ${ARGS}
+	eend $? "Failed to start chronyd"
+}
+
+stop() {
+	checkconfig || return $?
+
+	[ -n "${PIDFILE}" ] || PIDFILE=/run/chronyd.pid
+
+	ebegin "Stopping chronyd"
+	start-stop-daemon \
+		--stop \
+		--quiet \
+		--pidfile "${PIDFILE}"
+	eend $? "Failed to stop chronyd"
+}

@@ -1,0 +1,135 @@
+https://github.com/libhugetlbfs/libhugetlbfs/pull/9
+
+From 1c41d751d57a598919c40ab9c27514a98da93273 Mon Sep 17 00:00:00 2001
+From: "Robin H. Johnson" <robbat2@gentoo.org>
+Date: Sat, 31 Oct 2009 07:59:57 +0000
+Subject: [PATCH] set noexec markers in the asm file directly
+
+Using -Wl,-z,noexecstack can hide real exec stack issues coming from other
+files, and is a bit unportable.  Instead, set proper section markers in the
+assembly files directly.  It also means people using the static libraries
+won't have to use -Wl,-z,noexecstack when they link their code.
+---
+ Makefile                | 2 +-
+ sys-aarch64elf.S        | 4 ++++
+ sys-armelf_linux_eabi.S | 4 ++++
+ sys-elf32ppclinux.S     | 4 ++++
+ sys-elf64_s390.S        | 4 ++++
+ sys-elf64ppc.S          | 4 ++++
+ sys-elf_i386.S          | 4 ++++
+ sys-elf_s390.S          | 4 ++++
+ sys-elf_x86_64.S        | 4 ++++
+ 9 files changed, 33 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 73ebad7..ca987d9 100644
+--- a/Makefile
++++ b/Makefile
+@@ -27,7 +27,7 @@ NODEPTARGETS=<version.h> <clean>
+ 
+ INSTALL = install
+ 
+-LDFLAGS += -Wl,-z,noexecstack -ldl
++LDFLAGS += -ldl
+ CFLAGS ?= -O2 -g
+ CFLAGS += -Wall -fPIC
+ CPPFLAGS += -D__LIBHUGETLBFS__
+diff --git a/sys-aarch64elf.S b/sys-aarch64elf.S
+index 54799d3..210558b 100644
+--- a/sys-aarch64elf.S
++++ b/sys-aarch64elf.S
+@@ -32,3 +32,7 @@ direct_syscall:
+ 	mov	x6, x7
+ 	svc	0x0
+ 	ret
++
++#if defined(__linux__) && defined(__ELF__)
++	.section .note.GNU-stack,"",%progbits
++#endif
+diff --git a/sys-armelf_linux_eabi.S b/sys-armelf_linux_eabi.S
+index dfa7407..265b75d 100644
+--- a/sys-armelf_linux_eabi.S
++++ b/sys-armelf_linux_eabi.S
+@@ -31,3 +31,7 @@ direct_syscall:
+ 	swi     0x0
+ 	ldmfd   sp!, {r4, r5, r6, r7}
+ 	bx	lr
++
++#if defined(__linux__) && defined(__ELF__)
++	.section .note.GNU-stack,"",%progbits
++#endif
+diff --git a/sys-elf32ppclinux.S b/sys-elf32ppclinux.S
+index 65d8b3f..6ba3f22 100644
+--- a/sys-elf32ppclinux.S
++++ b/sys-elf32ppclinux.S
+@@ -32,3 +32,7 @@ direct_syscall:
+ 	mr	8,9
+ 	sc
+ 	blr
++
++#if defined(__linux__) && defined(__ELF__)
++	.section .note.GNU-stack,"",%progbits
++#endif
+diff --git a/sys-elf64_s390.S b/sys-elf64_s390.S
+index 425a387..5c31899 100644
+--- a/sys-elf64_s390.S
++++ b/sys-elf64_s390.S
+@@ -20,3 +20,7 @@ direct_syscall:
+ 	lgr	%r5,%r6
+ 	svc	0
+ 	br	%r14
++
++#if defined(__linux__) && defined(__ELF__)
++	.section .note.GNU-stack,"",%progbits
++#endif
+diff --git a/sys-elf64ppc.S b/sys-elf64ppc.S
+index d50f4a6..b57a345 100644
+--- a/sys-elf64ppc.S
++++ b/sys-elf64ppc.S
+@@ -46,3 +46,7 @@ direct_syscall:
+ 	mr	8,9
+ 	sc
+ 	blr
++
++#if defined(__linux__) && defined(__ELF__)
++	.section .note.GNU-stack,"",%progbits
++#endif
+diff --git a/sys-elf_i386.S b/sys-elf_i386.S
+index ab30c8d..6182b3d 100644
+--- a/sys-elf_i386.S
++++ b/sys-elf_i386.S
+@@ -40,3 +40,7 @@ direct_syscall:
+ 	pop	%edi
+ 	pop	%ebp
+ 	ret
++
++#if defined(__linux__) && defined(__ELF__)
++	.section .note.GNU-stack,"",%progbits
++#endif
+diff --git a/sys-elf_s390.S b/sys-elf_s390.S
+index 40630d1..e6a9a96 100644
+--- a/sys-elf_s390.S
++++ b/sys-elf_s390.S
+@@ -20,3 +20,7 @@ direct_syscall:
+ 	lr	%r5,%r6
+ 	svc	0
+ 	br	%r14
++
++#if defined(__linux__) && defined(__ELF__)
++	.section .note.GNU-stack,"",%progbits
++#endif
+diff --git a/sys-elf_x86_64.S b/sys-elf_x86_64.S
+index 6af06ad..561f49b 100644
+--- a/sys-elf_x86_64.S
++++ b/sys-elf_x86_64.S
+@@ -32,3 +32,7 @@ direct_syscall:
+ 	mov	0x8(%rsp),%r9
+ 	syscall
+ 	retq
++
++#if defined(__linux__) && defined(__ELF__)
++	.section .note.GNU-stack,"",%progbits
++#endif
+-- 
+2.6.2
+

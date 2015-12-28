@@ -20,7 +20,7 @@ KEYWORDS=""
 IUSE=""
 
 RDEPEND="dev-lang/perl
-	>=sys-devel/automake-wrapper-9
+	>=sys-devel/automake-wrapper-10
 	>=sys-devel/autoconf-2.69
 	>=sys-apps/texinfo-4.7
 	sys-devel/gnuconfig"

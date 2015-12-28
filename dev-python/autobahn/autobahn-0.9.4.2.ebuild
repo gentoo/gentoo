@@ -23,7 +23,7 @@ RDEPEND="
 	dev-python/snappy[${PYTHON_USEDEP}]
 	dev-python/lz4[${PYTHON_USEDEP}]
 	dev-python/msgpack[${PYTHON_USEDEP}]
-	dev-python/twisted-core[$(python_gen_usedep python2*)]
+	dev-python/twisted-core[$(python_gen_usedep 'python2*')]
 	dev-python/ujson[${PYTHON_USEDEP}]
 	dev-python/wsaccel[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]

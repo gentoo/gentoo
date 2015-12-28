@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>python</herd>
-<longdescription>
+  <herd>python</herd>
+  <longdescription>
   A Sphinx extension to literally insert the output of arbitrary
   commands into documents, helping you to keep your command examples
   up to date.
 </longdescription>
-<upstream>
-  <remote-id type="pypi">sphinxcontrib-programoutput</remote-id>
-</upstream>
+  <upstream>
+    <remote-id type="pypi">sphinxcontrib-programoutput</remote-id>
+  </upstream>
 </pkgmetadata>

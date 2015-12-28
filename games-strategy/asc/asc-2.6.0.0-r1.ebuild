@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/asc-hq/${P}.tar.bz2
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="app-arch/bzip2

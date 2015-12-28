@@ -28,7 +28,7 @@ RDEPEND="${DEPEND}
 	app-crypt/gnupg
 	=dev-python/pyGPG-9999[${PYTHON_USEDEP}]
 	=dev-python/ssl-fetch-9999[${PYTHON_USEDEP}]
-	dev-python/snakeoil[${PYTHON_USEDEP}]
+	>=dev-python/snakeoil-0.6.5[${PYTHON_USEDEP}]
 	>=app-crypt/gentoo-keys-201501052117
 	"
 

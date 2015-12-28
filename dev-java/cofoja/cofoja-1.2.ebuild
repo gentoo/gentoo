@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,10 +20,14 @@ IUSE=""
 RESTRICT="test"
 
 CDEPEND="dev-java/asm:4"
-DEPEND=">=virtual/jdk-1.6
-	${CDEPEND}"
-RDEPEND=">=virtual/jre-1.6
-	${CDEPEND}"
+
+DEPEND="
+	${CDEPEND}
+	>=virtual/jdk-1.6"
+
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
 
 S="${WORKDIR}/${P}"
 

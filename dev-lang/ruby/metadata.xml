@@ -15,11 +15,6 @@
       readline extension will not be built (and irb will lose line
       editing functionality).
     </flag>
-    <flag name="yaml">
-      Use the <pkg>dev-libs/libyaml</pkg> library to build the psych
-      extension, available since Ruby 1.9.2_rc2, in alternative to the
-      bundled syck-based parser.
-    </flag>
     <flag name="rdoc">
       Install <pkg>dev-ruby/rdoc</pkg> after installing Ruby.
     </flag>

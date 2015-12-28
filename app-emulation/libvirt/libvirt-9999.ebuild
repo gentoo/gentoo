@@ -109,7 +109,7 @@ RDEPEND="
 	wireshark-plugins? ( net-analyzer/wireshark:= )
 	xen? (
 		app-emulation/xen
-		app-emulation/xen-tools
+		app-emulation/xen-tools:=
 	)
 	udev? (
 		virtual/udev
@@ -218,7 +218,7 @@ src_prepare() {
 	fi
 
 	epatch \
-		"${FILESDIR}"/${PN}-1.2.9-do_not_use_sysconf.patch \
+		"${FILESDIR}"/${PN}-1.3.0-do_not_use_sysconf.patch \
 		"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch \
 		"${FILESDIR}"/${PN}-1.2.17-fix_paths_for_apparmor.patch
 
@@ -295,8 +295,7 @@ src_configure() {
 		--disable-static
 		--disable-werror
 
-		--docdir=/usr/share/doc/${PF}
-		--htmldir=/usr/share/doc/${PF}/html
+		--with-html-subdir=${PF}/html
 		--localstatedir=/var
 	)
 
@@ -346,6 +345,7 @@ src_install() {
 	newinitd "${S}/libvirtd.init" libvirtd || die
 	newinitd "${FILESDIR}/libvirt-guests.init-r1" libvirt-guests || die
 	newinitd "${FILESDIR}/virtlockd.init-r1" virtlockd || die
+	newinitd "${FILESDIR}/virtlogd.init-r1" virtlogd || die
 
 	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd || die
 	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests || die

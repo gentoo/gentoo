@@ -22,7 +22,7 @@ SLOT="0/1"
 IUSE=""
 RDEPEND="virtual/libusb:1
 	dev-lang/orc
-	dev-libs/boost:=
+	<dev-libs/boost-1.58.0:=
 	sys-libs/ncurses
 	"
 DEPEND="${RDEPEND}

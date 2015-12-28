@@ -258,15 +258,17 @@ _calculate_src_uri() {
 		kde-frameworks)
 			SRC_URI="mirror://kde/stable/frameworks/${PV%.*}/${_kmname}-${PV}.tar.xz" ;;
 		kde-plasma)
+			local plasmapv=$(get_version_component_range 1-3)
+
 			case ${PV} in
 				5.?.[6-9]? )
 					# Plasma 5 beta releases
-					SRC_URI="mirror://kde/unstable/plasma/${PV}/${_kmname}-${PV}.tar.xz"
+					SRC_URI="mirror://kde/unstable/plasma/${plasmapv}/${_kmname}-${PV}.tar.xz"
 					RESTRICT+=" mirror"
 					;;
 				*)
 					# Plasma 5 stable releases
-					SRC_URI="mirror://kde/stable/plasma/${PV}/${_kmname}-${PV}.tar.xz" ;;
+					SRC_URI="mirror://kde/stable/plasma/${plasmapv}/${_kmname}-${PV}.tar.xz" ;;
 			esac
 			;;
 	esac
@@ -402,6 +404,10 @@ kde5_src_prepare() {
 	# only enable handbook when required
 	if ! use_if_iuse handbook ; then
 		comment_add_subdirectory ${KDE_DOC_DIR}
+
+		if [[ ${KDE_HANDBOOK} = forceoptional ]] ; then
+			punt_bogus_dep KF5 DocTools
+		fi
 	fi
 
 	# enable only the requested translations
@@ -435,19 +441,9 @@ kde5_src_prepare() {
 		rm -rf po
 	fi
 
-	# in frameworks, tests = manual tests so never
-	# build them
+	# in frameworks, tests = manual tests so never build them
 	if [[ ${CATEGORY} = kde-frameworks ]]; then
 		comment_add_subdirectory tests
-	fi
-
-	if [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma || ${CATEGORY} = kde-apps ]] ; then
-		# only build unit tests when required
-		if ! use_if_iuse test ; then
-			comment_add_subdirectory autotests
-			comment_add_subdirectory test
-			comment_add_subdirectory tests
-		fi
 	fi
 
 	case ${KDE_PUNT_BOGUS_DEPS} in
@@ -462,15 +458,18 @@ kde5_src_prepare() {
 			;;
 	esac
 
-	if [[ ${KDE_HANDBOOK} = forceoptional ]] ; then
-		if ! use_if_iuse handbook ; then
-			punt_bogus_dep KF5 DocTools
-		fi
-	fi
-
-	if [[ ${KDE_TEST} = forceoptional ]] ; then
-		if ! use_if_iuse test ; then
+	# only build unit tests when required
+	if ! use_if_iuse test ; then
+		if [[ ${KDE_TEST} = forceoptional ]] ; then
 			punt_bogus_dep Qt5 Test
+			# if forceoptional, also cover non-kde categories
+			comment_add_subdirectory autotests
+			comment_add_subdirectory test
+			comment_add_subdirectory tests
+		elif [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma || ${CATEGORY} = kde-apps ]] ; then
+			comment_add_subdirectory autotests
+			comment_add_subdirectory test
+			comment_add_subdirectory tests
 		fi
 	fi
 

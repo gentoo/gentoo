@@ -6,9 +6,7 @@ EAPI=5
 
 USE_RUBY="ruby19 ruby20 ruby21"
 
-# We have a custom test function, but don't null this out so that the
-# deps are still added
-RUBY_FAKEGEM_TASK_TEST="none"
+RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.md History"
@@ -25,7 +23,7 @@ IUSE=""
 
 ruby_add_rdepend '>=dev-ruby/json-1.8:0 >=dev-ruby/multi_xml-0.5.2'
 
-ruby_add_bdepend 'dev-ruby/rspec:3 dev-ruby/fakeweb'
+ruby_add_bdepend 'test? ( dev-ruby/fakeweb )'
 
 all_ruby_prepare() {
 	# Remove bundler
@@ -39,10 +37,6 @@ all_ruby_prepare() {
 	# Avoid test dependency on simplecov
 	sed -i -e '/simplecov/I s:^:#:' \
 		-e '1i require "cgi"' spec/spec_helper.rb || die
-}
-
-each_ruby_test() {
-	${RUBY} -S rake spec || die
 }
 
 all_ruby_install() {

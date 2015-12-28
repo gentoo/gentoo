@@ -19,7 +19,7 @@ EAPI=5
 
 PERL_EXPORT_PHASE_FUNCTIONS=no
 
-inherit perl-module readme.gentoo eutils base cmake-utils depend.php depend.apache multilib flag-o-matic
+inherit perl-module readme.gentoo eutils base cmake-utils depend.apache multilib flag-o-matic
 
 MY_PN="ZoneMinder"
 
@@ -50,6 +50,7 @@ DEPEND="
 	sys-auth/polkit
 	sys-libs/zlib
 	virtual/ffmpeg
+	virtual/httpd-php
 	virtual/jpeg
 	virtual/mysql
 	virtual/perl-ExtUtils-MakeMaker
@@ -69,7 +70,6 @@ RDEPEND="${DEPEND}"
 # we cannot use need_httpd_cgi here, since we need to setup permissions for the
 # webserver in global scope (/etc/zm.conf etc), so we hardcode apache here.
 need_apache
-need_php_httpd
 
 S=${WORKDIR}/${MY_PN}-${PV}
 
@@ -80,7 +80,7 @@ PATCHES=(
 MY_ZM_WEBDIR=/usr/share/zoneminder/www
 
 pkg_setup() {
-	require_php_with_use mysql sockets apache2
+	:
 }
 
 src_configure() {

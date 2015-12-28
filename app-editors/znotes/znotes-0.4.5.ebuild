@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=4
-inherit qt4-r2
+inherit qmake-utils qt4-r2
 
 DESCRIPTION="Simple Notes"
 HOMEPAGE="http://znotes.sourceforge.net/"
@@ -23,6 +23,6 @@ DOCS="CHANGELOG THANKS"
 PATCHES=( "${FILESDIR}/${P}-gcc-4.7.patch" )
 
 src_configure() {
-	lrelease znotes.pro || die "lrelease failed"
+	"$(qt4_get_bindir)"/lrelease znotes.pro || die "lrelease failed"
 	qt4-r2_src_configure
 }

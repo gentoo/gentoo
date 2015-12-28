@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-2
 else
 	SRC_URI="https://github.com/tatsuhiro-t/nghttp2/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh ~sparc x86"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 fi
 
 DESCRIPTION="HTTP/2 C Library"
@@ -29,7 +29,7 @@ RDEPEND="
 	jemalloc? ( dev-libs/jemalloc )
 	utils? (
 		>=dev-libs/libev-4.15
-		>=dev-libs/openssl-1.0.2
+		>=dev-libs/openssl-1.0.2[-bindist]
 		>=sys-libs/zlib-1.2.3
 	)
 	xml? ( >=dev-libs/libxml2-2.7.7 )"

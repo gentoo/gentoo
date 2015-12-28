@@ -5,6 +5,22 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Manuel Rüger <mrueg@gentoo.org> (24 Dec 2015)
+# media-tv/xawtv is masked for removal
+net-im/ayttm webcam
+
+# Brian Evans <grknight@gentoo.org> (17 Dec 2015)
+# Drizzle is slated for removal
+sys-cluster/gearmand drizzle
+
+# Sergey Popov <pinkbyte@gentoo.org> (7 Dec 2015)
+# IPoE driver does not build properly
+net-dialup/accel-ppp ipoe
+
+# Michael Palimaka <kensington@gentoo.org> (6 Dev 2015)
+# Requires unreleased dependencies
+=kde-apps/gwenview-15.08* kipi raw
+
 # Patrice Clement <monsieurp@gentoo.org> (27 Nov 2015)
 # Unsastified dependencies are upsetting repoman. Needs investigation.
 app-arch/cfv bittorrent
@@ -91,7 +107,7 @@ kde-apps/kaccounts-integration kdepim
 
 # Michael Palimaka <kensington@gentoo.org> (27 Aug 2015)
 # Unreleased dependencies
-kde-apps/dolphin:5 thumbnail
+=kde-apps/dolphin-15.08* thumbnail
 
 # James Le Cuirot <chewi@gentoo.org> (18 Aug 2015)
 # gcc[awt] is only used by gcj-jdk[awt] and that isn't needed by

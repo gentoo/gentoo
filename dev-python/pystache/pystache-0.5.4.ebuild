@@ -1,10 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
+
 inherit distutils-r1
 
 DESCRIPTION="Mustache for Python"
@@ -22,7 +23,6 @@ DEPEND="${RDEPEND}
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
 python_test() {
-	pushd "${BUILD_DIR}"/lib > /dev/null
-	nosetests || die
-	popd > /dev/null
+	cd "${BUILD_DIR}"/lib || die
+	nosetests --verbose || die
 }

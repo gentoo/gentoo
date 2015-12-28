@@ -12,3 +12,4 @@ move virtual/pmw virtual/python-pmw
 move kde-apps/oxygen-icons kde-frameworks/oxygen-icons
 slotmove =dev-ruby/rack-cache-1.3.0 1.3 1.2
 move dev-perl/module-info dev-perl/Module-Info
+slotmove =sci-geosciences/grass-7* 7 0

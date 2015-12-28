@@ -54,17 +54,21 @@ RDEPEND="dev-libs/atk
 	x11-terms/xterm"
 DEPEND=""
 
-if use amd64 ; then
-	ICAARCH=linuxx64
-elif use x86 ; then
-	ICAARCH=linuxx86
-fi
-S="${WORKDIR}/${ICAARCH}/${ICAARCH}.cor"
-
 pkg_nofetch() {
 	elog "Download the client file ${A} from
 	http://www.citrix.com/downloads/citrix-receiver/linux/receiver-for-linux-1321.html"
 	elog "and place it in ${DISTDIR:-/usr/portage/distfiles}."
+}
+
+src_unpack() {
+	default
+
+	if use amd64 ; then
+		ICAARCH=linuxx64
+	elif use x86 ; then
+		ICAARCH=linuxx86
+	fi
+	S="${WORKDIR}/${ICAARCH}/${ICAARCH}.cor"
 }
 
 src_install() {

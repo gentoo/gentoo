@@ -19,27 +19,6 @@ diff -Narup memtest86+-5.01-orig/controller.c memtest86+-5.01/controller.c
  		pci_conf_read( possible_nhm_bus[i], 3, 4, 0x00, 2, &vid);
  		pci_conf_read( possible_nhm_bus[i], 3, 4, 0x02, 2, &did);
  		vid &= 0xFFFF;
-diff -Narup memtest86+-5.01-orig/io.h memtest86+-5.01/io.h
---- memtest86+-5.01-orig/io.h	2013-08-09 22:01:58.000000000 -0400
-+++ memtest86+-5.01/io.h	2014-06-22 11:00:19.279251873 -0400
-@@ -31,7 +31,7 @@
-  */
- 
- #define __OUT1(s,x) \
--extern inline void __out##s(unsigned x value, unsigned short port) {
-+static inline void __out##s(unsigned x value, unsigned short port) {
- 
- #define __OUT2(s,s1,s2) \
- __asm__ __volatile__ ("out" #s " %" s1 "0,%" s2 "1"
-@@ -43,7 +43,7 @@ __OUT1(s##_p,x) __OUT2(s,s1,"w") : : "a"
- __OUT1(s##c_p,x) __OUT2(s,s1,"") : : "a" (value), "id" (port)); SLOW_DOWN_IO; }
- 
- #define __IN1(s) \
--extern inline RETURN_TYPE __in##s(unsigned short port) { RETURN_TYPE _v;
-+static inline RETURN_TYPE __in##s(unsigned short port) { RETURN_TYPE _v;
- 
- #define __IN2(s,s1,s2) \
- __asm__ __volatile__ ("in" #s " %" s2 "1,%" s1 "0"
 diff -Narup memtest86+-5.01-orig/Makefile memtest86+-5.01/Makefile
 --- memtest86+-5.01-orig/Makefile	2013-08-09 22:01:58.000000000 -0400
 +++ memtest86+-5.01/Makefile	2014-06-22 10:59:27.463573842 -0400

@@ -1,7 +1,8 @@
 See https://gitlab.com/agmartin/linuxdoc-tools/issues/4
+and https://gitlab.com/agmartin/linuxdoc-tools/issues/6
 
 diff --git a/Makefile.in b/Makefile.in
-index adb85d0..7038d97 100644
+index adb85d0..f215678 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -83,13 +83,14 @@ ifneq ($(BUILDDOC_FORMATS),)
@@ -22,6 +23,15 @@ index adb85d0..7038d97 100644
  		sh Makedoc.sh)
  endif
  
+@@ -174,7 +175,7 @@ ifneq ($(BUILDDOC_FORMATS),)
+ 	mkdir -m 755 -p $(doc_ddir)
+ 	# cp -r doc/* $(doc_ddir)
+ 	( cd doc && tar --exclude='CVS' -cpf - . ) | ( cd $(doc_ddir) && tar -xpf - )
+-	rm -f $(doc_ddir)/Makedoc.sh
++	rm -f $(doc_ddir)/Makedoc.sh $(doc_ddir)/Makefile
+ 	find $(doc_ddir) -type d -print | xargs chmod 755
+ 	find $(doc_ddir) -type f -print | xargs chmod 644
+ endif
 diff --git a/doc/Makedoc.sh b/doc/Makedoc.sh
 index b7e2efb..da4be99 100644
 --- a/doc/Makedoc.sh

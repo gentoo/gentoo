@@ -9,7 +9,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 ~arm ~ia64 ppc ~ppc64 ~sparc x86"
 fi
 
 inherit autotools bash-completion-r1 linux-info multilib \
@@ -147,6 +147,7 @@ src_prepare() {
 	epatch "${FILESDIR}/218-Dont-enable-audit-by-default.patch"
 	epatch "${FILESDIR}/226-noclean-tmp.patch"
 	epatch "${FILESDIR}/CVE-2015-7510.patch"
+	epatch "${FILESDIR}/226-kcmp.patch"
 	epatch_user
 	eautoreconf
 }

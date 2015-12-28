@@ -4,7 +4,8 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
+
 MY_PN=${PN/-/.}
 MY_P=${MY_PN}-${PV}
 

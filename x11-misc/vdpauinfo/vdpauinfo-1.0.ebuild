@@ -10,7 +10,7 @@ SRC_URI="http://people.freedesktop.org/~aplattner/vdpau/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	x11-libs/libX11

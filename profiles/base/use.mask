@@ -13,9 +13,6 @@ php_targets_php5-4
 # 540540 and 525674
 sssd
 
-# php 7 is still masked for testing
-php_targets_php7-0
-
 # cilk has been ported only to x86 systems
 cilk
 
@@ -331,10 +328,8 @@ dxr3
 
 # Ralph Sennhauser <sera@gentoo.org> (31 Jul 2012)
 # Unmask in arch specific profiles when jython implementaton is available.
-python_targets_jython2_5
 python_targets_jython2_7
 python_targets_jython3_1
-python_single_target_jython2_5
 python_single_target_jython2_7
 python_single_target_jython3_1
 

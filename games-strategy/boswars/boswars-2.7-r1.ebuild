@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE=""
 
-RDEPEND="dev-lang/lua
+RDEPEND="dev-lang/lua:0
 	media-libs/libsdl[opengl,sound,video]
 	media-libs/libpng:0
 	media-libs/libvorbis

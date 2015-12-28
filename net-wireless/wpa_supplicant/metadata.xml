@@ -17,7 +17,7 @@
 		<flag name='p2p'>Add support for Wi-Fi Direct mode</flag>
 		<flag name='ps3'>Add support for ps3 hypervisor driven gelic wifi</flag>
 		<flag name='tdls'>Add support for Tunneled Direct Link Setup (802.11z)</flag>
-		<flag name='uncommon-eap-types'>Add support for Wi-Fi Protected Setup</flag>
+		<flag name='uncommon-eap-types'>Add support for GPSK, SAKE, GPSK_SHA256, IKEV2 and EKE</flag>
 		<flag name='wps'>Add support for Wi-Fi Protected Setup</flag>
 		<flag name='wimax'>Add support for Wimax EAP-PEER authentication algorithm</flag>
 		<flag name='smartcard'>Add support for smartcards</flag>

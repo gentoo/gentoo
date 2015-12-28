@@ -25,13 +25,20 @@ CDEPEND="
 	dev-java/slf4j-api:0
 	dev-java/typesafe-config:0"
 
-RDEPEND=">=virtual/jre-1.6
-	${CDEPEND}"
-DEPEND=">=virtual/jdk-1.6
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
+
+DEPEND="
+	${CDEPEND}
 	app-arch/zip
-	${CDEPEND}"
+	>=virtual/jdk-1.6"
 
 S="${WORKDIR}/${MY_PN}-${MY_P}"
 
 JAVA_SRC_DIR="src/main"
-JAVA_GENTOO_CLASSPATH="log4j,slf4j-api,typesafe-config"
+
+JAVA_GENTOO_CLASSPATH="
+	log4j
+	slf4j-api
+	typesafe-config"

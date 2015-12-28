@@ -34,7 +34,7 @@ app-shells/bash:0 readline
 # Michał Górny <mgorny@gentoo.org> (14 Oct 2012)
 # Force-enable all PYTHON_TARGETS for python-exec to avoid using private
 # API. Please remember to keep it in sync with python_targets.desc.
-dev-lang/python-exec python_targets_python2_7 python_targets_python3_2 python_targets_python3_3 python_targets_python3_4 python_targets_python3_5 python_targets_jython2_5 python_targets_jython2_7 python_targets_pypy python_targets_pypy3
+dev-lang/python-exec python_targets_python2_7 python_targets_python3_2 python_targets_python3_3 python_targets_python3_4 python_targets_python3_5 python_targets_jython2_7 python_targets_pypy python_targets_pypy3
 
 # Zac Medico <zmedico@gentoo.org> (20 Oct 2010)
 # Force ipc USE flag since it should remain enabled unless

@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby19 ruby20"
+USE_RUBY="ruby19 ruby20 ruby21 ruby22"
 
 GITHUB_URI="https://github.com/Flameeyes/${PN}"
 

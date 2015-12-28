@@ -1,0 +1,136 @@
+ setup.py | 45 +++++++++++++++++++--------------------------
+ 1 file changed, 19 insertions(+), 26 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 031ad53..e5c56af 100644
+--- a/setup.py
++++ b/setup.py
+@@ -6,7 +6,7 @@ from glob import glob
+ import os
+ 
+ # Modifiy this if BLAS and LAPACK libraries are not in /usr/lib.
+-BLAS_LIB_DIR = '/usr/lib'
++BLAS_LIB_DIR = ''
+ 
+ # Default names of BLAS and LAPACK libraries
+ BLAS_LIB = ['blas']
+@@ -22,37 +22,37 @@ BLAS_NOUNDERSCORES = False
+ BUILD_GSL = 0
+ 
+ # Directory containing libgsl (used only when BUILD_GSL = 1).
+-GSL_LIB_DIR = '/usr/lib'
++GSL_LIB_DIR = ''
+ 
+ # Directory containing the GSL header files (used only when BUILD_GSL = 1).
+-GSL_INC_DIR = '/usr/include/gsl'
++GSL_INC_DIR = ''
+ 
+ # Set to 1 if you are installing the fftw module.
+ BUILD_FFTW = 0 
+ 
+ # Directory containing libfftw3 (used only when BUILD_FFTW = 1).
+-FFTW_LIB_DIR = '/usr/lib'
++FFTW_LIB_DIR = ''
+ 
+ # Directory containing fftw.h (used only when BUILD_FFTW = 1).
+-FFTW_INC_DIR = '/usr/include'
++FFTW_INC_DIR = ''
+ 
+ # Set to 1 if you are installing the glpk module.
+ BUILD_GLPK = 0 
+ 
+ # Directory containing libglpk (used only when BUILD_GLPK = 1).
+-GLPK_LIB_DIR = '/usr/lib'
++GLPK_LIB_DIR = ''
+ 
+ # Directory containing glpk.h (used only when BUILD_GLPK = 1).
+-GLPK_INC_DIR = '/usr/include'
++GLPK_INC_DIR = ''
+ 
+ # Set to 1 if you are installing the DSDP module.
+ BUILD_DSDP = 0
+ 
+ # Directory containing libdsdp (used only when BUILD_DSDP = 1).
+-DSDP_LIB_DIR = '/usr/lib'
++DSDP_LIB_DIR = ''
+  
+ # Directory containing dsdp5.h (used only when BUILD_DSDP = 1).
+-DSDP_INC_DIR = '/usr/include/dsdp'
++DSDP_INC_DIR = ''
+ 
+ # Set to 1 to use external SuiteSparse library
+ SUITESPARSE_EXT_LIB = 0
+@@ -98,39 +98,32 @@ if BLAS_NOUNDERSCORES: MACROS.append(('BLAS_NO_UNDERSCORE',''))
+ # optional modules
+ 
+ if BUILD_GSL:
+-    gsl = Extension('gsl', libraries = ['m', 'gsl'] + BLAS_LIB,
+-        include_dirs = [ GSL_INC_DIR ],
+-        library_dirs = [ GSL_LIB_DIR, BLAS_LIB_DIR ],
+-        extra_link_args = BLAS_EXTRA_LINK_ARGS,
++    gsl = Extension('gsl', libraries = ['gsl'],
++        library_dirs = [ GSL_LIB_DIR ],
+         sources = ['src/C/gsl.c'] )
+     extmods += [gsl];
+ 
+ if BUILD_FFTW:
+-    fftw = Extension('fftw', libraries = ['fftw3'] + BLAS_LIB,
+-        include_dirs = [ FFTW_INC_DIR ],
+-        library_dirs = [ FFTW_LIB_DIR, BLAS_LIB_DIR ],
+-        extra_link_args = BLAS_EXTRA_LINK_ARGS,
++    fftw = Extension('fftw', libraries = ['fftw3'],
++        library_dirs = [ FFTW_LIB_DIR ],
+         sources = ['src/C/fftw.c'] )
+     extmods += [fftw];
+ 
+ if BUILD_GLPK:
+     glpk = Extension('glpk', libraries = ['glpk'],
+-        include_dirs = [ GLPK_INC_DIR ],
+         library_dirs = [ GLPK_LIB_DIR ],
+         sources = ['src/C/glpk.c'] )
+     extmods += [glpk];
+ 
+ if BUILD_DSDP:
+-    dsdp = Extension('dsdp', libraries = ['dsdp'] + LAPACK_LIB + BLAS_LIB,
+-        include_dirs = [ DSDP_INC_DIR ],
+-        library_dirs = [ DSDP_LIB_DIR, BLAS_LIB_DIR ],
+-        extra_link_args = BLAS_EXTRA_LINK_ARGS,
++    dsdp = Extension('dsdp', libraries = ['dsdp'] + LAPACK_LIB,
++        library_dirs = [ DSDP_LIB_DIR ],
+         sources = ['src/C/dsdp.c'] )
+     extmods += [dsdp];
+ 
+ # Required modules
+ 
+-base = Extension('base', libraries = ['m'] + LAPACK_LIB + BLAS_LIB,
++base = Extension('base', libraries = ['m'] + LAPACK_LIB,
+     library_dirs = [ BLAS_LIB_DIR ],
+     define_macros = MACROS,
+     extra_link_args = BLAS_EXTRA_LINK_ARGS,
+@@ -142,7 +135,7 @@ blas = Extension('blas', libraries = BLAS_LIB,
+     extra_link_args = BLAS_EXTRA_LINK_ARGS,
+     sources = ['src/C/blas.c'] )
+ 
+-lapack = Extension('lapack', libraries = LAPACK_LIB + BLAS_LIB,
++lapack = Extension('lapack', libraries = LAPACK_LIB,
+     library_dirs = [ BLAS_LIB_DIR ],
+     define_macros = MACROS,
+     extra_link_args = BLAS_EXTRA_LINK_ARGS,
+@@ -177,7 +170,7 @@ if sys.maxsize > 2**31: MACROS += [('DLONG',None)]
+ 
+ if SUITESPARSE_EXT_LIB:
+     cholmod = Extension('cholmod',
+-        libraries = ['amd','colamd','suitesparseconfig','cholmod'],
++        libraries = ['amd','colamd','suitesparseconfig','cholmod'] + LAPACK_LIB,
+         include_dirs = [SUITESPARSE_INC_DIR],
+         library_dirs = [SUITESPARSE_LIB_DIR],
+         sources = [ 'src/C/cholmod.c' ])
+@@ -218,7 +211,7 @@ else:
+         glob('src/C/SuiteSparse/AMD/Source/*.c') )
+ 
+ misc_solvers = Extension('misc_solvers',
+-    libraries = LAPACK_LIB + BLAS_LIB,
++    libraries = ['m'] + LAPACK_LIB,
+     library_dirs = [ BLAS_LIB_DIR ],
+     define_macros = MACROS,
+     extra_link_args = BLAS_EXTRA_LINK_ARGS,

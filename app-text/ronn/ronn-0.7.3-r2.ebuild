@@ -24,6 +24,8 @@ ruby_add_rdepend "
 	>=dev-ruby/mustache-0.7.0
 	>=dev-ruby/rdiscount-1.5.8"
 
+ruby_add_bdepend ">=dev-ruby/hpricot-0.8.2 >=dev-ruby/rdiscount-1.5.8"
+
 all_ruby_prepare() {
 	# Avoid test failing due to changes in hash handling in ruby 1.8.7:
 	# https://github.com/rtomayko/ronn/issues/56

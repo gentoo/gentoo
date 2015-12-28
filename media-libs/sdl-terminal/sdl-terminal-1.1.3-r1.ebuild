@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-inherit base libtool autotools
+EAPI=5
+inherit eutils autotools
 
 MY_P="${P/sdl-/SDL_}"
 DESCRIPTION="library that provides a pseudo-ansi color terminal that can be used with any SDL application"
@@ -17,12 +17,11 @@ IUSE="static-libs"
 
 DEPEND="virtual/opengl
 	virtual/glu
-	>=media-libs/libsdl-1.2.4
+	>=media-libs/libsdl-1.2.4[opengl]
 	media-libs/sdl-ttf"
+RDEPEND=${DEPEND}
 
 S=${WORKDIR}/${MY_P}
-
-DOCS=( AUTHORS ChangeLog README )
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-nopython.patch
@@ -34,6 +33,7 @@ src_configure() {
 }
 
 src_install() {
-	default
-	use static-libs || prune_libtool_files
+	DOCS="AUTHORS ChangeLog README" \
+		default
+	prune_libtool_files
 }

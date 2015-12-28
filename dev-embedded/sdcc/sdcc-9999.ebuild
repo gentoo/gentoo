@@ -7,7 +7,7 @@ EAPI="5"
 inherit eutils toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
-	ESVN_REPO_URI="https://sdcc.svn.sourceforge.net/svnroot/sdcc/trunk/sdcc"
+	ESVN_REPO_URI="https://svn.code.sourceforge.net/p/sdcc/code/trunk/sdcc"
 	inherit subversion
 	docs_compile() { return 0; }
 else
@@ -20,9 +20,20 @@ fi
 DESCRIPTION="Small device C compiler (for various microprocessors)"
 HOMEPAGE="http://sdcc.sourceforge.net/"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2 ZLIB
+	non-free? ( MicroChip-SDCC )
+	packihx? ( public-domain )"
 SLOT="0"
-IUSE="+boehm-gc doc"
+IUSE="mcs51 z80 z180 r2k r3ka gbz80 tlcs90 ds390 ds400 pic14 pic16 hc08 s08 stm8
+ucsim device-lib packihx +sdcpp sdcdb sdbinutils non-free +boehm-gc doc"
+
+REQUIRED_USE="
+	mcs51? ( sdbinutils )
+	ds390? ( sdbinutils )
+	ds400? ( sdbinutils )
+	hc08?  ( sdbinutils )
+	s08?   ( sdbinutils )"
+
 RESTRICT="strip"
 
 RDEPEND="dev-libs/boost:=
@@ -41,12 +52,10 @@ if docs_compile ; then
 		)"
 fi
 
-S=${WORKDIR}/${PN}
-
 src_prepare() {
 	# Fix conflicting variable names between Gentoo and sdcc
 	find \
-		'(' -name 'Makefile*.in' -o -name configure ')' \
+		'(' -name 'Makefile*.in' -o -name 'configure' ')' \
 		-exec sed -r -i \
 			-e 's:\<(PORTDIR|ARCH)\>:SDCC\1:g' \
 			{} + || die
@@ -57,15 +66,8 @@ src_prepare() {
 		-e "/^AR =/s:=.*:=$(tc-getAR):" \
 		support/cpp/Makefile.in || die
 
-	# We'll install doc manually
-	sed -i -e '/SDCC_DOC/d' Makefile.in || die
-	sed -i -e 's/ doc//' sim/ucsim/packages_in.mk || die
-
 	# Make sure timestamps don't get messed up.
 	[[ ${PV} == "9999" ]] && find "${S}" -type f -exec touch -r . {} +
-
-	# workaround parallel build issues with lyx
-	mkdir -p "${HOME}"/.lyx
 }
 
 src_configure() {
@@ -77,6 +79,27 @@ src_configure() {
 		ac_cv_prog_AR="$(tc-getAR)" \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--without-ccache \
+		$(use_enable mcs51 mcs51-port) \
+		$(use_enable z80 z80-port) \
+		$(use_enable z180 z180-port) \
+		$(use_enable r2k r2k-port) \
+		$(use_enable r3ka r3ka-port) \
+		$(use_enable gbz80 gbz80-port) \
+		$(use_enable tlcs90 tlcs90-port) \
+		$(use_enable ds390 ds390-port) \
+		$(use_enable ds400 ds400-port) \
+		$(use_enable pic14 pic14-port) \
+		$(use_enable pic16 pic16-port) \
+		$(use_enable hc08 hc08-port) \
+		$(use_enable s08 s08-port) \
+		$(use_enable stm8 stm8-port) \
+		$(use_enable ucsim ucsim) \
+		$(use_enable device-lib device-lib) \
+		$(use_enable packihx packihx) \
+		$(use_enable sdcpp sdcpp) \
+		$(use_enable sdcdb sdcdb) \
+		$(use_enable sdbinutils sdbinutils) \
+		$(use_enable non-free non-free) \
 		$(use_enable boehm-gc libgc) \
 		$(docs_compile && use_enable doc || echo --disable-doc)
 }

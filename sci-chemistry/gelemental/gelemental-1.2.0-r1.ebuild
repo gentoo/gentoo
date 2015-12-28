@@ -1,12 +1,12 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
-inherit autotools-utils fdo-mime gnome2-utils eutils
+inherit autotools-utils fdo-mime flag-o-matic gnome2-utils eutils
 
-DESCRIPTION="Periodic table viewer that provides detailed information on the chemical elements"
+DESCRIPTION="Periodic table viewer with detailed information on the chemical elements"
 HOMEPAGE="http://freecode.com/projects/gelemental/"
 SRC_URI="
 	http://www.kdau.com/files/${P}.tar.bz2
@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="GPL-3 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc static-libs"
 
 RDEPEND="
@@ -45,6 +45,7 @@ PATCHES=(
 AUTOTOOLS_IN_SOURCE_BUILD=1
 
 src_configure() {
+	append-cxxflags -std=c++11 #566450
 	local myeconfargs=( $(use_enable doc api-docs) )
 	autotools-utils_src_configure
 }

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
 inherit cmake-utils eutils fdo-mime flag-o-matic python-any-r1 qt4-r2
@@ -12,8 +12,9 @@ if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="http://ftp.stack.nl/pub/users/dimitri/${P}.src.tar.gz" # switch to github?
+	SRC_URI="https://github.com/doxygen/doxygen/archive/Release_${PV//\./_}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+	S="${WORKDIR}/${PN}-Release_${PV//\./_}"
 fi
 SRC_URI+=" https://dev.gentoo.org/~xarthisius/distfiles/doxywizard.png"
 

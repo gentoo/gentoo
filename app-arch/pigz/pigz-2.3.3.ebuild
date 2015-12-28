@@ -12,7 +12,7 @@ SRC_URI="http://www.zlib.net/pigz/${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~sparc ~x86 ~amd64-linux ~sparc64-solaris"
+KEYWORDS="alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~sparc ~x86 ~amd64-linux ~ppc-macos ~sparc64-solaris"
 IUSE="static symlink test"
 
 LIB_DEPEND="sys-libs/zlib[static-libs(+)]"

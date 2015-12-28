@@ -30,11 +30,12 @@ media-gfx/graphviz python
 dev-qt/qtcore icu
 
 # Required by kde-plasma/kwin
-media-libs/mesa egl
+media-libs/mesa egl wayland
 
 # Allow certain KDE 4 components to be coinstalled with Plasma 5
 <dev-util/kdevelop-4.8.0 -gdbui
 kde-apps/kcontrol -handbook
+kde-apps/kde-wallpapers minimal
 kde-apps/kde4-l10n minimal
 kde-apps/kdeartwork-meta minimal
 kde-apps/kdebase-kioslaves minimal
@@ -43,6 +44,7 @@ kde-apps/kdebase-runtime-meta -crash-reporter minimal
 kde-apps/kdesu -handbook
 kde-apps/knetattach -handbook
 kde-apps/konsole:4 -handbook minimal
+kde-apps/kwalletmanager:4 minimal
 kde-apps/solid-runtime -bluetooth
 kde-base/baloo minimal
 kde-base/kactivities minimal
@@ -74,6 +76,7 @@ net-news/rssguard -qt4
 >=net-news/quiterss-0.17.7 -qt4
 net-p2p/bitcoin-qt -qt4
 >=net-p2p/qbittorrent-3.2.0 -qt4
+>=net-wireless/wpa_supplicant-2.5 -qt4
 >=sci-geosciences/qlandkartegt-1.8.0 -qt4
 sci-visualization/kst -qt4
 www-client/qupzilla -kde -qt4

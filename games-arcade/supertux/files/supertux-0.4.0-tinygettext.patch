@@ -1,0 +1,50 @@
+--- supertux-0.4.0.orig/external/tinygettext/CMakeLists.txt
++++ supertux-0.4.0/external/tinygettext/CMakeLists.txt
+@@ -59,7 +59,7 @@
+ )
+ 
+ ## Reveal library type choice to users
+-option(BUILD_SHARED_LIBS "Produce dynamic library instead of static archive" ON)
++option(BUILD_SHARED_LIBS "Produce dynamic library instead of static archive" OFF)
+ 
+ # TinyGetText library compilation
+ 
+@@ -127,14 +127,9 @@
+ ## Debug options
+ 
+ option(WERROR "Stops on first compiler warning in debug mode" OFF)
+-option(WARNINGS "Enable long list of warnings for compiler to check" ON)
++option(WARNINGS "Enable long list of warnings for compiler to check" OFF)
+ 
+ CHECK_CXX_FLAG(std=c++0x)
+-CHECK_CXX_FLAG(O3)
+-CHECK_CXX_FLAG(Wall)
+-CHECK_CXX_FLAG(Wextra)
+-CHECK_CXX_FLAG(Weffc++)
+-CHECK_CXX_FLAG(pedantic)
+ 
+ if(WARNINGS)
+   CHECK_CXX_FLAG(Wabi)
+@@ -194,22 +189,4 @@
+   endforeach(TEST)
+ ENDIF()
+ 
+-## Install tinygettext
+-
+-# use standardized variable name
+-set(LIB_SUBDIR "lib${LIB_SUFFIX}"
+-	CACHE STRING "Subdirectory of prefix into which libraries are installed (e.g., lib32, lib64)")
+-
+-## prepare tinygettext.pc
+-configure_file(tinygettext.pc.in tinygettext.pc @ONLY)
+-
+-install(TARGETS tinygettext
+-    RUNTIME DESTINATION bin
+-	ARCHIVE DESTINATION ${LIB_SUBDIR}
+-	LIBRARY DESTINATION ${LIB_SUBDIR})
+-install(FILES ${TINYGETTEXT_HEADERS}
+-	DESTINATION include/tinygettext)
+-install(FILES ${tinygettext_BINARY_DIR}/tinygettext.pc
+-	DESTINATION ${LIB_SUBDIR}/pkgconfig)
+-
+ # EOF #

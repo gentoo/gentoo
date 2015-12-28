@@ -1,9 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
-
 JAVA_PKG_IUSE="doc source test"
 
 inherit eutils java-pkg-2 java-ant-2 versionator
@@ -14,20 +13,28 @@ SRC_URI="https://github.com/jnr/jffi/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="|| ( Apache-2.0 LGPL-3 )"
 SLOT="1.0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc ~ppc64 x86"
 IUSE=""
 
-COMMON_DEP="
+CDEPEND="
 	virtual/libffi"
-RDEPEND="${COMMON_DEP}
-	>=virtual/jre-1.5"
-DEPEND="${COMMON_DEP}
-	>=virtual/jdk-1.5
+
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
+
+DEPEND="
+	${CDEPEND}
+	>=virtual/jdk-1.6
 	virtual/pkgconfig
 	test? (
 		dev-java/ant-junit:0
 		dev-java/junit:4
 	)"
+
+PATCHES=(
+	"${FILESDIR}"/${P}_no-werror.patch
+)
 
 src_unpack() {
 	unpack ${A}
@@ -35,11 +42,13 @@ src_unpack() {
 }
 
 java_prepare() {
-	cp "${FILESDIR}"/${PN}_maven-build.xml build.xml || die
-	epatch "${FILESDIR}"/${P}_no-werror.patch
-	sed -i -e 's/-Werror //' libtest/GNUmakefile || die
+	java-pkg_clean
 
-	find "${WORKDIR}" -iname '*.jar' -delete || die
+	cp "${FILESDIR}"/${PN}_maven-build.xml build.xml || die
+
+	epatch "${PATCHES[@]}"
+
+	sed -i -e 's/-Werror //' libtest/GNUmakefile || die
 
 	# Fix build with GCC 4.7 #421501
 	sed -i -e "s|-mimpure-text||g" jni/GNUmakefile libtest/GNUmakefile || die

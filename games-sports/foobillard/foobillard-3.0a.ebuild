@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit eutils autotools games
+inherit eutils flag-o-matic autotools toolchain-funcs games
 
 DESCRIPTION="8ball, 9ball, snooker and carambol game"
 HOMEPAGE="http://foobillard.sourceforge.net/"
@@ -19,10 +19,10 @@ DEPEND="x11-libs/libXaw
 	virtual/opengl
 	virtual/glu
 	>=media-libs/freetype-2.0.9
-	media-libs/libpng
-	sdl? ( media-libs/libsdl )
+	media-libs/libpng:0
+	sdl? ( media-libs/libsdl[video] )
 	!sdl? ( media-libs/freeglut )"
-RDEPEND="${DEPEND}"
+RDEPEND=${DEPEND}
 
 src_prepare() {
 	epatch \
@@ -37,6 +37,7 @@ src_prepare() {
 }
 
 src_configure() {
+	use video_cards_nvidia && append-ldflags -L/usr/$(get_libdir)/opengl/nvidia/lib
 	egamesconf \
 		--enable-sound \
 		$(use_enable sdl SDL) \

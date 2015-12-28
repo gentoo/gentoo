@@ -9,7 +9,8 @@ inherit eutils wxwidgets
 
 DESCRIPTION="flashtool for the multi purpose programming adapter usbprog"
 HOMEPAGE="http://www.embedded-projects.net/index.php?page_id=215"
-SRC_URI="mirror://berlios/${PN}/${P}.tar.bz2"
+#SRC_URI="mirror://berlios/${PN}/${P}.tar.bz2"
+SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

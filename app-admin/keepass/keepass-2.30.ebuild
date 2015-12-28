@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_PN}-${PV}-Source.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="aot"
 
 COMMON_DEPEND=">=dev-lang/mono-2.10.5"

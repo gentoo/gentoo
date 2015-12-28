@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-inherit autotools eutils
+EAPI=5
+inherit autotools eutils flag-o-matic
 
 DESCRIPTION="A background browser and setter for X"
 HOMEPAGE="http://projects.l3ib.org/nitrogen/"
@@ -29,10 +29,8 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cxxflags -std=c++11
 	econf \
-		--disable-dependency-tracking \
 		$(use_enable nls) \
 		$(use_enable xinerama)
 }
-
-DOCS=( AUTHORS ChangeLog NEWS README )
