@@ -79,7 +79,7 @@ RESTRICT="test"
 S="${WORKDIR}"/${MY_P}
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.16-desktop.patch
+	"${FILESDIR}"/${P}-desktop.patch
 	)
 
 src_prepare() {
