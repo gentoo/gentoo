@@ -4,8 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby19"
-#RUBY_FAKEGEM_RECIPE_TEST="rake"
+USE_RUBY="ruby20 ruby21"
 RUBY_FAKEGEM_RECIPE_TEST=""
 RUBY_FAKEGEM_TASK_TEST="spec"
 
@@ -24,8 +23,8 @@ ruby_add_rdepend "dev-ruby/json
 	dev-ruby/termcolor
 	dev-ruby/rubytter
 	dev-ruby/notify
-	dev-ruby/activerecord
-	dev-ruby/builder"
+	dev-ruby/activerecord:4.1
+	dev-ruby/builder:3.1"
 #	dev-ruby/fluent-logger
 ruby_add_bdepend "
 	doc? ( dev-ruby/rdoc )
