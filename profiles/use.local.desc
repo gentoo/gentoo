@@ -6627,6 +6627,8 @@ sci-chemistry/apbs:fetk - Include support for FeTK
 sci-chemistry/apbs:iapbs - C/C++/Fortran interface
 sci-chemistry/apbs:tools - Install optional tools
 sci-chemistry/avogadro:glsl - Enable glsl features via GLEW.
+sci-chemistry/avogadro2:rpc - Enable RPC server
+sci-chemistry/avogadro2:vtk - include vtk support
 sci-chemistry/ball:cuda - Include cuda support
 sci-chemistry/ball:sql - Include SQL database support
 sci-chemistry/ball:webkit - Uses dev-qt/qtwebkit for drawing
