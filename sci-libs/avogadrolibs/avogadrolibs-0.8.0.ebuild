@@ -38,7 +38,7 @@ DEPEND="${DEPEND}
 	dev-cpp/eigen:3
 	test? ( dev-cpp/gtest )"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.7.2-6464.patch )
+PATCHES=( "${FILESDIR}"/${PN}-0.7.2-6464.patch "${FILESDIR}/"${P}-underlinking.patch )
 
 src_configure() {
 	local mycmakeargs=(
