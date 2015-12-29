@@ -525,7 +525,7 @@ app-crypt/gentoo-keys 201511260245: A Openpgp/gpg keyring of official Gentoo rel
 app-crypt/gifshuffle 2.0: GIF colourmap steganography
 app-crypt/gkeys 0.1-r1 9999: An OpenPGP/GPG key management tool and python libs
 app-crypt/gkeys-gen 0.1-r1 9999: Tool for generating OpenPGP/GPG keys using a specifications file
-app-crypt/gnupg 1.4.19 2.0.26-r3 2.0.27 2.0.27-r1 2.0.28 2.0.29 2.0.29-r1 2.1.8 2.1.9 2.1.9-r1 2.1.10 2.1.10-r1: The GNU Privacy Guard, a GPL OpenPGP implementation
+app-crypt/gnupg 1.4.19 1.4.20 2.0.26-r3 2.0.27 2.0.27-r1 2.0.28 2.0.29 2.0.29-r1 2.1.8 2.1.9 2.1.9-r1 2.1.10 2.1.10-r1: The GNU Privacy Guard, a GPL OpenPGP implementation
 app-crypt/gnupg-pkcs11-scd 0.7.3: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.4 0.9.7 0.9.9: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
@@ -5179,10 +5179,10 @@ dev-perl/Business-ISMN 1.130.0: International Standard Music Numbers
 dev-perl/Business-ISSN 0.910.0-r1: Object and functions to work with International Standard Serial Numbers
 dev-perl/Business-Tax-VAT-Validation 1.20.0: A class for european VAT numbers validation
 dev-perl/Business-UPS 2.10.0-r1: A UPS Interface Module
-dev-perl/CDB_File 0.970.0-r1 0.980.0: Tie to CDB (Bernstein's constant DB) files
-dev-perl/CDDB 1.220.0-r1 1.222.0-r1: high-level interface to cddb/freedb protocol
+dev-perl/CDB_File 0.980.0: Tie to CDB (Bernstein's constant DB) files
+dev-perl/CDDB 1.222.0-r1: high-level interface to cddb/freedb protocol
 dev-perl/CDDB-File 1.50.0-r1: Parse a CDDB/freedb data file
-dev-perl/CDDB_get 2.270.0-r1 2.280.0-r1: Read the CDDB entry for an audio CD in your drive
+dev-perl/CDDB_get 2.280.0-r1: Read the CDDB entry for an audio CD in your drive
 dev-perl/CGI 3.650.0 4.210.0 4.220.0 4.220.0-r1: Simple Common Gateway Interface Class
 dev-perl/CGI-Ajax 0.707.0: a perl-specific system for writing Asynchronous web applications
 dev-perl/CGI-Builder 1.360.0-r1: Framework to build simple or complex web-apps
@@ -5208,9 +5208,9 @@ dev-perl/Cache 2.40.0-r1: the Cache interface
 dev-perl/Cache-Cache 1.60.0-r1: Generic cache interface and implementations
 dev-perl/Cache-FastMmap 1.400.0: Uses an mmaped file to act as a shared memory interprocess cache
 dev-perl/Cache-Memcached 1.290.0-r1 1.300.0-r1: Perl API for memcached
-dev-perl/Cache-Memcached-Fast 0.210.0-r1 0.230.0: Perl client for memcached, in C language
+dev-perl/Cache-Memcached-Fast 0.230.0: Perl client for memcached, in C language
 dev-perl/Cache-Simple-TimedExpiry 0.270.0-r1: A lightweight cache with timed expiration
-dev-perl/Cairo 1.103.0 1.105.0 1.106.0: Perl interface to the cairo library
+dev-perl/Cairo 1.103.0 1.106.0: Perl interface to the cairo library
 dev-perl/Calendar-Simple 1.210.0-r1: Perl extension to create simple calendars
 dev-perl/Canary-Stability 2006: Canary to check perl compatibility for schmorp's modules
 dev-perl/Capture-Tiny 0.300.0: Capture STDOUT and STDERR from Perl, XS or external programs
