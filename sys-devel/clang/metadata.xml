@@ -2,8 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
-		<email>clang@gentoo.org</email>
-		<name>Gentoo clang support project</name>
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
+	<maintainer>
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
 	</maintainer>
 	<longdescription>The goal of the Clang project is to create a new C, C++, Objective C and Objective C++ front-end for the LLVM compiler.
 
