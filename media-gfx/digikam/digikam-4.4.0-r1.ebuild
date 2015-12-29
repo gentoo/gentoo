@@ -82,6 +82,7 @@ RESTRICT=test
 PATCHES=(
 	"${FILESDIR}/${P}-libkexiv2.patch"
 	"${FILESDIR}/${P}-hang.patch"
+	"${FILESDIR}/${PN}-4.14.0-lensfun.patch" # bug 566624
 )
 
 src_prepare() {
