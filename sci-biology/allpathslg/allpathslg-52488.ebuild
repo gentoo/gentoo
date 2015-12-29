@@ -19,7 +19,7 @@ IUSE="openmp"
 DEPEND="
 	dev-libs/boost
 	!sci-biology/allpaths
-	sci-biology/vaal"
+	!sci-biology/vaal"
 RDEPEND=""
 
 PATCHES=("${FILESDIR}/${P}_fix-buildsystem.patch" "${FILESDIR}/${P}_remove-namespace-std.patch")
