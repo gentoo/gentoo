@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<herd>accessibility</herd>
 	<use>
-		<flag name='kdepim'>Use <pkg>kde-base/kdepimlibs</pkg></flag>
+		<flag name='kdepim'>Use <pkg>kde-apps/kdepimlibs</pkg></flag>
 		<flag name='opencv'>Use <pkg>media-libs/opencv</pkg></flag>
 		<flag name='sphinx'>Build sphinx backend (pulls <pkg>app-accessibility/julius</pkg> if disabled</flag>
 	</use>

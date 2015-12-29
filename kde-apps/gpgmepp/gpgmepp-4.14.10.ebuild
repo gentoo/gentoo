@@ -21,7 +21,7 @@ DEPEND="
 # boost is not linked to, but headers which include it are installed
 # bug #418071
 RDEPEND="${DEPEND}
-	!kde-base/kdepimlibs:4
+	!kde-apps/kdepimlibs:4
 "
 
 PATCHES=( "${FILESDIR}/kdepimlibs-4.9.1-boostincludes.patch" )

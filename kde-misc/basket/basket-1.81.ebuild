@@ -17,7 +17,7 @@ SLOT="4"
 IUSE="debug crypt"
 
 DEPEND="
-	$(add_kdebase_dep kdepimlibs)
+	$(add_kdeapps_dep kdepimlibs)
 	media-libs/qimageblitz
 	x11-libs/libX11
 	crypt? ( >=app-crypt/gpgme-1.0 )

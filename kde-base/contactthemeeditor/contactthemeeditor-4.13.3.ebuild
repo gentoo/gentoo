@@ -14,8 +14,8 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="debug"
 
 DEPEND="
-	$(add_kdebase_dep kaddressbook)
-	$(add_kdebase_dep kmail)
+	$(add_kdeapps_dep kaddressbook)
+	$(add_kdeapps_dep kmail)
 "
 RDEPEND="${DEPEND}"
 

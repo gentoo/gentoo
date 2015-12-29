@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-python/PyQt4-4.11.1[${PYTHON_USEDEP},dbus,declarative,script,sql,svg,webkit,X]
 	>=dev-python/sip-4.16.2:=[${PYTHON_USEDEP}]
 	$(add_kdebase_dep kdelibs 'opengl')
-	akonadi? ( $(add_kdebase_dep kdepimlibs) )
+	akonadi? ( $(add_kdeapps_dep kdepimlibs) )
 "
 DEPEND="${RDEPEND}
 	dev-lang/python-exec:2[${PYTHON_USEDEP}]
