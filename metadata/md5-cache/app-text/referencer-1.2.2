@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure postinst postrm prepare setup
+DEPEND=>=app-text/poppler-0.12.3-r3:=[cairo] >=dev-cpp/gtkmm-2.8:* >=dev-cpp/libglademm-2.6.0 >=dev-cpp/gconfmm-2.14.0 >=dev-libs/boost-1.52.0-r4 >=app-text/gnome-doc-utils-0.3.2 virtual/pkgconfig >=dev-lang/perl-5.8.1 dev-perl/libxml-perl dev-util/intltool app-text/rarian
+DESCRIPTION=Application to organise documents or references, and to generate BibTeX files
+EAPI=5
+HOMEPAGE=https://launchpad.net/referencer
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=app-text/poppler-0.12.3-r3:=[cairo] >=dev-cpp/gtkmm-2.8:* >=dev-cpp/libglademm-2.6.0 >=dev-cpp/gconfmm-2.14.0 >=dev-libs/boost-1.52.0-r4
+SLOT=0
+SRC_URI=https://launchpad.net/referencer/1./1.2.2/+download/referencer-1.2.2.tar.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:python-single-r1 src_prepare:- src_configure:-
+_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	d9a74cb2c52bff89c9eeb50593e0316b	python-utils-r1	30887c5e8630bbf27b5cf0fd74564323	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=3c9c4e240884673a9af6d8e59b102265
