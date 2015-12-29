@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI="5"
 
 GENTOO_PATCH=2
 
@@ -10,7 +10,6 @@ DESCRIPTION="A somewhat comprehensive collection of Linux man pages"
 HOMEPAGE="https://www.kernel.org/doc/man-pages/"
 SRC_URI="mirror://kernel/linux/docs/man-pages/Archive/${P}.tar.xz
 	mirror://kernel/linux/docs/man-pages/${P}.tar.xz
-	http://man7.org/linux/man-pages/download/${P}.tar.xz
 	mirror://gentoo/man-pages-gentoo-${GENTOO_PATCH}.tar.bz2
 	https://dev.gentoo.org/~cardoe/files/man-pages-gentoo-${GENTOO_PATCH}.tar.bz2"
 

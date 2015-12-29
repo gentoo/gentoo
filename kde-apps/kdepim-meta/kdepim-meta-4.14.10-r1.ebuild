@@ -32,7 +32,7 @@ RDEPEND="
 	$(add_kdeapps_dep ktimetracker)
 	$(add_kdeapps_dep ktnef)
 	nls? (
-		$(add_kdeapps_dep kde4-l10n '' 4.14.3)
-		$(add_kdeapps_dep kdepim-l10n '' 4.14.3)
+		$(add_kdeapps_dep kde4-l10n '' 4.14.3-r1)
+		$(add_kdeapps_dep kdepim-l10n '' 4.14.3-r1)
 	)
 "
