@@ -38,9 +38,9 @@ src_install() {
 	local udevdir="$(get_udevdir)"
 	dodir "${udevdir}/rules.d"
 	# generate-udev-rules must be run from inside tools directory
-	pushd tools > /dev/null
+	pushd tools > /dev/null || die
 	./generate-udev-rules > "${ED}/${udevdir}/rules.d/65-libwacom.rules" || die "generating udev rules failed"
-	popd > /dev/null
+	popd > /dev/null || die
 	use doc && dohtml -r doc/html/*
 	prune_libtool_files
 }
