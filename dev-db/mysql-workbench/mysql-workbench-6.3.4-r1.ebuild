@@ -44,7 +44,7 @@ CDEPEND="${PYTHON_DEPS}
 		dev-libs/libpcre
 		>=sci-libs/gdal-1.11.1-r1[-mdb]
 		virtual/opengl
-		>=dev-lang/lua-5.1[deprecated]
+		>=dev-lang/lua-5.1:0[deprecated]
 		|| ( sys-libs/e2fsprogs-libs dev-libs/ossp-uuid )
 		dev-libs/tinyxml[stl]
 		dev-db/mysql-connector-c++
