@@ -5193,7 +5193,7 @@ dev-perl/CGI-FormBuilder 3.90.0: Extremely fast, reliable form generation and pr
 dev-perl/CGI-PSGI 0.150.0-r1: Adapt CGI.pm to the PSGI protocol
 dev-perl/CGI-Session 4.480.0-r1: persistent session data in CGI applications
 dev-perl/CGI-Simple 1.113.0-r1 1.115.0: A Simple totally OO CGI interface that is CGI.pm compliant
-dev-perl/CHI 0.590.0 0.600.0: Unified cache handling interface
+dev-perl/CHI 0.600.0: Unified cache handling interface
 dev-perl/CPAN-Changes 0.270.0 0.300.0 0.400.2: Read and write Changes files
 dev-perl/CPAN-Checksums 2.80.0-r1: Write a CHECKSUMS file for a directory as on CPAN
 dev-perl/CPAN-Meta-Check 0.9.0-r1 0.12.0: Verify requirements in a CPAN::Meta object
@@ -5220,7 +5220,7 @@ dev-perl/Carp-Clan 6.40.0-r1: Report errors from perspective of caller of a clan
 dev-perl/Chart 2.4.6-r1: The Perl Chart Module
 dev-perl/Chart-Math-Axis 1.60.0-r1: Implements an algorithm to find good values for chart axis
 dev-perl/Cisco-IPPhone 0.50.0-r1: Cisco IP Phone interface using XML Objects
-dev-perl/Cisco-Reconfig 0.910.0-r1 0.911.0: Parse and generate Cisco configuration files
+dev-perl/Cisco-Reconfig 0.911.0: Parse and generate Cisco configuration files
 dev-perl/Class-Accessor 0.340.0-r1: Automated accessor generation
 dev-perl/Class-Accessor-Chained 0.10.0-r1: Perl module to make chained class accessors
 dev-perl/Class-Accessor-Grouped 0.100.100 0.100.120: Lets you build groups of accessors
