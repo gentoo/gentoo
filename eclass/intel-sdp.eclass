@@ -318,7 +318,28 @@ _isdp_run-test() {
 	fi
 }
 
-# @FUNCTION: intel-sdp_pkg_pretend
+# @FUNCTION: convert2intel_arch
+# @USAGE: <arch>
+# @DESCRIPTION:
+# Convert between portage arch (e.g. amd64, x86) and intel arch
+# nomenclature (e.g. intel64, ia32)
+convert2intel_arch() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	case $1 in
+		amd64|abi_x86_64|*amd64*)
+			echo "intel64"
+			;;
+		x86|abi_x86_32|*x86*)
+			echo "ia32"
+			;;
+		*)
+			die "Abi \'$1\' is unsupported"
+			;;
+	esac
+}
+
+# @FUNCTION: intel-sdp-r1_pkg_pretend
 # @DESCRIPTION:
 # @CODE
 # * Check that the user has a (valid) license file before going on.
