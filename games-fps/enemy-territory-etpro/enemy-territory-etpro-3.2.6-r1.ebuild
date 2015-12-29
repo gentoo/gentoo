@@ -2,17 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 
 GAME="enemy-territory"
-MOD_DESC="a series of minor additions to Enemy Territory to make it more fun"
+MOD_DESC="Minor additions to Enemy Territory to make it more fun"
 MOD_NAME="ETPro"
 MOD_DIR="etpro"
 
 inherit games games-mods
 
-HOMEPAGE="http://bani.anime.net/etpro/"
-SRC_URI="http://etpro.anime.net/etpro-${PV//./_}.zip"
+HOMEPAGE="http://etpro.anime.net/"
+SRC_URI="http://bani.anime.net/etpro/etpro-${PV//./_}.zip
+	http://www.enemyterritory.sk/files/etpro-${PV//./_}.zip"
 
 LICENSE="all-rights-reserved"
 KEYWORDS="amd64 x86"
