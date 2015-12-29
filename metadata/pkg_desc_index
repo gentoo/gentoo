@@ -5263,7 +5263,7 @@ dev-perl/Class-Unload 0.70.0-r1: Unload a class
 dev-perl/Class-Virtual 0.60.0-r1: Base class for virtual base classes
 dev-perl/Class-WhiteHole 0.40.0-r1: base class to treat unhandled method calls as errors
 dev-perl/Class-XPath 1.400.0-r1: adds xpath matching to object trees
-dev-perl/Class-XSAccessor 1.180.0 1.190.0: Generate fast XS accessors without runtime compilation
+dev-perl/Class-XSAccessor 1.190.0: Generate fast XS accessors without runtime compilation
 dev-perl/Clipboard 0.130.0-r1: Copy and paste with any OS
 dev-perl/Clone 0.370.0 0.380.0: Recursively copy Perl datatypes
 dev-perl/Color-Calc 1.73.0: Simple calculations with RGB colors
@@ -6384,7 +6384,7 @@ dev-perl/cache-mmap 0.110.0-r1: Shared data cache using memory mapped files
 dev-perl/capitalization 0.30.0-r1: no capitalization on method names
 dev-perl/cdk-perl 20141106: Perl extension for Cdk
 dev-perl/class-loader 2.30.0-r1: Load modules and create objects on demand
-dev-perl/common-sense 3.720.0-r1 3.730.0 3.740.0: Save a tree AND a kitten, use common::sense!
+dev-perl/common-sense 3.720.0-r1 3.740.0: Save a tree AND a kitten, use common::sense!
 dev-perl/constant-boolean 0.20.0-r1: Define TRUE and FALSE constants
 dev-perl/convert-ascii-armour 1.400.0-r1: Convert binary octets into ASCII armoured messages
 dev-perl/convert-pem 0.80.0-r1: Read/write encrypted ASN.1 PEM files
