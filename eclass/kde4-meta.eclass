@@ -28,7 +28,7 @@ case ${KMNAME} in
 		case ${PN} in
 			akregator|kaddressbook|kjots|kmail|knode|knotes|korganizer|ktimetracker)
 				IUSE+=" +kontact"
-				RDEPEND+=" kontact? ( $(add_kdebase_dep kontact) )"
+				RDEPEND+=" kontact? ( $(add_kdeapps_dep kontact) )"
 				;;
 		esac
 		;;

@@ -36,7 +36,7 @@ RDEPEND=">=dev-libs/glib-2.24.0:2
 		( >=gnome-base/libgnome-2.14.0
 		>=gnome-base/libgnomeui-2.14.0 ) ) )
 	gstreamer? ( >=media-libs/gst-plugins-base-0.10.21.3:0.10 )
-	kde? ( kontact? ( $(add_kdebase_dep kdepimlibs) ) )
+	kde? ( kontact? ( $(add_kdeapps_dep kdepimlibs) ) )
 	ldap? ( dev-libs/cyrus-sasl:2
 		net-nds/openldap )
 	libnotify? ( x11-libs/libnotify )

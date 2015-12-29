@@ -16,7 +16,7 @@ KEYWORDS="amd64 ~arm ppc ppc64 x86"
 IUSE="debug"
 
 DEPEND="
-	$(add_kdebase_dep kdepimlibs '' 4.14)
+	$(add_kdeapps_dep kdepimlibs '' 4.14)
 	dev-libs/qjson
 "
 RDEPEND="${DEPEND}"

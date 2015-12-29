@@ -31,7 +31,7 @@ RDEPEND="
 	x11-libs/libXau
 	x11-libs/libXext
 	x11-libs/libXdmcp
-	system-libs? ( media-libs/libsdl )"
+	system-libs? ( media-libs/libsdl[sound,video] )"
 DEPEND=""
 
 QA_PREBUILT="${GAMES_PREFIX_OPT:1}/${PN}/lib/${MY_PN}.bin.x86"
@@ -55,10 +55,8 @@ src_prepare() {
 	fi
 	sed \
 		-e "s:GAMEDIR:${GAMES_PREFIX_OPT}/${PN}:g" \
-		"${FILESDIR}"/${MY_PN} > "${T}"/${MY_PN} \
-		|| die "sed failed"
-	echo "int chdir(const char *d) { return 0; }" > chdir.c \
-		|| die "echo failed"
+		"${FILESDIR}"/${MY_PN} > "${T}"/${MY_PN} || die
+	echo "int chdir(const char *d) { return 0; }" > chdir.c || die
 }
 
 src_compile() {

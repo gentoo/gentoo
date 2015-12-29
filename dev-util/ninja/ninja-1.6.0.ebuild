@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 
 inherit bash-completion-r1 elisp-common python-any-r1 toolchain-funcs
 
@@ -17,7 +17,7 @@ else
 fi
 
 DESCRIPTION="A small build system similar to make"
-HOMEPAGE="https://github.com/martine/ninja"
+HOMEPAGE="https://ninja-build.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
