@@ -2872,7 +2872,7 @@ dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-contrib 1.1.13 1.1.14: Contribution database for the m17n library
 dev-db/m17n-db 1.5.2 1.5.5 1.6.2-r1 1.6.3 1.6.4: Database for the m17n library
 dev-db/maatkit 7540-r1: essential command-line utilities for MySQL
-dev-db/mariadb 5.5.46 5.5.47 10.0.21 10.0.22 10.0.22-r1 10.0.23 10.1.9 10.1.9-r1: An enhanced, drop-in replacement for MySQL
+dev-db/mariadb 5.5.46 5.5.47 10.0.21 10.0.22 10.0.22-r1 10.0.23 10.1.9 10.1.9-r1 10.1.10: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-galera 10.0.22: An enhanced, drop-in replacement for MySQL with Galera Replication
 dev-db/maxscale 1.2.0: A content aware, plug-able MySQL proxy server
 dev-db/metakit 2.4.9.7-r2: Embedded database library
@@ -6669,7 +6669,7 @@ dev-php/pecl-timezonedb 2014.7 2015.7: Timezone Database to be used with PHP's d
 dev-php/pecl-translit 0.6.1-r1: Transliterates non-latin character sets to latin
 dev-php/pecl-uploadprogress 1.0.3.1-r1 1.0.3.1-r2: An extension to track progress of a file upload
 dev-php/pecl-uuid 1.0.3-r2 1.0.4: A wrapper around libuuid
-dev-php/pecl-xdiff 1.5.2-r3: PHP extension for generating diff files
+dev-php/pecl-xdiff 1.5.2-r3 2.0.0: PHP extension for generating diff files
 dev-php/pecl-xrange 1.3.2-r1: Implementation of weak references
 dev-php/pecl-yaml 1.2.0 2.0.0_rc5: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
 dev-php/pecl-yaz 1.1.6 1.1.9: This extension implements a Z39.50 client for PHP using the YAZ toolkit
