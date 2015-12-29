@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="5"
+EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit eutils python-single-r1 vcs-snapshot
@@ -36,36 +37,19 @@ src_compile() {
 src_install() {
 	dodoc CHANGES.txt README.txt TODO.txt
 	newicon icons/icon.xpm wxglade.xpm
-	#|| die "installing wxglade.xpm failed"
+
 	doman "${S}"/debian/wxglade.1
-	#|| die "installing man failed"
-	rm -rf "${S}"/debian || die
+
 	dohtml -r "${S}"/docs/*
-	#|| die "installing docs failied"
-	rm -rf "${S}"/docs || die
 
-	#python_copy_sources
+	rm -r "${S}"/{docs,debian} || die
 
-	#installation() {
-		pydir=$(python_get_sitedir)/${PN}
-		insinto "${pydir}"
-		doins "${S}"/credits.txt
-		#|| die "installing credits.txt failed"
-		doins -r ./*
-		#|| die "installing failed"
-		dosym /usr/share/doc/${PF}/html "${pydir}"/docs
-		#|| die "doc symlink failed"
-		fperms 775 "${pydir}"/wxglade.py
-		#dosym "${pydir}"/wxglade.py /usr/bin/wxglade
-		#-$(python_get_version)
-		#\ || die "main symlink failed"
-	#}
-	#python_execute_function -s installation
+	python_moduleinto ${PN}
+	python_domodule *
 
-	#python_generate_wrapper_scripts -E -f -q "${D}"usr/bin/wxglade
-	#python_wrapper_setup
-	python_newscript wxglade.py wxglade
+	dosym /usr/share/doc/${PF}/html "$(python_get_sitedir)"/${PN}/docs
+
+	make_wrapper ${PN} "${EPYTHON} $(python_get_sitedir)/${PN}/${PN}.py"
 
 	make_desktop_entry wxglade wxGlade wxglade "Development;GUIDesigner"
 }
-
