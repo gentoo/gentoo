@@ -29,5 +29,6 @@ DEPEND="${RDEPEND}
 	test? (
 		>=virtual/perl-Test-Simple-0.980.0
 		dev-perl/Test-Warn
+		dev-perl/Test-NoWarnings
 	)
 "

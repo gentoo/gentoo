@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=LEEJO
-MODULE_VERSION=4.21
+DIST_AUTHOR=LEEJO
+DIST_VERSION=4.25
 inherit perl-module
 
 DESCRIPTION="Simple Common Gateway Interface Class"
@@ -29,7 +29,6 @@ DEPEND="${RDEPEND}
 	test? (
 		>=virtual/perl-Test-Simple-0.980.0
 		dev-perl/Test-Warn
+		dev-perl/Test-NoWarnings
 	)
 "
-
-SRC_TEST="do parallel"
