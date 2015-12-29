@@ -249,7 +249,7 @@ app-arch/createrepo 0.10.3 0.10.4: Creates a common rpm-metadata repository
 app-arch/deb2targz 1-r2: Convert a .deb file to a .tar.gz archive
 app-arch/defluff 0.3.2: deflate huffman optimizer
 app-arch/deltarpm 3.6_pre20110223-r1: tools to create and apply deltarpms
-app-arch/dpkg 1.17.25 1.17.26 1.18.3: Package maintenance system for Debian
+app-arch/dpkg 1.17.25 1.17.26 1.18.4: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
 app-arch/dump 0.4.44-r1 0.4.44-r2: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.8.0 1.8.0-r1 1.8.1-r1: Engrampa archive manager for MATE
@@ -18102,7 +18102,7 @@ x11-misc/redshift 1.10: A screen color temperature adjusting software
 x11-misc/rendercheck 1.4 1.5: Tests for compliance with X RENDER extension
 x11-misc/revelation 0.4.14-r1: A password manager for GNOME
 x11-misc/rodent 4.9.2 5.3.16.3: A fast, small and powerful file manager and graphical shell
-x11-misc/rofi 0.15.10 0.15.11 0.15.12: A window switcher, run dialog and dmenu replacement
+x11-misc/rofi 0.15.11 0.15.12: A window switcher, run dialog and dmenu replacement
 x11-misc/rss-glx 0.9.1: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/screen-message 0.23: Display a multi-line message large, fullscreen, black on white
 x11-misc/screengrab 1.0 1.2.1-r1: Qt application for getting screenshots
