@@ -2,7 +2,13 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>net-irc</herd>
-<use>
-	<flag name='ident'>Enables support for <pkg>net-libs/libident</pkg></flag>
-</use>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>gentoo@blackphoenix.de</email>
+		<name>Moritz Kick</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
+	</maintainer>
+	<use>
+		<flag name='ident'>Enables support for <pkg>net-libs/libident</pkg></flag>
+	</use>
 </pkgmetadata>
