@@ -1,0 +1,16 @@
+ avogadro/icons/avogadro2.desktop | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/avogadro/icons/avogadro2.desktop b/avogadro/icons/avogadro2.desktop
+index 940a21b..a88c5fb 100644
+--- a/avogadro/icons/avogadro2.desktop
++++ b/avogadro/icons/avogadro2.desktop
+@@ -6,6 +6,6 @@ Exec=avogadro2 %f
+ Icon=avogadro2
+ Terminal=false
+ Type=Application
+-Categories=Qt;Science;Chemistry;Physics;Education;
++Categories=Qt;Science;Chemistry;Physics;
+ StartupNotify=true
+-MimeType=chemical/x-cml;chemical/x-xyz
++MimeType=chemical/x-cml;chemical/x-xyz;
