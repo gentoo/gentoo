@@ -34,6 +34,7 @@ COMMON_DEPEND="
 		)
 		oqgraph? ( >=dev-libs/boost-1.40.0:0= dev-libs/judy:0= )
 		pam? ( virtual/pam:0= )
+		tokudb? ( app-arch/snappy )
 	)
 	>=dev-libs/libpcre-8.35:3=
 "
