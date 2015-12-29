@@ -1,0 +1,39 @@
+Last-Update: 2015-10-24
+Forwarded: not-needed
+Bug-Upstream: https://bugs.mysql.com/bug.php?id=78668
+From: Marcin Szalowicz
+Author: Dmitry Smirnov <onlyjob@member.fsf.org>
+Description: fix FTBFS
+ ~~~~
+ library/forms/view.cpp:515:32: error: cannot convert 'boost::signals2::signal<bool()>::result_type {aka boost::optional<bool>}' to 'bool' in return
+      return _signal_mouse_leave();
+                                 ^
+ library/forms/CMakeFiles/mforms.dir/build.make:1865: recipe for target 'library/forms/CMakeFiles/mforms.dir/view.cpp.o' failed
+ ~~~~
+
+--- a/library/forms/swig/mforms.i
++++ b/library/forms/swig/mforms.i
+@@ -532,9 +532,9 @@
+ 	void add_##method(PyObject *callback) { signal->connect(pycall_void_toolbaritem_fun(callback)); }
+ 
+ #define SWIG_ADD_SIGNAL_BOOL_INT_CALLBACK(method, signal)\
+         void add_##method(PyObject *callback) { signal->connect(pycall_bool_int_fun(callback)); }\
+-        bool call_##method(int i) { return (*signal)(i); }
++        bool call_##method(int i) { return *( (*signal)(i) ); }
+ 
+ #define SWIG_ADD_SIGNAL_VOID_ENTRYACTION_CALLBACK(method, signal)\
+ 	void add_##method(PyObject *callback) { signal->connect(pycall_void_entryaction_fun(callback)); }
+ 
+--- a/library/forms/view.cpp
++++ b/library/forms/view.cpp
+@@ -511,9 +511,9 @@
+ 
+ bool View::mouse_leave()
+ {
+   if (_signal_mouse_leave.num_slots() > 0)
+-    return _signal_mouse_leave();
++    return *_signal_mouse_leave();
+   return false;
+ }
+ 
+ //--------------------------------------------------------------------------------------------------
