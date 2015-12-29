@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=3
+EAPI=5
 
 inherit eutils fortran-2 flag-o-matic toolchain-funcs
 

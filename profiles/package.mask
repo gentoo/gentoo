@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Justin Lecher <jlec@gentoo.org> (29 Dec 2015)
+# Fails to build and test runs
+# No reverse deps
+# #370021, #478614, #513964
+sci-libs/libbufr
+
 # Michael Palimaka <kensington@gentoo.org> (27 Dec 2015)
 # Fails to build. Dead upstream. Masked for removal in 30 days.
 # Bug 541522

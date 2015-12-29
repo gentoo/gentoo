@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-inherit eutils fortran-2 multilib toolchain-funcs check-reqs
+EAPI=5
+
+inherit check-reqs eutils fortran-2 multilib toolchain-funcs
 
 PID=1232
 PB=${PN}
@@ -11,10 +13,11 @@ DESCRIPTION="Intel(R) Math Kernel Library: linear algebra, fft, math functions"
 HOMEPAGE="http://developer.intel.com/software/products/mkl/"
 SRC_URI="http://registrationcenter-download.intel.com/irc_nas/${PID}/l_${PN}_p_${PV}.tgz"
 
-KEYWORDS="-* amd64 ~ia64 x86"
 SLOT="0"
 LICENSE="Intel-SDP"
+KEYWORDS="-* amd64 ~ia64 x86"
 IUSE="doc fftw fortran95 int64 mpi"
+
 RESTRICT="strip mirror"
 
 DEPEND="
@@ -28,8 +31,7 @@ RDEPEND="${DEPEND}
 MKL_DIR=/opt/intel/${PN}/${PV}
 INTEL_LIC_DIR=/opt/intel/licenses
 
-QA_EXECSTACK="opt/intel/${PN}/${PV}/*"
-QA_TEXTRELS="opt/intel/${PN}/${PV}/*"
+QA_PREBUILT="opt/intel/${PN}/${PV}/*"
 
 get_fcomp() {
 	case $(tc-getFC) in
@@ -86,12 +88,10 @@ pkg_setup() {
 	get_fcomp
 }
 
-src_unpack() {
+src_prepare() {
+	cd l_${PN}_*_${PV}/install || die
 
-	unpack ${A}
-	cd l_${PN}_*_${PV}/install
-
-	cp ${MKL_LICENSE} "${WORKDIR}"/
+	cp ${MKL_LICENSE} "${WORKDIR}"/ || die
 	MKL_LIC="$(basename ${MKL_LICENSE})"
 
 	# binary blob extractor installs rpm leftovers in /opt/intel
@@ -123,12 +123,12 @@ src_unpack() {
 		die "extracting failed"
 	fi
 	# remove left over
-	rm -f /opt/intel/.*mkl*.log /opt/intel/intel_sdp_products.db
+	rm -f /opt/intel/.*mkl*.log /opt/intel/intel_sdp_products.db || die
 
 	# remove unused stuff and set up intel names
-	rm -rf "${WORKDIR}"/l_*
+	rm -rf "${WORKDIR}"/l_* || die
 
-	cd "${S}"
+	cd "${S}" || die
 	# allow openmpi to work
 	epatch "${FILESDIR}"/${PN}-10.0.2.018-openmpi.patch
 	# make scalapack tests work for gfortran
@@ -136,17 +136,17 @@ src_unpack() {
 	case ${ARCH} in
 		x86)	MKL_ARCH=32
 				MKL_KERN=ia32
-				rm -rf lib*/{em64t,64}
+				rm -rf lib*/{em64t,64} || die
 				;;
 
 		amd64)	MKL_ARCH=em64t
 				MKL_KERN=em64t
-				rm -rf lib*/{32,64}
+				rm -rf lib*/{32,64} || die
 				;;
 
 		ia64)	MKL_ARCH=64
 				MKL_KERN=ipf
-				rm -rf lib*/{32,em64t}
+				rm -rf lib*/{32,em64t} || die
 				;;
 	esac
 	MKL_LIBDIR=${MKL_DIR}/lib/${MKL_ARCH}
@@ -157,7 +157,7 @@ src_unpack() {
 }
 
 src_compile() {
-	cd "${S}"/interfaces
+	cd "${S}"/interfaces || die
 	if use fortran95; then
 		einfo "Compiling fortan95 static lib wrappers"
 		local myconf="lib${MKL_ARCH}"
@@ -168,10 +168,11 @@ src_compile() {
 			[[ $(tc-getFC) =~ gfortran ]] && \
 				myconf="${myconf} FOPTS=-fdefault-integer-8"
 		fi
+		local x
 		for x in blas95 lapack95; do
-			pushd ${x}
-			emake ${myconf} || die "emake ${x} failed"
-			popd
+			pushd ${x} > /dev/null || die
+			emake ${myconf}
+			popd > /dev/null || die
 		done
 	fi
 
@@ -183,10 +184,11 @@ src_compile() {
 			myconf="${myconf} mpi=${MKL_MPI}"
 		fi
 		einfo "Compiling fftw static lib wrappers"
+		local x
 		for x in ${fftwdirs}; do
-			pushd ${x}
-			emake ${myconf} || die "emake ${x} failed"
-			popd
+			pushd ${x} > /dev/null || die
+			emake ${myconf}
+			popd > /dev/null || die
 		done
 	fi
 }
@@ -214,7 +216,7 @@ src_test() {
 }
 
 mkl_make_generic_profile() {
-	cd "${S}"
+	cd "${S}" || die
 	# produce eselect files
 	# don't make them in FILESDIR, it changes every major version
 	cat  > eselect.blas <<-EOF
@@ -237,8 +239,9 @@ mkl_make_generic_profile() {
 
 # usage: mkl_add_profile <profile> <interface_lib> <thread_lib> <rtl_lib>
 mkl_add_profile() {
-	cd "${S}"
+	cd "${S}" || die
 	local prof=${1}
+	local x
 	for x in blas cblas lapack; do
 		cat > ${x}-${prof}.pc <<-EOF
 			prefix=${MKL_DIR}
@@ -265,7 +268,7 @@ mkl_add_profile() {
 	insinto ${MKL_LIBDIR}
 	for x in blas cblas lapack; do
 		doins ${x}-${prof}.pc
-		cp eselect.${x} eselect.${x}.${prof}
+		cp eselect.${x} eselect.${x}.${prof} || die
 		echo "${MKL_LIBDIR}/${x}-${prof}.pc /usr/@LIBDIR@/pkgconfig/${x}.pc" \
 			>> eselect.${x}.${prof}
 		eselect ${x} add $(get_libdir) eselect.${x}.${prof} ${prof}
@@ -273,12 +276,12 @@ mkl_add_profile() {
 }
 
 mkl_make_profiles() {
-	local clib
-	has_version 'dev-lang/ifc' && clib="intel"
-	built_with_use sys-devel/gcc fortran && clib="${clib} gf"
+	local clib="gf"
+	has_version 'dev-lang/ifc' && clib+=" intel"
 	local slib="-lmkl_sequential"
 	local rlib="-liomp5"
 	local pbase=${PN}
+	local c
 	for c in ${clib}; do
 		local ilib="-lmkl_${c}_lp64"
 		use x86 && ilib="-lmkl_${c}"
@@ -324,7 +327,7 @@ src_install() {
 		LDPATH=${MKL_LIBDIR}
 		MANPATH=${MKL_DIR}/man
 	EOF
-	doenvd 35mkl || die "doenvd failed"
+	doenvd 35mkl
 }
 
 pkg_postinst() {

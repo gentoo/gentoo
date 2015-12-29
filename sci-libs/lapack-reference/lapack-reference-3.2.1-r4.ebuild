@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="doc"
 
 RDEPEND="
@@ -56,7 +56,7 @@ src_prepare() {
 		make.inc.example > make.inc \
 		|| die "Failed to set up make.inc"
 
-	cp "${FILESDIR}"/eselect.lapack.reference-ng "${T}"/eselect.lapack.reference || die
+	cp "${FILESDIR}"/eselect.lapack.reference "${T}"/eselect.lapack.reference || die
 	sed -i -e "s:/usr:${EPREFIX}/usr:" "${T}"/eselect.lapack.reference || die
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		sed -i -e 's/\.so\([\.0-9]\+\)\?/\1.dylib/g' \
