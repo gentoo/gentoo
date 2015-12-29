@@ -56,7 +56,7 @@ src_prepare() {
 		make.inc.example > make.inc \
 		|| die "Failed to set up make.inc"
 
-	cp "${FILESDIR}"/eselect.lapack.reference-ng "${T}"/eselect.lapack.reference || die
+	cp "${FILESDIR}"/eselect.lapack.reference "${T}"/eselect.lapack.reference || die
 	sed -i -e "s:/usr:${EPREFIX}/usr:" "${T}"/eselect.lapack.reference || die
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		sed -i -e 's/\.so\([\.0-9]\+\)\?/\1.dylib/g' \
