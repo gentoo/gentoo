@@ -10146,7 +10146,6 @@ games-fps/etqw-demo 2.0_p1-r1: Enemy Territory: Quake Wars demo
 games-fps/ezquake-bin 2.2: Quakeworld client with mqwcl functionality and many more features
 games-fps/freedoom 0.7: Freedoom - Open Source Doom resources
 games-fps/glxquake-bin 0-r2: a binary that works with every 3D-graphics-card that supports the glx X-extension
-games-fps/imaze 1.4: Multi player, real time, 3D, labyrinth, run & shoot game
 games-fps/industri 1.01: Quake/Tenebrae based, single player game
 games-fps/legends 0.4.1.43-r1: Fast-paced first-person-shooter online multiplayer game, similar to Tribes
 games-fps/lsdldoom 1.5: Port of ID's doom to SDL
