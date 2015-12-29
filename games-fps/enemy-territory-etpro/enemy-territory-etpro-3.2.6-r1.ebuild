@@ -5,7 +5,7 @@
 EAPI=5
 
 GAME="enemy-territory"
-MOD_DESC="a series of minor additions to Enemy Territory to make it more fun"
+MOD_DESC="Minor additions to Enemy Territory to make it more fun"
 MOD_NAME="ETPro"
 MOD_DIR="etpro"
 
