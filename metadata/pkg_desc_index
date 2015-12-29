@@ -7137,6 +7137,7 @@ dev-python/imapclient 0.12 0.13: easy-to-use, pythonic, and complete IMAP client
 dev-python/imdbpy 4.9-r1 5.0: Python package to access the IMDb movie database
 dev-python/iminuit 1.2: Minuit numerical function minimization in Python
 dev-python/importing 1.10: Import objects dynamically, lazily, weakly, and more
+dev-python/inflect 0.2.5: Correctly inflect words and numbers
 dev-python/iniparse 0.4-r1: Better INI parser for Python
 dev-python/inotifyx 0.2.2: Python bindings to the Linux inotify file system event monitoring API
 dev-python/intelhex 2.0: Python library for Intel HEX files manipulations
