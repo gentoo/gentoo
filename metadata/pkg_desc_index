@@ -6777,9 +6777,11 @@ dev-python/axiom 0.6.0-r1 0.7.2 0.7.3: Object database implemented on top of SQL
 dev-python/babelfish 0.4.0 0.5.1 0.5.3 9999: Python library to work with countries and languages
 dev-python/backports 1.0: Namespace for backported Python features
 dev-python/backports-abc 0.4: Backport of Python 3.5's 'collections.abc' module
+dev-python/backports-functools-lru-cache 1.2: Backport of functools.lru_cache from Python 3.3
 dev-python/backports-lzma 0.0.3: Backport of Python 3.3's lzma module for XZ/LZMA compressed files
 dev-python/backports-shutil_get_terminal_size 1.0.0-r1: A backport of the get_terminal_size function from Python 3.3's shutil
 dev-python/backports-ssl-match-hostname 3.4.0.2 3.5.0.1: Backport of the ssl.match_hostname function
+dev-python/backports-unittest-mock 1.1.1: Backport of unittest.mock
 dev-python/bandit 0.12.0 0.13.0 0.13.1 0.13.2 0.13.2-r1 0.14.1 0.17.0: A security linter from OpenStack Security
 dev-python/basemap 1.0.7-r1: matplotlib toolkit to plot map projections
 dev-python/bashate 0.3.1: A pep8 equivalent for bash scripts
@@ -7160,6 +7162,7 @@ dev-python/iso8601 0.1.10: Simple module to parse ISO 8601 dates
 dev-python/isodate 0.5.0 0.5.1 0.5.4: ISO 8601 date/time/duration parser and formater
 dev-python/itsdangerous 0.24: Various helpers to pass trusted data to untrusted environments and back
 dev-python/jaraco-classes 1.2: Classes used by other projects by developer jaraco
+dev-python/jaraco-itertools 1.7.1: Additional functions used by other projects by developer jaraco
 dev-python/jaraco-logging 1.3.1: Additional facilities to supplement Python's stdlib logging module
 dev-python/jaraco-utils 10.0.2: General utility modules that supply commonly-used functionality
 dev-python/jaxml 3.02-r1: XML generator written in Python
@@ -9447,7 +9450,7 @@ dev-util/hxd 0.70.02-r1: Binary to hexadecimal converter
 dev-util/hxtools 20121125-r1: A collection of tools and scripts
 dev-util/icemon 20140102: Icemon is a KDE monitor program for use with Icecream compile clusters
 dev-util/icmake 7.21.01 7.22.00 7.22.01: Hybrid between a make utility and a shell scripting language
-dev-util/idea-ultimate 14.1.5.141.2735.5 15.0.1.143.382.35-r1 15.0.2.143.1184.17 15.0.3.143.1453.5_pre: A complete toolset for web, mobile and enterprise development
+dev-util/idea-ultimate 14.1.5.141.2735.5 15.0.1.143.382.35-r1 15.0.2.143.1184.17 16.0.0.144.2608.2_pre: A complete toolset for web, mobile and enterprise development
 dev-util/idutils 4.2 4.5 4.6: Fast, high-capacity, identifier database tool
 dev-util/igprof 5.9.11: Ignominous Profiler for analysing application memory and performance characteristics
 dev-util/imediff2 1.1.2-r3: An interactive, user friendly 2-way merge tool in text mode
