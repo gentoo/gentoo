@@ -54,7 +54,7 @@ src_configure() {
 	gnome2_src_configure \
 		${myconf[@]} \
 		--disable-python \
-		$(use_enable introspection) \
+		$(use_enable introspection)
 
 	if use python ; then
 		python_foreach_impl run_in_build_dir \
