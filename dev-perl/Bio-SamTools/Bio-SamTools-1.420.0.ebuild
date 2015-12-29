@@ -2,11 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=LDS
-MODULE_VERSION=1.39
-
+DIST_AUTHOR=LDS
+DIST_VERSION=1.42
 inherit perl-module toolchain-funcs
 
 DESCRIPTION="Read SAM/BAM database files"
@@ -14,20 +13,22 @@ DESCRIPTION="Read SAM/BAM database files"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+LICENSE="|| ( Apache-2.0 Artistic-2 GPL-1+ )"
 
 RDEPEND="
-	sci-biology/bioperl
+	>=sci-biology/bioperl-1.6.9
 	>=sci-biology/samtools-1
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-CBuilder
-	dev-perl/Module-Build
+	>=dev-perl/Module-Build-0.420.0
 "
 
-SRC_TEST=do
+DIST_TEST=skip
+# cannot load its own library, fundamentally b0rken
 
 PATCHES=(
-	"${FILESDIR}"/${P}-samtools-1.patch
+	"${FILESDIR}"/${PN}-1.390.0-samtools-1.patch
 )
 
 src_prepare() {
