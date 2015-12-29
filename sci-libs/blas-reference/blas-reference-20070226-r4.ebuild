@@ -31,7 +31,7 @@ src_prepare() {
 		"${FILESDIR}"/${P}-pkg-config.patch
 	eautoreconf
 
-	cp "${FILESDIR}"/eselect.blas.reference-ng "${T}"/eselect.blas.reference || die
+	cp "${FILESDIR}"/eselect.blas.reference "${T}"/eselect.blas.reference || die
 	sed -i -e "s:/usr:${EPREFIX}/usr:" "${T}"/eselect.blas.reference || die
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		sed -i -e 's/\.so\([\.0-9]\+\)\?/\1.dylib/g' \
