@@ -17,7 +17,7 @@ else
 fi
 
 DESCRIPTION="A small build system similar to make"
-HOMEPAGE="https://github.com/martine/ninja"
+HOMEPAGE="https://ninja-build.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
