@@ -1,0 +1,241 @@
+--- a/src/modules/perl/modperl_env.c.orig	2015-12-28 11:42:26.604632457 +0100
++++ b/src/modules/perl/modperl_env.c	2015-12-28 12:36:35.305228288 +0100
+@@ -120,6 +120,7 @@
+     const apr_array_header_t *array;
+     apr_table_entry_t *elts;
+ 
++    modperl_env_init(aTHX);
+     modperl_env_untie(mg_flags);
+ 
+     array = apr_table_elts(table);
+@@ -431,13 +432,11 @@
+ }
+ 
+ /* to store the original virtual tables
+- * these are global, not per-interpreter
++ * handy access to perl's original virtual tables
+  */
+-static MGVTBL MP_PERL_vtbl_env;
+-static MGVTBL MP_PERL_vtbl_envelem;
+ 
+ #define MP_PL_vtbl_call(name, meth) \
+-    MP_PERL_vtbl_##name.svt_##meth(aTHX_ sv, mg)
++    PL_vtbl_##name.svt_##meth(aTHX_ sv, mg)
+ 
+ #define MP_dENV_KEY \
+     STRLEN klen; \
+@@ -534,6 +533,26 @@
+     return 0;
+ }
+ 
++static int modperl_env_magic_copy(pTHX_ SV *sv, MAGIC *mg, SV *nsv, const char *name, I32 namlen)
++{
++    MP_TRACE_e(MP_FUNC, "setting up %%ENV element magic");
++    sv_magicext(nsv, mg->mg_obj, toLOWER(mg->mg_type), &MP_vtbl_envelem, name, namlen);
++
++    return 1;
++}
++
++static int modperl_env_magic_local_all(pTHX_ SV *nsv, MAGIC *mg)
++{
++    MAGIC *nmg;
++    MP_TRACE_e(MP_FUNC, "localizing %%ENV");
++    nmg = sv_magicext(nsv, mg->mg_obj, mg->mg_type, &MP_vtbl_env, (char*)NULL, 0);
++    nmg->mg_ptr = mg->mg_ptr;
++    nmg->mg_flags |= MGf_COPY;
++    nmg->mg_flags |= MGf_LOCAL;
++
++    return 1;
++}
++
+ static int modperl_env_magic_set(pTHX_ SV *sv, MAGIC *mg)
+ {
+     request_rec *r = (request_rec *)EnvMgObj;
+@@ -625,15 +644,18 @@
+ #endif
+ 
+ /* override %ENV virtual tables with our own */
+-static MGVTBL MP_vtbl_env = {
++MGVTBL MP_vtbl_env = {
+     0,
+     modperl_env_magic_set_all,
+     0,
+     modperl_env_magic_clear_all,
+-    0
++    0,
++    modperl_env_magic_copy,
++    0,
++    modperl_env_magic_local_all
+ };
+ 
+-static MGVTBL MP_vtbl_envelem = {
++MGVTBL MP_vtbl_envelem = {
+     0,
+     modperl_env_magic_set,
+     0,
+@@ -641,20 +663,62 @@
+     0
+ };
+ 
+-void modperl_env_init(void)
++void modperl_env_init(pTHX)
+ {
+-    /* save originals */
+-    StructCopy(&PL_vtbl_env, &MP_PERL_vtbl_env, MGVTBL);
+-    StructCopy(&PL_vtbl_envelem, &MP_PERL_vtbl_envelem, MGVTBL);
++    MAGIC *mg;
+ 
+-    /* replace with our versions */
+-    StructCopy(&MP_vtbl_env, &PL_vtbl_env, MGVTBL);
+-    StructCopy(&MP_vtbl_envelem, &PL_vtbl_envelem, MGVTBL);
++    /* Find the 'E' magic on %ENV */
++    if (!my_perl)
++        return;
++    if (!PL_envgv)
++        return;
++    if (!SvRMAGICAL(ENVHV))
++        return;
++    mg = mg_find((const SV *)ENVHV, PERL_MAGIC_env);
++    if (!mg)
++        return;
++       
++    /* Ignore it if it isn't perl's original version */
++    if (mg->mg_virtual != &PL_vtbl_env)
++        return;
++
++    MP_TRACE_e(MP_FUNC, "env_init - ptr: %x obj: %x flags: %x",
++               mg->mg_ptr, mg->mg_obj, mg->mg_flags);
++
++    /* Remove it */
++    mg_free_type((SV*)ENVHV, PERL_MAGIC_env);
++
++    /* Add our version instead */
++    mg = sv_magicext((SV*)ENVHV, (SV*)NULL, PERL_MAGIC_env, &MP_vtbl_env, (char*)NULL, 0);
++    mg->mg_flags |= MGf_COPY;
++    mg->mg_flags |= MGf_LOCAL;
+ }
+ 
+-void modperl_env_unload(void)
++void modperl_env_unload(pTHX)
+ {
+-    /* restore originals */
+-    StructCopy(&MP_PERL_vtbl_env, &PL_vtbl_env, MGVTBL);
+-    StructCopy(&MP_PERL_vtbl_envelem, &PL_vtbl_envelem, MGVTBL);
++     MAGIC *mg;
++
++    /* Find the 'E' magic on %ENV */
++    if (!my_perl)
++        return;
++    if (!PL_envgv)
++        return;
++    if (!SvRMAGICAL(ENVHV))
++        return;
++    mg = mg_find((const SV *)ENVHV, PERL_MAGIC_env);
++    if (!mg)
++        return;
++
++    /* Ignore it if it isn't our version */
++    if (mg->mg_virtual != &MP_vtbl_env)
++        return;
++
++    MP_TRACE_e(MP_FUNC, "env_unload - ptr: %x obj: %x flags: %x",
++               mg->mg_ptr, mg->mg_obj, mg->mg_flags);
++
++    /* Remove it */
++    mg_free_type((SV*)ENVHV, PERL_MAGIC_env);
++
++    /* Restore perl's original version */
++    sv_magicext((SV*)ENVHV, (SV*)NULL, PERL_MAGIC_env, &PL_vtbl_env, (char*)NULL, 0);
+ }
+--- a/src/modules/perl/modperl_env.h.orig	2015-12-28 11:42:34.868727490 +0100
++++ b/src/modules/perl/modperl_env.h	2015-12-28 12:37:47.730041274 +0100
+@@ -28,7 +28,7 @@
+     MP_magical_tie(ENVHV, mg_flags)
+ 
+ #define modperl_envelem_tie(sv, key, klen) \
+-    sv_magic(sv, (SV *)NULL, 'e', key, klen)
++    sv_magicext(sv, (SV *)NULL, PERL_MAGIC_envelem, &MP_vtbl_envelem, key, klen)
+ 
+ void modperl_env_hash_keys(pTHX);
+ 
+@@ -58,8 +58,11 @@
+ 
+ void modperl_env_request_untie(pTHX_ request_rec *r);
+ 
+-void modperl_env_init(void);
++void modperl_env_init(pTHX);
+ 
+-void modperl_env_unload(void);
++void modperl_env_unload(pTHX);
++
++MGVTBL MP_vtbl_env;
++MGVTBL MP_vtbl_envelem;
+ 
+ #endif /* MODPERL_ENV_H */
+Index: trunk/src/modules/perl/modperl_perl.c
+===================================================================
+--- trunk/src/modules/perl/modperl_perl.c	(revision 1717473)
++++ trunk/src/modules/perl/modperl_perl.c	(revision 1717474)
+@@ -181,6 +181,8 @@
+         }
+     }
+ 
++    modperl_env_unload(perl);
++
+     perl_destruct(perl);
+ 
+     /* XXX: big bug in 5.6.1 fixed in 5.7.2+
+Index: trunk/src/modules/perl/mod_perl.c
+===================================================================
+--- trunk/src/modules/perl/mod_perl.c	(revision 1717473)
++++ trunk/src/modules/perl/mod_perl.c	(revision 1717474)
+@@ -262,6 +262,8 @@
+         exit(1);
+     }
+ 
++    modperl_env_init(aTHX);
++
+     /* suspend END blocks to be run at server shutdown */
+     endav = PL_endav;
+     PL_endav = (AV *)NULL;
+@@ -576,9 +578,6 @@
+     /* modifies PL_ppaddr */
+     modperl_perl_pp_set_all();
+ 
+-    /* modifies PL_vtbl_env{elem} */
+-    modperl_env_init();
+-
+     return APR_SUCCESS;
+ }
+ 
+@@ -597,8 +596,6 @@
+ 
+     MP_TRACE_i(MP_FUNC, "mod_perl sys term");
+ 
+-    modperl_env_unload();
+-
+     modperl_perl_pp_unset_all();
+ 
+     PERL_SYS_TERM();
+Index: trunk/t/response/TestModperl/env.pm
+===================================================================
+--- trunk/t/response/TestModperl/env.pm	(revision 1717473)
++++ trunk/t/response/TestModperl/env.pm	(revision 1717474)
+@@ -15,7 +15,7 @@
+ sub handler {
+     my $r = shift;
+ 
+-    plan $r, tests => 23 + keys(%ENV);
++    plan $r, tests => 23 + 3 * keys(%ENV);
+ 
+     my $env = $r->subprocess_env;
+ 
+@@ -75,6 +75,8 @@
+     for my $key (sort keys %ENV) {
+         eval { delete $ENV{$key}; };
+         ok t_cmp($@, '', $key);
++        ok t_cmp($ENV{$key}, undef, "ENV{$key} is empty");
++        ok t_cmp($env->get($key), undef, "subprocess_env($key) is empty");
+     }
+ 
+     Apache2::Const::OK;
