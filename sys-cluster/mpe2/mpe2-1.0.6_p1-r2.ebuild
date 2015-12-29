@@ -16,7 +16,7 @@ SRC_URI="ftp://ftp.mcs.anl.gov/pub/mpi/${PN%2}/${MY_P}.tar.gz"
 
 LICENSE="mpich2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug minimal fortran threads"
 
 COMMON_DEPEND="
