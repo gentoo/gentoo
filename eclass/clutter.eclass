@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# @DEAD
+
 # @ECLASS: clutter.eclass
 # @MAINTAINER:
 # GNOME Herd <gnome@gentoo.org>
@@ -15,6 +17,8 @@ HOMEPAGE="http://www.clutter-project.org/"
 
 RV=($(get_version_components))
 SRC_URI="http://www.clutter-project.org/sources/${PN}/${RV[0]}.${RV[1]}/${P}.tar.bz2"
+
+eqawarn "emul-linux-x86.eclass is last rited and will be removed on 2016-01-29."
 
 # All official clutter packages use LGPL-2.1 or later
 LICENSE="${LICENSE:-LGPL-2.1+}"
