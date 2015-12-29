@@ -129,7 +129,9 @@ esac
 # Full path to intel registry db
 INTEL_SDP_DB="${EROOT%/}"/opt/intel/intel-sdp-products.db
 
-inherit check-reqs eutils multilib versionator
+MULTILIB_COMPAT=( abi_x86_{32,64} )
+
+inherit check-reqs eutils multilib-build versionator
 
 _INTEL_PV1=$(get_version_component_range 1)
 _INTEL_PV2=$(get_version_component_range 2)
@@ -145,9 +147,8 @@ _INTEL_URI="http://registrationcenter-download.intel.com/irc_nas/${INTEL_DID}/${
 
 if [ ${INTEL_SINGLE_ARCH} == true ]; then
 	SRC_URI="
-		amd64? ( multilib? ( ${_INTEL_URI}_${INTEL_DPV}.${INTEL_TARX} ) )
-		amd64? ( !multilib? ( ${_INTEL_URI}_${INTEL_DPV}_intel64.${INTEL_TARX} ) )
-		x86?	( ${_INTEL_URI}_${INTEL_DPV}_ia32.${INTEL_TARX} )"
+		abi_x86_32? ( ${_INTEL_URI}_${INTEL_DPV}_ia32.${INTEL_TARX} )
+		abi_x86_64? ( ${_INTEL_URI}_${INTEL_DPV}_intel64.${INTEL_TARX} )"
 else
 	SRC_URI="${_INTEL_URI}_${INTEL_DPV}.${INTEL_TARX}"
 fi
@@ -156,7 +157,7 @@ LICENSE="Intel-SDP"
 # Future work, #394411
 #SLOT="${_INTEL_PV1}.${_INTEL_PV2}"
 SLOT="0"
-IUSE="examples multilib"
+IUSE="examples"
 
 RESTRICT="mirror"
 
@@ -392,16 +393,15 @@ intel-sdp_pkg_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 	local arch a p
 
-	if use x86; then
-		arch=${INTEL_X86}
-		INTEL_ARCH="ia32"
-	elif use amd64; then
-		arch=x86_64
-		INTEL_ARCH="intel64"
-		if has_multilib_profile; then
-			arch="x86_64 ${INTEL_X86}"
-			INTEL_ARCH="intel64 ia32"
-		fi
+	INTEL_ARCH=""
+
+	if use abi_x86_64; then
+		arch+=" x86_64"
+		INTEL_ARCH+=" intel64"
+	fi
+	if use abi_x86_32; then
+		arch+=" ${INTEL_X86}"
+		INTEL_ARCH+=" ia32"
 	fi
 	INTEL_RPMS=()
 	INTEL_RPMS_FULL=()
