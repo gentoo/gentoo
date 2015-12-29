@@ -8510,8 +8510,13 @@ dev-ruby/camping 2.1.532: A small web framework modeled after Ruby on Rails
 dev-ruby/capistrano 2.15.5-r1 2.15.5-r2 3.3.5 3.4.0: A distributed application deployment system
 dev-ruby/capistrano-stats 1.1.1: Official metrics to help the development direction of Capistrano
 dev-ruby/capybara 1.1.4 2.2.1 2.4.4 2.5.0: Capybara aims to simplify the process of integration testing Rack applications
-dev-ruby/celluloid 0.16.0 0.16.0-r1: Celluloid provides a simple and natural way to build fault-tolerant concurrent programs in Ruby
+dev-ruby/celluloid 0.16.0 0.16.0-r1 0.17.2: Provides a simple and natural way to build fault-tolerant concurrent programs
+dev-ruby/celluloid-essentials 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
+dev-ruby/celluloid-extras 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
+dev-ruby/celluloid-fsm 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
 dev-ruby/celluloid-io 0.16.2: Evented IO for Celluloid actors
+dev-ruby/celluloid-pool 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
+dev-ruby/celluloid-supervision 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
 dev-ruby/certificate_authority 0.1.6: Managing the core functions outlined in RFC-3280 for PKI
 dev-ruby/charlock_holmes 0.7.3: Character encoding detecting library for Ruby using ICU
 dev-ruby/childlabor 0.0.3-r1: A scripting framework that replaces rake and sake
@@ -8568,7 +8573,7 @@ dev-ruby/diff-lcs 1.2.5 1.2.5-r1: Use the McIlroy-Hunt LCS algorithm to compute 
 dev-ruby/dnsruby 1.58.0 1.59.0: A pure Ruby DNS client library
 dev-ruby/docile 1.1.5: Turns any Ruby object into a DSL
 dev-ruby/domain_name 0.5.24 0.5.25: Domain Name manipulation library for Ruby
-dev-ruby/dotenv 2.0.1 2.0.2: Loads environment variables from .env into ENV
+dev-ruby/dotenv 2.0.2: Loads environment variables from .env into ENV
 dev-ruby/duby 0.0.2-r1: Customizable typed programming language with Ruby-inspired syntax
 dev-ruby/dust 0.1.7-r1 0.1.7-r2: Descriptive block syntax definition for Test::Unit
 dev-ruby/equalizer 0.0.9 0.0.11: Module to define equality, equivalence and inspection methods
@@ -8848,6 +8853,7 @@ dev-ruby/rspec-expectations 2.14.5 2.14.5-r1 2.99.2 3.2.1 3.3.0 3.3.1 3.4.0: A B
 dev-ruby/rspec-its 1.1.0 1.2.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-mocks 2.14.6 2.14.6-r1 2.99.2 3.2.1 3.3.1 3.3.2 3.4.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-rails 2.14.2 2.99.0 3.2.3 3.3.2 3.3.3 3.4.0: RSpec's official Ruby on Rails plugin
+dev-ruby/rspec-retry 0.4.5: Retry intermittently failing rspec examples
 dev-ruby/rspec-support 3.2.1 3.3.0 3.4.0 3.4.1: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspectacular 0.64.0 0.68.0 0.70.0: RSpec support and matchers
 dev-ruby/ruby-atk 2.2.3 2.2.3-r1 2.2.5 3.0.7: Ruby Atk bindings
@@ -17364,7 +17370,7 @@ www-apache/mod_mono 2.10: Apache module for Mono
 www-apache/mod_musicindex 1.4.1: mod_musicindex allows nice displaying of directories containing music files
 www-apache/mod_nss 1.0.11: SSL/TLS module for the Apache HTTP server
 www-apache/mod_pcgi2 2.0.2: An Apache module to talk to Zope Corporation's PCGI
-www-apache/mod_perl 2.0.8 2.0.8-r1 2.0.8-r2: An embedded Perl interpreter for Apache2
+www-apache/mod_perl 2.0.8 2.0.8-r1 2.0.8-r2 2.0.8-r3: An embedded Perl interpreter for Apache2
 www-apache/mod_proxy_fcgi 0_p816361: mod_proxy_fcgi is a FastCGI protocol handler for mod_proxy
 www-apache/mod_proxy_html 3.1.2: An Apache2 module to rewrite links in html pages behind a reverse proxy
 www-apache/mod_python 3.5.0: An Apache2 module providing an embedded Python interpreter
