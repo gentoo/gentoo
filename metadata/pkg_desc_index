@@ -1324,7 +1324,7 @@ app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes
 app-emulation/uae 0.8.29-r2: The Umiquious Amiga Emulator
 app-emulation/vagrant 1.4.3-r2: A tool for building and distributing virtual machines using VirtualBox
 app-emulation/vboxgtk 0.8.2-r1: GTK frontend for VirtualBox
-app-emulation/vice 2.4.20 2.4.22: The Versatile Commodore 8-bit Emulator
+app-emulation/vice 2.4.22: The Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 1.1.0-r2 1.2.1 1.3.0-r1 1.3.2 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 2.0 3.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.12: Detects if the current machine is running in a virtual machine
@@ -3066,7 +3066,7 @@ dev-games/aseprite 0.9.5-r1 1.0.6 9999: Animated sprite editor & pixel art tool
 dev-games/cardpics 0.4: set of free cards sets
 dev-games/cegui 0.6.2b 0.8.4: Crazy Eddie's GUI System
 dev-games/clanlib 0.8.1 2.3.7: multi-platform game development library
-dev-games/crystalspace 2.0 2.0-r1: Portable 3D Game Development Kit written in C++
+dev-games/crystalspace 2.0-r1: Portable 3D Game Development Kit written in C++
 dev-games/etrophy 0.5.1: Library for managing scores, trophies and unlockables,stores them and provides views to display them
 dev-games/flatzebra 0.1.6: A generic game engine for 2D double-buffering animation
 dev-games/flinker 1.72: GBA cart writing utility by Jeff Frohwein
@@ -9793,7 +9793,7 @@ games-action/solar2 1.10: An open-world, sandbox game set in an infinite abstrac
 games-action/spacearyarya-kxl 1.0.2-r1: A 2D/3D shooting game
 games-action/spacetripper-demo 1: hardcore arcade shoot-em-up
 games-action/super-hexagon 20141027: A minimal action game by Terry Cavanagh, with music by Chipzel
-games-action/supertuxkart 0.8.1 0.9.1: A kart racing game starring Tux, the linux penguin (TuxKart fork)
+games-action/supertuxkart 0.9.1: A kart racing game starring Tux, the linux penguin (TuxKart fork)
 games-action/swordandsworcery 1.02: An exploratory action adventure game with an emphasis on audiovisual style
 games-action/teeworlds 0.6.3: Online multi-player platform 2D shooter
 games-action/towbowl-tactics 0.5: Tow Bowl Tactics is a game based on Games Workshop's Blood Bowl
@@ -9946,7 +9946,7 @@ games-board/ascal 0.1.1: A game similar to Draughts but with some really cool en
 games-board/atakks 1.0: A clone of Ataxx
 games-board/awale 1.5: Free Awale - The game of all Africa
 games-board/biloba 0.9.3: a board game, up to 4 players, with AI and network
-games-board/blokish 0.9.4-r1 0.9.4-r2: Open source clone of the four-player board game Blokus
+games-board/blokish 0.9.4-r2: Open source clone of the four-player board game Blokus
 games-board/camato 0.7.4: A map editor for the game gnocatan
 games-board/capicity 1.0: A monopd compatible boardgame to play Monopoly-like games (previously named capitalism)
 games-board/ccgo 0.3.6.4: An IGS client written in C++
@@ -9990,7 +9990,7 @@ games-board/mt_dolphin_ia 0.1.98: client for the french tarot game maitretarot
 games-board/mt_gtk_client 0.1.98: client for the french tarot game maitretarot
 games-board/mt_ncurses_client 0.1.98: client for the french tarot game maitretarot
 games-board/natch 2.4: A program to solve chess proof games
-games-board/openyahtzee 1.9.1 1.9.2: A full-featured wxWidgets version of the classic dice game Yahtzee
+games-board/openyahtzee 1.9.2: A full-featured wxWidgets version of the classic dice game Yahtzee
 games-board/pasang-emas 3.1.0: A traditional game of Brunei
 games-board/peg-e 1.1.2: A peg solitaire game
 games-board/phalanx 22: A chess engine suitable for beginner and intermediate players
@@ -10106,7 +10106,7 @@ games-fps/alephone-infinity 20080622: Aleph One - Marathon Infinity
 games-fps/alienarena 20120629 20130827: Fast-paced multiplayer deathmatch game
 games-fps/avp 20150214: Linux port of Aliens vs Predator
 games-fps/blackshades 20070723: you control a psychic bodyguard, and try to protect the VIP
-games-fps/darkplaces 20110628 20130304 20140513: Enhanced engine for iD Software's Quake 1
+games-fps/darkplaces 20110628 20140513: Enhanced engine for iD Software's Quake 1
 games-fps/doom-data 1-r1: collection of doom wad files from id
 games-fps/doom3 1.3.1304-r1: 3rd installment of the classic iD 3D first-person shooter
 games-fps/doom3-cdoom 1.3.1: Doom 3 Classic Doom - Doom 1 conversion for Doom 3
@@ -10123,11 +10123,11 @@ games-fps/doom3-roe 1: Doom III: Resurrection of Evil expansion pack
 games-fps/doomsday 1.14.5: A modern gaming engine for Doom, Heretic, and Hexen
 games-fps/doomsday-resources 1.01-r1: Improved models & textures for doomsday
 games-fps/duke3d 20040817-r2: Port of the original Duke Nukem 3D
-games-fps/duke3d-data 1.0 1.0-r3: Duke Nukem 3D data files
+games-fps/duke3d-data 1.0-r3: Duke Nukem 3D data files
 games-fps/duke3d-demodata 1.3: Duke Nukem 3D 1.3d shareware data
 games-fps/eduke32 20131119.4169: Port of Duke Nukem 3D for SDL
 games-fps/enemy-territory 2.60b-r1: standalone multi-player game based on Return to Castle Wolfenstein
-games-fps/enemy-territory-etpro 3.2.6-r1: Enemy Territory ETPro - a series of minor additions to Enemy Territory to make it more fun
+games-fps/enemy-territory-etpro 3.2.6-r1: Enemy Territory ETPro - Minor additions to Enemy Territory to make it more fun
 games-fps/enemy-territory-omnibot 0.82 0.83.1: Enemy Territory Omnibot - Bots for Ennemy Territory
 games-fps/enemy-territory-truecombat 0.49b: Enemy Territory True Combat - a team-based realism modification
 games-fps/etqw-bin 1.5-r1: Enemy Territory: Quake Wars
@@ -10181,7 +10181,7 @@ games-fps/quake4-demo 1.0-r1: Sequel to Quake 2, an Id 3D first-person shooter
 games-fps/quakeforge 0.5.5-r2 0.7.2: A new 3d engine based off of id Softwares's legendary Quake and QuakeWorld game engine
 games-fps/qudos 0.40.1: Enhanced Quake 2 engine
 games-fps/red-blue-quake2 0.1: red-blue Quake II ! play quake2 w/3d glasses !
-games-fps/rott 1.0 1.1.2: Rise of the Triad for Linux!
+games-fps/rott 1.1.2: Rise of the Triad for Linux!
 games-fps/rtcw 1.41b: Return to Castle Wolfenstein - Long awaited sequel to Wolfenstein 3D
 games-fps/rtcwmp-demo 1.1-r1: Return to Castle Wolfenstein - Multi-player demo
 games-fps/rtcwsp-demo 1.1b-r1: Return to Castle Wolfenstein - Single-player demo
@@ -10354,7 +10354,7 @@ games-puzzle/construo 0.2.2: 2d construction toy with objects that react on phys
 games-puzzle/cutemaze 1.1.1: A simple, top-down game in which mazes are randomly generated
 games-puzzle/cuyo 2.1.1: highly addictive and remotely related to tetris
 games-puzzle/einstein 2.0: A puzzle game inspired by Albert Einstein
-games-puzzle/enigma 1.21-r1 1.21-r2: puzzle game similar to Oxyd
+games-puzzle/enigma 1.21-r2: puzzle game similar to Oxyd
 games-puzzle/ensemblist 040126: Put together several primitives to build a given shape. (C.S.G. Game)
 games-puzzle/fbg 0.9-r1: A Tetris clone written in OpenGL
 games-puzzle/fish-fillets 1.0.1: Underwater puzzle game - find a safe way out
@@ -10447,8 +10447,8 @@ games-puzzle/xye 0.12.1: Free version of the classic game Kye
 games-puzzle/zaz 1.0.0: A puzzle game where the player has to arrange balls in triplets
 games-roguelike/FTL 1.5.13: Faster Than Light: A spaceship simulation real-time roguelike-like game
 games-roguelike/adom 1.1.1-r1: Ancient Domains Of Mystery rogue-like game
-games-roguelike/angband 3.4.1 3.5.1 4.0.3: A roguelike dungeon exploration game based on the books of J.R.R. Tolkien
-games-roguelike/crossfire-client 1.70.0 1.71.0 1.71.0-r1: Client for the nethack-style but more in the line of UO
+games-roguelike/angband 4.0.3: A roguelike dungeon exploration game based on the books of J.R.R. Tolkien
+games-roguelike/crossfire-client 1.71.0-r1: Client for the nethack-style but more in the line of UO
 games-roguelike/dwarf-fortress 0.40.24 0.42.04: A single-player fantasy game
 games-roguelike/hengband 1.6.2-r1: An Angband variant, with a Japanese/fantasy theme
 games-roguelike/mazesofmonad 1.0.9-r2: Console-based roguelike Role Playing Game similar to nethack
@@ -10588,7 +10588,7 @@ games-strategy/galaxyhack 1.74: Multiplayer AI script based strategy game
 games-strategy/glob2 0.9.4.4-r1: Real Time Strategy (RTS) game involving a brave army of globs
 games-strategy/gorky17-demo 1.0.1.0.1-r1: Horror conspiracy game mixing elements of strategy and role-playing
 games-strategy/gwp 0.4.0-r3: GNOME client for the classic PBEM strategy game VGA Planets 3
-games-strategy/hedgewars 0.9.21.1 0.9.22: A turn-based strategy, artillery, action and comedy game
+games-strategy/hedgewars 0.9.22: A turn-based strategy, artillery, action and comedy game
 games-strategy/heroes3 1.3.1a-r2: Heroes of Might and Magic III : The Restoration of Erathia - turn-based 2-D medieval combat
 games-strategy/heroes3-demo 1.3.1a: turn-based 2D medieval combat
 games-strategy/ja2-stracciatella 0.12.1_p7072: A port of Jagged Alliance 2 to SDL
@@ -10597,7 +10597,7 @@ games-strategy/knights-demo 1.32-r1: Anglo-Saxon medieval army battles and resou
 games-strategy/lgeneral 1.3.0: A Panzer General clone written in SDL
 games-strategy/lightyears 1.4-r1: a single-player game with a science-fiction theme
 games-strategy/liquidwar 5.6.4-r1: unique multiplayer wargame
-games-strategy/liquidwar6 0.4.3681 0.4.3681-r1: Unique multiplayer wargame between liquids
+games-strategy/liquidwar6 0.4.3681-r1: Unique multiplayer wargame between liquids
 games-strategy/majesty-demo 1.0.0: Control your own kingdom in this simulation
 games-strategy/maxr 0.2.8: Mechanized Assault and Exploration Reloaded
 games-strategy/megaglest 3.11.1-r1: Cross-platform 3D realtime strategy game
@@ -10610,7 +10610,7 @@ games-strategy/openra 20120630-r1 20130514-r2 20131223-r2 20140608-r1 20140722-r
 games-strategy/outerspace 0.5.68: on-line strategy game taking place in the dangerous universe
 games-strategy/revenge-of-the-titans 1.80.12: defeat the returning Titan horde in a series of epic ground battles
 games-strategy/s25rttr 0.8.1: Open Source remake of The Settlers II game (needs original game files)
-games-strategy/scorched3d 44 44-r1: Multi-player tank battle in 3D (OpenGL)
+games-strategy/scorched3d 44-r1: Multi-player tank battle in 3D (OpenGL)
 games-strategy/seven-kingdoms 2.14.4 2.14.5: Seven Kingdoms: Ancient Adversaries
 games-strategy/smac 6.0a: Linux port of the popular strategy game from Firaxis
 games-strategy/spaz 1.605: Space Pirates and Zombies
@@ -10622,7 +10622,7 @@ games-strategy/wargus 2.2.7: Warcraft II for the Stratagus game engine
 games-strategy/wargus-data 0: Warcraft II data for wargus (needs DOS CD)
 games-strategy/warmux 11.04.1: A free Worms clone
 games-strategy/warzone2100 3.1.2: 3D real-time strategy game
-games-strategy/wesnoth 1.12.4 1.12.5: Battle for Wesnoth - A fantasy turn-based strategy game
+games-strategy/wesnoth 1.12.5: Battle for Wesnoth - A fantasy turn-based strategy game
 games-strategy/widelands 0.17: A game similar to Settlers 2
 games-strategy/xbattle 5.4.1: A multi-player game of strategy and coordination
 games-strategy/xbattleai 1.2.2-r1: A multi-player game of strategy and coordination
@@ -10648,7 +10648,7 @@ games-util/linux-wbfs-manager 0.1.12 9999: WBFS manager for Linux using GTK+
 games-util/loki_patch 20091105: Loki Software binary patch tool
 games-util/lutris 0.3.6.3: Gaming platform for GNU/Linux
 games-util/mcrcon 0.0.5: Remote connection client for Minecraft servers
-games-util/nml 0.4.1 0.4.2-r1: Compiler of NML files into grf/nfo files
+games-util/nml 0.4.2-r1: Compiler of NML files into grf/nfo files
 games-util/pyfa 1.15.0 9999: Python Fitting Assistant - a ship fitting application for EVE Online
 games-util/qjoypad 4.1.0: Translate gamepad/joystick input into key strokes/mouse actions in X
 games-util/qstat 2.11: Server statics collector supporting many FPS games
@@ -10659,7 +10659,7 @@ games-util/uz2unpack 0.1: UZ2 Decompressor for UT2003/UT2004
 games-util/vispatch 1.4.6: WaterVIS utility for glquake
 games-util/wiiload 0.5: load homebrew apps over the network to your Wii
 games-util/wit 2.30a 2.31a: A set of command line tools to manipulate Wii/GameCube ISO images and WBFS containers
-games-util/wxchtdecoder 1.5a 1.5a-r1: A program to decode .CHT files in Snes9x and ZSNES to plain text
+games-util/wxchtdecoder 1.5a-r1: A program to decode .CHT files in Snes9x and ZSNES to plain text
 games-util/xboxdrv 0.8.5-r1 0.8.5-r2: Userspace Xbox 360 Controller driver
 games-util/xboxgw 1.082: Tunnels XBox system link games over the net
 games-util/xgame 1.7.1: Run games in a separate X session
