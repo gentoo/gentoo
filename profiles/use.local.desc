@@ -15,7 +15,7 @@ app-accessibility/festival-it:mbrola - Adds support for mbrola voices
 app-accessibility/freetts:jsapi - build Java Speech API (JSAPI)
 app-accessibility/freetts:mbrola - Adds support for mbrola voices
 app-accessibility/orca:braille - Enable braille support
-app-accessibility/simon:kdepim - Use kde-base/kdepimlibs
+app-accessibility/simon:kdepim - Use kde-apps/kdepimlibs
 app-accessibility/simon:opencv - Use media-libs/opencv
 app-accessibility/simon:sphinx - Build sphinx backend (pulls app-accessibility/julius if disabled
 app-accessibility/speech-dispatcher:espeak - Adds support for espeak speech engine
@@ -3251,9 +3251,13 @@ kde-apps/kdebase-runtime-meta:crash-reporter - Builds a gui tool to submit crash
 kde-apps/kdebase-runtime-meta:minimal - Install a Plasma 5 compatible subset of the package
 kde-apps/kdebase-runtime-meta:oldwallet - Install kde-apps/kwalletd on a minimal setup for migration purposes
 kde-apps/kdenetwork-meta:ppp - Enable support for net-dialup/ppp.
+kde-apps/kdepim-common-libs:google - Google service integration via net-libs/libkgapi
+kde-apps/kdepim-runtime:facebook - Facebook service integration via net-libs/libkfbapi
+kde-apps/kdepim-runtime:google - Google service integration via net-libs/libkgapi
+kde-apps/kdepimlibs:prison - Enable support for QRcodes in contacts
 kde-apps/kdeutils-meta:floppy - Install kde-base/kfloppy to format and create DOS or ext2fs filesystems in a floppy.
 kde-apps/kget:bittorrent - Enable bittorrent transfer plugin through net-libs/libktorrent
-kde-apps/kget:gpg - Enable signature verification by QGpgME via kde-base/kdepimlibs
+kde-apps/kget:gpg - Enable signature verification by QGpgME via kde-apps/kdepimlibs
 kde-apps/kget:mms - Enable MMS (Microsoft Media Server) plugin through media-libs/libmms
 kde-apps/kget:webkit - Enable KdeWebkit browser plugin using kde-misc/kwebkitpart
 kde-apps/kig:scripting - Support Python scripting
@@ -3308,16 +3312,12 @@ kde-base/kde-meta:kdepim - Pull in KDE PIM
 kde-base/kde-meta:sdk - Pull in developer-specific meta-packages
 kde-base/kdebase-startkde:wallpapers - Install the KDE wallpapers
 kde-base/kdelibs:opengl - Enable OpenGL support for Plasma (GLApplet)
-kde-base/kdepim-common-libs:google - Google service integration via net-libs/libkgapi
-kde-base/kdepim-runtime:facebook - Facebook service integration via net-libs/libkfbapi
-kde-base/kdepim-runtime:google - Google service integration via net-libs/libkgapi
-kde-base/kdepimlibs:prison - Enable support for QRcodes in contacts
 kde-base/kdeplasma-addons:attica - Enable support for dev-libs/libattica
 kde-base/kdeplasma-addons:desktopglobe - Enable Desktop Globe wallpaper using kde-base/marble
 kde-base/kdeplasma-addons:fcitx - Use fcitx input method via app-i18n/fcitx
 kde-base/kdeplasma-addons:ibus - Use ibus input method via app-i18n/ibus
 kde-base/kdeplasma-addons:json - Enable JSON support via dev-libs/qjson
-kde-base/kdeplasma-addons:kdepim - KDE PIM integration via kde-base/kdepimlibs
+kde-base/kdeplasma-addons:kdepim - KDE PIM integration via kde-apps/kdepimlibs
 kde-base/kdeplasma-addons:oauth - Enable OAuth support via dev-libs/qoauth
 kde-base/kdeplasma-addons:qalculate - Enable Qalculate runner using sci-libs/libqalculate
 kde-base/kdeplasma-addons:qwt - Enable applets that use x11-libs/qwt:5
@@ -3332,7 +3332,7 @@ kde-base/korundum:akonadi - Compile bindings for Akonadi
 kde-base/korundum:kate - Compile bindings for KDE Advanced Text Editor
 kde-base/korundum:okular - Compile bindings for kde-base/okular
 kde-base/kwin:gles - Enable support for GLES.
-kde-base/libplasmaclock:kdepim - KDE PIM integration via kde-base/kdepimlibs
+kde-base/libplasmaclock:kdepim - KDE PIM integration via kde-apps/kdepimlibs
 kde-base/perlkde:akonadi - Compile bindings for Akonadi
 kde-base/perlkde:attica - Compile bindings for dev-libs/libattica
 kde-base/perlkde:kate - Compile bindings for KDE Advanced Text Editor
@@ -3346,7 +3346,7 @@ kde-base/perlqt:qthelp - Compile bindings for QtHelp from dev-qt/qthelp.
 kde-base/perlqt:qwt - Compile bindings for x11-libs/qwt.
 kde-base/perlqt:webkit - Compile bindings for dev-qt/qtwebkit.
 kde-base/plasma-workspace:json - Enable JSON support via dev-libs/qjson
-kde-base/plasma-workspace:kdepim - KDE PIM integration via kde-base/kdepimlibs
+kde-base/plasma-workspace:kdepim - KDE PIM integration via kde-apps/kdepimlibs
 kde-base/plasma-workspace:qalculate - Enable Qalculate runner using sci-libs/libqalculate
 kde-base/powerdevil:pm-utils - Adds support for suspend/resume the system through sys-power/pm-utils
 kde-base/pykde4:akonadi - Compile bindings for Akonadi
