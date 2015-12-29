@@ -122,9 +122,9 @@ src_test() {
 		export MPD_CONF_FILE="${T}/mpd.conf"
 		"${ROOT}"usr/bin/mpd -d --pidfile="${T}"/mpd.pid
 	elif [[ "${MPE_IMP}" == openmpi* ]] && [ -z "${MPE2_FORCE_OPENMPI_TEST}" ]; then
-		elog
-		elog "Skipping tests for openmpi"
-		elog
+		echo
+		einfo "Skipping tests for openmpi"
+		echo
 		return 0
 	fi
 
