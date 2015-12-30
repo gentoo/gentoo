@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201512-07">
+  <title>GStreamer: User-assisted execution of arbitrary code</title>
+  <synopsis>A buffer overflow in GStreamer could allow remote attackers to
+    execute arbitrary code or cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">gstreamer</product>
+  <announced>December 30, 2015</announced>
+  <revised>December 30, 2015: 1</revised>
+  <bug>553742</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/gstreamer" auto="yes" arch="*">
+      <unaffected range="ge">1.4.5</unaffected>
+      <vulnerable range="lt">1.4.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GStreamer is an open source multimedia framework.</p>
+  </background>
+  <description>
+    <p>A buffer overflow vulnerability has been found in the parsing of H.264
+      formatted video.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted H.264
+      formatted video using an application linked against GStreamer, possibly
+      resulting in execution of arbitrary code with the privileges of the
+      process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GStreamer users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/gstreamer-1.4.5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0797">CVE-2015-0797</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 22 Nov 2015 14:47:48 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 30 Dec 2015 11:14:34 +0000">ackle</metadata>
+</glsa>
