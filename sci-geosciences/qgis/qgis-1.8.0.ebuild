@@ -53,6 +53,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-1.7.0-avoid-deprecated-pyqtconfig.patch"
 	"${FILESDIR}/${PN}-1.8.0-no-python-pyc.patch"
+	"${FILESDIR}/${PN}-1.8.0-redrawning.patch"
 )
 
 pkg_setup() {
