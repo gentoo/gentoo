@@ -8554,7 +8554,7 @@ dev-ruby/compass-import-once 1.0.5: Speed up your Sass compilation by making @im
 dev-ruby/configliere 0.4.18-r1 0.4.22: Settings manager for Ruby scripts
 dev-ruby/connection_pool 2.2.0: Generic connection pooling for Ruby
 dev-ruby/contracts 0.10.1 0.11.0 0.12.0: provides contracts for Ruby
-dev-ruby/coolio 1.4.1: A high performance event framework for Ruby which uses the libev C library
+dev-ruby/coolio 1.4.1 1.4.2: A high performance event framework for Ruby which uses the libev C library
 dev-ruby/countdownlatch 1.0.0-r1: Synchronization aid that allows threads to wait until a set of operations in other threads completes
 dev-ruby/crack 0.4.2 0.4.2-r1 0.4.3: Really simple JSON and XML parsing, ripped from Merb and Rails
 dev-ruby/crass 1.0.2: A Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification
