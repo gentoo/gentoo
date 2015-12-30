@@ -29,7 +29,6 @@ RDEPEND="
 	media-libs/libraw
 	media-libs/jasper
 	media-libs/openexr
-	media-libs/openjpeg:0
 	media-libs/tiff
 	sys-libs/zlib
 	virtual/jpeg:62
