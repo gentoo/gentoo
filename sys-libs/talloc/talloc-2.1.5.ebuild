@@ -33,6 +33,8 @@ DEPEND="${RDEPEND}
 
 WAF_BINARY="${S}/buildtools/bin/waf"
 
+RESTRICT="test"
+
 MULTILIB_WRAPPED_HEADERS=(
 	# python goes only for native
 	/usr/include/pytalloc.h
