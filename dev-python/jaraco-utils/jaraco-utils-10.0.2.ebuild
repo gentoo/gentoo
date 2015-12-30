@@ -17,7 +17,9 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="test"
 
-DEPEND="dev-python/hgtools[${PYTHON_USEDEP}]
+# The binary calc-prorate is now part of tempora
+DEPEND="!!dev-python/tempora[${PYTHON_USEDEP}]
+	dev-python/hgtools[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/more-itertools[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}]
