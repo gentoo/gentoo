@@ -4627,7 +4627,7 @@ dev-libs/libg15render 1.2-r2 9999: Small library for display text and graphics o
 dev-libs/libgamin 0.1.10-r4 0.1.10-r5: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.10.1 0.11.1: Provides functionality for gaming input devices
 dev-libs/libgcrypt 1.5.4-r1 1.5.4-r100 1.6.3-r4 1.6.3-r5 1.6.4: General purpose crypto library based on the code used in GnuPG
-dev-libs/libgdata 0.16.1 0.17.3 0.17.4: GLib-based library for accessing online service APIs using the GData protocol
+dev-libs/libgdata 0.17.3 0.17.4 0.17.4-r1: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.7 0.6.8 0.14.0 0.16.1 0.18.0: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.20.0-r1 0.21.5 0.22.3 0.23.2-r1 0.23.3 0.23.4 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.22.8 0.23.6 0.23.8: Git library for GLib
@@ -10701,7 +10701,7 @@ gnome-base/gnome-settings-daemon 3.16.3 3.18.2: Gnome Settings Daemon
 gnome-base/gnome-shell 3.16.4 3.18.3: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r2 2.24.4-r3 2.24.4-r4: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.16.1 3.18.1: Collection of GSettings schemas for GNOME desktop
-gnome-base/gvfs 1.22.4 1.24.2 1.24.2-r1 1.26.2: Virtual filesystem implementation for gio
+gnome-base/gvfs 1.24.2-r1 1.26.2 1.26.2-r1: Virtual filesystem implementation for gio
 gnome-base/libbonobo 2.24.3-r1: GNOME CORBA framework
 gnome-base/libbonoboui 2.24.5-r1: User Interface part of libbonobo
 gnome-base/libglade 2.6.4-r2: Library to construct graphical interfaces at runtime
@@ -10752,7 +10752,7 @@ gnome-extra/gnome-contacts 3.16.2 3.18.1: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.6: Thumbnail generator for directories
 gnome-extra/gnome-do 0.9: GNOME Do allows you to get things done quickly
 gnome-extra/gnome-do-plugins 0.8.5: Plugins to put the Do in Gnome Do
-gnome-extra/gnome-documents 3.16.4 3.18.2: A document manager application for GNOME
+gnome-extra/gnome-documents 3.16.4 3.18.2 3.18.2-r1: A document manager application for GNOME
 gnome-extra/gnome-dvb-daemon 0.2.10 0.2.90: Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
 gnome-extra/gnome-getting-started-docs 3.16.2 3.18.2: Help a new user get started in GNOME
 gnome-extra/gnome-integration-spotify 20131013 20140907: GNOME integration for Spotify
@@ -14387,7 +14387,7 @@ net-misc/geoipupdate 2.2.1: performs automatic updates of GeoIP2 and GeoIP Legac
 net-misc/geomyidae 0.26.2 0.26.3: A daemon to serve the gopher protocol
 net-misc/getdate 1.2-r1: Network Date/Time Query and Set Local Date/Time Utility
 net-misc/gip 1.7.0.1: A nice GNOME GUI for making IP address based calculations
-net-misc/gnome-online-miners 3.14.3 3.14.3-r1: Crawls through your online content
+net-misc/gnome-online-miners 3.14.3-r1 3.14.3-r2: Crawls through your online content
 net-misc/gnome-rdp 0.3.0.9: Remote Desktop Client for the GNOME desktop
 net-misc/gns3-converter 1.2.3: Designed to convert old ini-style GNS3 topologies
 net-misc/gns3-gui 1.3.3 1.3.10: Graphical Network Simulator
@@ -17521,7 +17521,7 @@ www-client/dillo 3.0.4 3.0.4.1 3.0.5 3.0.5-r1: Lean FLTK based web browser
 www-client/dooble 1.55: A Secure and Open Source Web Browser
 www-client/dwb 2013.03.30 2014.03.07 2014.03.07-r1 9999: Dynamic web browser based on WebKit and GTK+
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 9999: Advanced and well-established text-mode web browser
-www-client/epiphany 3.16.3 3.18.0 3.18.2: GNOME webbrowser based on Webkit
+www-client/epiphany 3.16.3 3.18.2: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1: Fetch is a simple, fast, and flexible HTTP download tool built on the HTTP Fetcher library
 www-client/firefox 38.4.0 38.5.0 43.0: Firefox Web Browser
 www-client/firefox-bin 38.3.0 38.4.0 38.5.0 43.0: Firefox Web Browser
