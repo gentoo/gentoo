@@ -80,7 +80,7 @@ gnome-python-common-r1_src_configure() {
 	)
 
 	ECONF_SOURCE=${S} \
-	python_parallel_foreach_impl \
+	python_foreach_impl \
 		gnome2_src_configure "${myconf[@]}" "${@}"
 }
 
