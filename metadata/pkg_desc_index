@@ -1975,7 +1975,7 @@ app-office/dia2code 0.8.7: Convert UML diagrams produced with Dia to various sou
 app-office/eqe 1.3.0: A small LaTeX editor that produces images, with drag and drop support
 app-office/geierlein 0.6.1 0.6.2 0.7.1 0.7.3 0.7.8 0.8.0: Submit tax forms (Umsatzsteuervoranmeldung) to the german digital tax project ELSTER
 app-office/glabels 3.2.0 3.2.1: Program for creating labels and business cards
-app-office/gnucash 2.6.7 2.6.9: A personal finance manager
+app-office/gnucash 2.6.7 2.6.9 2.6.10: A personal finance manager
 app-office/gnumeric 1.12.24 1.12.25: The GNOME Spreadsheet
 app-office/grisbi 1.0.0: Grisbi is a personal accounting application for Linux
 app-office/gtg 0.3 0.3.1: Personal organizer for the GNOME desktop environment
@@ -5200,7 +5200,7 @@ dev-perl/CPAN-Meta-Check 0.12.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.11: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.330.0-r1: Inject modules into a CPAN::Mini mirror
 dev-perl/CPAN-Perl-Releases 2.340.0 2.540.0: Mapping Perl releases on CPAN to the location of the tarballs
-dev-perl/CQL-Parser 1.120.0-r1 1.130.0: compiles CQL strings into parse trees of Node subtypes
+dev-perl/CQL-Parser 1.130.0: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r1: Perl extension for minifying CSS
 dev-perl/CSS-Packer 1.2.1 2.0.0: Another CSS minifier
 dev-perl/CSS-Squish 0.100.0-r1: Compact many CSS files into one big file
@@ -5300,15 +5300,15 @@ dev-perl/Crypt-Cracklib 1.700.0-r1: Perl interface to Alec Muffett's Cracklib
 dev-perl/Crypt-DES 2.70.0: Crypt::DES module for perl
 dev-perl/Crypt-Eksblowfish 0.9.0-r2: the Eksblowfish block cipher
 dev-perl/Crypt-OpenPGP 1.60.0-r1 1.70.0: Pure-Perl OpenPGP-compatible PGP implementation
-dev-perl/Crypt-OpenSSL-Bignum 0.40.0-r1 0.40.0-r2: OpenSSL's multiprecision integer arithmetic
-dev-perl/Crypt-OpenSSL-DSA 0.150.0 0.150.0-r1: Digital Signature Algorithm using OpenSSL
-dev-perl/Crypt-OpenSSL-RSA 0.280.0-r1 0.280.0-r2: Crypt::OpenSSL::RSA module for perl
-dev-perl/Crypt-OpenSSL-Random 0.40.0-r1 0.40.0-r2: Crypt::OpenSSL::Random module for perl
-dev-perl/Crypt-PasswdMD5 1.300.0-r1 1.400.0: Provides interoperable MD5-based crypt() functions
+dev-perl/Crypt-OpenSSL-Bignum 0.40.0-r2: OpenSSL's multiprecision integer arithmetic
+dev-perl/Crypt-OpenSSL-DSA 0.150.0-r1: Digital Signature Algorithm using OpenSSL
+dev-perl/Crypt-OpenSSL-RSA 0.280.0-r2: Crypt::OpenSSL::RSA module for perl
+dev-perl/Crypt-OpenSSL-Random 0.40.0-r2: Crypt::OpenSSL::Random module for perl
+dev-perl/Crypt-PasswdMD5 1.400.0: Provides interoperable MD5-based crypt() functions
 dev-perl/Crypt-RC4 2.020.0-r1: Implements the RC4 encryption algorithm
 dev-perl/Crypt-RIPEMD160 0.50.0-r1: Crypt::RIPEMD160 module for perl
 dev-perl/Crypt-Random-Source 0.70.0-r1: Get weak or strong random data from pluggable sources
-dev-perl/Crypt-Rijndael 1.110.0-r1 1.120.0 1.130.0: Crypt::CBC compliant Rijndael encryption module
+dev-perl/Crypt-Rijndael 1.110.0-r1 1.130.0: Crypt::CBC compliant Rijndael encryption module
 dev-perl/Crypt-SMIME 0.100.0-r1 0.150.0 0.150.0-r1: S/MIME message signing, verification, encryption and decryption
 dev-perl/Crypt-SSLeay 0.640.0 0.720.0 0.720.0-r1: OpenSSL support for LWP
 dev-perl/Crypt-Simple 0.60.0-r1: Crypt::Simple - encrypt stuff simply
