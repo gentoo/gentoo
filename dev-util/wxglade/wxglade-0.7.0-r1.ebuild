@@ -21,13 +21,13 @@ IUSE="python"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
-        dev-python/wxpython:2.8[${PYTHON_USEDEP}]"
+		dev-python/wxpython:2.8[${PYTHON_USEDEP}]"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-    epatch "${FILESDIR}"/${P}-fixes-from-arch.patch
+	epatch "${FILESDIR}"/${P}-fixes-from-arch.patch
 }
 
 src_compile() {
