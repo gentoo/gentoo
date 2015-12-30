@@ -106,6 +106,8 @@ pkg_setup() {
 
 src_prepare() {
 	epatch ${PATCHES[@]}
+	# Allow user patches
+	epatch_user
 }
 
 src_configure() {
