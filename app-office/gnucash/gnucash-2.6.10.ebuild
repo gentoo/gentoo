@@ -65,6 +65,7 @@ src_prepare() {
 	sed -i -e '/test_suite_gnc_date/d' src/libqof/qof/test/test-qof.c || die
 
 	# Fix automagic on guile detection
+	# https://bugzilla.gnome.org/show_bug.cgi?id=760015
 	epatch "${FILESDIR}"/${PN}-2.6.9-automagic-guile.patch
 
 	eautoreconf
