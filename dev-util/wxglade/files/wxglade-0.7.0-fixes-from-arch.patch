@@ -1,0 +1,770 @@
+diff --git a/application.py b/application.py
+--- a/application.py
++++ b/application.py
+@@ -694,17 +694,20 @@ class Application(object):
+                 self.notebook,
+                 )
+ 
+-        out = misc.UnicodeStringIO(self.encoding)
++        # temporary buffer for XML
++        tmp_xml = misc.UnicodeStringIO('utf-8')
+ 
+         from xml_parse import CodeWriter
+         try:
+             # generate the code from the xml buffer
+-            cw = self.get_language()
+-            if preview and cw == 'python':  # of course cw == 'python', but...
+-                overwrite = self.overwrite
++            codewriter = self.get_language()
++
++            # save and overwrite some code generation settings
++            if preview and codewriter == 'python':
++                overwrite_save = self.overwrite
+                 self.overwrite = True
+-            class_names = common.app_tree.write(out)  # write the xml onto a
+-                                                      # temporary buffer
++
++            class_names = common.app_tree.write(tmp_xml)
+ 
+             out_path = os.path.expanduser(self.output_path.strip())
+             if not os.path.isabs(out_path) and self.filename:
+@@ -713,15 +716,15 @@ class Application(object):
+                 out_path = os.path.normpath(out_path)
+             else:
+                 out_path = None
+-            CodeWriter(
+-                common.code_writers[cw],
+-                out.getvalue(), True,
+-                preview=preview,
+-                out_path=out_path,
+-                class_names=class_names,
+-                )
+-            if preview and cw == 'python':
+-                self.overwrite = overwrite
++
++            CodeWriter(common.code_writers[codewriter], tmp_xml.getvalue(),
++                       True, preview=preview, out_path=out_path,
++                       class_names=class_names)
++
++            # restore saved settings
++            if preview and codewriter == 'python':
++                self.overwrite = overwrite_save
++
+         except (errors.WxgBaseException, IOError, OSError), inst:
+             wx.MessageBox(
+                 _("Error generating code:\n%s") % inst,
+diff --git a/bugdialog_ui.py b/bugdialog_ui.py
+--- a/bugdialog_ui.py
++++ b/bugdialog_ui.py
+@@ -17,7 +17,7 @@ import gettext
+ class UIBugDialog(wx.Dialog):
+     def __init__(self, *args, **kwds):
+         # begin wxGlade: UIBugDialog.__init__
+-        kwds["style"] = wx.DEFAULT_DIALOG_STYLE | wx.RESIZE_BORDER | wx.THICK_FRAME
++        kwds["style"] = wx.DEFAULT_DIALOG_STYLE | wx.RESIZE_BORDER
+         wx.Dialog.__init__(self, *args, **kwds)
+         self.notebook_1 = wx.Notebook(self, wx.ID_ANY, style=wx.NB_BOTTOM)
+         self.nb1_pane_summary = wx.Panel(self.notebook_1, wx.ID_ANY)
+diff --git a/common.py b/common.py
+--- a/common.py
++++ b/common.py
+@@ -6,10 +6,13 @@ Global variables
+ @license: MIT (see license.txt) - THIS PROGRAM COMES WITH NO WARRANTY
+ """
+ 
++import codecs
+ import ConfigParser
+ import logging
++import os
+ import os.path
+ import sys
++import types
+ import zipfile
+ 
+ import config
+@@ -988,23 +991,28 @@ def make_object_button(widget, icon_path
+ 
+ def encode_from_xml(label, encoding=None):
+     """\
+-    Returns a str which is the encoded version of the unicode label
++    Returns a str which is the encoded version of the unicode msg
+     """
+     if encoding is None:
+         encoding = app_tree.app.encoding
+     return label.encode(encoding, 'replace')
+ 
+ 
+-def encode_to_xml(label, encoding=None):
++def encode_to_xml(item):
+     """\
+-    returns a utf-8 encoded representation of label. This is equivalent to:
+-    str(label).decode(encoding).encode('utf-8')
++    Decode the item to a Unicode string. The encoding to UTF-8 will be done
++    later.
++
++    Non-string items will be converted to string automatically.
++
++    @rtype: unicode
+     """
+-    if encoding is None:
+-        encoding = app_tree.app.encoding
+-    if type(label) == type(u''):
+-        return label.encode('utf-8')
+-    return str(label).decode(encoding).encode('utf-8')
++    if isinstance(item, types.UnicodeType):
++        return item
++    if not isinstance(item, types.StringTypes):
++        item = str(item)
++    item = item.decode(app_tree.app.encoding)
++    return item
+ 
+ 
+ def save_file(filename, content, which='wxg'):
+@@ -1012,6 +1020,8 @@ def save_file(filename, content, which='
+     Save I{content} to file named I{filename} and, if user's preferences say
+     so and I{filename} exists, makes a backup copy of it.
+ 
++    @note: The content of 'wxg' files must be Unicode always!
++
+     @note: Exceptions that may occur while performing the operations are not
+            handled.
+ 
+@@ -1022,6 +1032,7 @@ def save_file(filename, content, which='
+     @param which:    Kind of backup: 'wxg' or 'codegen'
+     """
+     if which == 'wxg':
++        assert isinstance(content, types.UnicodeType)
+         do_backup = config.preferences.wxg_backup
+     elif which == 'codegen':
+         do_backup = config.preferences.codegen_backup
+@@ -1030,8 +1041,7 @@ def save_file(filename, content, which='
+             'Unknown value "%s" for parameter "which"!' % which
+             )
+     try:
+-        if do_backup and \
+-           filename not in config._backed_up and \
++        if do_backup and filename not in config._backed_up and \
+            os.path.isfile(filename):
+             # make a backup copy of filename
+             infile = open(filename)
+@@ -1044,13 +1054,20 @@ def save_file(filename, content, which='
+         savecontent = True
+         if os.path.isfile(filename):
+             oldfile = open(filename)
+-            savecontent = (oldfile.read() != content)
++            oldcontent = oldfile.read()
++            if which == 'wxg':
++                # decode from utf-8 to unicode
++                oldcontent = oldcontent.decode('utf-8')
++            savecontent = (oldcontent != content)
+             oldfile.close()
+         if savecontent:
+             directory = os.path.dirname(filename)
+             if directory and not os.path.isdir(directory):
+                 os.makedirs(directory)
+             outfile = open(filename, 'w')
++            if which == 'wxg':
++                # encode from unicode to utf-8
++                content = content.encode('utf-8')
+             outfile.write(content)
+             outfile.close()
+     finally:
+@@ -1226,9 +1243,16 @@ def init_paths():
+         config.appdata_path, 'file_history.txt'
+         )
+ 
+-    config.log_file = os.path.join(
+-        config.appdata_path, 'wxglade.log'
+-        )
++    config.log_file = os.path.join(config.appdata_path, 'wxglade.log')
++
++    # create missing application data directory, otherwise log initialisation
++    # will failed with an IOError "No such file or directory"
++    # The file logger will be initialised after this function returns.
++    if not os.path.isdir(config.appdata_path):
++        try:
++            os.makedirs(config.appdata_path, 0700)
++        except (IOError, OSError), e:
++            logging.error(_('Failed to create config directory: "%s"'), e)
+ 
+ 
+ def init_preferences():
+@@ -1255,16 +1279,12 @@ def save_preferences():
+         os.makedirs(path)
+         # always save the file history
+     if config.use_file_history:
+-        fh = palette.file_history
+-        count = fh.GetCount()
+-        encoding = 'utf-8'
+-        filenames = [encode_to_xml(fh.GetHistoryFile(i), encoding)
+-                     for i in
+-                     range(min(config.preferences.number_history, count))]
+-        outfile = open(config.history_file, 'w')
+-        print >> outfile, "# -*- coding: %s -*-" % encoding
+-        for filename in filenames:
+-            print >> outfile, filename
++        content = u'# -*- coding: utf-8 -*-\n'
++        for pos in range(min(config.preferences.number_history,
++                             palette.file_history.GetCount())):
++            content += u'%s\n' % palette.file_history.GetHistoryFile(pos)
++        outfile = codecs.open(config.history_file, 'w', encoding='utf-8')
++        outfile.write(content)
+         outfile.close()
+     if config.preferences.changed:
+         outfile = open(config.rc_file, 'w')
+@@ -1280,22 +1300,14 @@ def load_history():
+     @see: L{config.history_file}
+     @see: L{config.use_file_history}
+ 
+-    @rtype: list[str]
++    @rtype: list[unicode]
+     """
+     try:
+-        history = open(config.history_file)
+-        lines = history.readlines()
+-        if lines and lines[0].startswith('# -*- coding:'):
+-            try:
+-                encoding = 'utf-8'
+-                lines = [e.decode(encoding) for e in lines[1:]]
+-            except Exception:
+-                logging.exception(_("Internal Error"))
+-                lines = lines[1:]
+-        history.close()
+-        if config.use_gui:
+-            import misc
+-            lines = [misc.wxstr(e, 'utf-8') for e in lines]
++        infile = codecs.open(config.history_file, encoding='utf-8')
++        lines = infile.readlines()
++        if lines and lines[0].startswith(u'# -*- coding:'):
++            lines = lines[1:]
++        infile.close()
+         return lines
+     except IOError:
+         # don't consider this an error
+@@ -1389,6 +1401,15 @@ class Preferences(ConfigParser.ConfigPar
+         self.changed = True
+ 
+     def set_geometry(self, name, geometry):
++        """\
++        Save the current widget position and size
++
++        @param name: Widget name
++        @type name: str
++
++        @param geometry: Position and Size
++        @type geometry: (int, int, int, int)
++        """
+         if geometry is not None:
+             section = 'geometry_%s' % name
+             if not self.has_section(section):
+@@ -1399,14 +1420,25 @@ class Preferences(ConfigParser.ConfigPar
+             self.set(section, 'h', geometry[3])
+ 
+     def get_geometry(self, name):
++        """\
++        Return saved widget position and size.
++
++        @param name: Widget name
++        @type name: str
++
++        @rtype: (int, int, int, int) | None
++        """
+         section = 'geometry_%s' % name
+-        if self.has_section(section):
+-            x = self.get(section, 'x')
+-            y = self.get(section, 'y')
+-            w = self.get(section, 'w')
+-            h = self.get(section, 'h')
++        if not self.has_section(section):
++            return None
++        try:
++            x = int(self.get(section, 'x'))
++            y = int(self.get(section, 'y'))
++            w = int(self.get(section, 'w'))
++            h = int(self.get(section, 'h'))
+             return x, y, w, h
+-        else:
+-            return None
++        except:
++            pass
++        return None
+ 
+ # end of class Preferences
+diff --git a/config.py b/config.py
+--- a/config.py
++++ b/config.py
+@@ -385,11 +385,7 @@ def get_version(suffix=True):
+     @see: L{read_version_file()}
+     @see: L{get_hg_version()}
+     """
+-    release = read_version_file()
+-    if not release:
+-        release = get_hg_version()
+-    if not release:
+-        release = 'not found'
++    release = '0.7.0'
+ 
+     if suffix and hasattr(sys, 'frozen'):
+         release = '%s (standalone edition)' % release
+diff --git a/log.py b/log.py
+--- a/log.py
++++ b/log.py
+@@ -374,15 +374,20 @@ def init(filename='wxglade.log', encodin
+ 
+     # instantiate file handler
+     if filename:
+-        file_logger = logging.handlers.RotatingFileHandler(
+-            filename,
+-            maxBytes=100 * 1024,
+-            encoding=encoding,
+-            backupCount=1,
+-            )
+-        file_logger.setFormatter(file_formatter)
+-        file_logger.setLevel(logging.NOTSET)
+-        logger.addHandler(file_logger)
++        log_directory = os.path.dirname(filename)
++        if not os.path.isdir(log_directory):
++            logging.warning(_('Logging directory "%s" does not exists. Skip '
++                              'file logger initialisation!'), log_directory)
++        else:
++            file_logger = logging.handlers.RotatingFileHandler(
++                filename,
++                maxBytes=100 * 1024,
++                encoding=encoding,
++                backupCount=1,
++                )
++            file_logger.setFormatter(file_formatter)
++            file_logger.setLevel(logging.NOTSET)
++            logger.addHandler(file_logger)
+ 
+     # instantiate string handler
+     string_logger = StringHandler(storeAsUnicode=False)
+diff --git a/main.py b/main.py
+--- a/main.py
++++ b/main.py
+@@ -14,6 +14,7 @@ import os
+ import os.path
+ import sys
+ import time
++import types
+ import wx
+ from xml.sax import SAXParseException
+ 
+@@ -181,7 +182,7 @@ class wxGladeFrame(wx.Frame):
+ 
+         # load the available code generators
+         core_buttons, local_buttons, sizer_buttons = common.init_codegen()
+-        
++
+         append_item = misc.append_item
+         self.TREE_ID = TREE_ID = wx.NewId()
+         append_item(view_menu, TREE_ID, _("Show &Tree\tF2"))
+@@ -209,11 +210,11 @@ class wxGladeFrame(wx.Frame):
+         GENERATE_CODE_ID = wx.NewId()
+         append_item(file_menu, GENERATE_CODE_ID, _("&Generate Code\tCtrl+G"),
+                     wx.ART_EXECUTABLE_FILE)
+-        
++
+         file_menu.AppendSeparator()
+         IMPORT_ID = wx.NewId()
+         append_item(file_menu, IMPORT_ID, _("&Import from XRC...\tCtrl+I"))
+-        
++
+         EXIT_ID = wx.NewId()
+         file_menu.AppendSeparator()
+         append_item(file_menu, EXIT_ID, _('E&xit\tCtrl+Q'), wx.ART_QUIT)
+@@ -247,7 +248,7 @@ class wxGladeFrame(wx.Frame):
+         files.reverse()
+         for path in files:
+             self.file_history.AddFileToHistory(path.strip())
+-            
++
+         def open_from_history(event):
+             if not self.ask_save():
+                 return
+@@ -274,9 +275,9 @@ class wxGladeFrame(wx.Frame):
+             else:
+                 common.remove_autosaved(filename)
+             self._open_app(filename)
+-            
++
+         wx.EVT_MENU_RANGE(self, wx.ID_FILE1, wx.ID_FILE9, open_from_history)
+-        
++
+         wx.EVT_MENU(self, TREE_ID, self.show_tree)
+         wx.EVT_MENU(self, PROPS_ID, self.show_props_window)
+         wx.EVT_MENU(self, RAISE_ID, self.raise_all)
+@@ -375,7 +376,7 @@ class wxGladeFrame(wx.Frame):
+                 sizer.Add(sb)
+             self.SetSizer(sizer)
+             sizer.Fit(self)
+-        
++
+         # Properties window
+         frame_style = wx.DEFAULT_FRAME_STYLE
+         frame_tool_win = config.preferences.frame_tool_win
+@@ -383,13 +384,13 @@ class wxGladeFrame(wx.Frame):
+             frame_style |= wx.FRAME_NO_TASKBAR | wx.FRAME_FLOAT_ON_PARENT
+             frame_style &= ~wx.MINIMIZE_BOX
+             if wx.Platform != '__WXGTK__': frame_style |= wx.FRAME_TOOL_WINDOW
+-        
++
+         self.frame2 = wx.Frame(self, -1, _('Properties - <%s>' % _('app')),
+                                style=frame_style)
+         self.frame2.SetBackgroundColour(wx.SystemSettings_GetColour(
+             wx.SYS_COLOUR_BTNFACE))
+         self.frame2.SetIcon(icon)
+-        
++
+         sizer_tmp = wx.BoxSizer(wx.VERTICAL)
+         property_panel = wxGladePropertyPanel(self.frame2, -1)
+ 
+@@ -402,7 +403,7 @@ class wxGladeFrame(wx.Frame):
+         sz.Show(misc.hidden_property_panel, False)
+         self.property_frame = self.frame2
+         #--------------------------------------------------------
+-        
++
+         property_panel.SetAutoLayout(True)
+         self.hidden_frame = wx.Frame(self, -1, "")
+         self.hidden_frame.Hide()
+@@ -420,7 +421,7 @@ class wxGladeFrame(wx.Frame):
+         self.tree_frame = wx.Frame(self, -1, _('wxGlade: Tree'),
+                                   style=frame_style)
+         self.tree_frame.SetIcon(icon)
+-        
++
+         app = application.Application(common.property_panel)
+         common.app_tree = WidgetTree(self.tree_frame, app)
+         self.tree_frame.SetSize((300, 300))
+@@ -436,45 +437,60 @@ class wxGladeFrame(wx.Frame):
+         wx.EVT_CLOSE(self.tree_frame, on_tree_frame_close)
+         # check to see if there are some remembered values
+         prefs = config.preferences
++
++        self_geometry = None
++        property_geomentry = None
++        tree_geometry = None
++
+         if prefs.remember_geometry:
+-            #self._logger.debug('initializing geometry')
+-            try:
+-                x, y, w, h = prefs.get_geometry('main')
+-                misc.set_geometry(self, (x, y))
+-            except Exception:
+-                pass
+-            misc.set_geometry(self.frame2, prefs.get_geometry('properties'))
+-            misc.set_geometry(self.tree_frame, prefs.get_geometry('tree'))
+-        else:
++            self_geometry = prefs.get_geometry('main')
++            if isinstance(self_geometry, types.TupleType):
++                self_geometry = wx.Rect(*self_geometry)
++
++            property_geomentry = prefs.get_geometry('properties')
++            if isinstance(property_geomentry, types.TupleType):
++                property_geomentry = wx.Rect(*property_geomentry)
++
++            tree_geometry = prefs.get_geometry('tree')
++            if isinstance(tree_geometry, types.TupleType):
++                tree_geometry = wx.Rect(*tree_geometry)
++
++        if not self_geometry:
++            self_geometry = wx.Rect()
++            self_geometry.TopLeft = wx.Display().GetClientArea().GetTopLeft()
++            self_geometry.Size = (-1, -1)
++
++        self._set_geometry(self, self_geometry)
++        self.Show()
++        self_geometry.Size = self.GetSize()
++
++        if not property_geomentry:
++            property_geomentry = wx.Rect()
++            property_geomentry.Position = self_geometry.BottomLeft
++            property_geomentry.Size = (345, 350)
++            # sometimes especially on GTK GetSize seems to ignore window
++            # decorations (bug still exists on wx3)
++            if wx.Platform != '__WXMSW__':
++                property_geomentry.Y += 40
++
++            # set size on Mac manually
+             if wx.Platform == '__WXMAC__':
+-                self.frame2.SetSize((345, 384)) # I've been told this is OK...
+-                self.SetPosition((0, 45)) # to avoid the OS X menubar
+-            else:
+-                self.frame2.SetSize((max(self.GetSize()[0], 250), 350))
+-                self.SetPosition((0, 0))
+-            x, y = self.GetPosition()
+-            h = self.GetSize()[1]
+-            w = self.frame2.GetSize()[0]
++                property_geomentry.Size = (345, 384)
++
++        self._set_geometry(self.frame2, property_geomentry)
++        self.frame2.Show()
++
++        if not tree_geometry:
++            tree_geometry = wx.Rect()
++            tree_geometry.Position = self_geometry.TopRight
++            tree_geometry.Size = (250, 350)
++            # sometimes especially on GTK GetSize seems to ignore window
++            # decorations (bug still exists on wx3)
+             if wx.Platform != '__WXMSW__':
+-                # under X, IceWM (and Sawfish, too), GetSize seems to ignore
+-                # window decorations
+-                h += 60
+-                w += 10
+-            self.frame2.SetPosition((x, y+h))
+-            self.tree_frame.SetPosition((x+w, y))
+-        self.Show()
++                tree_geometry.X += 10
++
++        self._set_geometry(self.tree_frame, tree_geometry)
+         self.tree_frame.Show()
+-        self.frame2.Show()    
+-
+-        #self._skip_activate = False
+-##         if frame_tool_win:
+-##             def on_iconize(event):
+-##                 if event.Iconized():
+-##                     self.hide_all()
+-##                 else:
+-##                     self.show_and_raise()
+-##                 event.Skip()
+-##             wx.EVT_ICONIZE(self, on_iconize)
+ 
+         if wx.Platform == '__WXMSW__':
+             import about
+@@ -522,7 +538,7 @@ class wxGladeFrame(wx.Frame):
+                               add_to_history=False):
+                 common.app_tree.app.saved = False
+                 common.app_tree.app.filename = None
+-                self.user_message(_("Recovery from auto save complete"))
++                self.user_message(_("Auto save loaded"))
+                 common.remove_autosaved()
+         else:
+             common.remove_autosaved()
+@@ -653,7 +669,7 @@ class wxGladeFrame(wx.Frame):
+                                    wildcard="wxGlade files (*.wxg)|*.wxg|"
+                                    "wxGlade Template files (*.wgt)|*.wgt|"
+                                    "XML files (*.xml)|*.xml|All files|*",
+-                                   flags=wx.OPEN|wx.FILE_MUST_EXIST,
++                                   flags=wx.FD_OPEN | wx.FD_FILE_MUST_EXIST,
+                                    default_path=self.cur_dir)
+         if infile:
+             if common.check_autosaved(infile) and \
+@@ -764,10 +780,13 @@ class wxGladeFrame(wx.Frame):
+         if config.preferences.autosave and self.autosave_timer is not None:
+             self.autosave_timer.Start()
+ 
+-        self.user_message(
+-            _("Loaded %s (%.2f seconds)") %
+-            (misc.wxstr(common.app_tree.app.filename), end - start)
+-        )
++        duration = end - start
++        if infilename:
++            self.user_message(
++                _("Loaded %s in %.2f seconds") % (
++                    misc.wxstr(os.path.basename(infilename)), duration))
++        else:
++            self.user_message(_("Loaded in %.2f seconds") % duration)
+ 
+         return True
+ 
+@@ -806,7 +825,7 @@ class wxGladeFrame(wx.Frame):
+             if config.preferences.autosave and \
+                    self.autosave_timer is not None:
+                 self.autosave_timer.Start()
+-            self.user_message(_("Saved %s") % filename)
++            self.user_message(_("Saved %s") % os.path.basename(filename))
+ 
+     def save_app_as(self, event):
+         """\
+@@ -849,11 +868,11 @@ class wxGladeFrame(wx.Frame):
+             # first, let's see if we have to save the geometry...
+             prefs = config.preferences
+             if prefs.remember_geometry:
+-                prefs.set_geometry('main', misc.get_geometry(self))
++                prefs.set_geometry('main', self._get_geometry(self))
+                 prefs.set_geometry('tree',
+-                                   misc.get_geometry(self.tree_frame))
++                                   self._get_geometry(self.tree_frame))
+                 prefs.set_geometry('properties',
+-                                   misc.get_geometry(self.frame2))
++                                   self._get_geometry(self.frame2))
+                 prefs.changed = True
+             common.app_tree.clear()
+             if self.about_box:
+@@ -919,7 +938,7 @@ class wxGladeFrame(wx.Frame):
+         infilename = misc.FileSelector(
+             _("Import file"),
+             wildcard="XRC files (*.xrc)" "|*.xrc|All files|*",
+-            flags=wx.OPEN | wx.FILE_MUST_EXIST,
++            flags=wx.FD_OPEN | wx.FD_FILE_MUST_EXIST,
+             default_path=self.cur_dir)
+         if infilename:
+             ibuffer = StringIO.StringIO()
+@@ -945,6 +964,41 @@ class wxGladeFrame(wx.Frame):
+                             "File->Save As Template..."), _("Information"),
+                           style=wx.OK|wx.ICON_INFORMATION)
+ 
++    def _set_geometry(self, win, geometry):
++        """\
++        Set position and/or size of widget.
++
++        @param win: Frame to set position and/or size
++        @type win: wx.Frame
++
++        @param geometry: Position and Size
++        @type geometry: (int, int, int, int)
++        """
++        assert isinstance(geometry, (wx.Point, wx.Rect))
++
++        if not geometry:
++            return
++
++        if isinstance(geometry, wx.Point):
++            win.SetPosition(geometry)
++        else:
++            win.SetDimensions(*geometry.Get())
++
++    def _get_geometry(self, widget):
++        """\
++        Return widgets position and size.
++
++        @param widget: Frame to return position and/or size
++        @type widget: wx.Frame
++
++        @rtype: wx.Rect | None
++        """
++        pos_size = widget.Rect
++        client_area = wx.Display().ClientArea
++        if client_area.Contains(pos_size.TopLeft):
++            return pos_size.Get()
++        return None
++
+ # end of class wxGladeFrame
+ 
+ 
+diff --git a/misc.py b/misc.py
+--- a/misc.py
++++ b/misc.py
+@@ -462,28 +462,6 @@ def _reverse_dict(src):
+         ret[val] = key
+     return ret
+ 
+-
+-def get_geometry(win):
+-    x, y = win.GetPosition()
+-    w, h = win.GetSize()
+-    if 0 <= x <= wx.SystemSettings_GetMetric(wx.SYS_SCREEN_X) and \
+-       0 <= y <= wx.SystemSettings_GetMetric(wx.SYS_SCREEN_Y):
+-        return x, y, w, h
+-    return None
+-
+-
+-def set_geometry(win, geometry):
+-    if geometry is None:
+-        return
+-    try:
+-        if len(geometry) == 4:
+-            win.SetDimensions(*[int(x) for x in geometry])
+-        else:
+-            win.SetPosition([int(x) for x in geometry])
+-    except Exception:
+-        logging.exception(_('Internal Error'))
+-
+-
+ # snagged out of the Python cookbook
+ def import_name(module_path, name):
+     import imp
+diff --git a/templates_ui.py b/templates_ui.py
+--- a/templates_ui.py
++++ b/templates_ui.py
+@@ -21,7 +21,7 @@ except AttributeError:
+ class TemplateInfoDialog(wx.Dialog):
+     def __init__(self, *args, **kwds):
+         # begin wxGlade: TemplateInfoDialog.__init__
+-        kwds["style"] = wx.DEFAULT_DIALOG_STYLE | wx.RESIZE_BORDER | wx.MAXIMIZE_BOX | wx.THICK_FRAME
++        kwds["style"] = wx.DEFAULT_DIALOG_STYLE | wx.RESIZE_BORDER | wx.MAXIMIZE_BOX
+         wx.Dialog.__init__(self, *args, **kwds)
+         self.template_name = wx.TextCtrl(self, wx.ID_ANY, "")
+         self.author = wx.TextCtrl(self, wx.ID_ANY, "")
+diff --git a/widgets/bitmap_button/bitmap_button.py b/widgets/bitmap_button/bitmap_button.py
+--- a/widgets/bitmap_button/bitmap_button.py
++++ b/widgets/bitmap_button/bitmap_button.py
+@@ -40,10 +40,9 @@ class EditBitmapButton(ManagedBase, Edit
+ 
+         # initialise properties remaining staff
+         self.access_functions['bitmap'] = (self.get_bitmap, self.set_bitmap)
+-        self.properties['bitmap'] = FileDialogProperty(self, 'bitmap', None,
+-                                                       style=wx.OPEN |
+-                                                             wx.FILE_MUST_EXIST,
+-                                                       can_disable=False, label=_("bitmap"))
++        self.properties['bitmap'] = FileDialogProperty(
++            self, 'bitmap', None, style=wx.FD_OPEN | wx.FD_FILE_MUST_EXIST,
++            can_disable=False, label=_("bitmap"))
+         self.access_functions['default'] = (self.get_default, self.set_default)
+         self.access_functions['style'] = (self.get_style, self.set_style)
+         self.properties['default'] = CheckBoxProperty(self, 'default', None, label=_("default"))
+@@ -51,7 +50,9 @@ class EditBitmapButton(ManagedBase, Edit
+         self.access_functions['disabled_bitmap'] = (self.get_disabled_bitmap,
+                                                     self.set_disabled_bitmap)
+         self.properties['disabled_bitmap'] = FileDialogProperty(
+-            self, 'disabled_bitmap', None, style=wx.OPEN|wx.FILE_MUST_EXIST, label=_("disabled bitmap"))
++            self, 'disabled_bitmap', None,
++            style=wx.FD_OPEN | wx.FD_FILE_MUST_EXIST,
++            label=_("disabled bitmap"))
+         self.properties['style'] = CheckListProperty(
+             self, 'style', self.widget_writer)
+ 
+diff --git a/widgets/dialog/dialog.py b/widgets/dialog/dialog.py
+--- a/widgets/dialog/dialog.py
++++ b/widgets/dialog/dialog.py
+@@ -37,9 +37,9 @@ class EditDialog(TopLevelBase, EditStyle
+         # icon property
+         self.icon = ""
+         self.access_functions['icon'] = (self.get_icon, self.set_icon)
+-        prop['icon'] = FileDialogProperty(self, 'icon', None,
+-                                          style=wx.OPEN|wx.FILE_MUST_EXIST,
+-                                          can_disable=True, label=_("Icon"))
++        prop['icon'] = FileDialogProperty(
++            self, 'icon', None, style=wx.FD_OPEN | wx.FD_FILE_MUST_EXIST,
++            can_disable=True, label=_("Icon"))
+         # centered property
+         self.centered = False
+         self.access_functions['centered'] = (self.get_centered,
+diff --git a/widgets/frame/frame.py b/widgets/frame/frame.py
+--- a/widgets/frame/frame.py
++++ b/widgets/frame/frame.py
+@@ -51,7 +51,7 @@ class EditFrame(TopLevelBase, EditStyles
+             self, 'toolbar', label=_('Has ToolBar'))
+         # icon property
+         prop['icon'] = FileDialogProperty(
+-            self, 'icon', style=wx.OPEN | wx.FILE_MUST_EXIST,
++            self, 'icon', style=wx.FD_OPEN | wx.FD_FILE_MUST_EXIST,
+             label=_("icon"))
+         # centered property
+         self.centered = False
+diff --git a/widgets/static_bitmap/static_bitmap.py b/widgets/static_bitmap/static_bitmap.py
+--- a/widgets/static_bitmap/static_bitmap.py
++++ b/widgets/static_bitmap/static_bitmap.py
+@@ -38,7 +38,7 @@ class EditStaticBitmap(ManagedBase, Edit
+         self.access_functions['attribute'] = (self.get_attribute,
+                                               self.set_attribute)
+         self.bitmap_prop = FileDialogProperty(self, 'bitmap', None,
+-            style=wx.OPEN | wx.FILE_MUST_EXIST, can_disable=False,
++            style=wx.FD_OPEN | wx.FD_FILE_MUST_EXIST, can_disable=False,
+             label=_("bitmap"))
+         prop = self.properties
+         prop['bitmap'] = self.bitmap_prop
+diff --git a/wxglade.py b/wxglade.py
+--- a/wxglade.py
++++ b/wxglade.py
+@@ -50,7 +50,7 @@ Copyright (C) 2007-2012 Alberto Griggio
+ Copyright (C) 2011-2014 Carsten Grohmann
+ License MIT: The MIT License
+              <http://www.opensource.org/licenses/mit-license.php>""") %
+-        config.version
++        config.get_version()
+         )
+     parser.add_option(
+         '-h',
