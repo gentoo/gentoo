@@ -16,8 +16,8 @@ KEYWORDS="amd64 ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
 IUSE=""
 
 CDEPEND="virtual/latex-base
-	dev-java/pdfbox:1.8
-	dev-java/fontbox:1.7"
+	dev-java/pdfbox
+	dev-java/fontbox"
 DEPEND="${CDEPEND}
 	app-arch/unzip
 	>=virtual/jdk-1.5"
@@ -31,12 +31,10 @@ TEXMF=/usr/share/texmf-site
 S=${WORKDIR}
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
-EANT_GENTOO_CLASSPATH="pdfbox-1.8 fontbox-1.7"
+EANT_GENTOO_CLASSPATH="pdfbox fontbox"
 
 src_prepare() {
 	epatch "${FILESDIR}/javajars.patch"
-	epatch "${FILESDIR}/PDFAnnotExtractor.java.patch"
-	epatch "${FILESDIR}/StringVisitor.java.patch"
 	java-pkg-2_src_prepare
 }
 
