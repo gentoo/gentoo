@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
 <herd>enlightenment</herd>
 <use>
- <flag name='cache'>Enable caching</flag>
+	<flag name='cache'>Enable caching</flag>
 </use>
 <longdescription>
 Edje is a complex graphical design and layout library.
 
-It's purpose is to be a sequel to "Ebits" which to date has serviced the needs of 
+It's purpose is to be a sequel to 'Ebits' which to date has serviced the needs of 
 Enlightenment development for version 0.17. The original design paramteres under 
 which Ebits came about were a lot more restricted than the resulting use of them, 
 thus Edje was born.
@@ -33,7 +33,7 @@ collection, allowing for the sharing of data betwene display elements). Each par
 collection consists of a list of visual parts, as well as a list of programs. A 
 program is a conditionally run program that if a particular event occurs (a button 
 is pressed, a mouse enters or leaves a part) will trigger an action that may affect 
-other parts. In this way a part collection can be "programmed" via its file as to 
+other parts. In this way a part collection can be 'programmed' via its file as to 
 hilight buttons when the mouse passes over them or show hidden parts when a button 
 is clicked somewhere etc. The actions performed in changing from one state to 
 another ar also allowed to transition over a period of time, allowing animation.
