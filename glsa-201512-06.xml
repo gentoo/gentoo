@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201512-06">
+  <title>MPFR: User-assisted execution of arbitrary code</title>
+  <synopsis>A buffer overflow vulnerability in MPFR could allow remote
+    attackers to execute arbitrary code or cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">mpfr</product>
+  <announced>December 30, 2015</announced>
+  <revised>December 30, 2015: 1</revised>
+  <bug>532028</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/mpfr" auto="yes" arch="*">
+      <unaffected range="ge">3.1.3_p4</unaffected>
+      <vulnerable range="lt">3.1.3_p4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MPFR is a library for multiple-precision floating-point computations
+      with exact rounding.
+    </p>
+  </background>
+  <description>
+    <p>MPFR fails to adequately check user-supplied input, which could lead to
+      a buffer overflow. 
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MPFR users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/mpfr-3.1.3_p4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9474">CVE-2014-9474</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 03 Nov 2015 03:47:08 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 30 Dec 2015 10:56:32 +0000">ackle</metadata>
+</glsa>
