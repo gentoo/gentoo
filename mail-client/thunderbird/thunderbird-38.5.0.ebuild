@@ -284,7 +284,7 @@ src_install() {
 		|| die
 
 	# Pax mark xpcshell for hardened support, only used for startupcache creation.
-	pax-mark m "${BUILD_OBJ_DIR}"/mozilla/dist/bin/xpcshell
+	pax-mark m "${BUILD_OBJ_DIR}"/dist/bin/xpcshell
 
 	MOZ_MAKE_FLAGS="${MAKEOPTS}" \
 	emake DESTDIR="${D}" install
