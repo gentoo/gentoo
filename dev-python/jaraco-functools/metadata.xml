@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>sautier.louis@gmail.com</email>
+		<name>Louis Sautier</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">jaraco.functools</remote-id>
+		<remote-id type="github">jaraco/jaraco.functools</remote-id>
+	</upstream>
+</pkgmetadata>
