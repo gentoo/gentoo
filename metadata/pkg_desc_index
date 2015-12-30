@@ -230,7 +230,7 @@ app-admin/whowatch 1.8.5: interactive who-like program that displays information
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yaala 0.7.3-r1 0.7.3-r2: Yet Another Log Analyzer
-app-antivirus/clamav 0.98.5 0.98.6 0.98.7 0.98.7-r1 0.99: Clam Anti-Virus Scanner
+app-antivirus/clamav 0.98.7 0.98.7-r1 0.99: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 3.7.2 4.5.3: Downloads and installs third-party clamav signatures
 app-arch/advancecomp 1.15 1.16 1.17 1.19: Recompress ZIP, PNG and MNG using deflate 7-Zip, considerably improving compression
 app-arch/afio 2.5 2.5.1: makes cpio-format archives and deals somewhat gracefully with input data corruption
@@ -5287,7 +5287,7 @@ dev-perl/Context-Preserve 0.10.0-r1: Pass chained return values from subs, modif
 dev-perl/Contextual-Return 0.4.7-r1: Create context-sensitive return values
 dev-perl/Convert-ASN1 0.260.0-r1 0.270.0: Standard en/decode of ASN.1 structures
 dev-perl/Convert-BER 1.320.0-r1: Class for encoding/decoding BER messages
-dev-perl/Convert-BinHex 1.123.0-r1 1.124.0: Extract data from Macintosh BinHex files
+dev-perl/Convert-BinHex 1.123.0-r1 1.124.0 1.125.0: Extract data from Macintosh BinHex files
 dev-perl/Convert-Binary-C 0.760.0-r1 0.770.0: Binary Data Conversion using C Types
 dev-perl/Convert-Color 0.80.0-r1: Color space conversions and named lookups
 dev-perl/Convert-TNEF 0.180.0-r1: A Perl module for reading TNEF files
