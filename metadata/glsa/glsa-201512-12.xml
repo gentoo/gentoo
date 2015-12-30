@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201512-12">
+  <title>KDE Systemsettings: Privilege escalation</title>
+  <synopsis>Data validation in KDE Systemsettings could lead to local privilege
+    escalation.
+  </synopsis>
+  <product type="ebuild">systemsettings</product>
+  <announced>December 30, 2015</announced>
+  <revised>December 30, 2015: 1</revised>
+  <bug>528468</bug>
+  <access>local</access>
+  <affected>
+    <package name="kde-base/systemsettings" auto="yes" arch="*">
+      <unaffected range="ge">4.11.13-r1</unaffected>
+      <vulnerable range="lt">4.11.13-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>KDE workspace configuration module for setting the date and time has a
+      helper program
+      which runs as root for performing actions.
+    </p>
+  </background>
+  <description>
+    <p>KDE Systemsettings fails to properly validate user input before passing
+      it as argument in context of higher privilege.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could gain privileges via a crafted ntpUtility (ntp
+      utility name) argument.
+    </p>
+  </impact>
+  <workaround>
+    <p>Add a polkit rule to disable the org.kde.kcontrol.kcmclock.save action.</p>
+  </workaround>
+  <resolution>
+    <p>All KDE Systemsettings users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=kde-base/systemsettings-4.11.13-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8651">CVE-2014-8651</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 03 Jun 2015 07:50:15 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Wed, 30 Dec 2015 20:52:40 +0000">mrueg</metadata>
+</glsa>
