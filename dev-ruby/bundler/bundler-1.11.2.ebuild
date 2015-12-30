@@ -14,6 +14,8 @@ RUBY_FAKEGEM_EXTRADOC="README.md CHANGELOG.md ISSUES.md"
 
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
+RUBY_FAKEGEM_BINDIR="exe"
+
 inherit ruby-fakegem
 
 DESCRIPTION="An easy way to vendor gem dependencies"
