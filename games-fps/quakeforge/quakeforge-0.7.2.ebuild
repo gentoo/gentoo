@@ -5,7 +5,7 @@
 EAPI=5
 inherit eutils autotools games
 
-DESCRIPTION="A new 3d engine based off of id Softwares's legendary Quake and QuakeWorld game engine"
+DESCRIPTION="new 3d engine based off of id Softwares's Quake and QuakeWorld game engine"
 HOMEPAGE="http://www.quakeforge.net/"
 SRC_URI="mirror://sourceforge/quake/${P}.tar.bz2"
 
@@ -65,7 +65,6 @@ src_configure() {
 
 	local tools=${QF_TOOLS:-all}
 
-	addpredict "$(games_get_libdir)"
 	egamesconf \
 		--enable-dependency-tracking \
 		$(use_enable ncurses curses) \
