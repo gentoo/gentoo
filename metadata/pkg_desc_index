@@ -5271,10 +5271,10 @@ dev-perl/Color-Library 0.21.0-r1: An easy-to-use and comprehensive named-color l
 dev-perl/Compress-Bzip2 2.170.0 2.220.0 2.240.0: Interface to Bzip2 compression library
 dev-perl/Config-Any 0.260.0: Load configuration from different file formats, transparently
 dev-perl/Config-ApacheFormat 1.200.0-r1: use Apache format config files
-dev-perl/Config-Auto 0.420.0-r1 0.440.0: Magical config file parser
-dev-perl/Config-AutoConf 0.310.0 0.311.0: A module to implement some of AutoConf macros in pure perl
-dev-perl/Config-Crontab 1.330.0-r1 1.400.0: Read/Write Vixie compatible crontab(5) files
-dev-perl/Config-General 2.520.0-r1 2.580.0 2.600.0: Config file parser module
+dev-perl/Config-Auto 0.440.0: Magical config file parser
+dev-perl/Config-AutoConf 0.311.0: A module to implement some of AutoConf macros in pure perl
+dev-perl/Config-Crontab 1.400.0: Read/Write Vixie compatible crontab(5) files
+dev-perl/Config-General 2.520.0-r1 2.600.0: Config file parser module
 dev-perl/Config-Grammar 1.100.0-r1: A grammar-based, user-friendly config parser
 dev-perl/Config-IniFiles 2.830.0 2.870.0 2.880.0: A module for reading .ini-style configuration files
 dev-perl/Config-JSON 1.510.0 1.520.200: A JSON based config file system
