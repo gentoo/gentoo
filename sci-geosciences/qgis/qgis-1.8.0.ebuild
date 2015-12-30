@@ -17,7 +17,7 @@ SRC_URI="http://qgis.org/downloads/${P}.tar.bz2
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="bundled-libs examples gps gsl postgres python spatialite test"
+IUSE="bundled-libs examples gsl postgres python spatialite test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -32,14 +32,14 @@ RDEPEND="
 	sci-geosciences/gpsbabel
 	>=sci-libs/gdal-1.6.1[geos,python?]
 	sci-libs/geos
-	sci-libs/gsl
 	sci-libs/libspatialindex
 	sci-libs/proj
 	x11-libs/qwt:5[svg]
 	!bundled-libs? ( <x11-libs/qwtpolar-1 )
-	postgres? ( >=dev-db/postgresql-8.4 )
+	gsl? ( sci-libs/gsl )
+	postgres? ( >=dev-db/postgresql-8.4:= )
 	python? (
-		dev-python/PyQt4[X,sql,svg,${PYTHON_USEDEP}]
+		dev-python/PyQt4[X,sql,svg,webkit,${PYTHON_USEDEP}]
 		dev-python/sip:=[${PYTHON_USEDEP}]
 	)
 	spatialite? (
@@ -53,6 +53,8 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-1.7.0-avoid-deprecated-pyqtconfig.patch"
 	"${FILESDIR}/${PN}-1.8.0-no-python-pyc.patch"
+	"${FILESDIR}/${PN}-1.8.0-redrawning.patch"
+	"${FILESDIR}/${PN}-1.8.0-private.patch"
 )
 
 pkg_setup() {
@@ -91,10 +93,8 @@ src_install() {
 		doins -r "${WORKDIR}"/qgis_sample_data/*
 	fi
 
-	python_fix_shebang "${D}"/usr/share/qgis/grass/scripts
 	python_optimize "${D}"/usr/share/qgis/python/plugins \
-		"${D}"/$(python_get_sitedir)/qgis \
-		"${D}"/usr/share/qgis/grass/scripts
+                "${D}"/$(python_get_sitedir)/qgis
 }
 
 pkg_preinst() {
