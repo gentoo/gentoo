@@ -14,18 +14,20 @@ HOMEPAGE="https://git.gnome.org/browse/gvfs"
 LICENSE="LGPL-2+"
 SLOT="0"
 
-IUSE="afp archive bluray cdda fuse gnome-online-accounts gphoto2 gtk +http ios libsecret mtp samba systemd test +udev udisks zeroconf"
+IUSE="afp archive bluray cdda fuse google gnome-keyring gnome-online-accounts gphoto2 gtk +http ios mtp nfs samba systemd test +udev udisks zeroconf"
 REQUIRED_USE="
 	cdda? ( udev )
+	google? ( gnome-online-accounts )
 	mtp? ( udev )
 	udisks? ( udev )
 	systemd? ( udisks )
 "
-KEYWORDS="alpha amd64 arm ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 
 # Can use libgphoto-2.5.0 as well. Automagic detection.
 RDEPEND="
-	>=dev-libs/glib-2.37:2
+	app-crypt/gcr:=
+	>=dev-libs/glib-2.45.7:2
 	sys-apps/dbus
 	dev-libs/libxml2:2
 	net-misc/openssh
@@ -33,19 +35,23 @@ RDEPEND="
 	archive? ( app-arch/libarchive:= )
 	bluray? ( media-libs/libbluray )
 	fuse? ( >=sys-fs/fuse-2.8.0 )
+	gnome-keyring? ( app-crypt/libsecret )
 	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.7.1 )
+	google? (
+		>=dev-libs/libgdata-0.17.3:=[crypt,gnome-online-accounts]
+		>=net-libs/gnome-online-accounts-3.17.1 )
 	gphoto2? ( >=media-libs/libgphoto2-2.4.7:= )
 	gtk? ( >=x11-libs/gtk+-3.0:3 )
 	http? ( >=net-libs/libsoup-2.42:2.4 )
 	ios? (
 		>=app-pda/libimobiledevice-1.1.5:=
 		>=app-pda/libplist-1:= )
-	libsecret? ( app-crypt/libsecret )
 	mtp? ( >=media-libs/libmtp-1.1.6 )
+	nfs? ( >=net-fs/libnfs-1.9.7 )
 	samba? ( || ( >=net-fs/samba-3.4.6[smbclient] >=net-fs/samba-4[client] ) )
 	systemd? ( sys-apps/systemd:0= )
 	udev? (
-		cdda? ( || ( dev-libs/libcdio-paranoia <dev-libs/libcdio-0.90[-minimal] ) )
+		cdda? ( dev-libs/libcdio-paranoia )
 		virtual/libgudev:=
 		virtual/libudev:= )
 	udisks? ( >=sys-fs/udisks-1.97:2 )
@@ -82,13 +88,9 @@ src_prepare() {
 			-i daemon/Makefile.am || die
 
 		# Uncomment when eautoreconf stops being needed always
-		#eautoreconf
+		eautoreconf
 	fi
 
-	# Fix parallel installation, bug #543812 (from 'master')
-	epatch "${FILESDIR}/${PN}-1.22.4-fix-parallel.patch"
-
-	eautoreconf
 	gnome2_src_prepare
 }
 
@@ -98,9 +100,9 @@ src_configure() {
 	gnome2_src_configure \
 		--enable-bash-completion \
 		--with-bash-completion-dir="$(get_bashcompdir)" \
+		--enable-gcr \
 		--disable-gdu \
 		--disable-hal \
-		--disable-obexftp \
 		--with-dbus-service-dir="${EPREFIX}"/usr/share/dbus-1/services \
 		--enable-documentation \
 		$(use_enable afp) \
@@ -108,15 +110,17 @@ src_configure() {
 		$(use_enable bluray) \
 		$(use_enable cdda) \
 		$(use_enable fuse) \
+		$(use_enable gnome-keyring keyring) \
 		$(use_enable gnome-online-accounts goa) \
+		$(use_enable google) \
 		$(use_enable gphoto2) \
 		$(use_enable gtk) \
 		$(use_enable ios afc) \
 		$(use_enable mtp libmtp) \
+		$(use_enable nfs) \
 		$(use_enable udev) \
 		$(use_enable udev gudev) \
 		$(use_enable http) \
-		$(use_enable libsecret keyring) \
 		$(use_enable samba) \
 		$(use_enable systemd libsystemd-login) \
 		$(use_enable udisks udisks2) \
