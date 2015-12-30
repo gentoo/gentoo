@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Sterrett <mr_bones_@gentoo.org> (30 Dec 2015)
+# Unnecessary with newer version of games-simulation/flightgear
+# Masked for removal on 20160129
+games-simulation/fgrun
+
 # Michael Sterrett <mr_bones_@gentoo.org> (29 Dec 2015)
 # Fetch fails since it looks like it's distributed via stream now (bug #553728)
 # Masked for removal on 20160128
