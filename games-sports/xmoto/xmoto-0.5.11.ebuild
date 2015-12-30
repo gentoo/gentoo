@@ -51,8 +51,9 @@ src_prepare() {
 
 src_configure() {
 	# bug #289792
-	filter-flags -DdDOUBLE
-	has_version 'dev-games/ode[double-precision]' && append-flags -DdDOUBLE
+	filter-flags -DdDOUBLE -DdSINGLE
+	# bug #569624 - ode-0.13 needs one or the other defined
+	append-flags -Dd$(has_version 'dev-games/ode[double-precision]' && echo DOUBLE || echo SINGLE)
 
 	egamesconf \
 		--enable-threads=posix \
