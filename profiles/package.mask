@@ -30,6 +30,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Sterrett <mr_bones_@gentoo.org> (29 Dec 2015)
+# Fetch fails since it looks like it's distributed via stream now (bug #553728)
+# Masked for removal on 20160128
+games-strategy/revenge-of-the-titans
+
+# Michael Sterrett <mr_bones_@gentoo.org> (29 Dec 2015)
+# Lacking in fun; no upstream; crashy (bug #550890)
+# Masked for removal on 20160128
+games-simulation/qct
+
 # Justin Lecher <jlec@gentoo.org> (29 Dec 2015)
 # Fails to build and test runs
 # No reverse deps
