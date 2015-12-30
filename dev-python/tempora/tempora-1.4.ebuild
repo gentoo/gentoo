@@ -20,7 +20,7 @@ IUSE="test"
 
 # The binary calc-prorate used to be part of jaraco.util
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	!<=dev-python/jaraco-utils-10.0.2
+	!!<=dev-python/jaraco-utils-10.0.2
 	>=dev-python/setuptools_scm-1.9[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
