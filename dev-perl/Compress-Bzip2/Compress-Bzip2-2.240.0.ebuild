@@ -2,24 +2,24 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=TLINDEN
-MODULE_VERSION=2.58
+DIST_VERSION=2.24
+DIST_AUTHOR=RURBAN
 inherit perl-module
 
-DESCRIPTION="Config file parser module"
+DESCRIPTION="Interface to Bzip2 compression library"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
+KEYWORDS="~amd64 ~ia64 ~mips ~sparc ~x86 ~ppc-aix"
+IUSE="test"
 
 RDEPEND="
+	app-arch/bzip2
+	virtual/perl-Carp
 	virtual/perl-File-Spec
-	virtual/perl-IO
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
+	test? ( virtual/perl-Test-Simple )
 "
-
-SRC_TEST="do parallel"

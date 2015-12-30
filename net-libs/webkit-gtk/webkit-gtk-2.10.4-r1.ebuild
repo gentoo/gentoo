@@ -6,7 +6,7 @@ EAPI="5"
 CMAKE_MAKEFILE_GENERATOR="ninja"
 GCONF_DEBUG="no"
 PYTHON_COMPAT=( python2_7 )
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 inherit check-reqs cmake-utils eutils flag-o-matic gnome2 pax-utils python-any-r1 ruby-single toolchain-funcs versionator virtualx
 
@@ -17,7 +17,7 @@ SRC_URI="http://www.webkitgtk.org/releases/${MY_P}.tar.xz"
 
 LICENSE="LGPL-2+ BSD"
 SLOT="4/37" # soname version of libwebkit2gtk-4.0
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~x86-macos"
 
 IUSE="aqua coverage doc +egl +geoloc gles2 gnome-keyring +gstreamer +introspection +jit nsplugin +opengl spell wayland +webgl X"
 # seccomp
@@ -201,10 +201,8 @@ src_configure() {
 		ruby_interpreter="-DRUBY_EXECUTABLE=$(type -P ruby22)"
 	elif has_version "virtual/rubygems[ruby_targets_ruby21]"; then
 		ruby_interpreter="-DRUBY_EXECUTABLE=$(type -P ruby21)"
-	elif has_version "virtual/rubygems[ruby_targets_ruby20]"; then
-		ruby_interpreter="-DRUBY_EXECUTABLE=$(type -P ruby20)"
 	else
-		ruby_interpreter="-DRUBY_EXECUTABLE=$(type -P ruby19)"
+		ruby_interpreter="-DRUBY_EXECUTABLE=$(type -P ruby20)"
 	fi
 
 	# TODO: Check Web Audio support
