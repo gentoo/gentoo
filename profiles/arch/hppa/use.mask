@@ -130,6 +130,7 @@ libnotify
 gconf
 gnome
 gnome-keyring
+gnome-online-accounts
 
 # Jeroen Roovers <jer@gentoo.org> (19 Jul 2010)
 # Masked because of missing gnome-base/gnome-panel
