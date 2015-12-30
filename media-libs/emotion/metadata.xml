@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
 <herd>enlightenment</herd>
 <use>
- <flag name='vlc'>Enable support for the <pkg>media-video/vlc</pkg> player backend</flag>
+	<flag name='vlc'>Enable support for the <pkg>media-video/vlc</pkg> player backend</flag>
 </use>
 </pkgmetadata>

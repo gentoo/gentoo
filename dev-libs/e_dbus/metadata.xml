@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
 <herd>enlightenment</herd>
 <use>
- <flag name="bluetooth">Enable interfacing with <pkg>net-wireless/bluez</pkg> DBus API.</flag>
- <flag name="ofono">Enable interfacing with <pkg>net-misc/ofono</pkg> DBus API.</flag>
- <flag name="test-binaries">Enable building of test binaries for enabled features</flag>
+	<flag name='bluetooth'>Enable interfacing with <pkg>net-wireless/bluez</pkg> DBus API</flag>
+	<flag name='ofono'>Enable interfacing with <pkg>net-misc/ofono</pkg> DBus API</flag>
+	<flag name='test-binaries'>Enable building of test binaries for enabled features</flag>
 </use>
 </pkgmetadata>
