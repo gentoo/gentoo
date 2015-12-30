@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201512-08">
+  <title>ClamAV: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in ClamAV, possibly
+    resulting in Denial of Service.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>December 30, 2015</announced>
+  <revised>December 30, 2015: 1</revised>
+  <bug>538084</bug>
+  <bug>548066</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.98.7</unaffected>
+      <vulnerable range="lt">0.98.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ClamAV is a GPL virus scanner.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ClamAV. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause ClamAV to scan a specially crafted file,
+      possibly resulting in a Denial of Service condition or other unspecified
+      impact.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ClamAV users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-antivirus/clamav-0.98.7"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9328">CVE-2014-9328</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1461">CVE-2015-1461</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1462">CVE-2015-1462</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1463">CVE-2015-1463</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2170">CVE-2015-2170</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2221">CVE-2015-2221</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2222">CVE-2015-2222</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2668">CVE-2015-2668</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 02 Nov 2015 22:28:34 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 30 Dec 2015 13:55:58 +0000">ackle</metadata>
+</glsa>
