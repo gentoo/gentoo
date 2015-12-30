@@ -8,7 +8,7 @@
 		<flag name="desktopglobe">Enable Desktop Globe wallpaper using <pkg>kde-base/marble</pkg></flag>
 		<flag name="fcitx">Use fcitx input method via <pkg>app-i18n/fcitx</pkg></flag>
 		<flag name="json">Enable JSON support via <pkg>dev-libs/qjson</pkg></flag>
-		<flag name="kdepim">KDE PIM integration via <pkg>kde-base/kdepimlibs</pkg></flag>
+		<flag name="kdepim">KDE PIM integration via <pkg>kde-apps/kdepimlibs</pkg></flag>
 		<flag name="oauth">Enable OAuth support via <pkg>dev-libs/qoauth</pkg></flag>
 		<flag name="qalculate">Enable Qalculate runner using <pkg>sci-libs/libqalculate</pkg></flag>
 		<flag name="qwt">Enable applets that use <pkg>x11-libs/qwt:5</pkg></flag>

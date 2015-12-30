@@ -82,6 +82,12 @@ inherit ruby-ng
 # Binaries to wrap around (relative to the bin/ directory)
 # RUBY_FAKEGEM_BINWRAP="*"
 
+# @ECLASS-VARIABLE: RUBY_FAKEGEM_BINDIR
+# @DESCRIPTION:
+# Path that contains binaries to be binwrapped. Equivalent to the
+# gemspec bindir option.
+# RUBY_FAKEGEM_BINDIR="bin"
+
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_REQUIRE_PATHS
 # @DESCRIPTION:
 # Extra require paths (beside lib) to add to the specification
@@ -111,6 +117,7 @@ RUBY_FAKEGEM_RECIPE_TEST="${RUBY_FAKEGEM_RECIPE_TEST-rake}"
 RUBY_FAKEGEM_TASK_TEST="${RUBY_FAKEGEM_TASK_TEST-test}"
 
 RUBY_FAKEGEM_BINWRAP="${RUBY_FAKEGEM_BINWRAP-*}"
+RUBY_FAKEGEM_BINDIR="${RUBY_FAKEGEM_BINDIR-bin}"
 
 [[ ${RUBY_FAKEGEM_TASK_DOC} == "" ]] && RUBY_FAKEGEM_RECIPE_DOC="none"
 
@@ -319,7 +326,7 @@ ruby_fakegem_binwrapper() {
 		local gembinary=$1
 		local newbinary=${2:-/usr/bin/$gembinary}
 		local content=$3
-		local relativegembinary=${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}/bin/${gembinary}
+		local relativegembinary=${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}/${RUBY_FAKEGEM_BINDIR}/${gembinary}
 		local binpath=$(dirname $newbinary)
 		[[ ${binpath} = . ]] && binpath=/usr/bin
 
@@ -475,7 +482,7 @@ each_fakegem_install() {
 	ruby_fakegem_install_gemspec
 
 	local _gemlibdirs="${RUBY_FAKEGEM_EXTRAINSTALL}"
-	for directory in bin lib; do
+	for directory in "${RUBY_FAKEGEM_BINDIR}" lib; do
 		[[ -d ${directory} ]] && _gemlibdirs="${_gemlibdirs} ${directory}"
 	done
 
@@ -511,7 +518,7 @@ all_fakegem_install() {
 	# binary wrappers; we assume that all the implementations get the
 	# same binaries, or something is wrong anyway, so...
 	if [[ -n ${RUBY_FAKEGEM_BINWRAP} ]]; then
-		local bindir=$(find "${D}" -type d -path "*/gems/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}/bin" -print -quit)
+		local bindir=$(find "${D}" -type d -path "*/gems/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}/${RUBY_FAKEGEM_BINDIR}" -print -quit)
 
 		if [[ -d "${bindir}" ]]; then
 			pushd "${bindir}" &>/dev/null || die

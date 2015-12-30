@@ -9,25 +9,32 @@ FORTRAN_NEEDED=fortran
 inherit eutils fortran-2 java-pkg-opt-2 toolchain-funcs
 
 MY_P=${P/_/}
+
 DESCRIPTION="MPI development tools"
 HOMEPAGE="http://www-unix.mcs.anl.gov/perfvis/download/index.htm"
 SRC_URI="ftp://ftp.mcs.anl.gov/pub/mpi/${PN%2}/${MY_P}.tar.gz"
 
 LICENSE="mpich2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="minimal fortran threads debug"
+KEYWORDS="amd64 ~x86"
+IUSE="debug minimal fortran threads"
 
-COMMON_DEPEND="!minimal? ( x11-libs/libXtst
-		x11-libs/libXi )
-	|| ( sys-cluster/openmpi[fortran?,threads?]
-		sys-cluster/mpich2[fortran?,threads?] )"
+COMMON_DEPEND="
+	!minimal? (
+		x11-libs/libXtst
+		x11-libs/libXi
+	)
+	|| (
+		sys-cluster/openmpi[fortran?,threads?]
+		sys-cluster/mpich2[fortran?,threads?]
+	)"
 
-DEPEND="!minimal? ( >=virtual/jdk-1.6 )
+DEPEND="
+	!minimal? ( >=virtual/jdk-1.6 )
 	${COMMON_DEPEND}"
 
 RDEPEND="
-!minimal? ( >=virtual/jre-1.6 )
+	!minimal? ( >=virtual/jre-1.6 )
 	${COMMON_DEPEND}"
 
 S="${WORKDIR}"/${MY_P}
@@ -48,6 +55,8 @@ pkg_setup() {
 		MPE_IMP=openmpi
 	elif has_version sys-cluster/mpich2; then
 		MPE_IMP=mpich2
+	elif has_version sys-cluster/mpich; then
+		MPE_IMP=mpich2
 	else
 		die "Unknown MPI implementation"
 	fi
@@ -65,40 +74,35 @@ pkg_setup() {
 
 	einfo "Building with support for: sys-cluster/${MPE_IMP}"
 
-	if ! use minimal; then
-		java-pkg-opt-2_pkg_setup
-	fi
+	use minimal || java-pkg-opt-2_pkg_setup
 }
 
 src_prepare() {
 	# Don't assume path contains ./
-	sed -i 's,\($MPERUN\) $pgm,\1 ./$pgm,' sbin/mpetestexeclog.in
-	epatch "${FILESDIR}"/slog2sdk-trace_rlog-makefile-fixes.patch
-	epatch "${FILESDIR}"/slog2sdk-trace_sample-makefile-fixes.patch
+	sed -i 's,\($MPERUN\) $pgm,\1 ./$pgm,' sbin/mpetestexeclog.in || die
+	epatch \
+		"${FILESDIR}"/slog2sdk-trace_rlog-makefile-fixes.patch \
+		"${FILESDIR}"/slog2sdk-trace_sample-makefile-fixes.patch
 
-	if ! use minimal; then
-		java-pkg-opt-2_src_prepare
-	fi
+	use minimal || java-pkg-opt-2_src_prepare
 }
 
 src_configure() {
 	local c="--with-mpicc=/usr/bin/mpicc"
 
 	if use fortran; then
-		c="${c} --with-mpif77=/usr/bin/mpif77"
+		c+=" --with-mpif77=/usr/bin/mpif77"
 	else
-		c="${c} --disable-f77"
+		c+=" --disable-f77"
 	fi
 
 	if use minimal; then
-		c="${c} --enable-slog2=no --disable-rlog --disable-sample"
+		c+=" --enable-slog2=no --disable-rlog --disable-sample"
 	else
-		c="${c} --with-java2=$(java-config --jdk-home) --enable-slog2=build"
+		c+=" --with-java2=$(java-config --jdk-home) --enable-slog2=build"
 	fi
 
-	if [[ "${MPE_IMP}" == openmpi ]]; then
-		c="${c} --disable-rlog --disable-sample"
-	fi
+	[[ "${MPE_IMP}" == openmpi ]] && c+=" --disable-rlog --disable-sample"
 
 	econf ${c} \
 		--sysconfdir=/etc/${PN} \
@@ -115,16 +119,16 @@ src_configure() {
 src_test() {
 	local rc
 
-	cd "${S}"
+	cd "${S}" || die
 	if [[ "${MPE_IMP}" == mpich2 ]]; then
-		echo "MPD_SECRETWORD=junk" > "${T}"/mpd.conf
-		chmod 600 "${T}"/mpd.conf
+		echo "MPD_SECRETWORD=junk" > "${T}"/mpd.conf || die
+		chmod 600 "${T}"/mpd.conf || die
 		export MPD_CONF_FILE="${T}/mpd.conf"
-		"${ROOT}"usr/bin/mpd -d --pidfile="${T}"/mpd.pid
+		"${ROOT}"usr/bin/mpd -d --pidfile="${T}"/mpd.pid || die
 	elif [[ "${MPE_IMP}" == openmpi* ]] && [ -z "${MPE2_FORCE_OPENMPI_TEST}" ]; then
-		elog
-		elog "Skipping tests for openmpi"
-		elog
+		echo
+		einfo "Skipping tests for openmpi"
+		echo
 		return 0
 	fi
 
@@ -147,6 +151,7 @@ src_test() {
 src_install() {
 	# No parallel make:
 	# http://trac.mcs.anl.gov/projects/mpich2/ticket/1095#comment:1
-	emake -j1 DESTDIR="${D}" install || die
-	rm -f "${D}"/usr/sbin/mpeuninstall || die
+	MAKEOPTS+=" -j1"
+	default
+	rm -f "${ED}"/usr/sbin/mpeuninstall || die
 }

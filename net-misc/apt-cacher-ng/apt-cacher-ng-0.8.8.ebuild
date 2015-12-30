@@ -41,11 +41,9 @@ RDEPEND="
 S=${WORKDIR}/${P/_}
 
 pkg_pretend() {
-	if [[ $(gcc-major-version) = 4 ]]; then
-		if [[ $(gcc-minor-version) -lt 8 ]]; then
-			die "GCC 4.8 or greater is required but you have $(gcc-major-version).$(gcc-minor-version)"
-		fi
-	else
+	if [[ $(gcc-major-version) -lt 4 ]]; then
+		die "GCC 4.8 or greater is required but you have $(gcc-major-version).$(gcc-minor-version)"
+	elif [[ $(gcc-major-version) = 4 ]] && [[ $(gcc-minor-version) -lt 8 ]]; then
 		die "GCC 4.8 or greater is required but you have $(gcc-major-version).$(gcc-minor-version)"
 	fi
 }

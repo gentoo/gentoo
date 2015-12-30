@@ -37,6 +37,7 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}"/${P}-textrel.patch
 	"${FILESDIR}"/${P}-xlibs.patch
+	"${FILESDIR}"/${PN}-1.1.1-openbabel.patch
 )
 
 pkg_setup() {

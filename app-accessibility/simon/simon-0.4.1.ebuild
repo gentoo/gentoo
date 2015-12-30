@@ -32,7 +32,7 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXtst
 	x11-libs/qwt:6
-	kdepim? ( kde-base/kdepimlibs:4 )
+	kdepim? ( kde-apps/kdepimlibs:4 )
 	libsamplerate? ( media-libs/libsamplerate )
 	nls? (
 		kde-apps/kde4-l10n

@@ -1,0 +1,16 @@
+ libavogadro/src/python/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libavogadro/src/python/CMakeLists.txt b/libavogadro/src/python/CMakeLists.txt
+index efb518a..1a3d91a 100644
+--- a/libavogadro/src/python/CMakeLists.txt
++++ b/libavogadro/src/python/CMakeLists.txt
+@@ -21,7 +21,7 @@ if (WIN32)
+   target_link_libraries(python-module avogadro ${PYTHON_LIBRARIES})
+ else()
+   target_link_libraries(python-module stdc++ avogadro
+-    ${QT_LIBRARIES} ${PYTHON_LIBRARIES} ${Boost_LIBRARIES})
++    ${QT_LIBRARIES} ${PYTHON_LIBRARIES} ${Boost_LIBRARIES} ${OPENBABEL2_LIBRARIES})
+ endif()
+ 
+ # Let's try to use this instead:

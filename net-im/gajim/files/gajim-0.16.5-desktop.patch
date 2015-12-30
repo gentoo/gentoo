@@ -1,0 +1,29 @@
+diff -r ecfc76d21658 data/gajim-remote.desktop.in.in
+--- a/data/gajim-remote.desktop.in.in	Wed Dec 23 22:40:53 2015 +0100
++++ b/data/gajim-remote.desktop.in.in	Mon Dec 28 17:38:15 2015 +0100
+@@ -1,11 +1,11 @@
+ [Desktop Entry]
+ Categories=Network;InstantMessaging;RemoteAccess;ConsoleOnly;
+ _Name=Gajim Remote
+-_Keywords=chat;messaging;im;jabber;xmpp;bonjour;voip
++_Keywords=chat;messaging;im;jabber;xmpp;bonjour;voip;
+ Version=1.0
+ Exec=gajim-remote handle_uri %u
+ TryExec=gajim-remote
+ StartupNotify=false
+ Terminal=false
+ Type=Application
+-MimeType=x-scheme-handler/xmpp
++MimeType=x-scheme-handler/xmpp;
+diff -r ecfc76d21658 data/gajim.desktop.in.in
+--- a/data/gajim.desktop.in.in	Wed Dec 23 22:40:53 2015 +0100
++++ b/data/gajim.desktop.in.in	Mon Dec 28 17:38:15 2015 +0100
+@@ -3,7 +3,7 @@
+ _Name=Gajim
+ _GenericName=Jabber IM Client
+ _Comment=A GTK+ Jabber client
+-_Keywords=chat;messaging;im;jabber;xmpp;bonjour;voip
++_Keywords=chat;messaging;im;jabber;xmpp;bonjour;voip;
+ Version=1.0
+ Exec=gajim
+ Icon=gajim

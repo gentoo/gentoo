@@ -67,7 +67,7 @@ src_install() {
 	prune_libtool_files --all
 
 	if use examples; then
-		rm -rf gsoap/samples/Makefile* gsoap/samples/*/Makefile* gsoap/samples/*/*.o
+		rm -rf gsoap/samples/Makefile* gsoap/samples/*/Makefile* gsoap/samples/*/*.o || die
 		insinto /usr/share/doc/${PF}/examples
 		doins -r gsoap/samples/*
 	fi

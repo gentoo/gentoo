@@ -64,7 +64,6 @@ pkg_setup() {
 	# --use-system-tcmalloc is strongly NOT recommended:
 	# https://www.mongodb.org/about/contributors/tutorial/build-mongodb-from-source/
 
-	scons_opts="--variant-dir=build --cc=$(tc-getCC) --cxx=$(tc-getCXX)"
 	scons_opts+=" --disable-warnings-as-errors"
 	scons_opts+=" --use-system-boost"
 	scons_opts+=" --use-system-pcre"

@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<herd>kde</herd>
 	<use>
-		<flag name="kdepim">KDE PIM integration via <pkg>kde-base/kdepimlibs</pkg></flag>
+		<flag name="kdepim">KDE PIM integration via <pkg>kde-apps/kdepimlibs</pkg></flag>
 	</use>
 </pkgmetadata>

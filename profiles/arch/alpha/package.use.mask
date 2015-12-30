@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Ian Delaney <idella4@gentoo.org> (28 Dec 2015)
+# dep of testsuite dev-util/cmocka requires keywording for alpha
+# via Bug 569558, then this can be taken out
+media-video/mpv test
+
 # Mike Frysinger <vapier@gentoo.org> (22 Dec 2015)
 # Needs keywording. #569254
 net-firewall/iptables nftables

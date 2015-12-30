@@ -1,14 +1,27 @@
-diff --git a/tools/Makefile b/tools/Makefile
-index d9f64b8..f9a6cd3 100644
---- a/tools/Makefile
-+++ b/tools/Makefile
-@@ -8,7 +8,8 @@ endif
+diff --git a/Makefile.inc.in b/Makefile.inc.in
+index d1e1da4..699ac77 100644
+--- a/Makefile.inc.in
++++ b/Makefile.inc.in
+@@ -99,7 +99,7 @@ LIBS_LIBPULSE      = @LIBPULSE_LIBS@
+ LIBS_LUA           = $(TOP)vendor/luajit/src/libluajit.a
+ LIBS_OPENAL        = @OPENAL_LIBS@
+ LIBS_PORTAUDIO     = @PORTAUDIO_LIBS@
+-LIBS_PTHREAD       = @PTHREAD_LIBS@
++LIBS_PTHREAD       = @PTHREAD_LIBS@ -lpthread
  
- repack-thes-dict_OBJ  := $(d)repack-thes-dict.o $(TOP)lib/libaegisub.a
- repack-thes-dict_LIBS := $(LIBS_BOOST) $(LIBS_ICU) $(LIBS_PTHREAD)
--repack-thes-dict_CPPFLAGS := -I$(TOP) -I$(TOP)libaegisub/include $(CFLAGS_ICU)
-+repack-thes-dict_CPPFLAGS := -I$(TOP) -I$(TOP)libaegisub/include \
-+	$(CFLAGS_ICU) $(CFLAGS_PTHREAD)
+ ifeq (yes, $(BUILD_DARWIN))
+ LIBS_LUA           = $(TOP)vendor/luajit/src/libluajit-aegisub.so
+diff --git a/libaegisub/Makefile b/libaegisub/Makefile
+index 4efb685..f53c372 100644
+--- a/libaegisub/Makefile
++++ b/libaegisub/Makefile
+@@ -44,7 +44,8 @@ aegisub_OBJ += $(d)common/dispatch.o
+ endif
  
- PROGRAM += $(d)repack-thes-dict
+ aegisub_PCH := $(d)lagi_pre.h
+-aegisub_CPPFLAGS := -I$(d)include -I$(TOP) $(CPPFLAGS_BOOST) $(CFLAGS_LUA)
++aegisub_CPPFLAGS := -I$(d)include -I$(TOP) \
++	$(CFLAGS_PTHREAD) $(CPPFLAGS_BOOST) $(CFLAGS_LUA)
  
+ $(d)common/charset_conv.o_FLAGS := $(CFLAGS_ICONV)
+ $(d)common/parser.o_FLAGS := -ftemplate-depth=256

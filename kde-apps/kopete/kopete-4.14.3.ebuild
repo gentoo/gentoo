@@ -66,7 +66,7 @@ IUSE="${IUSE} ${PLUGINS} ${PROTOCOLS}"
 COMMONDEPEND="
 	dev-libs/libpcre
 	$(add_kdebase_dep kdelibs 'zeroconf?')
-	$(add_kdebase_dep kdepimlibs)
+	$(add_kdeapps_dep kdepimlibs)
 	media-libs/qimageblitz
 	>=dev-qt/qtgui-4.4.0:4[mng]
 	!aqua? ( x11-libs/libXScrnSaver )

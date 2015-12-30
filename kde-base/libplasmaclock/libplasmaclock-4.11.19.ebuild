@@ -14,7 +14,7 @@ IUSE="debug +kdepim"
 
 DEPEND="
 	$(add_kdebase_dep kephal)
-	kdepim? ( $(add_kdebase_dep kdepimlibs) )
+	kdepim? ( $(add_kdeapps_dep kdepimlibs) )
 "
 RDEPEND="${DEPEND}"
 

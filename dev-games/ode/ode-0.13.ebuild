@@ -59,14 +59,14 @@ src_install() {
 	fi
 	if use examples; then
 		docompress -x "${MY_EXAMPLES_DIR}"
-		doexe drawstuff/dstest/dstest
 		insinto "${MY_EXAMPLES_DIR}"
+		exeinto "${MY_EXAMPLES_DIR}"
+		doexe drawstuff/dstest/dstest
 		doins ode/demo/*.{c,cpp,h} \
 			drawstuff/textures/*.ppm \
 			drawstuff/dstest/dstest.cpp \
 			drawstuff/src/{drawstuff.cpp,internal.h,x11.cpp}
 		cd ode/demo
-		exeinto "${MY_EXAMPLES_DIR}"
 		local f
 		for f in *.c* ; do
 			doexe .libs/${f%.*}
