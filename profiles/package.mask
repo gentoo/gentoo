@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Sterrett <mr_bones_@gentoo.org> (30 Dec 2015)
+# Upstream has gone away and games-strategy/xbattleai is
+# basically a superset anyhow.
+# Masked for removal on 20160129
+games-strategy/xbattle
+
 # Victor Ostorga <vostorga@gentoo.org> (30 Dec 2015)
 # Mask this liferea version because upstream released it broken
 =net-news/liferea-1.10.17
