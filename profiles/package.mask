@@ -84,10 +84,6 @@ app-doc/ebookmerge
 # Masked for removal on 20160120
 games-fps/ut2004-ultraduel
 
-# Hans de Graaff <graaff@gentoo.org> (21 Dec 2015)
-# Mask until issues with non-standard bin dir have been resolved.
-=dev-ruby/bundler-1.11*
-
 # Patrick Lauer <patrick@gentoo.org> (20 Dec 2015)
 # Mask TOFU release that doesn't work #567768 and friends
 =app-crypt/gkeys-gen-0.1-r1
