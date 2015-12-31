@@ -2,18 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils
 
 MY_P=${PN}-3.0-${PV}
 
 DESCRIPTION="A library for registering global keyboard shortcuts"
 HOMEPAGE="https://github.com/engla/keybinder"
-SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
+SRC_URI="https://github.com/engla/keybinder/releases/download/${PN}-3.0-v${PV}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86"
 IUSE="+introspection"
 
 RDEPEND="x11-libs/gtk+:3

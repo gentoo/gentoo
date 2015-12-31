@@ -10,7 +10,7 @@ inherit eutils python-single-r1
 
 DESCRIPTION="A library for registering global keyboard shortcuts"
 HOMEPAGE="https://github.com/engla/keybinder"
-SRC_URI="mirror://gentoo/${P}.tar.gz"
+SRC_URI="https://github.com/engla/keybinder/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
