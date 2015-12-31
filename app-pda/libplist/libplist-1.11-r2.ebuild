@@ -4,7 +4,7 @@
 
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
-inherit eutils python-r1
+inherit autotools eutils python-r1
 
 DESCRIPTION="Support library to deal with Apple Property Lists (Binary & XML)"
 HOMEPAGE="http://www.libimobiledevice.org/"
@@ -28,6 +28,11 @@ DOCS=( AUTHORS NEWS README )
 RESTRICT="test" # TODO: src_test() was dropped from 1.10 (cmake) -> 1.11 (autotools)
 
 BUILD_DIR="${S}_build"
+
+src_prepare() {
+	sed -i -e 's/AC_PYTHON_DEVEL/AX_PYTHON_DEVEL/' "${S}"/m4/cython_python.m4
+	eautoreconf
+}
 
 src_configure() {
 	local ECONF_SOURCE=${S}
