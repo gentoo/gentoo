@@ -8,7 +8,7 @@ inherit eutils
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
-	inherit git-2 autotools
+	inherit git-r3 autotools
 else
 	SRC_URI="binary? ( http://sigrok.org/download/binary/${PN}/${PN}-bin-${PV}.tar.gz )
 		!binary? ( http://sigrok.org/download/source/${PN}/${P}.tar.gz )"
@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 	!binary? ( >=dev-embedded/sdcc-2.9.0[device-lib(+),mcs51(+)] )"
 
 src_unpack() {
-	[[ ${PV} == "9999" ]] && git-2_src_unpack || default
+	[[ ${PV} == "9999" ]] && git-r3_src_unpack || default
 	# The binary & source dirs are slightly diff.
 	use binary && S="${WORKDIR}/${PN}-bin-${PV}"
 }

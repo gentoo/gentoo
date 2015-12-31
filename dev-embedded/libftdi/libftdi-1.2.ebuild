@@ -19,7 +19,7 @@ DESCRIPTION="Userspace access to FTDI USB interface chips"
 HOMEPAGE="http://www.intra2net.com/en/developer/libftdi/"
 
 LICENSE="LGPL-2"
-SLOT="0"
+SLOT="1"
 IUSE="cxx doc examples python static-libs tools"
 
 RDEPEND="virtual/libusb:1
@@ -30,6 +30,7 @@ RDEPEND="virtual/libusb:1
 		dev-libs/confuse
 	)"
 DEPEND="${RDEPEND}
+	python? ( dev-lang/swig )
 	doc? ( app-doc/doxygen )"
 
 S=${WORKDIR}/${MY_P}
