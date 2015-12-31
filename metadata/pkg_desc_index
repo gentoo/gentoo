@@ -5202,7 +5202,7 @@ dev-perl/CPAN-Mini-Inject 0.330.0-r1: Inject modules into a CPAN::Mini mirror
 dev-perl/CPAN-Perl-Releases 2.340.0 2.540.0: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CQL-Parser 1.130.0: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r1: Perl extension for minifying CSS
-dev-perl/CSS-Packer 1.2.1 2.0.0: Another CSS minifier
+dev-perl/CSS-Packer 2.0.0: Another CSS minifier
 dev-perl/CSS-Squish 0.100.0-r1: Compact many CSS files into one big file
 dev-perl/Cache 2.40.0-r1: the Cache interface
 dev-perl/Cache-Cache 1.60.0-r1: Generic cache interface and implementations
@@ -5309,14 +5309,14 @@ dev-perl/Crypt-RC4 2.020.0-r1: Implements the RC4 encryption algorithm
 dev-perl/Crypt-RIPEMD160 0.50.0-r1: Crypt::RIPEMD160 module for perl
 dev-perl/Crypt-Random-Source 0.70.0-r1: Get weak or strong random data from pluggable sources
 dev-perl/Crypt-Rijndael 1.110.0-r1 1.130.0: Crypt::CBC compliant Rijndael encryption module
-dev-perl/Crypt-SMIME 0.100.0-r1 0.150.0 0.150.0-r1: S/MIME message signing, verification, encryption and decryption
-dev-perl/Crypt-SSLeay 0.640.0 0.720.0 0.720.0-r1: OpenSSL support for LWP
+dev-perl/Crypt-SMIME 0.150.0-r1 0.160.0: S/MIME message signing, verification, encryption and decryption
+dev-perl/Crypt-SSLeay 0.640.0 0.720.0-r1: OpenSSL support for LWP
 dev-perl/Crypt-Simple 0.60.0-r1: Crypt::Simple - encrypt stuff simply
 dev-perl/Crypt-SmbHash 0.120.0-r1: LM/NT hashing, for Samba's smbpasswd entries
 dev-perl/Crypt-Twofish 2.170.0-r1: The Twofish Encryption Algorithm
 dev-perl/Crypt-URandom 0.340.0: Provide non blocking randomness
 dev-perl/Crypt-X509 0.510.0: Parse a X.509 certificate
-dev-perl/CryptX 0.021 0.25.0: Self-contained crypto toolkit
+dev-perl/CryptX 0.25.0: Self-contained crypto toolkit
 dev-perl/Curses 1.280.0-r1 1.320.0: Curses interface modules for Perl
 dev-perl/Curses-UI 0.960.900-r1: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interface design on the console in Perl
@@ -5478,6 +5478,7 @@ dev-perl/Exporter-Tiny 0.42.0: An exporter with the features of Sub::Exporter bu
 dev-perl/ExtUtils-AutoInstall 0.630.0-r1: Allows module writers to specify a more sophisticated form of dependency information
 dev-perl/ExtUtils-CChecker 0.90.0: Configure-time utilities for using C headers
 dev-perl/ExtUtils-Config 0.7.0: A wrapper for perl's configuration
+dev-perl/ExtUtils-Constant 0.230.0: Generate XS code to import C header constants
 dev-perl/ExtUtils-Depends 0.308.0 0.403.0 0.404.0: Easily build XS extensions that depend on XS extensions
 dev-perl/ExtUtils-F77 1.170.0-r1 1.180.0: Facilitate use of FORTRAN from Perl/XS code
 dev-perl/ExtUtils-Helpers 0.22.0: Various portability utilities for module builders
@@ -10468,7 +10469,7 @@ games-roguelike/dwarf-fortress 0.40.24 0.42.04: A single-player fantasy game
 games-roguelike/hengband 1.6.2-r1: An Angband variant, with a Japanese/fantasy theme
 games-roguelike/mazesofmonad 1.0.9-r2: Console-based roguelike Role Playing Game similar to nethack
 games-roguelike/moria 5.5.2: Rogue-like D&D curses game similar to nethack (BUT BETTER)
-games-roguelike/nethack 3.4.3-r5: The ultimate old-school single player dungeon exploration game
+games-roguelike/nethack 3.4.3-r5 3.6.0: The ultimate old-school single player dungeon exploration game
 games-roguelike/powder 117: A game in the genre of Rogue, Nethack, and Diablo. Emphasis is on tactical play
 games-roguelike/rogue 5.4.4: The original graphical adventure game that spawned an entire genre
 games-roguelike/scourge 0.21.1: A graphical rogue-like adventure game
@@ -11915,7 +11916,7 @@ media-gfx/jpeginfo 1.6.1: Prints information and tests integrity of JPEG/JFIF fi
 media-gfx/jpegoptim 1.3.1 1.4.0 1.4.2 1.4.3: Utility to optimize JPEG files
 media-gfx/jpegpixi 1.1.1: almost lossless JPEG pixel interpolator, for correcting digital camera defects
 media-gfx/jpegtoavi 1.5: JPEG to AVI/MJPEG animation command-line conversion tool
-media-gfx/k3d 0.7.11.0-r1: A free 3D modeling, animation, and rendering system
+media-gfx/k3d 0.7.11.0-r1 0.8.0.5: A free 3D modeling, animation, and rendering system
 media-gfx/kcoloredit 2.0.0-r1: Tool for editing color palettes
 media-gfx/kfax 3.3.6-r1: A fax file viewer
 media-gfx/kflickr 0.9.1_p1: KDE flickr.com image uploading program
@@ -13075,7 +13076,7 @@ media-sound/sndpeek 1.4: real-time audio visualization
 media-sound/solfege 3.22.2: GNU Solfege is a program written to help you practice ear training
 media-sound/sonata 1.6.2.1-r1: An elegant GTK+ music client for the Music Player Daemon (MPD)
 media-sound/sonic-visualiser 1.9 2.3 2.4.1: Music audio files viewer and analiser
-media-sound/sooperlooper 1.6.17 1.6.18 1.7.3: Live looping sampler with immediate loop recording
+media-sound/sooperlooper 1.6.17 1.6.18 1.7.3 1.7.3-r1: Live looping sampler with immediate loop recording
 media-sound/sound-juicer 3.16.1 3.18.1: CD ripper for GNOME
 media-sound/soundconverter 2.1.5 2.1.5-r1: A simple audiofile converter application for the GNOME environment
 media-sound/soundkonverter 2.0.3 2.1.2: Frontend to various audio converters
