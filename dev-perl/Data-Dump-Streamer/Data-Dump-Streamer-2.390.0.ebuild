@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=YVES
-MODULE_VERSION=2.36
+DIST_AUTHOR=YVES
+DIST_VERSION=2.39
 inherit perl-module
 
 DESCRIPTION="Accurately serialize a data structure as Perl code"
@@ -14,15 +14,24 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="test"
 
-RDEPEND=">=dev-perl/B-Utils-0.07"
+RDEPEND="
+	dev-perl/B-Utils
+	virtual/perl-Data-Dumper
+	virtual/perl-Exporter
+	virtual/perl-IO
+	virtual/perl-Text-Balanced
+"
 DEPEND="${RDEPEND}
 	dev-perl/Module-Build
+	virtual/perl-ExtUtils-CBuilder
+	dev-perl/ExtUtils-Depends
+	virtual/perl-Carp
 	test? (
+		virtual/perl-Test-Simple
 		dev-perl/JSON-XS
+		dev-perl/PadWalker
 	)
 "
-
-SRC_TEST=do
 
 src_prepare() {
 	# Add DDS.pm shortcut
