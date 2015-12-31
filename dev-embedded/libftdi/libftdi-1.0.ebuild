@@ -27,6 +27,7 @@ RDEPEND="virtual/libusb:1
 	python? ( dev-lang/python )
 	tools? ( dev-libs/confuse )"
 DEPEND="${RDEPEND}
+	python? ( dev-lang/swig )
 	doc? ( app-doc/doxygen )"
 
 S=${WORKDIR}/${MY_P}
