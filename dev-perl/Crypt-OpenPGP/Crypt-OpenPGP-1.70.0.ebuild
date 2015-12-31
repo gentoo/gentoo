@@ -13,7 +13,7 @@ DESCRIPTION="Pure-Perl OpenPGP-compatible PGP implementation"
 LICENSE="Artistic"
 #LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-solaris"
+KEYWORDS="amd64 x86 ~x86-solaris"
 IUSE="test"
 
 # Core dependancies are:
