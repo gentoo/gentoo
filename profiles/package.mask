@@ -30,6 +30,21 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Sterrett <mr_bones_@gentoo.org> (30 Dec 2015)
+# Upstream has gone away and games-strategy/xbattleai is
+# basically a superset anyhow.
+# Masked for removal on 20160129
+games-strategy/xbattle
+
+# Victor Ostorga <vostorga@gentoo.org> (30 Dec 2015)
+# Mask this liferea version because upstream released it broken
+=net-news/liferea-1.10.17
+
+# Michael Sterrett <mr_bones_@gentoo.org> (30 Dec 2015)
+# Unnecessary with newer version of games-simulation/flightgear
+# Masked for removal on 20160129
+games-simulation/fgrun
+
 # Michael Sterrett <mr_bones_@gentoo.org> (29 Dec 2015)
 # Fetch fails since it looks like it's distributed via stream now (bug #553728)
 # Masked for removal on 20160128

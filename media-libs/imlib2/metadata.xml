@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
 <pkgmetadata>
-	<herd>enlightenment</herd>
-	<longdescription>
+<herd>enlightenment</herd>
+<longdescription>
 Imlib 2 is the successor to Imlib. It is not just a newer version - it is a 
 completely new library. Imlib2 can be installed alongside Imlib 1.x without any 
 problems since they are effectively different libraries - but they Have very 
@@ -44,8 +44,8 @@ Imlib 2 can run without a display, so it can be easily used for background image
 processing for web sites or servers - it only requires the X libraries to be 
 installed - that is all - it does not require an XServer to run unless you wish 
 to display images.
-	</longdescription>
-	<upstream>
-		<remote-id type="sourceforge">enlightenment</remote-id>
-	</upstream>
+</longdescription>
+<upstream>
+	<remote-id type='sourceforge'>enlightenment</remote-id>
+</upstream>
 </pkgmetadata>

@@ -35,7 +35,7 @@ src_install() {
 	local demo="data/demos/sof_demo"
 	local exe="sof-bin.x86"
 
-	loki_patch patch.dat data/ || die "loki patch failed"
+	loki_patch patch.dat data/ || die
 
 	insinto "${dir}"
 	exeinto "${dir}"
@@ -48,9 +48,10 @@ src_install() {
 	games_make_wrapper ${PN} "./${exe}" "${dir}" "${dir}"
 
 	# fix buffer overflow
-	sed -i -e '/^exec/i \
+	sed -i \
+		-e '/^exec/i \
 export MESA_EXTENSION_MAX_YEAR=2003 \
-export __GL_ExtensionStringVersion=17700' "${ED}"/usr/games/bin/${PN}
+export __GL_ExtensionStringVersion=17700' "${ED}"${GAMES_BINDIR}/${PN} || die
 
 	newicon "${demo}"/launch/box.png ${PN}.png
 	make_desktop_entry ${PN} "Soldier of Fortune (Demo)"

@@ -119,6 +119,11 @@ glibc_do_configure() {
 		${EXTRA_ECONF}
 	)
 
+	# We rely on sys-libs/timezone-data for timezone tools normally.
+	if version_is_at_least 2.23 ; then
+		myconf+=( $(use_enable vanilla timezone-tools) )
+	fi
+
 	# There is no configure option for this and we need to export it
 	# since the glibc build will re-run configure on itself
 	export libc_cv_slibdir=/$(get_libdir)

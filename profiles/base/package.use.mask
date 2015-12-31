@@ -345,9 +345,10 @@ net-im/climm otr
 # Needs hardmasked lua-5.2
 >=media-plugins/grilo-plugins-0.2.12 lua
 
-# Rick Farina <zerochaos@gentoo.org> (22 May 2014)
-# mask test use flag for metasploit since tests do not pass
-net-analyzer/metasploit test
+# Rick Farina <zerochaos@gentoo.org> (30 Dec 2015)
+# mask test use flag since tests do not pass
+# mask development use flag since most of it isn't packaged (or useful)
+net-analyzer/metasploit development test
 
 # Tom Wijsman <TomWij@gentoo.org> (14 May 2014)
 # Documentation generation needs APIviz which is not in the Portage tree yet.
