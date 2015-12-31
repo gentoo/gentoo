@@ -13,5 +13,5 @@ KEYWORDS=""
 IUSE="debug"
 
 DEPEND="~app-leechcraft/lc-core-${PV}
-	media-libs/liblastfm"
+	media-libs/liblastfm[qt4(+)]"
 RDEPEND="${DEPEND}"
