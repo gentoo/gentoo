@@ -5317,7 +5317,7 @@ dev-perl/Crypt-Twofish 2.170.0-r1: The Twofish Encryption Algorithm
 dev-perl/Crypt-URandom 0.340.0: Provide non blocking randomness
 dev-perl/Crypt-X509 0.510.0: Parse a X.509 certificate
 dev-perl/CryptX 0.25.0: Self-contained crypto toolkit
-dev-perl/Curses 1.280.0-r1 1.320.0: Curses interface modules for Perl
+dev-perl/Curses 1.280.0-r1 1.320.0 1.330.0: Curses interface modules for Perl
 dev-perl/Curses-UI 0.960.900-r1: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interface design on the console in Perl
 dev-perl/Cwd-Guard 0.40.0: Temporary changing working directory (chdir)
@@ -17999,7 +17999,7 @@ x11-misc/dxpc 3.9.2-r1: Differential X Protocol Compressor
 x11-misc/dzen 0.9.5-r1: a general purpose messaging, notification and menuing program for X11
 x11-misc/e16keyedit 0.7: Key binding editor for enlightenment 16
 x11-misc/e16menuedit2 0.0.3: Menu editor for enlightenment DR16 written in GTK2
-x11-misc/easystroke 0.6.0 0.6.0-r1: a gesture-recognition application for X11
+x11-misc/easystroke 0.6.0 0.6.0-r1 0.6.0-r2: a gesture-recognition application for X11
 x11-misc/efax-gtk 3.2.9 3.2.11 3.2.12 3.2.13: A graphical frontend for the 'efax' application
 x11-misc/electricsheep 2.7_beta11: realize the collective dream of sleeping computers from all over the internet
 x11-misc/etm 696-r1: Event and Task Manager, an intuitive time management application
