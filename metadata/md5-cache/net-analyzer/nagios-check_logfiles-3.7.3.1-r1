@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure
+DESCRIPTION=A nagios plugin for checking logfiles
+EAPI=6
+HOMEPAGE=https://labs.consol.de/nagios/check_logfiles/index.html
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-3
+RDEPEND=>=net-analyzer/nagios-plugins-1.4.13-r1
+SLOT=0
+SRC_URI=https://labs.consol.de/assets/downloads/nagios/check_logfiles-3.7.3.1.tar.gz
+_eclass_exported_funcs=src_configure:-
+_md5_=a37f226046b9e1554e48504cac820ccc
