@@ -5,6 +5,10 @@
 		<email>radhermit@gentoo.org</email>
 		<name>Tim Harder</name>
 	</maintainer>
+	<maintainer>
+		<email>rich0@gentoo.org</email>
+		<name>Rich Freeman</name>
+	</maintainer>
 	<use>
 		<flag name="s3">Support for backing up to the Amazon S3 system</flag>
 	</use>
