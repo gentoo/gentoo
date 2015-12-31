@@ -8,11 +8,12 @@
   </synopsis>
   <product type="ebuild">thunderbird firefox</product>
   <announced>December 30, 2015</announced>
-  <revised>December 30, 2015: 1</revised>
+  <revised>December 31, 2015: 2</revised>
   <bug>545232</bug>
   <bug>554036</bug>
   <bug>556942</bug>
   <bug>564818</bug>
+  <bug>567298</bug>
   <bug>568376</bug>
   <access>remote</access>
   <affected>
@@ -126,6 +127,7 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2743">CVE-2015-2743</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2808">CVE-2015-2808</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4000">CVE-2015-4000</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4153">CVE-2015-4153</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4495">CVE-2015-4495</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4513">CVE-2015-4513</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4514">CVE-2015-4514</uri>
@@ -172,5 +174,5 @@
   <metadata tag="requester" timestamp="Thu, 16 Jul 2015 13:56:14 +0000">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 30 Dec 2015 15:12:39 +0000">mrueg</metadata>
+  <metadata tag="submitter" timestamp="Thu, 31 Dec 2015 01:25:05 +0000">mrueg</metadata>
 </glsa>
