@@ -1328,8 +1328,6 @@ dev-db/mariadb-galera:yassl - Enable SSL connections and crypto functions using 
 dev-db/maxscale:jemalloc - Use dev-libs/jemalloc for allocations
 dev-db/maxscale:rabbitmq - Add support for RabbitMQ message queue
 dev-db/mongodb:mms-agent - Install the MongoDB Monitoring Service agent
-dev-db/mongodb:sharedclient - build client shared library libmongoclient.so
-dev-db/mongodb:spidermonkey - Use embedded SpiderMonkey engine (dev-lang/spidermonkey) instead of v8
 dev-db/mongodb:tools - Install the MongoDB tools (mongoimport, mongodump...) from app-admin/mongo-tools
 dev-db/mysql:client-libs - Build the libmysqlclient libraries
 dev-db/mysql:cluster - Add support for NDB clustering (deprecated)
