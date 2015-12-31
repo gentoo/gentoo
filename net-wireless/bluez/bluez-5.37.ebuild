@@ -179,7 +179,7 @@ multilib_src_install() {
 			fi
 			dobin tools/hex2hcd
 		fi
-	
+
 		# Unittests are not that useful once installed, so make them optional
 		if use test-programs; then
 			python_fix_shebang "${ED}"/usr/$(get_libdir)/bluez/test
