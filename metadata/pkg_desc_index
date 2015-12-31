@@ -5183,7 +5183,7 @@ dev-perl/CDB_File 0.980.0: Tie to CDB (Bernstein's constant DB) files
 dev-perl/CDDB 1.222.0-r1: high-level interface to cddb/freedb protocol
 dev-perl/CDDB-File 1.50.0-r1: Parse a CDDB/freedb data file
 dev-perl/CDDB_get 2.280.0-r1: Read the CDDB entry for an audio CD in your drive
-dev-perl/CGI 3.650.0 4.220.0 4.220.0-r1 4.250.0: Simple Common Gateway Interface Class
+dev-perl/CGI 4.220.0 4.250.0: Simple Common Gateway Interface Class
 dev-perl/CGI-Ajax 0.707.0: a perl-specific system for writing Asynchronous web applications
 dev-perl/CGI-Builder 1.360.0-r1: Framework to build simple or complex web-apps
 dev-perl/CGI-Emulate-PSGI 0.210.0: PSGI adapter for CGI
@@ -5192,9 +5192,9 @@ dev-perl/CGI-FastTemplate 1.90.0-r1: The Perl CGI::FastTemplate Module
 dev-perl/CGI-FormBuilder 3.90.0: Extremely fast, reliable form generation and processing module
 dev-perl/CGI-PSGI 0.150.0-r1: Adapt CGI.pm to the PSGI protocol
 dev-perl/CGI-Session 4.480.0-r1: persistent session data in CGI applications
-dev-perl/CGI-Simple 1.113.0-r1 1.115.0: A Simple totally OO CGI interface that is CGI.pm compliant
+dev-perl/CGI-Simple 1.115.0: A Simple totally OO CGI interface that is CGI.pm compliant
 dev-perl/CHI 0.600.0: Unified cache handling interface
-dev-perl/CPAN-Changes 0.270.0 0.400.2: Read and write Changes files
+dev-perl/CPAN-Changes 0.400.2: Read and write Changes files
 dev-perl/CPAN-Checksums 2.80.0-r1: Write a CHECKSUMS file for a directory as on CPAN
 dev-perl/CPAN-Meta-Check 0.12.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.11: Create a minimal mirror of CPAN
@@ -5214,7 +5214,7 @@ dev-perl/Cairo 1.103.0 1.106.0: Perl interface to the cairo library
 dev-perl/Calendar-Simple 1.210.0-r1: Perl extension to create simple calendars
 dev-perl/Canary-Stability 2006: Canary to check perl compatibility for schmorp's modules
 dev-perl/Capture-Tiny 0.300.0: Capture STDOUT and STDERR from Perl, XS or external programs
-dev-perl/Carp-Assert 0.200.0-r1 0.210.0: Executable comments in carp
+dev-perl/Carp-Assert 0.210.0: Executable comments in carp
 dev-perl/Carp-Assert-More 1.140.0: convenience wrappers around Carp::Assert
 dev-perl/Carp-Clan 6.40.0-r1: Report errors from perspective of caller of a clan of modules
 dev-perl/Chart 2.4.6-r1: The Perl Chart Module
@@ -5223,12 +5223,12 @@ dev-perl/Cisco-IPPhone 0.50.0-r1: Cisco IP Phone interface using XML Objects
 dev-perl/Cisco-Reconfig 0.911.0: Parse and generate Cisco configuration files
 dev-perl/Class-Accessor 0.340.0-r1: Automated accessor generation
 dev-perl/Class-Accessor-Chained 0.10.0-r1: Perl module to make chained class accessors
-dev-perl/Class-Accessor-Grouped 0.100.100 0.100.120: Lets you build groups of accessors
+dev-perl/Class-Accessor-Grouped 0.100.120: Lets you build groups of accessors
 dev-perl/Class-Accessor-Lite 0.50.0-r1: A minimalistic variant of Class::Accessor
 dev-perl/Class-Adapter 1.80.0-r1: Implementation of the "Adapter" Design Pattern
 dev-perl/Class-Autouse 2.10.0-r1: Runtime aspect loading of one or more classes
 dev-perl/Class-Base 0.50.0-r1: Useful base class for deriving other modules
-dev-perl/Class-C3 0.250.0-r1 0.280.0 0.300.0: A pragma to use the C3 method resolution order algortihm
+dev-perl/Class-C3 0.300.0: A pragma to use the C3 method resolution order algortihm
 dev-perl/Class-C3-Componentised 1.1.0-r1: Load mix-ins or components to your C3-based class
 dev-perl/Class-C3-XS 0.130.0-r1: XS speedups for Class::C3
 dev-perl/Class-Container 0.120.0-r1: Class-Container module for perl
@@ -5253,7 +5253,7 @@ dev-perl/Class-Method-Modifiers 2.30.0: provides Moose-like method modifiers
 dev-perl/Class-MethodMaker 2.210.0 2.240.0: Create generic methods for OO Perl
 dev-perl/Class-Mix 0.5.0-r1: dynamic class mixing
 dev-perl/Class-ReturnValue 0.550.0-r1: A return-value object that lets you treat it as as a boolean, array or object
-dev-perl/Class-Singleton 1.400.0-r1 1.500.0: Implementation of a Singleton class
+dev-perl/Class-Singleton 1.500.0: Implementation of a Singleton class
 dev-perl/Class-Spiffy 0.150.0-r1: Spiffy Perl Interface Framework For You
 dev-perl/Class-Std 0.11.0-r1: Support for creating standard "inside-out" classes
 dev-perl/Class-Std-Fast 0.0.8-r1: Faster but less secure than Class::Std
@@ -5274,18 +5274,18 @@ dev-perl/Config-ApacheFormat 1.200.0-r1: use Apache format config files
 dev-perl/Config-Auto 0.440.0: Magical config file parser
 dev-perl/Config-AutoConf 0.311.0: A module to implement some of AutoConf macros in pure perl
 dev-perl/Config-Crontab 1.400.0: Read/Write Vixie compatible crontab(5) files
-dev-perl/Config-General 2.520.0-r1 2.600.0: Config file parser module
+dev-perl/Config-General 2.600.0: Config file parser module
 dev-perl/Config-Grammar 1.100.0-r1: A grammar-based, user-friendly config parser
-dev-perl/Config-IniFiles 2.830.0 2.880.0: A module for reading .ini-style configuration files
+dev-perl/Config-IniFiles 2.880.0: A module for reading .ini-style configuration files
 dev-perl/Config-JSON 1.520.200: A JSON based config file system
 dev-perl/Config-Properties 1.800.0: Configuration using Java style properties
 dev-perl/Config-Simple 4.590.0-r1: Config::Simple - simple configuration file class
-dev-perl/Config-Tiny 2.160.0 2.230.0: Read/Write .ini style files with as little code as possible
+dev-perl/Config-Tiny 2.230.0: Read/Write .ini style files with as little code as possible
 dev-perl/ConfigReader 0.500.0-r1: Read directives from a configuration file
 dev-perl/Const-Fast 0.13.0 0.14.0-r1: Facility for creating read-only scalars, arrays, and hashes
 dev-perl/Context-Preserve 0.10.0-r1: Pass chained return values from subs, modifying their values, without losing context
 dev-perl/Contextual-Return 0.4.7-r1: Create context-sensitive return values
-dev-perl/Convert-ASN1 0.260.0-r1 0.270.0: Standard en/decode of ASN.1 structures
+dev-perl/Convert-ASN1 0.270.0: Standard en/decode of ASN.1 structures
 dev-perl/Convert-BER 1.320.0-r1: Class for encoding/decoding BER messages
 dev-perl/Convert-BinHex 1.123.0-r1 1.124.0 1.125.0: Extract data from Macintosh BinHex files
 dev-perl/Convert-Binary-C 0.760.0-r1 0.770.0: Binary Data Conversion using C Types
@@ -5299,7 +5299,7 @@ dev-perl/Crypt-CAST5_PP 1.40.0-r1: CAST5 block cipher in pure Perl
 dev-perl/Crypt-Cracklib 1.700.0-r1: Perl interface to Alec Muffett's Cracklib
 dev-perl/Crypt-DES 2.70.0: Crypt::DES module for perl
 dev-perl/Crypt-Eksblowfish 0.9.0-r2: the Eksblowfish block cipher
-dev-perl/Crypt-OpenPGP 1.60.0-r1 1.70.0: Pure-Perl OpenPGP-compatible PGP implementation
+dev-perl/Crypt-OpenPGP 1.70.0: Pure-Perl OpenPGP-compatible PGP implementation
 dev-perl/Crypt-OpenSSL-Bignum 0.40.0-r2: OpenSSL's multiprecision integer arithmetic
 dev-perl/Crypt-OpenSSL-DSA 0.150.0-r1: Digital Signature Algorithm using OpenSSL
 dev-perl/Crypt-OpenSSL-RSA 0.280.0-r2: Crypt::OpenSSL::RSA module for perl
@@ -6385,7 +6385,7 @@ dev-perl/cache-mmap 0.110.0-r1: Shared data cache using memory mapped files
 dev-perl/capitalization 0.30.0-r1: no capitalization on method names
 dev-perl/cdk-perl 20141106: Perl extension for Cdk
 dev-perl/class-loader 2.30.0-r1: Load modules and create objects on demand
-dev-perl/common-sense 3.720.0-r1 3.740.0: Save a tree AND a kitten, use common::sense!
+dev-perl/common-sense 3.740.0: Save a tree AND a kitten, use common::sense!
 dev-perl/constant-boolean 0.20.0-r1: Define TRUE and FALSE constants
 dev-perl/convert-ascii-armour 1.400.0-r1: Convert binary octets into ASCII armoured messages
 dev-perl/convert-pem 0.80.0-r1: Read/write encrypted ASN.1 PEM files
@@ -9975,7 +9975,7 @@ games-board/crafty 24.1: Bob Hyatt's strong chess engine
 games-board/domination 1.1.1.6: The well-known board game, written in java
 games-board/eboard 1.1.1-r1: chess interface for POSIX systems
 games-board/four-in-a-row 3.16.2 3.18.2: Make lines of the same color to win
-games-board/freedoko 0.7.13: FreeDoko is a Doppelkopf-game
+games-board/freedoko 0.7.13 0.7.13-r1: FreeDoko is a Doppelkopf-game
 games-board/fruit 2.1: UCI-only chess engine
 games-board/gamazons 0.83: A chess/go hybrid
 games-board/gambit 1.0.1 1.0.3: Qt-based chess application + engine "gupta"
