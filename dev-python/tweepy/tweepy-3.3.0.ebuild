@@ -19,7 +19,10 @@ IUSE="doc examples test"
 
 RESTRICT="test" 	#missing in tarball
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="
+	dev-python/pip[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	"
 RDEPEND="
 	>=dev-python/requests-2.4.3[${PYTHON_USEDEP}]
 	>=dev-python/requests-oauthlib-0.4.1[${PYTHON_USEDEP}]

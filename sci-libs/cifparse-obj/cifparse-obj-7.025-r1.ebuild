@@ -28,7 +28,8 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-makefile.patch \
 		"${FILESDIR}"/${P}-gcc4.3.patch \
-		"${FILESDIR}"/${P}-gcc4.7.patch
+		"${FILESDIR}"/${P}-gcc4.7.patch \
+		"${FILESDIR}"/${P}-gcc5.patch
 
 	sed \
 		-e "s:^\(CC=\).*:\1$(tc-getCC):g" \

@@ -3,9 +3,10 @@
 # $Id$
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="Python bindings for libelemental (sci-chemistry/gelemental)"
 HOMEPAGE="http://freecode.com/projects/gelemental/"
@@ -21,6 +22,11 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/${P}-gcc-4.7.patch )
+
+python_prepare_all() {
+	append-cxxflags -std=c++11
+	distutils-r1_python_prepare_all
+}
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/html/. )

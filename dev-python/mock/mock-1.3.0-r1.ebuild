@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos"
-IUSE="doc test"
+IUSE="test"
 
 CDEPEND="
 	>=dev-python/pbr-1.3[${PYTHON_USEDEP}]
@@ -25,7 +25,7 @@ DEPEND="
 	test? (
 		${CDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '>=dev-python/unittest2-1.1.0[${PYTHON_USEDEP}]' python{2_7,3_3} pypy)
+		>=dev-python/unittest2-1.1.0[${PYTHON_USEDEP}]
 	)"
 RDEPEND="
 	${CDEPEND}
@@ -33,11 +33,10 @@ RDEPEND="
 "
 
 python_test() {
-	nosetests || die "tests fail under ${EPYTHON}"
+	nosetests --verbose || die "tests fail under ${EPYTHON}"
 }
 
 python_install_all() {
-	use doc && local DOCS=( docs/*.txt )
-
+	local DOCS=( docs/. )
 	distutils-r1_python_install_all
 }
