@@ -21,9 +21,6 @@
 	</longdescription>
 	<use>
 		<flag name="mms-agent">Install the MongoDB Monitoring Service agent</flag>
-		<flag name="sharedclient">build client shared library libmongoclient.so</flag>
-		<flag name="spidermonkey">Use embedded SpiderMonkey engine
-			(<pkg>dev-lang/spidermonkey</pkg>) instead of v8</flag>
 		<flag name="tools">Install the MongoDB tools (mongoimport, mongodump...) 
 			from <pkg>app-admin/mongo-tools</pkg></flag>
 	</use>
