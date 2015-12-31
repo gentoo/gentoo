@@ -22,7 +22,7 @@ RDEPEND="
 	dev-qt/qtsql:4
 	dev-qt/qtwebkit:4
 	media-libs/libgpod
-	media-libs/liblastfm[fingerprint]
+	media-libs/liblastfm[fingerprint,qt4(+)]
 	sys-libs/zlib
 	|| ( dev-qt/qtphonon:4 kde-apps/phonon-kde:4 )"
 DEPEND="${RDEPEND}"
