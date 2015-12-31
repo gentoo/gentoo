@@ -11580,7 +11580,7 @@ mate-extra/mate-dialogs 1.8.0: Display MATE dialogs from the commandline and she
 mate-extra/mate-media 1.8.0: Multimedia related programs for the MATE desktop
 mate-extra/mate-polkit 1.8.0: A MATE specific DBUS session bus service that is used to bring up authentication dialogs
 mate-extra/mate-power-manager 1.8.0-r1 1.8.1: A session daemon for MATE that makes it easy to manage your laptop or desktop system
-mate-extra/mate-screensaver 1.8.0 1.8.1: Replaces xscreensaver, integrating with the MATE desktop
+mate-extra/mate-screensaver 1.8.0 1.8.1-r1: Replaces xscreensaver, integrating with the MATE desktop
 mate-extra/mate-sensors-applet 1.8.0: MATE panel applet to display readings from hardware sensors
 mate-extra/mate-system-monitor 1.8.0: The MATE System Monitor
 mate-extra/mate-user-share 1.8.0: Personal file sharing for the MATE desktop
