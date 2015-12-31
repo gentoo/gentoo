@@ -22,8 +22,10 @@ DEPEND="${RDEPEND}
 	x11-proto/xf86vidmodeproto"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gcc43.patch \
+	epatch \
+		"${FILESDIR}"/${P}-gcc43.patch \
 		"${FILESDIR}"/${P}-lGLU.patch
+	sed -i -e 's/^bindir=.*/bindir=@bindir@/' Makefile.am || die
 	eautoreconf
 }
 
@@ -32,9 +34,6 @@ src_configure() {
 }
 
 src_install() {
-	emake \
-		DESTDIR="${D}" \
-		bindir="${GAMES_BINDIR}" install
-	dodoc AUTHORS NEWS README TODO
+	default
 	prepgamesdirs
 }
