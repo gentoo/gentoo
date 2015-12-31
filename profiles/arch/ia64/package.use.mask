@@ -117,10 +117,6 @@ x11-drivers/xf86-video-ati glamor
 # Missing keywords on sci-libs/libcerf (bug 517726)
 sci-visualization/gnuplot libcerf
 
-# Markos Chandras <hwoarang@gentoo.org> (26 Apr 2014)
-# dev-libs/jansson is not keyworded for ia64. Bug #507428
-app-admin/ulogd json
-
 # Pacho Ramos <pacho@gentoo.org> (12 Apr 2014)
 # Missing keywords, bug #507490
 net-misc/modemmanager mbim
