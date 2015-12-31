@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+DEPEND=ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 )
+DESCRIPTION=Virtual ebuild for the Ruby OpenSSL bindings
+EAPI=5
+IUSE=elibc_FreeBSD ruby_targets_ruby20 ruby_targets_ruby21 ruby_targets_ruby22 ruby_targets_ruby23
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+RDEPEND=ruby_targets_ruby20? ( dev-lang/ruby:2.0[ssl] ) ruby_targets_ruby21? ( dev-lang/ruby:2.1[ssl] ) ruby_targets_ruby22? ( dev-lang/ruby:2.2[ssl] ) ruby_targets_ruby23? ( dev-lang/ruby:2.3[ssl] ) ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 )
+REQUIRED_USE=|| ( ruby_targets_ruby20 ruby_targets_ruby21 ruby_targets_ruby22 ruby_targets_ruby23 )
+SLOT=0
+_eclass_exported_funcs=pkg_preinst:- pkg_postinst:- pkg_setup:- src_unpack:- src_prepare:- src_configure:ruby-ng src_compile:- src_test:ruby-ng src_install:-
+_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	java-utils-2	5f1bd1f8baff3ee957cb72c75c3949f2	multilib	3972ca401cf7dbb430df9995f5d8d580	ruby-ng	3b6431b487e69b5070a45ea20d1c4c6c	ruby-utils	2f896785ed65442d7e84ab5f5eef3bd3	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=28aa1340d12cbde5f1b8722fddd57fc1
