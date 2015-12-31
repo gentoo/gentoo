@@ -1313,7 +1313,6 @@ app-emulation/rkt 0.8.0 9999: A CLI for running app containers, and an implement
 app-emulation/runc 0.0.2 0.0.5: runc container cli tools
 app-emulation/simh 3.9.0-r1: a simulator for historical computers such as Vax, PDP-11 etc.)
 app-emulation/ski 1.3.2 1.3.2-r1: ia64 instruction set simulator
-app-emulation/skyeye 1.0.0: an ARM embedded hardware simulator
 app-emulation/softgun 0.21 0.22: ARM software emulator
 app-emulation/spectemu 0.99.3 0.99.3-r1: 48k ZX Spectrum Emulator
 app-emulation/spice 0.12.6-r2: SPICE server
@@ -1360,7 +1359,6 @@ app-eselect/eselect-cdparanoia 0.1: Manage /usr/bin/cdparanoia symlink
 app-eselect/eselect-chuck 1.0.1: Manages the /usr/bin/chuck symlink
 app-eselect/eselect-ctags 1.18: Manages ctags implementations
 app-eselect/eselect-emacs 1.18: Manage multiple Emacs versions on one system
-app-eselect/eselect-esd 20060719 20091106 20100127: Manages configuration of ESounD implementation or PulseAudio wrapper
 app-eselect/eselect-fontconfig 1.0 1.1 1.1-r1: An eselect module to manage /etc/fonts/conf.d symlinks
 app-eselect/eselect-gnat 1.3-r1 1.4 1.4-r1 1.5: gnat module for eselect
 app-eselect/eselect-gnome-shell-extensions 20120911: Manages system defaults for GNOME Shell extensions
@@ -5183,7 +5181,7 @@ dev-perl/CDB_File 0.980.0: Tie to CDB (Bernstein's constant DB) files
 dev-perl/CDDB 1.222.0-r1: high-level interface to cddb/freedb protocol
 dev-perl/CDDB-File 1.50.0-r1: Parse a CDDB/freedb data file
 dev-perl/CDDB_get 2.280.0-r1: Read the CDDB entry for an audio CD in your drive
-dev-perl/CGI 4.220.0 4.250.0: Simple Common Gateway Interface Class
+dev-perl/CGI 3.650.0 4.220.0 4.220.0-r1 4.250.0: Simple Common Gateway Interface Class
 dev-perl/CGI-Ajax 0.707.0: a perl-specific system for writing Asynchronous web applications
 dev-perl/CGI-Builder 1.360.0-r1: Framework to build simple or complex web-apps
 dev-perl/CGI-Emulate-PSGI 0.210.0: PSGI adapter for CGI
@@ -6229,7 +6227,6 @@ dev-perl/Text-VimColor 0.260: Syntax highlighting using vim
 dev-perl/Text-WikiFormat 0.800.0-r1 0.810.0: Translate Wiki formatted text into other formats
 dev-perl/Text-WrapI18N 0.60.0-r1: Internationalized substitute of Text::Wrap
 dev-perl/Text-vFile-asData 0.80.0: Perl module to parse vFile formatted files into data structures
-dev-perl/TextToHTML 2.520.100-r1: HTML::TextToHTML - convert plain text file to HTML
 dev-perl/TheSchwartz 1.120.0: Reliable job queue
 dev-perl/Throwable 0.102.80 0.200.3-r1 0.200.4 0.200.11: A role for classes that can be thrown
 dev-perl/Tie-Array-Sorted 1.410.0-r1: An array which is kept sorted
@@ -9160,7 +9157,6 @@ dev-tex/isotope 20040401: Typeset isotopes correctly in LaTeX documents
 dev-tex/ivritex 1.1.2: Hebrew support for TeX
 dev-tex/latex-beamer 3.33 3.36: LaTeX class for creating presentations using a video projector
 dev-tex/latex-calendar 3.1: LaTeX package used to create Calendars. Very flexible and robust
-dev-tex/latex-unicode 20041017: Unicode support for LaTeX
 dev-tex/latex2html 2008 2008-r1: convertor written in Perl that converts LATEX documents to HTML
 dev-tex/latex2rtf 2.2.1b 2.3.1 2.3.3 2.3.8: LaTeX to RTF converter
 dev-tex/latexdiff 0.5 1.0.4 1.1.0: Compare two latex files and mark up significant differences
@@ -11363,45 +11359,45 @@ kde-misc/wicd-client-kde 0.3.1-r1: Wicd client built on the KDE Development Plat
 kde-misc/yakuake 2.9.9-r2: A quake-style terminal emulator based on KDE konsole technology
 kde-misc/yawp 0.4.5: Yet Another Weather Plasmoid
 kde-misc/zanshin 0.2.1-r1 0.2.2: Todo management application for KDE
-kde-plasma/bluedevil 5.4.3 5.5.0 5.5.1: Bluetooth stack for KDE
-kde-plasma/breeze 5.4.3 5.5.0 5.5.1: Breeze visual style for the Plasma desktop
-kde-plasma/breeze-gtk 5.5.0.1 5.5.1: Official GTK+ port of KDE's Breeze widget style
-kde-plasma/kde-cli-tools 5.4.3 5.5.0 5.5.1: Tools based on KDE Frameworks 5 to better interact with the system
-kde-plasma/kde-gtk-config 5.4.3 5.5.0 5.5.1: KDE systemsettings kcm to set GTK application look&feel
-kde-plasma/kdecoration 5.4.3 5.5.0 5.5.1: Plugin based library to create window decorations
-kde-plasma/kdeplasma-addons 5.4.3 5.4.3-r1 5.5.0 5.5.1: Extra Plasma applets and engines
-kde-plasma/kgamma 5.4.3 5.5.0 5.5.1: Screen gamma values kcontrol module
-kde-plasma/khelpcenter 5.4.3 5.5.0 5.5.1: The KDE Help Center
-kde-plasma/khotkeys 5.4.3 5.5.0 5.5.1: KDE workspace hotkey module
-kde-plasma/kinfocenter 5.4.3 5.5.0 5.5.1: A utility that provides information about a computer system
-kde-plasma/kmenuedit 5.4.3 5.5.0 5.5.1: KDE menu editor
-kde-plasma/kscreen 5.4.3 5.5.0 5.5.1: KDE screen management
-kde-plasma/kscreenlocker 5.5.0 5.5.1: Library and components for secure lock screen architecture
-kde-plasma/ksshaskpass 5.4.3 5.5.0 5.5.1: KDE implementation of ssh-askpass with Kwallet integration
-kde-plasma/ksysguard 5.4.3 5.5.0 5.5.1: Network-enabled task manager and system monitor
-kde-plasma/kwallet-pam 5.4.3 5.4.3-r1 5.5.0 5.5.1: KWallet PAM module to not enter password again
-kde-plasma/kwayland 5.4.3 5.5.0 5.5.1: Qt-style client and server library wrapper for Wayland libraries
-kde-plasma/kwayland-integration 5.4.3 5.5.0 5.5.1: Provides integration plugins for various KDE frameworks for Wayland
-kde-plasma/kwin 5.4.3 5.5.0 5.5.1: KDE window manager
-kde-plasma/kwrited 5.4.3 5.5.0 5.5.1: KDE daemon listening for wall and write messages
-kde-plasma/libkscreen 5.4.3 5.5.0 5.5.1: KDE screen management library
-kde-plasma/libksysguard 5.4.3 5.5.0 5.5.1: Task management and system monitoring library
-kde-plasma/milou 5.4.3 5.5.0 5.5.1: Dedicated search application built on top of Baloo
-kde-plasma/oxygen 5.4.3 5.5.0 5.5.1: KDE window manager theme
+kde-plasma/bluedevil 5.4.3 5.5.0 5.5.1 5.5.2: Bluetooth stack for KDE
+kde-plasma/breeze 5.4.3 5.5.0 5.5.1 5.5.2: Breeze visual style for the Plasma desktop
+kde-plasma/breeze-gtk 5.5.0.1 5.5.1 5.5.2: Official GTK+ port of KDE's Breeze widget style
+kde-plasma/kde-cli-tools 5.4.3 5.5.0 5.5.1 5.5.2-r1: Tools based on KDE Frameworks 5 to better interact with the system
+kde-plasma/kde-gtk-config 5.4.3 5.5.0 5.5.1 5.5.2: KDE systemsettings kcm to set GTK application look&feel
+kde-plasma/kdecoration 5.4.3 5.5.0 5.5.1 5.5.2: Plugin based library to create window decorations
+kde-plasma/kdeplasma-addons 5.4.3 5.4.3-r1 5.5.0 5.5.1 5.5.2: Extra Plasma applets and engines
+kde-plasma/kgamma 5.4.3 5.5.0 5.5.1 5.5.2: Screen gamma values kcontrol module
+kde-plasma/khelpcenter 5.4.3 5.5.0 5.5.1 5.5.2: The KDE Help Center
+kde-plasma/khotkeys 5.4.3 5.5.0 5.5.1 5.5.2: KDE workspace hotkey module
+kde-plasma/kinfocenter 5.4.3 5.5.0 5.5.1 5.5.2: A utility that provides information about a computer system
+kde-plasma/kmenuedit 5.4.3 5.5.0 5.5.1 5.5.2: KDE menu editor
+kde-plasma/kscreen 5.4.3 5.5.0 5.5.1 5.5.2: KDE screen management
+kde-plasma/kscreenlocker 5.5.0 5.5.1 5.5.2: Library and components for secure lock screen architecture
+kde-plasma/ksshaskpass 5.4.3 5.5.0 5.5.1 5.5.2-r1: KDE implementation of ssh-askpass with Kwallet integration
+kde-plasma/ksysguard 5.4.3 5.5.0 5.5.1 5.5.2: Network-enabled task manager and system monitor
+kde-plasma/kwallet-pam 5.4.3 5.4.3-r1 5.5.0 5.5.1 5.5.2: KWallet PAM module to not enter password again
+kde-plasma/kwayland 5.4.3 5.5.0 5.5.1 5.5.2: Qt-style client and server library wrapper for Wayland libraries
+kde-plasma/kwayland-integration 5.4.3 5.5.0 5.5.1 5.5.2: Provides integration plugins for various KDE frameworks for Wayland
+kde-plasma/kwin 5.4.3 5.5.0 5.5.1 5.5.2: KDE window manager
+kde-plasma/kwrited 5.4.3 5.5.0 5.5.1 5.5.2: KDE daemon listening for wall and write messages
+kde-plasma/libkscreen 5.4.3 5.5.0 5.5.1 5.5.2: KDE screen management library
+kde-plasma/libksysguard 5.4.3 5.5.0 5.5.1 5.5.2: Task management and system monitoring library
+kde-plasma/milou 5.4.3 5.5.0 5.5.1 5.5.2: Dedicated search application built on top of Baloo
+kde-plasma/oxygen 5.4.3 5.5.0 5.5.1 5.5.2: KDE window manager theme
 kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE desktop
-kde-plasma/plasma-desktop 5.4.3 5.5.0-r1 5.5.1: KDE Plasma desktop
-kde-plasma/plasma-mediacenter 5.4.3 5.5.0 5.5.1: Unified media experience for any device capable of running KDE
-kde-plasma/plasma-meta 5.4.3 5.5.0 5.5.1: Merge this to pull in all Plasma 5 packages
-kde-plasma/plasma-nm 5.4.3 5.5.0 5.5.1: KDE Plasma applet for NetworkManager
-kde-plasma/plasma-pa 5.4.3 5.5.0 5.5.1: Plasma applet for audio volume management using PulseAudio
-kde-plasma/plasma-sdk 5.4.3 5.5.0 5.5.1: Useful applications for Plasma development
-kde-plasma/plasma-workspace 5.4.3 5.4.3-r1 5.5.0 5.5.1 5.5.1.1: KDE Plasma workspace
-kde-plasma/plasma-workspace-wallpapers 5.4.3 5.5.0 5.5.1: Additional wallpapers for the Plasma workspace
-kde-plasma/polkit-kde-agent 5.4.3 5.5.0 5.5.1: PolKit agent module for KDE
-kde-plasma/powerdevil 5.4.3 5.5.0 5.5.1: Power management for KDE Plasma Shell
-kde-plasma/sddm-kcm 5.4.3 5.5.0 5.5.1: KDE control module for SDDM
-kde-plasma/systemsettings 5.4.3 5.5.0 5.5.1: System settings utility
-kde-plasma/user-manager 5.4.3 5.5.0 5.5.1: Simple system settings module to manage the users of your system
+kde-plasma/plasma-desktop 5.4.3 5.5.0-r1 5.5.1 5.5.2: KDE Plasma desktop
+kde-plasma/plasma-mediacenter 5.4.3 5.5.0 5.5.1 5.5.2: Unified media experience for any device capable of running KDE
+kde-plasma/plasma-meta 5.4.3 5.5.0 5.5.1 5.5.2: Merge this to pull in all Plasma 5 packages
+kde-plasma/plasma-nm 5.4.3 5.5.0 5.5.1 5.5.2: KDE Plasma applet for NetworkManager
+kde-plasma/plasma-pa 5.4.3 5.5.0 5.5.1 5.5.2: Plasma applet for audio volume management using PulseAudio
+kde-plasma/plasma-sdk 5.4.3 5.5.0 5.5.1 5.5.2: Useful applications for Plasma development
+kde-plasma/plasma-workspace 5.4.3 5.4.3-r1 5.5.0 5.5.1 5.5.1.1 5.5.2-r1: KDE Plasma workspace
+kde-plasma/plasma-workspace-wallpapers 5.4.3 5.5.0 5.5.1 5.5.2: Additional wallpapers for the Plasma workspace
+kde-plasma/polkit-kde-agent 5.4.3 5.5.0 5.5.1 5.5.2: PolKit agent module for KDE
+kde-plasma/powerdevil 5.4.3 5.5.0 5.5.1 5.5.2-r1: Power management for KDE Plasma Shell
+kde-plasma/sddm-kcm 5.4.3 5.5.0 5.5.1 5.5.2: KDE control module for SDDM
+kde-plasma/systemsettings 5.4.3 5.5.0 5.5.1 5.5.2: System settings utility
+kde-plasma/user-manager 5.4.3 5.5.0 5.5.1 5.5.2: Simple system settings module to manage the users of your system
 lxde-base/lxappearance 0.5.2 0.5.3 0.5.4 0.5.5: LXDE GTK+ theme switcher
 lxde-base/lxappearance-obconf 0.2.1: LXAppearance plugin for configuring OpenBox
 lxde-base/lxde-common 0.5.5-r2 0.5.5-r3: LXDE Session default configuration files and nuoveXT2 iconset
@@ -14761,8 +14757,6 @@ net-p2p/bitcoinxt-qt 0.11.0d: BitcoinXT crypto-currency GUI wallet
 net-p2p/bitcoinxtd 0.11.0d: BitcoinXT crypto-currency wallet for automated services
 net-p2p/bitflu 1.50 1.51 1.52: BitTorrent client, written in Perl and is designed to run as a daemon
 net-p2p/bittornado 0.3.18-r2 0.3.18-r3: TheShad0w's experimental BitTorrent client
-net-p2p/bittorrent 4.4.0-r2 4.4.0-r3: Tool for distributing files via a distributed network of nodes
-net-p2p/btpd 0.15: BitTorrent client consisting of a daemon and client
 net-p2p/classified-ads 0.07 0.07_p20150728 0.09 0.09_p20151220: Program for displaying classified advertisement items
 net-p2p/createtorrent 1.1.4: Create BitTorrent files easily
 net-p2p/ctcs 1.4.1: interface for monitoring and managing Enhanced CTorrent clients
@@ -14934,7 +14928,7 @@ net-wireless/bladerf-firmware 1.7.1 1.8.0: bladeRF FX3 firmware images
 net-wireless/bladerf-fpga 0.0.6 0.1.1-r1 0.1.2 0.3.4: bladeRF FPGA bitstreams
 net-wireless/bluedevil 2.1.1: Bluetooth stack for KDE
 net-wireless/blueman 2.0.3 9999: GTK+ Bluetooth Manager, designed to be simple and intuitive for everyday bluetooth tasks
-net-wireless/bluez 4.101-r9 5.33 5.34 5.35 5.35-r1 5.36: Bluetooth Tools and System Daemons for Linux
+net-wireless/bluez 4.101-r9 5.35 5.36 5.37: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141 6.30.223.141-r1 6.30.223.141-r2 6.30.223.248-r1 6.30.223.248-r2 6.30.223.248-r3 6.30.223.248-r4 6.30.223.271-r1 6.30.223.271-r2: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
 net-wireless/bss 0.8: Bluetooth stack smasher / fuzzer
@@ -16951,7 +16945,7 @@ sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 
 sys-kernel/genkernel-next 35 55 60 63: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.4.110 3.4.9999 3.10.92 3.10.93 3.10.94 3.12.49 3.12.50 3.12.9999 3.14.56 3.14.57 3.14.58 3.18.21 3.18.22 3.18.23 3.18.24 3.18.25 4.0.4 4.0.9 4.1.12 4.1.13 4.1.14 4.1.15 4.2.4 4.2.5 4.2.6 4.2.7 4.2.8 4.3.0 4.3.2 4.3.3: Full sources including the Gentoo patchset for the 4.3 kernel tree
 sys-kernel/git-sources 4.4_rc1 4.4_rc2 4.4_rc3 4.4_rc4 4.4_rc5 4.4_rc6 4.4_rc7: The very latest -git version of the Linux kernel
-sys-kernel/hardened-sources 4.1.7-r1 4.2.6-r8 4.2.7 4.3.3-r2: Hardened kernel sources (kernel series 4.3)
+sys-kernel/hardened-sources 4.1.7-r1 4.2.6-r8 4.2.7 4.3.3-r2 4.3.3-r3: Hardened kernel sources (kernel series 4.3)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.1 0.1.3: Kernel config generator
 sys-kernel/linux-docs 3.4.104 3.10.58 3.12.30 3.14.22 4.1.12 4.2.5 4.3: Developer documentation generated from the Linux kernel
