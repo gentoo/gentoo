@@ -1045,7 +1045,7 @@ app-editors/neovim 0.1.0 0.1.1-r1: Vim-fork focused on extensibility and agility
 app-editors/ng 1.5_beta1 1.5_beta1-r1: Emacs like micro editor Ng -- based on mg2a
 app-editors/nvi 1.81.6-r3 1.81.6-r4 1.81.6-r5: Vi clone
 app-editors/padre 0.980.0-r1 1.0.0: Perl Application Development and Refactoring Environment
-app-editors/pluma 1.8.0 1.8.1: Pluma text editor for the MATE desktop
+app-editors/pluma 1.8.1: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.0_pre20090420-r1 0.4.1_pre20150916: QEmacs is a very small but powerful UNIX editor
 app-editors/qwriter 0.1.9 0.1.9-r1: Advanced text editor with syntax highlighting
 app-editors/qxmledit 0.8.8.1: Qt4 XML Editor
@@ -18591,7 +18591,7 @@ x11-themes/matchbox-themes-extra 0.3: Extra themes for the matchbox window manag
 x11-themes/mate-backgrounds 1.8.0: A set of backgrounds packaged with the MATE desktop
 x11-themes/mate-icon-theme 1.8.0: MATE default icon themes
 x11-themes/mate-icon-theme-faenza 1.8.0: Faenza icon theme, that was adapted for MATE desktop
-x11-themes/mate-themes 1.8.0: A set of MATE themes, with sets for users with limited or low vision
+x11-themes/mate-themes 1.8.0 1.8.0-r1: A set of MATE themes, with sets for users with limited or low vision
 x11-themes/murrine-themes 0.98.0: Themes for the Murrine GTK+2 Cairo Engine
 x11-themes/nimbus 0.1.7-r1: The default OpenSolaris theme (GTK+ 2.x engine, icon- and metacity theme)
 x11-themes/nitrogen 3.3.3: A window decoration for KDE
