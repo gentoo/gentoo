@@ -33,11 +33,11 @@ RDEPEND="
 	gnome? ( gnome-base/gnome-vfs:2 )
 	gts? ( sci-libs/gts )
 	imagemagick? ( media-gfx/imagemagick )
-	jpeg? ( virtual/jpeg )
+	jpeg? ( virtual/jpeg:0 )
 	openexr? ( media-libs/openexr )
 	png? ( >=media-libs/libpng-1.2.43-r2:= )
 	python? ( >=dev-lang/python-2.3 dev-python/cgkit )
-	tiff? ( media-libs/tiff )
+	tiff? ( media-libs/tiff:0 )
 	truetype? ( >=media-libs/freetype-2 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
