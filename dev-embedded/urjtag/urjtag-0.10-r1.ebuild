@@ -21,10 +21,9 @@ HOMEPAGE="http://urjtag.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ftd2xx ftdi readline usb"
+IUSE="ftdi readline usb"
 
 DEPEND="ftdi? ( dev-embedded/libftdi:0 )
-	ftd2xx? ( dev-embedded/libftd2xx )
 	readline? ( sys-libs/readline:= )
 	usb? ( virtual/libusb:0 )"
 RDEPEND="${DEPEND}
@@ -40,13 +39,11 @@ src_prepare() {
 
 src_configure() {
 	use readline || export vl_cv_lib_readline=no
-	use ftd2xx && LDFLAGS="${LDFLAGS} -L/opt/$(get_libdir)"
 
 	econf \
 		--disable-werror \
 		--disable-python \
 		$(use_with ftdi libftdi) \
-		$(use_with ftd2xx) \
 		$(use_with usb libusb)
 }
 
