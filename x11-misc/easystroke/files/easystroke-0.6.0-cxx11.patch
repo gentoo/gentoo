@@ -1,0 +1,18 @@
+diff -uprb easystroke-0.6.0.orig/actions.cc easystroke-0.6.0/actions.cc
+--- easystroke-0.6.0.orig/actions.cc	2013-03-27 17:52:38.000000000 +0200
++++ easystroke-0.6.0/actions.cc	2015-12-07 22:07:17.720041171 +0200
+@@ -51,10 +51,11 @@ void TreeViewMulti::on_drag_begin(const
+ 	context->set_icon(pb, pb->get_width(), pb->get_height());
+ }
+ 
+-bool negate(bool b) { return !b; }
+-
+ TreeViewMulti::TreeViewMulti() : Gtk::TreeView(), pending(false) {
+-	get_selection()->set_select_function(sigc::group(&negate, sigc::ref(pending)));
++	get_selection()->set_select_function(
++		[this](Glib::RefPtr<Gtk::TreeModel> const&, Gtk::TreeModel::Path const&, bool) {
++			return !pending;
++		});
+ }
+ 
+ enum Type { COMMAND, KEY, TEXT, SCROLL, IGNORE, BUTTON, MISC };
