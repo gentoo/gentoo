@@ -38,6 +38,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	# Fix test build failure with USE=-smartcard
 	# https://bugzilla.gnome.org/show_bug.cgi?id=758134
+	# https://bugzilla.gnome.org/show_bug.cgi?id=728977
 	epatch "${FILESDIR}"/${PN}-2.40.1-unittests.patch
 
 	eautoreconf
