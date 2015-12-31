@@ -153,7 +153,7 @@ REQUIRED_USE="^^ ( yassl openssl libressl )"
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
 RESTRICT="libressl? ( test )"
 
-REQUIRED_USE="!server? ( !extraengine !embedded )
+REQUIRED_USE="${REQUIRED_USE} !server? ( !extraengine !embedded )
 	 ?? ( tcmalloc jemalloc )
 	 static? ( !libressl !openssl yassl )"
 
