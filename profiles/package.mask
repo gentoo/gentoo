@@ -30,6 +30,32 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (31 Dec 2015)
+# Upstream dead, doesn't compile with libsigc++-2.6, bug #567092
+# Removal in a month.
+net-misc/gip
+
+# Pacho Ramos <pacho@gentoo.org> (31 Dec 2015)
+# Upstream dead, doesn't compile with libsigc++-2.6, bug #568796
+# Removal in a month.
+media-sound/gnomoradio
+
+# Pacho Ramos <pacho@gentoo.org> (31 Dec 2015)
+# Upstream dead, doesn't compile with libsigc++-2.6, bug #568796
+# Removal in a month.
+app-office/passepartout
+
+# Pacho Ramos <pacho@gentoo.org> (31 Dec 2015)
+# Upstream dead, doesn't compile with libsigc++-2.6, multiple bugs
+# with current ffmpeg versions, bug #568796
+# Removal in a month.
+media-video/bombono-dvd
+
+# Pacho Ramos <pacho@gentoo.org> (31 Dec 2015)
+# Upstream dead, doesn't compile with libsigc++-2.6, bug #569540
+# Removal in a month.
+sci-electronics/gspeakers
+
 # Michael Sterrett <mr_bones_@gentoo.org> (30 Dec 2015)
 # Upstream has gone away and games-strategy/xbattleai is
 # basically a superset anyhow.
