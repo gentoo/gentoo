@@ -22,7 +22,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-ruby_add_bdepend "test? ( dev-ruby/rails:4.0 dev-ruby/activerecord:4.0[sqlite] dev-ruby/temple )"
+ruby_add_bdepend "test? ( dev-ruby/rails:4.1 dev-ruby/activerecord:4.1[sqlite] dev-ruby/temple )"
 ruby_add_rdepend ">=dev-ruby/fast_gettext-0.9.0"
 
 all_ruby_prepare() {
@@ -31,7 +31,6 @@ all_ruby_prepare() {
 	# Remove specs for slim and hamlet, template engines we don't package.
 	rm spec/gettext_i18n_rails/slim_parser_spec.rb spec/gettext_i18n_rails/haml_parser_spec.rb || die
 
-	# Test against Rails 4.0 (newer versions don't work and we don't use
-	# appraisals for now).
-	sed -e '1igem "rails", "~>4.2.0"' -i spec/spec_helper.rb || die
+	# Test against Rails 4.1.0
+	sed -e '1igem "rails", "~>4.1.0"' -i spec/spec_helper.rb || die
 }
