@@ -9,9 +9,8 @@ EAPI="5"
 inherit eutils multilib
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://urjtag.git.sourceforge.net/gitroot/urjtag/urjtag"
-	EGIT_SOURCEDIR=${WORKDIR}
 	inherit git-r3 autotools
-	S=${WORKDIR}/${PN}
+	S=${WORKDIR}/${P}/${PN}
 else
 	SRC_URI="mirror://sourceforge/urjtag/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~ppc ~sparc ~x86"
