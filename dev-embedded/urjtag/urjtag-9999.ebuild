@@ -1,16 +1,16 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # TODO: figure out htf to make python.eclass work
 
-EAPI="4"
+EAPI="5"
 
 inherit eutils multilib
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://urjtag.git.sourceforge.net/gitroot/urjtag/urjtag"
 	EGIT_SOURCEDIR=${WORKDIR}
-	inherit git-2 autotools
+	inherit git-r3 autotools
 	S=${WORKDIR}/${PN}
 else
 	SRC_URI="mirror://sourceforge/urjtag/${P}.tar.bz2"
@@ -24,9 +24,9 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="ftd2xx ftdi readline static-libs usb"
 
-DEPEND="ftdi? ( dev-embedded/libftdi )
+DEPEND="ftdi? ( dev-embedded/libftdi:= )
 	ftd2xx? ( dev-embedded/libftd2xx )
-	readline? ( sys-libs/readline )
+	readline? ( sys-libs/readline:= )
 	usb? ( virtual/libusb:1 )"
 RDEPEND="${DEPEND}
 	!dev-embedded/jtag"
@@ -54,5 +54,5 @@ src_configure() {
 
 src_install() {
 	default
-	use static-libs || find "${ED}" -name '*.la' -delete
+	prune_libtool_files
 }
