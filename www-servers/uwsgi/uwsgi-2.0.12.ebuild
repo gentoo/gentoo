@@ -4,20 +4,20 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
 PYTHON_REQ_USE="threads(+)"
 
 RUBY_OPTIONAL="yes"
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21"
 
 PHP_EXT_INI="no"
 PHP_EXT_NAME="dummy"
 PHP_EXT_OPTIONAL_USE="php"
-USE_PHP="php5-4 php5-5 php5-6" # deps must be registered separately below
+USE_PHP="php5-4 php5-5 php5-6 php7-0" # deps must be registered separately below
 
 MY_P="${P/_/-}"
 
-inherit apache-module distutils-r1 eutils multilib pax-utils php-ext-source-r2 python-r1 ruby-ng versionator
+inherit apache-module distutils-r1 eutils flag-o-matic multilib pax-utils php-ext-source-r2 python-r1 ruby-ng versionator
 
 DESCRIPTION="uWSGI server for Python web applications"
 HOMEPAGE="http://projects.unbit.it/uwsgi/"
@@ -43,7 +43,7 @@ UWSGI_PLUGINS_OPT=( alarm_{curl,xmpp} clock_{monotonic,realtime} curl_cron
 	systemd_logger transformation_toupper tuntap webdav xattr xslt zabbix )
 
 LANG_SUPPORT_SIMPLE=( cgi mono perl ) # plugins which can be built in the main build process
-LANG_SUPPORT_EXTENDED=( lua php python python_asyncio python_gevent ruby )
+LANG_SUPPORT_EXTENDED=( lua php pypy python python_asyncio python_gevent ruby )
 
 # plugins to be ignored (for now):
 # cheaper_backlog2: example plugin
@@ -56,7 +56,7 @@ LANG_SUPPORT_EXTENDED=( lua php python python_asyncio python_gevent ruby )
 # *java*: TODO
 # v8: TODO
 # matheval: TODO
-IUSE="apache2 +caps debug +embedded expat jemalloc json +pcre +routing +ssl +xml yajl yaml zeromq"
+IUSE="apache2 +caps debug +embedded expat jemalloc json libressl +pcre +routing +ssl +xml yajl yaml zeromq"
 
 for plugin in ${UWSGI_PLUGINS_STD[@]}  ; do IUSE="${IUSE} +uwsgi_plugins_${plugin}" ; done
 for plugin in ${UWSGI_PLUGINS_OPT[@]}  ; do IUSE="${IUSE} uwsgi_plugins_${plugin}" ; done
@@ -67,8 +67,9 @@ REQUIRED_USE="|| ( ${LANG_SUPPORT_SIMPLE[@]} ${LANG_SUPPORT_EXTENDED[@]} )
 	uwsgi_plugins_sslrouter? ( ssl )
 	routing? ( pcre )
 	uwsgi_plugins_emperor_zeromq? ( zeromq )
-	uwsgi_plugins_router_xmldir? ( xml )
 	uwsgi_plugins_forkptyrouter? ( uwsgi_plugins_corerouter )
+	uwsgi_plugins_router_xmldir? ( xml )
+	pypy? ( python_targets_python2_7 )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	python_asyncio? ( python_targets_python3_4 python_gevent )
 	python_gevent? ( python )
@@ -85,7 +86,10 @@ CDEPEND="sys-libs/zlib
 	json? ( !yajl? ( dev-libs/jansson )
 		yajl? ( dev-libs/yajl ) )
 	pcre? ( dev-libs/libpcre:3 )
-	ssl? ( dev-libs/openssl:= )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0 )
+		libressl? ( dev-libs/libressl )
+	)
 	xml? ( !expat? ( dev-libs/libxml2 )
 		expat? ( dev-libs/expat ) )
 	yaml? ( dev-libs/libyaml )
@@ -111,9 +115,12 @@ CDEPEND="sys-libs/zlib
 	php? (
 		php_targets_php5-4? ( dev-lang/php:5.4[embed] )
 		php_targets_php5-5? ( dev-lang/php:5.5[embed] )
+		php_targets_php5-6? ( dev-lang/php:5.6[embed] )
+		php_targets_php7-0? ( dev-lang/php:7.0[embed] )
 	)
+	pypy? ( virtual/pypy )
 	python? ( ${PYTHON_DEPS} )
-	python_gevent? ( >=dev-python/gevent-1.0_beta2[$(python_gen_usedep 'python2*')] )
+	python_gevent? ( >=dev-python/gevent-1.0.1[$(python_gen_usedep 'python2*')] )
 	ruby? ( $(ruby_implementations_depend) )"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
@@ -162,7 +169,7 @@ src_configure() {
 		use ${p} && plugins+=("${p}")
 	done
 
-	# do not embedded any plugins
+	# do not embed any plugins
 	if ! use embedded ; then
 		plugins=( ${plugins[@]} ${embedded_plugins[@]} )
 		embedded_plugins=()
@@ -202,7 +209,7 @@ src_configure() {
 		-e "s|VAR_PLUGIN_DIR|/usr/$(get_libdir)/uwsgi|" \
 		-e "s|VAR_BUILD_DIR|${T}/plugins|" \
 		-e "s|VAR_EMBEDDED|${embedded_plugins// /, }|" \
-		buildconf/gentoo.ini
+		buildconf/gentoo.ini || die "sed failed"
 
 	use caps || sed -i -e 's|sys/capability.h|DISABLED|' uwsgiconfig.py || die "sed failed"
 	use zeromq || sed -i -e 's|uuid/uuid.h|DISABLED|' uwsgiconfig.py || die "sed failed"
@@ -217,7 +224,7 @@ src_configure() {
 }
 
 each_ruby_compile() {
-	cd "${WORKDIR}/${MY_P}"
+	cd "${WORKDIR}/${MY_P}" || die "sed failed"
 
 	UWSGICONFIG_RUBYPATH="${RUBY}" python uwsgiconfig.py --plugin plugins/rack gentoo rack_${RUBY##*/} || die "building plugin for ${RUBY} failed"
 	UWSGICONFIG_RUBYPATH="${RUBY}" python uwsgiconfig.py --plugin plugins/fiber gentoo fiber_${RUBY##*/}|| die "building fiber plugin for ${RUBY} failed"
@@ -230,16 +237,32 @@ python_compile_plugins() {
 	EPYV=${EPYTHON/.}
 	PYV=${EPYV/python}
 
+	if [[ ${EPYTHON} == pypy* ]] ; then
+		echo "skipping because pypy is not meant to build plugins on its own"
+		return
+	fi
+
 	${PYTHON} uwsgiconfig.py --plugin plugins/python gentoo ${EPYV} || die "building plugin for ${EPYTHON} failed"
 
 	if use python_asyncio ; then
-		if [ "${PYV}" == "34" ] ; then
+		if [[ "${PYV}" == "34" || "${PYV}" == "35" ]] ; then
 			${PYTHON} uwsgiconfig.py --plugin plugins/asyncio gentoo asyncio${PYV} || die "building plugin for asyncio-support in ${EPYTHON} failed"
 		fi
 	fi
 
 	if use python_gevent ; then
-		${PYTHON} uwsgiconfig.py --plugin plugins/gevent gentoo gevent${PYV} || die "building plugin for gevent-support in ${EPYTHON} failed"
+		if [[ "${PYV}" == "27" ]] ; then
+			${PYTHON} uwsgiconfig.py --plugin plugins/gevent gentoo gevent${PYV} || die "building plugin for gevent-support in ${EPYTHON} failed"
+		fi
+	fi
+
+	if use pypy ; then
+		if [[ "${PYV}" == "27" ]] ; then
+			# TODO: do some proper patching ? The wiki didn't help... I gave up for now.
+			# QA: RWX --- --- usr/lib64/uwsgi/pypy_plugin.so
+			append-ldflags -Wl,-z,noexecstack
+			${PYTHON} uwsgiconfig.py --plugin plugins/pypy gentoo pypy || die "building plugin for pypy-support in ${EPYTHON} failed"
+		fi
 	fi
 }
 
@@ -344,6 +367,11 @@ pkg_postinst() {
 		local PYV
 		EPYV=${EPYTHON/.}
 		PYV=${EPYV/python}
+
+		if [[ ${EPYTHON} == pypy* ]] ; then
+			elog "  '--plugins pypy' for pypy"
+			return
+		fi
 
 		elog " "
 		elog "  '--plugins ${EPYV}' for ${EPYTHON}"
