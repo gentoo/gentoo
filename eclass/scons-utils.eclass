@@ -124,7 +124,7 @@ escons() {
 	fi
 
 	# if SCONSOPTS are _unset_, use cleaned MAKEOPTS
-	set -- scons ${SCONSOPTS-$(scons_clean_makeopts)} ${EXTRA_ESCONS} \
+	set -- scons ${SCONSOPTS-$(_scons_clean_makeopts)} ${EXTRA_ESCONS} \
 		"${@}"
 	echo "${@}" >&2
 	"${@}"
@@ -145,14 +145,15 @@ escons() {
 	return ${ret}
 }
 
-# @FUNCTION: scons_clean_makeopts
+# @FUNCTION: _scons_clean_makeopts
+# @INTERNAL
 # @USAGE: [makeflags] [...]
 # @DESCRIPTION:
 # Strip the supplied makeflags (or ${MAKEOPTS} if called without
 # an argument) of options not supported by SCons and make sure --jobs
 # gets an argument. Output the resulting flag list (suitable
 # for an assignment to SCONSOPTS).
-scons_clean_makeopts() {
+_scons_clean_makeopts() {
 	local new_makeopts
 
 	debug-print-function ${FUNCNAME} "${@}"

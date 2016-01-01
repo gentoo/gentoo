@@ -10,7 +10,7 @@ inherit scons-utils
 test-scons_clean_makeopts() {
 	tbegin "scons_clean_makeopts() for ${1}"
 
-	local sconsopts=$(scons_clean_makeopts ${1}) ret=0
+	local sconsopts=$(_scons_clean_makeopts ${1}) ret=0
 
 	if [[ ${sconsopts} != ${2-${1}} ]]; then
 		eerror "Self-test failed:"
