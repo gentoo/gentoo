@@ -250,12 +250,6 @@ dev-php/pecl-zendopcache
 dev-lang/php:5.4
 ~virtual/httpd-php-5.4
 
-# Michael Sterrett <mr_bones_@gentoo.org> (01 Dec 2015)
-# No release since 2005; upstream is gone; doesn't build
-# on modern systems.
-# Masked for removal on 20151231
-games-emulation/gnomeboyadvance
-
 # Justin Lecher <jlec@gentoo.org> (12 Nov 2015)
 # deprecated version of the plugin. 
 # sci-chemistry/pymol includes the newer version
