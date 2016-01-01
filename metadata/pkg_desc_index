@@ -5350,9 +5350,9 @@ dev-perl/Data-GUID 0.48.0: Simple interface for generating and using globally un
 dev-perl/Data-HexDump 0.02-r1: Data::HexDump - A Simple Hexadecial Dumper
 dev-perl/Data-Hexify 1.0.0-r1: Perl extension for hexdumping arbitrary data
 dev-perl/Data-Hierarchy 0.340.0-r1: Data::Hierarchy - Handle data in a hierarchical structure
-dev-perl/Data-ICal 0.210.0-r1 0.220.0: Generates iCalendar (RFC 2445) calendar files
+dev-perl/Data-ICal 0.220.0: Generates iCalendar (RFC 2445) calendar files
 dev-perl/Data-ObjectDriver 0.90.0-r1: Simple, transparent data interface, with caching
-dev-perl/Data-OptList 0.108.0-r1 0.109.0: parse and validate simple name/value option pairs
+dev-perl/Data-OptList 0.109.0: parse and validate simple name/value option pairs
 dev-perl/Data-Page 2.20.0-r1: help when paging through sets of results
 dev-perl/Data-Perl 0.2.9: Base classes wrapping fundamental Perl data types
 dev-perl/Data-Random 0.80.0: A module used to generate random data
@@ -5363,7 +5363,7 @@ dev-perl/Data-Stream-Bulk 0.110.0-r1: N at a time iteration API
 dev-perl/Data-Structure-Util 0.150.0: Change nature of data within a structure
 dev-perl/Data-Types 0.90.0: Validate and convert data types.
 dev-perl/Data-URIEncode 0.110.0-r1: Allow complex data structures to be encoded using flat URIs
-dev-perl/Data-UUID 1.217.0-r1 1.220.0 1.221.0: Perl extension for generating Globally/Universally Unique Identifiers (GUIDs/UUIDs)
+dev-perl/Data-UUID 1.217.0-r1 1.221.0: Generate Globally/Universally Unique Identifiers (GUIDs/UUIDs)
 dev-perl/Data-Uniqid 0.120.0-r1: Perl extension for simple generating of unique ids
 dev-perl/Data-Utilities 0.40.0-r1: Merge nested Perl data structures
 dev-perl/Data-Validate-Domain 0.100.0 0.110.0: Domain and host name validation
@@ -16572,7 +16572,7 @@ sys-boot/efibootmgr 0.5.4 0.5.4-r1 0.6.0 0.11.0 0.12: User-space application to 
 sys-boot/elilo 3.6_p20060314 3.10 3.12 3.16: Linux boot loader for EFI-based systems such as IA-64
 sys-boot/getdvhoff 0.12-r1: Utility for use on LiveCDs to calculate offset of the ext2 partition for losetup
 sys-boot/gnu-efi 3.0a-r1 3.0g 3.0i 3.0s 3.0u 3.0.2 3.0.3: Library for build EFI Applications
-sys-boot/grub 0.97-r16 0.97-r17 2.02_beta2-r8 9999-r1: GNU GRUB boot loader
+sys-boot/grub 0.97-r16 0.97-r17 2.02_beta2-r8 2.02_beta2-r9 9999-r1: GNU GRUB boot loader
 sys-boot/grub-static 0.96-r1 0.97 0.97-r6 0.97-r9 0.97-r10 0.97-r12: GNU GRUB Legacy boot loader (static build)
 sys-boot/gummiboot 45 9999: Minimalistic UEFI bootloader
 sys-boot/lilo 22.8-r2 23.2-r2 24.0-r1 24.1 24.2: Standard Linux boot loader
