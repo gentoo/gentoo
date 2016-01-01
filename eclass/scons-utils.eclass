@@ -14,12 +14,12 @@
 # @CODE
 # inherit scons-utils toolchain-funcs
 #
-# EAPI=4
+# EAPI=5
 #
 # src_configure() {
 # 	MYSCONS=(
 # 		CC="$(tc-getCC)"
-# 		$(use_scons nls ENABLE_NLS)
+#		ENABLE_NLS=$(usex nls)
 # 	)
 # }
 #
