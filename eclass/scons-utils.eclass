@@ -177,7 +177,7 @@ _scons_clean_makeopts() {
 		debug-print "Cache hit: [${SCONSOPTS}]"
 		return
 	fi
-	export _SCONS_CACHE_MAKEOPTS=${*}
+	_SCONS_CACHE_MAKEOPTS=${*}
 
 	while [[ ${#} -gt 0 ]]; do
 		case ${1} in
@@ -236,7 +236,7 @@ _scons_clean_makeopts() {
 	done
 
 	set -- ${new_makeopts}
-	export _SCONS_CACHE_SCONSOPTS=${*}
+	_SCONS_CACHE_SCONSOPTS=${*}
 	debug-print "New SCONSOPTS: [${*}]"
 	SCONSOPTS=${*}
 }
