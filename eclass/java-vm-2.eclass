@@ -84,8 +84,11 @@ java-vm-2_pkg_postinst() {
 		fi
 	fi
 
-	java-vm_check-nsplugin
-	java_mozilla_clean_
+	if [[ "${_install_mozilla_plugin_called}" = 1 ]]; then
+		java-vm_check-nsplugin
+		java_mozilla_clean_
+	fi
+
 	fdo-mime_desktop_database_update
 }
 
@@ -360,6 +363,8 @@ java_get_plugin_dir_() {
 # Register a netscape java-plugin.
 
 install_mozilla_plugin() {
+	_install_mozilla_plugin_called=1
+
 	local plugin="${1}"
 	local variant="${2}"
 
