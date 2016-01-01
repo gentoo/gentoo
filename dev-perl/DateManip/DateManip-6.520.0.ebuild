@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-MY_PN=Date-Manip
-MODULE_AUTHOR=SBECK
-MODULE_VERSION=6.49
+DIST_NAME=Date-Manip
+DIST_AUTHOR=SBECK
+DIST_VERSION=6.52
 inherit perl-module
 
 DESCRIPTION="Perl date manipulation routines"
@@ -17,7 +17,9 @@ IUSE="test"
 
 RDEPEND="
 	virtual/perl-Carp
+	virtual/perl-Data-Dumper
 	virtual/perl-Encode
+	virtual/perl-File-Spec
 	virtual/perl-IO
 	virtual/perl-Storable
 "
@@ -27,9 +29,8 @@ DEPEND="${RDEPEND}
 		dev-perl/Test-Pod
 		dev-perl/Test-Pod-Coverage
 		dev-perl/Test-Inter
+		virtual/perl-Test-Simple
 	)
 "
-
-SRC_TEST=do
 
 mydoc="HISTORY"
