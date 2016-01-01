@@ -8,7 +8,7 @@ DIST_AUTHOR=DROLSKY
 DIST_VERSION=1.21
 inherit perl-module
 
-DESCRIPTION="A module to provide a flexible system for validation method/function call parameters"
+DESCRIPTION="Flexible system for validation of method/function call parameters"
 
 LICENSE="Artistic-2"
 SLOT="0"
