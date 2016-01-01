@@ -1,0 +1,61 @@
+commit c126ad8142c51476c4a1b78ab9e6d7409656b312
+Author: Michael Palimaka <kensington@gentoo.org>
+Date:   Tue Aug 25 00:05:20 2015 +1000
+
+    Fix build with kdelibs-4.14.11.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3ab5d20..99cf392 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -473,6 +473,13 @@ else (UNIX AND NOT APPLE)
+   set(KID3_EXECUTABLE kid3)
+ endif (UNIX AND NOT APPLE)
+ 
++if (BUILD_KDE_APP)
++  if (NOT HAVE_QT5)
++    find_package(KDE4 REQUIRED)
++    include (KDE4Defaults)
++    add_definitions(${KDE4_ENABLE_EXCEPTIONS})
++  endif (NOT HAVE_QT5)
++endif (BUILD_KDE_APP)
+ 
+ configure_file(config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config.h)
+ 
+diff --git a/doc/de/CMakeLists.txt b/doc/de/CMakeLists.txt
+index 6f25b68..70f6793 100644
+--- a/doc/de/CMakeLists.txt
++++ b/doc/de/CMakeLists.txt
+@@ -2,7 +2,6 @@ if (BUILD_KDE_APP)
+   if (HAVE_QT5)
+     kf5_create_handbook(index.docbook)
+   else (HAVE_QT5)
+-    find_package(KDE4 REQUIRED)
+     kde4_create_handbook(index.docbook INSTALL_DESTINATION ${HTML_INSTALL_DIR}/de SUBDIR kid3)
+   endif (HAVE_QT5)
+ endif (BUILD_KDE_APP)
+diff --git a/doc/en/CMakeLists.txt b/doc/en/CMakeLists.txt
+index b3751b3..7cff8e1 100644
+--- a/doc/en/CMakeLists.txt
++++ b/doc/en/CMakeLists.txt
+@@ -2,7 +2,6 @@ if (BUILD_KDE_APP)
+   if (HAVE_QT5)
+     kf5_create_handbook(index.docbook)
+   else (HAVE_QT5)
+-    find_package(KDE4 REQUIRED)
+     kde4_create_handbook(index.docbook INSTALL_DESTINATION ${HTML_INSTALL_DIR}/en SUBDIR kid3)
+   endif (HAVE_QT5)
+ endif (BUILD_KDE_APP)
+diff --git a/src/app/CMakeLists.txt b/src/app/CMakeLists.txt
+index d19ebb5..516e3f9 100644
+--- a/src/app/CMakeLists.txt
++++ b/src/app/CMakeLists.txt
+@@ -65,8 +65,6 @@ if (BUILD_KDE_APP)
+     )
+   else (HAVE_QT5)
+     set(_cmakeInstallRpath "${CMAKE_INSTALL_RPATH}")
+-    find_package(KDE4 REQUIRED)
+-    include (KDE4Defaults)
+ 
+     if (BUILD_SHARED_LIBS)
+       # FindKDE4Internal.cmake will overwrite our RPATH if LIB_INSTALL_DIR (which

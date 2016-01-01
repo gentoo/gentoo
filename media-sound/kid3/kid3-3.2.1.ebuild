@@ -48,6 +48,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-fix-cmake.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_with acoustid CHROMAPRINT)
