@@ -4,7 +4,7 @@
 
 EAPI=5
 WX_GTK_VER="3.0"
-inherit cmake-utils wxwidgets gnome2-utils fdo-mime games
+inherit cmake-utils wxwidgets flag-o-matic gnome2-utils fdo-mime games
 
 if [[ ${PV} == 9999 ]]; then
 	ESVN_REPO_URI="https://svn.code.sf.net/p/vbam/code/trunk"
@@ -60,6 +60,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# Bug #568792
+	append-cxxflags -std=c++11 -fpermissive
 	local mycmakeargs=(
 		$(cmake-utils_use_enable cairo CAIRO)
 		$(cmake-utils_use_enable ffmpeg FFMPEG)
