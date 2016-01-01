@@ -158,7 +158,7 @@ escons() {
 # gets an argument. Output the resulting flag list (suitable
 # for an assignment to SCONSOPTS).
 _scons_clean_makeopts() {
-	local new_makeopts
+	local new_makeopts=()
 
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -183,16 +183,16 @@ _scons_clean_makeopts() {
 		case ${1} in
 			# clean, simple to check -- we like that
 			--jobs=*|--keep-going)
-				new_makeopts=${new_makeopts+${new_makeopts} }${1}
+				new_makeopts+=( ${1} )
 				;;
 			# need to take a look at the next arg and guess
 			--jobs)
 				if [[ ${#} -gt 1 && ${2} =~ ^[0-9]+$ ]]; then
-					new_makeopts="${new_makeopts+${new_makeopts} }${1} ${2}"
+					new_makeopts+=( ${1} ${2} )
 					shift
 				else
 					# no value means no limit, let's pass a random int
-					new_makeopts=${new_makeopts+${new_makeopts} }${1}=5
+					new_makeopts+=( ${1}=5 )
 				fi
 				;;
 			# strip other long options
@@ -207,20 +207,20 @@ _scons_clean_makeopts() {
 				while [[ -n ${str} ]]; do
 					case ${str} in
 						k*)
-							new_optstr=${new_optstr}k
+							new_optstr+=k
 							;;
 						# -j needs to come last
 						j)
 							if [[ ${#} -gt 1 && ${2} =~ ^[0-9]+$ ]]; then
-								new_optstr="${new_optstr}j ${2}"
+								new_optstr+="j ${2}"
 								shift
 							else
-								new_optstr="${new_optstr}j 5"
+								new_optstr+="j 5"
 							fi
 							;;
 						# otherwise, everything after -j is treated as an arg
 						j*)
-							new_optstr=${new_optstr}${str}
+							new_optstr+=${str}
 							break
 							;;
 					esac
@@ -228,17 +228,16 @@ _scons_clean_makeopts() {
 				done
 
 				if [[ -n ${new_optstr} ]]; then
-					new_makeopts=${new_makeopts+${new_makeopts} }-${new_optstr}
+					new_makeopts+=( -${new_optstr} )
 				fi
 				;;
 		esac
 		shift
 	done
 
-	set -- ${new_makeopts}
-	_SCONS_CACHE_SCONSOPTS=${*}
-	debug-print "New SCONSOPTS: [${*}]"
-	SCONSOPTS=${*}
+	SCONSOPTS=${new_makeopts[*]}
+	_SCONS_CACHE_SCONSOPTS=${SCONSOPTS}
+	debug-print "New SCONSOPTS: [${SCONSOPTS}]"
 }
 
 # @FUNCTION: use_scons
