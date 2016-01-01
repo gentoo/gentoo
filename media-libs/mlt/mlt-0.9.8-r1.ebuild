@@ -5,7 +5,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 USE_RUBY="ruby19"
-inherit eutils toolchain-funcs linux-info multilib python-single-r1 ruby-single
+inherit eutils toolchain-funcs multilib python-single-r1 ruby-single
 
 DESCRIPTION="Open source multimedia framework for television broadcasting"
 HOMEPAGE="http://www.mltframework.org/"
@@ -88,7 +88,6 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 "
 
 pkg_setup() {
-	linux-info_pkg_setup
 	use python && python-single-r1_pkg_setup
 }
 
@@ -110,7 +109,7 @@ src_configure() {
 	local myconf="--enable-gpl
 		--enable-gpl3
 		--enable-motion-est
-		--target-arch=$(tc-arch-kernel)
+		--target-arch=$(tc-arch)
 		--disable-swfdec
 		$(use_enable debug)
 		$(use compressed-lumas && echo ' --luma-compress')
