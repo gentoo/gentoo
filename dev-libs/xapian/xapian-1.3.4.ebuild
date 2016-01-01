@@ -13,7 +13,7 @@ HOMEPAGE="http://www.xapian.org/"
 SRC_URI="http://oligarchy.co.uk/xapian/${PV}/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
-SLOT="0/1.3.5" # ABI version of libxapian-1.3.so, prefixed with 1.3.
+SLOT="0/1.3.4" # ABI version of libxapian-1.3.so, prefixed with 1.3.
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc static-libs -cpu_flags_x86_sse +cpu_flags_x86_sse2 +brass +chert +inmemory"
 
@@ -27,20 +27,20 @@ S="${WORKDIR}/${MY_P}"
 src_configure() {
 	local myconf=""
 
-	einfo
+	ewarn
 	if use cpu_flags_x86_sse2; then
-		einfo "Using sse2"
+		ewarn "Using sse2"
 		myconf="${myconf} --enable-sse=sse2"
 	else
 		if use cpu_flags_x86_sse; then
-			einfo "Using sse"
+			ewarn "Using sse"
 			myconf="${myconf} --enable-sse=sse"
 		else
-			einfo "Disabling sse and sse2"
+			ewarn "Disabling sse and sse2"
 			myconf="${myconf} --disable-sse"
 		fi
 	fi
-	einfo
+	ewarn
 
 	myconf="${myconf} $(use_enable static-libs static)"
 
