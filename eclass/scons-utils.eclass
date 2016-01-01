@@ -107,7 +107,7 @@ fi
 # @DESCRIPTION:
 # Call scons, passing the supplied arguments, ${myesconsargs[@]},
 # filtered ${MAKEOPTS}, ${EXTRA_ESCONS}. Similar to emake. Like emake,
-# this function does die on failure in EAPI 4 (unless called nonfatal).
+# this function does die on failure in EAPI 4.
 escons() {
 	local ret
 
