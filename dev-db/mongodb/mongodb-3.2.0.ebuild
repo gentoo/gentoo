@@ -8,7 +8,7 @@ CHECKREQS_DISK_BUILD="2400M"
 CHECKREQS_DISK_USR="512M"
 CHECKREQS_MEMORY="1024M"
 
-inherit eutils flag-o-matic multilib pax-utils scons-utils systemd user versionator check-reqs
+inherit eutils flag-o-matic multilib pax-utils scons-utils systemd toolchain-funcs user versionator check-reqs
 
 MY_P=${PN}-src-r${PV/_rc/-rc}
 
@@ -64,29 +64,36 @@ pkg_setup() {
 	# --use-system-tcmalloc is strongly NOT recommended:
 	# https://www.mongodb.org/about/contributors/tutorial/build-mongodb-from-source/
 
-	scons_opts+=" --disable-warnings-as-errors"
-	scons_opts+=" --use-system-boost"
-	scons_opts+=" --use-system-pcre"
-	scons_opts+=" --use-system-snappy"
-	scons_opts+=" --use-system-stemmer"
-	scons_opts+=" --use-system-yaml"
-	scons_opts+=" --use-system-zlib"
+	scons_opts=(
+		CC="$(tc-getCC)"
+		CXX="$(tc-getCXX)"
+
+		--disable-warnings-as-errors
+		--use-system-boost
+		--use-system-pcre
+		--use-system-snappy
+		--use-system-stemmer
+		--use-system-yaml
+		--use-system-zlib
+	)
 
 	if use debug; then
-		scons_opts+=" --dbg=on"
+		scons_opts+=( --dbg=on )
 	fi
 
 	if use prefix; then
-		scons_opts+=" --cpppath=${EPREFIX}/usr/include"
-		scons_opts+=" --libpath=${EPREFIX}/usr/$(get_libdir)"
+		scons_opts+=(
+			--cpppath="${EPREFIX}/usr/include"
+			--libpath="${EPREFIX}/usr/$(get_libdir)"
+		)
 	fi
 
 	if use kerberos; then
-		scons_opts+=" --use-sasl-client"
+		scons_opts+=( --use-sasl-client )
 	fi
 
 	if use ssl; then
-		scons_opts+=" --ssl"
+		scons_opts+=( --ssl )
 	fi
 }
 
@@ -101,11 +108,11 @@ src_compile() {
 		filter-flags '-m*'
 		filter-flags '-O?'
 	fi
-	escons ${scons_opts} core tools
+	escons "${scons_opts[@]}" core tools
 }
 
 src_install() {
-	escons ${scons_opts} --nostrip install --prefix="${ED}"/usr
+	escons "${scons_opts[@]}" --nostrip install --prefix="${ED}"/usr
 
 	for x in /var/{lib,log}/${PN}; do
 		keepdir "${x}"
