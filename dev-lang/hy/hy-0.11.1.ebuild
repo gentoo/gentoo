@@ -5,7 +5,7 @@
 EAPI=5
 
 RESTRICT="test" # needs some pointy sticks. Seriously.
-PYTHON_COMPAT=(python2_7 python3_3 python3_4)
+PYTHON_COMPAT=(python{2_7,3_3,3_4,3_5})
 
 inherit distutils-r1 eutils
 DESCRIPTION="A LISP dialect running in python"
