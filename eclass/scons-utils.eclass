@@ -58,6 +58,8 @@
 # @VARIABLE: myesconsargs
 # @DEFAULT_UNSET
 # @DESCRIPTION:
+# DEPRECATED, EAPI 0..5 ONLY: pass options to escons instead
+#
 # List of package-specific options to pass to all SCons calls. Supposed to be
 # set in src_configure().
 
@@ -103,20 +105,23 @@ fi
 # -- public functions --
 
 # @FUNCTION: escons
-# @USAGE: [scons-arg] ...
+# @USAGE: [<args>...]
 # @DESCRIPTION:
-# Call scons, passing the supplied arguments, ${myesconsargs[@]},
-# filtered ${MAKEOPTS}, ${EXTRA_ESCONS}. Similar to emake. Like emake,
-# this function does die on failure in EAPI 4. Respects nonfatal
-# in EAPI 6 and newer.
+# Call scons, passing the supplied arguments. Like emake, this function
+# does die on failure in EAPI 4. Respects nonfatal in EAPI 6 and newer.
 escons() {
 	local ret
 
 	debug-print-function ${FUNCNAME} "${@}"
 
+	# Use myesconsargs in EAPI 5 and older
+	if [[ ${EAPI} == [012345] ]]; then
+		set -- "${myesconsargs[@]}" "${@}"
+	fi
+
 	# if SCONSOPTS are _unset_, use cleaned MAKEOPTS
 	set -- scons ${SCONSOPTS-$(scons_clean_makeopts)} ${EXTRA_ESCONS} \
-		"${myesconsargs[@]}" "${@}"
+		"${@}"
 	echo "${@}" >&2
 	"${@}"
 	ret=${?}
