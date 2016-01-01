@@ -9,8 +9,23 @@
 # @DESCRIPTION:
 # This eclass provides a set of function to help developers sanely call
 # dev-util/scons and pass parameters to it.
-# @EXAMPLE:
 #
+# Please note that SCons is more like a 'build system creation kit',
+# and requires a lot of upstream customization to be used sanely.
+# You will often need to request fixes upstream and/or patch the build
+# system. In particular:
+#
+# 1. There are no 'standard' variables. To respect CC, CXX, CFLAGS,
+# CXXFLAGS, CPPFLAGS, LDFLAGS, upstream needs to define appropriate
+# variables explicitly. In some cases, upstreams respect envvars,
+# in others you need to pass them as options.
+#
+# 2. SCons scrubs out environment by default and replaces it with some
+# pre-defined values. To respect environment variables such as PATH,
+# Upstreams need to explicitly get them from os.environ and copy them
+# to the build environment.
+#
+# @EXAMPLE:
 # @CODE
 # inherit scons-utils toolchain-funcs
 #
