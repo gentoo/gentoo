@@ -8,7 +8,7 @@ CHECKREQS_DISK_BUILD="2400M"
 CHECKREQS_DISK_USR="512M"
 CHECKREQS_MEMORY="1024M"
 
-inherit eutils flag-o-matic multilib pax-utils scons-utils systemd user versionator check-reqs
+inherit eutils flag-o-matic multilib pax-utils scons-utils systemd toolchain-funcs user versionator check-reqs
 
 MY_P=${PN}-src-r${PV/_rc/-rc}
 
@@ -65,6 +65,9 @@ pkg_setup() {
 	# https://www.mongodb.org/about/contributors/tutorial/build-mongodb-from-source/
 
 	scons_opts=(
+		CC="$(tc-getCC)"
+		CXX="$(tc-getCXX)"
+
 		--disable-warnings-as-errors
 		--use-system-boost
 		--use-system-pcre
