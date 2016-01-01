@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -57,6 +57,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-lua-macro.patch"
+	"${FILESDIR}/${P}-fix-install-with-empty-LINGUAS.patch"
 	"${FILESDIR}/${P}-respect-user-compiler-flags.patch"
 )
 
