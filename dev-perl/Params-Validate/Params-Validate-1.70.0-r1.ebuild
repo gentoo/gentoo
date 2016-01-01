@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ MODULE_AUTHOR=DROLSKY
 MODULE_VERSION=1.07
 inherit perl-module
 
-DESCRIPTION="A module to provide a flexible system for validation method/function call parameters"
+DESCRIPTION="Flexible system for validation of method/function call parameters"
 
 LICENSE="Artistic-2"
 SLOT="0"
