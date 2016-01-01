@@ -120,7 +120,9 @@ escons() {
 	"${@}"
 	ret=${?}
 
-	[[ ${ret} -ne 0 ]] && has "${EAPI:-0}" 4 5 && die "escons failed."
+	if [[ ${ret} -ne 0 ]]; then
+		[[ ${EAPI:-0} != [0123] ]] && die "escons failed."
+	fi
 	return ${ret}
 }
 
