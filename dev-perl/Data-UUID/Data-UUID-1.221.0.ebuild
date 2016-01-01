@@ -8,7 +8,7 @@ MODULE_AUTHOR=RJBS
 MODULE_VERSION=1.221
 inherit perl-module
 
-DESCRIPTION="Perl extension for generating Globally/Universally Unique Identifiers (GUIDs/UUIDs)"
+DESCRIPTION="Generate Globally/Universally Unique Identifiers (GUIDs/UUIDs)"
 
 LICENSE="BSD"
 SLOT="0"

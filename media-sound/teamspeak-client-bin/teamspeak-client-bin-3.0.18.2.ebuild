@@ -31,7 +31,7 @@ RDEPEND="
 	alsa? ( media-libs/alsa-lib )
 	pulseaudio? ( media-sound/pulseaudio )"
 
-RESTRICT="fetch strip"
+RESTRICT="mirror strip"
 
 S="${WORKDIR}"
 

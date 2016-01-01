@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ MODULE_AUTHOR=RJBS
 MODULE_VERSION=1.217
 inherit perl-module
 
-DESCRIPTION="Perl extension for generating Globally/Universally Unique Identifiers (GUIDs/UUIDs)"
+DESCRIPTION="Generate Globally/Universally Unique Identifiers (GUIDs/UUIDs)"
 
 LICENSE="BSD"
 SLOT="0"
