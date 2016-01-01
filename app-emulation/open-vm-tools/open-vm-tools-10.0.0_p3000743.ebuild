@@ -63,6 +63,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# libsigc++-2.0 >= 2.5.1 requires C++11. Using -std=c++11
+	# does not provide "linux" definition, we need gnu++11
+	append-cxxflags -std=gnu++11
+
 	# https://bugs.gentoo.org/402279
 	export CUSTOM_PROCPS_NAME=procps
 	export CUSTOM_PROCPS_LIBS="$($(tc-getPKG_CONFIG) --libs libprocps)"
