@@ -592,7 +592,7 @@ app-crypt/scl011-bin 2.06: pcsc-lite driver for the German identification card (
 app-crypt/scrypt 1.1.6 1.2.0: A simple password-based encryption utility using the scrypt key derivation function
 app-crypt/scute 1.4.0: A PKCS #11 module for OpenPGP smartcards
 app-crypt/seahorse 3.16.0-r1 3.18.0: A GNOME application for managing encryption keys
-app-crypt/seahorse-sharing 3.8.0: Daemon for PGP public key sharing using DNS-SD and HKP
+app-crypt/seahorse-sharing 3.8.0 3.8.0_p20151117: Daemon for PGP public key sharing using DNS-SD and HKP
 app-crypt/sgeps 0_pre15: simple GnuPG-encrypted password store written in perl
 app-crypt/shash 0.2.6-r2: Generate or check digests or MACs of files
 app-crypt/shishi 1.0.1 1.0.1-r1 1.0.1-r2 1.0.2: A free implementation of the Kerberos 5 network security system
@@ -14691,7 +14691,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/yaydl 1.5.2: Yet Another Youtube DownLoader which is downloading more than youtube
-net-misc/youtube-dl 2015.04.03 2015.12.23 2015.12.29 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2015.04.03 2015.12.23 2015.12.29 2016.01.01 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.1 3.1.9 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
