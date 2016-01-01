@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,19 +17,19 @@
 # EAPI=4
 #
 # src_configure() {
-# 	myesconsargs=(
+# 	MYSCONS=(
 # 		CC="$(tc-getCC)"
 # 		$(use_scons nls ENABLE_NLS)
 # 	)
 # }
 #
 # src_compile() {
-# 	escons
+# 	escons "${MYSCONS[@]}"
 # }
 #
 # src_install() {
 # 	# note: this can be DESTDIR, INSTALL_ROOT, ... depending on package
-# 	escons DESTDIR="${D}" install
+# 	escons "${MYSCONS[@]}" DESTDIR="${D}" install
 # }
 # @CODE
 
