@@ -21,17 +21,17 @@ REQUIRED_USE="|| ( alsa pulseaudio )"
 
 RDEPEND="
 	dev-libs/quazip:0/0[qt5]
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5[accessibility]
-	dev-qt/qtnetwork:5
-	dev-qt/qtsql:5[sqlite]
-	dev-qt/qtwidgets:5
+	>=dev-qt/qtcore-5.5
+	>=dev-qt/qtgui-5.5[accessibility]
+	>=dev-qt/qtnetwork-5.5
+	>=dev-qt/qtsql-5.5[sqlite]
+	>=dev-qt/qtwidgets-5.5
 	sys-libs/glibc
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
 	pulseaudio? ( media-sound/pulseaudio )"
 
-RESTRICT="fetch mirror strip"
+RESTRICT="fetch strip"
 
 S="${WORKDIR}"
 
@@ -44,7 +44,8 @@ pkg_nofetch() {
 src_prepare() {
 	# Remove the qt-libraries as they just cause trouble with the system's Qt, see bug #328807.
 	rm libQt* || die "Couldn't remove bundled Qt libraries."
-	rm -r accessible platforms sqldrivers qt.conf || die "Couldn't remove bundle Qt files."
+
+	rm -r platforms sqldrivers qt.conf || die "Couldn't remove bundle Qt files."
 
 	# Remove unwanted soundbackends.
 	if ! use alsa ; then
@@ -56,7 +57,7 @@ src_prepare() {
 	fi
 
 	# Remove quazip
-	rm libquazip.so.1 || die
+	rm libquazip.so || die
 
 	# Rename the tsclient to its shorter version, required by the teamspeak3 script we install.
 	mv ts3client_linux_* ts3client || die "Couldn't rename ts3client to its shorter version."
