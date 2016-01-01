@@ -5,9 +5,9 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 USE_RUBY="ruby19"
-inherit eutils toolchain-funcs multilib python-single-r1 ruby-single
+inherit eutils toolchain-funcs linux-info multilib python-single-r1 ruby-single
 
-DESCRIPTION="An open source multimedia framework, designed and developed for television broadcasting"
+DESCRIPTION="Open source multimedia framework for television broadcasting"
 HOMEPAGE="http://www.mltframework.org/"
 SRC_URI="https://github.com/mltframework/mlt/archive/v0.9.8.tar.gz -> ${P}.tar.gz"
 
@@ -15,11 +15,12 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="compressed-lumas debug ffmpeg fftw frei0r gtk jack kde kdenlive libav libsamplerate melt opengl
-cpu_flags_x86_mmx qt4 rtaudio sdl cpu_flags_x86_sse cpu_flags_x86_sse2 xine xml lua python ruby vdpau" # java perl php tcl
+cpu_flags_x86_mmx qt4 qt5 rtaudio sdl cpu_flags_x86_sse cpu_flags_x86_sse2 xine xml lua python ruby vdpau"
+# java perl php tcl vidstab
 IUSE="${IUSE} kernel_linux"
 
 #rtaudio will use OSS on non linux OSes
-RDEPEND="
+COMMON_DEPEND="
 	ffmpeg? (
 		libav? ( media-video/libav:0=[vdpau?] )
 		!libav? ( media-video/ffmpeg:0=[vdpau?] )
@@ -39,14 +40,25 @@ RDEPEND="
 	opengl? ( media-video/movit )
 	rtaudio? ( kernel_linux? ( media-libs/alsa-lib ) )
 	xine? ( >=media-libs/xine-lib-1.1.2_pre20060328-r7 )
-	qt4? ( dev-qt/qtcore:4
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtsvg:5
+		dev-qt/qtwidgets:5
+		dev-qt/qtxml:5
+		media-libs/libexif
+		x11-libs/libX11
+		opengl? ( dev-qt/qtopengl:5 )
+	)
+	qt4? (
+		dev-qt/qtcore:4
 		dev-qt/qtgui:4
 		dev-qt/qtsvg:4
 		media-libs/libexif
-		x11-libs/libX11 )
-	kde? ( kde-base/kdelibs:4
-		media-libs/libexif )
-	!media-libs/mlt++
+		x11-libs/libX11
+		opengl? ( dev-qt/qtopengl:4 )
+	)
+	kde? ( kde-base/kdelibs:4 )
 	lua? ( >=dev-lang/lua-5.1.4-r4:= )
 	ruby? ( ${RUBY_DEPS} )"
 #	sox? ( media-sound/sox )
@@ -54,9 +66,9 @@ RDEPEND="
 #	perl? ( dev-lang/perl )
 #	php? ( dev-lang/php )
 #	tcl? ( dev-lang/tcl:0= )
-
+#	vidstab? ( media-libs/libvidstab )
 SWIG_DEPEND=">=dev-lang/swig-2.0"
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	compressed-lumas? ( || ( media-gfx/imagemagick[png]
 			media-gfx/graphicsmagick[imagemagick,png] ) )
@@ -67,9 +79,17 @@ DEPEND="${RDEPEND}
 #	perl? ( ${SWIG_DEPEND} )
 #	php? ( ${SWIG_DEPEND} )
 #	tcl? ( ${SWIG_DEPEND} )
+REPEND="${COMMON_DEPEND}
+	!media-libs/mlt++
+"
+
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
+	qt5? ( !qt4 ) kde? ( qt4 )
+"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	linux-info_pkg_setup
+	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -93,12 +113,14 @@ src_configure() {
 		--target-arch=$(tc-arch-kernel)
 		--disable-swfdec
 		$(use_enable debug)
+		$(use compressed-lumas && echo ' --luma-compress')
 		$(use_enable cpu_flags_x86_sse sse)
 		$(use_enable cpu_flags_x86_sse2 sse2)
 		$(use_enable gtk gtk2)
 		$(use_enable sdl)
 		$(use_enable jack jackrack)
 		$(use_enable ffmpeg avformat)
+		$(use ffmpeg && echo ' --avformat-swscale')
 		$(use_enable fftw plus)
 		$(use_enable frei0r)
 		$(use_enable melt)
@@ -109,17 +131,27 @@ src_configure() {
 		$(use_enable xml)
 		$(use_enable xine)
 		$(use_enable kdenlive)
-		$(use_enable qt4 qt)
 		--disable-sox"
 		#$(use_enable sox) FIXME
 
-	use ffmpeg && myconf="${myconf} --avformat-swscale"
-	use kde || myconf="${myconf} --without-kde"
-	use compressed-lumas && myconf="${myconf} --luma-compress"
+	# kde means kde4 at this point
+	if use qt5 ; then
+		myconf+=" --enable-qt $(use_with opengl)
+			--qt-includedir=$(pkg-config Qt5Core --variable=includedir)
+			--qt-libdir=$(pkg-config Qt5Core --variable=libdir)"
+	elif use qt4 ; then
+		myconf+=" --enable-qt $(use_with opengl) $(use_with kde)
+			--qt-includedir=$(pkg-config QtCore --variable=includedir)
+			--qt-libdir=$(pkg-config QtCore --variable=libdir)"
+	else
+		myconf+=" --disable-qt"
+	fi
 
-	( use x86 || use amd64 ) && \
-		myconf="${myconf} $(use_enable cpu_flags_x86_mmx mmx)" ||
-		myconf="${myconf} --disable-mmx"
+	if use x86 || use amd64 ; then
+		myconf+=" $(use_enable cpu_flags_x86_mmx mmx)"
+	else
+		myconf+=" --disable-mmx"
+	fi
 
 	if ! use melt; then
 		sed -i -e "s;src/melt;;" Makefile || die
