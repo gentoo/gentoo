@@ -124,8 +124,12 @@ escons() {
 	fi
 
 	# if SCONSOPTS are _unset_, use cleaned MAKEOPTS
-	set -- scons ${SCONSOPTS-$(_scons_clean_makeopts)} ${EXTRA_ESCONS} \
-		"${@}"
+	if [[ ! ${SCONSOPTS+set} ]]; then
+		local SCONSOPTS
+		_scons_clean_makeopts
+	fi
+
+	set -- scons ${SCONSOPTS} ${EXTRA_ESCONS} "${@}"
 	echo "${@}" >&2
 	"${@}"
 	ret=${?}
@@ -169,9 +173,8 @@ _scons_clean_makeopts() {
 	# empty MAKEOPTS give out empty SCONSOPTS
 	# thus, we do need to worry about the initial setup
 	if [[ ${*} = ${_SCONS_CACHE_MAKEOPTS} ]]; then
-		set -- ${_SCONS_CACHE_SCONSOPTS}
-		debug-print "Cache hit: [${*}]"
-		echo ${*}
+		SCONSOPTS=${_SCONS_CACHE_SCONSOPTS}
+		debug-print "Cache hit: [${SCONSOPTS}]"
 		return
 	fi
 	export _SCONS_CACHE_MAKEOPTS=${*}
@@ -235,7 +238,7 @@ _scons_clean_makeopts() {
 	set -- ${new_makeopts}
 	export _SCONS_CACHE_SCONSOPTS=${*}
 	debug-print "New SCONSOPTS: [${*}]"
-	echo ${*}
+	SCONSOPTS=${*}
 }
 
 # @FUNCTION: use_scons

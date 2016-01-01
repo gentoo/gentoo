@@ -10,14 +10,15 @@ inherit scons-utils
 test-scons_clean_makeopts() {
 	tbegin "scons_clean_makeopts() for ${1}"
 
-	local sconsopts=$(_scons_clean_makeopts ${1}) ret=0
+	local SCONSOPTS ret=0
+	_scons_clean_makeopts ${1}
 
-	if [[ ${sconsopts} != ${2-${1}} ]]; then
+	if [[ ${SCONSOPTS} != ${2-${1}} ]]; then
 		eerror "Self-test failed:"
 		eindent
 		eerror "MAKEOPTS: ${1}"
 		eerror "Expected: ${2-${1}}"
-		eerror "Actual: ${sconsopts}"
+		eerror "Actual: ${SCONSOPTS}"
 		eoutdent
 		ret=1
 	fi
