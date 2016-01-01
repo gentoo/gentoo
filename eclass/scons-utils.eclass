@@ -79,11 +79,15 @@
 
 # @ECLASS-VARIABLE: USE_SCONS_TRUE
 # @DESCRIPTION:
+# DEPRECATED: use usex instead
+#
 # The default value for truth in scons-use() (1 by default).
 : ${USE_SCONS_TRUE:=1}
 
 # @ECLASS-VARIABLE: USE_SCONS_FALSE
 # @DESCRIPTION:
+# DEPRECATED: use usex instead
+#
 # The default value for false in scons-use() (0 by default).
 : ${USE_SCONS_FALSE:=0}
 
@@ -236,6 +240,8 @@ scons_clean_makeopts() {
 # @FUNCTION: use_scons
 # @USAGE: <use-flag> [var-name] [var-opt-true] [var-opt-false]
 # @DESCRIPTION:
+# DEPRECATED, EAPI 0..5 ONLY: use usex instead
+#
 # Output a SCons parameter with value depending on the USE flag state.
 # If the USE flag is set, output <var-name>=<var-opt-true>; otherwise
 # <var-name>=<var-opt-false>.
@@ -247,6 +253,9 @@ scons_clean_makeopts() {
 # If <var-opt-true> and/or <var-opt-false> are omitted,
 # ${USE_SCONS_TRUE} and/or ${USE_SCONS_FALSE} will be used instead.
 use_scons() {
+	[[ ${EAPI} == [012345] ]] \
+		|| die "${FUNCNAME} is banned in EAPI ${EAPI}, use usex instead"
+
 	local flag=${1}
 	local varname=${2:-${flag/\!/no}}
 	local vartrue=${3:-${USE_SCONS_TRUE}}
