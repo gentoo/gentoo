@@ -107,7 +107,8 @@ fi
 # @DESCRIPTION:
 # Call scons, passing the supplied arguments, ${myesconsargs[@]},
 # filtered ${MAKEOPTS}, ${EXTRA_ESCONS}. Similar to emake. Like emake,
-# this function does die on failure in EAPI 4.
+# this function does die on failure in EAPI 4. Respects nonfatal
+# in EAPI 6 and newer.
 escons() {
 	local ret
 
@@ -121,7 +122,16 @@ escons() {
 	ret=${?}
 
 	if [[ ${ret} -ne 0 ]]; then
-		[[ ${EAPI:-0} != [0123] ]] && die "escons failed."
+		case "${EAPI:-0}" in
+			0|1|2|3) # nonfatal in EAPIs 0 through 3
+				;;
+			4|5) # 100% fatal in 4 & 5
+				die "escons failed."
+				;;
+			*) # respect nonfatal in 6 onwards
+				die -n "escons failed."
+				;;
+		esac
 	fi
 	return ${ret}
 }
