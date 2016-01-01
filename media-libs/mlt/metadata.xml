@@ -2,6 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>video</herd>
+  <herd>kde</herd>
   <maintainer>
     <email>media-video@gentoo.org</email>
   </maintainer>
