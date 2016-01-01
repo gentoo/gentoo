@@ -21,6 +21,7 @@ RDEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
+	$(add_frameworks_dep kcrash)
 	$(add_frameworks_dep kdbusaddons)
 	$(add_frameworks_dep kguiaddons)
 	$(add_frameworks_dep ki18n)
@@ -46,7 +47,7 @@ RDEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	>=media-libs/mlt-0.9.8[ffmpeg,-kde,kdenlive,melt,-qt4,sdl,xml]
+	>=media-libs/mlt-0.9.8-r1[ffmpeg,kdenlive,melt,qt5,sdl,xml]
 	virtual/ffmpeg[encode,sdl,X]
 	virtual/opengl
 	v4l? ( media-libs/libv4l )
@@ -54,6 +55,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 "
+
+PATCHES=( "${FILESDIR}/${PN}-15.12.0-kcrash.patch" )
 
 src_configure() {
 	local mycmakeargs=(
