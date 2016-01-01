@@ -1363,7 +1363,7 @@ app-eselect/eselect-fontconfig 1.0 1.1 1.1-r1: An eselect module to manage /etc/
 app-eselect/eselect-gnat 1.3-r1 1.4 1.4-r1 1.5: gnat module for eselect
 app-eselect/eselect-gnome-shell-extensions 20120911: Manages system defaults for GNOME Shell extensions
 app-eselect/eselect-infinality 1: Eselect module to choose an infinality font configuration style
-app-eselect/eselect-java 0.1.0 0.1.0-r1: A set of eselect modules for Java
+app-eselect/eselect-java 0.1.0 0.1.0-r1 0.2.0: A set of eselect modules for Java
 app-eselect/eselect-lapack 0.1: LAPACK module for eselect
 app-eselect/eselect-lcdfilter 1 2: Eselect module to choose Freetype infinality-enhanced LCD filtering settings
 app-eselect/eselect-lib-bin-symlink 0.1 0.1.1 9999: An eselect library to manage executable symlinks
@@ -3881,7 +3881,7 @@ dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
 dev-java/icedtea 6.1.13.9-r1 7.2.6.3-r2: A harness to build OpenJDK using Free Software build tools and dependencies
 dev-java/icedtea-bin 6.1.13.8-r1 6.1.13.9 7.2.6.3: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
-dev-java/icedtea-web 1.5.1-r1: FOSS Java browser plugin and Web Start implementation
+dev-java/icedtea-web 1.5.1-r1 1.6.1: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 3.8.1-r1 4.0.1.1 4.2.1.1 4.4.2 49.1 52.1 53.1 54.1.1 55.1: A set of Java libraries providing Unicode and Globalization support
 dev-java/idm-console-framework 1.1.7: A Java Management Console framework used for remote server management
 dev-java/ini4j 0.5.1: Simple Java API Windows style .ini file handling
@@ -4139,8 +4139,8 @@ dev-java/offo-hyphenation 2.0: Hyphenation patterns for Apache Fop
 dev-java/ognl 2.6.9-r2 3.0.8: Object-Graph Navigation Language; an expression language for getting/setting properties of objects
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/oracle-javamail 1.5.2: A Java-based framework to build multiplatform mail and messaging applications
-dev-java/oracle-jdk-bin 1.7.0.80 1.8.0.65 1.8.0.66: Oracle's Java SE Development Kit
-dev-java/oracle-jre-bin 1.7.0.80 1.8.0.66: Oracle's Java SE Runtime Environment
+dev-java/oracle-jdk-bin 1.7.0.80 1.8.0.65-r1 1.8.0.66 1.8.0.66-r1: Oracle's Java SE Development Kit
+dev-java/oracle-jre-bin 1.7.0.80 1.8.0.66 1.8.0.66-r1: Oracle's Java SE Runtime Environment
 dev-java/oscache 2.0.2-r3: OSCache is a widely used, high performance J2EE caching framework
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
 dev-java/osgi-core-api 5.0.0 5.0.0-r1: OSGi Service Platform Core API (Companion Code)
@@ -7658,7 +7658,7 @@ dev-python/python-barbicanclient 3.0.1 3.0.3 3.3.0: Client library for Barbican 
 dev-python/python-bibtex 1.2.7-r1: A Python extension to parse BibTeX files
 dev-python/python-biggles 1.6.6-r1: A Python module for creating publication-quality 2D scientific plots
 dev-python/python-bugzilla 1.1.0 1.2.2: A python module for interacting with Bugzilla over XMLRPC
-dev-python/python-caja 1.8.0: Python bindings for the Caja file manager
+dev-python/python-caja 1.8.0 1.8.1: Python bindings for the Caja file manager
 dev-python/python-catcher 0.1.7: Beautiful stack traces for Python
 dev-python/python-cdb 0.34 0.34-r1: A Python extension module for cdb
 dev-python/python-ceilometerclient 1.0.10 1.1.1: This is a client library for Ceilometer built on the Ceilometer API
