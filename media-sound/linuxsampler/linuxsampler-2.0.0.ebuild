@@ -23,6 +23,12 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
+src_prepare() {
+	# Force regeneration of the file to let it build with all bison
+	# versions, bug #556204
+	rm -f src/network/lscpparser.cpp || die
+}
+
 src_configure() {
 	econf --enable-alsa-driver \
 		--disable-arts-driver \
@@ -39,8 +45,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc AUTHORS ChangeLog NEWS README
+	default
 
 	if use doc; then
 		dohtml -r doc/html/*
