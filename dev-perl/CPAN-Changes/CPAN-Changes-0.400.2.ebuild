@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION='Read and write Changes files'
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="

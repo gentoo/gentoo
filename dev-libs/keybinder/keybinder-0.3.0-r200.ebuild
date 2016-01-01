@@ -9,8 +9,8 @@ PYTHON_DEPEND="python? 2:2.6"
 inherit eutils python
 
 DESCRIPTION="A library for registering global keyboard shortcuts"
-HOMEPAGE="http://kaizer.se/wiki/keybinder/"
-SRC_URI="http://kaizer.se/publicfiles/${PN}/${P}.tar.gz"
+HOMEPAGE="https://github.com/engla/keybinder"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

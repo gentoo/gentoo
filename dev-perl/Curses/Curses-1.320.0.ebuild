@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-solaris ~x86-solaris"
 IUSE="+unicode"
 
-DEPEND=">=sys-libs/ncurses-5[unicode?]"
+DEPEND=">=sys-libs/ncurses-5:0=[unicode?]"
 RDEPEND="${DEPEND}"
 
 SRC_TEST="do"

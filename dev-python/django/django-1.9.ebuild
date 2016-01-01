@@ -34,7 +34,7 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( >=dev-python/sphinx-1.0.7[${PYTHON_USEDEP}] )
 	test? (
-		${PYTHON_DEPS//sqlite?/sqlite}
+		$(python_gen_impl_dep sqlite)
 		dev-python/docutils[${PYTHON_USEDEP}]
 		dev-python/numpy[$(python_gen_usedep 'python*')]
 		dev-python/pillow[${PYTHON_USEDEP}]

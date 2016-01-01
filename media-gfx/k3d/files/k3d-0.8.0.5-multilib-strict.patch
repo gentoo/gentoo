@@ -1,0 +1,25 @@
+From 5d20d8daf3fb753785c78d43d86813348d456868 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ralf=20Cors=C3=A9pius?= <corsepiu@fedoraproject.org>
+Date: Tue, 27 Jan 2015 10:54:55 +0100
+Subject: [PATCH 1/4] k3d-0.8.0.2-cmake.diff
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ae8a60d..9f22dae 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -362,7 +362,7 @@ ENDIF()
+ # Setup output directories ...
+ SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${k3d_BINARY_DIR}/bin)
+ 
+-SET(K3D_LIBDIR lib) # Allows us to handle 64-bit libs if/when it becomes necessary.
++SET(K3D_LIBDIR lib${LIB_SUFFIX}) # Allows us to handle 64-bit libs if/when it becomes necessary.
+ 
+ IF(APPLE AND K3D_ENABLE_OSX_BUNDLE)
+ 	SET(K3D_BUNDLE_DIRECTORY ${k3d_BINARY_DIR}/K-3D.app/Contents)
+-- 
+2.5.0
+

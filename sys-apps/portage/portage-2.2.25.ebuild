@@ -9,7 +9,6 @@ PYTHON_COMPAT=(
 	python3_3 python3_4 python3_5
 	python2_7
 )
-# Note: substituted below
 PYTHON_REQ_USE='bzip2(+)'
 
 inherit distutils-r1 multilib
@@ -22,7 +21,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 SLOT="0"
 IUSE="build doc epydoc +ipc linguas_ru selinux xattr"
 
-DEPEND="!build? ( ${PYTHON_DEPS//bzip2(+)/ssl(+),bzip2(+)} )
+DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 	>=app-arch/tar-1.27
 	dev-lang/python-exec:2
 	>=sys-apps/sed-4.0.5 sys-devel/patch

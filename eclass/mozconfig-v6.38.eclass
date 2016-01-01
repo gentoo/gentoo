@@ -235,7 +235,7 @@ mozconfig_config() {
 	mozconfig_use_enable system-sqlite
 	mozconfig_use_with system-jpeg
 	mozconfig_use_with system-icu
-	mozconfig_use_enable system-icu intl-api
+	mozconfig_use_with system-icu intl-api
 	mozconfig_use_with system-libvpx
 
 	# Modifications to better support ARM, bug 553364

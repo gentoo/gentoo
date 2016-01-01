@@ -36,10 +36,7 @@ S="${WORKDIR}/${PN}2-${P}"
 
 JAVA_SRC_DIR="src/main/java"
 
-JAVA_GENTOO_CLASSPATH="
-	jansi
-	jansi-native
-"
+JAVA_GENTOO_CLASSPATH="jansi,jansi-native"
 
 java_prepare() {
 	# Easier to use java-pkg-simple.

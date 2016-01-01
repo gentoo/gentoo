@@ -41,3 +41,5 @@ move kde-base/ktnef kde-apps/ktnef
 move kde-base/libkdepim kde-apps/libkdepim
 move kde-base/libkleo kde-apps/libkleo
 move kde-base/libkpgp kde-apps/libkpgp
+slotmove =dev-embedded/libftdi-1* 0 1
+slotmove =dev-embedded/libftdi-9999 0 1

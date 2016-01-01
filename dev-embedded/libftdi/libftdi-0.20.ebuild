@@ -25,6 +25,7 @@ RDEPEND="virtual/libusb:0
 	cxx? ( dev-libs/boost )
 	python? ( dev-lang/python )"
 DEPEND="${RDEPEND}
+	python? ( dev-lang/swig )
 	doc? ( app-doc/doxygen )"
 
 src_prepare() {

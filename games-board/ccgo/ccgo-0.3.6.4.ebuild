@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit autotools toolchain-funcs games
+inherit autotools eutils toolchain-funcs flag-o-matic games
 
 DESCRIPTION="An IGS client written in C++"
 HOMEPAGE="http://ccdw.org/~cjj/prog/ccgo/"
@@ -31,6 +31,11 @@ src_prepare() {
 		-e '/^appicondir/s:=.*:=/usr/share/pixmaps:' \
 		-e '/^desktopdir/s:=.*:=/usr/share/applications:' \
 		Makefile.am || die
+	# cargo cult from bug #569528
+	append-cxxflags -std=c++11 -fpermissive
+	find . -name '*.hh' -exec sed -i -e '/sigc++\/object.h/d' {} +
+	find . -name '*.cc' -exec sed -i -e 's/(bind(/(sigc::bind(/' {} +
+	epatch "${FILESDIR}"/${P}-gcc4.patch
 	eautoreconf
 }
 

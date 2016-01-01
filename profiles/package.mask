@@ -30,6 +30,47 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (31 Dec 2015)
+# Merged into >=kde-apps/kaddressbook-4.14
+# Masked for removal in 30 days
+kde-base/contactthemeeditor
+
+# Michael Palimaka <kensington@gentoo.org> (31 Dec 2015)
+# Relies on dead web API. Dead upstream. Masked for removal in 30 days
+# Bug 364097
+media-sound/shoutcast-search
+
+# Michael Palimaka <kensington@gentoo.org> (31 Dec 2015)
+# Ancient package, unsupported by upstream. Masked for removal in 30 days
+# Bug 565010
+dev-python/pysyck
+
+# Pacho Ramos <pacho@gentoo.org> (31 Dec 2015)
+# Upstream dead, doesn't compile with libsigc++-2.6, bug #567092
+# Removal in a month.
+net-misc/gip
+
+# Pacho Ramos <pacho@gentoo.org> (31 Dec 2015)
+# Upstream dead, doesn't compile with libsigc++-2.6, bug #568796
+# Removal in a month.
+media-sound/gnomoradio
+
+# Pacho Ramos <pacho@gentoo.org> (31 Dec 2015)
+# Upstream dead, doesn't compile with libsigc++-2.6, bug #568796
+# Removal in a month.
+app-office/passepartout
+
+# Pacho Ramos <pacho@gentoo.org> (31 Dec 2015)
+# Upstream dead, doesn't compile with libsigc++-2.6, multiple bugs
+# with current ffmpeg versions, bug #568796
+# Removal in a month.
+media-video/bombono-dvd
+
+# Pacho Ramos <pacho@gentoo.org> (31 Dec 2015)
+# Upstream dead, doesn't compile with libsigc++-2.6, bug #569540
+# Removal in a month.
+sci-electronics/gspeakers
+
 # Michael Sterrett <mr_bones_@gentoo.org> (30 Dec 2015)
 # Upstream has gone away and games-strategy/xbattleai is
 # basically a superset anyhow.
@@ -215,43 +256,6 @@ dev-lang/php:5.4
 # Masked for removal on 20151231
 games-emulation/gnomeboyadvance
 
-# Sergey Popov <pinkbyte@gentoo.org> (25 Nov 2015)
-# Dead upstream, security issues, see bug #557856
-# Removal in a month
-net-p2p/bittorrent
-
-# Andreas K. Huettel <dilfridge@gentoo.org> (22 Nov 2015)
-# txt2html got accidentally packaged twice, as TextToHTML
-# and as txt2html. Masking the version with nonstandard PN
-# for removal in 30 days.
-dev-perl/TextToHTML
-
-# Patrice Clement <monsieurp@gentoo.org> (21 Nov 2015)
-# Upstream dead + superseded by app-text/tidy-html5.
-# Masked for removal in 30 days. See bug #564884.
-# Not yet.
-# app-text/htmltidy
-
-# Michael Palimaka <kensington@gentoo.org> (18 Nov 2015)
-# Ebuilds unfinished work-in-progress. Dead upstream.
-# Masked for removal in 30 days. Bug #550234.
-app-pda/libopensync
-app-pda/libopensync-plugin-file
-app-pda/libopensync-plugin-gnokii
-app-pda/libopensync-plugin-gpe
-app-pda/libopensync-plugin-irmc
-app-pda/libopensync-plugin-moto
-app-pda/libopensync-plugin-palm
-app-pda/libopensync-plugin-python
-app-pda/libopensync-plugin-sunbird
-app-pda/libopensync-plugin-synce-rra
-app-pda/libopensync-plugin-syncml
-app-pda/libopensync-plugin-vformat
-app-pda/libsyncml
-app-pda/msynctool
-app-pda/multisync-gui
-app-pda/osynctool
-
 # Justin Lecher <jlec@gentoo.org> (12 Nov 2015)
 # deprecated version of the plugin. 
 # sci-chemistry/pymol includes the newer version
@@ -274,25 +278,6 @@ dev-python/imaging
 # dev-python/imaging to dev-python/pillow
 # obsolete now #508266
 virtual/python-imaging
-
-# Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
-# Nobody willing to maintain/bump it. Use qemu instead
-# Removal in a month. Bug #200003
-app-emulation/skyeye
-
-# Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
-# Upstream dead, buggy, there are many other bittorrent
-# clients in the tree. See bug #210520. Removal in a month.
-net-p2p/btpd
-
-# Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
-# Obsolete for a long time, see bug #231578.
-# Removal in a month.
-app-eselect/eselect-esd
-
-# Pacho Ramos <pacho@gentoo.org> (09 Nov 2015)
-# Dead for years, see bug #248489. Removal in a month.
-dev-tex/latex-unicode
 
 # Michał Górny <mgorny@gentoo.org> (30 Oct 2015)
 # Uses unsafe ioctls that could result in data corruption. Upstream

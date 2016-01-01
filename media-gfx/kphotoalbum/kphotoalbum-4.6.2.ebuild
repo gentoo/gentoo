@@ -25,7 +25,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtsql-4.4:4[sqlite]
 	media-libs/phonon[qt4]
 	virtual/jpeg:0
-	exif? ( >=media-gfx/exiv2-0.17 )
+	exif? ( >=media-gfx/exiv2-0.17:= )
 	face? ( >=kde-apps/libkface-4.7.0 )
 	geolocation? ( $(add_kdeapps_dep marble) )
 	kipi? ( $(add_kdeapps_dep libkipi '' 4.9.58) )
