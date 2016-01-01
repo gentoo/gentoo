@@ -1,0 +1,49 @@
+--- html-gen.sh.orig	2015-09-11 14:02:04.250280108 +0100
++++ html-gen.sh	2016-01-01 14:13:46.693307166 +0000
+@@ -67,13 +67,18 @@
+ if [ -z "$CHANGESETS" ] || [ "$CHANGESETS" -lt 0 ]; then CHANGESETS=10; fi
+ 
+ NEWS_ITEMS=2
+-REPO_URL="$(hg paths default | sed -r 's/.*icedtea.classpath.org\/(.*)/\1/')"
++
++if [ -d .hg ]; then
++    REPO_URL="$(hg paths default | sed -r 's/.*icedtea.classpath.org\/(.*)/\1/')"
++else
++    unset REPO_URL
++fi
+ 
+ start_time="$(date +%s.%N)"
+ 
+ cd html-gen
+ 
+-print_debug "Generating HTML content for javaws -about for $REPO_URL. $CHANGESETS changesets, $NEWS_ITEMS news items"
++print_debug "Generating HTML content for javaws -about${REPO_URL:+ for }$REPO_URL. $CHANGESETS changesets, $NEWS_ITEMS news items"
+ print_debug "Starting sed substitutions"
+ for FILE in NEWS AUTHORS COPYING ChangeLog
+ do
+@@ -99,7 +104,9 @@
+ sed -i '5i <br><img src="jamIcon.jpg" alt="Jam Icon" width="87" height="84"><br><br>' AUTHORS.html
+ echo "</center>" >> AUTHORS.html
+ 
+-REVS=(`hg log -l"$CHANGESETS" | grep 'changeset:' | cut -d: -f3 | tr '\n' ' '`)
++if [ -n "${REPO_URL}" ]; then
++    REVS=(`hg log -l"$CHANGESETS" | grep 'changeset:' | cut -d: -f3 | tr '\n' ' '`)
++fi
+ 
+ print_debug "Done. Starting formatting (bolding, mailto and hyperlink creation)"
+ 
+@@ -132,9 +139,11 @@
+             if [[ "$LINE" =~ $date_regex* ]] # Matches line starting with eg 2013-07-01
+             then
+                 html_space="\&ensp;\&ensp;"
+-                REV="${REVS["$COUNTER"]}"
+-                # Turn the date into a hyperlink for the revision this changelog entry describes
+-                LINE=$(echo "$LINE" | sed -r "s|($date_regex)($html_space.*$html_space.*)|<a href=http://icedtea.classpath.org/$REPO_URL/rev/$REV>\1</a>\2|")
++                if [ -n "${REPO_URL}" ]; then
++                    REV="${REVS["$COUNTER"]}"
++                    # Turn the date into a hyperlink for the revision this changelog entry describes
++                    LINE=$(echo "$LINE" | sed -r "s|($date_regex)($html_space.*$html_space.*)|<a href=http://icedtea.classpath.org/$REPO_URL/rev/$REV>\1</a>\2|")
++                fi
+                 COUNTER="$(( COUNTER + 1 ))"
+             fi
+             if [ "$COUNTER" -gt "$CHANGESETS" ] # Cut to ten changesets

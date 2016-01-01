@@ -1,0 +1,20 @@
+--- Makefile.am.orig	2015-09-11 14:02:04.245280051 +0100
++++ Makefile.am	2015-12-18 21:37:43.328862431 +0000
+@@ -344,7 +344,7 @@
+ $(PLUGIN_DIR)/%.o: $(PLUGIN_SRCDIR)/%.cc
+ 	mkdir -p $(PLUGIN_DIR) && \
+ 	cd $(PLUGIN_DIR) && \
+-	$(CXX) $(CXXFLAGS) \
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) \
+ 	   $(DEFS) $(VERSION_DEFS) \
+ 	  -DJDK_UPDATE_VERSION="\"$(JDK_UPDATE_VERSION)\"" \
+ 	  -DPLUGIN_NAME="\"IcedTea-Web Plugin\"" \
+@@ -362,7 +362,7 @@
+ 
+ $(PLUGIN_DIR)/$(BUILT_PLUGIN_LIBRARY): $(addprefix $(PLUGIN_DIR)/,$(PLUGIN_OBJECTS))
+ 	cd $(PLUGIN_DIR) && \
+-	$(CXX) $(CXXFLAGS) \
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) \
+ 	  $(PLUGIN_OBJECTS) \
+ 	  $(GLIB_LIBS) \
+ 	  $(MOZILLA_LIBS) \

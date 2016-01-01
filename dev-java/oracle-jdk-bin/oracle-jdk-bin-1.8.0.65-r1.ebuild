@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -61,7 +61,7 @@ SRC_URI+=" jce? ( ${JCE_FILE} )"
 LICENSE="Oracle-BCLA-JavaSE examples? ( BSD )"
 SLOT="1.8"
 KEYWORDS="~arm ~arm64"
-IUSE="alsa +awt cups derby doc examples +fontconfig javafx jce nsplugin pax_kernel selinux source"
+IUSE="alsa cups derby doc examples +fontconfig headless-awt javafx jce nsplugin pax_kernel selinux source"
 REQUIRED_USE="javafx? ( alsa fontconfig )"
 
 RESTRICT="fetch preserve-libs strip"
@@ -79,7 +79,7 @@ QA_PREBUILT="*"
 #   dependencies below.
 #
 RDEPEND="!x64-macos? (
-		awt? (
+		!headless-awt? (
 			x11-libs/libX11
 			x11-libs/libXext
 			x11-libs/libXi
@@ -212,7 +212,7 @@ src_install() {
 		rm -vf jre/lib/*/libjsoundalsa.* || die
 	fi
 
-	if ! use awt ; then
+	if use headless-awt ; then
 		rm -vf {,jre/}lib/*/lib*{[jx]awt,splashscreen}* \
 		   {,jre/}bin/{javaws,policytool} \
 		   bin/appletviewer || die
@@ -221,7 +221,7 @@ src_install() {
 	if ! use javafx ; then
 		rm -vf jre/lib/*/lib*{decora,fx,glass,prism}* \
 		   jre/lib/*/libgstreamer-lite.* {,jre/}lib/{,ext/}*fx* \
-		   bin/*javafx* || die
+		   bin/*javafx* bin/javapackager || die
 	fi
 
 	if ! use nsplugin ; then
@@ -259,7 +259,9 @@ src_install() {
 	fi
 
 	if use nsplugin ; then
-		install_mozilla_plugin "${dest}/${nsplugin}"
+		local nsplugin_link=${nsplugin##*/}
+		nsplugin_link=${nsplugin_link/./-${PN}-${SLOT}.}
+		dosym "${dest}/${nsplugin}" "/usr/$(get_libdir)/nsbrowser/plugins/${nsplugin_link}"
 	fi
 
 	if use source ; then
