@@ -5385,7 +5385,7 @@ dev-perl/DateTime-Format-Flexible 0.260.0: Flexibly parse strings and turn them 
 dev-perl/DateTime-Format-HTTP 0.400.0-r1 0.420.0: Date conversion routines
 dev-perl/DateTime-Format-ICal 0.90.0: Parse and format iCal datetime and duration strings
 dev-perl/DateTime-Format-ISO8601 0.80.0-r1: Parses ISO8601 formats
-dev-perl/DateTime-Format-Mail 0.300.100-r1 0.401.0 0.402.0: Convert between DateTime and RFC2822/822 formats
+dev-perl/DateTime-Format-Mail 0.300.100-r1 0.402.0: Convert between DateTime and RFC2822/822 formats
 dev-perl/DateTime-Format-Natural 1.10.0-r1: Create machine readable date/time with natural parsing logic
 dev-perl/DateTime-Format-SQLite 0.110.0: Parse and format SQLite dates and times
 dev-perl/DateTime-Format-Strptime 1.540.0-r1 1.560.0: Parse and Format DateTimes using Strptime
