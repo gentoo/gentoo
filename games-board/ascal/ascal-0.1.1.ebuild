@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit autotools eutils games
+inherit autotools eutils flag-o-matic games
 
 DESCRIPTION="A game similar to Draughts but with some really cool enhancements"
 HOMEPAGE="http://ascal.sourceforge.net/"
@@ -24,6 +24,11 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-install.patch \
 		"${FILESDIR}"/${P}-gcc43.patch
 	eautoreconf
+}
+
+src_configure() {
+	append-cxxflags -std=c++11
+	egamesconf
 }
 
 src_install() {
