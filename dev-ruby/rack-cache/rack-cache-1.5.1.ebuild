@@ -14,7 +14,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGES README.md doc/*"
 
 inherit versionator ruby-fakegem
 
-DESCRIPTION="A drop-in component to enable HTTP caching for Rack-based applications that produce freshness info"
+DESCRIPTION="Enable HTTP caching for Rack-based applications that produce freshness info"
 HOMEPAGE="https://github.com/rtomayko/rack-cache"
 SRC_URI="https://github.com/rtomayko/rack-cache/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -25,7 +25,10 @@ IUSE=""
 
 ruby_add_rdepend "dev-ruby/rack:*"
 
-ruby_add_bdepend "test? ( dev-ruby/maxitest )"
+ruby_add_bdepend "test? (
+	dev-ruby/maxitest
+	>=dev-ruby/minitest-5.7.0:5
+	>=dev-ruby/mocha-0.13.0 )"
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/ s:^:#:' \
