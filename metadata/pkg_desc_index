@@ -5950,7 +5950,7 @@ dev-perl/PPIx-EditorTools 0.170.0 0.180.0 0.190.0: Utility methods and base clas
 dev-perl/PPIx-Regexp 0.31.0 0.33.0: Represent a regular expression of some sort
 dev-perl/PPIx-Utilities 1.1.0-r1: Extensions to PPI
 dev-perl/Package-DeprecationManager 0.130.0-r1 0.150.0: Manage deprecation warnings for your distribution
-dev-perl/Package-Stash 0.340.0 0.360.0: Routines for manipulating stashes
+dev-perl/Package-Stash 0.360.0-r1: Routines for manipulating stashes
 dev-perl/Package-Stash-XS 0.260.0 0.280.0: Faster and more correct implementation of the Package::Stash API
 dev-perl/Package-Variant 1.1.2-r1: Parameterizable packages
 dev-perl/PadWalker 1.960.0-r1 2.100.0: play with other peoples' lexical variables
