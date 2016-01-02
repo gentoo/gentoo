@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=media-libs/libsdl[opengl?,sound?,video] virtual/jpeg:0 media-libs/libpng:0 media-libs/sdl-image[jpeg,png] >=media-libs/sdl-gfx-2.0.21 sound? ( media-libs/sdl-mixer[vorbis] media-libs/libogg media-libs/libvorbis ) x11-libs/libX11 opengl? ( virtual/opengl ) nls? ( virtual/libintl ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) nls? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DESCRIPTION=A modification of the classical Freedroid engine into an RPG
+EAPI=5
+HOMEPAGE=http://freedroid.sourceforge.net/
+IUSE=nls opengl sound
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2+
+RDEPEND=media-libs/libsdl[opengl?,sound?,video] virtual/jpeg:0 media-libs/libpng:0 media-libs/sdl-image[jpeg,png] >=media-libs/sdl-gfx-2.0.21 sound? ( media-libs/sdl-mixer[vorbis] media-libs/libogg media-libs/libvorbis ) x11-libs/libX11 opengl? ( virtual/opengl ) nls? ( virtual/libintl ) games-misc/games-envd
+SLOT=0
+SRC_URI=ftp://ftp.osuosl.org/pub/freedroid/freedroidRPG-0.16//freedroidRPG-0.16.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:- src_unpack:base src_prepare:- src_configure:- src_compile:games src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	d9bd2ddd85a58e470b49ca997e255a4c	games	4dae170e58f773c484e07d18ef441804	gnome2-utils	2a93a5fe31c2295077e190059f4cf88d	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	30887c5e8630bbf27b5cf0fd74564323	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=28e6e1496d2ce215fd62fa16f3dc1d94
