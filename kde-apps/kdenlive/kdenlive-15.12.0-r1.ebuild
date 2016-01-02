@@ -56,7 +56,10 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 "
 
-PATCHES=( "${FILESDIR}/${PN}-15.12.0-kcrash.patch" )
+src_prepare() {
+	epatch "${FILESDIR}/${PN}-15.12.0-kcrash.patch"
+	kde5_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
