@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,13 +7,13 @@ EAPI=5
 inherit eutils java-pkg-2 multilib
 
 MY_P=${P/gnu-/}
-DESCRIPTION="Free core class libraries for use with virtual machines and compilers for the Java language"
+DESCRIPTION="Free core class libraries for use with Java VMs and compilers"
 SRC_URI="mirror://gnu/classpath/${MY_P}.tar.gz"
 HOMEPAGE="https://www.gnu.org/software/classpath"
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0.98"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos"
 
 IUSE="alsa debug doc dssi examples gconf +gjdoc gmp gtk gstreamer qt4 xml"
 REQUIRED_USE="doc? ( gjdoc )"
