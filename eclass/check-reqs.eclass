@@ -38,6 +38,8 @@
 # These checks should probably mostly work on non-Linux, and they should
 # probably degrade gracefully if they don't. Probably.
 
+if [[ ! ${_CHECK_REQS_ECLASS_} ]]; then
+
 inherit eutils
 
 # @ECLASS-VARIABLE: CHECKREQS_MEMORY
@@ -63,21 +65,23 @@ inherit eutils
 EXPORT_FUNCTIONS pkg_setup
 case "${EAPI:-0}" in
 	0|1|2|3) ;;
-	4|5) EXPORT_FUNCTIONS pkg_pretend ;;
+	4|5|6) EXPORT_FUNCTIONS pkg_pretend ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
 # @FUNCTION: check_reqs
 # @DESCRIPTION:
-# Obsolete function executing all the checks and priting out results
+# Obsolete function executing all the checks and printing out results
 check_reqs() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	[[ ${EAPI:-0} == [012345] ]] || die "${FUNCNAME} is banned in EAPI > 5"
+
 	echo
-	ewarn "QA: Package calling old ${FUNCNAME} function."
-	ewarn "QA: Please file a bug against the package."
-	ewarn "QA: It should call check-reqs_pkg_pretend and check-reqs_pkg_setup"
-	ewarn "QA: and possibly use EAPI=4 or later."
+	eqawarn "Package calling old ${FUNCNAME} function."
+	eqawarn "Please file a bug against the package."
+	eqawarn "It should call check-reqs_pkg_pretend and check-reqs_pkg_setup"
+	eqawarn "and possibly use EAPI=4 or later."
 	echo
 
 	check-reqs_pkg_setup "$@"
@@ -106,6 +110,7 @@ check-reqs_pkg_pretend() {
 }
 
 # @FUNCTION: check-reqs_prepare
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function that checks the variables that should be defined.
 check-reqs_prepare() {
@@ -122,6 +127,7 @@ check-reqs_prepare() {
 }
 
 # @FUNCTION: check-reqs_run
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function that runs the check based on variable settings.
 check-reqs_run() {
@@ -129,6 +135,8 @@ check-reqs_run() {
 
 	# some people are *censored*
 	unset CHECKREQS_FAILED
+
+	[[ ${EAPI:-0} == [0123] ]] && local MERGE_TYPE=""
 
 	# use != in test, because MERGE_TYPE only exists in EAPI 4 and later
 	if [[ ${MERGE_TYPE} != binary ]]; then
@@ -155,11 +163,12 @@ check-reqs_run() {
 	fi
 }
 
-# @FUNCTION: check-reqs_get_mebibytes
+# @FUNCTION: check-reqs_get_kibibytes
+# @INTERNAL
 # @DESCRIPTION:
-# Internal function that returns number in mebibytes.
-# Returns 1024 for 1G or 1048576 for 1T.
-check-reqs_get_mebibytes() {
+# Internal function that returns number in KiB.
+# Returns 1024**2 for 1G or 1024**3 for 1T.
+check-reqs_get_kibibytes() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -z ${1} ]] && die "Usage: ${FUNCNAME} [size]"
@@ -168,9 +177,10 @@ check-reqs_get_mebibytes() {
 	local size=${1%[GMT]}
 
 	case ${unit} in
-		G) echo $((1024 * size)) ;;
-		[M0-9]) echo ${size} ;;
-		T) echo $((1024 * 1024 * size)) ;;
+		G) echo $((1024 * 1024 * size)) ;;
+		M) echo $((1024 * size)) ;;
+		T) echo $((1024 * 1024 * 1024 * size)) ;;
+		[0-9]) echo $((1024 * size)) ;;
 		*)
 			die "${FUNCNAME}: Unknown unit: ${unit}"
 		;;
@@ -178,6 +188,7 @@ check-reqs_get_mebibytes() {
 }
 
 # @FUNCTION: check-reqs_get_number
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function that returns the numerical value without the unit.
 # Returns "1" for "1G" or "150" for "150T".
@@ -188,19 +199,21 @@ check-reqs_get_number() {
 
 	local unit=${1:(-1)}
 	local size=${1%[GMT]}
+	local msg=eerror
+	[[ ${EAPI:-0} == [012345] ]] && msg=eqawarn
 
 	# Check for unset units and warn about them.
 	# Backcompat.
 	if [[ ${size} == ${1} ]]; then
-		ewarn "QA: Package does not specify unit for the size check"
-		ewarn "QA: Assuming mebibytes."
-		ewarn "QA: File bug against the package. It should specify the unit."
+		${msg} "Package does not specify unit for the size check"
+		${msg} "File bug against the package. It should specify the unit."
 	fi
 
 	echo ${size}
 }
 
 # @FUNCTION: check-reqs_get_unit
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function that return the unit without the numerical value.
 # Returns "GiB" for "1G" or "TiB" for "150T".
@@ -222,6 +235,7 @@ check-reqs_get_unit() {
 }
 
 # @FUNCTION: check-reqs_output
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function that prints the warning and dies if required based on
 # the test results.
@@ -244,6 +258,7 @@ check-reqs_output() {
 }
 
 # @FUNCTION: check-reqs_memory
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function that checks size of RAM.
 check-reqs_memory() {
@@ -266,7 +281,7 @@ check-reqs_memory() {
 			actual_memory=$(echo $actual_memory | sed -e 's/^[^:=]*[:=]//' )
 	fi
 	if [[ -n ${actual_memory} ]] ; then
-		if [[ ${actual_memory} -lt $((1024 * $(check-reqs_get_mebibytes ${size}))) ]] ; then
+		if [[ ${actual_memory} -lt $(check-reqs_get_kibibytes ${size}) ]] ; then
 			eend 1
 			check-reqs_unsatisfied \
 				${size} \
@@ -281,6 +296,7 @@ check-reqs_memory() {
 }
 
 # @FUNCTION: check-reqs_disk
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function that checks space on the harddrive.
 check-reqs_disk() {
@@ -290,16 +306,16 @@ check-reqs_disk() {
 
 	local path=${1}
 	local size=${2}
-	local space_megs
+	local space_kbi
 
 	check-reqs_start_phase \
 		${size} \
 		"disk space at \"${path}\""
 
-	space_megs=$(df -Pm "${1}" 2>/dev/null | awk 'FNR == 2 {print $4}')
+	space_kbi=$(df -Pk "${1}" 2>/dev/null | awk 'FNR == 2 {print $4}')
 
-	if [[ $? == 0 && -n ${space_megs} ]] ; then
-		if [[ ${space_megs} -lt $(check-reqs_get_mebibytes ${size}) ]] ; then
+	if [[ $? == 0 && -n ${space_kbi} ]] ; then
+		if [[ ${space_kbi} -lt $(check-reqs_get_kibibytes ${size}) ]] ; then
 			eend 1
 			check-reqs_unsatisfied \
 				${size} \
@@ -314,6 +330,7 @@ check-reqs_disk() {
 }
 
 # @FUNCTION: check-reqs_start_phase
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function that inform about started check
 check-reqs_start_phase() {
@@ -329,6 +346,7 @@ check-reqs_start_phase() {
 }
 
 # @FUNCTION: check-reqs_unsatisfied
+# @INTERNAL
 # @DESCRIPTION:
 # Internal function that inform about check result.
 # It has different output between pretend and setup phase,
@@ -353,3 +371,6 @@ check-reqs_unsatisfied() {
 	# Internal, do not set yourself.
 	CHECKREQS_FAILED="true"
 }
+
+_CHECK_REQS_ECLASS_=1
+fi
