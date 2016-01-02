@@ -9,6 +9,7 @@ DESCRIPTION="Adobe Flash Player"
 HOMEPAGE="
 	http://www.adobe.com/products/flashplayer.html
 	http://get.adobe.com/flashplayer/
+	https://helpx.adobe.com/security/products/flash-player.html#version11
 "
 
 AF_URI="http://fpdownload.macromedia.com/get/flashplayer/pdc"
