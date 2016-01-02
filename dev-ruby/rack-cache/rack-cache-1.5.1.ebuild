@@ -25,7 +25,10 @@ IUSE=""
 
 ruby_add_rdepend "dev-ruby/rack:*"
 
-ruby_add_bdepend "test? ( dev-ruby/maxitest >=dev-ruby/mocha-0.13.0 )"
+ruby_add_bdepend "test? (
+	dev-ruby/maxitest
+	>=dev-ruby/minitest-5.7.0:5
+	>=dev-ruby/mocha-0.13.0 )"
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/ s:^:#:' \
