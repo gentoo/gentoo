@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,10 +19,10 @@ IUSE="dap doc gsl ncap2 openmp static-libs test udunits"
 RDEPEND="
 	>=sci-libs/netcdf-4:=[dap=,tools]
 	gsl? ( sci-libs/gsl:= )
+	ncap2? ( dev-cpp/antlr-cpp:2= )
 	udunits? ( >=sci-libs/udunits-2 )"
 
 DEPEND="${RDEPEND}
-	ncap2? ( dev-cpp/antlr-cpp:2= )
 	test? ( >=sci-libs/netcdf-4[tools] )"
 
 src_configure() {
