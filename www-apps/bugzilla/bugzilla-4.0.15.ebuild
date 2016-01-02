@@ -1,13 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
 inherit webapp depend.apache versionator eutils
-
-#MY_PB=$(get_version_component_range 1-2)
-MY_PB="4.0"
 
 DESCRIPTION="Bugzilla is the Bug-Tracking System from the Mozilla project"
 SRC_URI="http://ftp.mozilla.org/pub/mozilla.org/webtools/${P}.tar.gz"
@@ -118,15 +115,15 @@ src_install () {
 
 	insinto "${MY_HTDOCSDIR}"
 	doins -r . || die
-	doins "${FILESDIR}"/${MY_PB}/bugzilla.cron.{daily,tab} || die
+	doins "${FILESDIR}"/bugzilla.cron.{daily,tab} || die
 
-	webapp_hook_script "${FILESDIR}"/${MY_PB}/reconfig
-	webapp_postinst_txt en "${FILESDIR}"/${MY_PB}/postinstall-en.txt
+	webapp_hook_script "${FILESDIR}"/reconfig
+	webapp_postinst_txt en "${FILESDIR}"/postinstall-en.txt
 	webapp_src_install
 
 	if use extras; then
-		newconfd "${FILESDIR}"/${MY_PB}/bugzilla-queue.confd bugzilla-queue || die
-		newinitd "${FILESDIR}"/${MY_PB}/bugzilla-queue.initd bugzilla-queue || die
+		newconfd "${FILESDIR}"/bugzilla-queue.confd bugzilla-queue || die
+		newinitd "${FILESDIR}"/bugzilla-queue.initd bugzilla-queue || die
 	fi
 
 	# bug #124282
