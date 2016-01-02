@@ -4517,7 +4517,7 @@ dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois
 dev-libs/gf2x 1.0-r1 1.1: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.2.2 0.2.3 0.2.4 9999: A library that implements a user interface that focuses on simplicity and minimalism
 dev-libs/gjs 1.44.0: Javascript bindings for GNOME
-dev-libs/glib 1.2.10-r6 2.42.2 2.44.1 2.44.1-r1 2.46.2: The GLib library of C routines
+dev-libs/glib 1.2.10-r6 2.42.2 2.44.1 2.44.1-r1 2.46.2 2.46.2-r1: The GLib library of C routines
 dev-libs/gmime 2.6.20 2.6.20-r1: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 4.3.2-r1 5.1.3-r1 6.0.0a 6.1.0: Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers
 dev-libs/gnulib 2009.03.03.14.07.45-r1 2013.10.28.22.33.52 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
@@ -10681,7 +10681,7 @@ games-util/xgamer 0.6.2: A launcher for starting games in a second X session
 games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
 gnome-base/dconf 0.24.0: Simple low-level configuration system
 gnome-base/dconf-editor 3.16.1 3.18.2: Graphical tool for editing the dconf configuration database
-gnome-base/gconf 3.2.6-r3: GNOME configuration system and daemon
+gnome-base/gconf 3.2.6-r3 3.2.6-r4: GNOME configuration system and daemon
 gnome-base/gdm 3.16.4 3.18.2: GNOME Display Manager for managing graphical display servers and user logins
 gnome-base/gnome 3.14.0 3.16.0 3.18.0: Meta package for GNOME 3, merge this package to install
 gnome-base/gnome-common 3.14.0-r1 3.18.0: Common files for development of Gnome packages
