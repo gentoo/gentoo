@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (01 Jan 2016)
+# Project dead: upstream deprecated it a while ago.
+# Masked for removal in 30 days. See bug #429444.
+dev-python/pyltxml
+
 # Michael Palimaka <kensington@gentoo.org> (31 Dec 2015)
 # Merged into >=kde-apps/kaddressbook-4.14
 # Masked for removal in 30 days
