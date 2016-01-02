@@ -30,6 +30,64 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (01 Jan 2016)
+# Nothing requires this obsolete versions, bug #249418
+# Removal in a month.
+=dev-db/sqlite-2*
+
+# Pacho Ramos <pacho@gentoo.org> (01 Jan 2016)
+# Fails to build in multiple ways, bug #250055
+# Removal in a month.
+dev-ada/adasockets
+
+# Pacho Ramos <pacho@gentoo.org> (01 Jan 2016)
+# Security issues, without maintainer, upstream dead, bug #261194
+# Removal in a month.
+net-dns/noip-updater
+
+# Pacho Ramos <pacho@gentoo.org> (01 Jan 2016)
+# Tests fail, the version was superseeded by Dino package
+# long time ago but it lack maintainer to do the work.
+# Removal in a month. bug #297952
+dev-util/cocom
+
+# Pacho Ramos <pacho@gentoo.org> (01 Jan 2016)
+# Fails to build, bug #298686
+# Removal in a month
+dev-ada/booch_components
+
+# Pacho Ramos <pacho@gentoo.org> (01 Jan 2016)
+# Fails to build, bug #298700
+# Removal in a month.
+dev-java/istack-commons-tools
+dev-java/jax-ws-tools
+dev-java/jaxb-tools
+
+# Pacho Ramos <pacho@gentoo.org> (01 Jan 2016)
+# Unresolved security issues, bug #324017
+# Removal in a month.
+sys-libs/nss-db
+
+# Pacho Ramos <pacho@gentoo.org> (01 Jan 2016)
+# Doesn't work, bug #330329
+# Removal in a month.
+net-dialup/capisuite
+
+# Pacho Ramos <pacho@gentoo.org> (01 Jan 2016)
+# Does not respect LDFLAGS, nothing requires it, bug #334627
+# Removal in a month.
+app-admin/showconsole
+
+# Pacho Ramos <pacho@gentoo.org> (01 Jan 2016)
+# Fails to build, bug #348418
+# Removal in a month.
+dev-ada/gtkada
+
+# Pacho Ramos <pacho@gentoo.org> (01 Jan 2016)
+# Upstream died long time ago, replaced by eiskaltdcpp
+# bug #364057 . Removal in a month.
+net-p2p/linuxdcpp
+
 # Patrice Clement <monsieurp@gentoo.org> (01 Jan 2016)
 # Project dead: upstream deprecated it a while ago.
 # Masked for removal in 30 days. See bug #429444.
