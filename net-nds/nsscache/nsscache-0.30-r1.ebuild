@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -40,7 +40,7 @@ src_install() {
 	doman nsscache.1 nsscache.conf.5
 	dodoc THANKS nsscache.cron CONTRIBUTING.md README.md
 	exeinto /usr/libexec/nsscache
-	doexe $FILESDIR/authorized-keys-command.py
+	doexe "${FILESDIR}"/authorized-keys-command.py
 
 	keepdir /var/lib/nsscache
 }
