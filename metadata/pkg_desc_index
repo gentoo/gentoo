@@ -6676,7 +6676,7 @@ dev-php/pecl-zendopcache 7.0.3: The Zend Optimizer+ provides faster PHP executio
 dev-php/phing 2.8.2 2.10.1: PHP project build system based on Apache Ant
 dev-php/php-codebrowser 1.0.2: Generates a highlighted code browsing parsed from xml reports generated from codesniffer or phpunit
 dev-php/php-openid 2.2.3_pre20140423: PHP OpenID implementation
-dev-php/php-redmine-api 1.5.2: A simple, object-oriented, PHP Redmine API client
+dev-php/php-redmine-api 1.5.2 1.5.6: A simple, object-oriented, PHP Redmine API client
 dev-php/phpDocumentor 2.3.0 2.7.0 2.8.2: The phpDocumentor package provides automatic documenting of php api directly from the source
 dev-php/phpcov 1.1.0: CLI frontend for PHP_CodeCoverage
 dev-php/phpdepend 1.1.1 2.2.2: Static code analyser for PHP
@@ -12334,7 +12334,7 @@ media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library f
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 7.10.3 10.2.8 10.3.7-r1 10.3.7-r2 10.6.9 11.0.6 11.0.7 11.1.0 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.4-r1 0.4.5: An Open Source library for Flash movie generation
-media-libs/mlt 0.9.0 0.9.8 0.9.8-r1: Open source multimedia framework for television broadcasting
+media-libs/mlt 0.9.0 0.9.8 0.9.8-r2: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 2.1.5 3.0.2 3.0.3 4.0.3 5.0.1: The MusicBrainz Client Library (for accessing the latest XML based web service)
 media-libs/mutagen 1.22 1.27 1.29 1.30 1.31: Audio metadata tag reader and writer implemented in pure Python
 media-libs/nas 1.9.4 1.9.4-r1: Network Audio System
