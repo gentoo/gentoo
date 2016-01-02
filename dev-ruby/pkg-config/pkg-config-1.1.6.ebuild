@@ -15,7 +15,7 @@ DESCRIPTION="A pkg-config implementation by Ruby"
 HOMEPAGE="https://github.com/rcairo/pkg-config"
 LICENSE="|| ( LGPL-2 LGPL-2.1 LGPL-3 )"
 
-KEYWORDS="amd64 ppc ~ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 SLOT="0"
 IUSE="test"
 
