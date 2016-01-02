@@ -14634,7 +14634,7 @@ net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet 
 net-misc/strongswan 5.3.4 5.3.4-r1: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
 net-misc/stunnel 5.24 5.27 5.28: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.6 1.2.6-r1 1.2.7: STUNTMAN is an open source implementation of the STUN protocol
-net-misc/suite3270 3.3.14_p11 3.3.15_p4 3.3.15_p7 3.3.15_p9 3.4_p4 3.4_p5 3.4_p6 3.4_p7 3.4_p8 3.4_p9: Complete 3270 access package
+net-misc/suite3270 3.3.15_p9 3.4_p9 3.4_p10: Complete 3270 access package
 net-misc/switzerland 0.1.0: Network Testing Tool
 net-misc/sx 1.2: Skylable SX - a distributed object-storage software for data clusters
 net-misc/taptap 1.0: A program to link two /dev/net/tun to form virtual ethernet
@@ -17410,7 +17410,7 @@ www-apps/blazeblogger 1.2.0 1.2.0-r1: simple-to-use, capable content management 
 www-apps/blohg 0.13 9999: A Mercurial (or Git) based blogging engine
 www-apps/blohg-tumblelog 0.2 9999: A blohg extension with reStructuredText directives to run a tumblelog
 www-apps/browser-config 1.1: A lightweight modular configurable http url handler/browser launcher
-www-apps/bugzilla 4.0.15 4.2.11 4.4.6: Bugzilla is the Bug-Tracking System from the Mozilla project
+www-apps/bugzilla 4.2.11 4.4.6 4.4.11 5.0.2: Bugzilla is the Bug-Tracking System from the Mozilla project
 www-apps/cgisysinfo 0.4.1: A small cgi utility to show basic system information
 www-apps/cgit 0.10.1 0.10.2 0.11.1-r1 0.11.2 9999: a fast web-interface for git repositories
 www-apps/collectd-web 0.4.0: Collectd-web is a web-based front-end for RRD data collected by collectd
