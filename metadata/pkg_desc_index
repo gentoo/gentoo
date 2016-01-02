@@ -2389,7 +2389,7 @@ app-text/searchmonkey 0.8.1 2.0.0: Powerful text searches using regular expressi
 app-text/sgml-common 0.6.3-r5: Base ISO character entities and utilities for SGML
 app-text/sgmltools-lite 3.0.3-r14: Python interface to SGML software in a DocBook/OpenJade env
 app-text/sgrep 1.94a: Use structural criteria to grep and index text, SGML, XML and HTML and filter text streams
-app-text/sigil 0.8.7-r1 0.9.0 0.9.1: Sigil is a multi-platform WYSIWYG ebook editor for ePub format
+app-text/sigil 0.8.7-r1 0.9.2: Sigil is a multi-platform WYSIWYG ebook editor for ePub format
 app-text/silvercity 0.9.7 0.9.7-r1: A lexical analyser for many languages
 app-text/skribe 1.2l: Skribe is a text processor for technical documents written in scheme
 app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a large number of languages
@@ -14636,7 +14636,7 @@ net-misc/stunnel 5.24 5.27 5.28: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.6 1.2.6-r1 1.2.7: STUNTMAN is an open source implementation of the STUN protocol
 net-misc/suite3270 3.3.15_p9 3.4_p9 3.4_p10: Complete 3270 access package
 net-misc/switzerland 0.1.0: Network Testing Tool
-net-misc/sx 1.2: Skylable SX - a distributed object-storage software for data clusters
+net-misc/sx 1.2 2.0: Skylable SX - a distributed object-storage software for data clusters
 net-misc/taptap 1.0: A program to link two /dev/net/tun to form virtual ethernet
 net-misc/taylor-uucp 1.07-r2: Taylor UUCP
 net-misc/tcpsound 0.3.1-r1: Play sounds in response to network traffic
