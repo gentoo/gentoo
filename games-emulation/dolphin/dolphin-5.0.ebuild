@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -31,7 +31,7 @@ RDEPEND=">=media-libs/glew-1.10
 	ao? ( media-libs/libao )
 	bluetooth? ( net-wireless/bluez )
 	ffmpeg? ( virtual/ffmpeg
-			!!>=media-video/libav-10 )
+			  !!media-video/libav )
 	lzo? ( dev-libs/lzo )
 	openal? ( media-libs/openal )
 	opengl? ( virtual/opengl )

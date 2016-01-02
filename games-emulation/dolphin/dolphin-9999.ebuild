@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -48,7 +48,7 @@ RDEPEND=">=media-libs/libsfml-2.1
 	)
 	ffmpeg? (
 			virtual/ffmpeg
-			!!>=media-video/libav-10
+			!!media-video/libav
 	)
 	llvm? ( sys-devel/llvm )
 	openal? (
