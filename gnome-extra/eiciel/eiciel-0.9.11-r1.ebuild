@@ -6,7 +6,7 @@ EAPI=5
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes"
 
-inherit gnome2
+inherit flag-o-matic gnome2
 
 DESCRIPTION="ACL editor for GNOME, with Nautilus extension"
 HOMEPAGE="http://rofi.roger-ferrer.org/eiciel/"
@@ -14,7 +14,7 @@ SRC_URI="http://rofi.roger-ferrer.org/eiciel/download/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="xattr"
 
 RDEPEND="
@@ -28,6 +28,7 @@ DEPEND="${RDEPEND}
 "
 
 src_configure() {
+	append-cxxflags -std=c++11
 	gnome2_src_configure \
 		--disable-static \
 		--with-gnome-version=3 \
