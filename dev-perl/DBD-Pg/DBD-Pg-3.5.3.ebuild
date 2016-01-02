@@ -1,27 +1,30 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=TURNSTEP
-MODULE_VERSION=3.3.0
+DIST_AUTHOR=TURNSTEP
 inherit perl-module
 
-DESCRIPTION="The Perl DBD::Pg Module"
+DESCRIPTION="PostgreSQL database driver for the DBI module"
 
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE=""
 
-RDEPEND="virtual/perl-version
-	>=dev-perl/DBI-1.52
-	dev-db/postgresql"
-DEPEND="${RDEPEND}"
+RDEPEND="
+	virtual/perl-version
+	>=dev-perl/DBI-1.614.0
+	dev-db/postgresql:*
+"
+DEPEND="${RDEPEND}
+	virtual/perl-ExtUtils-MakeMaker
+"
 
 # testcases require a local database with an
 # open password for the postgres user.
-SRC_TEST="skip"
+DIST_TEST="skip"
 
 src_prepare() {
 	postgres_include="$(readlink -f "${EPREFIX}"/usr/include/postgresql)"
