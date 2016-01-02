@@ -13,7 +13,7 @@ SRC_URI="http://kde-apps.org/CONTENT/content-files/29024-${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="4"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug"
 
 RDEPEND="
