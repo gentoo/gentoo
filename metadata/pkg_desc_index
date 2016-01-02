@@ -8023,7 +8023,7 @@ dev-python/vertex 0.3.0-r1 0.3.1 0.3.1-r1: An implementation of the Q2Q protocol
 dev-python/virtualenv 13.1.2: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.2.4-r2 0.2.5 0.2.6: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.3.1 4.3.2 4.5.1 4.6.0: virtualenvwrapper is a set of extensions to Ian Bicking's virtualenv tool
-dev-python/visual 5.74: Real-time 3D graphics library for Python
+dev-python/visual 5.74 5.74-r1: Real-time 3D graphics library for Python
 dev-python/vobject 0.8.1c-r1: A full featured Python package for parsing and generating vCard and vCalendar files
 dev-python/vulture 0.8.1: find unused classes, functions and variables in your code
 dev-python/w3lib 1.11.0: Python library of web-related functions
@@ -15233,7 +15233,7 @@ sci-biology/pysam 0.6-r1: Python interface for the SAM/BAM sequence alignment an
 sci-biology/qrna 2.0.3c-r1: Prototype ncRNA genefinder
 sci-biology/raxml 7.2.6: Sequential, Parallel & Distributed Inference of Large Phylogenetic Trees
 sci-biology/readseq 20080420-r1 20100513: Reads and writes nucleic/protein sequences in various formats
-sci-biology/rebase 1508 1509 1510 1511: A restriction enzyme database
+sci-biology/rebase 1509 1510 1511 1601: A restriction enzyme database
 sci-biology/recon 1.06-r1 1.06-r2: Automated de novo identification of repeat families from genomic sequences
 sci-biology/repeatmasker 4.0.1: Screen DNA sequences for interspersed repeats and low complexity DNA
 sci-biology/repeatmasker-libraries 20120418: A special version of RepBase used by RepeatMasker
