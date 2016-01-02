@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/python-ldap[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pycurl[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] nssdb? ( dev-python/bsddb3[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=commandline tool to sync directory services to local cache
+EAPI=5
+HOMEPAGE=https://github.com/google/nsscache
+IUSE=nssdb nsscache python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/python-ldap[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pycurl[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] nssdb? ( dev-python/bsddb3[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) nssdb? ( sys-libs/nss-db ) nsscache? ( >=sys-auth/libnss-cache-0.10 ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 ) || ( python_targets_python2_7 )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/google/nsscache/archive/version/0.30.tar.gz -> nsscache-0.30.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:-
+_eclasses_=distutils-r1	4e8ac1ba76ddacd8f7c0289aa586a34c	eutils	d9bd2ddd85a58e470b49ca997e255a4c	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	30887c5e8630bbf27b5cf0fd74564323	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=35b80ea78269f46c00a039dd1b9d59ea
