@@ -7795,7 +7795,7 @@ dev-python/rednose 0.4.1 0.4.3: coloured output for nosetests
 dev-python/regendoc 0.5 0.6.1: Check/update simple file/shell examples in documentation
 dev-python/regex 2015.07.12 2015.07.19: Alternative regular expression module to replace re
 dev-python/remoteobjects 99999999: subclassable Python objects for working with JSON REST APIs
-dev-python/rencode 1.0.3: similar to bencode from the BitTorrent project
+dev-python/rencode 1.0.3 1.0.3-r1: similar to bencode from the BitTorrent project
 dev-python/reno 1.2.0: A release notes manager for storing release notes in a git repository and building documentation
 dev-python/reportlab 2.6 3.1.44-r2 3.2.0-r1: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.6-r1: A tiny LRU cache implementation and decorator
