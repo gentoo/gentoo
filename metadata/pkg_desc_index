@@ -337,7 +337,7 @@ app-arch/zpaq-extras 2 3: A set of additional compression profiles for app-arch/
 app-arch/zpipe 2.01-r1: Pipe compressor/decompressor for ZPAQ
 app-backup/amanda 3.3.3 3.3.3-r1 3.3.5 3.3.7: The Advanced Maryland Automatic Network Disk Archiver
 app-backup/attic 0.16 9999: Attic is a deduplicating backup program written in Python.
-app-backup/backintime 1.0.24-r2 1.0.36-r2 1.0.40 1.1.4 1.1.8: Backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4
+app-backup/backintime 1.1.4 1.1.8: Backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4
 app-backup/backup-manager 0.7.5 0.7.10.1-r2: Backup Manager is a command line backup tool for GNU/Linux
 app-backup/backupninja 1.0.1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.0-r1: A high-performance system for backing up computers to a server's disk
@@ -3932,7 +3932,7 @@ dev-java/javacup 0.11a_beta20060608 0.11b_p20151001: CUP Parser Generator for Ja
 dev-java/javahelp 2.0.05_p63: The JavaHelp system online help system
 dev-java/javassist 2.6-r2 3.18.2: Javassist makes Java bytecode manipulation simple
 dev-java/javatoolkit 0.3.0-r9: Collection of Gentoo-specific tools for Java
-dev-java/javax-inject 1-r1 1-r2: Dependency injection for Java (JSR-330)
+dev-java/javax-inject 1-r2: Dependency injection for Java (JSR-330)
 dev-java/javolution 4.0.2-r1 6.0.0: Java Solution for Real-Time and Embedded Systems
 dev-java/jax-ws 2.0.1-r1: Reference implementation of the Java API for XML Web Services
 dev-java/jax-ws-api 2.0: JAXWS 2.0 API Final Release
@@ -10859,7 +10859,7 @@ java-virtuals/interceptor-api 0: Virtual for Interceptor API (javax.interceptor)
 java-virtuals/jaf 1.1-r1: Virtual for JavaBeans Activation Framework (JAF)
 java-virtuals/javamail 1.0-r4: Virtual for javamail implementations
 java-virtuals/jaxp-virtual 1.4-r1: Virtual for Java API for XML Processing (JAXP)
-java-virtuals/jdk-with-com-sun 20111111-r2 20111111-r3: Virtual ebuilds that require internal com.sun classes from a JDK
+java-virtuals/jdk-with-com-sun 20111111-r3: Virtual ebuilds that require internal com.sun classes from a JDK
 java-virtuals/jms 1.1: Virtual for Java Message Service (JMS) API
 java-virtuals/jmx 1.0-r4: Virtual for Java Management Extensions (JMX)
 java-virtuals/saaj-api 1.3-r3: Virtual for SAAJ 1.3 (AKA JSR-67 MR3) API
@@ -12130,7 +12130,7 @@ media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplaye
 media-libs/gnonlin 0.10.17 1.4.0: Gnonlin is a set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/grilo 0.2.12 0.2.14 0.2.15: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.1 1.0.2: Thin GObject wrapper around the libcanberra sound event library
-media-libs/gst-plugins-bad 0.10.23-r2 1.4.5 1.6.1-r1 1.6.2: Less plugins for GStreamer
+media-libs/gst-plugins-bad 0.10.23-r2 1.4.5 1.6.1-r1 1.6.2 1.6.2-r1: Less plugins for GStreamer
 media-libs/gst-plugins-base 0.10.36-r2 1.4.5 1.6.1 1.6.2: Basepack of plugins for gstreamer
 media-libs/gst-plugins-good 0.10.31-r1 1.4.5 1.6.1 1.6.2: Basepack of plugins for GStreamer
 media-libs/gst-plugins-ugly 0.10.19-r1 1.4.5 1.6.1 1.6.2: Basepack of plugins for gstreamer
@@ -12487,6 +12487,7 @@ media-plugins/gst-plugins-alsa 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-amr 0.10.19-r1 1.4.5 1.6.1 1.6.2: GStreamer plugin for AMRNB/AMRWB codec
 media-plugins/gst-plugins-annodex 0.10.31-r1: GStreamer plugin for annodex stream manipulation
 media-plugins/gst-plugins-assrender 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0 1.6.1 1.6.2: GStreamer plugin for ASS/SSA rendering with effects support
+media-plugins/gst-plugins-bluez 1.6.2: Bluetooth plugin for GStreamer.
 media-plugins/gst-plugins-cdio 0.10.19-r1 1.4.5 1.6.1 1.6.2: plugin for gstreamer
 media-plugins/gst-plugins-cdparanoia 0.10.36-r1 1.4.5 1.6.1 1.6.2: plugin for gstreamer
 media-plugins/gst-plugins-dash 1.4.5 1.6.1 1.6.2: MPEG-DASH plugin
@@ -12532,7 +12533,7 @@ media-plugins/gst-plugins-openh264 1.6.1 1.6.2: H.264 encoder/decoder plugin for
 media-plugins/gst-plugins-opus 0.10.23-r1 1.4.5 1.6.1 1.6.2: GStreamer plugin for Opus audio codec support
 media-plugins/gst-plugins-oss 0.10.31-r1 1.4.5 1.6.1 1.6.2: GStreamer plugin for OSS (Open Sound System) support
 media-plugins/gst-plugins-pango 0.10.36-r1: plugin for gstreamer
-media-plugins/gst-plugins-pulse 0.10.31-r1 1.4.5 1.6.1 1.6.2: GStreamer plugin for the PulseAudio sound server
+media-plugins/gst-plugins-pulse 0.10.31-r1 0.10.31-r2 1.4.5 1.6.1 1.6.2 1.6.2-r1: GStreamer plugin for the PulseAudio sound server
 media-plugins/gst-plugins-raw1394 0.10.31-r1 1.4.5 1.6.1 1.6.2: GStreamer plugin to capture firewire video
 media-plugins/gst-plugins-resindvd 0.10.23-r1 1.4.5 1.6.1 1.6.2: plugin for gstreamer
 media-plugins/gst-plugins-rtmp 0.10.23-r1 1.4.5 1.6.1 1.6.2: GStreamer plugin for supporting RTMP sources
@@ -12546,6 +12547,7 @@ media-plugins/gst-plugins-speex 0.10.31-r1 1.4.5 1.6.1 1.6.2: GStreamer plugin t
 media-plugins/gst-plugins-taglib 0.10.31-r1 1.4.5 1.6.1 1.6.2: GStreamer taglib based tag handler
 media-plugins/gst-plugins-theora 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-twolame 0.10.19-r1 1.4.5 1.6.1 1.6.2: plugin for gstreamer
+media-plugins/gst-plugins-uvch264 1.6.2: UVC compliant H264 encoding cameras plugin for GStreamer.
 media-plugins/gst-plugins-v4l2 0.10.31-r1 1.4.5 1.6.1 1.6.2: plugin for gstreamer
 media-plugins/gst-plugins-vaapi 0.6.1 0.7.0: Hardware accelerated video decoding through VA-API plugin
 media-plugins/gst-plugins-voaacenc 1.4.5 1.6.1 1.6.2: GStreamer plugin for encoding AAC
@@ -12557,7 +12559,7 @@ media-plugins/gst-plugins-wavpack 0.10.31-r1 1.4.5 1.6.1 1.6.2: GStreamer encode
 media-plugins/gst-plugins-x 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-x264 0.10.19-r1 1.4.5 1.6.1 1.6.2: plugin for gstreamer
 media-plugins/gst-plugins-x265 1.6.1 1.6.2: H.265 encoder plugin for GStreamer.
-media-plugins/gst-plugins-ximagesrc 0.10.31-r1 1.4.5 1.6.1 1.6.2: GStreamer plugin for X11 video capture stream
+media-plugins/gst-plugins-ximagesrc 0.10.31-r1 0.10.31-r2 1.4.5 1.6.1 1.6.2 1.6.2-r1: GStreamer plugin for X11 video capture stream
 media-plugins/gst-plugins-xvid 0.10.23-r1: GStreamer plugin for XviD (MPEG-4) video encoding/decoding support
 media-plugins/gst-plugins-xvideo 0.10.36-r1: plugin for gstreamer
 media-plugins/hexter 1.0.2 1.0.3: Yamaha DX7 modeling DSSI plugin
@@ -14339,7 +14341,7 @@ net-misc/charm 1.9.1 1.9.2-r1: A text based livejournal client
 net-misc/chrome-remote-desktop 44.0.2403.44 45.0.2454.17-r2: access remote computers via Chrome!
 net-misc/chrony 2.1.1 2.2 2.2-r1 9999: NTP client and server programs
 net-misc/clamz 0.4 0.5: Command-line downloader for the Amazon.com MP3 music store
-net-misc/clipgrab 3.4.9-r1 3.4.11: Download from various internet video services like Youtube etc.
+net-misc/clipgrab 3.4.9-r1 3.4.11 3.5.6: Download from various internet video services like Youtube etc.
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
 net-misc/clockspeed-conf 0.4.5-r1: scripts to setup a clockspeed client and/or a taiclockd server
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
