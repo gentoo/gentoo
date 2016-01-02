@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Pacho Ramos <pacho@gentoo.org> (01 Jan 2016)
+# Nothing requires this obsolete versions, bug #249418
+# Removal in a month.
+=dev-db/sqlite-2*
+
+# Pacho Ramos <pacho@gentoo.org> (01 Jan 2016)
 # Fails to build in multiple ways, bug #250055
 # Removal in a month.
 dev-ada/adasockets
