@@ -100,7 +100,7 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-99999999-pkgconfig.patch \
 		"${FILESDIR}"/${PN}-1.99.8-qtchooser.patch \
 		"${FILESDIR}"/${PN}-2.0.0-androiddump-pcap.patch \
-		"${FILESDIR}"/${PN}-2.1.0-sse4_2.patch \
+		"${FILESDIR}"/${PN}-2.1.0-sse4_2.patch
 
 	epatch_user
 
