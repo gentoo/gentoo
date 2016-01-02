@@ -1,0 +1,41 @@
+From cc0f2d7485205d6f9b8c434cb0da292e12448216 Mon Sep 17 00:00:00 2001
+From: Thomas Glanzmann <thomas@glanzmann.de>
+Date: Wed, 2 Sep 2015 17:01:40 +0200
+Subject: [PATCH] Provider parameter when calling SshkeyUpdateGetter in order
+ to fix sshkey
+
+Without this change retrieving the map sshkey results in the following exception:
+
+(localhost) [~/work/nsscache] nsscache update
+Traceback (most recent call last):
+  File "/usr/bin/nsscache", line 33, in <module>
+    return_value = nsscache_app.Run(sys.argv[1:], os.environ)
+  File "/usr/lib/python2.6/site-packages/nss_cache/app.py", line 240, in Run
+    retval = command_callable().Run(conf=conf, args=args)
+  File "/usr/lib/python2.6/site-packages/nss_cache/command.py", line 230, in Run
+    force_lock=options.force_lock)
+  File "/usr/lib/python2.6/site-packages/nss_cache/command.py", line 303, in UpdateMaps
+    force_write=force_write)
+  File "/usr/lib/python2.6/site-packages/nss_cache/update/updater.py", line 265, in UpdateFromSource
+    force_write, location=None)
+  File "/usr/lib/python2.6/site-packages/nss_cache/update/map_updater.py", line 75, in UpdateCacheFromSource
+    location=location)
+  File "/usr/lib/python2.6/site-packages/nss_cache/sources/source.py", line 65, in GetMap
+    return self.GetSshkeyMap(since)
+  File "/usr/lib/python2.6/site-packages/nss_cache/sources/ldapsource.py", line 274, in GetSshkeyMap
+    return SshkeyUpdateGetter().GetUpdates(source=self,
+TypeError: __init__() takes exactly 2 arguments (1 given)
+
+diff --git a/nss_cache/sources/ldapsource.py b/nss_cache/sources/ldapsource.py
+index 2af170e..5ffea81 100644
+--- a/nss_cache/sources/ldapsource.py
++++ b/nss_cache/sources/ldapsource.py
+@@ -271,7 +271,7 @@ class LdapSource(source.Source):
+     Returns:
+       instance of maps.SshkeyMap
+     """
+-    return SshkeyUpdateGetter().GetUpdates(source=self,
++    return SshkeyUpdateGetter(self.conf).GetUpdates(source=self,
+                                            search_base=self.conf['base'],
+                                            search_filter=self.conf['filter'],
+                                            search_scope=self.conf['scope'],
