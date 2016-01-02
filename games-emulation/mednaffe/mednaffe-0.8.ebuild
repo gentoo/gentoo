@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="x11-libs/gtk+:3
+DEPEND="app-arch/unzip
+	x11-libs/gtk+:3
 	virtual/pkgconfig"
 RDEPEND="x11-libs/gtk+:3
 	games-emulation/mednafen[debugger]"
