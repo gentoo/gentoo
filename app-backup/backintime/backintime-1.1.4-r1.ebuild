@@ -14,29 +14,32 @@ SRC_URI="http://${PN}.le-web.org/download/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="qt4"
 
-RDEPEND="${PYTHON_DEPS}
+COMMON_DEPEND="${PYTHON_DEPS}
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/keyring[${PYTHON_USEDEP}]
 	net-misc/openssh
-	net-misc/rsync[xattr,acl]"
-
-DEPEND="${RDEPEND}"
+	net-misc/rsync[xattr,acl]
+"
+DEPEND="${COMMON_DEPEND}"
+RDEPEND="${COMMON_DEPEND}
+	qt4? ( dev-python/PyQt4 )
+"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-python-version-stderr.patch
+
 	#fix doc install location
 	sed -e "s:/doc/${PN}-common:/doc/${PF}:g" \
-		-i common/configure || die
+		-i common/Makefile.template || die
 	sed -e "s:/doc/${PN}-qt4:/doc/${PF}:g" \
-		-i qt4/configure || die
-	sed -e "/addInstallFile \"..\/VERSION/d" \
-		-e "/addInstallFile \"..\/LICENSE/d" \
-		-e "/addInstallFile \"..\/debian\/copyright/d" \
-		-i {qt4,common}/configure || die
+		-i qt4/Makefile.template || die
+	sed -e "/\/VERSION/d" -e "/\/LICENSE/d" -e "/\/copyright/d" \
+		-i {qt4,common}/Makefile.template || die
 
 	if [ -n ${LINGUAS+x} ] ; then
 		cd common/po || die
