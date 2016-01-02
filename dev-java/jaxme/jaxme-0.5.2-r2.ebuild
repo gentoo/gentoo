@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,13 +10,13 @@ inherit java-pkg-2 java-ant-2 eutils
 
 MY_PN=ws-${PN}
 MY_P=${MY_PN}-${PV}
-DESCRIPTION="JaxMe 2 is an open source implementation of JAXB, the specification for Java/XML binding"
+DESCRIPTION="An open source implementation of JAXB, the specification for Java/XML binding"
 HOMEPAGE="http://ws.apache.org/jaxme/index.html"
 SRC_URI="mirror://apache/ws/${PN}/source/${MY_P}-src.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 COMMON_DEP=">=dev-java/antlr-2.7.7-r7:0
