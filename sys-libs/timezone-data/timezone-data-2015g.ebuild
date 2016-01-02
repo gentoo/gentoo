@@ -113,7 +113,10 @@ pkg_config() {
 		return 0
 	fi
 
-	tz=$(get_TIMEZONE) || return 0
+	if ! tz=$(get_TIMEZONE) ; then
+		einfo "Assuming your empty ${etc_lt} file is what you want; skipping update."
+		return 0
+	fi
 	if [[ ${tz} == "FOOKABLOIE" ]] ; then
 		elog "You do not have TIMEZONE set in ${src}."
 
