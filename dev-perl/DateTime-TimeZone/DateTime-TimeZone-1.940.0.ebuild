@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=DROLSKY
-MODULE_VERSION=1.88
+DIST_AUTHOR=DROLSKY
+DIST_VERSION=1.94
 inherit perl-module
 
 DESCRIPTION="Time zone object base class and factory"
@@ -17,8 +17,7 @@ IUSE="test"
 RDEPEND="
 	>=dev-perl/Class-Singleton-1.30.0
 	virtual/perl-File-Spec
-	dev-perl/List-AllUtils
-	virtual/perl-Scalar-List-Utils
+	>=virtual/perl-Scalar-List-Utils-1.330.0
 	dev-perl/Module-Runtime
 	>=dev-perl/Params-Validate-0.720.0
 	dev-perl/Try-Tiny
@@ -35,5 +34,3 @@ DEPEND="${RDEPEND}
 		>=virtual/perl-Test-Simple-0.960.0
 	)
 "
-
-SRC_TEST=do

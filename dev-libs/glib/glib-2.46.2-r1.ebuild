@@ -308,11 +308,11 @@ pkg_postinst() {
 pkg_postrm() {
 	gnome2_pkg_postrm
 
-	if [[ -z ${REPLACED_BY_VERSIONS} ]]; then
-		multilib_pkg_postinst() {
+	if [[ -z ${REPLACED_BY_VERSION} ]]; then
+		multilib_pkg_postrm() {
 			rm -f "${EROOT}"usr/$(get_libdir)/gio/giomodule.cache
 		}
-		multilib_foreach_abi multilib_pkg_postinst
+		multilib_foreach_abi multilib_pkg_postrm
 		rm -f "${EROOT}"usr/share/glib-2.0/schemas/gschemas.compiled
 	fi
 }
