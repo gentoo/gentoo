@@ -14,7 +14,10 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-makefile.patch"
+	epatch \
+		"${FILESDIR}/${P}-makefile.patch" \
+		"${FILESDIR}/${P}-argz.patch"
+
 	tc-export CC
 	export COPTS=${CFLAGS}
 }
