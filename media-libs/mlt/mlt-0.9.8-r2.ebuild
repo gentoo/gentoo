@@ -135,12 +135,15 @@ src_configure() {
 
 	# kde means kde4 at this point
 	if use qt5 ; then
-		myconf+=" --enable-qt $(use_with opengl)
+		myconf+=" --enable-qt
 			--qt-includedir=$(pkg-config Qt5Core --variable=includedir)
 			--qt-libdir=$(pkg-config Qt5Core --variable=libdir)"
 	elif use qt4 ; then
-		myconf+=" --enable-qt $(use_with opengl) $(use_with kde)
-			--qt-includedir=$(pkg-config QtCore --variable=includedir)
+		# pkg-config QtCore does not give us qt4 parent include dir
+		local qtinclude=$(pkg-config QtCore --variable=includedir)
+		[[ ${qtinclude} == *QtCore ]] && qtinclude=$(dirname ${qtinclude})
+		myconf+=" --enable-qt $(use_with kde)
+			--qt-includedir=${qtinclude}
 			--qt-libdir=$(pkg-config QtCore --variable=libdir)"
 	else
 		myconf+=" --disable-qt"
@@ -167,7 +170,13 @@ src_configure() {
 	[ -z "${swig_lang}" ] && swig_lang="none"
 
 	econf ${myconf} --swig-languages="${swig_lang}"
+
 	sed -i -e s/^OPT/#OPT/ "${S}/config.mak" || die
+	if use qt5 || use qt4 ; then
+		if ! use opengl ; then
+			sed -i -e "/^USE_QT_OPENGL/ s/^/#/" "${S}/src/modules/qt/config.mak" || die
+		fi
+	fi
 }
 
 src_install() {
