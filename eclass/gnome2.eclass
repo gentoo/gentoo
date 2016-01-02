@@ -57,6 +57,10 @@ ELTCONF=${ELTCONF:-""}
 # to handle it properly. It will enable minimal debug with USE=-debug.
 # Note that this is most commonly found in configure.ac as GNOME_DEBUG_CHECK.
 
+# @ECLASS-VARIABLE: GNOME2_ECLASS_GIO_MODULES
+# @INTERNAL
+# @DESCRIPTION:
+# Array containing glib GIO modules
 
 if [[ ${GCONF_DEBUG} != "no" ]]; then
 	IUSE="debug"
@@ -241,6 +245,15 @@ gnome2_pkg_preinst() {
 	gnome2_schemas_savelist
 	gnome2_scrollkeeper_savelist
 	gnome2_gdk_pixbuf_savelist
+
+	local f
+
+	GNOME2_ECLASS_GIO_MODULES=()
+	while IFS= read -r -d '' f; do
+		GNOME2_ECLASS_GIO_MODULES+=( ${f} )
+	done < <(cd "${D}" && find usr/$(get_libdir)/gio/modules -type f -print0 2>/dev/null)
+
+	export GNOME2_ECLASS_GIO_MODULES
 }
 
 # @FUNCTION: gnome2_pkg_postinst
@@ -254,6 +267,10 @@ gnome2_pkg_postinst() {
 	gnome2_schemas_update
 	gnome2_scrollkeeper_update
 	gnome2_gdk_pixbuf_update
+
+	if [[ ${#GNOME2_ECLASS_GIO_MODULES[@]} -gt 0 ]]; then
+		gnome2_giomodule_cache_update
+	fi
 }
 
 # # FIXME Handle GConf schemas removal
@@ -269,4 +286,8 @@ gnome2_pkg_postrm() {
 	gnome2_icon_cache_update
 	gnome2_schemas_update
 	gnome2_scrollkeeper_update
+
+	if [[ ${#GNOME2_ECLASS_GIO_MODULES[@]} -gt 0 ]]; then
+		gnome2_giomodule_cache_update
+	fi
 }

@@ -460,6 +460,29 @@ gnome2_query_immodules_gtk3() {
 	eend $?
 }
 
+# @FUNCTION: gnome2_giomodule_cache_update
+# @USAGE: gnome2_giomodule_cache_update
+# @DESCRIPTION:
+# Updates glib's gio modules cache.
+# This function should be called from pkg_postinst and pkg_postrm.
+gnome2_giomodule_cache_update() {
+	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
+	local updater="${EROOT}/usr/bin/${CHOST}-gio-querymodules"
+
+	if [[ ! -x ${updater} ]]; then
+		updater="${EROOT}/usr/bin/gio-querymodules"
+	fi
+
+	if [[ ! -x ${updater} ]]; then
+		debug-print "${updater} is not executable"
+		return
+	fi
+
+	ebegin "Updating GIO modules cache"
+	${updater} "${EROOT%/}"/usr/$(get_libdir)/gio/modules
+	eend $?
+}
+
 # @FUNCTION: gnome2_disable_deprecation_warning
 # @DESCRIPTION:
 # Disable deprecation warnings commonly found in glib based packages.
