@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc source test"
 
 inherit java-pkg-2 java-ant-2
 
-DESCRIPTION="A development tool to help programmers write Java code that adheres to a coding standard"
+DESCRIPTION="Development tool to help write Java code that adheres to a coding standard"
 HOMEPAGE="https://github.com/checkstyle/checkstyle"
 SRC_URI="mirror://sourceforge/checkstyle/${P}-src.tar.gz
 	https://dev.gentoo.org/~sera/distfiles/${PN}-5.4-maven-build.xml.tar.bz2"
@@ -29,11 +29,7 @@ RDEPEND="${COMMON_DEP}
 	>=virtual/jre-1.6"
 DEPEND="${COMMON_DEP}
 	>=virtual/jdk-1.6
-	dev-java/ant-nodeps:0
-	test? (
-		dev-java/ant-junit
-		dev-java/junit:4
-	)"
+	test? ( dev-java/ant-junit:0 )"
 
 java_prepare() {
 	cp ../${PN}-5.4/maven-build.xml . || die
@@ -55,11 +51,12 @@ JAVA_ANT_ENCODING="iso-8859-1"
 EANT_BUILD_XML="maven-build.xml"
 EANT_GENTOO_CLASSPATH="ant-core,antlr,commons-beanutils-1.7,commons-cli-1,commons-logging,guava-18"
 EANT_BUILD_TARGET="package"
-EANT_ANT_TASKS="ant-nodeps"
 EANT_NEEDS_TOOLS="true"
 
+EANT_EXTRA_ARGS="-Dmaven.repo.local=/dev/null"
+EANT_TEST_EXTRA_ARGS="${EANT_EXTRA_ARGS} -Djunit.present=true"
+
 src_test() {
-	EANT_TEST_GENTOO_CLASSPATH="${EANT_GENTOO_CLASSPATH},junit-4"
 	java-pkg-2_src_test
 }
 
