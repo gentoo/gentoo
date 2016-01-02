@@ -11429,7 +11429,7 @@ lxqt-base/lxqt-globalkeys 0.7.0 0.8.0 0.9.0 0.10.0: Daemon and library for globa
 lxqt-base/lxqt-meta 0.7.0-r1 0.8.0 0.9.0 0.9.0-r1 0.9.0-r2 0.10.0: Meta ebuild for LXQt, the Lightweight Desktop Environment
 lxqt-base/lxqt-notificationd 0.7.0 0.8.0 0.9.0 0.9.0-r1 0.10.0: LXQt notification daemon and library
 lxqt-base/lxqt-openssh-askpass 0.7.0 0.8.0 0.9.0 0.10.0: LXQt OpenSSH user password prompt tool
-lxqt-base/lxqt-panel 0.7.0-r1 0.8.0 0.9.0 0.10.0: LXQt desktop panel and plugins
+lxqt-base/lxqt-panel 0.7.0-r1 0.8.0 0.9.0 0.10.0 0.10.0-r1: LXQt desktop panel and plugins
 lxqt-base/lxqt-policykit 0.7.0-r1 0.8.0 0.9.0 0.10.0: LXQt PolKit authentication agent
 lxqt-base/lxqt-powermanagement 0.7.0 0.8.0 0.9.0 0.10.0: LXQt daemon for power management and auto-suspend
 lxqt-base/lxqt-qtplugin 0.7.0 0.8.0 0.9.0 0.10.0: LXQt system integration plugin for Qt
@@ -14710,7 +14710,7 @@ net-nds/jxplorer 3.2 3.2-r2 3.3.1 3.3.1.1: A fully functional ldap browser writt
 net-nds/lat 1.2.3: LDAP Administration Tool, allows you to browse LDAP-based directories and add/edit/delete entries
 net-nds/ldapvi 1.7-r1 1.7_p20101214: Manage LDAP entries with a text editor
 net-nds/led 1.111: led is a general purpose LDAP editor
-net-nds/nsscache 0.23 0.23-r1 0.23-r2 0.30: commandline tool to sync directory services to local cache
+net-nds/nsscache 0.23 0.23-r1 0.23-r2 0.30 0.30-r1: commandline tool to sync directory services to local cache
 net-nds/openldap 2.3.43-r3 2.3.43-r4 2.4.38-r2 2.4.39 2.4.40 2.4.40-r2 2.4.40-r4 2.4.42 2.4.42-r1 2.4.43: LDAP suite of application and development tools
 net-nds/phpldapadmin 1.2.3 1.2.3-r1: phpLDAPadmin is a web-based tool for managing all aspects of your LDAP server
 net-nds/portmap 6.0 9999: Netkit - portmapper
