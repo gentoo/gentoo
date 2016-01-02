@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -288,7 +288,7 @@ pkg_postinst() {
 pkg_postrm() {
 	gnome2_pkg_postrm
 
-	if [[ -z ${REPLACED_BY_VERSIONS} ]]; then
+	if [[ -z ${REPLACED_BY_VERSION} ]]; then
 		multilib_pkg_postrm() {
 			rm -f "${EROOT}"usr/$(get_libdir)/gtk-2.0/2.10.0/immodules.cache
 		}
