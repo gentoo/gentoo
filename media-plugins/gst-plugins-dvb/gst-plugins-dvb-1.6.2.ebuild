@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,8 +14,7 @@ IUSE=""
 RDEPEND=""
 DEPEND="virtual/os-headers"
 
-multilib_src_compile() {
-	# Prepare generated headers
-	emake -C gst-libs/gst/mpegts
-	gstreamer_multilib_src_compile
+src_prepare() {
+	gstreamer_system_link \
+		gst-libs/gst/mpegts:gstreamer-mpegts
 }
