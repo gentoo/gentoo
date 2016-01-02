@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI="5"
 
 WANT_AUTOMAKE=none
 
@@ -14,19 +14,19 @@ HOMEPAGE="http://fcron.free.fr/"
 SRC_URI="http://fcron.free.fr/archives/${MY_P}.src.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 arm hppa ia64 ~mips ppc ~ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="debug pam selinux linguas_fr +mta +system-crontab readline"
 
 DEPEND="selinux? ( sys-libs/libselinux )
 	mta? ( virtual/mta )
 	pam? ( virtual/pam )
-	readline? ( sys-libs/readline )"
+	readline? ( sys-libs/readline:= )"
 
 # see bug 282214 for the reason to depend on bash
 RDEPEND="${DEPEND}
 	app-shells/bash
-	>=app-misc/editor-wrapper-3
-	pam? ( >=sys-auth/pambase-20100310 )"
+	app-misc/editor-wrapper
+	pam? ( sys-auth/pambase )"
 
 S="${WORKDIR}/${MY_P}"
 

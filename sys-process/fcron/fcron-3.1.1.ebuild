@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -191,7 +191,7 @@ pkg_config() {
 	if use system-crontab; then
 		elog "This is going to set up fcron to execute check_system_crontabs."
 		elog "In this configuration, you're no longer free to edit the systab"
-		elog "at your leisure, at it'll be rewritten the moment the crontabs"
+		elog "at your leisure, as it'll be rewritten the moment the crontabs"
 		elog "are modified."
 		/usr/libexec/check_system_crontabs -v -i -f
 	else
