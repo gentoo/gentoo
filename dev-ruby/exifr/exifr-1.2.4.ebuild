@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_DOCDIR="doc/api"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG README.rdoc"
