@@ -688,11 +688,6 @@ dev-java/jscience
 # Masked until we deal with SSLv3, bug #567554
 =dev-libs/libressl-2.3*
 
-# Ian Delaney <idella4@gentoo.org> (06 Dec 2015)
-# Masked due to support of the hypervisor dropped in arch x86
-# rdep packages use.masked for xen under arch
-<=app-emulation/xen-4.2.5-r12
-
 # Robin H. Johnson <robbat2@gentoo.org> (04 Dec 2015)
 # Much early testing needed
 >=sys-cluster/ceph-9
