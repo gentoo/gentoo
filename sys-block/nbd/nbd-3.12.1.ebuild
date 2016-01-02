@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-inherit toolchain-funcs
+inherit eutils toolchain-funcs
 
 DESCRIPTION="Userland client/server for kernel network block device"
 HOMEPAGE="http://nbd.sourceforge.net/"
@@ -19,6 +19,10 @@ RDEPEND=">=dev-libs/glib-2.0
 	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+src_prepare() {
+	epatch "${FILESDIR}"/nbd-3.12.1-readit-and-weep.patch
+}
 
 src_configure() {
 	econf \
