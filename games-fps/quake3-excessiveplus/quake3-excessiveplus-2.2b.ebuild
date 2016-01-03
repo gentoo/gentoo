@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
-
-MOD_DESC="modification making the weapons much faster and stronger"
+EAPI=5
+MOD_DESC="Makes the weapons much faster and stronger"
 MOD_NAME="Excessive Plus"
 MOD_DIR="excessiveplus"
 MOD_ICON="excessiveplus.ico"
