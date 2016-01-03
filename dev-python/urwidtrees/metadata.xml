@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>aidecoe@gentoo.org</email>
+		<name>Amadeusz Żołnowski</name>
+	</maintainer>
+	<longdescription lang="en">
+		This is a Widget Container API for the urwid toolkit. It uses a MVC
+		approach and allows to build trees of widgets.
+	</longdescription>
+</pkgmetadata>
