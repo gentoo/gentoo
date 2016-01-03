@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -36,7 +36,7 @@ RDEPEND="
 	>=dev-db/sqlite-3.7.11:3
 	sys-apps/dbus
 	datahub? ( x11-libs/gtk+:3 )
-	fts? ( dev-libs/xapian[inmemory] )
+	fts? ( dev-libs/xapian:0=[inmemory] )
 	icu? ( dev-libs/dee[icu?] )
 	introspection? ( dev-libs/gobject-introspection )
 	telepathy? ( net-libs/telepathy-glib )
