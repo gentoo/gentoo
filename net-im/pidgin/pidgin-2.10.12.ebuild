@@ -44,7 +44,7 @@ RDEPEND="
 		prediction? ( >=dev-db/sqlite-3.3:3 ) )
 	gstreamer? ( =media-libs/gstreamer-0.10*
 		=media-libs/gst-plugins-good-0.10*
-		net-libs/farstream:0.1
+		>=net-libs/farstream-0.2.7:0.2
 		media-plugins/gst-plugins-meta:0.10
 		media-plugins/gst-plugins-gconf:0.10 )
 	zeroconf? ( net-dns/avahi[dbus] )
