@@ -5367,7 +5367,7 @@ dev-perl/Data-URIEncode 0.110.0-r1: Allow complex data structures to be encoded 
 dev-perl/Data-UUID 1.217.0-r1 1.221.0: Generate Globally/Universally Unique Identifiers (GUIDs/UUIDs)
 dev-perl/Data-Uniqid 0.120.0-r1: Perl extension for simple generating of unique ids
 dev-perl/Data-Utilities 0.40.0-r1: Merge nested Perl data structures
-dev-perl/Data-Validate-Domain 0.100.0 0.110.0: Domain and host name validation
+dev-perl/Data-Validate-Domain 0.110.0: Domain and host name validation
 dev-perl/Data-Validate-IP 0.240.0: Lightweight IPv4 and IPv6 validation module
 dev-perl/Data-Visitor 0.300.0-r1: Visitor style traversal of Perl data structures
 dev-perl/Date-Calc 6.300.0-r1 6.400.0: Gregorian calendar date calculations
