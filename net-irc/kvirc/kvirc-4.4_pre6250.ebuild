@@ -12,7 +12,7 @@ HOMEPAGE="http://www.kvirc.net/"
 SRC_URI="http://people.apache.org/~Arfrever/gentoo/${P}.tar.xz"
 
 LICENSE="kvirc"
-SLOT="4"
+SLOT="0"
 KEYWORDS="~alpha amd64 ~ppc ~ppc64 x86"
 IUSE="audiofile +dbus dcc_video +dcc_voice debug doc gsm +ipc ipv6 kde +nls oss +perl +phonon profile +python +ssl theora +transparency webkit"
 
@@ -67,7 +67,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DLIB_SUFFIX=${libdir#lib}
 		-DMANUAL_REVISION=${VERSIO_PRAESENS}
-		-DWANT_COEXISTENCE=1
 		-DWANT_CRYPT=1
 		-DWANT_ENV_FLAGS=1
 		-DWANT_VERBOSE=1
