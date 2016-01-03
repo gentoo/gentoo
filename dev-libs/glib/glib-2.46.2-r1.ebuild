@@ -277,6 +277,10 @@ pkg_preinst() {
 		if [[ -e ${EROOT}${cache} ]]; then
 			cp "${EROOT}"${cache} "${ED}"/${cache} || die
 		else
+			if [[ ! -d "${ED}"/${cache%/*} ]] ; then
+				mkdir -p "${ED}"/${cache%/*} || die "Fail to create giomodule.cache parent directories"
+			fi
+
 			touch "${ED}"/${cache} || die
 		fi
 	}
