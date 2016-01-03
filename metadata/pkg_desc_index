@@ -9429,7 +9429,7 @@ dev-util/ftnchek 3.3.1-r1: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6: Stress-tests programs by giving them random input
 dev-util/gdbus-codegen 2.44.1 2.46.2: GDBus code and documentation generator
 dev-util/geany 1.24.1 1.25 1.26: GTK+ based fast and lightweight IDE
-dev-util/geany-plugins 1.23 1.24-r1 1.25: A collection of different plugins for Geany
+dev-util/geany-plugins 1.23 1.24-r1 1.25 1.26: A collection of different plugins for Geany
 dev-util/gengetopt 2.22.6: A tool to write command line option parsing code for C programs
 dev-util/ghh 9999: a tool to track the history and make backups of your home directory
 dev-util/glade 3.8.5 3.18.3: A user interface designer for GTK+ and GNOME
@@ -15238,7 +15238,7 @@ sci-biology/pysam 0.6-r1: Python interface for the SAM/BAM sequence alignment an
 sci-biology/qrna 2.0.3c-r1: Prototype ncRNA genefinder
 sci-biology/raxml 7.2.6: Sequential, Parallel & Distributed Inference of Large Phylogenetic Trees
 sci-biology/readseq 20080420-r1 20100513: Reads and writes nucleic/protein sequences in various formats
-sci-biology/rebase 1509 1510 1511 1601: A restriction enzyme database
+sci-biology/rebase 1510 1511 1601: A restriction enzyme database
 sci-biology/recon 1.06-r1 1.06-r2: Automated de novo identification of repeat families from genomic sequences
 sci-biology/repeatmasker 4.0.1: Screen DNA sequences for interspersed repeats and low complexity DNA
 sci-biology/repeatmasker-libraries 20120418: A special version of RepBase used by RepeatMasker
