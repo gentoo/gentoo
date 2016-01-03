@@ -1,0 +1,16 @@
+#!/sbin/runscript
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+need="net localmount"
+command="/usr/bin/taskd"
+command_args="server --data ${TASKDDATA:-/var/lib/taskd}"
+pidfile="/run/taskd.pid"
+start_stop_daemon_args="--user taskd:taskd"
+command_background=1
+extra_started_commands="reload"
+
+reload() {
+	kill -HUP "$(cat $pidfile)"
+}
