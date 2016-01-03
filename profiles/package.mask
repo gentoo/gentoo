@@ -30,6 +30,31 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (03 Jan 2016)
+# Fails to build, bug #368873. Removal in a month
+x11-misc/xoo
+
+# Pacho Ramos <pacho@gentoo.org> (03 Jan 2016)
+# Fails to build, bug #368913. Removal in a month
+media-video/cxfe
+
+# Pacho Ramos <pacho@gentoo.org> (03 Jan 2016)
+# Fails to build, bug #369053. Removal in a month
+media-sound/freewheeling
+
+# Pacho Ramos <pacho@gentoo.org> (03 Jan 2016)
+# Fails to build, bug #369769. Removal in a month
+media-sound/gqmpeg
+
+# Pacho Ramos <pacho@gentoo.org> (03 Jan 2016)
+# Fails to build, bug #370581. Removal in a month
+media-sound/freebirth
+
+# Pacho Ramos <pacho@gentoo.org> (03 Jan 2016)
+# Obsolete lib, nothing needs it, bug #380193
+# Removal in a month
+x11-libs/libsexy
+
 # Pacho Ramos <pacho@gentoo.org> (01 Jan 2016)
 # Nothing requires this obsolete versions, bug #249418
 # Removal in a month.
