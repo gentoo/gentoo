@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 # Build written by Andrew John Hughes (gnu_andrew@member.fsf.org)
@@ -206,7 +206,7 @@ src_configure() {
 		cacao_config="--enable-cacao"
 
 		# http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=2611
-		export DISTRIBUTION_PATCHES="${SLOT}-cacao-dynmaxheap.patch"
+		export DISTRIBUTION_PATCHES="${SLOT}-cacao-pr-157.patch"
 		ln -snf "${FILESDIR}/${DISTRIBUTION_PATCHES}" || die
 	fi
 

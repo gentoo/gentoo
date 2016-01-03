@@ -42,11 +42,9 @@ RDEPEND="
 		spell? ( >=app-text/gtkspell-2.0.2:2 )
 		eds? ( >=gnome-extra/evolution-data-server-3.6:= )
 		prediction? ( >=dev-db/sqlite-3.3:3 ) )
-	gstreamer? ( =media-libs/gstreamer-0.10*
-		=media-libs/gst-plugins-good-0.10*
-		>=net-libs/farstream-0.2.7:0.2
-		media-plugins/gst-plugins-meta:0.10
-		media-plugins/gst-plugins-gconf:0.10 )
+	gstreamer? ( media-libs/gstreamer:1.0
+		media-libs/gst-plugins-base:1.0
+		>=net-libs/farstream-0.2.7:0.2 )
 	zeroconf? ( net-dns/avahi[dbus] )
 	dbus? ( >=dev-libs/dbus-glib-0.71
 		>=sys-apps/dbus-0.90
@@ -55,7 +53,10 @@ RDEPEND="
 	gadu? ( || ( >=net-libs/libgadu-1.11.0[ssl,gnutls]
 		>=net-libs/libgadu-1.11.0[-ssl] ) )
 	gnutls? ( net-libs/gnutls )
-	!gnutls? ( >=dev-libs/nss-3.15.4 )
+	!gnutls? (
+		dev-libs/nspr
+		dev-libs/nss
+	)
 	meanwhile? ( net-libs/meanwhile )
 	silc? ( >=net-im/silc-toolkit-1.0.1 )
 	tcl? ( dev-lang/tcl:0= )
@@ -202,7 +203,7 @@ src_configure() {
 		$(use_enable debug) \
 		$(use_enable dbus) \
 		$(use_enable meanwhile) \
-		$(use_enable gstreamer) \
+		$(use_enable gstreamer gstreamer 1.0) \
 		$(use_enable gstreamer farstream) \
 		$(use_enable gstreamer vv) \
 		$(use_enable sasl cyrus-sasl ) \
