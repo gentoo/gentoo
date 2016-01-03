@@ -1,0 +1,78 @@
+From fb00ed3d71f9407a776c82f03855d1242997878c Mon Sep 17 00:00:00 2001
+From: Anthony Parsons <flussence@gmail.com>
+Date: Sat, 26 Dec 2015 19:37:18 +0000
+Subject: [PATCH] Fix `make install` when nqp is distro-installed
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+During the installation process, tools/build/install-core-dist.pl is called to
+precompile the bundled non-CORE.setting libraries such as Test.pm. The way this
+was initially coded, it pulled the install path from NQP's build-time
+configuration, which will be a root-owned filesystem path if NQP was installed
+via a system package manager.
+
+Other parts of the CompUnit code will see these paths don't exist, and attempt
+to helpfully call `mkdir` on them which brings the whole process to a messy end.
+This part usually works fine when building everything from a git checkout,
+because Moar/NQP/Rakudo all default to an installation prefix the user has write
+access to.
+
+This patch fixes that step of the build process by passing the makefile's path
+prefixes to install-core-dist.pl (ensuring precompilation output goes to the
+right place), and modifying it to *only* use that path (ensuring it doesn't try
+to mkdir where it shouldn't). This isn't a 100% solution, but it fixes enough
+to unblock packaging work on a few distros.
+
+Thanks to mst++ for doing almost all of the legwork here, crux++ for an initial
+patch that gave us a few pointers to work from, and nine++ for giving us some
+Boxing Day fun ☺
+---
+ tools/build/Makefile-JVM.in      | 2 +-
+ tools/build/Makefile-Moar.in     | 2 +-
+ tools/build/install-core-dist.pl | 3 ++-
+ 3 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/tools/build/Makefile-JVM.in b/tools/build/Makefile-JVM.in
+index 11e17810265d..0a3095114e0a 100644
+--- a/tools/build/Makefile-JVM.in
++++ b/tools/build/Makefile-JVM.in
+@@ -391,7 +391,7 @@ j-install: j-all tools/build/create-jvm-runner.pl tools/build/install-core-dist.
+ 	$(MKPATH) $(DESTDIR)$(PERL6_LANG_DIR)/site/resources
+ 	$(MKPATH) $(DESTDIR)$(PERL6_LANG_DIR)/site/bin
+ 	$(MKPATH) $(DESTDIR)$(PERL6_LANG_DIR)/site/short
+-	.@slash@$(J_RUNNER) tools/build/install-core-dist.pl
++	.@slash@$(J_RUNNER) tools/build/install-core-dist.pl $(DESTDIR)$(PERL6_LANG_DIR)
+ 	$(PERL) tools/build/create-jvm-runner.pl install "$(DESTDIR)" $(PREFIX) $(NQP_PREFIX) $(NQP_JARS)
+ 	$(PERL) tools/build/create-jvm-runner.pl install-debug "$(DESTDIR)" $(PREFIX) $(NQP_PREFIX) $(NQP_JARS)
+ 
+diff --git a/tools/build/Makefile-Moar.in b/tools/build/Makefile-Moar.in
+index 1e586d92a1fa..670b89c20774 100644
+--- a/tools/build/Makefile-Moar.in
++++ b/tools/build/Makefile-Moar.in
+@@ -246,7 +246,7 @@ m-install: m-all tools/build/create-moar-runner.pl tools/build/install-core-dist
+ 	$(MKPATH) $(DESTDIR)$(PERL6_LANG_DIR)/site/resources
+ 	$(MKPATH) $(DESTDIR)$(PERL6_LANG_DIR)/site/bin
+ 	$(MKPATH) $(DESTDIR)$(PERL6_LANG_DIR)/site/short
+-	.@slash@$(M_RUNNER) tools/build/install-core-dist.pl
++	.@slash@$(M_RUNNER) tools/build/install-core-dist.pl $(DESTDIR)$(PERL6_LANG_DIR)
+ 	$(PERL) tools/build/create-moar-runner.pl "$(MOAR)" perl6.moarvm $(DESTDIR)$(PREFIX)/bin/perl6-m "$(PERL6_LANG_DIR)/runtime" "" "$(M_LIBPATH)" "$(PERL6_LANG_DIR)/lib" "$(PERL6_LANG_DIR)/runtime"
+ 	$(PERL) tools/build/create-moar-runner.pl "$(MOAR)" perl6-debug.moarvm $(DESTDIR)$(PREFIX)/bin/perl6-debug-m "$(PERL6_LANG_DIR)/runtime" "" "$(M_LIBPATH)" "$(PERL6_LANG_DIR)/lib" "$(PERL6_LANG_DIR)/runtime"
+ 	$(CHMOD) 755 $(DESTDIR)$(PREFIX)/bin/perl6-m$(M_BAT)
+diff --git a/tools/build/install-core-dist.pl b/tools/build/install-core-dist.pl
+index 0990b2676a10..ba14b20828d8 100644
+--- a/tools/build/install-core-dist.pl
++++ b/tools/build/install-core-dist.pl
+@@ -9,7 +9,8 @@ my %provides =
+     "experimental"               => "lib/experimental.pm6",
+ ;
+ 
+-CompUnit::RepositoryRegistry.repository-for-name('perl').install(
++PROCESS::<$REPO> := CompUnit::RepositoryRegistry.repository-for-spec("inst#@*ARGS[0]");
++$*REPO.install(
+     Distribution.new(
+         name     => "CORE",
+         auth     => "perl",
+-- 
+2.6.4
+

@@ -1,0 +1,125 @@
+From c6d759c5df9ae4cb539717ecba99f80efe35d9ac Mon Sep 17 00:00:00 2001
+From: Anthony Parsons <flussence@gmail.com>
+Date: Sun, 27 Dec 2015 01:28:19 +0000
+Subject: [PATCH 1/2] Rewrite and complete the manpage's env var list
+
+This includes everything I could find with an `ack 'ENV<' src/` command.
+Descriptions have been expanded on, expected datatypes are shown, and items are
+now broken up into categories.
+---
+ docs/running.pod | 81 +++++++++++++++++++++++++++++++++++++++++++++-----------
+ 1 file changed, 66 insertions(+), 15 deletions(-)
+
+diff --git a/docs/running.pod b/docs/running.pod
+index 9ed7571df54e..53fb577c8481 100644
+--- a/docs/running.pod
++++ b/docs/running.pod
+@@ -44,39 +44,90 @@ The supported values for C<--target> are:
+ For C<--profile-filename>, specifying a name ending in C<.json> will write a raw JSON profile dump.
+ The default if this is omitted is C<profile-I<[timestamp]>.html>.
+ 
+-=head1 List of env vars used in Rakudo
++=head1 ENVIRONMENT VARIABLES
++
++Rakudo's behavior can be tweaked by a (growing) number of environment variables; this section
++attempts to document all those currently in use.
++
++=head2 Module Loading
++
++=over
++
++=item C<RAKUDOLIB>, C<PERL6LIB> (I<Str>; F<src/core/Inc.pm>)
++
++Appends a comma-delimited list of paths to C<@INC>. C<RAKUDOLIB> is evaluated first.
++
++=item C<RAKUDO_MODULE_DEBUG> (I<Bool>; F<src/Perl6/ModuleLoader.pm>)
++
++Causes the module loader to print debugging information to standard error.
++
++=back
++
++=head2 Error Message Verbosity and Strictness
+ 
+ =over
+ 
+-=item C<RAKUDOLIB>, C<PERL6LIB> (src/core/Inc.pm)
++=item C<RAKUDO_NO_DEPRECATIONS> (I<Bool>; F<src/core/Deprecations.pm>)
++
++If true, suppresses deprecation warnings triggered by the C<is DEPRECATED> trait.
+ 
+-Appends a delimited list of paths to C<@INC>. C<RAKUDOLIB> is evaluated first.
++=item C<RAKUDO_DEPRECATIONS_FATAL> (I<Bool>; F<src/core/Deprecations.pm>)
+ 
+-=item C<RAKUDO_MODULE_DEBUG> (src/Perl6/ModuleLoader.pm)
++If true, deprecation warnings become thrown exceptions.
+ 
+-If set to a non-false value, causes the module loader to print debugging information to standard
+-error.
++=item C<RAKUDO_VERBOSE_STACKFRAME> (I<UInt>; F<src/core/Backtrace.pm>)
+ 
+-=item C<RAKUDO_ERROR_COLOR> (src/core/Exception.pm)
++Displays source code in stack frames surrounded by the specified number of lines of context.
++
++=item C<RAKUDO_BACKTRACE_SETTING> (I<Bool>; F<src/core/Backtrace.pm>)
++
++Controls whether .setting files are included in backtraces.
++
++=back
++
++=head2 Affecting Precompilation
++
++=over
++
++=item C<RAKUDO_PRECOMP_DIST> (F<src/core/CompUnit/PrecompilationRepository.pm>)
++
++=item C<RAKUDO_PRECOMP_LOADING> (F<src/core/CompUnit/PrecompilationRepository.pm>)
++
++=item C<RAKUDO_PRECOMP_WITH> (F<src/core/CompUnit/PrecompilationRepository.pm>)
++
++These are internal variables for passing serialized state to precompilation jobs in child processes.
++Please do not set them manually.
++
++=back
++
++=head2 Other
++
++=over
++
++=item C<RAKUDO_ERROR_COLOR> (I<Bool>; F<src/core/Exception.pm>)
+ 
+ Controls whether to emit ANSI codes for error highlighting. Defaults to true if unset, except on
+ Win32.
+ 
+-=item C<RAKUDO_MAX_THREADS> (src/core/ThreadPoolScheduler.pm)
++=item C<RAKUDO_MAX_THREADS> (I<UInt>; F<src/core/ThreadPoolScheduler.pm>)
+ 
+-Controls the maximum number of threads used by a thread pool.
++Override the default maximum number of threads used by a thread pool.
+ 
+-=item C<RAKUDO_NO_DEPRECATIONS> (src/core/Deprecations.pm)
++=item C<TMPDIR>, C<TEMP>, C<TMP> (I<Str>; F<src/core/IO/Spec/>)
+ 
+-If set, suppresses deprecation warnings.
++The C<IO::Spec::Unix.tmpdir> method will return C<$TMPDIR> if it points to a directory with full
++access permissions for the current user, with a fallback default of C<'/tmp'>.
+ 
+-=item C<RAKUDO_VERBOSE_STACKFRAME> (src/core/Backtrace.pm)
++C<IO::Spec::Cygwin> and C<IO::Spec::Win32> use more Win32-appropriate lists which also include the
++C<%TEMP%> and C<%TMP%> environment variables.
+ 
+-Controls stack frame verbosity.
++=item C<PATH>, C<Path> (I<Str>; F<src/core/IO/Spec/>)
+ 
+-=item C<RAKUDO_BACKTRACE_SETTING> (src/core/Backtrace.pm)
++The C<IO::Spec::Unix.path> method splits C<$PATH> as a shell would; i.e. as a colon-separated list.
++C<IO::Spec::Cygwin> inherits this from C<IO::Spec::Unix>.
+ 
+-Controls whether .setting files are included in backtraces.
++C<IO::Spec::Win32.path> will read the first defined of either C<%PATH%> or C<%Path%> as a
++semicolon-delimited list.
+ 
+ =back
+ 
+-- 
+2.6.4
+
