@@ -19,7 +19,9 @@ IUSE="test"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+	test? ( dev-python/pytest[${PYTHON_USEDEP}]
+		dev-vcs/git
+		dev-vcs/mercurial )"
 
 python_test() {
 	py.test -v -v -x || die "tests failed under ${EPYTHON}"
