@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,8 +19,8 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="
-	dev-db/mongodb[sharedclient]
 	dev-libs/boost[threads]
+	dev-libs/mongo-cxx-driver
 	sci-libs/avogadrolibs[qt4]
 	sci-libs/chemkit
 	sci-libs/vtk[qt4,rendering]
