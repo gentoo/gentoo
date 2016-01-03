@@ -10757,7 +10757,7 @@ gnome-extra/gnome-dvb-daemon 0.2.10 0.2.90: Setup your DVB devices, record and w
 gnome-extra/gnome-getting-started-docs 3.16.2 3.18.2: Help a new user get started in GNOME
 gnome-extra/gnome-integration-spotify 20131013 20140907: GNOME integration for Spotify
 gnome-extra/gnome-logs 3.16.2 3.18.1: Log messages and event viewer
-gnome-extra/gnome-packagekit 3.12.2 3.18.0: PackageKit client for the GNOME desktop
+gnome-extra/gnome-packagekit 3.18.0: PackageKit client for the GNOME desktop
 gnome-extra/gnome-power-manager 3.16.1 3.18.0: GNOME power management service
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extensions 3.16.2 3.18.2 3.18.2-r1 3.18.2-r2: JavaScript extensions for GNOME Shell
