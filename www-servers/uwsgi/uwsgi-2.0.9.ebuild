@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -56,7 +56,7 @@ LANG_SUPPORT_EXTENDED=( lua php python python_asyncio python_gevent ruby )
 # *java*: TODO
 # v8: TODO
 # matheval: TODO
-IUSE="apache2 +caps debug +embedded expat jemalloc json +pcre +routing +ssl +xml yajl yaml zeromq"
+IUSE="apache2 +caps debug +embedded expat jemalloc json +pcre +routing selinux +ssl +xml yajl yaml zeromq"
 
 for plugin in ${UWSGI_PLUGINS_STD[@]}  ; do IUSE="${IUSE} +uwsgi_plugins_${plugin}" ; done
 for plugin in ${UWSGI_PLUGINS_OPT[@]}  ; do IUSE="${IUSE} uwsgi_plugins_${plugin}" ; done
@@ -118,6 +118,7 @@ CDEPEND="sys-libs/zlib
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
+	selinux? ( sec-policy/selinux-uwsgi )
 	uwsgi_plugins_rrdtool? ( net-analyzer/rrdtool )"
 
 want_apache2
