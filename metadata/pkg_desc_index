@@ -5323,10 +5323,10 @@ dev-perl/Cwd-Guard 0.40.0: Temporary changing working directory (chdir)
 dev-perl/DBD-Pg 2.19.3-r1 3.4.2 3.5.3: PostgreSQL database driver for the DBI module
 dev-perl/DBD-SQLite 1.350.0-r1 1.480.0: Self Contained RDBMS in a DBI Driver
 dev-perl/DBD-mysql 4.31.0-r1 4.32.0-r1: The Perl DBD:mysql Module
-dev-perl/DBI 1.628.0 1.633.0 1.634.0: Database independent interface for Perl
+dev-perl/DBI 1.628.0 1.634.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r1: Interactive command shell for the DBI
 dev-perl/DBICx-TestDatabase 0.40.0: create a temporary database from a DBIx::Class::Schema
-dev-perl/DBIx-Class 0.82.50 0.82.700: Extensible and flexible object <-> relational mapper
+dev-perl/DBIx-Class 0.82.700: Extensible and flexible object <-> relational mapper
 dev-perl/DBIx-Class-DynamicDefault 0.40.0: Automatically set and update fields
 dev-perl/DBIx-Class-InflateColumn-Boolean 0.2.0: Auto-create boolean objects from columns
 dev-perl/DBIx-Class-InflateColumn-IP 0.20.30: Auto-create NetAddr::IP objects from columns
@@ -6396,7 +6396,7 @@ dev-perl/crypt-primes 0.500.0-r1: Provable Prime Number Generator suitable for C
 dev-perl/crypt-random 1.250.0-r1: Cryptographically Secure, True Random Number Generator
 dev-perl/crypt-rsa 1.990.0-r1: RSA public-key cryptosystem
 dev-perl/data-buffer 0.40.0-r1: Read/write buffer class
-dev-perl/dbix-searchbuilder 1.630.0 1.650.0 1.660.0: Encapsulate SQL queries and rows in simple Perl objects
+dev-perl/dbix-searchbuilder 1.660.0: Encapsulate SQL queries and rows in simple Perl objects
 dev-perl/digest-bubblebabble 0.20.0-r1: Create bubble-babble fingerprints
 dev-perl/digest-md2 2.30.0-r1: Perl interface to the MD2 Algorithm
 dev-perl/encoding-warnings 0.110.0-r1: Warn on implicit encoding conversions
@@ -14790,8 +14790,8 @@ net-p2p/imule 2.3.2.3 2.3.2.3-r1: P2P sharing software which connects through I2
 net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software and KDE 4
 net-p2p/ktorrent 4.3.1-r1: A BitTorrent program for KDE
 net-p2p/linuxdcpp 1.0.3-r1: Direct connect client, looks and works like famous DC++
-net-p2p/litecoin-qt 0.10.2.2-r2: P2P Internet currency based on Bitcoin but easier to mine
-net-p2p/litecoind 0.10.2.2-r3: P2P Internet currency based on Bitcoin but easier to mine
+net-p2p/litecoin-qt 0.10.2.2-r3: P2P Internet currency based on Bitcoin but easier to mine
+net-p2p/litecoind 0.10.2.2-r4: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/microdc 0.11.0: A small command-line based Direct Connect client
 net-p2p/microdc2 0.15.6-r2: A small command-line based Direct Connect client
 net-p2p/mktorrent 1.0-r1: Simple command line utility to create BitTorrent metainfo files
