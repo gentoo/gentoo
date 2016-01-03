@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-MODULE_AUTHOR=PJCJ
-MODULE_VERSION=1.18
+EAPI=6
+
+DIST_AUTHOR=PJCJ
+DIST_VERSION=1.21
 inherit perl-module
 
 DESCRIPTION='Code coverage metrics for Perl'
@@ -20,7 +21,5 @@ DEPEND="
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		virtual/perl-Test-Simple
-		dev-perl/Test-Warn
 	)
 "
-SRC_TEST="do parallel"
