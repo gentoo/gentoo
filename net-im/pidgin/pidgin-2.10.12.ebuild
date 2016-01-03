@@ -1,21 +1,23 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
 GENTOO_DEPEND_ON_PERL=no
-PYTHON_COMPAT=( python2_7 python3_3 )
+PYTHON_COMPAT=( python2_7 python3_{3,4} )
+
 inherit autotools flag-o-matic eutils toolchain-funcs multilib perl-app gnome2 python-single-r1
 
 DESCRIPTION="GTK Instant Messenger client"
 HOMEPAGE="http://pidgin.im/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
+SRC_URI="
+	mirror://sourceforge/${PN}/${P}.tar.bz2
 	https://dev.gentoo.org/~polynomial-c/${PN}-eds-3.6.patch.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="dbus debug doc eds gadu gnutls +gstreamer +gtk idn meanwhile mxit"
 IUSE+=" networkmanager nls perl silc tcl tk spell sasl ncurses"
 IUSE+=" groupwise prediction python +xscreensaver zephyr zeroconf" # mono"
@@ -30,7 +32,7 @@ IUSE+=" aqua"
 RDEPEND="
 	>=dev-libs/glib-2.16
 	>=dev-libs/libxml2-2.6.18
-	ncurses? ( sys-libs/ncurses[unicode]
+	ncurses? ( sys-libs/ncurses:0=[unicode]
 		dbus? ( ${PYTHON_DEPS} )
 		python? ( ${PYTHON_DEPS} ) )
 	gtk? (
@@ -137,10 +139,12 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-2.10.0-gold.patch" \
-		"${WORKDIR}/${PN}-eds-3.6.patch" \
-		"${FILESDIR}/${PN}-2.10.9-fix-gtkmedia.patch" \
-		"${FILESDIR}/${PN}-2.10.10-eds-3.6-configure.ac.patch"
+	epatch \
+		"${FILESDIR}"/${PN}-2.10.0-gold.patch \
+		"${WORKDIR}"/${PN}-eds-3.6.patch \
+		"${FILESDIR}"/${PN}-2.10.9-fix-gtkmedia.patch \
+		"${FILESDIR}"/${PN}-2.10.10-eds-3.6-configure.ac.patch \
+		"${FILESDIR}"/${PN}-2.10.11-tinfo.patch
 	epatch_user
 
 	eautoreconf
