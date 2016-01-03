@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (03 Jan 2016)
+# Superseded by gnu-classpath. Removal in 30 days.
+dev-java/gjdoc
+
 # Pacho Ramos <pacho@gentoo.org> (01 Jan 2016)
 # Nothing requires this obsolete versions, bug #249418
 # Removal in a month.
