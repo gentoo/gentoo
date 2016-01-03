@@ -37,22 +37,23 @@ DOCS=(
 )
 
 src_prepare() {
-#	Prohibit setup from running xdg-* programs, resulting to sandbox violation
+	# Prohibit setup from running xdg-* programs, resulting to sandbox violation
 	cd "${S}/dispcalGUI" || die "Cannot cd to source directory."
 	sed -e 's/if which(\"xdg-icon-resource\"):/if which(\"xdg-icon-resource-non-existant\"):/' \
-	-e 's/if which(\"xdg-desktop-menu\"):/if which(\"xdg-desktop-menu-non-existant\"):/' \
-	-i postinstall.py || die "sed'ing out the xdg-* setup functions failed"
+		-e 's/if which(\"xdg-desktop-menu\"):/if which(\"xdg-desktop-menu-non-existant\"):/' \
+		-i postinstall.py || die "sed'ing out the xdg-* setup functions failed"
 
-#	Remove deprecated Encoding key from .desktop file
+	# Remove deprecated Encoding key from .desktop file
 	cd "${S}" || die "Cannot cd to work directory."
 	for offendingFile in $(grep -r -l "Encoding=UTF-8" .); do
 		sed -e '/Encoding=UTF-8/d' -i "${offendingFile}" || \
 		die "removing deprecated Encoding key from .desktop files failed"
 	done
 
-#   Remove x-world Media Type
-    cd "${S}/misc" || die "Cannot cd to misc directory."
-	sed -e 's/x\-world\/x\-vrml\;//g' -i "dispcalGUI-VRML-to-X3D-converter.desktop" || die "removing x-world media type failed"
+	# Remove x-world Media Type
+	cd "${S}/misc" || die "Cannot cd to misc directory."
+	sed -e 's/x\-world\/x\-vrml\;//g' -i "dispcalGUI-VRML-to-X3D-converter.desktop" \
+		|| die "removing x-world media type failed"
 
 	distutils-r1_src_prepare
 }
@@ -64,13 +65,15 @@ src_install() {
 }
 
 pkg_postinst() {
-#	Run xdg-* programs the Gentoo way since we removed this functionality from the original package
+	# Run xdg-* programs the Gentoo way since we removed this
+	# functionality from the original package
 	fdo-mime_mime_database_update
 	fdo-mime_desktop_database_update
 }
 
 pkg_postrm() {
-#	Run xdg-* programs the Gentoo way since we removed this functionality from the original package
+	# Run xdg-* programs the Gentoo way since we removed this
+	# functionality from the original package
 	fdo-mime_mime_database_update
 	fdo-mime_desktop_database_update
 }
