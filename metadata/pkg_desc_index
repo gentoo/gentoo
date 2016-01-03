@@ -3879,7 +3879,7 @@ dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components fo
 dev-java/ibm-jdk-bin 1.6.0.9_p1 1.6.0.9_p2 1.6.0.9_p2-r1: IBM Java SE Development Kit
 dev-java/ibm-jre-bin 1.6.0.9_p1 1.6.0.9_p2 1.6.0.9_p2-r1: IBM Java SE Runtime Environment
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
-dev-java/icedtea 6.1.13.9-r1 7.2.6.3-r2: A harness to build OpenJDK using Free Software build tools and dependencies
+dev-java/icedtea 6.1.13.9-r2 7.2.6.3-r3: A harness to build OpenJDK using Free Software build tools and dependencies
 dev-java/icedtea-bin 6.1.13.8-r1 6.1.13.9 7.2.6.3 7.2.6.3-r1: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.5.1-r1 1.6.1: FOSS Java browser plugin and Web Start implementation
@@ -7038,11 +7038,11 @@ dev-python/flask-login 0.2.11: Login session support for Flask
 dev-python/flask-mail 0.9.0 0.9.1: Flask extension for sending email
 dev-python/flask-migrate 1.2.0 1.3.0 1.3.1 1.4.0 1.7.0: SQLAlchemy database migrations for Flask applications using Alembic
 dev-python/flask-mongoengine 0.7.0 0.7.1: Flask support for MongoDB and with WTF model forms
-dev-python/flask-openid 1.2.3 1.2.4: OpenID support for Flask
-dev-python/flask-peewee 0.6.5 0.6.6: Flask integration layer for the Peewee ORM
+dev-python/flask-openid 1.2.3 1.2.4 1.2.5: OpenID support for Flask
+dev-python/flask-peewee 0.6.5 0.6.6 0.6.7: Flask integration layer for the Peewee ORM
 dev-python/flask-principal 0.4.0: Identity management for flask
 dev-python/flask-pymongo 0.3.0 0.3.1: PyMongo support for Flask
-dev-python/flask-restful 0.2.12 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4: Simple framework for creating REST APIs
+dev-python/flask-restful 0.2.12 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 0.3.5: Simple framework for creating REST APIs
 dev-python/flask-restless 0.15.0 0.16.0 0.17.0: Flask extension for easy ReSTful API generation
 dev-python/flask-script 2.0.5: Flask support for writing external scripts
 dev-python/flask-security 1.7.4: Simple security for Flask apps
@@ -11439,7 +11439,7 @@ lxqt-base/lxqt-qtplugin 0.7.0 0.8.0 0.9.0 0.10.0: LXQt system integration plugin
 lxqt-base/lxqt-runner 0.7.0-r1 0.8.0 0.9.0 0.10.0: LXQt quick launcher
 lxqt-base/lxqt-session 0.7.0-r1 0.8.0 0.9.0-r1 0.10.0: LXQT session manager
 lxqt-base/lxqt-sudo 0.10.0: LXQt GUI frontend for sudo
-mail-client/alot 0.3.6 0.3.7: Experimental terminal UI for net-mail/notmuch written in Python
+mail-client/alot 0.3.6 0.3.7-r1: Experimental terminal UI for net-mail/notmuch written in Python
 mail-client/alpine 2.00-r5 2.00-r6: alpine is an easy to use text-based based mail and news client
 mail-client/balsa 2.4.14 2.5.2 2.5.2-r1: Email client for GNOME
 mail-client/biabam 0.9.7: Biabam is a small commandline tool for sending mail attachments
