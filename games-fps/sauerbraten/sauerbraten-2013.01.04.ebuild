@@ -103,8 +103,8 @@ src_install() {
 		"${T}"/${PN}.conf || die
 	newconfd "${T}"/${PN}.conf ${PN}
 
-	nonfatal dodoc src/*.txt docs/dev/*.txt
-	nonfatal dohtml -r README.html docs/*
+	dodoc src/*.txt docs/dev/*.txt
+	dohtml -r README.html docs/*
 
 	prepgamesdirs
 }
