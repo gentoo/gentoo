@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ COMMON_DEPEND="
 	app-text/iso-codes
 	>=dev-libs/glib-2.38:2
 	>=x11-libs/gdk-pixbuf-2.21.3:2[introspection?]
-	>=x11-libs/gtk+-3.3.6:3[introspection?]
+	>=x11-libs/gtk+-3.3.6:3[X,introspection?]
 	>=x11-libs/libXext-1.1
 	>=x11-libs/libXrandr-1.3
 	x11-libs/cairo:=[X]
