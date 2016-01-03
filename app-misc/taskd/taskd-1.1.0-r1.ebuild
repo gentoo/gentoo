@@ -44,16 +44,24 @@ src_install() {
 	grep ^TASKDDATA= "${FILESDIR}"/taskd.confd > 90taskd
 	doenvd 90taskd
 
-	keepdir /usr/libexec/taskd /etc/taskd
+	dodir /etc/taskd
+	keepdir /usr/libexec/taskd
+
 	diropts -m 0750
 	dodir /var/lib/taskd
 	keepdir /var/log/taskd
+
 	diropts -m 0700
 	keepdir /var/lib/taskd/orgs /etc/taskd/tls
+
 	insopts -m0600
 	insinto /etc/taskd
 	doins "${FILESDIR}"/config
+
 	dosym /etc/taskd/config /var/lib/taskd/config
+
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}"/taskd.logrotate taskd
 }
 
 pkg_preinst() {
@@ -71,5 +79,7 @@ pkg_postinst() {
 	ewarn ""
 	ewarn "Do not use 'taskd init' as this will replace the config file and set"
 	ewarn "default but unsuitable paths"
+	ewarn ""
+	ewarn "In order to manage taskd via 'taskd' either relogin or run 'source /etc/profile'"
 	ewarn ""
 }
