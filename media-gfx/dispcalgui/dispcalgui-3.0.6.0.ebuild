@@ -50,6 +50,10 @@ src_prepare() {
 		die "removing deprecated Encoding key from .desktop files failed"
 	done
 
+#   Remove x-world Media Type
+    cd "${S}/misc" || die "Cannot cd to misc directory."
+	sed -e 's/x\-world\/x\-vrml\;//g' -i "dispcalGUI-VRML-to-X3D-converter.desktop" || die "removing x-world media type failed"
+
 	distutils-r1_src_prepare
 }
 
