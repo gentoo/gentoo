@@ -25,12 +25,12 @@ for mod in $STRONGSWAN_PLUGINS_OPT; do
 done
 
 COMMON_DEPEND="!net-misc/openswan
-	gmp? ( >=dev-libs/gmp-4.1.5 )
+	gmp? ( >=dev-libs/gmp-4.1.5:= )
 	gcrypt? ( dev-libs/libgcrypt:0 )
 	caps? ( sys-libs/libcap )
 	curl? ( net-misc/curl )
 	ldap? ( net-nds/openldap )
-	openssl? ( >=dev-libs/openssl-0.9.8[-bindist] )
+	openssl? ( >=dev-libs/openssl-0.9.8:=[-bindist] )
 	mysql? ( virtual/mysql )
 	sqlite? ( >=dev-db/sqlite-3.3.1 )
 	networkmanager? ( net-misc/networkmanager )
