@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
-
+EAPI=5
 MOD_DESC="Threewave CTF"
 MOD_NAME="Threewave CTF"
 MOD_DIR="threewave"

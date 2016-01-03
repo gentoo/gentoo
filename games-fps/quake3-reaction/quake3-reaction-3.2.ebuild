@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
-
+EAPI=5
 MOD_DESC="port of Action Quake 2 to Quake 3: Arena"
 MOD_NAME="Reaction"
 MOD_DIR="rq3"
