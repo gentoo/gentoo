@@ -1,0 +1,66 @@
+--- src/slirpvde/misc.c	2016-01-02 22:54:35.746094904 -0500
++++ src/slirpvde/misc.c.old	2016-01-02 22:54:33.152132668 -0500
+@@ -120,11 +120,15 @@ getouraddr()
+ struct quehead_32 {
+ 	u_int32_t qh_link;
+ 	u_int32_t qh_rlink;
+ };
+
++#ifdef __GNUC_GNU_INLINE__
+ inline void
++#else
++extern inline void
++#endif
+ insque_32(a, b)
+ 	void *a;
+ 	void *b;
+ {
+ 	register struct quehead_32 *element = (struct quehead_32 *) a;
+@@ -134,11 +134,15 @@ insque_32(a, b)
+ 	element->qh_rlink = (u_int32_t)head;
+ 	((struct quehead_32 *)(element->qh_link))->qh_rlink
+ 	= (u_int32_t)element;
+ }
+ 
++#ifdef __GNUC_GNU_INLINE__
+ inline void
++#else
++extern inline void
++#endif
+ remque_32(void *a)
+ {
+ 	register struct quehead_32 *element = (struct quehead_32 *) a;
+ 	((struct quehead_32 *)(element->qh_link))->qh_rlink = element->qh_rlink;
+ 	((struct quehead_32 *)(element->qh_rlink))->qh_link = element->qh_link;
+@@ -150,11 +150,15 @@ remque_32(void *a)
+ struct quehead {
+ 	struct quehead *qh_link;
+ 	struct quehead *qh_rlink;
+ };
+ 
++#ifdef __GNUC_GNU_INLINE__
+ inline void
++#else
++extern inline void
++#endif
+ insque(a, b)
+ 	void *a, *b;
+ {
+ 	register struct quehead *element = (struct quehead *) a;
+ 	register struct quehead *head = (struct quehead *) b;
+@@ -163,11 +163,15 @@ insque(a, b)
+ 	element->qh_rlink = (struct quehead *)head;
+ 	((struct quehead *)(element->qh_link))->qh_rlink
+ 	= (struct quehead *)element;
+ }
+ 
++#ifdef __GNUC_GNU_INLINE__
+ inline void
++#else
++extern inline void
++#endif
+ remque(a)
+      void *a;
+ {
+   register struct quehead *element = (struct quehead *) a;
+   ((struct quehead *)(element->qh_link))->qh_rlink = element->qh_rlink;
