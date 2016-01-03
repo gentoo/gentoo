@@ -25,7 +25,8 @@ RDEPEND="
 	dev-python/psutil[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	test? ( >=dev-python/pytest-2.3.5[${PYTHON_USEDEP}] )
+	test? ( >=dev-python/pytest-2.3.5[${PYTHON_USEDEP}]
+		dev-python/pytest-cache[${PYTHON_USEDEP}] )
 "
 
 python_test() {
