@@ -11,12 +11,6 @@
 		<flag name="entropy">
 			Enable Entropy backend
 		</flag>
-		<flag name="introspection">Use <pkg>dev-libs/gobject-introspection</pkg>
-			Enable introspection
-		</flag>
-		<flag name="pm-utils">
-			Add pm-utils (suspend/resume) functionalities
-		</flag>
 	</use>
 </pkgmetadata>
 
