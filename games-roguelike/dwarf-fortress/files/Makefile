@@ -17,7 +17,7 @@ OBJS := $(SRCS:.cpp=.o)
 BLIBS := ncursesw openal sndfile
 LIBS := glew glu gtk+-2.0 sdl SDL_image SDL_ttf zlib
 CXXFLAGS ?= -O2 -pipe -Wall -Wextra
-CXXFLAGS += -m32 $(shell $(PKG_CONFIG) --cflags $(BLIBS) $(LIBS)) -Dunix -Dlinux -fPIC -std=c++11
+CXXFLAGS += -m32 $(shell $(PKG_CONFIG) --cflags $(BLIBS) $(LIBS)) -Dunix -Dlinux -fPIC -std=c++11 -D_GLIBCXX_USE_CXX11_ABI=0
 LDLIBS := $(shell $(PKG_CONFIG) --libs $(LIBS))
 
 LG := libs/libgraphics.so
