@@ -6770,7 +6770,7 @@ dev-python/atpy 0.9.7: Astronomical tables support for Python
 dev-python/attrdict 2.0.0: A dict with attribute-style access
 dev-python/audioread 1.0.1: Module for decoding audio files using whichever backend is available
 dev-python/authres 0.701 0.702 0.800: Authentication Results Header Module
-dev-python/autobahn 0.9.4.2 0.10.4: WebSocket and WAMP for Twisted and Asyncio
+dev-python/autobahn 0.9.4.2 0.10.4 0.11.0: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automaton 0.8.0: Friendly state machines for python.
 dev-python/autopep8 1.0.4 1.1 1.1.1 1.2 1.2.1 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/axiom 0.6.0-r1 0.7.2 0.7.3: Object database implemented on top of SQLite
@@ -6863,7 +6863,7 @@ dev-python/colout 0.1: Adds color to arbitrary command output
 dev-python/columnize 0.3.5-r1 0.3.8: Format a simple (i.e. not nested) list into aligned columns
 dev-python/common 0.1.1: Common tools and data structures implemented in pure python
 dev-python/compizconfig-python 0.8.4-r5: Compizconfig Python Bindings
-dev-python/configargparse 0.9.3: A drop-in replacement for argparse that adds support for config files and/or environment variables
+dev-python/configargparse 0.9.3 0.10.0: A drop-in replacement for argparse that adds support for config files and/or environment variables
 dev-python/configclass 0.1.0: A Python to class to hold configuration values
 dev-python/configobj 4.7.2-r2 5.0.5 5.0.6: Simple config file reader and writer
 dev-python/configparser 3.3.0.2: Backport of Python-3 built-in configparser
@@ -7158,7 +7158,7 @@ dev-python/ipython_genutils 0.1.0: Vestigial utilities from IPython
 dev-python/ipywidgets 4.1.1: IPython HTML widgets for Jupyter
 dev-python/irc 11.0.1 13.2: IRC client framework written in Python
 dev-python/irman-python 0.1-r1: A minimal set of Python bindings for libirman
-dev-python/iso8601 0.1.10: Simple module to parse ISO 8601 dates
+dev-python/iso8601 0.1.10 0.1.11: Simple module to parse ISO 8601 dates
 dev-python/isodate 0.5.0 0.5.1 0.5.4: ISO 8601 date/time/duration parser and formater
 dev-python/itsdangerous 0.24: Various helpers to pass trusted data to untrusted environments and back
 dev-python/jaraco-classes 1.2: Classes used by other projects by developer jaraco
@@ -7404,7 +7404,7 @@ dev-python/pgmagick 0.5.10 0.5.11 0.6: Yet another boost.python based wrapper fo
 dev-python/pgpdump 1.5: PGP packet parser library
 dev-python/pickleshare 0.5: A small 'shelve' like datastore with concurrency support
 dev-python/piddle 1.0.15 1.0.15-r1: Cross-media, cross-platform 2D graphics package
-dev-python/pika 0.9.14: Pure-Python implementation of the AMQP
+dev-python/pika 0.9.14 0.10.0: Pure-Python implementation of the AMQP
 dev-python/pillow 2.8.1 2.8.2 2.9.0 3.0.0 3.0.0-r1: Python Imaging Library (fork)
 dev-python/pillowfight 0.2: Eases the transition from PIL to Pillow
 dev-python/pip 7.1.2: Installs python packages -- replacement for easy_install
@@ -7998,7 +7998,7 @@ dev-python/twisted-words 13.0.0-r1 13.2.0 14.0.0 14.0.1 14.0.2 15.1.0 15.2.1: Tw
 dev-python/twitter 1.14.3 1.15.0 1.16.0 1.17.0: An API and command-line toolset for Twitter (twitter.com)
 dev-python/twython 3.0.0 3.2.0 3.3.0: An easy (and up to date) way to access Twitter data with Python
 dev-python/txAMQP 0.6.2: Python library for communicating with AMQP peers using Twisted
-dev-python/txaio 1.0.0: a helper library for writing code unmodified on both Twisted and asyncio
+dev-python/txaio 1.0.0 2.2.0: a helper library for writing code unmodified on both Twisted and asyncio
 dev-python/txsocksx 1.13.0.3 1.15.0.2: Twisted client endpoints for SOCKS{4,4a,5}
 dev-python/tzlocal 1.1.2 1.2: tzinfo object for the local timezone
 dev-python/uhashring 0.4: Full featured consistent hashing python library compatible with ketama
@@ -10774,7 +10774,7 @@ gnome-extra/gnome-web-photo 0.10.6: A tool to generate images and thumbnails fro
 gnome-extra/gpointing-device-settings 1.5.1-r3: A GTK+ based configuration utility for the synaptics driver
 gnome-extra/gtkhtml 4.8.5 4.10.0: Lightweight HTML rendering/printing/editing engine
 gnome-extra/gucharmap 3.0.1-r200 3.16.2 3.18.2: Unicode character map viewer and library
-gnome-extra/libgda 5.2.2 5.2.4: GNOME database access library
+gnome-extra/libgda 5.2.2 5.2.4 5.2.4-r1: GNOME database access library
 gnome-extra/libgsf 1.14.33 1.14.34: The GNOME Structured File Library
 gnome-extra/mousetweaks 3.12.0: Mouse accessibility enhancements for the GNOME desktop
 gnome-extra/nautilus-actions 3.2.3 3.2.4: Configures programs to be launched when files are selected in Nautilus
