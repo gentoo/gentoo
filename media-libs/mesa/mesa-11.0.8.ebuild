@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 EGIT_REPO_URI="git://anongit.freedesktop.org/mesa/mesa"
 
-if [[ ${PV} = 9999* ]]; then
+if [[ ${PV} = 9999 ]]; then
 	GIT_ECLASS="git-r3"
 	EXPERIMENTAL="true"
 fi
@@ -23,15 +23,16 @@ FOLDER="${PV/_rc*/}"
 DESCRIPTION="OpenGL-like graphic library for Linux"
 HOMEPAGE="http://mesa3d.sourceforge.net/"
 
-if [[ $PV == 9999* ]]; then
+if [[ $PV == 9999 ]]; then
 	SRC_URI=""
+	KEYWORDS=""
 else
 	SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/${FOLDER}/${MY_P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 RESTRICT="!bindist? ( bindist )"
 
 INTEL_CARDS="i915 i965 ilo intel"
@@ -63,17 +64,18 @@ REQUIRED_USE="
 	video_cards_i965?   ( classic )
 	video_cards_ilo?    ( gallium )
 	video_cards_nouveau? ( || ( classic gallium ) )
-	video_cards_radeon? ( || ( classic gallium ) )
+	video_cards_radeon? ( || ( classic gallium )
+						  gallium? ( x86? ( llvm ) amd64? ( llvm ) ) )
 	video_cards_r100?   ( classic )
 	video_cards_r200?   ( classic )
-	video_cards_r300?   ( gallium llvm )
+	video_cards_r300?   ( gallium x86? ( llvm ) amd64? ( llvm ) )
 	video_cards_r600?   ( gallium )
 	video_cards_radeonsi?   ( gallium llvm )
 	video_cards_vmware? ( gallium )
 	${PYTHON_REQUIRED_USE}
 "
 
-LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.60"
+LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.64"
 # keep correct libdrm and dri2proto dep
 # keep blocks in rdepend for binpkg
 RDEPEND="
@@ -85,8 +87,6 @@ RDEPEND="
 	>=app-eselect/eselect-opengl-1.3.0
 	udev? ( kernel_linux? ( >=virtual/libudev-215:=[${MULTILIB_USEDEP}] ) )
 	>=dev-libs/expat-2.1.0-r3:=[${MULTILIB_USEDEP}]
-	gbm? ( >=virtual/libudev-215:=[${MULTILIB_USEDEP}] )
-	dri3? ( >=virtual/libudev-215:=[${MULTILIB_USEDEP}] )
 	>=x11-libs/libX11-1.6.2:=[${MULTILIB_USEDEP}]
 	>=x11-libs/libxshmfence-1.1:=[${MULTILIB_USEDEP}]
 	>=x11-libs/libXdamage-1.1.4-r1:=[${MULTILIB_USEDEP}]
@@ -94,7 +94,7 @@ RDEPEND="
 	>=x11-libs/libXxf86vm-1.1.3:=[${MULTILIB_USEDEP}]
 	>=x11-libs/libxcb-1.9.3:=[${MULTILIB_USEDEP}]
 	x11-libs/libXfixes:=[${MULTILIB_USEDEP}]
-	llvm? (
+	llvm? ( !kernel_FreeBSD? (
 		video_cards_radeonsi? ( || (
 			>=dev-libs/elfutils-0.155-r1:=[${MULTILIB_USEDEP}]
 			>=dev-libs/libelf-0.8.13-r2:=[${MULTILIB_USEDEP}]
@@ -104,21 +104,20 @@ RDEPEND="
 				>=dev-libs/elfutils-0.155-r1:=[${MULTILIB_USEDEP}]
 				>=dev-libs/libelf-0.8.13-r2:=[${MULTILIB_USEDEP}]
 				) )
-		)
+		) )
 		>=sys-devel/llvm-3.4.2:=[${MULTILIB_USEDEP}]
-		<sys-devel/llvm-3.7
 	)
 	opencl? (
 				app-eselect/eselect-opencl
 				dev-libs/libclc
-				|| (
+				!kernel_FreeBSD? ( || (
 					>=dev-libs/elfutils-0.155-r1:=[${MULTILIB_USEDEP}]
 					>=dev-libs/libelf-0.8.13-r2:=[${MULTILIB_USEDEP}]
-				)
+				) )
 			)
 	openmax? ( >=media-libs/libomxil-bellagio-0.9.3:=[${MULTILIB_USEDEP}] )
 	vaapi? ( >=x11-libs/libva-0.35.0:=[${MULTILIB_USEDEP}] )
-	vdpau? ( >=x11-libs/libvdpau-0.7:=[${MULTILIB_USEDEP}] )
+	vdpau? ( >=x11-libs/libvdpau-1.1:=[${MULTILIB_USEDEP}] )
 	wayland? ( >=dev-libs/wayland-1.2.0:=[${MULTILIB_USEDEP}] )
 	xvmc? ( >=x11-libs/libXvMC-1.0.8:=[${MULTILIB_USEDEP}] )
 	${LIBDRM_DEPSTRING}[video_cards_freedreno?,video_cards_nouveau?,video_cards_vmware?,${MULTILIB_USEDEP}]
@@ -134,6 +133,9 @@ for card in ${RADEON_CARDS}; do
 		video_cards_${card}? ( ${LIBDRM_DEPSTRING}[video_cards_radeon] )
 	"
 done
+RDEPEND="${RDEPEND}
+	video_cards_radeonsi? ( ${LIBDRM_DEPSTRING}[video_cards_amdgpu] )
+"
 
 DEPEND="${RDEPEND}
 	llvm? (
@@ -156,7 +158,7 @@ DEPEND="${RDEPEND}
 	>=x11-proto/xf86driproto-2.1.1-r1:=[${MULTILIB_USEDEP}]
 	>=x11-proto/xf86vidmodeproto-2.3.1-r1:=[${MULTILIB_USEDEP}]
 "
-[[ ${PV} == "9999" ]] && DEPEND+="
+[[ ${PV} == 9999 ]] && DEPEND+="
 	sys-devel/bison
 	sys-devel/flex
 	${PYTHON_DEPS}
@@ -219,7 +221,7 @@ multilib_src_configure() {
 	fi
 
 	if use egl; then
-		myconf+="--with-egl-platforms=x11$(use wayland && echo ",wayland")$(use gbm && echo ",drm") "
+		myconf+=" --with-egl-platforms=x11$(use wayland && echo ",wayland")$(use gbm && echo ",drm")"
 	fi
 
 	if use gallium; then
@@ -232,7 +234,7 @@ multilib_src_configure() {
 			$(use_enable xa)
 			$(use_enable xvmc)
 		"
-		use vaapi && myconf+="--with-va-libdir=/usr/$(get_libdir)/va/drivers"
+		use vaapi && myconf+=" --with-va-libdir=/usr/$(get_libdir)/va/drivers"
 
 		gallium_enable swrast
 		gallium_enable video_cards_vmware svga
@@ -264,7 +266,7 @@ multilib_src_configure() {
 
 	# x86 hardened pax_kernel needs glx-read-only-text, bug 240956
 	if [[ ${ABI} == x86 ]]; then
-		myconf+="$(use_enable pax_kernel glx-read-only-text)"
+		myconf+=" $(use_enable pax_kernel glx-read-only-text)"
 	fi
 
 	# on abi_x86_32 hardened we need to have asm disable
