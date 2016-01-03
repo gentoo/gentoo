@@ -8010,6 +8010,7 @@ dev-python/uritemplate 0.6: Python implementation of RFC6570, URI Template
 dev-python/urlgrabber 3.9.1-r2 3.10.1: Python module for downloading files
 dev-python/urllib3 1.9.1 1.10 1.10.3 1.10.4 1.12 1.13.1: HTTP library with thread-safe connection pooling, file post, and more
 dev-python/urwid 1.2.2 1.3.0 1.3.1: Curses-based user interface library for Python
+dev-python/urwidtrees 1.0.1.1: Tree widgets for urwid
 dev-python/utidylib 0.2-r2: TidyLib Python wrapper
 dev-python/utmp 0.4: utmp/wtmp reader
 dev-python/vatnumber 1.1: Module to validate VAT numbers
@@ -11438,7 +11439,7 @@ lxqt-base/lxqt-qtplugin 0.7.0 0.8.0 0.9.0 0.10.0: LXQt system integration plugin
 lxqt-base/lxqt-runner 0.7.0-r1 0.8.0 0.9.0 0.10.0: LXQt quick launcher
 lxqt-base/lxqt-session 0.7.0-r1 0.8.0 0.9.0-r1 0.10.0: LXQT session manager
 lxqt-base/lxqt-sudo 0.10.0: LXQt GUI frontend for sudo
-mail-client/alot 0.3.6: Experimental terminal UI for net-mail/notmuch written in Python
+mail-client/alot 0.3.6 0.3.7: Experimental terminal UI for net-mail/notmuch written in Python
 mail-client/alpine 2.00-r5 2.00-r6: alpine is an easy to use text-based based mail and news client
 mail-client/balsa 2.4.14 2.5.2 2.5.2-r1: Email client for GNOME
 mail-client/biabam 0.9.7: Biabam is a small commandline tool for sending mail attachments
