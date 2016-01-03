@@ -153,10 +153,10 @@ app-admin/multilog-watch 1.12: Watches a multilog file for irregularities
 app-admin/newsyslog 1.1: a highly configurable program for managing and archiving log files
 app-admin/ngxtop 0.0.2-r1 0.0.3_pre141201: real-time metrics for nginx server (and others)
 app-admin/openrc-settingsd 1.0.1: System settings D-Bus service for OpenRC
-app-admin/packagekit 0.7.4 0.8.15: PackageKit Package Manager interface (meta package)
-app-admin/packagekit-base 0.7.4 0.8.15-r1: Manage packages in a secure way using a cross-distro and cross-architecture API
-app-admin/packagekit-gtk 0.7.4 0.8.15: Gtk3 PackageKit backend library
-app-admin/packagekit-qt4 0.7.4 0.8.8: Qt4 PackageKit backend library
+app-admin/packagekit 0.8.15 1.0.11: PackageKit Package Manager interface (meta package)
+app-admin/packagekit-base 0.8.15-r1 1.0.11: Manage packages in a secure way using a cross-distro and cross-architecture API
+app-admin/packagekit-gtk 0.8.15 1.0.11: Gtk3 PackageKit backend library
+app-admin/packagekit-qt4 0.8.8 0.9.5: Qt4 PackageKit backend library
 app-admin/pass 1.6.5 9999: Stores, retrieves, generates, and synchronizes passwords securely using gpg, pwgen, and git
 app-admin/passook 20121001: Password generator capable of generating pronounceable and/or secure passwords
 app-admin/paxtest 0.9.14: PaX regression test suite
@@ -3740,7 +3740,7 @@ dev-java/classmate 0.9.0-r1: Library for introspecting generic type information 
 dev-java/cldc-api 1.1-r1: Java ME Connected Limited Device Configuration API
 dev-java/codemodel 2.6: Java library for code generators
 dev-java/cofoja 1.2: Contracts for Java
-dev-java/colt 1.2.0-r2 1.2.0-r3: A set of Open Source Libraries for High Performance Scientific and Technical Computing in Java
+dev-java/colt 1.2.0-r2 1.2.0-r3: Java Libraries for High Performance Scientific and Technical Computing
 dev-java/commons-beanutils 1.9.2: Provides easy-to-use wrappers around Reflection and Introspection APIs
 dev-java/commons-betwixt 0.8: Introspective Bean to XML mapper
 dev-java/commons-chain 1.2: API exposing the Chain of Responsability design pattern - by the ASF
@@ -10756,12 +10756,13 @@ gnome-extra/gnome-dvb-daemon 0.2.10 0.2.90: Setup your DVB devices, record and w
 gnome-extra/gnome-getting-started-docs 3.16.2 3.18.2: Help a new user get started in GNOME
 gnome-extra/gnome-integration-spotify 20131013 20140907: GNOME integration for Spotify
 gnome-extra/gnome-logs 3.16.2 3.18.1: Log messages and event viewer
-gnome-extra/gnome-packagekit 3.12.2: PackageKit client for the GNOME desktop
+gnome-extra/gnome-packagekit 3.12.2 3.18.0: PackageKit client for the GNOME desktop
 gnome-extra/gnome-power-manager 3.16.1 3.18.0: GNOME power management service
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extensions 3.16.2 3.18.2 3.18.2-r1 3.18.2-r2: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons 26 28: Shows legacy tray icons on top
 gnome-extra/gnome-shell-frippery 0.10.3 3.18.1: Unofficial extension pack providing GNOME 2-like features for GNOME 3
+gnome-extra/gnome-software 3.18.3: Gnome install & update software
 gnome-extra/gnome-system-monitor 3.16.0 3.18.2: The Gnome System Monitor
 gnome-extra/gnome-tweak-tool 3.16.2 3.18.1 3.18.1-r1: Tool to customize GNOME 3 options
 gnome-extra/gnome-user-docs 3.16.1 3.18.1: GNOME end user documentation

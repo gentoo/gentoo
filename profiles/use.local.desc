@@ -212,8 +212,6 @@ app-admin/openrc-settingsd:systemd - Use the versions of dbus and polkit files p
 app-admin/packagekit-base:command-not-found - Enable packagekit support on shell "command not found"
 app-admin/packagekit-base:cron - Install cron script for auto-update
 app-admin/packagekit-base:entropy - Enable Entropy backend
-app-admin/packagekit-base:introspection - Use dev-libs/gobject-introspection Enable introspection
-app-admin/packagekit-base:pm-utils - Add pm-utils (suspend/resume) functionalities
 app-admin/pass:X - Use x11-misc/xclip to copy passwords to the clipboard.
 app-admin/pass:dmenu - Add support for x11-misc/dmenu with the 'passmenu' program.
 app-admin/pass:fish-completion - Enable fish completion support.
