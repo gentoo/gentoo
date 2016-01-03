@@ -10779,7 +10779,7 @@ gnome-extra/libgsf 1.14.33 1.14.34: The GNOME Structured File Library
 gnome-extra/mousetweaks 3.12.0: Mouse accessibility enhancements for the GNOME desktop
 gnome-extra/nautilus-actions 3.2.3 3.2.4: Configures programs to be launched when files are selected in Nautilus
 gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
-gnome-extra/nautilus-sendto 3.8.1 3.8.2: A nautilus extension for sending files to locations
+gnome-extra/nautilus-sendto 3.8.1 3.8.2 3.8.2-r1: A nautilus extension for sending files to locations
 gnome-extra/nautilus-share 0.7.3-r1: A nautilus plugin to easily share folders over the SMB protocol
 gnome-extra/nautilus-tracker-tags 1.4.1 1.6.0 1.6.1: Nautilus extension to tag files for Tracker
 gnome-extra/nemo 2.6.7 2.8.4: A file manager for Cinnamon, forked from Nautilus
