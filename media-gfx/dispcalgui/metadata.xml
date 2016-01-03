@@ -3,14 +3,9 @@
 <pkgmetadata>
   <herd>proxy-maintainers</herd>
   <maintainer>
-    <email>opensource@andmarios.com</email>
-    <name>Marios Andreopoulos</name>
-    <description>Maintainer.</description>
-  </maintainer>
-  <maintainer>
-    <email>hwoarang@gentoo.org</email>
-    <name>Markos Chandras</name>
-    <description>Proxy maintainer.</description>
+    <email>gentoo@xayto.net</email>
+    <name>Craig Inches</name>
+    <description>Proxied maintainer; set to assignee in all bugs</description>
   </maintainer>
   <longdescription lang="en">
 </longdescription>

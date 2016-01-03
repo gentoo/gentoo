@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="Domain and host name validation"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa"
+KEYWORDS="amd64 ~hppa"
 IUSE="test"
 
 RDEPEND="

@@ -14,7 +14,7 @@ SRC_URI="http://${PN}.le-web.org/download/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="qt4"
 
 DEPEND="${PYTHON_DEPS}
