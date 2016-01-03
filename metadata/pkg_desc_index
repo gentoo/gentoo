@@ -2875,7 +2875,7 @@ dev-db/mariadb 5.5.46 5.5.47 10.0.21 10.0.22 10.0.22-r1 10.0.23 10.1.9 10.1.9-r1
 dev-db/mariadb-galera 10.0.22: An enhanced, drop-in replacement for MySQL with Galera Replication
 dev-db/maxscale 1.2.0: A content aware, plug-able MySQL proxy server
 dev-db/metakit 2.4.9.7-r2: Embedded database library
-dev-db/mongodb 2.4.13 2.4.14 2.6.8 2.6.11 3.0.5 3.0.6 3.0.6-r1 3.0.7 3.0.8 3.2.0: A high-performance, open source, schema-free document-oriented database
+dev-db/mongodb 2.6.8 2.6.11 3.0.5 3.0.6 3.0.6-r1 3.0.7 3.0.8 3.2.0: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.4.0 1.5.2 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.6.2: A high-performance multi-threaded backup (and restore) toolset for MySQL and Drizzle
@@ -15344,7 +15344,7 @@ sci-chemistry/molequeue 0.7.1 0.8.0: Abstract, manage and coordinate execution o
 sci-chemistry/molmol 2k_p2-r2 2k_p2-r3 2k_p2-r4 2k_p2-r5: Publication-quality molecular visualization package
 sci-chemistry/molscript 2.1.2-r2: Display molecular 3D structures, such as proteins, in both schematic and detailed representations
 sci-chemistry/molsketch 0.2.0-r1 0.3.0: A drawing tool for 2D molecular structures
-sci-chemistry/mongochem 0.7.0: Application for managing large collections of chemical data
+sci-chemistry/mongochem 0.7.0-r1: Application for managing large collections of chemical data
 sci-chemistry/mopac7 1.15 1.15-r1: Autotooled, updated version of a powerful, fast semi-empirical package
 sci-chemistry/mpqc 2.3.1-r1 2.3.1-r2 2.3.1-r3: The Massively Parallel Quantum Chemistry Program
 sci-chemistry/msms-bin 2.6.1-r1: MSMS allows to compute very efficiently triangulations of Solvent Excluded Surfaces
