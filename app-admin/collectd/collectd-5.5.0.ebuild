@@ -126,8 +126,9 @@ REQUIRED_USE="
 	collectd_plugins_python?		( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-5.4.1"-{libocci,lt}.patch
-	"${FILESDIR}/${PN}-4.10.3"-werror.patch
+	"${FILESDIR}/${PN}-5.4.1-libocci.patch"
+	"${FILESDIR}/${PN}-5.5.0-lt.patch"
+	"${FILESDIR}/${PN}-4.10.3-werror.patch"
 )
 
 # @FUNCTION: collectd_plugin_kernel_linux
@@ -220,7 +221,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
+	epatch ${PATCHES[@]}
 	epatch_user
 
 	# There's some strange prefix handling in the default config file, resulting in
