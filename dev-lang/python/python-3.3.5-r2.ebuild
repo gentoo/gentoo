@@ -19,8 +19,8 @@ SRC_URI="http://www.python.org/ftp/python/${PV}/${MY_P}.tar.xz
 
 LICENSE="PSF-2"
 SLOT="3.3"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE="build doc elibc_uclibc examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl +threads tk wininst +xml"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+IUSE="build doc elibc_uclibc examples gdbm hardened ipv6 +ncurses +readline sqlite +ssl +threads tk wininst +xml"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
 # If you need to apply a patch which requires python for bootstrapping, please
@@ -35,14 +35,11 @@ RDEPEND="app-arch/bzip2
 	!build? (
 		gdbm? ( sys-libs/gdbm[berkdb] )
 		ncurses? (
-			>=sys-libs/ncurses-5.2
+			>=sys-libs/ncurses-5.2:0
 			readline? ( >=sys-libs/readline-4.1 )
 		)
 		sqlite? ( >=dev-db/sqlite-3.3.8:3 )
-		ssl? (
-			!libressl? ( dev-libs/openssl:0 )
-			libressl? ( dev-libs/libressl )
-		)
+		ssl? ( dev-libs/openssl )
 		tk? (
 			>=dev-lang/tk-8.0
 			dev-tcltk/blt
@@ -75,7 +72,6 @@ src_prepare() {
 
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
 	epatch "${FILESDIR}/${PN}-3.3.5-ncurses-pkg-config.patch"
-	epatch "${FILESDIR}/${PN}-3.4-gcc-5.patch" #547626
 
 	sed -i -e "s:@@GENTOO_LIBDIR@@:$(get_libdir):g" \
 		Lib/distutils/command/install.py \
@@ -93,8 +89,6 @@ src_prepare() {
 
 	# bug #514686
 	epatch "${FILESDIR}/${PN}-3.3-CVE-2014-4616.patch"
-
-	epatch "${FILESDIR}"/${PN}-3.3-libressl.patch
 
 	epatch_user
 
