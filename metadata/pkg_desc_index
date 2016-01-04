@@ -11862,7 +11862,7 @@ media-gfx/freecad 0.12.5284-r4 0.13.1830-r1 0.14.3702-r1 0.15.4671 9999: QT base
 media-gfx/freepv 0.3.0-r4: Panorama viewer (Quicktime, PangeaVR, GLPanoView formats)
 media-gfx/freewrl 1.22.13-r4 2.3.3-r1 3.0.0 9999: VRML97 and X3D compliant browser, library, and web-browser plugin
 media-gfx/galleryadd 2.30: Perl script to recursively adds directories/images to Gallery
-media-gfx/geeqie 1.2-r1 1.2.1 1.2.2 1.2.2-r1: A lightweight GTK image viewer forked from GQview
+media-gfx/geeqie 1.2-r1 1.2.1 1.2.2 1.2.2-r1 1.2.2-r2: A lightweight GTK image viewer forked from GQview
 media-gfx/gif2apng 1.6 1.7 1.8 1.9: create an APNG from a GIF
 media-gfx/gif2png 2.5.8 2.5.9 2.5.10 2.5.11: Converts images from gif format to png format
 media-gfx/gifsicle 1.67 1.70 1.78 1.83 1.86 1.87 1.88: A command-line tool for creating, editing, and getting information about GIF images and animations
@@ -15512,8 +15512,9 @@ sci-geosciences/osmosis 0.35.1: Commandline tool to process openstreetmap data
 sci-geosciences/qgis 1.8.0 2.12.1 2.12.2: User friendly Geographic Information System
 sci-geosciences/qlandkartegt 1.7.6-r2 1.7.7 1.8.0 1.8.1: View and upload map files, track and waypoint data to your Garmin GPS device
 sci-geosciences/qlandkartegt-garmindev 0.3.4: Garmin drivers for qlandkartegt
-sci-geosciences/qmapshack 1.3.0: GPS mapping utility
+sci-geosciences/qmapshack 1.3.0 1.5.1: GPS mapping utility
 sci-geosciences/readosm 1.0.0: A complete Spatial DBMS in a nutshell built upon sqlite
+sci-geosciences/routino 3.0_p1: Routing application based on openstreetmap data
 sci-geosciences/seawater 2.0.1 3.3.2 3.3.3 3.3.4: Python version of the SEAWATER 3.2 MATLAB toolkit for calculating the properties of sea water
 sci-geosciences/swmm 5.0.022: Storm Water Management Model - SWMM, hydrology, hydraulics, and water quality model
 sci-geosciences/tappy 0.9.0: Tidal Analysis in Python breaks hourly water level into tidal components
@@ -16356,7 +16357,7 @@ sys-apps/pacman 4.0.1 4.0.3 4.0.3-r1: Archlinux's binary package manager
 sys-apps/paludis 1.4.2-r1 2.0.0 2.2.0 2.2.0-r2 2.4.0 9999: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
 sys-apps/paxctld 1.0 1.0.1: PaX flags maintenance daemon
-sys-apps/pciutils 3.2.0 3.3.1 3.4.0: Various utilities dealing with the PCI bus
+sys-apps/pciutils 3.2.0 3.3.1 3.4.0 3.4.1: Various utilities dealing with the PCI bus
 sys-apps/pcmciautils 018_p8 018_p8-r1: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.8.12-r1 1.8.13 1.8.13-r1 1.8.14: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r1 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
