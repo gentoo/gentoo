@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 RDEPEND="
-	$(add_kdeapps_dep konsole)
+	|| ( $(add_kdeapps_dep konsolepart) $(add_kdeapps_dep konsole) )
 	$(add_kdeapps_dep libkonq)
 "
 DEPEND="${RDEPEND}"
