@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 inherit multilib toolchain-funcs eutils
 if [[ ${PV} == "9999" ]] ; then
@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-2
 else
 	SRC_URI="mirror://kernel/software/utils/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 fi
 
 DESCRIPTION="Open Firmware device tree compiler"
@@ -38,11 +38,6 @@ src_prepare() {
 		Makefile || die
 	tc-export AR CC
 	export V=1
-}
-
-src_test() {
-	# Enable parallel tests.
-	emake check
 }
 
 src_install() {

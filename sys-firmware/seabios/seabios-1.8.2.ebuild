@@ -38,11 +38,14 @@ REQUIRED_USE="debug? ( !binary )
 	!amd64? ( !x86? ( binary ) )"
 
 # The amd64/x86 check is needed to workaround #570892.
+SOURCE_DEPEND="
+	>=sys-power/iasl-20060912
+	${PYTHON_DEPS}"
 DEPEND="
-	amd64? ( x86? ( !binary? (
-		>=sys-power/iasl-20060912
-		${PYTHON_DEPS}
-	) ) )"
+	!binary? (
+		amd64? ( ${SOURCE_DEPEND} )
+		x86? ( ${SOURCE_DEPEND} )
+	)"
 RDEPEND=""
 
 pkg_pretend() {
