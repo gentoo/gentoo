@@ -4,13 +4,17 @@
 
 EAPI="5"
 
+AT_M4DIR="config"
+AUTOTOOLS_AUTORECONF="1"
+AUTOTOOLS_IN_SOURCE_BUILD="1"
+
 if [ ${PV} == "9999" ]; then
 	AUTOTOOLS_AUTORECONF="1"
 	EGIT_REPO_URI="https://github.com/zfsonlinux/zfs.git"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/zfs-${PV}.tar.gz
-		https://dev.gentoo.org/~ryao/dist/zfs-${PV}-patches-p0.tar.xz"
+		https://dev.gentoo.org/~ryao/dist/zfs-${PV}-patches-p1.tar.xz"
 	S="${WORKDIR}/zfs-${PV}"
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
 fi
