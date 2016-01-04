@@ -4,6 +4,11 @@
 
 # This file requires >=portage-2.1.1
 
+# Ian Delaney <idella4@gentoo.org> (04 Jan 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# media-libs/libsdl2 lacks ppc32 keyword. See bug #508226.
+media-video/mpv sdl
+
 # Anthony G. Basile <blueness@gentoo.org> (26 Oct 2015)
 # Mask x265 on vlc for bug #564138
 media-video/vlc x265
