@@ -4141,7 +4141,7 @@ dev-java/odfdom 0.8.6-r1: The ODFDOM reference implementation, written in Java
 dev-java/offo-hyphenation 2.0: Hyphenation patterns for Apache Fop
 dev-java/ognl 2.6.9-r2 3.0.8: Object-Graph Navigation Language; an expression language for getting/setting properties of objects
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
-dev-java/oracle-javamail 1.5.2: A Java-based framework to build multiplatform mail and messaging applications
+dev-java/oracle-javamail 1.5.2 1.5.5: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/oracle-jdk-bin 1.7.0.80 1.8.0.65-r1 1.8.0.66 1.8.0.66-r1: Oracle's Java SE Development Kit
 dev-java/oracle-jre-bin 1.7.0.80 1.8.0.66 1.8.0.66-r1: Oracle's Java SE Runtime Environment
 dev-java/oscache 2.0.2-r3: OSCache is a widely used, high performance J2EE caching framework
@@ -14958,6 +14958,7 @@ net-wireless/gr-iqbal 0.36.0 0.37.2 9999: gnuradio I/Q balancing
 net-wireless/gr-osmosdr 0.1.4 0.1.4_p20150730 9999: GNU Radio source block for OsmoSDR and rtlsdr and hackrf
 net-wireless/gr-paint 9999: paints monochrome images into the waterfall of a receiver
 net-wireless/gr-rds 9999: gnuradio FM RDS Receiver
+net-wireless/gr-scan 20160104: Frequency scanner for GNU Radio
 net-wireless/hackrf-tools 2015.07.2-r1 9999: tools for communicating with HackRF SDR platform
 net-wireless/hidclient 20120728: Use your machine as a bluetooh keyboard/mouse
 net-wireless/horst 4.2 9999: Small 802.11 wireless LAN analyzer
