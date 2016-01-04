@@ -32,3 +32,6 @@ RDEPEND="${DEPEND}
 	dev-qt/qtgraphicaleffects:5
 	!kde-misc/kscreen
 "
+
+# requires running session
+RESTRICT="test"
