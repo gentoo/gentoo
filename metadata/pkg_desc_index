@@ -5431,7 +5431,7 @@ dev-perl/Digest-Nilsimsa 0.60.0-r1: Digest::Nilsimsa - Perl version of Nilsimsa 
 dev-perl/Digest-Perl-MD5 1.800.0-r1 1.900.0: Pure perl implementation of MD5
 dev-perl/Digest-SHA1 2.130.0-r1: NIST SHA message digest algorithm
 dev-perl/Dist-CheckConflicts 0.20.0-r1: Declare version conflicts for your dist
-dev-perl/EV 4.150.0-r1 4.180.0: Perl interface to libev, a high performance full-featured event loop
+dev-perl/EV 4.180.0 4.220.0: Perl interface to libev, a high performance full-featured event loop
 dev-perl/Emacs-PDE 0.2.16-r1: Perl Develop Environment in Emacs
 dev-perl/Email-Abstract 3.3.0-r1 3.7.0: unified interface to mail representations
 dev-perl/Email-Address 1.905.0 1.907.0 1.908.0: RFC 2822 Address Parsing and Creation
@@ -5448,11 +5448,11 @@ dev-perl/Email-MIME-ContentType 1.16.0-r1: Parse a MIME Content-Type Header
 dev-perl/Email-MIME-Encodings 1.315.0-r1: A unified interface to MIME encoding and decoding
 dev-perl/Email-MessageID 1.402.0-r1 1.405.0 1.406.0: Generate world unique message-ids
 dev-perl/Email-Reply 1.203.0-r1 1.204.0: Reply to a Message
-dev-perl/Email-Send 2.198.0-r1 2.199.0-r1 2.201.0: Simply Sending Email
+dev-perl/Email-Send 2.198.0-r1 2.201.0: Simply Sending Email
 dev-perl/Email-Send-Gmail 0.330.0: Send Messages using Gmail
 dev-perl/Email-Sender 1.300.16: A library for sending email
 dev-perl/Email-Simple 2.203 2.206.0 2.208.0: Simple parsing of RFC2822 message format and headers
-dev-perl/Email-Valid 1.192.0-r1 1.196.0: Check validity of Internet email addresses
+dev-perl/Email-Valid 1.192.0-r1 1.196.0 1.198.0: Check validity of Internet email addresses
 dev-perl/Encode-Detect 1.10.0-r1: Encode::Detect - An Encode::Encoding subclass that detects the encoding of data
 dev-perl/Encode-EUCJPASCII 0.03: An eucJP-open mapping
 dev-perl/Encode-HanConvert 0.350.0-r1: Traditional and Simplified Chinese mappings
@@ -5461,12 +5461,12 @@ dev-perl/Encode-IMAPUTF7 1.50.0-r1: Modification of UTF-7 encoding for IMAP
 dev-perl/Encode-JIS2K 0.02 0.30.0: JIS X 0212 (aka JIS 2000) Encodings
 dev-perl/Encode-Locale 1.30.0-r1: Determine the locale encoding
 dev-perl/Encode-compat 0.70.0-r1: Encode.pm emulation layer
-dev-perl/Error 0.170.210 0.170.230 0.170.240: Error/exception handling in an OO-ish way
+dev-perl/Error 0.170.210 0.170.240: Error/exception handling in an OO-ish way
 dev-perl/Eval-Closure 0.80.0-r1 0.130.0: safely and cleanly create closures via string eval
 dev-perl/Eval-LineNumbers 0.340.0: Add line numbers to hereis blocks that contain perl source code
 dev-perl/Event 1.210.0 1.240.0: Fast, generic event loop
 dev-perl/Event-ExecFlow 0.640.0-r1: High level API for event-based execution flow control
-dev-perl/Event-RPC 1.30.0 1.50.0: Event based transparent Client/Server RPC framework
+dev-perl/Event-RPC 1.50.0: Event based transparent Client/Server RPC framework
 dev-perl/Exception-Base 0.250-r1 0.250.0-r2: Error handling with exception class
 dev-perl/Exception-Class 1.370.0-r1 1.390.0: A module that allows you to declare real exception classes in Perl
 dev-perl/Exception-Died 0.60.0-r1: Convert simple die into real exception object
@@ -11881,7 +11881,7 @@ media-gfx/gnome-raw-thumbnailer 3.0.0: A lightweight and fast raw image thumbnai
 media-gfx/gnome-screenshot 3.16.2 3.18.0: Screenshot utility for GNOME
 media-gfx/gnome-specimen 0.4-r1: Font preview application
 media-gfx/gozer 0.7-r2: tool for rendering arbitrary text as graphics, using ttfs and styles
-media-gfx/gphoto2 2.5.6 2.5.8: Free, redistributable digital camera software application
+media-gfx/gphoto2 2.5.6 2.5.8 2.5.9: Free, redistributable digital camera software application
 media-gfx/gphotofs 0.5: FUSE file system for interfacing with digital cameras using gphoto2
 media-gfx/gpicview 0.2.4: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r1: A GTK-based image browser
@@ -12227,7 +12227,7 @@ media-libs/libggiwmh 0.3.2: Library for General Graphics Interface
 media-libs/libgig 3.3.0 4.0.0: a C++ library for loading Gigasampler files and DLS (Downloadable Sounds) Level 1/2 files
 media-libs/libgii 1.0.2-r1: Fast and safe graphics and drivers for about any graphics card to the Linux kernel (sometimes)
 media-libs/libgltf 0.0.1 0.0.2 9999: C++ Library for rendering OpenGL models stored in glTF format
-media-libs/libgphoto2 2.5.7 2.5.8: Library that implements support for numerous digital cameras
+media-libs/libgphoto2 2.5.7 2.5.8 2.5.9: Library that implements support for numerous digital cameras
 media-libs/libgpod 0.8.3: Shared library to access the contents of an iPod
 media-libs/libgroove 4.3.0: Streaming audio processing library.
 media-libs/libharu 2.3.0-r1: C/C++ library for PDF generation
