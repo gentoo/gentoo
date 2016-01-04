@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -46,8 +46,8 @@ src_configure() {
 		$(use_enable introspection) \
 		--disable-examples \
 		--without-gtk \
-	        --with-package-name="GStreamer editing services ebuild for Gentoo" \
-        	--with-package-origin="https://packages.gentoo.org/package/media-libs/gstreamer-editing-services"
+		--with-package-name="GStreamer editing services ebuild for Gentoo" \
+		--with-package-origin="https://packages.gentoo.org/package/media-libs/gstreamer-editing-services"
 }
 
 src_compile() {
