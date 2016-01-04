@@ -10,7 +10,7 @@ inherit gnome2
 DESCRIPTION="A tool to generate images and thumbnails from HTML files"
 HOMEPAGE="https://git.gnome.org/browse/gnome-web-photo/"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
