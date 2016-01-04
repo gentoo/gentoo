@@ -12,7 +12,7 @@ SRC_URI="http://www.lua.org/ftp/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~arm-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~arm-linux ~x86-linux ~ppc-aix ~x64-freebsd ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+deprecated emacs readline static"
 
 RDEPEND="readline? ( >=sys-libs/readline-6.2_p5-r1[${MULTILIB_USEDEP}] )"
@@ -29,6 +29,12 @@ src_prepare() {
 
 	epatch "${FILESDIR}"/${PN}-${PATCH_PV}-make-r1.patch
 	epatch "${FILESDIR}"/${PN}-${PATCH_PV}-module_paths.patch
+
+	# use glibtool on Darwin (versus Apple libtool)
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		sed -i -e '/LIBTOOL = /s:libtool:glibtool:' \
+			Makefile src/Makefile || die
+	fi
 
 	#EPATCH_SOURCE="${FILESDIR}/${PV}" EPATCH_SUFFIX="upstream.patch" epatch
 
