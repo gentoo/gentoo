@@ -15,12 +15,13 @@ LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux"
 IUSE="
-	alsa coreaudio debug oss portaudio pulseaudio qt4
+	alsa coreaudio debug jack oss portaudio pulseaudio qt4
 	cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1
 	neon
 "
 
 RDEPEND="alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
+	jack? ( media-sound/jack-audio-connection-kit[${MULTILIB_USEDEP}] )
 	portaudio? ( >=media-libs/portaudio-19_pre20111121-r1[${MULTILIB_USEDEP}] )
 	pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] )
 	qt4? ( dev-qt/qtgui:4 dev-qt/qtcore:4 )
@@ -35,20 +36,13 @@ S=${WORKDIR}/${MY_P}
 
 DOCS="alsoftrc.sample env-vars.txt hrtf.txt ChangeLog README"
 
-PATCHES=(
-	"${FILESDIR}/${P}-jackfix.patch"
-)
-
-src_prepare() {
-	epatch "${PATCHES[@]}"
-}
-
 src_configure() {
 	# -DEXAMPLES=OFF to avoid FFmpeg dependency wrt #481670
 	my_configure() {
 		local mycmakeargs=(
 			"-DALSOFT_BACKEND_ALSA=$(usex alsa ON OFF)"
 			"-DALSOFT_BACKEND_COREAUDIO=$(usex coreaudio ON OFF)"
+			"-DALSOFT_BACKEND_JACK=$(usex jack ON OFF)"
 			"-DALSOFT_BACKEND_OSS=$(usex oss ON OFF)"
 			"-DALSOFT_BACKEND_PORTAUDIO=$(usex portaudio ON OFF)"
 			"-DALSOFT_BACKEND_PULSEAUDIO=$(usex pulseaudio ON OFF)"
