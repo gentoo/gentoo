@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,8 +32,8 @@ RDEPEND="dev-libs/atk
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/freetype
-	media-libs/gst-plugins-base
-	media-libs/gstreamer
+	media-libs/gst-plugins-base:0.10
+	media-libs/gstreamer:0.10
 	media-libs/libcanberra[gtk]
 	media-libs/libogg
 	media-libs/libpng:1.2
