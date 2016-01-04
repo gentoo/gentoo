@@ -7,6 +7,7 @@ sys-devel/autoconf
 sys-devel/automake
 sys-kernel/linux-headers
 sys-libs/glibc
+sys-libs/musl
 sys-libs/uclibc
 sys-freebsd/freebsd-lib
 sys-devel/binutils
