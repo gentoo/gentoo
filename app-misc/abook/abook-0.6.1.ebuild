@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=3
-
-inherit eutils
+EAPI=5
+inherit autotools
 
 MY_P="${P/_/}"
 DESCRIPTION="Abook is a text-based addressbook program designed to use with mutt mail client"
@@ -13,23 +12,28 @@ SRC_URI="http://abook.sourceforge.net/devel/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 IUSE="nls"
 
 RDEPEND="sys-libs/ncurses
 	sys-libs/readline
+	dev-libs/libvformat
 	nls? ( virtual/libintl )"
 DEPEND="nls? ( sys-devel/gettext )"
 
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-vcard-import.patch
-	epatch "${FILESDIR}"/${P}-vcard-fix.patch
+	# TODO: do the right thing and find out whats wrong with Makefile.in
+	eautoreconf
 }
 
 src_configure() {
-	econf $(use_enable nls)
+	econf \
+		--with-curses \
+		--with-readline \
+		--enable-vformat \
+		$(use_enable nls)
 }
 
 src_compile() {
@@ -38,6 +42,6 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
-	dodoc BUGS ChangeLog FAQ README TODO sample.abookrc || die "dodoc failed"
+	emake DESTDIR="${D}" install
+	dodoc BUGS ChangeLog FAQ README TODO sample.abookrc
 }
