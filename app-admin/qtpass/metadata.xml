@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
+	</maintainer>
+	<longdescription>
+QtPass is a multi-platform GUI for pass, the standard unix password manager.
+	</longdescription>
+	<upstream>
+		<changelog>https://github.com/IJHack/qtpass/releases</changelog>
+		<doc>https://github.com/IJHack/qtpass/wiki</doc>
+		<bugs-to>https://github.com/IJHack/qtpass/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
