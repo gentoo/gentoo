@@ -40,6 +40,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig:0
 	nls? ( >=sys-devel/gettext-0.18.1:0 )"
 
+pkg_setup() {
+	python-any-r1_pkg_setup
+}
+
 src_prepare() {
 	python_fix_shebang .
 	gnome2_src_prepare
@@ -49,15 +53,10 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
-	if use totem ; then
-			myconf = "${myconf} --with-totem-plugin-dir=/usr/$(get_libdir)/totem/plugins"
-	fi
 	gnome2_src_configure \
 		$(use_enable nls) \
 		$(use_enable totem totem-plugin) \
-		${myconf}
-	python-any-r1_pkg_setup
+		$(usex totem '--with-totem-plugin-dir=/usr/$(get_libdir)/totem/plugins' '')
 }
 
 pkg_postinst() {
