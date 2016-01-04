@@ -4,10 +4,10 @@ DESCRIPTION=A GiNaC-based library for symbolic expansion of certain transcendent
 EAPI=3
 HOMEPAGE=http://wwwthep.physik.uni-mainz.de/~stefanw/nestedsums/
 IUSE=doc
-KEYWORDS=~x86
+KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=sci-mathematics/ginac-1.5
 SLOT=0
 SRC_URI=http://wwwthep.physik.uni-mainz.de/~stefanw/download/nestedsums-1.4.12.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=6173ba55bc0c446cb0ed79ecfc3e34f5
+_md5_=e1102c745a4cb88dadb3c7934c20a9eb
