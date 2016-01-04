@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	sed -ie "s/\$(FLAGS) -o wmtop/\$(DEBUG) \$(LDFLAGS) -D\$(OS) -o wmtop/" Makefile || die "sed failed"
 	epatch "${FILESDIR}"/${P}-meminfo.patch
+	epatch "${FILESDIR}"/${P}-list.patch
 }
 
 src_compile() {
