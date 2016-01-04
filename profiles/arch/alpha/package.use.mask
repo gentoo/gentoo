@@ -159,10 +159,6 @@ media-video/ffmpeg x265
 # Missing keywords on dev-python/rst2pdf, bug #515222
 media-video/mpv doc-pdf
 
-# Julian Ospald <hasufell@gentoo.org> (20 Apr 2014)
-# Missing keywords, bug #508226
-media-video/mpv sdl
-
 # Pacho Ramos <pacho@gentoo.org> (15 Mar 2014)
 # Missing keywords, bug #504672
 >=net-misc/vinagre-3.10 rdp
