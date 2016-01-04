@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -174,6 +174,9 @@ src_configure() {
 
 	mozconfig_init
 	mozconfig_config
+
+	# We want rpath support to prevent unneeded hacks on different libc variants
+	append-ldflags -Wl,-rpath="${MOZILLA_FIVE_HOME}"
 
 	# It doesn't compile on alpha without this LDFLAGS
 	use alpha && append-ldflags "-Wl,--no-relax"
