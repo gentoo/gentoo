@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ inherit eutils distutils-r1 gnome2-utils
 MY_P="Electrum-${PV}"
 DESCRIPTION="User friendly Bitcoin client"
 HOMEPAGE="https://electrum.org/"
-SRC_URI="https://download.electrum.org/${MY_P}.tar.gz"
+SRC_URI="https://download.electrum.org/${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
