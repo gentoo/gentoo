@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ if [[ ${PV} = *9999* || ! -z "${EGIT_COMMIT}" ]]; then
 	EGIT_REPO_URI="git://git.seabios.org/seabios.git"
 	inherit git-2
 else
-	KEYWORDS="amd64 ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd"
 	# Upstream hasn't released a new binary.  We snipe ours from Fedora for now.
 	# http://code.coreboot.org/p/seabios/downloads/get/bios.bin-${PV}.gz
 	SRC_URI="!binary? ( http://code.coreboot.org/p/seabios/downloads/get/${P}.tar.gz )
@@ -35,14 +35,14 @@ SLOT="0"
 IUSE="+binary debug +seavgabios"
 
 REQUIRED_USE="debug? ( !binary )
-	ppc? ( binary )
-	ppc64? ( binary )"
+	!amd64? ( !x86? ( binary ) )"
 
+# The amd64/x86 check is needed to workaround #570892.
 DEPEND="
-	!binary? (
+	amd64? ( x86? ( !binary? (
 		>=sys-power/iasl-20060912
 		${PYTHON_DEPS}
-	)"
+	) ) )"
 RDEPEND=""
 
 pkg_pretend() {
