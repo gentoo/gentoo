@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit autotools eutils multilib-minimal
+inherit eutils multilib-minimal
 
 MY_P=SDL2_ttf-${PV}
 DESCRIPTION="library that allows you to use TrueType fonts in SDL applications"
