@@ -1,8 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=3
+inherit eutils
 
 DESCRIPTION="a dockapp cpu monitor with spinning 3d objects"
 HOMEPAGE="http://kling.mine.nu/kling/wmcube.htm"
@@ -25,6 +26,9 @@ S="${WORKDIR}/${P}/wmcube"
 src_prepare() {
 	#Honour Gentoo LDFLAGS, see bug #337893.
 	sed -e "s/-o wmcube/${LDFLAGS} -o wmcube/" -i Makefile
+
+	cd "${WORKDIR}"/${P} || die
+	epatch "${FILESDIR}"/${P}-list.patch
 }
 
 src_compile() {
