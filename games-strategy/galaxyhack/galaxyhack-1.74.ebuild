@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,6 +30,7 @@ src_prepare() {
 		"${FILESDIR}"/${P}-boost.patch \
 		"${FILESDIR}"/${P}-gcc43.patch \
 		"${FILESDIR}"/${P}-boost-1.50.patch \
+		"${FILESDIR}"/${P}-format.patch \
 		"${FILESDIR}"/${P}-gentoo.patch
 	sed -i "s:@GAMES_DATADIR@:${GAMES_DATADIR}:" \
 		Main.cpp || die
