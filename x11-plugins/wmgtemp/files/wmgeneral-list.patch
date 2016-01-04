@@ -1,0 +1,129 @@
+diff --git a/wmgeneral/list.c b/wmgeneral/list.c
+index a63562f..0b69885 100644
+--- a/wmgeneral/list.c
++++ b/wmgeneral/list.c
+@@ -38,7 +38,7 @@ Boston, MA 02110-1301 USA.  */
+ 
+ /* Return a cons cell produced from (head . tail) */
+ 
+-INLINE LinkedList*
++LinkedList*
+ list_cons(void* head, LinkedList* tail)
+ {
+   LinkedList* cell;
+@@ -51,7 +51,7 @@ list_cons(void* head, LinkedList* tail)
+ 
+ /* Return the length of a list, list_length(NULL) returns zero */
+ 
+-INLINE int
++int
+ list_length(LinkedList* list)
+ {
+   int i = 0;
+@@ -66,7 +66,7 @@ list_length(LinkedList* list)
+ /* Return the Nth element of LIST, where N count from zero.  If N
+    larger than the list length, NULL is returned  */
+ 
+-INLINE void*
++void*
+ list_nth(int index, LinkedList* list)
+ {
+   while(index-- != 0)
+@@ -81,7 +81,7 @@ list_nth(int index, LinkedList* list)
+ 
+ /* Remove the element at the head by replacing it by its successor */
+ 
+-INLINE void
++void
+ list_remove_head(LinkedList** list)
+ {
+   if (!*list) return;
+@@ -101,7 +101,7 @@ list_remove_head(LinkedList** list)
+ 
+ /* Remove the element with `car' set to ELEMENT */
+ /*
+-INLINE void
++void
+ list_remove_elem(LinkedList** list, void* elem)
+ {
+   while (*list)
+@@ -112,7 +112,7 @@ list_remove_elem(LinkedList** list, void* elem)
+     }
+ }*/
+ 
+-INLINE LinkedList *
++LinkedList *
+ list_remove_elem(LinkedList* list, void* elem)
+ {
+     LinkedList *tmp;
+@@ -132,7 +132,7 @@ list_remove_elem(LinkedList* list, void* elem)
+ 
+ /* Return element that has ELEM as car */
+ 
+-INLINE LinkedList*
++LinkedList*
+ list_find(LinkedList* list, void* elem)
+ {
+   while(list)
+@@ -146,7 +146,7 @@ list_find(LinkedList* list, void* elem)
+ 
+ /* Free list (backwards recursive) */
+ 
+-INLINE void
++void
+ list_free(LinkedList* list)
+ {
+   if(list)
+@@ -158,7 +158,7 @@ list_free(LinkedList* list)
+ 
+ /* Map FUNCTION over all elements in LIST */
+ 
+-INLINE void
++void
+ list_mapcar(LinkedList* list, void(*function)(void*))
+ {
+   while(list)
+diff --git a/wmgeneral/list.h b/wmgeneral/list.h
+index 92c3454..3d6bad5 100644
+--- a/wmgeneral/list.h
++++ b/wmgeneral/list.h
+@@ -29,31 +29,25 @@ Boston, MA 02110-1301 USA.  */
+ #ifndef __LIST_H_
+ #define __LIST_H_
+ 
+-#if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+-# define INLINE inline
+-#else
+-# define INLINE
+-#endif
+-
+ typedef struct LinkedList {
+   void *head;
+   struct LinkedList *tail;
+ } LinkedList;
+ 
+-INLINE LinkedList* list_cons(void* head, LinkedList* tail);
++LinkedList* list_cons(void* head, LinkedList* tail);
+ 
+-INLINE int list_length(LinkedList* list);
++int list_length(LinkedList* list);
+ 
+-INLINE void* list_nth(int index, LinkedList* list);
++void* list_nth(int index, LinkedList* list);
+ 
+-INLINE void list_remove_head(LinkedList** list);
++void list_remove_head(LinkedList** list);
+ 
+-INLINE LinkedList *list_remove_elem(LinkedList* list, void* elem);
++LinkedList *list_remove_elem(LinkedList* list, void* elem);
+ 
+-INLINE void list_mapcar(LinkedList* list, void(*function)(void*));
++void list_mapcar(LinkedList* list, void(*function)(void*));
+ 
+-INLINE LinkedList*list_find(LinkedList* list, void* elem);
++LinkedList*list_find(LinkedList* list, void* elem);
+ 
+-INLINE void list_free(LinkedList* list);
++void list_free(LinkedList* list);
+ 
+ #endif
