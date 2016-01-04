@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit toolchain-funcs
+inherit eutils toolchain-funcs
 
 DESCRIPTION="Dockapp CPU monitor resembling Xosview, support for smp"
 SRC_URI="http://www.ne.jp/asahi/linux/timecop/wmmon+smp.tar.gz"
@@ -31,6 +31,10 @@ src_prepare() {
 		-e 's/cc -c/${CC} ${CFLAGS} -c/' \
 		-i Makefile || die
 	tc-export CC
+
+	cd "${WORKDIR}"/wmmon.app || die
+	ls
+	epatch "${FILESDIR}"/${P}-list.patch
 }
 
 src_install () {

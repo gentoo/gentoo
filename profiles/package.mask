@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrey Grozin <grozin@gentoo.org> (04 Jan 2016)
+# Needs a bump and substantial ebuild rewrite
+=sci-mathematics/reduce-20110414-r1
+
 # Michael Sterrett <mr_bones_@gentoo.org> (04 Jan 2016)
 # Upstream stopped development in 2004 and doesn't work on modern systems.
 # Masked for removal on 20160203
