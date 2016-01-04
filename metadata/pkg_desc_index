@@ -1683,7 +1683,7 @@ app-misc/c_rehash 1.7-r1: c_rehash script from OpenSSL
 app-misc/ca-certificates 20140927.3.17.2 20141019.3.17.4 20141019.3.19 20141019.3.19-r1 20150426.3.20 20150426.3.20-r1 20151214.3.21: Common CA Certificates PEM files
 app-misc/cadubi 1.3: CADUBI is an application that allows you to draw ASCII-Art images
 app-misc/calendar 0.9.1: Standard unix calendar program for Linux, ported from OpenBSD
-app-misc/carbon-c-relay 0.44 0.45 1.3: Enhanced C version of Carbon relay, aggregator and rewriter
+app-misc/carbon-c-relay 0.44 0.45 1.4: Enhanced C version of Carbon relay, aggregator and rewriter
 app-misc/cbrpager 0.9.20 0.9.22: a simple comic book pager
 app-misc/cbview 0.06: viewer/converter for CBR/CBZ comic book archives
 app-misc/cdargs 1.35-r2: Bookmarks and browser for the shell builtin cd command
@@ -5434,7 +5434,7 @@ dev-perl/Dist-CheckConflicts 0.20.0-r1: Declare version conflicts for your dist
 dev-perl/EV 4.150.0-r1 4.180.0: Perl interface to libev, a high performance full-featured event loop
 dev-perl/Emacs-PDE 0.2.16-r1: Perl Develop Environment in Emacs
 dev-perl/Email-Abstract 3.3.0-r1 3.7.0: unified interface to mail representations
-dev-perl/Email-Address 1.905.0 1.907.0: RFC 2822 Address Parsing and Creation
+dev-perl/Email-Address 1.905.0 1.907.0 1.908.0: RFC 2822 Address Parsing and Creation
 dev-perl/Email-Address-List 0.50.0: RFC close address list parsing
 dev-perl/Email-Date 1.104.0-r1: Find and Format Date Headers
 dev-perl/Email-Date-Format 1.2.0-r1: Produce RFC 822 date strings
@@ -5450,7 +5450,7 @@ dev-perl/Email-MessageID 1.402.0-r1 1.405.0: Generate world unique message-ids
 dev-perl/Email-Reply 1.203.0-r1: Reply to a Message
 dev-perl/Email-Send 2.198.0-r1 2.199.0-r1 2.201.0: Simply Sending Email
 dev-perl/Email-Send-Gmail 0.330.0: Send Messages using Gmail
-dev-perl/Email-Sender 0.120.2-r1 1.300.11 1.300.16: A library for sending email
+dev-perl/Email-Sender 1.300.16: A library for sending email
 dev-perl/Email-Simple 2.203 2.206: Simple parsing of RFC2822 message format and headers
 dev-perl/Email-Valid 1.192.0-r1 1.196.0: Check validity of Internet email addresses
 dev-perl/Encode-Detect 1.10.0-r1: Encode::Detect - An Encode::Encoding subclass that detects the encoding of data
@@ -5819,7 +5819,7 @@ dev-perl/MongoDB 0.701.4 0.708.0.0 0.708.3.0: Official MongoDB Driver for Perl
 dev-perl/Monitoring-Plugin 0.380.0 0.390.0: Modules to streamline Nagios, Icinga, Shinken, etc. plugins
 dev-perl/Moo 1.4.2 2.0.0 2.0.2: Minimalist Object Orientation (with Moose compatiblity)
 dev-perl/MooX-HandlesVia 0.1.7: NativeTrait-like behavior for Moo
-dev-perl/MooX-Types-MooseLike 0.270.0 0.290.0: Some Moosish types and a type builder
+dev-perl/MooX-Types-MooseLike 0.290.0: Some Moosish types and a type builder
 dev-perl/MooX-Types-MooseLike-Numeric 1.20.0: Moo types for numbers
 dev-perl/MooX-late 0.15.0: Easily translate Moose code to Moo
 dev-perl/Moose 2.60.400-r1 2.140.500 2.160.400: A postmodern object system for Perl 5
@@ -6231,7 +6231,7 @@ dev-perl/Text-WikiFormat 0.800.0-r1 0.810.0: Translate Wiki formatted text into 
 dev-perl/Text-WrapI18N 0.60.0-r1: Internationalized substitute of Text::Wrap
 dev-perl/Text-vFile-asData 0.80.0: Perl module to parse vFile formatted files into data structures
 dev-perl/TheSchwartz 1.120.0: Reliable job queue
-dev-perl/Throwable 0.102.80 0.200.3-r1 0.200.4 0.200.11: A role for classes that can be thrown
+dev-perl/Throwable 0.200.11: A role for classes that can be thrown
 dev-perl/Tie-Array-Sorted 1.410.0-r1: An array which is kept sorted
 dev-perl/Tie-CPHash 1.60.0 2.0.0: Case preserving but case insensitive hash table
 dev-perl/Tie-Cache 0.190.0-r1 0.210.0: In memory size limited LRU cache
@@ -6449,7 +6449,7 @@ dev-perl/rename 1.800.0-r1 1.900.0: A filename renaming utility based on perl re
 dev-perl/rpm-build-perl 0.820.0: Automatically extract Perl dependencies
 dev-perl/self 0.340.0-r1: provides '$self' in OO code
 dev-perl/set-scalar 1.280.0 1.290.0: Scalar set operations
-dev-perl/strictures 1.4.4-r1 2.0.0 2.0.1: Turn on strict and make all warnings fatal
+dev-perl/strictures 2.0.1: Turn on strict and make all warnings fatal
 dev-perl/string-crc32 1.400.0-r1 1.500.0: Perl interface for cyclic redundancy check generation
 dev-perl/syntax 0.4.0: Activate syntax extensions
 dev-perl/text-template 1.460.0-r1: Expand template text with embedded Perl
