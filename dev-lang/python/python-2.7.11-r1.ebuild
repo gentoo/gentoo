@@ -340,7 +340,7 @@ src_install() {
 		"${D}${PYTHON_SCRIPTDIR}/pydoc" || die
 	# idle
 	if use tk; then
-		ln -s "../../../bin/idle${PYVER}" \
+		ln -s "../../../bin/idle${SLOT}" \
 			"${D}${PYTHON_SCRIPTDIR}/idle" || die
 	fi
 }
