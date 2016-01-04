@@ -1026,7 +1026,7 @@ app-editors/joe 3.7-r2 4.0 4.1: A free ASCII-Text Screen Editor for UNIX
 app-editors/jove 4.16.0.73: Jonathan's Own Version of Emacs - a light emacs-like editor without LISP bindings
 app-editors/juffed 0.10: QScintilla-based tabbed text editor with syntax highlighting
 app-editors/jupp 3.1_p23 3.1_p24 3.1_p26 3.1_p27: portable version of JOE's Own Editor
-app-editors/kile 2.1.3-r1: A Latex Editor and TeX shell for KDE
+app-editors/kile 2.1.3-r2: A Latex Editor and TeX shell for KDE
 app-editors/latexila 3.16.2 3.18.1 3.18.2: Integrated LaTeX environment for GNOME
 app-editors/le 1.14.3: Terminal text editor
 app-editors/leafpad 0.8.18.1: A simple GTK2 text editor
@@ -9482,7 +9482,7 @@ dev-util/kdevelop-php-docs 1.7.2: PHP documentation plugin for KDevelop 4
 dev-util/kdevelop-python 1.7.2: Python plugin for KDevelop 4
 dev-util/kdevelop-qmake 1.7.0: qmake plugin for KDevelop 4
 dev-util/kdevelop-qmljs 1.7.0: QML and javascript plugin for KDevelop 4
-dev-util/kdevplatform 1.7.2: KDE development support libraries and apps
+dev-util/kdevplatform 1.7.2-r1: KDE development support libraries and apps
 dev-util/kdoc 2.0_alpha54: C++ and IDL Source Documentation System
 dev-util/kelbt 0.15: A backtracking LR parser by the author of Ragel
 dev-util/ketchup 0.9.8 1.0 1.1_beta3 9999: tool for updating or switching between versions of the Linux kernel source
@@ -10889,7 +10889,7 @@ kde-apps/bovo 4.14.3 15.08.3: Five-in-a-row Board Game
 kde-apps/calendarjanitor 4.14.8 4.14.10: A tool to scan calendar data for buggy instances
 kde-apps/cantor 4.14.3: KDE4 interface for doing mathematics and scientific computing
 kde-apps/cervisia 4.14.3 15.08.3: A KDE CVS frontend
-kde-apps/dolphin 4.14.3 15.08.3: Plasma filemanager focusing on usability
+kde-apps/dolphin 4.14.3 4.14.3-r1 15.08.3: Plasma filemanager focusing on usability
 kde-apps/dolphin-plugins 4.14.3 15.08.3: Extra Dolphin plugins
 kde-apps/dragon 4.14.3 15.08.3: A simple video player
 kde-apps/drkonqi 4.14.3 15.08.3: KDE crash handler, gives the user feedback if a program crashed
@@ -10948,7 +10948,7 @@ kde-apps/kdebase-desktoptheme 4.14.3 15.08.3: Oxygen KDE4 desktop theme
 kde-apps/kdebase-kioslaves 4.14.3 15.08.3: KDE VFS framework - kioslaves present a filesystem-like view of arbitrary data
 kde-apps/kdebase-menu 4.14.3 15.08.3: KDE Menu query tool
 kde-apps/kdebase-menu-icons 4.14.3 15.08.3: KDE menu icons
-kde-apps/kdebase-meta 4.14.3 4.14.3-r1: Merge this to pull in all kdebase-derived packages
+kde-apps/kdebase-meta 4.14.3 4.14.3-r2: Merge this to pull in all kdebase-derived packages
 kde-apps/kdebase-runtime-meta 4.14.3 15.08.3: Merge this to pull in all kdebase-runtime-derived packages
 kde-apps/kdebugdialog 4.14.3 15.08.3: KDE: A dialog box for setting preferences for debug output
 kde-apps/kdeedu-meta 4.14.3: KDE educational apps - merge this to pull in all kdeedu-derived packages
@@ -11035,8 +11035,9 @@ kde-apps/kompare 4.14.3 15.08.3: Kompare is a program to view the differences be
 kde-apps/konq-plugins 4.14.3 15.08.3: Various plugins for konqueror
 kde-apps/konqueror 4.14.3 15.08.3: KDE: Web browser and file manager
 kde-apps/konquest 4.14.3 15.08.3: Galactic Strategy KDE Game
-kde-apps/konsole 4.14.3 4.14.3-r1 15.08.3: KDE's terminal emulator
+kde-apps/konsole 4.14.3 4.14.3-r1 4.14.3-r2 15.08.3: KDE's terminal emulator
 kde-apps/konsolekalendar 4.4.2015.06 4.14.8 4.14.10: A command line interface to KDE calendars
+kde-apps/konsolepart 4.14.3: X terminal kpart for use by konsole and other KDE applications
 kde-apps/kontact 4.4.2015.06 4.14.8 4.14.10: KDE personal information manager
 kde-apps/kopete 4.14.3 4.14.3-r1 15.08.3: KDE multi-protocol IM client
 kde-apps/korganizer 4.4.2015.06 4.14.8 4.14.10: A Personal Organizer for KDE
@@ -11312,7 +11313,7 @@ kde-misc/kosd 0.8.1: KDE application that runs in the background and responds to
 kde-misc/kover 6: An easy to use WYSIWYG CD cover printer with CDDB support
 kde-misc/kprayertime 4.01: Islamic Prayer Times Plasmoid
 kde-misc/kraidmonitor 0.5: Indicator widget for raid arrays
-kde-misc/krcstat 0.7.6: A Gentoo system management tool
+kde-misc/krcstat 0.7.6-r1: A Gentoo system management tool
 kde-misc/krecipes 2.0_beta2-r1 2.0.0: A KDE4 recipe application
 kde-misc/krename 4.0.9-r3: KRename - a very powerful batch file renamer
 kde-misc/krunner-googletranslate 0.1: Krunner plug-in for Google translate service
@@ -11345,7 +11346,7 @@ kde-misc/plasma-wifi 0.5-r1: KDE4 plasmoid. Displays the currect signal strength
 kde-misc/plasmatvgr 0.47: KDE4 plasmoid which shows greek TV program
 kde-misc/plasmoid-workflow 0.4.1: Plasmoid that integrates Activities, Virtual Desktops and Tasks Functionalities in one component
 kde-misc/pyrad 0.6.2-r1 0.7.1: A wheel type command interface for KDE, heavily inspired by Kommando
-kde-misc/quadkonsole 0.4.4: Grid of Konsole terminals
+kde-misc/quadkonsole 0.4.4-r1: Grid of Konsole terminals
 kde-misc/quickaccess 0.8.2-r1: KDE4 plasmoid. Designed for the panel, provides quick access to the most used folders
 kde-misc/redshift-plasmoid 1.0: KDE4 plasmoid for redshift
 kde-misc/rsibreak 0.11-r1 0.12: Small utility which bothers you at certain intervals
@@ -11362,7 +11363,7 @@ kde-misc/takeoff 1.0: A tablet desktop style app launcher
 kde-misc/tellico 2.3.10 2.3.11: A collection manager for the KDE environment
 kde-misc/wacomtablet 2.1.0: KControl module for Wacom tablets
 kde-misc/wicd-client-kde 0.3.1-r1: Wicd client built on the KDE Development Platform
-kde-misc/yakuake 2.9.9-r2: A quake-style terminal emulator based on KDE konsole technology
+kde-misc/yakuake 2.9.9-r3: A quake-style terminal emulator based on KDE konsole technology
 kde-misc/yawp 0.4.5: Yet Another Weather Plasmoid
 kde-misc/zanshin 0.2.1-r1 0.2.2 0.3.0: Todo management application for KDE
 kde-plasma/bluedevil 5.4.3 5.5.0 5.5.1 5.5.2: Bluetooth stack for KDE
