@@ -4,7 +4,6 @@
 
 EAPI=5
 
-# ruby22 → spec failures
 USE_RUBY="ruby20 ruby21"
 
 RUBY_FAKEGEM_TASK_TEST="test spec NO_CONNECTION=true"
@@ -30,7 +29,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/rack
 	>=dev-ruby/httpclient-2.2.4
 	>=dev-ruby/patron-0.4.18
-	>=dev-ruby/http-0.6.0:0.6 )"
+	>=dev-ruby/http-0.8.0:0.8 )"
 
 all_ruby_prepare() {
 	# Remove bundler support
