@@ -238,6 +238,7 @@ multilib_src_test() {
 
 multilib_src_install() {
 	gnome2_src_install completiondir="$(get_bashcompdir)"
+	keepdir /usr/$(get_libdir)/gio/modules
 }
 
 multilib_src_install_all() {
