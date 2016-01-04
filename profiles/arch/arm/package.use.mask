@@ -150,10 +150,6 @@ mail-filter/opendkim opendbx
 # Unkeyworded deps, bug #507896
 dev-qt/qt-mobility messaging
 
-# Julian Ospald <hasufell@gentoo.org> (20 Apr 2014)
-# Missing keywords, bug #508226
-media-video/mpv sdl
-
 # S. Suominen <ssuominen@g.o> (17 Apr 2014)
 # First GTK+-3.x version of EasyTAG!
 # Keyword as reqiuired, ~arch is enough for now:
