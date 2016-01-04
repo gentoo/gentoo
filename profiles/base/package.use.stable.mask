@@ -5,6 +5,12 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Ian Delaney <idella4@gentoo.org> (04 Jan 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# media-libs/libcaca wasn't stabilized in the past, but now
+# it's ready for the next stable mpv release after the one below.
+=media-video/mpv-0.9.2-r1 libcaca
+
 # Mike Gilbert <floppym@gentoo.org> (02 Dec 2015)
 # Needs unstable ffmpeg.
 =www-client/chromium-47* system-ffmpeg
@@ -83,10 +89,6 @@ media-libs/libcaca java mono
 # Alon Bar-Lev <alonbl@gentoo.org> (21 Jul 2014)
 # dev-libs/opencryptoki will not be stabile any time soon (bug#510204)
 app-crypt/tpm-tools pkcs11
-
-# Mikle Kolyada <zlogene@gentoo.org>
-# Not yet stabilized dependency (bug #514906)
-media-video/mpv libcaca
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (29 Jun 2014)
 # Not yet stabilized dependencies blocking sec bug 514886
