@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,10 +25,10 @@ src_prepare() {
 	directory="gst-libs/gst/uridownloader"
 	libs="-lgobject-2.0 -lglib-2.0 -lgstreamer-1.0 -lgstbase-1.0 -lgsturidownloader-1.0"
 	sed -e "s:\$(top_builddir)/${directory}/.*\.la:${libs}:" \
-        -i ext/dash/Makefile.{am,in} || die
+		-i ext/dash/Makefile.{am,in} || die
 
 	directory="gst-libs/gst/adaptivedemux"
 	libs="-lgobject-2.0 -lglib-2.0 -lgstreamer-1.0 -lgstbase-1.0 -lgstapp-1.0 -lgsturidownloader-1.0 -lgstadaptivedemux-1.0"
 	sed -e "s:\$(top_builddir)/${directory}/.*\.la:${libs}:" \
-        -i ext/dash/Makefile.{am,in} || die
+		-i ext/dash/Makefile.{am,in} || die
 }

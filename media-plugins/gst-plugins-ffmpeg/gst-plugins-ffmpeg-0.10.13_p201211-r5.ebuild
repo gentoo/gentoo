@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -60,7 +60,7 @@ src_prepare() {
 		epatch "${FILESDIR}/${PV}-ffmpeg2.patch"
 	fi
 
-	# libav 11 migration 	
+	# libav 11 migration
 	epatch "${FILESDIR}/${PV}-r_frame_rate.patch"
 	epatch "${FILESDIR}/${PV}-audioresample.patch"
 	epatch "${FILESDIR}/${PV}-snow-codec.patch"
