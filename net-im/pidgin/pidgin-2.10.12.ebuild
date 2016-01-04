@@ -203,7 +203,8 @@ src_configure() {
 		$(use_enable debug) \
 		$(use_enable dbus) \
 		$(use_enable meanwhile) \
-		$(use_enable gstreamer gstreamer 1.0) \
+		$(use_enable gstreamer) \
+		$(use_with gstreamer gstreamer 1.0) \
 		$(use_enable gstreamer farstream) \
 		$(use_enable gstreamer vv) \
 		$(use_enable sasl cyrus-sasl ) \
