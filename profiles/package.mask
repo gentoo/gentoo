@@ -62,10 +62,6 @@ media-sound/freewheeling
 media-sound/gqmpeg
 
 # Pacho Ramos <pacho@gentoo.org> (03 Jan 2016)
-# Fails to build, bug #370581. Removal in a month
-media-sound/freebirth
-
-# Pacho Ramos <pacho@gentoo.org> (03 Jan 2016)
 # Obsolete lib, nothing needs it, bug #380193
 # Removal in a month
 x11-libs/libsexy
