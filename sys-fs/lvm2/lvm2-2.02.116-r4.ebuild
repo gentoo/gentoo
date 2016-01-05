@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -230,7 +230,7 @@ src_install() {
 
 	if use !device-mapper-only ; then
 		newinitd "${FILESDIR}"/dmeventd.initd-2.02.67-r1 dmeventd
-		newinitd "${FILESDIR}"/lvm.rc-2.02.116-r3 lvm
+		newinitd "${FILESDIR}"/lvm.rc-2.02.116-r4 lvm
 		newconfd "${FILESDIR}"/lvm.confd-2.02.28-r2 lvm
 
 		newinitd "${FILESDIR}"/lvm-monitoring.initd-2.02.105-r2 lvm-monitoring
@@ -270,6 +270,10 @@ pkg_postinst() {
 	ewarn
 	ewarn "Make sure to enable lvmetad in /etc/lvm/lvm.conf if you want"
 	ewarn "to enable lvm autoactivation and metadata caching."
+	ewarn
+	ewarn "After enabling or disabling lvmetad in /etc/lvm/lvm.conf you must"
+	ewarn "run the following to update the init script dependencies: "
+	ewarn "# rc-update -u"
 }
 
 src_test() {
