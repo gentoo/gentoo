@@ -22,7 +22,7 @@ IUSE="music opengl remix voice"
 
 RDEPEND="media-libs/libmikmod
 	media-libs/libogg
-	>=media-libs/libpng-1.4
+	>=media-libs/libpng-1.4:0
 	media-libs/libsdl[X,sound,joystick,video]
 	media-libs/libvorbis
 	media-libs/sdl-image[png]

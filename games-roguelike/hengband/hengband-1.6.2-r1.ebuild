@@ -15,7 +15,7 @@ LICENSE="Moria"
 SLOT="0"
 IUSE="X linguas_ja"
 
-RDEPEND=">=sys-libs/ncurses-5
+RDEPEND=">=sys-libs/ncurses-5:0
 	X? ( x11-libs/libX11 )"
 DEPEND="${RDEPEND}
 	X? ( x11-libs/libXt )"

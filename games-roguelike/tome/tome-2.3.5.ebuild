@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="X Xaw3d gtk sdl"
 
-RDEPEND=">=sys-libs/ncurses-5
+RDEPEND=">=sys-libs/ncurses-5:0
 	X? ( x11-libs/libX11 )
 	Xaw3d? ( x11-libs/libXaw )
 	sdl? (
