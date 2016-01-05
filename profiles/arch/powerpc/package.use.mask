@@ -126,10 +126,6 @@ media-video/mpv doc-pdf
 # dependency sci-libs/vtk not keyworded on ppc yet
 media-libs/opencv vtk
 
-# Julian Ospald <hasufell@gentoo.org> (20 Apr 2014)
-# Missing keywords, bug #508226
-media-video/mpv sdl
-
 # Johannes Huber <johu@gentoo.org> (16 Apr 2014)
 # unkeyworded deps
 kde-apps/gwenview semantic-desktop
