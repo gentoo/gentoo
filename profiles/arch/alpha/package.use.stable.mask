@@ -17,19 +17,24 @@
 #
 
 #--- END OF EXAMPLES ---
-#
+
+# Ian Delaney <idella4@gentoo.org> (04 Jan 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# Hopefully media-libs/rubberband goes stable before
+# the next stable version of mpv. See bug #570510.
+=media-video/mpv-0.9.2-r1 rubberband
+
+# Ian Delaney <idella4@gentoo.org> (04 Jan 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# media-libs/libsdl2 wasn't stabilized in the past, but now
+# it's ready for the next stable mpv release after the one below.
+=media-video/mpv-0.9.2-r1 sdl
+
 # Tobias Klausmann <klausman@gentoo.org> (17 Sep 2015)
 # Move this mask here (from package.use.mask) until net-fs/libnfs goes stable.
 # Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
 # net-fs/libnfs lacks alpha keyword, bug #551576
 gnome-base/gvfs nfs
-
-# Tobias Klausmann <klausman@gentoo.org> (16 Sep 2015)
-# Move this mask here (from package.use.mask) until rubberband goes stable.
-# Also see commit 0ccb06790085936e2da1832e5bf1d1b637d6c54a
-# Ben de Groot <yngwin@gentoo.org> (03 May 2015)
-# media-libs/rubberband lacks alpha keyword, bug #548446
-media-video/mpv rubberband
 
 # Tobias Klausmann <klausman@gentoo.org> (29 Jul 2015)
 # Mask webkit so the dep can stay ~alpha forever
