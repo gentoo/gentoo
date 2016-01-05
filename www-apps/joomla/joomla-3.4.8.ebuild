@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,9 +7,10 @@ inherit webapp versionator
 
 MY_PV=$(replace_version_separator '_' '-')
 
-DESCRIPTION="Joomla is a powerful Open Source Content Management System"
+DESCRIPTION="A powerful Open Source Content Management System"
 HOMEPAGE="http://www.joomla.org/"
-SRC_URI="https://github.com/joomla/joomla-cms/releases/download/${MY_PV}/Joomla_${MY_PV}-Stable-Full_Package.tar.bz2"
+M_PN="Joomla_${MY_PV}-Stable-Full_Package"
+SRC_URI="https://github.com/${PN}/${PN}-cms/releases/download/${MY_PV}/${M_PN}.tar.bz2"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
@@ -17,11 +18,9 @@ KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 S="${WORKDIR}"
 need_httpd_cgi
 
-DEPEND="${DEPEND}
-	app-arch/unzip"
 RDEPEND=">=dev-lang/php-5.3.10[json,zlib,xml]
 	virtual/httpd-php
-	 || ( dev-lang/php[mysql] dev-lang/php[postgres] )"
+	|| ( dev-lang/php[mysql] dev-lang/php[postgres] )"
 
 src_install () {
 	webapp_src_preinst

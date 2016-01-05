@@ -6,7 +6,7 @@
   <maintainer>
     <email>harold@naparst.com</email>
     <name>Harold Naparst</name>
-    <description>Primary Maintainer, Assign bugs</description>
+    <description>Primary proxied maintainer, set to assignee in all bugs</description>
   </maintainer>
   <maintainer>
     <email>oli.huber@gmail.com</email>
