@@ -21,7 +21,6 @@ _need_lvmetad()
 depend() {
 	before checkfs fsck
 	after modules device-mapper
-	need lvmetad sysfs
 	# We may use lvmetad based on the configuration. If we added lvmetad
 	# support while lvm2 is running then we aren't dependent on it. For the
 	# more common case, if its disabled in the config we aren't dependent
@@ -35,7 +34,7 @@ depend() {
 			_need="${_need} lvmetad"
 		fi
 	fi
-	need ${_need}
+	need sysfs ${_need}
 }
 
 config='global { locking_dir = "/run/lock/lvm" }'
