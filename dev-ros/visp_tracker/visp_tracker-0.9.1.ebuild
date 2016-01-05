@@ -31,7 +31,7 @@ RDEPEND="
 	dev-ros/tf[${PYTHON_USEDEP}]
 	dev-ros/rospy[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
-	sci-libs/ViSP[opencv]
+	sci-libs/ViSP[opencv,X]
 "
 DEPEND="${RDEPEND}"
 if [ "${PV#9999}" = "${PV}" ] ; then
