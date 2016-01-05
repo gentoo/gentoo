@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SRC_URI="https://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1 LGPL-3"
 SLOT="3"
-KEYWORDS="~alpha ~amd64 ~arm hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="gtk +introspection"
 
 RESTRICT="test" # consequence of the -no-mono.patch
@@ -65,7 +65,9 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	# work around failing parallel installation (-j1)
+	# until a better fix is available. (bug #469032)
+	emake -j1 DESTDIR="${D}" install
 	dodoc AUTHORS ChangeLog NEWS
 
 	prune_libtool_files

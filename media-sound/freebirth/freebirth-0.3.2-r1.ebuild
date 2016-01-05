@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Free software bass synthesizer step sequencer"
@@ -25,14 +25,14 @@ src_prepare() {
 
 src_compile() {
 	tc-export CC
-	emake || die
+	emake
 }
 
 src_install() {
-	dobin ${PN} || die
+	dobin ${PN}
 
 	insinto /usr/share/${PN}/raw
-	doins raw/*.raw || die
+	doins raw/*.raw
 
 	dodoc CHANGES NEXT_VERSION README
 

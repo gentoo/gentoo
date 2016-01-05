@@ -12,7 +12,7 @@ SRC_URI="https://github.com/frankosterfeld/${PN}/archive/v${PV}.tar.gz -> ${P}.t
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+qt4 qt5"
 
 REQUIRED_USE="|| ( qt4 qt5 )"

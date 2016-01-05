@@ -41,7 +41,7 @@ COLLECTD_TESTED_PLUGINS="aggregation apache apcups ascent battery bind ceph
 	rrdcached rrdtool sensors serial smart snmp statsd swap syslog table tail
 	target_notification target_replace target_scale target_set tcpconns teamspeak2
 	ted thermal threshold tokyotyrant turbostat unixsock uptime users uuid varnish
-	virt vmem vserver wireless write_graphite write_http write_log write_mongodb
+	virt vmem wireless write_graphite write_http write_log write_mongodb
 	write_redis write_sensu write_tsdb zfs_arc zookeeper"
 
 COLLECTD_DISABLED_PLUGINS="${COLLECTD_IMPOSSIBLE_PLUGINS} ${COLLECTD_UNTESTED_PLUGINS}"
@@ -113,9 +113,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	collectd_plugins_java?			( >=virtual/jdk-1.6 )
-	kernel_linux? (
-		collectd_plugins_vserver?	( sys-kernel/vserver-sources )
-	)"
+"
 
 RDEPEND="${COMMON_DEPEND}
 	collectd_plugins_java?			( >=virtual/jre-1.6 )
@@ -250,7 +248,7 @@ src_configure() {
 	local linux_plugins="barometer battery cpu cpufreq disk drbd entropy
 		ethstat interface iptables ipvs irq ipc load memory md netlink nfs
 		numa processes serial swap tcpconns thermal turbostat users vmem
-		vserver wireless zfs_arc"
+		wireless zfs_arc"
 
 	local libstatgrab_plugins="cpu disk interface load memory swap users"
 	local bsd_plugins="cpu tcpconns ${libstatgrab_plugins} zfs_arc"

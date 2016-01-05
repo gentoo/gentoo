@@ -23,7 +23,7 @@ RDEPEND="virtual/opengl
 	x11-libs/libXxf86vm
 	xrandr? ( x11-libs/libXrandr )
 	sys-libs/zlib
-	>=media-libs/libpng-1.2.40"
+	>=media-libs/libpng-1.2.40:0"
 DEPEND="${RDEPEND}
 	>=media-libs/plib-1.8.3
 	x11-proto/xproto

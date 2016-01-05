@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Simple parsing of RFC2822 message format and headers"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ppc ppc64 x86 ~sparc-solaris ~x86-solaris"
 IUSE="test"
 
 RDEPEND="

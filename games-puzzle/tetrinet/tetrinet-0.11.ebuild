@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit eutils flag-o-matic games toolchain-funcs
+inherit eutils flag-o-matic toolchain-funcs games
 
 DESCRIPTION="console based tetrinet inc. standalone server"
 HOMEPAGE="http://tetrinet.or.cz/"
@@ -14,11 +14,9 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="ipv6"
 
-RDEPEND=">=sys-libs/ncurses-5"
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+RDEPEND=">=sys-libs/ncurses-5:0"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
 
 src_prepare() {
 	epatch \

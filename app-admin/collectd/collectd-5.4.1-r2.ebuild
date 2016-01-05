@@ -41,7 +41,7 @@ COLLECTD_TESTED_PLUGINS="aggregation apache apcups ascent battery bind cgroups
 	powerdns processes protocols python python routeros rrdcached rrdcached rrdtool
 	sensors serial snmp statsd swap syslog table tail target_notification
 	target_replace target_scale target_set tcpconns teamspeak2 ted thermal threshold
-	tokyotyrant unixsock uptime users uuid varnish vmem vserver wireless
+	tokyotyrant unixsock uptime users uuid varnish vmem wireless
 	write_graphite write_http write_mongodb"
 
 COLLECTD_DISABLED_PLUGINS="${COLLECTD_IMPOSSIBLE_PLUGINS} ${COLLECTD_UNTESTED_PLUGINS}"
@@ -107,9 +107,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	collectd_plugins_java?			( >=virtual/jdk-1.6 )
-	kernel_linux? (
-		collectd_plugins_vserver?	( sys-kernel/vserver-sources )
-	)"
+"
 
 RDEPEND="${COMMON_DEPEND}
 	collectd_plugins_java?			( >=virtual/jre-1.6 )
@@ -240,7 +238,7 @@ src_configure() {
 	# should work independent of the operating system.
 
 	local linux_plugins="battery cpu cpufreq disk entropy ethstat interface iptables ipvs irq load
-		memory md netlink nfs numa processes serial swap tcpconns thermal users vmem vserver
+		memory md netlink nfs numa processes serial swap tcpconns thermal users vmem
 		wireless"
 
 	local libstatgrab_plugins="cpu disk interface load memory swap users"
