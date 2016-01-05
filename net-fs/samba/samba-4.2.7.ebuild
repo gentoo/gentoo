@@ -28,7 +28,6 @@ IUSE="acl addc addns ads aio avahi client cluster cups dmapi fam gnutls iprint
 ldap pam quota selinux syslog +system-mitkrb5 systemd test winbind"
 
 # sys-apps/attr is an automagic dependency (see bug #489748)
-# sys-libs/pam is an automagic dependency (see bug #489770)
 CDEPEND="${PYTHON_DEPS}
 	dev-libs/iniparser:0
 	dev-libs/popt
@@ -47,7 +46,6 @@ CDEPEND="${PYTHON_DEPS}
 	>=sys-libs/tevent-0.9.25
 	>=sys-libs/uid_wrapper-1.0.1
 	sys-libs/zlib
-	virtual/pam
 	acl? ( virtual/acl )
 	addns? ( net-dns/bind-tools[gssapi] )
 	aio? ( dev-libs/libaio )
@@ -60,7 +58,8 @@ CDEPEND="${PYTHON_DEPS}
 	ldap? ( net-nds/openldap )
 	system-mitkrb5? ( app-crypt/mit-krb5 )
 	!system-mitkrb5? ( >=app-crypt/heimdal-1.5[-ssl] )
-	systemd? ( sys-apps/systemd:0= )"
+	systemd? ( sys-apps/systemd:0= )
+	pam? ( virtual/pam )"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
@@ -74,7 +73,8 @@ REQUIRED_USE="addc? ( gnutls !system-mitkrb5 )
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}/${PN}-4.2.3-heimdal_compilefix.patch" )
+PATCHES=( "${FILESDIR}/${PN}-4.2.3-heimdal_compilefix.patch" \
+			"${FILESDIR}/${PN}-4.2.7-pam.patch")
 
 CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
 
@@ -93,14 +93,6 @@ pkg_setup() {
 				ewarn
 				ewarn "and recompile your kernel..."
 		fi
-	fi
-	if ! use pam ; then
-		ewarn "You have pam USE flag disabled!"
-		ewarn "Unfortunately we still have to hard depend on virtual/pam as samba upstream"
-		ewarn "still unconditionally links libauth4-samba4.so library to libpam.so once being"
-		ewarn "found on the sytem."
-		ewarn "Disabling the pam USE flag only disables installation of samba's pam authenti-"
-		ewarn "cation modules."
 	fi
 }
 
