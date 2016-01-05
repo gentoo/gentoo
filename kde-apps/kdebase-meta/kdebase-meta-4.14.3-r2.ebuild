@@ -20,7 +20,7 @@ RDEPEND="
 	$(add_kdeapps_dep konq-plugins)
 	$(add_kdeapps_dep konqueror)
 	$(add_kdeapps_dep konsolepart)
-	|| ( $(add_kdeapps_dep konsole '' 4.14.3-r2) kde-apps/konsole:5 )
+	$(add_kdeapps_dep konsole)
 	$(add_kdeapps_dep kwrite)
 	$(add_kdeapps_dep libkonq)
 	$(add_kdeapps_dep nsplugins)
