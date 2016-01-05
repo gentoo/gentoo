@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI="5"
+
 inherit eutils flag-o-matic multilib toolchain-funcs multilib-minimal
 
 NSPR_VER="4.10.8"
@@ -52,10 +53,14 @@ src_prepare() {
 	# Custom changes for gentoo
 	epatch "${FILESDIR}/${PN}-3.21-gentoo-fixups.patch"
 	epatch "${FILESDIR}/${PN}-3.21-gentoo-fixup-warnings.patch"
-	use cacert && epatch "${DISTDIR}/${PN}-3.14.1-add_spi+cacerts_ca_certs.patch"
+	epatch "${FILESDIR}/${PN}-3.21-hppa-byte_order.patch"
+
+	if use cacert ; then
+		epatch "${DISTDIR}/${PN}-3.14.1-add_spi+cacerts_ca_certs.patch"
+		epatch "${FILESDIR}/${PN}-3.21-cacert-class3.patch" #521462
+	fi
 	use nss-pem && epatch "${FILESDIR}/${PN}-3.21-enable-pem.patch" \
 		"${FILESDIR}/${PN}-3.21-pem-werror.patch"
-	epatch "${FILESDIR}/${PN}-3.21-cacert-class3.patch" # 521462
 
 	pushd coreconf >/dev/null || die
 	# hack nspr paths
@@ -294,13 +299,9 @@ multilib_src_install() {
 
 	# Prelink breaks the CHK files. We don't have any reliable way to run
 	# shlibsign after prelink.
-	local l libs=() liblist
-	for l in ${NSS_CHK_SIGN_LIBS} ; do
-		libs+=("${EPREFIX}/usr/$(get_libdir)/lib${l}.so")
-	done
-	liblist=$(printf '%s:' "${libs[@]}")
-	echo -e "PRELINK_PATH_MASK=${liblist%:}" > "${T}/90nss-${ABI}"
-	doenvd "${T}/90nss-${ABI}"
+	dodir /etc/prelink.conf.d
+	printf -- "-b ${EPREFIX}/usr/$(get_libdir)/lib%s.so\n" ${NSS_CHK_SIGN_LIBS} \
+		> "${ED}"/etc/prelink.conf.d/nss.conf
 }
 
 pkg_postinst() {
