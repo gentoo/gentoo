@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ DEPEND="${PYTHON_DEPS}
 	dev-python/cliapp[${PYTHON_USEDEP}]
 	dev-python/fuse-python[${PYTHON_USEDEP}]
 	dev-python/larch[${PYTHON_USEDEP}]
-	dev-python/paramiko[${PYTHON_USEDEP}]
+	>=dev-python/paramiko-1.16.0[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/tracing[${PYTHON_USEDEP}]
 	dev-python/ttystatus[${PYTHON_USEDEP}]
