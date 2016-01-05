@@ -18,6 +18,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ian Delaney <idella4@gentoo.org> (05 Jan 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# Hopefully dev-lang/luajit goes stable before
+# the next stable version of mpv. See bug #570808.
+=media-video/mpv-0.9.2-r1 luajit
+
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Missing keywords
 net-misc/connman l2tp openconnect
