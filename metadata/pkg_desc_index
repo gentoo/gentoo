@@ -1806,7 +1806,7 @@ app-misc/ledit 2.03: A line editor to be used with interactive commands
 app-misc/lfm 2.3-r1: Last File Manager is a powerful file manager for the console
 app-misc/linux-logo 5.11-r3: A utility that displays an ANSI/ASCII logo and some system information
 app-misc/linuxspa 0.7.1 0.7.1-r1: Linux Serial Protocol Analyser
-app-misc/lirc 0.9.0-r2 0.9.0-r3 0.9.0-r4 0.9.0-r5: decode and send infra-red signals of many commonly used remote controls
+app-misc/lirc 0.9.0-r5: decode and send infra-red signals of many commonly used remote controls
 app-misc/livecd-tools 2.0.4 2.1 9999: Gentoo LiveCD tools for autoconfiguration of hardware
 app-misc/lockfile-progs 0.1.16 0.1.17: Programs to safely lock/unlock files and mailboxes
 app-misc/logitech-applet 0.4_pre1-r3: Control utility for some special features of some special Logitech USB mice!
@@ -13999,7 +13999,7 @@ net-libs/dleyna-core 0.5.0: utility library for higher level dLeyna libraries
 net-libs/dleyna-renderer 0.5.0: library implementing services that allow clients to discover and manipulate DLNA renderers
 net-libs/dslib 3.0-r1: Library to access Czech eGov system "Datove schranky"
 net-libs/enet 1.2.2 1.3.7 1.3.13: relatively thin, simple and robust network communication layer on top of UDP
-net-libs/farstream 0.1.2-r1 0.1.2-r2 0.2.7: Audio/video conferencing framework specifically designed for instant messengers
+net-libs/farstream 0.1.2-r2 0.2.7: Audio/video conferencing framework specifically designed for instant messengers
 net-libs/ftplib 3.1.1 4.0 4.0-r1: A set of routines that implement the FTP protocol
 net-libs/glib-networking 2.44.0 2.46.1: Network-related giomodules for glib
 net-libs/gloox 1.0.9 1.0.13 1.0.14 1.0.14-r1: A portable high-level Jabber/XMPP library for C++
