@@ -1,0 +1,39 @@
+
+diff -r f095b3477c8e -r 6afe73e1e74b configure.in
+--- a/configure.in	Sun Jan 03 09:25:52 2016 -0800
++++ b/configure.in	Mon Jan 04 21:40:14 2016 -0800
+@@ -609,7 +609,6 @@
+                 smpeg_lib=[`find_lib "libsmpeg2*.so.*"`]
+                 ;;
+         esac
+-        SOURCES="$SOURCES $srcdir/*_mp3.c"
+         EXTRA_CFLAGS="$EXTRA_CFLAGS -DMP3_MUSIC $SMPEG_CFLAGS"
+         if test x$enable_music_mp3_smpeg_shared = xyes && test x$smpeg_lib != x; then
+             echo "-- dynamic libsmpeg -> $smpeg_lib"
+@@ -637,11 +636,6 @@
+     AC_MSG_RESULT($have_libmad)
+     if test x$have_libmad = xyes; then
+         SOURCES="$SOURCES $srcdir/music_mad.c"
+-        if echo "$SOURCES" | grep "load_mp3.c" >/dev/null; then
+-            :
+-        else
+-            SOURCES="$SOURCES $srcdir/load_mp3.c"
+-        fi
+         EXTRA_CFLAGS="$EXTRA_CFLAGS -DMP3_MAD_MUSIC"
+         EXTRA_LDFLAGS="$EXTRA_LDFLAGS -lmad"
+     else
+@@ -649,7 +643,9 @@
+     fi
+ fi
+ 
+-if test x$have_smpeg != xyes -a x$have_libmad != xyes; then
++if test x$have_smpeg = xyes -o x$have_libmad = xyes; then
++	SOURCES="$SOURCES $srcdir/*_mp3.c"
++else
+     AC_MSG_WARN([MP3 support disabled])
+ fi
+ 
+
+
+
+
