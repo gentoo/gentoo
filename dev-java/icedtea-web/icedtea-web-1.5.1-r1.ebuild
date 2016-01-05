@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 # Build written by Andrew John Hughes (ahughes@redhat.com)
@@ -13,7 +13,7 @@ SRC_URI="http://icedtea.classpath.org/download/source/${P}.tar.gz"
 LICENSE="GPL-2 GPL-2-with-linking-exception LGPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ppc ~ppc64 x86"
-IUSE="doc +icedtea7 javascript +nsplugin tagsoup test"
+IUSE="doc +icedtea7 javascript nsplugin tagsoup test"
 RESTRICT="test"
 
 COMMON_DEP="
