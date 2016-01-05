@@ -49,8 +49,10 @@ QA_PREBUILT="
 	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/json/ext/*
 	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/rbconfig/*
 	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/digest/*
+	/opt/puppetlabs/puppet/lib/ruby/2.1.0/x86_64-linux/*
 	/opt/puppetlabs/puppet/lib/engines/*
 	/opt/puppetlabs/puppet/lib/virt-what/*
+	/opt/puppetlabs/puppet/lib/*
 	/opt/puppetlabs/puppet/bin/*"
 
 pkg_setup() {
