@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Ian Delaney <idella4@gentoo.org> (05 Jan 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# dev-lang/luajit lacks sparc keyword. See bug #488318.
+media-video/mpv luajit
+
 # Mike Frysinger <vapier@gentoo.org> (22 Dec 2015)
 # Needs keywording. #569254
 net-firewall/iptables nftables
@@ -169,10 +174,6 @@ net-im/telepathy-connection-managers sipe
 # Mark Wright <gienah@gentoo.org> (26 Oct 2013)
 # template-haskell not yet available
 dev-haskell/dataenc test
-
-# Tom Wijsman <TomWij@gentoo.org> (16 Oct 2013)
-# Mask luajit on ~media-video/mpv-0.2.0 because it only has amd64 x86 keywords. See bug #488318.
->=media-video/mpv-0.2.0 luajit
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
 # dev-libs/jemalloc is not keyworded
