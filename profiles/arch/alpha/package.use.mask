@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Ian Delaney <idella4@gentoo.org> (05 Jan 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# dev-lang/luajit lacks alpha keyword. See bug #488318.
+media-video/mpv luajit
+
 # Ian Delaney <idella4@gentoo.org> (28 Dec 2015)
 # dep of testsuite dev-util/cmocka requires keywording for alpha
 # via Bug 569558, then this can be taken out
@@ -185,10 +190,6 @@ net-im/telepathy-connection-managers sipe
 # Mark Wright <gienah@gentoo.org> (26 Oct 2013)
 # template-haskell not yet available
 dev-haskell/dataenc test
-
-# Tom Wijsman <TomWij@gentoo.org> (16 Oct 2013)
-# Mask luajit on ~media-video/mpv-0.2.0 because it only has amd64 x86 keywords. See bug #488318.
->=media-video/mpv-0.2.0 luajit
 
 # Pacho Ramos <pacho@gentoo.org> (20 Jul 2013)
 # Keywords pending, bug #476710
