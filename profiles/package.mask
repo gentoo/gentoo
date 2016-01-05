@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (05 Jan 2016)
+# According to its maintainer. this project is slowly dying 
+# and there's no activity occuring on mailing lists / git repo.
+# Masked for removal. See bug 570836.
+www-client/uzbl
+
 # Andrey Grozin <grozin@gentoo.org> (04 Jan 2016)
 # Needs a bump and substantial ebuild rewrite
 =sci-mathematics/reduce-20110414-r1
