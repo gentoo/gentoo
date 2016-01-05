@@ -1,26 +1,24 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=DEXTER
-MODULE_VERSION=0.25
+DIST_AUTHOR=DEXTER
+DIST_VERSION=0.2501
 inherit perl-module
 
 DESCRIPTION="Error handling with exception class"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-# Package warrants IUSE examples
 IUSE="test"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
 	dev-perl/Module-Build
-	test? ( >=dev-perl/Test-Unit-Lite-0.12 )"
-
-SRC_TEST="do"
+	test? ( >=dev-perl/Test-Unit-Lite-0.120.0 )
+"
 
 src_install(){
 	perl-module_src_install
