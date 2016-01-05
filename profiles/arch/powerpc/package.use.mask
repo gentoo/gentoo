@@ -156,10 +156,6 @@ gnome-base/gnome classic extras
 # template-haskell not yet available
 dev-haskell/dataenc test
 
-# Tom Wijsman <TomWij@gentoo.org> (16 Oct 2013)
-# Mask luajit on ~media-video/mpv-0.2.0 because it only has amd64 x86 keywords. See bug #488318.
->=media-video/mpv-0.2.0 luajit
-
 # Johannes Huber <johu@gentoo.org> (15 Sep 2013)
 # # Depends on kde-misc/networkmanagement, not keyworded yet.
 kde-apps/solid-runtime networkmanager
