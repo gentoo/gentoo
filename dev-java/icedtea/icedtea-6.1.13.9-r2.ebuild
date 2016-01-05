@@ -38,7 +38,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 RESTRICT="test"
 
 IUSE="+alsa cacao cjk +cups debug doc examples +gtk headless-awt
-	javascript +jbootstrap kerberos +nsplugin +nss pax_kernel pulseaudio
+	javascript +jbootstrap kerberos nsplugin +nss pax_kernel pulseaudio
 	selinux source systemtap test zero +webstart"
 
 # Ideally the following were optional at build time.

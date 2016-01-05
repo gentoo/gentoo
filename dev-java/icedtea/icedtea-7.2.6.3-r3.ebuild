@@ -61,7 +61,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~x86"
 RESTRICT="test"
 
 IUSE="+alsa cacao cjk +cups debug doc examples +gtk headless-awt infinality
-	jamvm javascript +jbootstrap kerberos +nsplugin nss pax_kernel
+	jamvm javascript +jbootstrap kerberos nsplugin nss pax_kernel
 	pulseaudio sctp selinux smartcard source +sunec test zero +webstart"
 
 REQUIRED_USE="gtk? ( !headless-awt )"
