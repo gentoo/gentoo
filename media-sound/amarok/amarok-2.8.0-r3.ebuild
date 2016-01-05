@@ -81,6 +81,7 @@ RDEPEND="${COMMONDEPEND}
 PATCHES=(
 	"${FILESDIR}/${P}-gmock-1.7.patch"
 	"${FILESDIR}/${P}-mysqld-rpath.patch"
+	"${FILESDIR}/${P}-taglib110.patch"
 )
 
 src_configure() {
