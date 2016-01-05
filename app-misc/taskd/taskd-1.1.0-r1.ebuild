@@ -64,7 +64,7 @@ src_install() {
 	newins "${FILESDIR}"/taskd.logrotate taskd
 }
 
-pkg_preinst() {
+pkg_setup() {
 	enewgroup taskd
 	enewuser taskd -1 -1 /var/lib/taskd taskd
 }
