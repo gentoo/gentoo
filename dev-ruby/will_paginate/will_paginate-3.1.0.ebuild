@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20"
+USE_RUBY="ruby20 ruby21"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 
@@ -22,10 +22,6 @@ IUSE=""
 
 ruby_add_bdepend "
 	test? (
-		=dev-ruby/rails-3*
+		dev-ruby/rails
 		dev-ruby/mocha
 	)"
-
-all_ruby_prepare() {
-	sed -e '1igem "rails", "~> 3.2.0"' -i spec/spec_helper.rb || die
-}
