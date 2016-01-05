@@ -5467,7 +5467,7 @@ dev-perl/Eval-LineNumbers 0.340.0: Add line numbers to hereis blocks that contai
 dev-perl/Event 1.210.0 1.240.0: Fast, generic event loop
 dev-perl/Event-ExecFlow 0.640.0-r1: High level API for event-based execution flow control
 dev-perl/Event-RPC 1.50.0: Event based transparent Client/Server RPC framework
-dev-perl/Exception-Base 0.250-r1 0.250.0-r2: Error handling with exception class
+dev-perl/Exception-Base 0.250.0-r2 0.250.100: Error handling with exception class
 dev-perl/Exception-Class 1.370.0-r1 1.390.0: A module that allows you to declare real exception classes in Perl
 dev-perl/Exception-Died 0.60.0-r1: Convert simple die into real exception object
 dev-perl/Exception-System 0.110.0-r1: Exception class for system or library calls
