@@ -10176,7 +10176,7 @@ games-fps/quake3-cpma 1.48: Quake III Challenge Pro Mode Arena - advanced FPS co
 games-fps/quake3-data 1.32b: Quake III Arena - data portion
 games-fps/quake3-defrag 1.91.20 1.91.21: Quake III Defrag - Trickjumping challenges for Quake III
 games-fps/quake3-demo 1.11-r1: the playable demo of Quake III Arena by Id Software
-games-fps/quake3-excessiveplus 2.2b 2.3: Quake III Excessive Plus - Makes the weapons much faster and stronger
+games-fps/quake3-excessiveplus 2.3: Quake III Excessive Plus - Makes the weapons much faster and stronger
 games-fps/quake3-lrctf 1.1: Quake III Loki's Revenge CTF - offhand grapple all-weapons capture the flag mod
 games-fps/quake3-matrix 2.4_beta-r1: Quake III Matrix - Matrix conversion mod
 games-fps/quake3-nsco 1.93-r1: Quake III Navy Seals: Covert Operations - a US Navy Seals conversion mod
