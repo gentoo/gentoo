@@ -51,6 +51,11 @@ DEPEND=${RDEPEND}
 
 S=${WORKDIR}/${MY_P}
 
+src_prepare() {
+	# ugly workaround to bad SOURCES building code (bug #570804)
+	sed -i -e '/echo.*load_mp3/s/load//' configure || die
+}
+
 multilib_src_configure() {
 	ECONF_SOURCE=${S} \
 	econf \
