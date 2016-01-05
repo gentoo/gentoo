@@ -305,13 +305,6 @@ dev-java/jscience
 # experimental features and accept a more unstable release.
 >=www-client/chromium-49
 
-# Patrice Clement <monsieurp@gentoo.org> (06 Dec 2015)
-# We maintain old versions which were never stabilised
-# and are too far behind for a trivial version bump.
-# Masked for removal in 30 days. See bug #161440.
-dev-java/webgraph
-dev-java/mg4j
-
 # Anthony G. Basile <blueness@gentoo.org> (06 Dec 2015)
 # Masked until we deal with SSLv3, bug #567554
 =dev-libs/libressl-2.3*
@@ -321,22 +314,9 @@ dev-java/mg4j
 # rdep packages use.masked for xen under arch
 <=app-emulation/xen-4.2.5-r12
 
-# Patrice Clement <monsieurp@gentoo.org> (05 Dec 2015)
-# Upstream dead: no update since 2007.
-# Masked for removal in 30 days. See bug #567580.
-dev-java/jpf
-dev-java/jpfcodegen
-
 # Robin H. Johnson <robbat2@gentoo.org> (04 Dec 2015)
 # Much early testing needed
 >=sys-cluster/ceph-9
-
-# Patrice Clement <monsieurp@gentoo.org> (03 Dec 2015)
-# Broken and outdated. Let's see off these 3 packages.
-# Masked for removal in 30 days. See bug #567326.
-app-text/epubcheck
-dev-java/css-validator
-dev-java/jigsaw
 
 # Brian Evans <grknight@gentoo.org> (02 Dec 2015)
 # All current targets are masked.
