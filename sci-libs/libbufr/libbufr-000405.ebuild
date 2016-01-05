@@ -1,26 +1,35 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit eutils fortran-2 flag-o-matic toolchain-funcs
+inherit eutils fortran-2 toolchain-funcs
 
-MY_P="${PN/lib/}_${PV}"
+MY_P="${PN/lib/}dc_${PV}"
 
 DESCRIPTION="ECMWF BUFR library - includes both C and Fortran example utilities"
-HOMEPAGE="http://www.ecmwf.int/products/data/software/bufr.html"
-SRC_URI="http://www.ecmwf.int/products/data/software/download/software_files/${MY_P}.tar.gz"
+HOMEPAGE="https://software.ecmwf.int/wiki/display/BUFR/BUFRDC+Home"
+SRC_URI="https://software.ecmwf.int/wiki/download/attachments/35752466/${MY_P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="debug doc examples"
+# needs someone to test on these: ~alpha ~hppa ~ia64 ~sparc etc ...
 
-RDEPEND=""
+IUSE="debug doc examples lto"
+
+RDEPEND="
+	virtual/fortran
+	"
+
 DEPEND="sys-apps/findutils"
 
 S=${WORKDIR}/${MY_P}
+
+if use lto; then
+	RESTRICT="strip"
+fi
 
 pkg_setup() {
 	fortran-2_pkg_setup
@@ -40,7 +49,7 @@ pkg_setup() {
 	esac
 
 	elog "Note non-GNU compilers are not currently supported on non-x86"
-	elog "architectures. If you need it, please subit a patch..."
+	elog "architectures.  If you need it, please submit a patch..."
 
 	export target="linux"
 	export A64=""
@@ -63,43 +72,50 @@ pkg_setup() {
 
 src_prepare() {
 	update_configs
-	epatch "${FILESDIR}"/${PN}-makefile.patch
+	epatch "${FILESDIR}"/${P}-makefile.patch
 
 	local config="config/config.$target$CNAME$R64$A64"
 
 	if [[ "${ARCH}" == "ppc" ]] ; then
-		sed -i -e "s|= -mcpu=G4 -mtune=G4|= |" $config
+		sed -i -e "s|= -mcpu=G4 -mtune=G4|= |" ${config}
 	elif [[ "${ARCH}" == "ppc64" ]] ; then
-		sed -i -e "s|= -mcpu=G5 -mtune=G5|= |" $config
+		sed -i -e "s|= -mcpu=G5 -mtune=G5|= |" ${config}
+	else
+		cp ${config}.in ${config} || die "Error updating config!"
 	fi
 
-	sed -i -e "s:DEBUG = -O2:DEBUG = -g:g" $config
+	sed -i -e "s:DEBUG = -O2:DEBUG = -g:g" ${config}
+	use debug || sed -i -e "s:DEBUG = -g:DEBUG =:g" ${config}
 
-	# add local CFLAGS to and build flags
-	use debug || sed -i -e "s|\$(DEBUG)|${CFLAGS}|" $config
+	# add local CFLAGS to build flags
+	sed -i -e "s|\$(DEBUG)|${CFLAGS} \$(DEBUG) -fPIC|" \
+		-e 's|emos|/usr/share/bufrtables|g' ${config}
 
-	# add local LDFLAGS to link commands
+	# add local LDFLAGS to bins
 	sed -i \
-		-e "s|-o|${LDFLAGS} -o|" \
+		-e "s|-o|${LDFLAGS} -fPIC -o|" \
 		examples/Makefile \
 		bufrtables/Makefile
 }
 
 src_compile() {
+	export BUFR_TABLES="${S}"/bufrtables
 	EBUILD_ARCH="${ARCH}"
 	EBUILD_CFLAGS="${CFLAGS}"
 	unset ARCH CFLAGS
-	tc-export CC
-	append-flags -DTABLE_PATH="/usr/share/bufrtables"
+
+	tc-export CC FC AR NM STRIP RANLIB
+	TC_FLAGS="CC=$CC FC=$FC AR=$AR RANLIB=$RANLIB"
+	ARFLAGS="rv"
+
+	if use lto; then
+		PLUGIN_PATH="--plugin=$(gcc -print-prog-name=liblto_plugin.so)"
+		tc-ld-is-gold && ARFLAGS="rv ${PLUGIN_PATH}"
+	fi
 
 	# emake won't work with this fossil...
-	make ARCH=$target || die "make failed"
-
-	pushd examples > /dev/null
-	make ARCH=$target decode_bufr bufr_decode \
-		create_bufr decode_bufr_image tdexp \
-		|| die "make examples failed"
-	popd > /dev/null
+	BUFRFLAGS="ARCH=$target R64=$R64 CNAME=$CNAME"
+	make $TC_FLAGS ARFLAGS="${ARFLAGS}" $BUFRFLAGS || die "make failed"
 
 	generate_files
 
@@ -108,9 +124,12 @@ src_compile() {
 }
 
 src_test() {
-	cd "${S}"/examples
-	BUFR_TABLES="${S}/bufrtables/" ./decode_bufr -i \
-		../data/ISMD01_OKPR.bufr < ../response_file
+	unset ARCH CFLAGS
+	BUFRFLAGS="ARCH=$target R64=$R64 CNAME=$CNAME"
+	make $BUFRFLAGS test || die "make test failed"
+
+	ARCH="${EBUILD_ARCH}"
+	CFLAGS="${EBUILD_CFLAGS}"
 }
 
 src_install() {
@@ -118,24 +137,24 @@ src_install() {
 	dolib.a libbufr$R64.a
 
 	dosbin bufrtables/{bufr2txt_tables,bufr_split_tables,txt2bufr_tables}
-	dobin examples/{create_bufr,decode_bufr,decode_bufr_image,tdexp}
+	dobin examples/{bufr_decode_all,create_bufr,decode_bufr,decode_bufr_image,tdexp}
 
 	keepdir /usr/share/bufrtables
 	insinto /usr/share/bufrtables
-	doins bufrtables/*000*
+	doins -r bufrtables/{B,C,D}*.*
 
 	# files generated above
 	doenvd 20${PN}
 
 	dodoc README
 	if use doc ; then
-		insinto /usr/share/doc/${P}
+		insinto /usr/share/doc/${PF}
 		doins doc/*.pdf
 	fi
 
 	if use examples ; then
 		newdoc examples/README README.examples
-		insinto /usr/share/doc/${P}/examples
+		insinto /usr/share/doc/${PF}/examples
 		doins examples/{*.F,*.c,Makefile}
 	fi
 }
@@ -161,30 +180,20 @@ generate_files() {
 	## Do not remove blank lines from the response file
 	cat <<-EOF > 20${PN}
 	BUFR_TABLES="/usr/share/bufrtables"
-	CONFIG_PROTECT="/usr/share/bufrtables"
-	EOF
-
-	cat <<-EOF > response_file
-	N
-	N
-	N
-	1
-
-	N
 	EOF
 }
 
 update_configs() {
-	find . -type f | xargs chmod -x
-	chmod +x bufrtables/links.sh
+	find . -type f -name \*.distinct -o -name \*.f -o -name \*.in \
+		 | xargs chmod -x
 	cp options/options_linux options/options_ppc
 	cp options/options_linux options/options_ppc_G5
 	cp pbio/sources.linux pbio/sources.ppc
 	cp pbio/sources.linux pbio/sources.ppc_G5
 	pushd config > /dev/null
-		cp config.ppc config.ppc_gfortran
-		cp config.ppcR64 config.ppc_gfortranR64
-		cp config.ppc_G5 config.ppc_G5_gfortran
-		cp config.ppcR64_G5 config.ppc_G5_gfortranR64
+		cp config.ppc_gfortran.in config.ppc_gfortran
+		cp config.ppc_gfortranR64.in config.ppc_gfortranR64
+		cp config.ppc_gfortran_G5.in config.ppc_gfortran_G5
+		cp config.ppc_gfortranR64_G5.in config.ppc_gfortranR64_G5
 	popd > /dev/null
 }

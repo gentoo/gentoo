@@ -2,7 +2,16 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>sci-geosciences</herd>
-	<longdescription>This is mainly just an open source BUFR library from ECMWF
- that comes with a few example toolss (some of which are built and installed).
-</longdescription>
+	<maintainer>
+		<email>nerdboy@gentoo.org</email>
+		<name>Steve Arnold</name>
+	</maintainer>
+	<longdescription lang="en">
+		This is mainly just an open source BUFR library from ECMWF that comes with a few example tools (some of which are built and installed).
+	</longdescription>
+	<use>
+		<flag name="lto">
+			Use gold linker and -flto (requires existing env setup)
+		</flag>
+	</use>
 </pkgmetadata>
