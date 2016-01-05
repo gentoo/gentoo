@@ -14216,7 +14216,7 @@ net-mail/hotwayd 0.8.4: Hotmail to pop3 daemon
 net-mail/imapsync 1.592-r1 1.607-r1 1.644: A tool allowing incremental and recursive imap transfer from one mailbox to another
 net-mail/isync 1.0.6 1.2.0: MailDir mailbox synchronizer
 net-mail/kuvert 2.0.4: An MTA wrapper that automatically signs and/or encrypts outgoing mail
-net-mail/lbdb 0.39: Little Brother database
+net-mail/lbdb 0.39 0.39-r1: Little Brother database
 net-mail/libdbx 1.0.3: Tools and library for reading Outlook Express mailboxes (.dbx format)
 net-mail/libpst 0.6.55 0.6.58 0.6.59 0.6.60 0.6.61 0.6.63 0.6.64: Tools and library for reading Outlook files (.pst format)
 net-mail/mailbase 1 1.1: MTA layout package
