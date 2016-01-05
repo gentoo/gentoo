@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,7 @@ RDEPEND="
 	dev-libs/boost:0=
 	sci-libs/gsl:0=
 	<=sci-physics/looptools-2.8:0=
-	>=sci-physics/thepeg-1.9.2:0=
+	~sci-physics/thepeg-1.9.2:0=
 	fastjet? ( sci-physics/fastjet:0= )"
 DEPEND="${RDEPEND}"
 
