@@ -72,7 +72,7 @@ IUSE_LIRC_DEVICES_DIRECT="
 # parameter --with-driver=NAME
 IUSE_LIRC_DEVICES_SPECIAL="
 	serial_igor_cesko
-	remote_wonder_plus xboxusb usbirboy inputlirc"
+	remote_wonder_plus xboxusb inputlirc"
 
 IUSE_LIRC_DEVICES="${IUSE_LIRC_DEVICES_DIRECT} ${IUSE_LIRC_DEVICES_SPECIAL}"
 
@@ -119,7 +119,6 @@ DEPEND="${RDEPEND} ${DEPEND}
 
 # adding only run-time depends
 RDEPEND="${RDEPEND}
-	lirc_devices_usbirboy? ( app-misc/usbirboy )
 	lirc_devices_inputlirc? ( app-misc/inputlircd )
 	lirc_devices_iguanaIR? ( app-misc/iguanaIR )"
 
@@ -249,11 +248,6 @@ pkg_setup() {
 
 		if use lirc_devices_xboxusb; then
 			add_device atiusb "device xboxusb"
-		fi
-
-		if use lirc_devices_usbirboy; then
-			add_device userspace "device usbirboy"
-			LIRC_DRIVER_DEVICE="/dev/usbirboy"
 		fi
 
 		if [[ "${MY_OPTS}" == "" ]]; then

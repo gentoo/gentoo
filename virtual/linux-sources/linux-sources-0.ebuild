@@ -27,7 +27,6 @@ RDEPEND="|| (
 		sys-kernel/rt-sources
 		sys-kernel/tuxonice-sources
 		sys-kernel/usermode-sources
-		sys-kernel/vserver-sources
 		sys-kernel/xbox-sources
 		sys-kernel/zen-sources
 		sys-kernel/aufs-sources

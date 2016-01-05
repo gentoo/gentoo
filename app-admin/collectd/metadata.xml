@@ -115,7 +115,6 @@
 		<flag name='collectd_plugins_varnish'>Build the varnish input plugin</flag>
 		<flag name='collectd_plugins_virt'>Build the libvirt input plugin (statistics about virtualized guests on a system)</flag>
 		<flag name='collectd_plugins_vmem'>Build the vmem input plugin (information about the virtual memory subsystem)</flag>
-		<flag name='collectd_plugins_vserver'>Build the vserver input plugin (virtual servers running on a system)</flag>
 		<flag name='collectd_plugins_wireless'>Build the wireless input plugin (signal quality, signal power and signal-to-noise ratio for wireless LAN cards)</flag>
 		<flag name='collectd_plugins_write_graphite'>Build the write_graphite output plugin (sends the values collected by collectd to Carbon, the storage layer of the Graphite time-series database)</flag>
 		<flag name='collectd_plugins_write_http'>Build the write_http output plugin (sends the values collected by collectd to a web-server)</flag>
