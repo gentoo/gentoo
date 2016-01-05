@@ -22,3 +22,6 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!x11-libs/libkscreen:5
 "
+
+# requires running session
+RESTRICT="test"
