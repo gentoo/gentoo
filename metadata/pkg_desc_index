@@ -13288,7 +13288,7 @@ media-video/mjpegtools 2.1.0-r2: Tools for MJPEG video
 media-video/mjpg-streamer 0_pre20120421 0_pre20120621 0_pre20120621-r1: MJPG-streamer takes JPGs from Linux-UVC compatible webcams
 media-video/mkclean 0.8.6-r1 0.8.7: mkclean is a command line tool to clean and optimize Matroska files
 media-video/mkvalidator 0.3.7-r1 0.4.0 0.4.1 0.4.2 0.5.0: mkvalidator is a command line tool to verify Matroska files for spec conformance
-media-video/mkvtoolnix 8.5.2 8.6.1: Tools to create, alter, and inspect Matroska files
+media-video/mkvtoolnix 8.5.2 8.6.1 8.7.0: Tools to create, alter, and inspect Matroska files
 media-video/motion 3.2.12-r2 3.2.12-r3: A software motion detector
 media-video/motiontrack 0.1.3: A set of tools that detect motion between two images
 media-video/movit 1.1 1.1.1 1.1.2 1.1.3 1.2.0: Modern Video Toolkit
@@ -17001,7 +17001,7 @@ sys-libs/libavc1394 0.5.3 0.5.4 0.5.4-r1: library for the 1394 Trade Association
 sys-libs/libcap 2.22-r2 2.24-r2: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.6.6 0.7.3 0.7.4 0.7.5 0.7.6 0.7.7: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.0.2: Libchipcard is a library for easy access to chip cards via chip card readers (terminals)
-sys-libs/libcxx 0.0_p20130725 0.0_p20131222 0.0_p20140322 3.6.0 3.6.1 3.6.2 3.7.0 9999: New implementation of the C++ standard library, targeting C++11
+sys-libs/libcxx 3.7.0 3.7.1 9999: New implementation of the C++ standard library, targeting C++11
 sys-libs/libcxxrt 0.0_p20140322 0.0_p20150423 9999: C++ Runtime from PathScale, FreeBSD and NetBSD
 sys-libs/libfaketime 0.9.6-r1: Report faked system time to programs
 sys-libs/libfreevec 1.0.4: Altivec enabled libc memory function
