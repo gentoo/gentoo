@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,6 +30,7 @@ src_install() {
 	if use apache2 ; then
 		insinto "${APACHE_MODULES_CONFDIR#${EPREFIX}}"
 		doins "${FILESDIR}/70_mod_php.conf"
+		newins "${FILESDIR}/70_mod_php5.backcompat.conf" 70_mod_php5.conf
 	fi
 
 	if use fpm ; then
