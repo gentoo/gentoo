@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -65,7 +65,9 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	# work around failing parallel installation (-j1)
+	# until a better fix is available. (bug #469032)
+	emake -j1 DESTDIR="${D}" install
 	dodoc AUTHORS ChangeLog NEWS
 
 	prune_libtool_files
