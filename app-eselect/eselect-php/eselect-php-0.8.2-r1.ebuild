@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,10 @@ inherit depend.apache systemd
 
 DESCRIPTION="PHP eselect module"
 HOMEPAGE="https://gitweb.gentoo.org/proj/eselect-php.git/"
-SRC_URI="https://dev.gentoo.org/~mjo/distfiles/${P}.tar.xz"
+SRC_URI="
+	https://dev.gentoo.org/~mjo/distfiles/${P}.tar.xz
+	https://dev.gentoo.org/~grknight/distfiles/${P}.tar.xz
+"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -27,6 +30,7 @@ src_install() {
 	if use apache2 ; then
 		insinto "${APACHE_MODULES_CONFDIR#${EPREFIX}}"
 		doins "${FILESDIR}/70_mod_php.conf"
+		newins "${FILESDIR}/70_mod_php5.backcompat.conf" 70_mod_php5.conf
 	fi
 
 	if use fpm ; then
