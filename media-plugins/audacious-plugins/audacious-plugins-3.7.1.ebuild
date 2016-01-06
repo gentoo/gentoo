@@ -15,10 +15,10 @@ SRC_URI="!gtk3? ( http://distfiles.audacious-media-player.org/${MY_P}.tar.bz2 )
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 ~arm ~hppa ppc ppc64 x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux"
-IUSE="aac +adplug alsa bs2b cdda cue ffmpeg flac fluidsynth gnome http gtk2 gtk3 jack
+IUSE="aac +adplug alsa bs2b cdda cue ffmpeg flac fluidsynth gnome http gtk gtk3 jack
 lame libnotify libsamplerate lirc mms mp3 nls pulseaudio qt5 scrobbler sdl sid sndfile vorbis wavpack"
 REQUIRED_USE="
-	?? ( gtk2 gtk3 qt5 )
+	?? ( gtk gtk3 qt5 )
 	?? ( qt5 libnotify )
 "
 
@@ -41,7 +41,7 @@ RDEPEND="app-arch/unzip
 		>=media-libs/flac-1.2.1-r1 )
 	fluidsynth? ( media-sound/fluidsynth )
 	http? ( >=net-libs/neon-0.26.4 )
-	gtk2? ( x11-libs/gtk+:2 )
+	gtk? ( x11-libs/gtk+:2 )
 	!gtk3? ( x11-libs/gtk+:2 )
 	gtk3? ( x11-libs/gtk+:3
                 media-libs/adplug )
@@ -98,7 +98,7 @@ src_configure() {
 	mp3_warning  
 	if use libnotify ;then
                 gtk="--enable-gtk"
-        elif use gtk2 ;then
+        elif use gtk ;then
                 gtk="--enable-gtk"
         elif use gtk3 ;then
                 gtk="--enable-gtk"
