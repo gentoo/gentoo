@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -105,12 +105,12 @@ python_prepare_all() {
 		[[ $(tc-getFC) == *gfortran* ]] && NUMPY_FCONFIG+=" --fcompiler=gnu95"
 	fi
 
-	# don't version f2py, we will handle it.
-	sed -i -e '/f2py_exe/s:+os\.path.*$::' numpy/f2py/setup.py || die
+#	# don't version f2py, we will handle it.
+	sed -i -e '/f2py_exe/s: + os\.path.*$::' numpy/f2py/setup.py || die
 
-	# we don't have f2py-3.3
+#	# we don't have f2py-3.3
 	sed \
-		-e "/f2py_cmd/s:'f2py'.*:'f2py'\]:g" \
+		-e 's:test_f2py:_&:g' \
 		-i numpy/tests/test_scripts.py || die
 
 	distutils-r1_python_prepare_all
@@ -135,17 +135,16 @@ python_install() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
-
-	dodoc COMPATIBILITY DEV_README.txt THANKS.txt
+	DOCS+=( COMPATIBILITY DEV_README.txt THANKS.txt )
 
 	if use doc; then
-		dohtml -r "${WORKDIR}"/html/*
-		dodoc "${DISTDIR}"/${PN}-{user,ref}-${DOC_PV}.pdf
+		HTML_DOCS=( "${WORKDIR}"/html/. )
+		DOCS+=( "${DISTDIR}"/${PN}-{user,ref}-${DOC_PV}.pdf )
 	fi
 
-	# absent in 1.9
-	#docinto f2py
-	#dodoc numpy/f2py/docs/*.txt
-	#doman numpy/f2py/f2py.1
+	distutils-r1_python_install_all
+
+	docinto f2py
+	dodoc doc/f2py/*.txt
+	doman doc/f2py/f2py.1
 }
