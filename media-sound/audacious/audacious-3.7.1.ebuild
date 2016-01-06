@@ -59,7 +59,7 @@ src_configure() {
 	econf \
 		--enable-dbus \
 		$(use_enable nls) \
-		$(use_enable gtk2 qt)
+		$(use_enable gtk2 gtk) \
 		$(use_enable qt5 qt)
 }
 
