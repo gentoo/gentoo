@@ -18,6 +18,3 @@ FEATURES="${FEATURES} -sandbox"
 # this probably already is like this, but we assure that in prefix we
 # have a GNU userland
 USERLAND="GNU"
-
-# Python 3.4 isn't in prefix yet.
-USE="python_targets_python3_3 -python_targets_python3_4"
