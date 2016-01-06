@@ -18,9 +18,9 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="alpha amd64 ~arm ~hppa ppc ppc64 x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux"
 
-IUSE="+chardet nls gtk2 gtk3 qt5"
+IUSE="+chardet nls gtk gtk3 qt5"
 REQUIRED_USE="
-	?? ( gtk2 gtk3 qt5 )
+	?? ( gtk gtk3 qt5 )
 "
 DOCS="AUTHORS"
 
@@ -30,7 +30,7 @@ RDEPEND=">=dev-libs/dbus-glib-0.60
 	>=x11-libs/pango-1.8.0
 	virtual/freedesktop-icon-theme
 	chardet? ( >=app-i18n/libguess-1.2 )
-	gtk2?  ( x11-libs/gtk+:2 )
+	gtk?  ( x11-libs/gtk+:2 )
 	!gtk3? ( x11-libs/gtk+:2 )
 	gtk3? ( x11-libs/gtk+:3 )
 	qt5? ( dev-qt/qtcore:5
@@ -51,13 +51,13 @@ src_unpack() {
 }
 
 src_configure() {
-        if use gtk2 ;then
-                gtk="--enable-gtk"
-        elif use gtk3 ;then
-                gtk="--enable-gtk"
-        else
-                gtk="--disable-gtk"
-        fi
+	if use gtk ;then
+		gtk="--enable-gtk"
+	elif use gtk3 ;then
+		gtk="--enable-gtk"
+	else
+		gtk="--disable-gtk"
+	fi
 	# D-Bus is a mandatory dependency, remote control,
 	# session management and some plugins depend on this.
 	# Building without D-Bus is *unsupported* and a USE-flag
