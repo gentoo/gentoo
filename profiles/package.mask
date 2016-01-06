@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matthias Maier <tamiko@gentoo.org> (06 Jan 2016)
+# Obsolete package, nowadays bundled with media-sound/quodlibet
+# Masked for removal in 30 days
+media-plugins/quodlibet-plugins
+
 # Pacho Ramos <pacho@gentoo.org> (05 Jan 2016)
 # Upstream dead, ignores cflags, nothing need it in the tree
 # bug #438940. Removal in a month
