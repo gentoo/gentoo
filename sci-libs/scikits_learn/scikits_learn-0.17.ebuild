@@ -27,6 +27,7 @@ RDEPEND="
 	>=dev-python/numpy-1.6.1[lapack,${PYTHON_USEDEP}]
 	sci-libs/scikits[${PYTHON_USEDEP}]
 	>=sci-libs/scipy-0.9[${PYTHON_USEDEP}]
+	virtual/blas
 	virtual/cblas
 	virtual/python-funcsigs[${PYTHON_USEDEP}]
 	"
@@ -35,6 +36,7 @@ DEPEND="
 	dev-python/numpy[lapack,${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	sci-libs/scipy[${PYTHON_USEDEP}]
+	virtual/blas
 	virtual/cblas
 	doc? (
 		dev-python/joblib[${PYTHON_USEDEP}]
