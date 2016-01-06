@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
 
-DESCRIPTION="A unittest extension offering automatic test suite discovery and easy test authoring"
+DESCRIPTION="Unittest extension with automatic test suite discovery and easy test authoring"
 HOMEPAGE="
 	https://pypi.python.org/pypi/nose
 	http://readthedocs.org/docs/nose/
@@ -20,6 +20,8 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc examples test"
+
+REQUIRED_USE="doc? ( python_targets_python2_7 )"
 
 RDEPEND="
 	dev-python/coverage[${PYTHON_USEDEP}]
@@ -61,7 +63,10 @@ python_compile() {
 }
 
 python_compile_all() {
-	use doc && emake -C doc html
+	if use doc; then
+		python_export python2_7 EPYTHON
+		emake -C doc html
+	fi
 }
 
 python_test() {
@@ -77,6 +82,7 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	if use doc; then
-		dohtml -r -A txt doc/.build/html/.
+		docinto html
+		dodoc -r -A txt doc/.build/html/.
 	fi
 }
