@@ -3786,7 +3786,7 @@ dev-java/dbus-java 2.7-r1: Java bindings for the D-Bus messagebus
 dev-java/dict4j 1.1: Dict protocol implementation in Java
 dev-java/disruptor 3.2.0: High Performance Inter-Thread Messaging Library
 dev-java/dnsjava 2.1.6: An implementation of DNS in Java
-dev-java/dom4j 1.6.1-r4 1.6.1-r5: Java library for working with XML
+dev-java/dom4j 1.6.1-r5: Java library for working with XML
 dev-java/dsiutils 1.0.10-r2: A Mish Mash of classes that were initially distributed with mg4j (amount others)
 dev-java/dtdparser 1.21-r2: A Java DTD Parser
 dev-java/dynalang 0.4-r1: Library for implementation of interoperable metaobject protocols for dynamic languages
@@ -3941,7 +3941,7 @@ dev-java/jax-ws-api 2.0: JAXWS 2.0 API Final Release
 dev-java/jax-ws-tools 2.0.1-r1: Reference implementation of the Java API for XML Web Services
 dev-java/jaxb 2.1.2-r1: Reference implementation of the JAXB specification
 dev-java/jaxb-tools 2.1.2: Reference implementation of the JAXB specification
-dev-java/jaxen 1.1.1 1.1.4-r1: A Java XPath Engine
+dev-java/jaxen 1.1.1 1.1.4-r1 1.1.6: A Java XPath Engine
 dev-java/jaxme 0.5.2 0.5.2-r2: JaxMe 2 is an open source implementation of JAXB, the specification for Java/XML binding
 dev-java/jaxp 1.4-r1: The Java API for XML Processing (JAXP)
 dev-java/jaxr 1.0.6-r2: Java API for XML Registries
@@ -3971,7 +3971,7 @@ dev-java/jdbc-postgresql 9.2_p1003 9.2_p1004 9.3_p1100 9.4_p1205 9.4_p1206: JDBC
 dev-java/jdbc2-stdext 2.0-r3: A standard set of libs for Server-Side JDBC support
 dev-java/jdbm 0.12-r2: Jdbm aims to be for Java what GDBM is for Perl, Python, C, ...
 dev-java/jdepend 2.9-r5: JDepend traverses Java class file directories and generates design quality metrics per package
-dev-java/jdom 1.0-r2 1.0-r4 1.1.3 2.0.6 2.0.6-r4: Java API to manipulate XML data
+dev-java/jdom 1.0-r2 1.0-r4 1.1.3 2.0.6-r4: Java API to manipulate XML data
 dev-java/jdom-jaxen 1.0-r1: Jaxen binding for jdom
 dev-java/jdynamite 1.2-r1: Dynamic Template in Java
 dev-java/jebl 2013.02.18: Java Evolutionary Biology Library
@@ -4263,7 +4263,7 @@ dev-java/vldocking 3.0.5: Docking solution for Java Swing
 dev-java/werken-xpath 0.9.4_beta-r2 0.9.4_beta-r4: W3C XPath-Rec implementation for DOM4J
 dev-java/ws-commons-util 1.0.1 1.0.1-r1: Utility classes that allow high performance XML processing based on SAX
 dev-java/wsdl4j 1.6.2: Web Services Description Language for Java Toolkit (WSDL4J)
-dev-java/wstx 3.2.9 3.2.9-r1: Woodstox is a high-performance validating namespace-aware XML-processor
+dev-java/wstx 3.2.9-r1: Woodstox is a high-performance validating namespace-aware XML-processor
 dev-java/xalan 2.7.2: Apache's XSLT processor for transforming XML documents into HTML, text, or other XML document types
 dev-java/xalan-serializer 2.7.2: DOM Level 3 serializer from Apache Xalan, shared by Xalan and Xerces
 dev-java/xerces 2.11.0 2.11.0-r1: The next generation of high performance, fully compliant XML parsers in the Apache Xerces family
@@ -4288,7 +4288,7 @@ dev-java/xpp3 1.1.4c-r1 1.1.4c-r2: An implementation of XMLPULL V1 API
 dev-java/xsd2jibx 0.2a_beta-r2: JiBX binding and code from schema generator
 dev-java/xsdlib 20090415: Sun XML Datatypes Library
 dev-java/xsom 20060901: XML Schema Object Model (XSOM) allows Java apps to easy parse and inspect XML Schema docs
-dev-java/xstream 1.3.1-r3 1.3.1-r4 1.4.8-r1: A text-processing Java API that serialize objects to XML and back again
+dev-java/xstream 1.3.1-r4 1.4.8-r1: A text-processing Java API that serialize objects to XML and back again
 dev-java/xz-java 1.5: Implementation of xz data compression in pure java
 dev-java/yanfs 1.0: Yet Another NFS - a Java NFS library
 dev-java/zemberek 2.1.1: Zemberek NLP library
@@ -13074,7 +13074,7 @@ media-sound/sndfile-tools 1.03: A small collection of programs that use libsndfi
 media-sound/sndpeek 1.4: real-time audio visualization
 media-sound/solfege 3.22.2: GNU Solfege is a program written to help you practice ear training
 media-sound/sonata 1.6.2.1-r1: An elegant GTK+ music client for the Music Player Daemon (MPD)
-media-sound/sonic-visualiser 1.9 2.3 2.4.1: Music audio files viewer and analiser
+media-sound/sonic-visualiser 1.9 2.3 2.4.1 2.5: Music audio files viewer and analiser
 media-sound/sooperlooper 1.6.17 1.6.18 1.7.3 1.7.3-r1: Live looping sampler with immediate loop recording
 media-sound/sound-juicer 3.16.1 3.18.1: CD ripper for GNOME
 media-sound/soundconverter 2.1.5 2.1.5-r1: A simple audiofile converter application for the GNOME environment
