@@ -1,9 +1,10 @@
---- Makefile.orig	2015-09-17 20:37:16.481867339 -0500
-+++ Makefile	2015-09-17 20:53:27.715800926 -0500
-@@ -12,15 +12,11 @@
+--- Makefile.orig	2015-12-28 19:23:28.425122306 -0600
++++ Makefile	2015-12-28 19:25:09.482123654 -0600
+@@ -12,17 +12,11 @@
  
  .PHONY: default
  default:
+-	# Must run twice due to go get race
 -	-go get -t -v -d ./...
 -	-go get -t -v -d ./...
  	go install -v ./...
@@ -11,6 +12,7 @@
  
  .PHONY: client
  client:
+-	# Must run twice due to go get race
 -	-go get -t -v -d ./...
 -	-go get -t -v -d ./...
  	go install -v ./lxc

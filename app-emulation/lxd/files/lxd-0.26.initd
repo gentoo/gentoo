@@ -6,7 +6,7 @@
 DAEMON=/usr/sbin/lxd
 PIDFILE=/run/lxd.pid
 
-extra_commands="shutdown"
+extra_commands="stopall"
 
 depend() {
     need net
@@ -32,7 +32,7 @@ start() {
 
 stop() {
     if [[ $RC_GOINGDOWN = YES ]] || [[ $RC_REBOOT = YES ]]; then
-	shutdown
+	stopall
     else
 	ebegin "Stopping lxd service (but not containers)"
 	start-stop-daemon --stop --quiet -R TERM/45 -p ${PIDFILE}
@@ -40,9 +40,9 @@ stop() {
     fi
 }
 
-shutdown() {
+stopall() {
     ebegin "Stopping lxd service and containers"
-    if ${DAEMON} shutdown; then
+    if "${DAEMON}" shutdown; then
 	/etc/init.d/lxd zap
 	rm -f ${PIDFILE}
     fi
