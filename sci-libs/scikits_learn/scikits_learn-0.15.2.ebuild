@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,12 +26,14 @@ RDEPEND="
 	dev-python/nose[${PYTHON_USEDEP}]
 	dev-python/numpy[lapack,${PYTHON_USEDEP}]
 	sci-libs/scikits[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]"
+	sci-libs/scipy[${PYTHON_USEDEP}]
+	virtual/cblas"
 DEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/numpy[lapack,${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	sci-libs/scipy[${PYTHON_USEDEP}]
+	virtual/cblas
 	doc? (
 		dev-python/joblib[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
