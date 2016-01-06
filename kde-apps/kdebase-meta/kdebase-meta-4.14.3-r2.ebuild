@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,7 +25,7 @@ RDEPEND="
 	$(add_kdeapps_dep libkonq)
 	$(add_kdeapps_dep nsplugins)
 	$(add_kdeapps_dep phonon-kde)
-	wallpapers? ( || ( $(add_kdeapps_dep kde-wallpapers) kde-apps/kde-wallpapers:5 ) )
+	wallpapers? ( $(add_kdeapps_dep kde-wallpapers '' 15.08.3) )
 	!minimal? (
 		$(add_kdebase_dep freespacenotifier '' 4.11)
 		$(add_kdebase_dep kcheckpass '' 4.11.22-r1)
