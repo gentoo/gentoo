@@ -125,6 +125,7 @@ src_configure() {
 		$(use_enable nls) \
 		$(use_enable pulseaudio pulse) \
 		$(use_enable gtk2 gtk) \
+		$(use_enable gtk3 gtk) \
 		$(use_enable qt5 qt) \
 		$(use_enable scrobbler scrobbler2) \
 		$(use_enable sdl sdlout) \
