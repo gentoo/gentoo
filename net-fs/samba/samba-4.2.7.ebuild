@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -73,8 +73,10 @@ REQUIRED_USE="addc? ( gnutls !system-mitkrb5 )
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}/${PN}-4.2.3-heimdal_compilefix.patch" \
-			"${FILESDIR}/${PN}-4.2.7-pam.patch")
+PATCHES=(
+	"${FILESDIR}/${PN}-4.2.3-heimdal_compilefix.patch"
+	"${FILESDIR}/${PN}-4.2.7-pam.patch"
+)
 
 CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
 
