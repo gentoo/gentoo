@@ -23,7 +23,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="app-arch/unzip
-        media-libs/adplug
+	media-libs/adplug
 	>=dev-libs/dbus-glib-0.60
 	dev-libs/libxml2:2
 	media-libs/libmodplug
@@ -44,7 +44,7 @@ RDEPEND="app-arch/unzip
 	gtk? ( x11-libs/gtk+:2 )
 	!gtk3? ( x11-libs/gtk+:2 )
 	gtk3? ( x11-libs/gtk+:3
-                media-libs/adplug )
+		media-libs/adplug )
 	qt5? ( dev-qt/qtcore:5
 	      dev-qt/qtgui:5
 	      dev-qt/qtmultimedia:5
@@ -95,17 +95,17 @@ src_prepare() {
 }
 
 src_configure() {
-	mp3_warning  
+	mp3_warning
 	if use libnotify ;then
-                gtk="--enable-gtk"
-        elif use gtk ;then
-                gtk="--enable-gtk"
-        elif use gtk3 ;then
-                gtk="--enable-gtk"
-        else
-                gtk="--disable-gtk"
-        fi
-	
+		gtk="--enable-gtk"
+	elif use gtk ;then
+		gtk="--enable-gtk"
+	elif use gtk3 ;then
+		gtk="--enable-gtk"
+	else
+		gtk="--disable-gtk"
+	fi
+
 	if use ffmpeg && has_version media-video/ffmpeg ; then
 		ffmpeg="--with-ffmpeg=ffmpeg"
 	elif use ffmpeg && has_version media-video/libav ; then
