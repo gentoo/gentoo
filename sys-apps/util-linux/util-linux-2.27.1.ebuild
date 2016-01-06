@@ -25,13 +25,14 @@ HOMEPAGE="https://www.kernel.org/pub/linux/utils/util-linux/"
 
 LICENSE="GPL-2 LGPL-2.1 BSD-4 MIT public-domain"
 SLOT="0"
-IUSE="caps +cramfs fdformat kill ncurses nls pam python selinux slang static-libs +suid systemd test tty-helpers udev unicode"
+IUSE="caps +cramfs fdformat kill ncurses nls pam python +readline selinux slang static-libs +suid systemd test tty-helpers udev unicode"
 
 RDEPEND="caps? ( sys-libs/libcap-ng )
 	cramfs? ( sys-libs/zlib )
 	ncurses? ( >=sys-libs/ncurses-5.2-r2:0=[unicode?] )
 	pam? ( sys-libs/pam )
 	python? ( ${PYTHON_DEPS} )
+	readline? ( sys-libs/readline:0 )
 	selinux? ( >=sys-libs/libselinux-2.2.2-r4[${MULTILIB_USEDEP}] )
 	slang? ( sys-libs/slang )
 	systemd? ( sys-apps/systemd )
@@ -115,6 +116,7 @@ multilib_src_configure() {
 		--enable-partx \
 		$(multilib_native_use_with python) \
 		--enable-raw \
+		$(multilib_native_use_with readline) \
 		--enable-rename \
 		--disable-reset \
 		--enable-schedutils \
