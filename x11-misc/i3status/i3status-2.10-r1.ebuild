@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit toolchain-funcs versionator fcaps
+inherit eutils toolchain-funcs fcaps
 
 DESCRIPTION="generates a status bar for dzen2, xmobar or similar"
 HOMEPAGE="http://i3wm.org/i3status/"
@@ -13,25 +13,26 @@ SRC_URI="http://i3wm.org/${PN}/${P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="pulseaudio"
 
 RDEPEND="dev-libs/confuse
 	dev-libs/libnl:3
 	>=dev-libs/yajl-2.0.2
 	media-libs/alsa-lib
-	media-sound/pulseaudio"
+	pulseaudio? ( media-sound/pulseaudio )"
 DEPEND="${RDEPEND}
 	app-text/asciidoc
 	virtual/pkgconfig"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-pulseaudio.patch
 	sed -e "/@echo/d" -e "s:@\$(:\$(:g" -e "/setcap/d" \
 		-e '/CFLAGS+=-g/d' -i Makefile || die
 	rm -rf man/${PN}.1  # man not regenerated in tarball
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)"
+	emake CC="$(tc-getCC)" PULSE=$(usex pulseaudio 1 0)
 }
 
 pkg_postinst() {
