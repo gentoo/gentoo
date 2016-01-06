@@ -7147,7 +7147,7 @@ dev-python/ipcalc 1.0.0 1.1.1 1.1.2 1.1.3: IP subnet calculator
 dev-python/ipdb 0.8 0.8.1: IPython-enabled pdb
 dev-python/ipdbplugin 1.4 9999: Nose plugin to use iPdb instead of Pdb when tests fail
 dev-python/ipy 0.82a 0.83: Class and tools for handling of IPv4 and IPv6 addresses and networks
-dev-python/ipykernel 4.2.0 4.2.1: IPython Kernel for Jupyter
+dev-python/ipykernel 4.2.0 4.2.1 4.2.2: IPython Kernel for Jupyter
 dev-python/ipyparallel 4.1.0: Interactive Parallel Computing with IPython
 dev-python/ipython 3.2.1-r1 4.0.1: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.1.0: Vestigial utilities from IPython
@@ -9695,8 +9695,8 @@ dev-vcs/git-sh 1.1 1.3: A customized bash environment suitable for git work
 dev-vcs/gitg 3.16.1 3.18.0: git repository viewer for GNOME
 dev-vcs/github-pages-publish 0.1.2: A script that commits files from a directory to Github Pages
 dev-vcs/gitinspector 0.3.1 0.3.2 0.4.2: Statistical analysis tool for git repositories
-dev-vcs/gitolite 2.3.1-r1 3.6 3.6.1 3.6.2 3.6.2-r1 3.6.3 3.6.4 9999: Highly flexible server for git directory version tracker
-dev-vcs/gitolite-gentoo 2.3.1-r1 2.3.3-r1 3.5.3.1 3.6.1 3.6.1-r1 3.6.2.1 3.6.2.2 3.6.2.3 3.6.2.4 3.6.3 3.6.3.2 3.6.4 3.6.4.1 9999: Highly flexible server for git directory version tracker, Gentoo fork
+dev-vcs/gitolite 2.3.1-r1 3.6 3.6.1 3.6.2 3.6.2-r1 3.6.3 3.6.4 3.6.4-r1 9999: Highly flexible server for git directory version tracker
+dev-vcs/gitolite-gentoo 2.3.1-r1 2.3.3-r1 3.5.3.1 3.6.1 3.6.1-r1 3.6.2.1 3.6.2.2 3.6.2.3 3.6.2.4 3.6.3 3.6.3.2 3.6.4 3.6.4.1 3.6.4.1-r1 9999: Highly flexible server for git directory version tracker, Gentoo fork
 dev-vcs/gitsh 0.8 0.10: An interactive shell for git
 dev-vcs/gitstats 0_pre131024 9999: Statistics generator for git
 dev-vcs/gti 9999: A silly git launcher, basically. Inspired by sl
@@ -14710,7 +14710,7 @@ net-nds/jxplorer 3.2 3.2-r2 3.3.1 3.3.1.1: A fully functional ldap browser writt
 net-nds/lat 1.2.3: LDAP Administration Tool, allows you to browse LDAP-based directories and add/edit/delete entries
 net-nds/ldapvi 1.7-r1 1.7_p20101214: Manage LDAP entries with a text editor
 net-nds/led 1.111: led is a general purpose LDAP editor
-net-nds/nsscache 0.23 0.23-r1 0.23-r2 0.30 0.30-r1: commandline tool to sync directory services to local cache
+net-nds/nsscache 0.23 0.23-r1 0.23-r2 0.30 0.30-r2: commandline tool to sync directory services to local cache
 net-nds/openldap 2.3.43-r3 2.3.43-r4 2.4.38-r2 2.4.39 2.4.40 2.4.40-r2 2.4.40-r4 2.4.42 2.4.42-r1 2.4.43: LDAP suite of application and development tools
 net-nds/phpldapadmin 1.2.3 1.2.3-r1: phpLDAPadmin is a web-based tool for managing all aspects of your LDAP server
 net-nds/portmap 6.0 9999: Netkit - portmapper
@@ -16947,7 +16947,7 @@ sys-kernel/aufs-sources 3.18.22 3.18.24 4.0.4 4.0.9 4.1.12 4.1.13 4.1.14 4.1.15 
 sys-kernel/ck-sources 3.4.107 3.10.82 3.10.83 3.10.86 3.10.87 3.14.46 3.14.48 3.14.50 3.14.51 3.18.16 3.18.19 3.19.8 4.0.7 4.0.9 4.1.3 4.1.5 4.1.6: Full Linux 4.1 kernel sources with Con Kolivas' high performance patchset and Gentoo's genpatches
 sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
-sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 9999: Gentoo automatic kernel building scripts
+sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 35 55 60 63: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.4.110 3.4.9999 3.10.92 3.10.93 3.10.94 3.12.49 3.12.50 3.12.9999 3.14.56 3.14.57 3.14.58 3.18.21 3.18.22 3.18.23 3.18.24 3.18.25 4.0.4 4.0.9 4.1.12 4.1.13 4.1.14 4.1.15 4.2.4 4.2.5 4.2.6 4.2.7 4.2.8 4.3.0 4.3.2 4.3.3: Full sources including the Gentoo patchset for the 4.3 kernel tree
 sys-kernel/git-sources 4.4_rc1 4.4_rc2 4.4_rc3 4.4_rc4 4.4_rc5 4.4_rc6 4.4_rc7 4.4_rc8: The very latest -git version of the Linux kernel
