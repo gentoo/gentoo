@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,22 +16,27 @@ SRC_URI="
 
 LICENSE="dom4j"
 SLOT="1"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
-CDEPEND="dev-java/xpp2:0
+CDEPEND="
+	dev-java/xpp2:0
 	dev-java/xpp3:0
 	dev-java/jaxme:0
 	dev-java/xsdlib:0
 	dev-java/relaxng-datatype:0"
-RDEPEND="${CDEPEND}
+
+RDEPEND="
+	${CDEPEND}
 	>=virtual/jre-1.6"
-DEPEND="${CDEPEND}
-	>=virtual/jdk-1.6
+
+DEPEND="
+	${CDEPEND}
 	test? (
 		dev-java/ant-junit:0
 		dev-java/junitperf:0
-	)"
+	)
+	>=virtual/jdk-1.6"
 
 java_prepare() {
 	# Circular deps with jaxen #212993
@@ -41,9 +46,9 @@ java_prepare() {
 	epatch "${WORKDIR}/${P}-java5.patch"
 }
 
-# 0 - Needs X11
-# 1 -Fails with a 1.7 JDK for some reason
-# 2 -Fails with a 1.6 JDK for some reason
+# 0 - Requires X11.
+# 1 - Fails with JDK 1.7.
+# 2 - Fails with JDK 1.6.
 JAVA_RM_FILES=(
 	src/test/org/dom4j/bean/BeansTest.java
 	src/test/org/dom4j/io/StaxTest.java
@@ -67,7 +72,7 @@ src_test() {
 }
 
 src_install() {
-	java-pkg_dojar build/${PN}.jar
+	java-pkg_dojar "build/${PN}.jar"
 	use doc && java-pkg_dojavadoc build/doc/api
 	use source && java-pkg_dosrc src/java/*
 }

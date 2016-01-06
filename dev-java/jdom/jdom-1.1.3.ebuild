@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,18 +13,15 @@ HOMEPAGE="http://www.jdom.org"
 LICENSE="JDOM"
 SLOT="0"
 KEYWORDS="amd64 ~arm ppc ppc64 x86"
-COMMON_DEP="dev-java/saxpath
-		>=dev-java/xerces-2.7"
-RDEPEND=">=virtual/jre-1.6"
-#	${COMMON_DEP}"
-DEPEND=">=virtual/jdk-1.6"
-#	${COMMON_DEP}"
 IUSE=""
+
+RDEPEND=">=virtual/jre-1.6"
+DEPEND=">=virtual/jdk-1.6"
 
 S="${WORKDIR}/${PN}"
 
 java_prepare() {
-	find "${S}" -name '*.jar' -delete || die
+	java-pkg_clean
 
 	rm -r build/apidocs || die
 
@@ -43,12 +40,9 @@ java_prepare() {
 }
 
 EANT_BUILD_TARGET="package"
-#EANT_GENTOO_CLASSPATH="saxpath,xerces-2"
 
 src_install() {
 	java-pkg_dojar build/*.jar
-
-	#java-pkg_register-dependency "jdom-jaxen-${SLOT}"
 	dodoc CHANGES.txt COMMITTERS.txt README.txt TODO.txt || die
 	use doc && java-pkg_dojavadoc build/apidocs
 	use examples && java-pkg_doexamples samples

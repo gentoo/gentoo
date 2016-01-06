@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,17 +14,20 @@ SRC_URI="https://github.com/hunterhacker/${PN}/archive/${MY_P}.tar.gz"
 HOMEPAGE="http://www.jdom.org"
 LICENSE="Apache-1.1"
 SLOT="2"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="test"
 
-CDEPEND="dev-java/iso-relax:0
+CDEPEND="
+	dev-java/xalan:0
 	dev-java/jaxen:1.1
-	dev-java/xalan:0"
+	dev-java/iso-relax:0"
 
-RDEPEND="${CDEPEND}
+RDEPEND="
+	${CDEPEND}
 	>=virtual/jre-1.6"
 
-DEPEND="${CDEPEND}
+DEPEND="
+	${CDEPEND}
 	>=virtual/jdk-1.6
 	test? ( dev-java/ant-junit:0 )"
 
@@ -34,9 +37,14 @@ EANT_TEST_TARGET="junit"
 EANT_GENTOO_CLASSPATH="iso-relax,jaxen-1.1,xalan"
 S="${WORKDIR}/${PN}-${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}/build-xml-2.patch"
+)
+
 java_prepare() {
-	epatch "${FILESDIR}/build-xml-2.patch"
-	find -name "*.jar" -delete || die
+	java-pkg_clean
+
+	epatch "${PATCHES[@]}"
 
 	# Remove Android stuff to avoid junit RDEPEND.
 	rm -vr contrib/src/java/org/jdom2/contrib/android || die
