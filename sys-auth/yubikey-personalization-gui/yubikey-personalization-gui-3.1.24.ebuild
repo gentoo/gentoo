@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit eutils qt4-r2
+inherit eutils qmake-utils
 
 DESCRIPTION="GUI for personalization of Yubico's YubiKey"
 SRC_URI="http://yubico.github.io/yubikey-personalization-gui/releases/${P}.tar.gz"
