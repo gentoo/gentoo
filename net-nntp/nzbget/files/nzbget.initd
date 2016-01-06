@@ -3,11 +3,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-extra_started_commands="pause unpause"
+extra_started_commands="reload"
 
 start() {
-	ebegin "Starting nzbget"
-	checkpath -d -m 0755 -o "${NZBGET_USER}:${NZBGET_GROUP}" /run/nzbget
+	ebegin "Starting ${RC_SVCNAME}"
+	checkpath -d -m 0755 -o "${NZBGET_USER}":"${NZBGET_GROUP}" /run/nzbget
 	start-stop-daemon --quiet --start --user "${NZBGET_USER}" \
 		--group "${NZBGET_GROUP}" --exec /usr/bin/nzbget -- \
 		--configfile "${NZBGET_CONFIGFILE}" --daemon \
@@ -16,19 +16,14 @@ start() {
 }
 
 stop() {
-	ebegin "Stopping nzbget"
-	/usr/bin/nzbget --configfile "${NZBGET_CONFIGFILE}" --quit >/dev/null
-	eend $?
+	ebegin "Stopping ${RC_SVCNAME}"
+	start-stop-daemon --stop --exec /usr/bin/nzbget -- \
+		--configfile "${NZBGET_CONFIGFILE}" --daemon \
+		-- ${NZBGET_OPTS}
 }
 
-pause() {
-	ebegin "Pausing nzbget"
-	/usr/bin/nzbget --configfile "${NZBGET_CONFIGFILE}" --pause >/dev/null
-	eend $?
-}
-
-unpause() {
-	ebegin "Unpausing nzbget"
-	/usr/bin/nzbget --configfile "${NZBGET_CONFIGFILE}" --unpause >/dev/null
+reload() {
+	ebegin "Reloading ${RC_SVCNAME}"
+	/usr/bin/nzbget --configfile "${NZBGET_CONFIGFILE}" --reload >/dev/null
 	eend $?
 }
