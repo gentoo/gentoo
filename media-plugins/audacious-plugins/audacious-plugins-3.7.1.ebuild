@@ -102,6 +102,8 @@ src_configure() {
                 gtk="--enable-gtk"
         elif use gtk3 ;then
                 gtk="--enable-gtk"
+        else
+                gtk="--disable-gtk"
         fi
 	
 	if use ffmpeg && has_version media-video/ffmpeg ; then
