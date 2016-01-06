@@ -1300,7 +1300,7 @@ app-emulation/libvirt 1.2.21-r2 1.3.0 9999: C toolkit to manipulate virtual mach
 app-emulation/libvirt-glib 0.2.2 0.2.3: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.2-r2 0.0.3: Provides SNMP functionality for libvirt
 app-emulation/lxc 1.0.6-r1 1.0.7 1.0.8 1.1.0-r6 1.1.1-r1 1.1.2 1.1.2-r1 1.1.2-r2 1.1.3 1.1.4 1.1.5: LinuX Containers userspace utilities
-app-emulation/lxd 0.23 0.24 0.25: Fast, dense and secure container management
+app-emulation/lxd 0.24 0.25 0.26: Fast, dense and secure container management
 app-emulation/open-vm-tools 9.4.0.1280544 9.10.0_p2476743 9.10.2_p2822639 10.0.0_p3000743: Opensourced tools for VMware guests
 app-emulation/open-vm-tools-kmod 9.4.0.1280544 9.10.0_p2476743 10.0.0_p3000743: Opensourced tools for VMware guests
 app-emulation/openstack-guest-agents-unix 1.39.0 1.39.0-r1 1.39.0-r2 1.39.1: Openstack Unix Guest Agent
@@ -17528,7 +17528,7 @@ www-client/firefox 38.4.0 38.5.0 43.0: Firefox Web Browser
 www-client/firefox-bin 38.3.0 38.4.0 38.5.0 43.0: Firefox Web Browser
 www-client/google-chrome 47.0.2526.106_p1: The web browser from Google
 www-client/google-chrome-beta 48.0.2564.48_p1: The web browser from Google
-www-client/google-chrome-unstable 49.0.2593.0_p1: The web browser from Google
+www-client/google-chrome-unstable 49.0.2612.0_p1: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/jumanji 0.0.0_p20111209 0.0.0_p20130103-r1 0.0.0_p20150527 9999: highly customizable and functional web browser with minimalistic and space saving interface
@@ -17585,7 +17585,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.559: Adobe Flash Player
-www-plugins/chrome-binary-plugins 47.0.2526.106_p1 48.0.2564.48_beta1 49.0.2593.0_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 47.0.2526.106_p1 48.0.2564.48_beta1 49.0.2612.0_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316: GNU Flash movie player that supports many SWF v7,8,9 features
