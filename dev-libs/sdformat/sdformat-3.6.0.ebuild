@@ -22,6 +22,7 @@ RDEPEND="
 	sci-libs/ignition-math:2=
 "
 DEPEND="${RDEPEND}
+	dev-lang/ruby:*
 	virtual/pkgconfig
 "
 CMAKE_BUILD_TYPE=RelWithDebInfo
