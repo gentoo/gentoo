@@ -9181,7 +9181,7 @@ dev-tex/quotchap 0.9f: LaTeX package used to add quotes to chapters
 dev-tex/rail 1.2_p1: Offers syntax/railroad diagrams
 dev-tex/rcsinfo 1.9: A LaTeX module to acces RCS/CVS version info
 dev-tex/revtex 4 4.1_p2-r1: LaTeX2e macros for journals of the American Physical Society and the American Institute of Physics
-dev-tex/rubber 1.1_p20090819: A LaTeX wrapper for automatically building documents
+dev-tex/rubber 1.1_p20090819 1.4: A LaTeX wrapper for automatically building documents
 dev-tex/serienbrief 0.2.4 0.2.5: Easy creation of form letters written in LaTeX
 dev-tex/sketch 0.3.7: Produces drawings of two- or three-dimensional solid objects and scenes for TeX
 dev-tex/slatex 20090928: SLaTeX is a Scheme program that allows you to write Scheme code in your (La)TeX source
