@@ -11,7 +11,7 @@ HOMEPAGE="http://www.worldforge.org/dev/eng/libraries/varconf"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 RDEPEND=">=dev-libs/libsigc++-2.0"

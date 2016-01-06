@@ -15,7 +15,7 @@ SRC_URI="http://ankisrs.net/download/mirror/${P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="latex +recording +sound"
 
 RDEPEND="${PYTHON_DEPS}
