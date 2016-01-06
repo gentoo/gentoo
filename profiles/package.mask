@@ -175,11 +175,6 @@ sys-cluster/pacemaker-gui
 media-video/hwdecode-demos
 
 # Pacho Ramos <pacho@gentoo.org> (06 Jan 2016)
-# Unmaintained, upstream dead, doesn't work, bug #548920. Removal in a
-# month.
-app-admin/checkrestart
-
-# Pacho Ramos <pacho@gentoo.org> (06 Jan 2016)
 # Fails to build, nothing in the tree needs this, bug #549686. Removal in a
 # month.
 app-i18n/xsim

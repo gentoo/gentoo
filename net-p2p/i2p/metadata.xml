@@ -4,7 +4,7 @@
 <herd>java</herd>
 <herd>proxy-maintainers</herd>
 <maintainer>
-	<email>sam@cmpct.info</email>
+	<email>tharvik@gmail.com</email>
 	<description>Proxy-maintainer; add or CC them for bugs</description>
 </maintainer>
 <longdescription>I2P is an anonymous network, exposing a simple layer that applications can use to anonymously and securely send messages to each other.</longdescription>
