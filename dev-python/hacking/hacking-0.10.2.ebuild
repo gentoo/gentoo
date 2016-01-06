@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -51,7 +51,7 @@ python_prepare_all() {
 		-e 's:oslosphinx:oslo.sphinx:' \
 		-i doc/source/conf.py || die
 	# relax deps
-	rm requirements.txt
+	rm *requirements.txt hacking.egg-info/requires.txt || die
 	distutils-r1_python_prepare_all
 }
 
