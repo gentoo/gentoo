@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
-	epatch "$FILESDIR"/$P-pulseaudio.patch
+	epatch "${FILESDIR}"/${P}-pulseaudio.patch
 	sed -e "/@echo/d" -e "s:@\$(:\$(:g" -e "/setcap/d" \
 		-e '/CFLAGS+=-g/d' -i Makefile || die
 	rm -rf man/${PN}.1  # man not regenerated in tarball
