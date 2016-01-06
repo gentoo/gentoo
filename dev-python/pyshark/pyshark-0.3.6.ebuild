@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_{3,4,5}} )
 
 inherit distutils-r1 eutils
 
@@ -19,7 +19,8 @@ IUSE=""
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 # See pyshark.egg-info/requires.txt
-RDEPEND="dev-python/py[${PYTHON_USEDEP}]
+RDEPEND="
+	dev-python/py[${PYTHON_USEDEP}]
 	dev-python/logbook[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/trollius[${PYTHON_USEDEP}]
