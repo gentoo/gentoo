@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -85,6 +85,8 @@ COMMON_DEPEND="
 
 DEPEND="${COMMON_DEPEND}
 	dev-python/lxml[${PYTHON_USEDEP}]
+	x86? ( sys-devel/dev86
+		sys-power/iasl )
 	pam? ( dev-python/pypam[${PYTHON_USEDEP}] )
 	hvm? ( media-libs/libsdl )
 	${PYTHON_DEPS}
