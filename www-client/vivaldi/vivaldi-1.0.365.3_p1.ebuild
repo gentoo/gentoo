@@ -66,8 +66,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.0.275.3_p1-flash.patch
-
 	sed -i \
 		-e "s|@LIBDIR@|$(get_libdir)|g" \
 		opt/vivaldi-snapshot/vivaldi-snapshot || die
