@@ -15,19 +15,22 @@ SRC_URI="!gtk3? ( http://distfiles.audacious-media-player.org/${MY_P}.tar.bz2 )
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 ~arm ~hppa ppc ppc64 x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux"
-IUSE="aac alsa bs2b cdda cue ffmpeg flac fluidsynth gnome http gtk2 gtk3 jack
+IUSE="aac +adplug alsa bs2b cdda cue ffmpeg flac fluidsynth gnome http gtk2 gtk3 jack
 lame libnotify libsamplerate lirc mms mp3 nls pulseaudio qt5 scrobbler sdl sid sndfile vorbis wavpack"
 REQUIRED_USE="
 	?? ( gtk2 gtk3 qt5 )
+	?? ( qt5 libnotify )
 "
+
 RDEPEND="app-arch/unzip
+        media-libs/adplug
 	>=dev-libs/dbus-glib-0.60
-	>=dev-cpp/libbinio-1.4
 	dev-libs/libxml2:2
 	media-libs/libmodplug
 	~media-sound/audacious-${PV}
 	( || ( >=dev-libs/glib-2.32.2[utils] dev-util/gdbus-codegen ) )
 	aac? ( >=media-libs/faad2-2.7 )
+	adplug? ( media-libs/adplug )
 	alsa? ( >=media-libs/alsa-lib-1.0.16 )
 	bs2b? ( media-libs/libbs2b )
 	cdda? ( >=media-libs/libcddb-1.2.1
@@ -40,7 +43,8 @@ RDEPEND="app-arch/unzip
 	http? ( >=net-libs/neon-0.26.4 )
 	gtk2? ( x11-libs/gtk+:2 )
 	!gtk3? ( x11-libs/gtk+:2 )
-	gtk3? ( x11-libs/gtk+:3 )
+	gtk3? ( x11-libs/gtk+:3
+                media-libs/adplug )
 	qt5? ( dev-qt/qtcore:5
 	      dev-qt/qtgui:5
 	      dev-qt/qtmultimedia:5
@@ -91,8 +95,15 @@ src_prepare() {
 }
 
 src_configure() {
-	mp3_warning
-
+	mp3_warning  
+	if use libnotify ;then
+                gtk="--enable-gtk"
+        elif use gtk2 ;then
+                gtk="--enable-gtk"
+        elif use gtk3 ;then
+                gtk="--enable-gtk"
+        fi
+	
 	if use ffmpeg && has_version media-video/ffmpeg ; then
 		ffmpeg="--with-ffmpeg=ffmpeg"
 	elif use ffmpeg && has_version media-video/libav ; then
@@ -103,8 +114,11 @@ src_configure() {
 
 	econf \
 		${ffmpeg} \
+		${gtk} \
 		--enable-modplug \
+		--enable-statusicon \
 		--disable-soxr \
+		$(use_enable adplug) \
 		$(use_enable aac) \
 		$(use_enable alsa) \
 		$(use_enable bs2b) \
@@ -124,8 +138,6 @@ src_configure() {
 		$(use_enable mp3) \
 		$(use_enable nls) \
 		$(use_enable pulseaudio pulse) \
-		$(use_enable gtk2 gtk) \
-		$(use_enable gtk3 gtk) \
 		$(use_enable qt5 qt) \
 		$(use_enable scrobbler scrobbler2) \
 		$(use_enable sdl sdlout) \
