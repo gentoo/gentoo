@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
 
-DESCRIPTION="A unittest extension offering automatic test suite discovery and easy test authoring"
+DESCRIPTION="Unittest extension with automatic test suite discovery and easy test authoring"
 HOMEPAGE="
 	https://pypi.python.org/pypi/nose
 	http://readthedocs.org/docs/nose/
@@ -21,12 +21,21 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc examples test"
 
+REQUIRED_USE="
+	doc? (
+		|| ( $(python_gen_useflags 'python2*') )
+	)"
+
 RDEPEND="
 	dev-python/coverage[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	doc? ( >=dev-python/sphinx-0.6[${PYTHON_USEDEP}] )
 	test? ( $(python_gen_cond_dep 'dev-python/twisted-core[${PYTHON_USEDEP}]' python2_7) )"
+
+pkg_setup() {
+	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python2*' )
+}
 
 python_prepare_all() {
 	# Tests need to be converted, and they don't respect BUILD_DIR.
@@ -61,7 +70,10 @@ python_compile() {
 }
 
 python_compile_all() {
-	use doc && emake -C doc html
+	if use doc; then
+		python_setup 'python2*'
+		emake -C doc html
+	fi
 }
 
 python_test() {
@@ -74,9 +86,7 @@ python_install() {
 
 python_install_all() {
 	use examples && local EXAMPLES=( examples/. )
+	use doc && HTML_DOCS=( doc/.build/html/. )
 	distutils-r1_python_install_all
 
-	if use doc; then
-		dohtml -r -A txt doc/.build/html/.
-	fi
 }

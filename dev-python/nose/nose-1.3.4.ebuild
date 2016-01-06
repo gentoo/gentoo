@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
 PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
-DESCRIPTION="A unittest extension offering automatic test suite discovery and easy test authoring"
+DESCRIPTION="Unittest extension with automatic test suite discovery and easy test authoring"
 HOMEPAGE="https://pypi.python.org/pypi/nose http://readthedocs.org/docs/nose/ https://bitbucket.org/jpellerin/nose"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,20 +13,23 @@ HOMEPAGE="https://github.com/FasterXML/woodstox"
 SRC_URI="mirror://gentoo/${PN}-src-${PV}.zip"
 LICENSE="Apache-2.0"
 SLOT="3.2"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="test"
 
-CDEPEND="dev-java/sax:0
+CDEPEND="
+	dev-java/sax:0
 	dev-java/msv:0
 	dev-java/relaxng-datatype:0"
 
-RDEPEND="${CDEPEND}
+RDEPEND="
+	${CDEPEND}
 	>=virtual/jre-1.6"
 
-DEPEND="${CDEPEND}
-	>=virtual/jdk-1.6
+DEPEND="
+	${CDEPEND}
+	test? ( dev-java/ant-junit:0 )
 	app-arch/unzip
-	test? ( dev-java/ant-junit:0 )"
+	>=virtual/jdk-1.6"
 
 EANT_BUILD_TARGET="jars"
 EANT_DOC_TARGET="javadoc"

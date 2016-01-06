@@ -13,7 +13,7 @@ SRC_URI="mirror://lokigames/loki_demos/${MY_PN}.run"
 
 LICENSE="LOKI-EULA"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 RESTRICT="strip"
 

@@ -12,7 +12,7 @@ SRC_URI="http://www.qsl.net/hz1jw/${PN}/downloads/${P}.tar.gz"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RESTRICT="mirror bindist"
