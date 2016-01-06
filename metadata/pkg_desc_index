@@ -5110,7 +5110,7 @@ dev-perl/AnyEvent 7.40.0-r1 7.80.0 7.110.0: Provides a uniform interface to vari
 dev-perl/AnyEvent-CacheDNS 0.80.0: Simple DNS resolver with caching
 dev-perl/AnyEvent-HTTP 2.220.0: Simple but non-blocking HTTP/HTTPS client
 dev-perl/AnyEvent-I3 0.150.0 0.160.0: Communicate with the i3 window manager
-dev-perl/Apache-AuthCookie 3.180.0-r1 3.220.0 3.230.0: Perl Authentication and Authorization via cookies
+dev-perl/Apache-AuthCookie 3.230.0: Perl Authentication and Authorization via cookies
 dev-perl/Apache-CGI-Builder 1.300.0-r1: CGI::Builder and Apache/mod_perl (1 and 2) integration
 dev-perl/Apache-DBI 1.120.0-r1: Apache::DBI module for perl
 dev-perl/Apache-LogFormat-Compiler 0.320.0: Compile an Apache log format string to perl-code
@@ -5179,7 +5179,7 @@ dev-perl/CDB_File 0.980.0: Tie to CDB (Bernstein's constant DB) files
 dev-perl/CDDB 1.222.0-r1: high-level interface to cddb/freedb protocol
 dev-perl/CDDB-File 1.50.0-r1: Parse a CDDB/freedb data file
 dev-perl/CDDB_get 2.280.0-r1: Read the CDDB entry for an audio CD in your drive
-dev-perl/CGI 3.650.0 4.220.0 4.220.0-r1 4.250.0: Simple Common Gateway Interface Class
+dev-perl/CGI 4.220.0 4.220.0-r1 4.250.0: Simple Common Gateway Interface Class
 dev-perl/CGI-Ajax 0.707.0: a perl-specific system for writing Asynchronous web applications
 dev-perl/CGI-Builder 1.360.0-r1: Framework to build simple or complex web-apps
 dev-perl/CGI-Emulate-PSGI 0.210.0: PSGI adapter for CGI
@@ -5386,7 +5386,7 @@ dev-perl/DateTime-Format-ISO8601 0.80.0-r1: Parses ISO8601 formats
 dev-perl/DateTime-Format-Mail 0.402.0: Convert between DateTime and RFC2822/822 formats
 dev-perl/DateTime-Format-Natural 1.10.0-r1: Create machine readable date/time with natural parsing logic
 dev-perl/DateTime-Format-SQLite 0.110.0: Parse and format SQLite dates and times
-dev-perl/DateTime-Format-Strptime 1.540.0-r1 1.560.0 1.620.0: Parse and Format DateTimes using Strptime
+dev-perl/DateTime-Format-Strptime 1.560.0 1.620.0: Parse and Format DateTimes using Strptime
 dev-perl/DateTime-Format-W3CDTF 0.60.0-r1: Parse and format W3CDTF datetime strings
 dev-perl/DateTime-HiRes 0.10.0: Create DateTime objects with sub-second current time resolution
 dev-perl/DateTime-Locale 0.460.0 1.20.0: Localization support for DateTime
