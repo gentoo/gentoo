@@ -238,7 +238,6 @@ x11-wm/matchbox-window-manager
 x11-themes/matchbox-themes-extra
 x11-wm/matchbox
 x11-misc/matchbox-keyboard
->>>>>>> 603aa10... profiles/package.mask: Mask some packages for removal
 
 # Matthias Maier <tamiko@gentoo.org> (06 Jan 2016)
 # Obsolete package, nowadays bundled with media-sound/quodlibet
