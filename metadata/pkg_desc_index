@@ -9971,7 +9971,7 @@ games-board/crafty 24.1: Bob Hyatt's strong chess engine
 games-board/domination 1.1.1.6: The well-known board game, written in java
 games-board/eboard 1.1.1-r1: chess interface for POSIX systems
 games-board/four-in-a-row 3.16.2 3.18.2: Make lines of the same color to win
-games-board/freedoko 0.7.13 0.7.13-r1: FreeDoko is a Doppelkopf-game
+games-board/freedoko 0.7.13-r1: FreeDoko is a Doppelkopf-game
 games-board/fruit 2.1: UCI-only chess engine
 games-board/gamazons 0.83: A chess/go hybrid
 games-board/gambit 1.0.1 1.0.3: Qt-based chess application + engine "gupta"
@@ -10472,7 +10472,7 @@ games-roguelike/scourge 0.21.1: A graphical rogue-like adventure game
 games-roguelike/slashem 0.0.772: Super Lotsa Added Stuff Hack - Extended Magic. A Nethack Variant
 games-roguelike/stone-soup 0.14.2-r1 0.16.2: Dungeon Crawl Stone Soup is a role-playing roguelike game of exploration and treasure-hunting in dungeons
 games-roguelike/tome 2.3.5: save the world from Morgoth and battle evil (or become evil ;])
-games-roguelike/tomenet 4.5.9 4.6.0: A MMORPG based on the works of J.R.R. Tolkien
+games-roguelike/tomenet 4.6.0: A MMORPG based on the works of J.R.R. Tolkien
 games-roguelike/wrogue 0.8.0b: Gothic science fantasy roguelike game
 games-roguelike/zangband 2.7.4c: An enhanced version of the Roguelike game Angband
 games-rpg/a-bird-story 20141106: Indie adventure short of a boy's memories, dream, and imagination
@@ -10505,7 +10505,7 @@ games-rpg/gwiz 0.8: clone of old-school Wizardry(tm) games by SirTech
 games-rpg/kqlives 0.99: A console-style role playing game
 games-rpg/lure 1.1: Lure of the Temptress
 games-rpg/mana 0.6.1: A fully free and open source MMORPG game client
-games-rpg/manaplus 1.5.8.15 1.5.11.21 1.5.12.19: OpenSource 2D MMORPG client for Evol Online and The Mana World
+games-rpg/manaplus 1.5.11.21 1.5.12.19: OpenSource 2D MMORPG client for Evol Online and The Mana World
 games-rpg/nwmouse 20090906.183839: Hardware mouse cursors for Neverwinter Nights
 games-rpg/nwmovies 20090223.080954: Play Neverwinter Nights movies inside the Linux client
 games-rpg/nwn 1.68-r5 1.68-r6 1.69-r1: role-playing game set in a huge medieval fantasy world of Dungeons and Dragons
