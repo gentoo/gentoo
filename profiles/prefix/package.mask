@@ -10,6 +10,15 @@
 #
 
 
+# Fabian Groffen <grobian@gentoo.org> (06 Jan 2016)
+# Seriously broken on non-Linux because recursive shebangs aren't
+# supported, mask everything but what's stable on amd64, bug #568974
+>=app-eselect/eselect-python-20151117-r2
+>=dev-lang/python-exec-2.0.2
+>=dev-lang/python-2.7.11:2.7
+>=dev-lang/python-3.4.3:3.4
+>=dev-lang/python-3.5.1:3.5
+
 # Fabian Groffen <grobian@gentoo.org> (11 Feb 2014)
 # Fails to compile, bug #493464
 =sys-devel/autogen-5.18.1
