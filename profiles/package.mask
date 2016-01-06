@@ -30,6 +30,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (06 Jan 2016)
+# Struts 2 and friends suffer from a lack of interest. These ebuilds are
+# outdated, riddled with CVEs (about 5 currently opened in Bugzilla) and some
+# of them do not compile at all. Time to see them off.
+# Masked for removal in 30 days. See bug #540888.
+dev-java/struts-plugins
+dev-java/struts-xwork
+dev-java/struts-core
+dev-java/struts
+
 # Matthias Maier <tamiko@gentoo.org> (06 Jan 2016)
 # Obsolete package, nowadays bundled with media-sound/quodlibet
 # Masked for removal in 30 days
