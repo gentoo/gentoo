@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="tools vim-syntax"
+IUSE="selinux tools vim-syntax"
 
 DEPEND="dev-lang/perl
 	virtual/perl-File-Path
@@ -30,7 +30,8 @@ DEPEND="dev-lang/perl
 RDEPEND="${DEPEND}
 	!dev-vcs/gitolite
 	vim-syntax? ( app-vim/gitolite-syntax )
-	dev-perl/Net-SSH-AuthorizedKeysFile
+	selinux? ( sec-policy/selinux-gitosis )
+	>=dev-perl/Net-SSH-AuthorizedKeysFile-0.17
 	dev-perl/JSON"
 
 pkg_setup() {
