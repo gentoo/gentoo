@@ -54,6 +54,8 @@ S=${WORKDIR}/${MY_P}
 src_prepare() {
 	# upstream patch to fix building with both smpeg and mad mp3 support (bug #570804)
 	epatch "${FILESDIR}"/${P}-mp3.patch
+	sed -i -e 's/configure.in/configure.ac/' Makefile.in || die
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
