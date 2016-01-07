@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools eutils multilib versionator flag-o-matic
+inherit autotools eutils multilib versionator flag-o-matic toolchain-funcs
 
 DESCRIPTION="Ghostscript is an interpreter for the PostScript language and for PDF"
 HOMEPAGE="http://ghostscript.com/"
@@ -148,11 +148,15 @@ src_configure() {
 		FONTPATH="$FONTPATH${FONTPATH:+:}$path"
 	done
 
+	# We force the endian configure flags until this is fixed:
+	# http://bugs.ghostscript.com/show_bug.cgi?id=696498
+	PKGCONFIG=$(type -P $(tc-getPKG_CONFIG)) \
 	econf \
 		--enable-dynamic \
 		--enable-freetype \
 		--enable-fontconfig \
 		--enable-openjpeg \
+		--enable-$(tc-endian)-endian \
 		--disable-compile-inits \
 		--with-drivers=ALL \
 		--with-fontpath="$FONTPATH" \
