@@ -46,10 +46,7 @@ RDEPEND=">=media-libs/libsfml-2.1
 			dev-libs/libevdev
 			virtual/udev
 	)
-	ffmpeg? (
-			virtual/ffmpeg
-			!!media-video/libav
-	)
+	ffmpeg? ( virtual/ffmpeg )
 	llvm? ( sys-devel/llvm )
 	openal? (
 			media-libs/openal
