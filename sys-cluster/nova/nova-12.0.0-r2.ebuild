@@ -212,6 +212,7 @@ PATCHES=(
 	"${FILESDIR}"/cve-2015-7548-stable-liberty-0001.patch
 	"${FILESDIR}"/cve-2015-7548-stable-liberty-0002.patch
 	"${FILESDIR}"/cve-2015-7548-stable-liberty-0003.patch
+	"${FILESDIR}"/cve-2015-7548-stable-liberty-0004.patch
 )
 
 pkg_setup() {
