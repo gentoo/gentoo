@@ -93,11 +93,12 @@ _check_gcc_version() {
 	fi
 }
 
-# @FUNCTION: _add_kdecategory_dep
+# @FUNCTION: _add_category_dep
 # @INTERNAL
 # @DESCRIPTION:
-# Implementation of add_plasma_dep and add_frameworks_dep.
-_add_kdecategory_dep() {
+# Implementation of add_plasma_dep, add_frameworks_dep, add_kdeapps_dep,
+# and finally, add_qt_dep.
+_add_category_dep() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	local category=${1}
@@ -145,7 +146,7 @@ add_frameworks_dep() {
 		version=${FRAMEWORKS_MINIMAL}
 	fi
 
-	_add_kdecategory_dep kde-frameworks "${1}" "${2}" "${version}"
+	_add_category_dep kde-frameworks "${1}" "${2}" "${version}"
 }
 
 # @FUNCTION: add_plasma_dep
@@ -171,7 +172,7 @@ add_plasma_dep() {
 		version=${PLASMA_MINIMAL}
 	fi
 
-	_add_kdecategory_dep kde-plasma "${1}" "${2}" "${version}"
+	_add_category_dep kde-plasma "${1}" "${2}" "${version}"
 }
 
 # @FUNCTION: add_kdeapps_dep
@@ -202,7 +203,31 @@ add_kdeapps_dep() {
 		fi
 	fi
 
-	_add_kdecategory_dep kde-apps "${1}" "${2}" "${version}"
+	_add_category_dep kde-apps "${1}" "${2}" "${version}"
+}
+
+# @FUNCTION: add_qt_dep
+# @USAGE: <package> [USE flags] [minimum version]
+# @DESCRIPTION:
+# Create proper dependency for dev-qt/ dependencies.
+# This takes 1 to 3 arguments. The first being the package name, the optional
+# second is additional USE flags to append, and the optional third is the
+# version to use instead of the automatic version (use sparingly).
+# The output of this should be added directly to DEPEND/RDEPEND, and may be
+# wrapped in a USE conditional (but not an || conditional without an extra set
+# of parentheses).
+add_qt_dep() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	local version
+
+	if [[ -n ${3} ]]; then
+		version=${3}
+	elif [[ -z "${version}" ]] ; then
+		version=${QT_MINIMAL}
+	fi
+
+	_add_category_dep dev-qt "${1}" "${2}" "${version}"
 }
 
 # @FUNCTION: get_kde_version
