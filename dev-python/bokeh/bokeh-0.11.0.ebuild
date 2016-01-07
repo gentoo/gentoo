@@ -42,17 +42,14 @@ RDEPEND="
 DEPEND="${REDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '>=dev-python/mock-1.0.1[${PYTHON_USEDEP}]' python2_7)
-	)
-	"
+		dev-python/pytest[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '>=dev-python/mock-1.0.1[${PYTHON_USEDEP}]' 'python2*')
+		$(python_gen_cond_dep 'dev-python/flexx[${PYTHON_USEDEP}]' 'python3*')
+	)"
+
 python_test() {
 	cd "${BUILD_DIR}"/lib || die
-	# exclude server tests for now
-	nosetests -v \
-		-e multiuser_auth_test \
-		-e usermodel_test \
-		|| die
+	py.test -m 'not (js or examples or integration)' -vv || die
 }
 
 python_install_all() {
