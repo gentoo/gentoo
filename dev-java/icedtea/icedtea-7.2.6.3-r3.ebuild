@@ -62,7 +62,7 @@ RESTRICT="test"
 
 IUSE="+alsa cacao cjk +cups debug doc examples +gtk headless-awt infinality
 	jamvm javascript +jbootstrap kerberos nsplugin nss pax_kernel
-	pulseaudio sctp selinux smartcard source +sunec test zero +webstart"
+	pulseaudio sctp selinux smartcard source +sunec test webstart zero"
 
 REQUIRED_USE="gtk? ( !headless-awt )"
 
