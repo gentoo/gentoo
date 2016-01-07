@@ -4377,7 +4377,7 @@ dev-lang/parrot 7.0.2 7.1.0 7.2.0 7.3.0 7.5.0 7.11.0: Virtual machine designed t
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.20.2 5.20.2-r1 5.22.0 5.22.1: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.4.45 5.5.30 5.6.14 5.6.16 7.0.1: The PHP language runtime engine: CLI, CGI, FPM/FastCGI, Apache2 and embed SAPIs
+dev-lang/php 5.4.45 5.5.30 5.6.14 5.6.16 7.0.2: The PHP language runtime engine: CLI, CGI, FPM/FastCGI, Apache2 and embed SAPIs
 dev-lang/pocl 0.11 0.12: PortableCL: opensource implementation of the OpenCL standard
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.10-r1 2.7.11-r2 3.3.5-r2 3.3.5-r7 3.4.3-r1 3.4.3-r7 3.5.0-r2 3.5.1-r2: An interpreted, interactive, object-oriented programming language
@@ -12296,7 +12296,7 @@ media-libs/libsamplerate 0.1.8-r1: Secret Rabbit Code (aka libsamplerate) is a S
 media-libs/libsbsms 2.0.0 2.0.1 2.0.2: A library for high quality time and pitch scale modification
 media-libs/libsdl 1.2.15-r9: Simple Direct Media Layer
 media-libs/libsdl2 2.0.3-r200 2.0.4: Simple Direct Media Layer
-media-libs/libsfml 1.6-r1 2.3.2: Simple and Fast Multimedia Library (SFML)
+media-libs/libsfml 1.6-r1 2.3.2-r1: Simple and Fast Multimedia Library (SFML)
 media-libs/libshout 2.3.1 2.3.1-r1 2.4.1: library for connecting and sending data to icecast servers
 media-libs/libsidplay 1.36.59 1.36.59-r1 2.1.1-r2 2.1.1-r3 2.1.1-r4: C64 SID player library
 media-libs/libsidplayfp 0.3.8 1.1.0 1.8.0 1.8.1: A library for the sidplay2 fork with resid-fp
@@ -12734,7 +12734,7 @@ media-radio/ibp 0.21: Shows currently transmitting beacons of the International 
 media-radio/qrq 0.3.1: Yet another CW trainer for Linux/Unix
 media-radio/qsstv 8.2.9 8.2.10 8.2.11 8.2.12: Amateur radio SSTV software
 media-radio/radiotray 0.7.3-r2 9999: Online radio streaming player
-media-radio/svxlink 13.03 13.07 13.12: Multi Purpose Voice Services System, including Qtel for EchoLink
+media-radio/svxlink 13.12: Multi Purpose Voice Services System, including Qtel for EchoLink
 media-radio/tlf 1.2.0 1.2.1 1.2.2: Console-mode amateur radio contest logger
 media-radio/tucnak2 2.48: Amateur Radio VHF Contest Logbook
 media-radio/unixcw 3.4.2 3.5.0: A package of programs that fit together to form a morse code tutor program
@@ -14361,7 +14361,7 @@ net-misc/datapipe 1.0-r1: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.2.5_p1-r2 4.3.1-r2 4.3.2 4.3.3 4.3.3-r1: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 6.9.0 6.9.1 6.9.2 6.9.3 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 6.9.0 6.9.1 6.9.2 6.9.3 6.9.4 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.4 0.7.5: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
