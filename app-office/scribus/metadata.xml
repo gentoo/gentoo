@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>desktop-misc</herd>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-    <name>Justin Lecher</name>
-  </maintainer>
   <use>
     <flag name="boost">Enable support for Boost based enhancement</flag>
     <flag name="graphicsmagick">Add support for <pkg>media-gfx/graphicsmagick</pkg></flag>

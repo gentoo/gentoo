@@ -10,10 +10,6 @@
     <email>mmokrejs@gmail.com</email>
     <name>Martin Mokrejs</name>
   </maintainer>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-    <name>Justin Lecher</name>
-  </maintainer>
   <use>
     <flag name="resolvconf">Enable support for DNS managing framework <pkg>net-dns/openresolv</pkg></flag>
   </use>

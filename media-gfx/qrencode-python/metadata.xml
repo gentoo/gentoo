@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-  </maintainer>
   <upstream>
     <remote-id type="pypi">qrencode</remote-id>
     <remote-id type="github">Arachnid/pyqrencode</remote-id>

@@ -13,11 +13,6 @@
     <email>marbre@linux.sungazer.de</email>
     <name>Marius Brehler</name>
   </maintainer>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-    <name>Justin Lecher</name>
-    <description>proxy for Marius</description>
-  </maintainer>
   <longdescription>
 Mendeley(TM) is a free reference manager and academic social network that can 
 help you organize your research, collaborate with others online, and discover 
