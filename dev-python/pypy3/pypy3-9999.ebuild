@@ -18,7 +18,7 @@ SRC_URI=""
 LICENSE="MIT"
 SLOT="0/$(get_version_component_range 1-2 ${PV})"
 KEYWORDS=""
-IUSE="bzip2 gdbm +jit low-memory ncurses sandbox shadowstack sqlite cpu_flags_x86_sse2 test tk"
+IUSE="bzip2 gdbm +jit low-memory ncurses sandbox +shadowstack sqlite cpu_flags_x86_sse2 test tk"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	virtual/libffi:0=

@@ -51,7 +51,7 @@ REQUIRED_USE="!jit? ( !shadowstack )
 LICENSE="MIT"
 SLOT="0/$(get_version_component_range 1-2 ${PV})"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc gdbm +jit shadowstack sqlite cpu_flags_x86_sse2 test tk"
+IUSE="doc gdbm +jit +shadowstack sqlite cpu_flags_x86_sse2 test tk"
 
 # yep, world would be easier if people started filling subslots...
 RDEPEND="
