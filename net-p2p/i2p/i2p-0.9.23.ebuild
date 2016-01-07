@@ -46,7 +46,7 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
+	cd "${S}" || die
 	java-ant_rewrite-classpath
 }
 
