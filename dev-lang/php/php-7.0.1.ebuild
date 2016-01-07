@@ -729,8 +729,8 @@ src_test() {
 pkg_postinst() {
 	# Output some general info to the user
 	if use apache2 ; then
-		APACHE2_MOD_DEFINE="PHP5"
-		APACHE2_MOD_CONF="70_mod_php5"  # Provided by app-eselect/eselect-php
+		APACHE2_MOD_DEFINE="PHP"
+		APACHE2_MOD_CONF="70_mod_php"  # Provided by app-eselect/eselect-php
 		apache-module_pkg_postinst
 	fi
 
