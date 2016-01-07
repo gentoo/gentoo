@@ -12734,7 +12734,7 @@ media-radio/ibp 0.21: Shows currently transmitting beacons of the International 
 media-radio/qrq 0.3.1: Yet another CW trainer for Linux/Unix
 media-radio/qsstv 8.2.9 8.2.10 8.2.11 8.2.12: Amateur radio SSTV software
 media-radio/radiotray 0.7.3-r2 9999: Online radio streaming player
-media-radio/svxlink 13.12: Multi Purpose Voice Services System, including Qtel for EchoLink
+media-radio/svxlink 13.12 15.11: Multi Purpose Voice Services System, including Qtel for EchoLink
 media-radio/tlf 1.2.0 1.2.1 1.2.2: Console-mode amateur radio contest logger
 media-radio/tucnak2 2.48: Amateur Radio VHF Contest Logbook
 media-radio/unixcw 3.4.2 3.5.0: A package of programs that fit together to form a morse code tutor program
@@ -16664,7 +16664,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 7.0.0 7.0.1 2015.1.1-r1 2015.1.2 2015.1.9999 2015.2.9999: A virtual network service for Openstack
-sys-cluster/nova 12.0.0 2015.1.1-r3 2015.1.2 2015.1.9999 2015.2.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
+sys-cluster/nova 12.0.0 12.0.0-r1 2015.1.9999 2015.2.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/open-mx 1.5.4: Open-MX - Myrinet Express over Generic Ethernet Hardware
