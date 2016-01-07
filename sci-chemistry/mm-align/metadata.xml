@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>sci-chemistry</herd>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-  </maintainer>
   <longdescription>
 MM-align is an algorithm for structurally aligning multiple-chain 
 protein-protein complexes. The algorithm is built on a heuristic 

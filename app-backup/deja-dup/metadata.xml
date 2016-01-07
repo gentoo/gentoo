@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>gnome</herd>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-  </maintainer>
   <use>
     <flag name="nautilus">Build gnome-base/nautilus extension</flag>
   </use>

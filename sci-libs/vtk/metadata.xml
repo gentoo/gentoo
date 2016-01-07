@@ -3,10 +3,6 @@
 <pkgmetadata>
   <herd>sci</herd>
   <herd>java</herd>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-    <name>Justin Lecher</name>
-  </maintainer>
   <use>
     <flag name="all-modules">Build all modules</flag>
     <flag name="boost">Add support for boost</flag>

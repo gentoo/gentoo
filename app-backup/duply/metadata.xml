@@ -7,9 +7,6 @@
     <name>Marcel Pennewiß</name>
     <description>Proxy-maintainer. Assign bugs to him</description>
   </maintainer>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-  </maintainer>
   <longdescription lang="en">
 </longdescription>
   <upstream>

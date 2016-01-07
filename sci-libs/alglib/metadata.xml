@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>sci</herd>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-  </maintainer>
   <longdescription>
 ALGLIB is a cross-platform numerical analysis and data processing library. It 
 supports several programming languages (C++, C#, Pascal, VBA) and several 

@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>sci-chemistry</herd>
-	<maintainer>
-		<email>jlec@gentoo.org</email>
-	</maintainer>
 	<longdescription>
 A fortran program for the calculation of some eigenvectors of a large real, 
 symmetrical, matrix.

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>jlec@gentoo.org</email>
-	</maintainer>
+	<herd>mono</herd>
+	<herd>gnome</herd>
 	<upstream>
 		<remote-id type="launchpad">zeitgeist-sharp</remote-id>
 	</upstream>
