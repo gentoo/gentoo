@@ -74,8 +74,10 @@ eblit-perl-src_configure() {
 
 	[[ ${ELIBC} == "FreeBSD" ]] && myconf "-Dlibc=/usr/$(get_libdir)/libc.a"
 
-	# Make sure we can do the final link #523730
-	[[ ${CHOST} == *-darwin* ]] && myconf "-Dld=$(tc-getCC)"
+	# Make sure we can do the final link #523730, need to set deployment
+	# target to override hardcoded 10.3 which breaks on modern OSX
+	[[ ${CHOST} == *-darwin* ]] && \
+		myconf "-Dld=env MACOSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET} $(tc-getCC)"
 
 	# Prefix: the host system needs not to follow Gentoo multilib stuff, and in
 	# Prefix itself we don't do multilib either, so make sure perl can find
