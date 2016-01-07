@@ -3,8 +3,8 @@
 <pkgmetadata>
   <herd>python</herd>
   <maintainer>
-    <email>jlec@gentoo.org</email>
-    <name>Justin Lecher</name>
+    <email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
   </maintainer>
   <upstream>
     <remote-id type="pypi">ipaddress</remote-id>
