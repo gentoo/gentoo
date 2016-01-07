@@ -7212,7 +7212,7 @@ dev-python/ldappool 1.0: A connection pool for python-ldap
 dev-python/lesscpy 0.9j 0.10.2: A compiler written in Python for the LESS language
 dev-python/libasyncns-python 0.7.1-r1: Python bindings for libasyncns
 dev-python/libbonobo-python 2.28.1-r1: Python bindings for the Bonobo framework
-dev-python/libcloud 0.14.1 0.15.0 0.15.1: Unified Interface to the Cloud - python support libs
+dev-python/libcloud 0.14.1 0.15.0 0.15.1 0.17.0: Unified Interface to the Cloud - python support libs
 dev-python/libextractor-python 0.6-r1: A library used to extract metadata from files of arbitrary type
 dev-python/libgnome-python 2.28.1-r1: Python bindings for essential GNOME libraries
 dev-python/libgnomecanvas-python 2.28.1-r1: Python bindings for the Gnome Canvas library
