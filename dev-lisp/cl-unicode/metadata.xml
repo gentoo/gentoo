@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>common-lisp</herd>
@@ -11,4 +11,7 @@
 		with one that is Unicode-aware and is used to enhance CL-PPCRE with
 		Unicode properties.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">edicl/cl-unicode</remote-id>
+	</upstream>
 </pkgmetadata>

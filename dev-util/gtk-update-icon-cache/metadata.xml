@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>gnome</herd>
@@ -10,4 +10,7 @@
     GTK+ 2 and 3 to co-exist better by extracting the single conflicting
     tool.
   </longdescription>
+  <upstream>
+    <remote-id type="github">EvaSDK/gtk-update-icon-cache</remote-id>
+  </upstream>
 </pkgmetadata>

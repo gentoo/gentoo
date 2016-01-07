@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
@@ -13,4 +13,7 @@
 		kernel resources, such as the network stack, process table, mount
 		table.
 	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">firejail</remote-id>
+	</upstream>
 </pkgmetadata>

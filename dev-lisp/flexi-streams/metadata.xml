@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>common-lisp</herd>
@@ -9,4 +9,7 @@
 		encodings which can be changed on the fly. It also supplies
 		in-memory binary streams which are similar to string streams. 
 	</longdescription>
+	<upstream>
+		<remote-id type="github">edicl/flexi-streams</remote-id>
+	</upstream>
 </pkgmetadata>
