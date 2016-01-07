@@ -3,7 +3,7 @@
 <pkgmetadata>
   <herd>python</herd>
   <maintainer>
-    <email>jlec@gentoo.org</email>
+    <email>prometheanfire@gentoo.org</email>
   </maintainer>
   <upstream>
     <remote-id type="pypi">lz4</remote-id>
