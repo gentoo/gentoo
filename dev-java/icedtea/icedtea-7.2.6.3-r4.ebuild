@@ -62,7 +62,7 @@ RESTRICT="test"
 
 IUSE="+alsa cacao cjk +cups debug doc examples +gtk headless-awt infinality
 	jamvm javascript +jbootstrap kerberos nsplugin nss pax_kernel
-	pulseaudio sctp selinux smartcard source +sunec test zero +webstart"
+	pulseaudio sctp selinux smartcard source +sunec test webstart zero"
 
 REQUIRED_USE="gtk? ( !headless-awt )"
 
@@ -266,8 +266,9 @@ src_configure() {
 		cacao_config="--enable-cacao"
 
 		# http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=2612
-		export DISTRIBUTION_PATCHES="${SLOT}-cacao-pr-157.patch"
-		ln -snf "${FILESDIR}/${DISTRIBUTION_PATCHES}" || die
+		# http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=2781
+		export DISTRIBUTION_PATCHES="${SLOT}-cacao-pr-157.patch icedtea-bug-2781.patch"
+		ln -snf "${FILESDIR}"/{${SLOT}-cacao-pr-157,icedtea-bug-2781}.patch . || die
 	fi
 
 	# Turn on Zero if needed (non-HS/CACAO archs) or requested

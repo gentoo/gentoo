@@ -1,0 +1,42 @@
+# HG changeset patch
+# User Stefan Ring <stefan@complang.tuwien.ac.at>
+# Date 1452083014 -3600
+# Node ID 9295d3c06eb706407b5af1412674c8f0a0ce9fdf
+# Parent  468081e3e037df27b6427aa298dfaaa20f4ba4bf
+Fix some oversights during a large macro cleanup in 1e9787c3484e
+
+diff --git cacao/cacao/src/vm/jit/verify/typecheck-common.cpp cacao/cacao/src/vm/jit/verify/typecheck-common.cpp
+--- cacao/cacao/src/vm/jit/verify/typecheck-common.cpp
++++ cacao/cacao/src/vm/jit/verify/typecheck-common.cpp
+@@ -281,7 +281,7 @@
+ 
+ 		dv->type = sv->type;
+ 		if (dv->type == TYPE_ADR) {
+-			dv->typeinfo = sv->typeinfo;
++			typeinfo_t::clone(sv->typeinfo, dv->typeinfo);
+ 		}
+ 	}
+ 	return true;
+diff --git cacao/cacao/src/vm/jit/verify/typeinfo.cpp cacao/cacao/src/vm/jit/verify/typeinfo.cpp
+--- cacao/cacao/src/vm/jit/verify/typeinfo.cpp
++++ cacao/cacao/src/vm/jit/verify/typeinfo.cpp
+@@ -1674,6 +1674,7 @@
+ 	classref_or_classinfo common;
+ 	classref_or_classinfo elementclass;
+ 	int dimension;
++	ArrayType elementtype;
+ 	bool changed;
+ 	typecheck_result r;
+ 
+diff --git cacao/cacao/src/vm/resolve.cpp cacao/cacao/src/vm/resolve.cpp
+--- cacao/cacao/src/vm/resolve.cpp
++++ cacao/cacao/src/vm/resolve.cpp
+@@ -703,7 +703,7 @@
+ 
+ 	/* uninitialized objects are illegal here */
+ 
+-	if (subtinfo->is_primitive()) {
++	if (subtinfo->is_newobject()) {
+ 		exceptions_throw_verifyerror(refmethod,
+ 				"Invalid use of uninitialized object");
+ 		return resolveFailed;
