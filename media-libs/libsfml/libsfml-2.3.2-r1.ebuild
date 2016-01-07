@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,9 +26,12 @@ RDEPEND="media-libs/freetype:2
 	media-libs/openal
 	sys-libs/zlib
 	virtual/jpeg:0
-	virtual/udev
+	virtual/libudev:0
+	virtual/opengl
 	x11-libs/libX11
-	x11-libs/libXrandr"
+	x11-libs/libXrandr
+	x11-libs/libxcb
+	x11-libs/xcb-util-image"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
