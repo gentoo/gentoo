@@ -1,27 +1,24 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit cmake-utils flag-o-matic toolchain-funcs gnome2-utils fdo-mime pax-utils eutils versionator
+inherit cmake-utils flag-o-matic toolchain-funcs gnome2-utils fdo-mime pax-utils eutils
 
 DOC_PV="1.6.0"
-MY_PV="$(replace_version_separator 2 "")"
-MY_P="${PN}-$(replace_version_separator 2 ".")"
-MY_P_S="${PN}-$(replace_version_separator 2 "~")"
 
 DESCRIPTION="A virtual lighttable and darkroom for photographers"
 HOMEPAGE="http://www.darktable.org/"
-SRC_URI="https://github.com/darktable-org/${PN}/releases/download/release-${MY_PV}/${MY_P}.tar.xz
+SRC_URI="https://github.com/darktable-org/${PN}/releases/download/release-${PV}/${P}.tar.xz
 	doc? ( https://github.com/darktable-org/${PN}/releases/download/release-${DOC_PV}/${PN}-usermanual.pdf -> ${PN}-usermanual-${DOC_PV}.pdf )"
 
 LICENSE="GPL-3 CC-BY-3.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-LANGS=" af ca cs da de el es fi fr gl it ja nl pl pt_BR pt_PT ro ru sk sq sv th uk zh_CN"
+LANGS=" ca cs da de el es fr it ja nl pl pt_BR pt_PT ru sk sq sv uk"
 # TODO add lua once dev-lang/lua-5.2 is unmasked
-IUSE="colord cups cpu_flags_x86_sse3 doc flickr geo gphoto2 graphicsmagick jpeg2k kde libsecret
+IUSE="colord cups cpu_flags_x86_sse3 doc flickr gphoto2 graphicsmagick jpeg2k kde libsecret
 nls opencl openmp openexr pax_kernel +slideshow webp
 ${LANGS// / linguas_}"
 
@@ -47,7 +44,6 @@ CDEPEND="
 	colord? ( x11-misc/colord:0= )
 	cups? ( net-print/cups )
 	flickr? ( media-libs/flickcurl )
-	geo? ( net-libs/libsoup:2.4 )
 	gphoto2? ( media-libs/libgphoto2:= )
 	graphicsmagick? ( media-gfx/graphicsmagick )
 	jpeg2k? ( media-libs/openjpeg:0 )
@@ -69,8 +65,6 @@ DEPEND="${CDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
-
-S="${WORKDIR}/${MY_P_S}"
 
 pkg_pretend() {
 	if use openmp ; then
@@ -94,7 +88,6 @@ src_configure() {
 		$(cmake-utils_use_use colord COLORD)
 		$(cmake-utils_use_build cups PRINT)
 		$(cmake-utils_use_use flickr FLICKR)
-		$(cmake-utils_use_use geo GEO)
 		$(cmake-utils_use_use gphoto2 CAMERA_SUPPORT)
 		$(cmake-utils_use_use graphicsmagick GRAPHICSMAGICK)
 		$(cmake-utils_use_use jpeg2k OPENJPEG)
@@ -106,6 +99,7 @@ src_configure() {
 		$(cmake-utils_use_use openmp OPENMP)
 		$(cmake-utils_use_build slideshow SLIDESHOW)
 		$(cmake-utils_use_use webp WEBP)
+		-DUSE_GEO=OFF
 		-DUSE_LUA=OFF
 		-DCUSTOM_CFLAGS=ON
 		-DINSTALL_IOP_EXPERIMENTAL=ON
