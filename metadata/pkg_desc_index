@@ -15601,7 +15601,7 @@ sci-libs/exodusii 5.22b 5.24 5.26 6.02: Model developed to store and retrieve tr
 sci-libs/fcl 0.3.2 9999: The Flexible Collision Library
 sci-libs/fetk 1.5: The Finite Element ToolKit - Meta package
 sci-libs/fftw 2.1.5-r8 3.3.4: Fast C library for the Discrete Fourier Transform
-sci-libs/flann 1.8.4-r1 9999: Library for performing fast approximate nearest neighbor searches in high dimensional spaces
+sci-libs/flann 1.8.4-r1 9999: Fast approximate nearest neighbor searches in high dimensional spaces
 sci-libs/fplll 4.0.4: Different implementations of the floating-point LLL reduction algorithm
 sci-libs/freesteam 2.0 9999: Open source implementation of IF97 steam tables
 sci-libs/galib 2.4.6 2.4.7: Library for genetic algorithms in C++ programs
