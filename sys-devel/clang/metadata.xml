@@ -34,6 +34,5 @@ Conformance with C/C++/ObjC and their variants</longdescription>
 	<use>
 		<flag name="multitarget">Build all host targets (default: host only)</flag>
 		<flag name="static-analyzer">Install the Clang static analyzer</flag>
-		<flag name="system-cxx-headers">By default, clang++ searchs for C++ headers in a series of hardcoded paths. Enabling this flag will force it to use the active gcc profile ones</flag>
 	</use>
 </pkgmetadata>
