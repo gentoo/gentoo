@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A simple and reliable solution for controlling external programs running in the background"
+DESCRIPTION="Solution for controlling external programs running in the background"
 HOMEPAGE="https://github.com/jarib/childprocess"
 
 LICENSE="MIT"
