@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>sci</herd>
@@ -14,7 +14,7 @@ Mac OS X and Windows. Users can set up local and remote queues that describe
 where the task will be executed. Each queue can have programs, with templates 
 to facilitate the execution of the program. Input files can be staged, and 
 output files collected using a standard interface.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="zeromq">Build with <pkg>net-libs/zeromq</pkg> support</flag>
     <flag name="client">Build the client application</flag>
@@ -22,5 +22,6 @@ output files collected using a standard interface.
   </use>
   <upstream>
     <remote-id type="sourceforge">molequeue</remote-id>
+    <remote-id type="github">OpenChemistry/molequeue</remote-id>
   </upstream>
 </pkgmetadata>

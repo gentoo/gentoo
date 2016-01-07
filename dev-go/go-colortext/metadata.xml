@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
@@ -8,4 +8,7 @@
 	<longdescription lang="en">
 		This go package allows you to change the color of text in the console.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">daviddengcn/go-colortext</remote-id>
+	</upstream>
 </pkgmetadata>

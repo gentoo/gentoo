@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>proxy-maintainers</herd>
@@ -14,5 +14,6 @@ QtPass is a multi-platform GUI for pass, the standard unix password manager.
 		<changelog>https://github.com/IJHack/qtpass/releases</changelog>
 		<doc>https://github.com/IJHack/qtpass/wiki</doc>
 		<bugs-to>https://github.com/IJHack/qtpass/issues</bugs-to>
+		<remote-id type="github">IJHack/qtpass</remote-id>
 	</upstream>
 </pkgmetadata>

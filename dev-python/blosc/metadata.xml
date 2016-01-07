@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>sci</herd>
@@ -11,8 +11,9 @@
   with relatively low entropy, like sparse data, time series, grids with
   regular-spaced values, etc.
   python-blosc a Python package that wraps Blosc.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="pypi">blosc</remote-id>
+    <remote-id type="github">Blosc/python-blosc</remote-id>
   </upstream>
 </pkgmetadata>

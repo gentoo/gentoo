@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>python</herd>
@@ -8,5 +8,6 @@
       <email>f@bianp.net</email>
       <name>Fabian Pedregosa</name>
     </maintainer>
+    <remote-id type="github">fabianp/memory_profiler</remote-id>
   </upstream>
 </pkgmetadata>
