@@ -17909,7 +17909,7 @@ x11-libs/libxcb 1.9.1 1.9.1-r1 1.9.3 1.9.3-r1 1.10 1.11 1.11-r1 1.11.1: X C-lang
 x11-libs/libxkbcommon 0.2.0 0.3.1 0.4.1 0.5.0: X.Org xkbcommon library
 x11-libs/libxkbfile 1.0.8 1.0.9: X.Org xkbfile library
 x11-libs/libxkbui 1.0.2-r1: X.Org xkbui library
-x11-libs/libxklavier 5.3: A library for the X Keyboard Extension (high-level API)
+x11-libs/libxklavier 5.3 5.3-r1: A library for the X Keyboard Extension (high-level API)
 x11-libs/libxsettings-client 0.17 0.17-r1: XSETTINGS client code
 x11-libs/libxshmfence 1.1 1.2: Shared memory fences using futexes
 x11-libs/libyui 3.0.13: UI abstraction library
