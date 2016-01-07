@@ -19,7 +19,7 @@ SRC_URI="ftp://ftp.isc.org/isc/kea/${MY_P}.tar.gz
 LICENSE="ISC BSD SSLeay GPL-2" # GPL-2 only for init script
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="ipv6 kernel_linux ldap libressl selinux ssl"
+IUSE=""
 
 DEPEND="
 	dev-cpp/gtest
