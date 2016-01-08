@@ -15,7 +15,7 @@ SRC_URI="https://github.com/jkuhnert/ognl/archive/OGNL_${PV//./_}.tar.gz
 
 LICENSE="Apache-1.1"
 SLOT="3.0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CDEPEND="dev-java/javassist:3"
 
@@ -46,7 +46,7 @@ java_prepare() {
 EANT_DOC_TARGET="javadocs"
 
 src_install() {
-	java-pkg_newjar build/ognl-2.7.2.jar ${PN}.jar
+	java-pkg_newjar build/ognl-2.7.2.jar "${PN}.jar"
 
 	use doc && java-pkg_dohtml -r dist/docs/api
 	use source && java-pkg_dosrc src/java/*
