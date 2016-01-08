@@ -17409,7 +17409,7 @@ www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/389-dsgw 1.1.10: 389 Directory Server Gateway Web Application
 www-apps/Apache-Gallery 1.0_rc3: Apache gallery for mod_perl
 www-apps/agendav 1.2.6.2: multilanguage CalDAV web client
-www-apps/ampache 3.4.3 3.5.3-r1 3.5.4: Ampache is a PHP-based tool for managing, updating and playing your audio files via a web interface
+www-apps/ampache 3.4.3 3.5.3-r1 3.5.4 3.8.1: PHP-based tool for managing,updating and playing audio files via a web interface
 www-apps/b2evolution 4.1.7: Multilingual multiuser multi-blog engine
 www-apps/baikal 0.2.4 0.2.7: Lightweight CalDAV+CardDAV server
 www-apps/bitten 0.6-r1: Continuous integration plugin for Trac
