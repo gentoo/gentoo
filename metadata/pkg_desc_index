@@ -1652,7 +1652,7 @@ app-leechcraft/lc-xtazy 0.6.60 0.6.65 0.6.70 9999: Fetches info about current tu
 app-leechcraft/lcpackgen 1.3: Package creator for app-leechcraft/lc-lackman package manager
 app-leechcraft/leechcraft-meta 0.6.60 0.6.65 0.6.70 9999: Metapackage containing all ready-to-use LeechCraft plugins
 app-leechcraft/liblaretz 0.1.0 9999: Shared library to be used by the Laretz sync server and its clients
-app-misc/abduco 0.2 0.3: lightweight session manager with {de,at}tach support
+app-misc/abduco 0.3 0.4: lightweight session manager with {de,at}tach support
 app-misc/abook 0.6.0_pre2 0.6.1: Abook is a text-based addressbook program designed to use with mutt mail client
 app-misc/acdctl 1.1: Apple Cinema Display Control
 app-misc/activylircd 0.4: ACTIVYLIRCD lirc daemon for activy remote control
@@ -1726,7 +1726,7 @@ app-misc/dvtm 0.8 0.11 0.14 9999: Dynamic virtual terminal manager
 app-misc/editor-wrapper 4: Wrapper scripts that will execute EDITOR or PAGER
 app-misc/egads 0.9.5: Entropy Gathering And Distribution System
 app-misc/eid-viewer-bin 4.0.7_p184 4.1.9: Graphical interface to the Belgian Electronic Identity Card
-app-misc/elasticsearch 1.7.3 2.1.0 2.1.1: Open Source, Distributed, RESTful, Search Engine
+app-misc/elasticsearch 1.7.3 1.7.4 2.1.0 2.1.1: Open Source, Distributed, RESTful, Search Engine
 app-misc/email2trac 2.6.2-r1 2.8.4: Utilities to convert emails to trac tickets
 app-misc/emelfm2 0.8.1 0.9.1 0.9.1-r1: A file manager that implements the popular two-pane design
 app-misc/empty 0.6.19b: Small shell utility, similar to expect(1)
@@ -3732,7 +3732,7 @@ dev-java/bsh 2.0_beta4-r4: BeanShell: A small embeddable Java source interpreter
 dev-java/byaccj 1.15-r1: A java extension of BSD YACC-compatible parser generator
 dev-java/bytecode 20081007: Biojava bytecode manipulation library
 dev-java/bytelist 1.0.10: JRuby support library
-dev-java/c3p0 0.9.1.2 0.9.5.1: Library for augmenting traditional (DriverManager-based) JDBC drivers with JNDI-bindable DataSources
+dev-java/c3p0 0.9.5.1: JDBC drivers with JNDI-bindable DataSources
 dev-java/cacao 0.99.4: Cacao Java Virtual Machine
 dev-java/cal10n 0.8.1: java library for writing localized messages using resource bundle
 dev-java/cdegroot-db 0.08-r1: OO database written in Java
@@ -4135,7 +4135,7 @@ dev-java/neuroph 2.3 2.3.1 2.4: A lightweight Java neural network framework
 dev-java/objenesis 1.3: A small Java library with one purpose: To instantiate a new object of a class
 dev-java/odfdom 0.8.6-r1: The ODFDOM reference implementation, written in Java
 dev-java/offo-hyphenation 2.0: Hyphenation patterns for Apache Fop
-dev-java/ognl 2.6.9-r2 3.0.8: Object-Graph Navigation Language; an expression language for getting/setting properties of objects
+dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of objects
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/oracle-javamail 1.5.2 1.5.5: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/oracle-jdk-bin 1.7.0.80 1.8.0.65-r1 1.8.0.66 1.8.0.66-r1: Oracle's Java SE Development Kit
@@ -4192,7 +4192,7 @@ dev-java/slf4j-log4j12 1.7.7: Simple Logging Facade for Java (SLF4J) log4j bindi
 dev-java/slf4j-nop 1.7.7: Simple Logging Facade for Java
 dev-java/slf4j-simple 1.7.7: Simple Logging Facade for Java
 dev-java/smack 2.2.1: An Open Source XMPP (Jabber) client library for instant messaging and presence
-dev-java/snakeyaml 1.9 1.9-r1 1.11: A YAML 1.1 parser and emitter for Java 5
+dev-java/snakeyaml 1.9-r2: A YAML 1.1 parser and emitter for Java 5
 dev-java/snappy 1.0.3_rc3 1.1.0.1: Snappy compressor/decompressor for Java
 dev-java/snip 0.11: an Apache ANT optional task that extracts snippets of code from text files
 dev-java/soylatte-jdk-bin 1.0.3 7: Landon Fuller's OpenJDK 7 for Mac OS X 10.5/PPC
@@ -4238,7 +4238,7 @@ dev-java/swingx 1.6.4: A collection of powerful, useful, and just plain fun Swin
 dev-java/swt 3.5.2 3.6.1 3.7.1 3.7.2 3.7.2-r1 3.8.2 3.8.2-r1 4.2 4.2-r1 4.2-r2: GTK based SWT Library
 dev-java/tablelayout 1.0: Layout manager that makes creating user interfaces fast and easy
 dev-java/tagsoup 1.2.1: A SAX-compliant parser written in Java
-dev-java/tapestry 3.0.4-r1: An open-source framework for creating dynamic, robust, highly scalable web applications in Java
+dev-java/tapestry 3.0.4-r2: Dynamic, robust, highly scalable web framework in Java
 dev-java/telnetd 2.0: A telnet daemon for use in java applications
 dev-java/testng 6.8-r3: Testing framework introducing some new functionalities that make it more powerful and easier to use
 dev-java/texhyphj 1.1: Re-implementation of Franklin Mark Liang's hyphenation algorithm in Java
@@ -4255,9 +4255,9 @@ dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
 dev-java/trident 1.3: Java animation library
 dev-java/trove 2.1.0 3.0.2 3.0.2-r1: GNU Trove: High performance collections for Java
 dev-java/txw2-runtime 20110809: TXW is a library that allows you to write XML documents
-dev-java/typesafe-config 1.3.0 1.3.0-r1: a library of arguably useful Java utilities
+dev-java/typesafe-config 1.3.0-r1: a library of arguably useful Java utilities
 dev-java/unkrig-nullanalysis 0_pre1644: Some classes to test for various null conditions
-dev-java/validation-api 1.0.0 1.1.0: Bean Validation (JSR-303) API
+dev-java/validation-api 1.1.0: Bean Validation (JSR-303) API
 dev-java/vecmath 1.6.0_pre12: Sun J3D: 3D vector math package
 dev-java/velocity 1.7 1.7-r1: A Java-based template engine for easy creation/rendering of documents that format and present data
 dev-java/vldocking 3.0.5: Docking solution for Java Swing
@@ -14007,7 +14007,7 @@ net-libs/glib-networking 2.44.0 2.46.1: Network-related giomodules for glib
 net-libs/gloox 1.0.9 1.0.13 1.0.14 1.0.14-r1: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.16.4.1 3.18.2.1 3.18.3: GNOME framework for accessing online accounts
-net-libs/gnutls 3.3.17.1 3.3.18 3.3.19 3.3.19-r1 3.4.5 3.4.6 3.4.7 3.4.7-r1: A TLS 1.2 and SSL 3.0 implementation for the GNU project
+net-libs/gnutls 3.3.17.1 3.3.18 3.3.19 3.3.19-r1 3.3.20 3.4.5 3.4.6 3.4.7 3.4.7-r1 3.4.8: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.7.17 2.7.17-r1 2.7.17-r2 2.8.23 2.8.26 2.8.27: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 0.14.11 0.14.12.1 0.14.13: A GObject-based API for handling resource discovery and announcement over SSDP
@@ -14819,7 +14819,7 @@ net-p2p/soulseek-qt 20131106-r1: Official binary Qt SoulSeek client
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6: A torrent file parser
 net-p2p/transmission 2.84-r4 2.84-r5: A Fast, Easy and Free BitTorrent client
-net-p2p/transmission-remote-cli 1.6.3 1.7.0: Ncurses interface for the Transmission BitTorrent client
+net-p2p/transmission-remote-cli 1.7.0 1.7.1: Ncurses interface for the Transmission BitTorrent client
 net-p2p/transmission-remote-gtk 1.0 1.1.1: GTK+ client for management of the Transmission BitTorrent client, over HTTP RPC
 net-p2p/tribler 6.0.3 6.3.3-r1: Bittorrent client that does not require a website to discover content
 net-p2p/tvrss 1.8_beta: TV RSS is a tool for automating torrent downloads
@@ -18714,7 +18714,7 @@ x11-wm/wmfs 201003 99999999: Window Manager From Scratch, A tiling window manage
 x11-wm/wmii 3.9.2-r4: A dynamic window manager for X11
 x11-wm/xmonad 0.11-r1 0.11-r3 0.11.1: A tiling window manager
 x11-wm/xmonad-contrib 0.11.2 0.11.4: Third party extensions for xmonad
-x11-wm/xpra 0.14.27 0.15.6 0.15.7 0.15.8 0.15.9: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
+x11-wm/xpra 0.14.27 0.15.6 0.15.7 0.15.8 0.15.9 0.15.10: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.10.2-r1 0.10.6 0.10.6-r1 0.10.7: Extensions, widgets and framework library with session support for the Xfce desktop environment
 xfce-base/garcon 0.2.1 0.5.0-r1 0.5.0-r2: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.10.0 4.12.1-r2: Unified widgets and session management libraries for the Xfce desktop environment
