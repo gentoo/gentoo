@@ -827,10 +827,6 @@ x11-plugins/wmium
 # Bug 537524
 app-arch/ppmd
 
-# James Le Cuirot <chewi@gentoo.org> (07 Dec 2015)
-# Dead project with no revdeps. Removal in 30 days.
-dev-java/jscience
-
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (07 Dec 2015)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
