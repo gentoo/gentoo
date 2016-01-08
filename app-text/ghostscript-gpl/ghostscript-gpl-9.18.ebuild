@@ -89,9 +89,12 @@ src_prepare() {
 	# http://pkgs.fedoraproject.org/cgit/ghostscript.git
 	EPATCH_SUFFIX="patch" EPATCH_FORCE="yes"
 	EPATCH_SOURCE="${WORKDIR}/patches/"
-	EPATCH_EXCLUDE="ghostscript-gpl-8.64-noopt.patch
-			ghostscript-gpl-9.07-wrf-snprintf.patch
-			ghostscript-gpl-9.12-icc-missing-check.patch"
+	EPATCH_EXCLUDE="
+		ghostscript-gpl-8.64-noopt.patch
+		ghostscript-gpl-9.07-wrf-snprintf.patch
+		ghostscript-gpl-9.12-icc-missing-check.patch
+		ghostscript-gpl-9.12-sys-zlib.patch
+	"
 	epatch
 
 	epatch "${FILESDIR}"/${P}-gserrors.h-backport.patch
@@ -116,6 +119,11 @@ src_prepare() {
 			-e "s:.*\$(GSSOX_XENAME)$::" \
 			"${S}"/base/unix-dll.mak || die "sed failed"
 	fi
+
+	# Force the include dirs to a neutral location.
+	sed -i \
+		-e "/^ZLIBDIR=/s:=.*:=${T}:" \
+		configure.ac || die
 
 	# search path fix
 	# put LDFLAGS after BINDIR, bug #383447
