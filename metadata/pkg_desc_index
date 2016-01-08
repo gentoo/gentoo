@@ -14519,7 +14519,7 @@ net-misc/netprofiles-ims 0.1.0134: The Netprofiles Interface Management System (
 net-misc/netsed 0.01b: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
 net-misc/networkmanager 1.0.6-r1 1.0.8 1.0.10: A set of co-operative tools that make networking simple and straightforward
-net-misc/networkmanager-openconnect 1.0.2 1.0.8: NetworkManager OpenConnect plugin
+net-misc/networkmanager-openconnect 1.0.2 1.0.8-r1: NetworkManager OpenConnect plugin
 net-misc/networkmanager-openswan 1.0.6 1.0.8: NetworkManager Openswan plugin
 net-misc/networkmanager-openvpn 1.0.6-r1 1.0.8: NetworkManager OpenVPN plugin
 net-misc/networkmanager-pptp 1.0.6 1.0.8: NetworkManager PPTP plugin
