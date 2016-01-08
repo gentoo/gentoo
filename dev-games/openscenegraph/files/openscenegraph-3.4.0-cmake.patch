@@ -1,0 +1,297 @@
+--- OpenSceneGraph-3.4.0/CMakeLists.txt
++++ OpenSceneGraph-3.4.0/CMakeLists.txt
+@@ -607,6 +607,7 @@
+ 
+ # INSTALL_FILES(/include/osg/ FILES "${OPENSCENEGRAPH_CONFIG_HEADER}")
+ 
++INCLUDE(MacroOptionalFindPackage)
+ 
+ ################################################################################
+ # Set Version header file
+@@ -651,53 +652,53 @@
+     ANDROID_3RD_PARTY()
+ ELSE()
+ # Common to all platforms except android:
+-    FIND_PACKAGE(Freetype)
+-    FIND_PACKAGE(Inventor)
+-    FIND_PACKAGE(Jasper)
+-    FIND_PACKAGE(OpenEXR)
+-    FIND_PACKAGE(COLLADA)
+-    FIND_PACKAGE(FBX)
+-    FIND_PACKAGE(ZLIB)
+-    FIND_PACKAGE(Xine)
+-    FIND_PACKAGE(OpenVRML)
+-    FIND_PACKAGE(Performer)
+-    FIND_PACKAGE(GDAL)
+-    FIND_PACKAGE(GTA)
+-    FIND_PACKAGE(CURL)
+-    FIND_PACKAGE(LibVNCServer)
+-    FIND_PACKAGE(OurDCMTK)
+-    FIND_PACKAGE(FFmpeg)
+-    FIND_PACKAGE(GStreamer COMPONENTS app pbutils)
+-    FIND_PACKAGE(GLIB COMPONENTS gobject)
++    MACRO_OPTIONAL_FIND_PACKAGE(Freetype)
++    MACRO_OPTIONAL_FIND_PACKAGE(Inventor)
++    MACRO_OPTIONAL_FIND_PACKAGE(Jasper)
++    MACRO_OPTIONAL_FIND_PACKAGE(OpenEXR)
++    MACRO_OPTIONAL_FIND_PACKAGE(COLLADA)
++    MACRO_OPTIONAL_FIND_PACKAGE(FBX)
++    MACRO_OPTIONAL_FIND_PACKAGE(ZLIB)
++    MACRO_OPTIONAL_FIND_PACKAGE(Xine)
++    MACRO_OPTIONAL_FIND_PACKAGE(OpenVRML)
++    MACRO_OPTIONAL_FIND_PACKAGE(Performer)
++    MACRO_OPTIONAL_FIND_PACKAGE(GDAL)
++    MACRO_OPTIONAL_FIND_PACKAGE(GTA)
++    MACRO_OPTIONAL_FIND_PACKAGE(CURL)
++    MACRO_OPTIONAL_FIND_PACKAGE(LibVNCServer)
++    MACRO_OPTIONAL_FIND_PACKAGE(OurDCMTK)
++    MACRO_OPTIONAL_FIND_PACKAGE(FFmpeg)
++    MACRO_OPTIONAL_FIND_PACKAGE(GStreamer COMPONENTS app pbutils)
++    MACRO_OPTIONAL_FIND_PACKAGE(GLIB COMPONENTS gobject)
+     FIND_PACKAGE(DirectShow)
+-    FIND_PACKAGE(SDL2)
+-    FIND_PACKAGE(SDL)
+-    FIND_PACKAGE(Poppler-glib)
+-    FIND_PACKAGE(RSVG)
+-    FIND_PACKAGE(GtkGl)
++    MACRO_OPTIONAL_FIND_PACKAGE(SDL2)
++    MACRO_OPTIONAL_FIND_PACKAGE(SDL)
++    MACRO_OPTIONAL_FIND_PACKAGE(Poppler-glib)
++    MACRO_OPTIONAL_FIND_PACKAGE(RSVG)
++    MACRO_OPTIONAL_FIND_PACKAGE(GtkGl)
+     FIND_PACKAGE(DirectInput)
+-    FIND_PACKAGE(NVTT)
++    MACRO_OPTIONAL_FIND_PACKAGE(NVTT)
+     IF (NOT WIN32)
+-        FIND_PACKAGE(Asio)
++        MACRO_OPTIONAL_FIND_PACKAGE(Asio)
+     ENDIF()
+     FIND_PACKAGE(ZeroConf)
+ 
+-    FIND_PACKAGE(LIBLAS)
++    MACRO_OPTIONAL_FIND_PACKAGE(LIBLAS)
+ 
+     IF (NOT(OSG_USE_LOCAL_LUA_SOURCE))
+-        FIND_PACKAGE(Lua52)
++        MACRO_OPTIONAL_FIND_PACKAGE(Lua52)
+         IF (NOT (LUA_LIBRARIES AND LUA_INCLUDE_DIR))
+-            FIND_PACKAGE(Lua51)
++            MACRO_OPTIONAL_FIND_PACKAGE(Lua51)
+         ENDIF()
+     ENDIF()
+ 
+     # V8 and Python plugins are tests for linking against these libraries but aren't functionality beyond this.
+-    # FIND_PACKAGE(V8)
+-    # FIND_PACKAGE(PythonLibs)
++    # MACRO_OPTIONAL_FIND_PACKAGE(V8)
++    # MACRO_OPTIONAL_FIND_PACKAGE(PythonLibs)
+ ENDIF()
+ 
+ IF(CMAKE_MAJOR_VERSION EQUAL 2 AND CMAKE_MINOR_VERSION LESS 8)
+-    FIND_PACKAGE(ITK)
++    MACRO_OPTIONAL_FIND_PACKAGE(ITK)
+ ENDIF()
+ 
+ # Include macro utilities here
+@@ -763,12 +764,12 @@
+ IF   (BUILD_OSG_EXAMPLES AND NOT ANDROID)
+ 
+ 
+-    FIND_PACKAGE(FLTK)
+-    FIND_PACKAGE(GLUT)
+-    FIND_PACKAGE(FOX)
++    MACRO_OPTIONAL_FIND_PACKAGE(FLTK)
++    MACRO_OPTIONAL_FIND_PACKAGE(GLUT)
++    MACRO_OPTIONAL_FIND_PACKAGE(FOX)
+ 
+     SET(wxWidgets_USE_LIBS base core gl net)
+-    FIND_PACKAGE(wxWidgets)
++    MACRO_OPTIONAL_FIND_PACKAGE(wxWidgets)
+ 
+ ENDIF(BUILD_OSG_EXAMPLES AND NOT ANDROID)
+ 
+@@ -789,10 +790,10 @@
+ # can use Quicktime.
+ IF(NOT ANDROID)
+     IF(NOT APPLE)
+-        FIND_PACKAGE(GIFLIB)
+-        FIND_PACKAGE(JPEG)
+-        FIND_PACKAGE(PNG)
+-        FIND_PACKAGE(TIFF)
++        MACRO_OPTIONAL_FIND_PACKAGE(GIFLIB)
++        MACRO_OPTIONAL_FIND_PACKAGE(JPEG)
++        MACRO_OPTIONAL_FIND_PACKAGE(PNG)
++        MACRO_OPTIONAL_FIND_PACKAGE(TIFF)
+         # QuickTime is required for OS X, but optional for Windows.
+         IF(WIN32)
+             FIND_PACKAGE(QuickTime)
+@@ -848,15 +849,7 @@
+   SET(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -D_DEBUG")
+ ENDIF()
+ 
+-IF(UNIX AND NOT WIN32 AND NOT APPLE)
+-  IF(CMAKE_SIZEOF_VOID_P MATCHES "8")
+-      SET(LIB_POSTFIX "64" CACHE STRING "suffix for 32/64 dir placement")
+-      MARK_AS_ADVANCED(LIB_POSTFIX)
+-  ENDIF()
+-ENDIF()
+-IF(NOT DEFINED LIB_POSTFIX)
+-    SET(LIB_POSTFIX "")
+-ENDIF()
++SET(LIB_POSTFIX ${LIB_SUFFIX})
+ 
+ # Here we apparantly do some funky stuff with making the bin/ and lib/
+ # folders which is probably needed to work around a very old CMake bug?
+@@ -1191,7 +1184,7 @@
+         ${PROJECT_BINARY_DIR}/doc/OpenSceneGraphReferenceDocs/osg32-32.png COPYONLY
+     )
+     #INSTALL(FILES ${PROJECT_BINARY_DIR}/doc/${PROJECT_NAME}ReferenceDocs-${OPENSCENEGRAPH_VERSION}.chm DESTINATION doc OPTIONAL COMPONENT openscenegraph-doc)
+-    INSTALL(DIRECTORY ${PROJECT_BINARY_DIR}/doc/OpenSceneGraphReferenceDocs DESTINATION doc COMPONENT openscenegraph-doc)
++    INSTALL(DIRECTORY ${PROJECT_BINARY_DIR}/doc/OpenSceneGraphReferenceDocs DESTINATION ${GENTOO_DOCDIR} COMPONENT openscenegraph-doc)
+ 
+     # now set up openthreads documentation generation
+     IF(BUILD_REF_DOCS_TAGFILE)
+@@ -1207,7 +1200,7 @@
+         ${PROJECT_BINARY_DIR}/doc/OpenThreadsReferenceDocs/osg32-32.png COPYONLY
+     )
+     #INSTALL(FILES ${PROJECT_BINARY_DIR}/doc/${PROJECT_NAME}ReferenceDocs-${OPENSCENEGRAPH_VERSION}.chm DESTINATION doc OPTIONAL COMPONENT openscenegraph-doc)
+-    INSTALL(DIRECTORY ${PROJECT_BINARY_DIR}/doc/OpenThreadsReferenceDocs DESTINATION doc COMPONENT openthreads-doc)
++    INSTALL(DIRECTORY ${PROJECT_BINARY_DIR}/doc/OpenThreadsReferenceDocs DESTINATION ${GENTOO_DOCDIR} COMPONENT openthreads-doc)
+ 
+     # Process our other doxyfiles but don't create targets for these
+     CONFIGURE_FILE(${PROJECT_SOURCE_DIR}/doc/Doxyfiles/all_Doxyfile
+--- OpenSceneGraph-3.4.0/CMakeModules/COPYING-CMAKE-SCRIPTS
++++ OpenSceneGraph-3.4.0/CMakeModules/COPYING-CMAKE-SCRIPTS
+@@ -0,0 +1,22 @@
++Redistribution and use in source and binary forms, with or without
++modification, are permitted provided that the following conditions
++are met:
++
++1. Redistributions of source code must retain the copyright
++   notice, this list of conditions and the following disclaimer.
++2. Redistributions in binary form must reproduce the copyright
++   notice, this list of conditions and the following disclaimer in the
++   documentation and/or other materials provided with the distribution.
++3. The name of the author may not be used to endorse or promote products
++   derived from this software without specific prior written permission.
++
++THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
++IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
++OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
++IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
++INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
++NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
++THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+--- OpenSceneGraph-3.4.0/CMakeModules/FindFLTK.cmake.rej
++++ OpenSceneGraph-3.4.0/CMakeModules/FindFLTK.cmake.rej
+@@ -0,0 +1,55 @@
++--- CMakeModules/FindFLTK.cmake	2010-11-11 17:51:46.000000000 +0100
+++++ CMakeModules/FindFLTK.cmake	2014-08-20 00:29:31.229439251 +0200
++@@ -1,52 +0,0 @@
++-# Locate FLTK
++-# This module defines
++-# FLTK_LIBRARY
++-# FLTK_FOUND, if false, do not try to link to gdal 
++-# FLTK_INCLUDE_DIR, where to find the headers
++-#
++-# $FLTK_DIR is an environment variable that would
++-# correspond to the ./configure --prefix=$FLTK_DIR
++-#
++-# Created by Robert Osfield. 
++-
++-FIND_PATH(FLTK_INCLUDE_DIR Fl/Fl.H Fl/Fl.h
++-    $ENV{FLTK_DIR}/include
++-    $ENV{FLTK_DIR}
++-    ~/Library/Frameworks
++-    /Library/Frameworks
++-    /usr/local/include
++-    /usr/include
++-    /sw/include # Fink
++-    /opt/local/include # DarwinPorts
++-    /opt/csw/include # Blastwave
++-    /opt/include
++-    /usr/freeware/include
++-)
++-
++-MACRO(FIND_FLTK_LIBRARY MYLIBRARY MYLIBRARYNAME)
++-
++-    FIND_LIBRARY(${MYLIBRARY}
++-        NAMES ${MYLIBRARYNAME}
++-        PATHS
++-        $ENV{FLTK_DIR}/lib
++-        $ENV{FLTK_DIR}
++-        ~/Library/Frameworks
++-        /Library/Frameworks
++-        /usr/local/lib
++-        /usr/lib
++-        /sw/lib
++-        /opt/local/lib
++-        /opt/csw/lib
++-        /opt/lib
++-        /usr/freeware/lib64
++-    )
++-
++-ENDMACRO(FIND_FLTK_LIBRARY LIBRARY LIBRARYNAME)
++-
++-FIND_FLTK_LIBRARY(FLTK_LIBRARY fltk)
++-FIND_FLTK_LIBRARY(FLTK_GL_LIBRARY fltk_gl)
++-
++-SET(FLTK_FOUND "NO")
++-IF(FLTK_LIBRARY AND FLTK_INCLUDE_DIR)
++-    SET(FLTK_FOUND "YES")
++-ENDIF(FLTK_LIBRARY AND FLTK_INCLUDE_DIR)
+--- OpenSceneGraph-3.4.0/CMakeModules/MacroOptionalFindPackage.cmake
++++ OpenSceneGraph-3.4.0/CMakeModules/MacroOptionalFindPackage.cmake
+@@ -0,0 +1,28 @@
++# - MACRO_OPTIONAL_FIND_PACKAGE() combines FIND_PACKAGE() with an OPTION()
++# MACRO_OPTIONAL_FIND_PACKAGE( <name> [QUIT] )
++# This macro is a combination of OPTION() and FIND_PACKAGE(), it
++# works like FIND_PACKAGE(), but additionally it automatically creates
++# an option name WITH_<name>, which can be disabled via the cmake GUI.
++# or via -DWITH_<name>=OFF
++# The standard <name>_FOUND variables can be used in the same way
++# as when using the normal FIND_PACKAGE()
++
++# Copyright (c) 2006, Alexander Neundorf, <neundorf@kde.org>
++#
++# Redistribution and use is allowed according to the terms of the BSD license.
++# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
++
++
++macro (MACRO_OPTIONAL_FIND_PACKAGE _name )
++   option(WITH_${_name} "Search for ${_name} package" ON)
++   if (WITH_${_name})
++      find_package(${_name} ${ARGN})
++   else (WITH_${_name})
++      set(${_name}_FOUND)
++      set(${_name}_INCLUDE_DIR)
++      set(${_name}_INCLUDES)
++      set(${_name}_LIBRARY)
++      set(${_name}_LIBRARIES)
++   endif (WITH_${_name})
++endmacro (MACRO_OPTIONAL_FIND_PACKAGE)
++
+--- OpenSceneGraph-3.4.0/CMakeModules/OsgMacroUtils.cmake
++++ OpenSceneGraph-3.4.0/CMakeModules/OsgMacroUtils.cmake
+@@ -456,7 +456,7 @@
+         IF(APPLE)
+             INSTALL(TARGETS ${TARGET_TARGETNAME} RUNTIME DESTINATION share/OpenSceneGraph/bin BUNDLE DESTINATION share/OpenSceneGraph/bin )
+         ELSE(APPLE)
+-            INSTALL(TARGETS ${TARGET_TARGETNAME} RUNTIME DESTINATION share/OpenSceneGraph/bin COMPONENT openscenegraph-examples )
++            INSTALL(TARGETS ${TARGET_TARGETNAME} RUNTIME DESTINATION bin COMPONENT openscenegraph-examples )
+         ENDIF(APPLE)
+ 
+ ENDMACRO(SETUP_EXAMPLE)
+--- OpenSceneGraph-3.4.0/examples/osgviewerFLTK/CMakeLists.txt
++++ OpenSceneGraph-3.4.0/examples/osgviewerFLTK/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ SET(TARGET_SRC osgviewerFLTK.cpp )
+ 
+-SET(TARGET_EXTERNAL_LIBRARIES ${FLTK_LIBRARY} ${FLTK_GL_LIBRARY})
++SET(TARGET_EXTERNAL_LIBRARIES ${FLTK_BASE_LIBRARY} ${FLTK_GL_LIBRARY})
+ 
+ INCLUDE_DIRECTORIES(${FLTK_INCLUDE_DIR} )
+ 
