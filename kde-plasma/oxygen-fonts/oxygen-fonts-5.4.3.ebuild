@@ -12,7 +12,7 @@ DESCRIPTION="Desktop/GUI font family for integrated use with the KDE desktop"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/oxygen-fonts"
 
 LICENSE="OFL-1.1"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 DEPEND="

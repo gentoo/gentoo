@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit qt4-r2
 
@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND="net-dns/dnssec-validator[threads]
+RDEPEND="=net-dns/dnssec-validator-${PV}[threads]
 	dev-qt/qtgui:4"
 DEPEND="${RDEPEND}"
 
