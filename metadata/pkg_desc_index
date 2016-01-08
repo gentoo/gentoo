@@ -8892,7 +8892,7 @@ dev-ruby/ruby-hmac 0.4.0-r1: A common interface to HMAC functionality as documen
 dev-ruby/ruby-inifile 2.0.0-r2: Small library to parse INI-files in Ruby
 dev-ruby/ruby-ldap 0.9.16-r1 0.9.17: A Ruby interface to some LDAP libraries
 dev-ruby/ruby-mp3info 0.8.6 0.8.7: A pure Ruby library for access to mp3 files (internal infos and tags)
-dev-ruby/ruby-net-ldap 0.11 0.12.0 0.12.1: Pure ruby LDAP client implementation
+dev-ruby/ruby-net-ldap 0.12.1 0.13.0: Pure ruby LDAP client implementation
 dev-ruby/ruby-oci8 2.1.7 2.1.7-r1 2.1.8 2.2.1: A Ruby library for Oracle OCI8
 dev-ruby/ruby-odbc 0.99997 0.99997-r1: RubyODBC - For accessing ODBC data sources from the Ruby language
 dev-ruby/ruby-oembed 0.8.14 0.9.0: An oEmbed consumer library written in Ruby.
@@ -8990,7 +8990,7 @@ dev-ruby/thread_order 1.1.0: Test helper for ordering threaded code
 dev-ruby/thread_safe 0.3.4 0.3.5: A collection of thread-safe versions of common core Ruby classes
 dev-ruby/tidy-ext 0.1.14-r1 0.1.14-r2: W3C HTML Tidy library implemented as a Ruby extension
 dev-ruby/tidy_table 0.0.5-r3 0.0.5-r4: Tool to convert an array of struct into an HTML table
-dev-ruby/tilt 1.4.1 1.4.1-r2 2.0.1-r1: A thin interface over a Ruby template engines to make their usage as generic as possible
+dev-ruby/tilt 1.4.1 1.4.1-r2 2.0.1-r1 2.0.2: A thin interface over a Ruby template engines to make their usage as generic as possible
 dev-ruby/timecop 0.7.1 0.7.4 0.8.0: A gem providing 'time travel' and 'time freezing' capabilities
 dev-ruby/timers 4.0.1 4.1.0 4.1.1: Pure Ruby one-shot and periodic timers
 dev-ruby/tins 0.13.1 1.6.0 1.7.0 1.8.0 1.8.1: All the stuff that isn't good enough for a real library
