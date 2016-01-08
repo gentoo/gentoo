@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=media-libs/allegro:0[X] >=sys-apps/sed-4
+DESCRIPTION=Worms and Scorched Earth-like game
+EAPI=5
+HOMEPAGE=http://atanks.sourceforge.net/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2+
+RDEPEND=media-libs/allegro:0[X] games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://sourceforge/atanks/atanks-6.4.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:games src_unpack:base src_prepare:base src_configure:games src_compile:- src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	d9bd2ddd85a58e470b49ca997e255a4c	games	4dae170e58f773c484e07d18ef441804	gnome2-utils	2a93a5fe31c2295077e190059f4cf88d	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=f9eec2991dd1c45e9bb5d97a0af49f9d

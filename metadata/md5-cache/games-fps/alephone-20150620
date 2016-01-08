@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=media-libs/sdl-net media-libs/sdl-ttf media-libs/sdl-image[png] media-libs/libsdl[joystick,opengl,video] dev-libs/expat dev-libs/zziplib dev-libs/boost media-libs/libpng:0 virtual/opengl virtual/glu alsa? ( media-libs/alsa-lib ) curl? ( net-misc/curl ) ffmpeg? ( virtual/ffmpeg ) mad? ( media-libs/libmad ) mpeg? ( media-libs/smpeg ) sndfile? ( media-libs/libsndfile ) speex? ( media-libs/speex ) vorbis? ( media-libs/libvorbis ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=An enhanced version of the game engine from the classic Mac game, Marathon
+EAPI=5
+HOMEPAGE=http://source.bungie.org/
+IUSE=alsa curl ffmpeg mad mpeg sndfile speex vorbis
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-3+ BitstreamVera OFL-1.1
+RDEPEND=media-libs/sdl-net media-libs/sdl-ttf media-libs/sdl-image[png] media-libs/libsdl[joystick,opengl,video] dev-libs/expat dev-libs/zziplib dev-libs/boost media-libs/libpng:0 virtual/opengl virtual/glu alsa? ( media-libs/alsa-lib ) curl? ( net-misc/curl ) ffmpeg? ( virtual/ffmpeg ) mad? ( media-libs/libmad ) mpeg? ( media-libs/smpeg ) sndfile? ( media-libs/libsndfile ) speex? ( media-libs/speex ) vorbis? ( media-libs/libvorbis ) games-misc/games-envd
+SLOT=0
+SRC_URI=https://github.com/Aleph-One-Marathon/alephone/releases/download/release-20150620/AlephOne-20150620.tar.bz2
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:- pkg_setup:games src_unpack:base src_prepare:- src_configure:- src_compile:games src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	d9bd2ddd85a58e470b49ca997e255a4c	games	4dae170e58f773c484e07d18ef441804	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=e26cd1d279fcf005af62980e26848f21
