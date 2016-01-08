@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,15 +21,17 @@ CDEPEND="
 	dev-java/guice:2
 	dev-java/junit:4
 	dev-java/ant-core:0
-	dev-java/jcommander:0
-	dev-java/snakeyaml:1.9"
+	dev-java/snakeyaml:0
+	dev-java/jcommander:0"
 
-DEPEND=">=virtual/jdk-1.6
+DEPEND="
+	${CDEPEND}
 	app-arch/zip
-	${CDEPEND}"
+	>=virtual/jdk-1.6"
 
-RDEPEND=">=virtual/jre-1.6
-	${CDEPEND}"
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
 
 JAVA_ANT_CLASSPATH_TAGS+=" testng javadocs-current"
 JAVA_PKG_BSFIX_NAME="build.xml build-tests.xml"
