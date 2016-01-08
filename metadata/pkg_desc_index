@@ -13724,13 +13724,13 @@ net-dns/dnscrypt-proxy 1.4.2 1.4.3 1.6.0 1.6.0-r1: A tool for securing communica
 net-dns/dnshijacker 1.3-r2: a libnet/libpcap based packet sniffer and spoofer
 net-dns/dnsimple-dyndns 0.1: Dynamic DNS implementation, that relies on DNSimple.com
 net-dns/dnsmasq 2.66 2.72-r2 2.75: Small forwarding DNS server
-net-dns/dnssec-check 1.13 1.14 1.14.0.1 2.0 2.1: tests local resolver for support of DNSSEC validation
+net-dns/dnssec-check 1.13 1.14 1.14.0.1 2.0 2.2: tests local resolver for support of DNSSEC validation
 net-dns/dnssec-lookup 1.13 1.14 2.0 2.1: DNS lookup utility that supports DNSSEC validation
 net-dns/dnssec-nodes 1.13 1.14 2.0 2.1: graphically depicts the DNSSEC results from a lookup via logfiles
 net-dns/dnssec-root 20100715 20110630 20150403: The DNSSEC root key(s)
 net-dns/dnssec-system-tray 1.13 1.14 2.0 2.1: display DNSSEC resolver logs in system tray
-net-dns/dnssec-tools 1.13-r1 1.14 2.0 2.0-r1 2.1: tools to ease the deployment of DNSSEC related technologies
-net-dns/dnssec-validator 1.13 1.14 2.0 2.1: DNSSEC validator (dnsval)
+net-dns/dnssec-tools 1.13-r1 1.14 2.0 2.0-r1 2.1 2.2: tools to ease the deployment of DNSSEC related technologies
+net-dns/dnssec-validator 1.13 1.14 2.0 2.1 2.2: DNSSEC validator (dnsval)
 net-dns/dnstop 20121017 20140915: Displays various tables of DNS traffic on your network
 net-dns/dnswalk 2.0.2: dnswalk is a DNS database debugger
 net-dns/ez-ipupdate 3.0.11.13.3_beta8-r2: Dynamic DNS client for lots of dynamic dns services
@@ -14581,7 +14581,7 @@ net-misc/qtm 1.3.17: Qt4 blogging client
 net-misc/quagga 0.99.23.1 0.99.24.1-r1: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
 net-misc/quickshare 1.0: A simple HTTP server with a GUI which allows for easy sharing of files
 net-misc/r8168 8.040.00 8.041.00: r8168 driver for Realtek 8111/8168 PCI-E NICs
-net-misc/rabbitmq-server 3.2.4 3.3.4 3.5.1 3.5.3 3.5.4 3.5.7 3.6.0: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
+net-misc/rabbitmq-server 3.2.4 3.3.4 3.5.4 3.5.7 3.6.0: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/raccess 0.7: Remote Access Session is an systems security analyzer
 net-misc/radvd 1.9.8 1.15 2.10 2.11 2.11-r1: Linux IPv6 Router Advertisement Daemon
 net-misc/rancid 2.3.8: Really Awesome New Cisco confIg Differ
