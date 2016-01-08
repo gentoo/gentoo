@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-ant-2
 
-DESCRIPTION="An open-source framework for creating dynamic, robust, highly scalable web applications in Java"
+DESCRIPTION="Dynamic, robust, highly scalable web framework in Java"
 HOMEPAGE="http://tapestry.apache.org/"
 SRC_URI="mirror://apache/${PN}/Tapestry-${PV}-src.zip"
 
