@@ -133,6 +133,12 @@ pkg_preinst() {
 pkg_postinst() {
 	gnome2_icon_cache_update
 	fdo-mime_desktop_database_update
+
+	elog "when updating from the currently stable 1.6 series,"
+	elog "please bear in mind that your edits will be preserved during this process,"
+	elog "but it will not be possible to downgrade from 2.0 to 1.6 any more."
+	echo
+	ewarn "There will not be possible to downgrade!"
 }
 
 pkg_postrm() {
