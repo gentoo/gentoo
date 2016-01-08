@@ -4240,7 +4240,7 @@ dev-java/tablelayout 1.0: Layout manager that makes creating user interfaces fas
 dev-java/tagsoup 1.2.1: A SAX-compliant parser written in Java
 dev-java/tapestry 3.0.4-r2: Dynamic, robust, highly scalable web framework in Java
 dev-java/telnetd 2.0: A telnet daemon for use in java applications
-dev-java/testng 6.8-r3: Testing framework introducing some new functionalities that make it more powerful and easier to use
+dev-java/testng 6.8-r4: New generation testing framework in Java
 dev-java/texhyphj 1.1: Re-implementation of Franklin Mark Liang's hyphenation algorithm in Java
 dev-java/tijmp 0.8: Java Memory Profiler for java 1.6+
 dev-java/tomcat-jstl-compat 1.2.5-r1: JSP Standard Tag Library (JSTL) - Compat jar
@@ -16665,7 +16665,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 7.0.0 7.0.1 2015.1.9999 2015.2.9999: A virtual network service for Openstack
-sys-cluster/nova 12.0.0 12.0.0-r2 2015.1.9999 2015.2.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
+sys-cluster/nova 12.0.0-r2 2015.1.9999 2015.2.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/open-mx 1.5.4: Open-MX - Myrinet Express over Generic Ethernet Hardware
