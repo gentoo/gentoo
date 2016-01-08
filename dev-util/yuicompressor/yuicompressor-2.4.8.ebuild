@@ -8,7 +8,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="JavaScript and CSS compressor"
 HOMEPAGE="http://yui.github.io/yuicompressor/"
-SRC_URI="https://github.com/yui/yuicompressor/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/yui/yuicompressor/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
