@@ -17,13 +17,14 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gtk"
 
 RDEPEND="
-	app-crypt/libsecret
 	>=net-misc/networkmanager-0.9.10:=
 	>=dev-libs/glib-2.32:2
 	>=dev-libs/dbus-glib-0.74
 	dev-libs/libxml2:2
 	>=net-misc/openconnect-3.02:=
-	gtk? ( >=x11-libs/gtk+-3.4:3 )
+	gtk? (
+		app-crypt/libsecret
+		>=x11-libs/gtk+-3.4:3 )
 "
 DEPEND="${RDEPEND}
 	sys-devel/gettext
