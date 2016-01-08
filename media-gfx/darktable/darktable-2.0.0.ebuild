@@ -41,7 +41,7 @@ CDEPEND="
 	x11-libs/cairo
 	x11-libs/gtk+:3
 	x11-libs/pango
-	colord? ( x11-misc/colord:0= )
+	colord? ( x11-libs/colord-gtk:0= )
 	cups? ( net-print/cups )
 	flickr? ( media-libs/flickcurl )
 	gphoto2? ( media-libs/libgphoto2:= )
