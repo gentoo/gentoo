@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ JAVA_PKG_IUSE="doc source examples test"
 
 inherit java-pkg-2 java-ant-2
 
-DESCRIPTION="Library for augmenting traditional (DriverManager-based) JDBC drivers with JNDI-bindable DataSources"
+DESCRIPTION="JDBC drivers with JNDI-bindable DataSources"
 HOMEPAGE="http://c3p0.sourceforge.net/"
 
 MY_P="${P}.src"
@@ -32,8 +32,7 @@ S="${WORKDIR}/${MY_P}"
 JAVA_ANT_REWRITE_CLASSPATH="yes"
 
 java_prepare() {
-	find . -type f -name \*.jar -exec rm -v {} \; || die
-	find . -type f -name \*.class -exec rm -v {} \; || die
+	java-pkg_clean
 	java-pkg_jar-from --into lib/ mchange-commons
 	java-pkg_jar-from --into lib/ log4j
 
