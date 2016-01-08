@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc examples source test"
 
 inherit java-pkg-2 java-ant-2
 
-DESCRIPTION="Testing framework introducing some new functionalities that make it more powerful and easier to use"
+DESCRIPTION="New generation testing framework in Java"
 HOMEPAGE="http://testng.org/"
 SRC_URI="http://${PN}.org/${P}.zip"
 
