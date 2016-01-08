@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -40,7 +40,7 @@ COMMONDEPEND="
 	dev-libs/libxslt
 	media-libs/fontconfig
 	media-libs/freetype:2
-	media-libs/giflib
+	media-libs/giflib:=
 	media-libs/libpng:0=
 	media-libs/phonon[qt4]
 	sys-libs/zlib
