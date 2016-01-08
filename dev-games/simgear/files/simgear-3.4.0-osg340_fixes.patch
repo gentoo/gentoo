@@ -1,0 +1,203 @@
+commit 51ff30f386ac098f477ff16c71756bcd089dcfae
+Author: Tim Moore <timoore33@gmail.com>
+Date:   Sun Apr 19 17:11:49 2015 +0200
+
+    changes for OSG 3.3.4 and later
+    
+    The public interfaces to osgText and osg::GLExtensions changed.
+
+diff --git a/simgear/canvas/elements/CanvasText.cxx b/simgear/canvas/elements/CanvasText.cxx
+index 4b7600f..ead600b 100644
+--- a/simgear/canvas/elements/CanvasText.cxx
++++ b/simgear/canvas/elements/CanvasText.cxx
+@@ -159,8 +159,12 @@ namespace canvas
+ 
+     if( empty() )
+       return pos;
+-
++#if OSG_VERSION_LESS_THAN(3,3,4)
+     GlyphQuads::Coords2 const& coords = _quads->_coords;
++#else
++    GlyphQuads::Coords2 refCoords = _quads->_coords;
++    GlyphQuads::Coords2::element_type &coords = *refCoords.get();
++#endif
+     size_t global_i = _begin + i;
+ 
+     if( global_i == _begin )
+@@ -194,7 +198,12 @@ namespace canvas
+       return cursorPos(0);
+ 
+     GlyphQuads::Glyphs const& glyphs = _quads->_glyphs;
++    #if OSG_VERSION_LESS_THAN(3,3,4)
+     GlyphQuads::Coords2 const& coords = _quads->_coords;
++#else
++    GlyphQuads::Coords2 refCoords = _quads->_coords;
++    GlyphQuads::Coords2::element_type &coords = *refCoords.get();
++#endif
+ 
+     float const HIT_FRACTION = 0.6;
+     float const character_width = _text->getCharacterHeight()
+@@ -627,7 +636,13 @@ namespace canvas
+ 
+     const GlyphQuads& quads = _textureGlyphQuadMap.begin()->second;
+     const GlyphQuads::Glyphs& glyphs = quads._glyphs;
+-    const GlyphQuads::Coords2& coords = quads._coords;
++#if OSG_VERSION_LESS_THAN(3,3,4)
++    GlyphQuads::Coords2 const& coords = quads._coords;
++#else
++    GlyphQuads::Coords2 refCoords = quads._coords;
++    GlyphQuads::Coords2::element_type &coords = *refCoords.get();
++#endif
++
+     const GlyphQuads::LineNumbers& line_numbers = quads._lineNumbers;
+ 
+     float wr = _characterHeight / getCharacterAspectRatio();
+diff --git a/simgear/scene/material/Technique.cxx b/simgear/scene/material/Technique.cxx
+index 93a17b8..96856cd 100644
+--- a/simgear/scene/material/Technique.cxx
++++ b/simgear/scene/material/Technique.cxx
+@@ -326,9 +326,15 @@ public:
+             = GL2Extensions::Get(static_cast<unsigned>(contextId), true);
+         if (!extensions)
+             return;
++#if OSG_VERSION_LESS_THAN(3,3,3)
+         if (!extensions->isGlslSupported())
+             return;
+         value = extensions->getLanguageVersion();
++#else
++        if (!extensions->isGlslSupported)
++            return;
++        value = extensions->glslLanguageVersion;
++#endif
+     }
+ };
+ 
+@@ -357,7 +363,11 @@ public:
+            = GL2Extensions::Get(static_cast<unsigned>(contextId), true);
+        if (!extensions)
+            return;
++#if OSG_VERSION_LESS_THAN(3,3,3)
+        value = extensions->isGlslSupported();
++#else
++       value = extensions->isGlslSupported;
++#endif
+    }
+ };
+ 
+diff --git a/simgear/scene/sky/CloudShaderGeometry.cxx b/simgear/scene/sky/CloudShaderGeometry.cxx
+index 8b4ea16..7800839 100644
+--- a/simgear/scene/sky/CloudShaderGeometry.cxx
++++ b/simgear/scene/sky/CloudShaderGeometry.cxx
+@@ -127,8 +127,12 @@ void CloudShaderGeometry::drawImplementation(RenderInfo& renderInfo) const
+         
+         sortData.frameSorted = frameNumber;
+     }
+-    
++
++#if OSG_VERSION_LESS_THAN(3,3,3)
+     const Extensions* extensions = getExtensions(state.getContextID(),true);
++#else
++    const GLExtensions* extensions = GLExtensions::Get(state.getContextID(), true);
++#endif
+     GLfloat ua1[3] = { (GLfloat) alpha_factor,
+                        (GLfloat) shade_factor,
+                        (GLfloat) cloud_height };
+diff --git a/simgear/scene/tgdb/ShaderGeometry.cxx b/simgear/scene/tgdb/ShaderGeometry.cxx
+index 5d286c3..ac9ec93 100644
+--- a/simgear/scene/tgdb/ShaderGeometry.cxx
++++ b/simgear/scene/tgdb/ShaderGeometry.cxx
+@@ -47,7 +47,11 @@ void ShaderGeometry::addObject(const Vec3& position, float scale,
+ void ShaderGeometry::drawImplementation(osg::RenderInfo& renderInfo) const
+ {
+     State& state = *renderInfo.getState();
++#if OSG_VERSION_LESS_THAN(3,3,3)
+     const Extensions* extensions = getExtensions(state.getContextID(), true);
++#else
++    const GLExtensions* extensions = GLExtensions::Get(state.getContextID(), true);
++#endif
+     Vec4Array::const_iterator citer = _posScaleArray->begin();
+     Vec4Array::const_iterator cend = _posScaleArray->end();
+     FloatArray::const_iterator viter = _vertexAttribArray->begin();
+diff --git a/simgear/scene/util/SGSceneFeatures.cxx b/simgear/scene/util/SGSceneFeatures.cxx
+index 4367e45..79f182f 100644
+--- a/simgear/scene/util/SGSceneFeatures.cxx
++++ b/simgear/scene/util/SGSceneFeatures.cxx
+@@ -25,11 +25,13 @@
+ 
+ #include "SGSceneFeatures.hxx"
+ 
++#include <osg/Version>
+ #include <osg/FragmentProgram>
+ #include <osg/VertexProgram>
+ #include <osg/Point>
+ #include <osg/PointSprite>
+ #include <osg/Texture>
++#include <osg/GLExtensions>
+ 
+ #include <OpenThreads/Mutex>
+ #include <OpenThreads/ScopedLock>
+@@ -84,12 +86,18 @@ SGSceneFeatures::setTextureCompression(osg::Texture* texture) const
+ bool
+ SGSceneFeatures::getHavePointSprites(unsigned contextId) const
+ {
++#if OSG_VERSION_LESS_THAN(3,3,3)
+   return osg::PointSprite::isPointSpriteSupported(contextId);
++#else
++  const osg::GLExtensions* ex = osg::GLExtensions::Get(contextId, true);
++  return ex && ex->isPointSpriteSupported;
++#endif
+ }
+ 
+ bool
+ SGSceneFeatures::getHaveFragmentPrograms(unsigned contextId) const
+ {
++#if OSG_VERSION_LESS_THAN(3,3,3)
+   const osg::FragmentProgram::Extensions* fpe;
+   fpe = osg::FragmentProgram::getExtensions(contextId, true);
+   if (!fpe)
+@@ -98,11 +106,16 @@ SGSceneFeatures::getHaveFragmentPrograms(unsigned contextId) const
+     return false;
+   
+   return true;
++#else
++  const osg::GLExtensions* ex = osg::GLExtensions::Get(contextId, true);
++  return ex && ex->isFragmentProgramSupported;
++#endif
+ }
+ 
+ bool
+ SGSceneFeatures::getHaveVertexPrograms(unsigned contextId) const
+ {
++#if OSG_VERSION_LESS_THAN(3,3,3)
+   const osg::VertexProgram::Extensions* vpe;
+   vpe = osg::VertexProgram::getExtensions(contextId, true);
+   if (!vpe)
+@@ -111,6 +124,10 @@ SGSceneFeatures::getHaveVertexPrograms(unsigned contextId) const
+     return false;
+   
+   return true;
++#else
++  const osg::GLExtensions* ex = osg::GLExtensions::Get(contextId, true);
++  return ex && ex->isVertexProgramSupported;
++#endif
+ }
+ 
+ bool
+@@ -124,6 +141,7 @@ SGSceneFeatures::getHaveShaderPrograms(unsigned contextId) const
+ bool
+ SGSceneFeatures::getHavePointParameters(unsigned contextId) const
+ {
++#if OSG_VERSION_LESS_THAN(3,3,3)
+   const osg::Point::Extensions* pe;
+   pe = osg::Point::getExtensions(contextId, true);
+   if (!pe)
+@@ -131,5 +149,9 @@ SGSceneFeatures::getHavePointParameters(unsigned contextId) const
+   if (!pe->isPointParametersSupported())
+     return false;
+   return true;
++#else
++  const osg::GLExtensions* ex = osg::GLExtensions::Get(contextId, true);
++  return ex && ex->isPointParametersSupported;
++#endif
+ }
+ 
