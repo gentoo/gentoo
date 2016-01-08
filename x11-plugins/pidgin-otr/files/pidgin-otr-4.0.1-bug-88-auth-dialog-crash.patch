@@ -1,0 +1,27 @@
+From 256ad0239728dad500018d3d5a5d8d38191a0116 Mon Sep 17 00:00:00 2001
+From: Stefan Sperling <stsp@stsp.name>
+Date: Fri, 3 Apr 2015 12:47:36 +0100
+Subject: [PATCH] Fix use after free in create_smp_dialog().
+
+After replacing smp_data update the local pointer variable to avoid
+use-after-free memory access. Found on OpenBSD where the socialist
+millionaires dialog never opened because of this.
+---
+ gtk-dialog.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/gtk-dialog.c b/gtk-dialog.c
+index 09ec12e..2021626 100644
+--- a/gtk-dialog.c
++++ b/gtk-dialog.c
+@@ -778,6 +778,7 @@ static GtkWidget *create_smp_dialog(const char *title, const char *primary,
+     if (smp_data->their_instance != context->their_instance) {
+ 	otrg_gtk_dialog_free_smp_data(conv);
+ 	otrg_gtk_dialog_add_smp_data(conv);
++	smp_data = purple_conversation_get_data(conv, "otr-smpdata");
+     }
+ 
+     if (!(smp_data->smp_secret_dialog)) {
+-- 
+2.3.4
+

@@ -7,7 +7,7 @@ EAPI=5
 inherit kde5
 
 DESCRIPTION="Library for extracting file metadata"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="epub exif ffmpeg libav pdf taglib"
 
 # TODO: mobi? ( $(add_plasma_dep kdegraphics-mobipocket) ) NOTE: not integrated upstream

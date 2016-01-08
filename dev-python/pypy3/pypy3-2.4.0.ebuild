@@ -16,7 +16,7 @@ SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${P}-src.tar.bz2"
 LICENSE="MIT"
 SLOT="0/$(get_version_component_range 1-2 ${PV})"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox shadowstack sqlite cpu_flags_x86_sse2 tk"
+IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox +shadowstack sqlite cpu_flags_x86_sse2 tk"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	virtual/libffi:0=

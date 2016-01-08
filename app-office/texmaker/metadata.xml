@@ -3,7 +3,7 @@
 <pkgmetadata>
   <herd>tex</herd>
   <maintainer>
-    <email>jlec@gentoo.org</email>
-    <description>Heavily using the package</description>
+    <email>k_f@gentoo.org</email>
+    <name>Kristian Fiskerstrand</name>
   </maintainer>
 </pkgmetadata>

@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools eutils multilib versionator flag-o-matic
+inherit autotools eutils multilib versionator flag-o-matic toolchain-funcs
 
 DESCRIPTION="Ghostscript is an interpreter for the PostScript language and for PDF"
 HOMEPAGE="http://ghostscript.com/"
@@ -89,6 +89,9 @@ src_prepare() {
 	# http://pkgs.fedoraproject.org/cgit/ghostscript.git
 	EPATCH_SUFFIX="patch" EPATCH_FORCE="yes"
 	EPATCH_SOURCE="${WORKDIR}/patches/"
+	EPATCH_EXCLUDE="
+		ghostscript-gpl-9.12-sys-zlib.patch
+	"
 	epatch
 
 	if use djvu ; then
@@ -111,6 +114,11 @@ src_prepare() {
 			-e "s:.*\$(GSSOX_XENAME)$::" \
 			"${S}"/base/unix-dll.mak || die "sed failed"
 	fi
+
+	# Force the include dirs to a neutral location.
+	sed -i \
+		-e "/^ZLIBDIR=/s:=.*:=${T}:" \
+		configure.ac || die
 
 	# search path fix
 	# put LDFLAGS after BINDIR, bug #383447
@@ -143,11 +151,15 @@ src_configure() {
 		FONTPATH="$FONTPATH${FONTPATH:+:}$path"
 	done
 
+	# We force the endian configure flags until this is fixed:
+	# http://bugs.ghostscript.com/show_bug.cgi?id=696498
+	PKGCONFIG=$(type -P $(tc-getPKG_CONFIG)) \
 	econf \
 		--enable-dynamic \
 		--enable-freetype \
 		--enable-fontconfig \
 		--enable-openjpeg \
+		--enable-$(tc-endian)-endian \
 		--disable-compile-inits \
 		--with-drivers=ALL \
 		--with-fontpath="$FONTPATH" \

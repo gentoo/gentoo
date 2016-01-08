@@ -30,8 +30,7 @@ RDEPEND=">=media-libs/glew-1.10
 	alsa? ( media-libs/alsa-lib )
 	ao? ( media-libs/libao )
 	bluetooth? ( net-wireless/bluez )
-	ffmpeg? ( virtual/ffmpeg
-			  !!media-video/libav )
+	ffmpeg? ( virtual/ffmpeg )
 	lzo? ( dev-libs/lzo )
 	openal? ( media-libs/openal )
 	opengl? ( virtual/opengl )

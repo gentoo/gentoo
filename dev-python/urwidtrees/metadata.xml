@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
@@ -9,4 +9,8 @@
 		This is a Widget Container API for the urwid toolkit. It uses a MVC
 		approach and allows to build trees of widgets.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">pazz/urwidtrees</remote-id>
+		<remote-id type="pypi">urwidtrees</remote-id>
+	</upstream>
 </pkgmetadata>

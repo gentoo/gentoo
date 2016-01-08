@@ -114,10 +114,6 @@ net-im/prosody libevent mysql postgres sqlite
 # sci-libs/hdf is not supported on arm
 sci-libs/netcdf hdf
 
-# Markus Meier <maekke@gentoo.org> (23 Oct 2014)
-# Unkeyworded deps, bug #523468
-net-misc/networkmanager teamd
-
 # Markus Meier <maekke@gentoo.org> (24 Sep 2014)
 # Unkeyworded deps, bug #519618
 sys-block/fio glusterfs rbd

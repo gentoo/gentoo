@@ -10,7 +10,7 @@ DESCRIPTION="KDE control module for SDDM"
 HOMEPAGE="https://projects.kde.org/projects/kdereview/sddm-kcm"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 COMMON_DEPEND="

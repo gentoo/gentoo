@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Framework for registering services and applications per freedesktop standards"
 LICENSE="LGPL-2+"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="nls X"
 
 RDEPEND="

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>python</herd>
@@ -6,4 +6,8 @@
 		<email>mrueg@gentoo.org</email>
 		<name>Manuel Rüger</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">zopefoundation/zope.event</remote-id>
+		<remote-id type="pypi">zope.event</remote-id>
+	</upstream>
 </pkgmetadata>

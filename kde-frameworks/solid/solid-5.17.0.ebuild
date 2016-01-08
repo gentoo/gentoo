@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Provider for platform independent hardware discovery, abstraction and management"
 LICENSE="LGPL-2.1+"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="nls"
 
 RDEPEND="

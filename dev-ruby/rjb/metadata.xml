@@ -8,4 +8,7 @@
 	</maintainer>
 	<longdescription lang="en">
 	</longdescription>
+	<upstream>
+		<remote-id type="github">arton/rjb</remote-id>
+	</upstream>
 </pkgmetadata>

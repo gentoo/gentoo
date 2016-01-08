@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>python</herd>
@@ -9,5 +9,6 @@
 	<longdescription>Remote python call</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">rpyc</remote-id>
+		<remote-id type="pypi">rpyc</remote-id>
 	</upstream>
 </pkgmetadata>

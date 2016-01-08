@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit cmake-utils cuda eutils multilib toolchain-funcs
 
-DESCRIPTION="Library for performing fast approximate nearest neighbor searches in high dimensional spaces"
+DESCRIPTION="Fast approximate nearest neighbor searches in high dimensional spaces"
 HOMEPAGE="http://www.cs.ubc.ca/research/flann/"
 SRC_URI="
 	http://people.cs.ubc.ca/~mariusm/uploads/FLANN/${P}-src.zip

@@ -6,8 +6,12 @@
     <name>Sergey Popov</name>
   </maintainer>
   <maintainer>
-    <email>jlec@gentoo.org</email>
-    <name>Justin Lecher</name>
+    <email>chainsaw@gentoo.org</email>
+    <name>Tony Vroon</name>
+  </maintainer>
+  <maintainer>
+    <email>prometheanfire@gentoo.org</email>
+    <name>Matthew Thode</name>
   </maintainer>
   <upstream>
     <remote-id type="pypi">ansible</remote-id>
