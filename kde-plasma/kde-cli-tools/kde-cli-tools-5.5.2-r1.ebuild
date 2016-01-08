@@ -11,7 +11,7 @@ inherit kde5
 
 DESCRIPTION="Tools based on KDE Frameworks 5 to better interact with the system"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/kde-cli-tools"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+kdesu X"
 
 DEPEND="
