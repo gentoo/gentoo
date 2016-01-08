@@ -27,6 +27,8 @@ src_install() {
 	python_foreach_impl python_doscript transmission-remote-cli
 	newbashcomp completion/bash/transmission-remote-cli-bash-completion.sh \
 		transmission-remote-cli
+	insinto /usr/share/zsh/site-functions
+	doins completion/zsh/_transmission-remote-cli
 	doman transmission-remote-cli.1
 	dodoc NEWS README.md
 }

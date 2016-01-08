@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -43,7 +43,7 @@ src_test() {
 
 src_install() {
 	dobin ${PN}
-	dodoc README
+	dodoc README.md
 	doman ${PN}.1
 
 	save_config config.def.h

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,17 +14,17 @@ SRC_URI="https://snakeyaml.googlecode.com/files/SnakeYAML-all-${PV}.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
+IUSE=""
 
-DEPEND=">=virtual/jdk-1.5"
-RDEPEND=">=virtual/jre-1.5"
+DEPEND=">=virtual/jdk-1.6"
+RDEPEND=">=virtual/jre-1.6"
 
 S="${WORKDIR}/${PN}"
-
 JAVA_SRC_DIR="src/main/java"
 
 java_prepare() {
-	find "${WORKDIR}" -name '*.class' -exec rm {} +
+	java-pkg_clean
 
 	# Easier to use java-pkg-simple.
 	rm -v pom.xml || die
@@ -32,6 +32,5 @@ java_prepare() {
 
 src_install() {
 	java-pkg-simple_src_install
-
 	dodoc AUTHORS src/etc/announcement.msg
 }
