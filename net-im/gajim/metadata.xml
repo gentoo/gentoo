@@ -3,7 +3,7 @@
 <pkgmetadata>
   <herd>net-im</herd>
   <maintainer>
-    <email>jlec@gentoo.org</email>
+    <email>aidecoe@gentoo.org</email>
   </maintainer>
   <longdescription>
     A fully featured and easy to use GTK+ Jabber client written in PyGTK.
