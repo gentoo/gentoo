@@ -827,11 +827,6 @@ dev-perl/YAML-Parser-Syck
 # Bug 567532
 x11-plugins/wmium
 
-# Michael Sterrett <mr_bones_@gentoo.org> (09 Dec 2015)
-# Unneeded now that lugaru is open-source. (bug #505610)
-# Masked for removal on 20160108
-games-action/lugaru-demo
-
 # Michael Palimaka <kensington@gentoo.org (08 Dec 2015)
 # Dead upstream. Vulnerable. Masked for removal in 30 days.
 # Bug 537524
