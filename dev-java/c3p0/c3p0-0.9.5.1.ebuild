@@ -15,17 +15,23 @@ MY_P="${P}.src"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tgz"
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE=""
 
-CDEPEND="dev-java/log4j:0
+CDEPEND="
+	dev-java/log4j:0
 	dev-java/mchange-commons:0"
-DEPEND=">=virtual/jdk-1.6
+
+DEPEND="
 	${CDEPEND}
-	test? ( dev-java/junit:4 )
-	"
-RDEPEND=">=virtual/jre-1.6
-	${CDEPEND}"
+	test? (
+		dev-java/junit:4
+	)
+	>=virtual/jdk-1.6"
+
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -46,7 +52,7 @@ src_test() {
 }
 
 src_install() {
-	java-pkg_newjar build/${P}.jar
+	java-pkg_newjar "build/${P}.jar"
 	dodoc README-SRC
 	use doc && java-pkg_dojavadoc build/apidocs
 	use source && java-pkg_dosrc src/java/com/mchange/v2
