@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
+inherit autotools eutils
 
 DESCRIPTION="Macro recording plugin to G15daemon"
 HOMEPAGE="http://g15daemon.sourceforge.net/"
@@ -19,10 +20,18 @@ DEPEND=">=app-misc/g15daemon-1.9.0
 	x11-libs/libX11
 	x11-proto/xextproto
 	x11-proto/xproto
-	x11-libs/libXtst"
-
+	x11-libs/libXtst
+"
 RDEPEND="${DEPEND}
-	sys-libs/zlib"
+	sys-libs/zlib
+"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-Makefile.am.patch
+	epatch "${FILESDIR}"/${P}-configure.in.patch
+	mv configure.in configure.ac || die
+	eautoreconf
+}
 
 src_configure() {
 	econf --enable-xtest

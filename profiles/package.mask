@@ -53,10 +53,6 @@ sys-cluster/gfs-kernel
 x11-misc/matchbox-panel-manager
 
 # Pacho Ramos <pacho@gentoo.org> (06 Jan 2016)
-# Fails to build, bug #514980. Removal in a month.
-app-misc/g15macro
-
-# Pacho Ramos <pacho@gentoo.org> (06 Jan 2016)
 # Unmaintained, security issues, bug #515272. Removal in a month.
 net-misc/italc
 
