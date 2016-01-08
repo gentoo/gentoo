@@ -217,7 +217,6 @@ src_configure() {
 		$(use_enable openal)
 		$(use_enable alsa)
 		--disable-coreaudio
-		--disable-wasapi
 
 		# Video outputs
 		--disable-cocoa
