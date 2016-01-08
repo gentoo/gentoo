@@ -169,11 +169,6 @@ net-libs/libmapi
 gnome-extra/at-spi
 
 # Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
-# Not compatible with current PHP versions, security issues, bug #566816.
-# Removal in a month.
-www-apps/ampache
-
-# Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
 # Upstream dead, doesn't work with libsigc++-2.6, bug #568788. Removal in a
 # month.
 app-misc/granule
