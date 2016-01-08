@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>sci-chemistry</herd>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-    <name>Justin Lecher (jlec)</name>
-  </maintainer>
   <longdescription>
 	The Computational Crystallography Toolbox (cctbx) is being developed
 	as the open source component of the PHENIX system. The goal of

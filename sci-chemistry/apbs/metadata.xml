@@ -2,11 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>sci-chemistry</herd>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-    <name>Justin Lecher</name>
-    <description>Ebuild Crasher</description>
-  </maintainer>
   <use>
     <flag name="fetk">Include support for FeTK</flag>
     <flag name="fast">APBS fast mode (experimental)</flag>

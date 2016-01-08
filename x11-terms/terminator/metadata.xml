@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-  </maintainer>
+  <herd>desktop-misc</herd>
   <longdescription>
 	Much of the behaviour of Terminator is based on GNOME Terminal, and 
 	we are adding more features from that as time goes by, but we also 

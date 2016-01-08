@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>net-fs</herd>
-  <maintainer restrict="&gt;=net-fs/netatalk-2.2.1-r1">
-    <email>jlec@gentoo.org</email>
-  </maintainer>
   <use>
     <flag name="pgp">
 			Add support pgp authentication module

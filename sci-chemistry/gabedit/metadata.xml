@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>sci-chemistry</herd>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-    <description>Tree Proxy for Max</description>
-  </maintainer>
   <upstream>
     <remote-id type="sourceforge">gabedit</remote-id>
   </upstream>

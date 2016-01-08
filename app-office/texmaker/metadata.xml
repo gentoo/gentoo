@@ -2,8 +2,4 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>tex</herd>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-    <description>Heavily using the package</description>
-  </maintainer>
 </pkgmetadata>
