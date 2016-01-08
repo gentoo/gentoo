@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -31,8 +31,8 @@ RDEPEND=">=dev-python/jinja-2.1[${PYTHON_USEDEP}]
 DEPEND="${DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
 	test? (
-		dev-python/python-dateutil[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/twisted-mail[${PYTHON_USEDEP}]
 		dev-python/twisted-web[${PYTHON_USEDEP}]
