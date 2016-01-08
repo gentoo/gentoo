@@ -16,7 +16,7 @@ LICENSE="Apache-2.0"
 SLOT="3.0"
 KEYWORDS="~amd64 ~x86"
 
-COMMON_DEP="
+CDEPEND="
 	dev-java/bsf:2.3
 	dev-java/commons-beanutils:1.7
 	dev-java/commons-codec:0
@@ -26,15 +26,17 @@ COMMON_DEP="
 	dev-java/commons-logging:0
 	dev-java/jakarta-oro:2.0
 	dev-java/javassist:2
-	dev-java/ognl:2.6
+	dev-java/ognl:3.0
 	dev-java/servletapi:2.4"
 
-RDEPEND=">=virtual/jre-1.4
-	${COMMON_DEP}"
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.4"
 
-DEPEND=">=virtual/jdk-1.4
-	app-arch/unzip:0
-	${COMMON_DEP}"
+DEPEND="
+	${CDEPEND}
+	app-arch/unzip
+	>=virtual/jdk-1.4"
 
 IUSE="${JAVA_PKG_IUSE}"
 
@@ -42,7 +44,7 @@ S="${WORKDIR}/Tapestry-${PV}"
 
 EANT_GENTOO_CLASSPATH="commons-logging,commons-fileupload,commons-lang-2.1"
 EANT_GENTOO_CLASSPATH+=",commons-codec,commons-beanutils-1.7,commons-digester"
-EANT_GENTOO_CLASSPATH+=",servletapi-2.4,ognl-2.6,bsf-2.3,jakarta-oro-2.0"
+EANT_GENTOO_CLASSPATH+=",servletapi-2.4,ognl-3.0,bsf-2.3,jakarta-oro-2.0"
 EANT_GENTOO_CLASSPATH+=",javassist-2"
 JAVA_ANT_REWRITE_CLASSPATH="true"
 
