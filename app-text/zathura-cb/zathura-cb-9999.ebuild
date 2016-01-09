@@ -12,7 +12,7 @@ HOMEPAGE="http://pwmt.org/projects/zathura/"
 if ! [[ ${PV} == 9999* ]]; then
 SRC_URI="http://pwmt.org/projects/zathura/plugins/download/${P}.tar.gz"
 fi
-EGIT_REPO_URI="git://git.pwmt.org/${PN}.git"
+EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
 EGIT_BRANCH="develop"
 
 LICENSE="ZLIB"
