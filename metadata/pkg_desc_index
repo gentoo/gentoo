@@ -2321,7 +2321,7 @@ app-text/mftrace 1.2.18: Traces TeX fonts to PFA or PFB fonts (formerly pktrace)
 app-text/mht-rip 0.8: convert mht/mhtml files to something usable
 app-text/mpage 2.5.6-r1: Many to one page printing utility
 app-text/multitail 6.4.1 6.4.2: Tail with multiple windows
-app-text/mupdf 1.5-r1 1.6 1.7 1.7a 1.7a-r1 9999: a lightweight PDF viewer and toolkit written in portable C
+app-text/mupdf 1.5-r1 1.6 1.7 1.7a 1.7a-r1 1.8 9999: a lightweight PDF viewer and toolkit written in portable C
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21 2.0.22_p1: Namazu is a full-text search engine
 app-text/nfoview 1.10 1.15.1 9999: simple viewer for NFO files, which are ASCII art in the CP437 codepage
