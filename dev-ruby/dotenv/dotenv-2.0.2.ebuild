@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/bkeepers/dotenv"
 SRC_URI="https://github.com/bkeepers/dotenv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 SLOT="2"
 IUSE=""
 
