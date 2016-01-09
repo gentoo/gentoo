@@ -28,6 +28,7 @@ IUSE="cmsis-dap dummy ftdi parport +usb verbose-io"
 RESTRICT="strip" # includes non-native binaries
 
 RDEPEND=">=dev-lang/jimtcl-0.76
+	dev-embedded/libjaylink
 	cmsis-dap? ( dev-libs/hidapi )
 	usb? (
 		virtual/libusb:0
@@ -53,6 +54,7 @@ src_configure() {
 		--enable-buspirate
 		--disable-werror
 		--disable-internal-jimtcl
+		--disable-internal-libjaylink
 		--enable-amtjtagaccel
 		--enable-ep93xx
 		--enable-at91rm9200
