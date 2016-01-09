@@ -1,0 +1,21 @@
+--- a/include/dix-config.h.in
++++ b/include/dix-config.h.in
+@@ -3,6 +3,14 @@
+ #ifndef _DIX_CONFIG_H_
+ #define _DIX_CONFIG_H_
+ 
++#ifndef X_BIG_ENDIAN
++#  define X_BIG_ENDIAN 4321
++#endif
++
++#ifndef X_LITTLE_ENDIAN
++#  define X_LITTLE_ENDIAN 1234
++#endif
++
+ /* Support BigRequests extension */
+ #undef BIGREQS
+ 
+-- 
+2.3.5
+
+
