@@ -2308,7 +2308,7 @@ app-text/libwpg 0.2.2 0.3.0 0.3.1: C++ library to read and parse graphics in WPG
 app-text/libwps 0.2.9 0.3.1 0.4.1 0.4.2: Microsoft Works file word processor format import filter library
 app-text/libxmlpatch 0.3.3: A set of tools to create and apply patch to XML files using XPath
 app-text/linuxdoc-tools 0.9.71-r1: A toolset for processing LinuxDoc DTD SGML files
-app-text/llpp 20_p20140818 21 21_p20150427 9999: a graphical PDF viewer which aims to superficially resemble less(1)
+app-text/llpp 20_p20140818 21 21_p20150427 22 9999: a graphical PDF viewer which aims to superficially resemble less(1)
 app-text/lodgeit 0.3_p20120507 0.3_p20120618-r1: Command-line interface to paste.pocoo.org
 app-text/logmerge 0.4_beta: Merge multiple logs such that multilined entries appear in chronological order without breaks
 app-text/lout 3.38-r1 3.39: high-level language for document formatting
