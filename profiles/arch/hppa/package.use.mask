@@ -4,10 +4,6 @@
 
 # DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.
 
-# Michael Weber <xmw@gentoo.org> (09 Jan 2016)
-# no hppa support in media-libs/glfw
-app-text/mupdf opengl
-
 # Jeroen Roovers <jer@gentoo.org> (16 Aug 2015)
 # Bundles luajit which has not been ported to HPPA (bug #554376)
 app-text/texlive-core luajittex
