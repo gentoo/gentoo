@@ -5481,12 +5481,12 @@ dev-perl/ExtUtils-LibBuilder 0.04: A tool to build C libraries
 dev-perl/ExtUtils-XSBuilder 0.280.0-r1: Modules to parse C header files and create XS glue code
 dev-perl/ExtUtils-XSpp 0.170.0 0.180.0: XS for C++
 dev-perl/FCGI 0.740.0-r1 0.770.0: Fast CGI module
-dev-perl/FCGI-ProcManager 0.240.0-r1 0.250.0: A FastCGI process manager
+dev-perl/FCGI-ProcManager 0.250.0: A FastCGI process manager
 dev-perl/FLV-AudioExtractor 0.010.0: Extract audio from Flash Videos
 dev-perl/Fatal-Exception 0.50.0-r1: Succeed or throw exception
 dev-perl/Feed-Find 0.70.0-r1: Syndication feed auto-discovery
 dev-perl/Festival-Client-Async 0.30.300-r1: Festival-Async - Non-blocking interface to a Festival server
-dev-perl/File-BOM 0.140.0-r1: Utilities for handling Byte Order Marks
+dev-perl/File-BOM 0.140.0-r1 0.150.0: Utilities for handling Byte Order Marks
 dev-perl/File-BaseDir 0.30.0-r1: Use the Freedesktop.org base directory specification
 dev-perl/File-Copy-Link 0.113.0-r1: Perl extension for replacing a link by a copy of the linked file
 dev-perl/File-Copy-Recursive 0.380.0-r1: uses File::Copy to recursively copy dirs
@@ -6396,7 +6396,7 @@ dev-perl/digest-bubblebabble 0.20.0-r1: Create bubble-babble fingerprints
 dev-perl/digest-md2 2.30.0-r1: Perl interface to the MD2 Algorithm
 dev-perl/encoding-warnings 0.110.0-r1: Warn on implicit encoding conversions
 dev-perl/enum 1.16.0-r1: C style enumerated types and bitmask flags in Perl
-dev-perl/extutils-pkgconfig 1.140.0 1.150.0: Simplistic perl interface to pkg-config
+dev-perl/extutils-pkgconfig 1.150.0: Simplistic perl interface to pkg-config
 dev-perl/forks 0.360.0: Emulate threads with fork
 dev-perl/frontier-rpc 0.07_beta4-r1: Perform remote procedure calls using extensible markup language
 dev-perl/glib-perl 1.301.0 1.305.0 1.313.0 1.314.0: Glib - Perl wrappers for the GLib utility and Object libraries
@@ -6727,7 +6727,7 @@ dev-python/addons 0.7: Dynamically extend other objects (formerly ObjectRoles)
 dev-python/adns-python 1.2.1-r1: Python bindings for ADNS
 dev-python/adodb-py 2.20-r1: Active Data Objects Data Base library for Python
 dev-python/aioeventlet 0.4: asyncio event loop scheduling callbacks in eventlet
-dev-python/aiohttp 0.17.4 0.18.4 0.19.0: http client/server for asyncio
+dev-python/aiohttp 0.17.4 0.18.4 0.19.0 0.20.2: http client/server for asyncio
 dev-python/alabaster 0.7.6 0.7.7: A configurable sidebar-enabled Sphinx theme
 dev-python/aldryn-bootstrap3 0.5.1: django CMS plugins for bootstrap3 markup
 dev-python/alembic 0.6.7 0.7.4 0.7.6 0.7.7 0.8.2 0.8.4: database migrations tool, written by the author of SQLAlchemy
@@ -7245,7 +7245,7 @@ dev-python/m2crypto 0.22.3-r4 0.22.3-r5: M2Crypto: A Python crypto and SSL toolk
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
 dev-python/maintboot 0.1.0: Run maintenance tasks outside the OS
 dev-python/mako 1.0.0 1.0.2 1.0.3: A Python templating language
-dev-python/mamba 0.6 0.8.4 0.8.5: The definitive testing tool for Python. Born under the banner of Behavior Driven Development
+dev-python/mamba 0.8.4 0.8.5 0.8.6: ... testing tool ... Born under the banner of Behavior Driven Development
 dev-python/mando 0.3.2: Create Python CLI apps with little to no effort at all!
 dev-python/mantissa 0.7.0-r1 0.8.0 0.8.1: An extensible, multi-protocol, multi-user, interactive application server
 dev-python/manuel 1.7.1 1.8.0: Manuel lets you build tested documentation
