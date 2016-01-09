@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -97,7 +97,10 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog README )
 
-PATCHES=( "${FILESDIR}/${P}-qt55.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-qt55.patch"
+	"${FILESDIR}/${P}-CVE-2015-8547.patch"
+)
 
 REQUIRED_USE="
 	|| ( X server monolithic )
