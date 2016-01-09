@@ -4,16 +4,17 @@
 
 EAPI=5
 
-inherit eutils git-2 multilib toolchain-funcs
+inherit eutils multilib toolchain-funcs vcs-snapshot
 
-DESCRIPTION="a graphical PDF viewer which aims to superficially resemble less(1)"
+DESCRIPTION="graphical PDF viewer which aims to superficially resemble less(1)"
 HOMEPAGE="http://repo.or.cz/w/llpp.git"
-EGIT_REPO_URI="git://repo.or.cz/llpp.git"
+SRC_URI="http://repo.or.cz/w/llpp.git/snapshot/561dc5673cea431e930668b0d87b0c4b31a36b39.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="+ocamlopt static"
+#IUSE="egl +ocamlopt static"
 
 LIB_DEPEND=">=app-text/mupdf-1.7a:0=[static-libs]
 	media-libs/openjpeg:2[static-libs]
@@ -23,6 +24,7 @@ LIB_DEPEND=">=app-text/mupdf-1.7a:0=[static-libs]
 	sys-libs/zlib[static-libs]
 	virtual/jpeg:0[static-libs]
 	x11-libs/libX11[static-libs]"
+# egl? ( media-libs/mesa[static-libs] )
 RDEPEND="x11-misc/xsel
 	!static? ( ${LIB_DEPEND//\[static-libs]} )"
 DEPEND="${RDEPEND}
@@ -46,6 +48,10 @@ src_compile() {
 	local cmo=$(usex ocamlopt cmx cmo)
 	local cma=$(usex ocamlopt cmxa cma)
 	local ccopt="$(freetype-config --cflags ) -O -include ft2build.h -D_GNU_SOURCE -DUSE_FONTCONFIG"
+	#if use egl ; then
+	#	ccopt+=" -DUSE_EGL $(pkg-config --cflags egl)"
+	#	local egl="egl"
+	#fi
 	if use static ; then
 		local cclib=""
 		local slib=""
