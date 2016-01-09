@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ inherit autotools eutils
 
 DESCRIPTION="A lightweight and flexible command-line JSON processor"
 HOMEPAGE="https://stedolan.github.com/jq/"
-SRC_URI="http://stedolan.github.io/jq/download/source/${P}.tar.gz"
+SRC_URI="https://github.com/stedolan/jq/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="MIT CC-BY-3.0"
 SLOT="0"

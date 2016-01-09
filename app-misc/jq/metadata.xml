@@ -5,4 +5,7 @@
 		<email>radhermit@gentoo.org</email>
 		<name>Tim Harder</name>
 	</maintainer>
+	<use>
+		<flag name='oniguruma'>Use dev-libs/oniguruma for regular expression support</flag>
+	</use>
 </pkgmetadata>
