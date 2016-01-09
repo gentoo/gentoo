@@ -9,7 +9,7 @@ PYTHON_REQ_USE='threads(+)'
 
 WAF_PV='1.8.12'
 
-inherit eutils fdo-mime gnome2-utils pax-utils python-any-r1 waf-utils
+inherit eutils fdo-mime gnome2-utils pax-utils python-any-r1 toolchain-funcs waf-utils
 
 DESCRIPTION="Media player based on MPlayer and mplayer2"
 HOMEPAGE="https://mpv.io/"
@@ -29,28 +29,30 @@ DOCS+=( README.md etc/example.conf etc/input.conf )
 LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
 # Here 'opengl' stands for GLX, 'egl' stands for any EGL-based output
-IUSE="+alsa archive bluray cdda +cli doc drm dvb +dvd egl +enca encode +iconv
-	jack jpeg lcms +libass libav libcaca libguess libmpv lua luajit openal
-	+opengl oss pulseaudio pvr raspberry-pi rubberband samba sdl selinux test
-	uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama +xscreensaver xv"
+IUSE="+alsa archive bluray cdda +cli doc drm dvb +dvd +egl +enca encode gbm
+	+iconv jack jpeg lcms +libass libav libcaca libguess libmpv lua luajit
+	openal +opengl oss pulseaudio raspberry-pi rubberband samba sdl selinux
+	test uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama +xscreensaver
+	xv zsh-completion"
 
 REQUIRED_USE="
 	|| ( cli libmpv )
-	egl? ( || ( X wayland ) )
+	egl? ( || ( gbm X wayland ) )
 	enca? ( iconv )
+	gbm? ( drm egl )
 	lcms? ( || ( opengl egl ) )
 	libguess? ( iconv )
 	luajit? ( lua )
 	opengl? ( X )
-	pvr? ( v4l )
 	uchardet? ( iconv )
 	v4l? ( || ( alsa oss ) )
-	vaapi? ( X )
+	vaapi? ( || ( X wayland ) )
 	vdpau? ( X )
 	wayland? ( egl )
 	xinerama? ( X )
 	xscreensaver? ( X )
 	xv? ( X )
+	zsh-completion? ( cli )
 "
 
 COMMON_DEPEND="
@@ -67,7 +69,7 @@ COMMON_DEPEND="
 		>=media-libs/libdvdnav-4.2.0
 		>=media-libs/libdvdread-4.1.0
 	)
-	egl? ( media-libs/mesa[egl,wayland(-)?] )
+	egl? ( media-libs/mesa[egl,gbm(-)?,wayland(-)?] )
 	iconv? (
 		virtual/libiconv
 		enca? ( app-i18n/enca )
@@ -92,6 +94,7 @@ COMMON_DEPEND="
 	samba? ( net-fs/samba )
 	sdl? ( media-libs/libsdl2[sound,threads,video,X?,wayland?] )
 	v4l? ( media-libs/libv4l )
+	vaapi? ( >=x11-libs/libva-1.4.0[X?,wayland?] )
 	wayland? (
 		>=dev-libs/wayland-1.6.0
 		>=x11-libs/libxkbcommon-0.3.0
@@ -104,7 +107,6 @@ COMMON_DEPEND="
 			x11-libs/libXdamage
 			virtual/opengl
 		)
-		vaapi? ( >=x11-libs/libva-1.2.0[X] )
 		vdpau? ( >=x11-libs/libvdpau-0.2 )
 		xinerama? ( x11-libs/libXinerama )
 		xscreensaver? ( x11-libs/libXScrnSaver )
@@ -124,6 +126,10 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 pkg_pretend() {
+	if [[ ${MERGE_TYPE} != "binary" ]] && ! tc-has-tls && use vaapi && use egl; then
+		die "Your compiler lacks C++11 TLS support. Use GCC>=4.8.0 or Clang>=3.3."
+	fi
+
 	if ! use libass; then
 		ewarn "You have disabled the libass support."
 		ewarn "OSD and subtitles won't be available."
@@ -157,6 +163,7 @@ src_prepare() {
 	chmod +x "${S}"/waf || die
 
 	epatch "${FILESDIR}/${PN}-fix-include-in-tests.patch"
+	epatch "${FILESDIR}/${P}-support-GNU-__thread.patch"
 	epatch_user
 }
 
@@ -170,13 +177,12 @@ src_configure() {
 
 		--disable-libmpv-static
 		--disable-static-build
-		--disable-build-date	# Create reproducible build
 		--disable-optimize		# Do not add '-O2' to CFLAGS
 		--disable-debug-build	# Do not add '-g' to CFLAGS
 
 		$(use_enable doc pdf-build)
 		$(use_enable vf-dlopen vf-dlopen-filters)
-		$(use_enable cli zsh-comp)
+		$(use_enable zsh-completion zsh-comp)
 		$(use_enable test)
 
 		$(use_enable iconv)
@@ -213,10 +219,11 @@ src_configure() {
 		$(use_enable alsa)
 		--disable-coreaudio
 		--disable-dsound
-		--disable-wasapi
 
 		# Video outputs
 		--disable-cocoa
+		$(use_enable drm)
+		$(use_enable gbm)
 		$(use_enable wayland)
 		$(use_enable X x11)
 		$(use_enable xscreensaver xss)
@@ -226,14 +233,15 @@ src_configure() {
 		$(use_enable X xrandr)
 		$(use_enable opengl gl-x11)
 		$(usex egl "$(use_enable X egl-x11)" '--disable-egl-x11')
+		$(usex egl "$(use_enable gbm egl-drm)" '--disable-egl-drm')
 		$(use_enable wayland gl-wayland)
 		$(use_enable vdpau)
 		$(usex vdpau "$(use_enable opengl vdpau-gl-x11)" '--disable-vdpau-gl-x11')
-		$(use_enable vaapi)
-		$(use_enable vaapi vaapi-vpp)
+		$(use_enable vaapi)		# See below for vaapi-x-egl
+		$(usex vaapi "$(use_enable X vaapi-x11)" '--disable-vaapi-x11')
+		$(usex vaapi "$(use_enable wayland vaapi-wayland)" '--disable-vaapi-wayland')
 		$(usex vaapi "$(use_enable opengl vaapi-glx)" '--disable-vaapi-glx')
 		$(use_enable libcaca caca)
-		$(use_enable drm)
 		$(use_enable jpeg)
 		$(use_enable raspberry-pi rpi)
 
@@ -246,9 +254,18 @@ src_configure() {
 		$(use_enable v4l tv-v4l2)
 		$(use_enable v4l libv4l2)
 		$(use_enable v4l audio-input)
-		$(use_enable pvr)
 		$(use_enable dvb dvbin)
 	)
+
+	if use vaapi && use X && use egl; then
+		mywafargs+=(--enable-vaapi-x-egl)
+	else
+		mywafargs+=(--disable-vaapi-x-egl)
+	fi
+
+	# Create reproducible non-live builds
+	[[ ${PV} != *9999* ]] && mywafargs+=(--disable-build-date)
+
 	waf-utils_src_configure "${mywafargs[@]}"
 }
 
