@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/stlport/${P}.tar.bz2
 
 LICENSE="boehm-gc HPND"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="boost debug static static-libs threads"
 
 DEPEND="boost? ( dev-libs/boost:= )"
