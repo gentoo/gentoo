@@ -7,6 +7,7 @@
 		other operating systems in a virtual environment to run on top of Gentoo.
 	</longdescription>
 	<use>
+		<flag name="bundled-libs">Use precompiled bundled libraries instead of the system installation</flag>
 		<flag name="ovftool">Install OVF tool.</flag>
 		<flag name="server">Install VMware Workstation Server component.</flag>
 		<flag name="vix">Install VIX. The VIX API allows you to write programs and scripts
