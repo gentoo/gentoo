@@ -16,7 +16,7 @@ SRC_URI="https://launchpad.net/${PN/lib}/${PV%.*}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1 LGPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm hppa ~mips ~ppc ~ppc64 sparc x86"
 IUSE="debug gtk gtk3 +introspection"
 
 RDEPEND="
