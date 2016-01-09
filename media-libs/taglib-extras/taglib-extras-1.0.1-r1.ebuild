@@ -10,7 +10,7 @@ DESCRIPTION="Unofficial taglib plugins maintained by the Amarok team"
 HOMEPAGE="https://websvn.kde.org/trunk/kdesupport/taglib-extras/"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ppc ~ppc64 x86"
 IUSE="debug"
