@@ -3929,7 +3929,7 @@ dev-java/java-getopt 1.0.14: Java command line option parser
 dev-java/java-gnome 4.0.19 4.0.20 4.1.3: Java bindings for GTK and GNOME
 dev-java/java-sdk-docs 1.6.0.30 1.7.0.80 1.8.0.66: Oracle's documentation bundle (including API) for Java SE
 dev-java/java-service-wrapper 3.5.25-r1: A wrapper that makes it possible to install a Java Application as daemon
-dev-java/javacc 5.0-r1 5.0-r2: Java Compiler Compiler - The Java Parser Generator
+dev-java/javacc 5.0-r2: Java Compiler Compiler - The Java Parser Generator
 dev-java/javacsv 2.1: Java library for reading and writing CSV and plain delimited text files
 dev-java/javacup 0.11a_beta20060608 0.11b_p20151001: CUP Parser Generator for Java
 dev-java/javahelp 2.0.05_p63: The JavaHelp system online help system
@@ -4029,7 +4029,7 @@ dev-java/jrobin 1.6.0-r1: JRobin is a 100% pure Java alternative to RRDTool
 dev-java/jrrd 1.0.1-r1: Java Interface to Tobias Oetiker's RRDtool
 dev-java/jruby 1.7.12: Java-based Ruby interpreter implementation
 dev-java/jsap 2.1 2.1-r1 2.1-r2: Java Simple Arguments Parser (JSAP)
-dev-java/jsch 0.1.49 0.1.52: JSch is a pure Java implementation of SSH2
+dev-java/jsch 0.1.52: JSch is a pure Java implementation of SSH2
 dev-java/json 20150729: Java implementation of the JavaScript Object Notation
 dev-java/json-simple 1.1: Simple Java toolkit for JSON
 dev-java/jsoup 1.8.3: Java HTML parser that makes sense of real-world HTML soup
@@ -4254,7 +4254,7 @@ dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
 dev-java/trident 1.3: Java animation library
 dev-java/trove 2.1.0 3.0.2 3.0.2-r1: GNU Trove: High performance collections for Java
 dev-java/txw2-runtime 20110809: TXW is a library that allows you to write XML documents
-dev-java/typesafe-config 1.3.0-r1: a library of arguably useful Java utilities
+dev-java/typesafe-config 1.3.0-r1 1.3.0-r2: a library of arguably useful Java utilities
 dev-java/unkrig-nullanalysis 0_pre1644: Some classes to test for various null conditions
 dev-java/validation-api 1.1.0: Bean Validation (JSR-303) API
 dev-java/vecmath 1.6.0_pre12: Sun J3D: 3D vector math package

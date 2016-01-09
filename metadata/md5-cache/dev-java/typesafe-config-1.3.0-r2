@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install preinst prepare setup
+DEPEND=app-arch/zip >=virtual/jdk-1.8 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
+DESCRIPTION=a library of arguably useful Java utilities
+EAPI=5
+HOMEPAGE=https://github.com/typesafehub/config
+IUSE=doc source elibc_FreeBSD doc source elibc_FreeBSD
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=>=virtual/jre-1.8 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
+SLOT=0
+SRC_URI=https://github.com/typesafehub/config/archive/v1.3.0.zip -> typesafe-config-1.3.0.zip
+_eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_prepare:java-pkg-2 src_compile:java-pkg-simple src_install:java-pkg-simple
+_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-pkg-simple	bdf24e52707f01512ffea6d3aa05425b	java-utils-2	5f1bd1f8baff3ee957cb72c75c3949f2	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=18ac3e3a5902d3cbca9b3a3037a795dc
