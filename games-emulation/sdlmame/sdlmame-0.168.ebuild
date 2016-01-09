@@ -120,7 +120,7 @@ src_compile() {
 		OVERRIDE_CC=$(tc-getCC) \
 		OVERRIDE_CXX=$(tc-getCXX) \
 		OVERRIDE_LD=$(tc-getCXX) \
-		USE_BGFX= \
+		USE_BGFX=0 \
 		ARCH= \
 			emake "$@" \
 				AR=$(tc-getAR)
