@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 #SLOT empty due to webapp
 
-DB_FLAGS="mysqli?,mssql?,postgres?"
+DB_FLAGS="mysqli?,postgres?"
 DB_TYPES=${DB_FLAGS//\?/}
 DB_TYPES=${DB_TYPES//,/ }
 
@@ -34,12 +34,9 @@ IUSE="${DB_TYPES} ${AUTHENTICATION_MODES} vhosts"
 REQUIRED_USE="|| ( ${DB_TYPES} )"
 
 # No forced dependency on
-#  mssql? - lives on a windows server
 #  mysql? ( virtual/mysql )
-#  postgres? ( dev-db/postgresql-server-9* )
-# which may live on another server.  These USE flags affect the configuration
-# file and the dependency on php.  However other dbs are possible.  See config.php
-# and the moodle documentation for other possibilities.
+#  postgres? ( dev-db/postgresql-server-7* )
+# which may live on another server
 DEPEND=""
 RDEPEND="
 	>=dev-lang/php-5.4.4[${DB_FLAGS},${AUTHENTICATION_FLAGS},${PHP_FLAGS}]
@@ -83,10 +80,13 @@ pkg_setup() {
 
 src_prepare() {
 	rm COPYING.txt
-	cp "${FILESDIR}"/config-r1.php config.php
+	cp "${FILESDIR}"/config.php .
 
-	# Moodle expect pgsql, not postgres
-	MYDB=${MYDB/postgres/pgsql}
+	# Moodle expect postgres7, not postgres
+	MYDB=${MYDB/postgres/postgres7}
+
+	# Moodle expects mysql, not mysqli
+	MYDB=${MYDB/mysqli/mysql}
 
 	if [[ ${DB_COUNT} -eq 1 ]] ; then
 		sed -i -e "s|mydb|${MYDB}|" config.php
