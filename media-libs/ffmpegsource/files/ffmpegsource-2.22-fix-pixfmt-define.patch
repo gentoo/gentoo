@@ -1,0 +1,31 @@
+commit d4cf0fcdb355319e2f868d4e474a6b78b36848fd
+Author: Derek Buitenhuis <derek.buitenhuis@gmail.com>
+Date:   Sun Dec 27 18:36:27 2015 -0500
+
+    ffmscompat: Use a separate version check for pixfmt flags
+    
+    These changed during a separate version bump from the pixfmts themselves.
+    
+    What a mess.
+    
+    Signed-off-by: Derek Buitenhuis <derek.buitenhuis@gmail.com>
+
+diff --git a/include/ffmscompat.h b/include/ffmscompat.h
+index be99db8..eea9029 100644
+--- a/include/ffmscompat.h
++++ b/include/ffmscompat.h
+@@ -88,9 +88,13 @@ static void av_frame_free(AVFrame **frame) { av_freep(frame); }
+ #	if VERSION_CHECK(LIBAVUTIL_VERSION_INT, <, 51, 42, 0, 51, 74, 100)
+ #		define AVPixelFormat PixelFormat
+ #		define FFMS_PIX_FMT(x) PIX_FMT_##x
+-#		define FFMS_PIX_FMT_FLAG(x) PIX_FMT_##x
+ #	else
+ #		define FFMS_PIX_FMT(x) AV_PIX_FMT_##x
++#	endif
++
++#	if VERSION_CHECK(LIBAVUTIL_VERSION_INT, <, 52, 11, 0, 52, 32, 100)
++#		define FFMS_PIX_FMT_FLAG(x) PIX_FMT_##x
++#	else
+ #		define FFMS_PIX_FMT_FLAG(x) AV_PIX_FMT_FLAG_##x
+ #	endif
+ 
