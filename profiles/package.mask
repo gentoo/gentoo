@@ -822,11 +822,6 @@ dev-perl/YAML-Parser-Syck
 # Bug 567532
 x11-plugins/wmium
 
-# Michael Palimaka <kensington@gentoo.org (08 Dec 2015)
-# Dead upstream. Vulnerable. Masked for removal in 30 days.
-# Bug 537524
-app-arch/ppmd
-
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (07 Dec 2015)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
