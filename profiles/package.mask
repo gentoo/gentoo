@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (9 Jan 2016)
+# Errorneously added. Is already in perl-core. Please uninstall.
+dev-perl/ExtUtils-Constant
+
 # Michael Palimaka <kensington@gentoo.org)> (09 Jan 2016)
 # Fails to build with newer versions of llvm. Dead upstream. No revdeps.
 # Masked for removal in 30 days. Bug #571212.
