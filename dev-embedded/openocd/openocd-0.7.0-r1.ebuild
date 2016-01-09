@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,6 +11,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit autotools git-2
 	KEYWORDS=""
 	EGIT_REPO_URI="git://git.code.sf.net/p/${PN}/code"
+	EGIT_PROJECT="${PN}"
 else
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.bz2"

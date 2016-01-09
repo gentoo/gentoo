@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,6 +10,7 @@ inherit eutils multilib flag-o-matic toolchain-funcs udev
 if [[ ${PV} == "9999" ]] ; then
 	inherit autotools git-2
 	EGIT_REPO_URI="git://git.code.sf.net/p/${PN}/code"
+	EGIT_PROJECT="${PN}"
 else
 	MY_PV="${PV/_/-}"
 	MY_P="${PN}-${MY_PV}"
