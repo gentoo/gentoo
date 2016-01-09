@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Michael Weber <xmw@gentoo.org> (09 Jan 2016)
+# no arm support in media-libs/glfw
+app-text/mupdf opengl
+
 # Brian Evans <grknight@gentoo.org> (23 Nov 2015)
 # unmask galera for dev-db/mariadb
 >=dev-db/mariadb-10.1.0 -galera
@@ -113,10 +117,6 @@ net-im/prosody libevent mysql postgres sqlite
 # Alexis Ballier <aballier@gentoo.org> (24 Oct 2014)
 # sci-libs/hdf is not supported on arm
 sci-libs/netcdf hdf
-
-# Markus Meier <maekke@gentoo.org> (23 Oct 2014)
-# Unkeyworded deps, bug #523468
-net-misc/networkmanager teamd
 
 # Markus Meier <maekke@gentoo.org> (24 Sep 2014)
 # Unkeyworded deps, bug #519618

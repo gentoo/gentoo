@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Network-enabled task manager and system monitor"
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="lm_sensors"
 
 DEPEND="

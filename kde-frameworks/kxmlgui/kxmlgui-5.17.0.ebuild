@@ -8,7 +8,7 @@ VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Framework for managing menu and toolbar actions in an abstract way"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 LICENSE="LGPL-2+"
 IUSE="attica"
 

@@ -39,7 +39,7 @@ RESTRICT="test"
 
 IUSE="+alsa cacao cjk +cups debug doc examples +gtk headless-awt
 	javascript +jbootstrap kerberos nsplugin +nss pax_kernel pulseaudio
-	selinux source systemtap test zero +webstart"
+	selinux source systemtap test webstart zero"
 
 # Ideally the following were optional at build time.
 ALSA_COMMON_DEP="

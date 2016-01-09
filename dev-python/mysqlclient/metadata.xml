@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer>
-    <email>jlec@gentoo.org</email>
-    <name>Justin Lecher</name>
+    <email>prometheanfire@gentoo.org</email>
+    <name>Matthew Thode</name>
   </maintainer>
   <upstream>
     <remote-id type="pypi">mysqlclient</remote-id>

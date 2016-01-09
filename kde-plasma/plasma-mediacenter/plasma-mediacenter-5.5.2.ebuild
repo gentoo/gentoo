@@ -8,7 +8,7 @@ KDE_PUNT_BOGUS_DEPS="true"
 inherit kde5
 
 DESCRIPTION="Unified media experience for any device capable of running KDE"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="semantic-desktop"
 
 DEPEND="

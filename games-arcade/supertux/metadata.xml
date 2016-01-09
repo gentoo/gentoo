@@ -4,5 +4,6 @@
 	<herd>games</herd>
 	<upstream>
 		<remote-id type="sourceforge">super-tux</remote-id>
+		<remote-id type="github">SuperTux/supertux</remote-id>
 	</upstream>
 </pkgmetadata>

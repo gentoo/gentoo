@@ -10,7 +10,7 @@ inherit kde5
 
 DESCRIPTION="Plugin based library to create window decorations"
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 DEPEND="dev-qt/qtgui:5"

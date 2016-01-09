@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Framework for configuring desktop notifications"
 LICENSE="LGPL-2+"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="phonon"
 
 RDEPEND="

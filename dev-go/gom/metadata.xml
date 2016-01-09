@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
@@ -8,4 +8,7 @@
 	<longdescription lang="en">
 		Gom is a dependency manager for Go which is similar to Ruby's bundle.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">mattn/gom</remote-id>
+	</upstream>
 </pkgmetadata>
