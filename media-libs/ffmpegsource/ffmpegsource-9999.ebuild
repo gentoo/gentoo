@@ -6,7 +6,7 @@ EAPI=5
 
 AUTOTOOLS_AUTORECONF=1
 
-inherit autotools-utils git-r3
+inherit autotools-utils flag-o-matic git-r3
 
 DESCRIPTION="A libav/ffmpeg based source library for easy frame accurate access"
 HOMEPAGE="https://github.com/FFMS/ffms2"
@@ -25,3 +25,9 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
+
+pkg_pretend() {
+	if [[ ${MERGE_TYPE} != "binary" ]] && ! test-flag-CXX -std=c++11; then
+		die "Your compiler lacks C++11 support. Use GCC>=4.7.0 or Clang>=3.3."
+	fi
+}
