@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Michael Weber <xmw@gentoo.org> (09 Jan 2016)
+# no alpha support in media-libs/glfw
+app-text/mupdf opengl
+
 # Ian Delaney <idella4@gentoo.org> (05 Jan 2016)
 # on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
 # dev-lang/luajit lacks alpha keyword. See bug #488318.

@@ -4,6 +4,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Michael Weber <xmw@gentoo.org> (09 Jan 2016)
+# no ppc support in media-libs/glfw
+app-text/mupdf opengl
+
 # Ian Delaney <idella4@gentoo.org> (04 Jan 2016)
 # on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
 # media-libs/libsdl2 lacks ppc32 keyword. See bug #508226.

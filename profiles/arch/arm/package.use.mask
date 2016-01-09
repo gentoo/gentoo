@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Michael Weber <xmw@gentoo.org> (09 Jan 2016)
+# no arm support in media-libs/glfw
+app-text/mupdf opengl
+
 # Brian Evans <grknight@gentoo.org> (23 Nov 2015)
 # unmask galera for dev-db/mariadb
 >=dev-db/mariadb-10.1.0 -galera
