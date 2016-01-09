@@ -16,9 +16,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-libs/libpcre
-		mail-filter/libmilter
-		mail-filter/opendkim
-		mail-filter/libspf2
 		dev-lang/luajit:2
 		dev-libs/libevent
 		dev-db/sqlite:3
