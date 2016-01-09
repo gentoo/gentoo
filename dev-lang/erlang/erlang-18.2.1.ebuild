@@ -1,16 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-WX_GTK_VER="2.8"
+EAPI=5
+WX_GTK_VER="3.0"
 
 inherit autotools elisp-common eutils java-pkg-opt-2 multilib systemd versionator wxwidgets
 
 # NOTE: If you need symlinks for binaries please tell maintainers or
 # open up a bug to let it be created.
 
-DESCRIPTION="Erlang programming language, runtime environment, and large collection of libraries"
+DESCRIPTION="Erlang programming language, runtime environment and libraries (OTP)"
 HOMEPAGE="http://www.erlang.org/"
 SRC_URI="http://www.erlang.org/download/otp_src_${PV}.tar.gz
 	http://erlang.org/download/otp_doc_man_${PV}.tar.gz
@@ -27,10 +27,10 @@ RDEPEND="
 		libressl? ( dev-libs/libressl )
 	)
 	emacs? ( virtual/emacs )
-	java? ( >=virtual/jdk-1.2 )
+	java? ( >=virtual/jdk-1.2:* )
 	odbc? ( dev-db/unixODBC )"
 DEPEND="${RDEPEND}
-	wxwidgets? ( x11-libs/wxGTK:2.8[X,opengl] virtual/glu )
+	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X,opengl] virtual/glu )
 	sctp? ( net-misc/lksctp-tools )
 	tk? ( dev-lang/tk )"
 
@@ -45,6 +45,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}"/18.2.1-wx3.0.patch
+
 	use odbc || sed -i 's: odbc : :' lib/Makefile
 
 	# bug 263129, don't ignore LDFLAGS, reported upstream
@@ -63,10 +65,12 @@ src_prepare() {
 
 	# bug 383697
 	sed -i '1i#define OF(x) x' erts/emulator/drivers/common/gzio.c
-	cd erts && eautoreconf
+
+	cd erts && mv configure.in configure.ac && eautoreconf
 }
 
 src_configure() {
+	use wxwidgets && need-wxwidgets unicode
 	use java || export JAVAC=false
 
 	econf \
