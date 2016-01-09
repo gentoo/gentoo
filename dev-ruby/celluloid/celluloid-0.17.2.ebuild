@@ -19,7 +19,7 @@ IUSE=""
 SLOT="0"
 
 LICENSE="MIT"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 
 ruby_add_rdepend "
 	dev-ruby/celluloid-essentials
