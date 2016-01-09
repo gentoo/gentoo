@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 MY_PN="${PN/-/}"
 COMP_PN="${PN}-completion"
 COMP_PV="0.5.1"
 COMP_P="${COMP_PN}-${COMP_PV}"
-inherit eutils bash-completion-r1
+inherit bash-completion-r1
 
 DESCRIPTION="Git extensions to provide high-level repository operations for Vincent Driessen's branching model"
 HOMEPAGE="https://github.com/petervanderdoes/gitflow"
@@ -17,7 +17,7 @@ https://github.com/petervanderdoes/${COMP_PN}/archive/${COMP_PV}.tar.gz -> ${COM
 
 LICENSE="BSD MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
@@ -29,20 +29,12 @@ DOCS=( AUTHORS Changes.mdown README.mdown )
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
-src_prepare() {
-	[[ ${PATCHES[@]} ]] && epatch "${PATCHES[@]}"
-	debug-print "$FUNCNAME: applying user patches"
-	epatch_user
-}
-
 src_compile() {
 	true
 }
 
 src_install() {
 	emake prefix="${D}/usr" install
-
-	[[ ${DOCS[@]} ]] && dodoc "${DOCS[@]}"
-
+	einstalldocs
 	newbashcomp "${WORKDIR}/${COMP_P}/${COMP_PN}.bash" ${PN}
 }
