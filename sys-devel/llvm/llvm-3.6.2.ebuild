@@ -172,6 +172,9 @@ src_prepare() {
 			projects/compiler-rt/make/platform/clang_*.mk || die
 	fi
 
+	# disable use of SDK on OSX, bug #568758
+	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
+
 	local sub_files=(
 		Makefile.config.in
 		Makefile.rules
