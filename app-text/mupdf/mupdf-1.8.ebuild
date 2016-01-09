@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils multilib toolchain-funcs vcs-snapshot
+inherit eutils flag-o-matic multilib toolchain-funcs vcs-snapshot
 
 DESCRIPTION="a lightweight PDF viewer and toolkit written in portable C"
 HOMEPAGE="http://mupdf.com/"
@@ -13,7 +13,7 @@ SRC_URI="http://git.ghostscript.com/?p=mupdf.git;a=snapshot;h=179403598244f069b5
 LICENSE="AGPL-3"
 MY_SOVER=1.8
 SLOT="0/${MY_SOVER}"
-KEYWORDS="~alpha ~amd64 ~arm -hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="X vanilla +curl javascript libressl opengl +openssl static static-libs"
 
 LIB_DEPEND="
@@ -41,6 +41,8 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="opengl? ( X !static !static-libs )"
 
 src_prepare() {
+	use hppa && append-cflags -ffunction-sections
+
 	rm -rf thirdparty || die
 
 	epatch \
