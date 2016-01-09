@@ -39,10 +39,6 @@ games-fps/doom3-mitm
 games-fps/ut2003-bonuspack-cm
 
 # Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
-# Cannot be downloaded either mirrored, bug #561140. Removal in a month
-games-fps/ut2004-airbuccaneers
-
-# Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
 # Cannot be downloaded either mirrored, bug #561142. Removal in a month
 games-fps/ut2004-alienswarm
 
