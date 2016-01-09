@@ -3,9 +3,6 @@
 <pkgmetadata>
   <herd>python</herd>
   <maintainer>
-    <email>jlec@gentoo.org</email>
-  </maintainer>
-  <maintainer>
     <email>sci@gentoo.org</email>
   </maintainer>
   <longdescription lang="en">This library provides an object-oriented programming interface

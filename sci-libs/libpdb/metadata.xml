@@ -2,7 +2,4 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>sci</herd>
-	<maintainer>
-		<email>jlec@gentoo.org</email>
-	</maintainer>
 </pkgmetadata>

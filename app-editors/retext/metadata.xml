@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer>
-    <email>jlec@gentoo.org</email>
-  </maintainer>
-  <maintainer>
     <email>mrueg@gentoo.org</email>
     <name>Manuel Rüger</name>
     <description>CC him on bugs</description>

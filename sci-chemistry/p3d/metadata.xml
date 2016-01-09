@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>sci-chemistry</herd>
-	<maintainer>
-		<email>jlec@gentoo.org</email>
-	</maintainer>
 	<longdescription>
 p3d was developed in order to offer a Python module that is powerful and fast,
 yet intuitive to use. The simplicity of p3d is due to the usage of object 

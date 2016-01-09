@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>gnome</herd>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-    <description>I do the work</description>
-  </maintainer>
   <upstream>
     <remote-id type="launchpad">gnome-activity-journal</remote-id>
   </upstream>

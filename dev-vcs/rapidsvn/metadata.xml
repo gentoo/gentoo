@@ -2,11 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>dev-tools</herd>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-    <name>Justin Lecher</name>
-  </maintainer>
   <longdescription>
-RapidSVN is a cross-platform GUI front-end for the Subversion revision system written in C++ using the wxWidgets framework. This project also includes a Subversion client C++ API.
+RapidSVN is a cross-platform GUI front-end for the Subversion revision 
+system written in C++ using the wxWidgets framework. This project also 
+includes a Subversion client C++ API.
 </longdescription>
 </pkgmetadata>

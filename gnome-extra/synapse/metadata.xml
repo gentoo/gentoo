@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>desktop-misc</herd>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-  </maintainer>
   <use>
     <flag name="plugins">Build support for plugins using librest</flag>
     <flag name="zeitgeist">Add support for Zeitgeist event tracking system</flag>
