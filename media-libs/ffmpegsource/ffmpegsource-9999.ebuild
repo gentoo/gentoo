@@ -20,7 +20,7 @@ IUSE="libav static-libs"
 RDEPEND="
 	sys-libs/zlib
 	libav? ( >=media-video/libav-9.17:0= )
-	!libav? ( >=media-video/ffmpeg-1.2.6-r1:0= )
+	!libav? ( >=media-video/ffmpeg-2.4:0= )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
