@@ -238,7 +238,7 @@ app-arch/advancecomp 1.15 1.16 1.17 1.19: Recompress ZIP, PNG and MNG using defl
 app-arch/afio 2.5 2.5.1: makes cpio-format archives and deals somewhat gracefully with input data corruption
 app-arch/alien 8.89 8.90 8.93 8.94: Converts between the rpm, dpkg, stampede slp, and slackware tgz file formats
 app-arch/arc 5.21p: Create & extract files from DOS .ARC files
-app-arch/arj 3.10.22-r3 3.10.22-r4 3.10.22-r5: Utility for opening arj archives
+app-arch/arj 3.10.22-r5: Utility for opening arj archives
 app-arch/atool 0.39.0: a script for managing file archives of various types
 app-arch/bloscpack 0.5.0 0.6.0: Command line interface for Blosc compression
 app-arch/bsdsfv 1.18-r1: all-in-one SFV checksum utility
@@ -293,7 +293,6 @@ app-arch/pet2tgz 0.3: Puppy Linux .pet to .tar.gz converter
 app-arch/pigz 2.3.1-r1 2.3.3: A parallel implementation of gzip
 app-arch/pixz 1.0.3 9999: Parallel Indexed XZ compressor
 app-arch/plzip 1.3 1.4: Parallel lzip compressor
-app-arch/ppmd 9.1_p14 10.1_p5: PPM based compressor -- better behaved than bzip2
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
 app-arch/pxz 5.0_pre20110811 9999: parallel LZMA compressor (no parallel decompression!)
 app-arch/rar 5.2.1 5.3.0: RAR compressor/uncompressor
@@ -1941,7 +1940,7 @@ app-mobilephone/freesmee 0.83 9999: Tool for sending SMS and sending/receiving F
 app-mobilephone/gammu 1.33.0 1.33.0-r1: A tool to handle your cellular phone
 app-mobilephone/ganyremote 6.0.1 6.3.3: Gnome frontend to Anyremote
 app-mobilephone/gnocky 0.0.7: GTK-2 version of gnokii
-app-mobilephone/gnokii 0.6.29 0.6.31 9999: user space driver and tools for use with mobile phones
+app-mobilephone/gnokii 0.6.31 9999: user space driver and tools for use with mobile phones
 app-mobilephone/gnome-phone-manager 0.69-r1: Allows you to control aspects of your mobile phone from your GNOME desktop
 app-mobilephone/gsmlib 1.11_pre041028: Library and applications to access GSM mobile phones
 app-mobilephone/heimdall 1.4.0 1.4.1 9999: Tool suite used to flash firmware onto Samsung Galaxy S devices
@@ -4312,7 +4311,7 @@ dev-lang/dmd-bin 1.016 2.008-r1: Digital Mars D Compiler
 dev-lang/ekopath 6.0.619_p20151213 6.0.637_p20151231: PathScale EKOPath Compiler Suite
 dev-lang/elixir 1.0.5 1.1.1: Elixir programming language
 dev-lang/epic 0.9.2 0.9.3 0.9.3.2 0.9.3.3: Compiler for a simple functional language
-dev-lang/erlang 15.2.3.1 17.3 17.5 18.0 18.0-r1 18.0-r2: Erlang programming language, runtime environment, and large collection of libraries
+dev-lang/erlang 15.2.3.1 17.5 18.0-r2 18.2.1: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0: a non-interactive scripting language similar to SH
 dev-lang/f2c 20060507 20100827: Fortran to C converter
@@ -4573,7 +4572,7 @@ dev-libs/libb64 1.2: Fast Base64 encoding/decoding routines
 dev-libs/libbase58 0.1.0 0.1.1: C implementation of Bitcoin's base58 encoding
 dev-libs/libbegemot 1.11: begemot utility function library
 dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
-dev-libs/libbsd 0.7.0 0.8.0: An library to provide useful functions commonly found on BSD systems
+dev-libs/libbsd 0.7.0 0.8.0 0.8.1: An library to provide useful functions commonly found on BSD systems
 dev-libs/libbson 0.98.0 1.1.2 1.1.10: A BSON utility library
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.3.8 1.4.0: Libburn is an open-source library for reading, mastering and writing optical discs
@@ -12041,7 +12040,7 @@ media-gfx/xloadimage 4.1-r11: utility to view many different types of images und
 media-gfx/xpaint 2.9.10.2 2.9.10.3: Image editor with tiff, jpeg and png support
 media-gfx/xsane 0.999-r1: graphical scanning frontend
 media-gfx/xsvg 0.2.1: a command line viewer for SVG files
-media-gfx/xv 3.10a-r16 3.10a-r17: Interactive image manipulation program supporting a wide variety of formats
+media-gfx/xv 3.10a-r17: Interactive image manipulation program supporting a wide variety of formats
 media-gfx/xzgv 0.9.1: Fast and simple GTK+ image viewer
 media-gfx/yafaray 0.1.1: YafaRay is a raytracing open source render engine
 media-gfx/zbar 0.10-r5 0.10_p20121015: Library and tools for reading barcodes from images or video
@@ -12130,7 +12129,7 @@ media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplaye
 media-libs/gnonlin 0.10.17 1.4.0: Gnonlin is a set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/grilo 0.2.12 0.2.14 0.2.15: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.1 1.0.2: Thin GObject wrapper around the libcanberra sound event library
-media-libs/gst-plugins-bad 0.10.23-r2 1.4.5 1.6.1-r1 1.6.2 1.6.2-r1: Less plugins for GStreamer
+media-libs/gst-plugins-bad 0.10.23-r2 0.10.23-r3 1.4.5 1.6.2-r1: Less plugins for GStreamer
 media-libs/gst-plugins-base 0.10.36-r2 1.4.5 1.6.1 1.6.2: Basepack of plugins for gstreamer
 media-libs/gst-plugins-good 0.10.31-r1 1.4.5 1.6.1 1.6.2: Basepack of plugins for GStreamer
 media-libs/gst-plugins-ugly 0.10.19-r1 1.4.5 1.6.1 1.6.2: Basepack of plugins for gstreamer
