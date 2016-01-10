@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>sci</herd>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-  </maintainer>
   <longdescription>
 	PUNC (Portable Understructure for Numerical Computing) is a small standard
 	collection of software libraries for numerical computing. The PUNC

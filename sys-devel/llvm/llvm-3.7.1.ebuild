@@ -173,6 +173,9 @@ src_prepare() {
 	# Fix msan with newer kernels, #569894
 	epatch "${FILESDIR}"/llvm-3.7-msan-fix.patch
 
+	# disable use of SDK on OSX, bug #568758
+	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
+
 	if use clang; then
 		# Automatically select active system GCC's libraries, bugs #406163 and #417913
 		epatch "${FILESDIR}"/clang-3.5-gentoo-runtime-gcc-detection-v3.patch

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-    <name>Justin Lecher</name>
-  </maintainer>
+  <herd>python</herd>
   <upstream>
     <remote-id type="pypi">curtsies</remote-id>
     <remote-id type="github">thomasballinger/curtsies</remote-id>

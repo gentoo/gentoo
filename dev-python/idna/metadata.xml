@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>python</herd>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-    <name>Justin Lecher</name>
-  </maintainer>
   <upstream>
     <remote-id type="pypi">idna</remote-id>
     <remote-id type="github">kjd/idna</remote-id>

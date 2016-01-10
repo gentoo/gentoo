@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>sci</herd>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-  </maintainer>
   <longdescription>
 MoleQueue is an open-source, cross-platform, system-tray resident desktop 
 application for abstracting, managing, and coordinating the execution of tasks 

@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	dev-perl/extutils-pkgconfig
 	dev-perl/ExtUtils-CChecker
-	>=dev-perl/ExtUtils-Constant-0.230.0
+	>=virtual/perl-ExtUtils-Constant-0.230.0
 	test? (
 		dev-perl/Test-Exception
 		virtual/perl-Test-Simple

@@ -1,22 +1,24 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit base vim-doc
+inherit autotools vim-doc versionator
+
+MY_P=$(replace_version_separator 4 '-' ${PF})
 
 DESCRIPTION="Console file manager with vi(m)-like keybindings"
 HOMEPAGE="http://vifm.info/"
-SRC_URI="mirror://sourceforge/vifm/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/vifm/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~s390 x86"
+KEYWORDS="~amd64 ~ppc ~s390 ~x86"
 IUSE="X developer +extended-keys gtk +magic vim vim-syntax"
 
 DEPEND="
-	>=sys-libs/ncurses-5.7-r7
+	>=sys-libs/ncurses-5.9-r99:5
 	magic? ( sys-apps/file )
 	gtk? ( x11-libs/gtk+:2 )
 	X? ( x11-libs/libX11 )
@@ -27,7 +29,13 @@ RDEPEND="
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 "
 
-DOCS=( AUTHORS FAQ NEWS README TODO )
+DOCS="AUTHORS FAQ NEWS README TODO"
+
+S="${WORKDIR}/${MY_P}"
+
+src_prepare() {
+	eautoreconf
+}
 
 src_configure() {
 	econf \
@@ -38,14 +46,19 @@ src_configure() {
 		$(use_with X X11)
 }
 
+src_compile() {
+	default
+}
+
 src_install() {
-	base_src_install
+	einstall
+	dodoc ${DOCS}
 
 	if use vim; then
 		local t
-		for t in doc plugin; do
+		for t in app plugin; do
 			insinto /usr/share/vim/vimfiles/"${t}"
-			doins "${S}"/data/vim/"${t}"/"${PN}".*
+			doins "${S}"/data/vim/doc/"${t}"/"${PN}"*
 		done
 	fi
 

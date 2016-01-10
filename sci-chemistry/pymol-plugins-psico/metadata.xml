@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>sci-chemistry</herd>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-  </maintainer>
   <upstream>
     <remote-id type="github">speleo3/pymol-psico</remote-id>
   </upstream>

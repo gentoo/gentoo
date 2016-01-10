@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 
 MOD_DESC="Megapack bonus pack"
 MOD_NAME="Megapack"
@@ -12,9 +12,7 @@ inherit games games-mods
 MY_P="ut2004megapack-linux.tar.bz2"
 HOMEPAGE="http://www.unrealtournament2004.com/"
 SRC_URI="mirror://3dgamers/unrealtourn2k4/Missions/${MY_P}
-	http://0day.icculus.org/ut2004/${MY_P}
-	ftp://ftp.games.skynet.be/pub/misc/${MY_P}
-	http://sonic-lux.net/data/mirror/ut2004/${MY_P}"
+	http://0day.icculus.org/ut2004/${MY_P}"
 
 LICENSE="ut2003"
 KEYWORDS="amd64 x86"

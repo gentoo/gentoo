@@ -1,19 +1,20 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 
 inherit depend.apache apache-module perl-module eutils
 
 DESCRIPTION="An embedded Perl interpreter for Apache2"
-SRC_URI="mirror://apache/perl/${P}.tar.gz"
 HOMEPAGE="https://projects.apache.org/projects/mod_perl.html"
+#SRC_URI="mirror://apache/perl/${P}.tar.gz"
+SRC_URI="http://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="debug"
 SLOT="1"
+KEYWORDS=""
+IUSE="debug"
 
 # Make sure we always use the latest Apache-Test version or even check the
 # version of the bundled Apache-Test!
@@ -38,7 +39,7 @@ SRC_TEST="do"
 
 DOCFILES="Changes INSTALL README STATUS"
 
-need_apache2_4
+need_apache2
 
 src_prepare() {
 	perl-module_src_prepare
@@ -74,13 +75,18 @@ src_prepare() {
 #		|| die "problem editing TestServer.pm"
 
 	# rendhalver - this got redone for 2.0.1 and seems to fix the make test problems
-	epatch "${FILESDIR}"/mod_perl-2.0.1-sneak-tmpdir.patch
+	epatch "${FILESDIR}"/${PN}-2.0.1-sneak-tmpdir.patch
+	epatch "${FILESDIR}"/${PN}-2.0.4-inline.patch #550244
 
 	# bug 352724
 	epatch "${FILESDIR}/${P}-bundled-Apache-Test.patch"
 	rm -rf Apache-{Test,Reload,SizeLimit}/ lib/Bundle/
-	sed -i -e 's:^Apache-\(Reload\|SizeLimit\|Test\).*::' \
-		-e 's:^lib/Bundle/Apache2.pm::' MANIFEST || die
+
+#	sed -i \
+#		-e 's:^Apache-\(Reload\|SizeLimit\|Test\).*::' \
+#		-e 's:^lib/Bundle/Apache2.pm::' \
+#		MANIFEST || die
+# uncomment this once we're packaging a proper release again
 
 	# 410453
 	epatch "${FILESDIR}/use-client_ip-client_add-instead-of-remote_ip-remote.patch"
@@ -88,21 +94,16 @@ src_prepare() {
 }
 
 src_configure() {
-	local myargs=
-
-	if use debug; then
-		myargs="MP_TRACE=1 MP_DEBUG=1"
-	else
-		myargs="MP_TRACE=0 MP_DEBUG=0"
-	fi
-
+	local debug=$(usex debug 1 0)
 	perl Makefile.PL \
 		PREFIX="${EPREFIX}"/usr \
 		INSTALLDIRS=vendor \
 		MP_USE_DSO=1 \
 		MP_APXS=${APXS} \
 		MP_APR_CONFIG=/usr/bin/apr-1-config \
-		${myargs} || die
+		MP_TRACE=${debug} \
+		MP_DEBUG=${debug} \
+		|| die
 }
 
 src_test() {
@@ -112,8 +113,7 @@ src_test() {
 
 	# IF YOU SUDO TO EMERGE AND HAVE !env_reset set testing will fail!
 	if [[ "$(id -u)" == "0" ]]; then
-		chown nobody:nobody "${WORKDIR}"
-		chown nobody:nobody "${T}"
+		chown nobody:nobody "${WORKDIR}" "${T}"
 	fi
 
 	# this does not || die because of bug 21325. kudos to smark for
@@ -124,7 +124,8 @@ src_test() {
 src_install() {
 	apache-module_src_install
 
-	emake DESTDIR="${D}" install || die
+	default
+#emake DESTDIR="${D}" install || die
 
 	# TODO: add some stuff from docs/ back?
 
@@ -135,7 +136,7 @@ src_install() {
 	perl_delete_packlist
 
 	insinto "${APACHE_MODULES_CONFDIR}"
-	doins "${FILESDIR}"/2.0.3/apache2-mod_perl-startup.pl || die
+	doins "${FILESDIR}"/2.0.3/apache2-mod_perl-startup.pl
 
 	# this is an attempt to get @INC in line with /usr/bin/perl.
 	# there is blib garbage in the mainstream one that can only be
@@ -145,9 +146,11 @@ src_install() {
 
 	# Sorry for this evil hack...
 	perl_set_version # just to be sure...
-	sed -i -e "s,-I${S}/[^[:space:]\"\']\+[[:space:]]\?,,g" \
+	sed -i \
+		-e "s,-I${S}/[^[:space:]\"\']\+[[:space:]]\?,,g" \
 		-e "s,-typemap[[:space:]]${S}/[^[:space:]\"\']\+[[:space:]]\?,,g" \
-		-e "s,${S}\(/[^[:space:]\"\']\+\)\?,/,g" "${D}/${VENDOR_ARCH}/Apache2/BuildConfig.pm" || die
+		-e "s,${S}\(/[^[:space:]\"\']\+\)\?,/,g" \
+		"${D}/${VENDOR_ARCH}/Apache2/BuildConfig.pm" || die
 
 	for fname in $(find "${D}" -type f -not -name '*.so'); do
 		grep -q "\(${D}\|${S}\)" "${fname}" && ewarn "QA: File contains a temporary path ${fname}"

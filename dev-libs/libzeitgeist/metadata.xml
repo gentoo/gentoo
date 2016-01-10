@@ -3,9 +3,6 @@
 <pkgmetadata>
 	<herd>desktop-misc</herd>
 	<maintainer>
-		<email>jlec@gentoo.org</email>
-	</maintainer>
-	<maintainer>
 		<email>eva@gentoo.org</email>
 		<name>Gilles Dartiguelongue</name>
 	</maintainer>

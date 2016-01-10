@@ -4,7 +4,7 @@
   <herd>python</herd>
   <maintainer>
     <email>prometheanfire@gentoo.org</email>
-		<name>Matthew Thode</name>
+    <name>Matthew Thode</name>
   </maintainer>
   <upstream>
     <remote-id type="pypi">ipaddress</remote-id>

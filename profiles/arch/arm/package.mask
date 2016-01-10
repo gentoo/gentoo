@@ -1,9 +1,20 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# James Le Cuirot <chewi@gentoo.org> (09 Jan 2016)
+# There are no providers for Java 8 on pre-armv6. icedtea 3 may work
+# but we don't have it in the tree yet.
+virtual/jdk:1.8
+virtual/jre:1.8
+
+# James Le Cuirot <chewi@gentoo.org> (09 Jan 2016)
+# This is built for armv6 and will not work on earlier generations.
+dev-java/oracle-jdk-bin
+dev-java/oracle-jre-bin
+
 # James Le Cuirot <chewi@gentoo.org> (24 May 2015)
-# This is built for armv7a so mask here and unmask in that profile.
+# This is built for armv7a and will not work on earlier generations.
 dev-java/icedtea-bin
 
 # Zac Medico <zmedico@gentoo.org> (09 Aug 2011)

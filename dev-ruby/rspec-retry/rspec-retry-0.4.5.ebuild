@@ -17,7 +17,7 @@ IUSE=""
 SLOT="0"
 
 LICENSE="MIT"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 
 all_ruby_prepare() {
 	sed -i -e '/pry/ s:^:#:' spec/spec_helper.rb || die

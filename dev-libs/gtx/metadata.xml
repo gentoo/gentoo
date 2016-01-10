@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>gnome</herd>
-	<maintainer>
-		<email>jlec@gentoo.org</email>
-	</maintainer>
 	<longdescription>
 GTX is a small collection of convenience functions intended to enhance the GLib
 testing framework. With specific emphasis on easing the pain of writing test
