@@ -43,4 +43,5 @@ src_test() {
 	virtualmake
 }
 
-SRC_TEST="do"
+SRC_TEST=skip
+# bug 571470
