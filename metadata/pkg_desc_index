@@ -1978,7 +1978,7 @@ app-office/eqe 1.3.0: A small LaTeX editor that produces images, with drag and d
 app-office/geierlein 0.6.1 0.6.2 0.7.1 0.7.3 0.7.8 0.8.0: Submit tax forms (Umsatzsteuervoranmeldung) to the german digital tax project ELSTER
 app-office/glabels 3.2.0 3.2.1: Program for creating labels and business cards
 app-office/gnucash 2.6.7 2.6.9 2.6.10: A personal finance manager
-app-office/gnumeric 1.12.24 1.12.25: The GNOME Spreadsheet
+app-office/gnumeric 1.12.24 1.12.25 1.12.26: The GNOME Spreadsheet
 app-office/grisbi 1.0.0: Grisbi is a personal accounting application for Linux
 app-office/gtg 0.3 0.3.1: Personal organizer for the GNOME desktop environment
 app-office/gtimelog 0.8.0 0.8.1: A small Gtk+ application for keeping track of your time
@@ -10708,7 +10708,7 @@ gnome-base/libgnomeprint 2.18.8-r1: Printer handling for Gnome
 gnome-base/libgnomeprintui 2.18.6-r1: User interface libraries for gnome print
 gnome-base/libgnomeui 2.24.5-r1: User Interface routines for Gnome
 gnome-base/libgtop 2.30.0 2.32.0: A library that provides top functionality to applications
-gnome-base/librsvg 2.40.11 2.40.12: Scalable Vector Graphics (SVG) rendering library
+gnome-base/librsvg 2.40.11 2.40.12 2.40.13: Scalable Vector Graphics (SVG) rendering library
 gnome-base/nautilus 3.16.2 3.18.2 3.18.2-r1 3.18.3 3.18.4: A file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r4: ORBit2 is a high-performance CORBA ORB
 gnome-extra/activity-log-manager 0.9.7 0.9.7-r1: GUI which lets you easily control what gets logged by Zeitgeist
@@ -10755,7 +10755,7 @@ gnome-extra/gnome-logs 3.16.2 3.18.1: Log messages and event viewer
 gnome-extra/gnome-packagekit 3.18.0: PackageKit client for the GNOME desktop
 gnome-extra/gnome-power-manager 3.16.1 3.18.0: GNOME power management service
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
-gnome-extra/gnome-shell-extensions 3.16.2 3.18.2 3.18.2-r1 3.18.2-r2: JavaScript extensions for GNOME Shell
+gnome-extra/gnome-shell-extensions 3.16.2 3.18.3: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons 26 28: Shows legacy tray icons on top
 gnome-extra/gnome-shell-frippery 0.10.3 3.18.1: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-software 3.18.3: Gnome install & update software
@@ -17007,7 +17007,7 @@ sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
 sys-libs/libmath++ 0.0.4-r1: template based math library, written in C++, for symbolic and numeric calculus applications
 sys-libs/libnih 1.0.3-r3: Light-weight 'standard library' of C functions
 sys-libs/libomp 3.7.0: OpenMP runtime library for LLVM/clang compiler
-sys-libs/libosinfo 0.2.11 0.2.12: GObject library for managing information about real and virtual OSes
+sys-libs/libosinfo 0.2.12 0.3.0: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.0.8 2.1.0-r1 2.1.1: library that provides direct access to the IEEE 1394 bus
 sys-libs/librtas 1.3.6 1.3.8 1.3.13: A set of libraries for userspace access to RTAS on the PowerPC platform(s)
 sys-libs/libseccomp 2.1.1 2.2.0 2.2.3: high level interface to Linux seccomp filter
@@ -17816,7 +17816,7 @@ x11-libs/gksu 2.0.2-r1: A gtk+ frontend for libgksu
 x11-libs/gl2ps 1.3.8: OpenGL to PostScript printing library
 x11-libs/glamor 0.6.0 0.6.0-r1: OpenGL based 2D rendering acceleration library
 x11-libs/gnome-pty-helper 0.36.3 0.38.3 0.40.2: GNOME Setuid helper for opening ptys
-x11-libs/goffice 0.8.17-r2 0.10.24 0.10.25: A library of document-centric objects and utilities
+x11-libs/goffice 0.8.17-r2 0.10.24 0.10.25 0.10.26: A library of document-centric objects and utilities
 x11-libs/goocanvas 1.0.0 2.0.2: Canvas widget for GTK+ using the cairo 2D library for drawing
 x11-libs/gtk+ 1.2.10-r13 2.24.28-r1 2.24.29 3.16.7 3.18.5 3.18.6: Gimp ToolKit +
 x11-libs/gtk+extra 3.0.5 3.2.0: Useful Additional GTK+ widgets
@@ -18686,7 +18686,7 @@ x11-wm/matchbox-window-manager 1.2-r1: Light weight WM designed for use on PDA c
 x11-wm/matwm2 0.1.1: Simple EWMH compatible window manager with titlebars and frames
 x11-wm/muffin 2.6.1 2.8.3: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r3 0.9.24_p20100226-r4: A simple dynamic window manager for X, with features nicked from ratpoison and dwm
-x11-wm/mutter 3.16.4 3.18.2: GNOME 3 compositing window manager based on Clutter
+x11-wm/mutter 3.16.4 3.18.2 3.18.2-r1: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.5.2-r1 3.6 3.6.1 9999: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20: Small and fast window manager
