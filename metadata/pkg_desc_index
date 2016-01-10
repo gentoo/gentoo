@@ -5488,7 +5488,7 @@ dev-perl/Feed-Find 0.70.0-r1: Syndication feed auto-discovery
 dev-perl/Festival-Client-Async 0.30.300-r1: Festival-Async - Non-blocking interface to a Festival server
 dev-perl/File-BOM 0.140.0-r1 0.150.0: Utilities for handling Byte Order Marks
 dev-perl/File-BaseDir 0.30.0-r1: Use the Freedesktop.org base directory specification
-dev-perl/File-Copy-Link 0.113.0-r1: Perl extension for replacing a link by a copy of the linked file
+dev-perl/File-Copy-Link 0.113.0-r1 0.140.0: Perl extension for replacing a link by a copy of the linked file
 dev-perl/File-Copy-Recursive 0.380.0-r1: uses File::Copy to recursively copy dirs
 dev-perl/File-DesktopEntry 0.40.0-r1: Object to handle .desktop files
 dev-perl/File-DirWalk 0.400.0-r1: File::DirWalk - walk through a directory tree and run own code
