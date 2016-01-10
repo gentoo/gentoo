@@ -30,7 +30,7 @@ DEPEND=">=dev-lang/jimtcl-0.73
 	usb? ( virtual/libusb:0 )
 	presto? ( dev-embedded/libftd2xx )
 	ftd2xx? ( dev-embedded/libftd2xx )
-	ftdi? ( dev-embedded/libftdi )"
+	ftdi? ( dev-embedded/libftdi:0 )"
 RDEPEND="${DEPEND}"
 
 REQUIRED_USE="blaster? ( || ( ftdi ftd2xx ) ) ftdi? ( !ftd2xx )"

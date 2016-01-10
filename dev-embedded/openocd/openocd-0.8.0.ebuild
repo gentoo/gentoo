@@ -33,7 +33,7 @@ RDEPEND=">=dev-lang/jimtcl-0.75
 		virtual/libusb:0
 		virtual/libusb:1
 	)
-	ftdi? ( dev-embedded/libftdi )"
+	ftdi? ( dev-embedded/libftdi:= )"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
