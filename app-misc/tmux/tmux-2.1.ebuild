@@ -1,11 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
+
 AUTOTOOLS_AUTORECONF=true
 
-inherit autotools-utils bash-completion-r1 flag-o-matic
+inherit autotools-utils bash-completion-r1 flag-o-matic versionator
 
 DESCRIPTION="Terminal multiplexer"
 HOMEPAGE="http://tmux.github.io/"
@@ -17,35 +18,26 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 
 IUSE="debug selinux vim-syntax"
 
 CDEPEND="
-	|| ( =dev-libs/libevent-2.0*
-		 >=dev-libs/libevent-2.1.5-r4 )
+	|| (
+		=dev-libs/libevent-2.0*
+		>=dev-libs/libevent-2.1.5-r4
+	)
 	!sys-apps/utempter
-	sys-libs/ncurses"
+	sys-libs/ncurses:0="
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-screen )
-	vim-syntax? ( || (
-		app-editors/vim
-		app-editors/gvim ) )"
+	vim-syntax? (
+		|| (
+			app-editors/vim
+			app-editors/gvim
+		)
+	)"
 
 DOCS=( CHANGES FAQ README TODO )
 
 PATCHES=( "${FILESDIR}"/${PN}-2.0-flags.patch )
-
-pkg_setup() {
-	if has_version "<app-misc/tmux-1.9a"; then
-		echo
-		ewarn "Some configuration options changed in this release."
-		ewarn "Please read the CHANGES file in /usr/share/doc/${PF}/"
-		ewarn
-		ewarn "WARNING: After updating to ${P} you will _not_ be able to connect to any"
-		ewarn "older, running tmux server instances. You'll have to use an existing client to"
-		ewarn "end your old sessions or kill the old server instances. Otherwise you'll have"
-		ewarn "to temporarily downgrade to access them."
-		echo
-	fi
-}
 
 src_prepare() {
 	# bug 438558
@@ -80,5 +72,19 @@ src_install() {
 
 		insinto /usr/share/vim/vimfiles/ftdetect
 		doins "${FILESDIR}"/tmux.vim
+	fi
+}
+
+pkg_postinst() {
+	if ! version_is_at_least 1.9a ${REPLACING_VERSIONS:-1.9a}; then
+		echo
+		ewarn "Some configuration options changed in this release."
+		ewarn "Please read the CHANGES file in /usr/share/doc/${PF}/"
+		ewarn
+		ewarn "WARNING: After updating to ${P} you will _not_ be able to connect to any"
+		ewarn "older, running tmux server instances. You'll have to use an existing client to"
+		ewarn "end your old sessions or kill the old server instances. Otherwise you'll have"
+		ewarn "to temporarily downgrade to access them."
+		echo
 	fi
 }
