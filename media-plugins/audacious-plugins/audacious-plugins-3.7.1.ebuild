@@ -23,7 +23,6 @@ REQUIRED_USE="
 "
 
 RDEPEND="app-arch/unzip
-	media-libs/adplug
 	>=dev-libs/dbus-glib-0.60
 	dev-libs/libxml2:2
 	media-libs/libmodplug
@@ -42,7 +41,6 @@ RDEPEND="app-arch/unzip
 	fluidsynth? ( media-sound/fluidsynth )
 	http? ( >=net-libs/neon-0.26.4 )
 	gtk? ( x11-libs/gtk+:2 )
-	!gtk3? ( x11-libs/gtk+:2 )
 	gtk3? ( x11-libs/gtk+:3
 		media-libs/adplug )
 	qt5? ( dev-qt/qtcore:5
