@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,7 @@ LIB_DEPEND=">=dev-libs/glib-2.32.0[static-libs(+)]
 	>=dev-libs/libzip-0.8[static-libs(+)]
 	cxx? ( dev-cpp/glibmm:2[static-libs(+)] )
 	python? ( ${PYTHON_DEPS} >=dev-python/pygobject-3.0.0[${PYTHON_USEDEP}] )
-	ftdi? ( >=dev-embedded/libftdi-0.16[static-libs(+)] )
+	ftdi? ( >=dev-embedded/libftdi-0.16:=[static-libs(+)] )
 	parport? ( sys-libs/libieee1284[static-libs(+)] )
 	serial? ( dev-libs/libserialport[static-libs(+)] )
 	usb? ( virtual/libusb:1[static-libs(+)] )"
