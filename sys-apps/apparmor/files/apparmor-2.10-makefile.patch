@@ -1,0 +1,25 @@
+--- a/Makefile
++++ b/Makefile
+@@ -31,7 +31,7 @@
+ CONFDIR=/etc/apparmor
+ INSTALL_CONFDIR=${DESTDIR}${CONFDIR}
+ LOCALEDIR=/usr/share/locale
+-MANPAGES=apparmor.d.5 apparmor.7 apparmor_parser.8 subdomain.conf.5
++MANPAGES=apparmor.d.5 apparmor.7 apparmor_parser.8
+ 
+ YACC	:= /usr/bin/bison
+ YFLAGS	:= -d
+@@ -284,11 +284,9 @@
+ .PHONY: install-indep
+ install-indep:
+ 	install -m 755 -d $(INSTALL_CONFDIR)
+-	install -m 644 subdomain.conf $(INSTALL_CONFDIR)
++	install -m 755 -d ${DESTDIR}/usr/libexec
+ 	install -m 644 parser.conf $(INSTALL_CONFDIR)
+-	install -m 755 -d ${DESTDIR}/var/lib/apparmor
+-	install -m 755 -d $(APPARMOR_BIN_PREFIX)
+-	install -m 755 rc.apparmor.functions $(APPARMOR_BIN_PREFIX)
++	install -m 755 rc.apparmor.functions ${DESTDIR}/usr/libexec
+ 	$(MAKE) -C po install NAME=${NAME} DESTDIR=${DESTDIR}
+ 	$(MAKE) install_manpages DESTDIR=${DESTDIR}
+ 
