@@ -8510,7 +8510,7 @@ dev-ruby/bson 1.12.0 3.2.4 3.2.6: A Ruby BSON implementation for MongoDB. (Inclu
 dev-ruby/buftok 0.2.0 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.0.4-r1 3.0.4-r2 3.1.4 3.2.2 3.2.2-r1: A builder to facilitate programatic generation of XML markup
 dev-ruby/bundler 1.8.9 1.9.10 1.10.6 1.11.2: An easy way to vendor gem dependencies
-dev-ruby/bundler-audit 0.3.1 0.4.0: Provides patch-level verification for Bundled apps
+dev-ruby/bundler-audit 0.4.0: Provides patch-level verification for Bundled apps
 dev-ruby/bunny 2.0.1 2.2.1 2.2.2: Another synchronous Ruby AMQP client
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
 dev-ruby/camping 2.1.532: A small web framework modeled after Ruby on Rails
@@ -8729,7 +8729,7 @@ dev-ruby/modernizr 2.6.2: Neatly packaged Modernizr JS assets for use in Sprocke
 dev-ruby/moneta 0.8.0: A unified interface to key/value stores
 dev-ruby/mongo 1.12.0 2.0.6: A Ruby driver for MongoDB
 dev-ruby/mongoid 2.8.1: ODM (Object Document Mapper) Framework for MongoDB
-dev-ruby/msgpack 0.6.2 0.7.0 0.7.1: Binary-based efficient data interchange format for ruby binding
+dev-ruby/msgpack 0.7.1 0.7.4: Binary-based efficient data interchange format for ruby binding
 dev-ruby/multi_json 1.9.3 1.10.1 1.11.0 1.11.1 1.11.2: A gem to provide swappable JSON backends
 dev-ruby/multi_test 0.1.1 0.1.2: A uniform interface for Ruby testing libraries
 dev-ruby/multi_xml 0.5.4-r1 0.5.4-r2 0.5.5: A generic swappable back-end for XML parsing
@@ -9018,7 +9018,7 @@ dev-ruby/warden 1.2.3 1.2.4: General Rack Authentication Framework
 dev-ruby/watch 0.1.0: A dirt simple mechanism to tell if files have changed
 dev-ruby/weakling 0.0.4: weakling: a collection of weakref utilities for Ruby
 dev-ruby/web-console 2.2.1-r1: A debugging tool for your Ruby on Rails applications
-dev-ruby/webmock 1.19.0 1.20.3 1.22.1 1.22.3 1.22.5: Allows stubbing HTTP requests and setting expectations on HTTP requests
+dev-ruby/webmock 1.19.0 1.20.3 1.22.1 1.22.3 1.22.5 1.22.6: Allows stubbing HTTP requests and setting expectations on HTTP requests
 dev-ruby/webrobots 0.1.1-r1 0.1.1-r2: A library to help write robots.txt compliant web robots
 dev-ruby/websocket-driver 0.3.4 0.6.2 0.6.3: A complete implementation of the WebSocket protocols
 dev-ruby/websocket-extensions 0.1.2: Generic extension manager for WebSocket connections
