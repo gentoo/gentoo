@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=5
 inherit games
 
 DESCRIPTION="A parodic fantasy module for Neverwinter Nights"
@@ -16,7 +17,7 @@ SRC_URI="http://c.vnfiles.ign.com/nwvault.ign.com/fms/files/modules/1661/Penulti
 # redistributable per http://stefangagne.com/penultima/modules.html
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="-* ~amd64 x86"
+KEYWORDS="-* amd64 x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"
