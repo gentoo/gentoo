@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,7 @@ IUSE="atahpt +bitbang_spi +buspirate_spi +dediprog +drkaiser
 LIB_DEPEND="atahpt? ( sys-apps/pciutils[static-libs(+)] )
 	dediprog? ( virtual/libusb:0[static-libs(+)] )
 	drkaiser? ( sys-apps/pciutils[static-libs(+)] )
-	ft2232_spi? ( dev-embedded/libftdi[static-libs(+)] )
+	ft2232_spi? ( dev-embedded/libftdi:0[static-libs(+)] )
 	gfxnvidia? ( sys-apps/pciutils[static-libs(+)] )
 	internal? ( sys-apps/pciutils[static-libs(+)] )
 	nic3com? ( sys-apps/pciutils[static-libs(+)] )
@@ -37,7 +37,7 @@ LIB_DEPEND="atahpt? ( sys-apps/pciutils[static-libs(+)] )
 	rayer_spi? ( sys-apps/pciutils[static-libs(+)] )
 	satasii? ( sys-apps/pciutils[static-libs(+)] )
 	satamv? ( sys-apps/pciutils[static-libs(+)] )
-	usbblaster? ( dev-embedded/libftdi[static-libs(+)] )
+	usbblaster? ( dev-embedded/libftdi:0[static-libs(+)] )
 	ogp_spi? ( sys-apps/pciutils[static-libs(+)] )"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}
