@@ -8800,7 +8800,7 @@ dev-ruby/pygments_rb 0.6.2 0.6.3: Pygments syntax highlighting in ruby
 dev-ruby/qed 2.9.1 2.9.2: QED (Quality Ensured Demonstrations) is a TDD/BDD framework
 dev-ruby/racc 1.4.11 1.4.12 1.4.13 1.4.14: A LALR(1) parser generator for Ruby
 dev-ruby/rack 1.4.7 1.5.5 1.6.4: A modular Ruby webserver interface
-dev-ruby/rack-attack 4.2.0 4.3.0 4.3.1: A DSL for blocking & throttling abusive clients
+dev-ruby/rack-attack 4.3.1: A DSL for blocking & throttling abusive clients
 dev-ruby/rack-cache 1.3.0 1.5.1: Enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-mount 0.8.3-r2: A stackable dynamic tree based Rack router
 dev-ruby/rack-openid 1.3.1 1.4.2: Provides a more HTTPish API around the ruby-openid library
@@ -17954,7 +17954,7 @@ x11-misc/afbinit 1.0.1-r7: loads the microcode for Elite3D framebuffers to use X
 x11-misc/alacarte 3.10.0 3.11.91: Simple GNOME menu editor
 x11-misc/albert 0.7.7 0.8.0: Desktop agnostic launcher
 x11-misc/alltray 0.7.5.1: An application which allows any application to be docked into the system notification area
-x11-misc/alock 94: locks the local X display until a password is entered
+x11-misc/alock 94 94-r1: locks the local X display until a password is entered
 x11-misc/andromeda 0.3: Qt4-based filemanager
 x11-misc/appmenu-qt 0.2.6: Application menu module for Qt
 x11-misc/apwal 0.4.5-r1: A simple application launcher and combined editor
