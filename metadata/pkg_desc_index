@@ -3851,7 +3851,7 @@ dev-java/glassfish-servlet-api 3.1.1: Glassfish reference implementation of Serv
 dev-java/glassfish-transaction-api 1.1.2.2.04: Java Transaction API
 dev-java/glassfish-xmlrpc-api 1.1.1: Project GlassFish XML RPC API
 dev-java/glazedlists 1.7.0-r1 1.8.0: A toolkit for list transformations
-dev-java/gnu-classpath 0.98-r3 0.98-r4: Free core class libraries for use with virtual machines and compilers for the Java language
+dev-java/gnu-classpath 0.98-r3 0.98-r5: Free core class libraries for use with Java VMs and compilers
 dev-java/gnu-classpath-inetlib 1.0-r3 1.1-r3: Network extensions library for GNU classpath and classpathx
 dev-java/gnu-crypto 2.0.1-r2 2.0.1-r3: GNU Crypto cryptographic primitives for Java
 dev-java/gnu-hylafax 1.0.3-r2: Java API designed to implement the client protocol portion of the hfaxd server
@@ -14213,7 +14213,7 @@ net-mail/gnubiff 2.2.15-r2: A mail notification program
 net-mail/grepmail 5.30.33-r2: Search normal or compressed mailbox using a regular expression or dates
 net-mail/hotwayd 0.8.4: Hotmail to pop3 daemon
 net-mail/imapsync 1.592-r1 1.607-r1 1.644: A tool allowing incremental and recursive imap transfer from one mailbox to another
-net-mail/isync 1.0.6 1.2.0: MailDir mailbox synchronizer
+net-mail/isync 1.0.6 1.2.0 1.2.1: MailDir mailbox synchronizer
 net-mail/kuvert 2.0.4: An MTA wrapper that automatically signs and/or encrypts outgoing mail
 net-mail/lbdb 0.39 0.39-r1: Little Brother database
 net-mail/libdbx 1.0.3: Tools and library for reading Outlook Express mailboxes (.dbx format)
