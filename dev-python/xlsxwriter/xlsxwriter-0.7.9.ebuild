@@ -23,7 +23,7 @@ IUSE="test"
 RDEPEND=""
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
 
 S="${WORKDIR}"/${MY_P}
@@ -33,5 +33,5 @@ S="${WORKDIR}"/${MY_P}
 RESTRICT=test
 
 python_test() {
-	nosetests --verbosity=3 || die
+	py.test -v -v || die
 }
