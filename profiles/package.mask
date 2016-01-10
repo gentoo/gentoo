@@ -304,10 +304,6 @@ sys-apps/rigo-daemon
 sys-apps/magneto-core
 
 # Pacho Ramos <pacho@gentoo.org> (06 Jan 2016)
-# Cannot be installed, bug #541626. Removal in a month.
-net-fs/tahoe-lafs
-
-# Pacho Ramos <pacho@gentoo.org> (06 Jan 2016)
 # Fails to build, bug #542928. Removal in a month.
 net-misc/kumofs
 
