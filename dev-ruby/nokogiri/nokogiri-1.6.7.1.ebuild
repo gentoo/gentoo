@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.rdoc CHANGELOG.ja.rdoc README.md ROADMAP.md STANDARD_RESPONSES.md"
@@ -31,11 +31,8 @@ DEPEND="${DEPEND}
 	dev-libs/libxslt
 	virtual/libiconv"
 
-# The tests require _minitest_, not the virtual; what is shipped with
-# Ruby 1.9 is *not* enough, unfortunately
 ruby_add_bdepend "
 	dev-ruby/hoe
-	dev-ruby/rake-compiler
 	dev-ruby/rexical
 	dev-ruby/rdoc
 	dev-ruby/racc
@@ -81,6 +78,10 @@ each_ruby_compile() {
 		CFLAGS="${CFLAGS} -fPIC" \
 		archflag="${LDFLAGS}" || die "make extension failed"
 	cp -l ext/${PN}/${PN}$(get_modname) lib/${PN}/ || die
+}
+
+each_ruby_test() {
+	${RUBY} -Ilib:.:test -e 'Dir["test/**/test_*.rb"].each {|f| require f}' || die
 }
 
 each_ruby_install() {
