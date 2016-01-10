@@ -11,6 +11,7 @@ you will need to keep in mind that the major versions represent these different
 branches.
 </longdescription>
 <use>
+	<flag name='driver'>Install the kernel driver module</flag>
 	<flag name='X'>Install the X.org driver, OpenGL libraries, XvMC libraries, and VDPAU libraries</flag>
 	<flag name='gtk2'>Install nvidia-settings with support for GTK+ 2</flag>
 	<flag name='gtk3'>Install nvidia-settings with support for GTK+ 3</flag>
