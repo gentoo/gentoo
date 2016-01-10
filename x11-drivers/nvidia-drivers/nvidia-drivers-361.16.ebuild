@@ -194,19 +194,15 @@ src_compile() {
 donvidia() {
 	# Full path to library
 	nv_LIB="${1}"
-echo -n "$nv_LIB : "
 
 	# SOVER to use
 	nv_SOVER="$(scanelf -qF'%S#F' ${nv_LIB})"
-echo -n "$nv_SOVER : "
 
 	# Where to install
 	nv_DEST="${2}"
-echo -n "$nv_DEST : "
 
 	# Get just the library name
 	nv_LIBNAME=$(basename "${nv_LIB}")
-echo "$nv_LIBNAME"
 
 	if [[ "${nv_DEST}" ]]; then
 		exeinto ${nv_DEST}
@@ -217,18 +213,15 @@ echo "$nv_LIBNAME"
 	fi
 
 	# Install the library
-echo	${action} ${nv_LIB}
 	${action} ${nv_LIB} || die "failed to install ${nv_LIBNAME}"
 
 	# If the library has a SONAME and SONAME does not match the library name,
 	# then we need to create a symlink
 	if [[ ${nv_SOVER} ]] && ! [[ "${nv_SOVER}" = "${nv_LIBNAME}" ]]; then
-echo	1	dosym ${nv_LIBNAME} ${nv_DEST}/${nv_SOVER}
 		dosym ${nv_LIBNAME} ${nv_DEST}/${nv_SOVER} \
 			|| die "failed to create ${nv_DEST}/${nv_SOVER} symlink"
 	fi
 
-echo	2	dosym ${nv_LIBNAME} ${nv_DEST}/${nv_LIBNAME/.so*/.so}
 	dosym ${nv_LIBNAME} ${nv_DEST}/${nv_LIBNAME/.so*/.so} \
 		|| die "failed to create ${nv_LIBNAME/.so*/.so} symlink"
 }
