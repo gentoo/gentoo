@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ KEYWORDS="amd64 arm ppc ppc64 x86"
 IUSE="doc ftdi ncurses readline"
 
 RDEPEND="virtual/libusb:1
-	ftdi? ( dev-embedded/libftdi )
+	ftdi? ( dev-embedded/libftdi:0 )
 	ncurses? ( sys-libs/ncurses )
 	readline? ( sys-libs/readline )"
 DEPEND="${RDEPEND}"

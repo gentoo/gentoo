@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>desktop-misc</herd>
+	<maintainer>
+		<email>zlg@gentoo.org</email>
+		<name>Daniel Campbell</name>
+	</maintainer>
+	<longdescription>
+		An extremely simple screen locking utility based on xtrlock. Supports
+		multiple hash-types, shadow passwords, and PAM.
+	</longdescription>
 	<upstream>
+		<maintainer>
+			<email>akira@fluxbox.org</email>
+			<name>Mathias Gumz</name>
+		</maintainer>
 		<remote-id type="google-code">alock</remote-id>
+		<remote-id type="github">mgumz/alock</remote-id>
 	</upstream>
 </pkgmetadata>
