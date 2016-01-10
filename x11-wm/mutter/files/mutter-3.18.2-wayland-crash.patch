@@ -1,0 +1,41 @@
+From 2ea121a1869d21ef0726aca27abd02a3245d1d74 Mon Sep 17 00:00:00 2001
+From: Marek Chalupa <mchqwerty@gmail.com>
+Date: Thu, 2 Jul 2015 10:41:37 +0200
+Subject: wayland: bind wayland socket after xwayland is initialized
+
+During xwayland initialization we run main loop and dispatch wayland
+events, so that xwayland can initialize. If some client during this
+phase connects and creates surface, mutter crashes because
+it is not initialized yet. If we bind wayland socket after xwayland
+is initialized and main loop is not running anymore, no client can
+connect to mutter during initialization and that is what we want.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=751845
+---
+ src/wayland/meta-wayland.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/wayland/meta-wayland.c b/src/wayland/meta-wayland.c
+index 0d37489..d51e8b5 100644
+--- a/src/wayland/meta-wayland.c
++++ b/src/wayland/meta-wayland.c
+@@ -337,13 +337,13 @@ meta_wayland_init (void)
+   meta_wayland_pointer_gestures_init (compositor);
+   meta_wayland_seat_init (compositor);
+ 
++  if (!meta_xwayland_start (&compositor->xwayland_manager, compositor->wayland_display))
++    g_error ("Failed to start X Wayland");
++
+   compositor->display_name = wl_display_add_socket_auto (compositor->wayland_display);
+   if (compositor->display_name == NULL)
+     g_error ("Failed to create socket");
+ 
+-  if (!meta_xwayland_start (&compositor->xwayland_manager, compositor->wayland_display))
+-    g_error ("Failed to start X Wayland");
+-
+   set_gnome_env ("DISPLAY", meta_wayland_get_xwayland_display_name (compositor));
+   set_gnome_env ("WAYLAND_DISPLAY", meta_wayland_get_wayland_display_name (compositor));
+ }
+-- 
+cgit v0.11.2
+

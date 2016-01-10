@@ -1,10 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 GCONF_DEBUG="no"
-VALA_MIN_API_VERSION="0.16"
 VALA_USE_DEPEND="vapigen"
 
 inherit gnome2 udev vala
@@ -18,13 +17,13 @@ SLOT="0"
 IUSE="+introspection +vala test"
 REQUIRED_USE="vala? ( introspection )"
 
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="
 	>=dev-libs/glib-2:2
 	>=dev-libs/libxslt-1.0.0:=
 	dev-libs/libxml2:=
-	net-libs/libsoup-gnome:2.4
+	>=net-libs/libsoup-2.42:2.4
 	sys-apps/hwids
 	introspection? ( >=dev-libs/gobject-introspection-0.9.7:= )
 "
@@ -37,16 +36,10 @@ DEPEND="${RDEPEND}
 "
 
 src_configure() {
-	# --enable-udev is only for rules.d file install
 	gnome2_src_configure \
 		--disable-static \
 		$(use_enable test tests) \
 		$(use_enable introspection) \
 		$(use_enable vala) \
-		--enable-udev \
-		--disable-coverage \
-		--with-html-dir=/usr/share/doc/${PF}/html \
-		--with-udev-rulesdir="$(get_udevdir)"/rules.d \
-		--with-usb-ids-path=/usr/share/misc/usb.ids \
-		--with-pci-ids-path=/usr/share/misc/pci.ids
+		--disable-coverage
 }

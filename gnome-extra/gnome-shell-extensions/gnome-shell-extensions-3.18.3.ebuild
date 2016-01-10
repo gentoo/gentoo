@@ -31,7 +31,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-libs/gdk-pixbuf:2[introspection]
 	x11-libs/gtk+:3[introspection]
 	x11-libs/pango[introspection]
-	x11-themes/gnome-icon-theme-symbolic
+	x11-themes/adwaita-icon-theme
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.50
@@ -49,13 +49,6 @@ Alternatively, to enable/disable extensions on a per-user basis,
 you can use the https://extensions.gnome.org/ web interface, the
 gnome-extra/gnome-tweak-tool GUI, or modify the org.gnome.shell
 enabled-extensions gsettings key from the command line or a script."
-
-src_prepare() {
-	# Fix https://bugzilla.gnome.org/show_bug.cgi?id=759004 (from
-	# 'master')
-	epatch "${FILESDIR}"/${PN}-3.18.2-apps-menu{,2}.patch
-	gnome2_src_prepare
-}
 
 src_configure() {
 	gnome2_src_configure --enable-extensions=all
