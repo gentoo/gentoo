@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -114,8 +114,8 @@ done
 # adding only compile-time depends
 DEPEND="${RDEPEND} ${DEPEND}
 	virtual/linux-sources
-	lirc_devices_ftdi? ( dev-embedded/libftdi )
-	lirc_devices_all? ( dev-embedded/libftdi )"
+	lirc_devices_ftdi? ( dev-embedded/libftdi:0 )
+	lirc_devices_all? ( dev-embedded/libftdi:0 )"
 
 # adding only run-time depends
 RDEPEND="${RDEPEND}
