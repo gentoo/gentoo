@@ -56,7 +56,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-mp3.patch
 	sed -i -e 's/configure.in/configure.ac/' Makefile.in || die
 	mv configure.{in,ac} || die
-	eautoreconf
+	AT_M4DIR=acinclude eautoreconf
 }
 
 multilib_src_configure() {
