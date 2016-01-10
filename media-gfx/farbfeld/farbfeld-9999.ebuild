@@ -39,3 +39,7 @@ src_prepare() {
 src_compile() {
 	emake CC=$(tc-getCC)
 }
+
+src_install() {
+	emake DESTDIR="${D}" install MANPREFIX=/usr/share/man
+}
