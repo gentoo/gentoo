@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -43,7 +43,7 @@ RDEPEND="
 	lcd_devices_g15?      ( dev-libs/libg15  >=dev-libs/libg15render-1.1.1 )
 	lcd_devices_ncurses?   ( sys-libs/ncurses )
 	lcd_devices_svga?     ( media-libs/svgalib )
-	lcd_devices_ula200?   ( >=dev-embedded/libftdi-0.7  =virtual/libusb-0* )
+	lcd_devices_ula200?   ( >=dev-embedded/libftdi-0.7 =dev-embedded/libftdi-0* =virtual/libusb-0* )
 	lcd_devices_xosd?     ( x11-libs/xosd  x11-libs/libX11  x11-libs/libXext )
 	lcd_devices_cfontzpacket? ( =virtual/libusb-0* )
 	lcd_devices_cwlinux?    ( =virtual/libusb-0* )
