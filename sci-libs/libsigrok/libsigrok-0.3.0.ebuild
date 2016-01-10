@@ -39,7 +39,7 @@ src_prepare() {
 	eautoreconf
 
 	# Deal with libftdi-0.x & libftdi-1.x changes.
-	if has_version '>=dev-embedded/libftdi-1' ; then
+	if has_version dev-embedded/libftdi:1 ; then
 		sed -i 's:libftdi >= 0.16:libftdi1 >= 0.16:g' configure || die
 	fi
 
