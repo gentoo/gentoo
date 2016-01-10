@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ KEYWORDS="amd64 ppc sparc x86"
 IUSE="ftdi readline"
 
 DEPEND="!dev-embedded/jtag
-	ftdi? ( dev-embedded/libftdi )
+	ftdi? ( =dev-embedded/libftdi-0* )
 	readline? ( sys-libs/readline )"
 
 src_compile() {
