@@ -128,5 +128,5 @@ src_configure() {
 src_install() {
 	default
 	env -uRESTRICT prepstrip "${ED}"/usr/bin
-	udev_dorules ${D}/usr/share/${PN}/contrib/*.rules
+	udev_dorules "${D}"/usr/share/${PN}/contrib/*.rules
 }
