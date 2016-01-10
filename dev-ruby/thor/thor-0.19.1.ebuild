@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
@@ -23,7 +23,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="doc"
 
-ruby_add_bdepend "
+# fakeweb is not compatible with ruby22. Upstream has switched to
+# webmock but leads to circular dependencies via childlabor's
+# dependencies, so skip tests for ruby22 for now.
+USE_RUBY="ruby20 ruby21" ruby_add_bdepend "
 	test? (
 		>=dev-ruby/fakeweb-1.3
 		dev-ruby/childlabor
@@ -45,4 +48,15 @@ all_ruby_prepare() {
 	# Avoid a spec that requires UTF-8 support, so LANG=C still works,
 	# bug 430402
 	sed -i -e '/uses maximum terminal width/,/end/ s:^:#:' spec/shell/basic_spec.rb || die
+}
+
+each_ruby_test() {
+	case ${RUBY} in
+		*ruby22)
+			einfo "Skipping tests due to circular dependencies"
+			;;
+		*)
+			ruby-ng_rspec spec || die
+			;;
+	esac
 }
