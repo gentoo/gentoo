@@ -25,6 +25,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-underlink.patch \
 		"${FILESDIR}"/${P}-gcc52.patch
 	mv configure.{in,ac} || die
+	sed -i -e 's/configure.in/configure.ac/' configure.ac || die
 	eautoreconf
 }
 
