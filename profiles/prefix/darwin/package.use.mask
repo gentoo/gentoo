@@ -3,6 +3,10 @@
 # $Id$
 
 
+# Fabian Groffen <grobian@gentoo.org> (10 Jan 2016)
+# libutempter isn't ported for Darwin, bug #506494
+net-misc/mosh utempter
+
 # Fabian Groffen <grobian@gentoo.org> (26 May 2015)
 # Avoid pulling in broken and unnecessary ossp-uuid, bug #324527
 dev-db/postgresql uuid
