@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,6 +7,11 @@ USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="README.md"
+
+# Don't install the binaries since they don't seem to be intended for
+# general use and they have very generic names leading to collisions,
+# e.g. bug 571186
+RUBY_FAKEGEM_BINWRAP=""
 
 inherit ruby-fakegem
 
