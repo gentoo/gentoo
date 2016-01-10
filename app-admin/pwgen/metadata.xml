@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>livecd</herd>
-  <use>
-    <flag name="livecd">Install init script for root password scrambling on boot</flag>
-  </use>
-  <upstream>
-    <remote-id type="sourceforge">pwgen</remote-id>
-  </upstream>
+	<herd>livecd</herd>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>julian@simioni.org</email>
+		<name>Julian Simioni</name>
+		<description>Proxy-Maintainer, assign bugs</description>
+	</maintainer>
+	<maintainer>
+		<email>perfinion@gentoo.org</email>
+		<name>Jason Zaman</name>
+	</maintainer>
+	<use>
+		<flag name="livecd">Install init script for root password scrambling on boot</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">pwgen</remote-id>
+	</upstream>
 </pkgmetadata>
