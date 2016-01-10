@@ -2,28 +2,31 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=5
 inherit eutils
+
 DESCRIPTION="Courierpassd is a utility for changing a user's password from across a network"
 HOMEPAGE="http://www.arda.homeunix.net/"
-SRC_URI="http://www.arda.homeunix.net/store/${P}.tar.gz"
+SRC_URI="http://www.arda.homeunix.net/?ddownload=12270 -> ${P}.tar.gz"
 RESTRICT="mirror"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="xinetd"
 
 DEPEND="net-libs/courier-authlib
-		xinetd? ( sys-apps/xinetd )"
+	xinetd? ( sys-apps/xinetd )
+"
 RDEPEND="${DEPEND}"
 
+S="${WORKDIR}/courierpasswd-${PV}"
+
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	default
 
 	if use xinetd; then
 		insinto /etc/xinetd.d
-		doins "${FILESDIR}/courierpassd" || die "doins failed"
+		doins "${FILESDIR}/courierpassd"
 	fi
-
-	dodoc README AUTHORS ChangeLog NEWS || die "dodoc failed"
 }

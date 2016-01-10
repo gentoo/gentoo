@@ -90,10 +90,6 @@ games-fps/ut2004-cor
 games-fps/ut2004-crossfire
 
 # Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
-# Cannot be downloaded either mirrored, bug #561174. Removal in a month
-net-mail/courierpassd
-
-# Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
 # Cannot be downloaded either mirrored, bug #561176. Removal in a month
 net-misc/ixp4xx
 
@@ -302,10 +298,6 @@ x11-misc/magneto-gtk
 x11-misc/magneto-gtk3
 sys-apps/rigo-daemon
 sys-apps/magneto-core
-
-# Pacho Ramos <pacho@gentoo.org> (06 Jan 2016)
-# Cannot be installed, bug #541626. Removal in a month.
-net-fs/tahoe-lafs
 
 # Pacho Ramos <pacho@gentoo.org> (06 Jan 2016)
 # Fails to build, bug #542928. Removal in a month.
