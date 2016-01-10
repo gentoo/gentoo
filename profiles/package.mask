@@ -90,10 +90,6 @@ games-fps/ut2004-cor
 games-fps/ut2004-crossfire
 
 # Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
-# Cannot be downloaded either mirrored, bug #561174. Removal in a month
-net-mail/courierpassd
-
-# Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
 # Cannot be downloaded either mirrored, bug #561176. Removal in a month
 net-misc/ixp4xx
 
