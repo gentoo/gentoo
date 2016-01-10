@@ -22,7 +22,7 @@ IUSE="doc ftdi ncurses readline"
 RDEPEND="virtual/libusb:1
 	virtual/libusb:0
 	ftdi? ( dev-embedded/libftdi:= )
-	ncurses? ( sys-libs/ncurses )
+	ncurses? ( sys-libs/ncurses:= )
 	readline? ( sys-libs/readline )"
 DEPEND="${RDEPEND}"
 
