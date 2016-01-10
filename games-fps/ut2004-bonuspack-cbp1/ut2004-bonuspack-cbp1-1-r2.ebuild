@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 
 MOD_DESC="UT2003 Community Bonus Pack repacked for UT2004"
 MOD_NAME="Community Bonus Pack Volume 1"

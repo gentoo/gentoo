@@ -1505,10 +1505,6 @@ games-fps/quake4-demo
 # masked pending unresolved security issues #127167
 games-roguelike/slashem
 
-# Tavis Ormandy <taviso@gentoo.org> (21 Mar 2006)
-# masked pending unresolved security issues #125902
-games-util/hearse
-
 # Robin H. Johnson <robbat2@gentoo.org> (11 Feb 2006)
 # zlib interaction is badly broken. See bug #124733.
 =dev-vcs/cvs-1.12.13*
