@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ AUTOTOOLS_IN_SOURCE_BUILD=1
 PLOCALES="ar bg ca cs da de el es eu fa fi fr_FR gl hu id it ja ko nl pl pt_BR pt_PT ru sr_RS@latin sr_RS uk_UA vi zh_CN zh_TW"
 WX_GTK_VER="3.0"
 
-inherit autotools-utils fdo-mime gnome2-utils l10n toolchain-funcs wxwidgets git-2
+inherit autotools-utils fdo-mime flag-o-matic gnome2-utils l10n wxwidgets git-2
 
 DESCRIPTION="Advanced subtitle editor"
 HOMEPAGE="http://www.aegisub.org/"
