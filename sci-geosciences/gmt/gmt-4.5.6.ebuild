@@ -1,23 +1,23 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit multilib autotools eutils
 
-GSHHS="GSHHS2.1.1"
+GSHHS="gshhs-2.1.1"
 
 DESCRIPTION="Powerful map generator"
 HOMEPAGE="http://gmt.soest.hawaii.edu/"
-SRC_URI="mirror://gmt/GMT${PV}_src.tar.bz2
-	mirror://gmt/GMT${PV}_share.tar.bz2
-	mirror://gmt/${GSHHS}_coast.tar.bz2
-	mirror://gmt/GMT${PV}_suppl.tar.bz2
-	doc? ( mirror://gmt/GMT${PV}_doc.tar.bz2 )
-	gmtfull? ( mirror://gmt/${GSHHS}_full.tar.bz2 )
-	gmthigh? ( mirror://gmt/${GSHHS}_high.tar.bz2 )
-	gmttria? ( mirror://gmt/GMT${PV}_triangle.tar.bz2 )"
+SRC_URI="mirror://gmt/legacy/${P}-src.tar.bz2
+	mirror://gmt/legacy/${P}-share.tar.bz2
+	mirror://gmt/legacy/${GSHHS}-coast.tar.bz2
+	mirror://gmt/legacy/${P}-suppl.tar.bz2
+	doc? ( mirror://gmt/legacy/${P}-doc.tar.bz2 )
+	gmtfull? ( mirror://gmt/legacy/${GSHHS}-full.tar.bz2 )
+	gmthigh? ( mirror://gmt/legacy/${GSHHS}-high.tar.bz2 )
+	gmttria? ( mirror://gmt/legacy/${P}-triangle.tar.bz2 )"
 
 LICENSE="GPL-2 gmttria? ( Artistic )"
 SLOT="0"

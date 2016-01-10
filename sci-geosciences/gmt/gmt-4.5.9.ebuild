@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 AUTOTOOLS_AUTORECONF=yes
 
@@ -13,9 +13,9 @@ GSHHS="gshhs-2.2.0"
 DESCRIPTION="Powerful map generator"
 HOMEPAGE="http://gmt.soest.hawaii.edu/"
 SRC_URI="
-	mirror://gmt/${P}.tar.bz2
-	mirror://gmt/${GSHHS}.tar.bz2
-	gmttria? ( mirror://gmt/${P}-non-gpl.tar.bz2 )"
+	mirror://gmt/legacy/${P}.tar.bz2
+	mirror://gmt/legacy/${GSHHS}.tar.bz2
+	gmttria? ( mirror://gmt/legacy/${P}-non-gpl.tar.bz2 )"
 
 LICENSE="GPL-2 gmttria? ( Artistic )"
 SLOT="0"
