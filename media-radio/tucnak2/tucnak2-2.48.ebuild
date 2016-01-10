@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ RDEPEND=">=dev-libs/glib-2
 	>=media-libs/libsdl-1.2
 	alsa? ( media-libs/alsa-lib )
 	fftw? ( sci-libs/fftw:3.0 )
-	ftdi? ( dev-embedded/libftdi )
+	ftdi? ( dev-embedded/libftdi:0 )
 	gpm? ( sys-libs/gpm )
 	hamlib? ( media-libs/hamlib )
 	>=media-libs/libpng-1.2"
