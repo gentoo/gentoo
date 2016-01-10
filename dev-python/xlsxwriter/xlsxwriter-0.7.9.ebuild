@@ -13,7 +13,10 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Python module for creating Excel XLSX files"
 HOMEPAGE="https://pypi.python.org/pypi/XlsxWriter https://github.com/jmcnamara/XlsxWriter"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+SRC_URI="
+	mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz
+	test? ( https://dev.gentoo.org/~jlec/distfiles/${MY_P}.tar.xz )
+	"
 
 SLOT="0"
 LICENSE="BSD"
@@ -27,10 +30,6 @@ DEPEND="${RDEPEND}
 "
 
 S="${WORKDIR}"/${MY_P}
-
-# Missing from tarball
-# https://github.com/jmcnamara/XlsxWriter/issues/327
-RESTRICT=test
 
 python_test() {
 	py.test -v -v || die
