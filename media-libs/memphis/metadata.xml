@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sci-geoscience</herd>
+  <herd>sci-geosciences</herd>
   <use>
     <flag name="introspection">Use dev-libs/gobject-introspection for introspection</flag>
     <flag name="vala">Add support for Vala</flag>
