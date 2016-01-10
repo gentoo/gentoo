@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils java-pkg-2 multilib
 
 MY_P=${P/gnu-/}
-DESCRIPTION="Free core class libraries for use with virtual machines and compilers for the Java language"
+DESCRIPTION="Free core class libraries for use with Java VMs and compilers"
 SRC_URI="mirror://gnu/classpath/${MY_P}.tar.gz"
 HOMEPAGE="https://www.gnu.org/software/classpath"
 
@@ -45,7 +45,6 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 		xml? ( >=dev-libs/libxml2-2.6.8:2= >=dev-libs/libxslt-1.1.11 )"
 
 DEPEND="app-arch/zip
-		dev-java/eclipse-ecj
 		gtk? (
 			x11-libs/libXrender
 			>=x11-libs/libXtst-1.1.0
@@ -64,15 +63,6 @@ java_prepare() {
 }
 
 src_configure() {
-	# We require ecj anyway, so force it to avoid problems with bad versions of javac
-	export JAVAC="${EPREFIX}/usr/bin/ecj"
-	export JAVA="${EPREFIX}/usr/bin/java"
-	# build takes care of them itself, duplicate -source -target kills ecj
-	export JAVACFLAGS="-nowarn"
-	# build system is passing -J-Xmx768M which ecj however ignores
-	# this will make the ecj launcher do it (seen case where default was not enough heap)
-	export gjl_java_args="-Xmx768M"
-
 	# don't use econf, because it ends up putting things under /usr, which may
 	# collide with other slots of classpath
 	local myconf
@@ -106,7 +96,6 @@ src_configure() {
 		--disable-plugin \
 		--host=${CHOST} \
 		--prefix="${EPREFIX}"/usr/${PN}-${SLOT} \
-		--with-ecj-jar=$(java-pkg_getjar --build-only eclipse-ecj-* ecj.jar) \
 		--disable-Werror \
 		${myconf} || die "configure failed"
 }
