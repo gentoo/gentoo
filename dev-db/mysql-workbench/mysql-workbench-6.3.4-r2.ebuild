@@ -62,7 +62,6 @@ RDEPEND="${CDEPEND}
 		>=sys-apps/net-tools-1.60_p20120127084908"
 
 DEPEND="${CDEPEND}
-		dev-java/antlr:3.5
 		dev-lang/swig
 		virtual/jre
 		virtual/pkgconfig"
@@ -100,7 +99,7 @@ src_configure() {
 		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
 	)
-	ANTLR_JAR_PATH="/usr/share/antlr-3.5/antlr-runtime.jar" cmake-utils_src_configure
+	cmake-utils_src_configure
 }
 
 src_compile() {
