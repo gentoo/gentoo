@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Perl module for BSD process resource limit and priority functions"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ~ia64 ~ppc sparc x86"
+KEYWORDS="alpha amd64 ia64 ~ppc sparc x86"
 IUSE=""
 
 SRC_TEST="do"
