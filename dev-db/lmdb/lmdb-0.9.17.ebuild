@@ -21,13 +21,13 @@ RDEPEND="!=net-nds/openldap-2.4.40"
 S="${WORKDIR}/${PN}-LMDB_${PV}/libraries/liblmdb"
 
 src_prepare() {
-	sed -i -e "s/^CC.*/CC = $(tc-getCC)/" \
-		-e "s/^CFLAGS.*/CFLAGS = ${CFLAGS}/" \
-		-e "s/^AR.*/AR = $(tc-getAR)/" \
-		-e "/mkdir/s:lib:$(get_libdir):" \
-		-e "/for f/s:lib:$(get_libdir):" \
-		-e "s:prefix)/man:mandir):" \
-		-e "s:shared:shared -Wl,-soname,liblmdb.so.0:" \
+	sed -i -e "s!^CC.*!CC = $(tc-getCC)!" \
+		-e "s!^CFLAGS.*!CFLAGS = ${CFLAGS}!" \
+		-e "s!^AR.*!AR = $(tc-getAR)!" \
+		-e "/mkdir/s!lib!$(get_libdir)!" \
+		-e "/for f/s!lib!$(get_libdir)!" \
+		-e "s!prefix)/man!mandir)!" \
+		-e "s!shared!shared -Wl,-soname,liblmdb.so.0!" \
 		"${S}/Makefile" || die
 }
 
