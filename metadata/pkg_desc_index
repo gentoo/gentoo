@@ -2380,7 +2380,7 @@ app-text/rhyme 0.9-r1: Console based Rhyming Dictionary
 app-text/rman 3.2-r1: PolyGlotMan man page translator AKA RosettaMan
 app-text/rnv 1.7.11 1.7.11-r1: A lightweight Relax NG Compact Syntax validator
 app-text/robodoc 4.99.36: Automating Software Documentation
-app-text/ronn 0.7.3-r2 0.7.3-r3: Ronn converts simple, human readable textfiles to roff for terminal display, and also to HTML
+app-text/ronn 0.7.3-r2 0.7.3-r3: Converts simple, human readable textfiles to roff for terminal display, and to HTML
 app-text/rpl 1.5.5 1.5.5-r1: Intelligent recursive search/replace utility
 app-text/rtf2html 0.2.0-r1: RTF to HTML converter
 app-text/sablotron 1.0.3: An XSLT Parser in C++
@@ -13812,7 +13812,7 @@ net-fs/nfstest 1.0.2: Tools for testing either the NFS client or the NFS server
 net-fs/openafs 1.6.12-r1 1.6.14: The OpenAFS distributed file system
 net-fs/openafs-kernel 1.6.12-r1 1.6.14: The OpenAFS distributed file system kernel module
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
-net-fs/samba 3.5.21 3.5.22 3.6.25 4.1.22 4.2.7 4.3.3: Samba Suite Version 4
+net-fs/samba 3.5.21 3.5.22 3.6.25 4.1.22 4.2.7 4.2.7-r1 4.3.3: Samba Suite Version 4
 net-fs/smbnetfs 0.5.3b 0.6.0 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/smbtatools 1.2.6: Tools for configuration and query of SMB Traffic Analyzer
@@ -17483,7 +17483,7 @@ www-apps/nikola 7.2.0 7.6.0 7.6.1 7.6.2 7.6.3: A static website and blog generat
 www-apps/novnc 0.5 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/openwebstats 1.1: PHP stats application that reads Apache log files and imports the data to a MySQL database
 www-apps/otrs 4.0.12 4.0.13: OTRS is an Open source Ticket Request System
-www-apps/owncloud 5.0.19 6.0.9 7.0.11 7.0.12 8.0.9 8.0.10 8.1.4 8.1.5 8.2.0 8.2.1 8.2.2: Web-based storage application where all your data is under your own control
+www-apps/owncloud 5.0.19 6.0.9 7.0.12 8.0.10 8.1.5 8.2.2: Web-based storage application where all your data is under your own control
 www-apps/ownpaste 0.2.2-r1 9999: Private pastebin (server-side implementation)
 www-apps/pcgi 2.0_alpha5: Jeff Bauer's Persistent CGI
 www-apps/phpBB 3.0.10 3.0.11 3.0.12: phpBB is an open-source bulletin board package
