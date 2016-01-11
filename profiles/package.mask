@@ -119,10 +119,6 @@ net-misc/ixp4xx
 sys-block/megarc
 
 # Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
-# Cannot be downloaded either mirrored, bug #561202. Removal in a month
-sci-geosciences/gmt
-
-# Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
 # Obsolete and dead, bug #561622. Removal in a month.
 app-misc/ompload
 
