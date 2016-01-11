@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,6 +32,10 @@ DEPEND="${RDEPEND}
 "
 
 SRC_TEST="do parallel"
+
+PERL_RM_FILES=(
+	t/90-author-pod-validation.t
+)
 
 src_prepare() {
 	perl-module_src_prepare
