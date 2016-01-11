@@ -235,6 +235,7 @@ mozconfig_config() {
 	mozconfig_annotate 'Gentoo default to honor system linker' --disable-gold
 	mozconfig_annotate 'Gentoo default' --disable-skia
 	mozconfig_annotate '' --disable-gconf
+	mozconfig_annotate '' --with-intl-api
 
 	# Use jemalloc unless libc is not glibc >= 2.4
 	# at this time the minimum glibc in the tree is 2.9 so we should be safe.
@@ -261,7 +262,6 @@ mozconfig_config() {
 	mozconfig_use_enable system-sqlite
 	mozconfig_use_with system-jpeg
 	mozconfig_use_with system-icu
-	mozconfig_use_with system-icu intl-api
 	mozconfig_use_with system-libvpx
 
 	# Modifications to better support ARM, bug 553364
