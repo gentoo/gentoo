@@ -12,14 +12,14 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Open source high performance 3D graphics toolkit"
 HOMEPAGE="http://www.openscenegraph.org/projects/osg/"
-SRC_URI="http://www.openscenegraph.org/downloads/developer_releases/${MY_P}.zip"
+SRC_URI="http://trac.openscenegraph.org/downloads/developer_releases/${MY_P}.zip"
 
 LICENSE="wxWinLL-3 LGPL-2.1"
-SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="asio curl debug doc examples ffmpeg fltk fox gdal gif glut gtk jpeg jpeg2k
-openexr openinventor osgapps pdf png qt4 qt5 sdl svg tiff truetype vnc wxwidgets
-xine xrandr zlib"
+SLOT="0/34" # Subslot consists of major + minor version number
+KEYWORDS="~amd64 ~x86"
+IUSE="asio curl debug doc examples ffmpeg fltk fox gdal gif glut gstreamer gtk jpeg
+jpeg2k openexr openinventor osgapps pdf png qt4 qt5 sdl sdl2 svg tiff truetype vnc
+wxwidgets xine xrandr zlib"
 
 REQUIRED_USE="
 	qt4? ( !qt5 )
@@ -39,12 +39,17 @@ RDEPEND="
 		fox? ( x11-libs/fox:1.6[opengl] )
 		glut? ( media-libs/freeglut )
 		gtk? ( x11-libs/gtkglext )
-		sdl? ( media-libs/libsdl )
+		sdl? ( media-libs/libsdl
+			sdl2? ( media-libs/libsdl2 ) )
 		wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[opengl,X] )
 	)
 	ffmpeg? ( virtual/ffmpeg )
 	gdal? ( sci-libs/gdal )
 	gif? ( media-libs/giflib:= )
+	gstreamer? (
+		media-libs/gstreamer:1.0
+		media-libs/gst-plugins-base:1.0
+	)
 	jpeg? ( virtual/jpeg:0 )
 	jpeg2k? ( media-libs/jasper )
 	openexr? (
@@ -89,8 +94,7 @@ S=${WORKDIR}/${MY_P}
 DOCS=(AUTHORS.txt ChangeLog NEWS.txt)
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.2.1-cmake.patch
-	"${FILESDIR}"/${PN}-3.2.1-gdal-2.0.patch
+	"${FILESDIR}"/${PN}-3.4.0-cmake.patch
 )
 
 src_configure() {
@@ -116,6 +120,7 @@ src_configure() {
 		$(cmake-utils_use_with gdal)
 		$(cmake-utils_use_with gif GIFLIB)
 		$(cmake-utils_use_with glut)
+		$(cmake-utils_use_with gstreamer GStreamer)
 		$(cmake-utils_use_with gtk GtkGl)
 		$(cmake-utils_use_with jpeg)
 		$(cmake-utils_use_with jpeg2k Jasper)
@@ -124,6 +129,7 @@ src_configure() {
 		$(cmake-utils_use_with pdf Poppler-glib)
 		$(cmake-utils_use_with png)
 		$(cmake-utils_use_with sdl)
+		$(cmake_utils_use_with sdl2)
 		$(cmake-utils_use_with svg rsvg)
 		$(cmake-utils_use_with tiff)
 		$(cmake-utils_use_with truetype Freetype)
