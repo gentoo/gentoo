@@ -12,7 +12,7 @@ DESCRIPTION="Perl module for Apache::Reload"
 
 SLOT="0"
 LICENSE="Apache-2.0"
-KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 sparc x86"
+KEYWORDS="alpha amd64 ~arm ~hppa ia64 ~ppc ~ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="www-apache/mod_perl"
