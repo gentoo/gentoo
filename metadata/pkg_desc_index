@@ -4442,7 +4442,7 @@ dev-libs/boost 1.52.0-r7 1.53.0-r1 1.54.0-r1 1.55.0-r2 1.56.0-r1 1.57.0 1.58.0-r
 dev-libs/boost-numpy 0_pre20131206 9999: Boost.Python interface for NumPy
 dev-libs/botan 1.10.5 1.10.10 1.11.4 1.11.8 1.11.20 1.11.20-r1 1.11.25: A C++ crypto library
 dev-libs/btparse 0.33 0.35: A C library to parse Bibtex files
-dev-libs/btparser 0.24 0.25: Parser and analyzer for backtraces produced by gdb
+dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
 dev-libs/c-blosc 1.3.2 1.3.5 1.5.3: Blocking, shuffling and lossless compression library
 dev-libs/capnproto 0.5.3: RPC/Serialization system with capabilities support
@@ -9679,7 +9679,7 @@ dev-vcs/darcs 2.8.4 2.8.4-r3 2.8.4-r6 2.8.5-r3 2.8.5-r4 2.10.0-r1 2.10.1: a dist
 dev-vcs/easygit 1.6.5.5: Easy GIT is a wrapper for git, designed to make git easy to learn and use
 dev-vcs/fossil 20150119112900: Simple, high-reliability, source control management, and more
 dev-vcs/giggle 0.7-r1: GTK+ Frontend for GIT
-dev-vcs/git 2.4.10 2.5.4 2.6.4 2.7.0 9999 9999-r1 9999-r2 9999-r3: GIT - the stupid content tracker, the revision control system heavily used by the Linux kernel team
+dev-vcs/git 2.4.10 2.5.4 2.6.4 2.6.5 2.7.0 9999 9999-r1 9999-r2 9999-r3: GIT - the stupid content tracker, the revision control system heavily used by the Linux kernel team
 dev-vcs/git-annex 5.20140927 5.20141125 5.20141203 5.20141231 5.20150219 5.20150327 5.20150617 5.20150710 5.20150731: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.12.04.26 0.12.12.15 9999: Bugzilla subcommand for git
 dev-vcs/git-bzr-ng 0_pre20120130 0_pre20120822: Git subcommand providing a bidirectional bridge to Bazaar repositories
@@ -14710,7 +14710,7 @@ net-nds/jxplorer 3.2 3.2-r2 3.3.1 3.3.1.1: A fully functional ldap browser writt
 net-nds/lat 1.2.3: LDAP Administration Tool, allows you to browse LDAP-based directories and add/edit/delete entries
 net-nds/ldapvi 1.7-r1 1.7_p20101214: Manage LDAP entries with a text editor
 net-nds/led 1.111: led is a general purpose LDAP editor
-net-nds/nsscache 0.23 0.23-r1 0.23-r2 0.30 0.30-r2 0.30-r3: commandline tool to sync directory services to local cache
+net-nds/nsscache 0.23 0.23-r1 0.23-r2 0.30 0.30-r2 0.31: commandline tool to sync directory services to local cache
 net-nds/openldap 2.3.43-r3 2.3.43-r4 2.4.38-r2 2.4.39 2.4.40 2.4.40-r2 2.4.40-r4 2.4.42 2.4.42-r1 2.4.43: LDAP suite of application and development tools
 net-nds/phpldapadmin 1.2.3 1.2.3-r1: phpLDAPadmin is a web-based tool for managing all aspects of your LDAP server
 net-nds/portmap 6.0 9999: Netkit - portmapper
