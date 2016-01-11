@@ -1495,6 +1495,7 @@ dev-games/openscenegraph:fox - Build examples using x11-libs/fox library
 dev-games/openscenegraph:gdal - Enable support for sci-libs/gdal library
 dev-games/openscenegraph:openinventor - Build OpenInventor plugin
 dev-games/openscenegraph:osgapps - Build osg applications
+dev-games/openscenegraph:sdl2 - Use media-libs/libsdl2 additionally to media-libs/libsdl
 dev-games/openscenegraph:xrandr - Enable support for the X xrandr extension
 dev-games/physfs:grp - Enable Build Engine GRP archive support
 dev-games/physfs:hog - Enable Descent I/II HOG archive support
