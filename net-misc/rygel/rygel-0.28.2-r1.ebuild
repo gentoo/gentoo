@@ -82,5 +82,4 @@ pkg_postinst() {
 		elog "you will need to configure your desktop to do it."
 	fi
 }
-
 		
