@@ -15856,7 +15856,7 @@ sci-misc/oww 0.86.4 0.86.5: A one-wire weather station for Dallas Semiconductor
 sci-misc/pythoncad 1.37-r1: CAD program written in PyGTK
 sci-misc/repsnapper 2.2.0b_p3 2.3.2a_p3 2.4a_p0 9999: Host software for controlling the RepRap open source 3D printer
 sci-misc/vitables 2.1: A graphical tool for browsing and editing files in both PyTables and HDF5 formats
-sci-physics/bullet 2.80 2.81 2.82 2.83.4: Continuous Collision Detection and Physics Library
+sci-physics/bullet 2.81 2.82 2.83.4 2.83.5: Continuous Collision Detection and Physics Library
 sci-physics/cernlib 2006-r5 2006-r6: CERN program library for High Energy Physics
 sci-physics/cernlib-montecarlo 2006-r3 2006-r4: Monte-carlo library and tools for the cernlib
 sci-physics/clhep 2.0.4.6 2.1.0.1 2.1.2.4 2.1.3.1 2.1.4.1 2.1.4.2 2.2.0.1 2.2.0.5: High Energy Physics C++ library
