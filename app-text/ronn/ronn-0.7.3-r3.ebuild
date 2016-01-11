@@ -10,7 +10,7 @@ RUBY_FAKEGEM_EXTRADOC="AUTHORS CHANGES README.md"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Ronn converts simple, human readable textfiles to roff for terminal display, and also to HTML"
+DESCRIPTION="Converts simple, human readable textfiles to roff for terminal display, and to HTML"
 HOMEPAGE="https://github.com/rtomayko/ronn/"
 
 LICENSE="MIT"
@@ -19,12 +19,14 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 
 IUSE=""
 
-ruby_add_rdepend "
+DEPS="
 	>=dev-ruby/hpricot-0.8.2
 	>=dev-ruby/mustache-0.7.0
 	>=dev-ruby/rdiscount-1.5.8"
 
-ruby_add_bdepend ">=dev-ruby/hpricot-0.8.2 >=dev-ruby/rdiscount-1.5.8"
+ruby_add_rdepend "${DEPS}"
+
+ruby_add_bdepend "${DEPS}"
 
 all_ruby_prepare() {
 	# Avoid test failing due to changes in hash handling in ruby 1.8.7:
