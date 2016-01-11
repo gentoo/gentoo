@@ -56,6 +56,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-mp3.patch
 	sed -i -e 's/configure.in/configure.ac/' Makefile.in || die
 	mv configure.{in,ac} || die
+	rm acinclude/l*.m4 || die
 	AT_M4DIR=acinclude eautoreconf
 }
 
