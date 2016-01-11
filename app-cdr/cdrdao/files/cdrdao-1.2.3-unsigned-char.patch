@@ -1,0 +1,42 @@
+https://bugs.gentoo.org/69344
+https://sourceforge.net/p/cdrdao/patches/26/
+
+patch by qbt937@gmail.com
+
+--- a/dao/CdrDriver.cc
++++ b/dao/CdrDriver.cc
+@@ -495,7 +495,7 @@
+   0, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0
+ };
+ 
+-char CdrDriver::REMOTE_MSG_SYNC_[4] = { 0xff, 0x00, 0xff, 0x00 };
++unsigned char CdrDriver::REMOTE_MSG_SYNC_[4] = { 0xff, 0x00, 0xff, 0x00 };
+ 
+ 
+ /* Maps a string to the corresponding driver option value 
+--- a/dao/CdrDriver.h
++++ b/dao/CdrDriver.h
+@@ -440,7 +440,7 @@
+   bool fullBurn_;
+ 
+   static unsigned char syncPattern[12];
+-  static char REMOTE_MSG_SYNC_[4];
++  unsigned static char REMOTE_MSG_SYNC_[4];
+ 
+   static int speed2Mult(int);
+   static int mult2Speed(int);
+--- a/xdao/CdDevice.cc
++++ b/xdao/CdDevice.cc
+@@ -255,10 +255,10 @@
+ 
+ bool CdDevice::updateProgress(Glib::IOCondition cond, int fd)
+ {
+-  static char msgSync[4] = { 0xff, 0x00, 0xff, 0x00 };
++  unsigned static char msgSync[4] = { 0xff, 0x00, 0xff, 0x00 };
+   fd_set fds;
+   int state = 0;
+-  char buf[10];
++  unsigned char buf[10];
+   struct timeval timeout = { 0, 0 };
+ 
+   if (process_ == NULL)

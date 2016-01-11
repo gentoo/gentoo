@@ -44,6 +44,7 @@ S=${WORKDIR}/${P/_}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-glibc212.patch
+	epatch "${FILESDIR}"/${P}-unsigned-char.patch #569344
 }
 
 src_configure() {
