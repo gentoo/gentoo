@@ -15,7 +15,7 @@ DESCRIPTION="paludis, the other package mangler"
 HOMEPAGE="http://paludis.exherbo.org/"
 SRC_URI=""
 
-IUSE="doc pbins pink python ruby search-index test xml"
+IUSE="doc pbins pink python ruby search-index test +xml"
 LICENSE="GPL-2 vim"
 SLOT="0"
 KEYWORDS=""
