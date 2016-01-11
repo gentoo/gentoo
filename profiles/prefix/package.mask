@@ -10,11 +10,6 @@
 #
 
 
-# Fabian Groffen <grobian@gentoo.org> (11 Jan 2016)
-# we need the latest and greatest to have it work, bug #568974
-->=app-eselect/eselect-python-20151117-r3
-->=dev-lang/python-exec-2.2
-
 # Fabian Groffen <grobian@gentoo.org> (11 Feb 2014)
 # Fails to compile, bug #493464
 =sys-devel/autogen-5.18.1

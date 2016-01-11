@@ -1,31 +1,29 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit eutils cmake-utils
 
-# version release, check https://code.google.com/p/bullet/downloads/list
-MYP=${P}-rev2531
-
 DESCRIPTION="Continuous Collision Detection and Physics Library"
 HOMEPAGE="http://www.bulletphysics.com/"
-SRC_URI="https://bullet.googlecode.com/files/${MYP}.tgz"
+SRC_URI="https://github.com/bulletphysics/bullet3/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ZLIB"
-SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="doc double-precision examples extras"
+SLOT="0/${PV}"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+IUSE="+bullet3 doc double-precision examples extras"
 
-RDEPEND="virtual/opengl
+RDEPEND="
+	virtual/opengl
 	media-libs/freeglut"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[dot] )"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.78-soversion.patch )
 
-S="${WORKDIR}/${MYP}"
+S="${WORKDIR}/${PN}3-${PV}"
 
 src_prepare() {
 	# allow to generate docs
@@ -36,10 +34,12 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
 		-DBUILD_CPU_DEMOS=OFF
-		-DBUILD_DEMOS=OFF
+		-DBUILD_OPENGL3_DEMOS=OFF
+		-DBUILD_BULLET2_DEMOS=OFF
 		-DUSE_GRAPHICAL_BENCHMARK=OFF
 		-DINSTALL_LIBS=ON
 		-DINSTALL_EXTRA_LIBS=ON
+		$(cmake-utils_use_build bullet3 BULLET3)
 		$(cmake-utils_use_build extras EXTRAS)
 		$(cmake-utils_use_use double-precision DOUBLE_PRECISION)
 	)
@@ -55,9 +55,9 @@ src_compile() {
 
 src_install() {
 	cmake-utils_src_install
-	use doc && dodoc *.pdf && dohtml -r html/*
+	use doc && dodoc docs/*.pdf && dohtml -r html/*
 	if use examples; then
 		insinto /usr/share/doc/${PF}/examples
-		doins -r Extras Demos
+		doins -r Extras examples
 	fi
 }
