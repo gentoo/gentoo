@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="git://github.com/PromyLOPh/pianobar.git"
 else
 	SRC_URI="http://6xq.net/projects/${PN}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="A console-based replacement for Pandora's flash player"
