@@ -5,7 +5,8 @@
 extra_commands="checkconfig"
 extra_started_commands="reload"
 
-PIDFILE=/var/run/rspamd/rspamd.pid
+RUNDIR=/var/run/rspamd
+PIDFILE=$RUNDIR/rspamd.pid
 
 depend() {
 	need net
@@ -19,6 +20,12 @@ checkconfig() {
 start() {
 	checkconfig || return 1
 	ebegin "Starting ${SVCNAME}"
+	
+	mkdir -m0750 -p $RUNDIR
+	chown rspamd:rspamd $RUNDIR
+	chmod g+s $RUNDIR
+	rm -f $RUNDIR/$SVCNAME.sock
+	
 	start-stop-daemon --start --quiet --pidfile $PIDFILE -u rspamd -g rspamd \
 						--exec /usr/bin/rspamd
 	eend $?
