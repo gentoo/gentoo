@@ -13092,7 +13092,7 @@ media-sound/substract_wave 0.3-r1: substracts 2 mono wave files from each other 
 media-sound/sweep 0.9.3-r1: Audio editor and live playback tool
 media-sound/synaesthesia 2.4: a nice graphical accompaniment to music
 media-sound/taginfo 1.2-r1: a simple ID3 tag reader for use in shell scripts
-media-sound/tagtool 0.12.3: Audio Tag Tool Ogg/Mp3 Tagger
+media-sound/tagtool 0.12.3 0.12.3-r1: Audio Tag Tool Ogg/Mp3 Tagger
 media-sound/takcd 0.10: Command line CD player
 media-sound/tap-reverbed 0: Standalone JACK counterpart of LADSPA plugin TAP Reverberator
 media-sound/tapestrea 0.1.0.5-r1: Techniques + Paradigms for Expressive Synthesis, Transformation, Rendering of Environmental Audio
