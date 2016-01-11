@@ -32,7 +32,8 @@ src_prepare() {
 src_configure() {
 	use static && append-ldflags -static
 
-ac_cv_path_PERL=true \
+	# We don't need perl unless we run tests.
+	use test || export ac_cv_path_PERL=true
 	econf \
 		--docdir='$(datarootdir)'/doc/${PF} \
 		$(use_enable examples) \
