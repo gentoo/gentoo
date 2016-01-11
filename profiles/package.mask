@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron W. Swenson <titanofold@gentoo.org> (11 Jan 2016)
+# Masked for removal after 2016-03-11. Package hasn't been updated in
+# some time and doesn't work with Apache 2.4 without patching by
+# Gentoo. (Bug 548974) Use Apache Module mod_authn_dbd instead.
+www-apache/mod_auth_pgsql
+
 # Lars Wendler <polynomial-c@gentoo.org> (11 Jan 2016)
 # Masked until reavertm added all missing pieces (lua, gles)
 # to the ebuild.
