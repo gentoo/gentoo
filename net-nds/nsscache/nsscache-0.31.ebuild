@@ -9,9 +9,10 @@ inherit eutils distutils-r1
 
 DESCRIPTION="commandline tool to sync directory services to local cache"
 HOMEPAGE="https://github.com/google/nsscache"
+SCRIPT_A='nsscache-0.30-r3-gentoo-authorized-keys-command.py'
 SRC_URI="
 	https://github.com/google/nsscache/archive/version/${PV}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~robbat2/nsscache-0.30-r3-gentoo-authorized-keys-command.py"
+	https://dev.gentoo.org/~robbat2/${SCRIPT_A}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -42,7 +43,7 @@ src_install() {
 	doman nsscache.1 nsscache.conf.5
 	dodoc THANKS nsscache.cron CONTRIBUTING.md README.md
 	exeinto /usr/libexec/nsscache
-	newexe "${DISTDIR}"/nsscache-0.30-gentoo-authorized-keys-command.py authorized-keys-command.py
+	newexe "${DISTDIR}"/"${SCRIPT_A}" authorized-keys-command.py
 
 	keepdir /var/lib/nsscache
 }
