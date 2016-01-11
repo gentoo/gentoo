@@ -351,7 +351,7 @@ app-backup/cdbackup 0.7.1: Allows streaming backup utilities to dump/restore fro
 app-backup/cdbkup 1.0 1.0-r1: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
 app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
 app-backup/dar 2.4.9 2.4.10 2.4.11 2.4.12 2.4.13 2.4.17: A full featured backup tool, aimed for disks (floppy,CDR(W),DVDR(W),zip,jazz etc.)
-app-backup/deja-dup 32.0-r1 34.0: Simple backup tool using duplicity back-end
+app-backup/deja-dup 34.0 34.1: Simple backup tool using duplicity back-end
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
 app-backup/duplicity 0.6.22 0.6.23-r1 0.6.24 0.6.25 0.6.26: Secure backup system using gnupg to encrypt data
 app-backup/duply 1.9.2 1.10 1.10.1 1.11 1.11.1: A shell frontend for duplicity
@@ -2274,7 +2274,7 @@ app-text/htp 1.16-r1: An HTML preprocessor
 app-text/hunspell 1.3.3: Hunspell spell checker - an improved replacement for myspell in OOo
 app-text/hyperestraier 1.4.13: a full-text search system for communities
 app-text/info2html 2.0: Converts GNU .info files to HTML
-app-text/iso-codes 3.57 3.61 3.63: ISO language, territory, currency, script codes and their translations
+app-text/iso-codes 3.57 3.61 3.63 3.64: ISO language, territory, currency, script codes and their translations
 app-text/itex2mml 1.5.2: A LaTeX into XHTML/MathML converter
 app-text/jabref 2.10-r2 2.10-r4: Java GUI for managing BibTeX and other bibliographies
 app-text/jabref-bin 2.10 2.11_beta_rc2 2.11_beta_rc3 2.11_beta_rc3-r1 2.11_beta_rc4 2.11 2.11.1 3.1: Java GUI for managing BibTeX and other bibliographies
@@ -4754,7 +4754,7 @@ dev-libs/libx86emu 1.1: A library for emulating x86
 dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories Specification paths
 dev-libs/libxdiff 0.23 0.23-r1: Library for creating diff files
 dev-libs/libxls 0.3.0_pre107: A library which can read Excel (xls) files
-dev-libs/libxml2 2.9.2-r1 2.9.2-r4: Version 2 of the library to manipulate XML files
+dev-libs/libxml2 2.9.2-r4 2.9.3: Version 2 of the library to manipulate XML files
 dev-libs/libxr 1.0: Cross-platform XML-RPC client/server library written in C
 dev-libs/libxslt 1.1.28-r4 1.1.28-r5: XSLT libraries and tools
 dev-libs/libyaml 0.1.6: YAML 1.1 parser and emitter written in C
@@ -10723,8 +10723,8 @@ gnome-extra/cinnamon-desktop 2.6.5 2.8.0: A collection of libraries and utilites
 gnome-extra/cinnamon-menus 2.6.0 2.8.0: Cinnamon's library for the Desktop Menu fd.o specification
 gnome-extra/cinnamon-screensaver 2.6.4 2.8.0: Screensaver for Cinnamon
 gnome-extra/cinnamon-session 2.6.3 2.8.2: Cinnamon session manager
-gnome-extra/cinnamon-settings-daemon 2.6.3 2.8.1: Cinnamon's settings daemon
-gnome-extra/cinnamon-translations 2.6.3 2.8.2: Translation data for Cinnamon
+gnome-extra/cinnamon-settings-daemon 2.6.3 2.8.1 2.8.2: Cinnamon's settings daemon
+gnome-extra/cinnamon-translations 2.6.3 2.8.2 2.8.3: Translation data for Cinnamon
 gnome-extra/cjs 2.6.2 2.8.0: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/connman-gnome 0.7: Provides a daemon for managing internet connections
 gnome-extra/docky 2.2.0 2.2.1.1: Elegant, powerful, clean dock
@@ -10757,7 +10757,7 @@ gnome-extra/gnome-power-manager 3.16.1 3.18.0: GNOME power management service
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extensions 3.16.2 3.18.3: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons 26 28: Shows legacy tray icons on top
-gnome-extra/gnome-shell-frippery 0.10.3 3.18.1: Unofficial extension pack providing GNOME 2-like features for GNOME 3
+gnome-extra/gnome-shell-frippery 0.10.3 3.18.1 3.18.2: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-software 3.18.3: Gnome install & update software
 gnome-extra/gnome-system-monitor 3.16.0 3.18.2: The Gnome System Monitor
 gnome-extra/gnome-tweak-tool 3.16.2 3.18.1 3.18.1-r1: Tool to customize GNOME 3 options
@@ -10777,7 +10777,7 @@ gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.1 3.8.2 3.8.2-r1: A nautilus extension for sending files to locations
 gnome-extra/nautilus-share 0.7.3-r1: A nautilus plugin to easily share folders over the SMB protocol
 gnome-extra/nautilus-tracker-tags 1.4.1 1.6.0 1.6.1: Nautilus extension to tag files for Tracker
-gnome-extra/nemo 2.6.7 2.8.4: A file manager for Cinnamon, forked from Nautilus
+gnome-extra/nemo 2.6.7 2.8.4 2.8.5: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.0.6 1.0.8 1.0.10: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/polkit-gnome 0.105-r1: A dbus session bus service that is used to bring up authentication dialogs
@@ -17982,7 +17982,7 @@ x11-misc/calise 0.4.2: Computes ambient brightness and sets screen's correct bac
 x11-misc/cbatticon 1.3.2 1.4.1 1.4.2 1.5.0: A lightweight and fast battery icon that sits in your system tray
 x11-misc/cdm 0.5.3 0.6.1_pre20130419: The Console Display Manager
 x11-misc/chgres 0.1-r1: A very simple command line utility for changing X resolutions
-x11-misc/colord 1.2.10 1.2.11 1.2.12: System service to accurately color manage input and output devices
+x11-misc/colord 1.2.12: System service to accurately color manage input and output devices
 x11-misc/compton 0.1_beta1 0.1_beta2 9999: A compositor for X, and a fork of xcompmgr-dana
 x11-misc/dclock 2.2.2_p4 2.2.2_p4-r1: Digital clock for the X window system
 x11-misc/denu 2.3.2-r1: A menu generation program for fluxbox, waimea, openbox, icewm, gnome and kde
@@ -18684,7 +18684,7 @@ x11-wm/matchbox-desktop 0.9.1: The Matchbox Desktop
 x11-wm/matchbox-panel 0.9.3-r1: The Matchbox Panel
 x11-wm/matchbox-window-manager 1.2-r1: Light weight WM designed for use on PDA computers
 x11-wm/matwm2 0.1.1: Simple EWMH compatible window manager with titlebars and frames
-x11-wm/muffin 2.6.1 2.8.3: Compositing window manager forked from Mutter for use with Cinnamon
+x11-wm/muffin 2.6.1 2.8.3 2.8.4: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r3 0.9.24_p20100226-r4: A simple dynamic window manager for X, with features nicked from ratpoison and dwm
 x11-wm/mutter 3.16.4 3.18.2 3.18.2-r1: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
