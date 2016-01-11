@@ -3,7 +3,8 @@
 # $Id$
 
 EAPI=5
-inherit eutils flag-o-matic
+
+inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="Burn CDs in disk-at-once mode -- with optional GUI frontend"
 HOMEPAGE="http://cdrdao.sourceforge.net/"
@@ -48,6 +49,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Make sure we use a sane default `ar`.
+	tc-export AR
+
 	# Fix building with latest libsigc++
 	append-cxxflags -std=c++11
 	find -name '*.h' -exec sed -i '/sigc++\/object.h/d' {} + || die
