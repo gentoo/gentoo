@@ -9289,7 +9289,7 @@ dev-util/App-SVN-Bisect 1.1-r1: Binary search through svn revisions
 dev-util/Orange 2.7.2: Open source data visualization and analysis for novice and experts.
 dev-util/a8 0.11-r2 1.0: An ultra-lightweight IDE, that embeds Vim, a terminal emulator, and a file browser
 dev-util/aap 1.076 1.091-r2: Bram Moolenaar's super-make program
-dev-util/abi-compliance-checker 1.99.9 1.99.12-r1 9999: A tool for checking backward compatibility of a C/C++ library
+dev-util/abi-compliance-checker 1.99.9 1.99.12-r1 1.99.15 9999: A tool for checking backward compatibility of a C/C++ library
 dev-util/ald 0.1.7 0.1.7-r1: Assembly Language Debugger - a tool for debugging executable programs at the assembly level
 dev-util/alleyoop 0.9.8: A Gtk+ front-end to the Valgrind memory checker
 dev-util/amtterm 1.3-r1 1.4: A nice tool to manage amt-enabled machines
@@ -14337,7 +14337,7 @@ net-misc/cfengine 2.2.10-r4 3.3.9 3.4.5 3.5.3 3.6.2: An automated suite of progr
 net-misc/cgminer 4.7.0 4.8.0 4.9.0 4.9.1 4.9.2: Bitcoin CPU/GPU/FPGA/ASIC miner in C
 net-misc/cgterm 1.6: Connect to C64 telnet BBS's with the correct colours and font
 net-misc/charm 1.9.1 1.9.2-r1: A text based livejournal client
-net-misc/chrome-remote-desktop 44.0.2403.44 45.0.2454.17-r2: access remote computers via Chrome!
+net-misc/chrome-remote-desktop 47.0.2526.18: access remote computers via Chrome!
 net-misc/chrony 2.1.1 2.2 2.2-r1 9999: NTP client and server programs
 net-misc/clamz 0.4 0.5: Command-line downloader for the Amazon.com MP3 music store
 net-misc/clipgrab 3.4.9-r1 3.4.11 3.5.6: Download from various internet video services like Youtube etc.
