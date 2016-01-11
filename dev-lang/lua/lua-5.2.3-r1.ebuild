@@ -114,6 +114,7 @@ multilib_src_install() {
 	# We want packages to find our things...
 	cp "${FILESDIR}/lua.pc" "${WORKDIR}"
 	sed -i \
+		-e "s:^prefix= :prefix= ${EPREFIX}:" \
 		-e "s:^V=.*:V= ${PATCH_PV}:" \
 		-e "s:^R=.*:R= ${PV}:" \
 		-e "s:/,lib,:/$(get_libdir):g" \
