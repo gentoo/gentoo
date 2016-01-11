@@ -7552,7 +7552,7 @@ dev-python/pylibacl 0.5.0-r1: POSIX ACLs (Access Control Lists) for Python
 dev-python/pyliblzma 0.5.3-r1: Python bindings for liblzma
 dev-python/pylibmc 1.4.3 1.5.0: Libmemcached wrapper written as a Python extension
 dev-python/pylibpcap 0.6.4 0.6.4-r1: Python interface to libpcap
-dev-python/pylint 1.4.4 1.4.5 1.5.1 1.5.2: Python code static checker
+dev-python/pylint 1.4.4 1.4.5 1.5.1 1.5.2 1.5.3: Python code static checker
 dev-python/pylirc 0.0.5-r1: lirc module for Python
 dev-python/pylons 1.0.1-r1 1.0.2: Pylons Web Framework
 dev-python/pyltxml 1.3-r1: Bindings for LTXML libraries
@@ -14592,7 +14592,7 @@ net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.1 3.1.2: File transfer program to keep remote files into sync
 net-misc/rwbs 0.27-r1: Roger Wilco base station
 net-misc/rwhoisd 1.5.9.5-r2: ARIN rwhois daemon
-net-misc/rygel 0.26.1 0.28.1 0.28.2: Rygel is an open source UPnP/DLNA MediaServer
+net-misc/rygel 0.26.1 0.28.2 0.28.2-r1: Rygel is an open source UPnP/DLNA MediaServer
 net-misc/s3cmd 1.0.1 1.5.2-r1 1.6.0: Command line client for Amazon S3
 net-misc/samplicator 1.3.6 1.3.7_beta6: UDP packets forwarder and duplicator
 net-misc/scponly 4.8-r5: A tiny pseudoshell which only permits scp and sftp
