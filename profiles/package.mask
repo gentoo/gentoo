@@ -30,6 +30,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (11 Jan 2016)
+# (on behalf of Python team)
+# Masked for testing. python-exec now checks argv[0] to determine
+# whether it's called via the Python wrapper shebang, or symlinked
+# directly. eselect-python uses the C wrapper rather than Python wrapper
+# to fix Prefix support, #568974.
+>=app-eselect/eselect-python-20151117-r3
+>=dev-lang/python-exec-2.2
+
 # Aaron W. Swenson <titanofold@gentoo.org> (11 Jan 2016)
 # Masked for removal after 2016-03-11. Package hasn't been updated in
 # some time and doesn't work with Apache 2.4 without patching by
