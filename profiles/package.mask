@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (10 Jan 2016)
+# Superseded by gnu-classpath. Removal in 30 days.
+dev-java/gjdoc
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (9 Jan 2016)
 # Errorneously added. Is already in perl-core. Please uninstall.
 dev-perl/ExtUtils-Constant
