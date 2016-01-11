@@ -1,0 +1,826 @@
+diff -ur a/auth/credentials/wscript_build b/auth/credentials/wscript_build
+--- a/auth/credentials/wscript_build	2015-07-21 05:47:48.000000000 -0400
++++ b/auth/credentials/wscript_build	2016-01-11 15:00:28.939613937 -0500
+@@ -24,7 +24,8 @@
+ 	source='credentials_ntlm.c',
+ 	deps='samba-credentials')
+ 
+-bld.SAMBA_PYTHON('pycredentials',
++if not bld.env.disable_python:
++    bld.SAMBA_PYTHON('pycredentials',
+ 	source='pycredentials.c',
+ 	public_deps='samba-credentials cmdline-credentials pytalloc-util pyparam_util CREDENTIALS_KRB5 CREDENTIALS_SECRETS',
+ 	realname='samba/credentials.so'
+diff -ur a/lib/ldb/wscript b/lib/ldb/wscript
+--- a/lib/ldb/wscript	2015-12-10 04:23:28.000000000 -0500
++++ b/lib/ldb/wscript	2016-01-11 17:18:08.175466317 -0500
+@@ -34,6 +34,8 @@
+     conf.RECURSE('lib/tdb')
+     conf.RECURSE('lib/tevent')
+ 
++    conf.env.disable_python = getattr(Options.options, 'disable_python', False)
++
+     if conf.CHECK_FOR_THIRD_PARTY():
+         conf.RECURSE('third_party/popt')
+     else:
+@@ -47,7 +49,8 @@
+     conf.find_program('xsltproc', var='XSLTPROC')
+     conf.check_tool('python')
+     conf.check_python_version((2,4,2))
+-    conf.SAMBA_CHECK_PYTHON_HEADERS(mandatory=True)
++    if not conf.env.disable_python:
++        conf.SAMBA_CHECK_PYTHON_HEADERS(mandatory=True)
+ 
+     # where does the default LIBDIR end up? in conf.env somewhere?
+     #
+@@ -56,12 +59,12 @@
+     conf.env.standalone_ldb = conf.IN_LAUNCH_DIR()
+ 
+     if not conf.env.standalone_ldb:
+-        if conf.CHECK_BUNDLED_SYSTEM_PKG('pyldb-util', minversion=SYSTEM_VERSION,
++        if not conf.env.disable_python and conf.CHECK_BUNDLED_SYSTEM_PKG('pyldb-util', minversion=SYSTEM_VERSION,
+                                      onlyif='talloc tdb tevent',
+                                      implied_deps='replace talloc tdb tevent ldb'):
+             conf.define('USING_SYSTEM_PYLDB_UTIL', 1)
+-            if conf.CHECK_BUNDLED_SYSTEM_PKG('ldb', minversion=SYSTEM_VERSION,
+-                                         onlyif='talloc tdb tevent pyldb-util',
++        if conf.CHECK_BUNDLED_SYSTEM_PKG('ldb', minversion=SYSTEM_VERSION,
++                                         onlyif='talloc tdb tevent',
+                                          implied_deps='replace talloc tdb tevent'):
+                 conf.define('USING_SYSTEM_LDB', 1)
+ 
+@@ -121,7 +124,7 @@
+         bld.env.PACKAGE_VERSION = VERSION
+         bld.env.PKGCONFIGDIR = '${LIBDIR}/pkgconfig'
+ 
+-    if not bld.CONFIG_SET('USING_SYSTEM_PYLDB_UTIL'):
++    if not bld.env.disable_python and not bld.CONFIG_SET('USING_SYSTEM_PYLDB_UTIL'):
+         bld.SAMBA_LIBRARY('pyldb-util',
+                           deps='ldb',
+                           source='pyldb_util.c',
+diff -ur a/lib/ldb-samba/wscript_build b/lib/ldb-samba/wscript_build
+--- a/lib/ldb-samba/wscript_build	2015-09-08 09:45:25.000000000 -0400
++++ b/lib/ldb-samba/wscript_build	2016-01-11 16:24:06.620294703 -0500
+@@ -19,7 +19,8 @@
+                     )
+ 
+ 
+-bld.SAMBA_PYTHON('python_samba__ldb', 'pyldb.c',
++if not bld.env.disable_python:
++    bld.SAMBA_PYTHON('python_samba__ldb', 'pyldb.c',
+                  deps='ldbsamba pyparam_util ldbwrap pyldb-util',
+                  realname='samba/_ldb.so')
+ 
+diff -ur a/lib/talloc/wscript b/lib/talloc/wscript
+--- a/lib/talloc/wscript	2015-09-08 09:45:25.000000000 -0400
++++ b/lib/talloc/wscript	2016-01-11 15:06:09.538876676 -0500
+@@ -48,7 +48,7 @@
+         if conf.CHECK_BUNDLED_SYSTEM_PKG('talloc', minversion=VERSION,
+                                      implied_deps='replace'):
+             conf.define('USING_SYSTEM_TALLOC', 1)
+-        if conf.CHECK_BUNDLED_SYSTEM_PKG('pytalloc-util', minversion=VERSION,
++        if not conf.env.disable_python and conf.CHECK_BUNDLED_SYSTEM_PKG('pytalloc-util', minversion=VERSION,
+                                      implied_deps='talloc replace'):
+             conf.define('USING_SYSTEM_PYTALLOC_UTIL', 1)
+ 
+diff -ur a/lib/tdb/wscript b/lib/tdb/wscript
+--- a/lib/tdb/wscript	2015-09-08 09:45:25.000000000 -0400
++++ b/lib/tdb/wscript	2016-01-11 15:07:53.698683836 -0500
+@@ -82,7 +82,7 @@
+                                      implied_deps='replace'):
+             conf.define('USING_SYSTEM_TDB', 1)
+             conf.env.building_tdb = False
+-            if conf.CHECK_BUNDLED_SYSTEM_PYTHON('pytdb', 'tdb', minversion=VERSION):
++            if not conf.env.disable_python and conf.CHECK_BUNDLED_SYSTEM_PYTHON('pytdb', 'tdb', minversion=VERSION):
+                 conf.define('USING_SYSTEM_PYTDB', 1)
+ 
+     conf.env.disable_python = getattr(Options.options, 'disable_python', False)
+@@ -123,7 +123,7 @@
+     else:
+         private_library = True
+ 
+-    if not bld.CONFIG_SET('USING_SYSTEM_TDB'):
++    if not bld.env.disable_python and not bld.CONFIG_SET('USING_SYSTEM_TDB'):
+ 
+         tdb_deps = 'replace'
+ 
+diff -ur a/lib/tevent/wscript b/lib/tevent/wscript
+--- a/lib/tevent/wscript	2015-07-21 05:47:49.000000000 -0400
++++ b/lib/tevent/wscript	2016-01-11 15:09:18.228533367 -0500
+@@ -34,11 +34,13 @@
+ 
+     conf.env.standalone_tevent = conf.IN_LAUNCH_DIR()
+ 
++    conf.env.disable_python = getattr(Options.options, 'disable_python', False)
++
+     if not conf.env.standalone_tevent:
+         if conf.CHECK_BUNDLED_SYSTEM_PKG('tevent', minversion=VERSION,
+                                      onlyif='talloc', implied_deps='replace talloc'):
+             conf.define('USING_SYSTEM_TEVENT', 1)
+-            if conf.CHECK_BUNDLED_SYSTEM_PYTHON('pytevent', 'tevent', minversion=VERSION):
++            if not conf.env.disable_python and conf.CHECK_BUNDLED_SYSTEM_PYTHON('pytevent', 'tevent', minversion=VERSION):
+                 conf.define('USING_SYSTEM_PYTEVENT', 1)
+ 
+     if conf.CHECK_FUNCS('epoll_create', headers='sys/epoll.h'):
+@@ -61,8 +63,6 @@
+     if not conf.CONFIG_SET('USING_SYSTEM_TEVENT'):
+         conf.DEFINE('TEVENT_NUM_SIGNALS', tevent_num_signals)
+ 
+-    conf.env.disable_python = getattr(Options.options, 'disable_python', False)
+-
+     if not conf.env.disable_python:
+         # also disable if we don't have the python libs installed
+         conf.find_program('python', var='PYTHON')
+diff -ur a/libcli/echo/tests/wscript_build b/libcli/echo/tests/wscript_build
+--- a/libcli/echo/tests/wscript_build	2015-07-21 05:47:49.000000000 -0400
++++ b/libcli/echo/tests/wscript_build	2016-01-11 16:24:27.460246607 -0500
+@@ -1,6 +1,7 @@
+ #!/usr/bin/env python
+ 
+-bld.SAMBA_MODULE('TORTURE_LIBCLI_ECHO',
++if not bld.env.disable_python:
++    bld.SAMBA_MODULE('TORTURE_LIBCLI_ECHO',
+         source='echo.c',
+         subsystem='smbtorture',
+         init_function='torture_libcli_echo_init',
+diff -ur a/libcli/nbt/wscript_build b/libcli/nbt/wscript_build
+--- a/libcli/nbt/wscript_build	2015-07-21 05:47:49.000000000 -0400
++++ b/libcli/nbt/wscript_build	2016-01-11 15:09:55.648466757 -0500
+@@ -24,7 +24,8 @@
+                  install=False
+                  )
+ 
+-bld.SAMBA_PYTHON('python_netbios',
++if not bld.env.disable_python:
++    bld.SAMBA_PYTHON('python_netbios',
+                  source='pynbt.c',
+                  public_deps='cli-nbt DYNCONFIG samba-hostconfig',
+                  realname='samba/netbios.so'
+diff -ur a/libcli/security/wscript_build b/libcli/security/wscript_build
+--- a/libcli/security/wscript_build	2015-07-21 05:47:49.000000000 -0400
++++ b/libcli/security/wscript_build	2016-01-11 15:10:11.378438755 -0500
+@@ -7,7 +7,8 @@
+                   deps='talloc ndr NDR_SECURITY'
+                   )
+ 
+-bld.SAMBA_PYTHON('pysecurity',
++if not bld.env.disable_python:
++    bld.SAMBA_PYTHON('pysecurity',
+                  source='pysecurity.c',
+                  deps='samba-security pytalloc-util',
+                  realname='samba/security.so'
+diff -ur a/python/wscript_build b/python/wscript_build
+--- a/python/wscript_build	2015-07-21 05:47:49.000000000 -0400
++++ b/python/wscript_build	2016-01-11 15:11:12.328330260 -0500
+@@ -1,13 +1,14 @@
+ #!/usr/bin/env python
+ 
+-bld.SAMBA_LIBRARY('samba_python',
++if not bld.env.disable_python:
++    bld.SAMBA_LIBRARY('samba_python',
+ 	source=[],
+ 	deps='LIBPYTHON pytalloc-util pyrpc_util',
+ 	grouping_library=True,
+ 	private_library=True,
+ 	pyembed=True)
+ 
+-bld.SAMBA_SUBSYSTEM('LIBPYTHON',
++    bld.SAMBA_SUBSYSTEM('LIBPYTHON',
+ 	source='modules.c',
+ 	public_deps='',
+ 	init_function_sentinel='{NULL,NULL}',
+@@ -16,7 +17,7 @@
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('python_uuid',
++    bld.SAMBA_PYTHON('python_uuid',
+ 	source='uuidmodule.c',
+ 	deps='ndr',
+ 	realname='uuid.so',
+@@ -24,7 +25,7 @@
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('python_glue',
++    bld.SAMBA_PYTHON('python_glue',
+ 	source='pyglue.c',
+ 	deps='pyparam_util samba-util netif pytalloc-util',
+ 	realname='samba/_glue.so'
+@@ -32,8 +33,8 @@
+ 
+ 
+ # install out various python scripts for use by make test
+-bld.SAMBA_SCRIPT('samba_python_files',
++    bld.SAMBA_SCRIPT('samba_python_files',
+                  pattern='samba/**/*.py',
+                  installdir='python')
+ 
+-bld.INSTALL_WILDCARD('${PYTHONARCHDIR}', 'samba/**/*.py', flat=False)
++    bld.INSTALL_WILDCARD('${PYTHONARCHDIR}', 'samba/**/*.py', flat=False)
+diff -ur a/source3/param/wscript_build b/source3/param/wscript_build
+--- a/source3/param/wscript_build	2015-07-21 05:47:49.000000000 -0400
++++ b/source3/param/wscript_build	2016-01-11 15:11:55.388253614 -0500
+@@ -14,7 +14,8 @@
+                     group='build_source',
+                     rule='${PYTHON} ${SRC[0].abspath(env)} --file ${SRC[1].abspath(env)} --output ${TGT} --mode=S3PROTO')
+ 
+-bld.SAMBA3_PYTHON('pys3param',
++if not bld.env.disable_python:
++    bld.SAMBA3_PYTHON('pys3param',
+                   source='pyparam.c',
+                   deps='param',
+                   public_deps='samba-hostconfig pytalloc-util talloc',
+diff -ur a/source3/passdb/wscript_build b/source3/passdb/wscript_build
+--- a/source3/passdb/wscript_build	2015-07-21 05:47:49.000000000 -0400
++++ b/source3/passdb/wscript_build	2016-01-11 15:12:25.978199164 -0500
+@@ -40,7 +40,8 @@
+                   internal_module=bld.SAMBA3_IS_STATIC_MODULE('pdb_samba_dsdb') and bld.AD_DC_BUILD_IS_ENABLED(),
+                   enabled=bld.SAMBA3_IS_ENABLED_MODULE('pdb_samba_dsdb') and bld.AD_DC_BUILD_IS_ENABLED())
+ 
+-bld.SAMBA3_PYTHON('pypassdb',
++if not bld.env.disable_python:
++    bld.SAMBA3_PYTHON('pypassdb',
+                   source='py_passdb.c',
+                   deps='pdb',
+                   public_deps='samba-util tdb talloc pyrpc_util',
+diff -ur a/source3/wscript_build b/source3/wscript_build
+--- a/source3/wscript_build	2015-07-21 05:47:49.000000000 -0400
++++ b/source3/wscript_build	2016-01-11 15:13:11.678117805 -0500
+@@ -1484,13 +1484,14 @@
+                  param''',
+                  install=False)
+ 
+-bld.SAMBA3_PYTHON('pysmbd',
++if not bld.env.disable_python:
++    bld.SAMBA3_PYTHON('pysmbd',
+                   source='smbd/pysmbd.c',
+                   deps='smbd_base pyrpc_util',
+                   realname='samba/samba3/smbd.so'
+                   )
+ 
+-bld.SAMBA3_PYTHON('pylibsmb',
++    bld.SAMBA3_PYTHON('pylibsmb',
+                   source='libsmb/pylibsmb.c',
+                   deps='smbclient samba-credentials',
+                   realname='samba/samba3/libsmb_samba_internal.so'
+diff -ur a/source4/auth/gensec/wscript_build b/source4/auth/gensec/wscript_build
+--- a/source4/auth/gensec/wscript_build	2015-07-21 05:47:49.000000000 -0400
++++ b/source4/auth/gensec/wscript_build	2016-01-11 15:13:31.408082687 -0500
+@@ -22,7 +22,8 @@
+ 	deps='gssapi samba-credentials authkrb5 com_err gensec_util'
+ 	)
+ 
+-bld.SAMBA_PYTHON('pygensec',
++if not bld.env.disable_python:
++    bld.SAMBA_PYTHON('pygensec',
+ 	source='pygensec.c',
+ 	deps='gensec pytalloc-util pyparam_util',
+ 	realname='samba/gensec.so'
+diff -ur a/source4/auth/wscript_build b/source4/auth/wscript_build
+--- a/source4/auth/wscript_build	2015-07-21 05:47:49.000000000 -0400
++++ b/source4/auth/wscript_build	2016-01-11 15:13:53.698043012 -0500
+@@ -43,7 +43,8 @@
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('pyauth',
++if not bld.env.disable_python:
++    bld.SAMBA_PYTHON('pyauth',
+ 	source='pyauth.c',
+ 	public_deps='auth_system_session',
+ 	deps='samdb pytalloc-util pyparam_util pyldb-util pycredentials auth4',
+diff -ur a/source4/dsdb/wscript_build b/source4/dsdb/wscript_build
+--- a/source4/dsdb/wscript_build	2015-07-21 05:47:49.000000000 -0400
++++ b/source4/dsdb/wscript_build	2016-01-11 17:18:54.355199618 -0500
+@@ -58,7 +58,8 @@
+ 	enabled=bld.AD_DC_BUILD_IS_ENABLED()
+ 	)
+ 
+-bld.SAMBA_PYTHON('python_dsdb',
++if not bld.env.disable_python:
++    bld.SAMBA_PYTHON('python_dsdb',
+ 	source='pydsdb.c',
+ 	# the dependency on dcerpc here is because gensec
+ 	# depends on dcerpc but the waf circular dependency finder
+diff -ur a/source4/lib/com/wscript_build b/source4/lib/com/wscript_build
+--- a/source4/lib/com/wscript_build	2015-07-21 05:47:49.000000000 -0400
++++ b/source4/lib/com/wscript_build	2016-01-11 15:14:15.448004296 -0500
+@@ -27,7 +27,8 @@
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('pycom',
++if not bld.env.disable_python:
++    bld.SAMBA_PYTHON('pycom',
+ 	source='pycom.c',
+ 	deps='COM',
+ 	realname='samba/com.so',
+diff -ur a/source4/lib/messaging/wscript_build b/source4/lib/messaging/wscript_build
+--- a/source4/lib/messaging/wscript_build	2015-07-21 05:47:49.000000000 -0400
++++ b/source4/lib/messaging/wscript_build	2016-01-11 15:15:19.467890326 -0500
+@@ -7,7 +7,8 @@
+ 	private_library=True
+ 	)
+ 
+-bld.SAMBA_PYTHON('python_messaging',
++if not bld.env.disable_python:
++    bld.SAMBA_PYTHON('python_messaging',
+ 	source='pymessaging.c',
+ 	deps='MESSAGING events pyparam_util',
+ 	realname='samba/messaging.so'
+diff -ur a/source4/lib/policy/wscript_build b/source4/lib/policy/wscript_build
+--- a/source4/lib/policy/wscript_build	2015-07-21 05:47:49.000000000 -0400
++++ b/source4/lib/policy/wscript_build	2016-01-11 15:16:01.397815695 -0500
+@@ -1,6 +1,7 @@
+ #!/usr/bin/env python
+ 
+-bld.SAMBA_LIBRARY('samba-policy',
++if not bld.env.disable_python:
++    bld.SAMBA_LIBRARY('samba-policy',
+ 	source='gp_ldap.c gp_filesys.c gp_manage.c gp_ini.c',
+ 	pc_files='samba-policy.pc',
+ 	public_deps='ldb samba-net',
+@@ -9,7 +10,7 @@
+ 	public_headers='policy.h'
+ 	)
+ 
+-bld.SAMBA_PYTHON('py_policy',
++    bld.SAMBA_PYTHON('py_policy',
+ 	source='pypolicy.c',
+ 	public_deps='samba-policy pytalloc-util',
+ 	realname='samba/policy.so'
+diff -ur a/source4/lib/registry/wscript_build b/source4/lib/registry/wscript_build
+--- a/source4/lib/registry/wscript_build	2015-07-21 05:47:49.000000000 -0400
++++ b/source4/lib/registry/wscript_build	2016-01-11 16:12:54.391817258 -0500
+@@ -61,7 +61,8 @@
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('py_registry',
++if not bld.env.disable_python:
++    bld.SAMBA_PYTHON('py_registry',
+ 	source='pyregistry.c',
+ 	public_deps='registry pytalloc-util pyparam_util',
+ 	realname='samba/registry.so'
+diff -ur a/source4/lib/wmi/wscript_build b/source4/lib/wmi/wscript_build
+--- a/source4/lib/wmi/wscript_build	2015-07-21 05:47:49.000000000 -0400
++++ b/source4/lib/wmi/wscript_build	2016-01-11 16:13:14.691774082 -0500
+@@ -19,7 +19,8 @@
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('pywmi',
++if not bld.env.disable_python:
++    bld.SAMBA_PYTHON('pywmi',
+ 	source='wmi_wrap.c',
+ 	public_deps='LIBCLI_SMB ndr samba-util samba-config WMI'
+ 	)
+diff -ur a/source4/libcli/wscript_build b/source4/libcli/wscript_build
+--- a/source4/libcli/wscript_build	2015-07-21 05:47:49.000000000 -0400
++++ b/source4/libcli/wscript_build	2016-01-11 16:14:06.921662991 -0500
+@@ -31,12 +31,13 @@
+ 	public_headers='smb_composite/smb_composite.h',
+ 	)
+ 
+-bld.SAMBA_PYTHON('pysmb',
+-    source='pysmb.c',
+-    deps='LIBCLI_SMB_COMPOSITE LIBCLI_SMB2 tevent-util pyparam_util',
++if not bld.env.disable_python:
++    bld.SAMBA_PYTHON('pysmb',
++        source='pysmb.c',
++        deps='LIBCLI_SMB_COMPOSITE LIBCLI_SMB2 tevent-util pyparam_util',
+ 	public_deps='cli_composite samba-credentials gensec LIBCLI_RESOLVE tevent param_options',
+-    realname='samba/smb.so'
+-    )
++        realname='samba/smb.so'
++        )
+ 
+ bld.SAMBA_SUBSYSTEM('LIBCLI_DGRAM',
+ 	source='dgram/dgramsocket.c dgram/mailslot.c dgram/netlogon.c dgram/browse.c',
+diff -ur a/source4/libnet/wscript_build b/source4/libnet/wscript_build
+--- a/source4/libnet/wscript_build	2015-07-21 05:47:49.000000000 -0400
++++ b/source4/libnet/wscript_build	2016-01-11 16:14:44.361583367 -0500
+@@ -1,6 +1,7 @@
+ #!/usr/bin/env python
+ 
+-bld.SAMBA_LIBRARY('samba-net',
++if not bld.env.disable_python:
++    bld.SAMBA_LIBRARY('samba-net',
+ 	source='libnet.c libnet_passwd.c libnet_time.c libnet_rpc.c libnet_join.c libnet_site.c libnet_become_dc.c libnet_unbecome_dc.c libnet_vampire.c libnet_samdump.c libnet_samsync_ldb.c libnet_user.c libnet_group.c libnet_share.c libnet_lookup.c libnet_domain.c userinfo.c groupinfo.c userman.c groupman.c prereq_domain.c libnet_samsync.c',
+ 	autoproto='libnet_proto.h',
+ 	public_deps='samba-credentials dcerpc dcerpc-samr RPC_NDR_LSA RPC_NDR_SRVSVC RPC_NDR_DRSUAPI cli_composite LIBCLI_RESOLVE LIBCLI_FINDDCS cli_cldap LIBCLI_FINDDCS gensec_schannel LIBCLI_AUTH ndr smbpasswdparser PROVISION LIBCLI_SAMSYNC LIBTSOCKET',
+@@ -8,13 +9,13 @@
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('python_net',
++    bld.SAMBA_PYTHON('python_net',
+ 	source='py_net.c',
+ 	deps='samba-net pyrpc_util',
+ 	realname='samba/net.so'
+ 	)
+ 
+-bld.SAMBA_PYTHON('python_dckeytab',
++    bld.SAMBA_PYTHON('python_dckeytab',
+ 	source='py_net_dckeytab.c libnet_export_keytab.c',
+ 	deps='pyrpc_util HDB_SAMBA4 com_err',
+ 	realname='samba/dckeytab.so',
+diff -ur a/source4/librpc/wscript_build b/source4/librpc/wscript_build
+--- a/source4/librpc/wscript_build	2015-07-21 05:47:49.000000000 -0400
++++ b/source4/librpc/wscript_build	2016-01-11 16:17:21.861228841 -0500
+@@ -140,228 +140,229 @@
+ 	vnum='0.0.1'
+ 	)
+ 
+-bld.SAMBA_SUBSYSTEM('pyrpc_util',
++if not bld.env.disable_python:
++    bld.SAMBA_SUBSYSTEM('pyrpc_util',
+ 	source='rpc/pyrpc_util.c',
+ 	public_deps='pytalloc-util pyparam_util dcerpc MESSAGING',
+ 	pyext=True,
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('python_dcerpc',
++    bld.SAMBA_PYTHON('python_dcerpc',
+ 	source='rpc/pyrpc.c',
+ 	public_deps='LIBCLI_SMB samba-util samba-hostconfig dcerpc-samr RPC_NDR_LSA DYNCONFIG pyrpc_util gensec',
+ 	realname='samba/dcerpc/base.so'
+ 	)
+ 
+-bld.SAMBA_PYTHON('python_srvsvc',
+-    source='../../librpc/gen_ndr/py_srvsvc.c',
+-    deps='RPC_NDR_SRVSVC pytalloc-util pyrpc_util',
+-    realname='samba/dcerpc/srvsvc.so'
+-    )
++    bld.SAMBA_PYTHON('python_srvsvc',
++        source='../../librpc/gen_ndr/py_srvsvc.c',
++        deps='RPC_NDR_SRVSVC pytalloc-util pyrpc_util',
++        realname='samba/dcerpc/srvsvc.so'
++        )
+ 
+-bld.SAMBA_PYTHON('python_echo',
++    bld.SAMBA_PYTHON('python_echo',
+ 	source='../../librpc/gen_ndr/py_echo.c',
+ 	deps='RPC_NDR_ECHO pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/echo.so'
+ 	)
+ 
+-bld.SAMBA_PYTHON('python_dns',
++    bld.SAMBA_PYTHON('python_dns',
+ 	source='../../librpc/gen_ndr/py_dns.c',
+ 	deps='RPC_NDR_DNS pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/dns.so'
+ 	)
+ 
+-bld.SAMBA_PYTHON('python_auth',
++    bld.SAMBA_PYTHON('python_auth',
+ 	source='../../librpc/gen_ndr/py_auth.c',
+ 	deps='NDR_AUTH pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/auth.so'
+ 	)
+ 
+-bld.SAMBA_PYTHON('python_krb5pac',
++    bld.SAMBA_PYTHON('python_krb5pac',
+ 	source='../../librpc/gen_ndr/py_krb5pac.c',
+ 	deps='ndr-krb5pac pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/krb5pac.so'
+ 	)
+ 
+-bld.SAMBA_PYTHON('python_winreg',
++    bld.SAMBA_PYTHON('python_winreg',
+ 	source='../../librpc/gen_ndr/py_winreg.c',
+ 	deps='RPC_NDR_WINREG pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/winreg.so'
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('python_dcerpc_misc',
++    bld.SAMBA_PYTHON('python_dcerpc_misc',
+ 	source='../../librpc/gen_ndr/py_misc.c',
+ 	deps='pytalloc-util pyrpc_util ndr-krb5pac',
+ 	realname='samba/dcerpc/misc.so'
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('python_initshutdown',
++    bld.SAMBA_PYTHON('python_initshutdown',
+ 	source='../../librpc/gen_ndr/py_initshutdown.c',
+ 	deps='RPC_NDR_INITSHUTDOWN pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/initshutdown.so'
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('python_epmapper',
++    bld.SAMBA_PYTHON('python_epmapper',
+ 	source='../../librpc/gen_ndr/py_epmapper.c',
+ 	deps='dcerpc pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/epmapper.so'
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('python_mgmt',
++    bld.SAMBA_PYTHON('python_mgmt',
+ 	source='../../librpc/gen_ndr/py_mgmt.c',
+ 	deps='pytalloc-util dcerpc pyrpc_util',
+ 	realname='samba/dcerpc/mgmt.so'
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('python_atsvc',
++    bld.SAMBA_PYTHON('python_atsvc',
+ 	source='../../librpc/gen_ndr/py_atsvc.c',
+ 	deps='dcerpc-atsvc pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/atsvc.so'
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('python_dcerpc_nbt',
++    bld.SAMBA_PYTHON('python_dcerpc_nbt',
+ 	source='../../librpc/gen_ndr/py_nbt.c',
+ 	deps='ndr_nbt RPC_NDR_NBT pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/nbt.so'
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('python_samr',
++    bld.SAMBA_PYTHON('python_samr',
+ 	source='../../librpc/gen_ndr/py_samr.c',
+ 	deps='dcerpc-samr pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/samr.so'
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('python_svcctl',
++    bld.SAMBA_PYTHON('python_svcctl',
+ 	source='../../librpc/gen_ndr/py_svcctl.c',
+ 	deps='RPC_NDR_SVCCTL pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/svcctl.so'
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('python_lsa',
++    bld.SAMBA_PYTHON('python_lsa',
+ 	source='../../librpc/gen_ndr/py_lsa.c',
+ 	deps='RPC_NDR_LSA pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/lsa.so'
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('python_wkssvc',
++    bld.SAMBA_PYTHON('python_wkssvc',
+ 	source='../../librpc/gen_ndr/py_wkssvc.c',
+ 	deps='RPC_NDR_WKSSVC pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/wkssvc.so'
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('python_dfs',
++    bld.SAMBA_PYTHON('python_dfs',
+ 	source='../../librpc/gen_ndr/py_dfs.c',
+ 	deps='RPC_NDR_DFS pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/dfs.so'
+ 	)
+ 
+-bld.SAMBA_PYTHON('python_dcerpc_dcerpc',
++    bld.SAMBA_PYTHON('python_dcerpc_dcerpc',
+ 	source='../../librpc/gen_ndr/py_dcerpc.c',
+ 	deps='NDR_DCERPC pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/dcerpc.so'
+ 	)
+ 
+-bld.SAMBA_PYTHON('python_unixinfo',
++    bld.SAMBA_PYTHON('python_unixinfo',
+ 	source='../../librpc/gen_ndr/py_unixinfo.c',
+ 	deps='RPC_NDR_UNIXINFO pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/unixinfo.so'
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('python_irpc',
++    bld.SAMBA_PYTHON('python_irpc',
+ 	source='gen_ndr/py_irpc.c',
+ 	deps='RPC_NDR_IRPC pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/irpc.so'
+ 	)
+ 
+-bld.SAMBA_PYTHON('python_server_id',
++    bld.SAMBA_PYTHON('python_server_id',
+ 	source='../../librpc/gen_ndr/py_server_id.c',
+ 	deps='RPC_NDR_SERVER_ID pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/server_id.so'
+ 	)
+ 
+-bld.SAMBA_PYTHON('python_winbind',
++    bld.SAMBA_PYTHON('python_winbind',
+ 	source='../../librpc/gen_ndr/py_winbind.c',
+ 	deps='RPC_NDR_WINBIND pytalloc-util pyrpc_util python_netlogon',
+ 	realname='samba/dcerpc/winbind.so'
+ 	)
+ 
+-bld.SAMBA_PYTHON('python_idmap',
++    bld.SAMBA_PYTHON('python_idmap',
+ 	source='../../librpc/gen_ndr/py_idmap.c',
+ 	deps='NDR_IDMAP pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/idmap.so'
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('python_drsuapi',
++    bld.SAMBA_PYTHON('python_drsuapi',
+ 	source='../../librpc/gen_ndr/py_drsuapi.c',
+ 	deps='RPC_NDR_DRSUAPI pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/drsuapi.so'
+ 	)
+ 
+-bld.SAMBA_PYTHON('python_dcerpc_security',
++    bld.SAMBA_PYTHON('python_dcerpc_security',
+ 	source='../../librpc/gen_ndr/py_security.c',
+ 	deps='pytalloc-util pyrpc_util NDR_SECURITY',
+ 	realname='samba/dcerpc/security.so'
+ 	)
+ 
+-bld.SAMBA_PYTHON('python_dcerpc_drsblobs',
++    bld.SAMBA_PYTHON('python_dcerpc_drsblobs',
+ 	source='../../librpc/gen_ndr/py_drsblobs.c',
+ 	deps='pytalloc-util pyrpc_util NDR_SECURITY RPC_NDR_DRSBLOBS',
+ 	realname='samba/dcerpc/drsblobs.so'
+ 	)
+ 
+-bld.SAMBA_PYTHON('python_dcerpc_dnsp',
++    bld.SAMBA_PYTHON('python_dcerpc_dnsp',
+ 	source='../../librpc/gen_ndr/py_dnsp.c',
+ 	deps='pytalloc-util pyrpc_util NDR_SECURITY RPC_NDR_DNSP',
+ 	realname='samba/dcerpc/dnsp.so'
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('python_dcerpc_xattr',
++    bld.SAMBA_PYTHON('python_dcerpc_xattr',
+ 	source='../../librpc/gen_ndr/py_xattr.c',
+ 	deps='pytalloc-util pyrpc_util RPC_NDR_XATTR',
+ 	realname='samba/dcerpc/xattr.so'
+ 	)
+ 
+-bld.SAMBA_PYTHON('python_dcerpc_idmap',
++    bld.SAMBA_PYTHON('python_dcerpc_idmap',
+ 	source='../../librpc/gen_ndr/py_idmap.c',
+ 	deps='pytalloc-util pyrpc_util RPC_NDR_XATTR',
+ 	realname='samba/dcerpc/idmap.so'
+ 	)
+ 
+-bld.SAMBA_PYTHON('python_netlogon',
++    bld.SAMBA_PYTHON('python_netlogon',
+ 	source='../../librpc/gen_ndr/py_netlogon.c',
+ 	deps='RPC_NDR_NETLOGON pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/netlogon.so'
+ 	)
+ 
+-bld.SAMBA_PYTHON('python_dnsserver',
++    bld.SAMBA_PYTHON('python_dnsserver',
+ 	source='../../librpc/gen_ndr/py_dnsserver.c',
+ 	deps='RPC_NDR_DNSSERVER pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/dnsserver.so'
+ 	)
+ 
+-bld.SAMBA_PYTHON('python_dcerpc_smb_acl',
++    bld.SAMBA_PYTHON('python_dcerpc_smb_acl',
+ 	source='../../librpc/gen_ndr/py_smb_acl.c',
+ 	deps='pytalloc-util pyrpc_util',
+ 	realname='samba/dcerpc/smb_acl.so'
+ 	)
+ 
+-bld.SAMBA_SCRIPT('python_dcerpc_init',
++    bld.SAMBA_SCRIPT('python_dcerpc_init',
+                  pattern='rpc/dcerpc.py',
+                  installdir='python/samba/dcerpc',
+                  installname='__init__.py')
+ 
+-bld.INSTALL_FILES('${PYTHONARCHDIR}/samba/dcerpc', 'rpc/dcerpc.py', destname='__init__.py')
++    bld.INSTALL_FILES('${PYTHONARCHDIR}/samba/dcerpc', 'rpc/dcerpc.py', destname='__init__.py')
+diff -ur a/source4/ntvfs/posix/wscript_build b/source4/ntvfs/posix/wscript_build
+--- a/source4/ntvfs/posix/wscript_build	2015-07-21 05:47:49.000000000 -0400
++++ b/source4/ntvfs/posix/wscript_build	2016-01-11 16:18:40.921046390 -0500
+@@ -30,7 +30,8 @@
+ 	)
+ 
+ 
+-bld.SAMBA_MODULE('ntvfs_posix',
++if not bld.env.disable_python:
++    bld.SAMBA_MODULE('ntvfs_posix',
+ 	source='vfs_posix.c pvfs_util.c pvfs_search.c pvfs_dirlist.c pvfs_fileinfo.c pvfs_unlink.c pvfs_mkdir.c pvfs_open.c pvfs_read.c pvfs_flush.c pvfs_write.c pvfs_fsinfo.c pvfs_qfileinfo.c pvfs_setfileinfo.c pvfs_rename.c pvfs_resolve.c pvfs_shortname.c pvfs_lock.c pvfs_oplock.c pvfs_wait.c pvfs_seek.c pvfs_ioctl.c pvfs_xattr.c pvfs_streams.c pvfs_notify.c pvfs_sys.c xattr_system.c',
+ 	autoproto='vfs_posix_proto.h',
+ 	subsystem='ntvfs',
+@@ -40,7 +41,7 @@
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('python_xattr_native',
++    bld.SAMBA_PYTHON('python_xattr_native',
+ 	source='python/pyxattr_native.c',
+ 	deps='ndr ldb samdb samba-credentials pyparam_util attr',
+ 	realname='samba/xattr_native.so'
+@@ -52,13 +53,14 @@
+                   autoproto='posix_eadb_proto.h',
+                   private_library=True)
+ 
+-bld.SAMBA_PYTHON('python_posix_eadb',
++if not bld.env.disable_python:
++    bld.SAMBA_PYTHON('python_posix_eadb',
+ 	source='python/pyposix_eadb.c',
+ 	deps='pyparam_util posix_eadb tdb',
+ 	realname='samba/posix_eadb.so'
+ 	)
+ 
+-bld.SAMBA_PYTHON('python_xattr_tdb',
++    bld.SAMBA_PYTHON('python_xattr_tdb',
+ 	source='python/pyxattr_tdb.c',
+ 	deps='pyparam_util xattr_tdb',
+ 	realname='samba/xattr_tdb.so'
+diff -ur a/source4/param/wscript_build b/source4/param/wscript_build
+--- a/source4/param/wscript_build	2015-07-21 05:47:49.000000000 -0400
++++ b/source4/param/wscript_build	2016-01-11 16:19:49.540888024 -0500
+@@ -1,6 +1,7 @@
+ #!/usr/bin/env python
+ 
+-bld.SAMBA_SUBSYSTEM('PROVISION',
++if not bld.env.disable_python:
++    bld.SAMBA_SUBSYSTEM('PROVISION',
+ 	source='provision.c pyparam.c',
+ 	deps='LIBPYTHON pyparam_util ldb pytalloc-util pyldb-util',
+ 	pyext=True,
+@@ -36,7 +37,8 @@
+ 	)
+ 
+ 
+-bld.SAMBA_PYTHON('pyparam',
++if not bld.env.disable_python:
++    bld.SAMBA_PYTHON('pyparam',
+ 	source='pyparam.c',
+ 	deps='samba-hostconfig pytalloc-util',
+ 	realname='samba/param.so'
+@@ -47,7 +49,8 @@
+ 	deps='samba-hostconfig')
+ 
+ 
+-bld.SAMBA_SUBSYSTEM('pyparam_util',
++if not bld.env.disable_python:
++    bld.SAMBA_SUBSYSTEM('pyparam_util',
+ 	source='pyparam_util.c',
+ 	deps='LIBPYTHON samba-hostconfig',
+ 	pyext=True,
+diff -ur a/wscript b/wscript
+--- a/wscript	2015-10-20 06:40:54.000000000 -0400
++++ b/wscript	2016-01-11 16:22:35.870504146 -0500
+@@ -74,10 +74,15 @@
+     opt.tool_options('python') # options for disabling pyc or pyo compilation
+     # enable options related to building python extensions
+ 
++    opt.add_option('--disable-python',
++                  help=("do not generate python modules"),
++                  action="store_true", dest='disable_python', default=False)
+ 
+ def configure(conf):
+     version = samba_version.load_version(env=conf.env)
+ 
++    conf.env.disable_python = getattr(Options.options, 'disable_python', False)
++
+     conf.DEFINE('CONFIG_H_IS_FROM_SAMBA', 1)
+     conf.DEFINE('_SAMBA_BUILD_', version.MAJOR, add_to_cflags=True)
+     conf.DEFINE('HAVE_CONFIG_H', 1, add_to_cflags=True)
+@@ -95,7 +100,10 @@
+     conf.find_program('xsltproc', var='XSLTPROC')
+ 
+     conf.SAMBA_CHECK_PYTHON(mandatory=True, version=(2, 6, 0))
+-    conf.SAMBA_CHECK_PYTHON_HEADERS(mandatory=True)
++    if conf.env.disable_python:
++        conf.SAMBA_CHECK_PYTHON_HEADERS(mandatory=False)
++    else:
++        conf.SAMBA_CHECK_PYTHON_HEADERS(mandatory=True)
+ 
+     if sys.platform == 'darwin' and not conf.env['HAVE_ENVIRON_DECL']:
+         # Mac OSX needs to have this and it's also needed that the python is compiled with this
+diff -ur a/wscript_build b/wscript_build
+--- a/wscript_build	2015-07-21 05:47:50.000000000 -0400
++++ b/wscript_build	2016-01-11 16:23:36.900363296 -0500
+@@ -45,7 +45,8 @@
+ bld.RECURSE('lib/param')
+ bld.RECURSE('dynconfig')
+ bld.RECURSE('lib/util/charset')
+-bld.RECURSE('python')
++if not bld.env.disable_python:
++    bld.RECURSE('python')
+ bld.RECURSE('source4/param')
+ bld.RECURSE('source4/librpc')
+ bld.RECURSE('source4/dsdb')
+@@ -100,7 +101,8 @@
+ bld.RECURSE('source4/utils')
+ bld.RECURSE('source4/ntvfs')
+ bld.RECURSE('source4/ntptr')
+-bld.RECURSE('source4/torture')
++if not bld.env.disable_python:
++    bld.RECURSE('source4/torture')
+ bld.RECURSE('librpc')
+ bld.RECURSE('source4')
+ bld.RECURSE('source4/libcli')
