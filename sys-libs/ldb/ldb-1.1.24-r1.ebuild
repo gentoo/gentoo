@@ -53,8 +53,7 @@ multilib_src_configure() {
 		--disable-rpath \
 		--disable-rpath-install --bundled-libraries=NONE \
 		--with-modulesdir="${EPREFIX}"/usr/$(get_libdir)/samba \
-		--builtin-libraries=NONE \
-		--blddir="${BUILD_DIR}"
+		--builtin-libraries=NONE
 	)
 	if ! multilib_is_native_abi; then
 		myconf+=( --disable-python )
