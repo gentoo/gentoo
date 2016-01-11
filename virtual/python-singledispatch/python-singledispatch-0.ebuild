@@ -14,7 +14,7 @@ SRC_URI=""
 
 LICENSE=""
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ~ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND="$(python_gen_cond_dep 'dev-python/singledispatch[${PYTHON_USEDEP}]' python2_7 python3_3 pypy)"
