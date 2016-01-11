@@ -1,0 +1,49 @@
+Fix underlinking issues caused by missing libm and libogg linking
+Gentoo Bug: https://bugs.gentoo.org/show_bug.cgi?id=513012
+
+--- tagtool-0.12.3/configure.ac
++++ tagtool-0.12.3/configure.ac
+@@ -50,6 +50,12 @@
+ fi;
+ 
+ 
++dnl Check for libm for ceil()
++AC_SEARCH_LIBS([ceil], [m], [], [
++	AC_MSG_ERROR([unable to find the ceil() function])
++])
++
++
+ dnl Check for gtk and related libraries
+ PKG_CHECK_MODULES(GTK, [glib-2.0 >= 2.12.0
+ 		       gtk+-2.0 >= 2.8.0
+@@ -91,6 +97,9 @@
+ 	AC_CHECK_LIB(vorbisfile, main,,
+ 		[enable_vorbis=no;  disable_vorbis_reason="(missing vorbisfile library)"])
+ fi;
++if test "$enable_vorbis" = "yes"; then
++	PKG_CHECK_MODULES([OGG], [ogg])
++fi;
+ 
+ AM_CONDITIONAL(ENABLE_MP3,    test "$enable_mp3" = "yes")
+ AM_CONDITIONAL(ENABLE_VORBIS, test "$enable_vorbis" = "yes")
+--- tagtool-0.12.3/src/Makefile.am
++++ tagtool-0.12.3/src/Makefile.am
+@@ -28,7 +28,8 @@
+ vorbis_sources = vorbis_file.c vorbis_file.h vorbis_edit.c 		\
+ 	vorbis_edit.h vorbis_edit_field.c vorbis_edit_field.h vcedit.c 	\
+ 	vcedit.h
+-vorbis_cflags = -DENABLE_VORBIS
++vorbis_cflags = $(OGG_CFLAGS) -DENABLE_VORBIS
++vorbis_libs = $(OGG_LIBS)
+ else
+ vorbis_sources =
+ vorbis_cflags =
+@@ -39,7 +40,7 @@
+ 	${vorbis_cflags} -DDATADIR='"$(datadir)/${PACKAGE_NAME}"'
+ 
+ tagtool_LDFLAGS = -export-dynamic
+-tagtool_LDADD = $(GTK_LIBS)
++tagtool_LDADD = $(GTK_LIBS) ${vorbis_libs}
+ 
+ tagtool_SOURCES = file_list.c file_list.h file_util.c file_util.h	\
+ 	edit_tab.c edit_tab.h elist.c elist.h main.c math_util.c	\
