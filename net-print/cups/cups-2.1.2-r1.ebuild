@@ -97,7 +97,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.6.0-dont-compress-manpages.patch"
 	"${FILESDIR}/${PN}-1.6.0-fix-install-perms.patch"
 	"${FILESDIR}/${PN}-1.4.4-nostrip.patch"
-	"${FILESDIR}/${PN}-2.0.2-rename-systemd-service-files.patch"
 	"${FILESDIR}/${P}-systemd-socket.patch"
 	"${FILESDIR}/${PN}-2.0.1-xinetd-installation-fix.patch"
 )
@@ -151,7 +150,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	base_src_prepare
 	epatch_user
 
 	# Remove ".SILENT" rule for verbose output (bug 524338).
@@ -285,6 +283,20 @@ multilib_src_install_all() {
 		# bug #525604
 		rm -rf "${ED}"/etc/xinetd.d
 	fi
+
+	# Rename systemd service files to gentoo's own names:
+	mv "${ED}"/"$(systemd_get_systemunitdir)"/org.cups.cupsd.path \
+		"${ED}"/"$(systemd_get_systemunitdir)"/cups.path || die
+	mv "${ED}"/"$(systemd_get_systemunitdir)"/org.cups.cupsd.service \
+		"${ED}"/"$(systemd_get_systemunitdir)"/cups.service || die
+	mv "${ED}"/"$(systemd_get_systemunitdir)"/org.cups.cupsd.socket \
+		"${ED}"/"$(systemd_get_systemunitdir)"/cups.socket || die
+	mv "${ED}"/"$(systemd_get_systemunitdir)"/org.cups.cups-lpd@.service \
+		"${ED}"/"$(systemd_get_systemunitdir)"/cups.path || die
+	mv "${ED}"/"$(systemd_get_systemunitdir)"/org.cups.cups-lpd.socket \
+		"${ED}"/"$(systemd_get_systemunitdir)"/cups.path || die
+	sed -i -e 's/org\.cups\.cupsd/cups/g' \
+		"${ED}"/"$(systemd_get_systemunitdir)"/cups.service || die
 
 	keepdir /usr/libexec/cups/driver /usr/share/cups/{model,profiles} \
 		/var/log/cups /var/spool/cups/tmp
