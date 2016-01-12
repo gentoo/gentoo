@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 
 MOD_DESC="single-player mission based on the Event Horizon film"
 MOD_NAME="Event Horizon"
@@ -10,7 +10,7 @@ MOD_DIR="eventhorizon"
 
 inherit games games-mods
 
-HOMEPAGE="http://doom3.filefront.com/file/Event_Horizon_XV;91253"
+HOMEPAGE="http://www.gamefront.com/files/10716974"
 SRC_URI="event_horizon_xv_${PV}.zip"
 
 LICENSE="all-rights-reserved"
