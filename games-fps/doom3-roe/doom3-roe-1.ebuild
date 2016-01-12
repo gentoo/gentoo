@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=5
 inherit eutils cdrom games
 
 DESCRIPTION="Doom III: Resurrection of Evil expansion pack"
@@ -32,12 +33,11 @@ src_install() {
 	insinto "${dir}"/d3xp
 
 	einfo "Copying file from the disk..."
-	doins "${CDROM_ROOT}"/Setup/Data/d3xp/pak000.pk4 \
-		|| die "copying pak000"
+	doins "${CDROM_ROOT}"/Setup/Data/d3xp/pak000.pk4
 
 	doins description.txt
 
-	find "${Ddir}" -exec touch '{}' \;
+	find "${Ddir}" -exec touch '{}' +
 
 	games_make_wrapper ${PN} "doom3 +set fs_game d3xp"
 	make_desktop_entry ${PN} "Doom III - Resurrection of Evil" doom3

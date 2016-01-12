@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 
 MOD_DESC="map pack for Doom 3"
 MOD_NAME="Hell Campaign"
@@ -10,7 +10,7 @@ MOD_DIR="hell_campaign"
 
 inherit games games-mods
 
-HOMEPAGE="http://doom3.filefront.com/file/The_Ultimate_Hell_Campaign;52013"
+HOMEPAGE="http://www.gamefront.com/files/listing/gamingfiles/Doom_III/Maps/Map_Packs/"
 SRC_URI="sp_hc_final.zip
 	hardcorehellcampaign_patch.zip"
 

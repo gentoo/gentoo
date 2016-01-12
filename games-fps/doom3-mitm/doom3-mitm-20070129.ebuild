@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 
 MOD_DESC="Single player maps"
 MOD_NAME="Make it to Morning"
@@ -21,13 +21,13 @@ RDEPEND="games-fps/doom3-roe
 	games-fps/doom3[opengl,roe]"
 
 src_unpack() {
-	mkdir mitm
-	cd mitm
+	mkdir mitm || die
+	cd mitm || die
 	unpack ${A}
 }
 
 src_prepare() {
-	cd mitm
+	cd mitm || die
 	mv -f MITM*.txt mitm.txt || die
 	mv -f Mitm5*.txt mitm5.txt || die
 }

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 
 MOD_DESC="Green slimeballs mod for kids"
 MOD_NAME="Chex Trek: Beyond the Quest"
@@ -11,7 +11,7 @@ MOD_ICON="flem.ico"
 
 inherit games-mods
 
-HOMEPAGE="http://doom3.filefront.com/file/Chex_Trek_Beyond_the_Quest;82325"
+HOMEPAGE="http://www.moddb.com/mods/chex-trek-beyond-the-quest"
 SRC_URI="chextrek_beta_${PV/.}.zip"
 
 LICENSE="GameFront"
