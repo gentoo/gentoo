@@ -90,8 +90,8 @@ src_prepare() {
 		EPATCH_SUFFIX="patch" \
 		EPATCH_FORCE="yes" \
 		EPATCH_OPTS="-p1" \
-			epatch "${WORKDIR}"/patches-upstream
-			epatch "${WORKDIR}"/libexec.patch
+			epatch "${WORKDIR}"/patches-upstream \
+				"${WORKDIR}"/libexec.patch
 	fi
 
 	if [[ -n ${SECURITY_VER} ]]; then
