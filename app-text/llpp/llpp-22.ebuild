@@ -47,7 +47,7 @@ src_compile() {
 	local ocaml=$(usex ocamlopt ocamlopt.opt ocamlc.opt)
 	local cmo=$(usex ocamlopt cmx cmo)
 	local cma=$(usex ocamlopt cmxa cma)
-	local ccopt="$(freetype-config --cflags ) -O -include ft2build.h -D_GNU_SOURCE -DUSE_FONTCONFIG"
+	local ccopt="$(freetype-config --cflags ) -O -include ft2build.h -D_GNU_SOURCE -DUSE_FONTCONFIG -std=c99 -Wextra -Wall -pedantic-errors -Wunused-parameter -Wsign-compare -Wshadow"
 	#if use egl ; then
 	#	ccopt+=" -DUSE_EGL $(pkg-config --cflags egl)"
 	#	local egl="egl"
