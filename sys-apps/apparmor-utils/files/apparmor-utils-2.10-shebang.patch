@@ -1,0 +1,16 @@
+Avoid rewriting the shebang.
+
+The ebuild will take care of this when replicating the script for each of the
+supported python implementations.
+
+--- a/python-tools-setup.py
++++ b/python-tools-setup.py
+@@ -43,7 +43,7 @@
+             f = prefix + s
+             # If we have a defined python version, use it instead of the system
+             # default
+-            if 'PYTHON' in os.environ:
++            if False:
+                 lines = open(os.path.basename(s)).readlines()
+                 lines[0] = '#! /usr/bin/env %s\n' % os.environ['PYTHON']
+                 open(f, 'w').write("".join(lines))
