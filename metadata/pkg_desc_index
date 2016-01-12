@@ -546,7 +546,8 @@ app-crypt/keybase 0.8.13 0.8.18 0.8.22 0.8.23 0.8.24 0.8.25: Client for keybase.
 app-crypt/keylookup 2.2 2.2-r9999: A tool to fetch PGP keys from keyservers
 app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
 app-crypt/kstart 4.1: Modified versions of kinit for refreshing kerberos tickets automatically
-app-crypt/letsencrypt 0.1.1 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/letsencrypt 0.1.1 0.1.1-r1 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/letsencrypt-apache 9999: Apache plugin for letsencrypt
 app-crypt/libscrypt 1.19 1.20: Shared library to impliment the scrypt algorithm. See http://www.tarsnap.com/scrypt.html.
 app-crypt/libsecret 0.18.3: GObject library for accessing the freedesktop.org Secret Service API
 app-crypt/libu2f-host 0.0.2 0.0.4 1.0.0 1.0.0-r1: Yubico Universal 2nd Factor (U2F) Host C Library
@@ -10638,7 +10639,7 @@ games-strategy/widelands 0.17: A game similar to Settlers 2
 games-strategy/xbattle 5.4.1: A multi-player game of strategy and coordination
 games-strategy/xbattleai 1.2.2-r1: A multi-player game of strategy and coordination
 games-util/antimicro 2.10.1 2.20.2: Map keyboard and mouse buttons to gamepad buttons
-games-util/atlas 0.4.9_p20140320: Chart Program to use with Flightgear Flight Simulator
+games-util/atlas 0.5.0_p20141002: Chart Program to use with Flightgear Flight Simulator
 games-util/biounzip 1.1a: Unpacks BioZip archives
 games-util/catcodec 1.0.3: Decodes and encodes sample catalogues for OpenTTD
 games-util/datutil 2.46: Converter for dat files for Rom Managers
@@ -16350,7 +16351,7 @@ sys-apps/netplug 1.2.9.2-r1: Brings up/down ethernet ports automatically with ca
 sys-apps/newrelic-sysmond 1.1.2.124: NewRelic System Monitor
 sys-apps/noexec 1.1.0: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 0_pre20150821: NVM-Express user space tooling for Linux
-sys-apps/openrc 0.13.11 0.14 0.15 0.15.1 0.16 0.16.1 0.16.2 0.16.3 0.16.4 0.17 0.18.3 0.18.4 0.19 0.19.1 9999: OpenRC manages the services, startup and shutdown of a host
+sys-apps/openrc 0.13.11 0.14 0.15 0.15.1 0.16 0.16.1 0.16.2 0.16.3 0.16.4 0.17 0.18.3 0.18.4 0.19.1 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/pacman 4.0.1 4.0.3 4.0.3-r1: Archlinux's binary package manager
 sys-apps/paludis 1.4.2-r1 2.0.0 2.2.0 2.2.0-r2 2.4.0 9999: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
