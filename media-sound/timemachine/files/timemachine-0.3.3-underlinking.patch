@@ -1,0 +1,25 @@
+Fix libm underlinking.
+Gentoo-Bug: https://bugs.gentoo.org/show_bug.cgi?id=508132
+
+--- timemachine-0.3.3/configure.ac
++++ timemachine-0.3.3/configure.ac
+@@ -1,6 +1,6 @@
+ dnl Process this file with autoconf to produce a configure script.
+ 
+-AC_INIT(configure.in)
++AC_INIT(configure.ac)
+ AM_INIT_AUTOMAKE(timemachine, 0.3.3)
+ AM_CONFIG_HEADER(config.h)
+ AM_MAINTAINER_MODE
+@@ -10,6 +10,11 @@
+ AM_PROG_CC_STDC
+ AC_HEADER_STDC
+ 
++dnl Check for libm for log10()
++AC_SEARCH_LIBS([log10], [m], [], [
++	AC_MSG_ERROR([unable to find the log10() function])
++])
++
+ PKG_CHECK_MODULES(GTK, [gtk+-2.0 >= 2.0.0])
+ PKG_CHECK_MODULES(JACK, [jack >= 0.80.0])
+ PKG_CHECK_MODULES(LIBLO, liblo >= 0.24, LO_FOUND="yes", LO_FOUND="no")
