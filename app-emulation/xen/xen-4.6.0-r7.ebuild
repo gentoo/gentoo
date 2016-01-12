@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,11 +21,14 @@ else
 	UPSTREAM_VER=0
 	SECURITY_VER=0
 	# var set to reflect https://dev.gentoo.org/~idella4/
-	SEC_VER=3
+	# first instance of UPS_VER (usptream ver)
+	UPS_VER=0
+	SEC_VER=4
 	GENTOO_VER=
 
 	[[ -n ${UPSTREAM_VER} ]] && \
-		UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P}-upstream-patches-${UPSTREAM_VER}.tar.xz"
+		UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P}-upstream-patches-${UPSTREAM_VER}.tar.xz
+		https://dev.gentoo.org/~idella4/distfiles/${PN}-upstream-patches-${UPS_VER}.tar.gz"
 	[[ -n ${SECURITY_VER} ]] && \
 		SECURITY_PATCHSET_URI="https://dev.gentoo.org/~idella4/distfiles/${PN/-tools}-security-patches-${SECURITY_VER}.tar.xz
 		https://dev.gentoo.org/~idella4/distfiles/${PN/-tools}-security-patches-${SEC_VER}.tar.gz"
@@ -49,7 +52,10 @@ DEPEND="${PYTHON_DEPS}
 RDEPEND=""
 PDEPEND="~app-emulation/xen-tools-${PV}"
 
-RESTRICT="test"
+# no tests are available for the hypervisor
+# prevent the silliness of /usr/lib/debug/usr/lib/debug files
+# prevent stripping of the debug info from the /usr/lib/debug/xen-syms
+RESTRICT="test splitdebug strip"
 
 # Approved by QA team in bug #144032
 QA_WX_LOAD="boot/xen-syms-${PV}"
@@ -85,6 +91,7 @@ src_prepare() {
 		EPATCH_FORCE="yes" \
 		EPATCH_OPTS="-p1" \
 			epatch "${WORKDIR}"/patches-upstream
+			epatch "${WORKDIR}"/libexec.patch
 	fi
 
 	if [[ -n ${SECURITY_VER} ]]; then
