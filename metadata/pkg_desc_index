@@ -954,7 +954,7 @@ app-doc/doxygen 1.8.10-r1 9999: Documentation system for most programming langua
 app-doc/ebookmerge 0.9.3 0.9.3-r1: Script to manage eBooks in Gentoo
 app-doc/edox-data 0.16.8.0.2: The Enlightenment online help
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.4 24.5: The GNU Emacs Lisp Reference Manual
-app-doc/geant-docs 4.9.6 4.10.0 4.10.1: User documentation for Geant4 physics simulation toolkit
+app-doc/geant-docs 4.9.6 4.10.0 4.10.1 4.10.2: User documentation for Geant4 physics simulation toolkit
 app-doc/gimp-help 2.6.1: GNU Image Manipulation Program help files
 app-doc/gnucash-docs 2.6.7 2.6.9: Documentation package for GnuCash
 app-doc/halibut 1.0 1.1: yet another free document preparation system
@@ -15859,12 +15859,12 @@ sci-misc/vitables 2.1: A graphical tool for browsing and editing files in both P
 sci-physics/bullet 2.83.4 2.83.5: Continuous Collision Detection and Physics Library
 sci-physics/cernlib 2006-r5 2006-r6: CERN program library for High Energy Physics
 sci-physics/cernlib-montecarlo 2006-r3 2006-r4: Monte-carlo library and tools for the cernlib
-sci-physics/clhep 2.0.4.6 2.1.0.1 2.1.2.4 2.1.3.1 2.1.4.1 2.1.4.2 2.2.0.1 2.2.0.5: High Energy Physics C++ library
+sci-physics/clhep 2.0.4.6 2.1.0.1 2.1.2.4 2.1.3.1 2.1.4.1 2.1.4.2 2.2.0.1 2.2.0.5 2.3.1.0: High Energy Physics C++ library
 sci-physics/espresso 3.3.0: Extensible Simulation Package for Research on Soft matter
 sci-physics/espresso++ 1.9.2 1.9.3: extensible, flexible, fast and parallel simulation software for soft matter research
 sci-physics/fastjet 3.0.3-r1 3.0.6-r1: Fast implementation of several recombination jet algorithms
-sci-physics/geant 3.21.14-r3 3.21.14-r4 4.9.4_p03 4.9.6_p02-r1 4.10.00 4.10.00_p01 4.10.01: Toolkit for simulation of passage of particles through matter
-sci-physics/geant-data 4.9.6_p02 4.10.00 4.10.01: Data files for Geant4 physical processes
+sci-physics/geant 3.21.14-r3 3.21.14-r4 4.9.4_p03 4.9.6_p02-r1 4.10.00 4.10.00_p01 4.10.01 4.10.02: Toolkit for simulation of passage of particles through matter
+sci-physics/geant-data 4.9.6_p02 4.10.00 4.10.01 4.10.02: Data files for Geant4 physical processes
 sci-physics/geant-python 4.9.6_p02 4.10.00: Python bindings for Geant4
 sci-physics/h2o-gtk 0.1 9999: GTK+ UI for libh2o -- water & steam properties
 sci-physics/harminv 1.3.1: Extraction of complex frequencies and amplitudes from time series

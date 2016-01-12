@@ -2211,7 +2211,7 @@
     </member>
   </project>
   <project>
-    <email>gentoo-portage-dev@lists.gentoo.org</email>
+    <email>dev-portage@gentoo.org</email>
     <name>Portage</name>
     <url>https://wiki.gentoo.org/wiki/Project:Portage</url>
     <description>The Portage Development Project is devoted to maintaining and updating Portages core functionality and utilities.</description>
@@ -2251,11 +2251,6 @@
       <email>nullishzero@gentoo.org</email>
       <name>Pavel Kazakov</name>
       <role>Member, on dev-away</role>
-    </member>
-    <member>
-      <email>rafaelmartins@gentoo.org</email>
-      <name>Rafael Martins</name>
-      <role>Member, Distfile delta support</role>
     </member>
     <member>
       <email>robbat2@gentoo.org</email>
