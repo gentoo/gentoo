@@ -7,12 +7,12 @@ EAPI=5
 inherit autotools eutils games
 
 MY_PN=Atlas
-MY_PV=${PV/p/cvs}
+MY_PV=${PV/_p/.cvs}
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Chart Program to use with Flightgear Flight Simulator"
 HOMEPAGE="http://atlas.sourceforge.net/"
-SRC_URI="mirror://gentoo/${MY_P}.tar.bz2"
+SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -44,6 +44,7 @@ src_prepare() {
 
 src_configure() {
 	egamesconf \
+		--datadir="${GAMES_DATADIR}"/flightgear \
 		--disable-dependency-tracking \
 		--enable-simgear-shared \
 		--with-fgbase="${GAMES_DATADIR}"/flightgear
@@ -51,12 +52,6 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install || die
-	insinto "${GAMES_DATADIR}"/flightgear/Atlas
-	doins src/data/*.{jpg,png} || die
-	insinto "${GAMES_DATADIR}"/flightgear/Atlas/Palettes
-	doins src/data/Palettes/*.ap || die
-	insinto "${GAMES_DATADIR}"/flightgear/Atlas/Fonts
-	doins src/data/Fonts/*.txf || die
 	dodoc AUTHORS NEWS README
 	prepgamesdirs
 }
