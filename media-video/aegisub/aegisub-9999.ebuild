@@ -58,7 +58,6 @@ REQUIRED_USE="
 # Unfortunately, luabins upstream is dead since 2011.
 # Thus unbundling luabins is not worth the effort.
 PATCHES=(
-	"${FILESDIR}/${PN}-3.2.2-fix-lua-regexp.patch"
 	"${FILESDIR}/${P}-unbundle-luajit.patch"
 	"${FILESDIR}/${P}-add-missing-pthread-flags.patch"
 	"${FILESDIR}/${PN}-3.2.2-respect-user-compiler-flags.patch"
