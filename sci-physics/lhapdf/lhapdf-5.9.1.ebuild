@@ -1,8 +1,8 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 
 inherit versionator
 
@@ -12,13 +12,12 @@ MY_PF=${PN}-${MY_PV}
 DESCRIPTION="Les Houches Parton Density Function unified library"
 HOMEPAGE="http://projects.hepforge.org/lhapdf/"
 SRC_URI="http://www.hepforge.org/archive/lhapdf/${MY_PF}.tar.gz
-	http://projects.hepforge.org/${PN}/updates-5.8.3/wrapheragrid.f
-	http://projects.hepforge.org/${PN}/updates-5.8.3/wrapheragrid-lite.f
 	test? (
-		http://svn.hepforge.org/${PN}/pdfsets/tags/${MY_PV}/cteq61.LHgrid
-		http://svn.hepforge.org/${PN}/pdfsets/tags/${MY_PV}/MRST2004nlo.LHgrid
-		http://svn.hepforge.org/${PN}/pdfsets/tags/${MY_PV}/cteq61.LHpdf
-		octave? ( http://svn.hepforge.org/${PN}/pdfsets/tags/${MY_PV}/cteq5l.LHgrid ) )"
+		http://lhapdf.hepforge.org/svn/pdfsets/5/CT10.LHgrid
+		http://lhapdf.hepforge.org/svn/pdfsets/5/cteq61.LHgrid
+		http://lhapdf.hepforge.org/svn/pdfsets/5/MRST2004nlo.LHgrid
+		http://lhapdf.hepforge.org/svn/pdfsets/5/cteq61.LHpdf
+		octave? ( http://lhapdf.hepforge.org/svn/pdfsets/5/cteq5l.LHgrid ) )"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -31,12 +30,6 @@ DEPEND="${RDEPEND}
 	python? ( dev-lang/swig )"
 
 S="${WORKDIR}/${MY_PF}"
-
-src_unpack() {
-	unpack ${MY_PF}.tar.gz
-	cp "${DISTDIR}"/wrapheragrid.f "${S}"/src/wrapheragrid.f
-	cp "${DISTDIR}"/wrapheragrid-lite.f "${S}"/src/wrapheragrid-lite.f
-}
 
 src_prepare() {
 	# do not create extra latex docs
@@ -58,14 +51,19 @@ src_configure() {
 
 src_test() {
 	# need to make a bogus link for octave test
+	if use octave; then
+		# remove line that tries to read non-existent help file
+		sed -i -e '/help/d' octave/lhapdf-octave-example1.m \
+		|| die 'sed octave example failed'
+	fi
 	ln -s "${DISTDIR}" PDFsets
 	LHAPATH="${PWD}/PDFsets" \
 		LD_LIBRARY_PATH="${PWD}/lib/.libs:${LD_LIBRARY_PATH}" \
-		emake check || die "emake check failed"
+		emake check
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	emake DESTDIR="${D}" install
 	dodoc README TODO AUTHORS ChangeLog
 
 	# leftover
@@ -73,11 +71,11 @@ src_install() {
 	if use doc && use cxx; then
 		# default doc install buggy
 		insinto /usr/share/doc/${PF}
-		doins -r ccwrap/doxy/html || die
+		doins -r ccwrap/doxy/html
 	fi
 	if use examples; then
 		insinto /usr/share/doc/${PF}/examples
-		doins examples/*.{f,cc} || die
+		doins examples/*.{f,cc}
 	fi
 }
 
