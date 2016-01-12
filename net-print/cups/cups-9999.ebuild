@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools base fdo-mime gnome2-utils flag-o-matic linux-info \
+inherit autotools fdo-mime gnome2-utils flag-o-matic linux-info \
 	multilib multilib-minimal pam python-single-r1 user versionator \
 	java-pkg-opt-2 systemd toolchain-funcs
 
@@ -48,7 +48,7 @@ CDEPEND="
 		)
 	)
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
-	java? ( >=virtual/jre-1.6 )
+	java? ( >=virtual/jre-1.6:* )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	!lprng-compat? ( !net-print/lprng )
 	pam? ( virtual/pam )
@@ -96,7 +96,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.6.0-dont-compress-manpages.patch"
 	"${FILESDIR}/${PN}-1.6.0-fix-install-perms.patch"
 	"${FILESDIR}/${PN}-1.4.4-nostrip.patch"
-	"${FILESDIR}/${PN}-2.0.1-rename-systemd-service-files.patch"
+	"${FILESDIR}/${PN}-2.0.2-rename-systemd-service-files.patch"
+	"${FILESDIR}/${P}-systemd-socket.patch"
+	"${FILESDIR}/${PN}-2.0.1-xinetd-installation-fix.patch"
 )
 
 MULTILIB_CHOST_TOOLS=(
@@ -292,9 +294,8 @@ multilib_src_install_all() {
 	# create /etc/cups/client.conf, bug #196967 and #266678
 	echo "ServerName ${EPREFIX}/run/cups/cups.sock" >> "${ED}"/etc/cups/client.conf
 
-	# the following files are now provided by cups-filters:
+	# the following file iw now provided by cups-filters:
 	rm -r "${ED}"/usr/share/cups/banners || die
-	rm -r "${ED}"/usr/share/cups/data/testprint || die
 
 	# the following are created by the init script
 	rm -r "${ED}"/var/cache/cups || die
