@@ -6,17 +6,16 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 eutils git-r3
+inherit distutils-r1 eutils
 
 DESCRIPTION="Model-driven deployment, config management, and command execution framework"
 HOMEPAGE="http://ansible.com/"
 # the version here is special because upstream did a 2.0.0 release on accident one time...
-EGIT_REPO_URI="git://github.com/ansible/ansible.git"
-EGIT_BRANCH="devel"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.0.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86 ~x64-macos"
 IUSE="keyczar paramiko test"
 
 RDEPEND="
@@ -44,15 +43,11 @@ DEPEND="
 		dev-vcs/git
 	)"
 
+# not included in release tarball
+RESTRICT="test"
+
 python_test() {
 	nosetests -d -w test/units -v --with-coverage --cover-package=ansible --cover-branches || die
-}
-
-python_compile_all() {
-	local _man
-	for _man in ansible{,-{galaxy,playbook,pull,vault}}; do
-		a2x -f manpage docs/man/man1/${_man}.1.asciidoc.in || die "Failed generating man page (${_man})"
-	done
 }
 
 python_install_all() {
