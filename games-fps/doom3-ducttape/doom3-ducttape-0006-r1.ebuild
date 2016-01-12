@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 
 MOD_DESC="sticks flashlights to your machinegun and shotgun"
 MOD_NAME="Duct Tape"
@@ -18,13 +18,13 @@ KEYWORDS="amd64 x86"
 IUSE="dedicated opengl"
 
 src_unpack() {
-	mkdir ${MOD_DIR}
-	cd ${MOD_DIR}
+	mkdir ${MOD_DIR} || die
+	cd ${MOD_DIR} || die
 	unpack ${A}
 }
 
 src_prepare() {
-	rm -f ${MOD_DIR}/pak002.pk4 # for doom3-roe
+	rm -f ${MOD_DIR}/pak002.pk4 || die # for doom3-roe
 }
 
 pkg_postinst() {
