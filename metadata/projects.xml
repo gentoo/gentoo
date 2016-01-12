@@ -1900,6 +1900,16 @@
       <name>Jeroen Roovers</name>
       <role>Developer</role>
     </member>
+    <member>
+      <email>vapier@gentoo.org</email>
+      <name>Mike Frysinger</name>
+      <role>Developer</role>
+    </member>
+    <member>
+      <email>zerochaos@gentoo.org</email>
+      <name>Rick Farina</name>
+      <role>Developer</role>
+    </member>
   </project>
   <project>
     <email>office@gentoo.org</email>
