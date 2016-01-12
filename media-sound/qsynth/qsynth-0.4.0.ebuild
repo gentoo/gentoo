@@ -33,6 +33,10 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="|| ( alsa jack pulseaudio )"
 
+src_prepare() {
+	use qt5 && epatch "${FILESDIR}/${PN}-0.4.0-qt5-tagging.patch"
+}
+
 src_configure() {
 	econf \
 		$(use_enable debug) \
