@@ -293,6 +293,7 @@
     <subproject ref="amd64@gentoo.org"/>
     <subproject ref="arm@gentoo.org"/>
     <subproject ref="alpha@gentoo.org"/>
+    <subproject ref="embedded@gentoo.org"/>
     <subproject ref="hppa@gentoo.org"/>
     <subproject ref="ia64@gentoo.org"/>
     <subproject ref="mips@gentoo.org"/>
@@ -902,6 +903,37 @@
       <email>ulm@gentoo.org</email>
       <name>Ulrich Müller</name>
       <role>Developer (Emacs maintainer)</role>
+    </member>
+  </project>
+  <project>
+    <email>embedded@gentoo.org</email>
+    <name>Embedded Gentoo</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Embedded</url>
+    <description>Embedded Gentoo brings the flexibility of Gentoo to embedded systems. The project is responsible for overseeing the build infrastructure for creating images to be installed onto embedded systems.</description>
+    <member>
+      <email>blueness@gentoo.org</email>
+      <name>Anthony G. Basile</name>
+      <role>AMD64, ARM, X86, MIPS, PPC</role>
+    </member>
+    <member>
+      <email>lu_zero@gentoo.org</email>
+      <name>Luca Barbato</name>
+      <role>PPC, newlib</role>
+    </member>
+    <member>
+      <email>robbat2@gentoo.org</email>
+      <name>Robin Johnson</name>
+      <role>JTAG, dev-embedded</role>
+    </member>
+    <member is-lead="1">
+      <email>vapier@gentoo.org</email>
+      <name>Mike Frysinger</name>
+      <role>Lead, ARM, SH, Cross Compiling</role>
+    </member>
+    <member>
+      <email>zlogene@gentoo.org</email>
+      <name>Mikle Kolyada</name>
+      <role>AMD64, ARM, X86, MIPS, PPC</role>
     </member>
   </project>
   <project>
