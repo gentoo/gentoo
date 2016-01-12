@@ -210,6 +210,12 @@
     </member>
   </project>
   <project>
+    <email>antivirus@gentoo.org</email>
+    <name>Gentoo Antivirus Project</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Antivirus</url>
+    <description>The Antivirus Project maintains antivirus-related packages.</description>
+  </project>
+  <project>
     <email>apache-bugs@gentoo.org</email>
     <name>Gentoo Apache Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Apache</url>
@@ -3269,6 +3275,11 @@
     <member>
       <email>radhermit@gentoo.org</email>
       <name>Tim Harder</name>
+      <role>Member ( misc )</role>
+    </member>
+    <member>
+      <email>soap@gentoo.org</email>
+      <name>David Seifert</name>
       <role>Member ( misc )</role>
     </member>
     <member>
