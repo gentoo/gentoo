@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,6 +19,7 @@ IUSE="nautilus test"
 RESTRICT="test"
 
 COMMON_DEPEND="
+	app-admin/packagekit-base
 	app-crypt/libsecret[vala]
 	>=dev-libs/glib-2.34:2
 	>=dev-libs/libpeas-1.0

@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>gnome</herd>
-<use>
-  <flag name="cue">Enable cue sheet parsing</flag>
-  <!-- 'firefox-bookmarks' instead of 'firefox' to prevent most users from
+  <herd>gnome</herd>
+  <use>
+    <flag name="cue">Enable cue sheet parsing</flag>
+    <!-- 'firefox-bookmarks' instead of 'firefox' to prevent most users from
 	   enabling this by accident; it has some stability problems and
 	   performance implications -->
-  <flag name="firefox-bookmarks">Install bookmark data miner plugin for
+    <flag name="firefox-bookmarks">Install bookmark data miner plugin for
     <pkg>www-client/firefox</pkg> and <pkg>www-client/firefox-bin</pkg></flag>
-  <flag name="gsf">Enable <pkg>gnome-extra/libgsf</pkg> based data extractor and
+    <flag name="gsf">Enable <pkg>gnome-extra/libgsf</pkg> based data extractor and
   for ODT.</flag>
-  <flag name="iptc">Enable extraction of IPTC data from pictures</flag>
-  <flag name="iso">Enable extraction of metadata from ISO disk images</flag>
-  <flag name="miner-fs">Enable tracker-miner-fs (required for filesystem indexing)</flag>
-  <flag name="nautilus">Enable tracker to integrate with
+    <flag name="iptc">Enable extraction of IPTC data from pictures</flag>
+    <flag name="iso">Enable extraction of metadata from ISO disk images</flag>
+    <flag name="miner-fs">Enable tracker-miner-fs (required for filesystem indexing)</flag>
+    <flag name="nautilus">Enable tracker to integrate with
     <pkg>gnome-base/nautilus</pkg> by providing entries in its context menu
   </flag>
-  <flag name="playlist">Add support for playlists</flag>
-  <flag name="stemmer">Add word stemming via <pkg>dev-libs/snowball-stemmer</pkg>.</flag>
-  <flag name="thunderbird">Install email data miner plugin for
+    <flag name="playlist">Add support for playlists</flag>
+    <flag name="stemmer">Add word stemming via <pkg>dev-libs/snowball-stemmer</pkg>.</flag>
+    <flag name="thunderbird">Install email data miner plugin for
     <pkg>mail-client/thunderbird</pkg> and
 	<pkg>mail-client/thunderbird-bin</pkg></flag>
-  <flag name="xps">Add support for XPS file format through <pkg>app-text/libgxps</pkg>.</flag>
-</use>
+    <flag name="xps">Add support for XPS file format through <pkg>app-text/libgxps</pkg>.</flag>
+  </use>
 </pkgmetadata>
