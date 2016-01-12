@@ -54,11 +54,13 @@ rewrite - This module makes it possible to change URI using regular expressions 
 scgi - An implementation of the Simple Common Gateway Interface.
 secure_link - This module computes and checks request URLs for a required security token.
 security - Web application firewall and Intrusion Detection System.
+slice - A filter that splits a request into subrequests, each returning a certain range of response
 slowfs_cache - This module adds the ability to cache static files
 split_clients - This module provides A/B testing support.
 ssi - This module provides a filter which processes Server-Side Includes (SSI) in the input.
-spdy - This module provides an SPDY implementation.
+spdy - This module provides an SPDY implementation. (Deprecated, use IUSE="http2" instead)
 sticky - Module to always forward clients to the same upstream server (via sticky cookies)
+stream_core - Stream core module for generic TCP proxying and load balancing.
 stub_status - This module provides the ability to get some status from nginx.
 sub - This module can search and replace text in the nginx response.
 upload - Enable support for handling file uploads using multipart/form-data encoding
