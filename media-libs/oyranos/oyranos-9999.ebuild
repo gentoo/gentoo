@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit eutils flag-o-matic git-r3 cmake-utils cmake-multilib
+inherit cmake-multilib flag-o-matic git-r3
 
 DESCRIPTION="Colour management system allowing to share various settings across applications and services"
 HOMEPAGE="http://www.oyranos.org/"
@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/${PN}-cms/${PN}.git"
 KEYWORDS=""
 LICENSE="BSD"
 SLOT="0"
-IUSE="X cairo cups doc exif fltk jpeg qt4 qt5 raw test tiff"
+IUSE="X cairo cups doc exif fltk jpeg qt4 qt5 raw scanner test tiff"
 
 #OY_LINGUAS="cs;de;eo;eu;fr;ru" #TODO
 
@@ -32,18 +32,16 @@ COMMON_DEPEND="
 	exif? ( >=media-gfx/exiv2-0.23-r2:=[${MULTILIB_USEDEP}] )
 	fltk? ( x11-libs/fltk:1 )
 	jpeg? ( virtual/jpeg:0[${MULTILIB_USEDEP}] )
-	qt5? (
-		dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5
-	)
-	!qt5? (
-		qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 )
-	)
+	qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 )
+	qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 )
 	raw? ( >=media-libs/libraw-0.15.4[${MULTILIB_USEDEP}] )
+	scanner? ( media-gfx/sane-backends[${MULTILIB_USEDEP}] )
 	tiff? ( media-libs/tiff:0[${MULTILIB_USEDEP}] )
-	X? ( >=x11-libs/libXfixes-5.0.1[${MULTILIB_USEDEP}]
+	X? ( x11-libs/libX11[${MULTILIB_USEDEP}]
+		>=x11-libs/libXfixes-5.0.1[${MULTILIB_USEDEP}]
+		>=x11-libs/libXinerama-1.1.3[${MULTILIB_USEDEP}]
 		>=x11-libs/libXrandr-1.4.2[${MULTILIB_USEDEP}]
-		>=x11-libs/libXxf86vm-1.1.3[${MULTILIB_USEDEP}]
-		>=x11-libs/libXinerama-1.1.3[${MULTILIB_USEDEP}] )"
+		>=x11-libs/libXxf86vm-1.1.3[${MULTILIB_USEDEP}] )"
 DEPEND="${COMMON_DEPEND}
 	doc? (
 		app-doc/doxygen
@@ -52,6 +50,8 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	media-libs/icc-profiles-basiccolor-printing2009
 	media-libs/icc-profiles-openicc"
+
+REQUIRED_USE="qt4? ( X ) qt5? ( X )"
 
 DOCS=( AUTHORS.md ChangeLog.md README.md )
 RESTRICT="test"
@@ -84,13 +84,13 @@ multilib_src_configure() {
 		-DLIB_SUFFIX=${libdir#lib}
 		-DUSE_SYSTEM_ELEKTRA=YES
 		-DUSE_SYSTEM_YAJL=YES
-		-DUSE_Qt4=$(usex '!qt5')
 		-DCMAKE_DISABLE_FIND_PACKAGE_Cairo=$(usex '!cairo')
 		-DCMAKE_DISABLE_FIND_PACKAGE_Cups=$(usex '!cups')
 		-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=$(usex '!doc')
 		-DCMAKE_DISABLE_FIND_PACKAGE_Exif2=$(usex '!exif')
 		-DCMAKE_DISABLE_FIND_PACKAGE_JPEG=$(usex '!jpeg')
 		-DCMAKE_DISABLE_FIND_PACKAGE_LibRaw=$(usex '!raw')
+		-DCMAKE_DISABLE_FIND_PACKAGE_Sane=$(usex '!scanner')
 		-DCMAKE_DISABLE_FIND_PACKAGE_TIFF=$(usex '!tiff')
 		-DCMAKE_DISABLE_FIND_PACKAGE_X11=$(usex '!X')
 		-DCMAKE_DISABLE_FIND_PACKAGE_Fltk=$(multilib_native_usex fltk OFF ON)

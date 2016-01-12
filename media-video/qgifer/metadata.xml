@@ -12,7 +12,7 @@
 	</longdescription>
 	<use>
 		<flag name="imagemagick">Use imagemagick for image operations</flag>
-		<flag name="opencv3">Use opencv-3.* for video operations instead opencv-2.*</flag>
+		<flag name="opencv3">Use media-libs/opencv:0/3.0 for video operations instead media-libs/opencv:0/2.4</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">qgifer</remote-id>
