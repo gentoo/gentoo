@@ -6,7 +6,7 @@ EAPI=5
 inherit toolchain-funcs
 
 DESCRIPTION="farbfeld simple image format tools"
-HOMEPAGE="http://git.2f30.org/farbfeld/about/"
+HOMEPAGE="http://tools.suckless.org/farbfeld/"
 SRC_URI="http://dl.suckless.org/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"
