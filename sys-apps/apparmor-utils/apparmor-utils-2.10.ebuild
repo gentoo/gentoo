@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-PYTHON_COMPAT=( python2_7 )
+EAPI=6
 
+PYTHON_COMPAT=( python{2_7,3_4} )
 inherit perl-module python-r1 versionator
 
 DESCRIPTION="Additional userspace utils to assist with AppArmor profile management"
@@ -29,8 +29,13 @@ RDEPEND="${DEPEND}
 
 S=${WORKDIR}/apparmor-${PV}/utils
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.10-python2.patch"
+	"${FILESDIR}/${PN}-2.10-shebang.patch"
+)
+
 src_compile() {
-	python_export_best
+	python_setup
 
 	# launches non-make subprocesses causing "make jobserver unavailable"
 	# error messages to appear in generated code
@@ -48,5 +53,6 @@ src_install() {
 	}
 
 	python_foreach_impl install_python
-	python_replicate_script "${D}"/usr/bin/aa-easyprof
+	python_replicate_script "${D}"/usr/bin/aa-easyprof "${D}"/usr/sbin/apparmor_status \
+		"${D}"/usr/sbin/aa-{audit,autodep,cleanprof,complain,disable,enforce,genprof,logprof,mergeprof,status,unconfined}
 }
