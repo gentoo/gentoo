@@ -285,18 +285,20 @@ multilib_src_install_all() {
 	fi
 
 	# Rename systemd service files to gentoo's own names:
-	mv "${ED}"/"$(systemd_get_systemunitdir)"/org.cups.cupsd.path \
-		"${ED}"/"$(systemd_get_systemunitdir)"/cups.path || die
-	mv "${ED}"/"$(systemd_get_systemunitdir)"/org.cups.cupsd.service \
-		"${ED}"/"$(systemd_get_systemunitdir)"/cups.service || die
-	mv "${ED}"/"$(systemd_get_systemunitdir)"/org.cups.cupsd.socket \
-		"${ED}"/"$(systemd_get_systemunitdir)"/cups.socket || die
-	mv "${ED}"/"$(systemd_get_systemunitdir)"/org.cups.cups-lpd@.service \
-		"${ED}"/"$(systemd_get_systemunitdir)"/cups.path || die
-	mv "${ED}"/"$(systemd_get_systemunitdir)"/org.cups.cups-lpd.socket \
-		"${ED}"/"$(systemd_get_systemunitdir)"/cups.path || die
-	sed -i -e 's/org\.cups\.cupsd/cups/g' \
-		"${ED}"/"$(systemd_get_systemunitdir)"/cups.service || die
+	if use systemd ; then
+		mv "${ED}"/"$(systemd_get_systemunitdir)"/org.cups.cupsd.path \
+			"${ED}"/"$(systemd_get_systemunitdir)"/cups.path || die
+		mv "${ED}"/"$(systemd_get_systemunitdir)"/org.cups.cupsd.service \
+			"${ED}"/"$(systemd_get_systemunitdir)"/cups.service || die
+		mv "${ED}"/"$(systemd_get_systemunitdir)"/org.cups.cupsd.socket \
+			"${ED}"/"$(systemd_get_systemunitdir)"/cups.socket || die
+		mv "${ED}"/"$(systemd_get_systemunitdir)"/org.cups.cups-lpd@.service \
+			"${ED}"/"$(systemd_get_systemunitdir)"/cups.path || die
+		mv "${ED}"/"$(systemd_get_systemunitdir)"/org.cups.cups-lpd.socket \
+			"${ED}"/"$(systemd_get_systemunitdir)"/cups.path || die
+		sed -i -e 's/org\.cups\.cupsd/cups/g' \
+			"${ED}"/"$(systemd_get_systemunitdir)"/cups.service || die
+	fi
 
 	keepdir /usr/libexec/cups/driver /usr/share/cups/{model,profiles} \
 		/var/log/cups /var/spool/cups/tmp
