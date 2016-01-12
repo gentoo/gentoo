@@ -17,7 +17,8 @@ SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="doc"
 
-RDEPEND="dev-libs/popt[${MULTILIB_USEDEP}]
+RDEPEND="!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
+	dev-libs/popt[${MULTILIB_USEDEP}]
 	>=sys-libs/talloc-2.1.5[python,${MULTILIB_USEDEP}]
 	>=sys-libs/tevent-0.9.26[python(+),${MULTILIB_USEDEP}]
 	>=sys-libs/tdb-1.3.8[python,${MULTILIB_USEDEP}]
