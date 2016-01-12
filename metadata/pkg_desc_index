@@ -18394,7 +18394,6 @@ x11-plugins/wmifinfo 0.09 0.10: a dockapp for monitoring network interfaces
 x11-plugins/wmifs 1.3_beta1-r2 1.4 1.5 1.6: Network monitoring dockapp
 x11-plugins/wminet 3.0.0 3.0.0-r1: dockapp for monitoring internet connections to and from your computer
 x11-plugins/wmitime 0.3 0.4 0.5: Overglorified clock dockapp w/time, date, and internet time
-x11-plugins/wmium 1.0.9b-r1: a dockapp and gkrellm2 plugin that fetches the DSL usage information for Australian ISP Internode
 x11-plugins/wmix 3.1-r1 3.2: Dockapp mixer for OSS or ALSA
 x11-plugins/wmjsql 0.5: MySQL monitor dockapp
 x11-plugins/wmlaptop 1.3 1.4: Dockapp for laptop users
