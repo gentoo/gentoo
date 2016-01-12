@@ -830,11 +830,6 @@ dev-perl/YAML-Parser-Syck
 =mail-mta/exim-4.87_rc1
 =mail-mta/exim-4.87_rc2
 
-# Michael Palimaka <kensington@gentoo.org> (10 Dec 2015)
-# Relies on dead ISP API. Dead upstream. Masked for removal in 30 days.
-# Bug 567532
-x11-plugins/wmium
-
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (07 Dec 2015)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
