@@ -20,7 +20,7 @@ SRC_URI="
 LICENSE="AGPL-3 CPL-1.0"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE="cups dbus djvu gtk idn linguas_de static-libs X"
+IUSE="cups dbus djvu gtk idn linguas_de static-libs tiff X"
 RESTRICT="djvu? ( bindist )"
 
 COMMON_DEPEND="
@@ -30,7 +30,6 @@ COMMON_DEPEND="
 	media-libs/jbig2dec
 	>=media-libs/lcms-2.6:2
 	>=media-libs/libpng-1.6.2:0=
-	>=media-libs/tiff-4.0.1:0=
 	>=sys-libs/zlib-1.2.7:=
 	virtual/jpeg:0
 	cups? ( >=net-print/cups-1.3.8 )
@@ -38,6 +37,7 @@ COMMON_DEPEND="
 	djvu? ( app-text/djvu )
 	gtk? ( || ( x11-libs/gtk+:3 x11-libs/gtk+:2 ) )
 	idn? ( net-dns/libidn )
+	tiff? ( >=media-libs/tiff-4.0.1:0= )
 	X? ( x11-libs/libXt x11-libs/libXext )
 "
 
@@ -166,7 +166,6 @@ src_configure() {
 		--with-ijs \
 		--with-jbig2dec \
 		--with-libpaper \
-		--with-system-libtiff \
 		--without-lcms \
 		--without-luratech \
 		$(use_enable cups) \
@@ -174,6 +173,7 @@ src_configure() {
 		$(use_enable gtk) \
 		$(use_with cups pdftoraster) \
 		$(use_with idn libidn) \
+		$(use_with tiff system-libtiff) \
 		$(use_with X x)
 
 	if use djvu ; then
