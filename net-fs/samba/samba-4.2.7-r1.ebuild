@@ -93,14 +93,14 @@ pkg_setup() {
 	python-single-r1_pkg_setup
 	if use aio ; then
 		if ! linux_config_exists || ! linux_chkconfig_present AIO; then
-				ewarn "You must enable AIO support in your kernel config, "
-				ewarn "to be able to support asynchronous I/O. "
-				ewarn "You can find it at"
-				ewarn
-				ewarn "General Support"
-				ewarn " Enable AIO support "
-				ewarn
-				ewarn "and recompile your kernel..."
+			ewarn "You must enable AIO support in your kernel config, "
+			ewarn "to be able to support asynchronous I/O. "
+			ewarn "You can find it at"
+			ewarn
+			ewarn "General Support"
+			ewarn " Enable AIO support "
+			ewarn
+			ewarn "and recompile your kernel..."
 		fi
 	fi
 }
@@ -127,54 +127,58 @@ multilib_src_configure() {
 		--nopyc
 		--nopyo
 	)
-	if multilib_is_native_abi ; then myconf+=(
-		$(use_with acl acl-support)
-		$(usex addc '' '--without-ad-dc')
-		$(use_with addns dnsupdate)
-		$(use_with ads)
-		$(usex ads '--with-shared-modules=idmap_ad' '')
-		$(use_with aio aio-support)
-		$(usex cluster '--with-ctdb-dir=/usr' '')
-		$(use_enable avahi)
-		$(use_with cluster cluster-support)
-		$(use_enable cups)
-		$(use_with dmapi)
-		$(use_with fam)
-		$(use_enable gnutls)
-		$(use_enable iprint)
-		$(use_with ldap)
-		$(use_with pam)
-		$(use_with pam pam_smbpass)
-		$(usex pam "--with-pammodulesdir=/$(get_libdir)/security" '')
-		$(use_with quota quotas)
-		$(use_with syslog)
-		$(use_with systemd)
-		$(usex system-mitkrb5 '--with-system-mitkrb5' '')
-		$(use_with winbind)
-		$(usex test '--enable-selftest' '')
-	); else myconf+=(
-		--without-acl-support
-		--without-ad-dc
-		--without-dnsupdate
-		--without-ads
-		--without-aio-support
-		--disable-avahi
-		--without-cluster-support
-		--disable-cups
-		--without-dmapi
-		--without-fam
-		--disable-gnutls
-		--disable-iprint
-		--without-ldap
-		--without-pam
-		--without-pam_smbpass
-		--without-quotas
-		--without-syslog
-		--without-systemd
-		$(usex system-mitkrb5 '--with-system-mitkrb5' '')
-		--without-winbind
-		--disable-python
-	); fi
+	if multilib_is_native_abi ; then
+		myconf+=(
+			$(use_with acl acl-support)
+			$(usex addc '' '--without-ad-dc')
+			$(use_with addns dnsupdate)
+			$(use_with ads)
+			$(usex ads '--with-shared-modules=idmap_ad' '')
+			$(use_with aio aio-support)
+			$(usex cluster '--with-ctdb-dir=/usr' '')
+			$(use_enable avahi)
+			$(use_with cluster cluster-support)
+			$(use_enable cups)
+			$(use_with dmapi)
+			$(use_with fam)
+			$(use_enable gnutls)
+			$(use_enable iprint)
+			$(use_with ldap)
+			$(use_with pam)
+			$(use_with pam pam_smbpass)
+			$(usex pam "--with-pammodulesdir=/$(get_libdir)/security" '')
+			$(use_with quota quotas)
+			$(use_with syslog)
+			$(use_with systemd)
+			$(usex system-mitkrb5 '--with-system-mitkrb5' '')
+			$(use_with winbind)
+			$(usex test '--enable-selftest' '')
+		)
+	else
+		myconf+=(
+			--without-acl-support
+			--without-ad-dc
+			--without-dnsupdate
+			--without-ads
+			--without-aio-support
+			--disable-avahi
+			--without-cluster-support
+			--disable-cups
+			--without-dmapi
+			--without-fam
+			--disable-gnutls
+			--disable-iprint
+			--without-ldap
+			--without-pam
+			--without-pam_smbpass
+			--without-quotas
+			--without-syslog
+			--without-systemd
+			$(usex system-mitkrb5 '--with-system-mitkrb5' '')
+			--without-winbind
+			--disable-python
+		)
+	fi
 
 	CPPFLAGS="-I${SYSROOT}/usr/include/et ${CPPFLAGS}" \
 		waf-utils_src_configure ${myconf[@]}
