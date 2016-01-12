@@ -1,0 +1,11 @@
+--- src/libapparmor.maporig	2016-01-10 08:20:47.895243012 +0200
++++ src/libapparmor.map	2016-01-10 08:21:19.272023693 +0200
+@@ -94,6 +94,7 @@
+ 		_aa_autoclose;
+ 		_aa_autofclose;
+ 		_aa_dirat_for_each;
++		_aa_asprintf;
+ 	local:
+ 		*;
+ };
+
