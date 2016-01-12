@@ -2647,7 +2647,7 @@
   </project>
   <project>
     <email>qemu@gentoo.org</email>
-    <name>The Gentoo QEMU Project</name>
+    <name>Gentoo QEMU Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:QEMU</url>
     <description>The Gentoo QEMU Project maintains packages related to QEMU.</description>
     <member>
@@ -2666,8 +2666,18 @@
       <role>Member</role>
     </member>
     <member>
+      <email>tamiko@gentoo.org</email>
+      <name>Matthias Maier</name>
+      <role>Member</role>
+    </member>
+    <member>
       <email>tommy@gentoo.org</email>
       <name>Thomas Sachau</name>
+      <role>Member</role>
+    </member>
+    <member>
+      <email>vapier@gentoo.org</email>
+      <name>Mike Frysinger</name>
       <role>Member</role>
     </member>
   </project>
