@@ -10113,7 +10113,7 @@ games-engines/xzip 1.8.2-r2: X interface to Z-code based text games
 games-engines/zoom 1.1.5: A fast, clean, modern Z-code interpreter for X
 games-fps/aaquake2 0.1: text mode Quake II
 games-fps/aaut 1: ascii mode unreal tournament
-games-fps/alephone 20100424 20120514 20150620: An enhanced version of the game engine from the classic Mac game, Marathon
+games-fps/alephone 20100424 20150620: An enhanced version of the game engine from the classic Mac game, Marathon
 games-fps/alephone-infinity 20080622: Aleph One - Marathon Infinity
 games-fps/alienarena 20120629 20130827: Fast-paced multiplayer deathmatch game
 games-fps/avp 20150214: Linux port of Aliens vs Predator
