@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -33,7 +33,7 @@ RDEPEND="
 	curl? ( net-misc/curl )
 	fits? ( sci-libs/cfitsio )
 	geos?   ( >=sci-libs/geos-2.2.1 )
-	gif? ( media-libs/giflib )
+	gif? ( media-libs/giflib:= )
 	gml? ( >=dev-libs/xerces-c-3 )
 	hdf5? ( >=sci-libs/hdf5-1.6.4[szip] )
 	java? ( >=virtual/jre-1.6:* )
