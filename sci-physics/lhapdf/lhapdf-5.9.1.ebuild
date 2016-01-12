@@ -21,7 +21,7 @@ SRC_URI="http://www.hepforge.org/archive/lhapdf/${MY_PF}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cxx doc examples octave python test"
 
 RDEPEND="octave? ( sci-mathematics/octave )"
