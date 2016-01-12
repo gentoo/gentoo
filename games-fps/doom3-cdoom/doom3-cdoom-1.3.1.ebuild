@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 
 MOD_DESC="Doom 1 conversion for Doom 3"
 MOD_NAME="Classic Doom"
@@ -11,7 +11,7 @@ MOD_ICON="cdoom.ico"
 
 inherit games games-mods
 
-HOMEPAGE="http://cdoom.d3files.com/"
+HOMEPAGE="http://www.moddb.com/mods/classic-doom-3"
 SRC_URI="classic_doom_3_${PV//.}.zip"
 
 LICENSE="GameFront"
