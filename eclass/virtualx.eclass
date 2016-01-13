@@ -154,7 +154,7 @@ virtx() {
 	local retval=0
 	local OLD_SANDBOX_ON="${SANDBOX_ON}"
 	local XVFB XHOST XDISPLAY
-	local xvfbargs="-screen 0 1280x1024x24"
+	local xvfbargs="-screen 0 1280x1024x24 +extension RANDR"
 	XVFB=$(type -p Xvfb) || die
 	XHOST=$(type -p xhost) || die
 
