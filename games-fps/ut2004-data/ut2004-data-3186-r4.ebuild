@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=5
 inherit eutils unpacker cdrom portability games
 
 DESCRIPTION="Unreal Tournament 2004 - This is the data portion of UT2004"
@@ -65,7 +66,7 @@ grabdirs() {
 		[[ -d ${srcdir} ]] || srcdir=${CDROM_ROOT}/${d}
 		if [[ -d ${srcdir} ]] ; then
 			insinto "${dir}"
-			doins -r "${srcdir}" || die "doins ${srcdir} failed"
+			doins -r "${srcdir}"
 		fi
 	done
 }
@@ -142,12 +143,10 @@ src_install() {
 
 		if [[ -f ${CDROM_ROOT}/Manual/Manual.pdf ]] ; then
 			insinto "${dir}"/Manual
-			doins "${CDROM_ROOT}"/Manual/Manual.pdf \
-				|| die "doins Manual.pdf failed"
+			doins "${CDROM_ROOT}"/Manual/Manual.pdf
 		elif [[ -f ${CDROM_ROOT}/Manual.pdf ]] ; then
 			insinto "${dir}"/Manual
-			doins "${CDROM_ROOT}"/Manual.pdf \
-				|| die "doins Manual.pdf failed"
+			doins "${CDROM_ROOT}"/Manual.pdf
 		fi
 
 		# Symlinks for unshield. data1&2.cab are both in Disk1.
@@ -160,7 +159,7 @@ src_install() {
 
 		# The big extraction
 		einfo "Extracting from CAB files - this will take several minutes..."
-		unshield x data1.cab || die "unshield data1.cab failed"
+		unshield x data1.cab || die
 
 		if [[ -d 4_UT2004_Animations ]] ; then
 			# Delete the other games on the Anthology DVD
@@ -168,7 +167,7 @@ src_install() {
 			# Rename directories to be same as Midway UT2004-only DVD,
 			# i.e. rename "4_UT2004_Animations" to "Animations".
 			for j in 4_UT2004_* ; do
-				mv -f ${j} ${j/4_UT2004_} || die "mv ${j} failed"
+				mv -f ${j} ${j/4_UT2004_} || die
 			done
 		fi
 
@@ -183,31 +182,31 @@ src_install() {
 			# UT2004-only DVD has "All_*" dirs, and Anthology DVD has "*_All"
 			if [[ -d All_${j} ]] ; then
 				if [[ -d ${j} ]] ; then
-					cp -rf All_${j}/* ${j}/ || die "cp All_${j} failed"
+					cp -rf All_${j}/* ${j}/ || die
 				else
-					mv -f All_${j} ${j} || die "mv All_${j} failed"
+					mv -f All_${j} ${j} || die
 				fi
 			fi
 			if [[ -d ${j}_All ]] ; then
 				if [[ -d ${j} ]] ; then
-					cp -rf ${j}_All/* ${j}/ || die "cp ${j}_All failed"
+					cp -rf ${j}_All/* ${j}/ || die
 				else
-					mv -f ${j}_All ${j} || die "mv ${j}_All failed"
+					mv -f ${j}_All ${j} || die
 				fi
 			fi
 
 			if [[ -d English_${j} ]] ; then
 				if [[ -d ${j} ]] ; then
-					cp -rf English_${j}/* ${j}/ || die "cp English_${j} failed"
+					cp -rf English_${j}/* ${j}/ || die
 				else
-					mv -f English_${j} ${j} || die "mv English_${j}"
+					mv -f English_${j} ${j} || die
 				fi
 			fi
 			if [[ -d ${j}_English ]] ; then
 				if [[ -d ${j} ]] ; then
-					cp -rf ${j}_English/* ${j}/ || die "cp ${j}_English failed"
+					cp -rf ${j}_English/* ${j}/ || die
 				else
-					mv -f ${j}_English ${j} || die "mv ${j}_English failed"
+					mv -f ${j}_English ${j} || die
 				fi
 			fi
 
@@ -219,8 +218,7 @@ src_install() {
 		if [[ -d English_Sounds_Speech_System_Help ]] ; then
 			# http://utforums.epicgames.com/showthread.php?t=558146
 			for j in Sounds Speech System Help ; do
-				cp -rf English_Sounds_Speech_System_Help/${j}/* ${j}/ \
-					|| die "cp English_Sounds_Speech_System_Help/${j} failed"
+				cp -rf English_Sounds_Speech_System_Help/${j}/* ${j}/ || die
 			done
 		fi
 
@@ -270,22 +268,18 @@ src_install() {
 		# The big install
 		einfo "Installing UT2004 directories..."
 		insinto "${dir}"
-		doins -r * || die "doins -r * failed"
+		doins -r *
 	else
 		# Disk 1
 		einfo "Copying files from Disk 1..."
 		insinto "${dir}"
-		doins -r "${CDROM_ROOT}"/${DISK1}/{Animations,ForceFeedback,Help,KarmaData,Maps,Sounds,Web} \
-			|| die "doins failed"
+		doins -r "${CDROM_ROOT}"/${DISK1}/{Animations,ForceFeedback,Help,KarmaData,Maps,Sounds,Web}
 		insinto "${dir}"/System
-		doins -r "${CDROM_ROOT}"/${DISK1}/System/{editorres,*.{bat,bmp,dat,det,est,frt,ini,int,itt,kot,md5,smt,tmt,u,ucl,upl,url}} \
-			|| die "doins System failed"
+		doins -r "${CDROM_ROOT}"/${DISK1}/System/{editorres,*.{bat,bmp,dat,det,est,frt,ini,int,itt,kot,md5,smt,tmt,u,ucl,upl,url}}
 		insinto "${dir}"/Manual
-		doins "${CDROM_ROOT}"/${DISK1}/Manual/Manual.pdf \
-			|| die "doins Manual.pdf failed"
+		doins "${CDROM_ROOT}"/${DISK1}/Manual/Manual.pdf
 		insinto "${dir}"/Benchmark/Stuff
-		doins -r "${CDROM_ROOT}"/${DISK1}/Benchmark/Stuff/* \
-			|| die "doins Benchmark failed"
+		doins -r "${CDROM_ROOT}"/${DISK1}/Benchmark/Stuff/*
 		cdrom_load_next_cd
 
 		local diskno
@@ -309,7 +303,7 @@ src_install() {
 		# Uncompress files
 		einfo "Uncompressing files... this *will* take a while..."
 		for j in Animations Maps Sounds StaticMeshes Textures ; do
-			fperms -R u+w "${dir}/${j}" || die "fperms ${j} failed"
+			fperms -R u+w "${dir}/${j}" || die
 			games_ut_unpack "${Ddir}"/${j}
 		done
 	fi
