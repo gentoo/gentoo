@@ -169,6 +169,8 @@ src_configure() {
 		--confdir="${EPREFIX}"/etc/${PN}
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}
 
+		--disable-gpl3		# Unclear license info. See Gentoo bug 571728.
+
 		$(usex cli '' '--disable-cplayer')
 		$(use_enable libmpv libmpv-shared)
 
