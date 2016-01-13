@@ -15,4 +15,7 @@
 		documentation), then you should check SGMLTools-Lite, OpenJade,
 		and docbook-tools.
 	</longdescription>
+	<upstream>
+		<remote-id type="gitlab">agmartin/linuxdoc-tools</remote-id>
+	</upstream>
 </pkgmetadata>
