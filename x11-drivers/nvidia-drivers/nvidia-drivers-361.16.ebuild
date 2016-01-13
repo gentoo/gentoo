@@ -81,11 +81,11 @@ pkg_pretend() {
 		die "Unexpected \${DEFAULT_ABI} = ${DEFAULT_ABI}"
 	fi
 
-	if use kernel_linux && kernel_is ge 4 4; then
+	if use kernel_linux && kernel_is ge 4 5; then
 		ewarn "Gentoo supports kernels which are supported by NVIDIA"
 		ewarn "which are limited to the following kernels:"
-		ewarn "<sys-kernel/gentoo-sources-4.4"
-		ewarn "<sys-kernel/vanilla-sources-4.4"
+		ewarn "<sys-kernel/gentoo-sources-4.5"
+		ewarn "<sys-kernel/vanilla-sources-4.5"
 		ewarn ""
 		ewarn "You are free to utilize epatch_user to provide whatever"
 		ewarn "support you feel is appropriate, but will not receive"
