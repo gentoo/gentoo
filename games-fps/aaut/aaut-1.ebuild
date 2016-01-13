@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=5
 inherit games
 
 DESCRIPTION="ascii mode unreal tournament"
@@ -18,6 +19,6 @@ RDEPEND="|| (
 	media-libs/aalib"
 
 src_install() {
-	dogamesbin "${FILESDIR}/aaut" || die "dogamesbin failed"
+	dogamesbin "${FILESDIR}/aaut"
 	prepgamesdirs
 }
