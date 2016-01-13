@@ -91,6 +91,7 @@ DOCS=(AUTHORS.txt ChangeLog NEWS.txt)
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.1-cmake.patch
 	"${FILESDIR}"/${PN}-3.2.1-gdal-2.0.patch
+	"${FILESDIR}"/${PN}-3.2.1-giflib5.patch
 )
 
 src_configure() {
