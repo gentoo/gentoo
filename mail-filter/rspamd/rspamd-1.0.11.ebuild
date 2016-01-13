@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -46,7 +46,7 @@ src_install() {
 
 	dodir /var/lib/rspamd
 	dodir /var/log/rspamd
-	
+
 	fowners rspamd:rspamd /var/lib/rspamd /var/log/rspamd
 
 	insinto /etc/logrotate.d
