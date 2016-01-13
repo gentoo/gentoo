@@ -3813,7 +3813,7 @@ dev-java/felix-shell 1.4.3: Felix Shell
 dev-java/felix-utils 1.2.0: Felix Utils
 dev-java/flyingsaucer 7-r2: 100% Java XHTML+CSS renderer
 dev-java/fontbox 0.1.0 1.7.1: An open source Java library for parsing font files
-dev-java/fop 2.0-r1: Formatting Objects Processor is a print formatter driven by XSL
+dev-java/fop 2.0-r1 2.0-r2: Formatting Objects Processor is a print formatter driven by XSL
 dev-java/forehead 1.0_beta5-r1 1.0_beta5-r2: A framework to assist in controlling the run-time ClassLoader
 dev-java/freehep-export 2.1.1: High Energy Physics Java library - FreeHEP Export and Save As Library
 dev-java/freehep-graphics2d 2.1.1: High Energy Physics Java library - FreeHEP Graphics 2D Library
@@ -5157,7 +5157,7 @@ dev-perl/B-Hooks-Parser 0.160.0: Interface to perls parser variables
 dev-perl/B-Keywords 1.130.0-r1 1.140.0 1.150.0: Lists of reserved barewords and symbol names
 dev-perl/B-OPCheck 0.300.0: PL_check hacks using Perl callbacks
 dev-perl/B-Utils 0.270.0: Helper functions for op tree manipulation
-dev-perl/BSD-Resource 1.290.700-r1 1.290.800: Perl module for BSD process resource limit and priority functions
+dev-perl/BSD-Resource 1.290.800: Perl module for BSD process resource limit and priority functions
 dev-perl/BZ-Client 1.72.0: A client for the Bugzilla web services API.
 dev-perl/Benchmark-Timer 0.710.700: Perl code benchmarking tool
 dev-perl/BerkeleyDB 0.540.0 0.550.0: This module provides Berkeley DB interface for Perl

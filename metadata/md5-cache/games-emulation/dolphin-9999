@@ -9,4 +9,4 @@ RDEPEND=>=media-libs/libsfml-2.1 >net-libs/enet-1.3.7 >=net-libs/mbedtls-2.1.1 d
 SLOT=0
 _eclass_exported_funcs=pkg_pretend:- pkg_preinst:games pkg_postinst:- pkg_setup:games src_unpack:git-r3 src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
 _eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	cmake-utils	b657a2689df4f46725711250cf9c8a32	eutils	d9bd2ddd85a58e470b49ca997e255a4c	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	games	4dae170e58f773c484e07d18ef441804	git-r3	0961ca04f93a7ae0e4c4a0b2b8c3be99	multilib	3972ca401cf7dbb430df9995f5d8d580	pax-utils	ecf634cba91bb9591a8fdb6f6145f1bb	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	wxwidgets	2a19d3cd9b18703ae9fb53123722061c
-_md5_=eb8aa803a99cba7b640d71c1b9cc85ac
+_md5_=c8996d900dea3c5bd99375cd16510d63
