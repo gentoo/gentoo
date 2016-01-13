@@ -199,15 +199,12 @@
     </member>
   </project>
   <project>
-    <email>heroxbd@gentoo.org</email>
-    <name>Gentoo RAP on Android Devices</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Android</url>
-    <description>Gentoo on Android aims to provide desktop experience on Android mobile devices. This project deploys Gentoo RAP, a variant of Gentoo that installs in a directory prefix, along with Android, sharing the same Linux kernel.</description>
-    <member is-lead="1">
-      <email>heroxbd@gentoo.org</email>
-      <name>Benda Xu</name>
-      <role>Lead</role>
-    </member>
+    <email>alt@gentoo.org</email>
+    <name>Alt Project</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Alt</url>
+    <description>Provide Gentoo-way solutions for non-GNU/Linux platforms.</description>
+    <subproject ref="bsd@gentoo.org"/>
+    <subproject ref="prefix@gentoo.org"/>
   </project>
   <project>
     <email>antivirus@gentoo.org</email>
@@ -699,34 +696,6 @@
     <name>Gentoo Debian Tools Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Debian_Tools</url>
     <description>Maintains tools used to build Debian-like distributions and related packages.</description>
-  </project>
-  <project>
-    <email>dberkholz@gentoo.org</email>
-    <name>Desktop</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Desktop</url>
-    <description>The desktop project handles all desktop-related issues of the Gentoo distribution, including science.</description>
-    <subproject ref="accessibility@gentoo.org"/>
-    <subproject ref="chromium@gentoo.org"/>
-    <subproject ref="desktop-effects@gentoo.org"/>
-    <subproject ref="desktop-misc@gentoo.org"/>
-    <subproject ref="enlightenment@gentoo.org"/>
-    <subproject ref="fonts@gentoo.org"/>
-    <subproject ref="gnome@gentoo.org"/>
-    <subproject ref="gnustep@gentoo.org"/>
-    <subproject ref="games@gentoo.org"/>
-    <subproject ref="kde@gentoo.org"/>
-    <subproject ref="lxde@gentoo.org"/>
-    <subproject ref="mate@gentoo.org"/>
-    <subproject ref="qt@gentoo.org"/>
-    <subproject ref="sound@gentoo.org"/>
-    <subproject ref="media-video@gentoo.org"/>
-    <subproject ref="x11@gentoo.org"/>
-    <subproject ref="xfce@gentoo.org"/>
-    <member is-lead="1">
-      <email>dberkholz@gentoo.org</email>
-      <name>Donnie Berkholz</name>
-      <role>Lead</role>
-    </member>
   </project>
   <project>
     <email>desktop-misc@gentoo.org</email>

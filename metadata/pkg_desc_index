@@ -9653,6 +9653,7 @@ dev-util/xmlindent 0.2.17-r1: XML Indent is an XML stream reformatter written in
 dev-util/xxdi 1.0.0: Simple alternative to vim's 'xxd -i' mode
 dev-util/xxdiff 4.0_beta1_p20110426 4.0_beta1_p20110426-r1: A graphical file and directories comparator and merge tool
 dev-util/yacc 1.9.1-r4 1.9.1-r5: Yacc: Yet Another Compiler-Compiler
+dev-util/yuicompressor 2.4.8: JavaScript and CSS compressor
 dev-vcs/archway 0.2.1: A GUI for GNU Arch
 dev-vcs/bfg 1.12.3 1.12.4: a simpler, faster alternative to git-filter-branch for removing bad data from git repos
 dev-vcs/blogc-git-receiver 0.2 9999: A simple login shell/git hook to deploy blogc websites
@@ -10078,7 +10079,7 @@ games-emulation/mupen64plus-video-rice 2.0-r1 2.5: A fork of Mupen64 Nintendo 64
 games-emulation/nestopia 1.46.2: A portable Nintendo Entertainment System emulator written in C++
 games-emulation/nestra 0.66-r2: NES emulation for Linux/x86
 games-emulation/openmsx 0.9.1: MSX emulator that aims for perfection
-games-emulation/pcsx2 1.3.1 9999: A PlayStation 2 emulator
+games-emulation/pcsx2 1.4.0 9999: A PlayStation 2 emulator
 games-emulation/pcsxr 1.9.94 1.9.94-r1: PCSX-Reloaded: a fork of PCSX, the discontinued Playstation emulator
 games-emulation/raine 0.51.9: R A I N E M680x0 Arcade Emulation
 games-emulation/sdlmame 0.148_p1-r1 0.149 0.168: Multiple Arcade Machine Emulator + Multi Emulator Super System (MESS)
@@ -16446,7 +16447,7 @@ sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-apps/yum 3.4.3_p20130218 3.4.3_p20130218-r1: automatic updater and package installer/remover for rpm systems
 sys-apps/zorroutils 0.04: Zorro bus utility for Amigas running 2.1 and later kernels
 sys-auth/bioapi 1.2.3-r2 1.2.4: Framework for biometric-based authentication
-sys-auth/consolekit 0.4.6 1.0.0-r1 9999: Framework for defining and tracking users, login sessions and seats
+sys-auth/consolekit 0.4.6 1.0.0-r1 1.0.1 9999: Framework for defining and tracking users, login sessions and seats
 sys-auth/fingerprint-gui 1.07: Use Fingerprint Devices with Linux
 sys-auth/fprint_demo 0.4: a simple GTK+ application to demonstrate and test libfprint's capabilities
 sys-auth/fprintd 0.2.0-r1 0.4.1 0.5.0 0.5.1 0.6.0: D-Bus service to access fingerprint readers
