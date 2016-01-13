@@ -44,7 +44,7 @@ CDEPEND="${PYTHON_DEPS}
 	sys-apps/attr[${MULTILIB_USEDEP}]
 	sys-libs/libcap
 	>=sys-libs/ldb-1.1.24[${MULTILIB_USEDEP}]
-	sys-libs/ncurses:0=
+	sys-libs/ncurses:0=[${MULTILIB_USEDEP}]
 	>=sys-libs/nss_wrapper-1.0.3[${MULTILIB_USEDEP}]
 	>=sys-libs/talloc-2.1.3[python,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	>=sys-libs/tdb-1.3.7[python,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
