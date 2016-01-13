@@ -1082,6 +1082,7 @@ app-office/lyx:hunspell - Add support for spellchecking based on hunspell and re
 app-office/lyx:monolithic-build - This should speed up compilation significantly when you have enough RAM (> 600 MB)
 app-office/lyx:rcs - Add support for revision control via dev-vcs/rcs
 app-office/lyx:rtf - Add support for RTF import/export packages
+app-office/magicpoint:contrib - Install additional contributed scripts
 app-office/scribus:boost - Enable support for Boost based enhancement
 app-office/scribus:graphicsmagick - Add support for media-gfx/graphicsmagick
 app-office/scribus:hunspell - Enable support for spell checking with app-text/hunspell
