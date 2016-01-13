@@ -2,10 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>java</herd>
-	<longdescription lang="en">
-	</longdescription>
 	<upstream>
-		<remote-id type="google-code">snakeyaml</remote-id>
 		<remote-id type="bitbucket">asomov/snakeyaml</remote-id>
 	</upstream>
 </pkgmetadata>
