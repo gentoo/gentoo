@@ -2,6 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>desktop-dock</herd>
+<maintainer>
+	<email>voyageur@gentoo.org</email>
+	<name>Bernard Cafarelli</name>
+</maintainer>
+
 <longdescription>
 wmfire is an eye-candy dock applet for Window Maker that displays generated 
 fire, possibly according to how much load the system is experiencing, or from a 

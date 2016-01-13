@@ -2,6 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>desktop-dock</herd>
+<maintainer>
+	<email>voyageur@gentoo.org</email>
+	<name>Bernard Cafarelli</name>
+</maintainer>
+
 <longdescription>
 WMTimer is a dockable alarm clock for Windowmaker or Blackbox which can be run 
 in alarm, countdown timer, or chronograph mode. In alarm or timer mode, you can 
