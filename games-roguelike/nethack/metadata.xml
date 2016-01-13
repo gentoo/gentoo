@@ -10,4 +10,7 @@
   <upstream>
     <remote-id type="sourceforge">nethack</remote-id>
   </upstream>
+  <use>
+    <flag name="experimental">Enable experimental features (showscore and status_hilite)</flag>
+  </use>
 </pkgmetadata>

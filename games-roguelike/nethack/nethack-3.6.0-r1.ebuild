@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/nethack/${PN}-${MY_PV}-src.tgz"
 LICENSE="nethack"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86 ~x86-fbsd"
-IUSE="X"
+IUSE="experimental X"
 
 RDEPEND="sys-libs/ncurses:0=
 	X? (
@@ -56,6 +56,8 @@ src_compile() {
 	append-cflags -DSYSCF "-DSYSCF_FILE=\\\"/etc/nethack.sysconf\\\""
 
 	use X && append-cflags -DX11_GRAPHICS -DUSE_XPM
+	use experimental &&
+		append-cflags -DSTATUS_VIA_WINDOWPORT -DSTATUS_HILITES -DSCORE_ON_BOTL
 
 	makeopts=(
 		CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LFLAGS="${LDFLAGS}"
