@@ -15,5 +15,6 @@
   </use>
   <upstream>
     <remote-id type="github">lastpass/lastpass-cli</remote-id>
+    <bugs-to>https://github.com/lastpass/lastpass-cli/issues</bugs-to>
   </upstream>
 </pkgmetadata>
