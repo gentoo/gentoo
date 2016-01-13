@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit eutils python-r1
 
-DESCRIPTION="User-friendly interface to configure, run or daemonize xplanet with HQ capabilities"
+DESCRIPTION="GUI to configure, run or daemonize xplanet with HQ capabilities"
 HOMEPAGE="http://mein-neues-blog.de/xplanetFX/"
 SRC_URI="http://repository.mein-neues-blog.de:9000/archive/${P/FX/fx}_all.tar.gz"
 
