@@ -2,6 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>desktop-dock</herd>
+	<maintainer>
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
 	<longdescription>
 wmCoinCoin is a WindowMaker dockapp that lets you see the latest news from 
 linuxfr.org. It also graphically represents some statistics about the oneliner 

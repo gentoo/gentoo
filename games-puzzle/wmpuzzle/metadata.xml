@@ -3,6 +3,10 @@
 <pkgmetadata>
 	<herd>games</herd>
 	<herd>desktop-dock</herd>
+	<maintainer>
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="freecode">wmpuzzle</remote-id>
 	</upstream>

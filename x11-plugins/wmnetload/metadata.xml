@@ -2,6 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>desktop-dock</herd>
+	<maintainer>
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
 	<longdescription>
 wmnetload is a network interface monitor dockapp  for Window Maker. It is 
 designed to fit well with  dockapps like wmcpuload and wmmemmon. It tracks 

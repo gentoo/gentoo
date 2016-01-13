@@ -2,6 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>desktop-dock</herd>
+<maintainer>
+	<email>voyageur@gentoo.org</email>
+	<name>Bernard Cafarelli</name>
+</maintainer>
+
 <longdescription>
 WMMemMon is a program to monitor memory/swap usages. It is a dockapp that is 
 supported by X window managers such as Window Maker, AfterStep, BlackBox, and 
