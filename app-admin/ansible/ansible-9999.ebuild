@@ -17,11 +17,11 @@ EGIT_BRANCH="devel"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="keyczar paramiko test"
+IUSE="keyczar test"
 
 RDEPEND="
-	paramiko? ( dev-python/paramiko[${PYTHON_USEDEP}] )
 	keyczar? ( dev-python/keyczar[${PYTHON_USEDEP}] )
+	dev-python/paramiko[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]

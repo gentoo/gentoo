@@ -15,11 +15,11 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x64-macos"
-IUSE="keyczar paramiko test"
+IUSE="keyczar test"
 
 RDEPEND="
-	paramiko? ( dev-python/paramiko[${PYTHON_USEDEP}] )
 	keyczar? ( dev-python/keyczar[${PYTHON_USEDEP}] )
+	dev-python/paramiko[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
