@@ -15906,7 +15906,7 @@ sci-visualization/gle 4.2.4c 4.2.5: Graphics Layout Engine
 sci-visualization/gnuplot 4.6.5 5.0.1-r1: Command-line driven interactive plotting program
 sci-visualization/grace 5.1.22-r2 5.1.22-r3 5.1.23 5.1.23-r1: Motif based XY-plotting tool
 sci-visualization/gri 2.12.19 2.12.23: Language for scientific graphics programming
-sci-visualization/gwyddion 2.39: Framework for Scanning Mode Microscopy data analysis
+sci-visualization/gwyddion 2.39 2.44: Framework for Scanning Mode Microscopy data analysis
 sci-visualization/kst 2.0.8: Fast real-time large-dataset viewing and plotting tool
 sci-visualization/labplot 2.0.2 9999: KDE data analysis and visualisation program
 sci-visualization/mayavi 4.3.0: Enthought Tool Suite: Scientific data 3-dimensional visualizer
