@@ -1,0 +1,34 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+EAPI=5
+
+inherit cmake-utils versionator
+
+DESCRIPTION="Importer library to import assets from 3D files"
+HOMEPAGE="https://github.com/assimp/assimp"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+
+LICENSE="BSD"
+KEYWORDS="~amd64 ~arm ~x86"
+IUSE="+boost samples static tools"
+SLOT="0"
+
+DEPEND="
+	boost? ( dev-libs/boost )
+	samples? ( x11-libs/libX11 virtual/opengl media-libs/freeglut )
+	sys-libs/zlib
+"
+RDEPEND="${DEPEND}"
+
+src_configure() {
+	mycmakeargs=(
+		$(cmake-utils_use_build samples ASSIMP_SAMPLES) \
+		$(cmake-utils_use_build tools ASSIMP_TOOLS) \
+		$(cmake-utils_use_build static STATIC_LIB) \
+		$(cmake-utils_use_enable !boost BOOST_WORKAROUND)
+	)
+
+	cmake-utils_src_configure
+}
