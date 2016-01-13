@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils flag-o-matic multilib pam toolchain-funcs
 
 DESCRIPTION="OpenRC manages the services, startup and shutdown of a host"
-HOMEPAGE="https://www.gentoo.org/proj/en/base/openrc/"
+HOMEPAGE="https://github.com/openrc/openrc/"
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://github.com/OpenRC/${PN}.git"
