@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 
 MOD_DESC="Fast-paced first person sport mod"
 MOD_NAME="Deathball"
@@ -21,5 +21,5 @@ IUSE="dedicated opengl"
 src_prepare() {
 	cd ${MOD_DIR} || die
 	mv -f ../*.txt . || die
-	rm -f *.bat *.cmd *.db Help/*.db
+	rm -f *.bat *.cmd *.db Help/*.db || die
 }
