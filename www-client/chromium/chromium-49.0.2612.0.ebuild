@@ -80,7 +80,7 @@ RDEPEND="
 		dev-libs/libxml2:=[icu]
 		dev-libs/libxslt:=
 		media-libs/flac:=
-		media-libs/harfbuzz:=[icu(+)]
+		>=media-libs/harfbuzz-0.9.41:=[icu(+)]
 		>=media-libs/libjpeg-turbo-1.2.0-r1:=
 		media-libs/libpng:0=
 		>=media-libs/libwebp-0.4.0:=

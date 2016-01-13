@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -50,7 +50,7 @@ RDEPEND=">=app-accessibility/speech-dispatcher-0.8:=
 	media-libs/flac:=
 	media-libs/fontconfig:=
 	media-libs/freetype:=
-	media-libs/harfbuzz:=[icu(+)]
+	>=media-libs/harfbuzz-0.9.41:=[icu(+)]
 	media-libs/libexif:=
 	>=media-libs/libjpeg-turbo-1.2.0-r1:=
 	media-libs/libpng:0=

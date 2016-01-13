@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -79,9 +79,8 @@ RDEPEND="
 		>=dev-libs/libevent-1.4.13:=
 		dev-libs/libxml2:=[icu]
 		dev-libs/libxslt:=
-		dev-libs/re2:=
 		media-libs/flac:=
-		media-libs/harfbuzz:=[icu(+)]
+		>=media-libs/harfbuzz-0.9.41:=[icu(+)]
 		>=media-libs/libjpeg-turbo-1.2.0-r1:=
 		media-libs/libpng:0=
 		>=media-libs/libwebp-0.4.0:=
@@ -190,12 +189,11 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-system-ffmpeg-r1.patch"
+	epatch "${FILESDIR}/${PN}-system-ffmpeg-r2.patch"
 	epatch "${FILESDIR}/${PN}-system-jinja-r7.patch"
 	epatch "${FILESDIR}/${PN}-widevine-r1.patch"
 	epatch "${FILESDIR}/${PN}-last-commit-position-r0.patch"
-	epatch "${FILESDIR}/${PN}-snapshot-toolchain-r0.patch"
-	epatch "${FILESDIR}/${PN}-rpath-r0.patch"
+	epatch "${FILESDIR}/${PN}-snapshot-toolchain-r1.patch"
 
 	epatch_user
 
@@ -205,20 +203,19 @@ src_prepare() {
 	fi
 	if use gn; then
 		conditional_bundled_libraries+="
+			base/third_party/libevent
 			third_party/adobe
 			third_party/ffmpeg
 			third_party/flac
 			third_party/harfbuzz-ng
 			third_party/icu
 			third_party/jinja2
-			third_party/libevent
 			third_party/libjpeg_turbo
 			third_party/libpng
 			third_party/libwebp
 			third_party/libxml
 			third_party/libxslt
 			third_party/markupsafe
-			third_party/re2
 			third_party/snappy
 			third_party/speech-dispatcher
 			third_party/usb_ids
@@ -312,6 +309,7 @@ src_prepare() {
 		'third_party/polymer' \
 		'third_party/protobuf' \
 		'third_party/qcms' \
+		'third_party/re2' \
 		'third_party/sfntly' \
 		'third_party/skia' \
 		'third_party/smhasher' \
@@ -357,6 +355,7 @@ src_configure() {
 	# TODO: use_system_libvpx (http://crbug.com/494939).
 	# TODO: use_system_opus (https://code.google.com/p/webrtc/issues/detail?id=3077).
 	# TODO: use_system_protobuf (bug #525560).
+	# TODO: use_system_re2 (bug #571156).
 	# TODO: use_system_ssl (http://crbug.com/58087).
 	# TODO: use_system_sqlite (http://crbug.com/22208).
 	myconf_gyp+="
@@ -374,7 +373,6 @@ src_configure() {
 		-Duse_system_libxslt=1
 		-Duse_system_minizip=1
 		-Duse_system_nspr=1
-		-Duse_system_re2=1
 		-Duse_system_snappy=1
 		-Duse_system_speex=1
 		-Duse_system_xdg_utils=1
