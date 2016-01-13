@@ -45,11 +45,6 @@
 # Gentoo. (Bug 548974) Use Apache Module mod_authn_dbd instead.
 www-apache/mod_auth_pgsql
 
-# Lars Wendler <polynomial-c@gentoo.org> (11 Jan 2016)
-# Masked until reavertm added all missing pieces (lua, gles)
-# to the ebuild.
-=dev-games/openscenegraph-3.4.0
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (9 Jan 2016)
 # Errorneously added. Is already in perl-core. Please uninstall.
 dev-perl/ExtUtils-Constant
