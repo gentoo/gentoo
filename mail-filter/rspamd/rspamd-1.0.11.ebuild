@@ -46,8 +46,8 @@ src_install() {
 
 	dodir /var/lib/rspamd
 	dodir /var/log/rspamd
-	dodir /var/run/rspamd
-	fowners rspamd:rspamd /var/lib/rspamd /var/log/rspamd /var/run/rspamd
+	
+	fowners rspamd:rspamd /var/lib/rspamd /var/log/rspamd
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/rspamd.logrotate" rspamd
