@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=PPSSPP QT
+Comment=A PSP emulator
+Exec=/usr/games/bin/ppssppqt
+Icon=ppsspp-icon
+Categories=Game;
