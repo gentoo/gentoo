@@ -10,7 +10,7 @@ MY_P=${PN}-${PV_MAJOR}-${PV}
 
 DESCRIPTION="Third-person sneaker like Splinter Cell"
 HOMEPAGE="http://linuxgamepublishing.com/info.php?id=coldwar"
-SRC_URI="http://updatefiles.linuxgamepublishing.com/${PN}/${MY_P}-x86.run"
+SRC_URI="http://wolke.qcore.de/native/Spiele/Cold%20War/Patches/${MY_P}-x86.run"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
