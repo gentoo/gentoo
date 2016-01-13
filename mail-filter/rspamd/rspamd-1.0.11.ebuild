@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-libs/libpcre
+DEPEND="dev-libs/openssl
+		dev-libs/libpcre
 		dev-lang/luajit:2
 		dev-libs/libevent
 		dev-db/sqlite:3
