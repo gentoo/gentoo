@@ -1328,7 +1328,7 @@ app-emulation/vagrant 1.4.3-r2: A tool for building and distributing virtual mac
 app-emulation/vboxgtk 0.8.2-r1: GTK frontend for VirtualBox
 app-emulation/vice 2.4.22: The Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 1.1.0-r2 1.2.1 1.3.0-r1 1.3.2 9999: A graphical tool for administering virtual machines
-app-emulation/virt-viewer 2.0 3.0: Graphical console client for connecting to virtual machines
+app-emulation/virt-viewer 2.0 3.0 3.1: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.12: Detects if the current machine is running in a virtual machine
 app-emulation/virtualbox 4.3.28 4.3.32 4.3.34 5.0.10 5.0.12: Family of powerful x86 virtualization products for enterprise as well as home use
 app-emulation/virtualbox-additions 4.3.28 4.3.32 4.3.34 5.0.10 5.0.12: CD image containing guest additions for VirtualBox
@@ -4315,7 +4315,7 @@ dev-lang/elixir 1.0.5 1.1.1: Elixir programming language
 dev-lang/epic 0.9.2 0.9.3 0.9.3.2 0.9.3.3: Compiler for a simple functional language
 dev-lang/erlang 15.2.3.1 17.5 18.0-r2 18.2.1: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
-dev-lang/execline 2.1.1.0: a non-interactive scripting language similar to SH
+dev-lang/execline 2.1.1.0 2.1.4.5: a non-interactive scripting language similar to SH
 dev-lang/f2c 20060507 20100827: Fortran to C converter
 dev-lang/falcon 0.9.6.4: An open source general purpose untyped language written in C++
 dev-lang/ferite 1.1.17-r1: A clean, lightweight, object oriented scripting language
@@ -4850,7 +4850,7 @@ dev-libs/sdformat 3.6.0 3.7.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.18.2 0.20.0 0.22.0: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 1.97.9: Library to drive serial/parallel/usb displays with built-in controllers
 dev-libs/shhopt 1.1.7-r2: library for parsing command line options
-dev-libs/skalibs 2.3.2.0: development files used for building software at skarnet.org: essentially general-purpose libraries
+dev-libs/skalibs 2.3.2.0 2.3.9.0: development files used for building software at skarnet.org: essentially general-purpose libraries
 dev-libs/skyutils 2.8-r2: Library of assorted C utility functions
 dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compressed blobs
 dev-libs/sni-qt 0.2.6-r1: A Qt plugin which turns all QSystemTrayIcon into StatusNotifierItems
@@ -16392,7 +16392,7 @@ sys-apps/rng-tools 4-r7 5 5-r1 5-r2: Daemon to use hardware random number genera
 sys-apps/roccat-tools 3.4.0 3.5.0 3.5.0-r1 3.6.1 3.7.0: Utility for advanced configuration of Roccat devices
 sys-apps/rsbac-admin 1.4.9: Rule Set Based Access Control (RSBAC) Admin Tools
 sys-apps/s390-tools 1.17.0 1.23.1: User space utilities for the zSeries (s390) Linux kernel and device drivers
-sys-apps/s6 2.1.3.0: skarnet.org's small and secure supervision software suite
+sys-apps/s6 2.1.3.0 2.2.4.3: skarnet.org's small and secure supervision software suite
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
 sys-apps/sandbox 1.6-r2 2.3-r1 2.4 2.5 2.6-r1 2.7 2.8 2.9 2.10-r1: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.07 1.08-r1 1.09: Utility to output and modify parameters on a SCSI device, like hdparm

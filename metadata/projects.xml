@@ -1387,6 +1387,36 @@
     </member>
   </project>
   <project>
+    <email>genkernel@gentoo.org</email>
+    <name>Genkernel Project</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Genkernel</url>
+    <description>The Genkernel project handles the maintenance and development of sys-kernel/genkernel</description>
+    <member>
+      <email>aidecoe@gentoo.org</email>
+      <name>Amadeusz Żołnowski</name>
+    </member>
+    <member>
+      <email>alunduil@gentoo.org</email>
+      <name>Alex Brandt</name>
+    </member>
+    <member>
+      <email>axs@gentoo.org</email>
+      <name>Ian Stakenvicius</name>
+    </member>
+    <member>
+      <email>robbat2@gentoo.org</email>
+      <name>Robin Johnson</name>
+    </member>
+    <member>
+      <email>ryao@gentoo.org</email>
+      <name>Richard Yao</name>
+    </member>
+    <member>
+      <email>zerochaos@gentoo.org</email>
+      <name>Rick Farina</name>
+    </member>
+  </project>
+  <project>
     <email>gkeys@gentoo.org</email>
     <name>Gentoo Keys</name>
     <url>https://wiki.gentoo.org/wiki/Project:Gentoo-keys</url>
@@ -1449,10 +1479,10 @@
     <name>Gentoo Hardened</name>
     <url>https://wiki.gentoo.org/wiki/Project:Hardened</url>
     <description>Hardened Gentoo is a project which oversees the research, implementation, and maintenance of security oriented projects for Gentoo Linux.</description>
-    <subproject ref="hardened@gentoo.org"/>
-    <subproject ref="hardened@gentoo.org"/>
-    <subproject ref="hardened@gentoo.org"/>
-    <subproject ref="hardened@gentoo.org"/>
+    <subproject ref="musl@gentoo.org"/>
+    <subproject ref="uclibc@gentoo.org"/>
+    <subproject ref="integrity@gentoo.org"/>
+    <subproject ref="rsbac@gentoo.org"/>
     <subproject ref="selinux@gentoo.org"/>
     <member>
       <email>blueness@gentoo.org</email>
@@ -1496,7 +1526,7 @@
     </member>
   </project>
   <project>
-    <email>hardened@gentoo.org</email>
+    <email>musl@gentoo.org</email>
     <name>Hardened musl</name>
     <url>https://wiki.gentoo.org/wiki/Project:Hardened_musl</url>
     <description>This subproject aims to port the hardened tool chain to musl based systems for a variety of architectures. The project treats musl as an alternative to glibc and uClibc, and not necessarily as "embedded".</description>
@@ -1507,7 +1537,7 @@
     </member>
   </project>
   <project>
-    <email>hardened@gentoo.org</email>
+    <email>uclibc@gentoo.org</email>
     <name>Hardened uClibc</name>
     <url>https://wiki.gentoo.org/wiki/Project:Hardened_uClibc</url>
     <description>This subproject aims to port both tool chain and kernel hardening to uClibc based systems for a variety of architectures. The project treats uClibc as an alternative to glibc, and not necessarily as "embedded".</description>
@@ -1651,7 +1681,7 @@
     </member>
   </project>
   <project>
-    <email>hardened@gentoo.org</email>
+    <email>integrity@gentoo.org</email>
     <name>Integrity, Compliance and Reporting</name>
     <url>https://wiki.gentoo.org/wiki/Project:Integrity</url>
     <description>The integrity subproject aims to integrate and maintain technologies related to system integrity within Gentoo Hardened. Although initially focused on Linux IMA/EVM, this will extend towards other integrity, compliance and reporting technologies.</description>
@@ -3087,7 +3117,7 @@
     </member>
   </project>
   <project>
-    <email>hardened@gentoo.org</email>
+    <email>rsbac@gentoo.org</email>
     <name>RSBAC</name>
     <url>https://wiki.gentoo.org/wiki/Project:RSBAC</url>
     <description>This project manages the RSBAC support within Gentoo. This includes providing kernels with RSBAC support (loosely based on the hardened-sources), administration utilities to manage and write strong Gentoo-specific policies.</description>
