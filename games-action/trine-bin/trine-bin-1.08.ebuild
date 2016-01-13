@@ -9,7 +9,7 @@
 # the same zip appended, so only need to hash one of them.
 
 EAPI=5
-inherit unpacker games eutils
+inherit unpacker eutils games
 
 DESCRIPTION="a physics-based action game where diff characters allow diff solutions to challenges"
 HOMEPAGE="http://trine-thegame.com/"
@@ -30,8 +30,7 @@ RDEPEND=">=sys-libs/glibc-2.4
 S=${WORKDIR}
 
 d=${GAMES_PREFIX_OPT}/${PN}
-QA_PRESTRIPPED="${d#/}/trine-launcher ${d#/}/trine-bin ${d#/}/lib*/lib*.so*"
-QA_TEXTRELS_x86="`echo ${d#/}/lib32/lib{avcodec.so.51,avformat.so.52,avutil.so.49,FLAC.so.8}`"
+QA_PREBUILT="${d#/}/trine-launcher ${d#/}/trine-bin ${d#/}/lib*/lib*.so*"
 
 pkg_nofetch() {
 	einfo "Fetch ${SRC_URI} and put it into ${DISTDIR}"
@@ -46,7 +45,7 @@ src_unpack() {
 
 src_install() {
 	local b bb
-	local sfx=$(use x86 && echo 32 || echo 64)
+	local sfx=$(usex x86 32 64)
 
 	doicon Trine.xpm
 	for b in bin launcher ; do

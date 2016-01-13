@@ -119,18 +119,15 @@ src_prepare() {
 	# Remove ALL the bundled libraries, aside from:
 	# - SOIL: The sources are not public.
 	# - Bochs-disasm: Don't know what it is.
-	# - GL: A custom gl.h file is used.
 	# - gtest: Their build set up solely relies on the build in gtest.
 	# - xxhash: Not on the tree.
 	mv Externals/SOIL . || die
 	mv Externals/Bochs_disasm . || die
-	mv Externals/GL . || die
 	mv Externals/gtest . || die
 	mv Externals/xxhash . || die
 	rm -r Externals/* || die "Failed to delete Externals dir."
 	mv Bochs_disasm Externals || die
 	mv SOIL Externals || die
-	mv GL Externals || die
 	mv gtest Externals || die
 	mv xxhash Externals || die
 }
