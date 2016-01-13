@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<herd>proxy-maintainers</herd>
 	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
+		<email>peter@stuge.se</email>
+		<name> Peter Stuger</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<longdescription lang="en">
 		Magic Point is an X11 based presentation tool. It is designed to make
@@ -11,4 +14,7 @@
 		just text so that you can create presentation files quickly with your
 		favorite editor (e.g.  Emacs, vi).  
 	</longdescription>
+	<use>
+		<flag name="contrib">Install additional contributed scripts</flag>
+	</use>
 </pkgmetadata>
