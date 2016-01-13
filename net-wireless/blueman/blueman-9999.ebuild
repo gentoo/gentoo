@@ -44,7 +44,6 @@ RDEPEND="${COMMON_DEPEND}
 	)
 	appindicator? ( dev-libs/libappindicator:3[introspection] )
 	network? (
-		net-dns/avahi[autoipd]
 		net-firewall/iptables
 		sys-apps/net-tools
 		|| (
