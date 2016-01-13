@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 inherit libtool eutils flag-o-matic python-single-r1
 
-DESCRIPTION="Lightweight library used to easily extract data from files archived in a single zip file"
+DESCRIPTION="Lightweight library for extracting data from files archived in a single zip file"
 HOMEPAGE="http://zziplib.sourceforge.net/"
 SRC_URI="mirror://sourceforge/zziplib/${P}.tar.bz2"
 
