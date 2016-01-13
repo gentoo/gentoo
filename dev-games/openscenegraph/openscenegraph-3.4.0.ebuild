@@ -16,14 +16,15 @@ SRC_URI="http://trac.openscenegraph.org/downloads/developer_releases/${MY_P}.zip
 
 LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0/34" # Subslot consists of major + minor version number
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="asio curl debug doc examples ffmpeg fltk fox gdal gif glut gstreamer gtk jpeg
-jpeg2k openexr openinventor osgapps pdf png qt4 qt5 sdl sdl2 svg tiff truetype vnc
-wxwidgets xine xrandr zlib"
+jpeg2k las lua openexr openinventor osgapps pdf png qt4 qt5 sdl sdl2 svg tiff truetype
+vnc wxwidgets xine xrandr zlib"
 
 REQUIRED_USE="
 	qt4? ( !qt5 )
 	qt5? ( !qt4 )
+	sdl2? ( sdl )
 "
 
 # TODO: COLLADA, FBX, GTA, ITK, OpenVRML, Performer, DCMTK
@@ -39,8 +40,7 @@ RDEPEND="
 		fox? ( x11-libs/fox:1.6[opengl] )
 		glut? ( media-libs/freeglut )
 		gtk? ( x11-libs/gtkglext )
-		sdl? ( media-libs/libsdl
-			sdl2? ( media-libs/libsdl2 ) )
+		sdl2? ( media-libs/libsdl2 )
 		wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[opengl,X] )
 	)
 	ffmpeg? ( virtual/ffmpeg )
@@ -52,6 +52,8 @@ RDEPEND="
 	)
 	jpeg? ( virtual/jpeg:0 )
 	jpeg2k? ( media-libs/jasper )
+	las? ( >=sci-geosciences/liblas-1.8.0 )
+	lua? ( >=dev-lang/lua-5.1.5:* )
 	openexr? (
 		media-libs/ilmbase
 		media-libs/openexr
@@ -70,6 +72,7 @@ RDEPEND="
 		dev-qt/qtopengl:5
 		dev-qt/qtwidgets:5
 	)
+	sdl? ( media-libs/libsdl )
 	svg? (
 		gnome-base/librsvg
 		x11-libs/cairo
@@ -109,6 +112,10 @@ src_configure() {
 		-DDYNAMIC_OPENSCENEGRAPH=ON
 		-DWITH_ITK=OFF
 		-DGENTOO_DOCDIR="/usr/share/doc/${PF}"
+		-DOPENGL_PROFILE=GL2 #GL1 GL2 GL3 GLES1 GLES3 GLES3
+		-DOSG_USE_LOCAL_LUA_SOURCE=OFF
+		-DWITH_Lua51=OFF # We use CMake-version FindLua.cmake instead
+		-DWITH_Lua52=OFF
 		$(cmake-utils_use_with asio)
 		$(cmake-utils_use_with curl)
 		$(cmake-utils_use_build doc DOCUMENTATION)
@@ -121,15 +128,18 @@ src_configure() {
 		$(cmake-utils_use_with gif GIFLIB)
 		$(cmake-utils_use_with glut)
 		$(cmake-utils_use_with gstreamer GStreamer)
+		$(cmake-utils_use_with gstreamer GLIB)
 		$(cmake-utils_use_with gtk GtkGl)
 		$(cmake-utils_use_with jpeg)
 		$(cmake-utils_use_with jpeg2k Jasper)
+		$(cmake-utils_use_with las LIBLAS)
+		$(cmake-utils_use_with lua)
 		$(cmake-utils_use_with openexr OpenEXR)
 		$(cmake-utils_use_with openinventor Inventor)
 		$(cmake-utils_use_with pdf Poppler-glib)
 		$(cmake-utils_use_with png)
 		$(cmake-utils_use_with sdl)
-		$(cmake_utils_use_with sdl2)
+		$(cmake-utils_use_with sdl2)
 		$(cmake-utils_use_with svg rsvg)
 		$(cmake-utils_use_with tiff)
 		$(cmake-utils_use_with truetype Freetype)
