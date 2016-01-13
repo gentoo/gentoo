@@ -143,7 +143,7 @@ src_install() {
 	dodoc doc/*.txt
 
 	insinto /etc/skel
-	newins "${FILESDIR}/dot.nethackrc" .nethackrc
+	newins "${FILESDIR}/${P}-nethackrc" .nethackrc
 
 	local windowtypes="tty"
 	use X && windowtypes="${windowtypes} x11"

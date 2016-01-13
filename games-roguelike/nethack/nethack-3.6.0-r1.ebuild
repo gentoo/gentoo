@@ -87,16 +87,7 @@ src_install() {
 	newins sys/unix/sysconf nethack.sysconf
 
 	insinto /etc/skel
-	newins "${FILESDIR}/dot.nethackrc" .nethackrc
-
-	local windowtypes="tty"
-	use X && windowtypes="x11 ${windowtypes}"
-	set -- ${windowtypes}
-	sed -i \
-		-e "s:GENTOO_WINDOWTYPES:${windowtypes}:" \
-		-e "s:GENTOO_DEFWINDOWTYPE:$1:" \
-		"${D}/etc/skel/.nethackrc" \
-		|| die "sed /etc/skel/.nethackrc failed"
+	newins "${FILESDIR}/${P}-nethackrc" .nethackrc
 
 	if use X ; then
 		cd "${S}/win/X11" || die "Failed to enter win/X11 directory"

@@ -93,7 +93,7 @@ src_install() {
 	newins sys/unix/sysconf nethack.sysconf
 
 	insinto /etc/skel
-	newins "${FILESDIR}/dot.nethackrc" .nethackrc
+	newins "${FILESDIR}/${PN}-3.4.3-nethackrc" .nethackrc
 
 	local windowtypes="tty"
 	use X && windowtypes="x11 ${windowtypes}"
