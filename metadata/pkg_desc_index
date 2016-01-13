@@ -4192,7 +4192,7 @@ dev-java/slf4j-log4j12 1.7.7: Simple Logging Facade for Java (SLF4J) log4j bindi
 dev-java/slf4j-nop 1.7.7: Simple Logging Facade for Java
 dev-java/slf4j-simple 1.7.7: Simple Logging Facade for Java
 dev-java/smack 2.2.1: An Open Source XMPP (Jabber) client library for instant messaging and presence
-dev-java/snakeyaml 1.9-r2: A YAML 1.1 parser and emitter for Java 5
+dev-java/snakeyaml 1.16: A YAML 1.1 parser and emitter for Java 5
 dev-java/snappy 1.0.3_rc3 1.1.0.1: Snappy compressor/decompressor for Java
 dev-java/snip 0.11: an Apache ANT optional task that extracts snippets of code from text files
 dev-java/soylatte-jdk-bin 1.0.3 7: Landon Fuller's OpenJDK 7 for Mac OS X 10.5/PPC
@@ -17518,7 +17518,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.2 2.3.3: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.4.1: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 47.0.2526.106 48.0.2564.10 48.0.2564.23 48.0.2564.41 49.0.2587.3 49.0.2612.0: Open-source version of Google Chrome web browser
+www-client/chromium 47.0.2526.106 48.0.2564.10 48.0.2564.23 48.0.2564.41 49.0.2612.0 49.0.2618.8: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20141005 1.0_pre20150227 1.0_pre20150519: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.4 3.0.4.1 3.0.5 3.0.5-r1: Lean FLTK based web browser
