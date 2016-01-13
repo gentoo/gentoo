@@ -10,9 +10,7 @@ inherit distutils-r1 eutils versionator
 
 DESCRIPTION="Model-driven deployment, config management, and command execution framework"
 HOMEPAGE="http://ansible.com/"
-# the version here is special because upstream did a 2.0.0 release on accident one time...
-MY_PV=$(replace_version_separator 1 '.0.')
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${PN}-${MY_PV}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
