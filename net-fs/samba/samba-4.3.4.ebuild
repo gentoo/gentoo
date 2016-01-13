@@ -39,7 +39,7 @@ CDEPEND="${PYTHON_DEPS}
 	dev-libs/popt[${MULTILIB_USEDEP}]
 	sys-libs/readline:=
 	virtual/libiconv
-	dev-python/subunit[${PYTHON_USEDEP}]
+	dev-python/subunit[${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	>=net-libs/socket_wrapper-1.1.3[${MULTILIB_USEDEP}]
 	sys-apps/attr[${MULTILIB_USEDEP}]
 	sys-libs/libcap

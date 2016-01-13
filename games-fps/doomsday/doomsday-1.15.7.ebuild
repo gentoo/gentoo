@@ -6,15 +6,15 @@
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
-inherit python-r1 confutils eutils qt4-r2 games
+inherit python-r1 eutils qt5-build games
 
 DESCRIPTION="A modern gaming engine for Doom, Heretic, and Hexen"
 HOMEPAGE="http://www.dengine.net/"
-SRC_URI="mirror://sourceforge/deng/Doomsday%20Engine/${PV}/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/deng/Doomsday%20Engine/${PV}/${PN}-stable-${PV}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+ LGPL-3+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dedicated fluidsynth openal snowberry +doom demo freedoom heretic hexen resources tools"
 # we need python at build time, so
 # snowberry? ( ${PYTHON_REQUIRED_USE} )
@@ -23,14 +23,16 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	demo? ( doom ) freedoom? ( doom ) resources? ( doom )"
 
 DEPEND="
-	dev-qt/qtcore:4
-	dev-qt/qtopengl:4
-	dev-qt/qtgui:4
+	dev-qt/qtcore:5
+	dev-qt/qtopengl:5
+	dev-qt/qtx11extras:5
+	dev-qt/qtgui:5
 	net-misc/curl
 	sys-libs/zlib
+	media-libs/assimp
 	!dedicated? (
-		media-libs/libsdl[joystick,sound]
-		media-libs/sdl-mixer
+		media-libs/libsdl2[joystick,sound]
+		media-libs/sdl2-mixer
 		media-libs/libpng:0
 		virtual/opengl
 		virtual/glu
@@ -50,7 +52,8 @@ RDEPEND="${DEPEND}
 		)
 	)"
 DEPEND="${DEPEND}
-	${PYTHON_DEPS}"
+	${PYTHON_DEPS}
+	virtual/pkgconfig"
 PDEPEND="
 	!dedicated? (
 		demo? ( games-fps/doom-data )
@@ -58,67 +61,60 @@ PDEPEND="
 		resources? ( games-fps/doomsday-resources )
 	)"
 
-S=${S}/${PN}
+S=${WORKDIR}/${PN}-stable-${PV}/${PN}
 
 pkg_setup() {
 	games_pkg_setup
-	python_export_best
+	python_setup
 }
 
 src_prepare() {
 	sed -i \
 		-e '/readme.path/s#$$PREFIX#/usr#' \
-		client/client.pro || die
+		client/client.pro server/server.pro || die
 
 	sed -i \
-		-e "/^DENG_BASE_DIR =/s:\$\$PREFIX/share:${GAMES_DATADIR}:" \
+		-e "/DENG_BASE_DIR =/s:\$\$PREFIX/share:${GAMES_DATADIR}:" \
 		config_unix.pri || die
 
-	echo "CONFIG += nostrip" > config_user.pri
-	echo "PREFIX=/usr/games" >> config_user.pri
+	{
+		echo "CONFIG += nostrip"
+		echo "PREFIX=${GAMES_PREFIX}"
 
-	if use dedicated ; then
-		echo "CONFIG += deng_noclient" >> config_user.pri
-		echo "CONFIG += deng_nosnowberry" >> config_user.pri
-	else
-		use snowberry &&
-			echo "CONFIG += deng_snowberry" >> config_user.pri || \
-			echo "CONFIG += deng_nosnowberry" >> config_user.pri
-	fi
+		if use dedicated ; then
+			echo "CONFIG += deng_noclient"
+			echo "CONFIG += deng_nosnowberry"
+		else
+			echo "CONFIG += deng_$(usex snowberry '' no)snowberry"
+		fi
 
-	use fluidsynth &&
-		echo "CONFIG += deng_fluidsynth" >> config_user.pri
+		use fluidsynth && echo "CONFIG += deng_fluidsynth"
 
-	use tools ||
-		echo "CONFIG += deng_notools" >> config_user.pri
+		use tools || echo "CONFIG += deng_notools"
 
-	if use openal; then
-		echo "CONFIG += deng_openal" >> config_user.pri
-		sed -i \
-			-e 's:\# Generic Unix.:LIBS += -lopenal:' \
-			dep_openal.pri || die
-	fi
+		use openal && echo "CONFIG += deng_openal"
 
-	qt4-r2_src_prepare
+	} > config_user.pri || die
+
+	qt5-build_src_prepare
 }
 
 #Usage: doom_make_wrapper <name> <game> <icon> <desktop entry title> [args]
 doom_make_wrapper() {
 	local name=$1 game=$2 icon=$3 de_title=$4
 	shift 4
-	games_make_wrapper $name \
-		"doomsday -game ${game} $@"
+	games_make_wrapper $name "doomsday -game ${game} $@"
 	make_desktop_entry $name "${de_title}" ${icon}
 }
 
 src_configure() {
-	qt4-r2_src_configure
+	qt5-build_src_configure
 }
 
 src_install() {
-	qt4-r2_src_install
+	qt5-build_src_install
 
-	dodoc "${WORKDIR}"/${P}/README.md
+	dodoc "${S}"/../README.md
 
 	mv "${D}/${GAMES_DATADIR}"/{${PN}/data/jdoom,doom-data} || die
 	dosym "${GAMES_DATADIR}"/doom-data "${GAMES_DATADIR}"/${PN}/data/jdoom
@@ -145,6 +141,7 @@ src_install() {
 
 		if use doom; then
 			local res_arg
+
 			if use resources; then
 				res_arg="-def \"${GAMES_DATADIR}\"/${PN}/defs/jdoom/jDRP.ded"
 			fi
