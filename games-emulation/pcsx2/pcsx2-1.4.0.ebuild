@@ -4,12 +4,13 @@
 
 EAPI=5
 PLOCALES="ar_SA ca_ES cs_CZ de_DE es_ES fi_FI fr_FR hr_HR hu_HU id_ID it_IT ja_JP ko_KR ms_MY nb_NO pl_PL pt_BR ru_RU sv_SE th_TH tr_TR zh_CN zh_TW"
+MY_PV="${PV/_/-}"
 
 inherit cmake-utils l10n multilib toolchain-funcs wxwidgets
 
 DESCRIPTION="A PlayStation 2 emulator"
 HOMEPAGE="http://www.pcsx2.net"
-SRC_URI="https://github.com/PCSX2/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/PCSX2/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -18,14 +19,16 @@ IUSE=""
 
 RDEPEND="
 	app-arch/bzip2[abi_x86_32(-)]
+	app-arch/xz-utils[abi_x86_32(-)]
 	dev-libs/libaio[abi_x86_32(-)]
 	media-libs/alsa-lib[abi_x86_32(-)]
+	media-libs/libpng:=[abi_x86_32(-)]
 	media-libs/libsdl[abi_x86_32(-),joystick,sound]
-	media-libs/portaudio[abi_x86_32(-)]
 	media-libs/libsoundtouch[abi_x86_32(-)]
-	virtual/opengl[abi_x86_32(-)]
+	media-libs/portaudio[abi_x86_32(-)]
 	>=sys-libs/zlib-1.2.4[abi_x86_32(-)]
 	virtual/jpeg:62[abi_x86_32(-)]
+	virtual/opengl[abi_x86_32(-)]
 	x11-libs/gtk+:2[abi_x86_32(-)]
 	x11-libs/libICE[abi_x86_32(-)]
 	x11-libs/libX11[abi_x86_32(-)]
@@ -35,14 +38,11 @@ RDEPEND="
 # Ensure no incompatible headers from eselect-opengl are installed, bug #510730
 DEPEND="${RDEPEND}
 	>=app-eselect/eselect-opengl-1.3.1
+	dev-cpp/pngpp
 	>=dev-cpp/sparsehash-1.5
 "
 
-PATCHES=(
-	"${FILESDIR}"/"${P}-egl-optional.patch"
-	"${FILESDIR}"/"${P}-packaging.patch"
-	"${FILESDIR}"/"${P}-cflags.patch"
-)
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 clean_locale() {
 	rm -R "${S}"/locales/"${1}" || die
@@ -50,8 +50,8 @@ clean_locale() {
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary && $(tc-getCC) == *gcc* ]]; then
-		if [[ $(gcc-major-version) -lt 4 || $(gcc-major-version) == 4 && $(gcc-minor-version) -lt 7 ]] ; then
-			die "${PN} does not compile with gcc less than 4.7"
+		if [[ $(gcc-major-version) -lt 4 || $(gcc-major-version) == 4 && $(gcc-minor-version) -lt 8 ]] ; then
+			die "${PN} does not compile with gcc less than 4.8"
 		fi
 	fi
 }
@@ -76,18 +76,18 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DARCH_FLAG=
-		-DEGL_API=FALSE
+		-DDISABLE_BUILD_DATE=TRUE
+		-DDISABLE_PCSX2_WRAPPER=TRUE
 		-DEXTRA_PLUGINS=FALSE
-		-DGLES_API=FALSE
-		-DGLSL_API=FALSE
-		-DGTK3_API=FALSE
-		-DPACKAGE_MODE=TRUE
 		-DOPTIMIZATION_FLAG=
+		-DPACKAGE_MODE=TRUE
 		-DXDG_STD=TRUE
 
 		-DCMAKE_INSTALL_PREFIX=/usr
 		-DCMAKE_LIBRARY_PATH="/usr/$(get_libdir)/${PN}"
 		-DDOC_DIR=/usr/share/doc/"${PF}"
+		-DEGL_API=FALSE
+		-DGTK3_API=FALSE
 		-DPLUGIN_DIR="/usr/$(get_libdir)/${PN}"
 		# wxGTK must be built against same sdl version
 		-DSDL2_API=FALSE
