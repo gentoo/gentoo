@@ -26,6 +26,7 @@ BUILDDIR="${S}/js/src"
 
 RDEPEND=">=dev-libs/nspr-4.9.4
 	virtual/libffi
+	sys-libs/readline:0
 	>=sys-libs/zlib-1.1.4
 	system-icu? ( >=dev-libs/icu-1.51:= )"
 DEPEND="${RDEPEND}
@@ -87,30 +88,36 @@ src_configure() {
 		$(use_enable test tests)
 }
 
+cross_make() {
+	emake \
+		CFLAGS="${BUILD_CFLAGS}" \
+		CXXFLAGS="${BUILD_CXXFLAGS}" \
+		AR="${BUILD_AR}" \
+		CC="${BUILD_CC}" \
+		CXX="${BUILD_CXX}" \
+		RANLIB="${BUILD_RANLIB}" \
+		"$@"
+}
 src_compile() {
 	cd "${BUILDDIR}" || die
 	if tc-is-cross-compiler; then
-		make CFLAGS="" CXXFLAGS="" \
-			CC=$(tc-getBUILD_CC) CXX=$(tc-getBUILD_CXX) \
-			AR=$(tc-getBUILD_AR) RANLIB=$(tc-getBUILD_RANLIB) \
+		tc-export_build_env BUILD_{AR,CC,CXX,RANLIB}
+		cross_make \
 			MOZ_OPTIMIZE_FLAGS="" MOZ_DEBUG_FLAGS="" \
 			HOST_OPTIMIZE_FLAGS="" MODULE_OPTIMIZE_FLAGS="" \
 			MOZ_PGO_OPTIMIZE_FLAGS="" \
-			jscpucfg host_jsoplengen host_jskwgen || die
-		make CFLAGS="" CXXFLAGS="" \
-			CC=$(tc-getBUILD_CC) CXX=$(tc-getBUILD_CXX) \
-			AR=$(tc-getBUILD_AR) RANLIB=$(tc-getBUILD_RANLIB) \
+			host_jsoplengen host_jskwgen
+		cross_make \
 			MOZ_OPTIMIZE_FLAGS="" MOZ_DEBUG_FLAGS="" HOST_OPTIMIZE_FLAGS="" \
-			-C config nsinstall || die
-		mv {,native-}jscpucfg || die
+			-C config nsinstall
 		mv {,native-}host_jskwgen || die
 		mv {,native-}host_jsoplengen || die
 		mv config/{,native-}nsinstall || die
-		sed -e 's@./jscpucfg@./native-jscpucfg@' \
+		sed -i \
 			-e 's@./host_jskwgen@./native-host_jskwgen@' \
 			-e 's@./host_jsoplengen@./native-host_jsoplengen@' \
-			-i Makefile || die
-		sed -e 's@/nsinstall@/native-nsinstall@' -i config/config.mk || die
+			Makefile || die
+		sed -i -e 's@/nsinstall@/native-nsinstall@' config/config.mk || die
 		rm -f config/host_nsinstall.o \
 			config/host_pathsub.o \
 			host_jskwgen.o \
