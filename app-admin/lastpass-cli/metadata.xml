@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
-    <email>jdhore@gentoo.org</email>
-    <name>Jeff Horelick</name>
-  </maintainer>
-  <use>
-    <flag name="X">
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>gokturk@binghamton.edu</email>
+		<name>Gokturk 'gokturk' Yuksek</name>
+	</maintainer>
+	<use>
+		<flag name="X">
 			Use <pkg>x11-misc/xclip</pkg> or <pkg>x11-misc/xsel</pkg> to copy passwords to the clipboard.
 		</flag>
-    <flag name="pinentry">
-		   Use <pkg>app-crypt/pinentry</pkg> to prompt for passwords.
+		<flag name="pinentry">
+			Use <pkg>app-crypt/pinentry</pkg> to prompt for passwords.
 		</flag>
-  </use>
-  <upstream>
-    <remote-id type="github">lastpass/lastpass-cli</remote-id>
-  </upstream>
+	</use>
+	<upstream>
+		<remote-id type="github">lastpass/lastpass-cli</remote-id>
+		<bugs-to>https://github.com/lastpass/lastpass-cli/issues</bugs-to>
+	</upstream>
 </pkgmetadata>
