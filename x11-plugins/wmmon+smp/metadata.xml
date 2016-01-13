@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>desktop-dock</herd>
-  <longdescription>
+	<herd>desktop-dock</herd>
+	<maintainer>
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
+	<longdescription>
 WMMon+SMP shows real-time CPU usage on SMP machines. Only Dual-processor 
 systems are supported. A load average graph a.k.a. wmloadavg/xload is also 
 provided. WMMon+SMP is based on WMMon 1.0b2 and does not display I/O or memory 
 statistics.
-</longdescription>
+	</longdescription>
 </pkgmetadata>

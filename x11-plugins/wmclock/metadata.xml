@@ -2,6 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>desktop-dock</herd>
+<maintainer>
+	<email>voyageur@gentoo.org</email>
+	<name>Bernard Cafarelli</name>
+</maintainer>
+
 <longdescription>
 Wmclock is an applet which displays the date and time in a dockable tile. 
 Wmclock is specially designed for Window Maker, and features multiple language 

@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=5
 
 inherit eutils systemd toolchain-funcs user
 
@@ -19,7 +19,7 @@ SRC_URI="ftp://ftp.isc.org/isc/dhcp/${MY_P}.tar.gz
 LICENSE="ISC BSD SSLeay GPL-2" # GPL-2 only for init script
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE="+client ipv6 kernel_linux ldap selinux +server ssl vim-syntax"
+IUSE="+client ipv6 kernel_linux ldap libressl selinux +server ssl vim-syntax"
 
 DEPEND="
 	client? (
@@ -30,7 +30,10 @@ DEPEND="
 	)
 	ldap? (
 		net-nds/openldap
-		ssl? ( dev-libs/openssl )
+		ssl? (
+			!libressl? ( dev-libs/openssl:0 )
+			libressl? ( dev-libs/libressl )
+		)
 	)"
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-dhcp )
@@ -62,6 +65,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-4.2.4-always-accept-4.patch #437108
 	epatch "${FILESDIR}"/${PN}-4.2.5-iproute2-path.patch #480636
 	epatch "${FILESDIR}"/${PN}-4.2.5-bindtodevice-inet6.patch #471142
+	epatch "${FILESDIR}"/${PN}-4.3.3-ldap-ipv6-client-id.patch #559832
 
 	# Brand the version with Gentoo
 	sed -i \
@@ -114,7 +118,7 @@ src_prepare() {
 	binddir=${binddir}
 	GMAKE=${MAKE:-gmake}
 	EOF
-	epatch "${FILESDIR}"/${PN}-4.2.2-bind-disable.patch
+	epatch "${FILESDIR}"/${PN}-4.3.3-bind-disable.patch
 	cd bind-*/
 	epatch "${FILESDIR}"/${PN}-4.2.2-bind-parallel-build.patch #380717
 	epatch "${FILESDIR}"/${PN}-4.2.2-bind-build-flags.patch
@@ -160,7 +164,7 @@ src_configure() {
 	# perl and we don't want to require that #383837.
 	cd bind/bind-*/ || die
 	eval econf \
-		$(sed -n '/ [.].configure /{s:^[^-]*::;s:>.*::;p}' ../Makefile) \
+		$(sed -n '/^bindconfig =/,/^$/{:a;N;$!ba;s,^[^-]*,,;s,\\\s*\n\s*--,--,g;s, @[[:upper:]]\+@,,g;P;D}' ../Makefile.in) \
 		--disable-symtable \
 		--without-make-clean
 }

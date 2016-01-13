@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer>
-    <email>mirror-admin@gentoo.org</email>
+    <email>maintainer-needed@gentoo.org</email>
   </maintainer>
 <longdescription>Simple graphical mirror monitor with html output to analyze whether data is being kept in sync.</longdescription>
 </pkgmetadata>

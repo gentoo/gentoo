@@ -2,6 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>desktop-dock</herd>
+<maintainer>
+	<email>voyageur@gentoo.org</email>
+	<name>Bernard Cafarelli</name>
+</maintainer>
+
 <longdescription>
 wmget lets you run multiple downloads and monitor or control them from within a 
 dockapp. This makes it easy to see their progress without keeping extra windows 
