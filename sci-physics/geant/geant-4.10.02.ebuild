@@ -41,7 +41,7 @@ PDEPEND="
 S="${WORKDIR}/${MYP}"
 
 src_prepare() {
-	use examples || epatch "${FILESDIR}"/${PN}-4.10.0-no-examples.patch
+	use examples || epatch "${FILESDIR}"/${PN}-${PV1}.${PV2}.${SPV3}-no-examples.patch
 }
 
 src_configure() {
