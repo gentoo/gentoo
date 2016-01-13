@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -78,6 +78,8 @@ src_configure() {
 		--enable-readline \
 		--enable-threadsafe \
 		--with-system-nspr \
+		--disable-optimize \
+		--disable-profile-guided-optimization \
 		$(use_enable debug) \
 		$(use_enable static-libs static) \
 		$(use_enable test tests)
