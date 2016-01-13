@@ -5,7 +5,7 @@
 EAPI="5"
 
 PYTHON_COMPAT=( python{2_7,3_4} )
-inherit eutils gnome2-utils linux-info python-single-r1
+inherit gnome2-utils linux-info python-single-r1 systemd
 
 DESCRIPTION="GTK+ Bluetooth Manager, designed to be simple and intuitive for everyday bluetooth tasks"
 HOMEPAGE="https://github.com/blueman-project/blueman"
@@ -79,15 +79,19 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--docdir=/usr/share/doc/${PF} \
-		--disable-runtime-deps-check \
-		--disable-static \
-		$(use_enable appindicator) \
-		$(use_enable policykit polkit) \
-		$(use_enable nls) \
-		$(use_enable pulseaudio) \
+	local myconf=(
+		--docdir=/usr/share/doc/${PF}
+		--disable-runtime-deps-check
+		--disable-static
+		# TODO: replace upstream with sane system/user unitdir getters
+		--with-systemdunitdir="$(systemd_get_utildir)"
+		$(use_enable appindicator)
+		$(use_enable policykit polkit)
+		$(use_enable nls)
+		$(use_enable pulseaudio)
 		$(use_enable thunar thunar-sendto)
+	)
+	econf "${myconf[@]}"
 }
 
 src_install() {
