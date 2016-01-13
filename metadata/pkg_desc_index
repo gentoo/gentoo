@@ -11053,7 +11053,7 @@ kde-apps/kscd 4.14.3 15.08.3: KDE CD player
 kde-apps/kshisen 4.14.3 15.08.3: A KDE game similiar to Mahjongg
 kde-apps/ksirk 4.14.3 15.08.3: KDE: Ksirk is a KDE port of the board game risk
 kde-apps/ksnakeduel 4.14.3 15.08.3: KDE Tron game
-kde-apps/ksnapshot 4.14.3 15.08.3: KDE Screenshot Utility
+kde-apps/ksnapshot 4.14.3 15.08.3 15.08.3-r1: KDE Screenshot Utility
 kde-apps/kspaceduel 4.14.3 15.08.3: KDE Space Game
 kde-apps/ksquares 4.14.3 15.08.3: KDE clone of the game squares
 kde-apps/kstars 4.14.3-r1: KDE Desktop Planetarium
@@ -11371,7 +11371,7 @@ kde-plasma/kdecoration 5.4.3 5.5.0 5.5.1 5.5.2: Plugin based library to create w
 kde-plasma/kdeplasma-addons 5.4.3 5.4.3-r1 5.5.0 5.5.1 5.5.2: Extra Plasma applets and engines
 kde-plasma/kgamma 5.4.3 5.5.0 5.5.1 5.5.2: Screen gamma values kcontrol module
 kde-plasma/khelpcenter 5.4.3 5.5.0 5.5.1 5.5.2: The KDE Help Center
-kde-plasma/khotkeys 5.4.3 5.5.0 5.5.1 5.5.2: KDE workspace hotkey module
+kde-plasma/khotkeys 5.4.3 5.4.3-r1 5.5.0 5.5.1 5.5.2: KDE workspace hotkey module
 kde-plasma/kinfocenter 5.4.3 5.5.0 5.5.1 5.5.2: A utility that provides information about a computer system
 kde-plasma/kmenuedit 5.4.3 5.5.0 5.5.1 5.5.2: KDE menu editor
 kde-plasma/kscreen 5.4.3 5.5.0 5.5.1 5.5.2: KDE screen management
@@ -15759,10 +15759,10 @@ sci-libs/xkaapi 2.1 2.2 3.0.3: Kernel for Adaptative, Asynchronous Parallel and 
 sci-libs/xylib 1.1 1.2: Experimental x-y data reading library
 sci-mathematics/4ti2 1.6.2 1.6.5 1.6.6: Software package for algebraic, geometric and combinatorial problems
 sci-mathematics/Macaulay2 1.7_pre: Research tool for commutative algebra and algebraic geometry
-sci-mathematics/agda 2.4.0.1 2.4.2.2-r1 2.4.2.3-r1 2.4.2.3-r2 2.4.2.3-r3: A dependently typed functional programming language and proof assistant
+sci-mathematics/agda 2.4.0.1 2.4.2.2-r1 2.4.2.3-r1 2.4.2.3-r2 2.4.2.3-r3 2.4.2.5: A dependently typed functional programming language and proof assistant
 sci-mathematics/agda-executable 2.3.0.1-r1 2.3.0.1-r2: Command-line program for type-checking and compiling Agda programs
 sci-mathematics/agda-lib-ffi 0.0.2 0.0.2-r2: Auxiliary Haskell code used by Agda's standard library
-sci-mathematics/agda-stdlib 0.8 0.9 2.4.2.3: Agda standard library
+sci-mathematics/agda-stdlib 0.8 0.9 2.4.2.3 2.4.2.5: Agda standard library
 sci-mathematics/axiom 200805: Axiom is a general purpose Computer Algebra system
 sci-mathematics/bertini 1.4: Software for Numerical Algebraic Geometry
 sci-mathematics/cado-nfs 1.1 2.0 2.1 2.1.1 2.2.0: Number Field Sieve (NFS) implementation for factoring integers
