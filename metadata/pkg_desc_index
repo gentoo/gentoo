@@ -6988,7 +6988,7 @@ dev-python/edpwd 0.0.7: Encrypt/Decrypt Password Library that wraps up Blowfish
 dev-python/egenix-mx-base 3.2.5 3.2.8 3.2.9: eGenix utils for Python
 dev-python/egg-python 2.25.3-r1: EggTrayIcon bindings for Python
 dev-python/elasticsearch-curator 3.3.0 3.4.0: Tending time-series indices in Elasticsearch
-dev-python/elasticsearch-py 1.4.0 1.5.0 1.6.0 1.8.0 1.9.0 2.1.0: official Python low-level client for Elasticsearch
+dev-python/elasticsearch-py 1.4.0 1.5.0 1.6.0 1.8.0 1.9.0 2.1.0 2.2.0: official Python low-level client for Elasticsearch
 dev-python/elementtree 1.2.6-r3: A light-weight XML object model for Python
 dev-python/elib-intl 0_pre20110711: Enhanced internationalization (I18N) services for your Python modules and applications
 dev-python/eliot 0.4.0: Logging as Storytelling
@@ -7121,7 +7121,7 @@ dev-python/hp3parclient 2.0.0 3.0.0: A python interface to sendfile(2) system ca
 dev-python/html2text 2014.4.5-r1: Turn HTML into equivalent Markdown-structured text
 dev-python/html5lib 0.99999 0.999999 0.9999999: HTML parser based on the HTML5 specification
 dev-python/htmlgen 2.2.2-r1: HTMLgen - Python modules for the generation of HTML documents
-dev-python/httmock 1.2.2 1.2.3: A mocking library for requests
+dev-python/httmock 1.2.2 1.2.3 1.2.4: A mocking library for requests
 dev-python/http-parser 0.8.3: HTTP request/response parser for python in C
 dev-python/httpbin 0.4.0: HTTP Request and Response Service
 dev-python/httplib2 0.8 0.9.1 0.9.2-r1: A comprehensive HTTP client library
@@ -13581,7 +13581,7 @@ net-analyzer/pypacker 2.4 2.9: Fast and simple packet creation and parsing libra
 net-analyzer/quidscor 1.2.48-r1: Qualys IDS Correlation Daemon
 net-analyzer/raddump 0.3.1: RADIUS packet interpreter
 net-analyzer/rain 1.2.9_beta1: powerful tool for testing stability of hardware and software utilizing IP protocols
-net-analyzer/ripe-atlas-tools 1.2.1: The official command-line client for RIPE Atlas
+net-analyzer/ripe-atlas-tools 1.2.1 1.2.2: The official command-line client for RIPE Atlas
 net-analyzer/rrdcollect 0.2.9: Read system statistical data and feed it to RRDtool
 net-analyzer/rrdtool 1.4.8-r1 1.4.8-r3 1.4.9 1.5.3 1.5.3-r1 1.5.4 1.5.5: A system to store and display time-series data
 net-analyzer/rtpbreak 1.3a-r1: Detects, reconstructs and analyzes any RTP session through heuristics over the UDP network traffic
@@ -17550,7 +17550,7 @@ www-client/qtweb 3.8.5_p108: Lightweight, fast, secure and portable browser for 
 www-client/qupzilla 1.8.6 1.8.6-r1 1.8.6-r2 1.8.9: Qt WebKit web browser
 www-client/qutebrowser 0.2.1 0.3.0 0.4.1 0.4.1-r1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
 www-client/rekonq 2.4.2-r1: A browser based on qtwebkit
-www-client/ripe-atlas-cousteau 1.0.6: A Python wrapper around the RIPE Atlas API
+www-client/ripe-atlas-cousteau 1.0.6 1.0.7: A Python wrapper around the RIPE Atlas API
 www-client/seamonkey 2.38 2.39: Seamonkey Web Browser
 www-client/seamonkey-bin 2.38 2.39: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 0.6-r1 0.6-r2 0.7 9999: a simple web browser based on WebKit/GTK+
