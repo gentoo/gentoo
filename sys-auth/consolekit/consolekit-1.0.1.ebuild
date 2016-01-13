@@ -104,6 +104,11 @@ src_install() {
 	exeinto /etc/X11/xinit/xinitrc.d
 	newexe "${FILESDIR}"/90-consolekit-3 90-consolekit
 
+	if use kernel_linux; then
+		exeinto /usr/lib/ConsoleKit/run-session.d
+		doexe "${FILESDIR}"/pam-foreground-compat.ck
+	fi
+
 	prune_libtool_files --all # --all for pam_ck_connector.la
 
 	rm -rf "${ED}"/var/run || die # let the init script create the directory
