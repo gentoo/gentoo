@@ -12334,7 +12334,7 @@ media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/mash 0.2.0-r1: A library for rendering 3D models with Clutter
 media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 7.10.3 10.3.7-r1 11.0.6 11.0.7 11.0.8 11.1.0 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 7.10.3 10.3.7-r1 11.0.6 11.0.7 11.0.8 11.1.0 11.1.1 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.4-r1 0.4.5: An Open Source library for Flash movie generation
 media-libs/mlt 0.9.0 0.9.8 0.9.8-r2: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 2.1.5 3.0.2 3.0.3 4.0.3 5.0.1: The MusicBrainz Client Library (for accessing the latest XML based web service)
@@ -14901,7 +14901,7 @@ net-proxy/squidclamav 6.8 6.10: HTTP Antivirus for Squid based on ClamAv and ICA
 net-proxy/squidguard 1.4-r4 1.5_beta-r1: Combined filter, redirector and access controller plugin for Squid
 net-proxy/squirm 1.26-r1: A redirector for Squid
 net-proxy/sshproxy 0.6.0_beta2-r2: sshproxy is an ssh gateway to apply ACLs on ssh connections
-net-proxy/sshuttle 0.61-r3 0.73 0.74: Transparent proxy server that works as a poor man's VPN using ssh
+net-proxy/sshuttle 0.61-r3 0.73 0.75: Transparent proxy server that works as a poor man's VPN using ssh
 net-proxy/tayga 0.9.2: out-of-kernel stateless NAT64 implementation based on TUN
 net-proxy/tinyproxy 1.8.3-r3: A lightweight HTTP/SSL proxy
 net-proxy/torsocks 1.2-r2 2.1.0: Use most socks-friendly applications with Tor
