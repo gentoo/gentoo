@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,8 +16,7 @@ if [[ ${PV} != 9999 ]]; then
 else
 	WANT_LIBTOOL=none
 	inherit autotools git-r3
-	EGIT_REPO_URI="git://git.kernel.org/pub/scm/linux/kernel/git/kdave/btrfs-progs.git
-		https://git.kernel.org/pub/scm/linux/kernel/git/kdave/btrfs-progs.git"
+	EGIT_REPO_URI="git://repo.or.cz/btrfs-progs-unstable/devel.git"
 	EGIT_BRANCH="devel"
 fi
 
@@ -32,6 +31,7 @@ RESTRICT=test # tries to mount repared filesystems
 
 RDEPEND="
 	dev-libs/lzo:2=
+	sys-apps/util-linux:0=
 	sys-libs/zlib:0=
 	convert? (
 		sys-fs/e2fsprogs:0=

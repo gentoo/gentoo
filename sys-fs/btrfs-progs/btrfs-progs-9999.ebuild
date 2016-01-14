@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -31,6 +31,7 @@ RESTRICT=test # tries to mount repared filesystems
 
 RDEPEND="
 	dev-libs/lzo:2=
+	sys-apps/util-linux:0=
 	sys-libs/zlib:0=
 	convert? (
 		sys-fs/e2fsprogs:0=
