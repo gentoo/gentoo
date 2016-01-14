@@ -10,7 +10,7 @@ inherit webapp eutils multilib user toolchain-funcs
 
 [[ -z "${CGIT_CACHEDIR}" ]] && CGIT_CACHEDIR="/var/cache/${PN}/"
 
-GIT_V="2.3.2"
+GIT_V="2.7.0"
 
 DESCRIPTION="a fast web-interface for git repositories"
 HOMEPAGE="http://git.zx2c4.com/cgit/about"
