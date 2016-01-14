@@ -3,6 +3,11 @@
 <pkgmetadata>
   <herd>proxy-maintainers</herd>
   <maintainer>
+    <email>itumaykin+gentoo@gmail.com</email>
+    <name>Coacher</name>
+    <description>Proxied maintainer; set to assignee in all bugs</description>
+  </maintainer>
+  <maintainer>
     <email>maksbotan@gentoo.org</email>
     <name>Maxim Koltsov</name>
   </maintainer>
