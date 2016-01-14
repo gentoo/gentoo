@@ -1,1 +1,2 @@
 slotmove net-irc/kvirc 4 0
+move x11-apps/xtitle x11-misc/xtitle
