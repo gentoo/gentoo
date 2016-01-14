@@ -12,7 +12,7 @@ DESCRIPTION="Qt5 application to design electric diagrams"
 HOMEPAGE="http://qelectrotech.org/"
 ESVN_REPO_URI="svn://svn.tuxfamily.org/svnroot/qet/qet/trunk"
 
-LICENSE="GPL-3"
+LICENSE="CC-BY-3.0 GPL-2+"
 SLOT="0"
 KEYWORDS=""
 IUSE="doc"
