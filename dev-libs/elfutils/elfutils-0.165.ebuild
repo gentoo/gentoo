@@ -13,12 +13,12 @@ SRC_URI="https://fedorahosted.org/releases/e/l/${PN}/${PV}/${P}.tar.bz2"
 LICENSE="GPL-2-with-exceptions"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
-IUSE="bzip2 lzma nls static-libs test +threads +utils zlib"
+IUSE="bzip2 lzma nls static-libs test +threads +utils"
 
 # This pkg does not actually seem to compile currently in a uClibc
 # environment (xrealloc errs), but we need to ensure that glibc never
 # gets pulled in as a dep since this package does not respect virtual/libc
-RDEPEND="zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
+RDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	bzip2? ( >=app-arch/bzip2-1.0.6-r4[${MULTILIB_USEDEP}] )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1[${MULTILIB_USEDEP}] )
 	!dev-libs/libelf
@@ -51,7 +51,7 @@ multilib_src_configure() {
 		$(use_enable nls) \
 		$(use_enable threads thread-safety) \
 		--program-prefix="eu-" \
-		$(use_with zlib) \
+		--with-zlib \
 		$(use_with bzip2 bzlib) \
 		$(use_with lzma)
 }
