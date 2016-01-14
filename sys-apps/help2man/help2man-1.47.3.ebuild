@@ -21,6 +21,11 @@ DEPEND=${RDEPEND}
 DOCS="debian/changelog NEWS README THANKS" #385753
 
 src_prepare() {
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		sed -i \
+			-e 's/-shared/-bundle/' \
+			Makefile.in || die
+	fi
 	epatch \
 		"${FILESDIR}"/${PN}-1.46.1-linguas.patch
 }
