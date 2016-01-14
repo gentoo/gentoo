@@ -13,7 +13,7 @@ DESCRIPTION="Qt4 application to design electric diagrams"
 HOMEPAGE="http://qelectrotech.org/"
 SRC_URI="http://download.tuxfamily.org/qet/tags/20130928/${MY_P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="CC-BY-3.0 GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
