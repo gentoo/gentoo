@@ -54,6 +54,10 @@ src_prepare() {
 		doc/screen.1 \
 		|| die
 
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		sed -i -e '/^#define UTMPOK/s/define/undef/' acconfig.h || die
+	fi
+
 	# reconfigure
 	eautoreconf
 }
