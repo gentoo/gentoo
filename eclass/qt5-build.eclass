@@ -12,6 +12,10 @@
 # This eclass contains various functions that are used when building Qt5.
 # Requires EAPI 5 or 6.
 
+if [[ ${CATEGORY} != dev-qt ]]; then
+	die "qt5-build.eclass is only to be used for building Qt 5."
+fi
+
 case ${EAPI} in
 	5|6)	: ;;
 	*)	die "qt5-build.eclass: unsupported EAPI=${EAPI:-0}" ;;
