@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils toolchain-funcs
+inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="tool for checking well known weaknesses in the TCP/IP protocol"
 HOMEPAGE="http://lin.fsid.cvut.cz/~kra/index.html"
@@ -22,6 +22,7 @@ src_prepare() {
 }
 
 src_compile() {
+	append-cflags -std=gnu89
 	emake CC=$(tc-getCC)
 }
 

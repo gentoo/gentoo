@@ -11,7 +11,7 @@ inherit cmake-utils fdo-mime python-single-r1
 
 DESCRIPTION="Desktop publishing (DTP) and layout program"
 HOMEPAGE="http://www.scribus.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="cairo debug examples hunspell +minimal +pdf scripts templates tk"
 
 # a=$(ls resources/translations/po/scribus.*ts | sed -e 's:\.: :g' | awk '{print $2}'); echo ${a}
-IUSE_LINGUAS=" af ar bg br ca cs_CZ cy da_DK de de_1901 de_CH el en_AU en_GB en_US eo es_ES et eu fi fr gl hu id it ja ko lt_LT nb_NO nl pl_PL pt pt_BR ru sa sk_SK sl sq sr sv th_TH tr uk zh_CN zh_TW"
+IUSE_LINGUAS=" af ar bg br ca cs_CZ cy da_DK de_1901 de_CH de el en_AU en_GB en_US eo es_ES et eu fi fr gl hu id it ja ko lt_LT nb_NO nl pl_PL pt_BR pt ru sa sk_SK sl sq sr sv th_TH tr uk zh_CN zh_TW"
 IUSE+=" ${IUSE_LINGUAS// / linguas_}"
 
 REQUIRED_USE="
@@ -54,9 +54,7 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.2-docs.patch
 	"${FILESDIR}"/${PN}-1.4.0-minizip.patch
-	"${FILESDIR}"/${PN}-1.4.4-ppc64-fpic.patch
 	)
 
 src_prepare() {
@@ -93,8 +91,10 @@ src_configure() {
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
 		-DWANT_NORPATH=ON
 		-DWANT_QT3SUPPORT=OFF
-		-DGENTOOVERSION=${PVR}
+		-IUSE_LINGUAS=ON
 		-DWANT_GUI_LANG=${langs#,}
+		-DCMAKE_INSTALL_DATAROOTDIR="${EPREFIX}/usr/share"
+		-DTAG_VERSION=-${PVR}
 		$(cmake-utils_use_with pdf PODOFO)
 		$(cmake-utils_use_want cairo)
 		$(cmake-utils_use_want !cairo QTARTHUR)
@@ -119,13 +119,13 @@ src_install() {
 	done
 
 	if ! use scripts; then
-		rm "${ED}"/usr/share/scribus/scripts/*.py || die
+		rm "${ED}"/usr/share/${PF}/scripts/*.py || die
 	else
 		if ! use tk; then
-			rm "${ED}"/usr/share/scribus/scripts/{FontSample,CalendarWizard}.py || die
+			rm "${ED}"/usr/share/${PF}/scripts/{FontSample,CalendarWizard}.py* || die
 		fi
-		python_fix_shebang "${ED}"/usr/share/scribus/scripts
-		python_optimize "${ED}"/usr/share/scribus/scripts
+		python_fix_shebang "${ED}"/usr/share/${PF}/scripts
+		python_optimize "${ED}"/usr/share/${PF}/scripts
 	fi
 
 	mv "${ED}"/usr/share/doc/${PF}/{en,html} || die
