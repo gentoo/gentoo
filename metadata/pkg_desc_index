@@ -2016,7 +2016,7 @@ app-office/qcharselect 0.3: A Qt4 port of KCharSelect from KDE 3.5
 app-office/qchartdiary 0.6.4.1-r2: Free Qt4 diary/agenda application
 app-office/rubrica 2.1.6-r1: A contact database for Gnome
 app-office/sc 7.16-r1: sc is a free curses-based spreadsheet program that uses key bindings similar to vi and less
-app-office/scribus 1.4.4-r1 1.4.5 1.5.0-r1 9999: Desktop publishing (DTP) and layout program
+app-office/scribus 1.4.4-r1 1.4.5 1.4.6 1.5.0-r1 9999: Desktop publishing (DTP) and layout program
 app-office/skrooge 1.10.0 1.12.5 2.1.1 2.2.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.3.18 1.3.27 1.3.29 1.3.32 1.3.32-r1 1.3.40 1.4.2: Simple personal tasks and todo lists manager
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
@@ -6912,7 +6912,7 @@ dev-python/django-celery 3.1.16 3.1.17: Celery Integration for Django
 dev-python/django-classy-tags 0.6.2: Class based template tags for Django
 dev-python/django-cms 3.1.2 3.1.3: A Django application for managing hierarchical pages of content
 dev-python/django-compressor 1.4 1.5: Compresses linked and inline javascript or CSS into a single cached file
-dev-python/django-crispy-forms 1.4.0 1.5.0 1.5.1 1.5.2: Best way to have Django DRY forms
+dev-python/django-crispy-forms 1.4.0 1.5.0 1.5.1 1.5.2 1.6.0: Best way to have Django DRY forms
 dev-python/django-debug-toolbar 1.3.2 1.4: A configurable set of panels that display debug information
 dev-python/django-discover-runner 0.4 1.0: A Django test runner based on unittest2's test discovery
 dev-python/django-durationfield 0.5.2: Reusable app for adding a DurationField to Django
@@ -7151,7 +7151,7 @@ dev-python/ipdbplugin 1.4 9999: Nose plugin to use iPdb instead of Pdb when test
 dev-python/ipy 0.82a 0.83: Class and tools for handling of IPv4 and IPv6 addresses and networks
 dev-python/ipykernel 4.2.0 4.2.1 4.2.2: IPython Kernel for Jupyter
 dev-python/ipyparallel 4.1.0: Interactive Parallel Computing with IPython
-dev-python/ipython 3.2.1-r1 4.0.1: Advanced interactive shell for Python
+dev-python/ipython 3.2.1-r1 4.0.1 4.0.2: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.1.0: Vestigial utilities from IPython
 dev-python/ipywidgets 4.1.1: IPython HTML widgets for Jupyter
 dev-python/irc 11.0.1 13.2: IRC client framework written in Python
@@ -7190,7 +7190,7 @@ dev-python/jsonrpclib 0_pre20110820-r1 0_pre20150305 9999: python implementation
 dev-python/jsonschema 2.3.0 2.4.0 2.5.1 2.5.1-r1: An implementation of JSON-Schema validation for Python
 dev-python/jupyter 1.0.0: Jupyter metapackage. Install all the Jupyter components in one go
 dev-python/jupyter_client 4.1.1: Jupyter protocol implementation and client libraries
-dev-python/jupyter_console 4.0.3: A terminal-based console frontend for Jupyter kernels
+dev-python/jupyter_console 4.0.3 4.1.0: A terminal-based console frontend for Jupyter kernels
 dev-python/jupyter_core 4.0.6: Core common functionality of Jupyter projects
 dev-python/kaa-base 0.6.0-r1: Basic Framework for all Kaa Python Modules
 dev-python/kaa-display 0.1.0 0.1.0-r1: Python API providing Low level support for various displays, such as X11 or framebuffer
@@ -7274,7 +7274,7 @@ dev-python/misaka 1.0.2: The Python binding for Sundown, a markdown parsing libr
 dev-python/mistune 0.5.1 0.6-r1 0.7 0.7.1: The fastest markdown parser in pure Python
 dev-python/mkdocs 0.11.1-r1 0.12.2 0.14.0: Project documentation with Markdown.
 dev-python/mkpythonproj 1.9: Creates the framework for a new Python project or script
-dev-python/mock 1.0.1-r2 1.3.0-r1: Rolling backport of unittest.mock for all Pythons
+dev-python/mock 1.0.1-r2 1.3.0-r2: Rolling backport of unittest.mock for all Pythons
 dev-python/mocker 1.1.1-r1: Platform for Python test doubles: mocks, stubs, fakes, and dummies
 dev-python/mockldap 0.2.3 0.2.5 0.2.6: A simple mock implementation of python-ldap
 dev-python/mongoengine 0.8.3: A Python Object-Document-Mapper for working with MongoDB
@@ -7394,7 +7394,7 @@ dev-python/pdoc 0.3.1: A simple program and library to auto generate API documen
 dev-python/peak-rules 0.5: Generic functions and business rules support systems
 dev-python/pecan 1.0.2 1.0.3: A WSGI object-dispatching web framework, designed to be lean and fast, with few dependencies.
 dev-python/peewee 2.6.2 2.6.3 2.7.3 2.7.4: Small python ORM
-dev-python/pep8 1.4.5 1.5.6 1.5.7 1.6.1 1.6.2 1.6.2-r1: Python style guide checker
+dev-python/pep8 1.4.5 1.5.6 1.5.7 1.6.1 1.6.2 1.6.2-r1 1.7.0: Python style guide checker
 dev-python/peppercorn 0.4-r1 0.5: A library for converting a token stream into a data structure for use in web form posts
 dev-python/pexpect 3.3 4.0.1: Python module for spawning child applications and responding to expected patterns
 dev-python/pgasync 2.01-r1: An asynchronous API to PostgreSQL for twisted
@@ -7767,7 +7767,7 @@ dev-python/pyxdg 0.25-r1: A Python module to deal with freedesktop.org specifica
 dev-python/pyxenstore 0.0.2 9999: Provides Python interfaces for Xen's XenStore
 dev-python/pyxml 0.8.4-r3: A collection of libraries to process XML with Python
 dev-python/pyyaml 3.11: YAML parser and emitter for Python
-dev-python/pyzmq 14.4.1 14.6.0 14.7.0 15.0.0 15.1.0: Lightweight and super-fast messaging library built on top of the ZeroMQ library
+dev-python/pyzmq 14.4.1 14.6.0 14.7.0 15.0.0 15.1.0 15.2.0: Lightweight and super-fast messaging library built on top of the ZeroMQ library
 dev-python/pyzor 0.5.0-r2 0.7.0 1.0.0: A distributed, collaborative spam detection and filtering network
 dev-python/qpid-python 0.20: A high-speed platform independent enterprise messaging system for Apache
 dev-python/qrcode 5.1-r1: QR Code generator on top of PIL
@@ -7829,7 +7829,7 @@ dev-python/routes 2.1-r1 2.2: A Python re-implementation of Rails routes system,
 dev-python/rply 0.7.3 0.7.4: Pure python parser generator that also works with RPython
 dev-python/rpy 2.6.2 2.7.2 2.7.3 2.7.4 2.7.5 2.7.6: Python interface to the R Programming Language
 dev-python/rpyc 3.2.3-r1 3.3.0: Remote Python Call (RPyC), a transparent and symmetric RPC library
-dev-python/rsa 3.1.4-r1 3.2 3.2.3 3.2.3-r1: Pure-Python RSA implementation
+dev-python/rsa 3.1.4-r1 3.2 3.2.3 3.2.3-r1 3.3: Pure-Python RSA implementation
 dev-python/rst2pdf 0.93-r2: Tool for transforming reStructuredText to PDF using ReportLab
 dev-python/rtf2xml 1.33-r1: Converts a Microsoft RTF file to structured XML
 dev-python/rtgraph 0.70-r1: Widgets for graphing data in real-time using PyGTK, and UI components for controlling the graphs
@@ -7847,7 +7847,7 @@ dev-python/scoop 0.7.0-r1: Distributed Evolutionary Algorithms in Python
 dev-python/scrapy 1.0.1 1.0.3: A high-level Python Screen Scraping framework
 dev-python/scripttest 1.2-r1 1.3: A very small text templating language
 dev-python/seaborn 0.5.1 0.6.0: Statistical data visualization
-dev-python/selenium 2.46.0 2.47.1: Python language binding for Selenium Remote Control
+dev-python/selenium 2.46.0 2.47.1 2.49.0: Python language binding for Selenium Remote Control
 dev-python/semantic_version 2.4.1 2.4.2: Python library providing a few tools handling SemVer in Python.
 dev-python/send2trash 1.3.0: Sends files to the Trash (or Recycle Bin)
 dev-python/sepolgen 1.2.1-r1 1.2.2 9999: SELinux policy generation library
@@ -7893,7 +7893,7 @@ dev-python/south 1.0: Intelligent schema migrations for Django apps
 dev-python/soya 0.14-r1: A high-level 3D engine for Python, designed with games in mind
 dev-python/sparql-wrapper 1.6.0 1.6.4: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
-dev-python/sphinx 1.1.3-r7 1.2.2 1.2.3 1.3.1-r1 1.3.3: Python documentation generator
+dev-python/sphinx 1.1.3-r7 1.2.2 1.2.3 1.3.1-r1 1.3.3 1.3.4: Python documentation generator
 dev-python/sphinx-better-theme 0.1.5: A nice-looking, customizable theme for Sphinx
 dev-python/sphinx-bootstrap-theme 0.4.5 0.4.6 0.4.7: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx_rtd_theme 0.1.9: ReadTheDocs.org theme for Sphinx
@@ -8065,7 +8065,7 @@ dev-python/wxpython 2.8.12.1-r2 2.9.4.1-r2 3.0.0.0 3.0.1.1 3.0.2.0: A blending o
 dev-python/xcffib 0.3.4 0.4.0: A drop in replacement for xpyb, an XCB python binding
 dev-python/xhtml2pdf 0.0.5-r1 0.0.6-r1: PDF generator using HTML and CSS
 dev-python/xlrd 0.9.3 0.9.3-r1 0.9.4: Library for developers to extract data from Microsoft Excel (tm) spreadsheet files
-dev-python/xlsxwriter 0.7.3 0.7.4 0.7.6 0.7.7 0.7.8 0.7.9 0.8.0: Python module for creating Excel XLSX files
+dev-python/xlsxwriter 0.7.3 0.7.4 0.7.6 0.7.7 0.7.8 0.7.9 0.8.0 0.8.2: Python module for creating Excel XLSX files
 dev-python/xlutils 1.5.2-r1: provides a collection of utilities for working with Excel files
 dev-python/xlwt 0.7.5 1.0.0: Python library to create spreadsheet files compatible with Excel
 dev-python/xmltodict 0.9.1 0.9.2: Makes working with XML feel like you are working with JSON
