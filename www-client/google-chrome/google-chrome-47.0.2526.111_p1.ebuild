@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI="5"
 
 CHROMIUM_LANGS="am ar bg bn ca cs da de el en_GB es es_LA et fa fi fil fr gu he
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt_BR pt_PT ro ru sk sl sr
-	sv sw ta te th tr uk vi zh_CN zh_TW fake_bidi"
+	sv sw ta te th tr uk vi zh_CN zh_TW"
 
 inherit readme.gentoo chromium eutils multilib pax-utils unpacker
 
@@ -36,7 +36,6 @@ KEYWORDS="-* ~amd64 ~x86"
 IUSE="+plugins"
 RESTRICT="bindist mirror strip"
 
-DEPEND="app-admin/chrpath"
 RDEPEND="
 	app-arch/bzip2
 	app-misc/ca-certificates
@@ -126,9 +125,6 @@ src_install() {
 	for size in 16 22 24 32 48 64 128 256 ; do
 		newicon -s ${size} "${CHROME_HOME}/product_logo_${size}.png" ${PN}.png
 	done
-
-	# Work around RPATH=$ORIGIN QA check
-	chrpath -d "${CHROME_HOME}/chrome-sandbox" || die
 
 	insinto /
 	doins -r opt usr
