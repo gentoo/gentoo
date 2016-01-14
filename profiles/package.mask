@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# William Hubbs <williamh@gentoo.org> (14 Jan 2016)
+# It was reported to me informally that this version seg faults on a
+# laptop, so masking to not take any chances.
+=sys-apps/openrc-0.20
+
 # Michał Górny <mgorny@gentoo.org> (11 Jan 2016)
 # (on behalf of Python team)
 # Masked for testing. python-exec now checks argv[0] to determine
