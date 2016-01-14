@@ -63,7 +63,7 @@ CDEPEND="${PYTHON_DEPS}
 	fam? ( virtual/fam )
 	gnutls? ( dev-libs/libgcrypt:0
 		>=net-libs/gnutls-1.4.0 )
-	ldap? ( net-nds/openldap )
+	ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 	system-mitkrb5? ( app-crypt/mit-krb5[${MULTILIB_USEDEP}] )
 	!system-mitkrb5? ( >=app-crypt/heimdal-1.5[-ssl,${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd:0= )"
@@ -174,7 +174,7 @@ multilib_src_configure() {
 			--without-fam
 			--disable-gnutls
 			--disable-iprint
-			--without-ldap
+			$(use_with ldap)
 			--without-pam
 			--without-pam_smbpass
 			--without-quotas
