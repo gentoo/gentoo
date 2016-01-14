@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}
 	static? ( dev-libs/iniparser:0[static-libs] )"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-solaris.patch
 	epatch_user
 }
 
