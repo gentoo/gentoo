@@ -5,6 +5,13 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# James Le Cuirot <chewi@gentoo.org> (2 Jan 2016)
+# Incorrectly depends on gjdoc, which is going to be
+# last-rited. Doesn't actually install the javadocs in this ebuild
+# version anyway. Unfortunately this will also prevent the other HTML
+# docs from installing. Sorry about that.
+=net-dns/libidn-1.30 doc
+
 # NP-Hardass <NP-Hardass@gentoo.org> (1 Jan 2016)
 # USE flag is renamed to postscript, mask the old flag #564422
 # to notify users.  This entry may be removed after 30 days
