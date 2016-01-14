@@ -2531,6 +2531,7 @@ dev-qt/qthelp:compat - Build the extra compatibility layer required by a few pac
 dev-qt/qthelp:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
 dev-qt/qtmultimedia:egl - Enable EGL integration
 dev-qt/qtmultimedia:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
+dev-qt/qtmultimedia:gles2 - Enable EGL/GLES2 integration
 dev-qt/qtmultimedia:gstreamer - Enable audio support via media-libs/gstreamer:1.0
 dev-qt/qtmultimedia:gstreamer010 - Enable audio support via media-libs/gstreamer:0.10
 dev-qt/qtmultimedia:qml - Build QML/QtQuick bindings and imports
