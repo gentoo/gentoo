@@ -12812,7 +12812,7 @@ media-sound/cvoicecontrol 0.9_alpha 0.9_alpha-r1: Console based speech recogniti
 media-sound/dagrab 0.513: fixed point cd ripper
 media-sound/darkice 1.2: A live audio streamer
 media-sound/darksnow 0.7.1: Streaming GTK+ Front-End based in Darkice Ice Streamer
-media-sound/daudio 0.3: Distributed audio on the local network
+media-sound/daudio 0.3 0.3-r1: Distributed audio on the local network
 media-sound/dbmeasure 0.0.20100217: ALSA Volume Control Attenuation Measurement Tool
 media-sound/dcaenc 2 2-r1 9999: DTS Coherent Acoustics audio encoder
 media-sound/dcd 0.95: A simple command-line based CD Player
