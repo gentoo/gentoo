@@ -3461,6 +3461,11 @@
     <url>https://wiki.gentoo.org/wiki/Project:Samba</url>
     <description>This project maintains packages related to Samba suit.</description>
     <member>
+      <email>axs@gentoo.org</email>
+      <name>Ian Stakenvicius</name>
+      <role>multilib</role>
+    </member>
+    <member>
       <email>polynomial-c@gentoo.org</email>
       <name>Lars Wendler</name>
       <role>Member</role>
