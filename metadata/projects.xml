@@ -2198,6 +2198,24 @@
     </member>
   </project>
   <project>
+    <email>netifrc@gentoo.org</email>
+    <name>Netifrc Project</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Netifrc</url>
+    <description>This project is for the development and maintenance of the netifrc network configuration scripts</description>
+    <member>
+      <email>axs@gentoo.org</email>
+      <name>Ian Stakenvicius</name>
+    </member>
+    <member is-lead="1">
+      <email>robbat2@gentoo.org</email>
+      <name>Robin Johnson</name>
+    </member>
+    <member>
+      <email>williamh@gentoo.org</email>
+      <name>William Hubbs</name>
+    </member>
+  </project>
+  <project>
     <email>netmon@gentoo.org</email>
     <name>Gentoo network monitoring and analysis project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Netmon</url>
@@ -3981,6 +3999,24 @@
       <email>zzam@gentoo.org</email>
       <name>Matthias Schwarzott</name>
       <role>Member ( DVB, VDR )</role>
+    </member>
+  </project>
+  <project>
+    <email>vim@gentoo.org</email>
+    <name>Gentoo Vim Project</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Vim</url>
+    <description>The Gentoo Vim Project maintains Vim-related packages.</description>
+    <member>
+      <email>radhermit@gentoo.org</email>
+      <name>Tim Harder</name>
+    </member>
+    <member>
+      <email>tranquility@gentoo.org</email>
+      <name>Ole Reifschneider</name>
+    </member>
+    <member>
+      <email>yngwin@gentoo.org</email>
+      <name>Ben de Groot</name>
     </member>
   </project>
   <project>
