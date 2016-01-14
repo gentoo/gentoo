@@ -3115,7 +3115,7 @@ dev-go/go-spew 0_pre20150619 9999: Implements a deep pretty printer for Go data 
 dev-go/go-sys 0_pre20150729 9999: Go packages for low-level interaction with the operating system
 dev-go/go-text 0_pre20150806 9999: Go text processing support
 dev-go/go-tools 0_pre20150805 0_pre20150823-r1 0_pre20150902 9999: Go Tools
-dev-go/godep 29 9999: dependency tool for go
+dev-go/godep 29 49 9999: dependency tool for go
 dev-go/gom 0_pre20151110: Go Dependency management system similar to bundle for ruby
 dev-go/sanitized-anchor-name 0_pre20150822 9999: A Go function to provide sanitized anchor names
 dev-go/sarama 1.4.3 9999: Sarama is a Go library for Apache Kafka
@@ -5504,17 +5504,17 @@ dev-perl/File-Grep 0.020.0-r1: Find matches to a pattern in a series of files an
 dev-perl/File-HomeDir 1.0.0-r1: Get home directory for self or other user
 dev-perl/File-KeePass 2.30.0: Interface to KeePass V1 and V2 database files
 dev-perl/File-Listing 6.40.0-r1: Parse directory listings
-dev-perl/File-MMagic 1.270.0-r1 1.300.0-r1: The Perl Image-Info Module
+dev-perl/File-MMagic 1.300.0-r1: The Perl Image-Info Module
 dev-perl/File-Map 0.560.0 0.640.0: Memory mapping made simple and safe
-dev-perl/File-MimeInfo 0.210.0 0.260.0 0.270.0: Determine file type
+dev-perl/File-MimeInfo 0.210.0 0.270.0: Determine file type
 dev-perl/File-NCopy 0.360.0-r1: Copy file, file Copy file[s] | dir[s], dir
 dev-perl/File-NFSLock 1.210.0-r1 1.270.0: perl module to do NFS (or not) locking
 dev-perl/File-Next 1.120.0-r1: File::Next is an iterator-based module for finding files
 dev-perl/File-Path-Expand 1.20.0-r1: Expand filenames
 dev-perl/File-ReadBackwards 1.50.0-r1: The Perl File-ReadBackwards Module
-dev-perl/File-Remove 1.520.0-r1: Remove files and directories
+dev-perl/File-Remove 1.520.0-r1 1.550.0: Remove files and directories
 dev-perl/File-RsyncP 0.700.0 0.740.0: An rsync perl module
-dev-perl/File-Scan-ClamAV 1.910.0-r1: Connect to a local Clam Anti-Virus clamd service and send commands
+dev-perl/File-Scan-ClamAV 1.910.0-r1 1.930.0: Connect to a local Clam Anti-Virus clamd service and send commands
 dev-perl/File-SearchPath 0.60.0-r1: Search for a file in an environment variable path
 dev-perl/File-ShareDir 1.30.0-r1: Locate per-dist and per-module shared files
 dev-perl/File-ShareDir-Install 0.90.0: Install shared files
@@ -16355,7 +16355,7 @@ sys-apps/netplug 1.2.9.2-r1: Brings up/down ethernet ports automatically with ca
 sys-apps/newrelic-sysmond 1.1.2.124: NewRelic System Monitor
 sys-apps/noexec 1.1.0: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 0_pre20150821: NVM-Express user space tooling for Linux
-sys-apps/openrc 0.13.11 0.14 0.15 0.15.1 0.16 0.16.1 0.16.2 0.16.3 0.16.4 0.17 0.18.3 0.18.4 0.19.1 0.20.1 9999: OpenRC manages the services, startup and shutdown of a host
+sys-apps/openrc 0.13.11 0.14 0.15 0.15.1 0.16 0.16.1 0.16.2 0.16.3 0.16.4 0.17 0.18.3 0.18.4 0.19.1 0.20.2 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/pacman 4.0.1 4.0.3 4.0.3-r1: Archlinux's binary package manager
 sys-apps/paludis 1.4.2-r1 2.0.0 2.2.0 2.2.0-r2 2.4.0 9999: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
