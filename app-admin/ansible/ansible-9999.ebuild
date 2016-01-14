@@ -60,6 +60,4 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	doman docs/man/man1/*.1
-
-	newenvd "${FILESDIR}"/${PN}.env 95ansible
 }
