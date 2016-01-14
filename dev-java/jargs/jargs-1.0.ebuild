@@ -10,7 +10,7 @@ inherit java-pkg-2 java-pkg-simple
 
 MY_P="${P}"
 
-DESCRIPTION="Contracts for Java"
+DESCRIPTION="Command-line argument parsing library in Java"
 HOMEPAGE="https://github.com/purcell/jargs"
 SRC_URI="mirror://sourceforge/${PN}/${P}.zip"
 
