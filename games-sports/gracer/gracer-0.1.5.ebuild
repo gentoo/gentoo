@@ -34,7 +34,9 @@ src_prepare() {
 		"${FILESDIR}/${P}"-gcc41.patch \
 		"${FILESDIR}"/${P}-as-needed.patch \
 		"${FILESDIR}"/${P}-libpng14.patch \
-		"${FILESDIR}"/${P}-png15.patch
+		"${FILESDIR}"/${P}-png15.patch \
+		"${FILESDIR}"/${P}-giflib.patch \
+		"${FILESDIR}"/${P}-warnings.patch
 }
 
 src_configure() {
