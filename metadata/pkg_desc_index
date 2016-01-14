@@ -3921,6 +3921,7 @@ dev-java/jansi 1.5 1.5-r1 1.11-r1: Jansi is a small java library that allows you
 dev-java/jansi-native 1.5: Native JNI component for dev-java/jansi
 dev-java/japitools 0.9.7-r1: Java API compatibility testing tools
 dev-java/jarbundler 1.8.1-r2 2.3.1: Jar Bundler Ant Task
+dev-java/jargs 1.0: Contracts for Java
 dev-java/jarjar 1.4: Tool for repackaging third-party jars
 dev-java/java-apicheck 0_p20150907: Command line tool to check Java packages for API compatibility
 dev-java/java-config 2.2.0: Java environment configuration query tool
@@ -18334,7 +18335,7 @@ x11-plugins/pidgin-sipe 1.18.0-r1 1.20.1: Pidgin Plug-in SIPE (Sip Exchange Prot
 x11-plugins/pidgin-xmpp-receipts 0.6: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.1: Pidgin plugin to render LaTeX expressions in messages
 x11-plugins/prpltwtr 0.12.0: libpurple twitter protocol
-x11-plugins/purple-facebook 20150806 20150827: Facebook protocol plugin for libpurple
+x11-plugins/purple-facebook 20150806 20150827 20151225 20160107: Facebook protocol plugin for libpurple
 x11-plugins/purple-libnotify-plus 1.99.2 2.99.1: Provide libnotify interface to Pidgin and Finch, inspired by Pidgin-libnotify and Guifications
 x11-plugins/purple-plugin_pack 2.7.0-r1: A package with many different plugins for pidgin and libpurple
 x11-plugins/qled 0.6.2: Custom Led widget plugin for Qt-Designer
