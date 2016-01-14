@@ -20,4 +20,6 @@ src_configure() {
 
 src_compile() {
 	emake -j1
+	rm README.txt
+	mv doc/rm README.txt .
 }
