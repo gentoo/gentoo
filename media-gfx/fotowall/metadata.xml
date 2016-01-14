@@ -5,8 +5,6 @@
 	<use>
 		<flag name="webcam">Enable webcam support</flag>
 	</use>
-	<longdescription lang="en">
-	</longdescription>
 	<upstream>
 		<remote-id type="google-code">fotowall</remote-id>
 	</upstream>
