@@ -1,0 +1,29 @@
+commit 1c27a69131428e9e733374c2a3676ca4ecee45d2
+Author: Kimball Thurston <kdt3rd@gmail.com>
+Date:   Tue Dec 22 21:46:17 2015 -0800
+
+    Fix focus handling with multiple awesome instances
+    
+    When there are multiple X11 screens (i.e. :0.0 and :0.1) for zaphod mode
+    style X setups, this triggers a refresh of focus when the instance
+    running on a particular root receives the mouse
+    
+    Fixes https://github.com/awesomeWM/awesome/issues/599.
+
+diff --git a/event.c b/event.c
+index db70e2c..80d6bd6 100644
+--- a/event.c
++++ b/event.c
+@@ -554,6 +554,12 @@ event_handle_enternotify(xcb_enter_notify_event_t *ev)
+         }
+         lua_pop(globalconf.L, 1);
+     }
++    else if (ev->event == globalconf.screen->root) {
++        /* When there are multiple X screens with awesome running separate
++         * instances, reset focus.
++         */
++        globalconf.focus.need_update = true;
++    }
+ }
+
+ /** The focus in event handler.
