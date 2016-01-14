@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,7 @@ IUSE="qt5 static-libs"
 
 # virtual/libusb is not precise enough
 RDEPEND=">=dev-libs/libusb-1.0.18:1=[static-libs=]
-	qt5? ( dev-qt/qtwidgets:5= )"
+	qt5? ( dev-qt/qtwidgets:5 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
