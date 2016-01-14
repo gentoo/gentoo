@@ -25,13 +25,13 @@ HOMEPAGE="https://btrfs.wiki.kernel.org"
 
 LICENSE="GPL-2"
 SLOT="0/${libbtrfs_soname}"
-IUSE="+convert"
+IUSE="+convert static-libs"
 
 RESTRICT=test # tries to mount repared filesystems
 
 RDEPEND="
 	dev-libs/lzo:2=
-	sys-apps/util-linux:0=
+	sys-apps/util-linux:0=[static-libs(+)?]
 	sys-libs/zlib:0=
 	convert? (
 		sys-fs/e2fsprogs:0=
@@ -76,6 +76,9 @@ src_compile() {
 }
 
 src_install() {
-	default
+	local makeargs=(
+		$(usex static-libs '' 'libs_static=')
+	)
+	emake V=1 DESTDIR="${D}" install "${makeargs[@]}"
 	newbashcomp btrfs-completion btrfs
 }
