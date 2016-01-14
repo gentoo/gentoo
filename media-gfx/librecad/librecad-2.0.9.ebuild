@@ -42,12 +42,13 @@ S="${WORKDIR}/LibreCAD-${PV}"
 
 src_prepare() {
 	# currently RS_VECTOR3D causes an internal compiler error on GCC-4.8
-	use 3d || sed -i -e '/RS_VECTOR2D/ s/^#//' librecad/src/src.pro || die
+	if ! use 3d; then
+		sed -i -e '/RS_VECTOR2D/ s/^#//' librecad/src/src.pro || die
+	fi
 }
 
 src_configure() {
-	if use qt4
-	then
+	if use qt4; then
 		eqmake4 -r
 	else
 		eqmake5 -r
@@ -59,9 +60,9 @@ src_install() {
 	use tools && dobin unix/ttf2lff
 	insinto /usr/share/${PN}
 	doins -r unix/resources/*
-	use doc && dohtml -r librecad/support/doc/*
+	use doc && instinto html && dodoc -r librecad/support/doc/*
 	insinto /usr/share/appdata
 	doins unix/appdata/librecad.appdata.xml
-	doicon librecad/res/main/"${PN}".png
+	doicon librecad/res/main/${PN}.png
 	make_desktop_entry ${PN} LibreCAD ${PN} Graphics
 }
