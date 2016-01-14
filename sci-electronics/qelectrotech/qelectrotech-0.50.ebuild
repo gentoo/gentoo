@@ -8,7 +8,7 @@ inherit eutils fdo-mime gnome2-utils qmake-utils
 
 MY_P=${PN}-${PV%0}-src
 
-DESCRIPTION="Qt4 application to design electric diagrams"
+DESCRIPTION="Qt5 application to design electric diagrams"
 HOMEPAGE="http://qelectrotech.org/"
 SRC_URI="http://download.tuxfamily.org/qet/tags/20151127/${MY_P}.tar.gz"
 

@@ -8,7 +8,7 @@ inherit eutils fdo-mime gnome2-utils qmake-utils subversion
 
 MY_P=${PN}-${PV%0}-src
 
-DESCRIPTION="Qt4 application to design electric diagrams"
+DESCRIPTION="Qt5 application to design electric diagrams"
 HOMEPAGE="http://qelectrotech.org/"
 ESVN_REPO_URI="svn://svn.tuxfamily.org/svnroot/qet/qet/trunk"
 
