@@ -1,0 +1,28 @@
+From 0ac51051b7e9460a2958917750d7c31072318313 Mon Sep 17 00:00:00 2001
+From: Michael Palimaka <kensington@gentoo.org>
+Date: Thu, 14 Jan 2016 00:55:24 +1100
+Subject: [PATCH] Fix build with tiff disabled.
+
+---
+ ImageLounge/src/DkBasicLoader.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/ImageLounge/src/DkBasicLoader.cpp b/ImageLounge/src/DkBasicLoader.cpp
+index 67ef31f..8c2c71e 100644
+--- a/ImageLounge/src/DkBasicLoader.cpp
++++ b/ImageLounge/src/DkBasicLoader.cpp
+@@ -98,9 +98,11 @@
+ #endif
+ 
+ #else
++#ifdef WIN32
+ #include <olectl.h>
+ #pragma comment(lib, "oleaut32.lib")
+ #endif
++#endif
+ 
+ #pragma warning(pop)
+ 
+-- 
+2.4.10
+
