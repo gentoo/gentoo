@@ -8,4 +8,4 @@ RDEPEND=!<sci-geosciences/qmapshack-1.5
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~grozin/routino-3.0_p1.tgz
 _eclass_exported_funcs=src_configure:- src_compile:-
-_md5_=2cb1551af426f6b7fb6e030f43cc952c
+_md5_=901ec399d205d48ae8168a7a60e40627
