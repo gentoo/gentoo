@@ -26,19 +26,29 @@ HOMEPAGE="https://btrfs.wiki.kernel.org"
 
 LICENSE="GPL-2"
 SLOT="0/${libbtrfs_soname}"
-IUSE="+convert"
+IUSE="+convert static static-libs"
 
 RESTRICT=test # tries to mount repared filesystems
 
 RDEPEND="
-	dev-libs/lzo:2=
-	sys-libs/zlib:0=
-	convert? (
-		sys-fs/e2fsprogs:0=
-		sys-libs/e2fsprogs-libs:0=
+	!static? (
+		dev-libs/lzo:2=
+		sys-libs/zlib:0=
+		convert? (
+			sys-fs/e2fsprogs:0=
+			sys-libs/e2fsprogs-libs:0=
+		)
 	)
 "
 DEPEND="${RDEPEND}
+	static? (
+		dev-libs/lzo:2=[static-libs(+)]
+		sys-libs/zlib:0=[static-libs(+)]
+		convert? (
+			sys-fs/e2fsprogs:0=[static-libs(+)]
+			sys-libs/e2fsprogs-libs:0=[static-libs(+)]
+		)
+	)
 	convert? ( sys-apps/acl )
 	app-text/asciidoc
 	app-text/docbook-xml-dtd:4.5
@@ -72,10 +82,36 @@ src_configure() {
 }
 
 src_compile() {
-	emake V=1
+	local static=""
+
+	if use static || use static-libs; then
+		static="static"
+	fi
+
+	emake V=1 $static
 }
 
 src_install() {
 	default
 	newbashcomp btrfs-completion btrfs
+	if use static; then
+		into /
+		dosbin btrfs-calc-size.static
+		if use convert; then
+			dosbin btrfs-convert.static
+		fi
+		dosbin btrfs-corrupt-block.static
+		dosbin btrfs-debug-tree.static
+		dosbin btrfs-find-root.static
+		dosbin btrfs-image.static
+		dosbin btrfs-map-logical.static
+		dosbin btrfs-select-super.static
+		dosbin btrfs-show-super.static
+		dosbin btrfs.static
+		dosbin btrfstune.static
+		dosbin btrfs-zero-log.static
+		dosbin mkfs.btrfs.static
+		# dosbin does not preserve symlinks, so manually create the symlink.
+		dosym btrfs.static /sbin/btrfsck.static
+	fi
 }
