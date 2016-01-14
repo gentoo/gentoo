@@ -8113,7 +8113,7 @@ dev-qt/qtdemo 4.8.6-r1 4.8.7: Demonstration module and examples for the Qt toolk
 dev-qt/qtdiag 5.4.2 5.5.1: Tool for reporting diagnostic information about Qt and its environment
 dev-qt/qtgraphicaleffects 5.4.2 5.5.1: Set of QML types for adding visual effects to user interfaces
 dev-qt/qtgui 4.8.6-r4 4.8.7 5.4.2-r1 5.5.1: The GUI module and platform plugins for the Qt5 framework
-dev-qt/qthelp 4.8.6-r3 4.8.7 5.4.2 5.5.1: The Help module for the Qt5 framework
+dev-qt/qthelp 4.8.6-r3 4.8.7 5.4.2 5.5.1 5.5.1-r1: The Help module for the Qt5 framework
 dev-qt/qtimageformats 5.4.2 5.5.1: Additional format plugins for the Qt image I/O system
 dev-qt/qtlockedfile 2.4.1_p20150629: QFile extension with advisory locking functions
 dev-qt/qtmultimedia 4.8.6-r1 4.8.7 5.4.2-r1 5.5.1 5.5.1-r1: The Multimedia module for the Qt5 framework
@@ -8125,7 +8125,7 @@ dev-qt/qtphonon 4.8.6-r1 4.8.7: The Phonon module for the Qt toolkit
 dev-qt/qtpositioning 5.4.2 5.5.1: Physical position determination library for the Qt5 framework
 dev-qt/qtprintsupport 5.4.2 5.5.1: Printing support library for the Qt5 framework
 dev-qt/qtquick1 5.4.2 5.5.1: Legacy declarative UI module for the Qt5 framework (deprecated)
-dev-qt/qtquickcontrols 5.4.2 5.5.1: Set of controls used in conjunction with Qt Quick to build complete interfaces
+dev-qt/qtquickcontrols 5.4.2 5.5.1 5.5.1-r1: Set of controls used in conjunction with Qt Quick to build complete interfaces
 dev-qt/qtscript 4.8.6-r2 4.8.7 5.4.2-r1 5.5.1: Application scripting library for the Qt5 framework (deprecated)
 dev-qt/qtsensors 5.4.2 5.5.1: Hardware sensor access library for the Qt5 framework
 dev-qt/qtserialport 5.4.2 5.5.1: Serial port abstraction library for the Qt5 framework
