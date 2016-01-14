@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
+	<longdescription>
+libfilezilla is a small and modern C++ library, offering some basic functionality to build high-performing, platform-independent programs. Some of the highlights include:
+
+- A typesafe, multi-threaded event system that's very simple to use yet extremely efficient
+- Timers for periodic events
+- A datetime class that not only tracks timestamp but also their accuracy, which simplifies dealing with timestamps originating from different sources
+- Simple process handling for spawning child processes with redirected I/O
+libfilezilla is a cross-platform library for all major operating systems, including but not limited to Linux, *BSD, OS X and Windows.
+</longdescription>
+</pkgmetadata>
