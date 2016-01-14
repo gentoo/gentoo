@@ -22,18 +22,18 @@ RDEPEND="
 	x11-libs/libXfixes
 	x11-libs/libXtst
 	qt4? (
-		dev-qt/qtcore:4=
-		dev-qt/qtgui:4=
-		dev-qt/qtscript:4=
-		webkit? ( dev-qt/qtwebkit:4= )
+		dev-qt/qtcore:4
+		dev-qt/qtgui:4
+		dev-qt/qtscript:4
+		webkit? ( dev-qt/qtwebkit:4 )
 	)
 	qt5? (
-		dev-qt/qtcore:5=
-		dev-qt/qtgui:5=
-		dev-qt/qtnetwork:5=
-		dev-qt/qtscript:5=
-		dev-qt/qtwidgets:5=
-		webkit? ( dev-qt/qtwebkit:5= )
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtnetwork:5
+		dev-qt/qtscript:5
+		dev-qt/qtwidgets:5
+		webkit? ( dev-qt/qtwebkit:5 )
 	)
 "
 DEPEND="${RDEPEND}"
