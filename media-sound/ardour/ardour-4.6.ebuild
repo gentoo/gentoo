@@ -5,6 +5,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
+#EPYTHON='python2.7'
 inherit eutils toolchain-funcs flag-o-matic python-any-r1 waf-utils
 
 DESCRIPTION="Digital Audio Workstation"
@@ -64,7 +65,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	>=media-sound/jack-audio-connection-kit-0.120
+	jack? ( >=media-sound/jack-audio-connection-kit-0.120 )
 	sys-devel/gettext
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen[dot] )"
@@ -73,6 +74,7 @@ pkg_setup() {
 	if has_version \>=dev-libs/libsigc++-2.6 ; then
 		append-cxxflags -std=c++11
 	fi
+	python-any-r1_pkg_setup
 }
 
 src_prepare(){
@@ -81,12 +83,13 @@ src_prepare(){
 		touch "${S}/libs/ardour/revision.cc"
 	fi
 	use lv2 || epatch "${FILESDIR}"/${PN}-4.0-lv2.patch
-	sed 's/'full-optimization\'\ :\ \\[.*'/'full-optimization\'\ :\ \'\','/' -i "${S}"/wscript
+	sed 's/'full-optimization\'\ :\ \\[.*'/'full-optimization\'\ :\ \'\','/' -i "${S}"/wscript || die
 	MARCH=$(get-flag march)
+	OPTFLAGS=""
 	if use cpu_flags_x86_sse; then
 		if [[ ${MARCH} == "i686" ]] || [[ ${MARCH} == "i486" ]]; then
 			elog "You enabled sse but use an march that does not support sse!"
-			elog "We add -msse to the cflags now, but please consider switching your march in make.conf!"
+			elog "We add -msse to the flags now, but please consider switching your march in make.conf!"
 		fi
 		OPTFLAGS="sse"
 	fi
@@ -99,10 +102,12 @@ src_prepare(){
 	if use cpu_flags_x86_3dnow; then
 		OPTFLAGS="${OPTFLAGS} 3dnow"
 	fi
-	sed 's/flag_line\ =\ o.*/flag_line\ =\ \": '${OPTFLAGS}' just some place holders\"/' \
-		-i "${S}"/wscript
-	sed 's/cpu\ ==\ .*/cpu\ ==\ "LeaveMarchAsIs":/' -i "${S}"/wscript
+	sed 's/flag_line\ =\ o.*/flag_line\ =\ \": '"${OPTFLAGS}"' just some place holders\"/' \
+		-i "${S}"/wscript || die
+	sed 's/cpu\ ==\ .*/cpu\ ==\ "LeaveMarchAsIs":/' -i "${S}"/wscript || die
 	append-flags "-lboost_system"
+	python_fix_shebang "${S}"/wscript
+	python_fix_shebang "${S}"/waf
 }
 
 src_configure() {
