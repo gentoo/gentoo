@@ -3676,7 +3676,7 @@ dev-haskell/zlib-enum 0.2.3-r1 0.2.3.1: Enumerator interface for zlib compressio
 dev-java/absolutelayout 6.7_beta-r1: AbsoluteLayout files extracted from Netbeans
 dev-java/annogen 0.1.0-r2: A tool which helps you work with JSR175 annotations
 dev-java/ant 1.9.2: Java-based build tool similar to 'make' that uses XML configuration files
-dev-java/ant-antlr 1.9.2 1.9.2-r1: Apache Ant's optional tasks for Antlr
+dev-java/ant-antlr 1.9.2-r1: Apache Ant's optional tasks for Antlr
 dev-java/ant-apache-bcel 1.9.2: Apache Ant's optional tasks depending on bcel
 dev-java/ant-apache-bsf 1.9.2: Apache Ant's optional tasks depending on bsf-2.3
 dev-java/ant-apache-log4j 1.9.2: Apache Ant's optional tasks depending on log4j
@@ -3702,7 +3702,7 @@ dev-java/ant-owanttask 1.3.2: ObjectWeb's Ant tasks
 dev-java/ant-swing 1.9.2: Apache Ant's optional tasks for Swing
 dev-java/ant-testutil 1.9.2: Apache Ant's optional test utility classes
 dev-java/ant-trax 1.9.2: Apache Ant .jar with optional tasks depending on XML transformer (Deprecated!)
-dev-java/antlr 2.7.7-r5 2.7.7-r7 3.1.3-r3 3.2 3.5.2 4.4 4.5.1: A parser generator for many languages
+dev-java/antlr 2.7.7-r7 3.2 3.5.2 4.4 4.5.1: A parser generator for many languages
 dev-java/aopalliance 1.0-r2: Aspect-Oriented Programming (AOP) Alliance classes
 dev-java/appframework 1.03-r4: A small set of Java classes that simplify building desktop applications
 dev-java/apple-java-extensions-bin 1.5 1.5-r1: A pluggable jar of stub classes representing the new Apple eAWT and eIO APIs for Java on Mac OS X
@@ -3852,7 +3852,7 @@ dev-java/glassfish-servlet-api 3.1.1: Glassfish reference implementation of Serv
 dev-java/glassfish-transaction-api 1.1.2.2.04: Java Transaction API
 dev-java/glassfish-xmlrpc-api 1.1.1: Project GlassFish XML RPC API
 dev-java/glazedlists 1.7.0-r1 1.8.0: A toolkit for list transformations
-dev-java/gnu-classpath 0.98-r3 0.98-r5: Free core class libraries for use with Java VMs and compilers
+dev-java/gnu-classpath 0.98-r5: Free core class libraries for use with Java VMs and compilers
 dev-java/gnu-classpath-inetlib 1.0-r3 1.1-r3: Network extensions library for GNU classpath and classpathx
 dev-java/gnu-crypto 2.0.1-r2 2.0.1-r3: GNU Crypto cryptographic primitives for Java
 dev-java/gnu-hylafax 1.0.3-r2: Java API designed to implement the client protocol portion of the hfaxd server
@@ -3945,7 +3945,7 @@ dev-java/jax-ws-tools 2.0.1-r1: Reference implementation of the Java API for XML
 dev-java/jaxb 2.1.2-r1: Reference implementation of the JAXB specification
 dev-java/jaxb-tools 2.1.2: Reference implementation of the JAXB specification
 dev-java/jaxen 1.1.1 1.1.4-r1 1.1.6: A Java XPath Engine
-dev-java/jaxme 0.5.2 0.5.2-r2: JaxMe 2 is an open source implementation of JAXB, the specification for Java/XML binding
+dev-java/jaxme 0.5.2-r2: An open source implementation of JAXB, the specification for Java/XML binding
 dev-java/jaxp 1.4-r1: The Java API for XML Processing (JAXP)
 dev-java/jaxr 1.0.6-r2: Java API for XML Registries
 dev-java/jazzy 0.5.2: Java Spell Check API
@@ -4110,13 +4110,13 @@ dev-java/nekohtml 1.9.18-r1: A simple HTML scanner and tag balancer using standa
 dev-java/netbeans-apisupport 8.0.2 8.1: Netbeans API Support Cluster
 dev-java/netbeans-cnd 8.0.2 8.1: Netbeans CND Cluster
 dev-java/netbeans-dlight 8.0.2 8.1: Netbeans D-Light Cluster
-dev-java/netbeans-enterprise 8.0.2 8.0.2-r1 8.1-r1: Netbeans Enterprise cluster
+dev-java/netbeans-enterprise 8.0.2-r1 8.1-r1: Netbeans Enterprise cluster
 dev-java/netbeans-ergonomics 8.0.2 8.1: Netbeans Ergonomics Cluster
 dev-java/netbeans-extide 8.0.2 8.1: Netbeans ExtIDE Cluster
 dev-java/netbeans-groovy 8.0.2 8.1: Netbeans Groovy Cluster
 dev-java/netbeans-harness 8.0.2 8.1: Netbeans Harness
 dev-java/netbeans-ide 8.0.2 8.1: Netbeans IDE Cluster
-dev-java/netbeans-java 8.0.2-r2 8.0.2-r4 8.1-r2: Netbeans Java Cluster
+dev-java/netbeans-java 8.0.2-r4 8.1-r2: Netbeans Java Cluster
 dev-java/netbeans-javacard 8.0.2 8.1: Netbeans JavaCard Cluster
 dev-java/netbeans-javadoc 8.0.2 8.1: Netbeans JavaDocs
 dev-java/netbeans-javafx 8.0.2 8.1: Netbeans JavaFX Cluster
@@ -4209,7 +4209,7 @@ dev-java/squareness-jlf 2.3.0-r1: Squareness Java Look and Feel
 dev-java/stax 1.2.0: A standard XML processing API that allows you to stream XML data from and to your application
 dev-java/stax-ex 1.0-r4 1.7.6: Extensions to complement JSR-173 StAX API
 dev-java/stax2-api 4.0.0 4.0.0-r1: Extended Stax (STandard Api for Xml procesing) API
-dev-java/stringtemplate 3.2 3.2.1-r1 4.0.8: A Java template engine
+dev-java/stringtemplate 3.2.1-r1 4.0.8: A Java template engine
 dev-java/struts 2.3.15.2: A powerful Model View Controller Framework for JSP/Servlets
 dev-java/struts-core 2.3.15.2: A powerful Model View Controller Framework for JSP/Servlets: Core
 dev-java/struts-plugins 2.3.15.2: A powerful Model View Controller Framework for JSP/Servlets: Plugins
@@ -4262,7 +4262,7 @@ dev-java/validation-api 1.1.0: Bean Validation (JSR-303) API
 dev-java/vecmath 1.6.0_pre12: Sun J3D: 3D vector math package
 dev-java/velocity 1.7 1.7-r1: A Java-based template engine for easy creation/rendering of documents that format and present data
 dev-java/vldocking 3.0.5: Docking solution for Java Swing
-dev-java/werken-xpath 0.9.4_beta-r2 0.9.4_beta-r4: W3C XPath-Rec implementation for DOM4J
+dev-java/werken-xpath 0.9.4_beta-r4: W3C XPath-Rec implementation for DOM4J
 dev-java/ws-commons-util 1.0.1 1.0.1-r1: Utility classes that allow high performance XML processing based on SAX
 dev-java/wsdl4j 1.6.2: Web Services Description Language for Java Toolkit (WSDL4J)
 dev-java/wstx 3.2.9-r1: Woodstox is a high-performance validating namespace-aware XML-processor
@@ -9350,7 +9350,7 @@ dev-util/cflow 1.4: C function call hierarchy analyzer
 dev-util/cgdb 0.6.6 0.6.7: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
 dev-util/checkbashisms 2.15.9 2.15.10: Perl script to check for commonly used bash features not defined by POSIX
-dev-util/checkstyle 4.4 5.5-r1: Development tool to help write Java code that adheres to a coding standard
+dev-util/checkstyle 5.5-r1: Development tool to help write Java code that adheres to a coding standard
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/cloc 1.60 1.62 1.64: Count Lines of Code
 dev-util/cmake 2.8.12.2-r1 3.2.2 3.3.1-r1 3.3.2-r1 3.4.0-r1 3.4.1: Cross platform Make
