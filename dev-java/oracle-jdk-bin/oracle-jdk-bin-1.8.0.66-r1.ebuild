@@ -327,10 +327,7 @@ src_install() {
 		# Fix miscellaneous install_name issues.
 		pushd "${ddest}"/jre/lib > /dev/null || die
 		local lib needed nlib npath
-		for lib in \
-			decora_sse glass jfx{media,webkit} \
-			javafx_{font,font_t2k,iio} prism_{common,es2,sw} \
-		; do
+		for lib in decora_sse glass prism_{common,es2,sw} ; do
 			lib=lib${lib}.dylib
 			einfo "Fixing self-reference of ${lib}"
 			install_name_tool \
@@ -344,7 +341,7 @@ src_install() {
 		for nlib in jdk1{5,6} ; do
 			install_name_tool -change \
 				/usr/lib/libgcc_s_ppc64.1.dylib \
-				$($(tc-getCC) -print-file-name=libgcc_s_ppc64.1.dylib) \
+				/usr/lib/libSystem.B.dylib \
 				"${ddest}"/lib/visualvm/profiler/lib/deployed/${nlib}/mac/libprofilerinterface.jnilib
 			install_name_tool -id \
 				"${EPREFIX}${dest}"/lib/visualvm/profiler/lib/deployed/${nlib}/mac/libprofilerinterface.jnilib \
