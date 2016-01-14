@@ -9,4 +9,7 @@
 		A parallel implementation of gzip for modern
 		multi-processor, multi-core machines.
 	</longdescription>
+	<use>
+		<flag name="symlink">Install symlinks which override <pkg>app-arch/gzip</pkg> implementation</flag>
+	</use>
 </pkgmetadata>
