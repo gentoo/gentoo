@@ -21,6 +21,7 @@ IUSE=""
 
 COMMON_DEPEND="
 	media-libs/freeglut
+	media-libs/glew
 	>=media-libs/libpng-1.5
 	net-misc/curl
 	sys-libs/zlib
