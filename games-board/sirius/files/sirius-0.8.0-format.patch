@@ -1,0 +1,11 @@
+--- src/sirius.c.old	2016-01-14 21:22:53.946900371 +0100
++++ src/sirius.c	2016-01-14 21:24:08.240507669 +0100
+@@ -180,7 +180,7 @@
+ 
+ 	paus = 1;
+ 
+-	box = gtk_message_dialog_new (GTK_WINDOW (window), GTK_DIALOG_MODAL, GTK_MESSAGE_INFO, GTK_BUTTONS_OK, message);
++	box = gtk_message_dialog_new (GTK_WINDOW (window), GTK_DIALOG_MODAL, GTK_MESSAGE_INFO, GTK_BUTTONS_OK, "%s", message);
+ 	gtk_dialog_run (GTK_DIALOG(box));
+ 	gtk_widget_destroy(box);
+ 
