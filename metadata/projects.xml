@@ -1404,18 +1404,10 @@
     <url>https://wiki.gentoo.org/wiki/Project:Genkernel</url>
     <description>The Genkernel project handles the maintenance and development of sys-kernel/genkernel</description>
     <member>
-      <email>aidecoe@gentoo.org</email>
-      <name>Amadeusz Żołnowski</name>
-    </member>
-    <member>
-      <email>alunduil@gentoo.org</email>
-      <name>Alex Brandt</name>
-    </member>
-    <member>
       <email>axs@gentoo.org</email>
       <name>Ian Stakenvicius</name>
     </member>
-    <member>
+    <member is-lead="1">
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
     </member>
@@ -1914,6 +1906,16 @@
     <member>
       <email>twitch153@gentoo.org</email>
       <name>Devan Franchini</name>
+    </member>
+  </project>
+  <project>
+    <email>leechcraft@gentoo.org</email>
+    <name>LeechCraft</name>
+    <url>https://wiki.gentoo.org/wiki/Project:LeechCraft</url>
+    <description>A project to maintain LeechCraft applications in Gentoo.</description>
+    <member is-lead="1">
+      <email>maksbotan@gentoo.org</email>
+      <name>Maxim Koltsov</name>
     </member>
   </project>
   <project>
