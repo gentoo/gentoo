@@ -36,7 +36,3 @@ multilib_src_install() {
 	emake DESTDIR="${D}" install
 	prune_libtool_files
 }
-
-multilib_src_install_all() {
-	dodoc ${DOCS}
-}
