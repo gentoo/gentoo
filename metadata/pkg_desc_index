@@ -8124,14 +8124,14 @@ dev-qt/qtpaths 5.4.2 5.5.1: Tool to query Qt path information
 dev-qt/qtphonon 4.8.6-r1 4.8.7: The Phonon module for the Qt toolkit
 dev-qt/qtpositioning 5.4.2 5.5.1: Physical position determination library for the Qt5 framework
 dev-qt/qtprintsupport 5.4.2 5.5.1: Printing support library for the Qt5 framework
-dev-qt/qtquick1 5.4.2 5.5.1: Legacy declarative UI module for the Qt5 framework (deprecated)
+dev-qt/qtquick1 5.4.2 5.5.1 5.5.1-r1: Legacy declarative UI module for the Qt5 framework (deprecated)
 dev-qt/qtquickcontrols 5.4.2 5.5.1 5.5.1-r1: Set of controls used in conjunction with Qt Quick to build complete interfaces
 dev-qt/qtscript 4.8.6-r2 4.8.7 5.4.2-r1 5.5.1: Application scripting library for the Qt5 framework (deprecated)
 dev-qt/qtsensors 5.4.2 5.5.1: Hardware sensor access library for the Qt5 framework
 dev-qt/qtserialport 5.4.2 5.5.1: Serial port abstraction library for the Qt5 framework
 dev-qt/qtsingleapplication 2.6.1_p20150629: Qt library to start applications only once per user
 dev-qt/qtsql 4.8.6-r1 4.8.7-r1 5.4.2 5.5.1: SQL abstraction library for the Qt5 tooolkit
-dev-qt/qtsvg 4.8.6-r1 4.8.7 5.4.2 5.5.1: SVG rendering library for the Qt5 framework
+dev-qt/qtsvg 4.8.6-r1 4.8.7 5.4.2 5.5.1 5.5.1-r1: SVG rendering library for the Qt5 framework
 dev-qt/qttest 4.8.6-r1 4.8.7 5.4.2 5.5.1: Unit testing library for the Qt5 framework
 dev-qt/qttranslations 4.8.6-r1 4.8.7 5.4.2 5.5.1: Translation files for the Qt5 framework
 dev-qt/qtwayland 5.4.2 5.5.1: Wayland platform plugin for Qt
@@ -13528,7 +13528,7 @@ net-analyzer/net-snmp 5.7.3_pre5-r1 5.7.3-r1 5.7.3-r2 5.7.3-r3 5.7.3-r4: Softwar
 net-analyzer/netcat 110-r9: the network swiss army knife
 net-analyzer/netcat6 1.0-r2: netcat clone with better IPv6 support, improved code, etc...
 net-analyzer/netdiscover 0.3_beta6-r3: An active/passive address reconnaissance tool
-net-analyzer/nethogs 0.8.0-r4: A small 'net top' tool, grouping bandwidth by process
+net-analyzer/nethogs 0.8.0-r4 0.8.1: A small 'net top' tool, grouping bandwidth by process
 net-analyzer/neti 2.0 2.0-r1: NETI@Home research project from GATech
 net-analyzer/netio 1.32: a network benchmarking tool that measures net throughput with NetBIOS and TCP/IP protocols
 net-analyzer/netperf 2.6.0-r1 2.7.0: Network performance benchmark including tests for TCP, UDP, sockets, ATM and more
