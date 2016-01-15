@@ -23,10 +23,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	demo? ( doom ) freedoom? ( doom ) resources? ( doom )"
 
 DEPEND="
-	dev-qt/qtcore:5
+	dev-qt/qtnetwork:5
 	dev-qt/qtopengl:5
+	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtgui:5
+	dev-qt/qtcore:5
 	net-misc/curl
 	sys-libs/zlib
 	media-libs/assimp
@@ -93,6 +95,7 @@ src_prepare() {
 		use tools || echo "CONFIG += deng_notools"
 
 		use openal && echo "CONFIG += deng_openal"
+		true
 
 	} > config_user.pri || die
 }
