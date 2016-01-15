@@ -306,6 +306,7 @@
     <subproject ref="amd64@gentoo.org"/>
     <subproject ref="arm@gentoo.org"/>
     <subproject ref="alpha@gentoo.org"/>
+    <subproject ref="cron-bugs@gentoo.org"/>
     <subproject ref="embedded@gentoo.org"/>
     <subproject ref="hppa@gentoo.org"/>
     <subproject ref="ia64@gentoo.org"/>
@@ -315,6 +316,7 @@
     <subproject ref="ppc@gentoo.org"/>
     <subproject ref="s390@gentoo.org"/>
     <subproject ref="sparc@gentoo.org"/>
+    <subproject ref="sh@gentoo.org"/>
     <subproject ref="toolchain@gentoo.org"/>
     <subproject ref="x86@gentoo.org"/>
     <member>
@@ -738,6 +740,16 @@
       <email>williamh@gentoo.org</email>
       <name>William Hubbs</name>
       <role>Council member</role>
+    </member>
+  </project>
+  <project>
+    <email>cron-bugs@gentoo.org</email>
+    <name>Gentoo Cron Project</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Cron</url>
+    <description>The Gentoo Cron Project maintains cron-related packages.</description>
+    <member>
+      <email>vapier@gentoo.org</email>
+      <name>Mike Frysinger</name>
     </member>
   </project>
   <project>
@@ -3728,6 +3740,24 @@
       <email>tommy@gentoo.org</email>
       <name>Thomas Sachau</name>
       <role>Administration and ebuild review</role>
+    </member>
+  </project>
+  <project>
+    <email>sh@gentoo.org</email>
+    <name>Gentoo Linux SuperH Development</name>
+    <url>https://wiki.gentoo.org/wiki/Project:SuperH</url>
+    <description>The SuperH Development Project is devoted to keeping Gentoo in good shape on the SuperH architecture.</description>
+    <member>
+      <email>ago@gentoo.org</email>
+      <name>Agostino Sarubbo</name>
+    </member>
+    <member>
+      <email>armin76@gentoo.org</email>
+      <name>Raúl Porcel</name>
+    </member>
+    <member>
+      <email>vapier@gentoo.org</email>
+      <name>Mike Frysinger</name>
     </member>
   </project>
   <project>
