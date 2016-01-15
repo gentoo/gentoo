@@ -11,7 +11,7 @@ SRC_URI="http://releases.0x539.de/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~x86"
 IUSE="nls static-libs"
 
 RDEPEND="dev-libs/libsigc++:2
