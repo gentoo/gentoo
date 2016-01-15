@@ -19,7 +19,7 @@ if [[ ${PV} == 9999 ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="http://download.deluge-torrent.org/source/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86"
+	KEYWORDS="amd64 ~arm ~ppc ~sparc ~x86"
 fi
 
 LICENSE="GPL-2"
