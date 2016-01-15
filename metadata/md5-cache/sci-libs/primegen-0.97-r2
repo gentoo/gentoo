@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install prepare test
+DESCRIPTION=Small, fast library to generate primes in order
+EAPI=6
+HOMEPAGE=http://cr.yp.to/primegen.html
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=public-domain
+SLOT=0
+SRC_URI=http://cr.yp.to/primegen/primegen-0.97.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
+_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	flag-o-matic	85dc1eac3c64d8141374490ed64122e5	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=972eef0579b5ecf1d9df37bb27bae641
