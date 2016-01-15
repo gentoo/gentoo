@@ -110,7 +110,10 @@ RDEPEND="${COMMON_DEPEND}
 # Other than that, the ebuild shall be fit for out-of-source build.
 DISTUTILS_IN_SOURCE_BUILD=1
 
-PATCHES=( "${FILESDIR}"/${P}-test-fix-backport.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-test-fix-backport.patch
+	"${FILESDIR}"/${P}-test-fix-backport-2.patch
+	)
 
 pkg_setup() {
 	unset DISPLAY # bug #278524
@@ -155,11 +158,6 @@ python_prepare_all() {
 	sed \
 		-e "s:/usr/:${EPREFIX}/usr/:g" \
 		-i setupext.py || die
-
-	# https://github.com/matplotlib/matplotlib/issues/5857
-	sed \
-		-e 's:test_pep8_conformance_examples:_&:g' \
-		-i lib/matplotlib/tests/test_coding_standards.py || die
 
 	export XDG_RUNTIME_DIR="${T}/runtime-dir"
 	mkdir "${XDG_RUNTIME_DIR}" || die
