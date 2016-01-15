@@ -11,7 +11,7 @@ SRC_URI="https://github.com/nixxcode/${PN}/archive/release-${PV}.tar.gz -> ${P}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="alsa dssi jack lash oss sndfile"
 
 RDEPEND="dev-cpp/gtkmm:2.4
