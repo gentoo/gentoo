@@ -14,7 +14,7 @@ SRC_URI="https://github.com/mamedev/mame/releases/download/mame${MY_PV}/mame${MY
 
 LICENSE="XMAME"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="X alsa +arcade debug +mess opengl tools"
 REQUIRED_USE="|| ( arcade mess )
 		debug? ( X )"
