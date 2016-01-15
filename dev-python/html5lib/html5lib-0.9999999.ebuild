@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,5 +24,11 @@ DEPEND="${RDEPEND}
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
 python_test() {
-	nosetests || die "Tests fail with ${EPYTHON}"
+	# https://github.com/html5lib/html5lib-python/issues/224
+	# https://bugs.gentoo.org/show_bug.cgi?id=571644
+	has_version =dev-python/lxml-3.5.0 && \
+		einfo "test are broken with dev-python/lxml-3.5.0" && \
+		einfo "https://github.com/html5lib/html5lib-python/issues/224" && \
+		return
+	nosetests --verbosity=3 || die "Tests fail with ${EPYTHON}"
 }
