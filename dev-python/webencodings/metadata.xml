@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <upstream>
+    <remote-id type="pypi">webencodings</remote-id>
+    <doc>http://pythonhosted.org/webencodings/</doc>
+    <maintainer status="unknown">
+      <email>simon.sapin@exyr.org</email>
+      <name>Simon Sapin</name>
+    </maintainer>
+  </upstream>
+</pkgmetadata>
