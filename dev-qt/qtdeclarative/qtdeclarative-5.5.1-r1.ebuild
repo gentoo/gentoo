@@ -15,13 +15,13 @@ IUSE="gles2 +jit localstorage +widgets xml"
 
 # qtgui[gles2=] is needed because of bug 504322
 DEPEND="
-	>=dev-qt/qtcore-${PV}:5
-	>=dev-qt/qtgui-${PV}:5[gles2=]
-	>=dev-qt/qtnetwork-${PV}:5
-	>=dev-qt/qttest-${PV}:5
-	localstorage? ( >=dev-qt/qtsql-${PV}:5 )
-	widgets? ( >=dev-qt/qtwidgets-${PV}:5[gles2=] )
-	xml? ( >=dev-qt/qtxmlpatterns-${PV}:5 )
+	~dev-qt/qtcore-${PV}
+	~dev-qt/qtgui-${PV}[gles2=]
+	~dev-qt/qtnetwork-${PV}
+	~dev-qt/qttest-${PV}
+	localstorage? ( ~dev-qt/qtsql-${PV} )
+	widgets? ( ~dev-qt/qtwidgets-${PV}[gles2=] )
+	xml? ( ~dev-qt/qtxmlpatterns-${PV} )
 "
 RDEPEND="${DEPEND}"
 

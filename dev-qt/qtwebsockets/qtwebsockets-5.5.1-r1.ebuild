@@ -5,25 +5,24 @@
 EAPI=5
 inherit qt5-build
 
-DESCRIPTION="Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients"
+DESCRIPTION="Implementation of the WebSocket protocol for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86"
 fi
 
 IUSE="qml"
 
 DEPEND="
-	>=dev-qt/qtcore-${PV}:5
-	qml? ( >=dev-qt/qtdeclarative-${PV}:5 )
+	~dev-qt/qtcore-${PV}
+	~dev-qt/qtnetwork-${PV}
+	qml? ( ~dev-qt/qtdeclarative-${PV} )
+
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-optional-qtdeclarative.patch" )
-
 src_prepare() {
 	qt_use_disable_mod qml quick src/src.pro
-	qt_use_disable_mod qml qml src/webchannel/webchannel.pro
 
 	qt5-build_src_prepare
 }

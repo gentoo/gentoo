@@ -3,9 +3,10 @@
 # $Id$
 
 EAPI=5
+QT5_MODULE="qttools"
 inherit qt5-build
 
-DESCRIPTION="Translation files for the Qt5 framework"
+DESCRIPTION="Interface to Qt applications communicating over D-Bus"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86"
@@ -14,7 +15,12 @@ fi
 IUSE=""
 
 DEPEND="
-	>=dev-qt/linguist-tools-${PV}:5
-	>=dev-qt/qtcore-${PV}:5
+	~dev-qt/qtcore-${PV}
+	~dev-qt/qtdbus-${PV}
+	~dev-qt/qtxml-${PV}
 "
-RDEPEND=""
+RDEPEND="${DEPEND}"
+
+QT5_TARGET_SUBDIRS=(
+	src/qdbus/qdbus
+)

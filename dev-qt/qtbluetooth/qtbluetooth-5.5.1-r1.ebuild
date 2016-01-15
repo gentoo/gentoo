@@ -15,14 +15,14 @@ fi
 IUSE="qml"
 
 RDEPEND="
-	>=dev-qt/qtconcurrent-${PV}:5
-	>=dev-qt/qtcore-${PV}:5
-	>=dev-qt/qtdbus-${PV}:5
+	~dev-qt/qtconcurrent-${PV}
+	~dev-qt/qtcore-${PV}
+	~dev-qt/qtdbus-${PV}
 	>=net-wireless/bluez-5
-	qml? ( >=dev-qt/qtdeclarative-${PV}:5 )
+	qml? ( ~dev-qt/qtdeclarative-${PV} )
 "
 DEPEND="${RDEPEND}
-	>=dev-qt/qtnetwork-${PV}:5
+	~dev-qt/qtnetwork-${PV}
 	virtual/pkgconfig
 "
 
