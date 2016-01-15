@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,12 +22,11 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-python/httplib2-0.8[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.13[${PYTHON_USEDEP}]
 	>=dev-python/gcs-oauth2-boto-plugin-1.9[${PYTHON_USEDEP}]
-	>=dev-python/google-apitools-0.4.8[${PYTHON_USEDEP}]
-	>=dev-python/oauth2client-1.4.11[${PYTHON_USEDEP}]
-	>=dev-python/protorpc-0.10.0[${PYTHON_USEDEP}]
+	>=dev-python/google-apitools-0.4.12[${PYTHON_USEDEP}]
+	>=dev-python/oauth2client-1.5.2[${PYTHON_USEDEP}]
 	>=dev-python/python-gflags-2.0[${PYTHON_USEDEP}]
 	>=dev-python/retry-decorator-1.0.0[${PYTHON_USEDEP}]
-	>=dev-python/six-1.8.0[${PYTHON_USEDEP}]
+	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/socksipy-1.01[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
@@ -37,7 +36,7 @@ S=${WORKDIR}/${PN}
 DOCS=( README.md CHANGES.md )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.13-use-friendy-version-checks.patch"
+	"${FILESDIR}"/${PN}-4.16-use-friendy-version-checks.patch
 )
 
 python_test() {

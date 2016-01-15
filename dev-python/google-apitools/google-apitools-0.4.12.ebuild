@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ IUSE=""
 RDEPEND=">=dev-python/httplib2-0.8[${PYTHON_USEDEP}]
 	>=dev-python/oauth2client-1.4.8[${PYTHON_USEDEP}]
 	>=dev-python/protorpc-0.9.1[${PYTHON_USEDEP}]
-	>=dev-python/six-1.8.0[${PYTHON_USEDEP}]
+	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/google-apputils-0.4.0[${PYTHON_USEDEP}]
 	>=dev-python/python-gflags-2.0[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
