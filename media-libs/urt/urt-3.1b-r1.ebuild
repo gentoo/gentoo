@@ -1,6 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+EAPI="5"
 
 inherit eutils toolchain-funcs
 
@@ -13,12 +15,12 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE="gif postscript tiff X"
 
-DEPEND="X? ( x11-libs/libXext
-			x11-proto/xextproto
-		)
+RDEPEND="X? ( x11-libs/libXext )
 	gif? ( media-libs/giflib )
 	tiff? ( media-libs/tiff )
 	postscript? ( app-text/ghostscript-gpl )"
+DEPEND="${RDEPEND}
+	X? ( x11-proto/xextproto )"
 
 S=${WORKDIR}
 
@@ -26,16 +28,14 @@ urt_config() {
 	use $1 && echo "#define $2" || echo "##define $2"
 }
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	rm -f bin/README
 
 	epatch "${FILESDIR}"/${P}-rle-fixes.patch
 	epatch "${FILESDIR}"/${P}-compile-updates.patch
 	epatch "${FILESDIR}"/${P}-tempfile.patch
 	epatch "${FILESDIR}"/${P}-build-fixes.patch
-	epatch "${FILESDIR}/${P}-make.patch"
+	epatch "${FILESDIR}"/${P}-make.patch
 	epatch "${FILESDIR}"/${P}-solaris.patch
 
 	# punt bogus manpage #109511
@@ -57,19 +57,22 @@ src_unpack() {
 	EOF
 }
 
-src_compile() {
+src_configure() {
 	./Configure config/gentoo || die "config"
-	emake CC=$(tc-getCC) || die "emake"
+}
+
+src_compile() {
+	emake CC=$(tc-getCC)
 }
 
 src_install() {
 	mkdir -p man-dest/man{1,3,5}
 	# this just installs it into some local dirs
 	make install || die
-	dobin bin/* || die "dobin"
-	dolib.a lib/librle.a || die "dolib.a"
+	dobin bin/*
+	dolib.a lib/librle.a
 	insinto /usr/include
-	doins include/rle*.h || die "doins include"
+	doins include/rle*.h
 	doman man-dest/man?/*.[135]
 	dodoc *-changes CHANGES* README blurb
 }
