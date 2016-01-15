@@ -1,0 +1,28 @@
+the build doesn't actually use the openssl var for anything useful.
+it blindly adds it to the -I/-L paths which causes problems when you
+cross-compile and when you link (it also adds it to -rpath).  punt
+the setting and forget about it.
+
+--- a/SConstruct
++++ b/SConstruct
+@@ -354,8 +354,6 @@ else:
+     apr_libs = ''
+     apu_libs = ''
+ 
+-  env.Append(CPPPATH=['$OPENSSL/include'])
+-  env.Append(LIBPATH=['$OPENSSL/lib'])
+ 
+ 
+ # If build with gssapi, get its information and define SERF_HAVE_GSSAPI
+@@ -369,8 +369,9 @@ if sys.platform == 'win32':
+ # On some systems, the -R values that APR describes never make it into actual
+ # RPATH flags. We'll manually map all directories in LIBPATH into new
+ # flags to set RPATH values.
+-for d in env['LIBPATH']:
+-  env.Append(RPATH=':'+d)
++if env.get('LIBPATH', None):
++  for d in env['LIBPATH']:
++    env.Append(RPATH=':'+d)
+ 
+ # Set up the construction of serf-*.pc
+ pkgconfig = env.Textfile('serf-%d.pc' % (MAJOR,),
