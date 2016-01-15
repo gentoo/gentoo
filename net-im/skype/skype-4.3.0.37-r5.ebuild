@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,8 +18,6 @@ REQUIRED_USE="apulse? ( !pulseaudio )"
 
 QA_PREBUILT=opt/bin/${PN}
 RESTRICT="mirror bindist strip" #299368
-
-EMUL_X86_VER=20120520
 
 RDEPEND="
 	virtual/ttf-fonts
