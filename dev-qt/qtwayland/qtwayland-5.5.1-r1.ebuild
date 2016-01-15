@@ -15,12 +15,12 @@ IUSE="egl qml wayland-compositor xcomposite"
 
 DEPEND="
 	>=dev-libs/wayland-1.4.0
-	>=dev-qt/qtcore-${PV}:5
-	>=dev-qt/qtgui-${PV}:5[egl=]
+	~dev-qt/qtcore-${PV}
+	~dev-qt/qtgui-${PV}[egl=]
 	media-libs/mesa[egl?]
 	>=x11-libs/libxkbcommon-0.2.0
 	wayland-compositor? (
-		qml? ( >=dev-qt/qtdeclarative-${PV}:5 )
+		qml? ( ~dev-qt/qtdeclarative-${PV} )
 	)
 	xcomposite? (
 		x11-libs/libX11

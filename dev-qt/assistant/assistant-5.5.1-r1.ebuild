@@ -15,14 +15,14 @@ fi
 IUSE="webkit"
 
 DEPEND="
-	>=dev-qt/qtcore-${PV}:5
-	>=dev-qt/qtgui-${PV}:5
-	>=dev-qt/qthelp-${PV}:5
-	>=dev-qt/qtnetwork-${PV}:5
-	>=dev-qt/qtprintsupport-${PV}:5
-	>=dev-qt/qtsql-${PV}:5[sqlite]
-	>=dev-qt/qtwidgets-${PV}:5
-	webkit? ( >=dev-qt/qtwebkit-${PV}:5 )
+	~dev-qt/qtcore-${PV}
+	~dev-qt/qtgui-${PV}
+	~dev-qt/qthelp-${PV}
+	~dev-qt/qtnetwork-${PV}
+	~dev-qt/qtprintsupport-${PV}
+	~dev-qt/qtsql-${PV}[sqlite]
+	~dev-qt/qtwidgets-${PV}
+	webkit? ( ~dev-qt/qtwebkit-${PV} )
 "
 RDEPEND="${DEPEND}"
 

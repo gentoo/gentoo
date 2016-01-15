@@ -5,16 +5,16 @@
 EAPI=5
 inherit qt5-build
 
-DESCRIPTION="XPath, XQuery, and XSLT support library for the Qt5 framework"
+DESCRIPTION="Translation files for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86"
 fi
 
 IUSE=""
 
 DEPEND="
-	>=dev-qt/qtcore-${PV}:5
-	>=dev-qt/qtnetwork-${PV}:5
+	~dev-qt/linguist-tools-${PV}
+	~dev-qt/qtcore-${PV}
 "
-RDEPEND="${DEPEND}"
+RDEPEND=""

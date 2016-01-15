@@ -16,14 +16,14 @@ fi
 IUSE="geoclue qml"
 
 RDEPEND="
-	>=dev-qt/qtcore-${PV}:5
+	~dev-qt/qtcore-${PV}
 	geoclue? (
 		app-misc/geoclue:0
 		dev-libs/glib:2
 	)
 	qml? (
-		>=dev-qt/qtdeclarative-${PV}:5
-		>=dev-qt/qtnetwork-${PV}:5
+		~dev-qt/qtdeclarative-${PV}
+		~dev-qt/qtnetwork-${PV}
 	)
 "
 DEPEND="${RDEPEND}"

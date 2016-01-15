@@ -14,11 +14,11 @@ fi
 IUSE=""
 
 RDEPEND="
-	>=dev-qt/qtcore-${PV}:5
-	>=dev-qt/qtdeclarative-${PV}:5
+	~dev-qt/qtcore-${PV}
+	~dev-qt/qtdeclarative-${PV}
 "
 DEPEND="${RDEPEND}
-	test? ( >=dev-qt/qtgui-${PV}:5 )
+	test? ( ~dev-qt/qtgui-${PV} )
 "
 
 src_test() {

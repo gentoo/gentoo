@@ -6,7 +6,7 @@ EAPI=5
 QT5_MODULE="qttools"
 inherit qt5-build
 
-DESCRIPTION="Graphical tool that lets you introspect D-Bus objects and messages"
+DESCRIPTION="Graphical tool for translating Qt applications"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86"
@@ -15,14 +15,15 @@ fi
 IUSE=""
 
 DEPEND="
-	>=dev-qt/qtcore-${PV}:5
-	>=dev-qt/qtdbus-${PV}:5
-	>=dev-qt/qtgui-${PV}:5
-	>=dev-qt/qtwidgets-${PV}:5
-	>=dev-qt/qtxml-${PV}:5
+	~dev-qt/designer-${PV}
+	~dev-qt/qtcore-${PV}
+	~dev-qt/qtgui-${PV}
+	~dev-qt/qtprintsupport-${PV}
+	~dev-qt/qtwidgets-${PV}
+	~dev-qt/qtxml-${PV}
 "
 RDEPEND="${DEPEND}"
 
 QT5_TARGET_SUBDIRS=(
-	src/qdbus/qdbusviewer
+	src/linguist/linguist
 )

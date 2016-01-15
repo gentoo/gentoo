@@ -14,8 +14,8 @@ fi
 IUSE=""
 
 DEPEND="
-	>=dev-qt/qtcore-${PV}:5
-	>=dev-qt/qtgui-${PV}:5
+	~dev-qt/qtcore-${PV}
+	~dev-qt/qtgui-${PV}
 	media-libs/jasper
 	media-libs/libmng:=
 	media-libs/libwebp:=
