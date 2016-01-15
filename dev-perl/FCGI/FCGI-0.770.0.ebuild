@@ -12,7 +12,7 @@ DESCRIPTION="Fast CGI module"
 
 LICENSE="FastCGI"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND="
