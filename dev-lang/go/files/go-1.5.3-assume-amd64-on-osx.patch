@@ -1,0 +1,13 @@
+--- src/cmd/dist/util.go	2016-01-15 11:27:49.092713185 -0600
++++ src/cmd/dist/util.go	2016-01-15 11:29:50.616721387 -0600
+@@ -404,9 +404,7 @@
+ 	switch gohostos {
+ 	case "darwin":
+ 		// Even on 64-bit platform, darwin uname -m prints i386.
+-		if strings.Contains(run("", CheckExit, "sysctl", "machdep.cpu.extfeatures"), "EM64T") {
+-			gohostarch = "amd64"
+-		}
++		gohostarch = "amd64"
+ 	case "solaris":
+ 		// Even on 64-bit platform, solaris uname -m prints i86pc.
+ 		out := run("", CheckExit, "isainfo", "-n")
