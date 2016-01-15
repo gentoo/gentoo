@@ -10,7 +10,7 @@ HOMEPAGE="http://gobby.0x539.de/"
 SRC_URI="http://releases.0x539.de/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="gnome zeroconf"
 
 RDEPEND="
