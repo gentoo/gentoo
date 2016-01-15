@@ -125,7 +125,7 @@ app-admin/keepassx 0.4.3 0.4.4 2.0_beta2 2.0: Qt password manager compatible wit
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 2.7 2.8 3.0: A command line interface to KeePass database files
 app-admin/lastpass 3.2.16: Online password manager and form filler that makes web browsing easier and more secure
-app-admin/lastpass-cli 0.6.0 0.7.1 0.8.0: Interfaces with LastPass.com from the command line.
+app-admin/lastpass-cli 0.6.0 0.7.1 0.8.0-r1: Interfaces with LastPass.com from the command line.
 app-admin/lib_users 0.9: Checks /proc for libraries being mapped but marked as deleted
 app-admin/lnav 0.6.1 0.6.2 0.7.0 0.7.1: A curses-based tool for viewing and analyzing log files
 app-admin/localepurge 0.5.4-r2: Script to recover diskspace wasted for unneeded locale files and localized man pages
@@ -1036,7 +1036,7 @@ app-editors/leo 5.1: Leo: Literate Editor with Outlines
 app-editors/levee 3.5a: Really tiny vi clone, for things like rescue disks
 app-editors/lfhex 0.42: A fast, efficient hex-editor with support for large files and comparing binary files
 app-editors/lpe 1.2.6.13: a lightweight programmers editor
-app-editors/mg 20110905-r1 20150323: MicroGnuEmacs, a port from the BSDs
+app-editors/mg 20110905-r1 20150323 20160115: MicroGnuEmacs, a port from the BSDs
 app-editors/mlview 0.9.0-r1: XML editor for the GNOME environment
 app-editors/moe 1.6 1.7: A powerful and user-friendly console text editor
 app-editors/mousepad 0.3.0 0.4.0: GTK+-based editor for the Xfce Desktop Environment
@@ -6983,7 +6983,7 @@ dev-python/dugong 3.4 3.5: Python library for communicating with HTTP 1.1 server
 dev-python/dulwich 0.9.9 0.10.0 0.10.1a 0.11.1 0.11.2 0.12.0: Pure-Python implementation of the Git file formats and protocols
 dev-python/dynd-python 0.6.5 0.6.6: Python exposure of multidimensionnal array library libdynd
 dev-python/easy-thumbnails 2.2: Easy thumbnails for Django
-dev-python/ecdsa 0.11-r1 0.13: ECDSA cryptographic signature library in pure Python
+dev-python/ecdsa 0.13: ECDSA cryptographic signature library in pure Python
 dev-python/editobj 0.5.7-r1 0.5.7-r2: EditObj can create a dialog box to edit ANY Python object
 dev-python/edpwd 0.0.7: Encrypt/Decrypt Password Library that wraps up Blowfish
 dev-python/egenix-mx-base 3.2.5 3.2.8 3.2.9: eGenix utils for Python
@@ -7372,7 +7372,7 @@ dev-python/pSQL 1.2.0 1.2.1: MySQL abstraction layer for python
 dev-python/packaging 15.3-r2: Core utilities for Python packages
 dev-python/paisley 0.3.1 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
 dev-python/pandas 0.16.2 0.17.0 0.17.1 9999: Powerful data structures for data analysis and statistics
-dev-python/paramiko 1.15.1-r1 1.15.2 1.15.3 1.15.4 1.16.0: SSH2 protocol library
+dev-python/paramiko 1.15.1-r1 1.16.0: SSH2 protocol library
 dev-python/paramunittest 0.2: Simple extension to have parametrized unit tests.
 dev-python/parse 1.6.4: parse() is the opposite of format()
 dev-python/parse-type 0.3.4: Simplifies to build parse types based on the parse module
