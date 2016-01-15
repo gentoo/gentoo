@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}"
 src_configure() {
 	local myconf="--with-history"
 	use readline && myconf="--with-edit=readline"
-	use libedit && myconf="--with-edit=editline"
+	use libedit && myconf="--with-edit=edit"
 
 	econf \
 		--disable-dependency-tracking \
