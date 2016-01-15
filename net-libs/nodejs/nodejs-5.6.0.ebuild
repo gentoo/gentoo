@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
@@ -19,27 +19,29 @@ KEYWORDS="~amd64 ~arm ~x86 ~x64-macos"
 IUSE="cpu_flags_x86_sse2 debug doc icu +npm +snapshot +ssl test"
 
 RDEPEND="icu? ( >=dev-libs/icu-56:= )
-	${PYTHON_DEPS}
-	>=net-libs/http-parser-2.6:=
+	npm? ( ${PYTHON_DEPS} )
+	>=net-libs/http-parser-2.6.1:=
 	>=dev-libs/libuv-1.8.0:=
-	>=dev-libs/openssl-1.0.2e:0=[-bindist]
+	>=dev-libs/openssl-1.0.2f:0=[-bindist]
 	sys-libs/zlib"
 DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
 	!!net-libs/iojs
 	test? ( net-misc/curl )"
 
 S="${WORKDIR}/node-v${PV}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+PATCHES=(
+	"${FILESDIR}"/gentoo-global-npm-config.patch
+)
+
 pkg_pretend() {
 	(use x86 && ! use cpu_flags_x86_sse2) && \
 		die "Your CPU doesn't support the required SSE2 instruction."
 
-	if [[ ${MERGE_TYPE} != "binary" ]] ; then
-		if ! test-flag-CXX -std=c++11 ; then
-			die "Your compiler doesn't support C++11. Use GCC 4.8, Clang 3.3 or newer."
-		fi
-	fi
+	( [[ ${MERGE_TYPE} != "binary" ]] && ! test-flag-CXX -std=c++11 ) && \
+		die "Your compiler doesn't support C++11. Use GCC 4.8, Clang 3.3 or newer."
 }
 
 src_prepare() {
@@ -80,7 +82,7 @@ src_prepare() {
 		BUILDTYPE=Debug
 	fi
 
-	epatch_user
+	default
 }
 
 src_configure() {
@@ -121,10 +123,10 @@ src_compile() {
 
 src_install() {
 	local LIBDIR="${ED}/usr/$(get_libdir)"
-	make install DESTDIR="${ED}" PREFIX=/usr
+	emake install DESTDIR="${ED}"
 	pax-mark -m "${ED}"usr/bin/node
 
-	# set up a symlink structure that npm expects..
+	# set up a symlink structure that node-gyp expects..
 	dodir /usr/include/node/deps/{v8,uv}
 	dosym . /usr/include/node/src
 	for var in deps/{uv,v8}/include; do
@@ -134,18 +136,24 @@ src_install() {
 	if use doc; then
 		# Patch docs to make them offline readable
 		for i in `grep -rl 'fonts.googleapis.com' "${S}"/out/doc/api/*`; do
-		    sed -i '/fonts.googleapis.com/ d' $i;
+			sed -i '/fonts.googleapis.com/ d' $i;
 		done
 		# Install docs!
 		dohtml -r "${S}"/out/doc/api/*
 	fi
 
 	if use npm; then
+		dodir /etc/npm
+
 		# Install bash completion for `npm`
+		# We need to temporarily replace default config path since
+		# npm otherwise tries to write outside of the sandbox
+		local npm_config="usr/lib64/node_modules/npm/lib/config/core.js"
+		sed -i -e "s|'/etc'|'${D}/etc'|g" "${ED}/${npm_config}" || die
 		local tmp_npm_completion_file="$(emktemp)"
 		"${ED}/usr/bin/npm" completion > "${tmp_npm_completion_file}"
 		newbashcomp "${tmp_npm_completion_file}" npm
-		rm "${LIBDIR}"/node_modules/npm/lib/utils/completion.sh
+		sed -i -e "s|'${D}/etc'|'/etc'|g" "${ED}/${npm_config}" || die
 
 		# Move man pages
 		doman "${LIBDIR}"/node_modules/npm/man/man{1,5,7}/*
@@ -154,22 +162,21 @@ src_install() {
 		rm "${LIBDIR}"/node_modules/npm/{.mailmap,.npmignore,Makefile} || die
 		rm -rf "${LIBDIR}"/node_modules/npm/{doc,html,man} || die
 
-		local temp_name=("'AUTHORS*'" "'CHANGELOG*'" "'CONTRIBUT*'" \
-			"'README*'" "'.travis.yml'" "'.eslint*'" "'.wercker.yml'" \
-			"'.npmignore'" "'*.md'" "'*.markdown'" "'*.bat'" "'*.cmd'")
 		local find_exp="-or -name"
-		local find_name=( "${temp_name[@]/%/ ${find_exp}}" )
-		# drop last "-or -name"
-		find_name[-1]="${find_name[-1]%${find_exp}}"
-		local find_iname="-iname 'LICEN?E*' ${find_exp}"
+		local find_name=()
+		for match in "AUTHORS*" "CHANGELOG*" "CONTRIBUT*" "README*" \
+			".travis.yml" ".eslint*" ".wercker.yml" ".npmignore" \
+			"*.md" "*.markdown" "*.bat" "*.cmd"; do
+			find_name+=( ${find_exp} "${match}" )
+		done
 
 		# Remove various development and/or inappropriate files and
 		# useless docs of dependend packages.
 		find "${LIBDIR}"/node_modules \
 			\( -type d -name examples \) -or \( -type f \( \
-				${find_iname} ${find_name[@]} \
-			\) \)
-		eend $?
+				-iname "LICEN?E*" \
+				"${find_name[@]}" \
+			\) \) -exec rm -rf "{}" \;
 	fi
 }
 
@@ -179,8 +186,10 @@ src_test() {
 }
 
 pkg_postinst() {
-	einfo "When using node-gyp to install native modules, you can avoid"
-	einfo "having to download the full tarball by doing the following:"
+	einfo "The global npm config lives in /etc/npm. This deviates slightly"
+	einfo "from upstream which otherwise would have it live in /usr/etc/."
 	einfo ""
-	einfo "node-gyp --nodedir /usr/include/node <command>"
+	einfo "Protip: When using node-gyp to install native modules, you can"
+	einfo "avoid having to download extras by doing the following:"
+	einfo "$ node-gyp --nodedir /usr/include/node <command>"
 }
