@@ -4,9 +4,11 @@
 
 EAPI=5
 
+inherit toolchain-funcs
+
 DESCRIPTION="Interfaces with LastPass.com from the command line."
-SRC_URI="https://github.com/lastpass/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="https://github.com/lastpass/lastpass-cli"
+SRC_URI="https://github.com/lastpass/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
@@ -22,6 +24,10 @@ RDEPEND="
 	pinentry? ( app-crypt/pinentry )
 "
 DEPEND="${RDEPEND} app-text/asciidoc"
+
+src_prepare() {
+	tc-export CC
+}
 
 src_compile() {
 	emake PREFIX="${EPREFIX}/usr"
