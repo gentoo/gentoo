@@ -6933,8 +6933,8 @@ dev-python/django-oauth-plus 2.2.8: Support of OAuth 1.0a in Django using python
 dev-python/django-openid-auth 0.5: A library that can be used to add OpenID support to Django applications
 dev-python/django-opensearch 0.2.4 0.2.5: A django reusable application to handle opensearch.xml
 dev-python/django-openstack-auth 1.2.0 1.3.1: Django authentication backend for use with OpenStack Keystone Identity backend
-dev-python/django-otp 0.2.7 0.3.1: A pluggable framework for adding two-factor authentication to Django using one-time passwords
-dev-python/django-otp-yubikey 0.2.0 0.3.2: django-otp plugin that verifies YubiKey OTP tokens
+dev-python/django-otp 0.2.7 0.3.4: Framework for adding two-factor authentication to Django using one-time passwords
+dev-python/django-otp-yubikey 0.2.0 0.3.3: django-otp plugin that verifies YubiKey OTP tokens
 dev-python/django-picklefield 0.3.0 0.3.1: Implementation of a pickled object field for django
 dev-python/django-pipeline 1.3.26 1.5.4: An asset packaging library for Django
 dev-python/django-piston 0.2.3-r1 9999: A mini-framework for Django for creating RESTful APIs
