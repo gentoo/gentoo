@@ -12,7 +12,7 @@ DESCRIPTION="High-performance programming language for technical computing"
 HOMEPAGE="http://julialang.org/"
 SRC_URI="
 	https://github.com/JuliaLang/${PN}/releases/download/v${PV}/${P}.tar.gz
-	https://dev.gentoo.org/~tamiko/${P}-bundled.tar.gz
+	https://dev.gentoo.org/~tamiko/distfiles/${P}-bundled.tar.gz
 "
 
 LICENSE="MIT"
