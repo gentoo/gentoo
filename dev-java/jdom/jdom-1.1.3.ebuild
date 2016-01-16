@@ -12,7 +12,7 @@ SRC_URI="http://www.jdom.org/dist/binary/archive/${P}.tar.gz"
 HOMEPAGE="http://www.jdom.org"
 LICENSE="JDOM"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ppc64 x86"
 IUSE=""
 
 RDEPEND=">=virtual/jre-1.6"

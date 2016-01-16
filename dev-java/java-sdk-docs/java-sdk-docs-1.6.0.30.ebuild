@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ DESCRIPTION="Sun's documentation bundle (including API) for Java SE"
 HOMEPAGE="http://download.oracle.com/javase/6/docs/index.html"
 LICENSE="oracle-java-documentation"
 SLOT="1.6.0"
-KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 DEPEND="app-arch/unzip"
 RDEPEND=""

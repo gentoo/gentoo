@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="http://download.forge.objectweb.org/${PN}/${P}.tar.gz
 LICENSE="BSD"
 SLOT="4"
 IUSE=""
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-fbsd ~x64-macos"
+KEYWORDS="amd64 ~arm ~ppc64 x86 ~amd64-fbsd ~x64-macos"
 
 DEPEND=">=virtual/jdk-1.5"
 RDEPEND=">=virtual/jre-1.5"
