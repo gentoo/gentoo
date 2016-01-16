@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="perl module to do NFS (or not) locking"
 
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="virtual/perl-ExtUtils-MakeMaker"
