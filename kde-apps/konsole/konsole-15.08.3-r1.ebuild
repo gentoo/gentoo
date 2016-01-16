@@ -1,10 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-KDE_BLOCK_SLOT4="false"
 KDE_HANDBOOK="forceoptional"
 KDE_TEST="true"
 VIRTUALX_REQUIRED="test"
@@ -47,10 +46,7 @@ DEPEND="
 	dev-qt/qtxml:5
 	X? ( x11-libs/libX11 )
 "
-RDEPEND="${DEPEND}
-	!kde-apps/konsole:4[handbook]
-	!kde-apps/konsole:4[-minimal(-)]
-"
+RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
