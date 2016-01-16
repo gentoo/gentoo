@@ -3046,6 +3046,7 @@ games-puzzle/tiny-and-big:bundled-libs - Use the upstream provided bundled libra
 games-puzzle/xlogical:alt_gfx - Use alternate graphics which are closer to the original Amiga version
 games-roguelike/FTL:bundled-libs - Use bundled libraries.
 games-roguelike/angband:sound - Enable and install sounds
+games-roguelike/nethack:experimental - Enable experimental features (showscore and status_hilite)
 games-roguelike/stone-soup:luajit - Use dev-lang/luajit as scripting backend instead of dev-lang/lua.
 games-roguelike/stone-soup:ncurses - Enable for console (uses ncurses) based build. (can be enabled on top of tiles)
 games-roguelike/stone-soup:tiles - Enable for graphical (tiled) build. (can be enabled on top of ncurses)
