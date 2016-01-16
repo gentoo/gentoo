@@ -3,7 +3,6 @@
 # $Id$
 
 EAPI=5
-
 inherit cmake-utils multilib
 
 DESCRIPTION="Clipboard manager with advanced features"
@@ -28,15 +27,20 @@ RDEPEND="
 		webkit? ( dev-qt/qtwebkit:4 )
 	)
 	qt5? (
+		dev-qt/linguist-tools:5
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtnetwork:5
 		dev-qt/qtscript:5
+		dev-qt/qtsvg:5
 		dev-qt/qtwidgets:5
 		webkit? ( dev-qt/qtwebkit:5 )
 	)
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	qt4? ( test? ( dev-qt/qttest:4 ) )
+	qt5? ( test? ( dev-qt/qttest:5 ) )
+"
 
 S="${WORKDIR}"/CopyQ-${PV}
 
