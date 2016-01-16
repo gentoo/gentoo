@@ -3883,7 +3883,7 @@ dev-java/ibm-jdk-bin 1.6.0.9_p1 1.6.0.9_p2 1.6.0.9_p2-r1: IBM Java SE Developmen
 dev-java/ibm-jre-bin 1.6.0.9_p1 1.6.0.9_p2 1.6.0.9_p2-r1: IBM Java SE Runtime Environment
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
 dev-java/icedtea 6.1.13.9-r2 7.2.6.3-r4: A harness to build OpenJDK using Free Software build tools and dependencies
-dev-java/icedtea-bin 6.1.13.8-r1 6.1.13.9 7.2.6.3 7.2.6.3-r1: A Gentoo-made binary build of the IcedTea JDK
+dev-java/icedtea-bin 6.1.13.9 7.2.6.3 7.2.6.3-r1: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.5.1-r1 1.6.1: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 3.8.1-r1 4.0.1.1 4.2.1.1 4.4.2 49.1 52.1 53.1 54.1.1 55.1: A set of Java libraries providing Unicode and Globalization support
@@ -15691,7 +15691,7 @@ sci-libs/netcdf 4.3.2-r1: Scientific library and interface for array oriented da
 sci-libs/netcdf-cxx 4.2-r300 4.2.1: C++ library for netCDF
 sci-libs/netcdf-fortran 4.2: Scientific library and interface for array oriented data access
 sci-libs/nfft 3.2.3: library for nonequispaced discrete Fourier transformations
-sci-libs/nlopt 2.2.4 2.4.2: Non-linear optimization library
+sci-libs/nlopt 2.2.4 2.4.2 2.4.2-r1: Non-linear optimization library
 sci-libs/oc 2.0: Network Data Access Protocol client C library
 sci-libs/octomap 1.6.8 9999: An Efficient Probabilistic 3D Mapping Framework Based on Octrees
 sci-libs/ogdi 3.1.5-r1 3.2.0_beta2: Open Geographical Datastore Interface, a GIS support library
