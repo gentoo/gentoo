@@ -310,6 +310,7 @@
     <subproject ref="embedded@gentoo.org"/>
     <subproject ref="hppa@gentoo.org"/>
     <subproject ref="ia64@gentoo.org"/>
+    <subproject ref="m68k@gentoo.org"/>
     <subproject ref="mips@gentoo.org"/>
     <subproject ref="openrc@gentoo.org"/>
     <subproject ref="pam-bugs@gentoo.org"/>
@@ -1154,6 +1155,24 @@
     </member>
   </project>
   <project>
+    <email>forensics@gentoo.org</email>
+    <name>Gentoo Forensics Project</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Forensics</url>
+    <description>Maintains intrusion detection and forensic-related packages.</description>
+    <member>
+      <email>patrick@gentoo.org</email>
+      <name>Patrick Lauer</name>
+    </member>
+    <member>
+      <email>radhermit@gentoo.org</email>
+      <name>Tim Harder</name>
+    </member>
+    <member>
+      <email>zerochaos@gentoo.org</email>
+      <name>Rick Farina</name>
+    </member>
+  </project>
+  <project>
     <email>forum-mods@gentoo.org</email>
     <name>Gentoo Linux Forums</name>
     <url>https://wiki.gentoo.org/wiki/Project:Forums</url>
@@ -1455,6 +1474,32 @@
       <email>amynka@gentoo.org</email>
       <name>Amy Winston</name>
       <role>Member</role>
+    </member>
+  </project>
+  <project>
+    <email>graphics@gentoo.org</email>
+    <name>Gentoo Graphics Project</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Graphics</url>
+    <description>The Gentoo Graphics Project maintains media-gfx and related packages.</description>
+    <member>
+      <email>lu_zero@gentoo.org</email>
+      <name>Luca Barbato</name>
+    </member>
+    <member>
+      <email>maekke@gentoo.org</email>
+      <name>Markus Meier</name>
+    </member>
+    <member>
+      <email>radhermit@gentoo.org</email>
+      <name>Tim Harder</name>
+    </member>
+    <member>
+      <email>ssuominen@gentoo.org</email>
+      <name>Samuli Suominen</name>
+    </member>
+    <member>
+      <email>vapier@gentoo.org</email>
+      <name>Mike Frysinger</name>
     </member>
   </project>
   <project>
@@ -1991,6 +2036,16 @@
     <member>
       <email>jer@gentoo.org</email>
       <name>Jeroen Roovers</name>
+    </member>
+  </project>
+  <project>
+    <email>m68k@gentoo.org</email>
+    <name>Gentoo Linux m68k Development</name>
+    <url>https://wiki.gentoo.org/wiki/Project:M68k</url>
+    <description>The m68k Development Project is devoted to keeping Gentoo in good shape on the m68k architecture.</description>
+    <member>
+      <email>vapier@gentoo.org</email>
+      <name>Mike Frysinger</name>
     </member>
   </project>
   <project>
