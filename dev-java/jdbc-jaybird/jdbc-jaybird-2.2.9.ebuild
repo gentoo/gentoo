@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://jaybirdwiki.firebirdsql.org/"
 SRC_URI="https://github.com/FirebirdSQL/${MY_PN}/archive/v${PV}.zip -> Jaybird-${PV}-src.zip"
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~ppc"
+KEYWORDS="~amd64 ~x86"
 IUSE="jni"
 
 CDEPEND="dev-java/junit:4

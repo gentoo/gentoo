@@ -1,4 +1,4 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.w3.org/2002/06/sacjava-${PV}.zip"
 
 LICENSE="W3C"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND=">=virtual/jdk-1.4

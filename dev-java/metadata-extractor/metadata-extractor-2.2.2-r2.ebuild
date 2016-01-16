@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.drewnoakes.com/code/exif/"
 SRC_URI="http://www.drewnoakes.com/code/exif/metadata-extractor-${PV}-src.jar"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc amd64"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 DEPEND="

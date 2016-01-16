@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -60,7 +60,7 @@ SRC_URI="x86? ( ${X86_JRE_DIST} )
 	ppc? ( ${PPC_JRE_DIST} )
 	ppc64? ( ${PPC64_JRE_DIST} )"
 LICENSE="IBM-J1.6"
-KEYWORDS="-* amd64 ppc ppc64 x86"
+KEYWORDS="-* amd64 ppc64 x86"
 RESTRICT="fetch"
 IUSE="X alsa nsplugin odbc selinux"
 

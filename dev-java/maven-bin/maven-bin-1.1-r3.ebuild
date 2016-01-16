@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ HOMEPAGE="http://maven.apache.org/"
 
 LICENSE="Apache-2.0"
 SLOT="1.1"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="|| ( app-eselect/eselect-java app-eselect/eselect-maven )"

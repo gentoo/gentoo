@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ DEPEND=">=virtual/jdk-1.4
 RDEPEND=">=virtual/jre-1.4"
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 
 S="${WORKDIR}/${PN}"
 

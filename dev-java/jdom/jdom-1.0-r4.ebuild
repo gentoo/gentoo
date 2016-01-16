@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ SRC_URI="http://www.jdom.org/dist/source/archive/${P}.tar.gz"
 HOMEPAGE="http://www.jdom.org"
 LICENSE="JDOM"
 SLOT="${PV}"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 COMMON_DEP="dev-java/saxpath
 		>=dev-java/xerces-2.7"
 RDEPEND=">=virtual/jre-1.4

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://apache/maven/maven-${MY_MV}/${PV}/binaries/${MY_P}-bin.tar.bz2
 HOMEPAGE="http://maven.apache.org/"
 LICENSE="Apache-2.0"
 SLOT="2.0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND=">=virtual/jdk-1.4
 	app-eselect/eselect-maven"

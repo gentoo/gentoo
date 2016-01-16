@@ -1,4 +1,4 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ SRC_URI="http://www.incors.org/archive/${P//./_}.zip"
 HOMEPAGE="http://www.incors.org/archive"
 LICENSE="LGPL-2.1"
 SLOT="2.0"
-KEYWORDS="amd64 ppc ppc64 x86"
+KEYWORDS="amd64 ppc64 x86"
 IUSE="doc source"
 DEPEND=">=virtual/jdk-1.4
 	>=dev-java/ant-core-1.4

@@ -1,4 +1,4 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,7 @@ SRC_URI="
 	debug? ( ${file_main_debug} )
 	${file_rowset}
 	doc? ( ${file_doc} )"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 LICENSE="oracle-jdbc"
 SLOT="9.2"
 DEPEND=""

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://java.sun.com/products/jms/"
 SRC_URI="${At}"
 LICENSE="sun-bcla-jms"
 SLOT=0
-KEYWORDS="amd64 ppc ppc64 x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ppc64 x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="doc"
 RDEPEND=">=virtual/jre-1.3"
 DEPEND="app-arch/unzip

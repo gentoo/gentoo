@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/JXv${PV}src.tar.bz2
 	mirror://sourceforge/${PN}/JXv${PV}deploy.tar.bz2"
 LICENSE="CAOSL"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 RDEPEND=">=virtual/jre-1.4
 	>=dev-java/javahelp-2.0.02_p46
 	>=dev-java/log4j-1.2.8

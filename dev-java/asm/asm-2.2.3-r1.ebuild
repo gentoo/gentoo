@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://asm.objectweb.org"
 SRC_URI="http://download.forge.objectweb.org/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="2.2"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ~arm ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="doc source"
 DEPEND=">=virtual/jdk-1.4
 	dev-java/ant-core

@@ -13,7 +13,7 @@ HOMEPAGE="http://x-stream.github.io"
 SRC_URI="http://repo.maven.apache.org/maven2/com/thoughtworks/${PN}/${PN}-distribution/${PV}/${PN}-distribution-${PV}-src.zip"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 
 # By default, these tests exit successfully on failure. Chewi has fixed
 # that below but it's probably because they blow up spectacularly on

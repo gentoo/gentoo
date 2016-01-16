@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ DEPEND=">=virtual/jdk-1.3"
 RDEPEND=">=virtual/jre-1.3"
 LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 x86 ~x86-fbsd"
 IUSE=""
 
 # Would need an old version of commons-collections and this would be the
