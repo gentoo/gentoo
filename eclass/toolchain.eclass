@@ -104,6 +104,7 @@ INCLUDEPATH=${TOOLCHAIN_INCLUDEPATH:-${LIBPATH}/include}
 
 if is_crosscompile ; then
 	BINPATH=${TOOLCHAIN_BINPATH:-${PREFIX}/${CHOST}/${CTARGET}/gcc-bin/${GCC_CONFIG_VER}}
+	HOSTLIBPATH=${PREFIX}/${CHOST}/${CTARGET}/lib/${GCC_CONFIG_VER}
 else
 	BINPATH=${TOOLCHAIN_BINPATH:-${PREFIX}/${CTARGET}/gcc-bin/${GCC_CONFIG_VER}}
 fi
@@ -1699,6 +1700,8 @@ toolchain_src_install() {
 
 	# Now do the fun stripping stuff
 	env RESTRICT="" CHOST=${CHOST} prepstrip "${D}${BINPATH}"
+	is_crosscompile && \
+		env RESTRICT="" CHOST=${CHOST} prepstrip "${D}/${HOSTLIBPATH}"
 	env RESTRICT="" CHOST=${CTARGET} prepstrip "${D}${LIBPATH}"
 	# gcc used to install helper binaries in lib/ but then moved to libexec/
 	[[ -d ${D}${PREFIX}/libexec/gcc ]] && \
@@ -1779,6 +1782,17 @@ gcc_movelibs() {
 	# older versions of gcc did not support --print-multi-os-directory
 	tc_version_is_at_least 3.2 || return 0
 
+	# For non-target libs which are for CHOST and not CTARGET, we want to
+	# move them to the compiler-specific CHOST internal dir.  This is stuff
+	# that you want to link against when building tools rather than building
+	# code to run on the target.
+	if tc_version_is_at_least 5 && is_crosscompile ; then
+		dodir "${HOSTLIBPATH}"
+		mv "${D}"/usr/$(get_libdir)/libcc1* "${D}${HOSTLIBPATH}" || die
+	fi
+
+	# For all the libs that are built for CTARGET, move them into the
+	# compiler-specific CTARGET internal dir.
 	local x multiarg removedirs=""
 	for multiarg in $($(XGCC) -print-multi-lib) ; do
 		multiarg=${multiarg#*;}
