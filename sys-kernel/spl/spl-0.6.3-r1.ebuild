@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -46,7 +46,6 @@ pkg_setup() {
 		KALLSYMS
 		!PAX_KERNEXEC_PLUGIN_METHOD_OR
 		!PAX_SIZE_OVERFLOW
-		!PAX_RANDKSTACK
 		ZLIB_DEFLATE
 		ZLIB_INFLATE
 	"
