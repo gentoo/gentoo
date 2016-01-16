@@ -47,3 +47,8 @@ JAVA_RM_FILES=(
 	org/kohsuke/rngom/parse/compact/CompactSyntaxConstants.java
 	org/kohsuke/rngom/parse/compact/CompactSyntaxTokenManager.java
 )
+
+src_compile() {
+	java-pkg-simple_src_compile
+	java-pkg_addres "${PN}.jar" . -name "*.properties"
+}
