@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (19 Jan 2016)
+# Mask broken package. Exposes badly designed API
+# that can't be transparently used in ghc-7.8 and
+# ghc-7.10, bug #561122
+dev-haskell/extra:0
+
 # Pacho Ramos <pacho@gentoo.org> (16 Jan 2016)
 # Dead for years, not compatible with latest libsigc++ (#569514), it
 # requires either a lot of patching or move to a forked project that tries
