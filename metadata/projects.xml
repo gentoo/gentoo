@@ -2811,6 +2811,24 @@
     </member>
   </project>
   <project>
+    <email>proaudio@gentoo.org</email>
+    <name>Gentoo ProAudio Project</name>
+    <url>https://wiki.gentoo.org/wiki/Project:ProAudio</url>
+    <description>The Gentoo ProAudio Project maintains professional audio applications and related libraries.</description>
+    <member>
+      <email>aballier@gentoo.org</email>
+      <name>Alexis Ballier</name>
+    </member>
+    <member>
+      <email>nativemad@gentoo.org</email>
+      <name>Andreas Schuerch</name>
+    </member>
+    <member>
+      <email>radhermit@gentoo.org</email>
+      <name>Tim Harder</name>
+    </member>
+  </project>
+  <project>
     <email>lang-misc@gentoo.org</email>
     <name>Gentoo Programming Language Support Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Programming</url>
@@ -4319,7 +4337,7 @@
     </member>
     <member>
       <email>nativemad@gentoo.org</email>
-      <name>andreas schuerch</name>
+      <name>Andreas Schuerch</name>
       <role>Developer</role>
     </member>
     <member>
