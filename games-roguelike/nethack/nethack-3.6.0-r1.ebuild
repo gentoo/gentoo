@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/nethack/${PN}-${MY_PV}-src.tgz"
 LICENSE="nethack"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86 ~x86-fbsd"
-IUSE="X"
+IUSE="experimental X"
 
 RDEPEND="sys-libs/ncurses:0=
 	X? (
@@ -52,34 +52,28 @@ src_compile() {
 	append-cflags -I../include -DDLB -DSECURE -DLINUX -DTIMED_DELAY -DVISION_TABLES
 	append-cflags '-DCOMPRESS=\"/bin/gzip\"' '-DCOMPRESS_EXTENSION=\".gz\"'
 	append-cflags "-DHACKDIR=\\\"${HACKDIR}\\\"" "-DVAR_PLAYGROUND=\\\"${STATEDIR}\\\""
-	append-cflags "-DLOCKDIR=\\\"${STATEDIR}\\\"" "-DDEF_PAGER=\\\"${PAGER}\\\""
+	append-cflags "-DDEF_PAGER=\\\"${PAGER}\\\""
 	append-cflags -DSYSCF "-DSYSCF_FILE=\\\"/etc/nethack.sysconf\\\""
 
 	use X && append-cflags -DX11_GRAPHICS -DUSE_XPM
+	use experimental &&
+		append-cflags -DSTATUS_VIA_WINDOWPORT -DSTATUS_HILITES -DSCORE_ON_BOTL
 
-	emake \
-		CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LFLAGS="${LDFLAGS}" \
-		WINTTYLIB="$($(tc-getPKG_CONFIG) --libs ncurses)" \
-		HACKDIR="${HACKDIR}" INSTDIR="${D}/${HACKDIR}" \
-		SHELLDIR="${D}/${BINDIR}" VARDIR="${D}/${STATEDIR}" \
-		nethack recover Guidebook spec_levs
+	makeopts=(
+		CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LFLAGS="${LDFLAGS}"
+		WINTTYLIB="$($(tc-getPKG_CONFIG) --libs ncurses)"
+		HACKDIR="${HACKDIR}" INSTDIR="${D}/${HACKDIR}"
+		SHELLDIR="${D}/${BINDIR}" VARDIR="${D}/${STATEDIR}"
+		)
+
+	emake "${makeopts[@]}" nethack recover Guidebook spec_levs
 
 	# Upstream still has some parallel compilation bugs
-	emake -j1 \
-		CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LFLAGS="${LDFLAGS}" \
-		WINTTYLIB="$($(tc-getPKG_CONFIG) --libs ncurses)" \
-		HACKDIR="${HACKDIR}" INSTDIR="${D}/${HACKDIR}" \
-		SHELLDIR="${D}/${BINDIR}" VARDIR="${D}/${STATEDIR}" \
-		all
+	emake -j1 "${makeopts[@]}" all
 }
 
 src_install() {
-	emake \
-		CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LFLAGS="${LDFLAGS}" \
-		WINTTYLIB="$($(tc-getPKG_CONFIG) --libs ncurses)" \
-		HACKDIR="${HACKDIR}" INSTDIR="${D}/${HACKDIR}" \
-		SHELLDIR="${D}/${BINDIR}" VARDIR="${D}/${STATEDIR}" \
-		install
+	emake "${makeopts[@]}" install
 
 	exeinto "${BINDIR}"
 	newexe util/recover recover-nethack
@@ -93,16 +87,7 @@ src_install() {
 	newins sys/unix/sysconf nethack.sysconf
 
 	insinto /etc/skel
-	newins "${FILESDIR}/${PN}-3.4.3-nethackrc" .nethackrc
-
-	local windowtypes="tty"
-	use X && windowtypes="x11 ${windowtypes}"
-	set -- ${windowtypes}
-	sed -i \
-		-e "s:GENTOO_WINDOWTYPES:${windowtypes}:" \
-		-e "s:GENTOO_DEFWINDOWTYPE:$1:" \
-		"${D}/etc/skel/.nethackrc" \
-		|| die "sed /etc/skel/.nethackrc failed"
+	newins "${FILESDIR}/${P}-nethackrc" .nethackrc
 
 	if use X ; then
 		cd "${S}/win/X11" || die "Failed to enter win/X11 directory"
