@@ -135,6 +135,23 @@ check_compiler() {
 		;;
 		*g++*)
 			ver="$(gcc-version)"
+			if version_is_at_least "5" "${ver}"; then
+				eerror ""
+				eerror "GCC-5 is not yet supported in ROOT-6."
+				eerror "The code may build for you, but will have run-time failures."
+				eerror "See the following bugs:"
+				eerror "https://sft.its.cern.ch/jira/browse/ROOT-7285"
+				eerror "https://sft.its.cern.ch/jira/browse/ROOT-7319"
+				eerror "https://sft.its.cern.ch/jira/browse/ROOT-7654"
+				eerror "https://sft.its.cern.ch/jira/browse/ROOT-7721"
+				eerror "https://sft.its.cern.ch/jira/browse/ROOT-7818"
+				eerror "https://sft.its.cern.ch/jira/browse/ROOT-7895"
+				eerror "https://bugs.gentoo.org/show_bug.cgi?id=564306"
+				eerror ""
+				eerror "Please use GCC-4.9 for now."
+				eerror ""
+				die "gcc-5 is not yet supported"
+			fi
 			cur="$2"
 		;;
 		*icc*|*icpc*)
