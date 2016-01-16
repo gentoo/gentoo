@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (16 Jan 2016)
+# Dead for years, not compatible with latest libsigc++ (#569514), it
+# requires either a lot of patching or move to a forked project that tries
+# to continue it. Removal in a month.
+media-sound/seq24
+
 # James Le Cuirot <chewi@gentoo.org> (14 Jan 2016)
 # Superseded by gnu-classpath. Removal in 30 days.
 dev-java/gjdoc
@@ -490,11 +496,6 @@ net-misc/yaydl
 # care of its security issues long time ago. bug #474388. Removal in a
 # month.
 www-apps/gallery
-
-# Pacho Ramos <pacho@gentoo.org> (05 Jan 2016)
-# Not compatible with latest gif, one of the last consumer of old imlib, bug
-# #486248. Removal in a month.
-app-office/magicpoint
 
 # Pacho Ramos <pacho@gentoo.org> (05 Jan 2016)
 # Doesn't work with current twisted, bug #486810. Removal in a month.

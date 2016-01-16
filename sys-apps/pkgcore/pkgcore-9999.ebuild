@@ -68,7 +68,7 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	insinto /usr/share/zsh/site-functions
-	doins shell/zsh-completion/*
+	doins shell/zsh/completion/*
 }
 
 pkg_postinst() {
