@@ -65,10 +65,6 @@ dev-perl/ExtUtils-Constant
 media-libs/opengtl
 
 # Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
-# Cannot be downloaded either mirrored, bug #561114. Removal in a month
-games-fps/doom3-mitm
-
-# Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
 # Cannot be downloaded either mirrored, bug #561120. Removal in a month
 games-fps/ut2003-bonuspack-cm
 
@@ -379,12 +375,6 @@ app-i18n/scim-canna
 # Pacho Ramos <pacho@gentoo.org> (06 Jan 2016)
 # Fails to build, bug #555840. Removal in a month.
 app-misc/lcd-stuff
-
-# Pacho Ramos <pacho@gentoo.org> (06 Jan 2016)
-# Doesn't build with current kernels, lacks a maintainer to keep it patched
-# for compat with upcoming kernel versions too, bug #557422. Removal in a
-# month.
-app-laptop/nvidiabl
 
 # Pacho Ramos <pacho@gentoo.org> (06 Jan 2016)
 # Upstream dead for ages, doesn't build, bug #558274. Removal in a month.
