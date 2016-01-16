@@ -15,7 +15,7 @@ if [ ${PV} == "9999" ] ; then
 	EGIT_REPO_URI="git://github.com/zfsonlinux/${PN}.git"
 else
 	SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz
-		https://dev.gentoo.org/~ryao/dist/${P}-patches-p1.tar.xz"
+		https://dev.gentoo.org/~ryao/dist/${P}-patches-p2.tar.xz"
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
 fi
 
