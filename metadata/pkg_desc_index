@@ -4067,7 +4067,7 @@ dev-java/jutils 1.0.0-r1: Common utilities for the Java Game Technology Group
 dev-java/jvmstat 3.0: Monitoring APIs and tools for monitoring the performance of the JVM in production environments
 dev-java/jvyaml 0.2.1-r1: Java YAML parser and emitter
 dev-java/jvyamlb 0.2.5: JvYAMLb, YAML processor extracted from JRuby
-dev-java/jython 2.1-r11 2.2.1-r1 2.2.1-r2 2.5.3-r3 2.7.0: An implementation of Python written in Java
+dev-java/jython 2.2.1-r2 2.5.3-r3 2.7.0: An implementation of Python written in Java
 dev-java/jzlib 1.0.7-r1 1.1.1 1.1.3: JZlib is a re-implementation of zlib in pure Java
 dev-java/kryo 1.05 2.21 2.22: Fast, efficient Java serialization and cloning
 dev-java/kunststoff 2.0.2-r1: Kunststoff Look&Feel
@@ -12356,7 +12356,7 @@ media-libs/opengtl 0.9.18: Collection of libraries for graphics transformation a
 media-libs/openh264 1.2_p20141104 1.3.1 1.4.0 1.4.0-r1: Cisco OpenH264 library and Gecko Media Plugin for Mozilla packages
 media-libs/openimageio 1.1.1 1.1.7 1.3.5: A library for reading and writing images
 media-libs/openjpeg 1.5.2 1.5.2-r1 2.0.0 2.0.0-r1 2.1.0 2.1.0-r1: An open-source JPEG 2000 library
-media-libs/opus 1.0.2-r2 1.1 1.1.1: Open versatile codec designed for interactive speech and audio transmission over the internet
+media-libs/opus 1.0.2-r2 1.1 1.1.1 1.1.2: Open versatile codec designed for interactive speech and audio transmission over the internet
 media-libs/opusfile 0.4 0.5 0.6 0.6-r1: A high-level decoding and seeking API for .opus files
 media-libs/oyranos 0.9.4-r2 0.9.5 0.9.5-r1 9999: Colour management system allowing to share various settings across applications and services
 media-libs/phat 0.4.1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
