@@ -14,7 +14,7 @@ if [ ${PV} == "9999" ]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/zfs-${PV}.tar.gz
-		https://dev.gentoo.org/~ryao/dist/zfs-${PV}-patches-p1.tar.xz"
+		https://dev.gentoo.org/~ryao/dist/zfs-${PV}-patches-p2.tar.xz"
 	S="${WORKDIR}/zfs-${PV}"
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
 fi
