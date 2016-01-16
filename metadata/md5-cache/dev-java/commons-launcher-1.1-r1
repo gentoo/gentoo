@@ -4,11 +4,11 @@ DESCRIPTION=Commons-launcher eliminates the need for a batch or shell script to 
 EAPI=0
 HOMEPAGE=http://commons.apache.org/launcher/
 IUSE=elibc_FreeBSD examples doc source elibc_FreeBSD
-KEYWORDS=amd64 ~ppc ppc64 x86 ~x86-fbsd
+KEYWORDS=amd64 ppc64 x86 ~x86-fbsd
 LICENSE=Apache-2.0
 RDEPEND=>=virtual/jre-1.4 dev-java/ant-core >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 SLOT=0
 SRC_URI=mirror://apache/jakarta/commons/launcher/source/commons-launcher-1.1-src.tar.gz
 _eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_unpack:base src_compile:- src_test:- src_install:-
 _eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	d9bd2ddd85a58e470b49ca997e255a4c	java-ant-2	7c5d0c274d390745f5033754a319f515	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	5f1bd1f8baff3ee957cb72c75c3949f2	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=ae4e032d61752ce0c843b541dc73d9c8
+_md5_=2ce9e6041fbb57e7eaecdc4edde9129e
