@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -38,7 +38,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+blksha1 +curl cgi doc emacs gnome-keyring +gpg gtk highlight +iconv mediawiki +nls +pcre +perl +python ppcsha1 tk +threads +webdav xinetd cvs subversion test"
+IUSE="+blksha1 +curl cgi doc emacs gnome-keyring +gpg gtk highlight +iconv mediawiki mediawiki-experimental +nls +pcre +perl +python ppcsha1 tk +threads +webdav xinetd cvs subversion test"
 
 # Common to both DEPEND and RDEPEND
 CDEPEND="
@@ -102,6 +102,7 @@ REQUIRED_USE="
 	cgi? ( perl )
 	cvs? ( perl )
 	mediawiki? ( perl )
+	mediawiki-experimental? ( mediawiki )
 	subversion? ( perl )
 	webdav? ( curl )
 	gtk? ( python )
@@ -227,6 +228,13 @@ src_prepare() {
 	# install mediawiki perl modules also in vendor_dir
 	# hack, needs better upstream solution
 	epatch "${FILESDIR}"/git-1.8.5-mw-vendor.patch
+
+	# add experimental patches to improve mediawiki support
+	# see patches for origin
+	if use mediawiki-experimental ; then
+		epatch "${FILESDIR}"/git-2.7.0-mediawiki-namespaces.patch
+		epatch "${FILESDIR}"/git-2.7.0-mediawiki-subpages.patch
+	fi
 
 	epatch "${FILESDIR}"/git-2.2.0-svn-fe-linking.patch
 
@@ -630,6 +638,7 @@ pkg_postinst() {
 	showpkgdeps git-instaweb \
 		"|| ( www-servers/lighttpd www-servers/apache www-servers/nginx )"
 	echo
+	use mediawiki-experimental && ewarn "Using experimental git-mediawiki patches. The stability of cloned wiki filesystems is not guaranteed."
 }
 
 pkg_postrm() {
