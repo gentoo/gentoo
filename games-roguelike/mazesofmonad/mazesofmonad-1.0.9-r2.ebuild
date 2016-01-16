@@ -57,6 +57,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	ghc-package_pkg_postinst
+	haskell-cabal_pkg_postinst
 	games_pkg_postinst
 }
