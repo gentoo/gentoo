@@ -5,11 +5,6 @@
 		<email>idl0r@gentoo.org</email>
 		<name>Christian Ruppert</name>
 	</maintainer>
-	<maintainer>
-		<email>mrueg@gentoo.org</email>
-		<name>Manuel Rüger</name>
-		<description>CC him on bugs.</description>
-	</maintainer>
 	<upstream>
 		<remote-id type="github">fritzing/fritzing-app</remote-id>
 	</upstream>
