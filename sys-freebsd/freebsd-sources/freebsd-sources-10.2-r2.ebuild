@@ -12,8 +12,14 @@ SLOT="0"
 IUSE="+build-kernel debug dtrace zfs"
 
 # Security Advisory and Errata patches.
-UPSTREAM_PATCHES=( "EN-15:19/kqueue.patch"
-	"EN-15:20/vm.patch" )
+UPSTREAM_PATCHES=( "SA-16:01/sctp.patch"
+	"SA-16:03/linux.patch"
+	"SA-16:04/linux.patch"
+	"SA-16:05/tcp.patch"
+	"EN-15:19/kqueue.patch"
+	"EN-15:20/vm.patch"
+	"EN-16:01/filemon.patch"
+	"EN-16:02/pf-10.2.patch" )
 
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
