@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="http://www.appgate.com/downloads/MindTerm-${PV}/${MY_P}-src.zip"
 
 LICENSE="mindterm"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 COMMON_DEP="dev-java/jzlib:0"
 RDEPEND=">=virtual/jre-1.4

@@ -13,7 +13,7 @@ HOMEPAGE="https://www.gnu.org/software/classpath"
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0.98"
-KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos"
 
 IUSE="alsa debug doc dssi examples gconf +gjdoc gmp gtk gstreamer qt4 xml"
 REQUIRED_USE="doc? ( gjdoc )"

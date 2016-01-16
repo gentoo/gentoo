@@ -13,7 +13,7 @@ SRC_URI="http://search.maven.org/remotecontent?filepath=com/google/${PN}/${PN}/$
 
 LICENSE="Apache-2.0"
 SLOT="18"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 
 CDEPEND="
 	dev-java/javax-inject:0

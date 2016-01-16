@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 EAPI=5
@@ -13,7 +13,7 @@ SRC_URI="mirror://apache/${PN}/${PV}/${P}-src.zip
 	http://repo2.maven.org/maven2/com/adobe/pdf/pcfi/2010.08.09/${ADOBE_FILES}"
 LICENSE="BSD"
 SLOT="1.8"
-KEYWORDS="amd64 x86 ppc ppc64"
+KEYWORDS="amd64 ppc64 x86"
 IUSE=""
 
 CDEPEND="dev-java/icu4j:4

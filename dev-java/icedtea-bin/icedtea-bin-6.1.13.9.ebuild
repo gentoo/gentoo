@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ HOMEPAGE="http://icedtea.classpath.org"
 SRC_URI="doc? ( ${dist}/${PN}-doc-${TARBALL_VERSION}.tar.xz )
 	source? ( ${dist}/${PN}-src-${TARBALL_VERSION}.tar.xz )"
 
-for arch in amd64 ppc x86; do
+for arch in amd64 x86; do
 	SRC_URI+="
 		${arch}? (
 			${dist}/${PN}-core-${TARBALL_VERSION}-${arch}.tar.xz
@@ -24,7 +24,7 @@ done
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="6"
-KEYWORDS="-* amd64 ~ppc x86"
+KEYWORDS="-* amd64 x86"
 
 IUSE="+alsa cjk +cups doc examples +gtk headless-awt nsplugin selinux source webstart"
 REQUIRED_USE="gtk? ( !headless-awt ) nsplugin? ( !headless-awt )"

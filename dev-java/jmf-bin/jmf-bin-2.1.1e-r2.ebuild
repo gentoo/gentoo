@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ S="${WORKDIR}/JMF-${PV}"
 DESCRIPTION="The Java Media Framework API (JMF)"
 SRC_URI="${At}"
 HOMEPAGE="http://www.oracle.com/technetwork/java/javase/tech/index-jsp-140239.html"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 LICENSE="sun-bcla-jmf"
 SLOT="0"

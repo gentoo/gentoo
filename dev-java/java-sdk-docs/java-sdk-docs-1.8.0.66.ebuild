@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ HOMEPAGE="http://download.oracle.com/javase/8/docs/"
 SRC_URI="${ORIG_NAME}"
 LICENSE="oracle-java-documentation-8"
 SLOT="1.8"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc64 x86 ~amd64-linux ~x86-linux"
 RESTRICT="fetch"
 
 DEPEND="app-arch/unzip"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ SRC_URI="http://apache.mirrors.ovh.net/ftp.apache.org/dist/commons/${PN}/source/
 
 LICENSE="Apache-2.0"
 SLOT="2.0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 IUSE="admin"
 
 CDEPEND="dev-java/jisp:2.5
