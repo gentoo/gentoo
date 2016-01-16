@@ -2161,7 +2161,7 @@ app-text/adiff 1.4: wordwise diff
 app-text/agrep 2.04 2.04-r1: agrep is a tool for the fast searching of text allowing for errors in the search pattern
 app-text/aiksaurus 1.2.1: A thesaurus lib, tool and database
 app-text/an 1.2: Very fast anagram generator with dictionary lookup
-app-text/ansifilter 1.7 1.10 1.11: Handles text files containing ANSI terminal escape codes
+app-text/ansifilter 1.11 1.15: Handles text files containing ANSI terminal escape codes
 app-text/antiword 0.37-r1: free MS Word reader
 app-text/antixls 0.3b: It is used to print out an XLS file with minimal formatting, or extracts the data into CSV format
 app-text/apvlv 0.1.5: Alf's PDF Viewer Like Vim
@@ -9711,7 +9711,7 @@ dev-vcs/hg-fast-export 20140328 20140706 20150816: mercurial to git converter us
 dev-vcs/hg-git 0.7.0 0.8.2 0.8.3: push to and pull from a Git repository using Mercurial
 dev-vcs/hgsubversion 1.4 1.8.2 1.8.3 9999: hgsubversion is a Mercurial extension for working with Subversion repositories
 dev-vcs/hgsvn 0.2.3-r1: A set of scripts to work locally on Subversion checkouts using Mercurial
-dev-vcs/hgview 1.7.1-r1 1.8.0 1.8.1 1.8.2: A Mercurial interactive history viewer
+dev-vcs/hgview 1.8.2 1.9.0: A Mercurial interactive history viewer
 dev-vcs/hub 1.12.4 2.2.0-r1 2.2.2: Command-line wrapper for git that makes you better at GitHub
 dev-vcs/kdesvn 1.6.0-r1: A frontend to the subversion vcs
 dev-vcs/mercurial 3.3.2 3.3.3 3.4.2 3.5.2 3.6.2 3.6.3 9999: Scalable distributed SCM
@@ -18204,7 +18204,7 @@ x11-misc/xdg-user-dirs-gtk 0.9 0.10: xdg-user-dirs-gtk integrates xdg-user-dirs 
 x11-misc/xdg-utils 1.1.0_rc2 1.1.0_rc2-r1 1.1.1: Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability
 x11-misc/xdialog 2.3.1: drop-in replacement for cdialog using GTK
 x11-misc/xdiskusage 1.48_p20111016: front end to xdu for viewing disk usage graphically under X11
-x11-misc/xdo 0.3 0.4: Small X utility to perform elementary actions on windows
+x11-misc/xdo 0.3 0.4 0.5: Small X utility to perform elementary actions on windows
 x11-misc/xdock 0.3.0: emulates Window Maker docks (runs in any window manager)
 x11-misc/xdotool 2.20110530.1: Simulate keyboard input and mouse activity, move and resize windows
 x11-misc/xearth 1.1-r1: Xearth sets the X root window to an image of the Earth
