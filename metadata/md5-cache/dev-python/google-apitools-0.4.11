@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=dev-python/httplib2-0.8[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/oauth2client-1.4.8[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/protorpc-0.9.1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/six-1.9.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/google-apputils-0.4.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/python-gflags-2.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
-DESCRIPTION=utilities to make it easier to build client-side tools, especially ones that use Google APIs
+DESCRIPTION=Python library to manipulate Google APIs
 EAPI=5
 HOMEPAGE=https://github.com/google/apitools
 IUSE=python_targets_python2_7
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://github.com/google/apitools/archive/v0.4.11.tar.gz -> google-apitools-0.4.11.tar.gz
 _eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=distutils-r1	4e8ac1ba76ddacd8f7c0289aa586a34c	eutils	d9bd2ddd85a58e470b49ca997e255a4c	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	30887c5e8630bbf27b5cf0fd74564323	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=ac059b27362d86182759b96b06ba2c2b
+_md5_=a173d31f0debefa4abc1ee90d10abac2
