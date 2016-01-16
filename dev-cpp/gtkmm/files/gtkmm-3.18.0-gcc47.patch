@@ -1,0 +1,44 @@
+--- a/gtk/src/menushell.ccg	2015-07-16 21:00:55.000000000 +0200
++++ b/gtk/src/menushell.ccg	2015-12-09 01:03:45.127863899 +0100
+@@ -43,7 +43,7 @@ MenuShell::MenuShell(GtkMenuShell* casti
+ {}
+ 
+ // TODO: Why do we need a custom dtor?
+-MenuShell::~MenuShell()
++MenuShell::~MenuShell() noexcept
+ {}
+ 
+ void MenuShell::accelerate(Window& window)
+--- a/gtk/gtkmm/menushell.cc	2015-09-22 11:41:47.000000000 +0200
++++ b/gtk/gtkmm/menushell.cc	2015-12-09 01:06:27.641701385 +0100
+@@ -54,7 +54,7 @@ MenuShell::MenuShell(GtkMenuShell* casti
+ {}
+ 
+ // TODO: Why do we need a custom dtor?
+-MenuShell::~MenuShell()
++MenuShell::~MenuShell() noexcept
+ {}
+ 
+ void MenuShell::accelerate(Window& window)
+--- a/gtk/src/widget.ccg	2015-07-16 21:00:55.000000000 +0200
++++ b/gtk/src/widget.ccg	2015-12-09 07:36:47.328538621 +0100
+@@ -413,7 +413,7 @@ void Widget_Class::get_preferred_width_f
+     (*base->get_preferred_width_for_height)(self, height, minimum_width, natural_width);
+ }
+ 
+-Widget::~Widget()
++Widget::~Widget() noexcept
+ {}
+ 
+ void Widget::reparent(Widget& new_parent)
+--- a/gtk/gtkmm/widget.cc	2015-09-22 11:44:13.000000000 +0200
++++ b/gtk/gtkmm/widget.cc	2015-12-09 07:39:29.318214641 +0100
+@@ -423,7 +423,7 @@ void Widget_Class::get_preferred_width_f
+     (*base->get_preferred_width_for_height)(self, height, minimum_width, natural_width);
+ }
+ 
+-Widget::~Widget()
++Widget::~Widget() noexcept
+ {}
+ 
+ void Widget::reparent(Widget& new_parent)

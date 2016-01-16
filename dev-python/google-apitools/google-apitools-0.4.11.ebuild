@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 
-DESCRIPTION="utilities to make it easier to build client-side tools, especially ones that use Google APIs"
+DESCRIPTION="Python library to manipulate Google APIs"
 HOMEPAGE="https://github.com/google/apitools"
 SRC_URI="https://github.com/google/apitools/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

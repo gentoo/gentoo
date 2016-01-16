@@ -41,7 +41,7 @@ COMMON_DEPEND="
 	>=dev-libs/libnl-3.2.8:3=
 	>=sys-auth/polkit-0.106
 	net-libs/libndp
-	>=net-libs/libsoup-2.26:2.4=
+	>=net-libs/libsoup-2.40:2.4=
 	net-misc/iputils
 	sys-libs/readline:0
 	>=virtual/libgudev-165:=[${MULTILIB_USEDEP}]
@@ -124,12 +124,13 @@ src_prepare() {
 	# Don't build examples, they are not needed and can cause build failure
 	sed -e '/^\s*examples\s*\\/d' -i Makefile.{am,in} || die
 
+	# core: fix failure to configure routes due to wrong device-route for IPv4 peer-addresses
+	# (from 1.0 branch)
+	epatch "${FILESDIR}"/${P}-vpn-routes.patch
+
 	use vala && vala_src_prepare
-
 	epatch_user # don't remove, users often want custom patches for NM
-
 	eautoreconf
-
 	gnome2_src_prepare
 }
 

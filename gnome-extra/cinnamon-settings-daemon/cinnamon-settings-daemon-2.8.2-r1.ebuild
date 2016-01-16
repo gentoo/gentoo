@@ -29,7 +29,6 @@ RDEPEND="
 	>=media-sound/pulseaudio-0.9.16:0=
 	sys-apps/dbus
 	>=sys-auth/polkit-0.97
-	|| ( >=sys-power/upower-0.9.11:= sys-power/upower-pm-utils )
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-3.9.10:3
 	>=x11-libs/libnotify-0.7.3:0=
@@ -47,6 +46,7 @@ RDEPEND="
 		x11-drivers/xf86-input-wacom
 		x11-libs/libXtst )
 	smartcard? ( >=dev-libs/nss-3.11.2 )
+	|| ( >=sys-power/upower-0.9.11:= sys-power/upower-pm-utils )
 	systemd? ( sys-apps/systemd:0= )
 	!systemd? ( sys-auth/consolekit:0= )
 "

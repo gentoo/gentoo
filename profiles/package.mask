@@ -40,10 +40,6 @@ media-sound/seq24
 # Superseded by gnu-classpath. Removal in 30 days.
 dev-java/gjdoc
 
-# Sergei Trofimovich <slyfox@gentoo.org> (14 Jan 2016)
-# Masked for testing.
->=net-im/openfire-4.0.0
-
 # Michał Górny <mgorny@gentoo.org> (11 Jan 2016)
 # (on behalf of Python team)
 # Masked for testing. python-exec now checks argv[0] to determine
