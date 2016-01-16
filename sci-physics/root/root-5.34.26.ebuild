@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -132,16 +132,19 @@ die_compiler() {
 # $3 - clang++
 # $4 - icc/icpc
 check_compiler() {
-	local ver
+	local cur ver
 	case "$(tc-getCXX)" in
 		*clang++*)
 			ver="$(best_version sys-devel/clang | sed 's:sys-devel/clang-::')"
+			cur="$3"
 		;;
 		*g++*)
 			ver="$(gcc-version)"
+			cur="$2"
 		;;
 		*icc*|*icpc*)
 			ver="$(best_version dev-lang/icc | sed 's:dev-lang/icc-::')"
+			cur="$4"
 		;;
 		*)
 			ewarn "You are using an unsupported compiler."
@@ -149,7 +152,7 @@ check_compiler() {
 			return 0
 		;;
 	esac
-	version_is_at_least "$3" "${ver}" || die_compiler "$1" "$2" "$3" "$4" "${ver}"
+	version_is_at_least "${cur}" "${ver}" || die_compiler "$1" "$2" "$3" "$4" "${ver}"
 }
 
 pkg_setup() {
