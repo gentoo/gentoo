@@ -9615,7 +9615,7 @@ dev-util/stressapptest 1.0.4 1.0.6 1.0.6-r1 1.0.6-r2 1.0.7_p1: Stressful Applica
 dev-util/stubgen 2.08: a member function stub generator for C++
 dev-util/suse-build 2014.09.18 2015.11.05 9999: Script to build SUSE Linux RPMs
 dev-util/synopsis 0.13: General source code documentation tool
-dev-util/sysdig 0.1.92 0.1.98 0.1.104 0.5.1: A system exploration and troubleshooting tool
+dev-util/sysdig 0.1.92 0.1.98 0.1.104 0.5.1 0.6.0: A system exploration and troubleshooting tool
 dev-util/sysprof 1.2.0: System-wide Linux Profiler
 dev-util/systemtap 2.4-r1 2.5 2.9: A linux trace/probe tool
 dev-util/tailor 0.9.35-r1: A tool to migrate changesets between version control systems
@@ -18713,8 +18713,8 @@ x11-wm/windowmaker 0.92.0-r11 0.95.5-r2 0.95.6 0.95.7 9999: The fast and light G
 x11-wm/wm2 4-r1: Small, unconfigurable window manager
 x11-wm/wmfs 201003 99999999: Window Manager From Scratch, A tiling window manager highly configurable
 x11-wm/wmii 3.9.2-r4: A dynamic window manager for X11
-x11-wm/xmonad 0.11-r1 0.11-r3 0.11.1: A tiling window manager
-x11-wm/xmonad-contrib 0.11.2 0.11.4: Third party extensions for xmonad
+x11-wm/xmonad 0.11-r1 0.11-r3 0.11.1 0.12: A tiling window manager
+x11-wm/xmonad-contrib 0.11.2 0.11.4 0.12: Third party extensions for xmonad
 x11-wm/xpra 0.14.27 0.15.6 0.15.7 0.15.8 0.15.9 0.15.10: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.10.2-r1 0.10.6 0.10.6-r1 0.10.7: Extensions, widgets and framework library with session support for the Xfce desktop environment
 xfce-base/garcon 0.2.1 0.5.0-r1 0.5.0-r2: Xfce's freedesktop.org specification compatible menu implementation library
