@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,9 +17,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc examples test"
 
-#RESTRICT="test" 	#missing a required dep frpm portage
+# online tests
+RESTRICT="test"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? (
+		dev-python/httreplay[${PYTHON_USEDEP}]
+		dev-python/nose[${PYTHON_USEDEP}]
+	)"
 
 python_prepare_all() {
 	# Required to avoid file collisions at install
@@ -30,7 +36,9 @@ python_prepare_all() {
 }
 
 python_test() {
-	"${PYTHON}" -m tests || die "Tests failed"
+	nosetests -v \
+		tests.test_api tests.test_streaming \
+		tests.test_cursors tests.test_utils || die
 }
 
 python_compile_all() {

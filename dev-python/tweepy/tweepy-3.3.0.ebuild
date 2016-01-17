@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,6 +22,7 @@ RESTRICT="test" 	#missing in tarball
 DEPEND="
 	dev-python/pip[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/nose[${PYTHON_USEDEP}] )
 	"
 RDEPEND="
 	>=dev-python/requests-2.4.3[${PYTHON_USEDEP}]
@@ -37,7 +38,7 @@ python_prepare_all() {
 }
 
 python_test() {
-	"${PYTHON}" -m tests || die "Tests failed"
+	nosetests -v  -c tests/travis-tests.cfg || die
 }
 
 python_compile_all() {
