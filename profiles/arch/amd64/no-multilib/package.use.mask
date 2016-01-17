@@ -16,3 +16,7 @@ media-libs/opencv ipp
 # Tomas Chvatal <scarabeus@gentoo.org> (13 Nov 2014)
 # The apulse is 32b used there only
 net-im/skype apulse
+
+# Tim Harder <radhermit@gentoo.org> (17 Jan 2016)
+# Skype requires multilib support
+net-im/bitlbee skype
