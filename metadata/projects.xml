@@ -450,6 +450,16 @@
     </member>
   </project>
   <project>
+    <email>cvs-utils@gentoo.org</email>
+    <name>Gentoo CVS Project</name>
+    <url>https://wiki.gentoo.org/wiki/Project:CVS</url>
+    <description>The Gentoo CVS Project maintains CVS (the version control system) and related tools.</description>
+    <member>
+      <email>robbat2@gentoo.org</email>
+      <name>Robin Johnson</name>
+    </member>
+  </project>
+  <project>
     <email>catalyst@gentoo.org</email>
     <name>Catalyst</name>
     <url>https://wiki.gentoo.org/wiki/Project:Catalyst</url>
@@ -1899,6 +1909,16 @@
     <name>Gentoo Linux Kernel Security Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Kernel_Security</url>
     <description>Gentoo Linux Kernel Security Project handles patching our many kernel sources and informing our users about global kernel security status.</description>
+  </project>
+  <project>
+    <email>ldap-bugs@gentoo.org</email>
+    <name>Gentoo LDAP Project</name>
+    <url>https://wiki.gentoo.org/wiki/Project:LDAP</url>
+    <description>The Gentoo LDAP Project maintains LDAP-related packages.</description>
+    <member>
+      <email>robbat2@gentoo.org</email>
+      <name>Robin Johnson</name>
+    </member>
   </project>
   <project>
     <email>lxde@gentoo.org</email>
@@ -3852,6 +3872,36 @@
     <member is-lead="1">
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
+    </member>
+  </project>
+  <project>
+    <email>sysadmin@gentoo.org</email>
+    <name>Gentoo Sysadmin Project</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Sysadmin</url>
+    <description>The Gentoo Sysadmin Project maintains various system administration packages.</description>
+    <member>
+      <email>chutzpah@gentoo.org</email>
+      <name>Patrick McLean</name>
+    </member>
+    <member>
+      <email>dev-zero@gentoo.org</email>
+      <name>Tiziano Müller</name>
+    </member>
+    <member>
+      <email>flameeyes@gentoo.org</email>
+      <name>Diego Elio Pettenò</name>
+    </member>
+    <member>
+      <email>idl0r@gentoo.org</email>
+      <name>Christian Ruppert</name>
+    </member>
+    <member>
+      <email>robbat2@gentoo.org</email>
+      <name>Robin Johnson</name>
+    </member>
+    <member>
+      <email>tampakrap@gmail.com</email>
+      <name>Theo Chatzimichos</name>
     </member>
   </project>
   <project>
