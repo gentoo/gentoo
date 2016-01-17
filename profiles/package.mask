@@ -308,10 +308,6 @@ dev-ada/florist
 app-admin/usermin
 
 # Pacho Ramos <pacho@gentoo.org> (06 Jan 2016)
-# Unmaintained, cannot be downloaded, bug #537582. Removal in a month.
-sys-block/lsiutil
-
-# Pacho Ramos <pacho@gentoo.org> (06 Jan 2016)
 # Obsolete versions, updated ones living in Sabayon overlay, bug #538142.
 # Removal in a month.
 app-admin/rigo
