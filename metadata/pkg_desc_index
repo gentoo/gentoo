@@ -17478,7 +17478,7 @@ www-apps/lxr 0.9.8-r1: general purpose source code indexer and cross-referener w
 www-apps/mantisbt 1.2.15-r1: PHP/MySQL/Web based bugtracking system
 www-apps/mediawiki 1.23.10 1.24.3 1.25.2: The MediaWiki wiki web application (as used on wikipedia.org)
 www-apps/metadot 6.1.6 6.4.5.4: Metadot is a CMS with file, page and link management, and collaboration features
-www-apps/mirmon 1.38-r4: Simple webapp to monitor the status of mirrors
+www-apps/mirmon 1.38-r4 2.10: Simple webapp to monitor the status of mirrors
 www-apps/mod_survey 3.2.5: XML-defined web questionnaires as a plug-in module using Apache
 www-apps/moinmoin 1.9.7-r1: Python WikiClone
 www-apps/moodle 2.7.12 2.8.10 2.9.4 3.0.2: The Moodle Course Management System
