@@ -5,6 +5,7 @@
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1 vcs-snapshot
 
