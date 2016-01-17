@@ -3,11 +3,11 @@ DEPEND=www-apache/mod_perl dev-lang/perl:=[-build(-)]
 DESCRIPTION=Perl module for Apache::Reload
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Apache-Reload/
-KEYWORDS=alpha amd64 ~arm ~hppa ia64 ppc ~ppc64 sparc x86
+KEYWORDS=alpha amd64 ~arm ~hppa ia64 ppc ppc64 sparc x86
 LICENSE=Apache-2.0
 RDEPEND=www-apache/mod_perl dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SH/SHAY/Apache-Reload-0.13.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
-_md5_=02755f34ee1ec57acfdb4d4e338c3951
+_md5_=7c1a9879bb7be5503207aa290100fab9
