@@ -2802,6 +2802,7 @@ dev-vcs/git:gpg - Pull in gnupg for signing -- without gnupg, attempts at signin
 dev-vcs/git:gtk - Include the gitview contrib tool
 dev-vcs/git:highlight - GitWeb support for app-text/highlight
 dev-vcs/git:mediawiki - Support pulling and pushing from MediaWiki
+dev-vcs/git:mediawiki-experimental - Add experimental patches for improved MediaWiki support
 dev-vcs/git:ppcsha1 - Make use of a bundled routine that is optimized for the PPC arch
 dev-vcs/git:subversion - Include git-svn for dev-vcs/subversion support
 dev-vcs/git:tk - Include the 'gitk' and 'git gui' tools
@@ -5334,7 +5335,6 @@ net-ftp/proftpd:linguas_ru_RU - Language support for ru_RU
 net-ftp/proftpd:log_forensic - Enable support for the mod_log_forensic module, log only suspicious actions.
 net-ftp/proftpd:memcache - Enable support for the mod_memcache module, for using memcached servers
 net-ftp/proftpd:msg - Enable support for the mod_msg module, allows system users to send messages to connected clients via the ftpdctl program.
-net-ftp/proftpd:openssl - Enable dev-libs/openssl support
 net-ftp/proftpd:qos - Enable support for the mod_qos module
 net-ftp/proftpd:ratio - Enable support for the mod_ratio module
 net-ftp/proftpd:readme - Enable support for the mod_readme module

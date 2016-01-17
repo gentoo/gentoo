@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/unzip
+DESCRIPTION=LSI Logic Fusion MPT Command Line Interface management tool
+EAPI=5
+HOMEPAGE=http://www.avagotech.com/
+KEYWORDS=~amd64 ~ia64 ~x86
+LICENSE=LSI
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=http://docs.avagotech.com/docs-and-downloads/legacy-host-bus-adapters/legacy-host-bus-adapters-common-files/LSIUtil_1-62.zip
+_eclass_exported_funcs=src_install:-
+_md5_=7999c9f9068a58abf9bc91c4c5176fd7
