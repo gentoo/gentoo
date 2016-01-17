@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,11 +17,17 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="openmp"
 
-DEPEND=">=dev-libs/boost-1.41.0-r3"
-RDEPEND="${DEPEND}"
+RDEPEND="
+	!sci-biology/allpaths
+	!sci-biology/allpathslg"
+DEPEND="
+	${RDEPEND}
+	dev-libs/boost"
 
 DOCS=( "${DISTDIR}/VAAL_manual.doc" )
-PATCHES=( "${FILESDIR}/${P}_remove-namespace-std.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}_remove-namespace-std.patch"
+)
 
 src_prepare() {
 	sed \
