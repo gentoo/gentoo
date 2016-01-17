@@ -4346,6 +4346,20 @@
     </member>
   </project>
   <project>
+    <email>wxwidgets@gentoo.org</email>
+    <name>Gentoo wxWidgets Project</name>
+    <url>https://wiki.gentoo.org/wiki/Project:WxWidgets</url>
+    <description>The Gentoo wxWidgets Project maintains wxGTK and wxPython related packages and applications.</description>
+    <member>
+      <email>leio@gentoo.org</email>
+      <name>Mart Raudsepp</name>
+    </member>
+    <member>
+      <email>rhill@gentoo.org</email>
+      <name>Ryan Hill</name>
+    </member>
+  </project>
+  <project>
     <email>x11@gentoo.org</email>
     <name>X11</name>
     <url>https://wiki.gentoo.org/wiki/Project:X11</url>
