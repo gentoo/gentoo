@@ -3262,12 +3262,17 @@ kde-apps/kaccessible:speechd - Enable support for the speech-dispatcher speech s
 kde-apps/kalzium:editor - Enable the embedded molecule editor/viewer
 kde-apps/kalzium:solver - Enable the equation solver
 kde-apps/kate:addons - Build and install additional plugins
+kde-apps/kde-apps-meta:pim - Pull in KDE PIM suite
+kde-apps/kde-apps-meta:sdk - Pull in developer-specific meta-packages
+kde-apps/kde-meta:kdepim - Pull in KDE PIM
+kde-apps/kde-meta:sdk - Pull in developer-specific meta-packages
 kde-apps/kdeadmin-meta:cron - Installs KDE application for virtual/cron configuration
 kde-apps/kdeartwork-kscreensaver:eigen - Enable various arithmetic screensavers which use Eigen2 for computations.
 kde-apps/kdeartwork-kscreensaver:kexiv2 - Enable image rotation based on exif tags with libkexiv2.
 kde-apps/kdebase-data:wallpapers - Install the KDE wallpapers
 kde-apps/kdebase-kioslaves:sftp - Enable SFTP protocol support using net-libs/libssh
 kde-apps/kdebase-meta:display-manager - Pull in a graphical display manager
+kde-apps/kdebase-meta:minimal - Disable install of various KDE SC 4 based packages
 kde-apps/kdebase-meta:wallpapers - Install the KDE wallpapers
 kde-apps/kdebase-runtime-meta:crash-reporter - Builds a gui tool to submit crash information to the upstream backtracker
 kde-apps/kdebase-runtime-meta:minimal - Install a Plasma 5 compatible subset of the package
@@ -3330,8 +3335,6 @@ kde-apps/okular:ebook - Add E-Book support
 kde-apps/okular:kde - Enable kactivities support
 kde-apps/okular:mobi - Add mobipocket support
 kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
-kde-base/kde-meta:kdepim - Pull in KDE PIM
-kde-base/kde-meta:sdk - Pull in developer-specific meta-packages
 kde-base/kdebase-startkde:wallpapers - Install the KDE wallpapers
 kde-base/kdelibs:opengl - Enable OpenGL support for Plasma (GLApplet)
 kde-base/kdeplasma-addons:attica - Enable support for dev-libs/libattica

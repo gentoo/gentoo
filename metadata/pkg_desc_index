@@ -10926,10 +10926,12 @@ kde-apps/kcmshell 4.14.3 15.08.3: Utility to host KDE control modules independen
 kde-apps/kcolorchooser 4.14.3 15.08.3: KDE color selector/editor
 kde-apps/kcontrol 4.14.3 15.08.3: The KDE Control Center
 kde-apps/kcron 4.14.3 15.08.3: KDE Task Scheduler
+kde-apps/kde-apps-meta 15.08.3-r1: Meta package for the KDE Applications collection
 kde-apps/kde-base-artwork 4.14.3 15.08.3: KDE base artwork
 kde-apps/kde-dev-scripts 4.14.3 15.08.3-r1: KDE Development Scripts
 kde-apps/kde-dev-utils 4.14.3 15.08.3: KDE Development Utilities
 kde-apps/kde-l10n 15.08.3: KDE internationalization package
+kde-apps/kde-meta 4.14.3 4.14.3-r1 15.08.3: Merge this to pull in all KDE Plasma and Applications packages
 kde-apps/kde-wallpapers 4.14.3 15.08.3 15.08.3-r1: KDE wallpapers
 kde-apps/kde4-l10n 4.14.3 4.14.3-r1 15.08.3-r1: KDE internationalization package
 kde-apps/kdeaccessibility-meta 4.14.3 15.08.3: kdeaccessibility - merge this to pull in all kdeaccessiblity-derived packages
@@ -10948,7 +10950,7 @@ kde-apps/kdebase-desktoptheme 4.14.3 15.08.3: Oxygen KDE4 desktop theme
 kde-apps/kdebase-kioslaves 4.14.3 15.08.3: KDE VFS framework - kioslaves present a filesystem-like view of arbitrary data
 kde-apps/kdebase-menu 4.14.3 15.08.3: KDE Menu query tool
 kde-apps/kdebase-menu-icons 4.14.3 15.08.3: KDE menu icons
-kde-apps/kdebase-meta 4.14.3 4.14.3-r2: Merge this to pull in all kdebase-derived packages
+kde-apps/kdebase-meta 4.14.3 4.14.3-r2 15.08.3-r1: Transitional package to pull in plasma-meta plus basic applications
 kde-apps/kdebase-runtime-meta 4.14.3 15.08.3: Merge this to pull in all kdebase-runtime-derived packages
 kde-apps/kdebugdialog 4.14.3 15.08.3: KDE: A dialog box for setting preferences for debug output
 kde-apps/kdeedu-meta 4.14.3: KDE educational apps - merge this to pull in all kdeedu-derived packages
@@ -10957,7 +10959,7 @@ kde-apps/kdegraphics-meta 4.14.3 15.08.3: kdegraphics - merge this to pull in al
 kde-apps/kdegraphics-mobipocket 4.14.3 15.08.3: Library to support mobipocket ebooks
 kde-apps/kdemultimedia-meta 4.14.3 15.08.3: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
 kde-apps/kdenetwork-filesharing 4.14.3 15.08.3: kcontrol filesharing config module for SMB
-kde-apps/kdenetwork-meta 4.14.3: kdenetwork - merge this to pull in all kdenetwork-derived packages
+kde-apps/kdenetwork-meta 4.14.3 15.08.3-r1: kdenetwork - merge this to pull in all kdenetwork-derived packages
 kde-apps/kdenlive 0.9.8 0.9.10 15.08.3-r1 15.12.0-r1: Non-linear video editing suite by KDE
 kde-apps/kdepasswd 4.14.3 15.08.3: KDE GUI for passwd
 kde-apps/kdepim-common-libs 4.14.8 4.14.10: Common libraries for KDE PIM apps
@@ -11134,7 +11136,6 @@ kde-base/katepart 4.14.3: KDE Editor KPart
 kde-base/kcheckpass 4.11.19 4.11.22-r1: A simple password checker, used by any software in need of user authentication
 kde-base/kcminit 4.11.19 4.11.22: KCMInit - runs startups initialization for Control Modules
 kde-base/kde-env 4.14.3: Environment setting required for all KDE4 apps to run
-kde-base/kde-meta 4.14.3 4.14.3-r1: KDE - merge this to pull in all split kde-base/* packages
 kde-base/kdebase-cursors 4.11.19 4.11.22: oxygen cursors from kdebase
 kde-base/kdebase-pam 9: pam.d files used by several KDE components
 kde-base/kdebase-startkde 4.11.19 4.11.22: Startkde script, which starts a complete KDE session, and associated scripts
