@@ -237,6 +237,7 @@ src_prepare() {
 	if use mediawiki-experimental ; then
 		epatch "${FILESDIR}"/git-2.7.0-mediawiki-namespaces.patch
 		epatch "${FILESDIR}"/git-2.7.0-mediawiki-subpages.patch
+		epatch "${FILESDIR}"/git-2.7.0-mediawiki-500pages.patch
 	fi
 
 	epatch "${FILESDIR}"/git-2.2.0-svn-fe-linking.patch
