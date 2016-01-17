@@ -1,0 +1,20 @@
+--- ffmpeg/linux_arm.sh.orig	2016-01-17 09:30:24.000000000 +0800
++++ ffmpeg/linux_arm.sh	2016-01-17 09:31:25.660011140 +0800
+@@ -76,7 +76,7 @@
+ ./configure --target-os=linux \
+     --prefix=./linux/armv6 \
+     ${GENERAL} \
+-    --extra-cflags=" -O3 -fasm -Wno-psabi -fno-short-enums -fno-strict-aliasing -finline-limit=300 -mfloat-abi=softfp -mfpu=vfp -marm -march=armv6" \
++    --extra-cflags=" -O2 -fasm -Wno-psabi -fno-short-enums -fno-strict-aliasing -finline-limit=300 -mfloat-abi=softfp -mfpu=vfp -marm -march=armv6" \
+     --disable-shared \
+     --enable-static \
+     --enable-zlib \
+@@ -100,7 +100,7 @@
+ ./configure --target-os=linux \
+     --prefix=./linux/armv7 \
+     ${GENERAL} \
+-    --extra-cflags=" -O3 -fasm -Wno-psabi -fno-short-enums -fno-strict-aliasing -finline-limit=300 -mfloat-abi=softfp -mfpu=neon -marm -march=armv7-a" \
++    --extra-cflags=" -O2 -fasm -Wno-psabi -fno-short-enums -fno-strict-aliasing -finline-limit=300 -mfloat-abi=softfp -mfpu=neon -marm -march=armv7-a" \
+     --disable-shared \
+     --enable-static \
+     --enable-zlib \

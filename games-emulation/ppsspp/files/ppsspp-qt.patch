@@ -1,0 +1,11 @@
+--- Qt/Settings.pri.orig	2016-01-04 21:37:36.600078151 +0800
++++ Qt/Settings.pri	2016-01-04 21:37:57.430078511 +0800
+@@ -64,7 +64,7 @@
+ 	else: QMAKE_CXXFLAGS += -std=c++11
+ 	QMAKE_CFLAGS_RELEASE ~= s/-O.*/
+ 	QMAKE_CXXFLAGS_RELEASE ~= s/-O.*/
+-	QMAKE_ALLFLAGS_RELEASE += -O3 -ffast-math
++	QMAKE_ALLFLAGS_RELEASE += -O2 -ffast-math
+ }
+ 
+ contains(QT_CONFIG, opengles.) {
