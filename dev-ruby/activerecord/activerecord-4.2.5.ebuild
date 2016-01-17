@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 # this is not null so that the dependencies will actually be filled
 RUBY_FAKEGEM_TASK_TEST="test"
@@ -47,7 +47,7 @@ all_ruby_prepare() {
 	# Remove items from the common Gemfile that we don't need for this
 	# test run. This also requires handling some gemspecs.
 	rm ../Gemfile.lock || die
-	sed -i -e "/\(uglifier\|system_timer\|sdoc\|w3c_validators\|pg\|jquery-rails\|'mysql'\|journey\|ruby-prof\|stackprof\|benchmark-ips\|kindlerb\|turbolinks\|coffee-rails\|debugger\|redcarpet\|minitest\|sprockets\|stackprof\)/ s:^:#:" \
+	sed -i -e "/\(uglifier\|system_timer\|sdoc\|w3c_validators\|pg\|jquery-rails\|execjs\|'mysql'\|journey\|ruby-prof\|stackprof\|benchmark-ips\|kindlerb\|turbolinks\|coffee-rails\|debugger\|redcarpet\|minitest\|sprockets\|stackprof\)/ s:^:#:" \
 		-e '/:job/,/end/ s:^:#:' \
 		-e '/group :doc/,/^end/ s:^:#:' ../Gemfile || die
 	sed -i -e '/rack-ssl/d' -e 's/~> 3.4/>= 3.4/' ../railties/railties.gemspec || die
