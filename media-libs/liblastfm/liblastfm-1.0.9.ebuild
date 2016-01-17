@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/lastfm/liblastfm"
 SRC_URI="https://github.com/lastfm/liblastfm/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
-KEYWORDS="amd64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 SLOT="0/0"
 IUSE="fingerprint test +qt4 qt5"
 
