@@ -33,9 +33,9 @@ DEPEND="
 		dev-qt/qtwidgets:5
 		dev-qt/qtxml:5
 	)
-	dev-libs/boost
+	dev-libs/boost:=
 	dev-cpp/muParser
-	media-libs/freetype"
+	media-libs/freetype:2"
 
 RDEPEND="${DEPEND}"
 S="${WORKDIR}/LibreCAD-${PV}"
