@@ -15,7 +15,7 @@ SRC_URI="http://www.netlib.org/blas/blast-forum/${MyPN}.tgz"
 SLOT="0"
 LICENSE="public-domain"
 IUSE=""
-KEYWORDS="alpha amd64 ~hppa ~ppc ~ppc64 ~s390 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="alpha amd64 ~hppa ppc ~ppc64 ~s390 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos"
 
 RDEPEND="
 	virtual/blas
