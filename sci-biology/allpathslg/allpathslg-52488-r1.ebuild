@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic
+inherit autotools flag-o-matic
 
 DESCRIPTION="De novo assembly of whole-genome shotgun microreads"
 # see also http://www.broadinstitute.org/software/allpaths-lg/blog/?page_id=12
@@ -16,13 +16,17 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="openmp"
 
-DEPEND="
-	dev-libs/boost
+RDEPEND="
 	!sci-biology/allpaths
 	!sci-biology/vaal"
-RDEPEND=""
+DEPEND="
+	${RDEPEND}
+	dev-libs/boost"
 
-PATCHES=("${FILESDIR}/${P}_fix-buildsystem.patch" "${FILESDIR}/${P}_remove-namespace-std.patch")
+PATCHES=(
+	"${FILESDIR}/${P}_fix-buildsystem.patch"
+	"${FILESDIR}/${P}_remove-namespace-std.patch"
+)
 
 pkg_pretend() {
 	# as of release 44849, GCC 4.7.0 (or higher) is required
