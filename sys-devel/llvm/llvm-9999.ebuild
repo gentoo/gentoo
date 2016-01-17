@@ -101,18 +101,6 @@ pkg_pretend() {
 
 	local CHECKREQS_DISK_BUILD=${build_size}M
 	check-reqs_pkg_pretend
-
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		echo 'int main() {return 0;}' > "${T}"/test.cxx || die
-		ebegin "Trying to build a C++11 test program"
-		if ! $(tc-getCXX) -std=c++11 -o /dev/null "${T}"/test.cxx; then
-			eerror "LLVM-${PV} requires C++11-capable C++ compiler. Your current compiler"
-			eerror "does not seem to support -std=c++11 option. Please upgrade your compiler"
-			eerror "to gcc-4.7 or an equivalent version supporting C++11."
-			die "Currently active compiler does not support -std=c++11"
-		fi
-		eend ${?}
-	fi
 }
 
 pkg_setup() {
