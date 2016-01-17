@@ -11,7 +11,7 @@ HOMEPAGE="http://www.ampache.org/"
 SRC_URI="https://github.com/ampache/ampache/archive/${PV}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="aac flac mp3 ogg transcode"
 
 RDEPEND="dev-lang/php[gd,hash,iconv,mysql,pdo,session,unicode,xml,zlib]
