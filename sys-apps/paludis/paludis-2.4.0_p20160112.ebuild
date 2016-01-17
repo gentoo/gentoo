@@ -4,21 +4,20 @@
 
 EAPI=5
 
-EGIT_REPO_URI='git://git.exherbo.org/paludis/paludis.git'
 PYTHON_COMPAT=( python2_7 )
 # matching profile defaults for now
 RUBY_VER=2.0
 
-inherit autotools bash-completion-r1 eutils git-r3 python-single-r1 user
+inherit bash-completion-r1 eutils python-single-r1 user
 
 DESCRIPTION="paludis, the other package mangler"
 HOMEPAGE="http://paludis.exherbo.org/"
-SRC_URI=""
+SRC_URI="http://dev.gentoo.org/~mgorny/dist/${P}.tar.xz"
 
 IUSE="doc pbins pink python ruby search-index test +xml"
 LICENSE="GPL-2 vim"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
 COMMON_DEPEND="
 	>=app-admin/eselect-1.2.13
@@ -34,6 +33,7 @@ COMMON_DEPEND="
 	xml? ( >=dev-libs/libxml2-2.6 )"
 
 DEPEND="${COMMON_DEPEND}
+	app-arch/xz-utils
 	>=app-text/asciidoc-8.6.3
 	app-text/htmltidy
 	app-text/xmlto
@@ -67,6 +67,7 @@ pkg_pretend() {
 			fi
 		fi
 	fi
+
 }
 
 pkg_setup() {
@@ -81,8 +82,6 @@ src_prepare() {
 	# https://bugs.gentoo.org/show_bug.cgi?id=439372#c2
 	sed -i -e "1s/ruby/&${RUBY_VER/./}/" ruby/demos/*.rb || die
 
-	./autotools_prepare.bash || die
-	eautoreconf
 	epatch_user
 }
 
