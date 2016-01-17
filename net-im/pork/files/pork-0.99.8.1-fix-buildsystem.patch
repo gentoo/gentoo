@@ -1,0 +1,101 @@
+Fix buildsystem to explicitly compile with -std=gnu89 to avoid
+differencs in inline semantics introduced in GCC5.
+https://bugs.gentoo.org/show_bug.cgi?id=570598
+
+Additionally, fix QA issues caused by implicit declarations, such as:
+* QA Notice: Package triggers severe warnings which indicate that it
+*            may exhibit random runtime failures.
+* pork_inet.c:69:8: warning: implicit declaration of function ‘vasprintf’ [-Wimplicit-function-declaration]
+
+--- pork-0.99.8.1/configure.ac
++++ pork-0.99.8.1/configure.ac
+@@ -114,6 +114,8 @@
+ 
+ AC_CHECK_LIB(ncurses, resizeterm, AC_DEFINE(HAVE_RESIZETERM, 1, [Define to 1 if you have the 'resizeterm' function in -lncurses.]))
+ 
++AC_SEARCH_LIBS(stdscr, tinfo)
++
+ AC_CHECK_TYPE(u_int32_t, uint32_t)
+ if test "$ac_cv_type_u_int32_t" = "no"; then
+ 	AC_CHECK_TYPE(uint32_t, unsigned int)
+--- pork-0.99.8.1/Makefile.am
++++ pork-0.99.8.1/Makefile.am
+@@ -1,3 +1,5 @@
++AM_CFLAGS = -std=gnu89
++
+ SUBDIRS = \
+ 	src			\
+ 	doc			\
+--- pork-0.99.8.1/src/Makefile.am
++++ pork-0.99.8.1/src/Makefile.am
+@@ -6,7 +6,7 @@
+ endif
+ 
+ 
+-AM_CFLAGS = -funsigned-char -Imissing -Wall -Iprotocols -fPIC
++AM_CFLAGS = -funsigned-char -Imissing -Wall -Iprotocols -fPIC -std=gnu89
+ AM_CFLAGS += -DHELP_PATH=\"$(pkgdatadir)/help\" -DSYSTEM_PORKRC=\"$(pkgdatadir)/porkrc\"
+ AM_CFLAGS += $(PERL_CFLAGS) $(DEBUG_CFLAGS)
+ 
+--- pork-0.99.8.1/src/missing/Makefile.am
++++ pork-0.99.8.1/src/missing/Makefile.am
+@@ -1,5 +1,5 @@
+ INCLUDES = -I../../src
+-AM_CFLAGS = $(DEBUG_CFLAGS) $(PERL_CFLAGS)
++AM_CFLAGS = $(DEBUG_CFLAGS) $(PERL_CFLAGS) -std=gnu89
+ 
+ noinst_LIBRARIES = libmissing.a
+ 
+--- pork-0.99.8.1/src/pork_inet.c
++++ pork-0.99.8.1/src/pork_inet.c
+@@ -9,8 +9,9 @@
+ 
+ #include <config.h>
+ 
+-#include <unistd.h>
++#define _GNU_SOURCE 1
+ #include <stdio.h>
++#include <unistd.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <errno.h>
+--- pork-0.99.8.1/src/pork_screen_io.c
++++ pork-0.99.8.1/src/pork_screen_io.c
+@@ -14,6 +14,8 @@
+ 
+ #include <config.h>
+ 
++#define _GNU_SOURCE 1
++#include <stdio.h>
+ #include <unistd.h>
+ #include <ncurses.h>
+ #include <stdlib.h>
+--- pork-0.99.8.1/src/protocols/aim/Makefile.am
++++ pork-0.99.8.1/src/protocols/aim/Makefile.am
+@@ -1,5 +1,5 @@
+ INCLUDES = -I. -I.. -I../.. -I../../.. -I../../missing -Ilibfaim
+-AM_CFLAGS = $(DEBUG_CFLAGS) $(PERL_CFLAGS)
++AM_CFLAGS = $(DEBUG_CFLAGS) $(PERL_CFLAGS) -std=gnu89
+ 
+ noinst_LIBRARIES = libaim.a
+ 
+--- pork-0.99.8.1/src/protocols/irc/Makefile.am
++++ pork-0.99.8.1/src/protocols/irc/Makefile.am
+@@ -1,6 +1,6 @@
+ INCLUDES = -I. -I.. -I../.. -I../../.. -I../../missing
+ 
+-AM_CFLAGS = $(DEBUG_CFLAGS) $(PERL_CFLAGS)
++AM_CFLAGS = $(DEBUG_CFLAGS) $(PERL_CFLAGS) -std=gnu89
+ 
+ noinst_LIBRARIES = libirc.a
+ 
+--- pork-0.99.8.1/src/protocols/Makefile.am
++++ pork-0.99.8.1/src/protocols/Makefile.am
+@@ -3,6 +3,6 @@
+ endif
+ 
+ INCLUDES = -I. -I.. -I../.. -I../missing
+-AM_CFLAGS = $(DEBUG_CFLAGS) $(PERL_CFLAGS)
++AM_CFLAGS = $(DEBUG_CFLAGS) $(PERL_CFLAGS) -std=gnu89
+ 
+ SUBDIRS = $(irc_dir) aim

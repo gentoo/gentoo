@@ -31,6 +31,7 @@
     <flag name="gtk">Include the gitview contrib tool</flag>
     <flag name="highlight">GitWeb support for app-text/highlight</flag>
     <flag name="mediawiki">Support pulling and pushing from MediaWiki</flag>
+    <flag name="mediawiki-experimental">Add experimental patches for improved MediaWiki support</flag>
     <flag name="ppcsha1">Make use of a bundled routine that is optimized for the PPC arch</flag>
     <flag name="subversion">Include git-svn for <pkg>dev-vcs/subversion</pkg> support</flag>
     <flag name="tk">Include the 'gitk' and 'git gui' tools</flag>

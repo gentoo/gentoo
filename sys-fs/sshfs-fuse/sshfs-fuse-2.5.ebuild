@@ -1,17 +1,16 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="4"
 
 DESCRIPTION="Fuse-filesystem utilizing the sftp service"
-SRC_URI="mirror://sourceforge/fuse/${P}.tar.gz"
-HOMEPAGE="http://fuse.sourceforge.net/sshfs.html"
+HOMEPAGE="https://github.com/libfuse/sshfs"
+SRC_URI="https://github.com/libfuse/sshfs/releases/download/sshfs-${PV//./_}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="amd64 arm hppa ~ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
 SLOT="0"
-IUSE=""
 
 CDEPEND=">=sys-fs/fuse-2.6.0_pre3
 	>=dev-libs/glib-2.4.2"

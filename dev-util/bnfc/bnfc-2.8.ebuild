@@ -38,3 +38,7 @@ DEPEND="${RDEPEND}
 "
 
 S="${WORKDIR}/${MY_P}"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-alex-3.1.6.patch
+}

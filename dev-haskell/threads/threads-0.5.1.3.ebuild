@@ -24,7 +24,12 @@ RDEPEND=">=dev-haskell/stm-2.1:=[profile?] <dev-haskell/stm-2.5:=[profile?]
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.9.2
 	test? ( >=dev-haskell/concurrent-extra-0.5.1 <dev-haskell/concurrent-extra-0.8
-		>=dev-haskell/hunit-1.2.2 <dev-haskell/hunit-1.3
+		>=dev-haskell/hunit-1.2.2
 		>=dev-haskell/test-framework-0.2.4 <dev-haskell/test-framework-0.9
 		>=dev-haskell/test-framework-hunit-0.2.4 <dev-haskell/test-framework-hunit-0.4 )
 "
+
+src_prepare() {
+	cabal_chdeps \
+		'HUnit                >= 1.2.2 && < 1.3' 'HUnit                >= 1.2.2'
+}

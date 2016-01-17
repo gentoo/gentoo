@@ -31,6 +31,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-0.13.2.3-ghc-7.10.patch
+}
+
 src_configure() {
 	# ghc DCE bug: https://ghc.haskell.org/trac/ghc/ticket/9155
 	[[ $(ghc-version) == 7.8.2 ]] && replace-hcflags -O[2-9] -O1

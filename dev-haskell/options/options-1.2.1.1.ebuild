@@ -18,6 +18,8 @@ SLOT="0/${PV}"
 KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
 IUSE=""
 
+RESTRICT=test # circular depends
+
 RDEPEND=">=dev-haskell/monads-tf-0.1:=[profile?]
 	>=dev-haskell/transformers-0.2:=[profile?]
 	>=dev-lang/ghc-7.4.1:=

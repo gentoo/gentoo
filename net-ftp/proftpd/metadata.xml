@@ -42,7 +42,6 @@ server.</longdescription>
 		<flag name="log_forensic">Enable support for the mod_log_forensic module, log only suspicious actions.</flag>
 		<flag name="memcache">Enable support for the mod_memcache module, for using memcached servers</flag>
 		<flag name="msg">Enable support for the mod_msg module, allows system users to send messages to connected clients via the ftpdctl program.</flag>
-		<flag name="openssl">Enable <pkg>dev-libs/openssl</pkg> support</flag>
 		<flag name="qos">Enable support for the mod_qos module</flag>
 		<flag name="ratio">Enable support for the mod_ratio module</flag>
 		<flag name="readme">Enable support for the mod_readme module</flag>

@@ -7,9 +7,4 @@
 		<name>Markus Oehme</name>
 		<description>Assign bugs to him</description>
 	</maintainer>
-	<maintainer>
-		<email>mrueg@gentoo.org</email>
-		<name>Manuel Rüger</name>
-		<description>Proxy maintainer. CC him on bugs</description>
-	</maintainer>
 </pkgmetadata>
