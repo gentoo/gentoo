@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit qt4-r2
+inherit qmake-utils
 
 DESCRIPTION="Qt-Framework for code editing"
 HOMEPAGE="http://edyuk.sourceforge.net/"
@@ -24,9 +24,15 @@ RDEPEND="
 DEPEND="${RDEPEND}
 "
 
-MAKEOPTS+=" -j1"
+PATCHES=(
+	"${FILESDIR}/${P}-fix-parallel-build.patch"
+)
+
+src_configure() {
+	eqmake4 ${PN}.pro
+}
 
 src_install() {
-	qt4-r2_src_install
+	emake INSTALL_ROOT="${D}" install
 	dolib.so libqcodeedit.so*
 }
