@@ -20,7 +20,7 @@ DEPEND="
 	dev-libs/openssl:0
 	dev-libs/uthash
 	sys-libs/libcap
-	net-libs/librsync
+	<net-libs/librsync-2.0
 	sys-libs/ncurses:0=
 	sys-libs/zlib
 	acl? ( sys-apps/acl )
