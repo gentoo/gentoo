@@ -1,0 +1,31 @@
+ OpenSSL/crypto.py           | 3 +++
+ OpenSSL/test/test_crypto.py | 2 +-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/OpenSSL/crypto.py b/OpenSSL/crypto.py
+index 555ba24..2c1eddb 100644
+--- a/OpenSSL/crypto.py
++++ b/OpenSSL/crypto.py
+@@ -464,6 +464,9 @@ class X509Name(object):
+         if isinstance(value, _text_type):
+             value = value.encode('utf-8')
+ 
++        # Make it so OpenSSL generates utf-8 strings.
++        _lib.ASN1_STRING_set_default_mask_asc(b'utf8only')
++
+         add_result = _lib.X509_NAME_add_entry_by_NID(
+             self._name, nid, _lib.MBSTRING_UTF8, value, -1, -1, 0)
+         if not add_result:
+diff --git a/OpenSSL/test/test_crypto.py b/OpenSSL/test/test_crypto.py
+index 1620623..b817451 100644
+--- a/OpenSSL/test/test_crypto.py
++++ b/OpenSSL/test/test_crypto.py
+@@ -1003,7 +1003,7 @@ class X509NameTests(TestCase):
+         self.assertEqual(
+             a.der(),
+             b('0\x1b1\x0b0\t\x06\x03U\x04\x06\x13\x02US'
+-              '1\x0c0\n\x06\x03U\x04\x03\x13\x03foo'))
++              '1\x0c0\n\x06\x03U\x04\x03\x0c\x03foo'))
+ 
+ 
+     def test_get_components(self):
