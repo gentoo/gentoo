@@ -12164,7 +12164,7 @@ media-libs/jasper 1.900.1-r9: software-based implementation of the codec specifi
 media-libs/jbig2dec 0.11-r1: A decoder implementation of the JBIG2 image compression format
 media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
-media-libs/jpeg 6b-r12 8d-r1 8d-r2 9a: Library to load, handle and manipulate images in the JPEG format
+media-libs/jpeg 6b-r12 8d-r1 8d-r2 9a 9b: Library to load, handle and manipulate images in the JPEG format
 media-libs/kvazaar 0.7.1 0.7.2 9999: An open-source HEVC encoder
 media-libs/ladspa-cmt 1.16-r4: CMT (computer music toolkit) LADSPA library plugins
 media-libs/ladspa-sdk 1.13-r1 1.13-r2: The Linux Audio Developer's Simple Plugin API
@@ -12247,7 +12247,7 @@ media-libs/libjpeg-turbo 1.3.0-r3 1.3.1 1.3.1-r1 1.4.1 1.4.2: MMX, SSE, and SSE2
 media-libs/libjsw 1.5.8: provide a uniform API and user configuration for joysticks and game controllers
 media-libs/libkarma 0.1.2: Support library for using Rio devices with mtp
 media-libs/libkate 0.3.7 0.3.8 0.4.1: Codec for karaoke and text encapsulation for Ogg
-media-libs/liblastfm 1.0.8 1.0.9: Collection of libraries to integrate Last.fm services
+media-libs/liblastfm 1.0.9: Collection of libraries to integrate Last.fm services
 media-libs/liblingoteach 0.2.3: A library to support lingoteach-ui and for generic lesson development
 media-libs/liblo 0.26 0.27 0.28: Lightweight OSC (Open Sound Control) implementation
 media-libs/liblqr 0.4.2-r1: An easy to use C/C++ seam carving library
@@ -16329,7 +16329,7 @@ sys-apps/lssbus 0.1: Small utility for Linux/SPARC that list devices on SBUS
 sys-apps/magneto-core 254: Entropy Package Manager notification applet library
 sys-apps/makedev 3.23.1: program used for creating device files in /dev
 sys-apps/man 1.6g 1.6g-r1: Standard commands to read man pages
-sys-apps/man-db 2.6.6 2.6.7.1 2.7.2 2.7.4 2.7.5: a man replacement that utilizes berkdb instead of flat files
+sys-apps/man-db 2.7.2 2.7.4 2.7.5: a man replacement that utilizes berkdb instead of flat files
 sys-apps/man-pages 4.03 4.04: A somewhat comprehensive collection of Linux man pages
 sys-apps/man-pages-posix 2013a: POSIX man-pages (0p, 1p, 3p)
 sys-apps/mawk 1.3.4_p20100625 1.3.4_p20141206 1.3.4_p20150503: an (often faster than gawk) awk-interpreter
@@ -16400,7 +16400,7 @@ sys-apps/rsbac-admin 1.4.9: Rule Set Based Access Control (RSBAC) Admin Tools
 sys-apps/s390-tools 1.17.0 1.23.1: User space utilities for the zSeries (s390) Linux kernel and device drivers
 sys-apps/s6 2.1.3.0 2.2.4.3: skarnet.org's small and secure supervision software suite
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
-sys-apps/sandbox 1.6-r2 2.3-r1 2.4 2.5 2.6-r1 2.7 2.8 2.9 2.10-r1: sandbox'd LD_PRELOAD hack
+sys-apps/sandbox 2.6-r1 2.7 2.8 2.9 2.10-r1: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.07 1.08-r1 1.09: Utility to output and modify parameters on a SCSI device, like hdparm
 sys-apps/secilc 9999: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.2.1-r1 4.2.2: Super-useful stream editor
