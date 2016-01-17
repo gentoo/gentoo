@@ -5116,8 +5116,8 @@ dev-perl/Apache-AuthCookie 3.230.0: Perl Authentication and Authorization via co
 dev-perl/Apache-CGI-Builder 1.300.0-r1: CGI::Builder and Apache/mod_perl (1 and 2) integration
 dev-perl/Apache-DBI 1.120.0-r1: Apache::DBI module for perl
 dev-perl/Apache-LogFormat-Compiler 0.320.0: Compile an Apache log format string to perl-code
-dev-perl/Apache-Reload 0.120.0-r1 0.130.0: Perl module for Apache::Reload
-dev-perl/Apache-Session 1.900.0-r1 1.930.0: A persistence framework for session data
+dev-perl/Apache-Reload 0.130.0: Perl module for Apache::Reload
+dev-perl/Apache-Session 1.930.0: A persistence framework for session data
 dev-perl/Apache-SessionX 2.10.0-r1: An extented persistence framework for session data
 dev-perl/Apache-SizeLimit 0.970.0-r1: Graceful exit for large children
 dev-perl/Apache-Test 1.380.0-r1 1.390.0: Test.pm wrapper with helpers for testing Apache
@@ -5363,7 +5363,7 @@ dev-perl/Data-Stream-Bulk 0.110.0-r1: N at a time iteration API
 dev-perl/Data-Structure-Util 0.150.0: Change nature of data within a structure
 dev-perl/Data-Types 0.90.0: Validate and convert data types.
 dev-perl/Data-URIEncode 0.110.0-r1: Allow complex data structures to be encoded using flat URIs
-dev-perl/Data-UUID 1.217.0-r1 1.221.0: Generate Globally/Universally Unique Identifiers (GUIDs/UUIDs)
+dev-perl/Data-UUID 1.221.0: Generate Globally/Universally Unique Identifiers (GUIDs/UUIDs)
 dev-perl/Data-Uniqid 0.120.0-r1: Perl extension for simple generating of unique ids
 dev-perl/Data-Utilities 0.40.0-r1: Merge nested Perl data structures
 dev-perl/Data-Validate-Domain 0.110.0: Domain and host name validation
@@ -5461,7 +5461,7 @@ dev-perl/Encode-compat 0.70.0-r1: Encode.pm emulation layer
 dev-perl/Error 0.170.240: Error/exception handling in an OO-ish way
 dev-perl/Eval-Closure 0.80.0-r1 0.130.0: safely and cleanly create closures via string eval
 dev-perl/Eval-LineNumbers 0.340.0: Add line numbers to hereis blocks that contain perl source code
-dev-perl/Event 1.210.0 1.240.0: Fast, generic event loop
+dev-perl/Event 1.240.0: Fast, generic event loop
 dev-perl/Event-ExecFlow 0.640.0-r1: High level API for event-based execution flow control
 dev-perl/Event-RPC 1.50.0: Event based transparent Client/Server RPC framework
 dev-perl/Exception-Base 0.250.0-r2 0.250.100: Error handling with exception class
@@ -5484,7 +5484,7 @@ dev-perl/ExtUtils-InstallPaths 0.10.0: Build.PL install path logic made easy
 dev-perl/ExtUtils-LibBuilder 0.04: A tool to build C libraries
 dev-perl/ExtUtils-XSBuilder 0.280.0-r1: Modules to parse C header files and create XS glue code
 dev-perl/ExtUtils-XSpp 0.170.0 0.180.0: XS for C++
-dev-perl/FCGI 0.740.0-r1 0.770.0: Fast CGI module
+dev-perl/FCGI 0.770.0: Fast CGI module
 dev-perl/FCGI-ProcManager 0.250.0: A FastCGI process manager
 dev-perl/FLV-AudioExtractor 0.010.0: Extract audio from Flash Videos
 dev-perl/Fatal-Exception 0.50.0-r1: Succeed or throw exception
@@ -5505,7 +5505,7 @@ dev-perl/File-HomeDir 1.0.0-r1: Get home directory for self or other user
 dev-perl/File-KeePass 2.30.0: Interface to KeePass V1 and V2 database files
 dev-perl/File-Listing 6.40.0-r1: Parse directory listings
 dev-perl/File-MMagic 1.300.0-r1: The Perl Image-Info Module
-dev-perl/File-Map 0.560.0 0.640.0: Memory mapping made simple and safe
+dev-perl/File-Map 0.640.0: Memory mapping made simple and safe
 dev-perl/File-MimeInfo 0.270.0: Determine file type
 dev-perl/File-NCopy 0.360.0-r1: Copy file, file Copy file[s] | dir[s], dir
 dev-perl/File-NFSLock 1.270.0: perl module to do NFS (or not) locking
@@ -5533,7 +5533,7 @@ dev-perl/File-Which 1.90.0-r1: Perl module implementing 'which' internally
 dev-perl/File-chdir 0.101.0: An alternative to File::Spec and CWD
 dev-perl/File-chmod 0.420.0: Implements symbolic and ls chmod modes
 dev-perl/File-pushd 1.3.0-r1: Change directory temporarily for a limited scope
-dev-perl/FileHandle-Unget 0.162.300-r1 0.162.800: A FileHandle which supports ungetting of multiple bytes
+dev-perl/FileHandle-Unget 0.162.800: A FileHandle which supports ungetting of multiple bytes
 dev-perl/Filesys-Df 0.920.0-r1: Disk free based on Filesys::Statvfs
 dev-perl/Filesys-DiskSpace 0.50.0-r1: Perl df
 dev-perl/Filesys-Notify-Simple 0.120.0: Simple and dumb file system watcher
@@ -8490,7 +8490,7 @@ dev-ruby/archive-tar-minitar 0.5.4-r1 0.5.4-r2: Provides POSIX tarchive manageme
 dev-ruby/arel 3.0.3 4.0.2 5.0.1.20140414130214 6.0.2 6.0.3 7.0.0: Arel is a Relational Algebra for Ruby
 dev-ruby/arel-helpers 2.1.1: Tools to help construct database queries
 dev-ruby/ascii85 1.0.2-r2: Methods for encoding/decoding Adobe's binary-to-text encoding of the same name
-dev-ruby/asciidoctor 1.5.2 1.5.3: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
+dev-ruby/asciidoctor 1.5.2 1.5.3 1.5.4: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
 dev-ruby/asciimath 1.0.2: A pure Ruby AsciiMath parsing and conversion library
 dev-ruby/ast 2.0.0 2.1.0 2.2.0: A library for working with abstract syntax trees
 dev-ruby/astrolabe 1.3.0 1.3.1: An object-oriented AST extension for Parser
@@ -8985,7 +8985,7 @@ dev-ruby/tdiff 0.3.3 0.3.3-r1: Calculates the differences between two tree-like 
 dev-ruby/temple 0.6.10 0.7.6: An abstraction and a framework for compiling templates to pure Ruby
 dev-ruby/term-ansicolor 1.2.2-r1 1.3.0 1.3.0-r1 1.3.2: Small Ruby library that colors strings using ANSI escape sequences
 dev-ruby/termcolor 1.2.1-r1 1.2.2: a library for ANSI color formatting like HTML for output in terminal
-dev-ruby/test-unit 1.2.3-r1 1.2.3-r2 1.2.3-r3 2.5.5-r2 3.1.3 3.1.4 3.1.5 3.1.5-r1: An xUnit family unit testing framework for Ruby
+dev-ruby/test-unit 1.2.3-r1 1.2.3-r2 1.2.3-r3 2.5.5-r2 3.1.3 3.1.4 3.1.5 3.1.5-r1 3.1.7: An xUnit family unit testing framework for Ruby
 dev-ruby/test-unit-rr 1.0.3 1.0.3-r1: RR adapter for Test::Unit
 dev-ruby/test_construct 2.0.1: Creates temporary files and directories for testing
 dev-ruby/test_declarative 0.0.5-r2: Simply adds a declarative test method syntax to test/unit
