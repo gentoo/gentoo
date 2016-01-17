@@ -1,0 +1,11 @@
+--- ffmpeg/linux_mips32.sh.orig	2016-01-17 09:30:24.000000000 +0800
++++ ffmpeg/linux_mips32.sh	2016-01-17 09:31:38.470011215 +0800
+@@ -79,7 +79,7 @@
+ ./configure \
+     --prefix=./linux/${ARCH} \
+     ${GENERAL} \
+-    --extra-cflags="-D__STDC_CONSTANT_MACROS -O3" \
++    --extra-cflags="-D__STDC_CONSTANT_MACROS -O2" \
+     --enable-zlib \
+ 	--disable-yasm \
+     --disable-everything \
