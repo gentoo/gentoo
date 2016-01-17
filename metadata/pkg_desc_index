@@ -120,7 +120,7 @@ app-admin/ide-smart 1.4-r1: A tool to read SMART information from harddiscs
 app-admin/integrit 4.0 4.1-r1: file integrity verification program
 app-admin/jinit 0.1.12-r1: An alternative to sysvinit which supports the need(8) concept
 app-admin/kedpm 0.4.0-r2: Ked Password Manager helps to manage large amounts of passwords and related information
-app-admin/keepass 2.30: A free, open source, light-weight and easy-to-use password manager
+app-admin/keepass 2.30 2.31: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassx 0.4.3 0.4.4 2.0_beta2 2.0: Qt password manager compatible with its Win32 and Pocket PC versions
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 2.7 2.8 3.0: A command line interface to KeePass database files
@@ -8025,7 +8025,7 @@ dev-python/verboselogs 1.0.1 1.0.2: Verbose logging for Python's logging module
 dev-python/versioneer 0.15: Easy VCS-based management of project version strings
 dev-python/versiontools 1.9.1-r1: Smart replacement for plain tuple used in __version__
 dev-python/vertex 0.3.0-r1 0.3.1 0.3.1-r1: An implementation of the Q2Q protocol
-dev-python/virtualenv 13.1.2: Virtual Python Environment builder
+dev-python/virtualenv 13.1.2 13.1.2-r1: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.2.4-r2 0.2.5 0.2.6: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.3.1 4.3.2 4.5.1 4.6.0: virtualenvwrapper is a set of extensions to Ian Bicking's virtualenv tool
 dev-python/visual 5.74 5.74-r1: Real-time 3D graphics library for Python
@@ -9687,7 +9687,7 @@ dev-vcs/darcs 2.8.4 2.8.4-r3 2.8.4-r6 2.8.5-r3 2.8.5-r4 2.10.0-r1 2.10.1: a dist
 dev-vcs/easygit 1.6.5.5: Easy GIT is a wrapper for git, designed to make git easy to learn and use
 dev-vcs/fossil 20150119112900: Simple, high-reliability, source control management, and more
 dev-vcs/giggle 0.7-r1: GTK+ Frontend for GIT
-dev-vcs/git 2.4.10 2.5.4 2.6.4 2.6.5 2.7.0 2.7.0-r1 9999 9999-r1 9999-r2 9999-r3: GIT - the stupid content tracker, the revision control system heavily used by the Linux kernel team
+dev-vcs/git 2.4.10 2.5.4 2.6.4 2.6.5 2.7.0 2.7.0-r2 9999 9999-r1 9999-r2 9999-r3: GIT - the stupid content tracker, the revision control system heavily used by the Linux kernel team
 dev-vcs/git-annex 5.20140927 5.20141125 5.20141203 5.20141231 5.20150219 5.20150327 5.20150617 5.20150710 5.20150731: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.12.04.26 0.12.12.15 9999: Bugzilla subcommand for git
 dev-vcs/git-bzr-ng 0_pre20120130 0_pre20120822: Git subcommand providing a bidirectional bridge to Bazaar repositories
@@ -16359,7 +16359,7 @@ sys-apps/noexec 1.1.0: a package for preventing processes from using exec system
 sys-apps/nvme-cli 0_pre20150821: NVM-Express user space tooling for Linux
 sys-apps/openrc 0.13.11 0.14 0.15 0.15.1 0.16 0.16.1 0.16.2 0.16.3 0.16.4 0.17 0.18.3 0.18.4 0.19.1 0.20.2 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/pacman 4.0.1 4.0.3 4.0.3-r1: Archlinux's binary package manager
-sys-apps/paludis 1.4.2-r1 2.0.0 2.2.0 2.2.0-r2 2.4.0 9999: paludis, the other package mangler
+sys-apps/paludis 1.4.2-r1 2.0.0 2.2.0 2.2.0-r2 2.4.0 2.4.0_p20160112 9999: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
 sys-apps/paxctld 1.0 1.0.1: PaX flags maintenance daemon
 sys-apps/pciutils 3.2.0 3.3.1 3.4.0 3.4.1: Various utilities dealing with the PCI bus
