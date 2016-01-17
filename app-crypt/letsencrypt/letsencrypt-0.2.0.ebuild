@@ -10,7 +10,7 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}-corrected.tar.gz -> ${P}-corrected.tar.gz"
+	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 
@@ -24,7 +24,7 @@ SLOT="0"
 IUSE="test"
 
 RDEPEND=">=app-crypt/acme-${PV}[${PYTHON_USEDEP}]
-	dev-python/configargparse[${PYTHON_USEDEP}]
+	>=dev-python/configargparse-0.10.0[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-0.7[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
@@ -40,8 +40,6 @@ RDEPEND=">=app-crypt/acme-${PV}[${PYTHON_USEDEP}]
 DEPEND="test? ( ${RDEPEND}
 	dev-python/nose[${PYTHON_USEDEP}] )
 	dev-python/setuptools[${PYTHON_USEDEP}]"
-
-S=${WORKDIR}/${P}-corrected
 
 python_test() {
 	nosetests -w ${PN}/tests || die
