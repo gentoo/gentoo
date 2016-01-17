@@ -1231,7 +1231,7 @@
     <member>
       <email>dabbott@gentoo.org</email>
       <name>David Abbott</name>
-      <role>Officer of the board: Secretary</role>
+      <role>Board Member: Secretary</role>
     </member>
     <member is-lead="1">
       <email>neddyseagoon@gentoo.org</email>
@@ -1239,14 +1239,9 @@
       <role>Board Member: President</role>
     </member>
     <member>
-      <email>quantumsummers@gentoo.org</email>
-      <name>Matt Summers</name>
-      <role>Board Member: Treasurer</role>
-    </member>
-    <member>
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
-      <role>Board member: Infra Liaison, Bookkeeper</role>
+      <role>Board member: Infra Liaison, Treasurer</role>
     </member>
     <member>
       <email>swift@gentoo.org</email>
