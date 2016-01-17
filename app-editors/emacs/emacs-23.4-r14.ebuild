@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ inherit autotools elisp-common flag-o-matic multilib readme.gentoo-r1
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 SRC_URI="mirror://gnu/emacs/${P}.tar.bz2
-	https://dev.gentoo.org/~ulm/emacs/${P}-patches-18.tar.xz"
+	https://dev.gentoo.org/~ulm/emacs/${P}-patches-19.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="23"
@@ -32,7 +32,7 @@ RDEPEND="sys-libs/ncurses:0
 		x11-libs/libXt
 		x11-misc/xbitmaps
 		gconf? ( >=gnome-base/gconf-2.26.2 )
-		gif? ( media-libs/giflib )
+		gif? ( media-libs/giflib:0= )
 		jpeg? ( virtual/jpeg:0= )
 		png? ( >=media-libs/libpng-1.4:0= )
 		svg? ( >=gnome-base/librsvg-2.0 )
