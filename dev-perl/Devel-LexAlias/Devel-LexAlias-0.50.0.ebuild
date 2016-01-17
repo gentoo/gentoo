@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Alias lexical variables"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc x86"
+KEYWORDS="amd64 ~arm ~hppa ppc x86"
 IUSE=""
 
 DEPEND=">=dev-perl/Devel-Caller-2.03"

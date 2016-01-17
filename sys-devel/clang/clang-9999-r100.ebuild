@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="debug multitarget python +static-analyzer"
 
-RDEPEND="~sys-devel/llvm-${PV}[clang(-),debug=,multitarget?,python?,static-analyzer,${MULTILIB_USEDEP}]"
+RDEPEND="~sys-devel/llvm-${PV}[clang(-),debug=,multitarget?,python?,static-analyzer?,${MULTILIB_USEDEP}]"
 
 # Please keep this package around since it's quite likely that we'll
 # return to separate LLVM & clang ebuilds when the cmake build system

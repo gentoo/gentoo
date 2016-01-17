@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/quake/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="cdinstall debug fbcon flac sdl X ncurses png vorbis zlib ipv6 xv dga alsa oss xdg wildmidi"
 RESTRICT="userpriv"
 
