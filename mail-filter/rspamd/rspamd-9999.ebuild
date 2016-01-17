@@ -30,7 +30,6 @@ RDEPEND="${DEPEND}"
 
 src_unpack() {
 	git-2_src_unpack
-	cd "${S}"
 }
 
 pkg_setup() {
