@@ -33,7 +33,8 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	cabal_chdeps \
 		'base >= 3.0.0 && < 4.8' 'base >= 3.0.0' \
-		'QuickCheck ==2.5.*' 'QuickCheck >=2.5'
+		'QuickCheck ==2.5.*' 'QuickCheck >=2.5' \
+		'executable tests' 'executable dataenc-tests'
 }
 
 src_configure() {

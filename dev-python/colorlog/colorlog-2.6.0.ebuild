@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples test"
+IUSE="test"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
@@ -29,6 +29,5 @@ python_test() {
 }
 
 python_install_all() {
-	use examples && local EXAMPLES=( doc/. )
 	distutils-r1_python_install_all
 }

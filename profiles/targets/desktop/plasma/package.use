@@ -39,7 +39,7 @@ kde-apps/kde-wallpapers minimal
 kde-apps/kde4-l10n minimal
 kde-apps/kdeartwork-meta minimal
 kde-apps/kdebase-kioslaves minimal
-kde-apps/kdebase-meta minimal
+kde-apps/kdebase-meta:4 minimal
 kde-apps/kdebase-runtime-meta -crash-reporter minimal
 kde-apps/kdesu -handbook
 kde-apps/knetattach -handbook

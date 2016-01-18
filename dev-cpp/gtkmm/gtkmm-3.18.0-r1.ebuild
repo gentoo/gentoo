@@ -5,7 +5,7 @@
 EAPI="5"
 GCONF_DEBUG="no"
 
-inherit gnome2 multilib-minimal
+inherit eutils gnome2 multilib-minimal
 
 DESCRIPTION="C++ interface for GTK+"
 HOMEPAGE="http://www.gtkmm.org"
@@ -37,6 +37,9 @@ DEPEND="${RDEPEND}
 # eautoreconf needs mm-common
 
 src_prepare() {
+	# Fix building with gcc-4.7, fixed in next version, bug #567882
+	epatch "${FILESDIR}"/${P}-gcc47.patch
+
 	if ! use test; then
 		# don't waste time building tests
 		sed 's/^\(SUBDIRS =.*\)tests\(.*\)$/\1\2/' -i Makefile.am Makefile.in \

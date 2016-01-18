@@ -1,0 +1,40 @@
+--- xmonad/src/XMonad/Core.hs	2010-09-05 05:11:42.000000000 +0400
++++ xmonad/src/XMonad/Core.hs	2010-09-18 07:59:14.000000000 +0400
+@@ -65,6 +65,7 @@
+     , waitingUnmap     :: !(M.Map Window Int)            -- ^ the number of expected UnmapEvents
+     , dragging         :: !(Maybe (Position -> Position -> X (), X ()))
+     , numberlockMask   :: !KeyMask                       -- ^ The numlock modifier
++    , keyPressed       :: !KeyCode                       -- ^ keycode of the key being pressed if any
+     , extensibleState  :: !(M.Map String (Either String StateExtension))
+     -- ^ stores custom state information.
+     --
+--- xmonad/src/XMonad/Main.hs	2010-09-05 05:11:42.000000000 +0400
++++ xmonad/src/XMonad/Main.hs	2010-09-18 08:03:11.000000000 +0400
+@@ -129,6 +129,7 @@
+             , mapped          = S.empty
+             , waitingUnmap    = M.empty
+             , dragging        = Nothing
++            , keyPressed      = 0
+             , extensibleState = extState
+             }
+     allocaXEvent $ \e ->
+@@ -190,10 +191,15 @@
+ -- run window manager command
+ handle (KeyEvent {ev_event_type = t, ev_state = m, ev_keycode = code})
+     | t == keyPress = withDisplay $ \dpy -> do
+-        s  <- io $ keycodeToKeysym dpy code 0
+-        mClean <- cleanMask m
+-        ks <- asks keyActions
+-        userCodeDef () $ whenJust (M.lookup (mClean, s) ks) id
++        kp <- gets keyPressed
++        if kp /= code then do
++                modify $ \s -> s { keyPressed = code }
++                s  <- io $ keycodeToKeysym dpy code 0
++                mClean <- cleanMask m
++                ks <- asks keyActions
++                userCodeDef () $ whenJust (M.lookup (mClean, s) ks) id
++            else return ()
++    | t == keyRelease = modify $ \s -> s { keyPressed = 0 }
+ 
+ -- manage a new window
+ handle (MapRequestEvent    {ev_window = w}) = withDisplay $ \dpy -> do

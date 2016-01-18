@@ -1,4 +1,4 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.jgoodies.com/download/libraries/${MY_PN}-${MY_PV}.zip"
 
 LICENSE="BSD"
 SLOT="1.2"
-KEYWORDS="amd64 ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 x86 ~x86-fbsd"
 IUSE="doc"
 
 DEPEND=">=virtual/jdk-1.4.2

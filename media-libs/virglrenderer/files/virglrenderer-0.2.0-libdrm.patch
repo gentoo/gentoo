@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/571124
+
+patch sent upstream
+
+From c78953320cae8b39869a8eae41fdec5c4ead30ae Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 17 Jan 2016 23:50:21 -0500
+Subject: [PATCH] link libvirglrenderer against libdrm
+
+The library uses it (via drmPrimeHandleToFD) so link it in.
+
+URL: https://bugs.gentoo.org/571124
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ src/Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 61cf879..09be3e9 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,5 +1,6 @@
+ SUBDIRS := gallium/auxiliary
+ AM_LDFLAGS = -lgbm -lm -ldl -I./gallium/include \
++	$(LIBDRM_LIBS) \
+ 	$(EPOXY_LIBS) \
+ 	$(CODE_COVERAGE_LDFLAGS)
+ 
+-- 
+2.6.2
+

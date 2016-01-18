@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ DESCRIPTION="A free, open-source 3D modelling and rendering studio"
 SRC_URI="mirror://sourceforge/aoi/${MY_P}.zip
 	doc? ( mirror://sourceforge/aoi/manual${MY_MANUAL_V}.zip )"
 HOMEPAGE="http://aoi.sourceforge.net/index"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~amd64 x86"
 LICENSE="GPL-2"
 SLOT="0"
 DEPEND="app-arch/unzip"

@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ ANT_TASK_DEPNAME="junit-4"
 
 inherit ant-tasks
 
-KEYWORDS="amd64 ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc64 x86 ~x86-fbsd"
 
 DEPEND="dev-java/junit:4
 	~dev-java/ant-junit-${PV}"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -132,18 +132,39 @@ die_compiler() {
 # $3 - clang++
 # $4 - icc/icpc
 check_compiler() {
-	local ver
+	local cur ver
 	case "$(tc-getCXX)" in
 		*clang++*)
 			ver="$(best_version sys-devel/clang | sed 's:sys-devel/clang-::')"
+			cur="$3"
 		;;
 		*g++*)
 			ver="$(gcc-version)"
+			# gcc-5 is not yet supported, bug 564306
+			if version_is_at_least "5" "${ver}"; then
+				eerror ""
+				eerror "GCC-5 is not yet supported in ROOT-6."
+				eerror "The code may build for you, but will have run-time failures."
+				eerror "See the following bugs:"
+				eerror "https://sft.its.cern.ch/jira/browse/ROOT-7285"
+				eerror "https://sft.its.cern.ch/jira/browse/ROOT-7319"
+				eerror "https://sft.its.cern.ch/jira/browse/ROOT-7654"
+				eerror "https://sft.its.cern.ch/jira/browse/ROOT-7721"
+				eerror "https://sft.its.cern.ch/jira/browse/ROOT-7818"
+				eerror "https://sft.its.cern.ch/jira/browse/ROOT-7895"
+				eerror "https://bugs.gentoo.org/show_bug.cgi?id=564306"
+				eerror ""
+				eerror "Please use GCC-4.9 for now."
+				eerror ""
+				die "gcc-5 is not yet supported"
+			fi
+			cur="$2"
 		;;
 		*icc*|*icpc*)
 			ver="$(best_version dev-lang/icc | sed 's:dev-lang/icc-::')"
 			eerror "ROOT-6 is known not to build with ICC."
 			eerror "Please report any isuses upstream."
+			cur="$4"
 		;;
 		*)
 			ewarn "You are using an unsupported compiler."
@@ -151,7 +172,7 @@ check_compiler() {
 			return 0
 		;;
 	esac
-	version_is_at_least "$3" "${ver}" || die_compiler "$1" "$2" "$3" "$4" "${ver}"
+	version_is_at_least "${cur}" "${ver}" || die_compiler "$1" "$2" "$3" "$4" "${ver}"
 }
 
 pkg_setup() {

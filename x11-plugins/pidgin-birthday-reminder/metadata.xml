@@ -7,11 +7,6 @@
 		<name>Julian Ospald</name>
 		<description>Maintainer. Assign bugs to him</description>
 	</maintainer>
-	<maintainer>
-		<email>mrueg@gentoo.org</email>
-		<name>Manuel Rüger</name>
-		<description>Maintainer. CC him on bugs</description>
-	</maintainer>
 	<upstream>
 		<bugs-to>https://bugs.launchpad.net/pidgin-birthday-reminder</bugs-to>
 		<remote-id type="launchpad">pidgin-birthday-reminder</remote-id>

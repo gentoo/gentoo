@@ -298,8 +298,6 @@ media-libs/allegro mmx sse
 media-libs/libfame mmx
 media-libs/sdl-gfx mmx
 media-libs/smpeg mmx
-net-irc/xchat mmx
-net-irc/xchat-gnome mmx
 net-misc/asterisk mmx
 x11-terms/eterm mmx
 media-tv/xawtv mmx
@@ -309,8 +307,6 @@ media-libs/allegro cpu_flags_x86_mmx cpu_flags_x86_sse
 media-libs/libfame cpu_flags_x86_mmx
 media-libs/sdl-gfx cpu_flags_x86_mmx
 media-libs/smpeg cpu_flags_x86_mmx
-net-irc/xchat cpu_flags_x86_mmx
-net-irc/xchat-gnome cpu_flags_x86_mmx
 net-misc/asterisk cpu_flags_x86_mmx
 x11-terms/eterm cpu_flags_x86_mmx
 media-tv/xawtv cpu_flags_x86_mmx

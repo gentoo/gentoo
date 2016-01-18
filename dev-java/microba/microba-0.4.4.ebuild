@@ -1,4 +1,4 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ DESCRIPTION="Swing components for date operations and palettes"
 HOMEPAGE="http://microba.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-full.zip"
 LICENSE="BSD"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 
 COMMON_DEPEND=">=dev-java/jgraph-5.9.2"

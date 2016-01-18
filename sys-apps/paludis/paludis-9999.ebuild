@@ -67,16 +67,6 @@ pkg_pretend() {
 			fi
 		fi
 	fi
-
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if [[ $(gcc-major-version) -lt 4
-			|| ( $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 7 ) ]]
-		then
-			eerror "Paludis requires at least gcc 4.7 to build. Please switch the active"
-			eerror "gcc version using gcc-config."
-			die "Paludis requires at least gcc 4.7"
-		fi
-	fi
 }
 
 pkg_setup() {

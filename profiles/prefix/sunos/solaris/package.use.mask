@@ -1,7 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+
+# Fabian Groffen <grobian@gentoo.org> (16 Jan 2016)
+# GNU attr isn't supported
+dev-libs/glib xattr
 
 # Fabian Groffen <grobian@gentoo.org> (26 May 2015)
 # Avoid pulling in broken and unnecessary ossp-uuid, bug #324527

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>kde</herd>
-  <use>
-    <flag name="fingerprint">Build the lastfm-fingerprint library</flag>
-  </use>
-  <upstream>
-    <remote-id type="github">lastfm/liblastfm</remote-id>
-  </upstream>
+	<herd>kde</herd>
+	<use>
+		<flag name="fingerprint">Build the lastfm-fingerprint library</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">lastfm/liblastfm</remote-id>
+	</upstream>
 </pkgmetadata>

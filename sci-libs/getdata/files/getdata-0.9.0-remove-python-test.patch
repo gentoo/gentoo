@@ -1,0 +1,13 @@
+Remove python test suite.
+
+--- getdata-0.9.0/bindings/python/Makefile.am
++++ getdata-0.9.0/bindings/python/Makefile.am
+@@ -20,8 +20,6 @@
+ #
+ AUTOMAKE_OPTIONS = foreign
+ 
+-SUBDIRS=test
+-
+ nodist_python_SCRIPTS = pygetdata.so
+ 
+ BUILT_SOURCES = pyconstants.c
