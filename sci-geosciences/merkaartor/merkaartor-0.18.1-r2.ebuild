@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -52,6 +52,10 @@ src_prepare() {
 	fi
 
 	epatch "${FILESDIR}"/${P}-system-libs.patch
+
+	# bug 554304 - build against gdal 2
+	epatch "${FILESDIR}"/${PN}-gdal-2-fix.patch
+
 	epatch_user
 }
 
