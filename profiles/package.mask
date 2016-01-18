@@ -30,6 +30,25 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Frysinger <vapier@gentoo.org> (18 Jan 2016)
+# Force people to migrate to the new combined libraries:
+# media-libs/elementary & dev-libs/efl. #571796
+app-benchmarks/expedite
+dev-libs/ecore
+dev-libs/edbus
+dev-libs/eet
+dev-libs/eeze
+dev-libs/efreet
+dev-libs/eina
+dev-libs/eio
+dev-libs/embryo
+dev-libs/eobj
+dev-libs/ephysics
+media-libs/edje
+media-libs/emotion
+media-libs/ethumb
+media-libs/evas
+
 # Sergei Trofimovich <slyfox@gentoo.org> (19 Jan 2016)
 # Mask broken package. Exposes badly designed API
 # that can't be transparently used in ghc-7.8 and
