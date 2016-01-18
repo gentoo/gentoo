@@ -22,7 +22,8 @@ DEPEND="dev-libs/openssl:0
 		dev-db/sqlite:3
 		dev-libs/glib:2
 		dev-libs/gmime
-		dev-libs/hiredis"
+		sys-apps/file
+		virtual/libiconv"
 RDEPEND="${DEPEND}"
 
 pkg_setup() {
