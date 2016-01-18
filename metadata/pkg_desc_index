@@ -11372,45 +11372,45 @@ kde-misc/wicd-client-kde 0.3.1-r1: Wicd client built on the KDE Development Plat
 kde-misc/yakuake 2.9.9-r3: A quake-style terminal emulator based on KDE konsole technology
 kde-misc/yawp 0.4.5: Yet Another Weather Plasmoid
 kde-misc/zanshin 0.2.1-r1 0.2.2 0.3.0: Todo management application for KDE
-kde-plasma/bluedevil 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: Bluetooth stack for KDE
-kde-plasma/breeze 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: Breeze visual style for the Plasma desktop
-kde-plasma/breeze-gtk 5.5.0.1 5.5.1 5.5.2 5.5.3: Official GTK+ port of KDE's Breeze widget style
-kde-plasma/kde-cli-tools 5.4.3 5.5.0 5.5.1 5.5.2-r1 5.5.3: Tools based on KDE Frameworks 5 to better interact with the system
-kde-plasma/kde-gtk-config 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: KDE systemsettings kcm to set GTK application look&feel
-kde-plasma/kdecoration 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: Plugin based library to create window decorations
-kde-plasma/kdeplasma-addons 5.4.3 5.4.3-r1 5.5.0 5.5.1 5.5.2 5.5.3: Extra Plasma applets and engines
-kde-plasma/kgamma 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: Screen gamma values kcontrol module
-kde-plasma/khelpcenter 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: The KDE Help Center
-kde-plasma/khotkeys 5.4.3 5.4.3-r1 5.5.0 5.5.1 5.5.2 5.5.3: KDE workspace hotkey module
-kde-plasma/kinfocenter 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: A utility that provides information about a computer system
-kde-plasma/kmenuedit 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: KDE menu editor
-kde-plasma/kscreen 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: KDE screen management
-kde-plasma/kscreenlocker 5.5.0 5.5.1 5.5.2 5.5.3: Library and components for secure lock screen architecture
-kde-plasma/ksshaskpass 5.4.3 5.5.0 5.5.1 5.5.2-r1 5.5.3: KDE implementation of ssh-askpass with Kwallet integration
-kde-plasma/ksysguard 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: Network-enabled task manager and system monitor
-kde-plasma/kwallet-pam 5.4.3 5.4.3-r1 5.5.0 5.5.1 5.5.2 5.5.3: KWallet PAM module to not enter password again
-kde-plasma/kwayland 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: Qt-style client and server library wrapper for Wayland libraries
-kde-plasma/kwayland-integration 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: Provides integration plugins for various KDE frameworks for Wayland
-kde-plasma/kwin 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: KDE window manager
-kde-plasma/kwrited 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: KDE daemon listening for wall and write messages
-kde-plasma/libkscreen 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: KDE screen management library
-kde-plasma/libksysguard 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: Task management and system monitoring library
-kde-plasma/milou 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: Dedicated search application built on top of Baloo
-kde-plasma/oxygen 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: KDE window manager theme
+kde-plasma/bluedevil 5.4.3 5.5.2 5.5.3: Bluetooth stack for KDE
+kde-plasma/breeze 5.4.3 5.5.2 5.5.3: Breeze visual style for the Plasma desktop
+kde-plasma/breeze-gtk 5.5.2 5.5.3: Official GTK+ port of KDE's Breeze widget style
+kde-plasma/kde-cli-tools 5.4.3 5.5.2-r1 5.5.3: Tools based on KDE Frameworks 5 to better interact with the system
+kde-plasma/kde-gtk-config 5.4.3 5.5.2 5.5.3: KDE systemsettings kcm to set GTK application look&feel
+kde-plasma/kdecoration 5.4.3 5.5.2 5.5.3: Plugin based library to create window decorations
+kde-plasma/kdeplasma-addons 5.4.3 5.4.3-r1 5.5.2 5.5.3: Extra Plasma applets and engines
+kde-plasma/kgamma 5.4.3 5.5.2 5.5.3: Screen gamma values kcontrol module
+kde-plasma/khelpcenter 5.4.3 5.5.2 5.5.3: The KDE Help Center
+kde-plasma/khotkeys 5.4.3 5.4.3-r1 5.5.2 5.5.3: KDE workspace hotkey module
+kde-plasma/kinfocenter 5.4.3 5.5.2 5.5.3: A utility that provides information about a computer system
+kde-plasma/kmenuedit 5.4.3 5.5.2 5.5.3: KDE menu editor
+kde-plasma/kscreen 5.4.3 5.5.2 5.5.3: KDE screen management
+kde-plasma/kscreenlocker 5.5.2 5.5.3: Library and components for secure lock screen architecture
+kde-plasma/ksshaskpass 5.4.3 5.5.2-r1 5.5.3: KDE implementation of ssh-askpass with Kwallet integration
+kde-plasma/ksysguard 5.4.3 5.5.2 5.5.3: Network-enabled task manager and system monitor
+kde-plasma/kwallet-pam 5.4.3 5.4.3-r1 5.5.2 5.5.3: KWallet PAM module to not enter password again
+kde-plasma/kwayland 5.4.3 5.5.2 5.5.3: Qt-style client and server library wrapper for Wayland libraries
+kde-plasma/kwayland-integration 5.4.3 5.5.2 5.5.3: Provides integration plugins for various KDE frameworks for Wayland
+kde-plasma/kwin 5.4.3 5.5.2 5.5.3: KDE window manager
+kde-plasma/kwrited 5.4.3 5.5.2 5.5.3: KDE daemon listening for wall and write messages
+kde-plasma/libkscreen 5.4.3 5.5.2 5.5.3: KDE screen management library
+kde-plasma/libksysguard 5.4.3 5.5.2 5.5.3: Task management and system monitoring library
+kde-plasma/milou 5.4.3 5.5.2 5.5.3: Dedicated search application built on top of Baloo
+kde-plasma/oxygen 5.4.3 5.5.2 5.5.3: KDE window manager theme
 kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE desktop
-kde-plasma/plasma-desktop 5.4.3 5.5.0-r1 5.5.1 5.5.2 5.5.3: KDE Plasma desktop
-kde-plasma/plasma-mediacenter 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: Unified media experience for any device capable of running KDE
-kde-plasma/plasma-meta 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: Merge this to pull in all Plasma 5 packages
-kde-plasma/plasma-nm 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: KDE Plasma applet for NetworkManager
-kde-plasma/plasma-pa 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: Plasma applet for audio volume management using PulseAudio
-kde-plasma/plasma-sdk 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: Useful applications for Plasma development
-kde-plasma/plasma-workspace 5.4.3 5.4.3-r1 5.5.0 5.5.1 5.5.1.1 5.5.2-r1 5.5.3: KDE Plasma workspace
-kde-plasma/plasma-workspace-wallpapers 5.4.3 5.5.0-r1 5.5.1-r1 5.5.2-r1 5.5.3: Additional wallpapers for the Plasma workspace
-kde-plasma/polkit-kde-agent 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: PolKit agent module for KDE
-kde-plasma/powerdevil 5.4.3 5.5.0 5.5.1 5.5.2-r1 5.5.3: Power management for KDE Plasma Shell
-kde-plasma/sddm-kcm 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: KDE control module for SDDM
-kde-plasma/systemsettings 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: System settings utility
-kde-plasma/user-manager 5.4.3 5.5.0 5.5.1 5.5.2 5.5.3: Simple system settings module to manage the users of your system
+kde-plasma/plasma-desktop 5.4.3 5.5.2 5.5.3: KDE Plasma desktop
+kde-plasma/plasma-mediacenter 5.4.3 5.5.2 5.5.3: Unified media experience for any device capable of running KDE
+kde-plasma/plasma-meta 5.4.3 5.5.2 5.5.3: Merge this to pull in all Plasma 5 packages
+kde-plasma/plasma-nm 5.4.3 5.5.2 5.5.3: KDE Plasma applet for NetworkManager
+kde-plasma/plasma-pa 5.4.3 5.5.2 5.5.3: Plasma applet for audio volume management using PulseAudio
+kde-plasma/plasma-sdk 5.4.3 5.5.2 5.5.3: Useful applications for Plasma development
+kde-plasma/plasma-workspace 5.4.3 5.4.3-r1 5.5.2-r1 5.5.3: KDE Plasma workspace
+kde-plasma/plasma-workspace-wallpapers 5.4.3 5.5.2-r1 5.5.3: Additional wallpapers for the Plasma workspace
+kde-plasma/polkit-kde-agent 5.4.3 5.5.2 5.5.3: PolKit agent module for KDE
+kde-plasma/powerdevil 5.4.3 5.5.2-r1 5.5.3: Power management for KDE Plasma Shell
+kde-plasma/sddm-kcm 5.4.3 5.5.2 5.5.3: KDE control module for SDDM
+kde-plasma/systemsettings 5.4.3 5.5.2 5.5.3: System settings utility
+kde-plasma/user-manager 5.4.3 5.5.2 5.5.3: Simple system settings module to manage the users of your system
 lxde-base/lxappearance 0.5.2 0.5.3 0.5.4 0.5.5: LXDE GTK+ theme switcher
 lxde-base/lxappearance-obconf 0.2.1: LXAppearance plugin for configuring OpenBox
 lxde-base/lxde-common 0.5.5-r2 0.5.5-r3: LXDE Session default configuration files and nuoveXT2 iconset
@@ -13459,7 +13459,7 @@ net-analyzer/hydra 8.1: Advanced parallized login hacker
 net-analyzer/ibmonitor 1.4: Interactive bandwidth monitor
 net-analyzer/icinga 1.13.3-r1: Nagios Fork - Check daemon, CGIs, docs, IDOutils
 net-analyzer/icinga-web 1.9.1-r1 1.10.0 1.10.0-r1 1.10.1 1.11.2: Icinga Web - new Web Interface
-net-analyzer/icinga2 2.3.10-r1 2.3.11 2.4.0 2.4.1 2.4.1-r1 2.4.1-r2 9999: Distributed, general purpose, network monitoring engine
+net-analyzer/icinga2 2.3.10-r1 2.3.11 2.4.0 2.4.1 2.4.1-r1 2.4.1-r2 2.4.1-r3 9999: Distributed, general purpose, network monitoring engine
 net-analyzer/ifmetric 0.3 0.3-r1: Linux tool for setting metrics of all IPv4 routes attached to a given network interface at once
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
 net-analyzer/ifstatus 1.1.0-r1: A simple CLI program for displaying network statistics in real time
@@ -18344,7 +18344,7 @@ x11-plugins/pidgin-sipe 1.18.0-r1 1.20.1: Pidgin Plug-in SIPE (Sip Exchange Prot
 x11-plugins/pidgin-xmpp-receipts 0.6: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.1: Pidgin plugin to render LaTeX expressions in messages
 x11-plugins/prpltwtr 0.12.0: libpurple twitter protocol
-x11-plugins/purple-facebook 20150806 20150827 20151225 20160107: Facebook protocol plugin for libpurple
+x11-plugins/purple-facebook 20160107 20160118: Facebook protocol plugin for libpurple
 x11-plugins/purple-libnotify-plus 1.99.2 2.99.1: Provide libnotify interface to Pidgin and Finch, inspired by Pidgin-libnotify and Guifications
 x11-plugins/purple-plugin_pack 2.7.0-r1: A package with many different plugins for pidgin and libpurple
 x11-plugins/qled 0.6.2: Custom Led widget plugin for Qt-Designer
