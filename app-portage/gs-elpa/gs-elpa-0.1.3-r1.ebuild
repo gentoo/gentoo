@@ -6,18 +6,17 @@ EAPI=6
 
 PYTHON_COMPAT=(python{2_7,3_3,3_4,3_5})
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="g-sorcery backend for elisp packages"
 HOMEPAGE="https://github.com/jauhien/gs-elpa"
-SRC_URI=""
-EGIT_BRANCH="master"
-EGIT_REPO_URI="https://github.com/jauhien/gs-elpa"
+SRC_URI="https://github.com/jauhien/gs-elpa/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
-DEPEND=">=app-portage/g-sorcery-0.2[$(python_gen_usedep 'python*')]
+DEPEND="app-portage/g-sorcery[$(python_gen_usedep 'python*')]
 	dev-python/sexpdata[$(python_gen_usedep 'python*')]"
 RDEPEND="${DEPEND}"
 
