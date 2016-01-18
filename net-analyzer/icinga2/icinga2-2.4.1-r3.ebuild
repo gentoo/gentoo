@@ -14,17 +14,20 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+mysql postgres classicui console lto minimal nano-syntax +plugins studio +vim-syntax"
 
-DEPEND="
+CDEPEND="
 	dev-libs/openssl:0
 	>=dev-libs/boost-1.41
-	sys-devel/bison
-	>=sys-devel/flex-2.5.35
 	console? ( dev-libs/libedit )
 	mysql? ( virtual/mysql )
 	postgres? ( dev-db/postgresql:= )"
 
+DEPEND="
+	${CDEPEND}
+	sys-devel/bison
+	>=sys-devel/flex-2.5.35"
+
 RDEPEND="
-	${DEPEND}
+	${CDEPEND}
 	plugins? ( || (
 		net-analyzer/monitoring-plugins
 		net-analyzer/nagios-plugins
