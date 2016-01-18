@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit autotools
+inherit autotools eutils
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://people.freedesktop.org/~airlied/virglrenderer"
@@ -30,6 +30,7 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-libs/check-0.9.4 )"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-libdrm.patch #571124
 	[[ -e configure ]] || eautoreconf
 }
 
