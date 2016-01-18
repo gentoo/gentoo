@@ -223,7 +223,7 @@ php_init_slot_env() {
 	PHPCLI="${EPREFIX}/usr/${libdir}/${1}/bin/php"
 	PHPCGI="${EPREFIX}/usr/${libdir}/${1}/bin/php-cgi"
 	PHP_PKG="$(best_version =dev-lang/php-${1:3}*)"
-	PHPPREFIX="${EPREFIX}}/usr/${libdir}/${slot}"
+	PHPPREFIX="${EPREFIX}/usr/${libdir}/${slot}"
 	EXT_DIR="$(${PHPCONFIG} --extension-dir 2>/dev/null)"
 	PHP_CURRENTSLOT=${1:3}
 
