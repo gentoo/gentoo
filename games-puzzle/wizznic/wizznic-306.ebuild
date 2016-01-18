@@ -17,6 +17,7 @@ IUSE=""
 DEPEND="media-libs/libsdl[sound,joystick,video]
 	media-libs/sdl-image[png]
 	media-libs/sdl-mixer[vorbis]"
+RDEPEND=${DEPEND}
 
 S=${WORKDIR}/Wizznic_src_build_${PV}
 
@@ -25,6 +26,7 @@ src_prepare() {
 		-e '/^\(CC\|LD\|STRIP\)/d' \
 		-e 's/(LD)/(CC)/g' \
 		-e '/man1/s/1/6/g' \
+		-e '/CFLAGS.*=/d' \
 		Makefile.linux > Makefile || die
 	mv doc/wizznic.1 doc/wizznic.6 || die
 	sed -i \
