@@ -6544,7 +6544,7 @@ dev-php/PEAR-Net_LDAP2 2.0.12 2.1.0: OO interface for searching and manipulating
 dev-php/PEAR-Net_LMTP 1.0.2: Provides an implementation of the RFC2033 LMTP protocol
 dev-php/PEAR-Net_POP3 1.3.8: Provides a POP3 class to access POP3 server
 dev-php/PEAR-Net_Ping 2.4.5-r1: OS independent wrapper class for executing ping calls
-dev-php/PEAR-Net_SMTP 1.6.2: An implementation of the SMTP protocol
+dev-php/PEAR-Net_SMTP 1.6.2 1.7.1: An implementation of the SMTP protocol
 dev-php/PEAR-Net_Server 1.0.2-r1 1.0.3: Generic server class for PHP
 dev-php/PEAR-Net_Sieve 1.3.2 1.3.3: Provides an API to talk to the timsieved server that comes with Cyrus IMAPd
 dev-php/PEAR-Net_SmartIRC 1.1.4: Net_SmartIRC is a PHP class for communication with IRC networks
@@ -7392,7 +7392,7 @@ dev-python/pathtools 0.1.2: Pattern matching and various utilities for file syst
 dev-python/patsy 0.4.1: Python module to describe statistical models and design matrices
 dev-python/paver 1.2.3 1.2.4: Python-based software project scripting tool along the lines of Make
 dev-python/pbkdf2 1.3: Implementation of the password-based key derivation function, PBKDF2, specified in RSA PKCS#5 v2.0
-dev-python/pbr 0.8.2-r1 1.8.1: Inject some useful and sensible default behaviors into setuptools
+dev-python/pbr 0.8.2-r1 1.8.1 1.8.1-r1: Inject some useful and sensible default behaviors into setuptools
 dev-python/pdfrw 0.1 0.2: PDF file reader/writer library
 dev-python/pdoc 0.3.1: A simple program and library to auto generate API documentation for Python modules
 dev-python/peak-rules 0.5: Generic functions and business rules support systems
