@@ -9785,7 +9785,7 @@ games-action/heroes 0.21-r1: Heroes Enjoy Riding Over Empty Slabs: similar to Tr
 games-action/hotline-miami 1.0.9a_p20140221-r1: High-octane action game overflowing with raw brutality
 games-action/intrusion2 1.024: Fast paced action sidescroller set in a sci-fi environment
 games-action/koth 0.8.0: Multiplayer, networked game of little tanks with really big weapons
-games-action/lugaru 1.0c-r1 9999 20151204: 3D arcade with unique fighting system and anthropomorphic characters
+games-action/lugaru 9999 20151204: 3D arcade with unique fighting system and anthropomorphic characters
 games-action/luola 1.3.2: A 2D multiplayer arcade game resembling V-Wing
 games-action/maelstrom 3.0.6-r2: An asteroids battle game
 games-action/minetest 0.4.10-r1 0.4.10-r2 0.4.13: An InfiniMiner/Minecraft inspired game
@@ -10198,7 +10198,7 @@ games-fps/quake3-threewave 1.7-r1: Quake III Threewave CTF - Threewave CTF
 games-fps/quake4-bin 1.4.2-r1: Sequel to Quake 2, an id Software 3D first-person shooter
 games-fps/quake4-data 1.0.2147.12: sequel to Quake 2, an id 3D first-person shooter
 games-fps/quake4-demo 1.0-r1: Sequel to Quake 2, an Id 3D first-person shooter
-games-fps/quakeforge 0.5.5-r2 0.7.2: new 3d engine based off of id Softwares's Quake and QuakeWorld game engine
+games-fps/quakeforge 0.7.2: new 3d engine based off of id Softwares's Quake and QuakeWorld game engine
 games-fps/qudos 0.40.1: Enhanced Quake 2 engine
 games-fps/red-blue-quake2 0.1: red-blue Quake II ! play quake2 w/3d glasses !
 games-fps/rott 1.1.2: Rise of the Triad for Linux!
@@ -10328,7 +10328,7 @@ games-misc/opensfx 0.2.3: OpenSFX data files for OpenTTD
 games-misc/papers-please 1.1.65: A Dystopian Document Thriller
 games-misc/qlife 1.1: Simulates the classical Game of Life invented by John Conway
 games-misc/rfksay 0.1: Like cowsay, but different because it involves robots and kittens
-games-misc/robotfindskitten 1.7320508.406 2.7182818.701: Help robot find kitten
+games-misc/robotfindskitten 2.7182818.701: Help robot find kitten
 games-misc/sdljoytest 11102003: SDL app to test joysticks and game controllers
 games-misc/sex 1.0: Spouts silly mad-lib-style porn-like text
 games-misc/sound-of-sorting 0.6.3 0.6.5 0.6.6_pre20151107: Visualization and Audibilization of Sorting Algorithms
@@ -10349,7 +10349,7 @@ games-mud/lyntin 4.2-r1: tintin mud client clone implemented in Python
 games-mud/mudix 4.3-r1: A small, stable MUD client for the console
 games-mud/powwow 1.2.16: PowWow Console MUD Client
 games-mud/tf 50_beta8-r1: A small, flexible, screen-oriented MUD client (aka TinyFugue)
-games-mud/tintin 2.01.0 2.01.1: (T)he k(I)cki(N) (T)ickin d(I)kumud clie(N)t
+games-mud/tintin 2.01.1: (T)he k(I)cki(N) (T)ickin d(I)kumud clie(N)t
 games-mud/tkmoo 0.3.32: MOO Client written in Tcl/Tk
 games-mud/trebuchet 1.075: A crossplatform TCL/TK based MUD client
 games-mud/wxmud 9999: Cross-platform MUD client
