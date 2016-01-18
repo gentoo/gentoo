@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -77,6 +77,10 @@ prefix_src_archives() {
 TARBALL_PV=${PV}
 SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.bz2
 	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)"
+
+pkg_setup() {
+	use epydoc && DISTUTILS_ALL_SUBPHASE_IMPLS=( python2.7 )
+}
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
