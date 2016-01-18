@@ -19,7 +19,7 @@ IUSE="test"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	>=dev-python/setuptools_scm-1.9[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-runner[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
