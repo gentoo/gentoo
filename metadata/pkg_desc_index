@@ -7531,7 +7531,7 @@ dev-python/pygene 0.2.1-r1: Simple python genetic algorithms programming library
 dev-python/pygeocoder 1.2.5: Python wrapper for Google Geocoding API V3
 dev-python/pygit2 0.20.3 0.21.4-r1 0.22.1 0.23.0 0.23.3: Python bindings for libgit2
 dev-python/pyglet 1.1.4-r2 1.2.2 1.2.3 1.2.4: Cross-platform windowing and multimedia library for Python
-dev-python/pygments 2.0.2-r2: Pygments is a syntax highlighting package written in Python
+dev-python/pygments 2.0.2-r2 2.1: Pygments is a syntax highlighting package written in Python
 dev-python/pygobject 2.28.6-r55 3.14.0 3.16.2 3.18.2: GLib's GObject library bindings for Python
 dev-python/pygoocanvas 0.14.1-r1: GooCanvas python bindings
 dev-python/pygooglevoice 0.5-r2: Python Bindings for the Google Voice API
@@ -11042,7 +11042,7 @@ kde-apps/kompare 4.14.3 15.08.3: Kompare is a program to view the differences be
 kde-apps/konq-plugins 4.14.3 15.08.3: Various plugins for konqueror
 kde-apps/konqueror 4.14.3 15.08.3: KDE: Web browser and file manager
 kde-apps/konquest 4.14.3 15.08.3: Galactic Strategy KDE Game
-kde-apps/konsole 4.14.3 4.14.3-r1 4.14.3-r2 15.08.3: KDE's terminal emulator
+kde-apps/konsole 4.14.3 4.14.3-r2 15.08.3-r1: KDE's terminal emulator
 kde-apps/konsolekalendar 4.4.2015.06 4.14.8 4.14.10: A command line interface to KDE calendars
 kde-apps/konsolepart 4.14.3: X terminal kpart for use by konsole and other KDE applications
 kde-apps/kontact 4.4.2015.06 4.14.8 4.14.10: KDE personal information manager
@@ -15500,7 +15500,7 @@ sci-geosciences/mapnik 2.0.1 2.0.2 2.1.0 2.2.0: A Free Toolkit for developing ma
 sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
 sci-geosciences/mapserver 6.0.1-r2 6.0.1-r3: OpenSource development environment for constructing spatially enabled Internet-web applications
 sci-geosciences/mc2bsbh 0.0.9: MapCal to BSBchart Header Utility
-sci-geosciences/merkaartor 0.17.2 0.18.1 0.18.1-r1 9999: A Qt4 based map editor for the openstreetmap.org project
+sci-geosciences/merkaartor 0.17.2 0.18.1-r2 9999: A Qt4 based map editor for the openstreetmap.org project
 sci-geosciences/mkgmap 1995: Tool to create garmin maps
 sci-geosciences/mtkbabel 0.8.2 0.8.3.1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
 sci-geosciences/opencpn 3.0.2 3.2.2 4.0.0 4.0.0-r1: a free, open source software for marine navigation
