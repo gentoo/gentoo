@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ GNOME2_LA_PUNT="yes"
 inherit autotools bash-completion-r1 eutils gnome2
 
 DESCRIPTION="Virtual filesystem implementation for gio"
-HOMEPAGE="https://git.gnome.org/browse/gvfs"
+HOMEPAGE="https://wiki.gnome.org/Projects/gvfs"
 
 LICENSE="LGPL-2+"
 SLOT="0"
