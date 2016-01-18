@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils autotools
 
-MY_PV="6a0a79182ebc"
+MY_PV="25a255f32eee"
 S="${WORKDIR}/${PN}-${MY_PV}"
 DESCRIPTION="Facebook protocol plugin for libpurple"
 HOMEPAGE="https://github.com/jgeboski/purple-facebook"
