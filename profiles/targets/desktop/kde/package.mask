@@ -1,0 +1,23 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Mask to avoid conflicts in kde profile
+kde-apps/kdeaccessibility-meta:5
+kde-apps/kdeadmin-meta:5
+kde-apps/kdeartwork-meta:5
+kde-apps/kdebase-meta:5
+kde-apps/kdeedu-meta:5
+kde-apps/kdegames-meta:5
+kde-apps/kdegraphics-meta:5
+kde-apps/kdemultimedia-meta:5
+kde-apps/kdenetwork-meta:5
+kde-apps/kdepim-meta:5
+kde-apps/kdesdk-meta:5
+kde-apps/kdetoys-meta:5
+kde-apps/kdeutils-meta:5
+kde-apps/kdewebdev-meta:5
+kde-apps/kde-apps-meta:5
+kde-apps/kde-meta:5
+kde-apps/kde-wallpapers:5
+kde-frameworks/oxygen-icons:5

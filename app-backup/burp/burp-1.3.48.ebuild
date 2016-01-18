@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ DEPEND="
 	dev-libs/openssl:0
 	dev-libs/uthash
 	sys-libs/libcap
-	net-libs/librsync
+	<net-libs/librsync-2.0
 	sys-libs/ncurses:0=
 	sys-libs/zlib
 	acl? ( sys-apps/acl )
@@ -35,6 +35,7 @@ RDEPEND="${DEPEND}
 
 DOCS=( CONTRIBUTORS DONATIONS UPGRADING )
 PATCHES=(
+	"${FILESDIR}/${PV}-non-zero-or-build-failure.patch"
 	"${FILESDIR}/${PV}-bedup-conf-path.patch"
 	"${FILESDIR}/${PV}-tinfo.patch"
 	"${FILESDIR}/${PV}-0001-Set-default_md-sha256-in-CA.cnf.patch"

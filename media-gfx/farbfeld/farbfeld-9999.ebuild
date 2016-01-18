@@ -16,6 +16,7 @@ KEYWORDS=""
 RDEPEND="
 	media-libs/libjpeg-turbo
 	media-libs/libpng:*
+	media-libs/lcms:2
 "
 DEPEND="
 	${RDEPEND}

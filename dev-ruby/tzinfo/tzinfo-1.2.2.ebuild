@@ -18,7 +18,7 @@ HOMEPAGE="http://tzinfo.github.io/"
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 RDEPEND="sys-libs/timezone-data"

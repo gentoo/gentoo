@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ inherit autotools eutils
 MY_P=${P/_/-}
 
 DESCRIPTION="Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability"
-HOMEPAGE="http://portland.freedesktop.org/"
+HOMEPAGE="http://www.freedesktop.org/wiki/Software/xdg-utils/"
 #SRC_URI="https://dev.gentoo.org/~johu/distfiles/${P}.tar.xz"
 #SRC_URI="http://people.freedesktop.org/~rdieter/${PN}/${MY_P}.tar.gz
 #	https://dev.gentoo.org/~ssuominen/${P}-patchset-1.tar.xz"

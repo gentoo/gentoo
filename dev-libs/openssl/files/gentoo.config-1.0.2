@@ -108,8 +108,13 @@ linux)
 	#	sh64*)        machine=elf;;
 		sh*b*)        machine="generic32 -DB_ENDIAN";;
 		sh*)          machine="generic32 -DL_ENDIAN";;
+		# TODO: Might want to do -mcpu probing like glibc to determine a
+		# better default for sparc-linux-gnu targets.  This logic will
+		# break v7 and older systems when they use it.
 		sparc*v7*)    machine="generic32 -DB_ENDIAN";;
-		sparc64*)     machine=sparcv9;;
+		sparc64*)     machine=sparcv9 system=linux64;;
+		sparc*v9*)    machine=sparcv9;;
+		sparc*v8*)    machine=sparcv8;;
 		sparc*)       machine=sparcv8;;
 		s390x*)       machine=s390x system=linux64;;
 		s390*)        machine="generic32 -DB_ENDIAN";;

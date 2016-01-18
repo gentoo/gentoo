@@ -5,4 +5,8 @@
 	<upstream>
 		<remote-id type="github">cryptodotis/irssi-otr</remote-id>
 	</upstream>
+	<maintainer>
+		<email>monsieurp@gentoo.org</email>
+		<name>Patrice Clement</name>
+	</maintainer>
 </pkgmetadata>

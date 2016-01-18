@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>jlec@gentoo.org</email>
-	</maintainer>
-	<use>
-		<flag name="deblob">
+  <maintainer>
+    <email>jlec@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="deblob">
 		Remove binary blobs from kernel sources to provide libre license 
 		compliance.
 	</flag>
-		<flag name="experimental">
+    <flag name="experimental">
 		Apply experimental patches; for more information, 
 		see "https://wiki.gentoo.org/wiki/Project:Kernel/Experimental".
 	</flag>
-		<flag name="module">
+    <flag name="module">
 		Patch kernel to allow aufs being build as a module.
 	</flag>
-		<flag name="vanilla">
+    <flag name="vanilla">
         Use vanilla kernel sources without applying genpatches. 
 		WARNING: This flag will drop all support from the Gentoo Kernel 
 		Security team
 	</flag>
-	</use>
-	<upstream>
-		<remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
-		<remote-id type="sourceforge">aufs</remote-id>
-	</upstream>
+    <flag name="kdbus">Apply the kdbus patch. This also requires the "experimental" use flag.</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
+    <remote-id type="sourceforge">aufs</remote-id>
+  </upstream>
 </pkgmetadata>

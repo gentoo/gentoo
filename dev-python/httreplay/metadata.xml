@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <upstream>
+    <remote-id type="pypi">httreplay</remote-id>
+    <maintainer status="unknown">
+      <email>davepeck+httreplay@gmail.com</email>
+      <name>Aron Griffis, Dave Peck</name>
+    </maintainer>
+  </upstream>
+</pkgmetadata>

@@ -32,9 +32,6 @@ app-text/asciidoc test highlight
 
 app-misc/mc pam
 
-# See https://bugzilla.gnome.org/show_bug.cgi?id=370847 for why we disable pam
-gnome-extra/gnome-screensaver pam
-
 # Requires Linux-only packages
 app-accessibility/gok usb
 

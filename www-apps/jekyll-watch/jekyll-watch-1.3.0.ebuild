@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC=""
@@ -25,6 +25,4 @@ ruby_add_bdepend "test? ( >=www-apps/jekyll-2 )"
 
 all_ruby_prepare() {
 	rm Rakefile || die
-	# Fix tests until Rspec:3 is in tree
-	sed -i -e "/default_formatter/d" -e "/verify_partial_doubles/d" spec/spec_helper.rb || die
 }

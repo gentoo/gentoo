@@ -3,6 +3,10 @@
 <pkgmetadata>
 <herd>net-irc</herd>
 <maintainer>
+	<email>monsieurp@gentoo.org</email>
+	<name>Patrice Clement</name>
+</maintainer>
+<maintainer>
 	<email>swegener@gentoo.org</email>
 	<description>Primary Maintainer</description>
 </maintainer>
