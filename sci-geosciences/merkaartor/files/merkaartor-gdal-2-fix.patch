@@ -1,0 +1,212 @@
+--- a/src/ImportExport/ImportExportGdal.cpp 2015-06-15 18:48:39.604575423 +0200
++++ b/src/ImportExport/ImportExportGdal.cpp 2015-06-15 18:48:39.604575423 +0200
+@@ -21,10 +21,13 @@
+ #include "ProjectionChooser.h"
+ #include "Global.h"
+ 
+-#include "cpl_vsi.h"
++#include <cpl_vsi.h>
++#include <gdal.h>
++#include <gdal_priv.h>
+ 
+ #include <QDir>
+ 
++
+ bool parseContainer(QDomElement& e, Layer* aLayer);
+ 
+ ImportExportGdal::ImportExportGdal(Document* doc)
+@@ -55,6 +58,55 @@ bool ImportExportGdal::saveFile(QString)
+ bool ImportExportGdal::export_(const QList<Feature *>& featList)
+ {
+     const char *pszDriverName = "SQLite";
++    QString fileName(HOMEDIR + "/test.sqlite");
++#ifdef GDAL2
++    GDALDriver *poDriver;
++    GDALDriverManager *driverManager = GetGDALDriverManager();
++    GDALAllRegister();
++    driverManager->AutoLoadDrivers();
++
++    poDriver = driverManager->GetDriverByName(pszDriverName);
++    if( poDriver == NULL )
++    {
++        qDebug( "%s driver not available.", pszDriverName );
++        return false;
++    }
++
++    /* Create create options */
++    char **createOptions = NULL;
++    createOptions = CSLSetNameValue( createOptions, "SPATIALITE", "YES" );
++
++    /* Open new dataset */
++    GDALDataset *poDS;
++
++    QFile::remove(fileName);
++    poDS = poDriver->Create( fileName.toUtf8().constData(), 0, 0, 0, GDT_Unknown, createOptions );
++    if( poDS == NULL )
++    {
++        qDebug( "Creation of output file failed." );
++        return false;
++    }
++    poDS->ExecuteSQL("PRAGMA synchronous = OFF", NULL, NULL);
++
++    /* Create Spatial reference object */
++    OGRSpatialReference *poSRS;
++    poSRS = new OGRSpatialReference();
++    poSRS->importFromEPSG(4326);
++
++    /* Create layer options */
++    char **layerOptions = NULL;
++    layerOptions = CSLSetNameValue( layerOptions, "FORMAT", "SPATIALITE" );
++    layerOptions = CSLSetNameValue( layerOptions, "SPATIAL_INDEX", "YES" );
++
++    /* Create layer */
++    OGRLayer *poLayer;
++    poLayer = poDS->CreateLayer( "osm", poSRS, wkbUnknown, layerOptions);
++
++    /* Free the options */
++    CSLDestroy( createOptions );
++    CSLDestroy( layerOptions );
++#else
++    /* This is legacy code, and is not tested at all */
+     OGRSFDriver *poDriver;
+ 
+     OGRRegisterAll();
+@@ -68,8 +120,8 @@ bool ImportExportGdal::export_(const QList<Feature *>& featList)
+ 
+     OGRDataSource *poDS;
+ 
+-    QFile::remove(QString(HOMEDIR + "/test.sqlite"));
+-    poDS = poDriver->CreateDataSource( QString(HOMEDIR + "/test.sqlite").toUtf8().constData(), NULL );
++    QFile::remove(fileName);
++    poDS = poDriver->CreateDataSource( fileName.toUtf8().constData(), NULL );
+     if( poDS == NULL )
+     {
+         qDebug( "Creation of output file failed." );
+@@ -89,6 +141,8 @@ bool ImportExportGdal::export_(const QList<Feature *>& featList)
+     OGRLayer *poLayer;
+     poLayer = poDS->CreateLayer( "osm", poSRS, wkbUnknown, papszOptions);
+     CSLDestroy( papszOptions );
++#endif
++
+ 
+     if( poLayer == NULL )
+     {
+@@ -142,7 +196,11 @@ bool ImportExportGdal::export_(const QList<Feature *>& featList)
+         }
+         OGRFeature::DestroyFeature( poFeature );
+     }
++#ifdef GDAL2
++    GDALClose( (GDALDatasetH) poDS );
++#else
+     OGRDataSource::DestroyDataSource( poDS );
++#endif
+     return true;
+ }
+ 
+@@ -264,7 +322,11 @@ Feature* ImportExportGdal::parseGeometry(Layer* aLayer, OGRGeometry *poGeometry)
+ 
+ // import the  input
+ 
+-bool ImportExportGdal::importGDALDataset(OGRDataSource* poDS, Layer* aLayer, bool confirmProjection)
++#ifndef GDAL2
++#define GDALDataset OGRDataSource
++#endif
++bool ImportExportGdal::importGDALDataset(GDALDataset* poDS, Layer* aLayer, bool confirmProjection)
++#undef GDALDataset
+ {
+     int ogrError;
+ 
+@@ -422,11 +484,16 @@ bool ImportExportGdal::importGDALDataset(OGRDataSource* poDS, Layer* aLayer, boo
+ 
+ bool ImportExportGdal::import(Layer* aLayer)
+ {
++#ifdef GDAL2
++    GDALAllRegister();
++    GDALDataset *poDS;
++    poDS = (GDALDataset *) GDALOpen( FileName.toUtf8().constData(), GA_ReadOnly );
++#else
+     OGRRegisterAll();
+-
+-    OGRDataSource       *poDS;
+-
++    OGRDataSource *poDS;
+     poDS = OGRSFDriverRegistrar::Open( FileName.toUtf8().constData(), FALSE );
++#endif
++
+     if( poDS == NULL )
+     {
+         qDebug( "GDAL Open failed.\n" );
+@@ -435,22 +502,26 @@ bool ImportExportGdal::import(Layer* aLayer)
+ 
+     importGDALDataset(poDS, aLayer, M_PREFS->getGdalConfirmProjection());
+ 
+-    OGRDataSource::DestroyDataSource( poDS );
++    GDALClose( (GDALDatasetH) poDS );
+ 
+     return true;
+ }
+ 
+ bool ImportExportGdal::import(Layer* aLayer, const QByteArray& ba, bool confirmProjection)
+ {
+-    OGRRegisterAll();
+-
+-    OGRDataSource       *poDS;
+-//    int ogrError;
+-
+     GByte* content = (GByte*)(ba.constData());
+     /*FILE* f = */VSIFileFromMemBuffer("/vsimem/temp", content, ba.size(), FALSE);
+ 
++#ifdef GDAL2
++    GDALAllRegister();
++    GDALDataset *poDS;
++    poDS = (GDALDataset *) GDALOpen( "/vsimem/temp", GA_ReadOnly );
++#else
++    OGRRegisterAll();
++    OGRDataSource *poDS;
+     poDS = OGRSFDriverRegistrar::Open( "/vsimem/temp", FALSE );
++#endif
++
+     if( poDS == NULL )
+     {
+         qDebug( "GDAL Open failed.\n" );
+@@ -458,7 +529,7 @@ bool ImportExportGdal::import(Layer* aLayer, const QByteArray& ba, bool confirmP
+     }
+     importGDALDataset(poDS, aLayer, confirmProjection);
+ 
+-    OGRDataSource::DestroyDataSource( poDS );
++    GDALClose( (GDALDatasetH) poDS );
+ 
+     return true;
+ }
+--- a/src/ImportExport/ImportExportGdal.h 2015-06-15 18:50:42.884995287 +0200
++++ b/src/ImportExport/ImportExportGdal.h 2015-06-15 18:50:42.884995287 +0200
+@@ -13,7 +13,15 @@
+ #define ImportExportGDAL_H
+ 
+ #include "IImportExport.h"
+-#include "ogrsf_frmts.h"
++
++#include <ogrsf_frmts.h>
++#include <gdal.h>
++#include <gdal_priv.h>
++#include <gdal_version.h>
++
++#if GDAL_VERSION_MAJOR == 2
++#define GDAL2
++#endif
+ 
+ class Projection;
+ class Layer;
+@@ -52,7 +60,11 @@ class ImportExportGdal : public IImportExport
+     Node *nodeFor(Layer* aLayer, OGRPoint point);
+     Way *readWay(Layer* aLayer, OGRLineString *poRing);
+ 
+-    bool importGDALDataset(OGRDataSource *poDs, Layer *aLayer, bool confirmProjection);
++#ifndef GDAL2
++#define GDALDataset OGRDataSource
++#endif
++    bool importGDALDataset(GDALDataset *poDs, Layer *aLayer, bool confirmProjection);
++#undef GDALDataset
+ 
+ private:
+     QHash<OGRPoint, Node*> pointHash;
