@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-libs/openssl
+DEPEND="dev-libs/openssl:0
 		dev-libs/libpcre
 		dev-lang/luajit:2
 		dev-libs/libevent
