@@ -34,9 +34,10 @@ src_prepare() {
 	# we prefer to have it in /usr/share/KeePass
 	epatch "${FILESDIR}/${PN}-2.20-xsl-path-detection.patch"
 	# bug # 558094
-	has_version ">=dev-lang/mono-4" && \
-		sed -i -e 's! ToolsVersion="3.5"!!g' Translation/TrlUtil/TrlUtil.csproj || die && \
+	if has_version ">=dev-lang/mono-4" ; then
+		sed -i -e 's! ToolsVersion="3.5"!!g' Translation/TrlUtil/TrlUtil.csproj || die
 		sed -i -e 's/Format Version 10.00/Format Version 11.00/' KeePass.sln || die
+	fi
 }
 
 src_compile() {
