@@ -233,7 +233,7 @@ app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yaala 0.7.3-r1 0.7.3-r2: Yet Another Log Analyzer
 app-antivirus/clamav 0.98.7 0.98.7-r1 0.99: Clam Anti-Virus Scanner
-app-antivirus/clamav-unofficial-sigs 3.7.2 4.5.3: Downloads and installs third-party clamav signatures
+app-antivirus/clamav-unofficial-sigs 3.7.2 4.5.3 4.9.2: Download and install third-party clamav signatures
 app-arch/advancecomp 1.15 1.16 1.17 1.19: Recompress ZIP, PNG and MNG using deflate 7-Zip, considerably improving compression
 app-arch/afio 2.5 2.5.1: makes cpio-format archives and deals somewhat gracefully with input data corruption
 app-arch/alien 8.89 8.90 8.93 8.94: Converts between the rpm, dpkg, stampede slp, and slackware tgz file formats
@@ -7203,7 +7203,7 @@ dev-python/kaa-metadata 0.7.7-r1: Powerful media metadata parser for media files
 dev-python/kazoo 1.3.1 2.0 2.2.1: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/keepassx 0.0.3 0.1.0: Python API and CLI for KeePassX
 dev-python/keyczar 0.71c 0.715: Toolkit for safe and simple cryptography
-dev-python/keyring 1.0 1.5 1.5-r1 1.6.1 3.1 3.3 3.7 4.0: Provides access to the system keyring service
+dev-python/keyring 1.0 1.5 1.5-r1 1.6.1 3.1 3.3 3.7 4.0 7.3: Provides access to the system keyring service
 dev-python/keystonemiddleware 1.5.0 1.5.2 2.2.0 2.3.1 2.3.2: A middleware for the OpenStack Keystone API
 dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
 dev-python/kivy-garden 0.1.1: Kivys Garden tool to manage flowers
