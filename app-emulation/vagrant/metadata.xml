@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
-    <email>maintainer-needed@gentoo.org</email>
-  </maintainer>
-  <upstream>
-    <remote-id type="github">mitchellh/vagrant</remote-id>
-  </upstream>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>hydrapolic@gmail.com</email>
+		<name>Tomas Mozes</name>
+		<description>Proxy maintainer</description>
+	</maintainer>
+	<use>
+		<flag name='virtualbox'>
+			Use VirtualBox provider.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">mitchellh/vagrant</remote-id>
+	</upstream>
 </pkgmetadata>
