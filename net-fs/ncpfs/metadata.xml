@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>net-fs</herd>
+	<maintainer>
+		<email>kumba@gentoo.org</email>
+		<name>Joshua Kinard</name>
+	</maintainer>
 	<longdescription>Provides Access to Netware services using the NCP protocol (Kernel support must be activated!)</longdescription>
 </pkgmetadata>
