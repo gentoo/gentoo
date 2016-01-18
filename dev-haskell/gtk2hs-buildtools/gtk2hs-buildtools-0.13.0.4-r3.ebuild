@@ -30,6 +30,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-ia64.patch
+	epatch "${FILESDIR}"/${P}-alex-3.1.6.patch
 }
 
 src_configure() {
