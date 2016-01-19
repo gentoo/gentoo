@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit findlib
+inherit findlib eutils
 
 DESCRIPTION="A compiler from OCaml bytecode to javascript"
 HOMEPAGE="http://ocsigen.org/js_of_ocaml/"
@@ -19,7 +19,7 @@ DEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]
 	>=dev-ml/lwt-2.4.4:=
 	dev-ml/react:=
 	dev-ml/reactiveData:=
-	>=dev-ml/tyxml-3.3:=
+	>=dev-ml/tyxml-3.6:=
 	dev-ml/cmdliner:=
 	dev-ml/menhir:=
 	dev-ml/ocaml-base64:=
@@ -27,6 +27,12 @@ DEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]
 	dev-ml/cppo:=
 	deriving? ( >=dev-ml/deriving-0.6:= )"
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	epatch \
+		"${FILESDIR}/tyxml36.patch" \
+		"${FILESDIR}/tyxml36-2.patch"
+}
 
 src_configure() {
 	use ocamlopt || echo "BEST := byte" >> Makefile.conf
