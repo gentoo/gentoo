@@ -20,5 +20,5 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 ruby_add_bdepend "
-	test? ( dev-ruby/rspec-its
-		>dev-ruby/rspec-3 )"
+	test? ( dev-ruby/rspec-its )
+"
