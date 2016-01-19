@@ -108,7 +108,7 @@ net-libs/libproxy kde
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (06 June 2010)
 # requires more keywording per bug #323003
-kde-base/kde-meta sdk
+kde-apps/kde-meta sdk
 
 # Kacper Kowalik <xarthisius@gentoo.org> (30 May 2010)
 # quesoglc is not keyworded
