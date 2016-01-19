@@ -100,7 +100,7 @@ src_prepare() {
 
 	#removing broken sample bug #558104
 	if use contrib; then
-		rm ../opencv_contrib-master/modules/ximgproc/samples/disparity_filtering.cpp
+		rm ../opencv_contrib-master/modules/ximgproc/samples/disparity_filtering.cpp || die
 	fi
 
 	java-pkg-opt-2_src_prepare
