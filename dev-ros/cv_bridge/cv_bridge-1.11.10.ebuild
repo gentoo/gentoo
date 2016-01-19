@@ -7,22 +7,18 @@ ROS_REPO_URI="https://github.com/ros-perception/vision_opencv"
 KEYWORDS="~amd64 ~arm"
 PYTHON_COMPAT=( python2_7 )
 ROS_SUBDIR=${PN}
-CATKIN_HAS_MESSAGES=yes
 
 inherit ros-catkin
 
-DESCRIPTION="OpenCV applications for ROS"
+DESCRIPTION="Converts between ROS Image messages and OpenCV images"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/cv_bridge
-	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
-	dev-ros/image_transport
-	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-ros/nodelet
-	dev-ros/roscpp
-	>=media-libs/opencv-3:0=[contrib]
+	dev-ros/rosconsole
+	media-libs/opencv
+	dev-libs/boost:=[threads,python,${PYTHON_USEDEP}]
+	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP},${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"

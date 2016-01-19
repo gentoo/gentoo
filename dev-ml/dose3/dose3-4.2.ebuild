@@ -4,16 +4,16 @@
 
 EAPI=5
 
+inherit eutils
+
 MY_P="${P/_beta/-beta}"
-MY_P="${MY_P/_rc/-rc}"
 DESCRIPTION="Library and a collection of tools to perform la large spectrum of analysis on package repositories"
-HOMEPAGE="http://dose.gforge.inria.fr/public_html/"
-SRC_URI="https://gforge.inria.fr/frs/download.php/file/34909/${MY_P}.tar.gz"
+HOMEPAGE="http://www.mancoosi.org/software/ https://gforge.inria.fr/projects/dose"
+SRC_URI="https://gforge.inria.fr/frs/download.php/file/35465/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0/${PV}"
-#Breaks dev-ml/opam, its sole revdep
-#KEYWORDS="~amd64"
+KEYWORDS="~amd64"
 IUSE="+ocamlopt +parmap zip bzip2 xml curl rpm4 test"
 
 RDEPEND="
@@ -25,7 +25,7 @@ RDEPEND="
 	parmap? ( dev-ml/parmap:= )
 	zip? ( dev-ml/camlzip:= )
 	bzip2? ( dev-ml/camlbz2:= )
-	>=dev-ml/ocamlgraph-1.8.5:=
+	>=dev-ml/ocamlgraph-1.8.6:=
 	xml? ( dev-ml/ocaml-expat:= dev-ml/xml-light:= )
 	curl? ( dev-ml/ocurl:= )
 	rpm4? ( app-arch/rpm )
@@ -57,4 +57,9 @@ src_configure() {
 
 src_compile() {
 	emake -j1
+}
+
+src_install() {
+	emake DESTDIR="${D}" BINDIR="${ED}/usr/bin" install || die
+	dodoc CHANGES CREDITS README.architecture TODO
 }

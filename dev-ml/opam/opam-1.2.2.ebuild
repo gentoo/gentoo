@@ -27,13 +27,17 @@ DEPEND="dev-lang/ocaml:=
 	dev-ml/ocamlgraph:=
 	dev-ml/cmdliner:=
 	dev-ml/cudf:=
-	dev-ml/dose3:=
+	>=dev-ml/dose3-4:=
 	dev-ml/uutf:=
 	dev-ml/jsonm:=
 "
 RDEPEND="${DEPEND}
 	dev-ml/findlib
 "
+
+src_prepare() {
+	epatch "${FILESDIR}/0001-Port-to-Dose3-4.0.1.patch"
+}
 
 src_compile() {
 	emake -j1
