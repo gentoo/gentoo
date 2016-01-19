@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		The psqueues package provides
+		&lt;http://en.wikipedia.org/wiki/Priority_queue Priority Search Queues&gt; in
+		three different flavors.
+		
+		* @OrdPSQ k p v@, which uses the @Ord k@ instance to provide fast insertion,
+		deletion and lookup. This implementation is based on Ralf Hinze&#39;s
+		&lt;http://citeseer.ist.psu.edu/hinze01simple.html A Simple Implementation Technique for Priority Search Queues&gt;.
+		Hence, it is similar to the
+		&lt;http://hackage.haskell.org/package/PSQueue PSQueue&gt; library, although it is
+		considerably faster and provides a slightly different API.
+		
+		* @IntPSQ p v@ is a far more efficient implementation. It fixes the key type
+		to @Int@ and uses a &lt;http://en.wikipedia.org/wiki/Radix_tree radix tree&gt;
+		(like @IntMap@) with an additional min-heap property.
+		
+		* @HashPSQ k p v@ is a fairly straightforward extension of @IntPSQ@: it
+		simply uses the keys&#39; hashes as indices in the @IntPSQ@. If there are any
+		hash collisions, it uses an @OrdPSQ@ to resolve those. The performance of
+		this implementation is comparable to that of @IntPSQ@, but it is more widely
+		applicable since the keys are not restricted to @Int@, but rather to any
+		@Hashable@ datatype.
+		
+		Each of the three implementations provides the same API, so they can be used
+		interchangeably. The benchmarks show how they perform relative to one
+		another, and also compared to the other Priority Search Queue
+		implementations on Hackage:
+		&lt;http://hackage.haskell.org/package/PSQueue PSQueue&gt;
+		and
+		&lt;http://hackage.haskell.org/package/fingertree-psqueue fingertree-psqueue&gt;.
+		
+		&lt;&lt;http://i.imgur.com/KmbDKR6.png&gt;&gt;
+		
+		&lt;&lt;http://i.imgur.com/ClT181D.png&gt;&gt;
+		
+		Typical applications of Priority Search Queues include:
+		
+		* Caches, and more specifically LRU Caches;
+		
+		* Schedulers;
+		
+		* Pathfinding algorithms, such as Dijkstra&#39;s and A*.
+	</longdescription>
+</pkgmetadata>
