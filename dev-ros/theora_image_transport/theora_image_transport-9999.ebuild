@@ -21,9 +21,7 @@ RDEPEND="
 	dev-ros/cv_bridge
 	dev-ros/dynamic_reconfigure
 	dev-ros/image_transport
-	dev-ros/tf
 	media-libs/opencv
-	dev-ros/tf
 	dev-ros/rosbag
 	dev-ros/pluginlib
 	media-libs/libogg
