@@ -1,12 +1,12 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
 inherit eutils cmake-utils qt4-r2 git-r3
 
-DESCRIPTION="A PSP emulator for Android, Windows, Mac, Linux and Blackberry 10, written in C++."
+DESCRIPTION="A PSP emulator written in C++."
 HOMEPAGE="http://www.ppsspp.org/"
 EGIT_REPO_URI="git://github.com/hrydgard/ppsspp.git"
 EGIT_COMMIT="v${PV}"
