@@ -20,7 +20,7 @@ RDEPEND="
 	media-libs/opencv
 	x11-libs/gtk+:2
 	dev-ros/camera_calibration_parsers
-	dev-ros/cv_bridge
+	>=dev-ros/cv_bridge-1.11.10
 	dev-ros/image_transport
 	dev-ros/message_filters
 	dev-ros/nodelet
