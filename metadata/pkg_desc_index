@@ -4999,7 +4999,7 @@ dev-ml/deriving 0.6.2 0.7: A deriving library for Ocsigen
 dev-ml/deriving-ocsigen 0.3c: A deriving library for Ocsigen
 dev-ml/dose3 4.2: Library and a collection of tools to perform la large spectrum of analysis on package repositories
 dev-ml/easy-format 1.0.2: Pretty-printing library for OCaml
-dev-ml/eliom 3.0.3 4.1.0 4.1.0-r1 4.2: A web framework to program client/server applications
+dev-ml/eliom 4.2: A web framework to program client/server applications
 dev-ml/enumerate 111.08.00: Syntax extension to produce a list of all values of a type
 dev-ml/extlib 1.5.4 1.6.1 1.7.0-r1: Standard library extensions for O'Caml
 dev-ml/facile 1.1 1.1.1: A constraint programming library on integer and integer set finite domains written in OCaml
@@ -5012,7 +5012,7 @@ dev-ml/herelib 109.35.00 109.35.02 112.35.00: Syntax extension for inserting the
 dev-ml/iTeML 2.0.1: Inline (Unit) Tests for OCaml
 dev-ml/incremental 112.35.00 113.00.00: Library for incremental computations
 dev-ml/io-page 1.5.1: IO memory page library for Mirage backends
-dev-ml/js_of_ocaml 1.3.2 1.4 2.5 2.5-r1 2.6: A compiler from OCaml bytecode to javascript
+dev-ml/js_of_ocaml 2.6: A compiler from OCaml bytecode to javascript
 dev-ml/jsonm 0.9.1: Non-blocking streaming JSON codec for OCaml
 dev-ml/kaputt 1.2: Unit testing tool for the Objective Caml language
 dev-ml/lablgl 1.04-r1 1.05: Objective CAML interface for OpenGL
@@ -5086,7 +5086,7 @@ dev-ml/type-conv 112.01.02 113.00.00 113.00.02: Mini library required for some o
 dev-ml/typehashlib 109.15.02: Syntax extension for deriving 'typehash' functions automatically
 dev-ml/typerep 112.35.00 113.00.00: Library for creating runtime representation of OCaml types
 dev-ml/typerep_extended 112.17.00 113.00.00: Runtime types for OCaml (Extended)
-dev-ml/tyxml 3.5.0: A libary to build xml trees typechecked by OCaml
+dev-ml/tyxml 3.5.0 3.6.0: A libary to build xml trees typechecked by OCaml
 dev-ml/ulex 1.1: A lexer generator for unicode
 dev-ml/utop 1.11 1.16 1.18 1.18.1: A new toplevel for OCaml with completion and colorization
 dev-ml/uutf 0.9.4: Non-blocking streaming Unicode codec for OCaml
@@ -8167,7 +8167,7 @@ dev-ros/calibration_estimation 0.10.13 9999: Runs an optimization to estimate th
 dev-ros/calibration_launch 0.10.13 9999: Launch files that can be helpful in configuring the calibration stack to run on your robot
 dev-ros/calibration_msgs 0.10.13 9999: Messages for storing calibration samples to be used in full robot calibration procedures
 dev-ros/calibration_setup_helper 0.10.13 9999: Script to generate calibration launch and configurationfiles for your robot
-dev-ros/camera_calibration 1.12.14 9999: Calibration of monocular or stereo cameras using a checkerboard calibration target
+dev-ros/camera_calibration 1.12.14 1.12.15 9999: Calibration of monocular or stereo cameras using a checkerboard calibration target
 dev-ros/camera_calibration_parsers 1.11.7 1.11.8 1.11.9 9999: Routines for reading and writing camera calibration parameters
 dev-ros/camera_info_manager 1.11.7 1.11.8 1.11.9 9999: C++ interface for camera calibration information
 dev-ros/carrot_planner 1.13.0 1.13.1 9999: Attempts to find a legal place to put a carrot for the robot to follow
@@ -8176,8 +8176,8 @@ dev-ros/clear_costmap_recovery 1.13.0 1.13.1 9999: Recovery behavior that attemp
 dev-ros/cmake_modules 0.4.0 9999: CMake Modules which are not distributed with CMake but are commonly used by ROS packages
 dev-ros/collada_parser 1.11.8 9999: C++ parser for the Collada robot description format
 dev-ros/collada_urdf 1.11.8 9999: Tool to convert Unified Robot Description Format (URDF) documents into COLLADA documents
-dev-ros/compressed_depth_image_transport 1.9.2-r1 9999: Plugin to image_transport for transparently sending depth images using PNG compression
-dev-ros/compressed_image_transport 1.9.2-r1 9999: Plugin to image_transport for transparently sending images encoded as JPEG or PNG
+dev-ros/compressed_depth_image_transport 1.9.2-r1 1.9.3 9999: Plugin to image_transport for transparently sending depth images using PNG compression
+dev-ros/compressed_image_transport 1.9.2-r1 1.9.3 9999: Plugin to image_transport for transparently sending images encoded as JPEG or PNG
 dev-ros/control_msgs 1.3.1 9999: Base messages and actions useful for controlling robots
 dev-ros/control_toolbox 1.13.2 9999: Modules that are useful across all controllers
 dev-ros/controller_interface 0.9.3 0.10.0 9999: Interface base class for controllers
@@ -8188,7 +8188,7 @@ dev-ros/convex_decomposition 0.1.10 9999: Convex Decomposition Tool for Robot Mo
 dev-ros/costmap_2d 1.13.0 1.13.1 9999: Creates a 2D costmap from sensor data
 dev-ros/cpp_common 0.5.6 9999: C++ code for doing things that are not necessarily ROS related
 dev-ros/cv_bridge 1.11.8 1.11.9 1.11.10 9999: Converts between ROS Image messages and OpenCV images
-dev-ros/depth_image_proc 1.12.14 9999: Nodelets for processing depth images such as those produced by OpenNI camera
+dev-ros/depth_image_proc 1.12.14 1.12.15 9999: Nodelets for processing depth images such as those produced by OpenNI camera
 dev-ros/depthimage_to_laserscan 1.0.7-r1 9999: Converts a depth image to a laser scan for use with navigation and localization
 dev-ros/diagnostic_aggregator 1.8.8 9999: Aggregates ROS diagnostics
 dev-ros/diagnostic_analysis 1.8.8 9999: Converts diagnostics data into a series of CSV files
@@ -8234,10 +8234,10 @@ dev-ros/hector_slam_launch 0.3.3 0.3.4 9999: Launch files for launching hector_s
 dev-ros/hector_trajectory_server 0.3.3 0.3.4 9999: Keeps track of tf trajectories and makes this data accessible via a service and topic
 dev-ros/image_cb_detector 0.10.13 9999: Extracts checkerboard corners from ROS images
 dev-ros/image_geometry 1.11.8 1.11.9 1.11.10 9999: C++ and Python libraries for interpreting images geometrically
-dev-ros/image_proc 1.12.14 9999: Single image rectification and color processing
-dev-ros/image_rotate 1.12.14 9999: Rotates an image stream minimizing the angle between an arbitrary vector and the camera frame
+dev-ros/image_proc 1.12.14 1.12.15 9999: Single image rectification and color processing
+dev-ros/image_rotate 1.12.14 1.12.15 9999: Rotates an image stream minimizing the angle between an arbitrary vector and the camera frame
 dev-ros/image_transport 1.11.7 1.11.8 1.11.9 9999: Transparent support for transporting images in low-bandwidth compressed formats
-dev-ros/image_view 1.12.14-r1 9999: Simple viewer for ROS image topics
+dev-ros/image_view 1.12.14-r1 1.12.15 9999: Simple viewer for ROS image topics
 dev-ros/imu_processors 0.2.1 9999: Processors for sensor_msgs::Imu data
 dev-ros/imu_transformer 0.2.1 9999: Node/nodelet combination to transform sensor_msgs::Imu data from one frame into another
 dev-ros/interactive_marker_tutorials 0.9.2 9999: Interactive marker tutorials
@@ -8409,7 +8409,7 @@ dev-ros/sound_play 0.2.7 0.2.8 0.2.9 9999: ROS node that translates commands on 
 dev-ros/stage_ros 1.7.5 9999: ROS specific hooks and tools for the Stage simulator
 dev-ros/std_msgs 0.5.9 9999: Standard ROS Messages
 dev-ros/std_srvs 1.11.1 9999: Messages relating to ROS comm
-dev-ros/stereo_image_proc 1.12.14 9999: Stereo and single image rectification and disparity processing
+dev-ros/stereo_image_proc 1.12.14 1.12.15 9999: Stereo and single image rectification and disparity processing
 dev-ros/stereo_msgs 1.12.3 9999: Messages specific to stereo processing, such as disparity images
 dev-ros/test_bond 1.7.16 9999: Tests for bond, bondpy and bondcpp
 dev-ros/test_diagnostic_aggregator 1.8.8 9999: diagnostic_aggregator tests
@@ -8437,7 +8437,7 @@ dev-ros/tf2_ros 0.5.12 9999: ROS bindings for the tf2 library, for both Python a
 dev-ros/tf2_sensor_msgs 0.5.12 9999: Transform sensor_msgs with tf. Most notably, PointCloud2
 dev-ros/tf2_tools 0.5.12 9999: TF2 tools
 dev-ros/tf_conversions 1.11.7 9999: Conversion functions to convert common tf datatypes into identical datatypes used by other libraries
-dev-ros/theora_image_transport 1.9.2 9999: Plugin to image_transport for transparently sending an image stream encoded with the Theora codec
+dev-ros/theora_image_transport 1.9.2 1.9.3 9999: Plugin to image_transport for transparently sending an image stream encoded with the Theora codec
 dev-ros/timestamp_tools 1.6.8 9999: Classes to help timestamp hardware events
 dev-ros/topic_tools 1.11.14 1.11.15 1.11.16 9999: Tools for directing, throttling and selecting ROS topics
 dev-ros/trajectory_msgs 1.12.3 9999: Messages for defining robot trajectories
@@ -15073,8 +15073,8 @@ ros-meta/geometry_tutorials 0.2.2 9999: Metapackage of geometry tutorials ROS
 ros-meta/hector_localization 0.2.0 0.2.1 9999: Collection of packages, that provide the full 6DOF pose of a robot or platform
 ros-meta/hector_slam 0.3.3 0.3.4 9999: hector_mapping and related packages
 ros-meta/image_common 1.11.7 1.11.8 1.11.9 9999: Common code for working with images in ROS
-ros-meta/image_pipeline 1.12.14 9999: Fills the gap between getting raw images from a camera driver and higher-level vision processing
-ros-meta/image_transport_plugins 1.9.2 9999: Plugins for publishing and subscribing topics in representations other than raw pixel data
+ros-meta/image_pipeline 1.12.14 1.12.15 9999: Fills the gap between getting raw images from a camera driver and higher-level vision processing
+ros-meta/image_transport_plugins 1.9.2 1.9.3 9999: Plugins for publishing and subscribing topics in representations other than raw pixel data
 ros-meta/imu_pipeline 0.2.1 9999: Tools for processing and pre-processing IMU messages for easier use by later subscribers
 ros-meta/laser_pipeline 1.6.1 9999: Meta-package for processing laser data, e.g. converting laser data into 3D representations
 ros-meta/mavros 0.16.3 0.16.4 0.16.5 9999: Metapackage for mavros packages
