@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prepare setup
+DEPEND=dev-lang/perl app-admin/apache-tools app-admin/makepasswd =www-servers/apache-2.4*
+DESCRIPTION=High-performance backups to a server's disk
+EAPI=5
+HOMEPAGE=http://backuppc.sourceforge.net/
+IUSE=rss samba
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl app-admin/apache-tools app-admin/makepasswd virtual/perl-IO-Compress dev-perl/Archive-Zip dev-perl/libwww-perl app-arch/tar app-arch/par2cmdline app-arch/gzip app-arch/bzip2 virtual/mta >=www-apache/mod_perl-2.0.9 www-apache/mpm_itk || ( >=www-servers/apache-2.4[apache2_modules_alias,apache2_modules_authn_core,apache2_modules_authz_core,apache2_modules_authz_host,apache2_modules_authz_user,apache2_modules_cgi] >=www-servers/apache-2.4[apache2_modules_alias,apache2_modules_authn_core,apache2_modules_authz_core,apache2_modules_authz_host,apache2_modules_authz_user,apache2_modules_cgid] >=www-servers/apache-2.4[apache2_modules_alias,apache2_modules_authn_core,apache2_modules_authz_core,apache2_modules_authz_host,apache2_modules_authz_user,apache2_modules_fcgid] ) net-misc/rsync dev-perl/File-RsyncP rss? ( dev-perl/XML-RSS ) samba? ( net-fs/samba ) =www-servers/apache-2.4*
+SLOT=0
+SRC_URI=mirror://sourceforge/backuppc/BackupPC-3.3.1.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_install:-
+_eclasses_=depend.apache	e3c541cb90838388f81620d630c28f41	eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=a54d45505ba03de9a368b59ea309fcdc
