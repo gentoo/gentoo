@@ -1,0 +1,19 @@
+diff -Naur monkey-1.6.3.orig/plugins/tls/CMakeLists.txt monkey-1.6.3/plugins/tls/CMakeLists.txt
+--- monkey-1.6.3.orig/plugins/tls/CMakeLists.txt	2015-10-13 13:23:34.000000000 -0400
++++ monkey-1.6.3/plugins/tls/CMakeLists.txt	2015-10-14 21:28:27.941930485 -0400
+@@ -2,15 +2,6 @@
+   tls.c
+ )
+ 
+-if(NOT WITH_MBEDTLS_SHARED)
+-  option(ENABLE_TESTING  OFF)
+-  option(ENABLE_PROGRAMS OFF)
+-  option(INSTALL_MBEDTLS_HEADERS OFF)
+-  set(MK_MBEDTLS_SRC ../../deps/mbedtls-2.2.1)
+-  add_subdirectory(${MK_MBEDTLS_SRC} ${CMAKE_BINARY_DIR}/mbedtls-2.2.1)
+-  include_directories(${MK_MBEDTLS_SRC}/include)
+-endif()
+-
+ MONKEY_PLUGIN(tls "${src}")
+ 
+ MONKEY_PLUGIN_LINK_LIB(tls mbedtls)
