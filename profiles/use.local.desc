@@ -1549,6 +1549,11 @@ dev-haskell/crypto-api:all_cpolys - Build all the CMAC polynomes up to 10000 bit
 dev-haskell/crypto-conduit:conduit11 - Use conduit >= 1.1.
 dev-haskell/crypto-pubkey:benchmark - Build benchmarks.
 dev-haskell/cryptohash:cryptoapi - Defines crypto-api instances
+dev-haskell/cryptonite:integer-gmp - Whether or not to use GMP for some functions
+dev-haskell/cryptonite:support_aesni - allow compilation with AESNI on system and architecture that supports it
+dev-haskell/cryptonite:support_deepseq - add deepseq instances for cryptographic types
+dev-haskell/cryptonite:support_pclmuldq - Allow compilation with pclmuldq on architecture that supports it
+dev-haskell/cryptonite:support_rdrand - allow compilation with AESNI on system and architecture that supports it
 dev-haskell/dav:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/distributive:lib-werror - Compile with the ghc -Werror option
 dev-haskell/encoding:systemencoding - Provide the getSystemEncoding action to query the locale.
@@ -1556,7 +1561,8 @@ dev-haskell/entropy:halvm - Build for the HaLVM.
 dev-haskell/extra:network-uri - use network-uri package
 dev-haskell/filestore:maxcount - Make use of a recent (>= 2.3.0) Darcs feature which vastly improves the performance of 'latest'. You should disable this flag if you plan to use gitit with an older version of Darcs, or 'latest' will raise an error.
 dev-haskell/glib:closure_signals - Use the the GClosure-based signals implementation.
-dev-haskell/gtk:fmode-binary - Set the default file translation mode for file I/O operations to _O_BINARY. Some GTK libraries open image files without specifing binary mode. If you have trouble loading gtk in ghci, then it may help to turn this option off.
+dev-haskell/gtk:deprecated - Include definitions in this library that are considered obsolete.
+dev-haskell/gtk:fmode-binary - Set the default file translation mode for file I/O operations to _O_BINARY.
 dev-haskell/gtk:gio - Depend on GIO package, thereby enabling certain features.
 dev-haskell/gtk2hs-buildtools:closuresignals - Use the the GClosure-based signals implementation.
 dev-haskell/gtk3:fmode-binary - Set the default file translation mode for file I/O operations to _O_BINARY.
@@ -1665,7 +1671,8 @@ dev-haskell/tasty-quickcheck:old-quickcheck - Use Quick-Check < 2.7.
 dev-haskell/texmath:executable - Compile test executable.
 dev-haskell/texmath:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/text:developer - operate in developer mode
-dev-haskell/tls:compat - Accept SSLv2 compatible handshake
+dev-haskell/tls:compat - Accept SSLv2 compatible handshake.
+dev-haskell/tls:network - Use the base network library.
 dev-haskell/transformers-base:orphaninstances - Build instances for orphan datatypes.
 dev-haskell/transformers-compat:three - Use transformers-0.3
 dev-haskell/unix-compat:old-time - build against old-time package
