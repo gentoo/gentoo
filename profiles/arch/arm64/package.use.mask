@@ -276,10 +276,6 @@ net-misc/mediatomb lastfm
 # Needs kde-4 stable
 dev-vcs/subversion kde
 
-# Raúl Porcel <armin76@gentoo.org> (20 Jan 2010)
-# Needs mplayer
-kde-base/dolphin thumbnail
-
 # Markus Meier <maekke@gentoo.org> (27 Sep 2009)
 # mask media-gfx/imagemagick[autotrace] as autotrace is not keyworded
 media-gfx/imagemagick autotrace
