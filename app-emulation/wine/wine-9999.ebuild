@@ -248,9 +248,8 @@ src_prepare() {
 		fi
 	fi
 	if use staging; then
-		ewarn "Applying the unofficial Wine-Staging patchset which is unsupported"
-		ewarn "by Wine developers. Please don't report bugs to Wine bugzilla"
-		ewarn "unless you can reproduce them with USE=-staging"
+		ewarn "Applying the Wine-Staging patchset. Any bug reports to the"
+		ewarn "Wine bugzilla should explicitly state that staging was used."
 
 		local STAGING_EXCLUDE=""
 		use pipelight || STAGING_EXCLUDE="${STAGING_EXCLUDE} -W Pipelight"
