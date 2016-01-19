@@ -5,7 +5,10 @@
     <email>chainsaw@gentoo.org</email>
     <name>Tony Vroon</name>
   </maintainer>
-  <herd>games</herd>
+  <maintainer>
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
+  </maintainer>
   <upstream>
     <remote-id type="bitbucket">opentyrian/opentyrian</remote-id>
   </upstream>

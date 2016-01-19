@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proaudio</herd>
+<maintainer>
+	<email>proaudio@gentoo.org</email>
+	<name>Gentoo ProAudio Project</name>
+</maintainer>
 <longdescription lang="en">
 	MDA-LV2 is an LV2 port of the MDA plugins by Paul Kellett. It contains 36 high-quality plugins for a variety of tasks.
 

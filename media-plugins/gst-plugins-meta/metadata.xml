@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>gnome</herd>
-<herd>gstreamer</herd>
+<maintainer>
+	<email>gnome@gentoo.org</email>
+	<name>Gentoo GNOME Desktop</name>
+</maintainer>
+<maintainer>
+	<email>gstreamer@gentoo.org</email>
+	<name>GStreamer package maintainers</name>
+</maintainer>
 <longdescription lang="en">
 This package pulls in various gstreamer plugins based on USE flags.  It's
 intended to be used as a runtime-depend for apps that need various gstreamer

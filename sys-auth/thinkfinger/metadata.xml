@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proxy-maintainers</herd>
 <maintainer>
 	<email>victor.quicksilver@gmail.com</email>
 	<name>Víctor Enríquez Miguel</name>
@@ -10,6 +9,10 @@
 	<email>xmw@gentoo.org</email>
 	<name>Michael Weber</name>
 	<description>Proxy Maintainer</description>
+</maintainer>
+<maintainer>
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
 </maintainer>
 <upstream>
 	<remote-id type="sourceforge">ThinkFinger</remote-id>

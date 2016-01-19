@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>netmon</herd>
+<maintainer>
+<email>netmon@gentoo.org</email>
+<name>Gentoo network monitoring and analysis project</name>
+</maintainer>
 <use>
 <flag name="graph">Enable support for graphing functions</flag>
 <flag name="rados">Enable support for librados from <pkg>sys-cluster/ceph</pkg></flag>

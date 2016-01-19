@@ -5,6 +5,12 @@
 	<email>neurogeek@gentoo.org</email>
 	<name>Jesus Rivero</name>
 </maintainer>
-<herd>accessibility</herd>
-<herd>sound</herd>
+<maintainer>
+	<email>accessibility@gentoo.org</email>
+	<name>Gentoo Accessibility Project</name>
+</maintainer>
+<maintainer>
+	<email>sound@gentoo.org</email>
+	<name>Gentoo Sound project</name>
+</maintainer>
 </pkgmetadata>

@@ -5,7 +5,10 @@
     <email>scarabeus@gentoo.org</email>
     <name>Tomáš Chvátal</name>
   </maintainer>
-  <herd>kde</herd>
+  <maintainer>
+    <email>kde@gentoo.org</email>
+    <name>Gentoo KDE Project</name>
+  </maintainer>
   <upstream>
     <remote-id type="github">vpelcak/kde-scripts</remote-id>
   </upstream>

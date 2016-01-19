@@ -17,7 +17,10 @@
 		<email>aidecoe@gentoo.org</email>
 		<name>Amadeusz Żołnowski</name>
 	</maintainer>
-	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="debug">Module installing additional tools like strace, file
 			editor, ssh and more</flag>

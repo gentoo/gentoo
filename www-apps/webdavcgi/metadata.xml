@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
 	<maintainer>
 		<email>c.affolter@stepping-stone.ch</email>
 		<description>Maintainer</description>
@@ -9,6 +8,10 @@
 	<maintainer>
 		<email>dev-zero@gentoo.org</email>
 		<description>Proxy maintainer</description>
+	</maintainer>
+	<maintainer>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
 		WebDAV CGI is a Perl CGI script that enables the WebDAV protocol

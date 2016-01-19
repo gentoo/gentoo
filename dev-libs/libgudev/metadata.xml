@@ -5,5 +5,8 @@
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
-	<herd>gnome</herd>
-</pkgmetadata>
+	<maintainer>
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
+	</maintainer>
+	</pkgmetadata>

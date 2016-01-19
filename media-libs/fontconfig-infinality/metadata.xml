@@ -4,7 +4,10 @@
   <maintainer>
     <email>yngwin@gentoo.org</email>
   </maintainer>
-  <herd>fonts</herd>
+  <maintainer>
+    <email>fonts@gentoo.org</email>
+    <name>Fonts</name>
+  </maintainer>
   <use>
     <flag name="nyx">Additional style using croscorefonts</flag>
   </use>

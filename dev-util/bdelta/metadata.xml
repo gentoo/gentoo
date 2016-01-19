@@ -6,7 +6,10 @@
     <name>Sergei Trofimovich</name>
     <description>Primary Maintainer</description>
   </maintainer>
-  <herd>tools-portage</herd>
+  <maintainer>
+    <email>tools-portage@gentoo.org</email>
+    <name>Gentoo Portage tools team</name>
+  </maintainer>
   <upstream>
     <remote-id type="github">jjwhitney/BDelta</remote-id>
   </upstream>

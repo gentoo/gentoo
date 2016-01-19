@@ -5,7 +5,10 @@
     <email>bircoph@gentoo.org</email>
     <name>Andrew Savchenko</name>
   </maintainer>
-  <herd>sci-physics</herd>
+  <maintainer>
+    <email>sci-physics@gentoo.org</email>
+    <name>Gentoo Physics Project</name>
+  </maintainer>
   <longdescription lang="en">
   This package contains the automatically generated ROOT class
   documentation.

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>media-optical</herd>
 	<longdescription lang="en">
 		CUEgen is a FLAC-compatible cuesheet generator for Linux. The FLAC
 		format allows cuesheets to be embedded in .flac files by storing 

@@ -5,7 +5,6 @@
 		<email>rhill@gentoo.org</email>
 		<name>Ryan Hill</name>
 	</maintainer>
-	<herd>pda</herd>
 	<longdescription lang="en">
 		Barry is a utility for synchronization, backup, restore,
 		program management, and charging of BlackBerry devices.

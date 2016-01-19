@@ -5,5 +5,8 @@
 		<email>tommy@gentoo.org</email>
 		<name>Thomas Sachau (Tommy[D])</name>
 	</maintainer>
-	<herd>java</herd>
-</pkgmetadata>
+	<maintainer>
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	</pkgmetadata>

@@ -9,7 +9,10 @@
     <email>sping@gentoo.org</email>
     <name>Sebastian Pipping</name>
   </maintainer>
-  <herd>tools-portage</herd>
+  <maintainer>
+    <email>tools-portage@gentoo.org</email>
+    <name>Gentoo Portage tools team</name>
+  </maintainer>
   <upstream>
     <remote-id type="github">gentoo/elogv</remote-id>
   </upstream>

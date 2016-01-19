@@ -5,7 +5,10 @@
     <email>yngwin@gentoo.org</email>
     <name>Ben de Groot</name>
   </maintainer>
-  <herd>sound</herd>
+  <maintainer>
+    <email>sound@gentoo.org</email>
+    <name>Gentoo Sound project</name>
+  </maintainer>
   <upstream>
     <remote-id type="github">Arkq/cmusfm</remote-id>
   </upstream>

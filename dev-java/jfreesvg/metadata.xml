@@ -4,7 +4,10 @@
 	<maintainer>
 		<email>monsieurp@gentoo.org</email>
 	</maintainer>
-	<herd>java</herd>
+	<maintainer>
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
 	<use>
 		<flag name="debug">
 			Enable debugging during compilation.

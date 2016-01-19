@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>games</herd>
-	<herd>proxy-maintainers</herd>
 	<maintainer>
 		<email>maksverver@geocities.com</email>
 		<name>Maks Verver</name>
@@ -12,6 +10,14 @@
 		<email>alex_y_xu@yahoo.ca</email>
 		<name>Alex Xu</name>
 		<description>Proxied maintainer</description>
+	</maintainer>
+	<maintainer>
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<maintainer>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
 		<flag name="system-renpy">Use <pkg>games-engines/renpy</pkg> instead of the bundled one (experimental)</flag>

@@ -4,5 +4,8 @@
 	<maintainer>
 		<email>udev-bugs@gentoo.org</email>
 	</maintainer>
-	<herd>base-system</herd>
-</pkgmetadata>
+	<maintainer>
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	</pkgmetadata>

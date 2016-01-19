@@ -5,7 +5,6 @@
     <email>slyfox@gentoo.org</email>
     <name>Sergei Trofimovich</name>
   </maintainer>
-  <herd>net-fs</herd>
   <upstream>
     <remote-id type="sourceforge">curlftpfs</remote-id>
   </upstream>

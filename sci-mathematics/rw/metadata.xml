@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>proxy-maintainers</herd>
-  <herd>sci</herd>
-
   <maintainer>
     <email>mjo@gentoo.org</email>
     <name>Michael Orlitzky</name>
@@ -12,6 +9,16 @@
   <maintainer>
     <email>fbissey@slingshot.co.nz</email>
     <name>François Bissey</name>
+  </maintainer>
+
+  <maintainer>
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+
+  <maintainer>
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
   </maintainer>
 
   <longdescription lang="en">

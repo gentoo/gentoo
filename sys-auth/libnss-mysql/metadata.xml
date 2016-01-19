@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>mysql</herd>
 	<maintainer>
 		<email>hanno@gentoo.org</email>
+	</maintainer>
+	<maintainer>
+		<email>mysql-bugs@gentoo.org</email>
+		<name>MySQL</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">libnss-mysql</remote-id>

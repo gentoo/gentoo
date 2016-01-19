@@ -16,6 +16,12 @@
 		<name>Nicholas Vinson</name>
 		<description>Proxy maintainer to be assigned bugs</description>
 	</maintainer>
-	<herd>proxy-maintainers</herd>
-	<herd>sysadmin</herd>
-</pkgmetadata>
+	<maintainer>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer>
+		<email>sysadmin@gentoo.org</email>
+		<name>Gentoo Sysadmin Project</name>
+	</maintainer>
+	</pkgmetadata>

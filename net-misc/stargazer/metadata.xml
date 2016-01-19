@@ -6,7 +6,10 @@
     <name>Vladimir Pavljuchenkov</name>
     <description>Primary maintainer.</description>
   </maintainer>
-  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
   <longdescription>
     Stargazer is a powerful (inter)net billing system, capable of gathering
     traffic statistics from many sources (such as NetFlow protocol,

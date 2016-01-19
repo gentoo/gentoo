@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>pda</herd>
 	<longdescription>
     Orange is a tool and library for squeezing out juicy installable Microsoft
     Cabinet Files from self-extracting installers for Microsoft Windows

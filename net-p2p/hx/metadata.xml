@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>net-p2p</herd>
   <longdescription>
 		hx is an Hotline Client under the GPL for Linux/Unixes.
 		It supports the Hotline Protocol from 1.2.3 up to 1.5+.

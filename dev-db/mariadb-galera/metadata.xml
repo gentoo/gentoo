@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>mysql</herd>
-  <maintainer restrict="dev-db/mariadb-galera[libressl]">
+<maintainer restrict="dev-db/mariadb-galera[libressl]">
     <email>hasufell@gentoo.org</email>
     <description>Libressl issues. Only assign if it's a direct Libressl issue. Do not directly assign for anything else.</description>
+  </maintainer>
+<maintainer>
+    <email>mysql-bugs@gentoo.org</email>
+    <name>MySQL</name>
   </maintainer>
 <!-- 
 Please note that this list is shared between the following packages:

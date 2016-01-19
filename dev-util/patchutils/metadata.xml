@@ -4,5 +4,8 @@
 	<maintainer>
 		<email>flameeyes@gentoo.org</email>
 	</maintainer>
-	<herd>shell-tools</herd>
-</pkgmetadata>
+	<maintainer>
+		<email>shell-tools@gentoo.org</email>
+		<name>Gentoo Shell Tools Project</name>
+	</maintainer>
+	</pkgmetadata>

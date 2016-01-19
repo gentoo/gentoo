@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>app-backup</herd>
 	<longdescription>A backup application capable of full/incremental backups on
 	local and remote systems onto cd-r and cd-rw discs.</longdescription>
 	<upstream>

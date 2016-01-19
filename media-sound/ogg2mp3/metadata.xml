@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sound</herd>
-  <herd>proxy-maintainers</herd>
   <maintainer>
     <email>chainsaw@gentoo.org</email>
     <name>Tony Vroon</name>
@@ -10,6 +8,14 @@
   <maintainer>
     <email>james.ausmus@gmail.com</email>
     <name>James Ausmus</name>
+  </maintainer>
+  <maintainer>
+    <email>sound@gentoo.org</email>
+    <name>Gentoo Sound project</name>
+  </maintainer>
+  <maintainer>
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <upstream>
     <changelog>http://www.gitorious.org/ogg2mp3/ogg2mp3/commits/master</changelog>

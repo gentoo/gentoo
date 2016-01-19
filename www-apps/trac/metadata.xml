@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>web-apps</herd>
   <maintainer>
     <email>djc@gentoo.org</email>
     <name>Dirkjan Ochtman</name>
+  </maintainer>
+  <maintainer>
+    <email>web-apps@gentoo.org</email>
+    <name>Gentoo Webapps</name>
   </maintainer>
   <use>
     <flag name="i18n">Enable support for i18n with dev-python/Babel</flag>

@@ -5,7 +5,10 @@
   <email>gienah@gentoo.org</email>
   <name>Mark Wright</name>
 </maintainer>
-<herd>sci-mathematics</herd>
+<maintainer>
+  <email>sci-mathematics@gentoo.org</email>
+  <name>Gentoo Mathematics Project</name>
+</maintainer>
 <longdescription lang="en">
 E is a theorem prover for full first-order logic with equality. It
 accepts a problem specification, typically consisting of a number of

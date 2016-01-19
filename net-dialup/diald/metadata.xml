@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-dialup</herd>
 	<longdescription>Diald is an intelligent link management tool originally named 
 for its ability to control dial-on-demand network connections</longdescription>
 	<upstream>

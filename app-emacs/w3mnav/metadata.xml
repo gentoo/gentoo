@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>emacs</herd>
+<maintainer>
+	<email>emacs@gentoo.org</email>
+	<name>Gentoo Emacs/Elisp Project</name>
+</maintainer>
 <longdescription>
 w3mnav.el is an Emacs add-on that kludges some Info-like navigation keys to the
 w3m Web browser.  This functionality was originally part of the Scheme support

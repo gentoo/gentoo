@@ -11,7 +11,10 @@
     <name>Samuel Damashek</name>
     <description>Proxy maintainer. CC him on bugs.</description>
   </maintainer>
-  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
   <upstream>
     <remote-id type="github">hollow/check_pidfile</remote-id>
   </upstream>

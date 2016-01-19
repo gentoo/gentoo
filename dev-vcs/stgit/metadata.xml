@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proxy-maintainers</herd>
 <maintainer>
   <email>gentoo@necoro.eu</email>
   <name>René 'Necoro' Neumann</name>
@@ -14,5 +13,9 @@
 <maintainer>
   <email>flameeyes@gentoo.org</email>
   <description>Proxy/Backup, CC bugs</description>
+</maintainer>
+<maintainer>
+  <email>proxy-maint@gentoo.org</email>
+  <name>Proxy Maintainers</name>
 </maintainer>
 </pkgmetadata>

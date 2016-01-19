@@ -5,7 +5,6 @@
 		<email>hd_brummy@gentoo.org</email>                                                                        
 		<name>Joerg Bornkessel</name>                                                                      
 	</maintainer>
-	<herd>media-tv</herd>
 	<use>
 		<flag name="server">Enable tntnet server daemon</flag>
 	</use>

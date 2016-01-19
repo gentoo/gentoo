@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
 	<maintainer>
 		<email>yaleks@gmail.com</email>
 		<name>Aleksandr Yakimov</name>
@@ -9,6 +8,10 @@
 	<maintainer>
 		<email>rich0@gentoo.org</email>
 		<name>Richard Freeman</name>
+	</maintainer>
+	<maintainer>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
 		Cuneiform is an multi-language OCR system.

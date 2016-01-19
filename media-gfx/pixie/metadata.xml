@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>proxy-maintainers</herd>
   <maintainer>
     <email>flameeyes@gentoo.org</email>
     <description>Proxying maintainer</description>
@@ -9,6 +8,10 @@
   <maintainer>
     <email>toffanin.mauro@gmail.com</email>
     <description>Proxied maintainer</description>
+  </maintainer>
+  <maintainer>
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <longdescription>
     Pixie is an open source photorealistic renderer that uses a RenderMan-like

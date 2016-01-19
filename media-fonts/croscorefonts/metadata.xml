@@ -4,7 +4,10 @@
   <maintainer>
     <email>yngwin@gentoo.org</email>
   </maintainer>
-  <herd>fonts</herd>
+  <maintainer>
+    <email>fonts@gentoo.org</email>
+    <name>Fonts</name>
+  </maintainer>
   <longdescription lang="en">
     Arimo, Cousine and Tinos were designed by Steve Matteson as innovative,
     refreshing default on-screen font designs that are metrically compatible

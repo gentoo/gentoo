@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>dev-tools</herd>
   <longdescription>
 RapidSVN is a cross-platform GUI front-end for the Subversion revision 
 system written in C++ using the wxWidgets framework. This project also 

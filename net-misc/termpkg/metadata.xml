@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-dialup</herd>
 	<longdescription lang="en">
 		Termpkg is a terminal server daemon and simple telnet like client.
 		Allows access to one or more serial ports through the telnet protocol.

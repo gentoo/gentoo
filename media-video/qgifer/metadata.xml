@@ -6,7 +6,10 @@
 		<name>Andrzej Pauli</name>
 		<description>Maintainer.  Assign bugs to him.</description>
 	</maintainer>
-	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription lang="en">
 		QGifer is a tool for extracting part of a video to an animated GIF file.
 	</longdescription>

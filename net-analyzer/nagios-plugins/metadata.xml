@@ -16,8 +16,14 @@
       <name>Michael Orlitzky</name>
       <description>Maintainer. CC him on bugs.</description>
   </maintainer>
-  <herd>proxy-maintainers</herd>
-  <herd>sysadmin</herd>
+  <maintainer>
+      <email>proxy-maint@gentoo.org</email>
+      <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer>
+      <email>sysadmin@gentoo.org</email>
+      <name>Gentoo Sysadmin Project</name>
+  </maintainer>
   <use>
     <flag name="nagios-dns">
       Install <pkg>net-dns/bind-tools</pkg> required for monitoring

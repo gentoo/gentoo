@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>tex</herd>
-<herd>sci-electronics</herd>
 <maintainer>
 	<email>calchan@gentoo.org</email>
+</maintainer>
+<maintainer>
+	<email>tex@gentoo.org</email>
+	<name>Gentoo TeX Project</name>
+</maintainer>
+<maintainer>
+	<email>sci-electronics@gentoo.org</email>
+	<name>Gentoo Electronics Project</name>
 </maintainer>
 <longdescription>Set of macros for drawing high-quality line diagrams to include
 	in TeX, LaTeX, or similar documents. Fundamental electric circuit

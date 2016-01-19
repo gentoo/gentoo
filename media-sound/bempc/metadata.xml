@@ -5,5 +5,8 @@
     <email>pinkbyte@gentoo.org</email>
     <name>Sergey Popov</name>
   </maintainer>
-  <herd>qt</herd>
-</pkgmetadata>
+  <maintainer>
+    <email>qt@gentoo.org</email>
+    <name>Gentoo Qt Project</name>
+  </maintainer>
+  </pkgmetadata>

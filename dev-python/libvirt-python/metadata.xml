@@ -5,5 +5,8 @@
 		<email>tamiko@gentoo.org</email>
 		<name>Matthias Maier</name>
 	</maintainer>
-	<herd>virtualization</herd>
-</pkgmetadata>
+	<maintainer>
+		<email>virtualization@gentoo.org</email>
+		<name>Gentoo Virtualization Project</name>
+	</maintainer>
+	</pkgmetadata>

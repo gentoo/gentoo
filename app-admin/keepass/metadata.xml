@@ -9,7 +9,10 @@
 		<email>kensington@gentoo.org</email>
 		<description>Proxy maintainer. CC him on bugs.</description>
 	</maintainer>
-	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="aot">Generate native code at build time, rather than runtime.</flag>
 	</use>

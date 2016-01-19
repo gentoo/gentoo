@@ -5,7 +5,10 @@
 		<email>slyfox@gentoo.org</email>
 		<name>Sergei Trofimovich</name>
 	</maintainer>
-	<herd>cvs-utils</herd>
+	<maintainer>
+		<email>cvs-utils@gentoo.org</email>
+		<name>Gentoo CVS Project</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="freecode">cvs-fast-export</remote-id>
 	</upstream>

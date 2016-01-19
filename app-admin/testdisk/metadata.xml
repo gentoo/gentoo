@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <herd>forensics</herd>
     <maintainer>
         <email>robbat2@gentoo.org</email>
 		<name>Robin H. Johnson</name>
 		<description>Primary maintainer</description>
+    </maintainer>
+	<maintainer>
+        <email>forensics@gentoo.org</email>
+        <name>Gentoo Forensics Project</name>
     </maintainer>
 	<use>
 		<flag name="ntfs">Include the ability to read NTFS filesystems</flag>
