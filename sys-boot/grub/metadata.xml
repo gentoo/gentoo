@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer restrict="&gt;=sys-boot/grub-2">
+<maintainer restrict="&gt;=sys-boot/grub-2" type="person">
 	<email>floppym@gentoo.org</email>
 </maintainer>
-<maintainer>
+<maintainer type="project">
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>

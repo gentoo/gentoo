@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>andrew.r.wilcox+gentoo@gmail.com</email>
 		<name>Andrew Wilcox&gt;</name>
 		<description>Proxy (user) maintainer, bugs to be assigned to him</description>
 	</maintainer>
-	<maintainer>
+	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>

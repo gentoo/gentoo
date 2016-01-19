@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>zerochaos@gentoo.org</email>
 		<name>Rick Farina</name>
 		<description>maintainer</description>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>steev@gentoo.org</email>
 		<name>Steev Klimaszewski</name>
 		<description>co-maintainer, CC him on bugs</description>

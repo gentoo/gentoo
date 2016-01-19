@@ -3,11 +3,11 @@
 <!--
 $Id$
 --><pkgmetadata>
-<maintainer>
+<maintainer type="project">
 	<email>sysadmin@gentoo.org</email>
 	<name>Gentoo Sysadmin Project</name>
 </maintainer>
-<maintainer>
+<maintainer type="project">
 	<email>ruby@gentoo.org</email>
 	<name>Gentoo Ruby Project</name>
 </maintainer>

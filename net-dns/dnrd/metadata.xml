@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>natanael.copa@gmail.com</email>
 		<name>Natanael Copa</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>armin76@gentoo.org</email>
 	</maintainer>
-	<maintainer>
+	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>

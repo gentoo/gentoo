@@ -7,13 +7,13 @@
 	<upstream>
 		<remote-id type="github">douglascrockford/JSON-java</remote-id>
 	</upstream>
-	<maintainer>
+	<maintainer type="person">
 		<email>chewi@gentoo.org</email>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>monsieurp@gentoo.org</email>
 	</maintainer>
-<maintainer>
+<maintainer type="project">
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>

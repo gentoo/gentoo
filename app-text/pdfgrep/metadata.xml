@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>jlec@gentoo.org</email>
 		<description>Tree Proxy</description>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>flo@geekplace.eu</email>
 		<description>Maintainer, CC him on bugs</description>
 	</maintainer>
-	<maintainer>
+	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>

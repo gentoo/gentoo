@@ -8,7 +8,7 @@
 		<flag name="led">Enable LED support</flag>
 		<flag name="mini">Create a minimal binary suitable for early boot environments</flag>
 	</use>
-	<maintainer>
+	<maintainer type="person">
 		<email>axs@gentoo.org</email>
 		<name>Ian Stakenvicius</name>
 	</maintainer>

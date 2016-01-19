@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>slis@gentoo.org</email>
 	</maintainer>
 	<longdescription>In-circuit programming (ISP) tool for the NXP (Philips) LPC1100 / LPC1300 / LPC1700 / LPC2000 series ARM7 / Cortex-M0 / Cortex-M3 microcontrollers</longdescription>

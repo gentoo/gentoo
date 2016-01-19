@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>lu_zero@gentoo.org</email>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>flameeyes@gentoo.org</email>
   </maintainer>
 </pkgmetadata>

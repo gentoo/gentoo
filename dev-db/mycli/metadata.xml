@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<use>
 	</use>
-	<maintainer>
+	<maintainer type="person">
 		<email>grknight@gentoo.org</email>
 		<name>Brian Evans</name>
 	</maintainer>

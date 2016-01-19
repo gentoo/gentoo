@@ -4,15 +4,15 @@
 <longdescription lang="en">
 A collection of Gentoo themes for splashutils.
 </longdescription>
-<maintainer>
+<maintainer type="person">
   <email>email@missionaccomplish.com</email>
   <name>Fernando Orocu</name>
 </maintainer>
-<maintainer>
+<maintainer type="project">
   <email>proxy-maint@gentoo.org</email>
   <name>Proxy Maintainers</name>
 </maintainer>
-<maintainer>
+<maintainer type="project">
   <email>proxy-maint@gentoo.org</email>
   <name>Proxy Maintainers</name>
 </maintainer>

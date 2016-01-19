@@ -9,11 +9,11 @@
 	easily as the generated documentation. It also focuses on automation
 	and high-quality generated output.
   </longdescription>
-	<maintainer>
+	<maintainer type="person">
 		<email>idella4@gentoo.org</email>
 		<name>Ian Delaney</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>titanofold@gentoo.org</email>
 		<name>Aaron W. Swenson</name>
 	</maintainer>

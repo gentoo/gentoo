@@ -2,15 +2,15 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- Proxy maintainer. Be sure to also CC vim@ on any bugs. -->
-	<maintainer>
+	<maintainer type="person">
 		<email>jkt@gentoo.org</email>
 		<name>Jan Kundrát</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="project">
 		<email>vim@gentoo.org</email>
 		<name>Gentoo Vim Project</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>

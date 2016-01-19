@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>mschiff@gentoo.org</email>
     <name>Marc Schiffbauer</name>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>nabeken@tknetworks.org</email>
     <description>Proxied developer. Please CC on bugs.</description>
     <name>TANABE Ken-ichi</name>
   </maintainer>
-  <maintainer>
+  <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
