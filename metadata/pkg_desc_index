@@ -375,7 +375,7 @@ app-backup/kbackup 0.8-r1: KBackup is a program that lets you back up any direct
 app-backup/luckybackup 0.4.8: Powerful and flexible backup (and syncing) tool, using RSync and Qt4
 app-backup/mirdir 2.1-r1: Mirdir allows to synchronize two directory trees in a fast way
 app-backup/mylvmbackup 0.14: mylvmbackup is a tool for quickly creating backups of MySQL server's data files using LVM snapshots
-app-backup/obnam 1.17 1.18.2-r1 1.18.2-r2: A backup program that supports encryption and deduplication
+app-backup/obnam 1.18.2-r1 1.18.2-r2 1.19: A backup program that supports encryption and deduplication
 app-backup/pdumpfs 1.3-r2: a daily backup system similar to Plan9's dumpfs
 app-backup/qt4-fsarchiver 0.6.19.6 0.6.19.7: Qt4 frontend for fsarchiver
 app-backup/rdiff-backup 1.3.3-r1: Local/remote mirroring+incremental backup
@@ -16799,7 +16799,7 @@ sys-freebsd/freebsd-usbin 8.2-r2 9.1-r1 10.2-r4: FreeBSD /usr/sbin tools
 sys-freebsd/ubin-wrappers 0: /usr/bin wrapper scripts for FreeBSD script compatibility
 sys-freebsd/virtio-kmod 0.228301-r1: Virtio drivers from FreeBSD Ports' emulators/virtio-kmod
 sys-fs/archivemount 0.8.3 0.8.4 0.8.5 0.8.7: Mount archives using libarchive and FUSE
-sys-fs/arm-fdisk 3.0.6 3.0.6-r1: edit disk partitions on Acorn machines
+sys-fs/arm-fdisk 3.0.6-r1: edit disk partitions on Acorn machines
 sys-fs/atari-fdisk 0.7.1.5.4: create and edit the partition table of a disk partitioned in Atari format
 sys-fs/aufs-headers 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116: User space headers for aufs3
 sys-fs/aufs-util 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116: Utilities are always necessary for aufs
@@ -16825,7 +16825,7 @@ sys-fs/ddrescue 1.18.1 1.19 1.20: Copy data from one file or block device to ano
 sys-fs/devfsd 1.3.25-r9: Daemon for the Linux Device Filesystem
 sys-fs/dfc 3.0.5-r1: A simple CLI tool that display file system usage, with colors
 sys-fs/diskdev_cmds 332.14 332.14_p1: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
-sys-fs/dmg2img 1.6 1.6.1 1.6.2 1.6.4 1.6.5: Converts Apple DMG files to standard HFS+ images
+sys-fs/dmg2img 1.6.4 1.6.5: Converts Apple DMG files to standard HFS+ images
 sys-fs/dmraid 1.0.0_rc14 1.0.0_rc15 1.0.0_rc16-r3: Device-mapper RAID tool and library
 sys-fs/dosfstools 3.0.26 3.0.27 3.0.28: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
 sys-fs/duperemove 0.09.1 0.09.2 0.09.3 0.09.4 0.09.5 0.10: Btrfs deduplication utility
@@ -16849,7 +16849,7 @@ sys-fs/fuse-exfat 1.0.1 1.1.0 1.2.2 1.2.3: exFAT filesystem FUSE module
 sys-fs/fuse-zip 0.2.12 0.2.13 0.3.0 0.4.0: FUSE file system to navigate, extract, create and modify ZIP archives
 sys-fs/fuse4bsd 0.3.0 0.3.9_pre1: Fuse for FreeBSD
 sys-fs/fuseiso 20070708-r1: Fuse module to mount ISO9660
-sys-fs/genext2fs 1.3-r1 1.4 1.4.1: generate ext2 file systems
+sys-fs/genext2fs 1.4.1: generate ext2 file systems
 sys-fs/gfs2-utils 3.1.2 3.1.3 3.1.5: GFS2 Utilities
 sys-fs/go-mtpfs 9999: a simple FUSE filesystem for mounting Android devices as a MTP device
 sys-fs/gt5 1.4.0-r2: a diff-capable 'du-browser'
@@ -16876,7 +16876,7 @@ sys-fs/mdadm 3.2.6-r1 3.3.1-r2 3.3.2-r1 3.3.3 3.3.4: A useful tool for running R
 sys-fs/mhddfs 0.1.39: Fuse multi harddrive filesystem
 sys-fs/mp3fs 0.32 0.91: a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read
 sys-fs/mtd-utils 1.5.0 1.5.1 1.5.2 99999999: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
-sys-fs/mtools 4.0.13 4.0.15 4.0.16 4.0.17 4.0.18: utilities to access MS-DOS disks from Unix without mounting them
+sys-fs/mtools 4.0.15 4.0.17 4.0.18: utilities to access MS-DOS disks from Unix without mounting them
 sys-fs/mtpfs 1.0 1.1 1.1-r1 1.1-r2 1.1-r3: A FUSE filesystem providing access to MTP devices
 sys-fs/multipath-tools 0.5.0-r1: Device mapper target autoconfig
 sys-fs/ncdu 1.11: NCurses Disk Usage
@@ -16902,7 +16902,7 @@ sys-fs/s3ql 1.19 2.11 2.11.1 2.12 2.14: A full-featured file system for online d
 sys-fs/safecopy 1.7: Data recovery tool to fault-tolerantly extract data from damaged (io-errors) devices or files
 sys-fs/scan-ffs 1.2: Recovers lost disklabel
 sys-fs/shake 0.999 1.0: defragmenter that runs in userspace while the system is used
-sys-fs/siefs 0.5-r1 0.5-r2: Siemens FS
+sys-fs/siefs 0.5-r2: Siemens FS
 sys-fs/simple-mtpfs 0.1 0.2 9999: Simple MTP fuse filesystem driver
 sys-fs/snapraid 6.2 6.3 7.0 7.1 8.1: a backup program for disk array for home media centers
 sys-fs/squashfs-tools 3.2_p2 3.4 4.3: Tool for creating compressed filesystem type squashfs
@@ -16910,7 +16910,7 @@ sys-fs/squashfuse 0.1_p20130530: FUSE filesystem to mount squashfs archives
 sys-fs/sshfs-fuse 2.5: Fuse-filesystem utilizing the sftp service
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
-sys-fs/traydevice 1.5 1.5.2 1.6.2 1.6.2-r1: A little desktop application displaying systray icon for UDisks
+sys-fs/traydevice 1.6.2-r1: A little desktop application displaying systray icon for UDisks
 sys-fs/treesize 0.54.1: A disk consumption analyzing tool
 sys-fs/udev 216 217 218 219 220-r3 222 224 224-r1 224-r2 225 228 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 27 29 30 9999: udev startup scripts for openrc
@@ -16919,7 +16919,7 @@ sys-fs/udiskie 0.6.2 0.6.4 1.1.1: An automatic disk mounting service using udisk
 sys-fs/udisks 1.0.5-r1 2.1.4 2.1.6: Daemon providing interfaces to work with storage devices
 sys-fs/udisks-glue 1.3.5: A tool to associate udisks events to user-defined actions
 sys-fs/ufsutils 8.2_p3: FFS/UFS/UFS2 filesystem utilities from FreeBSD
-sys-fs/unionfs-fuse 0.24 0.25 0.26 1.0 9999: Self-syncing tree-merging file system based on FUSE
+sys-fs/unionfs-fuse 1.0 9999: Self-syncing tree-merging file system based on FUSE
 sys-fs/vhba 20130607 20140928: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/wpflash 0: flash the firmware on a Webpal
@@ -17573,7 +17573,7 @@ www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ 
 www-client/uzbl 2012.05.14 2012.05.14-r1 9999: Web interface tools which adhere to the unix philosophy.
 www-client/vimb 2.9: a fast, lightweight, vim-like browser based on webkit
 www-client/vimprobable2 1.4.0 1.4.2 1.4.2-r1 9999: A minimal web browser that behaves like the Vimperator plugin for Firefox
-www-client/vivaldi 1.0.357.5_p1 1.0.365.3_p1: A new browser for our friends
+www-client/vivaldi 1.0.365.3_p1 1.0.375.3_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7: A variant of w3m with support for multiple character encodings
