@@ -4997,7 +4997,7 @@ dev-ml/cudf 0.7 0.8: Library to parse, pretty print, and evaluate CUDF documents
 dev-ml/custom_printf 112.24.00 113.00.00: Syntax extension for printf format strings
 dev-ml/deriving 0.6.2 0.7: A deriving library for Ocsigen
 dev-ml/deriving-ocsigen 0.3c: A deriving library for Ocsigen
-dev-ml/dose3 3.3_beta2-r2 3.3 4.0_rc3: Library and a collection of tools to perform la large spectrum of analysis on package repositories
+dev-ml/dose3 4.2: Library and a collection of tools to perform la large spectrum of analysis on package repositories
 dev-ml/easy-format 1.0.2: Pretty-printing library for OCaml
 dev-ml/eliom 3.0.3 4.1.0 4.1.0-r1 4.2: A web framework to program client/server applications
 dev-ml/enumerate 111.08.00: Syntax extension to produce a list of all values of a type
@@ -5049,7 +5049,7 @@ dev-ml/ocaml-text 0.6 0.8: Library for dealing with 'text'
 dev-ml/ocaml-uri 1.9.1-r1: RFC3986 URI parsing library for OCaml
 dev-ml/ocamldap 2.2: an implementation of the Light Weight Directory Access Protocol
 dev-ml/ocamldsort 0.16.0: A dependency sorter for OCaml source files
-dev-ml/ocamlgraph 0.99b 1.8.5: O'Caml Graph library
+dev-ml/ocamlgraph 0.99b 1.8.5 1.8.6: O'Caml Graph library
 dev-ml/ocamlgsl 0.6.0: OCaml bindings for the GSL library
 dev-ml/ocamlify 0.0.2: OCamlify allows to create OCaml source code by including whole file into OCaml string or string list
 dev-ml/ocamlmod 0.0.3 0.0.7 0.0.8: Generate OCaml modules from source files
@@ -8168,8 +8168,8 @@ dev-ros/calibration_launch 0.10.13 9999: Launch files that can be helpful in con
 dev-ros/calibration_msgs 0.10.13 9999: Messages for storing calibration samples to be used in full robot calibration procedures
 dev-ros/calibration_setup_helper 0.10.13 9999: Script to generate calibration launch and configurationfiles for your robot
 dev-ros/camera_calibration 1.12.14 9999: Calibration of monocular or stereo cameras using a checkerboard calibration target
-dev-ros/camera_calibration_parsers 1.11.7 1.11.8 9999: Routines for reading and writing camera calibration parameters
-dev-ros/camera_info_manager 1.11.7 1.11.8 9999: C++ interface for camera calibration information
+dev-ros/camera_calibration_parsers 1.11.7 1.11.8 1.11.9 9999: Routines for reading and writing camera calibration parameters
+dev-ros/camera_info_manager 1.11.7 1.11.8 1.11.9 9999: C++ interface for camera calibration information
 dev-ros/carrot_planner 1.13.0 1.13.1 9999: Attempts to find a legal place to put a carrot for the robot to follow
 dev-ros/class_loader 0.3.2 9999: ROS-independent package for loading plugins
 dev-ros/clear_costmap_recovery 1.13.0 1.13.1 9999: Recovery behavior that attempts to clear space by reverting the costmaps to the static map
@@ -8187,7 +8187,7 @@ dev-ros/controller_manager_tests 0.9.3 0.10.0 9999: Tests for the controller man
 dev-ros/convex_decomposition 0.1.10 9999: Convex Decomposition Tool for Robot Model
 dev-ros/costmap_2d 1.13.0 1.13.1 9999: Creates a 2D costmap from sensor data
 dev-ros/cpp_common 0.5.6 9999: C++ code for doing things that are not necessarily ROS related
-dev-ros/cv_bridge 1.11.8 1.11.9 9999: Converts between ROS Image messages and OpenCV images
+dev-ros/cv_bridge 1.11.8 1.11.9 1.11.10 9999: Converts between ROS Image messages and OpenCV images
 dev-ros/depth_image_proc 1.12.14 9999: Nodelets for processing depth images such as those produced by OpenNI camera
 dev-ros/depthimage_to_laserscan 1.0.7-r1 9999: Converts a depth image to a laser scan for use with navigation and localization
 dev-ros/diagnostic_aggregator 1.8.8 9999: Aggregates ROS diagnostics
@@ -8233,10 +8233,10 @@ dev-ros/hector_pose_estimation_core 0.2.0 0.2.1 9999: Extended Kalman Filter (EK
 dev-ros/hector_slam_launch 0.3.3 0.3.4 9999: Launch files for launching hector_slam with different robot systems/setups/postprocessing scenarios
 dev-ros/hector_trajectory_server 0.3.3 0.3.4 9999: Keeps track of tf trajectories and makes this data accessible via a service and topic
 dev-ros/image_cb_detector 0.10.13 9999: Extracts checkerboard corners from ROS images
-dev-ros/image_geometry 1.11.8 1.11.9 9999: C++ and Python libraries for interpreting images geometrically
+dev-ros/image_geometry 1.11.8 1.11.9 1.11.10 9999: C++ and Python libraries for interpreting images geometrically
 dev-ros/image_proc 1.12.14 9999: Single image rectification and color processing
 dev-ros/image_rotate 1.12.14 9999: Rotates an image stream minimizing the angle between an arbitrary vector and the camera frame
-dev-ros/image_transport 1.11.7 1.11.8 9999: Transparent support for transporting images in low-bandwidth compressed formats
+dev-ros/image_transport 1.11.7 1.11.8 1.11.9 9999: Transparent support for transporting images in low-bandwidth compressed formats
 dev-ros/image_view 1.12.14-r1 9999: Simple viewer for ROS image topics
 dev-ros/imu_processors 0.2.1 9999: Processors for sensor_msgs::Imu data
 dev-ros/imu_transformer 0.2.1 9999: Node/nodelet combination to transform sensor_msgs::Imu data from one frame into another
@@ -8281,8 +8281,8 @@ dev-ros/nodelet_tutorial_math 0.1.8 9999: Nodelet tutorial
 dev-ros/object_recognition_msgs 0.4.1 9999: ROS message and the actionlib definition used in object_recognition_core
 dev-ros/octomap_msgs 0.3.2 9999: Messages and serializations / conversion for the OctoMap library
 dev-ros/octomap_ros 0.4.0-r1 9999: Conversion functions between ROS / PCL and OctoMap's native types
-dev-ros/opencv_apps 1.11.8 1.11.9 9999: OpenCV applications for ROS
-dev-ros/opencv_tests 1.11.8 1.11.9 9999: Tests for ROS OpenCV integration
+dev-ros/opencv_apps 1.11.8 1.11.9 1.11.10 9999: OpenCV applications for ROS
+dev-ros/opencv_tests 1.11.8 1.11.9 1.11.10 9999: Tests for ROS OpenCV integration
 dev-ros/openni2_camera 0.2.5 9999: ROS drivers for the Asus Xtion and Primesense Devices
 dev-ros/openni2_launch 0.2.2 9999: Launch files to start the openni2_camera drivers using rgbd_launch
 dev-ros/openslam_gmapping 0.1.1 9999: ROS-ified version of gmapping SLAM
@@ -8292,7 +8292,7 @@ dev-ros/pcl_ros 1.3.0 9999: PCL (Point Cloud Library) ROS interface stack
 dev-ros/pluginlib 1.10.1 9999: Provides tools for writing and dynamically loading plugins using the ROS build infrastructure
 dev-ros/pluginlib_tutorials 0.1.8 9999: Pluginlib tutorials
 dev-ros/pointcloud_to_laserscan 1.3.0 9999: Converts a 3D Point Cloud into a 2D laser scan
-dev-ros/polled_camera 1.11.7 1.11.8 9999: C++ helper classes for implementing a polled camera driver node and requesting images from it
+dev-ros/polled_camera 1.11.7 1.11.8 1.11.9 9999: C++ helper classes for implementing a polled camera driver node and requesting images from it
 dev-ros/pr2_dashboard_aggregator 1.11.9 1.11.10 9999: Aggregates all of the topics that a 'pr2_dashboard' app might be interested in
 dev-ros/pr2_description 1.11.9 1.11.10 9999: Description (mechanical, kinematic, visual, etc.) of the PR2 robot
 dev-ros/pr2_machine 1.11.9 1.11.10 9999: xxx.machine files that describe the different hosts a node can be spawned on
@@ -12452,7 +12452,7 @@ media-libs/x264 0.0.20140308 0.0.20150820 0.0.20151011 9999: A free library for 
 media-libs/x265 1.5 1.7 1.8 1.8-r3 9999: Library for encoding video streams into the H.265/HEVC format
 media-libs/xine-lib 1.2.3 1.2.6 1.2.6-r1 1.2.9999: Core libraries for Xine movie player
 media-libs/xvid 1.3.3 1.3.4: XviD, a high performance/quality MPEG-4 video de-/encoding solution
-media-libs/zimg 2.0.1 2.0.2 9999: Scaling, colorspace conversion, and dithering library
+media-libs/zimg 2.0.1 2.0.2 2.0.3 9999: Scaling, colorspace conversion, and dithering library
 media-libs/zita-alsa-pcmi 0.2.0: Provides easy access to ALSA PCM devices
 media-libs/zita-convolver 2.0.0 2.0.0-r1 3.1.0: C++ library implementing a real-time convolution matrix
 media-libs/zvbi 0.2.35 0.2.35-r1: VBI Decoding Library for Zapping
@@ -12582,7 +12582,7 @@ media-plugins/kipi-plugins 4.4.0 4.12.0 4.14.0: Plugins for the KDE Image Plugin
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.0.1 2.1.0: A libvisual graphical music visualization plugin similar to milkdrop
-media-plugins/live 2012.01.07 2012.09.13 2013.02.11 2015.08.07 2015.10.12 2015.10.29 2015.11.09 2015.12.22: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
+media-plugins/live 2012.01.07 2012.09.13 2013.02.11 2015.08.07 2015.10.12 2015.10.29 2015.11.09 2015.12.22 2016.01.16: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
 media-plugins/mcp-plugins 0.4.0 0.4.0-r1: MCP ladspa plugins package. Includes moogvcf, phaser & chorus
 media-plugins/mda-lv2 1.0.0 1.2.2: LV2 port of the MDA plugins by Paul Kellett
 media-plugins/mediastreamer-amr 0.0.1: mediastreamer plugin: add AMR Narrow Band support
@@ -15072,7 +15072,7 @@ ros-meta/geometry_experimental 0.5.12 9999: The second generation Transform Libr
 ros-meta/geometry_tutorials 0.2.2 9999: Metapackage of geometry tutorials ROS
 ros-meta/hector_localization 0.2.0 0.2.1 9999: Collection of packages, that provide the full 6DOF pose of a robot or platform
 ros-meta/hector_slam 0.3.3 0.3.4 9999: hector_mapping and related packages
-ros-meta/image_common 1.11.7 1.11.8 9999: Common code for working with images in ROS
+ros-meta/image_common 1.11.7 1.11.8 1.11.9 9999: Common code for working with images in ROS
 ros-meta/image_pipeline 1.12.14 9999: Fills the gap between getting raw images from a camera driver and higher-level vision processing
 ros-meta/image_transport_plugins 1.9.2 9999: Plugins for publishing and subscribing topics in representations other than raw pixel data
 ros-meta/imu_pipeline 0.2.1 9999: Tools for processing and pre-processing IMU messages for easier use by later subscribers
@@ -15101,7 +15101,7 @@ ros-meta/rqt_robot_plugins 0.4.2 9999: Metapackage of rqt plugins that are parti
 ros-meta/simulators 1.2.0 9999: Metapackage for ROS simulation packages
 ros-meta/slam_gmapping 1.3.8 9999: ROS wrapper for OpenSlam's Gmapping
 ros-meta/unique_identifier 1.0.5 9999: ROS messages and interfaces for universally unique identifiers
-ros-meta/vision_opencv 1.11.8 1.11.9-r1 9999: Converts between ROS Image messages and OpenCV images
+ros-meta/vision_opencv 1.11.8 1.11.9-r1 1.11.10 9999: Converts between ROS Image messages and OpenCV images
 ros-meta/vision_visp 0.8.0 0.9.1 9999: Virtual package providing ViSP related packages
 ros-meta/visualization_tutorials 0.9.2 9999: Metapackage referencing tutorials related to rviz and visualization
 ros-meta/viz 1.2.0 9999: Metapackage for ROS visualization packages
