@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit cmake-utils versionator
+inherit cmake-utils versionator multilib
 
 DESCRIPTION="Importer library to import assets from 3D files"
 HOMEPAGE="https://github.com/assimp/assimp"
@@ -28,6 +28,8 @@ src_configure() {
 		$(cmake-utils_use_build tools ASSIMP_TOOLS) \
 		$(cmake-utils_use_build static STATIC_LIB) \
 		$(cmake-utils_use_enable !boost BOOST_WORKAROUND)
+		-DCMAKE_DEBUG_POSTFIX=""
+		-DASSIMP_LIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)/"
 	)
 
 	cmake-utils_src_configure
