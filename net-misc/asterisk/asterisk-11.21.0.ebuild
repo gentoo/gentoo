@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -35,7 +35,7 @@ CDEPEND="dev-db/sqlite:3
 	dev-libs/libxml2
 	!libressl? ( dev-libs/openssl:0 )
 	libressl? ( dev-libs/libressl )
-	sys-libs/ncurses
+	sys-libs/ncurses:*
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
 	bluetooth? ( net-wireless/bluez )
@@ -62,7 +62,7 @@ CDEPEND="dev-db/sqlite:3
 	osplookup? ( net-libs/osptoolkit )
 	portaudio? ( media-libs/portaudio )
 	postgres? ( dev-db/postgresql:* )
-	radius? ( net-dialup/radiusclient-ng )
+	radius? ( net-dialup/freeradius-client )
 	snmp? ( net-analyzer/net-snmp )
 	span? ( media-libs/spandsp )
 	speex? ( media-libs/speex )
@@ -217,7 +217,7 @@ src_install() {
 	emake DESTDIR="${D}" install
 
 	if use radius; then
-		insinto /etc/radiusclient-ng/
+		insinto /etc/radiusclient/
 		doins contrib/dictionary.digium
 	fi
 	diropts -m 0750 -o root -g asterisk
