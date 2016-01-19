@@ -15,4 +15,3 @@
 	<flag name="yajl">Enable yajl support</flag>
 </use>
 </pkgmetadata>
-

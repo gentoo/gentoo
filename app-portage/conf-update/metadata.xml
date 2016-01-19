@@ -14,7 +14,7 @@ conf-update es una herramienta basada en curses para el sistema
 portage de Gentoo Linux
 </longdescription>
 <use>
-  <flag name='colordiff'>Use colors when displaying diffs
+  <flag name="colordiff">Use colors when displaying diffs
     (<pkg>app-misc/colordiff</pkg>)</flag>
 </use>
 </pkgmetadata>

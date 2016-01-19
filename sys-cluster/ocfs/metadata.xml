@@ -3,6 +3,6 @@
 <pkgmetadata>
 <herd>cluster</herd>
 <use>
-	<flag name='aio'>Add aio support</flag>
+	<flag name="aio">Add aio support</flag>
 </use>
 </pkgmetadata>

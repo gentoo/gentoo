@@ -6,6 +6,6 @@
 <email>jer@gentoo.org</email>
 </maintainer>
 <use>
-<flag name='kde'>Install a KCM plugin for configuring flash player preferences</flag>
+<flag name="kde">Install a KCM plugin for configuring flash player preferences</flag>
 </use>
 </pkgmetadata>

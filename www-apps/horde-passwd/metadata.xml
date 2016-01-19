@@ -13,7 +13,7 @@ command for smb/cifs password support, servuftp, vmailmgr, vpopmail, and
 sql passwords.
 </longdescription>
 <use>
-	<flag name='clearpasswd'>Enables cleartext password storage in the vpopmail
+	<flag name="clearpasswd">Enables cleartext password storage in the vpopmail
 		files</flag>
 </use>
 </pkgmetadata>

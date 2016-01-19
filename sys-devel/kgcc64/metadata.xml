@@ -3,9 +3,8 @@
 <pkgmetadata>
 <herd>toolchain</herd>
 <use>
-<flag name='multislot'>Allow for SLOTs to include minor version (eg. 3.3.4 instead
+<flag name="multislot">Allow for SLOTs to include minor version (eg. 3.3.4 instead
 of just 3.3)</flag>
 <flag name="regression-test">Run the testsuite and install the results (requires FEATURES=test)</flag>
 </use>
 </pkgmetadata>
-

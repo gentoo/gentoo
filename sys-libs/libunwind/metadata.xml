@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<herd>toolchain</herd>
 	<use>
-		<flag name='debug-frame'>Adds support for DWARF .debug_frame section: Use the information from this section if available</flag>
-		<flag name='libatomic'>Use libatomic instead of builtin atomic operations</flag>
+		<flag name="debug-frame">Adds support for DWARF .debug_frame section: Use the information from this section if available</flag>
+		<flag name="libatomic">Use libatomic instead of builtin atomic operations</flag>
 	</use>
 </pkgmetadata>

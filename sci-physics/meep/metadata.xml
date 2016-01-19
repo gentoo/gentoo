@@ -9,6 +9,6 @@
   eigenmode package.
 </longdescription>
 <use>
-  <flag name='mpb'>Enable build against <pkg>sci-physics/mpb</pkg></flag>
+  <flag name="mpb">Enable build against <pkg>sci-physics/mpb</pkg></flag>
 </use>
 </pkgmetadata>

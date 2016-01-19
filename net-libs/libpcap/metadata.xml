@@ -3,10 +3,10 @@
 <pkgmetadata>
   <herd>netmon</herd>
   <use>
-    <flag name='netlink'>
+    <flag name="netlink">
       Use <pkg>dev-libs/libnl</pkg> to put wireless interfaces in monitor mode.
     </flag>
-    <flag name='canusb'>
+    <flag name="canusb">
       Use <pkg>virtual/libusb</pkg> to support Controller Area Network over USB (CAN USB)
     </flag>
   </use>

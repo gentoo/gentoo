@@ -18,8 +18,8 @@
   exported as a structured ASCII file, HTML, and LaTeX.
 </longdescription>
 <use>
-  <flag name='contrib'>Install user-contributed files</flag>
-  <flag name='odt-schema'>Install non-free schema files
+  <flag name="contrib">Install user-contributed files</flag>
+  <flag name="odt-schema">Install non-free schema files
     for OpenDocument Text exporter</flag>
 </use>
 </pkgmetadata>

@@ -9,7 +9,7 @@
   This package provides Graphical LCD Driver.
 </longdescription>
 <use>
-  <flag name='g15'>Add support for <pkg>app-misc/g15daemon</pkg> driver
+  <flag name="g15">Add support for <pkg>app-misc/g15daemon</pkg> driver
     (e.g. Logitech G15 Keybord)</flag>
 </use>
 </pkgmetadata>

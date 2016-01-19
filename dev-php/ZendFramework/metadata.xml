@@ -7,9 +7,9 @@
 		<name>Bjarke Istrup Pedersen</name>
 	</maintainer>
 	<use>
-		<flag name='cli'>Enables the CLI</flag>
-		<flag name='doc'>Installs the documentation</flag>
-		<flag name='examples'>Installs the examples</flag>
-		<flag name='minimal'>Installs the minimal version without Dojo toolkit, tests and demos</flag>
+		<flag name="cli">Enables the CLI</flag>
+		<flag name="doc">Installs the documentation</flag>
+		<flag name="examples">Installs the examples</flag>
+		<flag name="minimal">Installs the minimal version without Dojo toolkit, tests and demos</flag>
 	</use>
 </pkgmetadata>

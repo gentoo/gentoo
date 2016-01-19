@@ -10,4 +10,3 @@ An render engine consists of a "faceless" computer program that interacts with a
 	<flag name="blender">install <pkg>media-gfx/blender</pkg> scripts</flag>
 </use>
 </pkgmetadata>
-

@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>sci-mathematics</herd>
-<longdescription lang='en'>
+<longdescription lang="en">
   Besides offering an attractive front-end to GNU Octave, an
   environment for numerical computation highly compatible with MATLAB,
   QtOctave currently also features matrix data entry and display and

@@ -28,6 +28,6 @@
 <use>
   <flag name="cuda">Enable nvidia cuda toolkit for speeding up computations</flag>
   <flag name="metis">Enable the Partition module to cholmod using <pkg>sci-libs/metis</pkg></flag>
-  <flag name='tbb'>Enable multithreading with the Intel Threads Building Block <pkg>dev-cpp/tbb</pkg></flag>
+  <flag name="tbb">Enable multithreading with the Intel Threads Building Block <pkg>dev-cpp/tbb</pkg></flag>
 </use>
 </pkgmetadata>

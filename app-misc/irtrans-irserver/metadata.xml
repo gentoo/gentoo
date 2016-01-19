@@ -13,7 +13,6 @@
 		<description>Proxying maintainer</description>
 		</maintainer>
 	<use>
-		<flag name='mono'>Enable mono support</flag>
+		<flag name="mono">Enable mono support</flag>
 	</use>
 </pkgmetadata>
-

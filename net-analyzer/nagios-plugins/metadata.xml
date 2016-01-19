@@ -19,26 +19,25 @@
   <herd>proxy-maintainers</herd>
   <herd>sysadmin</herd>
   <use>
-    <flag name='nagios-dns'>
+    <flag name="nagios-dns">
       Install <pkg>net-dns/bind-tools</pkg> required for monitoring
       DNS servers. Disabling the flag does not remove any plugin file.
     </flag>
-    <flag name='nagios-game'>
+    <flag name="nagios-game">
       Install <pkg>games-util/qstat</pkg> required for monitoring FPS
       servers. Disabling the flag does not remove any plugin file.
     </flag>
-    <flag name='nagios-ping'>
+    <flag name="nagios-ping">
       Install <pkg>net-analyzer/fping</pkg> required for fancy ping
       monitoring. Disabling the flag does not remove any plugin file.
     </flag>
-    <flag name='ssh'>
+    <flag name="ssh">
       Install <pkg>net-misc/openssh</pkg> required for monitoring SSH
       servers. Disabling the flag does not remove any plugin file.
     </flag>
-    <flag name='snmp' restrict='&gt;=net-analyzer/nagios-plugins-1.4.16-r1'>
+    <flag name="snmp" restrict="&gt;=net-analyzer/nagios-plugins-1.4.16-r1">
       Install <pkg>dev-perl/Net-SNMP</pkg> required for monitoring
       SNMP values. Disabling the flag does not remove any plugin file.
     </flag>
   </use>
 </pkgmetadata>
-

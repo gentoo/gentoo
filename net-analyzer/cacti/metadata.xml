@@ -12,6 +12,6 @@
 		devices.
 	</longdescription>
 	<use>
-		<flag name='doc'>install html documentation</flag>
+		<flag name="doc">install html documentation</flag>
 	</use>
 </pkgmetadata>

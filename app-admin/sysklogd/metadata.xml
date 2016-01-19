@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<herd>base-system</herd>
 	<use>
-		<flag name='logrotate'>use app-admin/logrotate for rotating logs rather than custom cron scripts</flag>
+		<flag name="logrotate">use app-admin/logrotate for rotating logs rather than custom cron scripts</flag>
 	</use>
 </pkgmetadata>

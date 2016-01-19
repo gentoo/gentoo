@@ -12,7 +12,6 @@
 	</maintainer>
 	<herd>virtualization</herd>
 	<use>
-		<flag name='gui'>Builds and installs GUI configurator and GTK+ applet</flag>
+		<flag name="gui">Builds and installs GUI configurator and GTK+ applet</flag>
 	</use>
 </pkgmetadata>
-

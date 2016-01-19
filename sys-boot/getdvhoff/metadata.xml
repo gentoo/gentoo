@@ -11,4 +11,3 @@
 		getdvhoff - Utility for use on LiveCDs to calculate offset of the ext2 partition for losetup
 	</longdescription>
 </pkgmetadata>
-

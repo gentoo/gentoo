@@ -7,8 +7,8 @@
 		<name>RobinDX</name>
 	</maintainer>
 	<use>
-		<flag name='qt4'>Adds support for the Qt GUI/Application Toolkit version 4.x</flag>
-		<flag name='sdl'>Adds support for Simple Direct Layer (media library)</flag>
+		<flag name="qt4">Adds support for the Qt GUI/Application Toolkit version 4.x</flag>
+		<flag name="sdl">Adds support for Simple Direct Layer (media library)</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/hrydgard/ppsspp/issues</bugs-to>

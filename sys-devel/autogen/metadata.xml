@@ -3,6 +3,6 @@
 <pkgmetadata>
 <herd>toolchain</herd>
 <use>
- <flag name='libopts'>install the libopts tarball (a few packages want this for developing)</flag>
+ <flag name="libopts">install the libopts tarball (a few packages want this for developing)</flag>
 </use>
 </pkgmetadata>

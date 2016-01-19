@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<herd>haskell</herd>
 	<longdescription>
-		You almost certainly don&#39;t want to depend on this release.
+		You almost certainly don't want to depend on this release.
 		
 		This is a pre-alpha, almost useless release; its only purpose is to enable
 		TLS support in some of my other libraries. More complete bindings for GNU TLS

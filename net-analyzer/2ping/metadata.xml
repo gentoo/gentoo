@@ -9,6 +9,6 @@
 		A bi-directional ping utility
 	</longdescription>
 	<use>
-		<flag name='server'>Install the server init scripts.</flag>
+		<flag name="server">Install the server init scripts.</flag>
 	</use>
 </pkgmetadata>

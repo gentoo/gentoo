@@ -21,7 +21,7 @@
 		<flag name="menuselection">adds support for menu hotkeys of double digits</flag>
 		<flag name="naludump">Removes NALU fill data from h.264-Streams of TS files</flag>
 		<flag name="permashift">permanent timeshift by recording live TV on hard disk, need plugin <pkg>media-plugins/vdr-vdr-permashift</pkg></flag>
-		<flag name="permashift_v1">permanent timeshift by recording live TV on RAM, need plugin >=mediaplugins/vdr-permashift-1</flag>
+		<flag name="permashift_v1">permanent timeshift by recording live TV on RAM, need plugin &gt;=mediaplugins/vdr-permashift-1</flag>
 		<flag name="pinplugin">Support for <pkg>media-plugins/vdr-pin</pkg></flag>
 		<flag name="resumereset">rreset resume of EOF</flag>
 		<flag name="rotor">Enable support for plugin <pkg>media-plugins/vdr-rotor</pkg> for dish-positioner.</flag>

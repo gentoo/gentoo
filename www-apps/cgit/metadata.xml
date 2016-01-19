@@ -19,4 +19,3 @@
 		<flag name="jit">If the lua flag is enabled, jit uses LuaJIT instead of vanilla Lua</flag>
 	</use>
 </pkgmetadata>
-

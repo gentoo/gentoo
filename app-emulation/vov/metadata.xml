@@ -12,6 +12,6 @@
   manipulation. It is a very useful tool to see if your programs work and how.
   </longdescription>
   <use>
-    <flag name='gprof'>build with profiling support</flag>
+    <flag name="gprof">build with profiling support</flag>
   </use>
 </pkgmetadata>

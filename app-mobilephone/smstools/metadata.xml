@@ -6,6 +6,6 @@
   <name>Tony Vroon</name>
 </maintainer>
 <use>
-  <flag name='stats'>Enable statistic reporting</flag>
+  <flag name="stats">Enable statistic reporting</flag>
 </use>
 </pkgmetadata>

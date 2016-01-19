@@ -11,7 +11,6 @@
 <longdescription lang="en">
 </longdescription>
 <use>
-  <flag name='passenger'>Enable support for <pkg>www-apache/passenger</pkg></flag>
+  <flag name="passenger">Enable support for <pkg>www-apache/passenger</pkg></flag>
 </use>
 </pkgmetadata>
-

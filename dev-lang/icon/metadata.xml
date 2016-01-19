@@ -2,5 +2,5 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>lang-misc</herd>
-<use><flag name='iplsrc'>install the icon programming library source</flag></use>
+<use><flag name="iplsrc">install the icon programming library source</flag></use>
 </pkgmetadata>

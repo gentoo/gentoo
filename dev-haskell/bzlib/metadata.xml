@@ -5,7 +5,7 @@
 	<longdescription>
 		This package provides a pure interface for compressing and
 		decompressing streams of data represented as lazy
-		&#39;ByteString&#39;s. It uses the bz2 C library so it has high
+		'ByteString's. It uses the bz2 C library so it has high
 		performance.
 		
 		It provides a convenient high level API suitable for most

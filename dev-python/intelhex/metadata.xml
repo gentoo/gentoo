@@ -3,7 +3,7 @@
 <pkgmetadata>
 <herd>python</herd>
 <upstream>
-	<remote-id type='pypi'>IntelHex</remote-id>
-	<remote-id type='github'>bialix/intelhex</remote-id>
+	<remote-id type="pypi">IntelHex</remote-id>
+	<remote-id type="github">bialix/intelhex</remote-id>
 </upstream>
 </pkgmetadata>

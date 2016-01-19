@@ -6,6 +6,6 @@
   Yet Another Pager Software (optional with CAPI support).
 </longdescription>
 <use>
-  <flag name='capi'>Enable CAPI support</flag>
+  <flag name="capi">Enable CAPI support</flag>
 </use>
 </pkgmetadata>

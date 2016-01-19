@@ -7,7 +7,6 @@
 	</maintainer>
 	<herd>net-p2p</herd>
 	<use>
-		<flag name='frost'>Add support for frost boards</flag>
+		<flag name="frost">Add support for frost boards</flag>
 	</use>
 </pkgmetadata>
-

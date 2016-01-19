@@ -4,6 +4,6 @@
 <herd>net-mail</herd>
 <longdescription>The Sendmail filter API (Milter)</longdescription>
 <use>
-	<flag name='poll'>Use poll instead of select</flag>
+	<flag name="poll">Use poll instead of select</flag>
 </use>
 </pkgmetadata>

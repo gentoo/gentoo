@@ -6,7 +6,7 @@
 	<name>Amadeusz Żołnowski</name>
 </maintainer>
 <use>
-	<flag name='vim'>Install the vim plugin allowing to paste
+	<flag name="vim">Install the vim plugin allowing to paste
 		through ':Wklej'.</flag>
 </use>
 </pkgmetadata>

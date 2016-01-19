@@ -9,6 +9,6 @@
   interface. Makes simple programming tasks much easier than with plain OCI.
 </longdescription>
 <use>
-  <flag name='orathreads'>Use Oracle threads</flag>
+  <flag name="orathreads">Use Oracle threads</flag>
 </use>
 </pkgmetadata>

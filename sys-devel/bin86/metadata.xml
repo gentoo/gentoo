@@ -1,5 +1,5 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>base-system</herd>
 <!--
@@ -7,6 +7,6 @@
 	yourself, and send me (boo) a mail telling me that you've done so.
 -->
 <upstream>
-	<remote-id type='github'>lkundrak/dev86</remote-id>
+	<remote-id type="github">lkundrak/dev86</remote-id>
 </upstream>
 </pkgmetadata>

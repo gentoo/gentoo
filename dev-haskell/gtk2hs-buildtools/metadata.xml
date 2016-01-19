@@ -13,7 +13,7 @@
 		to actually run Gtk2Hs programs.
 	</longdescription>
 	<use>
-		<flag name='closuresignals'>Use the the GClosure-based signals
+		<flag name="closuresignals">Use the the GClosure-based signals
 		implementation.</flag>
 	</use>
 </pkgmetadata>

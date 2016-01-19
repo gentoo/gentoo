@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<herd>haskell</herd>
 	<use>
-		<flag name='default-term'>Pull terminal specified in default xmonad config
+		<flag name="default-term">Pull terminal specified in default xmonad config
 			to be a bit less hostile by default.</flag>
 		<flag name="no-autorepeat-keys">Allow ignoring of keyboard autorepeat.</flag>
 	</use>

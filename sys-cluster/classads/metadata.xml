@@ -5,7 +5,7 @@
 <maintainer>
   <email>bicatali@gentoo.org</email>
 </maintainer>
-<longdescription lang='en'>
+<longdescription lang="en">
   Classified Advertisements (classads) are the lingua franca of
   Condor. They are used for describing jobs, workstations, and other
   resources. They are exchanged by Condor processes to schedule

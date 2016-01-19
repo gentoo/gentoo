@@ -10,7 +10,7 @@
   fully configurable and supports many data sources, displays and plugins.
 </longdescription>
 <use>
-  <flag name='mpd'>Add support for display of mpd controlled music
+  <flag name="mpd">Add support for display of mpd controlled music
     (<pkg>media-libs/libmpd</pkg>)</flag>
 </use>
 </pkgmetadata>

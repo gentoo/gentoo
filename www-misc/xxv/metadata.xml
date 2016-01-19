@@ -13,7 +13,7 @@
 		und zu steuern.
 	</longdescription>
 	<use>
-		<flag name='themes'>Enable more themes via
+		<flag name="themes">Enable more themes via
 			<pkg>x11-themes/xxv-skins</pkg></flag>
 	</use>
 </pkgmetadata>

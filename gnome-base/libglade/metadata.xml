@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<herd>gnome</herd>
 	<use>
-		<flag name='tools'>Install libglade-convert Python script.</flag>
+		<flag name="tools">Install libglade-convert Python script.</flag>
 	</use>
 </pkgmetadata>

@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<herd>cluster</herd>
 	<use>
-		<flag name='romio'>Enable romio, a high-performance portable MPI-IO</flag>
+		<flag name="romio">Enable romio, a high-performance portable MPI-IO</flag>
 	</use>
 </pkgmetadata>

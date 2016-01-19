@@ -3,6 +3,6 @@
 <pkgmetadata>
 <herd>fonts</herd>
 <use>
-	<flag name='bdf'>Installs BDF fonts in addition to PCF</flag>
+	<flag name="bdf">Installs BDF fonts in addition to PCF</flag>
 </use>
 </pkgmetadata>

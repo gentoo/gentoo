@@ -3,8 +3,8 @@
 <pkgmetadata>
 <herd>gnome</herd>
 <use>
-	<flag name='mathml'>Install additional fonts for proper mathml
+	<flag name="mathml">Install additional fonts for proper mathml
 	support.</flag>
-	<flag name='t1lib'>Enable <pkg>media-libs/t1lib</pkg> support</flag>
+	<flag name="t1lib">Enable <pkg>media-libs/t1lib</pkg> support</flag>
 </use>
 </pkgmetadata>

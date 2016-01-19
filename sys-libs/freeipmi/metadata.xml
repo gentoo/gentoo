@@ -4,7 +4,7 @@
   <herd>sysadmin</herd>
 
   <use>
-    <flag name='nagios'>
+    <flag name="nagios">
       Install a nagios plugin to check sensors' status.
     </flag>
   </use>

@@ -5,6 +5,6 @@
 <email>maintainer-needed@gentoo.org</email>
 </maintainer>
 <use>
-<flag name='tinfo'>Link against libtinfo from sys-libs/ncurses</flag>
+<flag name="tinfo">Link against libtinfo from sys-libs/ncurses</flag>
 </use>
 </pkgmetadata>

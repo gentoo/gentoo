@@ -17,7 +17,7 @@
 		&gt; import Data.Enumerator.List
 		&gt; import System.IO
 		&gt;
-		&gt; parser = string &quot;foo&quot; &lt;|&gt; string &quot;bar&quot;
+		&gt; parser = string "foo" &lt;|&gt; string "bar"
 		&gt;
 		&gt; main = do
 		&gt;     xy &lt;- run_ (enumHandle 1 stdin $$ do

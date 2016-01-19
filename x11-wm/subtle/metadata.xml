@@ -20,7 +20,7 @@
 		current active view.
 	</longdescription>
 	<use>
-		<flag name='xrandr'>Enable support for the X RandR extension</flag>
-		<flag name='xtest'>Enable support for the XTest extension</flag>
+		<flag name="xrandr">Enable support for the X RandR extension</flag>
+		<flag name="xtest">Enable support for the XTest extension</flag>
 	</use>
 </pkgmetadata>

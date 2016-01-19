@@ -3,7 +3,7 @@
 <pkgmetadata>
   <herd>cjk</herd>
   <use>
-    <flag name='dictmanager'>
+    <flag name="dictmanager">
       Enable dictionary manager. Requires <pkg>dev-qt/qtwebkit</pkg>.
     </flag>
   </use>

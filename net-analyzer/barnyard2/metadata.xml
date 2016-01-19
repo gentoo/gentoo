@@ -30,7 +30,7 @@
         <bugs-to>mailto:dev@securixlive.com</bugs-to>
     </upstream>
 	<use>
-		<flag name='gre'>Enable GRE support</flag>
-		<flag name='mpls'>Enable support for mpls networks</flag>
+		<flag name="gre">Enable GRE support</flag>
+		<flag name="mpls">Enable support for mpls networks</flag>
 	</use>
 </pkgmetadata>

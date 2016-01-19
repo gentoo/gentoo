@@ -3,7 +3,7 @@
 <pkgmetadata>
   <herd>printing</herd>
   <use>
-  <flag name='foomatic'>
+  <flag name="foomatic">
      Build the included foomatic-rip printer driver. Strongly recommended.
   </flag>
   </use>

@@ -3,6 +3,6 @@
 <pkgmetadata>
 <maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
 <use>
-	<flag name='staticsocket'>Add support for static sockets</flag>
+	<flag name="staticsocket">Add support for static sockets</flag>
 </use>
 </pkgmetadata>

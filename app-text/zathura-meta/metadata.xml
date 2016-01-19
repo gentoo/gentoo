@@ -10,7 +10,7 @@
     <name>Michael Weber</name>
   </maintainer>
   <use>
-    <flag name='cb'>Install plug-in for ComicBook support</flag>
+    <flag name="cb">Install plug-in for ComicBook support</flag>
   </use>
   <upstream>
     <maintainer status="active">

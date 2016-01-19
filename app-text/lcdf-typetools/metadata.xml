@@ -13,7 +13,7 @@
   formerly distributed as part of a different package (mminstance).
 </longdescription>
 <use>
-  <flag name='kpathsea'>Enable integration with kpathsea search library
+  <flag name="kpathsea">Enable integration with kpathsea search library
     (TeX related)</flag>
 </use>
 </pkgmetadata>

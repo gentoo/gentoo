@@ -3,6 +3,6 @@
 <pkgmetadata>
 <herd>x11</herd>
 <use>
-	<flag name='gles'>Build glamor based on gles2</flag>
+	<flag name="gles">Build glamor based on gles2</flag>
 </use>
 </pkgmetadata>

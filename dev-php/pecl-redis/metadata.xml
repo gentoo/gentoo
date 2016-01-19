@@ -11,4 +11,3 @@
 		<flag name="igbinary">Enables igbinary serialisation support</flag>
 	</use>
 </pkgmetadata>
-

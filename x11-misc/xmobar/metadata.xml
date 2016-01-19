@@ -6,9 +6,9 @@
 		<email>haskell@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name='mpd'>Support mpd plugin</flag>
-		<flag name='mpris'>Enables MPRIS v1, v2  support</flag>
-		<flag name='timezone'>Enables localized date support</flag>
+		<flag name="mpd">Support mpd plugin</flag>
+		<flag name="mpris">Enables MPRIS v1, v2  support</flag>
+		<flag name="timezone">Enables localized date support</flag>
 	</use>
 	<longdescription>
 		Xmobar is a minimalistic text based status bar.

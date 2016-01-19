@@ -10,9 +10,9 @@ included. Geometry optimization, molecular dynamics and a large set of
 visualization tools are currently available.
 </longdescription>
 <use>
-  <flag name='mopac7'>Use <pkg>sci-chemistry/mopac7</pkg> for semi-empirical
+  <flag name="mopac7">Use <pkg>sci-chemistry/mopac7</pkg> for semi-empirical
     calculations</flag>
-  <flag name='mpqc'>Use <pkg>sci-chemistry/mpqc</pkg> for quantum-mechanical
+  <flag name="mpqc">Use <pkg>sci-chemistry/mpqc</pkg> for quantum-mechanical
     calculations</flag>
 </use>
 </pkgmetadata>

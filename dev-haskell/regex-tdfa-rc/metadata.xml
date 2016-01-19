@@ -6,6 +6,6 @@
 		<email>haskell@gentoo.org</email>
 	</maintainer>
 	<longdescription>
-		A new all Haskell &quot;tagged&quot; DFA regex engine, inspired by libtre (fork by Roman Cheplyaka)
+		A new all Haskell "tagged" DFA regex engine, inspired by libtre (fork by Roman Cheplyaka)
 	</longdescription>
 </pkgmetadata>

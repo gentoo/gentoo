@@ -6,6 +6,6 @@
 		<name>Richard Yao</name>
 	</maintainer>
 	<use>
-		<flag name='capi'>Enable ISDN support via CAPI</flag>
+		<flag name="capi">Enable ISDN support via CAPI</flag>
 	</use>
 </pkgmetadata>

@@ -10,8 +10,8 @@
   peak performance of a multicore computer.
 </longdescription>
 <use>
-  <flag name='metis'>Use <pkg>sci-libs/metis</pkg> or <pkg>sci-libs/parmetis</pkg> for partitioning</flag>
-  <flag name='tbb'>Enable multithreading with the Intel Threads
+  <flag name="metis">Use <pkg>sci-libs/metis</pkg> or <pkg>sci-libs/parmetis</pkg> for partitioning</flag>
+  <flag name="tbb">Enable multithreading with the Intel Threads
   Building Block <pkg>dev-cpp/tbb</pkg></flag>
 </use>
 </pkgmetadata>

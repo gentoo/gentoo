@@ -11,6 +11,6 @@
 	<name>Emil Karlson</name>
   </maintainer>
 	<use>
-		<flag name='drm'>Enables VA/DRM API support.</flag>
+		<flag name="drm">Enables VA/DRM API support.</flag>
     </use>
 </pkgmetadata>

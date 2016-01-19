@@ -6,7 +6,7 @@
 	<email>pam-bugs@gentoo.org</email>
 </maintainer>
 <use>
-	<flag name='utils'>Install pwqcheck and pwqgen helper utilities</flag>
+	<flag name="utils">Install pwqcheck and pwqgen helper utilities</flag>
 </use>
 <longdescription>
 	Password strength checking for PAM aware password changing programs. This is an alternative to the default cracklib.

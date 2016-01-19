@@ -11,6 +11,6 @@
 		<name>Mike Gilbert</name>
 	</maintainer>
 	<use>
-		<flag name='cpufreq_bench'>Build and install the cpufreq_bench binary</flag>
+		<flag name="cpufreq_bench">Build and install the cpufreq_bench binary</flag>
 	</use>
 </pkgmetadata>

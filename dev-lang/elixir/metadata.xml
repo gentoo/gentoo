@@ -16,10 +16,10 @@
 		<changelog>
 			https://github.com/elixir-lang/elixir/blob/master/CHANGELOG.md
 		</changelog>
-		<doc lang='en'>
+		<doc lang="en">
 			http://elixir-lang.org/docs.html
 		</doc>
-		<remote-id type='github'>
+		<remote-id type="github">
 			elixir-lang/elixir
 		</remote-id>
 	</upstream>

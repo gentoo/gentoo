@@ -10,7 +10,7 @@
 	<maintainer>
 		<email>mschiff@gentoo.org</email>
 		<name>Marc Schiffbauer</name>
-		<description>cfengine >2.x only</description>
+		<description>cfengine &gt;2.x only</description>
 	</maintainer>
 	<use>
 		<flag name="html">Install HTML documentation</flag>

@@ -5,6 +5,6 @@
   <longdescription>User tools for PC/SC SmartCard access (including pcsc_scan and the gscriptor GUI).</longdescription>
 
   <use>
-    <flag name='network-cron'>Monthly cronjob the update-smartcard_list script</flag>
+    <flag name="network-cron">Monthly cronjob the update-smartcard_list script</flag>
   </use>
 </pkgmetadata>

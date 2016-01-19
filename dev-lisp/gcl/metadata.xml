@@ -8,7 +8,7 @@
     code, providing for both good performance and facile portability.
   </longdescription>
   <use>
-    <flag name='ansi'>Build a GCL with ANSI support (else build a traditional CLtL1 image)</flag>
-    <flag name='athena'>Build xgcl - an interface to <pkg>x11-libs/libXaw</pkg></flag>
+    <flag name="ansi">Build a GCL with ANSI support (else build a traditional CLtL1 image)</flag>
+    <flag name="athena">Build xgcl - an interface to <pkg>x11-libs/libXaw</pkg></flag>
   </use>
 </pkgmetadata>

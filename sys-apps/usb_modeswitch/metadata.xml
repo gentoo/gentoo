@@ -3,7 +3,7 @@
 <pkgmetadata>
   <herd>freedesktop</herd>
   <use>
-    <flag name='jimtcl'>Use <pkg>dev-lang/jimtcl</pkg> instead of <pkg>dev-lang/tcl</pkg> for smaller memory footprint</flag>
+    <flag name="jimtcl">Use <pkg>dev-lang/jimtcl</pkg> instead of <pkg>dev-lang/tcl</pkg> for smaller memory footprint</flag>
   </use>
   <maintainer>
     <email>rafaelmartins@gentoo.org</email>

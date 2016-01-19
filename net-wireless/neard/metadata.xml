@@ -6,6 +6,6 @@
  <description>fix what you like</description>
 </maintainer>
 <use>
- <flag name='tools'>build and install extra helper utilities</flag>
+ <flag name="tools">build and install extra helper utilities</flag>
 </use>
 </pkgmetadata>

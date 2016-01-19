@@ -9,7 +9,7 @@
   wikipedia-mode provides syntax highlighting for MediaWiki markup.
 </longdescription>
 <use>
-  <flag name='outline-magic'>Enable support for outline-mode extensions
+  <flag name="outline-magic">Enable support for outline-mode extensions
   (<pkg>app-emacs/outline-magic</pkg>)</flag>
 </use>
 </pkgmetadata>

@@ -9,6 +9,6 @@
 		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<use>
-		<flag name='ident'>Enables support for <pkg>net-libs/libident</pkg></flag>
+		<flag name="ident">Enables support for <pkg>net-libs/libident</pkg></flag>
 	</use>
 </pkgmetadata>

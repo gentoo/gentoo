@@ -12,7 +12,7 @@
  Infrastructurefor Operations Research).
 </longdescription>
 <use>
-  <flag name='glpk'>Enable GNU Linear Programming Kit
+  <flag name="glpk">Enable GNU Linear Programming Kit
   <pkg>sci-mathematics/glpk</pkg> support</flag>
 </use>
 </pkgmetadata>

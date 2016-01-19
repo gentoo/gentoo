@@ -3,7 +3,7 @@
 <pkgmetadata>
 <herd>base-system</herd>
 <use>
-  <flag name='cacert'>
+  <flag name="cacert">
     Include root certs from CAcert (http://www.cacert.org/) and
     Software in the Public Interest (http://www.spi-inc.org/)
   </flag>

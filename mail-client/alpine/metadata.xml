@@ -3,14 +3,14 @@
 <pkgmetadata>
 	<herd>net-mail</herd>
 	<use>
-		<flag name='chappa'>enhance alpine by applying Eduardo Chappa's
+		<flag name="chappa">enhance alpine by applying Eduardo Chappa's
 			patches</flag>
-		<flag name='onlyalpine'>installs only the alpine binary, so it does
+		<flag name="onlyalpine">installs only the alpine binary, so it does
 			not collied with <pkg>app-editors/pico</pkg> and/or 
 			<pkg>mail-client/pine</pkg></flag>
-		<flag name='passfile'>Adds support for caching passwords into a file
+		<flag name="passfile">Adds support for caching passwords into a file
 			between sessions</flag>
-		<flag name='smime'>Enable support for S/MIME</flag>
-		<flag name='topal'>Enable support for <pkg>net-mail/topal</pkg></flag>
+		<flag name="smime">Enable support for S/MIME</flag>
+		<flag name="topal">Enable support for <pkg>net-mail/topal</pkg></flag>
 	</use>
 </pkgmetadata>

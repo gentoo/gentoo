@@ -10,6 +10,6 @@
 		Provides a monad-transformer version of the @Control.Exception.catch@
 		function. For this, it defines the @MonadCatchIO@ class, a subset of
 		@MonadIO@. It defines proper instances for most monad transformers in
-		the &#39;mtl&#39; library.
+		the 'mtl' library.
 	</longdescription>
 </pkgmetadata>

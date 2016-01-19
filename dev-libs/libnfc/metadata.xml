@@ -6,7 +6,7 @@
 		<name>Mike Auty</name>
 	</maintainer>
 	<use>
-		<flag name='pcsc-lite'>Enable NFC drivers that require pcsc-lite</flag>
+		<flag name="pcsc-lite">Enable NFC drivers that require pcsc-lite</flag>
 	</use>
 	<upstream>
 		<remote-id type="google-code">libnfc</remote-id>

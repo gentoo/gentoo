@@ -7,6 +7,6 @@ w3mnav.el is an Emacs add-on that kludges some Info-like navigation keys to the
 w3m Web browser.  This functionality was originally part of the Scheme support
 package Quack, and was intended to work with the numerous Scheme books that were
 converted to HTML from LaTeX format.  It also works with some other HTML pages
-that have book-like &quot;next page&quot; and &quot;previous page&quot; links.
+that have book-like "next page" and "previous page" links.
 </longdescription>
 </pkgmetadata>

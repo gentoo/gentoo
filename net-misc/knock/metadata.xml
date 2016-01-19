@@ -6,6 +6,6 @@
 	<name>Michael Weber</name>
   </maintainer>
   <use>
-    <flag name='server'>Installs the knockd server daemon.</flag>
+    <flag name="server">Installs the knockd server daemon.</flag>
   </use>
 </pkgmetadata>

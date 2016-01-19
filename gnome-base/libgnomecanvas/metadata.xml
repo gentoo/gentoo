@@ -3,6 +3,6 @@
 <pkgmetadata>
 <herd>gnome</herd>
 <use>
-	<flag name='glade'>Enable glade support</flag>
+	<flag name="glade">Enable glade support</flag>
 </use>
 </pkgmetadata>

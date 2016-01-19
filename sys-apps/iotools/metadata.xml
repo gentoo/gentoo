@@ -5,6 +5,6 @@
  <email>vapier@gentoo.org</email>
 </maintainer>
 <use>
- <flag name='make-symlinks'>Generate sub-command symlinks to iotools -- note that a lot are simple like "xor"</flag>
+ <flag name="make-symlinks">Generate sub-command symlinks to iotools -- note that a lot are simple like "xor"</flag>
 </use>
 </pkgmetadata>

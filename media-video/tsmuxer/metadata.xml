@@ -9,6 +9,6 @@
 		SmartCONTENT, content preparation solution.
 	</longdescription>
 	<use>
-		<flag name='qt4'>Installs tsMuxerGUI (needs Qt4)</flag>
+		<flag name="qt4">Installs tsMuxerGUI (needs Qt4)</flag>
 	</use>
 </pkgmetadata>

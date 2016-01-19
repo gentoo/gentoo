@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>sci</herd>
-<longdescription lang='en'>
+<longdescription lang="en">
   This package contains examples of scripts and networks for the
   OpenDX Data Explorer. They are referenced in the OpenDX tutorial,
   but can also be used stand-alone to browse and investigate.

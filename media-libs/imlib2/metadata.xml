@@ -1,5 +1,5 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>enlightenment</herd>
 <longdescription>
@@ -46,6 +46,6 @@ installed - that is all - it does not require an XServer to run unless you wish
 to display images.
 </longdescription>
 <upstream>
-	<remote-id type='sourceforge'>enlightenment</remote-id>
+	<remote-id type="sourceforge">enlightenment</remote-id>
 </upstream>
 </pkgmetadata>

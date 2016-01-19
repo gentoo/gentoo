@@ -11,4 +11,3 @@
 		<flag name="telepathy">Enable support for the real-time communication framework telepathy</flag>
 	</use>
 </pkgmetadata>
-

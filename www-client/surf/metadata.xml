@@ -5,6 +5,6 @@
 <email>jer@gentoo.org</email>
 </maintainer>
 <use>
-<flag name='savedconfig'>Without a saved config.h, this package depends on <pkg>net-misc/curl</pkg> and <pkg>x11-terms/st</pkg> for a default download mechanism</flag>
+<flag name="savedconfig">Without a saved config.h, this package depends on <pkg>net-misc/curl</pkg> and <pkg>x11-terms/st</pkg> for a default download mechanism</flag>
 </use>
 </pkgmetadata>

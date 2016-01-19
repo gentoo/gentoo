@@ -3,10 +3,10 @@
 <pkgmetadata>
   <herd>video</herd>
   <use>
-    <flag name='facedetect'>Enables building of facedetect plugin, which
+    <flag name="facedetect">Enables building of facedetect plugin, which
       depends on <pkg>media-libs/opencv</pkg>
     </flag>
-    <flag name='scale0tilt'>Enables building of scale0tilt and vectorscope
+    <flag name="scale0tilt">Enables building of scale0tilt and vectorscope
       plugins, which depend on <pkg>media-libs/gavl</pkg>
     </flag>
   </use>

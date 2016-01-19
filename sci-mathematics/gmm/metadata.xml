@@ -4,7 +4,7 @@
 <maintainer>
   <email>amynka@gentoo.org</email>
 </maintainer>
-<longdescription lang='en'>
+<longdescription lang="en">
   Gmm++ is a generic C++ template library for sparse, dense and
   skyline matrices. It is built as a set of generic algorithms (mult,
   add, copy, sub-matrices, dense and sparse solvers ...) for any

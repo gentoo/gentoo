@@ -11,7 +11,7 @@ frightening and gripping first person gaming experience ever created. For more
 information, checkout http://www.doom3.com
 </longdescription>
   <use>
-    <flag name='dedicated'>install only as a dedicated game server</flag>
+    <flag name="dedicated">install only as a dedicated game server</flag>
     <flag name="roe">Adds support for the Resurrection of Evil expansion</flag>
   </use>
 </pkgmetadata>

@@ -5,7 +5,7 @@
   <email>maintainer-needed@gentoo.org</email>
 </maintainer>
 <use>
-  <flag name='moneyplex'>Makes libtowitoko work for the moneyplex home banking
+  <flag name="moneyplex">Makes libtowitoko work for the moneyplex home banking
     software</flag>
 </use>
 </pkgmetadata>

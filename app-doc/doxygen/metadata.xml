@@ -9,8 +9,8 @@
     as well as other languages (using additional helper tools).
 </longdescription>
 <use>
-	<flag name='clang'>support for <pkg>sys-devel/clang</pkg> assisted parsing</flag>
-	<flag name='dot'>allow to create dot graphs using <pkg>media-gfx/graphviz</pkg></flag>
-	<flag name='doxysearch'>build doxyindexer and doxysearch.cgi</flag>
+	<flag name="clang">support for <pkg>sys-devel/clang</pkg> assisted parsing</flag>
+	<flag name="dot">allow to create dot graphs using <pkg>media-gfx/graphviz</pkg></flag>
+	<flag name="doxysearch">build doxyindexer and doxysearch.cgi</flag>
 </use>
 </pkgmetadata>

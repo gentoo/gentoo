@@ -43,8 +43,7 @@ The following options are available:
     - Possible formats for rendering : avi, mpg, mp4, mkv
 	</longdescription>
 	<use>
-		<flag name='openclipart'>Support openslipart database</flag>
-		<flag name='texturemate'>Install extra backgrounds</flag>
+		<flag name="openclipart">Support openslipart database</flag>
+		<flag name="texturemate">Install extra backgrounds</flag>
 	</use>
 </pkgmetadata>
-

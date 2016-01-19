@@ -14,7 +14,7 @@
   directory and file names based on the title.
 </longdescription>
 <use>
-  <flag name='mpd'>Add support for display of mpd controlled music
+  <flag name="mpd">Add support for display of mpd controlled music
     (<pkg>media-libs/libmpd</pkg>)</flag>
 </use>
 </pkgmetadata>

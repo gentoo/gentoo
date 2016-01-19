@@ -8,6 +8,6 @@
   <name>Nikoli</name>
 </maintainer>
 <use>
-	<flag name='demo'>build simple test application for the PsiMedia system</flag>
+	<flag name="demo">build simple test application for the PsiMedia system</flag>
 </use>
 </pkgmetadata>

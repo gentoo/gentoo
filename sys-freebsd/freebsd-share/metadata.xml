@@ -3,7 +3,7 @@
 <pkgmetadata>
   <herd>bsd</herd>
   <use>
-	<flag name='isdn'>Enable ISDN support</flag>
-    <flag name='zfs'>Enable ZFS support.</flag>
+	<flag name="isdn">Enable ISDN support</flag>
+    <flag name="zfs">Enable ZFS support.</flag>
   </use>
 </pkgmetadata>

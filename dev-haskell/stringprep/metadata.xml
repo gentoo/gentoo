@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<herd>haskell</herd>
 	<longdescription>
-		Implements the &quot;StringPrep&quot; algorithm
+		Implements the "StringPrep" algorithm
 	</longdescription>
 </pkgmetadata>

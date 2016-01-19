@@ -6,7 +6,7 @@
   <name>Mark Wright</name>
 </maintainer>
 <herd>sci-mathematics</herd>
-<longdescription lang='en'>
+<longdescription lang="en">
 E is a theorem prover for full first-order logic with equality. It
 accepts a problem specification, typically consisting of a number of
 first-order clauses or formulas, and a conjecture, again either in
@@ -26,7 +26,7 @@ most powerful and friendly reasoning systems for first-order
 logic. The prover has successfully participated in many competitions.
 </longdescription>
 <use>
-  <flag name='isabelle'>Add integration support for the Isabelle/HOL
+  <flag name="isabelle">Add integration support for the Isabelle/HOL
   theorem prover.</flag>
 </use>
 </pkgmetadata>

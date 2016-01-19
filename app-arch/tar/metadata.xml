@@ -3,7 +3,7 @@
 <pkgmetadata>
 <herd>base-system</herd>
 <use>
-	<flag name='minimal'>just install `tar`</flag>
+	<flag name="minimal">just install `tar`</flag>
 </use>
 <upstream>
 	<remote-id type="cpe">cpe:/a:gnu:tar</remote-id>

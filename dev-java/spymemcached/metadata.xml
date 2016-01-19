@@ -3,10 +3,9 @@
 <pkgmetadata>
 	<herd>java</herd>
 	<use>
-		<flag name='spring'>Build support for the spring framework</flag>
+		<flag name="spring">Build support for the spring framework</flag>
 	</use>
 	<upstream>
 		<remote-id type="google-code">spymemcached</remote-id>
 	</upstream>
 </pkgmetadata>
-

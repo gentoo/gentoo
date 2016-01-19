@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<herd>haskell</herd>
 	<longdescription>
-		A lightweight implementation of a subset of Hspec&#39;s API with
+		A lightweight implementation of a subset of Hspec's API with
 		minimal dependencies.
 	</longdescription>
 </pkgmetadata>

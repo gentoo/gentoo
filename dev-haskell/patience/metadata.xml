@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<herd>haskell</herd>
 	<longdescription>
-		This library implements the \&quot;patience diff\&quot; algorithm, as well as the patience
+		This library implements the \"patience diff\" algorithm, as well as the patience
 		algorithm for the longest increasing subsequence problem.
 		
 		Patience diff computes the difference between two lists, for example the

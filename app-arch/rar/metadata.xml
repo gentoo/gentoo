@@ -12,7 +12,7 @@
 		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<use>
-		<flag name='all_sfx'>
+		<flag name="all_sfx">
 			Install all SFX (Self-Extracting) files rather than just the native
 			format (allows creation of Windows EXEs on Linux ELF systems)
 		</flag>

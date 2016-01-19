@@ -5,7 +5,7 @@
 	<email>aidecoe@gentoo.org</email>
 </maintainer>
 <use>
-	<flag name='network-cron'>
+	<flag name="network-cron">
 		Monthly cronjob to update hddtemp.db.
 	</flag>
 </use>

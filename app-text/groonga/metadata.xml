@@ -20,4 +20,3 @@
    <flag name="zeromq">Enable <pkg>net-libs/zeromq</pkg> used for suggestion</flag>
 </use>
 </pkgmetadata>
-

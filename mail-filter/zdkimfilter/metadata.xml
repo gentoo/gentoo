@@ -5,13 +5,13 @@
 <longdescription>A program implementing the DKIM signing/verification for Courier
 </longdescription>
 <use>
-	<flag name='debug'>
+	<flag name="debug">
 	Log process and signal information. Also leave the child process running for
 	gdb examination.
 	</flag>
 </use>
 <use>
-	<flag name='opendbx'>
+	<flag name="opendbx">
 	An alternate statistics based storage engine.
 	</flag>
 </use>

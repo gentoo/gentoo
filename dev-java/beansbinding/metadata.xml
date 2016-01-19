@@ -6,4 +6,3 @@
 Beans Binding (JSR 295) is about keeping the properties of two beans in sync. This project provides the reference implementation of Beans Binding, with an additional emphasis on the ability to bind to Swing components, and easy integration with IDEs such as NetBeans.
 </longdescription>
 </pkgmetadata>
-

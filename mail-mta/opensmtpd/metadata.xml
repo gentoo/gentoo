@@ -9,7 +9,6 @@ OpenSMTPD is an implementation of the server-side SMTP protocol as defined by RF
 <name>Jason A. Donenfeld</name>
 </maintainer>
 <use>
-<flag name='mta'>Enable this to install as system-wide MTA</flag>
+<flag name="mta">Enable this to install as system-wide MTA</flag>
 </use>
 </pkgmetadata>
-

@@ -7,6 +7,6 @@
 		<name>Nico R. Wohlgemuth</name>
 	</maintainer>
 	<use>
-		<flag name='xrandr'>Enable support for multihead configuration</flag>
+		<flag name="xrandr">Enable support for multihead configuration</flag>
 	</use>
 </pkgmetadata>

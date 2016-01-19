@@ -6,7 +6,7 @@
 		Atomic operations including CAS (compare-and-swap), fetch &amp; add and variants
 		suitable for low-level shared-memory synchronization.
 		
-		The implementation is using GCC&#39;s builtin atomic operations (available in GCC &gt;=
+		The implementation is using GCC's builtin atomic operations (available in GCC &gt;=
 		4) in C wrappers called through the FFI. See these links for background:
 		
 		* GCC manual: &lt;https://gcc.gnu.org/onlinedocs/gcc/Atomic-Builtins.html&gt;

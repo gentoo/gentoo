@@ -6,7 +6,7 @@
 		<name>Michał Górny</name>
 	</maintainer>
 	<use>
-		<flag name='cdio'>Use libcdio for CD support</flag>
-		<flag name='sdl'>Use SDL sound backend (other parts of SDL are used unconditionally)</flag>
+		<flag name="cdio">Use libcdio for CD support</flag>
+		<flag name="sdl">Use SDL sound backend (other parts of SDL are used unconditionally)</flag>
 	</use>
 </pkgmetadata>

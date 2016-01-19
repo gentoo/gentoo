@@ -12,7 +12,7 @@
 		<description>Proxy-Maintainer. Assign bugs to him</description>
 	</maintainer>
 	<upstream>
-	    <maintainer status='active'>
+	    <maintainer status="active">
 			<email>info@postfwd.org</email>
 			<name>Jan Peter Kessler</name>
 	    </maintainer>

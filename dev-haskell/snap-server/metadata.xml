@@ -3,8 +3,8 @@
 <pkgmetadata>
 	<herd>haskell</herd>
 	<use>
-		<flag name='openssl'>enable https support using <pkg>dev-haskell/hsopenssl</pkg></flag>
-		<flag name='portable'>no non-haskell unportable code.</flag>
+		<flag name="openssl">enable https support using <pkg>dev-haskell/hsopenssl</pkg></flag>
+		<flag name="portable">no non-haskell unportable code.</flag>
 	</use>
 	<longdescription>
 		Snap is a simple and fast web development framework and server written in

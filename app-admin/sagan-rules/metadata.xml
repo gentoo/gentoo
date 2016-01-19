@@ -9,6 +9,6 @@
   <email>maksbotan@gentoo.org</email>
 </maintainer>
 <use>
-	<flag name='lognorm'>Install normalize rules support with <pkg>dev-libs/liblognorm</pkg></flag>
+	<flag name="lognorm">Install normalize rules support with <pkg>dev-libs/liblognorm</pkg></flag>
 </use>
 </pkgmetadata>

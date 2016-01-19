@@ -4,6 +4,6 @@
 	<herd>haskell</herd>
 	<longdescription>
 		This package exposes internal types and functions that can be
-		used to extend Hspec&#39;s functionality.
+		used to extend Hspec's functionality.
 	</longdescription>
 </pkgmetadata>

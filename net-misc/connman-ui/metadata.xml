@@ -21,6 +21,6 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/tbursztyka/connman-ui/issues</bugs-to>
-		<remote-id type='github'>tbursztyka/connman-ui</remote-id>
+		<remote-id type="github">tbursztyka/connman-ui</remote-id>
 	</upstream>
 </pkgmetadata>

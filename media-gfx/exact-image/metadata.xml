@@ -3,6 +3,6 @@
 <pkgmetadata>
 <herd>graphics</herd>
 <use>
-	<flag name='swig'>Adds Swig support <pkg>dev-lang/swig</pkg></flag>
+	<flag name="swig">Adds Swig support <pkg>dev-lang/swig</pkg></flag>
 </use>
 </pkgmetadata>

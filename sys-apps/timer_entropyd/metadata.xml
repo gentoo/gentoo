@@ -10,6 +10,6 @@
     <email>flameeyes@gentoo.org</email>
   </maintainer>
   <use>
-    <flag name='debug'>Enable printf debugging and logging to the syslog at DEBUG level</flag>
+    <flag name="debug">Enable printf debugging and logging to the syslog at DEBUG level</flag>
   </use>
 </pkgmetadata>

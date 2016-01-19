@@ -3,6 +3,6 @@
 <pkgmetadata>
 <herd>emacs</herd>
 <use>
-  <flag name='extensions'>Install optional extensions</flag>
+  <flag name="extensions">Install optional extensions</flag>
 </use>
 </pkgmetadata>

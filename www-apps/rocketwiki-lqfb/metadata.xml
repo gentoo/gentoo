@@ -9,4 +9,3 @@
 RocketWiki is a small parser written in Haskell which translates a wiki dialect to HTML. It uses Parsec, a monadic parser combinator library. The compressed source code of RocketWiki has a size of only 5162 bytes.
 </longdescription>
 </pkgmetadata>
-

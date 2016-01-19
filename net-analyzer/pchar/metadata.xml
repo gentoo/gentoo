@@ -12,7 +12,6 @@ latency, and loss of links along an end-to-end path through the
 Internet.  pchar works in both IPv4 and IPv6 networks.
 </longdescription>
 <use>
-	<flag name='pcap'>Use the <pkg>net-libs/libpcap</pkg> library</flag>
+	<flag name="pcap">Use the <pkg>net-libs/libpcap</pkg> library</flag>
 </use>
 </pkgmetadata>
-

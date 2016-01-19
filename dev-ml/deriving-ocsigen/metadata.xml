@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<herd>ml</herd>
 <use>
-	<flag name='type-conv'>Enable type-conv for the syntax extention.</flag>
+	<flag name="type-conv">Enable type-conv for the syntax extention.</flag>
 </use>
 </pkgmetadata>

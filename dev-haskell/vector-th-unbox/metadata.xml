@@ -6,6 +6,6 @@
 		A Template Haskell deriver for unboxed vectors, given a pair of coercion
 		functions to and from some existing type with an Unbox instance.
 		
-		Refer to &quot;Data.Vector.Unboxed.Deriving&quot; for documentation and examples.
+		Refer to "Data.Vector.Unboxed.Deriving" for documentation and examples.
 	</longdescription>
 </pkgmetadata>

@@ -5,7 +5,7 @@
   <email>gienah@gentoo.org</email>
   <name>Mark Wright</name>
 </maintainer>
-<longdescription lang='en'>
+<longdescription lang="en">
 The Teyjus system is an efficient implementation of the higher-order
 logic programming language Lambda Prolog. The main strength of Lambda
 Prolog, a language developed by Dale Miller and Gopalan Nadathur, is

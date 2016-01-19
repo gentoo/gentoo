@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<herd>games</herd>
 	<use>
-		<flag name='web'>Enable the web interface</flag>
+		<flag name="web">Enable the web interface</flag>
 	</use>
 </pkgmetadata>

@@ -3,6 +3,6 @@
 <pkgmetadata>
   <herd>mysql</herd>
   <use>
-    <flag name='embedded'>Build embedded server (libmysqld)</flag>
+    <flag name="embedded">Build embedded server (libmysqld)</flag>
   </use>
 </pkgmetadata>

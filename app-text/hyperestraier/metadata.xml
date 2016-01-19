@@ -6,7 +6,7 @@
   <email>hattya@gentoo.org</email>
 </maintainer>
 <use>
-  <flag name='mecab'>Enable <pkg>app-text/mecab</pkg> support
+  <flag name="mecab">Enable <pkg>app-text/mecab</pkg> support
     for Estraier</flag>
 </use>
 </pkgmetadata>

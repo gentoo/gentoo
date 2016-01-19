@@ -9,6 +9,6 @@
 		expressions, semaphores and signal handling.
 	</longdescription>
 	<upstream>
-		<remote-id type='sourceforge'>rudiments</remote-id>
+		<remote-id type="sourceforge">rudiments</remote-id>
 	</upstream>
 </pkgmetadata>

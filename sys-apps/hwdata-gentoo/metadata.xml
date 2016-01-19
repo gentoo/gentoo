@@ -3,7 +3,7 @@
 <pkgmetadata>
 <herd>livecd</herd>
 <use>
-	<flag name='binary-drivers'>Adds support for ATI/NVIDIA binary
+	<flag name="binary-drivers">Adds support for ATI/NVIDIA binary
 		drivers</flag>
 </use>
 </pkgmetadata>
