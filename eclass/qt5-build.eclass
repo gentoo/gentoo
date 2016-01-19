@@ -583,12 +583,14 @@ qt5_base_configure() {
 		-no-icu -no-fontconfig
 		-no-dbus
 
-		# don't strip
+		# let portage handle stripping
 		-no-strip
 
-		# precompiled headers are not that useful for us
-		# and cause problems on hardened, so turn them off
+		# precompiled headers can cause problems on hardened, so turn them off
 		-no-pch
+
+		# link-time code generation is not something we want to enable by default
+		$([[ ${QT5_MINOR_VERSION} -ge 6 ]] && echo -no-ltcg)
 
 		# reduced relocations cause major breakage on at least arm and ppc, so
 		# don't specify anything and let the configure figure out if they are
