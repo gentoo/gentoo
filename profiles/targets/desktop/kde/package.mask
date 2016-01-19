@@ -7,6 +7,7 @@ kde-apps/kdeaccessibility-meta:5
 kde-apps/kdeadmin-meta:5
 kde-apps/kdeartwork-meta:5
 kde-apps/kdebase-meta:5
+kde-apps/kdecore-meta:5
 kde-apps/kdeedu-meta:5
 kde-apps/kdegames-meta:5
 kde-apps/kdegraphics-meta:5
