@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (18 Jan 2016)
+# Depends on a masked version of mod_perl. Feel free
+# to unmask as soon as mod_perl supports apache-2.4.
+# Bugs #512504, #532718, #541312,and #562454.
+=app-backup/backuppc-3.3.1
+
 # Mike Frysinger <vapier@gentoo.org> (18 Jan 2016)
 # Force people to migrate to the new combined libraries:
 # media-libs/elementary & dev-libs/efl. #571796
