@@ -14150,7 +14150,7 @@ net-libs/netembryo 0.1.1: a network abstraction library
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
 net-libs/nfqueue-bindings 0.5: High-level language bindings for libnetfilter_queue
 net-libs/nghttp2 1.0.5 1.5.0 1.6.0 9999: HTTP/2 C Library
-net-libs/nodejs 0.12.6 0.12.7 4.1.1 4.2.2 5.0.0 5.3.0: Evented IO for V8 Javascript
+net-libs/nodejs 0.12.6 0.12.7 4.1.1 4.2.2 5.0.0 5.3.0 5.4.1: Evented IO for V8 Javascript
 net-libs/obby 0.4.8 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.7 9999: C library to create simple HTTP servers and Web Applications
 net-libs/opal 3.10.11 3.12.4: C++ class library normalising numerous telephony protocols
@@ -17620,7 +17620,7 @@ www-servers/gunicorn 19.1.1 19.3.0: A WSGI HTTP Server for UNIX
 www-servers/hiawatha 9.8 9.14 9.14-r1 9.15: Advanced and secure webserver
 www-servers/lighttpd 1.4.35 1.4.35-r1 1.4.35-r2 1.4.37 1.4.37-r1: Lightweight high-performance web server
 www-servers/mongoose 5.3: easy to use web server
-www-servers/monkeyd 1.5.6-r1 1.6.6 1.6.7 9999: A small, fast, and scalable web server
+www-servers/monkeyd 1.5.6-r1 1.6.7 1.6.8 9999: A small, fast, and scalable web server
 www-servers/nginx 1.8.0 1.9.6 1.9.7: Robust, small and high performance http and reverse proxy server
 www-servers/ocsigenserver 2.5-r2 2.6: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
