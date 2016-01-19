@@ -4473,7 +4473,7 @@ dev-libs/cyrus-sasl 2.1.26-r9 2.1.26-r10: The Cyrus SASL (Simple Authentication 
 dev-libs/d0_blind_id 0.5: Blind-ID library for user identification using RSA blind signatures
 dev-libs/darts 0.32: A C++ template library that implements Double-Array
 dev-libs/dbus-c++ 0.9.0-r2: Provides a C++ API for D-BUS
-dev-libs/dbus-glib 0.102 0.104: D-Bus bindings for glib
+dev-libs/dbus-glib 0.102 0.104 0.106: D-Bus bindings for glib
 dev-libs/dbxml 2.5.16-r2: BerkeleyDB XML, a native XML database from the BerkeleyDB team
 dev-libs/dclog 1.1.1-r1: A logging library for C/C++ programs
 dev-libs/dee 1.2.7: Provide objects allowing to create Model-View-Controller type programs across DBus
@@ -4750,7 +4750,7 @@ dev-libs/libvformat 1.13-r1 1.13-r2: Library to read and write vcard files
 dev-libs/libvolume_id 0.81.0 0.81.1: Library to provide file system information
 dev-libs/libvterm 0.0_pre20151022: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libvterm-neovim 0.0_pre20150309 0.0_pre20150621: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
-dev-libs/libwacom 0.11 0.15 0.17: Library for identifying Wacom tablets and their model-specific features
+dev-libs/libwacom 0.11 0.15 0.17 0.18: Library for identifying Wacom tablets and their model-specific features
 dev-libs/libwapcaplet 0.2.1-r1 0.2.2-r1: string internment library, written in C
 dev-libs/libwbxml 0.11.2: Library and tools to parse, encode and handle WBXML documents
 dev-libs/libx86 1.1-r2 1.1-r3: A hardware-independent library for executing real-mode x86 code
@@ -14849,7 +14849,7 @@ net-print/cndrvcups-common-lb 2.90 3.10: Common files for Canon drivers
 net-print/cndrvcups-lb 2.90 3.00: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.0.3 2.0.4 2.1.2-r2 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
-net-print/cups-filters 1.0.71 1.4.0 1.5.0 9999: Cups PDF filters
+net-print/cups-filters 1.0.71 1.4.0 1.5.0 1.6.0 9999: Cups PDF filters
 net-print/cups-pdf 2.6.1 3.0_beta1: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.4-r1 0.2.5: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
@@ -16443,7 +16443,7 @@ sys-apps/udevil 0.4.1 0.4.3 0.4.4 0.4.4-r1: mount and unmount removable devices 
 sys-apps/uevt 2.3-r1: UPower/UDisks Event, a lightweight desktop-independent power and disk manager
 sys-apps/ultracopier 0.2.0.16: Advanced file copying tool
 sys-apps/unscd 0.51 0.52-r2: simple & stable nscd replacement
-sys-apps/usb_modeswitch 2.2.0_p20140529 2.2.3_p20150627 2.2.5 2.2.6: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
+sys-apps/usb_modeswitch 2.2.6 2.3.0: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
 sys-apps/usbmon 6-r1: Userland for USB monitoring framework
 sys-apps/usbredir 0.7 0.7.1 9999: A simple TCP daemon and set of libraries for the usbredir protocol (redirecting USB traffic)
 sys-apps/usbutils 007 008 008-r1: USB enumeration utilities
@@ -16552,7 +16552,7 @@ sys-block/megactl 0.4.1-r1 0.4.1-r2: LSI MegaRAID control utility
 sys-block/megamgr 5.20-r2: LSI Logic MegaRAID Text User Interface management tool
 sys-block/megarc 1.11-r1: LSI Logic MegaRAID Text User Interface management tool
 sys-block/mpt-status 1.2.0-r1: Query tool to access the running configuration and status of LSI SCSI HBAs
-sys-block/ms-sys 2.4.0 2.5.0 2.5.1: A command-line program for writing Microsoft compatible boot records
+sys-block/ms-sys 2.4.0 2.5.0 2.5.1 2.5.2: A command-line program for writing Microsoft compatible boot records
 sys-block/mtx 1.2.18 1.3.12: Utilities for controlling SCSI media changers and tape drives
 sys-block/nbd 3.11 3.12.1 3.13: Userland client/server for kernel network block device
 sys-block/noflushd 2.7.3 2.7.4 2.7.5 2.8: A daemon to spin down your disks and force accesses to be cached
