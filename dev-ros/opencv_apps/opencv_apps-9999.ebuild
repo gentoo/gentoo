@@ -23,5 +23,6 @@ RDEPEND="
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/nodelet
 	dev-ros/roscpp
+	>=media-libs/opencv-3:0=[contrib]
 "
 DEPEND="${RDEPEND}"
