@@ -3,7 +3,6 @@
 <pkgmetadata>
   <herd>ml</herd>
   <use>
-    <flag name="deriving-ocsigen">Enable deriving-ocsigen for improving the type safety.</flag>
     <flag name="deriving">Enable <pkg>dev-ml/deriving</pkg> support for improving the type safety.</flag>
   </use>
   <upstream>
