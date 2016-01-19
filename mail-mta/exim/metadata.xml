@@ -18,6 +18,7 @@
 	<use>
 		<flag name='dcc'>Adds support for Distributed Checksum Clearinghouse
 			(DCC)</flag>
+		<flag name='dane'>Adds support for DNS-based Authentication of Named Entities</flag>
 		<flag name='dkim'>Adds support for DomainKeys Identified Mail
 			(DKIM)</flag>
 		<flag name='dnsdb'>Adds support for a DNS search for a record whose

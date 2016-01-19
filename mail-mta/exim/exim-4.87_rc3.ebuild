@@ -6,7 +6,7 @@ EAPI="5"
 
 inherit eutils toolchain-funcs multilib pam systemd
 
-IUSE="dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl dsn exiscan-acl gnutls ipv6 ldap libressl lmtp maildir mbx mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux spf sqlite srs ssl syslog tcpd tpda X"
+IUSE="dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl dsn exiscan-acl gnutls ipv6 ldap libressl lmtp maildir mbx mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux spf sqlite srs ssl syslog tcpd tpda X"
 REQUIRED_USE="spf? ( exiscan-acl ) srs? ( exiscan-acl ) dmarc? ( spf dkim ) pkcs11? ( gnutls )"
 
 COMM_URI="ftp://ftp.exim.org/pub/exim/exim4$([[ ${PV} == *_rc* ]] && echo /test)"
@@ -315,6 +315,13 @@ src_configure() {
 	#
 	# experimental features
 
+	# DANE
+	if use dane; then
+		cat >> Makefile <<- EOC
+			EXPERIMENTAL_DANE=yes
+		EOC
+	fi
+
 	# Distributed Checksum Clearinghouse
 	if use dcc; then
 		echo "EXPERIMENTAL_DCC=yes">> Makefile
@@ -484,6 +491,7 @@ pkg_postinst() {
 		einfo "${EROOT}etc/exim/auth_conf.sub contains the configuration sub for using smtp auth."
 		einfo "Please create ${EROOT}etc/exim/exim.conf from ${EROOT}etc/exim/exim.conf.dist."
 	fi
+	use dane && einfo "DANE support is experimental"
 	if use dcc ; then
 		einfo "DCC support is experimental, you can find some limited"
 		einfo "documentation at the bottom of this prerelease message:"
