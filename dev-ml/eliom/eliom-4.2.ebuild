@@ -18,7 +18,7 @@ IUSE="doc +ocamlopt"
 RDEPEND=">=dev-lang/ocaml-4.00:=[ocamlopt?]
 	>=dev-ml/js_of_ocaml-2.5-r1:=
 	>=www-servers/ocsigenserver-2.5:=
-	>=dev-ml/tyxml-3.3:=
+	>=dev-ml/tyxml-3.6:=
 	>=dev-ml/deriving-0.6:=
 	dev-ml/reactiveData:=
 	dev-ml/ocaml-ipaddr:=
@@ -28,6 +28,10 @@ RDEPEND=">=dev-lang/ocaml-4.00:=[ocamlopt?]
 	dev-ml/calendar:="
 DEPEND="${RDEPEND}
 	dev-ml/opam"
+
+src_prepare() {
+	epatch "${FILESDIR}/tyxml36.patch"
+}
 
 src_compile() {
 	if use ocamlopt ; then
