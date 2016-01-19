@@ -7720,7 +7720,7 @@ dev-python/python-msrplib 0.18.0: Client library for MSRP protocol and its relay
 dev-python/python-musicbrainz 0.7.4-r1: Python Bindings for the MusicBrainz XML Web Service
 dev-python/python-musicbrainz-ngs 0.4 0.5: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
 dev-python/python-nbxmpp 0.5.3: Python library to use Jabber/XMPP networks in a non-blocking way
-dev-python/python-neutronclient 2.3.6 2.4.0 2.6.0 3.0.0: A client for the OpenStack Quantum API
+dev-python/python-neutronclient 2.3.6 2.4.0 2.6.0 3.0.0 3.1.1: A client for the OpenStack Quantum API
 dev-python/python-novaclient 2.17.0 2.17.0-r1 2.20.0 2.23.2 2.25.0 2.27.0 2.30.1 2.30.2: A client for the OpenStack Nova API
 dev-python/python-nss 0.16.0: Python bindings for Network Security Services (NSS)
 dev-python/python-oembed 0.2.1-r1 0.2.2: A Python library that implements an OEmbed consumer
@@ -16676,7 +16676,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 7.0.0 7.0.1 2015.1.9999 2015.2.9999: A virtual network service for Openstack
-sys-cluster/nova 12.0.0-r2 2015.1.9999 2015.2.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
+sys-cluster/nova 12.0.0-r2 12.0.1 2015.1.9999 2015.2.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/open-mx 1.5.4: Open-MX - Myrinet Express over Generic Ethernet Hardware
