@@ -2,11 +2,10 @@ DEFINED_PHASES=-
 DESCRIPTION=Transitional package to pull in plasma-meta plus basic applications
 EAPI=5
 HOMEPAGE=https://www.kde.org/
-IUSE=+display-manager minimal +wallpapers
 KEYWORDS=~amd64 ~x86
 LICENSE=metapackage
-RDEPEND=>=kde-apps/dolphin-15.08.3 >=kde-apps/konsole-15.08.3 >=kde-apps/kwrite-15.08.3 >=kde-plasma/plasma-meta-5.4.1 wallpapers? ( >=kde-apps/kde-wallpapers-15.08.3 ) !minimal? ( >=kde-apps/kdebase-runtime-meta-15.08.3[minimal] ) !prefix? ( display-manager? ( || ( x11-misc/lightdm x11-misc/sddm ) ) ) !kde-apps/kdebase-meta:4
+RDEPEND=>=kde-apps/kdecore-meta-15.08.3 >=kde-plasma/plasma-meta-5.4.1 !kde-apps/kdebase-meta:4
 SLOT=5
 _eclass_exported_funcs=-
 _eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	kde5-functions	641acad8174182a50811eec70b73ccf8	kde5-meta-pkg	c6e74f0a7a02a16639c5a863fe7df50c	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=0c019d46dc17c7b603815ad1975ee4bd
+_md5_=9041d6812515b3577e2b7cc9e3be3186
