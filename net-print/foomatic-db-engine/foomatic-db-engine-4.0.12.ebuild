@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -39,15 +39,15 @@ src_configure() {
 }
 
 src_compile() {
-	emake
+	default
 
 	cd lib
 	perl-app_src_compile
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc ChangeLog README TODO USAGE
+	default
+	dodoc USAGE
 
 	cd lib
 	perl-module_src_install
