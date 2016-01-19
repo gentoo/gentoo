@@ -19,7 +19,6 @@ RDEPEND="
 	dev-ros/cv_bridge
 	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
 	dev-ros/image_transport
-	dev-ros/tf
 	media-libs/opencv
 "
 DEPEND="${RDEPEND}"
