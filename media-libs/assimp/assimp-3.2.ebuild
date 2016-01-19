@@ -28,6 +28,7 @@ src_configure() {
 		$(cmake-utils_use_build tools ASSIMP_TOOLS) \
 		$(cmake-utils_use_build static STATIC_LIB) \
 		$(cmake-utils_use_enable !boost BOOST_WORKAROUND)
+		-DCMAKE_DEBUG_POSTFIX=""
 	)
 
 	cmake-utils_src_configure
