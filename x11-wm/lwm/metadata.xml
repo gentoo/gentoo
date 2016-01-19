@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
-	<longdescription>
+<longdescription>
 	lwm is a window manager for X that tries to keep out of your face. 
 	There are no icons, no button bars, no icon docks, no root menus, 
 	no nothing.

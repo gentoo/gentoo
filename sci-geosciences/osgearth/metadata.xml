@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-	</maintainer>
 	<longdescription lang="en">
 		osgEarth is a C++ terrain rendering toolkit. Just create a
 		simple XML file, point it at your imagery, elevation, and

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">ms-sys</remote-id>
 		<bugs-to>http://sourceforge.net/tracker/?group_id=59200</bugs-to>

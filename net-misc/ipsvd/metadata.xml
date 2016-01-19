@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-  <email>maintainer-needed@gentoo.org</email>
-</maintainer>
 <longdescription>
 ipsvd is a set of internet protocol service daemons for Unix. It currently
 includes a TCP/IP service daemon, an SSLv3 TCP/IP service daemon (Linux and

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
-    <email>maintainer-needed@gentoo.org</email>
-  </maintainer>
   <longdescription lang="en">
     If you want to remove memory leaks from your C or C++ programs or you
     experience strange bugs, probably due to pointer access to freed data,

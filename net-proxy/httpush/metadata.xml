@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-	</maintainer>
 	<longdescription>HTTPush aims at providing an easy way to audit HTTP and HTTPS application/server security. It supports on-the-fly request modification, automated decision making and vulnerability detection through the use of plugins.</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">httpush</remote-id>

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-	<email>maintainer-needed@gentoo.org</email>
-</maintainer>
 <longdescription>The enterprise-class Open Source LDAP server for Linux</longdescription> 
 <use>
 	<flag name="pam-passthru">Enable pam-passthru plugin - for simple and fast system services used in ldap</flag>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
 <longdescription>Command line program for sending SMS to Polish GSM mobile phone users.
 
 Ma?a reorganizacja. Z racji licznych downloadw ww. programu postanowi?em zrobi? 

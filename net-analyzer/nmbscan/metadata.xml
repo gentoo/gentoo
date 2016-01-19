@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-	<email>maintainer-needed@gentoo.org</email>
-</maintainer>
 <longdescription>
 nmbscan scans the shares of a SMB network, using the NMB and SMB protocols.
 It is useful for acquiring information on a local area network for such purposes as security auditing.

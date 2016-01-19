@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-		<description>This package lacks a primary herd or maintainer</description>
-	</maintainer>
 	<longdescription>A program to split files into smaller pieces and the put them back together.</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">gtk-splitter</remote-id>
