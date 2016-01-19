@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit toolchain-funcs multilib
+inherit eutils multilib toolchain-funcs
 
 MY_P="${PN/d}-${PV}"
 DESCRIPTION="A small, fast, and scalable web server"
