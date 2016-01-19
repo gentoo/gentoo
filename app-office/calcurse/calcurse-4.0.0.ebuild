@@ -11,7 +11,7 @@ SRC_URI="http://calcurse.org/files/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 x86 ~ppc ~ppc64"
 
 RDEPEND="sys-libs/ncurses:0="
 DEPEND="${RDEPEND}"
