@@ -36,49 +36,52 @@ ruby_add_rdepend "
 	>=dev-ruby/log4r-1.1.9 <dev-ruby/log4r-1.1.11
 	>=dev-ruby/net-ssh-3.0.1
 	>=dev-ruby/net-sftp-2.1
-	>=dev-ruby/net-scp-1.1.0 <dev-ruby/net-scp-1.2
-	>=dev-ruby/rb-kqueue-0.2.0
+	>=dev-ruby/net-scp-1.1.0
 	>=dev-ruby/rest-client-1.6.0 <dev-ruby/rest-client-2.0
 	>=dev-ruby/nokogiri-1.6.3.1
 	>=dev-ruby/mime-types-2.6.2 <dev-ruby/mime-types-3
 "
 
 ruby_add_bdepend "
-    dev-ruby/rake
+	dev-ruby/rake
 "
 
 all_ruby_prepare() {
-    # remove bundler support
-    sed -i '/[Bb]undler/d' Rakefile || die
-    rm Gemfile || die
+	# remove bundler support
+	sed -i '/[Bb]undler/d' Rakefile || die
+	rm Gemfile || die
 
-    # loosen dependencies
-    sed -e '/hashicorp-checkpoint\|listen\|net-ssh/s/~>/>=/' \
-        -e '/nokogiri/s/=/>=/' \
-        -i ${PN}.gemspec || die
+	# loosen dependencies
+	sed -e '/hashicorp-checkpoint\|listen\|net-ssh\|net-scp/s/~>/>=/' \
+		-e '/nokogiri/s/=/>=/' \
+		-i ${PN}.gemspec || die
 
-    # remove windows-specific gems
-    sed -e '/wdm\|winrm/d' \
-        -i ${PN}.gemspec || die
+	# remove windows-specific gems
+	sed -e '/wdm\|winrm/d' \
+		-i ${PN}.gemspec || die
 
-    # see https://github.com/mitchellh/vagrant/pull/5877
-    epatch "${FILESDIR}"/${P}-install-plugins-in-isolation.patch
-    
+	# remove bsd-specific gems
+	sed -e '/rb-kqueue/d' \
+		-i ${PN}.gemspec || die
+
+	# see https://github.com/mitchellh/vagrant/pull/5877
+	epatch "${FILESDIR}"/${P}-install-plugins-in-isolation.patch
+
 	# disable embedded CA certs and use system ones
-    epatch "${FILESDIR}"/${P}-disable-embedded-cacert.patch
+	epatch "${FILESDIR}"/${P}-disable-embedded-cacert.patch
 
 	# fix rvm issue (bug #474476)
-    epatch "${FILESDIR}"/${P}-rvm.patch
+	epatch "${FILESDIR}"/${P}-rvm.patch
 }
 
 all_ruby_install() {
-    newbashcomp contrib/bash/completion.sh ${PN}
-    all_fakegem_install
+	newbashcomp contrib/bash/completion.sh ${PN}
+	all_fakegem_install
 
 	# provide executable similar to upstream:
 	# https://github.com/mitchellh/vagrant-installers/blob/master/substrate/modules/vagrant_installer/templates/vagrant.erb
-    newbin "${FILESDIR}/${P}" "${PN}"
+	newbin "${FILESDIR}/${P}" "${PN}"
 
-    # directory for plugins.json
-    dodir /var/lib/vagrant
+	# directory for plugins.json
+	dodir /var/lib/vagrant
 }
