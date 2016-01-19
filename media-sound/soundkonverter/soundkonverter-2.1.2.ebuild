@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,6 +25,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 "
+
+PATCHES=( "${FILESDIR}/${PN}-2.1.2-taglib-110.patch" )
 
 pkg_postinst() {
 	kde4-base_pkg_postinst
