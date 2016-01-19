@@ -9,7 +9,7 @@ DESCRIPTION="Create as many words as you can before the time runs out"
 HOMEPAGE="http://www.shiftygames.com/scramble/scramble.html"
 SRC_URI="http://www.shiftygames.com/scramble/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE=""
@@ -23,6 +23,8 @@ RDEPEND="${DEPEND}
 
 src_prepare() {
 	append-cflags $(sdl-config --cflags)
+	sed -i -e 's/inline //' src/scramble.c || die
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
