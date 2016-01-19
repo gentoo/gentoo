@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,7 @@ SLOT="0"
 IUSE="test"
 
 RDEPEND=">=app-crypt/acme-${PV}[${PYTHON_USEDEP}]
-	dev-python/configargparse[${PYTHON_USEDEP}]
+	>=dev-python/configargparse-0.10.0[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-0.7[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
