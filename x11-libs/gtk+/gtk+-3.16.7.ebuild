@@ -12,7 +12,7 @@ DESCRIPTION="Gimp ToolKit +"
 HOMEPAGE="http://www.gtk.org/"
 
 LICENSE="LGPL-2+"
-SLOT="3/3.16"
+SLOT="3"
 IUSE="aqua broadway cloudprint colord cups examples +introspection test vim-syntax wayland X xinerama"
 REQUIRED_USE="
 	|| ( aqua wayland X )
