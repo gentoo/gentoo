@@ -4694,7 +4694,7 @@ dev-libs/liboobs 3.0.0: Liboobs is a wrapping library to the System Tools Backen
 dev-libs/liboop 1.0-r1: low-level event loop management library for POSIX-based operating systems
 dev-libs/liborcus 0.7.0 0.7.1 0.9.2 9999: Standalone file import filter library for spreadsheet documents
 dev-libs/libotf 0.9.13: Library for handling OpenType fonts (OTF)
-dev-libs/libowfat 0.29: reimplement libdjb - excellent libraries from Dan Bernstein
+dev-libs/libowfat 0.29 0.30: reimplement libdjb - excellent libraries from Dan Bernstein
 dev-libs/libp11 0.2.8-r3: A library implementing a layer on top of PKCS#11 API to make using PKCS#11 implementations easier
 dev-libs/libparserutils 0.1.2 0.2.0-r1 0.2.1-r1: library for building efficient parsers, written in C
 dev-libs/libpcre 7.9-r1 8.35 8.36 8.37-r2 8.38: Perl-compatible regular expression library
@@ -13950,7 +13950,7 @@ net-irc/ircii 20110228 20111115: An IRC and ICB client that runs under most UNIX
 net-irc/ircmap 0.99: Scripts to treate diagrams of IRC networks using the LINKS command
 net-irc/ircservices 5.1.24: ChanServ, NickServ, and MemoServ with support for several IRC daemons
 net-irc/ircstats 1.1-r1: IRCStats tries to be a log analyzer for Linux similar to mIRCStats
-net-irc/irker 1.19 1.20 2.9 2.11 2.12 2.13: Submission tools for IRC notifications
+net-irc/irker 1.19 1.20 2.9 2.11 2.12 2.13 2.15: Submission tools for IRC notifications
 net-irc/iroffer-dinoex 3.29: IRC fileserver using DCC
 net-irc/irssi 0.8.17 9999: A modular textUI IRC client with IPv6 support
 net-irc/irssi-otr 1.0.0-r1: Off-The-Record messaging (OTR) for irssi
