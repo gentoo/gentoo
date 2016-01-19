@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -34,7 +34,7 @@ CDEPEND="dev-db/sqlite:3
 	dev-libs/popt
 	dev-libs/libxml2
 	dev-libs/openssl:*
-	sys-libs/ncurses
+	sys-libs/ncurses:*
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
 	bluetooth? ( net-wireless/bluez )
