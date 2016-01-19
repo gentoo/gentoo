@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,16 +26,16 @@ KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="debug doc examples icu test zlib"
 
 RDEPEND="
-	>=dev-qt/qtcore-4.8:4
-	>=dev-qt/qtgui-4.8:4
-	>=dev-qt/qtsql-4.8:4
-	examples? ( >=dev-qt/qtwebkit-4.8:4 )
+	dev-qt/qtcore:4[ssl]
+	dev-qt/qtgui:4
+	dev-qt/qtsql:4
+	examples? ( dev-qt/qtwebkit:4 )
 	icu? ( dev-libs/icu:= )
 	zlib? ( sys-libs/zlib )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	test? ( >=dev-qt/qttest-4.8:4 )
+	test? ( dev-qt/qttest:4 )
 "
 
 DOCS=( CHANGES )
