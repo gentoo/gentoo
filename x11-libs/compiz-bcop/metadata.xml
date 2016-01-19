@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>desktop-effects</herd>
+<maintainer type="project">
+	<email>desktop-effects@gentoo.org</email>
+	<name>Desktop effects</name>
+</maintainer>
 <longdescription lang="en">
 BCOP is a code generator that provides an easy way to handle plugin options by
 generating parts of the plugin code directly from the xml metadata file. 
 </longdescription>
 </pkgmetadata>
-

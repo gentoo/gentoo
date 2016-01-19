@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
+	<maintainer type="project">
 		<email>haskell@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
 		D-Bus is a simple, message-based protocol for inter-process
 		communication, which allows applications to interact with other parts of
-		the machine and the user&#39;s session using remote procedure calls.
+		the machine and the user's session using remote procedure calls.
 		
 		D-Bus is a essential part of the modern Linux desktop, where it replaces
 		earlier protocols such as CORBA and DCOP.
@@ -31,8 +33,8 @@
 		&amp;#x20;   client &lt;- connectSession
 		&amp;#x20;   //
 		&amp;#x20;   \-- Request a list of connected clients from the bus
-		&amp;#x20;   reply &lt;- call_ client (methodCall \&quot;\/org\/freedesktop\/DBus\&quot; \&quot;org.freedesktop.DBus\&quot; \&quot;ListNames\&quot;)
-		&amp;#x20;       &amp;#x7b; methodCallDestination = Just \&quot;org.freedesktop.DBus\&quot;
+		&amp;#x20;   reply &lt;- call_ client (methodCall \"\/org\/freedesktop\/DBus\" \"org.freedesktop.DBus\" \"ListNames\")
+		&amp;#x20;       &amp;#x7b; methodCallDestination = Just \"org.freedesktop.DBus\"
 		&amp;#x20;       &amp;#x7d;
 		&amp;#x20;   //
 		&amp;#x20;   \-- org.freedesktop.DBus.ListNames() returns a single value, which is

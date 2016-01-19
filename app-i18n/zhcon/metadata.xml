@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>cjk</herd>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
 	<longdescription>zhcon is a Fast double-byte virtual console for
 Chinese/Japanese/Korean (CJK) running under GNU/Linux and FreeBSD.
 It adds the ability of displaying and inputting CJK double-byte

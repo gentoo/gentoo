@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<longdescription lang="en">A rebuild of nagios from the ground up</longdescription>
@@ -10,7 +10,7 @@
 		<flag name="web">Adds generic web interface support</flag>
 		<flag name="eventhandler">Adds support for running custom scripts whenever a host or service state change occurs</flag>
 	</use>
-	<maintainer>
+	<maintainer type="person">
 		<email>prometheanfire@gentoo.org</email>
 	</maintainer>
 	<upstream>

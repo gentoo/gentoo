@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-  <email>maintainer-needed@gentoo.org</email>
-</maintainer>
 <longdescription>Intel2GAS is a converter that will convert assembler source files written for 
 NASM to files that can be assembled using the GNU Assembler (GAS), on the i386 platform. It 
 provides support for basic MMX instructions as well.</longdescription>

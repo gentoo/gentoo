@@ -1,7 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>common-lisp</herd>
+  <maintainer type="project">
+    <email>common-lisp@gentoo.org</email>
+    <name>Gentoo Common Lisp Project</name>
+  </maintainer>
   <longdescription>
 This is a library for handling page faults in user mode. A page fault occurs
 when a program tries to access to a region of memory that is currently not

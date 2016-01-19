@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-        <herd>proxy-maintainers</herd>
-        <maintainer>
+        <maintainer type="person">
                 <email>idella4@gentoo.org</email>
         </maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>antti.jarvinen@katiska.org</email>
 		<name>Antti Järvinen</name>
 		<description>proxy maintainer</description>
 	</maintainer>
+	<maintainer type="project">
+                <email>proxy-maint@gentoo.org</email>
+                <name>Proxy Maintainers</name>
+        </maintainer>
 	<longdescription lang="en">
    Classified ads is an attempt to re-produce parts of the functionality
    that went away when Usenet news ceased to exist. This attempt tries to

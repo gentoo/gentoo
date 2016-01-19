@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>zerochaos@gentoo.org</email>
 		<name>Rick Farina</name>
 	</maintainer>
@@ -11,7 +11,7 @@
 		Wireless Extensions (almost all recent IEEE 802.11a/b/g drivers).
 	</longdescription>
 	<use>
-		<flag name='multicall'>Build the most commonly used tools as one
+		<flag name="multicall">Build the most commonly used tools as one
 			binary</flag>
 	</use>
 </pkgmetadata>

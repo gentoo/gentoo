@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>embedded</herd>
-<herd>toolchain</herd>
-<maintainer>
+<maintainer type="person">
 <email>vapier@gentoo.org</email>
+</maintainer>
+<maintainer type="project">
+<email>embedded@gentoo.org</email>
+<name>Embedded Gentoo</name>
+</maintainer>
+<maintainer type="project">
+<email>toolchain@gentoo.org</email>
+<name>Gentoo Toolchain Project</name>
 </maintainer>
 </pkgmetadata>

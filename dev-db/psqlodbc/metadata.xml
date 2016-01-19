@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>postgresql</herd>
+<maintainer type="project">
+<email>pgsql-bugs@gentoo.org</email>
+<name>PostgreSQL and Related Package Development</name>
+</maintainer>
 <use>
-<flag name='iodbc'>Use dev-db/libiodbc. Disable to use dev-db/unixODBC.</flag>
+<flag name="iodbc">Use dev-db/libiodbc. Disable to use dev-db/unixODBC.</flag>
 </use>
 </pkgmetadata>

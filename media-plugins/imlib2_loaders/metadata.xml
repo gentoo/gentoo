@@ -1,15 +1,18 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>enlightenment</herd>
+<maintainer type="project">
+	<email>enlightenment@gentoo.org</email>
+	<name>Project Enlightenment</name>
+</maintainer>
 <use>
-	<flag name='eet'>Enable Eet image loader</flag>
-	<flag name='xcf'>Enable XCF image loader</flag>
+	<flag name="eet">Enable Eet image loader</flag>
+	<flag name="xcf">Enable XCF image loader</flag>
 </use>
 <longdescription>
 additional image library loaders for imlib2
 </longdescription>
 <upstream>
-	<remote-id type='sourceforge'>enlightenment</remote-id>
+	<remote-id type="sourceforge">enlightenment</remote-id>
 </upstream>
 </pkgmetadata>

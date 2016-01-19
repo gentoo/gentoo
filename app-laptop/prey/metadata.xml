@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-	<email>maintainer-needed@gentoo.org</email>
-</maintainer>
 <use>
 	<flag name="alarm">Module for playing an audio file</flag>
 	<flag name="alert">Display a warning message when the computer seems to be stolen"</flag>
@@ -18,4 +15,3 @@
 <longdescription lang="en">
 </longdescription>
 </pkgmetadata>
-

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>cvs-utils</herd>
+	<maintainer type="project">
+		<email>cvs-utils@gentoo.org</email>
+		<name>Gentoo CVS Project</name>
+	</maintainer>
 	<longdescription lang="en">
 		CvsGraph is a utility to make a graphical representation of all
 		revisions and branches of a file in a CVS/RCS repository. It has been
@@ -9,4 +12,3 @@
 		stand-alone version of this graph code. So, it was time to write one.
 	</longdescription>
 </pkgmetadata>
-

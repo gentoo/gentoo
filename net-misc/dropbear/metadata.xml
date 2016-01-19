@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>embedded</herd>
+  <maintainer type="project">
+    <email>embedded@gentoo.org</email>
+    <name>Embedded Gentoo</name>
+  </maintainer>
   <longdescription>
 I was looking for a small and secure SSH server to fit on a laptop with 4 megs ram and no hard 
 disk, and couldn't find one which was satisfactory. I decided to write my own, and Dropbear is 

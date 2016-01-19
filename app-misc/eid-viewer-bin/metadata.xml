@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proxy-maintainers</herd>
-<maintainer>
+<maintainer type="person">
   <email>vincent.hardy.be@gmail.com</email>
+</maintainer>
+<maintainer type="project">
+  <email>proxy-maint@gentoo.org</email>
+  <name>Proxy Maintainers</name>
 </maintainer>
 <longdescription>
 eid-mw is Belgian Electronic Identity Card (eID) middleware supplied by the Belgian Federal Government.

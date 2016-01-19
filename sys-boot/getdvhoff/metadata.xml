@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>mips</herd>
-	<maintainer>
+	<maintainer type="project">
 		<email>mips@gentoo.org</email>
 		<name>Mips Team</name>
 	</maintainer>
@@ -11,4 +10,3 @@
 		getdvhoff - Utility for use on LiveCDs to calculate offset of the ext2 partition for losetup
 	</longdescription>
 </pkgmetadata>
-

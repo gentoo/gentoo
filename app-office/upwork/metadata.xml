@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <maintainer>
+    <maintainer type="person">
         <email>titanofold@gentoo.org</email>
         <name>Aaron W. Swenson</name>
         <description>Assign bugs.</description>
     </maintainer>
-    <maintainer>
+    <maintainer type="person">
         <email>stefantalpalaru@yahoo.com</email>
         <name>Stefan Talpalaru</name>
         <description>CC on bugs.</description>

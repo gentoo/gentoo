@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>netmon</herd>
+<maintainer type="project">
+<email>netmon@gentoo.org</email>
+<name>Gentoo network monitoring and analysis project</name>
+</maintainer>
 <use>
 <flag name="elf">Enable the use of elf utils to check uptime on some systems</flag>
 <flag name="mfd-rewrites">Use MFD rewrites of mib modules where available</flag>
@@ -9,7 +12,7 @@
 <flag name="pci">Use libpci (from <pkg>sys-apps/pciutils</pkg>) to look up network interface description. This feature is only available on Linux.</flag>
 <flag name="rpm">Enable monitoring of <pkg>app-arch/rpm</pkg>. This flag requires the bzip2 and zlib flags to be enabled as well.</flag>
 <flag name="ucd-compat">Build UCD compatibility library. Increases significantly the install size.</flag>
-<flag name='smux'>Enable support for the legacy smux protocol (superseded by agentx)</flag>
+<flag name="smux">Enable support for the legacy smux protocol (superseded by agentx)</flag>
 </use>
 <upstream>
 <remote-id type="sourceforge">net-snmp</remote-id>

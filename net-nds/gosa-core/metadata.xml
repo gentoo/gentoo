@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>dev-zero@gentoo.org</email>
 		<name>Tiziano Müller</name>
 	</maintainer>
 	<use>
-		<flag name='mail'>Manage mail accounts and servers with gosa.</flag>
-		<flag name='samba'>Manage samba accounts with gosa.</flag>
+		<flag name="mail">Manage mail accounts and servers with gosa.</flag>
+		<flag name="samba">Manage samba accounts with gosa.</flag>
 	</use>
 	<upstream>
 		<changelog>http://oss.gonicus.de/pub/gosa/Changelog</changelog>

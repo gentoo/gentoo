@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>ada</herd>
+<maintainer type="project">
+	<email>ada@gentoo.org</email>
+	<name>Gentoo Resources for Ada</name>
+</maintainer>
 <longdescription>The eselect module for the supported gnat compilers.</longdescription>
 </pkgmetadata>

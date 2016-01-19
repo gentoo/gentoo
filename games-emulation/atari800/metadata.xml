@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>games</herd>
+  <maintainer type="project">
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
+  </maintainer>
   <longdescription>
 Atari800 is an Atari 800, 800XL, 130XE and 5200 emulator for Unix, Amiga, MS-DOS, Atari 
 TT/Falcon, SDL and WinCE. Our main objective is to create a freely distributable portable 

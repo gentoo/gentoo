@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>lxqt</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>jauhien@gentoo.org</email>
     <name>Jauhien Piatlicki</name>
+  </maintainer>
+<maintainer type="project">
+    <email>lxqt@gentoo.org</email>
+    <name>LXQt</name>
   </maintainer>
 </pkgmetadata>

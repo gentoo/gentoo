@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>perfinion@gentoo.org</email>
   </maintainer>
   <longdescription>A simple library for using the TPM chip to secure SSH keys</longdescription>

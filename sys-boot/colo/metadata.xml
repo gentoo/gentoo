@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>mips</herd>
-	<maintainer>
+	<maintainer type="project">
 		<email>mips@gentoo.org</email>
 		<name>Mips Team</name>
 	</maintainer>
@@ -11,4 +10,3 @@
 		COLO is CObalt Linux lOader - a Modern Bootloader for Cobalt MIPS machines.
 	</longdescription>
 </pkgmetadata>
-

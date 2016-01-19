@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-	</maintainer>
 	<upstream>
 		<maintainer status="active">
                 <email>rasmus@alum.mit.edu</email>
@@ -20,4 +17,3 @@
 		retrieve any note for later reference.
 	</longdescription>
 </pkgmetadata>
-

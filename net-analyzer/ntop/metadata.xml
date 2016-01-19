@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>netmon</herd>
+  <maintainer type="project">
+    <email>netmon@gentoo.org</email>
+    <name>Gentoo network monitoring and analysis project</name>
+  </maintainer>
   <longdescription>ntop is a network traffic probe that shows the network usage,
   similar to what the popular top Unix command does. ntop is based on libpcap
   and it has been written in a portable way in order to virtually run on every

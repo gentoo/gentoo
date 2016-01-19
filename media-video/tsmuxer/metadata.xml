@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>video</herd>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+		<name>Gentoo Video project</name>
+	</maintainer>
 	<longdescription lang="en">
 		SmartLabs tsMuxeR - the software utility to create TS and M2TS files for
 		IP broadcasting as well as for viewing at hardware video players (i.e.,
@@ -9,6 +12,6 @@
 		SmartCONTENT, content preparation solution.
 	</longdescription>
 	<use>
-		<flag name='qt4'>Installs tsMuxerGUI (needs Qt4)</flag>
+		<flag name="qt4">Installs tsMuxerGUI (needs Qt4)</flag>
 	</use>
 </pkgmetadata>

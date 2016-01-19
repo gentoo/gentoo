@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		The psqueues package provides
 		&lt;http://en.wikipedia.org/wiki/Priority_queue Priority Search Queues&gt; in
 		three different flavors.
 		
 		* @OrdPSQ k p v@, which uses the @Ord k@ instance to provide fast insertion,
-		deletion and lookup. This implementation is based on Ralf Hinze&#39;s
+		deletion and lookup. This implementation is based on Ralf Hinze's
 		&lt;http://citeseer.ist.psu.edu/hinze01simple.html A Simple Implementation Technique for Priority Search Queues&gt;.
 		Hence, it is similar to the
 		&lt;http://hackage.haskell.org/package/PSQueue PSQueue&gt; library, although it is
@@ -19,7 +22,7 @@
 		(like @IntMap@) with an additional min-heap property.
 		
 		* @HashPSQ k p v@ is a fairly straightforward extension of @IntPSQ@: it
-		simply uses the keys&#39; hashes as indices in the @IntPSQ@. If there are any
+		simply uses the keys' hashes as indices in the @IntPSQ@. If there are any
 		hash collisions, it uses an @OrdPSQ@ to resolve those. The performance of
 		this implementation is comparable to that of @IntPSQ@, but it is more widely
 		applicable since the keys are not restricted to @Int@, but rather to any
@@ -43,6 +46,6 @@
 		
 		* Schedulers;
 		
-		* Pathfinding algorithms, such as Dijkstra&#39;s and A*.
+		* Pathfinding algorithms, such as Dijkstra's and A*.
 	</longdescription>
 </pkgmetadata>

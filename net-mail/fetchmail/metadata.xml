@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>net-mail</herd>
+  <maintainer type="project">
+    <email>net-mail@gentoo.org</email>
+    <name>Net-Mail</name>
+  </maintainer>
   <use>
     <flag name="hesiod">Enable support for hesiod</flag>
     <flag name="tk">Enable support for Tk GUI toolkit, in particular it installs fetchmailconf</flag>

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-mail</herd>
+	<maintainer type="project">
+<email>net-mail@gentoo.org</email>
+<name>Net-Mail</name>
+	</maintainer>
 <use>
-<flag name='gcrypt'>
+<flag name="gcrypt">
 	Use <pkg>dev-libs/libgcrypt</pkg> for low-level crypto
 </flag>
-<flag name='ntlm'>
+<flag name="ntlm">
 	Add support for Microsoft's NTLM mechanism using <pkg>net-libs/libntlm</pkg>
 </flag>
 </use>

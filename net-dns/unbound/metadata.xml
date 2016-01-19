@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>proxy-maintainers</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>mschiff@gentoo.org</email>
     <name>Marc Schiffbauer</name>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>nabeken@tknetworks.org</email>
     <description>Proxied developer. Please CC on bugs.</description>
     <name>TANABE Ken-ichi</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <longdescription lang="en">
   Unbound is a validating, recursive, and caching DNS resolver.
@@ -23,8 +26,8 @@
   as a server, but are linked into an application) are easily possible.
   </longdescription>
   <use>
-    <flag name='dnstap'>Enable dnstap support</flag>
-	<flag name='ecdsa'>Enable ECDSA support</flag>
-    <flag name='gost'>Enable GOST support</flag>
+    <flag name="dnstap">Enable dnstap support</flag>
+	<flag name="ecdsa">Enable ECDSA support</flag>
+    <flag name="gost">Enable GOST support</flag>
   </use>
 </pkgmetadata>

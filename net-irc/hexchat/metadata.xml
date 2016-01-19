@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>hasufell@gentoo.org</email>
 		<name>Julian Ospald</name>
 		<description>Maintainer, assign bugs to him</description>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>god@politeia.in</email>
 		<name>Denis M.</name>
 		<description>Proxy maintainer. CC him on bugs</description>
 	</maintainer>
 	<use>
-		<flag name='ntlm'>Enable NTLM authentication</flag>
-		<flag name='libcanberra'>Enable sound event support using
+		<flag name="ntlm">Enable NTLM authentication</flag>
+		<flag name="libcanberra">Enable sound event support using
 			<pkg>media-libs/libcanberra</pkg></flag>
-		<flag name='libproxy'>Enable proxy support.</flag>
-		<flag name='plugins'>Enable plugin support and installs some
+		<flag name="libproxy">Enable proxy support.</flag>
+		<flag name="plugins">Enable plugin support and installs some
 			built-in plugins</flag>
-		<flag name='plugin-checksum'>Build Checksum plugin
+		<flag name="plugin-checksum">Build Checksum plugin
 			(needs plugins)</flag>
-	    <flag name='plugin-doat'>Build Do At plugin (needs plugins)</flag>
-		<flag name='plugin-fishlim'>Build FiSHLiM plugin (needs plugins
+	    <flag name="plugin-doat">Build Do At plugin (needs plugins)</flag>
+		<flag name="plugin-fishlim">Build FiSHLiM plugin (needs plugins
 			)</flag>
-		<flag name='plugin-sysinfo'>Build SysInfo plugin (needs plugins)
+		<flag name="plugin-sysinfo">Build SysInfo plugin (needs plugins)
 		</flag>
-		<flag name='theme-manager'>Build the theme manager (mono)</flag>
+		<flag name="theme-manager">Build the theme manager (mono)</flag>
 	</use>
 	<upstream>
-		<maintainer status='active'>
+		<maintainer status="active">
 			<email>tingping@fedoraproject.org</email>
 			<name>TingPing</name>
 		</maintainer>
 		<bugs-to>https://github.com/hexchat/hexchat/issues</bugs-to>
-		<doc lang='en'>http://hexchat.readthedocs.org/en/latest</doc>
-		<remote-id type='github'>hexchat/hexchat</remote-id>
+		<doc lang="en">http://hexchat.readthedocs.org/en/latest</doc>
+		<remote-id type="github">hexchat/hexchat</remote-id>
 	</upstream>
 </pkgmetadata>

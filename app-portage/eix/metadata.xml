@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>proxy-maintainers</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>martin@mvath.de</email>
     <name>Martin Väth</name>
     <description>Upstream developer, assign bugs</description>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>axs@gentoo.org</email>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>xmw@gentoo.org</email>
     <name>Michael Weber</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <use>
     <flag name="debug">Build with upstream's CXXFLAGS/LDFLAGS for debugging support; not recommended for normal use.</flag>

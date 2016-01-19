@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>amd64</herd>
-<maintainer>
+<maintainer type="person">
   <email>chutzpah@gentoo.org</email>
   <name>Patrick McLean</name>
 </maintainer>
+<maintainer type="project">
+  <email>amd64@gentoo.org</email>
+  <name>AMD64 Project</name>
+</maintainer>
 </pkgmetadata>
-

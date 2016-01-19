@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>tex</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>rafaelmartins@gentoo.org</email>
 		<name>Rafael G. Martins</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>tex@gentoo.org</email>
+		<name>Gentoo TeX Project</name>
 	</maintainer>
 	<use>
 		<flag name="lyx">Install with <pkg>app-office/lyx</pkg> layout</flag>

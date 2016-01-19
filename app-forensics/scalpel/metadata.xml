@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>forensics</herd>
+  <maintainer type="project">
+    <email>forensics@gentoo.org</email>
+    <name>Gentoo Forensics Project</name>
+  </maintainer>
   <longdescription lang="en">
     Scalpel is a fast file carver that reads a database of header and footer
     definitions and extracts matching files or data fragments from a set of image

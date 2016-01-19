@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>video</herd>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+		<name>Gentoo Video project</name>
+	</maintainer>
 	<longdescription lang="en">libtiger is a rendering library for Kate streams using Pango and Cairo.
 		More information about Kate streams may be found at
 		http://wiki.xiph.org/index.php/OggKate</longdescription>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
   <email>nimiux@gentoo.org</email>
   <name>Chema Alonso</name>
 </maintainer>
@@ -14,7 +14,7 @@ conf-update es una herramienta basada en curses para el sistema
 portage de Gentoo Linux
 </longdescription>
 <use>
-  <flag name='colordiff'>Use colors when displaying diffs
+  <flag name="colordiff">Use colors when displaying diffs
     (<pkg>app-misc/colordiff</pkg>)</flag>
 </use>
 </pkgmetadata>

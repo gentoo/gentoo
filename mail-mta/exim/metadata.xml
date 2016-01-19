@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-mail</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>grobian@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>net-mail@gentoo.org</email>
+		<name>Net-Mail</name>
 	</maintainer>
 	<longdescription>
 		Exim is a message transfer agent (MTA) developed at the University of
@@ -16,31 +19,31 @@
 		quite different to that of sendmail.
 	</longdescription>
 	<use>
-		<flag name='dcc'>Adds support for Distributed Checksum Clearinghouse
+		<flag name="dcc">Adds support for Distributed Checksum Clearinghouse
 			(DCC)</flag>
-		<flag name='dane'>Adds support for DNS-based Authentication of Named Entities</flag>
-		<flag name='dkim'>Adds support for DomainKeys Identified Mail
+		<flag name="dane">Adds support for DNS-based Authentication of Named Entities</flag>
+		<flag name="dkim">Adds support for DomainKeys Identified Mail
 			(DKIM)</flag>
-		<flag name='dnsdb'>Adds support for a DNS search for a record whose
+		<flag name="dnsdb">Adds support for a DNS search for a record whose
 			domain name is the supplied query</flag>
-		<flag name='dovecot-sasl'>Adds support for Dovecot's
+		<flag name="dovecot-sasl">Adds support for Dovecot's
 			authentication</flag>
-		<flag name='dlfunc'>Install local_scan.h header to compile separate
+		<flag name="dlfunc">Install local_scan.h header to compile separate
 			dlfunc libraries</flag>
-		<flag name='dmarc'>Adds support for DMARC</flag>
-		<flag name='dsn'>Adds support for Delivery Status Notifications
+		<flag name="dmarc">Adds support for DMARC</flag>
+		<flag name="dsn">Adds support for Delivery Status Notifications
 			(DSN)</flag>
-		<flag name='exiscan-acl'>Patch providing support for content
+		<flag name="exiscan-acl">Patch providing support for content
 			scanning</flag>
-		<flag name='lmtp'>Adds support for lmtp</flag>
-		<flag name='mbx'>Adds support for UW's mbx format</flag>
-		<flag name='spf'>Adds support for Sender Policy Framework</flag>
-		<flag name='srs'>Adds support for Sender Rewriting Scheme</flag>
-		<flag name='proxy'>Add support for being behind a proxy, such as HAProxy</flag>
-		<flag name='pkcs11'>Require pkcs11 support in <pkg>net-libs/gnutls</pkg> with USE=gnutls</flag>
-		<flag name='redis'>Adds support for querying <pkg>dev-db/redis</pkg></flag>
-		<flag name='prdr'>Adds support for Per-Recipient Data Response</flag>
-		<flag name='tpda'>Adds support for Transport Post-Delivery Actions</flag>
+		<flag name="lmtp">Adds support for lmtp</flag>
+		<flag name="mbx">Adds support for UW's mbx format</flag>
+		<flag name="spf">Adds support for Sender Policy Framework</flag>
+		<flag name="srs">Adds support for Sender Rewriting Scheme</flag>
+		<flag name="proxy">Add support for being behind a proxy, such as HAProxy</flag>
+		<flag name="pkcs11">Require pkcs11 support in <pkg>net-libs/gnutls</pkg> with USE=gnutls</flag>
+		<flag name="redis">Adds support for querying <pkg>dev-db/redis</pkg></flag>
+		<flag name="prdr">Adds support for Per-Recipient Data Response</flag>
+		<flag name="tpda">Adds support for Transport Post-Delivery Actions</flag>
 	</use>
 	<upstream>
 		<bugs-to>http://bugs.exim.org/</bugs-to>

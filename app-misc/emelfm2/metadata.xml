@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>desktop-misc</herd>
-  <use><flag name='ansi'>Add support for ANSI escape sequences</flag></use>
-  <use><flag name='gtk3'>Use <pkg>x11-libs/gtk:3</pkg> instead of <pkg>x11-libs/gtk:2</pkg></flag></use>
+  <maintainer type="project">
+<email>desktop-misc@gentoo.org</email>
+<name>Gentoo Desktop Miscellaneous Project</name>
+  </maintainer>
+  <use><flag name="ansi">Add support for ANSI escape sequences</flag></use>
+  <use><flag name="gtk3">Use <pkg>x11-libs/gtk:3</pkg> instead of <pkg>x11-libs/gtk:2</pkg></flag></use>
 </pkgmetadata>

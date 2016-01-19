@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proxy-maintainers</herd>
-<maintainer>
+<maintainer type="person">
 	<email>oleg@kaa.org.ua</email>
 	<name>Oleg Kravchenko</name>
 </maintainer>
-<maintainer>
+<maintainer type="person">
 	<email>maksbotan@gentoo.org</email>
 	<name>Maxim Koltsov</name>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
 </maintainer>
 <use>
 	<flag name="cuda">Enable CUDA support via <pkg>net-wireless/cpyrit-cuda</pkg></flag>

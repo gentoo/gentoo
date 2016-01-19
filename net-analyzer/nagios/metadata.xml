@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
       <email>andrew@ahamilto.net</email>
       <name>Andrew Hamilton</name>
       <description>Maintainer. Assign bugs to him.</description>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
       <email>creffett@gentoo.org</email>
       <name>Chris Reffett</name>
       <description>Proxy maintainer. CC him on bugs.</description>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
       <email>mjo@gentoo.org</email>
       <name>Michael Orlitzky</name>
   </maintainer>
-  <herd>proxy-maintainers</herd>
-  <herd>sysadmin</herd>
+  <maintainer type="project">
+      <email>proxy-maint@gentoo.org</email>
+      <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+      <email>sysadmin@gentoo.org</email>
+      <name>Gentoo Sysadmin Project</name>
+  </maintainer>
   <longdescription>
     Nagios is a host and service monitor designed to inform you
     of network problems before your clients, end-users or

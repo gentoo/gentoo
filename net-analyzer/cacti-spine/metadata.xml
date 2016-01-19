@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>netmon</herd>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
 	<longdescription lang="en">
 		Spine (formerly known as Cactid) is a poller for Cacti that primarily
 		strives to be as fast as possible. For this reason it is written in
@@ -11,4 +14,3 @@
 		Spine makes sense for your installation.
 	</longdescription>
 </pkgmetadata>
-

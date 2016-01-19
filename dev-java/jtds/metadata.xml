@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>java</herd>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
 	<longdescription>
 jTDS is an open source 100% pure Java (type 4) JDBC 3.0 driver for Microsoft SQL
 Server (6.5, 7, 2000 and 2005) and Sybase (10, 11, 12). jTDS is based on the

@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>net-fs</herd>
-<maintainer>
+<maintainer type="person">
 	<email>NP-Hardass@gentoo.org</email>
 	<description>please assign bugs to</description>
 </maintainer>
-<maintainer>
+<maintainer type="person">
 	<email>bircoph@gentoo.org</email>
 	<name>Andrew Savchenko</name>
 	<description>please CC on bugs</description>
 </maintainer>
 <use>
-	<flag name='modules'>Build libafs kernel module. Disable only if you know
+	<flag name="modules">Build libafs kernel module. Disable only if you know
 	what you're doing: without this module OpenAFS client will not work.</flag>
 </use>
 </pkgmetadata>

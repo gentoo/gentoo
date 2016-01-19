@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		Lazy SmallCheck is a library for exhaustive, demand-driven testing of
 		Haskell programs.  It is based on the idea that if a property holds
 		for a partially-defined input then it must also hold for all
-		fully-defined refinements of the that input.  Compared to ``eager&#39;&#39;
+		fully-defined refinements of the that input.  Compared to ``eager''
 		input generation as in SmallCheck, Lazy SmallCheck may require
 		significantly fewer test-cases to verify a property for all inputs up
 		to a given depth.

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>scheme</herd>
+<maintainer type="project">
+	<email>scheme@gentoo.org</email>
+	<name>Gentoo Scheme Project</name>
+</maintainer>
 <longdescription lang="en">
 	Skribe is a text processor. Even if it is a general purpose tool, it best
 	suits the writing of technical documents such as web pages or technical
 	reports, API documentations, etc. 
 </longdescription>
 </pkgmetadata>
-

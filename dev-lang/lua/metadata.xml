@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 	<email>mabi@gentoo.org</email>
 	<name>Matti Bickel</name>
 </maintainer>
-<maintainer>
+<maintainer type="person">
 	<email>rafaelmartins@gentoo.org</email>
 	<name>Rafael G. Martins</name>
 </maintainer>
-<use><flag name='deprecated'>make deprecated data structures/routines available</flag></use>
+<use><flag name="deprecated">make deprecated data structures/routines available</flag></use>
 </pkgmetadata>

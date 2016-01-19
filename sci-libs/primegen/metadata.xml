@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci-mathematics</herd>
+<maintainer type="project">
+	<email>sci-mathematics@gentoo.org</email>
+	<name>Gentoo Mathematics Project</name>
+</maintainer>
 <longdescription lang="en">
   primegen is a small, fast library to generate prime numbers in
   order. It generates the 50847534 primes up to 1000000000 in just 8

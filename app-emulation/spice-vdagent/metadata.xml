@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>virtualization</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>dev-zero@gentoo.org</email>
 		<name>Tiziano Müller</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>virtualization@gentoo.org</email>
+		<name>Gentoo Virtualization Project</name>
 	</maintainer>
 	<use>
 		<flag name="consolekit">Use <pkg>sys-auth/consolekit</pkg> to determine the

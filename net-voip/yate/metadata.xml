@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>radio</herd>
+	<maintainer type="project">
+		<email>radio@gentoo.org</email>
+		<name>Radio</name>
+	</maintainer>
 	<use>
 		<flag name="sctp">Enable SCTP sockets</flag>
 		<flag name="dahdi">Enable Dahdi driver</flag>
@@ -22,4 +25,3 @@
 		<flag name="h323">use OpenH323</flag>
 	</use>
 </pkgmetadata>
-

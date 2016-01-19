@@ -1,7 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>openrc</herd>
+	<maintainer type="project">
+		<email>openrc@gentoo.org</email>
+		<name>Gentoo OpenRC Project</name>
+	</maintainer>
 	<use>
 		<flag name="netifrc">enable Gentoo's network stack (net.* scripts)</flag>
 		<flag name="newnet">enable the new network stack (experimental)</flag>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>media-optical</herd>
 <longdescription>
 	burnCDDA is a console frontend to cdrdao, cdrecord, mpg123, oggdec, mppdec,
 	flac, normalize, and mp3_check. It can be used to create audio CDs from an

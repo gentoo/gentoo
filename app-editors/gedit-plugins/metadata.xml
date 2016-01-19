@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>gnome</herd>
+<maintainer type="project">
+	<email>gnome@gentoo.org</email>
+	<name>Gentoo GNOME Desktop</name>
+</maintainer>
 <longdescription>Official plugins for gedit</longdescription>
 <use>
 	<flag name="charmap">Insert special characters just by clicking on
 		them</flag>
-	<flag name='git'>Shows document changes related to git's HEAD</flag>
+	<flag name="git">Shows document changes related to git's HEAD</flag>
 	<flag name="terminal">Embed a terminal in the bottom pane</flag>
 	<flag name="zeitgeist">Build the plugin to inject events to <pkg>gnome-extra/zeitgeist</pkg></flag>
 </use>

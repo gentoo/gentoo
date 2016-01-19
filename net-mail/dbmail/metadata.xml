@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>net-mail</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>lordvan@gentoo.org</email>
     <name>Thomas Raschbacher</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>net-mail@gentoo.org</email>
+    <name>Net-Mail</name>
   </maintainer>
   <longdescription>Dbmail is the name of a group of programs that enable the possiblilty of storing and retrieving mail messages from a database. Currently MySQL, PostgreSQL and SQLite can be used as database backends.</longdescription>
   <use>

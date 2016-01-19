@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci-physics</herd>
+<maintainer type="project">
+  <email>sci-physics@gentoo.org</email>
+  <name>Gentoo Physics Project</name>
+</maintainer>
 <longdescription lang="en">
   The HepMC package is an object oriented event record written in C++
   for High Energy Physics Monte Carlo Generators. Many extensions from
@@ -19,7 +22,7 @@
   Reference: M. Dobbs and J.B. Hansen, Comput. Phys. Commun. 134 (2001)41. 
 </longdescription>
 <use>
-  <flag name='gev'>Build with GeV instead of default MeV for momentum units</flag>
-  <flag name='cm'>Build with cm instead of default mm for length units</flag>
+  <flag name="gev">Build with GeV instead of default MeV for momentum units</flag>
+  <flag name="cm">Build with cm instead of default mm for length units</flag>
 </use>
 </pkgmetadata>

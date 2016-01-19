@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci</herd>
-<longdescription lang='en'>
+<maintainer type="project">
+	<email>sci@gentoo.org</email>
+	<name>Gentoo Science Project</name>
+</maintainer>
+<longdescription lang="en">
   dvi2gr is a small utility to translate a TeX file (DVI) into a string
   recognized by the Grace plotting tool.
 </longdescription>

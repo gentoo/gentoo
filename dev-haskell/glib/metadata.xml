@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+        <email>haskell@gentoo.org</email>
+        <name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		The GNU Library is a collection of C data structures and utility
 		function for dealing with Unicode. This package only binds as
@@ -9,7 +12,7 @@
 		wrap libraries that are themselves based on GLib.
 	</longdescription>
 	<use>
-		<flag name='closure_signals'>Use the the GClosure-based signals
+		<flag name="closure_signals">Use the the GClosure-based signals
         	implementation.</flag>
         </use>
 </pkgmetadata>

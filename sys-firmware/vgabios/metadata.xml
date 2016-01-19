@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>cardoe@gentoo.org</email>
 		<name>Doug Goldstein</name>
 	</maintainer>
-	<herd>qemu</herd>
+	<maintainer type="project">
+		<email>qemu@gentoo.org</email>
+		<name>Gentoo QEMU Project</name>
+	</maintainer>
 	<use>
-		<flag name='binary'>Use official upstream pre-built binaries (only default and cirrus images)</flag>
+		<flag name="binary">Use official upstream pre-built binaries (only default and cirrus images)</flag>
 	</use>
 </pkgmetadata>

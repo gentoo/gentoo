@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>k_f@gentoo.org</email>
 		<name>Kristian Fiskerstrand</name>
 	</maintainer>
 	<use>
-		<flag name='transcode'>Install optional dependencies for transcoding support</flag>
+		<flag name="transcode">Install optional dependencies for transcoding support</flag>
 	</use>
 </pkgmetadata>

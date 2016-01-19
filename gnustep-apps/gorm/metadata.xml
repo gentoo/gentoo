@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>gnustep</herd> 
+<maintainer type="project">
+	<email>gnustep@gentoo.org</email>
+	<name>Gentoo GNUstep Project</name>
+</maintainer> 
 <longdescription>
 Before NeXT Computer Inc. revolutionized software developement with its OpenStep API, a new way of designing graphical user interfaces was already introduced by NeXT at the beginning of the 90s. Its operating system NeXTstep featured Interface Builder, an application that for the first time allowed developers to quickly create nice user interfaces without having to code everything manually. Using drag and drop elements of windows such as buttons, sliders, textfields etc were created abd edited, then linked to functions and variables. Thus, Interface Builder helped developers to focus on the code for the actual functions without having to care about stuff not related to their project goal.
 

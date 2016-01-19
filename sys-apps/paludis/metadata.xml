@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>jdhore@gentoo.org</email>
     <name>Jeff Horelick</name>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>mgorny@gentoo.org</email>
     <name>Michał Górny</name>
   </maintainer>
@@ -13,9 +13,9 @@
     <flag name="pbins">Enable binary package support. Adds dependency upon
           <pkg>app-arch/libarchive</pkg></flag>
     <flag name="pink">Use a less boring colourscheme than the default</flag>
-    <flag name='search-index'>Enable cave search --index. Requires
+    <flag name="search-index">Enable cave search --index. Requires
           <pkg>dev-db/sqlite</pkg>.</flag>
-    <flag name='xml'>Build xml things for metadata.xml and GLSA support
+    <flag name="xml">Build xml things for metadata.xml and GLSA support
           (needs <pkg>dev-libs/libxml2</pkg>).</flag>
   </use>
 </pkgmetadata>

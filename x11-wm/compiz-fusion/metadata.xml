@@ -5,7 +5,10 @@
   <flag name="emerald">Install the <pkg>x11-wm/emerald</pkg> package.</flag>
   <flag name="unsupported">Install the <pkg>x11-plugins/compiz-fusion-plugins-unsupported</pkg> package.</flag>
 </use>
-<herd>desktop-effects</herd>
+<maintainer type="project">
+  <email>desktop-effects@gentoo.org</email>
+  <name>Desktop effects</name>
+</maintainer>
 <longdescription>
 compiz-fusion is a community-driven project that is aimed at extending the compiz window manager.
 </longdescription>

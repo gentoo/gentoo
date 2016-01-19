@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 <email>prometheanfire@gentoo.org</email>
 </maintainer>
-<herd>ruby</herd>
+<maintainer type="project">
+<email>ruby@gentoo.org</email>
+<name>Gentoo Ruby Project</name>
+</maintainer>
 <longdescription lang="en">
 ruby-augeas is a set of Ruby bindings around augeas.
 </longdescription>
 </pkgmetadata>
-

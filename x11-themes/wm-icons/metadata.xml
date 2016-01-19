@@ -1,9 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <maintainer>
-        <email>maintainer-needed@gentoo.org</email>
-    </maintainer>
     <longdescription>
 	A hugely varied assortment of themed icons for use in X, created with FVWM in mind but works well in lots of other things too!
     </longdescription>

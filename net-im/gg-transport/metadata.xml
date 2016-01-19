@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>net-im</herd>
   <longdescription>
     Gadu-Gadu is a IM network vary famous in Poland, this package will
     enable your jabber server to talk to that network.

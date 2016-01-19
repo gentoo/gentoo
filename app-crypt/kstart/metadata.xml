@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>kerberos</herd>
+  <maintainer type="project">
+    <email>kerberos@gentoo.org</email>
+    <name>Kerberos</name>
+  </maintainer>
   <longdescription>Modified versions of kinit that can use srvtabs or
   keytabs to authenticate, can run as daemons and wake up periodically
   to refresh a ticket, and can run single commands with their own

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>kde</herd>
-  <herd>net-p2p</herd>
+  <maintainer type="project">
+    <email>kde@gentoo.org</email>
+    <name>Gentoo KDE Project</name>
+  </maintainer>
   <use>
     <flag name="bwscheduler">Schedule upload and download limits over a period of a week</flag>
     <flag name="downloadorder">Specify the download order of a multi-file torrent</flag>

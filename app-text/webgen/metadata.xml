@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
-  <herd>ruby</herd>
+  <maintainer type="project">
+    <email>ruby@gentoo.org</email>
+    <name>Gentoo Ruby Project</name>
+  </maintainer>
   <use>
     <flag name="builder">Enable programmatic HTML/XML generation</flag>
     <flag name="highlight">Enable syntax highlighting for certain plugins</flag>

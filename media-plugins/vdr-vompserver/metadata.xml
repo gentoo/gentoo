@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>media-tv</herd>
-<herd>proxy-maintainers</herd>
-
-<maintainer>
+<maintainer type="person">
   <email>pfrank@gmx.de</email>
   <name>Petric Frank</name>
   <description>Proxied maintainer</description>
 </maintainer>
 
-<maintainer>
+<maintainer type="project">
   <email>vdr@gentoo.org</email>
   <name>Gentoo VDR Project</name>
+</maintainer>
+<maintainer type="project">
+  <email>proxy-maint@gentoo.org</email>
+  <name>Proxy Maintainers</name>
 </maintainer>
 </pkgmetadata>

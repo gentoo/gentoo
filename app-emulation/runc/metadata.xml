@@ -5,7 +5,7 @@
 		runc is a CLI tool for spawning and running containers according
 		to the OCF (Open Container Format) specification.
 	</longdescription>
-	<maintainer>
+	<maintainer type="person">
 		<email>cardoe@gentoo.org</email>
 		<name>Doug Goldstein</name>
 	</maintainer>

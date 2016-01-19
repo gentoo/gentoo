@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
 
 	<use>
 		<!-- 0.3* flags -->
-		<flag name='gif' restrict='=net-im/ekg2-0.3*'>
+		<flag name="gif" restrict="=net-im/ekg2-0.3*">
 			GIF token support for Gadu-Gadu protocol.</flag>
-		<flag name='gnutls'>Enable SSL/TLS support through GnuTLS
+		<flag name="gnutls">Enable SSL/TLS support through GnuTLS
 			for the plugins supporting it. If 'ssl' is enabled too, GnuTLS will
 			be preferred where possible (and OpenSSL will be used
 			elsewhere).</flag>
-		<flag name='jpeg'>JPEG token support for Gadu-Gadu protocol.</flag>
-		<flag name='ssl' restrict='=net-im/ekg2-0.3*'>
+		<flag name="jpeg">JPEG token support for Gadu-Gadu protocol.</flag>
+		<flag name="ssl" restrict="=net-im/ekg2-0.3*">
 			Enable the complete SSL/TLS support through OpenSSL.
 			This also enables the 'sim' plugin which relies on OpenSSL.</flag>
-		<flag name='oracle'>Support logging messages into Oracle database.</flag>
+		<flag name="oracle">Support logging messages into Oracle database.</flag>
 
 		<!-- common and modern flags -->
-		<flag name='gadu'>Enable Gadu-Gadu protocol support (requires
+		<flag name="gadu">Enable Gadu-Gadu protocol support (requires
 			<pkg>net-libs/libgadu</pkg>).</flag>
-		<flag name='gpg'>Enable jabber message encryption through
+		<flag name="gpg">Enable jabber message encryption through
 			<pkg>app-crypt/gpgme</pkg>.</flag>
-		<flag name='minimal'>Disable building extra plugins with no additional
+		<flag name="minimal">Disable building extra plugins with no additional
 			deps.</flag>
-		<flag name='openssl'>Support encryption in sim plugin, using OpenSSL.</flag>
-		<flag name='sqlite'>Support logging messages into SQLite3 database.</flag>
+		<flag name="openssl">Support encryption in sim plugin, using OpenSSL.</flag>
+		<flag name="sqlite">Support logging messages into SQLite3 database.</flag>
 	</use>
 </pkgmetadata>

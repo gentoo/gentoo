@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>livecd</herd>
-  <maintainer>
+  <maintainer type="project">
     <email>catalyst@gentoo.org</email>
+  </maintainer>
+  <maintainer type="project">
+    <email>livecd@gentoo.org</email>
+    <name>Gentoo LiveCD Project</name>
   </maintainer>
   <use>
     <flag name="ccache">Enables ccache support</flag>

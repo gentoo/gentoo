@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>neurogeek@gentoo.org</email>
 		<name>Jesus Rivero</name>
 		<description>Proxy Maintainer</description>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>jmfo1982@yahoo.es</email>
 		<description>Proxied Maintainer. Please CC on bugs.</description>
 		<name>José Manuel Ferrer Ortiz</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
 libspectrum is a library designed to make the input and output of some ZX

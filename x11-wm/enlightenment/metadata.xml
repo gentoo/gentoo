@@ -1,75 +1,78 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>enlightenment</herd>
+<maintainer type="project">
+	<email>enlightenment@gentoo.org</email>
+	<name>Project Enlightenment</name>
+</maintainer>
 <use>
-	<flag name='pango'>Enable pango font rendering</flag>
-	<flag name='xrandr'>Enable support for the X xrandr extension</flag>
-	<flag name='udev'>Use sys-fs/udev to determine available devices</flag>
-	<flag name='ukit'>Use upower/udisks to automount devices</flag>
-	<flag name='enlightenment_modules_access'>Accessibility module designed to improve ease of use for the vision impaired and the blind</flag>
-	<flag name='enlightenment_modules_appmenu'>Gadget that hold the toolbar of the foreground application</flag>
-	<flag name='enlightenment_modules_backlight'>Backlight control slider gadget</flag>
-	<flag name='enlightenment_modules_battery'>A gadget to visualize your battery status</flag>
-	<flag name='enlightenment_modules_bluez4'>Configure Bluetooth devices</flag>
-	<flag name='enlightenment_modules_clock'>Nice clock gadget to show current time</flag>
-	<flag name='enlightenment_modules_connman'>Control Wifi and wired networks as a user</flag>
-	<flag name='enlightenment_modules_contact'>Enable the contact module</flag>
-	<flag name='enlightenment_modules_cpufreq'>Gadget to monitor and change the CPU frequency</flag>
-	<flag name='enlightenment_modules_everything'>The run command module provides an application launcher dialog</flag>
-	<flag name='enlightenment_modules_fileman'>Enlightenment's integrated file manager</flag>
-	<flag name='enlightenment_modules_fileman-opinfo'>Can be placed on the desktop or in a shelf</flag>
-	<flag name='enlightenment_modules_gadman'>Module to manage gadgets on the desktop</flag>
-	<flag name='enlightenment_modules_geolocation'>Geolocation</flag>
-	<flag name='enlightenment_modules_ibar'>Iconic application launcher</flag>
-	<flag name='enlightenment_modules_ibox'>A home for your iconified applications</flag>
-	<flag name='enlightenment_modules_illume2'>Illume2 - next generation of illume - special WM mode for embedded devices and set of plugins with same purpose</flag>
-	<flag name='enlightenment_modules_lokker'>Screen locker</flag>
-	<flag name='enlightenment_modules_mixer'>A module to provide a mixer for changing volume</flag>
-	<flag name='enlightenment_modules_msgbus'>DBus Extension</flag>
-	<flag name='enlightenment_modules_music-control'>Control your music in your shelf</flag>
-	<flag name='enlightenment_modules_notification'>notification-daemon alternative. Popup if an event occur</flag>
-	<flag name='enlightenment_modules_packagekit'>Package manager integration</flag>
-	<flag name='enlightenment_modules_pager'>Gadget to allow you to visualize your virtual desktops and the windows they contain</flag>
-	<flag name='enlightenment_modules_pager-plain'>A simpler desktop pager</flag>
-	<flag name='enlightenment_modules_policy-mobile'></flag>
-	<flag name='enlightenment_modules_quickaccess'>Enlightenment Quickaccess Launcher</flag>
-	<flag name='enlightenment_modules_shot'>Simple screenshot+save/upload module</flag>
-	<flag name='enlightenment_modules_start'>Enlightenment's 'Start' button equivalent</flag>
-	<flag name='enlightenment_modules_syscon'>This module provides a unified popup dialog for all the system actions in Enlightenment</flag>
-	<flag name='enlightenment_modules_systray'>system tray that hold applications icons like Skype, Pidgin, Kopete and others</flag>
-	<flag name='enlightenment_modules_tasks'>Gadget to allow you to switch tasks</flag>
-	<flag name='enlightenment_modules_teamwork'>Enable teamwork module</flag>
-	<flag name='enlightenment_modules_temperature'>Temperature monitor</flag>
-	<flag name='enlightenment_modules_tiling'>Positions/resizes your windows tilingly</flag>
-	<flag name='enlightenment_modules_winlist'>A module to show the list of client applications presently running</flag>
-	<flag name='enlightenment_modules_wizard'>First Run Wizard</flag>
-	<flag name='enlightenment_modules_wl-desktop-shell'>Enlightenment Wayland Desktop Shell</flag>
-	<flag name='enlightenment_modules_wl-drm'>Wayland DRM (Direct Rendering Manager) compositing module</flag>
-	<flag name='enlightenment_modules_wl-screenshot'>Enlightenment Wayland Screenshot module</flag>
-	<flag name='enlightenment_modules_wl-text-input'>Wayland text input support</flag>
-	<flag name='enlightenment_modules_wl-weekeyboard'>Wayland virtual keyboard</flag>
-	<flag name='enlightenment_modules_wl-wl'>Wayland-in-Wayland module</flag>
-	<flag name='enlightenment_modules_wl-x11'>Wayland-in-X11 module</flag>
-	<flag name='enlightenment_modules_xkbswitch'>Keyboard layout configuration and switcher</flag>
-	<flag name='enlightenment_modules_xwayland'>X/Wayland integration</flag>
-	<flag name='enlightenment_modules_conf'>Settings Panel</flag>
-	<flag name='enlightenment_modules_conf-applications'>Allows configuration of Ibar, Restart, and Startup applications</flag>
-	<flag name='enlightenment_modules_conf-bindings'>Input Control Settings</flag>
-	<flag name='enlightenment_modules_conf-comp'>Configure default dialog properties</flag>
-	<flag name='enlightenment_modules_conf-dialogs'>Configure default dialog properties</flag>
-	<flag name='enlightenment_modules_conf-display'>Used to configure your screen</flag>
-	<flag name='enlightenment_modules_conf-interaction'>Configure Mouse and Touch input</flag>
-	<flag name='enlightenment_modules_conf-intl'>Used to select a default language</flag>
-	<flag name='enlightenment_modules_conf-menus'>Configures menu behavior</flag>
-	<flag name='enlightenment_modules_conf-paths'>Specifies the Enlightenment search paths and default directories</flag>
-	<flag name='enlightenment_modules_conf-performance'>Used to configure certain performance related items as frame rates and cache settings</flag>
-	<flag name='enlightenment_modules_conf-randr'>Used to configure your screen's resolution</flag>
-	<flag name='enlightenment_modules_conf-shelves'>Shelf configuration dialog</flag>
-	<flag name='enlightenment_modules_conf-theme'>Used to configure your theme preferences</flag>
-	<flag name='enlightenment_modules_conf-wallpaper2'>Used to configure your theme preferences</flag>
-	<flag name='enlightenment_modules_conf-window-manipulation'>Configures window raise, resistance, and maximize policies</flag>
-	<flag name='enlightenment_modules_conf-window-remembers'>Delete existing window remembers</flag>
+	<flag name="pango">Enable pango font rendering</flag>
+	<flag name="xrandr">Enable support for the X xrandr extension</flag>
+	<flag name="udev">Use sys-fs/udev to determine available devices</flag>
+	<flag name="ukit">Use upower/udisks to automount devices</flag>
+	<flag name="enlightenment_modules_access">Accessibility module designed to improve ease of use for the vision impaired and the blind</flag>
+	<flag name="enlightenment_modules_appmenu">Gadget that hold the toolbar of the foreground application</flag>
+	<flag name="enlightenment_modules_backlight">Backlight control slider gadget</flag>
+	<flag name="enlightenment_modules_battery">A gadget to visualize your battery status</flag>
+	<flag name="enlightenment_modules_bluez4">Configure Bluetooth devices</flag>
+	<flag name="enlightenment_modules_clock">Nice clock gadget to show current time</flag>
+	<flag name="enlightenment_modules_connman">Control Wifi and wired networks as a user</flag>
+	<flag name="enlightenment_modules_contact">Enable the contact module</flag>
+	<flag name="enlightenment_modules_cpufreq">Gadget to monitor and change the CPU frequency</flag>
+	<flag name="enlightenment_modules_everything">The run command module provides an application launcher dialog</flag>
+	<flag name="enlightenment_modules_fileman">Enlightenment's integrated file manager</flag>
+	<flag name="enlightenment_modules_fileman-opinfo">Can be placed on the desktop or in a shelf</flag>
+	<flag name="enlightenment_modules_gadman">Module to manage gadgets on the desktop</flag>
+	<flag name="enlightenment_modules_geolocation">Geolocation</flag>
+	<flag name="enlightenment_modules_ibar">Iconic application launcher</flag>
+	<flag name="enlightenment_modules_ibox">A home for your iconified applications</flag>
+	<flag name="enlightenment_modules_illume2">Illume2 - next generation of illume - special WM mode for embedded devices and set of plugins with same purpose</flag>
+	<flag name="enlightenment_modules_lokker">Screen locker</flag>
+	<flag name="enlightenment_modules_mixer">A module to provide a mixer for changing volume</flag>
+	<flag name="enlightenment_modules_msgbus">DBus Extension</flag>
+	<flag name="enlightenment_modules_music-control">Control your music in your shelf</flag>
+	<flag name="enlightenment_modules_notification">notification-daemon alternative. Popup if an event occur</flag>
+	<flag name="enlightenment_modules_packagekit">Package manager integration</flag>
+	<flag name="enlightenment_modules_pager">Gadget to allow you to visualize your virtual desktops and the windows they contain</flag>
+	<flag name="enlightenment_modules_pager-plain">A simpler desktop pager</flag>
+	<flag name="enlightenment_modules_policy-mobile"/>
+	<flag name="enlightenment_modules_quickaccess">Enlightenment Quickaccess Launcher</flag>
+	<flag name="enlightenment_modules_shot">Simple screenshot+save/upload module</flag>
+	<flag name="enlightenment_modules_start">Enlightenment's 'Start' button equivalent</flag>
+	<flag name="enlightenment_modules_syscon">This module provides a unified popup dialog for all the system actions in Enlightenment</flag>
+	<flag name="enlightenment_modules_systray">system tray that hold applications icons like Skype, Pidgin, Kopete and others</flag>
+	<flag name="enlightenment_modules_tasks">Gadget to allow you to switch tasks</flag>
+	<flag name="enlightenment_modules_teamwork">Enable teamwork module</flag>
+	<flag name="enlightenment_modules_temperature">Temperature monitor</flag>
+	<flag name="enlightenment_modules_tiling">Positions/resizes your windows tilingly</flag>
+	<flag name="enlightenment_modules_winlist">A module to show the list of client applications presently running</flag>
+	<flag name="enlightenment_modules_wizard">First Run Wizard</flag>
+	<flag name="enlightenment_modules_wl-desktop-shell">Enlightenment Wayland Desktop Shell</flag>
+	<flag name="enlightenment_modules_wl-drm">Wayland DRM (Direct Rendering Manager) compositing module</flag>
+	<flag name="enlightenment_modules_wl-screenshot">Enlightenment Wayland Screenshot module</flag>
+	<flag name="enlightenment_modules_wl-text-input">Wayland text input support</flag>
+	<flag name="enlightenment_modules_wl-weekeyboard">Wayland virtual keyboard</flag>
+	<flag name="enlightenment_modules_wl-wl">Wayland-in-Wayland module</flag>
+	<flag name="enlightenment_modules_wl-x11">Wayland-in-X11 module</flag>
+	<flag name="enlightenment_modules_xkbswitch">Keyboard layout configuration and switcher</flag>
+	<flag name="enlightenment_modules_xwayland">X/Wayland integration</flag>
+	<flag name="enlightenment_modules_conf">Settings Panel</flag>
+	<flag name="enlightenment_modules_conf-applications">Allows configuration of Ibar, Restart, and Startup applications</flag>
+	<flag name="enlightenment_modules_conf-bindings">Input Control Settings</flag>
+	<flag name="enlightenment_modules_conf-comp">Configure default dialog properties</flag>
+	<flag name="enlightenment_modules_conf-dialogs">Configure default dialog properties</flag>
+	<flag name="enlightenment_modules_conf-display">Used to configure your screen</flag>
+	<flag name="enlightenment_modules_conf-interaction">Configure Mouse and Touch input</flag>
+	<flag name="enlightenment_modules_conf-intl">Used to select a default language</flag>
+	<flag name="enlightenment_modules_conf-menus">Configures menu behavior</flag>
+	<flag name="enlightenment_modules_conf-paths">Specifies the Enlightenment search paths and default directories</flag>
+	<flag name="enlightenment_modules_conf-performance">Used to configure certain performance related items as frame rates and cache settings</flag>
+	<flag name="enlightenment_modules_conf-randr">Used to configure your screen's resolution</flag>
+	<flag name="enlightenment_modules_conf-shelves">Shelf configuration dialog</flag>
+	<flag name="enlightenment_modules_conf-theme">Used to configure your theme preferences</flag>
+	<flag name="enlightenment_modules_conf-wallpaper2">Used to configure your theme preferences</flag>
+	<flag name="enlightenment_modules_conf-window-manipulation">Configures window raise, resistance, and maximize policies</flag>
+	<flag name="enlightenment_modules_conf-window-remembers">Delete existing window remembers</flag>
 </use>
 <longdescription>
 Enlightenment is a completely themeable, highly configurable Window Manager for 
@@ -114,6 +117,6 @@ Enlightenment Features:
 * Graphical on-line help.
 </longdescription>
 <upstream>
-	<remote-id type='sourceforge'>enlightenment</remote-id>
+	<remote-id type="sourceforge">enlightenment</remote-id>
 </upstream>
 </pkgmetadata>

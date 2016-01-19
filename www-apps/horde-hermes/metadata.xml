@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>web-apps</herd>
+<maintainer type="project">
+	<email>web-apps@gentoo.org</email>
+	<name>Gentoo Webapps</name>
+</maintainer>
 <longdescription>
 Hermes is a time-tracking application integrated with the Horde Framework. It ties into Turba (to retrieve clients) and Nag and Whups (to retrieve cost objects). It comes with a stop watch, search and reporting capabilities, and an invoice interface.
 </longdescription>

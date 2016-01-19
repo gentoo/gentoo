@@ -5,7 +5,7 @@
 		<flag name="libyaml">enable libyaml support</flag>
 		<flag name="spell">enable gtk-spell support</flag>
 	</use>
-	<maintainer>
+	<maintainer type="person">
 		<email>mattm@gentoo.org</email>
 		<name>Matthew Marlowe</name>
 	</maintainer>

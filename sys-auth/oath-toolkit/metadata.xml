@@ -1,10 +1,13 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>robbat2@gentoo.org</email>
 	</maintainer>
-	<herd>sysadmin</herd>
+	<maintainer type="project">
+		<email>sysadmin@gentoo.org</email>
+		<name>Gentoo Sysadmin Project</name>
+	</maintainer>
 	<use>
 		<flag name="pskc">Build tools &amp; library for the Portable Symmetric Key Container (PSKC) format per RFC6030</flag>
 		<flag name="pam">Build PAM module for pluggable login authentication for OATH</flag>

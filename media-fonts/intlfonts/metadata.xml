@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>fonts</herd>
+<maintainer type="project">
+	<email>fonts@gentoo.org</email>
+	<name>Fonts</name>
+</maintainer>
 <use>
-	<flag name='bdf'>Installs BDF fonts in addition to PCF</flag>
+	<flag name="bdf">Installs BDF fonts in addition to PCF</flag>
 </use>
 </pkgmetadata>

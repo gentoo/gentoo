@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>hd_brummy@gentoo.org</email>
 		<name>Joerg Bornkessel</name>
 	</maintainer>
@@ -13,7 +13,7 @@
 		und zu steuern.
 	</longdescription>
 	<use>
-		<flag name='themes'>Enable more themes via
+		<flag name="themes">Enable more themes via
 			<pkg>x11-themes/xxv-skins</pkg></flag>
 	</use>
 </pkgmetadata>

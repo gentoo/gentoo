@@ -1,15 +1,18 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>enlightenment</herd>
+<maintainer type="project">
+	<email>enlightenment@gentoo.org</email>
+	<name>Project Enlightenment</name>
+</maintainer>
 <use>
-	<flag name='mempool-buddy'>Compile 'buddy' memory pool allocation</flag>
-	<flag name='mempool-chained-pool'>Compile 'chained-pool' memory pool allocation</flag>
-	<flag name='mempool-fixed-bitmap'>Compile 'fixed-bitmap' memory pool allocation</flag>
-	<flag name='mempool-one-big'>Compile 'one-big' memory pool allocation</flag>
-	<flag name='mempool-pass-through'>Compile 'pass-through' (system's malloc) memory pool allocation</flag>
-	<flag name='default-mempool'>By default use system's allocator (pass-through) instead of custom choice for Eina's own data structures</flag>
-	<flag name='valgrind'>Compile in valgrind hints for smoother integration</flag>
+	<flag name="mempool-buddy">Compile 'buddy' memory pool allocation</flag>
+	<flag name="mempool-chained-pool">Compile 'chained-pool' memory pool allocation</flag>
+	<flag name="mempool-fixed-bitmap">Compile 'fixed-bitmap' memory pool allocation</flag>
+	<flag name="mempool-one-big">Compile 'one-big' memory pool allocation</flag>
+	<flag name="mempool-pass-through">Compile 'pass-through' (system's malloc) memory pool allocation</flag>
+	<flag name="default-mempool">By default use system's allocator (pass-through) instead of custom choice for Eina's own data structures</flag>
+	<flag name="valgrind">Compile in valgrind hints for smoother integration</flag>
 </use>
 <longdescription>
 Eina is a multi-platform library that provides optimized data types

@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-ftp</herd>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>hwoarang@gentoo.org</email>
 		<name>Markos Chandras</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>wired@gentoo.org</email>
 		<name>Alex Alexander</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>bugs@bergstroem.nu</email>
 		<name>Johan Bergström</name>
 		<description>Proxy Maintainer. CC him on bugs</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
 		Very Secure FTP Daemon written with speed, size and security

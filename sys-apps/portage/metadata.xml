@@ -6,7 +6,7 @@
     <changelog>https://gitweb.gentoo.org/proj/portage.git/plain/RELEASE-NOTES</changelog>
     <doc>https://wiki.gentoo.org/wiki/Handbook:AMD64/Working/Portage</doc>
   </upstream>
-  <maintainer>
+  <maintainer type="project">
     <email>dev-portage@gentoo.org</email>
   </maintainer>
   <use>

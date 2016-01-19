@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sysadmin</herd>
+  <maintainer type="project">
+    <email>sysadmin@gentoo.org</email>
+    <name>Gentoo Sysadmin Project</name>
+  </maintainer>
   <longdescription>
     A daemon for allowing Nagios to connect directly to servers and
     execute commands defined in a centralized configuration file.

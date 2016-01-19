@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>tommy@gentoo.org</email>
 	</maintainer>
 	<longdescription lang="en">
@@ -13,6 +13,6 @@
 			Warning: the HAVEGE random generator is not suitable for
 			virtualized environments
 		</flag>
-		<flag name='programs'>Build PolarSSL programs</flag>
+		<flag name="programs">Build PolarSSL programs</flag>
 	</use>
 </pkgmetadata>

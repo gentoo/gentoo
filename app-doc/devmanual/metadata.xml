@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 <email>hwoarang@gentoo.org</email>
 <name>Markos Chandras</name>
 <description>Bugs for the devmanual documentation must be assigned to
@@ -9,4 +9,3 @@ devmanual@gentoo.org
 </description>
 </maintainer>
 </pkgmetadata>
-

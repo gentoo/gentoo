@@ -1,9 +1,12 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>graphics</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>vapier@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>graphics@gentoo.org</email>
+		<name>Gentoo Graphics Project</name>
 	</maintainer>
 	<longdescription>
 gd is a graphics library. It allows your code to quickly draw images complete  

@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-  <email>maintainer-needed@gentoo.org</email>
-  <name>Default assignee for orphaned packages</name>
-</maintainer>
 <use>
-  <flag name='general'>Add support for ascii flatfile backend</flag>
-  <flag name='text'>Add support for text backend</flag>
+  <flag name="general">Add support for ascii flatfile backend</flag>
+  <flag name="text">Add support for text backend</flag>
 </use>
 </pkgmetadata>

@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>gnome</herd>
-	<herd>video</herd>
-	<herd>gstreamer</herd>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+		<name>Gentoo Video project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>gstreamer@gentoo.org</email>
+		<name>GStreamer package maintainers</name>
+	</maintainer>
 	<longdescription>
 Totem is movie player for the GNOME desktop. It features a playlist, fullscreen mode, seek and volume controls, as well as a pretty complete keyboard navigation. It comes with added functionality such as a video thumbnailer for Nautilus, Nautilus properties tab and a webcam utility.
 	</longdescription>

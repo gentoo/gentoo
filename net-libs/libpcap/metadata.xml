@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>netmon</herd>
+  <maintainer type="project">
+    <email>netmon@gentoo.org</email>
+    <name>Gentoo network monitoring and analysis project</name>
+  </maintainer>
   <use>
-    <flag name='netlink'>
+    <flag name="netlink">
       Use <pkg>dev-libs/libnl</pkg> to put wireless interfaces in monitor mode.
     </flag>
-    <flag name='canusb'>
+    <flag name="canusb">
       Use <pkg>virtual/libusb</pkg> to support Controller Area Network over USB (CAN USB)
     </flag>
   </use>

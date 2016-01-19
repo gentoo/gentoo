@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>dlan@gentoo.org</email>
     <name>Yixun Lan</name>
   </maintainer>
@@ -12,6 +12,6 @@
   manipulation. It is a very useful tool to see if your programs work and how.
   </longdescription>
   <use>
-    <flag name='gprof'>build with profiling support</flag>
+    <flag name="gprof">build with profiling support</flag>
   </use>
 </pkgmetadata>

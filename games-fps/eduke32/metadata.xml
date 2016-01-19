@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>games</herd>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
 	<use>
 		<flag name="demo">Install <pkg>games-fps/duke3d-demodata</pkg>
 			as well</flag>
@@ -22,4 +25,3 @@
 			(needs USE 'opengl')</flag>
 	</use>
 </pkgmetadata>
-

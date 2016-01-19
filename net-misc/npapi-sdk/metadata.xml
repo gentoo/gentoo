@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>mozilla</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>anarchy@gentoo.org</email>
 		<name>Jory A. Pratt</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>mozilla@gentoo.org</email>
+		<name>Gentoo Mozilla Team</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="bitbucket">mgorny/npapi-sdk</remote-id>

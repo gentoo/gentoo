@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>zerochaos@gentoo.org</email>
 		<name>Rick Farina</name>
 		<description>maintainer, has access to all hardware as needed</description>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>steev@gentoo.org</email>
 		<name>Steev Klimaszewski</name>
 		<description>co-maintainer, CC him on bugs</description>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>robbat2@gentoo.org</email>
 		<name>Robin H. Johnson</name>
 		<description>Maintainer, has 1st gen WiSpy hardware for testing</description>

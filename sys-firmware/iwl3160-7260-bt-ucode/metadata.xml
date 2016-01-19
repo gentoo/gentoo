@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>gienah@gentoo.org</email>
     <description>Feel free to bump and add yourself to the maintainer list,
     please consider bumping sys-firmware/iwl3160-ucode and 
     sys-firmware/iwl7260-ucode as well.</description>
   </maintainer>
-<longdescription lang='en'>
+<longdescription lang="en">
 Firmware for Intel (R) Wireless 3160, 7260, 7265 Bluetooth.
 </longdescription>
 </pkgmetadata>

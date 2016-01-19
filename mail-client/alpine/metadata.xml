@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-mail</herd>
+	<maintainer type="project">
+		<email>net-mail@gentoo.org</email>
+		<name>Net-Mail</name>
+	</maintainer>
 	<use>
-		<flag name='chappa'>enhance alpine by applying Eduardo Chappa's
+		<flag name="chappa">enhance alpine by applying Eduardo Chappa's
 			patches</flag>
-		<flag name='onlyalpine'>installs only the alpine binary, so it does
+		<flag name="onlyalpine">installs only the alpine binary, so it does
 			not collied with <pkg>app-editors/pico</pkg> and/or 
 			<pkg>mail-client/pine</pkg></flag>
-		<flag name='passfile'>Adds support for caching passwords into a file
+		<flag name="passfile">Adds support for caching passwords into a file
 			between sessions</flag>
-		<flag name='smime'>Enable support for S/MIME</flag>
-		<flag name='topal'>Enable support for <pkg>net-mail/topal</pkg></flag>
+		<flag name="smime">Enable support for S/MIME</flag>
+		<flag name="topal">Enable support for <pkg>net-mail/topal</pkg></flag>
 	</use>
 </pkgmetadata>

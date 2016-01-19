@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>net-dialup</herd>
 <longdescription>
 The FreeRADIUS server comes including a powerfull web interface written in PHP 
 to administer radius users, called dialupadmin. Dialup Admin supports users 

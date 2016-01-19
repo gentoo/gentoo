@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>pam</herd>
+  <maintainer type="project">
+    <email>pam-bugs@gentoo.org</email>
+    <name>Pluggable Authentication Method maintenance</name>
+  </maintainer>
   <longdescription lang="en">
     Bluepam is an extension for the common pam modules, give the user the
     ability for authenticaten via a bluetooth compatible device like a cell

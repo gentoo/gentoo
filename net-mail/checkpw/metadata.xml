@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-	</maintainer>
 	<longdescription>checkpw checks password which is stored in a file in the Maildir directory.
 The file has read and write permissions to the user only.
 checkpw checks real user's password. For virtual users, vucheckpw is available

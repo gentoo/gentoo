@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>lxde</herd>
+	<maintainer type="project">
+		<email>lxde@gentoo.org</email>
+		<name>Gentoo LXDE Project</name>
+	</maintainer>
 	<use>
 		<flag name="consolekit">Enables support for authorization using consolekit</flag>
 		<flag name="gtk3">Use GTK+3 instead of 2</flag>

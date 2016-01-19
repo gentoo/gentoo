@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>scheme</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>pchrist@gentoo.org</email>
 		<name>Panagiotis Christopoulos</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>hkBst@gentoo.org</email>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>radhermit@gentoo.org</email>
 		<name>Tim Harder</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>scheme@gentoo.org</email>
+		<name>Gentoo Scheme Project</name>
 	</maintainer>
 	<longdescription lang="en">
 SWIG is a software development tool that connects programs written in C and C++ with a variety of high-level programming languages. SWIG is used with different	types of languages including common scripting languages such as Perl, Python, Tcl/Tk and Ruby. The list of supported languages also includes non-scripting languages such as C#, Common Lisp (Allegro CL), Java, Modula-3 and OCAML. Also several interpreted and compiled Scheme implementations (Chicken, Guile, MzScheme) are supported.

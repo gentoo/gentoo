@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		The Mersenne twister is a pseudorandom number generator developed by
 		Makoto Matsumoto and Takuji Nishimura that is based on a matrix linear
@@ -15,7 +18,7 @@
 		classic mersenne twister, along with instances of RandomGen, so the
 		generator can be used with System.Random. The generator should
 		typically be a few times faster than the default StdGen (but a tad
-		slower than the impure &#39;mersenne-random&#39; library based on SIMD
+		slower than the impure 'mersenne-random' library based on SIMD
 		instructions and destructive state updates.
 		
 	</longdescription>

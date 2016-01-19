@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>kde</herd>
-<herd>sound</herd>
-<maintainer>
+<maintainer type="person">
 	<email>jmbsvicetto@gentoo.org</email>
 	<name>Jorge Manuel B. S. Vicetto</name>
+</maintainer>
+<maintainer type="project">
+	<email>kde@gentoo.org</email>
+	<name>Gentoo KDE Project</name>
+</maintainer>
+<maintainer type="project">
+	<email>sound@gentoo.org</email>
+	<name>Gentoo Sound project</name>
 </maintainer>
 <use>
 	<flag name="embedded">Use libmysqld, MySQL embedded server library.

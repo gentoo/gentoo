@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
-	<upstream>
+<upstream>
 		<bugs-to>https://bugs.launchpad.net/gdesklets</bugs-to>
 	</upstream>
 	<use>
-		<flag name='dbus'>Enable gDesklets Controls to use DBus</flag>
+		<flag name="dbus">Enable gDesklets Controls to use DBus</flag>
 	</use>
 </pkgmetadata>

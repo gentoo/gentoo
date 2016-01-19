@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>kde</herd>
-	<herd>office</herd>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>office@gentoo.org</email>
+		<name>Gentoo Office project</name>
+	</maintainer>
 	<use>
 		<flag name="attica">Get hot stuff with <pkg>dev-libs/libattica</pkg></flag>
 		<flag name="color-management">Enable color management via <pkg>media-libs/opencolorio</pkg></flag>

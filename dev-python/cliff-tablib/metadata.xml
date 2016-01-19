@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>openstack</herd>
+  <maintainer type="project">
+    <email>openstack@gentoo.org</email>
+    <name>Openstack</name>
+  </maintainer>
   <upstream>
     <remote-id type="pypi">cliff-tablib</remote-id>
     <remote-id type="github">dreamhost/cliff-tablib</remote-id>

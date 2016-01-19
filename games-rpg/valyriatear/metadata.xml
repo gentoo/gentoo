@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>games</herd>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
 	<use>
-		<flag name='editor'>Compile the Qt editor along with the game</flag>
+		<flag name="editor">Compile the Qt editor along with the game</flag>
 	</use>
 	<upstream>
-		<remote-id type='github'>Bertram25/ValyriaTear</remote-id>
+		<remote-id type="github">Bertram25/ValyriaTear</remote-id>
 	</upstream>
 </pkgmetadata>
-

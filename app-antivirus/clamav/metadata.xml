@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>net-mail</herd>
-  <herd>antivirus</herd>
+  <maintainer type="project">
+    <email>net-mail@gentoo.org</email>
+    <name>Net-Mail</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>antivirus@gentoo.org</email>
+    <name>Gentoo Antivirus Project</name>
+  </maintainer>
   <use>
     <flag name="clamdtop">A Top like tool which shows what clamd is currently scanning amongst other things</flag>
     <flag name="metadata-analysis-api">Enables collection of file property metadata using ClamAV API for analysis by ClamAV bytecode programs.</flag>

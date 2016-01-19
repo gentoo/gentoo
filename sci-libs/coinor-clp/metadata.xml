@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci</herd>
+<maintainer type="project">
+  <email>sci@gentoo.org</email>
+  <name>Gentoo Science Project</name>
+</maintainer>
 <longdescription lang="en">
   Clp (Coin-or linear programming) is an open-source linear
   programming solver written in C++. It is primarily meant to be used
@@ -10,11 +13,11 @@
   linear mathematical optimization problems.
 </longdescription>
 <use>
-  <flag name='glpk'>Enable GNU Linear Programming Kit
+  <flag name="glpk">Enable GNU Linear Programming Kit
   <pkg>sci-mathematics/glpk</pkg> support</flag>
-  <flag name='metis'>Enable partitioning with
+  <flag name="metis">Enable partitioning with
   <pkg>sci-libs/metis</pkg></flag>
-  <flag name='mumps'>Enable <pkg>sci-libs/mumps</pkg> support</flag>
-  <flag name='sparse'>Enable support for sparse matrix with <pkg>sci-libs/cholmod</pkg></flag>
+  <flag name="mumps">Enable <pkg>sci-libs/mumps</pkg> support</flag>
+  <flag name="sparse">Enable support for sparse matrix with <pkg>sci-libs/cholmod</pkg></flag>
 </use>
 </pkgmetadata>

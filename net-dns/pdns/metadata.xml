@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 	<email>swegener@gentoo.org</email>
 	<name>Sven Wegener</name>
 	<description>Primary Maintainer</description>
@@ -12,13 +12,13 @@ only nameserver. It is written from scratch and conforms to all relevant DNS
 standards documents. Furthermore, PowerDNS interfaces with almost any database.
 </longdescription>
 <use>
-	<flag name='botan'>Make it possible to use the <pkg>dev-libs/botan</pkg> library for crypto-related stuff (like DNSSec) which can be significantly faster than PolarSSL.</flag>
-	<flag name='cryptopp'>Make it possible to use the <pkg>dev-libs/crypto++</pkg> library for crypto-related stuff (like DNSSec) which can be significantly faster than PolarSSL.</flag>
-	<flag name='mydns'>Making it possible to use a MyDNS MySQL database with PowerDNS (not recommended for new deployments).</flag>
-	<flag name='opendbx'>Use a database supported by <pkg>dev-db/opendbx</pkg> as backend.</flag>
-	<flag name='remote'>Use a generic socket or pipe as a backend (via JSON RPC requests).</flag>
-	<flag name='remote-http'>Enable remote connections to HTTP as backends (via RESTful JSON requests).</flag>
-	<flag name='tinydns'>Use a TinyDNS CDB database as backend.</flag>
-	<flag name='tools'>Build optional tools (dnsscan, dnsscope, etc..).</flag>
+	<flag name="botan">Make it possible to use the <pkg>dev-libs/botan</pkg> library for crypto-related stuff (like DNSSec) which can be significantly faster than PolarSSL.</flag>
+	<flag name="cryptopp">Make it possible to use the <pkg>dev-libs/crypto++</pkg> library for crypto-related stuff (like DNSSec) which can be significantly faster than PolarSSL.</flag>
+	<flag name="mydns">Making it possible to use a MyDNS MySQL database with PowerDNS (not recommended for new deployments).</flag>
+	<flag name="opendbx">Use a database supported by <pkg>dev-db/opendbx</pkg> as backend.</flag>
+	<flag name="remote">Use a generic socket or pipe as a backend (via JSON RPC requests).</flag>
+	<flag name="remote-http">Enable remote connections to HTTP as backends (via RESTful JSON requests).</flag>
+	<flag name="tinydns">Use a TinyDNS CDB database as backend.</flag>
+	<flag name="tools">Build optional tools (dnsscan, dnsscope, etc..).</flag>
 </use>
 </pkgmetadata>

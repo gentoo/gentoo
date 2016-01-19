@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sound</herd>
+  <maintainer type="project">
+  <email>sound@gentoo.org</email>
+  <name>Gentoo Sound project</name>
+  </maintainer>
   <longdescription>MusicBrainz Picard is a cross-platform MusicBrainz tag editor
   written in Python. Picard Tagger is intended to be the next generation of
   tagger for MusicBrainz, with a focus on album oriented tagging as opposed to
   track based tagging and cross platform compatibility.</longdescription>
 <use>
-  <flag name='acoustid'>Use media-libs/chromaprint for acoustic fingerprinting</flag>
+  <flag name="acoustid">Use media-libs/chromaprint for acoustic fingerprinting</flag>
 </use>
 </pkgmetadata>

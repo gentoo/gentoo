@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>tcltk</herd>
+	<maintainer type="project">
+		<email>tcltk@gentoo.org</email>
+		<name>Gentoo Tcltk Project</name>
+	</maintainer>
 	<longdescription lang="en">
   tkcon is a replacement for the standard console that comes with
   Tk. The console itself provides  more features than the standard

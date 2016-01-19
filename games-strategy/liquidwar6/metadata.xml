@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>games</herd>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
 	<use>
-		<flag name='doc'>Convert the info pages to html</flag>
-		<flag name='gles2'>Enable OpenGL ES 2.0 support</flag>
-		<flag name='gtk'>Used to display error/critical messages</flag>
-		<flag name='maps'>Install extra maps</flag>
-		<flag name='ogg'>Enable mod-ogg via <pkg>media-libs/sdl-mixer</pkg>
+		<flag name="doc">Convert the info pages to html</flag>
+		<flag name="gles2">Enable OpenGL ES 2.0 support</flag>
+		<flag name="gtk">Used to display error/critical messages</flag>
+		<flag name="maps">Install extra maps</flag>
+		<flag name="ogg">Enable mod-ogg via <pkg>media-libs/sdl-mixer</pkg>
 			(currently the only sound provider)</flag>
-		<flag name='readline'>Enable interactive script shell for
+		<flag name="readline">Enable interactive script shell for
 			hacking</flag>
 	</use>
 	<longdescription lang="en">

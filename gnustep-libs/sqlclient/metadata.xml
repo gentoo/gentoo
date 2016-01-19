@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>gnustep</herd>
+	<maintainer type="project">
+		<email>gnustep@gentoo.org</email>
+		<name>Gentoo GNUstep Project</name>
+	</maintainer>
 	<longdescription>The SQLClient library is designed to provide a simple interface to SQL databases for GNUstep applications. It does not attempt the sort of abstraction provided by the much more sophisticated GDL2 library but rather allows applications to directly execute SQL queries and statements.
 
 SQLClient provides for the Objective-C programmer much the same thing that JDBC provides for the Java programmer (though SQLClient is a bit faster, easier to use, and easier to add new database backends for than JDBC).</longdescription>

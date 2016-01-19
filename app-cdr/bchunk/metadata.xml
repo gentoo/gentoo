@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>media-optical</herd>
 <longdescription>binchunker converts a CD image in a ".bin / .cue" format
 (sometimes ".raw / .cue") to a set of .iso and .cdr tracks.</longdescription>
 </pkgmetadata>

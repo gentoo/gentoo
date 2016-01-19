@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<use>
-		<flag name='portable'>No non-haskell unportable code.</flag>
+		<flag name="portable">No non-haskell unportable code.</flag>
 	</use>
 	<longdescription>
 		Snap is a simple and fast web development framework and server written in
@@ -18,8 +21,8 @@
 		
 		2. Type aliases and helper functions for Iteratee I/O
 		
-		3. A monad for programming web handlers called \&quot;Snap\&quot;, inspired by
-		happstack&#39;s (&lt;http://happstack.com/index.html&gt;), which allows:
+		3. A monad for programming web handlers called \"Snap\", inspired by
+		happstack's (&lt;http://happstack.com/index.html&gt;), which allows:
 		
 		* Stateful access to the HTTP request and response objects
 		
@@ -29,8 +32,8 @@
 		* Early termination of the computation if you know early what you want
 		to return and want to prevent further monadic processing
 		
-		/Quick start/: The &#39;Snap&#39; monad and HTTP definitions are in &quot;Snap.Core&quot;,
-		some iteratee utilities are in &quot;Snap.Iteratee&quot;.
+		/Quick start/: The 'Snap' monad and HTTP definitions are in "Snap.Core",
+		some iteratee utilities are in "Snap.Iteratee".
 		
 		Higher-level facilities for building web applications (like user/session
 		management, component interfaces, data modeling, etc.) are planned but not

@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>andreis.vinogradovs@gmail.com</email>
 		<name>Andreis Vinogradovs</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>maksbotan@gentoo.org</email>
 		<name>Maxim Koltsov</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>qnikst@gentoo.org</email>
 		<name>Alexander Vershilov</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
-		<flag name='smtp'>Build witch SMTP (E-Mail) support</flag>
-		<flag name='lognorm'>Add support for log/rules normalizations via <pkg>dev-libs/liblognorm</pkg></flag>
-		<flag name='pcap'>Add support for network packet capture via <pkg>net-libs/libpcap</pkg></flag>
-		<flag name='libdnet'>Add support for <pkg>dev-libs/libdnet</pkg></flag>
-		<flag name='snort'>Add support to interact with Snort IDE using  <pkg>net-analyzer/snortsam</pkg>'</flag>
+		<flag name="smtp">Build witch SMTP (E-Mail) support</flag>
+		<flag name="lognorm">Add support for log/rules normalizations via <pkg>dev-libs/liblognorm</pkg></flag>
+		<flag name="pcap">Add support for network packet capture via <pkg>net-libs/libpcap</pkg></flag>
+		<flag name="libdnet">Add support for <pkg>dev-libs/libdnet</pkg></flag>
+		<flag name="snort">Add support to interact with Snort IDE using  <pkg>net-analyzer/snortsam</pkg>'</flag>
 	</use>
 </pkgmetadata>

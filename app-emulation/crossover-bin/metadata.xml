@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>ryao@gentoo.org</email>
 		<name>Richard Yao</name>
 	</maintainer>
 	<use>
-		<flag name='capi'>Enable ISDN support via CAPI</flag>
+		<flag name="capi">Enable ISDN support via CAPI</flag>
 	</use>
 </pkgmetadata>

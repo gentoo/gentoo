@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
-	<longdescription lang="en">
+<longdescription lang="en">
 		A desklet for gDesklets (gnome-extra/gdesklets-core) that
 		cycles through a collection of pictures.  Will display image
 		captions (IPTC,JPEG Comment, EXIF) if available.
@@ -13,4 +12,3 @@
 		</maintainer>
 	</upstream>
 </pkgmetadata>
-

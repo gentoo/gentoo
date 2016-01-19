@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
- <herd>net-mail</herd>
+ <maintainer type="project">
+  <email>net-mail@gentoo.org</email>
+  <name>Net-Mail</name>
+ </maintainer>
  <longdescription>EPS (Email Parsing System) is intended to give people the ability to write their own email processing tools. Whether you want to process incoming and outgoing emails, or just analyze a message, this package is intended to aid in that endeavor.</longdescription>
 </pkgmetadata>

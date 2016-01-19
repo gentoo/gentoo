@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>tommy@gentoo.org</email>
 		<name>Thomas Sachau (Tommy[D])</name>
 	</maintainer>
-	<herd>net-p2p</herd>
 	<use>
-		<flag name='frost'>Add support for frost boards</flag>
+		<flag name="frost">Add support for frost boards</flag>
 	</use>
 </pkgmetadata>
-

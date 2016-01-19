@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>billie@gentoo.org</email>
 		<name>Daniel Pielmeier</name>
 	</maintainer>
@@ -12,6 +12,6 @@
 		</maintainer>
 	</upstream>
 	<use>
-		<flag name='network-cron'>Adds a cron job which does a weekly submit of the package database</flag>
+		<flag name="network-cron">Adds a cron job which does a weekly submit of the package database</flag>
 	</use>
 </pkgmetadata>

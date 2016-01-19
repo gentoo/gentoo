@@ -1,7 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>python</herd>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
 	<longdescription>d2to1 (the 'd' is for 'distutils') allows using distutils2-like
 		setup.cfg files for a package's metadata with a distribute/setuptools
 		setup.py script. It works by providing a distutils2-formatted setup.cfg

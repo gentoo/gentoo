@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		A commandline parsing library, based on getopt. Comes with a
 		powerful attribute system. Supports complex interfaces with many
 		options and commands, with option &amp; command grouping, with simple
 		and convenient API. Even though quite powerful, it strives to keep
-		simple things simple. The library uses &quot;System.Console.GetOpt&quot; as
+		simple things simple. The library uses "System.Console.GetOpt" as
 		its backend.
 		
 		In comparison to the other commandline handling libraries:

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+        <email>haskell@gentoo.org</email>
+        <name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		Shakespeare is a template family for type-safe, efficient templates with simple variable interpolation . Shakespeare templates can be used inline with a quasi-quoter or in an external file. Shakespeare interpolates variables according to the type being inserted.
 		
@@ -11,8 +14,8 @@
 		Please see the documentation at &lt;http://docs.yesodweb.com/book/hamlet/&gt; for more details.
 	</longdescription>
 	<use>
-		<flag name='test_export'>Test export.</flag>
-		<flag name='test_coffee'>Render tests through coffeescript render function.</flag>
-		<flag name='test_roy'>Render tests through roy render function.</flag>
+		<flag name="test_export">Test export.</flag>
+		<flag name="test_coffee">Render tests through coffeescript render function.</flag>
+		<flag name="test_roy">Render tests through roy render function.</flag>
         </use>
 </pkgmetadata>

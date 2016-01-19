@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-		<name>Default assignee for orphaned packages</name>
-	</maintainer>
 	<longdescription lang="en">
 		Portfwd stands for port forwarding daemon. It's a small C++ utility
 		which forwards incoming TCP connections and/or UDP packets to remote

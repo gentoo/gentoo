@@ -1,7 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>python</herd>
+  <maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+  </maintainer>
 	<upstream>
 		<remote-id type="github">Grokzen/pykwalify</remote-id>
 		<remote-id type="pypi">pykwalify</remote-id>

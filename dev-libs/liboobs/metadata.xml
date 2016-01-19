@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>lxqt</herd>
+	<maintainer type="project">
+		<email>lxqt@gentoo.org</email>
+		<name>LXQt</name>
+	</maintainer>
 	<longdescription lang="en">
 		Liboobs is a wrapping library to the System Tools Backends, it will
 		provide easy to access GObjects to system configuration details, like
@@ -9,4 +12,3 @@
 		backend and data consistency too
 	</longdescription>
 </pkgmetadata>
-

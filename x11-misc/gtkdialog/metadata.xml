@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>desktop-misc</herd>
+<maintainer type="project">
+<email>desktop-misc@gentoo.org</email>
+<name>Gentoo Desktop Miscellaneous Project</name>
+</maintainer>
 <longdescription>
 gtkdialog is a GUI-creation utility that can be used with an arbitrary
 interpreter. It enables the programmer to describe a graphical user interface
@@ -15,7 +18,7 @@ provided.
 <remote-id type="google-code">gtkdialog</remote-id>
 </upstream>
 <use>
-<flag name='glade'>Enable support for <pkg>gnome-base/libglade</pkg></flag>
-<flag name='vte'>Enable support for <pkg>x11-libs/vte</pkg></flag>
+<flag name="glade">Enable support for <pkg>gnome-base/libglade</pkg></flag>
+<flag name="vte">Enable support for <pkg>x11-libs/vte</pkg></flag>
 </use>
 </pkgmetadata>

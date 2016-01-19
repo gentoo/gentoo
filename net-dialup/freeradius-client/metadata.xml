@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>net-dialup</herd>
 <longdescription>FreeRADIUS Client is a framework and library for writing
 RADIUS Clients which additionally includes radlogin, a flexible RADIUS
 aware login replacement, a command line program to send RADIUS accounting
@@ -9,8 +8,8 @@ records, a utility allowing to send RADIUS AAA requests from command
 line or from shell scripts and a utility to query the status of a (Merit)
 RADIUS server.</longdescription>
 <use>
-	<flag name='scp'>Add service type hints derived from username
+	<flag name="scp">Add service type hints derived from username
 	prefix</flag>
-	<flag name='shadow'>Enable shadow password support</flag>
+	<flag name="shadow">Enable shadow password support</flag>
 </use>
 </pkgmetadata>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
   <email>flameeyes@gentoo.org</email>
 </maintainer>
-<maintainer>
+<maintainer type="person">
   <email>xmw@gentoo.org</email>
   <name>Michael Weber</name>
 </maintainer>
@@ -15,4 +15,3 @@ components of the Teredo specification (client, relay and server). It is
 meant to provide IPv6 connectivity even from behind NAT devices.
 </longdescription>
 </pkgmetadata>
-

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>ago@gentoo.org</email>
 		<name>Agostino Sarubbo</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>kees@outflux.net</email>
 		<name>Kees Cook</name>
 		<description>Upstream - please CC on bugs that concerns upstream</description>
 	</maintainer>
 </pkgmetadata>
-

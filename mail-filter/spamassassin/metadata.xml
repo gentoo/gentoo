@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
-    <email>maintainer-needed@gentoo.org</email>
-  </maintainer>
-<use>
-  <flag name='qmail'>Build qmail functionality and docs</flag>
-  <flag name='bayes'>
+  <use>
+  <flag name="qmail">Build qmail functionality and docs</flag>
+  <flag name="bayes">
     Require a database (MySQL, SQLite, Postgres, or BerkDB) backend to
     enable the Bayesian filtering database.
   </flag>

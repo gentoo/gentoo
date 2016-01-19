@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>desktop-misc</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>xarthisius@gentoo.org</email>
 		<name>Kacper Kowalik</name>
+	</maintainer>
+<maintainer type="project">
+		<email>desktop-misc@gentoo.org</email>
+		<name>Gentoo Desktop Miscellaneous Project</name>
 	</maintainer>
 </pkgmetadata>

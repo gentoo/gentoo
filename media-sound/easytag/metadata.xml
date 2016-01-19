@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>sound</herd>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
 	<use>
-		<flag name='opus'>Enable support for <pkg>media-libs/opus</pkg> and <pkg>media-libs/opusfile</pkg> (opus audio codec)</flag>
-		<flag name='gtk2'>Enable GTK+:2 support and disable default GTK+:3 support</flag>
-		<flag name='gtk3'>Enable GTK+:3 support (default) and disable GTK+:2 support</flag>
+		<flag name="opus">Enable support for <pkg>media-libs/opus</pkg> and <pkg>media-libs/opusfile</pkg> (opus audio codec)</flag>
+		<flag name="gtk2">Enable GTK+:2 support and disable default GTK+:3 support</flag>
+		<flag name="gtk3">Enable GTK+:3 support (default) and disable GTK+:2 support</flag>
 	</use>
 	<longdescription>a utility for viewing and editing tags for MP3, MP2, FLAC, AAC, MP4 and OGG files. It features a simple and attractive GTK+ interface</longdescription>
 </pkgmetadata>

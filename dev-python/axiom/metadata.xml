@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>python</herd>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
 	<longdescription lang="en">Axiom is an object database, or alternatively, an object-relational
 		mapper. Its primary goal is to provide an object-oriented layer with
 		what we consider to be the key aspects of OO, i.e. polymorphism and
 		message dispatch, without hindering the power of an RDBMS. It is
-		designed to &quot;feel pythonic&quot;, without encouraging the typical ORM
+		designed to "feel pythonic", without encouraging the typical ORM
 		behavior such as potato programming.</longdescription>
 	<upstream>
 		<remote-id type="pypi">Axiom</remote-id>

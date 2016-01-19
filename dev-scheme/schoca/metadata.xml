@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>scheme</herd>
-	<herd>ml</herd>
+	<maintainer type="project">
+		<email>scheme@gentoo.org</email>
+		<name>Gentoo Scheme Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>ml@gentoo.org</email>
+		<name>Gentoo ML Project</name>
+	</maintainer>
 	<longdescription lang="en">
 		Schoca is an implementation of the Scheme language. The primary 
 		purpose of Schoca is the use as an embedded extension language 

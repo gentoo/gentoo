@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>bsd</herd>
+<maintainer type="project">
+	<email>bsd@gentoo.org</email>
+	<name>BSD Project</name>
+</maintainer>
 <longdescription lang="en">
 libiconv is a standalone package which implements the iconv() related
 functions as glibc already embed. Libraries and applications needs it
 when built in a non-glibc system.
 </longdescription>
 </pkgmetadata>
-

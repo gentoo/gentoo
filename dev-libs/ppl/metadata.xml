@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>toolchain</herd>
+<maintainer type="project">
+  <email>toolchain@gentoo.org</email>
+  <name>Gentoo Toolchain Project</name>
+</maintainer>
 <use>
-  <flag name='lpsol'>Build the ppl_lpsol linear programming problem solver</flag>
+  <flag name="lpsol">Build the ppl_lpsol linear programming problem solver</flag>
 </use>
 </pkgmetadata>

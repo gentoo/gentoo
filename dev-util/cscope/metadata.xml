@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>vim</herd>
-  <herd>emacs</herd>
+  <maintainer type="project">
+    <email>vim@gentoo.org</email>
+    <name>Gentoo Vim Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>emacs@gentoo.org</email>
+    <name>Gentoo Emacs/Elisp Project</name>
+  </maintainer>
   <longdescription>
 Cscope is a developer's tool for browsing source code.  Cscope allows
 searching code for:

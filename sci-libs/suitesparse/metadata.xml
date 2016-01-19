@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci</herd>
+<maintainer type="project">
+  <email>sci@gentoo.org</email>
+  <name>Gentoo Science Project</name>
+</maintainer>
 <longdescription lang="en">
   SuiteSparse is a suite of sparse matrix libraries from University of
   Florida Computer Science Department. Currently, this includes:
@@ -28,6 +31,6 @@
 <use>
   <flag name="cuda">Enable nvidia cuda toolkit for speeding up computations</flag>
   <flag name="metis">Enable the Partition module to cholmod using <pkg>sci-libs/metis</pkg></flag>
-  <flag name='tbb'>Enable multithreading with the Intel Threads Building Block <pkg>dev-cpp/tbb</pkg></flag>
+  <flag name="tbb">Enable multithreading with the Intel Threads Building Block <pkg>dev-cpp/tbb</pkg></flag>
 </use>
 </pkgmetadata>

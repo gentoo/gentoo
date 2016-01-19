@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sci-chemistry</herd>
+  <maintainer type="project">
+    <email>sci-chemistry@gentoo.org</email>
+    <name>Gentoo Chemistry Project</name>
+  </maintainer>
   <longdescription>
 Nmrglue has the ability to read, write and convert between a number of NMR file 
 formats including Agilent/Varian, Bruker, NMRPipe, Sparky, SIMPSON, Rowland NMR 

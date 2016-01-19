@@ -1,20 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>net-irc</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>binki@gentoo.org</email>
     <name>Nathan Phillip Brink</name>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>jdhore@gentoo.org</email>
     <name>Jeff Horelick</name>
     <description>Co-maintainer</description>
   </maintainer>
   <use>
-    <flag name='cracklib'>Enable nickserv/cracklib module for enforcing strong account passwords</flag>
-		<flag name='largenet'>Enable support/tweaks for large networks</flag>
-		<flag name='ldap'>Enable ldap-backed authentication module</flag>
-		<flag name='perl'>Install a perl module which wraps around the services' XML-RPC interface</flag>
+    <flag name="cracklib">Enable nickserv/cracklib module for enforcing strong account passwords</flag>
+		<flag name="largenet">Enable support/tweaks for large networks</flag>
+		<flag name="ldap">Enable ldap-backed authentication module</flag>
+		<flag name="perl">Install a perl module which wraps around the services' XML-RPC interface</flag>
 	</use>
 </pkgmetadata>

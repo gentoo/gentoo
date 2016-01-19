@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>radio</herd>
+	<maintainer type="project">
+	<email>radio@gentoo.org</email>
+	<name>Radio</name>
+	</maintainer>
 <use>
 	<flag name="bladerf">Build with Nuand BladeRF support</flag>
 	<flag name="fcd">Build with Funcube Dongle support</flag>
@@ -12,4 +15,3 @@
 	<flag name="uhd">Build with Ettus Research USRP Hardware Driver support</flag>
 </use>
 </pkgmetadata>
-

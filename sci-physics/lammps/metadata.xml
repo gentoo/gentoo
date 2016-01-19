@@ -20,9 +20,12 @@
 			call instead of malloc() when large chunks or memory are allocated
 			by LAMMPS. Aliengnment is on 16 byte boundaries.</flag>
   </use>
-  <herd>sci-physics</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>nicolasbock@gentoo.org</email>
 	<name>Nicolas Bock</name>
+  </maintainer>
+<maintainer type="project">
+    <email>sci-physics@gentoo.org</email>
+    <name>Gentoo Physics Project</name>
   </maintainer>
 </pkgmetadata>

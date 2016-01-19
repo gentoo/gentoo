@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-	</maintainer>
 	<longdescription lang="en">
 		nts is an acronym for Note Taking Simplified. It provides a simple,
 		intuitive format for using plain text files to store notes, a command
@@ -13,4 +10,3 @@
 		can be filtered in various ways.
 	</longdescription>
 </pkgmetadata>
-

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-	</maintainer>
 	<longdescription>The Transparent Print utility program for Linux. Provides an easy way to transparently print to serial terminals that have printers attached.</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">tprint</remote-id>

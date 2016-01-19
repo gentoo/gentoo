@@ -1,7 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <herd>sci-geosciences</herd>
+    <maintainer type="project">
+        <email>sci-geosciences@gentoo.org</email>
+        <name>Gentoo Geosciences Project</name>
+    </maintainer>
     <longdescription>Mapnik is a toolkit for developing both web and desktop
     mapping applications.  The core libraries are written in C++, with
     optional Python bindings.

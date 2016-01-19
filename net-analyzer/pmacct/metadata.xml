@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>netmon</herd>
+<maintainer type="project">
+<email>netmon@gentoo.org</email>
+<name>Gentoo network monitoring and analysis project</name>
+</maintainer>
 <use>
-<flag name='geoipv2'>Add support for GeoIP2 through <pkg>dev-libs/libmaxminddb</pkg></flag>
-<flag name='64bit'>Use 64bit counters instead of 32bit ones</flag>
-<flag name='mongodb'>Add support for mongodb backend</flag>
-<flag name='ulog'>Enable support for ULOG in older kernels (deprecated)</flag>
+<flag name="geoipv2">Add support for GeoIP2 through <pkg>dev-libs/libmaxminddb</pkg></flag>
+<flag name="64bit">Use 64bit counters instead of 32bit ones</flag>
+<flag name="mongodb">Add support for mongodb backend</flag>
+<flag name="ulog">Enable support for ULOG in older kernels (deprecated)</flag>
 </use>
 </pkgmetadata>

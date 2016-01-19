@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-	</maintainer>
 	<longdescription lang="en">
 		E-UAE is a fork of UAE which intends to merge all the new features of
 		WinUAE with UAE.
 	</longdescription>
 	<use>
-		<flag name='capslib'>Add CAPS library support</flag>
-		<flag name='sdl-sound'>Use <pkg>media-libs/sdl-sound</pkg> for audio
+		<flag name="capslib">Add CAPS library support</flag>
+		<flag name="sdl-sound">Use <pkg>media-libs/sdl-sound</pkg> for audio
 			output</flag>
 	</use>
 </pkgmetadata>

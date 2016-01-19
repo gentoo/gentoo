@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>hardened</herd>
+	<maintainer type="project">
+		<email>hardened@gentoo.org</email>
+		<name>Gentoo Hardened</name>
+	</maintainer>
 	<longdescription>The Bastille Hardening System attempts to "harden" or "tighten" Unix operating systems.</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">bastille-linux</remote-id>

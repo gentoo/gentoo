@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>gnustep</herd>
+	<maintainer type="project">
+		<email>gnustep@gentoo.org</email>
+		<name>Gentoo GNUstep Project</name>
+	</maintainer>
 	<longdescription>FísicaLab is an educational application to solve physics problems. Is made with GNUstep and use the GSL libraries (GNU Scientific Library). The problems are setting adding elements from the palette to chalkboard, and writing the data of each element. The elements are objects as Blocks, Pulleys, Mobiles, Forces, ... . Use the SI and English systems, scientific notation and many conversion factors</longdescription>
 </pkgmetadata>

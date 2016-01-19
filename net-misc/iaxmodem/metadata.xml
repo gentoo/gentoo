@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-dialup</herd>
 	<longdescription lang="en">
 		IAXmodem is a software modem written in C that uses an IAX channel
 		(commonly provided by an Asterisk PBX system) instead of a traditional

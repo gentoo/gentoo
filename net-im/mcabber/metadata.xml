@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-im</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>wschlich@gentoo.org</email>
 		<name>Wolfram Schlich</name>
 		<description>Secondary maintainer</description>

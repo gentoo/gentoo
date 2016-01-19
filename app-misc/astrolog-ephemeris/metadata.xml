@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci</herd>
-
-<maintainer>
+<maintainer type="person">
 	<email>george@gentoo.org</email>
 	<name>George Shapovalov</name>
 	<description>
@@ -12,4 +10,8 @@
 	</description>
 </maintainer>
 
+<maintainer type="project">
+	<email>sci@gentoo.org</email>
+	<name>Gentoo Science Project</name>
+</maintainer>
 </pkgmetadata>

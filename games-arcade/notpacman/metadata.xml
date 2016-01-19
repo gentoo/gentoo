@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>games</herd>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
 	<longdescription lang="en">
 		Ever wondered how Pacman would be like with physics? No? Well, it's
 		revolutionary. This mashup of "Not" and "Pacman" puts The Pac and
@@ -10,4 +13,3 @@
 		you very much, so you should be careful to make Pacman avoid them.
 	</longdescription>
 </pkgmetadata>
-

@@ -4,5 +4,8 @@
 	<use>
 		<flag name="scripting">Support Python scripting</flag>
 	</use>
-	<herd>kde</herd>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
 </pkgmetadata>

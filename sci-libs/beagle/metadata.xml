@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>sci</herd>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
 	<longdescription>
     Open BEAGLE is a C++ Evolutionary Computation (EC) framework. It provides an high-level software environment to do any kind of EC, with support for tree-based genetic programming, bit string and real-valued genetic algorithms, and evolution strategy.
   </longdescription>

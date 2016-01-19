@@ -4,8 +4,4 @@
 	<longdescription lang="en">
 		A report generating applicaton from web site log files.
 	</longdescription>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-		<name>Default assignee for orphaned packages</name>
-	</maintainer>
-</pkgmetadata>
+	</pkgmetadata>

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>games</herd>
+  <maintainer type="project">
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
+  </maintainer>
   <longdescription>
 Science has unlocked the gates to the unknown, and now only one man stands
 between Hell and Earth. A sci-fi horror masterpiece, DOOM 3 is like nothing you
@@ -11,7 +14,7 @@ frightening and gripping first person gaming experience ever created. For more
 information, checkout http://www.doom3.com
 </longdescription>
   <use>
-    <flag name='dedicated'>install only as a dedicated game server</flag>
+    <flag name="dedicated">install only as a dedicated game server</flag>
     <flag name="roe">Adds support for the Resurrection of Evil expansion</flag>
   </use>
 </pkgmetadata>
