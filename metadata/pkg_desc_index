@@ -4849,7 +4849,7 @@ dev-libs/rote 0.2.8: simple C library for VT102 terminal emulation
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/safestr 1.0.3: provide a standards compatible yet secure string implementation
 dev-libs/sblim-sfcc 2.2.5: Small Footprint CIM Client Library
-dev-libs/sdformat 3.6.0 3.7.0: Simulation Description Format (SDF) parser
+dev-libs/sdformat 3.6.0 3.7.0 4.0.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.18.2 0.20.0 0.22.0: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 1.97.9: Library to drive serial/parallel/usb displays with built-in controllers
 dev-libs/shhopt 1.1.7-r2: library for parsing command line options
