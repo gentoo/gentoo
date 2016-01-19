@@ -601,7 +601,9 @@ qt5_base_configure() {
 		#-use-gold-linker
 
 		# disable all platform plugins by default, override in qtgui
-		-no-xcb -no-eglfs -no-kms -no-directfb -no-linuxfb
+		-no-xcb -no-eglfs -no-kms
+		$([[ ${QT5_MINOR_VERSION} -ge 6 ]] && echo -no-gbm)
+		-no-directfb -no-linuxfb
 		$([[ ${QT5_MINOR_VERSION} -ge 6 ]] && echo -no-mirclient)
 
 		# disable undocumented X11-related flags, override in qtgui
