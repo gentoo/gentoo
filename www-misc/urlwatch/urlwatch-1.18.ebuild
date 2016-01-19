@@ -13,7 +13,7 @@ SRC_URI="http://thp.io/2008/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="virtual/python-futures[${PYTHON_USEDEP}]"
