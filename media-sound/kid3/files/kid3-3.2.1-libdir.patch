@@ -1,0 +1,43 @@
+Install libraries to the correct directory.
+
+Gentoo-bug: 562624
+Gentoo-bug: 570976
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -134,7 +134,7 @@
+   endif (BUILD_KDE_APP OR BUILD_SHARED_LIBS)
+   set(WITH_QMLDIR_DEFAULT "share/kid3/qml")
+   set(WITH_BINDIR_DEFAULT "bin")
+-  set(WITH_LIBDIR_DEFAULT "lib${LIB_SUFFIX}/kid3")
++  set(WITH_LIBDIR_DEFAULT "lib${LIB_SUFFIX}")
+   set(WITH_PLUGINSDIR_DEFAULT "${WITH_LIBDIR_DEFAULT}/plugins")
+ endif (APPLE)
+ 
+@@ -203,6 +203,7 @@
+   find_package(Qt4 COMPONENTS ${_QT4_COMPONENTS})
+   if (Qt4_FOUND OR QT4_FOUND)
+     include (${QT_USE_FILE})
++    set(QTVER "qt4")
+     if (NOT WITH_QT4)
+       message(STATUS "Qt4 found, explicitly set WITH_QT5 or QT_QMAKE_EXECUTABLE to use a different version.")
+     endif (NOT WITH_QT4)
+@@ -235,6 +236,7 @@
+   endif (_qt5Dir)
+   if (Qt5Core_FOUND)
+     set(HAVE_QT5 1)
++    set(QTVER "qt5")
+     set(WITH_PHONON OFF)
+     set(QT_INCLUDES)
+     set(QT_DEFINITIONS)
+@@ -340,6 +342,10 @@
+   link_directories($ENV{LIB})
+ endif (WIN32)
+ 
++if (NOT APPLE AND NOT WIN32)
++  set(WITH_PLUGINSDIR "${WITH_LIBDIR_DEFAULT}/${QTVER}/plugins/kid3")
++endif ()
++
+ if (BUILD_SHARED_LIBS)
+   add_definitions(-DKID3_SHARED)
+ 
