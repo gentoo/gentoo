@@ -39,10 +39,6 @@ app-portage/g-sorcery bson
 # media-libs/rubberband lacks arm keyword, bug 548446
 media-video/mpv rubberband
 
-# Patrick Lauer <patrick@gentoo.org> (20 Apr 2015)
-# kde-frameworks/*:5 not keyworded on arm
-net-irc/quassel qt5
-
 # Markos Chandras <hwoarang@gentoo.org> (18 Apr 2015)
 # samba-4 not keyworded on arm
 sys-auth/sssd samba
@@ -474,10 +470,6 @@ net-misc/mediatomb lastfm
 # Raúl Porcel <armin76@gentoo.org> (28 Mar 2010)
 # Needs kde-4 stable
 dev-vcs/subversion kde
-
-# Raúl Porcel <armin76@gentoo.org> (20 Jan 2010)
-# Needs mplayer
-kde-base/dolphin thumbnail
 
 # Markus Meier <maekke@gentoo.org> (27 Sep 2009)
 # mask media-gfx/imagemagick[autotrace] as autotrace is not keyworded
