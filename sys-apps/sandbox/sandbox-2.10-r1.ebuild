@@ -47,6 +47,7 @@ src_unpack() {
 	unpacker
 	cd "${S}"
 	epatch "${FILESDIR}"/${P}-memory-corruption.patch #568714
+	epatch "${FILESDIR}"/${P}-disable-same.patch
 	epatch_user
 }
 

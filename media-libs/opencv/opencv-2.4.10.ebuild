@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit base toolchain-funcs cmake-utils python-single-r1 java-pkg-opt-2 java-ant-2
+inherit toolchain-funcs cmake-utils python-single-r1 java-pkg-opt-2 java-ant-2
 
 DESCRIPTION="A collection of algorithms and sample code for various computer vision problems"
 HOMEPAGE="http://opencv.willowgarage.com"
@@ -73,23 +73,19 @@ DEPEND="${RDEPEND}
 	java? ( >=virtual/jdk-1.6 )
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-2.3.1a-libav-0.7.patch"
-	"${FILESDIR}/${PN}-2.4.3-gcc47.patch"
-	"${FILESDIR}/${PN}-2.4.2-cflags.patch"
-	"${FILESDIR}/${PN}-2.4.8-javamagic.patch"
-	"${FILESDIR}/${PN}-2.4.9-libav10.patch"
-	"${FILESDIR}/${PN}-2.4.9-cuda-pkg-config.patch"
-	"${FILESDIR}/${PN}-2.4.10-pic-x86.patch"
-)
-
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 	java-pkg-opt-2_pkg_setup
 }
 
 src_prepare() {
-	base_src_prepare
+	epatch "${FILESDIR}/${PN}-2.3.1a-libav-0.7.patch" \
+        	"${FILESDIR}/${PN}-2.4.3-gcc47.patch" \
+        	"${FILESDIR}/${PN}-2.4.2-cflags.patch" \
+        	"${FILESDIR}/${PN}-2.4.8-javamagic.patch" \
+        	"${FILESDIR}/${PN}-2.4.9-libav10.patch" \
+        	"${FILESDIR}/${PN}-2.4.9-cuda-pkg-config.patch" \
+        	"${FILESDIR}/${PN}-2.4.10-pic-x86.patch"
 
 	# remove bundled stuff
 	rm -rf 3rdparty
