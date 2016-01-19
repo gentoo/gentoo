@@ -1,6 +1,6 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -8,7 +8,7 @@ inherit eutils cmake-utils qt4-r2 git-r3
 
 DESCRIPTION="A PSP emulator for Android, Windows, Mac, Linux and Blackberry 10, written in C++."
 HOMEPAGE="http://www.ppsspp.org/"
-EGIT_REPO_URI="git://github.com/hrydgard/ppsspp.git"
+EGIT_REPO_URI="git://github.com/hrydgard/${PN}.git"
 EGIT_COMMIT="v${PV}"
 
 LICENSE="GPL-2"
@@ -20,22 +20,29 @@ REQUIRED_USE="
 "
 
 RDEPEND=""
-DEPEND="sys-libs/zlib
-	sdl? ( media-libs/libsdl )
-	sdl? ( media-libs/libsdl2 )
-	sdl? ( dev-util/cmake )
-	qt4? ( dev-qt/qtcore:4 )
-	qt4? ( dev-qt/qtgui:4 )
-	qt4? ( dev-qt/qtmultimedia:4 )
-	qt4? ( dev-qt/qtopengl:4 )
-	qt4? ( dev-qt/qtsvg:4 )
-	qt4? ( dev-qt/qt-mobility[multimedia] )"
+
+DEPEND="
+	sys-libs/zlib
+	sdl? (
+		dev-util/cmake
+		media-libs/libsdl
+		media-libs/libsdl2
+	)
+	qt4? (
+		dev-qt/qtsvg:4
+		dev-qt/qtgui:4
+		dev-qt/qtcore:4
+		dev-qt/qtopengl:4
+		dev-qt/qtmultimedia:4
+		dev-qt/qt-mobility[multimedia]
+	)
+"
 
 src_unpack() {
 	git-r3_fetch
 	git-r3_checkout
 	if use qt4 ; then
-		cd "${WORKDIR}"/"${P}"/Qt
+		cd "${WORKDIR}"/"${P}"/Qt || die
 		qt4-r2_src_unpack
 	fi
 	cp /usr/portage/distfiles/ppsspp-icon.png  "${WORKDIR}"/"${P}"/
@@ -47,7 +54,7 @@ src_prepare() {
 	epatch "$FILESDIR"/ppsspp-ffmpeg-x86.patch
 	epatch "$FILESDIR"/ppsspp-qt.patch
 	if use qt4 ; then
-		cd "${WORKDIR}"/"${P}"/Qt
+		cd "${WORKDIR}"/"${P}"/Qt || die
 		qt4-r2_src_prepare
 	else
 		cmake-utils_src_prepare
@@ -56,7 +63,7 @@ src_prepare() {
 
 src_configure() {
 	if use qt4 ; then
-		cd "${WORKDIR}"/"${P}"/Qt
+		cd "${WORKDIR}"/"${P}"/Qt || die
 		qt4-r2_src_configure
 		eqmake4 "${WORKDIR}"/"${P}"/Qt/PPSSPPQt.pro
 	else
@@ -66,7 +73,7 @@ src_configure() {
 
 src_compile() {
 	if use qt4 ; then
-		cd "${WORKDIR}"/"${P}"/Qt
+		cd "${WORKDIR}"/"${P}"/Qt || die
 		qt4-r2_src_compile
 	else
 		cmake-utils_src_compile
@@ -78,7 +85,7 @@ src_install() {
 		exeinto /usr/games/bin
 		newexe "${WORKDIR}"/"${P}"/Qt/ppsspp ppsspp
 	else
-		/usr/games
+		exeinto /usr/games
 		dobin "${FILESDIR}"/ppsspp
 		exeinto /usr/share/games/"${PN}"
 		doexe "${WORKDIR}"/"${P}"_build/PPSSPPSDL
