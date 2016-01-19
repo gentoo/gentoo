@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,10 +19,3 @@ IUSE=""
 DEPEND="virtual/python-futures[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
 	|| ( www-client/lynx app-text/html2text )"
-
-python_prepare() {
-	if [[ ${EPYTHON} == python3.* ]]; then
-		2to3 -nw --no-diffs urlwatch lib/urlwatch/*.py \
-			share/urlwatch/examples/hooks.py.example setup.py || die
-	fi
-}
