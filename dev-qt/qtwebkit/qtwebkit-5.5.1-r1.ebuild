@@ -83,7 +83,9 @@ src_prepare() {
 	qt_use_disable_mod orientation sensors Tools/qmake/mkspecs/features/features.prf
 	qt_use_disable_mod printsupport printsupport Tools/qmake/mkspecs/features/features.prf
 	qt_use_disable_mod qml quick Tools/qmake/mkspecs/features/features.prf
-	qt_use_disable_mod webchannel webchannel Source/WebKit2/WebKit2.pri
+	qt_use_disable_mod webchannel webchannel \
+		Source/WebKit2/Target.pri \
+		Source/WebKit2/WebKit2.pri
 
 	if use gstreamer010; then
 		epatch "${FILESDIR}/${PN}-5.3.2-use-gstreamer010.patch"
@@ -91,16 +93,16 @@ src_prepare() {
 		epatch "${FILESDIR}/${PN}-5.2.1-disable-gstreamer.patch"
 	fi
 
-	use opengl       || sed -i -e '/contains(QT_CONFIG, opengl): WEBKIT_CONFIG += use_3d_graphics/d' \
+	# bug 562396
+	use jit || epatch "${FILESDIR}/${PN}-5.5.1-disable-jit.patch"
+
+	use opengl || sed -i -e '/contains(QT_CONFIG, opengl): WEBKIT_CONFIG += use_3d_graphics/d' \
 		Tools/qmake/mkspecs/features/features.prf || die
-	use webp         || sed -i -e '/config_libwebp: WEBKIT_CONFIG += use_webp/d' \
+	use webp || sed -i -e '/config_libwebp: WEBKIT_CONFIG += use_webp/d' \
 		Tools/qmake/mkspecs/features/features.prf || die
 
 	# bug 458222
 	sed -i -e '/SUBDIRS += examples/d' Source/QtWebKit.pro || die
-
-	# bug 562396
-	use jit || epatch "${FILESDIR}/${PN}-5.5.1-disable-jit.patch"
 
 	qt5-build_src_prepare
 }
