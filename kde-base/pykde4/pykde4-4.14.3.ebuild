@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,6 +28,8 @@ DEPEND="${RDEPEND}
 	dev-lang/python-exec:2[${PYTHON_USEDEP}]
 	sys-devel/libtool
 "
+
+PATCHES=( "${FILESDIR}/${P}-gcc-5.patch" )
 
 pkg_setup() {
 	kde4-base_pkg_setup
