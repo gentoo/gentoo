@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug kerberos libressl mms-agent ssl test +tools"
 
 RDEPEND=">=app-arch/snappy-1.1.2
-	>=dev-cpp/yaml-cpp-0.5.1
+	|| ( =dev-cpp/yaml-cpp-0.5.1 >dev-cpp/yaml-cpp-0.5.2 )
 	>=dev-libs/boost-1.57[threads(+)]
 	>=dev-libs/libpcre-8.37[cxx]
 	dev-libs/snowball-stemmer
@@ -77,6 +77,9 @@ pkg_setup() {
 		--use-system-zlib
 	)
 
+	# wiredtiger not supported on 32bit platforms #572166
+	use x86 && scons_opts+=( --wiredtiger=off )
+
 	if use debug; then
 		scons_opts+=( --dbg=on )
 	fi
@@ -99,6 +102,7 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-3.2.0-fix-scons.patch"
+	epatch_user
 }
 
 src_compile() {
