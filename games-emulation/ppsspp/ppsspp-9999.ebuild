@@ -44,7 +44,6 @@ src_unpack() {
 		cd "${WORKDIR}"/"${P}"/Qt || die
 		qt4-r2_src_unpack
 	fi
-	cp /usr/portage/distfiles/ppsspp-icon.png  "${WORKDIR}"/"${P}"/
 }
 
 src_prepare() {
