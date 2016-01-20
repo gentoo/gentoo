@@ -1,8 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
+
+inherit eutils
 
 DESCRIPTION="A more flexible command line player in the spirit of ogg123 and mpg123, based on gstreamer"
 HOMEPAGE="http://space.twc.de/~stefan/gst123.php"
@@ -22,3 +24,8 @@ RDEPEND="${CDEPEND}
 	media-plugins/gst-plugins-meta:1.0"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
+
+src_prepare() {
+	epatch "$FILESDIR"/configure.patch
+	epatch "$FILESDIR"/configure.ac.patch
+}

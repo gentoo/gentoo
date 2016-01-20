@@ -1,0 +1,22 @@
+--- configure.orig	2013-06-03 18:31:39.000000000 +0800
++++ configure	2016-01-20 21:44:48.681426755 +0800
+@@ -4538,8 +4538,8 @@
+ 
+ 
+ 
+-    # Extract the first word of "ncurses5-config", so it can be a program name with args.
+-set dummy ncurses5-config; ac_word=$2
++    # Extract the first word of "ncurses6-config", so it can be a program name with args.
++set dummy ncurses6-config; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+ $as_echo_n "checking for $ac_word... " >&6; }
+ if ${ac_cv_path_NCURSES5_CONFIG+:} false; then :
+@@ -4580,7 +4580,7 @@
+ 
+ 
+     if test "$NCURSES5_CONFIG" = "no"; then
+-      as_fn_error $? "You need to have ncurses5-config installed to build this package.
++      as_fn_error $? "You need to have ncurses6-config installed to build this package.
+ 
+ Debian users: aptitude install libncurses-dev
+ " "$LINENO" 5
