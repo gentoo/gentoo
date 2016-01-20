@@ -12,8 +12,8 @@ SRC_URI="https://bitbucket.org/libgd/gd-libgd/downloads/lib${P}.tar.xz"
 
 LICENSE="gd IJG HPND BSD"
 SLOT="2/3"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="fontconfig jpeg png static-libs truetype webp xpm zlib"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 m68k ~mips ppc ~ppc64 s390 sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+IUSE="fontconfig jpeg png static-libs tiff truetype webp xpm zlib"
 
 # fontconfig has prefixed font paths, details see bug #518970
 REQUIRED_USE="prefix? ( fontconfig )"
@@ -21,6 +21,7 @@ REQUIRED_USE="prefix? ( fontconfig )"
 RDEPEND="fontconfig? ( >=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}] )
 	jpeg? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.6.10:0=[${MULTILIB_USEDEP}] )
+	tiff? ( media-libs/tiff:0[${MULTILIB_USEDEP}] )
 	truetype? ( >=media-libs/freetype-2.5.0.1[${MULTILIB_USEDEP}] )
 	webp? ( media-libs/libwebp[${MULTILIB_USEDEP}] )
 	xpm? ( >=x11-libs/libXpm-3.5.10-r1[${MULTILIB_USEDEP}] >=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}] )
@@ -49,6 +50,7 @@ multilib_src_configure() {
 		$(use_enable static-libs static) \
 		$(use_with fontconfig) \
 		$(use_with png) \
+		$(use_with tiff) \
 		$(use_with truetype freetype) \
 		$(use_with jpeg) \
 		$(use_with webp) \
