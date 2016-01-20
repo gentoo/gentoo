@@ -17,7 +17,7 @@ IUSE="static-libs"
 DOCS="ChangeLog README TODO"
 
 pkg_setup() {
-	local f="${ROOT}/usr/$(get_libdir)/${PN}.a"
+	local f="${EROOT}/usr/$(get_libdir)/${PN}.a"
 	local m="You need to remove ${f} by hand or re-emerge sys-libs/glibc first."
 	if ! has_version ${CATEGORY}/${PN}; then
 		if [[ -e ${f} ]]; then
