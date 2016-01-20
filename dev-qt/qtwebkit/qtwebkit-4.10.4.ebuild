@@ -57,8 +57,8 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}
 
 PATCHES=(
+	"${FILESDIR}/${PV}-gcc5.patch"
 	"${FILESDIR}/${PV}-use-correct-icu-typedef.patch"
-	"${FILESDIR}/${P}-fix-gcc-5.patch"
 )
 
 src_prepare() {
