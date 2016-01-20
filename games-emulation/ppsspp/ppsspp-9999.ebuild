@@ -8,14 +8,14 @@ inherit eutils cmake-utils qt4-r2 git-r3
 
 DESCRIPTION="A PSP emulator written in C++."
 HOMEPAGE="http://www.ppsspp.org/"
-EGIT_REPO_URI="git://github.com/hrydgard/ppsspp.git"
+EGIT_REPO_URI="git://github.com/hrydgard/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="qt4 +sdl"
+IUSE="qt4 qt5 +sdl"
 REQUIRED_USE="
-	?? ( qt4 sdl )
+	?? ( qt4 qt5 sdl )
 "
 
 RDEPEND=""
@@ -35,6 +35,15 @@ DEPEND="
 		dev-qt/qtmultimedia:4
 		dev-qt/qt-mobility[multimedia]
 	)
+	qt5? (
+		dev-qt/qtsvg:5
+		dev-qt/qtgui:5
+		dev-qt/qtcore:5
+		dev-qt/qtopengl:5
+		dev-qt/qtmultimedia:5
+		dev-qt/qtwidgets
+		dev-qt/qt-mobility[multimedia]
+	)
 "
 
 src_unpack() {
@@ -43,8 +52,10 @@ src_unpack() {
 	if use qt4 ; then
 		cd "${WORKDIR}"/"${P}"/Qt || die
 		qt4-r2_src_unpack
+	elif use qt5 ; then
+		cd "${WORKDIR}"/"${P}"/Qt || die
+		qt4-r2_src_unpack
 	fi
-	cp /usr/portage/distfiles/ppsspp-icon.png  "${WORKDIR}"/"${P}"/
 }
 
 src_prepare() {
@@ -53,6 +64,9 @@ src_prepare() {
 	epatch "$FILESDIR"/ppsspp-ffmpeg-x86.patch
 	epatch "$FILESDIR"/ppsspp-qt.patch
 	if use qt4 ; then
+		cd "${WORKDIR}"/"${P}"/Qt || die
+		qt4-r2_src_prepare
+	elif use qt5 ; then
 		cd "${WORKDIR}"/"${P}"/Qt || die
 		qt4-r2_src_prepare
 	else
@@ -65,6 +79,10 @@ src_configure() {
 		cd "${WORKDIR}"/"${P}"/Qt || die
 		qt4-r2_src_configure
 		eqmake4 "${WORKDIR}"/"${P}"/Qt/PPSSPPQt.pro
+	elif use qt5 ; then
+		cd "${WORKDIR}"/"${P}"/Qt || die
+		qt4-r2_src_configure
+		eqmake5 "${WORKDIR}"/"${P}"/Qt/PPSSPPQt.pro
 	else
 		cmake-utils_src_configure
 	fi
@@ -74,6 +92,9 @@ src_compile() {
 	if use qt4 ; then
 		cd "${WORKDIR}"/"${P}"/Qt || die
 		qt4-r2_src_compile
+	elif use qt5 ; then
+		cd "${WORKDIR}"/"${P}"/Qt || die
+		qt4-r2_src_compile
 	else
 		cmake-utils_src_compile
 	fi
@@ -81,6 +102,9 @@ src_compile() {
 
 src_install() {
 	if use qt4 ; then
+		exeinto /usr/games/bin
+		newexe "${WORKDIR}"/"${P}"/Qt/ppsspp ppsspp
+	elif use qt5 ; then
 		exeinto /usr/games/bin
 		newexe "${WORKDIR}"/"${P}"/Qt/ppsspp ppsspp
 	else
