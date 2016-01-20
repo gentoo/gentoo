@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -207,7 +207,8 @@ subversion_fetch() {
 	addwrite "${ESVN_STORE_DIR}"
 
 	if [[ -n "${ESVN_UMASK}" ]]; then
-		eumask_push "${ESVN_UMASK}"
+		local prev_umask=$(umask)
+		umask "${ESVN_UMASK}"
 	fi
 
 	if [[ ! -d ${ESVN_STORE_DIR} ]]; then
@@ -331,7 +332,7 @@ subversion_fetch() {
 	fi
 
 	if [[ -n "${ESVN_UMASK}" ]]; then
-		eumask_pop
+		umask "${prev_umask}"
 	fi
 
 	einfo "   working copy: ${wc_path}"
