@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,8 +18,8 @@ DESCRIPTION="KDE libraries needed by all KDE programs"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 LICENSE="LGPL-2.1"
 IUSE="cpu_flags_x86_3dnow acl alsa altivec +bzip2 +crypt debug doc fam jpeg2k
-kerberos lzma cpu_flags_x86_mmx nls openexr +policykit spell cpu_flags_x86_sse
-cpu_flags_x86_sse2 ssl +udev +udisks +upower zeroconf"
+kerberos libressl lzma cpu_flags_x86_mmx nls openexr +policykit spell
+cpu_flags_x86_sse cpu_flags_x86_sse2 ssl +udev +udisks +upower zeroconf"
 
 REQUIRED_USE="
 	udisks? ( udev )
@@ -40,7 +40,7 @@ COMMONDEPEND="
 	dev-libs/libxslt
 	media-libs/fontconfig
 	media-libs/freetype:2
-	media-libs/giflib
+	media-libs/giflib:=
 	media-libs/libpng:0=
 	media-libs/phonon[qt4]
 	sys-libs/zlib
@@ -80,7 +80,10 @@ COMMONDEPEND="
 	)
 	policykit? ( >=sys-auth/polkit-qt-0.103.0[qt4(+)] )
 	spell? ( app-text/enchant )
-	ssl? ( dev-libs/openssl:0 )
+	ssl? (
+		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0 )
+	)
 	udev? ( virtual/udev )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 "

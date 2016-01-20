@@ -535,11 +535,6 @@ app-mobilephone/kannel-sqlbox
 net-proxy/dansguardian
 
 # Pacho Ramos <pacho@gentoo.org> (05 Jan 2016)
-# Needs to be bumped but it lacks maintainer, bug #505124. Removal in a
-# month.
-app-emulation/vagrant
-
-# Pacho Ramos <pacho@gentoo.org> (05 Jan 2016)
 # Cannot be download, license is incorrect, bug #505752. Removal in a month.
 games-strategy/coldwar-demo
 
