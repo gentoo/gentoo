@@ -163,6 +163,7 @@ src_prepare() {
 	chmod +x "${S}"/waf || die
 
 	epatch "${FILESDIR}/${P}-fix-null-pointer-dereference.patch"
+	epatch "${FILESDIR}/${P}-fix-vaapi-build-on-older-ffmpeg.patch"
 	epatch_user
 }
 
