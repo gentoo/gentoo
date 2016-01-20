@@ -6706,7 +6706,7 @@ dev-python/3to2 1.0 1.1.1: Refactors valid 3.x syntax into valid 2.x syntax, if 
 dev-python/APScheduler 3.0.1: In-process task scheduler with Cron-like capabilities
 dev-python/Babel 2.0 2.1.1 2.2.0: A collection of tools for internationalizing Python applications
 dev-python/BitVector 3.3.2: A pure-Python memory-efficient packed representation for bit arrays
-dev-python/CacheControl 0.11.5: The httplib2 caching algorithms packaged up for use with requests
+dev-python/CacheControl 0.11.5 0.11.6: The httplib2 caching algorithms packaged up for use with requests
 dev-python/Coffin 0.3.8 2.0.1: Jinja2 adapter for Django
 dev-python/CoverageTestRunner 1.9-r1 1.10: fail Python program unit tests unless they test everything
 dev-python/Djblets 0.7.31: A collection of useful extensions for Django
@@ -7159,7 +7159,7 @@ dev-python/ipdbplugin 1.4 9999: Nose plugin to use iPdb instead of Pdb when test
 dev-python/ipy 0.82a 0.83: Class and tools for handling of IPv4 and IPv6 addresses and networks
 dev-python/ipykernel 4.2.0 4.2.1 4.2.2: IPython Kernel for Jupyter
 dev-python/ipyparallel 4.1.0: Interactive Parallel Computing with IPython
-dev-python/ipython 3.2.1-r1 4.0.1 4.0.2: Advanced interactive shell for Python
+dev-python/ipython 3.2.1-r1 4.0.1 4.0.3: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.1.0: Vestigial utilities from IPython
 dev-python/ipywidgets 4.1.1: IPython HTML widgets for Jupyter
 dev-python/irc 11.0.1 13.2 13.3.1: IRC client framework written in Python
@@ -7167,7 +7167,7 @@ dev-python/irman-python 0.1-r1: A minimal set of Python bindings for libirman
 dev-python/iso8601 0.1.10 0.1.11: Simple module to parse ISO 8601 dates
 dev-python/isodate 0.5.0 0.5.1 0.5.4: ISO 8601 date/time/duration parser and formater
 dev-python/itsdangerous 0.24: Various helpers to pass trusted data to untrusted environments and back
-dev-python/jaraco-classes 1.2: Classes used by other projects by developer jaraco
+dev-python/jaraco-classes 1.2 1.3: Classes used by other projects by developer jaraco
 dev-python/jaraco-collections 1.3.1: Models and classes to supplement the stdlib collections module
 dev-python/jaraco-functools 1.8.1: Additional functions used by other projects by developer jaraco
 dev-python/jaraco-itertools 1.7.1: Additional functions used by other projects by developer jaraco
@@ -7277,6 +7277,7 @@ dev-python/milk 0.5.1 0.5.3 0.6.1: Machine learning toolkit in Python
 dev-python/milksets 0.1.3-r1: Datasets in a common Pythonic interface to use with milk
 dev-python/mimeparse 0.1.4-r1: Basic functions for handling mime-types in python
 dev-python/mimerender 0.5.4 0.5.5: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
+dev-python/minidb 2.0.1: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
 dev-python/miniupnpc 1.8 1.9.20150917 1.9.20151008: Python bindings for UPnP client library
 dev-python/misaka 1.0.2: The Python binding for Sundown, a markdown parsing library
@@ -7377,7 +7378,7 @@ dev-python/oslo-vmware 1.21.0: Oslo VMware library for OpenStack projects
 dev-python/oslotest 1.3.0 1.5.0 1.5.1 1.6.0 1.10.0 1.12.0: Oslo test framework
 dev-python/osprofiler 0.3.0: OpenStack Profiler Library
 dev-python/pSQL 1.2.0 1.2.1: MySQL abstraction layer for python
-dev-python/packaging 15.3-r2: Core utilities for Python packages
+dev-python/packaging 15.3-r2 16.0: Core utilities for Python packages
 dev-python/paisley 0.3.1 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
 dev-python/pandas 0.16.2 0.17.0 0.17.1 9999: Powerful data structures for data analysis and statistics
 dev-python/paramiko 1.15.1-r1 1.16.0: SSH2 protocol library
@@ -7416,7 +7417,7 @@ dev-python/piddle 1.0.15 1.0.15-r1: Cross-media, cross-platform 2D graphics pack
 dev-python/pika 0.9.14 0.10.0: Pure-Python implementation of the AMQP
 dev-python/pillow 2.8.1 2.8.2 2.9.0 3.0.0 3.0.0-r1 3.1.0: Python Imaging Library (fork)
 dev-python/pillowfight 0.2: Eases the transition from PIL to Pillow
-dev-python/pip 7.1.2: Installs python packages -- replacement for easy_install
+dev-python/pip 7.1.2 8.0.0: Installs python packages -- replacement for easy_install
 dev-python/pivy 0.5_alpha20110303-r1 9999: Coin3d binding for Python
 dev-python/pkgconfig 1.1.0: Interface Python with pkg-config
 dev-python/pkginfo 1.2.1: Provides an API for querying the distutils metadata written in a PKG-INFO file
@@ -7868,7 +7869,7 @@ dev-python/sepolgen 1.2.1-r1 1.2.2 9999: SELinux policy generation library
 dev-python/serpent 1.7 1.9 1.10 1.11: A simple serialization library based on ast.literal_eval
 dev-python/service_identity 14.0.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.9: Allow customization of the process title
-dev-python/setuptools 18.4 18.5 18.6.1 18.7 18.7.1 18.8 18.8.1 19.1.1 19.2 9999: a collection of extensions to Distutils
+dev-python/setuptools 18.4 18.5 18.6.1 18.7 18.7.1 18.8 18.8.1 19.1.1 19.2 19.4 9999: a collection of extensions to Distutils
 dev-python/setuptools-git 1.0 1.1: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.8.0 1.9.0 1.10.0 1.10.1: package to manage versions by scm tags via setuptools
@@ -8149,7 +8150,7 @@ dev-qt/qttest 4.8.6-r1 4.8.7 5.4.2 5.5.1: Unit testing library for the Qt5 frame
 dev-qt/qttranslations 4.8.6-r1 4.8.7 5.4.2 5.5.1-r1: Translation files for the Qt5 framework
 dev-qt/qtwayland 5.4.2 5.5.1-r1: Wayland platform plugin for Qt
 dev-qt/qtwebchannel 5.4.2 5.5.1-r1: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
-dev-qt/qtwebkit 4.8.6-r1 4.8.7 4.10.4 5.4.2 5.5.1 5.5.1-r1: WebKit rendering library for the Qt5 framework (deprecated)
+dev-qt/qtwebkit 4.8.6-r1 4.8.7 4.10.4 5.4.2 5.5.1-r1: WebKit rendering library for the Qt5 framework (deprecated)
 dev-qt/qtwebsockets 5.4.2 5.5.1-r1: Implementation of the WebSocket protocol for the Qt5 framework
 dev-qt/qtwidgets 5.4.2 5.5.1-r1: Set of components for creating classic desktop-style UIs for the Qt5 framework
 dev-qt/qtx11extras 5.4.2 5.5.1: Linux/X11-specific support library for the Qt5 framework
@@ -13882,7 +13883,7 @@ net-im/ejabberd 2.1.13-r1 15.03-r1: The Erlang Jabber Daemon
 net-im/ekg2 0.3.1-r2 9999: Text-based, multi-protocol instant messenger
 net-im/empathy 3.12.10 3.12.11: Telepathy instant messaging and video/audio call client for GNOME
 net-im/err 1.7.1-r1: Plugin based XMPP chatbot designed to be easily deployable, extensible and maintainable
-net-im/gajim 0.16.4 0.16.5: Jabber client written in PyGTK
+net-im/gajim 0.16.5: Jabber client written in PyGTK
 net-im/gg-transport 2.2.4: Gadu-Gadu transport for Jabber
 net-im/indicator-messages 0.6.0-r1: A place on the user's desktop that collects messages that need a response
 net-im/jabber-base 0.01 0.01-r1: Jabber servers and transports layout package
@@ -16970,7 +16971,7 @@ sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographi
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 35 55 60 63: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.110 3.4.9999 3.10.92 3.10.93 3.10.94 3.12.49 3.12.50 3.12.52 3.12.9999 3.14.56 3.14.57 3.14.58 3.18.21 3.18.22 3.18.23 3.18.24 3.18.25 4.0.4 4.0.9 4.1.12 4.1.13 4.1.14 4.1.15 4.1.15-r1 4.2.4 4.2.5 4.2.6 4.2.7 4.2.8 4.3.0 4.3.2 4.3.3 4.3.3-r1 4.4.0 4.4.0-r1: Full sources including the Gentoo patchset for the 4.4 kernel tree
+sys-kernel/gentoo-sources 3.4.110 3.4.9999 3.10.92 3.10.93 3.10.94 3.12.49 3.12.50 3.12.52 3.12.9999 3.14.56 3.14.57 3.14.58 3.14.58-r1 3.18.21 3.18.22 3.18.23 3.18.24 3.18.25 3.18.25-r1 4.0.4 4.0.9 4.1.12 4.1.13 4.1.14 4.1.15 4.1.15-r1 4.2.4 4.2.5 4.2.6 4.2.7 4.2.8 4.3.0 4.3.2 4.3.3 4.3.3-r1 4.4.0 4.4.0-r1: Full sources including the Gentoo patchset for the 4.4 kernel tree
 sys-kernel/git-sources 4.4_rc1 4.4_rc2 4.4_rc3 4.4_rc4 4.4_rc5 4.4_rc6 4.4_rc7 4.4_rc8: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.1.7-r1 4.3.3-r4 4.3.3-r6 4.3.3-r7: Hardened kernel sources (kernel series 4.3)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
@@ -17599,7 +17600,7 @@ www-misc/profile-sync-daemon 5.45.1: Symlinks and syncs browser profile dirs to 
 www-misc/reflector 2011.05.13.1: archlinux's take on mirrorselect
 www-misc/shellinabox 2.19: Web server that can export arbitrary command line tools to a web based terminal emulator
 www-misc/surl 0.7.1.1: URL shortening command line application that supports various sites
-www-misc/urlwatch 1.18 2.0: A tool for monitoring webpages for updates
+www-misc/urlwatch 1.18 2.0-r1: A tool for monitoring webpages for updates
 www-misc/vdradmin-am 3.6.9 3.6.9-r3 3.6.10: WWW Admin for the Video Disk Recorder
 www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
