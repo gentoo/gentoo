@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,8 +19,6 @@
 
 if [[ -z ${_README_GENTOO_ECLASS} ]]; then
 _README_GENTOO_ECLASS=1
-
-inherit eutils
 
 case "${EAPI:-0}" in
 	0|1|2|3)
@@ -71,15 +69,15 @@ readme.gentoo_create_doc() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	if [[ -n "${DOC_CONTENTS}" ]]; then
-		eshopts_push
-		set -f
+		local prev_shopt=$(shopt -p -o noglob)
+		set -o noglob
 		if [[ -n "${DISABLE_AUTOFORMATTING}" ]]; then
 			echo "${DOC_CONTENTS}" > "${T}"/README.gentoo
 		else
 			echo -e ${DOC_CONTENTS} | fold -s -w 70 \
 				| sed 's/[[:space:]]*$//' > "${T}"/README.gentoo
 		fi
-		eshopts_pop
+		${prev_shopt}
 	elif [[ -f "${FILESDIR}/README.gentoo-${SLOT%/*}" ]]; then
 		cp "${FILESDIR}/README.gentoo-${SLOT%/*}" "${T}"/README.gentoo || die
 	elif [[ -f "${FILESDIR}/README.gentoo${README_GENTOO_SUFFIX}" ]]; then
