@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>app-doc</herd>
+	<herd>base-system</herd>
 	<use>
 		<flag name='html'>Install multi-chapter HTML docs</flag>
 		<flag name='htmlsingle'>Install all-on-one-page HTML docs</flag>
