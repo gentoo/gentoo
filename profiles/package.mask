@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergey Popov <pinkbyte@gentoo.org> (20 Jan 2016)
+# Mask new versions of Boost - they are known to cause breakages
+~dev-util/boost-build-1.60.0
+~dev-libs/boost-1.60.0
+~dev-util/boost-build-1.59.0
+~dev-libs/boost-1.59.0
+
 # Michael Orlitzky <mjo@gentoo.org> (18 Jan 2016)
 # Depends on a masked version of mod_perl. Feel free
 # to unmask as soon as mod_perl supports apache-2.4.
@@ -962,11 +969,6 @@ dev-libs/iniparser:4
 # it remains in the tree for now in case there is a need
 # for it for upgrading old user profiles, etc.
 ~mail-client/thunderbird-24.8.0
-
-# Sergey Popov <pinkbyte@gentoo.org> (13 Jul 2015)
-# Mask new version of Boost - it's known to cause breakages
-~dev-util/boost-build-1.58.0
-~dev-libs/boost-1.58.0
 
 # Patrick Lauer <patrick@gentoo.org> (1 Jul 2015)
 # Wrong version #553670
