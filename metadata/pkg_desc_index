@@ -8643,7 +8643,7 @@ dev-ruby/git 1.2.9.1 1.2.9.1-r1: Library for using Git in Ruby
 dev-ruby/github_api 0.11.3 0.11.3-r1 0.12.4: A Ruby wrapper for the GitHub REST API v3
 dev-ruby/globalid 0.3.3 0.3.5 0.3.6: Reference models by URI
 dev-ruby/gnuplot 2.6.2-r2: Gnuplot drawing library - Ruby Bindings
-dev-ruby/gpgme 2.0.10 2.0.11: Ruby language binding for GnuPG Made Easy
+dev-ruby/gpgme 2.0.10 2.0.11 2.0.12: Ruby language binding for GnuPG Made Easy
 dev-ruby/gruff 0.6.0: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 4.0.6 4.0.6-r1 4.0.7: A ruby web page templating engine
 dev-ruby/hashdiff 0.2.2 0.2.3: Simple Hash extension to make working with nested hashes easier and less error-prone
@@ -8995,7 +8995,7 @@ dev-ruby/temple 0.6.10 0.7.6: An abstraction and a framework for compiling templ
 dev-ruby/term-ansicolor 1.2.2-r1 1.3.0 1.3.0-r1 1.3.2: Small Ruby library that colors strings using ANSI escape sequences
 dev-ruby/termcolor 1.2.1-r1 1.2.2: a library for ANSI color formatting like HTML for output in terminal
 dev-ruby/test-unit 1.2.3-r1 1.2.3-r2 1.2.3-r3 2.5.5-r2 3.1.3 3.1.4 3.1.5 3.1.5-r1 3.1.7: An xUnit family unit testing framework for Ruby
-dev-ruby/test-unit-rr 1.0.3 1.0.3-r1: RR adapter for Test::Unit
+dev-ruby/test-unit-rr 1.0.3 1.0.3-r1 1.0.5: RR adapter for Test::Unit
 dev-ruby/test_construct 2.0.1: Creates temporary files and directories for testing
 dev-ruby/test_declarative 0.0.5-r2: Simply adds a declarative test method syntax to test/unit
 dev-ruby/text 1.2.3-r1 1.2.3-r2 1.3.0 1.3.1: A collection of text algorithms
@@ -9404,7 +9404,7 @@ dev-util/cyclo 2.1_pre1: Computes cyclomatic complexity metrics on C source code
 dev-util/d-feet 0.3.9 0.3.10: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20150101 9.20151126 9.20151225: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debhelper 9.20150101 9.20151225 9.20160115: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.67 1.0.74 1.0.75: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 4.4.6-r1 4.4.6-r2 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
@@ -12998,7 +12998,7 @@ media-sound/musescore 1.1 1.2 1.3 2.0.2: WYSIWYG Music Score Typesetter
 media-sound/music-file-organizer 1.0.1: Organizes audio files into directories based on metadata tags, along with other metadata utilities.
 media-sound/musique 1.3 1.4: Qt4 music player
 media-sound/ncmpc 0.24 0.24-r2: A ncurses client for the Music Player Daemon (MPD)
-media-sound/ncmpcpp 0.6.7 0.6.8 0.7 0.7.1 9999: featureful ncurses based MPD client inspired by ncmpc
+media-sound/ncmpcpp 0.6.7 0.6.8 0.7 0.7.1 0.7.2 9999: featureful ncurses based MPD client inspired by ncmpc
 media-sound/neroaac 1.5.1: Nero AAC reference quality MPEG-4 and 3GPP audio codec
 media-sound/neutrino 0.8.4: A GNOME application to manage Creative music players using the PDE protocol
 media-sound/normalize 0.7.7-r1: Audio file volume normalizer
@@ -13667,7 +13667,7 @@ net-analyzer/vnstat 1.13 1.15: Console-based network traffic monitor that keeps 
 net-analyzer/w3af 1.1-r1 1.5: Web Application Attack and Audit Framework
 net-analyzer/wapiti 2.3.0 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
-net-analyzer/wireshark 1.12.8 1.12.8-r1 2.0.0 2.0.0-r1 2.0.1 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 2.0.1 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
@@ -14714,7 +14714,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/yaydl 1.5.2: Yet Another Youtube DownLoader which is downloading more than youtube
-net-misc/youtube-dl 2015.04.03 2015.12.23 2015.12.29 2016.01.01 2016.01.09 2016.01.14 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2015.04.03 2015.12.23 2015.12.29 2016.01.01 2016.01.09 2016.01.14 2016.01.15 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.1 3.1.9 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
