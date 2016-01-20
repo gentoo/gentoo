@@ -1,16 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
 
-inherit autotools eutils toolchain-funcs flag-o-matic user systemd
+inherit eutils toolchain-funcs flag-o-matic user systemd
 
 MY_P=${P/_p/p}
 DESCRIPTION="Network Time Protocol suite/programs"
 HOMEPAGE="http://www.ntp.org/"
 SRC_URI="http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-${PV:0:3}/${MY_P}.tar.gz
-	mirror://gentoo/${MY_P}-manpages.tar.bz2"
+	https://dev.gentoo.org/~polynomial-c/${MY_P}-manpages.tar.bz2"
 
 LICENSE="HPND BSD ISC"
 SLOT="0"
