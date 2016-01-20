@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-libs/boost:=
+	dev-libs/boost:=[python]
 	dev-ros/rosconsole
 	>=dev-cpp/yaml-cpp-0.5
 "
