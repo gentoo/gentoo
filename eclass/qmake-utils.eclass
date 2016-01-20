@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ if [[ -z ${_QMAKE_UTILS_ECLASS} ]]; then
 _QMAKE_UTILS_ECLASS=1
 
 [[ ${EAPI:-0} == [012345] ]] && inherit multilib
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 # @FUNCTION: qt4_get_bindir
 # @DESCRIPTION:
@@ -115,9 +115,10 @@ qmake-utils_find_pro_file() {
 
 	# set nullglob to avoid expanding *.pro to the literal
 	# string "*.pro" when there are no matching files
-	eshopts_push -s nullglob
+	local prev_shopt=$(shopt -p nullglob)
+	shopt -s nullglob
 	local pro_files=(*.pro)
-	eshopts_pop
+	${prev_shopt}
 
 	case ${#pro_files[@]} in
 	0)
@@ -213,7 +214,10 @@ eqmake4() {
 				print fixed;
 			}'
 
-	[[ -n ${EQMAKE4_EXCLUDE} ]] && eshopts_push -o noglob
+	if [[ -n ${EQMAKE4_EXCLUDE} ]]; then
+		local prev_shopts=$(shopt -p -o noglob)
+		set -o noglob
+	fi
 
 	local file
 	while read file; do
@@ -239,7 +243,7 @@ eqmake4() {
 		fi
 	done < <(find . -type f -name '*.pr[io]' -printf '%P\n' 2>/dev/null)
 
-	[[ -n ${EQMAKE4_EXCLUDE} ]] && eshopts_pop
+	[[ -n ${EQMAKE4_EXCLUDE} ]] && ${prev_shopt}
 
 	"$(qt4_get_bindir)"/qmake \
 		-makefile \
