@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,8 +29,6 @@
 if [[ -z ${_VERSIONATOR_ECLASS} ]]; then
 _VERSIONATOR_ECLASS=1
 
-inherit eutils
-
 # @FUNCTION: get_all_version_components
 # @USAGE: [version]
 # @DESCRIPTION:
@@ -42,7 +40,8 @@ inherit eutils
 #     20040905    ->  20040905
 #     3.0c-r1     ->  3 . 0 c - r1
 get_all_version_components() {
-	eshopts_push -s extglob
+	local prev_shopt=$(shopt -p extglob)
+	shopt -s extglob
 	local ver_str=${1:-${PV}} result
 	result=()
 
@@ -50,7 +49,7 @@ get_all_version_components() {
 	# times.
 	if [[ ${VERSIONATOR_CACHE_VER_STR} == ${ver_str} ]] ; then
 		echo ${VERSIONATOR_CACHE_RESULT}
-		eshopts_pop
+		${prev_shopt}
 		return
 	fi
 	export VERSIONATOR_CACHE_VER_STR=${ver_str}
@@ -87,7 +86,7 @@ get_all_version_components() {
 
 	export VERSIONATOR_CACHE_RESULT=${result[*]}
 	echo ${result[@]}
-	eshopts_pop
+	${prev_shopt}
 }
 
 # @FUNCTION: get_version_components
@@ -128,7 +127,8 @@ get_major_version() {
 #    1-2    1.2.3       -> 1.2
 #    2-     1.2.3       -> 2.3
 get_version_component_range() {
-	eshopts_push -s extglob
+	local prev_shopt=$(shopt -p extglob)
+	shopt -s extglob
 	local c v="${2:-${PV}}" range="${1}" range_start range_end
 	local -i i=-1 j=0
 	c=($(get_all_version_components "${v}"))
@@ -137,17 +137,17 @@ get_version_component_range() {
 
 	while ((j < range_start)); do
 		i+=1
-		((i > ${#c[@]})) && eshopts_pop && return
+		((i > ${#c[@]})) && ${prev_shopt} && return
 		[[ -n "${c[i]//[-._]}" ]] && j+=1
 	done
 
 	while ((j <= range_end)); do
 		echo -n ${c[i]}
-		((i > ${#c[@]})) && eshopts_pop && return
+		((i > ${#c[@]})) && ${prev_shopt} && return
 		[[ -n "${c[i]//[-._]}" ]] && j+=1
 		i+=1
 	done
-	eshopts_pop
+	${prev_shopt}
 }
 
 # @FUNCTION: get_after_major_version
@@ -175,7 +175,8 @@ get_after_major_version() {
 # Rather than being a number, $1 can be a separator character such as '-', '.'
 # or '_'. In this case, the first separator of this kind is selected.
 replace_version_separator() {
-	eshopts_push -s extglob
+	local prev_shopt=$(shopt -p extglob)
+	shopt -s extglob
 	local w c v="${3:-${PV}}"
 	declare -i i found=0
 	w=${1:-1}
@@ -201,7 +202,7 @@ replace_version_separator() {
 	fi
 	c=${c[*]}
 	echo ${c// }
-	eshopts_pop
+	${prev_shopt}
 }
 
 # @FUNCTION: replace_all_version_separators
@@ -291,7 +292,8 @@ version_is_at_least() {
 # return 3. You probably want version_is_at_least rather than this function.
 # May not be very reliable. Test carefully before using this.
 version_compare() {
-	eshopts_push -s extglob
+	local prev_shopt=$(shopt -p extglob)
+	shopt -s extglob
 	local ver_a=${1} ver_b=${2} parts_a parts_b
 	local cur_tok_a cur_tok_b num_part_a num_part_b
 	local -i cur_idx_a=0 cur_idx_b=0 prev_idx_a prev_idx_b
@@ -334,8 +336,8 @@ version_compare() {
 		[[ -z ${cur_tok_a} && -z ${cur_tok_b} ]] && break
 
 		# if a component is blank, then it is the lesser value
-		[[ -z ${cur_tok_a} ]] && eshopts_pop && return 1
-		[[ -z ${cur_tok_b} ]] && eshopts_pop && return 3
+		[[ -z ${cur_tok_a} ]] && ${prev_shopt} && return 1
+		[[ -z ${cur_tok_b} ]] && ${prev_shopt} && return 3
 
 		# According to PMS, if we are *not* in the first number part, and either
 		# token begins with "0", then we use a different algorithm (that
@@ -348,8 +350,8 @@ version_compare() {
 			cur_tok_b=${cur_tok_b%%+(0)}
 
 			# do a *string* comparison of the resulting values: 2 > 11
-			[[ ${cur_tok_a} < ${cur_tok_b} ]] && eshopts_pop && return 1
-			[[ ${cur_tok_a} > ${cur_tok_b} ]] && eshopts_pop && return 3
+			[[ ${cur_tok_a} < ${cur_tok_b} ]] && ${prev_shopt} && return 1
+			[[ ${cur_tok_a} > ${cur_tok_b} ]] && ${prev_shopt} && return 3
 		else
 			# to avoid going into octal mode, strip any leading zeros. otherwise
 			# bash will throw a hissy fit on versions like 6.3.068.
@@ -361,8 +363,8 @@ version_compare() {
 			: ${cur_tok_b:=0}
 
 			# compare
-			((cur_tok_a < cur_tok_b)) && eshopts_pop && return 1
-			((cur_tok_a > cur_tok_b)) && eshopts_pop && return 3
+			((cur_tok_a < cur_tok_b)) && ${prev_shopt} && return 1
+			((cur_tok_a > cur_tok_b)) && ${prev_shopt} && return 3
 		fi
 	done
 
@@ -384,8 +386,8 @@ version_compare() {
 	fi
 
 	# compare
-	[[ ${letter_a} < ${letter_b} ]] && eshopts_pop && return 1
-	[[ ${letter_a} > ${letter_b} ]] && eshopts_pop && return 3
+	[[ ${letter_a} < ${letter_b} ]] && ${prev_shopt} && return 1
+	[[ ${letter_a} > ${letter_b} ]] && ${prev_shopt} && return 3
 
 	### letter parts equal. compare suffixes in order.
 	inf_loop=0
@@ -426,14 +428,14 @@ version_compare() {
 		if [[ ${cur_tok_a} != ${cur_tok_b} ]]; then
 			local suffix
 			for suffix in alpha beta pre rc "" p; do
-				[[ ${cur_tok_a} == ${suffix} ]] && eshopts_pop && return 1
-				[[ ${cur_tok_b} == ${suffix} ]] && eshopts_pop && return 3
+				[[ ${cur_tok_a} == ${suffix} ]] && ${prev_shopt} && return 1
+				[[ ${cur_tok_b} == ${suffix} ]] && ${prev_shopt} && return 3
 			done
 		elif [[ -z ${cur_tok_a} && -z ${cur_tok_b} ]]; then
 			break
 		else
-			((num_part_a < num_part_b)) && eshopts_pop && return 1
-			((num_part_a > num_part_b)) && eshopts_pop && return 3
+			((num_part_a < num_part_b)) && ${prev_shopt} && return 1
+			((num_part_a > num_part_b)) && ${prev_shopt} && return 3
 		fi
 	done
 
@@ -453,11 +455,11 @@ version_compare() {
 	num_part_b=${num_part_b##+(0)}
 	: ${num_part_b:=0}
 
-	((num_part_a < num_part_b)) && eshopts_pop && return 1
-	((num_part_a > num_part_b)) && eshopts_pop && return 3
+	((num_part_a < num_part_b)) && ${prev_shopt} && return 1
+	((num_part_a > num_part_b)) && ${prev_shopt} && return 3
 
 	### no differences.
-	eshopts_pop
+	${prev_shopt}
 	return 2
 }
 
@@ -468,7 +470,8 @@ version_compare() {
 # algorithm for simplicity, so don't call it with more than a few dozen items.
 # Uses version_compare, so be careful.
 version_sort() {
-	eshopts_push -s extglob
+	local prev_shopt=$(shopt -p extglob)
+	shopt -s extglob
 	local items=
 	local -i left=0
 	items=("$@")
@@ -486,7 +489,7 @@ version_sort() {
 		left+=1
 	done
 	echo ${items[@]}
-	eshopts_pop
+	${prev_shopt}
 }
 
 # @FUNCTION: version_format_string
