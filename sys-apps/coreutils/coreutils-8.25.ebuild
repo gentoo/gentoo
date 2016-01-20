@@ -2,23 +2,29 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="3"
+# To generate the man pages, unpack the upstream tarball and run:
+# ./configure --enable-install-program=arch,coreutils,hostname,kill
+# make
+# cd ..
+# tar cf - coreutils-*/man/*.[0-9] | xz > coreutils-<ver>-man.tar.xz
+
+EAPI="4"
 
 inherit eutils flag-o-matic toolchain-funcs
 
-PATCH_VER="1.1"
+PATCH_VER="1.0"
 DESCRIPTION="Standard GNU file utilities (chmod, cp, dd, dir, ls...), text utilities (sort, tr, head, wc..), and shell utilities (whoami, who,...)"
 HOMEPAGE="https://www.gnu.org/software/coreutils/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 	mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz
 	https://dev.gentoo.org/~vapier/dist/${P}-patches-${PATCH_VER}.tar.xz
-	mirror://gentoo/${P}-man-r1.tar.xz
-	https://dev.gentoo.org/~vapier/dist/${P}-man-r1.tar.xz"
+	mirror://gentoo/${P}-man.tar.xz
+	https://dev.gentoo.org/~vapier/dist/${P}-man.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~arm-linux ~x86-linux"
-IUSE="acl caps gmp nls selinux static userland_BSD vanilla xattr"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~arm-linux ~x86-linux"
+IUSE="acl caps gmp hostname kill multicall nls selinux static userland_BSD vanilla xattr"
 
 LIB_DEPEND="acl? ( sys-apps/acl[static-libs] )
 	caps? ( sys-libs/libcap )
@@ -26,18 +32,23 @@ LIB_DEPEND="acl? ( sys-apps/acl[static-libs] )
 	xattr? ( !userland_BSD? ( sys-apps/attr[static-libs] ) )"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs]} )
 	selinux? ( sys-libs/libselinux )
-	nls? ( virtual/libintl )
+	nls? ( virtual/libintl )"
+DEPEND="${RDEPEND}
+	static? ( ${LIB_DEPEND} )
+	app-arch/xz-utils"
+RDEPEND+="
+	hostname? ( !sys-apps/net-tools[hostname] )
+	kill? (
+		!sys-apps/util-linux[kill]
+		!sys-process/procps[kill]
+	)
 	!app-misc/realpath
 	!<sys-apps/util-linux-2.13
 	!sys-apps/stat
 	!net-mail/base64
 	!sys-apps/mktemp
 	!<app-forensics/tct-1.18-r1
-	!<net-fs/netatalk-2.0.3-r4
-"
-DEPEND="${RDEPEND}
-	static? ( ${LIB_DEPEND} )
-	app-arch/xz-utils"
+	!<net-fs/netatalk-2.0.3-r4"
 
 src_prepare() {
 	if ! use vanilla ; then
@@ -81,19 +92,20 @@ src_configure() {
 		--with-packager="Gentoo" \
 		--with-packager-version="${PVR} (p${PATCH_VER:-0})" \
 		--with-packager-bug-reports="https://bugs.gentoo.org/" \
-		--enable-install-program="arch" \
-		--enable-no-install-program="groups,hostname,kill,su,uptime" \
+		--enable-install-program="arch,$(usev hostname),$(usev kill)" \
+		--enable-no-install-program="groups,$(usev !hostname),$(usev !kill),su,uptime" \
 		--enable-largefile \
 		$(use caps || echo --disable-libcap) \
 		$(use_enable nls) \
 		$(use_enable acl) \
+		$(use_enable multicall single-binary) \
 		$(use_enable xattr) \
 		$(use_with gmp) \
 		${myconf}
 }
 
 src_test() {
-	# Non-root tests will fail if the full path isnt
+	# Non-root tests will fail if the full path isn't
 	# accessible to non-root users
 	chmod -R go-w "${WORKDIR}"
 	chmod a+rx "${WORKDIR}"
@@ -119,15 +131,14 @@ src_test() {
 	#export RUN_EXPENSIVE_TESTS="yes"
 	#export FETISH_GROUPS="portage wheel"
 	env PATH="${T}/mount-wrappers:${PATH}" \
-	emake -j1 -k check || die "make check failed"
+	emake -j1 -k check
 }
 
 src_install() {
-	emake install DESTDIR="${D}" || die
-	dodoc AUTHORS ChangeLog* NEWS README* THANKS TODO
+	default
 
 	insinto /etc
-	newins src/dircolors.hin DIR_COLORS || die
+	newins src/dircolors.hin DIR_COLORS
 
 	if [[ ${USERLAND} == "GNU" ]] ; then
 		cd "${ED}"/usr/bin
@@ -143,7 +154,7 @@ src_install() {
 		# create a symlink for uname in /usr/bin/ since autotools require it
 		local x
 		for x in ${com} uname ; do
-			dosym /bin/${x} /usr/bin/${x} || die
+			dosym /bin/${x} /usr/bin/${x}
 		done
 	else
 		# For now, drop the man pages, collides with the ones of the system.
