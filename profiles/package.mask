@@ -103,20 +103,8 @@ dev-perl/ExtUtils-Constant
 media-libs/opengtl
 
 # Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
-# Cannot be downloaded either mirrored, bug #561120. Removal in a month
-games-fps/ut2003-bonuspack-cm
-
-# Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
 # Cannot be downloaded either mirrored, bug #561142. Removal in a month
 games-fps/ut2004-alienswarm
-
-# Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
-# Cannot be downloaded either mirrored, bug #561144. Removal in a month
-games-fps/ut2004-fragops
-
-# Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
-# Cannot be downloaded either mirrored, bug #561146. Removal in a month
-games-fps/ut2004-hamsterbash
 
 # Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
 # Cannot be downloaded either mirrored, bug #561150. Removal in a month
@@ -125,24 +113,6 @@ games-rpg/sacred-gold
 # Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
 # Cannot be downloaded either mirrored, bug #561154. Removal in a month
 games-strategy/coldwar
-
-# Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
-# Cannot be downloaded either mirrored, bug #561162. Removal in a month
-games-fps/ut2003-bonuspack-de
-
-# Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
-# Cannot be downloaded either mirrored, bug #561166
-# The ebuild needs to be either adapted to the new file or rely and trust
-# the file from a new SRC_URI. Removal in a month.
-games-fps/ut2004-bonuspack-cbp2
-
-# Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
-# Cannot be downloaded either mirrored, bug #561168. Removal in a month
-games-fps/ut2004-cor
-
-# Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
-# Cannot be downloaded either mirrored, bug #561172. Removal in a month
-games-fps/ut2004-crossfire
 
 # Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
 # Cannot be downloaded either mirrored, bug #561176. Removal in a month
