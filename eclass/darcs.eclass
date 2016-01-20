@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,8 +21,6 @@
 # TODO:
 
 # support for tags
-
-inherit eutils # eshopts_{push,pop}
 
 # Don't download anything other than the darcs repository
 SRC_URI=""
@@ -194,9 +192,7 @@ darcs_src_unpack() {
 	# Use ${WORKDIR}/${P} rather than ${S} so user can point ${S} to something inside.
 	mkdir -p "${WORKDIR}/${P}"
 
-	eshopts_push -s dotglob	# get any dotfiles too.
-	rsync -rlpgo "${EDARCS_TOP_DIR}/${EDARCS_LOCALREPO}"/* "${WORKDIR}/${P}"
-	eshopts_pop
+	rsync -rlpgo "${EDARCS_TOP_DIR}/${EDARCS_LOCALREPO}"/. "${WORKDIR}/${P}"
 
 	einfo "Darcs repository contents are now in ${WORKDIR}/${P}"
 
