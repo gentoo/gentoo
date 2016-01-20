@@ -99,7 +99,7 @@ estack_pop() {
 	if [[ -n ${_estack_retvar} ]] ; then
 		eval ${_estack_retvar}=\"\${${_estack_name}\[${_estack_i}\]}\"
 	fi
-	eval unset ${_estack_name}\[${_estack_i}\]
+	eval unset \"${_estack_name}\[${_estack_i}\]\"
 }
 
 # @FUNCTION: evar_push
