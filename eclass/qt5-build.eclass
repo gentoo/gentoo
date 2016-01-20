@@ -226,12 +226,11 @@ qt5-build_src_test() {
 	qt5_foreach_target_subdir emake
 
 	# create a custom testrunner script that correctly sets
-	# {,DY}LD_LIBRARY_PATH before executing the given test
+	# LD_LIBRARY_PATH before executing the given test
 	local testrunner=${QT5_BUILD_DIR}/gentoo-testrunner
 	cat > "${testrunner}" <<-_EOF_ || die
 	#!/bin/sh
 	export LD_LIBRARY_PATH="${QT5_BUILD_DIR}/lib:${QT5_LIBDIR}"
-	export DYLD_LIBRARY_PATH="${QT5_BUILD_DIR}/lib:${QT5_LIBDIR}"
 	"\$@"
 	_EOF_
 	chmod +x "${testrunner}"
