@@ -10910,7 +10910,7 @@ kde-apps/ffmpegthumbs 4.14.3 15.08.3: FFmpeg based thumbnail generator for video
 kde-apps/filelight 4.14.3 15.08.3: Visualise disk usage with interactive map of concentric, segmented rings
 kde-apps/gpgmepp 4.14.10 15.08.3: C++ bindings for gpgme
 kde-apps/granatier 4.14.3 15.08.3: KDE Bomberman game
-kde-apps/gwenview 4.14.3 15.08.3-r1: KDE image viewer
+kde-apps/gwenview 4.14.3 15.08.3-r1 15.12.1: KDE image viewer
 kde-apps/jovie 4.14.3 15.08.3 15.12.1: Jovie is a text to speech application
 kde-apps/juk 4.14.3 15.08.3: Jukebox and music manager for KDE
 kde-apps/kabcclient 4.4.2015.06 4.14.8 4.14.10: A command line client for accessing the KDE addressbook
@@ -10921,7 +10921,7 @@ kde-apps/kajongg 4.14.3 15.08.3: The classical Mah Jongg for four players
 kde-apps/kalarm 4.4.2015.06 4.14.8 4.14.10: Personal alarm message, command and email scheduler for KDE
 kde-apps/kalgebra 4.14.3: MathML-based graph calculator for KDE
 kde-apps/kalzium 4.14.3: KDE: periodic table of the elements
-kde-apps/kamera 4.14.3 15.08.3: KDE digital camera manager
+kde-apps/kamera 4.14.3 15.08.3 15.12.1: Plasma integration for gphoto2 cameras
 kde-apps/kanagram 4.14.3: KDE: letter order game
 kde-apps/kapman 4.14.3 15.08.3: Pac-Man clone for KDE
 kde-apps/kapptemplate 4.14.3 15.08.3 15.08.3-r1: A shell script to create the necessary framework to develop KDE applications
@@ -10936,7 +10936,7 @@ kde-apps/kcachegrind 4.14.3 15.08.3: KDE Frontend for Cachegrind
 kde-apps/kcalc 4.14.3 15.08.3-r1: KDE calculator
 kde-apps/kcharselect 4.14.3 15.08.3: KDE character selection utility
 kde-apps/kcmshell 4.14.3 15.08.3: Utility to host KDE control modules independently of SystemSettings
-kde-apps/kcolorchooser 4.14.3 15.08.3: KDE color selector/editor
+kde-apps/kcolorchooser 4.14.3 15.08.3 15.12.1: KDE color selector/editor
 kde-apps/kcontrol 4.14.3 15.08.3: The KDE Control Center
 kde-apps/kcron 4.14.3 15.08.3: KDE Task Scheduler
 kde-apps/kde-apps-meta 15.08.3-r3: Meta package for the KDE Applications collection
@@ -10969,8 +10969,8 @@ kde-apps/kdebugdialog 4.14.3 15.08.3: KDE: A dialog box for setting preferences 
 kde-apps/kdecore-meta 15.08.3-r1: kdecore - merge this to pull in the most basic applications
 kde-apps/kdeedu-meta 4.14.3: KDE educational apps - merge this to pull in all kdeedu-derived packages
 kde-apps/kdegames-meta 4.14.3 15.08.3: kdegames - merge this to pull in all kdegames-derived packages
-kde-apps/kdegraphics-meta 4.14.3 15.08.3: kdegraphics - merge this to pull in all kdegraphics-derived packages
-kde-apps/kdegraphics-mobipocket 4.14.3 15.08.3: Library to support mobipocket ebooks
+kde-apps/kdegraphics-meta 4.14.3 15.08.3 15.12.1: kdegraphics - merge this to pull in all kdegraphics-derived packages
+kde-apps/kdegraphics-mobipocket 4.14.3 15.08.3 15.12.1: Library to support mobipocket ebooks
 kde-apps/kdemultimedia-meta 4.14.3 15.08.3: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
 kde-apps/kdenetwork-filesharing 4.14.3 15.08.3: kcontrol filesharing config module for SMB
 kde-apps/kdenetwork-meta 4.14.3 15.08.3-r1: kdenetwork - merge this to pull in all kdenetwork-derived packages
@@ -11045,7 +11045,7 @@ kde-apps/knotes 4.4.2015.06 4.14.8 4.14.10: KDE Notes application
 kde-apps/knotify 4.14.3 15.08.3: The KDE notification daemon
 kde-apps/kolf 4.14.3 15.08.3: KDE Minigolf Game
 kde-apps/kollision 4.14.3 15.08.3: Simple ball dodging game
-kde-apps/kolourpaint 4.14.3 15.08.3: Paint Program for KDE
+kde-apps/kolourpaint 4.14.3 15.08.3 15.12.1: Paint Program for KDE
 kde-apps/kommander 4.14.3 15.08.3: KDE dialog system for scripting
 kde-apps/kompare 4.14.3 15.08.3: Kompare is a program to view the differences between files
 kde-apps/konq-plugins 4.14.3 15.08.3: Various plugins for konqueror
@@ -11067,8 +11067,8 @@ kde-apps/kreadconfig 4.14.3 15.08.3: KDE: A command-line tool to read KConfig en
 kde-apps/kremotecontrol 4.14.3 15.08.3: KDE frontend for the Linux Infrared Remote Control system
 kde-apps/kreversi 4.14.3 15.08.3: KDE Board Game
 kde-apps/krfb 4.14.3 15.08.3: VNC-compatible server to share KDE desktops
-kde-apps/kruler 4.14.3 15.08.3: Screen ruler for Plasma
-kde-apps/ksaneplugin 4.14.3 15.08.3: SANE Plugin for KDE
+kde-apps/kruler 4.14.3 15.08.3 15.12.1: Screen ruler for Plasma
+kde-apps/ksaneplugin 4.14.3 15.08.3 15.12.1: SANE Plugin for KDE
 kde-apps/kscd 4.14.3 15.08.3: KDE CD player
 kde-apps/kshisen 4.14.3 15.08.3: A KDE game similiar to Mahjongg
 kde-apps/ksirk 4.14.3 15.08.3: KDE: Ksirk is a KDE port of the board game risk
@@ -11101,27 +11101,27 @@ kde-apps/kwordquiz 4.14.3: KDE: A powerful flashcard and vocabulary learning pro
 kde-apps/kwrite 4.14.3 15.08.3: KDE simple text editor
 kde-apps/libkcddb 4.14.3 15.08.3: KDE library for CDDB
 kde-apps/libkcompactdisc 4.14.3 15.08.3: KDE library for playing & ripping CDs
-kde-apps/libkdcraw 4.14.3 4.14.3-r1 15.08.3: KDE digital camera raw image library wrapper
+kde-apps/libkdcraw 4.14.3 4.14.3-r1 15.08.3 15.12.1: Digital camera raw image library wrapper
 kde-apps/libkdeedu 4.14.3: Common library for KDE educational apps
 kde-apps/libkdegames 4.14.3 4.14.3-r1 15.08.3-r1: Base library common to many KDE games
 kde-apps/libkdepim 4.4.2015.06: Common library for KDE PIM apps (noakonadi branch)
-kde-apps/libkexiv2 4.14.3 15.08.3: KDE Image Plugin Interface: an exiv2 library wrapper
-kde-apps/libkface 4.4.0 4.12.0 15.08.3: Qt/C++ wrapper around LibFace to perform face recognition and detection
+kde-apps/libkexiv2 4.14.3 15.08.3 15.12.1: KDE Image Plugin Interface: an exiv2 library wrapper
+kde-apps/libkface 4.4.0 4.12.0 15.08.3 15.12.1: Qt/C++ wrapper around LibFace to perform face recognition and detection
 kde-apps/libkgeomap 4.4.0 4.12.0 15.08.3: Wrapper library for world map components as marble, openstreetmap and googlemap
-kde-apps/libkipi 4.14.3 15.08.3: A library for image plugins accross KDE applications
+kde-apps/libkipi 4.14.3 15.08.3 15.12.1: A library for image plugins accross KDE applications
 kde-apps/libkleo 4.4.2015.06: KDE library for encryption handling
 kde-apps/libkmahjongg 4.14.3 15.08.3: LibKMahjongg for KDE
 kde-apps/libkomparediff2 4.14.3 15.08.3: KDE library to compare files and strings
 kde-apps/libkonq 4.14.3 15.08.3: The embeddable part of konqueror
 kde-apps/libkpgp 4.4.2015.06: KDE pgp abstraction library
-kde-apps/libksane 4.14.3 15.08.3: SANE Library interface for KDE
+kde-apps/libksane 4.14.3 15.08.3 15.12.1: SANE Library interface for KDE
 kde-apps/lokalize 4.14.3 15.08.3: KDE Applications 5 translation tool
 kde-apps/lskat 4.14.3 15.08.3: Skat game for KDE
 kde-apps/marble 4.14.3: Generic geographical map widget
 kde-apps/mplayerthumbs 4.14.3 15.08.3: A Thumbnail Generator for Video Files on KDE filemanagers
 kde-apps/nsplugins 4.14.3 15.08.3: Netscape plugins support for Konqueror
 kde-apps/okteta 4.14.3 15.08.3: KDE hexeditor
-kde-apps/okular 4.14.3 15.08.3-r1: Okular is a universal document viewer based on KPDF for KDE 4
+kde-apps/okular 4.14.3 15.08.3-r1 15.12.1: Okular is a universal document viewer based on KPDF for KDE 4
 kde-apps/pairs 4.14.3 15.04.3: KDE memory and pairs game
 kde-apps/palapeli 4.14.3 15.08.3: KDE jigsaw puzzle game
 kde-apps/parley 4.14.3: KDE Educational: vocabulary trainer
@@ -11134,11 +11134,12 @@ kde-apps/print-manager 4.14.3 15.08.3-r1: Manage print jobs and printers in Plas
 kde-apps/renamedlg-plugins 4.14.3 15.08.3: KDE RenameDlg plugins
 kde-apps/rocs 4.14.3: KDE4 interface to work with Graph Theory
 kde-apps/solid-runtime 4.14.3 15.08.3: KDE SC solid runtime modules (autoeject, automounter and others)
+kde-apps/spectacle 15.12.1: Screenshot capture utility
 kde-apps/step 4.14.3: The KDE physics simulator
 kde-apps/superkaramba 4.14.3 15.08.3: A tool to create interactive applets for the KDE desktop
-kde-apps/svgpart 4.14.3 15.08.3: Svgpart is a kpart for viewing SVGs
+kde-apps/svgpart 4.14.3 15.08.3 15.12.1: Svgpart is a kpart for viewing SVGs
 kde-apps/sweeper 4.14.3 15.08.3: KDE Privacy Settings Widget
-kde-apps/thumbnailers 4.14.3 15.08.3: KDE 4 thumbnail generators for PDF/PS files
+kde-apps/thumbnailers 4.14.3 15.08.3 15.12.1: Thumbnail generators for PDF/PS and RAW files
 kde-apps/umbrello 4.14.3 15.08.3: KDE UML Modeller
 kde-apps/zeroconf-ioslave 4.14.3 15.08.3: A DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
 kde-base/baloo 4.14.3: Next generation of the Nepomuk project

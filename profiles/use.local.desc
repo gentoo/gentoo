@@ -3346,6 +3346,7 @@ kde-apps/okular:dpi - DPI detection support for PDF rendering via x11-libs/libks
 kde-apps/okular:ebook - Add E-Book support
 kde-apps/okular:kde - Enable kactivities support
 kde-apps/okular:mobi - Add mobipocket support
+kde-apps/spectacle:kipi - Enable support for the KDE Image Plugin Interface
 kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
 kde-base/kdebase-startkde:wallpapers - Install the KDE wallpapers
 kde-base/kdelibs:opengl - Enable OpenGL support for Plasma (GLApplet)
