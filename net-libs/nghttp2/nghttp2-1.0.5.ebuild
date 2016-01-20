@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,7 @@ SLOT="0/1.14" # <C++>.<C> SONAMEs
 IUSE="cxx debug hpack-tools jemalloc static-libs test +threads utils xml"
 
 RDEPEND="
-	cxx? ( dev-libs/boost[${MULTILIB_USEDEP},threads] )
+	cxx? ( dev-libs/boost:=[${MULTILIB_USEDEP},threads] )
 	hpack-tools? ( >=dev-libs/jansson-2.5 )
 	jemalloc? ( dev-libs/jemalloc )
 	utils? (
@@ -32,7 +32,7 @@ RDEPEND="
 		>=dev-libs/openssl-1.0.2[-bindist]
 		>=sys-libs/zlib-1.2.3
 	)
-	xml? ( >=dev-libs/libxml2-2.7.7 )"
+	xml? ( >=dev-libs/libxml2-2.7.7:2 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	test? ( >=dev-util/cunit-2.1[${MULTILIB_USEDEP}] )"
