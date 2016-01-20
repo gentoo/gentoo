@@ -232,7 +232,7 @@ src_configure() {
 }
 
 src_test() {
-	virtx cmake-utils_src_test virtualmake
+	virtx cmake-utils_src_test
 }
 
 src_install() {
