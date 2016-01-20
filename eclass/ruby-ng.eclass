@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -122,7 +122,8 @@ ruby_samelib() {
 }
 
 _ruby_atoms_samelib_generic() {
-	eshopts_push -o noglob
+	local prev_shopt=$(shopt -p -o noglob)
+	set -o noglob
 	echo "RUBYTARGET? ("
 	for token in $*; do
 		case "$token" in
@@ -135,7 +136,7 @@ _ruby_atoms_samelib_generic() {
 		esac
 	done
 	echo ")"
-	eshopts_pop
+	${prev_shopt}
 }
 
 # @FUNCTION: ruby_implementation_command
