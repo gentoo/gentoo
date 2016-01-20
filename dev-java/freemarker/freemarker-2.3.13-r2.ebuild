@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ WANT_ANT_TASKS="ant-nodeps"
 
 inherit java-pkg-2 java-ant-2 eutils
 
-DESCRIPTION=" FreeMarker is a template engine; a generic tool to generate text output based on templates"
+DESCRIPTION="FreeMarker is a tool to generate text output based on templates"
 HOMEPAGE="http://freemarker.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
@@ -24,9 +24,13 @@ CDEPEND="dev-java/jython:2.7
 	java-virtuals/servlet-api:2.5
 	dev-java/jaxen:1.1
 	dev-java/juel:0"
-RDEPEND="${CDEPEND}
+
+RDEPEND="
+	${CDEPEND}
 	>=virtual/jre-1.6"
-DEPEND="${CDEPEND}
+
+DEPEND="
+	${CDEPEND}
 	>=virtual/jdk-1.6
 	dev-java/javacc:0"
 
@@ -40,7 +44,7 @@ PATCHES=(
 
 java_prepare() {
 	# Do away with bundled jar files.
-	find -name '*.jar' -exec rm -v {} + || die
+	java-pkg_clean
 
 	# Apply patches.
 	epatch ${PATCHES[@]}
@@ -73,7 +77,7 @@ src_compile() {
 }
 
 src_install() {
-	java-pkg_dojar lib/${PN}.jar
+	java-pkg_dojar "lib/${PN}.jar"
 	dodoc README.txt
 
 	use doc && java-pkg_dojavadoc build/api
