@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,6 @@ REQUIRED_USE="libcanberra? ( notification )
 	libindicate? ( notification )
 	libnotify? ( notification )
 	networkmanager? ( dbus )
-	sieve? ( gnutls )
 	smime? ( pgp )"
 
 # Plugins are all integrated or dropped since 3.9.1
@@ -78,8 +77,7 @@ COMMONDEPEND=">=sys-devel/gettext-0.12.1
 	calendar? ( >=net-misc/curl-7.9.7 )
 	pdf? ( app-text/poppler[cairo] )
 	spam-report? ( >=net-misc/curl-7.9.7 )
-	webkit? ( >=net-libs/webkit-gtk-1.0:2
-		>=net-libs/libsoup-gnome-2.26:2.4 )
+	webkit? ( >=net-libs/webkit-gtk-1.0:2 )
 "
 
 DEPEND="${PLUGINBLOCK}
@@ -101,6 +99,9 @@ RDEPEND="${COMMONDEPEND}
 	x11-misc/shared-mime-info"
 
 src_configure() {
+	# Don't use libsoup-gnome (bug #565924)
+	export HAVE_LIBSOUP_GNOME=no
+
 	local myeconfargs=(
 		$(use_enable debug crash-dialog)
 		$(use_enable valgrind valgrind)
@@ -134,7 +135,7 @@ src_configure() {
 		$(use_enable smime smime-plugin)
 		$(use_enable spam-report spam_report-plugin)
 		$(use_enable webkit fancy-plugin)
-		--enable-new-addrbook
+		--enable-alternate-addressbook
 		--enable-nls
 		--enable-acpi_notifier-plugin
 		--enable-address_keeper-plugin
@@ -146,7 +147,6 @@ src_configure() {
 		--enable-tnef_parse-plugin
 		--disable-generic-umpc
 		--disable-bsfilter-plugin
-		--disable-geolocation-plugin
 	)
 
 	# libetpan is needed if user wants nntp or imap functionality
