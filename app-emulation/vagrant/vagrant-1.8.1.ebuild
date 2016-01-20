@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI="5"
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 RUBY_FAKEGEM_GEMSPEC="vagrant.gemspec"
