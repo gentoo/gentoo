@@ -232,7 +232,7 @@ src_configure() {
 }
 
 src_test() {
-	VIRTUALX_COMMAND=cmake-utils_src_test virtualmake
+	virtx cmake-utils_src_test virtualmake
 }
 
 src_install() {
