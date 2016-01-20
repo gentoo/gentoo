@@ -9,5 +9,5 @@ RDEPEND=dev-libs/boost virtual/udev sys-apps/dbus dev-libs/glib:2 virtual/libusb
 SLOT=0
 SRC_URI=http://pingus.seul.org/~grumbel/xboxdrv/xboxdrv-linux-0.8.5.tar.bz2
 _eclass_exported_funcs=pkg_setup:linux-info src_unpack:base src_prepare:base src_configure:base src_compile:- src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	d9bd2ddd85a58e470b49ca997e255a4c	linux-info	1adecd018829b21a6c311509f0a9f904	multilib	3972ca401cf7dbb430df9995f5d8d580	scons-utils	6a35944612b7ecb18a3803359554badc	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	7332d4dd366dcd51c0014dde21f21897	linux-info	1adecd018829b21a6c311509f0a9f904	multilib	3972ca401cf7dbb430df9995f5d8d580	scons-utils	6a35944612b7ecb18a3803359554badc	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=74607c25548576345a54f0b17d5e053a

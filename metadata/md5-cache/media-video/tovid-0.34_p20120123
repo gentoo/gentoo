@@ -9,5 +9,5 @@ RDEPEND=app-cdr/cdrdao app-cdr/dvd+rw-tools dev-python/pycairo dev-tcltk/tix || 
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ssuominen/tovid-0.34_p20120123.tar.gz
 _eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:python src_prepare:distutils src_compile:distutils src_install:-
-_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	d9bd2ddd85a58e470b49ca997e255a4c	gnome2-utils	2a93a5fe31c2295077e190059f4cf88d	multilib	3972ca401cf7dbb430df9995f5d8d580	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	7332d4dd366dcd51c0014dde21f21897	gnome2-utils	2a93a5fe31c2295077e190059f4cf88d	multilib	3972ca401cf7dbb430df9995f5d8d580	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
 _md5_=b3786291643b5f9df77d5bbf26c83c9a

@@ -11,5 +11,5 @@ RESTRICT=binchecks strip
 SLOT=3.14.58
 SRC_URI=mirror://kernel/linux/kernel/v3.x/patch-3.14.58.xz mirror://kernel/linux/kernel/v3.x/linux-3.14.tar.xz
 _eclass_exported_funcs=pkg_preinst:kernel-2 pkg_postrm:kernel-2 pkg_postinst:kernel-2 pkg_setup:kernel-2 src_unpack:kernel-2 src_compile:kernel-2 src_test:kernel-2 src_install:kernel-2
-_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	kernel-2	ef694b0e1e5876dc1f8cb80992dd7cb9	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	30887c5e8630bbf27b5cf0fd74564323	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	7332d4dd366dcd51c0014dde21f21897	kernel-2	ef694b0e1e5876dc1f8cb80992dd7cb9	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	30887c5e8630bbf27b5cf0fd74564323	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=935bbb694ae5475a82e7aadf08914b06
