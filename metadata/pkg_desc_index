@@ -3733,7 +3733,7 @@ dev-java/bnd-junit 2.1.0: Junit plugin for bndlib, a swiss army knife for OSGi
 dev-java/bndlib 2.1.0: A swiss army knife for OSGi
 dev-java/boilerpipe 1.2.0: Boilerplate Removal and Fulltext Extraction from HTML pages
 dev-java/browserlauncher2 1.3-r1: BrowserLauncher2 is a library that facilitates opening a browser from a Java application
-dev-java/bsf 2.4.0-r1 2.4.0-r2: Bean Script Framework
+dev-java/bsf 2.4.0-r2: Bean Script Framework
 dev-java/bsh 2.0_beta4-r4: BeanShell: A small embeddable Java source interpreter
 dev-java/byaccj 1.15-r1: A java extension of BSD YACC-compatible parser generator
 dev-java/bytecode 20081007: Biojava bytecode manipulation library
@@ -3843,7 +3843,7 @@ dev-java/freehep-swing 2.0.3: High Energy Physics Java library - FreeHEP Swing E
 dev-java/freehep-util 2.0.2: High Energy Physics Java library - FreeHEP Utility Library
 dev-java/freehep-xdr 2.0.3: High Energy Physics Java library - FreeHEP XDR Library
 dev-java/freehep-xml 2.1.2: High Energy Physics Java library - FreeHEP XML Library
-dev-java/freemarker 2.3.13 2.3.13-r1 2.3.13-r2: FreeMarker is a template engine; a generic tool to generate text output based on templates
+dev-java/freemarker 2.3.13-r2: FreeMarker is a tool to generate text output based on templates
 dev-java/fscript 1.17-r1: Java based scripting engine designed to be embedded into other Java applications
 dev-java/gcj-jdk 4.9.3: Java wrappers around GCJ
 dev-java/gjdoc 0.7.9-r3: A javadoc compatible Java source documentation generator
