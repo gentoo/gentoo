@@ -448,6 +448,11 @@
       <name>Sergey Popov</name>
       <role>Developer</role>
     </member>
+    <member>
+      <email>soap@gentoo.org</email>
+      <name>David Seifert</name>
+      <role>Developer</role>
+    </member>
   </project>
   <project>
     <email>cvs-utils@gentoo.org</email>
