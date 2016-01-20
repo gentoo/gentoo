@@ -11,7 +11,7 @@ inherit eutils flag-o-matic multilib python-single-r1 toolchain-funcs versionato
 
 MY_PV="$(replace_all_version_separators _)"
 
-DESCRIPTION="A system for large project software construction, which is simple to use and powerful"
+DESCRIPTION="A system for large project software construction, simple to use and powerful"
 HOMEPAGE="http://www.boost.org/doc/tools/build/index.html"
 SRC_URI="mirror://sourceforge/boost/boost_${MY_PV}.tar.bz2"
 
