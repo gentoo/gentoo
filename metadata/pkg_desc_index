@@ -1324,7 +1324,7 @@ app-emulation/spice-vdagent 0.16.0: SPICE VD Linux Guest Agent
 app-emulation/spim 8.0-r1: MIPS Simulator
 app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
 app-emulation/uae 0.8.29-r2: The Umiquious Amiga Emulator
-app-emulation/vagrant 1.4.3-r2: A tool for building and distributing virtual machines using VirtualBox
+app-emulation/vagrant 1.8.1: A tool for building and distributing development environments
 app-emulation/vboxgtk 0.8.2-r1: GTK frontend for VirtualBox
 app-emulation/vice 2.4.22: The Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 1.1.0-r2 1.2.1 1.3.0-r1 1.3.2 9999: A graphical tool for administering virtual machines
@@ -8648,6 +8648,7 @@ dev-ruby/gruff 0.6.0: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 4.0.6 4.0.6-r1 4.0.7: A ruby web page templating engine
 dev-ruby/hashdiff 0.2.2 0.2.3: Simple Hash extension to make working with nested hashes easier and less error-prone
 dev-ruby/hashery 2.1.1: The Hashery is a tight collection of Hash-like classes
+dev-ruby/hashicorp-checkpoint 0.1.4: Internal HashiCorp service to check version information
 dev-ruby/hashie 2.1.2 2.1.2-r1 3.4.2 3.4.3: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/hashr 0.0.22 1.0.0 2.0.0: Simple Hash extension to make working with nested hashes easier and less error-prone
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
@@ -11152,7 +11153,7 @@ kde-base/kdebase-cursors 4.11.19 4.11.22: oxygen cursors from kdebase
 kde-base/kdebase-pam 9: pam.d files used by several KDE components
 kde-base/kdebase-startkde 4.11.19 4.11.22: Startkde script, which starts a complete KDE session, and associated scripts
 kde-base/kdebindings-meta 4.14.3: KDE bindings - merge this to pull in all kdebindings-derived packages
-kde-base/kdelibs 4.14.8 4.14.13-r1 4.14.14 4.14.15-r1: KDE libraries needed by all KDE programs
+kde-base/kdelibs 4.14.8 4.14.14 4.14.15-r1 4.14.16: KDE libraries needed by all KDE programs
 kde-base/kdeplasma-addons 4.14.3: Extra Plasma applets and engines
 kde-base/kdm 4.11.19 4.11.22: KDE login manager, similar to xdm and gdm
 kde-base/kephal 4.11.19 4.11.22: Allows handling of multihead systems via the XRandR extension
