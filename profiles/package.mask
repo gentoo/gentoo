@@ -119,10 +119,6 @@ games-fps/ut2004-fragops
 games-fps/ut2004-hamsterbash
 
 # Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
-# Cannot be downloaded either mirrored, bug #561148. Removal in a month
-games-fps/ut2004-ultraduel
-
-# Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
 # Cannot be downloaded either mirrored, bug #561150. Removal in a month
 games-rpg/sacred-gold
 
@@ -806,11 +802,6 @@ media-video/vmaid
 # Bug 507914
 app-doc/ebookmerge
 
-# Michael Sterrett <mr_bones_@gentoo.org> (21 Dec 2015)
-# Vanished from the internet. (bug #561148)
-# Masked for removal on 20160120
-games-fps/ut2004-ultraduel
-
 # Patrick Lauer <patrick@gentoo.org> (20 Dec 2015)
 # Mask TOFU release that doesn't work #567768 and friends
 =app-crypt/gkeys-gen-0.1-r1
@@ -818,12 +809,6 @@ games-fps/ut2004-ultraduel
 # Patrick Lauer <patrick@gentoo.org> (20 Dec 2015)
 # Ebuild uninstallable #557090
 =app-crypt/gkeys-0.1-r1
-
-# Michael Sterrett <mr_bones_@gentoo.org> (18 Dec 2015)
-# Unmaintained and no reason to use it or keep it around
-# when games-roguelike/rogue is a better choice.
-# Masked for removal on 20160117
-games-misc/bsd-games-non-free
 
 # Brian Evans <grknight@gentoo.org> (17 Dec 2015)
 # "The drizzle project is long dead, it should be removed,
