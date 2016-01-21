@@ -20,7 +20,7 @@ IUSE="test"
 RDEPEND="
 	dev-python/psutil[${PYTHON_USEDEP}]
 "
-DEPEND="${REDEPEND}
+DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/ipython[${PYTHON_USEDEP}] )"
 

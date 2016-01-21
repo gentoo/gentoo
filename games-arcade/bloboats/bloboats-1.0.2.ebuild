@@ -21,7 +21,7 @@ DEPEND="media-libs/libsdl[opengl,video]
 	virtual/opengl
 	virtual/glu
 	media-libs/libvorbis"
-REDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-warnings.patch

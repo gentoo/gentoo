@@ -23,7 +23,7 @@ IUSE="test"
 RDEPEND="
 	dev-python/ply[${PYTHON_USEDEP}]
 "
-DEPEND="${REDEPEND}
+DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
