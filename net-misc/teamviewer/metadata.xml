@@ -3,6 +3,10 @@
 <pkgmetadata>
 	<herd>wine</herd>
 	<maintainer>
+		<email>wschlich@gentoo.org</email>
+		<name>Wolfram Schlich</name>		
+	</maintainer>
+	<maintainer>
 		<email>np-hardass@gentoo.org</email>
 		<name>NP-Hardass</name>		
 	</maintainer>
