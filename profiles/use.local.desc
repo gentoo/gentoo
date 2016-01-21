@@ -2533,7 +2533,6 @@ dev-qt/qtgui:tuio - Build plugin to receive touch events over the TUIO protocol
 dev-qt/qtgui:xcb - Build the XCB platform plugin and enable X11 integration
 dev-qt/qthelp:compat - Build the extra compatibility layer required by a few packages, see http://blog.qt.digia.com/blog/2010/06/22/qt-assistant-compat-version-available-as-extra-source-package/
 dev-qt/qthelp:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
-dev-qt/qtmultimedia:egl - Enable EGL integration
 dev-qt/qtmultimedia:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
 dev-qt/qtmultimedia:gles2 - Enable EGL/GLES2 integration
 dev-qt/qtmultimedia:gstreamer - Enable audio support via media-libs/gstreamer:1.0
