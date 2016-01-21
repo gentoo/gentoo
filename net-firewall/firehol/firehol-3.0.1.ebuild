@@ -37,8 +37,6 @@ pkg_setup() {
 }
 
 src_configure() {
-	# removing IP6TABLES_CMD has no effect and enable build
-	# without ipv6 available
 	econf \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--disable-vnetbuild \
