@@ -4,7 +4,6 @@
   <herd>java</herd>
   <longdescription>Oracle Java SE Development Kit, Official Binary Distribution</longdescription>
   <use>
-    <flag name="awt">Install non-headless AWT libraries, needed by some GUIs (used to be X flag)</flag>
     <flag name="derby">Install bundled Derby (Java database)</flag>
     <flag name="headless-awt">Don't install the X backend for AWT, needed by some GUIs (used to be X flag)</flag>
     <flag name="javafx">Install JavaFX libraries</flag>
