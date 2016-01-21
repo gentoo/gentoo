@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -18,7 +18,6 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="test"
 
-# bundles dev-python/urllib3 snapshot
 RDEPEND="
 	app-misc/ca-certificates
 	>=dev-python/chardet-2.2.1[${PYTHON_USEDEP}]
@@ -26,6 +25,7 @@ RDEPEND="
 	>=dev-python/py-1.4.30[${PYTHON_USEDEP}]
 	dev-python/pyasn1[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.13[$(python_gen_usedep 'python*' pypy)]
+	dev-python/urllib3[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -39,13 +39,13 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.2.0-system-chardet.patch
+	"${FILESDIR}"/${P}-system-packages.patch
 	"${FILESDIR}"/${PN}-2.5.0-system-cacerts.patch
 )
 
 python_prepare_all() {
-	# use system chardet
-	rm -r requests/packages/chardet || die
+	# use system chardet & urllib3
+	rm -r requests/packages/{chardet,urllib3} || die
 
 	distutils-r1_python_prepare_all
 }

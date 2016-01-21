@@ -39,7 +39,7 @@ RDEPEND="
 # testing server: needs websocket not in portage yet
 # websocket is in pypi for the adding
 # hdf5 backend: needs array management not in portage yet
-DEPEND="${REDEPEND}
+DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]

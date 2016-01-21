@@ -28,7 +28,7 @@ RDEPEND="
 	dev-python/pandas[${PYTHON_USEDEP}]
 	sci-libs/scipy[${PYTHON_USEDEP}]
 "
-DEPEND="${REDEPEND}
+DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]

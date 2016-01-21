@@ -23,7 +23,7 @@ RDEPEND="
 	dev-python/itsdangerous[${PYTHON_USEDEP}]
 	dev-python/markupsafe[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
-DEPEND="${REDEPEND}
+DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/werkzeug[${PYTHON_USEDEP}] )"
 
