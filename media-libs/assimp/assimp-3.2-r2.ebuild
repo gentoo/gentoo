@@ -12,25 +12,36 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="+boost samples static tools"
+IUSE="+boost samples static test tools"
 SLOT="0"
 
-DEPEND="
+RDEPEND="
 	boost? ( dev-libs/boost )
 	samples? ( x11-libs/libX11 virtual/opengl media-libs/freeglut )
 	sys-libs/zlib
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-cpp/gtest )
+"
+
+src_prepare() {
+	epatch "${FILESDIR}/test-cmakelists.patch"
+}
 
 src_configure() {
 	mycmakeargs=(
 		$(cmake-utils_use_build samples ASSIMP_SAMPLES) \
 		$(cmake-utils_use_build tools ASSIMP_TOOLS) \
 		$(cmake-utils_use_build static STATIC_LIB) \
-		$(cmake-utils_use_enable !boost BOOST_WORKAROUND)
+		$(cmake-utils_use_enable !boost BOOST_WORKAROUND) \
+		$(cmake-utils_use_build test TESTS)
 		-DCMAKE_DEBUG_POSTFIX=""
 		-DASSIMP_LIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)/"
 	)
 
 	cmake-utils_src_configure
+}
+
+src_test() {
+	"${BUILD_DIR}/test/unit" || die
 }
