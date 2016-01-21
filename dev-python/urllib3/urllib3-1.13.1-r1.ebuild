@@ -1,10 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
+PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1
 
@@ -39,11 +40,32 @@ DEPEND="
 
 # Testsuite written requiring mock to be installed under all Cpythons
 
+PATCHES=( "${FILESDIR}"/${P}-unbundle.patch )
+
 python_prepare_all() {
 	# Replace bundled copy of dev-python/six
 	cat > urllib3/packages/six.py <<-EOF
 		from __future__ import absolute_import
 		from six import *
+	EOF
+
+	cat > urllib3/contrib/pyopenssl.py <<- EOF
+		from __future__ import absolute_import
+		from pyopenssl import *
+	EOF
+
+	rm -r urllib3/packages/ssl_match_hostname || die
+	cat > urllib3/packages/ssl_match_hostname.py <<- EOF
+		from __future__ import absolute_import
+		try:
+		    from backports.ssl_match_hostname import CertificateError, match_hostname
+		except ImportError:
+		    from ssl import CertificateError, match_hostname
+	EOF
+
+	cat > urllib3/packages/ordered_dict.py <<- EOF
+		from __future__ import absolute_import
+		from collections import OrderedDict
 	EOF
 
 	sed \
@@ -79,7 +101,12 @@ python_test() {
 
 	[[ "${EPYTHON}" == pypy ]] && return
 
-	nosetests -v test || die "Tests fail with ${EPYTHON}"
+	nosetests -v \
+		--exclude test_headerdict \
+		--exclude test_headers \
+		--exclude test_source_address_error \
+		--exclude test_no_ssl \
+		test || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {
