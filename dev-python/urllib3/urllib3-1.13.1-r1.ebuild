@@ -49,11 +49,6 @@ python_prepare_all() {
 		from six import *
 	EOF
 
-	cat > urllib3/contrib/pyopenssl.py <<- EOF
-		from __future__ import absolute_import
-		from pyopenssl import *
-	EOF
-
 	rm -r urllib3/packages/ssl_match_hostname || die
 	cat > urllib3/packages/ssl_match_hostname.py <<- EOF
 		from __future__ import absolute_import
