@@ -15817,7 +15817,7 @@ sci-mathematics/gretl 1.9.14 1.9.90: Regression, econometrics and time-series li
 sci-mathematics/gsl-shell 2.2.0: Lua interactive shell for sci-libs/gsl
 sci-mathematics/gwnum 277: George Woltman's GWNUM library
 sci-mathematics/isabelle 2011.1 2011.1-r2 2012-r1 2013-r2 2013.2-r1: Isabelle is a generic proof assistant
-sci-mathematics/jags 3.4.0 4.0.0: Just Another Gibbs Sampler for Bayesian MCMC simulation
+sci-mathematics/jags 3.4.0 4.0.0 4.1.0: Just Another Gibbs Sampler for Bayesian MCMC simulation
 sci-mathematics/kodkod 1.5.2: a constraint solver for relational logic
 sci-mathematics/kodkodi 1.5.2: A text front-end for the Kodkod Java library
 sci-mathematics/lpsolve 5.5.2.0: Mixed Integer Linear Programming (MILP) solver
