@@ -8477,7 +8477,7 @@ dev-ruby/actionpack-action_caching 1.1.1: Action caching for Action Pack (remove
 dev-ruby/actionpack-xml_parser 1.0.2: XML parameters parser for Action Pack (removed from core in Rails 4.0)
 dev-ruby/actionview 4.1.13 4.1.13-r1 4.1.14 4.2.4 4.2.4-r1 4.2.5: Simple, battle-tested conventions and helpers for building web pages
 dev-ruby/activejob 4.2.4 4.2.5: Job framework with pluggable queues
-dev-ruby/activeldap 3.2.2 4.0.4-r1: Ruby/ActiveLDAP provides an activerecord inspired object oriented interface to LDAP
+dev-ruby/activeldap 3.2.2 4.0.4-r1 4.0.5: ActiveLDAP provides an activerecord inspired object oriented interface to LDAP
 dev-ruby/activemodel 3.2.22 4.0.13 4.1.13 4.1.14 4.2.4 4.2.5: A toolkit for building modeling frameworks like Active Record and Active Resource
 dev-ruby/activerecord 3.2.22 4.0.13 4.1.13 4.1.14 4.2.4 4.2.5: Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
 dev-ruby/activerecord-deprecated_finders 1.0.4: This gem will be used to extract and deprecate old-style finder option hashes in Active Record
@@ -8774,7 +8774,7 @@ dev-ruby/netrc 0.10.3 0.11.0: This library reads and writes .netrc files
 dev-ruby/network_interface 0.0.1-r1: network_interface layer from metasploit pcaprub
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
 dev-ruby/nio4r 1.1.1 1.2.0: A high performance selector API for monitoring IO objects
-dev-ruby/nokogiri 1.6.4.1 1.6.6.2 1.6.6.3 1.6.6.4 1.6.7 1.6.7.1: Nokogiri is an HTML, XML, SAX, and Reader parser
+dev-ruby/nokogiri 1.6.4.1 1.6.6.2 1.6.6.4 1.6.7.1 1.6.7.2: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r1 0.2.0-r2: Calculate the differences (added or removed nodes) between two XML/HTML documents
 dev-ruby/nokogumbo 1.4.1 1.4.6 1.4.7: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
@@ -8792,7 +8792,7 @@ dev-ruby/paint 1.0.0 1.0.1: Terminal painter
 dev-ruby/parser 2.2.2.6 2.2.3.0 2.3.0.1: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.6.1 1.6.2 1.7.0 1.7.1: A small PEG based parser library
 dev-ruby/patron 0.4.18-r1 0.4.18-r2 0.4.20 0.5.0-r1: Patron is a Ruby HTTP client library based on libcurl
-dev-ruby/pcaprub 0.11.3-r2 0.12.0-r1: Libpcap bindings for ruby compat
+dev-ruby/pcaprub 0.11.3-r2 0.12.0-r1 0.12.1: Libpcap bindings for ruby compat
 dev-ruby/pdf-core 0.5.0 0.5.1 0.6.0: Implements low level PDF features for Prawn
 dev-ruby/pdf-inspector 1.1.0-r1 1.2.0 1.2.1: A tool for analyzing PDF output
 dev-ruby/pdf-reader 1.3.3: PDF parser conforming as much as possible to the PDF specification from Adobe
@@ -12079,7 +12079,7 @@ media-libs/allegro 4.4.2-r1 5.0.11: A game programming library
 media-libs/alsa-lib 1.0.27.2 1.0.28 1.0.29 1.1.0: Advanced Linux Sound Architecture Library
 media-libs/alsa-oss 1.0.25 1.0.25-r1 1.0.28: Advanced Linux Sound Architecture OSS compatibility layer
 media-libs/alure 1.2: The OpenAL Utility Toolkit
-media-libs/assimp 3.0.1270 3.1.1 3.2-r1: Importer library to import assets from 3D files
+media-libs/assimp 3.0.1270 3.1.1 3.2-r2: Importer library to import assets from 3D files
 media-libs/atlas-c++ 0.6.3: Atlas protocol, used in role playing games at worldforge
 media-libs/aubio 0.4.1 0.4.2: Library for audio labelling
 media-libs/audiofile 0.3.5 0.3.6-r1: An elegant API for accessing audio files
