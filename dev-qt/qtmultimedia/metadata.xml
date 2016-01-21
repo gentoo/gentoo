@@ -3,7 +3,6 @@
 <pkgmetadata>
 	<herd>qt</herd>
 	<use>
-		<flag name="egl">Enable EGL integration</flag>
 		<flag name="exceptions">Add support for exceptions - like catching them
 			inside the event loop (recommended by upstream)</flag>
 		<flag name="gles2">Enable EGL/GLES2 integration</flag>
