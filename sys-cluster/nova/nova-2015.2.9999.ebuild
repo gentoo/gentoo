@@ -221,6 +221,7 @@ RDEPEND="
 	net-misc/bridge-utils
 	compute? (
 		app-cdr/cdrkit
+		sys-fs/dosfstools
 		kvm? ( app-emulation/qemu )
 		xen? ( app-emulation/xen
 			   app-emulation/xen-tools )
