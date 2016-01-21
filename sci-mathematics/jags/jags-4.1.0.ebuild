@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools-utils toolchain-funcs
+inherit eutils toolchain-funcs
 
 MYP="JAGS-${PV}"
 
@@ -30,18 +30,17 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MYP}"
 
 src_configure() {
-	local myeconfargs=(
-		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)"
+	econf \
+		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)" \
 		--with-lapack="$($(tc-getPKG_CONFIG) --libs lapack)"
-	)
-	autotools-utils_src_configure
 }
 
 src_compile() {
-	autotools-utils_src_compile all $(usex doc docs "")
+	emake all $(usex doc docs "")
 }
 
 src_install() {
-	autotools-utils_src_install
-	use doc && dodoc "${BUILD_DIR}"/doc/manual/*.pdf
+	default
+	use doc && dodoc doc/manual/*.pdf
+	prune_libtool_files
 }
