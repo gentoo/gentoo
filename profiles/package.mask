@@ -30,6 +30,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Sterrett <mr_bones_@gentoo.org> (20 Jan 2016)
+# Buggy and no updates in 9 years.
+# Masked for removal on 20160219
+games-roguelike/slashem
+
+# Michael Sterrett <mr_bones_@gentoo.org> (20 Jan 2016)
+# Upstream went away.  No updates in 8 years.
+# Masked for removal on 20160219
+games-strategy/attal
+
 # Sergey Popov <pinkbyte@gentoo.org> (20 Jan 2016)
 # Mask new versions of Boost - they are known to cause breakages
 ~dev-util/boost-build-1.60.0
