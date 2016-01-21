@@ -4,7 +4,6 @@
   <herd>java</herd>
   <longdescription>Oracle Java SE Runtime Environment, Official Binary Distribution</longdescription>
   <use>
-    <flag name="awt">Install non-headless AWT libraries, needed by some GUIs (used to be X flag)</flag>
     <flag name="headless-awt">Don't install the X backend for AWT, needed by some GUIs (used to be X flag)</flag>
     <flag name="javafx">Install JavaFX libraries</flag>
     <flag name="jce">Install Java Cryptographic Extension Unlimited Strength Jurisdiction Policy Files</flag>
