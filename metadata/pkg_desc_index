@@ -6723,6 +6723,7 @@ dev-python/PyQt4 4.11.1 4.11.4: Python bindings for the Qt framework
 dev-python/PyQt5 5.5 5.5.1: Python bindings for the Qt framework
 dev-python/PyQtMobility 1.0.1: Python bindings for Nokia's QtMobility libraries
 dev-python/PyRSS2Gen 1.0.0-r1 1.1: RSS feed generator written in Python
+dev-python/PySocks 1.5.6: SOCKS client module
 dev-python/PyZilla 0.1.0-r1: Python wrapper for the BugZilla XML-RPC API
 dev-python/RecSQL 0.7.8: Simple SQL analysis of python records
 dev-python/SaltTesting 2014.8.5 2015.2.16 2015.5.8 2015.7.10: Required testing tools needed in the several Salt Stack projects
@@ -7417,7 +7418,7 @@ dev-python/piddle 1.0.15 1.0.15-r1: Cross-media, cross-platform 2D graphics pack
 dev-python/pika 0.9.14 0.10.0: Pure-Python implementation of the AMQP
 dev-python/pillow 2.8.1 2.8.2 2.9.0 3.0.0 3.0.0-r1 3.1.0: Python Imaging Library (fork)
 dev-python/pillowfight 0.2: Eases the transition from PIL to Pillow
-dev-python/pip 7.1.2 8.0.0: Installs python packages -- replacement for easy_install
+dev-python/pip 7.1.2 8.0.0-r1: Installs python packages -- replacement for easy_install
 dev-python/pivy 0.5_alpha20110303-r1 9999: Coin3d binding for Python
 dev-python/pkgconfig 1.1.0: Interface Python with pkg-config
 dev-python/pkginfo 1.2.1: Provides an API for querying the distutils metadata written in a PKG-INFO file
@@ -7816,7 +7817,7 @@ dev-python/reportlab 2.6 3.1.44-r2 3.2.0-r1: Tools for generating printable PDF 
 dev-python/repoze-lru 0.6-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.7.1: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/repoze-who 2.2: repoze.who is an identification and authentication framework for WSGI.
-dev-python/requests 2.7.0 2.8.0 2.8.1 2.9.1: HTTP library for human beings
+dev-python/requests 2.7.0 2.8.0 2.8.1 2.9.1-r1: HTTP library for human beings
 dev-python/requests-cache 0.4.9 0.4.10: Persistent cache for requests library
 dev-python/requests-mock 0.5.1 0.6.0: Mock out responses from the requests package
 dev-python/requests-oauthlib 0.4.1: This project provides first-class OAuth library support for Requests
@@ -8022,7 +8023,7 @@ dev-python/unidecode 0.04.18: Module providing ASCII transliterations of Unicode
 dev-python/unittest2 1.0.1-r1 1.1.0: The new features in unittest backported to Python 2.4+
 dev-python/uritemplate 0.6: Python implementation of RFC6570, URI Template
 dev-python/urlgrabber 3.9.1-r2 3.10.1: Python module for downloading files
-dev-python/urllib3 1.12 1.13.1: HTTP library with thread-safe connection pooling, file post, and more
+dev-python/urllib3 1.12 1.13.1-r1 1.14: HTTP library with thread-safe connection pooling, file post, and more
 dev-python/urwid 1.2.2 1.3.0 1.3.1: Curses-based user interface library for Python
 dev-python/urwidtrees 1.0.1.1: Tree widgets for urwid
 dev-python/utidylib 0.2-r2: TidyLib Python wrapper
