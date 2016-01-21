@@ -15,6 +15,7 @@
 		sophisticated technology to make the web faster, safer, and easier.
 	</longdescription>
 	<use>
+		<flag name="linguas_fake_bidi">Install fake-bidi translation</flag>
 		<flag name="plugins">Add system plugins path to launcher</flag>
 	</use>
 </pkgmetadata>
