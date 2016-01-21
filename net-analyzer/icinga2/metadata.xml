@@ -9,6 +9,7 @@
 		<flag name="classicui">Adds support for the old interface</flag>
 		<flag name="console">Adds support for line-editing in the console</flag>
 		<flag name="lto">Adds support for link time optimization</flag>
+		<flag name="mail">Allows for mailing of alerts</flag>
 		<flag name="studio">Adds support for Icinga-studio</flag>
 		<flag name="nano-syntax">Adds support for syntax used in the nano editor</flag>
 		<flag name="plugins">Adds support for nagios plugins</flag>

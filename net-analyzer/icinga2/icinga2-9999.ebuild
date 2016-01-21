@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,23 +13,29 @@ EGIT_BRANCH="master"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="+mysql postgres classicui minimal nano-syntax +plugins +vim-syntax"
+IUSE="+mysql postgres classicui console lto mail minimal nano-syntax +plugins studio +vim-syntax"
 
-DEPEND="
+CDEPEND="
 	dev-libs/openssl:0
 	>=dev-libs/boost-1.41
-	sys-devel/bison
-	>=sys-devel/flex-2.5.35
+	console? ( dev-libs/libedit )
 	mysql? ( virtual/mysql )
 	postgres? ( dev-db/postgresql:= )"
 
+DEPEND="
+	${CDEPEND}
+	sys-devel/bison
+	>=sys-devel/flex-2.5.35"
+
 RDEPEND="
-	${DEPEND}
+	${CDEPEND}
 	plugins? ( || (
 		net-analyzer/monitoring-plugins
 		net-analyzer/nagios-plugins
 	) )
-	classicui? ( net-analyzer/icinga[web] )"
+	mail? ( virtual/mailx )
+	classicui? ( net-analyzer/icinga[web] )
+	studio? ( x11-libs/wxGTK:2.9 )"
 
 REQUIRED_USE="!minimal? ( || ( mysql postgres ) )"
 
@@ -44,6 +50,7 @@ pkg_setup() {
 }
 
 src_configure() {
+	sed -i 's/FLAGS\}\ \-g/FLAGS\}\ \-lpthread\ /g' CMakeLists.txt || die
 	local mycmakeargs=(
 		-DICINGA2_UNITY_BUILD=FALSE
 		-DCMAKE_VERBOSE_MAKEFILE=ON
@@ -70,6 +77,27 @@ src_configure() {
 			-DICINGA2_WITH_MYSQL=$(usex mysql ON OFF)
 		)
 	fi
+	# LTO
+	if use lto; then
+		mycmakeargs+=(
+			-DICINGA2_LTO_BUILD=ON
+		)
+	else
+		mycmakeargs+=(
+			-DICINGA2_LTO_BUILD=OFF
+		)
+	fi
+	# STUDIO
+	if use studio; then
+		mycmakeargs+=(
+			-DICINGA2_WITH_STUDIO=ON
+		)
+	else
+		mycmakeargs+=(
+			-DICINGA2_WITH_STUDIO=OFF
+		)
+	fi
+
 	cmake-utils_src_configure
 }
 
@@ -108,6 +136,7 @@ src_install() {
 	fowners icinga:icinga /etc/icinga2
 	fowners icinga:icinga /var/lib/icinga2
 	fowners icinga:icinga /var/spool/icinga2
+	fowners icinga:icingacmd /var/lib/icinga2/api
 	fowners icinga:icinga /var/spool/icinga2/perfdata
 	fowners icinga:icingacmd /var/log/icinga2
 

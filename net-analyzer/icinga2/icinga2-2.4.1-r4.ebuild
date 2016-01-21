@@ -12,7 +12,7 @@ SRC_URI="https://github.com/Icinga/icinga2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+mysql postgres classicui console lto minimal nano-syntax +plugins studio +vim-syntax"
+IUSE="+mysql postgres classicui console lto mail minimal nano-syntax +plugins studio +vim-syntax"
 
 CDEPEND="
 	dev-libs/openssl:0
@@ -32,6 +32,7 @@ RDEPEND="
 		net-analyzer/monitoring-plugins
 		net-analyzer/nagios-plugins
 	) )
+	mail? ( virtual/mailx )
 	classicui? ( net-analyzer/icinga[web] )
 	studio? ( x11-libs/wxGTK:2.9 )"
 
