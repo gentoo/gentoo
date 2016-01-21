@@ -15,11 +15,11 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 SLOT="0"
 LICENSE="Apache-2.0"
 KEYWORDS="~amd64"
-IUSE="test"
+IUSE=""
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+	dev-python/nose[${PYTHON_USEDEP}]"
 
 python_test() {
 	nosetests || die
