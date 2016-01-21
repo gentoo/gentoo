@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit toolchain-funcs games
+inherit eutils toolchain-funcs games
 
 DESCRIPTION="ASCII space invaders clone"
 HOMEPAGE="http://ninvaders.sourceforge.net/"
@@ -15,7 +15,11 @@ KEYWORDS="amd64 ~ppc x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND="sys-libs/ncurses:0"
-RDEPEND="${DEPEND}"
+RDEPEND=${DEPEND}
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-compile.patch
+}
 
 src_compile() {
 	emake \
