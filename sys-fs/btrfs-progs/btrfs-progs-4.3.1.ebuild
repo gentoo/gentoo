@@ -89,6 +89,9 @@ src_install() {
 		$(usex static-libs '' 'libs_static=')
 		$(usex static install-static '')
 	)
+
+	# Bug 572512
+	dodir /sbin
 	emake V=1 DESTDIR="${D}" install "${makeargs[@]}"
 	newbashcomp btrfs-completion btrfs
 }
