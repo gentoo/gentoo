@@ -42,7 +42,7 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.2-disable-version-check.patch
-	"${FILESDIR}"/${PN}-7.1.2-unbundle.patch
+	"${FILESDIR}"/${P}-unbundle.patch
 	)
 
 python_prepare_all() {
