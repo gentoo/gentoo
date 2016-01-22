@@ -1,29 +1,33 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-KEYWORDS="~amd64"
-RESTRICT="strip"
-DESCRIPTION="FUSE bindings for Go"
+inherit eutils
+
 GO_PN=github.com/hanwen/${PN}
-HOMEPAGE="https://${GO_PN}"
 EGIT_COMMIT="ffed29ec8b88f61c1b8954134cc48ef03bb26ce1"
+
+HOMEPAGE="https://${GO_PN}"
+DESCRIPTION="FUSE bindings for Go"
 SRC_URI="https://${GO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-LICENSE="BSD"
+
 SLOT="0"
+LICENSE="BSD"
 KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND=">=dev-lang/go-1.3"
 RDEPEND=""
 
+RESTRICT="strip"
+
 src_unpack() {
 	default_src_unpack
 	mkdir -p "${S}/src/${GO_PN%/*}" || die
 	mv ${PN}-${EGIT_COMMIT} "${S}/src/${GO_PN}" || die
-	find "${S}" -name .gitignore -delete || die
+	egit_clean
 }
 
 call_go() {
