@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -34,7 +34,7 @@ S="${WORKDIR}"/${MY_P}
 SITEFILE=50${PN}-gentoo.el
 
 src_prepare() {
-	cd "${WORKDIR}"
+	cd "${WORKDIR}" || die
 	EPATCH_FORCE=yes
 	EPATCH_SUFFIX=patch
 	epatch "${WORKDIR}"/${PV}
@@ -43,7 +43,7 @@ src_prepare() {
 		"${S}"/scripts/Mmake.vars.in \
 		|| die "sed libdir failed"
 
-	cd "${S}"
+	cd "${S}" || die
 	eautoconf
 }
 
@@ -116,7 +116,7 @@ src_test() {
 		TWS="${S}"
 	fi
 
-	cd "${S}"/tests
+	cd "${S}"/tests || die
 	sed -e "s:@WORKSPACE@:${TWS}:" < WS_FLAGS.ws > WS_FLAGS \
 		|| die "sed WORKSPACE failed"
 
@@ -182,8 +182,7 @@ src_install() {
 			doins -r samples/java_interface || die
 		fi
 
-		rm -rf $(find "${D}"/usr/share/doc/${PF}/samples \
-				-name CVS -o -name .cvsignore)
+		ecvs_clean "${D}"/usr/share/doc/${PF}/samples
 	fi
 }
 
