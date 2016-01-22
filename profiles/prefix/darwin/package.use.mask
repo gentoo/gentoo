@@ -6,6 +6,7 @@
 # Fabian Groffen <grobian@gentoo.org> (18 Jan 2016)
 # GNU attr isn't supported
 dev-libs/glib xattr
+app-arch/tar xattr
 
 # Fabian Groffen <grobian@gentoo.org> (10 Jan 2016)
 # libutempter isn't ported for Darwin, bug #506494
