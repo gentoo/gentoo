@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		Provides a simple interface for writing concurrent programs that
+		need to output a lot of status messages to the console, or display
+		multiple progress bars for different activities at the same time,
+		or concurrently run external commands that output to the console.
+		
+		Built on top of that is a way of defining multiple output regions,
+		which are automatically laid out on the screen and can be individually
+		updated. Can be used for progress displays etc.
+		
+		&lt;&lt;https://joeyh.name/code/concurrent-output/demo2.gif&gt;&gt;
+	</longdescription>
+</pkgmetadata>
