@@ -7,16 +7,16 @@
     defined by RFC4880.
   </longdescription>
   <use>
-    <flag name='smartcard' restrict='&lt;app-crypt/gnupg-2.0.17-r1'>
+    <flag name='smartcard'>
       Bring in <pkg>dev-libs/libusb</pkg> as a dependency; enable
       scdaemon.
     </flag>
-    <flag name='smartcard' restrict='&gt;=app-crypt/gnupg-2.0.17-r1'>
+    <flag name='smartcard'>
       Build scdaemon software. Enables usage of OpenPGP cards. For
       other type of smartcards, try
       <pkg>app-crypt/gnupg-pkcs11-scd</pkg>.
     </flag>
-    <flag name='usb' restrict='&gt;=app-crypt/gnupg-2.0.17-r1'>
+    <flag name='usb'>
       Build direct CCID access for scdaemon; requires
       <pkg>dev-libs/libusb</pkg>.
     </flag>
