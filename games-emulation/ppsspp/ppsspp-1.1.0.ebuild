@@ -42,7 +42,7 @@ DEPEND="
 		dev-qt/qtcore:5
 		dev-qt/qtopengl:5
 		dev-qt/qtmultimedia:5
-		dev-qt/qtwidgets
+		dev-qt/qtwidgets:5
 		dev-qt/qt-mobility[multimedia]
 	)
 "
