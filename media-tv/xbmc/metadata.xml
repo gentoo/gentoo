@@ -2,6 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>xbox</herd>
+<herd>video</herd>
 <use>
  <flag name='airplay'>enable AirPlay support</flag>
  <flag name='bluray'>Enable playback of Blu-ray filesystems</flag>
