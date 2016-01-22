@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,17 +6,22 @@ EAPI=5
 
 inherit git-r3 golang-base systemd user
 
-KEYWORDS=""
+GO_PN="github.com/hashicorp/consul"
+
 DESCRIPTION="A tool for service discovery, monitoring and configuration"
 HOMEPAGE="http://www.consul.io"
-GO_PN="github.com/hashicorp/consul"
+SRC_URI=""
 EGIT_REPO_URI="git://${GO_PN}.git"
-LICENSE="MPL-2.0"
+
 SLOT="0"
+LICENSE="MPL-2.0"
+KEYWORDS=""
 IUSE="test web"
+
 RESTRICT="test"
 
-DEPEND=">=dev-lang/go-1.4:=
+DEPEND="
+	>=dev-lang/go-1.4:=
 	dev-go/go-crypto:=
 	test? ( dev-go/go-tools )
 	web? (
@@ -24,10 +29,11 @@ DEPEND=">=dev-lang/go-1.4:=
 		dev-ruby/uglifier
 	)"
 RDEPEND=""
-SRC_URI=""
 
 STRIP_MASK="*.a"
+
 S="${WORKDIR}/src/${GO_PN}"
+
 EGIT_CHECKOUT_DIR="${S}"
 
 pkg_setup() {
@@ -80,7 +86,7 @@ src_install() {
 	local x
 
 	dobin bin/*
-	rm -rf bin
+	rm -rf bin || die
 
 	keepdir /etc/consul.d
 	insinto /etc/consul.d
@@ -100,8 +106,10 @@ src_install() {
 	newconfd "${FILESDIR}/consul.confd" "${PN}"
 	systemd_dounit "${FILESDIR}/consul.service"
 
-	find "${WORKDIR}"/{pkg,src} -name '.git*' -exec rm -rf {} \; 2>/dev/null
-	find "${WORKDIR}"/src/${GO_PN} -mindepth 1 -maxdepth 1 -type f -delete
+	egit_clean "${WORKDIR}"/{pkg,src}
+
+	find "${WORKDIR}"/src/${GO_PN} -mindepth 1 -maxdepth 1 -type f -delete || die
+
 	while read -r -d '' x; do
 		x=${x#${WORKDIR}/src}
 		[[ -d ${WORKDIR}/pkg/${KERNEL}_${ARCH}/${x} ||
