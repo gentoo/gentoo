@@ -30,7 +30,7 @@ RDEPEND=">=dev-libs/girara-0.2.5:3=
 	>=x11-libs/gtk+-3.6:3
 	magic? ( sys-apps/file:= )
 	sqlite? ( dev-db/sqlite:3= )
-	synctex? ( app-text/texlive-core )"
+	synctex? ( >=app-text/texlive-core-2015 )"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
