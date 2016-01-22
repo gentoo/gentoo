@@ -34,7 +34,7 @@ VENDOR_DEPEND="
 "
 RDEPEND="${VENDOR_DEPEND}
 	>=dev-python/setuptools-19.2[${PYTHON_USEDEP}]
-	!~dev-python/setuptools-19.4
+	<dev-python/setuptools-19.4[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 
