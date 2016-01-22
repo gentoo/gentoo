@@ -6,6 +6,8 @@
 # Fabian Groffen <grobian@gentoo.org> (16 Jan 2016)
 # GNU attr isn't supported
 dev-libs/glib xattr
+app-arch/tar xattr
+sys-devel/patch xattr
 
 # Fabian Groffen <grobian@gentoo.org> (26 May 2015)
 # Avoid pulling in broken and unnecessary ossp-uuid, bug #324527
