@@ -17,6 +17,7 @@ KEYWORDS="~amd64"
 RDEPEND="net-firewall/iptables
 	sys-apps/iproute2[-minimal]
 	net-misc/iprange
+	net-analyzer/traceroute
 	virtual/modutils
 	app-arch/gzip"
 DEPEND="${RDEPEND}"
