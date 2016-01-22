@@ -11381,7 +11381,7 @@ kde-misc/wacomtablet 2.1.0: KControl module for Wacom tablets
 kde-misc/wicd-client-kde 0.3.1-r1: Wicd client built on the KDE Development Platform
 kde-misc/yakuake 2.9.9-r3: A quake-style terminal emulator based on KDE konsole technology
 kde-misc/yawp 0.4.5: Yet Another Weather Plasmoid
-kde-misc/zanshin 0.2.1-r1 0.2.2 0.3.0: Todo management application for KDE
+kde-misc/zanshin 0.2.1-r1 0.2.2 0.3.0 0.3.1: Todo management application for KDE
 kde-plasma/bluedevil 5.4.3 5.5.2 5.5.3: Bluetooth stack for KDE
 kde-plasma/breeze 5.4.3 5.5.2 5.5.3: Breeze visual style for the Plasma desktop
 kde-plasma/breeze-gtk 5.5.2 5.5.3: Official GTK+ port of KDE's Breeze widget style
