@@ -3,9 +3,8 @@
 # $Id$
 
 EAPI=5
-WX_GTK_VER="3.0"
 
-inherit eutils flag-o-matic wxwidgets user
+inherit eutils wxwidgets user
 
 MY_P=${PN/m/M}-${PV}
 S="${WORKDIR}"/${MY_P}
@@ -19,19 +18,17 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="daemon debug geoip nls remote stats unicode upnp +X"
 
-RDEPEND="
-	>=dev-libs/crypto++-5
+DEPEND=">=dev-libs/crypto++-5
+	sys-libs/binutils-libs:0=
 	>=sys-libs/zlib-1.2.1
-	stats? ( >=media-libs/gd-2.0.26[jpeg] )
+	>=x11-libs/wxGTK-2.8.12:2.8[X?]
+	stats? ( >=media-libs/gd-2.0.26:=[jpeg] )
 	geoip? ( dev-libs/geoip )
 	upnp? ( >=net-libs/libupnp-1.6.6 )
 	remote? ( >=media-libs/libpng-1.2.0:0=
-	unicode? ( >=media-libs/gd-2.0.26 ) )
-	X? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )
-	!X? ( x11-libs/wxGTK:${WX_GTK_VER} )
-	!net-p2p/imule
-"
-DEPEND="${RDEPEND}"
+	unicode? ( >=media-libs/gd-2.0.26:= ) )
+	!net-p2p/imule"
+RDEPEND="${DEPEND}"
 
 pkg_setup() {
 	if use stats && ! use X; then
@@ -52,14 +49,12 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.2.6-fallocate.diff
 	# Bug 412371
 	epatch "${FILESDIR}"/${PN}-2.3.1-gcc47.patch
-
-	# https://bugs.gentoo.org/show_bug.cgi?id=465084
-	epatch "${FILESDIR}"/${PN}-2.3.1-wx3.0.patch
-	epatch "${FILESDIR}"/${PN}-2.3.1-build.patch
 }
 
 src_configure() {
 	local myconf
+
+	WX_GTK_VER="2.8"
 
 	if use X; then
 		einfo "wxGTK with X support will be used"
@@ -84,10 +79,10 @@ src_configure() {
 	fi
 
 	econf \
-		--with-wx-config=${WX_CONFIG} \
+		--with-denoise-level=0 \
+		--with-wx-config="${WX_CONFIG}" \
 		--enable-amulecmd \
 		$(use_enable debug) \
-		$(use_enable !debug optimize) \
 		$(use_enable daemon amule-daemon) \
 		$(use_enable geoip) \
 		$(use_enable nls) \
@@ -99,7 +94,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 
 	if use daemon; then
 		newconfd "${FILESDIR}"/amuled.confd amuled
