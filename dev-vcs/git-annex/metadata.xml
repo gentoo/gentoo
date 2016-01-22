@@ -22,6 +22,8 @@
 		<flag name="androidsplice">Get TH splices for Android.</flag>
 		<flag name="asciiprogress">Use ascii-progress library (experimental)</flag>
 		<flag name="cryptohash">Enable use of cryptohash for checksumming</flag>
+		<flag name="concurrentoutput">Use concurrent-output library (experimental)</flag>
+		<flag name="cryptonite">Use the cryptonite library, instead of the older cryptohash</flag>
 		<flag name="database">Enable building with <pkg>dev-haskell/persistent</pkg> for database use</flag>
 		<flag name="desktopnotify">Enable desktop environment notifications</flag>
 		<flag name="desktop-notify">Enable desktop environment notifications</flag>
