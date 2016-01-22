@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-<email>jer@gentoo.org</email>
-<name>Jeroen Roovers</name>
-</maintainer>
-<maintainer>
-<email>wired@gentoo.org</email>
-<name>Alex Alexander</name>
-</maintainer>
-<use>
-<flag name='256-color'>Enable 256 color support</flag>
-<flag name='alt-font-width'>Calculate the font width using a different method</flag>
-<flag name='blink'>Enable blinking text</flag>
-<flag name='buffer-on-clear'>Store visible output to history buffer when clearing the screen with ctrl-l.
+	<maintainer>
+		<email>jer@gentoo.org</email>
+		<name>Jeroen Roovers</name>
+	</maintainer>
+	<maintainer>
+		<email>wired@gentoo.org</email>
+		<name>Alex Alexander</name>
+	</maintainer>
+	<use>
+		<flag name="256-color">Enable 256 color support</flag>
+		<flag name="alt-font-width">Calculate the font width using a different method</flag>
+		<flag name="blink">Enable blinking text</flag>
+		<flag name="buffer-on-clear">Store visible output to history buffer when clearing the screen with ctrl-l.
 	Read https://bbs.archlinux.org/viewtopic.php?id=129302</flag>
-<flag name='fading-colors'>Enable colors fading when off focus</flag>
-<flag name='focused-urgency'>Enable the urgent flag when a terminal window is focused</flag>
-<flag name='font-styles'>Enable support for bold and italic fonts</flag>
-<flag name='iso14755'>Enable ISO-14755 support</flag>
-<flag name='mousewheel'>Enable scrolling via mouse wheel or buttons 4 and 5</flag>
-<flag name='perl'>Enable perl script support. You can still disable this at runtime with -pe ""</flag>
-<flag name='pixbuf'>Enable transparency support using gtk's pixbuf</flag>
-<flag name='secondary-wheel'>Support for wheel scrolling on secondary screens (like mutt).
+		<flag name="fading-colors">Enable colors fading when off focus</flag>
+		<flag name="focused-urgency">Enable the urgent flag when a terminal window is focused</flag>
+		<flag name="font-styles">Enable support for bold and italic fonts</flag>
+		<flag name="iso14755">Enable ISO-14755 support</flag>
+		<flag name="mousewheel">Enable scrolling via mouse wheel or buttons 4 and 5</flag>
+		<flag name="perl">Enable perl script support. You can still disable this at runtime with -pe ""</flag>
+		<flag name="pixbuf">Enable transparency support using gtk's pixbuf</flag>
+		<flag name="secondary-wheel">Support for wheel scrolling on secondary screens (like mutt).
 	Read http://lists.schmorp.de/pipermail/rxvt-unicode/2011q4/001491.html</flag>
-<flag name='unicode3'>Use 21 instead of 16 bits to represent unicode characters</flag>
-<flag name='wcwidth'>Enable wide char width support</flag>
-</use>
-<upstream>
-<remote-id type="cpe">cpe:/a:rxvt-unicode:rxvt-unicode</remote-id>
-</upstream>
+		<flag name="unicode3">Use 21 instead of 16 bits to represent unicode characters</flag>
+		<flag name="wcwidth">Enable wide char width support</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:rxvt-unicode:rxvt-unicode</remote-id>
+	</upstream>
 </pkgmetadata>
