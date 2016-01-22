@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<herd>proxy-maintainers</herd>
 	<maintainer>
-		<email>andrew.r.wilcox+gentoo@gmail.com</email>
+		<email>awilfox.gentoo@foxkit.us</email>
 		<name>Andrew Wilcox></name>
 		<description>Proxy (user) maintainer, bugs to be assigned to him</description>
 	</maintainer>
