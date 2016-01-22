@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,8 +30,8 @@ python_install_all() {
 }
 
 python_install() {
-	distutils-r1_python_install
-
 	# main namespace provided by dev-python/backports
-	rm "${ED}$(python_get_sitedir)"/backports/__init__.py* || die
+	rm "${BUILD_DIR}"/lib/backports/__init__.py || die
+	rm -f backports/__init__.py || die
+	distutils-r1_python_install
 }
