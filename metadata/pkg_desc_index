@@ -1204,7 +1204,7 @@ app-emacs/prom-wl 2.7.0-r1: Procmail reader for Wanderlust
 app-emacs/proofgeneral 4.2: A generic interface for proof assistants
 app-emacs/protbuf 1.7-r1: Protect Emacs buffers from accidental killing
 app-emacs/psgml 1.4.0: A GNU Emacs Major Mode for editing SGML and XML coded documents
-app-emacs/pymacs 0.23-r1 0.25-r1: A tool that allows both-side communication beetween Python and Emacs Lisp
+app-emacs/pymacs 0.23-r1 0.25-r1 0.25-r2: A tool that allows both-side communication beetween Python and Emacs Lisp
 app-emacs/python-mode 5.2.0 6.0.12 6.1.1 6.1.2 6.2.0: An Emacs major mode for editing Python source
 app-emacs/quack 0.47: Enhances Emacs support for Scheme
 app-emacs/quilt-el 0.48.0: Quilt mode for Emacs
@@ -7809,7 +7809,7 @@ dev-python/reconfigure 0.1.50 0.1.72: An ORM for config files
 dev-python/redis-py 2.7.4 2.9.1 2.10.1 2.10.3 2.10.5: Python client for Redis key-value store
 dev-python/rednose 0.4.1 0.4.3: coloured output for nosetests
 dev-python/regendoc 0.5 0.6.1: Check/update simple file/shell examples in documentation
-dev-python/regex 2015.07.12 2015.07.19: Alternative regular expression module to replace re
+dev-python/regex 2015.07.12 2015.07.19 2016.01.10: Alternative regular expression module to replace re
 dev-python/remoteobjects 99999999: subclassable Python objects for working with JSON REST APIs
 dev-python/rencode 1.0.3 1.0.3-r1: similar to bencode from the BitTorrent project
 dev-python/reno 1.2.0: A release notes manager for storing release notes in a git repository and building documentation
