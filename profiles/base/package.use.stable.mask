@@ -14,6 +14,7 @@
 # Mike Gilbert <floppym@gentoo.org> (02 Dec 2015)
 # Needs unstable ffmpeg.
 =www-client/chromium-47* system-ffmpeg
+=www-client/chromium-48* system-ffmpeg
 
 # Mike Gilbert <floppym@gentoo.org> (03 Oct 2015)
 # Unmask python3.5 for python-exec
