@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>kernel-misc</herd>
+  <herd>base-system</herd>
   <use>
     <flag name="lzma">Enables support for LZMA compressed kernel images</flag>
     <flag name="booke">Include support for Book-E memory management</flag>
