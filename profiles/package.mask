@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (22 Jan 2016)
+# Masked for testing of new build system.
+>=app-eselect/eselect-php-0.9.0
+
 # Alexis Ballier <aballier@gentoo.org> (22 Jan 2016)
 # Breaks some of its revdeps
 # https://bugs.gentoo.org/show_bug.cgi?id=572552
