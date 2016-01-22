@@ -31,6 +31,7 @@ case "${EAPI:-0}" in
 		# from needing to export another pkg_preinst phase to save has_version
 		# result. Also relies on EAPI >=4 default src_install phase.
 		EXPORT_FUNCTIONS src_install pkg_postinst
+		eqawarn "This eclass is DEPRECATED. Please use readme.gentoo-r1 instead."
 		;;
 	6)
 		die "Unsupported EAPI=${EAPI} for ${ECLASS}"
