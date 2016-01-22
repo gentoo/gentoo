@@ -14,8 +14,7 @@ HOMEPAGE="https://pip.pypa.io/ https://pypi.python.org/pypi/pip/ https://github.
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
-# unkeyworded til pip fixes the glaring bug
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 
 # Check pip/_vendor/vendor.txt for this
@@ -24,7 +23,7 @@ VENDOR_DEPEND="
 	>=dev-python/html5lib-0.9999999[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9[${PYTHON_USEDEP}]
 	>=dev-python/colorama-0.3.6[${PYTHON_USEDEP}]
-	>=dev-python/requests-2.9.1[${PYTHON_USEDEP}]
+	>=dev-python/requests-2.9.1-r1[${PYTHON_USEDEP}]
 	>=dev-python/CacheControl-0.11.5[${PYTHON_USEDEP}]
 	>=dev-python/lockfile-0.12.2[${PYTHON_USEDEP}]
 	>=dev-python/progress-1.2[${PYTHON_USEDEP}]
@@ -34,7 +33,8 @@ VENDOR_DEPEND="
 	virtual/python-ipaddress[${PYTHON_USEDEP}]
 "
 RDEPEND="${VENDOR_DEPEND}
-	>=dev-python/setuptools-19.4[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-19.2[${PYTHON_USEDEP}]
+	!~dev-python/setuptools-19.4
 "
 DEPEND="${RDEPEND}"
 
@@ -43,7 +43,7 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.2-disable-version-check.patch
-	"${FILESDIR}"/${P}-unbundle.patch
+	"${FILESDIR}"/${PN}-8.0.0-unbundle.patch
 	)
 
 python_prepare_all() {
