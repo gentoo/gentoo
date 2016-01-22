@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,8 @@ RMARKDOWN_VER=0.2.49
 
 DESCRIPTION="IDE for the R language"
 HOMEPAGE="http://www.rstudio.org"
-SRC_URI="https://github.com/rstudio/rstudio/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="
+	https://github.com/rstudio/rstudio/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://s3.amazonaws.com/rstudio-buildtools/gin-${GINVER}.zip
 	https://s3.amazonaws.com/rstudio-buildtools/gwt-${GWTVER}.zip
 	https://s3.amazonaws.com/rstudio-buildtools/selenium-java-${SELENIUMVER}.zip
@@ -94,9 +95,10 @@ src_unpack() {
 src_prepare() {
 	java-pkg-2_src_prepare
 
-	find . -name .gitignore -delete || die
+	egit_clean
 
-	epatch "${FILESDIR}"/${PN}-0.98.490-prefs.patch \
+	epatch \
+		"${FILESDIR}"/${PN}-0.98.490-prefs.patch \
 		"${FILESDIR}"/${P}-paths.patch \
 		"${FILESDIR}"/${P}-pandoc.patch \
 		"${FILESDIR}"/${PN}-0.98.490-linker_flags.patch
