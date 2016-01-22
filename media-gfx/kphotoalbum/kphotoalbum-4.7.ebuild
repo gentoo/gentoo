@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,7 @@ COMMON_DEPEND="
 	media-libs/phonon[qt4]
 	virtual/jpeg:0
 	exif? ( >=media-gfx/exiv2-0.17:= )
-	face? ( >=kde-apps/libkface-4.7.0 )
+	face? ( >=kde-apps/libkface-4.7.0:4 )
 	geolocation? ( $(add_kdeapps_dep marble) )
 	kipi? ( $(add_kdeapps_dep libkipi '' 4.9.58) )
 	map? ( >=kde-apps/libkgeomap-4.7.0:4 )
@@ -40,7 +40,6 @@ RDEPEND="${COMMON_DEPEND}
 	kipi? ( >=media-plugins/kipi-plugins-4.7.0 )
 "
 
-PATCHES=( "${FILESDIR}/${P}-bump-min-cmake.patch" )
 DOCS=( ChangeLog README )
 
 src_configure() {
