@@ -15,7 +15,8 @@ IUSE="doc ipv6"
 KEYWORDS="~amd64"
 
 RDEPEND="net-firewall/iptables
-	sys-apps/iproute2[-minimal]
+	sys-apps/iproute2[-minimal,ipv6?]
+	net-misc/iputils[ipv6?]
 	net-misc/iprange
 	net-analyzer/traceroute
 	virtual/modutils
