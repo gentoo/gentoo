@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-qt4.patch"
 	"${FILESDIR}/${P}-glibc216.patch"
 	"${FILESDIR}/${P}-duplicatetarget.patch"
+	"${FILESDIR}/${P}-qtbindir.patch"
 )
 
 src_install() {
