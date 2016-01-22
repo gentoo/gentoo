@@ -6317,6 +6317,7 @@ net-nds/ldapvi:gnutls - Use net-libs/gnutls instead of dev-libs/openssl
 net-nds/nsscache:nsscache - Depend on sys-auth/libnss-cache to handle flat files
 net-nds/nsscache:nssdb - Depend on sys-libs/libnss_db to handle dbm files.
 net-nds/openldap:experimental - Enable experimental backend options
+net-nds/openldap:kinit - Enable support for kerberos init
 net-nds/openldap:minimal - Build libraries & userspace tools only. Does not install any server code.
 net-nds/openldap:odbc - Enable ODBC and SQL backend options
 net-nds/openldap:overlays - Enable contributed OpenLDAP overlays
