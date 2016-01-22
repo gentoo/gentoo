@@ -1,0 +1,11 @@
+--- aliens.c.orig	2016-01-21 13:21:51.730154342 -0500
++++ aliens.c	2016-01-21 13:22:09.488543075 -0500
+@@ -163,7 +163,7 @@
+ 	aliens.right=-1;
+ 	aliens.bottom=-1;
+ 	shipnum=0;
+-	for (k=0;k<11;k++) {
++	for (k=0;k<ALIENS_MAX_NUMBER_X;k++) {
+ 		lowest_ship[k]=-1;
+ 	}
+ 	

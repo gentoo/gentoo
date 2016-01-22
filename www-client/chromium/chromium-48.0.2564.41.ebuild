@@ -48,7 +48,7 @@ RDEPEND="
 	media-libs/libexif:=
 	media-libs/speex:=
 	pulseaudio? ( media-sound/pulseaudio:= )
-	system-ffmpeg? ( >=media-video/ffmpeg-2.7.2:=[opus,vorbis,vpx] )
+	system-ffmpeg? ( >=media-video/ffmpeg-2.7.2:= )
 	sys-apps/dbus:=
 	sys-apps/pciutils:=
 	>=sys-libs/libcap-2.22:=

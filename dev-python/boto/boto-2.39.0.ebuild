@@ -17,6 +17,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc test"
 
+REQUIRED_USE="doc? ( || ( $(python_gen_useflags 'python2*') ) )"
+
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )
@@ -24,6 +26,10 @@ DEPEND="
 
 # requires Amazon Web Services keys to pass some tests
 RESTRICT="test"
+
+pkg_setup() {
+	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python2*' )
+}
 
 python_test() {
 	"${PYTHON}" tests/test.py -v || die "Tests fail with ${EPYTHON}"

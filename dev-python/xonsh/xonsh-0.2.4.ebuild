@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,11 +28,6 @@ DEPEND="${RDEPEND}
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 	)"
-
-_PATCHES=(
-	"${FILESDIR}"/${P}-kernel-backport.patch
-	"${FILESDIR}"/${P}-${PN}.bat-backport.patch
-)
 
 python_prepare_all() {
 	sed \
