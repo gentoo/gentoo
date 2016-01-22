@@ -39,6 +39,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-ghc-7.10.patch
+	epatch "${FILESDIR}"/${P}-QC-2.8.2.patch
 }
 
 src_configure() {
