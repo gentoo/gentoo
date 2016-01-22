@@ -5,6 +5,7 @@
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
 	</maintainer>
+	<herd>base-system</herd>
 	<longdescription>The mingetty program is a lightweight, minimalist getty program for
 use only on virtual consoles.  Mingetty is not suitable for serial
 lines (you should use the mgetty program in that case).</longdescription>
