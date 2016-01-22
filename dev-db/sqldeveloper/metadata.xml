@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proxy-maintainers</herd>
 <maintainer>
-	<email>jan.bednar@gmail.com</email>
-	<name>Ján Bednár</name>
+	<email>wschlich@gentoo.org</email>
+	<name>Wolfram Schlich</name>
 	<description>Maintainer</description>
 </maintainer>
 </pkgmetadata>
