@@ -12,6 +12,7 @@
 	</maintainer>
 	<use>
 		<flag name="atahpt">Highpoint (HPT) ATA/RAID controller support</flag>
+		<flag name="atapromise">Support for Promise PDC2026x (FastTrak/Ultra)</flag>
 		<flag name="atavia">Support for VIA VT6421A SATA controllers</flag>
 		<flag name="bitbang_spi">Bitbanging SPI infrastructure</flag>
 		<flag name="buspirate_spi">Enable Bus Pirate SPI programmer</flag>
