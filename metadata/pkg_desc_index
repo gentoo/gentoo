@@ -8019,7 +8019,7 @@ dev-python/tzlocal 1.1.2 1.2: tzinfo object for the local timezone
 dev-python/uhashring 0.4: Full featured consistent hashing python library compatible with ketama
 dev-python/ujson 1.33: Ultra fast JSON encoder and decoder for Python
 dev-python/unicodecsv 0.13.0 0.14.1: Drop-in replacement for python stdlib csv module supporting unicode
-dev-python/unidecode 0.04.18: Module providing ASCII transliterations of Unicode text
+dev-python/unidecode 0.04.18 0.04.19: Module providing ASCII transliterations of Unicode text
 dev-python/unittest2 1.0.1-r1 1.1.0: The new features in unittest backported to Python 2.4+
 dev-python/uritemplate 0.6: Python implementation of RFC6570, URI Template
 dev-python/urlgrabber 3.9.1-r2 3.10.1: Python module for downloading files
@@ -8037,7 +8037,7 @@ dev-python/verboselogs 1.0.1 1.0.2: Verbose logging for Python's logging module
 dev-python/versioneer 0.15: Easy VCS-based management of project version strings
 dev-python/versiontools 1.9.1-r1: Smart replacement for plain tuple used in __version__
 dev-python/vertex 0.3.0-r1 0.3.1 0.3.1-r1: An implementation of the Q2Q protocol
-dev-python/virtualenv 13.1.2 13.1.2-r1 14.0.0: Virtual Python Environment builder
+dev-python/virtualenv 13.1.2 13.1.2-r1 14.0.1: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.2.4-r2 0.2.5 0.2.6: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.3.1 4.3.2 4.5.1 4.6.0: virtualenvwrapper is a set of extensions to Ian Bicking's virtualenv tool
 dev-python/visual 5.74 5.74-r1: Real-time 3D graphics library for Python
@@ -8087,7 +8087,7 @@ dev-python/xlutils 1.5.2-r1: provides a collection of utilities for working with
 dev-python/xlwt 0.7.5 1.0.0: Python library to create spreadsheet files compatible with Excel
 dev-python/xmltodict 0.9.1 0.9.2: Makes working with XML feel like you are working with JSON
 dev-python/xmpppy 0.5.0_rc1-r2: Python library providing easy scripting with Jabber
-dev-python/xonsh 0.2.3 0.2.4: An exotic, usable shell
+dev-python/xonsh 0.2.3 0.2.4 0.2.5: An exotic, usable shell
 dev-python/xvfbwrapper 0.2.2 0.2.4: Python wrapper for running a display inside X virtual framebuffer
 dev-python/yappi 0.93: Yet Another Python Profiler
 dev-python/yapps 2.2.0 2.2.0-r1: An easy to use parser generator
