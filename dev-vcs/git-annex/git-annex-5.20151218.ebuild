@@ -106,6 +106,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	# does not respect staging dir
 	epatch "${FILESDIR}"/${PN}-5.20150731-no-strange-installs.patch
+	epatch "${FILESDIR}"/${PN}-6.20160114-QC-2.8.2.patch
 }
 
 src_configure() {

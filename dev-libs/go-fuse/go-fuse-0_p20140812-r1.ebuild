@@ -1,21 +1,28 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-KEYWORDS="~amd64"
-RESTRICT="strip"
-DESCRIPTION="FUSE bindings for Go"
+inherit eutils
+
 GO_PN=github.com/hanwen/${PN}
-HOMEPAGE="https://${GO_PN}"
 EGIT_COMMIT="8c85ded140ac1889372a0e22d8d21e3d10a303bd"
+
+HOMEPAGE="https://${GO_PN}"
+DESCRIPTION="FUSE bindings for Go"
 SRC_URI="https://${GO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-LICENSE="BSD"
+
 SLOT="0"
+LICENSE="BSD"
+KEYWORDS="~amd64"
 IUSE=""
+
 DEPEND=">=dev-lang/go-1.3"
 RDEPEND=""
+
+RESTRICT="strip"
+
 S=${WORKDIR}
 
 src_unpack() {
@@ -47,6 +54,6 @@ src_install() {
 	doins -r pkg
 	insinto /usr/lib/go/src
 	rm src/${GO_PN}/all.bash.patched || die
-	find src/${GO_PN} -name .gitignore -delete
+	egit_clean src/${GO_PN}
 	doins -r src/*
 }

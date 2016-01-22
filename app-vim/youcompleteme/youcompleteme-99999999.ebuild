@@ -1,10 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
-inherit multilib python-single-r1 cmake-utils vim-plugin
+
+inherit eutils multilib python-single-r1 cmake-utils vim-plugin
 
 if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="git://github.com/Valloric/YouCompleteMe.git"
@@ -78,16 +80,16 @@ src_configure() {
 }
 
 src_test() {
-	cd "${S}/third_party/ycmd/cpp/ycm/tests"
+	cd "${S}/third_party/ycmd/cpp/ycm/tests" || die
 	LD_LIBRARY_PATH="${EROOT}"/usr/$(get_libdir)/llvm \
 		./ycm_core_tests || die
 
-	cd "${S}"/python/ycm
+	cd "${S}"/python/ycm || die
 
 	local dirs=( "${S}"/third_party/*/ "${S}"/third_party/ycmd/third_party/*/ )
 	local -x PYTHONPATH=${PYTHONPATH}:$(IFS=:; echo "${dirs[*]}")
 
-	nosetests || die
+	nosetests --verbose || die
 }
 
 src_install() {
@@ -95,7 +97,7 @@ src_install() {
 	rm -r *.md *.sh COPYING.txt third_party/ycmd/cpp || die
 	rm -r third_party/ycmd/{*.md,*.sh} || die
 	find python -name *test* -exec rm -rf {} + || die
-	find "${S}" -name '.git*' -exec rm -rf {} + || die
+	egit_clean
 	rm third_party/ycmd/libclang.so || die
 
 	vim-plugin_src_install

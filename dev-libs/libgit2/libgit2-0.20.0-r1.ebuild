@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -58,7 +58,7 @@ src_install() {
 	cmake-utils_src_install
 
 	if use examples ; then
-		find examples -name .gitignore -delete || die
+		egit_clean examples
 		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}/examples
 	fi

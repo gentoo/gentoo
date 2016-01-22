@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -36,7 +36,7 @@ TESTDIR="${WORKDIR}"/${PN}-tests-${PV}
 SITEFILE=50${PN}-gentoo.el
 
 src_prepare() {
-	cd "${WORKDIR}"
+	cd "${WORKDIR}" || die
 	EPATCH_FORCE=yes
 	EPATCH_SUFFIX=patch
 	epatch "${WORKDIR}"/${PV}
@@ -49,7 +49,7 @@ src_prepare() {
 		epatch "${WORKDIR}"/${PV}-tests
 	fi
 
-	cd "${S}"
+	cd "${S}" || die
 	eautoconf
 }
 
@@ -132,7 +132,7 @@ src_test() {
 		TWS="${S}"
 	fi
 
-	cd "${TESTDIR}"
+	cd "${TESTDIR}" || die
 	sed -i -e "s:@WORKSPACE@:${TWS}:" WS_FLAGS.ws \
 		|| die "sed WORKSPACE failed"
 
@@ -202,8 +202,7 @@ src_install() {
 			doins -r samples/java_interface || die
 		fi
 
-		rm -rf $(find "${D}"/usr/share/doc/${PF}/samples \
-				-name CVS -o -name .cvsignore)
+		ecvs_clean "${D}"/usr/share/doc/${PF}/samples
 	fi
 }
 

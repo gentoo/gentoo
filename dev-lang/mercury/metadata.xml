@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-  <email>keri@gentoo.org</email>
-  <name>Keri Harris</name>
-</maintainer>
-<use>
-  <flag name='erlang'>Support Mercury Erlang grade</flag>
-</use>
+  <maintainer>
+    <email>keri@gentoo.org</email>
+    <name>Keri Harris</name>
+  </maintainer>
+  <use>
+    <flag name="erlang">Support Mercury Erlang grade</flag>
+  </use>
 </pkgmetadata>
