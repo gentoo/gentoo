@@ -8,7 +8,6 @@
 	</maintainer>
 	<use>
 		<flag name="gromacs">Add support for gromacs file formats through <pkg>sci-chemistry/gromacs</pkg></flag>
-		<flag name="system-boost">Use system boost (<pkg>dev-libs/boost</pkg>) instead of bundled one</flag>
 		<flag name="extras">Pull in extra applications from <pkg>sci-chemistry/votca-csg-apps</pkg></flag>
 	</use>
 	<upstream>
