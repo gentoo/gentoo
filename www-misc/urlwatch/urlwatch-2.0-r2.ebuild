@@ -15,11 +15,9 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-# https://github.com/thp/urlwatch/issues/34
-RESTRICT="test"
 
 RDEPEND="
-	virtual/python-futures[${PYTHON_USEDEP}]
+	dev-python/keyring[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/minidb[${PYTHON_USEDEP}]
 	|| ( www-client/lynx app-text/html2text )
@@ -33,5 +31,6 @@ DEPEND="
 "
 
 python_test() {
+	# https://github.com/thp/urlwatch/issues/34
 	nosetests test || die "tests failed with ${EPYTHON}"
 }
