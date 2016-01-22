@@ -63,6 +63,10 @@ multilib_src_configure() {
 			# add the libdir for libtool, otherwise it'll make love with system
 			# installed libiconv
 			append-ldflags "-L${EPREFIX}/usr/$(get_libdir)"
+			# the glib objects reference symbols from these frameworks,
+			# not good, esp. since Carbon should be deprecated
+			[[ ${CHOST} == *-darwin* ]] && \
+				append-ldflags -framework CoreFoundation -framework Carbon
 		fi
 	else
 		if ! has_version dev-util/pkgconfig; then

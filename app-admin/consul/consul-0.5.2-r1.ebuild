@@ -129,6 +129,7 @@ src_install() {
 	keepdir /etc/consul.d
 	insinto /etc/consul.d
 	doins "${FILESDIR}/"*.json.example
+	rm "${ED}etc/consul.d/ui.json.example" || die
 
 	for x in /var/{lib,log}/${PN}; do
 		keepdir "${x}"

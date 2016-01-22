@@ -7,6 +7,7 @@
 # GNU attr isn't supported
 dev-libs/glib xattr
 app-arch/tar xattr
+sys-devel/patch xattr
 
 # Fabian Groffen <grobian@gentoo.org> (10 Jan 2016)
 # libutempter isn't ported for Darwin, bug #506494

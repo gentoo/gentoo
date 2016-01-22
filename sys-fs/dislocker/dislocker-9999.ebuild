@@ -34,7 +34,7 @@ src_prepare() {
 #    sed 's:Werror:Wno-error:g' -i "${S}/src/CMakeLists.txt" || die
 	sed 's:-D_FORTIFY_SOURCE=2::g' -i "${S}/src/CMakeLists.txt" || die
 
-	sed 's:../man:../../'${P}'/man:g' -i "${S}/src/CMakeLists.txt" || die
+	sed 's:\.\./man:'../../${P}/man':g' -i "${S}/src/CMakeLists.txt" || die
 }
 
 src_install() {
