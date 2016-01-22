@@ -74,10 +74,12 @@ src_prepare() {
 		-e "s|/usr/include|${EPREFIX%/}/usr/include|g" \
 		deps/Makefile || die
 
-	local lblas="$($(tc-getPKG_CONFIG) --libs blas)"
-	lblas=${lblas%% *}
-	local llapack="$($(tc-getPKG_CONFIG) --libs lapack)"
-	llapack=${llapack%% *}
+	local libblas="$($(tc-getPKG_CONFIG) --libs-only-l blas)"
+	libblas="${libblas%% *}"
+	libblas="lib${libblas#-l}"
+	local liblapack="$($(tc-getPKG_CONFIG) --libs-only-l lapack)"
+	liblapack="${liblapack%% *}"
+	liblapack="lib${liblapack#-l}"
 
 	sed -i \
 		-e "s|\(JULIA_EXECUTABLE = \)\(\$(JULIAHOME)/julia\)|\1 LD_LIBRARY_PATH=\$(BUILD)/$(get_libdir) \2|" \
@@ -87,10 +89,10 @@ src_prepare() {
 		-e "s|/usr/include|${EPREFIX}/usr/include|" \
 		-e "s|\$(BUILD)/lib|\$(BUILD)/$(get_libdir)|" \
 		-e "s|^JULIA_COMMIT = .*|JULIA_COMMIT = v${PV}|" \
-		-e "s|-lblas|${lblas}|" \
-		-e "s|= libblas|= lib${lblas#-l}|" \
-		-e "s|-llapack|${llapack}|" \
-		-e "s|= liblapack|= lib${llapack#-l}|" \
+		-e "s|-lblas|$($(tc-getPKG_CONFIG) --libs blas)|" \
+		-e "s|= libblas|= ${libblas}|" \
+		-e "s|-llapack|$($(tc-getPKG_CONFIG) --libs lapack)|" \
+		-e "s|= liblapack|= ${liblapack}|" \
 		Make.inc || die
 
 	sed -i \
