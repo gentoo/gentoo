@@ -2815,7 +2815,9 @@ dev-vcs/git-annex:android - Building for Android
 dev-vcs/git-annex:androidsplice - Get TH splices for Android.
 dev-vcs/git-annex:asciiprogress - Use ascii-progress library (experimental)
 dev-vcs/git-annex:assistant - Enable git-annex assistant and watch command
+dev-vcs/git-annex:concurrentoutput - Use concurrent-output library (experimental)
 dev-vcs/git-annex:cryptohash - Enable use of cryptohash for checksumming
+dev-vcs/git-annex:cryptonite - Use the cryptonite library, instead of the older cryptohash
 dev-vcs/git-annex:database - Enable building with dev-haskell/persistent for database use
 dev-vcs/git-annex:desktop-notify - Enable desktop environment notifications
 dev-vcs/git-annex:desktopnotify - Enable desktop environment notifications
