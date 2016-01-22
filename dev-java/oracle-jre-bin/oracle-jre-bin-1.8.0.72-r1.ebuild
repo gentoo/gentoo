@@ -57,6 +57,7 @@ RDEPEND="!x64-macos? (
 			x11-libs/libXext
 			x11-libs/libXi
 			x11-libs/libXrender
+			x11-libs/libXtst
 		)
 		javafx? (
 			dev-libs/glib:2
