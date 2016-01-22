@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -33,6 +33,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.5.11-gentoo.patch"
 	"${FILESDIR}/${P}-qt4.patch"
 	"${FILESDIR}/${P}-glibc216.patch"
+	"${FILESDIR}/${P}-duplicatetarget.patch"
+	"${FILESDIR}/${P}-qtbindir.patch"
 )
 
 src_install() {
