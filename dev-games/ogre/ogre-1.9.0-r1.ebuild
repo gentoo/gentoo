@@ -4,7 +4,7 @@
 
 EAPI=5
 CMAKE_REMOVE_MODULES="yes"
-CMAKE_REMOVE_MODULES_LIST="FindFreetype"
+CMAKE_REMOVE_MODULES_LIST="FindFreetype FindDoxygen FindZLIB"
 
 inherit eutils cmake-utils vcs-snapshot
 
@@ -21,6 +21,7 @@ KEYWORDS="amd64 ~arm x86"
 IUSE="+boost cg doc double-precision examples +freeimage gl3plus gles2 gles3 ois +opengl poco profile tbb threads tools +zip"
 
 REQUIRED_USE="threads? ( ^^ ( boost poco tbb ) )
+	examples? ( ois )
 	poco? ( threads )
 	tbb? ( threads )
 	?? ( gl3plus ( || ( gles2 gles3 ) ) )
@@ -71,7 +72,8 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}/${P}-remove_resource_path_to_bindir.patch" \
 		"${FILESDIR}/${P}-remove_media_path_to_bindir.patch" \
-		"${FILESDIR}/${P}-gcc52.patch"
+		"${FILESDIR}/${P}-gcc52.patch" \
+		"${FILESDIR}/${P}-samples.patch"
 }
 
 src_configure() {
@@ -81,7 +83,6 @@ src_configure() {
 		$(cmake-utils_use cg OGRE_BUILD_PLUGIN_CG)
 		$(cmake-utils_use doc OGRE_INSTALL_DOCS)
 		$(cmake-utils_use double-precision OGRE_CONFIG_DOUBLE)
-		$(cmake-utils_use examples OGRE_INSTALL_SAMPLES)
 		$(cmake-utils_use freeimage OGRE_CONFIG_ENABLE_FREEIMAGE)
 		$(cmake-utils_use opengl OGRE_BUILD_RENDERSYSTEM_GL)
 		$(cmake-utils_use gl3plus OGRE_BUILD_RENDERSYSTEM_GL3PLUS)
@@ -90,9 +91,10 @@ src_configure() {
 		$(cmake-utils_use gles3 OGRE_CONFIG_ENABLE_GLES3_SUPPORT)
 		$(cmake-utils_use profile OGRE_PROFILING)
 		$(cmake-utils_use examples OGRE_BUILD_SAMPLES)
+		$(cmake-utils_use examples OGRE_INSTALL_SAMPLES)
 		$(cmake-utils_use examples OGRE_INSTALL_SAMPLES_SOURCE)
 		-DOGRE_BUILD_TESTS=FALSE
-		$(usex threads "-DOGRE_CONFIG_THREADS=2" "-DOGRE_CONFIG_THREADS=0")
+		-DOGRE_CONFIG_THREADS=$(usex threads 2 0)
 		$(cmake-utils_use tools OGRE_BUILD_TOOLS)
 		$(cmake-utils_use zip OGRE_CONFIG_ENABLE_ZIP)
 	)
