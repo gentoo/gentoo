@@ -7,6 +7,7 @@
     </maintainer>
 	<use> 
 		<flag name='experimental'>Enable experimental backend options</flag>
+		<flag name='kinit'>Enable support for kerberos init</flag>
 		<flag name='odbc'>Enable ODBC and SQL backend options</flag>
 		<flag name='overlays'>Enable contributed OpenLDAP overlays</flag>
 		<flag name='smbkrb5passwd'>Enable overlay for syncing ldap, unix and
