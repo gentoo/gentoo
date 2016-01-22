@@ -9527,7 +9527,7 @@ dev-util/molecule-core 1.0.2: Sabayon distro-agnostic images build tool
 dev-util/molecule-plugins 1.0.2: A set fo base plugins for Molecule
 dev-util/monkeystudio 1.9.0.4: A cross platform Qt 4 IDE
 dev-util/mono-debugger 2.10: Debugger for .NET managed and unmanaged applications
-dev-util/monodevelop 3.0.2-r1 5.9.5.9: Integrated Development Environment for .NET
+dev-util/monodevelop 3.0.2-r1 5.9.5.9 5.9.5.9-r1: Integrated Development Environment for .NET
 dev-util/monodevelop-database 3.0.2: Database Browser Extension for MonoDevelop
 dev-util/monodevelop-debugger-gdb 3.0.2: GDB Extension for MonoDevelop
 dev-util/mpatch 0.8-r1: Patch-like tool for applying diffs which can resolve common causes of patch rejects
@@ -11577,7 +11577,7 @@ mail-mta/msmtp 1.6.1 1.6.2 1.6.3: An SMTP client and SMTP plugin for mail user a
 mail-mta/netqmail 1.06 1.06-r1 1.06-r2 1.06-r3 1.06-r4: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 5.7.3_p1 5.7.3_p1-r1: Lightweight but featured SMTP daemon from OpenBSD
-mail-mta/postfix 2.10.9 2.11.7 3.0.2 3.0.2-r1 3.0.2-r2 3.0.3 3.0.3-r1 3.1_pre20160104: A fast and secure drop-in replacement for sendmail
+mail-mta/postfix 2.10.9 2.11.7 3.0.2 3.0.2-r1 3.0.2-r2 3.0.3 3.0.3-r1 3.1_pre20160117: A fast and secure drop-in replacement for sendmail
 mail-mta/qmail-ldap 1.03-r8: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.14.9 8.14.9-r1: Widely-used Mail Transport Agent (MTA)
