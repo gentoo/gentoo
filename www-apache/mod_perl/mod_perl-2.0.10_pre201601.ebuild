@@ -13,7 +13,7 @@ SRC_URI="http://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="1"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug"
 
 # Make sure we always use the latest Apache-Test version or even check the
