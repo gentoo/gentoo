@@ -48,7 +48,7 @@ RDEPEND="
 	media-libs/libexif:=
 	media-libs/speex:=
 	pulseaudio? ( media-sound/pulseaudio:= )
-	system-ffmpeg? ( >=media-video/ffmpeg-2.7.2:=[opus,vorbis,vpx] )
+	system-ffmpeg? ( >=media-video/ffmpeg-2.7.2:= )
 	sys-apps/dbus:=
 	sys-apps/pciutils:=
 	>=sys-libs/libcap-2.22:=
@@ -247,6 +247,8 @@ src_prepare() {
 		'third_party/analytics' \
 		'third_party/angle' \
 		'third_party/angle/src/third_party/compiler' \
+		'third_party/angle/src/third_party/murmurhash' \
+		'third_party/angle/src/third_party/trace_event' \
 		'third_party/boringssl' \
 		'third_party/brotli' \
 		'third_party/cacheinvalidation' \
