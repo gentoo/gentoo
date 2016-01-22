@@ -10,5 +10,5 @@ RDEPEND=dev-lang/perl virtual/perl-Time-Local sys-libs/cracklib
 SLOT=0
 SRC_URI=mirror://gentoo/skey-1.1.5.tar.bz2 https://dev.gentoo.org/~ulm/distfiles/skey-1.1.5-patches-5.tar.xz
 _eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
-_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	readme.gentoo-r1	5aa4a25954645ec5a58dde64a5d65a60	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=f62e32cc84c78545757154d82f01ab39
