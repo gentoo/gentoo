@@ -3500,7 +3500,7 @@ dev-haskell/punycode 2.0: Encode unicode strings to ascii forms according to RFC
 dev-haskell/puremd5 2.1.2.1: A Haskell-only implementation of the MD5 digest (hash) algorithm
 dev-haskell/pwstore-fast 2.3 2.4.1 2.4.4: Secure password storage
 dev-haskell/quickcheck 1.2.0.1 1.2.0.1-r1 2.6 2.7.6 2.8.1 2.8.2: Automatic testing of Haskell programs
-dev-haskell/quickcheck-instances 0.3.8 0.3.9 0.3.11: Common quickcheck instances
+dev-haskell/quickcheck-instances 0.3.8 0.3.9 0.3.11 0.3.12: Common quickcheck instances
 dev-haskell/quickcheck-io 0.1.0 0.1.1-r1 0.1.2: Use HUnit assertions as QuickCheck properties
 dev-haskell/quickcheck-unicode 1.0.0.0 1.0.0.1: Generator and shrink functions for testing Unicode-related software
 dev-haskell/random 1.0.1.1 1.0.1.1-r1 1.1: random number library
@@ -16545,7 +16545,7 @@ sys-block/disktype 9: Detect the content format of a disk or disk image
 sys-block/eject 2.1.5-r2: A command to eject a disc from the CD-ROM drive
 sys-block/eject-bsd 1.5: eject command for FreeBSD systems
 sys-block/endpoint 0.1.0: Endpoint turns a Linux machine with one or more firewire cards into an SBP-2 device
-sys-block/fio 1.17.2 1.99.10 2.0.14-r1 2.0.15 2.1.9 2.2.4-r1 2.2.9 2.2.10: Jens Axboe's Flexible IO tester
+sys-block/fio 1.17.2 1.99.10 2.0.14-r1 2.0.15 2.1.9 2.2.4-r1 2.2.9 2.2.10 2.2.13 2.5: Jens Axboe's Flexible IO tester
 sys-block/fwdl 1.2.3: Seagate Fibre-Channel disk firmware upgrade tool
 sys-block/gpart 0.1h-r1 0.1h-r2: Partition table rescue/guessing tool
 sys-block/gparted 0.23.0 0.24.0: Gnome Partition Editor

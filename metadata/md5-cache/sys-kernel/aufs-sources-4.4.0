@@ -12,5 +12,5 @@ RESTRICT=binchecks strip
 SLOT=4.4.0
 SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.4.tar.xz https://dev.gentoo.org/~jlec/distfiles/aufs-sources-4.4_p20160118.tar.xz !vanilla? ( mirror://gentoo/genpatches-4.4-1.base.tar.xz mirror://gentoo/genpatches-4.4-1.extras.tar.xz experimental? ( mirror://gentoo/genpatches-4.4-1.experimental.tar.xz ) )
 _eclass_exported_funcs=pkg_preinst:kernel-2 pkg_postrm:- pkg_postinst:- pkg_setup:kernel-2 src_unpack:- src_prepare:- src_compile:kernel-2 src_test:kernel-2 src_install:-
-_eclasses_=eutils	7332d4dd366dcd51c0014dde21f21897	kernel-2	ef694b0e1e5876dc1f8cb80992dd7cb9	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	30887c5e8630bbf27b5cf0fd74564323	readme.gentoo	0d364fc37b94797c4a65e38e67d8aa41	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	8982475656ba7ade9b3201397efbd612	kernel-2	ef694b0e1e5876dc1f8cb80992dd7cb9	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	30887c5e8630bbf27b5cf0fd74564323	readme.gentoo	0d364fc37b94797c4a65e38e67d8aa41	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=f730e2e04637ec938853ca38bdd09dd3
