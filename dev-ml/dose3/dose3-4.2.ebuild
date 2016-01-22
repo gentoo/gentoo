@@ -19,7 +19,7 @@ IUSE="+ocamlopt +parmap zip bzip2 xml curl rpm4 test"
 RDEPEND="
 	>=dev-lang/ocaml-3.12:=[ocamlopt?]
 	dev-ml/cudf:=
-	dev-ml/extlib:=
+	>=dev-ml/extlib-1.7.0:=
 	dev-ml/ocaml-re:=
 	dev-ml/cppo:=
 	parmap? ( dev-ml/parmap:= )
