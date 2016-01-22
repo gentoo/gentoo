@@ -21,13 +21,14 @@ SLOT="0"
 # The defaults match the upstream Makefile.
 # Note: Do not list bitbang_spi as it is not a programmer; it's a backend used
 # by some other spi programmers.
-IUSE_PROGRAMMERS="atahpt +atavia +buspirate_spi dediprog +drkaiser +dummy
+IUSE_PROGRAMMERS="atahpt +atapromise +atavia +buspirate_spi dediprog +drkaiser +dummy
 +ft2232_spi +gfxnvidia +internal +it8212 +linux_spi mstarddc_spi +nic3com
 +nicintel +nicintel_eeprom +nicintel_spi nicnatsemi +nicrealtek +ogp_spi
 +pickit2_spi +pony_spi +rayer_spi +satamv +satasii +serprog +usbblaster_spi"
 IUSE="${IUSE_PROGRAMMERS} +internal_dmi static tools +wiki"
 
 LIB_DEPEND="atahpt? ( sys-apps/pciutils[static-libs(+)] )
+	atapromise? ( sys-apps/pciutils[static-libs(+)] )
 	atavia? ( sys-apps/pciutils[static-libs(+)] )
 	dediprog? ( virtual/libusb:0[static-libs(+)] )
 	drkaiser? ( sys-apps/pciutils[static-libs(+)] )
