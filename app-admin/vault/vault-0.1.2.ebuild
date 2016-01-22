@@ -1,27 +1,31 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit fcaps golang-build systemd user
+inherit eutils fcaps golang-build systemd user
 
-KEYWORDS="~amd64"
+GO_PN="github.com/hashicorp/${PN}"
 DESCRIPTION="A tool for managing secrets"
 HOMEPAGE="https://vaultproject.io/"
-GO_PN="github.com/hashicorp/${PN}"
+SRC_URI="
+	https://${GO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/mitchellh/gox/archive/v0.3.0.tar.gz -> gox-0.3.0.tar.gz
+	https://github.com/mitchellh/iochan/archive/b584a329b193e206025682ae6c10cdbe03b0cd77.tar.gz -> iochan-b584a329b193e206025682ae6c10cdbe03b0cd77.tar.gz"
+
 LICENSE="MPL-2.0"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE=""
+
 RESTRICT="test"
 
 DEPEND="dev-go/go-oauth2"
 RDEPEND=""
 
-SRC_URI="https://${GO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-https://github.com/mitchellh/gox/archive/v0.3.0.tar.gz -> gox-0.3.0.tar.gz
-https://github.com/mitchellh/iochan/archive/b584a329b193e206025682ae6c10cdbe03b0cd77.tar.gz -> iochan-b584a329b193e206025682ae6c10cdbe03b0cd77.tar.gz"
 STRIP_MASK="*.a"
+
 S="${WORKDIR}/src/${GO_PN}"
 
 FILECAPS=(
@@ -85,8 +89,11 @@ src_install() {
 	fowners ${PN}:${PN} /var/log/${PN}
 
 	dobin bin/${PN}
-	find "${WORKDIR}"/{pkg,src} -name '.git*' -exec rm -rf {} \; 2>/dev/null
-	find "${WORKDIR}"/src/${GO_PN} -mindepth 1 -maxdepth 1 -type f -delete
+
+	egit_clean "${WORKDIR}"/{pkg,src}
+
+	find "${WORKDIR}"/src/${GO_PN} -mindepth 1 -maxdepth 1 -type f -delete || die
+
 	while read -r -d '' x; do
 		x=${x#${WORKDIR}/src}
 		[[ -d ${WORKDIR}/pkg/${KERNEL}_${ARCH}/${x} ||

@@ -1,27 +1,32 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit fcaps git-r3 golang-build systemd user
+inherit eutils fcaps git-r3 golang-build systemd user
 
-KEYWORDS=""
+GO_PN="github.com/hashicorp/${PN}"
+
 DESCRIPTION="A tool for managing secrets"
 HOMEPAGE="https://vaultproject.io/"
-GO_PN="github.com/hashicorp/${PN}"
+SRC_URI=""
 EGIT_REPO_URI="git://${GO_PN}.git"
-LICENSE="MPL-2.0"
+
 SLOT="0"
+LICENSE="MPL-2.0"
+KEYWORDS=""
 IUSE=""
+
 RESTRICT="test"
 
 DEPEND="dev-go/go-oauth2:="
 RDEPEND=""
 
-SRC_URI=""
 STRIP_MASK="*.a"
+
 S="${WORKDIR}/src/${GO_PN}"
+
 EGIT_CHECKOUT_DIR="${S}"
 
 FILECAPS=(
@@ -81,8 +86,11 @@ src_install() {
 	fowners ${PN}:${PN} /var/log/${PN}
 
 	dobin bin/${PN}
-	find "${WORKDIR}"/{pkg,src} -name '.git*' -exec rm -rf {} \; 2>/dev/null
-	find "${WORKDIR}"/src/${GO_PN} -mindepth 1 -maxdepth 1 -type f -delete
+
+	egit_clean "${WORKDIR}"/{pkg,src}
+
+	find "${WORKDIR}"/src/${GO_PN} -mindepth 1 -maxdepth 1 -type f -delete || die
+
 	while read -r -d '' x; do
 		x=${x#${WORKDIR}/src}
 		[[ -d ${WORKDIR}/pkg/${KERNEL}_${ARCH}/${x} ||
