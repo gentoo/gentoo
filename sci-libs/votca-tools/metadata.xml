@@ -6,9 +6,6 @@
 		<email>ottxor@gentoo.org</email>
 		<name>Christoph Junghans</name>
 	</maintainer>
-	<use>
-		<flag name="system-boost">Use system boost (<pkg>dev-libs/boost</pkg>) instead of bundled one</flag>
-	</use>
 	<upstream>
 		<remote-id type="google-code">votca</remote-id>
 		<remote-id type="github">votca/tools</remote-id>
