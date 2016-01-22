@@ -31,10 +31,10 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 # We either need to change Werror to Wno-error or remove the multiple declarations of FORTIFY_SOURCE
-#    sed 's:Werror:Wno-error:g' -i ${S}/src/CMakeLists.txt || die
-	sed 's:-D_FORTIFY_SOURCE=2::g' -i '${S}/src/CMakeLists.txt' || die
+#    sed 's:Werror:Wno-error:g' -i "${S}/src/CMakeLists.txt" || die
+	sed 's:-D_FORTIFY_SOURCE=2::g' -i "${S}/src/CMakeLists.txt" || die
 
-	sed 's:../man:../../'${P}'/man:g' -i '${S}/src/CMakeLists.txt' || die
+	sed 's:../man:../../'${P}'/man:g' -i "${S}/src/CMakeLists.txt" || die
 }
 
 src_install() {
