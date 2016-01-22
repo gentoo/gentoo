@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# @ECLASS: readme.gentoo.eclass
+# @ECLASS: readme.gentoo-r1.eclass
 # @MAINTAINER:
 # Pacho Ramos <pacho@gentoo.org>
 # @AUTHOR:
