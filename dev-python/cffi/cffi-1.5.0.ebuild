@@ -23,6 +23,7 @@ RDEPEND="
 	virtual/libffi
 	dev-python/pycparser[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (	dev-python/pytest[${PYTHON_USEDEP}] )"
 
 # Avoid race on _configtest.c (distutils/command/config.py:_gen_temp_sourcefile)
