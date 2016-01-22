@@ -14,7 +14,8 @@ HOMEPAGE="https://pip.pypa.io/ https://pypi.python.org/pypi/pip/ https://github.
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+# unkeyworded til pip fixes the glaring bug
+KEYWORDS=""
 SLOT="0"
 
 # Check pip/_vendor/vendor.txt for this
