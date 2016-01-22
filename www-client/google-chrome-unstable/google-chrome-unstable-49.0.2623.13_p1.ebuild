@@ -36,7 +36,7 @@ KEYWORDS="-* ~amd64 ~x86"
 IUSE="+plugins"
 RESTRICT="bindist mirror strip"
 
-DEPEND="app-admin/chrpath"
+DEPEND=""
 RDEPEND="
 	app-arch/bzip2
 	app-misc/ca-certificates
@@ -126,9 +126,6 @@ src_install() {
 	for size in 16 22 24 32 48 64 128 256 ; do
 		newicon -s ${size} "${CHROME_HOME}/product_logo_${size}.png" ${PN}.png
 	done
-
-	# Work around RPATH=$ORIGIN QA check
-	chrpath -d "${CHROME_HOME}/chrome-sandbox" || die
 
 	insinto /
 	doins -r opt usr
