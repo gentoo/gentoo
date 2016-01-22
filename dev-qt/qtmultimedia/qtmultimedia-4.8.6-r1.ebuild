@@ -9,7 +9,7 @@ inherit qt4-build-multilib
 DESCRIPTION="The Multimedia module for the Qt toolkit"
 
 if [[ ${QT4_BUILD_TYPE} == live ]]; then
-	KEYWORDS="arm ppc ppc64"
+	KEYWORDS=""
 else
 	KEYWORDS="amd64 arm ~ia64 ppc ppc64 x86"
 fi
@@ -25,6 +25,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.8.0-alsa.patch"
+	"${FILESDIR}/${PN}-4.8.6-Relax-ALSA-version-checks-for-1.1.x.patch" # bug 572426
 )
 
 QT4_TARGET_DIRECTORIES="src/multimedia"
