@@ -4,7 +4,7 @@
 	<herd>proxy-maintainers</herd>
 	<maintainer>
 		<email>awilfox.gentoo@foxkit.us</email>
-		<name>Andrew Wilcox></name>
+		<name>Andrew Wilcox</name>
 		<description>Proxy (user) maintainer, bugs to be assigned to him</description>
 	</maintainer>
 	<longdescription lang="en">
