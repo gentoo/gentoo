@@ -37,7 +37,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-4.3.0-no-utempter.patch
 
 	# visual_bell is no longer an int
-	epatch "${FILESDIR}"/${PN}-4.3.1-bool_visual_bell.patch
+	epatch "${FILESDIR}"/${PN}-9999-bool_visual_bell.patch
 
 	# sched.h is a system header and causes problems with some C libraries
 	mv sched.h _sched.h || die
