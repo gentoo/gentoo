@@ -8592,6 +8592,7 @@ dev-ruby/debug_inspector 0.0.2: A Ruby wrapper for the MRI 2.0 debug_inspector A
 dev-ruby/debugger-linecache 1.2.0: A module to read and cache file information of a Ruby program
 dev-ruby/deep_merge 1.0.1: A simple set of utility functions for Hash
 dev-ruby/delayer 0.0.2: Delay the processing
+dev-ruby/delayer-deferred 1.0.3: Ruby implementation of JSDeferred
 dev-ruby/dep_selector 0.1.1: constraint based package dependency resolver
 dev-ruby/deprecated 3.0.1-r1 3.0.1-r2: A Ruby library for handling deprecated code
 dev-ruby/descendants_tracker 0.0.4: Module that adds descendant tracking to a class
