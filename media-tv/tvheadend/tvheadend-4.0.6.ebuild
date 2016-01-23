@@ -34,7 +34,7 @@ RDEPEND="dev-libs/openssl:=
 	zlib? ( sys-libs/zlib )
 	xmltv? ( media-tv/xmltv )"
 
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 CONFIG_CHECK="~INOTIFY_USER"
