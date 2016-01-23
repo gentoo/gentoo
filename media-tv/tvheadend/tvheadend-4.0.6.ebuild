@@ -31,11 +31,13 @@ RDEPEND="dev-libs/openssl:=
 	)
 	hdhomerun? ( media-libs/libhdhomerun )
 	uriparser? ( dev-libs/uriparser )
-	zlib? ( sys-libs/zlib )
-	xmltv? ( media-tv/xmltv )"
+	zlib? ( sys-libs/zlib )"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+RDEPEND+="
+	xmltv? ( media-tv/xmltv )"
 
 CONFIG_CHECK="~INOTIFY_USER"
 
