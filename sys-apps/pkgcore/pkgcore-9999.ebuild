@@ -41,15 +41,8 @@ pkg_setup() {
 }
 
 python_compile_all() {
-	if [[ ${PV} == *9999 ]]; then
-		esetup.py build_man
-		ln -s "${BUILD_DIR}/sphinx/man" man || die
-	fi
-
-	if use doc; then
-		esetup.py build_docs
-		ln -s "${BUILD_DIR}/sphinx/html" html || die
-	fi
+	[[ ${PV} == *9999 ]] && esetup.py build_man
+	use doc && esetup.py build_docs
 }
 
 python_test() {
@@ -57,14 +50,8 @@ python_test() {
 }
 
 python_install_all() {
-	local cmds=(
-		install_man
-	)
-	use doc && cmds+=(
-		install_docs --path="${ED%/}"/usr/share/doc/${PF}/html
-	)
-
-	distutils-r1_python_install "${cmds[@]}"
+	distutils-r1_python_install install_man \
+		$(usex doc "install_docs --path="${ED%/}"/usr/share/doc/${PF}/html" "")
 	distutils-r1_python_install_all
 }
 
