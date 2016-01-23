@@ -34,7 +34,7 @@ DEPEND="${RDEPEND}
 [[ ${PV} == *9999 ]] && DEPEND+=" dev-python/sphinx[${PYTHON_USEDEP}]"
 
 python_compile_all() {
-	[[ ${PV} == *9999 ]] && emake -C doc man
+	[[ ${PV} == *9999 ]] && esetup.py build_man
 }
 
 python_test() {
@@ -42,10 +42,7 @@ python_test() {
 }
 
 python_install_all() {
+	local DOCS=( NEWS.rst README.rst )
+	distutils-r1_python_install install_man
 	distutils-r1_python_install_all
-	if [[ ${PV} == *9999 ]]; then
-		emake -C doc PREFIX=/usr DESTDIR="${D}" install_man
-	else
-		doman man/*
-	fi
 }
