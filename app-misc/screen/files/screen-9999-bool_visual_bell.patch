@@ -1,0 +1,11 @@
+--- a/src/telnet.c
++++ b/src/telnet.c
+@@ -41,7 +41,7 @@
+ 
+ extern Window *fore;
+ extern Layer *flayer;
+-extern int visual_bell;
++extern bool visual_bell;
+ extern char screenterm[];
+ extern int af;
+ 
