@@ -10,5 +10,5 @@ RDEPEND=sci-visualization/gnuplot[-emacs(-)] >=virtual/emacs-23
 SLOT=0
 SRC_URI=https://github.com/bruceravel/gnuplot-mode/archive/0.7.0.tar.gz -> gnuplot-mode-0.7.0.tar.gz
 _eclass_exported_funcs=pkg_postrm:elisp pkg_postinst:elisp pkg_setup:elisp src_unpack:elisp src_prepare:elisp src_configure:- src_compile:- src_install:-
-_eclasses_=elisp	a9bf9dff8b552467c28787ca5393fa0c	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	8982475656ba7ade9b3201397efbd612	multilib	3972ca401cf7dbb430df9995f5d8d580	readme.gentoo	0d364fc37b94797c4a65e38e67d8aa41	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=elisp	7e36316fe822639d5a29fa10d5529eb9	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	8982475656ba7ade9b3201397efbd612	multilib	3972ca401cf7dbb430df9995f5d8d580	readme.gentoo	0d364fc37b94797c4a65e38e67d8aa41	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=39fc0626fa739e4e8c321f0b7a5a9434

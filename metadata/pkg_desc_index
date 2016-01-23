@@ -9741,7 +9741,7 @@ dev-vcs/qct 1.7-r1: PyQt based commit tool for many VCSs
 dev-vcs/qgit 2.5: Qt4 GUI for git repositories
 dev-vcs/qsvn 0.8.3: GUI frontend to the Subversion revision system
 dev-vcs/rabbitvcs 0.15.2 0.15.3 0.16: Integrated version control support for your desktop
-dev-vcs/rapidsvn 0.12.1-r1 0.12.1-r2: Cross-platform GUI front-end for the Subversion revision system
+dev-vcs/rapidsvn 0.12.1-r1 0.12.1-r2 0.12.1-r3: Cross-platform GUI front-end for the Subversion revision system
 dev-vcs/rcs 5.8.2 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
 dev-vcs/rsvndump 0.6: Dump a remote Subversion repository
