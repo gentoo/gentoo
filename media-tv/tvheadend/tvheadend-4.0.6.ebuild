@@ -30,7 +30,6 @@ RDEPEND="dev-libs/openssl:=
 		libav? ( media-video/libav:= )
 	)
 	hdhomerun? ( media-libs/libhdhomerun )
-	imagecache? ( net-misc/curl )
 	uriparser? ( dev-libs/uriparser )
 	zlib? ( sys-libs/zlib )
 	xmltv? ( media-tv/xmltv )"
