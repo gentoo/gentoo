@@ -11,7 +11,7 @@ SRC_URI="https://github.com/SuperTux/${PN}/releases/download/v${PV}/${P}.tar.bz2
 
 LICENSE="GPL-2+ GPL-3+ ZLIB MIT CC-BY-SA-2.0 CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug"
 
 RDEPEND="dev-games/physfs
