@@ -2247,7 +2247,7 @@ app-text/gentoo-guide-xml-dtd 2.1-r1: DTD for Gentoo-Guide Style XML Files
 app-text/getxbook 1.0-r1: Download books from google, amazon, barnes and noble
 app-text/ghostscript-gpl 9.10-r2 9.10-r4 9.15-r1 9.18: Ghostscript is an interpreter for the PostScript language and for PDF
 app-text/glark 1.10.5 1.10.5-r1: File searcher similar to grep but with fancy output
-app-text/glosung 3.6.2-r1: Watch word program for the GNOME2 desktop (watch word (german): losung)
+app-text/glosung 3.6.2-r1 3.6.4: Watch word program for the GNOME2 desktop (watch word (german): losung)
 app-text/gnome-doc-utils 0.20.10-r1: A collection of documentation utilities for the Gnome project
 app-text/gnopaster 0.0.9: A submitter for gnopaste, a nopaste service like http://nopaste.info
 app-text/gocr 0.49 0.50: An OCR (Optical Character Recognition) reader
@@ -4384,7 +4384,7 @@ dev-lang/parrot 7.0.2 7.1.0 7.2.0 7.3.0 7.5.0 7.11.0: Virtual machine designed t
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.20.2 5.20.2-r1 5.22.0 5.22.1: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.4.45 5.5.30 5.5.31 5.6.14 5.6.17 7.0.2: The PHP language runtime engine: CLI, CGI, FPM/FastCGI, Apache2 and embed SAPIs
+dev-lang/php 5.4.45 5.5.30 5.5.31 5.6.14 5.6.17 5.6.17-r1 7.0.2-r1: The PHP language runtime engine: CLI, CGI, FPM/FastCGI, Apache2 and embed SAPIs
 dev-lang/pocl 0.11 0.12: PortableCL: opensource implementation of the OpenCL standard
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.10-r1 2.7.11-r2 3.3.5-r2 3.3.5-r7 3.4.3-r1 3.4.3-r7 3.5.0-r2 3.5.1-r2: An interpreted, interactive, object-oriented programming language
