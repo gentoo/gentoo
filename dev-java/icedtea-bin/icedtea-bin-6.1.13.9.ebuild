@@ -26,7 +26,7 @@ LICENSE="GPL-2-with-linking-exception"
 SLOT="6"
 KEYWORDS="-* amd64 x86"
 
-IUSE="+alsa cjk +cups doc examples +gtk headless-awt nsplugin selinux source webstart"
+IUSE="+alsa cjk +cups doc examples +gtk headless-awt nsplugin selinux source +webstart"
 REQUIRED_USE="gtk? ( !headless-awt ) nsplugin? ( !headless-awt )"
 
 RESTRICT="preserve-libs strip"
