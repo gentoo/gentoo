@@ -1,0 +1,19 @@
+Index: coq-8.5/Makefile.build
+===================================================================
+--- coq-8.5.orig/Makefile.build
++++ coq-8.5/Makefile.build
+@@ -787,14 +787,10 @@ endif
+ # it with libraries
+ 	-$(MKDIR) $(FULLCOQLIB)/plugins/micromega
+ 	$(INSTALLBIN) $(CSDPCERT) $(FULLCOQLIB)/plugins/micromega
+-	rm -f $(FULLCOQLIB)/revision
+-	-$(INSTALLLIB) revision $(FULLCOQLIB)
+ 
+ install-library-light:
+ 	$(MKDIR) $(FULLCOQLIB)
+ 	$(INSTALLSH) $(FULLCOQLIB) $(LIBFILESLIGHT) $(INITPLUGINS)
+-	rm -f $(FULLCOQLIB)/revision
+-	-$(INSTALLLIB) revision $(FULLCOQLIB)
+ ifndef CUSTOM
+ 	$(INSTALLLIB) $(DLLCOQRUN) $(FULLCOQLIB)
+ endif
