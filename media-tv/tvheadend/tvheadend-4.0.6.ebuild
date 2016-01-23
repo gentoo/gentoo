@@ -22,9 +22,7 @@ IUSE="avahi capmt constcw +cwc dbus +dvb +dvbscan ffmpeg hdhomerun libav imageca
 RDEPEND="dev-libs/openssl:=
 	virtual/libiconv
 	avahi? ( net-dns/avahi )
-	capmt? ( virtual/linuxtv-dvb-headers )
 	dbus? ( sys-apps/dbus )
-	dvb? ( virtual/linuxtv-dvb-headers )
 	ffmpeg? (
 		!libav? ( media-video/ffmpeg:0= )
 		libav? ( media-video/libav:= )
@@ -34,6 +32,8 @@ RDEPEND="dev-libs/openssl:=
 	zlib? ( sys-libs/zlib )"
 
 DEPEND="${RDEPEND}
+	dvb? ( virtual/linuxtv-dvb-headers )
+	capmt? ( virtual/linuxtv-dvb-headers )
 	virtual/pkgconfig"
 
 RDEPEND+="
