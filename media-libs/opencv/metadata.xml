@@ -20,10 +20,12 @@ Face Recognition; Gesture Recognition; Motion Tracking, Ego Motion, Motion Under
 		<flag name="contrib">Install user contributed scripts from opencv_contrib</flag>
 		<flag name="cuda">Enable NVIDIA Cuda computations support</flag>
 		<flag name="eigen">Enable usage of <pkg>dev-cpp/eigen</pkg> for computations</flag>
+		<flag name="gdal">Enable support for sci-libs/gdal library</flag>
 		<flag name="ipp">Enable Intel Integrated Primitive support</flag>
 		<flag name="opencl">Add support for OpenCL</flag>
 		<flag name="testprograms">Build and install programs for testing OpenCV (performance)</flag>
 		<flag name="vtk">Build new 3D visualization module viz based on sci-libs/vtk</flag>
+		<flag name="webp">Enable support for webp image format</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">opencvlibrary</remote-id>
