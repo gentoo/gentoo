@@ -20,8 +20,11 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-dash.patch \
-		"${FILESDIR}"/${P}-resources.patch \
-		"${FILESDIR}"/${P}-gcc52.patch
+		"${FILESDIR}"/${P}-resources.patch
+	# build with gcc52
+	sed -i \
+		-e 's/inline/extern inline/' \
+		src/stuff.h || die
 	eautoreconf
 }
 
