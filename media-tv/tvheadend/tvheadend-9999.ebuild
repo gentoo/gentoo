@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils git-2 linux-info systemd toolchain-funcs user
+inherit eutils git-r3 linux-info systemd toolchain-funcs user
 
 DESCRIPTION="Tvheadend is a TV streaming server and digital video recorder"
 HOMEPAGE="https://tvheadend.org/"
