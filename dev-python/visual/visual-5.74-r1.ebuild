@@ -16,7 +16,7 @@ SRC_URI="http://www.vpython.org/contents/download/${MY_P}.tar.bz2"
 
 LICENSE="HPND Boost-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="doc examples"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
