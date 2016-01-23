@@ -6,10 +6,12 @@ EAPI=5
 
 inherit eutils linux-info systemd toolchain-funcs user
 
+DTV_SCAN_TABLES_VERSION="2015-02-08-f2053b3"
+
 DESCRIPTION="Tvheadend is a TV streaming server and digital video recorder"
 HOMEPAGE="https://tvheadend.org/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-		dvbscan? ( http://linuxtv.org/downloads/dtv-scan-tables/dtv-scan-tables-2015-02-08-f2053b3.tar.bz2 )"
+		dvbscan? ( http://linuxtv.org/downloads/dtv-scan-tables/dtv-scan-tables-${DTV_SCAN_TABLES_VERSION}.tar.bz2 )"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -47,7 +49,7 @@ src_unpack() {
 	if use dvbscan; then
 		mkdir "${S}/data/dvb-scan" || die
 		cd "${T}" || die
-		unpack dtv-scan-tables-2015-02-08-f2053b3.tar.bz2
+		unpack dtv-scan-tables-${DTV_SCAN_TABLES_VERSION}.tar.bz2
 		rmdir "${S}/data/dvb-scan" || die
 		mv "${T}/usr/share/dvb" "${S}/data/dvb-scan" || die
 
