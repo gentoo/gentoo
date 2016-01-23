@@ -4,7 +4,7 @@
 #
 # @ECLASS: elisp.eclass
 # @MAINTAINER:
-# Gentoo GNU Emacs project <emacs@gentoo.org>
+# Gentoo GNU Emacs project <gnu-emacs@gentoo.org>
 # @AUTHOR:
 # Matthew Kennedy <mkennedy@gentoo.org>
 # Jeremy Maitin-Shepard <jbms@attbi.com>
