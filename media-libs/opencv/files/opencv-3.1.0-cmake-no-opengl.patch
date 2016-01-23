@@ -1,0 +1,22 @@
+From cdb9c60dcb65e04e7c0bd6bef9b86841191c785a Mon Sep 17 00:00:00 2001
+From: Alexander Alekhin <alexander.alekhin@itseez.com>
+Date: Thu, 31 Dec 2015 02:24:54 +0300
+Subject: [PATCH] gpu samples: fix REMOVE_ITEM error
+
+---
+ samples/gpu/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/samples/gpu/CMakeLists.txt b/samples/gpu/CMakeLists.txt
+index 6085cac..852a8c2 100644
+--- a/samples/gpu/CMakeLists.txt
++++ b/samples/gpu/CMakeLists.txt
+@@ -97,7 +97,7 @@ endif()
+ if(INSTALL_C_EXAMPLES AND NOT WIN32)
+   file(GLOB install_list *.c *.cpp *.jpg *.png *.data makefile.* build_all.sh *.dsp *.cmd )
+   if(NOT WITH_OPENGL)
+-    list(REMOVE_ITEM all_samples "opengl.cpp")
++    list(REMOVE_ITEM install_list "opengl.cpp")
+   endif(NOT WITH_OPENGL)
+   install(FILES ${install_list}
+           DESTINATION ${OPENCV_SAMPLES_SRC_INSTALL_PATH}/gpu

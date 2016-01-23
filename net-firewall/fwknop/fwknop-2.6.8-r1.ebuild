@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ DISTUTILS_OPTIONAL=1
 # See https://github.com/mrash/fwknop/issues/167
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools-utils distutils-r1 linux-info readme.gentoo systemd
+inherit autotools-utils eutils distutils-r1 linux-info readme.gentoo-r1 systemd
 
 DESCRIPTION="Single Packet Authorization and Port Knocking application"
 HOMEPAGE="http://www.cipherdyne.org/fwknop/ https://github.com/mrash/fwknop"
