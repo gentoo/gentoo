@@ -222,7 +222,7 @@ app-admin/tripwire 2.4.2.2-r3 2.4.2.2-r4: Open Source File Integrity Checker and
 app-admin/ulogd 2.0.5-r3 2.0.5-r4: A userspace logging daemon for netfilter/iptables related logging
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
 app-admin/usermin 1.600: A web-based user administration interface
-app-admin/vault 0.1.2-r1 9999: A tool for managing secrets
+app-admin/vault 0.1.2-r1 0.4.1 9999: A tool for managing secrets
 app-admin/verynice 1.1-r2: A tool for dynamically adjusting the nice-level of processes
 app-admin/watchfolder 0.3.3: Watches directories and processes files, similar to the watchfolder option of Acrobat Distiller
 app-admin/webalizer 2.23.05 2.23.08: Webserver log file analyzer
@@ -3887,8 +3887,8 @@ dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components fo
 dev-java/ibm-jdk-bin 1.6.0.9_p1 1.6.0.9_p2 1.6.0.9_p2-r1: IBM Java SE Development Kit
 dev-java/ibm-jre-bin 1.6.0.9_p1 1.6.0.9_p2 1.6.0.9_p2-r1: IBM Java SE Runtime Environment
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
-dev-java/icedtea 6.1.13.9-r2 7.2.6.3-r4: A harness to build OpenJDK using Free Software build tools and dependencies
-dev-java/icedtea-bin 6.1.13.9 7.2.6.3 7.2.6.3-r1: A Gentoo-made binary build of the IcedTea JDK
+dev-java/icedtea 6.1.13.9-r2 7.2.6.4-r1: A harness to build OpenJDK using Free Software build tools and dependencies
+dev-java/icedtea-bin 6.1.13.9 7.2.6.3 7.2.6.4: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.5.1-r1 1.6.1: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 3.8.1-r1 4.0.1.1 4.2.1.1 4.4.2 49.1 52.1 53.1 54.1.1 55.1: A set of Java libraries providing Unicode and Globalization support
