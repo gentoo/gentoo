@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -56,7 +56,7 @@ src_configure() {
 	else
 		boost_py3=""
 	fi
-	
+
 	if use python_targets_python2_7 ;then
 		boost_py2="--with-boost-python=2.7"
 	else
@@ -79,9 +79,9 @@ src_configure() {
 	if use python ;then
 		python_setup
 	fi
-	
+
 	autotools-utils_src_configure
-	
+
 	if use python ;then
 		cd "${BUILD_DIR}"/bindings/python || die && \
 		distutils-r1_src_configure
@@ -90,7 +90,7 @@ src_configure() {
 
 src_compile() {
 	autotools-utils_src_compile
-	
+
 	if use python ;then
 		cd "${BUILD_DIR}"/bindings/python || die && \
 		distutils-r1_src_compile
@@ -101,7 +101,7 @@ src_install() {
 	if use doc ;then
 		HTML_DOCS=( "${S}"/docs/. )
 	fi
-	
+
 	autotools-utils_src_install
 
 	if use python ;then
