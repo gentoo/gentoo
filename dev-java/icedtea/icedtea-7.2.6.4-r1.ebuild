@@ -16,13 +16,13 @@ ICEDTEA_VER=$(get_version_component_range 2-4)
 ICEDTEA_BRANCH=$(get_version_component_range 2-3)
 ICEDTEA_PKG=icedtea-${ICEDTEA_VER}
 ICEDTEA_PRE=$(get_version_component_range _)
-CORBA_TARBALL="9a3ca529125a.tar.bz2"
-JAXP_TARBALL="f7bf82fcbd09.tar.bz2"
-JAXWS_TARBALL="39ef53b9c403.tar.bz2"
-JDK_TARBALL="5215185a1d57.tar.bz2"
-LANGTOOLS_TARBALL="91fdb0c83e50.tar.bz2"
-OPENJDK_TARBALL="f0e7f22f09ef.tar.bz2"
-HOTSPOT_TARBALL="c3cde6774003.tar.bz2"
+CORBA_TARBALL="2135da66cc53.tar.bz2"
+JAXP_TARBALL="bc6edb6c12a7.tar.bz2"
+JAXWS_TARBALL="271b555de438.tar.bz2"
+JDK_TARBALL="dc86038147b2.tar.bz2"
+LANGTOOLS_TARBALL="fd0a34cb97b4.tar.bz2"
+OPENJDK_TARBALL="4f1e498cad9c.tar.bz2"
+HOTSPOT_TARBALL="19d919ae5506.tar.bz2"
 
 CACAO_TARBALL="cacao-c182f119eaad.tar.gz"
 JAMVM_TARBALL="jamvm-ec18fb9e49e62dce16c5094ef1527eed619463aa.tar.gz"
@@ -62,7 +62,7 @@ RESTRICT="test"
 
 IUSE="+alsa cacao cjk +cups debug doc examples +gtk headless-awt infinality
 	jamvm javascript +jbootstrap kerberos nsplugin nss pax_kernel
-	pulseaudio sctp selinux smartcard source +sunec test webstart zero"
+	pulseaudio sctp selinux smartcard source +sunec test +webstart zero"
 
 REQUIRED_USE="gtk? ( !headless-awt )"
 
