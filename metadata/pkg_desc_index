@@ -6280,7 +6280,7 @@ dev-perl/Unicode-LineBreak 2013.11 2014.60.0 2015.60.0: UAX #14 Unicode Line Bre
 dev-perl/Unicode-Map 0.112.0-r1: Map charsets from and to utf16 code
 dev-perl/Unicode-Map8 0.130.0: Convert between most 8bit encodings
 dev-perl/Unicode-MapUTF8 1.110.0-r1: Conversions to and from arbitrary character sets and UTF8
-dev-perl/Unicode-Normalize 1.180.0: Unicode Normalization Forms
+dev-perl/Unicode-Normalize 1.180.0 1.250.0: Unicode Normalization Forms
 dev-perl/Unicode-String 2.90.0-r1: String manipulation for Unicode strings
 dev-perl/Unicode-Stringprep 1.105.0: Preparation of Internationalized Strings (RFC 3454)
 dev-perl/Unicode-UTF8 0.580.0 0.590.0 0.600.0: Encoding and decoding of UTF-8 encoding form
