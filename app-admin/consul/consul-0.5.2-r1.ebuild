@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit golang-base systemd user
+inherit git-r3 golang-base systemd user
 
 GO_PN="github.com/hashicorp/consul"
 
