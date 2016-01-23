@@ -53,7 +53,7 @@ src_unpack() {
 	# Use latest versions of some packages, in case of incompatible
 	# API changes
 	rm -rf "${GOROOT}/src/${GO_PN%/*}" \
-		"${GOROOT}/pkg/linux_${ARCH}/${GO_PN%/*}" || die
+		"${GOROOT}/pkg/$(go env GOOS)_$(go env GOARCH)/${GO_PN%/*}" || die
 
 	# Fetch dependencies
 	emake deps
@@ -61,7 +61,7 @@ src_unpack() {
 	# Avoid interference from installed instances
 	while read -r path; do
 		rm -rf "${GOROOT}/src/${path#${WORKDIR}/src}" \
-		"${GOROOT}/pkg/linux_${ARCH}/${path#${WORKDIR}/src}" || die
+		"${GOROOT}/pkg/$(go env GOOS)_$(go env GOARCH)/${path#${WORKDIR}/src}" || die
 	done < <(find "${WORKDIR}"/src -maxdepth 3 -mindepth 3 -type d)
 }
 
@@ -112,13 +112,13 @@ src_install() {
 
 	while read -r -d '' x; do
 		x=${x#${WORKDIR}/src}
-		[[ -d ${WORKDIR}/pkg/${KERNEL}_${ARCH}/${x} ||
-			-f ${WORKDIR}/pkg/${KERNEL}_${ARCH}/${x}.a ]] && continue
+		[[ -d ${WORKDIR}/pkg/$(go env GOOS)_$(go env GOARCH)/${x} ||
+			-f ${WORKDIR}/pkg/$(go env GOOS)_$(go env GOARCH)/${x}.a ]] && continue
 		rm -rf "${WORKDIR}"/src/${x}
 	done < <(find "${WORKDIR}"/src/${GO_PN} -mindepth 1 -maxdepth 1 -type d -print0)
 	insopts -m0644 -p # preserve timestamps for bug 551486
-	insinto /usr/lib/go/pkg/${KERNEL}_${ARCH}/${GO_PN%/*}
-	doins -r "${WORKDIR}"/pkg/${KERNEL}_${ARCH}/${GO_PN}
+	insinto /usr/lib/go/pkg/$(go env GOOS)_$(go env GOARCH)/${GO_PN%/*}
+	doins -r "${WORKDIR}"/pkg/$(go env GOOS)_$(go env GOARCH)/${GO_PN}
 	insinto /usr/lib/go/src/${GO_PN%/*}
 	doins -r "${WORKDIR}"/src/${GO_PN}
 }
