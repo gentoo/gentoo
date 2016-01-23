@@ -133,7 +133,7 @@ qt5-build_src_unpack() {
 		ewarn
 	fi
 
-	if [[ ${PN} == qtwebkit ]]; then
+	if [[ ${PN} == qtwebengine || ${PN} == qtwebkit ]]; then
 		eshopts_push -s extglob
 		if is-flagq '-g?(gdb)?([1-9])'; then
 			ewarn
