@@ -127,9 +127,14 @@ EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install sr
 # @DESCRIPTION:
 # Unpacks the sources.
 qt5-build_src_unpack() {
-	if [[ $(gcc-major-version) -lt 4 ]] || [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 5 ]]; then
+	local min_gcc4_minor_version=5
+	if [[ ${QT5_MINOR_VERSION} -ge 7 || ${PN} == qtwebengine ]]; then
+		min_gcc4_minor_version=7
+	fi
+	if [[ $(gcc-major-version) -lt 4 ]] || \
+	   [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt ${min_gcc4_minor_version} ]]; then
 		ewarn
-		ewarn "Using a GCC version lower than 4.5 is not supported."
+		ewarn "Using a GCC version lower than 4.${min_gcc4_minor_version} is not supported."
 		ewarn
 	fi
 
