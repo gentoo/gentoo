@@ -71,7 +71,6 @@ src_prepare() {
 src_configure() {
 	econf --prefix="${EPREFIX}"/usr \
 		--datadir="${EPREFIX}"/usr/share \
-		--mandir="${EPREFIX}"/usr/share/man/man1 \
 		$(use_enable avahi) \
 		$(use_enable ccache) \
 		$(use_enable capmt) \
