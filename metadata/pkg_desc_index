@@ -13189,7 +13189,7 @@ media-tv/mythtv 0.26.0_p20130922 0.27_p20140321 0.27.5_p20150627 0.27.5_p2015090
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
 media-tv/nvtv 0.4.7-r1: TV-Out for NVidia cards
 media-tv/shoutcast2vdr 0.0.8 0.0.8-r1: VDR script: generate shoutcast playlists
-media-tv/tvbrowser 3.4.1.0-r1 9999-r1: Themeable and easy to use TV Guide - written in Java
+media-tv/tvbrowser 3.4.1.0-r1 3.4.3 9999-r1: Themeable and easy to use TV Guide - written in Java
 media-tv/tvheadend 3.4.27 4.0.6 9999: Tvheadend is a TV streaming server and digital video recorder
 media-tv/tvmovie2vdr 0.5.13: load the program guide from tvmovie and others to vdr
 media-tv/tvnamer 2.3: Automatic TV episode file renamer, data from thetvdb.com
