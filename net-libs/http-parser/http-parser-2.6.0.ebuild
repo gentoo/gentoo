@@ -12,7 +12,7 @@ SRC_URI="https://github.com/joyent/http-parser/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x64-macos ~x64-solaris"
 IUSE="static-libs"
 
 # https://github.com/nodejs/http-parser/pull/272
