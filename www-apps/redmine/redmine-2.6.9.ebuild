@@ -6,7 +6,7 @@ EAPI=5
 USE_RUBY="ruby20"
 inherit eutils depend.apache ruby-ng user
 
-DESCRIPTION="A flexible project management web application written using Ruby on Rails framework"
+DESCRIPTION="Flexible project management web application using the Ruby on Rails framework"
 HOMEPAGE="http://www.redmine.org/"
 SRC_URI="http://www.redmine.org/releases/${P}.tar.gz"
 
