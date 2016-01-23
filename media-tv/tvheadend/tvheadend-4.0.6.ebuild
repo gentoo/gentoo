@@ -17,7 +17,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="avahi capmt constcw +cwc dbus +dvb +dvbscan epoll ffmpeg hdhomerun libav imagecache inotify iptv satip +timeshift uriparser xmltv zlib"
+IUSE="avahi capmt constcw +cwc dbus +dvb +dvbscan ffmpeg hdhomerun libav imagecache inotify iptv satip +timeshift uriparser xmltv zlib"
 
 RDEPEND="dev-libs/openssl:=
 	virtual/libiconv
@@ -77,8 +77,6 @@ src_configure() {
 		$(use_enable dbus) \
 		$(use_enable dvb linuxdvb) \
 		$(use_enable dvbscan) \
-		$(use_enable epoll) \
-		--disable-kqueue \
 		$(use_enable ffmpeg libav) \
 		$(use_enable hdhomerun hdhomerun_client) \
 		$(use_enable imagecache) \

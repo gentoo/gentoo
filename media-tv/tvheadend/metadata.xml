@@ -11,7 +11,6 @@
 		<flag name="capmt">Enable support for capmt (dvbapi) protocol</flag>
 		<flag name="constcw">Enable support for the constcw protocol</flag>
 		<flag name="cwc">Enable support for the cwc (newcamd) protocol</flag>
-		<flag name="epoll">Enable epoll Linux system call</flag>
 		<flag name="hdhomerun">Enable support for the HDHomeRun device</flag>
 		<flag name="iptv">Enable support for Internet Protocol TV</flag>
 		<flag name="satip">Enable support for IP-based Satellite TV</flag>
