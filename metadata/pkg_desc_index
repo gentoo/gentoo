@@ -524,8 +524,8 @@ app-crypt/fcrackzip 1.0: a zip password cracker
 app-crypt/gcr 3.16.0 3.18.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
 app-crypt/gentoo-keys 201511260245: A Openpgp/gpg keyring of official Gentoo release media gpg keys
 app-crypt/gifshuffle 2.0: GIF colourmap steganography
-app-crypt/gkeys 0.1-r1 9999: An OpenPGP/GPG key management tool and python libs
-app-crypt/gkeys-gen 0.1-r1 9999: Tool for generating OpenPGP/GPG keys using a specifications file
+app-crypt/gkeys 0.2 9999: An OpenPGP/GPG key management tool and python libs
+app-crypt/gkeys-gen 0.2 9999: Tool for generating OpenPGP/GPG keys using a specifications file
 app-crypt/gnupg 1.4.19 1.4.20 2.0.26-r3 2.0.27 2.0.27-r1 2.0.28 2.0.29 2.0.29-r1 2.1.8 2.1.9 2.1.9-r1 2.1.10 2.1.10-r1: The GNU Privacy Guard, a GPL OpenPGP implementation
 app-crypt/gnupg-pkcs11-scd 0.7.3: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
@@ -6659,7 +6659,7 @@ dev-php/pecl-oauth 1.2.3-r3 2.0.0: OAuth is an authorization protocol built on t
 dev-php/pecl-pam 1.0.3-r1: This extension provides PAM (Pluggable Authentication Modules) integration
 dev-php/pecl-ps 1.3.7: PHP extension for creating PostScript files
 dev-php/pecl-radius 1.2.7: Provides full support for RADIUS authentication (RFC 2865) and RADIUS accounting (RFC 2866)
-dev-php/pecl-redis 2.2.3 2.2.5 2.2.7 2.2.7-r1: PHP extension for interfacing with Redis
+dev-php/pecl-redis 2.2.7-r1: PHP extension for interfacing with Redis
 dev-php/pecl-rrd 1.1.0 1.1.3 2.0.0: RRDtool bindings for PHP
 dev-php/pecl-sphinx 1.3.3: PHP extension to execute search queries on a sphinx daemon
 dev-php/pecl-spl_types 0.4.0-r1: Standard PHP library types add-on
@@ -7464,7 +7464,7 @@ dev-python/py-xmlrpc 0.8.8.3-r1 0.9: Fast XML-RPC implementation for Python
 dev-python/py2neo 2.0.8: A simple and pragmatic library which accesses the Neo4j graph database
 dev-python/py2play 0.1.10-r1: A Peer To Peer network game engine
 dev-python/pyClamd 0.3.10: python interface to Clamd (Clamav daemon)
-dev-python/pyGPG 0.1 9999: A python interface wrapper for gnupg's gpg command
+dev-python/pyGPG 0.1 0.2 9999: A python interface wrapper for gnupg's gpg command
 dev-python/pyPdf 1.13-r1: Python library to work with pdf files
 dev-python/pyacoustid 1.0.0-r1: Python module for Chromaprint acoustic fingerprinting and the Acoustid API
 dev-python/pyalsa 1.0.26-r1 1.0.29: Python bindings for ALSA library
@@ -7931,7 +7931,7 @@ dev-python/sqlitecachec 1.1.4-r1: sqlite cacher for python applications
 dev-python/sqlobject 2.1.1-r1: Object-Relational Manager, aka database wrapper
 dev-python/squaremap 1.0.3 1.0.4: Hierarchic data-visualisation control for wxPython
 dev-python/ssh 1.8.0-r1: SSH2 protocol library
-dev-python/ssl-fetch 0.2 0.2.1 0.3 9999: A small convenience library for fetching files securely
+dev-python/ssl-fetch 0.2 0.2.1 0.3 0.4 9999: A small convenience library for fetching files securely
 dev-python/starcluster 0.93.3-r2: Utility for creating / managing general purpose computing clusters
 dev-python/statistics 1.0.3.5: A Python 2.* port of 3.4 Statistics Module
 dev-python/statsmodels 0.5.0 0.6.1: Statistical computations and models for use with SciPy
