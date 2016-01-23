@@ -14,12 +14,11 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 
-IUSE="avahi ccache +dvb +dvbscan ffmpeg imagecache inotify uriparser xmltv zlib"
+IUSE="avahi +dvb +dvbscan ffmpeg imagecache inotify uriparser xmltv zlib"
 
 DEPEND="dev-libs/openssl:0=
 	virtual/libiconv
 	avahi? ( net-dns/avahi )
-	ccache? ( dev-util/ccache )
 	dvb? ( virtual/linuxtv-dvb-headers )
 	ffmpeg? ( virtual/ffmpeg )
 	uriparser? ( dev-libs/uriparser )
@@ -46,9 +45,9 @@ src_prepare() {
 src_configure() {
 	econf --prefix="${EPREFIX}"/usr \
 		--datadir="${EPREFIX}"/usr/share \
-		$(use_enable avahi) \
-		$(use_enable ccache) \
+		--disable-ccache \
 		--disable-dvbscan \
+		$(use_enable avahi) \
 		$(use_enable dvb linuxdvb) \
 		$(use_enable ffmpeg libav) \
 		$(use_enable imagecache) \

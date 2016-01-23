@@ -17,13 +17,12 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="avahi ccache capmt constcw +cwc dbus +dvb +dvbscan epoll ffmpeg hdhomerun libav imagecache inotify iptv satip +timeshift uriparser xmltv zlib"
+IUSE="avahi capmt constcw +cwc dbus +dvb +dvbscan epoll ffmpeg hdhomerun libav imagecache inotify iptv satip +timeshift uriparser xmltv zlib"
 
 RDEPEND="dev-libs/openssl:=
 	virtual/libiconv
 	avahi? ( net-dns/avahi )
 	capmt? ( virtual/linuxtv-dvb-headers )
-	ccache? ( dev-util/ccache sys-libs/zlib )
 	dbus? ( sys-apps/dbus )
 	dvb? ( virtual/linuxtv-dvb-headers )
 	ffmpeg? (
@@ -70,8 +69,8 @@ src_prepare() {
 src_configure() {
 	econf --prefix="${EPREFIX}"/usr \
 		--datadir="${EPREFIX}"/usr/share \
+		--disable-ccache \
 		$(use_enable avahi) \
-		$(use_enable ccache) \
 		$(use_enable capmt) \
 		$(use_enable constcw) \
 		$(use_enable cwc) \
