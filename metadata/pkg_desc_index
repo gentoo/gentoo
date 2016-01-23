@@ -6618,7 +6618,7 @@ dev-php/awl 0.53-r2 0.55-r1: Andrew McMillan's Web Libraries
 dev-php/cphplib 0.51: Cute PHP Library (cphplib)
 dev-php/doctrine 1.2.5 2.4.6: An object relational mapper for PHP5
 dev-php/ffmpeg-php 0.6.0-r3 0.6.0-r4: PHP extension that provides access to movie info
-dev-php/igbinary 1.2.1 1.2.1-r1: A fast drop-in replacement for the standard PHP serialize
+dev-php/igbinary 1.2.1-r1: A fast drop-in replacement for the standard PHP serialize
 dev-php/jpgraph 3.0.7-r1 3.0.7-r2: Fully OO graph drawing library for PHP
 dev-php/libchart 1.2.2 1.3: Libchart is a chart creation PHP library that is easy to use
 dev-php/libvirt-php 0.4.8 9999: PHP 5 bindings for libvirt
@@ -6629,7 +6629,7 @@ dev-php/mockery 0.9.0: Simple yet flexible PHP mock object framework for use in 
 dev-php/onphp 1.0.10: onPHP is the LGPL'ed multi-purpose object-oriented PHP framework
 dev-php/pear 1.9.4 1.9.5 1.10.1: PEAR - PHP Extension and Application Repository
 dev-php/pecl-amqp 1.4.0: PHP Bindings for AMQP 0-9-1 compatible brokers
-dev-php/pecl-apcu 4.0.7 4.0.7-r1 4.0.8 4.0.10 5.1.2: Stripped down version of APC supporting only user cache
+dev-php/pecl-apcu 4.0.7-r1 4.0.8 4.0.10 5.1.2: Stripped down version of APC supporting only user cache
 dev-php/pecl-apcu_bc 1.0.0 1.0.1: Provides APC backwards compatibility functions via APCu
 dev-php/pecl-bbcode 1.0.3_beta1-r1: A quick and efficient BBCode Parsing Library
 dev-php/pecl-cairo 0.3.2: Cairo bindings for PHP
@@ -9729,7 +9729,7 @@ dev-vcs/hgsubversion 1.4 1.8.2 1.8.3 9999: hgsubversion is a Mercurial extension
 dev-vcs/hgsvn 0.2.3-r1: A set of scripts to work locally on Subversion checkouts using Mercurial
 dev-vcs/hgview 1.8.2 1.9.0: A Mercurial interactive history viewer
 dev-vcs/hub 1.12.4 2.2.0-r1 2.2.2 2.2.3: Command-line wrapper for git that makes you better at GitHub
-dev-vcs/kdesvn 1.6.0-r1: A frontend to the subversion vcs
+dev-vcs/kdesvn 1.6.0-r1 1.7.0: A frontend to the subversion vcs
 dev-vcs/mercurial 3.3.2 3.3.3 3.4.2 3.5.2 3.6.2 3.6.3 9999: Scalable distributed SCM
 dev-vcs/mercurial-server 1.1 1.2 9999: Mercurial authentication and authorization tools
 dev-vcs/monotone 1.0-r4: Monotone Distributed Version Control System
@@ -16567,7 +16567,7 @@ sys-block/nwutil 1.4 1.8: Netwinder hardware utilities
 sys-block/open-iscsi 2.0.872-r2 2.0.872-r3 2.0.873 2.0.873-r1: Open-iSCSI is a high performance, transport independent, multi-platform implementation of RFC3720
 sys-block/parted 2.4 3.1-r1 3.2 3.2-r1: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.8 0.6.9: Console-based application to efficiently save raw partition data to an image file
-sys-block/partitionmanager 1.1.1 1.2.1: KDE utility for management of partitions and file systems
+sys-block/partitionmanager 1.1.1 1.2.1 2.0.0: KDE utility for management of partitions and file systems
 sys-block/qla-fc-firmware 20071207-r1 20080423 20101015: QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards
 sys-block/raid-check 20140719-r1: Script to do "scrubbing" on software RAID systems
 sys-block/rts5229 1.07-r6: PCIE RTS5229 card reader driver for Linux
@@ -17009,6 +17009,7 @@ sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r1 2.22-r1 9999: GNU libc6 (als
 sys-libs/gpm 1.20.6 1.20.6-r1 1.20.7 1.20.7-r1 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.3.3 4.12.0_beta 4.13.1: A multi-platform helper library for other libraries
 sys-libs/itx-bind 0.1-r2: the bind library for interix
+sys-libs/kpmcore 2.0.0: Library for managing partitions
 sys-libs/ldb 1.1.12 1.1.15 1.1.17-r1 1.1.24 1.1.24-r2: An LDAP-like embedded database
 sys-libs/lib-compat 1.4.2-r1: Compatibility C++ and libc5 and libc6 libraries for very old programs
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
