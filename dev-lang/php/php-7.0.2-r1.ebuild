@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -317,12 +317,15 @@ src_configure() {
 
 	PHP_DESTDIR="${EPREFIX}/usr/$(get_libdir)/php${SLOT}"
 
+	# The php-fpm config file wants localstatedir to be ${EPREFIX}/var
+	# and not the Gentoo default ${EPREFIX}/var/lib. See bug 572002.
 	local our_conf=(
 		--prefix="${PHP_DESTDIR}"
 		--mandir="${PHP_DESTDIR}/man"
 		--infodir="${PHP_DESTDIR}/info"
 		--libdir="${PHP_DESTDIR}/lib"
 		--with-libdir="$(get_libdir)"
+		--localstatedir="${EPREFIX}/var"
 		--without-pear
 		$(use_enable threads maintainer-zts)
 	)
