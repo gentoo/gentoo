@@ -17,9 +17,10 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="avahi ccache capmt constcw +cwc dbus +dvb +dvbscan epoll ffmpeg hdhomerun libav iconv imagecache inotify iptv satip +timeshift uriparser xmltv zlib"
+IUSE="avahi ccache capmt constcw +cwc dbus +dvb +dvbscan epoll ffmpeg hdhomerun libav imagecache inotify iptv satip +timeshift uriparser xmltv zlib"
 
 RDEPEND="dev-libs/openssl:=
+	virtual/libiconv
 	avahi? ( net-dns/avahi )
 	capmt? ( virtual/linuxtv-dvb-headers )
 	ccache? ( dev-util/ccache sys-libs/zlib )
@@ -30,7 +31,6 @@ RDEPEND="dev-libs/openssl:=
 		libav? ( media-video/libav:= )
 	)
 	hdhomerun? ( media-libs/libhdhomerun )
-	iconv? ( virtual/libiconv )
 	imagecache? ( net-misc/curl )
 	uriparser? ( dev-libs/uriparser )
 	zlib? ( sys-libs/zlib )
@@ -65,7 +65,6 @@ pkg_setup() {
 src_prepare() {
 	# remove '-Werror' wrt bug #438424
 	sed -e 's:-Werror::' -i Makefile || die 'sed failed!'
-	epatch "${FILESDIR}/${PV}-use-glibc-version-iconv.patch"
 }
 
 src_configure() {
