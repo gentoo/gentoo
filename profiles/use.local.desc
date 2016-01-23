@@ -4070,10 +4070,12 @@ media-libs/opencolorio:pdf - Install extra documentation in PDF format
 media-libs/opencv:contrib - Install user contributed scripts from opencv_contrib
 media-libs/opencv:cuda - Enable NVIDIA Cuda computations support
 media-libs/opencv:eigen - Enable usage of dev-cpp/eigen for computations
+media-libs/opencv:gdal - Enable support for sci-libs/gdal library
 media-libs/opencv:ipp - Enable Intel Integrated Primitive support
 media-libs/opencv:opencl - Add support for OpenCL
 media-libs/opencv:testprograms - Build and install programs for testing OpenCV (performance)
 media-libs/opencv:vtk - Build new 3D visualization module viz based on sci-libs/vtk
+media-libs/opencv:webp - Enable support for webp image format
 media-libs/openh264:plugin - Install the Gecko Media Plugin (GMP) for use with Mozilla packages
 media-libs/openh264:utils - Install the CLI encoder and decoder utilities
 media-libs/openimageio:colorio - Use media-gfx/opencolorio
