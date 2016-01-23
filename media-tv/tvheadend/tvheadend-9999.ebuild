@@ -16,7 +16,7 @@ KEYWORDS=""
 
 IUSE="avahi +dvb +dvbscan ffmpeg imagecache inotify uriparser xmltv zlib"
 
-DEPEND="dev-libs/openssl:0=
+DEPEND="dev-libs/openssl:=
 	virtual/libiconv
 	avahi? ( net-dns/avahi )
 	dvb? ( virtual/linuxtv-dvb-headers )
