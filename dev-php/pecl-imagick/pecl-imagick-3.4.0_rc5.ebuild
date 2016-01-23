@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 MY_PV="${PV/rc/RC}"
 
-USE_PHP="php7-0 php5-6 php5-5"
+USE_PHP="php5-5 php5-6 php7-0"
 
 inherit php-ext-pecl-r2
 
