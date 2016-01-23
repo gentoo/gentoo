@@ -14,12 +14,15 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 
-IUSE="avahi +dvb +dvbscan ffmpeg imagecache inotify uriparser xmltv zlib"
+IUSE="avahi +dvb +dvbscan ffmpeg libav imagecache inotify uriparser xmltv zlib"
 
 RDEPEND="dev-libs/openssl:=
 	virtual/libiconv
 	avahi? ( net-dns/avahi )
-	ffmpeg? ( virtual/ffmpeg )
+	ffmpeg? (
+		!libav? ( media-video/ffmpeg:0= )
+		libav? ( media-video/libav:= )
+	)
 	uriparser? ( dev-libs/uriparser )
 	zlib? ( sys-libs/zlib )"
 
