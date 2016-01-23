@@ -781,11 +781,6 @@ media-tv/xawtv
 # Bug 566446
 media-video/vmaid
 
-# Michael Palimaka <kensington@gentoo.org> (22 Dec 2015)
-# No longer works. Dead upstream. Masked for removal in 30 days.
-# Bug 507914
-app-doc/ebookmerge
-
 # Patrick Lauer <patrick@gentoo.org> (20 Dec 2015)
 # Mask TOFU release that doesn't work #567768 and friends
 =app-crypt/gkeys-gen-0.1-r1
