@@ -14,20 +14,23 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 
-IUSE="avahi +dvb +dvbscan ffmpeg libav imagecache inotify uriparser xmltv zlib"
+IUSE="avahi capmt constcw +cwc dbus +dvb +dvbscan ffmpeg hdhomerun libav imagecache inotify iptv satip +timeshift uriparser xmltv zlib"
 
 RDEPEND="dev-libs/openssl:=
 	virtual/libiconv
 	avahi? ( net-dns/avahi )
+	dbus? ( sys-apps/dbus )
 	ffmpeg? (
 		!libav? ( media-video/ffmpeg:0= )
 		libav? ( media-video/libav:= )
 	)
+	hdhomerun? ( media-libs/libhdhomerun )
 	uriparser? ( dev-libs/uriparser )
 	zlib? ( sys-libs/zlib )"
 
 DEPEND="${RDEPEND}
 	dvb? ( virtual/linuxtv-dvb-headers )
+	capmt? ( virtual/linuxtv-dvb-headers )
 	virtual/pkgconfig"
 
 RDEPEND+="
@@ -53,10 +56,19 @@ src_configure() {
 		--disable-ccache \
 		--disable-dvbscan \
 		$(use_enable avahi) \
+		$(use_enable capmt) \
+		$(use_enable constcw) \
+		$(use_enable cwc) \
+		$(use_enable dbus) \
 		$(use_enable dvb linuxdvb) \
 		$(use_enable ffmpeg libav) \
+		$(use_enable hdhomerun hdhomerun_client) \
 		$(use_enable imagecache) \
 		$(use_enable inotify) \
+		$(use_enable iptv) \
+		$(use_enable satip satip_server) \
+		$(use_enable satip satip_client) \
+		$(use_enable timeshift) \
 		$(use_enable uriparser) \
 		$(use_enable zlib)
 }
