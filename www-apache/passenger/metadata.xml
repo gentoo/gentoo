@@ -4,5 +4,8 @@
 	<maintainer>
 		<email>graaff@gentoo.org</email>
 	</maintainer>
-	<herd>ruby</herd>
-</pkgmetadata>
+	<maintainer>
+		<email>ruby@gentoo.org</email>
+		<name>Gentoo Ruby Project</name>
+	</maintainer>
+	</pkgmetadata>

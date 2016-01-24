@@ -5,7 +5,10 @@
     <email>mjo@gentoo.org</email>
     <name>Michael Orlitzky</name>
   </maintainer>
-  <herd>perl</herd>
+  <maintainer>
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
   <upstream>
     <remote-id type="cpan">Monitoring-Plugin</remote-id>
     <remote-id type="cpan-module">Monitoring::Plugin</remote-id>

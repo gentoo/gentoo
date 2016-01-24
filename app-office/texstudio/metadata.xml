@@ -5,7 +5,10 @@
 		<email>mrueg@gentoo.org</email>
 		<name>Manuel Rüger</name>
 	</maintainer>
-	<herd>tex</herd>
+	<maintainer>
+		<email>tex@gentoo.org</email>
+		<name>Gentoo TeX Project</name>
+	</maintainer>
 	<use>
 		<flag name="video">Use phonon for video embedding</flag>
 	</use>

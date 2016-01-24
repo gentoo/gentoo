@@ -5,7 +5,10 @@
     <email>alexxy@gentoo.org</email>
     <name>Alexey Shvetsov</name>
   </maintainer>
-  <herd>sci-chemistry</herd>
+  <maintainer>
+    <email>sci-chemistry@gentoo.org</email>
+    <name>Gentoo Chemistry Project</name>
+  </maintainer>
   <use>
     <flag name="cuda">Use nvidia cuda toolkit for speeding up computations</flag>
     <flag name="gromacs">Add support for TNG file format</flag>

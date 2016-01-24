@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>cluster</herd>
+	<maintainer>
+    	<email>cluster@gentoo.org</email>
+    	<name>Gentoo Cluster Project</name>
+	</maintainer>
 	<use>
 		<flag name="compat-dapl">Add support for DAPL v1.2 abstraction layer</flag>
 		<flag name="dapl">Add support for DAPL abstraction layer</flag>

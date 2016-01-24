@@ -6,7 +6,10 @@
     <name>Gorelov Grigory</name>
     <description>Maintainer and upstream developer.</description>
   </maintainer>
-  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
   <longdescription>
     Small and simple to use JSON generation and parsing library.
   </longdescription>

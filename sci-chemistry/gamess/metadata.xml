@@ -5,7 +5,10 @@
     <email>alexxy@gentoo.org</email>
     <name>Alexey Shvetsov</name>
   </maintainer>
-  <herd>sci-chemistry</herd>
+  <maintainer>
+    <email>sci-chemistry@gentoo.org</email>
+    <name>Gentoo Chemistry Project</name>
+  </maintainer>
   <use>
     <flag name="neo">Enable NEO for nuclear basis support</flag>
     <flag name="pax_kernel">Make this package work on PAX kernels</flag>

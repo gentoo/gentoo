@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>pam</herd>
 <maintainer>
 <email>swegener@gentoo.org</email>
+</maintainer>
+<maintainer>
+<email>pam-bugs@gentoo.org</email>
+<name>Pluggable Authentication Method maintenance</name>
 </maintainer>
 <use>
 <flag name="prevent-removal">If supported, set EXT2_APPEND_FL on /tmp/.private to prevent temporary directories from being removed</flag>

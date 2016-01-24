@@ -4,8 +4,14 @@
 	<maintainer>
 		<email>prometheanfire@gentoo.org</email>
 	</maintainer>
-	<herd>sysadmin</herd>
-	<herd>ruby</herd>
+	<maintainer>
+		<email>sysadmin@gentoo.org</email>
+		<name>Gentoo Sysadmin Project</name>
+	</maintainer>
+	<maintainer>
+		<email>ruby@gentoo.org</email>
+		<name>Gentoo Ruby Project</name>
+	</maintainer>
 	<use>
 		<flag name="dmi">Use <pkg>sys-apps/dmidecode</pkg> to determine hardware system properties</flag>
 		<flag name="virt">Use <pkg>app-emulation/virt-what</pkg> for virtual machine detection</flag>

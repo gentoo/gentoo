@@ -5,7 +5,10 @@
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
-<herd>net-mail</herd>
+<maintainer>
+  <email>net-mail@gentoo.org</email>
+  <name>Net-Mail</name>
+</maintainer>
 <use>
   <flag name="bbdb">Include support for <pkg>app-emacs/bbdb</pkg></flag>
 </use>

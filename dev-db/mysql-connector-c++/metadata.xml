@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>mysql</herd>
-<herd>proxy-maintainers</herd>
 <use>
 <flag name="gcov">Build coverage support</flag>
 </use>
@@ -10,5 +8,13 @@
 		<email>idella4@gentoo.org</email>
 		<name>Ian Delnaeny</name>
 		<description>Maintainer / developer</description>
+	</maintainer>
+<maintainer>
+		<email>mysql-bugs@gentoo.org</email>
+		<name>MySQL</name>
+	</maintainer>
+<maintainer>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 </pkgmetadata>

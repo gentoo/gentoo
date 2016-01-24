@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-mail</herd>
 	<maintainer>
 		<email>grobian@gentoo.org</email>
+	</maintainer>
+	<maintainer>
+		<email>net-mail@gentoo.org</email>
+		<name>Net-Mail</name>
 	</maintainer>
 	<longdescription>
 		Exim is a message transfer agent (MTA) developed at the University of

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
 	<maintainer>
 		<email>pacho@gentoo.org</email>
 		<name>Pacho Ramos</name>
@@ -9,6 +8,10 @@
 	<maintainer>
 		<email>rei4dan@gmail.com</email>
 		<name>My Th</name>
+	</maintainer>
+	<maintainer>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
 	A rewrite of the original Bumblebee service, providing an elegant and stable

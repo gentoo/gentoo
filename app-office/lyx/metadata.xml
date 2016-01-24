@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>tex</herd>
-<herd>proxy-maintainers</herd>
-<herd>cjk</herd>
 <maintainer>
   <email>ps@twin.jikos.cz</email>
   <name>Pavel Sanda</name>
@@ -13,6 +10,18 @@
   <email>aballier@gentoo.org</email>
   <name>Alexis Ballier</name>
   <description>Proxy Maintainer, CC bugs</description>
+</maintainer>
+<maintainer>
+  <email>tex@gentoo.org</email>
+  <name>Gentoo TeX Project</name>
+</maintainer>
+<maintainer>
+  <email>proxy-maint@gentoo.org</email>
+  <name>Proxy Maintainers</name>
+</maintainer>
+<maintainer>
+  <email>cjk@gentoo.org</email>
+  <name>Cjk</name>
 </maintainer>
 <use>
   <flag name="docbook">Add support for docbook export</flag>

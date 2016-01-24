@@ -5,7 +5,10 @@
     <email>karl.j.linden@gmail.com</email>
     <name>Karl Lindén</name>
   </maintainer>
-  <herd>proaudio</herd>
+  <maintainer>
+    <email>proaudio@gentoo.org</email>
+    <name>Gentoo ProAudio Project</name>
+  </maintainer>
   <use>
     <flag name="fdgl">Use experimental force-directed graph layout</flag>
   </use>

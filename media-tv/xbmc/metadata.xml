@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>xbox</herd>
-<herd>video</herd>
+<maintainer>
+ <email>vapier@gentoo.org</email>
+</maintainer>
+<maintainer>
+ <email>media-video@gentoo.org</email>
+ <name>Gentoo Video project</name>
+</maintainer>
 <use>
  <flag name="airplay">enable AirPlay support</flag>
  <flag name="bluray">Enable playback of Blu-ray filesystems</flag>

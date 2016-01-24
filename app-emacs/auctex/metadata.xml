@@ -5,7 +5,10 @@
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
-<herd>tex</herd>
+<maintainer>
+  <email>tex@gentoo.org</email>
+  <name>Gentoo TeX Project</name>
+</maintainer>
 <longdescription>
   AUCTeX is an extensible package for writing and formatting TeX files
   in GNU Emacs and XEmacs. It supports many different TeX macro packages,

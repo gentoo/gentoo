@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>toolchain</herd>
+<maintainer>
+ <email>toolchain@gentoo.org</email>
+ <name>Gentoo Toolchain Project</name>
+</maintainer>
 <use>
  <flag name="debug">When USE=hardened, allow fortify/stack violations to dump core (SIGABRT) and not kill self (SIGKILL)</flag>
  <flag name="gd">build memusage and memusagestat tools</flag>

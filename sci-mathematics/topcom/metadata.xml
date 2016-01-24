@@ -5,7 +5,10 @@
 		<email>tomka@gentoo.org</email>
 		<name>Thomas Kahle</name>
 	</maintainer>
-	<herd>sci</herd>
+	<maintainer>
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
 	<longdescription lang="en">
 TOPCOM is a package for computing Triangulations Of Point Configurations and Oriented Matroids
 </longdescription>

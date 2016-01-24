@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proxy-maintainers</herd>
 <maintainer>
 	<email>andreis.vinogradovs@gmail.com</email>
 	<name>Andreis Vinogradovs</name>
@@ -14,6 +13,11 @@
 	<email>rich@annexia.org</email>
 	<name>Richard Jones</name>
 	<description>Upstream - please CC on bugs that concerns upstream</description>
+</maintainer>
+
+<maintainer>
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
 </maintainer>
 
 <longdescription>Libguestfs is a library and tool set for accessing and 

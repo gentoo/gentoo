@@ -4,7 +4,10 @@
 <maintainer>
   <email>gienah@gentoo.org</email>
 </maintainer>
-<herd>sci-mathematics</herd>
+<maintainer>
+  <email>sci-mathematics@gentoo.org</email>
+  <name>Gentoo Mathematics Project</name>
+</maintainer>
 <longdescription lang="en">
 Isabelle is a generic proof assistant. It allows mathematical
 formulas to be expressed in a formal language and provides tools

@@ -8,5 +8,8 @@
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
-<herd>virtualization</herd>
+<maintainer>
+  <email>virtualization@gentoo.org</email>
+  <name>Gentoo Virtualization Project</name>
+</maintainer>
 </pkgmetadata>

@@ -5,7 +5,10 @@
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
   </maintainer>
-  <herd>base-system</herd>
+  <maintainer>
+    <email>base-system@gentoo.org</email>
+    <name>Gentoo Base System</name>
+  </maintainer>
   <longdescription>ppp (Paul's PPP Package) is an open source package which
   implements the Point-to-Point Protocol</longdescription>
   <use>

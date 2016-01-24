@@ -5,5 +5,8 @@
     <email>djc@gentoo.org</email>
     <name>Dirkjan Ochtman</name>
   </maintainer>
-  <herd>php</herd>
-</pkgmetadata>
+  <maintainer>
+    <email>php-bugs@gentoo.org</email>
+    <name>PHP</name>
+  </maintainer>
+  </pkgmetadata>

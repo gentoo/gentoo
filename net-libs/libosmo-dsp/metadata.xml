@@ -5,7 +5,10 @@
 <email>zerochaos@gentoo.org</email>
 <name>Rick Farina</name>
 </maintainer>
-<herd>radio</herd>
+<maintainer>
+<email>radio@gentoo.org</email>
+<name>Radio</name>
+</maintainer>
 <longdescription lang="en">
 </longdescription>
 </pkgmetadata>

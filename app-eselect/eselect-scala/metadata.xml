@@ -4,5 +4,8 @@
 <maintainer>
   <email>gienah@gentoo.org</email>
 </maintainer>
-<herd>java</herd>
+<maintainer>
+  <email>java@gentoo.org</email>
+  <name>Java</name>
+</maintainer>
 </pkgmetadata>

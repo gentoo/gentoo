@@ -5,5 +5,8 @@
 <email>tetromino@gentoo.org</email>
 <name>Alexandre Rostovtsev</name>
 </maintainer>
-<herd>gnome</herd>
+<maintainer>
+<email>gnome@gentoo.org</email>
+<name>Gentoo GNOME Desktop</name>
+</maintainer>
 </pkgmetadata>

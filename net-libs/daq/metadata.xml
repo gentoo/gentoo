@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proxy-maintainers</herd>
 <maintainer>
   <email>jason.r.wallace@gmail.com</email>
   <name>Jason Wallace</name>
@@ -10,7 +9,14 @@
   <email>patrick@gentoo.org</email>
   <name>Patrick Lauer</name>
 </maintainer>
-<herd>netmon</herd>
+<maintainer>
+  <email>proxy-maint@gentoo.org</email>
+  <name>Proxy Maintainers</name>
+</maintainer>
+<maintainer>
+  <email>netmon@gentoo.org</email>
+  <name>Gentoo network monitoring and analysis project</name>
+</maintainer>
 <longdescription>Data Acquisition library, for packet I/O with Snort 2.9 and later</longdescription>
 <use>
 	<flag name="afpacket">

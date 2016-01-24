@@ -5,7 +5,10 @@
 		<email>pva@gentoo.org</email>
 		<name>Peter Volkov</name>
 	</maintainer>
-	<herd>java</herd>
+	<maintainer>
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
 	<longdescription lang="en">
 	PlantUMLis a component that allows to quickly write: sequence diagram, use
 	case diagram, class diagram, activity diagram, component diagram, state

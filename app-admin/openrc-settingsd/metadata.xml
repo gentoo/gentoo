@@ -5,7 +5,10 @@
 	<email>tetromino@gentoo.org</email>
 	<name>Alexandre Rostovtsev</name>
 </maintainer>
-<herd>gnome</herd>
+<maintainer>
+	<email>gnome@gentoo.org</email>
+	<name>Gentoo GNOME Desktop</name>
+</maintainer>
 <use>
 	<flag name="systemd">Use the versions of dbus and polkit files provided by
 		<pkg>sys-apps/systemd</pkg></flag>

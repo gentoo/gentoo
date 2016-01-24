@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
 	<maintainer>
 		<email>nikoli@gmx.us</email>
 		<name>Nikoli</name>
@@ -14,6 +13,10 @@
 		<email>itumaykin+gentoo@gmail.com</email>
 		<name>Coacher</name>
 		<description>Proxied maintainer; set to assignee in all bugs</description>
+	</maintainer>
+	<maintainer>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
 		<flag name="mac">Add support for Monkey's Audio input files</flag>

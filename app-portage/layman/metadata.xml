@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>tools-portage</herd>
 	<maintainer>
 		<email>dolsen@gentoo.org</email>
 		<name>Brian Dolbec</name>
@@ -9,6 +8,10 @@
 	<maintainer>
 		<email>twitch153@gentoo.org</email>
 		<name>Devan Franchini</name>
+	</maintainer>
+	<maintainer>
+		<email>tools-portage@gentoo.org</email>
+		<name>Gentoo Portage tools team</name>
 	</maintainer>
 	<use>
 		<flag name="bazaar">Support <pkg>dev-vcs/bzr</pkg> based overlays</flag>

@@ -5,7 +5,10 @@
     <email>patrick@gentoo.org</email>
     <name>Patrick Lauer</name>
   </maintainer>
-  <herd>sci</herd>
+  <maintainer>
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
   <longdescription lang="en">
   Julia is a high-level, high-performance dynamic programming language for
   technical computing, with syntax that is familiar to users of other

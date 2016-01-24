@@ -8,7 +8,6 @@
 		scale, in production, on VMs, bare metal, OpenStack clusters, public
 		clouds and more.
 	</longdescription>
-	<herd>proxy-maintainers</herd>
 	<maintainer status="active">
 		<email>admwiggin@gmail.com</email>
 		<name>Tianon</name>
@@ -24,6 +23,10 @@
 	<maintainer>
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
+	</maintainer>
+	<maintainer>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
 		<flag name="aufs">

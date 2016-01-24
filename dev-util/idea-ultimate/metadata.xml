@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proxy-maintainers</herd>
-	<maintainer>
+<maintainer>
 		<email>gert@gepe-biljarts.be</email>
 		<name>Gert Pellin</name>
 		<description>Proxy maintainer. Assign bugs to him.</description>
@@ -10,6 +9,10 @@
 	<maintainer>
 		<email>tomboy64@sina.cn</email>
 		<description>Proxied co-maintainer</description>
+	</maintainer>		
+<maintainer>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>		
 <longdescription lang="en">
 Excel at enterprise, mobile and web development with Java, Scala and Groovy, with all the latest modern technologies and frameworks available out of the box.

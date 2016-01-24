@@ -5,7 +5,10 @@
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
-<herd>java</herd>
+<maintainer>
+  <email>java@gentoo.org</email>
+  <name>Java</name>
+</maintainer>
 <longdescription>
   The Java Development Environment for Emacs is a software package
   that interfaces Emacs to command-line Java development tools (for

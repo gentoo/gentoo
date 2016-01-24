@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proxy-maintainers</herd>
 <maintainer>
 	<email>ppurka@gmail.com</email>
 	<name>Punarbasu 'ppurka' Purkayastha</name>
@@ -11,6 +10,10 @@
 	<email>forestmoonsilence@gmail.com</email>
 	<name>sitquietly</name>
 	<description>Co Maintainer, CC bugs</description>
+</maintainer>
+<maintainer>
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
 </maintainer>
 <upstream>
 	<maintainer status="active">

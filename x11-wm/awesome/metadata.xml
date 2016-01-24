@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>proxy-maintainers</herd>
   <maintainer>
     <email>itumaykin+gentoo@gmail.com</email>
     <name>Coacher</name>
@@ -18,5 +17,9 @@
   <maintainer>
     <email>wired@gentoo.org</email>
     <name>Alex Alexander</name>
+  </maintainer>
+<maintainer>
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
 </pkgmetadata>

@@ -5,8 +5,11 @@
   <email>tomka@gentoo.org</email>
   <name>Thomas Kahle</name>
 </maintainer>
-<herd>sci-mathematics</herd>
- <longdescription lang="en">
+<maintainer>
+  <email>sci-mathematics@gentoo.org</email>
+  <name>Gentoo Mathematics Project</name>
+ </maintainer>
+<longdescription lang="en">
   gfan is a computer algebra tool to compute Groebner fans and tropical varieties.
 </longdescription>
 </pkgmetadata>

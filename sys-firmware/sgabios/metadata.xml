@@ -5,5 +5,8 @@
 		<email>cardoe@gentoo.org</email>
 		<name>Doug Goldstein</name>
 	</maintainer>
-	<herd>qemu</herd>
-</pkgmetadata>
+	<maintainer>
+		<email>qemu@gentoo.org</email>
+		<name>Gentoo QEMU Project</name>
+	</maintainer>
+	</pkgmetadata>

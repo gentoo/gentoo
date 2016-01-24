@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>media-optical</herd>
 	<longdescription>CD and DVD command line recording and ripping tools.</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">burn-cd</remote-id>

@@ -5,5 +5,8 @@
 	<email>sochotnicky@gentoo.org</email>
 	<name>Stanislav Ochotnicky</name>
 </maintainer>
-<herd>suse</herd>
+<maintainer>
+	<email>suse@gentoo.org</email>
+	<name>SUSE</name>
+</maintainer>
 </pkgmetadata>

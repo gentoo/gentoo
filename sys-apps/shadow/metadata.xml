@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>base-system</herd>
-<herd>pam</herd> <!-- only for USE=pam -->
+<maintainer>
+	<email>base-system@gentoo.org</email>
+	<name>Gentoo Base System</name>
+ </maintainer> <maintainer>
+	<email>pam-bugs@gentoo.org</email>
+	<name>Pluggable Authentication Method maintenance</name>
+ </maintainer> <!-- only for USE=pam -->
 <upstream>
 	<remote-id type="cpe">cpe:/a:debian:shadow</remote-id>
 </upstream>

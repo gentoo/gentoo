@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>xen</herd>
+	<maintainer>
+		<email>xen@gentoo.org</email>
+		<name>Gentoo Xen Project</name>
+	</maintainer>
 	<use>
 		<flag name="api">Build the C libxenapi bindings</flag>
 		<flag name="flask">Enable the Flask XSM module from NSA</flag>

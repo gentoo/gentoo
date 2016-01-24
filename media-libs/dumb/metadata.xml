@@ -5,7 +5,10 @@
 		<email>joker@gentoo.org</email>
 		<name>Christian Birchinger</name>
 	</maintainer>
-	<herd>sound</herd>
+	<maintainer>
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">dumb</remote-id>
 	</upstream>

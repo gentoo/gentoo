@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>mozilla</herd>
-  <maintainer>
+<maintainer>
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
+  </maintainer>
+<maintainer>
+    <email>mozilla@gentoo.org</email>
+    <name>Gentoo Mozilla Team</name>
   </maintainer>
 <use>
 	<flag name="chatzilla">Build Mozilla's IRC client (default on)</flag>

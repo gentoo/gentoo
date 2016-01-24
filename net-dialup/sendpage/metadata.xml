@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-dialup</herd>
 	<longdescription>To send alphanumeric pages to a pager, if an email gateway is unavailable or undesirable, 
 software is needed to control a modem which will dial a "Paging Central", and deliver the pages using 
 an ASCII delivery system known as "TAP".

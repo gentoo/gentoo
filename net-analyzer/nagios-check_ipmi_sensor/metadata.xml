@@ -10,6 +10,12 @@
 		<name>Werner Fischer</name>
 		<description>Upstream Maintainer (please CC on bugs)</description>
 	</maintainer>
-	<herd>sysadmin</herd>
-	<herd>proxy-maintainers</herd>
-</pkgmetadata>
+	<maintainer>
+		<email>sysadmin@gentoo.org</email>
+		<name>Gentoo Sysadmin Project</name>
+	</maintainer>
+	<maintainer>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	</pkgmetadata>

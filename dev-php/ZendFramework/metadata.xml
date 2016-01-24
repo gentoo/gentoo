@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>php</herd>
 	<maintainer>
 		<email>gurligebis@gentoo.org</email>
 		<name>Bjarke Istrup Pedersen</name>
+	</maintainer>
+	<maintainer>
+		<email>php-bugs@gentoo.org</email>
+		<name>PHP</name>
 	</maintainer>
 	<use>
 		<flag name="cli">Enables the CLI</flag>

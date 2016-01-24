@@ -5,6 +5,12 @@
 		<email>konstantin@muenning.com</email>
 		<name>Konstantin Münning</name>
 	</maintainer>
-	<herd>printing</herd>
-	<herd>proxy-maintainers</herd>
-</pkgmetadata>
+	<maintainer>
+		<email>printing@gentoo.org</email>
+		<name>Gentoo Printing Project</name>
+	</maintainer>
+	<maintainer>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	</pkgmetadata>

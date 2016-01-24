@@ -5,7 +5,10 @@
     <email>grozin@gentoo.org</email>
     <name>Andrey Grozin</name>
   </maintainer>
-  <herd>sci-mathematics</herd>
+  <maintainer>
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
   <longdescription lang="en">
 GSL shell offers an interactive command-line interface
 that gives access to GSL collection of mathematical functions.

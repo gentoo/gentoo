@@ -5,7 +5,10 @@
 		<email>tamiko@gentoo.org</email>
 		<name>Matthias Maier</name>
 	</maintainer>
-	<herd>sound</herd>
+	<maintainer>
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">quodlibet/quodlibet</remote-id>
 		<remote-id type="bitbucket">lazka/quodlibet-files</remote-id>

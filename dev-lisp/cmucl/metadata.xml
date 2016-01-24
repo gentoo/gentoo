@@ -5,7 +5,10 @@
 <email>grozin@gentoo.org</email>
 <name>Andrey Grozin</name>
 </maintainer>
-<herd>common-lisp</herd>
+<maintainer>
+<email>common-lisp@gentoo.org</email>
+<name>Gentoo Common Lisp Project</name>
+</maintainer>
 <longdescription>
 CMUCL is a free implementation of the Common Lisp programming language
 which runs on most major Unix platforms. It mainly conforms to the

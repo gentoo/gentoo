@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>graphics</herd>
-
   <maintainer>
     <email>hasufell@gentoo.org</email>
     <name>Julian Ospald</name>
@@ -11,6 +9,11 @@
   <maintainer>
     <email>lu_zero@gentoo.org</email>
     <name>Luca Barbato</name>
+  </maintainer>
+
+  <maintainer>
+    <email>graphics@gentoo.org</email>
+    <name>Gentoo Graphics Project</name>
   </maintainer>
 
   <longdescription>

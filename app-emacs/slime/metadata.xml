@@ -5,7 +5,10 @@
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
-<herd>common-lisp</herd>
+<maintainer>
+  <email>common-lisp@gentoo.org</email>
+  <name>Gentoo Common Lisp Project</name>
+</maintainer>
 <longdescription>
   SLIME: The Superior Lisp Interaction Mode for Emacs.  SLIME is a
   fresh, new Emacs mode for Common Lisp development inspired by existing

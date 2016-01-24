@@ -11,8 +11,14 @@
 		<name>Stelian Ionescu (fe[nl]ix)</name>
 		<description>second-maintainer</description>
 	</maintainer>
-	<herd>common-lisp</herd>
-	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>common-lisp@gentoo.org</email>
+		<name>Gentoo Common Lisp Project</name>
+	</maintainer>
+	<maintainer>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription>Steel Bank Common Lisp is an open source Common
   Lisp implementation. It provides an integrated native compiler,
   interpreter, and debugger. SBCL is a fork off of the main branch

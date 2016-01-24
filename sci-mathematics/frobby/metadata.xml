@@ -5,7 +5,10 @@
 		<email>tomka@gentoo.org</email>
 		<name>Thomas Kahle</name>
 	</maintainer>
-	<herd>sci</herd>
+	<maintainer>
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
 	<longdescription lang="en">
 Frobby is a software system and library for computations with monomial ideals. 
 </longdescription>

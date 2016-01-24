@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>accessibility</herd>
-<herd>emacs</herd>
 <maintainer>
 <email>williamh@gentoo.org</email>
 </maintainer>
+ <maintainer>
+  <email>accessibility@gentoo.org</email>
+  <name>Gentoo Accessibility Project</name>
+ </maintainer>
+ <maintainer>
+  <email>emacs@gentoo.org</email>
+  <name>Gentoo Emacs project</name>
+ </maintainer>
  <use>
   <flag name="brltty">brltty support</flag>
 </use>

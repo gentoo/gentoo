@@ -5,7 +5,10 @@
     <email>gienah@gentoo.org</email>
     <name>Mark Wright</name>
   </maintainer>
-  <herd>sci-mathematics</herd>
+  <maintainer>
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
   <longdescription lang="en">
   Prover9 and Mace4 Prover9 is an automated theorem prover for
   first-order and equational logic, and Mace4 searches for finite

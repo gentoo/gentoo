@@ -5,5 +5,8 @@
 		<email>kumba@gentoo.org</email>
 		<name>Joshua Kinard</name>
 	</maintainer>
-	<herd>embedded</herd>
-</pkgmetadata>
+	<maintainer>
+		<email>embedded@gentoo.org</email>
+		<name>Embedded Gentoo</name>
+	</maintainer>
+	</pkgmetadata>
