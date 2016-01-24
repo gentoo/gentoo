@@ -9,6 +9,6 @@ Complex tasks like 2d and 3d plots in publication-ready quality are built out
 of these primitives.
 </longdescription>
 	<upstream>
-		<remote-id type="sourceforge">pyx</remote-id>
+		<remote-id type="pypi">PyX</remote-id>
 	</upstream>
 </pkgmetadata>
