@@ -20,6 +20,7 @@ RDEPEND=""
 SRC_URI="https://${EGO_PN%/*}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/fatih/structs/archive/a924a2250d1033753512e95dce41dca3fd793ad9.tar.gz -> structs-a924a2250d1033753512e95dce41dca3fd793ad9.tar.gz
 	https://github.com/go-yaml/yaml/archive/f7716cbe52baa25d2e9b0d0da546fcf909fc16b4.tar.gz -> go-yaml-v2-f7716cbe52baa25d2e9b0d0da546fcf909fc16b4.tar.gz
+	https://github.com/golang/sys/archive/58da1121af381632b48b2843aeb16299f2e1dc50.tar.gz -> go-sys-0_pre20150729.tar.gz
 	https://github.com/hashicorp/consul/archive/v0.6.3.tar.gz -> consul-0.6.3.tar.gz
 	https://github.com/hashicorp/go-cleanhttp/archive/ce617e79981a8fff618bb643d155133a8f38db96.tar.gz -> go-cleanhttp-ce617e79981a8fff618bb643d155133a8f38db96.tar.gz
 	https://github.com/hashicorp/errwrap/archive/7554cd9344cec97297fa6649b055a8c98c2a1e55.tar.gz -> errwrap-7554cd9344cec97297fa6649b055a8c98c2a1e55.tar.gz
@@ -29,6 +30,7 @@ SRC_URI="https://${EGO_PN%/*}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/hashicorp/hcl/archive/578dd9746824a54637686b51a41bad457a56bcef.tar.gz -> hcl-578dd9746824a54637686b51a41bad457a56bcef.tar.gz
 	https://github.com/hashicorp/logutils/archive/0dc08b1671f34c4250ce212759ebd880f743d883.tar.gz -> logutils-0dc08b1671f34c4250ce212759ebd880f743d883.tar.gz
 	https://github.com/hashicorp/serf/archive/64d10e9428bd70dbcd831ad087573b66731c014b.tar.gz -> serf-64d10e9428bd70dbcd831ad087573b66731c014b.tar.gz
+	https://github.com/hashicorp/vault/archive/145041757cee09193b0d132b816f72bc1e846107.tar.gz -> vault-145041757cee09193b0d132b816f72bc1e846107.tar.gz
 	https://github.com/mitchellh/mapstructure/archive/281073eb9eb092240d33ef253c404f1cca550309.tar.gz -> mapstructure-281073eb9eb092240d33ef253c404f1cca550309.tar.gz
 	test? (
 		https://github.com/armon/go-metrics/archive/345426c77237ece5dab0e1605c3e4b35c3f54757.tar.gz -> go-metrics-345426c77237ece5dab0e1605c3e4b35c3f54757.tar.gz
@@ -43,7 +45,6 @@ SRC_URI="https://${EGO_PN%/*}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		https://github.com/hashicorp/go-uuid/archive/36289988d83ca270bc07c234c36f364b0dd9c9a7.tar.gz -> go-uuid-36289988d83ca270bc07c234c36f364b0dd9c9a7.tar.gz
 		https://github.com/hashicorp/golang-lru/archive/5c7531c003d8bf158b0fe5063649a2f41a822146.tar.gz -> golang-lru-5c7531c003d8bf158b0fe5063649a2f41a822146.tar.gz
 		https://github.com/hashicorp/uuid/archive/2951e8b9707a040acdb49145ed9f36a088f3532e.tar.gz -> uuid-2951e8b9707a040acdb49145ed9f36a088f3532e.tar.gz
-		https://github.com/hashicorp/vault/archive/145041757cee09193b0d132b816f72bc1e846107.tar.gz -> vault-145041757cee09193b0d132b816f72bc1e846107.tar.gz
 		https://github.com/jmespath/go-jmespath/archive/0.2.2.tar.gz -> go-jmespath-0.2.2.tar.gz
 		https://github.com/mitchellh/copystructure/archive/6fc66267e9da7d155a9d3bd489e00dad02666dc6.tar.gz -> copystructure-6fc66267e9da7d155a9d3bd489e00dad02666dc6.tar.gz
 		https://github.com/mitchellh/reflectwalk/archive/eecf4c70c626c7cfbb95c90195bc34d386c74ac6.tar.gz -> reflectwalk-eecf4c70c626c7cfbb95c90195bc34d386c74ac6.tar.gz
@@ -60,6 +61,9 @@ pkg_setup() {
 
 get_archive_go_package() {
 	local archive=${1} uri x
+	case ${archive} in
+		go-sys-*) echo "sys-* golang.org/x/sys"; return;;
+	esac
 	for x in ${SRC_URI}; do
 		if [[ ${x} == http* ]]; then
 			uri=${x}
@@ -68,17 +72,20 @@ get_archive_go_package() {
 		fi
 	done
 	uri=${uri#https://}
-	echo ${uri%/archive/*}
+	uri=${uri%/archive/*}
+	echo "${uri##*/}-* ${uri}"
 }
 
 unpack_go_packages() {
-	local go_package x
+	local go_package pattern x
 	# Unpack packages to appropriate locations for GOPATH
 	for x in ${A}; do
 		unpack ${x}
 		go_package=$(get_archive_go_package ${x})
+		pattern=${go_package%% *}
+		go_package=${go_package##* }
 		mkdir -p src/${go_package%/*}
-		mv ${go_package##*/}-* src/${go_package} || die
+		mv ${pattern} src/${go_package} || die
 	done
 }
 
