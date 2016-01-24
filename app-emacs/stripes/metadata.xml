@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>emacs</herd>
+<maintainer>
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
 <longdescription>
-Highlights every even line with an alternative background
-color. Useful for buffers that display lists of any kind - as a guide
-for your eyes to follow these lines.
+  Highlights every even line with an alternative background color.
+  Useful for buffers that display lists of any kind - as a guide for
+  your eyes to follow these lines.
 </longdescription>
 </pkgmetadata>

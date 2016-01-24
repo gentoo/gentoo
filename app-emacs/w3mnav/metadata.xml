@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>emacs</herd>
+<maintainer>
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
 <longdescription>
-w3mnav.el is an Emacs add-on that kludges some Info-like navigation keys to the
-w3m Web browser.  This functionality was originally part of the Scheme support
-package Quack, and was intended to work with the numerous Scheme books that were
-converted to HTML from LaTeX format.  It also works with some other HTML pages
-that have book-like &quot;next page&quot; and &quot;previous page&quot; links.
+  w3mnav.el is an Emacs add-on that kludges some Info-like navigation
+  keys to the w3m Web browser. This functionality was originally part
+  of the Scheme support package Quack, and was intended to work with
+  the numerous Scheme books that were converted to HTML from LaTeX
+  format. It also works with some other HTML pages that have book-like
+  "next page" and "previous page" links.
 </longdescription>
 </pkgmetadata>

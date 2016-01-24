@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>emacs</herd>
+<maintainer>
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
 <longdescription>
-Planner is a personal information manager (PIM) for Emacs. You can use
-it to manage your tasks, schedules, notes and anything else you want
-to store in a free-text richly-hyperlinked personal information
-manager integrated into Emacs.
+  Planner is a personal information manager (PIM) for Emacs. You can
+  use it to manage your tasks, schedules, notes and anything else you
+  want to store in a free-text richly-hyperlinked personal information
+  manager integrated into Emacs.
 </longdescription>
 </pkgmetadata>

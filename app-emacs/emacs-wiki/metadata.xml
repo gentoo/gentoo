@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>emacs</herd>
+<maintainer>
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
 <longdescription>
-Emacs-wiki allows you to create a wiki on your local system and export
-HTML pages.
+  Emacs-wiki allows you to create a wiki on your local system and
+  export HTML pages.
 
-Emacs-wiki has many uses. It has been used to organize links. It can
-make web page maintenance and design a lot easier. It is used as the
-back-end of Planner. You can store and link together various bits of
-information in a coherent manner. A weblog of sorts can be made with
-it, but RSS syndication is not supported.
+  Emacs-wiki has many uses. It has been used to organize links. It can
+  make web page maintenance and design a lot easier. It is used as the
+  back-end of Planner. You can store and link together various bits of
+  information in a coherent manner. A weblog of sorts can be made with
+  it, but RSS syndication is not supported.
 
-Emacs-wiki is not a real wiki in its basic configuration, because
-users from the web cannot edit the pages unless you use
-emacs-wiki-httpd.el .
+  Emacs-wiki is not a real wiki in its basic configuration, because
+  users from the web cannot edit the pages unless you use
+  emacs-wiki-httpd.el.
 
-Emacs-wiki does not allow you to edit the pages of TheEmacsWiki.
+  Emacs-wiki does not allow you to edit the pages of TheEmacsWiki.
 </longdescription>
 </pkgmetadata>

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>chromium</herd>
-	<herd>emacs</herd>
-	<upstream>
-		<remote-id type="github">google/styleguide</remote-id>
-	</upstream>
+<herd>chromium</herd>
+<maintainer>
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<upstream>
+  <remote-id type="github">google/styleguide</remote-id>
+</upstream>
 </pkgmetadata>
