@@ -173,7 +173,7 @@ RDEPEND="
 		faac? ( >=media-libs/faac-1.28-r3[${MULTILIB_USEDEP}] )
 		kvazaar? ( media-libs/kvazaar[${MULTILIB_USEDEP}] )
 		mp3? ( >=media-sound/lame-3.99.5-r1[${MULTILIB_USEDEP}] )
-		nvenc? ( >=media-video/nvenc-5 )
+		nvenc? ( media-video/nvidia_video_sdk )
 		openh264? ( >=media-libs/openh264-1.4.0-r1[${MULTILIB_USEDEP}] )
 		snappy? ( >=app-arch/snappy-1.1.2-r1[${MULTILIB_USEDEP}] )
 		theora? (
