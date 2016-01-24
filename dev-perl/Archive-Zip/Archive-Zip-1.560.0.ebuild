@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="A wrapper that lets you read Zip archive members as if they were files"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~x86"
 IUSE="test"
 
 RDEPEND="
