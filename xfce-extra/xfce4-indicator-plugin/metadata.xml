@@ -5,7 +5,4 @@
     <email>xfce@gentoo.org</email>
     <name>XFCE Team</name>
   </maintainer>
-  <maintainer>
-    <email>ayatana-bugs@gentoo.org</email>
-  </maintainer>
 </pkgmetadata>
