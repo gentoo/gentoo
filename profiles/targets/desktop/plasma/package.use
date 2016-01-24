@@ -45,6 +45,7 @@ kde-apps/kdebase-runtime-meta:4 -crash-reporter minimal
 kde-apps/kdesu -handbook
 kde-apps/knetattach -handbook
 kde-apps/kwalletmanager:4 minimal
+kde-apps/libkipi:4 minimal
 kde-apps/solid-runtime -bluetooth
 kde-base/baloo minimal
 kde-base/kactivities minimal
