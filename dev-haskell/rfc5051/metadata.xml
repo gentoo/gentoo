@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<use>
-		<flag name='mkunicodedata'>build codes generator itself</flag>
+		<flag name="mkunicodedata">build codes generator itself</flag>
 	</use>
 	<longdescription>
 		This library implements @i;unicode-casemap@,
@@ -13,7 +16,7 @@
 		dependency that depends on a large C library, and rfc5051 might be better
 		for some purposes.
 		
-		Here is a list of strings sorted by the Prelude&#39;s @sort@ function:
+		Here is a list of strings sorted by the Prelude's @sort@ function:
 		
 		@Abe Oeb abe ab&amp;#233; oeb &amp;#193;be &amp;#196;be &amp;#212;eb &amp;#225;be &amp;#228;be &amp;#244;eb@
 		

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
-	<maintainer>
+	<maintainer type="project">
 		<email>haskell@gentoo.org</email>
 	</maintainer>
 	<longdescription>
-		A new all Haskell &quot;tagged&quot; DFA regex engine, inspired by libtre (fork by Roman Cheplyaka)
+		A new all Haskell "tagged" DFA regex engine, inspired by libtre (fork by Roman Cheplyaka)
 	</longdescription>
 </pkgmetadata>

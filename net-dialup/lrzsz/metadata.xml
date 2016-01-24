@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>embedded</herd>
+<maintainer type="project">
+	<email>embedded@gentoo.org</email>
+	<name>Embedded Gentoo</name>
+</maintainer>
 <longdescription>Communication package providing the X, Y, and ZMODEM file transfer protocols</longdescription>
 </pkgmetadata>

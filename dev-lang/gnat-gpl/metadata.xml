@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>ada</herd>
+<maintainer type="project">
+	<email>ada@gentoo.org</email>
+	<name>Gentoo Resources for Ada</name>
+</maintainer>
 <longdescription>
 GNAT, the (GN)U (A)da (T)oolchain, is a high performance Ada 95
 development environment based on the mature GCC compiler technology. It

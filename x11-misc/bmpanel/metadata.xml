@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-	</maintainer>
 	<use>
-		<flag name='libev'>Use the libev event loop interface</flag>
-		<flag name='libevent'>Use the libevent event loop interface</flag>
+		<flag name="libev">Use the libev event loop interface</flag>
+		<flag name="libevent">Use the libevent event loop interface</flag>
 	</use>
 </pkgmetadata>

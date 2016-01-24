@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>shell-tools</herd>
+  <maintainer type="project">
+    <email>shell-tools@gentoo.org</email>
+    <name>Gentoo Shell Tools Project</name>
+  </maintainer>
   <longdescription lang="en">
   The GNU Talk Filters are filter programs that convert ordinary English text
   into text that mimics a stereotyped or otherwise humorous dialect. These

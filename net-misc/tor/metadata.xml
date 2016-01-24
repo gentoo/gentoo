@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
 	<use>
-		<flag name='bufferevents'>Use libevent's buffered IO implementation (unstable, buggy)</flag>
-		<flag name='stats'>Enable tracking of how much of each kind of resource we download</flag>
-		<flag name='nat-pmp'>Enable NAT Port Mapping Protocol</flag>
-		<flag name='scrypt'>Use <pkg>app-crypt/libscrypt</pkg> for the scrypt algorithm</flag>
-		<flag name='tor-hardening'>Compile tor with hardening on vanilla compilers/linkers</flag>
-		<flag name='transparent-proxy'>Enable transparent proxying</flag>
-		<flag name='web'>Build a tor2web service instead of a tor client</flag>
+		<flag name="bufferevents">Use libevent's buffered IO implementation (unstable, buggy)</flag>
+		<flag name="stats">Enable tracking of how much of each kind of resource we download</flag>
+		<flag name="nat-pmp">Enable NAT Port Mapping Protocol</flag>
+		<flag name="scrypt">Use <pkg>app-crypt/libscrypt</pkg> for the scrypt algorithm</flag>
+		<flag name="tor-hardening">Compile tor with hardening on vanilla compilers/linkers</flag>
+		<flag name="transparent-proxy">Enable transparent proxying</flag>
+		<flag name="web">Build a tor2web service instead of a tor client</flag>
 	</use>
 </pkgmetadata>

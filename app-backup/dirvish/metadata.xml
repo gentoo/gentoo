@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>app-backup</herd>
 	<longdescription lang="en">Dirvish is a fast, disk based, rotating network
 		backup system. With dirvish you can maintain a set of complete images 
 		of your filesystems with unattended creation and expiration. A dirvish 

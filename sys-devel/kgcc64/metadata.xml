@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>toolchain</herd>
+<maintainer type="project">
+<email>toolchain@gentoo.org</email>
+<name>Gentoo Toolchain Project</name>
+</maintainer>
 <use>
-<flag name='multislot'>Allow for SLOTs to include minor version (eg. 3.3.4 instead
+<flag name="multislot">Allow for SLOTs to include minor version (eg. 3.3.4 instead
 of just 3.3)</flag>
 <flag name="regression-test">Run the testsuite and install the results (requires FEATURES=test)</flag>
 </use>
 </pkgmetadata>
-

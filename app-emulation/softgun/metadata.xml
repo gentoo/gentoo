@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>arm</herd>
+	<maintainer type="project">
+		<email>arm@gentoo.org</email>
+		<name>Gentoo Linux ARM Development</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">softgun</remote-id>
 	</upstream>

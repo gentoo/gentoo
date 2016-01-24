@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>gurligebis@gentoo.org</email>
 		<name>Bjarke Istrup Pedersen</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>zerochaos@gentoo.org</email>
 		<name>Rick Farina</name>
 	</maintainer>
 	<use>
-		<flag name='ap'>Add support for access point mode</flag>
-		<flag name='eap-sim'>Add support for EAP-SIM authentication algorithm</flag>
-		<flag name='fasteap'>Add support for FAST-EAP authentication algorithm</flag>
-		<flag name='hs2-0'>Add support for 802.11u and Passpoint for HotSpot 2.0</flag>
-		<flag name='p2p'>Add support for Wi-Fi Direct mode</flag>
-		<flag name='ps3'>Add support for ps3 hypervisor driven gelic wifi</flag>
-		<flag name='tdls'>Add support for Tunneled Direct Link Setup (802.11z)</flag>
-		<flag name='uncommon-eap-types'>Add support for GPSK, SAKE, GPSK_SHA256, IKEV2 and EKE</flag>
-		<flag name='wps'>Add support for Wi-Fi Protected Setup</flag>
-		<flag name='wimax'>Add support for Wimax EAP-PEER authentication algorithm</flag>
-		<flag name='smartcard'>Add support for smartcards</flag>
+		<flag name="ap">Add support for access point mode</flag>
+		<flag name="eap-sim">Add support for EAP-SIM authentication algorithm</flag>
+		<flag name="fasteap">Add support for FAST-EAP authentication algorithm</flag>
+		<flag name="hs2-0">Add support for 802.11u and Passpoint for HotSpot 2.0</flag>
+		<flag name="p2p">Add support for Wi-Fi Direct mode</flag>
+		<flag name="ps3">Add support for ps3 hypervisor driven gelic wifi</flag>
+		<flag name="tdls">Add support for Tunneled Direct Link Setup (802.11z)</flag>
+		<flag name="uncommon-eap-types">Add support for GPSK, SAKE, GPSK_SHA256, IKEV2 and EKE</flag>
+		<flag name="wps">Add support for Wi-Fi Protected Setup</flag>
+		<flag name="wimax">Add support for Wimax EAP-PEER authentication algorithm</flag>
+		<flag name="smartcard">Add support for smartcards</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:wpa_supplicant:wpa_supplicant</remote-id>

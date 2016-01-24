@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-ftp</herd>
 	<longdescription lang="en">
 		TLSWRAP is a TLS/SSL FTP wrapper/proxy which allows to use TLS with
 		every FTP client

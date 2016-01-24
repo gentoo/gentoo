@@ -1,32 +1,35 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>base-system</herd>
-<maintainer restrict='&gt;=sys-boot/grub-2'>
+<maintainer restrict="&gt;=sys-boot/grub-2" type="person">
 	<email>floppym@gentoo.org</email>
 </maintainer>
+<maintainer type="project">
+	<email>base-system@gentoo.org</email>
+	<name>Gentoo Base System</name>
+</maintainer>
 <use>
-	<flag name='device-mapper'>
+	<flag name="device-mapper">
 		Enable support for device-mapper from <pkg>sys-fs/lvm2</pkg>
 	</flag>
-	<flag name='efiemu'>
+	<flag name="efiemu">
 		Build and install the efiemu runtimes
 	</flag>
-	<flag name='fonts'>Build and install fonts for the gfxterm module</flag>
-	<flag name='mount'>
+	<flag name="fonts">Build and install fonts for the gfxterm module</flag>
+	<flag name="mount">
 		Build and install the grub-mount utility
 	</flag>
-	<flag name='libzfs'>
+	<flag name="libzfs">
 		Enable support for <pkg>sys-fs/zfs</pkg>
 	</flag>
-	<flag name='multislot'>
+	<flag name="multislot">
 		Allow concurrent installation of <pkg>sys-boot/grub:0</pkg> and
 		<pkg>sys-boot/grub:2</pkg> by renaming all programs.
 	</flag>
-	<flag name='themes'>Build and install GRUB themes (starfield)</flag>
-	<flag name='truetype'>Build and install grub-mkfont conversion utility</flag>
+	<flag name="themes">Build and install GRUB themes (starfield)</flag>
+	<flag name="truetype">Build and install grub-mkfont conversion utility</flag>
 </use>
 <upstream>
-	<remote-id type='sourceforge'>dejavu</remote-id>
+	<remote-id type="sourceforge">dejavu</remote-id>
 </upstream>
 </pkgmetadata>

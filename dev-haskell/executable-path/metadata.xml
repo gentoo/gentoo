@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
-		The documentation of &quot;System.Environment.getProgName&quot; says that
-		\&quot;However, this is hard-to-impossible to implement on some non-Unix OSes,
+		The documentation of "System.Environment.getProgName" says that
+		\"However, this is hard-to-impossible to implement on some non-Unix OSes,
 		so instead, for maximum portability, we just return the leafname
-		of the program as invoked.\&quot;
+		of the program as invoked.\"
 		This library tries to provide the missing path.
 	</longdescription>
 </pkgmetadata>

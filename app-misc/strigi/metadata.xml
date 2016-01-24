@@ -6,5 +6,8 @@
 		<flag name="inotify">Enable support for inotify.</flag>
 		<flag name="log">Enables advanced logging through <pkg>dev-libs/log4cxx</pkg>.</flag>
 	</use>
-	<herd>kde</herd>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
 </pkgmetadata>

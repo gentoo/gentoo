@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-	</maintainer>
 	<longdescription>Linuxsms is a cool script in Perl for send SMS messages to mobile phones through a SMS gateway.</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">linuxsms</remote-id>

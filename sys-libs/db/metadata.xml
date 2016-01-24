@@ -1,7 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>base-system</herd>
+<maintainer type="project">
+	<email>base-system@gentoo.org</email>
+	<name>Gentoo Base System</name>
+</maintainer>
 <longdescription>
 The Berkeley Database (Berkeley DB) is a programmatic toolkit
 that provides embedded database support for both traditional and client/server
@@ -11,7 +14,7 @@ logging, shared memory caching and database recovery. DB supports C, C++, Java,
 and Perl APIs. DB is available for a wide variety of UNIX platforms as well as
 Windows NT and Windows '95 (MSVC 4, 5 and 6).
 </longdescription>
-<longdescription lang='nl'>
+<longdescription lang="nl">
 De Berkeley Database is een programmatische toolkit
 die embedded database support verzorg voor en traditionele en client/server
 applicaties. Berkeley DB bevat b+tree, rij, uitgebreide lineaire hashing, vaste
@@ -21,6 +24,6 @@ Perl API's. DB is beschikbaar voor veel UNIX platformen en
 Windows.
 </longdescription>
 <use>
-	<flag name='rpc'>Enable rpc client/server</flag>
+	<flag name="rpc">Enable rpc client/server</flag>
 </use>
 </pkgmetadata>

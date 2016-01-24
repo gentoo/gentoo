@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
  <email>vapier@gentoo.org</email>
  <description>feel free to update</description>
 </maintainer>
-<maintainer>
+<maintainer type="person">
 	<email>alexxy@gentoo.org</email>
 	<name>Alexey Shvetsov</name>
 </maintainer>

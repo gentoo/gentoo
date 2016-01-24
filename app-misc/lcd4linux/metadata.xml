@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-<email>maintainer-needed@gentoo.org</email>
-</maintainer>
 <longdescription lang="en">
   LCD4Linux is a small program that grabs information from the kernel and some
   subsystems and displays it on an external liquid crystal display. It is
   fully configurable and supports many data sources, displays and plugins.
 </longdescription>
 <use>
-  <flag name='mpd'>Add support for display of mpd controlled music
+  <flag name="mpd">Add support for display of mpd controlled music
     (<pkg>media-libs/libmpd</pkg>)</flag>
 </use>
 </pkgmetadata>

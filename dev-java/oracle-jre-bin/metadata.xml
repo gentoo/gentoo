@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>java</herd>
+  <maintainer type="project">
+    <email>java@gentoo.org</email>
+    <name>Java</name>
+  </maintainer>
   <longdescription>Oracle Java SE Runtime Environment, Official Binary Distribution</longdescription>
   <use>
     <flag name="headless-awt">Don't install the X backend for AWT, needed by some GUIs (used to be X flag)</flag>

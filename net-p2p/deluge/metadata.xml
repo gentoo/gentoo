@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>net-p2p</herd>
 <use>
-	<flag name='setproctitle'>Install dependencies needed for beautifying
+	<flag name="setproctitle">Install dependencies needed for beautifying
 		the process name</flag>
-	<flag name='webinterface'>Install dependencies needed for the web
+	<flag name="webinterface">Install dependencies needed for the web
 		interface</flag>
 </use>
 </pkgmetadata>

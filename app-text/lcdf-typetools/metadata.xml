@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>fonts</herd>
-<maintainer>
+<maintainer type="person">
   <email>aballier@gentoo.org</email>
   <name>Alexis Ballier</name>
+</maintainer>
+<maintainer type="project">
+  <email>fonts@gentoo.org</email>
+  <name>Fonts</name>
 </maintainer>
 <longdescription lang="en">
   The LCDF Typetools package contains several programs for manipulating
@@ -13,7 +16,7 @@
   formerly distributed as part of a different package (mminstance).
 </longdescription>
 <use>
-  <flag name='kpathsea'>Enable integration with kpathsea search library
+  <flag name="kpathsea">Enable integration with kpathsea search library
     (TeX related)</flag>
 </use>
 </pkgmetadata>

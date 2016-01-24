@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>x11</herd>
+	<maintainer type="project">
+		<email>x11@gentoo.org</email>
+		<name>X11</name>
+	</maintainer>
 	<longdescription>
 	Freeglut provides an open-source alternative to the OpenGL Utility Toolkit
 	(GLUT) library. It is actively developed and maintained, while not being

@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 	<email>prometheanfire@gentoo.org</email>
 	</maintainer>
-	<herd>sysadmin</herd>
-	<herd>ruby</herd>
+	<maintainer type="project">
+		<email>sysadmin@gentoo.org</email>
+		<name>Gentoo Sysadmin Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>ruby@gentoo.org</email>
+		<name>Gentoo Ruby Project</name>
+	</maintainer>
 	<longdescription lang="en">
 		Centralised configuration management for networks
 		Puppet lets you centrally manage every important aspect of your system
@@ -21,9 +27,9 @@
 	</longdescription>
 	<use>
 <!--		<flag name='puppetdb'>Enable puppetdb support</flag> -->
-		<flag name='augeas'>Enable augeas support</flag>
-		<flag name='diff'>Enable diff support</flag>
-		<flag name='rrdtool'>Enable rrdtool support</flag>
-		<flag name='shadow'>Enable shadow support</flag>
+		<flag name="augeas">Enable augeas support</flag>
+		<flag name="diff">Enable diff support</flag>
+		<flag name="rrdtool">Enable rrdtool support</flag>
+		<flag name="shadow">Enable shadow support</flag>
 	</use>
 </pkgmetadata>

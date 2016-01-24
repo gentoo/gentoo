@@ -1,17 +1,23 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>base-system</herd>
-<herd>proxy-maintainers</herd>
-<maintainer>
+<maintainer type="person">
 	<email>idella4@gentoo.org</email>
 </maintainer>
-<maintainer>
+<maintainer type="person">
 	<email>gokturk@binghamton.edu</email>
 	<name>Gokturk Yuksek</name>
 	<description>Proxy maintainer, CC him on bugs.</description>
 </maintainer>
+<maintainer type="project">
+	<email>base-system@gentoo.org</email>
+	<name>Gentoo Base System</name>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
 <upstream>
-	<remote-id type='sourceforge'>gkernel</remote-id>
+	<remote-id type="sourceforge">gkernel</remote-id>
 </upstream>
 </pkgmetadata>

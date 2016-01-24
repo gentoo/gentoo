@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>web-apps</herd>
-  <herd>proxy-maintainers</herd>
-  <maintainer>
+  <maintainer type="person">
 	<email>lists@xunil.at</email>
 	<name>Stefan Weichinger</name>
 	<description>Proxy maintainer</description>
+  </maintainer>
+  <maintainer type="project">
+  <email>web-apps@gentoo.org</email>
+  <name>Gentoo Webapps</name>
+  </maintainer>
+  <maintainer type="project">
+  <email>proxy-maint@gentoo.org</email>
+  <name>Proxy Maintainers</name>
   </maintainer>
   <use>
 	<flag name="mod_perl">Provide all dependencies for use of mod_perl instead of cgi</flag>
   </use>
 </pkgmetadata>
-

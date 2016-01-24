@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-dialup</herd>
 	<longdescription>sercd is an RFC 2217-compliant serial port redirector.
 It lets you share a serial port through network.</longdescription>
 	<upstream>

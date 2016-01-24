@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>mysql</herd>
-  <herd>python</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>grknight@gentoo.org</email>
     <name>Brian Evans</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>mysql-bugs@gentoo.org</email>
+    <name>MySQL</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
   </maintainer>
   <upstream>
     <remote-id type="github">PyMySQL/PyMySQL</remote-id>

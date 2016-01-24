@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>mysql</herd>
-  <maintainer restrict="dev-db/percona-server[libressl]">
+<maintainer restrict="dev-db/percona-server[libressl]" type="person">
     <email>hasufell@gentoo.org</email>
     <description>Libressl issues. Only assign if it's a direct Libressl issue. Do not directly assign for anything else.</description>
   </maintainer>
+<maintainer type="project">
+    <email>mysql-bugs@gentoo.org</email>
+    <name>MySQL</name>
+  </maintainer>
 <use>
-  <flag name='client-libs'>Build the libmysqlclient libraries</flag>
-  <flag name='embedded'>Build embedded server (libmysqld)</flag>
-  <flag name='extraengine'>Add support for alternative storage engines (Archive, CSV, Blackhole, Federated(X), Partition)</flag>
+  <flag name="client-libs">Build the libmysqlclient libraries</flag>
+  <flag name="embedded">Build embedded server (libmysqld)</flag>
+  <flag name="extraengine">Add support for alternative storage engines (Archive, CSV, Blackhole, Federated(X), Partition)</flag>
   <flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for allocations.</flag>
-  <flag name='latin1'>Use LATIN1 encoding instead of UTF8</flag>
-  <flag name='libressl'>Enable SSL connections and crypto functions using <pkg>dev-libs/libressl</pkg></flag>
-  <flag name='openssl'>Enable SSL connections and crypto functions using <pkg>dev-libs/openssl</pkg></flag>
-  <flag name='profiling'>Add support for statement profiling (requires USE=community).</flag>
-  <flag name='server'>Build the server program</flag>
+  <flag name="latin1">Use LATIN1 encoding instead of UTF8</flag>
+  <flag name="libressl">Enable SSL connections and crypto functions using <pkg>dev-libs/libressl</pkg></flag>
+  <flag name="openssl">Enable SSL connections and crypto functions using <pkg>dev-libs/openssl</pkg></flag>
+  <flag name="profiling">Add support for statement profiling (requires USE=community).</flag>
+  <flag name="server">Build the server program</flag>
   <flag name="systemtap">Build support for profiling and tracing using <pkg>dev-util/systemtap</pkg></flag>
-  <flag name='test'>Install upstream testsuites for end use.</flag>
-  <flag name='tokudb'>Add support for TokuDB storage engine</flag>
-  <flag name='tokudb-backup-plugin'>Builds the TokuDB backup plugin</flag>
-  <flag name='tools'>Build the command line tools (mysql, mysqldump, mysqladmin, etc)</flag>
-  <flag name='yassl'>Enable SSL connections and crypto functions using the bundled yaSSL</flag>
+  <flag name="test">Install upstream testsuites for end use.</flag>
+  <flag name="tokudb">Add support for TokuDB storage engine</flag>
+  <flag name="tokudb-backup-plugin">Builds the TokuDB backup plugin</flag>
+  <flag name="tools">Build the command line tools (mysql, mysqldump, mysqladmin, etc)</flag>
+  <flag name="yassl">Enable SSL connections and crypto functions using the bundled yaSSL</flag>
 </use>
 </pkgmetadata>

@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-  <email>maintainer-needed@gentoo.org</email>
-</maintainer>
 <longdescription>This package installs all the gkrellm2 themes available at http://www.muhri.net/gkrellm</longdescription>
 </pkgmetadata>

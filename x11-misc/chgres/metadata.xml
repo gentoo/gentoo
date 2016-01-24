@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>desktop-misc</herd>
+	<maintainer type="project">
+		<email>desktop-misc@gentoo.org</email>
+		<name>Gentoo Desktop Miscellaneous Project</name>
+	</maintainer>
 	<longdescription>chgres is a small tool which uses the XFree86-VidModeExtension X11 extension to query and set the resolution of your XFree86 display, without restarting it. It has a simple command-line user interface which makes it suitable for use in shell scripts.</longdescription>
 </pkgmetadata>

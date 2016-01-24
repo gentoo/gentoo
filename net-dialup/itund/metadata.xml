@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-dialup</herd>
 	<longdescription lang="en">
 		ItunD (ISDN tunnel Daemon) provides a network tunnel over ISDN lines
 		using the CAPI interface. The ISDN4Linux isdn-net (rawIP) devices are

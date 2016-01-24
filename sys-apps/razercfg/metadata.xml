@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 <email>joker@gentoo.org</email>
 <name>Christian Birchinger</name>
 </maintainer>
@@ -15,8 +15,8 @@ commandline tool; and "qrazercfg", a QT4 based graphical device configuration
 tool.
 </longdescription>
 <use>
-	<flag name='pm-utils'>Installs the pm-utils hooks for suspend/resume and
+	<flag name="pm-utils">Installs the pm-utils hooks for suspend/resume and
 		requires <pkg>sys-power/pm-utils</pkg></flag>
-	<flag name='qt4'>Installs a qt UI. Requires <pkg>dev-python/pyside</pkg></flag>
+	<flag name="qt4">Installs a qt UI. Requires <pkg>dev-python/pyside</pkg></flag>
 </use>
 </pkgmetadata>

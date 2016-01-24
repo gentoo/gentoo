@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>gnome</herd>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
+	</maintainer>
 	<longdescription lang="en">
 		This package provides the ISO-639 Language code list, the ISO-3166
 		Territory code list, and ISO-3166-2 sub-territory lists, and all their
 		translations in gettext .po form.
 	</longdescription>
 </pkgmetadata>
-

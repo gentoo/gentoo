@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>vim</herd>
-	<herd>proxy-maintainers</herd>
 	<!-- Proxy maintainer. Be sure to also CC vim@ on any bugs. -->
-	<maintainer>
+	<maintainer type="person">
 		<email>jkt@gentoo.org</email>
 		<name>Jan Kundrát</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>vim@gentoo.org</email>
+		<name>Gentoo Vim Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
 		Vim spell files for Czech (cs). Supported character sets are cp1250,
@@ -17,4 +23,3 @@
 		iso-8859-2 a UTF-8.
 	</longdescription>
 </pkgmetadata>
-

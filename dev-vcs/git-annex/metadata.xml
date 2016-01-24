@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		git-annex allows managing files with git, without checking the file
 		contents into git. While that may seem paradoxical, it is useful when
@@ -30,7 +33,7 @@
 		<flag name="dns">Enable the haskell DNS library for DNS lookup</flag>
 		<flag name="ekg">Enable use of EKG to monitor git-annex as it runs.</flag>
 		<flag name="feed">Enable podcast feed support</flag>
-		<flag name='network-uri'>Get Network.URI from the network-uri package.</flag>
+		<flag name="network-uri">Get Network.URI from the network-uri package.</flag>
 		<flag name="production">Enable production build (slower build; faster binary)</flag>
 		<flag name="pairing">Enable pairing of git annex repositories</flag>
 		<flag name="quvi">Enable use of quvi to download videos</flag>

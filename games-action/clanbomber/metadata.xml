@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>games</herd>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
 <longdescription>
 ClanBomber is a free (GPL) Bomberman-like multiplayer game that uses ClanLib, a free multi 
 platform C++ game SDK. First "ClanBomber" was only a working title for a small game started in 

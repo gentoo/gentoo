@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>s390</herd>
-  <herd>proxy-maintainers</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>robbat2@gentoo.org</email>
     <name>Robin H. Johnson</name>
     <description>Maintainer</description>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>jieryn@gmail.com</email>
     <name>Jesse Farinacci</name>
     <description>Maintainer by proxy, please CC on all bugs.</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>s390@gentoo.org</email>
+    <name>Gentoo Linux s390 Development</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <upstream>
     <remote-id type="sourceforge">x3270</remote-id>

@@ -7,5 +7,8 @@
 		<flag name="shapefile">Enable support for ESRI shapefiles</flag>
 		<flag name="zip">Enable support for reading and displaying .kmz files</flag>
 	</use>
-	<herd>kde</herd>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
 </pkgmetadata>

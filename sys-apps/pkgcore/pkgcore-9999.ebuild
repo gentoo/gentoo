@@ -41,8 +41,7 @@ pkg_setup() {
 }
 
 python_compile_all() {
-	[[ ${PV} == *9999 ]] && esetup.py build_man
-	use doc && esetup.py build_docs
+	esetup.py build_man $(usex doc "build_docs" "")
 }
 
 python_test() {

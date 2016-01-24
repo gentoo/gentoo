@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>gentoo@xayto.net</email>
 		<name>Craig Inches</name>
 		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
-	<herd>web-apps</herd>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>web-apps@gentoo.org</email>
+		<name>Gentoo Webapps</name>
+	</maintainer>
 	<use>
 		<flag name="extras">Optional Perl modules</flag>
 		<flag name="modperl">Enable <pkg>www-apache/mod_perl</pkg> support</flag>

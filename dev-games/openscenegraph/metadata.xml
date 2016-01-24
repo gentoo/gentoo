@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>games</herd>
-<maintainer>
+<maintainer type="person">
 	<email>reavertm@gentoo.org</email>
 	<name>Maciej Mrozowski</name>
 </maintainer>
+<maintainer type="project">
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
+  </maintainer>
 <longdescription lang="en">
 The OpenSceneGraph is an open source high performance 3D graphics toolkit, used by application developers in fields such as visual simulation, games, virtual reality, scientific visualization and modelling. Written entirely in Standard C++ and OpenGL it runs on all Windows platforms, OSX, GNU/Linux, IRIX, Solaris, HP-Ux, AIX and FreeBSD operating systems. The OpenSceneGraph is now well established as the world leading scene graph technology, used widely in the vis-sim, space, scientific, oil-gas, games and virtual reality industries.
 </longdescription>

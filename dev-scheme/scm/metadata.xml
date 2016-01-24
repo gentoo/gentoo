@@ -1,31 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>scheme</herd>
+	<maintainer type="project">
+		<email>scheme@gentoo.org</email>
+		<name>Gentoo Scheme Project</name>
+	</maintainer>
 	<longdescription lang="en">
 SCM is a  Scheme implementation conforming to  Revised5 Report on the Algorithmic Language Scheme and the IEEE P1178 specification.
 	</longdescription>
 	<use>
-		<flag name='arrays'>Support for  arrays, uniform-arrays and
+		<flag name="arrays">Support for  arrays, uniform-arrays and
 			uniform-vectors.</flag>
-		<flag name='bignums'>Support for large precision integers.</flag>
-		<flag name='cautious'>SCM will always check the number of arguments to
+		<flag name="bignums">Support for large precision integers.</flag>
+		<flag name="cautious">SCM will always check the number of arguments to
 			interpreted closures.</flag>
-		<flag name='dynamic-linking'>Be able to load compiled files while
+		<flag name="dynamic-linking">Be able to load compiled files while
 			running.</flag>
-		<flag name='engineering-notation'>Floats to display in engineering
+		<flag name="engineering-notation">Floats to display in engineering
 			notation (exponents always multiples of 3) instead of scientific
 			notation.</flag>
-		<flag name='gsubr'>generalized c arguments: for arbitrary 
+		<flag name="gsubr">generalized c arguments: for arbitrary 
 			(more then 11) arguments to C functions.</flag>
-		<flag name='inexact'>Support for floating point numbers.</flag>
-		<flag name='ioext'>Commonly available I/O extensions: line I/O, file
+		<flag name="inexact">Support for floating point numbers.</flag>
+		<flag name="ioext">Commonly available I/O extensions: line I/O, file
 			positioning, file delete and rename, and directory functions.</flag>
-		<flag name='libscm'>Build and install libscm.a and related headers</flag>
-		<flag name='macro'>C level support for hygienic and referentially 
+		<flag name="libscm">Build and install libscm.a and related headers</flag>
+		<flag name="macro">C level support for hygienic and referentially 
 			transparent macros (syntax-rules macros).</flag>
-		<flag name='regex'>String regular expression matching.</flag>
-		<flag name='unix'>Support for: nice, acct, lstat, readlink, symlink,
+		<flag name="regex">String regular expression matching.</flag>
+		<flag name="unix">Support for: nice, acct, lstat, readlink, symlink,
 			mknod and sync.</flag>
 	</use>
 </pkgmetadata>

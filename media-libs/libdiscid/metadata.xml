@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sound</herd>
+  <maintainer type="project">
+    <email>sound@gentoo.org</email>
+    <name>Gentoo Sound project</name>
+  </maintainer>
   <longdescription>libdiscid is a C library for creating MusicBrainz DiscIDs
     from audio CDs. It reads a CD's table of contents (TOC) and generates an
     identifier which can be used to lookup the CD at MusicBrainz.

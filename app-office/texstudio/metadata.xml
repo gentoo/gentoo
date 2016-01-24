@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>mrueg@gentoo.org</email>
 		<name>Manuel Rüger</name>
 	</maintainer>
-	<herd>tex</herd>
+	<maintainer type="project">
+		<email>tex@gentoo.org</email>
+		<name>Gentoo TeX Project</name>
+	</maintainer>
 	<use>
 		<flag name="video">Use phonon for video embedding</flag>
 	</use>

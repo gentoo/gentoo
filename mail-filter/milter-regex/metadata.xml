@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>net-mail</herd>
+<maintainer type="project">
+	<email>net-mail@gentoo.org</email>
+	<name>Net-Mail</name>
+</maintainer>
 <longdescription>milter-regex is a very simple milter-based plugin that rejects or discards messages matching
 regular expressions. It doesn't add much processing overhead, so even a busy mail server can afford to run it.</longdescription>
 </pkgmetadata>

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>forensics</herd>
+<maintainer type="project">
+	<email>forensics@gentoo.org</email>
+	<name>Gentoo Forensics Project</name>
+</maintainer>
 <longdescription>
 Magic Rescue scans a block device for file types it knows how to recover and calls an external program to extract them. It looks
 at "magic bytes" in file contents, so it can be used both as an undelete utility and for recovering a corrupted drive or

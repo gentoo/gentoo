@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>miknix@gentoo.org</email>
     <name>Angelo Arrifano</name>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>xmw@gentoo.org</email>
     <name>Michael Weber</name>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>marbre@linux.sungazer.de</email>
     <name>Marius Brehler</name>
   </maintainer>

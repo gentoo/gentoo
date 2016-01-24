@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>accessibility</herd>
+	<maintainer type="project">
+		<email>accessibility@gentoo.org</email>
+		<name>Gentoo Accessibility Project</name>
+	</maintainer>
 	<use>
-		<flag name='kdepim'>Use <pkg>kde-apps/kdepimlibs</pkg></flag>
-		<flag name='opencv'>Use <pkg>media-libs/opencv</pkg></flag>
-		<flag name='sphinx'>Build sphinx backend (pulls <pkg>app-accessibility/julius</pkg> if disabled</flag>
+		<flag name="kdepim">Use <pkg>kde-apps/kdepimlibs</pkg></flag>
+		<flag name="opencv">Use <pkg>media-libs/opencv</pkg></flag>
+		<flag name="sphinx">Build sphinx backend (pulls <pkg>app-accessibility/julius</pkg> if disabled</flag>
 	</use>
 </pkgmetadata>
-

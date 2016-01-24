@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
-    <email>maintainer-needed@gentoo.org</email>
-  </maintainer>
   <longdescription>Flasm disassembles your entire SWF including all the
       timelines and events.  Looking at disassembly, you learn how the Flash
       compiler works, which improves your ActionScript skills. You can also do

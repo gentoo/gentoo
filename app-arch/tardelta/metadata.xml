@@ -4,7 +4,7 @@
 	<upstream>
 		<remote-id type="github">zmedico/tardelta</remote-id>
 	</upstream>
-	<maintainer>
+	<maintainer type="person">
 		<email>zmedico@gentoo.org</email>
 	</maintainer>
 </pkgmetadata>

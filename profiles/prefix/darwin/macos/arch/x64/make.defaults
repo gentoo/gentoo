@@ -8,3 +8,5 @@ DEFAULT_ABI="amd64"
 ABI="amd64"
 IUSE_IMPLICIT="abi_x86_64"
 LIBDIR_amd64="lib"
+# We use Clang, let it figure out what is the best to use
+CFLAGS="-march=native"

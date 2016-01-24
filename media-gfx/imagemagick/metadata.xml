@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>graphics</herd>
+  <maintainer type="project">
+    <email>graphics@gentoo.org</email>
+    <name>Gentoo Graphics Project</name>
+  </maintainer>
   <use>
     <flag name="autotrace">Use <pkg>media-gfx/autotrace</pkg> to convert bitmaps into vector graphics</flag>
     <flag name="corefonts">Use <pkg>media-fonts/corefonts</pkg> which is required by some commands</flag>

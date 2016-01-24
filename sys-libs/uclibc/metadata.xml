@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>embedded</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>vapier@gentoo.org</email>
     <description>Primary Maintainer</description>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>blueness@gentoo.org</email>
     <name>Anthony G. Basile</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>embedded@gentoo.org</email>
+    <name>Embedded Gentoo</name>
   </maintainer>
   <longdescription>
 uClibc pronounced yew-see-lib-see is a C library for developing embedded Linux 
@@ -20,11 +23,11 @@ systems with support for alpha, ARM, cris, i386, i960, h8300, m68k, mips/mipsel,
 SH, SPARC, and v850 processors.
 </longdescription>
 <use>
-	<flag name='rpc'>Enable sun nis/rpc support (you should use libtirpc though)</flag>
-	<flag name='ssp'>Force the use of ssp to be built into a hardened uclibc setup</flag>
-	<flag name='savedconfig'>Adds support for user defined configs</flag>
-	<flag name='uclibc-compat'>Build uclibc with backwards compatible
+	<flag name="rpc">Enable sun nis/rpc support (you should use libtirpc though)</flag>
+	<flag name="ssp">Force the use of ssp to be built into a hardened uclibc setup</flag>
+	<flag name="savedconfig">Adds support for user defined configs</flag>
+	<flag name="uclibc-compat">Build uclibc with backwards compatible
 		options</flag>
-	<flag name='wordexp'>Add support for word expansion (wordexp.h)</flag>
+	<flag name="wordexp">Add support for word expansion (wordexp.h)</flag>
 </use>
 </pkgmetadata>

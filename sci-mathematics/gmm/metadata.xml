@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
   <email>amynka@gentoo.org</email>
 </maintainer>
-<longdescription lang='en'>
+<longdescription lang="en">
   Gmm++ is a generic C++ template library for sparse, dense and
   skyline matrices. It is built as a set of generic algorithms (mult,
   add, copy, sub-matrices, dense and sparse solvers ...) for any

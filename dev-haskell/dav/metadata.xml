@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		This is a library for the Web Distributed Authoring and Versioning
 		(WebDAV) extensions to HTTP.  At present it supports a very small
@@ -11,6 +14,6 @@
 		command-line operation.
 	</longdescription>
 	<use>
-		<flag name='network-uri'>Get Network.URI from the network-uri package.</flag>
+		<flag name="network-uri">Get Network.URI from the network-uri package.</flag>
 	</use>
 </pkgmetadata>

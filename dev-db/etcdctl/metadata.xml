@@ -7,7 +7,7 @@
     <doc>https://github.com/coreos/etcdctl/blob/master/README.md</doc>
     <remote-id type="github">coreos/etcdctl</remote-id>
   </upstream>
-  <maintainer>
+  <maintainer type="person">
     <email>zmedico@gentoo.org</email>
   </maintainer>
 </pkgmetadata>

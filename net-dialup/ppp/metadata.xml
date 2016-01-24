@@ -1,11 +1,14 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
   </maintainer>
-  <herd>base-system</herd>
+  <maintainer type="project">
+    <email>base-system@gentoo.org</email>
+    <name>Gentoo Base System</name>
+  </maintainer>
   <longdescription>ppp (Paul's PPP Package) is an open source package which
   implements the Point-to-Point Protocol</longdescription>
   <use>

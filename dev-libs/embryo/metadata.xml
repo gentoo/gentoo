@@ -1,7 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>enlightenment</herd>
+<maintainer type="project">
+	<email>enlightenment@gentoo.org</email>
+	<name>Project Enlightenment</name>
+</maintainer>
 <longdescription>
 Embryo is primarily a shared library that gives you an API to load and control
 interpredted programs compiled into the abstract machine bytecode that it

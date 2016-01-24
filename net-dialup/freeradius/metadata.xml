@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>net-dialup</herd>
   <use>
-    <flag name='pcap'>
+    <flag name="pcap">
       Build the RADIUS sniffer which requires <pkg>net-libs/libpcap</pkg>.
     </flag>
   </use>

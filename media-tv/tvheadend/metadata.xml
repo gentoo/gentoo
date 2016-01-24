@@ -1,23 +1,24 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>wraeth@wraeth.id.au</email>
 		<name>Sam Jorna</name>
 		<description>Proxy maintaner, to be assugned to bugs</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
 		<flag name="capmt">Enable support for capmt (dvbapi) protocol</flag>
 		<flag name="constcw">Enable support for the constcw protocol</flag>
 		<flag name="cwc">Enable support for the cwc (newcamd) protocol</flag>
-		<flag name="epoll">Enable epoll Linux system call</flag>
 		<flag name="hdhomerun">Enable support for the HDHomeRun device</flag>
 		<flag name="iptv">Enable support for Internet Protocol TV</flag>
 		<flag name="satip">Enable support for IP-based Satellite TV</flag>
 		<flag name="timeshift">Enable TimeShift support</flag>
 		<flag name="xmltv">Use <pkg>media-tv/xmltv</pkg></flag>
-		<flag name="ccache">Use <pkg>dev-util/ccache</pkg></flag>
 		<flag name="dvbscan">Use <pkg>media-tv/linuxtv-dvb-apps</pkg></flag>
 		<flag name="imagecache">Enable support for image caching</flag>
 		<flag name="uriparser">Use <pkg>dev-libs/uriparser</pkg></flag>

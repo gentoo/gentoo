@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-	<email>maintainer-needed@gentoo.org</email>
-</maintainer>
 <longdescription>The enterprise-class Open Source LDAP server for Linux</longdescription> 
 <use>
-	<flag name='pam-passthru'>Enable pam-passthru plugin - for simple and fast system services used in ldap</flag>
-	<flag name='dna'>Enable dna (distributed numeric assignment ) plugin -  to
+	<flag name="pam-passthru">Enable pam-passthru plugin - for simple and fast system services used in ldap</flag>
+	<flag name="dna">Enable dna (distributed numeric assignment ) plugin -  to
 		automatically assign unique uid numbers to new user entries as they are created.</flag>
-	<flag name='presence'>Enable presence plugin - non-stabdart syntax
+	<flag name="presence">Enable presence plugin - non-stabdart syntax
 		validation</flag>
-	<flag name='bitwise'>Enable bitwise plugin - supported data in raw/bitwise
+	<flag name="bitwise">Enable bitwise plugin - supported data in raw/bitwise
 		format</flag>
-	 <flag name='autobind'>Enable auto bind over unix domain socket (LDAPI)
+	 <flag name="autobind">Enable auto bind over unix domain socket (LDAPI)
 		 support</flag>
-	 <flag name='auto-dn-suffix'>Enable auto bind with auto dn suffix over unix
+	 <flag name="auto-dn-suffix">Enable auto bind with auto dn suffix over unix
 	 domain socket (LDAPI) support</flag>
-	 <flag name='ldapi'>Enable LDAP over unix domain socket (LDAPI) support</flag>
+	 <flag name="ldapi">Enable LDAP over unix domain socket (LDAPI) support</flag>
 </use>
 </pkgmetadata>

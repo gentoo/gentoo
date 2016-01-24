@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>java</herd>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
 	<longdescription>
 
  Java Excel API is a mature, open source java API enabling developers to read, write, and modifiy Excel spreadsheets dynamically. Now java developers can read Excel spreadsheets, modify them with a convenient and simple API, and write the changes to any output stream (e.g. disk, HTTP, database, or any socket).

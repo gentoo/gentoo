@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>toolchain</herd>
+<maintainer type="project">
+ <email>toolchain@gentoo.org</email>
+ <name>Gentoo Toolchain Project</name>
+</maintainer>
 <use>
- <flag name='debug'>When USE=hardened, allow fortify/stack violations to dump core (SIGABRT) and not kill self (SIGKILL)</flag>
- <flag name='gd'>build memusage and memusagestat tools</flag>
- <flag name='nscd'>Build, and enable support for, the Name Service Cache Daemon</flag>
- <flag name='suid'>Make internal pt_chown helper setuid -- not needed if using Linux and have /dev/pts mounted with gid=5</flag>
- <flag name='systemtap'>enable systemtap static probe points</flag>
+ <flag name="debug">When USE=hardened, allow fortify/stack violations to dump core (SIGABRT) and not kill self (SIGKILL)</flag>
+ <flag name="gd">build memusage and memusagestat tools</flag>
+ <flag name="nscd">Build, and enable support for, the Name Service Cache Daemon</flag>
+ <flag name="suid">Make internal pt_chown helper setuid -- not needed if using Linux and have /dev/pts mounted with gid=5</flag>
+ <flag name="systemtap">enable systemtap static probe points</flag>
 </use>
 <upstream>
  <remote-id type="cpe">cpe:/a:gnu:glibc</remote-id>

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>alexxy@gentoo.org</email>
     <name>Alexey Shvetsov</name>
   </maintainer>
-  <herd>sci-chemistry</herd>
+  <maintainer type="project">
+    <email>sci-chemistry@gentoo.org</email>
+    <name>Gentoo Chemistry Project</name>
+  </maintainer>
   <use>
     <flag name="cuda">Use nvidia cuda toolkit for speeding up computations</flag>
     <flag name="gromacs">Add support for TNG file format</flag>

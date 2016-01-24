@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>lxqt</herd>
+  <maintainer type="project">
+    <email>lxqt@gentoo.org</email>
+    <name>LXQt</name>
+  </maintainer>
   <use>
     <flag name="about">Install <pkg>lxqt-base/lxqt-about</pkg></flag>
     <flag name="admin">Install <pkg>lxqt-base/lxqt-admin</pkg></flag>

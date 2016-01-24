@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<use>
-		<flag name='binary'>Install the binary version directly, rather than using it to build the source version.</flag>
-		<flag name='ghcbootstrap'>Bootstrap from an existing GHC installation.</flag>
-		<flag name='ghcmakebinary'>Build with less runtime depends (bundle libffi for building bootstrap binaries).</flag>
-		<flag name='llvm'>Enable llvm code generator for ghc (-fllvm).</flag>
+		<flag name="binary">Install the binary version directly, rather than using it to build the source version.</flag>
+		<flag name="ghcbootstrap">Bootstrap from an existing GHC installation.</flag>
+		<flag name="ghcmakebinary">Build with less runtime depends (bundle libffi for building bootstrap binaries).</flag>
+		<flag name="llvm">Enable llvm code generator for ghc (-fllvm).</flag>
 	</use>
 </pkgmetadata>

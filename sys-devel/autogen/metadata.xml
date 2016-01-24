@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>toolchain</herd>
+<maintainer type="project">
+ <email>toolchain@gentoo.org</email>
+ <name>Gentoo Toolchain Project</name>
+</maintainer>
 <use>
- <flag name='libopts'>install the libopts tarball (a few packages want this for developing)</flag>
+ <flag name="libopts">install the libopts tarball (a few packages want this for developing)</flag>
 </use>
 </pkgmetadata>

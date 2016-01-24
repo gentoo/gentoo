@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>hasufell@gentoo.org</email>
 		<name>Julian Ospald</name>
 	</maintainer>
 	<natural-name>PNMixer</natural-name>
-	<longdescription lang='en'>
+	<longdescription lang="en">
 		PNMixer is a simple mixer application designed to run in your system
 		tray. It integrates nicely into desktop environments that don't have
 		a panel that supports applets, and therefore can't run a mixer applet.
@@ -46,11 +46,11 @@
 		<changelog>https://github.com/nicklan/pnmixer/releases</changelog>
 		<doc lang="en">https://github.com/nicklan/pnmixer/wiki</doc>
 		<remote-id type="github">nicklan/pnmixer</remote-id>
-		<maintainer status='active'>
+		<maintainer status="active">
 			<email>hasufell@gentoo.org</email>
 			<name>Julian Ospald</name>
 		</maintainer>
-		<maintainer status='active'>
+		<maintainer status="active">
 			<email>elboulangero@gmail.com</email>
 			<name>El Boulangero</name>
 		</maintainer>

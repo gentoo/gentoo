@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
   </maintainer>
@@ -9,7 +9,7 @@
     FatRat is an open source download manager for Linux.
   </longdescription>
   <use>
-    <flag name='bittorrent'>Use the bittorrent protocol via net-libs/rb_libtorrent.</flag>
-    <flag name='webinterface'>Enable builtin webinterface.</flag>
+    <flag name="bittorrent">Use the bittorrent protocol via net-libs/rb_libtorrent.</flag>
+    <flag name="webinterface">Enable builtin webinterface.</flag>
   </use>
 </pkgmetadata>

@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>mschiff@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name='auditor'>Enables auditing capabilities for OpenDNSSEC</flag>
-		<flag name='eppclient'>Enables support for automatic submission of DNSSEC keys to an upstream epp server</flag>
-		<flag name='signer'>Enables signing capabilities for OpenDNSSEC</flag>
-		<flag name='opensc'>Enables support for storing DNSSEC keys through a <pkg>dev-libs/opensc</pkg> PKCS#11 interface</flag>
-		<flag name='softhsm'>Enables support for storing DNSSEC keys in a <pkg>dev-libs/softhsm</pkg> PKCS#11 object</flag>
-		<flag name='external-hsm'>Enables support for storing DNSSEC keys through an arbitrary non-portage PKCS#11 interface, specified through an environment variable</flag>
+		<flag name="auditor">Enables auditing capabilities for OpenDNSSEC</flag>
+		<flag name="eppclient">Enables support for automatic submission of DNSSEC keys to an upstream epp server</flag>
+		<flag name="signer">Enables signing capabilities for OpenDNSSEC</flag>
+		<flag name="opensc">Enables support for storing DNSSEC keys through a <pkg>dev-libs/opensc</pkg> PKCS#11 interface</flag>
+		<flag name="softhsm">Enables support for storing DNSSEC keys in a <pkg>dev-libs/softhsm</pkg> PKCS#11 object</flag>
+		<flag name="external-hsm">Enables support for storing DNSSEC keys through an arbitrary non-portage PKCS#11 interface, specified through an environment variable</flag>
 	</use>
 </pkgmetadata>
-

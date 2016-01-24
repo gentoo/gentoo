@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-
 <pkgmetadata>
-  <herd>scheme</herd>
+  <maintainer type="project">
+    <email>scheme@gentoo.org</email>
+    <name>Gentoo Scheme Project</name>
+  </maintainer>
   <longdescription lang="en">
 ==Grow your Program==
 Racket's interactive mode encourages experimentation, and quick scripts easily compose into larger systems. Small scripts and large systems both benefit from native-code JIT compilation. When a system gets too big to keep in your head, you can add static types.
@@ -14,19 +16,19 @@ Extend Racket whenever you need to. Mold it to better suit your tasks without sa
 Whether you're just starting out, want to know more about programming language applications or models, looking to expand your horizons, or ready to dive into research, Racket can help you become a better programmer and system builder.
   </longdescription>
   <use>
-    <flag name='backtrace'> 
+    <flag name="backtrace"> 
       Support GC backtrace dumps
     </flag>
-    <flag name='futures'> 
+    <flag name="futures"> 
       Enable racket/future library for fine-grained hardware parallelism
     </flag>
-    <flag name='places'> 
+    <flag name="places"> 
       Enable racket/place library for share-nothing parallelism and message-passing communication. Compared to futures, places are heavyweight, but they have a simpler performance model.
     </flag>
-    <flag name='plot'> 
+    <flag name="plot"> 
       Enable plot libraries
     </flag>
-    <flag name='threads'> 
+    <flag name="threads"> 
       Enable support for green threads 
     </flag>
   </use>

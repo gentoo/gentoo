@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>media-optical</herd>
   <longdescription>
     This is the disc-cover CLI only. For the web application,
     see www-apps/disc-cover. These two packages are tightly
@@ -9,7 +8,7 @@
     That's why the web application ebuild is manually slotted to 0.
   </longdescription>
   <use>
-	  <flag name='cdrom'>Enable audio CD support. This is not needed to make
+	  <flag name="cdrom">Enable audio CD support. This is not needed to make
 		  www-apps/disc-cover work.</flag>
   </use>
 </pkgmetadata>

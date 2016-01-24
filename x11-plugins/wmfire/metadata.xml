@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>desktop-dock</herd>
-<maintainer>
+<maintainer type="person">
 	<email>voyageur@gentoo.org</email>
 	<name>Bernard Cafarelli</name>
 </maintainer>
@@ -13,6 +12,6 @@ fire, possibly according to how much load the system is experiencing, or from a
 number somewhere in a file. wmfire requires very little CPU.
 </longdescription>
 <use>
-	<flag name='session'>Enable session management</flag>
+	<flag name="session">Enable session management</flag>
 </use>
 </pkgmetadata>

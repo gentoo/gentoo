@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>ada</herd>
+<maintainer type="project">
+	<email>ada@gentoo.org</email>
+	<name>Gentoo Resources for Ada</name>
+</maintainer>
 <longdescription>Charles is a data structure library for Ada95, modelled principally on the C++ STL. It features both ordered (lists and arrays) and unordered (sets and maps) collections. In addition to lists and vectors, the Charles library has set, multi-set, map, and multi-map data structure types.</longdescription>
 </pkgmetadata>

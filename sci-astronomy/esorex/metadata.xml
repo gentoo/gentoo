@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci-astronomy</herd>
+<maintainer type="project">
+	<email>sci-astronomy@gentoo.org</email>
+	<name>Gentoo Astronomy Project</name>
+</maintainer>
 <longdescription lang="en">
   EsoRex is the ESO Recipe Execution Tool. It can list, configure and
   execute CPL-based recipes from the command line. One of the features

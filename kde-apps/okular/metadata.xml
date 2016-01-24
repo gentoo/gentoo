@@ -8,5 +8,8 @@
 		<flag name="kde">Enable kactivities support</flag>
 		<flag name="mobi">Add mobipocket support</flag>
 	</use>
-	<herd>kde</herd>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
 </pkgmetadata>

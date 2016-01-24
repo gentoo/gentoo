@@ -1,11 +1,14 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>base-system</herd>
+<maintainer type="project">
+	<email>base-system@gentoo.org</email>
+	<name>Gentoo Base System</name>
+</maintainer>
 <use>
-	<flag name='nfs'>enable support for checking nfs mounts</flag>
+	<flag name="nfs">enable support for checking nfs mounts</flag>
 </use>
 <upstream>
-	<remote-id type='sourceforge'>watchdog</remote-id>
+	<remote-id type="sourceforge">watchdog</remote-id>
 </upstream>
 </pkgmetadata>

@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>games</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>hasufell@gentoo.org</email>
 		<name>Julian Ospald</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
 	<use>
-		<flag name='c++0x'>Build ROOT using the C++11 standard.</flag>
-		<flag name='crash-reporter'>Build a <pkg>dev-qt/qtgui</pkg>-based
+		<flag name="c++0x">Build ROOT using the C++11 standard.</flag>
+		<flag name="crash-reporter">Build a <pkg>dev-qt/qtgui</pkg>-based
 			tool that allows to submit crash information to the upstream
 			backtracker.</flag>
-		<flag name='debug'>Enable asserts and debug logging.</flag>
-		<flag name='static'>Link libraries statically, currently only
+		<flag name="debug">Enable asserts and debug logging.</flag>
+		<flag name="static">Link libraries statically, currently only
 			<pkg>media-libs/glew</pkg></flag>
-		<flag name='tools'>Build tools that can extract the game's data and
+		<flag name="tools">Build tools that can extract the game's data and
 			save files.</flag>
-		<flag name='unity-build'>Build everything in one big source file,
+		<flag name="unity-build">Build everything in one big source file,
 			allowing for faster build times and better optimizations at
 			the cost of higher memory usage.</flag>
 	</use>
-	<longdescription lang='en'>
+	<longdescription lang="en">
 		Arx Libertatis is a cross-platform, open source port of
 		Arx Fatalis, a 2002 first-person role-playing game/dungeon crawler
 		developed by Arkane Studios.
@@ -31,7 +34,7 @@
 		modern systems, porting the game to new systems as well as
 		eliminating bugs and limitations.
 	</longdescription>
-	<longdescription lang='de'>
+	<longdescription lang="de">
 		Arx Libertatis ist eine cross-platform, open source Portierung
 		von Arx Fatalis, ein Rollenspiel/Dungeon Crawler in Ego-Perspektive
 		aus dem Jahr 2002, entwickelt von Arkane Studios.
@@ -44,7 +47,7 @@
 		portiert und bugs und Beschränkungen behebt.
 	</longdescription>
 	<upstream>
-		<maintainer status='active'>
+		<maintainer status="active">
 			<email>daniel@constexpr.org</email>
 			<name>Daniel Scharrer</name>
 		</maintainer>
@@ -52,10 +55,9 @@
 		<changelog>
 			http://wiki.arx-libertatis.org/Changelog
 		</changelog>
-		<doc lang='en'>http://wiki.arx-libertatis.org/</doc>
-		<remote-id type='github'>arx/ArxLibertatis</remote-id>
-		<remote-id type='sourceforge'>arx</remote-id>
-		<remote-id type='freecode'>arx-libertatis</remote-id>
+		<doc lang="en">http://wiki.arx-libertatis.org/</doc>
+		<remote-id type="github">arx/ArxLibertatis</remote-id>
+		<remote-id type="sourceforge">arx</remote-id>
+		<remote-id type="freecode">arx-libertatis</remote-id>
 	</upstream>
 </pkgmetadata>
-

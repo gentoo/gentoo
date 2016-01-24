@@ -1,11 +1,14 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>enlightenment</herd>
+<maintainer type="project">
+	<email>enlightenment@gentoo.org</email>
+	<name>Project Enlightenment</name>
+</maintainer>
 <longdescription>
 This is a standalone keybindings editor for enlightenment version 0.16.
 </longdescription>
 <upstream>
-	<remote-id type='sourceforge'>enlightenment</remote-id>
+	<remote-id type="sourceforge">enlightenment</remote-id>
 </upstream>
 </pkgmetadata>

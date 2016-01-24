@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <herd>mate</herd>
+    <maintainer type="project">
+        <email>mate@gentoo.org</email>
+        <name>Gentoo MATE Desktop</name>
+    </maintainer>
     <upstream>
         <remote-id type="github">mate-desktop/mate-notification-daemon</remote-id>
     </upstream>

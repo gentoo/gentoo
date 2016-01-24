@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
- <herd>web-apps</herd>
- <maintainer>
+ <maintainer type="person">
    <email>tampakrap@gentoo.org</email>
+ </maintainer>
+ <maintainer type="project">
+   <email>web-apps@gentoo.org</email>
+   <name>Gentoo Webapps</name>
  </maintainer>
  <use>
    <flag name="django">Support for django template style to config files</flag>
@@ -11,4 +14,3 @@
    <flag name="redland">Enable support for Redland RDF</flag>
  </use>
 </pkgmetadata>
-

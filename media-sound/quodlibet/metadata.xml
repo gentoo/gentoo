@@ -1,11 +1,14 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>tamiko@gentoo.org</email>
 		<name>Matthias Maier</name>
 	</maintainer>
-	<herd>sound</herd>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
 	<longdescription>Quod Libet is a GTK+-based audio player written in Python. It's 
     designed around the idea that you know better than we do how to 
     organize your music. It lets you make playlists based on regular 

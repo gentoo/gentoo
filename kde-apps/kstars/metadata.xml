@@ -5,5 +5,8 @@
 		<flag name="fits">Enable support for the FITS image format through cfitsio</flag>
 		<flag name="indi">Enable support for Astronomical control library using libindi</flag>
 	</use>
-	<herd>kde</herd>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
 </pkgmetadata>

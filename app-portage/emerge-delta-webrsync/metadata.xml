@@ -4,5 +4,5 @@
 	<upstream>
 		<bugs-to>mailto:dev-portage@gentoo.org</bugs-to>
 	</upstream>
-	<maintainer><email>dev-portage@gentoo.org</email></maintainer>
+	<maintainer type="project"><email>dev-portage@gentoo.org</email></maintainer>
 </pkgmetadata>

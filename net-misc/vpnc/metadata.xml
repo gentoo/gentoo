@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>proxy-maintainers</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>lorand.jakab@schweiz.ch</email>
     <name>Lorand Jakab</name>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>mmokrejs@gmail.com</email>
     <name>Martin Mokrejs</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <use>
     <flag name="resolvconf">Enable support for DNS managing framework <pkg>net-dns/openresolv</pkg></flag>

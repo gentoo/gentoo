@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>williamh@gentoo.org</email>
 		<description>backup Maintainer, CC him on bugs</description>
 	</maintainer>
@@ -12,7 +12,7 @@
         </maintainer>
         <doc lang="en">https://code.google.com/p/badvpn/w/list</doc>
 		<bugs-to>https://github.com/ambrop72/badvpn/issues</bugs-to>
-		<remote-id type='github'>ambrop72/badvpn</remote-id>
+		<remote-id type="github">ambrop72/badvpn</remote-id>
 		<remote-id type="google-code">badvpn</remote-id>
 	</upstream>
 	<use>
@@ -38,4 +38,3 @@
 		like tun2socks and NCD.
 	</longdescription>
 </pkgmetadata>
-

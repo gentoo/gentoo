@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-  <email>maintainer-needed@gentoo.org</email>
-</maintainer>
 <longdescription>
   Worker is a filemanager for X-Window on UNIX.
   It's a clone of the filemanager "Directory Opus 4", a very famous program
@@ -11,7 +8,7 @@
   (similar to MidnightCommander).
 </longdescription>
 <use>
-  <flag name='avfs'>Enable support for <pkg>sys-fs/avfs</pkg></flag>
-  <flag name='magic'>Add magic file support from <pkg>sys-apps/file</pkg> to automatically detect file types</flag>
+  <flag name="avfs">Enable support for <pkg>sys-fs/avfs</pkg></flag>
+  <flag name="magic">Add magic file support from <pkg>sys-apps/file</pkg> to automatically detect file types</flag>
 </use>
 </pkgmetadata>

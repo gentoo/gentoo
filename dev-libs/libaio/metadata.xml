@@ -1,11 +1,14 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>proxy-maintainers</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>gokturk@binghamton.edu</email>
     <name>Gokturk Yuksek</name>
     <description>Primary Maintainer, Assign bugs</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <longdescription>Library to provide user-level kernel Asynchronous I/O (AIO)
  support for Linux (needs kernel patches as of 2.6.12)</longdescription>

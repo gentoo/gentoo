@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
                 <email>patrick@gentoo.org</email>
                 <name>Patrick Lauer</name>
 </maintainer>
@@ -12,7 +12,7 @@
   distributed under the GPL - no warranty, it's free to use, copy and give away.
 </longdescription>
 <use>
-	  <flag name='dynscaler'>Enable dynamic rescaling of back-end
+	  <flag name="dynscaler">Enable dynamic rescaling of back-end
 		  priorities</flag>
 </use>
 </pkgmetadata>

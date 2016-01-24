@@ -1,14 +1,17 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>base-system</herd>
+<maintainer type="project">
+	<email>base-system@gentoo.org</email>
+	<name>Gentoo Base System</name>
+</maintainer>
 <use>
-	<flag name='ada'>Add bindings for the ADA programming language</flag>
-	<flag name='tinfo'>
+	<flag name="ada">Add bindings for the ADA programming language</flag>
+	<flag name="tinfo">
 		Build curses library (libncurses) sep from the low-level terminfo
 		library (libtinfo) -- usually needed only for binary packages -- but
 		it is binary compatible in either mode
 	</flag>
-	<flag name='trace'>Enable test trace() support in ncurses calls</flag>
+	<flag name="trace">Enable test trace() support in ncurses calls</flag>
 </use>
 </pkgmetadata>

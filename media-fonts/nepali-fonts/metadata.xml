@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>fonts</herd>
-<maintainer>
+<maintainer type="person">
  <email>vapier@gentoo.org</email>
+</maintainer>
+<maintainer type="project">
+ <email>fonts@gentoo.org</email>
+ <name>Fonts</name>
 </maintainer>
 </pkgmetadata>

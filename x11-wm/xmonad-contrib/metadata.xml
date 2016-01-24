@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
-	<maintainer>
+	<maintainer type="project">
 		<email>haskell@gentoo.org</email>
 	</maintainer>
 	<longdescription>
@@ -10,13 +9,13 @@
 		a tiling window manager for X.
 		
 		For an introduction to building, configuring and using xmonad
-		extensions, see &quot;XMonad.Doc&quot;. In particular:
+		extensions, see "XMonad.Doc". In particular:
 		
-		&quot;XMonad.Doc.Configuring&quot;, a guide to configuring xmonad
+		"XMonad.Doc.Configuring", a guide to configuring xmonad
 		
-		&quot;XMonad.Doc.Extending&quot;, using the contributed extensions library
+		"XMonad.Doc.Extending", using the contributed extensions library
 		
-		&quot;XMonad.Doc.Developing&quot;, introduction to xmonad internals and writing
+		"XMonad.Doc.Developing", introduction to xmonad internals and writing
 		your own extensions.
 		
 	</longdescription>

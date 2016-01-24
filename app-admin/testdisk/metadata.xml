@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <herd>forensics</herd>
-    <maintainer>
+    <maintainer type="person">
         <email>robbat2@gentoo.org</email>
 		<name>Robin H. Johnson</name>
 		<description>Primary maintainer</description>
     </maintainer>
+	<maintainer type="project">
+        <email>forensics@gentoo.org</email>
+        <name>Gentoo Forensics Project</name>
+    </maintainer>
 	<use>
-		<flag name='ntfs'>Include the ability to read NTFS filesystems</flag>
-		<flag name='reiserfs'>Include reiserfs reading ability</flag>
-		<flag name='ewf'>Include ewf library</flag>
+		<flag name="ntfs">Include the ability to read NTFS filesystems</flag>
+		<flag name="reiserfs">Include reiserfs reading ability</flag>
+		<flag name="ewf">Include ewf library</flag>
 	</use>
 </pkgmetadata>

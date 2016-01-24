@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>alpha</herd>
+	<maintainer type="project">
+		<email>alpha@gentoo.org</email>
+		<name>Gentoo Linux Alpha Development</name>
+	</maintainer>
 	<longdescription lang="en">
 		On Intel based PC systems, the BIOS firmware sets up the system and
 		then loads the image to be run from the boot block of a DOS file

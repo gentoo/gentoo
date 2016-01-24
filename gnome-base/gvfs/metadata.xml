@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>gnome</herd>
+<maintainer type="project">
+	<email>gnome@gentoo.org</email>
+	<name>Gentoo GNOME Desktop</name>
+</maintainer>
 <longdescription lang="en">
 gvfs is a userspace virtual filesystem designed to work with the i/o
-abstractions of gio (a library availible in glib >= 2.15.1). It
+abstractions of gio (a library availible in glib &gt;= 2.15.1). It
 installs several modules that are automatically used by applications
 using the APIs of libgio. There is also fuse support that allows
 applications not using gio to access the gvfs filesystems.
 </longdescription>
 <use>
-	<flag name='afp'>Enables support for accessing AFP (Apple Filing Protocol) network shares</flag>
-	<flag name='archive'>Enables support for accessing files in archives transparently via <pkg>app-arch/libarchive</pkg></flag>
-	<flag name='bluray'>Enable playback of Blu-ray filesystems using <pkg>media-libs/libbluray</pkg></flag>
-	<flag name='fuse'>Enables fuse mount points in $HOME/.gvfs for legacy application access</flag>
-	<flag name='gnome-online-accounts'>Enable configuration panel for <pkg>net-libs/gnome-online-accounts</pkg> accounts</flag>
-	<flag name='google'>Enables support for accessing Google accounts via <pkg>dev-libs/libgdata</pkg></flag>
-	<flag name='http'>Enable the HTTP/DAV backend using <pkg>net-libs/libsoup-gnome</pkg></flag>
+	<flag name="afp">Enables support for accessing AFP (Apple Filing Protocol) network shares</flag>
+	<flag name="archive">Enables support for accessing files in archives transparently via <pkg>app-arch/libarchive</pkg></flag>
+	<flag name="bluray">Enable playback of Blu-ray filesystems using <pkg>media-libs/libbluray</pkg></flag>
+	<flag name="fuse">Enables fuse mount points in $HOME/.gvfs for legacy application access</flag>
+	<flag name="gnome-online-accounts">Enable configuration panel for <pkg>net-libs/gnome-online-accounts</pkg> accounts</flag>
+	<flag name="google">Enables support for accessing Google accounts via <pkg>dev-libs/libgdata</pkg></flag>
+	<flag name="http">Enable the HTTP/DAV backend using <pkg>net-libs/libsoup-gnome</pkg></flag>
 	<flag name="nfs">Enable NFS client support via <pkg>net-fs/libnfs</pkg>.</flag>
-	<flag name='udev'>Enable udev base replacement code for cdda feature</flag>
+	<flag name="udev">Enable udev base replacement code for cdda feature</flag>
 </use>
 </pkgmetadata>

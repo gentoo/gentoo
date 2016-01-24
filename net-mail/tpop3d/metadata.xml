@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>net-mail</herd>
+  <maintainer type="project">
+    <email>net-mail@gentoo.org</email>
+    <name>Net-Mail</name>
+  </maintainer>
   <use>
     <flag name="authexternal">Enable authentication by an external program</flag>
     <flag name="drac">Enable dynamic relay support in the tpop3d pop3 server</flag>

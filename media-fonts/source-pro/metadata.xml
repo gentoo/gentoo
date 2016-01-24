@@ -1,14 +1,17 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>fonts</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>nirbheek@gentoo.org</email>
 		<name>Nirbheek Chauhan</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>ssuominen@gentoo.org</email>
 		<name>Samuli Suominen</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>fonts@gentoo.org</email>
+		<name>Fonts</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">adobe-fonts/source-code-pro</remote-id>

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>cron</herd>
+	<maintainer type="project">
+		<email>cron-bugs@gentoo.org</email>
+		<name>Gentoo Cron Project</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">anacron</remote-id>
 	</upstream>

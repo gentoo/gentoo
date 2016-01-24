@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>ada</herd>
+	<maintainer type="project">
+		<email>ada@gentoo.org</email>
+		<name>Gentoo Resources for Ada</name>
+	</maintainer>
 	<longdescription>The booch components provide a set of reusable components used in an efficient and appropriate manner, with the overall goal of balancing usability and extensibility. The BCs cover several issues: Time and Space semantics, Storage Management policies, Exception and Idioms for iteration.</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">booch95</remote-id>

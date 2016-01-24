@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		This library allows an Attoparsec parser to receive input incrementally
 		from an enumerator. This could be used for parsing large files, or
@@ -17,7 +20,7 @@
 		&gt; import Data.Enumerator.List
 		&gt; import System.IO
 		&gt;
-		&gt; parser = string &quot;foo&quot; &lt;|&gt; string &quot;bar&quot;
+		&gt; parser = string "foo" &lt;|&gt; string "bar"
 		&gt;
 		&gt; main = do
 		&gt;     xy &lt;- run_ (enumHandle 1 stdin $$ do

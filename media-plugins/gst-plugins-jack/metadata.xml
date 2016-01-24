@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>gstreamer</herd>
-<maintainer>
+<maintainer type="person">
 	<email>miknix@gentoo.org</email>
 	<name>Angelo Arrifano</name>
 	<description>Regular ebuild maintenance, bugs and stuff..</description>
+</maintainer>
+<maintainer type="project">
+	<email>gstreamer@gentoo.org</email>
+	<name>GStreamer package maintainers</name>
 </maintainer>
 <longdescription lang="en">
 	GStreamer plugin for JACK audio elements

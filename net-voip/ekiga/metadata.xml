@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-	</maintainer>
 	<use>
 		<flag name="gconf">Enable GConf support</flag>
 		<flag name="h323">Enable H.323 protocol</flag>
@@ -12,4 +9,3 @@
 		<flag name="xcap">Enable XML Configuration Access Protocal</flag>
 	</use>
 </pkgmetadata>
-

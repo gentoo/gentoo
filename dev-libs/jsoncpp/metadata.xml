@@ -1,11 +1,11 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>phajdan.jr@gentoo.org</email>
     <name>Pawel Hajdan jr</name>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>mgorny@gentoo.org</email>
     <name>Michał Górny</name>
   </maintainer>

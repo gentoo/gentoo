@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>vmware</herd>
+	<maintainer type="project">
+		<email>vmware@gentoo.org</email>
+		<name>Gentoo VMware Project</name>
+	</maintainer>
 	<longdescription>
 		The VIX API allows you to write programs and scripts that automate
 		virtual machine operations, as well as the guests within virtual

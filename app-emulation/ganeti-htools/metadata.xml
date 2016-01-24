@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>virtualization</herd>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>virtualization@gentoo.org</email>
+		<name>Gentoo Virtualization Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription lang="en">
 	These are some simple cluster tools for fixing common allocation
 	problems on Ganeti 2.0 clusters.
@@ -19,4 +25,3 @@
 	rebalance the cluster.
 	</longdescription>
 </pkgmetadata>
-

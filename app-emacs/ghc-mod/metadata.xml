@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
-	<longdescription>
-		This packages includes Elisp files
-		and a Haskell command, &quot;ghc-mod&quot;.
-		&quot;ghc*.el&quot; enable completion of
-		Haskell symbols on Emacs.
-		Flymake is also integrated.
-		&quot;ghc-mod&quot; is a backend of &quot;ghc*.el&quot;.
-		It lists up all installed modules
-		or extracts names of functions, classes,
-		and data declarations.
-	</longdescription>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<maintainer type="project">
+  <email>haskell@gentoo.org</email>
+  <name>Gentoo Haskell</name>
+</maintainer>
+<longdescription>
+  This packages includes Elisp files and a Haskell command, "ghc-mod".
+  "ghc*.el" enable completion of Haskell symbols on Emacs. Flymake is
+  also integrated. "ghc-mod" is a backend of "ghc*.el". It lists up
+  all installed modules or extracts names of functions, classes, and
+  data declarations.
+</longdescription>
 </pkgmetadata>

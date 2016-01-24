@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>freedesktop</herd>
+<maintainer type="project">
+	<email>freedesktop-bugs@gentoo.org</email>
+	<name>Gentoo Freedesktop Project</name>
+</maintainer>
 <longdescription lang="en">
 nss-myhostname is a plugin for the GNU Name Service Switch (NSS) functionality
 of the GNU C Library (glibc) providing host name resolution for the locally

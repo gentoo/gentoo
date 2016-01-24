@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>crypto</herd>
-  <herd>pam</herd>
+  <maintainer type="project">
+    <email>crypto@gentoo.org</email>
+    <name>Crypto</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>pam-bugs@gentoo.org</email>
+    <name>Pluggable Authentication Method maintenance</name>
+  </maintainer>
   <use>
     <flag name="pcsc-lite">
       Build the card_eventmanager binary used to detect card removal and lock the sessions. This

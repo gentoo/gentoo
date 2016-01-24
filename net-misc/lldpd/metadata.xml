@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
@@ -19,17 +19,16 @@ lldpd also implements CDP (Cisco Discovery Protocol), FDP (Foundry Discovery Pro
 	With the help of lldpd, you can get a map of your network. You may also want to look at Wiremaps or NetDisco which are a web application that helps you to see what is connected to where.
 	</longdescription>
 	<use>
-		<flag name='cdp'>Enable Cisco Discovery Protocol</flag>
-		<flag name='graph'>Create dot graphs in documentations</flag>
-		<flag name='dot1'>Enable Dot1 extension (VLAN stuff)</flag>
-		<flag name='dot3'>Enable Dot3 extension (PHY stuff)</flag>
-		<flag name='edp'>Enable Extreme Discovery Protocol</flag>
-		<flag name='fdp'>Enable Foundry Discovery Protocol</flag>
-		<flag name='jansson'>Enable JSON output via Jansson</flag>
-		<flag name='json-c'>Enable JSON output via json-c</flag>
-		<flag name='lldpmed'>Enable LLDP-MED extension</flag>
-		<flag name='sonmp'>Enable SynOptics Network Management</flag>
-		<flag name='snmp'>Enable the use of SNMP</flag>
+		<flag name="cdp">Enable Cisco Discovery Protocol</flag>
+		<flag name="graph">Create dot graphs in documentations</flag>
+		<flag name="dot1">Enable Dot1 extension (VLAN stuff)</flag>
+		<flag name="dot3">Enable Dot3 extension (PHY stuff)</flag>
+		<flag name="edp">Enable Extreme Discovery Protocol</flag>
+		<flag name="fdp">Enable Foundry Discovery Protocol</flag>
+		<flag name="jansson">Enable JSON output via Jansson</flag>
+		<flag name="json-c">Enable JSON output via json-c</flag>
+		<flag name="lldpmed">Enable LLDP-MED extension</flag>
+		<flag name="sonmp">Enable SynOptics Network Management</flag>
+		<flag name="snmp">Enable the use of SNMP</flag>
 	</use>
 </pkgmetadata>
-

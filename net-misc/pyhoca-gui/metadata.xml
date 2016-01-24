@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>nx</herd>
+	<maintainer type="person">
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
 	<longdescription>
 PyHoca-GUI is a client implementation for X2Go using the project's Python X2Go client API (a Python module). PyHoca-GUI uses wxPython for rendering graphical desktop elements (menus, dialog boxes etc.).
 

@@ -1,18 +1,21 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>base-system</herd>
-<maintainer>
+<maintainer type="person">
 	<email>williamh@gentoo.org</email>
 </maintainer>
-<maintainer>
+<maintainer type="person">
 	<email>blueness@gentoo.org</email>
 </maintainer>
-<longdescription lang='en'>
+<maintainer type="project">
+	<email>base-system@gentoo.org</email>
+	<name>Gentoo Base System</name>
+</maintainer>
+<longdescription lang="en">
 	This package contains base shell functions which are required by
 	all Gentoo systems.
 </longdescription>
 <upstream>
-	<remote-id type='github'>gentoo/gentoo-functions</remote-id>
+	<remote-id type="github">gentoo/gentoo-functions</remote-id>
 </upstream>
 </pkgmetadata>

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>java</herd>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
 	<longdescription lang="en">Why the Simple Java toolkit (also named as JSON.simple) for JSON?
 	When I use JSON as the data exchange format between the AJAX client and JSP
 	for the first time, what worry me mostly is how to encode Java strings and

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>idl0r@gentoo.org</email>
 		<name>Christian Ruppert</name>
 	</maintainer>
 	<use>
 		<flag name="contrib">Install user-contributed files</flag>
 		<flag name="tools">Install tools to e.g. convert a Gitosis config to
-			gitolite or one to check if your setup is gitolite >= 3.x compatible</flag>
+			gitolite or one to check if your setup is gitolite &gt;= 3.x compatible</flag>
 	</use>
 </pkgmetadata>
-

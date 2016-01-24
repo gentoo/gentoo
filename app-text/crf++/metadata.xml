@@ -1,7 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>cjk</herd>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
 	<longdescription lang="en">
 		CRF++ is a simple, customizable, and open source implementation
 		of Conditional Random Fields (CRFs) for segmenting/labeling

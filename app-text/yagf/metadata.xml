@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proxy-maintainers</herd>
-<maintainer>
+<maintainer type="person">
 	<email>yaleks@gmail.com</email>
 	<name>Aleksandr Yakimov</name>
 	<description>Proxied maintainer. Assign bugs to him</description>
 </maintainer>
-<maintainer>
+<maintainer type="person">
 	<email>pinkbyte@gentoo.org</email>
 	<name>Sergey Popov</name>
 	<description>Proxy maintainer. CC him on bugs</description>
 </maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription lang="en">
 		YAGF is a graphical front-end for cuneiform and tesseract OCR tools.
 		With YAGF you can open already scanned image files or obtain new images
@@ -24,7 +27,7 @@
 		the online help for more details).
 	</longdescription>
 	<use>
-		<flag name='cuneiform'>Enable support for the <pkg>app-text/cuneiform</pkg> OCR engine.</flag>
-		<flag name='tesseract'>Enable support for the <pkg>app-text/tesseract</pkg> OCR engine.</flag>
+		<flag name="cuneiform">Enable support for the <pkg>app-text/cuneiform</pkg> OCR engine.</flag>
+		<flag name="tesseract">Enable support for the <pkg>app-text/tesseract</pkg> OCR engine.</flag>
 	</use>
 </pkgmetadata>

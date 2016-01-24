@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>base-system</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>williamh@gentoo.org</email>
     <name>William Hubbs</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>base-system@gentoo.org</email>
+    <name>Gentoo Base System</name>
   </maintainer>
   <upstream>
     <remote-id type="cpe">cpe:/a:roy_marples:dhcpcd</remote-id>

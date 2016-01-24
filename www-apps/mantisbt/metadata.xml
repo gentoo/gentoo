@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>web-apps</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>pva@gentoo.org</email>
 		<name>Peter Volkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>web-apps@gentoo.org</email>
+		<name>Gentoo Webapps</name>
 	</maintainer>
 	<upstream>
 		<maintainer>

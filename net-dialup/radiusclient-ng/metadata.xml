@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-dialup</herd>
 	<longdescription>Purpose of this project is to build portable, easy-to-use and standard compliant library suitable for 
 developing free and commercial software that need support for a RADIUS protocol (RFCs 2128 and 2139).</longdescription>
 	<upstream>

@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>ml</herd>
-  <herd>sci-mathematics</herd>
+  <maintainer type="project">
+    <email>ml@gentoo.org</email>
+    <name>Gentoo ML Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
   <longdescription lang="en">
   Developed in the LogiCal project, the Coq tool is a formal proof
   management system: a proof done with Coq is mechanically checked

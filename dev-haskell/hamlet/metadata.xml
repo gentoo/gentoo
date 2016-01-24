@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		Hamlet gives you a type-safe tool for generating HTML code. It works via Quasi-Quoting, and generating extremely efficient output code. The syntax is white-space sensitive, and it helps you avoid cross-site scripting issues and 404 errors. Please see the documentation at &lt;http://docs.yesodweb.com/book/hamlet/&gt; for more details.
 		
-		Here is a quick overview of hamlet html. Due to haddock escaping issues, we can&#39;t properly show variable insertion, but we are still going to show some conditionals. Please see &lt;http://www.yesodweb.com/book/templates&gt; for a thorough description
+		Here is a quick overview of hamlet html. Due to haddock escaping issues, we can't properly show variable insertion, but we are still going to show some conditionals. Please see &lt;http://www.yesodweb.com/book/templates&gt; for a thorough description
 		
 		&gt; !!!
 		&gt; &lt;html&gt;

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>kde</herd>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
 	<use>
 		<flag name="evdev">Enable configuration module for desktop input devices.</flag>
 		<flag name="gtk2">Add support for gtk+2-based applications using legacy xembed systray icons via libappindicator.</flag>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>media-optical</herd>
 	<longdescription lang="en">
 		cue2toc is a free program for UNIX systems to convert CUE files to cdrdao's
 		TOC format. Features include: support for complete set of CUE commands (e.g.

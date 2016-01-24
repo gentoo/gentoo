@@ -33,7 +33,7 @@ pkg_setup() {
 }
 
 python_compile_all() {
-	[[ ${PV} == *9999 ]] && esetup.py build_man
+	esetup.py build_man
 }
 
 python_test() {

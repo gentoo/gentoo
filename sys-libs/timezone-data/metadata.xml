@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>toolchain</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>djc@gentoo.org</email>
     <name>Dirkjan Ochtman</name>
   </maintainer>
+  <maintainer type="project">
+    <email>toolchain@gentoo.org</email>
+    <name>Gentoo Toolchain Project</name>
+  </maintainer>
   <use>
-    <flag name='leaps_timezone'>
+    <flag name="leaps_timezone">
       Install the set of "right" timezones; these timezones include leap seconds
       when counting seconds since the epoch (while POSIX does not) as they are
       based on the TAI (International Atomic Time) clock

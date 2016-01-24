@@ -4,10 +4,13 @@
 	<longdescription lang="en">
 	An ultra-fast, ultra-compact key-value embedded data store
 </longdescription>
-	<herd>ldap</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>eras@gentoo.org</email>
 		<name>Eray Aslan</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>ldap-bugs@gentoo.org</email>
+		<name>Gentoo LDAP Project</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">LMDB/lmdb</remote-id>

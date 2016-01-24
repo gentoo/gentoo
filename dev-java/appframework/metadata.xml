@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>java</herd>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
 	<longdescription lang="en">
 		 The JSR-296  Swing Application Framework prototype implementation is a small set of Java classes that simplify building desktop applications. The prototype provides infrastructure that's common to most desktop applications:
 
@@ -11,4 +14,3 @@
     * Persistent session state: support for automatically and selectively saving GUI state from one run of an application to the next.
 	</longdescription>
 </pkgmetadata>
-

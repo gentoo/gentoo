@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>toolchain</herd>
+	<maintainer type="project">
+		<email>toolchain@gentoo.org</email>
+		<name>Gentoo Toolchain Project</name>
+	</maintainer>
 	<longdescription lang="en">
 		Compilers for high level languages generate code that follow certain
 		conventions. These conventions are necessary, in part, for separate
@@ -31,6 +34,6 @@
 		between the two languages.
 	</longdescription>
 	<use>
-		<flag name='pax_kernel'>Use PaX emulated trampolines, for we can't use PROT_EXEC</flag>
+		<flag name="pax_kernel">Use PaX emulated trampolines, for we can't use PROT_EXEC</flag>
 	</use>
 </pkgmetadata>

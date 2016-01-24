@@ -10,7 +10,7 @@
   currently, Linux based systems, such as SMP nodes and conventional
   clusters.
 </longdescription>
-  <maintainer>
+  <maintainer type="person">
     <email>slis@gentoo.org</email>
   </maintainer>
   <use>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>idella4@gentoo.org</email>
 		<name>Ian Delaney</name>
 	</maintainer>
 	<use>
-		<flag name='codebase'>Enables a build of the docs/codebase folder</flag>
-		<flag name='manual'>Enables a build of the docs/manual folder</flag>
-		<flag name='rnotes'>Enables a doc build of the release notes</flag>
+		<flag name="codebase">Enables a build of the docs/codebase folder</flag>
+		<flag name="manual">Enables a build of the docs/manual folder</flag>
+		<flag name="rnotes">Enables a doc build of the release notes</flag>
 	</use>
 </pkgmetadata>

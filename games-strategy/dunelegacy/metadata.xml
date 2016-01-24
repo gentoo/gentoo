@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>games</herd>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
 	<upstream>
 		<bugs-to>http://sourceforge.net/apps/mediawiki/dunelegacy/index.php?title=Development/Reporting_Bugs</bugs-to>
 		<remote-id type="sourceforge">dunelegacy</remote-id>

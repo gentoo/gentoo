@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		Native Haskell TLS and SSL protocol implementation for server and client.
 		
@@ -17,7 +20,7 @@
 		ciphers, compressions and certificates functions.
 	</longdescription>
 	<use>
-		<flag name='compat'>Accept SSLv2 compatible handshake.</flag>
-		<flag name='network'>Use the base network library.</flag>
+		<flag name="compat">Accept SSLv2 compatible handshake.</flag>
+		<flag name="network">Use the base network library.</flag>
 	</use>
 </pkgmetadata>

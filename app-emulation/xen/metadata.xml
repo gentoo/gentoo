@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>xen</herd>
+	<maintainer type="project">
+		<email>xen@gentoo.org</email>
+		<name>Gentoo Xen Project</name>
+	</maintainer>
 	<use>
-		<flag name='flask'>Enable the Flask XSM module from NSA</flag>
-		<flag name='xsm'>Enable the Xen Security Modules (XSM)</flag>
-		<flag name='efi'>Adds efi boot support, requires LDFLAG -melf_x86_64 for amd64</flag>
+		<flag name="flask">Enable the Flask XSM module from NSA</flag>
+		<flag name="xsm">Enable the Xen Security Modules (XSM)</flag>
+		<flag name="efi">Adds efi boot support, requires LDFLAG -melf_x86_64 for amd64</flag>
 	</use>
 </pkgmetadata>

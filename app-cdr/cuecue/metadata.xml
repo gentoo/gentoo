@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>media-optical</herd>
 	<longdescription lang="en">
 		cuecue is a command line program to convert .cue + [.ogg|.flac|.wav|.mp3] to
 		.cue + .bin, in order to make them easier to burn with standard burning software.

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>perl</herd>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
   <longdescription>Pure impementation of rar. Tests for this module only work
 	on platforms that can support the rar executable, however, which at the
 	moment is the x86/amd64 family.</longdescription>

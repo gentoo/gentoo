@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>scheme</herd>
+	<maintainer type="project">
+		<email>scheme@gentoo.org</email>
+		<name>Gentoo Scheme Project</name>
+	</maintainer>
 	<longdescription>SigScheme is a R5RS Scheme interpreter for embedded use. 
 		It features small footprint (64KB in library form on the 
 		'small' configuration) like SIOD and TinyScheme, low memory 

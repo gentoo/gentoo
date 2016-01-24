@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>hardened</herd>
+	<maintainer type="project">
+		<email>hardened@gentoo.org</email>
+		<name>Gentoo Hardened</name>
+	</maintainer>
 	<longdescription>
 		Crypt library for DES, MD5, and blowfish. Libxcrypt is a replacement for
 		libcrypt, which comes with the GNU C Library. It supports DES crypt,

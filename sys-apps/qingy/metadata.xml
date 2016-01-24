@@ -1,12 +1,15 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>base-system</herd>
+<maintainer type="project">
+	<email>base-system@gentoo.org</email>
+	<name>Gentoo Base System</name>
+</maintainer>
 <use>
-	<flag name='consolekit'>Enable native consolekit support</flag>
-	<flag name='opensslcrypt'>Encrypt communications between qingy and its GUI using <pkg>dev-libs/openssl</pkg></flag>
+	<flag name="consolekit">Enable native consolekit support</flag>
+	<flag name="opensslcrypt">Encrypt communications between qingy and its GUI using <pkg>dev-libs/openssl</pkg></flag>
 </use>
 <upstream>
-	<remote-id type='sourceforge'>qingy</remote-id>
+	<remote-id type="sourceforge">qingy</remote-id>
 </upstream>
 </pkgmetadata>

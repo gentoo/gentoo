@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
 <use>
-  <flag name='pvm'>Add support for parallel virtual machine
+  <flag name="pvm">Add support for parallel virtual machine
     (<pkg>sys-cluster/pvm</pkg>)</flag>
 </use>
 </pkgmetadata>

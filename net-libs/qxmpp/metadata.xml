@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>leechcraft</herd>
+<maintainer type="project">
+	<email>leechcraft@gentoo.org</email>
+	<name>LeechCraft</name>
+</maintainer>
 <upstream>
 	<bugs-to>https://github.com/qxmpp-project/qxmpp/issues</bugs-to>
 	<changelog>https://raw.githubusercontent.com/qxmpp-project/qxmpp/master/CHANGELOG</changelog>

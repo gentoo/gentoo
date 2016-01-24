@@ -1,0 +1,598 @@
+diff -r -U2 pyfeyn-0.3.5.orig/pyfeyn/__init__.py pyfeyn-0.3.5/pyfeyn/__init__.py
+--- pyfeyn-0.3.5.orig/pyfeyn/__init__.py	2016-01-21 14:24:35.000000000 +0600
++++ pyfeyn-0.3.5/pyfeyn/__init__.py	2016-01-24 19:21:55.813635215 +0600
+@@ -16,5 +16,5 @@
+     import pyx
+ except:
+-    print "You don't have PyX - that's a problem unless you're just running the setup script."
++    print("You don't have PyX - that's a problem unless you're just running the setup script.")
+     import sys
+     sys.exit()
+@@ -23,6 +23,6 @@
+ from distutils.version import StrictVersion as Version
+ pyxversion = Version(pyx.version.version)
+-if pyxversion < Version("0.9.0"):
+-    print "Warning: PyFeyn may not work with PyX versions older than 0.9!"
++if pyxversion < Version("0.14.0"):
++    print("Warning: PyFeyn may not work with PyX versions older than 0.14!")
+ 
+ ## Units
+@@ -31,10 +31,10 @@
+ 
+ ## TeX stuff
+-pyx.text.defaulttexrunner.set(mode="latex")
++pyx.text.set(pyx.text.LatexRunner)
+ import subprocess
+ try:
+   subprocess.Popen(["kpsewhich","hepnicenames.sty"])
+-  pyx.text.defaulttexrunner.preamble(r"\usepackage{hepnicenames}")
++  pyx.text.default_runner.preamble(r"\usepackage{hepnicenames}")
+ except:
+-  print "Warning: hepnicenames package not found!"
++  print("Warning: hepnicenames package not found!")
+ 
+diff -r -U2 pyfeyn-0.3.5.orig/pyfeyn/blobs.py pyfeyn-0.3.5/pyfeyn/blobs.py
+--- pyfeyn-0.3.5.orig/pyfeyn/blobs.py	2011-02-20 23:29:40.000000000 +0600
++++ pyfeyn-0.3.5/pyfeyn/blobs.py	2016-01-24 11:50:44.290773693 +0600
+@@ -64,9 +64,9 @@
+         """Add a label."""
+         if config.getOptions().DEBUG:
+-            print "Adding label: " + text
++            print("Adding label: " + text)
+         self.labels.append(PointLabel(text=text, point=self,
+                                       displace=displace, angle=angle, size=size))
+         if config.getOptions().DEBUG:
+-            print "Labels = " + str(self.labels)
++            print("Labels = " + str(self.labels))
+         return self
+ 
+diff -r -U2 pyfeyn-0.3.5.orig/pyfeyn/deco.py pyfeyn-0.3.5/pyfeyn/deco.py
+--- pyfeyn-0.3.5.orig/pyfeyn/deco.py	2016-01-21 14:24:35.000000000 +0600
++++ pyfeyn-0.3.5/pyfeyn/deco.py	2016-01-24 22:06:46.419219272 +0600
+@@ -4,20 +4,10 @@
+ from pyfeyn.diagrams import FeynDiagram
+ from pyfeyn.utils import Visible
+-from pyfeyn import config,pyxversion
++from pyfeyn import config
+ 
+-###########################################################################################
+-## Added by George S. Williams to allow PyFeyn to work with PyX versions 0.12.x and 0.11.x
+-## Also see changes in class Arrow and class ParallelArrow
+-from distutils.version import StrictVersion as Version
+-
+-def getarrowpath(arrowtopath, selfpos, var1, selfsize, var2, selfconstriction,
+-                 constrictionlen):
+-        if pyxversion >= Version("0.12"):
+-            arrowpath = pyx.deco._arrowhead(arrowtopath, selfpos,
+-                                        var1, selfsize, var2, selfconstriction,
+-                                        constrictionlen)
+-        else:
+-            arrowpath = pyx.deco._arrowhead(arrowtopath, selfpos,
+-                                        var1, selfsize, var2, constrictionlen)
++
++def getarrowpath(arrowtopath, selfpos, var1, selfsize, var2, selfconstriction, constrictionlen):
++        arrowpath = pyx.deco._arrowhead(arrowtopath, selfpos, var1, selfsize, var2,
++                                        selfconstriction, constrictionlen)
+         return arrowpath
+ 
+@@ -37,5 +27,5 @@
+         self.constriction = constriction
+         
+-    def decorate(self, dp, texrunner=pyx.text.defaulttexrunner):
++    def decorate(self, dp, texrunner=pyx.text.default_runner):
+         """Attach arrow to a path (usually a line)."""
+         dp.ensurenormpath()
+@@ -120,5 +110,5 @@
+             displacement -= intrinsicwidth
+         if config.getOptions().DEBUG:
+-            print "Displacement = ", displacement
++            print("Displacement = ", displacement)
+ 
+         ## Position the arrow on the right hand side of lines
+@@ -208,5 +198,5 @@
+                                          pyx.text.vshift.mathaxis,
+                                          self.size] + self.textattrs)
+-        t = pyx.text.defaulttexrunner.text(self.x, self.y, self.text, textattrs)
++        t = pyx.text.default_runner.text(self.x, self.y, self.text, textattrs)
+         canvas.insert(t)
+ 
+@@ -247,5 +237,5 @@
+                                          pyx.text.vshift.mathaxis,
+                                          self.size] + self.textattrs)
+-        t = pyx.text.defaulttexrunner.text(x, y, self.text, textattrs)
++        t = pyx.text.default_runner.text(x, y, self.text, textattrs)
+         canvas.insert(t)
+ 
+@@ -294,5 +284,5 @@
+             displacement -= intrinsicwidth
+         if config.getOptions().DEBUG:
+-            print "Displacement = ", displacement
++            print("Displacement = ", displacement)
+ 
+         ## Position the label on the right hand side of lines
+@@ -320,5 +310,5 @@
+                                          pyx.text.vshift.mathaxis,
+                                          self.size] + self.textattrs)
+-        t = pyx.text.defaulttexrunner.text(x, y, self.text, textattrs)
++        t = pyx.text.default_runner.text(x, y, self.text, textattrs)
+         #t.linealign(self.displace,
+         #            math.cos(self.angle * math.pi/180),
+diff -r -U2 pyfeyn-0.3.5.orig/pyfeyn/diagrams.py pyfeyn-0.3.5/pyfeyn/diagrams.py
+--- pyfeyn-0.3.5.orig/pyfeyn/diagrams.py	2016-01-21 14:24:35.000000000 +0600
++++ pyfeyn-0.3.5/pyfeyn/diagrams.py	2016-01-24 22:12:15.453205434 +0600
+@@ -2,7 +2,5 @@
+ 
+ import pyx
+-from pyfeyn import config, pyxversion
+-from distutils.version import StrictVersion as Version
+-
++from pyfeyn import config
+ 
+ ## Diagram class
+@@ -28,15 +26,15 @@
+         for obj in objs:
+             if config.getOptions().DEBUG:
+-                print "#objs = %d" % len(self.__objs)
++                print("#objs = %d" % len(self.__objs))
+             offset = 0
+-            if obj.__dict__.has_key("layeroffset"):
+-                #print "offset =", obj.layeroffset
++            if "layeroffset" in obj.__dict__:
++                #print("offset =", obj.layeroffset)
+                 offset = obj.layeroffset
+             self.highestautolayer += 1
+             obj.setDepth(self.highestautolayer + offset)
+             if config.getOptions().DEBUG:
+-                print "Object %s layer = %d + %d = %d" % \
++                print("Object %s layer = %d + %d = %d" % \
+                       (obj.__class__, self.highestautolayer, offset,
+-                       self.highestautolayer + offset)
++                       self.highestautolayer + offset))
+             self.__objs.append(obj)
+ 
+@@ -45,7 +43,7 @@
+         """Draw the components of this diagram in a well-defined order."""
+         if config.getOptions().DEBUG:
+-            print "Final #objs = %d" % len(self.__objs)
++            print("Final #objs = %d" % len(self.__objs))
+         if config.getOptions().VDEBUG:
+-            print "Running in visual debug mode"
++            print("Running in visual debug mode")
+ 
+         ## Sort drawing objects by layer
+@@ -59,5 +57,5 @@
+         for obj in drawingobjs:
+             if config.getOptions().DEBUG:
+-                print "Depth = ", obj.getDepth()
++                print("Depth = ", obj.getDepth())
+             obj.draw(self.currentCanvas)
+ 
+@@ -70,7 +68,3 @@
+         c = self.drawToCanvas()
+         if c is not None and outfile is not None:
+-            if pyxversion >= Version("0.12"):
+-                c.writetofile(outfile, page_bbox=c.bbox().enlarged(enlargement))
+-            else:
+-                c.writetofile(outfile, bbox=c.bbox().enlarged(enlargement))
+-
++            c.writetofile(outfile, page_bbox=c.bbox().enlarged(enlargement))
+diff -r -U2 pyfeyn-0.3.5.orig/pyfeyn/feynml.py pyfeyn-0.3.5/pyfeyn/feynml.py
+--- pyfeyn-0.3.5.orig/pyfeyn/feynml.py	2011-02-20 23:29:40.000000000 +0600
++++ pyfeyn-0.3.5/pyfeyn/feynml.py	2016-01-24 12:08:07.881729805 +0600
+@@ -68,5 +68,5 @@
+                 root.append(self.labelToXML(obj))
+             else:
+-                print "Can't convert object to XML!"
++                print("Can't convert object to XML!")
+         # Combine single vertices/props into legs
+         self.legcount = 0
+@@ -76,14 +76,14 @@
+                 if tag.attrib["id"]==point:
+                    for tag2 in root.getchildren():
+-                       if ((tag2.attrib.has_key("source") and
++                       if (("source" in tag2.attrib and
+                             tag2.attrib["source"]==point) or
+-                           (tag2.attrib.has_key("target") and
++                           ("target" in tag2.attrib and
+                             tag2.attrib["target"]==point)):
+                           attribs = tag2.attrib
+-                          if (tag2.attrib.has_key("source") and
++                          if ("source" in tag2.attrib and
+                               tag2.attrib["source"]==point):
+                              del attribs["source"]
+                              attribs["sense"] = "incoming"
+-                          if (tag2.attrib.has_key("target") and
++                          if ("target" in tag2.attrib and
+                               tag2.attrib["target"]==point):
+                              attribs["sense"] = "outgoing"
+@@ -256,5 +256,5 @@
+         self.defaults = {}
+         if self.root.tag != "feynml":
+-            raise "FeynML Error: <feynml> must be root element" % self.root.tag
++            raise Exception("FeynML Error: <feynml> must be root element" % self.root.tag)
+         for element in self.root:
+             if element.tag == "head":
+@@ -265,5 +265,5 @@
+                 self.dicts.append({})
+             else:
+-                raise "FeynML Error: invalid top-level tag <%s>" % element.tag
++                raise Exception("FeynML Error: invalid top-level tag <%s>" % element.tag)
+ 
+ 
+@@ -321,5 +321,5 @@
+             p2 = thedict[element.attrib["target"]]
+         except:
+-            raise "FeynML Error: invalid attributes for <propagator> element"
++            raise Exception("FeynML Error: invalid attributes for <propagator> element")
+         l = NamedLine[thetype](p1, p2)
+         if "bend" in element.attrib:
+@@ -327,5 +327,5 @@
+                 l.bend(float(element.attrib["bend"]))
+             except:
+-                raise "FeynML Error: invalid bend amount %s for <propagator> element"%element.attrib["bend"]
++                raise Exception("FeynML Error: invalid bend amount %s for <propagator> element"%element.attrib["bend"])
+         if "style" in element.attrib:
+             l = self.apply_layout(element.attrib["style"], l)
+@@ -379,5 +379,5 @@
+                yradius = float(element.attrib["radius"][split:])
+         except:
+-            raise "FeynML Error: invalid attribute for <blob> element"
++            raise Exception("FeynML Error: invalid attribute for <blob> element")
+         if shape=="circle":
+             b = Circle(x=x, y=y, radius=radius)
+@@ -385,5 +385,5 @@
+             b = Ellipse(x=x, y=y, xradius=xradius, yradius=yradius)
+         else:
+-            raise "FeynML Error: invalid shape attribute for <blob> element"
++            raise Exception("FeynML Error: invalid shape attribute for <blob> element")
+         if "style" in element.attrib:
+             b = self.apply_layout(element.attrib["style"], b)
+@@ -393,5 +393,5 @@
+             thedict[element.attrib["id"]] = b
+         except:
+-            raise "FeynML Error: missing id attribute in <blob> element"
++            raise Exception("FeynML Error: missing id attribute in <blob> element")
+         return b
+ 
+@@ -472,5 +472,5 @@
+             s = styling.split(":")
+             styledict[s[0].lstrip().rstrip()] = s[1]
+-        if (styledict.has_key("fill-style")):
++        if "fill-style" in styledict:
+            filltype = styledict["fill-style"].split()
+            if filltype[0]=="solid":
+@@ -483,5 +483,5 @@
+               D,A = float(filltype[1]), int(filltype[2])
+               obj.fillstyles = [pyx.pattern.crosshatched(D,A)]
+-        if (styledict.has_key("mark-shape") or styledict.has_key("mark-size"))\
++        if ("mark-shape" in styledict or "mark-size" in styledict)\
+             and isinstance(obj, DecoratedPoint):
+            try:
+@@ -494,7 +494,7 @@
+                 marksize = 0.075
+            obj.setMark(marktype(size=marksize))
+-        if (styledict.has_key("arrow-size") or styledict.has_key("arrow-angle")
+-            or styledict.has_key("arrow-constrict")
+-            or styledict.has_key("arrow-pos")) and isinstance(obj, Line):
++        if ("arrow-size" in styledict or "arrow-angle" in styledict
++            or "arrow-constrict" in styledict
++            or "arrow-pos" in styledict) and isinstance(obj, Line):
+            try:
+               arrsize = pyx.unit.length(float(styledict["arrow-size"]),unit="cm")
+@@ -514,11 +514,11 @@
+               arrpos = 0.5
+            obj.addArrow(arrow=Arrow(arrpos,arrsize,arrangle,arrconstrict))
+-        if (styledict.has_key("parallel-arrow-size")
+-            or styledict.has_key("parallel-arrow-angle")
+-            or styledict.has_key("parallel-arrow-constrict")
+-            or styledict.has_key("parallel-arrow-pos")
+-            or styledict.has_key("parallel-arrow-length")
+-            or styledict.has_key("parallel-arrow-displace")
+-            or styledict.has_key("parallel-arrow-sense")) \
++        if ("parallel-arrow-size" in styledict
++            or "parallel-arrow-angle" in styledict
++            or "parallel-arrow-constrict" in styledict
++            or "parallel-arrow-pos" in styledict
++            or "parallel-arrow-length" in styledict
++            or "parallel-arrow-displace" in styledict
++            or "parallel-arrow-sense" in styledict) \
+            and isinstance(obj, Line):
+            try:
+@@ -552,5 +552,5 @@
+            obj.addParallelArrow(arrpos, arrdisp, arrlen, arrsize, arrangle,
+                                 arrconstrict, arrsense)
+-        if styledict.has_key("is3d") and isinstance(obj, Line):
++        if "is3d" in styledict and isinstance(obj, Line):
+            fwords = ["0", "no", "false", "f", "off"]
+            twords = ["1", "yes", "true", "t", "on"]
+diff -r -U2 pyfeyn-0.3.5.orig/pyfeyn/hepnames.py pyfeyn-0.3.5/pyfeyn/hepnames.py
+--- pyfeyn-0.3.5.orig/pyfeyn/hepnames.py	2011-02-20 23:29:40.000000000 +0600
++++ pyfeyn-0.3.5/pyfeyn/hepnames.py	2016-01-24 12:12:08.927719668 +0600
+@@ -749,13 +749,13 @@
+ def is_photon(name):
+     """Check if the given name refers to the photon."""
+-    return Photon_dict.has_key(name)
++    return name in Photon_dict
+ 
+ def is_gluon(name):
+     """Check if the given name refers to the gluon."""
+-    return Gluon_dict.has_key(name)
++    return name in Gluon_dict
+ 
+ def is_weakboson(name):
+     """Check if the given name refers to a weak vector boson."""
+-    return VectorBosons_dict.has_key(name)
++    return name in VectorBosons_dict
+ 
+ def is_gauge(name):
+@@ -767,5 +767,5 @@
+ def is_higgs(name):
+     """Check if the given name refers to a Higgs boson."""
+-    return Higgses_dict.has_key(name)
++    return name in Higgses_dict
+ 
+ ## Fermion type testing
+@@ -773,9 +773,9 @@
+ def is_quark(name):
+     """Check if the given name refers to a quark."""
+-    return Quarks_dict.has_key(name)
++    return name in Quarks_dict
+ 
+ def is_lepton(name):
+     """Check if the given name refers to a lepton."""
+-    return Leptons_dict.has_key(name)
++    return name in Leptons_dict
+ 
+ def is_quark_lepton(name):
+@@ -787,13 +787,13 @@
+ def is_meson(name):
+     """Check if the given name refers to a meson."""
+-    return mesons_dict.has_key(name)
++    return name in mesons_dict
+ 
+ def is_baryon(name):
+     """Check if the given name refers to a baryon."""
+-    return Baryons_dict.has_key(name)
++    return name in Baryons_dict
+ 
+ def is_hadron(name):
+     """Check if the given name refers to a hadron."""
+-    return Hadrons_dict.has_key(name)
++    return name in Hadrons_dict
+ 
+ ## Other type tests
+@@ -801,5 +801,5 @@
+ def is_ghost(name):
+     """Check if the given name refers to a ghost particle."""
+-    return Ghost_dict.has_key(name)
++    return name in Ghost_dict
+ 
+ ## Classify particle according to its coarse physical type
+diff -r -U2 pyfeyn-0.3.5.orig/pyfeyn/lines.py pyfeyn-0.3.5/pyfeyn/lines.py
+--- pyfeyn-0.3.5.orig/pyfeyn/lines.py	2016-01-21 14:24:35.000000000 +0600
++++ pyfeyn-0.3.5/pyfeyn/lines.py	2016-01-24 22:02:12.045230810 +0600
+@@ -33,5 +33,5 @@
+         a TeXLabel object."""
+         if config.getOptions().DEBUG:
+-            print "Adding label: " + text
++            print("Adding label: " + text)
+         #if text.__class__ == "Label":
+         #    self.labels.append(label)
+@@ -39,5 +39,5 @@
+         self.labels.append(LineLabel(text=text, line=self, pos=pos, displace=displace, angle=angle, size=size))
+         if config.getOptions().DEBUG:
+-            print "Labels = " + str(self.labels)
++            print("Labels = " + str(self.labels))
+         return self
+ 
+@@ -140,5 +140,5 @@
+         self.arcThru(arcpoint)
+         if config.getOptions().DEBUG:
+-            print self.getVisiblePath()
++            print(self.getVisiblePath())
+         if config.getOptions().VDEBUG:
+             FeynDiagram.currenDiagram.currentCanvas.stroke(self.getVisiblePath(), [color.rgb.blue])
+@@ -212,5 +212,5 @@
+             except ZeroDivisionError:
+                 if config.getOptions().DEBUG:
+-                    print "Grad 1 diverges"
++                    print("Grad 1 diverges")
+                 n13 = 1e100
+ 
+@@ -219,5 +219,5 @@
+             except ZeroDivisionError:
+                 if config.getOptions().DEBUG:
+-                    print "Grad 2 diverges"
++                    print("Grad 2 diverges")
+                 n23 = 1e100
+ 
+@@ -258,5 +258,5 @@
+ 
+             if config.getOptions().DEBUG and arcangle1 == arcangle2:
+-                print "Arc angles are the same - not drawing anything"
++                print("Arc angles are the same - not drawing anything")
+ 
+             ## Calculate cross product to determine direction of arc
+@@ -286,9 +286,6 @@
+                 if len(subpaths) > 1:
+                     if config.getOptions().DEBUG:
+-                        print "Num subpaths 1 = %d" % len(subpaths)
+-                    subpaths.sort(
+-                        lambda x, y :
+-                        int(pyx.unit.tocm(x.arclen() - y.arclen()) /
+-                            math.fabs(pyx.unit.tocm(x.arclen() - y.arclen()))) )
++                        print("Num subpaths 1 = %d" % len(subpaths))
++                    subpaths.sort(key=lambda x:pyx.unit.tocm(x.arclen()))
+                     vispath = subpaths[-1]
+                     if config.getOptions().VDEBUG:
+@@ -305,9 +302,6 @@
+                 if len(subpaths) > 1:
+                     if config.getOptions().DEBUG:
+-                        print "Num subpaths 2 = %d" % len(subpaths)
+-                    subpaths.sort(
+-                        lambda x, y :
+-                        int(pyx.unit.tocm(x.arclen() - y.arclen()) /
+-                            math.fabs(pyx.unit.tocm(x.arclen() - y.arclen()))) )
++                        print("Num subpaths 2 = %d" % len(subpaths))
++                    subpaths.sort(key=lambda x:pyx.unit.tocm(x.arclen()))
+                     vispath = subpaths[-1]
+                     if config.getOptions().VDEBUG:
+@@ -329,6 +323,6 @@
+         styles = self.styles + self.arrows
+         if config.getOptions().DEBUG:
+-            print "Drawing " + str(self.__class__) + " with styles = " + str(styles)
+-            print path
++            print("Drawing " + str(self.__class__) + " with styles = " + str(styles))
++            print(path)
+         canvas.stroke(path, styles)
+         for l in self.labels:
+@@ -382,6 +376,6 @@
+         ## TODO: call base class method?
+         if config.getOptions().DEBUG:
+-            print "Drawing " + str(self.__class__) + " with styles = " + str(styles)
+-            print path
++            print("Drawing " + str(self.__class__) + " with styles = " + str(styles))
++            print(path)
+         canvas.stroke(path, styles)
+         for l in self.labels:
+@@ -407,6 +401,6 @@
+         ## TODO: call base class method?
+         if config.getOptions().DEBUG:
+-            print "Drawing " + str(self.__class__) + " with styles = " + str(styles)
+-            print path
++            print("Drawing " + str(self.__class__) + " with styles = " + str(styles))
++            print(path)
+         canvas.stroke(path, styles)
+         for l in self.labels:
+@@ -520,5 +514,5 @@
+         styles = self.styles + self.arrows
+         if config.getOptions().DEBUG:
+-            print "Drawing " + str(self.__class__) + " with styles = " + str(styles)
++            print("Drawing " + str(self.__class__) + " with styles = " + str(styles))
+         mypath = self.getDeformedPath()
+         if config.getOptions().DRAFT or not self.is3D:
+@@ -615,5 +609,5 @@
+         styles = self.styles + self.arrows
+         if config.getOptions().DEBUG:
+-            print "Drawing " + str(self.__class__) + " with styles = " + str(styles)
++            print("Drawing " + str(self.__class__) + " with styles = " + str(styles))
+         canvas.stroke(self.getDeformedPath(), styles)
+         for l in self.labels:
+@@ -671,5 +665,5 @@
+                 curveradius = abs(curveradius/pyx.unit.m)
+                 #if config.getOptions().DEBUG:
+-                #    print self.__class__, "- curve radius = ", curveradius
++                #    print(self.__class__, "- curve radius = ", curveradius)
+                 if (mincurveradius is None or curveradius < mincurveradius):
+                     mincurveradius = curveradius
+@@ -680,5 +674,5 @@
+             numhloopcurves += int(0.1/mincurveradius)
+         if config.getOptions().DEBUG:
+-            print self.__class__, "- min curvature radius = ", mincurveradius, "->", numhloopcurves, "curves/hloop"
++            print(self.__class__, "- min curvature radius = ", mincurveradius, "->", numhloopcurves, "curves/hloop")
+ 
+         defo = pyx.deformer.cycloid(self.arcradius, intwindings, curvesperhloop=numhloopcurves,
+@@ -691,5 +685,5 @@
+         styles = self.styles + self.arrows
+         if config.getOptions().DEBUG:
+-            print "Drawing " + str(self.__class__) + " with styles = " + str(styles)
++            print("Drawing " + str(self.__class__) + " with styles = " + str(styles))
+         mypath1 = self.getDeformedPath(+1)
+         mypath2 = self.getDeformedPath(-1)
+@@ -789,5 +783,5 @@
+                 curveradius = abs(mincurveradius/pyx.unit.m)
+                 #if config.getOptions().DEBUG:
+-                #    print self.__class__, "- curvature radius = ", curveradius
++                #    print(self.__class__, "- curvature radius = ", curveradius)
+                 if (mincurveradius is None or curveradius < mincurveradius):
+                     mincurveradius = curveradius
+@@ -800,5 +794,5 @@
+             numhloopcurves += int(0.1/mincurveradius)
+         if config.getOptions().DEBUG:
+-            print self.__class__, "- min curve radius = ", mincurveradius, "->", numhloopcurves, "curves/hloop"
++            print(self.__class__, "- min curve radius = ", mincurveradius, "->", numhloopcurves, "curves/hloop")
+ 
+         defo = pyx.deformer.cycloid(self.arcradius, intwindings, curvesperhloop=numhloopcurves,
+@@ -811,5 +805,5 @@
+         styles = self.styles + self.arrows
+         if config.getOptions().DEBUG:
+-            print "Drawing " + str(self.__class__) + " with styles = " + str(styles)
++            print("Drawing " + str(self.__class__) + " with styles = " + str(styles))
+         mypath1 = self.getVisiblePath()
+         mypath2 = self.getDeformedPath()
+@@ -913,5 +907,5 @@
+                 curveradius = abs(curvature/pyx.unit.m)
+                 #if config.getOptions().DEBUG:
+-                #    print self.__class__, "- curvature radius = ", curveradius
++                #    print(self.__class__, "- curvature radius = ", curveradius)
+                 if (mincurveradius is None or curveradius < mincurveradius):
+                     mincurveradius = curveradius
+@@ -924,5 +918,5 @@
+             numhloopcurves += int(0.2/mincurveradius)
+         if config.getOptions().DEBUG:
+-            print self.__class__, "- min curve radius = ", mincurveradius, "->", numhloopcurves, "curves/hloop"
++            print(self.__class__, "- min curve radius = ", mincurveradius, "->", numhloopcurves, "curves/hloop")
+ 
+         defo = pyx.deformer.cycloid(self.arcradius, intwindings, curvesperhloop=numhloopcurves,
+@@ -935,5 +929,5 @@
+         styles = self.styles + self.arrows
+         if config.getOptions().DEBUG:
+-            print "Drawing " + str(self.__class__) + " with styles = " + str(styles)
++            print("Drawing " + str(self.__class__) + " with styles = " + str(styles))
+         mypath1 = self.getVisiblePath()
+         mypath2 = self.getDeformedPath()
+@@ -1034,5 +1028,5 @@
+                 curveradius = abs(curveradius/pyx.unit.m)
+                 #if config.getOptions().DEBUG:
+-                #    print self.__class__, "- curve radius = ", curveradius
++                #    print(self.__class__, "- curve radius = ", curveradius)
+                 if (mincurveradius is None or curveradius < mincurveradius):
+                     mincurveradius = curveradius
+@@ -1043,5 +1037,5 @@
+             numhloopcurves += int(0.1/mincurveradius)
+         if config.getOptions().DEBUG:
+-            print self.__class__, "- min curvature radius = ", mincurveradius, "->", numhloopcurves, "curves/hloop"
++            print(self.__class__, "- min curvature radius = ", mincurveradius, "->", numhloopcurves, "curves/hloop")
+ 
+         defo = pyx.deformer.cycloid(self.arcradius, intwindings, curvesperhloop=numhloopcurves,
+@@ -1054,5 +1048,5 @@
+         styles = self.styles + self.arrows
+         if config.getOptions().DEBUG:
+-            print "Drawing " + str(self.__class__) + " with styles = " + str(styles)
++            print("Drawing " + str(self.__class__) + " with styles = " + str(styles))
+         mypath = [self.getVisiblePath(), self.getDeformedPath(+1), self.getDeformedPath(-1)]
+         if self.inverted:
+diff -r -U2 pyfeyn-0.3.5.orig/pyfeyn/points.py pyfeyn-0.3.5/pyfeyn/points.py
+--- pyfeyn-0.3.5.orig/pyfeyn/points.py	2016-01-21 14:24:35.000000000 +0600
++++ pyfeyn-0.3.5/pyfeyn/points.py	2016-01-24 11:57:49.863755795 +0600
+@@ -36,8 +36,8 @@
+         a PointLable object."""
+         if config.getOptions().DEBUG:
+-            print "Adding label: " + text
++            print("Adding label: " + text)
+         self.labels.append(PointLabel(text=text, point=self, displace=displace, angle=angle, size=size))
+         if config.getOptions().DEBUG:
+-            print "Labels = " + str(self.labels)
++            print("Labels = " + str(self.labels))
+         return self
+ 
+diff -r -U2 pyfeyn-0.3.5.orig/pyfeyn/utils.py pyfeyn-0.3.5/pyfeyn/utils.py
+--- pyfeyn-0.3.5.orig/pyfeyn/utils.py	2011-02-20 23:29:40.000000000 +0600
++++ pyfeyn-0.3.5/pyfeyn/utils.py	2016-01-24 12:12:43.881718198 +0600
+@@ -41,5 +41,5 @@
+     def getDepth(self):
+         """Return the depth at which this instance lives."""
+-        if self.__dict__.has_key("depth"):
++        if "depth" in self.__dict__:
+             return self.depth
+         else:
+@@ -52,7 +52,7 @@
+ 
+         if config.getOptions().DEBUG:
+-            print "Comparing visible classes: ", \
++            print("Comparing visible classes: ", \
+                   self.__class__, "->", self.getDepth(), "vs.", \
+-                  other.__class__, "->", other.getDepth()
++                  other.__class__, "->", other.getDepth())
+         else:
+             return cmp(self.getDepth(), other.getDepth())

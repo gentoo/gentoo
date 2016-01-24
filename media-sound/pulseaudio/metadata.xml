@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>gnome</herd>
-  <herd>sound</herd>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sound@gentoo.org</email>
+    <name>Gentoo Sound project</name>
+  </maintainer>
   <use>
     <flag name="X">
       Build the X11 publish module to export PulseAudio information
@@ -64,7 +70,7 @@
     <flag name="xen">
       Builds a special paravirtualized module for running in a Xen guest.
     </flag>
-    <flag name='systemd'>
+    <flag name="systemd">
       Build with <pkg>sys-apps/systemd</pkg> support to replace standalone
       ConsoleKit.
     </flag>

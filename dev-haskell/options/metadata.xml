@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		The @options@ package lets library and application developers easily work
 		with command-line options.
@@ -18,12 +21,12 @@
 		&amp;#x20;   , optQuiet :: Bool
 		&amp;#x20;   &amp;#x7d;
 		
-		instance &#39;Options&#39; MainOptions where
+		instance 'Options' MainOptions where
 		&amp;#x20;   defineOptions = pure MainOptions
-		&amp;#x20;       \&lt;*\&gt; simpleOption \&quot;message\&quot; \&quot;Hello world!\&quot;
-		&amp;#x20;           \&quot;A message to show the user.\&quot;
-		&amp;#x20;       \&lt;*\&gt; simpleOption \&quot;quiet\&quot; False
-		&amp;#x20;           \&quot;Whether to be quiet.\&quot;
+		&amp;#x20;       \&lt;*\&gt; simpleOption \"message\" \"Hello world!\"
+		&amp;#x20;           \"A message to show the user.\"
+		&amp;#x20;       \&lt;*\&gt; simpleOption \"quiet\" False
+		&amp;#x20;           \"Whether to be quiet.\"
 		
 		main :: IO ()
 		main = runCommand $ \\opts args -&gt; do
@@ -34,7 +37,7 @@
 		
 		&gt;$ ./hello
 		&gt;Hello world!
-		&gt;$ ./hello --message=&#39;ciao mondo&#39;
+		&gt;$ ./hello --message='ciao mondo'
 		&gt;ciao mondo
 		&gt;$ ./hello --quiet
 		&gt;$
@@ -52,7 +55,7 @@
 		&gt;Application Options:
 		&gt;  --message :: text
 		&gt;    A message to show the user.
-		&gt;    default: &quot;Hello world!&quot;
+		&gt;    default: "Hello world!"
 		&gt;  --quiet :: bool
 		&gt;    Whether to be quiet.
 		&gt;    default: false

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>base-system</herd>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
 	<use>
-		<flag name='logrotate'>use app-admin/logrotate for rotating logs rather than custom cron scripts</flag>
+		<flag name="logrotate">use app-admin/logrotate for rotating logs rather than custom cron scripts</flag>
 	</use>
 </pkgmetadata>

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>java</herd>
+  <maintainer type="project">
+    <email>java@gentoo.org</email>
+    <name>Java</name>
+  </maintainer>
   <longdescription>
     Tomcat is the servlet container that is used in the official Reference
     Implementation for the Java Servlet and JavaServer Pages technologies.
@@ -9,7 +12,7 @@
     Sun under the Java Community Process.
   </longdescription>
   <use>
-    <flag name='extra-webapps'>Build also the docs and examples webapp</flag>
+    <flag name="extra-webapps">Build also the docs and examples webapp</flag>
 	<flag name="websockets">Builds websockets api and implementation (requires java 7)</flag>
   </use>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils
 
-DESCRIPTION="Libburn is an open-source library for reading, mastering and writing optical discs"
+DESCRIPTION="Open-source library for reading, mastering and writing optical discs"
 HOMEPAGE="http://libburnia-project.org"
 SRC_URI="http://files.libburnia-project.org/releases/${P}.tar.gz"
 

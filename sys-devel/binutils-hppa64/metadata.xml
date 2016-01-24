@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>hppa</herd>
+<maintainer type="project">
+	<email>hppa@gentoo.org</email>
+	<name>Gentoo Linux HPPA Development</name>
+</maintainer>
 <longdescription>
 binutils for 64bit kernel on hppa.
 </longdescription>
 <use>
-	<flag name='multislot'>Allow for multiple versions of binutils to be emerged at once for same CTARGET</flag>
-	<flag name='multitarget'>Adds support to binutils for cross compiling (does not work with gas)</flag>
+	<flag name="multislot">Allow for multiple versions of binutils to be emerged at once for same CTARGET</flag>
+	<flag name="multitarget">Adds support to binutils for cross compiling (does not work with gas)</flag>
 </use>
 </pkgmetadata>

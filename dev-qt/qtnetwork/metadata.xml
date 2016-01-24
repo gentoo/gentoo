@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>qt</herd>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
 	<use>
 		<flag name="bindist">Disable EC support via <pkg>dev-libs/openssl</pkg></flag>
 		<flag name="connman">Enable <pkg>net-misc/connman</pkg>-based bearer plugin</flag>

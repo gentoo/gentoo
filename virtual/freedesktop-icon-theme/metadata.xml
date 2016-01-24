@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>freedesktop</herd>
-<maintainer>
+<maintainer type="project">
 	<email>freedesktop-bugs@gentoo.org</email>
 </maintainer>
 <longdescription lang="en">
 </longdescription>
 </pkgmetadata>
-

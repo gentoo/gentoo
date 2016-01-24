@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proxy-maintainers</herd>
-<maintainer>
+<maintainer type="person">
   <email>xmw@gentoo.org</email>
   <name>Michael Weber</name>
   <description>Proxy Maintainer</description>
 </maintainer>
-<maintainer>
+<maintainer type="person">
 	<email>mjinks@uchicago.edu</email>
 	<name>Michael Jinks</name>
 </maintainer>
+<maintainer type="project">
+  <email>proxy-maint@gentoo.org</email>
+  <name>Proxy Maintainers</name>
+</maintainer>
 <use>
-  <flag name='cheetah'>Include dev-python/cheetah support</flag>
-  <flag name='genshi'>Include dev-python/genshi support</flag>
-  <flag name='server'>Installs scripts to be used on the server-side of this app</flag>
+  <flag name="cheetah">Include dev-python/cheetah support</flag>
+  <flag name="genshi">Include dev-python/genshi support</flag>
+  <flag name="server">Installs scripts to be used on the server-side of this app</flag>
 </use>
 </pkgmetadata>

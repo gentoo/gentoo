@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>scheme</herd>
+	<maintainer type="project">
+		<email>scheme@gentoo.org</email>
+		<name>Gentoo Scheme Project</name>
+	</maintainer>
 	<longdescription lang="en">
 Guile-Cairo is complete, wrapping almost all of the Cairo API. It is API stable, providing a firm base on which to do graphics work. Finally, and importantly, it is pleasant to use. You get a powerful and well-maintained graphics library with all of the benefits of Scheme: memory management, exceptions, macros, and a dynamic programming environment.
 	</longdescription>

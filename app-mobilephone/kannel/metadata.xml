@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
 <longdescription>Kannel is a compact and very powerful open source WAP and SMS gateway, 
 used widely across the globe both for serving millions of short messages (SMS) 
 and pushing WAP service indications.</longdescription>

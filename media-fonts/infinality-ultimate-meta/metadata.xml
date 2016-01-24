@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>fonts</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>witold.pilat@gmail.com</email>
     <description>Proxied/co-maintainer. CC on bugs.</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>fonts@gentoo.org</email>
+    <name>Fonts</name>
   </maintainer>
   <use>
     <flag name="free">Install fonts for the "free" preset</flag>

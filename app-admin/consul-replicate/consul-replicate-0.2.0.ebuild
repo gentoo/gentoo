@@ -20,6 +20,7 @@ RDEPEND=""
 SRC_URI="https://${EGO_PN%/*}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/hashicorp/consul-template/archive/v0.8.0.tar.gz -> consul-template-0.8.0.tar.gz
 	https://github.com/fatih/structs/archive/a924a2250d1033753512e95dce41dca3fd793ad9.tar.gz -> structs-a924a2250d1033753512e95dce41dca3fd793ad9.tar.gz
+	https://github.com/hashicorp/consul/archive/v0.6.3.tar.gz -> consul-0.6.3.tar.gz
 	https://github.com/hashicorp/errwrap/archive/7554cd9344cec97297fa6649b055a8c98c2a1e55.tar.gz -> errwrap-7554cd9344cec97297fa6649b055a8c98c2a1e55.tar.gz
 	https://github.com/hashicorp/go-cleanhttp/archive/ce617e79981a8fff618bb643d155133a8f38db96.tar.gz -> go-cleanhttp-ce617e79981a8fff618bb643d155133a8f38db96.tar.gz
 	https://github.com/hashicorp/go-multierror/archive/d30f09973e19c1dfcd120b2d9c4f168e68d6b5d5.tar.gz -> go-multierror-d30f09973e19c1dfcd120b2d9c4f168e68d6b5d5.tar.gz

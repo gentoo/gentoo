@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>tex</herd>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>etux@bluewin.ch</email>
 		<name>Alexandre -- Untux</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>aballier@gentoo.org</email>
 		<name>Alexis Ballier</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>fauli@gentoo.org</email>
 		<name>Christian Faulhammer</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>tex@gentoo.org</email>
+		<name>Gentoo TeX Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
 		Little CLI utility for Gentoo-texlive end-users. Search for texmf-files

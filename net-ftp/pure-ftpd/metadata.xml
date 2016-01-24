@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>net-ftp</herd>
-<maintainer>
+<maintainer type="person">
 	<email>polynomial-c@gentoo.org</email>
 	<name>Lars Wendler</name>
 </maintainer>
 <longdescription>Free (BSD), secure, production-quality and standard-conformant FTP server based upon Troll-FTPd. It doesn't provide useless bells and whistles, but focuses on efficiency and ease of use.</longdescription>
 <use>
-	<flag name='anondel'>Permit anonymous to delete files</flag>
-	<flag name='anonperm'>Permit anonymous to change file permissions</flag>
-	<flag name='anonren'>Permit anonymous to rename files</flag>
-	<flag name='anonres'>Permit anonymous to resume file transfers</flag>
-	<flag name='charconv'>Enables charset conversion</flag>
-	<flag name='implicittls'>Enable TLS on Port 990</flag>
-	<flag name='noiplog'>Disables logging of IP addresses</flag>
-	<flag name='paranoidmsg'>Display paranoid messages instead of normal
+	<flag name="anondel">Permit anonymous to delete files</flag>
+	<flag name="anonperm">Permit anonymous to change file permissions</flag>
+	<flag name="anonren">Permit anonymous to rename files</flag>
+	<flag name="anonres">Permit anonymous to resume file transfers</flag>
+	<flag name="charconv">Enables charset conversion</flag>
+	<flag name="implicittls">Enable TLS on Port 990</flag>
+	<flag name="noiplog">Disables logging of IP addresses</flag>
+	<flag name="paranoidmsg">Display paranoid messages instead of normal
 		ones</flag>
-	<flag name='resolveids'>Resolve UIDs/GIDs</flag>
-	<flag name='sysquota'>Enables system quota support (needs sys-fs/quota)
+	<flag name="resolveids">Resolve UIDs/GIDs</flag>
+	<flag name="sysquota">Enables system quota support (needs sys-fs/quota)
 		</flag>
-	<flag name='vchroot'>Enable support for virtual chroot (possible security
+	<flag name="vchroot">Enable support for virtual chroot (possible security
 		risk)</flag>
 </use>
 </pkgmetadata>

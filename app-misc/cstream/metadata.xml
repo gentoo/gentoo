@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-	<email>maintainer-needed@gentoo.org</email>
-</maintainer>
 <longdescription lang="en">
 cstream is a general-purpose stream-handling tool like UNIX dd, usually used in commandline-constructed pipes. 
 Features: 
@@ -15,7 +12,6 @@ Features:
  - Build-in support for fifos. Example usage is a 'pseudo-device', something that sinks or delivers data at an appropriate rate, but looks like a file, i.e. if you test soundcard software. See the manpage for examples. 
  - Built-in data creation and sink, no more redirection of /dev/null and /dev/zero. These special devices speed varies greatly among operating systems, redirecting from it isn't appropriate benchmarking and a waste of resources anyway. 
  - Accepts 'k', 'm' and 'g' character after number for "kilo, mega, giga" bytes for overall data size limit. 
- - "gcc -Wall" clean source code, serious effort taken to avoid undefined behavior in ANSI C or POSIX, except long long is required. Limiting and reporting works on data amounts > 4 GB.
+ - "gcc -Wall" clean source code, serious effort taken to avoid undefined behavior in ANSI C or POSIX, except long long is required. Limiting and reporting works on data amounts &gt; 4 GB.
 </longdescription>
 </pkgmetadata>
-

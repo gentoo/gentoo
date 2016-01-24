@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>fonts</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>yngwin@gentoo.org</email>
 		<name>Ben de Groot</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="project">
 		<email>multilib@gentoo.org</email>
 		<name>gx86-multilib project</name>
 		<description>Handling the bugs related to multilib support in the package and related changes.</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>fonts@gentoo.org</email>
+		<name>Fonts</name>
 	</maintainer>
 	<longdescription>Fontconfig is a font configuration and customization library, which does not depend on the X Window System. It is designed to locate fonts within the system and select them according to requirements specified by applications.</longdescription>
 </pkgmetadata>
