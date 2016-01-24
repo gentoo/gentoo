@@ -34,7 +34,7 @@ DEPEND="${RDEPEND}
 [[ ${PV} == *9999 ]] && DEPEND+=" dev-python/sphinx[${PYTHON_USEDEP}]"
 
 python_compile_all() {
-	[[ ${PV} == *9999 ]] && esetup.py build_man
+	esetup.py build_man
 }
 
 python_test() {
