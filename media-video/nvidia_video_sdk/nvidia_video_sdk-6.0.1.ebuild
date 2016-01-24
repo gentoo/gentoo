@@ -6,29 +6,29 @@ EAPI=5
 
 inherit versionator toolchain-funcs
 
-MY_P="${PN}_${PV}_sdk"
+MY_P="${PN}_${PV}"
 
-DESCRIPTION="NVIDIA Encoder (NVENC) API"
+DESCRIPTION="NVIDIA Video Codec SDK"
 HOMEPAGE="https://developer.nvidia.com/nvidia-video-codec-sdk"
-SRC_URI="http://developer.download.nvidia.com/compute/nvenc/v$(get_version_component_range "1-2")/${MY_P}.zip"
+SRC_URI="https://developer.nvidia.com/video-sdk-$(replace_all_version_separators '') -> ${MY_P}.zip"
 
-LICENSE="NVIDIA-CODEC-SDK"
+LICENSE="MIT tools? ( NVIDIA-CODEC-SDK )"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+tools samples"
+IUSE="tools"
 
-RDEPEND=">=x11-drivers/nvidia-drivers-347.09
-	tools? ( >=dev-util/nvidia-cuda-toolkit-6.5 )"
+RDEPEND="
+	!media-video/nvenc
+	>=x11-drivers/nvidia-drivers-347.09"
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 
 S="${WORKDIR}/${MY_P}"
 
-TOOLS="NvEncoder NvEncoderPerf NvTranscoder"
+TOOLS="NvEncoder NvEncoderPerf NvTranscoder NvEncoderLowLatency"
 
 src_compile() {
 	if use tools ; then
-		export CUDA_PATH=/opt/cuda
 		export EXTRA_LDFLAGS="${LDFLAGS}"
 		for i in ${TOOLS} ; do
 			pushd "${S}/Samples/${i}" || die
@@ -43,16 +43,11 @@ src_install() {
 		for i in ${TOOLS}; do
 			dobin "${S}/Samples/${i}/${i}"
 		done
+		dodoc "${S}/Samples/NVIDIA_Video_Codec_SDK_Samples_Guide.pdf"
 	fi
 
-	dodoc doc/*.pdf
-
-	if use samples ; then
-		dodoc Samples/NVENC_Samples_Guide.pdf
-		insinto /usr/share/${PN}
-		doins -r Samples/YUV
-	fi
+	dodoc doc/*.pdf ReadMe.txt Release_notes.txt
 
 	insinto /usr/include
-	doins Samples/common/inc/nv*.h
+	doins Samples/common/inc/nvEncodeAPI.h
 }
