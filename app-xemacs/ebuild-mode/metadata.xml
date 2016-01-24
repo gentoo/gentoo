@@ -2,4 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>xemacs</herd>
+  <upstream>
+    <maintainer status="active">
+      <email>emacs@gentoo.org</email>
+      <name>Gentoo Emacs project</name>
+    </maintainer>
+  </upstream>
 </pkgmetadata>

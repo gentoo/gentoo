@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>emacs</herd>
+<maintainer>
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
 <longdescription>
-jasmin.el is an Emacs major mode for editing Jasmin Java bytecode
-assembler files. It provides automatic formatting, customizable
-fontifying, and quick-reference syntax help. Font-lock specifications
-are derived from an encoded grammar, for detailed syntax coloring.
+  jasmin.el is an Emacs major mode for editing Jasmin Java bytecode
+  assembler files. It provides automatic formatting, customizable
+  fontifying, and quick-reference syntax help. Font-lock specifications
+  are derived from an encoded grammar, for detailed syntax coloring.
 </longdescription>
 </pkgmetadata>

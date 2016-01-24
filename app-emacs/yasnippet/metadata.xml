@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>emacs</herd>
-	<longdescription>YASnippet is a re-design and re-write of smart-snippet. It is much cleaner
-  and more powerful than smart-snippet.</longdescription>
-	<upstream>
-		<remote-id type="google-code">yasnippet</remote-id>
-		<remote-id type="github">capitaomorte/yasnippet</remote-id>
-	</upstream>
+<maintainer>
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  YASnippet is a re-design and re-write of smart-snippet. It is much
+  cleaner and more powerful than smart-snippet.
+</longdescription>
+<upstream>
+  <remote-id type="google-code">yasnippet</remote-id>
+  <remote-id type="github">capitaomorte/yasnippet</remote-id>
+</upstream>
 </pkgmetadata>

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>emacs</herd>
-<maintainer>  
+<maintainer>
   <email>mjo@gentoo.org</email>
+</maintainer>
+<maintainer>
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
 </maintainer>
 </pkgmetadata>

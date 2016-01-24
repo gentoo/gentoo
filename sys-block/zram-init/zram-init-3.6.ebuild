@@ -3,7 +3,6 @@
 # $Id$
 
 EAPI=6
-RESTRICT="mirror"
 inherit readme.gentoo-r1 systemd
 
 DESCRIPTION="Scripts to support compressed swap devices or ramdisks with zram"

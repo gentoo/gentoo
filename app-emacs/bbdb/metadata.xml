@@ -1,17 +1,20 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>emacs</herd>
-  <longdescription>
+<maintainer>
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
   The Insidious Big Brother Database (BBDB) is a contact management utility
   for use with GNU Emacs and XEmacs. It can hook into Emacs-based mail- and
   news-readers and automatically collect information on messages therein.
-  </longdescription>
-  <use>
-    <flag name="tex">Install plain TeX support files</flag>
-    <flag name="vm">Add support for <pkg>app-emacs/vm</pkg></flag>
-  </use>
-  <upstream>
-    <remote-id type="sourceforge">bbdb</remote-id>
-  </upstream>
+</longdescription>
+<use>
+  <flag name="tex">Install plain TeX support files</flag>
+  <flag name="vm">Add support for <pkg>app-emacs/vm</pkg></flag>
+</use>
+<upstream>
+  <remote-id type="sourceforge">bbdb</remote-id>
+</upstream>
 </pkgmetadata>

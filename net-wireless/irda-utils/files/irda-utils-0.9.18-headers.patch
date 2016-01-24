@@ -1,5 +1,5 @@
---- tekram/Makefile.orig	2010-11-02 22:41:43.000000000 +0100
-+++ tekram/Makefile	2010-11-02 22:41:53.000000000 +0100
+--- irda-utils-0.9.18/tekram/Makefile.orig	2010-11-02 22:41:43.000000000 +0100
++++ irda-utils-0.9.18/tekram/Makefile	2010-11-02 22:41:53.000000000 +0100
 @@ -38,7 +38,7 @@
  #
  # System stuff

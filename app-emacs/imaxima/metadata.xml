@@ -2,7 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>sci-mathematics</herd>
-<herd>emacs</herd>
+<maintainer>
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
 <longdescription lang="en">
   Imaxima provides support for interacting with the computer algebra system
   Maxima in an Emacs buffer. Imaxima processes the output from Maxima with TeX

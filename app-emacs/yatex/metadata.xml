@@ -2,7 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>cjk</herd>
-<herd>emacs</herd>
+<maintainer>
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
 <longdescription lang="en">
   YaTeX is an intelligent, acquisitive and integrated package which reduces
   your efforts of composing LaTeX source on Emacs. And yahtml is the honest

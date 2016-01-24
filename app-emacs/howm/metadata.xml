@@ -1,8 +1,11 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>emacs</herd>
-	<upstream>
-		<remote-id type="sourceforge-jp">howm</remote-id>
-	</upstream>
+<maintainer>
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<upstream>
+  <remote-id type="sourceforge-jp">howm</remote-id>
+</upstream>
 </pkgmetadata>

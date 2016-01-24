@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,20 +10,19 @@ inherit linux-info xorg-2
 DESCRIPTION="X.Org driver for Intel cards"
 
 KEYWORDS="~amd64 ~x86 ~amd64-fbsd -x86-fbsd"
-IUSE="glamor +sna +udev uxa xvmc"
+IUSE="debug +sna +udev uxa xvmc"
+COMMIT_ID="b48d4a7917ab793526be47559becc64aacd347ae"
+SRC_URI="http://cgit.freedesktop.org/xorg/driver/xf86-video-intel/snapshot/${COMMIT_ID}.tar.xz -> ${P}.tar.xz"
+
+S=${WORKDIR}/${COMMIT_ID}
 
 REQUIRED_USE="
 	|| ( sna uxa )
-	glamor? ( uxa )
 "
-
 RDEPEND="x11-libs/libXext
 	x11-libs/libXfixes
 	>=x11-libs/pixman-0.27.1
 	>=x11-libs/libdrm-2.4.29[video_cards_intel]
-	glamor? (
-		x11-libs/glamor
-	)
 	sna? (
 		>=x11-base/xorg-server-1.10
 	)
@@ -38,20 +37,23 @@ RDEPEND="x11-libs/libXext
 "
 DEPEND="${RDEPEND}
 	>=x11-proto/dri2proto-2.6
+	x11-proto/dri3proto
+	x11-proto/presentproto
 	x11-proto/resourceproto"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-invalidation.patch
-)
+src_prepare() {
+	eautoreconf
+}
 
 src_configure() {
 	XORG_CONFIGURE_OPTIONS=(
+		$(use_enable debug)
 		$(use_enable dri)
-		$(use_enable glamor)
 		$(use_enable sna)
 		$(use_enable uxa)
 		$(use_enable udev)
 		$(use_enable xvmc)
+		--disable-dri3
 	)
 	xorg-2_src_configure
 }

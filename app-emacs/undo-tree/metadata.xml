@@ -5,7 +5,10 @@
   <email>tomka@gentoo.org</email>
   <name>Thomas Kahle</name>
 </maintainer>
-<herd>emacs</herd>
+<maintainer>
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
 <longdescription lang="en">
   Emacs has a powerful undo system. Unlike the standard undo/redo system in
   most software, it allows you to recover *any* past state of a buffer

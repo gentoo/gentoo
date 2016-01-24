@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>emacs</herd>
+<maintainer>
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
 <herd>common-lisp</herd>
 <longdescription>
-Show Common Lisp operators and variables information in echo area.
-cldoc.el has a database of parameters and results of Common Lisp's
-standard functions, and syntax rules of standard macros and special
-operators. cldoc.el automatically uses SLIME's autodoc facility if
-available to display parameters of user defined functions and macros,
-and the values of global variables.
+  Show Common Lisp operators and variables information in echo area.
+  cldoc.el has a database of parameters and results of Common Lisp's
+  standard functions, and syntax rules of standard macros and special
+  operators. cldoc.el automatically uses SLIME's autodoc facility if
+  available to display parameters of user defined functions and macros,
+  and the values of global variables.
 </longdescription>
 </pkgmetadata>

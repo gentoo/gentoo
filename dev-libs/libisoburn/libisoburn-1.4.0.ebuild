@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils
 
-DESCRIPTION="Enables creation and expansion of ISO-9660 filesystems on all CD/DVD media supported by libburn"
+DESCRIPTION="Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn"
 HOMEPAGE="http://libburnia-project.org/"
 SRC_URI="http://files.libburnia-project.org/releases/${P}.tar.gz"
 

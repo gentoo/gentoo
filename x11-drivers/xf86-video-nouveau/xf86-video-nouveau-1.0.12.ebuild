@@ -1,9 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 XORG_DRI="always"
+XORG_EAUTORECONF=yes
 inherit xorg-2
 
 if [[ ${PV} == 9999* ]]; then
@@ -15,18 +16,8 @@ DESCRIPTION="Accelerated Open Source driver for nVidia cards"
 HOMEPAGE="http://nouveau.freedesktop.org/"
 
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="udev"
+IUSE="glamor"
 
-RDEPEND="udev? ( virtual/udev )
-	>=x11-libs/libdrm-2.4.34[video_cards_nouveau]"
+RDEPEND=">=x11-libs/libdrm-2.4.60[video_cards_nouveau]
+	>=x11-libs/libpciaccess-0.10"
 DEPEND="${RDEPEND}"
-
-src_prepare() {
-	xorg-2_src_prepare
-
-	# There is no configure knob for this, so hack it.
-	use udev || export LIBUDEV_{CFLAGS,LIBS}=' '
-	sed -i \
-		-e "/LIBUDEV=/s:=.*:=$(usex udev):" \
-		configure || die
-}

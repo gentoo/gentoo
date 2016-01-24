@@ -1,5 +1,5 @@
---- Makefile.in.old	2011-07-25 14:08:18.000000000 +0200
-+++ Makefile.in	2011-07-25 14:09:05.000000000 +0200
+--- librep_0.92.5/Makefile.in.old	2011-07-25 14:08:18.000000000 +0200
++++ librep_0.92.5/Makefile.in	2011-07-25 14:09:05.000000000 +0200
 @@ -53,15 +53,13 @@
  	$(INSTALL_SCRIPT) libtool $(DESTDIR)$(repcommonexecdir)
  	$(INSTALL_DATA) rules.mk $(DESTDIR)$(repcommonexecdir)
