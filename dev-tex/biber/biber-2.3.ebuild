@@ -42,7 +42,7 @@ RDEPEND=">=dev-lang/perl-5.16
 	>=dev-perl/Text-BibTeX-0.700.0
 	dev-perl/URI
 	dev-perl/Unicode-LineBreak
-	>=dev-perl/Unicode-Normalize-1.230.0
+	>=virtual/perl-Unicode-Normalize-1.230.0
 	dev-perl/XML-LibXML-Simple
 	dev-perl/XML-LibXSLT
 	dev-perl/XML-SAX-Base
