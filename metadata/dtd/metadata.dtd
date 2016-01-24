@@ -5,14 +5,13 @@
 <!ATTLIST catmetadata pkgname CDATA "">
 
 <!-- Metadata for a package -->
-<!ELEMENT pkgmetadata ( (herd|maintainer|natural-name|longdescription|slots|use|upstream)* )>
+<!ELEMENT pkgmetadata ( (maintainer|natural-name|longdescription|slots|use|upstream)* )>
 <!ATTLIST pkgmetadata pkgname CDATA "">
-
-  <!-- One tag for each herd this package is assigned to. -->
-  <!ELEMENT herd (#PCDATA)>
 
   <!-- One tag for each maintainer of a package, multiple allowed-->
   <!ELEMENT maintainer ( email, (description| name)* )>
+  <!-- type attribute determines whether the maintainer is a person or a project -->
+  <!ATTLIST maintainer type (person|project) #REQUIRED>
 
   <!-- Natural name for package, example: LibreOffice (for app-office/libreoffice) -->
   <!ELEMENT natural-name (#PCDATA) >
