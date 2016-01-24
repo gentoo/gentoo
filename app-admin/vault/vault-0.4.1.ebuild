@@ -83,8 +83,8 @@ src_install() {
 		rm -rf "${S}"/src/${x}
 	done < <(find "${S}"/src/${EGO_PN%/*} -mindepth 1 -maxdepth 1 -type d -print0)
 	insopts -m0644 -p # preserve timestamps for bug 551486
-	insinto /usr/lib/go/pkg/$(go env GOOS)_$(go env GOARCH)/${GO_PN%/*}
+	insinto $(dirname /usr/lib/go/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*})
 	doins -r "${S}"/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}
-	insinto /usr/lib/go/src/${GO_PN%/*}
+	insinto $(dirname /usr/lib/go/src/${EGO_PN%/*})
 	doins -r "${S}"/src/${EGO_PN%/*}
 }
