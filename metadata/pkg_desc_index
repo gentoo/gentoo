@@ -76,6 +76,7 @@ app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for 
 app-admin/conserver 8.1.18 8.1.18-r1: Serial Console Manager
 app-admin/consolehm 1.31: Console based hardware monitor for FreeBSD
 app-admin/consul 0.5.2-r1 0.6.3 9999: A tool for service discovery, monitoring and configuration
+app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
 app-admin/consul-template 0.9.0-r1 0.12.2 9999: Generic template rendering and notifications with Consul
 app-admin/cpulimit 1.8 2.2: Limits the CPU usage of a process
 app-admin/cronolog 1.6.2-r3 1.6.2-r4: Cronolog apache logfile rotator
@@ -8804,6 +8805,7 @@ dev-ruby/pg 0.17.1 0.17.1-r1 0.18.2 0.18.3 0.18.4: Ruby extension library provid
 dev-ruby/pg_array_parser 0.0.9-r1: Simple library to parse PostgreSQL arrays into a array of strings
 dev-ruby/pkg-config 1.1.6 1.1.7: A pkg-config implementation by Ruby
 dev-ruby/plist 3.1.0-r1: A library to manipulate Property List files, also known as plists
+dev-ruby/pluggaloid 1.0.2: Pluggaloid is extensible plugin system for mikutter
 dev-ruby/png 1.2.0-r2 1.2.1: An almost pure-Ruby Portable Network Graphics (PNG) library
 dev-ruby/podcast 0.0.4-r2: A pure Ruby library for generating podcasts from mp3 files
 dev-ruby/poltergeist 1.6.0 1.7.0: A PhantomJS driver for Capybara
@@ -9017,6 +9019,7 @@ dev-ruby/timers 4.0.1 4.1.0 4.1.1: Pure Ruby one-shot and periodic timers
 dev-ruby/tins 0.13.1 1.6.0 1.7.0 1.8.0 1.8.1: All the stuff that isn't good enough for a real library
 dev-ruby/tokyocabinet 1.29.1: Ruby bindings for Tokyo Cabinet
 dev-ruby/toml 0.1.2: A sane configuration format
+dev-ruby/totoridipjp 0.1.0: A ruby binding to use totori.dip.jp Web API
 dev-ruby/transaction-simple 1.4.0.2-r1 1.4.0.2-r2: Provides transaction support at the object level
 dev-ruby/treetop 1.4.15-r1 1.5.3 1.6.3: Treetop is a language for describing languages
 dev-ruby/trollop 1.16.2-r4 2.0 2.1.1 2.1.2: Trollop is a commandline option parser for Ruby
