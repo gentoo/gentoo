@@ -1989,7 +1989,7 @@
     </member>
   </project>
   <project>
-    <email>blueness@gentoo.org</email>
+    <email>gentoo-yeeloong@gentoo.org</email>
     <name>Lemote Yeeloong Gentoo Desktop</name>
     <url>https://wiki.gentoo.org/wiki/Project:Lemote_Yeeloong_Gentoo_Desktop</url>
     <description>The Lemote Yeeloong Gentoo Desktop aim to provide a ready to install XFCE4 base desktop to the Yeeloong netbook.</description>
@@ -2092,7 +2092,7 @@
     <name>Gentoo/MIPS Port</name>
     <url>https://wiki.gentoo.org/wiki/Project:MIPS</url>
     <description>Gentoo/MIPS is a port of the Gentoo GNU/Linux and the Gentoo Portage package management system to mips-based platforms.</description>
-    <subproject ref="blueness@gentoo.org"/>
+    <subproject ref="gentoo-yeeloong@gentoo.org"/>
     <member>
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
