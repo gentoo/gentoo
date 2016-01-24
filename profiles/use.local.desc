@@ -711,6 +711,7 @@ app-emulation/wine:capi - Enable ISDN support via CAPI
 app-emulation/wine:custom-cflags - Bypass strip-flags; use at your own peril
 app-emulation/wine:dos - Pull in games-emulation/dosbox to run DOS applications
 app-emulation/wine:gecko - Add support for the Gecko engine when using iexplore
+app-emulation/wine:gstreamer - Use media-libs/gstreamer to provide DirectShow functionality; For versions less than wine-1.9.2, uses experimental patch which may break some apps
 app-emulation/wine:mono - Add support for .NET using Wine's Mono add-on
 app-emulation/wine:netapi - Use libnetapi from net-fs/samba to support Windows networks in netapi32.dll
 app-emulation/wine:opencl - Enable OpenCL support
@@ -4894,6 +4895,7 @@ media-video/vlc:avcodec - Enables libavcodec support for video/audio encoding/de
 media-video/vlc:avformat - Enables libformat support for reading and writing various media containers. libavformat is part of FFmpeg.
 media-video/vlc:bluray - Enables libbluray for Blu-ray disc support.
 media-video/vlc:chromaprint - Enables libchromaprint for Chromaprint based audio fingerprinter support.
+media-video/vlc:chromecast - Enable experimental support for Google Chromecast.
 media-video/vlc:dc1394 - Enables IIDC cameras support.
 media-video/vlc:dirac - Enable Dirac video support (an advanced royalty-free video compression format) via the reference library: dirac.
 media-video/vlc:directx - Enable Win32 DirectX support.
@@ -4919,6 +4921,7 @@ media-video/vlc:macosx - Enables Mac OS X gui support.
 media-video/vlc:macosx-audio - Enables Mac OS X audio module.
 media-video/vlc:macosx-dialog-provider - Enables Mac OS X dialog module.
 media-video/vlc:macosx-eyetv - Enables Mac OS X EyeTV (TNT Tuner) module.
+media-video/vlc:macosx-notifications - Enables Mac OS X notifications module (formerly growl).
 media-video/vlc:macosx-qtkit - Enables Mac OS X qtkit module: qtcapture (video) and qtsound (audio) module.
 media-video/vlc:macosx-quartztext - Enables Mac OS X quartz text module.
 media-video/vlc:macosx-vout - Enables Mac OS X video output module.
