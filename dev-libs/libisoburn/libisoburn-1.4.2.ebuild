@@ -18,8 +18,8 @@ IUSE="acl cdio debug external-filters external-filters-setuid frontend-optional
 
 REQUIRED_USE="frontend-optional? ( || ( launch-frontend launch-frontend-setuid ) )"
 
-RDEPEND=">=dev-libs/libburn-1.4.0
-	>=dev-libs/libisofs-1.4.0
+RDEPEND=">=dev-libs/libburn-1.4.2
+	>=dev-libs/libisofs-1.4.2
 	readline? ( sys-libs/readline:0= )
 	!readline? ( libedit? ( dev-libs/libedit ) )
 	acl? ( virtual/acl )
