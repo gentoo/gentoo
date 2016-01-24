@@ -3,9 +3,9 @@
 # $Id$
 
 EAPI=5
-
 PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
-inherit eutils python-r1 qt4-r2
+
+inherit eutils python-r1 qt4-r2 flag-o-matic
 
 DESCRIPTION="BitTorrent client in C++ and Qt"
 HOMEPAGE="http://www.qbittorrent.org/"
@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+dbus debug qt4 qt5 webui +X"
+IUSE="+dbus debug qt4 +qt5 webui +X"
 REQUIRED_USE="
 	^^ ( qt4 qt5 )
 	dbus? ( X )
@@ -63,6 +63,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# See bug 569062
+	append-cppflags "-DBOOST_NO_CXX11_REF_QUALIFIERS"
+
 	# Custom configure script, econf fails
 	local myconf=(
 		./configure
@@ -75,12 +78,8 @@ src_configure() {
 		$(use X     || echo --disable-gui)
 	)
 
+	echo "${myconf[@]}"
 	"${myconf[@]}" || die "configure failed"
-
-	if use qt4 ;then
-		eqmake4
-	elif use qt5 ;then
-		eqmake5
-	fi
+	use qt4 && eqmake4
+	use qt5 && eqmake5
 }
-
