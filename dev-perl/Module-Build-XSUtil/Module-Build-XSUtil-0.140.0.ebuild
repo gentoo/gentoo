@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="A Module::Build class for building XS modules"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86"
+KEYWORDS="amd64 ~hppa ~ppc ~x86"
 IUSE="test"
 # File::Basename -> perl
 RDEPEND="
