@@ -39,6 +39,8 @@ SRC_URI="https://${EGO_PN%/*}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		https://github.com/coreos/etcd/archive/5099bf6f7ab92181158cc2f0f0db1bb6056e9aeb.tar.gz -> etcd-5099bf6f7ab92181158cc2f0f0db1bb6056e9aeb.tar.gz
 		https://github.com/go-ini/ini/archive/v1.8.6.tar.gz -> go-ini-1.8.6.tar.gz
 		https://github.com/go-sql-driver/mysql/archive/v1.2.tar.gz -> go-sql-driver-mysql-1.2.tar.gz
+		https://github.com/golang/crypto/archive/83f1503f771a82af8a31f358eb825e9efb5dae6c.tar.gz -> go-crypto-0_pre20150808.tar.gz
+		https://github.com/golang/net/archive/1bc0720082d79ce7ffc6ef6e523d00d46b0dee45.tar.gz -> go-net-0_pre20150804.tar.gz
 		https://github.com/hashicorp/consul/archive/v0.6.3.tar.gz -> consul-0.6.3.tar.gz
 		https://github.com/hashicorp/go-gatedio/archive/8b8de1022221dde1fb52fa25d0caab46e59c8c14.tar.gz -> go-gatedio-8b8de1022221dde1fb52fa25d0caab46e59c8c14.tar.gz
 		https://github.com/hashicorp/go-msgpack/archive/fa3f63826f7c23912c15263591e65d54d080b458.tar.gz -> go-msgpack-fa3f63826f7c23912c15263591e65d54d080b458.tar.gz
@@ -62,6 +64,8 @@ pkg_setup() {
 get_archive_go_package() {
 	local archive=${1} uri x
 	case ${archive} in
+		go-crypto-*) echo "crypto-* golang.org/x/crypto"; return;;
+		go-net-*) echo "net-* golang.org/x/net"; return;;
 		go-sys-*) echo "sys-* golang.org/x/sys"; return;;
 		go-yaml-v2-*) echo "yaml-* gopkg.in/yaml.v2"; return;;
 	esac
