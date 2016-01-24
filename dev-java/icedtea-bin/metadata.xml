@@ -3,7 +3,6 @@
 <pkgmetadata>
   <herd>java</herd>
 <use>
-  <flag name="awt">Install non-headless AWT libraries, needed by some GUIs (used to be X flag)</flag>
   <flag name="headless-awt">Don't install the X backend for AWT, needed by some GUIs (used to be X flag)</flag>
   <flag name="nss">Enable NSS security provider support</flag>
   <flag name="webstart">Provide javaws command through symlink to icedtea-web</flag>
