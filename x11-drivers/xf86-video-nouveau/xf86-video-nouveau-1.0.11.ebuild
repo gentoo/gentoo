@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="glamor"
 
 RDEPEND=">=x11-libs/libdrm-2.4.34[video_cards_nouveau]
-	x11-base/xorg-server[glamor(-)?]"
+	<x11-base/xorg-server-1.18.0[glamor(-)?]"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
