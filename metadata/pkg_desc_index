@@ -5868,7 +5868,7 @@ dev-perl/Net-FreeDB 0.80.0-r1: OOP interface to the FreeDB database
 dev-perl/Net-Google-SafeBrowsing-Blocklist 1.40.0-r1: Query a Google SafeBrowsing table
 dev-perl/Net-Google-SafeBrowsing-UpdateRequest 1.60.0-r1: Update a Google SafeBrowsing table
 dev-perl/Net-HTTP 6.60.0: Low-level HTTP connection (client)
-dev-perl/Net-IDN-Encode 2.201.0: Internationalizing Domain Names in Applications (IDNA)
+dev-perl/Net-IDN-Encode 2.201.0-r1: Internationalizing Domain Names in Applications (IDNA)
 dev-perl/Net-IMAP-Simple 1.220.100-r1 1.220.600: Perl extension for simple IMAP account handling
 dev-perl/Net-IMAP-Simple-SSL 1.300.0-r1: SSL support for Net::IMAP::Simple
 dev-perl/Net-IP 1.260.0-r1: Perl extension for manipulating IPv4/IPv6 addresses
@@ -6281,9 +6281,8 @@ dev-perl/Unicode-LineBreak 2013.11 2014.60.0 2015.60.0: UAX #14 Unicode Line Bre
 dev-perl/Unicode-Map 0.112.0-r1: Map charsets from and to utf16 code
 dev-perl/Unicode-Map8 0.130.0: Convert between most 8bit encodings
 dev-perl/Unicode-MapUTF8 1.110.0-r1: Conversions to and from arbitrary character sets and UTF8
-dev-perl/Unicode-Normalize 1.180.0 1.250.0: Unicode Normalization Forms
 dev-perl/Unicode-String 2.90.0-r1: String manipulation for Unicode strings
-dev-perl/Unicode-Stringprep 1.105.0: Preparation of Internationalized Strings (RFC 3454)
+dev-perl/Unicode-Stringprep 1.105.0-r1: Preparation of Internationalized Strings (RFC 3454)
 dev-perl/Unicode-UTF8 0.580.0 0.590.0 0.600.0: Encoding and decoding of UTF-8 encoding form
 dev-perl/Unicode-UTF8simple 1.60.0: Conversions to/from UTF8 from/to charactersets
 dev-perl/Unix-Getrusage 0.030.0: Perl interface to the Unix getrusage system call
@@ -9139,7 +9138,7 @@ dev-tcltk/vtcl 1.6.0-r1: Visual Tcl is a high-quality application development en
 dev-tex/aastex 5.2: LaTeX package used to mark up manuscripts for American Astronomical Society journals. (AASTeX)
 dev-tex/abntex 0.9_beta2: LaTeX macros for writing documents following the ABNT norms
 dev-tex/bera 20040930: LaTeX package for the Bera Type1 font family
-dev-tex/biber 2.2 2.3: A BibTeX replacement for users of biblatex
+dev-tex/biber 2.2-r1 2.3-r1: A BibTeX replacement for users of biblatex
 dev-tex/biblatex 3.1 3.2: Reimplementation of the bibliographic facilities provided by LaTeX
 dev-tex/biblatex-apa 6.6: APA style for BibLaTeX
 dev-tex/bibtex2html 1.97 1.98: A bibtex to HTML converter
@@ -13463,7 +13462,7 @@ net-analyzer/gnu-netcat 0.7.1-r3: the GNU network swiss army knife
 net-analyzer/goaccess 0.5-r1 0.6.1 0.8.5 0.9: A real-time web log analyzer and interactive viewer that runs in a terminal
 net-analyzer/gr-fosphor 9999: gnuradio fosphor block (GPU spectrum display)
 net-analyzer/graphite-web 0.9.13-r1: Enterprise scalable realtime graphing
-net-analyzer/greenbone-security-assistant 6.0.6-r1 6.0.8: Greenbone Security Assistant for openvas
+net-analyzer/greenbone-security-assistant 6.0.8: Greenbone Security Assistant for openvas
 net-analyzer/gsm-receiver 9999: GSM receiver block from the airprobe suite
 net-analyzer/gspoof 3.2-r2: A simple GTK/command line TCP/IP packet generator
 net-analyzer/hping 3_pre20051105-r3 3_pre20051105-r5: A ping-like TCP/IP packet assembler/analyzer
@@ -15065,6 +15064,7 @@ perl-core/Thread-Semaphore 2.120.0-r1: Thread-safe semaphores
 perl-core/Time-HiRes 1.972.600-r1: Perl Time::HiRes. High resolution alarm, sleep, gettimeofday, interval timers
 perl-core/Time-Local 1.230.0-r1: Implements timelocal() and timegm()
 perl-core/Unicode-Collate 1.120.0 1.140.0: Unicode Collate Algorithm
+perl-core/Unicode-Normalize 1.180.0 1.250.0: Unicode Normalization Forms
 perl-core/libnet 1.270.0: A URI Perl Module
 perl-core/parent 0.228-r1: Establish an ISA relationship with base classes at compile time
 perl-core/podlators 2.5.3: Format POD source into various output formats
@@ -17318,6 +17318,7 @@ virtual/perl-Time-HiRes 1.972.600-r2: Virtual for Time-HiRes
 virtual/perl-Time-Local 1.230.0-r2: Virtual for Time-Local
 virtual/perl-Time-Piece 1.270.0 1.290.0: Virtual for Time-Piece
 virtual/perl-Unicode-Collate 1.120.0 1.140.0: Virtual for Unicode-Collate
+virtual/perl-Unicode-Normalize 1.170.0 1.180.0 1.250.0: Virtual for Unicode-Normalize
 virtual/perl-XSLoader 0.170.0 0.200.0: Virtual for XSLoader
 virtual/perl-autodie 2.230.0 2.260.0: Virtual for autodie
 virtual/perl-bignum 0.370.0 0.390.0: Virtual for bignum
