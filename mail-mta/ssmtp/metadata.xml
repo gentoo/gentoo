@@ -3,6 +3,6 @@
 <pkgmetadata>
   <herd>net-mail</herd>
   <use>
-    <flag name='mta'>Install symlinks for sendmail-compatible MTA.</flag>
+    <flag name="mta">Install symlinks for sendmail-compatible MTA.</flag>
   </use>
 </pkgmetadata>

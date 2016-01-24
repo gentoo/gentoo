@@ -10,7 +10,6 @@
 		<name>Rick Farina</name>
 	</maintainer>
 	<use>
-		<flag name='gcrypt'>Use libgcrypt instead of openssl for key checking</flag>
+		<flag name="gcrypt">Use libgcrypt instead of openssl for key checking</flag>
 	</use>
 </pkgmetadata>
-

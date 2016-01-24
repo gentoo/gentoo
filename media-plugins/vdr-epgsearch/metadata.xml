@@ -15,4 +15,3 @@
 	<flag name="tre">Add support for unlimited fuzzy searching with help of <pkg>dev-libs/tre</pkg> library</flag>
 </use>
 </pkgmetadata>
-

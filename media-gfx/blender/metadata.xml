@@ -19,24 +19,24 @@
   </longdescription>
 
   <use>
-    <flag name='game-engine' restrict='&gt;=media-gfx/blender-2.50'>
+    <flag name="game-engine" restrict="&gt;=media-gfx/blender-2.50">
       Adds Game Engine support to Blender.
     </flag>
-    <flag name='collada'>
+    <flag name="collada">
       Add support for Collada interchange format through
       <pkg>media-libs/opencollada</pkg>.
     </flag>
-    <flag name='cycles'>
+    <flag name="cycles">
       Build cycles renderer (requires <pkg>media-libs/openimageio</pkg> and
       <pkg>dev-libs/boost</pkg>).
     </flag>
-    <flag name='dds'>
+    <flag name="dds">
       Adds DDS textures support to Blender.
     </flag>
-    <flag name='player'>
+    <flag name="player">
       Build the Blender Player. THis requires the Game engine.
     </flag>
-    <flag name='elbeem'>
+    <flag name="elbeem">
       Adds surface fluid simulation to Blender using El'Beem library.
     </flag>
     <flag name="doc">

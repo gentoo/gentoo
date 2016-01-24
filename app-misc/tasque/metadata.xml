@@ -3,10 +3,10 @@
 <pkgmetadata>
 	<herd>dotnet</herd>
 	<use>
-		<flag name='rememberthemilk'>
+		<flag name="rememberthemilk">
 			Allows you to use http://www.rememberthemilk.com/ as your storage backend.
 		</flag>
-		<flag name='hiveminder'>
+		<flag name="hiveminder">
 			Allows you to use http://www.hiveminder.com/ as your storage backend.
 		</flag>
 	</use>

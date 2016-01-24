@@ -3,8 +3,8 @@
 <pkgmetadata>
 <herd>net-news</herd>
 <use>
-	<flag name='innkeywords'>Enable automatic keyword generation support</flag>
-	<flag name='inntaggedhash'>Use tagged hash table for history (disables large
+	<flag name="innkeywords">Enable automatic keyword generation support</flag>
+	<flag name="inntaggedhash">Use tagged hash table for history (disables large
 		file support)</flag>
 </use>
 </pkgmetadata>

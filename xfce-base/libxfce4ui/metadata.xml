@@ -6,7 +6,7 @@
     <name>XFCE Team</name>
   </maintainer>
   <use>
-    <flag name='glade'>Build support for Glade 3's GtkBuilder implementation</flag>
-    <flag name='gtk3'>Enable gtk3 support</flag>
+    <flag name="glade">Build support for Glade 3's GtkBuilder implementation</flag>
+    <flag name="gtk3">Enable gtk3 support</flag>
   </use>
 </pkgmetadata>

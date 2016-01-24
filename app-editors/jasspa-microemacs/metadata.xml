@@ -20,6 +20,6 @@
      should be referred to as the JASSPA distribution.
 </longdescription>
 <use>
-  <flag name='nanoemacs'>Build NanoEmacs instead of MicroEmacs</flag>
+  <flag name="nanoemacs">Build NanoEmacs instead of MicroEmacs</flag>
 </use>
 </pkgmetadata>

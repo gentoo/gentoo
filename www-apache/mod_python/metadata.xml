@@ -14,7 +14,7 @@
 	</longdescription>
 	<longdescription lang="ja">
 		Mod_PythonはウェブサーバーにPythonインタープリタを埋め込むApacheモジュールです。
-		Mod_PythonはPython言語のウェブベース・アプリケーションを従来のCGIよりも何倍も高>
+		Mod_PythonはPython言語のウェブベース・アプリケーションを従来のCGIよりも何倍も高&gt;
 		速に走らせることができ、データデータベースのコネクション保持に関するより高度なア
 		クセス機能やヒット間の他のデータやApache内部へのアクセス機能を持ちます。
 	</longdescription>

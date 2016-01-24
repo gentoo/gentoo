@@ -4,7 +4,7 @@
 <herd>mysql</herd>
 <herd>proxy-maintainers</herd>
 <use>
-<flag name='gcov'>Build coverage support</flag>
+<flag name="gcov">Build coverage support</flag>
 </use>
 	<maintainer>
 		<email>idella4@gentoo.org</email>

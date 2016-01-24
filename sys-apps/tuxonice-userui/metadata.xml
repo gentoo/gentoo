@@ -7,6 +7,6 @@
 	</maintainer>
 	<herd>proxy-maintainers</herd>
 	<use>
-		<flag name='fbsplash'>Add support for framebuffer splash</flag>
+		<flag name="fbsplash">Add support for framebuffer splash</flag>
 	</use>
 </pkgmetadata>

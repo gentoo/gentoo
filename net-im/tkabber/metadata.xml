@@ -4,6 +4,6 @@
 <herd>net-im</herd>
 <longdescription>Tkabber is a Free and Open Source client for the Jabber instant messaging system. It's writen in Tcl/Tk, and works on many platforms.</longdescription>
 <use>
-	<flag name='plugins'>Enables installation the extra plugins</flag>
+	<flag name="plugins">Enables installation the extra plugins</flag>
 </use>
 </pkgmetadata>

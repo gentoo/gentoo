@@ -6,7 +6,6 @@
 		<name>Fabio Erculiani</name>
 	</maintainer>
 	<use>
-		<flag name='matter'>Pull in app-admin/matter</flag>
+		<flag name="matter">Pull in app-admin/matter</flag>
 	</use>
 </pkgmetadata>
-

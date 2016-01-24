@@ -5,7 +5,6 @@
 		<email>maintainer-needed@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name='gps'>Use <pkg>sci-geosciences/gpsd</pkg></flag>
+		<flag name="gps">Use <pkg>sci-geosciences/gpsd</pkg></flag>
 	</use>
 </pkgmetadata>
-

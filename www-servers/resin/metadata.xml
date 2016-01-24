@@ -3,6 +3,6 @@
 <pkgmetadata>
   <herd>java</herd>
   <use>
-	  <flag name='admin'>Enable Resin admin webapp</flag>
+	  <flag name="admin">Enable Resin admin webapp</flag>
   </use>
 </pkgmetadata>

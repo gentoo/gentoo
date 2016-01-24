@@ -9,9 +9,8 @@
 <longdescription lang="en">
 </longdescription>
 <use>
-	<flag name='armadillo'>install MUSIC DOA estimator block</flag>
-	<flag name='rtlsdr'>install rtlsdr source block</flag>
-	<flag name='uhd'>install UHD aware blocks</flag>
+	<flag name="armadillo">install MUSIC DOA estimator block</flag>
+	<flag name="rtlsdr">install rtlsdr source block</flag>
+	<flag name="uhd">install UHD aware blocks</flag>
 </use>
 </pkgmetadata>
-

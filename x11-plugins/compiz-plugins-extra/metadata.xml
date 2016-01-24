@@ -3,7 +3,7 @@
 <pkgmetadata>
 <herd>desktop-effects</herd>
 <longdescription lang="en">
->Package with several compiz-fusion plugins:
+&gt;Package with several compiz-fusion plugins:
 addhelper, bench, crashhandler, cubecaps, cubereflex, extrawm, fadedesktop, firepaint, gears,
 goto-viewport, group, mblur, reflex, scalefilter, showdesktop, splash, trailfocus, widget.
 </longdescription>
@@ -14,4 +14,3 @@ goto-viewport, group, mblur, reflex, scalefilter, showdesktop, splash, trailfocu
     </flag>
   </use>
 </pkgmetadata>
-

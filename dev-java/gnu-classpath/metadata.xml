@@ -14,4 +14,3 @@
 		<flag name="xml">Build with native XML backend</flag>
 	</use>
 </pkgmetadata>
-

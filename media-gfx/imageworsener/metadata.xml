@@ -6,6 +6,6 @@
 	<name>Sebastian Pipping</name>
 </maintainer>
 <use>
-	<flag name='webp'>enable webp image format support</flag>
+	<flag name="webp">enable webp image format support</flag>
 </use>
 </pkgmetadata>

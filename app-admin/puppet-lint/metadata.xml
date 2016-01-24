@@ -2,8 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <!--
 $Id$
--->
-<pkgmetadata>
+--><pkgmetadata>
 <herd>sysadmin</herd>
 <herd>ruby</herd>
 <longdescription>Tim Sharpe's Puppet Linter. Enforces puppetlabs style.</longdescription>

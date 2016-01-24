@@ -3,6 +3,6 @@
 <pkgmetadata>
 <herd>base-system</herd>
 <use>
-<flag name='regression-test'>Run regression tests (requires FEATURES=test)</flag>
+<flag name="regression-test">Run regression tests (requires FEATURES=test)</flag>
 </use>
 </pkgmetadata>

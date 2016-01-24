@@ -7,6 +7,6 @@
   </maintainer>
   <longdescription>A suite of ELF tools to aid auditing systems. Contains various ELF related utils for ELF32, ELF64 binaries useful for displaying PaX and security info on a large groups of binary files.</longdescription>
   <use>
-    <flag name='python'>Install a more powerful/faster version of lddtree</flag>
+    <flag name="python">Install a more powerful/faster version of lddtree</flag>
   </use>
 </pkgmetadata>

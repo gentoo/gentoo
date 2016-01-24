@@ -3,5 +3,5 @@
 <pkgmetadata>
 	<herd>net-dialup</herd>
 	<longdescription>Firmware and configuration instructions for Eagle USB E4 ADSL Modem driver
-available in kernels >= 2.6.16.</longdescription>
+available in kernels &gt;= 2.6.16.</longdescription>
 </pkgmetadata>

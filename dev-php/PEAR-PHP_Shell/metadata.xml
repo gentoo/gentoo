@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<herd>php</herd>
 	<use>
-		<flag name='auto-completion'>Enable tab-completion</flag>
+		<flag name="auto-completion">Enable tab-completion</flag>
 	</use>
 </pkgmetadata>

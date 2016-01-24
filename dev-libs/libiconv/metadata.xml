@@ -8,4 +8,3 @@ functions as glibc already embed. Libraries and applications needs it
 when built in a non-glibc system.
 </longdescription>
 </pkgmetadata>
-

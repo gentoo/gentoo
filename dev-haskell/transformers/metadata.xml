@@ -8,7 +8,7 @@
 	</maintainer>
 	<longdescription>
 		Haskell 98 part of a monad transformer library, inspired by the paper
-		\&quot;Functional Programming with Overloading and Higher-Order Polymorphism\&quot;,
+		\"Functional Programming with Overloading and Higher-Order Polymorphism\",
 		by Mark P Jones, in /Advanced School of Functional Programming/, 1995
 		(&lt;http://web.cecs.pdx.edu/~mpj/pubs/springschool.html&gt;).
 		

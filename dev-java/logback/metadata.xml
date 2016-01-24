@@ -6,4 +6,3 @@
 		<flag name="tomcat">Builds Apache Tomcat support</flag>
 	</use>
 </pkgmetadata>
-

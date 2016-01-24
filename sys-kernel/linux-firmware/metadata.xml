@@ -15,6 +15,6 @@
 	<name>Rick Farina</name>
 </maintainer>
 <use>
-	<flag name='savedconfig'>Allows individual selection of firmware files</flag>
+	<flag name="savedconfig">Allows individual selection of firmware files</flag>
 </use>
 </pkgmetadata>

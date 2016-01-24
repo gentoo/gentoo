@@ -10,8 +10,8 @@
     <name>Michael Weber</name>
   </maintainer>
   <use>
-	<flag name='magic'>Use libmagic to determine mimetypes</flag>
-	<flag name='synctex'>Use libsynctex to get latex codeline from pdf</flag>
+	<flag name="magic">Use libmagic to determine mimetypes</flag>
+	<flag name="synctex">Use libsynctex to get latex codeline from pdf</flag>
   </use>
   <upstream>
     <maintainer status="active">

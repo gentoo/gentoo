@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<herd>base-system</herd>
 	<use>
-		<flag name='perl'>Install the ebtables-save script which uses perl</flag>
+		<flag name="perl">Install the ebtables-save script which uses perl</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">ebtables</remote-id>

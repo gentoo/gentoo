@@ -8,7 +8,7 @@
 </maintainer>
 
 <use>
-	<flag name='gkrellm'>Enable building of <pkg>app-admin/gkrellm</pkg>
+	<flag name="gkrellm">Enable building of <pkg>app-admin/gkrellm</pkg>
 		module</flag>
 </use>
 </pkgmetadata>

@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<herd>games</herd>
 	<use>
-		<flag name='server'>Compile server support</flag>
+		<flag name="server">Compile server support</flag>
 	</use>
 	<longdescription lang="en">
 		TomeNET is a multiplayer fantasy dungeon exploration game based on
@@ -16,4 +16,3 @@
 		artifacts.
 	</longdescription>
 </pkgmetadata>
-

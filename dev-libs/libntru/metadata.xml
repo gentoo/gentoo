@@ -6,6 +6,6 @@
 		<name>Julian Ospald</name>
 	</maintainer>
 	<upstream>
-		<remote-id type='github'>tbuktu/libntru</remote-id>
+		<remote-id type="github">tbuktu/libntru</remote-id>
 	</upstream>
 </pkgmetadata>

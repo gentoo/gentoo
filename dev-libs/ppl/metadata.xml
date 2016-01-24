@@ -3,6 +3,6 @@
 <pkgmetadata>
 <herd>toolchain</herd>
 <use>
-  <flag name='lpsol'>Build the ppl_lpsol linear programming problem solver</flag>
+  <flag name="lpsol">Build the ppl_lpsol linear programming problem solver</flag>
 </use>
 </pkgmetadata>

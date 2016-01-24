@@ -3,6 +3,6 @@
 <pkgmetadata>
 <herd>scheme</herd>
 <use>
-  <flag name='scsh'>Use a non-FHS directory layout</flag>
+  <flag name="scsh">Use a non-FHS directory layout</flag>
 </use>
 </pkgmetadata>

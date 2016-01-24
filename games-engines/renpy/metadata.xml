@@ -22,18 +22,17 @@
 		while its Python support allows for complex simulation games.
 	</longdescription>
 	<use>
-		<flag name='development'>Install IDE for game developers and
+		<flag name="development">Install IDE for game developers and
 			an empty game template</flag>
 	</use>
 	<upstream>
-		<maintainer status='active'>
+		<maintainer status="active">
 			<email>pytom@bishoujo.us</email>
 			<name>Tom Rothamel</name>
 		</maintainer>
 		<changelog>http://www.renpy.org/latest.html</changelog>
 		<bugs-to>https://github.com/renpy/renpy/issues</bugs-to>
 		<doc>http://renpy.org/wiki/renpy/doc</doc>
-		<remote-id type='github'>renpy/renpy</remote-id>
+		<remote-id type="github">renpy/renpy</remote-id>
 	</upstream>
 </pkgmetadata>
-

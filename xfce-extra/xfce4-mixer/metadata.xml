@@ -6,6 +6,6 @@
     <name>XFCE Team</name>
   </maintainer>
   <use>
-    <flag name='keybinder'>Enable shortcut support using <pkg>dev-libs/keybinder</pkg></flag>
+    <flag name="keybinder">Enable shortcut support using <pkg>dev-libs/keybinder</pkg></flag>
   </use>
 </pkgmetadata>

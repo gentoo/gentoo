@@ -8,8 +8,8 @@
 		<description>Primary maintainer, assign bugs to him</description>
 	</maintainer>
 	<use>
-		<flag name='ploop'>Add support for ploop devices via <pkg>sys-cluster/ploop</pkg></flag>
-		<flag name='vzmigrate'>Add support for container migration</flag>
+		<flag name="ploop">Add support for ploop devices via <pkg>sys-cluster/ploop</pkg></flag>
+		<flag name="vzmigrate">Add support for container migration</flag>
 	</use>
 	<upstream>
 		<maintainer status="active">

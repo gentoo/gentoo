@@ -12,6 +12,6 @@
 		<name>Oliver Borm</name>
 	</maintainer>
 	<use>
-  		<flag name='extras'>Enable optional dependencies</flag>
+  		<flag name="extras">Enable optional dependencies</flag>
 	</use>
 </pkgmetadata>

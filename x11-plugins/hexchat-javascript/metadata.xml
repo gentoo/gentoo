@@ -6,12 +6,12 @@
 		<name>Julian Ospald</name>
 	</maintainer>
 	<upstream>
-		<maintainer status='active'>
+		<maintainer status="active">
 			<email>tingping@fedoraproject.org</email>
 			<name>TingPing</name>
 		</maintainer>
 		<bugs-to>https://github.com/TingPing/hexchat-javascript/issues</bugs-to>
-		<doc lang='en'>https://github.com/TingPing/hexchat-javascript/wiki</doc>
-		<remote-id type='github'>TingPing/hexchat-javascript</remote-id>
+		<doc lang="en">https://github.com/TingPing/hexchat-javascript/wiki</doc>
+		<remote-id type="github">TingPing/hexchat-javascript</remote-id>
 	</upstream>
 </pkgmetadata>

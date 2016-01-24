@@ -8,4 +8,3 @@
 </maintainer>
 <use><flag name="virtualcl">Support for Mosix VirtualCL Clustering Platform</flag></use>
 </pkgmetadata>
-

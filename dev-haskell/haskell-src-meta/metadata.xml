@@ -4,6 +4,6 @@
 	<herd>haskell</herd>
 	<longdescription>
 		The translation from haskell-src-exts abstract syntax
-		to template-haskell abstract syntax isn&#39;t 100% complete yet.
+		to template-haskell abstract syntax isn't 100% complete yet.
 	</longdescription>
 </pkgmetadata>

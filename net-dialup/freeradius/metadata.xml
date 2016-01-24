@@ -3,7 +3,7 @@
 <pkgmetadata>
   <herd>net-dialup</herd>
   <use>
-    <flag name='pcap'>
+    <flag name="pcap">
       Build the RADIUS sniffer which requires <pkg>net-libs/libpcap</pkg>.
     </flag>
   </use>

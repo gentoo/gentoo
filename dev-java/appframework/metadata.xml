@@ -11,4 +11,3 @@
     * Persistent session state: support for automatically and selectively saving GUI state from one run of an application to the next.
 	</longdescription>
 </pkgmetadata>
-

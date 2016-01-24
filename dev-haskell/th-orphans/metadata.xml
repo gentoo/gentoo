@@ -5,7 +5,7 @@
 	<longdescription>
 		Orphan instances for TH datatypes.  In particular, instances
 		for Ord and Lift, as well as a few missing Show / Eq.  These
-		instances used to live in haskell-src-meta, and that&#39;s where
+		instances used to live in haskell-src-meta, and that's where
 		the version number started.
 	</longdescription>
 </pkgmetadata>

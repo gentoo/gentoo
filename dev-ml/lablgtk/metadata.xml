@@ -3,8 +3,8 @@
 <pkgmetadata>
 	<herd>ml</herd>
 <use>
-	<flag name='glade'>Enable libglade bindings compilation.</flag>
-	<flag name='gnomecanvas'>Enable libgnomecanvas bindings compilation.</flag>
-	<flag name='sourceview'>Enable GtkSourceView support</flag>
+	<flag name="glade">Enable libglade bindings compilation.</flag>
+	<flag name="gnomecanvas">Enable libgnomecanvas bindings compilation.</flag>
+	<flag name="sourceview">Enable GtkSourceView support</flag>
 </use>
 </pkgmetadata>

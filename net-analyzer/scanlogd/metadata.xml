@@ -3,7 +3,7 @@
 <pkgmetadata>
 <herd>netmon</herd>
 <use>
-<flag name='nids'>Use <pkg>net-libs/libnids</pkg> for packet capturing</flag>
-<flag name='pcap'>Use <pkg>net-libs/libpcap</pkg> for packet capturing</flag>
+<flag name="nids">Use <pkg>net-libs/libnids</pkg> for packet capturing</flag>
+<flag name="pcap">Use <pkg>net-libs/libpcap</pkg> for packet capturing</flag>
 </use>
 </pkgmetadata>

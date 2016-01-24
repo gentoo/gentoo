@@ -10,7 +10,7 @@
 		serves many serial ports.
 	</longdescription>
 	<use>
-		<flag name='uucp'>
+		<flag name="uucp">
 			Adds support for uucp style device locking
 		</flag>
 	</use>

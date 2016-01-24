@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<herd>haskell</herd>
 	<longdescription>
-		The &quot;Network.Multicast&quot; module is for sending
+		The "Network.Multicast" module is for sending
 		UDP datagrams over multicast (class D) addresses.
 	</longdescription>
 </pkgmetadata>

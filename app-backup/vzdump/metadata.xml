@@ -18,4 +18,3 @@ There are several ways to provide consistency:
  - use LVM2 (no downtime)
 </longdescription>
 </pkgmetadata>
-

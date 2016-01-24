@@ -3,6 +3,6 @@
 <pkgmetadata>
 <herd>games</herd>
 <use>
-	<flag name='dedicated'>install only as a dedicated game serer</flag>
+	<flag name="dedicated">install only as a dedicated game serer</flag>
 </use>
 </pkgmetadata>

@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<herd>games</herd>
 	<use>
-		<flag name='sound'>Enable and install sounds</flag>
+		<flag name="sound">Enable and install sounds</flag>
 	</use>
 </pkgmetadata>

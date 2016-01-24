@@ -6,6 +6,6 @@
     <name>XFCE Team</name>
   </maintainer>
   <use>
-    <flag name='libmpd'>Build using <pkg>media-libs/libmpd</pkg> backend, instead of native fallback which is preferred</flag>
+    <flag name="libmpd">Build using <pkg>media-libs/libmpd</pkg> backend, instead of native fallback which is preferred</flag>
   </use>
 </pkgmetadata>

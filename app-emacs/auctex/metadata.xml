@@ -17,6 +17,6 @@
   buffer.
 </longdescription>
 <use>
-  <flag name='preview-latex'>Use bundled preview-latex</flag>
+  <flag name="preview-latex">Use bundled preview-latex</flag>
 </use>
 </pkgmetadata>

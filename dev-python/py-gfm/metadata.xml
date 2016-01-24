@@ -3,6 +3,6 @@
 <pkgmetadata>
 <herd>python</herd>
 <upstream>
-	<remote-id type='github'>google/py-gfm</remote-id>
+	<remote-id type="github">google/py-gfm</remote-id>
 </upstream>
 </pkgmetadata>

@@ -12,4 +12,3 @@
 	  <flag name="libcxxrt">Build on top of <pkg>sys-libs/libcxxrt</pkg> instead of gcc's libsupc++ (avoids depending on gcc).</flag>
   </use>
 </pkgmetadata>
-

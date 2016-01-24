@@ -6,7 +6,7 @@
         <name>Robin H. Johnson</name>
     </maintainer>
 	<use>
-		<flag name='automount'>Support for automount data in LDAP</flag>
-		<flag name='irixpasswd'>Support for storing separate IRIX passwords</flag>
+		<flag name="automount">Support for automount data in LDAP</flag>
+		<flag name="irixpasswd">Support for storing separate IRIX passwords</flag>
 	</use>
 </pkgmetadata>

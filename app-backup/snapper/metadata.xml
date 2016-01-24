@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<longdescription>
@@ -27,12 +27,12 @@
 		<remote-id type="github">openSUSE/snapper</remote-id>
 	</upstream>
 	<use>
-		<flag name='xattr'>
+		<flag name="xattr">
 		Add support for getting and setting POSIX extended attributes, through
 		<pkg>sys-apps/attr</pkg>.
 		</flag>
-		<flag name='btrfs'>Include Btrfs support <pkg>sys-fs/btrfs-progs</pkg></flag>
-		<flag name='ext4'>Include Ext4 support <pkg>sys-fs/e2fsprogs</pkg></flag>
-		<flag name='lvm'>Enable LVM thinprovisioned snapshots support <pkg>sys-fs/lvm2</pkg></flag>
+		<flag name="btrfs">Include Btrfs support <pkg>sys-fs/btrfs-progs</pkg></flag>
+		<flag name="ext4">Include Ext4 support <pkg>sys-fs/e2fsprogs</pkg></flag>
+		<flag name="lvm">Enable LVM thinprovisioned snapshots support <pkg>sys-fs/lvm2</pkg></flag>
 	</use>
 </pkgmetadata>

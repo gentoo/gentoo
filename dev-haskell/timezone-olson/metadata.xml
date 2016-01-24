@@ -9,7 +9,7 @@
 		information about this format, see
 		&lt;http://www.twinsun.com/tz/tz-link.htm&gt;. Functions
 		are provided for converting the parsed data into
-		&#39;TimeZoneSeries&#39; objects from the timezone-series
+		'TimeZoneSeries' objects from the timezone-series
 		package. On many platforms, binary Olson timezone
 		files suitable for use with this package are
 		available in the directory /usr/share/zoneinfo

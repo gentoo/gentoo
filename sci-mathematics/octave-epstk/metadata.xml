@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>sci-mathematics</herd>
-<longdescription lang='en'>
+<longdescription lang="en">
   The epsTk package provides, via a set of functions for octave, a
   toolkit to create powerful encapsulated postscript (.eps) graphs. Most 2D
   scientific graphics functions are written. The generated .eps-files are very

@@ -16,7 +16,7 @@
         <bugs-to>https://github.com/mbruker/Cockatrice/issues</bugs-to>
 	</upstream>
 	<use>
-		<flag name='server'>Compile server support</flag>
+		<flag name="server">Compile server support</flag>
 	</use>
 	<longdescription lang="en">
 		Cockatrice is an open-source multiplatform software for playing card
@@ -26,4 +26,3 @@
 		and server are written in Qt 4.
 	</longdescription>
 </pkgmetadata>
-

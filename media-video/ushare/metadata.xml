@@ -6,6 +6,6 @@
 	<name>Markos Chandras</name>
 </maintainer>
 <use>
-	<flag name='dlna'>Add DLNA (<pkg>media-libs/libdlna</pkg>) support</flag>
+	<flag name="dlna">Add DLNA (<pkg>media-libs/libdlna</pkg>) support</flag>
 </use>
 </pkgmetadata>

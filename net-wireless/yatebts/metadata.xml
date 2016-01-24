@@ -9,4 +9,3 @@
 		<flag name="bladerf">Build bladeRF transceiver</flag>
 	</use>
 </pkgmetadata>
-

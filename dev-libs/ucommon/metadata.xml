@@ -11,6 +11,6 @@
 	<name>Maxim Koltsov</name>
 </maintainer>
 <use>
-	<flag name='socks'>Build with socks proxy support</flag>
+	<flag name="socks">Build with socks proxy support</flag>
 </use>
 </pkgmetadata>

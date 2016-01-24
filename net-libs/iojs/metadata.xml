@@ -20,8 +20,8 @@
 		<bugs-to>https://github.com/iojs/io.js/issues</bugs-to>
 	</upstream>
 	<use>
-		<flag name='bundled-libs'>Use bundled libs instead of system libs</flag>
-		<flag name='npm'>Enable NPM package manager</flag>
-		<flag name='snapshot'>Enable snapshot creation for faster startup</flag>
+		<flag name="bundled-libs">Use bundled libs instead of system libs</flag>
+		<flag name="npm">Enable NPM package manager</flag>
+		<flag name="snapshot">Enable snapshot creation for faster startup</flag>
 	</use>
 </pkgmetadata>

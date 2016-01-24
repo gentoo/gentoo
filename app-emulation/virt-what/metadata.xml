@@ -6,7 +6,6 @@
 		<name>Doug Goldstein</name>
 	</maintainer>
 	<use>
-		<flag name='dmi'>Use <pkg>sys-apps/dmidecode</pkg> to read firmware data</flag>
+		<flag name="dmi">Use <pkg>sys-apps/dmidecode</pkg> to read firmware data</flag>
 	</use>
 </pkgmetadata>
-

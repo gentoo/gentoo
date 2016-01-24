@@ -5,8 +5,8 @@
 	<longdescription>
 		A continuation-based, backtracking, logic programming monad.
 		An adaptation of the two-continuation implementation found
-		in the paper &quot;Backtracking, Interleaving, and Terminating
-		Monad Transformers&quot; available here:
+		in the paper "Backtracking, Interleaving, and Terminating
+		Monad Transformers" available here:
 		&lt;http://okmij.org/ftp/papers/LogicT.pdf&gt;
 	</longdescription>
 </pkgmetadata>

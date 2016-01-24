@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<herd>python</herd>
 	<use>
-  		<flag name='server'>Install master instance that integrates itself with Trac</flag>
+  		<flag name="server">Install master instance that integrates itself with Trac</flag>
 	</use>
 </pkgmetadata>

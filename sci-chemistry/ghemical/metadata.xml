@@ -10,7 +10,7 @@ included. Geometry optimization, molecular dynamics and a large set of
 visualization tools are currently available.
 </longdescription>
 <use>
-  <flag name='openbabel'>Use <pkg>sci-chemistry/openbabel</pkg> for file
+  <flag name="openbabel">Use <pkg>sci-chemistry/openbabel</pkg> for file
     conversions</flag>
 </use>
 </pkgmetadata>

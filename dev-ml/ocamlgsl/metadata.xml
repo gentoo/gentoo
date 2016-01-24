@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>sci</herd>
-<longdescription lang='en'>
+<longdescription lang="en">
   This is an interface to GSL (GNU scientific library), for the
   Objective Caml langage.
 </longdescription>

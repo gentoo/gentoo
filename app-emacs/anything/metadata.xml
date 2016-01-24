@@ -6,6 +6,6 @@
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
 <use>
-  <flag name='extensions'>Install optional extensions</flag>
+  <flag name="extensions">Install optional extensions</flag>
 </use>
 </pkgmetadata>

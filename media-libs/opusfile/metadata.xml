@@ -6,8 +6,8 @@
 <name>Markos Chandras</name>
 </maintainer>
 <use>
-<flag name='fixed-point'>Enable fixed-point arithmetic operations</flag>
-<flag name='float'>Enable floating point arithmetic operations</flag>
-<flag name='http'>Enable http connections</flag>
+<flag name="fixed-point">Enable fixed-point arithmetic operations</flag>
+<flag name="float">Enable floating point arithmetic operations</flag>
+<flag name="http">Enable http connections</flag>
 </use>
 </pkgmetadata>

@@ -8,10 +8,10 @@
 		from the web. The library also provides useful functions to extract information
 		from an HTML document, making it ideal for screen-scraping.
 		
-		Users should start from the &quot;Text.HTML.TagSoup&quot; module.
+		Users should start from the "Text.HTML.TagSoup" module.
 	</longdescription>
 	<use>
-		<flag name='download'>Build with Download module.</flag>
-		<flag name='testprog'>Build the test program.</flag>
+		<flag name="download">Build with Download module.</flag>
+		<flag name="testprog">Build the test program.</flag>
 	</use>
 </pkgmetadata>

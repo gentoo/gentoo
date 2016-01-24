@@ -19,7 +19,7 @@
   </longdescription>
 
   <use>
-    <flag name='minimal'>
+    <flag name="minimal">
       Install the firmware only, and not the plugin.
     </flag>
   </use>

@@ -3,6 +3,6 @@
 <pkgmetadata>
 <herd>xbox</herd>
 <upstream>
-	<remote-id type='github'>graeme-hill/crossguid</remote-id>
+	<remote-id type="github">graeme-hill/crossguid</remote-id>
 </upstream>
 </pkgmetadata>

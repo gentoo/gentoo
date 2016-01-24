@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<herd>x11</herd>
 	<use>
-		<flag name='minimal'>
+		<flag name="minimal">
 			Control dependencies on legacy apps (xterm, twm, ...). Safe to
 			enable if you use a modern desktop environment.
 		</flag>

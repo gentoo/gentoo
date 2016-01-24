@@ -7,6 +7,6 @@
   tagger for MusicBrainz, with a focus on album oriented tagging as opposed to
   track based tagging and cross platform compatibility.</longdescription>
 <use>
-  <flag name='acoustid'>Use media-libs/chromaprint for acoustic fingerprinting</flag>
+  <flag name="acoustid">Use media-libs/chromaprint for acoustic fingerprinting</flag>
 </use>
 </pkgmetadata>

@@ -15,7 +15,7 @@
   external dependencies.
 </longdescription>
 <use>
-  <flag name='gasgano'>
+  <flag name="gasgano">
     Enable support for <pkg>sci-astronomy/gasgano</pkg> file organizer
   </flag>
 </use>

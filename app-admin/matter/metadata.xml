@@ -6,7 +6,6 @@
 		<name>Fabio Erculiani</name>
 	</maintainer>
 	<use>
-		<flag name='entropy'>Add Entropy support</flag>
+		<flag name="entropy">Add Entropy support</flag>
 	</use>
 </pkgmetadata>
-

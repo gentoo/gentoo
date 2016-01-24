@@ -9,8 +9,8 @@
 		WinUAE with UAE.
 	</longdescription>
 	<use>
-		<flag name='capslib'>Add CAPS library support</flag>
-		<flag name='sdl-sound'>Use <pkg>media-libs/sdl-sound</pkg> for audio
+		<flag name="capslib">Add CAPS library support</flag>
+		<flag name="sdl-sound">Use <pkg>media-libs/sdl-sound</pkg> for audio
 			output</flag>
 	</use>
 </pkgmetadata>

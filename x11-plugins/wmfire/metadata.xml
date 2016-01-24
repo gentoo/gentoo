@@ -13,6 +13,6 @@ fire, possibly according to how much load the system is experiencing, or from a
 number somewhere in a file. wmfire requires very little CPU.
 </longdescription>
 <use>
-	<flag name='session'>Enable session management</flag>
+	<flag name="session">Enable session management</flag>
 </use>
 </pkgmetadata>

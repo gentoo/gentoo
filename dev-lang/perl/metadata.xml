@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<herd>perl</herd>
 	<use>
-		<flag name='ithreads'>Enable Perl threads, has some compatibility problems</flag>
+		<flag name="ithreads">Enable Perl threads, has some compatibility problems</flag>
 	</use>
 </pkgmetadata>

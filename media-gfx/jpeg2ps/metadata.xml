@@ -3,7 +3,7 @@
 <pkgmetadata>
   <herd>graphics</herd>
 <use>
-	<flag name='metric'>
+	<flag name="metric">
 		Default to A4 paper size
 	</flag>
 </use>

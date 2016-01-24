@@ -7,7 +7,7 @@
 		powerful attribute system. Supports complex interfaces with many
 		options and commands, with option &amp; command grouping, with simple
 		and convenient API. Even though quite powerful, it strives to keep
-		simple things simple. The library uses &quot;System.Console.GetOpt&quot; as
+		simple things simple. The library uses "System.Console.GetOpt" as
 		its backend.
 		
 		In comparison to the other commandline handling libraries:

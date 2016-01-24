@@ -11,6 +11,6 @@
 		<name>Michael Weber</name>
 	</maintainer>
 	<upstream>
-		<remote-id type='github'>inverse-inc/sope</remote-id>
+		<remote-id type="github">inverse-inc/sope</remote-id>
 	</upstream>
 </pkgmetadata>

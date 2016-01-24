@@ -3,6 +3,6 @@
 <pkgmetadata>
 <herd>cluster</herd>
 <use>
-	<flag name='external'>Enable external locking</flag>
+	<flag name="external">Enable external locking</flag>
 </use>
 </pkgmetadata>

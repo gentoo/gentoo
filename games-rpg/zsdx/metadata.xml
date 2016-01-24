@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<herd>games</herd>
 	<upstream>
-		<remote-id type='github'>christopho/zsdx</remote-id>
+		<remote-id type="github">christopho/zsdx</remote-id>
 	</upstream>
 </pkgmetadata>

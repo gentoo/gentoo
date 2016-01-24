@@ -3,8 +3,8 @@
 <pkgmetadata>
 <herd>net-mail</herd>
 <use>
-	<flag name='clamd'>Use the <pkg>app-antivirus/clamav</pkg> daemon for virus
+	<flag name="clamd">Use the <pkg>app-antivirus/clamav</pkg> daemon for virus
 		checking</flag>
-	<flag name='subject-rewrite'>Adds support for subject rewriting</flag>
+	<flag name="subject-rewrite">Adds support for subject rewriting</flag>
 </use>
 </pkgmetadata>

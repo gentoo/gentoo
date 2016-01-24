@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>sci-geosciences</herd>
-<longdescription lang='en'>
+<longdescription lang="en">
   GSHHS is a high-resolution shoreline data set amalgamated from two
   databases in the public domain. The data have undergone extensive
   processing and are free of internal inconsistencies such as erratic

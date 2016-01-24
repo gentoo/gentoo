@@ -8,8 +8,8 @@
 	<name>Maciej Mrozowski</name>
 </maintainer>
 <use>
-	<flag name='introspection'>Enable GObject introspection.</flag>
-	<flag name='utils'>Install command-line PDF converters and various utilities.</flag>
+	<flag name="introspection">Enable GObject introspection.</flag>
+	<flag name="utils">Install command-line PDF converters and various utilities.</flag>
 </use>
 <slots>
 	<subslots>Reflects ABI compatibility of libpoppler.so only,

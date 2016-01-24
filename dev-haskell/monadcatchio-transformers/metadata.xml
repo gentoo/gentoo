@@ -5,7 +5,7 @@
 	<longdescription>
 		Provides functions to throw and catch exceptions. Unlike the functions from
 		@Control.Exception@, which work in @IO@, these work in any stack of monad
-		transformers (from the &#39;transformers&#39; package) with @IO@ as the base monad.
+		transformers (from the 'transformers' package) with @IO@ as the base monad.
 		You can extend this functionality to other monads, by creating an instance
 		of the @MonadCatchIO@ class.
 	</longdescription>

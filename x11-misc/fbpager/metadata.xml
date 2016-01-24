@@ -3,7 +3,7 @@
 <pkgmetadata>
 <maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
 	<use>
-		<flag name='xrender'>Enable transparency support via
+		<flag name="xrender">Enable transparency support via
 			<pkg>x11-libs/libXrender</pkg></flag>
 	</use>
 </pkgmetadata>

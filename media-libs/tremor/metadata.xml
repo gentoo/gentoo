@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<herd>sound</herd>
 	<use>
-		<flag name='low-accuracy'>enable 32bit only multiply operations</flag>
+		<flag name="low-accuracy">enable 32bit only multiply operations</flag>
 	</use>
 </pkgmetadata>

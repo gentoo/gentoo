@@ -19,7 +19,7 @@
   Reference: M. Dobbs and J.B. Hansen, Comput. Phys. Commun. 134 (2001)41. 
 </longdescription>
 <use>
-  <flag name='gev'>Build with GeV instead of default MeV for momentum units</flag>
-  <flag name='cm'>Build with cm instead of default mm for length units</flag>
+  <flag name="gev">Build with GeV instead of default MeV for momentum units</flag>
+  <flag name="cm">Build with cm instead of default mm for length units</flag>
 </use>
 </pkgmetadata>

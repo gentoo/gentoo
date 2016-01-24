@@ -3,7 +3,6 @@
 <pkgmetadata>
 <herd>media-optical</herd>
 <use>
-	<flag name='hfs'>Provide building of HFS (Apple) CD-images</flag>
+	<flag name="hfs">Provide building of HFS (Apple) CD-images</flag>
 </use>
 </pkgmetadata>
-

@@ -3,6 +3,6 @@
 <pkgmetadata>
 <herd>java</herd>
 <use>
-	<flag name='beanshell'>Enable BeanShell scripting support</flag>
+	<flag name="beanshell">Enable BeanShell scripting support</flag>
 </use>
 </pkgmetadata>

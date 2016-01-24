@@ -6,6 +6,6 @@
     <name>XFCE Team</name>
   </maintainer>
   <use>
-    <flag name='thunar'>Build support for desktop icons (for example, launchers and folders)</flag>
+    <flag name="thunar">Build support for desktop icons (for example, launchers and folders)</flag>
   </use>
 </pkgmetadata>

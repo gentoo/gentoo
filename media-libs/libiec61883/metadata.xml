@@ -14,4 +14,3 @@ MPEG2-TS, and AMDTP (audio and music) using only raw1394 and not the complicated
 setup and maintenance of other kernel modules and their /dev nodes.
 </longdescription>
 </pkgmetadata>
-

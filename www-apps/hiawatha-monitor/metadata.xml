@@ -5,6 +5,6 @@
 		<email>hasufell@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type='github'>hsleisink/monitor</remote-id>
+		<remote-id type="github">hsleisink/monitor</remote-id>
 	</upstream>
 </pkgmetadata>

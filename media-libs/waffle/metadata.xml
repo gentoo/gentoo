@@ -8,4 +8,3 @@
 	<flag name="wayland">Enable Wayland support</flag>
 </use>
 </pkgmetadata>
-

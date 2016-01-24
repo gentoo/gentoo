@@ -6,6 +6,6 @@
     <name>Sergey Popov</name>
   </maintainer>
   <use>
-    <flag name='banlists'>Install upstream provided simple banlists</flag>
+    <flag name="banlists">Install upstream provided simple banlists</flag>
   </use>
 </pkgmetadata>

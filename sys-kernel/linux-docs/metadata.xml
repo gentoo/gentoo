@@ -6,6 +6,6 @@
 		<email>mpagano@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name='html'>Install HTML documentation</flag>
+		<flag name="html">Install HTML documentation</flag>
 	</use>
 </pkgmetadata>

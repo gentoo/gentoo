@@ -9,4 +9,3 @@
 	<flag name="openssl">Use dev-libs/openssl crypto backend</flag>
 </use>
 </pkgmetadata>
-

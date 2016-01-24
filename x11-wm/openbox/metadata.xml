@@ -11,7 +11,7 @@
 	 <flag name="xdg">Install the python xdg files for xdg autostart</flag>
   </use>
   <upstream>
-    <maintainer status='active'>
+    <maintainer status="active">
       <email>danakj@orodu.net</email>
       <name>Dana Jansens</name>
     </maintainer>

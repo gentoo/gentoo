@@ -5,7 +5,7 @@
 <email>jer@gentoo.org</email>
 </maintainer>
 <use>
-<flag name='imlib2'>Enable image support through <pkg>media-libs/imlib2</pkg></flag>
+<flag name="imlib2">Enable image support through <pkg>media-libs/imlib2</pkg></flag>
 </use>
 <upstream>
 <remote-id type="github">xorg62/wmfs</remote-id>

@@ -4,7 +4,7 @@
 	<herd>haskell</herd>
 	<longdescription>
 		The one-stop shop for all your error-handling needs!  Just import
-		&quot;Control.Error&quot;.
+		"Control.Error".
 		
 		This library encourages an error-handling style that directly uses the type
 		system, rather than out-of-band exceptions.

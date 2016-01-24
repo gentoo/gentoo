@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<herd>base-system</herd>
 	<use>
-		<flag name='htmlsingle'>Install all-on-one-page HTML version.</flag>
+		<flag name="htmlsingle">Install all-on-one-page HTML version.</flag>
 	</use>
 </pkgmetadata>

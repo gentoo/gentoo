@@ -12,4 +12,3 @@
 	<flag name="mod_perl">Provide all dependencies for use of mod_perl instead of cgi</flag>
   </use>
 </pkgmetadata>
-

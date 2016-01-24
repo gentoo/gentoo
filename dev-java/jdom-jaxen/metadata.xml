@@ -6,4 +6,3 @@
 Jaxen binding for jdom.  Split from jdom to resolve circular dependencies.
 </longdescription>
 </pkgmetadata>
-

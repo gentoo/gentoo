@@ -3,6 +3,6 @@
 <pkgmetadata>
   <herd>vim</herd>
   <use>
-    <flag name='demos'>Install demos, which pulls in <pkg>dev-libs/glib</pkg></flag>
+    <flag name="demos">Install demos, which pulls in <pkg>dev-libs/glib</pkg></flag>
   </use>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>virtualization</herd>
@@ -7,6 +7,6 @@
 		<name>Yixun Lan</name>
 	</maintainer>
 	<use>
-		<flag name='setproctitle'>Make process titles of service workers to be more verbose</flag>
+		<flag name="setproctitle">Make process titles of service workers to be more verbose</flag>
 	</use>
 </pkgmetadata>

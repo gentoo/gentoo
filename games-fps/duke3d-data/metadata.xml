@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<herd>games</herd>
 	<use>
-		<flag name='gog'>Extract the data from the GOG.com installer.</flag>
+		<flag name="gog">Extract the data from the GOG.com installer.</flag>
 	</use>
 </pkgmetadata>

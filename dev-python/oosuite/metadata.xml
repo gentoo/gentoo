@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>sci-mathematics</herd>
-<longdescription lang='en'>
+<longdescription lang="en">
   The OpenOpt suite of Python packages contains the following modules:
   * openopt: universal numerical optimization package with
     several solvers (e.g. ralg) and connections to tens of other,

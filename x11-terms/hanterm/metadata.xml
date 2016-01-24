@@ -3,7 +3,7 @@
 <pkgmetadata>
 <herd>cjk</herd>
 <use>
-	<flag name='utempter'>Records user logins. Useful on multi-user
+	<flag name="utempter">Records user logins. Useful on multi-user
 		systems</flag>
 </use>
 </pkgmetadata>

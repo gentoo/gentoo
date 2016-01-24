@@ -6,7 +6,6 @@
 		<name>Julian Ospald</name>
 	</maintainer>
 	<use>
-		<flag name='bundled-libs'>Use bundled versions of some libraries.</flag>
+		<flag name="bundled-libs">Use bundled versions of some libraries.</flag>
 	</use>
 </pkgmetadata>
-

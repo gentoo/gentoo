@@ -3,6 +3,6 @@
 <pkgmetadata>
   <herd>sound</herd>
   <use>
-    <flag name='webkit'>Enable the webkit rendering engine for HTML episode shownotes</flag>
+    <flag name="webkit">Enable the webkit rendering engine for HTML episode shownotes</flag>
   </use>
 </pkgmetadata>

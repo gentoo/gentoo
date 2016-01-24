@@ -10,8 +10,8 @@
 		number of ISDN devices.
 	</longdescription>
 	<use>
-		<flag name='fax'>Install capi-fax demo programs</flag>
-		<flag name='pppd'>Installs pppdcapiplugin modules</flag>
-		<flag name='rcapid'>Installs rcapid daemon</flag>
+		<flag name="fax">Install capi-fax demo programs</flag>
+		<flag name="pppd">Installs pppdcapiplugin modules</flag>
+		<flag name="rcapid">Installs rcapid daemon</flag>
 	</use>
 </pkgmetadata>

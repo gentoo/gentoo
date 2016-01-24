@@ -3,6 +3,6 @@
 <pkgmetadata>
 <herd>gpe</herd>
 <use>
-	<flag name='pda'>Support for pda folders</flag>
+	<flag name="pda">Support for pda folders</flag>
 </use>
 </pkgmetadata>

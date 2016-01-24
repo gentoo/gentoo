@@ -5,6 +5,6 @@
     <email>maintainer-needed@gentoo.org</email>
   </maintainer>
   <use>
-    <flag name='lr0'>Use the LR0 parser instead of the recursive descending parser</flag>
+    <flag name="lr0">Use the LR0 parser instead of the recursive descending parser</flag>
   </use>
 </pkgmetadata>

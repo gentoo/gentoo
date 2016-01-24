@@ -3,6 +3,6 @@
 <pkgmetadata>
   <herd>video</herd>
   <use>
-    <flag name='aacs'>Add support for decryption of AACS</flag>
+    <flag name="aacs">Add support for decryption of AACS</flag>
   </use>
 </pkgmetadata>

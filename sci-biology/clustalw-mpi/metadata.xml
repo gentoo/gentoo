@@ -3,9 +3,9 @@
 <pkgmetadata>
 <herd>sci-biology</herd>
 <use>
-  <flag name='mpi_njtree'>Use MPI (as opposed to serial) code for computing
+  <flag name="mpi_njtree">Use MPI (as opposed to serial) code for computing
     neighbor-joining trees</flag>
-  <flag name='static_pairalign'>Use static (as opposed to dynamic) scheduling
+  <flag name="static_pairalign">Use static (as opposed to dynamic) scheduling
     for pair alignments</flag>
 </use>
 </pkgmetadata>

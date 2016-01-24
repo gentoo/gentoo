@@ -3,8 +3,8 @@
 <pkgmetadata>
   <herd>dotnet</herd>
   <use>
-	<flag name='git'>Enable Git version control support</flag>
-	<flag name='gnome'>Enable support gnome support (unsetting this flag is unsupported)</flag>
-	<flag name='qtcurve'>Remove qtcurve check (unsupported)</flag>
+	<flag name="git">Enable Git version control support</flag>
+	<flag name="gnome">Enable support gnome support (unsetting this flag is unsupported)</flag>
+	<flag name="qtcurve">Remove qtcurve check (unsupported)</flag>
   </use>
 </pkgmetadata>

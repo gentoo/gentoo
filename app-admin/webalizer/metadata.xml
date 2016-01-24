@@ -7,6 +7,6 @@
 		<name>Anthony G. Basile</name>
 	</maintainer>
 	<use>
-		<flag name='xtended'>Include the 404 extension</flag>
+		<flag name="xtended">Include the 404 extension</flag>
 	</use>
 </pkgmetadata>

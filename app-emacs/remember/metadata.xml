@@ -16,7 +16,7 @@
   possible.
 </longdescription>
 <use>
-  <flag name='bbdb'>Include support for <pkg>app-emacs/bbdb</pkg></flag>
-  <flag name='planner'>Include support for <pkg>app-emacs/planner</pkg></flag>
+  <flag name="bbdb">Include support for <pkg>app-emacs/bbdb</pkg></flag>
+  <flag name="planner">Include support for <pkg>app-emacs/planner</pkg></flag>
 </use>
 </pkgmetadata>

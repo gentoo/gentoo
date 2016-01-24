@@ -10,13 +10,13 @@
 		<name>Tim Harder</name>
 	</maintainer>
 	<use>
-		<flag name='libevent'>Use libevent for event handling</flag>
-		<flag name='nss'>Use NSS for SSL support in MSN and Jabber</flag>
-		<flag name='otr'>Enable support for encrypted conversations</flag>
-		<flag name='plugins'>Enable support for plugins</flag>
-		<flag name='purple'>Use libpurple instead of the built-in IM protocol support</flag>
-		<flag name='skype'>Enable Skype support</flag>
-		<flag name='twitter'>Enable Twitter protocol support</flag>
+		<flag name="libevent">Use libevent for event handling</flag>
+		<flag name="nss">Use NSS for SSL support in MSN and Jabber</flag>
+		<flag name="otr">Enable support for encrypted conversations</flag>
+		<flag name="plugins">Enable support for plugins</flag>
+		<flag name="purple">Use libpurple instead of the built-in IM protocol support</flag>
+		<flag name="skype">Enable Skype support</flag>
+		<flag name="twitter">Enable Twitter protocol support</flag>
 	</use>
 	<longdescription>
 		Bitlbee as an IRC to IM gateway. It provides an irc server that allows

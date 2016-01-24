@@ -12,10 +12,9 @@
 		that uses only quantum-computer-resistant algorithms
 	</longdescription>
 	<use>
-		<flag name='cryptopp'>
+		<flag name="cryptopp">
 			Build algorithms that need Crypto++ support
 			<pkg>dev-libs/crypto++</pkg>
 		</flag>
 	</use>
 </pkgmetadata>
-

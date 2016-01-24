@@ -7,7 +7,6 @@
         <bugs-to>https://bugs.launchpad.net/s25rttr</bugs-to>
 	</upstream>
 	<use>
-		<flag name='glfw'>Compile another video driver based on <pkg>media-libs/glfw</pkg>.</flag>
+		<flag name="glfw">Compile another video driver based on <pkg>media-libs/glfw</pkg>.</flag>
 	</use>
 </pkgmetadata>
-

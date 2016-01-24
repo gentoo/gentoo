@@ -4,7 +4,7 @@
 <maintainer>
   <email>bicatali@gentoo.org</email>
 </maintainer>
-<longdescription lang='en'>
+<longdescription lang="en">
   The RedirFS or redirecting file system is a layer between
   virtual file system switch (VFS) and file system drivers. It is
   implemented as an out-of-kernel module for Linux and it provides

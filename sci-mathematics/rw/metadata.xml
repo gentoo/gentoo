@@ -23,6 +23,6 @@
   </longdescription>
 
   <use>
-    <flag name='executable'>Build the 'rw' program.</flag>
+    <flag name="executable">Build the 'rw' program.</flag>
   </use>
 </pkgmetadata>

@@ -10,4 +10,3 @@
 </longdescription>
 <use><flag name="diet">Compile against <pkg>dev-libs/dietlibc</pkg></flag></use>
 </pkgmetadata>
-

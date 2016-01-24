@@ -7,13 +7,13 @@
   </maintainer>
 
   <use>
-    <flag name='X'>
+    <flag name="X">
       Build the GTK+-based video viewer for aravis. This requires
       GStreamer and a few plugins but technically not the GST plugin
       for aravis.
     </flag>
 
-    <flag name='gstreamer'>
+    <flag name="gstreamer">
       Build the GStreamer plugin for aravis, but not the video viewer.
     </flag>
   </use>

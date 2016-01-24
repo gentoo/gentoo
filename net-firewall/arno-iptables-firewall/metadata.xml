@@ -7,6 +7,6 @@
 	<name>Ferenc Erki</name>
 </maintainer>
 <use>
-	<flag name='plugins'>Install optional plugins</flag>
+	<flag name="plugins">Install optional plugins</flag>
 </use>
 </pkgmetadata>

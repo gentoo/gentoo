@@ -5,8 +5,8 @@
     <email>maintainer-needed@gentoo.org</email>
   </maintainer>
 <use>
-  <flag name='qmail'>Build qmail functionality and docs</flag>
-  <flag name='bayes'>
+  <flag name="qmail">Build qmail functionality and docs</flag>
+  <flag name="bayes">
     Require a database (MySQL, SQLite, Postgres, or BerkDB) backend to
     enable the Bayesian filtering database.
   </flag>

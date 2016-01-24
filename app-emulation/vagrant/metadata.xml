@@ -8,7 +8,7 @@
 		<description>Proxy maintainer</description>
 	</maintainer>
 	<use>
-		<flag name='virtualbox'>
+		<flag name="virtualbox">
 			Use VirtualBox provider.
 		</flag>
 	</use>

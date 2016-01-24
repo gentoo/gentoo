@@ -9,10 +9,10 @@
 	<longdescription>
 		One module layer over regex-tdfa to replace Text.Regex.
 		
-		regex-compat can&#39;t use Unicode characters correctly because
+		regex-compat can't use Unicode characters correctly because
 		of using regex-posix. This is not good for Unicode users.
 		
-		I modified regex-compat to use regex-tdfa for solving today&#39;s
+		I modified regex-compat to use regex-tdfa for solving today's
 		problem.
 	</longdescription>
 </pkgmetadata>
