@@ -63,6 +63,7 @@ get_archive_go_package() {
 	local archive=${1} uri x
 	case ${archive} in
 		go-sys-*) echo "sys-* golang.org/x/sys"; return;;
+		go-yaml-v2-*) echo "yaml-* gopkg.in/yaml.v2"; return;;
 	esac
 	for x in ${SRC_URI}; do
 		if [[ ${x} == http* ]]; then
@@ -99,9 +100,6 @@ src_prepare() {
 	sed -e 's:^GIT.*::' \
 		-e 's:-ldflags.*:\\:' \
 		-i scripts/build.sh || die
-
-	sed -e 's:gopkg.in/yaml.v2:github.com/go-yaml/yaml:' \
-		-i template_functions.go || die
 
 	# Create a writable GOROOT in order to avoid sandbox violations.
 	export GOROOT="${WORKDIR}/goroot"
