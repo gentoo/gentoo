@@ -2,6 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>net-im</herd>
+	<maintainer>
+		<email>aidecoe@gentoo.org</email>
+		<name>Amadeusz Żołnowski</name>
+	</maintainer>
+	<maintainer>
+		<email>hanno@gentoo.org</email>
+		<name>Hanno Böck</name>
+	</maintainer>
 	<longdescription>
 		Free and Open Source distributed fault-tolerant Jabber server. It's
 		mostly written in Erlang, and works on many platforms.
