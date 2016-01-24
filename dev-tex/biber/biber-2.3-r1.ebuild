@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -42,12 +42,12 @@ RDEPEND=">=dev-lang/perl-5.16
 	>=dev-perl/Text-BibTeX-0.700.0
 	dev-perl/URI
 	dev-perl/Unicode-LineBreak
-	dev-perl/Unicode-Normalize
+	>=virtual/perl-Unicode-Normalize-1.230.0
 	dev-perl/XML-LibXML-Simple
 	dev-perl/XML-LibXSLT
 	dev-perl/XML-SAX-Base
 	dev-perl/XML-Writer
-	>=dev-tex/biblatex-3.1
+	>=dev-tex/biblatex-3.2
 	virtual/perl-IPC-Cmd
 	>=virtual/perl-Unicode-Collate-1.140.0"
 DEPEND="${RDEPEND}

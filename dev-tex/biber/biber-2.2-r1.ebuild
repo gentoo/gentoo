@@ -42,12 +42,12 @@ RDEPEND=">=dev-lang/perl-5.16
 	>=dev-perl/Text-BibTeX-0.700.0
 	dev-perl/URI
 	dev-perl/Unicode-LineBreak
-	>=dev-perl/Unicode-Normalize-1.230.0
+	virtual/perl-Unicode-Normalize
 	dev-perl/XML-LibXML-Simple
 	dev-perl/XML-LibXSLT
 	dev-perl/XML-SAX-Base
 	dev-perl/XML-Writer
-	>=dev-tex/biblatex-3.2
+	>=dev-tex/biblatex-3.1
 	virtual/perl-IPC-Cmd
 	>=virtual/perl-Unicode-Collate-1.140.0"
 DEPEND="${RDEPEND}
