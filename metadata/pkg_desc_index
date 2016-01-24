@@ -8678,6 +8678,7 @@ dev-ruby/httpclient 2.6.0.1 2.7.0.1 2.7.1: 'httpclient' gives something like the
 dev-ruby/i18n 0.6.9-r1 0.6.11 0.7.0 0.7.0-r1: Add Internationalization support to your Ruby application
 dev-ruby/imagesize 0.1.1_p20100902 0.1.1_p20100902-r1: Measure image size (GIF, PNG, JPEG, etc)
 dev-ruby/inifile 2.0.2-r1 3.0.0: Native Ruby package for reading and writing INI files
+dev-ruby/instance_storage 1.0.0: Manage class instances with dictionary
 dev-ruby/instantiator 0.0.6: Instantiate an arbitrary Ruby class
 dev-ruby/introspection 0.0.3: Dynamic inspection of the hierarchy of method definitions on a Ruby object
 dev-ruby/iobuffer 1.1.2-r3: IO::Buffer is a fast byte queue which is primarily intended for non-blocking I/O applications
@@ -13321,8 +13322,8 @@ media-video/mplayer-resume 2.0: MPlayer wrapper script to save/resume playback p
 media-video/mplayer-sh 0.8.6-r2 0.8.7: Video Disk Recorder Mplayer API Script
 media-video/mpv 0.9.2-r1 0.14.0-r1 0.15.0-r1 9999: Media player based on MPlayer and mplayer2
 media-video/noad 0.7.3 0.7.3-r1 0.8.6 0.8.6-r1: Mark commercial breaks in VDR recordings
-media-video/nvenc 5.0.1-r1: NVIDIA Encoder (NVENC) API
 media-video/nvidia-settings 340.58 340.58-r1 355.11 358.16: NVIDIA Linux X11 Settings Utility
+media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/openshot 1.4.3: Free, open-source, non-linear video editor to create and edit videos and movies
 media-video/oxine 0.7.1-r1: OSD frontend for Xine
