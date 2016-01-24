@@ -12,6 +12,8 @@ Think of Wine as a compatibility layer for running Windows programs. Wine does n
 		<flag name="custom-cflags">Bypass strip-flags; use at your own peril</flag>
 		<flag name="dos">Pull in <pkg>games-emulation/dosbox</pkg> to run DOS applications</flag>
 		<flag name="gecko">Add support for the Gecko engine when using iexplore</flag>
+		<flag name="gstreamer">Use <pkg>media-libs/gstreamer</pkg> to provide DirectShow functionality;
+			For versions less than wine-1.9.2, uses experimental patch which may break some apps</flag>
 		<flag name="mono">Add support for .NET using Wine's Mono add-on</flag>
 		<flag name="netapi">Use libnetapi from <pkg>net-fs/samba</pkg> to support Windows networks in netapi32.dll</flag>
 		<flag name="opencl">Enable OpenCL support</flag>

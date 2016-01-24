@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -60,7 +60,8 @@ src_prepare() {
 	# Disable python check.
 	sed -e '/AM_PATH_PYTHON/d' -i configure.ac || die
 
-	epatch "${FILESDIR}/${P}-update_marco_wm_name.patch"
+	epatch "${FILESDIR}/${P}-update_marco_wm_name.patch" \
+		   "${FILESDIR}/${P}-fix-networkmanager-flags.patch"
 
 	epatch_user
 

@@ -1,0 +1,11 @@
+--- a/src/main.c
++++ b/src/main.c
+@@ -306,8 +306,6 @@
+     hosts = calloc(2, sizeof(struct host));
+     rules = calloc(1, sizeof(struct rule));
+     rules_num = 0;
+-    bzero(hosts, sizeof(hosts));
+-    bzero(rules, sizeof(rules));
+ 
+     /* Init rules table */
+     if (init_rules(opt.rules) != 0) {
