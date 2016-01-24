@@ -15371,7 +15371,7 @@ sci-chemistry/molscript 2.1.2-r2: Display molecular 3D structures, such as prote
 sci-chemistry/molsketch 0.2.0-r1 0.3.0: A drawing tool for 2D molecular structures
 sci-chemistry/mongochem 0.7.0-r1: Application for managing large collections of chemical data
 sci-chemistry/mopac7 1.15 1.15-r1: Autotooled, updated version of a powerful, fast semi-empirical package
-sci-chemistry/mpqc 2.3.1-r1 2.3.1-r2 2.3.1-r3: The Massively Parallel Quantum Chemistry Program
+sci-chemistry/mpqc 2.3.1-r1 2.3.1-r2 2.3.1-r3 2.3.1-r4: The Massively Parallel Quantum Chemistry Program
 sci-chemistry/msms-bin 2.6.1-r1: MSMS allows to compute very efficiently triangulations of Solvent Excluded Surfaces
 sci-chemistry/mustang 3.2.1 3.2.2: MUltiple STructural AligNment AlGorithm
 sci-chemistry/namd 2.9-r1 2.10: A powerful and highly parallelized molecular dynamics code
