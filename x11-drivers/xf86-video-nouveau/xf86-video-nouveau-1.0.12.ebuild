@@ -4,7 +4,6 @@
 
 EAPI=5
 XORG_DRI="always"
-XORG_EAUTORECONF=yes
 inherit xorg-2
 
 if [[ ${PV} == 9999* ]]; then
@@ -16,7 +15,7 @@ DESCRIPTION="Accelerated Open Source driver for nVidia cards"
 HOMEPAGE="http://nouveau.freedesktop.org/"
 
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="glamor"
+IUSE=""
 
 RDEPEND=">=x11-libs/libdrm-2.4.60[video_cards_nouveau]
 	>=x11-libs/libpciaccess-0.10"
