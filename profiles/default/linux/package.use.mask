@@ -3,6 +3,10 @@
 # $Id$
 
 # prometheanfire <prometheanfire@gentoo.org> (24 Jan 2016)
+# studio support is best effort only
+net-analyzer/icinga2 studio
+
+# prometheanfire <prometheanfire@gentoo.org> (24 Jan 2016)
 # xen support for nova is kinda not all there...
 # will likely remove the flag entirely
 sys-cluster/nova xen
