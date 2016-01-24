@@ -5,4 +5,10 @@
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
+<upstream>
+  <maintainer status="active">
+    <email>emacs@gentoo.org</email>
+    <name>Gentoo Emacs project</name>
+  </maintainer>
+</upstream>
 </pkgmetadata>
