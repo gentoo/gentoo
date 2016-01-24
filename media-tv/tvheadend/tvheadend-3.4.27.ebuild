@@ -49,6 +49,10 @@ src_prepare() {
 
 	# remove '-Werror' wrt bug #438424
 	sed -e 's:-Werror::' -i Makefile || die 'sed failed!'
+
+	# imdb changed the search url, bug #536072
+	sed -e 's:akas.imdb.org:akas.imdb.com:' \
+		-i src/webui/static/app/epg.js || die 'sed failed!'
 }
 
 src_configure() {
