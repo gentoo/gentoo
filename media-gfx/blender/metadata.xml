@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>graphics</herd>
-
-  <maintainer>
+  <maintainer type="person">
     <email>hasufell@gentoo.org</email>
     <name>Julian Ospald</name>
   </maintainer>
 
-  <maintainer>
+  <maintainer type="person">
     <email>lu_zero@gentoo.org</email>
     <name>Luca Barbato</name>
+  </maintainer>
+
+  <maintainer type="project">
+    <email>graphics@gentoo.org</email>
+    <name>Gentoo Graphics Project</name>
   </maintainer>
 
   <longdescription>
@@ -19,24 +22,24 @@
   </longdescription>
 
   <use>
-    <flag name='game-engine' restrict='&gt;=media-gfx/blender-2.50'>
+    <flag name="game-engine" restrict="&gt;=media-gfx/blender-2.50">
       Adds Game Engine support to Blender.
     </flag>
-    <flag name='collada'>
+    <flag name="collada">
       Add support for Collada interchange format through
       <pkg>media-libs/opencollada</pkg>.
     </flag>
-    <flag name='cycles'>
+    <flag name="cycles">
       Build cycles renderer (requires <pkg>media-libs/openimageio</pkg> and
       <pkg>dev-libs/boost</pkg>).
     </flag>
-    <flag name='dds'>
+    <flag name="dds">
       Adds DDS textures support to Blender.
     </flag>
-    <flag name='player'>
+    <flag name="player">
       Build the Blender Player. THis requires the Game engine.
     </flag>
-    <flag name='elbeem'>
+    <flag name="elbeem">
       Adds surface fluid simulation to Blender using El'Beem library.
     </flag>
     <flag name="doc">

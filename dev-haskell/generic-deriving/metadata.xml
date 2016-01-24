@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		This package provides functionality for generalizing the deriving mechanism
 		in Haskell to arbitrary classes. It was first described in the paper:
 		
 		*  /A generic deriving mechanism for Haskell/.
 		Jose Pedro Magalhaes, Atze Dijkstra, Johan Jeuring, and Andres Loeh.
-		Haskell&#39;10.
+		Haskell'10.
 		
 		The current implementation integrates with the new GHC Generics. See
 		&lt;http://www.haskell.org/haskellwiki/Generics&gt; for more information.

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>pam</herd>
+  <maintainer type="project">
+    <email>pam-bugs@gentoo.org</email>
+    <name>Pluggable Authentication Method maintenance</name>
+  </maintainer>
   <upstream>
     <remote-id type="sourceforge">pam-chroot</remote-id>
   </upstream>

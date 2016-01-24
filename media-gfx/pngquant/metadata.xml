@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>graphics</herd>
-  <herd>proxy-maintainers</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>alex_y_xu@yahoo.ca</email>
     <name>Alex Xu</name>
     <description>Proxied maintainer</description>
+  </maintainer>
+<maintainer type="project">
+    <email>graphics@gentoo.org</email>
+    <name>Gentoo Graphics Project</name>
+  </maintainer>
+<maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
 </pkgmetadata>

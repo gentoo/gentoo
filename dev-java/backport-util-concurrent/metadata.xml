@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>java</herd>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
 	<longdescription>
 		This package is the backport of java.util.concurrent API, introduced
 		in Java 5.0, to Java 1.4, and from Java 6.0 to Java 5.0"

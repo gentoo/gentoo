@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="project">
   <email>emacs@gentoo.org</email>
   <name>Gentoo Emacs project</name>
 </maintainer>
@@ -28,6 +28,6 @@
   with a user interface frontend, all written in C.
 </longdescription>
 <use>
-  <flag name='sendmail'>Send mail after editor abend</flag>
+  <flag name="sendmail">Send mail after editor abend</flag>
 </use>
 </pkgmetadata>

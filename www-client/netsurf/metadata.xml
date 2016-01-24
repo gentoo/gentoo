@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 <email>xmw@gentoo.org</email>
 <name>Michael Weber</name>
 </maintainer>
@@ -10,11 +10,11 @@
 </upstream>
 <use>
 	<flag name="bmp">BMP bitmap image support (media-libs/libnsbmp)</flag>
-	<flag name="fbcon_frontend_able" >Use framebuffer frontend able</flag>
+	<flag name="fbcon_frontend_able">Use framebuffer frontend able</flag>
 	<flag name="fbcon_frontend_linux">Use framebuffer frontend linux</flag>
-	<flag name="fbcon_frontend_sdl"  >Use framebuffer frontend sdl</flag>
-	<flag name="fbcon_frontend_vnc"  >Use framebuffer frontend vnc</flag>
-	<flag name="fbcon_frontend_x"    >Use framebuffer frontend X</flag>
+	<flag name="fbcon_frontend_sdl">Use framebuffer frontend sdl</flag>
+	<flag name="fbcon_frontend_vnc">Use framebuffer frontend vnc</flag>
+	<flag name="fbcon_frontend_x">Use framebuffer frontend X</flag>
 	<flag name="pdf-writer">PDF output support (media-libs/libharu)</flag>
 	<flag name="rosprite">RISC OS Sprite bitmap image support (media-libs/librosprite)</flag>
 	<flag name="svgtiny">SVG image support via media-libs/svgatiny instead of gnome-base/librsvg</flag>
@@ -25,4 +25,3 @@ NetSurf is a free, open source web browser. It is written in C, has its own layo
 Whether you want to check your webmail, read the news or post to discussion forums, NetSurf is your lightweight gateway to the world wide web. Actively developed, NetSurf is continually evolving and improving.
 </longdescription>
 </pkgmetadata>
-

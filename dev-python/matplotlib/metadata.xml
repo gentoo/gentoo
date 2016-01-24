@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>python</herd>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
   <longdescription lang="en">
   matplotlib is an interactive library for plotting and doing basic
   data analysis in python with a syntax similar to matlab. It provides a

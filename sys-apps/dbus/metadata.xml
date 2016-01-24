@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>freedesktop</herd>
-	<maintainer>
+	<maintainer type="project">
 		<email>freedesktop-bugs@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name='systemd'>Build with <pkg>sys-apps/systemd</pkg> at_console support</flag>
+		<flag name="systemd">Build with <pkg>sys-apps/systemd</pkg> at_console support</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:freedesktop:dbus</remote-id>

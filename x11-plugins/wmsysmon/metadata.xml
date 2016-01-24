@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>desktop-dock</herd>
-<maintainer>
+<maintainer type="person">
 	<email>voyageur@gentoo.org</email>
 	<name>Bernard Cafarelli</name>
 </maintainer>
 
 <use>
-	<flag name='high-ints'>Enable support for monitoring 24 interrupts. Useful
+	<flag name="high-ints">Enable support for monitoring 24 interrupts. Useful
 		on SMP machines</flag>
 </use>
 </pkgmetadata>

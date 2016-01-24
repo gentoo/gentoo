@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>base-system</herd>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
 	<use>
-		<flag name='html'>Install multi-chapter HTML docs</flag>
-		<flag name='htmlsingle'>Install all-on-one-page HTML docs</flag>
-		<flag name='pdf'>Install pdf docs</flag>
-		<flag name='text'>Install plain-text docs</flag>
+		<flag name="html">Install multi-chapter HTML docs</flag>
+		<flag name="htmlsingle">Install all-on-one-page HTML docs</flag>
+		<flag name="pdf">Install pdf docs</flag>
+		<flag name="text">Install plain-text docs</flag>
 	</use>
 </pkgmetadata>

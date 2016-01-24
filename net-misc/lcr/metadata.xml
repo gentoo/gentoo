@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>radio</herd>
+	<maintainer type="project">
+		<email>radio@gentoo.org</email>
+		<name>Radio</name>
+	</maintainer>
 	<use>
 		<flag name="asterisk">net-misc/asterisk channel driver</flag>
 		<flag name="misdn">net-misc/misdn driver</flag>
@@ -12,4 +15,3 @@
 		<flag name="gsmhr">Support for GSM HR codec using reference code (very slow)</flag>
 	</use>
 </pkgmetadata>
-

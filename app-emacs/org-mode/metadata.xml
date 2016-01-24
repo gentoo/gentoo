@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="project">
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
@@ -21,8 +21,8 @@
   exported as a structured ASCII file, HTML, and LaTeX.
 </longdescription>
 <use>
-  <flag name='contrib'>Install user-contributed files</flag>
-  <flag name='odt-schema'>Install non-free schema files
+  <flag name="contrib">Install user-contributed files</flag>
+  <flag name="odt-schema">Install non-free schema files
     for OpenDocument Text exporter</flag>
 </use>
 </pkgmetadata>

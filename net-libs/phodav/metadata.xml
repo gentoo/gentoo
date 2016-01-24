@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>gnome</herd>
-  <herd>virtualization</herd>
+  <maintainer type="project">
+	  <email>gnome@gentoo.org</email>
+	  <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <maintainer type="project">
+	  <email>virtualization@gentoo.org</email>
+	  <name>Gentoo Virtualization Project</name>
+  </maintainer>
   <use>
-	  <flag name='spice'>Install the spice-webdavd guest agent</flag>
+	  <flag name="spice">Install the spice-webdavd guest agent</flag>
   </use>
 </pkgmetadata>

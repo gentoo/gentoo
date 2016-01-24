@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>tex</herd>
+<maintainer type="project">
+	<email>tex@gentoo.org</email>
+	<name>Gentoo TeX Project</name>
+</maintainer>
 <longdescription>GNU Ocrad is an OCR (Optical Character Recognition)
 program impleme nted as a filter and based on a feature extraction
 method. It reads a bitmap ima ge in pbm format and outputs text in

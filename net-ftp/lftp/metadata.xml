@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
   <email>jer@gentoo.org</email>
   <name>Jeroen Roovers</name>
 </maintainer>
 <use>
-<flag name='convert-mozilla-cookies'>Install the convert-mozilla-cookies script and its run-time dependencies</flag>
-<flag name='openssl'>Use <pkg>dev-libs/openssl</pkg> for SSL connections</flag>
-<flag name='verify-file'>Install the verify-file script and its run-time dependencies</flag>
+<flag name="convert-mozilla-cookies">Install the convert-mozilla-cookies script and its run-time dependencies</flag>
+<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> for SSL connections</flag>
+<flag name="verify-file">Install the verify-file script and its run-time dependencies</flag>
 </use>
 </pkgmetadata>

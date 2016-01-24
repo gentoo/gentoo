@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>deb-tools</herd>
+<maintainer type="project">
+<email>deb-tools@gentoo.org</email>
+<name>Gentoo Debian Tools Project</name>
+</maintainer>
 <use>
 <flag name="update-alternatives">Install update-alternatives</flag>
 </use>

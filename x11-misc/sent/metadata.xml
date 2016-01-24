@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 <email>jer@gentoo.org</email>
 <name>Jeroen Roovers</name>
 </maintainer>
 <use>
-<flag name='savedconfig'>Without a saved config.h, this package depends on <pkg>media-gfx/farbfeld</pkg> for image conversions</flag>
+<flag name="savedconfig">Without a saved config.h, this package depends on <pkg>media-gfx/farbfeld</pkg> for image conversions</flag>
 </use>
 </pkgmetadata>

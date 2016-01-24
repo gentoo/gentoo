@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="project">
   <email>emacs@gentoo.org</email>
   <name>Gentoo Emacs project</name>
 </maintainer>
@@ -20,6 +20,6 @@
      should be referred to as the JASSPA distribution.
 </longdescription>
 <use>
-  <flag name='nanoemacs'>Build NanoEmacs instead of MicroEmacs</flag>
+  <flag name="nanoemacs">Build NanoEmacs instead of MicroEmacs</flag>
 </use>
 </pkgmetadata>

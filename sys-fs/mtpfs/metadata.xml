@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>voyageur@gentoo.org</email>
 		<name>Bernard Cafarelli</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>slyfox@gentoo.org</email>
 		<name>Sergei Trofimovich</name>
 	</maintainer>
@@ -16,6 +16,6 @@
 		as playlist and meta information support for MP3 players.
 	</longdescription>
 	<use>
-		<flag name='mad'>Enable handling of MP3's metadata</flag>
+		<flag name="mad">Enable handling of MP3's metadata</flag>
 	</use>
 </pkgmetadata>

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>cluster</herd>
+	<maintainer type="project">
+		<email>cluster@gentoo.org</email>
+		<name>Gentoo Cluster Project</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">asalkeld/libqb</remote-id>
 	</upstream>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>dev-tools</herd>
 	<longdescription>
 DUMA is an open-source library (under GNU General Public License) to 
 detect buffer overruns and under-runs in C and C++ programs. This 

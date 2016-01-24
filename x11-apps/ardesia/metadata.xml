@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proxy-maintainers</herd>
-<maintainer>
+<maintainer type="person">
 	<email>ziapannocchia@gmail.com</email>
 	<name>Marco Clocchiatti</name>
 	<description>Proxy maintainer. CC him on bugs</description>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
 </maintainer>
 <longdescription lang="en">
 Ardesia enables you to make colored free-hand annotations on your computer screen, 
@@ -28,4 +31,3 @@ record it and share on the network.
 	<remote-id type="google-code">https://code.google.com/p/ardesia</remote-id>
 </upstream>
 </pkgmetadata>
-

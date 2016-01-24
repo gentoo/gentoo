@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proxy-maintainers</herd>
-<maintainer>
+<maintainer type="person">
 	<email>DuPol@gmx.de</email>
 	<name>Dustin Polke</name>
 	<description>Proxy Maintainer. CC him on bugs.</description>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
 </maintainer>
 <longdescription>Another Password Generator. Generates random, pronouncable passwords with a variety of algorithms</longdescription>
 </pkgmetadata>

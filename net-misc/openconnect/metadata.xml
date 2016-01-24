@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>mattsch@gmail.com</email>
 		<name>Matthew Schultz</name>
 		<description>Proxied maintainer. Copy on bugs.</description>
 	</maintainer>
 	<use>
-		<flag name='gssapi'>Build GSSAPI support.</flag>
-		<flag name='java'>Build JNI bindings using jni.h</flag>
-		<flag name='libproxy'>Enable proxy support.</flag>
+		<flag name="gssapi">Build GSSAPI support.</flag>
+		<flag name="java">Build JNI bindings using jni.h</flag>
+		<flag name="libproxy">Enable proxy support.</flag>
 	</use>
 </pkgmetadata>
-

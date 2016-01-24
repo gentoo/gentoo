@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>netmon</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>jer@gentoo.org</email>
 		<name>Jeroen Roovers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
 	<longdescription>
 	dchp_probe attempts to discover DHCP and BootP servers on a

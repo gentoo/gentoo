@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>python</herd>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
 	<longdescription>
 This is a ground-up rewrite of Perspective Broker, which itself is Twisted's
 native RPC/RMI protocol (Remote Procedure Call / Remote Method Invocation).

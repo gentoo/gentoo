@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 	<email>robbat2@gentoo.org</email>
 	<name>Robin H. Johnson</name>
 	<description>Primary maintainer, PATA controllers</description>
 </maintainer>
-<maintainer>
+<maintainer type="person">
 	<email>neurogeek@gentoo.org</email>
 	<name>Jesus Rivero</name>
 </maintainer>

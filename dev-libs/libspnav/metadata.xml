@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>anthoine.bourgeois@gmail.com</email>
 		<name>Anthoine Bourgeois</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>sping@gentoo.org</email>
 		<name>Sebastian Pipping</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
 		The libspnav library is provided as a replacement of the magellan

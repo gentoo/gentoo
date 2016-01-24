@@ -1,7 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>common-lisp</herd>
+	<maintainer type="project">
+		<email>common-lisp@gentoo.org</email>
+		<name>Gentoo Common Lisp Project</name>
+	</maintainer>
 	<longdescription>
 CL-PPCRE is a portable regular expression library for Common Lisp
 which has the following features: 

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
   <email>flameeyes@gentoo.org</email>
 </maintainer>
-<maintainer>
+<maintainer type="project">
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
-<herd>virtualization</herd>
+<maintainer type="project">
+  <email>virtualization@gentoo.org</email>
+  <name>Gentoo Virtualization Project</name>
+</maintainer>
 </pkgmetadata>

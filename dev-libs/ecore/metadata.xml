@@ -1,16 +1,19 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>enlightenment</herd>
+<maintainer type="project">
+	<email>enlightenment@gentoo.org</email>
+	<name>Project Enlightenment</name>
+</maintainer>
 <use>
-	<flag name='ares'>Enables support for asynchronous DNS using the <pkg>net-dns/c-ares</pkg> library</flag>
-	<flag name='gles'>Add gles support to the ecore-evas-wayland module</flag>
-	<flag name='glib'>Enable <pkg>dev-libs/glib</pkg> eventloop support</flag>
-	<flag name='xprint'>Enable X11 Xprint support</flag>
-	<flag name='inotify'>Enable support for inotify</flag>
-	<flag name='evas'>Provides easy to use canvas by gluing <pkg>media-libs/evas</pkg> and various input/output systems</flag>
-	<flag name='tslib'>Build with tslib support for touchscreen devices</flag>
-	<flag name='wayland'>Add support for <pkg>dev-libs/wayland</pkg></flag>
+	<flag name="ares">Enables support for asynchronous DNS using the <pkg>net-dns/c-ares</pkg> library</flag>
+	<flag name="gles">Add gles support to the ecore-evas-wayland module</flag>
+	<flag name="glib">Enable <pkg>dev-libs/glib</pkg> eventloop support</flag>
+	<flag name="xprint">Enable X11 Xprint support</flag>
+	<flag name="inotify">Enable support for inotify</flag>
+	<flag name="evas">Provides easy to use canvas by gluing <pkg>media-libs/evas</pkg> and various input/output systems</flag>
+	<flag name="tslib">Build with tslib support for touchscreen devices</flag>
+	<flag name="wayland">Add support for <pkg>dev-libs/wayland</pkg></flag>
 </use>
 <longdescription>
 Ecore is a clean and tiny event loop library with many modules to do

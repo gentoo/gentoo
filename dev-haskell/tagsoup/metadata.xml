@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		TagSoup is a library for parsing HTML/XML. It supports the HTML 5 specification,
 		and can be used to parse either well-formed XML, or unstructured and malformed HTML
 		from the web. The library also provides useful functions to extract information
 		from an HTML document, making it ideal for screen-scraping.
 		
-		Users should start from the &quot;Text.HTML.TagSoup&quot; module.
+		Users should start from the "Text.HTML.TagSoup" module.
 	</longdescription>
 	<use>
-		<flag name='download'>Build with Download module.</flag>
-		<flag name='testprog'>Build the test program.</flag>
+		<flag name="download">Build with Download module.</flag>
+		<flag name="testprog">Build the test program.</flag>
 	</use>
 </pkgmetadata>

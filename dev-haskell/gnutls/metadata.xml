@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
-		You almost certainly don&#39;t want to depend on this release.
+		You almost certainly don't want to depend on this release.
 		
 		This is a pre-alpha, almost useless release; its only purpose is to enable
 		TLS support in some of my other libraries. More complete bindings for GNU TLS

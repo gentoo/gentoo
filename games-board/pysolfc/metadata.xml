@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>games</herd>
+  <maintainer type="project">
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
+  </maintainer>
   <use>
     <flag name="extra-cardsets">Install extra cardsets</flag>
     <flag name="sound">Enable sound support using <pkg>dev-python/pygame</pkg></flag>

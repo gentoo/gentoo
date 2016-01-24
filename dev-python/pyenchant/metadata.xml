@@ -1,7 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>python</herd>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
   <longdescription lang="en">PyEnchant is a set of language bindings and some wrapper classes to
 		make the excellent Enchant spellchecker available as a Python
 		module. The bindings are generated using SWIG. It includes all the

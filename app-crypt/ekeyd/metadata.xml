@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
 		<email>k_f@gentoo.org</email>
 		<name>Kristian Fiskerstrand</name>
   </maintainer>
   <use>
-    <flag name='usb'>
+    <flag name="usb">
       Build the libusb-based userland daemon for accessing the
       EntropyKey (alternative to the CDC USB driver). It is suggested
       to use this option by default, as the CDC driver in the kernel
@@ -14,12 +14,12 @@
       EntropyKey is too buggy), and can cause various problems.
     </flag>
 
-    <flag name='munin'>
+    <flag name="munin">
       Install a plugin for <pkg>net-analyzer/munin</pkg> to graph
       statistical data from ekeyd.
     </flag>
 
-    <flag name='minimal'>
+    <flag name="minimal">
       Only install the ekey-egd-linux service rather than the full
       ekeyd package.
     </flag>

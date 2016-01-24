@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>kde</herd>
+  <maintainer type="project">
+    <email>kde@gentoo.org</email>
+    <name>Gentoo KDE Project</name>
+  </maintainer>
   <longdescription>
     YaKuake is Yet Another Kuake KDE terminal emulator. It drops down no a
 	configurable key press (defaults to F12) with a konsole window, supports

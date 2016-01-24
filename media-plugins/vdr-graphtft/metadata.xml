@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>media-tv</herd>
-    <maintainer>
+<maintainer type="project">
 		<email>vdr@gentoo.org</email>
 		<name>Gentoo VDR Project</name>
     </maintainer>
 	<use>
-		<flag name='graphtft-fe'>Install external x11 remote frontend</flag>
-		<flag name='theme_avp'>graphTFT Alien vs. Predato theme</flag>
-		<flag name='theme_deepblue'>graphTFT default theme</flag>
-		<flag name='theme_deeppurple'>graphTFT Deep Purple theme</flag>
-		<flag name='theme_poetter'>graphTFT Poetter theme</flag>
-		<flag name='touchscreen'>Enable Touchscreen support</flag>
+		<flag name="graphtft-fe">Install external x11 remote frontend</flag>
+		<flag name="theme_avp">graphTFT Alien vs. Predato theme</flag>
+		<flag name="theme_deepblue">graphTFT default theme</flag>
+		<flag name="theme_deeppurple">graphTFT Deep Purple theme</flag>
+		<flag name="theme_poetter">graphTFT Poetter theme</flag>
+		<flag name="touchscreen">Enable Touchscreen support</flag>
 	</use>
 </pkgmetadata>

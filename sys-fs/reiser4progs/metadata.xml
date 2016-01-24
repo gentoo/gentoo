@@ -1,11 +1,14 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>base-system</herd>
-<longdescription lang='en'>
+<maintainer type="project">
+	<email>base-system@gentoo.org</email>
+	<name>Gentoo Base System</name>
+</maintainer>
+<longdescription lang="en">
 This is a library for reiser4 filesystem access and manipulation.
 </longdescription>
 <upstream>
-	<remote-id type='sourceforge'>reiser4</remote-id>
+	<remote-id type="sourceforge">reiser4</remote-id>
 </upstream>
 </pkgmetadata>

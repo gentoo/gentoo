@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci</herd>
+<maintainer type="project">
+  <email>sci@gentoo.org</email>
+  <name>Gentoo Science Project</name>
+</maintainer>
 <longdescription lang="en">
   SYMPHONY is a generic mixed-integer linear programs
   (MILP) solver, callable library, and extensible framework for implementing
@@ -12,7 +15,7 @@
  Infrastructurefor Operations Research).
 </longdescription>
 <use>
-  <flag name='glpk'>Enable GNU Linear Programming Kit
+  <flag name="glpk">Enable GNU Linear Programming Kit
   <pkg>sci-mathematics/glpk</pkg> support</flag>
 </use>
 </pkgmetadata>

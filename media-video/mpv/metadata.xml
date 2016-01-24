@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>yngwin@gentoo.org</email>
 		<description>primary maintainer</description>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>maksbotan@gentoo.org</email>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>itumaykin+gentoo@gmail.com</email>
 		<name>Coacher</name>
 		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>nikoli@gmx.us</email>
 	</maintainer>
-	<herd>video</herd>
-	<herd>proxy-maintainers</herd>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+		<name>Gentoo Video project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="archive">Enable support for various archive formats via <pkg>app-arch/libarchive</pkg></flag>
 		<flag name="bluray">Enable playback of Blu-ray filesystems</flag>

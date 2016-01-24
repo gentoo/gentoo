@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="project">
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
@@ -12,7 +12,7 @@
   wikipedia-mode provides syntax highlighting for MediaWiki markup.
 </longdescription>
 <use>
-  <flag name='outline-magic'>Enable support for outline-mode extensions
+  <flag name="outline-magic">Enable support for outline-mode extensions
   (<pkg>app-emacs/outline-magic</pkg>)</flag>
 </use>
 </pkgmetadata>

@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>idl0r@gentoo.org</email>
 		<name>Christian Ruppert</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>wfischer@thomas-krenn.com</email>
 		<name>Werner Fischer</name>
 		<description>Upstream Maintainer (please CC on bugs)</description>
 	</maintainer>
-	<herd>sysadmin</herd>
-	<herd>proxy-maintainers</herd>
-</pkgmetadata>
+	<maintainer type="project">
+		<email>sysadmin@gentoo.org</email>
+		<name>Gentoo Sysadmin Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	</pkgmetadata>

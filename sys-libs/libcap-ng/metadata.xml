@@ -1,7 +1,10 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>base-system</herd>
+<maintainer type="project">
+	<email>base-system@gentoo.org</email>
+	<name>Gentoo Base System</name>
+</maintainer>
 <longdescription>
 	The libcap-ng library is intended to make programming with POSIX
 	capabilities much easier than the traditional libcap library. It includes

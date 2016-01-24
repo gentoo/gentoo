@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		The library contains the functionality for reading and writing
 		SFF files (sequencing data from 454 and Ion Torrent).  It duplicates
-		code from (and is incompatible with) the &quot;bio&quot; library.
+		code from (and is incompatible with) the "bio" library.
 	</longdescription>
 	<use>
 		<flag name="fclip">Build the fclip executable.</flag>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>gurligebis@gentoo.org</email>
 		<name>Bjarke Istrup Pedersen</name>
 	</maintainer>
@@ -11,11 +11,11 @@
 		RADIUS Authentication client, RADIUS Accounting client
 	</longdescription>
 	<use>
-		<flag name='crda'>Add CRDA support</flag>
-		<flag name='logwatch'>Install support files for 
+		<flag name="crda">Add CRDA support</flag>
+		<flag name="logwatch">Install support files for 
 			<pkg>sys-app/logwatch</pkg></flag>
-		<flag name='netlink'>Adding support for using netlink to create VLANs</flag>
-		<flag name='sqlite'>Adding sqlite support</flag>
-		<flag name='wps'>Add support for Wi-Fi Protected Setup</flag>
+		<flag name="netlink">Adding support for using netlink to create VLANs</flag>
+		<flag name="sqlite">Adding sqlite support</flag>
+		<flag name="wps">Add support for Wi-Fi Protected Setup</flag>
 	</use>
 </pkgmetadata>

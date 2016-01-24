@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="project">
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
-<herd>tex</herd>
+<maintainer type="project">
+  <email>tex@gentoo.org</email>
+  <name>Gentoo TeX Project</name>
+</maintainer>
 <longdescription>
   AUCTeX is an extensible package for writing and formatting TeX files
   in GNU Emacs and XEmacs. It supports many different TeX macro packages,
@@ -17,6 +20,6 @@
   buffer.
 </longdescription>
 <use>
-  <flag name='preview-latex'>Use bundled preview-latex</flag>
+  <flag name="preview-latex">Use bundled preview-latex</flag>
 </use>
 </pkgmetadata>

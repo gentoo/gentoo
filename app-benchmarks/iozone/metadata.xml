@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>benchmarks</herd>
-<maintainer>
+<maintainer type="person">
   <email>patrick@gentoo.org</email>
     <name>Patrick Lauer</name>
     <description>A Filesystem benchmark tool</description>
 </maintainer>
-<longdescription></longdescription>
+<longdescription/>
 </pkgmetadata>

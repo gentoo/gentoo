@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		Provides a function lcs that takes two lists and returns a longest
-		common sublist. For example, lcs &quot;abcd&quot; &quot;acbd&quot; is either &quot;abd&quot; or
-		&quot;acd&quot;.
+		common sublist. For example, lcs "abcd" "acbd" is either "abd" or
+		"acd".
 		
 		The package provides a simple, stupid and (most of all) slow
 		implementation that needs, for inputs of length m and n, O(m+n)
 		space and O((m+n)!) time in the worst case.
 		
 		It also provides an implementation of the Hunt-Szymanski LCS
-		algorithm, based on that in &quot;String searching algorithms&quot; by
+		algorithm, based on that in "String searching algorithms" by
 		Graham A Stephen, ISBN 981021829X.
 		
 		Given inputs xs and ys of length m and n respectively, where there

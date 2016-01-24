@@ -1,7 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>cjk</herd>
+  <maintainer type="project">
+    <email>cjk@gentoo.org</email>
+    <name>Cjk</name>
+  </maintainer>
   <longdescription>
   IM-JA is a Japanese input module for GTK+2. It supports kanji
   conversion using either the Canna or the (Free)Wnn kanji conversion

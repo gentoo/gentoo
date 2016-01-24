@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>games</herd>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
 	<longdescription lang="en">
 This is the Phalanx chess engine. Phalanx's playing style is quite human-like;
 when it plays at full strength, it may be compared to a intermediate-to-strong

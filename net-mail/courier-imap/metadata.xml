@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>maintainer-needed</herd>
 	<use>
 		<flag name="trashquota">include deleted messages, and the Trash folder, in the estimated quota usage for maildirs</flag>
 	</use>

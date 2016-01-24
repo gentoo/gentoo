@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>games</herd>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
 <longdescription>
 Return to Castle Wolfenstein is a first-person 3-D shooter based loosely on the original Wolfenstein series by id software.  The game takes place in Europe during World War II.  In the single player game, you play as a US military special operative sent behind enemy lines to stop the Nazi studies into the supernatural and the occult.  The multi-player game is a team-based, goal-oriented series of missions and allows you to play as either the Axis or the Allies.  There are several classes of characters you can play, each with their own special abilities and weapon choices.  The port to Linux was done by TTimo of id software and is an unsupported binary release.  This game is commercial software and requires data from the retail Windows version to play.
 </longdescription>

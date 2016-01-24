@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-mail</herd>
+	<maintainer type="project">
+		<email>net-mail@gentoo.org</email>
+		<name>Net-Mail</name>
+	</maintainer>
 	<longdescription lang="en">
 		policyd-weight is a Perl policy daemon for the Postfix MTA (2.1 and
 		later) intended to eliminate forged envelope senders and HELOs (i.e. in

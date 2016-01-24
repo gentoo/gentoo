@@ -1,34 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>tom@whyscream.net</email>
 		<name>Tom Hendrikx</name>
 		<description>Please assign bugs</description>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>wschlich@gentoo.org</email>
 		<name>Wolfram Schlich</name>
 		<description>proxy-maintainer, please CC on bugs</description>
 	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
-		<flag name='bind8-stats'>Enables BIND8 like NSTATS and XSTATS</flag>
-		<flag name='libevent'>Use libevent or libev, useful when zone
+		<flag name="bind8-stats">Enables BIND8 like NSTATS and XSTATS</flag>
+		<flag name="libevent">Use libevent or libev, useful when zone
 			count is high</flag>
-		<flag name='minimal-responses'>If minimal responses are disabled,
+		<flag name="minimal-responses">If minimal responses are disabled,
 			responses are more likely to get truncated, resulting in TCP
 			fallback</flag>
-		<flag name='nsec3'>Enable NSEC3 support</flag>
-		<flag name='ratelimit'>Enables ratelimiting, based on query name,
+		<flag name="nsec3">Enable NSEC3 support</flag>
+		<flag name="ratelimit">Enables ratelimiting, based on query name,
 			type and source</flag>
-		<flag name='root-server'>Configure NSD as a root server</flag>
-		<flag name='runtime-checks'>Enable runtime checks, this could lead 
+		<flag name="root-server">Configure NSD as a root server</flag>
+		<flag name="runtime-checks">Enable runtime checks, this could lead 
 			to a reduced service level</flag>
-		<flag name='munin'>
+		<flag name="munin">
 			Install a plugin for <pkg>net-analyzer/munin</pkg> to graph
 			statistical data from nsd.</flag>
-		<flag name='zone-stats'>Enable per-zone statistics logging, this 
+		<flag name="zone-stats">Enable per-zone statistics logging, this 
 			could lead to a reduced service level</flag>
 	</use>
 </pkgmetadata>

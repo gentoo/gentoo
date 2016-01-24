@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>cpp</herd>
+<maintainer type="project">
+  <email>cpp@gentoo.org</email>
+  <name>Gentoo C++ Project</name>
+</maintainer>
 <use>
-  <flag name='smtp' restrict='&lt;dev-libs/log4cxx-0.10'>Offer SMTP support via
+  <flag name="smtp" restrict="&lt;dev-libs/log4cxx-0.10">Offer SMTP support via
     <pkg>net-libs/libsmtp</pkg></flag>
-  <flag name='smtp' restrict='&gt;=dev-libs/log4cxx-0.10'>Offer SMTP support via
+  <flag name="smtp" restrict="&gt;=dev-libs/log4cxx-0.10">Offer SMTP support via
     <pkg>net-libs/libesmtp</pkg></flag>
 </use>
 </pkgmetadata>

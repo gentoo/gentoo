@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>ottxor@gentoo.org</email>
 		<name>Christoph Junghans</name>
 	</maintainer>
 	<use>
-		<flag name='log'>Enables advanced logging through <pkg>dev-libs/log4cxx</pkg></flag>
+		<flag name="log">Enables advanced logging through <pkg>dev-libs/log4cxx</pkg></flag>
 	</use>
 </pkgmetadata>

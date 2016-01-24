@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <herd>mate</herd>
+    <maintainer type="project">
+        <email>mate@gentoo.org</email>
+        <name>Gentoo MATE Desktop</name>
+    </maintainer>
 	<use>
 		<flag name="gajim">Add an extension to support <pkg>net-im/gajim</pkg>.</flag>
 		<flag name="image-converter">Add image conversion support.</flag>

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>kernel-misc</herd>
-	<herd>crypto</herd>
+	<maintainer type="project">
+		<email>crypto@gentoo.org</email>
+		<name>Crypto</name>
+	</maintainer>
 	<use>
 		<flag name="gpg">Enable <pkg>app-crypt/gnupg</pkg> key module</flag>
 		<flag name="openssl">Enable <pkg>dev-libs/openssl</pkg> key

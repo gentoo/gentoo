@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>net-mail</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>hattya@gentoo.org</email>
+  </maintainer>
+  <maintainer type="project">
+    <email>net-mail@gentoo.org</email>
+    <name>Net-Mail</name>
   </maintainer>
   <use>
     <flag name="oniguruma">Use <pkg>dev-libs/oniguruma</pkg> for regular expression</flag>

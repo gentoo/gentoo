@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>tomjbe@gentoo.org</email>
 		<name>Thomas Beierlein</name>
 	</maintainer>
 	<use>
-		<flag name='ftdi'>Enable support for FTDI USB chips</flag>
-		<flag name='hamlib'>Enables support by the Hamlib amateur radio 
+		<flag name="ftdi">Enable support for FTDI USB chips</flag>
+		<flag name="hamlib">Enables support by the Hamlib amateur radio 
 		rig control library to get/set frequency and mode of the  ham radio</flag>
 	</use>
 </pkgmetadata>

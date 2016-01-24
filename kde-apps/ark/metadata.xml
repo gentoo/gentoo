@@ -4,5 +4,8 @@
 	<use>
 		<flag name="archive">Enable support for a variety of archive formats through libarchive</flag>
 	</use>
-	<herd>kde</herd>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
 </pkgmetadata>

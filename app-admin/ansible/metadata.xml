@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>pinkbyte@gentoo.org</email>
     <name>Sergey Popov</name>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>chainsaw@gentoo.org</email>
     <name>Tony Vroon</name>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>prometheanfire@gentoo.org</email>
     <name>Matthew Thode</name>
   </maintainer>

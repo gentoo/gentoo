@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>scheme</herd>
+	<maintainer type="project">
+		<email>scheme@gentoo.org</email>
+		<name>Gentoo Scheme Project</name>
+	</maintainer>
 	<longdescription lang="en">
 HOP is a new programming language designed for the Web 2.0. It is a higher-order language for programming interactive web applications such as web agendas, web galleries, music players, etc. HOP can be viewed as a replacement for traditional graphical toolkits. HOP is implemented as a Web broker, i.e., a Web server that may act indifferently as a regular Web server or Web proxy.
 	</longdescription>

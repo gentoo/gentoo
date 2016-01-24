@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>video</herd>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+		<name>Gentoo Video project</name>
+	</maintainer>
 	<longdescription lang="en">
 		Videotrans is a set of scripts that convert a movie file in any format
 		that mplayer understands to a DVD-compatible VOB file, doing all the

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>php</herd>
+	<maintainer type="project">
+		<email>php-bugs@gentoo.org</email>
+		<name>PHP</name>
+	</maintainer>
 	<use>
 		<flag name="igbinary">Enables igbinary serialisation support</flag>
 	</use>
 </pkgmetadata>
-

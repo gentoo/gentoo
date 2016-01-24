@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-mail</herd>
+	<maintainer type="project">
+		<email>net-mail@gentoo.org</email>
+		<name>Net-Mail</name>
+	</maintainer>
 	<longdescription>ClamSMTP is an SMTP filter that allows you to check for viruses using the ClamAV anti-virus software. It accepts SMTP connections and forwards the SMTP commands and responses to another SMTP server. The 'DATA' email body is intercepted and scanned before forwarding.</longdescription>
 </pkgmetadata>

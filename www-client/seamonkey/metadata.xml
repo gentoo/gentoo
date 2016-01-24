@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>mozilla</herd>
-  <maintainer>
+<maintainer type="person">
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
   </maintainer>
+<maintainer type="project">
+    <email>mozilla@gentoo.org</email>
+    <name>Gentoo Mozilla Team</name>
+  </maintainer>
 <use>
-	<flag name='chatzilla'>Build Mozilla's IRC client (default on)</flag>
-	<flag name='custom-optimization'>Fine-tune custom compiler
+	<flag name="chatzilla">Build Mozilla's IRC client (default on)</flag>
+	<flag name="custom-optimization">Fine-tune custom compiler
 		optimizations (-Os, -O0, -O1, -O2, -O3)</flag>
 	<flag name="gmp-autoupdate">Allow Gecko Media Plugins (binary blobs) to be automatically
 		downloaded and kept up-to-date in user profiles</flag>
@@ -17,7 +20,7 @@
 		Allows for greater stability in case of plugin crashes</flag>
 	<flag name="jemalloc3">Enable or disable jemalloc3 
 		(forced-on when supported prior to 38.0)</flag>
-	<flag name='roaming'>Build roaming extension support (default on)</flag>
+	<flag name="roaming">Build roaming extension support (default on)</flag>
 	<flag name="system-cairo">Use the system-wide <pkg>x11-libs/cairo</pkg>
 		Use system cairo instead of bundled.</flag>
 	<flag name="system-icu">Use the sytem-wide <pkg>dev-libs/icu</pkg>
@@ -26,7 +29,7 @@
 		Use system jpeg instead of bundled.</flag>
 	<flag name="system-libvpx">Use the system-wide <pkg>media-libs/libvpx</pkg>
 		instead of bundled.</flag>
-	<flag name='system-sqlite'>Use the system-wide <pkg>dev-db/sqlite</pkg>
+	<flag name="system-sqlite">Use the system-wide <pkg>dev-db/sqlite</pkg>
 		installation with secure-delete enabled</flag>
 </use>
 </pkgmetadata>

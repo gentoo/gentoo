@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>gnustep</herd>
+	<maintainer type="project">
+		<email>gnustep@gentoo.org</email>
+		<name>Gentoo GNUstep Project</name>
+	</maintainer>
 	<use>
 		<flag name="modelock">Enable XKB language status lock support. README
 			says: "If you don't know what it is you probably don't need
 			it."</flag>
-		<flag name='xrandr'>Enable XRandR window extension support</flag>
+		<flag name="xrandr">Enable XRandR window extension support</flag>
 		<flag name="vdesktop">Enable dynamic virtual desktop (conflicts with
 			software that works on the edges of the screen)</flag>
 		<flag name="webp">Enables WebP image format support using <pkg>media-libs/libwebp</pkg></flag>

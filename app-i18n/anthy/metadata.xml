@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>cjk</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>hattya@gentoo.org</email>
+  </maintainer>
+  <maintainer type="project">
+    <email>cjk@gentoo.org</email>
+    <name>Cjk</name>
   </maintainer>
   <longdescription>
   Anthy is a free and secure Japanese kana-kanji server.  This ebuild includes

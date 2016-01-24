@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>ada</herd>
+<maintainer type="project">
+	<email>ada@gentoo.org</email>
+	<name>Gentoo Resources for Ada</name>
+</maintainer>
 <longdescription>GtkAda is the technology that lets you implement the next generation of Ada 95 GUIs in an efficient and platform-independent manner. In addition to providing over 100 widgets and allowing you to use portable low-level drawing primitives, GtkAda has a pluggable look-and-feel and comes with a high-level GUI builder that allows round-trip GUI generation and update.</longdescription>
 </pkgmetadata>

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="project">
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
-<herd>java</herd>
+<maintainer type="project">
+  <email>java@gentoo.org</email>
+  <name>Java</name>
+</maintainer>
 <longdescription>
   The Java Development Environment for Emacs is a software package
   that interfaces Emacs to command-line Java development tools (for

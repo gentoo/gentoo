@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>web-apps</herd>
+<maintainer type="project">
+	<email>web-apps@gentoo.org</email>
+	<name>Gentoo Webapps</name>
+</maintainer>
 <longdescription>
 Passwd is the Horde password changing application. While it has been 
 released and is in production use at many sites, it is also under heavy 
@@ -13,7 +16,7 @@ command for smb/cifs password support, servuftp, vmailmgr, vpopmail, and
 sql passwords.
 </longdescription>
 <use>
-	<flag name='clearpasswd'>Enables cleartext password storage in the vpopmail
+	<flag name="clearpasswd">Enables cleartext password storage in the vpopmail
 		files</flag>
 </use>
 </pkgmetadata>

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>accessibility</herd>
+	<maintainer type="project">
+		<email>accessibility@gentoo.org</email>
+		<name>Gentoo Accessibility Project</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">cmusphinx</remote-id>
 	</upstream>

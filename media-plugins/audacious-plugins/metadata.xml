@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sound</herd>
-<maintainer>
+<maintainer type="person">
   <email>chainsaw@gentoo.org</email>
   <name>Tony Vroon</name>
 </maintainer>
+<maintainer type="project">
+  <email>sound@gentoo.org</email>
+  <name>Gentoo Sound project</name>
+</maintainer>
 <use>
-	<flag name='adplug'>Build with AdPlug (Adlib sound card emulation)
+	<flag name="adplug">Build with AdPlug (Adlib sound card emulation)
 		support</flag>
-	<flag name='bs2b'>Enable Bauer Bauer stereophonic-to-binaural
+	<flag name="bs2b">Enable Bauer Bauer stereophonic-to-binaural
 		headphone filter</flag>
-	<flag name='cue'>Support CUE sheets using the libcue library</flag>
-	<flag name='fluidsynth'>Support FluidSynth as MIDI synth backend</flag>
-	<flag name='http'>Support HTTP streams through neon</flag>
+	<flag name="cue">Support CUE sheets using the libcue library</flag>
+	<flag name="fluidsynth">Support FluidSynth as MIDI synth backend</flag>
+	<flag name="http">Support HTTP streams through neon</flag>
 	<flag name="gtk3">Link against version 3 of the GIMP Toolkit instead of version 2 (x11-libs/gtk+)</flag>
-	<flag name='midi'>Build with amidi-plug (MIDI synth) support</flag>
-	<flag name='scrobbler'>Build with scrobbler/LastFM submission support</flag>
-	<flag name='sid'>Build with SID (Commodore 64 Audio) support</flag>
+	<flag name="midi">Build with amidi-plug (MIDI synth) support</flag>
+	<flag name="scrobbler">Build with scrobbler/LastFM submission support</flag>
+	<flag name="sid">Build with SID (Commodore 64 Audio) support</flag>
 </use>
 </pkgmetadata>

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-	</maintainer>
 	<longdescription lang="en">
 		capi4hylafax adds a faxcapi modem to the hylafax enviroment. So you can
 		send and receive FAX documents with CAPI 2.0 fax controllers via a

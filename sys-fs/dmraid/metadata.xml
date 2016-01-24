@@ -2,13 +2,13 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<use>
-		<flag name='dietlibc'>Compile against <pkg>dev-libs/dietlibc</pkg></flag>
-		<flag name='intel_led'>Enable Intel LED support</flag>
-		<flag name='klibc'>Compile against <pkg>dev-libs/klibc</pkg></flag>
-		<flag name='led'>Enable LED support</flag>
-		<flag name='mini'>Create a minimal binary suitable for early boot environments</flag>
+		<flag name="dietlibc">Compile against <pkg>dev-libs/dietlibc</pkg></flag>
+		<flag name="intel_led">Enable Intel LED support</flag>
+		<flag name="klibc">Compile against <pkg>dev-libs/klibc</pkg></flag>
+		<flag name="led">Enable LED support</flag>
+		<flag name="mini">Create a minimal binary suitable for early boot environments</flag>
 	</use>
-	<maintainer>
+	<maintainer type="person">
 		<email>axs@gentoo.org</email>
 		<name>Ian Stakenvicius</name>
 	</maintainer>

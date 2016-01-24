@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>net-news</herd>
 <use>
-<flag name='cancel-locks'>Enable Cancel-Lock header functionality (also enables USE=evil)</flag>
-<flag name='evil'>Let tin generate a message ID</flag>
-<flag name='forgery'>Cancel messages posted from a different account</flag>
-<flag name='gpg'>Enable <pkg>app-crypt/gpg</pkg> support</flag>
-<flag name='etiquette'>Enable the display off posting etiquettes</flag>
+<flag name="cancel-locks">Enable Cancel-Lock header functionality (also enables USE=evil)</flag>
+<flag name="evil">Let tin generate a message ID</flag>
+<flag name="forgery">Cancel messages posted from a different account</flag>
+<flag name="gpg">Enable <pkg>app-crypt/gpg</pkg> support</flag>
+<flag name="etiquette">Enable the display off posting etiquettes</flag>
 </use>
 </pkgmetadata>

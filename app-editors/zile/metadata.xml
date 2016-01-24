@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="project">
   <email>emacs@gentoo.org</email>
   <name>Gentoo Emacs project</name>
 </maintainer>
@@ -12,7 +12,7 @@
   user, e.g. root.
 </longdescription>
 <use>
-  <flag name='valgrind'>Enable usage of <pkg>dev-util/valgrind</pkg>
+  <flag name="valgrind">Enable usage of <pkg>dev-util/valgrind</pkg>
     in tests</flag>
 </use>
 </pkgmetadata>

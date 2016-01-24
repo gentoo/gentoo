@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>ale@clearmind.me</email>
 		<description>Maintainer. Assign bugs to him.</description>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>kensington@gentoo.org</email>
 		<description>Proxy maintainer. CC him on bugs.</description>
 	</maintainer>
-	<herd>proxy-maintainers</herd>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="aot">Generate native code at build time, rather than runtime.</flag>
 	</use>

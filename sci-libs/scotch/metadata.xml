@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci</herd>
-<herd>proxy-maintainers</herd>
-<maintainer>
+<maintainer type="person">
   <email>patrick@gentoo.org</email>
   <name>Patrick Lauer</name>
 </maintainer>
-<maintainer>
+<maintainer type="person">
   <email>oli.borm@web.de</email>
   <name>Oliver Borm</name>
+</maintainer>
+<maintainer type="project">
+  <email>sci@gentoo.org</email>
+  <name>Gentoo Science Project</name>
+</maintainer>
+<maintainer type="project">
+  <email>proxy-maint@gentoo.org</email>
+  <name>Proxy Maintainers</name>
 </maintainer>
 <use>
   <flag name="int64">Build the 64 bits integer library (needed for &gt; 2^31 vertices)</flag>

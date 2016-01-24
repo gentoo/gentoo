@@ -1,16 +1,19 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>enlightenment</herd>
+<maintainer type="project">
+	<email>enlightenment@gentoo.org</email>
+	<name>Project Enlightenment</name>
+</maintainer>
 <use>
-	<flag name='bmp'>Support windows bitmap (bmp) image loader</flag>
-	<flag name='eet'>Support dev-libs/eet</flag>
-	<flag name='ico'>Support windows icon (ico) image loader</flag>
-	<flag name='gles'>Enable gles flavor of gl instead of standard</flag>
-	<flag name='ppm'>Support PPM image loader</flag>
-	<flag name='psd'>Support PSD image loader</flag>
-	<flag name='tga'>Support tga image loader</flag>
-	<flag name='wayland'>Add support for <pkg>dev-libs/wayland</pkg></flag>
+	<flag name="bmp">Support windows bitmap (bmp) image loader</flag>
+	<flag name="eet">Support dev-libs/eet</flag>
+	<flag name="ico">Support windows icon (ico) image loader</flag>
+	<flag name="gles">Enable gles flavor of gl instead of standard</flag>
+	<flag name="ppm">Support PPM image loader</flag>
+	<flag name="psd">Support PSD image loader</flag>
+	<flag name="tga">Support tga image loader</flag>
+	<flag name="wayland">Add support for <pkg>dev-libs/wayland</pkg></flag>
 </use>
 <longdescription>
 Evas is a hardware-accelerated canvas API for X-Windows that can draw 

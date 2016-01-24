@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>suse</herd>
+<maintainer type="project">
+	<email>suse@gentoo.org</email>
+	<name>SUSE</name>
+</maintainer>
 <longdescription lang="en">
 Subversion-like client for Open Build Service - http://open-build-service.org/ It serves as client for the source code repository part of the build service, and it is used to edit metadata or query about build results.
 </longdescription>
 </pkgmetadata>
-

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>embedded</herd>
-	<maintainer>
+	<maintainer type="project">
 		<email>sh@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>embedded@gentoo.org</email>
+		<name>Embedded Gentoo</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">cadcdev</remote-id>

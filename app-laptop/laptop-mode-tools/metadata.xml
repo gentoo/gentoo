@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>alonbl@gentoo.org</email>
 	</maintainer>
 	<upstream>
@@ -10,6 +10,6 @@
 		</maintainer>
 	</upstream>
 	<use>
-		<flag name='scsi'>Adds dependency on sdparm to control non-SATA SCSI drivers</flag>
+		<flag name="scsi">Adds dependency on sdparm to control non-SATA SCSI drivers</flag>
 	</use>
 </pkgmetadata>

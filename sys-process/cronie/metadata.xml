@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>cron</herd>
-<maintainer>
+<maintainer type="person">
   <email>polynomial-c@gentoo.org</email>
   <name>Lars Wendler</name>
 </maintainer>
+  <maintainer type="project">
+    <email>cron-bugs@gentoo.org</email>
+    <name>Gentoo Cron Project</name>
+  </maintainer>
   <longdescription lang="en">
   Cronie contains the standard UNIX daemon crond that runs specified programs at
   scheduled times and related tools. It is based on the original cron and
@@ -14,7 +17,7 @@
   And why cronie? See http://www.urbandictionary.com/define.php?term=cronie
   </longdescription>
   <use>
-    <flag name='anacron'>Install the periodic anacron command scheduler.</flag>
-    <flag name='inotify'>Enable inotify filesystem monitoring support.</flag>
+    <flag name="anacron">Install the periodic anacron command scheduler.</flag>
+    <flag name="inotify">Enable inotify filesystem monitoring support.</flag>
   </use>
 </pkgmetadata>

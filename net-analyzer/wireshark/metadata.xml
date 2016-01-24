@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>netmon</herd>
+<maintainer type="project">
+<email>netmon@gentoo.org</email>
+<name>Gentoo network monitoring and analysis project</name>
+</maintainer>
 <longdescription>
 	Wireshark is the world's foremost network protocol analyzer, and is the de
 	facto (and often de jure) standard across many industries and educational
@@ -25,16 +28,16 @@
 	plain text 
 </longdescription>
 <use>
-<flag name='adns'>Use the GNU <pkg>net-dns/c-ares</pkg> library to resolve DNS names</flag>
-<flag name='androiddump'>Install androiddump</flag>
-<flag name='crypt'>Use <pkg>dev-libs/libgcrypt</pkg> to decrypt traffic</flag>
-<flag name='doc-pdf'>Build documentation in pdf format (US and a4 paper sizes)</flag>
-<flag name='gtk3'>Build the wireshark executable with a GTK+ UI version 3.</flag>
-<flag name='netlink'>Use <pkg>dev-libs/libnl</pkg></flag>
-<flag name='pcap'>Use <pkg>net-libs/libpcap</pkg> for network packet capturing (build dumpcap, rawshark)</flag>
-<flag name='qt4'>Build the wireshark executable with an experimental Qt UI instead of GTK+.</flag>
-<flag name='sbc'>Use <pkg>media-libs/sbc</pkg> for playing back SBC encoded packets</flag>
-<flag name='smi'>Use <pkg>net-libs/libsmi</pkg> to resolve numeric OIDs into human readable format</flag>
-<flag name='tfshark'>Install tfshark</flag>
+<flag name="adns">Use the GNU <pkg>net-dns/c-ares</pkg> library to resolve DNS names</flag>
+<flag name="androiddump">Install androiddump</flag>
+<flag name="crypt">Use <pkg>dev-libs/libgcrypt</pkg> to decrypt traffic</flag>
+<flag name="doc-pdf">Build documentation in pdf format (US and a4 paper sizes)</flag>
+<flag name="gtk3">Build the wireshark executable with a GTK+ UI version 3.</flag>
+<flag name="netlink">Use <pkg>dev-libs/libnl</pkg></flag>
+<flag name="pcap">Use <pkg>net-libs/libpcap</pkg> for network packet capturing (build dumpcap, rawshark)</flag>
+<flag name="qt4">Build the wireshark executable with an experimental Qt UI instead of GTK+.</flag>
+<flag name="sbc">Use <pkg>media-libs/sbc</pkg> for playing back SBC encoded packets</flag>
+<flag name="smi">Use <pkg>net-libs/libsmi</pkg> to resolve numeric OIDs into human readable format</flag>
+<flag name="tfshark">Install tfshark</flag>
 </use>
 </pkgmetadata>

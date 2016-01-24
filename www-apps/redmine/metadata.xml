@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 <email>matsuu@gentoo.org</email>
 </maintainer>
-<maintainer>
+<maintainer type="person">
 <email>pva@gentoo.org</email>
 <name>Peter Volkov</name>
 </maintainer>
 <longdescription lang="en">
 </longdescription>
 <use>
-  <flag name='passenger'>Enable support for <pkg>www-apache/passenger</pkg></flag>
+  <flag name="passenger">Enable support for <pkg>www-apache/passenger</pkg></flag>
 </use>
 </pkgmetadata>
-

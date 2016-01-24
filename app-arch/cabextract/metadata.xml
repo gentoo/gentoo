@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>fonts</herd>
+  <maintainer type="project">
+    <email>fonts@gentoo.org</email>
+    <name>Fonts</name>
+  </maintainer>
   <use>
     <flag name="extras">Install experimental extra tools: wince_info and
       wince_rename for examining and processing Windows CE installation cabinet

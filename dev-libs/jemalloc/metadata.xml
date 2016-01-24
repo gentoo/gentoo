@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>mozilla</herd>
+	<maintainer type="project">
+		<email>mozilla@gentoo.org</email>
+		<name>Gentoo Mozilla Team</name>
+	</maintainer>
 	<longdescription lang="en">
 		Jemalloc is a general-purpose scalable concurrent allocator
 	</longdescription>
 	<use>
-		<flag name='stats'>Enable statistics calculation/reporting</flag>
+		<flag name="stats">Enable statistics calculation/reporting</flag>
 	</use>
 </pkgmetadata>
-

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
   <email>patrick@gentoo.org</email>
   <name>Patrick Lauer</name>
 </maintainer>
 <use>
-	<flag name='exim'>Set <pkg>mail-mta</pkg> to used MTA</flag>
-	<flag name='postfix'>Set <pkg>mail-mta/postfix</pkg> to used MTA</flag>
-	<flag name='spamassassin'>Enable usage of
+	<flag name="exim">Set <pkg>mail-mta</pkg> to used MTA</flag>
+	<flag name="postfix">Set <pkg>mail-mta/postfix</pkg> to used MTA</flag>
+	<flag name="spamassassin">Enable usage of
 		<pkg>mail-filter/spamassassin</pkg> for spam protection</flag>
 </use>
 </pkgmetadata>

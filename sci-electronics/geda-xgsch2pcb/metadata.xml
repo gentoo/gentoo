@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>sci-electronics</herd>
+	<maintainer type="project">
+		<email>sci-electronics@gentoo.org</email>
+		<name>Gentoo Electronics Project</name>
+	</maintainer>
 	<longdescription>
 		``gsch2pcb`` is a command-line tool, part of the gEDA suite, which is used
 		to generate and update a PCB layout.  It works with schematics created
@@ -12,4 +15,3 @@
 		``gsch2pcb``.
 	</longdescription>
 </pkgmetadata>
-

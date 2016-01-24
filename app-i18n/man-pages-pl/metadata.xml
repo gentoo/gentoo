@@ -1,12 +1,15 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>yoshi3@autograf.pl</email>
 		<name> Marcin Kowalski</name>
 		<description>Maintainer. Assign bugs on him</description>
 	</maintainer>
-	<herd>proxy-maintainers</herd>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">manpages-pl</remote-id>
 	</upstream>

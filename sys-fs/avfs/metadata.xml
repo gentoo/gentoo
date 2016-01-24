@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>kernel-misc</herd>
-  <herd>proxy-maintainers</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>pete4abw@comcast.net</email>
     <name>Peter Hyman</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <upstream>
     <remote-id type="sourceforge">avf</remote-id>

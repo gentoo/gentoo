@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>chromium</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>xmw@gentoo.org</email>
 		<name>Michael Weber</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>chromium@gentoo.org</email>
+		<name>Chromium in Gentoo Project</name>
 	</maintainer>
 	<longdescription>
 		Google Chrome is a browser that combines a minimal design with

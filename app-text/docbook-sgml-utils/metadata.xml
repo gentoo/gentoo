@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
-  <use>
-    <flag name='jadetex'>Add support for <pkg>app-text/jadetex</pkg>
+<use>
+    <flag name="jadetex">Add support for <pkg>app-text/jadetex</pkg>
     (for processing tex files produced by the TeX backend of
     Jade)</flag>
   </use>

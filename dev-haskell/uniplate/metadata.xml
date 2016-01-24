@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		Uniplate is library for writing simple and concise generic operations.
 		Uniplate has similar goals to the original Scrap Your Boilerplate work,
@@ -11,25 +14,25 @@
 		To get started with Uniplate you should import one of the three following
 		modules:
 		
-		* &quot;Data.Generics.Uniplate.Data&quot; - to quickly start writing generic functions.
+		* "Data.Generics.Uniplate.Data" - to quickly start writing generic functions.
 		Most users should start by importing this module.
 		
-		* &quot;Data.Generics.Uniplate.Direct&quot; - a replacement for &quot;Data.Generics.Uniplate.Data&quot;
+		* "Data.Generics.Uniplate.Direct" - a replacement for "Data.Generics.Uniplate.Data"
 		with substantially higher performance (around 5 times), but requires writing
 		instance declarations.
 		
-		* &quot;Data.Generics.Uniplate.Operations&quot; - definitions of all the operations defined
+		* "Data.Generics.Uniplate.Operations" - definitions of all the operations defined
 		by Uniplate. Both the above two modules re-export this module.
 		
 		In addition, some users may want to make use of the following modules:
 		
-		* &quot;Data.Generics.Uniplate.Zipper&quot; - a zipper built on top of Uniplate instances.
+		* "Data.Generics.Uniplate.Zipper" - a zipper built on top of Uniplate instances.
 		
-		* &quot;Data.Generics.SYB&quot; - users transitioning from the Scrap Your Boilerplate library.
+		* "Data.Generics.SYB" - users transitioning from the Scrap Your Boilerplate library.
 		
-		* &quot;Data.Generics.Compos&quot; - users transitioning from the Compos library.
+		* "Data.Generics.Compos" - users transitioning from the Compos library.
 		
-		* &quot;Data.Generics.Uniplate.DataOnly&quot; - users making use of both @Data@ and @Direct@
+		* "Data.Generics.Uniplate.DataOnly" - users making use of both @Data@ and @Direct@
 		to avoid getting instance conflicts.
 	</longdescription>
 </pkgmetadata>

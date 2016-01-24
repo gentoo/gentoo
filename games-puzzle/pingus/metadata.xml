@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>games</herd>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
 	<longdescription>Pingus is a free Lemmings clone for GNU/Linux and Windows covered under the GNU GPL. Pingus
 uses ClanLib and libxml and might also be usable on some other OSs like FreeBSD, but hasn't
 been tested there. Pingus is mainly developed under GNU/Linux, that's why the Windows port

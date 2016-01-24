@@ -6,7 +6,10 @@
 		It supports service discovery and service registration.
 		It is fully interoperable with Apple's Rendezvous.
 	</longdescription>
-	<herd>java</herd>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">jmdns</remote-id>
 	</upstream>

@@ -6,10 +6,10 @@
 		<changelog>https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+log/master</changelog>
 		<doc>https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+/master/README</doc>
 	</upstream>
-	<maintainer>
+	<maintainer type="person">
 		<email>zmedico@gentoo.org</email>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>vapier@gentoo.org</email>
 	</maintainer>
 </pkgmetadata>

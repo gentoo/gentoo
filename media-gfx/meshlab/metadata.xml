@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>3dprint</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>amynka@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>3dprint@gentoo.org</email>
+		<name>Gentoo 3D print</name>
 	</maintainer>
 	<longdescription lang="en">
  Printrun is a set of G-code sending applications for RepRap.

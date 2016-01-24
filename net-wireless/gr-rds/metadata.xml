@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>radio</herd>
+	<maintainer type="project">
+		<email>radio@gentoo.org</email>
+		<name>Radio</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">bastibl/gr-rds</remote-id>
 	</upstream>

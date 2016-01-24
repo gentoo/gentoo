@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="project">
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
@@ -20,29 +20,29 @@
      available separately.
 </longdescription>
 <use>
-  <flag name='athena'>Enable the MIT Athena widget set
+  <flag name="athena">Enable the MIT Athena widget set
     (<pkg>x11-libs/libXaw</pkg>)</flag>
-  <flag name='games'>Support shared score files for games</flag>
-  <flag name='gconf'>Use <pkg>gnome-base/gconf</pkg> to read the system
+  <flag name="games">Support shared score files for games</flag>
+  <flag name="gconf">Use <pkg>gnome-base/gconf</pkg> to read the system
     font name</flag>
-  <flag name='gfile'>Use gfile (<pkg>dev-libs/glib</pkg>) for file
+  <flag name="gfile">Use gfile (<pkg>dev-libs/glib</pkg>) for file
     notification</flag>
-  <flag name='gsettings'>Use gsettings (<pkg>dev-libs/glib</pkg>) to read the
+  <flag name="gsettings">Use gsettings (<pkg>dev-libs/glib</pkg>) to read the
     system font name</flag>
-  <flag name='gtk3'>Link against version 3 of the GIMP Toolkit instead of
+  <flag name="gtk3">Link against version 3 of the GIMP Toolkit instead of
     version 2 (<pkg>x11-libs/gtk+</pkg>)</flag>
-  <flag name='gzip-el'>Compress bundled Emacs Lisp source</flag>
-  <flag name='hesiod'>Enable support for <pkg>net-dns/hesiod</pkg></flag>
-  <flag name='imagemagick'>Use <pkg>media-gfx/imagemagick</pkg> for image
+  <flag name="gzip-el">Compress bundled Emacs Lisp source</flag>
+  <flag name="hesiod">Enable support for <pkg>net-dns/hesiod</pkg></flag>
+  <flag name="imagemagick">Use <pkg>media-gfx/imagemagick</pkg> for image
     processing</flag>
-  <flag name='libxml2'>Use <pkg>dev-libs/libxml2</pkg> to parse XML instead
+  <flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> to parse XML instead
     of the internal Lisp implementations</flag>
-  <flag name='pax_kernel'>Enable building under a PaX enabled kernel</flag>
-  <flag name='source'>Install C source files and make them available for
+  <flag name="pax_kernel">Enable building under a PaX enabled kernel</flag>
+  <flag name="source">Install C source files and make them available for
     find-function</flag>
-  <flag name='toolkit-scroll-bars'>Use the selected toolkit's scrollbars in
+  <flag name="toolkit-scroll-bars">Use the selected toolkit's scrollbars in
     preference to Emacs' own scrollbars</flag>
-  <flag name='wide-int'>Prefer wide Emacs integers (typically 62-bit).
+  <flag name="wide-int">Prefer wide Emacs integers (typically 62-bit).
     This option has an effect only on architectures where "long" and
     "long long" types have different size.</flag>
 </use>

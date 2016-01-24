@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>gnustep</herd>
+	<maintainer type="project">
+		<email>gnustep@gentoo.org</email>
+		<name>Gentoo GNUstep Project</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">wmpager</remote-id>
 	</upstream>

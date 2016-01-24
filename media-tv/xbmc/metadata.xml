@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>xbox</herd>
-<herd>video</herd>
+<maintainer type="person">
+ <email>vapier@gentoo.org</email>
+</maintainer>
+<maintainer type="project">
+ <email>media-video@gentoo.org</email>
+ <name>Gentoo Video project</name>
+</maintainer>
 <use>
- <flag name='airplay'>enable AirPlay support</flag>
- <flag name='bluray'>Enable playback of Blu-ray filesystems</flag>
- <flag name='cec'>Enable support for HDMI-CEC devices via libcec</flag>
- <flag name='fishbmc'>Enable fishBMC visualization plugin</flag>
- <flag name='gles'>Enable support for GLES</flag>
- <flag name='goom'>Enable GOOM visualization plugin</flag>
- <flag name='midi'>Support MIDI files</flag>
- <flag name='nfs'>Enable NFS client support</flag>
- <flag name='projectm'>Enable projectM visualization plugin</flag>
- <flag name='pvr'>Enable MythTV support</flag>
- <flag name='rtmp'>Enable Real Time Messaging Protocol using librtmp</flag>
- <flag name='rsxs'>Enable really slick X screensavers</flag>
- <flag name='sftp'>Support browsing files over SFTP</flag>
- <flag name='webserver'>Enable internal webserver</flag>
- <flag name='xrandr'>Support X randr extension</flag>
+ <flag name="airplay">enable AirPlay support</flag>
+ <flag name="bluray">Enable playback of Blu-ray filesystems</flag>
+ <flag name="cec">Enable support for HDMI-CEC devices via libcec</flag>
+ <flag name="fishbmc">Enable fishBMC visualization plugin</flag>
+ <flag name="gles">Enable support for GLES</flag>
+ <flag name="goom">Enable GOOM visualization plugin</flag>
+ <flag name="midi">Support MIDI files</flag>
+ <flag name="nfs">Enable NFS client support</flag>
+ <flag name="projectm">Enable projectM visualization plugin</flag>
+ <flag name="pvr">Enable MythTV support</flag>
+ <flag name="rtmp">Enable Real Time Messaging Protocol using librtmp</flag>
+ <flag name="rsxs">Enable really slick X screensavers</flag>
+ <flag name="sftp">Support browsing files over SFTP</flag>
+ <flag name="webserver">Enable internal webserver</flag>
+ <flag name="xrandr">Support X randr extension</flag>
 </use>
 <upstream>
  <bugs-to>http://trac.kodi.tv/</bugs-to>

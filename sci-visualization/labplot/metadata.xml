@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sci</herd>
-  <herd>kde</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>dilfridge@gentoo.org</email>
     <name>Andreas K. Huettel</name>
+  </maintainer>
+<maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+<maintainer type="project">
+    <email>kde@gentoo.org</email>
+    <name>Gentoo KDE Project</name>
   </maintainer>
 </pkgmetadata>

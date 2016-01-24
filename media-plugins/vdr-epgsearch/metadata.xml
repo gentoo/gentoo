@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>media-tv</herd>
-<maintainer>
+<maintainer type="project">
 <email>vdr@gentoo.org</email>
 <name>Gentoo VDR Project</name>
 </maintainer>
@@ -15,4 +14,3 @@
 	<flag name="tre">Add support for unlimited fuzzy searching with help of <pkg>dev-libs/tre</pkg> library</flag>
 </use>
 </pkgmetadata>
-

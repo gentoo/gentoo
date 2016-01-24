@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-	</maintainer>
 	<longdescription lang="en">
 The goal of the SafeStr library is to provide a rich string-handling library
 for C that has safe semantics yet interoperates with legacy library code in a
@@ -12,4 +9,3 @@ handling should be straightforward.  The library should work on all modern
 Unix-like platforms, as well as any 32-bit Microsoft Windows OS.
 	</longdescription>
 </pkgmetadata>
-

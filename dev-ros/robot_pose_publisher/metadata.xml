@@ -1,7 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>ros</herd>
+	<maintainer type="project">
+		<email>ros@gentoo.org</email>
+		<name>Gentoo ROS Project</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">WPI-RAIL/robot_pose_publisher</remote-id>
 	</upstream>

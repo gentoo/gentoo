@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci-geosciences</herd>
-<longdescription lang='en'>  
+<maintainer type="project">
+	<email>sci-geosciences@gentoo.org</email>
+	<name>Gentoo Geosciences Project</name>
+</maintainer>
+<longdescription lang="en">  
   The Core Library is a collection of C/C++ classes for exact
   computation with real algebraic numbers.
   It embodies our precision-driven approach and is 

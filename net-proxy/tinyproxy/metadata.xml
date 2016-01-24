@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
 <longdescription>A lightweight HTTP/SSL proxy</longdescription>
 <use>
-	<flag name='filter-proxy'>Enable filtering of domains/URLS</flag>
-	<flag name='reverse-proxy'>Enable reverse proxying</flag>
-	<flag name='transparent-proxy'>Enable transparent proxying</flag>
-	<flag name='upstream-proxy'>Enable upstream proxying</flag>
-	<flag name='xtinyproxy-header'>Include the X-Tinyproxy header</flag>
+	<flag name="filter-proxy">Enable filtering of domains/URLS</flag>
+	<flag name="reverse-proxy">Enable reverse proxying</flag>
+	<flag name="transparent-proxy">Enable transparent proxying</flag>
+	<flag name="upstream-proxy">Enable upstream proxying</flag>
+	<flag name="xtinyproxy-header">Include the X-Tinyproxy header</flag>
 </use>
 </pkgmetadata>

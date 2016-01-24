@@ -1,7 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>x11</herd>
+	<maintainer type="project">
+		<email>x11@gentoo.org</email>
+		<name>X11</name>
+	</maintainer>
 	<use>
 		<flag name="bindist">Disable patent-encumbered ARB_texture_float, EXT_texture_shared_exponent, and EXT_packed_float extensions.</flag>
 		<flag name="classic">Build drivers based on the classic architecture.</flag>

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
-		Haskell has excellect handling of unicode, the Char type covers all unicode chars. Unfortunatly, there&#39;s no possibility to read or write something to the outer world in an encoding other than ascii due to the lack of support for encodings. This library should help with that.
+		Haskell has excellect handling of unicode, the Char type covers all unicode chars. Unfortunatly, there's no possibility to read or write something to the outer world in an encoding other than ascii due to the lack of support for encodings. This library should help with that.
 	</longdescription>
 	<use>
 		<flag name="systemencoding">Provide the getSystemEncoding action to query the locale.</flag>

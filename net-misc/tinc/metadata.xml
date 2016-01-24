@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>dlan@gentoo.org</email>
 		<name>Yixun Lan</name>
 	</maintainer>
@@ -14,7 +14,7 @@
 		<flag name="gcrypt">Add support for encrypted log files using <pkg>dev-libs/libgcrypt</pkg></flag>
 		<flag name="gui">Add GUI support, using <pkg>dev-python/wxpython</pkg></flag>
 		<flag name="openssl">Using <pkg>dev-libs/openssl</pkg> for cryptography-related functions</flag>
-		<flag name='uml'> Enable support for User Mode Linux Sockets</flag>
-		<flag name='vde'> Enable Virtual Distributed Ethernet (VDE) based networking</flag>
+		<flag name="uml"> Enable support for User Mode Linux Sockets</flag>
+		<flag name="vde"> Enable Virtual Distributed Ethernet (VDE) based networking</flag>
 	</use>
 </pkgmetadata>

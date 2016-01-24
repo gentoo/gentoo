@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>net-mail</herd>
+<maintainer type="project">
+  <email>net-mail@gentoo.org</email>
+  <name>Net-Mail</name>
+</maintainer>
 <use>
-  <flag name='authdaemond'>Add Courier-IMAP authdaemond unix socket
+  <flag name="authdaemond">Add Courier-IMAP authdaemond unix socket
     support (<pkg>net-mail/courier-imap</pkg>, <pkg>mail-mta/courier</pkg>)
     </flag>
-  <flag name='openldap'>Add ldap support for saslauthd</flag>
-  <flag name='ldapdb'>Enable ldapdb plugin</flag>
-  <flag name='sample'>Enable sample client and server</flag>
-  <flag name='srp'>Enable SRP authentication</flag>
-  <flag name='urandom'>Use /dev/urandom instead of /dev/random</flag>
+  <flag name="openldap">Add ldap support for saslauthd</flag>
+  <flag name="ldapdb">Enable ldapdb plugin</flag>
+  <flag name="sample">Enable sample client and server</flag>
+  <flag name="srp">Enable SRP authentication</flag>
+  <flag name="urandom">Use /dev/urandom instead of /dev/random</flag>
 </use>
 </pkgmetadata>

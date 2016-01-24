@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>kde</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>dilfridge@gentoo.org</email>
 		<name>Andreas K. Huettel</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>amynka@gentoo.org</email>
 		<name>Amy Winston</name>
 		<description>Assign bugs on me.</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<longdescription>
 OpenCV (Open Source Computer Vision) is a library of programming functions mainly aimed at real time computer vision.

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>netmon</herd>
+<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
 	<longdescription lang="en">
 		darkstat is a network statistics gatherer. It's a packet sniffer that
 		runs as a background process on a cable/DSL router, gathers all sorts of

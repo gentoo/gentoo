@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>virtualization</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>virtualization@gentoo.org</email>
+		<name>Gentoo Virtualization Project</name>
 	</maintainer>
 	<longdescription lang="en">
 	Ganeti is a cluster virtual server management software tool built on top of
@@ -21,16 +24,15 @@
 	failures using commodity hardware. 
 	</longdescription>
 	<use>
-		<flag name='drbd'>Enable DRBD support</flag>
-		<flag name='filestorage'>Enable File Storage</flag>
-		<flag name='haskell-daemons'>Build haskell daemons instead of python</flag>
-		<flag name='htools'>Enable htools support</flag>
-		<flag name='kvm'>Enable KVM support</flag>
-		<flag name='lxc'>Enable Linux Countainers support</flag>
-		<flag name='multiple-users'>Enable support for running VMs as different users</flag>
-		<flag name='monitoring'>Enable the ganeti monitoring daemon</flag>
-		<flag name='rbd'>Enable rados block device support via sys-cluster/ceph</flag>
-		<flag name='xen'>Enable Xen support</flag>
+		<flag name="drbd">Enable DRBD support</flag>
+		<flag name="filestorage">Enable File Storage</flag>
+		<flag name="haskell-daemons">Build haskell daemons instead of python</flag>
+		<flag name="htools">Enable htools support</flag>
+		<flag name="kvm">Enable KVM support</flag>
+		<flag name="lxc">Enable Linux Countainers support</flag>
+		<flag name="multiple-users">Enable support for running VMs as different users</flag>
+		<flag name="monitoring">Enable the ganeti monitoring daemon</flag>
+		<flag name="rbd">Enable rados block device support via sys-cluster/ceph</flag>
+		<flag name="xen">Enable Xen support</flag>
 	</use>
 </pkgmetadata>
-

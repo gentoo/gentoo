@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-	</maintainer>
 	<longdescription lang="en">
 		Reconstructs MP3 files removing unwanted data, recreates VBR Tag with
 		seek information if it is VBR, can remove ID3v1/ID3v2/FHG/VBRI tags, can

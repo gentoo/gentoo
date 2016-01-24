@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-im</herd>
 	<use>
-		<flag name='experimental'>Enable experimental features such
+		<flag name="experimental">Enable experimental features such
 			as TLS Everywhere.</flag>
-		<flag name='memdebug'>Enable nad and pool debug.
+		<flag name="memdebug">Enable nad and pool debug.
 			Requires USE="debug" to be set.</flag>
-		<flag name='websocket'>Enable WebSocket support on C2S port.</flag>
+		<flag name="websocket">Enable WebSocket support on C2S port.</flag>
 	</use>
 	<upstream>
-		<remote-id type='github'>jabberd2/jabberd2</remote-id>
+		<remote-id type="github">jabberd2/jabberd2</remote-id>
 	</upstream>
 </pkgmetadata>

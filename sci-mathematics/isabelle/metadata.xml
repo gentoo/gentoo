@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
   <email>gienah@gentoo.org</email>
 </maintainer>
-<herd>sci-mathematics</herd>
-<longdescription lang='en'>
+<maintainer type="project">
+  <email>sci-mathematics@gentoo.org</email>
+  <name>Gentoo Mathematics Project</name>
+</maintainer>
+<longdescription lang="en">
 Isabelle is a generic proof assistant. It allows mathematical
 formulas to be expressed in a formal language and provides tools
 for proving those formulas in a logical calculus. The main
@@ -15,29 +18,29 @@ correctness of computer hardware or software and proving
 properties of computer languages and protocols.
 </longdescription>
 <use>
-  <flag name='Pure'>Pure is the basis for all object-logics.</flag>
-  <flag name='FOL'>FOL (Many-sorted First-Order Logic) provides basic
+  <flag name="Pure">Pure is the basis for all object-logics.</flag>
+  <flag name="FOL">FOL (Many-sorted First-Order Logic) provides basic
   classical and intuitionistic first-order logic. It is polymorphic.</flag>
-  <flag name='HOL'>(Higher-Order Logic) is a version of classical higher-order
+  <flag name="HOL">(Higher-Order Logic) is a version of classical higher-order
   logic resembling that of the HOL System.</flag>
-  <flag name='ZF'>ZF (Set Theory) offers a formulation of Zermelo-Fraenkel
+  <flag name="ZF">ZF (Set Theory) offers a formulation of Zermelo-Fraenkel
   set theory on top of FOL.</flag>
-  <flag name='CCL'>CCL (Classical Computational Logic)</flag>
-  <flag name='CTT'>CTT (Constructive Type Theory) is an extensional version
+  <flag name="CCL">CCL (Classical Computational Logic)</flag>
+  <flag name="CTT">CTT (Constructive Type Theory) is an extensional version
   of Martin-Löf's Type Theory.</flag>
-  <flag name='Cube'>Cube (The Lambda Cube)</flag>
-  <flag name='FOLP'>FOLP (FOL with Proof Terms)</flag>
-  <flag name='LCF'>LCF (Logic of Computable Functions)</flag>
-  <flag name='Sequents'>Sequents (first-order, modal and linear logics)</flag>
-  <flag name='graphbrowsing'>Generate theory browsing information,
+  <flag name="Cube">Cube (The Lambda Cube)</flag>
+  <flag name="FOLP">FOLP (FOL with Proof Terms)</flag>
+  <flag name="LCF">LCF (Logic of Computable Functions)</flag>
+  <flag name="Sequents">Sequents (first-order, modal and linear logics)</flag>
+  <flag name="graphbrowsing">Generate theory browsing information,
   including HTML documents that show a theory's definition, the
   theorems proved in its ML file and the relationship with its
   ancestors and descendants.</flag>
-  <flag name='ledit'>Use ledit for the isabelle tty line editor</flag> 
-  <flag name='readline'>Use readline (rlwrap) for the isabelle tty line
+  <flag name="ledit">Use ledit for the isabelle tty line editor</flag> 
+  <flag name="readline">Use readline (rlwrap) for the isabelle tty line
   editor</flag> 
-  <flag name='proofgeneral'>Add support for the
+  <flag name="proofgeneral">Add support for the
   <pkg>app-emacs/proofgeneral</pkg> proof assistant front end.</flag>
-  <flag name='pide'>Build Isabelle/jEdit Prover IDE (PIDE).</flag> 
+  <flag name="pide">Build Isabelle/jEdit Prover IDE (PIDE).</flag> 
 </use>
 </pkgmetadata>

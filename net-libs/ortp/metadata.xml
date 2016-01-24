@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>chainsaw@gentoo.org</email></maintainer>
+<maintainer type="person"><email>chainsaw@gentoo.org</email></maintainer>
 	<use>
-		<flag name='ntp-timestamp'>Turn on NTP timestamping on received packet</flag>
-		<flag name='srtp'>Add support for Secure RTP</flag>
-		<flag name='zrtp'>Add support for ZRTP key negotiation</flag>
+		<flag name="ntp-timestamp">Turn on NTP timestamping on received packet</flag>
+		<flag name="srtp">Add support for Secure RTP</flag>
+		<flag name="zrtp">Add support for ZRTP key negotiation</flag>
 	</use>
 </pkgmetadata>

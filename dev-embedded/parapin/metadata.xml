@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>dev-embedded</herd>
+	<maintainer type="project">
+		<email>embedded@gentoo.org</email>
+		<name>Embedded Gentoo</name>
+	</maintainer>
 	<longdescription>
 Parapin makes it easy to write C code under Linux that controls individual pins on a PC parallel port. This kind of control is very useful for 
 electronics projects that use the PC's parallel port as a generic digital I/O interface. Parapin goes to great lengths to insulate the programmer 

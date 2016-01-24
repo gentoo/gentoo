@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-dialup</herd>
 	<longdescription>A CAPI 2.0 ISDN call monitor with LDAP name resolution</longdescription>
 	<longdescription lang="ja">CAPI 2.0 ISDN は LDAP の名前解決の様子を表示します。</longdescription>
 	<upstream>

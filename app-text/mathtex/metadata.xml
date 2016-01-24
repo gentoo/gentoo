@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>mrueg@gentoo.org</email>
 		<name>Manuel Rüger</name>
 	</maintainer>
 	<use>
-		<flag name='png'>Generate png images by default instead of gif</flag>
+		<flag name="png">Generate png images by default instead of gif</flag>
 	</use>
 	<longdescription>MathTeX parses a LaTeX math expression and immediately emits 
 	the corresponding gif (or png) image.  It can be used as cgi program to embed

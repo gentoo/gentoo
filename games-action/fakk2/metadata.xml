@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>games</herd>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
 <longdescription>
 Heavy Metal: F.A.K.K.2 is a third-person 3-D action game based on characters from the Heavy Metal comics and movies.  Years have passed since Julie Strain (a.k.a. F.A.K.K.2) defeated the would-be God Lord Tyler on the bloody battlefields of the Holy Land. She has long since put the pain of those days behind her and brought her homeworld of Eden to a perfect natural balance. But far away in the deepest nebulas of space, the greatest evil of all stirs, ready to make its final move -- to take control of the entire universe. A lone beacon hurtles toward Eden, hoping to summon the god-slayer F.A.K.K.2 one last time. It bears nothing more than an onimous warning: "GITH IS COMING."  The game was ported to Linux by the now defunct Loki Entertainment and is commercial software.  You can still pick up a copy from Tuxgames (http://www.tuxgames.com), but supplies are limited, as the publisher is no longer in business.
 </longdescription>

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>proaudio</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>richard@audacityteam.org</email>
     <name>Richard Ash</name>
     <description>Upstream - please CC on bugs that concerns upstream</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>proaudio@gentoo.org</email>
+    <name>Gentoo ProAudio Project</name>
   </maintainer>
   <use>
     <flag name="id3tag">Enables ID3 tagging with id3tag library</flag>

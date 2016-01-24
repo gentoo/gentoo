@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>media-tv</herd>
-	<maintainer>
-		<email>media-tv@gentoo.org</email>
-		<name>media-tv</name>
-	</maintainer>
 	<longdescription>TV-Out for NVidia cards</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">nv-tv-out</remote-id>

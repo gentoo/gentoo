@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
   <email>pva@gentoo.org</email>
   <name>Peter Volkov</name>
 </maintainer>
-<maintainer>
+<maintainer type="person">
   <email>andreis.vinogradovs@gmail.com</email>
   <name>Andreis Vinogradovs</name>
   <description>Primary maintainer, assign bugs to him</description>
@@ -18,4 +18,3 @@ There are several ways to provide consistency:
  - use LVM2 (no downtime)
 </longdescription>
 </pkgmetadata>
-

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>bsd</herd>
+  <maintainer type="project">
+    <email>bsd@gentoo.org</email>
+    <name>BSD Project</name>
+  </maintainer>
   <use>
-    <flag name='floppy'>Enable floppy disk utilities (fdcontrol, fdformat, fdread, fdwrite).</flag>
-    <flag name='audit'>
+    <flag name="floppy">Enable floppy disk utilities (fdcontrol, fdformat, fdread, fdwrite).</flag>
+    <flag name="audit">
       Build auditing tools.
     </flag>
-    <flag name='netware'>
+    <flag name="netware">
       Build libraries and tools to work with NetWare protocols (IPX
       and NCP).
     </flag>

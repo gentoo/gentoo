@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>gregkh@gentoo.org</email>
 		<name>Greg Kroah-Hartman</name>
 		<description>Maintainer, assign bugs to him.</description>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>hasufell@gentoo.org</email>
 		<name>Julian Ospald</name>
 		<description>Backup maintainer, CC him on bugs.</description>

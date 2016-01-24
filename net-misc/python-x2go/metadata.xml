@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>nx</herd>
+	<maintainer type="person">
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
 	<longdescription>
 The Python X2Go module integrates X2Go client support into your python programmes.
 Python X2Go is used in the headless X2Go client "pyhoca-cli" and by the tiny systray GUI applet "pyhoca-gui"

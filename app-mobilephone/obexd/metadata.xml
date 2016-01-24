@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>dev-zero@gentoo.org</email>
 		<name>Tiziano Müller</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>pacho@gentoo.org</email>
 		<description>
 			Taking care of this until Tiziano has enough time
@@ -13,10 +13,9 @@
 		</description>
 	</maintainer>
 	<use>
-		<flag name='nokia'>Add support for Nokia backup
+		<flag name="nokia">Add support for Nokia backup
 		plugin</flag>
-  		<flag name='server'>Enables server installation, it's
+  		<flag name="server">Enables server installation, it's
   		incompatible with obex-data-server provided one</flag>
 	</use>
 </pkgmetadata>
-

@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>livecd</herd>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>julian@simioni.org</email>
 		<name>Julian Simioni</name>
 		<description>Proxy-Maintainer, assign bugs</description>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>perfinion@gentoo.org</email>
 		<name>Jason Zaman</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>livecd@gentoo.org</email>
+		<name>Gentoo LiveCD Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
 		<flag name="livecd">Install init script for root password scrambling on boot</flag>

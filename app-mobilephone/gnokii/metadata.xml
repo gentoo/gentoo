@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
 <longdescription>
 gnokii provides tools and a user space driver for use with mobile phones.
 With gnokii you can do such things as make data calls, update your address book, 
@@ -9,9 +8,9 @@ change calendar entires, send and receive SMS messages and load ring tones
 depending on the phone you have.
 </longdescription>
 <use>
-  <flag name='ical'>Enable support for <pkg>dev-libs/libical</pkg></flag>
-  <flag name='irda'>Enable infrared support</flag>
-  <flag name='sms'>Enable SMS support (build smsd)</flag>
-  <flag name='pcsc-lite'>Enable smartcard support with <pkg>sys-apps/pcsc-lite</pkg></flag>
+  <flag name="ical">Enable support for <pkg>dev-libs/libical</pkg></flag>
+  <flag name="irda">Enable infrared support</flag>
+  <flag name="sms">Enable SMS support (build smsd)</flag>
+  <flag name="pcsc-lite">Enable smartcard support with <pkg>sys-apps/pcsc-lite</pkg></flag>
 </use>
 </pkgmetadata>

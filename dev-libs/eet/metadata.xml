@@ -1,7 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>enlightenment</herd>
+<maintainer type="project">
+	<email>enlightenment@gentoo.org</email>
+	<name>Project Enlightenment</name>
+</maintainer>
 <longdescription>
 EET is a tiny library designed to write an arbitary set of chunks of data to a file 
 and optionally compress each chunk (very much like a zip file) and allow fast 

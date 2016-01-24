@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>postgresql</herd>
-  <maintainer restrict="&gt;=app-eselect/eselect-postgresql-1.0.0">
+  <maintainer restrict="&gt;=app-eselect/eselect-postgresql-1.0.0" type="person">
 	<email>titanofold@gentoo.org</email>
 	<name>Aaron W. Swenson</name>
+  </maintainer>
+<maintainer type="project">
+  <email>pgsql-bugs@gentoo.org</email>
+  <name>PostgreSQL and Related Package Development</name>
   </maintainer>
 </pkgmetadata>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
  <email>vapier@gentoo.org</email>
 </maintainer>
 <longdescription>
@@ -22,15 +22,15 @@ Pico as closely as possible while addressing the problems above and
 perhaps providing other extra functionality.
 </longdescription>
 <use>
- <flag name='justify'>Enable justify/unjustify functions for text formatting.</flag>
- <flag name='debug'>
+ <flag name="justify">Enable justify/unjustify functions for text formatting.</flag>
+ <flag name="debug">
   Enable debug messages and assert warnings.  Note that these will all be sent
   straight to stderr rather than some logging facility.
  </flag>
- <flag name='magic'>
+ <flag name="magic">
   Add magic file support (sys-apps/file) to automatically detect appropriate syntax highlighting
  </flag>
- <flag name='minimal'>
+ <flag name="minimal">
   Disable all fancy features, including ones that otherwise have a dedicated
   USE flag (such as spelling).
  </flag>

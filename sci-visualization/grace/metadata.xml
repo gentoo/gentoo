@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sci</herd>
-  <herd>graphics</herd>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>graphics@gentoo.org</email>
+    <name>Gentoo Graphics Project</name>
+  </maintainer>
   <longdescription lang="en">
   Grace is a point-and-click tool that allows the user to draw X-Y
   plots. This is the program formerly known as Xmgr.

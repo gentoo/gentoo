@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sci-astronomy</herd>
+  <maintainer type="project">
+    <email>sci-astronomy@gentoo.org</email>
+    <name>Gentoo Astronomy Project</name>
+  </maintainer>
   <longdescription lang="en">
   libnova is a general purpose, double precision, astronomical
   calculation library. The intended audience of libnova is C / C++ programmers,

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci-physics</herd>
-<longdescription lang='en'>
+<maintainer type="project">
+	<email>sci-physics@gentoo.org</email>
+	<name>Gentoo Physics Project</name>
+</maintainer>
+<longdescription lang="en">
   libAfterImage is a generic image manipulation library.
   It was initially implemented to address AfterStep Window Manager's needs for
   image handling, but it evolved into software suitable for project

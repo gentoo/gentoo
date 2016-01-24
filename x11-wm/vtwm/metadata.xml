@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
-  <longdescription>VTWM, one of many TWM descendants, implements a Virtual
+<longdescription>VTWM, one of many TWM descendants, implements a Virtual
   Desktop, meaning that what is currently on screen is just a portion of a
   larger workspace. What portion of the virtual desktop that is displayed,
   and whatever windows might be visible within it, are simple

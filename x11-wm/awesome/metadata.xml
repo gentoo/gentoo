@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>proxy-maintainers</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>itumaykin+gentoo@gmail.com</email>
     <name>Coacher</name>
     <description>Proxied maintainer; set to assignee in all bugs</description>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>maksbotan@gentoo.org</email>
     <name>Maxim Koltsov</name>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>skrattaren@yandex.ru</email>
     <name>Nikolaj Sjujskij</name>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>wired@gentoo.org</email>
     <name>Alex Alexander</name>
+  </maintainer>
+<maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
 </pkgmetadata>

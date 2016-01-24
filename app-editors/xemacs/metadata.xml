@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>xemacs</herd>
-  <maintainer>
+  <maintainer type="project">
     <email>xemacs@gentoo.org</email>
     <description>Primary Maintainer</description>
   </maintainer>
-  <longdescription></longdescription>
+  <longdescription/>
   <use>
-    <flag name='athena'>Chooses the MIT Athena widget set</flag>
-    <flag name='dnd'>Enables support for the <pkg>x11-libs/dnd</pkg>
+    <flag name="athena">Chooses the MIT Athena widget set</flag>
+    <flag name="dnd">Enables support for the <pkg>x11-libs/dnd</pkg>
       drag-n-drop library</flag>
-    <flag name='eolconv'>Support detection and translation of newline
+    <flag name="eolconv">Support detection and translation of newline
       conventions</flag>
-    <flag name='pop'>Support POP for mail retrieval</flag>
-    <flag name='xim'>Enable X11 XiM input method</flag>
+    <flag name="pop">Support POP for mail retrieval</flag>
+    <flag name="xim">Enable X11 XiM input method</flag>
   </use>
 </pkgmetadata>

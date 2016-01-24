@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci-astronomy</herd>
+<maintainer type="project">
+  <email>sci-astronomy@gentoo.org</email>
+  <name>Gentoo Astronomy Project</name>
+</maintainer>
 <longdescription lang="en">
   The Common Pipeline Library (CPL) comprises a set of ISO-C libraries
   that provide a comprehensive, efficient and robust software
@@ -15,7 +18,7 @@
   external dependencies.
 </longdescription>
 <use>
-  <flag name='gasgano'>
+  <flag name="gasgano">
     Enable support for <pkg>sci-astronomy/gasgano</pkg> file organizer
   </flag>
 </use>

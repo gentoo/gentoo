@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sound</herd>
+  <maintainer type="project">
+    <email>sound@gentoo.org</email>
+    <name>Gentoo Sound project</name>
+  </maintainer>
   <longdescription>The fastest ISO AAC audio decoder available, correctly decodes all MPEG-4 and MPEG-2 MAIN, LOW, LTP, LD and ER object type AAC files</longdescription>
   <use>
     <flag name="digitalradio">Digital Radio Mondiale (warning: disables other decoders)</flag>

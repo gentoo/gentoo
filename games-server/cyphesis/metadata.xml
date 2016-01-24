@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>games</herd>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
 	<longdescription lang="en">
 Cyphesis is an NPC engine using AI/A-Life techniques. It is the Artificial
 Intelligence and Artificial Life server used by STAGE and also is filling in as

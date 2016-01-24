@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
-	<longdescription>
+<longdescription>
 		util-vserver is a Linux virtual server utility framework,
 		allowing an administrator to set up multiple, isolated
 		virtual servers. It can be used to run various services

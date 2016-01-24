@@ -1,7 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>toolchain</herd>
+  <maintainer type="project">
+    <email>toolchain@gentoo.org</email>
+    <name>Gentoo Toolchain Project</name>
+  </maintainer>
   <use>
     <flag name="awt">Useful only when building GCJ, this enables Abstract Window Toolkit
       (AWT) peer support on top of GTK+</flag>

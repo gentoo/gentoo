@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>scheme</herd>
+	<maintainer type="project">
+		<email>scheme@gentoo.org</email>
+		<name>Gentoo Scheme Project</name>
+	</maintainer>
 	<longdescription lang="en">
 SLIB is a portable scheme library meant to provide compatibiliy and
 utility functions for all standard scheme implementations.

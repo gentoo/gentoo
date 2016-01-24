@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 <email>araujo@gentoo.org</email>
 <name>Luis F. Araujo</name>
 </maintainer>
@@ -11,4 +11,3 @@ similar to Stephen Kleene's recursive functions. You can use srf to help
 understand recursive functions, or Peano arithmetic.
 </longdescription>
 </pkgmetadata>
-

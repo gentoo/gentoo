@@ -1,7 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>mythtv</herd>
+	<maintainer type="project">
+		<email>mythtv@gentoo.org</email>
+		<name>MythTV</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="pypi">IMDbPY</remote-id>
 		<remote-id type="sourceforge">imdbpy</remote-id>

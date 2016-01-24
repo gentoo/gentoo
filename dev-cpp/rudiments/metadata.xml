@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>cpp</herd>
+	<maintainer type="project">
+		<email>cpp@gentoo.org</email>
+		<name>Gentoo C++ Project</name>
+	</maintainer>
 	<longdescription>
 		Rudiments is an Open Source C++ class library providing base classes
 		for things such as daemons, clients and servers, and wrapper classes
@@ -9,6 +12,6 @@
 		expressions, semaphores and signal handling.
 	</longdescription>
 	<upstream>
-		<remote-id type='sourceforge'>rudiments</remote-id>
+		<remote-id type="sourceforge">rudiments</remote-id>
 	</upstream>
 </pkgmetadata>

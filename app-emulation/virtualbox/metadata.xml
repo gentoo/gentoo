@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>patrick@gentoo.org</email>
     <name>Patrick Lauer</name>
   </maintainer>
 <use>
-	<flag name='additions'>Install Guest System Tools ISO</flag>
-	<flag name='extensions'>Install extension module packages</flag>
-	<flag name='headless'>Build without any graphic frontend</flag>
-	<flag name='sdk'>Enable building of SDK</flag>
-	<flag name='udev'>Controls installation of special USB udev rules.</flag>
-	<flag name='vboxwebsrv'>Build and install the VirtualBox webservice</flag>
+	<flag name="additions">Install Guest System Tools ISO</flag>
+	<flag name="extensions">Install extension module packages</flag>
+	<flag name="headless">Build without any graphic frontend</flag>
+	<flag name="sdk">Enable building of SDK</flag>
+	<flag name="udev">Controls installation of special USB udev rules.</flag>
+	<flag name="vboxwebsrv">Build and install the VirtualBox webservice</flag>
 </use>
 </pkgmetadata>

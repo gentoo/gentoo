@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>cjk</herd>
+<maintainer type="project">
+	<email>cjk@gentoo.org</email>
+	<name>Cjk</name>
+</maintainer>
 <longdescription lang="en">
 The m17n-contrib is a collection of contributed works to be used with the m17n library.
 </longdescription>
 </pkgmetadata>
-

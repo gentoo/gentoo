@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>cjk</herd>
+  <maintainer type="project">
+    <email>cjk@gentoo.org</email>
+    <name>Cjk</name>
+  </maintainer>
   <longdescription lang="en">
     M17N engine for IBus input platform. It allows input of many
     launguaes using the input table maps from m17n-db.

@@ -1,11 +1,14 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>hardened</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>swift@gentoo.org</email>
 		<name>Sven Vermeulen</name>
 		<description>Maintainer</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>hardened@gentoo.org</email>
+		<name>Gentoo Hardened</name>
 	</maintainer>
 	<longdescription lang="en">
 Supporting tools for IMA and EVM

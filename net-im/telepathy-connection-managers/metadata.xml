@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>gnome</herd>
+<maintainer type="project">
+  <email>gnome@gentoo.org</email>
+  <name>Gentoo GNOME Desktop</name>
+</maintainer>
 <use>
-  <flag name='gadu'>Enable Gadu Gadu protocol support.</flag>
-  <flag name='irc'>Enable Internet Relay Chat (IRC) support.</flag>
-  <flag name='meanwhile'>Enable meanwhile support for Sametime protocol.</flag>
-  <flag name='sip'>Enable SIP/SIMPLE messaging and calling.</flag>
-  <flag name='sipe'>Enable Sip Exchange Protocol.</flag>
-  <flag name='steam'>Enable Steam Chat support.</flag>
-  <flag name='xmpp'>Enable XMPP protocol handler (this is also Google Talk).</flag>
-  <flag name='yahoo'>Enable Yahoo! messaging support.</flag>
-  <flag name='zeroconf'>Enable Link-Local Messaging via the zeroconf or Bonjour protocol.</flag>
+  <flag name="gadu">Enable Gadu Gadu protocol support.</flag>
+  <flag name="irc">Enable Internet Relay Chat (IRC) support.</flag>
+  <flag name="meanwhile">Enable meanwhile support for Sametime protocol.</flag>
+  <flag name="sip">Enable SIP/SIMPLE messaging and calling.</flag>
+  <flag name="sipe">Enable Sip Exchange Protocol.</flag>
+  <flag name="steam">Enable Steam Chat support.</flag>
+  <flag name="xmpp">Enable XMPP protocol handler (this is also Google Talk).</flag>
+  <flag name="yahoo">Enable Yahoo! messaging support.</flag>
+  <flag name="zeroconf">Enable Link-Local Messaging via the zeroconf or Bonjour protocol.</flag>
 </use>
 </pkgmetadata>

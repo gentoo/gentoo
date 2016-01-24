@@ -1,7 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>video</herd>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+		<name>Gentoo Video project</name>
+	</maintainer>
 	<longdescription lang="en">
 		mkclean is a command line tool to clean and optimize Matroska (.mkv / .mka / .mks / .mk3d) and WebM (.webm / .weba) files that have already been muxed. It reorders the elements with the Cues at the front, so your Matroska files are ready to be streamed efficiently over the web. It also removes elements not found in the Matroska specs and the extra Meta Seek list of Clusters that some program add to their file. It can also optionally remux the Cluster blocks to start each boundary with a keyframe and the matching audio/subtitle blocks for that keyframe.
 	</longdescription>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="project">
     <email>xfce@gentoo.org</email>
     <name>XFCE Team</name>
   </maintainer>
   <use>
-    <flag name='deprecated'>Enable GTK+-2 instead of GTK+-3 because of external plugins like adobe-flash</flag>
-    <flag name='granite'>Enable support for the elementary library <pkg>dev-libs/granite</pkg></flag>
-    <flag name='zeitgeist'>Add support for Zeitgeist event tracking system</flag>
-    <flag name='webkit2'>Enable WebKit2 API that splits web content rendering and application UI into separate processes</flag>
+    <flag name="deprecated">Enable GTK+-2 instead of GTK+-3 because of external plugins like adobe-flash</flag>
+    <flag name="granite">Enable support for the elementary library <pkg>dev-libs/granite</pkg></flag>
+    <flag name="zeitgeist">Add support for Zeitgeist event tracking system</flag>
+    <flag name="webkit2">Enable WebKit2 API that splits web content rendering and application UI into separate processes</flag>
   </use>
 </pkgmetadata>

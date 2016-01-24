@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 <email>grknight@gentoo.org</email>
 </maintainer>
 <use>
@@ -20,4 +20,3 @@
    <flag name="zeromq">Enable <pkg>net-libs/zeromq</pkg> used for suggestion</flag>
 </use>
 </pkgmetadata>
-

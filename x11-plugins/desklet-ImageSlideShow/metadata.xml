@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
-	<longdescription lang="en">
+<longdescription lang="en">
 		A Control for gDesklets (gnome-extra/gdesklets-core).  Provides
 		functions to control an image slideshow and read select image
 		meta-data.  Requires the Python Imaging Library.
@@ -13,4 +12,3 @@
 		</maintainer>
 	</upstream>
 </pkgmetadata>
-

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>python</herd>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
 	<longdescription lang="en">Use class and function decorators - even in Python 2.3 - now with source debugging for generated code.</longdescription>
 	<upstream>
 		<remote-id type="pypi">DecoratorTools</remote-id>

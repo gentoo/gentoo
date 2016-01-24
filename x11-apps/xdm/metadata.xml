@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>x11</herd>
+  <maintainer type="project">
+    <email>x11@gentoo.org</email>
+    <name>X11</name>
+  </maintainer>
   <use>
-    <flag name='consolekit'>Enable native <pkg>sys-auth/consolekit</pkg> support</flag>
-    <flag name='xdm-auth'>Enable XDM-AUTHENTICATION-1 support</flag>
+    <flag name="consolekit">Enable native <pkg>sys-auth/consolekit</pkg> support</flag>
+    <flag name="xdm-auth">Enable XDM-AUTHENTICATION-1 support</flag>
   </use>
 </pkgmetadata>

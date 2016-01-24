@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-im</herd>
 	<longdescription lang="en">
 		Ayttm is a multi-protocol instant messaging client with some novel features
 		such as the ability to connect to livejournal.com and the ability to send
