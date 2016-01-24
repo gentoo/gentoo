@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Check for uncleaned imports"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE="test minimal"
 
 # r:Test::Builder -> Test-Simple
