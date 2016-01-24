@@ -17,7 +17,7 @@ RDEPEND="
 	$(add_kdeapps_dep kdebase-menu)
 	$(add_kdeapps_dep kdebase-menu-icons)
 	$(add_kdeapps_dep kdebugdialog)
-	$(add_kdeapps_dep kdesu)
+	$(add_kdeapps_dep kdesu '-handbook')
 	$(add_kdeapps_dep kdontchangethehostname)
 	$(add_kdeapps_dep keditfiletype)
 	$(add_kdeapps_dep kfile)
