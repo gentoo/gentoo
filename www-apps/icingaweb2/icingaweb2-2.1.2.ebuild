@@ -21,11 +21,10 @@ DEPEND=">=net-analyzer/icinga2-2.1.1
 		nginx? ( >=www-servers/nginx-1.7.0:* )"
 RDEPEND="${DEPEND}"
 
+want_apache2
+
 pkg_setup() {
-	if use apache2 ; then
-		want_apache2
-		depend.apache_pkg_setup
-	fi
+	depend.apache_pkg_setup
 
 	enewgroup icingaweb2
 	enewgroup icingacmd
