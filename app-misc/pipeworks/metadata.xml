@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-	</maintainer>
 	<longdescription>
 pipeworks is a benchmarking tool for pipelines that is very similar to pipemeter. It writes its stdin to its 
 stdout, while reporting the data flow rate to stderr. It features adjustable block size and bandwidth limiting 

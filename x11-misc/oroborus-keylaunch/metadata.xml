@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
-	<longdescription>
+<longdescription>
 		KeyLaunch is a small utility for binding commands to a hot key. It reads a configuration 
 		file in ~/.keylaunchrc. KeyLaunch uses Ctrl, Alt and Shift as modifier keys, 
 		the hotkey is up to the user.

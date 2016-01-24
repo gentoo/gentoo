@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
-    <email>maintainer-needed@gentoo.org</email>
-  </maintainer>
   <longdescription>Machine Emulator.  Supports emulation across several architectures.  Primarily for MIPS support, but other platform support coming soon.</longdescription>
   <upstream>
     <remote-id type="sourceforge">gxemul</remote-id>

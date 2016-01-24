@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
 <longdescription>The wwwoffled program is a simple proxy server with special features for use 
 with dial-up internet links. This means that it is possible to browse web pages and read them 
 without having to remain connected.

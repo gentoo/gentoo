@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
 <longdescription>
 gnokii provides tools and a user space driver for use with mobile phones.
 With gnokii you can do such things as make data calls, update your address book, 

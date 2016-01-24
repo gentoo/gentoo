@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-	</maintainer>
 	<longdescription>
 		Jigsaw Download, or jigdo for short, is a tool designed to ease the
 		distribution of very large files over the internet, for example CD or

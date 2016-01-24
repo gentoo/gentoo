@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-	</maintainer>
 	<longdescription lang="en">
 		mkcdtoc is a command-line utility to create toc-files for cdrdao. It
 		reads a list of audio files in simple text or M3U format. The program

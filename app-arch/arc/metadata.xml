@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
-    <email>maintainer-needed@gentoo.org</email>
-  </maintainer>
   <longdescription>A program that is able to create and extract files form the DOS .ARC file</longdescription>
   <upstream>
     <remote-id type="sourceforge">arc</remote-id>

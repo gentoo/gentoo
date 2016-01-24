@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-        <maintainer>
-                <email>maintainer-needed@gentoo.org</email>
-        </maintainer>
-	<longdescription lang="en">
+        <longdescription lang="en">
 		Distribution Cstools contains well-known character set conversion
 		program cstocs, and module Cz::Cstocs that makes it easy to do charset
 		conversions directly in Perl scripts, without spawning external process.

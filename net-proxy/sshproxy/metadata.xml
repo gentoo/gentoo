@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
-  <longdescription>
+<longdescription>
 sshproxy is a pure python implementation of an ssh proxy. It allows users to connect to remote sites without having to remember
 or even know the password or key of the remote sites. There are 2 possible scenarios which could possibly interest you.
 

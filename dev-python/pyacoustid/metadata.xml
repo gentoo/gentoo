@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
-    <email>maintainer-needed@gentoo.org</email>
-  </maintainer>
   <longdescription lang="en">
 Chromaprint and its associated Acoustid Web service make up a high-quality, open-source acoustic fingerprinting system. This package provides Python bindings for both the fingerprinting algorithm library, which is written in C but portable, and the Web service, which provides fingerprint lookups.
 	</longdescription>

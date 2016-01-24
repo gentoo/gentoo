@@ -3,9 +3,6 @@
 <pkgmetadata>
 	<herd>proxy-maintainers</herd>
 	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-	</maintainer>
-	<maintainer>
 		<email>jnrowe@gmail.com</email>
 		<name>James Rowe</name>
 	</maintainer>

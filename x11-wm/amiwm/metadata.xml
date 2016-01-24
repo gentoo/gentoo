@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
-	<longdescription>
+<longdescription>
 	amiwm is an X window manager that tries to make your display look and 
 	feel like an Amiga Workbench screen. It is fully functional and can do 
 	all the usual window manager stuff, like moving and resizing windows.

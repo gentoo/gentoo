@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-	</maintainer>
 	<longdescription lang="en">This project aims to provide an easy way to change the appearance of
 		tint2. Through an easy-to-use graphical user interface, you can generate
 		configs and apply to them tint2.</longdescription>
