@@ -15,6 +15,7 @@
 		<flag name="avformat">Enables libformat support for reading and writing various media containers. libavformat is part of FFmpeg.</flag>
 		<flag name="bluray">Enables libbluray for Blu-ray disc support.</flag>
 		<flag name="chromaprint">Enables libchromaprint for Chromaprint based audio fingerprinter support.</flag>
+		<flag name="chromecast">Enable experimental support for Google Chromecast.</flag>
 		<flag name="dc1394">Enables IIDC cameras support.</flag>
 		<flag name="dirac">Enable Dirac video support (an advanced royalty-free video compression format) via the reference library: dirac.</flag>
 		<flag name="directx">Enable Win32 DirectX support.</flag>
@@ -40,6 +41,7 @@
 		<flag name="macosx-audio">Enables Mac OS X audio module.</flag>
 		<flag name="macosx-dialog-provider">Enables Mac OS X dialog module.</flag>
 		<flag name="macosx-eyetv">Enables Mac OS X EyeTV (TNT Tuner) module.</flag>
+		<flag name="macosx-notifications">Enables Mac OS X notifications module (formerly growl).</flag>
 		<flag name="macosx-quartztext">Enables Mac OS X quartz text module.</flag>
 		<flag name="macosx-qtkit">Enables Mac OS X qtkit module: qtcapture (video) and qtsound (audio) module.</flag>
 		<flag name="macosx-vout">Enables Mac OS X video output module.</flag>
