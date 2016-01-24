@@ -6,7 +6,7 @@
     parallel, visualization tool for visualizing data defined on two-
     and three-dimensional structured and unstructured meshes.
   </longdescription>
-  <maintainer>
+  <maintainer type="person">
     <email>slis@gentoo.org</email>
   </maintainer>
   <use>

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
 	<email>tetromino@gentoo.org</email>
 	<name>Alexandre Rostovtsev</name>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>yngwin@gentoo.org</email>
     <name>Ben de Groot</name>
 	<description>Secondary maintainer (x11 team is primary)</description>
   </maintainer>
-  <maintainer>
+  <maintainer type="project">
     <email>x11@gentoo.org</email>
     <name>X11</name>
   </maintainer>

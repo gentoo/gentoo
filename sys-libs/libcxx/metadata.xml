@@ -3,11 +3,11 @@
 <pkgmetadata>
   <!-- BSD is here because the plan is to have libc++ as the standard C++
 	   library with clang. A llvm herd would make a lot of sense here too -->
-  <maintainer>
+  <maintainer type="person">
     <email>aballier@gentoo.org</email>
     <name>Alexis Ballier</name>
   </maintainer>
-  <maintainer>
+  <maintainer type="project">
     <email>bsd@gentoo.org</email>
     <name>BSD Project</name>
   </maintainer>

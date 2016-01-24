@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 	<email>gregkh@gentoo.org</email>
 	<name>Greg Kroah-Hartman</name>
 </maintainer>
-<maintainer>
+<maintainer type="person">
 	<email>chithanh@gentoo.org</email>
 	<name>Chí-Thanh Christopher Nguyễn</name>
 </maintainer>
-<maintainer>
+<maintainer type="person">
 	<email>zerochaos@gentoo.org</email>
 	<name>Rick Farina</name>
 </maintainer>
-<maintainer>
+<maintainer type="project">
 	<email>kernel@gentoo.org</email>
 	<name>Gentoo Kernel Project</name>
 </maintainer>

@@ -4,10 +4,10 @@
   <use>
     <flag name="legacy">Enable or disable building legacy code (3.0 compatible)</flag>
   </use>
-  <maintainer>
+  <maintainer type="person">
     <email>slis@gentoo.org</email>
   </maintainer>
-  <maintainer>
+  <maintainer type="project">
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>

@@ -4,11 +4,11 @@
 	<upstream>
 		<remote-id type="github">cmadsen/vldocking</remote-id>
 	</upstream>
-	<maintainer>
+	<maintainer type="person">
 		<email>monsieurp@gentoo.org</email>
 		<name>Patrice Clement</name>
 	</maintainer>
-<maintainer>
+<maintainer type="project">
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>

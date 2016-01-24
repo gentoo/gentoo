@@ -35,7 +35,7 @@
 		<flag name="yahoo">Enable yahoo protocol support.</flag>
 		<flag name="zeroconf">Enable Link-Local Messaging via the bonjour protocol.</flag>
 	</use>
-	<maintainer>
+	<maintainer type="project">
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>

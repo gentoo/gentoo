@@ -4,7 +4,7 @@
 	<use>
 		<flag name="qml">Enable QML support in lupdate</flag>
 	</use>
-	<maintainer>
+	<maintainer type="project">
 		<email>qt@gentoo.org</email>
 		<name>Gentoo Qt Project</name>
 	</maintainer>

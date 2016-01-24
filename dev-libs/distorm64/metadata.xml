@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>patrick@gentoo.org</email>
 		<name>Patrick Lauer</name>
 		<description>Maintainer</description>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>ikelos@gentoo.org</email>
 		<name>Mike Auty</name>
 		<description>Maintainer</description>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>slyfox@gentoo.org</email>
 		<name>Sergei Trofimovich</name>
 	</maintainer>

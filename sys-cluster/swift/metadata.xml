@@ -8,11 +8,11 @@
     <flag name="object">adds swift object support</flag>
     <flag name="proxy">adds swift proxy support</flag>
   </use>
-  <maintainer>
+  <maintainer type="person">
     <email>prometheanfire@gentoo.org</email>
     <name>Matthew Thode</name>
   </maintainer>
-  <maintainer>
+  <maintainer type="project">
     <email>openstack@gentoo.org</email>
     <name>Openstack</name>
   </maintainer>

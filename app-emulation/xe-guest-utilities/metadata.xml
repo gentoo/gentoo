@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 	<email>bugs@camisa.org</email>
 	<name>Christopher J. Camisa</name>
 	<description>proxy maintainer</description>
 </maintainer>
-<maintainer>
+<maintainer type="person">
 	<email>robbat2@gentoo.org</email>
 </maintainer>
-<maintainer>
+<maintainer type="project">
 	<email>openstack@gentoo.org</email>
 	<name>Openstack</name>
 </maintainer>
-<maintainer>
+<maintainer type="project">
 	<email>virtualization@gentoo.org</email>
 	<name>Gentoo Virtualization Project</name>
 </maintainer>
-<maintainer>
+<maintainer type="project">
 	<email>xen@gentoo.org</email>
 	<name>Gentoo Xen Project</name>
 </maintainer>

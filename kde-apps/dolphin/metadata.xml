@@ -4,7 +4,7 @@
 	<use>
 		<flag name="thumbnail">Enables video thumbnail generation</flag>
 	</use>
-	<maintainer>
+	<maintainer type="project">
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>

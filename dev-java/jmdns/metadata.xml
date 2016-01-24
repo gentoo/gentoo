@@ -6,7 +6,7 @@
 		It supports service discovery and service registration.
 		It is fully interoperable with Apple's Rendezvous.
 	</longdescription>
-	<maintainer>
+	<maintainer type="project">
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>

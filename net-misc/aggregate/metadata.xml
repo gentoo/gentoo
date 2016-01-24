@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
     <email>robbat2@gentoo.org</email>
 </maintainer>
 <longdescription>aggregate is a tool for aggregating CIDR networks. Input is read from stdin and output is written to stdout. It understands IPv4 networks represented as network/prefix, network/netmask and start_address - end_address. It is able to read input in any one of these formats and output in the same or a different format.</longdescription>
