@@ -1,0 +1,82 @@
+* Fix broken buildsystem
+* Fix ncurses underlinking caused by missing "-ltinfo" in $LIBS
+https://bugs.gentoo.org/show_bug.cgi?id=561718
+
+--- bwm-ng-0.6.1/configure.ac
++++ bwm-ng-0.6.1/configure.ac
+@@ -3,7 +3,7 @@
+ 
+ AC_INIT([bwm-ng],[0.6.1],[bwmng@gropp.org],[bwm-ng])
+ AC_CONFIG_SRCDIR(src/bwm-ng.c)
+-AM_INIT_AUTOMAKE([gnu])
++AM_INIT_AUTOMAKE([gnu subdir-objects])
+ AC_CONFIG_HEADERS(config.h)
+ AC_CONFIG_MACRO_DIR(./)
+ AC_LANG([C])
+@@ -28,44 +28,12 @@
+ AC_CHECK_TYPES(unsigned long long)
+ 
+ # Checks for libraries.
+-CURSES_CHECKED="0"
++AC_ARG_ENABLE([ncurses],
++	AS_HELP_STRING([--enable-ncurses], [Enable feature ncurses]))
+ 
+-AC_ARG_WITH([curses],AS_HELP_STRING([--with-curses],[with curses (ARG=PATH)]),[
+-if [ test $withval != "no" ]; then
+-    OLD_CPPFLAGS=$CPPFLAGS
+-    if [ test $withval != "yes" ]; then
+-        CPPFLAGS="$CPPFLAGS -I$withval"
+-    fi
+-    AC_CHECK_LIB([curses],[newterm,timeout],,[ CPPFLAGS=$OLD_CPPFLAGS ])
+-    CURSES_CHECKED="1"
+-else
+-    CURSES_CHECKED="1"
+-fi  
+-])
+-
+-
+-if [ test $CURSES_CHECKED != "1" ]; then
+-AC_ARG_WITH([ncurses],AS_HELP_STRING([--with-ncurses],[prefer ncurses over curses (ARG=PATH)]),[
+-if [ test $withval != "no" ]; then
+-    OLD_CPPFLAGS=$CPPFLAGS
+-    if [ test $withval != "yes" ]; then
+-        CPPFLAGS="$CPPFLAGS -I$withval"
+-    fi
+-    AC_CHECK_LIB([ncurses],[newterm,timeout],,[ CPPFLAGS=$OLD_CPPFLAGS ])
+-    CURSES_CHECKED="1"
+-else
+-    CURSES_CHECKED="1"
+-fi
++AS_IF([test "x$enable_ncurses" != "xno"], [
++	PKG_CHECK_MODULES([NCURSES], [ncurses])
+ ])
+-fi
+-
+-
+-
+-if [ test $CURSES_CHECKED != "1" ]; then
+-AC_CHECK_LIB([curses],[initscr,timeout],,[
+-	AC_CHECK_LIB([ncurses],[newterm,timeout])
+-])
+-fi
+ 
+ AC_CHECK_FUNCS([wattron])
+ AC_CHECK_FUNCS([curs_set])
+--- bwm-ng-0.6.1/src/Makefile.am
++++ bwm-ng-0.6.1/src/Makefile.am
+@@ -2,12 +2,10 @@
+ 
+ bin_PROGRAMS = bwm-ng
+ 
+-bwm_ng_SOURCES = bwm-ng.c process.c output.c options.c help.c curses_tools.c
++bwm_ng_SOURCES = bwm-ng.c process.c output.c options.c help.c curses_tools.c input/retrieve.c input/devstat.c input/libkstat.c input/netstat.c input/proc_net_dev.c input/sysctl.c input/ioservice.c input/libstatgrab.c input/proc_diskstats.c input/win32.c input/getifaddrs.c
+ 
+-EXTRA_bwm_ng_SOURCES = input/retrieve.c input/devstat.c input/libkstat.c input/netstat.c input/proc_net_dev.c input/sysctl.c input/ioservice.c input/libstatgrab.c input/proc_diskstats.c input/win32.c input/getifaddrs.c
+-
+-bwm_ng_LDADD = retrieve.$(OBJEXT) $(INPUT_SYSTEM)
+-bwm_ng_DEPENDENCIES = retrieve.$(OBJEXT) $(INPUT_SYSTEM)
++bwm_ng_CPPFLAGS = @NCURSES_CFLAGS@
++bwm_ng_LDADD = @NCURSES_LIBS@
+ 
+ noinst_HEADERS = bwm-ng.h process.h output.h options.h help.h curses_tools.h types.h defines.h global_vars.h input/devstat.h input/libkstat.h input/netstat.h input/proc_net_dev.h input/sysctl.h input/ioservice.h input/libstatgrab.h input/proc_diskstats.h input/retrieve.h input/win32.h input/getifaddrs.h
+ 
