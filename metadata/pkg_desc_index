@@ -5148,7 +5148,7 @@ dev-perl/Audio-Mixer 0.700.0-r1: Perl extension for Sound Mixer control
 dev-perl/Audio-Musepack 1.0.1: An OO interface to Musepack file information and APE tag fields
 dev-perl/Audio-Scan 0.930.0-r1: Fast C metadata and tag reader for all common audio file formats
 dev-perl/Audio-WMA 1.300.0: extension for reading WMA/ASF metadata
-dev-perl/Audio-Wav 0.130.0-r1 0.140.0: Modules for reading & writing Microsoft WAV files
+dev-perl/Audio-Wav 0.140.0: Modules for reading & writing Microsoft WAV files
 dev-perl/Authen-DigestMD5 0.40.0-r1: SASL DIGEST-MD5 authentication (RFC2831)
 dev-perl/Authen-Htpasswd 0.171.0-r1: interface to read and modify Apache .htpasswd files
 dev-perl/Authen-Libwrap 0.220.0-r1: A Perl access to the TCP Wrappers interface
@@ -5167,12 +5167,12 @@ dev-perl/B-Utils 0.270.0: Helper functions for op tree manipulation
 dev-perl/BSD-Resource 1.290.800: Perl module for BSD process resource limit and priority functions
 dev-perl/BZ-Client 1.72.0: A client for the Bugzilla web services API.
 dev-perl/Benchmark-Timer 0.710.700: Perl code benchmarking tool
-dev-perl/BerkeleyDB 0.540.0 0.550.0: This module provides Berkeley DB interface for Perl
+dev-perl/BerkeleyDB 0.550.0: This module provides Berkeley DB interface for Perl
 dev-perl/Bio-ASN1-EntrezGene 1.91.0-r1: Regular expression-based Perl Parser for NCBI Entrez Gene
 dev-perl/Bio-Das 1.170.0-r1: Interface to Distributed Annotation System
 dev-perl/Bio-Graphics 2.390.0: Generate images from Bio::Seq objects for visualization purposes
 dev-perl/Bio-SamTools 1.410.0 1.420.0: Read SAM/BAM database files
-dev-perl/Bit-Vector 7.200.0-r1 7.400.0: Efficient bit vector, set of integers and big int math library
+dev-perl/Bit-Vector 7.400.0: Efficient bit vector, set of integers and big int math library
 dev-perl/Bit-Vector-Minimal 1.300.0-r1: Object-oriented wrapper around vec()
 dev-perl/Boulder 1.300.0-r1: An API for hierarchical tag/value structures
 dev-perl/Business-FedEx-DirectConnect 1.10.0-r1: Interface to FedEx Ship Manager Direct
@@ -5210,10 +5210,10 @@ dev-perl/CSS-Squish 0.100.0-r1: Compact many CSS files into one big file
 dev-perl/Cache 2.40.0-r1: the Cache interface
 dev-perl/Cache-Cache 1.60.0-r1: Generic cache interface and implementations
 dev-perl/Cache-FastMmap 1.400.0: Uses an mmaped file to act as a shared memory interprocess cache
-dev-perl/Cache-Memcached 1.290.0-r1 1.300.0-r1: Perl API for memcached
+dev-perl/Cache-Memcached 1.300.0-r1: Perl API for memcached
 dev-perl/Cache-Memcached-Fast 0.230.0: Perl client for memcached, in C language
 dev-perl/Cache-Simple-TimedExpiry 0.270.0-r1: A lightweight cache with timed expiration
-dev-perl/Cairo 1.103.0 1.106.0: Perl interface to the cairo library
+dev-perl/Cairo 1.106.0: Perl interface to the cairo library
 dev-perl/Calendar-Simple 1.210.0-r1: Perl extension to create simple calendars
 dev-perl/Canary-Stability 2006: Canary to check perl compatibility for schmorp's modules
 dev-perl/Capture-Tiny 0.300.0: Capture STDOUT and STDERR from Perl, XS or external programs
@@ -5253,7 +5253,7 @@ dev-perl/Class-Load-XS 0.60.0-r1: XS implementation of parts of Class::Load
 dev-perl/Class-MakeMethods 1.10.0-r1: Automated method creation module for Perl
 dev-perl/Class-Member 1.600.0-r1: Class::Member - A set of modules to make the module developement easier
 dev-perl/Class-Method-Modifiers 2.30.0: provides Moose-like method modifiers
-dev-perl/Class-MethodMaker 2.210.0 2.240.0: Create generic methods for OO Perl
+dev-perl/Class-MethodMaker 2.240.0: Create generic methods for OO Perl
 dev-perl/Class-Mix 0.5.0-r1: dynamic class mixing
 dev-perl/Class-ReturnValue 0.550.0-r1: A return-value object that lets you treat it as as a boolean, array or object
 dev-perl/Class-Singleton 1.500.0: Implementation of a Singleton class
@@ -5268,7 +5268,7 @@ dev-perl/Class-WhiteHole 0.40.0-r1: base class to treat unhandled method calls a
 dev-perl/Class-XPath 1.400.0-r1: adds xpath matching to object trees
 dev-perl/Class-XSAccessor 1.190.0: Generate fast XS accessors without runtime compilation
 dev-perl/Clipboard 0.130.0-r1: Copy and paste with any OS
-dev-perl/Clone 0.370.0 0.380.0: Recursively copy Perl datatypes
+dev-perl/Clone 0.380.0: Recursively copy Perl datatypes
 dev-perl/Color-Calc 1.73.0: Simple calculations with RGB colors
 dev-perl/Color-Library 0.21.0-r1: An easy-to-use and comprehensive named-color library
 dev-perl/Compress-Bzip2 2.170.0 2.220.0 2.240.0: Interface to Bzip2 compression library
@@ -5311,23 +5311,23 @@ dev-perl/Crypt-PasswdMD5 1.400.0: Provides interoperable MD5-based crypt() funct
 dev-perl/Crypt-RC4 2.020.0-r1: Implements the RC4 encryption algorithm
 dev-perl/Crypt-RIPEMD160 0.50.0-r1: Crypt::RIPEMD160 module for perl
 dev-perl/Crypt-Random-Source 0.70.0-r1: Get weak or strong random data from pluggable sources
-dev-perl/Crypt-Rijndael 1.110.0-r1 1.130.0: Crypt::CBC compliant Rijndael encryption module
+dev-perl/Crypt-Rijndael 1.130.0: Crypt::CBC compliant Rijndael encryption module
 dev-perl/Crypt-SMIME 0.150.0-r1 0.160.0-r1: S/MIME message signing, verification, encryption and decryption
-dev-perl/Crypt-SSLeay 0.640.0 0.720.0-r1: OpenSSL support for LWP
+dev-perl/Crypt-SSLeay 0.720.0-r1: OpenSSL support for LWP
 dev-perl/Crypt-Simple 0.60.0-r1: Crypt::Simple - encrypt stuff simply
 dev-perl/Crypt-SmbHash 0.120.0-r1: LM/NT hashing, for Samba's smbpasswd entries
 dev-perl/Crypt-Twofish 2.170.0-r1: The Twofish Encryption Algorithm
 dev-perl/Crypt-URandom 0.340.0: Provide non blocking randomness
 dev-perl/Crypt-X509 0.510.0: Parse a X.509 certificate
 dev-perl/CryptX 0.25.0: Self-contained crypto toolkit
-dev-perl/Curses 1.280.0-r1 1.320.0 1.330.0: Curses interface modules for Perl
+dev-perl/Curses 1.320.0 1.330.0: Curses interface modules for Perl
 dev-perl/Curses-UI 0.960.900-r1: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interface design on the console in Perl
 dev-perl/Cwd-Guard 0.40.0: Temporary changing working directory (chdir)
 dev-perl/DBD-Pg 2.19.3-r1 3.4.2 3.5.3: PostgreSQL database driver for the DBI module
 dev-perl/DBD-SQLite 1.350.0-r1 1.480.0: Self Contained RDBMS in a DBI Driver
-dev-perl/DBD-mysql 4.31.0-r1 4.32.0-r1: The Perl DBD:mysql Module
-dev-perl/DBI 1.628.0 1.634.0: Database independent interface for Perl
+dev-perl/DBD-mysql 4.32.0-r1: The Perl DBD:mysql Module
+dev-perl/DBI 1.634.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r1: Interactive command shell for the DBI
 dev-perl/DBICx-TestDatabase 0.40.0: create a temporary database from a DBIx::Class::Schema
 dev-perl/DBIx-Class 0.82.700: Extensible and flexible object <-> relational mapper
@@ -5381,7 +5381,7 @@ dev-perl/Date-Leapyear 1.720.0-r1: Simple Perl module that tracks Gregorian leap
 dev-perl/Date-Pcalc 6.100.0-r1: Gregorian calendar date calculations
 dev-perl/Date-Simple 3.30.0-r1: A simple date object
 dev-perl/DateManip 6.510.0 6.520.0: Perl date manipulation routines
-dev-perl/DateTime 1.030.0 1.200.0 1.210.0: A date and time object
+dev-perl/DateTime 1.200.0 1.210.0: A date and time object
 dev-perl/DateTime-Event-ICal 0.120.0 0.130.0: Perl DateTime extension for computing rfc2445 recurrences
 dev-perl/DateTime-Event-Recurrence 0.160.0 0.180.0: DateTime::Set extension for create basic recurrence sets
 dev-perl/DateTime-Format-Builder 0.810.0-r1: Create DateTime parser classes and objects
@@ -5424,7 +5424,7 @@ dev-perl/Devel-StackTrace 2.0.0: An object representing a stack trace
 dev-perl/Devel-StackTrace-AsHTML 0.140.0-r1: Displays stack trace in HTML
 dev-perl/Devel-Symdump 2.150.0: Dump symbol names or the symbol table
 dev-perl/Device-SerialPort 1.40.0-r1: A Serial port Perl Module
-dev-perl/Digest-CRC 0.180.0-r1 0.210.0: Generic CRC function
+dev-perl/Digest-CRC 0.210.0: Generic CRC function
 dev-perl/Digest-HMAC 1.30.0-r1: Keyed Hashing for Message Authentication
 dev-perl/Digest-JHash 0.70.0-r1: Perl extension for 32 bit Jenkins Hashing Algorithm
 dev-perl/Digest-MD4 1.900.0-r1: MD4 message digest algorithm
@@ -5974,7 +5974,7 @@ dev-perl/Parse-Syslog 1.100.0-r1: Parse::Syslog - Parse Unix syslog files
 dev-perl/Parse-Yapp 1.50.0-r1: Compiles yacc-like LALR grammars to generate Perl OO parser modules
 dev-perl/Passwd-Linux 1.200.0-r1: Perl module for manipulating the passwd and shadow files
 dev-perl/PatchReader 0.9.6-r1: Module for reading diff-compatible patch files
-dev-perl/Path-Class 0.320.0 0.350.0: Cross-platform path specification manipulation
+dev-perl/Path-Class 0.350.0: Cross-platform path specification manipulation
 dev-perl/Path-Tiny 0.44.0 0.61.0: File path utility
 dev-perl/Pegex 0.600.0: Acmeist PEG Parser Framework
 dev-perl/Period 1.240.0-r1 1.250.0: Time period Perl module
@@ -6262,7 +6262,7 @@ dev-perl/Tk-JPEG-Lite 2.14.30-r1: lite JPEG loader for Tk::Photo
 dev-perl/Tk-TableMatrix 1.230.0-r1: Perl module for Tk-TableMatrix
 dev-perl/Tree-DAG_Node 1.60.0-r1 1.240.0 1.270.0: (Super)class for representing nodes in a tree
 dev-perl/Tree-Simple 1.180.0-r1 1.250.0: A simple tree object
-dev-perl/Try-Tiny 0.180.0 0.190.0 0.220.0: Minimal try/catch with proper localization of source /home/mgorny/repos/gentoo/dev-perl/Try-Tiny/Try-Tiny-0.220.0.ebuild
+dev-perl/Try-Tiny 0.220.0: Minimal try/catch with proper localization of source /home/mgorny/repos/gentoo/dev-perl/Try-Tiny/Try-Tiny-0.220.0.ebuild
 dev-perl/Type-Tiny 1.0.5: tiny, yet Moo(se)-compatible type constraint
 dev-perl/Types-Serialiser 1.0.0: simple data types for common serialisation formats
 dev-perl/UNIVERSAL-can 1.201.207.260-r1 1.201.401.240 1.201.403.280: Hack around people calling UNIVERSAL::can() as a function
