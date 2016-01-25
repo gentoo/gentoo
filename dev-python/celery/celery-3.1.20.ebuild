@@ -21,15 +21,12 @@ IUSE="doc examples redis sqs test yaml zeromq"
 
 RDEPEND="
 	<dev-python/kombu-3.1[${PYTHON_USEDEP}]
-	>=dev-python/kombu-3.0.25[${PYTHON_USEDEP}]
+	>=dev-python/kombu-3.0.33[${PYTHON_USEDEP}]
 	>=dev-python/anyjson-0.3.3[${PYTHON_USEDEP}]
-	>=dev-python/billiard-3.3.0.20[${PYTHON_USEDEP}]
+	>=dev-python/billiard-3.3.0.22[${PYTHON_USEDEP}]
 	<dev-python/billiard-3.4[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/greenlet[${PYTHON_USEDEP}]
-	sqs? ( >=dev-python/boto-2.13.3[${PYTHON_USEDEP}] )
-	zeromq? ( >=dev-python/pyzmq-13.1.0[${PYTHON_USEDEP}] )
-	yaml? ( >=dev-python/pyyaml-3.10[${PYTHON_USEDEP}] )
 "
 
 DEPEND="
@@ -42,10 +39,11 @@ DEPEND="
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
 		>=dev-python/python-dateutil-2.1[${PYTHON_USEDEP}]
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
-		redis? (
-			dev-python/redis-py[${PYTHON_USEDEP}]
-			>=dev-db/redis-2.8.0
-		)
+		dev-python/redis-py[${PYTHON_USEDEP}]
+		>=dev-db/redis-2.8.0
+		>=dev-python/boto-2.13.3[${PYTHON_USEDEP}]
+		>=dev-python/pyzmq-13.1.0[${PYTHON_USEDEP}]
+		>=dev-python/pyyaml-3.10[${PYTHON_USEDEP}]
 	)
 	doc? (
 		dev-python/docutils[${PYTHON_USEDEP}]
@@ -56,7 +54,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/celery-docs.patch
-	"${FILESDIR}"/${PN}-3.1.11-test.patch
+	"${FILESDIR}"/${P}-test.patch
 )
 
 # testsuite needs it own source
@@ -70,7 +68,7 @@ python_compile_all() {
 }
 
 python_test() {
-	nosetests || die "Tests failed with ${EPYTHON}"
+	nosetests --verbose || die "Tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
@@ -85,4 +83,27 @@ python_install_all() {
 	newbashcomp extra/bash-completion/celery.bash ${PN}
 
 	distutils-r1_python_install_all
+}
+
+pkg_postinst() {
+	optfeature "zookeper support" dev-python/kazoo
+	optfeature "msgpack support" dev-python/msgpack
+	#optfeature "rabbitmq support" dev-python/librabbitmq
+	#optfeature "slmq support" dev-python/softlayer_messaging
+	optfeature "eventlet support" dev-python/eventlet
+	#optfeature "couchbase support" dev-python/couchbase
+	optfeature "redis support" dev-db/redis dev-python/redis-py
+	optfeature "couchdb support" dev-db/couchdb dev-python/couchdb-python
+	optfeature "gevent support" dev-python/gevent
+	optfeature "auth support" dev-python/pyopenssl
+	optfeature "pyro support" dev-python/pyro:4
+	optfeature "yaml support" dev-python/pyyaml
+	optfeature "beanstalk support" dev-python/beanstalkc
+	optfeature "memcache support" dev-python/pylibmc
+	#optfeature "threads support" dev-python/threadpool
+	optfeature "mongodb support" dev-python/pymongo
+	optfeature "zeromq support" dev-python/pyzmq
+	optfeature "sqlalchemy support" dev-python/sqlalchemy
+	optfeature "sqs support" dev-python/boto
+	#optfeature "cassandra support" dev-python/pycassa
 }
