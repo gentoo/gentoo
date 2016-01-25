@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -174,7 +174,8 @@ multilib_src_configure() {
 	myconf+=(
 		$(use_enable gpl)
 		$(use_enable gpl version3)
-		--enable-avfilter
+		# It is a security issue and will be removed in the next major version
+		--disable-protocol=concat
 	)
 
 	# enabled by default
