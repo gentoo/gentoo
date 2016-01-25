@@ -6,14 +6,12 @@ EAPI=5
 VIM_VERSION="7.4"
 inherit eutils vim-doc flag-o-matic versionator bash-completion-r1 prefix
 
-MY_PV=${PV//./-}
-
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/vim/vim.git"
-	EGIT_CHECKOUT_DIR=${WORKDIR}/vim-${MY_PV}
+	EGIT_CHECKOUT_DIR=${WORKDIR}/vim-${PV}
 else
-	SRC_URI="https://github.com/vim/vim/archive/v${MY_PV}.tar.gz -> vim-${PV}.tar.gz
+	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> vim-${PV}.tar.gz
 		https://dev.gentoo.org/~radhermit/vim/vim-7.4.542-gentoo-patches.tar.bz2"
 	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
@@ -28,7 +26,7 @@ IUSE="nls acl minimal"
 DEPEND="sys-devel/autoconf"
 PDEPEND="!minimal? ( app-vim/gentoo-syntax )"
 
-S=${WORKDIR}/vim-${MY_PV}
+S=${WORKDIR}/vim-${PV}
 
 pkg_setup() {
 	# people with broken alphabets run into trouble. bug 82186.
