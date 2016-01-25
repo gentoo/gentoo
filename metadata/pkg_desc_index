@@ -7498,7 +7498,7 @@ dev-python/pyclimate 1.2.2-r1 1.2.2-r2: Climate Data Analysis Module for Python
 dev-python/pycmd 1.1 1.2: pycmd: tools for managing/searching Python related files
 dev-python/pycollada 0.4 9999: python library for reading and writing collada documents
 dev-python/pyconstruct 2.5.2: A powerful declarative parser for binary data
-dev-python/pycountry 1.12 1.13 1.14 1.18: ISO country, subdivision, language, currency, script definitions and their translations
+dev-python/pycountry 1.18 1.19: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.10 2.14: C parser and AST generator written in Python
 dev-python/pycrypto 2.6.1 2.6.1-r1: Python Cryptography Toolkit
 dev-python/pycryptopp 0.6.0: Python wrappers for a few algorithms from the Crypto++ library
@@ -12888,7 +12888,7 @@ media-sound/gnome-sound-recorder 3.16.0 3.18.2-r1: Simple sound recorder
 media-sound/gnomoradio 0.15.1: Finds, fetches, shares, and plays freely licensed music
 media-sound/gnump3d 3.0-r1 3.0-r2: A streaming server for MP3, OGG vorbis and other streamable files
 media-sound/gom 0.29.103-r1: Console Mixer Program for OSS
-media-sound/google-musicmanager 1.0.129.6633_beta 1.0.182.3607_beta 1.0.196.8837_beta 1.0.221.5230_beta: Google Music Manager is a application for adding music to your Google Music library
+media-sound/google-musicmanager 1.0.129.6633_beta 1.0.221.5230_beta 1.0.243.1116_beta: An application for adding music to your Google Music library
 media-sound/gpodder 3.6.0 3.7.0 3.8.3: A free cross-platform podcast aggregator
 media-sound/gqmpeg 0.91.1: front end to various audio players, including mpg123
 media-sound/gqradio 1.9.2: An FM radio tuner app from the people who brought you GQmpeg
