@@ -1188,7 +1188,7 @@ app-emacs/muse 3.20: Muse-mode is similar to EmacsWikiMode, but more focused on 
 app-emacs/nagios-mode 0.3: Major mode for editing Nagios configuration files
 app-emacs/navi2ch 1.8.3-r1 1.8.4: A navigator for the Japanese textboard 2ch
 app-emacs/nxml-docbook5-schemas 20080922: Add support for DocBook 5 schemas to NXML
-app-emacs/nxml-gentoo-schemas 20111129 20150428: Extension for nxml-mode with Gentoo-specific schemas
+app-emacs/nxml-gentoo-schemas 20111129 20150428 20160125: Extension for nxml-mode with Gentoo-specific schemas
 app-emacs/nxml-libvirt-schemas 0.9.7 1.2.1: Extension for nxml-mode with libvirt schemas
 app-emacs/nxml-svg-schemas 1.1.20081123: Extension for nxml-mode with SVG 1.1 schemas
 app-emacs/ocaml-mode 3.12.1 3.12.1-r1 4.00.1: Emacs mode for OCaml
@@ -3115,7 +3115,7 @@ dev-go/go-spew 0_pre20150619 9999: Implements a deep pretty printer for Go data 
 dev-go/go-sys 0_pre20150729 9999: Go packages for low-level interaction with the operating system
 dev-go/go-text 0_pre20150806 9999: Go text processing support
 dev-go/go-tools 0_pre20150805 0_pre20150823-r1 0_pre20150902 0_pre20160121 9999: Go Tools
-dev-go/godep 29 49 50 9999: dependency tool for go
+dev-go/godep 29 49 50 51 9999: dependency tool for go
 dev-go/gom 0_pre20151110: Go Dependency management system similar to bundle for ruby
 dev-go/sanitized-anchor-name 0_pre20150822 9999: A Go function to provide sanitized anchor names
 dev-go/sarama 1.4.3 9999: Sarama is a Go library for Apache Kafka
@@ -13291,7 +13291,7 @@ media-video/kffmpegthumbnailer 1.1.0-r3: KDE thumbnailer based on ffmpegthumbnai
 media-video/kino 1.3.4: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.11.3d-r3: Video player plugin for Konqueror and basic MPlayer frontend
 media-video/kplayer 0.7.2-r1: KPlayer is a KDE media player based on mplayer
-media-video/libav 9.14 9.17 10.5 10.9999 11.3 11.3-r1 11.9999 9999: Complete solution to record, convert and stream audio and video
+media-video/libav 9.14 9.17 11.3 11.3-r1 11.4 11.9999 9999: Complete solution to record, convert and stream audio and video
 media-video/lives 1.4.6: LiVES is a Video Editing System
 media-video/loopy 0.5.3: Simple video player for KDE
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
