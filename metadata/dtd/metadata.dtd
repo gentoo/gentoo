@@ -10,8 +10,10 @@
 
   <!-- One tag for each maintainer of a package, multiple allowed-->
   <!ELEMENT maintainer ( email, (description| name)* )>
-  <!-- type attribute determines whether the maintainer is a person or a project -->
-  <!ATTLIST maintainer type (person|project) #REQUIRED>
+  <!-- type attribute determines whether the maintainer is a person or a project.
+	 Unknown is added to handle <maintainer/>s in <upstream/>s. Using it (or no
+	 explicit type) for Gentoo maintainers is prohibited. -->
+  <!ATTLIST maintainer type (person|project|unknown) "unknown">
 
   <!-- Natural name for package, example: LibreOffice (for app-office/libreoffice) -->
   <!ELEMENT natural-name (#PCDATA) >
