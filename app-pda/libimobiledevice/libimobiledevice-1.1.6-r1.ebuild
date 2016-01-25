@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -51,8 +51,13 @@ src_configure() {
 		popd >/dev/null || die
 	}
 
+	do_configure_python() {
+		# Bug 567916
+		PYTHON_LDFLAGS="$(python_get_LIBS)" do_configure "$@"
+	}
+
 	do_configure --without-cython
-	use python && python_foreach_impl do_configure
+	use python && python_foreach_impl do_configure_python
 }
 
 src_compile() {
