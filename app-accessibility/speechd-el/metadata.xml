@@ -4,15 +4,15 @@
 <maintainer type="person">
 <email>williamh@gentoo.org</email>
 </maintainer>
- <maintainer type="project">
+<maintainer type="project">
   <email>accessibility@gentoo.org</email>
   <name>Gentoo Accessibility Project</name>
- </maintainer>
- <maintainer type="project">
-  <email>emacs@gentoo.org</email>
-  <name>Gentoo Emacs project</name>
- </maintainer>
- <use>
+</maintainer>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<use>
   <flag name="brltty">brltty support</flag>
 </use>
 </pkgmetadata>
