@@ -8,8 +8,4 @@
   <upstream>
     <remote-id type="github">Aorimn/dislocker</remote-id>
   </upstream>
-  <use>
-    <flag name="mbedtls">build with mbedtls</flag>
-    <flag name="polarssl">build with polarssl</flag>
-  </use>
 </pkgmetadata>

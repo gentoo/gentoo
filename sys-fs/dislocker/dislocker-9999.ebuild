@@ -19,12 +19,10 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="mbedtls polarssl ruby"
-REQUIRED_USE="|| ( polarssl mbedtls )"
+IUSE="ruby"
 
 DEPEND="sys-fs/fuse
-	mbedtls? ( net-libs/mbedtls )
-	polarssl? ( net-libs/polarssl )
+	|| ( net-libs/polarssl net-libs/mbedtls )
 	ruby? ( dev-lang/ruby:2.1 )"
 
 RDEPEND="${DEPEND}"
@@ -35,6 +33,13 @@ src_prepare() {
 	sed 's:-D_FORTIFY_SOURCE=2::g' -i "${S}/src/CMakeLists.txt" || die
 
 	sed 's:\.\./man:'../../${P}/man':g' -i "${S}/src/CMakeLists.txt" || die
+}
+
+src_configure() {
+	mycmakeargs=(
+		$(cmake-utils_use_find_package ruby Ruby)
+	)
+	cmake-utils_src_configure
 }
 
 src_install() {
