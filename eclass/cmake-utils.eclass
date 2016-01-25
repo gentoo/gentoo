@@ -409,10 +409,36 @@ _cmake_modify-cmakelists() {
 	_EOF_
 }
 
+# temporary function for moving cmake cleanups from from src_configure -> src_prepare.
+# bug #378850
+_cmake_cleanup_cmake() {
+	: ${CMAKE_USE_DIR:=${S}}
+
+	if [[ "${CMAKE_REMOVE_MODULES}" == "yes" ]] ; then
+		local name
+		for name in ${CMAKE_REMOVE_MODULES_LIST} ; do
+			find "${S}" -name ${name}.cmake -exec rm -v {} + || die
+		done
+	fi
+
+	# check if CMakeLists.txt exist and if no then die
+	if [[ ! -e ${CMAKE_USE_DIR}/CMakeLists.txt ]] ; then
+		eerror "Unable to locate CMakeLists.txt under:"
+		eerror "\"${CMAKE_USE_DIR}/CMakeLists.txt\""
+		eerror "Consider not inheriting the cmake eclass."
+		die "FATAL: Unable to find CMakeLists.txt"
+	fi
+
+	# Remove dangerous things.
+	_cmake_modify-cmakelists
+}
+
 enable_cmake-utils_src_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	pushd "${S}" > /dev/null || die
+
+	has "${EAPI:-0}" 6 && _cmake_cleanup_cmake
 
 	debug-print "$FUNCNAME: PATCHES=$PATCHES"
 	[[ ${PATCHES[@]} ]] && epatch "${PATCHES[@]}"
@@ -441,25 +467,9 @@ enable_cmake-utils_src_prepare() {
 enable_cmake-utils_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	if [[ "${CMAKE_REMOVE_MODULES}" == "yes" ]] ; then
-		local name
-		for name in ${CMAKE_REMOVE_MODULES_LIST} ; do
-			find "${S}" -name ${name}.cmake -exec rm -v {} + || die
-		done
-	fi
+	has "${EAPI:-0}" 2 3 4 5 && _cmake_cleanup_cmake
 
 	_cmake_check_build_dir
-
-	# check if CMakeLists.txt exist and if no then die
-	if [[ ! -e ${CMAKE_USE_DIR}/CMakeLists.txt ]] ; then
-		eerror "Unable to locate CMakeLists.txt under:"
-		eerror "\"${CMAKE_USE_DIR}/CMakeLists.txt\""
-		eerror "Consider not inheriting the cmake eclass."
-		die "FATAL: Unable to find CMakeLists.txt"
-	fi
-
-	# Remove dangerous things.
-	_cmake_modify-cmakelists
 
 	# Fix xdg collision with sandbox
 	local -x XDG_CONFIG_HOME="${T}"
