@@ -114,7 +114,7 @@ _CMAKE_UTILS_ECLASS=1
 # Should be set by user in a per-package basis in /etc/portage/package.env.
 
 case ${EAPI} in
-	2|3|4|5) : ;;
+	2|3|4|5|6) : ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
