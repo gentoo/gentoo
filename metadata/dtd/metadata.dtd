@@ -100,7 +100,6 @@
   
   For required tags, there must be either an unrestricted version, or a 
   version that is default restricted. -->
-  <!ATTLIST herd restrict CDATA #IMPLIED >
   <!ATTLIST maintainer restrict CDATA #IMPLIED >
   <!ATTLIST longdescription restrict CDATA #IMPLIED >
   <!ATTLIST flag restrict CDATA #IMPLIED >
