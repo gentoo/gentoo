@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit depend.apache eutils user
+inherit depend.apache eutils user systemd
 
 MY_P="BackupPC-${PV}"
 
@@ -137,9 +137,10 @@ src_install() {
 	keepdir "${DATADIR}"/{trash,pool,pc,cpool}
 	keepdir "${LOGDIR}"
 
-	ebegin "Setting up init.d/conf.d scripts"
+	ebegin "Setting up init.d/conf.d/systemd scripts"
 	newinitd "${S}"/init.d/gentoo-backuppc backuppc
 	newconfd "${S}"/init.d/gentoo-backuppc.conf backuppc
+	systemd_dounit "${FILESDIR}/${PN}.service"
 
 	insinto "${APACHE_MODULES_CONFDIR}"
 	doins "${FILESDIR}"/99_backuppc.conf
