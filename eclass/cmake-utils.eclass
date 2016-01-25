@@ -161,6 +161,11 @@ unset CMAKEDEPEND
 _cmake_use_me_now() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	local arg=$2
+	[[ ! -z $3 ]] && arg=$3
+
+	has "${EAPI:-0}" 2 3 4 5 || die "${FUNCNAME[1]} is banned in EAPI 6 and later: use -D$1${arg}=\"\$(usex $2)\" instead"
+
 	local uper capitalised x
 	[[ -z $2 ]] && die "cmake-utils_use-$1 <USE flag> [<flag name>]"
 	if [[ ! -z $3 ]]; then
@@ -177,6 +182,13 @@ _cmake_use_me_now() {
 }
 _cmake_use_me_now_inverted() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	local arg=$2
+	[[ ! -z $3 ]] && arg=$3
+
+	if ! has "${EAPI:-0}" 2 3 4 5 && [[ "${FUNCNAME[1]}" != cmake-utils_use_find_package ]] ; then
+		die "${FUNCNAME[1]} is banned in EAPI 6 and later: use -D$1${arg}=\"\$(usex $2)\" insteadss"
+	fi
 
 	local uper capitalised x
 	[[ -z $2 ]] && die "cmake-utils_use-$1 <USE flag> [<flag name>]"
