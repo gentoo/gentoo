@@ -6,8 +6,8 @@
 		<name>Gentoo Accessibility Project</name>
 	</maintainer>
 	<maintainer type="project">
-		<email>emacs@gentoo.org</email>
-		<name>Gentoo Emacs project</name>
+		<email>gnu-emacs@gentoo.org</email>
+		<name>Gentoo GNU Emacs project</name>
 	</maintainer>
 	<longdescription lang="en">Emacspeak is a speech interface that allows visually impaired 
 	users to interact independently and efficiently with the computer.</longdescription>
