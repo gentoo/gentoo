@@ -6,7 +6,7 @@
 #              series of kernel with back-compatibility for 2.4
 #
 # Original author: John Mylchreest <johnm@gentoo.org>
-# Maintainer: kernel-misc@gentoo.org
+# Maintainer: kernel@gentoo.org
 #
 # Please direct your bugs to the current eclass maintainer :)
 
