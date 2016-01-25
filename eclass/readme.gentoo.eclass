@@ -106,6 +106,9 @@ readme.gentoo_create_doc() {
 readme.gentoo_print_elog() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	eqawarn "${CATEGORY}/${PN} is using the deprecated readme.gentoo.eclass."
+	eqawarn "Please use readme.gentoo-r1 instead."
+
 	if [[ -z "${README_GENTOO_DOC_VALUE}" ]]; then
 		die "readme.gentoo_print_elog invoked without matching readme.gentoo_create_doc call!"
 	elif ! [[ -n "${REPLACING_VERSIONS}" ]] || [[ -n "${FORCE_PRINT_ELOG}" ]]; then

@@ -1,0 +1,58 @@
+From b7dfa4fa7a69d091dac0ead295d28422c4e33b45 Mon Sep 17 00:00:00 2001
+From: Thomas A Caswell <tcaswell@gmail.com>
+Date: Sun, 24 Jan 2016 13:05:18 -0500
+Subject: [PATCH] Merge pull request #5872 from jenshnielsen/sphinx134
+
+DOC: Fix issue with Sphinx 1.3.4
+
+Discarded changes to .travis.yml from #5872
+---
+ lib/matplotlib/dviread.py |  2 +-
+ lib/matplotlib/patches.py | 18 ++++++++++++------
+ 2 files changed, 13 insertions(+), 7 deletions(-)
+
+diff --git a/lib/matplotlib/dviread.py b/lib/matplotlib/dviread.py
+index db6e976..1141f6a 100644
+--- a/lib/matplotlib/dviread.py
++++ b/lib/matplotlib/dviread.py
+@@ -841,7 +841,7 @@ def find_tex_file(filename, format=None):
+     """
+     Call :program:`kpsewhich` to find a file in the texmf tree. If
+     *format* is not None, it is used as the value for the
+-    :option:`--format` option.
++    `--format` option.
+ 
+     Apparently most existing TeX distributions on Unix-like systems
+     use kpathsea. I hear MikTeX (a popular distribution on Windows)
+diff --git a/lib/matplotlib/patches.py b/lib/matplotlib/patches.py
+index b8b7363..917eca7 100644
+--- a/lib/matplotlib/patches.py
++++ b/lib/matplotlib/patches.py
+@@ -2992,15 +2992,21 @@ class Bar(_Base):
+ 
+         def __init__(self, armA=0., armB=0., fraction=0.3, angle=None):
+             """
+-            *armA* : minimum length of armA
++            Parameters
++            ----------
++            armA : float
++                minimum length of armA
+ 
+-            *armB* : minimum length of armB
++            armB : float
++                minimum length of armB
+ 
+-            *fraction* : a fraction of the distance between two points that
+-                         will be added to armA and armB.
++            fraction : float
++                a fraction of the distance between two points that
++                will be added to armA and armB.
+ 
+-            *angle* : angle of the connecting line (if None, parallel to A
+-                      and B)
++            angle : float or None
++                angle of the connecting line (if None, parallel
++                to A and B)
+             """
+             self.armA = armA
+             self.armB = armB

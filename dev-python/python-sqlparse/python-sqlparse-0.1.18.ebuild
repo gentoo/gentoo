@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,8 +20,11 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x
 LICENSE="BSD-2"
 IUSE="doc test"
 
+REQUIRED_USE="doc? ( || ( $(python_gen_useflags 'python2*') ) )"
+
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
@@ -30,6 +33,10 @@ DEPEND="
 DISTUTILS_IN_SOURCE_BUILD=1
 
 S="${WORKDIR}"/${P#python-}
+
+pkg_setup() {
+	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python2*' )
+}
 
 python_compile_all() {
 	use doc && emake -C docs html

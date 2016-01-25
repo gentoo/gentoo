@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,14 +6,15 @@ EAPI=5
 
 ETYPE="sources"
 K_WANT_GENPATCHES="base extras experimental"
-K_GENPATCHES_VER="9"
+K_GENPATCHES_VER="21"
 K_DEBLOB_AVAILABLE="0"
+K_KDBUS_AVAILABLE="0"
 UNIPATCH_STRICTORDER=1
 inherit kernel-2 eutils readme.gentoo
 detect_version
 detect_arch
 
-AUFS_VERSION=4.2_p20151116
+AUFS_VERSION=4.1_p20160118
 AUFS_TARBALL="aufs-sources-${AUFS_VERSION}.tar.xz"
 # git archive -v --remote=git://git.code.sf.net/p/aufs/aufs4-standalone aufs${AUFS_VERSION/_p*} > aufs-sources-${AUFS_VERSION}.tar
 AUFS_URI="https://dev.gentoo.org/~jlec/distfiles/${AUFS_TARBALL}"
