@@ -5,8 +5,10 @@
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
-<maintainer type="project">
-  <email>eselect@gentoo.org</email>
-  <name>eselect configuration and management tool</name>
-</maintainer>
+<upstream>
+  <maintainer type="project" status="active">
+    <email>eselect@gentoo.org</email>
+    <name>eselect configuration and management tool</name>
+  </maintainer>
+</upstream>
 </pkgmetadata>
