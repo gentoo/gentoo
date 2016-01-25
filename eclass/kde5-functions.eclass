@@ -105,7 +105,7 @@ _add_category_dep() {
 	local package=${2}
 	local use=${3}
 	local version=${4}
-	local slot=
+	local slot=${5}
 
 	if [[ -n ${use} ]] ; then
 		local use="[${use}]"
@@ -116,8 +116,10 @@ _add_category_dep() {
 		local version="-$(get_version_component_range 1-3 ${version})"
 	fi
 
-	if [[ ${SLOT} = 4 || ${SLOT} = 5 ]] && ! has kde5-meta-pkg ${INHERITED} ; then
-		slot=":${SLOT}"
+	if [[ -n ${slot} ]] ; then
+		slot=":${slot}"
+	elif [[ ${SLOT%\/*} = 4 || ${SLOT%\/*} = 5 ]] && ! has kde5-meta-pkg ${INHERITED} ; then
+		slot=":${SLOT%\/*}"
 	fi
 
 	echo " ${operator}${category}/${package}${version}${slot}${use}"
@@ -210,9 +212,11 @@ add_kdeapps_dep() {
 # @USAGE: <package> [USE flags] [minimum version]
 # @DESCRIPTION:
 # Create proper dependency for dev-qt/ dependencies.
-# This takes 1 to 3 arguments. The first being the package name, the optional
+# This takes 1 to 4 arguments. The first being the package name, the optional
 # second is additional USE flags to append, and the optional third is the
-# version to use instead of the automatic version (use sparingly).
+# version to use instead of the automatic version (use sparingly). In addition,
+# the optional fourth argument defines slot+operator instead of automatic slot
+# (use even more sparingly).
 # The output of this should be added directly to DEPEND/RDEPEND, and may be
 # wrapped in a USE conditional (but not an || conditional without an extra set
 # of parentheses).
@@ -227,7 +231,7 @@ add_qt_dep() {
 		version=${QT_MINIMAL}
 	fi
 
-	_add_category_dep dev-qt "${1}" "${2}" "${version}"
+	_add_category_dep dev-qt "${1}" "${2}" "${version}" "${4}"
 }
 
 # @FUNCTION: get_kde_version
