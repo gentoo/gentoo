@@ -358,7 +358,11 @@ case ${KDE_HANDBOOK} in
 		[[ ${PN} != kdelibs ]] && kderdepend+=" ${kdehandbookrdepend}"
 		;;
 	optional)
-		IUSE+=" +handbook"
+		if [[ ${PN} == kdesu ]] ; then
+			IUSE+=" handbook"
+		else
+			IUSE+=" +handbook"
+		fi
 		kdedepend+=" handbook? ( ${kdehandbookdepend} )"
 		[[ ${PN} != kdelibs ]] && kderdepend+=" handbook? ( ${kdehandbookrdepend} )"
 		;;
