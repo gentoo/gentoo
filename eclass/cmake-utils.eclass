@@ -158,7 +158,7 @@ DEPEND="${CMAKEDEPEND}"
 unset CMAKEDEPEND
 
 # Internal functions used by cmake-utils_use_*
-_use_me_now() {
+_cmake_use_me_now() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	local uper capitalised x
@@ -175,7 +175,7 @@ _use_me_now() {
 		done
 	fi
 }
-_use_me_now_inverted() {
+_cmake_use_me_now_inverted() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	local uper capitalised x
@@ -194,7 +194,7 @@ _use_me_now_inverted() {
 }
 
 # Determine using IN or OUT source build
-_check_build_dir() {
+_cmake_check_build_dir() {
 	: ${CMAKE_USE_DIR:=${S}}
 	if [[ -n ${CMAKE_IN_SOURCE_BUILD} ]]; then
 		# we build in source dir
@@ -226,7 +226,7 @@ _check_build_dir() {
 }
 
 # Determine which generator to use
-_generator_to_use() {
+_cmake_generator_to_use() {
 	local generator_name
 
 	case ${CMAKE_MAKEFILE_GENERATOR} in
@@ -283,7 +283,7 @@ comment_add_subdirectory() {
 #
 # `cmake-utils_use_with foo FOO` echoes -DWITH_FOO=ON if foo is enabled
 # and -DWITH_FOO=OFF if it is disabled.
-cmake-utils_use_with() { _use_me_now WITH_ "$@" ; }
+cmake-utils_use_with() { _cmake_use_me_now WITH_ "$@" ; }
 
 # @FUNCTION: cmake-utils_use_enable
 # @USAGE: <USE flag> [flag name]
@@ -292,7 +292,7 @@ cmake-utils_use_with() { _use_me_now WITH_ "$@" ; }
 #
 # `cmake-utils_use_enable foo FOO` echoes -DENABLE_FOO=ON if foo is enabled
 # and -DENABLE_FOO=OFF if it is disabled.
-cmake-utils_use_enable() { _use_me_now ENABLE_ "$@" ; }
+cmake-utils_use_enable() { _cmake_use_me_now ENABLE_ "$@" ; }
 
 # @FUNCTION: cmake-utils_use_find_package
 # @USAGE: <USE flag> [flag name]
@@ -302,7 +302,7 @@ cmake-utils_use_enable() { _use_me_now ENABLE_ "$@" ; }
 # `cmake-utils_use_find_package foo LibFoo` echoes -DCMAKE_DISABLE_FIND_PACKAGE_LibFoo=OFF
 # if foo is enabled and -DCMAKE_DISABLE_FIND_PACKAGE_LibFoo=ON if it is disabled.
 # This can be used to make find_package optional.
-cmake-utils_use_find_package() { _use_me_now_inverted CMAKE_DISABLE_FIND_PACKAGE_ "$@" ; }
+cmake-utils_use_find_package() { _cmake_use_me_now_inverted CMAKE_DISABLE_FIND_PACKAGE_ "$@" ; }
 
 # @FUNCTION: cmake-utils_use_disable
 # @USAGE: <USE flag> [flag name]
@@ -311,7 +311,7 @@ cmake-utils_use_find_package() { _use_me_now_inverted CMAKE_DISABLE_FIND_PACKAGE
 #
 # `cmake-utils_use_enable foo FOO` echoes -DDISABLE_FOO=OFF if foo is enabled
 # and -DDISABLE_FOO=ON if it is disabled.
-cmake-utils_use_disable() { _use_me_now_inverted DISABLE_ "$@" ; }
+cmake-utils_use_disable() { _cmake_use_me_now_inverted DISABLE_ "$@" ; }
 
 # @FUNCTION: cmake-utils_use_no
 # @USAGE: <USE flag> [flag name]
@@ -320,7 +320,7 @@ cmake-utils_use_disable() { _use_me_now_inverted DISABLE_ "$@" ; }
 #
 # `cmake-utils_use_no foo FOO` echoes -DNO_FOO=OFF if foo is enabled
 # and -DNO_FOO=ON if it is disabled.
-cmake-utils_use_no() { _use_me_now_inverted NO_ "$@" ; }
+cmake-utils_use_no() { _cmake_use_me_now_inverted NO_ "$@" ; }
 
 # @FUNCTION: cmake-utils_use_want
 # @USAGE: <USE flag> [flag name]
@@ -329,7 +329,7 @@ cmake-utils_use_no() { _use_me_now_inverted NO_ "$@" ; }
 #
 # `cmake-utils_use_want foo FOO` echoes -DWANT_FOO=ON if foo is enabled
 # and -DWANT_FOO=OFF if it is disabled.
-cmake-utils_use_want() { _use_me_now WANT_ "$@" ; }
+cmake-utils_use_want() { _cmake_use_me_now WANT_ "$@" ; }
 
 # @FUNCTION: cmake-utils_use_build
 # @USAGE: <USE flag> [flag name]
@@ -338,7 +338,7 @@ cmake-utils_use_want() { _use_me_now WANT_ "$@" ; }
 #
 # `cmake-utils_use_build foo FOO` echoes -DBUILD_FOO=ON if foo is enabled
 # and -DBUILD_FOO=OFF if it is disabled.
-cmake-utils_use_build() { _use_me_now BUILD_ "$@" ; }
+cmake-utils_use_build() { _cmake_use_me_now BUILD_ "$@" ; }
 
 # @FUNCTION: cmake-utils_use_has
 # @USAGE: <USE flag> [flag name]
@@ -347,7 +347,7 @@ cmake-utils_use_build() { _use_me_now BUILD_ "$@" ; }
 #
 # `cmake-utils_use_has foo FOO` echoes -DHAVE_FOO=ON if foo is enabled
 # and -DHAVE_FOO=OFF if it is disabled.
-cmake-utils_use_has() { _use_me_now HAVE_ "$@" ; }
+cmake-utils_use_has() { _cmake_use_me_now HAVE_ "$@" ; }
 
 # @FUNCTION: cmake-utils_use_use
 # @USAGE: <USE flag> [flag name]
@@ -356,7 +356,7 @@ cmake-utils_use_has() { _use_me_now HAVE_ "$@" ; }
 #
 # `cmake-utils_use_use foo FOO` echoes -DUSE_FOO=ON if foo is enabled
 # and -DUSE_FOO=OFF if it is disabled.
-cmake-utils_use_use() { _use_me_now USE_ "$@" ; }
+cmake-utils_use_use() { _cmake_use_me_now USE_ "$@" ; }
 
 # @FUNCTION: cmake-utils_use
 # @USAGE: <USE flag> [flag name]
@@ -365,7 +365,7 @@ cmake-utils_use_use() { _use_me_now USE_ "$@" ; }
 #
 # `cmake-utils_use foo FOO` echoes -DFOO=ON if foo is enabled
 # and -DFOO=OFF if it is disabled.
-cmake-utils_use() { _use_me_now "" "$@" ; }
+cmake-utils_use() { _cmake_use_me_now "" "$@" ; }
 
 # @FUNCTION: cmake-utils_useno
 # @USAGE: <USE flag> [flag name]
@@ -374,11 +374,11 @@ cmake-utils_use() { _use_me_now "" "$@" ; }
 #
 # `cmake-utils_useno foo NOFOO` echoes -DNOFOO=OFF if foo is enabled
 # and -DNOFOO=ON if it is disabled.
-cmake-utils_useno() { _use_me_now_inverted "" "$@" ; }
+cmake-utils_useno() { _cmake_use_me_now_inverted "" "$@" ; }
 
 # Internal function for modifying hardcoded definitions.
 # Removes dangerous definitions that override Gentoo settings.
-_modify-cmakelists() {
+_cmake_modify-cmakelists() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	# Only edit the files once
@@ -448,7 +448,7 @@ enable_cmake-utils_src_configure() {
 		done
 	fi
 
-	_check_build_dir
+	_cmake_check_build_dir
 
 	# check if CMakeLists.txt exist and if no then die
 	if [[ ! -e ${CMAKE_USE_DIR}/CMakeLists.txt ]] ; then
@@ -459,7 +459,7 @@ enable_cmake-utils_src_configure() {
 	fi
 
 	# Remove dangerous things.
-	_modify-cmakelists
+	_cmake_modify-cmakelists
 
 	# Fix xdg collision with sandbox
 	local -x XDG_CONFIG_HOME="${T}"
@@ -592,7 +592,7 @@ enable_cmake-utils_src_configure() {
 	local cmakeargs=(
 		${warn_unused_cli}
 		-C "${common_config}"
-		-G "$(_generator_to_use)"
+		-G "$(_cmake_generator_to_use)"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}${PREFIX}"
 		"${mycmakeargs_local[@]}"
 		-DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}"
@@ -641,11 +641,11 @@ _ninjaopts_from_makeopts() {
 	export NINJAOPTS="${ninjaopts[*]}"
 }
 
-# @FUNCTION: ninja_src_make
+# @FUNCTION: _cmake_ninja_src_make
 # @INTERNAL
 # @DESCRIPTION:
 # Build the package using ninja generator
-ninja_src_make() {
+_cmake_ninja_src_make() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -e build.ninja ]] || die "build.ninja not found. Error during configure stage."
@@ -662,11 +662,11 @@ ninja_src_make() {
 	"$@" || die
 }
 
-# @FUNCTION: emake_src_make
+# @FUNCTION: _cmake_emake_src_make
 # @INTERNAL
 # @DESCRIPTION:
 # Build the package using make generator
-emake_src_make() {
+_cmake_emake_src_make() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -e Makefile ]] || die "Makefile not found. Error during configure stage."
@@ -686,10 +686,10 @@ emake_src_make() {
 cmake-utils_src_make() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	_check_build_dir
+	_cmake_check_build_dir
 	pushd "${BUILD_DIR}" > /dev/null || die
 
-	${CMAKE_MAKEFILE_GENERATOR}_src_make "$@"
+	_cmake_${CMAKE_MAKEFILE_GENERATOR}_src_make "$@"
 
 	popd > /dev/null || die
 }
@@ -697,7 +697,7 @@ cmake-utils_src_make() {
 enable_cmake-utils_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	_check_build_dir
+	_cmake_check_build_dir
 	pushd "${BUILD_DIR}" > /dev/null || die
 	[[ -e CTestTestfile.cmake ]] || { echo "No tests found. Skipping."; return 0 ; }
 
@@ -728,7 +728,7 @@ enable_cmake-utils_src_test() {
 enable_cmake-utils_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	_check_build_dir
+	_cmake_check_build_dir
 	pushd "${BUILD_DIR}" > /dev/null || die
 	DESTDIR="${D}" ${CMAKE_MAKEFILE_GENERATOR} install "$@" || die "died running ${CMAKE_MAKEFILE_GENERATOR} install"
 	popd > /dev/null || die
@@ -742,7 +742,7 @@ enable_cmake-utils_src_install() {
 # @DESCRIPTION:
 # Apply ebuild and user patches.
 cmake-utils_src_prepare() {
-	_execute_optionally "src_prepare" "$@"
+	_cmake_execute_optionally "src_prepare" "$@"
 }
 
 # @FUNCTION: cmake-utils_src_configure
@@ -750,7 +750,7 @@ cmake-utils_src_prepare() {
 # General function for configuring with cmake. Default behaviour is to start an
 # out-of-source build.
 cmake-utils_src_configure() {
-	_execute_optionally "src_configure" "$@"
+	_cmake_execute_optionally "src_configure" "$@"
 }
 
 # @FUNCTION: cmake-utils_src_compile
@@ -758,25 +758,25 @@ cmake-utils_src_configure() {
 # General function for compiling with cmake.
 # Automatically detects the build type. All arguments are passed to emake.
 cmake-utils_src_compile() {
-	_execute_optionally "src_compile" "$@"
+	_cmake_execute_optionally "src_compile" "$@"
 }
 
 # @FUNCTION: cmake-utils_src_test
 # @DESCRIPTION:
 # Function for testing the package. Automatically detects the build type.
 cmake-utils_src_test() {
-	_execute_optionally "src_test" "$@"
+	_cmake_execute_optionally "src_test" "$@"
 }
 
 # @FUNCTION: cmake-utils_src_install
 # @DESCRIPTION:
 # Function for installing the package. Automatically detects the build type.
 cmake-utils_src_install() {
-	_execute_optionally "src_install" "$@"
+	_cmake_execute_optionally "src_install" "$@"
 }
 
 # Optionally executes phases based on WANT_CMAKE variable/USE flag.
-_execute_optionally() {
+_cmake_execute_optionally() {
 	local phase="$1" ; shift
 	if [[ ${WANT_CMAKE} = always ]]; then
 		enable_cmake-utils_${phase} "$@"
