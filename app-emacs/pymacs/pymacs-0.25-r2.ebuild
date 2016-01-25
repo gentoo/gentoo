@@ -23,6 +23,13 @@ RDEPEND=""
 DISTUTILS_IN_SOURCE_BUILD=1
 SITEFILE="50${PN}-gentoo.el"
 
+python_prepare_all() {
+	sed \
+		-e '/pymacs-python-command/s/@PYTHON@/python/' \
+		-i pymacs.el.in || die
+	distutils-r1_python_prepare_all
+}
+
 # called by distutils-r1 for every python implementation
 python_configure() {
 	# pre-process the files but don't run distutils
@@ -39,11 +46,6 @@ python_compile_all() {
 
 python_install_all() {
 	elisp_src_install
-
-	sed \
-		-e '/pymacs-python-command/s:"python.*:"python":g' \
-		-i "${ED}"/${SITELISP}/pymacs/pymacs.el || die
-	elisp-compile "${ED}"/${SITELISP}/pymacs/pymacs.el
 
 	distutils-r1_python_install_all
 	dodoc pymacs.rst
