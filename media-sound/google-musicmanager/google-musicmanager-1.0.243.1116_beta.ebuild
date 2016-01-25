@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ inherit eutils unpacker
 MY_URL="https://dl.google.com/linux/musicmanager/deb/pool/main/${P:0:1}/${PN}-beta"
 MY_PKG="${PN}-beta_${PV/_beta}-r0_i386.deb"
 
-DESCRIPTION="Google Music Manager is a application for adding music to your Google Music library"
+DESCRIPTION="An application for adding music to your Google Music library"
 HOMEPAGE="https://music.google.com"
 SRC_URI="x86? ( ${MY_URL}/${MY_PKG} )
 	amd64? ( ${MY_URL}/${MY_PKG/i386/amd64} )"
@@ -40,9 +40,7 @@ DEPEND="app-arch/xz-utils
 
 INSTALL_BASE="opt/google/musicmanager"
 
-QA_TEXTRELS="${INSTALL_BASE}/libmpgdec.so.0"
-
-QA_FLAGS_IGNORED="${INSTALL_BASE}/.*"
+QA_PREBUILT="${INSTALL_BASE}/*"
 
 S="${WORKDIR}/${INSTALL_BASE}"
 
