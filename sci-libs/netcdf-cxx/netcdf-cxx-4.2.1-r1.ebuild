@@ -32,9 +32,6 @@ src_configure() {
 
 src_install() {
 	default
-	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r examples
-	fi
+	use examples && dodoc -r examples
 	prune_libtool_files
 }
