@@ -449,7 +449,7 @@ enable_cmake-utils_src_configure() {
 	_modify-cmakelists
 
 	# Fix xdg collision with sandbox
-	export XDG_CONFIG_HOME="${T}"
+	local -x XDG_CONFIG_HOME="${T}"
 
 	# @SEE CMAKE_BUILD_TYPE
 	if [[ ${CMAKE_BUILD_TYPE} = Gentoo ]]; then
@@ -520,7 +520,7 @@ enable_cmake-utils_src_configure() {
 		fi
 	fi
 
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
+	has "${EAPI:-0}" 0 1 2 && ! use prefix && local EPREFIX=
 
 	if [[ ${EPREFIX} ]]; then
 		cat >> "${build_rules}" <<- _EOF_ || die
