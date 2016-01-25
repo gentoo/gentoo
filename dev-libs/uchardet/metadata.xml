@@ -5,10 +5,6 @@
 		<email>rion4ik@gmail.com</email>
 		<name>Rion</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>nikoli@gmx.us</email>
-		<name>Nikoli</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
