@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -112,6 +112,15 @@ CMAKE_REMOVE_MODULES="${CMAKE_REMOVE_MODULES:-yes}"
 # for econf and is needed to pass TRY_RUN results when cross-compiling.
 # Should be set by user in a per-package basis in /etc/portage/package.env.
 
+case ${EAPI} in
+	2|3|4|5) : ;;
+	*) die "EAPI=${EAPI:-0} is not supported" ;;
+esac
+
+inherit toolchain-funcs multilib flag-o-matic eutils versionator
+
+EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
+
 CMAKEDEPEND=""
 case ${WANT_CMAKE} in
 	always)
@@ -121,14 +130,6 @@ case ${WANT_CMAKE} in
 		CMAKEDEPEND+="${WANT_CMAKE}? ( "
 		;;
 esac
-inherit toolchain-funcs multilib flag-o-matic eutils versionator
-
-case ${EAPI} in
-	2|3|4|5) : ;;
-	*) die "EAPI=${EAPI:-0} is not supported" ;;
-esac
-
-EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
 
 case ${CMAKE_MAKEFILE_GENERATOR} in
 	emake)
