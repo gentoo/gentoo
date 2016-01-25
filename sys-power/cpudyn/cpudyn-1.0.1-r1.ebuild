@@ -37,6 +37,7 @@ src_install() {
 
 	doman cpudynd.8
 	dodoc INSTALL README VERSION changelog
+	docinto html
 	dodoc *.html
 
 	newinitd "${FILESDIR}"/cpudyn.init cpudyn

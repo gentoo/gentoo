@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@
 #              series of kernel with back-compatibility for 2.4
 #
 # Original author: John Mylchreest <johnm@gentoo.org>
-# Maintainer: kernel-misc@gentoo.org
+# Maintainer: kernel@gentoo.org
 #
 # Please direct your bugs to the current eclass maintainer :)
 

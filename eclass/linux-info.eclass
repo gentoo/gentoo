@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # @ECLASS: linux-info.eclass
 # @MAINTAINER:
-# kernel-misc@gentoo.org
+# kernel@gentoo.org
 # @AUTHOR:
 # Original author: John Mylchreest <johnm@gentoo.org>
 # @BLURB: eclass used for accessing kernel related information
