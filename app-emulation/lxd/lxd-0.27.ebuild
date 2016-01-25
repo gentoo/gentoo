@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -120,7 +120,7 @@ src_install() {
 		systemd_dounit "${FILESDIR}"/lxd.service
 	fi
 
-	newbashcomp config/bash/lxc.in lxc
+	newbashcomp config/bash/lxd-client lxc
 
 	dodoc AUTHORS CONTRIBUTING.md README.md
 
