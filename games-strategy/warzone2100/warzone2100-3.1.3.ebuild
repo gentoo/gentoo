@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit autotools toolchain-funcs eutils versionator gnome2-utils games
+inherit toolchain-funcs eutils versionator gnome2-utils games
 
 MY_PV=$(get_version_component_range -2)
 VIDEOS_PV=2.2
