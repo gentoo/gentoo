@@ -1,5 +1,5 @@
---- xvinfo.c
-+++ xvinfo.c
+--- xv-3.10a/xvinfo.c
++++ xv-3.10a/xvinfo.c
 @@ -26,7 +26,7 @@
  #define INFOHIGH 270
  
@@ -9,8 +9,8 @@
  
  /* baseline of top line of text */
  #define TOPBASE (36 + penn_height/2 + 4 + 8 + ASCENT)
---- xvpng.c
-+++ xvpng.c
+--- xv-3.10a/xvpng.c
++++ xv-3.10a/xvpng.c
 @@ -31,6 +31,7 @@
  
  #ifdef HAVE_PNG
