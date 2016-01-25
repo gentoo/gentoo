@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -160,7 +160,7 @@ src_prepare() {
 
 	# Fix llvm-config for shared linking and sane flags
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
-	epatch "${FILESDIR}"/llvm-3.8-llvm-config.patch
+	epatch "${FILESDIR}"/llvm-3.9-llvm-config.patch
 
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
@@ -374,7 +374,7 @@ src_install() {
 
 	if use clang; then
 		# note: magic applied in multilib_src_install()!
-		CLANG_VERSION=3.8
+		CLANG_VERSION=3.9
 
 		MULTILIB_CHOST_TOOLS+=(
 			/usr/bin/clang

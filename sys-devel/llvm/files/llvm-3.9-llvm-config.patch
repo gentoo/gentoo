@@ -1,0 +1,75 @@
+diff -Naur llvm-9999.orig/tools/llvm-config/CMakeLists.txt llvm-9999/tools/llvm-config/CMakeLists.txt
+--- llvm-9999.orig/tools/llvm-config/CMakeLists.txt	2016-01-25 14:47:55.447301061 +0100
++++ llvm-9999/tools/llvm-config/CMakeLists.txt	2016-01-25 14:54:03.897257098 +0100
+@@ -22,8 +22,12 @@
+ set(LLVM_SRC_ROOT ${LLVM_MAIN_SRC_DIR})
+ set(LLVM_OBJ_ROOT ${LLVM_BINARY_DIR})
+ set(LLVM_CPPFLAGS "${CMAKE_CPP_FLAGS} ${CMAKE_CPP_FLAGS_${uppercase_CMAKE_BUILD_TYPE}} ${LLVM_DEFINITIONS}")
++# Just use CMAKE_CPP_FLAGS for CFLAGS and CXXFLAGS, otherwise compiler
++# specific flags will be set when we don't know what compiler will be used
++# with external project utilising llvm-config.  C++ Standard is required.
++# TODO: figure out if we can remove -std=c++11 and move it to revdeps.
+ set(LLVM_CFLAGS "${CMAKE_C_FLAGS} ${CMAKE_C_FLAGS_${uppercase_CMAKE_BUILD_TYPE}} ${LLVM_DEFINITIONS}")
+-set(LLVM_CXXFLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_${uppercase_CMAKE_BUILD_TYPE}} ${COMPILE_FLAGS} ${LLVM_DEFINITIONS}")
++set(LLVM_CXXFLAGS "${CMAKE_CPP_FLAGS} -std=c++11 ${CMAKE_CXX_FLAGS_${uppercase_CMAKE_BUILD_TYPE}} ${LLVM_DEFINITIONS}")
+ set(LLVM_BUILD_SYSTEM cmake)
+ set(LLVM_HAS_RTTI ${LLVM_CONFIG_HAS_RTTI})
+ set(LLVM_DYLIB_VERSION "${LLVM_VERSION_MAJOR}.${LLVM_VERSION_MINOR}${LLVM_VERSION_SUFFIX}")
+@@ -31,7 +35,8 @@
+ # Use the C++ link flags, since they should be a superset of C link flags.
+ set(LLVM_LDFLAGS "${CMAKE_CXX_LINK_FLAGS}")
+ set(LLVM_BUILDMODE ${CMAKE_BUILD_TYPE})
+-set(LLVM_SYSTEM_LIBS ${SYSTEM_LIBS})
++# We don't do static libs, so we don't need to supply any system-libs
++set(LLVM_SYSTEM_LIBS "")
+ if(BUILD_SHARED_LIBS)
+   set(LLVM_ENABLE_SHARED ON)
+ else()
+diff -Naur llvm-9999.orig/tools/llvm-config/llvm-config.cpp llvm-9999/tools/llvm-config/llvm-config.cpp
+--- llvm-9999.orig/tools/llvm-config/llvm-config.cpp	2016-01-25 14:47:55.447301061 +0100
++++ llvm-9999/tools/llvm-config/llvm-config.cpp	2016-01-25 14:57:05.286236312 +0100
+@@ -532,10 +532,19 @@
+         OS << LLVM_HAS_RTTI << '\n';
+       } else if (Arg == "--shared-mode") {
+         PrintSharedMode = true;
+-      } else if (Arg == "--obj-root") {
+-        OS << ActivePrefix << '\n';
+-      } else if (Arg == "--src-root") {
+-        OS << LLVM_SRC_ROOT << '\n';
++      } else if (Arg == "--obj-root" || Arg == "--src-root") {
++        if (IsInDevelopmentTree) {
++          if (Arg == "--obj-root") {
++            OS << ActivePrefix << '\n';
++          } else {
++            OS << LLVM_SRC_ROOT << '\n';
++          }
++        } else {
++          // sources are not installed
++          llvm::errs() << "llvm-config: sources not installed, "
++                       << Arg << " not available\n";
++          exit(1);
++        }
+       } else if (Arg == "--link-shared") {
+         LinkMode = LinkModeShared;
+       } else if (Arg == "--link-static") {
+diff -Naur llvm-9999.orig/utils/llvm-build/llvmbuild/main.py llvm-9999/utils/llvm-build/llvmbuild/main.py
+--- llvm-9999.orig/utils/llvm-build/llvmbuild/main.py	2016-01-25 14:47:55.511301054 +0100
++++ llvm-9999/utils/llvm-build/llvmbuild/main.py	2016-01-25 14:58:13.014228689 +0100
+@@ -393,6 +393,8 @@
+ //
+ //===----------------------------------------------------------------------===//
+ 
++#include "llvm/Config/config.h"
++
+ """)
+         f.write('struct AvailableComponent {\n')
+         f.write('  /// The name of the component.\n')
+@@ -413,7 +415,7 @@
+             if library_name is None:
+                 library_name_as_cstr = 'nullptr'
+             else:
+-                library_name_as_cstr = '"lib%s.a"' % library_name
++                library_name_as_cstr = '"lib%s" LTDL_SHLIB_EXT' % library_name
+             if is_installed:
+                 is_installed_as_cstr = 'true'
+             else:
