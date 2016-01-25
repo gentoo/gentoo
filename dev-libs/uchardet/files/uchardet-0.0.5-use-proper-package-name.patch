@@ -1,0 +1,30 @@
+commit b6d872bbec3be7abfccbdfd3d90e784cf7281c55
+Author: Jehan <jehan@girinstud.io>
+Date:   Tue Dec 15 21:40:16 2015 +0100
+
+    app: package name wrong in CMakeLists.txt.
+    
+    Probably coming from a copy-paste error when the build system was
+    originally created.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0b65c49..4f279e1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ ######## Project settings
+ cmake_minimum_required(VERSION 2.8)
+-set (PACKAGE_NAME opencc)
++set (PACKAGE_NAME uchardet)
+ project (${PACKAGE_NAME} CXX C)
+ enable_testing()
+
+@@ -54,7 +54,7 @@ if (DEFINED SYSCONF_INSTALL_DIR)
+ 	set (DIR_ETC ${SYSCONF_INSTALL_DIR})
+ endif (DEFINED SYSCONF_INSTALL_DIR)
+
+-set (DIR_SHARE_UCHARDET ${DIR_SHARE}/opencc)
++set (DIR_SHARE_UCHARDET ${DIR_SHARE}/uchardet)
+ set (DIR_SHARE_LOCALE ${DIR_SHARE}/locale)
+
+ ######## Configuration
