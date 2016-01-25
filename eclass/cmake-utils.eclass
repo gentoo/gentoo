@@ -250,11 +250,11 @@ _generator_to_use() {
 	echo ${generator_name}
 }
 
-# @FUNCTION: comment_add_subdirectory
+# @FUNCTION: cmake_comment_add_subdirectory
 # @USAGE: <subdirectory>
 # @DESCRIPTION:
 # Comment out an add_subdirectory call in CMakeLists.txt in the current directory
-comment_add_subdirectory() {
+cmake_comment_add_subdirectory() {
         if [[ -z ${1} ]]; then
                 die "comment_add_subdirectory must be passed the directory name to comment"
         fi
@@ -263,6 +263,17 @@ comment_add_subdirectory() {
                 sed -e "/add_subdirectory[[:space:]]*([[:space:]]*${1//\//\\/}[[:space:]]*)/I s/^/#DONOTCOMPILE /" \
                         -i CMakeLists.txt || die "failed to comment add_subdirectory(${1})"
         fi
+}
+
+# @FUNCTION: comment_add_subdirectory
+# @USAGE: <subdirectory>
+# @DESCRIPTION:
+# Comment out an add_subdirectory call in CMakeLists.txt in the current directory
+# Banned in EAPI 6 and later - use cmake_comment_add_subdirectory instead.
+comment_add_subdirectory() {
+	has "${EAPI:-0}" 2 3 4 5 || die "comment_add_subdirectory is banned in EAPI 6 and later - use cmake_comment_add_subdirectory instead"
+
+	cmake_comment_add_subdirectory "$@"
 }
 
 # @FUNCTION: cmake-utils_use_with
