@@ -295,14 +295,20 @@ cmake-utils_use_with() { _cmake_use_me_now WITH_ "$@" ; }
 cmake-utils_use_enable() { _cmake_use_me_now ENABLE_ "$@" ; }
 
 # @FUNCTION: cmake-utils_use_find_package
-# @USAGE: <USE flag> [flag name]
+# @USAGE: <USE flag> <package name>
 # @DESCRIPTION:
 # Based on use_enable. See ebuild(5).
 #
 # `cmake-utils_use_find_package foo LibFoo` echoes -DCMAKE_DISABLE_FIND_PACKAGE_LibFoo=OFF
 # if foo is enabled and -DCMAKE_DISABLE_FIND_PACKAGE_LibFoo=ON if it is disabled.
 # This can be used to make find_package optional.
-cmake-utils_use_find_package() { _cmake_use_me_now_inverted CMAKE_DISABLE_FIND_PACKAGE_ "$@" ; }
+cmake-utils_use_find_package() {
+	if ! has "${EAPI:-0}" 2 3 4 5 && [[ "$#" != 2 ]] ; then
+		die "Usage: cmake-utils_use_find_package <USE flag> <package name>"
+	fi
+
+	_cmake_use_me_now_inverted CMAKE_DISABLE_FIND_PACKAGE_ "$@" ;
+}
 
 # @FUNCTION: cmake-utils_use_disable
 # @USAGE: <USE flag> [flag name]
