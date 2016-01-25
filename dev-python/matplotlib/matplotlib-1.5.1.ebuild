@@ -74,7 +74,6 @@ DEPEND="${COMMON_DEPEND}
 		dev-python/mock[${PY2_USEDEP}]
 		dev-python/numpydoc[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
-		!~dev-python/sphinx-1.3.4
 		dev-python/xlwt[${PYTHON_USEDEP}]
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-fontsrecommended
@@ -112,6 +111,7 @@ RDEPEND="${COMMON_DEPEND}
 DISTUTILS_IN_SOURCE_BUILD=1
 
 PATCHES=(
+	"${FILESDIR}"/${P}-sphinx-1.4.3-backport.patch
 	"${FILESDIR}"/${P}-test-fix-backport.patch
 	"${FILESDIR}"/${P}-test-fix-backport-2.patch
 	)
