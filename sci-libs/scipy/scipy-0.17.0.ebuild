@@ -9,16 +9,21 @@ PYTHON_REQ_USE="threads(+)"
 
 DOC_PV=${PV}
 
-inherit eutils fortran-2 distutils-r1 flag-o-matic git-r3 multilib multiprocessing toolchain-funcs
+inherit eutils fortran-2 distutils-r1 flag-o-matic multilib multiprocessing toolchain-funcs
 
 DESCRIPTION="Scientific algorithms library for Python"
 HOMEPAGE="https://www.scipy.org/"
-EGIT_REPO_URI="https://github.com/scipy/scipy.git"
+SRC_URI="
+	mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
+	doc? (
+		https://docs.scipy.org/doc/${PN}-${DOC_PV}/${PN}-html-${PV}.zip -> ${PN}-${DOC_PV}-html.zip
+		https://docs.scipy.org/doc/${PN}-${DOC_PV}/${PN}-ref-${PV}.pdf -> ${PN}-${DOC_PV}-ref.pdf
+	)"
 
 LICENSE="BSD LGPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="sparse test"
+IUSE="doc sparse test"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 
 CDEPEND="
 	>=dev-python/numpy-1.10[lapack,${PYTHON_USEDEP}]
@@ -30,6 +35,7 @@ DEPEND="${CDEPEND}
 	dev-lang/swig
 	>=dev-python/cython-0.22[${PYTHON_USEDEP}]
 	virtual/pkgconfig
+	doc? ( app-arch/unzip )
 	test? (	dev-python/nose[${PYTHON_USEDEP}] )
 	"
 
@@ -44,6 +50,12 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.12.0-blitz.patch
 	"${FILESDIR}"/${PN}-0.12.0-restore-sys-argv.patch
 )
+src_unpack() {
+	unpack ${P}.tar.gz
+	if use doc; then
+		unzip -qo "${DISTDIR}"/${PN}-${DOC_PV}-html.zip -d html || die
+	fi
+}
 
 pc_incdir() {
 	$(tc-getPKG_CONFIG) --cflags-only-I $@ | \
@@ -89,6 +101,9 @@ python_prepare_all() {
 		lapack_libs = $(pc_libs lapack)
 	EOF
 
+	# Drop hashes to force rebuild of cython based .c code
+	rm cythonize.dat || die
+
 	distutils-r1_python_prepare_all
 }
 
@@ -111,6 +126,13 @@ python_test() {
 #	"${EPYTHON}" -c \
 #		"import scipy, sys; r = scipy.test('fast',verbose=2); sys.exit(0 if r.wasSuccessful() else 1)" \
 #		|| die "Tests fail with ${EPYTHON}"
+}
+
+python_install_all() {
+	use doc && \
+		local DOCS=( "${DISTDIR}"/${PN}*pdf ) \
+		local HTML_DOCS=( "${WORKDIR}"/html/. )
+	distutils-r1_python_install_all
 }
 
 python_install() {

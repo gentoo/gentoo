@@ -31,9 +31,9 @@ DEPEND="${RDEPEND}
 	)
 "
 
-# https://github.com/mwaskom/seaborn/issues/836
-RESTRICT=test
-
 python_test() {
+	cat > matplotlibrc <<- EOF
+	backend : Agg
+	EOF
 	virtx nosetests --verbosity=3
 }
