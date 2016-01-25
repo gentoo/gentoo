@@ -4,7 +4,7 @@
 
 # @ECLASS: linux-info.eclass
 # @MAINTAINER:
-# kernel-misc@gentoo.org
+# kernel@gentoo.org
 # @AUTHOR:
 # Original author: John Mylchreest <johnm@gentoo.org>
 # @BLURB: eclass used for accessing kernel related information

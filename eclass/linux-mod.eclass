@@ -4,7 +4,7 @@
 
 # @ECLASS: linux-mod.eclass
 # @MAINTAINER:
-# kernel-misc@gentoo.org
+# kernel@gentoo.org
 # @AUTHOR:
 # John Mylchreest <johnm@gentoo.org>,
 # Stefan Schweizer <genstef@gentoo.org>
