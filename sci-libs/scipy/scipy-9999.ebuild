@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 
 DOC_PV=${PV}
 
-inherit eutils fortran-2 distutils-r1 flag-o-matic git-r3 multilib toolchain-funcs
+inherit eutils fortran-2 distutils-r1 flag-o-matic git-r3 multilib multiprocessing toolchain-funcs
 
 DESCRIPTION="Scientific algorithms library for Python"
 HOMEPAGE="https://www.scipy.org/"
@@ -21,7 +21,7 @@ KEYWORDS=""
 IUSE="sparse test"
 
 CDEPEND="
-	>=dev-python/numpy-1.6.2[lapack,${PYTHON_USEDEP}]
+	>=dev-python/numpy-1.10[lapack,${PYTHON_USEDEP}]
 	sci-libs/arpack:0=
 	virtual/cblas
 	virtual/lapack
@@ -39,6 +39,11 @@ RDEPEND="${CDEPEND}
 DOCS=( HACKING.rst.txt THANKS.txt )
 
 DISTUTILS_IN_SOURCE_BUILD=1
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.12.0-blitz.patch
+	"${FILESDIR}"/${PN}-0.12.0-restore-sys-argv.patch
+)
 
 pc_incdir() {
 	$(tc-getPKG_CONFIG) --cflags-only-I $@ | \
@@ -84,16 +89,12 @@ python_prepare_all() {
 		lapack_libs = $(pc_libs lapack)
 	EOF
 
-	local PATCHES=(
-		"${FILESDIR}"/${PN}-0.12.0-blitz.patch
-		"${FILESDIR}"/${PN}-0.12.0-restore-sys-argv.patch
-	)
 	distutils-r1_python_prepare_all
 }
 
 python_compile() {
 	${EPYTHON} tools/cythonize.py || die
-	distutils-r1_python_compile ${SCIPY_FCONFIG}
+	distutils-r1_python_compile -j $(makeopts_jobs) ${SCIPY_FCONFIG}
 }
 
 python_test() {
@@ -103,18 +104,13 @@ python_test() {
 	"${PYTHON}" -c \
 		'import numpy as np; print("relaxed strides checking:", np.ones((10,1),order="C").flags.f_contiguous)' \
 		|| die
+	# https://github.com/scipy/scipy/issues/5426
 	"${EPYTHON}" -c \
-		"import scipy, sys; r = scipy.test('fast',verbose=2); sys.exit(0 if r.wasSuccessful() else 1)" \
+		"import scipy, sys; r = scipy.test('fast', verbose=2, raise_warnings='release'); sys.exit(0 if r.wasSuccessful() else 1)" \
 		|| die "Tests fail with ${EPYTHON}"
-}
-
-python_install_all() {
-	if use doc; then
-		dodoc "${DISTDIR}"/${PN}*pdf
-		docinto html
-		dodoc -r "${WORKDIR}"/html/.
-	fi
-	distutils-r1_python_install_all
+#	"${EPYTHON}" -c \
+#		"import scipy, sys; r = scipy.test('fast',verbose=2); sys.exit(0 if r.wasSuccessful() else 1)" \
+#		|| die "Tests fail with ${EPYTHON}"
 }
 
 python_install() {
