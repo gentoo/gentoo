@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,11 +29,6 @@ RESTRICT="test" # TODO: src_test() was dropped from 1.10 (cmake) -> 1.11 (autoto
 
 BUILD_DIR="${S}_build"
 
-src_prepare() {
-	sed -i -e 's/AC_PYTHON_DEVEL/AX_PYTHON_DEVEL/' "${S}"/m4/cython_python.m4
-	eautoreconf
-}
-
 src_configure() {
 	local ECONF_SOURCE=${S}
 	local myeconfargs=( $(use_enable static-libs static) )
@@ -45,8 +40,12 @@ src_configure() {
 		popd >/dev/null || die
 	}
 
+	do_configure_python() {
+		PYTHON_LDFLAGS="$(python_get_LIBS)" do_configure "$@"
+	}
+
 	do_configure --without-cython
-	use python && python_foreach_impl do_configure
+	use python && python_foreach_impl do_configure_python
 }
 
 src_compile() {
