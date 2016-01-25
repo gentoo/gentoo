@@ -20,7 +20,6 @@
 if [[ -z ${_CMAKE_UTILS_ECLASS} ]]; then
 _CMAKE_UTILS_ECLASS=1
 
-
 # @ECLASS-VARIABLE: BUILD_DIR
 # @DESCRIPTION:
 # Build directory where all cmake processed files should be generated.
