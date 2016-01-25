@@ -4,8 +4,9 @@
 
 EAPI="5"
 PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PLOCALES="da de es fi fr ga id it ja nl pt_BR ro ru rw sv tr uk vi zh_CN"
 
-inherit flag-o-matic eutils python-single-r1
+inherit l10n flag-o-matic eutils python-single-r1
 
 export CTARGET=${CTARGET:-${CHOST}}
 if [[ ${CTARGET} == ${CHOST} ]] ; then
@@ -93,7 +94,6 @@ src_prepare() {
 	[[ -n ${RPM} ]] && rpm_spec_epatch "${WORKDIR}"/gdb.spec
 	! use vanilla && [[ -n ${PATCH_VER} ]] && EPATCH_SUFFIX="patch" epatch "${WORKDIR}"/patch
 	epatch_user
-	strip-linguas -u bfd/po opcodes/po
 }
 
 gdb_branding() {
@@ -219,6 +219,13 @@ src_install() {
 
 	# Remove shared info pages
 	rm -f "${ED}"/usr/share/info/{annotate,bfd,configure,standards}.info*
+
+	# Remove disabled locales
+	# build fails if we remove all languages in src_prepare
+	rm_loc() {
+		rm -r "${ED}/usr/share/locale/${1}" || die
+	}
+	l10n_for_each_disabled_locale_do rm_loc
 }
 
 pkg_postinst() {
