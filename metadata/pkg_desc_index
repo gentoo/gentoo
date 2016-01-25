@@ -12068,7 +12068,7 @@ media-gfx/xloadimage 4.1-r11: utility to view many different types of images und
 media-gfx/xpaint 2.9.10.2 2.9.10.3: Image editor with tiff, jpeg and png support
 media-gfx/xsane 0.999-r1: graphical scanning frontend
 media-gfx/xsvg 0.2.1: a command line viewer for SVG files
-media-gfx/xv 3.10a-r17: Interactive image manipulation program supporting a wide variety of formats
+media-gfx/xv 3.10a-r17 3.10a-r18: Interactive image manipulation program supporting a wide variety of formats
 media-gfx/xzgv 0.9.1: Fast and simple GTK+ image viewer
 media-gfx/yafaray 0.1.1: YafaRay is a raytracing open source render engine
 media-gfx/zbar 0.10-r5 0.10_p20121015: Library and tools for reading barcodes from images or video
@@ -16544,7 +16544,7 @@ sys-block/buffer 1.19-r2: a tapedrive tool for speeding up reading from and writ
 sys-block/cec 14: Coraid Ethernet Console client
 sys-block/dellmgr 5.32-r1: Dell PERC 2/3/4 RAID controller management tool
 sys-block/devio 1.2: correctly read (or write) a region of a block device
-sys-block/di 4.35 4.38 4.40: Disk Information Utility
+sys-block/di 4.35 4.38 4.40 4.41: Disk Information Utility
 sys-block/disktype 9: Detect the content format of a disk or disk image
 sys-block/eject 2.1.5-r2: A command to eject a disc from the CD-ROM drive
 sys-block/eject-bsd 1.5: eject command for FreeBSD systems
