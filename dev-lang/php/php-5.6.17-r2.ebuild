@@ -476,6 +476,7 @@ src_configure() {
 			$(use_with mysql pdo-mysql "${mysqllib}")
 			$(use_with postgres pdo-pgsql)
 			$(use_with sqlite pdo-sqlite "${EPREFIX}/usr")
+			$(use_with firebird pdo-firebird "${EPREFIX}/usr")
 			$(use_with odbc pdo-odbc "unixODBC,${EPREFIX}/usr")
 			$(use_with oci8-instant-client pdo-oci)
 		)
