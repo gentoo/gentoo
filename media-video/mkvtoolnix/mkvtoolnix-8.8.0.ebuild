@@ -22,7 +22,7 @@ ruby_atom() {
 
 # hacks to avoid using the ruby eclasses since this requires something similar
 # to the python-any-r1 eclass for ruby which currently doesn't exist
-RUBY_IMPLS=( ruby22 ruby21 ruby20 )
+RUBY_IMPLS=( ruby23 ruby22 ruby21 ruby20 )
 RUBY_BDEPS="$(for ruby_impl in "${RUBY_IMPLS[@]}"; do
 	echo "( $(ruby_atom ${ruby_impl}) virtual/rubygems[ruby_targets_${ruby_impl}] )"; done)"
 
