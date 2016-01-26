@@ -40,7 +40,7 @@ CDEPEND="
 
 DEPEND="
 	${CDEPEND}
-	|| ( app-eselect/eselect-java app-eselect/eselect-maven )
+	app-eselect/eselect-java
 	|| ( dev-java/commons-logging:0 dev-java/log4j:0 )
 	>=virtual/jdk-1.7"
 
