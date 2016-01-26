@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="4"
 
-inherit eutils flag-o-matic toolchain-funcs multilib
+inherit eutils flag-o-matic toolchain-funcs
 
 # Official patchlevel
 # See ftp://ftp.cwru.edu/pub/bash/bash-4.2-patches/
@@ -33,18 +33,18 @@ HOMEPAGE="http://tiswww.case.edu/php/chet/bash/bashtop.html"
 SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="${MY_PV}"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE="afs bashlogger examples mem-scramble +net nls plugins +readline vanilla"
+IUSE="afs mem-scramble +net nls +readline static"
 
-DEPEND=">=sys-libs/ncurses-5.2-r2
-	readline? ( >=sys-libs/readline-6.2 )
-	nls? ( virtual/libintl )"
-RDEPEND="${DEPEND}
-	!!<sys-apps/portage-2.1.6.7_p1
-	!!<sys-apps/paludis-0.26.0_alpha5"
+LIB_DEPEND=">=sys-libs/ncurses-5.2-r2[static-libs(+)]
+	nls? ( virtual/libintl )
+	readline? ( >=sys-libs/readline-6.2[static-libs(+)] )"
+RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 # we only need yacc when the .y files get patched (bash42-005)
-DEPEND+=" virtual/yacc"
+DEPEND="${RDEPEND}
+	virtual/yacc
+	static? ( ${LIB_DEPEND} )"
 
 S=${WORKDIR}/${MY_P}
 
@@ -53,10 +53,6 @@ pkg_setup() {
 		eerror "Detected bad CFLAGS '-malign-double'.  Do not use this"
 		eerror "as it breaks LFS (struct stat64) on x86."
 		die "remove -malign-double from your CFLAGS mr ricer"
-	fi
-	if use bashlogger ; then
-		ewarn "The logging patch should ONLY be used in restricted (i.e. honeypot) envs."
-		ewarn "This will log ALL output you enter into the shell, you have been warned."
 	fi
 }
 
@@ -81,9 +77,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-4.2-parallel-build.patch
 	epatch "${FILESDIR}"/${PN}-4.2-no-readline.patch
 	epatch "${FILESDIR}"/${PN}-4.2-read-retry.patch #447810
-	if ! use vanilla ; then
-		epatch "${FILESDIR}"/${PN}-4.2-speed-up-read-N.patch
-	fi
+	epatch "${FILESDIR}"/${PN}-4.2-speed-up-read-N.patch
 
 	epatch_user
 }
@@ -99,13 +93,9 @@ src_configure() {
 		-DSYS_BASHRC=\'\"/etc/bash/bashrc\"\' \
 		-DSYS_BASH_LOGOUT=\'\"/etc/bash/bash_logout\"\' \
 		-DNON_INTERACTIVE_LOGIN_SHELLS \
-		-DSSH_SOURCE_BASHRC \
-		$(use bashlogger && echo -DSYSLOG_HISTORY)
+		-DSSH_SOURCE_BASHRC
 
-	# Don't even think about building this statically without
-	# reading Bug 7714 first.  If you still build it statically,
-	# don't come crying to us with bugs ;).
-	#use static && export LDFLAGS="${LDFLAGS} -static"
+	use static && append-ldflags -static
 	use nls || myconf+=( --disable-nls )
 
 	# Historically, we always used the builtin readline, but since
@@ -122,7 +112,6 @@ src_configure() {
 	# is here because readline needs it.  But bash itself calls
 	# ncurses in one or two small places :(.
 
-	use plugins && append-ldflags -Wl,-rpath,/usr/$(get_libdir)/bash
 	tc-export AR #444070
 	econf \
 		--with-installed-readline=. \
@@ -138,89 +127,16 @@ src_configure() {
 		"${myconf[@]}"
 }
 
-src_compile() {
-	emake
-
-	if use plugins ; then
-		emake -C examples/loadables all others
-	fi
-}
-
 src_install() {
-	emake install DESTDIR="${D}"
+	into /
+	newbin bash bash-${SLOT}
 
-	dodir /bin
-	mv "${ED}"/usr/bin/bash "${ED}"/bin/ || die
-	dosym bash /bin/rbash
+	newman doc/bash.1 bash-${SLOT}.1
+	newman doc/builtins.1 builtins-${SLOT}.1
 
-	insinto /etc/bash
-	doins "${FILESDIR}"/{bashrc,bash_logout}
-	insinto /etc/skel
-	for f in bash{_logout,_profile,rc} ; do
-		newins "${FILESDIR}"/dot-${f} .${f}
-	done
+	insinto /usr/share/info
+	newins doc/bashref.info bash-${SLOT}.info
+	dosym bash-${SLOT}.info /usr/share/info/bashref-${SLOT}.info
 
-	local sed_args=(
-		-e "s:#${USERLAND}#@::"
-		-e '/#@/d'
-	)
-	if ! use readline ; then
-		sed_args+=( #432338
-			-e '/^shopt -s histappend/s:^:#:'
-			-e 's:use_color=true:use_color=false:'
-		)
-	fi
-	sed -i \
-		"${sed_args[@]}" \
-		"${ED}"/etc/skel/.bashrc \
-		"${ED}"/etc/bash/bashrc || die
-
-	if use plugins ; then
-		exeinto /usr/$(get_libdir)/bash
-		doexe $(echo examples/loadables/*.o | sed 's:\.o::g')
-		insinto /usr/include/bash-plugins
-		doins *.h builtins/*.h examples/loadables/*.h include/*.h \
-			lib/{glob/glob.h,tilde/tilde.h}
-	fi
-
-	if use examples ; then
-		for d in examples/{functions,misc,scripts,scripts.noah,scripts.v2} ; do
-			exeinto /usr/share/doc/${PF}/${d}
-			insinto /usr/share/doc/${PF}/${d}
-			for f in ${d}/* ; do
-				if [[ ${f##*/} != PERMISSION ]] && [[ ${f##*/} != *README ]] ; then
-					doexe ${f}
-				else
-					doins ${f}
-				fi
-			done
-		done
-	fi
-
-	doman doc/*.1
 	dodoc README NEWS AUTHORS CHANGES COMPAT Y2K doc/FAQ doc/INTRO
-	dosym bash.info /usr/share/info/bashref.info
-}
-
-pkg_preinst() {
-	if [[ -e ${EROOT}/etc/bashrc ]] && [[ ! -d ${EROOT}/etc/bash ]] ; then
-		mkdir -p "${EROOT}"/etc/bash
-		mv -f "${EROOT}"/etc/bashrc "${EROOT}"/etc/bash/
-	fi
-
-	if [[ -L ${EROOT}/bin/sh ]]; then
-		# rewrite the symlink to ensure that its mtime changes. having /bin/sh
-		# missing even temporarily causes a fatal error with paludis.
-		local target=$(readlink "${EROOT}"/bin/sh)
-		local tmp=$(emktemp "${EROOT}"/bin)
-		ln -sf "${target}" "${tmp}"
-		mv -f "${tmp}" "${EROOT}"/bin/sh
-	fi
-}
-
-pkg_postinst() {
-	# If /bin/sh does not exist, provide it
-	if [[ ! -e ${EROOT}/bin/sh ]]; then
-		ln -sf bash "${EROOT}"/bin/sh
-	fi
 }
