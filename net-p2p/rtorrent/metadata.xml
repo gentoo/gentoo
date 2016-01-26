@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <longdescription lang="en">
-    Console BitTorrent client using ncurses based on libtorrent written in C++.
-  </longdescription>
-  <use>
-    <flag name="daemon">Uses <pkg>app-misc/screen</pkg> to daemonize this application</flag>
-  </use>
-  <upstream>
-    <remote-id type="github">rakshasa/rtorrent</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>perfinion@gentoo.org</email>
+		<name>Jason Zaman</name>
+	</maintainer>
+
+	<longdescription lang="en">
+		Console BitTorrent client using ncurses based on libtorrent written in C++.
+	</longdescription>
+
+	<use>
+		<flag name="daemon">Uses <pkg>app-misc/screen</pkg> to daemonize this application</flag>
+	</use>
+
+	<upstream>
+		<remote-id type="github">rakshasa/rtorrent</remote-id>
+	</upstream>
 </pkgmetadata>
