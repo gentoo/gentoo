@@ -118,7 +118,7 @@ src_install() {
 
 	insinto /etc/bash
 	doins "${FILESDIR}"/bash_logout
-	newins "${FILESDIR}"/bashrc-r2 bashrc
+	doins "${FILESDIR}"/bashrc
 	keepdir /etc/bash/bashrc.d
 	insinto /etc/skel
 	for f in bash{_logout,_profile,rc} ; do

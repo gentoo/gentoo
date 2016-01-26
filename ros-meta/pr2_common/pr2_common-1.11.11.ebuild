@@ -9,13 +9,15 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Description (mechanical, kinematic, visual,  etc.) of the PR2 robot"
+DESCRIPTION="URDF description and 3D models of robot components of the PR2 robot"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-ros/xacro"
-DEPEND="${RDEPEND}
-	dev-ros/convex_decomposition
-	dev-ros/ivcon
-	test? ( dev-libs/urdfdom dev-cpp/gtest )"
+RDEPEND="
+	dev-ros/pr2_msgs
+	dev-ros/pr2_dashboard_aggregator
+	dev-ros/pr2_description
+	dev-ros/pr2_machine
+"
+DEPEND="${RDEPEND}"

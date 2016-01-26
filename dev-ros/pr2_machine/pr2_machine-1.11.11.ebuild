@@ -9,13 +9,10 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Description (mechanical, kinematic, visual,  etc.) of the PR2 robot"
+DESCRIPTION="xxx.machine files that describe the different hosts a node can be spawned on"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-ros/xacro"
-DEPEND="${RDEPEND}
-	dev-ros/convex_decomposition
-	dev-ros/ivcon
-	test? ( dev-libs/urdfdom dev-cpp/gtest )"
+RDEPEND=""
+DEPEND="${RDEPEND}"
