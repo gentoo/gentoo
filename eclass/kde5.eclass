@@ -537,7 +537,7 @@ kde5_src_test() {
 	unset DBUS_SESSION_BUS_ADDRESS DBUS_SESSION_BUS_PID
 
 	if [[ ${VIRTUALX_REQUIRED} = always || ${VIRTUALX_REQUIRED} = test ]]; then
-		VIRTUALX_COMMAND="_test_runner" virtualmake
+		virtx _test_runner
 	else
 		_test_runner
 	fi
