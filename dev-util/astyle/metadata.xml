@@ -1,35 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <longdescription>
-  From the web page:
-
-  Artistic Style is a reindenter and reformatter of C++, C and Java source
-  code.
-      
-  When indenting source code, we as programmers have a tendency to use both 
-  spaces and tab characters to create the wanted indentation. Moreover, some 
-  editors by default insert spaces instead of tabs when pressing the tab key, 
-  and other editors (Emacs for example) have the ability to "pretty up" lines 
-  by automatically setting up the white space before the code on the line, 
-  possibly inserting spaces in a code that up to now used only tabs for 
-  indentation. 
-
-  Since the NUMBER of space characters showed on screen for each tab character
-  in the source code changes between editors (until the user sets up the 
-  number to his liking...), one of the standard problems facing programmers 
-  when moving from one source code editor to another is that code containing 
-  both spaces and tabs that was up to now perfectly indented, suddenly becomes
-  a mess to look at when changing to another editor. Even if you as a 
-  programmer take care to ONLY use spaces or tabs, looking at other peoples 
-  source code can still be problematic.
-
-  To address this problem I have created Artistic Style - a series of filters,
-  written in C++, that automatically reindent &amp; reformat C/C++/Java source 
-  files. These can be used from a command line, or it can be incorporated as 
-  classes in another C++ program.  
-  </longdescription>
-  <upstream>
-    <remote-id type="sourceforge">astyle</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>zlg@gentoo.org</email>
+		<name>Daniel Campbell</name>
+	</maintainer>
+	<longdescription>
+		astyle is a code formatter for C, C++, and Java source code, with many
+		granular formatting options to assist in enforcing code formatting
+		standards in projects.
+	</longdescription>
+	<upstream>
+		<maintainer status="active" type="person">
+			<email>jimp03@email.com</email>
+			<name>Jim Pattee</name>
+		</maintainer>
+		<remote-id type="sourceforge">astyle</remote-id>
+		<bugs-to>https://sourceforge.net/p/astyle/bugs/</bugs-to>
+		<doc>http://astyle.sourceforge.net/astyle.html</doc>
+	</upstream>
 </pkgmetadata>
