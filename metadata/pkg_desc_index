@@ -16649,7 +16649,7 @@ sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.9-r1 1.0.10 1.0.11 1.0.12: Library pack for Heartbeat / Pacemaker
 sys-cluster/cman 3.1.5 3.1.5-r1 3.2.0: Cluster Manager
 sys-cluster/cman-lib 2.03.09 2.03.09-r1: A library for cluster management common to the various pieces of Cluster Suite
-sys-cluster/corosync 1.3.0 1.3.5 1.4.7 2.3.3 2.3.4-r1: OSI Certified implementation of a complete cluster engine
+sys-cluster/corosync 1.3.0 1.3.5 1.4.7 2.3.3 2.3.4-r1 2.3.5: OSI Certified implementation of a complete cluster engine
 sys-cluster/crmsh 2.1.1: Pacemaker command line interface for management and configuration
 sys-cluster/csync2 2.0: Cluster synchronization tool
 sys-cluster/dlm 2.03.09 2.03.11: General-purpose Distributed Lock Manager
