@@ -56,6 +56,7 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	>=dev-ruby/metasploit-model-1.0.0:1.0
 	dev-ruby/msgpack
 	dev-ruby/nokogiri
+        dev-ruby/openssl-ccm:1.2.1
 	dev-ruby/recog:2.0.14
 	=dev-ruby/rkelly-remix-0.0.6
 	dev-ruby/sqlite3
