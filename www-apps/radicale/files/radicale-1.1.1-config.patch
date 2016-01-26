@@ -1,0 +1,34 @@
+diff --git a/config b/config
+index 453a45e..10c1595 100644
+--- a/config
++++ b/config
+@@ -146,7 +146,7 @@ http_password_parameter =
+ #custom_handler =
+ 
+ # File for rights management from_file
+-#file = ~/.config/radicale/rights
++file = /etc/radicale/rights
+ 
+ 
+ [storage]
+@@ -163,7 +163,7 @@ file = ~/.config/radicale/rights
+ #custom_handler =
+ 
+ # Folder for storing local collections, created if not present
+-#filesystem_folder = ~/.config/radicale/collections
++filesystem_folder = /var/lib/radicale/
+ 
+ # Database URL for SQLAlchemy
+ # dialect+driver://user:password@host/dbname[?key=value..]
+diff --git a/logging b/logging
+--- a/logging
++++ b/logging
+@@ -45,7 +45,7 @@ formatter = simple
+ [handler_file]
+ # File handler
+ class = FileHandler
+-args = ('/var/log/radicale',)
++args = ('/var/log/radicale/radicale.log',)
+ formatter = full
+ 
+ 
