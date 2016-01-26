@@ -37,23 +37,20 @@ PATCHES=(
 	"${FILESDIR}/${P}-underlinking.patch"
 	"${FILESDIR}/${PN}-1.1.0-desktop-version.patch"
 )
-DOCS="../Changelog"
-
-S=${WORKDIR}/${P}/src
+CMAKE_USE_DIR="${WORKDIR}/${P}/src"
 
 src_prepare() {
-	cd .. || die
-	default
-
+	mv Change{l,L}og || die
 	sed -i \
 		-e '/set (CMAKE_CXX_FLAGS_RELEASE/d' \
 		-e "s:lib/lv2:$(get_libdir)/lv2:" \
 		src/CMakeLists.txt || die
+	cmake-utils_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DBuildLV2Plugin=$(usex lv2 ON OFF)
+		-DBuildLV2Plugin=$(usex lv2)
 	)
 	cmake-utils_src_configure
 }
