@@ -5,7 +5,7 @@
   <synopsis>Certain checks on untrusted certificates can be bypassed.</synopsis>
   <product type="ebuild">openssl</product>
   <announced>July 10, 2015</announced>
-  <revised>July 10, 2015: draft</revised>
+  <revised>January 26, 2016: 2</revised>
   <bug>554172</bug>
   <access>remote</access>
   <affected>
@@ -13,6 +13,9 @@
       <unaffected range="ge">1.0.1p</unaffected>
       <unaffected range="rge">0.9.8z_p7</unaffected>
       <unaffected range="rge">0.9.8z_p6</unaffected>
+      <unaffected range="rge">0.9.8z_p8</unaffected>
+      <unaffected range="rge">0.9.8z_p9</unaffected>
+      <unaffected range="rge">0.9.8z_p10</unaffected>
       <vulnerable range="lt">1.0.1p</vulnerable>
     </package>
   </affected>
@@ -52,7 +55,7 @@
   <metadata tag="requester" timestamp="Wed, 08 Jul 2015 09:20:30 +0000">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 10 Jul 2015 13:18:57 +0000">
+  <metadata tag="submitter" timestamp="Tue, 26 Jan 2016 20:16:52 +0000">
     keytoaster
   </metadata>
 </glsa>
