@@ -1059,7 +1059,7 @@ app-editors/shed 1.12 1.13 1.15: Simple Hex EDitor
 app-editors/tea 41.0.0 41.1.0: Small, lightweight Qt text editor
 app-editors/teco 1.00-r4: Classic TECO editor, Predecessor to EMACS
 app-editors/ted 2.23: X-based rich text editor
-app-editors/uemacs-pk 4.0.15_p20130222 4.0.15_p20141208: uEmacs/PK is an enhanced version of MicroEMACS
+app-editors/uemacs-pk 4.0.15_p20141208: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8k 9.8n 9.8o 9.8p: VI Like Emacs -- yet another full-featured vi clone
 app-editors/vim 7.4.273 7.4.769 7.4.827 7.4.1089 9999: Vim, an improved vi-style text editor
 app-editors/vim-core 7.4.273 7.4.769 7.4.827 7.4.1089 9999: vim and gvim shared files
