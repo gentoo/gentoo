@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy pypy3 )
 
 inherit distutils-r1 mercurial
 
@@ -19,7 +19,6 @@ KEYWORDS=""
 IUSE="doc test"
 
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx )
 	test? ( >=dev-python/pytest-2.2.0[${PYTHON_USEDEP}] )"
 
