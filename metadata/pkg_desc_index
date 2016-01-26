@@ -527,7 +527,7 @@ app-crypt/gentoo-keys 201511260245: A Openpgp/gpg keyring of official Gentoo rel
 app-crypt/gifshuffle 2.0: GIF colourmap steganography
 app-crypt/gkeys 0.2 9999: An OpenPGP/GPG key management tool and python libs
 app-crypt/gkeys-gen 0.2 9999: Tool for generating OpenPGP/GPG keys using a specifications file
-app-crypt/gnupg 1.4.19 1.4.20 2.0.26-r3 2.0.27 2.0.27-r1 2.0.28 2.0.29 2.0.29-r1 2.1.8 2.1.9 2.1.9-r1 2.1.10 2.1.10-r1 2.1.11: The GNU Privacy Guard, a GPL OpenPGP implementation
+app-crypt/gnupg 1.4.19 1.4.20 2.0.26-r3 2.0.28 2.0.29-r1 2.1.9-r1 2.1.10-r1 2.1.11: The GNU Privacy Guard, a GPL OpenPGP implementation
 app-crypt/gnupg-pkcs11-scd 0.7.3: PKCS#11 support for GnuPG
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.4 0.9.7 0.9.9: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
@@ -8736,7 +8736,7 @@ dev-ruby/metasm 1.0.2-r3: cross-architecture assembler, disassembler, linker, an
 dev-ruby/metasploit-concern 1.0.0: Metasploit concern allows you to define concerns in app/concerns.
 dev-ruby/metasploit-credential 1.0.0 1.0.1: Code for modeling and managing credentials in Metasploit
 dev-ruby/metasploit-model 1.0.0: Common code, such as validators and mixins
-dev-ruby/metasploit-payloads 1.0.15 1.0.19 1.0.22: Compiled binaries for Metasploit's Meterpreter
+dev-ruby/metasploit-payloads 1.0.15 1.0.19 1.0.21 1.0.22: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/metasploit_data_models 1.2.9 1.2.10: The database layer for Metasploit
 dev-ruby/meterpreter_bins 0.0.22: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/method_source 0.8.2-r3: Retrieve the source code for a method
@@ -13506,7 +13506,7 @@ net-analyzer/macchanger 1.7.0: Utility for viewing/manipulating the MAC address 
 net-analyzer/masscan 1.0.3-r1 1.0.3-r2: Mass IP port scanner
 net-analyzer/mate-netspeed 1.8.0: Applet showing network traffic for MATE
 net-analyzer/mbrowse 0.4.3: MBrowse is a graphical MIB browser
-net-analyzer/metasploit 4.11.5_p2015110401-r1 9999: Advanced framework for developing, testing, and using vulnerability exploit code
+net-analyzer/metasploit 4.11.5_p2015110401-r1 4.11.7 9999: Advanced framework for developing, testing, and using vulnerability exploit code
 net-analyzer/mk-livestatus 1.2.2_p3: Nagios/Icinga event broker module that allows quick/direct access to your status data
 net-analyzer/monitoring-plugins 2.1.1 2.1.2: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
