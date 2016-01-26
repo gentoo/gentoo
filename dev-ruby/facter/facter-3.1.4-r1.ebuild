@@ -5,7 +5,7 @@
 EAPI=5
 USE_RUBY="ruby20 ruby21 ruby22"
 
-inherit cmake-utils ruby-ng
+inherit cmake-utils multilib ruby-ng
 
 DESCRIPTION="A cross-platform ruby library for retrieving facts from operating systems"
 HOMEPAGE="http://www.puppetlabs.com/puppet/related-projects/facter/"
@@ -36,7 +36,8 @@ src_prepare() {
 	sed -i 's/if(RUBY_VENDORDIR)/if(False)/g' lib/CMakeLists.txt || die
 	sed -i '/RUBY_VENDORDIR/d' lib/CMakeLists.txt || die
 	# make it support multilib
-	sed -i 's/\ lib)/\ lib${LIB_SUFFIX})/g' lib/CMakeLists.txt || die
+	sed -i "s/\ lib)/\ $(get_libdir))/g" lib/CMakeLists.txt || die
+	sed -i "s/lib\")/$(get_libdir)\")/g" CMakeLists.txt || die
 }
 
 src_configure() {
@@ -47,6 +48,7 @@ src_configure() {
 		-DCMAKE_INSTALL_SYSCONFDIR=/etc
 		-DCMAKE_INSTALL_LOCALSTATEDIR=/var
 		-DUSE_JRUBY_SUPPORT=FALSE
+		-DBLKID_LIBRARY=/$(get_libdir)/libblkid.so.1
 	)
 	if use debug; then
 		mycmakeargs+=(
@@ -63,4 +65,9 @@ each_ruby_install() {
 src_install() {
 	cmake-utils_src_install
 	ruby-ng_src_install
+	if [[ $(get_libdir) == lib64 ]]; then
+		dodir /usr/lib64
+		mv "${D}/usr/lib/"* "${D}/usr/lib64/"
+		rmdir "${D}/usr/lib"
+	fi
 }
