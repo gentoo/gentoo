@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -35,12 +35,14 @@ SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
 LICENSE="GPL-2"
 SLOT="${MY_PV}"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd"
-IUSE="afs +net nls +readline"
+IUSE="afs +net nls +readline static"
 
-DEPEND=">=sys-libs/ncurses-5.2-r2
-	readline? ( >=sys-libs/readline-6.2 )
-	nls? ( virtual/libintl )"
-RDEPEND="${DEPEND}"
+LIB_DEPEND=">=sys-libs/ncurses-5.2-r2[static-libs(+)]
+	nls? ( virtual/libintl )
+	readline? ( >=sys-libs/readline-6.2[static-libs(+)] )"
+RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
+DEPEND="${RDEPEND}
+	static? ( ${LIB_DEPEND} )"
 
 S=${WORKDIR}/${MY_P}
 
@@ -103,10 +105,7 @@ src_configure() {
 		-DNON_INTERACTIVE_LOGIN_SHELLS \
 		-DSSH_SOURCE_BASHRC
 
-	# Don't even think about building this statically without
-	# reading Bug 7714 first.  If you still build it statically,
-	# don't come crying to us with bugs ;).
-	#use static && export LDFLAGS="${LDFLAGS} -static"
+	use static && append-ldflags -static
 	use nls || myconf+=( --disable-nls )
 
 	# Historically, we always used the builtin readline, but since
