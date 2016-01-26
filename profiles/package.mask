@@ -30,9 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
-# Michael Orlitzky <mjo@gentoo.org> (22 Jan 2016)
-# Masked for testing of new build system.
->=app-eselect/eselect-php-0.9.0
+# James Le Cuirot <chewi@gentoo.org> (26 Jan 2016)
+# No new release since 2008. Removal in 30 days.
+app-cdr/webcdwriter
+
+# James Le Cuirot <chewi@gentoo.org> (26 Jan 2016)
+# Now part of eselect-java. Removal in 30 days.
+app-eselect/eselect-maven
 
 # Alexis Ballier <aballier@gentoo.org> (22 Jan 2016)
 # Breaks some of its revdeps
