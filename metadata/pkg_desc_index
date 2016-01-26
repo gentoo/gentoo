@@ -14618,7 +14618,7 @@ net-misc/redir 2.2.1: Redir is a port redirector
 net-misc/remmina 1.2.0_rc3 1.2.0_rc3-r1 9999: A GTK+ RDP, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r1: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
-net-misc/rsync 3.1.1 3.1.2: File transfer program to keep remote files into sync
+net-misc/rsync 3.1.2: File transfer program to keep remote files into sync
 net-misc/rwbs 0.27-r1: Roger Wilco base station
 net-misc/rwhoisd 1.5.9.5-r2: ARIN rwhois daemon
 net-misc/rygel 0.26.1 0.28.2 0.28.2-r1: Rygel is an open source UPnP/DLNA MediaServer
