@@ -12196,7 +12196,7 @@ media-libs/lasi 1.1.1: C++ library for postscript stream output
 media-libs/lastfmlib 0.4.0: C++ library to scrobble tracks on Last.fm
 media-libs/lcms 2.6-r1 2.7: A lightweight, speed optimized color management engine
 media-libs/lensfun 0.3.1 0.3.2: lensfun: A library for rectifying and simulating photographic lens distortions
-media-libs/leptonica 1.71 1.71-r1 1.72-r2: C library for image processing and analysis
+media-libs/leptonica 1.71 1.71-r1 1.73: C library for image processing and analysis
 media-libs/lib3ds 1.3.0-r1 2.0.0_rc1: library for managing 3D-Studio Release 3 and 4 .3DS files
 media-libs/libXcm 0.5.2-r1 0.5.3 9999: reference implementation of the net-color spec
 media-libs/libaacplus 2.0.2-r2: HE-AAC+ v2 library, based on the reference implementation
@@ -17118,7 +17118,7 @@ sys-power/powerman 2.3.9: RPC/PDU control and monitoring service for data center
 sys-power/powermgmt-base 1.31: Script to test whether computer is running on AC power
 sys-power/powernowd 1.00-r3: Daemon to control the speed and voltage of CPUs
 sys-power/powertop 1.13 2.6 2.8 9999: tool that helps you find what software is using the most power
-sys-power/sispmctl 2.7 3.1: GEMBIRD SiS-PM control utility
+sys-power/sispmctl 3.1: GEMBIRD SiS-PM control utility
 sys-power/suspend 1.0 1.0_p20150810: Userspace Software Suspend and S2Ram
 sys-power/thermald 1.3 1.4.2-r1: Thermal daemon for Intel architectures
 sys-power/upower 0.99.2-r1 0.99.3: D-Bus abstraction for enumerating power devices and querying history and statistics
