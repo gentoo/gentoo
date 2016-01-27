@@ -6787,7 +6787,7 @@ dev-python/backports-lzma 0.0.3: Backport of Python 3.3's lzma module for XZ/LZM
 dev-python/backports-shutil_get_terminal_size 1.0.0-r1: A backport of the get_terminal_size function from Python 3.3's shutil
 dev-python/backports-ssl-match-hostname 3.4.0.2 3.5.0.1-r1: Backport of the ssl.match_hostname function
 dev-python/backports-unittest-mock 1.1.1: Backport of unittest.mock
-dev-python/bandit 0.12.0 0.13.0 0.13.1 0.13.2 0.13.2-r1 0.14.1 0.17.0: A security linter from OpenStack Security
+dev-python/bandit 0.12.0 0.13.0 0.13.1 0.13.2 0.13.2-r1 0.14.1 0.17.0 0.17.2: A security linter from OpenStack Security
 dev-python/basemap 1.0.7-r1: matplotlib toolkit to plot map projections
 dev-python/bashate 0.3.1: A pep8 equivalent for bash scripts
 dev-python/bcolz 0.10.0 0.11.3 0.12.1: Provides columnar and compressed data containers
@@ -17564,7 +17564,7 @@ www-client/firefox 38.4.0 38.5.0 43.0: Firefox Web Browser
 www-client/firefox-bin 38.3.0 38.4.0 38.5.0 43.0: Firefox Web Browser
 www-client/google-chrome 48.0.2564.82_p1: The web browser from Google
 www-client/google-chrome-beta 48.0.2564.82_p1: The web browser from Google
-www-client/google-chrome-unstable 49.0.2623.13_p1: The web browser from Google
+www-client/google-chrome-unstable 49.0.2623.23_p1: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/jumanji 0.0.0_p20111209 0.0.0_p20130103-r1 0.0.0_p20150527 9999: highly customizable and functional web browser with minimalistic and space saving interface
@@ -17621,7 +17621,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.559: Adobe Flash Player
-www-plugins/chrome-binary-plugins 48.0.2564.82_beta1 48.0.2564.82_p1 49.0.2623.13_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 48.0.2564.82_beta1 48.0.2564.82_p1 49.0.2623.23_alpha1 9999: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316: GNU Flash movie player that supports many SWF v7,8,9 features
