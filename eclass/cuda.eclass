@@ -42,6 +42,8 @@ if [[ -z ${_CUDA_ECLASS} ]]; then
 # -> --compiler-bindir="/usr/x86_64-pc-linux-gnu/gcc-bin/4.6.3"
 # @CODE
 cuda_gccdir() {
+	debug-print-function ${FUNCNAME} "$@"
+
 	local gcc_bindir ver args="" flag ret
 
 	# Currently we only support the gnu compiler suite
@@ -98,6 +100,8 @@ cuda_gccdir() {
 # Correct NVCCFLAGS by adding the necessary reference to gcc bindir and
 # passing CXXFLAGS to underlying compiler without disturbing nvcc.
 cuda_sanitize() {
+	debug-print-function ${FUNCNAME} "$@"
+
 	local rawldflags=$(raw-ldflags)
 	# Be verbose if wanted
 	[[ "${CUDA_VERBOSE}" == true ]] && NVCCFLAGS+=" -v"
@@ -116,6 +120,8 @@ cuda_sanitize() {
 # @DESCRIPTION:
 # Call cuda_src_prepare for EAPIs not supporting src_prepare
 cuda_pkg_setup() {
+	debug-print-function ${FUNCNAME} "$@"
+
 	cuda_src_prepare
 }
 
@@ -123,6 +129,8 @@ cuda_pkg_setup() {
 # @DESCRIPTION:
 # Sanitise and export NVCCFLAGS by default
 cuda_src_prepare() {
+	debug-print-function ${FUNCNAME} "$@"
+
 	cuda_sanitize
 }
 
