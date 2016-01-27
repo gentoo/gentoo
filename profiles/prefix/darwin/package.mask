@@ -6,8 +6,8 @@
 # Fabian Groffen <grobian@gentoo.org> (31 May 2015)
 # fails to compile due to some missing compilerrt stuff, hints at asan,
 # not sure what the problem actually is
->=sys-devel/llvm-3.6
->=sys-devel/clang-3.6
+=sys-devel/llvm-3.6*
+=sys-devel/clang-3.6*
 
 # Fabian Groffen <grobian@gentoo.org> (08 Feb 2015)
 # missing faccesstat (missing gnulib), bug #538502
