@@ -6,7 +6,7 @@ EAPI="5"
 
 README_GENTOO_SUFFIX="-r1"
 
-inherit autotools eutils multilib readme.gentoo-r1 java-pkg-2
+inherit autotools eutils multilib readme.gentoo-r1 java-pkg-2 xdg-utils
 
 DESCRIPTION="FOSS Java browser plugin and Web Start implementation"
 HOMEPAGE="http://icedtea.classpath.org"
@@ -65,7 +65,12 @@ src_configure() {
 		$(use_with tagsoup tagsoup "${tagsoup}")
 	)
 
+	# See bug #573060.
+	xdg_environment_reset
+
+	# Rely on the --with-jdk-home option given above.
 	unset JAVA_HOME JDK_HOME CLASSPATH JAVAC JAVACFLAGS
+
 	econf "${config[@]}"
 }
 
