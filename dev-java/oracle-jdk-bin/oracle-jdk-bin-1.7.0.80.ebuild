@@ -293,7 +293,7 @@ src_install() {
 		for nlib in jdk1{5,6} ; do
 			install_name_tool -change \
 				/usr/lib/libgcc_s_ppc64.1.dylib \
-				$($(tc-getCC) -print-file-name=libgcc_s_ppc64.1.dylib) \
+				/usr/lib/libSystem.B.dylib \
 				"${ddest}"/lib/visualvm/profiler/lib/deployed/${nlib}/mac/libprofilerinterface.jnilib
 			install_name_tool -id \
 				"${EPREFIX}${dest}"/lib/visualvm/profiler/lib/deployed/${nlib}/mac/libprofilerinterface.jnilib \
