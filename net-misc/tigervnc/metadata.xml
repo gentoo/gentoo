@@ -4,6 +4,10 @@
   <maintainer type="person">
     <email>armin76@gentoo.org</email>
   </maintainer>
+  <maintainer type="person">
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
+  </maintainer>
   <use>
     <flag name="server">Build TigerVNC server</flag>
     <flag name="xorgmodule">Build the Xorg module</flag>
