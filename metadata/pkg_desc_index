@@ -13207,7 +13207,7 @@ media-tv/w_scan 20121111 20130331 20140118 20140727 20141122: Scan for DVB-C/DVB
 media-tv/wis-go7007 0.9.8-r3: Linux drivers for go7007 chipsets (Plextor ConvertX PVR)
 media-tv/xawtv 3.95-r2 3.95-r3: Small suite of video4linux related software
 media-tv/xbmc 11.0 12.1-r1 12.2-r1 12.3 13.0_p2 13.1 13.2 13.2-r1 9999: Stub ebuild to migrate people to media-tv/kodi
-media-tv/xmltv 0.5.57: Set of utilities to manage TV listings stored in the XMLTV format
+media-tv/xmltv 0.5.57 0.5.67: Set of utilities to manage TV listings stored in the XMLTV format
 media-video/2mandvd 1.8.5: The successor of ManDVD
 media-video/aacskeys 0.4.0c-r2 0.4.0e: Decrypt keys from an AACS source (HD DVD / Blu-Ray)
 media-video/abby 0.4.8: GUI front-end for cclive and clive video extraction utilities
@@ -16320,7 +16320,7 @@ sys-apps/ifd-gempc 1.0.6 1.0.7: GemCore based PC/SC reader drivers for pcsc-lite
 sys-apps/ifplugd 0.28-r9: Brings up/down ethernet ports automatically with cable detection
 sys-apps/input-utils 0.0.1_pre20081014 1.1: Small collection of linux input layer utils
 sys-apps/install-xattr 0.5 9999: Wrapper to coreutil's install to preserve Filesystem Extended Attributes
-sys-apps/intel-performance-counter-monitor 2.8: Intel Performance Counter Monitor - A better way to measure CPU utilization
+sys-apps/intel-performance-counter-monitor 2.8 2.10: Intel Performance Counter Monitor - A better way to measure CPU utilization
 sys-apps/inxi 2.2.14 2.2.19: A newer, better system information script for irc, administration, and system troubleshooters.
 sys-apps/iotools 1.4 1.5: Simple commands to access hardware device registers
 sys-apps/ipmitool 1.8.11 1.8.11-r1 1.8.14 1.8.14-r1: Utility for controlling IPMI enabled devices.
