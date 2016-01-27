@@ -35,7 +35,7 @@ src_configure() {
 	econf \
 		--disable-dependency-tracking \
 		--disable-static \
-		$(use_with cairo pango)
+		$(usex cairo "" "--with-pango")
 }
 
 src_install () {
