@@ -17,14 +17,14 @@ HOMEPAGE="http://maven.apache.org/"
 
 LICENSE="Apache-2.0"
 SLOT="3.1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 # TODO: Needs further resolution:
 #
 # - https://bugs.gentoo.org/show_bug.cgi?id=472850
 # - https://bugs.gentoo.org/show_bug.cgi?id=477436
 #
-DEPEND="|| ( app-eselect/eselect-java app-eselect/eselect-maven )
+DEPEND="app-eselect/eselect-java
 	|| ( dev-java/commons-logging:0 dev-java/log4j:0 dev-java/avalon-logkit:2.0 )
 	dev-java/aopalliance:1
 	dev-java/avalon-framework:4.1

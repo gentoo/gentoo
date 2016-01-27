@@ -6,7 +6,7 @@
 		<name>Daniel Campbell</name>
 	</maintainer>
 	<upstream>
-		<maintainer status="active">
+		<maintainer status="active" type="person">
 			<email>ignorantguru@users.sourceforge.net</email>
 		</maintainer>
 		<changelog>https://ignorantguru.github.com/spacefm/news.html</changelog>
@@ -18,7 +18,7 @@
 	<use>
 		<flag name="gtk2">Support GTK+ 2.x instead of GTK+ 3.x</flag>
 		<flag name="gtk3">Support GTK+ 3.x instead of GTK+ 2.x</flag>
-		<flag name="video-thumbnails">Support video thumbnails with ffmpegthumbnailer</flag>
+		<flag name="video-thumbnails">Support video thumbnails with <pkg>media-video/ffmpegthumbnailer</pkg></flag>
 	</use>
 	<longdescription lang="en">
 		SpaceFM is a file manager with built-in VFS, optional udisks-based device 

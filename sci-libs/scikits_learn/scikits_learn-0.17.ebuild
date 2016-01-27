@@ -89,7 +89,7 @@ python_compile_all() {
 			MPLCONFIGDIR="${BUILD_DIR}" \
 			PYTHONPATH="${d}" \
 			emake html
-		rm -r "${d}"/sklearn/datasets/{data,desr,images} || die
+		rm -r "${d}"/sklearn/datasets/{data,descr,images} || die
 	fi
 }
 
