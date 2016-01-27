@@ -4342,7 +4342,7 @@ dev-lang/gwydion-dylan-bin 2.4.0-r1: The Dylan Programming Language Compiler
 dev-lang/helium 1.6 1.8.1: The Helium Compiler
 dev-lang/hy 0.10.0 0.10.1 0.11.1: A LISP dialect running in python
 dev-lang/icc 13.0.0.079 13.0.1.117 13.1.2.146 13.1.3.163 13.1.5.192 14.0.0.080 14.0.1.106 14.0.2.144 14.0.3.174 15.0.0.090 15.0.1.133 15.0.2.164 15.0.3.187: Intel C/C++ Compiler
-dev-lang/icon 9.4.3-r5 9.5.0: very high level language
+dev-lang/icon 9.4.3-r5 9.5.0 9.5.0-r1: very high level language
 dev-lang/idb 13.0.0.079 13.0.1.117-r1 13.0.2.146 13.0.3.163 13.0.5.192 14.0.0.080 14.0.1.106 14.0.2.144 14.0.3.174: Intel C/C++/FORTRAN debugger
 dev-lang/ifc 13.0.0.079-r1 13.0.1.117 13.1.2.146 13.1.3.163 13.1.5.192 14.0.0.080 14.0.1.106 14.0.2.144 14.0.3.174 15.0.0.090 15.0.1.133 15.0.2.164 15.0.3.187: Intel FORTRAN Compiler
 dev-lang/inform 6.33.1_p2: design system for interactive fiction
