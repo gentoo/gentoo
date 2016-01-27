@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,13 +18,13 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc
 IUSE="doc test"
 
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx )
 	test? ( >=dev-python/pytest-2.2.0[${PYTHON_USEDEP}] )"
 
 PATCHES=(
+	"${FILESDIR}"/1.10.0-no-setuptools.patch
 	"${FILESDIR}"/1.9.0-mapping.patch
-	)
+)
 
 python_prepare_all() {
 	# https://bitbucket.org/gutworth/six/issues/139/
