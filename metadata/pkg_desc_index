@@ -13431,7 +13431,7 @@ net-analyzer/carl 0.9-r1: An rsync logfile analyzer
 net-analyzer/cbm 0.1-r1: Display the current traffic on all network devices
 net-analyzer/chaosreader 0.94 0.94-r1: A tool to trace TCP/UDP/... sessions and fetch application data from snoop or tcpdump logs
 net-analyzer/check_mk 1.2.4_p5 1.2.4_p5-r1: General purpose Nagios/Icinga plugin for retrieving data
-net-analyzer/cloudshark 1.0.2.174 1.0.3.180: Easily upload your wireshark captures to CloudShark
+net-analyzer/cloudshark 1.0.2.174 1.0.3.180 1.0.4: Easily upload your wireshark captures to CloudShark
 net-analyzer/cnet 3.3.1: Network simulation tool
 net-analyzer/cryptcat 1.2.1-r1 1.2.1-r2: netcat clone extended with twofish encryption
 net-analyzer/cutter 1.03-r1 1.04: TCP/IP Connection cutting on Linux Firewalls and Routers
