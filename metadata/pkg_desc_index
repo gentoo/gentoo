@@ -11567,7 +11567,7 @@ mail-filter/qmail-scanner 1.25-r1 2.05 2.06 2.08: E-Mail virus scanner for qmail
 mail-filter/razor 2.85-r2: Vipul's Razor is a distributed, collaborative spam detection and filtering network
 mail-filter/rblcheck 1.5-r1 1.5-r2: Perform lookups in RBL-styles services
 mail-filter/rmilter 1.6.7 1.7.0 1.7.1: Another sendmail milter for different mail checks
-mail-filter/rspamd 1.0.11 1.1.0 1.1.1 1.1.1-r1: Rapid spam filtering system
+mail-filter/rspamd 1.1.1 1.1.1-r1: Rapid spam filtering system
 mail-filter/scmail 1.3: a mail filter written in Scheme
 mail-filter/sid-milter 1.0.0-r6 1.0.0-r7: A milter-based application to provide Sender-ID verification service
 mail-filter/sieve-connect 0.87: Sieve Command Line Interface
@@ -14683,7 +14683,7 @@ net-misc/termpkg 3.3.9.1 3.3.9.1-r1: Termpkg, the Poor Man's Terminal Server
 net-misc/termtter 2.2.3: Termtter is a terminal based Twitter client
 net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
-net-misc/tigervnc 1.3.1-r1 1.3.1-r2 1.3.1-r3 1.3.1-r4 1.4.2-r1 1.4.2-r2: Remote desktop viewer display system
+net-misc/tigervnc 1.3.1-r1 1.3.1-r2 1.3.1-r3 1.3.1-r4 1.4.2-r1 1.4.2-r2 1.6.0: Remote desktop viewer display system
 net-misc/tightvnc 1.3.10-r2: A great client/server software package allowing remote network access to graphical desktops
 net-misc/tinc 1.0.25 1.0.26 1.1_pre11: tinc is an easy to configure VPN implementation
 net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
