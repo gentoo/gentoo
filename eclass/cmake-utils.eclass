@@ -20,7 +20,6 @@
 if [[ -z ${_CMAKE_UTILS_ECLASS} ]]; then
 _CMAKE_UTILS_ECLASS=1
 
-
 # @ECLASS-VARIABLE: BUILD_DIR
 # @DESCRIPTION:
 # Build directory where all cmake processed files should be generated.
@@ -127,7 +126,7 @@ case ${WANT_CMAKE} in
 	always)
 		;;
 	*)
-		has "${EAPI:-0}" 2 3 4 5 || die "WANT_CMAKE is banned in EAPI 6 and later"
+		[[ ${EAPI} == [2345] ]] || die "WANT_CMAKE is banned in EAPI 6 and later"
 		IUSE+=" ${WANT_CMAKE}"
 		CMAKEDEPEND+="${WANT_CMAKE}? ( "
 		;;
@@ -164,7 +163,7 @@ _cmake_use_me_now() {
 	local arg=$2
 	[[ ! -z $3 ]] && arg=$3
 
-	has "${EAPI:-0}" 2 3 4 5 || die "${FUNCNAME[1]} is banned in EAPI 6 and later: use -D$1${arg}=\"\$(usex $2)\" instead"
+	[[ ${EAPI} == [2345] ]] || die "${FUNCNAME[1]} is banned in EAPI 6 and later: use -D$1${arg}=\"\$(usex $2)\" instead"
 
 	local uper capitalised x
 	[[ -z $2 ]] && die "cmake-utils_use-$1 <USE flag> [<flag name>]"
@@ -186,7 +185,7 @@ _cmake_use_me_now_inverted() {
 	local arg=$2
 	[[ ! -z $3 ]] && arg=$3
 
-	if ! has "${EAPI:-0}" 2 3 4 5 && [[ "${FUNCNAME[1]}" != cmake-utils_use_find_package ]] ; then
+	if [[ ${EAPI} != [2345] ]] && [[ "${FUNCNAME[1]}" != cmake-utils_use_find_package ]] ; then
 		die "${FUNCNAME[1]} is banned in EAPI 6 and later: use -D$1${arg}=\"\$(usex $2)\" insteadss"
 	fi
 
@@ -283,7 +282,7 @@ cmake_comment_add_subdirectory() {
 # Comment out an add_subdirectory call in CMakeLists.txt in the current directory
 # Banned in EAPI 6 and later - use cmake_comment_add_subdirectory instead.
 comment_add_subdirectory() {
-	has "${EAPI:-0}" 2 3 4 5 || die "comment_add_subdirectory is banned in EAPI 6 and later - use cmake_comment_add_subdirectory instead"
+	[[ ${EAPI} == [2345] ]] || die "comment_add_subdirectory is banned in EAPI 6 and later - use cmake_comment_add_subdirectory instead"
 
 	cmake_comment_add_subdirectory "$@"
 }
@@ -315,7 +314,7 @@ cmake-utils_use_enable() { _cmake_use_me_now ENABLE_ "$@" ; }
 # if foo is enabled and -DCMAKE_DISABLE_FIND_PACKAGE_LibFoo=ON if it is disabled.
 # This can be used to make find_package optional.
 cmake-utils_use_find_package() {
-	if ! has "${EAPI:-0}" 2 3 4 5 && [[ "$#" != 2 ]] ; then
+	if [[ ${EAPI} != [2345] ]] && [[ "$#" != 2 ]] ; then
 		die "Usage: cmake-utils_use_find_package <USE flag> <package name>"
 	fi
 
@@ -456,7 +455,7 @@ enable_cmake-utils_src_prepare() {
 
 	pushd "${S}" > /dev/null || die
 
-	if ! has "${EAPI:-0}" 2 3 4 5 ; then
+	if [[ ${EAPI} != [2345] ]]; then
 		default_src_prepare
 		_cmake_cleanup_cmake
 	else
@@ -488,7 +487,7 @@ enable_cmake-utils_src_prepare() {
 enable_cmake-utils_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	has "${EAPI:-0}" 2 3 4 5 && _cmake_cleanup_cmake
+	[[ ${EAPI} == [2345] ]] && _cmake_cleanup_cmake
 
 	_cmake_check_build_dir
 
@@ -564,7 +563,7 @@ enable_cmake-utils_src_configure() {
 		fi
 	fi
 
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && local EPREFIX=
+	[[ ${EAPI} == 2 ]] && ! use prefix && local EPREFIX=
 
 	if [[ ${EPREFIX} ]]; then
 		cat >> "${build_rules}" <<- _EOF_ || die
@@ -604,7 +603,7 @@ enable_cmake-utils_src_configure() {
 	local mycmakeargstype=$(declare -p mycmakeargs 2>&-)
 	if [[ "${mycmakeargstype}" != "declare -a mycmakeargs="* ]]; then
 		if [[ -n "${mycmakeargstype}" ]] ; then
-			if has "${EAPI:-0}" 2 3 4 5 ; then
+			if [[ ${EAPI} != [2345] ]]; then
 				eqawarn "Declaring mycmakeargs as a variable is deprecated. Please use an array instead."
 			else
 				die "Declaring mycmakeargs as a variable is banned in EAPI=${EAPI}. Please use an array instead."
