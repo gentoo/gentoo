@@ -8,7 +8,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
 inherit check-reqs cmake-utils eutils flag-o-matic multilib \
-	multilib-minimal python-single-r1 toolchain-funcs pax-utils
+	multilib-minimal python-single-r1 toolchain-funcs pax-utils prefix
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="http://llvm.org/"
@@ -181,6 +181,9 @@ src_prepare() {
 		epatch "${FILESDIR}"/clang-3.5-gentoo-runtime-gcc-detection-v3.patch
 
 		epatch "${FILESDIR}"/clang-3.6-gentoo-install.patch
+
+		epatch "${FILESDIR}"/clang-3.4-darwin_prefix-include-paths.patch
+		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
 
 		sed -i -e "s^@EPREFIX@^${EPREFIX}^" \
 			tools/clang/tools/scan-build/scan-build || die
