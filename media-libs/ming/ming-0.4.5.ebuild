@@ -32,6 +32,8 @@ DEPEND="${RDEPEND}
 	virtual/yacc"
 PDEPEND="php? ( dev-php/ming-php )"
 
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
 S=${WORKDIR}/${P/_/.}
 PATCHES=( "${FILESDIR}"/${P}-gif-error.patch )
 
