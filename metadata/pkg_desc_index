@@ -2255,7 +2255,7 @@ app-text/goldendict 1.0.1: Feature-rich dictionary lookup program
 app-text/groonga 4.0.7-r1 5.0.3 5.0.9: An Embeddable Fulltext Search Engine
 app-text/groonga-normalizer-mysql 1.0.6 1.0.9 1.1.0: Groonga plugin that provides MySQL compatible normalizers
 app-text/grutatxt 2.0.16-r1: A converter from plain text to HTML and other markup languages
-app-text/gspell 0.1.2 0.2.2: Spell check library for GTK+ applications
+app-text/gspell 0.1.2 0.2.2 0.2.3: Spell check library for GTK+ applications
 app-text/gtkspell 2.0.16 3.0.4 3.0.7: Spell checking widget for GTK
 app-text/gtranslator 2.91.6 2.91.7: An enhanced gettext po file editor for GNOME
 app-text/gv 3.7.3-r1 3.7.3.90: Viewer for PostScript and PDF documents using Ghostscript
@@ -2974,7 +2974,7 @@ dev-dotnet/gtksourceview-sharp 2.24.0-r10: GtkSharp's gtksourceview module of th
 dev-dotnet/gudev-sharp 0.1: GUDEV API C# binding
 dev-dotnet/ikvm 0.46.0.1 0.46.0.2 7.1.4532.2: Java VM for .NET
 dev-dotnet/ikvm-bin 0.46.0.2 7.1.4532.2: Java VM for .NET
-dev-dotnet/libgdiplus 2.10.9 2.10.9-r1 2.10.9-r2 3.12 4.2: Library for using System.Drawing with mono
+dev-dotnet/libgdiplus 2.10.9 2.10.9-r1 2.10.9-r2 3.12 4.2-r1: Library for using System.Drawing with mono
 dev-dotnet/log4net 1.2.11: tool to help the programmer output log statements to a variety of output targets
 dev-dotnet/mono-addins 0.6.2 1.0-r1: A generic framework for creating extensible applications
 dev-dotnet/mono-nat 1.1.0: Mono.Nat is a C# library used for automatic port forwarding, using either uPnP or nat-pmp
@@ -10740,7 +10740,7 @@ gnome-base/libgnomeprintui 2.18.6-r1: User interface libraries for gnome print
 gnome-base/libgnomeui 2.24.5-r1: User Interface routines for Gnome
 gnome-base/libgtop 2.30.0 2.32.0: A library that provides top functionality to applications
 gnome-base/librsvg 2.40.11 2.40.12 2.40.13: Scalable Vector Graphics (SVG) rendering library
-gnome-base/nautilus 3.16.2 3.18.2 3.18.2-r1 3.18.3 3.18.4: A file manager for the GNOME desktop
+gnome-base/nautilus 3.16.2 3.18.2 3.18.2-r1 3.18.3 3.18.4 3.18.5: A file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r4: ORBit2 is a high-performance CORBA ORB
 gnome-extra/activity-log-manager 0.9.7 0.9.7-r1: GUI which lets you easily control what gets logged by Zeitgeist
 gnome-extra/assogiate 0.2.1 0.2.1-r1: assoGiate is an editor of the file types database for GNOME
@@ -13846,7 +13846,7 @@ net-fs/nfstest 1.0.2: Tools for testing either the NFS client or the NFS server
 net-fs/openafs 1.6.12-r1 1.6.14: The OpenAFS distributed file system
 net-fs/openafs-kernel 1.6.12-r1 1.6.14: The OpenAFS distributed file system kernel module
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
-net-fs/samba 3.5.21 3.5.22 3.6.25 4.2.7 4.2.7-r1 4.3.3 4.3.3-r1 4.3.4: Samba Suite Version 4
+net-fs/samba 3.5.21 3.5.22 3.6.25 4.2.7 4.2.7-r2 4.3.4-r1: Samba Suite Version 4
 net-fs/smbnetfs 0.5.3b 0.6.0 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/smbtatools 1.2.6: Tools for configuration and query of SMB Traffic Analyzer
