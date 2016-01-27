@@ -120,7 +120,7 @@ latex-package_src_doinstall() {
 				for i in `find . -maxdepth 1 -type f -name "*.${1}"`
 				do
 					einfo "Making documentation: $i"
-					texi2dvi -q -c --language=latex $i &> /dev/null
+					texi2dvi -q -c --language=latex $i &> /dev/null || die
 					done
 				;;
 			"tfm" | "vf" | "afm")
@@ -180,7 +180,7 @@ latex-package_src_compile() {
 	for i in `find \`pwd\` -maxdepth 1 -type f -name "*.ins"`
 	do
 		einfo "Extracting from $i"
-		latex --interaction=batchmode $i &> /dev/null
+		latex --interaction=batchmode $i &> /dev/null || die
 	done
 }
 
