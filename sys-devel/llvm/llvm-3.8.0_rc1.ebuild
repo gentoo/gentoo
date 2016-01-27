@@ -7,27 +7,33 @@ EAPI=5
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 PYTHON_COMPAT=( python2_7 )
 
-inherit check-reqs cmake-utils eutils flag-o-matic git-r3 multilib \
-	multilib-minimal python-single-r1 toolchain-funcs pax-utils
+inherit check-reqs cmake-utils eutils flag-o-matic multilib \
+	multilib-minimal python-single-r1 toolchain-funcs pax-utils prefix
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="http://llvm.org/"
-SRC_URI=""
-EGIT_REPO_URI="http://llvm.org/git/llvm.git
-	https://github.com/llvm-mirror/llvm.git"
+SRC_URI="http://llvm.org/pre-releases/${PV/_rc*}/${PV/3.8.0_}/${P/_}.src.tar.xz
+	clang? ( http://llvm.org/pre-releases/${PV/_rc*}/${PV/3.8.0_}/compiler-rt-${PV/_}.src.tar.xz
+		http://llvm.org/pre-releases/${PV/_rc*}/${PV/3.8.0_}/cfe-${PV/_}.src.tar.xz
+		http://llvm.org/pre-releases/${PV/_rc*}/${PV/3.8.0_}/clang-tools-extra-${PV/_}.src.tar.xz )
+	lldb? ( http://llvm.org/pre-releases/${PV/_rc*}/${PV/3.8.0_}/lldb-${PV/_}.src.tar.xz )"
+#	!doc? ( http://dev.gentoo.org/~voyageur/distfiles/${P/_rc*}-manpages.tar.bz2 )"
 
 LICENSE="UoI-NCSA"
 SLOT="0/${PV}"
-KEYWORDS=""
-IUSE="clang debug +doc gold libedit +libffi lldb multitarget ncurses ocaml
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+IUSE="clang debug doc gold libedit +libffi lldb multitarget ncurses ocaml
 	python +static-analyzer test xml video_cards_radeon kernel_Darwin"
 
 COMMON_DEPEND="
 	sys-libs/zlib:0=
 	clang? (
-		static-analyzer? ( dev-lang/perl:* )
+		python? ( ${PYTHON_DEPS} )
+		static-analyzer? (
+			dev-lang/perl:*
+			${PYTHON_DEPS}
+		)
 		xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
-		${PYTHON_DEPS}
 	)
 	gold? ( >=sys-devel/binutils-2.22:*[cxx] )
 	libedit? ( dev-libs/libedit:0=[${MULTILIB_USEDEP}] )
@@ -36,7 +42,8 @@ COMMON_DEPEND="
 	ocaml? (
 		>=dev-lang/ocaml-4.00.0:0=
 		dev-ml/findlib
-		dev-ml/ocaml-ctypes )"
+		dev-ml/ocaml-ctypes
+		!!<=sys-devel/llvm-3.7.0-r1[ocaml] )"
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
 DEPEND="${COMMON_DEPEND}
 	dev-lang/perl
@@ -66,6 +73,8 @@ PDEPEND="clang? ( =sys-devel/clang-${PV}-r100 )"
 # being exceeded. probably GC does not close them fast enough.
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	lldb? ( clang xml )"
+
+S=${WORKDIR}/${P/_}.src
 
 pkg_pretend() {
 	# in megs
@@ -101,6 +110,18 @@ pkg_pretend() {
 
 	local CHECKREQS_DISK_BUILD=${build_size}M
 	check-reqs_pkg_pretend
+
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		echo 'int main() {return 0;}' > "${T}"/test.cxx || die
+		ebegin "Trying to build a C++11 test program"
+		if ! $(tc-getCXX) -std=c++11 -o /dev/null "${T}"/test.cxx; then
+			eerror "LLVM-${PV} requires C++11-capable C++ compiler. Your current compiler"
+			eerror "does not seem to support -std=c++11 option. Please upgrade your compiler"
+			eerror "to gcc-4.7 or an equivalent version supporting C++11."
+			die "Currently active compiler does not support -std=c++11"
+		fi
+		eend ${?}
+	fi
 }
 
 pkg_setup() {
@@ -108,33 +129,21 @@ pkg_setup() {
 }
 
 src_unpack() {
-	if use clang; then
-		git-r3_fetch "http://llvm.org/git/compiler-rt.git
-			https://github.com/llvm-mirror/compiler-rt.git"
-		git-r3_fetch "http://llvm.org/git/clang.git
-			https://github.com/llvm-mirror/clang.git"
-		git-r3_fetch "http://llvm.org/git/clang-tools-extra.git
-			https://github.com/llvm-mirror/clang-tools-extra.git"
-	fi
-	if use lldb; then
-		git-r3_fetch "http://llvm.org/git/lldb.git
-			https://github.com/llvm-mirror/lldb.git"
-	fi
-	git-r3_fetch
+	default
 
 	if use clang; then
-		git-r3_checkout http://llvm.org/git/compiler-rt.git \
-			"${S}"/projects/compiler-rt
-		git-r3_checkout http://llvm.org/git/clang.git \
-			"${S}"/tools/clang
-		git-r3_checkout http://llvm.org/git/clang-tools-extra.git \
-			"${S}"/tools/clang/tools/extra
+		mv "${WORKDIR}"/cfe-${PV/_}.src "${S}"/tools/clang \
+			|| die "clang source directory move failed"
+		mv "${WORKDIR}"/compiler-rt-${PV/_}.src "${S}"/projects/compiler-rt \
+			|| die "compiler-rt source directory move failed"
+		mv "${WORKDIR}"/clang-tools-extra-${PV/_}.src "${S}"/tools/clang/tools/extra \
+			|| die "clang-tools-extra source directory move failed"
 	fi
+
 	if use lldb; then
-		git-r3_checkout http://llvm.org/git/lldb.git \
-			"${S}"/tools/lldb
+		mv "${WORKDIR}"/lldb-${PV/_}.src "${S}"/tools/lldb \
+			|| die "lldb source directory move failed"
 	fi
-	git-r3_checkout
 }
 
 src_prepare() {
@@ -162,7 +171,7 @@ src_prepare() {
 
 	# Fix llvm-config for shared linking and sane flags
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
-	epatch "${FILESDIR}"/llvm-3.9-llvm-config.patch
+	epatch "${FILESDIR}"/llvm-3.8-llvm-config.patch
 
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
@@ -171,20 +180,34 @@ src_prepare() {
 		# Automatically select active system GCC's libraries, bugs #406163 and #417913
 		epatch "${FILESDIR}"/clang-3.5-gentoo-runtime-gcc-detection-v3.patch
 
+		epatch "${FILESDIR}"/clang-3.4-darwin_prefix-include-paths.patch
+		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
+
+		sed -i -e "s^@EPREFIX@^${EPREFIX}^" \
+			tools/clang/tools/scan-build/bin/scan-build || die
+
 		# Install clang runtime into /usr/lib/clang
 		# https://llvm.org/bugs/show_bug.cgi?id=23792
 		epatch "${FILESDIR}"/cmake/clang-0001-Install-clang-runtime-into-usr-lib-without-suffix-3.8.patch
 		epatch "${FILESDIR}"/cmake/compiler-rt-0001-cmake-Install-compiler-rt-into-usr-lib-without-suffi.patch
+
+		# Do not force -march flags on arm platforms
+		# https://bugs.gentoo.org/show_bug.cgi?id=562706
+		epatch "${FILESDIR}"/cmake/${PN}-3.8.0-compiler_rt_arm_march_flags.patch
 
 		# Make it possible to override CLANG_LIBDIR_SUFFIX
 		# (that is used only to find LLVMgold.so)
 		# https://llvm.org/bugs/show_bug.cgi?id=23793
 		epatch "${FILESDIR}"/cmake/clang-0002-cmake-Make-CLANG_LIBDIR_SUFFIX-overridable.patch
 
+		pushd projects/compiler-rt >/dev/null || die
+
 		# Fix WX sections, bug #421527
-		find "${S}"/projects/compiler-rt/lib/builtins -type f -name \*.S -exec sed \
+		find lib/builtins -type f -name '*.S' -exec sed \
 			 -e '$a\\n#if defined(__linux__) && defined(__ELF__)\n.section .note.GNU-stack,"",%progbits\n#endif' \
-			 -i {} \; || die
+			 -i {} + || die
+
+		popd >/dev/null || die
 	fi
 
 	if use lldb; then
@@ -376,7 +399,7 @@ src_install() {
 
 	if use clang; then
 		# note: magic applied in multilib_src_install()!
-		CLANG_VERSION=3.9
+		CLANG_VERSION=${PV%.*}
 
 		MULTILIB_CHOST_TOOLS+=(
 			/usr/bin/clang
@@ -399,8 +422,8 @@ multilib_src_install() {
 	cmake-utils_src_install
 
 	if multilib_is_native_abi; then
-		# Install docs.
-		#use doc && dohtml -r "${S}"/docs/_build/html/
+		# Install man pages.
+		use doc || doman "${WORKDIR}"/${PN}-3.8.0-manpages/*.1
 
 		# Symlink the gold plugin.
 		if use gold; then
@@ -455,6 +478,31 @@ multilib_src_install_all() {
 	if use clang; then
 		pushd tools/clang >/dev/null || die
 
+		if use static-analyzer ; then
+			pushd tools/scan-build >/dev/null || die
+
+			dobin ccc-analyzer scan-build
+			dosym ccc-analyzer /usr/bin/c++-analyzer
+			doman scan-build.1
+
+			insinto /usr/share/llvm
+			doins scanview.css sorttable.js
+
+			popd >/dev/null || die
+		fi
+
+		if use static-analyzer ; then
+			pushd tools/scan-view >/dev/null || die
+
+			python_doscript scan-view
+
+			touch __init__.py || die
+			python_moduleinto clang
+			python_domodule *.py Resources
+
+			popd >/dev/null || die
+		fi
+
 		if use python ; then
 			pushd bindings/python/clang >/dev/null || die
 
@@ -470,14 +518,14 @@ multilib_src_install_all() {
 		popd >/dev/null || die
 
 		python_fix_shebang "${ED}"
-		if use static-analyzer; then
-			python_optimize "${ED}"usr/share/scan-view
+		if use lldb && use python; then
+			python_optimize
 		fi
 	fi
 }
 
 pkg_postinst() {
-	if use clang && ! has_version 'sys-libs/libomp'; then
+	if use clang && ! has_version sys-libs/libomp; then
 		elog "To enable OpenMP support in clang, install sys-libs/libomp."
 	fi
 }

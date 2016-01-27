@@ -1,0 +1,17 @@
+diff -Naur llvm-3.8.0rc1.src.orig/projects/compiler-rt/cmake/config-ix.cmake llvm-3.8.0rc1.src/projects/compiler-rt/cmake/config-ix.cmake
+--- llvm-3.8.0rc1.src.orig/projects/compiler-rt/cmake/config-ix.cmake	2016-01-13 17:56:15.000000000 +0100
++++ llvm-3.8.0rc1.src/projects/compiler-rt/cmake/config-ix.cmake	2016-01-27 19:43:21.265315207 +0100
+@@ -219,13 +219,6 @@
+   elseif("${COMPILER_RT_DEFAULT_TARGET_ARCH}" MATCHES "mips")
+     test_target_arch(mips "" "-mips32r2" "--target=mips-linux-gnu")
+     test_target_arch(mips64 "" "-mips64r2" "--target=mips64-linux-gnu" "-mabi=n64")
+-  elseif("${COMPILER_RT_DEFAULT_TARGET_ARCH}" MATCHES "arm")
+-    test_target_arch(arm "" "-march=armv7-a" "-mfloat-abi=soft")
+-    test_target_arch(armhf "" "-march=armv7-a" "-mfloat-abi=hard")
+-  elseif("${COMPILER_RT_DEFAULT_TARGET_ARCH}" MATCHES "aarch32")
+-    test_target_arch(aarch32 "" "-march=armv8-a")
+-  elseif("${COMPILER_RT_DEFAULT_TARGET_ARCH}" MATCHES "aarch64")
+-    test_target_arch(aarch64 "" "-march=armv8-a")
+   elseif("${COMPILER_RT_DEFAULT_TARGET_ARCH}" MATCHES "wasm32")
+     test_target_arch(wasm32 "" "--target=wasm32-unknown-unknown")
+   elseif("${COMPILER_RT_DEFAULT_TARGET_ARCH}" MATCHES "wasm64")
