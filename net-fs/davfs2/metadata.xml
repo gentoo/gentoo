@@ -6,7 +6,7 @@
 		<name>Gokturk 'gokturk' Yuksek</name>
 		<description>Maintainer. Assign bugs on him</description>
 	</maintainer>	
-<maintainer type="project">
+	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
