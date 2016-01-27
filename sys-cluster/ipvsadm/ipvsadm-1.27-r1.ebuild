@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit eutils linux-info toolchain-funcs
 
@@ -15,8 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="static-libs"
 
-RDEPEND=">=sys-libs/ncurses-5.2
-	dev-libs/libnl
+RDEPEND=">=sys-libs/ncurses-5.2:*
+	dev-libs/libnl:=
 	>=dev-libs/popt-1.16"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
@@ -29,6 +29,7 @@ pkg_pretend() {
 }
 
 src_prepare() {
+	default
 	epatch "${FILESDIR}"/${PN}-1.27-buildsystem.patch
 	# Merged upstream in 1.27
 	#epatch "${FILESDIR}"/${PN}-1.26-stack_smashing.patch # bug 371903
@@ -37,8 +38,14 @@ src_prepare() {
 }
 
 src_compile() {
+	local libnl_include
+	if has_version ">=dev-libs/libnl-3.0"; then
+		libnl_include=$(pkg-config --cflags libnl-3.0)
+	else
+		libnl_include=""
+	fi
 	emake -e \
-		INCLUDE="-I.. -I." \
+		INCLUDE="-I.. -I. ${libnl_include}" \
 		CC="$(tc-getCC)" \
 		HAVE_NL=1 \
 		STATIC=${STATIC} \
