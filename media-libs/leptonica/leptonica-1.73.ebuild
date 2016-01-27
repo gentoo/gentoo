@@ -1,17 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools-multilib
+inherit eutils multilib-minimal
 
 DESCRIPTION="C library for image processing and analysis"
 HOMEPAGE="http://www.leptonica.org/"
-SRC_URI="http://www.leptonica.com/source/${P}.tar.gz"
-
+SRC_URI="http://www.leptonica.org/source/${P}.tar.gz"
 LICENSE="Apache-2.0"
-SLOT="0"
+SLOT="0/5"
 KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos"
 IUSE="gif jpeg jpeg2k png static-libs test tiff utils webp zlib"
 
@@ -28,9 +27,12 @@ DEPEND="gif? ( media-libs/giflib:=[${MULTILIB_USEDEP}] )
 	zlib? ( sys-libs/zlib:=[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}"
 
+ECONF_SOURCE="${S}"
 DOCS=( README version-notes )
 
 src_prepare() {
+	default
+
 	# unhtmlize docs
 	local X
 	for X in ${DOCS[@]}; do
@@ -38,21 +40,23 @@ src_prepare() {
 			"${X}.html" > "${X}" || die 'awk failed'
 		rm -f -- "${X}.html"
 	done
-
-	autotools-utils_src_prepare
 }
 
 multilib_src_configure() {
-	local myeconfargs=(
-		$(use_with gif giflib)
-		$(use_with jpeg)
-		$(use_with jpeg2k libopenjpeg)
-		$(use_with png libpng)
-		$(use_with tiff libtiff)
-		$(use_with webp libwebp)
-		$(use_with zlib)
-		$(use_enable static-libs static)
+	econf \
+		--enable-shared \
+		$(use_with gif giflib) \
+		$(use_with jpeg) \
+		$(use_with jpeg2k libopenjpeg) \
+		$(use_with png libpng) \
+		$(use_with tiff libtiff) \
+		$(use_with webp libwebp) \
+		$(use_with zlib) \
+		$(use_enable static-libs static) \
 		$(multilib_native_use_enable utils programs)
-	)
-	autotools-utils_src_configure
+}
+
+src_install() {
+	multilib-minimal_src_install
+	prune_libtool_files
 }
