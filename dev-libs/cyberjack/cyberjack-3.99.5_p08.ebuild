@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,10 +8,10 @@ inherit autotools versionator eutils linux-info toolchain-funcs udev
 MY_PV="${PV/_p/_SP}"
 MY_PV2="${PV/_p/final.SP}"
 MY_P="pcsc-${PN}-${MY_PV2}"
-MY_P2="${PN}-$(get_version_component_range 4 $MY_PV)"
+#MY_P2="${PN}-$(get_version_component_range 4 $MY_PV)"
 
 DESCRIPTION="REINER SCT cyberJack pinpad/e-com USB user space driver library"
-HOMEPAGE="http://www.reiner-sct.de/ http://www.libchipcard.de/"
+HOMEPAGE="http://www.reiner-sct.de/"
 SRC_URI="http://support.reiner-sct.de/downloads/LINUX/V${MY_PV}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
@@ -25,7 +25,7 @@ IUSE="fox static-libs threads +udev +usb"
 COMMON_DEPEND="sys-apps/pcsc-lite
 	usb? ( virtual/libusb:1 )
 	fox? (
-		>=x11-libs/fox-1.6
+		>=x11-libs/fox-1.6:=
 		dev-libs/libxml2
 		)"
 RDEPEND="${COMMON_DEPEND}
@@ -33,7 +33,8 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 
-S=${WORKDIR}/${MY_P2}
+#S=${WORKDIR}/${MY_P2}
+S=${WORKDIR}/${MY_P}
 
 DOCS="ChangeLog NEWS doc/README.txt"
 
