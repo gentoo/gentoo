@@ -8,8 +8,8 @@ inherit autotools eutils
 
 DESCRIPTION="Lightweight C Jabber library"
 HOMEPAGE="https://github.com/mcabber/loudmouth"
-#SRC_URI="https://github.com/mcabber/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-SRC_URI="https://mcabber.com/files/${PN}/${P}.tar.bz2"
+SRC_URI="https://github.com/mcabber/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+#SRC_URI="https://mcabber.com/files/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
