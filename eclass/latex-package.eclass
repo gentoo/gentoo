@@ -51,9 +51,13 @@
 # you must either grab each file individually, or find a place to mirror an
 # archive of them.  (iBiblio)
 #
-# It inherits base.
+# It inherits base in EAPI 5 and earlier.
 
-inherit base
+case ${EAPI:-0} in
+	0|1|2|3|4|5) inherit base ;;
+	6) ;;
+	*) die "Unknown EAPI ${EAPI} for ${ECLASS}" ;;
+esac
 
 RDEPEND="virtual/latex-base"
 DEPEND="${RDEPEND}
@@ -69,7 +73,10 @@ SUPPLIER="misc"
 
 # Kept for backwards compatibility
 latex-package_has_tetex_3() {
-	return 0
+	case ${EAPI:-0} in
+		0|1|2|3|4|5) return 0 ;;
+		*) die "${FUNCNAME} no longer supported in EAPI ${EAPI}" ;;
+	esac
 }
 
 # @FUNCTION: latex-package_src_doinstall
