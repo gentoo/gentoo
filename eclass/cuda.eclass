@@ -126,7 +126,6 @@ cuda_src_prepare() {
 	cuda_sanitize
 }
 
-
 case "${EAPI:-0}" in
 	0|1)
 		EXPORT_FUNCTIONS pkg_setup ;;
