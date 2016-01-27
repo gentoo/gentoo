@@ -16,6 +16,8 @@ inherit flag-o-matic toolchain-funcs versionator
 # @EXAMPLE:
 # inherit cuda
 
+if [[ -z ${_CUDA_ECLASS} ]]; then
+
 # @ECLASS-VARIABLE: NVCCFLAGS
 # @DESCRIPTION:
 # nvcc compiler flags (see nvcc --help), which should be used like
@@ -132,3 +134,6 @@ case "${EAPI:-0}" in
 		EXPORT_FUNCTIONS src_prepare ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
+
+_CUDA_ECLASS=1
+fi
