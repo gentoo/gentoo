@@ -397,7 +397,7 @@ app-benchmarks/acovea 5.1.1 5.1.1-r1: Analysis of Compiler Options via Evolution
 app-benchmarks/acovea-gtk 1.0.1: Analysis of Compiler Options via Evolutionary Algorithm GUI
 app-benchmarks/bashmark 0.6.2: Geno's cross platform benchmarking suite
 app-benchmarks/bonnie 2.0.6 2.0.6-r1: Performance Test of Filesystem I/O using standard C library calls
-app-benchmarks/bonnie++ 1.96 1.96-r1 1.97: Hard drive bottleneck testing benchmark suite
+app-benchmarks/bonnie++ 1.96 1.97: Hard drive bottleneck testing benchmark suite
 app-benchmarks/bootchart2 0.14.7-r1: Performance analysis and visualization of the system boot process
 app-benchmarks/contest 0.61 0.61-r1: Test system responsiveness to compare different kernels
 app-benchmarks/cpuburn 1.4a 1.4a-r1: Designed to heavily load CPU chips [testing purposes]
@@ -13915,7 +13915,7 @@ net-im/ktp-send-file 0.9.0: KDE Telepathy file manager plugin to send files to c
 net-im/ktp-text-ui 0.9.0: KDE Telepathy text chat window
 net-im/librvp 0.9.6 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/licq 1.8.2: ICQ Client with v8 support
-net-im/mcabber 0.10.2_p20131025 0.10.2_p20131025-r1 0.10.3 1.0.0: A small Jabber console client with various features, like MUC, SSL, PGP
+net-im/mcabber 0.10.2_p20131025 0.10.2_p20131025-r1 0.10.3 1.0.0 1.0.1: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r1: an IRC gateway to IM networks
 net-im/mu-conference 0.7 0.8-r1 0.8.81: Multi-User Chat for jabberd
 net-im/openfire 3.10.0 3.10.1 3.10.2 3.10.3 4.0.0: Openfire (formerly wildfire) real time collaboration (RTC) server
