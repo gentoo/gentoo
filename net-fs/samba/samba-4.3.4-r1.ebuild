@@ -31,6 +31,12 @@ ldap pam quota selinux syslog +system-mitkrb5 systemd test winbind"
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/samba-4.0/policy.h
 	/usr/include/samba-4.0/dcerpc_server.h
+	/usr/include/samba-4.0/ctdb.h
+	/usr/include/samba-4.0/ctdb_client.h
+	/usr/include/samba-4.0/ctdb_protocol.h
+	/usr/include/samba-4.0/ctdb_private.h
+	/usr/include/samba-4.0/ctdb_typesafe_cb.h
+	/usr/include/samba-4.0/ctdb_version.h
 )
 
 # sys-apps/attr is an automagic dependency (see bug #489748)
@@ -41,7 +47,7 @@ CDEPEND="${PYTHON_DEPS}
 	dev-libs/popt[${MULTILIB_USEDEP}]
 	sys-libs/readline:=
 	virtual/libiconv
-	dev-python/subunit[${PYTHON_USEDEP}]
+	dev-python/subunit[${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	>=net-libs/socket_wrapper-1.1.3[${MULTILIB_USEDEP}]
 	sys-apps/attr[${MULTILIB_USEDEP}]
 	sys-libs/libcap
@@ -57,7 +63,7 @@ CDEPEND="${PYTHON_DEPS}
 	acl? ( virtual/acl )
 	addns? ( net-dns/bind-tools[gssapi] )
 	aio? ( dev-libs/libaio )
-	cluster? ( >=dev-db/ctdb-1.0.114_p1 )
+	cluster? ( !dev-db/ctdb )
 	cups? ( net-print/cups )
 	dmapi? ( sys-apps/dmapi )
 	fam? ( virtual/fam )
@@ -89,6 +95,8 @@ CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
 
 WAF_BINARY="${S}/buildtools/bin/waf"
 
+SHAREDMODS=""
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 	if use aio ; then
@@ -102,6 +110,9 @@ pkg_setup() {
 			ewarn
 			ewarn "and recompile your kernel..."
 		fi
+	fi
+	if use cluster ; then
+		SHAREDMODS="${SHAREDMODS}idmap_rid,idmap_tdb2,idmap_ad"
 	fi
 }
 
@@ -141,7 +152,6 @@ multilib_src_configure() {
 			$(use_with ads)
 			$(usex ads '--with-shared-modules=idmap_ad' '')
 			$(use_with aio aio-support)
-			$(usex cluster '--with-ctdb-dir=/usr' '')
 			$(use_enable avahi)
 			$(use_with cluster cluster-support)
 			$(use_enable cups)
@@ -159,6 +169,7 @@ multilib_src_configure() {
 			$(usex system-mitkrb5 '--with-system-mitkrb5' '')
 			$(use_with winbind)
 			$(usex test '--enable-selftest' '')
+			--with-shared-modules=${SHAREDMODS}
 		)
 	else
 		myconf+=(
