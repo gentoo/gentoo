@@ -19,7 +19,7 @@ IUSE="
 "
 
 RDEPEND="
-	>=sys-libs/ncurses-5.7-r6:5=
+	>=sys-libs/ncurses-5.7-r6:=
 	kernel_Darwin? ( dev-perl/Mac-Pasteboard )
 	media-libs/fontconfig
 	perl? ( dev-lang/perl:= )
