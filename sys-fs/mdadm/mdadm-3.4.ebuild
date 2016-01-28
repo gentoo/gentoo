@@ -1,15 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils flag-o-matic multilib systemd toolchain-funcs udev
 
 DESCRIPTION="A useful tool for running RAID systems - it can be used as a replacement for the raidtools"
 HOMEPAGE="http://neil.brown.name/blog/mdadm"
-DEB_PR=2
+DEB_PR=1.1
 SRC_URI="mirror://kernel/linux/utils/raid/mdadm/${P}.tar.xz
-		mirror://debian/pool/main/m/mdadm/${PN}_3.3-${DEB_PR}.debian.tar.gz"
+		mirror://debian/pool/main/m/mdadm/${PN}_3.3.4-${DEB_PR}.debian.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -66,8 +66,8 @@ src_install() {
 	insinto /etc/default
 	newins "${FILESDIR}"/etc-default-mdadm mdadm
 
-	insinto /etc/cron.weekly
-	newins "${FILESDIR}"/mdadm.weekly mdadm
+	exeinto /etc/cron.weekly
+	newexe "${FILESDIR}"/mdadm.weekly mdadm
 }
 
 pkg_postinst() {

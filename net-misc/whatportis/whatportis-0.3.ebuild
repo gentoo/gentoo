@@ -24,9 +24,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
-# https://github.com/ncrocfer/whatportis/issues/1
-RESTRICT="test"
-
 python_test() {
 	"${EPYTHON}" test_${PN}.py || die
 }
