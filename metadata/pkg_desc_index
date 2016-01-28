@@ -17002,7 +17002,7 @@ sys-kernel/rsbac-sources 3.14.28: RSBAC kernel sources (kernel series 3.14)
 sys-kernel/rt-sources 3.14.46_p46 3.18.17_p14 4.0.5_p4 4.1.5_p5: Full Linux 4.1 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.10.93 3.10.94 3.12.50 3.12.52 3.14.57 3.14.58 3.18.24 3.18.25 4.1.13 4.1.15 4.2.6 4.2.8 4.3.0 4.3.3 4.4.0: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.76 3.4.110 3.10.95 3.12.52 3.14.59 3.18.25 4.1.16 4.3.4 4.4.0: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.76 3.4.110 3.10.95 3.12.53 3.14.59 3.18.26 4.1.16 4.3.4 4.4.0: Full sources for the Linux kernel
 sys-kernel/vserver-sources 2.3.0.36.32 2.3.6.5 2.3.6.8 2.3.6.11 2.3.6.14 2.3.7.3 2.3.7.4: Full sources including Linux-VServer patchsets for the 3.18 kernel tree
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
@@ -17670,7 +17670,6 @@ x11-apps/ardesia 1.0: Color, record and share free-hand annotations on screen an
 x11-apps/bdftopcf 1.0.4 1.0.5: X.Org bdftopcf application
 x11-apps/beforelight 1.0.5: Sample implementation of screen saver
 x11-apps/bitmap 1.0.7 1.0.8: X.Org bitmap application
-x11-apps/ccsm 0.8.4-r4 0.8.4-r5: Compizconfig Settings Manager
 x11-apps/copyq 2.5.0: Clipboard manager with advanced features
 x11-apps/editres 1.0.6: a dynamic resource editor for X Toolkit applications
 x11-apps/fonttosfnt 1.0.4-r1: X.Org fonttosfnt application
@@ -17694,7 +17693,6 @@ x11-apps/scripts 1.0.1-r1: start an X program on a remote machine
 x11-apps/sessreg 1.0.8 1.1.0: manage utmp/wtmp entries for non-init clients
 x11-apps/setxkbmap 1.3.0 1.3.1: Controls the keyboard layout of a running X server
 x11-apps/showfont 1.0.4 1.0.5: font dumper for X font server
-x11-apps/simple-ccsm 0.8.4-r2: Simplified Compizconfig Settings Manager
 x11-apps/smproxy 1.0.5 1.0.6: Session Manager Proxy
 x11-apps/spotlighter 0.1: Shows a movable and resizable spotlight on the screen
 x11-apps/transset 1.0.1: An utility for setting opacity property
@@ -18019,6 +18017,7 @@ x11-misc/bumblebee 3.2.1: Service providing elegant and stable means of managing
 x11-misc/cairo-clock 0.3.3 0.3.4: An analog clock displaying the system-time
 x11-misc/calise 0.4.2: Computes ambient brightness and sets screen's correct backlight using a webcam
 x11-misc/cbatticon 1.3.2 1.4.1 1.4.2 1.5.0: A lightweight and fast battery icon that sits in your system tray
+x11-misc/ccsm 0.8.4-r4 0.8.4-r5: Compizconfig Settings Manager
 x11-misc/cdm 0.5.3 0.6.1_pre20130419: The Console Display Manager
 x11-misc/chgres 0.1-r1: A very simple command line utility for changing X resolutions
 x11-misc/colord 1.2.12: System service to accurately color manage input and output devices
@@ -18168,6 +18167,7 @@ x11-misc/set_opacity 1.0 9999: Tool for set real compositing for windows through
 x11-misc/shared-mime-info 1.4 1.4-r1 1.5: The Shared MIME-info Database specification
 x11-misc/shutter 0.90 0.90.1 0.91 0.93 0.93.1: Feature-rich screenshot program
 x11-misc/shutterbug 1.6.36 1.7.45 1.7.47 1.7.49: Screenshot utility based on the FOX Toolkit
+x11-misc/simple-ccsm 0.8.4-r2: Simplified Compizconfig Settings Manager
 x11-misc/simpleswitcher 9999: lightweight EWMH window switcher with features and looks of dmenu
 x11-misc/sisctrl 0.0.20051202: tool that allows you to tune SiS drivers from X
 x11-misc/skippy 0.5.0: A full-screen task-switcher providing Apple Expose-like functionality with various WMs
