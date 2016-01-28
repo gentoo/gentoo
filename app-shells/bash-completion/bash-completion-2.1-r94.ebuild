@@ -21,11 +21,6 @@ RDEPEND=">=app-shells/bash-4.3_p30-r1
 	!app-eselect/eselect-bashcomp"
 PDEPEND=">=app-shells/gentoo-bashcomp-20140911"
 
-# Bug 543100
-PATCHES=(
-	"${FILESDIR}"/${P}-escape-characters.patch
-)
-
 # Remove unwanted completions.
 STRIP_COMPLETIONS=(
 	# Included in util-linux, bug #468544
@@ -41,7 +36,8 @@ STRIP_COMPLETIONS=(
 
 src_prepare() {
 	epatch "${WORKDIR}"/bashcomp2-pre1/*.patch
-	epatch "${PATCHES[@]}"
+	# Bug 543100
+	epatch "${FILESDIR}"/${P}-escape-characters.patch
 }
 
 src_test() { :; } # Skip testsuite because of interactive shell wrt #477066
