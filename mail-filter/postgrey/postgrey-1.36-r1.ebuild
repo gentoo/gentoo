@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,8 +22,9 @@ RDEPEND=">=dev-lang/perl-5.6.0
 		dev-perl/IO-Multiplex
 		dev-perl/BerkeleyDB
 		dev-perl/Net-DNS
-		dev-perl/Parse-Syslog
+		dev-perl/NetAddr-IP
 		dev-perl/Net-RBLClient
+		dev-perl/Parse-Syslog
 		virtual/perl-Digest-SHA
 		>=sys-libs/db-4.1"
 
