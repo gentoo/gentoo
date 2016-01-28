@@ -134,7 +134,7 @@ src_prepare() {
 	if ! use geolocation; then
 		punt_bogus_dep KF5 NetworkManagerQt
 		pushd dataengines > /dev/null || die
-			comment_add_subdirectory geolocation
+			cmake_comment_add_subdirectory geolocation
 		popd > /dev/null || die
 	fi
 }
