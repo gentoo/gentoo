@@ -185,7 +185,7 @@ _cmake_use_me_now_inverted() {
 	local arg=$2
 	[[ ! -z $3 ]] && arg=$3
 
-	if [[ ${EAPI} != [2345] ]] && [[ "${FUNCNAME[1]}" != cmake-utils_use_find_package ]] ; then
+	if [[ ${EAPI} != [2345] && "${FUNCNAME[1]}" != cmake-utils_use_find_package ]] ; then
 		die "${FUNCNAME[1]} is banned in EAPI 6 and later: use -D$1${arg}=\"\$(usex $2)\" insteadss"
 	fi
 
@@ -314,7 +314,7 @@ cmake-utils_use_enable() { _cmake_use_me_now ENABLE_ "$@" ; }
 # if foo is enabled and -DCMAKE_DISABLE_FIND_PACKAGE_LibFoo=ON if it is disabled.
 # This can be used to make find_package optional.
 cmake-utils_use_find_package() {
-	if [[ ${EAPI} != [2345] ]] && [[ "$#" != 2 ]] ; then
+	if [[ ${EAPI} != [2345] && "$#" != 2 ]] ; then
 		die "Usage: cmake-utils_use_find_package <USE flag> <package name>"
 	fi
 
@@ -603,7 +603,7 @@ enable_cmake-utils_src_configure() {
 	local mycmakeargstype=$(declare -p mycmakeargs 2>&-)
 	if [[ "${mycmakeargstype}" != "declare -a mycmakeargs="* ]]; then
 		if [[ -n "${mycmakeargstype}" ]] ; then
-			if [[ ${EAPI} != [2345] ]]; then
+			if [[ ${EAPI} == [2345] ]]; then
 				eqawarn "Declaring mycmakeargs as a variable is deprecated. Please use an array instead."
 			else
 				die "Declaring mycmakeargs as a variable is banned in EAPI=${EAPI}. Please use an array instead."

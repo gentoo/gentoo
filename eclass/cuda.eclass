@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,6 +15,8 @@ inherit flag-o-matic toolchain-funcs versionator
 # cuda_sanatize.
 # @EXAMPLE:
 # inherit cuda
+
+if [[ -z ${_CUDA_ECLASS} ]]; then
 
 # @ECLASS-VARIABLE: NVCCFLAGS
 # @DESCRIPTION:
@@ -40,6 +42,8 @@ inherit flag-o-matic toolchain-funcs versionator
 # -> --compiler-bindir="/usr/x86_64-pc-linux-gnu/gcc-bin/4.6.3"
 # @CODE
 cuda_gccdir() {
+	debug-print-function ${FUNCNAME} "$@"
+
 	local gcc_bindir ver args="" flag ret
 
 	# Currently we only support the gnu compiler suite
@@ -96,6 +100,8 @@ cuda_gccdir() {
 # Correct NVCCFLAGS by adding the necessary reference to gcc bindir and
 # passing CXXFLAGS to underlying compiler without disturbing nvcc.
 cuda_sanitize() {
+	debug-print-function ${FUNCNAME} "$@"
+
 	local rawldflags=$(raw-ldflags)
 	# Be verbose if wanted
 	[[ "${CUDA_VERBOSE}" == true ]] && NVCCFLAGS+=" -v"
@@ -114,6 +120,8 @@ cuda_sanitize() {
 # @DESCRIPTION:
 # Call cuda_src_prepare for EAPIs not supporting src_prepare
 cuda_pkg_setup() {
+	debug-print-function ${FUNCNAME} "$@"
+
 	cuda_src_prepare
 }
 
@@ -121,14 +129,18 @@ cuda_pkg_setup() {
 # @DESCRIPTION:
 # Sanitise and export NVCCFLAGS by default
 cuda_src_prepare() {
+	debug-print-function ${FUNCNAME} "$@"
+
 	cuda_sanitize
 }
-
 
 case "${EAPI:-0}" in
 	0|1)
 		EXPORT_FUNCTIONS pkg_setup ;;
-	2|3|4|5)
+	2|3|4|5|6)
 		EXPORT_FUNCTIONS src_prepare ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
+
+_CUDA_ECLASS=1
+fi
