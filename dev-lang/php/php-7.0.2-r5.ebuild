@@ -158,7 +158,9 @@ DEPEND="${DEPEND}
 
 php="=${CATEGORY}/${PF}"
 
+# Without USE=readline, the interactive "php -a" CLI will hang.
 REQUIRED_USE="
+	cli? ( readline )
 	truetype? ( gd )
 	vpx? ( gd )
 	cjk? ( gd )
@@ -766,11 +768,6 @@ pkg_postinst() {
 	elog "Make sure that PHP_TARGETS in ${EPREFIX}/etc/make.conf includes"
 	elog "php${SLOT/./-} in order to compile extensions for the ${SLOT} ABI."
 	elog
-	if ! use readline && use cli ; then
-		ewarn "Note that in order to use php interactivly, you need to"
-		ewarn "enable the readline USE flag or php -a will hang."
-		elog
-	fi
 	elog "This ebuild installed a version of php.ini based on"
 	elog "php.ini-${PHP_INI_VERSION}. You can choose which version of"
 	elog "php.ini to install by default by setting PHP_INI_VERSION"
