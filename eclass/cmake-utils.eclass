@@ -603,7 +603,7 @@ enable_cmake-utils_src_configure() {
 	local mycmakeargstype=$(declare -p mycmakeargs 2>&-)
 	if [[ "${mycmakeargstype}" != "declare -a mycmakeargs="* ]]; then
 		if [[ -n "${mycmakeargstype}" ]] ; then
-			if [[ ${EAPI} != [2345] ]]; then
+			if [[ ${EAPI} == [2345] ]]; then
 				eqawarn "Declaring mycmakeargs as a variable is deprecated. Please use an array instead."
 			else
 				die "Declaring mycmakeargs as a variable is banned in EAPI=${EAPI}. Please use an array instead."
