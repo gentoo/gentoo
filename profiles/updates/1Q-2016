@@ -3,3 +3,5 @@ move x11-apps/xtitle x11-misc/xtitle
 move kde-base/kde-meta kde-apps/kde-meta
 move dev-perl/Unicode-Normalize perl-core/Unicode-Normalize
 move media-video/nvenc media-video/nvidia_video_sdk
+move x11-apps/ccsm x11-misc/ccsm
+move x11-apps/simple-ccsm x11-misc/simple-ccsm
