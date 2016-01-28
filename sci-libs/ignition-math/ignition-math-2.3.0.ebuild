@@ -4,36 +4,26 @@
 
 EAPI=5
 
-inherit cmake-utils
+inherit cmake-utils vcs-snapshot flag-o-matic
 
-DESCRIPTION="Simulation Description Format (SDF) parser"
-HOMEPAGE="http://sdformat.org/"
-SRC_URI="http://osrf-distributions.s3.amazonaws.com/sdformat/releases/${P}.tar.bz2"
+DESCRIPTION="A small, fast, and high performance math library for robot applications"
+HOMEPAGE="http://ignitionrobotics.org/libraries/math"
+SRC_URI="https://bitbucket.org/ignitionrobotics/ign-math/get/${PN}2_${PV}.tar.bz2"
 
 LICENSE="Apache-2.0"
-# subslot = libsdformat major
-SLOT="0/4"
+SLOT="2/2"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND="
-	dev-libs/urdfdom
-	dev-libs/tinyxml
-	dev-libs/boost:=
-	sci-libs/ignition-math:2=
-"
-DEPEND="${RDEPEND}
-	dev-lang/ruby:*
-	virtual/pkgconfig
-"
+DEPEND=""
+RDEPEND="${DEPEND}"
+S="${WORKDIR}/${PN}2_${PV}"
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
 src_configure() {
+	# upstream appends this conditionally...
+	append-flags "-fPIC"
 	echo "set (CMAKE_C_FLAGS_ALL \"${CXXFLAGS} \${CMAKE_C_FLAGS_ALL}\")" > "${S}/cmake/HostCFlags.cmake"
 	sed -i -e "s/LINK_FLAGS_RELWITHDEBINFO \" \"/LINK_FLAGS_RELWITHDEBINFO \" ${LDFLAGS} \"/" cmake/DefaultCFlags.cmake || die
-	local mycmakeargs=(
-		"-DUSE_EXTERNAL_URDF=ON"
-		"-DUSE_EXTERNAL_TINYXML=ON"
-	)
 	cmake-utils_src_configure
 }

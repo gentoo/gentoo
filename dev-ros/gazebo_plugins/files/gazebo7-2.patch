@@ -1,0 +1,22 @@
+commit a27311b3b37a661aadb9815346d26e2970441bef
+Author: Steven Peters <scpeters@osrfoundation.org>
+Date:   Wed Jan 13 11:29:32 2016 -0800
+
+    Add missing boost header
+    
+    Some boost headers were remove from gazebo7 header files
+    and gazebo_ros_joint_state_publisher.cpp was using it
+    implicitly.
+
+diff --git a/gazebo_plugins/src/gazebo_ros_joint_state_publisher.cpp b/gazebo_plugins/src/gazebo_ros_joint_state_publisher.cpp
+index 6c1ede1..d78b3d8 100644
+--- a/gazebo_plugins/src/gazebo_ros_joint_state_publisher.cpp
++++ b/gazebo_plugins/src/gazebo_ros_joint_state_publisher.cpp
+@@ -25,6 +25,7 @@
+  *  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  *
+  **/
++#include <boost/algorithm/string.hpp>
+ #include <gazebo_plugins/gazebo_ros_joint_state_publisher.h>
+ #include <tf/transform_broadcaster.h>
+ #include <tf/transform_listener.h>
