@@ -54,7 +54,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/celery-docs.patch
-	"${FILESDIR}"/${P}-test.patch
+	"${FILESDIR}"/${PN}-3.1.19-test.patch
 )
 
 # testsuite needs it own source
