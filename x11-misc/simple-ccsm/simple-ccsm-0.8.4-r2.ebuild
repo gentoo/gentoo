@@ -22,7 +22,7 @@ DEPEND="
 RDEPEND="
 	>=dev-python/compizconfig-python-${PV}[${PYTHON_USEDEP}]
 	>=dev-python/pygtk-2.10:2[${PYTHON_USEDEP}]
-	>=x11-apps/ccsm-${PV}[${PYTHON_USEDEP}]
+	>=x11-misc/ccsm-${PV}[${PYTHON_USEDEP}]
 "
 
 python_prepare_all() {
