@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,14 +10,25 @@ PV_STRING="$(get_version_component_range 4-6)"
 MY_PV="$(get_version_component_range 1-3)"
 MY_PN="idea"
 
+# distinguish settings for official stable releases and EAP-version releases
+if [[ "$(get_version_component_range 7)x" = "prex" ]]
+then
+	# upstream EAP
+	KEYWORDS="~amd64 ~x86"
+	SRC_URI="custom-jdk? ( http://download.jetbrains.com/idea/${MY_PN}IU-${PV_STRING}-custom-jdk-linux.tar.gz )
+			!custom-jdk? ( http://download.jetbrains.com/idea/${MY_PN}IU-${PV_STRING}-no-jdk.tar.gz )"
+else
+	# upstream stable
+	KEYWORDS="amd64 x86"
+	SRC_URI="http://download.jetbrains.com/idea/${MY_PN}IU-${MY_PV}.tar.gz -> ${MY_PN}IU-${PV_STRING}.tar.gz"
+fi
+
 DESCRIPTION="A complete toolset for web, mobile and enterprise development"
 HOMEPAGE="http://www.jetbrains.com/idea"
-SRC_URI="http://download-cf.jetbrains.com/idea/${MY_PN}IU-${MY_PV}.tar.gz -> ${MY_PN}IU-${PV_STRING}.tar.gz"
 
 LICENSE="IDEA
 	|| ( IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )"
-IUSE=""
-KEYWORDS="amd64 x86"
+IUSE="-custom-jdk"
 
 DEPEND="!dev-util/${PN}:14
 	!dev-util/${PN}:15"
