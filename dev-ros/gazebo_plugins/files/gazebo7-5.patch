@@ -1,0 +1,146 @@
+commit 19f5f19f48def0a2c5808a7266151eb8e06d7b63
+Author: Steven Peters <scpeters@osrfoundation.org>
+Date:   Tue Apr 14 18:10:36 2015 -0700
+
+    Use Joint::SetParam for joint velocity motors
+    
+    Before gazebo5, Joint::SetVelocity and SetMaxForce
+    were used to set joint velocity motors.
+    The API has changed in gazebo5, to use Joint::SetParam
+    instead.
+    The functionality is still available through the SetParam API.
+
+diff --git a/gazebo_plugins/src/gazebo_ros_diff_drive.cpp b/gazebo_plugins/src/gazebo_ros_diff_drive.cpp
+index 004fb90..68265a8 100644
+--- a/gazebo_plugins/src/gazebo_ros_diff_drive.cpp
++++ b/gazebo_plugins/src/gazebo_ros_diff_drive.cpp
+@@ -100,8 +100,8 @@ void GazeboRosDiffDrive::Load ( physics::ModelPtr _parent, sdf::ElementPtr _sdf
+     joints_.resize ( 2 );
+     joints_[LEFT] = gazebo_ros_->getJoint ( parent, "leftJoint", "left_joint" );
+     joints_[RIGHT] = gazebo_ros_->getJoint ( parent, "rightJoint", "right_joint" );
+-    joints_[LEFT]->SetMaxForce ( 0, wheel_torque );
+-    joints_[RIGHT]->SetMaxForce ( 0, wheel_torque );
++    joints_[LEFT]->SetParam ( "fmax", 0, wheel_torque );
++    joints_[RIGHT]->SetParam ( "fmax", 0, wheel_torque );
+ 
+ 
+ 
+@@ -170,8 +170,8 @@ void GazeboRosDiffDrive::Reset()
+   pose_encoder_.theta = 0;
+   x_ = 0;
+   rot_ = 0;
+-  joints_[LEFT]->SetMaxForce ( 0, wheel_torque );
+-  joints_[RIGHT]->SetMaxForce ( 0, wheel_torque );
++  joints_[LEFT]->SetParam ( "fmax", 0, wheel_torque );
++  joints_[RIGHT]->SetParam ( "fmax", 0, wheel_torque );
+ }
+ 
+ void GazeboRosDiffDrive::publishWheelJointState()
+@@ -214,15 +214,15 @@ void GazeboRosDiffDrive::publishWheelTF()
+ void GazeboRosDiffDrive::UpdateChild()
+ {
+   
+-    /* force reset SetMaxForce since Joint::Reset reset MaxForce to zero at
++    /* force reset SetParam("fmax") since Joint::Reset reset MaxForce to zero at
+        https://bitbucket.org/osrf/gazebo/src/8091da8b3c529a362f39b042095e12c94656a5d1/gazebo/physics/Joint.cc?at=gazebo2_2.2.5#cl-331
+        (this has been solved in https://bitbucket.org/osrf/gazebo/diff/gazebo/physics/Joint.cc?diff2=b64ff1b7b6ff&at=issue_964 )
+        and Joint::Reset is called after ModelPlugin::Reset, so we need to set maxForce to wheel_torque other than GazeboRosDiffDrive::Reset
+        (this seems to be solved in https://bitbucket.org/osrf/gazebo/commits/ec8801d8683160eccae22c74bf865d59fac81f1e)
+     */
+     for ( int i = 0; i < 2; i++ ) {
+-      if ( fabs(wheel_torque -joints_[i]->GetMaxForce ( 0 )) > 1e-6 ) {
+-        joints_[i]->SetMaxForce ( 0, wheel_torque );
++      if ( fabs(wheel_torque -joints_[i]->GetParam ( "fmax", 0 )) > 1e-6 ) {
++        joints_[i]->SetParam ( "fmax", 0, wheel_torque );
+       }
+     }
+ 
+@@ -248,8 +248,8 @@ void GazeboRosDiffDrive::UpdateChild()
+                 ( fabs ( wheel_speed_[LEFT] - current_speed[LEFT] ) < 0.01 ) ||
+                 ( fabs ( wheel_speed_[RIGHT] - current_speed[RIGHT] ) < 0.01 ) ) {
+             //if max_accel == 0, or target speed is reached
+-            joints_[LEFT]->SetVelocity ( 0, wheel_speed_[LEFT]/ ( wheel_diameter_ / 2.0 ) );
+-            joints_[RIGHT]->SetVelocity ( 0, wheel_speed_[RIGHT]/ ( wheel_diameter_ / 2.0 ) );
++            joints_[LEFT]->SetParam ( "vel", 0, wheel_speed_[LEFT]/ ( wheel_diameter_ / 2.0 ) );
++            joints_[RIGHT]->SetParam ( "vel", 0, wheel_speed_[RIGHT]/ ( wheel_diameter_ / 2.0 ) );
+         } else {
+             if ( wheel_speed_[LEFT]>=current_speed[LEFT] )
+                 wheel_speed_instr_[LEFT]+=fmin ( wheel_speed_[LEFT]-current_speed[LEFT],  wheel_accel * seconds_since_last_update );
+@@ -264,8 +264,8 @@ void GazeboRosDiffDrive::UpdateChild()
+             // ROS_INFO("actual wheel speed = %lf, issued wheel speed= %lf", current_speed[LEFT], wheel_speed_[LEFT]);
+             // ROS_INFO("actual wheel speed = %lf, issued wheel speed= %lf", current_speed[RIGHT],wheel_speed_[RIGHT]);
+ 
+-            joints_[LEFT]->SetVelocity ( 0,wheel_speed_instr_[LEFT] / ( wheel_diameter_ / 2.0 ) );
+-            joints_[RIGHT]->SetVelocity ( 0,wheel_speed_instr_[RIGHT] / ( wheel_diameter_ / 2.0 ) );
++            joints_[LEFT]->SetParam ( "vel", 0, wheel_speed_instr_[LEFT] / ( wheel_diameter_ / 2.0 ) );
++            joints_[RIGHT]->SetParam ( "vel", 0, wheel_speed_instr_[RIGHT] / ( wheel_diameter_ / 2.0 ) );
+         }
+         last_update_time_+= common::Time ( update_period_ );
+     }
+diff --git a/gazebo_plugins/src/gazebo_ros_skid_steer_drive.cpp b/gazebo_plugins/src/gazebo_ros_skid_steer_drive.cpp
+index fdaf61f..a24aba5 100644
+--- a/gazebo_plugins/src/gazebo_ros_skid_steer_drive.cpp
++++ b/gazebo_plugins/src/gazebo_ros_skid_steer_drive.cpp
+@@ -256,10 +256,10 @@ namespace gazebo {
+ 	 gzthrow(error);
+    }
+ 
+-    joints[LEFT_FRONT]->SetMaxForce(0, torque);
+-    joints[RIGHT_FRONT]->SetMaxForce(0, torque);
+-    joints[LEFT_REAR]->SetMaxForce(0, torque);
+-    joints[RIGHT_REAR]->SetMaxForce(0, torque);
++    joints[LEFT_FRONT]->SetParam("fmax", 0, torque);
++    joints[RIGHT_FRONT]->SetParam("fmax", 0, torque);
++    joints[LEFT_REAR]->SetParam("fmax", 0, torque);
++    joints[RIGHT_REAR]->SetParam("fmax", 0, torque);
+ 
+     // Make sure the ROS node for Gazebo has already been initialized
+     if (!ros::isInitialized())
+@@ -308,10 +308,10 @@ namespace gazebo {
+ 
+       // Update robot in case new velocities have been requested
+       getWheelVelocities();
+-      joints[LEFT_FRONT]->SetVelocity(0, wheel_speed_[LEFT_FRONT] / (wheel_diameter_ / 2.0));
+-      joints[RIGHT_FRONT]->SetVelocity(0, wheel_speed_[RIGHT_FRONT] / (wheel_diameter_ / 2.0));
+-      joints[LEFT_REAR]->SetVelocity(0, wheel_speed_[LEFT_REAR] / (wheel_diameter_ / 2.0));
+-      joints[RIGHT_REAR]->SetVelocity(0, wheel_speed_[RIGHT_REAR] / (wheel_diameter_ / 2.0));
++      joints[LEFT_FRONT]->SetParam("vel", 0, wheel_speed_[LEFT_FRONT] / (wheel_diameter_ / 2.0));
++      joints[RIGHT_FRONT]->SetParam("vel", 0, wheel_speed_[RIGHT_FRONT] / (wheel_diameter_ / 2.0));
++      joints[LEFT_REAR]->SetParam("vel", 0, wheel_speed_[LEFT_REAR] / (wheel_diameter_ / 2.0));
++      joints[RIGHT_REAR]->SetParam("vel", 0, wheel_speed_[RIGHT_REAR] / (wheel_diameter_ / 2.0));
+ 
+       last_update_time_+= common::Time(update_period_);
+ 
+diff --git a/gazebo_plugins/src/gazebo_ros_tricycle_drive.cpp b/gazebo_plugins/src/gazebo_ros_tricycle_drive.cpp
+index 97c5ebb..0e83d2a 100644
+--- a/gazebo_plugins/src/gazebo_ros_tricycle_drive.cpp
++++ b/gazebo_plugins/src/gazebo_ros_tricycle_drive.cpp
+@@ -108,8 +108,8 @@ void GazeboRosTricycleDrive::Load ( physics::ModelPtr _parent, sdf::ElementPtr _
+     odomOptions["world"] = WORLD;
+     gazebo_ros_->getParameter<OdomSource> ( odom_source_, "odometrySource", odomOptions, WORLD );
+ 
+-    joint_wheel_actuated_->SetMaxForce ( 0, wheel_torque_ );
+-    joint_steering_->SetMaxForce ( 0, wheel_torque_ );
++    joint_wheel_actuated_->SetParam ( "fmax", 0, wheel_torque_ );
++    joint_steering_->SetParam ( "fmax", 0, wheel_torque_ );
+ 
+ 
+     // Initialize update rate stuff
+@@ -235,7 +235,7 @@ void GazeboRosTricycleDrive::motorController ( double target_speed, double targe
+             applied_speed = current_speed - wheel_deceleration_ * dt;
+         }
+     }
+-    joint_wheel_actuated_->SetVelocity ( 0, applied_speed );
++    joint_wheel_actuated_->SetParam ( "vel", 0, applied_speed );
+     
+     double current_angle = joint_steering_->GetAngle ( 0 ).Radian();
+     if(target_angle > +M_PI / 2.0) target_angle =  +M_PI / 2.0;
+@@ -249,7 +249,7 @@ void GazeboRosTricycleDrive::motorController ( double target_speed, double targe
+         } else {
+             applied_steering_speed = -steering_speed_;
+         }
+-      joint_steering_->SetVelocity ( 0, applied_steering_speed );
++      joint_steering_->SetParam ( "vel", 0, applied_steering_speed );
+     }else {
+ #if GAZEBO_MAJOR_VERSION >= 4
+       joint_steering_->SetPosition ( 0, applied_angle );

@@ -42,7 +42,7 @@ RDEPEND="
 	dev-ros/camera_info_manager
 	dev-ros/moveit_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-libs/libxml2
-	sci-electronics/gazebo
+	>=sci-electronics/gazebo-7:=
 	dev-games/ogre
 	sci-libs/pcl
 	dev-libs/boost:=
@@ -51,3 +51,11 @@ RDEPEND="
 	dev-ros/roslib[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+PATCHES=(
+	"${FILESDIR}/gazebo6.patch"
+	"${FILESDIR}/gazebo7.patch"
+	"${FILESDIR}/gazebo7-2.patch"
+	"${FILESDIR}/gazebo7-3.patch"
+	"${FILESDIR}/gazebo7-4.patch"
+	"${FILESDIR}/gazebo7-5.patch"
+)
