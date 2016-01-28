@@ -16,8 +16,8 @@ SRC_URI="http://llvm.org/pre-releases/${PV/_rc*}/${PV/3.8.0_}/${P/_}.src.tar.xz
 	clang? ( http://llvm.org/pre-releases/${PV/_rc*}/${PV/3.8.0_}/compiler-rt-${PV/_}.src.tar.xz
 		http://llvm.org/pre-releases/${PV/_rc*}/${PV/3.8.0_}/cfe-${PV/_}.src.tar.xz
 		http://llvm.org/pre-releases/${PV/_rc*}/${PV/3.8.0_}/clang-tools-extra-${PV/_}.src.tar.xz )
-	lldb? ( http://llvm.org/pre-releases/${PV/_rc*}/${PV/3.8.0_}/lldb-${PV/_}.src.tar.xz )"
-#	!doc? ( http://dev.gentoo.org/~voyageur/distfiles/${P/_rc*}-manpages.tar.bz2 )"
+	lldb? ( http://llvm.org/pre-releases/${PV/_rc*}/${PV/3.8.0_}/lldb-${PV/_}.src.tar.xz )
+	!doc? ( http://dev.gentoo.org/~voyageur/distfiles/${P/_rc*}-manpages.tar.bz2 )"
 
 LICENSE="UoI-NCSA"
 SLOT="0/${PV}"
@@ -423,7 +423,7 @@ multilib_src_install() {
 
 	if multilib_is_native_abi; then
 		# Install man pages.
-		use doc || doman "${WORKDIR}"/${PN}-3.8.0-manpages/*.1
+		use doc || doman "${WORKDIR}"/${P/_rc*}-manpages/*.1
 
 		# Symlink the gold plugin.
 		if use gold; then
@@ -478,31 +478,6 @@ multilib_src_install_all() {
 	if use clang; then
 		pushd tools/clang >/dev/null || die
 
-		if use static-analyzer ; then
-			pushd tools/scan-build >/dev/null || die
-
-			dobin ccc-analyzer scan-build
-			dosym ccc-analyzer /usr/bin/c++-analyzer
-			doman scan-build.1
-
-			insinto /usr/share/llvm
-			doins scanview.css sorttable.js
-
-			popd >/dev/null || die
-		fi
-
-		if use static-analyzer ; then
-			pushd tools/scan-view >/dev/null || die
-
-			python_doscript scan-view
-
-			touch __init__.py || die
-			python_moduleinto clang
-			python_domodule *.py Resources
-
-			popd >/dev/null || die
-		fi
-
 		if use python ; then
 			pushd bindings/python/clang >/dev/null || die
 
@@ -518,14 +493,14 @@ multilib_src_install_all() {
 		popd >/dev/null || die
 
 		python_fix_shebang "${ED}"
-		if use lldb && use python; then
-			python_optimize
+		if use static-analyzer; then
+			python_optimize "${ED}"usr/share/scan-view
 		fi
 	fi
 }
 
 pkg_postinst() {
-	if use clang && ! has_version sys-libs/libomp; then
+	if use clang && ! has_version 'sys-libs/libomp'; then
 		elog "To enable OpenMP support in clang, install sys-libs/libomp."
 	fi
 }
