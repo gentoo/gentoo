@@ -5,5 +5,9 @@
 	<email>x11@gentoo.org</email>
 	<name>X11</name>
 </maintainer>
+<maintainer type="person">
+	<email>mgorny@gentoo.org</email>
+	<name>Michał Górny</name>
+</maintainer>
 <longdescription>Utility to switch opengl implementations between various providers.</longdescription>
 </pkgmetadata>
