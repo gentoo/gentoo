@@ -76,7 +76,7 @@ IUSE="${IUSE} bcmath berkdb bzip2 calendar cdb cjk
 	+xml xmlreader xmlwriter xmlrpc xpm xslt zip zlib"
 
 DEPEND="
-	>=app-eselect/eselect-php-0.7.1-r3[apache2?,fpm?]
+	>=app-eselect/eselect-php-0.9.1[apache2?,fpm?]
 	>=dev-libs/libpcre-8.32[unicode]
 	apache2? ( || ( >=www-servers/apache-2.4[apache2_modules_unixd,threads=]
 		<www-servers/apache-2.4[threads=] ) )"
@@ -764,6 +764,13 @@ pkg_postinst() {
 		fi
 	done
 
+	# Remove dead symlinks for SAPIs that were just disabled. For
+	# example, if the user has the cgi SAPI enabled, then he has an
+	# eselect-php symlink for it. If he later reinstalls PHP with
+	# USE="-cgi", that symlink will break. This call to eselect is
+	# supposed to remove that dead link per bug 572436.
+	eselect php cleanup || die
+
 	elog "Make sure that PHP_TARGETS in ${EPREFIX}/etc/make.conf includes"
 	elog "php${SLOT/./-} in order to compile extensions for the ${SLOT} ABI."
 	elog
@@ -786,7 +793,15 @@ pkg_postinst() {
 	elog
 }
 
-pkg_prerm() {
-	# This returns "1" on success so we can't "|| die" here.
+pkg_postrm() {
+	# This serves two purposes. First, if we have just removed the last
+	# installed version of PHP, then this will remove any dead symlinks
+	# belonging to eselect-php. Second, if a user upgrades slots from
+	# (say) 5.6 to 7.0 and depcleans the old slot, then this will update
+	# his existing symlinks to point to the new 7.0 installation. The
+	# latter is bug 432962.
+	#
+	# Note: the eselect-php package may not be installed at this point,
+	# so we can't die() if this command fails.
 	eselect php cleanup
 }
