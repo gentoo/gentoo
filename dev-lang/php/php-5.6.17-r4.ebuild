@@ -786,8 +786,8 @@ pkg_postinst() {
 	elog "Both versions of php.ini can be found with the PHP docs in"
 	elog "${EPREFIX}/usr/share/doc/${PF}"
 	elog
-	elog "For more details on how minor version slotting works,"
-	elog "please see the wiki:"
+	elog "For more details on how version slotting works, please see"
+	elog "the wiki:"
 	elog
 	elog "  https://wiki.gentoo.org/wiki/PHP"
 	elog
