@@ -5,7 +5,4 @@
 		<email>sound@gentoo.org</email>
 		<name>Gentoo Sound project</name>
 	</maintainer>
-	<use>
-		<flag name="alstream">Build and install the FFmpeg based alstream example utility</flag>
-	</use>
 </pkgmetadata>
