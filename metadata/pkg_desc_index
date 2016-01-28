@@ -14601,8 +14601,8 @@ net-misc/puf 1.0.0: A download tool for UNIX-like systems
 net-misc/pump 0.8.24-r4: This is the DHCP/BOOTP client written by RedHat
 net-misc/putty 0.66 9999: A Free Telnet/SSH Client
 net-misc/pycnb 0.0.4-r1: Access cnb.cz daily rates with the comfort of your command line
-net-misc/pyhoca-cli 0.5.0.2-r1: X2Go command line client
-net-misc/pyhoca-gui 0.5.0.4-r1: X2Go graphical client applet
+net-misc/pyhoca-cli 0.5.0.2-r1 0.5.0.3: X2Go command line client
+net-misc/pyhoca-gui 0.5.0.4-r1 0.5.0.5: X2Go graphical client applet
 net-misc/pymazon 0.9-r1 0.9.1: Downloader for the Amazon.com MP3 music store
 net-misc/python-x2go 0.5.0.3 0.5.0.4: X2Go client-side Python API
 net-misc/pytvshows 0.2-r1 0.2-r2: downloads torrents for TV shows from RSS feeds provided by ezrss.it
