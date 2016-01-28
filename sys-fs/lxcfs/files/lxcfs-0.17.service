@@ -1,0 +1,13 @@
+[Unit]
+Description=FUSE filesystem for LXC
+ConditionVirtualization=!container
+Before=lxc.service
+
+[Service]
+ExecStart=/usr/bin/lxcfs -f -o allow_other /var/lib/lxcfs
+KillMode=none
+Restart=on-failure
+ExecStop=/usr/bin/fusermount -u /var/lib/lxcfs
+
+[Install]
+WantedBy=multi-user.target
