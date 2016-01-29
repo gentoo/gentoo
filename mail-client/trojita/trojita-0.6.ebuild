@@ -4,8 +4,9 @@
 
 EAPI=6
 
+QT4_REQUIRED="4.8.0"
 EGIT_REPO_URI="git://anongit.kde.org/${PN}.git"
-inherit cmake-utils fdo-mime gnome2-utils virtualx
+inherit cmake-utils fdo-mime gnome2-utils qmake-utils virtualx
 [[ ${PV} == 9999 ]] && inherit git-r3
 
 DESCRIPTION="A Qt IMAP e-mail client"
@@ -17,22 +18,37 @@ fi
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
-IUSE="debug +dbus +password test +zlib"
+IUSE="debug +dbus +password +qt5 test +zlib"
 
 RDEPEND="
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5[ssl]
-	dev-qt/qtsql:5[sqlite]
-	dev-qt/qtwebkit:5
-	dev-qt/qtwidgets:5
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtnetwork:5[ssl]
+		dev-qt/qtsql:5[sqlite]
+		dev-qt/qtwebkit:5
+		dev-qt/qtwidgets:5
+	)
+	!qt5? (
+		>=dev-qt/qtbearer-${QT4_REQUIRED}:4
+		>=dev-qt/qtcore-${QT4_REQUIRED}:4
+		>=dev-qt/qtgui-${QT4_REQUIRED}:4
+		>=dev-qt/qtsql-${QT4_REQUIRED}:4[sqlite]
+		>=dev-qt/qtwebkit-${QT4_REQUIRED}:4
+	)
 	dbus? ( dev-qt/qtdbus:5 )
-	password? ( dev-libs/qtkeychain[qt5] )
+	password? (
+		qt5?	( dev-libs/qtkeychain[qt5] )
+		!qt5?	( dev-libs/qtkeychain[qt4] )
+	)
 	zlib? ( sys-libs/zlib )
 "
 DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-	test? ( dev-qt/qttest:5 )
+	qt5? ( dev-qt/linguist-tools:5 )
+	test? (
+		qt5?	( dev-qt/qttest:5 )
+		!qt5?	( >=dev-qt/qttest-${QT4_REQUIRED}:4 )
+	)
 	zlib? ( virtual/pkgconfig )
 "
 
@@ -44,11 +60,16 @@ src_prepare() {
 	# the build system is taking a look at `git describe ... --dirty` and
 	# gentoo's modifications to CMakeLists.txt break these
 	sed -i "s/--dirty//" "${S}/cmake/TrojitaVersion.cmake" || die "Cannot fix the version check"
+
+	# ensure correct version of binary is used - bug 544108.
+	# this file is only used for qt4 builds
+	sed -i "s|\$ENV{QTDIR}/bin|$(qt4_get_bindir) NO_DEFAULT_PATH|" cmake/FindLinguistForTrojita.cmake || die
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_DBUS=$(usex dbus)
+		-DWITH_QT5=$(usex qt5)
 		-DWITH_QTKEYCHAINPLUGIN=$(usex password)
 		-DWITH_TESTS=$(usex test)
 		-DWITH_ZLIB=$(usex zlib)
