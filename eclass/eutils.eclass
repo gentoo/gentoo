@@ -39,7 +39,7 @@ fi
 # Remove CVS directories recursiveley.  Useful when a source tarball contains
 # internal CVS directories.  Defaults to $PWD.
 ecvs_clean() {
-	[[ -z $* ]] && set -- .
+	[[ $# -eq 0 ]] && set -- .
 	find "$@" -type d -name 'CVS' -prune -print0 | xargs -0 rm -rf
 	find "$@" -type f -name '.cvs*' -print0 | xargs -0 rm -rf
 }
@@ -50,7 +50,7 @@ ecvs_clean() {
 # Remove .svn directories recursiveley.  Useful when a source tarball contains
 # internal Subversion directories.  Defaults to $PWD.
 esvn_clean() {
-	[[ -z $* ]] && set -- .
+	[[ $# -eq 0 ]] && set -- .
 	find "$@" -type d -name '.svn' -prune -print0 | xargs -0 rm -rf
 }
 
@@ -60,7 +60,7 @@ esvn_clean() {
 # Remove .git* directories/files recursiveley.  Useful when a source tarball
 # contains internal Git directories.  Defaults to $PWD.
 egit_clean() {
-	[[ -z $* ]] && set -- .
+	[[ $# -eq 0 ]] && set -- .
 	find "$@" -type d -name '.git*' -prune -print0 | xargs -0 rm -rf
 }
 
