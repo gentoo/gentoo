@@ -1685,7 +1685,7 @@ app-misc/c_rehash 1.7-r1: c_rehash script from OpenSSL
 app-misc/ca-certificates 20140927.3.17.2 20141019.3.17.4 20141019.3.19 20141019.3.19-r1 20150426.3.20 20150426.3.20-r1 20151214.3.21: Common CA Certificates PEM files
 app-misc/cadubi 1.3: CADUBI is an application that allows you to draw ASCII-Art images
 app-misc/calendar 0.9.1: Standard unix calendar program for Linux, ported from OpenBSD
-app-misc/carbon-c-relay 0.45 1.4 1.5: Enhanced C version of Carbon relay, aggregator and rewriter
+app-misc/carbon-c-relay 1.4 1.5 1.7: Enhanced C version of Carbon relay, aggregator and rewriter
 app-misc/cbrpager 0.9.20 0.9.22: a simple comic book pager
 app-misc/cbview 0.06: viewer/converter for CBR/CBZ comic book archives
 app-misc/cdargs 1.35-r2: Bookmarks and browser for the shell builtin cd command
@@ -14389,7 +14389,7 @@ net-misc/datapipe 1.0-r1: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.2.5_p1-r2 4.3.1-r2 4.3.3-r1 4.3.3_p1: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 6.9.0 6.10.0 6.10.1 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 6.10.0 6.10.1 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.4 0.7.5: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
