@@ -10575,7 +10575,6 @@ games-simulation/corsix-th 0.21-r1 0.30: Open source clone of Theme Hospital
 games-simulation/crashtest 1.1: Educational car crash simulator
 games-simulation/crrcsim 0.9.12-r1: model-airplane flight simulation program
 games-simulation/dangerdeep 0.3.0: a World War II German submarine simulation
-games-simulation/fgrun 3.0.0: A graphical frontend for the FlightGear Flight Simulator
 games-simulation/flightgear 3.4.0: Open Source Flight Simulator
 games-simulation/flightgear-data 3.4.0: FlightGear data files
 games-simulation/gl117 1.3.2: An action flight simulator
@@ -10662,7 +10661,6 @@ games-strategy/warmux 11.04.1: A free Worms clone
 games-strategy/warzone2100 3.1.2 3.1.3: 3D real-time strategy game
 games-strategy/wesnoth 1.12.5: Battle for Wesnoth - A fantasy turn-based strategy game
 games-strategy/widelands 0.17: A game similar to Settlers 2
-games-strategy/xbattle 5.4.1: A multi-player game of strategy and coordination
 games-strategy/xbattleai 1.2.2-r1: A multi-player game of strategy and coordination
 games-util/antimicro 2.10.1 2.20.2: Map keyboard and mouse buttons to gamepad buttons
 games-util/atlas 0.5.0_p20141002: Chart Program to use with Flightgear Flight Simulator
@@ -14679,7 +14677,7 @@ net-misc/termpkg 3.3.9.1 3.3.9.1-r1: Termpkg, the Poor Man's Terminal Server
 net-misc/termtter 2.2.3: Termtter is a terminal based Twitter client
 net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
-net-misc/tigervnc 1.3.1-r1 1.3.1-r2 1.3.1-r3 1.3.1-r4 1.4.2-r1 1.4.2-r2 1.6.0: Remote desktop viewer display system
+net-misc/tigervnc 1.3.1-r1 1.3.1-r2 1.3.1-r3 1.3.1-r4 1.4.2-r1 1.4.2-r2 1.6.0-r1: Remote desktop viewer display system
 net-misc/tightvnc 1.3.10-r2: A great client/server software package allowing remote network access to graphical desktops
 net-misc/tinc 1.0.25 1.0.26 1.1_pre11: tinc is an easy to configure VPN implementation
 net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
