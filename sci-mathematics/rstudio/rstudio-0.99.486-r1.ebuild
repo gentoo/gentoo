@@ -89,6 +89,16 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 #	test? ( dev-java/junit:4 )
 
+PATCHES=(
+		"${FILESDIR}/${PN}-0.98.490-prefs.patch"
+		"${FILESDIR}/${PN}-0.99.473-paths.patch"
+		"${FILESDIR}/${PN}-0.99.473-clang-pandoc.patch"
+		"${FILESDIR}/${PN}-0.98.490-linker_flags.patch"
+		"${FILESDIR}/${PN}-0.98.1091-boost-1.57.patch"
+		"${FILESDIR}/${PN}-0.99.473-qtsingleapplication.patch"
+		"${FILESDIR}/${PN}-0.99.486-systemd.patch"
+)
+
 src_unpack() {
 	unpack ${P}.tar.gz gwt-${GWT_VER}.zip
 	cd "${S}" || die
@@ -127,13 +137,11 @@ src_prepare() {
 
 	egit_clean
 
-	epatch \
-		"${FILESDIR}"/${PN}-0.98.490-prefs.patch \
-		"${FILESDIR}"/${PN}-0.99.473-paths.patch \
-		"${FILESDIR}"/${PN}-0.99.473-clang-pandoc.patch \
-		"${FILESDIR}"/${PN}-0.98.490-linker_flags.patch \
-		"${FILESDIR}"/${PN}-0.98.1091-boost-1.57.patch \
-		"${FILESDIR}"/${PN}-0.99.473-qtsingleapplication.patch
+	epatch "${PATCHES[@]}"
+
+	# Enable CMake to install our .service file for systemd usage
+	mkdir -vp "${S}/src/cpp/server/lib/systemd/system" || die
+	cp -v "${FILESDIR}/rstudio-server.service.in" "${S}/src/cpp/server/lib/systemd/system/" || die
 
 	# Adding -DDISTRO_SHARE=... to append-flags breaks cmake so using
 	# this sed hack for now. ~RMH

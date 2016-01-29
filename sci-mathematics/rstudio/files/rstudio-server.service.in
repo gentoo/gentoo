@@ -1,0 +1,10 @@
+[Unit]
+Description=RStudio Server
+
+[Service]
+Type=forking
+ExecStart=${CMAKE_INSTALL_PREFIX}/bin/rserver
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
