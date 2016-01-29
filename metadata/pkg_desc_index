@@ -17634,7 +17634,7 @@ www-plugins/nspluginwrapper 1.4.4-r3: Netscape Plugin Wrapper - Load 32bit plugi
 www-plugins/pipelight 0.2.7.3 0.2.8 9999: Wine-based wrapper for running Windows plugins on POSIX systems
 www-servers/apache 2.2.31 2.4.16 2.4.18: The Apache Web Server
 www-servers/blogc-runserver 0.1 9999: A simple HTTP server to test blogc websites
-www-servers/boa 0.94.14_rc21-r1: A very small and very fast http daemon
+www-servers/boa 0.94.14_rc21-r1 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20140708 20140708-r1: bozohttpd is a small and secure http server
 www-servers/cherokee 1.2.104: An extremely fast and tiny web server
 www-servers/fnord 1.10-r2 1.11: Yet another small httpd
