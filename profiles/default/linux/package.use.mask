@@ -6,11 +6,6 @@
 # studio support is best effort only
 net-analyzer/icinga2 studio
 
-# prometheanfire <prometheanfire@gentoo.org> (24 Jan 2016)
-# xen support for nova is kinda not all there...
-# will likely remove the flag entirely
-sys-cluster/nova xen
-
 # NP-Hardass <np-hardass@gentoo.org> (19 Nov 2015)
 # Temporarily masking due to user requests in #565884
 =app-emulation/wine-1.7.54 gstreamer
