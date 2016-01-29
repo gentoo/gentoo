@@ -9,10 +9,11 @@ inherit eutils cmake-utils qt4-r2 git-r3
 DESCRIPTION="A PSP emulator written in C++."
 HOMEPAGE="http://www.ppsspp.org/"
 EGIT_REPO_URI="git://github.com/hrydgard/${PN}.git"
+EGIT_COMMIT="v${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="qt4 qt5 +sdl"
 REQUIRED_USE="
 	?? ( qt4 qt5 sdl )
@@ -108,7 +109,7 @@ src_install() {
 		exeinto /usr/games/bin
 		newexe "${WORKDIR}"/"${P}"/Qt/ppsspp ppsspp
 	else
-		exeinto /usr/games
+		into /usr/games
 		dobin "${FILESDIR}"/ppsspp
 		exeinto /usr/share/games/"${PN}"
 		doexe "${WORKDIR}"/"${P}"_build/PPSSPPSDL
@@ -119,4 +120,10 @@ src_install() {
 	insinto /usr/share/icons/
 	newins "${WORKDIR}"/"${P}"/source_assets/image/icon_regular_72.png ppsspp-icon.png
 	domenu "${FILESDIR}"/ppsspp.desktop
+}
+
+pkg_postinst() {
+	elog "Remember, in order to play games, you have to "
+	elog "be in the 'games' group. "
+	elog "Just run 'gpasswd -a <USER> games', then have <USER> re-login. "
 }
