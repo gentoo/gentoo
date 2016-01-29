@@ -11,7 +11,10 @@ SLOT="3"
 HOMEPAGE="https://github.com/esnet/iperf/"
 SRC_URI="https://codeload.github.com/esnet/${PN}/tar.gz/${PV/_beta/b} -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~m68k-mint"
-IUSE="static-libs"
+IUSE="static-libs sctp"
+
+DEPEND="sctp? ( net-misc/lksctp-tools )"
+RDEPEND="$DEPEND"
 
 S=${WORKDIR}/${P/_beta/b}
 
