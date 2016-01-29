@@ -11,7 +11,7 @@ HOMEPAGE="http://www.libressl.org/"
 SRC_URI="http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${P}.tar.gz"
 
 LICENSE="ISC openssl"
-SLOT="0/36" # reflects ABI of libcrypto.so and libssl.so
+SLOT="0/37" # reflects ABI of libcrypto.so and libssl.so
 KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86"
 IUSE="+asm static-libs"
 
