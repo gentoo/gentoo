@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201601-05">
+  <title>OpenSSL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenSSL, allowing
+    remote attackers to disclose sensitive information and complete weak
+    handshakes.
+  </synopsis>
+  <product type="ebuild">openssl</product>
+  <announced>January 29, 2016</announced>
+  <revised>January 29, 2016: 1</revised>
+  <bug>572854</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">1.0.2f</unaffected>
+      <vulnerable range="lt">1.0.2f</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSL is an Open Source toolkit implementing the Secure Sockets Layer
+      (SSL v2/v3) and Transport Layer Security (TLS v1) as well as a general
+      purpose cryptography library.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenSSL. Please review
+      the upstream advisory and CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could disclose a server’s private DH exponent, or
+      complete SSLv2 handshakes using ciphers that have been disabled on the
+      server.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-1.0.2f"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3197">CVE-2015-3197</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0701">CVE-2016-0701</uri>
+    <uri link="http://openssl.org/news/secadv/20160128.txt">OpenSSL Security
+      Advisory [28th Jan 2016]
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 29 Jan 2016 23:06:05 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 29 Jan 2016 23:37:22 +0000">
+    keytoaster
+  </metadata>
+</glsa>
