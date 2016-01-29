@@ -1,0 +1,22 @@
+diff -Naur /tmp/rstudio.org/work/rstudio-0.99.486/src/cpp/server/CMakeLists.txt ./work/rstudio-0.99.486/src/cpp/server/CMakeLists.txt
+--- /tmp/rstudio.org/work/rstudio-0.99.486/src/cpp/server/CMakeLists.txt	2015-12-10 19:29:24.408267862 +0100
++++ ./work/rstudio-0.99.486/src/cpp/server/CMakeLists.txt	2015-12-10 19:35:24.660194216 +0100
+@@ -208,17 +208,12 @@
+            DESTINATION ${DISTRO_SHARE}/${RSERVER_UPSTART_DIR})
+            
+     # install configured systemd profile
+-   set(RSERVER_SYSTEMD_DIR "extras/systemd")
++   set(RSERVER_SYSTEMD_DIR "lib/systemd/system")
+    set(RSERVER_SYSTEMD_PROFILE "${RSERVER_SYSTEMD_DIR}/rstudio-server.service")
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_SYSTEMD_PROFILE}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_SYSTEMD_PROFILE})
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_SYSTEMD_PROFILE}
+            DESTINATION ${RSERVER_SYSTEMD_DIR})
+-   set(RSERVER_SYSTEMD_PROFILE_REDHAT "${RSERVER_SYSTEMD_DIR}/rstudio-server.redhat.service")
+-   configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_SYSTEMD_PROFILE_REDHAT}.in
+-                  ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_SYSTEMD_PROFILE_REDHAT})
+-   install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_SYSTEMD_PROFILE_REDHAT}
+-           DESTINATION ${RSERVER_SYSTEMD_DIR})
+ 
+ endif()
+ 
