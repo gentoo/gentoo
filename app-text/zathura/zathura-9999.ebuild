@@ -52,10 +52,6 @@ pkg_setup() {
 	)
 }
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-synctex.patch
-}
-
 src_compile() {
 	emake "${myzathuraconf[@]}"
 }

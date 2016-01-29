@@ -42,7 +42,7 @@ RDEPEND="
 	dev-ros/camera_info_manager
 	dev-ros/moveit_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-libs/libxml2
-	sci-electronics/gazebo
+	>=sci-electronics/gazebo-7:=
 	dev-games/ogre
 	sci-libs/pcl
 	dev-libs/boost:=

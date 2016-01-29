@@ -27,3 +27,4 @@ RDEPEND="
 	sci-electronics/gazebo
 "
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/gazebo7.patch" )

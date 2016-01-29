@@ -54,4 +54,7 @@ src_configure() {
 src_install() {
 	kde4-base_src_install
 	rm "${ED}"/usr/share/apps/cmake/modules/FindQtOAuth.cmake #Collides with net-im/choqok
+
+	# contains constants/defines only
+	QA_DT_NEEDED="$(find "${ED}" -type f -name 'libakonadi-kabc.so.*' -printf '/%P\n')"
 }

@@ -13,8 +13,7 @@ SRC_URI="http://osrf-distributions.s3.amazonaws.com/sdformat/releases/${P}.tar.b
 LICENSE="Apache-2.0"
 # subslot = libsdformat major
 SLOT="0/4"
-# breaks gazebo
-#KEYWORDS="~amd64"
+KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="
