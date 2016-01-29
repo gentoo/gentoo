@@ -4158,7 +4158,7 @@ dev-java/pat 1.5.3: Regular Expressions in Java
 dev-java/pdf-renderer 0.9.1 1.0.5: a 100% Java PDF renderer and viewer
 dev-java/pdfbox 1.8.8: Java library and utilities for working with PDF documents
 dev-java/piccolo 1.04: A small, extremely fast XML parser for Java
-dev-java/piccolo2d 1.2.1-r2 3.0: A Structured 2D Graphics Framework
+dev-java/piccolo2d 3.0: A Structured 2D Graphics Framework
 dev-java/picocontainer 1.1-r1: Small footprint Dependency Injection container
 dev-java/plexus-classworlds 2.2.3: The class loader framework of the Plexus project
 dev-java/portletapi 1.0 2.0: Portlet API 2.0 developed by the Java Community Process JSR-286
