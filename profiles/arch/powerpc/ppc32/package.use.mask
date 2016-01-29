@@ -83,3 +83,6 @@ media-libs/coin simage
 #nixnut <nixnut@gentoo.org> (24 jan 2009)
 #don't want zemberek for enchant for ppc32
 app-text/enchant zemberek
+
+#java is unsupported on this platform
+app-text/tesseract scrollview

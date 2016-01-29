@@ -495,3 +495,6 @@ media-video/vlc projectm chromaprint opencv
 # Ultrabug <ultrabug@gentoo.org) (05 Sept 2011)
 # missing keyword for net-libs/zeromq
 app-admin/rsyslog zeromq
+
+#java is unsupported on this platform
+app-text/tesseract scrollview

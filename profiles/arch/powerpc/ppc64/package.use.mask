@@ -138,3 +138,6 @@ sys-auth/pambase passwdqc
 # Joseph Jezak <josejx@gentoo.org> (12 February 2010)
 # Mask unstable pidgin deps until we can mark them stable (farsight2)
 net-im/pidgin gstreamer
+
+#java is unsupported on this platform
+app-text/tesseract scrollview
