@@ -279,7 +279,6 @@ GPL_REQUIRED_USE="
 	frei0r? ( gpl )
 	cdio? ( gpl )
 	samba? ( gpl )
-	zvbi? ( gpl )
 	encode? (
 		x264? ( gpl )
 		x265? ( gpl )
