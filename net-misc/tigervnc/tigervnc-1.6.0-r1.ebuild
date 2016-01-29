@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=6
 
 inherit autotools cmake-utils eutils flag-o-matic java-pkg-opt-2
 
-XSERVER_VERSION="1.17.4"
+XSERVER_VERSION="1.18.0"
 
 DESCRIPTION="Remote desktop viewer display system"
 HOMEPAGE="http://www.tigervnc.org"
@@ -82,6 +82,7 @@ src_prepare() {
 	eapply "${WORKDIR}"/patches/010_libvnc-os.patch
 	eapply "${WORKDIR}"/patches/030_manpages.patch
 	eapply "${WORKDIR}"/patches/055_xstartup.patch
+	eapply "${FILESDIR}"/${P}-xorg118-1.patch
 
 	default
 
