@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.libressl.org/"
 SRC_URI="http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${P}.tar.gz"
 
 LICENSE="ISC openssl"
-SLOT="0/35" # reflects ABI of libcrypto.so and libssl.so
+SLOT="0/36" # reflects ABI of libcrypto.so and libssl.so
 KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86"
 IUSE="+asm static-libs"
 
@@ -21,8 +21,6 @@ PDEPEND="app-misc/ca-certificates"
 
 src_prepare() {
 	touch crypto/Makefile.in
-
-	epatch "${FILESDIR}"/${P}-clientcert.patch
 
 	sed -i \
 		-e '/^[ \t]*CFLAGS=/s#-g ##' \
