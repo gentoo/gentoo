@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -54,7 +54,7 @@ src_prepare() {
 	rm "translations/${PN}"_{et,zh_TW}.ts || die
 
 	remove_locale() {
-		rm "translations/${PN}_${1}."{ts,desktop} || die
+		rm "translations/${PN}_${1}".{ts,desktop} || die
 	}
 
 	l10n_find_plocales_changes 'translations' "${PN}_" '.ts'
