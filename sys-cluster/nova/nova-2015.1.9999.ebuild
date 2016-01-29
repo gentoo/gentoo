@@ -15,11 +15,10 @@ EGIT_BRANCH="stable/kilo"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE="+compute compute-only iscsi +kvm +memcached mysql +novncproxy openvswitch postgres +rabbitmq sqlite test xen"
+IUSE="+compute compute-only iscsi +memcached mysql +novncproxy openvswitch postgres +rabbitmq sqlite test"
 REQUIRED_USE="
 	!compute-only? ( || ( mysql postgres sqlite ) )
-	compute-only? ( compute !rabbitmq !memcached !mysql !postgres !sqlite )
-	compute? ( ^^ ( kvm xen ) )"
+	compute-only? ( compute !rabbitmq !memcached !mysql !postgres !sqlite )"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -156,9 +155,7 @@ RDEPEND="
 	net-misc/bridge-utils
 	compute? (
 		app-cdr/cdrkit
-		kvm? ( app-emulation/qemu )
-		xen? ( app-emulation/xen
-			   app-emulation/xen-tools )
+		app-emulation/qemu
 	)
 	iscsi? (
 		sys-fs/lsscsi
