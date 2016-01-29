@@ -139,7 +139,16 @@ src_configure() {
 src_compile() {
 	cmake-utils_src_compile
 
-	use server && emake -C unix/xserver
+	if use server; then
+		# deps of the vnc module and the module itself
+		local d subdirs=(
+			fb xfixes Xext dbe glx randr render damageext miext Xi xkb
+			composite dix mi os hw/vnc
+		)
+		for d in "${subdirs[@]}"; do
+			emake -C unix/xserver/"${d}"
+		done
+	fi
 }
 
 src_install() {
