@@ -23,8 +23,8 @@ SRC_URI="
 "
 
 LICENSE="GPL-2 NVIDIA-r2"
-SLOT="0/340"
-KEYWORDS="-* amd64 x86 ~amd64-fbsd ~x86-fbsd"
+SLOT="0/${PV%.*}"
+KEYWORDS="-* ~amd64 ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="acpi multilib kernel_FreeBSD kernel_linux pax_kernel +tools +X uvm"
 RESTRICT="bindist mirror strip"
 EMULTILIB_PKG="true"
@@ -54,7 +54,7 @@ RDEPEND="
 		x11-libs/pango[X]
 	)
 	X? (
-		<x11-base/xorg-server-1.17.99:=
+		<x11-base/xorg-server-1.18.99:=
 		>=x11-libs/libvdpau-0.3-r1
 		multilib? (
 			>=x11-libs/libX11-1.6.2[abi_x86_32]
@@ -77,17 +77,18 @@ pkg_pretend() {
 		die "Unexpected \${DEFAULT_ABI} = ${DEFAULT_ABI}"
 	fi
 
-	if use kernel_linux && kernel_is ge 4 3; then
+	if use kernel_linux && kernel_is ge 4 4; then
 		ewarn "Gentoo supports kernels which are supported by NVIDIA"
 		ewarn "which are limited to the following kernels:"
-		ewarn "<sys-kernel/gentoo-sources-4.3"
-		ewarn "<sys-kernel/vanilla-sources-4.3"
+		ewarn "<sys-kernel/gentoo-sources-4.4"
+		ewarn "<sys-kernel/vanilla-sources-4.4"
 		ewarn ""
 		ewarn "You are free to utilize epatch_user to provide whatever"
 		ewarn "support you feel is appropriate, but will not receive"
 		ewarn "support as a result of those changes."
 		ewarn ""
 		ewarn "Do not file a bug report about this."
+		ewarn ""
 	fi
 
 	# Since Nvidia ships many different series of drivers, we need to give the user
