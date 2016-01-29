@@ -36,9 +36,6 @@ src_prepare() {
 	# Don't use utempter even if it is found on the system
 	epatch "${FILESDIR}"/${PN}-4.3.0-no-utempter.patch
 
-	# visual_bell is no longer an int
-	epatch "${FILESDIR}"/${PN}-9999-bool_visual_bell.patch
-
 	# sched.h is a system header and causes problems with some C libraries
 	mv sched.h _sched.h || die
 	sed -i '/include/ s:sched.h:_sched.h:' screen.h || die
