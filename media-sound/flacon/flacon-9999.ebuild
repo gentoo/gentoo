@@ -62,6 +62,8 @@ src_prepare() {
 
 	l10n_find_plocales_changes 'translations' "${PN}_" '.ts'
 	l10n_for_each_disabled_locale_do remove_locale
+
+	cmake-utils_src_prepare
 }
 
 src_configure() {
