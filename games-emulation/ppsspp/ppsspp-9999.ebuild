@@ -13,7 +13,7 @@ EGIT_COMMIT="v${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="qt4 qt5 +sdl"
 REQUIRED_USE="
 	?? ( qt4 qt5 sdl )
