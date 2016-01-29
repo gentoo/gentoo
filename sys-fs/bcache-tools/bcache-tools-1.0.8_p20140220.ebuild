@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${PV}/bcache-tools-1.0.8-noprobe.patch
 	"${FILESDIR}"/${PV}/bcache-tools-20131018-fedconf.patch
 	"${FILESDIR}"/${PV}/bcache-tools-status-20130826-man.patch
+	"${FILESDIR}"/${PV}/bcache-tools-1.0.8-probe-bcache-underlinking.patch
 )
 
 S="${WORKDIR}"/${P%%_p*}
