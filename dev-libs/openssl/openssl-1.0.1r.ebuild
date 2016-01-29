@@ -1,22 +1,21 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=5
 
 inherit eutils flag-o-matic toolchain-funcs multilib multilib-minimal
 
 REV="1.7"
-MY_P=${P/_/-}
 DESCRIPTION="full-strength general purpose cryptography library (including SSL and TLS)"
 HOMEPAGE="http://www.openssl.org/"
-SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
+SRC_URI="mirror://openssl/source/${P}.tar.gz
 	http://cvs.pld-linux.org/cgi-bin/cvsweb.cgi/packages/${PN}/${PN}-c_rehash.sh?rev=${REV} -> ${PN}-c_rehash.sh.${REV}"
 
 LICENSE="openssl"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~arm-linux ~x86-linux"
-IUSE="+asm bindist gmp kerberos rfc3779 sctp cpu_flags_x86_sse2 static-libs test +tls-heartbeat vanilla zlib"
+IUSE="bindist gmp kerberos rfc3779 cpu_flags_x86_sse2 static-libs test +tls-heartbeat vanilla zlib"
 RESTRICT="!bindist? ( bindist )"
 
 # The blocks are temporary just to make sure people upgrade to a
@@ -26,7 +25,7 @@ RDEPEND="gmp? ( >=dev-libs/gmp-5.1.3-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
 	kerberos? ( >=app-crypt/mit-krb5-1.11.4[${MULTILIB_USEDEP}] )
 	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508
+		!<=app-emulation/emul-linux-x86-baselibs-20140406-r3
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
 	)
 	!<net-misc/openssh-5.9_p1-r4
@@ -34,11 +33,8 @@ RDEPEND="gmp? ( >=dev-libs/gmp-5.1.3-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
 DEPEND="${RDEPEND}
 	sys-apps/diffutils
 	>=dev-lang/perl-5
-	sctp? ( >=net-misc/lksctp-tools-1.0.12 )
 	test? ( sys-devel/bc )"
 PDEPEND="app-misc/ca-certificates"
-
-S="${WORKDIR}/${MY_P}"
 
 MULTILIB_WRAPPED_HEADERS=(
 	usr/include/openssl/opensslconf.h
@@ -59,13 +55,12 @@ src_prepare() {
 	if ! use vanilla ; then
 		epatch "${FILESDIR}"/${PN}-1.0.0a-ldflags.patch #327421
 		epatch "${FILESDIR}"/${PN}-1.0.0d-windres.patch #373743
-		epatch "${FILESDIR}"/${PN}-1.0.2a-parallel-build.patch
-		epatch "${FILESDIR}"/${PN}-1.0.2a-parallel-obj-headers.patch
-		epatch "${FILESDIR}"/${PN}-1.0.2a-parallel-install-dirs.patch
-		epatch "${FILESDIR}"/${PN}-1.0.2a-parallel-symlinking.patch #545028
-		epatch "${FILESDIR}"/${PN}-1.0.2-ipv6.patch
-		epatch "${FILESDIR}"/${PN}-1.0.2a-x32-asm.patch #542618
-
+		epatch "${FILESDIR}"/${PN}-1.0.0h-pkg-config.patch
+		epatch "${FILESDIR}"/${PN}-1.0.1p-parallel-build.patch
+		epatch "${FILESDIR}"/${PN}-1.0.1r-x32.patch
+		epatch "${FILESDIR}"/${PN}-1.0.1m-ipv6.patch
+		epatch "${FILESDIR}"/${PN}-1.0.1f-revert-alpha-perl-generation.patch #499086
+		epatch "${FILESDIR}"/${PN}-1.0.1p-default-source.patch #554338
 		epatch_user #332661
 	fi
 
@@ -100,7 +95,6 @@ src_prepare() {
 
 	append-flags -fno-strict-aliasing
 	append-flags $(test-flags-CC -Wa,--noexecstack)
-	append-cppflags -DOPENSSL_NO_BUF_FREELISTS
 
 	sed -i '1s,^:$,#!'${EPREFIX}'/usr/bin/perl,' Configure #141906
 	# The config script does stupid stuff to prompt the user.  Kill it.
@@ -122,7 +116,7 @@ multilib_src_configure() {
 	# IDEA:     Expired                 http://en.wikipedia.org/wiki/International_Data_Encryption_Algorithm
 	# EC:       ????????? ??/??/2015    http://en.wikipedia.org/wiki/Elliptic_Curve_Cryptography
 	# MDC2:     Expired                 http://en.wikipedia.org/wiki/MDC-2
-	# RC5:      Expired                 http://en.wikipedia.org/wiki/RC5
+	# RC5:      5,724,428 03/03/2015    http://en.wikipedia.org/wiki/RC5
 
 	use_ssl() { usex $1 "enable-${2:-$1}" "no-${2:-$1}" " ${*:3}" ; }
 	echoit() { echo "$@" ; "$@" ; }
@@ -154,13 +148,11 @@ multilib_src_configure() {
 		${ec_nistp_64_gcc_128} \
 		enable-idea \
 		enable-mdc2 \
-		enable-rc5 \
+		$(use_ssl !bindist rc5) \
 		enable-tlsext \
-		$(use_ssl asm) \
 		$(use_ssl gmp gmp -lgmp) \
 		$(use_ssl kerberos krb5 --with-krb5-flavor=${krb5}) \
 		$(use_ssl rfc3779) \
-		$(use_ssl sctp) \
 		$(use_ssl tls-heartbeat heartbeats) \
 		$(use_ssl zlib) \
 		--prefix="${EPREFIX}"/usr \

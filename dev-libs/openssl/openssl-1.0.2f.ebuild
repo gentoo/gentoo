@@ -1,17 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=5
 
 inherit eutils flag-o-matic toolchain-funcs multilib multilib-minimal
 
-REV="1.7"
 MY_P=${P/_/-}
 DESCRIPTION="full-strength general purpose cryptography library (including SSL and TLS)"
 HOMEPAGE="http://www.openssl.org/"
-SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
-	http://cvs.pld-linux.org/cgi-bin/cvsweb.cgi/packages/${PN}/${PN}-c_rehash.sh?rev=${REV} -> ${PN}-c_rehash.sh.${REV}"
+SRC_URI="mirror://openssl/source/${MY_P}.tar.gz"
 
 LICENSE="openssl"
 SLOT="0"
@@ -22,7 +20,8 @@ RESTRICT="!bindist? ( bindist )"
 # The blocks are temporary just to make sure people upgrade to a
 # version that lack runtime version checking.  We'll drop them in
 # the future.
-RDEPEND="gmp? ( >=dev-libs/gmp-5.1.3-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
+RDEPEND=">=app-misc/c_rehash-1.7-r1
+	gmp? ( >=dev-libs/gmp-5.1.3-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
 	kerberos? ( >=app-crypt/mit-krb5-1.11.4[${MULTILIB_USEDEP}] )
 	abi_x86_32? (
@@ -32,10 +31,12 @@ RDEPEND="gmp? ( >=dev-libs/gmp-5.1.3-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
 	!<net-misc/openssh-5.9_p1-r4
 	!<net-libs/neon-0.29.6-r1"
 DEPEND="${RDEPEND}
-	sys-apps/diffutils
 	>=dev-lang/perl-5
 	sctp? ( >=net-misc/lksctp-tools-1.0.12 )
-	test? ( sys-devel/bc )"
+	test? (
+		sys-apps/diffutils
+		sys-devel/bc
+	)"
 PDEPEND="app-misc/ca-certificates"
 
 S="${WORKDIR}/${MY_P}"
@@ -45,12 +46,8 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 src_prepare() {
+	# keep this in sync with app-misc/c_rehash
 	SSL_CNF_DIR="/etc/ssl"
-	sed \
-		-e "/^DIR=/s:=.*:=${EPREFIX}${SSL_CNF_DIR}:" \
-		-e "s:SSL_CMD=/usr:SSL_CMD=${EPREFIX}/usr:" \
-		"${DISTDIR}"/${PN}-c_rehash.sh.${REV} \
-		> "${WORKDIR}"/c_rehash || die #416717
 
 	# Make sure we only ever touch Makefile.org and avoid patching a file
 	# that gets blown away anyways by the Configure script in src_configure
@@ -59,12 +56,13 @@ src_prepare() {
 	if ! use vanilla ; then
 		epatch "${FILESDIR}"/${PN}-1.0.0a-ldflags.patch #327421
 		epatch "${FILESDIR}"/${PN}-1.0.0d-windres.patch #373743
-		epatch "${FILESDIR}"/${PN}-1.0.2a-parallel-build.patch
+		epatch "${FILESDIR}"/${PN}-1.0.2e-parallel-build.patch
 		epatch "${FILESDIR}"/${PN}-1.0.2a-parallel-obj-headers.patch
 		epatch "${FILESDIR}"/${PN}-1.0.2a-parallel-install-dirs.patch
 		epatch "${FILESDIR}"/${PN}-1.0.2a-parallel-symlinking.patch #545028
 		epatch "${FILESDIR}"/${PN}-1.0.2-ipv6.patch
 		epatch "${FILESDIR}"/${PN}-1.0.2a-x32-asm.patch #542618
+		epatch "${FILESDIR}"/${PN}-1.0.1p-default-source.patch #554338
 
 		epatch_user #332661
 	fi
@@ -95,7 +93,7 @@ src_prepare() {
 	[[ ${CC} == *clang* ]] && append-flags -Qunused-arguments
 
 	# allow openssl to be cross-compiled
-	cp "${FILESDIR}"/gentoo.config-1.0.1 gentoo.config || die
+	cp "${FILESDIR}"/gentoo.config-1.0.2 gentoo.config || die
 	chmod a+rx gentoo.config
 
 	append-flags -fno-strict-aliasing
@@ -203,7 +201,10 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	dobin "${WORKDIR}"/c_rehash #333117
+	# openssl installs perl version of c_rehash by default, but
+	# we provide a shell version via app-misc/c_rehash
+	rm "${ED}"/usr/bin/c_rehash || die
+
 	dodoc CHANGES* FAQ NEWS README doc/*.txt doc/c-indentation.el
 	dohtml -r doc/*
 	use rfc3779 && dodoc engines/ccgost/README.gost
