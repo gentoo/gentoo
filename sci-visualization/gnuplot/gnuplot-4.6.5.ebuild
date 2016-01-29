@@ -104,6 +104,13 @@ src_prepare() {
 		distributed separately; the gnuplot ebuild no longer installs it.
 		Emerge app-emacs/gnuplot-mode for Emacs support.'
 	has_version "${CATEGORY}/${PN}[emacs(-)]" && FORCE_PRINT_ELOG=1
+
+	# Make sure we don't mix build & host flags.
+	sed -i \
+		-e 's:@CPPFLAGS@:$(BUILD_CPPFLAGS):' \
+		-e 's:@CFLAGS@:$(BUILD_CFLAGS):' \
+		-e 's:@LDFLAGS@:$(BUILD_LDFLAGS):' \
+		docs/Makefile.in || die
 }
 
 src_configure() {
@@ -117,6 +124,8 @@ src_configure() {
 	fi
 
 	tc-export CC CXX			#453174
+	tc-export_build_env BUILD_CC
+	export CC_FOR_BUILD=${BUILD_CC}
 
 	econf \
 		--without-pdf \
