@@ -8884,7 +8884,7 @@ dev-ruby/rr 1.1.2 1.1.2-r1: A double framework that features a rich selection of
 dev-ruby/rrdtool-bindings 1.4.8 1.4.8-r2 1.4.9 1.5.3 1.5.4 1.5.5: Ruby bindings for rrdtool
 dev-ruby/rspec 1.3.2-r1 1.3.2-r2 2.14.1 2.14.1-r1 2.99.0 3.2.0 3.3.0 3.4.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-collection_matchers 1.1.2: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspec-core 2.14.8-r2 2.14.8-r4 2.99.2-r1 3.2.3 3.2.3-r1 3.3.1 3.3.2 3.3.2-r1 3.4.0 3.4.1: A Behaviour Driven Development (BDD) framework for Ruby
+dev-ruby/rspec-core 2.14.8-r2 2.14.8-r4 2.99.2-r1 3.2.3 3.2.3-r1 3.3.1 3.3.2 3.3.2-r1 3.4.0 3.4.1 3.4.2: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-expectations 2.14.5 2.14.5-r1 2.99.2 3.2.1 3.3.0 3.3.1 3.4.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-its 1.1.0 1.2.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-mocks 2.14.6 2.14.6-r1 2.99.2 3.2.1 3.3.1 3.3.2 3.4.0 3.4.1: A Behaviour Driven Development (BDD) framework for Ruby
@@ -8962,7 +8962,7 @@ dev-ruby/sass 3.2.19-r1 3.2.19-r2 3.3.14 3.3.14-r1 3.4.15 3.4.19 3.4.20 3.4.21: 
 dev-ruby/sass-rails 3.2.6 4.0.5 5.0.3 5.0.4 5.0.4-r1: Official Ruby-on-Rails Integration with Sass
 dev-ruby/sdoc 0.3.20 0.4.1: rdoc generator html with javascript search index
 dev-ruby/seed-fu 2.2.0 2.3.3 2.3.4 2.3.5: Advanced seed data handling for Rails, combining the best practices of several methods together
-dev-ruby/selenium-webdriver 2.46.2 2.47.1 2.48.1 2.49.0: This gem provides Ruby bindings for WebDriver
+dev-ruby/selenium-webdriver 2.46.2 2.47.1 2.48.1 2.49.0 2.50.0: This gem provides Ruby bindings for WebDriver
 dev-ruby/semantic_puppet 0.1.1: Library of useful tools for working with Semantic Versions and module dependencies.
 dev-ruby/serialport 1.3.0 1.3.1: a library for serial port (rs232) access in ruby
 dev-ruby/session 3.1.2 3.2.0: A set of classes to drive external programs via pipe
@@ -15859,7 +15859,7 @@ sci-mathematics/reduce 20110414-r1: A general-purpose computer algebra system
 sci-mathematics/relational 0.11: Qt4 relational algebra application
 sci-mathematics/rkward 0.6.1: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
-sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953 0.98.1028 0.98.1091 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1: IDE for the R language
+sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953 0.98.1028 0.98.1091 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491: IDE for the R language
 sci-mathematics/rw 0.7: Compute rank-width decompositions of graphs
 sci-mathematics/sha1-polyml 5.5.0: implementation of SHA1 is taken from the GNU coreutils package
 sci-mathematics/singular 3.1.6 4.0.2: Computer algebra system for polynomial computations
@@ -17763,7 +17763,7 @@ x11-base/xorg-server 1.12.4-r5 1.12.4-r7 1.15.2-r2 1.15.2-r4 1.16.4 1.16.4-r5 1.
 x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/afb-ucode 1.3.11: Binary blob microcode for Elite3D framebuffers to use X, required by xf86-video-sunffb
 x11-drivers/ati-drivers 15.9-r1 15.12 15.12-r1: Ati precompiled drivers for Radeon Evergreen (HD5000 Series) and newer chipsets
-x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 304.131 340.93-r1 340.96 346.96-r1 352.63 352.68 352.79 355.11-r2 358.16-r1 361.18-r1: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 304.131 304.131-r1 340.96 340.96-r1 346.96-r1 346.96-r2 352.63 352.79 355.11-r2 355.11-r3 361.18-r1: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-acecad 1.5.0: Acecad Flair input driver
 x11-drivers/xf86-input-aiptek 1.4.1: Aiptek USB Digital Tablet Input Driver for Linux
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
