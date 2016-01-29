@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="aac flac mac mp3 opus qt4 qt5 replaygain tta vorbis wavpack"
 
-DEPEND="
+COMMON_DEPEND="
 	dev-libs/uchardet
 	qt4? (
 		dev-qt/qtcore:4
@@ -30,7 +30,7 @@ DEPEND="
 		dev-qt/qtwidgets:5
 	)
 "
-RDEPEND="${DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	media-sound/shntool[mac?]
 	aac? ( media-libs/faac )
 	flac? ( media-libs/flac )
@@ -44,6 +44,9 @@ RDEPEND="${DEPEND}
 	tta? ( media-sound/ttaenc )
 	vorbis? ( media-sound/vorbis-tools )
 	wavpack? ( media-sound/wavpack )
+"
+DEPEND="${COMMON_DEPEND}
+	virtual/pkgconfig
 "
 
 REQUIRED_USE="^^ ( qt4 qt5 )"
