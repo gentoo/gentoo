@@ -46,7 +46,7 @@ RDEPEND="
 	dev-python/pyasn1-modules[${PYTHON_USEDEP}]
 	dev-python/tlslite[${PYTHON_USEDEP}]
 	dev-python/qrcode[${PYTHON_USEDEP}]
-	dev-python/socksipy[${PYTHON_USEDEP}]
+	dev-python/PySocks[${PYTHON_USEDEP}]
 	dev-libs/protobuf[python,${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	gtk3? (
