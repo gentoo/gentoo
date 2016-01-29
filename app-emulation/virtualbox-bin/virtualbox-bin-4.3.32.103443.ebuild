@@ -75,6 +75,7 @@ RDEPEND="!!app-emulation/virtualbox
 	x11-libs/libSM
 	x11-libs/libICE
 	x11-libs/libXdmcp
+	sys-fs/lvm2
 	python? ( ${PYTHON_DEPS} )"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
