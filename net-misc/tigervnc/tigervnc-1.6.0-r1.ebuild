@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=6
 
 inherit autotools cmake-utils eutils flag-o-matic java-pkg-opt-2
 
-XSERVER_VERSION="1.17.4"
+XSERVER_VERSION="1.18.0"
 
 DESCRIPTION="Remote desktop viewer display system"
 HOMEPAGE="http://www.tigervnc.org"
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/TigerVNC/tigervnc/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm hppa ~ia64 ~mips ~ppc ppc64 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86"
 IUSE="gnutls java +opengl pam server +xorgmodule"
 
 RDEPEND="virtual/jpeg:0
@@ -82,6 +82,7 @@ src_prepare() {
 	eapply "${WORKDIR}"/patches/010_libvnc-os.patch
 	eapply "${WORKDIR}"/patches/030_manpages.patch
 	eapply "${WORKDIR}"/patches/055_xstartup.patch
+	eapply "${FILESDIR}"/${P}-xorg118-1.patch
 
 	default
 
@@ -139,7 +140,16 @@ src_configure() {
 src_compile() {
 	cmake-utils_src_compile
 
-	use server && emake -C unix/xserver
+	if use server; then
+		# deps of the vnc module and the module itself
+		local d subdirs=(
+			fb xfixes Xext dbe glx randr render damageext miext Xi xkb
+			composite dix mi os hw/vnc
+		)
+		for d in "${subdirs[@]}"; do
+			emake -C unix/xserver/"${d}"
+		done
+	fi
 }
 
 src_install() {
