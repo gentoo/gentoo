@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} pypy )
 DISTUTILS_SINGLE_IMPL=1
 
 inherit distutils-r1 eutils systemd vcs-snapshot
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="selinux systemd"
 
 RDEPEND="
-	net-firewall/iptables
+	kernel_linux? ( net-firewall/iptables )
 	net-misc/whois
 	virtual/logger
 	virtual/mta
@@ -35,7 +35,7 @@ DOCS=( ChangeLog DEVELOP README.md THANKS TODO doc/run-rootless.txt )
 
 src_prepare() {
 	# Replace /var/run with /run, but not in the top source directory
-	sed -i -e 's|/var\(/run/fail2ban\)|\1|g' $( find . -type f -mindepth 2 ) || die
+	sed -i -e 's|/var\(/run/fail2ban\)|\1|g' $( find . -mindepth 2 -type f ) || die
 
 	# Fix bashisms and do not direct useful output to /dev/null (bug #536320)
 	# Remove global logrotate settings (bug #549856)
