@@ -13450,7 +13450,7 @@ net-analyzer/egressor 1.0-r2: tool for checking router configuration
 net-analyzer/etherape 0.9.13: A graphical network monitor for Unix modeled after etherman
 net-analyzer/ethloop 10-r3: Local simulator for testing Linux QoS disciplines
 net-analyzer/ettercap 0.8.2 9999: A suite for man in the middle attacks
-net-analyzer/fail2ban 0.9.2 0.9.2-r1 0.9.3 99999999: scans log files and bans IPs that show malicious signs
+net-analyzer/fail2ban 0.9.2 0.9.2-r1 0.9.3-r1 99999999: scans log files and bans IPs that show malicious signs
 net-analyzer/fe3d 0.11.2: A 3D visualization tool for network security information
 net-analyzer/ffp 0.0.8-r1: a tool to do fuzzy fingerprinting for man-in-the-middle attacks
 net-analyzer/firewalk 5.0-r1: A tool for determining a firewall's rule set
@@ -17646,6 +17646,7 @@ www-servers/gunicorn 19.1.1 19.3.0 19.4.5: A WSGI HTTP Server for UNIX
 www-servers/hiawatha 9.8 9.14 9.14-r1 9.15: Advanced and secure webserver
 www-servers/lighttpd 1.4.35 1.4.35-r1 1.4.35-r2 1.4.37 1.4.37-r1: Lightweight high-performance web server
 www-servers/mongoose 5.3: easy to use web server
+www-servers/mongrel2 1.11.0: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.5.6-r1 1.6.7 1.6.8 9999: A small, fast, and scalable web server
 www-servers/nginx 1.8.0 1.9.6 1.9.7: Robust, small and high performance http and reverse proxy server
 www-servers/ocsigenserver 2.5-r2 2.6: Ocaml-powered webserver and framework for dynamic web programming
