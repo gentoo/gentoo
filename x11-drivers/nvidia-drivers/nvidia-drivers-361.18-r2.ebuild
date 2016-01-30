@@ -373,25 +373,26 @@ src_install() {
 		doins nvidia-application-profiles-${PV}-key-documentation
 
 		insinto /etc/nvidia
-		newins nvidia-application-profiles-${PV}-rc nvidia-application-profiles-rc
+		newins \
+			nvidia-application-profiles-${PV}-rc nvidia-application-profiles-rc
 
-		use static-libs && dolib "${S}"/nvidia-settings-${PV}/src/libXNVCtrl/libXNVCtrl.a
+		use static-libs && \
+			dolib.a "${S}"/nvidia-settings-${PV}/src/libXNVCtrl/libXNVCtrl.a
 
 		insinto /usr/include/NVCtrl
 		doins "${S}"/nvidia-settings-${PV}/src/libXNVCtrl/*.h
-	fi
 
-	dobin ${NV_OBJ}/nvidia-bug-report.sh
-
-	# Desktop entries for nvidia-settings
-	if use tools; then
 		# There is no icon in the FreeBSD tarball.
-		use kernel_FreeBSD || newicon ${NV_OBJ}/nvidia-settings.png ${PN}-settings.png
+		use kernel_FreeBSD || \
+			newicon ${NV_OBJ}/nvidia-settings.png ${PN}-settings.png
+
 		domenu "${FILESDIR}"/${PN}-settings.desktop
+
 		exeinto /etc/X11/xinit/xinitrc.d
 		doexe "${FILESDIR}"/95-nvidia-settings
 	fi
 
+	dobin ${NV_OBJ}/nvidia-bug-report.sh
 	#doenvd "${FILESDIR}"/50nvidia-prelink-blacklist
 
 	if has_multilib_profile && use multilib; then
