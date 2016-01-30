@@ -31,23 +31,20 @@ EMULTILIB_PKG="true"
 
 IUSE="acpi +driver gtk2 gtk3 kernel_FreeBSD kernel_linux +kms multilib pax_kernel static-libs +tools uvm +X"
 REQUIRED_USE="
-	tools? ( X || ( gtk2 gtk3 ) )
+	tools? ( X )
+	static-libs? ( tools )
 "
 
 COMMON="
 	app-eselect/eselect-opencl
 	kernel_linux? ( >=sys-libs/glibc-2.6.1 )
 	tools? (
-		>=x11-libs/libvdpau-1.0
 		dev-libs/atk
 		dev-libs/glib:2
 		dev-libs/jansson
-		gtk2? ( >=x11-libs/gtk+-2.4:2 )
 		gtk3? (
-			x11-libs/cairo
 			x11-libs/gtk+:3
 		)
-		media-libs/mesa
 		x11-libs/cairo
 		x11-libs/gdk-pixbuf[X]
 		x11-libs/gtk+:2
@@ -65,7 +62,6 @@ COMMON="
 "
 DEPEND="
 	${COMMON}
-	app-arch/xz-utils
 	kernel_linux? ( virtual/linux-sources )
 "
 RDEPEND="
@@ -369,15 +365,15 @@ src_install() {
 			NV_USE_BUNDLED_LIBJANSSON=0 \
 			install
 
+		use static-libs && \
+			dolib.a "${S}"/nvidia-settings-${PV}/src/libXNVCtrl/libXNVCtrl.a
+
 		insinto /usr/share/nvidia/
 		doins nvidia-application-profiles-${PV}-key-documentation
 
 		insinto /etc/nvidia
 		newins \
 			nvidia-application-profiles-${PV}-rc nvidia-application-profiles-rc
-
-		use static-libs && \
-			dolib.a "${S}"/nvidia-settings-${PV}/src/libXNVCtrl/libXNVCtrl.a
 
 		insinto /usr/include/NVCtrl
 		doins "${S}"/nvidia-settings-${PV}/src/libXNVCtrl/*.h
