@@ -8,4 +8,7 @@
   <upstream>
     <remote-id type="github">ocsigen/eliom</remote-id>
   </upstream>
+  <use>
+	<flag name="ppx">Enable PPX syntax extension support.</flag>
+  </use>
 </pkgmetadata>
