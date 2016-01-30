@@ -13,8 +13,11 @@ SRC_URI="http://people.freedesktop.org/~hughsient/releases/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
+
+# Tests need valgrind, that needs glibc with debugging symbols
+RESTRICT="test"
 
 RDEPEND="
 	dev-db/sqlite:3
@@ -24,7 +27,7 @@ RDEPEND="
 	>=media-libs/libcanberra-0.10[gtk3]
 	net-libs/libsoup:2.4
 	>=x11-libs/gtk+-3.11.2:3
-	>=x11-misc/colord-1.2.6:0=
+	>=x11-misc/colord-1.2.9:0=
 	>=x11-libs/colord-gtk-0.1.24
 "
 DEPEND="${RDEPEND}
@@ -37,18 +40,13 @@ DEPEND="${RDEPEND}
 "
 # docbook stuff needed for man pages
 
-src_prepare() {
-	# Fix .desktop
-	sed -e '/Terminal=/ d' -i data/colorhug-docs.desktop || die
-
-	gnome2_src_prepare
-}
-
 src_configure() {
 	# introspection checked but not needed by anything
-	gnome2_src_configure --disable-introspection
+	# Install completions manually to prevent dependency on bash-completion, bug #546166
+	gnome2_src_configure --disable-introspection --disable-bash-completion
 }
 
 src_install() {
-	gnome2_src_install bashcompletiondir="$(get_bashcompdir)"
+	gnome2_src_install
+	dobashcomp data/bash/colorhug-cmd
 }

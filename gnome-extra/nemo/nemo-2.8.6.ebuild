@@ -38,9 +38,12 @@ COMMON_DEPEND="
 	xmp? ( >=media-libs/exempi-2.2.0:= )
 "
 RDEPEND="${COMMON_DEPEND}
-	x11-themes/gnome-icon-theme-symbolic
+	x11-themes/adwaita-icon-theme
 	nls? ( >=gnome-extra/cinnamon-translations-2.2 )
 "
+
+PDEPEND=">=gnome-base/gvfs-0.1.2"
+
 DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 	$(python_gen_any_dep '
@@ -60,7 +63,6 @@ DEPEND="${COMMON_DEPEND}
 "
 # For eautoreconf
 #	gnome-base/gnome-common, dev-util/gtk-doc (not only -am!)
-PDEPEND=">=gnome-base/gvfs-0.1.2"
 
 src_prepare() {
 	epatch_user
@@ -70,7 +72,6 @@ src_prepare() {
 
 src_configure() {
 	gnome2_src_configure \
-		--disable-update-mimedb \
 		--disable-more-warnings \
 		$(use_enable exif libexif) \
 		$(use_enable introspection) \
@@ -79,11 +80,8 @@ src_configure() {
 }
 
 src_test() {
-	# FIXME: this should be handled at eclass level
 	"${EROOT}${GLIB_COMPILE_SCHEMAS}" --allow-any-name "${S}/libnemo-private" || die
 
-	gnome2_environment_reset
-	unset DBUS_SESSION_BUS_ADDRESS
 	cd src # we don't care about translation tests
-	GSETTINGS_SCHEMA_DIR="${S}/libnemo-private" GSETTINGS_BACKEND="memory" Xemake check
+	GSETTINGS_SCHEMA_DIR="${S}/libnemo-private" Xemake check
 }
