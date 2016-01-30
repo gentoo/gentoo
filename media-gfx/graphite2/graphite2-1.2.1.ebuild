@@ -48,7 +48,7 @@ src_prepare() {
 
 	# fix perl linking
 	if use perl; then
-		_check_build_dir init
+		_cmake_check_build_dir init
 		sed -i \
 			-e "s:@BUILD_DIR@:\"${CMAKE_BUILD_DIR}/src\":" \
 			contrib/perl/Build.PL || die
