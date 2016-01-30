@@ -44,7 +44,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	!<dev-util/pkgconfig-0.27
 	test? (
-		>=dev-util/appdata-tools-0.1.7
+		dev-libs/appstream-glib
 		>=dev-util/desktop-file-utils-0.22
 		)"
 
