@@ -102,7 +102,7 @@ src_compile() {
 
 src_install() {
 	if use qt4 ; then
-		exeinto /usr/games/bin
+		into /usr/games/bin
 		newexe "${WORKDIR}"/"${P}"/Qt/ppsspp ppsspp
 	elif use qt5 ; then
 		exeinto /usr/games/bin
@@ -119,4 +119,10 @@ src_install() {
 	insinto /usr/share/icons/
 	newins "${WORKDIR}"/"${P}"/source_assets/image/icon_regular_72.png ppsspp-icon.png
 	domenu "${FILESDIR}"/ppsspp.desktop
+}
+
+pkg_postinst() {
+	elog "Remember, in order to play games, you have to "
+	elog "be in the 'games' group. "
+	elog "Just run 'gpasswd -a <USER> games', then have <USER> re-login. "
 }
