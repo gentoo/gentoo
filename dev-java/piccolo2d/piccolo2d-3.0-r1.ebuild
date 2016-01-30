@@ -14,10 +14,10 @@ SRC_URI="https://github.com/${PN}/${PN}.java/archive/${PN}-complete-${PV}.zip ->
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
-CDEPEND="dev-java/swt:3.7"
+CDEPEND="dev-java/swt:3.8"
 
 RDEPEND="
 	${CDEPEND}
@@ -29,9 +29,7 @@ DEPEND="
 	>=virtual/jdk-1.6"
 
 S="${WORKDIR}/${PN}.java-${PN}-complete-${PV}"
-
-JAVA_GENTOO_CLASSPATH="swt-3.7"
-
+JAVA_GENTOO_CLASSPATH="swt-3.8"
 JAVA_SRC_DIR="core extras swt"
 
 java_prepare() {
