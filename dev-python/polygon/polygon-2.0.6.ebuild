@@ -13,7 +13,7 @@ SRC_URI="https://www.bitbucket.org/jraedler/${PN}2/downloads/Polygon2-${PV}.zip"
 
 LICENSE="LGPL-2"
 SLOT="2"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 DEPEND="app-arch/unzip"
 
