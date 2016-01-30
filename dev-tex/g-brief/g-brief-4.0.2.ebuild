@@ -24,7 +24,7 @@ TEXMF="/usr/share/texmf-site"
 
 src_compile() {
 	# latex chokes if these file exist, bug #573374
-	rm -f g-brief.drv g-brief.cls g-brief.sty g-brief2.cls g-brief2.sty beispiel.tex beispiel2.tex 
+	rm -f g-brief.drv g-brief.cls g-brief.sty g-brief2.cls g-brief2.sty beispiel.tex beispiel2.tex
 	latex-package_src_compile
 	# Now that the source is processed, remove it so that it is not (wrongly)
 	# reprocessed at src_install.
