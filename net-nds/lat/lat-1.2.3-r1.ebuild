@@ -51,8 +51,8 @@ src_install() {
 
 pkg_postinst() {
 	gnome2_pkg_postinst
-	if use avahi ; then
-		ewarn "You've enabled avahi support."
+	if use zeroconf ; then
+		ewarn "You've enabled zeroconf support."
 		ewarn "Make sure the avahi daemon is running before you try to start ${PN}"
 	fi
 }
