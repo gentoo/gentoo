@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,14 +19,17 @@ inherit multilib
 
 EXPORT_FUNCTIONS pkg_setup src_install
 
-# Silence repoman warnings
 case "${EAPI:-0}" in
-        5)
-                PHP_DEPEND="dev-lang/php:*"
-                ;;
-        *)
-                PHP_DEPEND="dev-lang/php"
-                ;;
+	0|1|2|3|4)
+		PHP_DEPEND="dev-lang/php"
+		;;
+	5|6)
+		# Repoman will complain about the missing slot in newer EAPIs.
+		PHP_DEPEND="dev-lang/php:*"
+		;;
+	*)
+		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
+		;;
 esac
 
 DEPEND="${PHP_DEPEND}
