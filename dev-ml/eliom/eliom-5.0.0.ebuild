@@ -13,7 +13,7 @@ SRC_URI="https://github.com/ocsigen/eliom/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
-IUSE="doc +ocamlopt ppx"
+IUSE="doc +ocamlopt +ppx"
 
 RDEPEND=">=dev-lang/ocaml-4.00:=[ocamlopt?]
 	>=dev-ml/js_of_ocaml-2.5-r1:=
