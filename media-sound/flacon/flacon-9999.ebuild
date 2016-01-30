@@ -68,8 +68,8 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_use qt4 QT4)
-		$(cmake-utils_use_use qt5 QT5)
+		-DUSE_QT4="$(usex qt4)"
+		-DUSE_QT5="$(usex qt5)"
 	)
 	cmake-utils_src_configure
 }
