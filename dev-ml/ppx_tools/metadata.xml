@@ -6,9 +6,6 @@
     <name>Gentoo ML Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">ocsigen/eliom</remote-id>
+    <remote-id type="github">ocsigen/tyxml</remote-id>
   </upstream>
-  <use>
-	<flag name="ppx">Enable PPX syntax extension support.</flag>
-  </use>
 </pkgmetadata>
