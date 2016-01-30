@@ -36,6 +36,7 @@ dev-java/swt webkit
 dev-libs/libpeas seed
 dev-util/geany-plugins devhelp markdown webkit
 >=gnome-base/gnome-desktop-2.32.1-r2 license-docs
+gnome-base/gvfs google
 mail-client/balsa webkit
 media-gfx/gimp webkit
 >=net-libs/webkit-gtk-2.4 geoloc
