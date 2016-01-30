@@ -13,7 +13,7 @@ SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 IUSE="gtk xosd"
-RDEPEND="|| ( media-tv/ivtv media-tv/v4l-utils )
+RDEPEND="media-tv/v4l-utils
 	 || ( media-video/mplayer[v4l]
 	 	media-video/mplayer[dvb] )
 	 media-sound/alsa-utils
