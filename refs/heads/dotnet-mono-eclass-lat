@@ -1,0 +1,13 @@
+certificate version 0.1
+pusher C6085806 1454162227 +0100
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1454162227-4722a71eb205dcdcf253
+
+0000000000000000000000000000000000000000 c4d9a36eb97125a2fcada4b9d0a3495984ae0f74 refs/heads/dotnet-mono-eclass-lat
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iEYEABEKAAYFAlaswTMACgkQ1fmVwcYIWAa8OwCeJyGdBCgTV1zZURBb5MgLl1eb
+cqkAoMBUS6S6D0RE8HHa0Re8gigiOTQf
+=mZmV
+-----END PGP SIGNATURE-----
