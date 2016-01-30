@@ -55,6 +55,7 @@ DEPEND="
 RDEPEND="
 	${COMMON}
 	acpi? ( sys-power/acpid )
+	tools? ( !media-video/nvidia-settings )
 	X? (
 		<x11-base/xorg-server-1.18.99:=
 		>=x11-libs/libvdpau-0.3-r1
