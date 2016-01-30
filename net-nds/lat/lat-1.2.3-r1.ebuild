@@ -5,7 +5,7 @@
 EAPI=5
 GCONF_DEBUG=no
 
-inherit gnome2 mono
+inherit gnome2 mono-env
 
 DESCRIPTION="LDAP Administration Tool, allows you to browse LDAP-based directories and add/edit/delete entries"
 HOMEPAGE="http://sourceforge.net/projects/ldap-at/"
