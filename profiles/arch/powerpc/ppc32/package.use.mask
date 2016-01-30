@@ -4,6 +4,10 @@
 
 # This file requires >=portage-2.1.1
 
+# James Le Cuirot <chewi@gentoo.org) (30 Jan 2016)
+# scrollview requires Java, which is unsupported on ppc.
+app-text/tesseract scrollview
+
 # James Le Cuirot <chewi@gentoo.org> (12 Jan 2015)
 # Java is no longer supported on ppc.
 app-text/texlive pdfannotextractor

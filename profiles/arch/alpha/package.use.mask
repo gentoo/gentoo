@@ -1,6 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+# James Le Cuirot <chewi@gentoo.org) (30 Jan 2016)
+# scrollview requires Java, which is unsupported on Alpha.
+app-text/tesseract scrollview
 
 # Michael Weber <xmw@gentoo.org> (09 Jan 2016)
 # no alpha support in media-libs/glfw
