@@ -52,7 +52,13 @@ src_install() {
 
 pkg_postinst() {
 	if use amd64 || use x86 ; then
+		einfo ""
 		elog "To use the mysql-s6 script, you need to install the optional sys-apps/s6 package."
 		elog "If you wish to use s6 logging support, comment out the log-error setting in your my.cnf"
 	fi
+
+	einfo ""
+	elog "Starting with version 10.1.8, MariaDB includes an improved systemd unit named mariadb.service"
+	elog "You should prefer that unit over this package's mysqld.service."
+	einfo ""
 }
