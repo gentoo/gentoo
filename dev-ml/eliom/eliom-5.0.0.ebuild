@@ -26,7 +26,7 @@ RDEPEND=">=dev-lang/ocaml-4.00:=[ocamlopt?]
 	dev-ml/ocaml-ssl:=
 	>=dev-ml/lwt-2.5.0:=
 	dev-ml/calendar:=
-	ppx? ( dev-ml/ppx_tools:= )"
+	ppx? ( >=dev-ml/ppx_tools-0.99.3:= )"
 DEPEND="${RDEPEND}
 	dev-ml/opam"
 
