@@ -10748,9 +10748,9 @@ gnome-extra/cinnamon 2.6.13 2.8.4 2.8.6: A fork of GNOME Shell with layout simil
 gnome-extra/cinnamon-control-center 2.6.0-r1 2.8.1: Cinnamons's main interface to configure various aspects of the desktop
 gnome-extra/cinnamon-desktop 2.6.5 2.8.0: A collection of libraries and utilites used by Cinnamon
 gnome-extra/cinnamon-menus 2.6.0 2.8.0: Cinnamon's library for the Desktop Menu fd.o specification
-gnome-extra/cinnamon-screensaver 2.6.4 2.8.0: Screensaver for Cinnamon
+gnome-extra/cinnamon-screensaver 2.6.4 2.8.0 2.8.0-r1: Screensaver for Cinnamon
 gnome-extra/cinnamon-session 2.6.3 2.8.2: Cinnamon session manager
-gnome-extra/cinnamon-settings-daemon 2.6.3 2.8.2-r1: Cinnamon's settings daemon
+gnome-extra/cinnamon-settings-daemon 2.6.3 2.8.2-r1 2.8.3: Cinnamon's settings daemon
 gnome-extra/cinnamon-translations 2.6.3 2.8.2 2.8.3: Translation data for Cinnamon
 gnome-extra/cjs 2.6.2 2.8.0: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/connman-gnome 0.7: Provides a daemon for managing internet connections
@@ -10804,7 +10804,7 @@ gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.1 3.8.2 3.8.2-r1: A nautilus extension for sending files to locations
 gnome-extra/nautilus-share 0.7.3-r1: A nautilus plugin to easily share folders over the SMB protocol
 gnome-extra/nautilus-tracker-tags 1.4.1 1.6.0 1.6.1: Nautilus extension to tag files for Tracker
-gnome-extra/nemo 2.6.7 2.8.4 2.8.5: A file manager for Cinnamon, forked from Nautilus
+gnome-extra/nemo 2.6.7 2.8.5 2.8.6: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.0.6 1.0.8 1.0.10: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/polkit-gnome 0.105-r1: A dbus session bus service that is used to bring up authentication dialogs
@@ -11839,7 +11839,7 @@ media-gfx/bootsplash-themes 20060913: A collection of Bootsplash themes
 media-gfx/brlcad 7.18.4: Constructive solid geometry modeling system
 media-gfx/cairosvg 1.0 1.0.7: A simple cairo based SVG converter with support for PDF, PostScript and PNG formats
 media-gfx/cellwriter 1.3.4 1.3.5: Grid-entry natural handwriting input panel
-media-gfx/colorhug-client 0.2.5 0.2.7: Client tools for the ColorHug display colorimeter
+media-gfx/colorhug-client 0.2.7 0.2.8: Client tools for the ColorHug display colorimeter
 media-gfx/comical 0.8-r3: A sequential image display program, to deal with .cbr and .cbz files
 media-gfx/comix 4.0.4-r1: A GTK image viewer specifically designed to handle comic books
 media-gfx/converseen 0.6.4 0.6.8: Batch image converter and resizer based on ImageMagick
@@ -13076,7 +13076,7 @@ media-sound/retrovol 0.12 0.13: Systemtray volume mixer applet from PuppyLinux
 media-sound/rexima 1.4: A curses-based interactive mixer which can also be used from the command-line
 media-sound/rezound 0.12.3_beta-r2: Sound editor and recorder
 media-sound/rgain 1.2.1: Set of programmes and Python modules to deal with Replay Gain information
-media-sound/rhythmbox 3.2.1: Music management and playback software for GNOME
+media-sound/rhythmbox 3.2.1 3.3: Music management and playback software for GNOME
 media-sound/rip 1.07: A command-line based audio CD ripper and mp3 encoder
 media-sound/ripperx 2.7.3: a GTK program to rip CD audio tracks and encode them to the Ogg, MP3, or FLAC formats
 media-sound/rosegarden 13.04 13.10-r1 14.02 14.12: MIDI and audio sequencer and notation editor
@@ -16986,7 +16986,7 @@ sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 
 sys-kernel/genkernel-next 35 55 60 63: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.4.110 3.4.9999 3.10.95 3.12.52-r1 3.12.9999 3.14.58-r1 3.14.59 3.18.25-r1 4.0.4 4.0.9 4.1.12 4.1.15-r1 4.1.16 4.3.3-r1 4.3.4 4.4.0-r1: Full sources including the Gentoo patchset for the 4.4 kernel tree
 sys-kernel/git-sources 4.5_rc1: The very latest -git version of the Linux kernel
-sys-kernel/hardened-sources 4.1.7-r1 4.3.3-r4 4.3.3-r6 4.3.3-r7 4.3.4-r1: Hardened kernel sources (kernel series 4.3)
+sys-kernel/hardened-sources 4.1.7-r1 4.3.3-r4 4.3.3-r7 4.3.4-r2: Hardened kernel sources (kernel series 4.3)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.1 0.1.3: Kernel config generator
 sys-kernel/linux-docs 3.4.104 3.10.58 3.12.30 3.14.22 4.1.12 4.2.5 4.3: Developer documentation generated from the Linux kernel
@@ -17763,7 +17763,7 @@ x11-base/xorg-server 1.12.4-r5 1.12.4-r7 1.15.2-r2 1.15.2-r4 1.16.4 1.16.4-r5 1.
 x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/afb-ucode 1.3.11: Binary blob microcode for Elite3D framebuffers to use X, required by xf86-video-sunffb
 x11-drivers/ati-drivers 15.9-r1 15.12 15.12-r1: Ati precompiled drivers for Radeon Evergreen (HD5000 Series) and newer chipsets
-x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 304.131 304.131-r1 340.93-r1 340.96 340.96-r1 340.96-r2 346.96-r1 346.96-r2 352.63 352.79 352.79-r1 355.11-r2 355.11-r3 358.16-r1 358.16-r2 361.18-r1 361.18-r2: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 304.131 304.131-r1 340.93-r1 340.96 340.96-r1 340.96-r2 346.96-r1 346.96-r2 346.96-r3 352.63 352.79 352.79-r1 355.11-r2 355.11-r3 358.16-r1 358.16-r2 361.18-r1 361.18-r2: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-acecad 1.5.0: Acecad Flair input driver
 x11-drivers/xf86-input-aiptek 1.4.1: Aiptek USB Digital Tablet Input Driver for Linux
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
