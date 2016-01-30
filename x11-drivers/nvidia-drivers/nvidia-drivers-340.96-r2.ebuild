@@ -358,11 +358,12 @@ src_install() {
 			NV_USE_BUNDLED_LIBJANSSON=0 \
 			install
 
-		use static-libs && \
+		if use static-libs; then
 			dolib.a "${S}"/nvidia-settings-${PV}/src/libXNVCtrl/libXNVCtrl.a
 
-		insinto /usr/include/NVCtrl
-		doins "${S}"/nvidia-settings-${PV}/src/libXNVCtrl/*.h
+			insinto /usr/include/NVCtrl
+			doins "${S}"/nvidia-settings-${PV}/src/libXNVCtrl/*.h
+		fi
 
 		insinto /usr/share/nvidia/
 		doins nvidia-application-profiles-${PV}-key-documentation
