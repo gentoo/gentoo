@@ -9419,7 +9419,7 @@ dev-util/d-feet 0.3.9 0.3.10: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 9.20150101 9.20151225 9.20160115: Collection of programs that can be used to automate common tasks in debian/rules
-dev-util/debootstrap 1.0.75 1.0.76: Debian/Ubuntu bootstrap scripts
+dev-util/debootstrap 1.0.75 1.0.76 1.0.77: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 4.4.6-r1 4.4.6-r2 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
 dev-util/desktop-file-utils 0.21 0.22: Command line utilities to work with desktop menu entries
@@ -14726,7 +14726,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/yaydl 1.5.2: Yet Another Youtube DownLoader which is downloading more than youtube
-net-misc/youtube-dl 2016.01.01 2016.01.15 2016.01.23 2016.01.27 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.01.01 2016.01.15 2016.01.23 2016.01.27 2016.01.29 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.1 3.1.9 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -16875,7 +16875,7 @@ sys-fs/gt5 1.4.0-r2: a diff-capable 'du-browser'
 sys-fs/hfsplusutils 1.0.4-r1: HFS+ Filesystem Access Utilities (a PPC filesystem)
 sys-fs/hfsutils 3.2.6-r5: HFS FS Access utils
 sys-fs/inotify-tools 3.13-r1 3.14: a set of command-line programs providing a simple interface to inotify
-sys-fs/iprutils 2.4.7 2.4.8-r1 2.4.9: IBM's tools for support of the ipr SCSI controller
+sys-fs/iprutils 2.4.7 2.4.8-r1 2.4.9 2.4.10.1: IBM's tools for support of the ipr SCSI controller
 sys-fs/jdiskreport-bin 1.2.5-r1 1.3.0 1.4.1: JDiskReport helps you to understand disk drive usage
 sys-fs/jfsutils 1.1.15: IBM's Journaling Filesystem (JFS) Utilities
 sys-fs/jmtpfs 0.5: A FUSE and libmtp based filesystem for accessing MTP devices
@@ -18160,7 +18160,7 @@ x11-misc/rofi 0.15.11 0.15.12: A window switcher, run dialog and dmenu replaceme
 x11-misc/rss-glx 0.9.1: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/screen-message 0.23: Display a multi-line message large, fullscreen, black on white
 x11-misc/screengrab 1.0 1.2.1-r1: Qt application for getting screenshots
-x11-misc/sddm 0.11.0-r4 0.12.0-r1 0.13.0-r1: Simple Desktop Display Manager
+x11-misc/sddm 0.12.0-r1 0.13.0-r1: Simple Desktop Display Manager
 x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewer for X windows
 x11-misc/sent 0.2 9999: Simple plaintext presentation tool
 x11-misc/set_opacity 1.0 9999: Tool for set real compositing for windows through window's id, process' pid etc.
@@ -18544,7 +18544,7 @@ x11-terms/root-tail 1.2-r3: Terminal to display (multiple) log files on the root
 x11-terms/roxterm 2.6.3 2.6.5 2.9.3-r1 3.1.5: A terminal emulator designed to integrate with the ROX environment
 x11-terms/rxvt 2.7.10-r4: A nice small x11 terminal
 x11-terms/rxvt-unicode 9.21 9.22 9999: rxvt clone with xft and unicode support
-x11-terms/sakura 3.2.0 3.2.1 3.3.0 3.3.2 3.3.3: sakura is a terminal emulator based on GTK and VTE
+x11-terms/sakura 3.2.0 3.2.1 3.3.0 3.3.2 3.3.3 3.3.4: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.5 0.6 0.6-r1 9999: simple terminal implementation for X
 x11-terms/terminator 0.97-r1 0.98: Multiple GNOME terminals in one window
 x11-terms/terminology 0.7.0 0.8.0 0.9.1 9999: Feature rich terminal emulator using the Enlightenment Foundation Libraries
