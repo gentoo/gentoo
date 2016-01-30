@@ -19,27 +19,19 @@ SRC_URI="
 	amd64? ( ${NV_URI}Linux-x86_64/${PV}/${AMD64_NV_PACKAGE}.run )
 	x86-fbsd? ( ${NV_URI}FreeBSD-x86/${PV}/${X86_FBSD_NV_PACKAGE}.tar.gz )
 	x86? ( ${NV_URI}Linux-x86/${PV}/${X86_NV_PACKAGE}.run )
+	tools? ( ftp://download.nvidia.com/XFree86/nvidia-settings/nvidia-settings-${PV}.tar.bz2 )
 "
 
 LICENSE="GPL-2 NVIDIA-r1"
 SLOT="0/${PV%.*}"
 KEYWORDS="-* ~amd64 ~x86 ~amd64-fbsd ~x86-fbsd"
-IUSE="acpi multilib kernel_FreeBSD kernel_linux pax_kernel +tools +X"
+IUSE="acpi multilib kernel_FreeBSD kernel_linux pax_kernel static-libs +tools +X"
 RESTRICT="bindist mirror strip"
 EMULTILIB_PKG="true"
 
-COMMON="app-eselect/eselect-opencl
+COMMON="
+	app-eselect/eselect-opencl
 	kernel_linux? ( >=sys-libs/glibc-2.6.1 )
-	X? (
-		>=app-eselect/eselect-opengl-1.0.9
-	)"
-DEPEND="${COMMON}
-	kernel_linux? (
-		virtual/linux-sources
-		virtual/pkgconfig
-	)"
-RDEPEND="${COMMON}
-	acpi? ( sys-power/acpid )
 	tools? (
 		dev-libs/atk
 		dev-libs/glib:2
@@ -50,6 +42,18 @@ RDEPEND="${COMMON}
 		x11-libs/pango[X]
 		x11-libs/pangox-compat
 	)
+	X? (
+		>=app-eselect/eselect-opengl-1.0.9
+	)
+"
+DEPEND="${COMMON}
+	kernel_linux? (
+		virtual/linux-sources
+		virtual/pkgconfig
+	)"
+RDEPEND="${COMMON}
+	acpi? ( sys-power/acpid )
+	tools? ( !media-video/nvidia-settings )
 	X? (
 		<x11-base/xorg-server-1.18.99:=
 		x11-libs/libXvMC
@@ -142,15 +146,6 @@ pkg_setup() {
 	fi
 }
 
-src_unpack() {
-	if ! use kernel_FreeBSD; then
-		cd "${S}"
-		unpack_makeself
-	else
-		unpack ${A}
-	fi
-}
-
 src_prepare() {
 	# Please add a brief description for every added patch
 
@@ -190,6 +185,25 @@ src_compile() {
 			LD="$(tc-getLD)" LDFLAGS="$(raw-ldflags)" || die
 	elif use kernel_linux; then
 		MAKEOPTS=-j1 linux-mod_src_compile
+	fi
+
+	if use tools; then
+		emake -C "${S}"/nvidia-settings-${PV}/src/libXNVCtrl clean
+		emake -C "${S}"/nvidia-settings-${PV}/src/libXNVCtrl \
+			AR="$(tc-getAR)" \
+			CC="$(tc-getCC)" \
+			RANLIB="$(tc-getRANLIB)" \
+			libXNVCtrl.a
+		emake -C "${S}"/nvidia-settings-${PV}/src \
+			AR="$(tc-getAR)" \
+			CC="$(tc-getCC)" \
+			LD="$(tc-getCC)" \
+			LIBDIR="$(get_libdir)" \
+			NVML_ENABLED=0 \
+			NV_USE_BUNDLED_LIBJANSSON=0 \
+			NV_VERBOSE=1 \
+			RANLIB="$(tc-getRANLIB)" \
+			STRIP_CMD=true
 	fi
 }
 
@@ -323,17 +337,29 @@ src_install() {
 		newinitd "${FILESDIR}/nvidia-smi.init" nvidia-smi
 	fi
 
-	if use tools; then
-		doexe ${NV_OBJ}/nvidia-settings
-	fi
-
 	dobin ${NV_OBJ}/nvidia-bug-report.sh
 
 	# Desktop entries for nvidia-settings
 	if use tools ; then
+		emake -C "${S}"/nvidia-settings-${PV}/src/ \
+			DESTDIR="${D}" \
+			LIBDIR="${D}/usr/$(get_libdir)" \
+			PREFIX=/usr \
+			NV_USE_BUNDLED_LIBJANSSON=0 \
+			install
+
+		use static-libs && \
+			dolib.a "${S}"/nvidia-settings-${PV}/src/libXNVCtrl/libXNVCtrl.a
+
+		insinto /usr/include/NVCtrl
+		doins "${S}"/nvidia-settings-${PV}/src/libXNVCtrl/*.h
+
 		# There is no icon in the FreeBSD tarball.
-		use kernel_FreeBSD || newicon ${NV_OBJ}/nvidia-settings.png ${PN}-settings.png
+		use kernel_FreeBSD || \
+			newicon ${NV_OBJ}/nvidia-settings.png ${PN}-settings.png
+
 		domenu "${FILESDIR}"/${PN}-settings.desktop
+
 		exeinto /etc/X11/xinit/xinitrc.d
 		doexe "${FILESDIR}"/95-nvidia-settings
 	fi
