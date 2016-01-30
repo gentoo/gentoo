@@ -109,7 +109,7 @@ src_install() {
 		exeinto /usr/games/bin
 		newexe "${WORKDIR}"/"${P}"/Qt/ppsspp ppsspp
 	else
-		exeinto /usr/games
+		into /usr/games
 		dobin "${FILESDIR}"/ppsspp
 		exeinto /usr/share/games/"${PN}"
 		doexe "${WORKDIR}"/"${P}"_build/PPSSPPSDL
@@ -120,4 +120,10 @@ src_install() {
 	insinto /usr/share/icons/
 	newins "${WORKDIR}"/"${P}"/source_assets/image/icon_regular_72.png ppsspp-icon.png
 	domenu "${FILESDIR}"/ppsspp.desktop
+}
+
+pkg_postinst() {
+	elog "Remember, in order to play games, you have to "
+	elog "be in the 'games' group. "
+	elog "Just run 'gpasswd -a <USER> games', then have <USER> re-login. "
 }
