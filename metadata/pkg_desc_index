@@ -6754,7 +6754,7 @@ dev-python/aplpy 0.9.14: Astronomical Plotting Library in Python
 dev-python/appdirs 1.4.0: Module for determining appropriate platform-specific dirs
 dev-python/apptools 4.2.1 4.3.0: Enthought Tool Suite: Application tools
 dev-python/apse 0.2-r3: Approximate String Matching in Python
-dev-python/apsw 3.8.7.1_p1 3.8.10.1_p1 3.8.11.1_p1 3.9.2_p1: APSW - Another Python SQLite Wrapper
+dev-python/apsw 3.8.7.1_p1 3.8.10.1_p1 3.8.11.1_p1 3.9.2_p1-r1: APSW - Another Python SQLite Wrapper
 dev-python/aquarium 2.3-r1: Aquarium web application framework
 dev-python/argcomplete 0.8.1 0.8.9 0.9.0: Bash tab completion for argparse
 dev-python/argh 0.25.0 0.26.0 0.26.1: A simple argparse wrapper
@@ -8576,7 +8576,7 @@ dev-ruby/compass-core 1.0.1 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-import-once 1.0.5: Speed up your Sass compilation by making @import only import each file once
 dev-ruby/configliere 0.4.18-r1 0.4.22: Settings manager for Ruby scripts
 dev-ruby/connection_pool 2.2.0: Generic connection pooling for Ruby
-dev-ruby/contracts 0.10.1 0.11.0 0.12.0: provides contracts for Ruby
+dev-ruby/contracts 0.12.0 0.13.0: provides contracts for Ruby
 dev-ruby/coolio 1.4.1 1.4.2: A high performance event framework for Ruby which uses the libev C library
 dev-ruby/countdownlatch 1.0.0-r1: Synchronization aid that allows threads to wait until a set of operations in other threads completes
 dev-ruby/crack 0.4.2 0.4.2-r1 0.4.3: Really simple JSON and XML parsing, ripped from Merb and Rails
@@ -8591,7 +8591,7 @@ dev-ruby/daemons 1.2.3: Wrap existing ruby scripts to be run as a daemon
 dev-ruby/dalli 2.6.4 2.7.4 2.7.4-r1 2.7.5: A high performance pure Ruby client for accessing memcached servers
 dev-ruby/database_cleaner 1.4.1 1.5.0 1.5.1: Strategies for cleaning databases
 dev-ruby/date_validator 0.8.0 0.8.1 0.9.0: Simple, ORM agnostic, Ruby 1.9 compatible date validator for Rails 3
-dev-ruby/dbf 2.0.8 2.0.12 2.0.13 3.0.0 3.0.1 3.0.3: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
+dev-ruby/dbf 2.0.8 2.0.13 3.0.3 3.0.4: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
 dev-ruby/debug_inspector 0.0.2: A Ruby wrapper for the MRI 2.0 debug_inspector API
 dev-ruby/debugger-linecache 1.2.0: A module to read and cache file information of a Ruby program
 dev-ruby/deep_merge 1.0.1: A simple set of utility functions for Hash
@@ -8659,7 +8659,7 @@ dev-ruby/hashicorp-checkpoint 0.1.4: Internal HashiCorp service to check version
 dev-ruby/hashie 2.1.2 2.1.2-r1 3.4.2 3.4.3: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/hashr 0.0.22 1.0.0 2.0.0: Simple Hash extension to make working with nested hashes easier and less error-prone
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
-dev-ruby/hiera 1.3.4 1.3.4-r1 2.0.0 3.0.1-r1 3.0.5: A simple pluggable Hierarchical Database
+dev-ruby/hiera 1.3.4 1.3.4-r1 2.0.0 3.0.1-r1 3.0.5 3.0.6: A simple pluggable Hierarchical Database
 dev-ruby/hiera-eyaml 2.0.6 2.0.7 2.0.8: Encrypted YAML backend for hiera
 dev-ruby/hiera-eyaml-gpg 0.4 0.5 0.6: A GPG backend for hiera-eyaml
 dev-ruby/hiera-eyaml-plaintext 0.6: A plaintext backend for hiera-eyaml
@@ -8809,7 +8809,7 @@ dev-ruby/permutation 0.1.8-r1: Library to perform different operations with perm
 dev-ruby/pg 0.17.1 0.17.1-r1 0.18.2 0.18.3 0.18.4: Ruby extension library providing an API to PostgreSQL
 dev-ruby/pg_array_parser 0.0.9-r1: Simple library to parse PostgreSQL arrays into a array of strings
 dev-ruby/pkg-config 1.1.6 1.1.7: A pkg-config implementation by Ruby
-dev-ruby/plist 3.1.0-r1: A library to manipulate Property List files, also known as plists
+dev-ruby/plist 3.1.0-r1 3.2.0: A library to manipulate Property List files, also known as plists
 dev-ruby/pluggaloid 1.0.2: Pluggaloid is extensible plugin system for mikutter
 dev-ruby/png 1.2.0-r2 1.2.1: An almost pure-Ruby Portable Network Graphics (PNG) library
 dev-ruby/podcast 0.0.4-r2: A pure Ruby library for generating podcasts from mp3 files
@@ -12469,7 +12469,7 @@ media-libs/x264 0.0.20140308 0.0.20150820 0.0.20151011 9999: A free library for 
 media-libs/x265 1.5 1.7 1.8 1.8-r3 1.9 9999: Library for encoding video streams into the H.265/HEVC format
 media-libs/xine-lib 1.2.3 1.2.6 1.2.6-r1 1.2.9999: Core libraries for Xine movie player
 media-libs/xvid 1.3.3 1.3.4: XviD, a high performance/quality MPEG-4 video de-/encoding solution
-media-libs/zimg 2.0.1 2.0.2 2.0.3 9999: Scaling, colorspace conversion, and dithering library
+media-libs/zimg 2.0.1 2.0.2 2.0.3 2.0.4 9999: Scaling, colorspace conversion, and dithering library
 media-libs/zita-alsa-pcmi 0.2.0: Provides easy access to ALSA PCM devices
 media-libs/zita-convolver 2.0.0 2.0.0-r1 3.1.0: C++ library implementing a real-time convolution matrix
 media-libs/zvbi 0.2.35 0.2.35-r1: VBI Decoding Library for Zapping
@@ -12599,7 +12599,7 @@ media-plugins/kipi-plugins 4.4.0 4.12.0 4.14.0: Plugins for the KDE Image Plugin
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.0.1 2.1.0: A libvisual graphical music visualization plugin similar to milkdrop
-media-plugins/live 2012.01.07 2012.09.13 2013.02.11 2015.08.07 2015.10.12 2015.10.29 2015.11.09 2015.12.22 2016.01.16 2016.01.20 2016.01.24: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
+media-plugins/live 2012.01.07 2012.09.13 2013.02.11 2015.08.07 2015.10.12 2015.10.29 2015.11.09 2015.12.22 2016.01.16 2016.01.20 2016.01.24 2016.01.29: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
 media-plugins/mcp-plugins 0.4.0 0.4.0-r1: MCP ladspa plugins package. Includes moogvcf, phaser & chorus
 media-plugins/mda-lv2 1.0.0 1.2.2: LV2 port of the MDA plugins by Paul Kellett
 media-plugins/mediastreamer-amr 0.0.1: mediastreamer plugin: add AMR Narrow Band support
@@ -13064,7 +13064,7 @@ media-sound/qtagconvert 2.0.0-r2: Qt4 tag editor for mp3 files
 media-sound/qtagger 1.0.1 1.0.1-r1 1.0.1-r2: Simple Qt4 ID3v2 tag editor
 media-sound/qtgain 0.9.5: A simple frontend to mp3gain, vorbisgain and metaflac
 media-sound/qtmpc 0.6.1: Qt MPD client with a tree view music library interface
-media-sound/qtractor 0.7.0-r1 0.7.1-r1 0.7.2 0.7.3: Qtractor is an Audio/MIDI multi-track sequencer
+media-sound/qtractor 0.7.0-r1 0.7.1-r1 0.7.2 0.7.3 0.7.4: Qtractor is an Audio/MIDI multi-track sequencer
 media-sound/qtscrobbler 0.10: Updates a last.fm profile using information from a supported portable music player
 media-sound/quark 3.21 3.24: Quark is the Anti-GUI Music Player with a cool Docklet!
 media-sound/quimup 1.3.2 1.4.0: A Qt4 client for the music player daemon (MPD) written in C++
