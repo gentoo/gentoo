@@ -5005,7 +5005,7 @@ dev-ml/deriving 0.6.2 0.7: A deriving library for Ocsigen
 dev-ml/deriving-ocsigen 0.3c: A deriving library for Ocsigen
 dev-ml/dose3 4.2: Library and a collection of tools to perform la large spectrum of analysis on package repositories
 dev-ml/easy-format 1.0.2: Pretty-printing library for OCaml
-dev-ml/eliom 4.2: A web framework to program client/server applications
+dev-ml/eliom 4.2 5.0.0: A web framework to program client/server applications
 dev-ml/enumerate 111.08.00: Syntax extension to produce a list of all values of a type
 dev-ml/extlib 1.5.4 1.6.1 1.7.0-r1: Standard library extensions for O'Caml
 dev-ml/facile 1.1 1.1.1: A constraint programming library on integer and integer set finite domains written in OCaml
@@ -5018,7 +5018,7 @@ dev-ml/herelib 109.35.00 109.35.02 112.35.00: Syntax extension for inserting the
 dev-ml/iTeML 2.0.1: Inline (Unit) Tests for OCaml
 dev-ml/incremental 112.35.00 113.00.00: Library for incremental computations
 dev-ml/io-page 1.5.1: IO memory page library for Mirage backends
-dev-ml/js_of_ocaml 2.6: A compiler from OCaml bytecode to javascript
+dev-ml/js_of_ocaml 2.6 2.7: A compiler from OCaml bytecode to javascript
 dev-ml/jsonm 0.9.1: Non-blocking streaming JSON codec for OCaml
 dev-ml/kaputt 1.2: Unit testing tool for the Objective Caml language
 dev-ml/lablgl 1.04-r1 1.05: Objective CAML interface for OpenGL
@@ -5079,11 +5079,12 @@ dev-ml/pgocaml 1.7.1 2.1 2.2: PG'OCaml is a set of OCaml bindings for the Postgr
 dev-ml/pipebang 110.01.00 113.00.00: Syntax extension to transform x |! f into f x
 dev-ml/pomap 3.0.2 3.0.3 3.0.5: Partially Ordered Map ADT for O'Caml
 dev-ml/postgresql-ocaml 2.0.5 2.0.6 3.2.0 3.2.1 3.2.2: A package for ocaml that provides access to PostgreSQL databases
+dev-ml/ppx_tools 0.99.2 0.99.3: Tools for authors of ppx rewriters
 dev-ml/pxp 1.2.4 1.2.7: validating XML parser library for O'Caml
 dev-ml/qcheck 0.4.0.1: QuickCheck inspired property-based testing for OCaml
 dev-ml/re2 112.35.00 113.00.00: OCaml bindings for RE2
 dev-ml/react 0.9.4 1.2.0: OCaml module for functional reactive programming
-dev-ml/reactiveData 0.1: Functional reactive programming with incremental changes in data structures
+dev-ml/reactiveData 0.1 0.2: Functional reactive programming with incremental changes in data structures
 dev-ml/res 4.0.3 4.0.4 4.0.6 4.0.7: Resizable Array and Buffer modules for O'Caml
 dev-ml/sexplib 112.35.00 113.00.00: Library for automated conversion of OCaml-values to and from S-expressions
 dev-ml/stringext 1.4.0-r1: Extra string functions for OCaml
@@ -8845,7 +8846,7 @@ dev-ruby/rails-html-sanitizer 1.0.2 1.0.3: Sanitize HTML fragments in Rails appl
 dev-ruby/rails-observers 0.1.2: Rails Observers
 dev-ruby/rails_autolink 1.1.6: This is an extraction of the auto_link method from rails
 dev-ruby/railties 3.2.22 3.2.22.1 4.0.13 4.1.13 4.1.14 4.1.14.1 4.2.4 4.2.5 4.2.5.1: Tools for creating, working with, and running Rails applications
-dev-ruby/rainbow 1.1.4 1.1.4-r1 2.0.0 2.0.0-r1: Colorize printed text on ANSI terminals
+dev-ruby/rainbow 1.1.4 1.1.4-r1 2.0.0 2.0.0-r1 2.1.0: Colorize printed text on ANSI terminals
 dev-ruby/rake 0.9.6-r1 10.3.2 10.4.0 10.4.2 10.5.0: Make-like scripting in Ruby
 dev-ruby/rake-compiler 0.9.2 0.9.2-r1 0.9.5: Provide a standard and simplified way to build and package Ruby extensions
 dev-ruby/rake-remote_task 2.3.0: Vlad the Deployer's sexy brainchild is rake-remote_task, extending Rake with remote task goodness
