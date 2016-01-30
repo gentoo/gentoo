@@ -11,11 +11,11 @@
 
 SRC_URI="http://download.mono-project.com/sources/${PN}/${P}.tar.bz2"
 
-EXPORT_FUNCTIONS pkg_setup
-
 if [[ ! ${_MONO_ENV} ]]; then
 
 inherit xdg-utils
+
+EXPORT_FUNCTIONS pkg_setup
 
 mono-env_pkg_setup() {
 	xdg_environment_reset
