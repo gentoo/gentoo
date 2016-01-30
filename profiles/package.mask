@@ -898,12 +898,6 @@ dev-libs/iniparser:4
 # See #551724 and duplicates
 =sys-fs/udev-init-scripts-29
 
-# Ryan Hill <rhill@gentoo.org> (28 Apr 2015)
-# Moving to /lib/gentoo/functions.sh broke the eclass
-# by changing output it relies on. See bug #504118,
-# 547586, and 547962.
->=sys-devel/gcc-config-1.8-r1
-
 # Patrick Lauer <patrick@gentoo.org> (10 Apr 2015)
 # Breaks pretty much all consumers, like samba
 # Mask until it's more usable
