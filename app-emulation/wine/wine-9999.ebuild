@@ -204,9 +204,21 @@ src_unpack() {
 	if [[ ${PV} == "9999" ]] ; then
 		git-r3_src_unpack
 		if use staging; then
+			local WINE_COMMIT=${EGIT_VERSION}
+
 			EGIT_REPO_URI=${STAGING_EGIT_REPO_URI}
 			unset ${PN}_LIVE_REPO;
+			unset EGIT_COMMIT;
+
 			EGIT_CHECKOUT_DIR=${STAGING_DIR} git-r3_src_unpack
+
+			local STAGING_COMMIT=$("${STAGING_DIR}/patches/patchinstall.sh" --upstream-commit) || die
+
+			if [[ "${WINE_COMMIT}" != "${STAGING_COMMIT}" ]]; then
+				einfo "The current Staging patchset is not guaranteed to apply on this WINE commit."
+				einfo "If src_prepare fails, try emerging with the env var EGIT_COMMIT."
+				einfo "Example: EGIT_COMMIT=${STAGING_COMMIT} emerge -1 wine"
+			fi
 		fi
 	else
 		unpack ${P}.tar.bz2
