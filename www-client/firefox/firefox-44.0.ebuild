@@ -43,7 +43,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linu
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="bindist egl hardened +hwaccel pgo selinux +gmp-autoupdate test"
+IUSE="bindist hardened +hwaccel pgo selinux +gmp-autoupdate test"
 RESTRICT="!bindist? ( bindist )"
 
 # More URIs appended below...
@@ -205,7 +205,8 @@ src_configure() {
 	# Add full relro support for hardened
 	use hardened && append-ldflags "-Wl,-z,relro,-z,now"
 
-	use egl && mozconfig_annotate 'Enable EGL as GL provider' --with-gl-provider=EGL
+	# EGL use flag removed for now, as build failures ensue with firefox-44
+	#use egl && mozconfig_annotate 'Enable EGL as GL provider' --with-gl-provider=EGL
 
 	# Setup api key for location services
 	echo -n "${_google_api_key}" > "${S}"/google-api-key
