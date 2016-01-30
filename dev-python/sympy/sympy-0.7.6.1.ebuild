@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-macos"
 IUSE="doc examples gtk imaging ipython latex mathml opengl pdf png pyglet test texmacs theano"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	doc? ( python_targets_python2_7 )"
+	doc? ( || ( $(python_gen_useflags 'python2*') ) )"
 
 RDEPEND="
 	$(python_gen_cond_dep '>=dev-python/pexpect-2.0[${PYTHON_USEDEP}]' python2_7)
@@ -45,6 +45,10 @@ DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( ${RDEPEND} dev-python/pytest[${PYTHON_USEDEP}] )"
 
+pkg_setup() {
+	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python2*' )
+}
+
 python_prepare_all() {
 	epatch "${FILESDIR}"/${PN}-0.7.6-doc-makefile.patch
 	epatch "${FILESDIR}"/${P}-sphinx-1.3.1.patch
@@ -65,7 +69,7 @@ python_compile_all() {
 }
 
 python_test() {
-	 VIRTUALX_COMMAND="./setup.py" virtualmake test
+	virtx "${PYTHON}" setup.py test
 }
 
 python_install() {
@@ -75,8 +79,11 @@ python_install() {
 python_install_all() {
 	local DOCS=( AUTHORS README.rst )
 	use doc &&\
-		DOCS=( ${DOCS[*]} doc/_build/cheatsheet/cheatsheet.pdf doc/_build/cheatsheet/combinatoric_cheatsheet.pdf ) &&\
-		local HTML_DOCS=( doc/_build/html/. ) &&\
+		DOCS+=(
+			doc/_build/cheatsheet/cheatsheet.pdf
+			doc/_build/cheatsheet/combinatoric_cheatsheet.pdf
+		) && \
+		local HTML_DOCS=( doc/_build/html/. ) && \
 		doinfo doc/_build/texinfo/${PN}.info
 	use examples && local EXAMPLES=( examples/. )
 	distutils-r1_python_install_all

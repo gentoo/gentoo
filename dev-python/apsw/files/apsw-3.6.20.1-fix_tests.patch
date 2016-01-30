@@ -1,5 +1,5 @@
---- tests.py
-+++ tests.py
+--- a/tests.py
++++ b/tests.py
 @@ -5480,7 +5480,7 @@
          testnasty()
  
