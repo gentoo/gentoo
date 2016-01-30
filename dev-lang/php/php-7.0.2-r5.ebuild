@@ -158,9 +158,9 @@ DEPEND="${DEPEND}
 
 php="=${CATEGORY}/${PF}"
 
-# Without USE=readline, the interactive "php -a" CLI will hang.
+# Without USE=readline or libedit, the interactive "php -a" CLI will hang.
 REQUIRED_USE="
-	cli? ( readline )
+	cli? ( ^^ ( readline libedit ) )
 	truetype? ( gd )
 	vpx? ( gd )
 	cjk? ( gd )
