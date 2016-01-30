@@ -33,6 +33,7 @@ dev-qt/qtdemo openvg
 dev-java/swt webkit
 dev-util/geany-plugins devhelp markdown webkit
 >=gnome-base/gnome-desktop-2.32.1-r2 license-docs
+gnome-base/gvfs google
 >=net-libs/webkit-gtk-2.4 geoloc
 >=x11-libs/gtk+-3.12.2 cloudprint
 x11-libs/gksu gnome

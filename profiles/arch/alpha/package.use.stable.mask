@@ -44,6 +44,7 @@ gnome-base/gvfs nfs
 # Mask due Gnome3 not going to be stabilized on this arch
 dev-util/geany-plugins devhelp markdown webkit
 >=gnome-base/gnome-desktop-2.32.1-r2 license-docs
+gnome-base/gvfs google
 mail-client/balsa webkit
 media-gfx/gimp webkit
 media-plugins/gst-plugins-meta modplug
