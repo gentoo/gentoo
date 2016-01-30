@@ -47,10 +47,6 @@ LICENSE="
 		!gpl? ( LGPL-3 )
 	)
 	encode? (
-		aac? (
-			gpl? ( GPL-3 )
-			!gpl? ( LGPL-3 )
-		)
 		amrenc? (
 			gpl? ( GPL-3 )
 			!gpl? ( LGPL-3 )
@@ -94,8 +90,8 @@ FFMPEG_FLAG_MAP=(
 
 # Same as above but for encoders, i.e. they do something only with USE=encode.
 FFMPEG_ENCODER_FLAG_MAP=(
-	aac:libvo-aacenc amrenc:libvo-amrwbenc mp3:libmp3lame
-	aacplus:libaacplus faac:libfaac kvazaar:libkvazaar nvenc:nvenc
+	amrenc:libvo-amrwbenc mp3:libmp3lame
+	faac:libfaac kvazaar:libkvazaar nvenc:nvenc
 	openh264:libopenh264 snappy:libsnappy theora:libtheora twolame:libtwolame
 	wavpack:libwavpack webp:libwebp x264:libx264 x265:libx265 xvid:libxvid
 )
@@ -167,8 +163,6 @@ RDEPEND="
 	celt? ( >=media-libs/celt-0.11.1-r1[${MULTILIB_USEDEP}] )
 	chromaprint? ( >=media-libs/chromaprint-1.2-r1[${MULTILIB_USEDEP}] )
 	encode? (
-		aac? ( >=media-libs/vo-aacenc-0.1.3[${MULTILIB_USEDEP}] )
-		aacplus? ( >=media-libs/libaacplus-2.0.2-r1[${MULTILIB_USEDEP}] )
 		amrenc? ( >=media-libs/vo-amrwbenc-0.1.2-r1[${MULTILIB_USEDEP}] )
 		faac? ( >=media-libs/faac-1.28-r3[${MULTILIB_USEDEP}] )
 		kvazaar? ( media-libs/kvazaar[${MULTILIB_USEDEP}] )
@@ -293,7 +287,7 @@ REQUIRED_USE="
 	${GPL_REQUIRED_USE}
 	${CPU_REQUIRED_USE}"
 RESTRICT="
-	encode? ( faac? ( bindist ) aacplus? ( bindist ) nvenc? ( bindist ) )
+	encode? ( faac? ( bindist ) nvenc? ( bindist ) )
 	gpl? ( openssl? ( bindist ) fdk? ( bindist ) )
 "
 
@@ -322,10 +316,10 @@ multilib_src_configure() {
 		ffuse+=( "${FFMPEG_ENCODER_FLAG_MAP[@]}" )
 
 		# Licensing.
-		if use aac || use amrenc ; then
+		if use amrenc ; then
 			myconf+=( --enable-version3 )
 		fi
-		if use aacplus || use faac || use nvenc ; then
+		if use faac || use nvenc ; then
 			myconf+=( --enable-nonfree )
 		fi
 	else
