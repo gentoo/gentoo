@@ -278,7 +278,7 @@ fortran-2_pkg_setup() {
 			eqawarn "Please migrate your package to a higher EAPI"
 			eqawarn "or file a bug at https://bugs.gentoo.org"
 			_fortran-2_pkg_setup ;;
-		4|5)
+		*)
 			if [[ ${MERGE_TYPE} != binary ]]; then
 				_fortran-2_pkg_setup
 			fi
