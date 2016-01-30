@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>mjo@gentoo.org</email>
-    <name>Michael Orlitzky</name>
-  </maintainer>
   <longdescription lang="en">
     Drush is a command line shell and scripting interface for Drupal,
     a veritable Swiss Army knife designed to make life easier for
