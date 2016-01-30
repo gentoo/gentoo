@@ -25,6 +25,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="geoip gtk libnotify setproctitle sound webinterface"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND=">=net-libs/rb_libtorrent-0.14.9[python]
 	dev-python/setuptools[${PYTHON_USEDEP}]
