@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_{3,4,5} )
 
-inherit eutils python-r1 toolchain-funcs udev
+inherit eutils flag-o-matic python-r1 toolchain-funcs udev
 
 DESCRIPTION="Tools for bcachefs"
 HOMEPAGE="http://bcache.evilpiepirate.org/"
@@ -32,7 +32,6 @@ PATCHES=(
 	"${FILESDIR}"/${PV}/bcache-tools-1.0.8-noprobe.patch
 	"${FILESDIR}"/${PV}/bcache-tools-20131018-fedconf.patch
 	"${FILESDIR}"/${PV}/bcache-tools-status-20130826-man.patch
-	"${FILESDIR}"/${PV}/bcache-tools-1.0.8-probe-bcache-underlinking.patch
 )
 
 S="${WORKDIR}"/${P%%_p*}
@@ -41,8 +40,10 @@ src_prepare() {
 	tc-export CC
 	sed \
 		-e '/^CFLAGS/s:-O2::' \
-		-e '/^CFLAGS/s:-g::' \
+		-e '/^CFLAGS/s:-g:-std=gnu99:' \
 		-i Makefile || die
+
+	append-lfs-flags
 
 	cp ../bcache-status*/bcache-status .  || die
 
