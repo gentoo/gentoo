@@ -7,7 +7,7 @@ EAPI=5
 # Ignore rudimentary et, uz@Latn, zh_TW translation(s)
 PLOCALES="cs_CZ cs de es_MX es fr gl hu it ja_JP lt nb pl_PL pl pt_BR pt_PT ro_RO ru sr tr uk zh_CN"
 
-inherit cmake-utils fdo-mime gnome2-utils l10n git-r3
+inherit cmake-utils fdo-mime gnome2-utils l10n virtualx git-r3
 
 DESCRIPTION="Extracts audio tracks from an audio CD image to separate tracks"
 HOMEPAGE="https://flacon.github.io/"
@@ -16,7 +16,7 @@ EGIT_REPO_URI="git://github.com/${PN}/${PN}.git"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="aac flac mac mp3 opus qt4 qt5 replaygain tta vorbis wavpack"
+IUSE="aac flac mac mp3 opus qt4 qt5 replaygain test tta vorbis wavpack"
 
 COMMON_DEPEND="
 	dev-libs/uchardet
@@ -70,8 +70,14 @@ src_configure() {
 	local mycmakeargs=(
 		-DUSE_QT4="$(usex qt4)"
 		-DUSE_QT5="$(usex qt5)"
+		-DTEST_DATA_DIR="${S}/tests/data/"
+		-DBUILD_TESTS="$(usex test 'Yes')"
 	)
 	cmake-utils_src_configure
+}
+
+src_test() {
+	virtx "${BUILD_DIR}/tests/${PN}_test"
 }
 
 pkg_preinst() {
