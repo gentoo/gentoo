@@ -16,11 +16,10 @@ EGIT_BRANCH="stable/liberty"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE="+compute compute-only iscsi +kvm +memcached mysql +novncproxy openvswitch postgres +rabbitmq sqlite test xen"
+IUSE="+compute compute-only iscsi +memcached mysql +novncproxy openvswitch postgres +rabbitmq sqlite test"
 REQUIRED_USE="
 	!compute-only? ( || ( mysql postgres sqlite ) )
-	compute-only? ( compute !rabbitmq !memcached !mysql !postgres !sqlite )
-	compute? ( ^^ ( kvm xen ) )"
+	compute-only? ( compute !rabbitmq !memcached !mysql !postgres !sqlite )"
 
 CDEPEND=">=dev-python/pbr-1.8[${PYTHON_USEDEP}]"
 # need to package dev-python/sphinxcontrib-seqdiag
@@ -222,9 +221,7 @@ RDEPEND="
 	compute? (
 		app-cdr/cdrkit
 		sys-fs/dosfstools
-		kvm? ( app-emulation/qemu )
-		xen? ( app-emulation/xen
-			   app-emulation/xen-tools )
+		app-emulation/qemu
 	)
 	iscsi? (
 		sys-fs/lsscsi

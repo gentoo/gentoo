@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -64,6 +64,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.28.1-fix-multilib-configuration.patch"
 	"${FILESDIR}/${PN}-0.28.1-respect-cflags.patch"
 	"${FILESDIR}/${PN}-0.33.0-openjpeg2.patch"
+	"${FILESDIR}/${PN}-0.40-FindQt4.patch"
 )
 
 src_prepare() {

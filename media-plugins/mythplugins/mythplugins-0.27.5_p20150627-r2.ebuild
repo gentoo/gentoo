@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ SRC_URI="https://github.com/MythTV/mythtv/archive/v0.27.5.tar.gz -> mythtv-0.27.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 MYTHPLUGINS="mytharchive mythbrowser mythgallery mythgame \
 mythmusic mythnetvision mythnews mythweather mythzoneminder"

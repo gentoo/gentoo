@@ -502,8 +502,8 @@ gnome2_disable_deprecation_warning() {
 		fi
 
 		LC_ALL=C sed -r -i \
-			-e 's:-D[A-Z_]+_DISABLE_DEPRECATED:$(NULL):g' \
-			-e 's:-DGSEAL_ENABLE+[A-Z_]:$(NULL):g' \
+			-e 's:-D[A-Z_]+_DISABLE_DEPRECATED:$(/bin/true):g' \
+			-e 's:-DGSEAL_ENABLE(=[A-Za-z0-9_]*)?:$(/bin/true):g' \
 			-i "${makefile}"
 
 		if [[ $? -ne 0 ]]; then

@@ -117,7 +117,9 @@ python_prepare_all() {
 }
 
 python_compile() {
-	distutils-r1_python_compile -j $(makeopts_jobs) ${NUMPY_FCONFIG}
+	distutils-r1_python_compile \
+		$(usex python_targets_python3_5 "" "-j $(makeopts_jobs)") \
+		${NUMPY_FCONFIG}
 }
 
 python_test() {

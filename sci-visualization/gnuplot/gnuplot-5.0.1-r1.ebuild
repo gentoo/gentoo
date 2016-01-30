@@ -104,6 +104,14 @@ src_prepare() {
 
 	mv configure.in configure.ac || die
 	eautoreconf
+
+	# Make sure we don't mix build & host flags.
+	sed -i \
+		-e 's:@CPPFLAGS@:$(BUILD_CPPFLAGS):' \
+		-e 's:@CFLAGS@:$(BUILD_CFLAGS):' \
+		-e 's:@LDFLAGS@:$(BUILD_LDFLAGS):' \
+		-e 's:@CC@:$(CC_FOR_BUILD):' \
+		docs/Makefile.in || die
 }
 
 src_configure() {
@@ -117,6 +125,8 @@ src_configure() {
 	fi
 
 	tc-export CC CXX			#453174
+	tc-export_build_env BUILD_CC
+	export CC_FOR_BUILD=${BUILD_CC}
 
 	econf \
 		--without-pdf \

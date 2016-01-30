@@ -155,6 +155,11 @@ gnome2_src_configure() {
 		g2conf+=( --disable-schemas-compile )
 	fi
 
+	# Pass --disable-update-mimedb when possible
+	if grep -q "disable-update-mimedb" "${ECONF_SOURCE:-.}"/configure; then
+		g2conf+=( --disable-update-mimedb )
+	fi
+
 	# Pass --enable-compile-warnings=minimum as we don't want -Werror* flags, bug #471336
 	if grep -q "enable-compile-warnings" "${ECONF_SOURCE:-.}"/configure; then
 		g2conf+=( --enable-compile-warnings=minimum )

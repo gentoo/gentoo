@@ -29,4 +29,4 @@ DEPEND="${RDEPEND}
 	>=dev-python/google-api-python-client-1.1[${PYTHON_USEDEP}]
 	>=dev-python/retry-decorator-1.0.0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	>=dev-python/socksipy-1.01[${PYTHON_USEDEP}]"
+	>=dev-python/PySocks-1.01[${PYTHON_USEDEP}]"

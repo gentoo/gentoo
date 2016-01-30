@@ -43,12 +43,6 @@ app-cdr/webcdwriter
 # Now part of eselect-java. Removal in 30 days.
 app-eselect/eselect-maven
 
-# Alexis Ballier <aballier@gentoo.org> (22 Jan 2016)
-# Breaks some of its revdeps
-# https://bugs.gentoo.org/show_bug.cgi?id=572552
-# https://github.com/ros/console_bridge/pull/31
-=dev-libs/console_bridge-0.3.0
-
 # Michael Sterrett <mr_bones_@gentoo.org> (20 Jan 2016)
 # Buggy and no updates in 9 years.
 # Masked for removal on 20160219
@@ -725,20 +719,9 @@ media-video/bombono-dvd
 # Removal in a month.
 sci-electronics/gspeakers
 
-# Michael Sterrett <mr_bones_@gentoo.org> (30 Dec 2015)
-# Upstream has gone away and games-strategy/xbattleai is
-# basically a superset anyhow.
-# Masked for removal on 20160129
-games-strategy/xbattle
-
 # Victor Ostorga <vostorga@gentoo.org> (30 Dec 2015)
 # Mask this liferea version because upstream released it broken
 =net-news/liferea-1.10.17
-
-# Michael Sterrett <mr_bones_@gentoo.org> (30 Dec 2015)
-# Unnecessary with newer version of games-simulation/flightgear
-# Masked for removal on 20160129
-games-simulation/fgrun
 
 # Justin Lecher <jlec@gentoo.org> (29 Dec 2015)
 # Fails to build and test runs

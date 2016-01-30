@@ -28,7 +28,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-python/python-gflags-2.0[${PYTHON_USEDEP}]
 	>=dev-python/retry-decorator-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
-	>=dev-python/socksipy-1.01[${PYTHON_USEDEP}]"
+	>=dev-python/PySocks-1.01[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
