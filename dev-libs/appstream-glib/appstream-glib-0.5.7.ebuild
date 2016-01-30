@@ -46,7 +46,6 @@ DEPEND="${RDEPEND}
 RDEPEND="${RDEPEND}
 	!<dev-util/appdata-tools-0.1.8-r1
 "
-PDEPEND=">=dev-util/appdata-tools-0.1.8-r1"
 
 src_configure() {
 	gnome2_src_configure \
