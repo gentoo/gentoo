@@ -29,7 +29,7 @@ KEYWORDS="-* ~amd64 ~x86 ~amd64-fbsd ~x86-fbsd"
 RESTRICT="bindist mirror strip"
 EMULTILIB_PKG="true"
 
-IUSE="acpi +driver gtk2 gtk3 kernel_FreeBSD kernel_linux +kms multilib pax_kernel static-libs +tools uvm +X"
+IUSE="acpi +driver gtk3 kernel_FreeBSD kernel_linux +kms multilib pax_kernel static-libs +tools uvm +X"
 REQUIRED_USE="
 	tools? ( X )
 	static-libs? ( tools )
@@ -42,9 +42,7 @@ COMMON="
 		dev-libs/atk
 		dev-libs/glib:2
 		dev-libs/jansson
-		gtk3? (
-			x11-libs/gtk+:3
-		)
+		gtk3? ( x11-libs/gtk+:3 )
 		x11-libs/cairo
 		x11-libs/gdk-pixbuf[X]
 		x11-libs/gtk+:2
@@ -365,8 +363,12 @@ src_install() {
 			NV_USE_BUNDLED_LIBJANSSON=0 \
 			install
 
-		use static-libs && \
+		if use static-libs; then
 			dolib.a "${S}"/nvidia-settings-${PV}/src/libXNVCtrl/libXNVCtrl.a
+
+			insinto /usr/include/NVCtrl
+			doins "${S}"/nvidia-settings-${PV}/src/libXNVCtrl/*.h
+		fi
 
 		insinto /usr/share/nvidia/
 		doins nvidia-application-profiles-${PV}-key-documentation
@@ -374,9 +376,6 @@ src_install() {
 		insinto /etc/nvidia
 		newins \
 			nvidia-application-profiles-${PV}-rc nvidia-application-profiles-rc
-
-		insinto /usr/include/NVCtrl
-		doins "${S}"/nvidia-settings-${PV}/src/libXNVCtrl/*.h
 
 		# There is no icon in the FreeBSD tarball.
 		use kernel_FreeBSD || \
@@ -389,7 +388,6 @@ src_install() {
 	fi
 
 	dobin ${NV_OBJ}/nvidia-bug-report.sh
-	#doenvd "${FILESDIR}"/50nvidia-prelink-blacklist
 
 	if has_multilib_profile && use multilib; then
 		local OABI=${ABI}

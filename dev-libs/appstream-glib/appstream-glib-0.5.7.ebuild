@@ -24,13 +24,14 @@ RDEPEND="
 	app-arch/libarchive
 	dev-db/sqlite:3
 	>=dev-libs/glib-2.45.8:2
+	dev-libs/libyaml
 	>=media-libs/fontconfig-2.11
 	>=media-libs/freetype-2.4:2
 	>=net-libs/libsoup-2.51.92:2.4
+	sys-apps/util-linux
 	>=x11-libs/gdk-pixbuf-2.31.5:2
 	x11-libs/gtk+:3
 	x11-libs/pango
-	dev-libs/libyaml
 	introspection? ( >=dev-libs/gobject-introspection-0.9.8:= )
 "
 DEPEND="${RDEPEND}
@@ -45,13 +46,11 @@ DEPEND="${RDEPEND}
 RDEPEND="${RDEPEND}
 	!<dev-util/appdata-tools-0.1.8-r1
 "
-PDEPEND=">=dev-util/appdata-tools-0.1.8-r1"
 
 src_configure() {
 	gnome2_src_configure \
 		--enable-builder \
 		--enable-firmware \
-		--disable-ostree \
 		--disable-rpm \
 		--disable-static \
 		--enable-dep11 \

@@ -5,7 +5,7 @@
 EAPI="5"
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python2_7 python3_4 pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
 VALA_MIN_API_VERSION="0.22"
 VALA_USE_DEPEND="vapigen"
 
@@ -17,6 +17,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Evolution"
 # Note: explicitly "|| ( LGPL-2 LGPL-3 )", not "LGPL-2+".
 LICENSE="|| ( LGPL-2 LGPL-3 ) BSD Sleepycat"
 SLOT="0/54" # subslot = libcamel-1.2 soname version
+
 IUSE="api-doc-extras +gnome-online-accounts +gtk +introspection ipv6 ldap kerberos vala +weather"
 REQUIRED_USE="vala? ( introspection )"
 
@@ -122,7 +123,6 @@ src_install() {
 }
 
 src_test() {
-	unset DBUS_SESSION_BUS_ADDRESS
 	unset ORBIT_SOCKETDIR
 	unset SESSION_MANAGER
 	unset DISPLAY

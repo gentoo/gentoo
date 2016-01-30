@@ -173,24 +173,14 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
-	# FIXME: this should be handled at eclass level
 	"${EROOT}${GLIB_COMPILE_SCHEMAS}" --allow-any-name "${S}/gtk" || die
 
-	unset DBUS_SESSION_BUS_ADDRESS
 	unset DISPLAY #527682
 	GSETTINGS_SCHEMA_DIR="${S}/gtk" Xemake check
 }
 
 multilib_src_install() {
 	gnome2_src_install
-
-	# add -framework Carbon to the .pc files, bug #???
-	if use aqua ; then
-		for i in gtk+-3.0.pc gtk+-quartz-3.0.pc gtk+-unix-print-3.0.pc; do
-			sed -e "s:Libs\: :Libs\: -framework Carbon :" \
-				-i "${ED%/}"/usr/$(get_libdir)/pkgconfig/$i || die "sed failed"
-		done
-	fi
 }
 
 multilib_src_install_all() {

@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="chipcard debug +doc gnome-keyring hbci mysql ofx postgres python quotes sqlite"
 
 # FIXME: rdepend on dev-libs/qof when upstream fix their mess (see configure.ac)
@@ -49,10 +49,10 @@ RDEPEND="
 	mysql? ( dev-db/libdbi dev-db/libdbi-drivers[mysql] )
 "
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	dev-util/intltool
 	gnome-base/gnome-common
 	sys-devel/libtool
+	virtual/pkgconfig
 "
 PDEPEND="doc? ( >=app-doc/gnucash-docs-2.2.0 )"
 
@@ -63,6 +63,10 @@ pkg_setup() {
 src_prepare() {
 	# Skip test that needs some locales to be present
 	sed -i -e '/test_suite_gnc_date/d' src/libqof/qof/test/test-qof.c || die
+
+	# Fix automagic on guile detection
+	# https://bugzilla.gnome.org/show_bug.cgi?id=760015
+	epatch "${FILESDIR}"/${PN}-2.6.9-automagic-guile.patch
 
 	eautoreconf
 	gnome2_src_prepare
@@ -79,16 +83,6 @@ src_configure() {
 		myconf+=" --disable-dbi"
 	fi
 
-	# guile wrongly exports LDFLAGS as LIBS which breaks modules
-	# Filter until a better ebuild is available, bug #202205
-	local GUILE_LIBS=""
-	local lib
-	for lib in $(guile-config link); do
-		if [ "${lib#-Wl}" = "$lib" ]; then
-			GUILE_LIBS="$GUILE_LIBS $lib"
-		fi
-	done
-
 	# gtkmm is experimental and shouldn't be enabled, upstream bug #684166
 	gnome2_src_configure \
 		$(use_enable debug) \
@@ -96,15 +90,15 @@ src_configure() {
 		$(use_enable ofx) \
 		$(use_enable hbci aqbanking) \
 		$(use_enable python) \
+		--with-guile=1.8 \
 		--disable-doxygen \
 		--disable-gtkmm \
 		--enable-locale-specific-tax \
 		--disable-error-on-warning \
-		 GUILE_LIBS="${GUILE_LIBS}" ${myconf}
+		${myconf}
 }
 
 src_test() {
-	unset DBUS_SESSION_BUS_ADDRESS
 	GUILE_WARN_DEPRECATED=no \
 	GNC_DOT_DIR="${T}"/.gnucash \
 	emake check

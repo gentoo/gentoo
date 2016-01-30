@@ -29,7 +29,7 @@ KEYWORDS="-* ~amd64 ~x86 ~amd64-fbsd ~x86-fbsd"
 RESTRICT="bindist mirror strip"
 EMULTILIB_PKG="true"
 
-IUSE="acpi gtk3 multilib kernel_FreeBSD kernel_linux pax_kernel static-libs +tools +X uvm"
+IUSE="acpi multilib kernel_FreeBSD kernel_linux +kms pax_kernel static-libs +tools gtk3 +X uvm"
 REQUIRED_USE="
 	tools? ( X )
 	static-libs? ( tools )
@@ -42,9 +42,7 @@ COMMON="
 		dev-libs/atk
 		dev-libs/glib:2
 		dev-libs/jansson
-		gtk3? (
-			x11-libs/gtk+:3
-		)
+		gtk3? ( x11-libs/gtk+:3 )
 		x11-libs/cairo
 		x11-libs/gdk-pixbuf[X]
 		x11-libs/gtk+:2
@@ -123,7 +121,8 @@ pkg_setup() {
 
 	if use kernel_linux; then
 		MODULE_NAMES="nvidia(video:${S}/kernel)"
-		use uvm && MODULE_NAMES+=" nvidia-uvm(video:${S}/kernel/uvm)"
+		use uvm && MODULE_NAMES+=" nvidia-uvm(video:${S}/kernel)"
+		use kms && MODULE_NAMES+=" nvidia-modeset(video:${S}/kernel)"
 
 		# This needs to run after MODULE_NAMES (so that the eclass checks
 		# whether the kernel supports loadable modules) but before BUILD_PARAMS
@@ -131,7 +130,7 @@ pkg_setup() {
 		linux-mod_pkg_setup
 
 		BUILD_PARAMS="IGNORE_CC_MISMATCH=yes V=1 SYSSRC=${KV_DIR} \
-		SYSOUT=${KV_OUT_DIR} CC=$(tc-getBUILD_CC)"
+		SYSOUT=${KV_OUT_DIR} CC=$(tc-getBUILD_CC) NV_VERBOSE=1"
 
 		# linux-mod_src_compile calls set_arch_to_kernel, which
 		# sets the ARCH to x86 but NVIDIA's wrapping Makefile
@@ -166,7 +165,7 @@ src_prepare() {
 	# Please add a brief description for every added patch
 
 	if use kernel_linux; then
-		if kernel_is lt 2 6 9 ; then
+		if kernel_is lt 2 6 9; then
 			eerror "You must build this against 2.6.9 or higher kernels."
 		fi
 
@@ -178,8 +177,7 @@ src_prepare() {
 		ewarn "Using PAX patches is not supported. You will be asked to"
 		ewarn "use a standard kernel should you have issues. Should you"
 		ewarn "need support with these patches, contact the PaX team."
-		epatch "${FILESDIR}"/${PN}-346.16-pax-usercopy.patch
-		epatch "${FILESDIR}"/${PN}-346.16-pax-constify.patch
+		epatch "${FILESDIR}"/${PN}-355.06-pax.patch
 	fi
 
 	# Allow user patches so they can support RC kernels and whatever else
@@ -223,7 +221,7 @@ src_compile() {
 # Install nvidia library:
 # the first parameter is the library to install
 # the second parameter is the provided soversion
-# the third parameter is the target directory if its not /usr/lib
+# the third parameter is the target directory if it is not /usr/lib
 donvidia() {
 	# Full path to library minus SOVER
 	MY_LIB="$1"
@@ -271,7 +269,7 @@ src_install() {
 		# pkg_preinst, see bug #491414
 		insinto /etc/modprobe.d
 		newins "${FILESDIR}"/nvidia-169.07 nvidia.conf
-		use uvm && doins "${FILESDIR}"/nvidia-uvm.conf
+		doins "${FILESDIR}"/nvidia-rmmod.conf
 
 		# Ensures that our device nodes are created when not using X
 		exeinto "$(get_udevdir)"
@@ -344,7 +342,7 @@ src_install() {
 		doexe ${NV_OBJ}/nvidia-xconfig
 	fi
 
-	if use kernel_linux ; then
+	if use kernel_linux; then
 		doexe ${NV_OBJ}/nvidia-cuda-mps-control
 		doexe ${NV_OBJ}/nvidia-cuda-mps-server
 		doexe ${NV_OBJ}/nvidia-debugdump
@@ -377,9 +375,12 @@ src_install() {
 		if use static-libs; then
 			dolib.a "${S}"/nvidia-settings-${PV}/src/libXNVCtrl/libXNVCtrl.a
 
-			insinto /usr/share/nvidia/
-			doins nvidia-application-profiles-${PV}-key-documentation
+			insinto /usr/include/NVCtrl
+			doins "${S}"/nvidia-settings-${PV}/src/libXNVCtrl/*.h
 		fi
+
+		insinto /usr/share/nvidia/
+		doins nvidia-application-profiles-${PV}-key-documentation
 
 		insinto /etc/nvidia
 		newins \
@@ -397,9 +398,9 @@ src_install() {
 
 	dobin ${NV_OBJ}/nvidia-bug-report.sh
 
-	if has_multilib_profile && use multilib ; then
+	if has_multilib_profile && use multilib; then
 		local OABI=${ABI}
-		for ABI in $(get_install_abis) ; do
+		for ABI in $(get_install_abis); do
 			src_install-libs
 		done
 		ABI=${OABI}
@@ -419,47 +420,58 @@ src_install-libs() {
 	local CL_ROOT="/usr/$(get_libdir)/OpenCL/vendors/nvidia"
 	local libdir=${NV_OBJ}
 
-	if use kernel_linux && has_multilib_profile && \
-			[[ ${ABI} == "x86" ]] ; then
+	if use kernel_linux && has_multilib_profile && [[ ${ABI} == "x86" ]]; then
 		libdir=${NV_OBJ}/32
 	fi
 
 	if use X; then
-		# The GLX libraries
-		donvidia ${libdir}/libEGL.so ${NV_SOVER} ${GL_ROOT}
-		donvidia ${libdir}/libGL.so ${NV_SOVER} ${GL_ROOT}
-		donvidia ${libdir}/libGLESv1_CM.so ${NV_SOVER} ${GL_ROOT}
-		donvidia ${libdir}/libnvidia-eglcore.so ${NV_SOVER}
-		donvidia ${libdir}/libnvidia-glcore.so ${NV_SOVER}
-		donvidia ${libdir}/libnvidia-glsi.so ${NV_SOVER}
-		donvidia ${libdir}/libnvidia-ifr.so ${NV_SOVER}
-		if use kernel_FreeBSD; then
-			donvidia ${libdir}/libnvidia-tls.so ${NV_SOVER}
-		else
-			donvidia ${libdir}/tls/libnvidia-tls.so ${NV_SOVER}
+		NV_GLX_LIBRARIES=(
+			"libEGL.so 1 ${GL_ROOT}"
+			"libEGL_nvidia.so 0 ${GL_ROOT}"
+			"libGL.so ${NV_SOVER} ${GL_ROOT}"
+			"libGLESv1_CM.so ${NV_SOVER} ${GL_ROOT}"
+			"libGLdispatch.so 0 ${GL_ROOT}"
+			"libOpenCL.so 1.0.0 ${CL_ROOT}"
+			"libOpenGL.so 0 ${GL_ROOT}"
+			"libcuda.so ${NV_SOVER}"
+			"libnvcuvid.so ${NV_SOVER}"
+			"libnvidia-compiler.so ${NV_SOVER}"
+			"libnvidia-eglcore.so ${NV_SOVER}"
+			"libnvidia-encode.so ${NV_SOVER}"
+			"libnvidia-fbc.so ${NV_SOVER}"
+			"libnvidia-glcore.so ${NV_SOVER}"
+			"libnvidia-glsi.so ${NV_SOVER}"
+			"libnvidia-ifr.so ${NV_SOVER}"
+			"libnvidia-opencl.so ${NV_SOVER}"
+			"libvdpau.so ${NV_SOVER} ${GL_ROOT}"
+			"libvdpau_nvidia.so ${NV_SOVER}"
+			"libvdpau_trace.so ${NV_SOVER} ${GL_ROOT}"
+		)
+		if use kernel_linux && has_multilib_profile && [[ ${ABI} == "amd64" ]];
+		then
+			NV_GLX_LIBRARIES+=( "libnvidia-wfb.so ${NV_SOVER}" )
 		fi
 
-		# VDPAU
-		donvidia ${libdir}/libvdpau_nvidia.so ${NV_SOVER}
+		if use kernel_FreeBSD; then
+			NV_GLX_LIBRARIES+=( "libnvidia-tls.so ${NV_SOVER}" )
+		fi
 
-		# GLES v2 libraries
+		if use kernel_linux; then
+			NV_GLX_LIBRARIES+=(
+				"libnvidia-ml.so ${NV_SOVER}"
+				"tls/libnvidia-tls.so ${NV_SOVER}"
+			)
+		fi
+
+		for NV_LIB in "${NV_GLX_LIBRARIES[@]}"; do
+			donvidia ${libdir}/${NV_LIB}
+		done
+
+		# GLES v2 library is special
 		insinto ${GL_ROOT}
 		doexe ${libdir}/libGLESv2.so.${PV}
 		dosym libGLESv2.so.${PV} ${GL_ROOT}/libGLESv2.so.2
 		dosym libGLESv2.so.2 ${GL_ROOT}/libGLESv2.so
-	fi
-
-	# NVIDIA monitoring library
-	if use kernel_linux ; then
-		donvidia ${libdir}/libnvidia-ml.so ${NV_SOVER}
-	fi
-
-	# CUDA & OpenCL
-	if use kernel_linux; then
-		donvidia ${libdir}/libcuda.so ${NV_SOVER}
-		donvidia ${libdir}/libnvidia-compiler.so ${NV_SOVER}
-		donvidia ${libdir}/libOpenCL.so 1.0.0 ${CL_ROOT}
-		donvidia ${libdir}/libnvidia-opencl.so ${NV_SOVER}
 	fi
 }
 
@@ -481,11 +493,11 @@ pkg_preinst() {
 
 	# Clean the dynamic libGL stuff's home to ensure
 	# we dont have stale libs floating around
-	if [ -d "${ROOT}"/usr/lib/opengl/nvidia ] ; then
+	if [ -d "${ROOT}"/usr/lib/opengl/nvidia ]; then
 		rm -rf "${ROOT}"/usr/lib/opengl/nvidia/*
 	fi
 	# Make sure we nuke the old nvidia-glx's env.d file
-	if [ -e "${ROOT}"/etc/env.d/09nvidia ] ; then
+	if [ -e "${ROOT}"/etc/env.d/09nvidia ]; then
 		rm -f "${ROOT}"/etc/env.d/09nvidia
 	fi
 }
