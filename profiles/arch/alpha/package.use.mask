@@ -361,3 +361,6 @@ net-analyzer/nagios-plugins ups nagios-game
 # Matt Turner <mattst88@gentoo.org> (26 Dec 2010)
 # No idea why. Bug 347827
 www-client/elinks javascript
+
+#java is unsupported on this platform
+app-text/tesseract scrollview

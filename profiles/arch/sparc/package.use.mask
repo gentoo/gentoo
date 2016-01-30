@@ -366,3 +366,6 @@ app-admin/rsyslog zeromq
 # Marius Brehler <marfbre@linux.sungazer.de> (13 Aug 2015)
 # missing keyword
 >=sci-misc/boinc-7.4.42-r1 X
+
+#java is unsupported on this platform
+app-text/tesseract scrollview
