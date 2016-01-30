@@ -62,4 +62,18 @@ src_configure() {
 pkg_postinst() {
 	enewgroup ${PN}
 	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN} video
+
+	if use consolekit && use pam && [[ -e "${ROOT}"/etc/pam.d/system-login ]]; then
+		local line=$(grep "pam_ck_connector.*nox11" "${ROOT}"/etc/pam.d/system-login)
+		if [[ -z ${line} ]]; then
+			ewarn
+			ewarn "Erroneous /etc/pam.d/system-login settings detected!"
+			ewarn "Please restore 'nox11' option in the line containing pam_ck_connector:"
+			ewarn
+			ewarn "session      optional      pam_ck_connector.so nox11"
+			ewarn
+			ewarn "or 'emerge -1 sys-auth/pambase' and run etc-update."
+			ewarn
+		fi
+	fi
 }
