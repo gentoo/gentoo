@@ -452,7 +452,7 @@ app-cdr/cuecue 0.2.2-r1: Cuecue is a suite to convert .cue + [.ogg|.flac|.wav|.m
 app-cdr/cuegen 1.2.0: CUEgen is a FLAC-compatible cuesheet generator for Linux
 app-cdr/cuetools 1.3.1 1.3.1-r2: Utilities to manipulate and convert cue and toc files
 app-cdr/daa2iso 0.1.7e: Program for converting the DAA and GBI files to ISO
-app-cdr/disc-cover 1.5.6: Creates CD-Covers via LaTeX by fetching cd-info from freedb.org or local file
+app-cdr/disc-cover 1.5.6 1.5.6-r1: Creates CD-Covers via LaTeX by fetching cd-info from freedb.org or local file
 app-cdr/dvd+rw-tools 7.1-r1: A set of tools for DVD+RW/-RW drives
 app-cdr/dvd95 1.6_p0: DVD95 is a Gnome application to convert DVD9 to DVD5
 app-cdr/dvdisaster 0.72.4: Data-protection and recovery tool for DVDs
@@ -7875,7 +7875,7 @@ dev-python/sepolgen 1.2.1-r1 1.2.2 9999: SELinux policy generation library
 dev-python/serpent 1.7 1.9 1.10 1.11: A simple serialization library based on ast.literal_eval
 dev-python/service_identity 14.0.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.9: Allow customization of the process title
-dev-python/setuptools 18.4 18.5 18.6.1 18.7 18.7.1 18.8 18.8.1 19.1.1 19.2 19.4 19.6 9999: Collection of extensions to Distutils
+dev-python/setuptools 18.4 18.5 18.6.1 18.7 18.7.1 18.8 18.8.1 19.1.1 19.2 19.4 19.6 19.6.1 9999: Collection of extensions to Distutils
 dev-python/setuptools-git 1.0 1.1: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.8.0 1.9.0 1.10.0 1.10.1: package to manage versions by scm tags via setuptools
@@ -8041,7 +8041,7 @@ dev-python/verboselogs 1.0.1 1.0.2: Verbose logging for Python's logging module
 dev-python/versioneer 0.15: Easy VCS-based management of project version strings
 dev-python/versiontools 1.9.1-r1: Smart replacement for plain tuple used in __version__
 dev-python/vertex 0.3.0-r1 0.3.1 0.3.1-r1: An implementation of the Q2Q protocol
-dev-python/virtualenv 13.1.2 13.1.2-r1 14.0.1: Virtual Python Environment builder
+dev-python/virtualenv 13.1.2 13.1.2-r1 14.0.1 14.0.3: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.2.4-r2 0.2.5 0.2.6: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.3.1 4.3.2 4.5.1 4.6.0: virtualenvwrapper is a set of extensions to Ian Bicking's virtualenv tool
 dev-python/visual 5.74 5.74-r1: Real-time 3D graphics library for Python
@@ -8570,7 +8570,7 @@ dev-ruby/colored 1.2: Console coloring
 dev-ruby/colorize 0.7.5 0.7.7: Add some methods to set color, background color and text effect on console easier
 dev-ruby/columnize 0.8.9 0.9.0: Sorts an array in column order
 dev-ruby/combustion 0.5.3 0.5.4: Elegant Rails Engine Testing
-dev-ruby/commander 4.3.3 4.3.4 4.3.5: The complete solution for Ruby command-line executables
+dev-ruby/commander 4.3.5 4.3.7: The complete solution for Ruby command-line executables
 dev-ruby/compass 1.0.1-r1 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-core 1.0.1 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-import-once 1.0.5: Speed up your Sass compilation by making @import only import each file once
@@ -11563,7 +11563,7 @@ mail-filter/qmail-scanner 1.25-r1 2.05 2.06 2.08: E-Mail virus scanner for qmail
 mail-filter/razor 2.85-r2: Vipul's Razor is a distributed, collaborative spam detection and filtering network
 mail-filter/rblcheck 1.5-r1 1.5-r2: Perform lookups in RBL-styles services
 mail-filter/rmilter 1.6.7 1.7.0 1.7.1: Another sendmail milter for different mail checks
-mail-filter/rspamd 1.1.1 1.1.1-r1: Rapid spam filtering system
+mail-filter/rspamd 1.1.1 1.1.1-r1 1.1.2: Rapid spam filtering system
 mail-filter/scmail 1.3: a mail filter written in Scheme
 mail-filter/sid-milter 1.0.0-r6 1.0.0-r7: A milter-based application to provide Sender-ID verification service
 mail-filter/sieve-connect 0.87: Sieve Command Line Interface
@@ -16826,7 +16826,7 @@ sys-fs/aufs4 0_pre20150420 0_pre20150504 0_pre20150511 0_pre20150518 0_pre201505
 sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
 sys-fs/avfs 1.0.1 1.0.2 1.0.3: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: A bash script that uses udisks to handle removable devices without dependencies on any GUI
-sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220 9999: Tools for bcachefs
+sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
 sys-fs/bedup 0.9.0_p20140413-r1 0.10.0 9999: Btrfs file de-duplication tool
 sys-fs/bindfs 1.12.6 1.13.0: FUSE filesystem for mounting a directory to another location and altering permissions
 sys-fs/btrfs-progs 3.14.2 3.16.2 3.17.3 3.18.2 3.19.1 4.0 4.0.1 4.1 4.1.2 4.2 4.2.2 4.3.1 9999: Btrfs filesystem utilities
