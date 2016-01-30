@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,8 +27,14 @@ SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
-RDEPEND="!<dev-python/python-exec-10000
-	!<app-eselect/eselect-python-20151117"
+# eselect-python because of /usr/bin/python* collisions
+# python versions because of missing $scriptdir/python* symlinks
+RDEPEND="
+	!<app-eselect/eselect-python-20160206
+	!<dev-lang/python-2.7.10-r4:2.7
+	!<dev-lang/python-3.3.5-r4:3.3
+	!<dev-lang/python-3.4.3-r4:3.4
+	!<dev-lang/python-3.5.0-r3:3.5"
 
 #if LIVE
 KEYWORDS=
@@ -52,4 +58,35 @@ src_configure() {
 	)
 
 	econf "${myconf[@]}"
+}
+
+src_install() {
+	default
+
+	local f
+	for f in python{,2,3}; do
+		# can't use symlinks here since random stuff
+		# loves to do readlink on sys.executable...
+		newbin python-exec2-c "${f}"
+	done
+	for f in python{,2,3}-config 2to3 idle pydoc pyvenv; do
+		dosym ../lib/python-exec/python-exec2 /usr/bin/"${f}"
+	done
+}
+
+pkg_preinst() {
+	local py
+
+	# Copy python[23] selection from the old format (symlink)
+	for py in 2 3; do
+		if [[ -L ${EROOT}/usr/bin/python${py} ]]; then
+			local target=$(readlink "${EROOT}/usr/bin/python${py}")
+
+			# check if it's actually old eselect symlink
+			if [[ ${target} == python?.? ]]; then
+				einfo "Preserving Python${py} as ${target}"
+				echo "${target}" > "${EROOT}/etc/env.d/python/python${py}" || die
+			fi
+		fi
+	done
 }
