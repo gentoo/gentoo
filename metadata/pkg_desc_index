@@ -5593,7 +5593,7 @@ dev-perl/HTML-Clean 0.800.0-r1: Cleans up HTML code for web browsers, not humans
 dev-perl/HTML-Element-Extended 1.180.0-r1: Extension for manipulating a table composed of HTML::Element style components
 dev-perl/HTML-FillInForm 2.200.0-r1 2.210.0: Populates HTML Forms with data
 dev-perl/HTML-Form 6.30.0-r1: Class that represents an HTML form element
-dev-perl/HTML-Format 2.100.0-r1 2.110.0 2.140.0: HTML Formatter
+dev-perl/HTML-Format 2.100.0-r1 2.140.0: HTML Formatter
 dev-perl/HTML-FormatText-WithLinks 0.140.0 0.150.0: HTML to text conversion with links as footnotes
 dev-perl/HTML-FormatText-WithLinks-AndTables 0.20.0 0.60.0: Converts HTML to text with tables intact
 dev-perl/HTML-FromText 2.50.0-r1: Convert plain text to HTML
@@ -5636,12 +5636,12 @@ dev-perl/HTTP-Response-Encoding 0.60.0-r1: Adds encoding() to HTTP::Response
 dev-perl/HTTP-Server-Simple 0.440.0-r1 0.500.0 0.510.0: Lightweight HTTP Server
 dev-perl/HTTP-Server-Simple-Mason 0.140.0-r1: An abstract baseclass for a standalone mason server
 dev-perl/HTTPD-User-Manage 1.660.0-r1: Perl module for managing access control of web servers
-dev-perl/Hash-Merge 0.120.0 0.200.0: Merges arbitrarily deep hashes into a single hash
+dev-perl/Hash-Merge 0.200.0: Merges arbitrarily deep hashes into a single hash
 dev-perl/Hash-MoreUtils 0.20.0-r1: Provide the stuff missing in Hash::Util
 dev-perl/Hash-MultiValue 0.160.0: Store multiple values per key
 dev-perl/Hash-NoRef 0.30.0-r1: A HASH that store values without increasing the reference count (weak references)
 dev-perl/Heap 0.800.0-r1: Heap - Perl extensions for keeping data partially sorted
-dev-perl/Hook-LexWrap 0.240.0-r1 0.250.0: Lexically scoped subroutine wrappers
+dev-perl/Hook-LexWrap 0.250.0: Lexically scoped subroutine wrappers
 dev-perl/IMAP-Admin 1.6.7-r1: Perl module for basic IMAP server administration
 dev-perl/IMAP-BodyStructure 1.10.0: IMAP4-compatible BODYSTRUCTURE and ENVELOPE parser
 dev-perl/IO-AIO 4.310.0 4.320.0: Asynchronous Input/Output
