@@ -3,7 +3,11 @@
 
 # DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.
 
-# Daniel Kuehn <lejonet@gentoo.org> (13 Nov 2015
+# Jeroen Roovers <jer@gentoo.org> (31 Jan 2016)
+# USE=xwidgets requires net-libs/webkit-gtk
+xwidgets
+
+# Daniel Kuehn <lejonet@gentoo.org> (13 Nov 2015)
 # bugs 540540 and 525674
 -sssd
 
