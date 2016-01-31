@@ -12163,11 +12163,11 @@ media-libs/gnonlin 0.10.17 1.4.0: Gnonlin is a set of GStreamer elements to ease
 media-libs/grilo 0.2.12 0.2.14 0.2.15: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.1 1.0.2: Thin GObject wrapper around the libcanberra sound event library
 media-libs/gst-plugins-bad 0.10.23-r2 0.10.23-r3 1.4.5 1.6.2-r1: Less plugins for GStreamer
-media-libs/gst-plugins-base 0.10.36-r2 1.4.5 1.6.1 1.6.2: Basepack of plugins for gstreamer
+media-libs/gst-plugins-base 0.10.36-r2 1.4.5 1.6.1 1.6.2 1.6.3: Basepack of plugins for gstreamer
 media-libs/gst-plugins-good 0.10.31-r1 1.4.5 1.6.1 1.6.2: Basepack of plugins for GStreamer
 media-libs/gst-plugins-ugly 0.10.19-r1 1.4.5 1.6.1 1.6.2: Basepack of plugins for gstreamer
 media-libs/gst-rtsp-server 0.10.8-r1 1.4.5 1.6.2: A GStreamer based RTSP server
-media-libs/gstreamer 0.10.36-r2 1.4.5 1.6.1 1.6.2: Open source multimedia framework
+media-libs/gstreamer 0.10.36-r2 1.4.5 1.6.1 1.6.2 1.6.3: Open source multimedia framework
 media-libs/gstreamer-editing-services 1.4.0 1.6.1 1.6.2: SDK for making video editors and more
 media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.2 0.10.3: Library providing DLNA-related functionality for MediaServers
