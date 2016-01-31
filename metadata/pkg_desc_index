@@ -6417,7 +6417,7 @@ dev-perl/gnome2-wnck 0.160.0-r1: Perl interface to the Window Navigator Construc
 dev-perl/google-api-adwords-perl 2.7.3-r1: Google AdWords API Perl Client
 dev-perl/gtk2-ex-formfactory 0.670.0-r1: Gtk2 FormFactory
 dev-perl/gtk2-gladexml 1.7.0-r1: Create user interfaces directly from Glade XML files
-dev-perl/gtk2-perl 1.247.0 1.249.500: Perl bindings for GTK2
+dev-perl/gtk2-perl 1.247.0 1.249.500 1.249.700: Perl bindings for GTK2
 dev-perl/gtk2-spell 1.40.0-r1: Bindings for GtkSpell with Gtk2.x
 dev-perl/gtk2-trayicon 0.60.0-r1: Perl wrappers for the egg cup Gtk2::TrayIcon utilities
 dev-perl/gtk2-traymanager 0.50.0-r1: Perl bindings for EggTrayManager
@@ -10041,7 +10041,7 @@ games-board/pasang-emas 3.1.0: A traditional game of Brunei
 games-board/peg-e 1.1.2: A peg solitaire game
 games-board/phalanx 22: A chess engine suitable for beginner and intermediate players
 games-board/pioneers 15.3: A clone of the popular board game The Settlers of Catan
-games-board/pokerth 1.1.1: Texas Hold'em poker game
+games-board/pokerth 1.1.1 1.1.1-r1: Texas Hold'em poker game
 games-board/polyglot 1.4.70b-r1: Protocol adapter to run UCI chess engines under xboard
 games-board/pouetchess 0.2.0-r1: 3D and open source chess game
 games-board/pychess 0.10.1-r2: A chess client for Gnome
@@ -10482,7 +10482,7 @@ games-puzzle/wmpuzzle 0.5.2: wmpuzzle provides a 4x4 puzzle on a 64x64 mini wind
 games-puzzle/world-of-goo 1.41-r1: A puzzle game with a strong emphasis on physics
 games-puzzle/world-of-goo-demo 1.41-r1: A puzzle game with a strong emphasis on physics
 games-puzzle/xblockout 1.1.6: X Window block dropping game in 3 Dimension
-games-puzzle/xbomb 2.2a: Minesweeper clone with hexagonal, rectangular and triangular grid
+games-puzzle/xbomb 2.2a 2.2b: Minesweeper clone with hexagonal, rectangular and triangular grid
 games-puzzle/xlogical 1.0.7: SDL logical clone
 games-puzzle/xpired 1.22: A Sokoban-styled puzzle game with lots more action
 games-puzzle/xtris 1.15: a networked Tetris-like game
