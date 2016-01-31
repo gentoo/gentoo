@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-MODULE_A_EXT=tgz
-MODULE_AUTHOR=RSAVAGE
-MODULE_VERSION=2.18
+DIST_A_EXT=tgz
+DIST_AUTHOR=RSAVAGE
+DIST_VERSION=2.20
 inherit perl-module
 
 DESCRIPTION="GraphViz - Interface to the GraphViz graphing tool"
@@ -33,13 +33,9 @@ DEPEND="${RDEPEND}
 	>=dev-perl/File-Which-1.90.0
 	test? (
 		>=dev-perl/Test-Pod-1.480.0
+		>=virtual/perl-Test-Simple-1.1.14
 	)
 "
-
-# tests need
-#		>=virtual/perl-Test-Simple-1.1.14
-# therefore temporarily disable
-# SRC_TEST="do"
 
 src_install() {
 	perl-module_src_install
