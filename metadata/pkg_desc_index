@@ -12908,7 +12908,7 @@ media-sound/guayadeque 0.3.5 0.3.6_pre1887 0.3.7 0.3.7-r1: Music management prog
 media-sound/guimup 0.3.2: A client for MPD with a clean, GTK interface
 media-sound/hearnet 0.0.9: Listen to your network
 media-sound/helm 0.4.1-r1: Open source polyphonic software synthesizer with lots of modulation
-media-sound/herrie 2.2: Herrie is a command line music player
+media-sound/herrie 2.2 2.2-r1: Herrie is a command line music player
 media-sound/horgand 1.14: Opensource software organ
 media-sound/hydrogen 0.9.5: Advanced drum machine
 media-sound/icecream 1.3: Extracts and records individual MP3 tracks from shoutcast streams
