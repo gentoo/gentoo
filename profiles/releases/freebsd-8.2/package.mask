@@ -33,3 +33,6 @@
 >sys-freebsd/boot0-8.2.99
 <sys-freebsd/freebsd-sources-8.2_alpha
 >sys-freebsd/freebsd-sources-8.2.99
+
+# Critical issue in freebsd-libexec, bug #573358.
+>=sys-devel/gcc-5.0
