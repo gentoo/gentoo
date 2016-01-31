@@ -3,9 +3,9 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
-RUBY_FAKEGEM_RECIPE_TEST="rspec3"
+RUBY_FAKEGEM_RECIPE_TEST="rspec"
 
 inherit ruby-fakegem
 
@@ -16,5 +16,3 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
-
-ruby_add_bdepend "test? ( dev-ruby/rspec-its )"
