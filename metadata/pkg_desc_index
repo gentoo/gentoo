@@ -5573,7 +5573,7 @@ dev-perl/Getopt-GUI-Long 0.930.0-r1: Auto-GUI extending Getopt::Long
 dev-perl/Getopt-Long-Descriptive 0.93.0 0.97.0: Getopt::Long with usage text
 dev-perl/Getopt-Mixed 1.110.0-r1 1.120.0: Getopt::Mixed is used for parsing mixed options
 dev-perl/Getopt-Tabular 0.3: Table-driven argument parsing with help text
-dev-perl/GnuPG-Interface 0.460.0-r1 0.520.0 0.520.0-r1: Perl module interface to interacting with GnuPG
+dev-perl/GnuPG-Interface 0.460.0-r1 0.520.0-r1: Perl module interface to interacting with GnuPG
 dev-perl/Goo-Canvas 0.60.0-r1: Perl interface to the GooCanvas
 dev-perl/Graph 0.960.0-r1 0.970.400: Data structure and ops for directed graphs
 dev-perl/GraphViz 2.140.0 2.180.0 2.190.0: GraphViz - Interface to the GraphViz graphing tool
