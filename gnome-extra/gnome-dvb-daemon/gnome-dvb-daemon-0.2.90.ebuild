@@ -53,6 +53,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# Prevent sandbox violations, bug #569992
+	addpredict /dev
 	gnome2_src_configure \
 		$(use_enable nls) \
 		$(use_enable totem totem-plugin) \
