@@ -209,3 +209,5 @@ applications/useraccount.po
 kdeedu/pairs.po
 kdeedu/pairseditor.po
 kdeedu/pairs.appdata.po
+# KDE Utils 4
+kdeutils/org.kde.kteatime.appdata.po
