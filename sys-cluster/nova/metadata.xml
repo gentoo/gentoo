@@ -17,12 +17,10 @@
     <flag name="compute">Installs the initscripts for the nova volume service</flag>
     <flag name="compute-only">only install stuff needed for a compute host</flag>
     <flag name="iscsi">Installs iscsi helper udev scripts</flag>
-    <flag name="kvm">qemu-kvm hypervisor support</flag>
     <flag name="memcached">Installs the memcached server</flag>
     <flag name="novncproxy">Installs the initscripts for the nova novncproxy service</flag>
     <flag name="openvswitch">Installs openvswitch for the neutron openvswitch support</flag>
     <flag name="rabbitmq">Installs the rabbitmq server</flag>
-    <flag name="xen">xen hypervisor support</flag>
   </use>
   <upstream>
     <remote-id type="launchpad">nova</remote-id>
