@@ -9,7 +9,6 @@ DESCRIPTION="Minesweeper clone with hexagonal, rectangular and triangular grid"
 HOMEPAGE="http://www.gedanken.org.uk/software/xbomb/"
 SRC_URI="http://www.gedanken.org.uk/software/xbomb/download/${P}.tgz"
 
-
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
