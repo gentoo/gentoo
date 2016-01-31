@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,13 +11,13 @@ SRC_URI="http://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ppc ppc64 ~sh x86 ~x86-fbsd ~x64-macos"
-IUSE="adplug +alsa ao audiofile bzip2 cdio +curl debug expat faad +fifo +ffmpeg
-	flac fluidsynth +glib gme +icu +id3tag +inotify +ipv6 jack lame mms
-	libav libmpdclient libsamplerate libsoxr +mad mikmod modplug mpg123 musepack
-	+network nfs ogg openal opus oss pipe pulseaudio recorder samba selinux sid
-	sndfile soundcloud sqlite systemd tcpd twolame unicode upnp vorbis wavpack
-	wildmidi zeroconf zip"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sh ~x86 ~x86-fbsd ~x64-macos"
+IUSE="adplug +alsa ao audiofile bzip2 cdio +curl debug +eventfd expat faad
+	+fifo +ffmpeg flac fluidsynth +glib gme +icu +id3tag +inotify +ipv6 jack
+	lame mms libav libmpdclient libsamplerate libsoxr +mad mikmod modplug
+	mpg123 musepack +network nfs ogg openal opus oss pipe pulseaudio recorder
+	samba selinux sid +signalfd sndfile soundcloud sqlite systemd tcpd twolame
+	unicode upnp vorbis wavpack wildmidi zeroconf zip zlib"
 
 OUTPUT_PLUGINS="alsa ao fifo jack network openal oss pipe pulseaudio recorder"
 DECODER_PLUGINS="adplug audiofile faad ffmpeg flac fluidsynth mad mikmod
@@ -92,7 +92,8 @@ CDEPEND="!<sys-cluster/mpich2-1.4_rc2
 	wavpack? ( media-sound/wavpack )
 	wildmidi? ( media-sound/wildmidi )
 	zeroconf? ( net-dns/avahi[dbus] )
-	zip? ( dev-libs/zziplib )"
+	zip? ( dev-libs/zziplib )
+	zlib? ( sys-libs/zlib )"
 DEPEND="${CDEPEND}
 	dev-libs/boost
 	virtual/pkgconfig"
@@ -106,9 +107,19 @@ pkg_setup() {
 
 	enewuser mpd "" "" "/var/lib/mpd" audio
 
+	if use eventfd; then
+		CONFIG_CHECK+=" ~EVENTFD"
+		ERROR_EVENTFD="${P} requires eventfd in-kernel support."
+	fi
+	if use signalfd; then
+		CONFIG_CHECK+=" ~SIGNALFD"
+		ERROR_SIGNALFD="${P} requires signalfd in-kernel support."
+	fi
 	if use inotify; then
-		CONFIG_CHECK="~INOTIFY_USER"
+		CONFIG_CHECK+=" ~INOTIFY_USER"
 		ERROR_INOTIFY_USER="${P} requires inotify in-kernel support."
+	fi
+	if use eventfd || use signalfd || use inotify; then
 		linux-info_pkg_setup
 	fi
 }
@@ -146,6 +157,8 @@ src_configure() {
 	append-ldflags "-L/usr/$(get_libdir)/sidplay/builders"
 
 	econf \
+		$(use_enable eventfd)		\
+		$(use_enable signalfd)		\
 		$(use_enable libmpdclient)	\
 		$(use_enable expat)			\
 		$(use_enable upnp)			\
@@ -153,9 +166,9 @@ src_configure() {
 		$(use_enable alsa)			\
 		$(use_enable ao)			\
 		$(use_enable audiofile)		\
+		$(use_enable zlib)			\
 		$(use_enable bzip2)			\
 		$(use_enable cdio cdio-paranoia) \
-		$(use_enable cdio iso9660)	\
 		$(use_enable curl)			\
 		$(use_enable samba smbclient) \
 		$(use_enable nfs)			\
@@ -168,6 +181,7 @@ src_configure() {
 		$(use_enable id3tag id3)	\
 		$(use_enable inotify)		\
 		$(use_enable ipv6)			\
+		$(use_enable cdio iso9660)	\
 		$(use_enable jack)			\
 		$(use_enable soundcloud)	\
 		$(use_enable tcpd libwrap)	\
@@ -208,6 +222,8 @@ src_install() {
 	newins doc/mpdconf.dist mpd.conf
 
 	newinitd "${FILESDIR}"/${PN}2.init ${PN}
+
+	systemd_newuserunit systemd/${PN}.service ${PN}.service
 
 	if use unicode; then
 		sed -i -e 's:^#filesystem_charset.*$:filesystem_charset "UTF-8":' \
