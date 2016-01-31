@@ -119,29 +119,8 @@ src_install() {
 	fperms g+s "${HACKDIR}/nethack"
 }
 
-pkg_preinst() {
-	if has_version "<${CATEGORY}/${PN}-3.4.3-r3" ; then
-		migration=true
-
-		# preserve STATEDIR/{logfile,record}
-		# (previous ebuild rev mistakenly removes it)
-		for f in "${ROOT}/${STATEDIR}/"{logfile,record} ; do
-			if [[ -e "$f" ]] ; then
-				cp "$f" "$T" || die "Failed to preserve ${ROOT}/${STATEDIR} files"
-			else
-				touch "$T/$f" || die "Failed to preserve ${ROOT}/${STATEDIR} files"
-			fi
-		done
-	fi
-}
-
 pkg_postinst() {
 	cd "${ROOT}/${STATEDIR}" || die "Failed to enter ${STATEDIR} directory"
-
-	if [[ -v migration ]] ; then
-		cp "$T/"{logfile,record} . ||
-		die "Failed to preserve ${ROOT}/${STATEDIR} files"
-	fi
 
 	touch logfile perm record xlogfile || die "Failed to create log files"
 
