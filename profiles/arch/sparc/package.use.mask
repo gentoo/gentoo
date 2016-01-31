@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Pacho Ramos <pacho@gentoo.org> (31 Jan 2016)
+# Missing keywords, bug #560382
+media-video/ffmpeg snappy
+
 # Michael Weber <xmw@gentoo.org> (09 Jan 2016)
 # no sparc support in media-libs/glfw
 app-text/mupdf opengl
