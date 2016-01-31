@@ -5576,7 +5576,7 @@ dev-perl/Getopt-Tabular 0.3: Table-driven argument parsing with help text
 dev-perl/GnuPG-Interface 0.460.0-r1 0.520.0-r1: Perl module interface to interacting with GnuPG
 dev-perl/Goo-Canvas 0.60.0-r1: Perl interface to the GooCanvas
 dev-perl/Graph 0.960.0-r1 0.970.400: Data structure and ops for directed graphs
-dev-perl/GraphViz 2.140.0 2.180.0 2.190.0: GraphViz - Interface to the GraphViz graphing tool
+dev-perl/GraphViz 2.140.0 2.190.0 2.200.0: GraphViz - Interface to the GraphViz graphing tool
 dev-perl/Graphics-ColorNames 2.110.0-r1: Defines RGB values for common color names
 dev-perl/Graphics-ColorNames-WWW 1.130.0: WWW color names and equivalent RGB values
 dev-perl/Graphics-ColorObject 0.5.0-r1: convert between color spaces
@@ -15032,7 +15032,7 @@ net-wireless/wireless-regdb 20130213 20141118 20150925 20151022: Binary regulato
 net-wireless/wireless-tools 30_pre9: A collection of tools to configure IEEE 802.11 wireless LAN cards
 net-wireless/wpa_supplicant 2.4-r3 2.4-r4 2.5-r1: IEEE 802.1X/WPA supplicant for secure wireless transfers
 net-wireless/yatebts 4.0.0-r3 5.0.0 9999: The Yate GSM base station
-perl-core/CPAN-Meta 2.143.240: The distribution metadata for a CPAN dist
+perl-core/CPAN-Meta 2.143.240 2.150.1: The distribution metadata for a CPAN dist
 perl-core/CPAN-Meta-Requirements 2.125.0-r1: A set of version requirements for a CPAN dist
 perl-core/Data-Dumper 2.154.0: Stringified perl data structures, suitable for both printing and eval
 perl-core/Devel-PPPort 3.310.0: Perl/Pollution/Portability
@@ -15064,6 +15064,7 @@ perl-core/Pod-Simple 3.280.0: Framework for parsing Pod
 perl-core/Sys-Syslog 0.330.0-r1: Provides same functionality as BSD syslog
 perl-core/Term-ANSIColor 4.20.0: Color screen output using ANSI escape sequences
 perl-core/Test 1.260.0: Utilities for writing test scripts
+perl-core/Test-Simple 1.1.14: Basic utilities for writing tests
 perl-core/Text-Balanced 2.20.0-r1: Extract balanced-delimiter substrings
 perl-core/Text-ParseWords 3.290.0: Parse strings containing shell-style quoting
 perl-core/Text-Tabs+Wrap 2013.52.300-r1: Expand/unexpand tabs per unix expand and line wrapping

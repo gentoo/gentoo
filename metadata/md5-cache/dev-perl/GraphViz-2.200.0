@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=media-gfx/graphviz virtual/perl-Carp >=virtual/perl-Getopt-Long-2.340.0 virtual/perl-IO >=dev-perl/IPC-Run-0.600.0 >=dev-perl/libwww-perl-6 >=dev-perl/Parse-RecDescent-1.965.1 >=virtual/perl-Time-HiRes-1.510.0 >=dev-perl/XML-Twig-3.380.0 >=dev-perl/XML-XPath-1.130.0 >=dev-perl/Module-Build-0.421.100 >=dev-perl/File-Which-1.90.0 test? ( >=dev-perl/Test-Pod-1.480.0 >=virtual/perl-Test-Simple-1.1.14 ) dev-lang/perl:=
+DESCRIPTION=GraphViz - Interface to the GraphViz graphing tool
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/GraphViz/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=Artistic-2
+RDEPEND=media-gfx/graphviz virtual/perl-Carp >=virtual/perl-Getopt-Long-2.340.0 virtual/perl-IO >=dev-perl/IPC-Run-0.600.0 >=dev-perl/libwww-perl-6 >=dev-perl/Parse-RecDescent-1.965.1 >=virtual/perl-Time-HiRes-1.510.0 >=dev-perl/XML-Twig-3.380.0 >=dev-perl/XML-XPath-1.130.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RS/RSAVAGE/GraphViz-2.20.tgz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:-
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=ca6a679c924e07a8b05c63be8c7edb49
