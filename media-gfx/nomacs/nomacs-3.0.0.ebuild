@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-tiff-build.patch"
 	"${FILESDIR}/${P}-quazip-build.patch"
 	"${FILESDIR}/${P}-quazip-link.patch"
+	"${FILESDIR}/${P}-opencv3.patch"
 )
 
 src_configure() {
