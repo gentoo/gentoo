@@ -23,6 +23,10 @@ RDEPEND="${DEPEND}
 	dev-python/websockify[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]"
 
+python_compile() {
+	echo
+}
+
 src_install() {
 	dodir /usr/share/novnc/utils
 	dodir /usr/share/novnc/include
