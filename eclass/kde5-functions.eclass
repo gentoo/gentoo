@@ -129,9 +129,11 @@ _add_category_dep() {
 # @USAGE: <package> [USE flags] [minimum version]
 # @DESCRIPTION:
 # Create proper dependency for kde-frameworks/ dependencies.
-# This takes 1 to 3 arguments. The first being the package name, the optional
+# This takes 1 to 4 arguments. The first being the package name, the optional
 # second is additional USE flags to append, and the optional third is the
-# version to use instead of the automatic version (use sparingly).
+# version to use instead of the automatic version (use sparingly). In addition,
+# the optional fourth argument defines slot+operator instead of automatic slot
+# (use even more sparingly).
 # The output of this should be added directly to DEPEND/RDEPEND, and may be
 # wrapped in a USE conditional (but not an || conditional without an extra set
 # of parentheses).
@@ -148,16 +150,18 @@ add_frameworks_dep() {
 		version=${FRAMEWORKS_MINIMAL}
 	fi
 
-	_add_category_dep kde-frameworks "${1}" "${2}" "${version}"
+	_add_category_dep kde-frameworks "${1}" "${2}" "${version}" "${4}"
 }
 
 # @FUNCTION: add_plasma_dep
 # @USAGE: <package> [USE flags] [minimum version]
 # @DESCRIPTION:
 # Create proper dependency for kde-base/ dependencies.
-# This takes 1 to 3 arguments. The first being the package name, the optional
+# This takes 1 to 4 arguments. The first being the package name, the optional
 # second is additional USE flags to append, and the optional third is the
-# version to use instead of the automatic version (use sparingly).
+# version to use instead of the automatic version (use sparingly). In addition,
+# the optional fourth argument defines slot+operator instead of automatic slot
+# (use even more sparingly).
 # The output of this should be added directly to DEPEND/RDEPEND, and may be
 # wrapped in a USE conditional (but not an || conditional without an extra set
 # of parentheses).
@@ -174,16 +178,18 @@ add_plasma_dep() {
 		version=${PLASMA_MINIMAL}
 	fi
 
-	_add_category_dep kde-plasma "${1}" "${2}" "${version}"
+	_add_category_dep kde-plasma "${1}" "${2}" "${version}" "${4}"
 }
 
 # @FUNCTION: add_kdeapps_dep
 # @USAGE: <package> [USE flags] [minimum version]
 # @DESCRIPTION:
 # Create proper dependency for kde-apps/ dependencies.
-# This takes 1 to 3 arguments. The first being the package name, the optional
+# This takes 1 to 4 arguments. The first being the package name, the optional
 # second is additional USE flags to append, and the optional third is the
-# version to use instead of the automatic version (use sparingly).
+# version to use instead of the automatic version (use sparingly). In addition,
+# the optional fourth argument defines slot+operator instead of automatic slot
+# (use even more sparingly).
 # The output of this should be added directly to DEPEND/RDEPEND, and may be
 # wrapped in a USE conditional (but not an || conditional without an extra set
 # of parentheses).
@@ -205,7 +211,7 @@ add_kdeapps_dep() {
 		fi
 	fi
 
-	_add_category_dep kde-apps "${1}" "${2}" "${version}"
+	_add_category_dep kde-apps "${1}" "${2}" "${version}" "${4}"
 }
 
 # @FUNCTION: add_qt_dep
