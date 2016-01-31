@@ -432,7 +432,7 @@ app-cdr/backlite 1.0.3-r1: backlite is a pure QT4 version of k9copy
 app-cdr/bashburn 3.1.0: A shell script for burning optical media
 app-cdr/bchunk 1.2.0-r1: Converts bin/cue CD-images to iso+wav/cdr
 app-cdr/bin2iso 19b-r2: converts RAW format (.bin/.cue) files to ISO/WAV format
-app-cdr/brasero 3.12.1: CD/DVD burning application for the GNOME desktop
+app-cdr/brasero 3.12.1 3.12.1-r1: CD/DVD burning application for the GNOME desktop
 app-cdr/burn-cd 1.7.4 1.8.0-r1: Smart console frontend for virtual/cdrtools and dvd+rw-tools
 app-cdr/burncdda 1.8.0: Console app for copying burning audio cds
 app-cdr/burncenter 3.2.1: A Perl module and a collection of easy-to-use text based interfaces to the UNIX CD burning tools
@@ -15498,7 +15498,7 @@ sci-geosciences/congen 1.6.2: A package for generating the speeds, equilibrium a
 sci-geosciences/foxtrotgps 1.1.0 1.1.1: Easy to use, fast and lightweight mapping application (fork of tangogps)
 sci-geosciences/gdal-grass 2.0.0-r1: GDAL plugin to access GRASS data
 sci-geosciences/gebabbel 0.4: QT-Frontend to load and convert gps tracks with gpsbabel
-sci-geosciences/geocode-glib 3.16.2 3.18.0: GLib geocoding library that uses the Yahoo! Place Finder service
+sci-geosciences/geocode-glib 3.16.2 3.18.0 3.18.1: GLib geocoding library that uses the Yahoo! Place Finder service
 sci-geosciences/gmapcatcher 0.8.0.4: An offline viewer for different map providers
 sci-geosciences/gmt 4.5.6 4.5.8 4.5.9: Powerful map generator
 sci-geosciences/gnome-maps 3.16.2 3.18.2: A map application for GNOME
