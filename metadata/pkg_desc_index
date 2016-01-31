@@ -12544,14 +12544,14 @@ media-plugins/gst-plugins-jack 0.10.31-r1 1.4.5 1.6.1 1.6.2 1.6.3: plugin for gs
 media-plugins/gst-plugins-jpeg 0.10.31-r1 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer encoder/decoder for JPEG format
 media-plugins/gst-plugins-ladspa 0.10.23-r1: plugin for gstreamer
 media-plugins/gst-plugins-lame 0.10.19-r1 1.2.4-r1 1.4.5 1.6.0 1.6.1 1.6.2 1.6.3: plugin for gstreamer
-media-plugins/gst-plugins-libav 1.4.5-r1 1.4.5-r2 1.6.1 1.6.2 1.6.2-r1: FFmpeg based gstreamer plugin
+media-plugins/gst-plugins-libav 1.4.5-r1 1.4.5-r2 1.6.1 1.6.2 1.6.2-r1 1.6.3: FFmpeg based gstreamer plugin
 media-plugins/gst-plugins-libde265 1.6.1 1.6.2 1.6.3: H.265 decoder plugin for GStreamer.
 media-plugins/gst-plugins-libmms 0.10.23-r1 1.4.5 1.6.1 1.6.2 1.6.3: plugin for gstreamer
 media-plugins/gst-plugins-libnice 0.1.13 0.1.13-r100: GStreamer plugin for ICE (RFC 5245) support
 media-plugins/gst-plugins-libpng 0.10.31-r1 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer encoder/decoder for PNG images
 media-plugins/gst-plugins-libvisual 0.10.36-r1 1.4.5 1.6.1 1.6.2 1.6.3: plugin for gstreamer
 media-plugins/gst-plugins-mad 0.10.19-r1 1.4.5 1.6.1 1.6.2 1.6.3: plugin for gstreamer
-media-plugins/gst-plugins-meta 0.10-r10 1.0-r2 1.6.1: Meta ebuild to pull in gst plugins for apps
+media-plugins/gst-plugins-meta 0.10-r10 1.0-r2 1.6.1 1.6.3: Meta ebuild to pull in gst plugins for apps
 media-plugins/gst-plugins-mimic 0.10.23-r1 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer plugin for the MIMIC codec
 media-plugins/gst-plugins-modplug 0.10.23-r1 1.4.5 1.6.1 1.6.2 1.6.3: plugin for gstreamer
 media-plugins/gst-plugins-mpeg2dec 0.10.19-r1 1.4.5 1.6.1 1.6.2 1.6.3: Libmpeg2 based decoder plug-in for gstreamer
