@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -41,7 +41,7 @@ DEPEND="
 "
 RDEPEND="
 	${CDEPEND}
-	sys-apps/gptfdisk
+	sys-fs/growpart
 	virtual/logger
 "
 
@@ -92,8 +92,6 @@ python_install_all() {
 	doinitd "${S}"/sysvinit/gentoo/cloud-init-local
 	insinto /etc/cloud/templates
 	doins "${FILESDIR}/hosts.gentoo.tmpl"
-	exeinto /usr/bin
-	doexe "${FILESDIR}/growpart"
 	insinto /etc/cloud
 	doins "${FILESDIR}/cloud.cfg"
 
