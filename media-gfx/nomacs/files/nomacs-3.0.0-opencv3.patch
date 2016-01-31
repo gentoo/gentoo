@@ -1,0 +1,21 @@
+commit aa3fffc15bb6cbec8ef140a070dc12e6888e79df
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Sun Jan 31 17:38:21 2016 +0100
+
+    Drop minimum OpenCV version messing with detection of >=3.0.0
+    
+    Similar to commit 624a2fa7fba25a9432dc15031f3fd569367927bd
+
+diff --git a/ImageLounge/cmake/Unix.cmake b/ImageLounge/cmake/Unix.cmake
+index 4e91135..e9ec436 100644
+--- a/ImageLounge/cmake/Unix.cmake
++++ b/ImageLounge/cmake/Unix.cmake
+@@ -43,7 +43,7 @@ endif(NOT EXIV2_FOUND)
+ # search for opencv
+ unset(OpenCV_FOUND CACHE)
+ if(ENABLE_OPENCV)
+-	find_package(OpenCV 2.1.0 REQUIRED core imgproc)
++	find_package(OpenCV REQUIRED core imgproc)
+ 	if (NOT OpenCV_LIBRARIES) # OpenCV_FOUND can not be used since it is set in Ubuntu 12.04 (without finding opencv)
+ 		# Older OpenCV versions only supplied pkg-config files
+ 		if(PKG_CONFIG_FOUND)
