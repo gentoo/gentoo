@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_2,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_2,3_3,3_4,3_5} )
 
 inherit toolchain-funcs cmake-utils python-single-r1 java-pkg-opt-2 java-ant-2
 
@@ -16,7 +16,7 @@ SRC_URI="
 	contrib? ( https://github.com/Itseez/${PN}_contrib/archive/${PV}.zip -> ${PN}_contrib.zip )"
 
 LICENSE="BSD"
-SLOT="0/3.0"
+SLOT="0/3.1" # subslot = libopencv* soname version
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux"
 IUSE="contrib cuda doc +eigen examples ffmpeg gdal gphoto2 gstreamer gtk ieee1394 ipp jpeg jpeg2k libav opencl openexr opengl openmp pch png +python qt4 qt5 testprograms threads tiff vaapi v4l vtk webp xine"
 REQUIRED_USE="
