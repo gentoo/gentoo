@@ -4325,7 +4325,7 @@ dev-lang/erlang 15.2.3.1 17.5 18.0-r2 18.2.1: Erlang programming language, runti
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.1.4.5: a non-interactive scripting language similar to SH
 dev-lang/f2c 20060507 20100827: Fortran to C converter
-dev-lang/falcon 0.9.6.4 0.9.6.8: An open source general purpose untyped language written in C++
+dev-lang/falcon 0.9.6.8: An open source general purpose untyped language written in C++
 dev-lang/ferite 1.1.17-r1: A clean, lightweight, object oriented scripting language
 dev-lang/fpc 2.6.2 2.6.4: Free Pascal Compiler
 dev-lang/fsharp 3.1.1.31 4.0.0.4: The F# Compiler
