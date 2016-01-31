@@ -1,10 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit git-2
+PYTHON_COMPAT=( python2_7 python3_4 )
+
+inherit distutils-r1 git-2
 
 DESCRIPTION="noVNC is a VNC client implemented using HTML5 technologies"
 HOMEPAGE="https://kanaka.github.com/noVNC/"
@@ -18,42 +20,36 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}
-		dev-python/numpy"
+	dev-python/websockify[${PYTHON_USEDEP}]
+	dev-python/numpy[${PYTHON_USEDEP}]"
 
-src_compile() {
-	cd "${S}/utils"
-	emake
+python_compile() {
+	echo
 }
 
 src_install() {
-	dodir /usr/share/novnc
 	dodir /usr/share/novnc/utils
 	dodir /usr/share/novnc/include
 	dodir /usr/share/novnc/images
 
 	exeinto /usr/share/novnc/utils
+	doexe utils/b64-to-binary.pl
+	doexe utils/img2js.py
+	doexe utils/inflator.partial.js
 	doexe utils/json2graph.py
 	doexe utils/launch.sh
-	doexe utils/nova-novncproxy
-	doexe utils/rebind
-	doexe utils/rebind.so
+	doexe utils/parse.js
 	doexe utils/u2x11
-	doexe utils/web.py
-	doexe utils/wsproxy.py
-	doexe utils/websocket.py
 
 	docinto /usr/share/novnc/docs
 	dodoc README.md
 	dodoc LICENSE.txt
 
+	cp -pPR *.html "${D}/usr/share/novnc/"
+	cp -pPR include/* "${D}/usr/share/novnc/include/"
+	cp -pPR images/* "${D}/usr/share/novnc/images/"
 	dosym /usr/share/novnc/images/favicon.ico /usr/share/novnc/
-	cp -pPR "*.html" "${D}/usr/share/novnc/"
-	cp -pPR "include/*" "${D}/usr/share/novnc/include"
-	cp -pPR "images/*" "${D}/usr/share/novnc/images"
 
 	newconfd "${FILESDIR}/noVNC.confd" noVNC
 	newinitd "${FILESDIR}/noVNC.initd" noVNC
-
-	diropts -m 0750
-	dodir /var/log/noVNC
 }
