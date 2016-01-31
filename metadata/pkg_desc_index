@@ -4389,7 +4389,7 @@ dev-lang/php 5.4.45 5.5.30 5.5.31 5.6.14 5.6.17 5.6.17-r5 7.0.2-r5: The PHP lang
 dev-lang/pocl 0.11 0.12: PortableCL: opensource implementation of the OpenCL standard
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.10-r1 2.7.11-r2 3.3.5-r2 3.3.5-r7 3.4.3-r1 3.4.3-r7 3.5.0-r2 3.5.1-r2: An interpreted, interactive, object-oriented programming language
-dev-lang/python-exec 2.0.1-r1 2.0.2 2.1 2.2 2.9999: Python script wrapper
+dev-lang/python-exec 2.0.1-r1 2.0.2 2.1 2.2 2.2.1 2.9999: Python script wrapper
 dev-lang/qu-prolog 9.1 9.1-r1 9.5: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2015.01.1 2015.02 2015.03 2015.04 2015.05-r1 2015.06 2015.07.2 2015.11 2015.12: A compiler for the Perl 6 programming language
 dev-lang/rebol 9999: Relative Expression-Based Object Language
@@ -10952,10 +10952,10 @@ kde-apps/kde-apps-meta 15.08.3-r3: Meta package for the KDE Applications collect
 kde-apps/kde-base-artwork 4.14.3 15.08.3: KDE base artwork
 kde-apps/kde-dev-scripts 4.14.3 15.08.3-r1: KDE Development Scripts
 kde-apps/kde-dev-utils 4.14.3 15.08.3: KDE Development Utilities
-kde-apps/kde-l10n 15.08.3: KDE internationalization package
+kde-apps/kde-l10n 15.08.3 15.12.1: KDE internationalization package
 kde-apps/kde-meta 4.14.3 4.14.3-r1 15.08.3: Merge this to pull in all KDE Plasma and Applications packages
 kde-apps/kde-wallpapers 4.14.3 15.08.3 15.08.3-r1: KDE wallpapers
-kde-apps/kde4-l10n 4.14.3 4.14.3-r1 15.08.3-r1: KDE internationalization package
+kde-apps/kde4-l10n 4.14.3 4.14.3-r1 15.08.3-r2 15.12.1-r1: KDE internationalization package
 kde-apps/kdeaccessibility-meta 4.14.3 15.08.3 15.12.1: kdeaccessibility - merge this to pull in all kdeaccessiblity-derived packages
 kde-apps/kdeadmin-meta 4.14.3 15.08.3 15.12.1: KDE administration tools - merge this to pull in all kdeadmin-derived packages
 kde-apps/kdeartwork-colorschemes 4.14.3 15.08.3: KDE extra colorschemes
@@ -10989,7 +10989,7 @@ kde-apps/kdepasswd 4.14.3 15.08.3: KDE GUI for passwd
 kde-apps/kdepim-common-libs 4.14.8 4.14.10: Common libraries for KDE PIM apps
 kde-apps/kdepim-icons 4.4.2015.06 4.14.8 4.14.10: KDE PIM icons
 kde-apps/kdepim-kresources 4.4.2015.06 4.14.8 4.14.10: KDE PIM groupware plugin collection
-kde-apps/kdepim-l10n 4.4.11.1-r1 4.4.11.1-r2 4.14.3 4.14.3-r1 15.08.3: KDE PIM internationalization package
+kde-apps/kdepim-l10n 4.4.11.1-r1 4.4.11.1-r2 4.14.3 4.14.3-r1 15.08.3 15.12.1: KDE PIM internationalization package
 kde-apps/kdepim-meta 4.4.2015.06 4.14.8 4.14.10-r1: kdepim - merge this to pull in all kdepim-derived packages
 kde-apps/kdepim-runtime 4.14.8 4.14.10: KDE PIM runtime plugin collection
 kde-apps/kdepim-wizards 4.4.2015.06: KDE PIM wizards (noakonadi branch)
@@ -11096,7 +11096,7 @@ kde-apps/ktimetracker 4.4.2015.06 4.14.8 4.14.10: KTimeTracker tracks time spent
 kde-apps/ktimezoned 4.14.3 15.08.3: KDE: Timezone daemon
 kde-apps/ktnef 4.14.8 4.14.10: A viewer for TNEF attachments
 kde-apps/ktouch 4.14.3: KDE: A program that helps you to learn and practice touch typing
-kde-apps/ktp-l10n 15.08.3: KDE Telepathy internationalization package
+kde-apps/ktp-l10n 15.08.3 15.12.1: KDE Telepathy internationalization package
 kde-apps/ktraderclient 4.14.3 15.08.3: A command-line tool for querying the KDE trader system
 kde-apps/ktuberling 4.14.3 15.08.3: KDE: potato game for kids
 kde-apps/kturtle 4.14.3: KDE: Educational programming environment using the Logo programming language
