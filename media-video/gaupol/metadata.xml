@@ -5,8 +5,11 @@
 		<email>media-video@gentoo.org</email>
 		<name>Gentoo Video project</name>
 	</maintainer>
-<maintainer type="project">
+	<maintainer type="project">
 		<email>python@gentoo.org</email>
 		<name>Python</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">otsaloma/gaupol</remote-id>
+	</upstream>
 </pkgmetadata>
