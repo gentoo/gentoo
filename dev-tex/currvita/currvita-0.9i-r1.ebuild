@@ -16,9 +16,8 @@ KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86
 
 IUSE=""
 
-# >=tetex-2 includes currvita
-DEPEND="!>=app-text/tetex-2
-	!app-text/ptex"
+DEPEND="dev-texlive/texlive-langgerman"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}"
 
