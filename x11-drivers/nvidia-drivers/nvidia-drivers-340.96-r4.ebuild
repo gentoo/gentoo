@@ -26,14 +26,9 @@ SRC_URI="
 LICENSE="GPL-2 NVIDIA-r2"
 SLOT="0/${PV%.*}"
 KEYWORDS="-* ~amd64 ~x86 ~amd64-fbsd ~x86-fbsd"
+IUSE="acpi multilib kernel_FreeBSD kernel_linux pax_kernel static-libs +tools +X uvm"
 RESTRICT="bindist mirror strip"
 EMULTILIB_PKG="true"
-
-IUSE="acpi gtk3 multilib kernel_FreeBSD kernel_linux pax_kernel static-libs +tools +X uvm"
-REQUIRED_USE="
-	tools? ( X )
-	static-libs? ( tools )
-"
 
 COMMON="
 	app-eselect/eselect-opencl
@@ -42,17 +37,10 @@ COMMON="
 		dev-libs/atk
 		dev-libs/glib:2
 		dev-libs/jansson
-		gtk3? (
-			x11-libs/gtk+:3
-		)
-		x11-libs/cairo
-		x11-libs/gdk-pixbuf[X]
-		x11-libs/gtk+:2
+		x11-libs/gdk-pixbuf
+		>=x11-libs/gtk+-2.4:2
 		x11-libs/libX11
 		x11-libs/libXext
-		x11-libs/libXrandr
-		x11-libs/libXv
-		x11-libs/libXxf86vm
 		x11-libs/pango[X]
 	)
 	X? (
@@ -61,6 +49,7 @@ COMMON="
 "
 DEPEND="
 	${COMMON}
+	app-arch/xz-utils
 	kernel_linux? ( virtual/linux-sources )
 "
 RDEPEND="
@@ -76,6 +65,8 @@ RDEPEND="
 		)
 	)
 "
+
+REQUIRED_USE="tools? ( X )"
 
 QA_PREBUILT="opt/* usr/lib*"
 
@@ -178,8 +169,8 @@ src_prepare() {
 		ewarn "Using PAX patches is not supported. You will be asked to"
 		ewarn "use a standard kernel should you have issues. Should you"
 		ewarn "need support with these patches, contact the PaX team."
-		epatch "${FILESDIR}"/${PN}-346.16-pax-usercopy.patch
-		epatch "${FILESDIR}"/${PN}-346.16-pax-constify.patch
+		epatch "${FILESDIR}"/${PN}-331.13-pax-usercopy.patch
+		epatch "${FILESDIR}"/${PN}-337.12-pax-constify.patch
 	fi
 
 	# Allow user patches so they can support RC kernels and whatever else
@@ -196,26 +187,26 @@ src_compile() {
 		MAKE="$(get_bmake)" CFLAGS="-Wno-sign-compare" emake CC="$(tc-getCC)" \
 			LD="$(tc-getLD)" LDFLAGS="$(raw-ldflags)" || die
 	elif use kernel_linux; then
-		MAKEOPTS=-j1
+		use uvm && MAKEOPTS=-j1
 		linux-mod_src_compile
 	fi
 
 	if use tools; then
+		emake -C "${S}"/nvidia-settings-${PV}/src/libXNVCtrl clean
+		emake -C "${S}"/nvidia-settings-${PV}/src/libXNVCtrl \
+			AR="$(tc-getAR)" \
+			CC="$(tc-getCC)" \
+			RANLIB="$(tc-getRANLIB)" \
+			libXNVCtrl.a
 		emake -C "${S}"/nvidia-settings-${PV}/src \
 			AR="$(tc-getAR)" \
 			CC="$(tc-getCC)" \
-			LIBDIR="$(get_libdir)" \
-			RANLIB="$(tc-getRANLIB)" \
-			build-xnvctrl
-
-		emake -C "${S}"/nvidia-settings-${PV}/src \
-			CC="$(tc-getCC)" \
-			GTK3_AVAILABLE=$(usex gtk3 1 0) \
 			LD="$(tc-getCC)" \
 			LIBDIR="$(get_libdir)" \
 			NVML_ENABLED=0 \
 			NV_USE_BUNDLED_LIBJANSSON=0 \
 			NV_VERBOSE=1 \
+			RANLIB="$(tc-getRANLIB)" \
 			STRIP_CMD=true
 	fi
 }
@@ -307,12 +298,6 @@ src_install() {
 		# Xorg GLX driver
 		donvidia ${NV_X11}/libglx.so ${NV_SOVER} \
 			/usr/$(get_libdir)/opengl/nvidia/extensions
-
-		# Xorg nvidia.conf
-		if has_version '>=x11-base/xorg-server-1.16'; then
-			insinto /usr/share/X11/xorg.conf.d
-			newins {,50-}nvidia-drm-outputclass.conf
-		fi
 	fi
 
 	# OpenCL ICD for NVIDIA
@@ -368,7 +353,6 @@ src_install() {
 	if use tools; then
 		emake -C "${S}"/nvidia-settings-${PV}/src/ \
 			DESTDIR="${D}" \
-			GTK3_AVAILABLE=$(usex gtk3 1 0) \
 			LIBDIR="${D}/usr/$(get_libdir)" \
 			PREFIX=/usr \
 			NV_USE_BUNDLED_LIBJANSSON=0 \
@@ -377,9 +361,12 @@ src_install() {
 		if use static-libs; then
 			dolib.a "${S}"/nvidia-settings-${PV}/src/libXNVCtrl/libXNVCtrl.a
 
-			insinto /usr/share/nvidia/
-			doins nvidia-application-profiles-${PV}-key-documentation
+			insinto /usr/include/NVCtrl
+			doins "${S}"/nvidia-settings-${PV}/src/libXNVCtrl/*.h
 		fi
+
+		insinto /usr/share/nvidia/
+		doins nvidia-application-profiles-${PV}-key-documentation
 
 		insinto /etc/nvidia
 		newins \
@@ -392,10 +379,13 @@ src_install() {
 		domenu "${FILESDIR}"/nvidia-settings.desktop
 
 		exeinto /etc/X11/xinit/xinitrc.d
-		doexe "${FILESDIR}"/95-nvidia-settings
+		newexe "${FILESDIR}"/95-nvidia-settings-r1 95-nvidia-settings
+
 	fi
 
 	dobin ${NV_OBJ}/nvidia-bug-report.sh
+
+	#doenvd "${FILESDIR}"/50nvidia-prelink-blacklist
 
 	if has_multilib_profile && use multilib ; then
 		local OABI=${ABI}
