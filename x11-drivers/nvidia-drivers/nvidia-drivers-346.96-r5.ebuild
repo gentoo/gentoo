@@ -393,7 +393,7 @@ src_install() {
 		domenu "${FILESDIR}"/nvidia-settings.desktop
 
 		exeinto /etc/X11/xinit/xinitrc.d
-		doexe "${FILESDIR}"/95-nvidia-settings
+		newexe "${FILESDIR}"/95-nvidia-settings-r1 95-nvidia-settings
 	fi
 
 	dobin ${NV_OBJ}/nvidia-bug-report.sh
