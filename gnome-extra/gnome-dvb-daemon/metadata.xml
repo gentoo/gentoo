@@ -12,6 +12,5 @@
 </longdescription>
 <use>
 	<flag name="totem">Build a plugin for <pkg>media-video/totem</pkg></flag>
-	<flag name="vala">Add support for <pkg>dev-lang/vala</pkg></flag>
 </use>
 </pkgmetadata>
