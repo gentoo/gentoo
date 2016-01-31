@@ -5557,16 +5557,16 @@ dev-perl/GD 2.460.0-r1 2.560.0-r1: Interface to Thomas Boutell's gd library
 dev-perl/GD-Barcode 1.150.0-r1: GD::Barcode - Create barcode image with GD
 dev-perl/GD-Graph3d 0.630.0-r1: Create 3D Graphs with GD and GD::Graph
 dev-perl/GD-SVG 0.330.0-r1: Seamlessly enable SVG output from scripts written using GD
-dev-perl/GDGraph 1.490.0 1.510.0: Perl5 module to create charts using the GD module
+dev-perl/GDGraph 1.490.0 1.510.0 1.520.0: Perl5 module to create charts using the GD module
 dev-perl/GDTextUtil 0.860.0-r1: Text utilities for use with GD
 dev-perl/GSSAPI 0.280.0-r1: GSSAPI - Perl extension providing access to the GSSAPIv2 library
 dev-perl/GStreamer 0.180.0 0.200.0: Perl bindings for GStreamer
 dev-perl/GStreamer-Interfaces 0.60.0-r1: Perl interface to the GStreamer Interfaces library
-dev-perl/Gearman 1.110.0-r1 1.120.0: Gearman distributed job system, client and worker libraries
+dev-perl/Gearman 1.120.0: Gearman distributed job system, client and worker libraries
 dev-perl/Gearman-Client-Async 0.940.0-r1: Asynchronous client module for Gearman for Danga::Socket applications
-dev-perl/Gearman-Server 1.110.0-r1 1.120.0: Gearman distributed job system - worker/client connector
+dev-perl/Gearman-Server 1.120.0: Gearman distributed job system - worker/client connector
 dev-perl/Gentoo-PerlMod-Version 0.6.0-r1 0.7.0 0.8.0: Convert arbitrary Perl Modules' versions into normalised Gentoo versions
-dev-perl/Geo-IP 1.420.0 1.430.0 1.450.0: Look up country by IP Address
+dev-perl/Geo-IP 1.450.0: Look up country by IP Address
 dev-perl/Geography-Countries 2009041301.0.0-r1: 2-letter, 3-letter, and numerical codes for countries
 dev-perl/Getopt-ArgvFile 1.110.0-r1: This module is a simple supplement to other option handling modules
 dev-perl/Getopt-GUI-Long 0.930.0-r1: Auto-GUI extending Getopt::Long
@@ -6409,7 +6409,7 @@ dev-perl/enum 1.16.0-r1: C style enumerated types and bitmask flags in Perl
 dev-perl/extutils-pkgconfig 1.150.0: Simplistic perl interface to pkg-config
 dev-perl/forks 0.360.0: Emulate threads with fork
 dev-perl/frontier-rpc 0.07_beta4-r1: Perform remote procedure calls using extensible markup language
-dev-perl/glib-perl 1.301.0 1.305.0 1.313.0 1.314.0: Glib - Perl wrappers for the GLib utility and Object libraries
+dev-perl/glib-perl 1.301.0 1.314.0 1.320.0: Glib - Perl wrappers for the GLib utility and Object libraries
 dev-perl/gnome2-canvas 1.2.0-r1: Perl interface to the Gnome Canvas
 dev-perl/gnome2-perl 1.42.0-r1 1.45.0: Perl interface to the 2.x series of the Gnome libraries
 dev-perl/gnome2-vfs-perl 1.81.0-r1: Perl interface to the 2.x series of the Gnome Virtual File System libraries
@@ -9047,7 +9047,7 @@ dev-ruby/uuidtools 2.1.4-r1 2.1.5: Simple library to generate UUIDs
 dev-ruby/vcard 0.2.12: Ruby vcard support extracted from Vpim
 dev-ruby/vcr 1.11.3 2.9.3 3.0.0 3.0.1: Records your test suite's HTTP interactions and replay them during test runs
 dev-ruby/vlad 2.6.3 2.6.4 2.6.5: Pragmatic application deployment automation, without mercy
-dev-ruby/warden 1.2.3 1.2.4: General Rack Authentication Framework
+dev-ruby/warden 1.2.3 1.2.4 1.2.5: General Rack Authentication Framework
 dev-ruby/watch 0.1.0: A dirt simple mechanism to tell if files have changed
 dev-ruby/weakling 0.0.4: weakling: a collection of weakref utilities for Ruby
 dev-ruby/web-console 2.2.1-r1: A debugging tool for your Ruby on Rails applications
@@ -12162,7 +12162,7 @@ media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplaye
 media-libs/gnonlin 0.10.17 1.4.0: Gnonlin is a set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/grilo 0.2.12 0.2.14 0.2.15: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.1 1.0.2: Thin GObject wrapper around the libcanberra sound event library
-media-libs/gst-plugins-bad 0.10.23-r2 0.10.23-r3 1.4.5 1.6.2-r1: Less plugins for GStreamer
+media-libs/gst-plugins-bad 0.10.23-r2 0.10.23-r3 1.4.5 1.6.2-r1 1.6.3: Less plugins for GStreamer
 media-libs/gst-plugins-base 0.10.36-r2 1.4.5 1.6.1 1.6.2 1.6.3: Basepack of plugins for gstreamer
 media-libs/gst-plugins-good 0.10.31-r1 1.4.5 1.6.1 1.6.2 1.6.3: Basepack of plugins for GStreamer
 media-libs/gst-plugins-ugly 0.10.19-r1 1.4.5 1.6.1 1.6.2: Basepack of plugins for gstreamer
@@ -12376,7 +12376,7 @@ media-libs/opencollada 1.2.2_p20150207 9999: Stream based read/write library for
 media-libs/opencolorio 1.0.8 1.0.9 1.0.9-r1: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 2.4.9 2.4.10 2.4.11 3.0.0 3.1.0: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 2.4.9 2.4.10 2.4.11 3.0.0 3.1.0-r1: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 1.7.0 2.0.1-r1 2.1.0 2.2.0: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r1 1.0.1-r2: OpenEXR CTL libraries
 media-libs/opengl-apple 3 4 5: Links to Apple's OpenGL X11 implementation
@@ -12518,18 +12518,18 @@ media-plugins/gst-plugins-a52dec 0.10.19-r1 1.4.5 1.6.1 1.6.2: plugin for gstrea
 media-plugins/gst-plugins-alsa 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-amr 0.10.19-r1 1.4.5 1.6.1 1.6.2: GStreamer plugin for AMRNB/AMRWB codec
 media-plugins/gst-plugins-annodex 0.10.31-r1: GStreamer plugin for annodex stream manipulation
-media-plugins/gst-plugins-assrender 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0 1.6.1 1.6.2: GStreamer plugin for ASS/SSA rendering with effects support
-media-plugins/gst-plugins-bluez 1.6.2: Bluetooth plugin for GStreamer.
+media-plugins/gst-plugins-assrender 0.10.23-r1 1.2.4-r1 1.4.5 1.6.0 1.6.1 1.6.2 1.6.3: GStreamer plugin for ASS/SSA rendering with effects support
+media-plugins/gst-plugins-bluez 1.6.2 1.6.3: Bluetooth plugin for GStreamer.
 media-plugins/gst-plugins-cdio 0.10.19-r1 1.4.5 1.6.1 1.6.2: plugin for gstreamer
 media-plugins/gst-plugins-cdparanoia 0.10.36-r1 1.4.5 1.6.1 1.6.2 1.6.3: plugin for gstreamer
-media-plugins/gst-plugins-dash 1.4.5 1.6.1 1.6.2: MPEG-DASH plugin
-media-plugins/gst-plugins-dtls 1.6.1 1.6.2: DTLS plugin for GStreamer.
-media-plugins/gst-plugins-dts 0.10.23-r1 1.4.5 1.6.1 1.6.2: GStreamer plugin for MPEG-1/2 video encoding
+media-plugins/gst-plugins-dash 1.4.5 1.6.1 1.6.2 1.6.3: MPEG-DASH plugin
+media-plugins/gst-plugins-dtls 1.6.1 1.6.2 1.6.3: DTLS plugin for GStreamer.
+media-plugins/gst-plugins-dts 0.10.23-r1 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer plugin for MPEG-1/2 video encoding
 media-plugins/gst-plugins-dv 0.10.31-r1 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer plugin to demux and decode DV
-media-plugins/gst-plugins-dvb 0.10.23-r1 1.4.5 1.6.1 1.6.2: plugin for gstreamer
+media-plugins/gst-plugins-dvb 0.10.23-r1 1.4.5 1.6.1 1.6.2 1.6.3: plugin for gstreamer
 media-plugins/gst-plugins-dvdread 0.10.19-r1 1.4.5 1.6.1 1.6.2: plugin for gstreamer
-media-plugins/gst-plugins-faac 0.10.23-r1 1.4.5 1.6.1 1.6.2: plugin for gstreamer
-media-plugins/gst-plugins-faad 0.10.23-r2 1.4.5-r1 1.6.1 1.6.2: plugin for gstreamer
+media-plugins/gst-plugins-faac 0.10.23-r1 1.4.5 1.6.1 1.6.2 1.6.3: plugin for gstreamer
+media-plugins/gst-plugins-faad 0.10.23-r2 1.4.5-r1 1.6.1 1.6.2 1.6.3: plugin for gstreamer
 media-plugins/gst-plugins-ffmpeg 0.10.13_p201211-r5: FFmpeg based gstreamer plugin
 media-plugins/gst-plugins-flac 0.10.31-r1 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer encoder/decoder/tagger for FLAC
 media-plugins/gst-plugins-gconf 0.10.31-r1: GStreamer plugin for wrapping GConf audio/video settings
@@ -12538,59 +12538,59 @@ media-plugins/gst-plugins-gio 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-gl 0.10.3-r1: GStreamer OpenGL plugins
 media-plugins/gst-plugins-gnomevfs 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-gsm 0.10.23-r1: GStreamer plugin for GSM audio decoding/encoding
-media-plugins/gst-plugins-hls 1.4.5 1.6.1 1.6.2: HTTP live streaming plugin
+media-plugins/gst-plugins-hls 1.4.5 1.6.1 1.6.2 1.6.3: HTTP live streaming plugin
 media-plugins/gst-plugins-ivorbis 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-jack 0.10.31-r1 1.4.5 1.6.1 1.6.2 1.6.3: plugin for gstreamer
 media-plugins/gst-plugins-jpeg 0.10.31-r1 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer encoder/decoder for JPEG format
 media-plugins/gst-plugins-ladspa 0.10.23-r1: plugin for gstreamer
 media-plugins/gst-plugins-lame 0.10.19-r1 1.2.4-r1 1.4.5 1.6.0 1.6.1 1.6.2: plugin for gstreamer
 media-plugins/gst-plugins-libav 1.4.5-r1 1.4.5-r2 1.6.1 1.6.2 1.6.2-r1: FFmpeg based gstreamer plugin
-media-plugins/gst-plugins-libde265 1.6.1 1.6.2: H.265 decoder plugin for GStreamer.
-media-plugins/gst-plugins-libmms 0.10.23-r1 1.4.5 1.6.1 1.6.2: plugin for gstreamer
+media-plugins/gst-plugins-libde265 1.6.1 1.6.2 1.6.3: H.265 decoder plugin for GStreamer.
+media-plugins/gst-plugins-libmms 0.10.23-r1 1.4.5 1.6.1 1.6.2 1.6.3: plugin for gstreamer
 media-plugins/gst-plugins-libnice 0.1.13 0.1.13-r100: GStreamer plugin for ICE (RFC 5245) support
 media-plugins/gst-plugins-libpng 0.10.31-r1 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer encoder/decoder for PNG images
 media-plugins/gst-plugins-libvisual 0.10.36-r1 1.4.5 1.6.1 1.6.2 1.6.3: plugin for gstreamer
 media-plugins/gst-plugins-mad 0.10.19-r1 1.4.5 1.6.1 1.6.2: plugin for gstreamer
 media-plugins/gst-plugins-meta 0.10-r10 1.0-r2 1.6.1: Meta ebuild to pull in gst plugins for apps
-media-plugins/gst-plugins-mimic 0.10.23-r1 1.4.5 1.6.1 1.6.2: GStreamer plugin for the MIMIC codec
-media-plugins/gst-plugins-modplug 0.10.23-r1 1.4.5 1.6.1 1.6.2: plugin for gstreamer
+media-plugins/gst-plugins-mimic 0.10.23-r1 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer plugin for the MIMIC codec
+media-plugins/gst-plugins-modplug 0.10.23-r1 1.4.5 1.6.1 1.6.2 1.6.3: plugin for gstreamer
 media-plugins/gst-plugins-mpeg2dec 0.10.19-r1 1.4.5 1.6.1 1.6.2: Libmpeg2 based decoder plug-in for gstreamer
-media-plugins/gst-plugins-mpeg2enc 0.10.23-r1 1.4.5 1.6.1 1.6.2: GStreamer plugin for MPEG-1/2 video encoding
-media-plugins/gst-plugins-mplex 0.10.23-r1 1.4.5 1.6.1 1.6.2: GStreamer plugin for MPEG/DVD/SVCD/VCD video/audio multiplexing
+media-plugins/gst-plugins-mpeg2enc 0.10.23-r1 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer plugin for MPEG-1/2 video encoding
+media-plugins/gst-plugins-mplex 0.10.23-r1 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer plugin for MPEG/DVD/SVCD/VCD video/audio multiplexing
 media-plugins/gst-plugins-musepack 0.10.23-r1: plugin for gstreamer
-media-plugins/gst-plugins-neon 0.10.23-r1 1.2.4-r1 1.6.1 1.6.2: plugin for gstreamer
-media-plugins/gst-plugins-ofa 0.10.23-r1 1.4.5 1.6.1 1.6.2: plugin for gstreamer
+media-plugins/gst-plugins-neon 0.10.23-r1 1.2.4-r1 1.6.1 1.6.2 1.6.3: plugin for gstreamer
+media-plugins/gst-plugins-ofa 0.10.23-r1 1.4.5 1.6.1 1.6.2 1.6.3: plugin for gstreamer
 media-plugins/gst-plugins-ogg 0.10.36-r1: plugin for gstreamer
-media-plugins/gst-plugins-openh264 1.6.1 1.6.2: H.264 encoder/decoder plugin for GStreamer.
-media-plugins/gst-plugins-opus 0.10.23-r1 1.4.5 1.6.1 1.6.2: GStreamer plugin for Opus audio codec support
+media-plugins/gst-plugins-openh264 1.6.1 1.6.2 1.6.3: H.264 encoder/decoder plugin for GStreamer.
+media-plugins/gst-plugins-opus 0.10.23-r1 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer plugin for Opus audio codec support
 media-plugins/gst-plugins-oss 0.10.31-r1 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer plugin for OSS (Open Sound System) support
 media-plugins/gst-plugins-pango 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-pulse 0.10.31-r1 0.10.31-r2 1.4.5 1.6.1 1.6.2 1.6.2-r1 1.6.3: GStreamer plugin for the PulseAudio sound server
 media-plugins/gst-plugins-raw1394 0.10.31-r1 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer plugin to capture firewire video
-media-plugins/gst-plugins-resindvd 0.10.23-r1 1.4.5 1.6.1 1.6.2: plugin for gstreamer
-media-plugins/gst-plugins-rtmp 0.10.23-r1 1.4.5 1.6.1 1.6.2: GStreamer plugin for supporting RTMP sources
-media-plugins/gst-plugins-schroedinger 0.10.23-r1 1.4.5 1.6.1 1.6.2: plugin for gstreamer
+media-plugins/gst-plugins-resindvd 0.10.23-r1 1.4.5 1.6.1 1.6.2 1.6.3: plugin for gstreamer
+media-plugins/gst-plugins-rtmp 0.10.23-r1 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer plugin for supporting RTMP sources
+media-plugins/gst-plugins-schroedinger 0.10.23-r1 1.4.5 1.6.1 1.6.2 1.6.3: plugin for gstreamer
 media-plugins/gst-plugins-shout2 0.10.31-r1 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer plugin to send data to an icecast server
 media-plugins/gst-plugins-sidplay 0.10.19-r1 1.4.5 1.6.1 1.6.2: plugin for gstreamer
-media-plugins/gst-plugins-smoothstreaming 1.4.5 1.6.1 1.6.2: Smooth Streaming plugin
-media-plugins/gst-plugins-soundtouch 0.10.23-r1 1.4.5 1.6.1 1.6.2: GStreamer elements for beats-per-minute detection and pitch controlling
+media-plugins/gst-plugins-smoothstreaming 1.4.5 1.6.1 1.6.2 1.6.3: Smooth Streaming plugin
+media-plugins/gst-plugins-soundtouch 0.10.23-r1 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer elements for beats-per-minute detection and pitch controlling
 media-plugins/gst-plugins-soup 0.10.31-r1 0.10.31-r2 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer plugin for HTTP client source/sink
 media-plugins/gst-plugins-speex 0.10.31-r1 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer plugin to allow encoding and decoding of speex
 media-plugins/gst-plugins-taglib 0.10.31-r1 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer taglib based tag handler
 media-plugins/gst-plugins-theora 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-twolame 0.10.19-r1 1.4.5 1.6.1 1.6.2: plugin for gstreamer
-media-plugins/gst-plugins-uvch264 1.6.2: UVC compliant H264 encoding cameras plugin for GStreamer.
+media-plugins/gst-plugins-uvch264 1.6.2 1.6.3: UVC compliant H264 encoding cameras plugin for GStreamer.
 media-plugins/gst-plugins-v4l2 0.10.31-r1 1.4.5 1.6.1 1.6.2 1.6.3: plugin for gstreamer
 media-plugins/gst-plugins-vaapi 0.6.1 0.7.0: Hardware accelerated video decoding through VA-API plugin
-media-plugins/gst-plugins-voaacenc 1.4.5 1.6.1 1.6.2: GStreamer plugin for encoding AAC
-media-plugins/gst-plugins-voamrwbenc 1.4.5 1.6.1 1.6.2: GStreamer plugin for encoding AMR-WB
+media-plugins/gst-plugins-voaacenc 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer plugin for encoding AAC
+media-plugins/gst-plugins-voamrwbenc 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer plugin for encoding AMR-WB
 media-plugins/gst-plugins-vorbis 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-vp8 0.10.23-r3: GStreamer decoder for vpx video format
 media-plugins/gst-plugins-vpx 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer decoder for vpx video format
 media-plugins/gst-plugins-wavpack 0.10.31-r1 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer encoder/decoder for wavpack audio format
 media-plugins/gst-plugins-x 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-x264 0.10.19-r1 1.4.5 1.6.1 1.6.2: plugin for gstreamer
-media-plugins/gst-plugins-x265 1.6.1 1.6.2: H.265 encoder plugin for GStreamer.
+media-plugins/gst-plugins-x265 1.6.1 1.6.2 1.6.3: H.265 encoder plugin for GStreamer.
 media-plugins/gst-plugins-ximagesrc 0.10.31-r1 0.10.31-r2 1.4.5 1.6.1 1.6.2 1.6.2-r1 1.6.3: GStreamer plugin for X11 video capture stream
 media-plugins/gst-plugins-xvid 0.10.23-r1: GStreamer plugin for XviD (MPEG-4) video encoding/decoding support
 media-plugins/gst-plugins-xvideo 0.10.36-r1: plugin for gstreamer
@@ -12863,7 +12863,7 @@ media-sound/fapg 0.41 0.42: Fast Audio Playlist Generator
 media-sound/flac-image 1.00: Utility for stuffing image files (e.g. album cover art) into metadata blocks in FLAC files
 media-sound/flac123 0.0.12: console app for playing FLAC audio files
 media-sound/flack 2.0.6: flack - edit FLAC tags from command line
-media-sound/flacon 1.2.0 9999: Extracts audio tracks from an audio CD image to separate tracks
+media-sound/flacon 1.2.0 2.0.1 9999: Extracts audio tracks from an audio CD image to separate tracks
 media-sound/flake 0.11: An alternative to the FLAC reference encoder
 media-sound/fluid-soundfont 3.1: The Fluid R3 soundfont
 media-sound/fluidsynth 1.1.6 1.1.6-r1: Fluidsynth is a software real-time synthesizer based on the Soundfont 2 specifications
