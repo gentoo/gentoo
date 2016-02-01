@@ -3891,7 +3891,7 @@ dev-java/ibm-jdk-bin 1.6.0.9_p1 1.6.0.9_p2 1.6.0.9_p2-r1: IBM Java SE Developmen
 dev-java/ibm-jre-bin 1.6.0.9_p1 1.6.0.9_p2 1.6.0.9_p2-r1: IBM Java SE Runtime Environment
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
 dev-java/icedtea 6.1.13.9-r2 7.2.6.4-r1: A harness to build OpenJDK using Free Software build tools and dependencies
-dev-java/icedtea-bin 6.1.13.9 7.2.6.4: A Gentoo-made binary build of the IcedTea JDK
+dev-java/icedtea-bin 3.0.0_pre08 6.1.13.9 7.2.6.4: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.5.1-r1 1.6.1: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 3.8.1-r1 4.0.1.1 4.2.1.1 4.4.2 49.1 52.1 53.1 54.1.1 55.1: A set of Java libraries providing Unicode and Globalization support
@@ -13979,7 +13979,7 @@ net-irc/irssi-xmpp 0.52: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
 net-irc/jircii 41: jIRCii - IRC client written in Java
 net-irc/konversation 1.5.1 1.6: A user friendly IRC Client
-net-irc/kvirc 4.4_pre6250 4.4_pre20151218202654 9999: Advanced IRC Client
+net-irc/kvirc 4.4_pre6250 4.4_pre20151218202654 5.0_pre20160201053254 9999: Advanced IRC Client
 net-irc/limnoria 20150523 20150829 99999999: Python based extensible IRC infobot and channel bot
 net-irc/loqui 0.5.4: a graphical IRC client for GNOME2 on UNIX like operating system
 net-irc/miau 0.6.6: Persistent IRC bouncer with multi-client support - a fork of muh
