@@ -58,6 +58,8 @@
 # Use the -DNDEBUG preprocessor flag to disable debugging features.
 # (Using need-wxwidgets will do this for you, see below.)
 
+if [[ -z ${_WXWIDGETS_ECLASS} ]]; then
+
 inherit eutils flag-o-matic multilib
 
 # We do this in global scope so ebuilds can get sane defaults just by
@@ -163,3 +165,6 @@ need-wxwidgets() {
 	einfo "Using wxWidgets:            ${wxconf}"
 	echo
 }
+
+_WXWIDGETS_ECLASS=1
+fi
