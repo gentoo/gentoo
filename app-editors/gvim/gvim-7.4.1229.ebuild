@@ -36,7 +36,7 @@ REQUIRED_USE="
 RDEPEND="
 	~app-editors/vim-core-${PV}
 	>=app-eselect/eselect-vi-1.1
-	>=sys-libs/ncurses-5.2-r2:=
+	>=sys-libs/ncurses-5.2-r2:0=
 	x11-libs/libXext
 	x11-libs/libXt
 	acl? ( kernel_linux? ( sys-apps/acl ) )
