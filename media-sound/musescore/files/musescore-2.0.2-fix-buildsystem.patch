@@ -1,0 +1,429 @@
+* Remove hardcoded CXXFLAGS, set only necessary options
+* Turn off RPATH linking
+* Fix QA issues caused by wrong "Version" setting in desktop file
+
+--- MuseScore-2.0.2/aeolus/CMakeLists.txt
++++ MuseScore-2.0.2/aeolus/CMakeLists.txt
+@@ -43,7 +43,7 @@
+ set_target_properties (
+       aeolus
+       PROPERTIES
+-         COMPILE_FLAGS "${PCH_INCLUDE} -g -Wall -Wextra -Winvalid-pch"
++         COMPILE_FLAGS "${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch"
+       )
+ 
+ install(DIRECTORY
+--- MuseScore-2.0.2/audiofile/CMakeLists.txt
++++ MuseScore-2.0.2/audiofile/CMakeLists.txt
+@@ -26,7 +26,7 @@
+ set_target_properties (
+       audiofile
+       PROPERTIES
+-         COMPILE_FLAGS "${PCH_INCLUDE} -g -Wall -Wextra -Winvalid-pch"
++         COMPILE_FLAGS "${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch"
+       )
+ 
+ xcode_pch(audiofile all)
+--- MuseScore-2.0.2/awl/CMakeLists.txt
++++ MuseScore-2.0.2/awl/CMakeLists.txt
+@@ -43,7 +43,7 @@
+ set_target_properties (
+       awl
+       PROPERTIES
+-         COMPILE_FLAGS "${PCH_INCLUDE} -g -Wall -Wextra -Winvalid-pch"
++         COMPILE_FLAGS "${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch"
+       )
+ 
+ xcode_pch(awl all)
+--- MuseScore-2.0.2/build/CreatePrecompiledHeader.cmake
++++ MuseScore-2.0.2/build/CreatePrecompiledHeader.cmake
+@@ -36,7 +36,7 @@
+             set (PCH ${PROJECT_BINARY_DIR}/${header_name}.h.gch)
+             add_custom_command(
+              OUTPUT ${PROJECT_BINARY_DIR}/${header_name}.h.gch
+-             COMMAND ${CMAKE_CXX_COMPILER} -x c++-header -g  ${compile_flags} -o ${header_name}.h.gch ${header_name}.h
++             COMMAND ${CMAKE_CXX_COMPILER} -x c++-header ${compile_flags} -o ${header_name}.h.gch ${header_name}.h
+              DEPENDS ${PROJECT_BINARY_DIR}/${header_name}.h
+              WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+              VERBATIM
+--- MuseScore-2.0.2/bww2mxml/CMakeLists.txt
++++ MuseScore-2.0.2/bww2mxml/CMakeLists.txt
+@@ -49,7 +49,7 @@
+    set_target_properties (
+          bww2mxml
+          PROPERTIES
+-            COMPILE_FLAGS "-x c++ -include ${PROJECT_BINARY_DIR}/all.h -g -Wall -Wextra -Winvalid-pch"
++            COMPILE_FLAGS "-x c++ -include ${PROJECT_BINARY_DIR}/all.h -Wall -Wextra -Winvalid-pch"
+          )
+ 
+    target_link_libraries(bww2mxml
+--- MuseScore-2.0.2/CMakeLists.txt
++++ MuseScore-2.0.2/CMakeLists.txt
+@@ -115,22 +115,10 @@
+       endif()
+ endif ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
+ 
+-if (APPLE)
+-   set(CMAKE_CXX_FLAGS_DEBUG   "-std=c++0x -fPIC -stdlib=libc++ -g")
+-   set(CMAKE_CXX_FLAGS_RELEASE "-std=c++0x -fPIC -stdlib=libc++ -O2 -DNDEBUG -DQT_NO_DEBUG")
+-else (APPLE)
+-   if (MINGW)
+-      # -mno-ms-bitfields see #22048
+-      set(CMAKE_CXX_FLAGS_DEBUG   "-std=gnu++0x -mno-ms-bitfields -g")
+-      set(CMAKE_CXX_FLAGS_RELEASE "-std=gnu++0x -mno-ms-bitfields -O2 -DNDEBUG -DQT_NO_DEBUG")
+-   else (MINGW)
+-      set(CMAKE_CXX_FLAGS_DEBUG   "-std=c++11 -fPIC -fPIE -g")
+-      set(CMAKE_CXX_FLAGS_RELEASE "-std=c++11 -fPIC -O2 -DNDEBUG -DQT_NO_DEBUG")
+-   endif (MINGW)
+-endif(APPLE)
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fPIC -fPIE -DNDEBUG -DQT_NO_DEBUG")
+ 
+ set(CMAKE_INCLUDE_CURRENT_DIR TRUE)
+-set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
++set(CMAKE_BUILD_WITH_INSTALL_RPATH OFF)
+ set(CMAKE_SKIP_RULE_DEPENDENCY TRUE)
+ 
+ # The Mscore version number.
+@@ -398,7 +386,6 @@
+     #     set library search path for runtime linker to load the same
+     #     qt libraries as we used at compile time
+     #
+-    set (CMAKE_EXE_LINKER_FLAGS "-Wl,-rpath=${_qt5Core_install_prefix}/lib")
+     # install desktop file
+     install( FILES build/mscore.desktop DESTINATION share/applications)
+     # compress man pages if gzip is installed (don't on OpenBSD)
+@@ -449,11 +436,7 @@
+     DEPENDS ${PROJECT_SOURCE_DIR}/all.h
+     WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+     )
+-if (MINGW)
+-  set(BUILD_PCH false)
+-else (MINGW)
+-  set(BUILD_PCH true)
+-endif(MINGW)
++set(BUILD_PCH false)
+ 
+ precompiled_header(QT_INCLUDES all ${BUILD_PCH})
+ 
+--- MuseScore-2.0.2/effects/CMakeLists.txt
++++ MuseScore-2.0.2/effects/CMakeLists.txt
+@@ -37,7 +37,7 @@
+ set_target_properties (
+       effects
+       PROPERTIES
+-         COMPILE_FLAGS "${PCH_INCLUDE} -g -Wall -Wextra -Winvalid-pch"
++         COMPILE_FLAGS "${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch"
+       )
+ 
+ xcode_pch(effects all)
+--- MuseScore-2.0.2/fluid/CMakeLists.txt
++++ MuseScore-2.0.2/fluid/CMakeLists.txt
+@@ -45,7 +45,7 @@
+ set_target_properties (
+       fluid
+       PROPERTIES
+-         COMPILE_FLAGS "${PCH_INCLUDE} -g -Wall -Wextra -Winvalid-pch"
++         COMPILE_FLAGS "${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch"
+       )
+ 
+ xcode_pch(fluid all)
+--- MuseScore-2.0.2/fonttools/CMakeLists.txt
++++ MuseScore-2.0.2/fonttools/CMakeLists.txt
+@@ -19,5 +19,5 @@
+       )
+ 
+ target_link_libraries(genft ${QT_LIBRARIES} -lfreetype)
+-set_target_properties(genft PROPERTIES COMPILE_FLAGS "-I/usr/include/freetype2 -g -Wall -Wextra -Winvalid-pch")
++set_target_properties(genft PROPERTIES COMPILE_FLAGS "-I/usr/include/freetype2 -Wall -Wextra -Winvalid-pch")
+ 
+--- MuseScore-2.0.2/libmscore/CMakeLists.txt
++++ MuseScore-2.0.2/libmscore/CMakeLists.txt
+@@ -71,8 +71,8 @@
+ set_target_properties (
+       libmscore
+       PROPERTIES
+-         COMPILE_FLAGS "-g ${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch"
+-#         COMPILE_FLAGS "-g ${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch -Woverloaded-virtual"
++         COMPILE_FLAGS "${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch"
++#         COMPILE_FLAGS "${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch -Woverloaded-virtual"
+       )
+ 
+ xcode_pch(libmscore all)
+--- MuseScore-2.0.2/manual/CMakeLists.txt
++++ MuseScore-2.0.2/manual/CMakeLists.txt
+@@ -36,13 +36,13 @@
+ set_target_properties (
+       genManual
+       PROPERTIES
+-      COMPILE_FLAGS "-include all.h -D TESTROOT=\\\\\"${PROJECT_SOURCE_DIR}\\\\\" -g -Wall -Wextra"
++      COMPILE_FLAGS "-include all.h -D TESTROOT=\\\\\"${PROJECT_SOURCE_DIR}\\\\\" -Wall -Wextra"
+       )
+ else(APPLE)
+ set_target_properties (
+       genManual
+       PROPERTIES
+-      COMPILE_FLAGS "-include all.h -D TESTROOT=\\\"${PROJECT_SOURCE_DIR}\\\" -g -Wall -Wextra"
++      COMPILE_FLAGS "-include all.h -D TESTROOT=\\\"${PROJECT_SOURCE_DIR}\\\" -Wall -Wextra"
+       )
+ endif(APPLE)
+ 
+--- MuseScore-2.0.2/midi/CMakeLists.txt
++++ MuseScore-2.0.2/midi/CMakeLists.txt
+@@ -27,7 +27,7 @@
+ set_target_properties (
+       midi
+       PROPERTIES
+-         COMPILE_FLAGS "${PCH_INCLUDE} -g -Wall -Wextra -Winvalid-pch"
++         COMPILE_FLAGS "${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch"
+       )
+ 
+ xcode_pch(midi all)
+--- MuseScore-2.0.2/miditools/CMakeLists.txt
++++ MuseScore-2.0.2/miditools/CMakeLists.txt
+@@ -13,7 +13,7 @@
+ add_executable (smf2xml smf2xml.cpp xmlwriter.cpp midifile.cpp)
+ 
+ set_target_properties(smf2xml
+-      PROPERTIES COMPILE_FLAGS "-g -Wall -Wextra"
++      PROPERTIES COMPILE_FLAGS "-Wall -Wextra"
+       )
+ target_link_libraries(smf2xml
+       ${QT_LIBRARIES}
+@@ -23,7 +23,7 @@
+ 
+ set_target_properties (
+       xml2smf
+-      PROPERTIES COMPILE_FLAGS "-g -Wall -Wextra"
++      PROPERTIES COMPILE_FLAGS "-Wall -Wextra"
+       )
+ target_link_libraries(xml2smf
+       ${QT_LIBRARIES}
+--- MuseScore-2.0.2/mscore/CMakeLists.txt
++++ MuseScore-2.0.2/mscore/CMakeLists.txt
+@@ -367,7 +367,7 @@
+    if(CMAKE_BUILD_TYPE MATCHES "DEBUG")
+      set_target_properties( mscore
+         PROPERTIES
+-           COMPILE_FLAGS "${PCH_INCLUDE} -g -Wall -Wextra -Winvalid-pch ${QT_DEFINITIONS} -DQT_SVG_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB"
++           COMPILE_FLAGS "${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch ${QT_DEFINITIONS} -DQT_SVG_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB"
+            LINK_FLAGS "${PROJECT_BINARY_DIR}/resfile.o -mwindows -mconsole -L ${CROSSQT}/lib"
+         )
+    else(CMAKE_BUILD_TYPE MATCHES "DEBUG")
+@@ -488,7 +488,7 @@
+    set_target_properties (
+       mscore
+       PROPERTIES
+-         COMPILE_FLAGS "${PCH_INCLUDE} -g -Wall -Wno-overloaded-virtual -Winvalid-pch"
++         COMPILE_FLAGS "${PCH_INCLUDE} -Wall -Wno-overloaded-virtual -Winvalid-pch"
+       )
+ 
+    if (OMR)
+--- MuseScore-2.0.2/mstyle/CMakeLists.txt
++++ MuseScore-2.0.2/mstyle/CMakeLists.txt
+@@ -49,7 +49,7 @@
+ set_target_properties (
+       mstyle
+       PROPERTIES
+-         COMPILE_FLAGS "${PCH_INCLUDE} -g -Wall -Wextra -Winvalid-pch"
++         COMPILE_FLAGS "${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch"
+       )
+ 
+ xcode_pch(mstyle all)
+--- MuseScore-2.0.2/mtest/cmake.inc
++++ MuseScore-2.0.2/mtest/cmake.inc
+@@ -56,16 +56,16 @@
+       ${TARGET}
+       PROPERTIES
+       AUTOMOC true
+-      COMPILE_FLAGS "-include all.h -D QT_GUI_LIB -D TESTROOT=\\\\\"${PROJECT_SOURCE_DIR}\\\\\" -g -Wall -Wextra"
+-      LINK_FLAGS    "-g -stdlib=libc++"
++      COMPILE_FLAGS "-include all.h -D QT_GUI_LIB -D TESTROOT=\\\\\"${PROJECT_SOURCE_DIR}\\\\\" -Wall -Wextra"
++      LINK_FLAGS    "-stdlib=libc++"
+       )
+ else(APPLE)
+ set_target_properties (
+       ${TARGET}
+       PROPERTIES
+       AUTOMOC true
+-      COMPILE_FLAGS "-include all.h -D QT_GUI_LIB -D TESTROOT=\\\"${PROJECT_SOURCE_DIR}\\\" -g -Wall -Wextra"
+-      LINK_FLAGS    "-g"
++      COMPILE_FLAGS "-include all.h -D QT_GUI_LIB -D TESTROOT=\\\"${PROJECT_SOURCE_DIR}\\\" -Wall -Wextra"
++      LINK_FLAGS    ""
+       )
+ endif(APPLE)
+ 
+--- MuseScore-2.0.2/mtest/CMakeLists.txt
++++ MuseScore-2.0.2/mtest/CMakeLists.txt
+@@ -112,20 +112,7 @@
+ 
+ set(CMAKE_CXX_FLAGS         "${CMAKE_CXX_FLAGS} ${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS}")
+ 
+-if (APPLE)
+-   set(CMAKE_CXX_FLAGS_DEBUG   "-std=c++0x -fPIC -stdlib=libc++ -g")
+-   set(CMAKE_CXX_FLAGS_RELEASE "-std=c++0x -fPIC -stdlib=libc++ -O2 -DNDEBUG -DQT_NO_DEBUG")
+-else (APPLE)
+-   if (MINGW)
+-      # -mno-ms-bitfields see #22048
+-      set(CMAKE_CXX_FLAGS_DEBUG   "-std=gnu++0x -mno-ms-bitfields -g")
+-      set(CMAKE_CXX_FLAGS_RELEASE "-std=gnu++0x -mno-ms-bitfields -O2 -DNDEBUG -DQT_NO_DEBUG")
+-   else (MINGW)
+-      set(CMAKE_CXX_FLAGS_DEBUG   "-std=gnu++0x -fPIC -fPIE -g")
+-      set(CMAKE_CXX_FLAGS_RELEASE "-std=gnu++0x -fPIC -O2 -DNDEBUG -DQT_NO_DEBUG")
+-   endif (MINGW)
+-endif(APPLE)
+-
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fPIC -fPIE -DNDEBUG -DQT_NO_DEBUG")
+ 
+ string(REPLACE ";" ";-I" INC "${QT_INCLUDES}")
+ 
+@@ -133,17 +120,17 @@
+ set_target_properties (
+       testutils
+       PROPERTIES
+-      COMPILE_FLAGS "-include all.h -D TESTROOT=\\\\\"${PROJECT_SOURCE_DIR}\\\\\" -g -Wall -Wextra"
++      COMPILE_FLAGS "-include all.h -D TESTROOT=\\\\\"${PROJECT_SOURCE_DIR}\\\\\" -Wall -Wextra"
+       )
+ else (APPLE)
+ set_target_properties (
+       testutils
+       PROPERTIES
+-      COMPILE_FLAGS "-include all.h -D TESTROOT=\\\"${PROJECT_SOURCE_DIR}\\\" -g -Wall -Wextra"
++      COMPILE_FLAGS "-include all.h -D TESTROOT=\\\"${PROJECT_SOURCE_DIR}\\\" -Wall -Wextra"
+       )
+ endif(APPLE)
+ 
+-#      COMPILE_FLAGS "-include all.h -I ${INC} -D TESTROOT=\\\"${PROJECT_SOURCE_DIR}\\\" -g -Wall -Wextra"
++#      COMPILE_FLAGS "-include all.h -I ${INC} -D TESTROOT=\\\"${PROJECT_SOURCE_DIR}\\\" -Wall -Wextra"
+ 
+ add_custom_target(report
+       COMMAND ant -f ${PROJECT_SOURCE_DIR}/mtest/build.xml -Droot.dir=${PROJECT_BINARY_DIR}/mtest report
+--- MuseScore-2.0.2/omr/CMakeLists.txt
++++ MuseScore-2.0.2/omr/CMakeLists.txt
+@@ -42,7 +42,7 @@
+ set_target_properties (
+       omr
+       PROPERTIES
+-         COMPILE_FLAGS "${PCH_INCLUDE} -g -Wall -Wextra -Winvalid-pch"
++         COMPILE_FLAGS "${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch"
+       )
+ 
+ xcode_pch(omr all)
+--- MuseScore-2.0.2/synthesizer/CMakeLists.txt
++++ MuseScore-2.0.2/synthesizer/CMakeLists.txt
+@@ -29,7 +29,7 @@
+ set_target_properties (
+       synthesizer
+       PROPERTIES
+-         COMPILE_FLAGS "${PCH_INCLUDE} -g -Wall -Wextra -Winvalid-pch"
++         COMPILE_FLAGS "${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch"
+       )
+ 
+ xcode_pch(synthesizer all)
+--- MuseScore-2.0.2/thirdparty/beatroot/CMakeLists.txt
++++ MuseScore-2.0.2/thirdparty/beatroot/CMakeLists.txt
+@@ -14,7 +14,7 @@
+ 
+ set_target_properties( beatroot
+    PROPERTIES
+-      COMPILE_FLAGS "${PCH_INCLUDE} -g -Wall -Wextra -Winvalid-pch"
++      COMPILE_FLAGS "${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch"
+    )
+ 
+ xcode_pch(beatroot all)
+--- MuseScore-2.0.2/thirdparty/diff/CMakeLists.txt
++++ MuseScore-2.0.2/thirdparty/diff/CMakeLists.txt
+@@ -36,7 +36,7 @@
+ set_target_properties (
+       diff_match_patch
+       PROPERTIES
+-         COMPILE_FLAGS "${PCH_INCLUDE} -g -Wall -Wextra -Winvalid-pch"
++         COMPILE_FLAGS "${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch"
+       )
+ 
+ xcode_pch(diff_match_patch all)
+--- MuseScore-2.0.2/thirdparty/kQOAuth/CMakeLists.txt
++++ MuseScore-2.0.2/thirdparty/kQOAuth/CMakeLists.txt
+@@ -40,7 +40,7 @@
+ set_target_properties (
+       kqoauth
+       PROPERTIES
+-         COMPILE_FLAGS "${PCH_INCLUDE} -I ${PROJECT_SOURCE_DIR}/thirdparty/openssl/include -g -Wall -Wextra -Winvalid-pch"
++         COMPILE_FLAGS "${PCH_INCLUDE} -I ${PROJECT_SOURCE_DIR}/thirdparty/openssl/include -Wall -Wextra -Winvalid-pch"
+       )
+ 
+ xcode_pch(kqoauth all)
+--- MuseScore-2.0.2/thirdparty/ofqf/CMakeLists.txt
++++ MuseScore-2.0.2/thirdparty/ofqf/CMakeLists.txt
+@@ -36,7 +36,7 @@
+ set_target_properties (
+       ofqf
+       PROPERTIES
+-         COMPILE_FLAGS "${PCH_INCLUDE} -g -Wall -Wextra -Winvalid-pch"
++         COMPILE_FLAGS "${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch"
+       )
+ 
+ xcode_pch(ofqf all)
+--- MuseScore-2.0.2/thirdparty/qzip/CMakeLists.txt
++++ MuseScore-2.0.2/thirdparty/qzip/CMakeLists.txt
+@@ -29,7 +29,7 @@
+ set_target_properties (
+       qzip
+       PROPERTIES
+-         COMPILE_FLAGS "${PCH_INCLUDE} -g -Wall -Wextra -Winvalid-pch"
++         COMPILE_FLAGS "${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch"
+       )
+ 
+ xcode_pch(qzip all)
+--- MuseScore-2.0.2/thirdparty/rtf2html/CMakeLists.txt
++++ MuseScore-2.0.2/thirdparty/rtf2html/CMakeLists.txt
+@@ -37,7 +37,7 @@
+ 
+ set_target_properties( rtf2html
+    PROPERTIES
+-      COMPILE_FLAGS "${PCH_INCLUDE} -g -Wall -Wextra -Winvalid-pch"
++      COMPILE_FLAGS "${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch"
+    )
+ 
+ xcode_pch(rtf2html all)
+--- MuseScore-2.0.2/thirdparty/singleapp/src/CMakeLists.txt
++++ MuseScore-2.0.2/thirdparty/singleapp/src/CMakeLists.txt
+@@ -31,7 +31,7 @@
+ set_target_properties (
+   qtsingleapp
+   PROPERTIES
+-  COMPILE_FLAGS "${PCH_INCLUDE} -g -Wall -Wextra -Winvalid-pch"
++  COMPILE_FLAGS "${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch"
+   )
+ 
+ xcode_pch(qtsingleapp all)
+--- MuseScore-2.0.2/thirdparty/xmlstream/CMakeLists.txt
++++ MuseScore-2.0.2/thirdparty/xmlstream/CMakeLists.txt
+@@ -29,7 +29,7 @@
+ set_target_properties (
+       xmlstream
+       PROPERTIES
+-         COMPILE_FLAGS "${PCH_INCLUDE} -g -Wall -Wextra -Winvalid-pch"
++         COMPILE_FLAGS "${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch"
+       )
+ 
+ xcode_pch(xmlstream all)
+--- MuseScore-2.0.2/zerberus/CMakeLists.txt
++++ MuseScore-2.0.2/zerberus/CMakeLists.txt
+@@ -31,7 +31,7 @@
+ set_target_properties (
+       zerberus
+       PROPERTIES
+-         COMPILE_FLAGS "${PCH_INCLUDE} -g -Wall -Wextra -Winvalid-pch"
++         COMPILE_FLAGS "${PCH_INCLUDE} -Wall -Wextra -Winvalid-pch"
+       )
+ 
+ xcode_pch(zerberus all)
+--- MuseScore-2.0.2/build/mscore.desktop
++++ MuseScore-2.0.2/build/mscore.desktop
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Version=2.0
++Version=1.0
+ Comment=Create, play and print sheet music
+ Comment[ru]=Визуальный редактор нотных партитур
+ Comment[fr]=Gravure de partitions musicales
