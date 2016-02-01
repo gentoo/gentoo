@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils toolchain-funcs
+inherit eutils scons-utils toolchain-funcs
 
 DESCRIPTION="Automatic BPM detection utility"
 HOMEPAGE="http://sourceforge.net/projects/bpmdetect"
@@ -31,23 +31,20 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-printf-format.patch"
 )
 
-src_prepare() {
-	default
-	tc-export CC CXX
-}
-
 src_configure() {
-	:
+	myscons=(
+		CC="$(tc-getCC)"
+		CXX="$(tc-getCXX)"
+		QTDIR="/usr/$(get_libdir)"
+		prefix="${D}/usr"
+	)
 }
 
 src_compile() {
-	export QTDIR="/usr/$(get_libdir)"
-	scons prefix=/usr || die "scons failed"
+	escons "${myscons[@]}"
 }
 
 src_install() {
-	dobin build/${PN}
-	doicon src/${PN}-icon.png
-	domenu src/${PN}.desktop
+	escons "${myscons[@]}" install
 	dodoc authors readme todo
 }
