@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,13 +16,15 @@ KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86"
 IUSE="ipv6 readline kerberos socks5 ssh"
 
 DEPEND="dev-libs/openssl:0
+	sys-libs/ncurses:*
+	dev-libs/libbsd
 	readline? ( >=sys-libs/readline-6 )
 	kerberos? ( virtual/krb5 )
 	socks5? ( net-proxy/dante )
 	ssh? ( net-libs/libssh )"
 RDEPEND="${DEPEND}"
 
-DOCS=( BUGS NEWS README THANKS TODO )
+DOCS=( BUGS NEWS README.md THANKS TODO )
 
 src_prepare() {
 	epatch_user
@@ -36,8 +38,7 @@ src_configure() {
 		$(use_with socks5 socks5 /usr) \
 		$(use_with kerberos krb5) \
 		$(use_with ssh) \
-		--with-bash-completion="$(get_bashcompdir)" \
-		--without-krb4
+		--with-bash-completion="$(get_bashcompdir)"
 }
 
 src_install() {
