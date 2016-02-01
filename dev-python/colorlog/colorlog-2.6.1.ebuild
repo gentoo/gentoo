@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
-DOCS=( README.rst )
+DOCS=( README.md )
 
 # https://github.com/borntyping/python-colorlog/issues/28
 RESTRICT=test
