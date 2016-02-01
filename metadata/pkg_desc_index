@@ -6883,8 +6883,8 @@ dev-python/cov-core 1.7 1.15.0: plugin core for use by pytest-cov, nose-cov and 
 dev-python/coverage 3.6 3.7 3.7.1 4.0 4.0.1 4.0.2 4.0.3: Code coverage measurement for Python
 dev-python/crcmod 1.7-r2: Python CRC Generator module
 dev-python/crumbs 2.0.0 2.0.1 2.0.2 2.1.0: Generalized all-in-one parameters module
-dev-python/cryptography 1.0.2 1.1 1.1.1 1.1.2 1.2.1: Library providing cryptographic recipes and primitives
-dev-python/cryptography-vectors 1.0.2 1.1 1.1.1 1.1.2 1.2.1: Test vectors for the cryptography package
+dev-python/cryptography 1.0.2 1.1 1.1.1 1.1.2 1.2.1 1.2.2: Library providing cryptographic recipes and primitives
+dev-python/cryptography-vectors 1.0.2 1.1 1.1.1 1.1.2 1.2.1 1.2.2: Test vectors for the cryptography package
 dev-python/cssselect 0.9.1: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssutils 0.9.10-r1 1.0 1.0.1: A CSS Cascading Style Sheets library
 dev-python/ctypesgen 0_p72-r1: Python wrapper generator for ctypes
@@ -14716,7 +14716,7 @@ net-misc/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryptio
 net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
 net-misc/wget 1.16.3-r1 1.16.3-r2 1.17.1: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
-net-misc/whatportis 0.2 0.3: A command to search port names and numbers
+net-misc/whatportis 0.2 0.3 0.4: A command to search port names and numbers
 net-misc/whois 5.0.25 5.0.26 5.1.5 5.2.10 5.2.11: improved Whois Client
 net-misc/wicd 1.7.3 1.7.3-r2: A lightweight wired and wireless network manager for Linux
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
@@ -15273,7 +15273,7 @@ sci-biology/pysam 0.6-r1: Python interface for the SAM/BAM sequence alignment an
 sci-biology/qrna 2.0.3c-r1: Prototype ncRNA genefinder
 sci-biology/raxml 7.2.6: Sequential, Parallel & Distributed Inference of Large Phylogenetic Trees
 sci-biology/readseq 20080420-r1 20100513: Reads and writes nucleic/protein sequences in various formats
-sci-biology/rebase 1510 1511 1601: A restriction enzyme database
+sci-biology/rebase 1510 1511 1601 1602: A restriction enzyme database
 sci-biology/recon 1.06-r1 1.06-r2: Automated de novo identification of repeat families from genomic sequences
 sci-biology/repeatmasker 4.0.1: Screen DNA sequences for interspersed repeats and low complexity DNA
 sci-biology/repeatmasker-libraries 20120418: A special version of RepBase used by RepeatMasker
