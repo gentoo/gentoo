@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,8 +6,9 @@ EAPI=5
 
 MY_PN="tesseract-ocr"
 URI_PREFIX="https://github.com/${MY_PN}/tessdata/raw/${PV}/"
+JAVA_PKG_OPT_USE="scrollview"
 
-inherit eutils autotools autotools-utils
+inherit eutils autotools java-pkg-opt-2
 
 DESCRIPTION="An OCR Engine, orginally developed at HP, now open source."
 HOMEPAGE="https://github.com/tesseract-ocr"
@@ -65,24 +66,34 @@ KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc examples jpeg math opencl osd png +scrollview static-libs tiff training -webp linguas_ar linguas_bg linguas_ca linguas_chr linguas_cs linguas_de linguas_da linguas_el linguas_es linguas_fi linguas_fr linguas_he linguas_hi linguas_hu linguas_id linguas_it linguas_jp linguas_ko linguas_lt linguas_lv linguas_nl linguas_no linguas_pl linguas_pt linguas_ro linguas_ru linguas_sk linguas_sl linguas_sr linguas_sv linguas_th linguas_tl linguas_tr linguas_uk linguas_vi linguas_zh_CN linguas_zh_TW"
 
 # With opencl USE=tiff is necessary in leptonica
-DEPEND=">=media-libs/leptonica-1.71[zlib,tiff?,jpeg?,png?,webp?]
-		opencl? ( virtual/opencl
-				  media-libs/tiff:0
-				  >=media-libs/leptonica-1.71[zlib,tiff,jpeg?,png?,webp?]
-				)
+CDEPEND=">=media-libs/leptonica-1.71:=[zlib,tiff?,jpeg?,png?,webp?]
+	opencl? (
+		virtual/opencl
+		media-libs/tiff:0=
+		media-libs/leptonica:=[tiff]
+	)
+	scrollview? (
+		>=dev-java/piccolo2d-3.0:0
+	)
 	training? (
-	  dev-libs/icu
-	  x11-libs/pango
-	  x11-libs/cairo
+		dev-libs/icu:=
+		x11-libs/pango:=
+		x11-libs/cairo:=
 	)
 "
-RDEPEND="${DEPEND}"
+
+DEPEND="${CDEPEND}
+	scrollview? ( >=virtual/jdk-1.7 )"
+
+RDEPEND="${CDEPEND}
+	scrollview? ( >=virtual/jre-1.7 )"
 
 DOCS=(AUTHORS ChangeLog NEWS README ReleaseNotes )
 
 PATCHES=(
 	"${FILESDIR}/tesseract-2.04-gcc47.patch"
 	"${FILESDIR}/${P}-fix-scrollview-disabled.patch"
+	"${FILESDIR}/${P}-use-system-piccolo2d.patch"
 )
 
 src_unpack() {
@@ -92,28 +103,36 @@ src_unpack() {
 		 -execdir sh -c 'cp -- "$0" "${S}/tessdata/${0%-*}"' '{}' ';' || die
 }
 
+src_prepare() {
+	epatch "${PATCHES[@]}"
+	eautoreconf
+
+	java-pkg-opt-2_src_prepare
+}
+
 src_configure() {
 	local myeconfargs=(
-		$(use_enable opencl) \
+		--enable-shared
+		$(use_enable opencl)
 		$(use_enable scrollview graphics)
-		)
-	autotools-utils_src_configure
+		$(use_enable static-libs static)
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
 	default
-	if use training; then
-		emake training
-	fi
-	}
+	use scrollview && emake ScrollView.jar JAVAC="javac $(java-pkg_javac-args)"
+	use training && emake training
+}
 
 src_install() {
-	autotools-utils_src_install
+	default
+	prune_libtool_files
 
 	if use training; then
-		pushd "${BUILD_DIR}"
 		emake DESTDIR="${D}" training-install
-		popd
 	fi
 
 	if use examples; then
@@ -122,10 +141,10 @@ src_install() {
 	fi
 
 	if use doc; then
-		dohtml -r "${WORKDIR}"/"${MY_PN}"/doc/html/*
+		dohtml -r "${WORKDIR}/${MY_PN}"/doc/html/*
 	fi
 
-	# install language files
 	insinto /usr/share/tessdata
-	doins "${S}"/tessdata/*traineddata*
+	doins tessdata/*traineddata* # language files
+	use scrollview && doins java/ScrollView.jar # scrollview
 }
