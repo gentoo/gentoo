@@ -16,6 +16,7 @@ IUSE=""
 RDEPEND="
 	dev-texlive/texlive-latex
 	dev-texlive/texlive-pstricks
+	dev-texlive/texlive-latexextra
 "
 
 DEPEND="${RDEPEND}
