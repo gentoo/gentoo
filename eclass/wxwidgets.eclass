@@ -60,7 +60,14 @@
 
 if [[ -z ${_WXWIDGETS_ECLASS} ]]; then
 
-inherit eutils flag-o-matic multilib
+case ${EAPI} in
+	0|1|2|3|4|5)
+		inherit eutils flag-o-matic multilib
+		;;
+	*)
+		die "EAPI=${EAPI:-0} is not supported"
+		;;
+esac
 
 # We do this in global scope so ebuilds can get sane defaults just by
 # inheriting.
