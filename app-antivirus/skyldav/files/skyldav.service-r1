@@ -1,0 +1,15 @@
+[Unit]
+Description=SkyldAV anti-virus on-access scanning daemon based upon Clam AV and fanotify
+Requires=local-fs.target clamd.service
+After=local-fs.target clamd.service
+Before=multi-user.target
+
+[Service]
+Type=simple
+Environment="SKYLDAV_MESSAGE_LEVEL=2"
+ExecStart=/usr/sbin/skyldav -d -m ${SKYLDAV_MESSAGE_LEVEL}
+#KillMode=process
+#KillSignal=SIGTERM
+
+[Install]
+WantedBy=multi-user.target
