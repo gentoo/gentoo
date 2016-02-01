@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -73,10 +73,10 @@ DOCS="AUTHORS BUGS PATCHES README STYLE"
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}/${PN}-3.4.2-backtrace.patch"
+		"${FILESDIR}/3.4/${PN}-3.4.2-backtrace.patch"
 
 	# bug  #408025
-	epatch "${FILESDIR}/${PN}-3.4.11-convert-path.patch"
+	epatch "${FILESDIR}/3.4/${PN}-3.4.11-convert-path.patch"
 
 	#bug #465288
 	sed -e '/NoDisplay/d' -i awesome.desktop || die
