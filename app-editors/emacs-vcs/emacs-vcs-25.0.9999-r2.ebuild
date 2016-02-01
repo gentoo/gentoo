@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools elisp-common eutils flag-o-matic multilib readme.gentoo
+inherit autotools elisp-common flag-o-matic multilib readme.gentoo-r1
 
 if [[ ${PV##*.} = 9999 ]]; then
 	inherit git-r3
@@ -20,8 +20,8 @@ else
 	# order to determine some path information correctly for copy/move
 	# operations later on
 	FULL_VERSION="${PV%%_*}"
-	#S="${WORKDIR}/emacs-${FULL_VERSION}"
-	S="${WORKDIR}/emacs"
+	S="${WORKDIR}/emacs-${FULL_VERSION}"
+	[[ ${FULL_VERSION} != ${PV} ]] && S="${WORKDIR}/emacs"
 fi
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
@@ -29,7 +29,7 @@ HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="25"
-IUSE="acl alsa aqua athena cairo dbus games gconf gfile gif gnutls gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm zlib"
+IUSE="acl alsa aqua athena cairo dbus games gconf gfile gif gnutls gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
 REQUIRED_USE="?? ( aqua X )"
 
 RDEPEND="sys-libs/ncurses:0
@@ -71,8 +71,14 @@ RDEPEND="sys-libs/ncurses:0
 			)
 		)
 		gtk? (
-			gtk3? ( x11-libs/gtk+:3 )
-			!gtk3? ( x11-libs/gtk+:2 )
+			xwidgets? (
+				x11-libs/gtk+:3
+				net-libs/webkit-gtk:3=
+			)
+			!xwidgets? (
+				gtk3? ( x11-libs/gtk+:3 )
+				!gtk3? ( x11-libs/gtk+:2 )
+			)
 		)
 		!gtk? (
 			motif? ( >=x11-libs/motif-2.3:0 )
@@ -111,7 +117,7 @@ src_prepare() {
 			|| die "Upstream version number changed to ${FULL_VERSION}"
 	fi
 
-	epatch_user
+	eapply_user
 
 	# Fix filename reference in redirected man page
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 \
@@ -182,7 +188,12 @@ src_configure() {
 				recommended that you compile Emacs with the Athena/Lucid or the
 				Motif toolkit instead.
 			EOF
-			myconf+=" --with-x-toolkit=$(usex gtk3 gtk3 gtk2)"
+			if use xwidgets; then
+				myconf+=" --with-x-toolkit=gtk3 --with-xwidgets"
+			else
+				myconf+=" --with-x-toolkit=$(usex gtk3 gtk3 gtk2)"
+				myconf+=" --without-xwidgets"
+			fi
 			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \
 					"USE flag \"${f}\" has no effect if \"gtk\" is set."
@@ -201,6 +212,8 @@ src_configure() {
 			einfo "Configuring to build with no toolkit"
 			myconf+=" --with-x-toolkit=no"
 		fi
+		! use gtk && use xwidgets && ewarn \
+			"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
 	elif use aqua; then
 		einfo "Configuring to build with Nextstep (Cocoa) support"
 		myconf+=" --with-ns --disable-ns-self-contained"

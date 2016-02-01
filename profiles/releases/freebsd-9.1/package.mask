@@ -43,3 +43,6 @@ sys-process/fuser-bsd
 # via libulog.
 # this package does not build anymore as it requires utmp
 sys-libs/libutempter
+
+# Critical issue in freebsd-libexec, bug #573358.
+>=sys-devel/gcc-5.0

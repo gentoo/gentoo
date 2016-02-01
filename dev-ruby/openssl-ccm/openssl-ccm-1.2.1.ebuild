@@ -3,16 +3,21 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+
+RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
 inherit ruby-fakegem
 
 DESCRIPTION="OpenSSL CBC-MAC (CCM) ruby gem"
 HOMEPAGE="https://github.com/SmallLars/openssl-ccm"
-SRC_URI="mirror://rubygems/${P}.gem"
 
 LICENSE="BSD"
 SLOT="${PV}"
 KEYWORDS="~amd64 ~arm ~x86"
-RESTRICT=test
 IUSE=""
+
+all_ruby_prepare() {
+	sed -i -e '/bundler/ s:^:#:' Rakefile || die
+	sed -i -e '/coverall/I s:^:#:' test/test_ccm.rb || die
+}

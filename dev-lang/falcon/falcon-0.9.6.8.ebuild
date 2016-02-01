@@ -23,7 +23,9 @@ DEPEND="
 	curl? ( net-misc/curl )
 	dbus? ( sys-apps/dbus )
 	gd? ( media-libs/gd:= )
-	gtk? ( dev-libs/glib:2 )
+	gtk? (
+		dev-libs/glib:2
+		x11-libs/gtk+:2 )
 	mysql? ( virtual/libmysqlclient:= )
 	readline? ( sys-libs/readline:0 )
 	pdf? ( media-libs/libharu )

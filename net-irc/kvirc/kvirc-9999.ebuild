@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -56,7 +56,7 @@ RDEPEND="dev-qt/qtcore:5
 		kde-frameworks/kwindowsystem:5
 		kde-frameworks/kxmlgui:5
 	)
-	perl? ( dev-lang/perl )
+	perl? ( dev-lang/perl:0= )
 	phonon? ( media-libs/phonon:0[qt5] )
 	spell? ( app-text/enchant )
 	ssl? ( dev-libs/openssl:0= )
