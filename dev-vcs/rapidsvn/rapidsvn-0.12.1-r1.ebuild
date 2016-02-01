@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ WX_GTK_VER=2.8
 
 AUTOTOOLS_AUTORECONF=true
 
-inherit autotools-utils fdo-mime flag-o-matic python-single-r1 versionator wxwidgets
+inherit autotools-utils fdo-mime flag-o-matic multilib python-single-r1 versionator wxwidgets
 
 MY_PV=$(get_version_component_range 1-2)
 MY_REL="1"
