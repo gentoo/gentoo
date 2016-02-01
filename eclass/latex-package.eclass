@@ -51,10 +51,10 @@
 # you must either grab each file individually, or find a place to mirror an
 # archive of them.  (iBiblio)
 #
-# It inherits base in EAPI 5 and earlier.
+# It inherits base and eutils in EAPI 5 and earlier.
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5) inherit base ;;
+	0|1|2|3|4|5) inherit base eutils ;;
 	6) ;;
 	*) die "Unknown EAPI ${EAPI} for ${ECLASS}" ;;
 esac
@@ -124,11 +124,13 @@ latex-package_src_doinstall() {
 				done
 				;;
 			"tex" | "dtx")
-				for i in `find . -maxdepth 1 -type f -name "*.${1}"`
-				do
-					einfo "Making documentation: $i"
-					texi2dvi -q -c --language=latex $i &> /dev/null || die
+				if ! in_iuse doc || use doc ; then
+					for i in `find . -maxdepth 1 -type f -name "*.${1}"`
+					do
+						einfo "Making documentation: $i"
+						texi2dvi -q -c --language=latex $i &> /dev/null || die
 					done
+				fi
 				;;
 			"tfm" | "vf" | "afm")
 				for i in `find . -maxdepth 1 -type f -name "*.${1}"`

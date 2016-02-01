@@ -17,8 +17,7 @@ IUSE="doc source"
 
 RDEPEND="dev-texlive/texlive-latexrecommended
 	>=dev-tex/xcolor-2.11"
-DEPEND="${RDEPEND}
-	app-arch/unzip"
+DEPEND="app-arch/unzip"
 
 S=${WORKDIR}
 
