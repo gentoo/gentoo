@@ -2,16 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Terminal text editor"
-HOMEPAGE="https://www.gnu.org/directory/text/editors/le-editor.html"
-SRC_URI="ftp://ftp.yars.free.net/pub/source/le/le-${PV}.tar.lzma"
+HOMEPAGE="http://lav.yar.ru/programs.html"
+SRC_URI="http://lav.yar.ru/download/le/le-${PV}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
-IUSE=""
+KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="sys-libs/ncurses:0="
 DEPEND="${RDEPEND}
