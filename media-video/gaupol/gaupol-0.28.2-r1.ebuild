@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python{3_3,3_4} )
+PYTHON_COMPAT=( python{3_3,3_4,3_5} )
 
-inherit distutils-r1 fdo-mime gnome2-utils versionator
+inherit distutils-r1 fdo-mime gnome2-utils versionator virtualx
 
 MAJOR_MINOR_VERSION="$(get_version_component_range 1-2)"
 
@@ -17,7 +17,7 @@ SRC_URI="http://download.gna.org/${PN}/${MAJOR_MINOR_VERSION}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="spell"
+IUSE="spell test"
 
 RDEPEND="app-text/iso-codes
 	dev-python/chardet[${PYTHON_USEDEP}]
@@ -29,7 +29,12 @@ RDEPEND="app-text/iso-codes
 	)"
 DEPEND="${RDEPEND}
 	dev-util/intltool
-	sys-devel/gettext"
+	sys-devel/gettext
+	test? (
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-runner[${PYTHON_USEDEP}]
+	)
+"
 
 DOCS=( AUTHORS.md NEWS.md TODO.md README.md README.aeidon.md )
 
@@ -47,4 +52,14 @@ pkg_postinst() {
 		elog "Additionally, spell-checking requires a dictionary, any of"
 		elog "Aspell/Pspell, Ispell, MySpell, Uspell, Hspell or AppleSpell."
 	fi
+}
+
+python_test() {
+	virtx py.test
+}
+
+pkg_postrm() {
+	fdo-mime_desktop_database_update
+	fdo-mime_mime_database_update
+	gnome2_icon_cache_update
 }
