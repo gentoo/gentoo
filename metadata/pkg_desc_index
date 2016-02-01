@@ -9023,7 +9023,7 @@ dev-ruby/tidy_table 0.0.5-r3 0.0.5-r4: Tool to convert an array of struct into a
 dev-ruby/tilt 1.4.1 1.4.1-r2 2.0.1-r1 2.0.2: A thin interface over a Ruby template engines to make their usage as generic as possible
 dev-ruby/timecop 0.7.1 0.7.4 0.8.0: A gem providing 'time travel' and 'time freezing' capabilities
 dev-ruby/timers 4.0.1 4.1.0 4.1.1: Pure Ruby one-shot and periodic timers
-dev-ruby/tins 0.13.1 1.6.0 1.7.0 1.8.0 1.8.1: All the stuff that isn't good enough for a real library
+dev-ruby/tins 0.13.1 1.6.0 1.7.0 1.8.0 1.8.1 1.8.2: All the stuff that isn't good enough for a real library
 dev-ruby/tokyocabinet 1.29.1: Ruby bindings for Tokyo Cabinet
 dev-ruby/toml 0.1.2: A sane configuration format
 dev-ruby/totoridipjp 0.1.0: A ruby binding to use totori.dip.jp Web API
@@ -9047,7 +9047,7 @@ dev-ruby/uuidtools 2.1.4-r1 2.1.5: Simple library to generate UUIDs
 dev-ruby/vcard 0.2.12: Ruby vcard support extracted from Vpim
 dev-ruby/vcr 1.11.3 2.9.3 3.0.0 3.0.1: Records your test suite's HTTP interactions and replay them during test runs
 dev-ruby/vlad 2.6.3 2.6.4 2.6.5: Pragmatic application deployment automation, without mercy
-dev-ruby/warden 1.2.3 1.2.4 1.2.5: General Rack Authentication Framework
+dev-ruby/warden 1.2.3 1.2.4 1.2.5 1.2.6: General Rack Authentication Framework
 dev-ruby/watch 0.1.0: A dirt simple mechanism to tell if files have changed
 dev-ruby/weakling 0.0.4: weakling: a collection of weakref utilities for Ruby
 dev-ruby/web-console 2.2.1-r1: A debugging tool for your Ruby on Rails applications
