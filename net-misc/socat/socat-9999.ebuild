@@ -17,8 +17,8 @@ KEYWORDS=""
 IUSE="ssl readline ipv6 tcpd"
 
 RDEPEND="
-	ssl? ( >=dev-libs/openssl-0.9.6 )
-	readline? ( >=sys-libs/readline-4.1 )
+	ssl? ( dev-libs/openssl:0= )
+	readline? ( sys-libs/readline:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 "
 DEPEND="

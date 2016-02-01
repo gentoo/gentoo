@@ -17,8 +17,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~sparc ~x86 ~amd64-linux ~x8
 IUSE="ssl readline ipv6 tcpd"
 
 DEPEND="
-	ssl? ( >=dev-libs/openssl-0.9.6 )
-	readline? ( >=sys-libs/readline-4.1 )
+	ssl? ( dev-libs/openssl:0= )
+	readline? ( sys-libs/readline:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 "
 RDEPEND="${DEPEND}"
@@ -32,7 +32,6 @@ DOCS=(
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.7.3.0-filan-build.patch
 }
-
 
 src_configure() {
 	filter-flags '-Wno-error*' #293324
