@@ -13804,7 +13804,7 @@ net-firewall/dshieldpy 3.2-r1: Python script to submit firewall logs to dshield.
 net-firewall/ebtables 2.0.10.4 2.0.10.4-r1: Utility that enables basic Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
 net-firewall/ferm 2.2: Command line util for managing firewall rules
 net-firewall/firehol 2.0.3-r1 2.0.4 3.0.1: iptables firewall generator
-net-firewall/firewalld 0.3.10 0.3.13 0.3.14.2: A firewall daemon with D-BUS interface providing a dynamic firewall
+net-firewall/firewalld 0.3.10 0.3.13 0.3.14.2 0.4.0: A firewall daemon with D-BUS interface providing a dynamic firewall
 net-firewall/fwanalog 0.6.4: Script to parse firewall logs and analyze them with Analog
 net-firewall/fwbuilder 5.0.1.3592-r1 5.1.0.3599: A firewall GUI
 net-firewall/fwipsec 0.4.2-r1: Firewall scripts that control iptables, FreeS/WAN, and squid
@@ -16446,7 +16446,7 @@ sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
 sys-apps/systemd 218-r5 226-r2 228-r1 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/systemd-sysv-utils 208 212 215 216 217: sysvinit compatibility symlinks and manpages
-sys-apps/sysvinit 2.88-r4 2.88-r5 2.88-r6 2.88-r7: /sbin/init - parent of all processes
+sys-apps/sysvinit 2.88-r4 2.88-r5 2.88-r6 2.88-r7 2.88-r8: /sbin/init - parent of all processes
 sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
 sys-apps/texinfo 4.13-r2 5.2 6.0: The GNU info program and utilities
 sys-apps/the_silver_searcher 0.29.1 0.31.0: A code-searching tool similar to ack, but faster
