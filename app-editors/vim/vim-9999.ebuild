@@ -18,7 +18,7 @@ else
 fi
 
 DESCRIPTION="Vim, an improved vi-style text editor"
-HOMEPAGE="http://www.vim.org/"
+HOMEPAGE="http://www.vim.org/ https://github.com/vim/vim"
 
 SLOT="0"
 LICENSE="vim"
@@ -34,7 +34,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	>=app-eselect/eselect-vi-1.1
-	>=sys-libs/ncurses-5.2-r2:0
+	>=sys-libs/ncurses-5.2-r2:=
 	nls? ( virtual/libintl )
 	acl? ( kernel_linux? ( sys-apps/acl ) )
 	cscope? ( dev-util/cscope )

@@ -1,40 +1,42 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 VIM_VERSION="7.4"
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 PYTHON_REQ_USE=threads
-inherit eutils vim-doc flag-o-matic fdo-mime versionator bash-completion-r1 prefix python-single-r1
+inherit eutils vim-doc flag-o-matic fdo-mime versionator bash-completion-r1 prefix python-r1
 
 if [[ ${PV} == 9999* ]] ; then
-	inherit mercurial
-	EHG_REPO_URI="https://vim.googlecode.com/hg/"
-	EHG_PROJECT="vim"
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/vim/vim.git"
+	EGIT_CHECKOUT_DIR=${WORKDIR}/vim-${PV}
 else
-	VIM_ORG_PATCHES="vim-patches-${PV}.patch.bz2"
-
-	SRC_URI="ftp://ftp.vim.org/pub/vim/unix/vim-${VIM_VERSION}.tar.bz2
-		https://dev.gentoo.org/~radhermit/vim/${VIM_ORG_PATCHES}"
-	KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> vim-${PV}.tar.gz
+		https://dev.gentoo.org/~radhermit/vim/vim-7.4.827-gentoo-patches.tar.bz2"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 fi
 
 DESCRIPTION="GUI version of the Vim text editor"
-HOMEPAGE="http://www.vim.org/"
+HOMEPAGE="http://www.vim.org/ https://github.com/vim/vim"
 
 SLOT="0"
 LICENSE="vim"
 IUSE="acl aqua cscope debug gnome gtk lua luajit motif neXt netbeans nls perl python racket ruby selinux session tcl"
 REQUIRED_USE="
-	python? ( ${PYTHON_REQUIRED_USE} )
 	luajit? ( lua )
+	python? (
+		|| ( $(python_gen_useflags '*') )
+		?? ( $(python_gen_useflags 'python2*') )
+		?? ( $(python_gen_useflags 'python3*') )
+	)
 "
 
 RDEPEND="
 	~app-editors/vim-core-${PV}
 	>=app-eselect/eselect-vi-1.1
-	>=sys-libs/ncurses-5.2-r2
+	>=sys-libs/ncurses-5.2-r2:0=
 	x11-libs/libXext
 	x11-libs/libXt
 	acl? ( kernel_linux? ( sys-apps/acl ) )
@@ -61,7 +63,7 @@ RDEPEND="
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	racket? ( dev-scheme/racket )
-	ruby? ( || ( dev-lang/ruby:2.1 dev-lang/ruby:2.0 dev-lang/ruby:1.9 dev-lang/ruby:1.8 ) )
+	ruby? ( || ( dev-lang/ruby:2.3 dev-lang/ruby:2.2 dev-lang/ruby:2.1 dev-lang/ruby:2.0 ) )
 	selinux? ( sys-libs/libselinux )
 	session? ( x11-libs/libSM )
 	tcl? ( dev-lang/tcl:0= )
@@ -73,7 +75,7 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 "
 
-S=${WORKDIR}/vim${VIM_VERSION/.}
+S=${WORKDIR}/vim-${PV}
 
 pkg_setup() {
 	# people with broken alphabets run into trouble. bug 82186.
@@ -83,15 +85,14 @@ pkg_setup() {
 	# Gnome sandbox silliness. bug #114475.
 	mkdir -p "${T}"/home
 	export HOME="${T}"/home
-
-	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
 	if [[ ${PV} != 9999* ]] ; then
-		if [[ -f "${WORKDIR}"/${VIM_ORG_PATCHES%.bz2} ]] ; then
-			# Apply any patches available from vim.org for this version
-			epatch "${WORKDIR}"/${VIM_ORG_PATCHES%.bz2}
+		if [[ -d "${WORKDIR}"/patches/ ]]; then
+			# Gentoo patches to fix runtime issues, cross-compile errors, etc
+			EPATCH_SUFFIX="patch" EPATCH_FORCE="yes" \
+				epatch "${WORKDIR}"/patches/
 		fi
 	fi
 
@@ -144,7 +145,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
+	local myconf=()
 
 	# Fix bug 37354: Disallow -funroll-all-loops on amd64
 	# Bug 57859 suggests that we want to do this for all archs
@@ -160,7 +161,7 @@ src_configure() {
 	# (2) Rebuild auto/configure
 	# (3) Notice auto/configure is newer than auto/config.mk
 	# (4) Run ./configure (with wrong args) to remake auto/config.mk
-	sed -i 's/ auto.config.mk:/:/' src/Makefile || die "Makefile sed failed"
+	sed -i 's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
 	rm -f src/auto/configure
 	emake -j1 -C src autoconf
 
@@ -172,30 +173,41 @@ src_configure() {
 
 	use debug && append-flags "-DDEBUG"
 
-	myconf="--with-features=huge --disable-gpm --enable-multibyte"
-	myconf+=" $(use_enable acl)"
-	myconf+=" $(use_enable cscope)"
-	myconf+=" $(use_enable lua luainterp)"
-	myconf+=" $(use_with luajit)"
-	myconf+=" $(use_enable netbeans)"
-	myconf+=" $(use_enable nls)"
-	myconf+=" $(use_enable perl perlinterp)"
-	myconf+=" $(use_enable racket mzschemeinterp)"
-	myconf+=" $(use_enable ruby rubyinterp)"
-	myconf+=" $(use_enable selinux)"
-	myconf+=" $(use_enable session xsmp)"
-	myconf+=" $(use_enable tcl tclinterp)"
+	myconf=(
+		--with-features=huge
+		--disable-gpm
+		--enable-multibyte
+		$(use_enable acl)
+		$(use_enable cscope)
+		$(use_enable lua luainterp)
+		$(use_with luajit)
+		$(use_enable netbeans)
+		$(use_enable nls)
+		$(use_enable perl perlinterp)
+		$(use_enable racket mzschemeinterp)
+		$(use_enable ruby rubyinterp)
+		$(use_enable selinux)
+		$(use_enable session xsmp)
+		$(use_enable tcl tclinterp)
+	)
 
 	if use python ; then
-		if [[ ${EPYTHON} == python3* ]] ; then
-			myconf+=" --enable-python3interp"
-			export vi_cv_path_python3="${PYTHON}"
-		else
-			myconf+=" --enable-pythoninterp"
-			export vi_cv_path_python="${PYTHON}"
-		fi
+		py_add_interp() {
+			local v
+
+			[[ ${EPYTHON} == python3* ]] && v=3
+			myconf+=(
+				--enable-python${v}interp
+				vi_cv_path_python${v}="${PYTHON}"
+			)
+		}
+
+		python_foreach_impl py_add_interp
 	else
-		myconf+=" --disable-pythoninterp --disable-python3interp"
+		myconf+=(
+			--disable-pythoninterp
+			--disable-python3interp
+		)
 	fi
 
 	# --with-features=huge forces on cscope even if we --disable it. We need
@@ -215,25 +227,28 @@ src_configure() {
 	echo ; echo
 	if use aqua ; then
 		einfo "Building gvim with the Carbon GUI"
-		myconf+=" --enable-darwin --enable-gui=carbon"
+		myconf+=(
+			--enable-darwin
+			--enable-gui=carbon
+		)
 	elif use gtk ; then
-		myconf+=" --enable-gtk2-check"
+		myconf+=( --enable-gtk2-check )
 		if use gnome ; then
 			einfo "Building gvim with the Gnome 2 GUI"
-			myconf+=" --enable-gui=gnome2"
+			myconf+=( --enable-gui=gnome2 )
 		else
 			einfo "Building gvim with the gtk+-2 GUI"
-			myconf+=" --enable-gui=gtk2"
+			myconf+=( --enable-gui=gtk2 )
 		fi
 	elif use motif ; then
 		einfo "Building gvim with the MOTIF GUI"
-		myconf+=" --enable-gui=motif"
+		myconf+=( --enable-gui=motif )
 	elif use neXt ; then
 		einfo "Building gvim with the neXtaw GUI"
-		myconf+=" --enable-gui=nextaw"
+		myconf+=( --enable-gui=nextaw )
 	else
 		einfo "Building gvim with the Athena GUI"
-		myconf+=" --enable-gui=athena"
+		myconf+=( --enable-gui=athena )
 	fi
 	echo ; echo
 
@@ -241,7 +256,7 @@ src_configure() {
 	export ac_cv_prog_STRIP="$(type -P true ) faking strip"
 
 	# Keep Gentoo Prefix env contained within the EPREFIX
-	use prefix && myconf+=" --without-local-dir"
+	use prefix && myconf+=( --without-local-dir )
 
 	if [[ ${CHOST} == *-interix* ]]; then
 		# avoid finding of this function, to avoid having to patch either
@@ -252,8 +267,9 @@ src_configure() {
 
 	econf \
 		--with-modified-by=Gentoo-${PVR} \
-		--with-vim-name=gvim --with-x \
-		${myconf}
+		--with-vim-name=gvim \
+		--with-x \
+		"${myconf[@]}"
 }
 
 src_compile() {
@@ -299,7 +315,6 @@ src_test() {
 # of these links are "owned" by the vim ebuild when it is installed,
 # but they might be good for gvim as well (see bug 45828)
 update_vim_symlinks() {
-	has "${EAPI:-0}" 0 1 2 && use !prefix && EROOT="${ROOT}"
 	local f syms
 	syms="vimdiff rvim rview"
 	einfo "Calling eselect vi update..."
@@ -353,6 +368,7 @@ src_install() {
 
 	newmenu "${FILESDIR}"/gvim.desktop-r2 gvim.desktop
 	doicon "${FILESDIR}"/gvim.xpm
+	doicon -s scalable "${FILESDIR}"/gvim.svg
 
 	# bash completion script, bug #79018.
 	newbashcomp "${FILESDIR}"/${PN}-completion ${PN}
@@ -368,19 +384,6 @@ pkg_postinst() {
 
 	# Update fdo mime stuff, bug #78394
 	fdo-mime_mime_database_update
-
-	if [[ -z ${REPLACING_VERSIONS} ]] ; then
-		echo
-		elog "Vim 7 includes an integrated spell checker. You need to install"
-		elog "word list files before you can use it. There are ebuilds for"
-		elog "some of these named app-vim/vim-spell-*. If your language of"
-		elog "choice is not included, please consult vim-spell.eclass for"
-		elog "instructions on how to make a package."
-		echo
-		ewarn "Note that the English word lists are no longer installed by"
-		ewarn "default."
-		echo
-	fi
 
 	# Make convenience symlinks
 	update_vim_symlinks
