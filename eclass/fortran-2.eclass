@@ -287,7 +287,7 @@ fortran-2_pkg_setup() {
 }
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) EXPORT_FUNCTIONS pkg_setup ;;
+	4|5|6) EXPORT_FUNCTIONS pkg_setup ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
