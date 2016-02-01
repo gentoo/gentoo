@@ -23,7 +23,7 @@ IUSE="doc test"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-	>=dev-python/setuptools-19.6.[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-19.6.2[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
