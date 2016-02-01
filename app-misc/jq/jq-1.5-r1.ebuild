@@ -15,10 +15,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x64-macos"
 IUSE="oniguruma static-libs test"
 
-DEPEND="sys-devel/bison
+DEPEND=">=sys-devel/bison-3.0
 	sys-devel/flex
 	oniguruma? ( dev-libs/oniguruma[static-libs?] )
 	test? ( dev-util/valgrind )"
+RDEPEND="!static-libs? (
+		oniguruma? ( dev-libs/oniguruma[static-libs?] )
+	)"
 
 DOCS=( AUTHORS README )
 
