@@ -64,14 +64,14 @@ inherit eutils flag-o-matic multilib
 # inheriting.
 if [[ -z ${WX_CONFIG} ]]; then
 	if [[ -n ${WX_GTK_VER} ]]; then
-		for wxtoolkit in mac gtk2 base; do
+		for _wxtoolkit in mac gtk2 base; do
 			# newer versions don't have a seperate debug profile
-			for wxdebug in xxx release- debug-; do
-				wxconf="${wxtoolkit}-unicode-${wxdebug/xxx/}${WX_GTK_VER}"
+			for _wxdebug in xxx release- debug-; do
+				_wxconf="${_wxtoolkit}-unicode-${_wxdebug/xxx/}${WX_GTK_VER}"
 
-				[[ -f ${EPREFIX}/usr/$(get_libdir)/wx/config/${wxconf} ]] || continue
+				[[ -f ${EPREFIX}/usr/$(get_libdir)/wx/config/${_wxconf} ]] || continue
 
-				WX_CONFIG="${EPREFIX}/usr/$(get_libdir)/wx/config/${wxconf}"
+				WX_CONFIG="${EPREFIX}/usr/$(get_libdir)/wx/config/${_wxconf}"
 				WX_ECLASS_CONFIG="${WX_CONFIG}"
 				break
 			done
@@ -80,6 +80,9 @@ if [[ -z ${WX_CONFIG} ]]; then
 		[[ -n ${WX_CONFIG} ]] && export WX_CONFIG WX_ECLASS_CONFIG
 	fi
 fi
+unset _wxtoolkit
+unset _wxdebug
+unset _wxconf
 
 # @FUNCTION:    need-wxwidgets
 # @USAGE:       <profile>
