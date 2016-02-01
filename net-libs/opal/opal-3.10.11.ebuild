@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/opalvoip/${P}.tar.bz2
 
 LICENSE="MPL-1.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
 IUSE="capi celt debug doc +dtmf examples fax ffmpeg h224 h281 h323 iax ilbc
 ipv6 ivr ixj java ldap lid +plugins sbc sip sipim +sound srtp ssl static-libs
 stats swig theora +video vpb vxml wav x264 x264-static xml"
