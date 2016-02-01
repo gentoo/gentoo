@@ -1456,7 +1456,7 @@ app-i18n/fcitx-sunpinyin 0.4.0 0.4.1: Sunpinyin module for fcitx
 app-i18n/fcitx-table-extra 0.3.3 0.3.6 0.3.7: Extra tables for Fcitx, including Boshiamy, Zhengma, Cangjie and Quick
 app-i18n/fcitx-unikey 0.2.0 0.2.4 0.2.5: Vietnamese Unikey module for Fcitx
 app-i18n/freewnn 1.1.1_alpha21-r1 1.1.1_alpha22: Network-Extensible Kana-to-Kanji Conversion System
-app-i18n/ibus 1.5.10 1.5.11 1.5.12: Intelligent Input Bus for Linux / Unix OS
+app-i18n/ibus 1.5.5 1.5.8-r1 1.5.9-r1 1.5.10 1.5.11 1.5.12: Intelligent Input Bus for Linux / Unix OS
 app-i18n/ibus-anthy 1.2.7-r1 1.5.4: Japanese input method Anthy IMEngine for IBus Framework
 app-i18n/ibus-cangjie 2.1 2.2 2.3 2.4: The IBus engine for users of the Cangjie and Quick input methods
 app-i18n/ibus-chewing 1.4.7: The Chewing IMEngine for IBus Framework
@@ -4416,7 +4416,7 @@ dev-lang/tinycobol 0.65.9: COBOL for linux
 dev-lang/tk 8.5.17 8.5.17-r100 8.6.4-r1: Tk Widget Set
 dev-lang/tuprolog 2.4.0_rc5 2.5.0 2.6.0 2.7.0 2.7.2 2.9.0: tuProlog is a light-weight Prolog for Internet applications and infrastructures
 dev-lang/ucblogo 5.5 5.5-r1: a reflective, functional programming language
-dev-lang/vala 0.20.1 0.22.1 0.24.0-r1 0.26.2 0.28.1 0.30.0 0.30.1: Compiler for the GObject type system
+dev-lang/vala 0.22.1 0.26.2 0.28.1 0.30.1: Compiler for the GObject type system
 dev-lang/whitespace 0.3 0.4: Whitespace, an esoteric programming language
 dev-lang/xsb 3.3.6 3.3.7 3.5.0: XSB is a logic programming and deductive database system
 dev-lang/yap 6.2.2 6.3.2 6.3.3: YAP is a high-performance Prolog compiler
@@ -10742,7 +10742,7 @@ gnome-base/libgtop 2.30.0 2.32.0: A library that provides top functionality to a
 gnome-base/librsvg 2.40.11 2.40.12 2.40.13: Scalable Vector Graphics (SVG) rendering library
 gnome-base/nautilus 3.16.2 3.18.2 3.18.2-r1 3.18.3 3.18.4 3.18.5: A file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r4: ORBit2 is a high-performance CORBA ORB
-gnome-extra/activity-log-manager 0.9.7 0.9.7-r1: GUI which lets you easily control what gets logged by Zeitgeist
+gnome-extra/activity-log-manager 0.9.7-r1: GUI which lets you easily control what gets logged by Zeitgeist
 gnome-extra/assogiate 0.2.1 0.2.1-r1: assoGiate is an editor of the file types database for GNOME
 gnome-extra/at-spi 2.12.0 2.14.0: The Gnome Accessibility Toolkit
 gnome-extra/avant-window-navigator 0.4.2: A dock-like bar which sits at the bottom of the screen
@@ -10800,7 +10800,7 @@ gnome-extra/gnome-web-photo 0.10.6: A tool to generate images and thumbnails fro
 gnome-extra/gpointing-device-settings 1.5.1-r3: A GTK+ based configuration utility for the synaptics driver
 gnome-extra/gtkhtml 4.8.5 4.10.0: Lightweight HTML rendering/printing/editing engine
 gnome-extra/gucharmap 3.0.1-r200 3.16.2 3.18.2: Unicode character map viewer and library
-gnome-extra/libgda 5.2.2 5.2.4 5.2.4-r1: GNOME database access library
+gnome-extra/libgda 5.2.4 5.2.4-r1: GNOME database access library
 gnome-extra/libgsf 1.14.33 1.14.34: The GNOME Structured File Library
 gnome-extra/mousetweaks 3.12.0: Mouse accessibility enhancements for the GNOME desktop
 gnome-extra/nautilus-actions 3.2.3 3.2.4: Configures programs to be launched when files are selected in Nautilus
@@ -11445,7 +11445,7 @@ lxde-base/lxmenu-data 0.1.2 0.1.4: Provides files needed for LXDE application me
 lxde-base/lxpanel 0.7.0-r1 0.8.1: Lightweight X11 desktop panel for LXDE
 lxde-base/lxpolkit 0.1.0-r1 0.1.0-r2: A simple PolicyKit authentication agent
 lxde-base/lxrandr 0.1.2: LXDE GUI interface to RandR extention
-lxde-base/lxsession 0.4.6.1 0.4.9.2 0.4.9.2-r1 0.4.9.2-r2 0.4.9.2-r3: LXDE session manager (lite version)
+lxde-base/lxsession 0.4.9.2-r3: LXDE session manager (lite version)
 lxde-base/lxsession-edit 0.2.0: LXDE session autostart editor
 lxde-base/lxshortcut 0.1.2: LXDE tool to edit desktop entry files
 lxde-base/lxtask 0.1.4 0.1.4-r1 0.1.5 0.1.6: LXDE Task manager
@@ -16923,7 +16923,7 @@ sys-fs/reiserfs-defrag 0.2.1 0.2.2: Small defragmentation tool for reiserfs
 sys-fs/reiserfsprogs 3.6.21-r1 3.6.23 3.6.24: Reiserfs Utilities
 sys-fs/s3backer 1.3.7: FUSE-based single file backing store via Amazon S3
 sys-fs/s3fs 1.74 1.78: Amazon mounting S3 via fuse
-sys-fs/s3ql 1.19 2.11 2.11.1 2.12 2.14: A full-featured file system for online data storage
+sys-fs/s3ql 1.19 2.11 2.11.1 2.12 2.14 2.14-r1: A full-featured file system for online data storage
 sys-fs/safecopy 1.7: Data recovery tool to fault-tolerantly extract data from damaged (io-errors) devices or files
 sys-fs/scan-ffs 1.2: Recovers lost disklabel
 sys-fs/shake 0.999 1.0: defragmenter that runs in userspace while the system is used
@@ -18824,7 +18824,7 @@ xfce-extra/xfce4-systemload-plugin 1.1.1-r1 1.1.2: System load plug-in for Xfce 
 xfce-extra/xfce4-taskmanager 1.0.1 1.1.0: Task Manager
 xfce-extra/xfce4-time-out-plugin 1.0.1 1.0.2: A panel plug-in to take periodical breaks from the computer
 xfce-extra/xfce4-timer-plugin 1.5.0 1.6.0: A simple timer plug-in for the Xfce desktop environment
-xfce-extra/xfce4-vala 4.10.3 4.10.3-r1: Vala bindings for the Xfce desktop environment
+xfce-extra/xfce4-vala 4.10.3-r1 4.10.3-r2: Vala bindings for the Xfce desktop environment
 xfce-extra/xfce4-verve-plugin 1.0.0 1.0.1 1.1.0: A comfortable command line plugin for the Xfce panel
 xfce-extra/xfce4-volumed 0.1.13: Daemon to control volume up/down and mute keys
 xfce-extra/xfce4-volumed-pulse 0.2.0: Daemon to control volume up/down and mute keys for pulseaudio
