@@ -29,6 +29,11 @@ DOCS=(
 	BUGREPORTS CHANGES DEVELOPMENT EXAMPLES FAQ FILES PORTING README SECURITY
 )
 
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-1.7.3.0-filan-build.patch
+}
+
+
 src_configure() {
 	filter-flags '-Wno-error*' #293324
 	tc-export AR
