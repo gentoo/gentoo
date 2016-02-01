@@ -15,9 +15,7 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND="
-	sys-apps/gptfdisk
-	sys-fs/e2fsprogs"
+RDEPEND="	sys-apps/gptfdisk"
 
 src_install() {
 	exeinto /usr/sbin/
