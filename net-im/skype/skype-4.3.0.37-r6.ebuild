@@ -24,7 +24,7 @@ RDEPEND="
 	dev-qt/qtcore:4[abi_x86_32(-)]
 	dev-qt/qtdbus:4[abi_x86_32(-)]
 	dev-qt/qtgui:4[accessibility,abi_x86_32(-)]
-	dev-qt/qtwebkit:4[abi_x86_32(-)]
+	dev-qt/qtwebkit:4[-exceptions,abi_x86_32(-)]
 	media-libs/alsa-lib[abi_x86_32(-)]
 	x11-libs/libX11[abi_x86_32(-)]
 	x11-libs/libXext[abi_x86_32(-)]
