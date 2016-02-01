@@ -49,7 +49,7 @@ DOCS=( AUTHORS NEWS README )
 PATCHES=(
 	"${FILESDIR}/${P}-syslog.patch"
 	"${FILESDIR}/${P}-examples.patch"
-	"${FILESDIR}/${P}-conf.patch"
+	"${FILESDIR}/${P}-conf-r1.patch"
 )
 
 pkg_setup() {
@@ -60,18 +60,18 @@ pkg_setup() {
 
 	## define contents for README.gentoo
 	if use systemd; then
-		DOC_CONTENTS='SkyldAV provides a systemd service.'$'\n'
+		DOC_CONTENTS='Skyld AV provides a systemd service.'$'\n'
 		DOC_CONTENTS+='Please edit the systemd service config file to match your needs:'$'\n'
 		DOC_CONTENTS+='/etc/systemd/system/skyldav.service.d/00gentoo.conf'$'\n'
 		DOC_CONTENTS+='# systemctl daemon-reload'$'\n'
 		DOC_CONTENTS+='# systemctl restart skyldav.service'$'\n'
-		DOC_CONTENTS+='Example for enabling the SkyldAV service:'$'\n'
+		DOC_CONTENTS+='Example for enabling the Skyld AV service:'$'\n'
 		DOC_CONTENTS+='# systemctl enable skyldav.service'$'\n'
 	else
-		DOC_CONTENTS='SkyldAV provides an init script for OpenRC.'$'\n'
+		DOC_CONTENTS='Skyld AV provides an init script for OpenRC.'$'\n'
 		DOC_CONTENTS+='Please edit the init script config file to match your needs:'$'\n'
 		DOC_CONTENTS+='/etc/conf.d/skyldav'$'\n'
-		DOC_CONTENTS+='Example for enabling the SkyldAV init script:'$'\n'
+		DOC_CONTENTS+='Example for enabling the Skyld AV init script:'$'\n'
 		DOC_CONTENTS+='# rc-update add skyldav default'$'\n'
 	fi
 }
