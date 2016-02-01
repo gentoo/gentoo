@@ -3,28 +3,25 @@
 # $Id$
 
 EAPI=5
-inherit autotools eutils flag-o-matic git-r3 toolchain-funcs
+inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="Multipurpose relay (SOcket CAT)"
 HOMEPAGE="http://www.dest-unreach.org/socat/"
 MY_P=${P/_beta/-b}
 S="${WORKDIR}/${MY_P}"
-EGIT_REPO_URI="git://repo.or.cz/${PN}.git"
+SRC_URI="http://www.dest-unreach.org/socat/download/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="ssl readline ipv6 tcpd"
 
-RDEPEND="
+DEPEND="
 	ssl? ( dev-libs/openssl:0= )
 	readline? ( sys-libs/readline:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 "
-DEPEND="
-	${RDEPEND}
-	app-text/yodl
-"
+RDEPEND="${DEPEND}"
 
 RESTRICT="test"
 
@@ -33,7 +30,7 @@ DOCS=(
 )
 
 src_prepare() {
-	eautoreconf
+	epatch "${FILESDIR}"/${PN}-1.7.3.0-filan-build.patch
 }
 
 src_configure() {
