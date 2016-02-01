@@ -128,7 +128,7 @@ latex-package_src_doinstall() {
 				do
 					einfo "Making documentation: $i"
 					texi2dvi -q -c --language=latex $i &> /dev/null || die
-					done
+				done
 				;;
 			"tfm" | "vf" | "afm")
 				for i in `find . -maxdepth 1 -type f -name "*.${1}"`
