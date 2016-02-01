@@ -29,7 +29,7 @@
 #      DEPEND="wxwidgets? ( x11-libs/wxGTK:2.8[X?] )"
 #
 #      src_configure() {
-#          if use wxwidgets; then 
+#          if use wxwidgets; then
 #              WX_GTK_VER="2.8"
 #              if use X; then
 #                  need-wxwidgets unicode
@@ -106,7 +106,7 @@ need-wxwidgets() {
 		echo
 		die
 	fi
-	
+
 	if [[ ${WX_GTK_VER} != 2.8 && ${WX_GTK_VER} != 2.9 && ${WX_GTK_VER} != 3.0 ]]; then
 		eerror "Invalid WX_GTK_VER: ${WX_GTK_VER} - must be set to a valid wxGTK SLOT."
 		echo
