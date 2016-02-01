@@ -1,0 +1,11 @@
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+# Config file for /etc/init.d/skyldav
+
+# Options to pass to the skyldav daemon.
+# Option -d for daemonizing is always passed!
+# See the skyldav(1) man page for more info.
+
+#SKYLDAV_OPTS="-m 1"

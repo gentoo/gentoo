@@ -1,0 +1,26 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+SKYLDAV_BIN="/usr/sbin/skyldav"
+SKYLDAV_OPTS="${SKYLDAV_OPTS:--m 2}"
+SKYLDAV_CONFIGFILE="/etc/skyldav.conf"
+SKYLDAV_PIDFILE_DIR="${SKYLDAV_PIDFILE_DIR:-/var/run/${RC_SVCNAME}}"
+SKYLDAV_PIDFILE="${SKYLDAV_PIDFILE:-${SKYLDAV_PIDFILE_DIR}/${RC_SVCNAME}.pid}"
+
+name="${SKYLDAV_BIN##*/}"
+command="${SKYLDAV_BIN}"
+command_args="-d ${SKYLDAV_OPTS}"
+pidfile="${SKYLDAV_PIDFILE}"
+description="Skyld AV is an anti-virus on-access scanner based upon Clam AV and fanotify"
+required_files="${SKYLDAV_CONFIG}"
+
+depend() {
+	use logger
+	need localmount
+}
+
+start_pre() {
+	checkpath -d -m 0755 -o root:root "${SKYLDAV_PIDFILE_DIR}"
+}
