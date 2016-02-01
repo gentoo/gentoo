@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-MY_VALA_VERSION=0.20
+MY_VALA_VERSION=0.30
 VALA_MIN_API_VERSION=${MY_VALA_VERSION}
 VALA_MAX_API_VERSION=${MY_VALA_VERSION}
 VALA_USE_DEPEND=vapigen

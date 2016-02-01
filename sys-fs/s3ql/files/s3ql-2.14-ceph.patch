@@ -1,0 +1,75 @@
+https://bitbucket.org/nikratio/s3ql/issues/190/sq3l-should-not-rely-on-xmlns-declarations
+https://bitbucket.org/nikratio/s3ql/pull-requests/5/s3c-be-more-lenient-about-xml-namespaces
+
+--- s3ql-2.14/src/s3ql/backends/s3c.py	2015-07-20 19:41:07.000000000 -0700
++++ s3ql-2.14/src/s3ql/backends/s3c.py	2016-01-21 22:41:33.000000000 -0800
+@@ -126,6 +126,15 @@
+         conn.timeout = int(self.options.get('tcp-timeout', 20))
+         return conn
+ 
++    @staticmethod
++    def _tag_xmlns_uri(elem):
++        '''Extract the XML namespace (xmlns) URI from an element'''
++        if elem.tag[0] == '{':
++            uri, ignore, tag = elem.tag[1:].partition("}")
++        else:
++            uri = None
++        return uri
++
+     # This method is also used implicitly for the retry handling of
+     # `gs.Backend._get_access_token`. When modifying this method, do not forget
+     # to check if this makes it unsuitable for use by `_get_access_token` (in
+@@ -215,7 +224,6 @@
+         keys_remaining = True
+         marker = self.prefix + start_after
+         prefix = self.prefix + prefix
+-        ns_p = self.xml_ns_prefix
+ 
+         while keys_remaining:
+             log.debug('requesting with marker=%s', marker)
+@@ -232,16 +240,27 @@
+             try:
+                 itree = iter(ElementTree.iterparse(self.conn, events=("start", "end")))
+                 (event, root) = next(itree)
++                
++                root_xmlns_uri = self._tag_xmlns_uri(root)
++                if root_xmlns_uri is None:
++                    root_xmlns_prefix = ''
++                else:
++                    # Validate the XML namespace
++                    root_xmlns_prefix = '{%s}' % (root_xmlns_uri, )
++                    if root_xmlns_prefix != self.xml_ns_prefix:
++                        log.error('Unexpected server reply to list operation:\n%s',
++                                  self._dump_response(resp, body=None))
++                        raise RuntimeError('List response has %s as root tag, unknown namespace' % root.tag)
+ 
+                 for (event, el) in itree:
+                     if event != 'end':
+                         continue
+ 
+-                    if el.tag == ns_p + 'IsTruncated':
++                    if el.tag == root_xmlns_prefix + 'IsTruncated':
+                         keys_remaining = (el.text == 'true')
+ 
+-                    elif el.tag == ns_p + 'Contents':
+-                        marker = el.findtext(ns_p + 'Key')
++                    elif el.tag == root_xmlns_prefix + 'Contents':
++                        marker = el.findtext(root_xmlns_prefix + 'Key')
+                         yield marker[len(self.prefix):]
+                         root.clear()
+ 
+@@ -404,9 +423,12 @@
+             return
+         body = self.conn.readall()
+         root = self._parse_xml_response(resp, body)
+-        if root.tag == self.xml_ns_prefix + 'CopyObjectResult':
++
++        # Some S3 implemenentations do not have a namespace on
++        # CopyObjectResult.
++        if root.tag in [self.xml_ns_prefix + 'CopyObjectResult', 'CopyObjectResult']:
+             return
+-        elif root.tag == 'Error':
++        elif root.tag in [self.xml_ns_prefix + 'Error', 'Error']:
+             raise get_S3Error(root.findtext('Code'), root.findtext('Message'),
+                               resp.headers)
+         else:

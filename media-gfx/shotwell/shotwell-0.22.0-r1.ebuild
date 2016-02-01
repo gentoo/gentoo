@@ -5,8 +5,8 @@
 EAPI=5
 
 GCONF_DEBUG="no"
-VALA_MIN_API_VERSION="0.26"
-VALA_MAX_API_VERSION="0.26"
+VALA_MIN_API_VERSION="0.30"
+VALA_MAX_API_VERSION="0.30"
 
 inherit eutils gnome2 multilib toolchain-funcs vala versionator
 
