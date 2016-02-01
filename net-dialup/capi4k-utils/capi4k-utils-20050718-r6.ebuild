@@ -24,7 +24,7 @@ SRC_URI="ftp://ftp.in-berlin.de/pub/capi4linux/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0/3.0.4"
-KEYWORDS="~alpha amd64 ppc x86"
+KEYWORDS="alpha amd64 ppc x86"
 IUSE="fax +pppd rcapid"
 
 COMMON_DEP="pppd? ( net-dialup/ppp:= )"
