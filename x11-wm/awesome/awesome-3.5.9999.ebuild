@@ -20,29 +20,29 @@ IUSE="dbus doc elibc_FreeBSD gnome"
 
 COMMON_DEPEND="
 	>=dev-lang/lua-5.1:0
-	dev-libs/glib:2
 	>=dev-libs/libxdg-basedir-1
 	>=dev-lua/lgi-0.7
-	x11-libs/cairo[xcb]
-	x11-libs/gdk-pixbuf:2
 	>=x11-libs/libxcb-1.6
-	x11-libs/pango[introspection]
-	x11-libs/startup-notification
 	>=x11-libs/xcb-util-0.3.8
 	>=x11-libs/xcb-util-keysyms-0.3.4
 	>=x11-libs/xcb-util-wm-0.3.8
-	x11-libs/xcb-util-cursor
+	dev-libs/glib:2
+	x11-libs/cairo[xcb]
+	x11-libs/gdk-pixbuf:2
 	x11-libs/libX11
+	x11-libs/pango[introspection]
+	x11-libs/startup-notification
+	x11-libs/xcb-util-cursor
 	dbus? ( >=sys-apps/dbus-1 )
 	elibc_FreeBSD? ( dev-libs/libexecinfo )"
 
 # graphicsmagick's 'convert -channel' has no Alpha support, bug #352282
 DEPEND="${COMMON_DEPEND}
+	>=x11-proto/xproto-7.0.15
 	app-text/asciidoc
 	app-text/xmlto
-	virtual/pkgconfig
 	media-gfx/imagemagick[png]
-	>=x11-proto/xproto-7.0.15
+	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
 		media-gfx/graphviz
