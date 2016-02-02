@@ -18,8 +18,11 @@
     <email>wired@gentoo.org</email>
     <name>Alex Alexander</name>
   </maintainer>
-<maintainer type="project">
+  <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">awesomeWM/awesome</remote-id>
+  </upstream>
 </pkgmetadata>
