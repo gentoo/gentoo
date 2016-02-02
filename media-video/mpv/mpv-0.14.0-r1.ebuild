@@ -23,7 +23,7 @@ else
 	inherit git-r3
 fi
 SRC_URI+=" https://waf.io/waf-${WAF_PV}"
-DOCS+=( README.md etc/example.conf etc/input.conf )
+DOCS+=( README.md )
 
 # See Copyright in source tarball and bug #506946. Waf is BSD, libmpv is ISC.
 LICENSE="GPL-2+ BSD ISC"
