@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>Laurent Vivier</email>
-		<name>laurent@lamzi.com</name>
+		<email>laurent@lamzi.com</email>
+		<name>Laurent Vivier</name>
 		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<maintainer type="project">
