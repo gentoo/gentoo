@@ -88,15 +88,10 @@ src_compile() {
 }
 
 src_install() {
+	use doc && local HTML_DOCS=( "${CMAKE_BUILD_DIR}/doc/html/." )
+
 	cmake-utils_src_install
 
-	if use doc ; then
-		(
-			cd "${CMAKE_BUILD_DIR}"/doc
-			mv html doxygen
-			dohtml -r doxygen || die
-		)
-	fi
 	rm -rf "${ED}"/usr/share/doc/${PN} || die "Cleanup of dupe docs failed"
 
 	exeinto /etc/X11/Sessions
