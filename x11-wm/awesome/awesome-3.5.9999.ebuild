@@ -80,11 +80,11 @@ src_configure() {
 }
 
 src_compile() {
-	local myargs="all"
+	local mytargets="all"
 
-	use doc && myargs="${myargs} doc"
+	use doc && mytargets="${mytargets} doc"
 
-	cmake-utils_src_compile ${myargs}
+	cmake-utils_src_compile ${mytargets}
 }
 
 src_install() {
