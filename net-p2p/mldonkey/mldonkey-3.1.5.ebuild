@@ -18,6 +18,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~sparc ~x86 ~x86-fbsd"
 
 RDEPEND="dev-lang/perl
+	dev-ml/camlp4:=
 	guionly? ( >=gnome-base/librsvg-2.4.0
 			>=dev-ml/lablgtk-2.6 )
 	gtk? ( >=gnome-base/librsvg-2.4.0
