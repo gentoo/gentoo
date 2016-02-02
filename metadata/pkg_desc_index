@@ -4771,7 +4771,7 @@ dev-libs/libxr 1.0: Cross-platform XML-RPC client/server library written in C
 dev-libs/libxslt 1.1.28-r4 1.1.28-r5: XSLT libraries and tools
 dev-libs/libyaml 0.1.6: YAML 1.1 parser and emitter written in C
 dev-libs/libzeitgeist 0.3.18: Client library to interact with zeitgeist
-dev-libs/libzip 1.0.1: Library for manipulating zip archives
+dev-libs/libzip 1.0.1 1.1: Library for manipulating zip archives
 dev-libs/link-grammar 4.8.6: A Syntactic English parser
 dev-libs/lockdev 1.0.3.1.2-r2 1.0.3.1.2-r3: Library for locking devices
 dev-libs/log4c 1.2.1 1.2.4: Log4c is a library of C for flexible logging to files, syslog and other destinations
@@ -10117,7 +10117,7 @@ games-emulation/nestra 0.66-r2: NES emulation for Linux/x86
 games-emulation/openmsx 0.9.1: MSX emulator that aims for perfection
 games-emulation/pcsx2 1.4.0 9999: A PlayStation 2 emulator
 games-emulation/pcsxr 1.9.94 1.9.94-r1: PCSX-Reloaded: a fork of PCSX, the discontinued Playstation emulator
-games-emulation/ppsspp 1.1.0-r1 1.1.1-r1 9999-r1: A PSP emulator written in C++.
+games-emulation/ppsspp 1.1.0-r1 1.1.1-r1 9999: A PSP emulator written in C++.
 games-emulation/raine 0.51.9: R A I N E M680x0 Arcade Emulation
 games-emulation/sdlmame 0.148_p1-r1 0.149 0.168: Multiple Arcade Machine Emulator + Multi Emulator Super System (MESS)
 games-emulation/sdlmametools 0.148_p1 0.149: Set of development tools shared between sdlmame and sdlmess
@@ -17963,7 +17963,7 @@ x11-libs/mx 1.4.7-r1 1.4.7-r2: A widget toolkit using Clutter
 x11-libs/neXtaw 0.15.1-r1: Athena Widgets with N*XTSTEP appearance
 x11-libs/pango 1.36.8 1.36.8-r1 1.38.1: Internationalized text layout and rendering library
 x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
-x11-libs/pixman 0.32.8 0.33.4 0.33.6 9999: Low-level pixel manipulation routines
+x11-libs/pixman 0.32.8 0.33.4 0.33.6 0.34.0 9999: Low-level pixel manipulation routines
 x11-libs/qscintilla 2.8.4-r1 2.9 2.9.1: A Qt port of Neil Hodgson's Scintilla C++ editor class
 x11-libs/qtermwidget 0.6.0: Qt terminal emulator widget
 x11-libs/qtscriptgenerator 0.2.0: Tool for generating Qt bindings for Qt Script
