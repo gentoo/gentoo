@@ -95,18 +95,18 @@ src_install() {
 	rm -rf "${ED}"/usr/share/doc/${PN} || die "Cleanup of dupe docs failed"
 
 	exeinto /etc/X11/Sessions
-	newexe "${FILESDIR}"/${PN}-session ${PN} || die
+	newexe "${FILESDIR}"/${PN}-session ${PN}
 
 	# GNOME-based awesome
 	if use gnome ; then
 		# GNOME session
 		insinto /usr/share/gnome-session/sessions
-		newins "${FILESDIR}/${PN}-gnome-3.session" "${PN}-gnome.session" || die
+		newins "${FILESDIR}/${PN}-gnome-3.session" "${PN}-gnome.session"
 		# Application launcher
-		domenu "${FILESDIR}/${PN}-gnome.desktop" || die
+		domenu "${FILESDIR}/${PN}-gnome.desktop"
 		# X Session
 		insinto /usr/share/xsessions/
-		doins "${FILESDIR}/${PN}-gnome-xsession.desktop" || die
+		doins "${FILESDIR}/${PN}-gnome-xsession.desktop"
 	fi
 }
 
