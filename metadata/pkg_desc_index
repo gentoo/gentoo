@@ -122,7 +122,7 @@ app-admin/integrit 4.0 4.1-r1: file integrity verification program
 app-admin/jinit 0.1.12-r1: An alternative to sysvinit which supports the need(8) concept
 app-admin/kedpm 0.4.0-r2: Ked Password Manager helps to manage large amounts of passwords and related information
 app-admin/keepass 2.30 2.31: A free, open source, light-weight and easy-to-use password manager
-app-admin/keepassx 0.4.3 0.4.4 2.0 2.0.1: Qt password manager compatible with its Win32 and Pocket PC versions
+app-admin/keepassx 0.4.3 0.4.4 2.0 2.0.1 2.0.2: Qt password manager compatible with its Win32 and Pocket PC versions
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 2.7 2.8 3.0: A command line interface to KeePass database files
 app-admin/lastpass 3.2.16: Online password manager and form filler that makes web browsing easier and more secure
@@ -492,7 +492,7 @@ app-cdr/xcdroast 0.98_alpha16 0.98_alpha16-r1: Lightweight cdrtools front-end fo
 app-cdr/xdvdfs-tools 2.1-r1: Tools for manipulating Xbox ISO images
 app-cdr/xfburn 0.5.2 0.5.4: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
-app-crypt/acme 0.2.0 0.3.0 9999: An implementation of the ACME protocol
+app-crypt/acme 0.3.0 9999: An implementation of the ACME protocol
 app-crypt/acr38u 1.7.11-r1 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
 app-crypt/aescrypt 3.0.6b: Advanced file encryption using AES
 app-crypt/aespipe 2.3e 2.4c-r1 2.4d: Encrypts data from stdin to stdout
@@ -548,7 +548,7 @@ app-crypt/keybase 0.8.13 0.8.18 0.8.22 0.8.23 0.8.24 0.8.25 1.0.8.0 1.0.9.0: Cli
 app-crypt/keylookup 2.2 2.2-r9999: A tool to fetch PGP keys from keyservers
 app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
 app-crypt/kstart 4.1: Modified versions of kinit for refreshing kerberos tickets automatically
-app-crypt/letsencrypt 0.2.0 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/letsencrypt 0.3.0 9999: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/letsencrypt-apache 9999: Apache plugin for letsencrypt
 app-crypt/libscrypt 1.19 1.20: Shared library to impliment the scrypt algorithm. See http://www.tarsnap.com/scrypt.html.
 app-crypt/libsecret 0.18.3 0.18.4: GObject library for accessing the freedesktop.org Secret Service API
@@ -14042,7 +14042,7 @@ net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.16.4.1 3.18.2.1 3.18.3: GNOME framework for accessing online accounts
 net-libs/gnutls 3.3.17.1 3.3.18 3.3.19 3.3.19-r1 3.3.20 3.4.5 3.4.6 3.4.7 3.4.7-r1 3.4.8: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
-net-libs/gsoap 2.7.17 2.7.17-r1 2.7.17-r2 2.8.23 2.8.26 2.8.27: A cross-platform open source C and C++ SDK for SOAP/XML Web services
+net-libs/gsoap 2.7.17 2.7.17-r2 2.8.23 2.8.27 2.8.28: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 0.14.11 0.14.12.1 0.14.13: A GObject-based API for handling resource discovery and announcement over SSDP
 net-libs/gtk-vnc 0.5.3 0.5.4: VNC viewer widget for GTK
 net-libs/gupnp 0.20.13 0.20.14 0.20.15: An object-oriented framework for creating UPnP devs and control points
