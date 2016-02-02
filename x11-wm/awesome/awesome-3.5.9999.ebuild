@@ -60,7 +60,7 @@ src_prepare() {
 	epatch "${FILESDIR}/3.5/${PN}-fix-convert-path.patch"
 
 	# bug #507604
-	epatch "${FILESDIR}/3.5/${PN}-3.5.5-util.lua-xdg-icons-fix.patch"
+	epatch "${FILESDIR}/3.5/${PN}-fix-icon-finding-in-awful.util.patch"
 	# bug #509658
 	epatch "${FILESDIR}/3.5/${PN}-respect-user-cflags.patch"
 
