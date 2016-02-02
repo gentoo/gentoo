@@ -4318,7 +4318,7 @@ dev-lang/clojure 1.5.1 1.6.0 1.7.0: Clojure is a dynamic programming language th
 dev-lang/closure-compiler-bin 20120305 20121212 20130227 20130411 20150126: JavaScript optimizing compiler
 dev-lang/coffee-script 1.9.3-r1 1.10.0: A little language that compiles into javascript
 dev-lang/confluence 0.10.6: Functional programming language for reactive system design (digital logic, hard-real-time software)
-dev-lang/crystal 0.7.7 0.8.0: The Crystal Programming Language
+dev-lang/crystal 0.7.7 0.8.0 0.11.1: The Crystal Programming Language
 dev-lang/dmd-bin 1.016 2.008-r1: Digital Mars D Compiler
 dev-lang/ekopath 6.0.619_p20151213 6.0.637_p20151231 6.0.661_p20160124: PathScale EKOPath Compiler Suite
 dev-lang/elixir 1.0.5 1.1.1: Elixir programming language
@@ -4987,7 +4987,7 @@ dev-ml/camldbm 1.0: OCaml binding to the NDBM/GDBM Unix databases
 dev-ml/camlidl 1.05-r1: CamlIDL is a stub code generator for using C/C++ libraries from O'Caml
 dev-ml/camlimages 4.0.1 4.1.1 4.1.2 4.2.1: An image manipulation library for ocaml
 dev-ml/camlp4 4.02.1_p3: System for writing extensible parsers for programming languages
-dev-ml/camlp5 6.14: A preprocessor-pretty-printer of ocaml
+dev-ml/camlp5 6.14 6.15: A preprocessor-pretty-printer of ocaml
 dev-ml/camlpdf 2.1.1: OCaml library for reading, writing, and modifying PDF files
 dev-ml/camlzip 1.05: Compressed file access ML library (ZIP, GZIP and JAR)
 dev-ml/camomile 0.8.4 0.8.5: Camomile is a comprehensive Unicode library for ocaml
