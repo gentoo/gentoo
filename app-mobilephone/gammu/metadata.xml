@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<use>
-  <flag name="irda">Enables infrared support</flag>
-</use>
+	<use>
+		<flag name="irda">Enables infrared support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">gammu/gammu</remote-id>
+	</upstream>
 </pkgmetadata>
