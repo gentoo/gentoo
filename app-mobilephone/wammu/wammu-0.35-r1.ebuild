@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI="3"
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_DEPEND="2"
 
-inherit distutils-r1
+inherit distutils
 
 DESCRIPTION="Front-end for gammu to access mobile phones easily"
 HOMEPAGE="http://www.wammu.eu/"
@@ -18,8 +18,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="bluetooth gnome"
 
 RDEPEND=">=app-mobilephone/gammu-1.25.0[python] <app-mobilephone/gammu-1.34.0[python]
-	>=dev-python/wxpython-2.8[${PYTHON_USEDEP}]
-	bluetooth? ( dev-python/pybluez[${PYTHON_USEDEP}]
+	>=dev-python/wxpython-2.8
+	bluetooth? ( dev-python/pybluez
 		gnome? ( net-wireless/gnome-bluetooth )
 	)"
 DEPEND="${RDEPEND}"
@@ -29,8 +29,10 @@ DEPEND="${RDEPEND}"
 MY_AVAILABLE_LINGUAS=" af bg ca cs da de el es et fi fr gl he hu id it ko nl pl pt_BR ru sk sv zh_CN zh_TW"
 IUSE="${IUSE} ${MY_AVAILABLE_LINGUAS// / linguas_}"
 
-# Required to source locale content out of the box
-DISTUTILS_IN_SOURCE_BUILD=1
+pkg_setup() {
+	python_set_active_version 2
+	python_pkg_setup
+}
 
 src_prepare() {
 	local lang support_linguas=no
@@ -49,16 +51,16 @@ src_prepare() {
 		done
 	fi
 
-	distutils-r1_src_prepare
+	python_convert_shebangs -r 2 .
 }
 
 src_compile() {
 	# SKIPWXCHECK: else 'import wx' results in
 	# Xlib: connection to ":0.0" refused by server
-	SKIPWXCHECK=yes distutils-r1_src_compile
+	SKIPWXCHECK=yes distutils_src_compile
 }
 
 src_install() {
-	local DOCS="AUTHORS FAQ"
-	SKIPWXCHECK=yes distutils-r1_src_install
+	DOCS="AUTHORS FAQ"
+	SKIPWXCHECK=yes distutils_src_install
 }
