@@ -38,7 +38,7 @@ COMMON_DEPEND="
 
 # graphicsmagick's 'convert -channel' has no Alpha support, bug #352282
 DEPEND="${COMMON_DEPEND}
-	>=app-text/asciidoc-8.4.5
+	app-text/asciidoc
 	app-text/xmlto
 	virtual/pkgconfig
 	media-gfx/imagemagick[png]
