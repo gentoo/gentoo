@@ -5,6 +5,11 @@
 		<email>proaudio@gentoo.org</email>
 		<name>Gentoo ProAudio Project</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>suhr@i2pmail.org</email>
+		<name>Сухарик</name>
+		<description>Proxied maintainer</description>
+	</maintainer>
 	<use>
 		<flag name="hid">Enable HID controller support</flag>
 		<flag name="shout">Enable broadcasting support via <pkg>media-libs/libshout</pkg></flag>
