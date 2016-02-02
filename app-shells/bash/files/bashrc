@@ -49,18 +49,12 @@ case ${TERM} in
 		;;
 esac
 
-use_color=false
-#BSD#@# BSD doesn't typically come with dircolors so we need
-#BSD#@# to hardcode some terminals in here.
-#BSD#@case ${TERM} in
-#BSD#@	[aEkx]term*|rxvt*|gnome*|konsole*|screen|cons25) use_color=true;;
-#BSD#@esac
-
 # Set colorful PS1 only on colorful terminals.
 # dircolors --print-database uses its own built-in database
 # instead of using /etc/DIR_COLORS.  Try to use the external file
 # first to take advantage of user additions.  Use internal bash
 # globbing instead of external grep binary.
+use_color=false
 safe_term=${TERM//[^[:alnum:]]/?}   # sanitize TERM
 match_lhs=""
 [[ -f ~/.dir_colors   ]] && match_lhs="${match_lhs}$(<~/.dir_colors)"
@@ -79,7 +73,15 @@ if ${use_color} ; then
 			eval $(dircolors -b /etc/DIR_COLORS)
 		fi
 	fi
+else
+	# Some systems (e.g. BSD & embedded) don't typically come with
+	# dircolors so we need to hardcode some terminals in here.
+	case ${TERM} in
+	[aEkx]term*|rxvt*|gnome*|konsole*|screen|cons25) use_color=true;;
+	esac
+fi
 
+if ${use_color} ; then
 	if [[ ${EUID} == 0 ]] ; then
 		PS1+='\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
 	else
