@@ -7064,12 +7064,13 @@ dev-python/flask-whooshalchemy 0.55a 0.56: Whoosh extension to Flask/SQLAlchemy
 dev-python/flask-wtf 0.10.2 0.10.3 0.11 0.12: Simple integration of Flask and WTForms, including CSRF, file upload and Recaptcha integration
 dev-python/flask-xml-rpc 0.1.2-r1: XML-RPC support for Flask applications
 dev-python/flexx 0.2: Pure Python toolkit for creating GUI's using web technology
+dev-python/flipflop 1.0: A FastCGI/WSGI gateway
 dev-python/flup 1.0.2-r1: Random assortment of WSGI servers
 dev-python/fonttools 2.4 2.5: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 dev-python/foolscap 0.7.0 0.8.0: RPC protocol for Twisted
 dev-python/formencode 1.2.4 1.3.0-r2: HTML form validation, generation, and conversion package
 dev-python/fpconst 0.7.3-r1: Python Module for handling IEEE 754 floating point special values
-dev-python/freezegun 0.3.5: Let your Python tests travel through time
+dev-python/freezegun 0.3.6: Let your Python tests travel through time
 dev-python/frozen-flask 0.11-r1 0.12: Freezes a Flask application into a set of static files
 dev-python/fudge 0.9.6-r1 1.0.3-r2 1.1.0: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6: Recursive descent parsing library based on functional combinators
@@ -7213,7 +7214,7 @@ dev-python/kazoo 1.3.1 2.0 2.2.1: A high-level Python library that makes it easi
 dev-python/keepassx 0.0.3 0.1.0: Python API and CLI for KeePassX
 dev-python/keyczar 0.71c 0.715: Toolkit for safe and simple cryptography
 dev-python/keyring 1.0 1.5 1.5-r1 1.6.1 3.1 3.3 3.7 4.0 8.2: Provides access to the system keyring service
-dev-python/keystonemiddleware 1.5.0 1.5.2 2.2.0 2.3.1 2.3.2: A middleware for the OpenStack Keystone API
+dev-python/keystonemiddleware 1.5.0 1.5.2 2.2.0 2.3.1 2.3.1-r1 2.3.2 2.3.2-r1: A middleware for the OpenStack Keystone API
 dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
 dev-python/kivy-garden 0.1.1: Kivys Garden tool to manage flowers
 dev-python/kiwi 1.9.39.2 1.9.40: Kiwi is a pure Python framework and set of enhanced PyGTK widgets
@@ -7829,7 +7830,7 @@ dev-python/requests 2.7.0 2.8.0 2.8.1 2.9.1-r2: HTTP library for human beings
 dev-python/requests-cache 0.4.9 0.4.10: Persistent cache for requests library
 dev-python/requests-mock 0.5.1 0.6.0: Mock out responses from the requests package
 dev-python/requests-oauthlib 0.4.1: This project provides first-class OAuth library support for Requests
-dev-python/responses 0.4.0 0.5.0: A utility for mocking out the Python Requests library
+dev-python/responses 0.5.1: A utility for mocking out the Python Requests library
 dev-python/restkit 4.2.2: A HTTP ressource kit for Python
 dev-python/restructuredtext-lint 0.12.2: Created out of frustration, it sucks to find out your reST is invalid after uploading it.
 dev-python/retry-decorator 1.0.0: Decorator for retrying when exceptions occur
@@ -9502,7 +9503,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 1.625.3 1.644 1.645: Extensible continuous integration server
+dev-util/jenkins-bin 1.625.3 1.642.1 1.644 1.645 1.646: Extensible continuous integration server
 dev-util/jif 3.1_rc1: JIF is an IDE for the creation of text adventures based on Graham Nelson's Inform standard
 dev-util/kbuild 0.1.9998_pre20120806 0.1.9998_pre20131130 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.5: A graphical debugger interface
@@ -16488,7 +16489,7 @@ sys-auth/fingerprint-gui 1.07: Use Fingerprint Devices with Linux
 sys-auth/fprint_demo 0.4: a simple GTK+ application to demonstrate and test libfprint's capabilities
 sys-auth/fprintd 0.2.0-r1 0.4.1 0.5.0 0.5.1 0.6.0: D-Bus service to access fingerprint readers
 sys-auth/icmpdn 0.4: ICMP Domain Name utilities & NSS backend
-sys-auth/keystone 8.0.1 2015.1.9999 2015.2.9999: The Openstack authentication, authorization, and service catalog
+sys-auth/keystone 8.0.1 8.0.1-r1 2015.1.9999 2015.2.9999: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.4.0 0.5.0-r1 0.5.1-r1 0.6.0-r1: library to add support for consumer fingerprint readers
 sys-auth/libnss-cache 0.1-r1 0.10.1 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-mysql 1.5_p20060915-r2 1.5_p20060915-r3: NSS MySQL Library
