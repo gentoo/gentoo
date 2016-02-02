@@ -82,9 +82,8 @@ src_configure() {
 src_compile() {
 	local myargs="all"
 
-	if use doc ; then
-		myargs="${myargs} doc"
-	fi
+	use doc && myargs="${myargs} doc"
+
 	cmake-utils_src_compile ${myargs}
 }
 
