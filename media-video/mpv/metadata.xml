@@ -13,9 +13,6 @@
 		<name>Coacher</name>
 		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
-	<maintainer type="person">
-		<email>nikoli@gmx.us</email>
-	</maintainer>
 	<maintainer type="project">
 		<email>media-video@gentoo.org</email>
 		<name>Gentoo Video project</name>
