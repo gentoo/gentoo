@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>nikoli@gmx.us</email>
-		<name>Nikoli</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>maksbotan@gentoo.org</email>
 		<name>Maxim Koltsov</name>
 	</maintainer>
