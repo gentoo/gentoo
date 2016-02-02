@@ -61,10 +61,6 @@ src_prepare() {
 	# bug #509658
 	epatch "${FILESDIR}/3.5/${PN}-3.5.5-cflag-cleanup.patch"
 
-	# bug #571544
-	# Merged upstream
-	#epatch "${FILESDIR}/${PN}-3.5.6-fix-multi-instances-focus.patch"
-
 	epatch_user
 }
 
