@@ -58,7 +58,7 @@ src_prepare() {
 	# bug #507604
 	epatch "${FILESDIR}/3.5/${PN}-3.5.5-util.lua-xdg-icons-fix.patch"
 	# bug #509658
-	epatch "${FILESDIR}/3.5/${PN}-3.5.5-cflag-cleanup.patch"
+	epatch "${FILESDIR}/3.5/${PN}-respect-user-cflags.patch"
 
 	# bug #571544
 	epatch "${FILESDIR}/3.5/${P}-fix-multi-instances-focus.patch"
