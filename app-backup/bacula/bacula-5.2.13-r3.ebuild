@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,9 +22,9 @@ KEYWORDS=" ~amd64 ~ppc ~sparc ~x86"
 IUSE="acl bacula-clientonly bacula-nodir bacula-nosd examples ipv6 logwatch mysql postgres python qt4 readline +sqlite ssl static tcpd vim-syntax X"
 
 DEPEND="
-	dev-libs/gmp
+	dev-libs/gmp:0
 	!bacula-clientonly? (
-		postgres? ( dev-db/postgresql[threads] )
+		postgres? ( dev-db/postgresql:*[threads] )
 		mysql? ( virtual/mysql )
 		sqlite? ( dev-db/sqlite:3 )
 		!bacula-nodir? ( virtual/mta )
@@ -35,20 +35,20 @@ DEPEND="
 	)
 	logwatch? ( sys-apps/logwatch )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
-	readline? ( >=sys-libs/readline-4.1 )
+	readline? ( sys-libs/readline:0 )
 	static? (
 		acl? ( virtual/acl[static-libs] )
 		sys-libs/zlib[static-libs]
 		dev-libs/lzo[static-libs]
-		sys-libs/ncurses[static-libs]
-		ssl? ( dev-libs/openssl[static-libs] )
+		sys-libs/ncurses:=[static-libs]
+		ssl? ( dev-libs/openssl:0[static-libs] )
 	)
 	!static? (
 		acl? ( virtual/acl )
 		sys-libs/zlib
 		dev-libs/lzo
-		sys-libs/ncurses
-		ssl? ( dev-libs/openssl )
+		sys-libs/ncurses:=
+		ssl? ( dev-libs/openssl:0 )
 	)
 	python? ( ${PYTHON_DEPS} )
 	"

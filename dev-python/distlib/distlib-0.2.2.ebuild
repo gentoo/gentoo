@@ -20,7 +20,6 @@ IUSE=""
 
 PATCHES=(
 	"${FILESDIR}"/${P}-unbundle.patch
-	"${FILESDIR}"/${P}-online.patch
 )
 
 python_prepare_all() {
