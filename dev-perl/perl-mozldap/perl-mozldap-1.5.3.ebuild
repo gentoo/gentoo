@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit perl-module
 
@@ -15,10 +15,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=dev-libs/nspr-4.0.1
+RDEPEND="
+	>=dev-libs/nspr-4.0.1
 	>=dev-libs/nss-3.11.6
 	net-nds/openldap"
-DEPEND="${RDEPEND}
+
+DEPEND="
+	${RDEPEND}
 	sys-apps/sed"
 
 src_configure() {
