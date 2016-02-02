@@ -23,7 +23,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-IUSE="+pcap +wireshark-plugins"
+IUSE="+pcap static-libs +wireshark-plugins"
 
 RDEPEND="
 	pcap? ( net-libs/libpcap )
@@ -74,6 +74,7 @@ src_configure() {
 		-DPACKAGE_MANAGER=true
 		$(cmake-utils_use pcap PCAPDUMP)
 		$(cmake-utils_use pcap USE_PCAP)
+		$(cmake-utils_use static-libs BUILD_STATIC)
 	)
 	cmake-utils_src_configure
 
