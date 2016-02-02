@@ -52,7 +52,7 @@ DOCS="AUTHORS BUGS PATCHES README STYLE"
 
 src_prepare() {
 	# bug #408025
-	epatch "${FILESDIR}/3.5/${PN}-3.5_rc1-convert-path.patch"
+	epatch "${FILESDIR}/3.5/${PN}-fix-convert-path.patch"
 	epatch "${FILESDIR}/3.5/${PN}-xsession.patch"
 
 	# bug #507604
