@@ -31,6 +31,7 @@ HOMEPAGE="https://www.qt.io/"
 LICENSE="|| ( LGPL-2.1 LGPL-3 ) FDL-1.3"
 
 QT5_MINOR_VERSION=$(get_version_component_range 2)
+readonly QT5_MINOR_VERSION
 
 SLOT="5"
 
@@ -66,6 +67,7 @@ case ${PV} in
 		S=${WORKDIR}/${MY_P}
 		;;
 esac
+readonly QT5_BUILD_TYPE
 
 EGIT_REPO_URI=(
 	"git://code.qt.io/qt/${QT5_MODULE}.git"
@@ -405,6 +407,10 @@ qt5_prepare_env() {
 	QT5_EXAMPLESDIR=${QT5_DATADIR}/examples
 	QT5_TESTSDIR=${QT5_DATADIR}/tests
 	QT5_SYSCONFDIR=${EPREFIX}/etc/xdg
+	readonly QT5_PREFIX QT5_HEADERDIR QT5_LIBDIR QT5_ARCHDATADIR \
+		QT5_BINDIR QT5_PLUGINDIR QT5_LIBEXECDIR QT5_IMPORTDIR \
+		QT5_QMLDIR QT5_DATADIR QT5_DOCDIR QT5_TRANSLATIONDIR \
+		QT5_EXAMPLESDIR QT5_TESTSDIR QT5_SYSCONFDIR
 
 	if [[ ${QT5_MODULE} == qtbase ]]; then
 		# see mkspecs/features/qt_config.prf
