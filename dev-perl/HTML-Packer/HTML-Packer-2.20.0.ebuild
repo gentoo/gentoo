@@ -1,10 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-MODULE_AUTHOR=NEVESENIN
-MODULE_VERSION=1.004001
+EAPI=6
+
+DIST_AUTHOR=LEEJO
+DIST_VERSION=2.02
 inherit perl-module
 
 DESCRIPTION='Another HTML code cleaner'
@@ -16,8 +17,6 @@ RDEPEND="
 	>=dev-perl/Regexp-RegGrp-1.1.1_rc
 "
 DEPEND="${RDEPEND}
-	>=virtual/perl-ExtUtils-MakeMaker-6.560.0
+	>=virtual/perl-ExtUtils-MakeMaker-6.590.0
 	test? ( virtual/perl-Test-Simple )
 "
-
-SRC_TEST="do"
