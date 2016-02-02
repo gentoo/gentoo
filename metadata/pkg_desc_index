@@ -1940,7 +1940,7 @@ app-mobilephone/cobex 0.2.13: small implementation of Obex for phones using the 
 app-mobilephone/dfu-util 0.7 9999: implements the Host (PC) side of the USB DFU (Device Firmware Upgrade) protocol
 app-mobilephone/esms 0.9.5: A small console program to send SMS messages to Spanish cellular phones
 app-mobilephone/freesmee 0.83 9999: Tool for sending SMS and sending/receiving Freesmee-Message-Service
-app-mobilephone/gammu 1.33.0 1.33.0-r1: A tool to handle your cellular phone
+app-mobilephone/gammu 1.33.0 1.33.0-r1 1.36.8: A tool to handle your cellular phone
 app-mobilephone/ganyremote 6.0.1 6.3.3: Gnome frontend to Anyremote
 app-mobilephone/gnocky 0.0.7: GTK-2 version of gnokii
 app-mobilephone/gnokii 0.6.31 9999: user space driver and tools for use with mobile phones
@@ -1965,7 +1965,7 @@ app-mobilephone/smssend 3.4: Universal SMS sender
 app-mobilephone/smstools 3.1.15-r1 3.1.15-r2: Send and receive short messages through GSM modems
 app-mobilephone/sobexsrv 1.0.1: Scripting/Secure OBEX Server (for BlueZ Linux)
 app-mobilephone/vmoconv 1.0-r1: A tool that converts Siemens phones VMO and VMI audio files to gsm and wav
-app-mobilephone/wammu 0.35 0.36-r1: Front-end for gammu to access mobile phones easily
+app-mobilephone/wammu 0.35 0.35-r1 0.36-r1: Front-end for gammu to access mobile phones easily
 app-mobilephone/yaps 0.96-r5: Yet Another Pager Software (optional with CAPI support)
 app-office/QtBitcoinTrader 1.10.01 9999: Mt.Gox and BTC-e Bitcoin Trading Client
 app-office/abiword 3.0.1: Fully featured yet light and fast cross platform word processor
@@ -7709,6 +7709,7 @@ dev-python/python-exconsole 0.1.5: Emergency/postmortem Python console
 dev-python/python-fastcgi 1.1-r1: Interface to OpenMarket's FastCGI C Library/SDK
 dev-python/python-fastimport 0.9.2-r1: Library for parsing the fastimport VCS serialization format
 dev-python/python-fchksum 1.7.1-r1: Python module to find the checksum of files
+dev-python/python-gammu 2.5: Python bindings for Gammu
 dev-python/python-geoclue 0.1.0-r1: Geoclue python module
 dev-python/python-gflags 2.0: Google's Python argument parsing library
 dev-python/python-glanceclient 0.13.1 0.14.2 0.17.0 0.17.1 0.17.2 0.18.0 0.19.0 0.19.0-r1 1.0.0 1.1.0: A client for the OpenStack Glance API
