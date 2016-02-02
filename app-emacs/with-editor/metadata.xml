@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  This library makes it possible to reliably use the Emacsclient as
+  the $EDITOR of child processes. It makes sure that they know how to
+  call home. For remote processes a substitute is provided, which
+  communicates with Emacs on standard output/input instead of using a
+  socket as the Emacsclient does.
+</longdescription>
+<upstream>
+  <remote-id type="github">magit/with-editor</remote-id>
+</upstream>
+</pkgmetadata>
