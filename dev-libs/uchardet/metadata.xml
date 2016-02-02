@@ -6,10 +6,6 @@
 		<name>Coacher</name>
 		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
-	<maintainer type="person">
-		<email>rion4ik@gmail.com</email>
-		<name>Rion</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
