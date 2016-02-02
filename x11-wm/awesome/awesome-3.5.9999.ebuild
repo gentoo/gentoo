@@ -29,6 +29,7 @@ COMMON_DEPEND="
 	x11-libs/pango[introspection]
 	x11-libs/startup-notification
 	>=x11-libs/xcb-util-0.3.8
+	>=x11-libs/xcb-util-keysyms-0.3.4
 	x11-libs/xcb-util-cursor
 	x11-libs/libX11
 	dbus? ( >=sys-apps/dbus-1 )
