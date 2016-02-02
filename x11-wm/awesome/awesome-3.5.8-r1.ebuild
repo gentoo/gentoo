@@ -1,0 +1,129 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+EAPI="5"
+
+CMAKE_MIN_VERSION="2.8"
+
+inherit cmake-utils eutils
+
+DESCRIPTION="A dynamic floating and tiling window manager"
+HOMEPAGE="https://awesome.naquadah.org/"
+SRC_URI="https://awesome.naquadah.org/download/${P}.tar.xz"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
+IUSE="dbus doc elibc_FreeBSD gnome"
+
+COMMON_DEPEND="
+	>=dev-lang/lua-5.1:0
+	>=dev-libs/libxdg-basedir-1
+	>=dev-lua/lgi-0.7
+	>=x11-libs/libxcb-1.6
+	>=x11-libs/xcb-util-0.3.8
+	>=x11-libs/xcb-util-keysyms-0.3.4
+	>=x11-libs/xcb-util-wm-0.3.8
+	dev-libs/glib:2
+	x11-libs/cairo[xcb]
+	x11-libs/gdk-pixbuf:2
+	x11-libs/libX11
+	x11-libs/pango[introspection]
+	x11-libs/startup-notification
+	x11-libs/xcb-util-cursor
+	dbus? ( >=sys-apps/dbus-1 )
+	elibc_FreeBSD? ( dev-libs/libexecinfo )"
+
+# graphicsmagick's 'convert -channel' has no Alpha support, bug #352282
+DEPEND="${COMMON_DEPEND}
+	>=x11-proto/xproto-7.0.15
+	app-text/asciidoc
+	app-text/xmlto
+	media-gfx/imagemagick[png]
+	virtual/pkgconfig
+	doc? (
+		app-doc/doxygen
+		media-gfx/graphviz
+	)"
+
+RDEPEND="${COMMON_DEPEND}"
+
+DOCS=( AUTHORS BUGS PATCHES README STYLE )
+
+PATCHES=(
+	"${FILESDIR}/3.5/${PN}-fix-convert-path.patch"
+	"${FILESDIR}/3.5/${PN}-fix-icon-finding-in-awful.util.patch"
+	"${FILESDIR}/3.5/${PN}-respect-user-cflags.patch"
+)
+
+src_prepare() {
+	# Build system interferes with our choice of DOCS.
+	sed -i -e '/^install.*AWE_DOC_FILES/d' CMakeLists.txt || die
+
+	cmake-utils_src_prepare
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DSYSCONFDIR="${EPREFIX}"/etc
+		-DAWESOME_DOC_PATH="${EPREFIX}/usr/share/doc/${PF}"
+		-DWITH_DBUS="$(usex dbus)"
+		-DGENERATE_DOC="$(usex doc)"
+	)
+
+	cmake-utils_src_configure
+}
+
+src_compile() {
+	local mytargets="all"
+
+	use doc && mytargets="${mytargets} doc"
+
+	cmake-utils_src_compile ${mytargets}
+}
+
+src_install() {
+	use doc && local HTML_DOCS=( "${CMAKE_BUILD_DIR}/doc/html/." )
+
+	cmake-utils_src_install
+
+	exeinto /etc/X11/Sessions
+	newexe "${FILESDIR}"/${PN}-session ${PN}
+
+	# GNOME-based awesome
+	if use gnome ; then
+		# GNOME session
+		insinto /usr/share/gnome-session/sessions
+		newins "${FILESDIR}/${PN}-gnome-3.session" "${PN}-gnome.session"
+		# Application launcher
+		domenu "${FILESDIR}/${PN}-gnome.desktop"
+		# X Session
+		insinto /usr/share/xsessions/
+		doins "${FILESDIR}/${PN}-gnome-xsession.desktop"
+	fi
+}
+
+pkg_postinst() {
+	# bug #447308
+	if use gnome; then
+		elog
+		elog "You have enabled the gnome USE flag."
+		elog "Please note that quitting awesome won't kill your gnome session."
+		elog "To really quit the session, you should bind your quit key"
+		elog "to the following command:"
+		elog "  gnome-session-quit --logout"
+		elog "For more info visit"
+		elog "  https://bugs.gentoo.org/show_bug.cgi?id=447308"
+	fi
+
+	# bug #440724
+	elog
+	elog "If you are having issues with Java application windows being"
+	elog "completely blank, try installing"
+	elog "  x11-misc/wmname"
+	elog "and setting the WM name to LG3D."
+	elog "For more info visit"
+	elog "  https://bugs.gentoo.org/show_bug.cgi?id=440724"
+	elog
+}
