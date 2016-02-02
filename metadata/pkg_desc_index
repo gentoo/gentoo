@@ -492,7 +492,7 @@ app-cdr/xcdroast 0.98_alpha16 0.98_alpha16-r1: Lightweight cdrtools front-end fo
 app-cdr/xdvdfs-tools 2.1-r1: Tools for manipulating Xbox ISO images
 app-cdr/xfburn 0.5.2 0.5.4: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
-app-crypt/acme 0.2.0 9999: An implementation of the ACME protocol
+app-crypt/acme 0.2.0 0.3.0 9999: An implementation of the ACME protocol
 app-crypt/acr38u 1.7.11-r1 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
 app-crypt/aescrypt 3.0.6b: Advanced file encryption using AES
 app-crypt/aespipe 2.3e 2.4c-r1 2.4d: Encrypts data from stdin to stdout
@@ -1320,7 +1320,7 @@ app-emulation/simh 3.9.0-r1: a simulator for historical computers such as Vax, P
 app-emulation/ski 1.3.2 1.3.2-r1: ia64 instruction set simulator
 app-emulation/softgun 0.21 0.22: ARM software emulator
 app-emulation/spectemu 0.99.3 0.99.3-r1: 48k ZX Spectrum Emulator
-app-emulation/spice 0.12.6-r2: SPICE server
+app-emulation/spice 0.12.6-r2 0.13.0: SPICE server
 app-emulation/spice-protocol 0.12.10: Headers defining the SPICE protocol
 app-emulation/spice-vdagent 0.16.0: SPICE VD Linux Guest Agent
 app-emulation/spim 8.0-r1: MIPS Simulator
@@ -13211,7 +13211,7 @@ media-tv/v4l-dvb-saa716x 0.0.1_p20140322 0.0.1_p20141109 0.0.1_p20141109-r1 0.0.
 media-tv/v4l-utils 1.0.0 1.6.0 1.6.2: Separate utilities ebuild from upstream v4l-utils package
 media-tv/w_scan 20121111 20130331 20140118 20140727 20141122: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies and modulations
 media-tv/wis-go7007 0.9.8-r3: Linux drivers for go7007 chipsets (Plextor ConvertX PVR)
-media-tv/xawtv 3.95-r2 3.95-r3: Small suite of video4linux related software
+media-tv/xawtv 3.95-r3: Small suite of video4linux related software
 media-tv/xbmc 11.0 12.1-r1 12.2-r1 12.3 13.0_p2 13.1 13.2 13.2-r1 9999: Stub ebuild to migrate people to media-tv/kodi
 media-tv/xmltv 0.5.57 0.5.67: Set of utilities to manage TV listings stored in the XMLTV format
 media-video/2mandvd 1.8.5: The successor of ManDVD
