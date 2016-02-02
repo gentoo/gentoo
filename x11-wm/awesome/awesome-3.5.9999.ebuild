@@ -71,6 +71,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DSYSCONFDIR="${EPREFIX}"/etc
+		-DAWESOME_DOC_PATH="${EPREFIX}/usr/share/doc/${PF}"
 		$(cmake-utils_use_with dbus DBUS)
 		$(cmake-utils_use doc GENERATE_DOC)
 	)
