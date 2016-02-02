@@ -85,7 +85,7 @@ src_compile() {
 	if use doc ; then
 		myargs="${myargs} doc"
 	fi
-	cmake-utils_src_make ${myargs}
+	cmake-utils_src_compile ${myargs}
 }
 
 src_install() {
