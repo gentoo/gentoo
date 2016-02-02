@@ -27,11 +27,11 @@ COMMON_DEPEND="
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/libxcb-1.6
 	>=x11-libs/pango-1.19.3[introspection]
-	>=x11-libs/startup-notification-0.10_p20110426
+	x11-libs/startup-notification
 	>=x11-libs/xcb-util-0.3.8
 	x11-libs/xcb-util-cursor
 	x11-libs/libXcursor
-	>=x11-libs/libX11-1.3.99.901
+	x11-libs/libX11
 	dbus? ( >=sys-apps/dbus-1 )
 	elibc_FreeBSD? ( dev-libs/libexecinfo )"
 
