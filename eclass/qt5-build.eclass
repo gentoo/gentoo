@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -143,7 +143,8 @@ qt5-build_src_unpack() {
 	fi
 
 	if [[ ${PN} == qtwebkit ]]; then
-		eshopts_push -s extglob
+		local prev_shopt=$(shopt -p extglob)
+		shopt -s extglob
 		if is-flagq '-g?(gdb)?([1-9])'; then
 			ewarn
 			ewarn "You have enabled debug info (probably have -g or -ggdb in your CFLAGS/CXXFLAGS)."
@@ -152,7 +153,7 @@ qt5-build_src_unpack() {
 			ewarn "For more info check out https://bugs.gentoo.org/307861"
 			ewarn
 		fi
-		eshopts_pop
+		${prev_shopt}
 	fi
 
 	case ${QT5_BUILD_TYPE} in
@@ -757,12 +758,13 @@ qt5_regenerate_global_qconfigs() {
 
 		# generate list of QT_CONFIG entries from the existing list,
 		# appending QCONFIG_ADD and excluding QCONFIG_REMOVE
-		eshopts_push -s nullglob
+		local prev_shopt=$(shopt -p nullglob)
+		shopt -s nullglob
 		for x in "${ROOT%/}${QT5_ARCHDATADIR}"/mkspecs/gentoo/*-qconfig.pri; do
 			qconfig_add+=" $(sed -n 's/^QCONFIG_ADD=\s*//p' "${x}")"
 			qconfig_remove+=" $(sed -n 's/^QCONFIG_REMOVE=\s*//p' "${x}")"
 		done
-		eshopts_pop
+		${prev_shopt}
 		for x in ${qt_config} ${qconfig_add}; do
 			if ! has "${x}" ${new_qt_config} ${qconfig_remove}; then
 				new_qt_config+=" ${x}"

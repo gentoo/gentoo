@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@
 # This eclass is written to ease the maintenance of live ebuilds
 # of software written in the Go programming language.
 
-inherit eutils golang-base
+inherit golang-base
 
 case "${EAPI:-0}" in
 	5)
@@ -70,7 +70,10 @@ _golang-vcs_env_setup() {
 	local distdir=${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}
 	: ${EGO_STORE_DIR:=${distdir}/go-src}
 
-	[[ -n ${EVCS_UMASK} ]] && eumask_push $EVCS_UMASK
+	if [[ -n ${EVCS_UMASK} ]]; then
+		local prev_umask=$(umask)
+		umask $EVCS_UMASK
+	fi
 
 	if [[ ! -d ${EGO_STORE_DIR} ]]; then
 		(
@@ -81,7 +84,7 @@ _golang-vcs_env_setup() {
 
 	addwrite "${EGO_STORE_DIR}"
 
-	[[ -n ${EVCS_UMASK} ]] && eumask_pop
+	[[ -n ${EVCS_UMASK} ]] && umask ${prev_umask}
 	mkdir -p "${WORKDIR}/${P}/src" ||
 		die "${ECLASS}: unable to create ${WORKDIR}/${P}"
 	return 0
@@ -97,7 +100,10 @@ _golang-vcs_fetch() {
 	ego_pn_check
 
 	if [[ -z ${EVCS_OFFLINE} ]]; then
-		[[ -n ${EVCS_UMASK} ]] && eumask_push ${EVCS_UMASK}
+		if [[ -n ${EVCS_UMASK} ]]; then
+			local prev_umask=$(umask)
+			umask ${EVCS_UMASK}
+		fi
 
 		set -- env GOPATH="${EGO_STORE_DIR}" go get -d -t -u -v -x "${EGO_PN}"
 		echo "$@"
@@ -107,7 +113,7 @@ _golang-vcs_fetch() {
 		# This is being discussed in the following upstream issue:
 		# https://github.com/golang/go/issues/11090
 
-		[[ -n ${EVCS_UMASK} ]] && eumask_pop
+		[[ -n ${EVCS_UMASK} ]] && umask ${prev_umask}
 	fi
 	local go_srcpath="${WORKDIR}/${P}/src/${EGO_PN%/...}"
 	set -- mkdir -p "${go_srcpath}"

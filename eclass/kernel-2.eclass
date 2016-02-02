@@ -925,7 +925,8 @@ unipatch() {
 	[ ! -d ${KPATCH_DIR} ] && mkdir -p ${KPATCH_DIR}
 
 	# We're gonna need it when doing patches with a predefined patchlevel
-	eshopts_push -s extglob
+	local prev_shopt=$(shopt -p extglob)
+	shopt -s extglob
 
 	# This function will unpack all passed tarballs, add any passed patches, and remove any passed patchnumbers
 	# usage can be either via an env var or by params
@@ -1101,7 +1102,7 @@ unipatch() {
 						eend 1
 						eerror "Failed to apply patch ${i/*\//}"
 						eerror "Please attach ${STDERR_T} to any bug you may post."
-						eshopts_pop
+						${prev_shopt}
 						die "Failed to apply ${i/*\//} on patch depth 1."
 					fi
 				fi
@@ -1125,7 +1126,7 @@ unipatch() {
 						eend 1
 						eerror "Failed to apply patch ${i/*\//}"
 						eerror "Please attach ${STDERR_T} to any bug you may post."
-						eshopts_pop
+						${prev_shopt}
 						die "Failed to apply ${i/*\//} on patch depth ${PATCH_DEPTH}."
 					fi
 				else
@@ -1135,7 +1136,7 @@ unipatch() {
 			if [ ${PATCH_DEPTH} -eq 5 ]; then
 				eerror "Failed to dry-run patch ${i/*\//}"
 				eerror "Please attach ${STDERR_T} to any bug you may post."
-				eshopts_pop
+				${prev_shopt}
 				die "Unable to dry-run patch on any patch depth lower than 5."
 			fi
 		done
@@ -1166,7 +1167,7 @@ unipatch() {
 
 	LC_ALL="${myLC_ALL}"
 	LANG="${myLANG}"
-	eshopts_pop
+	${prev_shopt}
 }
 
 # getfilevar accepts 2 vars as follows:

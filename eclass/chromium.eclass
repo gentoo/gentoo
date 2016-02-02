@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -172,7 +172,8 @@ chromium_pkg_die() {
 	fi
 
 	# Prevent user problems like bug #348235.
-	eshopts_push -s extglob
+	local prev_shopt=$(shopt -p extglob)
+	shopt -s extglob
 	if is-flagq '-g?(gdb)?([1-9])'; then
 		ewarn
 		ewarn "You have enabled debug info (i.e. -g or -ggdb in your CFLAGS/CXXFLAGS)."
@@ -182,7 +183,7 @@ chromium_pkg_die() {
 		ewarn "Please try removing -g{,gdb} before reporting a bug."
 		ewarn
 	fi
-	eshopts_pop
+	${prev_shopt}
 
 	# ccache often causes bogus compile failures, especially when the cache gets
 	# corrupted.

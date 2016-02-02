@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -47,7 +47,8 @@ srcrpm_unpack() {
 	# no .src.rpm files, then nothing to do
 	[[ "$* " != *".src.rpm " ]] && return 0
 
-	eshopts_push -s nullglob
+	local prev_shopt=$(shopt -p nullglob)
+	shopt -s nullglob
 
 	# unpack everything
 	local a
@@ -56,7 +57,7 @@ srcrpm_unpack() {
 		rm -f "${a}"
 	done
 
-	eshopts_pop
+	${prev_shopt}
 
 	return 0
 }
