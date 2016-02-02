@@ -12,11 +12,11 @@ HOMEPAGE="https://github.com/QtCurve/qtcurve"
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/QtCurve/qtcurve.git"
-	KEYWORDS=""
+	KEYWORDS="alpha"
 else
 	SRC_URI="https://github.com/QtCurve/${PN}/archive/${PV/_/}.tar.gz  -> ${P}.tar.gz
 		https://github.com/QtCurve/qtcurve/commit/020b70404f6202490d5ca131f0ec084355cb98e3.patch -> ${PN}-1.8.18-dont_use_c++11.patch"
-	KEYWORDS="~alpha amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="alpha amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 LICENSE="LGPL-2+"
