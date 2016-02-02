@@ -40,7 +40,6 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	>=app-text/asciidoc-8.4.5
 	app-text/xmlto
-	dev-util/gperf
 	virtual/pkgconfig
 	media-gfx/imagemagick[png]
 	>=x11-proto/xcb-proto-1.5
