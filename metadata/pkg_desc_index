@@ -17561,7 +17561,7 @@ www-apps/webdavcgi 0.8.3 0.8.4: A Perl CGI for accessing and sharing files, or c
 www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.2 2.3.3: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
-www-apps/wordpress 4.4.1: Wordpress PHP and MySQL based content management system (CMS)
+www-apps/wordpress 4.4.2: Wordpress PHP and MySQL based content management system (CMS)
 www-client/chromium 48.0.2564.82 49.0.2618.8 49.0.2623.0: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20141005 1.0_pre20150227 1.0_pre20150519: A Mozilla-based web browser whose design is inspired by GNU Emacs
@@ -17656,7 +17656,7 @@ www-servers/lighttpd 1.4.35 1.4.35-r1 1.4.35-r2 1.4.37 1.4.37-r1: Lightweight hi
 www-servers/mongoose 5.3: easy to use web server
 www-servers/mongrel2 1.11.0: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.5.6-r1 1.6.7 1.6.8 9999: A small, fast, and scalable web server
-www-servers/nginx 1.8.0 1.9.6 1.9.7: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.8.0 1.8.1 1.9.7: Robust, small and high performance http and reverse proxy server
 www-servers/ocsigenserver 2.5-r2 2.6: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer
