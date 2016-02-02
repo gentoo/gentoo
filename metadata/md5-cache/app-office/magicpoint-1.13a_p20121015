@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare
-DEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libXrender x11-libs/libXmu imlib? ( media-libs/imlib2 ) !imlib? ( gif? ( media-libs/giflib:= ) png? ( >=media-libs/libpng-1.4:0= ) ) truetype? ( x11-libs/libXft ) emacs? ( virtual/emacs ) m17n-lib? ( dev-libs/m17n-lib ) mng? ( media-libs/libmng ) sys-devel/autoconf x11-proto/xextproto x11-libs/libxkbfile app-text/rman x11-misc/imake !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libXrender x11-libs/libXmu imlib? ( media-libs/imlib2 ) !imlib? ( gif? ( media-libs/giflib:= ) png? ( >=media-libs/libpng-1.4:0= ) ) truetype? ( x11-libs/libXft media-libs/fontconfig ) emacs? ( virtual/emacs ) m17n-lib? ( dev-libs/m17n-lib fontconfig? ( media-libs/fontconfig ) ) mng? ( media-libs/libmng ) sys-devel/autoconf x11-proto/xextproto x11-libs/libxkbfile app-text/rman x11-misc/imake !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=An X11 based presentation tool
 EAPI=5
 HOMEPAGE=http://member.wide.ad.jp/wg/mgp/
-IUSE=cjk contrib doc emacs examples gif imlib m17n-lib mng nls png truetype
+IUSE=cjk contrib doc emacs examples fontconfig gif imlib m17n-lib mng nls png truetype
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
-RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libXrender x11-libs/libXmu imlib? ( media-libs/imlib2 ) !imlib? ( gif? ( media-libs/giflib:= ) png? ( >=media-libs/libpng-1.4:0= ) ) truetype? ( x11-libs/libXft ) emacs? ( virtual/emacs ) m17n-lib? ( dev-libs/m17n-lib ) mng? ( media-libs/libmng ) contrib? ( dev-lang/perl ) nls? ( sys-devel/gettext ) truetype? ( cjk? ( media-fonts/sazanami ) )
+RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libXrender x11-libs/libXmu imlib? ( media-libs/imlib2 ) !imlib? ( gif? ( media-libs/giflib:= ) png? ( >=media-libs/libpng-1.4:0= ) ) truetype? ( x11-libs/libXft media-libs/fontconfig ) emacs? ( virtual/emacs ) m17n-lib? ( dev-libs/m17n-lib fontconfig? ( media-libs/fontconfig ) ) mng? ( media-libs/libmng ) contrib? ( dev-lang/perl ) nls? ( sys-devel/gettext ) truetype? ( cjk? ( media-fonts/sazanami ) )
 REQUIRED_USE=imlib? ( !gif !png )
 SLOT=0
 SRC_URI=ftp://sh.wide.ad.jp/WIDE/free-ware/mgp-snap/mgp-snap-20121015.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	28fb3e5852485af1c348d446b0b98389	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=1691c277d317c590058cab4fe7d4fc3b
+_md5_=7ab2e979d0a0092fdeb43af52a336c67
