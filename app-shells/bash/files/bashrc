@@ -77,7 +77,7 @@ else
 	# Some systems (e.g. BSD & embedded) don't typically come with
 	# dircolors so we need to hardcode some terminals in here.
 	case ${TERM} in
-	[aEkx]term*|rxvt*|gnome*|konsole*|screen|cons25) use_color=true;;
+	[aEkx]term*|rxvt*|gnome*|konsole*|screen|cons25|*color) use_color=true;;
 	esac
 fi
 
