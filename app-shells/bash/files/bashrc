@@ -58,13 +58,37 @@ if type -P dircolors >/dev/null ; then
 	# Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
 	LS_COLORS=
 	if [[ -f ~/.dir_colors ]] ; then
+		# If you have a custom file, chances are high that it's not the default.
+		used_default_dircolors="no"
 		eval "$(dircolors -b ~/.dir_colors)"
 	elif [[ -f /etc/DIR_COLORS ]] ; then
+		# People might have customized the system database.
+		used_default_dircolors="maybe"
 		eval "$(dircolors -b /etc/DIR_COLORS)"
 	else
+		used_default_dircolors="yes"
 		eval "$(dircolors -b)"
 	fi
-	[[ -n ${LS_COLORS:+set} ]] && use_color=true
+	if [[ -n ${LS_COLORS:+set} ]] ; then
+		use_color=true
+
+		# The majority of systems out there do not customize these files, so we
+		# want to avoid always exporting the large $LS_COLORS variable.  This
+		# keeps the active env smaller, and it means we don't have to deal with
+		# running new/old (incompatible) versions of `ls` compared to when we
+		# last sourced this file.
+		case ${used_default_dircolors} in
+		no) ;;
+		yes) unset LS_COLORS ;;
+		*)
+			ls_colors=$(eval "$(dircolors -b)"; echo "${LS_COLORS}")
+			if [[ ${ls_colors} == "${LS_COLORS}" ]] ; then
+				unset LS_COLORS
+			fi
+			;;
+		esac
+	fi
+	unset used_default_dircolors
 else
 	# Some systems (e.g. BSD & embedded) don't typically come with
 	# dircolors so we need to hardcode some terminals in here.
