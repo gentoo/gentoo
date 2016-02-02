@@ -53,6 +53,9 @@ RDEPEND="${COMMON_DEPEND}"
 DOCS=( AUTHORS BUGS PATCHES README STYLE )
 
 src_prepare() {
+	# Build system interferes with our choice of DOCS.
+	sed -i -e '/^install.*AWE_DOC_FILES/d' CMakeLists.txt || die
+
 	# bug #408025
 	epatch "${FILESDIR}/3.5/${PN}-3.5_rc1-convert-path.patch"
 
@@ -87,8 +90,6 @@ src_install() {
 	use doc && local HTML_DOCS=( "${CMAKE_BUILD_DIR}/doc/html/." )
 
 	cmake-utils_src_install
-
-	rm -rf "${ED}"/usr/share/doc/${PN} || die "Cleanup of dupe docs failed"
 
 	exeinto /etc/X11/Sessions
 	newexe "${FILESDIR}"/${PN}-session ${PN}
