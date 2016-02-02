@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>djc@gentoo.org</email>
-    <name>Dirkjan Ochtman</name>
+    <email>mrueg@gentoo.org</email>
+    <name>Manuel Rüger</name>
   </maintainer>
   <upstream>
     <remote-id type="github">OpenVPN/easy-rsa</remote-id>
