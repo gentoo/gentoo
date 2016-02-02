@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,10 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
 
-DEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}]
+RDEPEND="dev-python/python-dateutil
+	dev-python/six"
+DEPEND="${RDEPEND}
+	test? ( dev-python/mock[${PYTHON_USEDEP}]
 	dev-python/nose[${PYTHON_USEDEP}] )
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
