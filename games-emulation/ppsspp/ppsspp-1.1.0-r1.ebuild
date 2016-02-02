@@ -127,4 +127,3 @@ pkg_postinst() {
 	elog "be in the 'games' group. "
 	elog "Just run 'gpasswd -a <USER> games', then have <USER> re-login. "
 }
-
