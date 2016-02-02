@@ -70,7 +70,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DPREFIX="${EPREFIX}"/usr
 		-DSYSCONFDIR="${EPREFIX}"/etc
 		$(cmake-utils_use_with dbus DBUS)
 		$(cmake-utils_use doc GENERATE_DOC)
