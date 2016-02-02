@@ -94,6 +94,7 @@ PATCHES=(
 	"${FILESDIR}/tesseract-2.04-gcc47.patch"
 	"${FILESDIR}/${P}-fix-scrollview-disabled.patch"
 	"${FILESDIR}/${P}-use-system-piccolo2d.patch"
+	"${FILESDIR}/${P}-leptonica-1.73-compat.patch"
 )
 
 src_unpack() {
