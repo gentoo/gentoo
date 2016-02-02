@@ -52,13 +52,13 @@ DOCS="AUTHORS BUGS PATCHES README STYLE"
 
 src_prepare() {
 	# bug #408025
-	epatch "${FILESDIR}/${PN}-3.5_rc1-convert-path.patch"
-	epatch "${FILESDIR}/${PN}-xsession.patch"
+	epatch "${FILESDIR}/3.5/${PN}-3.5_rc1-convert-path.patch"
+	epatch "${FILESDIR}/3.5/${PN}-xsession.patch"
 
 	# bug #507604
-	epatch "${FILESDIR}/${PN}-3.5.5-util.lua-xdg-icons-fix.patch"
+	epatch "${FILESDIR}/3.5/${PN}-3.5.5-util.lua-xdg-icons-fix.patch"
 	# bug #509658
-	epatch "${FILESDIR}/${PN}-3.5.5-cflag-cleanup.patch"
+	epatch "${FILESDIR}/3.5/${PN}-3.5.5-cflag-cleanup.patch"
 
 	# bug #571544
 	# Merged upstream
