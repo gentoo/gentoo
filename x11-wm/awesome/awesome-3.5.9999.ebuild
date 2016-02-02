@@ -52,19 +52,17 @@ RDEPEND="${COMMON_DEPEND}"
 
 DOCS=( AUTHORS BUGS PATCHES README STYLE )
 
+PATCHES=(
+	"${FILESDIR}/3.5/${PN}-fix-convert-path.patch"
+	"${FILESDIR}/3.5/${PN}-fix-icon-finding-in-awful.util.patch"
+	"${FILESDIR}/3.5/${PN}-respect-user-cflags.patch"
+)
+
 src_prepare() {
 	# Build system interferes with our choice of DOCS.
 	sed -i -e '/^install.*AWE_DOC_FILES/d' CMakeLists.txt || die
 
-	# bug #408025
-	epatch "${FILESDIR}/3.5/${PN}-fix-convert-path.patch"
-
-	# bug #507604
-	epatch "${FILESDIR}/3.5/${PN}-fix-icon-finding-in-awful.util.patch"
-	# bug #509658
-	epatch "${FILESDIR}/3.5/${PN}-respect-user-cflags.patch"
-
-	epatch_user
+	cmake-utils_src_prepare
 }
 
 src_configure() {
