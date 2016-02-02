@@ -15,7 +15,7 @@ HOMEPAGE="http://member.wide.ad.jp/wg/mgp/"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cjk contrib doc emacs examples gif imlib m17n-lib mng nls png truetype"
+IUSE="cjk contrib doc emacs examples fontconfig gif imlib m17n-lib mng nls png truetype"
 
 REQUIRED_USE="imlib? ( !gif !png )"
 S="${WORKDIR}/kit"
@@ -29,9 +29,15 @@ COMMON_DEPEND="x11-libs/libICE
 		gif? ( media-libs/giflib:= )
 		png? ( >=media-libs/libpng-1.4:0= )
 	)
-	truetype? ( x11-libs/libXft )
+	truetype? (
+		x11-libs/libXft
+		media-libs/fontconfig
+	)
 	emacs? ( virtual/emacs )
-	m17n-lib? ( dev-libs/m17n-lib )
+	m17n-lib? (
+		dev-libs/m17n-lib
+		fontconfig? ( media-libs/fontconfig )
+	)
 	mng? ( media-libs/libmng )"
 DEPEND="${COMMON_DEPEND}
 	sys-devel/autoconf
@@ -51,6 +57,7 @@ src_prepare() {
 
 	epatch \
 		"${FILESDIR}"/${PN}-1.11b-gentoo.diff \
+		"${FILESDIR}"/${PN}-1.13a_p20121015-fontconfig.patch \
 		"${FILESDIR}"/${PN}-1.13a_p20121015-parse-empty.patch \
 		"${FILESDIR}"/${PN}-1.13a_p20121015-draw-charset.patch \
 		"${FILESDIR}"/${PN}-1.13a_p20121015-draw-stringtoolong.patch \
