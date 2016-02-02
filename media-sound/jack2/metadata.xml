@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>suhr@i2pmail.org</email>
+    <name>Сухарик</name>
+    <description>Proxied maintainer</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>proaudio@gentoo.org</email>
+    <name>Gentoo ProAudio Project</name>
+  </maintainer>
+  <use>
+    <flag name="pam">Add basic realime configuration via <pkg>sys-auth/realtime-base</pkg></flag>
+    <flag name="celt">Support CELT low delay audio codec (<pkg>media-libs/celt</pkg>)</flag>
+    <flag name="opus">Support <pkg>media-libs/opus</pkg></flag>
+  </use>
+</pkgmetadata>
