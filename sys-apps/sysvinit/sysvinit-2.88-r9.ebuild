@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=5
 
 inherit eutils toolchain-funcs flag-o-matic
 
@@ -27,12 +27,16 @@ RDEPEND="${CDEPEND}
 
 S=${WORKDIR}/${P}dsf
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.86-kexec.patch" #80220
+	"${FILESDIR}/${PN}-2.86-shutdown-single.patch" #158615
+	"${FILESDIR}/${P}-makefile.patch" #319197
+	"${FILESDIR}/${P}-selinux.patch" #326697
+	"${FILESDIR}/${P}-shutdown-h.patch" #449354
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.86-kexec.patch #80220
-	epatch "${FILESDIR}"/${PN}-2.86-shutdown-single.patch #158615
-	epatch "${FILESDIR}"/${P}-makefile.patch #319197
-	epatch "${FILESDIR}"/${P}-selinux.patch #326697
-	epatch "${FILESDIR}"/${P}-shutdown-h.patch #449354
+	epatch "${PATCHES[@]}"
 	sed -i '/^CPPFLAGS =$/d' src/Makefile || die
 
 	# last/lastb/mesg/mountpoint/sulogin/utmpdump/wall have moved to util-linux
@@ -99,7 +103,7 @@ src_install() {
 	doins "${WORKDIR}"/inittab
 
 	# dead symlink
-	rm -f "${D}"/usr/bin/lastb
+	rm "${D}"/usr/bin/lastb || die
 }
 
 pkg_postinst() {
