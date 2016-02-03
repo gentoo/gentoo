@@ -22,9 +22,7 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 
 IUSE="doc examples test"
 
 REQUIRED_USE="
-	doc? (
-		|| ( $(python_gen_useflags 'python2*') )
-	)"
+	doc? ( || ( $(python_gen_useflags 'python2*') ) )"
 
 RDEPEND="
 	dev-python/coverage[${PYTHON_USEDEP}]
@@ -70,10 +68,7 @@ python_compile() {
 }
 
 python_compile_all() {
-	if use doc; then
-		python_setup 'python2*'
-		emake -C doc html
-	fi
+	use doc && emake -C doc html
 }
 
 python_test() {
@@ -88,5 +83,4 @@ python_install_all() {
 	use examples && local EXAMPLES=( examples/. )
 	use doc && HTML_DOCS=( doc/.build/html/. )
 	distutils-r1_python_install_all
-
 }
