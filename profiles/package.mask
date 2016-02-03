@@ -30,10 +30,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Patrick Lauer <patrick@gentoo.org> (02 Feb 2016)
-# #573668 makes booting with default inittab difficult
-=sys-apps/sysvinit-2.88-r8
-
 # Bernard Cafarelli <voyageur@gentoo.org> (27 Jan 2016)
 # New llvm version, masked for testing
 =sys-devel/llvm-3.8.0*
