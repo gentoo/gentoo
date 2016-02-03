@@ -14,7 +14,7 @@ HOMEPAGE="http://www-itg.lbl.gov/~hoschek/colt/"
 LICENSE="colt"
 IUSE=""
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~ppc64 x86"
 
 DEPEND=">=virtual/jdk-1.7"
 RDEPEND=">=virtual/jre-1.7"
