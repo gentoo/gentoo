@@ -8,6 +8,7 @@
 access - This module provides a simple host-based access control.
 addition - This module adds contents of other locations before and after the current location's content.
 auth_basic - This module protects your site or parts of it with username and password based on HTTP Basic Authentication.
+auth_ldap - LDAP module for nginx which supports authentication against multiple LDAP servers.
 auth_pam - This module provides authentication via PAM.
 auth_request - Module implementing client authorization based on the result of a subrequest.
 autoindex - This module provides automatic directory listings.
