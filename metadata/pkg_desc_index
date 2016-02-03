@@ -7214,7 +7214,7 @@ dev-python/kazoo 1.3.1 2.0 2.2.1: A high-level Python library that makes it easi
 dev-python/keepassx 0.0.3 0.1.0: Python API and CLI for KeePassX
 dev-python/keyczar 0.71c 0.715: Toolkit for safe and simple cryptography
 dev-python/keyring 1.0 1.5 1.5-r1 1.6.1 3.1 3.3 3.7 4.0 8.2: Provides access to the system keyring service
-dev-python/keystonemiddleware 1.5.0 1.5.2 2.2.0 2.3.1 2.3.1-r1 2.3.2 2.3.2-r1: A middleware for the OpenStack Keystone API
+dev-python/keystonemiddleware 1.5.0 1.5.2 2.2.0 2.3.1-r1 2.3.2-r1: A middleware for the OpenStack Keystone API
 dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
 dev-python/kivy-garden 0.1.1: Kivys Garden tool to manage flowers
 dev-python/kiwi 1.9.39.2 1.9.40: Kiwi is a pure Python framework and set of enhanced PyGTK widgets
@@ -13788,7 +13788,7 @@ net-dns/nsd 3.2.18 3.2.20 4.1.0 4.1.7: An authoritative only, high performance, 
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.17 1.3.18 1.4.7 1.4.8.2: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.6.1 3.6.2 3.7.0 3.7.2: A framework for managing DNS information
-net-dns/pdns 3.4.7: The PowerDNS Daemon
+net-dns/pdns 3.4.7 3.4.8: The PowerDNS Daemon
 net-dns/pdns-ldap-backend 0.2: Fork of the official but unmaintained LDAP backend
 net-dns/pdns-recursor 3.6.4 3.7.3: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
@@ -16490,7 +16490,7 @@ sys-auth/fingerprint-gui 1.07: Use Fingerprint Devices with Linux
 sys-auth/fprint_demo 0.4: a simple GTK+ application to demonstrate and test libfprint's capabilities
 sys-auth/fprintd 0.2.0-r1 0.4.1 0.5.0 0.5.1 0.6.0: D-Bus service to access fingerprint readers
 sys-auth/icmpdn 0.4: ICMP Domain Name utilities & NSS backend
-sys-auth/keystone 8.0.1 8.0.1-r1 2015.1.9999 2015.2.9999: The Openstack authentication, authorization, and service catalog
+sys-auth/keystone 8.0.1-r1 2015.1.9999 2015.2.9999: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.4.0 0.5.0-r1 0.5.1-r1 0.6.0-r1: library to add support for consumer fingerprint readers
 sys-auth/libnss-cache 0.1-r1 0.10.1 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-mysql 1.5_p20060915-r2 1.5_p20060915-r3: NSS MySQL Library
