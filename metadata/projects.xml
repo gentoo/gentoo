@@ -2644,11 +2644,6 @@
     <description>The Portage Development Project is devoted to maintaining and updating Portages core functionality and utilities.</description>
     <subproject ref="tools-portage@gentoo.org"/>
     <subproject ref="sandbox@gentoo.org"/>
-    <member>
-      <email>antarus@gentoo.org</email>
-      <name>Alec Warner</name>
-      <role>Code Reviews, on leave.</role>
-    </member>
     <member is-lead="1">
       <email>bernalex@gentoo.org</email>
       <name>Alexander Berntsen</name>
