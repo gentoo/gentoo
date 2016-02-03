@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,6 +16,8 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc examples test"
+
+REQUIRED_USE="doc? ( || ( $(python_gen_useflags 'python2*') ) )"
 
 COMMON_DEPEND="
 	dev-python/matplotlib[${PYTHON_USEDEP}]
@@ -41,6 +43,10 @@ RDEPEND="
 		dev-python/pyparsing[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	)"
+
+pkg_setup() {
+	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python2*' )
+}
 
 python_prepare_all() {
 	# Avoid d'loading of file objects.inv from 2 sites of python docs
