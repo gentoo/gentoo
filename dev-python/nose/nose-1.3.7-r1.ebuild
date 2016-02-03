@@ -31,6 +31,8 @@ DEPEND="${RDEPEND}
 	doc? ( >=dev-python/sphinx-0.6[${PYTHON_USEDEP}] )
 	test? ( $(python_gen_cond_dep 'dev-python/twisted-core[${PYTHON_USEDEP}]' python2_7) )"
 
+PATCHES=( "${FILESDIR}"/${P}-python-3.5-backport.patch )
+
 pkg_setup() {
 	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python2*' )
 }
