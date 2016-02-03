@@ -4748,7 +4748,7 @@ dev-libs/libtubo 5.0.15: small and simple interprocess communication library
 dev-libs/libunicode 0.4-r1: Unicode library
 dev-libs/libunique 1.1.6-r1 3.0.2: a library for writing single instance application
 dev-libs/libunistring 0.9.5 0.9.6: Library for manipulating Unicode strings and C strings according to the Unicode standard
-dev-libs/libusb 1.0.9-r2 1.0.18 1.0.19: Userspace access to USB devices
+dev-libs/libusb 1.0.9-r2 1.0.18 1.0.19-r1 1.0.20: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2 0.1.5-r3: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libusbhp 1.0.2: Usb Hotplug Library
 dev-libs/libutf8proc 1.1.6-r1: mapping tool for UTF-8 strings
