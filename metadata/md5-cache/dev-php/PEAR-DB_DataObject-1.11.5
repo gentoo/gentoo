@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare setup
+DEPEND=dev-lang/php:* >=dev-php/pear-1.8.1
+DESCRIPTION=SQL builder and data modeling layer
+EAPI=6
+HOMEPAGE=http://pear.php.net/DB_DataObject
+IUSE=minimal
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=PHP-3.01
+RDEPEND=|| ( dev-php/PEAR-MDB2 dev-php/PEAR-DB ) dev-php/PEAR-Date !minimal? ( dev-php/PEAR-Validate ) dev-lang/php:* >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=http://pear.php.net/get/DB_DataObject-1.11.5.tgz
+_eclass_exported_funcs=pkg_setup:php-pear-r1 src_prepare:- src_install:php-pear-r1
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	php-pear-r1	7d1434952f2d1483feac6ad812d605dd	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=e2e81080c3549d789ccde2a0b98a4d90

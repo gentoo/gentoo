@@ -6486,7 +6486,7 @@ dev-php/PEAR-Crypt_HMAC 1.0.1-r1: Calculates RFC 2104 compliant hashes
 dev-php/PEAR-Crypt_HMAC2 1.0.0: Implementation of Hashed Message Authentication Code for PHP5
 dev-php/PEAR-Crypt_RC4 1.0.3: Encryption class for RC4 encryption
 dev-php/PEAR-DB 1.8.2 1.9.2: Database abstraction layer for PHP
-dev-php/PEAR-DB_DataObject 1.11.3: A SQL Builder, Object Interface to Database Tables
+dev-php/PEAR-DB_DataObject 1.11.3 1.11.5: SQL builder and data modeling layer
 dev-php/PEAR-Date 1.4.7 1.5.0_alpha1 1.5.0_alpha4: Date and Time Zone classes
 dev-php/PEAR-File 1.4.1: Common file and directory routines
 dev-php/PEAR-File_Archive 1.5.4-r1 1.5.5: Lets you manipulate easily the tar, gz, tgz, bz2, tbz, zip, ar (or deb) files
