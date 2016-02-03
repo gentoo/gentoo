@@ -9,6 +9,6 @@
 		<name>Gentoo Ruby Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="rubygems">delayer-deferred</remote-id>
+		<remote-id type="rubygems">totoridipjp</remote-id>
 	</upstream>
 </pkgmetadata>
