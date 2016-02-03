@@ -81,7 +81,7 @@ S="${WORKDIR}${ICAROOT}"
 
 pkg_nofetch() {
 	elog "Download the client RPM file ${SRC_URI} from
-	http://www.citrix.com/English/ss/downloads/details.asp?downloadId=2323812&productId=1689163"
+	https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-linux/receiver-for-linux-121.html"
 	elog "and place it in ${DISTDIR:-/usr/portage/distfiles}."
 }
 
