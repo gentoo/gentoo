@@ -16561,7 +16561,7 @@ sys-block/disktype 9: Detect the content format of a disk or disk image
 sys-block/eject 2.1.5-r2: A command to eject a disc from the CD-ROM drive
 sys-block/eject-bsd 1.5: eject command for FreeBSD systems
 sys-block/endpoint 0.1.0: Endpoint turns a Linux machine with one or more firewire cards into an SBP-2 device
-sys-block/fio 1.17.2 1.99.10 2.0.14-r1 2.0.15 2.1.9 2.2.4-r1 2.2.9 2.2.10 2.2.13 2.5: Jens Axboe's Flexible IO tester
+sys-block/fio 1.17.2 1.99.10 2.0.14-r1 2.0.15 2.1.9 2.2.4-r1 2.2.9 2.2.10 2.2.13 2.5 2.6: Jens Axboe's Flexible IO tester
 sys-block/flashbench 20120606: Tool for benchmarking and classifying flash memory drives
 sys-block/fwdl 1.2.3: Seagate Fibre-Channel disk firmware upgrade tool
 sys-block/gpart 0.1h-r1 0.1h-r2: Partition table rescue/guessing tool
