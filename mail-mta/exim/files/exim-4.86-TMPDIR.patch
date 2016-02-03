@@ -1,0 +1,71 @@
+From c36cf51b85cfc86e46226c846914c8d915f9f3c0 Mon Sep 17 00:00:00 2001
+From: Alexander Tsoy <alexander@tsoy.me>
+Date: Tue, 2 Feb 2016 20:56:15 +0300
+Subject: [PATCH] Rename build-time option TMPDIR to EXIM_TMPDIR
+
+---
+ src/EDITME              |  2 +-
+ src/config.h.defaults   |  2 +-
+ src/exim.c              | 12 ++++++------
+ 3 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/src/EDITME b/src/EDITME
+index 30a296e..6afe0c7 100644
+--- a/src/EDITME
++++ b/src/EDITME
+@@ -1123,7 +1123,7 @@ SYSTEM_ALIASES_FILE=/etc/aliases
+ # it replaces the value with what is defined here. Commenting this setting
+ # suppresses the check altogether.
+ 
+-TMPDIR="/tmp"
++EXIM_TMPDIR="/tmp"
+ 
+ 
+ #------------------------------------------------------------------------------
+diff --git a/src/config.h.defaults b/src/config.h.defaults
+index 14de083..c1cf1a9 100644
+--- a/src/config.h.defaults
++++ b/src/config.h.defaults
+@@ -150,7 +150,7 @@ it's a default value. */
+ 
+ #define TCP_WRAPPERS_DAEMON_NAME "exim"
+ #define TIMEZONE_DEFAULT
+-#define TMPDIR
++#define EXIM_TMPDIR
+ 
+ #define TRANSPORT_APPENDFILE
+ #define TRANSPORT_AUTOREPLY
+diff --git a/src/exim.c b/src/exim.c
+index ebc71dd..c134bf5 100644
+--- a/src/exim.c
++++ b/src/exim.c
+@@ -3899,20 +3899,20 @@ if (log_oneline)
+ temporary files are created; Exim doesn't use these (apart from when delivering
+ to MBX mailboxes), but called libraries such as DBM libraries may require them.
+ If TMPDIR is found in the environment, reset it to the value defined in the
+-TMPDIR macro, if this macro is defined. */
++EXIM_TMPDIR macro, if this macro is defined. */
+ 
+-#ifdef TMPDIR
++#ifdef EXIM_TMPDIR
+   {
+   uschar **p;
+   for (p = USS environ; *p != NULL; p++)
+     {
+     if (Ustrncmp(*p, "TMPDIR=", 7) == 0 &&
+-        Ustrcmp(*p+7, TMPDIR) != 0)
++        Ustrcmp(*p+7, EXIM_TMPDIR) != 0)
+       {
+-      uschar *newp = malloc(Ustrlen(TMPDIR) + 8);
+-      sprintf(CS newp, "TMPDIR=%s", TMPDIR);
++      uschar *newp = malloc(Ustrlen(EXIM_TMPDIR) + 8);
++      sprintf(CS newp, "TMPDIR=%s", EXIM_TMPDIR);
+       *p = newp;
+-      DEBUG(D_any) debug_printf("reset TMPDIR=%s in environment\n", TMPDIR);
++      DEBUG(D_any) debug_printf("reset TMPDIR=%s in environment\n", EXIM_TMPDIR);
+       }
+     }
+   }
+-- 
+2.4.10
+
