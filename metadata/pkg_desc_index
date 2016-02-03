@@ -7165,7 +7165,7 @@ dev-python/ipdbplugin 1.4 9999: Nose plugin to use iPdb instead of Pdb when test
 dev-python/ipy 0.82a 0.83: Class and tools for handling of IPv4 and IPv6 addresses and networks
 dev-python/ipykernel 4.2.0 4.2.1 4.2.2: IPython Kernel for Jupyter
 dev-python/ipyparallel 4.1.0: Interactive Parallel Computing with IPython
-dev-python/ipython 3.2.1-r1 4.0.1 4.0.3: Advanced interactive shell for Python
+dev-python/ipython 3.2.1-r1 4.0.1 4.0.3 4.1.0: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.1.0: Vestigial utilities from IPython
 dev-python/ipywidgets 4.1.1: IPython HTML widgets for Jupyter
 dev-python/irc 11.0.1 13.2 13.3.1: IRC client framework written in Python
@@ -7854,7 +7854,7 @@ dev-python/rosdistro 0.4.2 9999: Tools to work with catkinized rosdistro files
 dev-python/rospkg 1.0.35 1.0.37-r1 1.0.38 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.1-r1 2.2: A Python re-implementation of Rails routes system, mapping URL's to Controllers/Actions
 dev-python/rply 0.7.3 0.7.4: Pure python parser generator that also works with RPython
-dev-python/rpy 2.6.2 2.7.2 2.7.3 2.7.4 2.7.5 2.7.6 2.7.7: Python interface to the R Programming Language
+dev-python/rpy 2.6.2 2.7.2 2.7.3 2.7.4 2.7.5 2.7.6 2.7.7 2.7.8: Python interface to the R Programming Language
 dev-python/rpyc 3.2.3-r1 3.3.0: Remote Python Call (RPyC), a transparent and symmetric RPC library
 dev-python/rsa 3.1.4-r1 3.2 3.2.3 3.2.3-r1 3.3: Pure-Python RSA implementation
 dev-python/rst2pdf 0.93-r2: Tool for transforming reStructuredText to PDF using ReportLab
