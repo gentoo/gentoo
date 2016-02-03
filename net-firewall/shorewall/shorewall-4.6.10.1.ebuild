@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,8 +6,7 @@ EAPI="5"
 
 inherit eutils linux-info prefix systemd versionator
 
-DESCRIPTION='The Shoreline Firewall, commonly known as Shorewall, is'
-DESCRIPTION+=' a high-level tool for configuring Netfilter'
+DESCRIPTION='A high-level tool for configuring Netfilter'
 HOMEPAGE="http://www.shorewall.net/"
 LICENSE="GPL-2"
 SLOT="0"
