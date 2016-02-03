@@ -30,6 +30,17 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (03 Feb 2016)
+# Built into Java since 1.5. Ancient and doesn't build with
+# Java 8. Removal in 30 days. See bug #544038.
+dev-java/concurrent-util
+
+# James Le Cuirot <chewi@gentoo.org> (03 Feb 2016)
+# Old, unused, broken on Java 7 and up. These are still alive upstream
+# but bumping is likely non-trivial. Removal in 30 days.
+dev-java/dsiutils
+dev-java/sux4j
+
 # Bernard Cafarelli <voyageur@gentoo.org> (27 Jan 2016)
 # New llvm version, masked for testing
 =sys-devel/llvm-3.8.0*

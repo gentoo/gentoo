@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -38,7 +38,7 @@ else
 	SRC_URI="https://github.com/greatscottgadgets/${PN}/releases/download/${MY_PV}/${PN}-${MY_PV}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
-DESCRIPTION="An open source wireless development platform suitable for Bluetooth experimentation"
+DESCRIPTION="open source wireless development platform suitable for Bluetooth experimentation"
 
 #readd firmware building, but do it right
 #USE="-fortran -mudflap -nls -openmp -multilib" crossdev --without-headers --genv 'EXTRA_ECONF="--with-mode=thumb --with-cpu=cortex-m3 --with-float=soft"' -s4 -t arm-cortexm3-eabi
