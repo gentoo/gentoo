@@ -87,6 +87,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/exim-4.76-crosscompile.patch # 266591
 	epatch "${FILESDIR}"/exim-4.86-radius-type-fix.patch
 	epatch "${FILESDIR}"/exim-4.86-radius-include.patch
+	epatch "${FILESDIR}"/exim-4.86-TMPDIR.patch # 63420
 
 	if use maildir ; then
 		epatch "${FILESDIR}"/exim-4.20-maildir.patch
