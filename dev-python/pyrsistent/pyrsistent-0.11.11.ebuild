@@ -32,6 +32,6 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 python_test() {
-	export 	PYTHONPATH="${S}:${PYTHONPATH}"
+	export PYTHONPATH="${S}:${PYTHONPATH}"
 	py.test -v -v -x || die ${PYTHONPATH}
 }

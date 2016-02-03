@@ -2,46 +2,46 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-#if LIVE
-EGIT_REPO_URI="git://github.com/nose-devs/${PN}.git
-	https://github.com/nose-devs/${PN}.git"
-inherit git-2
-#endif
-
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy pypy3 )
 PYTHON_REQ_USE="threads(+)"
-inherit distutils-r1 eutils
+
+inherit distutils-r1 git-r3
 
 DESCRIPTION="Unittest extension with automatic test suite discovery and easy test authoring"
-HOMEPAGE="https://pypi.python.org/pypi/nose http://readthedocs.org/docs/nose/ https://github.com/nose-devs/nose"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+HOMEPAGE="
+	https://pypi.python.org/pypi/nose
+	http://readthedocs.org/docs/nose/
+	https://github.com/nose-devs/nose"
+SRC_URI=""
+EGIT_REPO_URI="
+	git://github.com/nose-devs/${PN}.git
+	https://github.com/nose-devs/${PN}.git"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
 IUSE="doc examples test"
 
-RDEPEND="dev-python/coverage[${PYTHON_USEDEP}]
+REQUIRED_USE="
+	doc? ( || ( $(python_gen_useflags 'python2*') ) )"
+
+RDEPEND="
+	dev-python/coverage[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	doc? ( >=dev-python/sphinx-0.6 )
-	test? ( dev-python/twisted-core )"
+	doc? ( >=dev-python/sphinx-0.6[${PYTHON_USEDEP}] )
+	test? ( $(python_gen_cond_dep 'dev-python/twisted-core[${PYTHON_USEDEP}]' python2_7) )"
 
-#if LIVE
-SRC_URI=
-KEYWORDS=
-#endif
-
-DOCS=( AUTHORS )
+pkg_setup() {
+	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python2*' )
+}
 
 python_prepare_all() {
 	# Tests need to be converted, and they don't respect BUILD_DIR.
 	use test && DISTUTILS_IN_SOURCE_BUILD=1
 
-	# Disable sphinx.ext.intersphinx, requires network
-	epatch "${FILESDIR}/${PN}-0.11.0-disable_intersphinx.patch"
 	# Disable tests requiring network connection.
 	sed \
 		-e "s/test_resolve/_&/g" \
@@ -53,6 +53,9 @@ python_prepare_all() {
 	sed -e "/'nosetests%s = nose:run_exit' % py_vers_tag,/d" \
 		-i setup.py || die "sed2 failed"
 
+	# Prevent un-needed d'loading during doc build
+	sed -e "s/, 'sphinx.ext.intersphinx'//" -i doc/conf.py || die
+
 	distutils-r1_python_prepare_all
 }
 
@@ -61,7 +64,7 @@ python_compile() {
 
 	if use test; then
 		add_targets+=( egg_info )
-		[[ ${EPYTHON} == python3* ]] && add_targets+=( build_tests )
+		python_is_python3 && add_targets+=( build_tests )
 	fi
 
 	distutils-r1_python_compile ${add_targets[@]}
@@ -72,7 +75,7 @@ python_compile_all() {
 }
 
 python_test() {
-	"${PYTHON}" selftest.py || die "Tests fail with ${EPYTHON}"
+	"${PYTHON}" selftest.py -v || die "Tests fail with ${EPYTHON}"
 }
 
 python_install() {
@@ -80,10 +83,7 @@ python_install() {
 }
 
 python_install_all() {
-	local EXAMPLES=( examples/. )
+	use examples && local EXAMPLES=( examples/. )
+	use doc && HTML_DOCS=( doc/.build/html/. )
 	distutils-r1_python_install_all
-
-	if use doc; then
-		dohtml -r -A txt doc/.build/html/.
-	fi
 }

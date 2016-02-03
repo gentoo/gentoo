@@ -22,9 +22,7 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 
 IUSE="doc examples test"
 
 REQUIRED_USE="
-	doc? (
-		|| ( $(python_gen_useflags 'python2*') )
-	)"
+	doc? ( || ( $(python_gen_useflags 'python2*') ) )"
 
 RDEPEND="
 	dev-python/coverage[${PYTHON_USEDEP}]
@@ -32,6 +30,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	doc? ( >=dev-python/sphinx-0.6[${PYTHON_USEDEP}] )
 	test? ( $(python_gen_cond_dep 'dev-python/twisted-core[${PYTHON_USEDEP}]' python2_7) )"
+
+PATCHES=( "${FILESDIR}"/${P}-python-3.5-backport.patch )
 
 pkg_setup() {
 	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python2*' )
@@ -70,10 +70,7 @@ python_compile() {
 }
 
 python_compile_all() {
-	if use doc; then
-		python_setup 'python2*'
-		emake -C doc html
-	fi
+	use doc && emake -C doc html
 }
 
 python_test() {
@@ -88,5 +85,4 @@ python_install_all() {
 	use examples && local EXAMPLES=( examples/. )
 	use doc && HTML_DOCS=( doc/.build/html/. )
 	distutils-r1_python_install_all
-
 }
