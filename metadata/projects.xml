@@ -2972,7 +2972,7 @@
     <name>Gentoo Public Relations Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Public_Relations</url>
     <description>The Public Relations Team improves Gentoo's visibility towards the rest of the world.</description>
-    <subproject ref="gmn@gentoo.org"/>
+    <subproject ref="gmn@gentoo.org" inherit-members="1"/>
     <subproject ref="planet@gentoo.org"/>
     <subproject ref="www@gentoo.org"/>
     <member>
