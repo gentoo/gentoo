@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Base class for dynamic Policies"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="alpha amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND="dev-perl/Perl-Critic

@@ -12,7 +12,7 @@ DESCRIPTION="Get stock and mutual fund quotes from various exchanges"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="alpha amd64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 # virtual/perl-Data-Dumper currently commented out in the code
