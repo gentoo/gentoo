@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,7 @@
 #      DEPEND="wxwidgets? ( x11-libs/wxGTK:2.8[X?] )"
 #
 #      src_configure() {
-#          if use wxwidgets; then 
+#          if use wxwidgets; then
 #              WX_GTK_VER="2.8"
 #              if use X; then
 #                  need-wxwidgets unicode
@@ -58,20 +58,29 @@
 # Use the -DNDEBUG preprocessor flag to disable debugging features.
 # (Using need-wxwidgets will do this for you, see below.)
 
-inherit eutils flag-o-matic multilib
+if [[ -z ${_WXWIDGETS_ECLASS} ]]; then
+
+case ${EAPI} in
+	0|1|2|3|4|5)
+		inherit eutils flag-o-matic multilib
+		;;
+	*)
+		die "EAPI=${EAPI:-0} is not supported"
+		;;
+esac
 
 # We do this in global scope so ebuilds can get sane defaults just by
 # inheriting.
 if [[ -z ${WX_CONFIG} ]]; then
 	if [[ -n ${WX_GTK_VER} ]]; then
-		for wxtoolkit in mac gtk2 base; do
+		for _wxtoolkit in mac gtk2 base; do
 			# newer versions don't have a seperate debug profile
-			for wxdebug in xxx release- debug-; do
-				wxconf="${wxtoolkit}-unicode-${wxdebug/xxx/}${WX_GTK_VER}"
+			for _wxdebug in xxx release- debug-; do
+				_wxconf="${_wxtoolkit}-unicode-${_wxdebug/xxx/}${WX_GTK_VER}"
 
-				[[ -f ${EPREFIX}/usr/$(get_libdir)/wx/config/${wxconf} ]] || continue
+				[[ -f ${EPREFIX}/usr/$(get_libdir)/wx/config/${_wxconf} ]] || continue
 
-				WX_CONFIG="${EPREFIX}/usr/$(get_libdir)/wx/config/${wxconf}"
+				WX_CONFIG="${EPREFIX}/usr/$(get_libdir)/wx/config/${_wxconf}"
 				WX_ECLASS_CONFIG="${WX_CONFIG}"
 				break
 			done
@@ -80,6 +89,9 @@ if [[ -z ${WX_CONFIG} ]]; then
 		[[ -n ${WX_CONFIG} ]] && export WX_CONFIG WX_ECLASS_CONFIG
 	fi
 fi
+unset _wxtoolkit
+unset _wxdebug
+unset _wxconf
 
 # @FUNCTION:    need-wxwidgets
 # @USAGE:       <profile>
@@ -106,7 +118,7 @@ need-wxwidgets() {
 		echo
 		die
 	fi
-	
+
 	if [[ ${WX_GTK_VER} != 2.8 && ${WX_GTK_VER} != 2.9 && ${WX_GTK_VER} != 3.0 ]]; then
 		eerror "Invalid WX_GTK_VER: ${WX_GTK_VER} - must be set to a valid wxGTK SLOT."
 		echo
@@ -160,3 +172,6 @@ need-wxwidgets() {
 	einfo "Using wxWidgets:            ${wxconf}"
 	echo
 }
+
+_WXWIDGETS_ECLASS=1
+fi
