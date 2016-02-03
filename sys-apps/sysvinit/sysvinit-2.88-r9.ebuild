@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=5
 
 inherit eutils toolchain-funcs flag-o-matic
 
@@ -12,36 +12,48 @@ SRC_URI="mirror://nongnu/${PN}/${P}dsf.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="selinux ibm static kernel_FreeBSD"
 
-RDEPEND="
+CDEPEND="
 	selinux? (
 		>=sys-libs/libselinux-1.28
-		sec-policy/selinux-shutdown
-	)
-	!>=sys-apps/util-linux-2.23"
-DEPEND="${RDEPEND}
+	)"
+DEPEND="${CDEPEND}
 	virtual/os-headers"
+RDEPEND="${CDEPEND}
+	selinux? ( sec-policy/selinux-shutdown )
+"
 
 S=${WORKDIR}/${P}dsf
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.86-kexec.patch" #80220
+	"${FILESDIR}/${PN}-2.86-shutdown-single.patch" #158615
+	"${FILESDIR}/${P}-makefile.patch" #319197
+	"${FILESDIR}/${P}-selinux.patch" #326697
+	"${FILESDIR}/${P}-shutdown-h.patch" #449354
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.86-kexec.patch #80220
-	epatch "${FILESDIR}"/${PN}-2.86-shutdown-single.patch #158615
-	epatch "${FILESDIR}"/${P}-makefile.patch #319197
-	epatch "${FILESDIR}"/${P}-selinux.patch #326697
+	epatch "${PATCHES[@]}"
 	sed -i '/^CPPFLAGS =$/d' src/Makefile || die
 
-	# mountpoint/sulogin/utmpdump have moved to util-linux
+	# last/lastb/mesg/mountpoint/sulogin/utmpdump/wall have moved to util-linux
 	sed -i -r \
-		-e '/^(USR)?S?BIN/s:\<(mountpoint|sulogin|utmpdump)\>::g' \
-		-e '/^MAN[18]/s:\<(mountpoint|sulogin|utmpdump)[.][18]\>::g' \
+		-e '/^(USR)?S?BIN/s:\<(last|lastb|mesg|mountpoint|sulogin|utmpdump|wall)\>::g' \
+		-e '/^MAN[18]/s:\<(last|lastb|mesg|mountpoint|sulogin|utmpdump|wall)[.][18]\>::g' \
+		src/Makefile || die
+
+	# pidof has moved to >=procps-3.3.9
+	sed -i -r \
+		-e '/\/bin\/pidof/d' \
+		-e '/^MAN8/s:\<pidof.8\>::g' \
 		src/Makefile || die
 
 	# Mung inittab for specific architectures
 	cd "${WORKDIR}"
-	cp "${FILESDIR}"/inittab-2.87 inittab || die "cp inittab"
+	cp "${FILESDIR}"/inittab-2.88 inittab || die "cp inittab"
 	local insert=()
 	use ppc && insert=( '#psc0:12345:respawn:/sbin/agetty 115200 ttyPSC0 linux' )
 	use arm && insert=( '#f0:12345:respawn:/sbin/agetty 9600 ttyFB0 vt100' )
@@ -90,7 +102,8 @@ src_install() {
 	insinto /etc
 	doins "${WORKDIR}"/inittab
 
-	doinitd "${FILESDIR}"/{reboot,shutdown}.sh
+	# dead symlink
+	rm "${D}"/usr/bin/lastb || die
 }
 
 pkg_postinst() {
@@ -101,4 +114,7 @@ pkg_postinst() {
 		# Do not return an error if this fails
 		/sbin/telinit U &>/dev/null
 	fi
+
+	elog "The last/lastb/mesg/mountpoint/sulogin/utmpdump/wall tools have been moved to"
+	elog "sys-apps/util-linux. The pidof tool has been moved to sys-process/procps."
 }

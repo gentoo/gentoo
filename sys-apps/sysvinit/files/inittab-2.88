@@ -8,6 +8,7 @@
 # Modified by:  Martin Schlemmer, <azarah@gentoo.org>
 # Modified by:  Mike Frysinger, <vapier@gentoo.org>
 # Modified by:  Robin H. Johnson, <robbat2@gentoo.org>
+# Modified by:  William Hubbs, <williamh@gentoo.org>
 #
 # $Id$
 
@@ -36,7 +37,7 @@ su0:S:wait:/sbin/openrc single
 su1:S:wait:/sbin/sulogin
 
 # TERMINALS
-x1:12345:respawn:/sbin/agetty 38400 console linux
+#x1:12345:respawn:/sbin/agetty 38400 console linux
 c1:12345:respawn:/sbin/agetty 38400 tty1 linux
 c2:2345:respawn:/sbin/agetty 38400 tty2 linux
 c3:2345:respawn:/sbin/agetty 38400 tty3 linux
