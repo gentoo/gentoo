@@ -1,21 +1,23 @@
-diff --git a/examples/apparmor/Makefile.am b/examples/apparmor/Makefile.am
-index 7a20e16..c3c67b6 100644
---- a/examples/apparmor/Makefile.am
-+++ b/examples/apparmor/Makefile.am
-@@ -19,13 +19,13 @@ EXTRA_DIST=				\
- 	TEMPLATE.lxc			\
- 	libvirt-qemu			\
- 	libvirt-lxc 			\
--	usr.lib.libvirt.virt-aa-helper	\
-+	usr.libexec.virt-aa-helper	\
- 	usr.sbin.libvirtd
- 
+diff --git a/examples/Makefile.am b/examples/Makefile.am
+index 2adcefb..cdee23b 100644
+--- a/examples/Makefile.am
++++ b/examples/Makefile.am
+@@ -23,7 +23,7 @@ EXTRA_DIST = \
+ 	apparmor/TEMPLATE.lxc \
+ 	apparmor/libvirt-qemu \
+ 	apparmor/libvirt-lxc \
+-	apparmor/usr.lib.libvirt.virt-aa-helper \
++	apparmor/usr.libexec.virt-aa-helper \
+ 	apparmor/usr.sbin.libvirtd \
+ 	lxcconvert/virt-lxc-convert \
+ 	polkit/libvirt-acl.rules \
+@@ -55,7 +55,7 @@ rename_rename_SOURCES = rename/rename.c
  if WITH_APPARMOR_PROFILES
  apparmordir = $(sysconfdir)/apparmor.d/
  apparmor_DATA = \
--	usr.lib.libvirt.virt-aa-helper \
-+	usr.libexec.virt-aa-helper \
- 	usr.sbin.libvirtd \
+-	apparmor/usr.lib.libvirt.virt-aa-helper \
++	apparmor/usr.libexec.virt-aa-helper \
+ 	apparmor/usr.sbin.libvirtd \
  	$(NULL)
  
 diff --git a/examples/apparmor/usr.lib.libvirt.virt-aa-helper b/examples/apparmor/usr.lib.libvirt.virt-aa-helper
@@ -74,7 +76,7 @@ index b34fb35..0000000
 -}
 diff --git a/examples/apparmor/usr.libexec.virt-aa-helper b/examples/apparmor/usr.libexec.virt-aa-helper
 new file mode 100644
-index 0000000..b34fb35
+index 0000000..08b871a
 --- /dev/null
 +++ b/examples/apparmor/usr.libexec.virt-aa-helper
 @@ -0,0 +1,48 @@
@@ -127,7 +129,7 @@ index 0000000..b34fb35
 +  /**/disk{,.*} r,
 +}
 diff --git a/examples/apparmor/usr.sbin.libvirtd b/examples/apparmor/usr.sbin.libvirtd
-index 5d606e6..ab2f1a9 100644
+index 5d606e6..b2cd8c6 100644
 --- a/examples/apparmor/usr.sbin.libvirtd
 +++ b/examples/apparmor/usr.sbin.libvirtd
 @@ -58,8 +58,10 @@
@@ -143,6 +145,3 @@ index 5d606e6..ab2f1a9 100644
    /etc/libvirt/hooks/** rmix,
    /etc/xen/scripts/** rmix,
  
--- 
-2.3.6
-
