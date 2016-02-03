@@ -32,6 +32,7 @@ VENDOR_DEPEND="
 	>=dev-python/pyparsing-2.0.7[${PYTHON_USEDEP}]
 	virtual/python-ipaddress[${PYTHON_USEDEP}]
 "
+# https://github.com/pypa/pip/issues/3057
 RDEPEND="${VENDOR_DEPEND}
 	>=dev-python/setuptools-19.2[${PYTHON_USEDEP}]
 	<dev-python/setuptools-19.4[${PYTHON_USEDEP}]
