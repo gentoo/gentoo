@@ -13,14 +13,13 @@ HOMEPAGE="http://ubertooth.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+bluez +specan static static-libs +pcap +ubertooth1-firmware +udev"
-REQUIRED_USE="specan? ( ${PYTHON_REQUIRED_USE} )
-		static? ( static-libs )"
+IUSE="+bluez +specan static-libs +pcap +ubertooth1-firmware +udev"
+REQUIRED_USE="specan? ( ${PYTHON_REQUIRED_USE} )"
 DEPEND="bluez? ( net-wireless/bluez:= )
 	>=net-libs/libbtbb-${PV}:=[static-libs?]
 	pcap? ( net-libs/libbtbb[pcap] )
 	specan? ( ${PYTHON_DEPS} )
-	static? ( dev-libs/libusb[static-libs] )
+	static-libs? ( dev-libs/libusb[static-libs] )
 	virtual/libusb:1="
 RDEPEND="${DEPEND}
 	specan? ( >=dev-qt/qtgui-4.7.2:4
@@ -59,7 +58,6 @@ src_configure() {
 		$(cmake-utils_use_enable bluez USE_BLUEZ)
 		$(cmake-utils_use pcap USE_PCAP)
 		$(cmake-utils_use static-libs BUILD_STATIC_LIB)
-		$(cmake-utils_use static BUILD_STATIC_BINS)
 		$(cmake-utils_use_enable udev INSTALL_UDEV_RULES)
 		-DENABLE_PYTHON=false
 	)
