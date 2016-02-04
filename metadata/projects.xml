@@ -2647,27 +2647,27 @@
     <member is-lead="1">
       <email>bernalex@gentoo.org</email>
       <name>Alexander Berntsen</name>
-      <role>Lead</role>
+      <role>Interface developer, Documenter</role>
     </member>
     <member>
       <email>blueboar2@gmail.com</email>
       <name>Vladimir Romanov</name>
-      <role>Russian Translation</role>
+      <role>Translator (Russian)</role>
     </member>
     <member>
       <email>dolsen@gentoo.org</email>
       <name>Brian Dolbec</name>
-      <role>Repoman, gkeys integration</role>
+      <role>Tools developer</role>
     </member>
     <member>
       <email>grobian@gentoo.org</email>
       <name>Fabian Groffen</name>
-      <role>Prefix portage</role>
+      <role>Prefix liaison</role>
     </member>
     <member>
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
-      <role>Contributor</role>
+      <role>Member</role>
     </member>
     <member>
       <email>nullishzero@gentoo.org</email>
@@ -2682,17 +2682,17 @@
     <member>
       <email>tommy@gentoo.org</email>
       <name>Thomas Sachau</name>
-      <role>Mutlilib portage</role>
+      <role>Mutlilib  liaison</role>
     </member>
     <member>
       <email>ulm@gentoo.org</email>
       <name>Ulrich Müller</name>
-      <role>PMS liason</role>
+      <role>PMS liaison</role>
     </member>
     <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
-      <role>Member, Sandbox, Documentation</role>
+      <role>Member, Sandbox developer, Documenter</role>
     </member>
     <member>
       <email>zmedico@gentoo.org</email>
