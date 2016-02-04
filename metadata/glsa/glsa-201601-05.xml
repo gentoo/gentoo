@@ -8,12 +8,15 @@
   </synopsis>
   <product type="ebuild">openssl</product>
   <announced>January 29, 2016</announced>
-  <revised>January 29, 2016: 1</revised>
+  <revised>February 04, 2016: 2</revised>
   <bug>572854</bug>
   <access>remote</access>
   <affected>
     <package name="dev-libs/openssl" auto="yes" arch="*">
       <unaffected range="ge">1.0.2f</unaffected>
+      <unaffected range="rge">1.0.1r</unaffected>
+      <unaffected range="rge">1.0.1s</unaffected>
+      <unaffected range="rge">1.0.1t</unaffected>
       <vulnerable range="lt">1.0.2f</vulnerable>
     </package>
   </affected>
@@ -56,7 +59,7 @@
   <metadata tag="requester" timestamp="Fri, 29 Jan 2016 23:06:05 +0000">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Fri, 29 Jan 2016 23:37:22 +0000">
+  <metadata tag="submitter" timestamp="Thu, 04 Feb 2016 09:45:29 +0000">
     keytoaster
   </metadata>
 </glsa>
