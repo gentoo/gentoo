@@ -5,7 +5,7 @@
 EAPI=6
 
 DESCRIPTION="A simple podcast aggregator"
-HOMEPAGE="http://podget.sourceforge.net/"
+HOMEPAGE="http://podget.sourceforge.net/ https://github.com/dvehrs/podget"
 SRC_URI="https://github.com/dvehrs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
