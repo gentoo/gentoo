@@ -16432,6 +16432,8 @@ sys-apps/roccat-tools 3.4.0 3.5.0 3.5.0-r1 3.6.1 3.7.0: Utility for advanced con
 sys-apps/rsbac-admin 1.4.9: Rule Set Based Access Control (RSBAC) Admin Tools
 sys-apps/s390-tools 1.17.0 1.23.1: User space utilities for the zSeries (s390) Linux kernel and device drivers
 sys-apps/s6 2.1.3.0 2.2.4.3: skarnet.org's small and secure supervision software suite
+sys-apps/s6-linux-utils 2.0.2.3: Set of tiny linux utilities
+sys-apps/s6-portable-utils 2.0.5.3: Set of tiny portable unix utilities
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
 sys-apps/sandbox 2.6-r1 2.7 2.8 2.9 2.10-r1: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.07 1.08-r1 1.09: Utility to output and modify parameters on a SCSI device, like hdparm
@@ -16457,7 +16459,7 @@ sys-apps/texinfo 4.13-r2 5.2 6.0: The GNU info program and utilities
 sys-apps/the_silver_searcher 0.29.1 0.31.0: A code-searching tool similar to ack, but faster
 sys-apps/timer_entropyd 0.2: A timer-based entropy generator
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
-sys-apps/toybox 0.4.7 0.4.8 0.4.9 0.4.9-r1 0.5.0 0.5.1 0.5.2 0.6.0 0.6.1 9999: Common linux commands in a multicall binary
+sys-apps/toybox 0.6.0 0.6.1 0.7.0 9999: Common linux commands in a multicall binary
 sys-apps/tuned 2.5.1 2.6.0: Daemon for monitoring and adaptive tuning of system devices
 sys-apps/tuxonice-userui 1.1-r2: User Interface for TuxOnIce
 sys-apps/uam 0.3 0.3.1 0.3.2 9999: Simple udev-based automounter for removable USB media
