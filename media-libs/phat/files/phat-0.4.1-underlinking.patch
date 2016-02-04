@@ -1,0 +1,27 @@
+- Remove hardcoded CFLAGS and -Werror flags
+- Fix underlinking caused by missing x11 dependency:
+* ../phat/.libs/libphat.so: error: undefined reference to 'XWarpPointer'
+
+--- phat-0.4.1/configure.ac
++++ phat-0.4.1/configure.ac
+@@ -17,7 +17,6 @@
+     [if test x$enable_debug = xyes; then with_debug=yes ; fi])
+ 
+ if test x$with_debug = xno; then
+-    CFLAGS="-O3"
+     AC_DEFINE(DEBUG, 0, [[whether to display debugging output or not]])
+ else
+     AC_DEFINE(DEBUG, 1, [[whether to display debugging output or not]])
+@@ -46,10 +45,10 @@
+ GTK_DOC_CHECK(1.0)
+ 
+ # misc checks
+-PKG_CHECK_MODULES(MISC, libgnomecanvas-2.0)
++PKG_CHECK_MODULES(MISC, libgnomecanvas-2.0 x11)
+ 
+ # set compilation flags
+-CFLAGS="$CFLAGS $GTK_CFLAGS $MISC_CFLAGS -Wall -Werror"
++CFLAGS="$CFLAGS $GTK_CFLAGS $MISC_CFLAGS -Wall"
+ LIBS="$LIBS $GTK_LIBS $MISC_LIBS"
+ 
+ # print build summary
