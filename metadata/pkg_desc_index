@@ -8896,7 +8896,7 @@ dev-ruby/rspec-core 2.14.8-r2 2.14.8-r4 2.99.2-r1 3.2.3 3.2.3-r1 3.3.1 3.3.2 3.3
 dev-ruby/rspec-expectations 2.14.5 2.14.5-r1 2.99.2 3.2.1 3.3.0 3.3.1 3.4.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-its 1.1.0 1.2.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-mocks 2.14.6 2.14.6-r1 2.99.2 3.2.1 3.3.1 3.3.2 3.4.0 3.4.1: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspec-rails 2.14.2 2.99.0 3.2.3 3.3.2 3.3.3 3.4.0: RSpec's official Ruby on Rails plugin
+dev-ruby/rspec-rails 2.14.2 2.99.0 3.2.3 3.3.2 3.3.3 3.4.0 3.4.2: RSpec's official Ruby on Rails plugin
 dev-ruby/rspec-retry 0.4.5: Retry intermittently failing rspec examples
 dev-ruby/rspec-support 3.2.1 3.3.0 3.4.0 3.4.1: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspectacular 0.64.0 0.68.0 0.70.0: RSpec support and matchers
@@ -8979,7 +8979,7 @@ dev-ruby/sexp_processor 4.4.4 4.6.0 4.6.1: Processor for s-expressions created a
 dev-ruby/sfl 2.2-r1: This library provides spawn() which is almost perfectly compatible with ruby 1.9's
 dev-ruby/shorturl 1.0.0-r1 1.0.0-r2: A very simple library to use URL shortening services such as TinyURL or RubyURL
 dev-ruby/shotgun 0.9-r1 0.9.1: Forking implementation of rackup
-dev-ruby/shoulda 2.11.3-r1 2.11.3-r2 3.5.0-r1 3.5.0-r2: Making tests easy on the fingers and eyes
+dev-ruby/shoulda 2.11.3-r2 3.5.0-r2: Making tests easy on the fingers and eyes
 dev-ruby/shoulda-context 1.1.6 1.2.1: Context framework extracted from Shoulda
 dev-ruby/shoulda-matchers 2.8.0 3.0.1 3.1.0: Making tests easy on the fingers and eyes
 dev-ruby/sigar 0.7.3: System Information Gatherer And Reporter
@@ -9047,7 +9047,7 @@ dev-ruby/uconv 0.6.1-r1 0.6.1-r2: A module to convert ISO/IEC 10646 (Unicode) st
 dev-ruby/uglifier 2.7.0 2.7.1 2.7.2: Ruby wrapper for UglifyJS JavaScript compressor
 dev-ruby/ultraviolet 1.0.1: A syntax highlighting engine based on Textpow
 dev-ruby/unf 0.1.4: A wrapper library to bring Unicode Normalization Form support to Ruby/JRuby
-dev-ruby/unf_ext 0.0.6-r1 0.0.6-r2 0.0.7.1: Unicode Normalization Form support library for CRuby
+dev-ruby/unf_ext 0.0.7.1 0.0.7.2: Unicode Normalization Form support library for CRuby
 dev-ruby/unindent 1.0: Ruby method to unindent strings
 dev-ruby/uuidtools 2.1.4-r1 2.1.5: Simple library to generate UUIDs
 dev-ruby/vcard 0.2.12: Ruby vcard support extracted from Vpim
