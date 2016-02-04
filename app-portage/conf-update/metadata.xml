@@ -16,5 +16,7 @@ portage de Gentoo Linux
 <use>
   <flag name="colordiff">Use colors when displaying diffs
     (<pkg>app-misc/colordiff</pkg>)</flag>
+<flag name="libressl">Enable SSL connections and crypto functions
+	using <pkg>dev-libs/libressl</pkg></flag>
 </use>
 </pkgmetadata>
