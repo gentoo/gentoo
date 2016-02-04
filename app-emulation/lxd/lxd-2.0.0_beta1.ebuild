@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -68,6 +68,13 @@ src_prepare() {
 	# Gentoo installs that with a renamed binary
 	epatch "${FILESDIR}/${P}-nc-binary-name.patch"
 
+	# see https://github.com/lxc/lxd/pull/1562
+	epatch "${FILESDIR}/${P}-disregard-dev-subdirs.patch"
+
+	tmpgoroot="${T}/goroot"
+	mkdir -p "$tmpgoroot" || die "Failed to create temporary GOROOT"
+	cp -sR "$(get_golibdir_gopath)"/* "${tmpgoroot}" || die "Failed to copy files to temporary GOROOT"
+
 	# Warn on unhandled locale changes
 	l10n_find_plocales_changes po "" .po
 }
@@ -77,12 +84,13 @@ src_compile() {
 
 	cd "${S}/src/${EGO_PN}" || die "Failed to change to deep src dir"
 
+	tmpgoroot="${T}/goroot"
 	if use daemon; then
 		# Build binaries
-		GOPATH="${S}:$(get_golibdir_gopath)" emake
+		GOPATH="${S}:${tmpgoroot}" emake
 	else
 		# build client tool
-		GOPATH="${S}:$(get_golibdir_gopath)" emake client
+		GOPATH="${S}:${tmpgoroot}" emake client
 	fi
 
 	use nls && emake build-mo
@@ -120,7 +128,7 @@ src_install() {
 		systemd_dounit "${FILESDIR}"/lxd.service
 	fi
 
-	newbashcomp config/bash/lxc.in lxc
+	newbashcomp config/bash/lxd-client lxc
 
 	dodoc AUTHORS CONTRIBUTING.md README.md
 
