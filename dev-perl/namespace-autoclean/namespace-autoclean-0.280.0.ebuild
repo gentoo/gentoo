@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Keep imports out of your namespace"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~x86 ~x64-macos"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~x86 ~x64-macos"
 IUSE="test"
 
 RDEPEND="
