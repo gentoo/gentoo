@@ -22,7 +22,7 @@ DOCS=( README Changelog )
 
 src_compile() {
 	# There is a Makefile that we don't want to use.
-	:
+	:;
 }
 
 src_install() {
