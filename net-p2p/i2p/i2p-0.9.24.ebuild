@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,50 +12,65 @@ SRC_URI="https://download.i2p2.de/releases/${PV}/i2psource_${PV}.tar.bz2"
 
 LICENSE="Apache-2.0 Artistic BSD CC-BY-2.5 CC-BY-3.0 CC-BY-SA-3.0 EPL-1.0 GPL-2 GPL-3 LGPL-2.1 LGPL-3 MIT public-domain WTFPL-2"
 SLOT="0"
+
 # Until the deps reach other arches
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="nls"
+
 # dev-java/ant-core is automatically added due to java-ant-2.eclass
-DEPEND=">=dev-java/bcprov-1.50
-		dev-java/eclipse-ecj:*
-		dev-java/jakarta-jstl
-		dev-java/java-service-wrapper
-		dev-java/jrobin
-		dev-java/slf4j-api
-		dev-libs/gmp:*
-		nls? ( sys-devel/gettext )
-		>=virtual/jdk-1.6:="
-RDEPEND="${DEPEND} >=virtual/jre-1.6"
+CDEPEND="dev-java/jrobin:0
+	dev-java/bcprov:1.50
+	dev-java/slf4j-api:0
+	dev-java/tomcat-jstl-impl:0
+	dev-java/tomcat-jstl-spec:0
+	dev-java/java-service-wrapper:0"
+
+DEPEND="${CDEPEND}
+	dev-java/eclipse-ecj:*
+	dev-libs/gmp:*
+	nls? ( sys-devel/gettext )
+	>=virtual/jdk-1.6"
+
+RDEPEND="${CDEPEND}
+	>=virtual/jre-1.6"
 
 EANT_BUILD_TARGET="pkg"
-EANT_GENTOO_CLASSPATH="jakarta-jstl,java-service-wrapper,jrobin,slf4j-api"
+EANT_GENTOO_CLASSPATH="java-service-wrapper,jrobin,slf4j-api,tomcat-jstl-impl,tomcat-jstl-spec,bcprov-1.50"
 
 pkg_setup() {
+	java-pkg-2_pkg_setup
+
 	enewgroup i2p
 	enewuser i2p -1 -1 /var/lib/i2p i2p -m
 }
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
+	cd "${S}" || die
 	java-ant_rewrite-classpath
 }
 
 src_prepare() {
+	java-pkg-2_src_prepare
+
 	# We're on GNU/Linux, we don't need .exe files
 	echo "noExe=true" > override.properties
 	if ! use nls; then
 		echo "require.gettext=false" >> override.properties
 	fi
+
+	#epatch "${FILESDIR}/${P}_fix-encoding.patch"
 }
 
 src_install() {
+	# Cd into pkg-temp.
+	cd "${S}/pkg-temp" || die
+
+	# Apply patch.
+	epatch "${FILESDIR}/${PN}-0.9.23_fix-paths.patch"
+
 	# Using ${D} here results in an error. Docs say use $ROOT
 	i2p_home="${ROOT}/usr/share/i2p"
-	# Patch the relevant files. This needs to be in src_install due to
-	# preinst() generating the files we're patching
-	cd pkg-temp
-	epatch "${FILESDIR}/i2p-0.9.18_fix-paths.patch"
 
 	# This is ugly, but to satisfy all non-system .jar dependencies, jetty and
 	# systray4j would need to be packaged. The former would be too large a task
@@ -87,11 +102,21 @@ src_install() {
 	java-pkg_dowar webapps/*.war
 
 	# Install daemon files
-	newinitd "${FILESDIR}/i2p.initd" i2p
+	newinitd "${FILESDIR}/${PN}-0.9.23_initd" i2p
 	systemd_newunit "${FILESDIR}"/i2p.service i2p.service
+
+	# setup user
+	dodir /var/lib/i2p/.i2p
+	fowners -R i2p:i2p /var/lib/i2p/.i2p
 }
 
 pkg_postinst() {
 	elog "Custom configuration belongs in /var/lib/i2p/.i2p/ to avoid being overwritten."
 	elog "I2P can be configured through the web interface at http://localhost:7657/index.jsp"
+
+	ewarn 'Currently, the i2p team do not enforce to use ECDSA keys. But it is more and'
+	ewarn 'more pushed. To help the network, you are recommended to have either:'
+	ewarn '  dev-java/icedtea[-sunec,nss]'
+	ewarn '  dev-java/oracle-jre-bin'
+	ewarn '  dev-java/oracle-jdk-bin'
 }
