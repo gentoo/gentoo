@@ -11,7 +11,7 @@ inherit distutils-r1 versionator
 MYPN=Theano
 MYP=${MYPN}-$(replace_version_separator 3 '')
 
-DESCRIPTION="Python library to define and optimize multi-dimensional arrays mathematical expressions"
+DESCRIPTION="Define and optimize multi-dimensional arrays mathematical expressions"
 HOMEPAGE="https://github.com/Theano/Theano"
 SRC_URI="mirror://pypi/${MYPN:0:1}/${MYPN}/${MYP}.tar.gz"
 
