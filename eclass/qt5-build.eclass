@@ -190,13 +190,19 @@ qt5-build_src_prepare() {
 			configure || die "sed failed (QMAKE_CONF_COMPILER)"
 
 		# Respect toolchain and flags in config.tests
-		find config.tests/unix -name '*.test' -type f \
-			-execdir sed -i -e '/bin\/qmake/ s/-nocache //' '{}' + \
-			|| die "sed failed (config.tests)"
+		find config.tests/unix -name '*.test' -type f -execdir \
+			sed -i -e '/bin\/qmake/ s/-nocache //' '{}' + || die
 
 		# Don't add -O3 to CXXFLAGS (bug 549140)
 		sed -i -e '/CONFIG\s*+=/ s/optimize_full//' \
 			src/{corelib/corelib,gui/gui}.pro || die "sed failed (optimize_full)"
+
+		# Don't inject -msse/-mavx/... into CXXFLAGS when detecting
+		# compiler support for extended instruction sets (bug 552942)
+		if use x86 && [[ ${QT5_MINOR_VERSION} -ge 5 ]]; then
+			find config.tests/common -name '*.pro' -type f -execdir \
+				sed -i -e '/else:QMAKE_CXXFLAGS\s*+=/ d' '{}' + || die
+		fi
 	fi
 
 	if [[ ${EAPI} == 5 ]]; then
@@ -531,7 +537,7 @@ qt5_base_configure() {
 		# obsolete flag, does nothing
 		#-qml-debug
 
-		# instruction set support
+		# extended instruction sets support
 		$(is-flagq -mno-sse2    && echo -no-sse2)
 		$(is-flagq -mno-sse3    && echo -no-sse3)
 		$(is-flagq -mno-ssse3   && echo -no-ssse3)
