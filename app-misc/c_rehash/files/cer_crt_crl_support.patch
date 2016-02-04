@@ -1,0 +1,12 @@
+diff -ruN c_rehash.orig/c_rehash c_rehash/c_rehash
+--- c_rehash.orig/c_rehash	2016-02-04 10:43:30.399103942 +0100
++++ c_rehash/c_rehash	2016-02-04 10:44:02.441922501 +0100
+@@ -140,7 +140,7 @@
+         fi
+     done
+ 
+-    ls -1 *.pem 2>/dev/null | while read FILE
++    ls -1 *.pem *.cer *.crt *.crl 2>/dev/null | while read FILE
+     do
+ 	check_file ${FILE}
+         local FILE_TYPE=${?}

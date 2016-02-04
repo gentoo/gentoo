@@ -4,6 +4,8 @@
 
 EAPI=5
 
+inherit eutils
+
 DESCRIPTION="c_rehash script from OpenSSL"
 HOMEPAGE="http://www.openssl.org/"
 SRC_URI="http://cvs.pld-linux.org/cgi-bin/cvsweb.cgi/packages/openssl/openssl-c_rehash.sh?rev=${PV} -> openssl-c_rehash.sh.${PV}"
@@ -25,6 +27,10 @@ src_prepare() {
 		-e "s:SSL_CMD=/usr:SSL_CMD=${EPREFIX}/usr:" \
 		"${DISTDIR}"/openssl-c_rehash.sh.${PV} \
 		> "${WORKDIR}"/c_rehash || die #416717
+
+	# #573786 Add support for .crt, .cer, or .crl files as supported by OpenSSL
+	# version of c_rehash, see https://www.openssl.org/docs/manmaster/apps/c_rehash.html
+	epatch "${FILESDIR}/cer_crt_crl_support.patch"
 }
 
 src_install() {
