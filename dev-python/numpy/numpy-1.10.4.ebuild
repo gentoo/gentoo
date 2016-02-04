@@ -114,6 +114,7 @@ python_prepare_all() {
 #		-i numpy/tests/test_scripts.py || die
 
 	distutils-r1_python_prepare_all
+	epatch_user
 }
 
 python_compile() {
