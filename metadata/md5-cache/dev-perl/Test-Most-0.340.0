@@ -3,11 +3,11 @@ DEPEND=>=dev-perl/Exception-Class-1.140.0 >=dev-perl/Test-Warn-0.230.0 >=dev-per
 DESCRIPTION=Most commonly needed test functions and features
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Test-Most/
-KEYWORDS=~alpha ~amd64 hppa ppc ~ppc64 ~x86
+KEYWORDS=alpha ~amd64 hppa ppc ~ppc64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Exception-Class-1.140.0 >=dev-perl/Test-Warn-0.230.0 >=dev-perl/Test-Deep-0.106 >=dev-perl/Test-Differences-0.610.0 >=dev-perl/Test-Exception-0.310.0 >=virtual/perl-Test-Harness-3.210.0 >=virtual/perl-Test-Simple-0.88 dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/O/OV/OVID/Test-Most-0.34.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=eutils	28fb3e5852485af1c348d446b0b98389	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
-_md5_=dc27e805a4ba7bc004a7706dbbd52a6a
+_md5_=74c896c695edfd77dd2deaa60920e3bd
