@@ -5,7 +5,7 @@
 EAPI=5
 inherit eutils multilib toolchain-funcs
 
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos"
 
 DESCRIPTION="Fast, reliable, simple package for creating and reading constant databases"
 HOMEPAGE="http://cr.yp.to/cdb.html"
