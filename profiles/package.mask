@@ -600,11 +600,6 @@ www-client/uzbl
 # Needs a bump and substantial ebuild rewrite
 =sci-mathematics/reduce-20110414-r1
 
-# Michael Sterrett <mr_bones_@gentoo.org> (04 Jan 2016)
-# Upstream stopped development in 2004 and doesn't work on modern systems.
-# Masked for removal on 20160203
-games-puzzle/krystaldrop
-
 # Pacho Ramos <pacho@gentoo.org> (03 Jan 2016)
 # Fails to build, bug #368873. Removal in a month
 x11-misc/xoo
