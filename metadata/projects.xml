@@ -2657,7 +2657,7 @@
     <member>
       <email>dolsen@gentoo.org</email>
       <name>Brian Dolbec</name>
-      <role>Tools developer</role>
+      <role>Tools developer, Release coordinator</role>
     </member>
     <member>
       <email>grobian@gentoo.org</email>
@@ -2697,7 +2697,7 @@
     <member>
       <email>zmedico@gentoo.org</email>
       <name>Zac Medico</name>
-      <role>Member</role>
+      <role>Core</role>
     </member>
   </project>
   <project>
