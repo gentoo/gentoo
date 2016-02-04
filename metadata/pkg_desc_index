@@ -3118,7 +3118,7 @@ dev-go/go-spew 0_pre20150619 9999: Implements a deep pretty printer for Go data 
 dev-go/go-sys 0_pre20150729 9999: Go packages for low-level interaction with the operating system
 dev-go/go-text 0_pre20150806 9999: Go text processing support
 dev-go/go-tools 0_pre20150805 0_pre20150823-r1 0_pre20150902 0_pre20160121 9999: Go Tools
-dev-go/godep 50 51 9999: dependency tool for go
+dev-go/godep 50 51 52 9999: dependency tool for go
 dev-go/gom 0_pre20151110: Go Dependency management system similar to bundle for ruby
 dev-go/sanitized-anchor-name 0_pre20150822 9999: A Go function to provide sanitized anchor names
 dev-go/sarama 1.4.3 9999: Sarama is a Go library for Apache Kafka
@@ -12393,7 +12393,7 @@ media-libs/openjpeg 1.5.2 1.5.2-r1 2.0.0 2.0.0-r1 2.1.0 2.1.0-r1: An open-source
 media-libs/opus 1.0.2-r2 1.1 1.1.1 1.1.2: Open versatile codec designed for interactive speech and audio transmission over the internet
 media-libs/opusfile 0.4 0.5 0.6 0.6-r1: A high-level decoding and seeking API for .opus files
 media-libs/oyranos 0.9.4-r2 0.9.5 0.9.5-r1 9999: Colour management system allowing to share various settings across applications and services
-media-libs/phat 0.4.1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
+media-libs/phat 0.4.1 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
 media-libs/phonon 4.7.2 4.8.3 4.8.3-r1 9999: KDE multimedia API
 media-libs/phonon-gstreamer 4.7.2 4.8.2 9999: Phonon GStreamer backend
 media-libs/phonon-qt7 0_pre20110424: Phonon QuickTime7 backend
@@ -13118,7 +13118,7 @@ media-sound/sound-juicer 3.16.1 3.18.1: CD ripper for GNOME
 media-sound/soundconverter 2.1.5 2.1.5-r1: A simple audiofile converter application for the GNOME environment
 media-sound/soundkonverter 2.1.2: Frontend to various audio converters
 media-sound/sox 14.4.1 14.4.2: The swiss army knife of sound processing programs
-media-sound/specimen 0.5.2_rc3-r1: A Midi Controllable Audio Sampler
+media-sound/specimen 0.5.2_rc3-r1 0.5.2_rc3-r2: A Midi Controllable Audio Sampler
 media-sound/spek 0.8.3 0.8.3-r1: Analyse your audio files by showing their spectrogram
 media-sound/splay 0.9.5.2 0.9.5.2-r1: An audio player, primarily for the console
 media-sound/split2flac 0.1_pre20111110-r2 113_p20131017 114 115 9999: sh script to split one big APE/FLAC/WV/WAV audio image with CUE sheet into tracks
