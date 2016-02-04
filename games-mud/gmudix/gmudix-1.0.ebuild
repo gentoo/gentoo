@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-as-needed.patch
+	epatch "${FILESDIR}"/${P}-as-needed.patch \
+		"${FILESDIR}"/${P}-format.patch
 	mv configure.in configure.ac || die
 	rm -f missing || die
 	eautoreconf
