@@ -24,6 +24,7 @@ RDEPEND="
 	>=dev-lang/ocaml-4.01:=
 	dev-ml/ocplib-endian:=
 	dev-ml/sexplib:=
+	<dev-ml/sexplib-113.01.00
 	dev-ml/type-conv:=
 "
 DEPEND="
