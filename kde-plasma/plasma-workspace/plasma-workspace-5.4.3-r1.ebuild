@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -113,7 +113,7 @@ RDEPEND="${COMMON_DEPEND}
 	!kde-base/libtaskmanager:4
 	!<kde-base/kcheckpass-4.11.22-r1:4
 	!kde-base/kcminit:4
-	!kde-base/kdebase-pam:4
+	!kde-base/kdebase-pam:0
 	!kde-base/kdebase-startkde:4
 	!kde-base/klipper:4
 	!kde-base/krunner:4
