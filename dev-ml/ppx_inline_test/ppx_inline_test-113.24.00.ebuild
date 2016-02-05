@@ -21,7 +21,13 @@ DEPEND="dev-ml/ppx_tools:=
 	dev-ml/ppx_core:="
 
 RDEPEND="${DEPEND}"
+DEPEND="${DEPEND} dev-ml/oasis"
 
 S="${WORKDIR}/${MY_P}"
 
 DOCS=( CHANGES.md )
+
+src_prepare() {
+	sed -i -e "s/Executable ppx/Executable ${PN}/" _oasis || die
+	oasis setup || die
+}
