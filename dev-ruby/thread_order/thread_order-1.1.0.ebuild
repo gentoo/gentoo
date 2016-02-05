@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/JoshCheek/thread_order"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc64"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64"
 IUSE=""
 
 all_ruby_prepare() {
