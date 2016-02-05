@@ -1,0 +1,60 @@
+--- a/src/hd/hd.c	2014-04-24 18:16:51.988435839 -0200
++++ b/src/hd/hd.c	2015-08-10 11:52:00.214215589 -0200
+@@ -2634,7 +2634,7 @@
+   str_printf(&s, 0, "%s/%s", base_dir, link_name);
+ 
+   free_mem(buf);
+-  buf = canonicalize_file_name(s);
++  buf = realpath(s, NULL);
+ 
+   free_mem(s);
+ 
+--- a/src/isdn/cdb/isdn_cdb.c	2013-07-22 11:43:29.954667488 -0200
++++ b/src/isdn/cdb/isdn_cdb.c	2015-08-10 11:51:31.550605756 -0200
+@@ -172,12 +172,12 @@
+ 		fprintf(stderr, "Error no filename\n");
+ 		exit(1);
+ 	}
+-	if (!(stdin=freopen(argv[1],"rb", stdin))) {
++	if (!freopen(argv[1],"rb", stdin)) {
+ 		fprintf(stderr, "Cannot open %s as stdin\n", argv[1]);
+ 		exit(2);
+ 	}
+ 	if (argc >2) {
+-		if (!(stdout=freopen(argv[2],"w", stdout))) {
++		if (!freopen(argv[2],"w", stdout)) {
+ 			fprintf(stderr, "Cannot open %s as stdout\n", argv[2]);
+ 			exit(3);
+ 		}
+--- a/src/isdn/cdb/mk_isdnhwdb.c	2013-07-22 11:43:29.954667488 -0200
++++ b/src/isdn/cdb/mk_isdnhwdb.c	2015-08-10 11:50:56.736221310 -0200
+@@ -205,25 +205,25 @@
+ 	int	l;
+ 	time_t	tim;
+ 	if (argc<2) {
+-		if (!(stdin=freopen(CDBISDN_CDB_FILE,"rb", stdin))) {
++		if (!freopen(CDBISDN_CDB_FILE,"rb", stdin)) {
+ 			fprintf(stderr, "Cannot open %s as stdin\n", CDBISDN_CDB_FILE);
+ 			exit(2);
+ 		}
+ 	} else {
+-		if (!(stdin=freopen(argv[1],"rb", stdin))) {
++		if (!freopen(argv[1],"rb", stdin)) {
+ 			fprintf(stderr, "Cannot open %s as stdin\n", argv[1]);
+ 			exit(2);
+ 		}
+ 	}
+ 	if (argc >2) {
+ 		if (strcmp(argv[2], "-")) { /* - := stdout */
+-			if (!(stdout=freopen(argv[2],"w", stdout))) {
++			if (!freopen(argv[2],"w", stdout)) {
+ 				fprintf(stderr, "Cannot open %s as stdout\n", argv[2]);
+ 				exit(3);
+ 			}
+ 		}
+ 	} else { /* default: CDBISDN_HWDB_FILE */
+-		if (!(stdout=freopen(CDBISDN_HWDB_FILE,"w", stdout))) {
++		if (!freopen(CDBISDN_HWDB_FILE,"w", stdout)) {
+ 			fprintf(stderr, "Cannot open %s as stdout\n", CDBISDN_HWDB_FILE);
+ 			exit(3);
+ 		}

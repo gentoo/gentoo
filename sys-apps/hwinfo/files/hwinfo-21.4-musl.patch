@@ -1,0 +1,10 @@
+--- a/hwinfo-21.4/src/hd/manual.c	2016-02-04 22:16:12.265164715 +0000
++++ b/hwinfo-21.4/src/hd/manual.c	2016-02-04 22:16:46.982165236 +0000
+@@ -4,6 +4,7 @@
+ #include <unistd.h>
+ #include <dirent.h>
+ #include <ctype.h>
++#include <limits.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ 
