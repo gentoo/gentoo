@@ -18,8 +18,8 @@ IUSE=""
 
 DEPEND="dev-ml/ppx_tools:=
 	dev-ml/ppx_core:=
-	dev-ml/ppx_deriving:=
-	dev-ml/ppx_driver:=
+	dev-ml/ppx_type_conv:=
+	dev-ml/sexplib:=
 	"
 
 RDEPEND="${DEPEND}"
