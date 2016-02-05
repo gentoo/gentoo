@@ -8581,6 +8581,7 @@ dev-ruby/commander 4.3.5 4.3.7: The complete solution for Ruby command-line exec
 dev-ruby/compass 1.0.1-r1 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-core 1.0.1 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-import-once 1.0.5: Speed up your Sass compilation by making @import only import each file once
+dev-ruby/concurrent-ruby 1.0.0: Modern concurrency tools including agents, futures, promises, thread pools, more
 dev-ruby/configliere 0.4.18-r1 0.4.22: Settings manager for Ruby scripts
 dev-ruby/connection_pool 2.2.0: Generic connection pooling for Ruby
 dev-ruby/contracts 0.12.0 0.13.0: provides contracts for Ruby
@@ -8758,7 +8759,7 @@ dev-ruby/mini_shoulda 0.5.0-r1: A minimal shoulda DSL built on top of MiniTest::
 dev-ruby/minitest 4.7.5-r1 4.7.5-r2 5.3.3-r1 5.5.1 5.8.3 5.8.4: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
 dev-ruby/minitest-bonus-assertions 2.0: Bonus assertions for minitest
 dev-ruby/minitest-pretty_diff 0.1: Pretty-print hashes and arrays before diffing them in MiniTest
-dev-ruby/mixlib-shellout 2.2.1 2.2.2 2.2.3 2.2.5: Run external commands on Unix or Windows
+dev-ruby/mixlib-shellout 2.2.5 2.2.6: Run external commands on Unix or Windows
 dev-ruby/mocha 0.10.5-r1 0.10.5-r2 0.11.4 0.11.4-r1 0.12.7 0.12.10 0.12.10-r1 0.13.3 0.13.3-r1 0.13.3-r2 0.14.0 1.1.0: A Ruby library for mocking and stubbing using a syntax like that of JMock, and SchMock
 dev-ruby/modernizr 2.6.2: Neatly packaged Modernizr JS assets for use in Sprockets or the Rails 3 asset pipeline
 dev-ruby/moneta 0.8.0: A unified interface to key/value stores
@@ -8802,7 +8803,7 @@ dev-ruby/openssl-ccm 1.2.1: OpenSSL CBC-MAC (CCM) ruby gem
 dev-ruby/optionable 0.2.0: Robust options validation for Ruby methods
 dev-ruby/org-ruby 0.9.9 0.9.12: Ruby routines for parsing org-mode files
 dev-ruby/origin 1.1.0 2.1.1 2.2.0: Origin is a simple DSL for generating MongoDB selectors and options
-dev-ruby/ox 2.2.2 2.2.3: A fast XML parser and Object marshaller
+dev-ruby/ox 2.2.2 2.2.3 2.2.4: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.9-r1 1.1.10-r2 1.1.11-r1: A mid-level packet manipulation library
 dev-ruby/paint 1.0.0 1.0.1: Terminal painter
 dev-ruby/parser 2.2.2.6 2.2.3.0 2.3.0.1 2.3.0.2: A production-ready Ruby parser written in pure Ruby
@@ -8927,7 +8928,7 @@ dev-ruby/ruby-hmac 0.4.0-r1: A common interface to HMAC functionality as documen
 dev-ruby/ruby-inifile 2.0.0-r2: Small library to parse INI-files in Ruby
 dev-ruby/ruby-ldap 0.9.16-r1 0.9.17: A Ruby interface to some LDAP libraries
 dev-ruby/ruby-mp3info 0.8.6 0.8.7 0.8.8: A pure Ruby library for access to mp3 files (internal infos and tags)
-dev-ruby/ruby-net-ldap 0.12.1 0.13.0: Pure ruby LDAP client implementation
+dev-ruby/ruby-net-ldap 0.12.1 0.13.0 0.14.0: Pure ruby LDAP client implementation
 dev-ruby/ruby-oci8 2.1.7 2.1.7-r1 2.1.8 2.2.1: A Ruby library for Oracle OCI8
 dev-ruby/ruby-odbc 0.99997 0.99997-r1: RubyODBC - For accessing ODBC data sources from the Ruby language
 dev-ruby/ruby-oembed 0.8.14 0.9.0: An oEmbed consumer library written in Ruby.
