@@ -9427,7 +9427,7 @@ dev-util/d-feet 0.3.9 0.3.10: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 9.20150101 9.20151225 9.20160115: Collection of programs that can be used to automate common tasks in debian/rules
-dev-util/debootstrap 1.0.75 1.0.76 1.0.77: Debian/Ubuntu bootstrap scripts
+dev-util/debootstrap 1.0.75 1.0.78: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 4.4.6-r1 4.4.6-r2 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
 dev-util/desktop-file-utils 0.21 0.22: Command line utilities to work with desktop menu entries
@@ -14733,7 +14733,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/yaydl 1.5.2: Yet Another Youtube DownLoader which is downloading more than youtube
-net-misc/youtube-dl 2016.01.01 2016.01.15 2016.01.23 2016.01.27 2016.01.29 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.01.01 2016.01.29 2016.02.01 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.1 3.1.9 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17588,7 +17588,7 @@ www-client/lynx 2.8.8_p2 2.8.9_pre4 2.8.9_pre6: An excellent console-based web b
 www-client/midori 0.5.10 0.5.11: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.2-r1 3.3-r1: a free, open source web browser
-www-client/opera 12.16_p1860-r1 34.0.2036.25 34.0.2036.47 34.0.2036.50: A fast and secure web browser
+www-client/opera 12.16_p1860-r1 34.0.2036.50 35.0.2066.37: A fast and secure web browser
 www-client/opera-beta 35.0.2066.10 35.0.2066.23 35.0.2066.35: A fast and secure web browser
 www-client/opera-developer 36.0.2079.0 36.0.2106.0 36.0.2120.0: A fast and secure web browser
 www-client/otter 0.9.07 0.9.08 0.9.09 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
