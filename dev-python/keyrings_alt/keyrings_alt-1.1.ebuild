@@ -36,6 +36,13 @@ S="${WORKDIR}"/${MY_P}
 # Multiple failures
 RESTRICT=test
 
+python_prepare_all() {
+	sed \
+		-e "s:find_packages():find_packages(exclude=['tests']):g" \
+		-i setup.py || die
+	distutils-r1_python_prepare_all
+}
+
 python_test() {
 	py.test -v -v || die
 }
