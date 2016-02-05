@@ -1,7 +1,11 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+
+# Fabian Groffen <grobian@gentoo.org> (05 Feb 2016)
+# Needs strpcpy, bug #573902
+=app-portage/portage-utils-0.60
 
 # Jeremy Olexa <darkside@gentoo.org> (26 Aug 2008)
 # Requires that pthread.h defines pthread_atfork() but it doesn't on Solaris 9
