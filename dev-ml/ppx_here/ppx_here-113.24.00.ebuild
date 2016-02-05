@@ -6,10 +6,9 @@ EAPI="5"
 
 inherit oasis
 
-MY_P=${PN/-/_}-${PV}
 DESCRIPTION="Expands [%here] into its location"
 HOMEPAGE="http://www.janestreet.com/ocaml"
-SRC_URI="http://ocaml.janestreet.com/ocaml-core/${PV%.*}/files/${MY_P}.tar.gz"
+SRC_URI="http://ocaml.janestreet.com/ocaml-core/${PV%.*}/files/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
@@ -21,13 +20,22 @@ DEPEND="dev-ml/ppx_tools:=
 	dev-ml/ppx_core:="
 
 RDEPEND="${DEPEND}"
-DEPEND="${RDEPEND} dev-ml/oasis"
+DEPEND="${RDEPEND} dev-ml/opam"
 
-S="${WORKDIR}/${MY_P}"
+src_configure() {
+	emake setup.exe
+	OASIS_SETUP_COMMAND="./setup.exe" oasis_src_configure
+}
 
-DOCS=( CHANGES.md )
+src_compile() {
+	emake
+}
 
-src_prepare() {
-	sed -i -e "s/Executable ppx/Executable ${PN}/" _oasis || die
-	oasis setup || die
+src_install() {
+	opam-installer -i \
+		--prefix="${ED}/usr" \
+		--libdir="${D}/$(ocamlc -where)" \
+		--docdir="${ED}/usr/share/doc/${PF}" \
+		${PN}.install || die
+	dodoc CHANGES.md
 }
