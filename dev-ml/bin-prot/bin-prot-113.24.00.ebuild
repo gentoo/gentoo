@@ -14,13 +14,12 @@ DESCRIPTION="A binary protocol generator"
 HOMEPAGE="http://ocaml.janestreet.com/?q=node/13"
 SRC_URI="http://ocaml.janestreet.com/ocaml-core/${PV%.*}/files/${MY_P}.tar.gz"
 
-LICENSE="LGPL-2.1-with-linking-exception"
+LICENSE="Apache-2.0"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="doc"
 
-RDEPEND=">=dev-ml/type-conv-109.28.00:=
-	dev-ml/camlp4:="
+RDEPEND=">=dev-ml/type-conv-109.28.00:="
 DEPEND="${RDEPEND}
 	test? ( >=dev-ml/ounit-1.1.2 )"
 
