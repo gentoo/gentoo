@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ EGIT_REPO_URI="https://github.com/${MY_PN}/${MY_PN}.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="acl cgroups debug doc kernel_linux pam policykit selinux test"
+IUSE="acl cgroups debug doc kernel_linux pam pm-utils policykit selinux test"
 
 COMMON_DEPEND=">=dev-libs/glib-2.40:2=[dbus]
 	>=sys-devel/gettext-0.19
@@ -33,8 +33,10 @@ COMMON_DEPEND=">=dev-libs/glib-2.40:2=[dbus]
 		)
 	pam? ( virtual/pam )
 	policykit? ( >=sys-auth/polkit-0.110 )"
+# pm-utils: bug 557432
 RDEPEND="${COMMON_DEPEND}
 	kernel_linux? ( sys-apps/coreutils[acl?] )
+	pm-utils? ( sys-power/pm-utils )
 	selinux? ( sec-policy/selinux-consolekit )"
 DEPEND="${COMMON_DEPEND}
 	dev-libs/libxslt
@@ -108,15 +110,16 @@ src_install() {
 	exeinto /etc/X11/xinit/xinitrc.d
 	newexe "${FILESDIR}"/90-consolekit-3 90-consolekit
 
+	if use kernel_linux; then
+		# bug 571524
+		exeinto /usr/lib/ConsoleKit/run-session.d
+		doexe "${FILESDIR}"/pam-foreground-compat.ck
+	fi
+
 	prune_libtool_files --all # --all for pam_ck_connector.la
 
 	rm -rf "${ED}"/var/run || die # let the init script create the directory
 
 	insinto /etc/logrotate.d
 	newins "${WORKDIR}"/debian/${PN}.logrotate ${PN} #374513
-}
-
-pkg_postinst() {
-	elog "For suspend/hibernate support, please emerge"
-	elog "  sys-power/pm-utils"
 }

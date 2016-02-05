@@ -107,6 +107,7 @@ src_install() {
 	newexe "${FILESDIR}"/90-consolekit-3 90-consolekit
 
 	if use kernel_linux; then
+		# bug 571524
 		exeinto /usr/lib/ConsoleKit/run-session.d
 		doexe "${FILESDIR}"/pam-foreground-compat.ck
 	fi
