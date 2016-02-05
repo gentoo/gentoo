@@ -16,7 +16,7 @@ SRC_URI="https://github.com/${MY_PN}/${MY_PN}/releases/download/${PV}/${MY_P}.ta
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~amd64-fbsd ~amd64-linux ~arm ~hppa ~ia64-linux ~ppc64 ~x86 ~x86-fbsd ~x86-freebsd ~x86-linux"
-IUSE="acl cgroups debug doc kernel_linux pam policykit selinux test"
+IUSE="acl cgroups debug doc kernel_linux pam pm-utils policykit selinux test"
 
 COMMON_DEPEND=">=dev-libs/glib-2.40:2=[dbus]
 	>=sys-devel/gettext-0.19
@@ -33,8 +33,10 @@ COMMON_DEPEND=">=dev-libs/glib-2.40:2=[dbus]
 		)
 	pam? ( virtual/pam )
 	policykit? ( >=sys-auth/polkit-0.110 )"
+# pm-utils: bug 557432
 RDEPEND="${COMMON_DEPEND}
 	kernel_linux? ( sys-apps/coreutils[acl?] )
+	pm-utils? ( sys-power/pm-utils )
 	selinux? ( sec-policy/selinux-consolekit )"
 DEPEND="${COMMON_DEPEND}
 	dev-libs/libxslt
@@ -105,6 +107,7 @@ src_install() {
 	newexe "${FILESDIR}"/90-consolekit-3 90-consolekit
 
 	if use kernel_linux; then
+		# bug 571524
 		exeinto /usr/lib/ConsoleKit/run-session.d
 		doexe "${FILESDIR}"/pam-foreground-compat.ck
 	fi
@@ -115,9 +118,4 @@ src_install() {
 
 	insinto /etc/logrotate.d
 	newins "${WORKDIR}"/debian/${PN}.logrotate ${PN} #374513
-}
-
-pkg_postinst() {
-	elog "For suspend/hibernate support, please emerge"
-	elog "  sys-power/pm-utils"
 }
