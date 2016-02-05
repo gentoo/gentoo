@@ -302,9 +302,12 @@ net-proxy/ntlmaps
 # microdc2 should be used instead, bug #533782. Removal in a month.
 net-p2p/microdc
 
-# Pacho Ramos <pacho@gentoo.org> (06 Jan 2016)
-# Unmaintained, security issues, bug #536334. Removal in a month.
-net-nds/389-ds-base
+# NP-Hardass <NP-Hardass@gentoo.org> (05 Feb 2016)
+# Security issues bug #536334. Remove this entry in a month.
+<net-nds/389-ds-base-1.3.2.22
+
+# NP-Hardass <NP-Hardass@gentoo.org> (05 Feb 2016)
+# Security issues bug #536334. Under investigation by maintainer.
 app-admin/389-ds-console
 net-nds/389-admin
 app-admin/389-admin-console
