@@ -23,8 +23,8 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 DEPEND="dev-go/go-net:=
-	!<dev-lang/go-1.5"
-RDEPEND=""
+	>=dev-lang/go-1.5"
+RDEPEND="!<dev-lang/go-1.5"
 
 src_prepare() {
 	local go_src="${EGO_PN%/...}"
