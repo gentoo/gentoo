@@ -1,11 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-AUTOTOOLS_AUTORECONF=1
+EAPI=6
 
-inherit autotools-utils eutils systemd
+inherit autotools eutils systemd
 
 DESCRIPTION="An enhanced multi-threaded syslogd with database support and more"
 HOMEPAGE="http://www.rsyslog.com/"
@@ -13,7 +12,9 @@ HOMEPAGE="http://www.rsyslog.com/"
 BRANCH="8-stable"
 
 PATCHES=(
-	"${FILESDIR}"/${BRANCH}/10-respect_CFLAGS-r1.patch
+	"${FILESDIR}"/8-stable/50-rsyslog-8.15.0-imtcp-tls-basic-vg-test-workaround.patch
+	"${FILESDIR}"/8-stable/50-rsyslog-8.15.0-imfile-readmode2-vg-test-workaround.patch
+	"${FILESDIR}"/8-stable/50-rsyslog-8.16.0-fix-queue-engine-issue-262.patch
 )
 
 if [[ ${PV} == "9999" ]]; then
@@ -33,16 +34,13 @@ else
 		http://www.rsyslog.com/files/download/${PN}/${P}.tar.gz
 		doc? ( http://www.rsyslog.com/files/download/${PN}/${PN}-doc-${PV}.tar.gz )
 	"
-	KEYWORDS="amd64 ~arm hppa x86"
-
-	PATCHES+=( "${FILESDIR}"/${BRANCH}/50-rsyslog-run-queue-persist-test-only-once.patch )
-	PATCHES+=( "${FILESDIR}"/${BRANCH}/50-rsyslog-fix-size-based-legacy-config-statements.patch )
-	PATCHES+=( "${FILESDIR}"/${BRANCH}/50-rsyslog-add-option-to-disable-valgrind-usage-in-testbench.patch )
+	KEYWORDS="~amd64 ~arm ~hppa ~x86"
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
 SLOT="0"
-IUSE="dbi debug doc elasticsearch +gcrypt jemalloc kerberos mongodb mysql normalize omudpspoof postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp ssl systemd test usertools zeromq"
+IUSE="dbi debug doc elasticsearch +gcrypt jemalloc kerberos libressl mongodb mysql normalize omudpspoof"
+IUSE+=" postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp ssl systemd test usertools zeromq"
 
 RDEPEND="
 	>=dev-libs/json-c-0.11:=
@@ -58,7 +56,7 @@ RDEPEND="
 	mysql? ( virtual/mysql )
 	normalize? (
 		>=dev-libs/libee-0.4.0
-		>=dev-libs/liblognorm-1.1.0:=
+		>=dev-libs/liblognorm-1.1.2:=
 	)
 	omudpspoof? ( >=net-libs/libnet-1.1.6 )
 	postgres? ( >=dev-db/postgresql-8.4.20:= )
@@ -66,9 +64,12 @@ RDEPEND="
 	redis? ( >=dev-libs/hiredis-0.11.0 )
 	relp? ( >=dev-libs/librelp-1.2.5 )
 	rfc3195? ( >=dev-libs/liblogging-1.0.1:=[rfc3195] )
-	rfc5424hmac? ( >=dev-libs/openssl-0.9.8y:= )
+	rfc5424hmac? (
+		!libressl? ( >=dev-libs/openssl-0.9.8y:0= )
+		libressl? ( dev-libs/libressl:= )
+	)
 	snmp? ( >=net-analyzer/net-snmp-5.7.2 )
-	ssl? ( >=net-libs/gnutls-2.12.23 )
+	ssl? ( >=net-libs/gnutls-2.12.23:0= )
 	systemd? ( >=sys-apps/systemd-208 )
 	zeromq? ( >=net-libs/czmq-1.2.0 )"
 DEPEND="${RDEPEND}
@@ -76,6 +77,9 @@ DEPEND="${RDEPEND}
 
 if [[ ${PV} == "9999" ]]; then
 	DEPEND+=" doc? ( >=dev-python/sphinx-1.1.3-r7 )"
+	DEPEND+=" >=sys-devel/flex-2.5.39-r1"
+	DEPEND+=" >=sys-devel/bison-2.4.3"
+	DEPEND+=" >=dev-python/docutils-0.12"
 fi
 
 # Maitainer note : open a bug to upstream
@@ -125,6 +129,13 @@ src_unpack() {
 	fi
 }
 
+src_prepare() {
+	default
+
+	eautoreconf
+	elibtoolize --patch-only
+}
+
 src_configure() {
 	# Maintainer notes:
 	# * Guardtime support is missing because libgt isn't yet available
@@ -142,6 +153,7 @@ src_configure() {
 	fi
 
 	local myeconfargs=(
+		--disable-debug-symbols
 		--disable-generate-man-pages
 		--without-valgrind-testbench
 		$(use_enable test testbench)
@@ -165,11 +177,13 @@ src_configure() {
 		--enable-omstdout
 		--enable-omuxsock
 		# Misc
+		--disable-omkafka
 		--enable-pmaixforwardedfrom
 		--enable-pmciscoios
 		--enable-pmcisconames
 		--enable-pmlastmsg
 		--enable-pmsnare
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 		# DB
 		$(use_enable dbi libdbi)
 		$(use_enable mongodb ommongodb)
@@ -201,14 +215,13 @@ src_configure() {
 		$(use_enable usertools)
 		$(use_enable zeromq imzmq3)
 		$(use_enable zeromq omzmq3)
-		"$(systemd_with_unitdir)"
 	)
 
-	autotools-utils_src_configure
+	econf ${myeconfargs[@]}
 }
 
 src_compile() {
-	autotools-utils_src_compile
+	default
 
 	if use doc && [[ "${PV}" == "9999" ]]; then
 		einfo "Building documentation ..."
@@ -220,6 +233,11 @@ src_compile() {
 
 src_test() {
 	local _has_increased_ulimit=
+
+	# When adding new tests via patches we have to make them executable
+	einfo "Adjusting permissions of test scripts ..."
+	find "${S}"/tests -type f -name '*.sh' \! -perm -111 -exec chmod a+x '{}' \; || \
+		die "Failed to adjust test scripts permission"
 
 	if ulimit -n 3072; then
 		_has_increased_ulimit="true"
@@ -241,11 +259,10 @@ src_test() {
 }
 
 src_install() {
-	use doc && HTML_DOCS=( "${S}/docs/build/" )
-	autotools-utils_src_install
+	default
 
-	newconfd "${FILESDIR}/${BRANCH}/${PN}.confd" ${PN}
-	newinitd "${FILESDIR}/${BRANCH}/${PN}.initd" ${PN}
+	newconfd "${FILESDIR}/${BRANCH}/${PN}.confd-r1" ${PN}
+	newinitd "${FILESDIR}/${BRANCH}/${PN}.initd-r1" ${PN}
 
 	keepdir /var/empty/dev
 	keepdir /var/spool/${PN}
@@ -270,6 +287,8 @@ src_install() {
 		insinto /usr/share/doc/${PF}/scripts/pgsql
 		doins plugins/ompgsql/createDB.sql
 	fi
+
+	use doc && dohtml -r "${S}/docs/build/"
 }
 
 pkg_postinst() {
