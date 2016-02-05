@@ -2079,6 +2079,10 @@ dev-libs/libsodium:asm - Enables assembly implementations
 dev-libs/libsodium:urandom - Use /dev/urandom instead of /dev/random
 dev-libs/libsqlora8:orathreads - Use Oracle threads
 dev-libs/libtermkey:demos - Install demos, which pulls in dev-libs/glib
+dev-libs/libucl:regex - Enable regex checking for schema
+dev-libs/libucl:signatures - Enable signatures check
+dev-libs/libucl:urlfetch - Enable URLs fetch
+dev-libs/libucl:utils - Builds and installs utils
 dev-libs/libunique:introspection - Use dev-libs/gobject-introspection for introspection
 dev-libs/libverto:glib - Support event loops using dev-libs/glib
 dev-libs/libverto:libev - Support event loops using dev-libs/libev
@@ -7273,6 +7277,7 @@ sys-apps/v86d:x86emu - Use x86emu for Video BIOS calls
 sys-apps/watchdog:nfs - enable support for checking nfs mounts
 sys-apps/xinetd:rpc - support RPC services
 sys-auth/consolekit:cgroups - Use the kernel to track processes instead of the session cookie.
+sys-auth/consolekit:pm-utils - Adds support for suspend/resume using sys-power/pm-utils
 sys-auth/consolekit:policykit - Use the PolicyKit framework (sys-auth/polkit) to get authorization for suspend/shutdown.
 sys-auth/consolekit:systemd-units - Install systemd unit files to replace the modern functionality of logind in sys-apps/systemd. Not recommended.
 sys-auth/fingerprint-gui:upekbsapi - Add UPEK BSAPI drivers for identify functions on some readers
