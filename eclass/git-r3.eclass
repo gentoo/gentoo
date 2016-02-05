@@ -362,8 +362,13 @@ _git-r3_set_submodules() {
 			submodule."${subname}".update)
 		[[ ${upd} == none ]] && continue
 
+		# https://github.com/git/git/blob/master/refs.c#L39
+		# for now, we just filter /. because of #572312
+		local enc_subname=${subname//\/.//_}
+		[[ ${enc_subname} == .* ]] && enc_subname=_${enc_subname#.}
+
 		submodules+=(
-			"${subname}"
+			"${enc_subname}"
 			"$(echo "${data}" | git config -f /dev/fd/0 \
 				submodule."${subname}".url || die)"
 			"$(echo "${data}" | git config -f /dev/fd/0 \
