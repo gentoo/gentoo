@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License, v2
 # $Id$
 
+# Tobias Klausmann <klausman@gentoo.org> (05 Feb 2016)
+# Newer versions of libgadu depend on protobuf-c, which doesn't
+# compile on alpha as of slot:0.
+gadu
+
 # Julian Ospald <hasufell@gentoo.org> (20 Sep 2015)
 # no LibreSSL support yet
 curl_ssl_libressl
