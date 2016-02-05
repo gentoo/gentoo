@@ -20,6 +20,7 @@ IUSE="allservices"
 RDEPEND="
 	dev-ml/ocaml-re:=
 	>=dev-ml/sexplib-109.53.00:=
+	<dev-ml/sexplib-113.01.00
 	dev-ml/stringext:=
 	dev-ml/type-conv:=
 "
