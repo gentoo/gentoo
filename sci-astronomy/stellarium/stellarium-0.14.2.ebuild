@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,6 @@ RESTRICT="test"
 RDEPEND="
 	media-fonts/dejavu
 	dev-qt/qtcore:5
-	dev-qt/qtquick1:5
 	dev-qt/qtgui:5
 	dev-qt/qtopengl:5
 	dev-qt/qtscript:5
@@ -37,7 +36,6 @@ DEPEND="${RDEPEND}
 	dev-qt/qttest:5
 	dev-qt/qtconcurrent:5
 	nls? ( dev-qt/linguist-tools:5 )"
-DOCS=( AUTHORS ChangeLog README )
 
 LANGS=(
 	af ak am ar as ast az be bg bn bo br bs ca cs
@@ -78,7 +76,8 @@ src_configure() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	DOCS="AUTHORS ChangeLog README" \
+		cmake-utils_src_install
 
 	# use the more up-to-date system fonts
 	rm "${ED}"/usr/share/stellarium/data/DejaVuSans{Mono,}.ttf || die
