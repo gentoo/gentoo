@@ -4190,7 +4190,7 @@ dev-java/sax 2.2.1-r2: Simple API for XML, originally a Java-only API. It was th
 dev-java/saxon 6.5.5 6.5.5-r1 9.2.0.6 9.2.0.6-r1: A XSLT and XQuery Processor
 dev-java/saxpath 1.0-r2: A Simple API for XPath
 dev-java/sblim-cim-client 2.2.1 2.2.1-r1: A WBEM services client that includes an IETF RFC 2614 compliant SLP client for CIM service discovery
-dev-java/sbt 0.13.8 0.13.8-r1 0.13.10_rc2: sbt is a build tool for Scala and Java projects that aims to do the basics well
+dev-java/sbt 0.13.8-r1 0.13.10_rc2: sbt is a build tool for Scala and Java projects that aims to do the basics well
 dev-java/sbt-bin 0.12.4 0.13.6 0.13.7 0.13.8 0.13.9: sbt, a build tool for Scala.
 dev-java/servletapi 2.2-r3 2.3-r3 2.4-r5: Servlet API 2.4 from jakarta.apache.org
 dev-java/shared-objects 1.4-r3: A Java Class implementing a core factory for maximal sharing of arbitrary objects
@@ -14485,9 +14485,9 @@ net-misc/httptunnel 3.3-r2: httptunnel can create IP tunnels through firewalls/p
 net-misc/httptype 1.3.9-r1: Returns the http host software of a website
 net-misc/htun 0.9.6: Project to tunnel IP traffic over HTTP
 net-misc/hylafaxplus 5.5.4-r1 5.5.5: Enterprise client-server fax package for class 1 and 2 fax modems
-net-misc/i2pd 0.5.0 0.6.0 0.10.0 9999: A C++ daemon for accessing the I2P anonymous network
+net-misc/i2pd 0.10.0 2.4.0: A C++ daemon for accessing the I2P anonymous network
 net-misc/iaxmodem 1.2.0: Software modem that uses an IAX channel instead of a traditional phone line
-net-misc/icaclient 12.1.0 13.2.0.322243 13.2.1.328635: ICA Client for Citrix Presentation servers
+net-misc/icaclient 12.1.0 13.2.0.322243 13.2.1.328635 13.3.0.344519: ICA Client for Citrix Presentation servers
 net-misc/icecast 2.4.2 2.4.3: An opensource alternative to shoutcast that supports mp3, ogg (vorbis/theora) and aac streaming
 net-misc/ices 2.0.1-r1 2.0.2: Icecast OGG streaming client, supports on the fly re-encoding
 net-misc/identicurse 0.9: A simple Identi.ca client with a curses-based UI
@@ -17657,7 +17657,7 @@ www-misc/profile-sync-daemon 5.45.1: Symlinks and syncs browser profile dirs to 
 www-misc/reflector 2011.05.13.1: archlinux's take on mirrorselect
 www-misc/shellinabox 2.19: Web server that can export arbitrary command line tools to a web based terminal emulator
 www-misc/surl 0.7.1.1: URL shortening command line application that supports various sites
-www-misc/urlwatch 1.18 2.0-r2: A tool for monitoring webpages for updates
+www-misc/urlwatch 1.18 2.0-r2 2.1: A tool for monitoring webpages for updates
 www-misc/vdradmin-am 3.6.9 3.6.9-r3 3.6.10: WWW Admin for the Video Disk Recorder
 www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
