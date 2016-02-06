@@ -19,6 +19,7 @@ DEPEND="dev-ml/ppx_tools:=
 	>=dev-lang/ocaml-4.02.3:=[ocamlopt?]"
 RDEPEND="${DEPEND}"
 DEPEND="${RDEPEND}
+	dev-ml/opam
 	test? ( dev-ml/ounit )"
 
 src_compile() {
@@ -40,12 +41,12 @@ src_test() {
 }
 
 src_install() {
-	findlib_src_preinst
-	# Copied from upstream makefile
-	grep -E '^[[:space:]]+' ppx_deriving.install | \
-		awk '{ print $1 }' | \
-		sed -e 's:"?*::g'  | \
-		xargs ocamlfind install ppx_deriving || die
+	opam-installer -i \
+		--prefix="${ED}/usr" \
+		--libdir="${D}/$(ocamlc -where)" \
+		--docdir="${ED}/usr/share/doc/${PF}" \
+		${PN}.install || die
+	mv "${ED}/usr/lib/ppx_deriving/ppx_deriving" "${D}/$(ocamlc -where)/ppx_deriving/" || die
 
 	use doc && dohtml api.docdir/*
 

@@ -13,13 +13,15 @@ SRC_URI="https://github.com/ocsigen/js_of_ocaml/archive/${PV}.tar.gz -> ${P}.tar
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
-IUSE="+ocamlopt doc +deriving"
+IUSE="+ocamlopt doc +deriving +ppx +ppx-deriving +react +xml X"
 
-DEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]
+DEPEND="
+	>=dev-lang/ocaml-3.12:=[ocamlopt?,X?]
 	>=dev-ml/lwt-2.4.4:=
-	dev-ml/react:=
-	dev-ml/reactiveData:=
-	>=dev-ml/tyxml-3.6:=
+	react? ( dev-ml/react:=  dev-ml/reactiveData:= )
+	xml? ( >=dev-ml/tyxml-3.6:= )
+	ppx? ( dev-ml/ppx_tools:= )
+	ppx-deriving? ( dev-ml/ppx_deriving:= )
 	dev-ml/cmdliner:=
 	dev-ml/menhir:=
 	dev-ml/ocaml-base64:=
@@ -29,8 +31,14 @@ DEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]
 RDEPEND="${DEPEND}"
 
 src_configure() {
+	printf "\n\n" >> Makefile.conf
 	use ocamlopt || echo "BEST := byte" >> Makefile.conf
+	use ocamlopt || echo "NATDYNLINK := NO" >> Makefile.conf
 	use deriving || echo "WITH_DERIVING := NO" >> Makefile.conf
+	use X || echo "WITH_GRAPHICS := NO" >> Makefile.conf
+	use react || echo "WITH_REACT := NO" >> Makefile.conf
+	use ppx || echo "WITH_PPX := NO" >> Makefile.conf
+	use ppx-deriving || echo "WITH_PPX_PPX_DERIVING := NO" >> Makefile.conf
 }
 
 src_compile() {

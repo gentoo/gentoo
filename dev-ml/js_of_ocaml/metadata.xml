@@ -7,6 +7,9 @@
   </maintainer>
   <use>
     <flag name="deriving">Enable <pkg>dev-ml/deriving</pkg> support for improving the type safety.</flag>
+	<flag name="ppx">Enables the ppx syntax extension</flag>
+	<flag name="ppx-deriving">Enables deriving support through ppx syntax extensions.</flag>
+	<flag name="react">Enable functionnal reactive programming support.</flag>
   </use>
   <upstream>
     <remote-id type="github">ocsigen/js_of_ocaml</remote-id>
