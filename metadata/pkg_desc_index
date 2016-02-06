@@ -1685,7 +1685,7 @@ app-misc/brewtarget 2.0.2 2.1.0: Application to create and manage beer recipes
 app-misc/btail 0.3: Bayesian logfile filter
 app-misc/byobu 5.94: A set of profiles for the GNU Screen console window manager (app-misc/screen)
 app-misc/c_rehash 1.7-r1: c_rehash script from OpenSSL
-app-misc/ca-certificates 20140927.3.17.2 20141019.3.17.4 20141019.3.19 20141019.3.19-r1 20150426.3.20 20150426.3.20-r1 20151214.3.21: Common CA Certificates PEM files
+app-misc/ca-certificates 20140927.3.17.2 20141019.3.17.4 20141019.3.19 20141019.3.19-r1 20150426.3.20 20150426.3.20-r1 20151214.3.21 20160104.3.21: Common CA Certificates PEM files
 app-misc/cadubi 1.3: CADUBI is an application that allows you to draw ASCII-Art images
 app-misc/calendar 0.9.1: Standard unix calendar program for Linux, ported from OpenBSD
 app-misc/carbon-c-relay 1.4 1.5 1.7: Enhanced C version of Carbon relay, aggregator and rewriter
@@ -4999,7 +4999,7 @@ dev-ml/core_bench 112.35.00 113.24.00: Micro-benchmarking library for OCaml
 dev-ml/core_extended 113.24.00: Jane Street's alternative to the standard library
 dev-ml/core_kernel 113.24.00: System-independent part of Core
 dev-ml/core_profiler 113.24.00: Jane Street's profiling library
-dev-ml/cppo 1.3.0 1.3.1: An equivalent of the C preprocessor for OCaml programs
+dev-ml/cppo 1.3.1: An equivalent of the C preprocessor for OCaml programs
 dev-ml/cryptokit 1.7 1.9 1.10: Cryptographic primitives library for Objective Caml
 dev-ml/csv 1.3.0 1.3.3 1.4 1.4.2: A pure OCaml library to read and write CSV files
 dev-ml/cudf 0.7 0.8: Library to parse, pretty print, and evaluate CUDF documents
@@ -5037,6 +5037,7 @@ dev-ml/oasis 0.3.0 0.4.1 0.4.4 0.4.5: OASIS is a tool to integrate a configure, 
 dev-ml/ocaml-augeas 0.5: Ocaml bindings for Augeas
 dev-ml/ocaml-autoconf 1.1: autoconf macros to support configuration of OCaml programs and libraries
 dev-ml/ocaml-base64 2.0.0: Library for radix-64 representation (de)coding
+dev-ml/ocaml-cairo 0.5: OCaml Binding to Cairo
 dev-ml/ocaml-cstruct 1.7.1: Map OCaml arrays onto C-like structs
 dev-ml/ocaml-ctypes 0.4.1-r1: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.10 0.0.11: This project uses type-conv to dump OCaml data structure using OCaml data notation
@@ -5070,7 +5071,7 @@ dev-ml/ocamlweb 1.38-r1 1.39: O'Caml literate programming tool
 dev-ml/ocplib-endian 0.8-r1: Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays
 dev-ml/ocurl 0.6.1 0.7.4 0.7.5 0.7.6: OCaml interface to the libcurl library
 dev-ml/odns 0.3-r1: OCaml library to query DNS servers
-dev-ml/opam 1.2.0 1.2.1 1.2.2: A source-based package manager for OCaml
+dev-ml/opam 1.2.2: A source-based package manager for OCaml
 dev-ml/optcomp 1.5 1.6: Optional compilation for OCaml with cpp-like directives
 dev-ml/ounit 1.1.2 2.0.0: Unit testing framework for OCaml
 dev-ml/pa_bench 109.55.02 111.28.00 112.06.00: Syntax extension writing inline benchmarks
@@ -5078,7 +5079,7 @@ dev-ml/pa_ounit 112.35.00 113.00.00: Syntax extension that helps writing in-line
 dev-ml/pa_structural_sexp 112.35.00 113.00.00: Quotation expanders to simplify building s-expressions from ocaml values
 dev-ml/pa_test 111.08.01 112.24.00: Quotation expanders for assertions
 dev-ml/parmap 1.0_rc6 1.0_rc7: Library allowing to exploit multicore architectures for OCaml programs with minimal modifications
-dev-ml/pcre-ocaml 6.2.5 7.0.2 7.0.4 7.1.3 7.1.5 7.1.6: Perl Compatibility Regular Expressions for O'Caml
+dev-ml/pcre-ocaml 6.2.5 7.1.6: Perl Compatibility Regular Expressions for O'Caml
 dev-ml/pgocaml 1.7.1 2.1 2.2: PG'OCaml is a set of OCaml bindings for the PostgreSQL database
 dev-ml/pipebang 110.01.00 113.00.00: Syntax extension to transform x |! f into f x
 dev-ml/pomap 3.0.2 3.0.3 3.0.5: Partially Ordered Map ADT for O'Caml
