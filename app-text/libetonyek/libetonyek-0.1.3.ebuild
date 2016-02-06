@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,13 +25,22 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.46
-	>=dev-util/mdds-0.12.1
+	>=dev-util/mdds-0.12.1:0
 	media-libs/glm
 	sys-devel/libtool
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	test? ( dev-util/cppunit )
 "
+
+pkg_pretend() {
+	if [[ $(gcc-major-version) -lt 4 ]] || {
+		[[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 8 ]]; }
+	then
+		eerror "Compilation with gcc older than 4.8 is not supported"
+		die "Too old gcc found."
+	fi
+}
 
 src_prepare() {
 	[[ -d m4 ]] || mkdir "m4"
