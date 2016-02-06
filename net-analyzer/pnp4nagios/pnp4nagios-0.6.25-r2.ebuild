@@ -52,7 +52,7 @@ src_configure() {
 		var_dir=/var/nagios/
 		user_group=nagios
 	elif has_version net-analyzer/icinga2; then
-		var_dir=/var/lib/icing2/
+		var_dir=/var/lib/icinga2/
 		user_group=icinga
 	else
 		var_dir=/var/lib/icinga/
