@@ -1,0 +1,9 @@
+Index: mongo-0.67.2/_oasis
+===================================================================
+--- mongo-0.67.2.orig/_oasis
++++ mongo-0.67.2/_oasis
+@@ -51,3 +51,4 @@ Executable test
+   BuildTools:    ocamlbuild
+   BuildDepends:  unix, mongo, bson
+   CompiledObject: native
++  Install:	 false
