@@ -12,7 +12,7 @@ SRC_URI="https://github.com/BYVoid/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MPL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
 IUSE="static-libs test"
 
 PATCHES=(
