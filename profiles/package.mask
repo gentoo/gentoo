@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Wolfram Schlich <wschlich@gentoo.org> (06 Feb 2016)
+# Mask live ebuild
+=net-im/mcabber-9999
+
 # Davide Pesavento <pesa@gentoo.org> (06 Feb 2016)
 # Masked for removal in 30 days. Doesn't build against recent PyQt4
 # versions, bug 527572, not trivial to fix. Upstream doesn't seem to
