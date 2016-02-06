@@ -41,9 +41,10 @@ then
 	KEYWORDS=""
 else
 	inherit bash-completion-r1 eutils
-	SRC_URI="mirror://gentoo/${P}.tar.bz2
+	SRC_URI="mirror://gentoo/${P}.tar.xz
 		${COMMON_URI}"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	#KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS=""
 fi
 
 DESCRIPTION="Gentoo automatic kernel building scripts"
@@ -87,9 +88,6 @@ src_unpack() {
 
 src_prepare() {
 	if [[ ${PV} == 9999* ]] ; then
-		einfo "Updating version tag"
-		GK_V=$(git describe --tags)
-		sed "/^GK_V/s,=.*,='${GK_V}',g" -i "${S}"/genkernel
 		einfo "Producing ChangeLog from Git history..."
 		pushd "${S}/.git" >/dev/null || die
 		git log > "${S}"/ChangeLog || die
