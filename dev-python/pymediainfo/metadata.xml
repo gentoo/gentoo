@@ -11,6 +11,6 @@
   </maintainer>
   <upstream>
 	  <remote-id type="pypi">pymediainfo</remote-id>
-	  <remote-id type="github">paltman/pymediainfo</remote-id>
+	  <remote-id type="github">sbraz/pymediainfo</remote-id>
   </upstream>
 </pkgmetadata>
