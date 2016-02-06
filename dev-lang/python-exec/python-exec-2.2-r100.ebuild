@@ -4,12 +4,6 @@
 
 EAPI=6
 
-#if LIVE
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
-
-inherit autotools git-r3
-#endif
-
 # Kids, don't do this at home!
 inherit python-utils-r1
 PYTHON_COMPAT=( "${_PYTHON_ALL_IMPLS[@]}" )
@@ -35,15 +29,6 @@ RDEPEND="
 	!<dev-lang/python-3.3.5-r4:3.3
 	!<dev-lang/python-3.4.3-r4:3.4
 	!<dev-lang/python-3.5.0-r3:3.5"
-
-#if LIVE
-KEYWORDS=
-SRC_URI=
-
-src_prepare() {
-	eautoreconf
-}
-#endif
 
 src_configure() {
 	local pyimpls=() i EPYTHON
