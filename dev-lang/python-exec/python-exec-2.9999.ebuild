@@ -95,8 +95,8 @@ pkg_preinst() {
 			old_pythons+=( "$(<${config_base}/config)" )
 		fi
 
-		# then try specific py2/py3 selections
-		for py in 3 2; do
+		# then try specific py3 selection
+		for py in 3; do
 			local target=
 
 			if [[ -f ${config_base}/python${py} ]]; then
