@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
 EGIT_REPO_URI="git://anongit.freedesktop.org/git/libreoffice/libvisio/"
-inherit base eutils
-[[ ${PV} == 9999 ]] && inherit autotools git-r3
+inherit autotools eutils
+[[ ${PV} == 9999 ]] && inherit git-r3
 
 DESCRIPTION="Library parsing the visio documents"
 HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libvisio"
@@ -33,12 +33,18 @@ DEPEND="${RDEPEND}
 	test? ( dev-util/cppunit )
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-tests.patch"
+	"${FILESDIR}/${P}-fix-importtest.patch"
+	"${FILESDIR}/${P}-tests-without-tools.patch"
+	"${FILESDIR}/${P}-boost-1.59.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}/${P}-fix-tests.patch" \
-		"${FILESDIR}/${P}-boost-1.59.patch"
+	epatch "${PATCHES[@]}"
+	epatch_user
 	[[ -d m4 ]] || mkdir "m4"
-	base_src_prepare
-	[[ ${PV} == 9999 ]] && eautoreconf
+	eautoreconf
 }
 
 src_configure() {
