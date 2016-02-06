@@ -205,7 +205,6 @@ src_configure() {
 		--disable-vapoursynth-lazy
 		$(use_enable archive libarchive)
 
-		--enable-libavfilter
 		--enable-libavdevice
 
 		# Audio outputs
