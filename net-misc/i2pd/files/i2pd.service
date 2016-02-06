@@ -11,7 +11,7 @@ Group=i2pd
 PermissionsStartOnly=yes
 ExecStartPre=/bin/touch /var/run/i2pd.pid /var/log/i2pd.log
 ExecStartPre=/bin/chown i2pd:i2pd /run/i2pd.pid /var/log/i2pd.log
-ExecStart=/usr/lib/i2pd/i2p --conf=/etc/i2pd.conf
+ExecStart=/usr/lib/i2pd/i2p --conf=/etc/i2pd/i2pd.conf --tunconf=/etc/i2pd/tunnels.cfg
 
 [Install]
 WantedBy=multi-user.target
