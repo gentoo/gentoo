@@ -13,9 +13,10 @@ SRC_URI="https://github.com/ocsigen/js_of_ocaml/archive/${PV}.tar.gz -> ${P}.tar
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
-IUSE="+ocamlopt doc +deriving"
+IUSE="+ocamlopt doc +deriving X"
 
-DEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]
+DEPEND="
+	>=dev-lang/ocaml-3.12:=[ocamlopt?,X?]
 	>=dev-ml/lwt-2.4.4:=
 	dev-ml/react:=
 	dev-ml/reactiveData:=
@@ -29,8 +30,11 @@ DEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]
 RDEPEND="${DEPEND}"
 
 src_configure() {
+	printf "\n\n" >> Makefile.conf
 	use ocamlopt || echo "BEST := byte" >> Makefile.conf
+	use ocamlopt || echo "NATDYNLINK := NO" >> Makefile.conf
 	use deriving || echo "WITH_DERIVING := NO" >> Makefile.conf
+	use X || echo "WITH_GRAPHICS := NO" >> Makefile.conf
 }
 
 src_compile() {
