@@ -2195,6 +2195,7 @@ dev-ml/js_of_ocaml:deriving - Enable dev-ml/deriving support for improving the t
 dev-ml/lablgtk:glade - Enable libglade bindings compilation.
 dev-ml/lablgtk:gnomecanvas - Enable libgnomecanvas bindings compilation.
 dev-ml/lablgtk:sourceview - Enable GtkSourceView support
+dev-ml/lwt:ppx - Enables the ppx syntax extension
 dev-ml/lwt:react - Enables support for dev-ml/react: Functional reactive programming (signals, events, etc.).
 dev-ml/lwt:text - Enables text mode utilities.
 dev-ml/lwt:toplevel - Enables enhanced toplevel.
