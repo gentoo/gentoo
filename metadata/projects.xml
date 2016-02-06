@@ -914,6 +914,11 @@
       <role>Author, Editor</role>
     </member>
     <member>
+      <email>nightmorph@gentoo.org</email>
+      <name>Joshua Saddler</name>
+      <role>Author, Editor</role>
+    </member>
+    <member>
       <email>swift@gentoo.org</email>
       <name>Sven Vermeulen</name>
       <role>Author, Editor</role>
@@ -3022,6 +3027,10 @@
       <role>GMN, Facebook</role>
     </member>
     <member>
+      <email>nightmorph@gentoo.org</email>
+      <name>Joshua Saddler</name>
+    </member>
+    <member>
       <email>sping@gentoo.org</email>
       <name>Sebastian Pipping</name>
     </member>
@@ -3389,6 +3398,11 @@
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
       <role>Documentation Helper</role>
+    </member>
+    <member>
+      <email>nightmorph@gentoo.org</email>
+      <name>Joshua Saddler</name>
+      <role>Documentation Liaison</role>
     </member>
     <member>
       <email>robbat2@gentoo.org</email>
@@ -4340,6 +4354,10 @@
     <member>
       <email>jdhore@gentoo.org</email>
       <name>Jeff Horelick</name>
+    </member>
+    <member>
+      <email>nightmorph@gentoo.org</email>
+      <name>Joshua Saddler</name>
     </member>
     <member>
       <email>yngwin@gentoo.org</email>
