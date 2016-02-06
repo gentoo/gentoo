@@ -3,18 +3,15 @@
 # $Id$
 
 EAPI=5
-
-is_live() { [[ ${PV} == 9999* ]]; }
-
-is_live && inherit git-r3
+inherit eutils
 
 DESCRIPTION="Advanced command line hexadecimal editor and more"
 HOMEPAGE="http://www.radare.org"
-is_live || SRC_URI="http://www.radare.org/get/${P}.tar.xz"
-EGIT_REPO_URI="https://github.com/radare/radare2"
+SRC_URI="http://www.radare.org/get/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="ssl"
 
 RDEPEND="
@@ -23,6 +20,9 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-0.9.9-nogit.patch
+}
 
 src_configure() {
 	econf \
