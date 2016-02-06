@@ -8,7 +8,7 @@
 	<use>
 		<flag name="context">
       Build and install the Boost.Context library and all other 
-      Boostlibraries that depends on it
+      Boost libraries that depend on it
     </flag>
 		<flag name="tools">
       Build and install the boost tools (bcp, quickbook, inspect,
