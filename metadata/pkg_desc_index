@@ -3905,7 +3905,6 @@ dev-java/iso-relax 20050331-r3: Interfaces useful for applications which support
 dev-java/istack-commons-buildtools 2.22-r1: IStack Commons - Buildtools jar
 dev-java/istack-commons-runtime 2.22: IStack Commons - Runtime jar
 dev-java/istack-commons-soimp 2.22: IStack Commons - Soimp jar
-dev-java/istack-commons-tools 2.22: IStack Commons - Tools jar
 dev-java/itext 2.1.5-r2 5.5.4-r2: Java library that generate documents in the Portable Document Format (PDF) and/or HTML.
 dev-java/j2ssh 0.2.9: Java implementation of the SSH protocol
 dev-java/jackrabbit-webdav 2.10.1: Fully conforming implementation of the JRC API (specified in JSR 170 and 283)
@@ -3952,9 +3951,7 @@ dev-java/javax-inject 1-r2: Dependency injection for Java (JSR-330)
 dev-java/javolution 4.0.2-r1 6.0.0: Java Solution for Real-Time and Embedded Systems
 dev-java/jax-ws 2.0.1-r1: Reference implementation of the Java API for XML Web Services
 dev-java/jax-ws-api 2.0: JAXWS 2.0 API Final Release
-dev-java/jax-ws-tools 2.0.1-r1: Reference implementation of the Java API for XML Web Services
 dev-java/jaxb 2.1.2-r1: Reference implementation of the JAXB specification
-dev-java/jaxb-tools 2.1.2: Reference implementation of the JAXB specification
 dev-java/jaxen 1.1.1 1.1.4-r1 1.1.6: A Java XPath Engine
 dev-java/jaxme 0.5.2-r2: An open source implementation of JAXB, the specification for Java/XML binding
 dev-java/jaxp 1.4-r1: The Java API for XML Processing (JAXP)
@@ -10932,7 +10929,7 @@ java-virtuals/stax-api 1-r4: Virtual for Streaming API for XML (StAX)
 java-virtuals/transaction-api 1.1: Virtual for Transaction API (javax.transaction)
 java-virtuals/xmlrpc-api 0: Virtual for XML RPC API (javax.xml.rpc)
 kde-apps/akonadiconsole 4.14.8 4.14.10: Akonadi developer console
-kde-apps/akregator 4.4.2015.06 4.14.8 4.14.10: KDE news feed aggregator
+kde-apps/akregator 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: KDE news feed aggregator
 kde-apps/amor 4.14.3 15.08.3: KDE: Amusing Misuse Of Resources - desktop-dwelling creature
 kde-apps/analitza 4.14.3: KDE library for mathematical features
 kde-apps/ark 4.14.3-r1 15.08.3-r1 15.12.1: KDE Archiving tool
@@ -10941,7 +10938,7 @@ kde-apps/attica 4.14.3 15.08.3: Open Collaboration Services provider management
 kde-apps/audiocd-kio 4.14.3 15.08.3 15.12.1: KDE kioslaves from the kdemultimedia package
 kde-apps/baloo-widgets 4.14.3 15.08.3: Widget library for baloo
 kde-apps/blinken 4.14.3: KDE version of the Simon Says game
-kde-apps/blogilo 4.4.2015.06 4.14.8 4.14.10: KDE Blogging Client
+kde-apps/blogilo 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: KDE Blogging Client
 kde-apps/bomber 4.14.3 15.08.3: KDE arcade bombing game
 kde-apps/bovo 4.14.3 15.08.3: Five-in-a-row Board Game
 kde-apps/calendarjanitor 4.14.8 4.14.10: A tool to scan calendar data for buggy instances
@@ -10958,12 +10955,12 @@ kde-apps/granatier 4.14.3 15.08.3: KDE Bomberman game
 kde-apps/gwenview 4.14.3 15.08.3-r1 15.12.1: KDE image viewer
 kde-apps/jovie 4.14.3 15.08.3 15.12.1: Jovie is a text to speech application
 kde-apps/juk 4.14.3 15.08.3 15.12.1: Jukebox and music manager for KDE
-kde-apps/kabcclient 4.4.2015.06 4.14.8 4.14.10: A command line client for accessing the KDE addressbook
+kde-apps/kabcclient 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: A command line client for accessing the KDE addressbook
 kde-apps/kaccessible 4.14.3 15.08.3 15.12.1: Provides accessibility services like focus tracking
 kde-apps/kaccounts-integration 15.08.3-r1: Administer web accounts for the sites and services across the Plasma desktop
-kde-apps/kaddressbook 4.4.2015.06 4.14.8 4.14.10: The KDE Address Book
+kde-apps/kaddressbook 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: The KDE Address Book
 kde-apps/kajongg 4.14.3 15.08.3: The classical Mah Jongg for four players
-kde-apps/kalarm 4.4.2015.06 4.14.8 4.14.10: Personal alarm message, command and email scheduler for KDE
+kde-apps/kalarm 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: Personal alarm message, command and email scheduler for KDE
 kde-apps/kalgebra 4.14.3: MathML-based graph calculator for KDE
 kde-apps/kalzium 4.14.3: KDE: periodic table of the elements
 kde-apps/kamera 4.14.3 15.08.3 15.12.1: Plasma integration for gphoto2 cameras
@@ -11023,12 +11020,12 @@ kde-apps/kdenetwork-meta 4.14.3 15.08.3-r1: kdenetwork - merge this to pull in a
 kde-apps/kdenlive 0.9.8 0.9.10 15.08.3-r1 15.12.0-r1 15.12.1: Non-linear video editing suite by KDE
 kde-apps/kdepasswd 4.14.3 15.08.3: KDE GUI for passwd
 kde-apps/kdepim-common-libs 4.14.8 4.14.10: Common libraries for KDE PIM apps
-kde-apps/kdepim-icons 4.4.2015.06 4.14.8 4.14.10: KDE PIM icons
-kde-apps/kdepim-kresources 4.4.2015.06 4.14.8 4.14.10: KDE PIM groupware plugin collection
+kde-apps/kdepim-icons 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: KDE PIM icons
+kde-apps/kdepim-kresources 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: KDE PIM groupware plugin collection
 kde-apps/kdepim-l10n 4.4.11.1-r1 4.4.11.1-r2 4.14.3 4.14.3-r1 15.08.3 15.12.1: KDE PIM internationalization package
-kde-apps/kdepim-meta 4.4.2015.06 4.14.8 4.14.10-r1: kdepim - merge this to pull in all kdepim-derived packages
+kde-apps/kdepim-meta 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10-r1: kdepim - merge this to pull in all kdepim-derived packages
 kde-apps/kdepim-runtime 4.14.8 4.14.10: KDE PIM runtime plugin collection
-kde-apps/kdepim-wizards 4.4.2015.06: KDE PIM wizards (noakonadi branch)
+kde-apps/kdepim-wizards 4.4.2015.06 4.4.2016.01: KDE PIM wizards (noakonadi branch)
 kde-apps/kdepimlibs 4.14.8 4.14.10: Common library for KDE PIM apps
 kde-apps/kdesdk-kioslaves 4.14.3 15.08.3: kioslaves from kdesdk package
 kde-apps/kdesdk-meta 4.14.3 15.08.3: KDE SDK - merge this to pull in all kdesdk-derived packages
@@ -11066,16 +11063,16 @@ kde-apps/kio-extras 15.08.3: KIO plugins present a filesystem-like view of arbit
 kde-apps/kioclient 4.14.3 15.08.3: Command-line tool for network-transparent operations
 kde-apps/kiriki 4.14.3 15.08.3: A gtali clone
 kde-apps/kiten 4.14.3: KDE Japanese dictionary and reference
-kde-apps/kjots 4.4.2015.06 4.14.8 4.14.10: KDE note taking utility
+kde-apps/kjots 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: KDE note taking utility
 kde-apps/kjumpingcube 4.14.3 15.08.3: Tactical one or two player game
-kde-apps/kleopatra 4.4.2015.06 4.14.8 4.14.10: Kleopatra - KDE X.509 key manager
+kde-apps/kleopatra 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: Kleopatra - KDE X.509 key manager
 kde-apps/klettres 4.14.3: KDE: KLettres helps a very young child or an adult learning
 kde-apps/klickety 4.14.3 15.08.3: A KDE game almost the same as ksame, but a bit different
 kde-apps/klines 4.14.3 15.08.3: A little KDE game about balls and how to get rid of them
 kde-apps/klinkstatus 4.14.3: KDE web development - link validity checker
 kde-apps/kmag 4.14.3 15.08.3 15.12.1: KDE screen magnifier
 kde-apps/kmahjongg 4.14.3 15.08.3: Mahjongg for KDE
-kde-apps/kmail 4.4.2015.06 4.14.8 4.14.10: KMail is the email component of Kontact, the integrated personal information manager of KDE
+kde-apps/kmail 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: KMail is the email component of Kontact, the integrated personal information manager of KDE
 kde-apps/kmimetypefinder 4.14.3 15.08.3: KDE application to report the mimetype for a given file
 kde-apps/kmines 4.14.3 15.08.3: Classic mine sweeper game
 kde-apps/kmix 4.14.3 4.14.3-r1 15.08.3 15.12.1: Plasma mixer gui
@@ -11086,8 +11083,8 @@ kde-apps/knavalbattle 4.14.3 15.08.3: The KDE Battleship clone
 kde-apps/knetattach 4.14.3 15.08.3: KDE network wizard
 kde-apps/knetwalk 4.14.3 15.08.3: KDE version of the popular NetWalk game for system administrators
 kde-apps/knewstuff 4.14.3 15.08.3: KDE4 software to download and upload 'new stuff'
-kde-apps/knode 4.4.2015.06 4.14.8 4.14.10: A newsreader for KDE
-kde-apps/knotes 4.4.2015.06 4.14.8 4.14.10: KDE Notes application
+kde-apps/knode 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: A newsreader for KDE
+kde-apps/knotes 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: KDE Notes application
 kde-apps/knotify 4.14.3 15.08.3: The KDE notification daemon
 kde-apps/kolf 4.14.3 15.08.3: KDE Minigolf Game
 kde-apps/kollision 4.14.3 15.08.3: Simple ball dodging game
@@ -11098,11 +11095,11 @@ kde-apps/konq-plugins 4.14.3 15.08.3: Various plugins for konqueror
 kde-apps/konqueror 4.14.3 15.08.3: KDE: Web browser and file manager
 kde-apps/konquest 4.14.3 15.08.3: Galactic Strategy KDE Game
 kde-apps/konsole 4.14.3 4.14.3-r2 15.08.3-r1: KDE's terminal emulator
-kde-apps/konsolekalendar 4.4.2015.06 4.14.8 4.14.10: A command line interface to KDE calendars
+kde-apps/konsolekalendar 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: A command line interface to KDE calendars
 kde-apps/konsolepart 4.14.3: X terminal kpart for use by konsole and other KDE applications
-kde-apps/kontact 4.4.2015.06 4.14.8 4.14.10: KDE personal information manager
+kde-apps/kontact 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: KDE personal information manager
 kde-apps/kopete 4.14.3 4.14.3-r1 15.08.3: KDE multi-protocol IM client
-kde-apps/korganizer 4.4.2015.06 4.14.8 4.14.10: A Personal Organizer for KDE
+kde-apps/korganizer 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: A Personal Organizer for KDE
 kde-apps/kpasswdserver 4.14.3 15.08.3: KDED Password Module
 kde-apps/kpat 4.14.3 15.08.3: KDE patience game
 kde-apps/kppp 4.14.3 15.08.3: KDE: A dialer and front-end to pppd
@@ -11128,7 +11125,7 @@ kde-apps/ksudoku 4.14.3 15.08.3: KDE Sudoku
 kde-apps/ksystemlog 4.14.3 15.08.3 15.12.1: System log viewer by KDE
 kde-apps/kteatime 4.14.3 15.08.3-r1 15.12.1: KDE timer for making a fine cup of tea
 kde-apps/ktimer 4.14.3 15.08.3 15.12.1: KDE Timer
-kde-apps/ktimetracker 4.4.2015.06 4.14.8 4.14.10: KTimeTracker tracks time spent on various tasks
+kde-apps/ktimetracker 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: KTimeTracker tracks time spent on various tasks
 kde-apps/ktimezoned 4.14.3 15.08.3: KDE: Timezone daemon
 kde-apps/ktnef 4.14.8 4.14.10: A viewer for TNEF attachments
 kde-apps/ktouch 4.14.3: KDE: A program that helps you to learn and practice touch typing
@@ -11150,16 +11147,16 @@ kde-apps/libkcompactdisc 4.14.3 15.08.3 15.12.1: KDE library for playing & rippi
 kde-apps/libkdcraw 4.14.3 4.14.3-r1 15.08.3 15.12.1: Digital camera raw image library wrapper
 kde-apps/libkdeedu 4.14.3: Common library for KDE educational apps
 kde-apps/libkdegames 4.14.3 4.14.3-r1 15.08.3-r1: Base library common to many KDE games
-kde-apps/libkdepim 4.4.2015.06: Common library for KDE PIM apps (noakonadi branch)
+kde-apps/libkdepim 4.4.2015.06 4.4.2016.01: Common library for KDE PIM apps (noakonadi branch)
 kde-apps/libkexiv2 4.14.3 15.08.3 15.12.1: KDE Image Plugin Interface: an exiv2 library wrapper
 kde-apps/libkface 4.4.0 4.12.0 15.08.3 15.12.1: Qt/C++ wrapper around LibFace to perform face recognition and detection
 kde-apps/libkgeomap 4.4.0 4.12.0 15.08.3: Wrapper library for world map components as marble, openstreetmap and googlemap
 kde-apps/libkipi 4.14.3 15.08.3 15.12.1: A library for image plugins accross KDE applications
-kde-apps/libkleo 4.4.2015.06: KDE library for encryption handling
+kde-apps/libkleo 4.4.2015.06 4.4.2016.01: KDE library for encryption handling
 kde-apps/libkmahjongg 4.14.3 15.08.3: LibKMahjongg for KDE
 kde-apps/libkomparediff2 4.14.3 15.08.3: KDE library to compare files and strings
 kde-apps/libkonq 4.14.3 15.08.3: The embeddable part of konqueror
-kde-apps/libkpgp 4.4.2015.06: KDE pgp abstraction library
+kde-apps/libkpgp 4.4.2015.06 4.4.2016.01: KDE pgp abstraction library
 kde-apps/libksane 4.14.3 15.08.3 15.12.1: SANE Library interface for KDE
 kde-apps/lokalize 4.14.3 15.08.3: KDE Applications 5 translation tool
 kde-apps/lskat 4.14.3 15.08.3: Skat game for KDE
@@ -17542,8 +17539,8 @@ www-apps/jekyll-coffeescript 1.0.1: A CoffeeScript Converter for Jekyll
 www-apps/jekyll-gist 1.3.5: Liquid tag for displaying GitHub Gists in Jekyll sites
 www-apps/jekyll-paginate 1.1.0: Default pagination generator for Jekyll
 www-apps/jekyll-sass-converter 1.4.0: A basic Sass converter for Jekyll
-www-apps/jekyll-sitemap 0.9.0 0.10.0: Automatically generate a sitemap.xml for your Jekyll site
-www-apps/jekyll-watch 1.3.0 1.3.1: Rebuild your Jekyll site when a file changes with the --watch switch
+www-apps/jekyll-sitemap 0.10.0: Automatically generate a sitemap.xml for your Jekyll site
+www-apps/jekyll-watch 1.3.1: Rebuild your Jekyll site when a file changes with the --watch switch
 www-apps/joomla 3.4.8: A powerful Open Source Content Management System
 www-apps/kibana-bin 4.1.4 4.3.1: Explore and visualize data
 www-apps/liquid_feedback_core 2.2.3 2.2.6 3.0.4: Internet platforms for proposition development and decision making
