@@ -5,4 +5,7 @@
 		<email>office@gentoo.org</email>
 		<name>Gentoo Office project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="gitlab">ixion/ixion</remote-id>
+	</upstream>
 </pkgmetadata>

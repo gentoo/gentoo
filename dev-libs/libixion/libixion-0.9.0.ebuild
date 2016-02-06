@@ -27,7 +27,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=[threads]
 "
 DEPEND="${RDEPEND}
-	>=dev-util/mdds-0.12.0:=
+	>=dev-util/mdds-0.12.0:0=
 "
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
