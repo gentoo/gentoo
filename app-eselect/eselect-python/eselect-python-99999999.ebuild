@@ -33,9 +33,7 @@ pkg_postinst() {
 		eselect python update --if-unset
 	fi
 
-	for py in 2 3; do
-		if has_version "=dev-lang/python-${py}*"; then
-			eselect python update "--python${py}" --if-unset
-		fi
-	done
+	if has_version "=dev-lang/python-3*"; then
+		eselect python update "--python3" --if-unset
+	fi
 }
