@@ -1294,6 +1294,7 @@ app-emulation/ganeti-htools 0.2.8 0.3.0 0.3.1: Cluster tools for fixing common a
 app-emulation/ganeti-instance-debian-etch 0.4: Debian Etch instance example for Ganeti
 app-emulation/ganeti-instance-debootstrap 0.9 0.11 0.12: Scripts to build Ganeti VMs with debootstrap
 app-emulation/ganeti-instance-image 0.6: Scripts to build out CD or image based VMs using Ganeti
+app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Protocol
 app-emulation/gxemul 0.6.0-r1: A Machine Emulator, Mainly emulates MIPS, but supports other CPU types
 app-emulation/hercules 3.06 3.08 3.09 3.10: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
 app-emulation/libcacard 0.1.2 2.5.1: virtual Common Access Card (CAC) library emulator
