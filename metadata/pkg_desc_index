@@ -5090,7 +5090,7 @@ dev-ml/ppx_bin_prot 113.24.00: Generation of bin_prot readers and writers from t
 dev-ml/ppx_compare 113.24.00: Generation of comparison functions from types
 dev-ml/ppx_core 113.24.00: Standard library for ppx rewriters
 dev-ml/ppx_custom_printf 113.24.00: Printf-style format-strings for user-defined string conversion
-dev-ml/ppx_deriving 3.0: Type-driven code generation for OCaml
+dev-ml/ppx_deriving 3.0-r1: Type-driven code generation for OCaml
 dev-ml/ppx_driver 113.24.00: Feature-full driver for OCaml AST transformers
 dev-ml/ppx_enumerate 113.24.00: Generate a list containing all values of a finite type
 dev-ml/ppx_expect 113.24.00: Cram like framework for OCaml
@@ -17690,7 +17690,7 @@ www-servers/lighttpd 1.4.35 1.4.35-r1 1.4.35-r2 1.4.37 1.4.37-r1: Lightweight hi
 www-servers/mongoose 5.3: easy to use web server
 www-servers/mongrel2 1.11.0: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.5.6-r1 1.6.7 1.6.8 9999: A small, fast, and scalable web server
-www-servers/nginx 1.8.1 1.9.10 1.9.10-r1 1.9.10-r2: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.8.1 1.9.10 1.9.10-r2: Robust, small and high performance http and reverse proxy server
 www-servers/ocsigenserver 2.5-r2 2.6: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install test
-DEPEND=dev-ml/ppx_tools:= >=dev-lang/ocaml-4.02.3:=[ocamlopt?] test? ( dev-ml/ounit ) >=dev-ml/findlib-1.0.4-r1
+DEPEND=dev-ml/ppx_tools:= >=dev-lang/ocaml-4.02.3:=[ocamlopt?] dev-ml/opam test? ( dev-ml/ounit ) >=dev-ml/findlib-1.0.4-r1
 DESCRIPTION=Type-driven code generation for OCaml
 EAPI=5
 HOMEPAGE=https://github.com/whitequark/ppx_deriving
@@ -11,4 +11,4 @@ SLOT=0/3.0
 SRC_URI=https://github.com/whitequark/ppx_deriving/archive/v3.0.tar.gz -> ppx_deriving-3.0.tar.gz
 _eclass_exported_funcs=src_compile:- src_test:- src_install:-
 _eclasses_=findlib	9909e5ca0f77ff5b693885a3d7aeadb7
-_md5_=f935eb37bacef0d81a4ec4c80dc1a132
+_md5_=c67d06d083b88f2183f9a7deea3835f5
