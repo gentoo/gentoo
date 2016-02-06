@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Davide Pesavento <pesa@gentoo.org> (06 Feb 2016)
+# Masked for removal in 30 days. Doesn't build against recent PyQt4
+# versions, bug 527572, not trivial to fix. Upstream doesn't seem to
+# care anymore, last release was in 2012. Zero reverse deps.
+dev-python/PyQtMobility
+
 # James Le Cuirot <chewi@gentoo.org> (03 Feb 2016)
 # Built into Java since 1.5. Ancient and doesn't build with
 # Java 8. Removal in 30 days. See bug #544038.
