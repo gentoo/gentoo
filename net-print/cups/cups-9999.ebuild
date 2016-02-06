@@ -100,6 +100,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.0.2-rename-systemd-service-files.patch"
 	"${FILESDIR}/${PN}-2.1.2-systemd-socket.patch"
 	"${FILESDIR}/${PN}-2.0.1-xinetd-installation-fix.patch"
+	"${FILESDIR}/${PN}-2.0.3-cross-compile.patch"
 )
 
 MULTILIB_CHOST_TOOLS=(
