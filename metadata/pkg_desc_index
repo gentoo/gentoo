@@ -9635,7 +9635,7 @@ dev-util/qfsm 0.53.0 0.54.0: A graphical tool for designing finite state machine
 dev-util/qmtest 2.4.1 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.0.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.50 0.63 9999: quilt patch manager
-dev-util/radare2 0.9.8 0.9.9 9999: Advanced command line hexadecimal editor and more
+dev-util/radare2 0.9.8 0.9.9 0.10.0 9999: Advanced command line hexadecimal editor and more
 dev-util/ragel 6.7-r1 6.8 6.9: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.1-r2 2.3: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 0.7.4 0.7.5: Command line tools for use with Review Board
@@ -13953,7 +13953,7 @@ net-im/licq 1.8.2: ICQ Client with v8 support
 net-im/mcabber 0.10.2_p20131025 0.10.2_p20131025-r1 0.10.3 1.0.0 1.0.1: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r1: an IRC gateway to IM networks
 net-im/mu-conference 0.7 0.8-r1 0.8.81: Multi-User Chat for jabberd
-net-im/openfire 3.10.0 3.10.1 3.10.2 3.10.3 4.0.0: Openfire (formerly wildfire) real time collaboration (RTC) server
+net-im/openfire 3.10.0 3.10.1 3.10.2 3.10.3 4.0.0 4.0.1: Openfire (formerly wildfire) real time collaboration (RTC) server
 net-im/pidgin 2.10.11 2.10.12 2.10.12-r1: GTK Instant Messenger client
 net-im/pork 0.99.8.1 0.99.8.1-r1: Console based AIM client that looks like ircII
 net-im/prosody 0.9.8 0.9.9 0.9.10: Prosody is a flexible communications server for Jabber/XMPP written in Lua
@@ -16782,7 +16782,7 @@ sys-devel/clang 3.3-r100 3.4.2-r100 3.5.0-r100 3.5.2-r100 3.6.2-r100 3.7.0-r100 
 sys-devel/cons 2.2.0: Extensible perl-based build utility
 sys-devel/crossdev 20150602 20150716 20151026 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.21.0 1.22.0: crosstool-ng is a tool to build cross-compiling toolchains
-sys-devel/dev86 0.16.19 0.16.21: Bruce's C compiler - Simple C compiler to generate 8086 code
+sys-devel/dev86 0.16.19 0.16.21 0.16.21-r1: Bruce's C compiler - Simple C compiler to generate 8086 code
 sys-devel/distcc 3.1-r10 3.2_rc1-r4: Distribute compilation of C code across several machines on a network
 sys-devel/dwz 0.9: DWARF optimization and duplicate removal tool
 sys-devel/flex 2.5.39-r1 2.6.0: The Fast Lexical Analyzer
