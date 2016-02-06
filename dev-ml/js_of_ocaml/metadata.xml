@@ -7,6 +7,7 @@
   </maintainer>
   <use>
     <flag name="deriving">Enable <pkg>dev-ml/deriving</pkg> support for improving the type safety.</flag>
+	<flag name="ppx">Enables the ppx syntax extension</flag>
 	<flag name="react">Enable functionnal reactive programming support.</flag>
   </use>
   <upstream>
