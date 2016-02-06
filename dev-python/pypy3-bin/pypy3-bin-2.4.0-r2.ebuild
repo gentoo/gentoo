@@ -78,7 +78,7 @@ PDEPEND="app-admin/python-updater"
 S=${WORKDIR}/pypy3-${PV}-src
 
 src_prepare() {
-	epatch "${FILESDIR}/1.9-scripts-location.patch" \
+	epatch "${FILESDIR}/4.0.0-gentoo-path.patch" \
 		"${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch" \
 		"${FILESDIR}/2.4.0-ncurses6.patch"
 
