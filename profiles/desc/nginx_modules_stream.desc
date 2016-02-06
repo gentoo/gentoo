@@ -1,0 +1,10 @@
+# Copyright 2016 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# This file contains descriptions of NGINX_MODULES_STREAM USE_EXPAND flags.
+
+# Keep it sorted.
+access - This module allows limiting access to certain client addresses.
+limit_conn - This module is used to limit the number of connections per the defined key.
+upstream - This module is used to define groups of servers that can be referenced by the proxy_pass directive.
