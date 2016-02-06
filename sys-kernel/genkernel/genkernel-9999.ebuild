@@ -87,6 +87,9 @@ src_unpack() {
 
 src_prepare() {
 	if [[ ${PV} == 9999* ]] ; then
+		einfo "Updating version tag"
+		GK_V=$(git describe --tags)
+		sed "/^GK_V/s,=.*,='${GK_V}',g" -i "${S}"/genkernel
 		einfo "Producing ChangeLog from Git history..."
 		pushd "${S}/.git" >/dev/null || die
 		git log > "${S}"/ChangeLog || die
