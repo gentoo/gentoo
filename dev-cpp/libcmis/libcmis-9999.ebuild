@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 EGIT_REPO_URI="git://git.code.sf.net/p/libcmis/code"
 [[ ${PV} == 9999 ]] && SCM_ECLASS="git-r3"
@@ -22,16 +22,12 @@ KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="static-libs man test"
 
-RDEPEND="
-	!dev-cpp/libcmis:0
-	!dev-cpp/libcmis:0.2
-	!dev-cpp/libcmis:0.3
-	!dev-cpp/libcmis:0.4
+COMMON_DEPEND="
 	dev-libs/boost:=
 	dev-libs/libxml2
 	net-misc/curl
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	man? (
 		app-text/docbook2X
@@ -42,8 +38,15 @@ DEPEND="${RDEPEND}
 		dev-util/cppunit
 	)
 "
+RDEPEND="${COMMON_DEPEND}
+	!dev-cpp/libcmis:0
+	!dev-cpp/libcmis:0.2
+	!dev-cpp/libcmis:0.3
+	!dev-cpp/libcmis:0.4
+"
 
 src_prepare() {
+	eapply_user
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
 

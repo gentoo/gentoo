@@ -1,0 +1,21 @@
+From b572b60a5fdc630f7f3b31dfd5dbdd1ed48659ca Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?C=C3=A9dric=20Bosdonnat?= <cedric.bosdonnat@free.fr>
+Date: Thu, 16 Jul 2015 16:22:11 +0200
+Subject: [PATCH] Fix linking error when building with --with-boot
+
+---
+ src/libcmis/Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/libcmis/Makefile.am b/src/libcmis/Makefile.am
+index 3915d45..1955ea6 100644
+--- a/src/libcmis/Makefile.am
++++ b/src/libcmis/Makefile.am
+@@ -144,6 +144,7 @@ libcmis_@LIBCMIS_API_VERSION@_la_LIBADD = \
+ 	$(XML2_LIBS) \
+ 	$(CURL_LIBS) \
+ 	$(BOOST_SMART_PTR_LIBS) \
++	$(BOOST_DATE_TIME_LDFLAGS) \
+ 	$(BOOST_DATE_TIME_LIBS)
+ 
+ libcmis_@LIBCMIS_API_VERSION@_la_includedir = $(includedir)/libcmis-@LIBCMIS_API_VERSION@/libcmis
