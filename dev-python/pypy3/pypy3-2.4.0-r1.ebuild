@@ -77,7 +77,7 @@ pkg_setup() {
 src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-gcc-4.9.patch \
-		"${FILESDIR}/1.9-scripts-location.patch" \
+		"${FILESDIR}/4.0.0-gentoo-path.patch" \
 		"${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch" \
 		"${FILESDIR}"/2.3.1-shared-lib.patch	# 517002
 	epatch "${FILESDIR}/2.4.0-ncurses6.patch"
