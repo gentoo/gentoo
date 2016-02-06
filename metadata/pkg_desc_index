@@ -7669,7 +7669,7 @@ dev-python/pyrsistent 0.11.10 0.11.11: Persistent/Functional/Immutable data stru
 dev-python/pyrtf 0.45-r1: A set of Python classes that make it possible to produce RTF documents from Python programs
 dev-python/pysaml2 2.1.0 3.0.0: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pyscaffold 2.4.1 2.4.4: Tool for easily putting up the scaffold of a Python project
-dev-python/pyscard 1.6.16 1.7.0 1.9.1: pyscard is a python module adding smart cards support to python
+dev-python/pyscard 1.6.16 1.7.0 1.9.1: Smart cards support in python
 dev-python/pysctp 0.6: PySCTP gives access to the SCTP transport protocol from Python
 dev-python/pysendfile 2.0.1: A python interface to sendfile(2) system call
 dev-python/pyserial 2.6-r1 2.7 2.7-r1: Python Serial Port Extension
@@ -8103,7 +8103,7 @@ dev-python/webtest 1.4.3-r1 2.0.16 2.0.17 2.0.18: Helper to test WSGI applicatio
 dev-python/webut 0.1.0.2 0.1.0.2-r1: Miscellaneous utilities for nevow and twisted.web programming
 dev-python/wehjit 0.2.2-r1: A Python web-widget library
 dev-python/werkzeug 0.9.6 0.10 0.10.1 0.10.4 0.11.1 0.11.2 0.11.3: Collection of various utilities for WSGI applications
-dev-python/wheel 0.24.0 0.26.0 0.27.0: A built-package format for Python
+dev-python/wheel 0.24.0 0.26.0 0.27.0 0.28.0: A built-package format for Python
 dev-python/whirlpool 0.3-r1: Bindings for whirlpool hash reference implementation
 dev-python/whisper 0.9.13 0.9.15: Fixed size round-robin style database
 dev-python/whoosh 2.6.0 2.7.0: Fast, pure-Python full text indexing, search and spell checking library
