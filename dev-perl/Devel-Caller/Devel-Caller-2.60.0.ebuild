@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Meatier versions of caller"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ppc x86"
+KEYWORDS="amd64 ~arm hppa ppc x86"
 IUSE=""
 
 DEPEND="dev-perl/PadWalker"

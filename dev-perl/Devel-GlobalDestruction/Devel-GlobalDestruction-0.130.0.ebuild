@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION='Provides function returning the equivalent of ${^GLOBAL_PHASE} eq DESTRUCT for older perls'
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~ppc-aix ~x86-fbsd ~x86-solaris"
+KEYWORDS="amd64 ~arm hppa ~ppc ~ppc64 ~x86 ~ppc-aix ~x86-fbsd ~x86-solaris"
 IUSE=""
 
 RDEPEND="

@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Use Moose or Mouse modules (DEPRECATED)"
 
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ~x86"
+KEYWORDS="amd64 hppa ~ppc ~x86"
 IUSE="test"
 
 RDEPEND="|| ( >=dev-perl/Mouse-0.40 dev-perl/Moose )
