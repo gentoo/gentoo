@@ -13951,7 +13951,7 @@ net-im/ktp-send-file 0.9.0: KDE Telepathy file manager plugin to send files to c
 net-im/ktp-text-ui 0.9.0: KDE Telepathy text chat window
 net-im/librvp 0.9.6 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/licq 1.8.2: ICQ Client with v8 support
-net-im/mcabber 0.10.2_p20131025 0.10.2_p20131025-r1 0.10.3 1.0.0 1.0.1: A small Jabber console client with various features, like MUC, SSL, PGP
+net-im/mcabber 0.10.2_p20131025 0.10.2_p20131025-r1 0.10.3 1.0.0 1.0.1 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r1: an IRC gateway to IM networks
 net-im/mu-conference 0.7 0.8-r1 0.8.81: Multi-User Chat for jabberd
 net-im/openfire 3.10.0 3.10.1 3.10.2 3.10.3 4.0.0 4.0.1: Openfire (formerly wildfire) real time collaboration (RTC) server
