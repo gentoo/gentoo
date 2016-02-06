@@ -5,8 +5,8 @@
 EAPI=6
 
 EGIT_REPO_URI="git://anongit.freedesktop.org/git/libreoffice/libvisio/"
-inherit eutils
-[[ ${PV} == 9999 ]] && inherit autotools git-r3
+inherit autotools eutils
+[[ ${PV} == 9999 ]] && inherit git-r3
 
 DESCRIPTION="Library parsing the visio documents"
 HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libvisio"
@@ -34,10 +34,13 @@ DEPEND="${RDEPEND}
 	test? ( dev-util/cppunit )
 "
 
+PATCHES=( "${FILESDIR}/${PN}-0.1.3-tests-without-tools.patch" )
+
 src_prepare() {
+	eapply "${PATCHES[@]}"
 	eapply_user
 	[[ -d m4 ]] || mkdir "m4"
-	[[ ${PV} == 9999 ]] && eautoreconf
+	eautoreconf
 }
 
 src_configure() {
