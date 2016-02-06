@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Helper routines for using Sub::Exporter to build methods"
 
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~x86"
+KEYWORDS="amd64 hppa ~x86"
 IUSE="test"
 
 RDEPEND="
