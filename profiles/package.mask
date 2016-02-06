@@ -529,11 +529,6 @@ media-plugins/gst-plugins-mimic
 media-sound/giada
 
 # Pacho Ramos <pacho@gentoo.org> (05 Jan 2016)
-# Old version, upstream moved to kannel long time ago, bug #493712
-# Removal in a month.
-app-mobilephone/kannel-sqlbox
-
-# Pacho Ramos <pacho@gentoo.org> (05 Jan 2016)
 # Doesn't work properly (#519732), doesn't build (#503246). Removal in a
 # month.
 net-proxy/dansguardian
