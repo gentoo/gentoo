@@ -116,10 +116,12 @@ pkg_preinst() {
 			fi
 		done
 
-		einfo "Keeping the following Python preference: ${old_pythons[*]}"
+		if [[ ${old_pythons[@]} ]]; then
+			einfo "Keeping the following Python preference: ${old_pythons[*]}"
 
-		local IFS=$'\n'
-		echo "${old_pythons[*]}" \
-			>> "${ED}"etc/python-exec/python-exec.conf || die
+			local IFS=$'\n'
+			echo "${old_pythons[*]}" \
+				>> "${ED}"etc/python-exec/python-exec.conf || die
+		fi
 	fi
 }
