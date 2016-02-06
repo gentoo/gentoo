@@ -41,10 +41,10 @@ inherit toolchain-funcs
 # @DESCRIPTION:
 # All supported Python implementations, most preferred last.
 _PYTHON_ALL_IMPLS=(
+	jython2_7
+	pypy pypy3
 	python2_7
 	python3_3 python3_4 python3_5
-	pypy pypy3
-	jython2_7
 )
 readonly _PYTHON_ALL_IMPLS
 
