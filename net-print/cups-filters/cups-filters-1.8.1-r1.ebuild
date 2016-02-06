@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -65,7 +65,7 @@ src_configure() {
 		$(use_with png) \
 		$(use_with tiff) \
 		--with-rcdir=no \
- 		--with-browseremoteprotocols=DNSSD,CUPS \
+		--with-browseremoteprotocols=DNSSD,CUPS \
 		--without-php
 }
 
@@ -91,8 +91,8 @@ src_install() {
 	fi
 
 	# workaround: some printer drivers still require pstoraster and pstopxl, bug #383831
-	dosym /usr/libexec/cups/filter/gstoraster /usr/libexec/cups/filter/pstoraster
-	dosym /usr/libexec/cups/filter/gstopxl /usr/libexec/cups/filter/pstopxl
+	dosym gstoraster /usr/libexec/cups/filter/pstoraster
+	dosym gstopxl /usr/libexec/cups/filter/pstopxl
 
 	prune_libtool_files --all
 
