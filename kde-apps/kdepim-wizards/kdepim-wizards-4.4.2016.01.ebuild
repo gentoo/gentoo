@@ -9,6 +9,7 @@ KMMODULE="wizards"
 inherit kde4-meta
 
 DESCRIPTION="KDE PIM wizards (noakonadi branch)"
+HOMEPAGE="https://launchpad.net/~pali/+archive/ubuntu/kdepim-noakonadi"
 IUSE="debug"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 

@@ -9,7 +9,7 @@ KDE_HANDBOOK=optional
 inherit kde4-meta
 
 DESCRIPTION="KDE Blogging Client (noakonadi branch)"
-HOMEPAGE="https://www.kde.org/applications/internet/blogilo"
+HOMEPAGE="https://launchpad.net/~pali/+archive/ubuntu/kdepim-noakonadi"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 

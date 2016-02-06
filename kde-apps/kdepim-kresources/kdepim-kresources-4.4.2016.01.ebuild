@@ -9,6 +9,7 @@ KMMODULE="kresources"
 inherit kde4-meta
 
 DESCRIPTION="KDE PIM groupware plugin collection (noakonadi branch)"
+HOMEPAGE="https://launchpad.net/~pali/+archive/ubuntu/kdepim-noakonadi"
 IUSE="debug"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 
