@@ -13,7 +13,7 @@ DESCRIPTION="Common rules for searching for Perl things"
 
 LICENSE="|| ( Artistic GPL-1 GPL-2 GPL-3 )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm hppa ~ppc ~ppc64 ~x86"
 IUSE=""
 
 DEPEND="
