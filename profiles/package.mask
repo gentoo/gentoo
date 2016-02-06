@@ -652,13 +652,6 @@ dev-util/cocom
 dev-ada/booch_components
 
 # Pacho Ramos <pacho@gentoo.org> (01 Jan 2016)
-# Fails to build, bug #298700
-# Removal in a month.
-dev-java/istack-commons-tools
-dev-java/jax-ws-tools
-dev-java/jaxb-tools
-
-# Pacho Ramos <pacho@gentoo.org> (01 Jan 2016)
 # Unresolved security issues, bug #324017
 # Removal in a month.
 sys-libs/nss-db
