@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>djc@gentoo.org</email>
-    <name>Dirkjan Ochtman</name>
+    <email>mrueg@gentoo.org</email>
+    <name>Manuel Rüger</name>
   </maintainer>
   <longdescription>OpenVPN is an easy-to-use, robust and highly
 configurable VPN daemon which can be used to securely link two or more
