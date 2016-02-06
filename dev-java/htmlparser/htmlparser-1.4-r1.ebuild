@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,18 +14,22 @@ SRC_URI="http://about.validator.nu/${PN}/${P}.zip"
 
 LICENSE="W3C"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 CDEPEND="
 	dev-java/icu4j:52
 	dev-java/jchardet:0
 	dev-java/xom:0"
-RDEPEND="${CDEPEND}
+
+RDEPEND="
+	${CDEPEND}
 	>=virtual/jre-1.6"
-DEPEND="${CDEPEND}
-	>=virtual/jdk-1.6
-	app-arch/unzip"
+
+DEPEND="
+	${CDEPEND}
+	app-arch/unzip
+	>=virtual/jdk-1.6"
 
 java_prepare() {
 	java-pkg_clean
