@@ -11,14 +11,14 @@ depend() {
 
 start() {
         ebegin "Starting ${SVCNAME}"
-	checkpath -f "${I2PD_LOG}" -o "${I2PD_USER}:${I2PD_GROUP}"
-	checkpath -f "${I2PD_PID}" -o "${I2PD_USER}:${I2PD_GROUP}"
-	start-stop-daemon -S -b -u "${I2PD_USER}:${I2PD_GROUP}" /usr/bin/i2pd -- ${I2PDOPTIONS}
+        checkpath -f "${I2PD_LOG}" -o "${I2PD_USER}:${I2PD_GROUP}"
+        checkpath -f "${I2PD_PID}" -o "${I2PD_USER}:${I2PD_GROUP}"
+        start-stop-daemon -S -b -u "${I2PD_USER}:${I2PD_GROUP}" /usr/bin/i2pd -- ${I2PDOPTIONS}
         eend $?
 }
 
 stop() {
         ebegin "Stopping ${SVCNAME}"
-	start-stop-daemon -K -p "${I2PD_PID}"
+        start-stop-daemon -K -p "${I2PD_PID}" -R SIGTERM/20 SIGKILL/20 -P
         eend $?
 }

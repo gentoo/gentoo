@@ -50,13 +50,12 @@ RDEPEND="dev-libs/atk
 	x11-libs/libXmu
 	x11-libs/libXrender
 	x11-libs/libXt
-	x11-libs/pango
-	x11-terms/xterm"
+	x11-libs/pango"
 DEPEND=""
 
 pkg_nofetch() {
 	elog "Download the client file ${A} from
-	https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-linux/receiver-for-linux-13-2.html"
+	https://www.citrix.com/downloads/citrix-receiver.html"
 	elog "and place it in ${DISTDIR:-/usr/portage/distfiles}."
 }
 
@@ -87,7 +86,7 @@ src_install() {
 	fi
 
 	insinto "${ICAROOT}"
-	doins nls/en/eula.txt
+	doins nls/en.UTF-8/eula.txt
 
 	insinto "${ICAROOT}"/config
 	doins config/* config/.* nls/en/*.ini

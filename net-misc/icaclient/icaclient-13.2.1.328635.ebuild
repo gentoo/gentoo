@@ -56,7 +56,7 @@ DEPEND=""
 
 pkg_nofetch() {
 	elog "Download the client file ${A} from
-	http://www.citrix.com/downloads/citrix-receiver/linux/receiver-for-linux-1321.html"
+	https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-linux/receiver-for-linux-1321.html"
 	elog "and place it in ${DISTDIR:-/usr/portage/distfiles}."
 }
 
