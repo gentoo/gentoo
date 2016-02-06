@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ KDE_HANDBOOK=optional
 VIRTUALX_REQUIRED=test
 inherit flag-o-matic kde4-meta
 
-DESCRIPTION="Email component of Kontact, the integrated personal information manager of KDE (noakonadi branch)"
+DESCRIPTION="Email component of Kontact (noakonadi branch)"
 KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
