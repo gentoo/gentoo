@@ -14,12 +14,13 @@ DESCRIPTION="Cooperative light-weight thread library for OCaml"
 SRC_URI="https://github.com/ocsigen/lwt/archive/${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="http://ocsigen.org/lwt"
 
-IUSE="gtk +react +ssl"
+IUSE="gtk +ppx +react +ssl"
 
 DEPEND="react? ( >=dev-ml/react-1.2:= )
 	dev-libs/libev
 	ssl? ( >=dev-ml/ocaml-ssl-0.4.0:= )
 	gtk? ( dev-ml/lablgtk:= dev-libs/glib:2 )
+	ppx? ( dev-ml/ppx_tools:= )
 	|| ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )"
 
 RDEPEND="${DEPEND}
@@ -36,6 +37,6 @@ src_configure() {
 		$(use_enable react)
 		$(use_enable ssl)
 		--enable-camlp4
-		--disable-ppx" \
+		$(use_enable ppx)" \
 		oasis_src_configure
 }
