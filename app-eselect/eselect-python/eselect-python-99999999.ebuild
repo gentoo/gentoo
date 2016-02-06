@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,48 +20,10 @@ SLOT="0"
 IUSE=""
 
 RDEPEND=">=app-admin/eselect-1.2.3
-	>=dev-lang/python-exec-2.1:2
-	!<dev-lang/python-2.7.10-r4:2.7
-	!<dev-lang/python-3.3.5-r4:3.3
-	!<dev-lang/python-3.4.3-r4:3.4
-	!<dev-lang/python-3.5.0-r3:3.5"
+	>=dev-lang/python-exec-2.3"
 
 src_prepare() {
 	[[ ${PV} == "99999999" ]] && eautoreconf
-}
-
-src_install() {
-	keepdir /etc/env.d/python
-	emake DESTDIR="${D}" install || die
-
-	local f
-	for f in python{,2,3}; do
-		# can't use symlinks here since random stuff
-		# loves to do readlink on sys.executable...
-		newbin "${EPREFIX}/usr/lib/python-exec/python-exec2" "${f}"
-	done
-	for f in python{,2,3}-config 2to3 idle pydoc pyvenv; do
-		dosym ../lib/python-exec/python-exec2 /usr/bin/"${f}"
-	done
-}
-
-pkg_preinst() {
-	local py
-
-	# Copy python[23] selection from the old format (symlink)
-	for py in 2 3; do
-		# default to none
-		declare -g "PREV_PYTHON${py}"=
-
-		if [[ -L ${EROOT}/usr/bin/python${py} ]]; then
-			local target=$(readlink "${EROOT}/usr/bin/python${py}")
-
-			# check if it's actually old eselect symlink
-			if [[ ${target} == python?.? ]]; then
-				declare -g "PREV_PYTHON${py}=${target}"
-			fi
-		fi
-	done
 }
 
 pkg_postinst() {
@@ -71,13 +33,7 @@ pkg_postinst() {
 		eselect python update --if-unset
 	fi
 
-	for py in 2 3; do
-		local pyvar=PREV_PYTHON${py}
-		if [[ -n ${!pyvar} ]]; then
-			einfo "Setting Python${py} to ${!pyvar}"
-			eselect python set "--python${py}" "${!pyvar}"
-		elif has_version "=dev-lang/python-${py}*"; then
-			eselect python update "--python${py}" --if-unset
-		fi
-	done
+	if has_version "=dev-lang/python-3*"; then
+		eselect python update "--python3" --if-unset
+	fi
 }
