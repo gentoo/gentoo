@@ -8878,7 +8878,7 @@ dev-ruby/ragol 1.0.1-r1 1.0.1-r2: Another implementation of an option processor
 dev-ruby/rails 3.2.22 3.2.22.1 4.0.13 4.1.13 4.1.14 4.1.14.1 4.2.4 4.2.5 4.2.5.1: ruby on rails is a web-application and persistance framework
 dev-ruby/rails-deprecated_sanitizer 1.0.3: Deprecated sanitizer API extracted from Action View
 dev-ruby/rails-dom-testing 1.0.7: Compare doms and assert certain elements exists in doms using Nokogiri
-dev-ruby/rails-html-sanitizer 1.0.2 1.0.3: Sanitize HTML fragments in Rails applications
+dev-ruby/rails-html-sanitizer 1.0.3: Sanitize HTML fragments in Rails applications
 dev-ruby/rails-observers 0.1.2: Rails Observers
 dev-ruby/rails_autolink 1.1.6: This is an extraction of the auto_link method from rails
 dev-ruby/railties 3.2.22 3.2.22.1 4.0.13 4.1.13 4.1.14 4.1.14.1 4.2.4 4.2.5 4.2.5.1: Tools for creating, working with, and running Rails applications
