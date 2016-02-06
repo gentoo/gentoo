@@ -8,8 +8,6 @@ inherit flag-o-matic autotools-utils mercurial
 
 DESCRIPTION="A small Jabber console client with various features, like MUC, SSL, PGP"
 HOMEPAGE="http://mcabber.com/"
-#REV="a18e1b488f1c"
-#SRC_URI="http://mcabber.com/hg/index.cgi/archive/${REV}.tar.gz -> ${P}.tar.gz"
 EHG_REPO_URI="https://bitbucket.org/McKael/mcabber"
 EHG_CHECKOUT_DIR="${WORKDIR}"
 EHG_BOOTSTRAP="autogen.sh"
@@ -17,7 +15,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 
 IUSE="aspell crypt idn modules otr spell ssl vim-syntax"
 
