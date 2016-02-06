@@ -33,6 +33,15 @@ DEPEND="${RDEPEND}
 	test? ( dev-util/cppunit )
 "
 
+pkg_pretend() {
+	if [[ $(gcc-major-version) -lt 4 ]] || {
+		[[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 8 ]]; }
+	then
+		eerror "Compilation with gcc older than 4.8 is not supported"
+		die "Too old gcc found."
+	fi
+}
+
 src_prepare() {
 	[[ -d m4 ]] || mkdir "m4"
 	base_src_prepare
