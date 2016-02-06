@@ -37,7 +37,7 @@ index fc43951..fed5218 100644
          if (hasattr(sys, 'pypy_version_info') and
              not name.endswith(('_user', '_home'))):
 -            name = 'pypy'
-+            if self.install_base == os.path.normpath('@EPREFIX@/usr/@libdir@/pypy'):
++            if self.install_base == os.path.normpath('@EPREFIX@/usr/@libdir@/pypy3'):
 +                # override paths for system-wide install
 +                name = 'gentoo'
 +            else:
