@@ -167,6 +167,11 @@ multilib_src_configure() {
 		# disable -flto since it is an optimization flag
 		# and makes distcc less effective
 		cc_cv_CFLAGS__flto=no
+		# disable -fuse-ld=gold since Gentoo supports explicit linker
+		# choice and forcing gold is undesired, #539998
+		# ld.gold may collide with user's LDFLAGS, #545168
+		# ld.gold breaks sparc, #573874
+		cc_cv_LDFLAGS__Wl__fuse_ld_gold=no
 
 		# Workaround for gcc-4.7, bug 554454.
 		cc_cv_CFLAGS__Werror_shadow=no
