@@ -26,11 +26,6 @@ src_prepare() {
 	[[ ${PV} == "99999999" ]] && eautoreconf
 }
 
-src_install() {
-	keepdir /etc/env.d/python
-	emake DESTDIR="${D}" install
-}
-
 pkg_postinst() {
 	local py
 
