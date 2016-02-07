@@ -10149,7 +10149,7 @@ games-emulation/nestra 0.66-r2: NES emulation for Linux/x86
 games-emulation/openmsx 0.9.1: MSX emulator that aims for perfection
 games-emulation/pcsx2 1.4.0 9999: A PlayStation 2 emulator
 games-emulation/pcsxr 1.9.94 1.9.94-r1: PCSX-Reloaded: a fork of PCSX, the discontinued Playstation emulator
-games-emulation/ppsspp 1.1.0-r1 1.1.1-r1 9999: A PSP emulator written in C++.
+games-emulation/ppsspp 1.1.0-r2 1.1.1-r2 9999: A PSP emulator written in C++.
 games-emulation/raine 0.51.9: R A I N E M680x0 Arcade Emulation
 games-emulation/sdlmame 0.148_p1-r1 0.149 0.168: Multiple Arcade Machine Emulator + Multi Emulator Super System (MESS)
 games-emulation/sdlmametools 0.148_p1 0.149: Set of development tools shared between sdlmame and sdlmess
@@ -18450,7 +18450,7 @@ x11-plugins/wmcliphist 2.1 2.1-r1: Dockable clipboard history application for Wi
 x11-plugins/wmclock 1.0.13 1.0.14 1.0.15 1.0.16: a dockapp that displays time and date (same style as NEXTSTEP(tm) operating systems)
 x11-plugins/wmclockmon 0.8.1: a nice digital clock with 7 different styles either in LCD or LED style
 x11-plugins/wmcms 0.3.5-r1 0.3.5-r2: WindowMaker CPU and Memory Usage Monitor Dock App
-x11-plugins/wmcoincoin 2.5.1f 2.6.1 2.6.2_p20140602: a dockapp for browsing dacode news and board sites
+x11-plugins/wmcoincoin 2.6.2_p20140602 2.6.3: a dockapp for browsing dacode news and board sites
 x11-plugins/wmcp 1.2.8: A pager dockapp
 x11-plugins/wmcpu 1.4: wmcpu is a dockapp to monitor memory and CPU usage, similar to xosview
 x11-plugins/wmcpuload 1.1.0_pre5: a dockapp for monitoring CPU usage with a LCD display
