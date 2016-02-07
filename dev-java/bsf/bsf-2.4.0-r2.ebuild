@@ -17,15 +17,26 @@ KEYWORDS="amd64 x86 ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~x86-linux 
 # If you add new ones, add them to ant-apache-bsf too for use dependencies
 IUSE="javascript python tcl"
 
-CDEPEND="dev-java/commons-logging:0
+CDEPEND="
+	python? (
+		dev-java/jython:2.7
+	)
+	javascript? (
+		dev-java/rhino:1.6
+	)
+	tcl? (
+		dev-java/jacl:0
+	)
 	dev-java/xalan:0
-	python? ( dev-java/jython:2.7 )
-	javascript? ( dev-java/rhino:1.6 )
-	tcl? ( dev-java/jacl:0 )"
-RDEPEND=">=virtual/jre-1.6
-	${CDEPEND}"
-DEPEND=">=virtual/jdk-1.6
-	${CDEPEND}"
+	dev-java/commons-logging:0"
+
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
+
+DEPEND="
+	${CDEPEND}
+	>=virtual/jdk-1.6"
 
 JAVA_ANT_REWRITE_CLASSPATH="yes"
 
