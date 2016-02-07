@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-  <longdescription>
-    These command-line tools serve as the client interface to the Amazon EC2 web service.
-  </longdescription>
-</pkgmetadata>
