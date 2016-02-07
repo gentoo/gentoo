@@ -3482,11 +3482,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Reviewers</url>
     <description>Team dedicated to reviewing pull requests and commits</description>
     <member>
-      <email>hasufell@posteo.de</email>
-      <name>Julian Ospald</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>jlec@gentoo.org</email>
       <name>Justin Lecher</name>
       <role>Member</role>
