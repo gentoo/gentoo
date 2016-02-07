@@ -87,7 +87,6 @@ app-admin/diradm 2.9.7.1: diradm is a nearly complete nss/shadow suite for manag
 app-admin/drush 6.5.0 6.7.0: Command line shell and scripting interface for Drupal
 app-admin/durep 0.9-r4: A perl script designed for monitoring disk usage in a more visual way than du
 app-admin/ec2-ami-tools 1.5.6: These command-line tools serve as the client interface to the Amazon EC2 web service
-app-admin/ec2-api-tools 1.6.7.2-r5: These command-line tools serve as the client interface to the Amazon EC2 web service
 app-admin/eclean-kernel 0.4 0.4.1 9999: Remove outdated built kernels
 app-admin/elektra 0.7.1-r5 0.8.3-r3 0.8.6 0.8.7 0.8.12 9999: Universal and secure framework to store config parameters in a hierarchical key-value pair mechanism
 app-admin/emacs-updater 1.13 1.14: Rebuild Emacs packages
@@ -4220,10 +4219,6 @@ dev-java/stax 1.2.0: A standard XML processing API that allows you to stream XML
 dev-java/stax-ex 1.0-r4 1.7.6: Extensions to complement JSR-173 StAX API
 dev-java/stax2-api 4.0.0 4.0.0-r1: Extended Stax (STandard Api for Xml procesing) API
 dev-java/stringtemplate 3.2.1-r1 4.0.8: A Java template engine
-dev-java/struts 2.3.15.2: A powerful Model View Controller Framework for JSP/Servlets
-dev-java/struts-core 2.3.15.2: A powerful Model View Controller Framework for JSP/Servlets: Core
-dev-java/struts-plugins 2.3.15.2: A powerful Model View Controller Framework for JSP/Servlets: Plugins
-dev-java/struts-xwork 2.3.15.2: A powerful Model View Controller Framework for JSP/Servlets: XWork Core
 dev-java/sun-dtdparser 1.0: Sun DTDParser
 dev-java/sun-httpserver-bin 2.0.1-r1: Sun sun.net.httpserver classes
 dev-java/sun-j2ee-deployment-bin 1.1-r2: J2EE Application Deployment Specification
