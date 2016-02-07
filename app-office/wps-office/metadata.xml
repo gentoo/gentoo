@@ -6,6 +6,6 @@
 	<name>Pacho Ramos</name>
 </maintainer>
 <use>
-	<flag name="sharedfonts">Preserve fonts from WPS</flag>
+	<flag name="sharedfonts">Install WPS fonts available system wide</flag>
 </use>
 </pkgmetadata>
