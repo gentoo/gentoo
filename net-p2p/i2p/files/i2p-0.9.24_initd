@@ -1,0 +1,36 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+depend() {
+	need net
+}
+
+HOME="/var/lib/i2p"
+USER_HOME="$HOME"
+JAVABINARY="/etc/java-config-2/current-system-vm/bin/java"
+INSTALL_PATH="/usr/share/i2p"
+I2P="$INSTALL_PATH"
+I2P_CONFIG_DIR="$USER_HOME/.i2p"
+SYSTEM_java_io_tmpdir="$I2P_CONFIG_DIR"
+I2PTEMP="$SYSTEM_java_io_tmpdir"
+LOGFILE="$I2P_CONFIG_DIR/wrapper.log"
+PIDFILE="/var/run/i2p.pid"
+WRAPPER_CMD="$I2P/i2psvc"
+WRAPPER_CONF="$I2P/wrapper.config"
+
+start() {
+	ebegin "Starting I2P"
+	start-stop-daemon --start -b -m -u i2p --pidfile "$PIDFILE" --quiet --exec $WRAPPER_CMD -- -c $WRAPPER_CONF wrapper.daemonize=FALSE wrapper.syslog.ident=i2p wrapper.java.command="$JAVABINARY" wrapper.name=i2p wrapper.displayname="I2P Service" wrapper.statusfile="$I2P_CONFIG_DIR/i2p.status" wrapper.java.statusfile="$I2P_CONFIG_DIR/i2p.java.status" wrapper.logfile="$LOGFILE"
+	sleep 1
+	[ -e "$PIDFILE" -a -e /proc/$(cat "$PIDFILE") ]
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping I2P"
+	start-stop-daemon --stop -u i2p --pidfile "$PIDFILE" --quiet --exec $WRAPPER_CMD -R SIGTERM/20 SIGKILL/20 -P
+	eend $?
+}
+
