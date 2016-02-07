@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=>=dev-libs/dbus-glib-0.98 >=dev-libs/glib-2.26:2 >=dev-libs/libdbusmenu-0.6.2[gtk3] >=dev-libs/libindicator-12.10.0:3 >=x11-libs/gtk+-3.2:3 introspection? ( >=dev-libs/gobject-introspection-1 ) virtual/pkgconfig introspection? ( || ( dev-lang/vala:0.30[vapigen(+)] dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] dev-lang/vala:0.24[vapigen(+)] dev-lang/vala:0.22[vapigen(+)] dev-lang/vala:0.20[vapigen(+)] ) )
+DEPEND=>=dev-libs/dbus-glib-0.98 >=dev-libs/glib-2.26:2 >=dev-libs/libdbusmenu-0.6.2[gtk3] >=dev-libs/libindicator-12.10.0:3 >=x11-libs/gtk+-3.2:3 introspection? ( >=dev-libs/gobject-introspection-1 ) virtual/pkgconfig introspection? ( || ( dev-lang/vala:0.30[vapigen(+)] dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] dev-lang/vala:0.24[vapigen(+)] dev-lang/vala:0.22[vapigen(+)] ) )
 DESCRIPTION=A library to allow applications to export a menu into the Unity Menu bar
 EAPI=5
 HOMEPAGE=https://launchpad.net/libappindicator
@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/dbus-glib-0.98 >=dev-libs/glib-2.26:2 >=dev-libs/libdbusmenu-
 SLOT=3
 SRC_URI=https://launchpad.net/libappindicator/12.10/12.10.0/+download/libappindicator-12.10.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_eclasses_=eutils	28fb3e5852485af1c348d446b0b98389	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vala	15f7a43101d2ff0c6dcdab272c02f469
+_eclasses_=eutils	28fb3e5852485af1c348d446b0b98389	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vala	f946609697ad4b4b1d85b997f0c70204
 _md5_=9bb5a0e1c76c63ee9dce88b5f7174eba
