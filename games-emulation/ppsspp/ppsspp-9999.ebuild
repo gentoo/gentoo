@@ -59,10 +59,13 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "$FILESDIR"/ppsspp-cmake.patch
+	# Bug 574000
+	sed -i -e "s#-O3#-O2#g;" "${S}"/CMakeLists.txt || die
+
 	epatch "$FILESDIR"/ppsspp-ffmpeg-x86_64.patch
 	epatch "$FILESDIR"/ppsspp-ffmpeg-x86.patch
 	epatch "$FILESDIR"/ppsspp-qt.patch
+
 	if use qt4 ; then
 		cd "${WORKDIR}"/"${P}"/Qt || die
 		qt4-r2_src_prepare
@@ -102,7 +105,7 @@ src_compile() {
 
 src_install() {
 	if use qt4 ; then
-		into /usr/games/bin
+		exeinto /usr/games/bin
 		newexe "${WORKDIR}"/"${P}"/Qt/ppsspp ppsspp
 	elif use qt5 ; then
 		exeinto /usr/games/bin
