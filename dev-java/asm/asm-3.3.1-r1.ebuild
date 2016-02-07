@@ -15,7 +15,7 @@ SRC_URI="http://download.forge.objectweb.org/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="3"
 IUSE=""
-KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ppc64 x86 ~amd64-fbsd ~x86-fbsd ~sparc-solaris ~x86-solaris"
 
 DEPEND=">=virtual/jdk-1.6"
 RDEPEND=">=virtual/jre-1.6"
