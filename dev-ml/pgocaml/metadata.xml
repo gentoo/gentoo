@@ -5,7 +5,4 @@
 			<email>ml@gentoo.org</email>
 			<name>Gentoo ML Project</name>
 		</maintainer>
-		<use>
-			<flag name="batteries">Enable Batteries support instead of extlib</flag>
-		</use>
 </pkgmetadata>

@@ -20,8 +20,6 @@
   <use>
 	<flag name="ppx">Enables the ppx syntax extension</flag>
     <flag name="react">Enables support for <pkg>dev-ml/react</pkg>: Functional reactive programming (signals, events, etc.).</flag>
-    <flag name="toplevel">Enables enhanced toplevel.</flag>
-    <flag name="text">Enables text mode utilities.</flag>
   </use>
   <upstream>
     <remote-id type="github">ocsigen/lwt</remote-id>
