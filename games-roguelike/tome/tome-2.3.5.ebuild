@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,6 +32,7 @@ S=${WORKDIR}/tome-${MY_PV}-src/src
 src_prepare() {
 	mv makefile.std makefile
 	epatch "${FILESDIR}/${PV}-gentoo-paths.patch" \
+		"${FILESDIR}"/${P}-format.patch \
 		"${FILESDIR}"/${P}-noX.patch
 	sed -i -e '/^CC =/d' makefile || die
 	sed -i -e "s:xx:x:" ../lib/edit/p_info.txt || die
