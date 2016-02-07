@@ -6765,7 +6765,7 @@ dev-python/aioeventlet 0.4: asyncio event loop scheduling callbacks in eventlet
 dev-python/aiohttp 0.17.4 0.18.4 0.19.0 0.20.2: http client/server for asyncio
 dev-python/alabaster 0.7.6 0.7.7: A configurable sidebar-enabled Sphinx theme
 dev-python/aldryn-bootstrap3 0.5.1: django CMS plugins for bootstrap3 markup
-dev-python/alembic 0.6.7 0.7.4 0.7.6 0.7.7 0.8.2 0.8.4: database migrations tool, written by the author of SQLAlchemy
+dev-python/alembic 0.7.7 0.8.2 0.8.4: database migrations tool, written by the author of SQLAlchemy
 dev-python/algopy 0.5.1 0.5.2 0.5.3: Taylor Arithmetic Computation and Algorithmic Differentiation
 dev-python/amodem 1.12.0 1.13: Transmit data between two computers using audio
 dev-python/amqplib 0.6.1-r1 1.0.2-r1: Python client for the Advanced Message Queuing Procotol (AMQP)
@@ -7296,6 +7296,7 @@ dev-python/markdown2 2.2.1 2.2.3 2.3.0: Python Markdown language reimplementatio
 dev-python/markups 0.2.4-r1 0.6.1 0.6.3 1.0.0 1.0.1: A wrapper around various text markups
 dev-python/markupsafe 0.23: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/matplotlib 1.4.3 1.5.0 1.5.1 9999: Pure python plotting library with matlab like syntax
+dev-python/maybe 0.2.1: See what a program does before deciding whether you really want it to happen
 dev-python/mccabe 0.2.1 0.3 0.3.1: a plugin for flake8
 dev-python/mecab-python 0.996: Python binding for MeCab
 dev-python/mechanize 0.2.5-r1: Stateful programmatic web browsing in Python
@@ -7362,6 +7363,7 @@ dev-python/nltk 3.0.3 3.0.4: Natural Language Toolkit
 dev-python/nose 1.3.7-r1 9999: Unittest extension with automatic test suite discovery and easy test authoring
 dev-python/nose-cover3 0.1.0-r1: Coverage 3.x support for Nose
 dev-python/nose-exclude 0.1.9 0.2.0 0.3.0 0.4.1: Exclude specific directories from nosetests runs
+dev-python/nose-show-skipped 0.1: A nose plugin to show skipped tests and their messages
 dev-python/nose-testconfig 0.9: Test Configuration plugin for nosetests
 dev-python/nose_fixes 1.3: A plugin to make nose behave better
 dev-python/nosehtmloutput 0.0.4-r1 0.0.5: Nose plugin to produce test results in html
@@ -7370,7 +7372,7 @@ dev-python/notebook 4.0.6 4.1.0: Jupyter Interactive Notebook
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
 dev-python/numba 0.18.2 0.19.2 0.20.0 0.22.1: NumPy aware dynamic Python compiler using LLVM
 dev-python/numdisplay 1.6.0-r1: Python package for interactively displaying FITS arrays
-dev-python/numexpr 2.4.3 2.4.4 2.4.6: Fast numerical array expression evaluator for Python and NumPy
+dev-python/numexpr 2.4.3 2.4.4 2.4.6 2.5: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.8.2 1.9.2 1.9.3 1.10.1-r1 1.10.2-r2 1.10.4 9999: Fast array and numerical python library
 dev-python/numpydoc 0.4-r1 0.5: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
@@ -7538,7 +7540,7 @@ dev-python/pycrypto 2.6.1 2.6.1-r1: Python Cryptography Toolkit
 dev-python/pycryptopp 0.6.0: Python wrappers for a few algorithms from the Crypto++ library
 dev-python/pycuda 2012.1 2013.1.1 2014.1 9999: Python wrapper for NVIDIA CUDA
 dev-python/pycups 1.9.72 1.9.73: Python bindings for the CUPS API
-dev-python/pycurl 7.19.3.1-r2 7.19.5.1 7.19.5.1-r1 7.19.5.3 7.21.5: python binding for curl/libcurl
+dev-python/pycurl 7.19.3.1-r2 7.19.5.1 7.19.5.1-r1 7.19.5.3 7.21.5 7.43.0: python binding for curl/libcurl
 dev-python/pycxx 6.2.5 6.2.6: Set of facilities to extend Python with C++
 dev-python/pydb 1.26-r1 1.26-r2: Extended python debugger
 dev-python/pydecomp 0.1 9999: A python library of common (de)compression and contents handling
@@ -7661,7 +7663,7 @@ dev-python/pyrfc3339 0.2 1.0: Generates and parses RFC 3339 timestamps
 dev-python/pyringe 1.0.2: Debugger capable of attaching and injecting code
 dev-python/pyro 3.16-r1 4.25 4.39 4.40 4.41: Distributed object middleware for Python (RPC)
 dev-python/pyroma 1.7: Test project's packaging friendliness
-dev-python/pyrsistent 0.11.10 0.11.11: Persistent/Functional/Immutable data structures
+dev-python/pyrsistent 0.11.12: Persistent/Functional/Immutable data structures
 dev-python/pyrtf 0.45-r1: A set of Python classes that make it possible to produce RTF documents from Python programs
 dev-python/pysaml2 2.1.0 3.0.0: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pyscaffold 2.4.1 2.4.4: Tool for easily putting up the scaffold of a Python project
@@ -7772,7 +7774,7 @@ dev-python/python-pam 0.1.4: A python interface to the PAM library on linux usin
 dev-python/python-poppler 0.12.1-r4: Python bindings to the Poppler PDF library
 dev-python/python-poppler-qt4 0.18.1: A python binding for libpoppler-qt4
 dev-python/python-prctl 1.5.0-r1 1.6.0 1.6.1: Control process attributes through prctl
-dev-python/python-ptrace 0.8.1-r1: python-ptrace is a debugger using ptrace (Linux, BSD and Darwin system call to trace processes)
+dev-python/python-ptrace 0.8.1-r1: A debugger using ptrace (Linux, BSD and Darwin system call to trace processes)
 dev-python/python-saharaclient 0.7.0 0.9.0 0.11.0: This is a client for the OpenStack Sahara API, aka HADOOP
 dev-python/python-scw 0.4.7-r1: Python binding for Scw
 dev-python/python-sipsimple 2.5.1-r3: SIP SIMPLE client SDK is a Software Development Kit
@@ -8099,7 +8101,7 @@ dev-python/webtest 1.4.3-r1 2.0.16 2.0.17 2.0.18: Helper to test WSGI applicatio
 dev-python/webut 0.1.0.2 0.1.0.2-r1: Miscellaneous utilities for nevow and twisted.web programming
 dev-python/wehjit 0.2.2-r1: A Python web-widget library
 dev-python/werkzeug 0.9.6 0.10 0.10.1 0.10.4 0.11.1 0.11.2 0.11.3: Collection of various utilities for WSGI applications
-dev-python/wheel 0.24.0 0.26.0 0.27.0 0.28.0: A built-package format for Python
+dev-python/wheel 0.24.0 0.26.0 0.27.0 0.28.0 0.29.0: A built-package format for Python
 dev-python/whirlpool 0.3-r1: Bindings for whirlpool hash reference implementation
 dev-python/whisper 0.9.13 0.9.15: Fixed size round-robin style database
 dev-python/whoosh 2.6.0 2.7.0: Fast, pure-Python full text indexing, search and spell checking library
@@ -16864,7 +16866,7 @@ sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
 sys-fs/avfs 1.0.1 1.0.2 1.0.3: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: A bash script that uses udisks to handle removable devices without dependencies on any GUI
 sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
-sys-fs/bedup 0.9.0_p20140413-r1 0.10.0 9999: Btrfs file de-duplication tool
+sys-fs/bedup 0.10.0 9999: Btrfs file de-duplication tool
 sys-fs/bindfs 1.12.6 1.13.0: FUSE filesystem for mounting a directory to another location and altering permissions
 sys-fs/btrfs-progs 3.14.2 3.16.2 3.17.3 3.18.2 3.19.1 4.0 4.0.1 4.1 4.1.2 4.2 4.2.2 4.3.1 9999: Btrfs filesystem utilities
 sys-fs/cachefilesd 0.10.5-r4: Provides a caching directory on an already mounted filesystem
