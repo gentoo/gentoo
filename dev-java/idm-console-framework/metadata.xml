@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person">
+		<email>wibrown@redhat.com</email>
+		<name>William Brown</name>
+		<description>Proxy maintainer. Part of the 389-ds core team.</description>
+	</maintainer>
+	<maintainer type="person">
+		<email>wes@sol1.com.au</email>
+			<name>Wes</name>
+		    <description>Proxy maintainer.</description>
+		</maintainer>
+	<maintainer type="project">
+	    <email>proxy-maint@gentoo.org</email>
+	    <name>Proxy Maintainers</name>
+	</maintainer>
 <longdescription>A Java Management Console framework used for remote server
 	management.</longdescription> 
 </pkgmetadata>
