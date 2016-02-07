@@ -27,9 +27,11 @@ DEPEND="${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)"
 
-# https://github.com/tobgu/pyrsistent/issues/78
-RESTRICT="test"
+# https://github.com/tobgu/pyrsistent/issues/
+# fails
+#RESTRICT="test"
 
 python_test() {
-	py.test -v -v || die
+	export PYTHONPATH="${S}:${PYTHONPATH}"
+	py.test -v -v -x || die ${PYTHONPATH}
 }
