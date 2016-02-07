@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit fdo-mime font gnome2-utils unpacker versionator
 
 MY_PV="$(get_version_component_range 1-4)"
@@ -28,7 +28,7 @@ esac
 MY_VV=${MY_PV}~${MY_BRANCH}${MY_SP}
 
 DESCRIPTION="WPS Office is an office productivity suite"
-HOMEPAGE="http://linux.wps.cn/"
+HOMEPAGE="http://linux.wps.cn/ http://wps-community.org/"
 
 KEYWORDS="~amd64 ~x86"
 
@@ -91,17 +91,17 @@ DEPEND=""
 
 S="${WORKDIR}"
 
-src_prepare() {
+#src_prepare() {
 	# Remove bundled libs and rely on system versions if possible
 	# Commented lines are about the libs that cannot be unbundled yet.
-	cd "${S}"/opt/kingsoft/wps-office/office6/
+#	cd "${S}"/opt/kingsoft/wps-office/office6/
 #	rm -f libQtCore.so* || die
 #	rm -f libQtDBus.so* || die
 #	rm -f libQtNetwork.so || die
 #	rm -f libQtWebKit.so* || die
 #	rm -f libphonon.so*
 #	rm -f libtiff.so.4* || die
-}
+#}
 
 src_install() {
 	exeinto /usr/bin

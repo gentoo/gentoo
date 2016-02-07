@@ -20,7 +20,6 @@ IUSE="doc test"
 
 CDEPEND="
 	dev-python/extras[${PYTHON_USEDEP}]
-	>=dev-python/fixtures-1.3.0[${PYTHON_USEDEP}]
 	dev-python/mimeparse[${PYTHON_USEDEP}]
 	>=dev-python/pbr-0.11[${PYTHON_USEDEP}]
 	dev-python/pyrsistent[${PYTHON_USEDEP}]
@@ -32,10 +31,14 @@ DEPEND="
 	${CDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
+		>=dev-python/fixtures-1.3.0[${PYTHON_USEDEP}]
 		dev-python/testscenarios[${PYTHON_USEDEP}]
 	)
 "
 RDEPEND="${CDEPEND}"
+PDEPEND="
+	>=dev-python/fixtures-1.3.0[${PYTHON_USEDEP}]
+"
 
 python_compile_all() {
 	use doc && emake -C doc html
