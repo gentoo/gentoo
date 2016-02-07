@@ -15633,7 +15633,7 @@ sci-libs/cln 1.3.3: Class library (C++) for numbers
 sci-libs/cminpack 1.3.2 1.3.4: C implementation of the MINPACK nonlinear optimization library
 sci-libs/cmpfit 1.2: MINPACK-1 Least Squares Fitting Library in C
 sci-libs/coinhsl 2014.01.10: HSL mathematical software library for IPOPT
-sci-libs/coinor-alps 1.4.9: COIN-OR Framework for implementing parallel graph search algorithms
+sci-libs/coinor-alps 1.4.9 1.5.4: COIN-OR Framework for implementing parallel graph search algorithms
 sci-libs/coinor-bcp 1.3.8: COIN-OR Branch-Cut-Price Framework
 sci-libs/coinor-bcps 0.93.10: COIN-OR BiCEPS data handling library
 sci-libs/coinor-blis 0.93.10: COIN-OR BiCePS Linear Integer Solver
