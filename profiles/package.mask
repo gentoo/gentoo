@@ -116,8 +116,12 @@ dev-java/gjdoc
 # whether it's called via the Python wrapper shebang, or symlinked
 # directly. eselect-python uses the C wrapper rather than Python wrapper
 # to fix Prefix support, #568974.
+# The 2.3 version uses completely new configuration format which
+# requires much more testing.
 >=app-eselect/eselect-python-20151117-r3
 >=dev-lang/python-exec-2.2
+>=app-eselect/eselect-python-20160207
+>=dev-lang/python-exec-2.3
 
 # Aaron W. Swenson <titanofold@gentoo.org> (11 Jan 2016)
 # Masked for removal after 2016-03-11. Package hasn't been updated in
