@@ -3104,6 +3104,7 @@ dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
 dev-games/tiled 0.12.3 0.14.2 0.15.0: A general purpose tile map editor
 dev-games/vamos 0.7.1: an automotive simulation framework
 dev-games/wfmath 1.0.1 1.0.2: Worldforge math library
+dev-go/beego 1.6.0_p20160126: High-performance web framework for Go
 dev-go/blackfriday 1.2_p20150720 9999: a markdown processor implemented in Go
 dev-go/go-colortext 0_pre20150720: Change the console foreground and background colors
 dev-go/go-crypto 0_pre20150808 9999: Go supplementary cryptography libraries
@@ -4447,7 +4448,7 @@ dev-libs/blitz 0.10 0.10-r1: High-performance C++ numeric library
 dev-libs/boehm-gc 6.8 7.1-r1 7.2d 7.2d-r1 7.2e 7.4.0 7.4.2: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.55.0-r2 1.56.0-r1 1.57.0 1.58.0-r1 1.59.0: Boost Libraries for C++
 dev-libs/boost-numpy 0_pre20131206 9999: Boost.Python interface for NumPy
-dev-libs/botan 1.10.5 1.10.10 1.11.4 1.11.8 1.11.20 1.11.20-r1 1.11.25: A C++ crypto library
+dev-libs/botan 1.10.5 1.10.10 1.10.12 1.11.4 1.11.8 1.11.20 1.11.20-r1 1.11.25 1.11.28: A C++ crypto library
 dev-libs/btparse 0.33 0.35: A C library to parse Bibtex files
 dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
@@ -15825,7 +15826,7 @@ sci-libs/xgks-pmel 2.5.5: PMEL fork of XGKS, an X11-based version of the ANSI Gr
 sci-libs/xkaapi 2.1 2.2 3.0.3: Kernel for Adaptative, Asynchronous Parallel and Interactive programming
 sci-libs/xylib 1.1 1.2: Experimental x-y data reading library
 sci-mathematics/4ti2 1.6.2 1.6.5 1.6.6: Software package for algebraic, geometric and combinatorial problems
-sci-mathematics/Macaulay2 1.7_pre: Research tool for commutative algebra and algebraic geometry
+sci-mathematics/Macaulay2 1.7_pre 1.8.2.1: Research tool for commutative algebra and algebraic geometry
 sci-mathematics/agda 2.4.0.1 2.4.2.2-r1 2.4.2.3-r1 2.4.2.3-r2 2.4.2.3-r3 2.4.2.5: A dependently typed functional programming language and proof assistant
 sci-mathematics/agda-executable 2.3.0.1-r1 2.3.0.1-r2: Command-line program for type-checking and compiling Agda programs
 sci-mathematics/agda-lib-ffi 0.0.2 0.0.2-r2: Auxiliary Haskell code used by Agda's standard library
