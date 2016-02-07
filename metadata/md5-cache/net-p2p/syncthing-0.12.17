@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=dev-lang/go-1.4.2:=
+DESCRIPTION=Syncthing is an open, trustworthy and decentralized cloud storage system
+EAPI=5
+HOMEPAGE=http://syncthing.net
+KEYWORDS=~amd64
+LICENSE=MIT
+SLOT=0
+SRC_URI=https://github.com/syncthing/syncthing/archive/v0.12.17.tar.gz -> syncthing-0.12.17.tar.gz
+_eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:- src_install:-
+_eclasses_=golang-base	59e300a2d8836a6e8d508276da0d570f	golang-vcs-snapshot	b10a39b036bc9a2dbefc6e168689b5fd
+_md5_=989e931dad652ad5b2a1203662a15ba9
