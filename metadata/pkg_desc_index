@@ -7297,7 +7297,7 @@ dev-python/markdown2 2.2.1 2.2.3 2.3.0: Python Markdown language reimplementatio
 dev-python/markups 0.2.4-r1 0.6.1 0.6.3 1.0.0 1.0.1: A wrapper around various text markups
 dev-python/markupsafe 0.23: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/matplotlib 1.4.3 1.5.0 1.5.1 9999: Pure python plotting library with matlab like syntax
-dev-python/maybe 0.2.1: See what a program does before deciding whether you really want it to happen
+dev-python/maybe 0.3.0: See what a program does before deciding whether you really want it to happen
 dev-python/mccabe 0.2.1 0.3 0.3.1: a plugin for flake8
 dev-python/mecab-python 0.996: Python binding for MeCab
 dev-python/mechanize 0.2.5-r1: Stateful programmatic web browsing in Python
@@ -7910,7 +7910,7 @@ dev-python/sepolgen 1.2.1-r1 1.2.2 9999: SELinux policy generation library
 dev-python/serpent 1.7 1.9 1.10 1.11: A simple serialization library based on ast.literal_eval
 dev-python/service_identity 14.0.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.9: Allow customization of the process title
-dev-python/setuptools 18.4 18.5 18.6.1 18.7 18.7.1 18.8 18.8.1 19.1.1 19.2 19.4 19.6 19.6.1 19.6.2 19.7 9999: Collection of extensions to Distutils
+dev-python/setuptools 18.4 18.5 18.6.1 18.7 18.7.1 18.8 18.8.1 19.1.1 19.2 19.4 19.6 19.6.1 19.6.2 19.7 20.0 9999: Collection of extensions to Distutils
 dev-python/setuptools-git 1.0 1.1: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.8.0 1.9.0 1.10.0 1.10.1: package to manage versions by scm tags via setuptools
