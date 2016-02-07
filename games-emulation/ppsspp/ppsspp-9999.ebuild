@@ -101,13 +101,7 @@ src_compile() {
 }
 
 src_install() {
-	if use qt4 ; then
-		into /usr/games/bin
-		newexe "${WORKDIR}"/"${P}"/Qt/ppsspp ppsspp
-	elif use qt5 ; then
-		exeinto /usr/games/bin
-		newexe "${WORKDIR}"/"${P}"/Qt/ppsspp ppsspp
-	else
+	if use sdl ; then
 		exeinto /usr/games
 		dobin "${FILESDIR}"/ppsspp
 		exeinto /usr/share/games/"${PN}"
@@ -115,6 +109,9 @@ src_install() {
 		insinto /usr/share/games/"${PN}"
 		doins -r "${WORKDIR}"/"${P}"_build/assets
 		doins -r "${WORKDIR}"/"${P}"/lang
+	else
+		exeinto /usr/games/bin
+		newexe "${WORKDIR}"/"${P}"/Qt/ppsspp ppsspp
 	fi
 	insinto /usr/share/icons/
 	newins "${WORKDIR}"/"${P}"/source_assets/image/icon_regular_72.png ppsspp-icon.png
