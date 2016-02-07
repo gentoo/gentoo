@@ -53,7 +53,6 @@ src_configure() {
 	done
 
 	local myconf=(
-		--with-eprefix="${EPREFIX}"
 		--with-python-impls="${pyimpls[*]}"
 	)
 
