@@ -106,7 +106,7 @@ src_compile() {
 
 src_install() {
 	if use qt4 ; then
-		into /usr/games/bin
+		exeinto /usr/games/bin
 		newexe "${WORKDIR}"/"${P}"/Qt/ppsspp ppsspp
 	elif use qt5 ; then
 		exeinto /usr/games/bin
