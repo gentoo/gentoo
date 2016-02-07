@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 GENTOO_DEPEND_ON_PERL=no
 
@@ -38,7 +38,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+blksha1 +curl cgi doc emacs gnome-keyring +gpg gtk highlight +iconv libressl mediawiki +nls +pcre +perl +python ppcsha1 tk +threads +webdav xinetd cvs subversion test"
+IUSE="+blksha1 +curl cgi doc emacs gnome-keyring +gpg gtk highlight +iconv libressl mediawiki mediawiki-experimental +nls +pcre +perl +python ppcsha1 tk +threads +webdav xinetd cvs subversion test"
 
 # Common to both DEPEND and RDEPEND
 CDEPEND="
@@ -102,6 +102,7 @@ REQUIRED_USE="
 	cgi? ( perl )
 	cvs? ( perl )
 	mediawiki? ( perl )
+	mediawiki-experimental? ( mediawiki )
 	subversion? ( perl )
 	webdav? ( curl )
 	gtk? ( python )
@@ -228,12 +229,20 @@ src_prepare() {
 	# hack, needs better upstream solution
 	epatch "${FILESDIR}"/git-1.8.5-mw-vendor.patch
 
+	# add experimental patches to improve mediawiki support
+	# see patches for origin
+	if use mediawiki-experimental ; then
+		epatch "${FILESDIR}"/git-2.7.0-mediawiki-namespaces.patch
+		epatch "${FILESDIR}"/git-2.7.0-mediawiki-subpages.patch
+		epatch "${FILESDIR}"/git-2.7.0-mediawiki-500pages.patch
+	fi
+
 	epatch "${FILESDIR}"/git-2.2.0-svn-fe-linking.patch
 
 	# Bug #493306, where FreeBSD 10.x merged libiconv into its libc.
 	epatch "${FILESDIR}"/git-2.5.1-freebsd-10.x-no-iconv.patch
 
-	epatch_user
+	default
 
 	sed -i \
 		-e 's:^\(CFLAGS[[:space:]]*=\).*$:\1 $(OPTCFLAGS) -Wall:' \
@@ -367,13 +376,16 @@ src_install() {
 	# manpages may exist in either OR both of these directories.
 	find man?/*.[157] >/dev/null 2>&1 && doman man?/*.[157]
 	find Documentation/*.[157] >/dev/null 2>&1 && doman Documentation/*.[157]
-
+6~
 	dodoc README Documentation/{SubmittingPatches,CodingGuidelines}
 	use doc && dodir /usr/share/doc/${PF}/html
 	for d in / /howto/ /technical/ ; do
 		docinto ${d}
 		dodoc Documentation${d}*.txt
-		use doc && dohtml -p ${d} Documentation${d}*.html
+		if use doc ; then
+			docinto ${d}/html
+			dodoc Documentation${d}*.html
+		fi
 	done
 	docinto /
 	# Upstream does not ship this pre-built :-(
@@ -446,7 +458,11 @@ src_install() {
 		cd "${S}"/contrib/svn-fe
 		dobin svn-fe
 		dodoc svn-fe.txt
-		use doc && doman svn-fe.1 && dohtml svn-fe.html
+		if use doc ; then
+			doman svn-fe.1
+			docinto html
+			dodoc svn-fe.html
+		fi
 		cd "${S}"
 	fi
 
@@ -517,7 +533,7 @@ src_install() {
 }
 
 src_test() {
-	local disabled="" #t7004-tag.sh" #520270
+	local disabled="t8005-blame-i18n.sh" #t7004-tag.sh" #520270
 	local tests_cvs="t9200-git-cvsexportcommit.sh \
 					t9400-git-cvsserver-server.sh \
 					t9401-git-cvsserver-crlf.sh \
@@ -633,6 +649,7 @@ pkg_postinst() {
 	showpkgdeps git-instaweb \
 		"|| ( www-servers/lighttpd www-servers/apache www-servers/nginx )"
 	echo
+	use mediawiki-experimental && ewarn "Using experimental git-mediawiki patches. The stability of cloned wiki filesystems is not guaranteed."
 }
 
 pkg_postrm() {
