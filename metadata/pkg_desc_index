@@ -15348,7 +15348,7 @@ sci-calculators/grpn 1.3.4: A reverse polish notation (RPN) calculator based on 
 sci-calculators/hcalc 1.0-r1 1.2: DJ's Hex Calculator
 sci-calculators/hexcalc 1.11-r2: A simple hex calculator for X
 sci-calculators/keurocalc 1.2.3: A universal currency converter and calculator
-sci-calculators/orpie 1.5.1 1.5.1-r1: A fullscreen RPN calculator for the console
+sci-calculators/orpie 1.5.1 1.5.1-r1 1.5.2: A fullscreen RPN calculator for the console
 sci-calculators/pcalc 1.2 1.3 2 3: the programmers calculator
 sci-calculators/qalculate-bases 0.9.4-r2: GTK+ base conversion tool
 sci-calculators/qalculate-currency 0.9.4-r2: A GTK+ currency converter

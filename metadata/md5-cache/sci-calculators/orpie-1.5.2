@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-ml/ocamlgsl sys-libs/ncurses:0= || ( <dev-lang/ocaml-4.02 dev-ml/camlp4 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A fullscreen RPN calculator for the console
+EAPI=6
+HOMEPAGE=http://pessimization.com/software/orpie/
+IUSE=doc
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=dev-ml/ocamlgsl sys-libs/ncurses:0= || ( <dev-lang/ocaml-4.02 dev-ml/camlp4 )
+SLOT=0
+SRC_URI=http://pessimization.com/software/orpie/orpie-1.5.2.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=c2e3e51b2f046a30c616db80249e4387
