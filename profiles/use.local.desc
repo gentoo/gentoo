@@ -2200,8 +2200,6 @@ dev-ml/lablgtk:gnomecanvas - Enable libgnomecanvas bindings compilation.
 dev-ml/lablgtk:sourceview - Enable GtkSourceView support
 dev-ml/lwt:ppx - Enables the ppx syntax extension
 dev-ml/lwt:react - Enables support for dev-ml/react: Functional reactive programming (signals, events, etc.).
-dev-ml/lwt:text - Enables text mode utilities.
-dev-ml/lwt:toplevel - Enables enhanced toplevel.
 dev-ml/ocaml-cstruct:async - Support for asynchronous execution
 dev-ml/ocaml-cstruct:camlp4 - Enable support for camlp4
 dev-ml/ocaml-cstruct:lwt - Enable threads via lwt
@@ -2211,7 +2209,6 @@ dev-ml/ocaml-uri:allservices - Compile support for all service types
 dev-ml/ocamlnet:cryptokit - Enables encryption support via dev-ml/cryptokit
 dev-ml/ocamlnet:httpd - Enables net-httpd web server component
 dev-ml/ocamlnet:zip - Enables netzip support to read/write gzip data using object channels
-dev-ml/pgocaml:batteries - Enable Batteries support instead of extlib
 dev-ml/qcheck:ounit - Enable integration with ounit
 dev-ml/utop:camlp4 - Enables camlp4 support.
 dev-ml/uutf:utftrip - Builds and install the utftrip executable: Among other things, reads unicode on stdin and rewrites it on stdout.
