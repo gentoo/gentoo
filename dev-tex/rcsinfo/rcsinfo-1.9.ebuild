@@ -16,3 +16,5 @@ KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DOCS="README-1.9"
+RDEPEND=""
+DEPEND="dev-tex/latex2html"
