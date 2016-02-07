@@ -1,0 +1,130 @@
+https://bugs.gentoo.org/269742
+
+From bfae00d02b5fb3a2ce34c09d2dbf0ca2f96b154f Mon Sep 17 00:00:00 2001
+From: Karl Berry <karl@gnu.org>
+Date: Sat, 14 Mar 2009 17:57:41 +0000
+Subject: [PATCH] support xz compression, http://tukaani.org/xz
+
+---
+ ChangeLog                   |    6 ++++++
+ NEWS                        |    4 ++++
+ doc/info-stnd.texi          |   34 +++++++++++++++++-----------------
+ info/filesys.c              |    1 +
+ install-info/install-info.c |   29 +++++++++++++++++++++++++----
+ 5 files changed, 53 insertions(+), 21 deletions(-)
+
+2009-03-14  Karl Berry  <karl@gnu.org>
+
+	* info/filesys.c (compress_suffixes): add .xz/unxz.
+
+	* info/filesys.h (DEFAULT_INFOPATH): include PATH by default.
+
+diff --git a/doc/info-stnd.texi b/doc/info-stnd.texi
+index 2bd67f3..c730cff 100644
+--- a/doc/info-stnd.texi
++++ b/doc/info-stnd.texi
+@@ -202,21 +202,21 @@ directory.
+ @cindex Info files, compressed
+ In every directory Info tries, if @var{filename} is not found, Info
+ looks for it with a number of known extensions of Info files@footnote{
+-@file{.info}, @file{-info}, @file{/index}, and @file{.inf}.}.  For every
+-known extension, Info looks for a compressed file, if a regular file
+-isn't found.  Info supports files compressed with @code{gzip},
+-@code{bzip2}, @code{compress} and @code{yabba} programs; it calls
+-@code{gunzip}, @code{bunzip2}, @code{uncompress} and @code{unyabba},
+-accordingly, to decompress such files.  Compressed Info files are
+-assumed to have @file{.z}, @file{.gz}, @file{.bz2}, @file{.Z}, or
+-@file{.Y} extensions, possibly in addition to one of the known Info
+-files extensions@footnote{The MS-DOS version allows for the Info
+-extension, such as @code{.inf}, and the short compressed file
+-extensions, such as @file{.z} and @file{.gz}, to be merged into a single
+-extension, since DOS doesn't allow more than a single dot in the
+-basename of a file.  Thus, on MS-DOS, if Info looks for @file{bison},
+-file names like @file{bison.igz} and @file{bison.inz} will be found and
+-decompressed by @code{gunzip}.}.
++@file{.info}, @file{-info}, @file{/index}, and @file{.inf}.}.  For
++every known extension, Info looks for a compressed file, if a regular
++file isn't found.  Info supports files compressed with @code{gzip},
++@code{xz}, @code{bzip2}, @code{lzma}, @code{compress} and @code{yabba}
++programs, assumed to have @file{.z}, @file{.gz}, @file{.xz},
++@file{.bz2}, @file{.lzma}, @file{.Z}, or @file{.Y} extensions,
++possibly after one of the known Info files extensions.
++
++On MS-DOS, Info allows for the Info extension, such as @code{.inf},
++and the short compressed file extensions, such as @file{.z} and
++@file{.gz}, to be merged into a single extension, since DOS doesn't
++allow more than a single dot in the basename of a file.  Thus, on
++MS-DOS, if Info looks for @file{bison}, file names like
++@file{bison.igz} and @file{bison.inz} will be found and decompressed
++by @code{gunzip}.
+ 
+ @item --help
+ @itemx -h
+diff --git a/info/filesys.c b/info/filesys.c
+index fdd18a8..5e795bc 100644
+--- a/info/filesys.c
++++ b/info/filesys.c
+@@ -55,6 +55,7 @@ static char *info_suffixes[] = {
+ 
+ static COMPRESSION_ALIST compress_suffixes[] = {
+   { ".gz", "gunzip" },
++  { ".xz", "unxz" },
+   { ".bz2", "bunzip2" },
+   { ".z", "gunzip" },
+   { ".lzma", "unlzma" },
+diff --git a/install-info/install-info.c b/install-info/install-info.c
+index 24669b3..0f18ca4 100644
+--- a/install-info/install-info.c
++++ b/install-info/install-info.c
+@@ -400,6 +400,11 @@ strip_info_suffix (char *fname)
+       len -= 3;
+       ret[len] = 0;
+     }
++  else if (len > 3 && FILENAME_CMP (ret + len - 3, ".xz") == 0)
++    {
++      len -= 3;
++      ret[len] = 0;
++    }
+   else if (len > 4 && FILENAME_CMP (ret + len - 4, ".bz2") == 0)
+     {
+       len -= 4;
+@@ -659,6 +664,12 @@ open_possibly_compressed_file (char *filename,
+     {
+       *opened_filename = concat (filename, ".gz", "");
+       f = fopen (*opened_filename, FOPEN_RBIN);
++    }
++  if (!f)
++    {
++      *opened_filename = concat (filename, ".xz", "");
++      f = fopen (*opened_filename, FOPEN_RBIN);
++    }
+   if (!f)
+     {
+       free (*opened_filename);
+@@ -702,7 +712,6 @@ open_possibly_compressed_file (char *filename,
+           else
+             pfatal_with_name (filename);
+         }
+-    }
+ 
+   /* Read first few bytes of file rather than relying on the filename.
+      If the file is shorter than this it can't be usable anyway.  */
+@@ -727,6 +736,15 @@ open_possibly_compressed_file (char *filename,
+ #else
+     *compression_program = "gzip";
+ #endif
++
++  else if (data[0] == '\xFD' && data[1] == '7' && data[2] == 'z'
++           && data[3] == 'X' && data[4] == 'Z' && data[5] == 0)
++#ifndef STRIP_DOT_EXE
++    *compression_program = "xz.exe";
++#else
++    *compression_program = "xz";
++#endif
++
+   else if (data[0] == 'B' && data[1] == 'Z' && data[2] == 'h')
+ #ifndef STRIP_DOT_EXE
+     *compression_program = "bzip2.exe";
+-- 
+1.7.4.rc2
+
