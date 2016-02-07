@@ -6765,7 +6765,7 @@ dev-python/aioeventlet 0.4: asyncio event loop scheduling callbacks in eventlet
 dev-python/aiohttp 0.17.4 0.18.4 0.19.0 0.20.2: http client/server for asyncio
 dev-python/alabaster 0.7.6 0.7.7: A configurable sidebar-enabled Sphinx theme
 dev-python/aldryn-bootstrap3 0.5.1: django CMS plugins for bootstrap3 markup
-dev-python/alembic 0.7.7 0.8.2 0.8.4: database migrations tool, written by the author of SQLAlchemy
+dev-python/alembic 0.7.4 0.7.7 0.8.2 0.8.4: database migrations tool, written by the author of SQLAlchemy
 dev-python/algopy 0.5.1 0.5.2 0.5.3: Taylor Arithmetic Computation and Algorithmic Differentiation
 dev-python/amodem 1.12.0 1.13: Transmit data between two computers using audio
 dev-python/amqplib 0.6.1-r1 1.0.2-r1: Python client for the Advanced Message Queuing Procotol (AMQP)
