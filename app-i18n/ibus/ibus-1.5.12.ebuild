@@ -5,13 +5,12 @@
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
-VALA_MIN_API_VERSION="0.20"
 VALA_USE_DEPEND="vapigen"
 # Vapigen is needed for the vala binding
 # Valac is needed when building from git for the engine
 UPSTREAM_VER=
 
-inherit autotools bash-completion-r1 eutils gnome2-utils multilib python-single-r1 readme.gentoo vala virtualx
+inherit autotools bash-completion-r1 eutils gnome2-utils multilib python-single-r1 readme.gentoo-r1 vala virtualx
 
 DESCRIPTION="Intelligent Input Bus for Linux / Unix OS"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
