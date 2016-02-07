@@ -7547,7 +7547,7 @@ dev-python/pycups 1.9.72 1.9.73: Python bindings for the CUPS API
 dev-python/pycurl 7.19.3.1-r2 7.19.5.1 7.19.5.1-r1 7.19.5.3 7.21.5: python binding for curl/libcurl
 dev-python/pycxx 6.2.5 6.2.6: Set of facilities to extend Python with C++
 dev-python/pydb 1.26-r1 1.26-r2: Extended python debugger
-dev-python/pydecomp 9999: A python interface library for common compression, decompression and contents handling
+dev-python/pydecomp 0.1 9999: A python library of common (de)compression and contents handling
 dev-python/pydiff 0.2: Diffs two Python files at the bytecode level
 dev-python/pydispatcher 2.0.3-r1 2.0.5: Multi-producer-multi-consumer signal dispatching mechanism
 dev-python/pydns 2.3.6-r1 3.1.0: Python DNS (Domain Name System) library
@@ -9404,7 +9404,7 @@ dev-util/buildbot-slave 0.8.10 0.8.12 9999: BuildBot Slave Daemon
 dev-util/bumpversion 0.5.3: Version-bump your software with a single command
 dev-util/bustle 0.4.2-r1 0.4.3 0.4.7-r1 0.5.1 0.5.2 0.5.3: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20140101 20141128 20150711: the best variant of the Yacc parser generator
-dev-util/catalyst 2.0.18-r1 2.0.9999 2.9999 9999: Release metatool used for creating releases based on Gentoo Linux
+dev-util/catalyst 2.0.18-r1 2.0.9999 2.9999 3.0_rc1 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.6.16-r2 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/ccache 2.4-r9 3.1.9-r4 3.1.10-r1 3.2.1-r1 3.2.2 3.2.3 3.2.4: fast compiler cache
