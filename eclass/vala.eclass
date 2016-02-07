@@ -50,7 +50,7 @@ vala_api_versions() {
 	local minimal_supported_minor_version minor_version
 
 	# Dependency atoms are not generated for Vala versions older than 0.${minimal_supported_minor_version}.
-	minimal_supported_minor_version="20"
+	minimal_supported_minor_version="22"
 
 	for ((minor_version = ${VALA_MAX_API_VERSION#*.}; minor_version >= ${VALA_MIN_API_VERSION#*.}; minor_version = minor_version - 2)); do
 		if ((minor_version >= minimal_supported_minor_version)); then
