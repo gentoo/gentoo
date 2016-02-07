@@ -5630,7 +5630,7 @@ dev-perl/HTML-Mason 1.540.0 1.560.0: A HTML development and delivery Perl Module
 dev-perl/HTML-Mason-PSGIHandler 0.530.0: PSGI handler for HTML::Mason
 dev-perl/HTML-Object 2.29-r2: A HTML development and delivery Perl Module
 dev-perl/HTML-Packer 2.0.0 2.20.0: Another HTML code cleaner
-dev-perl/HTML-Parser 3.710.0-r1: Parse <HEAD> section of HTML documents
+dev-perl/HTML-Parser 3.710.0-r1 3.720.0: Parse <HEAD> section of HTML documents
 dev-perl/HTML-Quoted 0.30.0-r1: Extract structure of quoted HTML mail message
 dev-perl/HTML-RewriteAttributes 0.50.0-r1: Perl module for concise attribute rewriting
 dev-perl/HTML-Scrubber 0.150.0: Perl extension for scrubbing/sanitizing html
