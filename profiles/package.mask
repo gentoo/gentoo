@@ -784,11 +784,6 @@ dev-perl/YAML-Parser-Syck
 <dev-php/pecl-taint-1.99.99
 
 # Brian Evans <grknight@gentoo.org> (02 Dec 2015)
-# Zend Opcache was integrated into PHP versions 5.5 and later
-# Masked for removal in 30 days
-dev-php/pecl-zendopcache
-
-# Brian Evans <grknight@gentoo.org> (02 Dec 2015)
 # PHP 5.4 is End Of Life and will not receive any further updates
 # Please migrate to 5.5 or, preferably 5.6.
 dev-lang/php:5.4
