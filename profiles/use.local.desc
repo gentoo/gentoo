@@ -1099,7 +1099,7 @@ app-office/skrooge:crypt - Enable encryption using dev-db/sqlcipher
 app-office/texmacs:netpbm - Add support for media-libs/netpbm
 app-office/texmacs:pdf - Add the experimental native pdf export
 app-office/texstudio:video - Use phonon for video embedding
-app-office/wps-office:sharedfonts - Preserve fonts from WPS
+app-office/wps-office:sharedfonts - Install WPS fonts available system wide
 app-pda/barry:boost - Enable boost support
 app-pda/barry:desktop - Install the GUI desktop control panel
 app-pda/barry:gui - Install the GUI backup tool
