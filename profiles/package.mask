@@ -717,11 +717,6 @@ app-office/passepartout
 # Removal in a month.
 media-video/bombono-dvd
 
-# Pacho Ramos <pacho@gentoo.org> (31 Dec 2015)
-# Upstream dead, doesn't compile with libsigc++-2.6, bug #569540
-# Removal in a month.
-sci-electronics/gspeakers
-
 # Victor Ostorga <vostorga@gentoo.org> (30 Dec 2015)
 # Mask this liferea version because upstream released it broken
 =net-news/liferea-1.10.17
