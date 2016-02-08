@@ -9,4 +9,4 @@ SLOT=0/1.6_rc2
 SRC_URI=https://storage.googleapis.com/golang/go1.6rc2.src.tar.gz
 _eclass_exported_funcs=pkg_pretend:- pkg_preinst:- pkg_postinst:- src_compile:- src_test:- src_install:-
 _eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=2b780f36ab006d422e76492c11508033
+_md5_=3f2a95d08b7b37a5a6de743f320ee2d4
