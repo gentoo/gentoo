@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit eutils scons-utils toolchain-funcs
+inherit eutils scons-utils toolchain-funcs flag-o-matic
 
 DESCRIPTION="HTTP client library"
 HOMEPAGE="https://code.google.com/p/serf/"
@@ -32,6 +32,9 @@ src_prepare() {
 
 	# https://code.google.com/p/serf/issues/detail?id=133
 	sed -e "/env.Append(CCFLAGS=\['-O2'\])/d" -i SConstruct
+
+	# need limits.h for PATH_MAX (only when EXTENSIONS is enabled)
+	[[ ${CHOST} == *-solaris* ]] && append-cppflags -D__EXTENSIONS__
 }
 
 src_compile() {
