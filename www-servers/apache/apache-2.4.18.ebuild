@@ -38,7 +38,7 @@ cache cache_disk cern_meta charset_lite cgi cgid dav dav_fs dav_lock dbd deflate
 dir dumpio env expires ext_filter file_cache filter headers http2 ident imagemap
 include info lbmethod_byrequests lbmethod_bytraffic lbmethod_bybusyness
 lbmethod_heartbeat log_config log_forensic logio macro mime mime_magic negotiation
-proxy proxy_ajp proxy_balancer proxy_connect proxy_ftp proxy_http proxy_scgi
+proxy proxy_ajp proxy_balancer proxy_connect proxy_ftp proxy_html proxy_http proxy_scgi
 proxy_fcgi  proxy_wstunnel rewrite ratelimit remoteip reqtimeout setenvif
 slotmem_shm speling socache_shmcb status substitute unique_id userdir usertrack
 unixd version vhost_alias"
@@ -70,6 +70,7 @@ MODULE_DEPENDS="
 	proxy_balancer:slotmem_shm
 	proxy_connect:proxy
 	proxy_ftp:proxy
+	proxy_html:proxy
 	proxy_http:proxy
 	proxy_scgi:proxy
 	proxy_fcgi:proxy
@@ -95,6 +96,7 @@ MODULE_DEFINES="
 	proxy_balancer:PROXY
 	proxy_connect:PROXY
 	proxy_ftp:PROXY
+	proxy_html:PROXY
 	proxy_http:PROXY
 	proxy_fcgi:PROXY
 	proxy_scgi:PROXY

@@ -20,6 +20,7 @@
 		<flag name="apache2_modules_authz_core">Provides core authorization capabilities to various authorization/authorization modules, such as authn_file and authz_user.</flag>
 		<flag name="apache2_modules_authz_dbd">Provides authorization capabilities via SQL database so that authenticated users can be allowed or denied access to portions of the web site by group membership.</flag>
 		<flag name="apache2_modules_cache_disk">Disk based storage module for the HTTP caching filter (similar to mem_cache in previous versions).</flag>
+		<flag name="apache2_modules_proxy_html">Module to rewrite links in html pages behind a reverse proxy</flag>
 		<flag name="apache2_modules_http2">Enable http2/alpn module</flag>
 		<flag name="apache2_modules_lbmethod_byrequests">Request counting load balancer scheduler algorithm for proxy_balancer.</flag>
 		<flag name="apache2_modules_lbmethod_bytraffic">Weighted traffic counting load balancer scheduler algorithm for proxy_balancer.</flag>
