@@ -18,8 +18,9 @@ KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="dev-ml/sexplib:=
-	<dev-ml/sexplib-113.01.00
+	dev-ml/pa_sexp_conv:=
 "
 RDEPEND="${DEPEND}"
+PATCHES=( "${FILESDIR}/sexpl.patch" )
 
 DOCS=( CHANGES README.md )

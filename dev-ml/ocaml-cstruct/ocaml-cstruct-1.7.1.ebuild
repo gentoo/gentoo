@@ -24,13 +24,14 @@ RDEPEND="
 	>=dev-lang/ocaml-4.01:=
 	dev-ml/ocplib-endian:=
 	dev-ml/sexplib:=
-	<dev-ml/sexplib-113.01.00
+	dev-ml/pa_sexp_conv:=
 	dev-ml/type-conv:=
 "
 DEPEND="
 	test? ( dev-ml/ounit )
 	${RDEPEND}
 "
+PATCHES=( "${FILESDIR}/sexpl.patch" )
 
 src_configure() {
 	oasis_configure_opts="
