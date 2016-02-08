@@ -4,16 +4,16 @@
 
 EAPI=6
 
-EGIT_REPO_URI="https://github.com/RetroShare/RetroShare.git"
-inherit eutils git-r3 gnome2-utils qmake-utils
+inherit eutils gnome2-utils qmake-utils
 
 DESCRIPTION="P2P private sharing application"
 HOMEPAGE="http://retroshare.sourceforge.net"
+SRC_URI="https://github.com/RetroShare/RetroShare/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 # pegmarkdown can also be used with MIT
 LICENSE="GPL-2 GPL-3 Apache-2.0 LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 IUSE="cli feedreader qt4 +qt5 voip"
 REQUIRED_USE="^^ ( qt4 qt5 )
@@ -75,6 +75,8 @@ DEPEND="${RDEPEND}
 	qt4? ( dev-qt/qtcore:4 )
 	qt5? ( dev-qt/qtcore:5 )
 	virtual/pkgconfig"
+
+S="${WORKDIR}/RetroShare-${PV}"
 
 src_prepare() {
 	local dir
