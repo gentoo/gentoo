@@ -79,7 +79,7 @@ depend() {
 
 start() {
 	checkconfig || return 1
-	rm /var/log/lxc/${CONTAINER}.log
+	rm -f /var/log/lxc/${CONTAINER}.log
 
 	rootpath=$(lxc_get_var lxc.rootfs)
 
