@@ -8014,6 +8014,7 @@ dev-python/theano 0.6.0 0.7.0: Define and optimize multi-dimensional arrays math
 dev-python/thunarx-python 0.3.0-r1: Python bindings for the Thunar file manager
 dev-python/timelib 0.2.4-r1: parse english textual date descriptions
 dev-python/tinycss 0.3: A complete yet simple CSS parser for Python
+dev-python/tinydb 3.1.2: Tiny, document oriented database optimized for your happiness :)
 dev-python/tlslite 0.4.3-r1 0.4.8: TLS Lite is a free python library that implements SSL 3.0 and TLS 1.0/1.1
 dev-python/tmdb3 0.6.17 0.7.2: TheMovieDB.org APIv3 interface
 dev-python/toolz 0.7.0 0.7.1 0.7.2 0.7.4: List processing tools and functional utilities
@@ -8127,7 +8128,7 @@ dev-python/xlutils 1.5.2-r1: provides a collection of utilities for working with
 dev-python/xlwt 0.7.5 1.0.0: Python library to create spreadsheet files compatible with Excel
 dev-python/xmltodict 0.9.1 0.9.2: Makes working with XML feel like you are working with JSON
 dev-python/xmpppy 0.5.0_rc1-r2: Python library providing easy scripting with Jabber
-dev-python/xonsh 0.2.3 0.2.4 0.2.5: An exotic, usable shell
+dev-python/xonsh 0.2.3 0.2.4 0.2.5 0.2.6: An exotic, usable shell
 dev-python/xvfbwrapper 0.2.2 0.2.4: Python wrapper for running a display inside X virtual framebuffer
 dev-python/yappi 0.93: Yet Another Python Profiler
 dev-python/yapps 2.2.0 2.2.0-r1: An easy to use parser generator
@@ -14751,7 +14752,7 @@ net-misc/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryptio
 net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
 net-misc/wget 1.16.3-r1 1.16.3-r2 1.17.1: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
-net-misc/whatportis 0.2 0.3 0.4: A command to search port names and numbers
+net-misc/whatportis 0.2 0.3 0.4 0.5: A command to search port names and numbers
 net-misc/whois 5.0.25 5.0.26 5.1.5 5.2.10 5.2.11: improved Whois Client
 net-misc/wicd 1.7.3 1.7.3-r2: A lightweight wired and wireless network manager for Linux
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
