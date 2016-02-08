@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -42,7 +42,8 @@ src_prepare() {
 		"${FILESDIR}"/${P}-ffmpeg-1.patch \
 		"${FILESDIR}"/${P}-libav9.patch \
 		"${FILESDIR}"/${P}-ffmpeg2.patch \
-		"${FILESDIR}"/${PV}-flac_ln.patch
+		"${FILESDIR}"/${PV}-flac_ln.patch \
+		"${FILESDIR}"/bckport-debug.patch
 
 	# Remove Vesion and Encoding from the desktop file
 	sed -i -e "/Version/d" -e "/Encoding/d" \

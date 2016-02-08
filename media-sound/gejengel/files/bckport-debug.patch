@@ -1,0 +1,14 @@
+--- src/AudioDecoder/ffmpegdecoder.cpp.orig
++++ src/AudioDecoder/ffmpegdecoder.cpp
+@@ -98,7 +98,11 @@ void FFmpegDecoder::initialise()
+     }
+ 
+ #ifdef ENABLE_DEBUG
++#if LIBAVCODEC_VERSION_MAJOR < 53
+     dump_format(m_pFormatContext, 0, m_Filepath.c_str(), false);
++#else
++    av_dump_format(m_pFormatContext, 0, m_Filepath.c_str(), false);
++#endif
+ #endif
+ 
+     initializeAudio();
