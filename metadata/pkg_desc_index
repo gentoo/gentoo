@@ -509,7 +509,7 @@ app-crypt/ccid 1.4.15 1.4.18 1.4.20: CCID free software driver
 app-crypt/ccrypt 1.9 1.10: Encryption and decryption
 app-crypt/chntpw 110511 140201: Offline Windows NT Password & Registry Editor
 app-crypt/ckpass 0.2: An ncurses based password database client that is compatible with KeePass 1.x format databases
-app-crypt/codecrypt 1.4.1 1.6: Post-quantum cryptography tool
+app-crypt/codecrypt 1.4.1 1.6 1.7.2: Post-quantum cryptography tool
 app-crypt/codegroup 20080907-r1: encode / decode binary file as five letter codegroups
 app-crypt/coolkey 1.1.0-r6: Linux Driver support for the CoolKey and CAC products
 app-crypt/crackpkcs12 0.2.9: multithreaded program to crack PKCS#12 files
