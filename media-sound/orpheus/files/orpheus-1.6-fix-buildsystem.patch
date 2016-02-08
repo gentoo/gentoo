@@ -1,0 +1,182 @@
+--- orpheus-1.6/configure.ac
++++ orpheus-1.6/configure.ac
+@@ -1,5 +1,5 @@
+-AC_INIT(aclocal.m4)
+-AM_INIT_AUTOMAKE(orpheus, 1.6)
++AC_INIT([orpheus],[1.6])
++AM_INIT_AUTOMAKE
+ 
+ AC_CANONICAL_HOST
+ 
+@@ -8,7 +8,8 @@
+ AC_PROG_CPP
+ AC_PROG_RANLIB
+ 
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS([config.h])
++AM_PROG_AR
+ 
+ ###     use option --enable-locales-fix to fix problems with double-byte
+ ###     encodings on systems with broken locale, iscntrl()
+@@ -20,30 +20,21 @@
+ 
+ AC_CHECK_HEADERS(sys/soundcard.h soundcard.h machine/soundcard.h, break)
+ 
+-AM_PATH_XML2(2.0.0, [
+-    CPPFLAGS="$CPPFLAGS $XML_CPPFLAGS"
+-    LIBS="$LIBS $XML_LIBS"
+-    AC_DEFINE(HAVE_LIBXML2, 1, [use libxml2])
+-], [
+-    AC_MSG_WARN(libxml2 not found, internet radio presets fetching disabled)
++PKG_CHECK_MODULES([DEPENDENCIES], [ncurses vorbis vorbisfile ogg libxml-2.0],
++[
++AC_DEFINE([HAVE_LIBXML2], [1], [Defined if libxml is present])
++AC_DEFINE([HAVE_LIBNCURSES], [1], [Defined if ncurses is present])
++AC_DEFINE([HAVE_LIBVORBIS], [1], [Defined if libvorbis is present])
++AC_DEFINE([HAVE_LIBVORBISFILE], [1], [Defined if libvorbisfile is present])
+ ])
+ 
+-AC_CHECK_LIB(ncurses, main,, AC_CHECK_LIB(curses, main,, AC_MSG_ERROR(The ncurses terminal library is required in order to build the program)))
+-
+-AC_CHECK_LIB(ghttp, ghttp_request_new,,
+-    [AC_MSG_WARN(libghttp not found - the support for CDDB is be disabled)])
+-
+-AC_CHECK_LIB(vorbis, vorbis_synthesis_headerin,,
+-    AC_MSG_WARN(libvorbisfile not found - the support for OGG tags edit is disabled))
+-    
+-AC_CHECK_LIB(vorbisfile, ov_open,,
+-    AC_MSG_WARN(libvorbis not found - the support for OGG files is disabled))
+-
+ AM_ICONV_LINK
+ 
+-LIBS="$LIBS $LIBICONV"
++CPPFLAGS="$CPPFLAGS $DEPENDENCIES_CFLAGS"
++LIBS="$LIBS $LIBICONV $DEPENDENCIES_LIBS"
+ 
+ ALL_LINGUAS="ru ca"
+ AM_GNU_GETTEXT
+ AC_CONFIG_SUBDIRS(kkstrtext-0.1 kkconsui-0.1)
+-AC_OUTPUT(Makefile src/Makefile src/abstract/Makefile po/Makefile.in intl/Makefile)
++AC_CONFIG_FILES([Makefile src/Makefile src/abstract/Makefile po/Makefile.in intl/Makefile])
++AC_OUTPUT
+--- orpheus-1.6/kkconsui-0.1/configure.ac
++++ orpheus-1.6/kkconsui-0.1/configure.ac
+@@ -6,7 +6,7 @@
+ AC_PROG_CC
+ AC_PROG_CXX
+ AC_PROG_RANLIB
+-
++AM_PROG_AR
+ 
+ ###	use option --enable-locales-fix to fix problems with double-byte
+ ###	encodings on systems with broken locale, iscntrl()
+--- orpheus-1.6/kkstrtext-0.1/configure.ac
++++ orpheus-1.6/kkstrtext-0.1/configure.ac
+@@ -6,6 +6,7 @@
+ AC_PROG_CC
+ AC_PROG_CXX
+ AC_PROG_RANLIB
++AM_PROG_AR
+ 
+ AC_CHECK_HEADERS(_G_config.h)
+ AC_LANG_CPLUSPLUS
+--- orpheus-1.6/po/Makefile.in.in
++++ orpheus-1.6/po/Makefile.in.in
+@@ -29,7 +29,7 @@
+ 
+ INSTALL = @INSTALL@
+ INSTALL_DATA = @INSTALL_DATA@
+-MKINSTALLDIRS = @MKINSTALLDIRS@
++MKINSTALLDIRS = $(top_srcdir)/mkinstalldirs
+ mkinstalldirs = $(SHELL) $(MKINSTALLDIRS)
+ 
+ GMSGFMT = @GMSGFMT@
+--- orpheus-1.6/src/cdtrack.cc
++++ orpheus-1.6/src/cdtrack.cc
+@@ -22,6 +22,8 @@
+ *
+ */
+ 
++#include "../config.h"
++
+ #include "cdtrack.h"
+ #include "playlist.h"
+ 
+--- orpheus-1.6/src/main.cc
++++ orpheus-1.6/src/main.cc
+@@ -21,6 +21,9 @@
+ * USA
+ *
+ */
++
++#include "../config.h"
++
+ #include "uitext.h"
+ #include "cdtrack.h"
+ #include "mp3track.h"
+--- orpheus-1.6/src/mp3track.cc
++++ orpheus-1.6/src/mp3track.cc
+@@ -22,6 +22,8 @@
+ *
+ */
+ 
++#include "../config.h"
++
+ #include "mp3track.h"
+ #include "orpheusconf.h"
+ 
+--- orpheus-1.6/src/oggtrack.cc
++++ orpheus-1.6/src/oggtrack.cc
+@@ -22,6 +22,8 @@
+ *
+ */
+ 
++#include "../config.h"
++
+ #include "oggtrack.h"
+ #include "orpheusconf.h"
+ 
+--- orpheus-1.6/src/orpheusconf.cc
++++ orpheus-1.6/src/orpheusconf.cc
+@@ -22,6 +22,8 @@
+ *
+ */
+ 
++#include "../config.h"
++
+ #include "orpheusconf.h"
+ 
+ #include <sys/stat.h>
+--- orpheus-1.6/src/playlist.cc
++++ orpheus-1.6/src/playlist.cc
+@@ -22,6 +22,8 @@
+ *
+ */
+ 
++#include "../config.h"
++
+ #include "playlist.h"
+ #include "mp3track.h"
+ #include "oggtrack.h"
+--- orpheus-1.6/src/streamtrack.cc
++++ orpheus-1.6/src/streamtrack.cc
+@@ -22,6 +22,8 @@
+ *
+ */
+ 
++#include "../config.h"
++
+ #include "streamtrack.h"
+ #include "playlist.h"
+ 
+--- orpheus-1.6/src/uitext.cc
++++ orpheus-1.6/src/uitext.cc
+@@ -22,6 +22,8 @@
+ *
+ */
+ 
++#include "../config.h"
++
+ #include "uitext.h"
+ #include "playlist.h"
+ #include "cdtrack.h"
