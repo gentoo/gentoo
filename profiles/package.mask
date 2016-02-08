@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (08 Feb 2016)
+# iojs and nodejs merged and formed the new major version nodejs 4.0. iojs will
+# not be maintained after 3.3.x and all users are suggested to move to nodejs 4
+# (or newer) as quick as possible to avoid any security-related issues.
+# Masked for removal in 30 days. See bug 573870.
+net-libs/iojs
+
 # James Le Cuirot <chewi@gentoo.org> (07 Feb 2016)
 # BioJava depends on commons-dbcp:0, which requires Java 6. Even the
 # latest "legacy" version 1.9.1 does so and no one wants to do the
