@@ -9,8 +9,8 @@ inherit webapp
 MY_PV=${PV:0:3}.0
 
 DESCRIPTION="PHP-based open-source platform and content management system"
-HOMEPAGE="http://drupal.org/"
-SRC_URI="http://drupal.org/files/projects/${P}.tar.gz"
+HOMEPAGE="https://www.drupal.org/"
+SRC_URI="https://ftp.drupal.org/files/projects/${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~ppc ~x86"
