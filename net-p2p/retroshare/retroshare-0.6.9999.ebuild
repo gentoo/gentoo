@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 EGIT_REPO_URI="https://github.com/RetroShare/RetroShare.git"
-inherit eutils git-r3 gnome2-utils multilib qmake-utils
+inherit eutils git-r3 gnome2-utils qmake-utils
 
 DESCRIPTION="P2P private sharing application"
 HOMEPAGE="http://retroshare.sourceforge.net"
@@ -15,10 +15,11 @@ LICENSE="GPL-2 GPL-3 Apache-2.0 LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
 
-IUSE="cli feedreader +qt5 voip"
-REQUIRED_USE="|| ( cli qt5 )
-	feedreader? ( qt5 )
-	voip? ( qt5 )"
+IUSE="cli feedreader qt4 +qt5 voip"
+REQUIRED_USE="^^ ( qt4 qt5 )
+	|| ( cli qt4 qt5 )
+	feedreader? ( || ( qt4 qt5 ) )
+	voip? ( || ( qt4 qt5 ) )"
 
 RDEPEND="
 	app-arch/bzip2
@@ -37,6 +38,13 @@ RDEPEND="
 		dev-libs/libxslt
 		net-misc/curl
 	)
+	qt4? (
+		x11-libs/libX11
+		x11-libs/libXScrnSaver
+		dev-qt/designer:4
+		dev-qt/qtcore:4
+		dev-qt/qtgui:4
+	)
 	qt5? (
 		x11-libs/libX11
 		x11-libs/libXScrnSaver
@@ -52,12 +60,20 @@ RDEPEND="
 		dev-qt/qtxml:5
 	)
 	voip? (
-		<media-libs/opencv-3.0.0[-qt4]
+		qt5? (
+			<media-libs/opencv-3.0.0[-qt4]
+		)
+		qt4? (
+			<media-libs/opencv-3.0.0
+			dev-qt/qtmultimedia:4
+			dev-qt/qt-mobility[multimedia]
+		)
 		media-libs/speex
 		virtual/ffmpeg[encode]
 	)"
 DEPEND="${RDEPEND}
-	dev-qt/qtcore:5
+	qt4? ( dev-qt/qtcore:4 )
+	qt5? ( dev-qt/qtcore:5 )
 	virtual/pkgconfig"
 
 src_prepare() {
@@ -71,6 +87,7 @@ src_prepare() {
 	rs_src_dirs="libbitdht/src openpgpsdk/src libresapi/src libretroshare/src supportlibs/pegmarkdown"
 	use cli && rs_src_dirs="${rs_src_dirs} retroshare-nogui/src"
 	use feedreader && rs_src_dirs="${rs_src_dirs} plugins/FeedReader"
+	use qt4 && rs_src_dirs="${rs_src_dirs} retroshare-gui/src"
 	use qt5 && rs_src_dirs="${rs_src_dirs} retroshare-gui/src"
 	use voip && rs_src_dirs="${rs_src_dirs} plugins/VOIP"
 
@@ -80,13 +97,14 @@ src_prepare() {
 		retroshare-gui/src/retroshare-gui.pro \
 		retroshare-nogui/src/retroshare-nogui.pro || die 'sed on retroshare-gui/src/retroshare-gui.pro failed'
 
-	epatch_user
+	eapply_user
 }
 
 src_configure() {
 	for dir in ${rs_src_dirs} ; do
 		pushd "${S}/${dir}" 2>/dev/null || die
-		eqmake5
+		use qt4 && eqmake4
+		use qt5 && eqmake5
 		popd 2>/dev/null || die
 	done
 }
@@ -106,6 +124,7 @@ src_install() {
 	local extension_dir="/usr/$(get_libdir)/${PN}/extensions6/"
 
 	use cli && dobin retroshare-nogui/src/RetroShare06-nogui
+	use qt4 && dobin retroshare-gui/src/RetroShare06
 	use qt5 && dobin retroshare-gui/src/RetroShare06
 
 	exeinto "${extension_dir}"
