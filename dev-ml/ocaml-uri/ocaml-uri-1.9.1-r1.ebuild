@@ -20,7 +20,7 @@ IUSE="allservices"
 RDEPEND="
 	dev-ml/ocaml-re:=
 	>=dev-ml/sexplib-109.53.00:=
-	<dev-ml/sexplib-113.01.00
+	dev-ml/pa_sexp_conv:=
 	dev-ml/stringext:=
 	dev-ml/type-conv:=
 "
@@ -28,6 +28,7 @@ DEPEND="
 	test? ( >=dev-ml/ounit-1.0.2 )
 	${RDEPEND}
 "
+PATCHES=( "${FILESDIR}/sexpl.patch" )
 
 src_configure() {
 	oasis_configure_opts="
