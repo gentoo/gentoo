@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 
 IUSE="lua +regex signatures static-libs urlfetch utils"
-DEPEND="lua? ( >=dev-lang/lua-5.1:= )
+DEPEND="!!dev-libs/ucl
+	lua? ( >=dev-lang/lua-5.1:= )
 	signatures? ( dev-libs/openssl:0 )
 	urlfetch? ( net-misc/curl )"
 RDEPEND="${DEPEND}"
