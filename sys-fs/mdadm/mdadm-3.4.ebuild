@@ -25,6 +25,7 @@ RDEPEND=">=sys-apps/util-linux-2.16"
 RESTRICT="test"
 
 mdadm_emake() {
+	# We should probably make corosync & libdlm into USE flags. #573782
 	emake \
 		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
 		CC="$(tc-getCC)" \
@@ -32,6 +33,8 @@ mdadm_emake() {
 		CXFLAGS="${CFLAGS}" \
 		UDEVDIR="$(get_udevdir)" \
 		SYSTEMD_DIR="$(systemd_get_unitdir)" \
+		COROSYNC="-DNO_COROSYNC" \
+		DLM="-DNO_DLM" \
 		"$@"
 }
 
