@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure prepare
-DEPEND=dev-libs/popt
+DEPEND=dev-libs/popt >=sys-kernel/linux-headers-3.18
 DESCRIPTION=Tools and library to manipulate EFI variables
 EAPI=5
 HOMEPAGE=https://github.com/rhinstaller/efivar
@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://github.com/rhinstaller/efivar/releases/download/0.21/efivar-0.21.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:-
 _eclasses_=eutils	28fb3e5852485af1c348d446b0b98389	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=93381766f221987e13dae95f4880f813
+_md5_=eb41f3ab5fc1f61234c7fed03e0a1d4c
