@@ -7,13 +7,16 @@
   </synopsis>
   <product type="ebuild">gstreamer</product>
   <announced>December 30, 2015</announced>
-  <revised>December 30, 2015: 1</revised>
+  <revised>February 08, 2016: 2</revised>
   <bug>553742</bug>
   <access>remote</access>
   <affected>
     <package name="media-libs/gstreamer" auto="yes" arch="*">
       <unaffected range="ge">1.4.5</unaffected>
       <vulnerable range="lt">1.4.5</vulnerable>
+    </package>
+    <package name="media-libs/gst-plugins-bad" auto="yes" arch="*">
+      <unaffected range="rge">0.10.23-r3</unaffected>
     </package>
   </affected>
   <background>
@@ -49,5 +52,5 @@
   <metadata tag="requester" timestamp="Sun, 22 Nov 2015 14:47:48 +0000">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Wed, 30 Dec 2015 11:14:34 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Mon, 08 Feb 2016 20:07:30 +0000">ackle</metadata>
 </glsa>
