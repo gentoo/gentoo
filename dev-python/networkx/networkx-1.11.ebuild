@@ -73,7 +73,7 @@ python_install_all() {
 	rm -r "${ED}"usr/share/doc/${P} || die
 
 	use doc && local HTML_DOCS=( doc/build/html/. )
-	use examples && local EXAMPLES=( examples/. )
+	use examples && dodoc -r examples
 
 	distutils-r1_python_install_all
 }
