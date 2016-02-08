@@ -16,16 +16,25 @@ SLOT="1.8"
 KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="doc python tcl"
 
-CDEPEND="dev-java/xalan:0
+CDEPEND="
+	dev-java/xalan:0
 	dev-java/rhino:1.6
 	dev-java/xml-commons-external:1.3
 	dev-java/xmlgraphics-commons:2
-	python? ( dev-java/jython:0 )
-	tcl? ( dev-java/jacl:0 )
+	python? (
+		dev-java/jython:2.7
+	)
+	tcl? (
+		dev-java/jacl:0
+	)
 	dev-java/ant-core:0"
-DEPEND=">=virtual/jdk-1.6
+
+DEPEND="
+	>=virtual/jdk-1.6
 	${CDEPEND}"
-RDEPEND=">=virtual/jre-1.6
+
+RDEPEND="
+	>=virtual/jre-1.6
 	${CDEPEND}"
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
