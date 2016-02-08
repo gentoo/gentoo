@@ -3219,7 +3219,6 @@ gnome-extra/gucharmap:vala - Enable bindings for dev-lang/vala
 gnome-extra/libgda:canvas - Enable support for x11-libs/goocanvas
 gnome-extra/libgda:http - Enable embedded net-libs/libsoup based server
 gnome-extra/libgda:json - Enable support for JSON format
-gnome-extra/libgda:libsecret - Enable app-crypt/libsecret support to store login credentials
 gnome-extra/libgda:mdb - Enable support for Microsoft Access database using app-office/mdbtools
 gnome-extra/libgda:reports - Install tools for generating graphical reports
 gnome-extra/libgda:sourceview - Enable support for x11-libs/gtksourceview
