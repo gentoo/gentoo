@@ -6766,7 +6766,7 @@ dev-python/aioeventlet 0.4: asyncio event loop scheduling callbacks in eventlet
 dev-python/aiohttp 0.17.4 0.18.4 0.19.0 0.20.2: http client/server for asyncio
 dev-python/alabaster 0.7.6 0.7.7: A configurable sidebar-enabled Sphinx theme
 dev-python/aldryn-bootstrap3 0.5.1: django CMS plugins for bootstrap3 markup
-dev-python/alembic 0.7.4 0.7.7 0.8.2 0.8.4: database migrations tool, written by the author of SQLAlchemy
+dev-python/alembic 0.7.7 0.8.2 0.8.4: database migrations tool, written by the author of SQLAlchemy
 dev-python/algopy 0.5.1 0.5.2 0.5.3: Taylor Arithmetic Computation and Algorithmic Differentiation
 dev-python/amodem 1.12.0 1.13: Transmit data between two computers using audio
 dev-python/amqplib 0.6.1-r1 1.0.2-r1: Python client for the Advanced Message Queuing Procotol (AMQP)
@@ -14764,7 +14764,7 @@ net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/yaydl 1.5.2: Yet Another Youtube DownLoader which is downloading more than youtube
 net-misc/youtube-dl 2016.01.01 2016.01.29 2016.02.01 99999999: Download videos from YouTube.com (and more sites...)
-net-misc/youtube-viewer 3.1.1 3.1.9 9999: A command line utility for viewing youtube-videos in Mplayer
+net-misc/youtube-viewer 3.1.1 3.1.9 3.2.0 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
