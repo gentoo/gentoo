@@ -2921,7 +2921,7 @@ dev-db/pgpool2 3.2.5 3.3.6 3.3.7 9999: Connection pool server for PostgreSQL
 dev-db/pgrouting 2.0.0: pgRouting extends PostGIS and PostgreSQL with geospatial routing functionality.
 dev-db/pgtap 0.93.0: Unit testing for PostgreSQL
 dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
-dev-db/phpmyadmin 4.0.10.14 4.4.15.4 4.5.4.1: Web-based administration for MySQL database in PHP
+dev-db/phpmyadmin 4.0.10.14 4.4.15.4 4.5.3.1 4.5.4.1: Web-based administration for MySQL database in PHP
 dev-db/phppgadmin 5.1 9999: Web-based administration for Postgres database in php
 dev-db/postgis 2.0.3 2.0.6 2.1.1 2.1.8 2.2.0 9999: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.0.23-r1 9.1.19-r1 9.2.14-r1 9.3.10-r1 9.3.10-r2 9.4.5-r1 9.4.5-r2 9.5.0 9999: PostgreSQL RDBMS
