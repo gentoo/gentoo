@@ -13804,7 +13804,7 @@ net-dns/hesinfo 3.1.0: A simple command-line interface to the net-dns/hesiod ser
 net-dns/hesiod 3.1.0: Use DNS functionality to provide access to databases of information that changes infrequently
 net-dns/host 20070128-r1: A powerful command-line DNS query and test tool implementing many additional protocols
 net-dns/idnkit 1.0-r2: Toolkit for Internationalized Domain Names (IDN)
-net-dns/knot 1.5.3 1.6.3 2.0.2: High-performance authoritative-only DNS server
+net-dns/knot 1.6.6 2.1.0: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.6.12 1.6.17: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.30 1.32-r1: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 0.10: An implementation of the IDNA2008 specifications (RFC 5890, RFC 5891, RFC 5892, RFC 5893)
