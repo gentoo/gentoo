@@ -14,14 +14,21 @@ SRC_URI="http://www.bcgsc.ca/downloads/abyss/${P}.tar.gz"
 
 LICENSE="abyss"
 SLOT="0"
-IUSE="+mpi openmp"
+IUSE="+mpi openmp misc-haskell"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="
+RDEPEND="
 	dev-cpp/sparsehash
 	dev-libs/boost
-	mpi? ( virtual/mpi )"
-RDEPEND="${DEPEND}"
+	misc-haskell? ( dev-libs/gmp:0=
+			virtual/libffi:0=
+	)
+	mpi? ( virtual/mpi )
+"
+DEPEND="${RDEPEND}
+	misc-haskell? ( dev-lang/ghc
+			dev-haskell/mmap )
+"
 
 # todo: --enable-maxk=N configure option
 # todo: fix automagic mpi toggling
@@ -39,6 +46,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# disable building haskell tool Misc/samtobreak
+	# unless request by user: bug #534412
+	use misc-haskell || export ac_cv_prog_ac_ct_GHC=
+
 	local myeconfargs=(
 		--docdir="${EPREFIX}/usr/share/doc/${PF}"
 		$(use_enable openmp)
