@@ -5075,6 +5075,7 @@ dev-ml/optcomp 1.6: Optional compilation for OCaml with cpp-like directives
 dev-ml/ounit 1.1.2 2.0.0: Unit testing framework for OCaml
 dev-ml/pa_bench 109.55.02 111.28.00 112.06.00: Syntax extension writing inline benchmarks
 dev-ml/pa_ounit 112.35.00 113.00.00: Syntax extension that helps writing in-line test in ocaml
+dev-ml/pa_sexp_conv 113.00.01: Deprecated camlp4 syntax extension for sexplib.
 dev-ml/pa_structural_sexp 112.35.00 113.00.00: Quotation expanders to simplify building s-expressions from ocaml values
 dev-ml/pa_test 111.08.01 112.24.00: Quotation expanders for assertions
 dev-ml/parmap 1.0_rc6 1.0_rc7: Library allowing to exploit multicore architectures for OCaml programs with minimal modifications
