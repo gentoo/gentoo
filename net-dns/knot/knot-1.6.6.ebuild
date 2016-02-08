@@ -35,7 +35,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${P/_/-}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${PV}-dont-create-extra-directories.patch"
+	epatch "${FILESDIR}/1.6.3-dont-create-extra-directories.patch"
 }
 
 src_configure() {

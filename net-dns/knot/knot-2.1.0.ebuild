@@ -35,6 +35,7 @@ S="${WORKDIR}/${P/_/-}"
 
 src_prepare() {
 	epatch "${FILESDIR}/2.0.2-dont-create-extra-directories.patch"
+	epatch "${FILESDIR}/knot-2.1.0-nettle.patch"
 }
 
 src_configure() {
