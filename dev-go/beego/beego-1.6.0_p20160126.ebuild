@@ -58,10 +58,10 @@ unpack_go_packages() {
 		if [[ ${x} == *.tar.gz ]]; then
 			go_package=$(get_archive_go_package ${x})
 			mkdir -p "${S}/src/${go_package%/*}"
-            for x in ${go_package##*/}-*; do
-                [[ ${x} -ef ${S} ]] && continue
-                mv "${x}" "${S}/src/${go_package}" || die
-            done
+			for x in ${go_package##*/}-*; do
+				[[ ${x} -ef ${S} ]] && continue
+				mv "${x}" "${S}/src/${go_package}" || die
+			done
 		fi
 	done
 }
