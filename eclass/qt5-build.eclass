@@ -461,7 +461,6 @@ qt5_symlink_tools_to_build_dir() {
 	local tool= tools=()
 	if [[ ${PN} != qtcore ]]; then
 		tools+=(qmake moc rcc qlalr)
-		[[ ${PN} != qdoc ]] && tools+=(qdoc)
 		[[ ${PN} != qtdbus ]] && tools+=(qdbuscpp2xml qdbusxml2cpp)
 		[[ ${PN} != qtwidgets ]] && tools+=(uic)
 	fi

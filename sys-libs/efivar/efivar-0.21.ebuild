@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS="amd64 ia64 x86"
 
 RDEPEND="dev-libs/popt"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	>=sys-kernel/linux-headers-3.18"
 
 src_prepare() {
 	epatch "${FILESDIR}/0.21-initializer.patch"
