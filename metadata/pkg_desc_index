@@ -15832,7 +15832,7 @@ sci-libs/xkaapi 2.1 2.2 3.0.3: Kernel for Adaptative, Asynchronous Parallel and 
 sci-libs/xylib 1.1 1.2: Experimental x-y data reading library
 sci-mathematics/4ti2 1.6.2 1.6.5 1.6.6: Software package for algebraic, geometric and combinatorial problems
 sci-mathematics/Macaulay2 1.7_pre 1.8.2.1: Research tool for commutative algebra and algebraic geometry
-sci-mathematics/agda 2.4.0.1 2.4.2.2-r1 2.4.2.3-r1 2.4.2.3-r2 2.4.2.3-r3 2.4.2.5: A dependently typed functional programming language and proof assistant
+sci-mathematics/agda 2.4.0.1 2.4.2.2-r1 2.4.2.3-r1 2.4.2.3-r2 2.4.2.3-r3 2.4.2.5 2.4.2.5-r1: A dependently typed functional programming language and proof assistant
 sci-mathematics/agda-executable 2.3.0.1-r1 2.3.0.1-r2: Command-line program for type-checking and compiling Agda programs
 sci-mathematics/agda-lib-ffi 0.0.2 0.0.2-r2: Auxiliary Haskell code used by Agda's standard library
 sci-mathematics/agda-stdlib 0.8 0.9 2.4.2.3 2.4.2.5: Agda standard library
