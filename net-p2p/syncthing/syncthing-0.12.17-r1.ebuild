@@ -24,7 +24,7 @@ RDEPEND=""
 src_compile() {
 	export GOPATH="${S}:$(get_golibdir_gopath)"
 	cd src/${EGO_PN}
-	go run build.go || die "build failed"
+	go run build.go -version "${PV}" || die "build failed"
 }
 
 #go test: -race is only supported on amd64 platforms
