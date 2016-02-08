@@ -1,0 +1,85 @@
+Index: ocaml-cstruct-1.7.1/_tags
+===================================================================
+--- ocaml-cstruct-1.7.1.orig/_tags
++++ ocaml-cstruct-1.7.1/_tags
+@@ -23,12 +23,12 @@ true: annot, bin_annot
+ <lib/*.ml{,i,y}>: pkg_ocplib-endian
+ <lib/*.ml{,i,y}>: pkg_ocplib-endian.bigstring
+ <lib/*.ml{,i,y}>: pkg_sexplib
+-<lib/*.ml{,i,y}>: pkg_sexplib.syntax
++<lib/*.ml{,i,y}>: pkg_pa_sexp_conv.syntax
+ "lib/cstruct_stubs.c": pkg_bigarray
+ "lib/cstruct_stubs.c": pkg_ocplib-endian
+ "lib/cstruct_stubs.c": pkg_ocplib-endian.bigstring
+ "lib/cstruct_stubs.c": pkg_sexplib
+-"lib/cstruct_stubs.c": pkg_sexplib.syntax
++"lib/cstruct_stubs.c": pkg_pa_sexp_conv.syntax
+ # Library async_cstruct
+ "async/async_cstruct.cmxs": use_async_cstruct
+ <async/*.ml{,i,y}>: pkg_async
+@@ -36,7 +36,7 @@ true: annot, bin_annot
+ <async/*.ml{,i,y}>: pkg_ocplib-endian
+ <async/*.ml{,i,y}>: pkg_ocplib-endian.bigstring
+ <async/*.ml{,i,y}>: pkg_sexplib
+-<async/*.ml{,i,y}>: pkg_sexplib.syntax
++<async/*.ml{,i,y}>: pkg_pa_sexp_conv.syntax
+ <async/*.ml{,i,y}>: pkg_threads
+ <async/*.ml{,i,y}>: use_cstruct
+ # Library lwt_cstruct
+@@ -46,7 +46,7 @@ true: annot, bin_annot
+ <lwt/*.ml{,i,y}>: pkg_ocplib-endian
+ <lwt/*.ml{,i,y}>: pkg_ocplib-endian.bigstring
+ <lwt/*.ml{,i,y}>: pkg_sexplib
+-<lwt/*.ml{,i,y}>: pkg_sexplib.syntax
++<lwt/*.ml{,i,y}>: pkg_pa_sexp_conv.syntax
+ <lwt/*.ml{,i,y}>: use_cstruct
+ # Library unix_cstruct
+ "unix/unix_cstruct.cmxs": use_unix_cstruct
+@@ -54,7 +54,7 @@ true: annot, bin_annot
+ <unix/*.ml{,i,y}>: pkg_ocplib-endian
+ <unix/*.ml{,i,y}>: pkg_ocplib-endian.bigstring
+ <unix/*.ml{,i,y}>: pkg_sexplib
+-<unix/*.ml{,i,y}>: pkg_sexplib.syntax
++<unix/*.ml{,i,y}>: pkg_pa_sexp_conv.syntax
+ <unix/*.ml{,i,y}>: pkg_unix
+ <unix/*.ml{,i,y}>: use_cstruct
+ # Library cstruct-syntax
+@@ -69,7 +69,7 @@ true: annot, bin_annot
+ <lib_test/bounds.{native,byte}>: pkg_ocplib-endian
+ <lib_test/bounds.{native,byte}>: pkg_ocplib-endian.bigstring
+ <lib_test/bounds.{native,byte}>: pkg_sexplib
+-<lib_test/bounds.{native,byte}>: pkg_sexplib.syntax
++<lib_test/bounds.{native,byte}>: pkg_pa_sexp_conv
+ <lib_test/bounds.{native,byte}>: pkg_unix
+ <lib_test/bounds.{native,byte}>: use_cstruct
+ <lib_test/bounds.{native,byte}>: use_unix_cstruct
+@@ -82,14 +82,14 @@ true: annot, bin_annot
+ <lib_test/tests.{native,byte}>: pkg_ocplib-endian
+ <lib_test/tests.{native,byte}>: pkg_ocplib-endian.bigstring
+ <lib_test/tests.{native,byte}>: pkg_sexplib
+-<lib_test/tests.{native,byte}>: pkg_sexplib.syntax
++<lib_test/tests.{native,byte}>: pkg_pa_sexp_conv
+ <lib_test/tests.{native,byte}>: use_cstruct
+ <lib_test/*.ml{,i,y}>: pkg_bigarray
+ <lib_test/*.ml{,i,y}>: pkg_oUnit
+ <lib_test/*.ml{,i,y}>: pkg_ocplib-endian
+ <lib_test/*.ml{,i,y}>: pkg_ocplib-endian.bigstring
+ <lib_test/*.ml{,i,y}>: pkg_sexplib
+-<lib_test/*.ml{,i,y}>: pkg_sexplib.syntax
++<lib_test/*.ml{,i,y}>: pkg_pa_sexp_conv
+ <lib_test/*.ml{,i,y}>: use_cstruct
+ <lib_test/tests.{native,byte}>: custom
+ # OASIS_STOP
+Index: ocaml-cstruct-1.7.1/setup.ml
+===================================================================
+--- ocaml-cstruct-1.7.1.orig/setup.ml
++++ ocaml-cstruct-1.7.1/setup.ml
+@@ -7003,7 +7003,7 @@ let setup_t =
+                            FindlibPackage ("ocplib-endian", None);
+                            FindlibPackage ("ocplib-endian.bigstring", None);
+                            FindlibPackage ("sexplib", None);
+-                           FindlibPackage ("sexplib.syntax", None)
++                           FindlibPackage ("pa_sexp_conv.syntax", None)
+                         ];
+                       bs_build_tools = [ExternalTool "ocamlbuild"];
+                       bs_c_sources = ["cstruct_stubs.c"];
