@@ -37,7 +37,7 @@ COMMON_DEPEND=">=dev-db/sqlite-3.7.12
 	python? ( ${PYTHON_DEPS} )
 	ruby? ( ${RUBY_DEPS} )
 	sasl? ( dev-libs/cyrus-sasl )
-	http? ( >=net-libs/serf-1.2.1 )"
+	http? ( >=net-libs/serf-1.3.4 )"
 RDEPEND="${COMMON_DEPEND}
 	apache2? ( www-servers/apache[apache2_modules_dav] )
 	java? ( >=virtual/jre-1.5 )
