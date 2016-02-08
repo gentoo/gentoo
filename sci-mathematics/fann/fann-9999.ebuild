@@ -16,7 +16,7 @@ IUSE="examples"
 
 src_test() {
 	cd examples || die 'fails to enter examples directory'
-    LD_LIBRARY_PATH="${BUILD_DIR}/src" GCC="$(tc-getCC) ${CFLAGS} -I../src/include -L${BUILD_DIR}/src" emake -e runtest
+	LD_LIBRARY_PATH="${BUILD_DIR}/src" GCC="$(tc-getCC) ${CFLAGS} -I../src/include -L${BUILD_DIR}/src" emake -e runtest
 	emake clean
 }
 
