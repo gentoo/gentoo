@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@
 # The files are in tools/
 # Or see $FILESDIR/update.sh
 
-EAPI="2"
+EAPI="5"
 
 inherit toolchain-funcs eutils
 
@@ -31,9 +31,9 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" || die
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
-	dobin debugedit || die
+	dobin debugedit
 }
