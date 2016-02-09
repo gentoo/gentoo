@@ -6,7 +6,7 @@ EAPI=4
 
 inherit autotools-utils fortran-2 multilib toolchain-funcs
 
-DESCRIPTION="Suite of ab initio quantum chemistry programs to compute various molecular properties"
+DESCRIPTION="Suite for ab initio quantum chemistry computing various molecular properties"
 HOMEPAGE="http://www.psicode.org/"
 SRC_URI="mirror://sourceforge/psicode/${P}.tar.gz"
 
