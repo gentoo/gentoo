@@ -4625,7 +4625,7 @@ dev-libs/libexplain 1.4: Library which may be used to explain Unix and Linux sys
 dev-libs/libezV24 0.1.1: library that provides an easy API to Linux serial ports
 dev-libs/libf2c 20110801-r4 20130927: Library that converts FORTRAN to C source
 dev-libs/libffi 3.0.13-r1 3.1-r3 3.2 3.2.1: a portable, high level programming interface to various calling conventions
-dev-libs/libfilezilla 0.3.0: C++ library offering some basic functionality for platform-independent programs
+dev-libs/libfilezilla 0.3.0 0.3.1: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.1.1: Struct of arrays library with object oriented interface for C++
 dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the Logitech G15 keyboard
 dev-libs/libg15render 1.2-r2 9999: Small library for display text and graphics on a Logitech G15 keyboard
@@ -14982,7 +14982,7 @@ net-proxy/ufdbguard 1.24-r1 1.29: ufdbGuard is a redirector for the Squid intern
 net-proxy/wwwoffle 2.9i: Web caching proxy suitable for non-permanent Internet connections
 net-proxy/ziproxy 3.3.1: A forwarding, non-caching, compressing web proxy server
 net-voip/blink 1.4.1: A state of the art, easy to use SIP client
-net-voip/ekiga 4.0.0-r1 4.0.1: H.323 and SIP VoIP softphone
+net-voip/ekiga 4.0.1: H.323 and SIP VoIP softphone
 net-voip/gnugk 3.4: GNU H.323 gatekeeper
 net-voip/homer 0.24.1-r1 0.25-r1 9999: Homer Conferencing (short: Homer) is a free SIP softphone with advanced audio and video support
 net-voip/linphone 3.5.2 3.6.1: Video softphone based on the SIP protocol
