@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ DESCRIPTION="Matrix elements (integrals) evaluation over Cartesian Gaussian func
 HOMEPAGE="https://github.com/evaleev/libint"
 SRC_URI="https://github.com/evaleev/libint/archive/release-2-0-5.tar.gz -> ${P}.tar.gz"
 
-SLOT="0"
+SLOT="2"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs doc"

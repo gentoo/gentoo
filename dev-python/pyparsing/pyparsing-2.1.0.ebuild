@@ -29,7 +29,7 @@ python_install_all() {
 		HTML_DOCS+=( htmldoc/. )
 		dodoc docs/*.pdf
 	fi
-	use examples && local EXAMPLES=( examples/. )
+	use examples && dodoc -r examples
 	distutils-r1_python_install_all
 }
 

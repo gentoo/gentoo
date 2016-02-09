@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,8 +10,9 @@ inherit distutils-r1
 MY_PN="python-Levenshtein"
 MY_P="${MY_PN}-${PV}"
 
-DESCRIPTION="Functions for fast computation of Levenshtein (edit) distance, and edit operations"
-HOMEPAGE="https://github.com/miohtama/python-Levenshtein/tree/
+DESCRIPTION="Functions for fast computation of Levenshtein distance, and edit operations"
+HOMEPAGE="
+	https://github.com/miohtama/python-Levenshtein/tree/
 	https://pypi.python.org/pypi/python-Levenshtein/"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
@@ -20,20 +21,22 @@ SLOT="0"
 KEYWORDS="amd64 ia64 x86"
 IUSE="doc"
 
+REQUIRED_USE="doc? ( || ( $(python_gen_useflags 'python2*' pypy) ) )"
+
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND=""
 
 S="${WORKDIR}/${MY_P}"
 
+pkg_setup() {
+	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python2*' pypy )
+}
+
 python_compile_all() {
 	if use doc; then
-		# Cannot assume user has a system py2 or pypy
-		if python_is_python3; then
-			die "The build of Levenshtein.html is not supported by python3"
-		else
-			einfo "Generation of documentation"
-			"${PYTHON}" "${FILESDIR}/genextdoc.py" Levenshtein || die "Generation of documentation failed"
-		fi
+		einfo "Generation of documentation"
+		"${PYTHON}" "${FILESDIR}/genextdoc.py" Levenshtein \
+			|| die "Generation of documentation failed"
 	fi
 }
 
