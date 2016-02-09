@@ -7,3 +7,5 @@ move x11-apps/ccsm x11-misc/ccsm
 move x11-apps/simple-ccsm x11-misc/simple-ccsm
 move dev-python/socksipy dev-python/PySocks
 move x11-apps/ardesia x11-misc/ardesia
+slotmove <sci-libs/libint-2 0 1
+slotmove >=sci-libs/libint-2 0 2
