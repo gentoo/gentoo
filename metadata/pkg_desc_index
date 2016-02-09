@@ -3102,7 +3102,7 @@ dev-games/ps2-packer 0.4.4: another ELF packer for the PS2
 dev-games/quake4-sdk 1.4.2: Quake4 SDK
 dev-games/simgear 3.4.0: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
-dev-games/tiled 0.12.3 0.14.2 0.15.0: A general purpose tile map editor
+dev-games/tiled 0.12.3 0.14.2 0.15.0 0.15.1: A general purpose tile map editor
 dev-games/vamos 0.7.1: an automotive simulation framework
 dev-games/wfmath 1.0.1 1.0.2: Worldforge math library
 dev-go/beego 1.6.0_p20160126: High-performance web framework for Go
@@ -11366,7 +11366,7 @@ kde-misc/kfilebox 0.4.9: KDE dropbox client
 kde-misc/kgrubeditor 0.8.5: A KDE utility that edits GRUB configuration files
 kde-misc/kgtk 0.11.0: Allows *some* Gtk and Qt4 applications to use KDE's file dialogs when run under KDE
 kde-misc/kim4 0.9.5: A Dolphin and Konqueror service menu for ImageMagick
-kde-misc/kimtoy 1.8: An input method frontend for KDE
+kde-misc/kimtoy 1.8 1.91: An input method frontend for Plasma
 kde-misc/kio-ftps 0.2: KDE ftps KIO slave
 kde-misc/kio-locate 0.5.3: Locate KIO slave for KDE
 kde-misc/kio-mtp 0.75_p20131020 0.75_p20141221: MTP KIO-Client for KDE
