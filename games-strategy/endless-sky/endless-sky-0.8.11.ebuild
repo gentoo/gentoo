@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils scons-utils
 
-DESCRIPTION="Space exploration, trading & combat game in the tradition of Terminal Velocity."
+DESCRIPTION="Space exploration, trading & combat game."
 HOMEPAGE="https://endless-sky.github.io"
 SRC_URI="https://github.com/tomboy-64/endless-sky/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

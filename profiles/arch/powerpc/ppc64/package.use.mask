@@ -2,6 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Patrice Clement <monsieurp@gentoo.org> (08 Feb 2016)
+# I would need to keyword an awful lot of packages on ppc64
+# that would need Java 7 otherwise.
+dev-java/batik python
+dev-java/bsf python
+dev-java/ant-apache-bsf python
+
 # Michael Weber <xmw@gentoo.org> (09 Jan 2016)
 # no ppc64 support in media-libs/glfw
 app-text/mupdf opengl
