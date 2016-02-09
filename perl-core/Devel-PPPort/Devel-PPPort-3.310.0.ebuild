@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/perl-core/Devel-PPPort/Devel-PPPort-3.200.0.ebuild,v 1.10 2015/06/04 21:39:06 dilfridge Exp $
+# $Id$
 
 EAPI=5
 

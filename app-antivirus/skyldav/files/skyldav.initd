@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 SKYLDAV_BIN="/usr/sbin/skyldav"
 SKYLDAV_OPTS="${SKYLDAV_OPTS:--m 2}"

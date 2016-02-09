@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /etc/init.d/cgconfig,v 1.1 2015/02/18 09:53:59 tokiclover Exp $
+# $Id$
 
 CGCONFIGPARSER="/usr/sbin/cgconfigparser"
 CGCLASSIFY="/usr/sbin/cgclassify"

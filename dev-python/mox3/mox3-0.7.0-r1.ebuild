@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
-DISTUTILS_IN_SOURCE_BUILD=TRUE
+
+PYTHON_COMPAT=( python{2_7,3_{3,4,5}} )
 
 inherit distutils-r1
 
@@ -47,6 +47,8 @@ RDEPEND="
 	${CDEPEND}
 	${CRDEPEND}
 "
+
+DISTUTILS_IN_SOURCE_BUILD=TRUE
 
 python_test() {
 	# This single test fails on python3.4.
