@@ -2069,7 +2069,7 @@ app-portage/demerge 0.047-r1: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r2 9999: A utility to maintain package.unmask entries up-to-date with masks
 app-portage/distpatch 0.1.1: Distfile Patching Support for Gentoo Linux (tools)
 app-portage/eclass-manpages 20150814 20150814-r1: collection of Gentoo eclass manpages
-app-portage/eix 0.30.4 0.30.7 0.30.8 0.30.10 0.30.11 0.31.1 0.31.2 0.31.3 0.31.4 0.31.6: Search and query ebuilds, portage incl. local settings, ext. overlays and more
+app-portage/eix 0.30.4 0.30.10 0.30.11 0.31.4 0.31.6 0.31.7: Search and query ebuilds, portage incl. local settings, ext. overlays and more
 app-portage/elogv 0.7.6.1-r1 0.7.6.2 0.7.6.3 0.7.6.4 0.7.6.5 0.7.6.6: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 0.6.2-r3 2.1-r1 2.1-r2 2.6 2.6-r1: Elog viewer for Gentoo
 app-portage/emerge-delta-webrsync 3.6.2 3.7.1 3.7.2-r1 3.7.3: emerge-webrsync using patches to minimize bandwidth
@@ -9542,7 +9542,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 1.625.3 1.642.1 1.645 1.646: Extensible continuous integration server
+dev-util/jenkins-bin 1.625.3 1.642.1 1.646 1.647: Extensible continuous integration server
 dev-util/jif 3.1_rc1: JIF is an IDE for the creation of text adventures based on Graham Nelson's Inform standard
 dev-util/kbuild 0.1.9998_pre20120806 0.1.9998_pre20131130 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.5: A graphical debugger interface
@@ -15014,7 +15014,7 @@ net-wireless/bluedevil 2.1.1: Bluetooth stack for KDE
 net-wireless/blueman 2.0.3 9999: GTK+ Bluetooth Manager, designed to be simple and intuitive for everyday bluetooth tasks
 net-wireless/bluez 4.101-r9 5.35 5.36 5.37: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
-net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141 6.30.223.141-r1 6.30.223.141-r2 6.30.223.248-r1 6.30.223.248-r2 6.30.223.248-r3 6.30.223.248-r4 6.30.223.271-r1 6.30.223.271-r2: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
+net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141-r2 6.30.223.248-r4 6.30.223.248-r5 6.30.223.271-r2 6.30.223.271-r3: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
 net-wireless/bss 0.8: Bluetooth stack smasher / fuzzer
 net-wireless/btcrack 9999: linux port of Thierry Zollers' BTCrack
 net-wireless/chillispot 1.1.0: open source captive portal or wireless LAN access point controller
@@ -16890,7 +16890,7 @@ sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compres
 sys-fs/cryptsetup 1.6.5 1.6.8 1.6.8-r1 1.7.0 1.7.0-r1: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.1: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/davl 1.2.4-r1: Visualizes the fragmentation status of ext2/3 filesystems
-sys-fs/dd-rescue 1.28 1.46 1.99: Similar to dd but can copy from source with errors
+sys-fs/dd-rescue 1.28 1.46 1.99 1.99-r1: Similar to dd but can copy from source with errors
 sys-fs/ddrescue 1.18.1 1.19 1.20: Copy data from one file or block device to another with read-error recovery
 sys-fs/devfsd 1.3.25-r9: Daemon for the Linux Device Filesystem
 sys-fs/dfc 3.0.5-r1: A simple CLI tool that display file system usage, with colors
