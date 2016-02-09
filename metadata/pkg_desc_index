@@ -4391,7 +4391,7 @@ dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2: Poly/ML is a full implementation of Sta
 dev-lang/python 2.7.10-r1 2.7.11-r2 3.3.5-r2 3.3.5-r7 3.4.3-r1 3.4.3-r7 3.5.0-r2 3.5.1-r2: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.0.1-r1 2.0.2 2.1 2.2 2.2.1 2.3 9999: Python script wrapper
 dev-lang/qu-prolog 9.1 9.1-r1 9.5: Extended Prolog supporting quantifiers, object-variables and substitutions
-dev-lang/rakudo 2015.01.1 2015.02 2015.03 2015.04 2015.05-r1 2015.06 2015.07.2 2015.11 2015.12 2016.01: A compiler for the Perl 6 programming language
+dev-lang/rakudo 2015.01.1 2015.02 2015.03 2015.04 2015.05-r1 2015.06 2015.07.2 2015.11 2015.12 2016.01.1: A compiler for the Perl 6 programming language
 dev-lang/rebol 9999: Relative Expression-Based Object Language
 dev-lang/rebol-bin 3_pre111: Relative Expression-Based Object Language
 dev-lang/regina-rexx 3.6-r2: Portable Rexx interpreter
@@ -6927,7 +6927,7 @@ dev-python/datashape 0.4.2 0.4.4 0.4.5 0.4.6: Language defining a data descripti
 dev-python/dbus-python 1.2.0-r1: Python bindings for the D-Bus messagebus
 dev-python/dbutils 1.1-r1: Database connections for multi-threaded environments
 dev-python/ddt 1.0.0: A library to multiply test cases
-dev-python/debtcollector 0.7.0 0.10.0: ... Python deprecation patterns and strategies that collect technical debt ....
+dev-python/debtcollector 0.7.0 0.10.0: Python deprecation patterns and strategies that collect technical debt
 dev-python/decorator 4.0.2 4.0.4 4.0.6 4.0.9: Simplifies the usage of decorators for the average programmer
 dev-python/decoratortools 1.8-r1: Class, function, and metaclass decorators
 dev-python/deform 0.9.8 0.9.9: Another form generation library
@@ -7382,7 +7382,7 @@ dev-python/numpydoc 0.4-r1 0.5: Sphinx extension to support docstrings in Numpy 
 dev-python/oauth 1.0.1-r1: Python OAuth module
 dev-python/oauth2 1.5.211-r1 1.9.0_p1: Library for OAuth version 1.0
 dev-python/oauth2client 1.4.6 1.4.11 1.4.12 1.5.1 1.5.2: Library for accessing resources protected by OAuth 2.0
-dev-python/oauthlib 0.7.2 1.0.1: A generic, spec-compliant, thorough implementation of the OAuth request-signing logic
+dev-python/oauthlib 0.7.2 1.0.1: Spec-compliant and thorough implementation of the OAuth request-signing logic
 dev-python/objgraph 1.7.2 1.8.1: Draws Python object reference graphs with graphviz
 dev-python/oct2py 1.3.0-r1 3.3.3: Python to GNU Octave bridge
 dev-python/odfpy 0.9.6-r1 1.3.1: Python API and tools to manipulate OpenDocument files
@@ -7396,14 +7396,14 @@ dev-python/os-brick 0.5.0: OpenStack Cinder brick library for managing local vol
 dev-python/os-client-config 1.6.1 1.6.3: OpenStack Client Configuation Library
 dev-python/os-diskconfig-python-novaclient-ext 0.1.1 0.1.1-r1 0.1.2 9999: Disk Config extension for python-novaclient
 dev-python/os-networksv2-python-novaclient-ext 0.21 0.21-r1 0.25: Adds network extension support to python-novaclient
-dev-python/os-testr 0.3.0: A testr wrapper to provide functionality for OpenStack projects.
+dev-python/os-testr 0.3.0: A testr wrapper to provide functionality for OpenStack projects
 dev-python/os-virtual-interfacesv2-python-novaclient-ext 0.15 0.19: Adds Virtual Interfaces support to python-novaclient
 dev-python/oslo-concurrency 1.8.0 1.8.1 1.8.2 2.5.0: library for running multi-thread, multi-process applications
 dev-python/oslo-config 1.9.3 2.3.0 2.4.0: Oslo Configuration API
 dev-python/oslo-context 0.1.0 0.1.0-r1 0.2.0 0.3.0 0.6.0: Helpers to maintain useful information about a request context
 dev-python/oslo-db 1.0.2 1.4.1 1.7.1 1.7.2 1.8.0 1.9.0 2.6.0: OpenStack Common DB Code
 dev-python/oslo-i18n 1.3.1 1.4.0 1.5.0 1.6.0 2.6.0 2.7.0: Oslo i18n library
-dev-python/oslo-log 0.3.0 1.0.0 1.1.0 1.10.0: OpenStack logging config library provides standardized configuration for all openstack projects.
+dev-python/oslo-log 0.3.0 1.0.0 1.1.0 1.10.0: OpenStack logging config library
 dev-python/oslo-messaging 1.4.1 1.5.1 1.7.0 1.8.0 1.8.2 1.8.3 1.9.0 1.10.0 2.4.0: Messaging API for RPC and notifications over a number of different messaging transports
 dev-python/oslo-middleware 0.4.0 0.5.0 1.0.0 1.1.0 1.2.0 1.3.0 2.8.0: Library includes components to be injected into wsgi pipelines to intercept request/response flows.
 dev-python/oslo-policy 0.3.2 0.11.0 0.12.0: The Oslo Policy library provides support for RBAC policy enforcement across all OpenStack services.
@@ -7690,7 +7690,6 @@ dev-python/pystatgrab 0.6: pystatgrab is a set of Python bindings for the libsta
 dev-python/pystdf 1.3.1-r1: Python module that makes it easy to work with STDF
 dev-python/pysvg 0.2.1-r1: Python SVG document creation library
 dev-python/pysvn 1.8.0: Object-oriented python bindings for subversion
-dev-python/pysyck 0.61.2-r1: Python bindings for the Syck YAML parser and emitter
 dev-python/pytables 3.1.1-r2 3.2.0 3.2.1 3.2.1.1 3.2.2: Hierarchical datasets for Python
 dev-python/pyte 0.4.9 0.4.10 0.5.1: Simple VTXXX-compatible terminal emulator
 dev-python/pytest 2.7.2 2.8.2 2.8.3 2.8.4 2.8.5 2.8.7 9999: simple powerful testing with Python
@@ -7978,7 +7977,7 @@ dev-python/starcluster 0.93.3-r2: Utility for creating / managing general purpos
 dev-python/statistics 1.0.3.5: A Python 2.* port of 3.4 Statistics Module
 dev-python/statsmodels 0.5.0 0.6.1: Statistical computations and models for use with SciPy
 dev-python/steadymark 0.5.3: Markdown-based test runner for python
-dev-python/stevedore 1.1.0-r1 1.3.0 1.4.0-r1 1.6.0 1.6.0-r1: Manage dynamic plugins for Python applications
+dev-python/stevedore 1.1.0-r1 1.3.0 1.4.0-r1 1.6.0 1.6.0-r1 1.10.0: Manage dynamic plugins for Python applications
 dev-python/stomper 0.3.0: Transport neutral client implementation of the STOMP protocol
 dev-python/storm 0.20-r1: An object-relational mapper for Python developed at Canonical
 dev-python/stormpath 2.1.4 2.1.5 2.1.6: Official Stormpath SDK, used to interact with the Stormpath REST API.
@@ -7998,7 +7997,7 @@ dev-python/tabulate 0.7.2 0.7.3 0.7.5: Pretty-print tabular data
 dev-python/tagpy 0.94.8-r1 2013.1: Python Bindings for TagLib
 dev-python/taskflow 1.21.0: A library to do [jobs, tasks, flows] in a HA manner using different backends
 dev-python/tdaemon 0.1.6: Test Daemon
-dev-python/tempest-lib 0.3.0 0.4.0 0.5.0 0.7.0 0.9.0: A library to assist in creating functional or integrated test suites for OpenStack projects.
+dev-python/tempest-lib 0.3.0 0.4.0 0.5.0 0.7.0 0.9.0: Functional or integrated test suites for OpenStack projects
 dev-python/tempita 0.5.3 0.5.3-r1: A very small text templating language
 dev-python/tempora 1.4: Objects and routines pertaining to date and time
 dev-python/termcolor 1.1.0-r1: ANSII Color formatting for output in terminal
@@ -11191,7 +11190,6 @@ kde-apps/thumbnailers 4.14.3 15.08.3 15.12.1: Thumbnail generators for PDF/PS an
 kde-apps/umbrello 4.14.3 15.08.3: KDE UML Modeller
 kde-apps/zeroconf-ioslave 4.14.3 15.08.3: A DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
 kde-base/baloo 4.14.3: Next generation of the Nepomuk project
-kde-base/contactthemeeditor 4.13.3: A contact theme editor for KAddressBook
 kde-base/freespacenotifier 4.11.19 4.11.22: A module that monitors free disk space on the home dir
 kde-base/kactivities 4.13.3 4.13.3-r1: KDE Activity Manager
 kde-base/kactivitymanagerd 4.13.3-r1: KDE Activity Manager Daemon
@@ -13136,7 +13134,6 @@ media-sound/shell-fm 0.8-r1: A lightweight console based player for Last.FM radi
 media-sound/shnflacverify 0.3: This program helps manage the verification of checksums related to Shorten and FLAC files
 media-sound/shntool 3.0.10-r1: A multi-purpose WAVE data processing and reporting utility
 media-sound/shorten 3.6.1: fast, low complexity waveform coder (i.e. audio compressor)
-media-sound/shoutcast-search 0.3 0.3.1: A command-line tool for searching SHOUTcast stations
 media-sound/shoutcast-server-bin 1.9.8-r1: SHOUTcast is a streaming audio system
 media-sound/shoutcast-trans-bin 0.4.0-r1: A transcoder that provides a source for shoutcast-server-bin to stream from
 media-sound/sidplay 2.0.9: C64 SID player
