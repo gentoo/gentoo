@@ -128,7 +128,7 @@ latex-package_src_doinstall() {
 					for i in `find . -maxdepth 1 -type f -name "*.${1}"`
 					do
 						einfo "Making documentation: $i"
-						if `pdflatex --interaction=batchmode $i &> /dev/null` ; then
+						if pdflatex --interaction=batchmode $i &> /dev/null ; then
 							pdflatex --interaction=batchmode $i &> /dev/null || die
 						else
 							einfo "pdflatex failed, trying texi2dvi"
