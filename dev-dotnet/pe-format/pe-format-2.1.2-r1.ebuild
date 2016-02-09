@@ -4,12 +4,6 @@
 
 EAPI=6
 
-#if LIVE
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}2.git"
-
-inherit autotools git-r3
-#endif
-
 inherit systemd xdg-utils
 
 DESCRIPTION="Intelligent PE executable wrapper for binfmt_misc"
@@ -23,16 +17,6 @@ IUSE=""
 
 DEPEND="dev-util/desktop-file-utils"
 RDEPEND="!<sys-apps/openrc-0.9.4"
-
-#if LIVE
-KEYWORDS=
-SRC_URI=
-
-src_prepare() {
-	default
-	eautoreconf
-}
-#endif
 
 src_configure() {
 	local myconf=(
