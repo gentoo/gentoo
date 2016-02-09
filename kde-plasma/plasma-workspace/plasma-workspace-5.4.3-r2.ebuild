@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,13 +12,9 @@ inherit kde5 multilib pam qmake-utils
 
 DESCRIPTION="KDE Plasma workspace"
 KEYWORDS=" ~amd64 ~x86"
-IUSE="dbus +drkonqi +geolocation gps prison qalculate +systemmonitor"
+IUSE="dbus +drkonqi +geolocation gps pam prison qalculate +systemmonitor"
 
 COMMON_DEPEND="
-	$(add_plasma_dep kwayland)
-	$(add_plasma_dep kwin)
-	$(add_plasma_dep libkscreen)
-	$(add_plasma_dep libksysguard)
 	$(add_frameworks_dep baloo)
 	$(add_frameworks_dep kactivities)
 	$(add_frameworks_dep kauth)
@@ -58,6 +54,10 @@ COMMON_DEPEND="
 	$(add_frameworks_dep kxmlrpcclient)
 	$(add_frameworks_dep plasma)
 	$(add_frameworks_dep solid)
+	$(add_plasma_dep kwayland)
+	$(add_plasma_dep kwin)
+	$(add_plasma_dep libkscreen)
+	$(add_plasma_dep libksysguard)
 	dev-libs/wayland
 	dev-qt/qtconcurrent:5
 	dev-qt/qtdbus:5
@@ -70,7 +70,6 @@ COMMON_DEPEND="
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
 	media-libs/phonon[qt5]
-	sys-libs/pam
 	sys-libs/zlib
 	x11-libs/libICE
 	x11-libs/libSM
@@ -88,6 +87,7 @@ COMMON_DEPEND="
 	)
 	geolocation? ( $(add_frameworks_dep networkmanager-qt) )
 	gps? ( sci-geosciences/gpsd )
+	pam? ( virtual/pam )
 	prison? ( media-libs/prison:5 )
 	qalculate? ( sci-libs/libqalculate )
 	systemmonitor? (
@@ -111,7 +111,9 @@ RDEPEND="${COMMON_DEPEND}
 	systemmonitor? ( $(add_plasma_dep ksysguard) )
 	!kde-base/freespacenotifier:4
 	!kde-base/libtaskmanager:4
+	!<kde-base/kcheckpass-4.11.22-r1:4
 	!kde-base/kcminit:4
+	!kde-base/kdebase-pam:0
 	!kde-base/kdebase-startkde:4
 	!kde-base/klipper:4
 	!kde-base/krunner:4
@@ -127,6 +129,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.4-startkde-script.patch"
 	"${FILESDIR}/${PN}-5.4-consolekit2.patch"
 	"${FILESDIR}/${PN}-5.4.3-fix-drkonqi.patch"	#Upstream bug 354110
+	"${FILESDIR}/${PN}-5.4.3-no-SUID-no-GUID.patch"
 )
 
 RESTRICT="test"
@@ -164,6 +167,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		$(cmake-utils_use_find_package pam)
 		$(cmake-utils_use_find_package dbus dbusmenu-qt5)
 		$(cmake-utils_use_find_package gps libgps)
 		$(cmake-utils_use_find_package prison)
@@ -185,6 +189,11 @@ src_install() {
 
 	insinto /etc/plasma/shutdown
 	doins "${FILESDIR}/agent-shutdown.sh"
+
+	if ! use pam; then
+		chown root "${ED}"usr/$(get_libdir)/libexec/kcheckpass || die
+		chmod +s "${ED}"usr/$(get_libdir)/libexec/kcheckpass || die
+	fi
 }
 
 pkg_postinst () {
