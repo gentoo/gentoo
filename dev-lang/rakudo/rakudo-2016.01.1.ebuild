@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~x86"
 # TODO: add USE="javascript" once that's usable in nqp
 IUSE="test"
 
-RDEPEND="=dev-lang/nqp-${PV}*:=[moar]"
+RDEPEND="=dev-lang/nqp-2016.01:=[moar]"
 DEPEND="${RDEPEND}
 	>=dev-lang/perl-5.10"
 
