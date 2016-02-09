@@ -12,7 +12,7 @@ RUBY_FAKEGEM_TASK_DOC=""
 
 inherit ruby-fakegem
 
-DESCRIPTION="Code coverage with a configuration library and automatic merging of coverage across test suites"
+DESCRIPTION="Code coverage with a configuration library and merging across test suites"
 HOMEPAGE="https://www.ruby-toolbox.com/projects/simplecov https://github.com/colszowka/simplecov"
 LICENSE="MIT"
 
