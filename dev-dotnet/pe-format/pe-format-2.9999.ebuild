@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 #if LIVE
 EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}2.git"
@@ -29,6 +29,7 @@ KEYWORDS=
 SRC_URI=
 
 src_prepare() {
+	default
 	eautoreconf
 }
 #endif
