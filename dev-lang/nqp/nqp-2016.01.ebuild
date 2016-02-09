@@ -23,7 +23,7 @@ REQUIRED_USE="|| ( java moar )"
 
 RDEPEND="
 	java? ( >=virtual/jre-1.7 )
-	moar? ( =dev-lang/moarvm-${PV} )
+	moar? ( ~dev-lang/moarvm-${PV} )
 	dev-libs/libffi"
 DEPEND="${RDEPEND}
 	java? ( >=virtual/jdk-1.7 )
