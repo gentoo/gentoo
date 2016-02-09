@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,14 +7,14 @@
 # The files are in tools/
 # Or see $FILESDIR/update.sh
 
-EAPI="2"
+EAPI="5"
 
 inherit toolchain-funcs eutils
 
 DESCRIPTION="standalone debugedit taken from rpm"
 HOMEPAGE="http://www.rpm5.org/"
 SRC_URI="https://dev.gentoo.org/~swegener/distfiles/${P}.tar.bz2
-	https://dev.gentoo.org/~vapier/distfiles/${P}.tar.bz2"
+	https://dev.gentoo.org/~vapier/dist/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -31,9 +31,9 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" || die
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
-	dobin debugedit || die
+	dobin debugedit
 }
