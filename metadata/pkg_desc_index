@@ -9726,7 +9726,7 @@ dev-util/xmlindent 0.2.17-r1: XML Indent is an XML stream reformatter written in
 dev-util/xxdi 1.0.0: Simple alternative to vim's 'xxd -i' mode
 dev-util/xxdiff 4.0_beta1_p20110426 4.0_beta1_p20110426-r1: A graphical file and directories comparator and merge tool
 dev-util/yacc 1.9.1-r4 1.9.1-r5: Yacc: Yet Another Compiler-Compiler
-dev-util/yuicompressor 2.4.8 2.4.8-r1: JavaScript and CSS compressor
+dev-util/yuicompressor 2.4.8-r2: JavaScript and CSS compressor
 dev-vcs/archway 0.2.1: A GUI for GNU Arch
 dev-vcs/bfg 1.12.3 1.12.4 1.12.8: a faster alternative to git-filter-branch for removing bad data from git repos
 dev-vcs/blogc-git-receiver 0.3 9999: A simple login shell/git hook to deploy blogc websites
