@@ -1,18 +1,19 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 inherit eutils linux-info linux-mod
 
 DESCRIPTION="Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver"
-HOMEPAGE="http://www.broadcom.com/support/802.11/linux_sta.php"
+HOMEPAGE="http://www.broadcom.com/support/802.11/"
 SRC_BASE="http://www.broadcom.com/docs/linux_sta/hybrid-v35"
 SRC_URI="x86? ( ${SRC_BASE}-nodebug-pcoem-${PV//\./_}.tar.gz )
-	amd64? ( ${SRC_BASE}_64-nodebug-pcoem-${PV//\./_}.tar.gz )"
+	amd64? ( ${SRC_BASE}_64-nodebug-pcoem-${PV//\./_}.tar.gz )
+	http://www.broadcom.com/docs/linux_sta/README_${PV}.txt -> README-${P}.txt"
 
 LICENSE="Broadcom"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="-* ~amd64 ~x86"
 
 RESTRICT="mirror"
 
@@ -29,9 +30,10 @@ pkg_setup() {
 	# NOTE<lxnay>: module builds correctly anyway with b43 and SSB enabled
 	# make checks non-fatal. The correct fix is blackisting ssb and, perhaps
 	# b43 via udev rules. Moreover, previous fix broke binpkgs support.
-	CONFIG_CHECK="~!B43 ~!SSB"
+	CONFIG_CHECK="~!B43 ~!BCMA ~!SSB"
 	CONFIG_CHECK2="LIB80211 ~!MAC80211 ~LIB80211_CRYPT_TKIP"
 	ERROR_B43="B43: If you insist on building this, you must blacklist it!"
+	ERROR_BCMA="BCMA: If you insist on building this, you must blacklist it!"
 	ERROR_SSB="SSB: If you insist on building this, you must blacklist it!"
 	ERROR_LIB80211="LIB80211: Please enable it. If you can't find it: enabling the driver for \"Intel PRO/Wireless 2100\" or \"Intel PRO/Wireless 2200BG\" (IPW2100 or IPW2200) should suffice."
 	ERROR_MAC80211="MAC80211: If you insist on building this, you must blacklist it!"
@@ -56,11 +58,22 @@ pkg_setup() {
 }
 
 src_prepare() {
-#	Makefile.patch: keep `emake install` working
-#	linux-3.9.0.patch: add support for kernel 3.9.0
-#	linux-3.10.0.patch: add support for kernel 3.10, bug #477372
-	epatch "${FILESDIR}/${P}-makefile.patch" \
-		"${FILESDIR}/${P}-linux-3.10.0.patch"
+	epatch \
+		"${FILESDIR}/${PN}-6.30.223.141-license.patch" \
+		"${FILESDIR}/${PN}-6.30.223.141-makefile.patch" \
+		"${FILESDIR}/${PN}-6.30.223.141-eth-to-wlan.patch" \
+		"${FILESDIR}/${PN}-6.30.223.141-gcc.patch" \
+		"${FILESDIR}/${PN}-6.30.223.248-r3-Wno-date-time.patch" \
+		"${FILESDIR}/${PN}-6.30.223.248-r3-linux-3.15-3.18.patch" \
+		"${FILESDIR}/${PN}-6.30.223.248-r3-linux-4.0.patch" \
+		"${FILESDIR}/${PN}-6.30.223.248-r4-linux-4.2.patch" \
+		"${FILESDIR}/${PN}-6.30.223.271-r2-linux-4.3-v2.patch"
 
 	epatch_user
+}
+
+src_install() {
+	linux-mod_src_install
+
+	dodoc "${DISTDIR}/README-${P}.txt"
 }

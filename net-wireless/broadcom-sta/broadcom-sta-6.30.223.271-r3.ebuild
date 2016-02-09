@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils linux-info linux-mod
 
 DESCRIPTION="Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver"
-HOMEPAGE="http://www.broadcom.com/support/802.11/linux_sta.php"
+HOMEPAGE="http://www.broadcom.com/support/802.11/"
 SRC_BASE="http://www.broadcom.com/docs/linux_sta/hybrid-v35"
 SRC_URI="x86? ( ${SRC_BASE}-nodebug-pcoem-${PV//\./_}.tar.gz )
 	amd64? ( ${SRC_BASE}_64-nodebug-pcoem-${PV//\./_}.tar.gz )
@@ -59,13 +59,12 @@ pkg_setup() {
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}/${PN}-6.30.223.141-license.patch" \
 		"${FILESDIR}/${PN}-6.30.223.141-makefile.patch" \
 		"${FILESDIR}/${PN}-6.30.223.141-eth-to-wlan.patch" \
 		"${FILESDIR}/${PN}-6.30.223.141-gcc.patch" \
 		"${FILESDIR}/${PN}-6.30.223.248-r3-Wno-date-time.patch" \
-		"${FILESDIR}/${PN}-6.30.223.248-r3-linux-3.15-3.18.patch" \
-		"${FILESDIR}/${PN}-6.30.223.248-r3-linux-4.0.patch"
+		"${FILESDIR}/${PN}-6.30.223.271-r1-linux-3.18.patch" \
+		"${FILESDIR}/${PN}-6.30.223.271-r2-linux-4.3-v2.patch"
 
 	epatch_user
 }
