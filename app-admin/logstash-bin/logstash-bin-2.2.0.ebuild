@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,11 +9,13 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Tool for managing events and logs"
 HOMEPAGE="https://www.elastic.co/products/logstash"
-SRC_URI="https://download.elastic.co/${MY_PN}/${MY_PN}/${MY_P}.tar.gz"
+SRC_URI="standard? ( https://download.elastic.co/${MY_PN}/${MY_PN}/${MY_P}.tar.gz )
+	all-plugins? ( https://download.elastic.co/${MY_PN}/${MY_PN}/${MY_PN}-all-plugins-${PV}.tar.gz )"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="+standard all-plugins"
 
 RESTRICT="strip"
 QA_PREBUILT="opt/logstash/vendor/jruby/lib/jni/*/libjffi*.so"
@@ -23,12 +25,18 @@ RDEPEND="|| ( virtual/jre:1.8 virtual/jre:1.7 )"
 
 S="${WORKDIR}/${MY_P}"
 
+pkg_setup() {
+	if use standard && use all-plugins; then
+		die "Both standard and all-plugins USE selected, please pick just one."
+	fi
+}
+
 src_install() {
 	keepdir /etc/"${MY_PN}"/{conf.d,patterns,plugins}
 	keepdir "/var/log/${MY_PN}"
 
 	insinto "/etc/${MY_PN}/conf.d"
-	doins "${FILESDIR}/agent.conf.sample"
+	newins "${FILESDIR}/agent.conf.sample" agent.conf.sample
 
 	insinto "/opt/${MY_PN}"
 	doins -r .
@@ -37,8 +45,8 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${MY_PN}.logrotate" ${MY_PN}
 
-	newconfd "${FILESDIR}/${MY_PN}.confd-r1" ${MY_PN}
-	newinitd "${FILESDIR}/${MY_PN}.initd-r1" ${MY_PN}
+	newconfd "${FILESDIR}/${MY_PN}.confd" ${MY_PN}
+	newinitd "${FILESDIR}/${MY_PN}.initd" ${MY_PN}
 }
 
 pkg_postinst() {
