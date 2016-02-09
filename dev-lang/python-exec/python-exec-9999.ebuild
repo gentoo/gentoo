@@ -68,14 +68,10 @@ src_install() {
 	insinto /etc/python-exec
 	doins "${T}"/python-exec.conf
 
-	# Create compatibility symlinks
-	dosym ../../bin/python-exec2 /usr/lib/python-exec/python-exec2-c
-	dosym ../../bin/python-exec2.py /usr/lib/python-exec/python-exec2
-
 	# Create Python interpreter executable wrappers
 	local f
 	for f in python{,2,3}{,-config} 2to3 idle pydoc pyvenv; do
-		dosym python-exec2 /usr/bin/"${f}"
+		dosym python-exec2-c /usr/bin/"${f}"
 	done
 }
 
