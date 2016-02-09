@@ -74,6 +74,7 @@ src_configure() {
 		local dbuildflags="-Wl,-rpath,${WORKDIR}/lib"
 		case ${CHOST} in
 			*-darwin*)  dbuildflags=     ;;
+			*-aix*)     dbuildflags=     ;;
 		esac
 		echo "int main() {}" | \
 			$(tc-getCC) -o x -x c - ${lbuildflags} -pipe >& /dev/null \
@@ -181,7 +182,7 @@ do_configure() {
 
 	# Force bash until upstream rebuilds the configure script with a newer
 	# version of autotools. #545532
-	CONFIG_SHELL=${EPREFIX}/bin/bash \
+	CONFIG_SHELL=${BASH} \
 	ECONF_SOURCE=${S} \
 	econf "${conf[@]}" "$@"
 }
