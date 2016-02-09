@@ -32,9 +32,11 @@ RDEPEND="
 		media-libs/libpng:0=[${MULTILIB_USEDEP}]
 		sys-libs/zlib[${MULTILIB_USEDEP}]
 		virtual/jpeg:0[${MULTILIB_USEDEP}]
+		x11-libs/cairo[${MULTILIB_USEDEP}]
 		x11-libs/gtk+:3[${MULTILIB_USEDEP}]
 		x11-libs/gdk-pixbuf[${MULTILIB_USEDEP}]
 		x11-libs/libSM[${MULTILIB_USEDEP}]
+		x11-libs/libX11[${MULTILIB_USEDEP}]
 		x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
 		x11-libs/pango[X,${MULTILIB_USEDEP}]
 		gstreamer? (
@@ -121,7 +123,6 @@ multilib_src_configure() {
 			--enable-gui
 			--with-gtk=3
 			--with-libpng=sys
-			--with-libxpm=sys
 			--with-libjpeg=sys
 			--without-gnomevfs
 			$(use_enable gstreamer mediactrl)
