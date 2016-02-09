@@ -1,0 +1,169 @@
+From 3d34cc10a5e62686f661a6653d43e2c42e6a26a2 Mon Sep 17 00:00:00 2001
+From: Sorokin Alexei <sor.alexei@meowr.ru>
+Date: Sat, 12 Dec 2015 16:49:22 +0300
+Subject: [PATCH] Fix compilation with enabled GObject Introspection
+
+---
+ configure.ac | 2 ++
+ src/main.c   | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 9b829d0..b3d398f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -142,6 +142,8 @@ else
+ 	have_introspection=no
+ fi
+ 
++AM_CONDITIONAL(HAVE_INTROSPECTION, test "x$have_introspection" = xyes)
++
+ # ***************
+ # ZLIB (required)
+ # ***************
+diff --git a/src/main.c b/src/main.c
+index cc999e2..f1b92f7 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -30,7 +30,7 @@
+ #include <dbus/dbus-glib-bindings.h>
+ #include <gdk/gdkx.h>
+ #endif
+-#ifdef HAVE_INSTROSPECTION
++#ifdef HAVE_INTROSPECTION
+ #include <girepository.h>
+ #endif
+ 
+From d6f68de8ed0722fdfecca9f81d68f2a0ff9b82bd Mon Sep 17 00:00:00 2001
+From: Wolfgang Ulbrich <chat-to-me@raveit.de>
+Date: Sun, 6 Dec 2015 23:58:24 +0100
+Subject: [PATCH] fix some gobject-introspection build warnings
+
+---
+ src/uta.c | 30 ++++++++++++++----------------
+ 1 file changed, 14 insertions(+), 16 deletions(-)
+
+diff --git a/src/uta.c b/src/uta.c
+index 8df97bc..c44834d 100644
+--- a/src/uta.c
++++ b/src/uta.c
+@@ -38,9 +38,7 @@
+    be variables. They can also be pstruct->el lvalues. */
+ #define eom_expand(p, type, max) do { if(max) { p = eom_renew (p, type, max <<= 1); } else { max = 1; p = g_new(type, 1); } } while (0)
+ 
+-
+-
+-/**
++/*
+  * eom_uta_new: Allocate a new uta.
+  * @x0: Left coordinate of uta.
+  * @y0: Top coordinate of uta.
+@@ -51,7 +49,7 @@
+  * tiles, not pixels.
+  *
+  * Returns: the newly allocated #EomUta.
+- **/
++ */
+ static EomUta *
+ eom_uta_new (int x0, int y0, int x1, int y1)
+ {
+@@ -68,13 +66,13 @@ eom_uta_new (int x0, int y0, int x1, int y1)
+   return uta;
+ }
+ 
+-/**
++/*
+  * eom_uta_free: Free a uta.
+  * @uta: The uta to free.
+  *
+  * Frees the microtile array structure, including the actual microtile
+  * data.
+- **/
++ */
+ void
+ eom_uta_free (EomUta *uta)
+ {
+@@ -82,14 +80,14 @@ eom_uta_free (EomUta *uta)
+   g_free (uta);
+ }
+ 
+-/**
++/*
+  * eom_irect_intersect: Find intersection of two integer rectangles.
+  * @dest: Where the result is stored.
+  * @src1: A source rectangle.
+  * @src2: Another source rectangle.
+  *
+  * Finds the intersection of @src1 and @src2.
+- **/
++ */
+ void
+ eom_irect_intersect (EomIRect *dest, const EomIRect *src1, const EomIRect *src2) {
+   dest->x0 = MAX (src1->x0, src2->x0);
+@@ -98,18 +96,18 @@ eom_irect_intersect (EomIRect *dest, const EomIRect *src1, const EomIRect *src2)
+   dest->y1 = MIN (src1->y1, src2->y1);
+ }
+ 
+-/**
++/*
+  * eom_irect_empty: Determine whether integer rectangle is empty.
+  * @src: The source rectangle.
+  *
+  * Return value: TRUE if @src is an empty rectangle, FALSE otherwise.
+- **/
++ */
+ int
+ eom_irect_empty (const EomIRect *src) {
+   return (src->x1 <= src->x0 || src->y1 <= src->y0);
+ }
+ 
+-/**
++/*
+  * eom_uta_from_irect: Generate uta covering a rectangle.
+  * @bbox: The source rectangle.
+  *
+@@ -117,7 +115,7 @@ eom_irect_empty (const EomIRect *src) {
+  * function with a @bbox with zero height or width.
+  *
+  * Return value: the new uta.
+- **/
++ */
+ static EomUta *
+ eom_uta_from_irect (EomIRect *bbox)
+ {
+@@ -217,7 +215,7 @@ eom_uta_from_irect (EomIRect *bbox)
+  * big enough to fit the specified microtile coordinates, or a new array if
+  * it needed to be grown.  In the second case, the original @uta will be
+  * freed automatically.
+- **/
++ */
+ EomUta *
+ uta_ensure_size (EomUta *uta, int x1, int y1, int x2, int y2)
+ {
+@@ -284,7 +282,7 @@ uta_ensure_size (EomUta *uta, int x1, int y1, int x2, int y2)
+  * Return value: The original @uta, or a new microtile array if the original one
+  * needed to be grown to fit the specified rectangle.  In the second case, the
+  * original @uta will be freed automatically.
+- **/
++ */
+ EomUta *
+ uta_add_rect (EomUta *uta, int x1, int y1, int x2, int y2)
+ {
+@@ -552,7 +550,7 @@ uta_add_rect (EomUta *uta, int x1, int y1, int x2, int y2)
+  * Removes a rectangular region from the specified microtile array.  Due to the
+  * way microtile arrays represent regions, the tiles at the edge of the
+  * rectangle may not be clipped exactly.
+- **/
++ */
+ void
+ uta_remove_rect (EomUta *uta, int x1, int y1, int x2, int y2)
+ {
+@@ -1047,7 +1045,7 @@ copy_tile (EomUta *uta, int x, int y, int xofs, int yofs)
+  * expanded if the destination area does not fit within it; rather only the area
+  * that fits will be copied.  The source rectangle must be completely contained
+  * within the microtile array.
+- **/
++ */
+ void
+ uta_copy_area (EomUta *uta, int src_x, int src_y, int dest_x, int dest_y, int width, int height)
+ {
