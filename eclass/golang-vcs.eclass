@@ -13,7 +13,7 @@
 inherit eutils golang-base
 
 case "${EAPI:-0}" in
-	5)
+	5|6)
 		;;
 	*)
 		die "${ECLASS}: Unsupported eapi (EAPI=${EAPI})"
