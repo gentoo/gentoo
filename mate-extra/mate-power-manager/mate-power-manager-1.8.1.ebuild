@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ inherit autotools gnome2 versionator
 MATE_BRANCH="$(get_version_component_range 1-2)"
 
 SRC_URI="http://pub.mate-desktop.org/releases/${MATE_BRANCH}/${P}.tar.xz"
-DESCRIPTION="A session daemon for MATE that makes it easy to manage your laptop or desktop system"
+DESCRIPTION="A session daemon for MATE that makes it easy to manage your laptop or desktop"
 HOMEPAGE="http://mate-desktop.org"
 
 LICENSE="GPL-2"
