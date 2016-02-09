@@ -9,7 +9,8 @@ inherit eutils flag-o-matic toolchain-funcs multilib multilib-minimal
 MY_P=${P/_/-}
 DESCRIPTION="full-strength general purpose cryptography library (including SSL and TLS)"
 HOMEPAGE="http://www.openssl.org/"
-SRC_URI="mirror://openssl/source/${MY_P}.tar.gz"
+SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
+         http://dev.gentoo.org/~robbat2/distfiles/${PN}-1.0.2e-chacha20poly1305.patch"
 
 LICENSE="openssl"
 SLOT="0"
@@ -63,7 +64,7 @@ src_prepare() {
 		epatch "${FILESDIR}"/${PN}-1.0.2-ipv6.patch
 		epatch "${FILESDIR}"/${PN}-1.0.2a-x32-asm.patch #542618
 		epatch "${FILESDIR}"/${PN}-1.0.1p-default-source.patch #554338
-		epatch "${FILESDIR}"/${PN}-1.0.2e-chacha20poly1305.patch
+		epatch "${DISTDIR}"/${PN}-1.0.2e-chacha20poly1305.patch
 
 		epatch_user #332661
 	fi
