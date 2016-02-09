@@ -39,6 +39,7 @@ src_prepare() {
 		-e 's:-pipe -g::' \
 		-e 's:LDFLAGS.*=:LDFLAGS +=:' \
 		Makefile{,.common} || die
+	default
 }
 
 src_compile() {
