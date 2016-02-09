@@ -25,6 +25,7 @@ RDEPEND="
 	dev-python/cffi:=[${PYTHON_USEDEP}]
 	dev-python/gevent[${PY2_USEDEP}]"
 DEPEND="${RDEPEND}
+	dev-python/cython[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )
 	doc? (
 		>=dev-python/sphinx-1.3[${PYTHON_USEDEP}]
@@ -46,6 +47,7 @@ python_compile_all() {
 }
 
 python_compile() {
+	esetup.py cython --force
 	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
 	distutils-r1_python_compile
 }
