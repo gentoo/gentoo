@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -36,7 +36,7 @@ src_install() {
 	keepdir "/var/log/${MY_PN}"
 
 	insinto "/etc/${MY_PN}/conf.d"
-	newins "${FILESDIR}/agent.conf.sample-r2" agent.conf.sample
+	newins "${FILESDIR}/agent.conf.sample" agent.conf.sample
 
 	insinto "/opt/${MY_PN}"
 	doins -r .
@@ -45,8 +45,8 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${MY_PN}.logrotate" ${MY_PN}
 
-	newconfd "${FILESDIR}/${MY_PN}.confd-r2" ${MY_PN}
-	newinitd "${FILESDIR}/${MY_PN}.initd-r2" ${MY_PN}
+	newconfd "${FILESDIR}/${MY_PN}.confd" ${MY_PN}
+	newinitd "${FILESDIR}/${MY_PN}.initd" ${MY_PN}
 }
 
 pkg_postinst() {
