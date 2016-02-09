@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="A high-level decoding and seeking API for .opus files"
 HOMEPAGE="http://www.opus-codec.org/"
@@ -10,12 +10,15 @@ SRC_URI="http://downloads.xiph.org/releases/opus/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc x86"
-IUSE="doc fixed-point +float +http static-libs"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+IUSE="doc fixed-point +float +http libressl static-libs"
 
 RDEPEND="media-libs/libogg
 	media-libs/opus
-	http? ( dev-libs/openssl )"
+	http? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:= )
+	)"
 
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
