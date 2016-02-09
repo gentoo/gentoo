@@ -50,7 +50,7 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${ED}" LIBDIR="/usr/$(get_libdir)" install
 
-	dodoc changelog README
+	dodoc changelog README*
 	doman doc/*.{1,8}
 	insinto /usr/share/doc/${PF}/examples
 	doins doc/example*.c
