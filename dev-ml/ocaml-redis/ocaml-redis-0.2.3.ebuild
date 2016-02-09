@@ -16,12 +16,13 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="+lwt"
 
-DEPEND="
+RDEPEND="
 	dev-ml/ocaml-re:=
 	dev-ml/uuidm:=
 	lwt? ( dev-ml/lwt:= )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-ml/ounit )"
 
 src_configure() {
 	oasis_configure_opts="$(use_enable lwt)" oasis_src_configure
