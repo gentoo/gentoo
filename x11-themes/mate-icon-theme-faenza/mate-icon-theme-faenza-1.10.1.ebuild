@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit gnome2 versionator
+inherit autotools gnome2 versionator
 
 MATE_BRANCH="$(get_version_component_range 1-2)"
 
@@ -25,4 +25,7 @@ RESTRICT="binchecks strip"
 src_prepare() {
 	# Remove broken libreoffice icons (dangling symlinks).
 	rm matefaenza/apps/16/*libreoffice* || die
+
+	# https://github.com/mate-desktop/mate-icon-theme-faenza/issues/13
+	eautoreconf
 }
