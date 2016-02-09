@@ -9,8 +9,4 @@
         <email>perl@gentoo.org</email>
         <name>Gentoo Perl Project</name>
         </maintainer>
-        <use>
-        <flag name="parrot">Build the parrot backend (default)</flag> 
-	<flag name="moar">Build the MoarVM backend (experimental)</flag>
-        </use>
 </pkgmetadata>
