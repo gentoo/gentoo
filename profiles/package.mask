@@ -190,11 +190,6 @@ games-strategy/coldwar
 net-misc/ixp4xx
 
 # Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
-# Cannot be downloaded because sources changed, bug #561200. Removal in a
-# month.
-sys-block/megarc
-
-# Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
 # Obsolete and dead, bug #561622. Removal in a month.
 app-misc/ompload
 
