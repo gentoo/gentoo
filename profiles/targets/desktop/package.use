@@ -1,6 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+# Serget Popov <pinkbyte@gentoo.org> (09 Feb 2016)
+# Do not force Qt4 implemenation of RetroShare
+net-p2p/retroshare -qt4
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (19 Feb 2015)
 # Set reasonable default toolkit for all desktops to prevent emerge error
