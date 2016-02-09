@@ -222,6 +222,9 @@ PATCHES=(
 
 	# Bug #541678
 	"${FILESDIR}"/qt4-select.patch
+
+	# Allow QT5.5 since Gentoo has a patched QTwidgets
+	"${FILESDIR}"/${PN}-2.2.2-qt5widgets.patch
 )
 
 S="${WORKDIR}/${MY_P}"
