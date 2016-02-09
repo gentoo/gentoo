@@ -10,7 +10,7 @@ EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}2.git"
 inherit autotools git-r3
 #endif
 
-inherit fdo-mime systemd
+inherit systemd xdg-utils
 
 DESCRIPTION="Intelligent PE executable wrapper for binfmt_misc"
 HOMEPAGE="https://bitbucket.org/mgorny/pe-format2/"
@@ -21,6 +21,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
+DEPEND="dev-util/desktop-file-utils"
 RDEPEND="!<sys-apps/openrc-0.9.4"
 
 #if LIVE
@@ -49,5 +50,5 @@ pkg_postinst() {
 	pe-format2-setup
 	eend ${?}
 
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
