@@ -2992,7 +2992,7 @@ dev-dotnet/nini 1.1.0-r2: Nini - A configuration library for .NET
 dev-dotnet/notify-sharp 0.4.0_pre20090305 0.4.0_pre20090305-r1: a C# client implementation for Desktop Notifications
 dev-dotnet/nuget 2.8.3: Nuget - .NET Package Manager
 dev-dotnet/pango-sharp 2.12.10: GtkSharp's pango module of the gtk-sharp tarball
-dev-dotnet/pe-format 2.1.2 2.1.2-r1 2.9999: Intelligent PE executable wrapper for binfmt_misc
+dev-dotnet/pe-format 2.1.2 2.1.2-r1 9999: Intelligent PE executable wrapper for binfmt_misc
 dev-dotnet/rsvg-sharp 2.24.0-r10: GtkSharp's rsvg module of the gnome-desktop-sharp tarball
 dev-dotnet/smartirc4net 0.4.5.1: Multi-threaded and thread-safe IRC library written in C#
 dev-dotnet/taglib-sharp 2.0.4.0 2.1.0.0: Taglib# 2.0 - Managed tag reader/writer
