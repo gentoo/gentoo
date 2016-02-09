@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,15 +26,15 @@ DOC_CONTENTS="
 
 RDEPEND="
 	>=dev-libs/dbus-glib-0.71:0
-	>=dev-libs/glib-2.26:2
+	>=dev-libs/glib-2.36:2
 	gnome-base/dconf:0
-	>=mate-base/libmatekbd-1.8:0
-	>=mate-base/mate-desktop-1.8:0
-	>=mate-base/mate-menus-1.8:0
-	>=mate-base/mate-session-manager-1.8:0
+	>=mate-base/libmatekbd-1.10:0
+	>=mate-base/mate-desktop-1.10:0
+	>=mate-base/mate-menus-1.10:0
+	>=mate-base/mate-session-manager-1.10:0
 	>=sys-apps/dbus-0.30:0
 	>=x11-libs/gdk-pixbuf-2.14:2
-	>=x11-libs/gtk+-2.14:2
+	>=x11-libs/gtk+-2.24:2
 	>=x11-libs/libX11-1:0
 	x11-libs/cairo:0
 	x11-libs/libXext:0
@@ -45,24 +45,23 @@ RDEPEND="
 	x11-libs/libxklavier:0
 	x11-libs/pango:0
 	virtual/libintl:0
+	consolekit? ( sys-auth/consolekit:0 )
 	libnotify? ( >=x11-libs/libnotify-0.7:0 )
 	opengl? ( virtual/opengl:0 )
 	pam? ( gnome-base/gnome-keyring:0 virtual/pam:0 )
 	!pam? ( kernel_linux? ( sys-apps/shadow:0 ) )
+	systemd? ( sys-apps/systemd:0= )
 	!!<gnome-extra/gnome-screensaver-3:0"
 
-# FIXME: Why is systemd and consolekit only a DEPEND? ConsoleKit can't be used build-time only.
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.35:*
-	>=mate-base/mate-common-1.8:0
+	>=mate-base/mate-common-1.10:0
 	sys-devel/gettext:*
 	x11-proto/randrproto:0
 	x11-proto/scrnsaverproto:0
 	x11-proto/xextproto:0
 	x11-proto/xf86miscproto:0
-	virtual/pkgconfig:*
-	consolekit? ( sys-auth/consolekit:0 )
-	systemd? ( sys-apps/systemd:0= )"
+	virtual/pkgconfig:*"
 
 src_configure() {
 	gnome2_src_configure \
