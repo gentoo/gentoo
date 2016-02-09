@@ -10,7 +10,8 @@ MY_P=${MY_PV}_MegaCLI
 
 DESCRIPTION="LSI Logic MegaRAID Command Line Interface management tool"
 # Avagotech now owns LSI
-HOMEPAGE="http://www.www.avagotech.com/"
+HOMEPAGE="http://www.avagotech.com/cs/Satellite?pagename=AVG2/searchLayout&SearchKeyWord=8.07&searchType=DocumentFileExtension-zip&locale=avg_en&srchradio=within&within=8.07"
+# This file is '[zip]	MegaCLI 5.5 P2', Date: 01/20/2014   Size: 7753 KB
 SRC_URI="http://docs.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${MY_P}.zip"
 
 LICENSE="LSI"
