@@ -3728,7 +3728,7 @@ dev-java/avalon-framework 4.1.5-r1 4.1.5-r2 4.2.0-r1 4.2.0-r2: Avalon Framework
 dev-java/avalon-logkit 1.2.2-r1 2.1-r5 2.1-r6 2.1-r7 2.1-r8: Easy-to-use Java logging toolkit
 dev-java/backport-util-concurrent 3.1 3.1-r1: A portability wrapper for java.util.concurrent API (jsr166) 6.0
 dev-java/balloontip 1.2.1: A balloon tip component to spice up your Java Swing applications
-dev-java/batik 1.8-r2: Java based SVG toolkit
+dev-java/batik 1.8-r3: Java based SVG toolkit
 dev-java/bcel 5.2-r2 5.2-r3 6.0_rc3: The Byte Code Engineering Library: analyze, create, manipulate Java class files
 dev-java/bcmail 1.38-r4 1.38-r5 1.45-r3 1.45-r4 1.50-r2 1.52-r2: Java cryptography APIs
 dev-java/bcpg 1.50-r1 1.52-r1: Java cryptography APIs
@@ -3741,7 +3741,7 @@ dev-java/bnd-junit 2.1.0: Junit plugin for bndlib, a swiss army knife for OSGi
 dev-java/bndlib 2.1.0: A swiss army knife for OSGi
 dev-java/boilerpipe 1.2.0: Boilerplate Removal and Fulltext Extraction from HTML pages
 dev-java/browserlauncher2 1.3-r1: BrowserLauncher2 is a library that facilitates opening a browser from a Java application
-dev-java/bsf 2.4.0-r1 2.4.0-r2: Bean Script Framework
+dev-java/bsf 2.4.0-r2: Bean Script Framework
 dev-java/bsh 2.0_beta4-r4: BeanShell: A small embeddable Java source interpreter
 dev-java/byaccj 1.15-r1: A java extension of BSD YACC-compatible parser generator
 dev-java/bytecode 20081007: Biojava bytecode manipulation library
@@ -4078,7 +4078,7 @@ dev-java/jutils 1.0.0-r1: Common utilities for the Java Game Technology Group
 dev-java/jvmstat 3.0: Monitoring APIs and tools for monitoring the performance of the JVM in production environments
 dev-java/jvyaml 0.2.1-r1: Java YAML parser and emitter
 dev-java/jvyamlb 0.2.5: JvYAMLb, YAML processor extracted from JRuby
-dev-java/jython 2.2.1-r2 2.5.3-r3 2.7.0: An implementation of Python written in Java
+dev-java/jython 2.7.0: An implementation of Python written in Java
 dev-java/jzlib 1.0.7-r1 1.1.1 1.1.3: JZlib is a re-implementation of zlib in pure Java
 dev-java/kryo 1.05 2.21 2.22: Fast, efficient Java serialization and cloning
 dev-java/kunststoff 2.0.2-r1: Kunststoff Look&Feel
@@ -4813,7 +4813,7 @@ dev-libs/openct 0.6.20-r3 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.5 1.7.1: An implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.12.2-r2 0.13.0 0.14.0 0.15.0: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.4-r1: A collection of special mathematical functions
-dev-libs/openssl 0.9.8z_p7 0.9.8z_p8 1.0.1p 1.0.1r 1.0.2e 1.0.2e-r1 1.0.2f 1.0.2f-r1: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 0.9.8z_p7 0.9.8z_p8 1.0.1p 1.0.1r 1.0.2e 1.0.2f: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r2 1.6.2-r4: An ISO-C:1999 API and corresponding CLI for the generation of DCE 1.1, ISO/IEC 11578:1996 and RFC 4122 compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/papi 5.3.0 5.4.0: Performance Application Programming Interface
@@ -10664,7 +10664,7 @@ games-strategy/defcon-demo 1.60: Global thermonuclear war simulation with multip
 games-strategy/dominions2 2.16: Dominions 2: The Ascension Wars is an epic turn-based fantasy strategy game
 games-strategy/dopewars 1.5.12-r2: Re-Write of the game Drug Wars
 games-strategy/dunelegacy 0.96.3: Updated clone of Westood Studios' Dune2
-games-strategy/endless-sky 0.8.11: Space exploration, trading & combat game in the tradition of Terminal Velocity.
+games-strategy/endless-sky 0.8.11: Space exploration, trading & combat game.
 games-strategy/freeciv 2.5.1 2.5.2: multiplayer strategy game (Civilization Clone)
 games-strategy/freecol 0.10.7 0.11.5: An open source clone of the game Colonization
 games-strategy/freeorion 0.4.5_pre 0.4.5: A free turn-based space empire and galactic conquest game
@@ -17675,7 +17675,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 11.2.202.559: Adobe Flash Player
+www-plugins/adobe-flash 11.2.202.559 11.2.202.569: Adobe Flash Player
 www-plugins/chrome-binary-plugins 48.0.2564.103_p1 49.0.2623.39_beta1 50.0.2638.0_alpha1: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
