@@ -109,6 +109,20 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
+PATCHES=(
+	# bug #350330 - automagic CVS when we don't want it is bad.
+	"${FILESDIR}"/git-2.2.2-optional-cvs.patch
+
+	# install mediawiki perl modules also in vendor_dir
+	# hack, needs better upstream solution
+	"${FILESDIR}"/git-1.8.5-mw-vendor.patch
+
+	"${FILESDIR}"/git-2.2.0-svn-fe-linking.patch
+
+	# Bug #493306, where FreeBSD 10.x merged libiconv into its libc.
+	"${FILESDIR}"/git-2.5.1-freebsd-10.x-no-iconv.patch
+)
+
 pkg_setup() {
 	if use subversion && has_version "dev-vcs/subversion[dso]"; then
 		ewarn "Per Gentoo bugs #223747, #238586, when subversion is built"
@@ -222,25 +236,15 @@ src_unpack() {
 }
 
 src_prepare() {
-	# bug #350330 - automagic CVS when we don't want it is bad.
-	epatch "${FILESDIR}"/git-2.2.2-optional-cvs.patch
-
-	# install mediawiki perl modules also in vendor_dir
-	# hack, needs better upstream solution
-	epatch "${FILESDIR}"/git-1.8.5-mw-vendor.patch
-
 	# add experimental patches to improve mediawiki support
 	# see patches for origin
 	if use mediawiki-experimental ; then
-		epatch "${FILESDIR}"/git-2.7.0-mediawiki-namespaces.patch
-		epatch "${FILESDIR}"/git-2.7.0-mediawiki-subpages.patch
-		epatch "${FILESDIR}"/git-2.7.0-mediawiki-500pages.patch
+		PATCHES+=(
+			"${FILESDIR}"/git-2.7.0-mediawiki-namespaces.patch
+			"${FILESDIR}"/git-2.7.0-mediawiki-subpages.patch
+			"${FILESDIR}"/git-2.7.0-mediawiki-500pages.patch
+		)
 	fi
-
-	epatch "${FILESDIR}"/git-2.2.0-svn-fe-linking.patch
-
-	# Bug #493306, where FreeBSD 10.x merged libiconv into its libc.
-	epatch "${FILESDIR}"/git-2.5.1-freebsd-10.x-no-iconv.patch
 
 	default
 
