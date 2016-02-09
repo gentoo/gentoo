@@ -55,7 +55,7 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.4.90-no-SUID-no-GUID.patch"
-	"${FILESDIR}/${P}}-lockscreen-bypass.patch"
+	"${FILESDIR}/${P}-lockscreen-bypass.patch"
 )
 
 src_prepare() {
