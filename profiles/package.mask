@@ -713,11 +713,6 @@ dev-python/pyltxml
 # Masked for removal in 30 days
 kde-base/contactthemeeditor
 
-# Michael Palimaka <kensington@gentoo.org> (31 Dec 2015)
-# Relies on dead web API. Dead upstream. Masked for removal in 30 days
-# Bug 364097
-media-sound/shoutcast-search
-
 # Pacho Ramos <pacho@gentoo.org> (31 Dec 2015)
 # Upstream dead, doesn't compile with libsigc++-2.6, bug #567092
 # Removal in a month.
