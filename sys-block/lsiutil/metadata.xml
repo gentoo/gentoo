@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>robbat2@gentoo.org</email>
+	<!-- used by infra, please do not non-maintainer drop -->
+	<maintainer type="project">
+		<email>sysadmin@gentoo.org</email>
+		<name>Gentoo Sysadmin Project</name>
 	</maintainer>
 </pkgmetadata>
