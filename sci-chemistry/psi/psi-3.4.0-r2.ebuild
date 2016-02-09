@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,9 +19,10 @@ RDEPEND="
 	!sci-visualization/extrema
 	virtual/blas
 	virtual/lapack
-	>=sci-libs/libint-1.1.4"
+	>=sci-libs/libint-1.1.4:1"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
+	dev-util/byacc
 	test? ( dev-lang/perl )"
 
 S="${WORKDIR}/${PN}${PV:0:1}"
@@ -36,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-ldflags.patch
 	"${FILESDIR}"/${PV}-parallel_fix.patch
 	"${FILESDIR}"/${PV}-fortify.patch
+	"${FILESDIR}"/${P}-format-security.patch
 	)
 
 src_prepare() {
@@ -66,7 +68,10 @@ src_configure() {
 }
 
 src_compile() {
-	autotools-utils_src_compile SCRATCH="${WORKDIR}/libint" DODEPEND="no"
+	autotools-utils_src_compile \
+		SCRATCH="${WORKDIR}/libint" \
+		DODEPEND="no" \
+		YACC=byacc
 }
 
 src_test() {
