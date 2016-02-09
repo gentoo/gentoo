@@ -34,7 +34,7 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		"$(systemd_with_unitdir)"
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 	)
 	econf "${myconf[@]}"
 }
