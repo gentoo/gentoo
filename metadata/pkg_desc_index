@@ -17616,7 +17616,7 @@ www-client/fetch 1.0-r1: Fetch is a simple, fast, and flexible HTTP download too
 www-client/firefox 38.5.0 38.6.0 43.0 44.0: Firefox Web Browser
 www-client/firefox-bin 38.5.0 38.6.0 44.0: Firefox Web Browser
 www-client/google-chrome 48.0.2564.103_p1: The web browser from Google
-www-client/google-chrome-beta 49.0.2623.28_p1: The web browser from Google
+www-client/google-chrome-beta 49.0.2623.39_p1: The web browser from Google
 www-client/google-chrome-unstable 50.0.2638.0_p1: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
