@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 SCM=""
 if [ "${PV%9999}" != "${PV}" ] ; then
@@ -32,144 +32,157 @@ else
 fi
 
 LICENSE="LGPL-2.1 GPL-2"
-SLOT="0/5-7" # vlc - vlccore
+SLOT="0/5-8" # vlc - vlccore
 
 if [[ ${PV} != *9999 ]] ; then
-	KEYWORDS="amd64 ~arm ppc ppc64 -sparc x86 ~x86-fbsd"
+	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd"
 fi
 
-IUSE="a52 aalib alsa altivec atmo +audioqueue avahi +avcodec
-	+avformat bidi bluray cdda cddb chromaprint dbus dc1394 debug dirac
-	directfb directx dts dvb +dvbpsi dvd dxva2 elibc_glibc egl +encode faad fdk
+IUSE="a52 aalib alsa altivec atmo +audioqueue +avcodec
+	+avformat bidi bluray cdda cddb chromaprint dbus dc1394 debug
+	directfb directx dts dvb +dvbpsi dvd dxva2 elibc_glibc +encode faad fdk
 	fluidsynth +ffmpeg flac fontconfig +gcrypt gme gnome gnutls
-	growl httpd ieee1394 ios-vout jack kate kde libass libav libcaca libnotify
-	libsamplerate libtiger linsys libtar lirc live lua +macosx
-	+macosx-audio +macosx-dialog-provider +macosx-eyetv +macosx-quartztext
-	+macosx-qtkit +macosx-vout matroska media-library cpu_flags_x86_mmx modplug mp3 mpeg
+	growl httpd ieee1394 jack jpeg kate kde libass libav libcaca libnotify
+	+libsamplerate libtiger linsys libtar lirc live lua
+	macosx-dialog-provider macosx-eyetv macosx-quartztext macosx-qtkit
+	matroska media-library cpu_flags_x86_mmx modplug mp3 mpeg
 	mtp musepack ncurses neon ogg omxil opencv opengl optimisememory opus
-	png +postproc projectm pulseaudio +qt4 rdp rtsp run-as-root samba
+	png postproc projectm pulseaudio +qt4 qt5 rdp rtsp run-as-root samba
 	schroedinger sdl sdl-image sftp shout sid skins speex cpu_flags_x86_sse svg +swscale
 	taglib theora tremor truetype twolame udev upnp vaapi v4l vcdx vdpau
-	vlm vnc vorbis wma-fixed +X x264 +xcb xml xv zvbi"
+	vlm vnc vorbis vpx wma-fixed +X x264 x265 +xcb xml xv zeroconf zvbi"
 
 RDEPEND="
-		!<media-video/ffmpeg-1.2:0
-		dev-libs/libgpg-error:0
-		net-dns/libidn:0
-		>=sys-libs/zlib-1.2.5.1-r2:0[minizip]
-		virtual/libintl:0
-		a52? ( >=media-libs/a52dec-0.7.4-r3:0 )
-		aalib? ( media-libs/aalib:0 )
-		alsa? ( >=media-libs/alsa-lib-1.0.24:0 )
-		avahi? ( >=net-dns/avahi-0.6:0[dbus] )
-		avcodec? (
-			!libav? ( media-video/ffmpeg:0= )
-			libav? ( media-video/libav:0= )
-		)
-		avformat? (
-			!libav? ( media-video/ffmpeg:0= )
-			libav? ( media-video/libav:0= )
-		)
-		bidi? ( >=dev-libs/fribidi-0.10.4:0 )
-		bluray? ( >=media-libs/libbluray-0.2.1:0 )
-		cddb? ( >=media-libs/libcddb-1.2.0:0 )
-		chromaprint? ( >=media-libs/chromaprint-0.6:0 )
-		dbus? ( >=sys-apps/dbus-1.0.2:0 )
-		dc1394? ( >=sys-libs/libraw1394-2.0.1:0 >=media-libs/libdc1394-2.1.0:2 )
-		dirac? ( >=media-video/dirac-0.10.0:0 )
-		directfb? ( dev-libs/DirectFB:0 sys-libs/zlib:0 )
-		dts? ( media-libs/libdca:0 )
-		dvbpsi? ( >=media-libs/libdvbpsi-0.2.1:0 )
-		dvd? ( media-libs/libdvdread:0 >=media-libs/libdvdnav-0.1.9:0 )
-		egl? ( virtual/opengl:0 )
-		elibc_glibc? ( >=sys-libs/glibc-2.8:2.2 )
-		faad? ( >=media-libs/faad2-2.6.1:0 )
-		fdk? ( media-libs/fdk-aac:0 )
-		flac? ( media-libs/libogg:0 >=media-libs/flac-1.1.2:0 )
-		fluidsynth? ( >=media-sound/fluidsynth-1.1.2:0 )
-		fontconfig? ( media-libs/fontconfig:1.0 )
-		gcrypt? ( >=dev-libs/libgcrypt-1.2.0:0= )
-		gme? ( media-libs/game-music-emu:0 )
-		gnome? ( gnome-base/gnome-vfs:2 dev-libs/glib:2 )
-		gnutls? ( >=net-libs/gnutls-3.0.20:0 )
-		ieee1394? ( >=sys-libs/libraw1394-2.0.1:0 >=sys-libs/libavc1394-0.5.3:0 )
-		ios-vout? ( virtual/opengl:0 )
-		jack? ( >=media-sound/jack-audio-connection-kit-0.99.0-r1:0 )
-		kate? ( >=media-libs/libkate-0.3.0:0 )
-		libass? ( >=media-libs/libass-0.9.8:0 media-libs/fontconfig:1.0 )
-		libcaca? ( >=media-libs/libcaca-0.99_beta14:0 )
-		libnotify? ( x11-libs/libnotify:0 x11-libs/gtk+:2 x11-libs/gdk-pixbuf:2 dev-libs/glib:2 )
-		libsamplerate? ( media-libs/libsamplerate:0 )
-		libtar? ( >=dev-libs/libtar-1.2.11-r3:0 )
-		libtiger? ( >=media-libs/libtiger-0.3.1:0 )
-		linsys? ( >=media-libs/zvbi-0.2.28:0 )
-		lirc? ( app-misc/lirc:0 )
-		live? ( >=media-plugins/live-2011.12.23:0 )
-		lua? ( >=dev-lang/lua-5.1:0 )
-		macosx-vout? ( virtual/opengl:0 )
-		matroska? (	>=dev-libs/libebml-1.0.0:0= >=media-libs/libmatroska-1.0.0:0= )
-		modplug? ( >=media-libs/libmodplug-0.8.8.1:0 )
-		mp3? ( media-libs/libmad:0 )
-		mpeg? ( >=media-libs/libmpeg2-0.3.2:0 )
-		mtp? ( >=media-libs/libmtp-1.0.0:0 )
-		musepack? ( >=media-sound/musepack-tools-444:0 )
-		ncurses? ( sys-libs/ncurses:0=[unicode] )
-		ogg? ( media-libs/libogg:0 )
-		opencv? ( >media-libs/opencv-2.0:0 )
-		opengl? ( virtual/opengl:0 >=x11-libs/libX11-1.3.99.901:0 )
-		opus? ( >=media-libs/opus-1.0.3:0 )
-		png? ( media-libs/libpng:0= sys-libs/zlib:0 )
-		postproc? (
-			!libav? ( >=media-video/ffmpeg-1.2:0= )
-			libav? ( media-libs/libpostproc:0= )
-		)
-		projectm? ( media-libs/libprojectm:0 media-fonts/dejavu:0 )
-		pulseaudio? ( >=media-sound/pulseaudio-0.9.22:0 )
-		qt4? ( >=dev-qt/qtgui-4.6.0:4 >=dev-qt/qtcore-4.6.0:4 )
-		rdp? ( <net-misc/freerdp-1.2:0= )
-		samba? ( || ( >=net-fs/samba-3.4.6:0[smbclient] >=net-fs/samba-4.0.0:0[client] ) )
-		schroedinger? ( >=media-libs/schroedinger-1.0.10:0 )
-		sdl? ( >=media-libs/libsdl-1.2.10:0
-			sdl-image? ( >=media-libs/sdl-image-1.2.10:0 sys-libs/zlib:0 ) )
-		sftp? ( net-libs/libssh2:0 )
-		shout? ( media-libs/libshout:0 )
-		sid? ( media-libs/libsidplay:2 )
-		skins? ( x11-libs/libXext:0 x11-libs/libXpm:0 x11-libs/libXinerama:0 )
-		speex? ( media-libs/speex:0 )
-		svg? ( >=gnome-base/librsvg-2.9.0:2 )
-		swscale? (
-			!libav? ( media-video/ffmpeg:0= )
-			libav? ( media-video/libav:0= )
-		)
-		taglib? ( >=media-libs/taglib-1.6.1:0 sys-libs/zlib:0 )
-		theora? ( >=media-libs/libtheora-1.0_beta3:0 )
-		tremor? ( media-libs/tremor:0 )
-		truetype? ( media-libs/freetype:2 virtual/ttf-fonts:0
-			!fontconfig? ( media-fonts/dejavu:0 ) )
-		twolame? ( media-sound/twolame:0 )
-		udev? ( >=virtual/udev-142:0 )
-		upnp? ( net-libs/libupnp:0 )
-		v4l? ( media-libs/libv4l:0 )
-		vaapi? (
-			x11-libs/libva:0[X]
-			!libav? ( media-video/ffmpeg:0=[vaapi] )
-			libav? ( media-video/libav:0=[vaapi] )
-		)
-		vcdx? ( >=dev-libs/libcdio-0.78.2:0 >=media-video/vcdimager-0.7.22:0 )
-		vdpau? ( >=x11-libs/libvdpau-0.6:0 !<media-video/libav-10_beta1 )
-		vnc? ( >=net-libs/libvncserver-0.9.9:0 )
-		vorbis? ( media-libs/libvorbis:0 )
-		X? ( x11-libs/libX11:0 )
-		x264? ( >=media-libs/x264-0.0.20090923:0= )
-		xcb? ( >=x11-libs/libxcb-1.6:0 >=x11-libs/xcb-util-0.3.4:0 >=x11-libs/xcb-util-keysyms-0.3.4:0 )
-		xml? ( dev-libs/libxml2:2 )
-		zvbi? ( >=media-libs/zvbi-0.2.25:0 )
+	!<media-video/ffmpeg-1.2:0
+	dev-libs/libgpg-error:0
+	net-dns/libidn:0
+	>=sys-libs/zlib-1.2.5.1-r2:0[minizip]
+	virtual/libintl:0
+	a52? ( >=media-libs/a52dec-0.7.4-r3:0 )
+	aalib? ( media-libs/aalib:0 )
+	alsa? ( >=media-libs/alsa-lib-1.0.24:0 )
+	avcodec? (
+		!libav? ( media-video/ffmpeg:0= )
+		libav? ( >=media-video/libav-11:0= )
+	)
+	avformat? (
+		!libav? ( media-video/ffmpeg:0= )
+		libav? ( media-video/libav:0= )
+	)
+	bidi? ( >=dev-libs/fribidi-0.10.4:0 )
+	bluray? ( >=media-libs/libbluray-0.3:0 )
+	cddb? ( >=media-libs/libcddb-1.2:0 )
+	chromaprint? ( >=media-libs/chromaprint-0.6:0 )
+	dbus? ( >=sys-apps/dbus-1.6:0 )
+	dc1394? ( >=sys-libs/libraw1394-2.0.1:0 >=media-libs/libdc1394-2.1:2 )
+	directfb? ( dev-libs/DirectFB:0 sys-libs/zlib:0 )
+	dts? ( >=media-libs/libdca-0.0.5:0 )
+	dvbpsi? ( >=media-libs/libdvbpsi-0.2.1:0= )
+	dvd? ( >=media-libs/libdvdread-4.9:0 >=media-libs/libdvdnav-4.9:0 )
+	elibc_glibc? ( >=sys-libs/glibc-2.8:2.2 )
+	faad? ( >=media-libs/faad2-2.6.1:0 )
+	fdk? ( media-libs/fdk-aac:0 )
+	flac? ( >=media-libs/libogg-1:0 >=media-libs/flac-1.1.2:0 )
+	fluidsynth? ( >=media-sound/fluidsynth-1.1.2:0 )
+	fontconfig? ( media-libs/fontconfig:1.0 )
+	gcrypt? ( >=dev-libs/libgcrypt-1.2.0:0= )
+	gme? ( media-libs/game-music-emu:0 )
+	gnome? ( gnome-base/gnome-vfs:2 dev-libs/glib:2 )
+	gnutls? ( >=net-libs/gnutls-3.0.20:0 )
+	ieee1394? ( >=sys-libs/libraw1394-2.0.1:0 >=sys-libs/libavc1394-0.5.3:0 )
+	jack? ( >=media-sound/jack-audio-connection-kit-0.99.0-r1:0 )
+	jpeg? ( virtual/jpeg:0 )
+	kate? ( >=media-libs/libkate-0.3:0 )
+	libass? ( >=media-libs/libass-0.9.8:0 media-libs/fontconfig:1.0 )
+	libcaca? ( >=media-libs/libcaca-0.99_beta14:0 )
+	libnotify? ( x11-libs/libnotify:0 x11-libs/gtk+:2 x11-libs/gdk-pixbuf:2 dev-libs/glib:2 )
+	libsamplerate? ( media-libs/libsamplerate:0 )
+	libtar? ( >=dev-libs/libtar-1.2.11-r3:0 )
+	libtiger? ( >=media-libs/libtiger-0.3.1:0 )
+	linsys? ( >=media-libs/zvbi-0.2.28:0 )
+	lirc? ( app-misc/lirc:0 )
+	live? ( >=media-plugins/live-2011.12.23:0 )
+	lua? ( >=dev-lang/lua-5.1:0 )
+	matroska? (	>=dev-libs/libebml-1:0= >=media-libs/libmatroska-1:0= )
+	modplug? ( >=media-libs/libmodplug-0.8.4:0 !~media-libs/libmodplug-0.8.8 )
+	mp3? ( media-libs/libmad:0 )
+	mpeg? ( >=media-libs/libmpeg2-0.3.2:0 )
+	mtp? ( >=media-libs/libmtp-1:0 )
+	musepack? ( >=media-sound/musepack-tools-444:0 )
+	ncurses? ( sys-libs/ncurses:0=[unicode] )
+	ogg? ( >=media-libs/libogg-1:0 )
+	opencv? ( >media-libs/opencv-2:0 )
+	opengl? ( virtual/opengl:0 >=x11-libs/libX11-1.3.99.901:0 )
+	opus? ( >=media-libs/opus-1.0.3:0 )
+	png? ( media-libs/libpng:0= sys-libs/zlib:0 )
+	postproc? (
+		!libav? ( >=media-video/ffmpeg-2.2:0= )
+		libav? ( media-libs/libpostproc:0= )
+	)
+	projectm? ( media-libs/libprojectm:0 media-fonts/dejavu:0 )
+	pulseaudio? ( >=media-sound/pulseaudio-1:0 )
+	qt4? ( >=dev-qt/qtgui-4.6:4 >=dev-qt/qtcore-4.6:4 )
+	qt5? ( >=dev-qt/qtgui-5.1:5 >=dev-qt/qtcore-5.1:5 >=dev-qt/qtwidgets-5.1:5
+	>=dev-qt/qtx11extras-5.1:5 )
+	rdp? ( >=net-misc/freerdp-1.0.1:0=[client] )
+	samba? ( || ( ( >=net-fs/samba-3.4.6:0[smbclient] <net-fs/samba-4.0.0_alpha1:0[smbclient] )
+		>=net-fs/samba-4.0.0_alpha1:0[client] ) )
+	schroedinger? ( >=media-libs/schroedinger-1.0.10:0 )
+	sdl? ( >=media-libs/libsdl-1.2.10:0
+		sdl-image? ( >=media-libs/sdl-image-1.2.10:0 sys-libs/zlib:0 ) )
+	sftp? ( net-libs/libssh2:0 )
+	shout? ( >=media-libs/libshout-2.1:0 )
+	sid? ( media-libs/libsidplay:2 )
+	skins? ( x11-libs/libXext:0 x11-libs/libXpm:0 x11-libs/libXinerama:0 )
+	speex? ( media-libs/speex:0 )
+	svg? ( >=gnome-base/librsvg-2.9:2 >=x11-libs/cairo-1.13.1:0 )
+	swscale? (
+		!libav? ( media-video/ffmpeg:0= )
+		libav? ( media-video/libav:0= )
+	)
+	taglib? ( >=media-libs/taglib-1.9:0 sys-libs/zlib:0 )
+	theora? ( >=media-libs/libtheora-1.0_beta3:0 )
+	tremor? ( media-libs/tremor:0 )
+	truetype? ( media-libs/freetype:2 virtual/ttf-fonts:0
+		!fontconfig? ( media-fonts/dejavu:0 ) )
+	twolame? ( media-sound/twolame:0 )
+	udev? ( >=virtual/udev-142:0 )
+	upnp? ( net-libs/libupnp:0 )
+	v4l? ( media-libs/libv4l:0 )
+	vaapi? (
+		x11-libs/libva:0[X,drm]
+		!libav? ( media-video/ffmpeg:0=[vaapi] )
+		libav? ( media-video/libav:0=[vaapi] )
+	)
+	vcdx? ( >=dev-libs/libcdio-0.78.2:0 >=media-video/vcdimager-0.7.22:0 )
+	zeroconf? ( >=net-dns/avahi-0.6:0[dbus] )
+"
+
+# Temporarily block non-live FFMPEG versions as they break vdpau, 9999 works;
+# thus we'll have to wait for a new release there.
+RDEPEND="${RDEPEND}
+	vdpau? (
+		>=x11-libs/libvdpau-0.6:0
+		!libav? ( >=media-video/ffmpeg-2.2:0= )
+		libav? ( >=media-video/libav-10:0= )
+	)
+	vnc? ( >=net-libs/libvncserver-0.9.9:0 )
+	vorbis? ( >=media-libs/libvorbis-1.1:0 )
+	vpx? ( media-libs/libvpx:0 )
+	X? ( x11-libs/libX11:0 )
+	x264? ( >=media-libs/x264-0.0.20090923:0= )
+	x265? ( media-libs/x265:0= )
+	xcb? ( >=x11-libs/libxcb-1.6:0 >=x11-libs/xcb-util-0.3.4:0 >=x11-libs/xcb-util-keysyms-0.3.4:0 )
+	xml? ( >=dev-libs/libxml2-2.5:2 )
+	zvbi? ( >=media-libs/zvbi-0.2.25:0 )
 "
 
 DEPEND="${RDEPEND}
 	kde? ( >=kde-base/kdelibs-4:4 )
 	xcb? ( x11-proto/xproto:0 )
 	app-arch/xz-utils:0
+	x86?   ( dev-lang/yasm:* )
+	amd64? ( dev-lang/yasm:* )
 	>=sys-devel/gettext-0.18.3:*
 	virtual/pkgconfig:*
 "
@@ -180,21 +193,36 @@ REQUIRED_USE="
 	cddb? ( cdda )
 	dvb? ( dvbpsi )
 	dxva2? ( avcodec )
-	egl? ( X )
-	ffmpeg? ( avcodec avformat swscale postproc )
+	ffmpeg? ( avcodec avformat swscale )
 	fontconfig? ( truetype )
 	gnutls? ( gcrypt )
 	httpd? ( lua )
 	libcaca? ( X )
 	libtar? ( skins )
 	libtiger? ( kate )
-	qt4? ( X )
+	qt4? ( X !qt5 )
+	qt5? ( X !qt4 )
 	sdl? ( X )
-	skins? ( truetype X qt4 )
+	skins? ( truetype X xml ^^ ( qt4 qt5 ) )
 	vaapi? ( avcodec X )
+	vdpau? ( xcb )
 	vlm? ( encode )
 	xv? ( xcb )
 "
+
+PATCHES=(
+	# Fix build system mistake.
+	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch
+
+	# Patch up incompatibilities and reconfigure autotools.
+	"${FILESDIR}"/${PN}-9999-libva-1.2.1-compat.patch
+
+	# Fix up broken audio when skipping using a fixed reversed bisected commit.
+	"${FILESDIR}"/${PN}-2.1.0-TomWij-bisected-PA-broken-underflow.patch
+
+	# Bug #541678
+	"${FILESDIR}"/qt4-select.patch
+)
 
 S="${WORKDIR}/${MY_P}"
 
@@ -237,33 +265,12 @@ src_prepare() {
 	# We are not in a real git checkout due to the absence of a .git directory.
 	touch src/revision.txt || die
 
-	# Patch up incompatibilities and reconfigure autotools.
-	epatch "${FILESDIR}"/${PN}-2.1.0-newer-rdp.patch
-	epatch "${FILESDIR}"/${PN}-2.1.0-libva-1.2.1-compat.patch
-
-	# Fix up broken audio when skipping using a fixed reversed bisected commit.
-	epatch "${FILESDIR}"/${PN}-2.1.0-TomWij-bisected-PA-broken-underflow.patch
-
-	# Fix bug #541654
-	epatch "${FILESDIR}"/${PN}-2.1-mem_undefined_functions.patch
-
-	# Add missed header imgproc_c.h, imgproc.hpp, bug #554562
-	epatch "${FILESDIR}"/opencv-3.0.0.patch
-
-	# Disable avcodec checks when avcodec is not used.
-	if ! use avcodec; then
-		sed -i 's/^#if LIBAVCODEC_VERSION_CHECK(.*)$/#if 0/' modules/codec/avcodec/fourcc.c || die
-	fi
+	default
 
 	# Don't use --started-from-file when not using dbus.
 	if ! use dbus ; then
 		sed -i 's/ --started-from-file//' share/vlc.desktop.in || die
 	fi
-
-	# Disable a bogus check
-	sed -i "s:libavcodec < 56:libavcodec < 57:g" configure.ac || die
-
-	epatch_user
 
 	eautoreconf
 
@@ -274,6 +281,8 @@ src_prepare() {
 	# Setting QT_SELECT environment variable will enforce correct binaries.
 	if use qt4; then
 		export QT_SELECT=qt4
+	elif use qt5; then
+		export QT_SELECT=qt5
 	fi
 }
 
@@ -297,6 +306,15 @@ src_configure() {
 				--with-default-monospace-font-family=Monospace"
 	fi
 
+	local qt_flag=""
+	if use qt4 ; then
+		qt_flag="--enable-qt=4"
+	elif use qt5 ; then
+		qt_flag="--enable-qt=5"
+	else
+		qt_flag="--disable-qt"
+	fi
+
 	econf \
 		${myconf} \
 		--enable-vlc \
@@ -312,7 +330,6 @@ src_configure() {
 		$(use_enable altivec) \
 		$(use_enable atmo) \
 		$(use_enable audioqueue) \
-		$(use_enable avahi bonjour) \
 		$(use_enable avcodec) \
 		$(use_enable avformat) \
 		$(use_enable bidi fribidi) \
@@ -321,7 +338,6 @@ src_configure() {
 		$(use_enable cddb libcddb) \
 		$(use_enable chromaprint) \
 		$(use_enable dbus) \
-		$(use_enable dirac) \
 		$(use_enable directfb) \
 		$(use_enable directx) \
 		$(use_enable dc1394) \
@@ -330,7 +346,6 @@ src_configure() {
 		$(use_enable dvbpsi) \
 		$(use_enable dvd dvdread) $(use_enable dvd dvdnav) \
 		$(use_enable dxva2) \
-		$(use_enable egl) \
 		$(use_enable encode sout) \
 		$(use_enable faad) \
 		$(use_enable fdk fdkaac) \
@@ -344,9 +359,8 @@ src_configure() {
 		$(use_enable growl) \
 		$(use_enable httpd) \
 		$(use_enable ieee1394 dv1394) \
-		$(use_enable ios-vout) \
-		$(use_enable ios-vout ios-vout2) \
 		$(use_enable jack) \
+		$(use_enable jpeg) \
 		$(use_enable kate) \
 		$(use_with kde kde-solid) \
 		$(use_enable libass) \
@@ -359,12 +373,10 @@ src_configure() {
 		$(use_enable lirc) \
 		$(use_enable live live555) \
 		$(use_enable lua) \
-		$(use_enable macosx-audio) \
 		$(use_enable macosx-dialog-provider) \
 		$(use_enable macosx-eyetv) \
 		$(use_enable macosx-qtkit) \
 		$(use_enable macosx-quartztext) \
-		$(use_enable macosx-vout) \
 		$(use_enable matroska mkv) \
 		$(use_enable cpu_flags_x86_mmx mmx) \
 		$(use_enable modplug mod) \
@@ -378,15 +390,15 @@ src_configure() {
 		$(use_enable omxil) \
 		$(use_enable omxil omxil-vout) \
 		$(use_enable opencv) \
-		$(use_enable opengl glx) \
+		$(use_enable opengl glspectrum) \
 		$(use_enable opus) \
 		$(use_enable optimisememory optimize-memory) \
 		$(use_enable png) \
 		$(use_enable postproc) \
 		$(use_enable projectm) \
 		$(use_enable pulseaudio pulse) \
-		$(use_enable qt4 qt) \
-		$(use_enable rdp libfreerdp) \
+		${qt_flag} \
+		$(use_enable rdp freerdp) \
 		$(use_enable rtsp realrtsp) \
 		$(use_enable run-as-root) \
 		$(use_enable samba smbclient) \
@@ -400,6 +412,7 @@ src_configure() {
 		$(use_enable speex) \
 		$(use_enable cpu_flags_x86_sse sse) \
 		$(use_enable svg) \
+		$(use_enable svg svgdec) \
 		$(use_enable swscale) \
 		$(use_enable taglib) \
 		$(use_enable theora) \
@@ -413,15 +426,19 @@ src_configure() {
 		$(use_enable vcdx) \
 		$(use_enable vdpau) \
 		$(use_enable vlm) \
-		$(use_enable vnc libvnc) \
+		$(use_enable vnc) \
 		$(use_enable vorbis) \
+		$(use_enable vpx) \
 		$(use_enable wma-fixed) \
 		$(use_with X x) \
 		$(use_enable x264) \
+		$(use_enable x265) \
 		$(use_enable xcb) \
 		$(use_enable xml libxml2) \
 		$(use_enable xv xvideo) \
+		$(use_enable zeroconf bonjour) \
 		$(use_enable zvbi) $(use_enable !zvbi telx) \
+		--disable-asdcp \
 		--disable-coverage \
 		--disable-cprof \
 		--disable-crystalhd \
@@ -429,14 +446,15 @@ src_configure() {
 		--disable-gles1 \
 		--disable-gles2 \
 		--disable-goom \
-		--disable-ios-audio \
 		--disable-kai \
 		--disable-kva \
 		--disable-maintainer-mode \
 		--disable-merge-ffmpeg \
+		--disable-mfx \
+		--disable-mmal-codec \
+		--disable-mmal-vout \
 		--disable-opensles \
 		--disable-oss \
-		--disable-quicksync \
 		--disable-quicktime \
 		--disable-rpi-omxil \
 		--disable-shine \
@@ -454,7 +472,7 @@ src_configure() {
 }
 
 src_test() {
-	Xemake check-TESTS
+	virtx emake check-TESTS
 }
 
 DOCS="AUTHORS THANKS NEWS README doc/fortunes.txt doc/intf-vcd.txt"
