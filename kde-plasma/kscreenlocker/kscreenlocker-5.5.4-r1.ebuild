@@ -49,11 +49,14 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	$(add_plasma_dep kde-cli-tools)
 	!<kde-base/kcheckpass-4.11.22-r1:4
-	!kde-base/kdebase-pam:4
+	!kde-base/kdebase-pam:0
 	!<kde-plasma/plasma-workspace-5.4.50
 "
 
-PATCHES=( "${FILESDIR}/${PN}-5.4.90-no-SUID-no-GUID.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-5.4.90-no-SUID-no-GUID.patch"
+	"${FILESDIR}/${P}}-lockscreen-bypass.patch"
+)
 
 src_prepare() {
 	kde5_src_prepare
