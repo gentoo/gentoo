@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ DESCRIPTION="Matrix elements (integrals) evaluation over Cartesian Gaussian func
 HOMEPAGE="http://www.chem.vt.edu/chem-dept/valeev/software/libint/libint.html"
 SRC_URI="http://www.chem.vt.edu/chem-dept/valeev/software/libint/src/${P}.tar.gz"
 
-SLOT="0"
+SLOT="1"
 LICENSE="GPL-2"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs"
