@@ -23,9 +23,9 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/MoarVM-${PV}"
 
 src_configure() {
-	perl Configure.pl --prefix="${D}/usr"|| die
+	perl Configure.pl --prefix="/usr"|| die
 }
 
 src_install() {
-	emake install
+	emake DESTDIR=${D} install
 }
