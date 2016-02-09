@@ -4913,11 +4913,9 @@ media-video/vlc:bluray - Enables libbluray for Blu-ray disc support.
 media-video/vlc:chromaprint - Enables libchromaprint for Chromaprint based audio fingerprinter support.
 media-video/vlc:chromecast - Enable experimental support for Google Chromecast.
 media-video/vlc:dc1394 - Enables IIDC cameras support.
-media-video/vlc:dirac - Enable Dirac video support (an advanced royalty-free video compression format) via the reference library: dirac.
 media-video/vlc:directx - Enable Win32 DirectX support.
 media-video/vlc:dvbpsi - Enables support for Mpeg-TS files (.ts, .m2ts, .mts) via media-libs/libdvbpsi.
 media-video/vlc:dxva2 - Enables Win32 DxVA2 support.
-media-video/vlc:egl - Enables EGL video output module.
 media-video/vlc:faad - Enable AAC audio decoding library support via media-libs/faad2.
 media-video/vlc:fdk - Enables the Fraunhofer AAC codec library.
 media-video/vlc:fluidsynth - Enables Fluidsynth MIDI software synthesis (with external sound fonts).
@@ -4926,21 +4924,17 @@ media-video/vlc:gme - Enables support for media-libs/game-music-emu for playing 
 media-video/vlc:gnome - Adds support for GNOME's filesystem abstraction layer, gnome-base/gnome-vfs. This flag is not GUI-related.
 media-video/vlc:growl - Enables growl notification support (over UDP for remote access and native on OSX)
 media-video/vlc:httpd - Enables a web based interface for vlc.
-media-video/vlc:ios-vout - Enables iPhone OS video output.
 media-video/vlc:kate - Adds support for Ogg Kate subtitles via libkate.
 media-video/vlc:libtar - Uses libtar instead of the built-in tar reader for reading custom skins.
 media-video/vlc:libtiger - Enables Ogg Kate subtitles rendering using libtiger.
 media-video/vlc:linsys - Enables support for Linux Linear Systems Ltd. SDI and HD-SDI input cards.
 media-video/vlc:live - Enables live555 streaming media support (client support for rtsp).
 media-video/vlc:lua - Enable Lua scripting support, needed for including support for Jamendo (online music platform) and similar things.
-media-video/vlc:macosx - Enables Mac OS X gui support.
-media-video/vlc:macosx-audio - Enables Mac OS X audio module.
 media-video/vlc:macosx-dialog-provider - Enables Mac OS X dialog module.
 media-video/vlc:macosx-eyetv - Enables Mac OS X EyeTV (TNT Tuner) module.
 media-video/vlc:macosx-notifications - Enables Mac OS X notifications module (formerly growl).
 media-video/vlc:macosx-qtkit - Enables Mac OS X qtkit module: qtcapture (video) and qtsound (audio) module.
 media-video/vlc:macosx-quartztext - Enables Mac OS X quartz text module.
-media-video/vlc:macosx-vout - Enables Mac OS X video output module.
 media-video/vlc:matroska - Enables matroska support using reference libraries (fallback on other existing matroska support if disabled, i.e., matroska enabled FFmpeg)
 media-video/vlc:media-library - Build the (sqlite based) media library.
 media-video/vlc:mpeg - Add libmpeg2 support for mpeg-1 and mpeg-2 video streams
