@@ -1,17 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
+PYTHON_COMPAT=( python{2_7,3_{3,4,5}} )
 
 inherit distutils-r1
 
-DESCRIPTION="OpenStack logging config library provides standardized configuration for all openstack projects."
+DESCRIPTION="OpenStack logging config library"
 HOMEPAGE="https://pypi.python.org/pypi/oslo.log https://github.com/openstack/oslo.log"
 SRC_URI="mirror://pypi/o/oslo.log/oslo.log-${PV}.tar.gz"
-S="${WORKDIR}/oslo.log-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -49,6 +48,8 @@ DEPEND="
 		>=dev-python/oslo-sphinx-2.5.0[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 	)"
+
+PYTHON_COMPAT=( python{2_7,3_{3,4,5}} )
 
 python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die
