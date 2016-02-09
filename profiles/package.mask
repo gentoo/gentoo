@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Ian Stakenviciuus <axs@gentoo.org> (09 Feb 2016)
+# Mask until members of the project can test and unmask
+=net-fs/samba-4.4*
+=sys-libs/ldb-1.1.25
+
 # Patrice Clement <monsieurp@gentoo.org> (09 Feb 2016)
 # Old, ancient, deprecated, obsolete.. so many adjectives could describe these
 # ebuilds. Let's just say it's about time to kiss them goodbye.
