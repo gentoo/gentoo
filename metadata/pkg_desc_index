@@ -6561,7 +6561,7 @@ dev-php/PEAR-MDB2_Driver_mysqli 1.5.0_beta3 1.5.0_beta4: Database Abstraction La
 dev-php/PEAR-MDB2_Driver_oci8 1.5.0_beta3 1.5.0_beta4: Database Abstraction Layer, oci8 driver
 dev-php/PEAR-MDB2_Driver_pgsql 1.5.0_beta3 1.5.0_beta4: Database Abstraction Layer, pgsql driver
 dev-php/PEAR-MIME_Type 1.3.1 1.3.3: Utility class for dealing with MIME types
-dev-php/PEAR-Mail 1.2.0: Class that provides multiple interfaces for sending emails
+dev-php/PEAR-Mail 1.2.0 1.3.0: Class that provides multiple interfaces for sending emails
 dev-php/PEAR-Mail_Mime 1.8.8 1.9.0 1.10.0: Create and manipulate mime messages with PHP
 dev-php/PEAR-Mail_mimeDecode 1.5.5: Provides a class to decode mime messages (split from PEAR-Mail_Mime)
 dev-php/PEAR-Math_BigInteger 1.0.2: Pure-PHP arbitrary precision integer arithmetic library
@@ -6619,7 +6619,7 @@ dev-php/PEAR-Text_CAPTCHA 0.5.0: Generation of CAPTCHAs
 dev-php/PEAR-Text_CAPTCHA_Numeral 1.3.2: Generates mathematical operations and answers in order to prove that bots using it are human
 dev-php/PEAR-Text_Figlet 1.0.2: Render text using FIGlet fonts
 dev-php/PEAR-Text_Highlighter 0.7.3: A package for syntax highlighting
-dev-php/PEAR-Text_Password 1.1.1: Creating passwords with PHP
+dev-php/PEAR-Text_Password 1.1.1 1.2.0: Creating passwords with PHP
 dev-php/PEAR-Text_Wiki 1.2.2: Abstracts parsing and rendering rules for Wiki markup in structured plain text
 dev-php/PEAR-Text_Wiki_BBCode 0.0.4-r2: BBCode parser for Text_Wiki
 dev-php/PEAR-Text_Wiki_Mediawiki 0.2.0-r1: Mediawiki parser for Text_Wiki
@@ -10664,7 +10664,7 @@ games-strategy/defcon-demo 1.60: Global thermonuclear war simulation with multip
 games-strategy/dominions2 2.16: Dominions 2: The Ascension Wars is an epic turn-based fantasy strategy game
 games-strategy/dopewars 1.5.12-r2: Re-Write of the game Drug Wars
 games-strategy/dunelegacy 0.96.3: Updated clone of Westood Studios' Dune2
-games-strategy/endless-sky 0.8.11: Space exploration, trading and combat game in the tradition of Terminal Velocity.
+games-strategy/endless-sky 0.8.11: Space exploration, trading & combat game in the tradition of Terminal Velocity.
 games-strategy/freeciv 2.5.1 2.5.2: multiplayer strategy game (Civilization Clone)
 games-strategy/freecol 0.10.7 0.11.5: An open source clone of the game Colonization
 games-strategy/freeorion 0.4.5_pre 0.4.5: A free turn-based space empire and galactic conquest game
@@ -12431,7 +12431,7 @@ media-libs/openh264 1.2_p20141104 1.3.1 1.4.0 1.4.0-r1: Cisco OpenH264 library a
 media-libs/openimageio 1.1.1 1.1.7 1.3.5: A library for reading and writing images
 media-libs/openjpeg 1.5.2 1.5.2-r1 2.0.0 2.0.0-r1 2.1.0 2.1.0-r1: An open-source JPEG 2000 library
 media-libs/opus 1.0.2-r2 1.1 1.1.1 1.1.2: Open versatile codec designed for interactive speech and audio transmission over the internet
-media-libs/opusfile 0.4 0.5 0.6 0.6-r1: A high-level decoding and seeking API for .opus files
+media-libs/opusfile 0.6 0.6-r1 0.7: A high-level decoding and seeking API for .opus files
 media-libs/oyranos 0.9.4-r2 0.9.5 0.9.5-r1 9999: Colour management system allowing to share various settings across applications and services
 media-libs/phat 0.4.1 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
 media-libs/phonon 4.7.2 4.8.3 4.8.3-r1 9999: KDE multimedia API
