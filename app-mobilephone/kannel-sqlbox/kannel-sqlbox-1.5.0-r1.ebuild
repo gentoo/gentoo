@@ -1,13 +1,13 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/kannel-sqlbox/kannel-sqlbox-0.7.2.ebuild,v 1.4 2013/07/25 01:53:56 creffett Exp $
+# $Id$
 
-EAPI="2"
+EAPI="5"
 
-inherit eutils autotools
+inherit eutils flag-o-matic readme.gentoo-r1
 
 DESCRIPTION="DB-Based Kannel Box for message queueing"
-HOMEPAGE="http://www.kannel.org/~aguerrieri/SqlBox/"
+HOMEPAGE="http://www.kannel.org/"
 SRC_URI="http://www.kannel.org/download/${PV}/gateway-${PV}.tar.gz"
 
 LICENSE="Apache-1.1 GPL-2"
@@ -20,7 +20,7 @@ RDEPEND="|| (
 		~app-mobilephone/kannel-${PV}[sqlite]
 		~app-mobilephone/kannel-${PV}[postgres]
 	)
-	ssl? ( dev-libs/openssl )"
+	ssl? ( dev-libs/openssl:0 )"
 DEPEND="${RDEPEND}
 	doc? ( media-gfx/transfig
 		app-text/jadetex
@@ -29,8 +29,23 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/gateway-${PV}/addons/sqlbox/"
 
+pkg_setup() {
+	append-ldflags $(no-as-needed)
+	DISABLE_AUTOFORMATTING="yes"
+	DOC_CONTENTS="Please view the following page for config information:
+http://www.kannel.org/pipermail/users/2006-October/000859.html
+
+In essence you need to do 3 things:
+1. Create the database (tables will be automatically created by kannel)
+2. Point sqlbox to the smsbox-port in kannel [core] group
+3. Point smsbox to smsbox-port in sqlbox [sqlbox] group
+
+This literally puts sqlbox in between the bearerbox and smsbox
+for data storage into a database"
+}
+
 src_configure() {
-	LDFLAGS="" econf --docdir=/usr/share/doc/${PF} \
+	econf --docdir=/usr/share/doc/${PF} \
 		--without-ctlib \
 		--without-mssql \
 		$(use_enable ssl) \
@@ -48,20 +63,13 @@ src_install() {
 
 	newinitd "${FILESDIR}"/kannel-sqlbox.initd kannel-sqlbox
 
-	dodoc AUTHORS ChangeLog NEWS README
+	dodoc AUTHORS ChangeLog KannelLICENSE NEWS README
 	insinto /etc/kannel
 	newins example/sqlbox.conf.example sqlbox.conf.sample
+
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	elog "Please view the following page for config information:"
-	elog "http://www.kannel.org/pipermail/users/2006-October/000859.html"
-	elog ""
-	elog "In essence you need to do 3 things"
-	elog "1. Create the database (tables will be automatically created by kannel)"
-	elog "2. Point sqlbox to the smsbox-port in kannel [core] group"
-	elog "3. Point smsbox to smsbox-port in sqlbox [sqlbox] group"
-	elog ""
-	elog "This literally puts sqlbox in between the bearerbox and smsbox"
-	elog "for data storage into a database"
+	readme.gentoo_print_elog
 }
