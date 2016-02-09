@@ -1950,7 +1950,7 @@ app-mobilephone/gnome-phone-manager 0.69-r1: Allows you to control aspects of yo
 app-mobilephone/gsmlib 1.11_pre041028: Library and applications to access GSM mobile phones
 app-mobilephone/heimdall 1.4.0 1.4.1 9999: Tool suite used to flash firmware onto Samsung Galaxy S devices
 app-mobilephone/kannel 1.4.3-r1 1.5.0: Powerful SMS and WAP gateway
-app-mobilephone/kannel-sqlbox 0.7.2 1.5.0: DB-Based Kannel Box for message queueing
+app-mobilephone/kannel-sqlbox 0.7.2 1.5.0-r1: DB-Based Kannel Box for message queueing
 app-mobilephone/lightblue 0.4-r1: Cross-platform Bluetooth API for Python which provides simple access to Bluetooth operations
 app-mobilephone/linuxsms 0.77: A console perl script for sending SMS to cell phones
 app-mobilephone/obex-data-server 0.4.6: A DBus service providing easy to use API for using OBEX
@@ -10535,7 +10535,7 @@ games-roguelike/dwarf-fortress 0.40.24 0.42.05: A single-player fantasy game
 games-roguelike/hengband 1.6.2-r1: An Angband variant, with a Japanese/fantasy theme
 games-roguelike/mazesofmonad 1.0.9-r2: Console-based roguelike Role Playing Game similar to nethack
 games-roguelike/moria 5.5.2: Rogue-like D&D curses game similar to nethack (BUT BETTER)
-games-roguelike/nethack 3.4.3-r5 3.6.0 3.6.0-r1: The ultimate old-school single player dungeon exploration game
+games-roguelike/nethack 3.6.0-r1 3.6.0-r2: The ultimate old-school single player dungeon exploration game
 games-roguelike/powder 117: A game in the genre of Rogue, Nethack, and Diablo. Emphasis is on tactical play
 games-roguelike/rogue 5.4.4: The original graphical adventure game that spawned an entire genre
 games-roguelike/scourge 0.21.1: A graphical rogue-like adventure game
