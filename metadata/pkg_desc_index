@@ -7057,7 +7057,7 @@ dev-python/expects 0.4.2 0.8.0_rc2 0.8.0_rc3 0.8.0_rc4: Expressive and extensibl
 dev-python/extras 0.0.3: Useful extra bits for Python that should be in the standard library
 dev-python/extremes 1.1.1: Production-quality 'Min' and 'Max' objects
 dev-python/eyeD3 0.7.5: Module for manipulating ID3 (v1 + v2) tags in Python
-dev-python/fabric 1.10.0-r1 1.10.1 1.10.2: A simple pythonic tool for remote execution and deployment
+dev-python/fabric 1.10.0-r1 1.10.1 1.10.2-r1: A simple pythonic tool for remote execution and deployment
 dev-python/falcon 0.1.6 0.1.7 0.1.8 0.1.9: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.13.0: A python package that provides useful locks
 dev-python/feedgenerator 1.6 1.7: Standalone version of django.utils.feedgenerator
@@ -7756,7 +7756,7 @@ dev-python/python-ironicclient 0.5.1 0.8.1 0.9.0: Python bindings for the Ironic
 dev-python/python-iwscan 20080402-r1: A Python extension for iwscan access
 dev-python/python-keystoneclient 1.3.1 1.3.2 1.7.2-r1 1.7.3: Client Library for OpenStack Identity
 dev-python/python-ldap 2.4.19-r1 2.4.21-r1 9999: Various LDAP-related Python modules
-dev-python/python-levenshtein 0.10.2-r1 0.11.1 0.11.2 0.12.0: Functions for fast computation of Levenshtein (edit) distance, and edit operations
+dev-python/python-levenshtein 0.11.2 0.12.0: Functions for fast computation of Levenshtein distance, and edit operations
 dev-python/python-linux-procfs 0.4.6 9999: Python classes to extract information from the Linux kernel /proc files
 dev-python/python-ly 0.9.2: Tool and library for manipulating LilyPond files
 dev-python/python-lzo 1.08-r1: Python interface to lzo
@@ -15454,7 +15454,7 @@ sci-chemistry/procheck 3.5.4-r1 3.5.4-r2: Checks the stereochemical quality of a
 sci-chemistry/prodecomp 3.0-r1: Decomposition-based analysis of NMR projections
 sci-chemistry/prody 1.6: Protein Dynamics Analysis
 sci-chemistry/propka 3.1_p140511: Prediction of the pKa values of ionizable groups in proteins and protein-ligand complexes
-sci-chemistry/psi 3.4.0-r2: Suite of ab initio quantum chemistry programs to compute various molecular properties
+sci-chemistry/psi 3.4.0-r2: Suite for ab initio quantum chemistry computing various molecular properties
 sci-chemistry/pymol 1.7.6.0 1.7.7.2: A Python-extensible molecular graphics system
 sci-chemistry/pymol-apbs-plugin 0_p15 0_p18 2.1_p24 2.1_p26 2.1_p26-r1: APBS plugin for pymol
 sci-chemistry/pymol-plugins-bni-tools 0.25.1 0.27: Gives Pymol additional functionalities and presets to the PyMOL GUI
