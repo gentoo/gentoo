@@ -5,4 +5,7 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="scim">Enable Smart Common Input Method support</flag>
+	</use>
 </pkgmetadata>
