@@ -1,17 +1,16 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
 #if LIVE
-AUTOTOOLS_AUTORECONF=yes
 EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}2.git"
 
-inherit git-r3
+inherit autotools git-r3
 #endif
 
-inherit autotools-utils fdo-mime systemd
+inherit fdo-mime systemd
 
 DESCRIPTION="Intelligent PE executable wrapper for binfmt_misc"
 HOMEPAGE="https://bitbucket.org/mgorny/pe-format2/"
@@ -27,17 +26,21 @@ RDEPEND="!<sys-apps/openrc-0.9.4"
 #if LIVE
 KEYWORDS=
 SRC_URI=
+
+src_prepare() {
+	eautoreconf
+}
 #endif
 
 src_configure() {
-	local myeconfargs=(
+	local myconf=(
 		"$(systemd_with_unitdir)"
 	)
-	autotools-utils_src_configure
+	econf "${myconf[@]}"
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
 	keepdir /var/lib
 }
 
