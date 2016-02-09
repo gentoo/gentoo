@@ -26,7 +26,7 @@
 # @CODE
 
 case ${EAPI:-0} in
-	5) ;;
+	5|6) ;;
 	*) die "${ECLASS}.eclass: API in EAPI ${EAPI} not yet established" ;;
 esac
 
