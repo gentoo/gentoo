@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
-inherit eutils flag-o-matic multilib-minimal
+inherit multilib-minimal
 
 DESCRIPTION="GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit"
 HOMEPAGE="http://wxwidgets.org/"
@@ -91,6 +91,8 @@ src_prepare() {
 		-e "s:\(WX_SUBVERSION=\).*:\1${WXSUBVERSION}:" \
 		-e '/WX_VERSION_TAG=/ s:${WX_RELEASE}:3.0:' \
 		configure || die
+
+	default
 }
 
 multilib_src_configure() {
