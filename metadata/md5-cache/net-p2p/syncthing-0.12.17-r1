@@ -8,5 +8,5 @@ LICENSE=MIT
 SLOT=0
 SRC_URI=https://github.com/syncthing/syncthing/archive/v0.12.17.tar.gz -> syncthing-0.12.17.tar.gz
 _eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:- src_install:-
-_eclasses_=golang-base	59e300a2d8836a6e8d508276da0d570f	golang-vcs-snapshot	b10a39b036bc9a2dbefc6e168689b5fd
+_eclasses_=golang-base	1f6a08c05da2d91150032ff45db6a2c5	golang-vcs-snapshot	1caa6d8238d2378ad688ae068ff22e5a
 _md5_=1ac74ef3d1b43969cfede5f0c07744c7
