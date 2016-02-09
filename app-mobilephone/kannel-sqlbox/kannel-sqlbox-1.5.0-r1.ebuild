@@ -63,7 +63,7 @@ src_install() {
 
 	newinitd "${FILESDIR}"/kannel-sqlbox.initd kannel-sqlbox
 
-	dodoc AUTHORS ChangeLog KannelLICENSE NEWS README
+	dodoc AUTHORS ChangeLog NEWS README
 	insinto /etc/kannel
 	newins example/sqlbox.conf.example sqlbox.conf.sample
 
