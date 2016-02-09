@@ -1,0 +1,13 @@
+--- vlc-2.2.2/configure.ac
++++ vlc-2.2.2/configure.ac
+@@ -3754,10 +3754,6 @@
+           AC_MSG_WARN([Not building Qt Interface with X11 helpers.])
+       ])
+ 
+-      PKG_CHECK_EXISTS([Qt5Core >= 5.5.0 Qt5Core < 5.6.0], [
+-        AC_MSG_ERROR(["You cannot build VLC with Qt-5.5.0. You need to backport I78ef29975181ee22429c9bd4b11d96d9e68b7a9c"])
+-      ])
+-
+       QT_PATH="$(eval $PKG_CONFIG --variable=exec_prefix Qt5Core)"
+       QT_HOST_PATH="$(eval $PKG_CONFIG --variable=host_bins Qt5Core)"
+       AC_PATH_PROGS(MOC, [moc-qt5 moc], moc, ["${QT_HOST_PATH}" "${QT_PATH}/bin" "${CONTRIB_DIR}/bin"])
