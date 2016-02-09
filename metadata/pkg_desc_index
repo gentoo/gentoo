@@ -5052,6 +5052,7 @@ dev-ml/ocaml-make 6.37.0: Generic O'Caml Makefile for GNU Make
 dev-ml/ocaml-mysql 1.1.1 1.2.0: A package for ocaml that provides access to mysql databases
 dev-ml/ocaml-pcap 0.3.3: Read and write pcap-formatted network packet traces.
 dev-ml/ocaml-re 1.5.0: Regular expression library for OCaml
+dev-ml/ocaml-redis 0.2.3: Redis bindings for OCaml
 dev-ml/ocaml-safepass 1.2: A library offering facilities for the safe storage of user passwords
 dev-ml/ocaml-sha 1.8 1.9: A binding for SHA interface code in OCaml
 dev-ml/ocaml-sqlite3 4.0.3: A package for ocaml that provides access to SQLite databases
@@ -5126,6 +5127,7 @@ dev-ml/typerep_extended 113.24.00: Runtime types for OCaml (Extended)
 dev-ml/tyxml 3.5.0 3.6.0: A libary to build xml trees typechecked by OCaml
 dev-ml/ulex 1.1: A lexer generator for unicode
 dev-ml/utop 1.11 1.16 1.18 1.18.1: A new toplevel for OCaml with completion and colorization
+dev-ml/uuidm 0.9.5: OCaml module implementing 128 bits universally unique identifiers
 dev-ml/uutf 0.9.4: Non-blocking streaming Unicode codec for OCaml
 dev-ml/variantslib 109.15.00 109.15.02 113.24.00: OCaml variants as first class values
 dev-ml/xml-light 2.2-r1 2.2-r2 2.2-r3: Minimal Xml parser and printer for OCaml
@@ -8554,6 +8556,7 @@ dev-ruby/aws-s3 0.6.3: Client library for Amazon's Simple Storage Service's REST
 dev-ruby/aws-sdk 1.66.0 2.2.5: Official SDK for Amazon Web Services
 dev-ruby/aws-sdk-core 2.2.5: Official SDK for Amazon Web Services
 dev-ruby/aws-sdk-resources 2.2.5: Official SDK for Amazon Web Services
+dev-ruby/backports 3.6.7: Backports of Ruby features for older Ruby
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
 dev-ruby/barby 0.6.2 0.6.2-r1: Ruby barcode generator that doesn't rely on 3rd party libraries
 dev-ruby/bcat 0.6.2-r1 0.6.2-r2: A pipe to browser utility for use at the shell and within editors like Vim or Emacs
@@ -8811,6 +8814,7 @@ dev-ruby/naught 1.0.0 1.1.0: A toolkit for building Null Objects in Ruby
 dev-ruby/nenv 0.2.0 0.3.0: Convenient wrapper for Ruby's ENV
 dev-ruby/net-http-digest_auth 1.4-r1 1.4-r2: An implementation of RFC 2617 - Digest Access Authentication
 dev-ruby/net-http-persistent 2.9.4 2.9.4-r2: Manages persistent connections using Net::HTTP plus a speed fix for Ruby 1.8
+dev-ruby/net-http-pipeline 1.0.1: An HTTP/1.1 pipelining implementation atop Net::HTTP
 dev-ruby/net-scp 1.1.2-r1 1.2.1: A pure Ruby implementation of the SCP client protocol
 dev-ruby/net-sftp 2.1.2-r1 2.1.2-r2: SFTP in pure Ruby
 dev-ruby/net-ssh 2.8.0 2.9.2 2.10.0 3.0.1 3.0.2: Non-interactive SSH processing in pure Ruby
@@ -8864,6 +8868,7 @@ dev-ruby/protected_attributes 1.1.3: Protect attributes from mass-assignment in 
 dev-ruby/pry 0.9.12.6-r1 0.10.1 0.10.2 0.10.3: Pry is a powerful alternative to the standard IRB shell for Ruby
 dev-ruby/psych 2.0.15 2.0.16 2.0.17: A libyaml wrapper for Ruby
 dev-ruby/puppetdb-termini 3.0.1-r2 3.1.0: Library needed to connect puppet to puppetdb
+dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher.com
 dev-ruby/pygments_rb 0.6.2 0.6.3: Pygments syntax highlighting in ruby
 dev-ruby/qed 2.9.1 2.9.2: QED (Quality Ensured Demonstrations) is a TDD/BDD framework
 dev-ruby/racc 1.4.11 1.4.12 1.4.13 1.4.14: A LALR(1) parser generator for Ruby
@@ -9721,7 +9726,7 @@ dev-util/xmlindent 0.2.17-r1: XML Indent is an XML stream reformatter written in
 dev-util/xxdi 1.0.0: Simple alternative to vim's 'xxd -i' mode
 dev-util/xxdiff 4.0_beta1_p20110426 4.0_beta1_p20110426-r1: A graphical file and directories comparator and merge tool
 dev-util/yacc 1.9.1-r4 1.9.1-r5: Yacc: Yet Another Compiler-Compiler
-dev-util/yuicompressor 2.4.8: JavaScript and CSS compressor
+dev-util/yuicompressor 2.4.8 2.4.8-r1: JavaScript and CSS compressor
 dev-vcs/archway 0.2.1: A GUI for GNU Arch
 dev-vcs/bfg 1.12.3 1.12.4 1.12.8: a faster alternative to git-filter-branch for removing bad data from git repos
 dev-vcs/blogc-git-receiver 0.3 9999: A simple login shell/git hook to deploy blogc websites
@@ -10659,6 +10664,7 @@ games-strategy/defcon-demo 1.60: Global thermonuclear war simulation with multip
 games-strategy/dominions2 2.16: Dominions 2: The Ascension Wars is an epic turn-based fantasy strategy game
 games-strategy/dopewars 1.5.12-r2: Re-Write of the game Drug Wars
 games-strategy/dunelegacy 0.96.3: Updated clone of Westood Studios' Dune2
+games-strategy/endless-sky 0.8.11: Space exploration, trading and combat game in the tradition of Terminal Velocity.
 games-strategy/freeciv 2.5.1 2.5.2: multiplayer strategy game (Civilization Clone)
 games-strategy/freecol 0.10.7 0.11.5: An open source clone of the game Colonization
 games-strategy/freeorion 0.4.5_pre 0.4.5: A free turn-based space empire and galactic conquest game

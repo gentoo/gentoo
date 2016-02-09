@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=media-libs/glew media-libs/libsdl2 media-libs/libjpeg-turbo media-libs/libpng:= media-libs/openal virtual/opengl dev-util/scons
+DESCRIPTION=Space exploration, trading and combat game in the tradition of Terminal Velocity.
+EAPI=5
+HOMEPAGE=https://endless-sky.github.io
+KEYWORDS=~amd64
+LICENSE=CC-BY-SA-4.0 CC-BY-SA-3.0 GPL-3+ public-domain
+RDEPEND=media-libs/glew media-libs/libsdl2 media-libs/libjpeg-turbo media-libs/libpng:= media-libs/openal virtual/opengl
+SLOT=0
+SRC_URI=https://github.com/tomboy-64/endless-sky/archive/v0.8.11.tar.gz -> endless-sky-0.8.11.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	28fb3e5852485af1c348d446b0b98389	multilib	3972ca401cf7dbb430df9995f5d8d580	scons-utils	6a35944612b7ecb18a3803359554badc	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=ef69b21d0a61afcd632503942d12b8b5
