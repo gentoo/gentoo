@@ -718,11 +718,6 @@ kde-base/contactthemeeditor
 # Bug 364097
 media-sound/shoutcast-search
 
-# Michael Palimaka <kensington@gentoo.org> (31 Dec 2015)
-# Ancient package, unsupported by upstream. Masked for removal in 30 days
-# Bug 565010
-dev-python/pysyck
-
 # Pacho Ramos <pacho@gentoo.org> (31 Dec 2015)
 # Upstream dead, doesn't compile with libsigc++-2.6, bug #567092
 # Removal in a month.
