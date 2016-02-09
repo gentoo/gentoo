@@ -6,8 +6,7 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<use>
-		<flag name="egl">Use EGL instead of default GLX to manage OpenGL
-			contexts on the desktop</flag>
+		<flag name="egl">Use EGL instead of GLX to manage OpenGL contexts</flag>
 		<flag name="exceptions">Add support for exceptions - like catching them
 			inside the event loop (recommended by upstream)</flag>
 		<flag name="gles2">Use GLES 2.0 or later instead of full OpenGL</flag>
