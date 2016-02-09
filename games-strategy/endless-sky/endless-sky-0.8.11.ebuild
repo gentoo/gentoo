@@ -8,7 +8,7 @@ inherit eutils scons-utils
 
 DESCRIPTION="Space exploration, trading & combat game."
 HOMEPAGE="https://endless-sky.github.io"
-SRC_URI="https://github.com/tomboy-64/endless-sky/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/endless-sky/endless-sky/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CC-BY-SA-4.0 CC-BY-SA-3.0 GPL-3+ public-domain"
 SLOT="0"
