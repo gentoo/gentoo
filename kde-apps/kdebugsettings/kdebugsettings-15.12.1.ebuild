@@ -26,3 +26,5 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 RESTRICT="test"
+
+PATCHES=( "${FILESDIR}/${PN}-15.12.1-deps.patch" )
