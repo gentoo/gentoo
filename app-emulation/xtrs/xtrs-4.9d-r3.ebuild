@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ KEYWORDS="amd64 ppc x86 ~x86-fbsd"
 IUSE="ls-dos"
 RESTRICT="ls-dos? ( bindist )"
 
-RDEPEND="sys-libs/ncurses
+RDEPEND="sys-libs/ncurses:0
 	sys-libs/readline:0
 	>=x11-libs/libX11-1.0.0"
 DEPEND="${RDEPEND}

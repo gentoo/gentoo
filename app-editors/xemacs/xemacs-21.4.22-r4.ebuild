@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -180,7 +180,7 @@ src_configure() {
 	# Enabling modules will cause segfaults outside the XEmacs build directory
 	use ia64  && myconf="${myconf} --without-modules"
 
-	# fixes #552044, deprecation warnings fools header detection in configure 
+	# fixes #552044, deprecation warnings fools header detection in configure
 	myconf="${myconf} --cppflags=-Wno-cpp"
 
 	einfo "${myconf}"
