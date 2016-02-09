@@ -8,4 +8,8 @@
     <upstream>
         <remote-id type="github">mate-desktop/mate-polkit</remote-id>
     </upstream>
+	<use>
+		<flag name="accountsservice">Support extraction of data from AccountsService</flag>
+		<flag name="appindicator">Add support for AppIndicator</flag>
+	</use>
 </pkgmetadata>
