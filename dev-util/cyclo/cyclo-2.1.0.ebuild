@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/sarnold/cyclo.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/sarnold/cyclo/archive/2.1_pre1.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/sarnold/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
@@ -24,23 +24,26 @@ IUSE="debug"
 DEPEND="sys-devel/flex"
 
 src_compile() {
-	local my_flags="CC=$(tc-getCC) CCPLUS=$(tc-getCXX)"
+	local my_opts
+	my_opts="CC=$(tc-getCC) CXX=$(tc-getCXX)"
 
 	if ! use debug ; then
-		DBG="" make ${my_flags} all || die "make failed"
+		DBG="" emake ${my_opts} || die "make failed"
 	else
 		export STRIP_MASK="*/bin/*"
 		if [ -n "${DEBUG}" ] ; then
-			DBG="${DEBUG}" make ${my_flags} all || die "make debug failed"
+			DBG="${DEBUG}" emake ${my_opts} \
+				|| die "make debug failed"
 		else
-			make ${my_flags} all || die "make debug failed"
+			emake ${my_opts} || die "make debug failed"
 		fi
 	fi
 }
 
-src_install() {
-	dobin cyclo mcstrip
+src_test() {
+	make -f Makefile.test test
+}
 
-	doman cyclo.0 mcstrip.1 cyclo.1
-	dodoc README.rst mccabe.example || die "dodoc failed"
+src_install() {
+	emake PREFIX=/usr DESTDIR="${ED}" install
 }
