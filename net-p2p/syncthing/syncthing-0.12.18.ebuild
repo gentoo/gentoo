@@ -37,6 +37,6 @@ src_install() {
 	cd src/${EGO_PN}
 	dobin bin/*
 	dodoc README.md AUTHORS  CONTRIBUTING.md
-	systemd_dounit "${S}"/etc/linux-systemd/system/${PN}@.service
-	systemd_douserunit "${S}"/etc/linux-systemd/user/${PN}.service
+	systemd_dounit "${S}"/src/${EGO_PN}/etc/linux-systemd/system/${PN}@.service
+	systemd_douserunit "${S}"/src/${EGO_PN}/etc/linux-systemd/user/${PN}.service
 }
