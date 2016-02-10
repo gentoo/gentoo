@@ -25,7 +25,7 @@ RDEPEND="
 	!libressl? ( dev-libs/openssl:0 )
 	libressl? ( dev-libs/libressl )
 	sys-libs/zlib
-	net-libs/http-parser
+	net-libs/http-parser:=
 	gssapi? ( virtual/krb5 )
 	ssh? ( net-libs/libssh2 )
 "
