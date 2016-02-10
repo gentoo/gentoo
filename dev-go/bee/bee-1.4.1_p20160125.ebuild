@@ -21,7 +21,7 @@ HOMEPAGE="https://${EGO_PN%/*}"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
-DEPEND="dev-go/beego"
+DEPEND="dev-go/beego:="
 
 get_archive_go_package() {
 	local archive=${1} uri x

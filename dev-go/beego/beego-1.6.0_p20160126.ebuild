@@ -33,7 +33,7 @@ SRC_URI="https://${EGO_PN%/*}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
 DESCRIPTION="High-performance web framework for Go"
 HOMEPAGE="https://${EGO_PN%/*}"
 LICENSE="Apache-2.0"
-SLOT="0"
+SLOT="0/${PVR}"
 IUSE=""
 RESTRICT="test"
 
