@@ -7421,7 +7421,7 @@ dev-python/oslo-vmware 0.11.2 1.21.0: Oslo VMware library for OpenStack projects
 dev-python/oslotest 1.3.0 1.5.0 1.5.1 1.6.0 1.10.0 1.12.0: Oslo test framework
 dev-python/osprofiler 0.3.0: OpenStack Profiler Library
 dev-python/pSQL 1.2.0 1.2.1: MySQL abstraction layer for python
-dev-python/packaging 15.3-r2 16.0 16.1: Core utilities for Python packages
+dev-python/packaging 15.3-r2 16.0 16.1 16.2: Core utilities for Python packages
 dev-python/paisley 0.3.1 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
 dev-python/pandas 0.16.2 0.17.0 0.17.1 9999: Powerful data structures for data analysis and statistics
 dev-python/paramiko 1.15.1-r1 1.16.0: SSH2 protocol library
