@@ -2172,7 +2172,7 @@ app-text/apvlv 0.1.5 0.1.5-r1: Alf's PDF Viewer Like Vim
 app-text/asa 1.1 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
 app-text/asciidoc 8.6.9-r1 8.6.9-r2 9999: AsciiDoc is a plain text human readable/writable document format
 app-text/aspell 0.60.6.1-r1 0.60.6.1-r2: A spell checker replacement for ispell
-app-text/atril 1.8.0 1.8.1 1.10.3: Atril document viewer for MATE
+app-text/atril 1.8.0 1.8.1 1.10.3-r1: Atril document viewer for MATE
 app-text/bact 0.13: Boosting Algorithm for Classification of Trees
 app-text/barcode 0.98-r1: barcode generator
 app-text/bdf2psf 1.104 1.113: Converter to generate console fonts from BDF source fonts
@@ -4632,7 +4632,7 @@ dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the 
 dev-libs/libg15render 1.2-r2 9999: Small library for display text and graphics on a Logitech G15 keyboard
 dev-libs/libgamin 0.1.10-r4 0.1.10-r5: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.10.1 0.11.1: Provides functionality for gaming input devices
-dev-libs/libgcrypt 1.5.4-r1 1.5.4-r100 1.6.3-r4 1.6.3-r5 1.6.4 1.6.5: General purpose crypto library based on the code used in GnuPG
+dev-libs/libgcrypt 1.5.4-r1 1.5.4-r2 1.5.4-r101 1.6.3-r4 1.6.3-r5 1.6.4 1.6.5: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.3 0.17.4 0.17.4-r1: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.7 0.6.8 0.14.0 0.16.1 0.18.0: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.20.0-r1 0.21.5 0.22.3 0.23.2-r1 0.23.3 0.23.4 9999: A linkable library for Git
@@ -4771,7 +4771,7 @@ dev-libs/libxr 1.0: Cross-platform XML-RPC client/server library written in C
 dev-libs/libxslt 1.1.28-r4 1.1.28-r5: XSLT libraries and tools
 dev-libs/libyaml 0.1.6: YAML 1.1 parser and emitter written in C
 dev-libs/libzeitgeist 0.3.18: Client library to interact with zeitgeist
-dev-libs/libzip 1.0.1 1.1: Library for manipulating zip archives
+dev-libs/libzip 1.0.1 1.1 1.1.1: Library for manipulating zip archives
 dev-libs/link-grammar 4.8.6: A Syntactic English parser
 dev-libs/lockdev 1.0.3.1.2-r2 1.0.3.1.2-r3: Library for locking devices
 dev-libs/log4c 1.2.1 1.2.4: Log4c is a library of C for flexible logging to files, syslog and other destinations
@@ -11638,7 +11638,7 @@ mail-mta/ssmtp 2.64-r2 2.64-r3: Extremely simple MTA to get mail off the system 
 mate-base/caja 1.8.1 1.8.2-r1 1.10.4: Caja file manager for the MATE desktop
 mate-base/libmatekbd 1.8.0 1.10.1: MATE keyboard configuration library
 mate-base/mate 1.8.0 1.10.0: Meta ebuild for MATE, a traditional desktop environment
-mate-base/mate-applets 1.8.0-r1 1.8.1 1.10.4: Applets for the MATE Desktop and Panel
+mate-base/mate-applets 1.8.0-r1 1.8.1 1.10.4-r1: Applets for the MATE Desktop and Panel
 mate-base/mate-applets-meta 1.10: Meta package for MATE panel applets
 mate-base/mate-common 1.8.0 1.10.0: Common files for development of MATE packages
 mate-base/mate-control-center 1.8.1 1.8.3 1.10.2: The MATE Desktop configuration tool
