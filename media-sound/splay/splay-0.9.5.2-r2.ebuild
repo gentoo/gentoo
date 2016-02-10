@@ -15,10 +15,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
+DEPEND="media-libs/id3lib"
+RDEPEND="${DEPEND}"
+
 PATCHES=(
 	"${FILESDIR}/${P}-external-id3lib.diff"
 	"${FILESDIR}/${P}-gcc43-2.patch"
-	"${FILESDIR}/${P}-modernize-cpp.patch"
+	"${FILESDIR}/${P}-fix-buildsystem.patch"
 )
 
 src_prepare() {
