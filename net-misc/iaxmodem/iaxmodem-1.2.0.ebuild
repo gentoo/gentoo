@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="5"
 
 inherit eutils toolchain-funcs multilib
 
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE=""
 
-RDEPEND="media-libs/tiff
+RDEPEND="media-libs/tiff:=
 	sys-process/procps"
 
 DEPEND="${RDEPEND}
@@ -71,13 +71,13 @@ src_compile() {
 
 src_install() {
 	cd "${S}/lib/libiax2"
-	emake DESTDIR="${D}" install || die "install libiax2 failed"
+	emake DESTDIR="${D}" install
 
 	cd "${S}/lib/spandsp"
-	emake DESTDIR="${D}" install || die "install spandsp failed"
+	emake DESTDIR="${D}" install
 
 	cd "${S}"
-	dosbin iaxmodem || die "install failed"
+	dosbin iaxmodem
 
 	# remove libiax and spandsp headers, we don't need them
 	rm -rf "${D}usr/include" "${D}usr/bin/iax-config"
