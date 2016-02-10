@@ -13260,7 +13260,7 @@ media-video/2mandvd 1.8.5: The successor of ManDVD
 media-video/aacskeys 0.4.0c-r2 0.4.0e: Decrypt keys from an AACS source (HD DVD / Blu-Ray)
 media-video/abby 0.4.8: GUI front-end for cclive and clive video extraction utilities
 media-video/acidrip 0.14-r4: A gtk-perl mplayer/mencoder frontend for ripping DVDs
-media-video/aegisub 3.0.4-r1 3.2.2 9999: Advanced subtitle editor
+media-video/aegisub 3.0.4-r1 3.2.2 3.2.2-r1 9999: Advanced subtitle editor
 media-video/alevt 1.6.2: Teletext viewer for X11
 media-video/aravis 0.1.14 0.1.15 9999: Library for video acquisition using Genicam cameras
 media-video/arista 0.9.7: An easy to use multimedia transcoder for the GNOME Desktop
