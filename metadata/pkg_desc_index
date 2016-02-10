@@ -7232,7 +7232,7 @@ dev-python/jsonpatch 1.9 1.11: Apply JSON-Patches according to http://tools.ietf
 dev-python/jsonpickle 0.8.0 0.9.1 0.9.2: Python library for serializing any arbitrary object graph into JSON
 dev-python/jsonpointer 1.7 1.9: Identify specific nodes in a JSON document (according to draft 08)
 dev-python/jsonrpclib 0_pre20110820-r1 0_pre20150305 9999: python implementation of the JSON-RPC spec (1.0 and 2.0)
-dev-python/jsonschema 2.3.0 2.4.0 2.5.1 2.5.1-r1: An implementation of JSON-Schema validation for Python
+dev-python/jsonschema 2.3.0 2.4.0 2.5.1-r2: An implementation of JSON-Schema validation for Python
 dev-python/jupyter 1.0.0: Jupyter metapackage. Install all the Jupyter components in one go
 dev-python/jupyter_client 4.1.1: Jupyter protocol implementation and client libraries
 dev-python/jupyter_console 4.0.3 4.1.0: A terminal-based console frontend for Jupyter kernels
@@ -13889,7 +13889,7 @@ net-fs/nfstest 1.0.2: Tools for testing either the NFS client or the NFS server
 net-fs/openafs 1.6.12-r1 1.6.14: The OpenAFS distributed file system
 net-fs/openafs-kernel 1.6.12-r1 1.6.14: The OpenAFS distributed file system kernel module
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
-net-fs/samba 3.5.21 3.5.22 3.6.25 4.2.7-r2 4.2.8 4.3.4-r1 4.4.0_rc2: Samba Suite Version 4
+net-fs/samba 3.5.21 3.5.22 3.6.25 4.2.7-r2 4.2.8 4.3.4-r1: Samba Suite Version 4
 net-fs/smbnetfs 0.5.3b 0.6.0 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/smbtatools 1.2.6: Tools for configuration and query of SMB Traffic Analyzer
