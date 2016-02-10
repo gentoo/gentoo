@@ -9,5 +9,5 @@ index 85955d1..1281ac2 100755
 -    local id = line:gsub('^.*/', ''):gsub('\.[a-z]+$', '')
 +    local id = line:gsub('^.*/', ''):gsub('%.[a-z]+$', '')
      out_cpp:write("const unsigned char " .. id .. "[] = {")
- 
+
      local len = 0
