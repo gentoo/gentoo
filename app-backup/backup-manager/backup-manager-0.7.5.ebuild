@@ -16,8 +16,7 @@ IUSE="doc"
 DEPEND="dev-lang/perl
 	sys-devel/gettext"
 
-RDEPEND="${DEPEND}
-	>=sys-apps/findutils-4.3.0"
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	unpack ${A}

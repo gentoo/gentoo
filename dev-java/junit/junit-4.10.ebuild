@@ -21,7 +21,6 @@ CDEPEND="dev-java/hamcrest-core:0"
 RDEPEND=">=virtual/jre-1.5
 	${CDEPEND}"
 DEPEND=">=virtual/jdk-1.5
-	userland_GNU? ( >=sys-apps/findutils-4.3 )
 	${CDEPEND}"
 
 S="${WORKDIR}/${PN}${PV}"

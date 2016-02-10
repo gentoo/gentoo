@@ -12,10 +12,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE=""
 
-DEPEND=">=sys-apps/sed-4.0.5
-	>=sys-apps/grep-2.4.2
-	>=sys-apps/findutils-4.1
-	virtual/cdrtools
+DEPEND="virtual/cdrtools
 	!app-backup/cdbkup"
 
 src_unpack() {
