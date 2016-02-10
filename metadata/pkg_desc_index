@@ -17082,7 +17082,7 @@ sys-libs/libaal 1.0.5 1.0.5-r1 1.0.6: library required by reiser4progs
 sys-libs/libacpi 0.2: A general purpose library for ACPI
 sys-libs/libapparmor 2.8.3 2.8.4 2.10: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.3 0.5.4 0.5.4-r1: library for the 1394 Trade Association AV/C (Audio/Video Control) Digital Interface Command Set
-sys-libs/libcap 2.22-r2 2.24-r2: POSIX 1003.1e capabilities
+sys-libs/libcap 2.22-r2 2.24-r2 2.25: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.6.6 0.7.3 0.7.4 0.7.5 0.7.6 0.7.7: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.0.2: Libchipcard is a library for easy access to chip cards via chip card readers (terminals)
 sys-libs/libcxx 3.7.0 3.7.1 9999: New implementation of the C++ standard library, targeting C++11
@@ -17146,7 +17146,7 @@ sys-libs/uid_wrapper 1.1.0 1.1.1 1.2.0: A wrapper to fake privilege separation
 sys-libs/zlib 1.2.8-r1: Standard (de)compression library
 sys-power/acpi 1.6 1.7: Displays information about ACPI devices
 sys-power/acpi_call 1.1.0 1.1.0-r1 9999: A kernel module that enables you to call ACPI methods
-sys-power/acpid 2.0.23 2.0.25: Daemon for Advanced Configuration and Power Interface
+sys-power/acpid 2.0.23 2.0.25 2.0.26: Daemon for Advanced Configuration and Power Interface
 sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a replacement for the apm tool
 sys-power/apcupsd 3.14.8-r2 3.14.12-r1 3.14.13: APC UPS daemon with integrated tcp/ip remote shutdown
 sys-power/athcool 0.3.12: small utility to toggle Powersaving mode for AMD Athlon/Duron processors
