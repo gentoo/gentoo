@@ -1,3 +1,6 @@
+http://devel.aegisub.org/ticket/1899
+http://devel.aegisub.org/ticket/1900
+
 diff --git a/configure.ac b/configure.ac
 index be657b0..fca48e0 100644
 --- a/configure.ac

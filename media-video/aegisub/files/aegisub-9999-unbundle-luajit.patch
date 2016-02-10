@@ -1,3 +1,5 @@
+http://devel.aegisub.org/ticket/1904
+
 diff --git a/Makefile.inc.in b/Makefile.inc.in
 index 5a52d25..6cd16f1 100644
 --- a/Makefile.inc.in
