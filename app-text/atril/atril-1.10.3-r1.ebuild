@@ -43,7 +43,7 @@ RDEPEND=">=app-text/poppler-0.16:0=[cairo]
 		virtual/tex-base:0
 		t1lib? ( >=media-libs/t1lib-5:5 )
 	)
-	epub? ( net-libs/webkit-gtk:2 )
+	epub? ( >=net-libs/webkit-gtk-2.4.3:2 )
 	gnome-keyring? ( >=app-crypt/libsecret-0.5:0 )
 	introspection? ( >=dev-libs/gobject-introspection-0.6:0 )
 	postscript? ( >=app-text/libspectre-0.2:0 )
@@ -87,6 +87,7 @@ src_configure() {
 		$(use_enable dbus) \
 		$(use_enable djvu) \
 		$(use_enable dvi) \
+		$(use_with epub webkit) \
 		$(use_with gnome-keyring keyring) \
 		$(use_enable introspection) \
 		$(use_enable caja) \

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.0-uscore.patch
 	"${FILESDIR}"/${PN}-multilib-syspath.patch
 	"${FILESDIR}"/${P}-clang-arm.patch
+	"${FILESDIR}"/${P}-CVE-2015-7511.patch
 )
 
 src_configure() {
