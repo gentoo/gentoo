@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (10 Feb 2016)
+# Old, no active or proxy maintainer, dead upstream
+# and nothing depends on it.
+# Masked for removal in 30 days.  See bug 573326
+dev-python/simplegui
+
 # Ian Stakenviciuus <axs@gentoo.org> (09 Feb 2016)
 # Mask until members of the project can test and unmask
 =net-fs/samba-4.4*
