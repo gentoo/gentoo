@@ -31,6 +31,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/libxml2-2.5:2
 	dev-python/pygobject:3
 	>=gnome-base/libgtop-2.11.92:2=
+	>=gnome-extra/gucharmap-2.32.1:0
 	>=mate-base/mate-desktop-1.10:0
 	>=mate-base/mate-panel-1.10:0
 	>=mate-base/mate-settings-daemon-1.10:0
