@@ -9,7 +9,7 @@ index 0b73bde..957c123 100644
 +++ b/aegisub/po/Makefile
 @@ -38,11 +38,13 @@ all: $(MO)
  	$(BIN_MSGFMT) -o $@ $<
- 
+
  install:
 +ifdef PO
  	@$(BIN_MKDIR) -p $(addsuffix /LC_MESSAGES/, $(addprefix $(DESTDIR)$(P_LOCALE)/, $(basename $(PO))))
@@ -18,6 +18,6 @@ index 0b73bde..957c123 100644
  		$(BIN_INSTALL) $$i.mo $(DESTDIR)$(P_LOCALE)/$$i/LC_MESSAGES/$(AEGISUB_CATALOG).mo; \
  	done
 +endif
- 
- 
+
+
  CLEANFILES = $(MO)
