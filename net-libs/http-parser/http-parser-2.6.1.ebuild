@@ -7,8 +7,8 @@ EAPI=5
 inherit eutils toolchain-funcs multilib multilib-minimal
 
 DESCRIPTION="Http request/response parser for C"
-HOMEPAGE="https://github.com/joyent/http-parser"
-SRC_URI="https://github.com/joyent/http-parser/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/nodejs/http-parser"
+SRC_URI="https://github.com/nodejs/http-parser/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
