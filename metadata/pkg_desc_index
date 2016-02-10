@@ -7809,7 +7809,7 @@ dev-python/pythong 2.1.5-r2: Nice and powerful spanish development environment f
 dev-python/pythonmagick 0.9.11 0.9.12: Python bindings for ImageMagick
 dev-python/pythonutils 0.4.0-r1: Voidspace Python modules
 dev-python/pytidylib 0.2.4: Python wrapper for HTML Tidy (tidylib)
-dev-python/pytools 2014.3.5 9999: A collection of tools missing from the Python standard library
+dev-python/pytools 2014.3.5 2016.1 9999: A collection of tools missing from the Python standard library
 dev-python/pytz 2015.4 2015.6 2015.7: World timezone definitions for Python
 dev-python/pyudev 0.16.1-r1: Python binding to libudev
 dev-python/pyusb 0.4.3 1.0.0_beta2: USB support for Python
@@ -14498,7 +14498,7 @@ net-misc/httptype 1.3.9-r1: Returns the http host software of a website
 net-misc/htun 0.9.6: Project to tunnel IP traffic over HTTP
 net-misc/hylafaxplus 5.5.4-r1 5.5.5: Enterprise client-server fax package for class 1 and 2 fax modems
 net-misc/i2pd 0.10.0 2.4.0: A C++ daemon for accessing the I2P anonymous network
-net-misc/iaxmodem 1.2.0: Software modem that uses an IAX channel instead of a traditional phone line
+net-misc/iaxmodem 1.2.0 1.3.0: Software modem that uses an IAX channel instead of a traditional phone line
 net-misc/icaclient 12.1.0 13.2.0.322243 13.2.1.328635 13.3.0.344519: ICA Client for Citrix Presentation servers
 net-misc/icecast 2.4.2 2.4.3: An opensource alternative to shoutcast that supports mp3, ogg (vorbis/theora) and aac streaming
 net-misc/ices 2.0.1-r1 2.0.2: Icecast OGG streaming client, supports on the fly re-encoding
@@ -14775,7 +14775,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/yaydl 1.5.2: Yet Another Youtube DownLoader which is downloading more than youtube
-net-misc/youtube-dl 2016.01.01 2016.01.29 2016.02.01 2016.02.10 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.01.01 2016.02.01 2016.02.10 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.1 3.1.9 3.2.0 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -18069,7 +18069,7 @@ x11-misc/bmpanel 0.9.27-r1: a lightweight, NETWM compliant panel for X11 Window 
 x11-misc/bumblebee 3.2.1: Service providing elegant and stable means of managing Optimus graphics chipsets
 x11-misc/cairo-clock 0.3.3 0.3.4: An analog clock displaying the system-time
 x11-misc/calise 0.4.2: Computes ambient brightness and sets screen's correct backlight using a webcam
-x11-misc/cbatticon 1.3.2 1.4.1 1.4.2 1.5.0: A lightweight and fast battery icon that sits in your system tray
+x11-misc/cbatticon 1.3.2 1.4.1 1.4.2 1.5.0 1.6.3: A lightweight and fast battery icon that sits in your system tray
 x11-misc/ccsm 0.8.4-r4 0.8.4-r5: Compizconfig Settings Manager
 x11-misc/cdm 0.5.3 0.6.1_pre20130419: The Console Display Manager
 x11-misc/chgres 0.1-r1: A very simple command line utility for changing X resolutions
