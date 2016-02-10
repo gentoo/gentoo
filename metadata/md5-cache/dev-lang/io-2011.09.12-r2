@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=clutter? ( media-libs/clutter ) dbi? ( dev-db/libdbi ) editline? ( dev-libs/libedit ) image? ( virtual/jpeg media-libs/tiff media-libs/libpng ) xmpp? ( net-libs/loudmouth ) libffi? ( virtual/libffi ) libxml2? ( dev-libs/libxml2 ) lzo? ( dev-libs/lzo ) ncurses? ( sys-libs/ncurses ) ogg? ( media-libs/libogg ) opengl? ( virtual/opengl ) pcre? ( dev-libs/libpcre ) postgres? ( dev-db/postgresql[server] ) readline? ( sys-libs/readline ) sndfile? ( media-libs/libsndfile ) sqlite? ( >=dev-db/sqlite-3.0.0 ) theora? ( media-libs/libtheora ) truetype? ( media-libs/freetype ) vorbis? ( media-libs/libvorbis ) zlib? ( sys-libs/zlib ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DEPEND=clutter? ( media-libs/clutter ) dbi? ( dev-db/libdbi ) editline? ( dev-libs/libedit ) image? ( virtual/jpeg media-libs/tiff media-libs/libpng ) xmpp? ( net-libs/loudmouth ) libffi? ( virtual/libffi ) libxml2? ( dev-libs/libxml2 ) lzo? ( dev-libs/lzo ) ncurses? ( sys-libs/ncurses ) ogg? ( media-libs/libogg ) opengl? ( virtual/opengl ) pcre? ( dev-libs/libpcre ) postgres? ( dev-db/postgresql[server] ) readline? ( sys-libs/readline ) sndfile? ( media-libs/libsndfile ) sqlite? ( >=dev-db/sqlite-3.0.0 ) theora? ( media-libs/libtheora ) truetype? ( media-libs/freetype ) vorbis? ( media-libs/libvorbis ) zlib? ( sys-libs/zlib ) sys-devel/make >=dev-util/cmake-2.8.12
 DESCRIPTION=Io is a small, prototype-based programming language
 EAPI=4
 HOMEPAGE=http://www.iolanguage.com
@@ -10,5 +10,5 @@ REQUIRED_USE=vorbis? ( ogg )
 SLOT=0
 SRC_URI=mirror://gentoo/io-2011.09.12.tar.gz https://dev.gentoo.org/~araujo/snapshots/io-2011.09.12.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
-_eclasses_=cmake-utils	3443785f3176b7cfdf7bd1f2c403bd9f	eutils	28fb3e5852485af1c348d446b0b98389	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	c67ce9708a9c02be2d296cf547740e9c	eutils	28fb3e5852485af1c348d446b0b98389	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=61f89c141274bbc36483e19bfc3b7dd7

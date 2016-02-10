@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=tbb? ( dev-cpp/tbb ) >=dev-libs/boost-1.49 papi? ( dev-libs/papi ) perftools? ( >=dev-util/google-perftools-1.7.1 ) >=sys-apps/hwloc-1.8 >=sys-libs/libunwind-1 sys-libs/zlib virtual/pkgconfig test? ( dev-lang/python ) doc? ( >=dev-libs/boost-1.56.0-r1[tools] ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) virtual/fortran
+DEPEND=tbb? ( dev-cpp/tbb ) >=dev-libs/boost-1.49 papi? ( dev-libs/papi ) perftools? ( >=dev-util/google-perftools-1.7.1 ) >=sys-apps/hwloc-1.8 >=sys-libs/libunwind-1 sys-libs/zlib virtual/pkgconfig test? ( dev-lang/python ) doc? ( >=dev-libs/boost-1.56.0-r1[tools] ) sys-devel/make >=dev-util/cmake-2.8.12 virtual/fortran
 DESCRIPTION=C++ runtime system for parallel and distributed applications
 EAPI=5
 HOMEPAGE=http://stellar.cct.lsu.edu/tag/hpx/
@@ -11,5 +11,5 @@ REQUIRED_USE=test? ( ^^ ( python_single_target_python2_7 python_single_target_py
 SLOT=0
 SRC_URI=http://stellar.cct.lsu.edu/files/hpx_0.9.10.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:- src_install:-
-_eclasses_=cmake-utils	3443785f3176b7cfdf7bd1f2c403bd9f	eutils	28fb3e5852485af1c348d446b0b98389	flag-o-matic	d270fa247153df66074f795fa42dba3e	fortran-2	49cf4293404403fe100eafdd9b84c940	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	c67ce9708a9c02be2d296cf547740e9c	eutils	28fb3e5852485af1c348d446b0b98389	flag-o-matic	d270fa247153df66074f795fa42dba3e	fortran-2	49cf4293404403fe100eafdd9b84c940	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=77097d95371d447c694d3397139fcef0

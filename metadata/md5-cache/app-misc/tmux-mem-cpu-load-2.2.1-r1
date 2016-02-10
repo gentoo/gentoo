@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DEPEND=sys-devel/make >=dev-util/cmake-2.8.12
 DESCRIPTION=CPU, RAM memory, and load monitor for use with tmux
 EAPI=5
 HOMEPAGE=https://github.com/thewtex/tmux-mem-cpu-load/
@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 SLOT=0
 SRC_URI=https://github.com/thewtex/tmux-mem-cpu-load/archive/v2.2.1.tar.gz -> tmux-mem-cpu-load-2.2.1.tar.gz
 _eclass_exported_funcs=src_prepare:cmake-utils src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:-
-_eclasses_=cmake-utils	3443785f3176b7cfdf7bd1f2c403bd9f	eutils	28fb3e5852485af1c348d446b0b98389	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	c67ce9708a9c02be2d296cf547740e9c	eutils	28fb3e5852485af1c348d446b0b98389	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=23faf88948b20e8760ded548837b0e4f
