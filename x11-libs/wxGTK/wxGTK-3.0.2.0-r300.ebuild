@@ -18,7 +18,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-
 IUSE="+X aqua doc debug gstreamer libnotify opengl sdl tiff webkit"
 
 WXSUBVERSION=${PV}-gtk3					# 3.0.2.0-gtk3
-WXVERSION=${WXSUBVERSION%.*}-gtk3		# 3.0.2-gtk3
+WXVERSION=${WXSUBVERSION%.*}			# 3.0.2
 WXRELEASE=${WXVERSION%.*}-gtk3			# 3.0-gtk3
 WXRELEASE_NODOT=${WXRELEASE//./}		# 30-gtk3
 
