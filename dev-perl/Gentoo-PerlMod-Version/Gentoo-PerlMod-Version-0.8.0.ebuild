@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Convert arbitrary Perl Modules' versions into normalised Gentoo versions"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
 RDEPEND="
