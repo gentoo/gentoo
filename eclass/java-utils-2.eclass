@@ -2352,62 +2352,54 @@ java-pkg_do_write_() {
 	java-pkg_init_paths_
 	# Create directory for package.env
 	dodir "${JAVA_PKG_SHAREPATH}"
-	if [[ -n "${JAVA_PKG_CLASSPATH}" || -n "${JAVA_PKG_LIBRARY}" || -f \
-			"${JAVA_PKG_DEPEND_FILE}" || -f \
-			"${JAVA_PKG_OPTIONAL_DEPEND_FILE}" ]]; then
-		# Create package.env
-		(
-			echo "DESCRIPTION=\"${DESCRIPTION}\""
-			echo "GENERATION=\"2\""
-			echo "SLOT=\"${SLOT}\""
-			echo "CATEGORY=\"${CATEGORY}\""
-			echo "PVR=\"${PVR}\""
 
-			[[ -n "${JAVA_PKG_CLASSPATH}" ]] && echo "CLASSPATH=\"${JAVA_PKG_CLASSPATH}\""
-			[[ -n "${JAVA_PKG_LIBRARY}" ]] && echo "LIBRARY_PATH=\"${JAVA_PKG_LIBRARY}\""
-			[[ -n "${JAVA_PROVIDE}" ]] && echo "PROVIDES=\"${JAVA_PROVIDE}\""
-			[[ -f "${JAVA_PKG_DEPEND_FILE}" ]] \
-				&& echo "DEPEND=\"$(sort -u "${JAVA_PKG_DEPEND_FILE}" | tr '\n' ':')\""
-			[[ -f "${JAVA_PKG_OPTIONAL_DEPEND_FILE}" ]] \
-				&& echo "OPTIONAL_DEPEND=\"$(sort -u "${JAVA_PKG_OPTIONAL_DEPEND_FILE}" | tr '\n' ':')\""
-			echo "VM=\"$(echo ${RDEPEND} ${DEPEND} | sed -e 's/ /\n/g' | sed -n -e '/virtual\/\(jre\|jdk\)/ { p;q }')\"" # TODO cleanup !
-			[[ -f "${JAVA_PKG_BUILD_DEPEND_FILE}" ]] \
-				&& echo "BUILD_DEPEND=\"$(sort -u "${JAVA_PKG_BUILD_DEPEND_FILE}" | tr '\n' ':')\""
-		) > "${JAVA_PKG_ENV}"
+	# Create package.env
+	(
+		echo "DESCRIPTION=\"${DESCRIPTION}\""
+		echo "GENERATION=\"2\""
+		echo "SLOT=\"${SLOT}\""
+		echo "CATEGORY=\"${CATEGORY}\""
+		echo "PVR=\"${PVR}\""
 
-		# register target/source
-		local target="$(java-pkg_get-target)"
-		local source="$(java-pkg_get-source)"
-		[[ -n ${target} ]] && echo "TARGET=\"${target}\"" >> "${JAVA_PKG_ENV}"
-		[[ -n ${source} ]] && echo "SOURCE=\"${source}\"" >> "${JAVA_PKG_ENV}"
+		[[ -n "${JAVA_PKG_CLASSPATH}" ]] && echo "CLASSPATH=\"${JAVA_PKG_CLASSPATH}\""
+		[[ -n "${JAVA_PKG_LIBRARY}" ]] && echo "LIBRARY_PATH=\"${JAVA_PKG_LIBRARY}\""
+		[[ -n "${JAVA_PROVIDE}" ]] && echo "PROVIDES=\"${JAVA_PROVIDE}\""
+		[[ -f "${JAVA_PKG_DEPEND_FILE}" ]] \
+			&& echo "DEPEND=\"$(sort -u "${JAVA_PKG_DEPEND_FILE}" | tr '\n' ':')\""
+		[[ -f "${JAVA_PKG_OPTIONAL_DEPEND_FILE}" ]] \
+			&& echo "OPTIONAL_DEPEND=\"$(sort -u "${JAVA_PKG_OPTIONAL_DEPEND_FILE}" | tr '\n' ':')\""
+		echo "VM=\"$(echo ${RDEPEND} ${DEPEND} | sed -e 's/ /\n/g' | sed -n -e '/virtual\/\(jre\|jdk\)/ { p;q }')\"" # TODO cleanup !
+		[[ -f "${JAVA_PKG_BUILD_DEPEND_FILE}" ]] \
+			&& echo "BUILD_DEPEND=\"$(sort -u "${JAVA_PKG_BUILD_DEPEND_FILE}" | tr '\n' ':')\""
+	) > "${JAVA_PKG_ENV}"
 
-		# register javadoc info
-		[[ -n ${JAVADOC_PATH} ]] && echo "JAVADOC_PATH=\"${JAVADOC_PATH}\"" \
-			>> ${JAVA_PKG_ENV}
-		# register source archives
-		[[ -n ${JAVA_SOURCES} ]] && echo "JAVA_SOURCES=\"${JAVA_SOURCES}\"" \
-			>> ${JAVA_PKG_ENV}
+	# register target/source
+	local target="$(java-pkg_get-target)"
+	local source="$(java-pkg_get-source)"
+	[[ -n ${target} ]] && echo "TARGET=\"${target}\"" >> "${JAVA_PKG_ENV}"
+	[[ -n ${source} ]] && echo "SOURCE=\"${source}\"" >> "${JAVA_PKG_ENV}"
 
+	# register javadoc info
+	[[ -n ${JAVADOC_PATH} ]] && echo "JAVADOC_PATH=\"${JAVADOC_PATH}\"" \
+		>> ${JAVA_PKG_ENV}
+	# register source archives
+	[[ -n ${JAVA_SOURCES} ]] && echo "JAVA_SOURCES=\"${JAVA_SOURCES}\"" \
+		>> ${JAVA_PKG_ENV}
 
-		echo "MERGE_VM=\"${GENTOO_VM}\"" >> "${JAVA_PKG_ENV}"
-		[[ -n ${GENTOO_COMPILER} ]] && echo "MERGE_COMPILER=\"${GENTOO_COMPILER}\"" >> "${JAVA_PKG_ENV}"
+	echo "MERGE_VM=\"${GENTOO_VM}\"" >> "${JAVA_PKG_ENV}"
+	[[ -n ${GENTOO_COMPILER} ]] && echo "MERGE_COMPILER=\"${GENTOO_COMPILER}\"" >> "${JAVA_PKG_ENV}"
 
-		# extra env variables
-		if [[ -n "${JAVA_PKG_EXTRA_ENV_VARS}" ]]; then
-			cat "${JAVA_PKG_EXTRA_ENV}" >> "${JAVA_PKG_ENV}" || die
-			# nested echo to remove leading/trailing spaces
-			echo "ENV_VARS=\"$(echo ${JAVA_PKG_EXTRA_ENV_VARS})\"" \
-				>> "${JAVA_PKG_ENV}" || die
-		fi
-
-		# Strip unnecessary leading and trailing colons
-		# TODO try to cleanup if possible
-		sed -e "s/=\":/=\"/" -e "s/:\"$/\"/" -i "${JAVA_PKG_ENV}" || die "Did you forget to call java_init ?"
-	else
-		debug-print "JAVA_PKG_CLASSPATH, JAVA_PKG_LIBRARY, JAVA_PKG_DEPEND_FILE"
-		debug-print "or JAVA_PKG_OPTIONAL_DEPEND_FILE not defined so can't"
-		debug-print "write package.env."
+	# extra env variables
+	if [[ -n "${JAVA_PKG_EXTRA_ENV_VARS}" ]]; then
+		cat "${JAVA_PKG_EXTRA_ENV}" >> "${JAVA_PKG_ENV}" || die
+		# nested echo to remove leading/trailing spaces
+		echo "ENV_VARS=\"$(echo ${JAVA_PKG_EXTRA_ENV_VARS})\"" \
+			>> "${JAVA_PKG_ENV}" || die
 	fi
+
+	# Strip unnecessary leading and trailing colons
+	# TODO try to cleanup if possible
+	sed -e "s/=\":/=\"/" -e "s/:\"$/\"/" -i "${JAVA_PKG_ENV}" || die "Did you forget to call java_init ?"
 }
 
 # @FUNCTION: java-pkg_record-jar_
