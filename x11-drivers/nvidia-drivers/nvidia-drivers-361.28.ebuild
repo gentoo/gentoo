@@ -419,7 +419,7 @@ src_install-libs() {
 		NV_GLX_LIBRARIES=(
 			"libEGL.so.1 ${GL_ROOT}"
 			"libEGL_nvidia.so.${NV_SOVER} ${GL_ROOT}"
-			"libGL.so.1 ${GL_ROOT}"
+			"libGL.so.1.0.0 ${GL_ROOT}"
 			"libGLESv1_CM.so.1 ${GL_ROOT}"
 			"libGLESv1_CM_nvidia.so.${NV_SOVER} ${GL_ROOT}"
 			"libGLESv2.so.2 ${GL_ROOT}"
