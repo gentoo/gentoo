@@ -11,6 +11,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">joyent/http-parser</remote-id>
+		<remote-id type="github">nodejs/http-parser</remote-id>
 	</upstream>
 </pkgmetadata>
