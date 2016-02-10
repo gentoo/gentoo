@@ -2203,6 +2203,7 @@ dev-ml/lwt:react - Enables support for dev-ml/react: Functional reactive program
 dev-ml/ocaml-cstruct:async - Support for asynchronous execution
 dev-ml/ocaml-cstruct:camlp4 - Enable support for camlp4
 dev-ml/ocaml-cstruct:lwt - Enable threads via lwt
+dev-ml/ocaml-cstruct:ppx - Enable the ppx syntax extension
 dev-ml/ocaml-dns:async - support for asynchronous execution
 dev-ml/ocaml-dns:lwt - enable threads via lwt
 dev-ml/ocaml-redis:lwt - Enable lwt bindings for asynchronous processing.
