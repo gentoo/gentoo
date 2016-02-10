@@ -29,8 +29,7 @@ RDEPEND="bzip2? ( app-arch/bzip2 )
 	libedit? ( dev-libs/libedit )
 	readline? ( sys-libs/readline )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	userland_GNU? ( >=sys-apps/findutils-4.4.0 )"
+	virtual/pkgconfig"
 RDEPEND="${RDEPEND}
 	abi_x86_32? (
 		!<=app-emulation/emul-linux-x86-baselibs-20131008-r2
