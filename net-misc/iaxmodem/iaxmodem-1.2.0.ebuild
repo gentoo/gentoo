@@ -19,68 +19,66 @@ IUSE=""
 RDEPEND="media-libs/tiff:=
 	sys-process/procps"
 
-DEPEND="${RDEPEND}
-	sys-apps/sed"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	# fix header file position
-	sed -i -e 's:iax/iax-client\.h:iax-client.h:g' iaxmodem.c
+	sed -i -e 's:iax/iax-client\.h:iax-client.h:g' iaxmodem.c || die
 
 	# fix broken line terminators
-	sed -i -e 's:\r::g' -e 's:--s$:--:g' -e 's:$:\r:g' iaxmodem.inf
+	sed -i -e 's:\r::g' -e 's:--s$:--:g' -e 's:$:\r:g' iaxmodem.inf || die
 
 	# fix installation of libiax2 headers (though we don't need them)
-	sed -i -e 's: \(\$(includedir)/\): $(DESTDIR)\1:g' lib/libiax2/src/Makefile.in
+	sed -i -e 's: \(\$(includedir)/\): $(DESTDIR)\1:g' lib/libiax2/src/Makefile.in || die
 
 	# patch configure (we compile libs for ourself)
-	sed -i -e 's:^\(cd\|./configure\):# \1:g' configure
-	sed -i -e 's:build-libiax build-libspandsp ::g' Makefile.in
+	sed -i -e 's:^\(cd\|./configure\):# \1:g' configure || die
+	sed -i -e 's:build-libiax build-libspandsp ::g' Makefile.in || die
 
 	# fix dumb x86_64 libdir handling
-	sed -i -e 's: \(x86_64-\*)\): _DISABLED_\1:g' lib/spandsp/configure
+	sed -i -e 's: \(x86_64-\*)\): _DISABLED_\1:g' lib/spandsp/configure || die
 }
 
 src_configure() {
-	cd "${S}/lib/libiax2"
+	cd "${S}/lib/libiax2" || die
 	econf --disable-static \
 		--libdir=/usr/$(get_libdir)/iaxmodem \
-		--datadir=/usr/share/iaxmodem/libiax2 || die "econf libiax2 failed"
+		--datadir=/usr/share/iaxmodem/libiax2
 
-	cd "${S}/lib/spandsp"
+	cd "${S}/lib/spandsp" || die
 	econf --disable-static \
 		--libdir=/usr/$(get_libdir)/iaxmodem \
-		--datadir=/usr/share/iaxmodem || die "econf spandsp failed"
+		--datadir=/usr/share/iaxmodem
 
 	cd "${S}"
-	./configure || die "configure iaxmodem failed"
+	./configure || die "configure iaxmodem failed" || die
 }
 
 src_compile() {
-	cd "${S}/lib/libiax2"
-	emake || die "emake libiax2 failed"
+	cd "${S}/lib/libiax2" || die
+	emake
 
-	cd "${S}/lib/spandsp"
-	emake || die "emake spandsp failed"
+	cd "${S}/lib/spandsp" || die
+	emake
 
 	cd "${S}"
 	emake OBJS="iaxmodem.o" CC=$(tc-getCC) \
 		LDFLAGS="${LDFLAGS} -Wl,-rpath,/usr/$(get_libdir)/iaxmodem \
-			-Llib/spandsp/src/.libs -Llib/libiax2/src/.libs -lm -lutil -ltiff -lspandsp -liax" \
-	|| die "emake iaxmodem failed"
+			-Llib/spandsp/src/.libs -Llib/libiax2/src/.libs -lm -lutil -ltiff -lspandsp -liax"
 }
 
 src_install() {
-	cd "${S}/lib/libiax2"
+	cd "${S}/lib/libiax2" || die
 	emake DESTDIR="${D}" install
 
-	cd "${S}/lib/spandsp"
+	cd "${S}/lib/spandsp" || die
 	emake DESTDIR="${D}" install
 
 	cd "${S}"
 	dosbin iaxmodem
 
 	# remove libiax and spandsp headers, we don't need them
-	rm -rf "${D}usr/include" "${D}usr/bin/iax-config"
+	rm -rf "${D}usr/include" "${D}usr/bin/iax-config" || die
 
 	# install init-script + conf
 	newinitd "${FILESDIR}/iaxmodem.initd" iaxmodem
