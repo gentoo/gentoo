@@ -3105,6 +3105,7 @@ dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
 dev-games/tiled 0.12.3 0.14.2 0.15.0 0.15.1: A general purpose tile map editor
 dev-games/vamos 0.7.1: an automotive simulation framework
 dev-games/wfmath 1.0.1 1.0.2: Worldforge math library
+dev-go/bee 1.4.1_p20160125: A tool for helping develop with beego app framework
 dev-go/beego 1.6.0_p20160126: High-performance web framework for Go
 dev-go/blackfriday 1.2_p20150720 9999: a markdown processor implemented in Go
 dev-go/go-colortext 0_pre20150720: Change the console foreground and background colors
@@ -14091,7 +14092,7 @@ net-libs/gupnp-av 0.12.6 0.12.7: Utility library aiming to ease the handling UPn
 net-libs/gupnp-igd 0.2.2-r1 0.2.3-r1 0.2.4: Library to handle UPnP IGD port mapping for GUPnP
 net-libs/gupnp-ui 0.1.1: Collection of simple GTK+ widgets on top of GUPnP
 net-libs/h323plus 1.25.0-r1 1.25.0-r2: Open Source implementation of the ITU H.323 teleconferencing protocol, successor to OpenH323
-net-libs/http-parser 2.3 2.4.1 2.4.2 2.5.0 2.6.0: Http request/response parser for C
+net-libs/http-parser 2.3 2.4.1 2.4.2 2.5.0 2.6.1: Http request/response parser for C
 net-libs/hubbub 0.1.2 0.1.2-r1: HTML5 compliant parsing library, written in C
 net-libs/iax 0.2.2 0.2.2-r1 0.2.2-r3: IAX (Inter Asterisk eXchange) Library
 net-libs/ignition-transport 0.7.0 0.9.0-r1 1.0.1: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
