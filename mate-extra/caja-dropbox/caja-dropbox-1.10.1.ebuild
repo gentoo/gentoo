@@ -58,7 +58,7 @@ src_prepare() {
 			-i caja-dropbox.in || die
 
 	# Use system rst2man.
-	epatch "${FILESDIR}"/${P}-system-rst2man.patch
+	epatch "${FILESDIR}"/${PN}-1.8.0-system-rst2man.patch
 
 	AT_NOELIBTOOLIZE=yes eautoreconf
 }

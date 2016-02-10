@@ -1,3 +1,35 @@
+* Remove completely broken Qt handling, dating back to Qt3 days
+* Fix ancient C++ includes using '.h' suffixes
+* Fix warnings caused by not using 'const char*'
+
+--- splay-0.9.5.2/apps/Makefile.am
++++ splay-0.9.5.2/apps/Makefile.am
+@@ -1,4 +1,4 @@
+-bin_PROGRAMS = splay @XSPLAY@
++bin_PROGRAMS = splay
+ EXTRA_PROGRAMS =xsplay
+ splay_SOURCES =  common.cc splay.cc splay.h
+ xsplay_SOURCES = xsplay.cc functions.cc \
+@@ -17,7 +17,7 @@
+ INCLUDES = -I../libs  -I/usr/include/qt
+ xsplay_LDADD=-lqt $(LDADD)
+ 
+-man_MANS = splay.1 xsplay.1
++man_MANS = splay.1
+ EXTRA_DIST = $(man_MANS)
+ 
+ 
+--- splay-0.9.5.2/configure.ac
++++ splay-0.9.5.2/configure.ac
+@@ -15,7 +15,7 @@
+ AC_CHECK_LIB(id3, ID3Tag_New)
+ AC_CHECK_LIB(m, cos)
+ AC_CHECK_LIB(pthread,main,INCLUDEPTHREAD=1)
+-AC_CHECK_LIB(qt, main,XSPLAY=xsplay)
++
+ 
+ if test "$INCLUDEPTHREAD" = 1; then
+ 	LIBS="$LIBS -lpthread"
 --- splay-0.9.5.2/apps/common.cc
 +++ splay-0.9.5.2/apps/common.cc
 @@ -34,7 +34,7 @@
