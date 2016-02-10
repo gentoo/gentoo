@@ -149,8 +149,6 @@ if [[ ${PN} != cmake ]]; then
 	CMAKEDEPEND+=" >=dev-util/cmake-${CMAKE_MIN_VERSION}"
 fi
 
-CMAKEDEPEND+=" userland_GNU? ( >=sys-apps/findutils-4.4.0 )"
-
 [[ ${WANT_CMAKE} = always ]] || CMAKEDEPEND+=" )"
 
 DEPEND="${CMAKEDEPEND}"
