@@ -18,7 +18,7 @@ EGIT_REPO_URI="git://github.com/Aegisub/Aegisub.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="alsa debug +ffmpeg +fftw openal oss portaudio pulseaudio spell"
+IUSE="alsa debug +ffmpeg +fftw openal oss portaudio pulseaudio spell +uchardet"
 
 # configure.ac specifies minimal versions for some of the dependencies below.
 # However, most of these minimal versions date back to 2006-2010 yy.
@@ -43,6 +43,7 @@ RDEPEND="
 	fftw? ( >=sci-libs/fftw-3.3:= )
 
 	spell? ( app-text/hunspell )
+	uchardet? ( dev-libs/uchardet )
 "
 DEPEND="${RDEPEND}
 	oss? ( virtual/os-headers )
@@ -96,6 +97,7 @@ src_configure() {
 		$(use_with portaudio)
 		$(use_with pulseaudio libpulse)
 		$(use_with spell hunspell)
+		$(use_with uchardet)
 	)
 	autotools-utils_src_configure
 }
