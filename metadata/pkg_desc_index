@@ -13160,7 +13160,7 @@ media-sound/soundkonverter 2.1.2: Frontend to various audio converters
 media-sound/sox 14.4.1 14.4.2: The swiss army knife of sound processing programs
 media-sound/specimen 0.5.2_rc3-r1 0.5.2_rc3-r2: A Midi Controllable Audio Sampler
 media-sound/spek 0.8.3 0.8.3-r1: Analyse your audio files by showing their spectrogram
-media-sound/splay 0.9.5.2 0.9.5.2-r1: An audio player, primarily for the console
+media-sound/splay 0.9.5.2 0.9.5.2-r2: An audio player, primarily for the console
 media-sound/split2flac 0.1_pre20111110-r2 113_p20131017 114 115 9999: sh script to split one big APE/FLAC/WV/WAV audio image with CUE sheet into tracks
 media-sound/spotify 0.9.17.1-r1 1.0.19.106-r1: Spotify is a social music platform
 media-sound/squeezeslave 1.1_p365 1.1_p381: A lightweight streaming audio player for Logitech Media Server
