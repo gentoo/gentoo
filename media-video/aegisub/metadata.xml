@@ -13,6 +13,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="uchardet">Enable charset discovery via <pkg>dev-libs/uchardet</pkg></flag>
+	</use>
 	<upstream>
 		<remote-id type="github">Aegisub/Aegisub</remote-id>
 	</upstream>
