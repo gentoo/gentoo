@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,12 +15,17 @@ SRC_URI="https://dev.gentoo.org/~ercpe/distfiles/${CATEGORY}/${PN}/${P}.tar.bz2"
 LICENSE="Apache-2.0"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND=">=virtual/jdk-1.6
-	test? ( dev-java/junit:4 )"
-RDEPEND=">=virtual/jre-1.6"
+DEPEND="
+	>=virtual/jdk-1.6
+	test? (
+		dev-java/junit:4
+	)"
+
+RDEPEND="
+	>=virtual/jre-1.6"
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
 EANT_TEST_GENTOO_CLASSPATH="junit-4"
