@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+
+<project name="Plastic" default="jar" basedir=".">
+   
+   <!-- This is a customized build.xml for portage! -->
+   <!--
+      <property file="${basedir}/build.properties"/>
+      <property file="${basedir}/default.properties"/>
+   -->
+
+   <property name="build" value="${basedir}/build"/>
+
+   <property name="spec.title" value="JGoodies Looks"/>
+   <property name="spec.version" value="1.2"/>
+   <property name="spec.vendor" value="Apache Software Foundation"/>
+   <property name="imp.title" value="com.jgoodies.plaf"/>
+   <property name="imp.version" value="1.2.2"/>
+   <property name="imp.vendor" value="Apache Software Foundation"/>
+
+   <property name="plaf.src" value="${basedir}/com/jgoodies/plaf"/>
+   <property name="clearlook.src" value="${basedir}/com/jgoodies/clearlook"/>
+
+   <property name="clearlook.javadoc" value="${build}/doc/clearlook"/>
+   <property name="clearlook.packages" value="com.jgoodies.clearlook.*"/>
+
+   <property name="plastic.javadoc" value="${build}/doc/plastic"/>
+   <property name="plastic.packages" value="com.jgoodies.clearlook.*"/>
+   
+   <target name="init">
+      <tstamp />
+      <mkdir dir="${build}"/>
+      <mkdir dir="${build}/doc"/>
+   </target>
+
+   <target name="manifest" depends="init">
+      <manifest file="MANIFEST.MF" mode="update">
+         <attribute name="Built-By" value="Gentoo Portage"/>
+
+         <section name="com/jgoodies/plaf">
+            <attribute name="Specification-Title" value="${spec.title}"/>
+            <attribute name="Specification-Version" value="${spec.version}"/>
+            <attribute name="Specification-Vendor" value="${spec.vendor}"/>
+            <attribute name="Implementation-Title" value="${imp.title}"/>
+            <attribute name="Implementation-Version" value="${imp.version}"/>
+            <attribute name="Implementation-Vendor" value="${imp.vendor}"/>
+         </section>
+      </manifest>
+   </target>
+   
+   <target name="compile" depends="init">
+      <javac srcdir="${plaf.src};${clearlook.src}"
+             destdir="${build}"
+             source="1.4"
+             target="1.4"/>
+      
+      <!--
+         Copy application resources
+         NOTE: THIS MAY NEED TO BE CHANGED IN FUTURE VERSIONS!!
+      -->
+      <copy toDir="${build}/com/jgoodies/plaf">
+         <fileset dir="${plaf.src}" excludes="**/*.java"/>
+      </copy>
+   </target>
+
+   <target name="javadoc" depends="compile">
+      <javadoc sourcepath="${basedir}"
+               destdir="${clearlook.javadoc}"
+               packagenames="${clearlook.packages}"/>
+      <javadoc sourcepath="${basedir}"
+               destdir="${plastic.javadoc}"
+               packagenames="${plastic.packages}"/>
+   </target>
+
+   <target name="jar" depends="compile,manifest">
+      <jar jarfile="looks.jar" manifest="MANIFEST.MF">
+         <fileset dir="${build}"/>
+         <zipfileset dir="${basedir}"
+                     includes="plastic.txt"
+                     fullpath="META-INF/services/javax.swing.LookAndFeel"/>
+      </jar>
+   </target>
+
+</project>
