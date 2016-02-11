@@ -14,7 +14,7 @@ HOMEPAGE="http://quassel-irc.org/"
 [[ "${PV}" == "9999" ]] || SRC_URI="http://quassel-irc.org/pub/${P}.tar.bz2"
 
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~sparc-solaris"
+KEYWORDS="amd64 ~arm ~ppc ~x86 ~amd64-linux ~sparc-solaris"
 SLOT="0"
 IUSE="ayatana crypt dbus debug kde monolithic phonon postgres qt5 +server +ssl syslog webkit X"
 
