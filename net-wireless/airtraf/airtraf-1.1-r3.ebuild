@@ -15,7 +15,7 @@ KEYWORDS="amd64 ppc x86"
 
 RDEPEND="
 	net-libs/libpcap
-	sys-libs/ncurses
+	sys-libs/ncurses:=
 "
 DEPEND="
 	${RDEPEND}
