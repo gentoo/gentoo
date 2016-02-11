@@ -1,0 +1,61 @@
+--- build.xml.orig	2006-10-12 23:54:26.000000000 +0200
++++ build.xml	2006-10-12 23:57:36.000000000 +0200
+@@ -100,7 +100,6 @@
+ 			srcdir       ="${src.core.dir}"
+ 			destdir      ="${build.core.dir}"
+         	encoding     ="${build.encoding}"
+-        	executable   ="${build.compile.executable}"
+         	fork         ="${build.compile.fork}"
+ 			debug        ="${build.compile.debug}"
+ 			depend       ="${build.compile.depend}"
+@@ -109,8 +108,7 @@
+ 			optimize     ="${build.compile.optimize}"
+             source       ="${build.compile.source}"
+ 			target       ="${build.compile.target}"
+-			verbose      ="${build.compile.verbose}"
+-			bootclasspath="${build.boot.classpath}" />
++			verbose      ="${build.compile.verbose}"/>
+ 
+ 		<copy toDir="${build.core.dir}" >
+ 			<fileset dir="${src.core.dir}" 
+@@ -127,7 +125,6 @@
+ 			srcdir       ="${src.demo.dir}" 
+ 			destdir      ="${build.demo.dir}"
+         	encoding     ="${build.encoding}"
+-        	executable   ="${build.compile.executable}"
+         	fork         ="${build.compile.fork}"
+ 			debug        ="${build.compile.debug}"
+ 			depend       ="${build.compile.depend}"
+@@ -137,7 +134,6 @@
+             source       ="${build.compile.source}"
+ 			target       ="${build.compile.target}"
+ 			verbose      ="${build.compile.verbose}"
+-			bootclasspath="${build.boot.classpath}" 
+ 		    classpathref ="classpath.demo" />
+ 	</target>
+ 
+@@ -149,7 +145,6 @@
+             srcdir       ="${src.test.dir}" 
+             destdir      ="${build.test.dir}"
+             encoding     ="${build.encoding}"
+-            executable   ="${build.compile.executable}"
+             fork         ="${build.compile.fork}"
+             debug        ="${build.compile.debug}"
+             depend       ="${build.compile.depend}"
+@@ -159,7 +154,6 @@
+             source       ="${build.compile.source}"
+             target       ="${build.compile.target}"
+             verbose      ="${build.compile.verbose}"
+-            bootclasspath="${build.boot.classpath}"
+             classpathref ="classpath.tests" />
+     </target>   
+     
+@@ -235,7 +229,7 @@
+ 	</target>
+ 	
+     <!-- ***************************************************************** -->
+-	<target name="jar-all" depends="compile, manifest"
++	<target name="jar-all" depends="compile-core, manifest"
+ 	        description="Creates the library jar with all JGoodies l&amp;fs." >
+ 
+ 		<jar 
