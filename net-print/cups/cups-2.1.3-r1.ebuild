@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -148,9 +148,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch ${PATCHES[@]}
-
-	epatch_user
+	default
 
 	# Remove ".SILENT" rule for verbose output (bug 524338).
 	sed 's#^.SILENT:##g' -i "${S}"/Makedefs.in || die "sed failed"
@@ -259,7 +257,7 @@ multilib_src_install_all() {
 	use zeroconf && neededservices+=" avahi-daemon"
 	use dbus && neededservices+=" dbus"
 	[[ -n ${neededservices} ]] && neededservices="need${neededservices}"
-	cp "${FILESDIR}"/cupsd.init.d-r1 "${T}"/cupsd || die
+	cp "${FILESDIR}"/cupsd.init.d-r2 "${T}"/cupsd || die
 	sed -i \
 		-e "s/@neededservices@/$neededservices/" \
 		"${T}"/cupsd || die
@@ -294,7 +292,7 @@ multilib_src_install_all() {
 	# create /etc/cups/client.conf, bug #196967 and #266678
 	echo "ServerName ${EPREFIX}/run/cups/cups.sock" >> "${ED}"/etc/cups/client.conf
 
-	# the following file iw now provided by cups-filters:
+	# the following file is now provided by cups-filters:
 	rm -r "${ED}"/usr/share/cups/banners || die
 
 	# the following are created by the init script
