@@ -5,11 +5,8 @@
 <!ATTLIST catmetadata pkgname CDATA "">
 
 <!-- Metadata for a package -->
-<!ELEMENT pkgmetadata ( (herd|maintainer|natural-name|longdescription|slots|use|upstream)* )>
+<!ELEMENT pkgmetadata ( (maintainer|natural-name|longdescription|slots|use|upstream)* )>
 <!ATTLIST pkgmetadata pkgname CDATA "">
-
-  <!-- One tag for each herd this package is assigned to. -->
-  <!ELEMENT herd (#PCDATA)>
 
   <!-- One tag for each maintainer of a package, multiple allowed-->
   <!ELEMENT maintainer ( email, (description| name)* )>
@@ -103,7 +100,6 @@
   
   For required tags, there must be either an unrestricted version, or a 
   version that is default restricted. -->
-  <!ATTLIST herd restrict CDATA #IMPLIED >
   <!ATTLIST maintainer restrict CDATA #IMPLIED >
   <!ATTLIST longdescription restrict CDATA #IMPLIED >
   <!ATTLIST flag restrict CDATA #IMPLIED >
