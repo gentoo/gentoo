@@ -4,16 +4,15 @@
 
 EAPI=6
 
-inherit autotools eutils git-r3
+inherit autotools eutils
 
 DESCRIPTION="iscsi client library and utilities"
 HOMEPAGE="https://github.com/sahlberg/libiscsi"
-SRC_URI=""
-EGIT_REPO_URI="git://github.com/sahlberg/libiscsi.git"
+SRC_URI="https://github.com/sahlberg/libiscsi/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2 LGPL-2"
-KEYWORDS=""
+KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
 IUSE="static-libs"
 
 RDEPEND="dev-libs/libgcrypt:0="
