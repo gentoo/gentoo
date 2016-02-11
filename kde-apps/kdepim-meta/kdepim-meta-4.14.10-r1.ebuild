@@ -18,7 +18,10 @@ RDEPEND="
 	$(add_kdeapps_dep kabcclient '' ${PV})
 	$(add_kdeapps_dep kaddressbook '' ${PV})
 	$(add_kdeapps_dep kalarm '' ${PV})
-	$(add_kdeapps_dep kdepim-icons '' ${PV})
+	|| (
+		$(add_kdeapps_dep kdepim-icons)
+		>=kde-frameworks/oxygen-icons-5.19.0:5
+	)
 	$(add_kdeapps_dep kdepim-kresources '' ${PV})
 	$(add_kdeapps_dep kdepim-runtime '' ${PV})
 	$(add_kdeapps_dep kjots '' ${PV})
