@@ -16,6 +16,7 @@ SRC_URI="${ARCHIVE_URI}"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
+DEPEND="dev-go/go-tools:="
 
 src_compile() {
 	# Create a writable GOROOT in order to avoid sandbox violations.
