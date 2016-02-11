@@ -10322,7 +10322,7 @@ games-fps/xonotic 0.8.1: Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an 
 games-kids/childsplay 0.90.2-r1: A suite of educational games for young children
 games-kids/crayon-physics 55: 2D physics puzzle/sandbox game with drawing
 games-kids/cubetest 0.9.4: A program to train your spatial insight
-games-kids/gcompris 14.12 15.02: full featured educational application for children from 2 to 10
+games-kids/gcompris 14.12 15.02 15.10: full featured educational application for children from 2 to 10
 games-kids/gmult 8.0: Multiplication Puzzle is a simple GTK+ 2 game that emulates the multiplication game found in Emacs
 games-kids/lletters 0.1.95-r2: Game that helps young kids learn their letters and numbers
 games-kids/memonix 1.6: Brain teasers, puzzle and memory games for kid's in one pack
@@ -10547,7 +10547,7 @@ games-roguelike/scourge 0.21.1: A graphical rogue-like adventure game
 games-roguelike/slashem 0.0.772: Super Lotsa Added Stuff Hack - Extended Magic. A Nethack Variant
 games-roguelike/stone-soup 0.14.2-r1 0.16.2: Dungeon Crawl Stone Soup is a role-playing roguelike game of exploration and treasure-hunting in dungeons
 games-roguelike/tome 2.3.5: save the world from Morgoth and battle evil (or become evil ;])
-games-roguelike/tomenet 4.6.0: A MMORPG based on the works of J.R.R. Tolkien
+games-roguelike/tomenet 4.6.0 4.6.1a: A MMORPG based on the works of J.R.R. Tolkien
 games-roguelike/wrogue 0.8.0b: Gothic science fantasy roguelike game
 games-roguelike/zangband 2.7.4c: An enhanced version of the Roguelike game Angband
 games-rpg/a-bird-story 20141106: Indie adventure short of a boy's memories, dream, and imagination
