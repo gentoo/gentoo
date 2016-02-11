@@ -12829,7 +12829,7 @@ media-sound/abcde 2.5.4-r1 2.6 2.7: A command line CD encoder
 media-sound/abcm2ps 6.6.22 8.5.2 8.8.3 8.8.4: A program to convert abc files to Postscript files
 media-sound/abcmidi 2014.12.25 2015.02.22 2015.08.25: Programs for processing ABC music notation files
 media-sound/adplay 1.7: A console player for AdLib music
-media-sound/aeolus 0.8.1 0.8.4 0.9.0: A synthesised pipe organ emulator
+media-sound/aeolus 0.9.0: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.1.3 0.2.0: Basic decoder for Apple Lossless Audio Codec files (ALAC)
 media-sound/alsa-tools 1.0.27-r1 1.0.28 1.0.29 1.1.0: Advanced Linux Sound Architecture tools
 media-sound/alsa-utils 1.0.27.2 1.0.28 1.0.28-r1 1.0.29 1.1.0: Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)
@@ -12863,7 +12863,7 @@ media-sound/bempc 0.11: Qt4 MPD client with experimental UI
 media-sound/bitmeter 1.2: a diagnosis tool for JACK audio software
 media-sound/bladeenc 0.94.2-r1: An mp3 encoder
 media-sound/bplay 0.991: No-frills command-line buffered player and recorder
-media-sound/bpmdetect 0.6.1 0.6.1-r1: Automatic BPM detection utility
+media-sound/bpmdetect 0.6.1-r1: Automatic BPM detection utility
 media-sound/bristol 0.60.9 0.60.11: Synthesizer keyboard emulation package: Moog, Hammond and others
 media-sound/brutefir 1.0k-r1: Software convolution engine for applying long FIR filters
 media-sound/cantata 1.5.1: Featureful and configurable Qt client for the music player daemon (MPD)
@@ -12924,7 +12924,7 @@ media-sound/galan 0.3.0_beta7: gAlan - Graphical Audio Language
 media-sound/gbsplay 0.0.91-r1 0.0.91-r2: Nintendo Gameboy sound player for GBS format
 media-sound/gejengel 0.1.4-r1 0.1.4-r2: Lightweight audio player
 media-sound/giada 0.7.0: A free, minimal, hardcore audio tool for DJs and live performers
-media-sound/gigedit 0.2.0 0.2.0-r1: An instrument editor for gig files
+media-sound/gigedit 0.2.0-r1: An instrument editor for gig files
 media-sound/gimmix 0.5.7.2 0.5.7.2-r1: a graphical music player daemon (MPD) client using GTK+2
 media-sound/glmix 0.3: A 3D widget for mixing up to eight JACK audio streams down to stereo
 media-sound/glurp 0.12.3: Glurp is a GTK2 based graphical client for the Music Player Daemon
@@ -12973,7 +12973,7 @@ media-sound/jack-keyboard 2.5: A virtual MIDI keyboard for JACK MIDI
 media-sound/jack-rack 1.4.7-r1 1.4.8_rc1: JACK Rack is an effects rack for the JACK low latency audio API
 media-sound/jack-smf-utils 1.0: Utilities for MIDI streams and files using Jack MIDI
 media-sound/jackbeat 0.7.6: An audio sequencer for Linux
-media-sound/jalv 1.0.0 1.2.0 1.4.0 1.4.4 1.4.6: Simple but fully featured LV2 host for Jack
+media-sound/jalv 1.4.4 1.4.6: Simple but fully featured LV2 host for Jack
 media-sound/jamin 0.95.0-r2: JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
 media-sound/jokosher 0.11.5-r1: A simple yet powerful multi-track studio
 media-sound/jtagger 1.0-r1: Powerful MP3 tag and filename editor
@@ -12990,7 +12990,7 @@ media-sound/konvertible 1.0.1: A program to convert audio formats with FFmpeg
 media-sound/kradio 4.0.8: kradio is a radio tuner application for KDE
 media-sound/kstreamripper 0.7.100-r2: Program for ripping internet radios
 media-sound/kwave 0.8.10 0.8.12 0.8.99: A sound editor for KDE that can edit many types of audio files
-media-sound/lame 3.99.3 3.99.5 3.99.5-r1: LAME Ain't an MP3 Encoder
+media-sound/lame 3.99.5-r1: LAME Ain't an MP3 Encoder
 media-sound/lash 0.5.4-r1 0.5.4-r2: LASH Audio Session Handler
 media-sound/lastfm-desktop 2.1.35 2.1.36: The official Last.fm desktop application suite
 media-sound/lastfmplayer 1.5.4.27091-r3: A player for last.fm radio streams
@@ -13010,7 +13010,7 @@ media-sound/mangler 1.2.5-r1: Open source VOIP client capable of connecting to V
 media-sound/marrie 0.3.2-r1 9999: A simple podcast client that runs on the Command Line Interface
 media-sound/mcdp 0.4a 0.4b: A very small console cd player
 media-sound/meterbridge 0.9.3: Software meterbridge for the UNIX based JACK audio system
-media-sound/mhwaveedit 1.4.21 1.4.22 1.4.23: GTK+ Sound file editor (wav, and a few others.)
+media-sound/mhwaveedit 1.4.22 1.4.23: GTK+ Sound file editor (wav, and a few others.)
 media-sound/mikmod 3.2.6 3.2.7: A console MOD-Player based on libmikmod
 media-sound/milkytracker 0.90.86: FastTracker 2 inspired music tracker
 media-sound/mimd 0.30.1: Multicast streaming server for MPEG1/2 and MP3 files
@@ -13024,7 +13024,7 @@ media-sound/moosic 1.5.6-r1: Music player that focuses on easy playlist manageme
 media-sound/mp32ogg 0.11-r6: A perl script to convert MP3 files to Ogg Vorbis files
 media-sound/mp3_check 1.98: MP3 consistency checker
 media-sound/mp3asm 0.1.3-r2: A command line tool to clean and edit mp3 files
-media-sound/mp3blaster 3.2.5 3.2.5-r1: Text console based program for playing audio files
+media-sound/mp3blaster 3.2.5-r1: Text console based program for playing audio files
 media-sound/mp3c 0.31-r1: console based mp3 ripper, with cddb support
 media-sound/mp3cat 0.4: mp3cat reads and writes MP3 files
 media-sound/mp3check 0.8.4 0.8.7: Checks mp3 files for consistency and prints several errors and warnings
@@ -13094,7 +13094,7 @@ media-sound/pragha 1.1.2.1 1.3.0 1.3.1-r1: A lightweight music player (with supp
 media-sound/projectm-jack 2.0.1 2.1.0: A Qt based GUI for projectM that visualizes your JACK output
 media-sound/projectm-pulseaudio 2.1.0: A Qt GUI for projectM that visualizes your pulseaudio output
 media-sound/protux 0.50.100: Professional Audio Tools for GNU/Linux
-media-sound/ptabtools 0.4.3 0.5.0: Utilities for PowerTab Guitar files (.ptb)
+media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/puddletag 1.0.5: Audio tag editor
 media-sound/pulseaudio 7.1 8.0: A networked sound server with an advanced plugin system
 media-sound/pwavecat 0.4.5: concatenates any number of audio files to stdout
@@ -13227,7 +13227,7 @@ media-sound/xmp 3.5.0: Extended Module Player
 media-sound/xnoise 0.2.21 9999: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.5: Digital vinyl emulation software
 media-sound/yoshimi 1.3.2 1.3.5.2 1.3.8.2-r1: A software synthesizer based on ZynAddSubFX
-media-sound/zynaddsubfx 2.4.1 2.4.2 2.4.3 2.5.0 2.5.1 2.5.2: ZynAddSubFX is an opensource software synthesizer
+media-sound/zynaddsubfx 2.4.3 2.5.0 2.5.1 2.5.2: ZynAddSubFX is an opensource software synthesizer
 media-tv/channeleditor 1.9.2.1-r1: Editor for VDR channels.conf
 media-tv/dvbstream 0.7_pre20080516: simple command line tools for DVB cards. Includes a RTP multicast stream server
 media-tv/dvbstreamer 1.1-r1 2.0.0_rc1: DVB over UDP streaming solution
