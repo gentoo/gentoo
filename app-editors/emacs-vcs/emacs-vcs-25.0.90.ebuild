@@ -225,9 +225,6 @@ src_configure() {
 	# Save version information in the Emacs binary. It will be available
 	# in variable "system-configuration-options".
 	myconf+=" GENTOO_PACKAGE=${CATEGORY}/${PF}"
-	if [[ ${PV##*.} = 9999 ]]; then
-		myconf+=" EGIT_BRANCH=${EGIT_BRANCH} EGIT_VERSION=${EGIT_VERSION}"
-	fi
 
 	econf \
 		--program-suffix="-${EMACS_SUFFIX}" \
