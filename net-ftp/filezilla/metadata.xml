@@ -5,6 +5,10 @@
     <email>voyageur@gentoo.org</email>
     <name>Bernard Cafarelli</name>
   </maintainer>
+  <maintainer type="person">
+    <email>polynomial-c@gentoo.org</email>
+    <name>Lars Wendler</name>
+  </maintainer>
   <longdescription lang="en">
   The native linux ftp/sftp client GUI built on wxGTK
 </longdescription>
