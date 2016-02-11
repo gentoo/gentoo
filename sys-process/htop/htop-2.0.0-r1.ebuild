@@ -29,17 +29,6 @@ PATCHES=(
 )
 
 pkg_setup() {
-	if use kernel_FreeBSD && ! [[ -f ${ROOT}/compat/linux/proc/stat && -f ${ROOT}/compat/linux/proc/meminfo ]]; then
-		echo
-		eerror "htop requires linprocfs mounted at /compat/linux/proc to build and function."
-		eerror "To mount it, type:"
-		[ -d /compat/linux/proc ] || eerror "mkdir -p /compat/linux/proc"
-		eerror "mount -t linprocfs none /compat/linux/proc"
-		eerror "Alternatively, place this information into /etc/fstab"
-		echo
-		die "htop needs /compat/linux/proc mounted"
-	fi
-
 	if ! has_version sys-process/lsof; then
 		ewarn "To use lsof features in htop(what processes are accessing"
 		ewarn "what files), you must have sys-process/lsof installed."
@@ -59,8 +48,6 @@ src_configure() {
 	[[ $CBUILD != $CHOST ]] && export ac_cv_file__proc_{meminfo,stat}=yes #328971
 
 	local myeconfargs=()
-
-	use kernel_FreeBSD && myeconfargs+=( --with-proc=/compat/linux/proc )
 
 	myeconfargs+=(
 		# fails to build against recent hwloc versions
