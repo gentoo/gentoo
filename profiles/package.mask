@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron W. Swenson <titanofold@gentoo.org> (11 Feb 2016)
+# Susceptible to security issues and other bugs. Removal pending
+# stabilization of 9.5.1, 9.4.6, 9.3.11, 9.2.15, and 9.1.20.
+=dev-db/postgresql-9.0.23-r1
+
 # Aaron Bauman <bman@gentoo.org> (10 Feb 2016)
 # Old, no active or proxy maintainer, dead upstream
 # and nothing depends on it.
