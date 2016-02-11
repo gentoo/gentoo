@@ -7266,6 +7266,7 @@ dev-python/libcloud 0.14.1 0.15.0 0.15.1 0.17.0: Unified Interface to the Cloud 
 dev-python/libextractor-python 0.6-r1: A library used to extract metadata from files of arbitrary type
 dev-python/libgnome-python 2.28.1-r1: Python bindings for essential GNOME libraries
 dev-python/libgnomecanvas-python 2.28.1-r1: Python bindings for the Gnome Canvas library
+dev-python/libiscsi-python 0_pre160211 9999: Python bindings for libiscsi
 dev-python/liblarch 2.1.0: Library to handle directed acyclic graphs
 dev-python/libnacl 1.4.0 1.4.3 1.4.4: Python ctypes wrapper for libsodium
 dev-python/libnatpmp 20130911 20140401-r1 20150609: Python module for libnatpmp, an alternative protocol to UPnP IGD
@@ -7784,6 +7785,7 @@ dev-python/python-poppler-qt4 0.18.1: A python binding for libpoppler-qt4
 dev-python/python-prctl 1.5.0-r1 1.6.0 1.6.1: Control process attributes through prctl
 dev-python/python-ptrace 0.8.1-r1: A debugger using ptrace (Linux, BSD and Darwin system call to trace processes)
 dev-python/python-saharaclient 0.7.0 0.9.0 0.11.0: This is a client for the OpenStack Sahara API, aka HADOOP
+dev-python/python-scsi 0_pre160211 9999: Access to SG_IO scsi devices
 dev-python/python-scw 0.4.7-r1: Python binding for Scw
 dev-python/python-sipsimple 2.5.1-r3: SIP SIMPLE client SDK is a Software Development Kit
 dev-python/python-slip 0.6.0 0.6.1: Miscellaneous convenience, extension and workaround code for Python
@@ -14132,7 +14134,7 @@ net-libs/libhubbub 0.3.0-r1 0.3.1-r1: HTML5 compliant parsing library, written i
 net-libs/libident 0.32: A small library to interface to the Ident protocol server
 net-libs/libinfinity 0.5.4: An implementation of the Infinote protocol written in GObject-based C
 net-libs/libircclient 1.6-r2 1.8: Small but powerful library implementing the client-server IRC protocol
-net-libs/libiscsi 1.9.0 1.9.0-r1 9999: iscsi client library and utilities
+net-libs/libiscsi 1.9.0-r1 1.15.0 9999: iscsi client library and utilities
 net-libs/libisds 0.7 0.10 9999: Client library for accessing ISDS Soap services
 net-libs/libkfbapi 1.0: Library for accessing Facebook services based on KDE technology
 net-libs/libkgapi 2.2.0: Library for accessing Google calendar and contact resources
@@ -17196,7 +17198,7 @@ sys-process/fcron 3.1.1 3.1.2-r2 3.2.0: A command scheduler with extended capabi
 sys-process/ftop 1.0: Monitor open files and filesystems
 sys-process/fuser-bsd 1142334561: fuser(1) utility for *BSD
 sys-process/glances 2.2.1 2.3 2.4.2: CLI curses based monitoring tool
-sys-process/htop 1.0.3 1.0.3-r1: interactive process viewer
+sys-process/htop 1.0.3 1.0.3-r1 2.0.0: interactive process viewer
 sys-process/incron 0.5.10 0.5.10-r1: inotify based cron daemon
 sys-process/iotop 0.6: Top-like UI used to show which process is using the I/O
 sys-process/latencytop 0.5: tool for identifying where in the system latency is happening
@@ -18481,7 +18483,7 @@ x11-plugins/wmforkplop 0.9.3 0.9.3-r1: monitors the forking activity of the kern
 x11-plugins/wmfortune 0.241: a dockapp showing fortune-mod messages
 x11-plugins/wmfrog 0.2.0-r1 0.3.1: a weather application, it shows the weather in a graphical way
 x11-plugins/wmfsm 0.34-r1 0.34-r2 0.36: dockapp for monitoring filesystem usage
-x11-plugins/wmget 0.6.0: a libcurl based dockapp for automated downloads
+x11-plugins/wmget 0.6.0 0.6.1: a libcurl based dockapp for automated downloads
 x11-plugins/wmgrabimage 0.72-r1: wmGrabImage grabs an image from the WWW and displays it
 x11-plugins/wmgtemp 1.0 1.0-r1: CPU and SYS temperature dockapp
 x11-plugins/wmhdplop 0.9.9-r2: a dockapp for monitoring disk activities with fancy visuals
