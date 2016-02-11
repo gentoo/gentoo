@@ -69,6 +69,7 @@ net-libs/iojs
 sci-biology/biojava
 sci-biology/mauve
 sci-biology/mauvealigner
+dev-java/bytecode
 
 # James Le Cuirot <chewi@gentoo.org> (07 Feb 2016)
 # Masked until 2.0 final arrives, which hopefully won't depend on
