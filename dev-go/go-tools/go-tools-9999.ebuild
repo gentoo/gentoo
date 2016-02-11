@@ -21,7 +21,7 @@ HOMEPAGE="https://godoc.org/golang.org/x/tools"
 SRC_URI="${ARCHIVE_URI}
 	http://golang.org/favicon.ico -> go-favicon.ico"
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/${PVR}"
 IUSE=""
 DEPEND="dev-go/go-net:="
 RDEPEND=""
