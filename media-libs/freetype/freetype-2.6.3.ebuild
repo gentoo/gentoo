@@ -1,11 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit autotools-multilib flag-o-matic multilib toolchain-funcs
+EAPI=6
 
-INFINALITY_PATCH="03-infinality-2.6-2015.10.04.patch"
+inherit autotools flag-o-matic multilib multilib-build multilib-minimal toolchain-funcs
+
+INFINALITY_PATCH="03-infinality-2.6.3-2015.11.28.patch"
 
 DESCRIPTION="A high-quality and portable font engine"
 HOMEPAGE="http://www.freetype.org/"
@@ -41,6 +42,13 @@ RDEPEND="${CDEPEND}
 	abi_x86_32? ( utils? ( !app-emulation/emul-linux-x86-xlibs[-abi_x86_32(-)] ) )"
 PDEPEND="infinality? ( media-libs/fontconfig-infinality )"
 
+PATCHES=(
+	# This is the same as the 01 patch from infinality
+	"${FILESDIR}"/${PN}-2.3.2-enable-valid.patch
+
+	"${FILESDIR}"/${PN}-2.4.11-sizeof-types.patch # 459966
+)
+
 src_prepare() {
 	enable_option() {
 		sed -i -e "/#define $1/a #define $1" \
@@ -54,11 +62,10 @@ src_prepare() {
 			|| die "unable to disable option $1"
 	}
 
-	# This is the same as the 01 patch from infinality
-	epatch "${FILESDIR}"/${PN}-2.3.2-enable-valid.patch
+	default
 
 	if use infinality; then
-		epatch "${WORKDIR}/${INFINALITY_PATCH}"
+		eapply "${WORKDIR}/${INFINALITY_PATCH}"
 
 		# FT_CONFIG_OPTION_SUBPIXEL_RENDERING is already enabled in freetype-2.4.11
 		enable_option TT_CONFIG_OPTION_SUBPIXEL_HINTING
@@ -79,9 +86,6 @@ src_prepare() {
 		enable_option FT_DEBUG_MEMORY
 	fi
 
-	epatch "${FILESDIR}"/${PN}-2.4.11-sizeof-types.patch # 459966
-	epatch "${FILESDIR}"/${PN}-2.6.1-bad-shift.patch
-
 	if use utils; then
 		cd "${WORKDIR}/ft2demos-${PV}" || die
 		# Disable tests needing X11 when USE="-X". (bug #177597)
@@ -97,7 +101,7 @@ src_prepare() {
 			"${S}"/builds/unix/configure || die
 	fi
 
-	autotools-utils_src_prepare
+	elibtoolize --patch-only
 }
 
 multilib_src_configure() {
@@ -106,16 +110,19 @@ multilib_src_configure() {
 
 	local myeconfargs=(
 		--enable-biarch-config
+		--enable-shared
 		$(use_with bzip2)
 		$(use_with harfbuzz)
 		$(use_with png)
+		$(use_enable static-libs static)
 
 		# avoid using libpng-config
 		LIBPNG_CFLAGS="$($(tc-getPKG_CONFIG) --cflags libpng)"
 		LIBPNG_LDFLAGS="$($(tc-getPKG_CONFIG) --libs libpng)"
 	)
 
-	autotools-utils_src_configure
+	ECONF_SOURCE="${S}" \
+		econf "${myeconfargs[@]}"
 }
 
 multilib_src_compile() {
@@ -157,7 +164,10 @@ multilib_src_install_all() {
 	fi
 
 	dodoc docs/{CHANGES,CUSTOMIZE,DEBUG,INSTALL.UNIX,*.txt,PROBLEMS,TODO}
-	use doc && dohtml -r docs/*
+	if use doc ; then
+		docinto html
+		dodoc -r docs/*
+	fi
 
 	prune_libtool_files --all
 }
