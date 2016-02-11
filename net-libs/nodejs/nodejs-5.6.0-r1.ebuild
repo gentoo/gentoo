@@ -148,7 +148,7 @@ src_install() {
 		# Install bash completion for `npm`
 		# We need to temporarily replace default config path since
 		# npm otherwise tries to write outside of the sandbox
-		local npm_config="usr/lib64/node_modules/npm/lib/config/core.js"
+		local npm_config="usr/$(get_libdir)/node_modules/npm/lib/config/core.js"
 		sed -i -e "s|'/etc'|'${D}/etc'|g" "${ED}/${npm_config}" || die
 		local tmp_npm_completion_file="$(emktemp)"
 		"${ED}/usr/bin/npm" completion > "${tmp_npm_completion_file}"
