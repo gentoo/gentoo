@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ RESTRICT="test"
 DEPEND="
 	!kde-misc/akonadi-social-utils
 	>=app-crypt/gpgme-1.1.6
-	>=app-office/akonadi-server-1.12.90[qt4]
+	>=app-office/akonadi-server-1.12.90[qt4(+)]
 	>=dev-libs/boost-1.35.0-r5:=
 	dev-libs/libgpg-error
 	>=dev-libs/libical-0.48-r2:=
