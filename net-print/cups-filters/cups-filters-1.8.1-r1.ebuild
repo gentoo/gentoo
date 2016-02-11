@@ -93,7 +93,7 @@ src_install() {
 		popd > /dev/null
 	fi
 
-	if use ghostscript; then
+	if use postscript; then
 		# workaround: some printer drivers still require pstoraster and pstopxl, bug #383831
 		dosym gstoraster /usr/libexec/cups/filter/pstoraster
 		dosym gstopxl /usr/libexec/cups/filter/pstopxl
