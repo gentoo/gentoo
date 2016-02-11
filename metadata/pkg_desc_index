@@ -6912,6 +6912,7 @@ dev-python/couchdb-python 0.9 0.10 1.0: Python library for working with CouchDB
 dev-python/cov-core 1.7 1.15.0: plugin core for use by pytest-cov, nose-cov and nose2-cov
 dev-python/coverage 3.6 3.7 3.7.1 4.0 4.0.1 4.0.2 4.0.3: Code coverage measurement for Python
 dev-python/crcmod 1.7-r2: Python CRC Generator module
+dev-python/croniter 0.3.11: Python module to provide iteration for datetime object
 dev-python/crumbs 2.0.0 2.0.1 2.0.2 2.1.0: Generalized all-in-one parameters module
 dev-python/cryptography 1.0.2 1.1 1.1.1 1.1.2 1.2.1 1.2.2: Library providing cryptographic recipes and primitives
 dev-python/cryptography-vectors 1.0.2 1.1 1.1.1 1.1.2 1.2.1 1.2.2: Test vectors for the cryptography package
