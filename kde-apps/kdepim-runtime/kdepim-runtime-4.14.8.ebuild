@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,10 @@ DEPEND="
 	kolab? ( >=net-libs/libkolab-0.5 )
 "
 RDEPEND="${DEPEND}
-	$(add_kdeapps_dep kdepim-icons)
+	|| (
+		$(add_kdeapps_dep kdepim-icons)
+		>=kde-frameworks/oxygen-icons-5.19.0:5
+	)
 	!kde-misc/akonadi-google
 "
 
