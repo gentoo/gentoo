@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ inherit golang-build
 DESCRIPTION="Go supplementary cryptography libraries"
 HOMEPAGE="https://godoc.org/golang.org/x/crypto"
 LICENSE="BSD"
-SLOT="0/${PV}"
+SLOT="0/${PVR}"
 IUSE=""
 DEPEND=""
 RDEPEND=""
