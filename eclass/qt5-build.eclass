@@ -199,7 +199,7 @@ qt5-build_src_prepare() {
 
 		# Don't inject -msse/-mavx/... into CXXFLAGS when detecting
 		# compiler support for extended instruction sets (bug 552942)
-		if use x86 && [[ ${QT5_MINOR_VERSION} -ge 5 ]]; then
+		if [[ ${QT5_MINOR_VERSION} -ge 5 ]]; then
 			find config.tests/common -name '*.pro' -type f -execdir \
 				sed -i -e '/else:QMAKE_CXXFLAGS\s*+=/ d' '{}' + || die
 		fi
@@ -537,15 +537,15 @@ qt5_base_configure() {
 		#-qml-debug
 
 		# extended instruction sets support
-		$(is-flagq -mno-sse2    && echo -no-sse2)
-		$(is-flagq -mno-sse3    && echo -no-sse3)
-		$(is-flagq -mno-ssse3   && echo -no-ssse3)
-		$(is-flagq -mno-sse4.1  && echo -no-sse4.1)
-		$(is-flagq -mno-sse4.2  && echo -no-sse4.2)
-		$(is-flagq -mno-avx     && echo -no-avx)
-		$(is-flagq -mno-avx2    && echo -no-avx2)
-		$(is-flagq -mno-dsp     && echo -no-mips_dsp)
-		$(is-flagq -mno-dspr2   && echo -no-mips_dspr2)
+		$([[ ${QT5_MINOR_VERSION} -le 4 ]] && is-flagq -mno-sse2   && echo -no-sse2)
+		$([[ ${QT5_MINOR_VERSION} -le 4 ]] && is-flagq -mno-sse3   && echo -no-sse3)
+		$([[ ${QT5_MINOR_VERSION} -le 4 ]] && is-flagq -mno-ssse3  && echo -no-ssse3)
+		$([[ ${QT5_MINOR_VERSION} -le 4 ]] && is-flagq -mno-sse4.1 && echo -no-sse4.1)
+		$([[ ${QT5_MINOR_VERSION} -le 4 ]] && is-flagq -mno-sse4.2 && echo -no-sse4.2)
+		$([[ ${QT5_MINOR_VERSION} -le 4 ]] && is-flagq -mno-avx    && echo -no-avx)
+		$([[ ${QT5_MINOR_VERSION} -le 4 ]] && is-flagq -mno-avx2   && echo -no-avx2)
+		$(is-flagq -mno-dsp   && echo -no-mips_dsp)
+		$(is-flagq -mno-dspr2 && echo -no-mips_dspr2)
 
 		# use pkg-config to detect include and library paths
 		-pkg-config
