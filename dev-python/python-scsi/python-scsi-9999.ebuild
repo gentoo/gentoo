@@ -1,0 +1,19 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+EAPI=6
+
+PYTHON_COMPAT=( python2_7 )
+
+inherit distutils-r1 git-r3
+
+DESCRIPTION="Access to SG_IO scsi devices"
+HOMEPAGE="https://github.com/rosjat/python-scsi/"
+SRC_URI=""
+EGIT_REPO_URI="https://github.com/rosjat/python-scsi.git"
+
+SLOT="0"
+LICENSE="LGPL-2.1"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+IUSE=""
