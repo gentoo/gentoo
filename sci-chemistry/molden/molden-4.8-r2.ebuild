@@ -10,7 +10,7 @@ MY_P="${PN}${PV}"
 
 DESCRIPTION="Display molecular density from GAMESS-UK, GAMESS-US, GAUSSIAN and Mopac/Ampac"
 HOMEPAGE="http://www.cmbi.ru.nl/molden/"
-SRC_URI="ftp://ftp.cmbi.kun.nl/pub/molgraph/${PN}/${MY_P}.tar.gz"
+SRC_URI="ftp://ftp.cmbi.ru.nl/pub/molgraph/${PN}/${MY_P}.tar.gz"
 
 LICENSE="MOLDEN"
 SLOT="0"
