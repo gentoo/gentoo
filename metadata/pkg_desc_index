@@ -8166,7 +8166,7 @@ dev-qt/qtbearer 4.8.6-r1 4.8.7: The network bearer plugins for the Qt toolkit
 dev-qt/qtbluetooth 5.5.1-r1: Bluetooth support library for the Qt5 framework
 dev-qt/qtchooser 0_p20150102 0_p20151008: Qt4/Qt5 version chooser
 dev-qt/qtconcurrent 5.4.2 5.5.1: Multi-threading concurrence support library for the Qt5 framework
-dev-qt/qtcore 4.8.6-r2 4.8.7-r1 5.4.2 5.5.1: Cross-platform application development framework
+dev-qt/qtcore 4.8.6-r2 4.8.7-r1 5.4.2 5.5.1-r1: Cross-platform application development framework
 dev-qt/qtdbus 4.8.6-r1 4.8.7 5.4.2 5.5.1: The D-Bus module for the Qt5 framework
 dev-qt/qtdeclarative 4.8.6-r1 4.8.7 5.4.2-r1 5.5.1-r1: The QML and Quick modules for the Qt5 framework
 dev-qt/qtdemo 4.8.6-r1 4.8.7: Demonstration module and examples for the Qt toolkit
@@ -8842,7 +8842,7 @@ dev-ruby/origin 1.1.0 2.1.1 2.2.0: Origin is a simple DSL for generating MongoDB
 dev-ruby/ox 2.2.2 2.2.3 2.2.4: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.9-r1 1.1.10-r2 1.1.11-r1: A mid-level packet manipulation library
 dev-ruby/paint 1.0.0 1.0.1: Terminal painter
-dev-ruby/parser 2.2.2.6 2.2.3.0 2.3.0.1 2.3.0.2: A production-ready Ruby parser written in pure Ruby
+dev-ruby/parser 2.2.3.0 2.3.0.2 2.3.0.4: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.6.1 1.6.2 1.7.0 1.7.1: A small PEG based parser library
 dev-ruby/patron 0.4.18-r1 0.4.18-r2 0.4.20 0.5.0-r1: Patron is a Ruby HTTP client library based on libcurl
 dev-ruby/pcaprub 0.11.3-r2 0.12.0-r1 0.12.1: Libpcap bindings for ruby compat
@@ -9019,7 +9019,7 @@ dev-ruby/shorturl 1.0.0-r1 1.0.0-r2: A very simple library to use URL shortening
 dev-ruby/shotgun 0.9-r1 0.9.1: Forking implementation of rackup
 dev-ruby/shoulda 2.11.3-r2 3.5.0-r2: Making tests easy on the fingers and eyes
 dev-ruby/shoulda-context 1.1.6 1.2.1: Context framework extracted from Shoulda
-dev-ruby/shoulda-matchers 2.8.0 3.0.1 3.1.0: Making tests easy on the fingers and eyes
+dev-ruby/shoulda-matchers 2.8.0 3.1.0 3.1.1: Making tests easy on the fingers and eyes
 dev-ruby/sigar 0.7.3: System Information Gatherer And Reporter
 dev-ruby/simple-rss 1.3.1 1.3.1-r1: A simple, flexible, extensible, and liberal RSS and Atom reader for Ruby
 dev-ruby/simple_oauth 0.2.0-r1 0.3.0 0.3.1: Simply builds and verifies OAuth headers
@@ -11491,7 +11491,7 @@ lxde-base/lxsession-edit 0.2.0: LXDE session autostart editor
 lxde-base/lxshortcut 0.1.2: LXDE tool to edit desktop entry files
 lxde-base/lxtask 0.1.4 0.1.4-r1 0.1.5 0.1.6: LXDE Task manager
 lxde-base/lxterminal 0.1.11 0.2.0: Lightweight vte-based tabbed terminal emulator for LXDE
-lxde-base/menu-cache 0.3.3 0.4.1 0.5.1 1.0.0 1.0.0-r1: A library creating and utilizing caches to speed up freedesktop.org application menus
+lxde-base/menu-cache 0.3.3 0.4.1 0.5.1 1.0.0 1.0.0-r1 1.0.1: Library to create and utilize caches to speed up freedesktop application menus
 lxqt-base/liblxqt 0.7.0 0.8.0 0.9.0 0.10.0: Common base library for the LXQt desktop environment
 lxqt-base/liblxqt-mount 0.7.0 0.8.0 0.9.0: LXQt library for removable media and devices
 lxqt-base/libsysstat 0.1.0 0.2.0 0.3.0 0.3.1: A Qt-based interface to system statistics
@@ -17845,7 +17845,7 @@ x11-drivers/xf86-video-cirrus 1.5.1 1.5.2 1.5.3: Cirrus Logic video driver
 x11-drivers/xf86-video-dummy 0.3.6 0.3.7: X.Org driver for dummy cards
 x11-drivers/xf86-video-fbdev 0.4.4: video driver for framebuffer device
 x11-drivers/xf86-video-freedreno 1.0.0 1.1.0 1.3.0 1.4.0: Driver for Adreno mobile GPUs
-x11-drivers/xf86-video-geode 2.11.17: AMD Geode GX2 and LX video driver
+x11-drivers/xf86-video-geode 2.11.17 2.11.18: AMD Geode GX2 and LX video driver
 x11-drivers/xf86-video-glint 1.2.7 1.2.8 1.2.8-r1: GLINT/Permedia video driver
 x11-drivers/xf86-video-i128 1.3.5 1.3.6 1.3.6-r1: Number 9 I128 video driver
 x11-drivers/xf86-video-i740 1.3.5: Intel i740 video driver
