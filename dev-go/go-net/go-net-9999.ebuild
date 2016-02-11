@@ -19,7 +19,7 @@ inherit golang-build
 DESCRIPTION="Go supplementary network libraries"
 HOMEPAGE="https://godoc.org/golang.org/x/net"
 LICENSE="BSD"
-SLOT="0/${PV}"
+SLOT="0/${PVR}"
 IUSE=""
 DEPEND="dev-go/go-text:="
 RDEPEND=""
