@@ -20,7 +20,7 @@ inherit golang-build
 DESCRIPTION="Go text processing support"
 HOMEPAGE="https://godoc.org/golang.org/x/text"
 LICENSE="BSD"
-SLOT="0/${PV}"
+SLOT="0/${PVR}"
 IUSE=""
 DEPEND=""
 RDEPEND=""
