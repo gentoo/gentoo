@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,21 +9,23 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Java date chooser bean for graphically picking a date"
-SRC_URI="http://www.toedter.com/download/${P}.zip"
 HOMEPAGE="http://www.toedter.com/en/jcalendar/"
+SRC_URI="http://www.toedter.com/download/${P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="1.2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
-COMMON_DEPEND="dev-java/jgoodies-looks:2.6"
+CDEPEND="dev-java/jgoodies-looks:2.6"
 
-RDEPEND=">=virtual/jdk-1.4
-	${COMMON_DEPEND}"
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
 
-DEPEND=">=virtual/jdk-1.4
-	>=app-arch/unzip-5.50-r1
-	${COMMON_DEPEND}"
+DEPEND="
+	${CDEPEND}
+	app-arch/unzip
+	>=virtual/jdk-1.6"
 
 S="${WORKDIR}"
 
@@ -36,7 +38,7 @@ EANT_BUILD_TARGET="jar"
 EANT_DOC_TARGET=""
 
 java_prepare() {
-	rm lib/*.jar || die
+	java-pkg_clean
 }
 
 src_install() {
