@@ -18420,6 +18420,7 @@ x11-plugins/pidgin-otr 3.2.1 4.0.1 4.0.1-r1: (OTR) Messaging allows you to have 
 x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from annoying you
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
 x11-plugins/pidgin-sipe 1.18.0-r1 1.20.1: Pidgin Plug-in SIPE (Sip Exchange Protocol)
+x11-plugins/pidgin-skypeweb 1.1 9999: SkypeWeb Plugin for Pidgin
 x11-plugins/pidgin-xmpp-receipts 0.6: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.1: Pidgin plugin to render LaTeX expressions in messages
 x11-plugins/prpltwtr 0.12.0: libpurple twitter protocol
