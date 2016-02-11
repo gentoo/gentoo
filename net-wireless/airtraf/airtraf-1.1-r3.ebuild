@@ -15,7 +15,7 @@ KEYWORDS="amd64 ppc x86"
 
 RDEPEND="
 	net-libs/libpcap
-	sys-libs/ncurses
+	sys-libs/ncurses:=
 "
 DEPEND="
 	${RDEPEND}
@@ -24,7 +24,7 @@ DEPEND="
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}"/${P}.patch \
+		"${FILESDIR}"/${P}-sniffd.patch \
 		"${FILESDIR}"/${P}-off-by-one.patch \
 		"${FILESDIR}"/${P}-fprintf-format.patch
 
@@ -32,7 +32,7 @@ src_prepare() {
 		-e '/^LIBS/s|=.*|= $(shell $(PKG_CONFIG) --libs panel)|' \
 		src/libncurses/Makefile || die
 	sed -i \
-		-e 's|-lpanel -lncurses|$(shell $(PKG_CONFIG) --libs panel)|' \
+		-e 's|-lpanel -lncurses|$(shell $(PKG_CONFIG) --libs ncurses panel)|' \
 		src/sniffd/Makefile || die
 	tc-export PKG_CONFIG
 }
