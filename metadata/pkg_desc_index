@@ -7126,7 +7126,7 @@ dev-python/gevent 1.0 1.0.1 1.0.2 1.1_beta6: Coroutine-based network library
 dev-python/gevent-socketio 0.3.5_rc2-r1 0.3.6: SocketIO server based on the Gevent pywsgi server
 dev-python/gevent-websocket 0.9.3 0.9.5: Websocket handler for the gevent pywsgi server
 dev-python/ghp-import 0.4.1 0.4.1-r1: Copy your docs directly to the gh-pages branch
-dev-python/git-python 0.3.6 1.0.0 1.0.1: Library used to interact with Git repositories
+dev-python/git-python 0.3.6 1.0.0 1.0.1 1.0.2: Library used to interact with Git repositories
 dev-python/git-review 1.24 1.25.0: Tool to submit code to Gerrit
 dev-python/gitdb 0.6.3 0.6.4: GitDB is a pure-Python git object database
 dev-python/glance_store 0.1.10 0.4.0 0.5.0 0.6.0 0.9.1: A connection pool for python-ldap
@@ -15423,7 +15423,7 @@ sci-chemistry/massxpert 3.4.0: Software suite to predict/analyze mass spectromet
 sci-chemistry/mdanalysis 0.7.7: A python library to analyze and manipulate molecular dynamics trajectories
 sci-chemistry/mead 2.2.7 2.2.7-r1: Macroscopic Electrostatics with Atomic Detail
 sci-chemistry/mm-align 20120321: Protein Complex Structural Alignment
-sci-chemistry/molden 4.8-r2 5.0: Display molecular density from GAMESS-UK, GAMESS-US, GAUSSIAN and Mopac/Ampac
+sci-chemistry/molden 4.8-r2 5.0 5.5: Display molecular density from GAMESS-UK, GAMESS-US, GAUSSIAN and Mopac/Ampac
 sci-chemistry/moldy 2.16e-r2: Molecular dynamics simulations platform
 sci-chemistry/molequeue 0.7.1 0.8.0: Abstract, manage and coordinate execution of tasks
 sci-chemistry/molmol 2k_p2-r2 2k_p2-r3 2k_p2-r4 2k_p2-r5: Publication-quality molecular visualization package
