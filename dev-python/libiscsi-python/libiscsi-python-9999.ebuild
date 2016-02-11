@@ -19,4 +19,5 @@ KEYWORDS=""
 IUSE=""
 
 RDEPEND="net-libs/libiscsi"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]"
