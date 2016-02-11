@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit eutils fortran-2 flag-o-matic toolchain-funcs
 
@@ -14,7 +14,7 @@ SRC_URI="ftp://ftp.cmbi.ru.nl/pub/molgraph/${PN}/${MY_P}.tar.gz"
 
 LICENSE="MOLDEN"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="opengl"
 
 RDEPEND="
@@ -30,32 +30,33 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.0-ambfor.patch
+	"${FILESDIR}"/${PN}-5.0-overflow.patch
+	"${FILESDIR}"/${PN}-4.8-ldflags.patch
+	"${FILESDIR}"/${PN}-4.7-implicit-dec.patch
+)
+
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-ambfor.patch \
-		"${FILESDIR}"/${P}-overflow.patch \
-		"${FILESDIR}"/${P}-ldflags.patch \
-		"${FILESDIR}"/${PN}-4.7-implicit-dec.patch
+	default
 	sed \
 		-e 's:makedepend:gccmakedep:g' \
-		-e "s:/usr/include/sgidefs.h::g" \
 		-i surf/Makefile || die
 	sed 's:shell g77:shell $(FC):g' -i makefile || die
 }
 
 src_compile() {
+	local args=()
+
 	# Use -mieee on alpha, according to the Makefile
 	use alpha && append-flags -mieee
 
-	# Honor CC, CFLAGS, FC, and FFLAGS from environment;
-	# unfortunately a bash bug prevents us from doing typeset and
-	# assignment on the same line.
-	typeset -a args
 	args=(
-			CC="$(tc-getCC) ${CFLAGS}" \
-			FC="$(tc-getFC)" \
-			LDR="$(tc-getFC)" \
-			FFLAGS="${FFLAGS}" )
+		CC="$(tc-getCC) ${CFLAGS}"
+		FC="$(tc-getFC)"
+		LDR="$(tc-getFC)"
+		FFLAGS="${FFLAGS}"
+	)
 
 	einfo "Building Molden..."
 	emake -j1 "${args[@]}"
@@ -66,12 +67,9 @@ src_compile() {
 }
 
 src_install() {
-	dobin ${PN} g${PN}
-	if use opengl ; then
-		dobin ${PN}ogl
-	fi
+	dobin ${PN} g${PN} $(usex opengl ${PN}ogl "")
 
 	dodoc HISTORY README REGISTER
-	cd doc
+	cd doc || die
 	uncompress * && dodoc *
 }
