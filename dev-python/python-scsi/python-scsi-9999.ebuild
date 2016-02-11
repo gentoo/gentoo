@@ -15,7 +15,7 @@ EGIT_REPO_URI="https://github.com/rosjat/python-scsi.git"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
