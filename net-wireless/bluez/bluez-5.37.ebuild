@@ -92,6 +92,9 @@ src_prepare() {
 	# ???
 	epatch "${FILESDIR}"/0004-agent-Assert-possible-infinite-loop.patch
 
+	# bug 574092
+	epatch "${FILESDIR}"/${PN}-5.37-endian.patch
+
 	if use cups; then
 		sed -i \
 			-e "s:cupsdir = \$(libdir)/cups:cupsdir = $(cups-config --serverbin):" \
