@@ -1793,11 +1793,6 @@
       <name>Matthew Marchese</name>
       <role>Documentation Liaison</role>
     </member>
-    <member>
-      <email>monsieurp@gentoo.org</email>
-      <name>Patrice Clement</name>
-      <role>Developer</role>
-    </member>
   </project>
   <project>
     <email>kde@gentoo.org</email>
@@ -2579,11 +2574,6 @@
       <role>Developer</role>
     </member>
     <member>
-      <email>monsieurp@gentoo.org</email>
-      <name>Patrice Clement</name>
-      <role>Developer</role>
-    </member>
-    <member>
       <email>titanofold@gentoo.org</email>
       <name>Aaron W. Swenson</name>
       <role>Developer</role>
@@ -2936,11 +2926,6 @@
       <role>Member</role>
     </member>
     <member>
-      <email>monsieurp@gentoo.org</email>
-      <name>Patrice Clement</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>mrueg@gentoo.org</email>
       <name>Manuel Rüger</name>
       <role>Member</role>
@@ -3101,11 +3086,6 @@
     <member>
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>monsieurp@gentoo.org</email>
-      <name>Patrice Clement</name>
       <role>Member</role>
     </member>
     <member>
@@ -3460,11 +3440,6 @@
       <name>Michał Górny</name>
       <role>Author &amp; maintainer</role>
     </member>
-    <member>
-      <email>monsieurp@gentoo.org</email>
-      <name>Patrice Clement</name>
-      <role>Developer</role>
-    </member>
   </project>
   <project>
     <email>reviewers@gentoo.org</email>
@@ -3480,11 +3455,6 @@
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
       <role>Lead</role>
-    </member>
-    <member>
-      <email>monsieurp@gentoo.org</email>
-      <name>Patrice Clement</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -3822,10 +3792,6 @@
     <member>
       <email>jlec@gentoo.org</email>
       <name>Justin Lecher</name>
-    </member>
-    <member>
-      <email>monsieurp@gentoo.org</email>
-      <name>Patrice Clement</name>
     </member>
     <member>
       <email>zlg@gentoo.org</email>
