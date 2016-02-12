@@ -15,7 +15,6 @@ dev-db/mysql
 dev-db/mariadb
 -->
 <use>
-  <flag name="client-libs">Build the libmysqlclient libraries</flag>
   <flag name="cluster">Add support for NDB clustering (deprecated)</flag>
   <flag name="community">Enables the community features from upstream.</flag>
   <flag name="embedded">Build embedded server (libmysqld)</flag>
@@ -30,7 +29,6 @@ dev-db/mariadb
   <flag name="server">Build the server program</flag>
   <flag name="systemtap">Build support for profiling and tracing using <pkg>dev-util/systemtap</pkg></flag>
   <flag name="test">Install upstream testsuites for end use.</flag>
-  <flag name="tools">Build the command line tools (mysql, mysqldump, mysqladmin, etc)</flag>
   <flag name="yassl">Enable SSL connections and crypto functions using the bundled yaSSL</flag>
 </use>
 </pkgmetadata>
