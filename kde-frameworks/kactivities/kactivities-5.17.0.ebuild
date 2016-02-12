@@ -25,7 +25,7 @@ RDEPEND="
 	$(add_frameworks_dep kwindowsystem)
 	$(add_frameworks_dep kxmlgui)
 	dev-qt/qtdbus:5
-	dev-qt/qtdeclarative:5
+	dev-qt/qtdeclarative:5[widgets]
 	dev-qt/qtgui:5
 	dev-qt/qtsql:5
 	dev-qt/qtwidgets:5

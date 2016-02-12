@@ -35,8 +35,6 @@ need_apache2
 src_prepare() {
 	# setup proper exec name
 	sed -i -e 's/certutil/nsscertutil/' gencert.in || die "sed failed"
-	epatch "${FILESDIR}"/${PN}-parallel-build.patch
-
 	eautoreconf
 }
 
