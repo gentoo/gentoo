@@ -1,0 +1,41 @@
+From 5bc17590cb096340fc695da3020883130437d745 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 12 Feb 2016 13:22:13 -0500
+Subject: [PATCH] Make.defaults: Improve gcc/clang detection
+
+The old filter only matched "gcc" or "clang".
+
+The new findstring call matches any occurance of gcc or clang. This is
+useful when CC includes the full host tuple, like x86_64-pc-linux-gnu-gcc.
+
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+---
+ Make.defaults | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Make.defaults b/Make.defaults
+index bf814b8..5aed21e 100644
+--- a/Make.defaults
++++ b/Make.defaults
+@@ -25,14 +25,14 @@ PKGS	=
+ clang_cflags =
+ gcc_cflags = -specs=$(TOPDIR)/gcc.specs
+ cflags	= $(CFLAGS) -I${TOPDIR}/src/include/efivar/ \
+-	$(if $(filter $(CC),clang),$(clang_cflags),) \
+-	$(if $(filter $(CC),gcc),$(gcc_cflags),) \
++	$(if $(findstring clang,$(CC)),$(clang_cflags),) \
++	$(if $(findstring gcc,$(CC)),$(gcc_cflags),) \
+ 	$(call pkg-config-cflags)
+ clang_ccldflags =
+ gcc_ccldflags =
+ ccldflags = $(cflags) $(CCLDFLAGS) $(LDFLAGS) \
+-	$(if $(filter $(CCLD),clang),$(clang_ccldflags),) \
+-	$(if $(filter $(CCLD),gcc),$(gcc_ccldflags),) \
++	$(if $(findstring clang,$(CCLD)),$(clang_ccldflags),) \
++	$(if $(findstring gcc,$(CCLD)),$(gcc_ccldflags),) \
+ 	$(call pkg-config-ccldflags)
+ SOFLAGS=-shared
+ LDLIBS=$(foreach lib,$(LIBS),-l$(lib)) $(call pkg-config-ldlibs)
+-- 
+2.7.1
+
