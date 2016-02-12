@@ -30,7 +30,10 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtopengl:5
 	dev-qt/qtscript:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtwidgets:5
 	virtual/opengl
+	sys-libs/zlib
 	sound? ( dev-qt/qtmultimedia:5[widgets] )"
 DEPEND="${RDEPEND}
 	dev-qt/qttest:5
