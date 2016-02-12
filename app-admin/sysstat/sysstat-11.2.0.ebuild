@@ -77,8 +77,10 @@ src_install() {
 	keepdir /var/log/sa
 
 	emake \
+		CHOWN=true \
 		DESTDIR="${D}" \
 		DOC_DIR=/usr/share/doc/${PF} \
+		MANGRPARG='' \
 		install
 
 	dodoc contrib/sargraph/sargraph
