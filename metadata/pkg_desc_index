@@ -8700,7 +8700,7 @@ dev-ruby/gnuplot 2.6.2-r2: Gnuplot drawing library - Ruby Bindings
 dev-ruby/gpgme 2.0.10 2.0.11 2.0.12: Ruby language binding for GnuPG Made Easy
 dev-ruby/gruff 0.6.0: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 4.0.6 4.0.6-r1 4.0.7: A ruby web page templating engine
-dev-ruby/hashdiff 0.2.2 0.2.3: Simple Hash extension to make working with nested hashes easier and less error-prone
+dev-ruby/hashdiff 0.2.2 0.2.3 0.3.0: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashery 2.1.1: The Hashery is a tight collection of Hash-like classes
 dev-ruby/hashicorp-checkpoint 0.1.4: Internal HashiCorp service to check version information
 dev-ruby/hashie 2.1.2 2.1.2-r1 3.4.2 3.4.3: Hashie is a small collection of tools that make hashes more powerful
@@ -8814,7 +8814,7 @@ dev-ruby/mysql2 0.3.19 0.3.20 0.4.1 0.4.2: A modern, simple and very fast Mysql 
 dev-ruby/nagios 0.0.4-r1: Nagios-rb is a compact framework for writing Nagios plugins
 dev-ruby/nagios_analyzer 0.0.5-r1: A simple parser for Nagios status files
 dev-ruby/nanotest 0.9.4.1: Extremely mynymal test framework
-dev-ruby/narray 0.6.0.8-r1 0.6.0.8-r2 0.6.0.9 0.6.1.1: Numerical N-dimensional Array class
+dev-ruby/narray 0.6.0.8-r1 0.6.1.1 0.6.1.2: Numerical N-dimensional Array class
 dev-ruby/naught 1.0.0 1.1.0: A toolkit for building Null Objects in Ruby
 dev-ruby/nenv 0.2.0 0.3.0: Convenient wrapper for Ruby's ENV
 dev-ruby/net-http-digest_auth 1.4-r1 1.4-r2: An implementation of RFC 2617 - Digest Access Authentication
@@ -8879,7 +8879,7 @@ dev-ruby/qed 2.9.1 2.9.2: QED (Quality Ensured Demonstrations) is a TDD/BDD fram
 dev-ruby/racc 1.4.11 1.4.12 1.4.13 1.4.14: A LALR(1) parser generator for Ruby
 dev-ruby/rack 1.4.7 1.5.5 1.6.4: A modular Ruby webserver interface
 dev-ruby/rack-attack 4.3.1 4.4.0: A DSL for blocking & throttling abusive clients
-dev-ruby/rack-cache 1.3.0 1.5.1 1.6.0: Enable HTTP caching for Rack-based applications that produce freshness info
+dev-ruby/rack-cache 1.3.0 1.5.1 1.6.0 1.6.1: Enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-mount 0.8.3-r2: A stackable dynamic tree based Rack router
 dev-ruby/rack-openid 1.3.1 1.4.2: Provides a more HTTPish API around the ruby-openid library
 dev-ruby/rack-protection 1.5.3 1.5.3-r1: This gem protects against typical web attacks
@@ -14283,7 +14283,7 @@ net-mail/cyrus-imap-admin 2.4.17-r1 2.4.18: Utilities and Perl modules to admini
 net-mail/cyrus-imapd 2.4.16 2.4.17 2.4.17-r1 2.4.18 2.5.4 2.5.5 2.5.6 2.5.7: The Cyrus IMAP Server
 net-mail/dbmail 3.2.2 3.2.3: DBMail is an open-source project that enables storage of mail messages in a relational database
 net-mail/dot-forward 0.71-r2 0.71-r3: reads sendmail's .forward files under qmail
-net-mail/dovecot 2.2.19 2.2.19-r1 2.2.21 2.2.21-r1: An IMAP and POP3 server written with security primarily in mind
+net-mail/dovecot 2.2.19 2.2.19-r1 2.2.21 2.2.21-r1 2.2.21-r2: An IMAP and POP3 server written with security primarily in mind
 net-mail/email 2.5.0 3.0.5 3.1.2 3.1.3: Advanced CLI tool for sending email
 net-mail/eps 1.7: Inter7 Email Processing and mht System library
 net-mail/ezmlm-idx 6.0.0 7.0.0 7.0.0-r1 7.0.0-r2: Simple yet powerful mailing list manager for qmail
@@ -17474,7 +17474,7 @@ www-apache/mod_log_sql 1.101-r1 1.101-r2: An Apache module for logging to an SQL
 www-apache/mod_macro 1.1.10 1.2.1: An Apache2 module providing macros for the Apache config file
 www-apache/mod_mono 2.10: Apache module for Mono
 www-apache/mod_musicindex 1.4.1: mod_musicindex allows nice displaying of directories containing music files
-www-apache/mod_nss 1.0.11: SSL/TLS module for the Apache HTTP server
+www-apache/mod_nss 1.0.12: SSL/TLS module for the Apache HTTP server
 www-apache/mod_pcgi2 2.0.2: An Apache module to talk to Zope Corporation's PCGI
 www-apache/mod_perl 2.0.8 2.0.8-r3 2.0.10_pre201601: An embedded Perl interpreter for Apache2
 www-apache/mod_proxy_fcgi 0_p816361: mod_proxy_fcgi is a FastCGI protocol handler for mod_proxy
@@ -17820,7 +17820,7 @@ x11-base/xorg-server 1.12.4-r5 1.12.4-r7 1.15.2-r2 1.15.2-r4 1.16.4 1.16.4-r5 1.
 x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/afb-ucode 1.3.11: Binary blob microcode for Elite3D framebuffers to use X, required by xf86-video-sunffb
 x11-drivers/ati-drivers 15.9-r1 15.12 15.12-r1: Ati precompiled drivers for Radeon Evergreen (HD5000 Series) and newer chipsets
-x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 304.131 304.131-r1 304.131-r3 340.93-r1 340.96 340.96-r4 346.96-r1 346.96-r5 352.63 352.79 352.79-r3 355.11-r2 355.11-r3 358.16-r1 358.16-r4 361.28: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 304.131 304.131-r1 304.131-r3 340.93-r1 340.96 340.96-r4 346.96-r1 346.96-r5 352.63 352.79 352.79-r3 355.11-r2 355.11-r3 358.16-r1 358.16-r4 361.28 361.28-r1: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-acecad 1.5.0: Acecad Flair input driver
 x11-drivers/xf86-input-aiptek 1.4.1: Aiptek USB Digital Tablet Input Driver for Linux
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
