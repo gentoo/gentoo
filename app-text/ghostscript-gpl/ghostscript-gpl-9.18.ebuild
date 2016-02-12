@@ -124,6 +124,10 @@ src_prepare() {
 	sed -i \
 		-e "/^ZLIBDIR=/s:=.*:=${T}:" \
 		configure.ac || die
+	# Some files depend on zlib.h directly.  Redirect them. #573248
+	sed -i \
+		-e '/^zlib_h/s:=.*:=:' \
+		base/lib.mak || die
 
 	# search path fix
 	# put LDFLAGS after BINDIR, bug #383447
