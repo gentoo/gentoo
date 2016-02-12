@@ -27,8 +27,8 @@ src_configure() {
 	local has_peercred
 	use kernel_linux && has_peercred="-DHASPEERCRED=1"
 
-	echo "$(tc-getCC) ${CFLAGS} -I/usr/include/bglibs ${has_peercred} -D_GNU_SOURCE" > conf-cc
-	echo "$(tc-getCC) ${LDFLAGS} -L/usr/$(get_libdir)/bglibs" > conf-ld
+	echo "$(tc-getCC) ${CPPFLAGS} ${CFLAGS} -I/usr/include/bglibs ${has_peercred} -D_GNU_SOURCE" > conf-cc
+	echo "$(tc-getCC) ${CFLAGS} ${LDFLAGS} -L/usr/$(get_libdir)/bglibs" > conf-ld
 }
 
 src_install() {
