@@ -16878,8 +16878,8 @@ sys-fs/arm-fdisk 3.0.6-r1: edit disk partitions on Acorn machines
 sys-fs/atari-fdisk 0.7.1.5.4: create and edit the partition table of a disk partitioned in Atari format
 sys-fs/aufs-headers 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116: User space headers for aufs3
 sys-fs/aufs-util 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116: Utilities are always necessary for aufs
-sys-fs/aufs3 3_p20150406 3_p20150420 3_p20150504 3_p20150511 3_p20150518 3_p20150525 3_p20150608 3_p20150622 3_p20151012 3_p20151102 3_p20151109 3_p20151116 3_p20151221 3_p20160118: An entirely re-designed and re-implemented Unionfs
-sys-fs/aufs4 0_pre20150420 0_pre20150504 0_pre20150511 0_pre20150518 0_pre20150525 0_pre20150608 0_pre20150622 0_pre20150629 0_pre20150928 0_pre20151012 0_pre20151102 0_pre20151109 0_pre20151116 0_pre20151221 0_pre20160111 0_pre20160118: An entirely re-designed and re-implemented Unionfs
+sys-fs/aufs3 3_p20150406 3_p20150420 3_p20150504 3_p20150511 3_p20150518 3_p20150525 3_p20150608 3_p20150622 3_p20151012 3_p20151102 3_p20151109 3_p20151116 3_p20151221 3_p20160118 3_p20160215: An entirely re-designed and re-implemented Unionfs
+sys-fs/aufs4 0_pre20150420 0_pre20150504 0_pre20150511 0_pre20150518 0_pre20150525 0_pre20150608 0_pre20150622 0_pre20150629 0_pre20150928 0_pre20151012 0_pre20151102 0_pre20151109 0_pre20151116 0_pre20151221 0_pre20160111 0_pre20160118 0_pre20160215: An entirely re-designed and re-implemented Unionfs
 sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
 sys-fs/avfs 1.0.1 1.0.2 1.0.3: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: A bash script that uses udisks to handle removable devices without dependencies on any GUI
