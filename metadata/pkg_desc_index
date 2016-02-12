@@ -4996,7 +4996,7 @@ dev-ml/camlzip 1.05: Compressed file access ML library (ZIP, GZIP and JAR)
 dev-ml/camomile 0.8.4 0.8.5: Camomile is a comprehensive Unicode library for ocaml
 dev-ml/cmdliner 0.9.7 0.9.8: Declarative definition of command line interfaces for OCaml
 dev-ml/comparelib 109.60.00 113.00.00: Camlp4 syntax extension that derives comparison functions from type representations
-dev-ml/core 113.24.00: Jane Street's alternative to the standard library
+dev-ml/core 113.24.00 113.24.01: Jane Street's alternative to the standard library
 dev-ml/core_bench 112.35.00 113.24.00: Micro-benchmarking library for OCaml
 dev-ml/core_extended 113.24.00: Jane Street's alternative to the standard library
 dev-ml/core_kernel 113.24.00: System-independent part of Core
@@ -5090,7 +5090,7 @@ dev-ml/pomap 3.0.2 3.0.3 3.0.5: Partially Ordered Map ADT for O'Caml
 dev-ml/postgresql-ocaml 2.0.5 3.2.2: A package for ocaml that provides access to PostgreSQL databases
 dev-ml/ppx_assert 113.24.00: Optional compilation for OCaml
 dev-ml/ppx_bench 113.24.00: Syntax extension for writing in-line benchmarks in ocaml code
-dev-ml/ppx_bin_prot 113.24.00: Generation of bin_prot readers and writers from types
+dev-ml/ppx_bin_prot 113.24.00 113.24.01: Generation of bin_prot readers and writers from types
 dev-ml/ppx_compare 113.24.00: Generation of comparison functions from types
 dev-ml/ppx_core 113.24.00: Standard library for ppx rewriters
 dev-ml/ppx_custom_printf 113.24.00: Printf-style format-strings for user-defined string conversion
@@ -5102,7 +5102,7 @@ dev-ml/ppx_fail 113.24.00: Add location to calls to failwiths
 dev-ml/ppx_fields_conv 113.24.00: Generation of accessor and iteration functions for ocaml records
 dev-ml/ppx_here 113.24.00: Expands [%here] into its location
 dev-ml/ppx_inline_test 113.24.00: Syntax extension for writing in-line tests in ocaml code
-dev-ml/ppx_jane 113.24.00: Standard Jane Street ppx rewriters
+dev-ml/ppx_jane 113.24.00 113.24.01: Standard Jane Street ppx rewriters
 dev-ml/ppx_let 113.24.00: Monadic let-bindings
 dev-ml/ppx_optcomp 113.24.00: Optional compilation for OCaml
 dev-ml/ppx_pipebang 113.24.00: A ppx rewriter that inlines reverse application operators |> and |!
