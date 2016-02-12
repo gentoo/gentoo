@@ -13,7 +13,7 @@ SRC_URI="mirror://kernel/linux/bluetooth/${P}.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/3"
-KEYWORDS="amd64 arm ~hppa ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm ~hppa ~mips ~ppc ppc64 ~x86"
 IUSE="cups doc debug extra-tools +obex +readline selinux systemd test test-programs +udev"
 REQUIRED_USE="test? ( ${PYTHON_REQUIRED_USE} ) test-programs? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -91,6 +91,9 @@ src_prepare() {
 
 	# ???
 	epatch "${FILESDIR}"/0004-agent-Assert-possible-infinite-loop.patch
+
+	# bug 574092
+	epatch "${FILESDIR}"/${PN}-5.37-endian.patch
 
 	if use cups; then
 		sed -i \
