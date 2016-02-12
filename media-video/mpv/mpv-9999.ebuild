@@ -33,7 +33,7 @@ IUSE="+alsa archive bluray cdda +cli doc drm dvb +dvd +egl +enca encode gbm
 	+iconv jack jpeg lcms +libass libav libcaca libguess libmpv lua luajit
 	openal +opengl oss pulseaudio raspberry-pi rubberband samba sdl selinux
 	test uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama +xscreensaver
-	xv zsh-completion"
+	+xv zsh-completion"
 
 REQUIRED_USE="
 	|| ( cli libmpv )
