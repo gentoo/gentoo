@@ -53,6 +53,8 @@ RDEPEND="${COMMON_DEPEND}
 	!<kde-plasma/plasma-workspace-5.4.50
 "
 
+RESTRICT="test"
+
 PATCHES=(
 	"${FILESDIR}/${PN}-5.4.90-no-SUID-no-GUID.patch"
 	"${FILESDIR}/${P}-lockscreen-bypass.patch"
