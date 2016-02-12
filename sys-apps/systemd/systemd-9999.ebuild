@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -429,6 +429,7 @@ pkg_postinst() {
 	enewgroup input
 	enewgroup systemd-journal
 	newusergroup systemd-bus-proxy
+	newusergroup systemd-coredump
 	newusergroup systemd-journal-gateway
 	newusergroup systemd-journal-remote
 	newusergroup systemd-journal-upload
