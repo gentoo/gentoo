@@ -30,7 +30,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	$(python_gen_any_dep 'gnome-extra/zeitgeist[${PYTHON_USEDEP}]')
 	dev-util/automoc
-	gnome-extra/zeitgeist
 "
 
 python_check_deps() {
