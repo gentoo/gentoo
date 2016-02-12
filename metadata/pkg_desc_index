@@ -15698,7 +15698,7 @@ sci-libs/gerris 20120731 20130531 20131206: Gerris Flow Solver
 sci-libs/getdata 0.8.5 0.9.0 0.9.0-r1: Reference implementation of the Dirfile, format for time-ordered binary data
 sci-libs/gpp4 1.3.1: A standalone, drop-in replacement for the CCP4 library
 sci-libs/grib_api 1.9.16 1.11.0: Library for decoding WMO FM-92 GRIB messages
-sci-libs/gsl 1.14 1.16: The GNU Scientific Library
+sci-libs/gsl 1.14 1.16 2.1: The GNU Scientific Library
 sci-libs/gts 20121130: GNU Triangulated Surface Library
 sci-libs/hdf 4.2.8 4.2.9: General purpose library and format for storing scientific data
 sci-libs/hdf5 1.8.14-r1 1.8.15_p1: General purpose library and file format for storing scientific data
