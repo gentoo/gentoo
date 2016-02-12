@@ -1754,7 +1754,7 @@ app-misc/g15message 1.0.0: A simple message/alert client for G15daemon
 app-misc/g15mpd 1.0.0-r1: MPD (music player daemon) plugin to G15daemon
 app-misc/g15stats 1.9.7: CPU, memory, swap, network stats for G15 Keyboard
 app-misc/gcal 3.6.3: The GNU Calendar - a replacement for cal
-app-misc/gcalcli 3.2: Google Calendar Command Line Interface
+app-misc/gcalcli 3.2 3.3.2: Google Calendar Command Line Interface
 app-misc/gcstar 1.7.0: Manage your collections of movies, games, books, music and more
 app-misc/geekcode 1.7.3-r1: Geek code generator
 app-misc/geneweb 6.07: Genealogy software program with a Web interface
@@ -9418,7 +9418,7 @@ dev-util/catalyst 2.0.18-r1 2.0.9999 2.9999 3.0_rc1 9999: Release metatool used 
 dev-util/catfish 1.2.2: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.6.16-r2 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/ccache 2.4-r9 3.1.9-r4 3.1.10-r1 3.2.1-r1 3.2.2 3.2.3 3.2.4: fast compiler cache
-dev-util/cccc 3.1.4-r1: Source code metrics (line counts, complexity, etc) for Java and C++
+dev-util/cccc 3.1.5: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccglue 0.3.1 0.6.0: Produce cross-reference files from cscope and ctags for use with app-vim/cctree
 dev-util/ccmalloc 0.4.0-r2: A easy-to-use memory debugging library
 dev-util/cdecl 2.5-r2: Turn English phrases to C or C++ declarations
@@ -17068,7 +17068,7 @@ sys-libs/cracklib 2.9.1-r1 2.9.4 2.9.5 2.9.6: Password Checking Library
 sys-libs/csu 79 85: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/db 1.85-r3 3.2.9_p2 4.2.52_p5-r1 4.3.29_p1-r1 4.4.20_p4-r1 4.5.20_p2-r1 4.6.21_p4 4.7.25_p4 4.8.30-r1 4.8.30-r2 5.1.29-r1 5.3.28-r2 6.0.30-r1 6.0.35 6.1.26: Oracle Berkeley DB
 sys-libs/e2fsprogs-libs 1.41.7 1.42.12 1.42.13: e2fsprogs libraries (common error and subsystem)
-sys-libs/efivar 0.21: Tools and library to manipulate EFI variables
+sys-libs/efivar 0.21 0.22: Tools and library to manipulate EFI variables
 sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify source.
 sys-libs/freeipmi 1.2.2 1.4.3 1.4.6-r1 1.4.8: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2: Standalone fts library for use with musl
