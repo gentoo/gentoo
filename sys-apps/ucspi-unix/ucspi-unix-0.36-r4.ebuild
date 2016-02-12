@@ -17,6 +17,8 @@ IUSE=""
 
 # We statically link bglibs.
 DEPEND=">=dev-libs/bglibs-1.106"
+# Block other unixcat installers. #480546
+RDEPEND="!net-analyzer/mk-livestatus"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-gentoo-head.patch
