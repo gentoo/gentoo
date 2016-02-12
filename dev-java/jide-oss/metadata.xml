@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription>This module was the foundation for all JIDE commercial products. It was delivered as jide-common.jar in all former releases. In April of 2007, JIDE Software open sourced the module under GPL+classpath exception, hoping more and more people will join the project and push it to the next level.</longdescription>
+	<upstream>
+		<remote-id type="github">jidesoft/jide-oss</remote-id>
+	</upstream>
+</pkgmetadata>
