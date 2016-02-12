@@ -16798,7 +16798,7 @@ sys-devel/clang 3.3-r100 3.4.2-r100 3.5.0-r100 3.5.2-r100 3.6.2-r100 3.7.0-r100 
 sys-devel/cons 2.2.0: Extensible perl-based build utility
 sys-devel/crossdev 20150602 20150716 20151026 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.21.0 1.22.0: crosstool-ng is a tool to build cross-compiling toolchains
-sys-devel/dev86 0.16.19 0.16.21 0.16.21-r1: Bruce's C compiler - Simple C compiler to generate 8086 code
+sys-devel/dev86 0.16.19 0.16.21 0.16.21-r2: Bruce's C compiler - Simple C compiler to generate 8086 code
 sys-devel/distcc 3.1-r10 3.2_rc1-r4: Distribute compilation of C code across several machines on a network
 sys-devel/dwz 0.9: DWARF optimization and duplicate removal tool
 sys-devel/flex 2.5.39-r1 2.6.0: The Fast Lexical Analyzer
