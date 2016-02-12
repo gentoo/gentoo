@@ -3922,6 +3922,11 @@ media-libs/devil:allegro - Add support for Allegro
 media-libs/devil:nvtt - Add support for dev-util/nvidia-texture-tools
 media-libs/edje:cache - Enable caching
 media-libs/elementary:quicklaunch - Enable quick-launch support
+media-libs/embree:imagemagick - Enables BMP, GIF, PNG, TGA, TIFF image codecs.
+media-libs/embree:ispc - Enables support for the Intel SPMD Program Compiler.
+media-libs/embree:jpeg - Enables JPEG image codecs.
+media-libs/embree:openexr - Enables OpenEXR image codecs.
+media-libs/embree:png - Enables PNG image codecs.
 media-libs/emotion:vlc - Enable support for the media-video/vlc player backend
 media-libs/esdl:image - Enable image support
 media-libs/ethumb:emotion - Add support for media-libs/emotion
