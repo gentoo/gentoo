@@ -190,11 +190,6 @@ www-apache/mod_auth_pgsql
 # Errorneously added. Is already in perl-core. Please uninstall.
 dev-perl/ExtUtils-Constant
 
-# Michael Palimaka <kensington@gentoo.org)> (09 Jan 2016)
-# Fails to build with newer versions of llvm. Dead upstream. No revdeps.
-# Masked for removal in 30 days. Bug #571212.
-media-libs/opengtl
-
 # Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
 # Cannot be downloaded either mirrored, bug #561142. Removal in a month
 games-fps/ut2004-alienswarm
