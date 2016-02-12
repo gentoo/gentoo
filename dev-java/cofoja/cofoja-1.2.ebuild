@@ -10,7 +10,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Contracts for Java"
 HOMEPAGE="https://github.com/nhatminhle/cofoja"
-SRC_URI="https://github.com/nhatminhle/${PN}/archive/v${PV}.zip"
+SRC_URI="https://github.com/nhatminhle/${PN}/archive/v${PV}.zip -> ${P}.zip"
 
 LICENSE="LGPL-2"
 SLOT="0"
