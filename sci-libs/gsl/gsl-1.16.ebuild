@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -49,7 +49,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-cblas.patch
 	eautoreconf
 
-	cp "${FILESDIR}"/eselect.cblas.gsl "${T}"/
+	cp "${FILESDIR}"/eselect.cblas.gsl "${T}"/ || die
 	sed -i -e "s:/usr:${EPREFIX}/usr:" "${T}"/eselect.cblas.gsl || die
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		sed -i -e 's/\.so\([\.0-9]\+\)\?/\1.dylib/g' \
@@ -68,10 +68,14 @@ src_configure() {
 		$(use_enable static-libs static)
 }
 
+src_test() {
+	emake -j1 check
+}
+
 src_install() {
 	default
 
-	find "${ED}" -name '*.la' -exec rm -f {} +
+	find "${ED}" -name '*.la' -exec rm -f {} + || die
 
 	# take care of pkgconfig file for cblas implementation.
 	sed -e "s/@LIBDIR@/$(get_libdir)/" \
@@ -81,7 +85,7 @@ src_install() {
 		"${FILESDIR}"/cblas.pc.in > cblas.pc \
 		|| die "sed cblas.pc failed"
 	insinto /usr/$(get_libdir)/blas/gsl
-	doins cblas.pc || die "installing cblas.pc failed"
+	doins cblas.pc
 	eselect cblas add $(get_libdir) "${T}"/eselect.cblas.gsl \
 		${ESELECT_PROF}
 }
@@ -100,8 +104,4 @@ pkg_postinst() {
 		elog "To use ${p} ${ESELECT_PROF} implementation, you have to issue (as root):"
 		elog "\t eselect ${p} set ${ESELECT_PROF}"
 	fi
-}
-
-src_test() {
-	emake -j1 check || die
 }
