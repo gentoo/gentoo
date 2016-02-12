@@ -22,8 +22,11 @@ RDEPEND="
 	sys-libs/readline:*
 	curl? ( net-misc/curl )
 	taglib? ( media-libs/taglib )
-	unicode? ( dev-libs/boost:=[icu] )
-	visualizer? ( sci-libs/fftw:3.0 )
+	unicode? (
+		dev-libs/boost:=[icu]
+		dev-libs/icu:=
+	)
+	visualizer? ( sci-libs/fftw:3.0= )
 "
 DEPEND="
 	${RDEPEND}
