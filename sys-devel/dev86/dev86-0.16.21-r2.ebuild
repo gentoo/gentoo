@@ -58,7 +58,9 @@ src_compile() {
 
 	export PATH=${S}/bin:${PATH}
 
-	ln -s bin/{ncc,bcc} || die
+	cd bin || die
+	ln -s ncc bcc || die
+	cd .. || die
 
 	cd bootblocks || die
 	emake DIST="${D}"
