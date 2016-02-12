@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="5"
 
 inherit eutils toolchain-funcs multilib
 
@@ -15,6 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE=""
 
+# We statically link bglibs.
 DEPEND=">=dev-libs/bglibs-1.106"
 
 src_prepare() {
@@ -32,7 +33,7 @@ src_configure() {
 }
 
 src_install() {
-	dobin unixserver unixclient unixcat || die
+	dobin unixserver unixclient unixcat
 	doman unixserver.1 unixclient.1
 	dodoc ANNOUNCEMENT NEWS PROTOCOL README TODO
 }
