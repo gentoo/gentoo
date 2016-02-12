@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=test? ( dev-php/phpunit )
+DESCRIPTION=Andrew McMillan's Web Libraries
+EAPI=5
+HOMEPAGE=https://gitlab.com/davical-project/awl
+IUSE=doc test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/php:*[pdo,postgres,xml]
+SLOT=0
+SRC_URI=https://gitlab.com/davical-project/awl/repository/archive.tar.gz?ref=r0.56 -> awl-0.56.tar.gz
+_eclass_exported_funcs=src_unpack:- src_compile:- src_test:- src_install:-
+_md5_=4bf22ff1542866567eca07a37b7063ad
