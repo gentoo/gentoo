@@ -1,14 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
-MY_EXTRAS_VER="20150509-1847Z"
 
-# Build system
-BUILD="cmake"
+MY_EXTRAS_VER="20160212-0233Z"
+MY_PV="${PV//_alpha_pre/-m}"
+MY_PV="${MY_PV//_/-}"
+HAS_TOOLS_PATCH="1"
+SUBSLOT="18"
 
-inherit toolchain-funcs mysql-v2
+inherit mysql-multilib-r1
 # only to make repoman happy. it is really set in the eclass
 IUSE="$IUSE"
 
@@ -25,12 +27,29 @@ RDEPEND="${RDEPEND}"
 # If you want to add a single patch, copy the ebuild to an overlay
 # and create your own mysql-extras tarball, looking at 000_index.txt
 
+# validate_password plugin uses exceptions when it shouldn't yet (until 5.7)
+# disable until we see what happens with it
+MYSQL_CMAKE_NATIVE_DEFINES=( -DWITHOUT_VALIDATE_PASSWORD=1 )
+
+src_prepare() {
+	mysql-multilib-r1_src_prepare
+	if use libressl ; then
+		sed -i 's/OPENSSL_MAJOR_VERSION STREQUAL "1"/OPENSSL_MAJOR_VERSION STREQUAL "2"/' \
+			"${S}/cmake/ssl.cmake" || die
+	fi
+}
+
 # Official test instructions:
-# USE='embedded extraengine perl openssl static-libs community' \
+# USE='server embedded extraengine perl openssl static-libs' \
 # FEATURES='test userpriv -usersandbox' \
-# ebuild mariadb-X.X.XX.ebuild \
+# ebuild mysql-X.X.XX.ebuild \
 # digest clean package
-src_test() {
+multilib_src_test() {
+
+	if ! multilib_is_native_abi ; then
+		einfo "Server tests not available on non-native abi".
+		return 0;
+	fi
 
 	local TESTDIR="${BUILD_DIR}/mysql-test"
 	local retstatus_unit
@@ -40,7 +59,7 @@ src_test() {
 	# localhost. Also causes weird failures.
 	[[ "${HOSTNAME}" == "localhost" ]] && die "Your machine must NOT be named localhost"
 
-	if ! use "minimal" ; then
+	if use server ; then
 
 		if [[ $UID -eq 0 ]]; then
 			die "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
@@ -65,39 +84,64 @@ src_test() {
 		# create directories because mysqladmin might right out of order
 		mkdir -p "${T}"/var-tests{,/log}
 
-		# create symlink for the tests to find the replace util
-		ln -s "${BUILD_DIR}/extra/replace" "${BUILD_DIR}/client/"
+		# create symlink for the tests to find mysql_tzinfo_to_sql
+		ln -s "${BUILD_DIR}/sql/mysql_tzinfo_to_sql" "${S}/sql/"
 
-		# These are failing in MariaDB 5.5 for now and are believed to be
+		# These are failing in MySQL 5.5/5.6 for now and are believed to be
 		# false positives:
 		#
 		# main.information_schema, binlog.binlog_statement_insert_delayed,
-		# main.mysqld--help, funcs_1.is_triggers, funcs_1.is_tables_mysql,
-		# funcs_1.is_columns_mysql
+		# funcs_1.is_triggers funcs_1.is_tables_mysql,
+		# funcs_1.is_columns_mysql, binlog.binlog_mysqlbinlog_filter,
+		# perfschema.binlog_edge_mix, perfschema.binlog_edge_stmt,
+		# mysqld--help-notwin, funcs_1.is_triggers, funcs_1.is_tables_mysql, funcs_1.is_columns_mysql
+		# perfschema.binlog_edge_stmt, perfschema.binlog_edge_mix, binlog.binlog_mysqlbinlog_filter
 		# fails due to USE=-latin1 / utf8 default
 		#
-		# main.mysql_client_test, main.mysql_client_test_nonblock:
+		# main.mysql_client_test:
 		# segfaults at random under Portage only, suspect resource limits.
 		#
-		# archive.mysqlhotcopy_archive main.mysqlhotcopy_myisam
+		# rpl.rpl_plugin_load
+		# fails due to included file not listed in expected result
+		# appears to be poor planning
+		#
+		# main.mysqlhotcopy_archive main.mysqlhotcopy_myisam
 		# fails due to bad cleanup of previous tests when run in parallel
 		# The tool is deprecated anyway
 		# Bug 532288
-
-		for t in main.mysql_client_test main.mysql_client_test_nonblock \
-			binlog.binlog_statement_insert_delayed main.information_schema \
-			main.mysqld--help \
-			archive.mysqlhotcopy_archive main.mysqlhotcopy_myisam \
-			funcs_1.is_triggers funcs_1.is_tables_mysql funcs_1.is_columns_mysql ; do
-				mysql-v2_disable_test  "$t" "False positives in Gentoo"
+		for t in \
+			binlog.binlog_mysqlbinlog_filter \
+			binlog.binlog_statement_insert_delayed \
+			funcs_1.is_columns_mysql \
+			funcs_1.is_tables_mysql \
+			funcs_1.is_triggers \
+			main.information_schema \
+			main.mysql_client_test \
+			main.mysqld--help-notwin \
+			perfschema.binlog_edge_mix \
+			perfschema.binlog_edge_stmt \
+			rpl.rpl_plugin_load \
+			main.mysqlhotcopy_archive main.mysqlhotcopy_myisam \
+		; do
+				mysql-multilib-r1_disable_test  "$t" "False positives in Gentoo"
 		done
+
+		if ! use extraengine ; then
+			# bug 401673, 530766
+			for t in federated.federated_plugin ; do
+				mysql-multilib-r1_disable_test  "$t" "Test $t requires USE=extraengine (Need federated engine)"
+			done
+		fi
 
 		# Run mysql tests
 		pushd "${TESTDIR}"
 
+		# Set file limits higher so tests run
+		ulimit -n 3000
+
 		# run mysql-test tests
 		perl mysql-test-run.pl --force --vardir="${T}/var-tests" \
-			--testcase-timeout=30
+			--suite-timeout=5000 --reorder
 		retstatus_tests=$?
 		[[ $retstatus_tests -eq 0 ]] || eerror "tests failed"
 		has usersandbox $FEATURES && eerror "Some tests may fail with FEATURES=usersandbox"
@@ -117,7 +161,6 @@ src_test() {
 		einfo "Tests successfully completed"
 
 	else
-
 		einfo "Skipping server tests due to minimal build."
 	fi
 }

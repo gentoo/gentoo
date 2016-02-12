@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,10 @@ RDEPEND="
 	$(add_kdeapps_dep kabcclient)
 	$(add_kdeapps_dep kaddressbook)
 	$(add_kdeapps_dep kalarm)
-	$(add_kdeapps_dep kdepim-icons)
+	|| (
+		$(add_kdeapps_dep kdepim-icons)
+		>=kde-frameworks/oxygen-icons-5.19.0:5
+	)
 	$(add_kdeapps_dep kdepim-kresources)
 	$(add_kdeapps_dep kdepim-wizards)
 	$(add_kdeapps_dep kjots)
