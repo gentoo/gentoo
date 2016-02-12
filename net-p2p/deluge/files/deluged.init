@@ -42,7 +42,7 @@ start() {
 	start-stop-daemon --start --user "${DELUGED_USER%:*}" \
 	--name deluged --pidfile /var/run/deluged.pid --background --make-pidfile \
 	${DELUGED_UMASK:+--umask ${DELUGED_UMASK}} \
-	--exec /usr/bin/deluged -e HOME="${DELUGED_USER_HOME}" -- --do-not-daemonize "${DELUGED_OPTS}"
+	--exec /usr/bin/deluged -e HOME="${DELUGED_USER_HOME}" -- --do-not-daemonize ${DELUGED_OPTS}
 	eend $?
 
 	
