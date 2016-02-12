@@ -25,6 +25,7 @@ RDEPEND="
 	dev-lang/mlton
 	doc? (
 		virtual/latex-base
+		app-text/texi2html
 	)
 	emacs? (
 		virtual/emacs
