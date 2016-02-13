@@ -26,7 +26,9 @@ DOCS=( AUTHORS ChangeLog-2012 NEWS README THANKS TODO ) # ChangeLog-1998 PACKAGI
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-optional-perl.patch #538300
-	touch doc/bison.1 #548778
+	# The makefiles make the man page depend on the configure script
+	# which we patched above.  Touch it to prevent regeneration.
+	touch doc/bison.1 #548778 #538300#9
 }
 
 src_configure() {
