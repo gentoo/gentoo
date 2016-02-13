@@ -23,7 +23,7 @@ DEPEND="
 "
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-dontdieonme.patch
+	epatch "${FILESDIR}"/${PN}-1.3-dontdieonme.patch
 
 	epatch_user
 
