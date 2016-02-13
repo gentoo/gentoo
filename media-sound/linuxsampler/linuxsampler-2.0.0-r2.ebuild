@@ -13,7 +13,7 @@ SRC_URI="http://download.linuxsampler.org/packages/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc jack sqlite static-libs"
+IUSE="doc jack lv2 sqlite static-libs"
 
 RDEPEND="sqlite? ( >=dev-db/sqlite-3.3 )
 	>=media-libs/libgig-4.0.0
@@ -21,9 +21,11 @@ RDEPEND="sqlite? ( >=dev-db/sqlite-3.3 )
 	jack? ( media-sound/jack-audio-connection-kit )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
+	doc? ( app-doc/doxygen )
+	lv2? ( media-libs/lv2 )"
 PATCHES=(
 	"${FILESDIR}/${P}-nptl-hardened.patch"
+	"${FILESDIR}/${P}-lv2-automagic.patch"
 )
 
 src_prepare() {
@@ -39,6 +41,7 @@ src_configure() {
 		--enable-alsa-driver \
 		--disable-arts-driver \
 		$(use_enable jack jack-driver) \
+		$(use_enable lv2) \
 		$(use_enable sqlite instruments-db) \
 		$(use_enable static-libs static)
 }
@@ -50,9 +53,6 @@ src_compile() {
 
 src_install() {
 	default
-
-	docinto html
-	use doc && dodoc -r doc/html/*
-
+	use doc && dodoc -r doc/html
 	prune_libtool_files
 }
