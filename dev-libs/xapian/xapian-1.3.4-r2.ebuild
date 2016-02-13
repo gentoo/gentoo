@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://www.xapian.org/"
 SRC_URI="http://oligarchy.co.uk/xapian/${PV}/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
-SLOT="0/1.3.4" # ABI version of libxapian-1.3.so, prefixed with 1.3.
+SLOT="0/1.3.5" # ABI version of libxapian-1.3.so, prefixed with 1.3.
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc static-libs -cpu_flags_x86_sse +cpu_flags_x86_sse2 +brass +chert +inmemory"
 
@@ -55,6 +55,9 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install
+
+	# bug #573466
+	ln -sf "${D}usr/bin/xapian-config" "${D}usr/bin/xapian-config-1.3"
 
 	mv "${D}usr/share/doc/xapian-core" "${D}usr/share/doc/${PF}" || die
 	use doc || rm -rf "${D}usr/share/doc/${PF}"
