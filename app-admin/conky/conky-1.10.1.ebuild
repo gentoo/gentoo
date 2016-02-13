@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,7 +30,7 @@ DEPEND_COMMON="
 		lua-rsvg? (
 			>=dev-lua/toluapp-1.0.93
 			gnome-base/librsvg )
-		nvidia? ( media-video/nvidia-settings )
+		nvidia? ( || ( x11-drivers/nvidia-drivers[tools,static-libs] media-video/nvidia-settings ) )
 		truetype? ( x11-libs/libXft >=media-libs/freetype-2 )
 		x11-libs/libX11
 		x11-libs/libXdamage
