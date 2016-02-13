@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
 IUSE=""
 
-DEPEND="~dev-libs/xapian-${PV}
+DEPEND="dev-libs/xapian:0/1.3.5
 	dev-lang/perl
 	dev-libs/libpcre
 	sys-libs/zlib"
