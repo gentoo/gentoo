@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription>JChart2D is an minimalistic realtime charting library published under the OSI approved GNU LESSER GENERAL PUBLIC LICENSE. It is designed for displaying multiple traces consisting of tracepoints. JChart2D is centered around a single configureable swing widget: the Chart2D. It is a JComponent one can add to a java swing user interface. Therefore basic knowledge of java awt and swing and the information provided on this site is helpful. If no basic knowledge of swing and awt is given, the example code will give a quick entry as well.</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">jchart2d</remote-id>
+	</upstream>
+</pkgmetadata>
