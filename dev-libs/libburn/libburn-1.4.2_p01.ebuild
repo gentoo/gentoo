@@ -6,9 +6,11 @@ EAPI=5
 
 inherit eutils
 
+MY_PV="${PV/_p01/.pl01}"
+
 DESCRIPTION="Open-source library for reading, mastering and writing optical discs"
 HOMEPAGE="http://libburnia-project.org"
-SRC_URI="http://files.libburnia-project.org/releases/${P}.tar.gz"
+SRC_URI="http://files.libburnia-project.org/releases/${PN}-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,6 +20,8 @@ IUSE="cdio debug static-libs track-src-odirect"
 RDEPEND="cdio? ( >=dev-libs/libcdio-0.83 )"
 DEPEND="$RDEPEND
 	virtual/pkgconfig"
+
+S="${WORKDIR}/${P%_p01}"
 
 src_configure() {
 	econf \
