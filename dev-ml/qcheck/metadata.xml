@@ -18,6 +18,6 @@
         <flag name="ounit">Enable integration with ounit</flag>
     </use>
     <upstream>
-        <remote-id type="github">OCamlPro/ocplib-endian</remote-id>
+        <remote-id type="github">c-cube/qcheck</remote-id>
     </upstream>
 </pkgmetadata>
