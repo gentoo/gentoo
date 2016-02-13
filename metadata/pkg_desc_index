@@ -446,7 +446,7 @@ app-cdr/cdemu-daemon 2.1.1 3.0.2: Daemon of the CDEmu optical media image mounti
 app-cdr/cdlabelgen 4.0.0 4.1.0: CD cover, tray card and envelope generator
 app-cdr/cdrdao 1.2.3-r1 1.2.3-r2: Burn CDs in disk-at-once mode -- with optional GUI frontend
 app-cdr/cdrkit 1.1.11-r2: A set of tools for CD/DVD reading and recording, including cdrecord
-app-cdr/cdrtools 3.01_alpha17 3.01_alpha24 3.02_alpha02 3.02_alpha05: A set of tools for CD/DVD reading and recording, including cdrecord
+app-cdr/cdrtools 3.01_alpha17 3.01_alpha24 3.02_alpha05 3.02_alpha06: A set of tools for CD/DVD reading and recording, including cdrecord
 app-cdr/cdw 0.8.0 9999: An ncurses based console frontend for cdrtools and dvd+rw-tools
 app-cdr/cue2toc 0.4: Convert CUE files to cdrdao's TOC format
 app-cdr/cuecue 0.2.2-r1: Cuecue is a suite to convert .cue + [.ogg|.flac|.wav|.mp3] to .cue + .bin
@@ -4654,7 +4654,7 @@ dev-libs/libindicate-qt 0.2.5.91: Qt wrapper for libindicate library
 dev-libs/libindicator 12.10.0-r200 12.10.0-r300 12.10.1-r200 12.10.1-r201 12.10.1-r300 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
 dev-libs/libinput 0.9.0 1.0.1 1.1.0 1.1.3 1.1.4 1.1.5: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.6 0.19.7: the GNU international library (split out of gettext)
-dev-libs/libisoburn 1.3.8 1.4.0 1.4.2: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
+dev-libs/libisoburn 1.3.8 1.4.2: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.3.8 1.4.0 1.4.2: Open-source library for reading, mastering and writing optical discs
 dev-libs/libixion 0.7.0 0.9.0 0.9.1 9999: General purpose formula parser & interpreter
 dev-libs/libjit 0.1.2: Libjit is a generic Just-In-Time compilation library
