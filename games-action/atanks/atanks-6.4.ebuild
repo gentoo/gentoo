@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/atanks/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 
 DEPEND="media-libs/allegro:0[X]"
