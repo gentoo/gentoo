@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -107,6 +107,10 @@ src_prepare() {
 	sed "s,/lib,/$(get_libdir),g" -i install.sh || die
 	# #define SBCL_HOME ...
 	sed "s,/usr/local/lib,/usr/$(get_libdir),g" -i src/runtime/runtime.c || die
+
+	# Avoid sandbox violation, bug #572478
+	sed -i -e "/(sb-posix:rmdir /s%\"/\"%\"${WORKDIR}\"%" \
+		contrib/sb-posix/posix-tests.lisp || die
 
 	find . -type f -name .cvsignore -delete
 }
