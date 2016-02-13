@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="examples"
 
-RDEPEND="~dev-libs/xapian-${VERSION}
+RDEPEND="dev-libs/xapian:0/1.2.22
 	!dev-libs/xapian-bindings[perl]"
 DEPEND="${RDEPEND}
 	dev-perl/Module-Build"
