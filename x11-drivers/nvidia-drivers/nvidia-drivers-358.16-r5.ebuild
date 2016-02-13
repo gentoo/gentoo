@@ -20,45 +20,51 @@ SRC_URI="
 	amd64? ( ${NV_URI}Linux-x86_64/${PV}/${AMD64_NV_PACKAGE}.run )
 	x86-fbsd? ( ${NV_URI}FreeBSD-x86/${PV}/${X86_FBSD_NV_PACKAGE}.tar.gz )
 	x86? ( ${NV_URI}Linux-x86/${PV}/${X86_NV_PACKAGE}.run )
+	tools? ( ftp://download.nvidia.com/XFree86/nvidia-settings/nvidia-settings-${PV}.tar.bz2 )
 "
 
 LICENSE="GPL-2 NVIDIA-r2"
 SLOT="0/${PV%.*}"
 KEYWORDS="-* ~amd64 ~x86 ~amd64-fbsd ~x86-fbsd"
-RESTRICT="bindist mirror strip"
+RESTRICT="bindist mirror"
 EMULTILIB_PKG="true"
 
-IUSE="acpi multilib kernel_FreeBSD kernel_linux pax_kernel +tools gtk2 gtk3 +X uvm"
+IUSE="acpi multilib kernel_FreeBSD kernel_linux +kms pax_kernel static-libs +tools gtk3 +X uvm"
 REQUIRED_USE="
-	tools? ( X || ( gtk2 gtk3 ) )
+	tools? ( X )
+	static-libs? ( tools )
 "
 
 COMMON="
 	app-eselect/eselect-opencl
-	gtk3? ( x11-libs/cairo )
 	kernel_linux? ( >=sys-libs/glibc-2.6.1 )
+	tools? (
+		dev-libs/atk
+		dev-libs/glib:2
+		dev-libs/jansson
+		gtk3? ( x11-libs/gtk+:3 )
+		x11-libs/cairo
+		x11-libs/gdk-pixbuf[X]
+		x11-libs/gtk+:2
+		x11-libs/libX11
+		x11-libs/libXext
+		x11-libs/libXrandr
+		x11-libs/libXv
+		x11-libs/libXxf86vm
+		x11-libs/pango[X]
+	)
 	X? (
 		>=app-eselect/eselect-opengl-1.0.9
 	)
 "
 DEPEND="
 	${COMMON}
-	app-arch/xz-utils
 	kernel_linux? ( virtual/linux-sources )
 "
 RDEPEND="
 	${COMMON}
 	acpi? ( sys-power/acpid )
-	tools? (
-		dev-libs/atk
-		dev-libs/glib:2
-		x11-libs/gdk-pixbuf
-		gtk2? ( >=x11-libs/gtk+-2.4:2 )
-		gtk3? ( x11-libs/gtk+:3 )
-		x11-libs/libX11
-		x11-libs/libXext
-		x11-libs/pango[X]
-	)
+	tools? ( !media-video/nvidia-settings )
 	X? (
 		<x11-base/xorg-server-1.18.99:=
 		>=x11-libs/libvdpau-0.3-r1
@@ -80,17 +86,18 @@ pkg_pretend() {
 		die "Unexpected \${DEFAULT_ABI} = ${DEFAULT_ABI}"
 	fi
 
-	if use kernel_linux && kernel_is ge 4 3; then
+	if use kernel_linux && kernel_is ge 4 4; then
 		ewarn "Gentoo supports kernels which are supported by NVIDIA"
 		ewarn "which are limited to the following kernels:"
-		ewarn "<sys-kernel/gentoo-sources-4.3"
-		ewarn "<sys-kernel/vanilla-sources-4.3"
+		ewarn "<sys-kernel/gentoo-sources-4.4"
+		ewarn "<sys-kernel/vanilla-sources-4.4"
 		ewarn ""
 		ewarn "You are free to utilize epatch_user to provide whatever"
 		ewarn "support you feel is appropriate, but will not receive"
 		ewarn "support as a result of those changes."
 		ewarn ""
 		ewarn "Do not file a bug report about this."
+		ewarn ""
 	fi
 
 	# Since Nvidia ships many different series of drivers, we need to give the user
@@ -115,6 +122,7 @@ pkg_setup() {
 	if use kernel_linux; then
 		MODULE_NAMES="nvidia(video:${S}/kernel)"
 		use uvm && MODULE_NAMES+=" nvidia-uvm(video:${S}/kernel)"
+		use kms && MODULE_NAMES+=" nvidia-modeset(video:${S}/kernel)"
 
 		# This needs to run after MODULE_NAMES (so that the eclass checks
 		# whether the kernel supports loadable modules) but before BUILD_PARAMS
@@ -189,6 +197,25 @@ src_compile() {
 		MAKEOPTS=-j1
 		linux-mod_src_compile
 	fi
+
+	if use tools; then
+		emake -C "${S}"/nvidia-settings-${PV}/src \
+			AR="$(tc-getAR)" \
+			CC="$(tc-getCC)" \
+			LIBDIR="$(get_libdir)" \
+			RANLIB="$(tc-getRANLIB)" \
+			build-xnvctrl
+
+		emake -C "${S}"/nvidia-settings-${PV}/src \
+			CC="$(tc-getCC)" \
+			GTK3_AVAILABLE=$(usex gtk3 1 0) \
+			LD="$(tc-getCC)" \
+			LIBDIR="$(get_libdir)" \
+			NVML_ENABLED=0 \
+			NV_USE_BUNDLED_LIBJANSSON=0 \
+			NV_VERBOSE=1 \
+			STRIP_CMD=true
+	fi
 }
 
 # Install nvidia library:
@@ -242,7 +269,7 @@ src_install() {
 		# pkg_preinst, see bug #491414
 		insinto /etc/modprobe.d
 		newins "${FILESDIR}"/nvidia-169.07 nvidia.conf
-		use uvm && doins "${FILESDIR}"/nvidia-uvm.conf
+		doins "${FILESDIR}"/nvidia-rmmod.conf
 
 		# Ensures that our device nodes are created when not using X
 		exeinto "$(get_udevdir)"
@@ -337,27 +364,39 @@ src_install() {
 	fi
 
 	if use tools; then
-		doexe ${NV_OBJ}/nvidia-settings
-		use gtk2 && donvidia libnvidia-gtk2.so ${PV}
-		use gtk3 && donvidia libnvidia-gtk3.so ${PV}
+		emake -C "${S}"/nvidia-settings-${PV}/src/ \
+			DESTDIR="${D}" \
+			GTK3_AVAILABLE=$(usex gtk3 1 0) \
+			LIBDIR="${D}/usr/$(get_libdir)" \
+			PREFIX=/usr \
+			NV_USE_BUNDLED_LIBJANSSON=0 \
+			install
+
+		if use static-libs; then
+			dolib.a "${S}"/nvidia-settings-${PV}/src/libXNVCtrl/libXNVCtrl.a
+
+			insinto /usr/include/NVCtrl
+			doins "${S}"/nvidia-settings-${PV}/src/libXNVCtrl/*.h
+		fi
+
 		insinto /usr/share/nvidia/
 		doins nvidia-application-profiles-${PV}-key-documentation
+
 		insinto /etc/nvidia
-		newins nvidia-application-profiles-${PV}-rc nvidia-application-profiles-rc
+		newins \
+			nvidia-application-profiles-${PV}-rc nvidia-application-profiles-rc
+
+		# There is no icon in the FreeBSD tarball.
+		use kernel_FreeBSD || \
+			doicon ${NV_OBJ}/nvidia-settings.png
+
+		domenu "${FILESDIR}"/nvidia-settings.desktop
+
+		exeinto /etc/X11/xinit/xinitrc.d
+		newexe "${FILESDIR}"/95-nvidia-settings-r1 95-nvidia-settings
 	fi
 
 	dobin ${NV_OBJ}/nvidia-bug-report.sh
-
-	# Desktop entries for nvidia-settings
-	if use tools; then
-		# There is no icon in the FreeBSD tarball.
-		use kernel_FreeBSD || newicon ${NV_OBJ}/nvidia-settings.png ${PN}-settings.png
-		domenu "${FILESDIR}"/${PN}-settings.desktop
-		exeinto /etc/X11/xinit/xinitrc.d
-		doexe "${FILESDIR}"/95-nvidia-settings
-	fi
-
-	#doenvd "${FILESDIR}"/50nvidia-prelink-blacklist
 
 	if has_multilib_profile && use multilib; then
 		local OABI=${ABI}
