@@ -167,10 +167,6 @@ media-libs/evas
 # ghc-7.10, bug #561122
 dev-haskell/extra:0
 
-# James Le Cuirot <chewi@gentoo.org> (14 Jan 2016)
-# Superseded by gnu-classpath. Removal in 30 days.
-dev-java/gjdoc
-
 # Michał Górny <mgorny@gentoo.org> (11 Jan 2016)
 # (on behalf of Python team)
 # Masked for testing. python-exec now checks argv[0] to determine
