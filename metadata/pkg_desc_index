@@ -281,7 +281,7 @@ app-arch/lzma 9.20: LZMA Stream Compressor from the SDK
 app-arch/lzop 1.03: Utility for fast (even real-time) compression/decompression
 app-arch/makeself 2.1.5-r2 2.2.0-r1: shell script that generates a self-extractible tar.gz
 app-arch/mscompress 0.3-r1: Microsoft compress.exe/expand.exe compatible (de)compressor
-app-arch/mt-st 1.1: control magnetic tape drive operation
+app-arch/mt-st 1.1 1.2: control magnetic tape drive operation
 app-arch/ncompress 4.2.4.4: Another uncompressor for compatibility
 app-arch/p7zip 9.20.1-r5 9.38.1-r2 9.38.1-r3 15.09: Port of 7-Zip archiver for Unix
 app-arch/par 1.1: Parchive archive fixing tool
