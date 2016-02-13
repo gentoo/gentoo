@@ -1,5 +1,6 @@
 http://devel.aegisub.org/ticket/1902
 http://devel.aegisub.org/ticket/1903
+http://devel.aegisub.org/ticket/1911
 
 diff --git a/Makefile.inc.in b/Makefile.inc.in
 index 5a52d25..86f93d1 100644
@@ -28,3 +29,16 @@ index b021523..77a18ec 100644
 
  $(d)common/charset.o_FLAGS := $(CFLAGS_UCHARDET)
  $(d)common/charset_conv.o_FLAGS := $(CFLAGS_ICONV)
+diff --git a/tools/Makefile b/tools/Makefile
+index cbf985a..d9f64b8 100644
+--- a/tools/Makefile
++++ b/tools/Makefile
+@@ -7,7 +7,7 @@ PROGRAM += $(d)osx-bundle-restart-helper
+ endif
+
+ repack-thes-dict_OBJ  := $(d)repack-thes-dict.o $(TOP)lib/libaegisub.a
+-repack-thes-dict_LIBS := $(LIBS_BOOST) $(LIBS_ICU) $(PTHREAD_LIBS)
++repack-thes-dict_LIBS := $(LIBS_BOOST) $(LIBS_ICU) $(LIBS_PTHREAD)
+ repack-thes-dict_CPPFLAGS := -I$(TOP) -I$(TOP)libaegisub/include $(CFLAGS_ICU)
+
+ PROGRAM += $(d)repack-thes-dict

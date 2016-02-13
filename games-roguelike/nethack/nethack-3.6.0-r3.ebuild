@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils toolchain-funcs flag-o-matic user
 
 MY_PV=${PV//.}
@@ -41,8 +41,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-recover.patch"
-	epatch_user
+	eapply "${FILESDIR}/${P}-recover.patch"
+	eapply "${FILESDIR}/${P}-x11-color.patch"
+	eapply_user
 
 	cp "${FILESDIR}/${P}-hint-$(usex X x11 tty)" hint || die "Failed to copy hint file"
 	sys/unix/setup.sh hint || die "Failed to run setup.sh"
@@ -119,29 +120,8 @@ src_install() {
 	fperms g+s "${HACKDIR}/nethack"
 }
 
-pkg_preinst() {
-	if has_version "<${CATEGORY}/${PN}-3.4.3-r3" ; then
-		migration=true
-
-		# preserve STATEDIR/{logfile,record}
-		# (previous ebuild rev mistakenly removes it)
-		for f in "${ROOT}/${STATEDIR}/"{logfile,record} ; do
-			if [[ -e "$f" ]] ; then
-				cp "$f" "$T" || die "Failed to preserve ${ROOT}/${STATEDIR} files"
-			else
-				touch "$T/$f" || die "Failed to preserve ${ROOT}/${STATEDIR} files"
-			fi
-		done
-	fi
-}
-
 pkg_postinst() {
 	cd "${ROOT}/${STATEDIR}" || die "Failed to enter ${STATEDIR} directory"
-
-	if [[ -v migration ]] ; then
-		cp "$T/"{logfile,record} . ||
-		die "Failed to preserve ${ROOT}/${STATEDIR} files"
-	fi
 
 	touch logfile perm record xlogfile || die "Failed to create log files"
 

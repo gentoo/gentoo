@@ -28,12 +28,11 @@ DOCS+=( README.md )
 # See Copyright in source tarball and bug #506946. Waf is BSD, libmpv is ISC.
 LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
-# Here 'opengl' stands for GLX, 'egl' stands for any EGL-based output
 IUSE="+alsa archive bluray cdda +cli doc drm dvb +dvd +egl +enca encode gbm
 	+iconv jack jpeg lcms +libass libav libcaca libguess libmpv lua luajit
 	openal +opengl oss pulseaudio raspberry-pi rubberband samba sdl selinux
 	test uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama +xscreensaver
-	xv zsh-completion"
+	+xv zsh-completion"
 
 REQUIRED_USE="
 	|| ( cli libmpv )
@@ -43,7 +42,6 @@ REQUIRED_USE="
 	lcms? ( || ( opengl egl ) )
 	libguess? ( iconv )
 	luajit? ( lua )
-	opengl? ( X )
 	uchardet? ( iconv )
 	v4l? ( || ( alsa oss ) )
 	vaapi? ( || ( gbm X wayland ) )
@@ -89,6 +87,7 @@ COMMON_DEPEND="
 		luajit? ( dev-lang/luajit:2 )
 	)
 	openal? ( >=media-libs/openal-1.13 )
+	opengl? ( virtual/opengl )
 	pulseaudio? ( media-sound/pulseaudio )
 	rubberband? ( >=media-libs/rubberband-1.8.0 )
 	samba? ( net-fs/samba )
@@ -103,10 +102,7 @@ COMMON_DEPEND="
 		x11-libs/libX11
 		x11-libs/libXext
 		>=x11-libs/libXrandr-1.2.0
-		opengl? (
-			x11-libs/libXdamage
-			virtual/opengl
-		)
+		opengl? ( x11-libs/libXdamage )
 		vdpau? ( >=x11-libs/libvdpau-0.2 )
 		xinerama? ( x11-libs/libXinerama )
 		xscreensaver? ( x11-libs/libXScrnSaver )
@@ -174,6 +170,7 @@ src_configure() {
 		$(usex cli '' '--disable-cplayer')
 		$(use_enable libmpv libmpv-shared)
 
+		# See deep down below for build-date
 		--disable-libmpv-static
 		--disable-static-build
 		--disable-optimize		# Do not add '-O2' to CFLAGS
@@ -229,20 +226,21 @@ src_configure() {
 		$(use_enable xv)
 		$(use_enable xinerama)
 		$(use_enable X xrandr)
-		$(use_enable opengl gl-x11)
+		$(usex opengl "$(use_enable X gl-x11)" '--disable-gl-x11')
 		$(usex egl "$(use_enable X egl-x11)" '--disable-egl-x11')
 		$(usex egl "$(use_enable gbm egl-drm)" '--disable-egl-drm')
 		$(use_enable wayland gl-wayland)
 		$(use_enable vdpau)
 		$(usex vdpau "$(use_enable opengl vdpau-gl-x11)" '--disable-vdpau-gl-x11')
-		$(use_enable vaapi)		# See below for vaapi-x-egl
+		$(use_enable vaapi)		# See below for vaapi-glx, vaapi-x-egl
 		$(usex vaapi "$(use_enable X vaapi-x11)" '--disable-vaapi-x11')
 		$(usex vaapi "$(use_enable wayland vaapi-wayland)" '--disable-vaapi-wayland')
 		$(usex vaapi "$(use_enable gbm vaapi-drm)" '--disable-vaapi-drm')
-		$(usex vaapi "$(use_enable opengl vaapi-glx)" '--disable-vaapi-glx')
 		$(use_enable libcaca caca)
 		$(use_enable jpeg)
+		--disable-android
 		$(use_enable raspberry-pi rpi)
+		$(use_enable opengl desktop-gl)
 
 		# HWaccels
 		$(use_enable vaapi vaapi-hwaccel)
@@ -256,10 +254,11 @@ src_configure() {
 		$(use_enable dvb dvbin)
 	)
 
-	if use vaapi && use X && use egl; then
-		mywafargs+=(--enable-vaapi-x-egl)
-	else
-		mywafargs+=(--disable-vaapi-x-egl)
+	if use vaapi && use X; then
+		mywafargs+=(
+			$(use_enable opengl vaapi-glx)
+			$(use_enable egl vaapi-x-egl)
+		)
 	fi
 
 	# Create reproducible non-live builds
