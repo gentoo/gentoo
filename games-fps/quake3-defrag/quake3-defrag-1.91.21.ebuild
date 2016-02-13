@@ -25,7 +25,7 @@ SRC_URI="http://q3defrag.org/files/defrag/defrag_${PV}.zip
 	http://www.german-defrag.de/files/defrag/defragpak11.zip"
 
 LICENSE="freedist"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="dedicated opengl"
 
 src_unpack() {
