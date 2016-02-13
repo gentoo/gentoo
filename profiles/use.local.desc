@@ -1728,7 +1728,6 @@ dev-java/ecj-gcj:native - Build a native binary along with the jar. Provides fas
 dev-java/eclipse-ecj:ant - Support using ecj in Ant builds via dev-java/ant-eclipse-ecj
 dev-java/emma:launcher - Install /usr/bin/emma. Collides with sci-biology/emboss.
 dev-java/gcj-jdk:awt - Install AWT libraries, needed by some GUIs (not needed to build icedtea)
-dev-java/gjdoc:xmldoclet - Also build support for the xml doclet that generates output in xml instead of the traditional html javadoc.
 dev-java/gnu-classpath:alsa - Build with ALSA javax.sound.midi provider
 dev-java/gnu-classpath:dssi - Build with DSSI javax.sound.midi provider
 dev-java/gnu-classpath:gconf - Build with GConf preferences backend

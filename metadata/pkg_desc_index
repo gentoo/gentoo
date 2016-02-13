@@ -3859,7 +3859,6 @@ dev-java/freemarker 2.3.13-r2: FreeMarker is a tool to generate text output base
 dev-java/fscript 1.17-r1: Java based scripting engine designed to be embedded into other Java applications
 dev-java/gcj-jdk 4.9.3: Java wrappers around GCJ
 dev-java/geoip-java 1.3.0: Java library for lookup countries by IP addresses.
-dev-java/gjdoc 0.7.9-r3: A javadoc compatible Java source documentation generator
 dev-java/glassfish-connector-api 1.1.2.2.04: Java Transaction API
 dev-java/glassfish-deployment-api 3.1.1: J2EE Application Deployment Specification V.1.2
 dev-java/glassfish-ejb-api 3.2: Project GlassFish Enterprise JavaBean API
