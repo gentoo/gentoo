@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -16,7 +16,7 @@ DESCRIPTION="An easy-to-use client library for making requests from Ruby"
 HOMEPAGE="https://github.com/tarcieri/http"
 
 LICENSE="MIT"
-SLOT="0.8"
+SLOT="1.0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
@@ -33,6 +33,9 @@ all_ruby_prepare() {
 	sed -i -e '/simplecov/,/end/ s:^:#:' \
 		-e '1irequire "cgi"' spec/spec_helper.rb || die
 
-	# Already fixed upstream, for compatibility with ruby 1.9.3
-	sed -i -e '1i # coding: utf-8' spec/lib/http/request_spec.rb || die
+	# Avoid specs that require network access
+	sed -i -e '/.persistent/,/^  end/ s:^:#:' \
+		spec/lib/http_spec.rb || die
+	sed -i -e '/with non-ASCII URLs/,/^    end/ s:^:#:' \
+		spec/lib/http/client_spec.rb || die
 }
