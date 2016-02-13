@@ -13,7 +13,6 @@
 	<longdescription lang="en">Sigil is a multi-platform WYSIWYG ebook editor.
 		It is designed to edit books in ePub format.</longdescription>
 	<upstream>
-		<remote-id type="google-code">sigil</remote-id>
-		<remote-id type="github">user-none/Sigil</remote-id>
+		<remote-id type="github">Sigil-Ebook/Sigil</remote-id>
 	</upstream>
 </pkgmetadata>
