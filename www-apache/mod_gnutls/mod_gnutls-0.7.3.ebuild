@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,8 +30,6 @@ DOCFILES="CHANGELOG NOTICE README"
 need_apache2
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-0.7.1-apr_memcache_m4_dirty.patch"
-
 	sed -e "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/" -i configure.ac || die
 
 	epatch_user
