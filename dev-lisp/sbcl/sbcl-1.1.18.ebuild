@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -31,7 +31,7 @@ DEPEND="${CDEPEND}
 		doc? ( sys-apps/texinfo >=media-gfx/graphviz-2.26.0 )
 		pax_kernel? ( sys-apps/paxctl sys-apps/elfix )"
 RDEPEND="${CDEPEND}
-		 elibc_glibc? ( >=sys-libs/glibc-2.3 || ( <sys-libs/glibc-2.6[nptl] >=sys-libs/glibc-2.6 ) )"
+		elibc_glibc? ( >=sys-libs/glibc-2.6 )"
 
 # Disable warnings about executable stacks, as this won't be fixed soon by upstream
 QA_EXECSTACK="usr/bin/sbcl"
@@ -107,6 +107,10 @@ src_prepare() {
 	sed "s,/lib,/$(get_libdir),g" -i install.sh || die
 	# #define SBCL_HOME ...
 	sed "s,/usr/local/lib,/usr/$(get_libdir),g" -i src/runtime/runtime.c || die
+
+	# Avoid sandbox violation, bug #572478
+	sed -i -e "/(sb-posix:rmdir /s%\"/\"%\"${WORKDIR}\"%" \
+		contrib/sb-posix/posix-tests.lisp || die
 
 	find . -type f -name .cvsignore -delete
 }
