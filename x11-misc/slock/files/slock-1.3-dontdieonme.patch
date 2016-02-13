@@ -1,0 +1,10 @@
+--- a/slock.c
++++ b/slock.c
+@@ -55,7 +55,6 @@
+ 	va_start(ap, errstr);
+ 	vfprintf(stderr, errstr, ap);
+ 	va_end(ap);
+-	exit(1);
+ }
+ 
+ #ifdef __linux__
