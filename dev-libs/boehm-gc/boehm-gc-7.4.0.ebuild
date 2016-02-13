@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,6 +30,12 @@ src_configure() {
 		$(use threads || echo --disable-threads)
 	)
 	econf "${config[@]}"
+}
+
+src_compile() {
+	# Workaround build errors. #574566
+	use ia64 && emake src/ia64_save_regs_in_stack.lo
+	default
 }
 
 src_install() {
