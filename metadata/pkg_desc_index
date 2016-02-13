@@ -976,7 +976,7 @@ app-doc/motif-reference-manual 2.3.0-r1: Motif Reference Manual
 app-doc/php-docs 20101029-r1: HTML documentation for PHP
 app-doc/phrack 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68: A Hacker magazine by the community, for the community
 app-doc/phrack-all 68: Hacker magazine by the community, for the community (this will install *all* issues of phrack)
-app-doc/pms 5-r2 6_p20151113 9999: Gentoo Package Manager Specification (draft)
+app-doc/pms 6_p20151113 9999: Gentoo Package Manager Specification (draft)
 app-doc/podbrowser 0.12-r3: PodBrowser is a documentation browser for Perl
 app-doc/psmark 2.1: Prints watermark-like text on any PostScript document
 app-doc/root-docs 5.34.26 5.34.32 6.02.05 6.04.06: Documentation for ROOT Data Analysis Framework
@@ -1179,7 +1179,7 @@ app-emacs/mediawiki 2.2.4.1: MediaWiki client for Emacs
 app-emacs/mew 6.5 6.6: Great MIME mail reader for Emacs/XEmacs
 app-emacs/mic-paren 3.11: Advanced highlighting of matching parentheses
 app-emacs/mldonkey 0.0.4b-r1: An Emacs Lisp interface to the MLDonkey core
-app-emacs/mmm-mode 0.5.1 0.5.4: Enables the user to edit different parts of a file in different major modes
+app-emacs/mmm-mode 0.5.4: Enables the user to edit different parts of a file in different major modes
 app-emacs/moccur-edit 2.16: An improved interface to color-moccur for editing
 app-emacs/mode-compile 2.29.1: Smart command for compiling files according to major-mode
 app-emacs/mpg123-el 1.58 1.59: Emacs front-end to mpg123 audio player and OggVorbis audio player
@@ -4155,8 +4155,8 @@ dev-java/offo-hyphenation 2.0: Hyphenation patterns for Apache Fop
 dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of objects
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/oracle-javamail 1.5.2 1.5.5: A Java-based framework to build multiplatform mail and messaging applications
-dev-java/oracle-jdk-bin 1.7.0.80 1.8.0.72-r1 1.8.0.73 1.8.0.74: Oracle's Java SE Development Kit
-dev-java/oracle-jre-bin 1.7.0.80 1.8.0.72-r1 1.8.0.74: Oracle's Java SE Runtime Environment
+dev-java/oracle-jdk-bin 1.7.0.80 1.8.0.73 1.8.0.74: Oracle's Java SE Development Kit
+dev-java/oracle-jre-bin 1.7.0.80 1.8.0.74: Oracle's Java SE Runtime Environment
 dev-java/oscache 2.0.2-r3: OSCache is a widely used, high performance J2EE caching framework
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
 dev-java/osgi-core-api 5.0.0 5.0.0-r1: OSGi Service Platform Core API (Companion Code)
@@ -7389,7 +7389,7 @@ dev-python/numba 0.18.2 0.19.2 0.20.0 0.22.1: NumPy aware dynamic Python compile
 dev-python/numdisplay 1.6.0-r1: Python package for interactively displaying FITS arrays
 dev-python/numexpr 2.4.3 2.4.4 2.4.6 2.5: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.8.2 1.9.2 1.9.3 1.10.1-r1 1.10.2-r2 1.10.4 9999: Fast array and numerical python library
-dev-python/numpydoc 0.4-r1 0.5: Sphinx extension to support docstrings in Numpy format
+dev-python/numpydoc 0.4-r1 0.5 0.6.0: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
 dev-python/oauth2 1.5.211-r1 1.9.0_p1: Library for OAuth version 1.0
 dev-python/oauth2client 1.4.6 1.4.11 1.4.12 1.5.1 1.5.2: Library for accessing resources protected by OAuth 2.0
