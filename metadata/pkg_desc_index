@@ -13201,7 +13201,7 @@ media-sound/trommler 3.8: GTK+ based drum machine
 media-sound/ttaenc 3.4.1-r1: True Audio Compressor Software
 media-sound/tudor-volumed 0_pre20110427: Lightweight, desktop environment agnostic volume management daemon
 media-sound/tunapie 2.1.17: Directory browser for Radio and TV streams
-media-sound/twolame 0.3.13-r1: An optimised MPEG Audio Layer 2 (MP2) encoder
+media-sound/twolame 0.3.13-r1 0.3.13-r2: An optimised MPEG Audio Layer 2 (MP2) encoder
 media-sound/umix 1.0.2: Program for adjusting soundcard volumes
 media-sound/umurmur 0.2.16a 0.2.16a-r1: Minimalistic Murmur (Mumble server)
 media-sound/vb2rip 1.4: Konami VB2 sound format ripping utility
@@ -16326,7 +16326,7 @@ sys-apps/dnotify 0.18.0: Execute a command when the contents of a directory chan
 sys-apps/dog 1.7-r4 1.7-r5: Dog is better than cat
 sys-apps/dstat 0.6.9-r1 0.7.2-r1: Versatile replacement for vmstat, iostat and ifstat
 sys-apps/dtc 1.4.1 1.4.1-r1 9999: Open Firmware device tree compiler
-sys-apps/ed 1.10 1.11 1.12: Your basic line editor
+sys-apps/ed 1.10 1.12 1.13: Your basic line editor
 sys-apps/edac-utils 0.18: Userspace helper for Linux kernel EDAC drivers
 sys-apps/elfix 0.8.4 0.9.0-r1 0.9.2 9999: A suite of tools to work with ELF objects on Hardened Gentoo
 sys-apps/entropy 254: Entropy Package Manager foundation library
@@ -17468,7 +17468,7 @@ www-apache/mod_fcgid 2.3.9 2.3.9-r1: A binary-compatible alternative to mod_fast
 www-apache/mod_flvx 0.0.1-r1: mod_flvx allows to seek inside FLV files for streaming purposes
 www-apache/mod_ftpd 0.14-r1: Apache2 module which provides an FTP server
 www-apache/mod_geoip2 1.2.7-r1: Apache 2.x module for finding the country and city that a web request originated from
-www-apache/mod_gnutls 0.5.10-r1 0.6 0.7.1 0.7.2: mod_gnutls uses GnuTLS to provide SSL/TLS encryption for Apache2, similarly to mod_ssl
+www-apache/mod_gnutls 0.5.10-r1 0.7.2 0.7.3: mod_gnutls uses GnuTLS to provide SSL/TLS encryption for Apache2, similarly to mod_ssl
 www-apache/mod_h2 0.8.2 0.8.3 9999: HTTP/2 module for Apache
 www-apache/mod_jk 1.2.37 1.2.40: JK module for connecting Tomcat and Apache using the ajp13 protocol.
 www-apache/mod_layout 5.1: An Apache2 module for adding custom headers and/or footers
