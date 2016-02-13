@@ -29,6 +29,8 @@ src_prepare() {
 	# The makefiles make the man page depend on the configure script
 	# which we patched above.  Touch it to prevent regeneration.
 	touch doc/bison.1 #548778 #538300#9
+	# Avoid regenerating the info page when the timezone is diff.
+	touch doc/bison.info #574492
 }
 
 src_configure() {
