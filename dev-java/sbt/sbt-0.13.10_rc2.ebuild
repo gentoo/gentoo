@@ -39,7 +39,7 @@ IUSE="binary"
 
 DEPEND="virtual/jdk:1.7
 	>=dev-lang/scala-2.10.6:${SV}"
-RDEPEND="|| ( virtual/jre:1.7 virtual/jre:1.8 )
+RDEPEND=">=virtual/jre-1.7
 	dev-lang/scala:*"
 
 # test hangs or fails
