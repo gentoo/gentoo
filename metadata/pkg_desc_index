@@ -492,7 +492,7 @@ app-cdr/xcdroast 0.98_alpha16 0.98_alpha16-r1: Lightweight cdrtools front-end fo
 app-cdr/xdvdfs-tools 2.1-r1: Tools for manipulating Xbox ISO images
 app-cdr/xfburn 0.5.2 0.5.4: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
-app-crypt/acme 0.1.0 0.3.0 0.4.0 9999: An implementation of the ACME protocol
+app-crypt/acme 0.1.0 0.4.0 9999: An implementation of the ACME protocol
 app-crypt/acr38u 1.7.11-r1 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
 app-crypt/aescrypt 3.0.6b: Advanced file encryption using AES
 app-crypt/aespipe 2.3e 2.4c-r1 2.4d: Encrypts data from stdin to stdout
@@ -548,7 +548,7 @@ app-crypt/keybase 0.8.13 0.8.18 0.8.22 0.8.23 0.8.24 0.8.25 1.0.8.0 1.0.9.0: Cli
 app-crypt/keylookup 2.2 2.2-r9999: A tool to fetch PGP keys from keyservers
 app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
 app-crypt/kstart 4.1: Modified versions of kinit for refreshing kerberos tickets automatically
-app-crypt/letsencrypt 0.3.0 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/letsencrypt 0.4.0 9999: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/letsencrypt-apache 9999: Apache plugin for letsencrypt
 app-crypt/libscrypt 1.19 1.20: Shared library to impliment the scrypt algorithm. See http://www.tarsnap.com/scrypt.html.
 app-crypt/libsecret 0.18.3 0.18.4: GObject library for accessing the freedesktop.org Secret Service API
@@ -1844,7 +1844,7 @@ app-misc/ondir 0.2.2-r1: Automatically execute scripts as you traverse directori
 app-misc/oneko 1.2-r2: A cat, dog and others which chase the mouse or windows around the screen
 app-misc/pal 0.4.3-r1: pal command-line calendar program
 app-misc/pax-utils 1.0 1.0.1 1.0.2 1.0.3 1.0.4 1.0.5 1.1 1.1.1 1.1.2 1.1.3 1.1.4 1.1.5: ELF related utils for ELF 32/64 binaries that can check files for security relevant properties
-app-misc/pdfpc 3.1.1 4.0.1: Presenter console with multi-monitor support for PDF files
+app-misc/pdfpc 3.1.1 4.0.1 4.0.2: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3: Command-line trash can emulation
 app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
 app-misc/physlock 0.4.5 0.5: lightweight Linux console locking tool
@@ -4094,7 +4094,7 @@ dev-java/libmso 0.1: Java library to detect printers
 dev-java/libreadline-java 0.8.0-r3: A JNI-wrapper to GNU Readline
 dev-java/log4j 1.2.17-r3: A low-overhead robust logging package for Java
 dev-java/logback 1.0.13-r1: A generic, reliable, fast & flexible logging framework for Java
-dev-java/lucene 1.4.3-r3 1.9.1 2.1.0-r1 2.1.0-r2 2.2.0 2.2.0-r1 2.3.0 2.3.1 2.3.2 2.3.2-r1 2.3.2-r2 2.4.0 2.4.1 2.4.1-r1 2.9.1-r1 2.9.4 3.0.0 3.0.3 3.4.0 3.5.0 3.6.2: High-performance, full-featured text search engine library written entirely in Java
+dev-java/lucene 1.4.3-r3 2.4.1-r1 3.5.0 3.6.2: High-performance, full-featured text search engine library written entirely in Java
 dev-java/lucene-analyzers 1.9.1-r1 2.3.2: Lucene Analyzers additions
 dev-java/lzma 9.18: Java code for LZMA compression and decompression
 dev-java/lzmajio 0.95-r1: Implementations of LzmaInputStream/LzmaOutputStream interacting with underlying LZMA en-/decoders
