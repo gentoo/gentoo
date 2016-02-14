@@ -2019,7 +2019,7 @@ app-office/qcharselect 0.3: A Qt4 port of KCharSelect from KDE 3.5
 app-office/qchartdiary 0.6.4.1-r2: Free Qt4 diary/agenda application
 app-office/rubrica 2.1.6-r1: A contact database for Gnome
 app-office/sc 7.16-r1: sc is a free curses-based spreadsheet program that uses key bindings similar to vi and less
-app-office/scribus 1.4.4-r1 1.4.5 1.4.6 1.5.0-r1 9999: Desktop publishing (DTP) and layout program
+app-office/scribus 1.4.5 1.4.6 1.5.0-r1 9999: Desktop publishing (DTP) and layout program
 app-office/skrooge 1.12.5 2.2.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.3.18 1.3.27 1.3.29 1.3.32 1.3.32-r1 1.3.40 1.4.2: Simple personal tasks and todo lists manager
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
@@ -2815,7 +2815,7 @@ dev-cpp/luabind 0.9.1: Creates bindings for lua on c++
 dev-cpp/lucene++ 3.0.7: C++ port of Java Lucene library, a high-performance, full-featured text search engine
 dev-cpp/metslib 0.5.3: Metaheuristic modeling framework and optimization toolkit
 dev-cpp/mm-common 0.9.8 0.9.9: Build infrastructure and utilities for GNOME C++ bindings
-dev-cpp/muParser 2.2.2 2.2.3: Library for parsing mathematical expressions
+dev-cpp/muParser 2.2.3: Library for parsing mathematical expressions
 dev-cpp/pangomm 2.36.0 2.38.1: C++ interface for pango
 dev-cpp/pficommon 1.3.1.0: General purpose C++ library for PFI
 dev-cpp/pngpp 0.2.5: A simple but powerful C++ interface to libpng
@@ -6870,7 +6870,7 @@ dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation 
 dev-python/celery 3.1.17 3.1.18 3.1.18-r1 3.1.19 3.1.20: Asynchronous task queue/job queue based on distributed message passing
 dev-python/cement 2.0.2 2.6.2: CLI Application Framework for Python
 dev-python/certifi 2015.9.6.2 2015.11.20 2015.11.20.1: Python package for providing Mozilla's CA Bundle
-dev-python/cffi 1.2.1 1.4.2 1.5.0: Foreign Function Interface for Python calling C code
+dev-python/cffi 1.2.1 1.4.2 1.5.0 1.5.2: Foreign Function Interface for Python calling C code
 dev-python/cfgio 0.1.2: Python library for reading and writing configuration file formats found on a *nix systems
 dev-python/cfgparse 1.3-r1: Config File parser for Python
 dev-python/cgkit 2.0.0: Python library for creating 3D images
@@ -6946,7 +6946,7 @@ dev-python/discogs-client 2.0.2 2.2.0: Official Python API client for Discogs
 dev-python/disqus-python 0.4.2: Python client library for accessing the disqus.com API
 dev-python/distlib 0.2.1 0.2.1-r1 0.2.2: Distribution utilities
 dev-python/dj-database-url 0.3.0: Use Database URLs in your Django Application
-dev-python/django 1.4.22 1.5.12 1.6.11 1.7.11 1.8.7 1.8.8 1.8.9 1.9.2 9999: High-level Python web framework
+dev-python/django 1.4.22 1.5.12 1.6.11 1.7.11 1.8.9 1.9.2 9999: High-level Python web framework
 dev-python/django-annoying 0.7.6-r1 0.7.7 0.8.2: This is django application that try to eliminate annoying things in Django framework
 dev-python/django-appconf 0.6 1.0.1: A helper class for handling configuration defaults of packaged apps gracefully
 dev-python/django-auth-ldap 1.2.2 1.2.6: Django LDAP authentication backend
@@ -7584,14 +7584,14 @@ dev-python/pygene 0.2.1-r1: Simple python genetic algorithms programming library
 dev-python/pygeocoder 1.2.5: Python wrapper for Google Geocoding API V3
 dev-python/pygit2 0.20.3 0.21.4-r1 0.22.1 0.23.0 0.23.3: Python bindings for libgit2
 dev-python/pyglet 1.1.4-r2 1.2.2 1.2.3 1.2.4: Cross-platform windowing and multimedia library for Python
-dev-python/pygments 2.0.2-r2 2.1: Pygments is a syntax highlighting package written in Python
+dev-python/pygments 2.0.2-r2 2.1 2.1.1: Pygments is a syntax highlighting package written in Python
 dev-python/pygobject 2.28.6-r55 3.14.0 3.16.2 3.18.2: GLib's GObject library bindings for Python
 dev-python/pygoocanvas 0.14.1-r1: GooCanvas python bindings
 dev-python/pygooglevoice 0.5-r2: Python Bindings for the Google Voice API
 dev-python/pygpgme 0.3-r1: A Python wrapper for the GPGME library
 dev-python/pygraphviz 1.2 1.3.1: Python wrapper for the Graphviz Agraph data structure
 dev-python/pygresql 4.1.1 4.1.1-r1 4.1.1-r2: A Python interface for the PostgreSQL database
-dev-python/pygsl 0.9.5 0.9.5-r1: Python interface for the GNU scientific library (gsl)
+dev-python/pygsl 0.9.5 0.9.5-r1 2.1.1: Python interface for the GNU scientific library (gsl)
 dev-python/pygtk 2.24.0-r4: GTK+2 bindings for Python
 dev-python/pygtkglext 1.1.0-r1: Python bindings to GtkGLExt
 dev-python/pygtkhelpers 0.4.3 0.4.3-r1: PyGTKHelpers is a library to assist the building of PyGTK applications
@@ -8021,7 +8021,7 @@ dev-python/theano 0.6.0 0.7.0: Define and optimize multi-dimensional arrays math
 dev-python/thunarx-python 0.3.0-r1: Python bindings for the Thunar file manager
 dev-python/timelib 0.2.4-r1: parse english textual date descriptions
 dev-python/tinycss 0.3: A complete yet simple CSS parser for Python
-dev-python/tinydb 3.1.2: Tiny, document oriented database optimized for your happiness :)
+dev-python/tinydb 3.1.2 3.1.3: Tiny, document oriented database optimized for your happiness :)
 dev-python/tlslite 0.4.3-r1 0.4.8: TLS Lite is a free python library that implements SSL 3.0 and TLS 1.0/1.1
 dev-python/tmdb3 0.6.17 0.7.2: TheMovieDB.org APIv3 interface
 dev-python/toolz 0.7.0 0.7.1 0.7.2 0.7.4: List processing tools and functional utilities
@@ -8130,7 +8130,7 @@ dev-python/wxpython 2.8.12.1-r2 2.9.4.1-r2 3.0.0.0 3.0.1.1 3.0.2.0: A blending o
 dev-python/xcffib 0.3.4 0.4.0: A drop in replacement for xpyb, an XCB python binding
 dev-python/xhtml2pdf 0.0.5-r1 0.0.6-r1: PDF generator using HTML and CSS
 dev-python/xlrd 0.9.3 0.9.3-r1 0.9.4: Library for developers to extract data from Microsoft Excel (tm) spreadsheet files
-dev-python/xlsxwriter 0.7.3 0.7.4 0.7.6 0.7.7 0.7.8 0.7.9 0.8.0 0.8.2 0.8.4: Python module for creating Excel XLSX files
+dev-python/xlsxwriter 0.7.8 0.8.4: Python module for creating Excel XLSX files
 dev-python/xlutils 1.5.2-r1: provides a collection of utilities for working with Excel files
 dev-python/xlwt 0.7.5 1.0.0: Python library to create spreadsheet files compatible with Excel
 dev-python/xmltodict 0.9.1 0.9.2: Makes working with XML feel like you are working with JSON
@@ -9422,7 +9422,7 @@ dev-util/cccc 3.1.5: Source metrics (line counts, complexity, etc) for Java and 
 dev-util/ccglue 0.3.1 0.6.0: Produce cross-reference files from cscope and ctags for use with app-vim/cctree
 dev-util/ccmalloc 0.4.0-r2: A easy-to-use memory debugging library
 dev-util/cdecl 2.5-r2: Turn English phrases to C or C++ declarations
-dev-util/cdiff 0.9.6 0.9.7 0.9.8 9999: Term based view of colored, incremental diff in a Git/Mercurial/Svn workspace
+dev-util/cdiff 0.9.7 0.9.8 9999: Term based view of colored, incremental diff in a Git/Mercurial/Svn workspace
 dev-util/cflow 1.4: C function call hierarchy analyzer
 dev-util/cgdb 0.6.6 0.6.7: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
@@ -15320,7 +15320,7 @@ sci-biology/pysam 0.6-r1: Python interface for the SAM/BAM sequence alignment an
 sci-biology/qrna 2.0.3c-r1: Prototype ncRNA genefinder
 sci-biology/raxml 7.2.6: Sequential, Parallel & Distributed Inference of Large Phylogenetic Trees
 sci-biology/readseq 20080420-r1 20100513: Reads and writes nucleic/protein sequences in various formats
-sci-biology/rebase 1510 1511 1601 1602: A restriction enzyme database
+sci-biology/rebase 1601 1602: A restriction enzyme database
 sci-biology/recon 1.06-r1 1.06-r2: Automated de novo identification of repeat families from genomic sequences
 sci-biology/repeatmasker 4.0.1: Screen DNA sequences for interspersed repeats and low complexity DNA
 sci-biology/repeatmasker-libraries 20120418: A special version of RepBase used by RepeatMasker
@@ -15730,7 +15730,7 @@ sci-libs/libgeotiff 1.4.0: Library for reading TIFF files with embedded tags for
 sci-libs/libghemical 2.00 2.99.1 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-libs/libh2o 0.2.1 9999: Library of routines for IF97 water & steam properties
 sci-libs/libh2oxx 0.2 9999: C++ bindings for libh2o
-sci-libs/libint 1.1.4-r1 1.1.6 2.0.5: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
+sci-libs/libint 1.1.6 2.0.5: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
 sci-libs/libmems 1.6_p1-r1 9999: Library for sci-biology/mauve
 sci-libs/libmuscle 3.7-r1 3.7-r2 9999: Library for sci-biology/mauve
 sci-libs/libnova 0.12.3 0.14.0 0.15.0: Celestial Mechanics and Astronomical Calculation Library
