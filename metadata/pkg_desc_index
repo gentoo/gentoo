@@ -9252,7 +9252,7 @@ dev-tex/minted 1.7 2.0 2.1: LaTeX package for source code syntax highlighting
 dev-tex/newlfm 8.3-r1: Extensive LaTeX class for writing letters
 dev-tex/notoccite 20000720: Stop citations in figures, tables and contents changing citation order
 dev-tex/oesch 20080712: Metafont font used in Austrian schools for hand writing
-dev-tex/pdfannotextractor 0.1l 0.1l-r1: Extract annotations from pdf files
+dev-tex/pdfannotextractor 0.1l-r1: Extract annotations from pdf files
 dev-tex/pgf 2.10 3.0.0 3.0.1: pgf -- The TeX Portable Graphic Format
 dev-tex/polytable 0.8.2: tabular-like environments with named columns
 dev-tex/ppower4 0.9.6: Post-process presentations in PDF format which were prepared using (La)TeX to add dynamic effects
@@ -15928,7 +15928,7 @@ sci-misc/ViSP-images 2.10.0 3.0.0: ViSP images data set
 sci-misc/apertium 3.2.0: Shallow-transfer machine Translation engine and toolbox
 sci-misc/boinc 7.2.0 7.2.0-r1 7.4.42-r1: The Berkeley Open Infrastructure for Network Computing
 sci-misc/fitsverify 4.17: FITS file format checker
-sci-misc/flashdot 1.1.4: Generator for psychophysical experiments
+sci-misc/flashdot 1.1.4 1.1.4-r1: Generator for psychophysical experiments
 sci-misc/gato 1.1.2: Graph Animation Toolbox
 sci-misc/gt-itm 19961004-r1: Routines to generate and analyze graphs using different models for internetwork topology
 sci-misc/h5utils 1.12.1-r2: Utilities for visualization and conversion of HDF5 files
