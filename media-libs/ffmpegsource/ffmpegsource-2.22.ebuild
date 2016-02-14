@@ -14,7 +14,7 @@ SRC_URI="https://github.com/FFMS/ffms2/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/4"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="libav static-libs"
 
 RDEPEND="
