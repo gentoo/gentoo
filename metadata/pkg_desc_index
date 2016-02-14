@@ -8175,7 +8175,7 @@ dev-qt/qtdeclarative 4.8.6-r1 4.8.7 5.4.2-r1 5.5.1-r1: The QML and Quick modules
 dev-qt/qtdemo 4.8.6-r1 4.8.7: Demonstration module and examples for the Qt toolkit
 dev-qt/qtdiag 5.4.2 5.5.1-r1: Tool for reporting diagnostic information about Qt and its environment
 dev-qt/qtgraphicaleffects 5.4.2 5.5.1-r1: Set of QML types for adding visual effects to user interfaces
-dev-qt/qtgui 4.8.6-r4 4.8.7 5.4.2-r1 5.5.1: The GUI module and platform plugins for the Qt5 framework
+dev-qt/qtgui 4.8.6-r4 4.8.7 5.4.2-r1 5.5.1 5.5.1-r1: The GUI module and platform plugins for the Qt5 framework
 dev-qt/qthelp 4.8.6-r3 4.8.7 5.4.2 5.5.1-r1: The Help module for the Qt5 framework
 dev-qt/qtimageformats 5.4.2 5.5.1-r1: Additional format plugins for the Qt image I/O system
 dev-qt/qtlockedfile 2.4.1_p20150629: QFile extension with advisory locking functions
