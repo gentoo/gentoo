@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 
 inherit eutils flag-o-matic java-pkg-opt-2 multilib
 
-PATCHSET_VER="2"
+PATCHSET_VER="3"
 
 DESCRIPTION="YAP is a high-performance Prolog compiler"
 HOMEPAGE="http://www.dcc.fc.up.pt/~vsc/Yap/"
@@ -19,12 +19,12 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="R debug doc examples gmp java mpi mysql odbc readline static threads"
 
 RDEPEND="sys-libs/zlib
-	gmp? ( dev-libs/gmp )
-	java? ( >=virtual/jdk-1.4 )
+	gmp? ( dev-libs/gmp:0 )
+	java? ( >=virtual/jdk-1.4:= )
 	mpi? ( virtual/mpi )
 	mysql? ( virtual/mysql )
 	odbc? ( dev-db/unixODBC )
-	readline? ( sys-libs/readline sys-libs/ncurses )
+	readline? ( sys-libs/readline:= sys-libs/ncurses:= )
 	R? ( dev-lang/R )"
 
 DEPEND="${RDEPEND}
