@@ -11,7 +11,7 @@ start() {
 	start-stop-daemon --quiet --start --user "${NZBGET_USER}" \
 		--group "${NZBGET_GROUP}" --exec /usr/bin/nzbget -- \
 		--configfile "${NZBGET_CONFIGFILE}" --daemon \
-		-- ${NZBGET_OPTS}
+		${NZBGET_OPTS}
 	eend $?
 }
 
@@ -19,7 +19,7 @@ stop() {
 	ebegin "Stopping ${RC_SVCNAME}"
 	start-stop-daemon --stop --exec /usr/bin/nzbget -- \
 		--configfile "${NZBGET_CONFIGFILE}" --daemon \
-		-- ${NZBGET_OPTS}
+		${NZBGET_OPTS}
 }
 
 reload() {
