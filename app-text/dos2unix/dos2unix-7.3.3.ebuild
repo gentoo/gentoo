@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Convert DOS or MAC text files to UNIX format or vice versa"
 HOMEPAGE="http://www.xs4all.nl/~waterlan/dos2unix.html http://sourceforge.net/projects/dos2unix/"
@@ -28,6 +28,8 @@ DEPEND="
 	dev-lang/perl"
 
 src_prepare() {
+	default
+
 	sed \
 		-e '/^LDFLAGS/s|=|+=|' \
 		-e '/CFLAGS_OS \+=/d' \
