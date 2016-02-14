@@ -12,7 +12,7 @@ SRC_URI="mirror://gentoo/${P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
+KEYWORDS="amd64 ppc64 x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
 IUSE=""
 
 CDEPEND="virtual/latex-base
