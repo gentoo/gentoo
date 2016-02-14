@@ -13,5 +13,5 @@ HOMEPAGE="http://www.lrctf.com/"
 SRC_URI="http://lrctf.com/release/LRCTF_Q3A_v${PV}_full.zip"
 
 LICENSE="LRCTF"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="dedicated opengl"
