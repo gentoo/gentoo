@@ -2011,7 +2011,6 @@ app-office/openerp 6.1.1-r1 7.0.20130219-r5 7.0.20140125 8.0.20140125: Open Sour
 app-office/openoffice-bin 4.1.1 4.1.2: Apache OpenOffice productivity suite
 app-office/openproj-bin 1.4 1.4-r1: A free and open source desktop alternative to Microsoft Project
 app-office/orage 4.10.0 4.12.1: A time managing application (and panel plug-in) for the Xfce desktop environment
-app-office/passepartout 0.7.0-r1: A DTP application for the X Window System
 app-office/pinpoint 0.1.6 0.1.8: A tool for making hackers do excellent presentations
 app-office/plan 1.10: Motif based schedule planner
 app-office/planner 0.14.6_p20130520: Project manager for Gnome
@@ -2774,7 +2773,6 @@ dev-ada/cbind 6.0.1: This tool is designed to aid in the creation of Ada binding
 dev-ada/charles 20050913: Posix bindings for Ada
 dev-ada/florist 2007.0: Posix bindings for Ada
 dev-ada/glade 2006.0: An implementation of the Distributed Systems Annex for the GNAT compiler
-dev-ada/gtkada 2.10.0: Gtk+ bindings to the Ada language
 dev-ada/xmlada 1.0-r4 2.2.0 2.2.0-r1: XML library for Ada
 dev-cpp/ETL 0.04.15: ETL is a multi-platform class and template library
 dev-cpp/antlr-cpp 2.7.7: The ANTLR 2 C++ Runtime
@@ -2843,7 +2841,6 @@ dev-db/ctdb 1.13-r1 9999: A cluster implementation of the TDB database used to s
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
 dev-db/db-je 3.3.75: Berkeley DB JE is a high performance, transactional storage engine written entirely in Java
 dev-db/dbmodel 0.3: Qt4 tool for drawing entity-relational diagrams
-dev-db/drizzle 7.2.4: Database optimized for Cloud and Net applications
 dev-db/etcd 2.0.10-r1 2.2.1: A highly-available key value store for shared configuration and service discovery
 dev-db/etcdctl 0.4.6 0.4.6-r1: A simple command line client for etcd
 dev-db/firebird 2.5.3.26780.0-r3: A relational database offering many ANSI SQL:2003 and some SQL:2008 features
@@ -6116,7 +6113,6 @@ dev-perl/Sort-Naturally 1.30.0-r1: sort lexically, but sort numeral parts numeri
 dev-perl/Sort-Tree 1.90.0-r1: Organize list of objects into parent/child order
 dev-perl/Sort-Versions 1.500.0-r1 1.610.0: A perl 5 module for sorting of revision-like numbers
 dev-perl/Speech-Recognizer-SPX 0.80.100-r1: Interface to Sphinx-II speech recognition
-dev-perl/SpeedyCGI 2.22-r3: Speed up perl scripts by running them persistently
 dev-perl/Sphinx-Config 0.90.0-r1: Sphinx search engine configuration file read/modify/write
 dev-perl/Sphinx-Search 0.280-r1 0.290.0: Perl API client for Sphinx search engine
 dev-perl/Spiffy 0.310.0-r1 0.460.0: Spiffy Perl Interface Framework For You
@@ -6676,7 +6672,6 @@ dev-php/pecl-cairo 0.3.2: Cairo bindings for PHP
 dev-php/pecl-crack 0.4-r4: PHP interface to the cracklib libraries
 dev-php/pecl-dbx 1.1.2-r1: The dbx module is a database abstraction layer
 dev-php/pecl-dio 0.0.7-r2: Direct I/O functions for PHP
-dev-php/pecl-drizzle 0.4.2-r3: PHP extension using libdrizzle library to provide communcation with Drizzle and MySQL databases
 dev-php/pecl-eio 1.2.5-r1: PHP wrapper for libeio library
 dev-php/pecl-event 1.11.1-r1: PHP wrapper for libevent2
 dev-php/pecl-gearman 1.0.2-r1: PHP extension for using gearmand
@@ -7622,7 +7617,6 @@ dev-python/pylibpcap 0.6.4 0.6.4-r1: Python interface to libpcap
 dev-python/pylint 1.4.4 1.4.5 1.5.1 1.5.2 1.5.3 1.5.4: Python code static checker
 dev-python/pylirc 0.0.5-r1: lirc module for Python
 dev-python/pylons 1.0.1-r1 1.0.2: Pylons Web Framework
-dev-python/pyltxml 1.3-r1: Bindings for LTXML libraries
 dev-python/pylzma 0.4.4-r1 0.4.5 0.4.6 0.4.8: Python bindings for the LZMA compression library
 dev-python/pymad 0.6 0.6-r1: Python wrapper for libmad MP3 decoding in python
 dev-python/pymediainfo 1.4.0 2.0: A wrapper around the mediainfo command
@@ -12947,7 +12941,6 @@ media-sound/gnaural 1.0.20110606: An opensource binaural-beat generator
 media-sound/gnomad 2.9.6: A GTK+ music manager and swiss army knife for the Portable Digital Entertainment (PDE) protocol
 media-sound/gnome-music 3.16.2 3.18.2: Music management for Gnome
 media-sound/gnome-sound-recorder 3.16.0 3.18.2-r1: Simple sound recorder
-media-sound/gnomoradio 0.15.1: Finds, fetches, shares, and plays freely licensed music
 media-sound/gnump3d 3.0-r1 3.0-r2: A streaming server for MP3, OGG vorbis and other streamable files
 media-sound/gom 0.29.103-r1: Console Mixer Program for OSS
 media-sound/google-musicmanager 1.0.129.6633_beta 1.0.221.5230_beta 1.0.243.1116_beta: An application for adding music to your Google Music library
@@ -13288,7 +13281,6 @@ media-video/bino 1.3.0 1.6.1-r1: Stereoscopic and multi-display media player
 media-video/blinkensim 2.7: Graphical Blinkenlights simulator with networking support
 media-video/blinkenthemes 0.10: Themes for blinkensim
 media-video/blinkentools 2.9: blinkentools is a set of commandline utilities related to Blinkenlights
-media-video/bombono-dvd 1.2.2: GUI DVD authoring program
 media-video/camorama 0.19-r2: A webcam application featuring various image filters
 media-video/ccextractor 0.59 0.68 0.69: Extract closed captioning subtitles from video to SRT
 media-video/cclive 0.9.3-r1: Command line tool for extracting videos from various websites
@@ -14474,7 +14466,6 @@ net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed caption
 net-misc/geoipupdate 2.2.1 2.2.2: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.26.2 0.26.3: A daemon to serve the gopher protocol
 net-misc/getdate 1.2-r1: Network Date/Time Query and Set Local Date/Time Utility
-net-misc/gip 1.7.0.1: A nice GNOME GUI for making IP address based calculations
 net-misc/gnome-online-miners 3.14.3-r1 3.14.3-r2: Crawls through your online content
 net-misc/gnome-rdp 0.3.0.9: Remote Desktop Client for the GNOME desktop
 net-misc/gns3-converter 1.2.4: Designed to convert old ini-style GNS3 topologies
@@ -14878,7 +14869,6 @@ net-p2p/i2p 0.9.22 0.9.22-r1 0.9.23 0.9.24: A privacy-centric, anonymous network
 net-p2p/imule 2.3.2.3 2.3.2.3-r1: P2P sharing software which connects through I2P and Kad networks
 net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software and KDE 4
 net-p2p/ktorrent 4.3.1-r1: A BitTorrent program for KDE
-net-p2p/linuxdcpp 1.0.3-r1: Direct connect client, looks and works like famous DC++
 net-p2p/litecoin-qt 0.10.2.2-r3: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/litecoind 0.10.2.2-r4: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/microdc 0.11.0: A small command-line based Direct Connect client
