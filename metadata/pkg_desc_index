@@ -247,7 +247,7 @@ app-arch/bzip2 1.0.6 1.0.6-r1 1.0.6-r2 1.0.6-r3 1.0.6-r4 1.0.6-r6 1.0.6-r7: A hi
 app-arch/cabextract 1.6: Extracts files from Microsoft cabinet archive files
 app-arch/cfv 1.18.2 1.18.3-r1: Utility to test and create .sfv, .csv, .crc and md5sum files
 app-arch/cksfv 1.3.12 1.3.13 1.3.14: SFV checksum utility (simple file verification)
-app-arch/cpio 2.11-r3 2.12: A file archival tool which can also read and write tar files
+app-arch/cpio 2.11-r3 2.12 2.12-r1: A file archival tool which can also read and write tar files
 app-arch/createrepo 0.10.3 0.10.4: Creates a common rpm-metadata repository
 app-arch/deb2targz 1-r2: Convert a .deb file to a .tar.gz archive
 app-arch/defluff 0.3.2: deflate huffman optimizer
@@ -8979,7 +8979,7 @@ dev-ruby/ruby-openid 2.7.0: A robust library for verifying and serving OpenID id
 dev-ruby/ruby-pango 2.2.3 2.2.3-r1 2.2.5 3.0.7: Ruby Pango bindings
 dev-ruby/ruby-poppler 2.2.3 2.2.3-r1 2.2.5 3.0.7 3.0.7-r1: Ruby poppler-glib bindings
 dev-ruby/ruby-prof 0.15.8-r1: A module for profiling Ruby code
-dev-ruby/ruby-progressbar 1.4.2 1.4.2-r1: A Text Progress Bar Library for Ruby
+dev-ruby/ruby-progressbar 1.4.2 1.4.2-r1 1.7.5: A Text Progress Bar Library for Ruby
 dev-ruby/ruby-rc4 0.1.5-r1 0.1.5-r2: A pure Ruby implementation of the Rc4 algorithm
 dev-ruby/ruby-romkan 0.4-r5 0.4-r6: A Romaji <-> Kana conversion library for Ruby
 dev-ruby/ruby-rsvg 2.2.3 2.2.3-r1 2.2.5 3.0.7: Ruby bindings for librsvg
