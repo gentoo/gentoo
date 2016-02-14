@@ -14,7 +14,7 @@ SRC_URI="https://github.com/strukturag/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug qt4 qt5 static-libs cpu_flags_x86_sse tools"
 
 DEPEND="

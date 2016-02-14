@@ -16,7 +16,7 @@ SRC_URI="https://github.com/evaleev/libint/archive/release-${MY_PV}.tar.gz -> ${
 
 SLOT="1"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs"
 
 S="${WORKDIR}/${PN}-release-${MY_PV}"

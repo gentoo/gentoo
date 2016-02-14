@@ -11,7 +11,7 @@ SRC_URI="http://joewing.net/programs/jwm/releases/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~hppa ppc x86 ~x86-fbsd"
 IUSE="bidi debug jpeg png truetype xinerama xpm"
 
 RDEPEND="xpm? ( x11-libs/libXpm )

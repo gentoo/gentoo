@@ -17,5 +17,5 @@ SRC_URI="
 	"
 
 LICENSE="all-rights-reserved"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="dedicated opengl"

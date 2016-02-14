@@ -13,7 +13,7 @@ SRC_URI="
 "
 LICENSE="GPL-2 IJG"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ~ppc ppc64 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ~ppc ppc64 ~sh ~sparc x86"
 IUSE="curl fbcon +gif lirc pdf +png scanner +tiff X +webp"
 REQUIRED_USE="
 	pdf? ( tiff )
