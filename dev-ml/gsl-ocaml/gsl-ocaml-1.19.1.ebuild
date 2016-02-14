@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples test"
 
-DEPEND=">=sci-libs/gsl-1.10"
+DEPEND=">=sci-libs/gsl-1.19"
 RDEPEND="${DEPEND}
 	!dev-ml/ocamlgsl"
 

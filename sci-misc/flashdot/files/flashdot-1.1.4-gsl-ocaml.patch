@@ -1,0 +1,23 @@
+Fix errors caused by wrong parameter type:
+* File "mathexpr.ml", line 423, characters 55-56:
+* Error: This expression has type int but an expression was expected of type
+*          float
+
+--- flashdot-1.1.4/mathexpr/mathexpr.ml
++++ flashdot-1.1.4/mathexpr/mathexpr.ml
+@@ -419,7 +419,6 @@
+ 		| "NegativeBinomial" ->
+ 			let p = float'_of_string (aod cont_type "P" "1.0") in
+ 			let n = float'_of_string (aod cont_type "N" "1.0") in
+-			(*uncomment this for ocamlgsl > 0.5 ::::let n = int_of_float n in::::*)
+ 			fun () -> foi  (Gsl_randist.negative_binomial rng p n)
+ 		| "Pascal" ->
+ 			let p = float'_of_string (aod cont_type "P" "1.0") in
+@@ -4094,7 +4093,6 @@
+ 				| "NegativeBinomialPDF" ->
+ 					let p = float'_of_string (aod cont_type "P" "1.0") in
+ 					let n = float'_of_string (aod cont_type "N" "1.0") in
+-					(*uncomment this for ocamlgsl > 0.5 ::::let n = int_of_float n in::::*)
+ 					fun x -> Gsl_randist.negative_binomial_pdf (int_of_float x) p n
+ 				| "PascalPDF" ->
+ 					let p = float'_of_string (aod cont_type "P" "1.0") in
