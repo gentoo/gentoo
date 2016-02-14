@@ -1,12 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
-
-RUBY_FAKEGEM_TASK_TEST="test"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR=""
@@ -23,8 +21,12 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-ruby_add_rdepend "dev-ruby/chunky_png"
+ruby_add_rdepend "dev-ruby/chunky_png:0"
 
 all_ruby_prepare() {
-	sed -i -e '/[bB]undler/s:^:#:' Rakefile || die
+	sed -i -e '1igem "minitest"' test/test_helper.rb || die
+}
+
+each_ruby_test() {
+	${RUBY} -Ilib:test:. -e "Dir['test/test_r*.rb'].each{|f| require f}"
 }
