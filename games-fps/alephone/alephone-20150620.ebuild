@@ -12,7 +12,7 @@ SRC_URI="https://github.com/Aleph-One-Marathon/alephone/releases/download/releas
 
 LICENSE="GPL-3+ BitstreamVera OFL-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="alsa curl ffmpeg mad mpeg sndfile speex vorbis"
 
 RDEPEND="media-libs/sdl-net
