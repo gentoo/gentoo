@@ -22,6 +22,7 @@
     <flag name="dep">Make DEP=true the default which enables support for {,R,P}DEPEND but requires roughly double disk and memory.</flag>
     <flag name="doc">Create description of the eix cache file additionally in html format</flag>
     <flag name="optimization">Accept upstream's choices for CXXFLAGS/LDFLAGS for optimization. Absense of this USE flag does not strip user's *FLAGS</flag>
+    <flag name="required-use">Make REQUIRED_USE=true the default which enables support for REQUIRED_USE but requires more disk and memory.</flag>
     <flag name="security">This adds some checks which can prevent certain exploits if e.g. the eix code has a bug. If you use the hardened toolchain, using this flag does not increase security and can even lead to problems.</flag>
     <flag name="strong-optimization">Adds several more agressive CXXFLAGS/LDFLAGS for optimization like graphite (if available). May cause trouble with some buggy compiler versions. Absense of this USE flag does not strip user's *FLAGS</flag>
     <flag name="strong-security">Add many checks to prevent exploits if eix code has a bug. This will slow down eix considerably. Use only if you are paranoid or have reasons to suspect a bug.</flag>
