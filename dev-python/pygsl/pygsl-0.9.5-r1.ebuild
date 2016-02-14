@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
@@ -16,7 +17,8 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
 
-DEPEND="sci-libs/gsl
+DEPEND="
+	<sci-libs/gsl-2
 	dev-python/numpy[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 # Testsuite written to be run post install
