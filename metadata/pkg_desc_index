@@ -15396,7 +15396,7 @@ sci-chemistry/chemtool 1.6.13 1.6.14: A GTK program for drawing organic molecule
 sci-chemistry/clashlist 3.17-r1: Build lists of van der Waals clashes from an input PDB file
 sci-chemistry/cluster 1.3.081231 1.3.081231-r1: Build lists of collections of interacting items
 sci-chemistry/cns 1.2.1-r8 1.3_p7-r1: Crystallography and NMR System
-sci-chemistry/coot 0.8.2-r1: Crystallographic Object-Oriented Toolkit for model building, completion and validation
+sci-chemistry/coot 0.8.2-r1: Crystallographic Object-Oriented Toolkit
 sci-chemistry/cyana 2.1: Combined assignment and dynamics algorithm for NMR applications
 sci-chemistry/dssp 2.2.1-r1: The protein secondary structure standard
 sci-chemistry/easychem 0.6-r1: Chemical structure drawing program - focused on presentation
