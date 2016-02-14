@@ -64,7 +64,7 @@ src_prepare() {
 
 src_compile() {
 	emake \
-		CC="$(tc-getCC)" CCOPTS="${CFLAGS}" LDFLAGS="${LDFLAGS}" \
+		CC="$(tc-getCC)" CCOPTS="${CPPFLAGS} ${CFLAGS}" LDFLAGS="${LDFLAGS}" \
 		PREFIX="${EPREFIX}"/usr \
 		DOCDIR="${EPREFIX}/usr/share/doc/${PF}" \
 		LIBDIR="${T}"
