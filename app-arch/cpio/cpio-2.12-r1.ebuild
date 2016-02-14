@@ -17,6 +17,7 @@ IUSE="nls"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.12-non-gnu-compilers.patch #275295
+	epatch "${FILESDIR}"/${PN}-2.12-name-overflow.patch #572428
 }
 
 src_configure() {
