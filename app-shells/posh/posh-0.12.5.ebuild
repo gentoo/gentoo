@@ -17,10 +17,9 @@ IUSE=""
 
 DEPEND="app-arch/xz-utils"
 
-# Tests fails looking for some 'getopts.pl'
-RESTRICT="test"
-
 src_prepare() {
+	eapply "${FILESDIR}/${P}-test-perl-fix.patch"
+
 	default
 
 	# tarball bundles outdated generated files
