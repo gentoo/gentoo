@@ -96,9 +96,9 @@ src_configure() {
 	mp3_warning
 	if use qt5 ;then
 		notify="--disable-notify"
-        elif use libnotify ;then
+	elif use libnotify ;then
 		notify="--enable-notify"
-        fi
+	fi
 
 	if use gtk ;then
 		gtk="--enable-gtk"

@@ -15,8 +15,6 @@ KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 RDEPEND="
-
-
 	>=dev-perl/Test-SharedFork-0.190.0
 	>=virtual/perl-IO-1.23
 "
