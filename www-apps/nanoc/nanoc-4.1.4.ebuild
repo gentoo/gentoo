@@ -45,10 +45,13 @@ doc? (
 
 all_ruby_prepare() {
 	use doc || use test || (rm tasks/doc.rake || die)
-	use test || (rm tasks/test.rake || die)
 
-	# Avoid dependency on coveralls.
-	sed -i -e '/coverall/I s:^:#:' tasks/test.rake || die
+	if use test ; then
+		# Avoid dependency on coveralls.
+		sed -i -e '/coverall/I s:^:#:' tasks/test.rake || die
+	else
+		rm -f tasks/test.rake || die
+	fi
 
 	# Avoid non-optional tests for w3c_validators which we don't have
 	# packaged and which require network access.
