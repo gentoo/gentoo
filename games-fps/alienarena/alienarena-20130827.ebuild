@@ -13,7 +13,7 @@ SRC_URI="http://icculus.org/alienarena/Files/${MY_PN}-linux${PV}.tar.gz
 
 LICENSE="GPL-2 free-noncomm"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="dedicated +dga +vidmode +zlib"
 
 UIRDEPEND="virtual/jpeg:0
