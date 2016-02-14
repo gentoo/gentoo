@@ -22,7 +22,7 @@ SRC_URI="http://icculus.org/twilight/${PN}/files/${MY_ENGINE}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="alsa cdinstall cdsound debug dedicated demo lights opengl oss sdl textures"
 
 UIRDEPEND="virtual/jpeg:0
