@@ -1,0 +1,18 @@
+diff -r -U1 pyfeyn-1.0.0.orig/pyfeyn/feynml.py pyfeyn-1.0.0/pyfeyn/feynml.py
+--- pyfeyn-1.0.0.orig/pyfeyn/feynml.py	2016-02-09 22:48:29.000000000 +0100
++++ pyfeyn-1.0.0/pyfeyn/feynml.py	2016-02-14 13:11:16.034537778 +0100
+@@ -257,3 +257,3 @@
+         if self.root.tag != "feynml":
+-            raise "FeynML Error: <feynml> must be root element" % self.root.tag
++            raise Exception("FeynML Error: <feynml> must be root element" % self.root.tag)
+         for element in self.root:
+@@ -266,3 +266,3 @@
+             else:
+-                raise "FeynML Error: invalid top-level tag <%s>" % element.tag
++                raise Exception("FeynML Error: invalid top-level tag <%s>" % element.tag)
+ 
+@@ -328,3 +328,3 @@
+             except:
+-                raise "FeynML Error: invalid bend amount %s for <propagator> element"%element.attrib["bend"]
++                raise Exception("FeynML Error: invalid bend amount %s for <propagator> element"%element.attrib["bend"])
+         if "style" in element.attrib:
