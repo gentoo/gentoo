@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -126,7 +126,7 @@ RDEPEND="
 	sybase? ( dev-db/freetds )
 	tiff? ( media-libs/tiff )
 	truetype? ( media-libs/freetype:2 )
-	vc? ( dev-libs/vc )
+	vc? ( <dev-libs/vc-1.0.0 )
 	xbase? ( dev-db/xbase )
 	calligra_features_kexi? (
 		>=dev-db/sqlite-3.7.9:3[extensions(+)]
