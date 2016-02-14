@@ -11,8 +11,6 @@ HOMEPAGE="https://www.kde.org/applications/utilities https://utils.kde.org"
 KEYWORDS=" ~amd64 ~x86"
 IUSE="cups floppy lirc"
 
-# FIXME: Add back when ported
-# $(add_kdeapps_dep kgpg)
 RDEPEND="
 	$(add_kdeapps_dep ark)
 	$(add_kdeapps_dep filelight)
@@ -20,6 +18,7 @@ RDEPEND="
 	$(add_kdeapps_dep kcharselect)
 	$(add_kdeapps_dep kdebugsettings)
 	$(add_kdeapps_dep kdf)
+	$(add_kdeapps_dep kgpg)
 	$(add_kdeapps_dep kteatime)
 	$(add_kdeapps_dep ktimer)
 	$(add_kdeapps_dep kwalletmanager)
