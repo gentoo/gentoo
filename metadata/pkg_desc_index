@@ -8640,7 +8640,7 @@ dev-ruby/curb 0.8.8: Ruby-language bindings for libcurl
 dev-ruby/d3_rails 3.5.10 3.5.11: Ruby on Rails integration for the Javascript Data Visualization Framework, D3
 dev-ruby/daemon_controller 1.2.0-r1: A library for starting and stopping specific daemons programmatically in a robust manner
 dev-ruby/daemons 1.2.3: Wrap existing ruby scripts to be run as a daemon
-dev-ruby/dalli 2.6.4 2.7.4 2.7.4-r1 2.7.5: A high performance pure Ruby client for accessing memcached servers
+dev-ruby/dalli 2.7.4 2.7.5 2.7.6: A high performance pure Ruby client for accessing memcached servers
 dev-ruby/database_cleaner 1.4.1 1.5.0 1.5.1: Strategies for cleaning databases
 dev-ruby/date_validator 0.8.0 0.8.1 0.9.0: Simple, ORM agnostic, Ruby 1.9 compatible date validator for Rails 3
 dev-ruby/dbf 2.0.8 2.0.13 3.0.3 3.0.4: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
@@ -8935,7 +8935,7 @@ dev-ruby/rkelly-remix 0.0.6 0.0.7: RKelly Remix is a fork of the RKelly JavaScri
 dev-ruby/rmagick 2.13.4 2.15.4: An interface between Ruby and the ImageMagick(TM) image processing library
 dev-ruby/robots 0.10.1-r2: A simple Ruby library to parse robots.txt
 dev-ruby/rouge 1.9.0 1.9.1 1.10.1: Yet-another-markdown-parser but fast, pure Ruby, using a strict syntax definition
-dev-ruby/rqrcode 0.6.0 0.7.0 0.9.0: Library for encoding QR Codes
+dev-ruby/rqrcode 0.9.0 0.10.1: Library for encoding QR Codes
 dev-ruby/rr 1.1.2 1.1.2-r1: A double framework that features a rich selection of double techniques and a terse syntax
 dev-ruby/rrdtool-bindings 1.4.8 1.4.8-r2 1.4.9 1.5.3 1.5.4 1.5.5: Ruby bindings for rrdtool
 dev-ruby/rspec 1.3.2-r1 1.3.2-r2 2.14.1 2.14.1-r1 2.99.0 3.2.0 3.3.0 3.4.0: A Behaviour Driven Development (BDD) framework for Ruby
