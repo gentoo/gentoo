@@ -3,24 +3,23 @@
 # $Id$
 
 EAPI=5
-inherit eutils flag-o-matic multilib pam ssl-cert systemd toolchain-funcs user versionator
+inherit eutils flag-o-matic multilib pam systemd toolchain-funcs user versionator
 
 MY_PV="${PV/_pre/-}"
 MY_SRC="${PN}-${MY_PV}"
 MY_URI="ftp://ftp.porcupine.org/mirrors/postfix-release/experimental"
-VDA_PV="2.10.0"
-VDA_P="${PN}-vda-v13-${VDA_PV}"
+#VDA_PV="2.10.0"
+#VDA_P="${PN}-vda-v13-${VDA_PV}"
 RC_VER="2.7"
 
 DESCRIPTION="A fast and secure drop-in replacement for sendmail"
 HOMEPAGE="http://www.postfix.org/"
-SRC_URI="${MY_URI}/${MY_SRC}.tar.gz
-	vda? ( http://vda.sourceforge.net/VDA/${VDA_P}.patch ) "
+SRC_URI="${MY_URI}/${MY_SRC}.tar.gz"
 
 LICENSE="IBM"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
-IUSE="+berkdb cdb doc dovecot-sasl +eai hardened ldap ldap-bind libressl lmdb memcached mbox mysql nis pam postgres sasl selinux sqlite ssl vda"
+IUSE="+berkdb cdb doc dovecot-sasl +eai hardened ldap ldap-bind libressl lmdb memcached mbox mysql nis pam postgres sasl selinux sqlite ssl"
 
 DEPEND=">=dev-libs/libpcre-3.4
 	dev-lang/perl
@@ -59,9 +58,7 @@ RDEPEND="${DEPEND}
 	!net-mail/fastforward
 	selinux? ( sec-policy/selinux-postfix )"
 
-# No vda support for postfix-3.0
-REQUIRED_USE="ldap-bind? ( ldap sasl )
-		!vda"
+REQUIRED_USE="ldap-bind? ( ldap sasl )"
 
 S="${WORKDIR}/${MY_SRC}"
 
@@ -73,10 +70,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	if use vda; then
-		epatch "${DISTDIR}"/${VDA_P}.patch
-	fi
-
 	sed -i -e "/^#define ALIAS_DB_MAP/s|:/etc/aliases|:/etc/mail/aliases|" \
 		src/util/sys_defs.h || die "sed failed"
 
@@ -232,7 +225,7 @@ src_install () {
 	# Provide another link for legacy FSH
 	dosym /usr/sbin/sendmail /usr/$(get_libdir)/sendmail
 
-	# Install qshape tool and posttls-finger
+	# Install qshape and posttls-finger
 	dobin auxiliary/qshape/qshape.pl
 	doman man/man1/qshape.1
 	dobin bin/posttls-finger
@@ -283,7 +276,7 @@ src_install () {
 	insinto /usr/include/postfix
 	doins include/*.h
 
-	# Remove unnecessary files
+	# Keep config_dir clean
 	rm -f "${D}"/etc/postfix/{*LICENSE,access,aliases,canonical,generic}
 	rm -f "${D}"/etc/postfix/{header_checks,relocated,transport,virtual}
 
@@ -296,12 +289,16 @@ src_install () {
 }
 
 pkg_postinst() {
-	# Do not install server.{key,pem) SSL certificates if they already exist
-	if use ssl && [[ ! -f "${ROOT}"/etc/ssl/postfix/server.key \
-		&& ! -f "${ROOT}"/etc/ssl/postfix/server.pem ]] ; then
-		SSL_ORGANIZATION="${SSL_ORGANIZATION:-Postfix SMTP Server}"
-		install_cert /etc/ssl/postfix/server
-		chown postfix:mail "${ROOT}"/etc/ssl/postfix/server.{key,pem}
+	# configure tls
+	if use ssl ; then
+		if postfix tls all-default-client ; then
+			elog "Configuring client side TLS settings"
+			postfix tls enable-client
+		fi
+		if postfix tls all-default-server ; then
+			elog "Configuring server side TLS settings"
+			postfix tls enable-server
+		fi
 	fi
 
 	if [[ ! -e /etc/mail/aliases.db ]] ; then
