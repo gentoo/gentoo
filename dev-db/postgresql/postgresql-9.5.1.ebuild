@@ -254,7 +254,7 @@ pkg_postinst() {
 		elog
 		elog "It looks like this is your first time installing PostgreSQL. Run the"
 		elog "following command in all active shells to pick up changes to the default"
-		elog "environemnt:"
+		elog "environment:"
 		elog "    source /etc/profile"
 	fi
 
