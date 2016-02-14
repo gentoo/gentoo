@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
 
-inherit autotools eutils
+inherit eutils
 
 DESCRIPTION="A file archival tool which can also read and write tar files"
 HOMEPAGE="https://www.gnu.org/software/cpio/cpio.html"
@@ -17,7 +17,6 @@ IUSE="nls"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.12-non-gnu-compilers.patch #275295
-	eautoreconf
 }
 
 src_configure() {
@@ -25,8 +24,4 @@ src_configure() {
 		$(use_enable nls) \
 		--bindir="${EPREFIX}"/bin \
 		--with-rmt="${EPREFIX}"/usr/sbin/rmt
-}
-
-src_install() {
-	default
 }
