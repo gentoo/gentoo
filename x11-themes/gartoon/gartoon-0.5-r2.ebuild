@@ -2,14 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 
 DESCRIPTION="Gartoon SVG icon theme"
 HOMEPAGE="https://www.gentoo.org"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
-IUSE=""
 KEYWORDS="amd64 ~ppc sparc ~x86"
 SLOT="0"
 
@@ -22,8 +21,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -e "s:\(^pixmap_path\) \(\".*\"$\):\1 \"${mydest}/scalable/stock\":" \
-		-i scalable/stock/iconrc || die "sed failed"
+	sed -i \
+		-e "s:\(^pixmap_path\) \(\".*\"$\):\1 \"${mydest}/scalable/stock\":" \
+		scalable/stock/iconrc || die
 }
 
 src_install() {
