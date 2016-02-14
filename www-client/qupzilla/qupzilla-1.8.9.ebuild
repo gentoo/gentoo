@@ -18,7 +18,7 @@ SRC_URI="https://github.com/${MY_PN}/${PN}/releases/download/v${PV}/${MY_P}.tar.
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 arm ~ppc64 ~x86"
+KEYWORDS="amd64 arm ~ppc64 x86"
 IUSE="dbus debug gnome-keyring kde libressl nonblockdialogs +qt4 qt5"
 REQUIRED_USE="^^ ( qt4 qt5 )
 	kde? ( qt4 )"
