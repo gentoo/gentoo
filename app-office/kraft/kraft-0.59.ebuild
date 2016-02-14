@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ KDE_LINGUAS="ast bg bs cs da de en_GB eo es et fi fr ga gl hu it ja lt mai mr nd
 nl pl pt pt_BR ru sk sv tr ug uk zh_CN"
 inherit kde4-base
 
-DESCRIPTION="Software for operating a small business, helping create documents such as offers and invoices"
+DESCRIPTION="Software for operating a small business, creating documents such as invoices"
 HOMEPAGE="http://www.volle-kraft-voraus.de/"
 SRC_URI="mirror://sourceforge/kraft/${P}.tar.xz"
 

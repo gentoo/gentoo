@@ -19,7 +19,7 @@ _KDE5_ECLASS=1
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : ${VIRTUALX_REQUIRED:=manual}
 
-inherit kde5-functions fdo-mime flag-o-matic gnome2-utils versionator virtualx eutils cmake-utils
+inherit cmake-utils eutils flag-o-matic gnome2-utils kde5-functions versionator virtualx xdg
 
 if [[ ${KDE_BUILD_TYPE} = live ]]; then
 	case ${KDE_SCM} in
@@ -574,6 +574,7 @@ kde5_pkg_preinst() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	gnome2_icon_savelist
+	xdg_pkg_preinst
 }
 
 # @FUNCTION: kde5_pkg_postinst
@@ -583,7 +584,7 @@ kde5_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_pkg_postinst
 }
 
 # @FUNCTION: kde5_pkg_postrm
@@ -593,7 +594,7 @@ kde5_pkg_postrm() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_pkg_postrm
 }
 
 fi

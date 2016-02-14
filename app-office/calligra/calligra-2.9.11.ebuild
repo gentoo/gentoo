@@ -117,7 +117,7 @@ RDEPEND="
 	sybase? ( dev-db/freetds )
 	tiff? ( media-libs/tiff:0 )
 	truetype? ( media-libs/freetype:2 )
-	vc? ( dev-libs/vc )
+	vc? ( <dev-libs/vc-1.0.0 )
 	xbase? ( dev-db/xbase )
 	calligra_features_kexi? (
 		>=dev-db/sqlite-3.8.7:3[extensions(+)]
