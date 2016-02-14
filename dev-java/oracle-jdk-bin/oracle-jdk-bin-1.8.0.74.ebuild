@@ -169,6 +169,7 @@ src_unpack() {
 		zcat jdk1${MY_PV%u*}0${update}.pkg/Payload | cpio -idv
 		mv Contents/Home "${WORKDIR}"/jdk${MY_PV}
 		popd > /dev/null
+		use jce && unpack "${JCE_FILE}"
 	else
 		default
 	fi
