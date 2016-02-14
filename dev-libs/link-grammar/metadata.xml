@@ -6,9 +6,10 @@
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
 	<longdescription lang="en">
-		The Link Grammar Parser is a syntactic parser of English, based on link
-		grammar, an original theory of English syntax. The system is written in
-		generic C code, and runs on any platform with a C compiler.
+		The Link Grammar Parser is a syntactic parser of English, Russian, Arabic and Persian (and other languages as well),
+		based on Link Grammar, an original theory of syntax and morphology. Given a sentence, the system assigns to it a
+		syntactic structure, which consists of a set of labelled links connecting pairs of words. The parser also produces a "constituent" 
+		(HPSG style phrase tree) representation of a sentence (showing noun phrases, verb phrases, etc.).
 	</longdescription>
 	<use>
 		<flag name="aspell">Adds support for <pkg>app-text/aspell</pkg> spell checker</flag>
