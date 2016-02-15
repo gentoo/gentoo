@@ -741,6 +741,7 @@ app-emulation/xen-tools:ovmf - Enable support to boot UEFI guest vm, needed by h
 app-emulation/xen-tools:pam - Enable pam support
 app-emulation/xen-tools:pygrub - Install the pygrub boot loader
 app-emulation/xen-tools:qemu - Enable IOEMU support via the use of qemu-dm
+app-emulation/xen-tools:qemu-traditional - Build the old qemu traditional device model (useful only if you cannot change to the new device model e.g. Windows VMs)
 app-emulation/xen-tools:screen - Enable support for running domain U console in an app-misc/screen session
 app-emulation/xen-tools:system-qemu - Using app-emulation/qemu instead of the bundled one
 app-emulation/xen-tools:system-seabios - Using sys-firmware/seabios instead of the bundled one

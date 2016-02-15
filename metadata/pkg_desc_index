@@ -1355,7 +1355,7 @@ app-emulation/x48 0.6.4: HP48 Calculator Emulator
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
 app-emulation/xen 4.5.2-r2 4.5.2-r3 4.5.2-r4 4.6.0-r5 4.6.0-r6 4.6.0-r7 4.6.0-r8: The Xen virtual machine monitor
 app-emulation/xen-pvgrub 4.5.2 4.6.0: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
-app-emulation/xen-tools 4.5.2-r2 4.5.2-r3 4.5.2-r4 4.6.0-r4 4.6.0-r5 4.6.0-r6 4.6.0-r7: Xen tools including QEMU and xl
+app-emulation/xen-tools 4.5.2-r2 4.5.2-r3 4.5.2-r4 4.6.0-r4 4.6.0-r5 4.6.0-r6 4.6.0-r7 4.6.0-r8: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r3: Radio Shack TRS-80 emulator
 app-eselect/eselect-audicle 1.0.1: Manages the /usr/bin/audicle symlink
 app-eselect/eselect-awk 0.2: Manages the {,/usr}/bin/awk symlink
@@ -5090,7 +5090,7 @@ dev-ml/pcre-ocaml 6.2.5 7.1.6: Perl Compatibility Regular Expressions for O'Caml
 dev-ml/pgocaml 2.2: PG'OCaml is a set of OCaml bindings for the PostgreSQL database
 dev-ml/pipebang 110.01.00 113.00.00: Syntax extension to transform x |! f into f x
 dev-ml/pomap 3.0.2 3.0.3 3.0.5: Partially Ordered Map ADT for O'Caml
-dev-ml/postgresql-ocaml 2.0.5 3.2.2: A package for ocaml that provides access to PostgreSQL databases
+dev-ml/postgresql-ocaml 2.0.5 3.2.2 4.0.1: A package for ocaml that provides access to PostgreSQL databases
 dev-ml/ppx_assert 113.24.00: Optional compilation for OCaml
 dev-ml/ppx_bench 113.24.00: Syntax extension for writing in-line benchmarks in ocaml code
 dev-ml/ppx_bin_prot 113.24.00 113.24.01: Generation of bin_prot readers and writers from types
