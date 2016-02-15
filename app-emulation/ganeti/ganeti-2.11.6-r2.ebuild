@@ -26,7 +26,7 @@ if [[ ${PV} == "9999" ]] ; then
 		media-fonts/urw-fonts"
 else
 	SRC_URI="http://downloads.ganeti.org/releases/${SERIES}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Ganeti is a virtual server management software tool"
