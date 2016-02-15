@@ -104,7 +104,7 @@ pkg_setup() {
 src_prepare() {
 	if ! [[ ${PV} = 9999* ]]; then
 		# secure_getenv() disable for non-glibc systems wrt bug #443030
-		if ! [[ $(grep -r secure_getenv * | wc -l) -eq 25 ]]; then
+		if ! [[ $(grep -r secure_getenv * | wc -l) -eq 26 ]]; then
 			eerror "The line count for secure_getenv() failed, see bug #443030"
 			die
 		fi
@@ -157,6 +157,7 @@ multilib_src_configure() {
 	tc-export CC #463846
 	export cc_cv_CFLAGS__flto=no #502950
 	export cc_cv_CFLAGS__Werror_shadow=no #554454
+	export cc_cv_LDFLAGS__Wl__fuse_ld_gold=no #573874
 
 	# Keep sorted by ./configure --help and only pass --disable flags
 	# when *required* to avoid external deps or unnecessary compile
