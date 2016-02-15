@@ -92,7 +92,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.9.8-ruby-link.patch
+	epatch "${FILESDIR}"/${PN}-0.9.8-ruby-link.patch \
+		"${FILESDIR}/${P}-ffmpeg3.patch"
 
 	# respect CFLAGS LDFLAGS when building shared libraries. Bug #308873
 	for x in python lua; do
