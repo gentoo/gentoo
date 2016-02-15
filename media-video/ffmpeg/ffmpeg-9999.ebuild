@@ -63,7 +63,7 @@ fi
 # or $(use_enable foo foo) if no :bar is set.
 # foo is added to IUSE.
 FFMPEG_FLAG_MAP=(
-		+bzip2:bzlib cpudetection:runtime-cpudetect debug doc gcrypt gnutls gmp
+		+bzip2:bzlib cpudetection:runtime-cpudetect debug gcrypt gnutls gmp
 		+gpl +hardcoded-tables +iconv lzma +network openssl +postproc
 		samba:libsmbclient sdl:ffplay sdl vaapi vdpau X:xlib xcb:libxcb
 		xcb:libxcb-shm xcb:libxcb-xfixes +zlib
@@ -97,7 +97,7 @@ FFMPEG_ENCODER_FLAG_MAP=(
 )
 
 IUSE="
-	alsa +encode examples jack libressl oss pic static-libs test v4l
+	alsa doc +encode examples jack libressl oss pic static-libs test v4l
 	${FFMPEG_FLAG_MAP[@]%:*}
 	${FFMPEG_ENCODER_FLAG_MAP[@]%:*}
 "
@@ -409,6 +409,9 @@ multilib_src_configure() {
 				;;
 		esac
 	fi
+
+	# doc
+	myconf+=( $(multilib_native_use_enable doc) )
 
 	set -- "${S}/configure" \
 		--prefix="${EPREFIX}/usr" \
