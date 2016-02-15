@@ -174,6 +174,8 @@ QA_PREBUILT="${INTEL_SDP_DIR}/*"
 # @DESCRIPTION:
 # Creating necessary links to use intel compiler with eclipse
 _isdp_link_eclipse_plugins() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	local c f
 	pushd ${INTEL_SDP_DIR}/eclipse_support > /dev/null || die
 		for c in cdt*; do
@@ -201,6 +203,8 @@ _isdp_link_eclipse_plugins() {
 # @DESCRIPTION:
 # warn user that we really require a license
 _isdp_big-warning() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	case ${1} in
 		pre-check )
 			echo ""
@@ -236,6 +240,8 @@ _isdp_big-warning() {
 # @DESCRIPTION:
 # Testing for valid license by asking for version information of the compiler
 _isdp_version_test() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	local comp comp_full arch warn
 	case ${PN} in
 		ifc )
@@ -277,6 +283,8 @@ _isdp_version_test() {
 # @INTERNAL
 # Test if installed compiler is working
 _isdp_run-test() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	if [[ -z ${INTEL_SKIP_LICENSE} ]]; then
 		case ${PN} in
 			ifc | icc )
@@ -295,6 +303,8 @@ _isdp_run-test() {
 # * Check for space requirements being fullfilled
 # @CODE
 intel-sdp_pkg_pretend() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	local warn=1 dir dirs ret arch a p
 
 	: ${CHECKREQS_DISK_BUILD:=256M}
@@ -336,6 +346,7 @@ intel-sdp_pkg_pretend() {
 # @DESCRIPTION:
 # Setting up and sorting some internal variables
 intel-sdp_pkg_setup() {
+	debug-print-function ${FUNCNAME} "${@}"
 	local arch a p
 
 	if use x86; then
@@ -419,6 +430,8 @@ intel-sdp_src_unpack() {
 # @DESCRIPTION:
 # Install everything
 intel-sdp_src_install() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	if path_exists "${INTEL_SDP_DIR}"/uninstall*; then
 		ebegin "Cleaning out uninstall information"
 		find "${INTEL_SDP_DIR}"/uninstall* -delete || die
@@ -481,6 +494,8 @@ intel-sdp_src_install() {
 # @DESCRIPTION:
 # Add things to intel database
 intel-sdp_pkg_postinst() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	# add product registry to intel "database"
 	local l r
 	for r in ${INTEL_RPMS}; do
@@ -500,6 +515,8 @@ intel-sdp_pkg_postinst() {
 # @DESCRIPTION:
 # Sanitize intel database
 intel-sdp_pkg_postrm() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	# remove from intel "database"
 	if [[ -e ${INTEL_SDP_DB} ]]; then
 		local r
