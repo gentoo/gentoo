@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -56,7 +56,7 @@ python_test() {
 	# start local instance of elasticsearch
 	${ES}/bin/elasticsearch -d -p ${PID}
 
-	for i in `seq 10`; do
+	for i in {1..10}; do
 		grep -q "started" ${ES_LOG} 2> /dev/null
 		if [ $? -eq 0 ]; then
 			einfo "Elasticsearch started"
@@ -75,7 +75,7 @@ python_test() {
 	done
 
 	export TEST_ES_SERVER="localhost:${ES_PORT}"
-	esetup.py test
+	esetup.py test || die
 
 	pkill -F ${PID}
 }
