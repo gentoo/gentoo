@@ -411,7 +411,11 @@ multilib_src_configure() {
 	fi
 
 	# doc
-	myconf+=( $(multilib_native_use_enable doc) )
+	myconf+=(
+		$(multilib_native_use_enable doc)
+		$(multilib_native_use_enable doc htmlpages)
+		$(multilib_native_enable manpages)
+	)
 
 	set -- "${S}/configure" \
 		--prefix="${EPREFIX}/usr" \
@@ -443,7 +447,7 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
-	emake V=1 DESTDIR="${D}" install install-man
+	emake V=1 DESTDIR="${D}" install install-doc
 
 	if multilib_is_native_abi; then
 		for i in "${FFTOOLS[@]}" ; do
