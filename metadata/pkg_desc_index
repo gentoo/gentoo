@@ -4345,10 +4345,10 @@ dev-lang/gprolog 1.4.4: GNU Prolog is a native Prolog compiler with constraint s
 dev-lang/gwydion-dylan-bin 2.4.0-r1: The Dylan Programming Language Compiler
 dev-lang/helium 1.6 1.8.1: The Helium Compiler
 dev-lang/hy 0.10.0 0.10.1 0.11.1: A LISP dialect running in python
-dev-lang/icc 13.0.0.079 13.0.1.117 13.1.2.146 13.1.3.163 13.1.5.192 14.0.0.080 14.0.1.106 14.0.2.144 14.0.3.174 15.0.0.090 15.0.1.133 15.0.2.164 15.0.3.187: Intel C/C++ Compiler
+dev-lang/icc 13.1.2.146 13.1.3.163 13.1.5.192 14.0.0.080 14.0.1.106 14.0.2.144 14.0.3.174 15.0.0.090 15.0.1.133 15.0.2.164 15.0.3.187: Intel C/C++ Compiler
 dev-lang/icon 9.4.3-r5 9.5.0 9.5.0-r1: very high level language
-dev-lang/idb 13.0.0.079 13.0.1.117-r1 13.0.2.146 13.0.3.163 13.0.5.192 14.0.0.080 14.0.1.106 14.0.2.144 14.0.3.174: Intel C/C++/FORTRAN debugger
-dev-lang/ifc 13.0.0.079-r1 13.0.1.117 13.1.2.146 13.1.3.163 13.1.5.192 14.0.0.080 14.0.1.106 14.0.2.144 14.0.3.174 15.0.0.090 15.0.1.133 15.0.2.164 15.0.3.187: Intel FORTRAN Compiler
+dev-lang/idb 13.0.2.146 13.0.3.163 13.0.5.192 14.0.0.080 14.0.1.106 14.0.2.144 14.0.3.174: Intel C/C++/FORTRAN debugger
+dev-lang/ifc 13.1.2.146 13.1.3.163 13.1.5.192 14.0.0.080 14.0.1.106 14.0.2.144 14.0.3.174 15.0.0.090 15.0.1.133 15.0.2.164 15.0.3.187: Intel FORTRAN Compiler
 dev-lang/inform 6.33.1_p2: design system for interactive fiction
 dev-lang/interprolog 2.1.2: InterProlog is a Java front-end and enhancement for Prolog
 dev-lang/io 2011.09.12-r2: Io is a small, prototype-based programming language
@@ -4557,7 +4557,7 @@ dev-libs/iksemel 1.3 1.4: eXtensible Markup Language parser library designed for
 dev-libs/ilbc-rfc3951 0-r1: iLBC (internet Low Bitrate Codec) is a speech codec suitable for robust voice communication over IP
 dev-libs/iniparser 3.1 3.1-r1 4.0: A free stand-alone ini file parsing library
 dev-libs/injeqt 1.0.0 1.0.0-r1: Dependency injection framework for Qt5
-dev-libs/intel-common 13.0.0.079 13.0.0.079-r1 13.0.1.117 13.1.2.146 13.1.3.163 13.1.5.192 14.0.0.080 14.0.1.106 14.0.2.144 14.0.3.174 15.0.0.090-r1 15.0.1.133 15.0.2.164 15.0.3.187: Common libraries and utilities needed for Intel compilers and libraries
+dev-libs/intel-common 13.1.2.146 13.1.3.163 13.1.5.192 14.0.0.080 14.0.1.106 14.0.2.144 14.0.3.174 15.0.0.090-r1 15.0.1.133 15.0.2.164 15.0.3.187: Common libraries and utilities needed for Intel compilers and libraries
 dev-libs/isl 0.11.1 0.12.2 0.13 0.14 0.14.1 0.15 0.16.1: A library for manipulating integer points bounded by linear constraints
 dev-libs/jansson 2.7: C library for encoding, decoding and manipulating JSON data
 dev-libs/jemalloc 2.2.5-r1 3.3.1 3.6.0 4.0.4: Jemalloc is a general-purpose scalable concurrent allocator
@@ -13046,7 +13046,7 @@ media-sound/mpd 0.19.10 0.19.11 0.19.12: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.0-r1 0.4.1: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.7-r1 1.3.8.1 1.3.8.1-r1 1.3.8.1-r2: Music Player For Console
-media-sound/mpg123 1.18.1 1.22.2 1.22.4: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
+media-sound/mpg123 1.18.1 1.22.4 1.23.1: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mpg321 0.3.1-r1 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mplay 0.80: A Curses front-end for mplayer
 media-sound/mserv 0.35-r1: Jukebox-style music server
@@ -15707,7 +15707,7 @@ sci-libs/inchi 1.04: A program and library for generating standard and non-stand
 sci-libs/indilib 0.9.9 1.0.0 1.1.0: INDI Astronomical Control Protocol library
 sci-libs/io_lib 1.10.1 1.11.2.1 1.12.5 1.13.2: General purpose trace and experiment file reading/writing interface
 sci-libs/ipopt 3.11.7 3.11.8: Interior-Point Optimizer for large-scale nonlinear optimization
-sci-libs/ipp 7.1.0.079 7.1.1.117 7.1.1.146 7.1.1.192 8.0.1.080 8.2.0.090 8.2.1.164 8.2.2.187: Intel Integrated Performance Primitive library for multimedia and data processing
+sci-libs/ipp 7.1.1.146 7.1.1.192 8.0.1.080 8.2.0.090 8.2.1.164 8.2.2.187: Intel Integrated Performance Primitive library for multimedia and data processing
 sci-libs/itpp 4.3.1-r1: C++ library of mathematical, signal processing and communication
 sci-libs/jama 1.2.5: Java-like matrix C++ templates
 sci-libs/jmol-acme 1.0: Portions of the Acme collection required for jMol
