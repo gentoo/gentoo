@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils bash-completion-r1 prefix python-r1
+inherit eutils prefix python-r1
 
 DESCRIPTION="A collection of tools to let /etc be stored in a repository"
 HOMEPAGE="https://etckeeper.branchable.com/"
@@ -29,7 +29,7 @@ RDEPEND="${DEPEND}
 	!bazaar? ( || ( ${VCS_DEPEND} ) )"
 
 src_prepare(){
-	epatch "${FILESDIR}"/${P}-gentoo.patch
+	epatch "${FILESDIR}"/${PN}-1.18.3-gentoo.patch
 }
 
 src_compile() {
@@ -50,7 +50,6 @@ src_install(){
 		eprefixify "${ED%/}"/etc/env.d/99${PN}
 	fi
 
-	newbashcomp bash_completion ${PN}
 	dodoc doc/README.mdwn
 	docinto examples
 	newdoc "${FILESDIR}"/bashrc-r1 bashrc
