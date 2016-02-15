@@ -5,6 +5,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Sergey Popov <pinkbyte@gentoo.org> (15 Feb 2016)
+# Mask monitoring capabilities of Ganeti on stable branches
+app-emulation/ganeti monitoring
+
 # Ian Delaney <idella4@gentoo.org> (04 Jan 2016)
 # on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
 # media-libs/libcaca wasn't stabilized in the past, but now
