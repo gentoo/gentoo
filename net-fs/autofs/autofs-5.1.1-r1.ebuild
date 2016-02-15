@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,9 +9,9 @@ AUTOTOOLS_IN_SOURCE_BUILD=true
 
 inherit autotools-utils linux-info multilib systemd toolchain-funcs
 
-PATCH_VER=
+PATCH_VER=0
 [[ -n ${PATCH_VER} ]] && \
-	PATCHSET_URI="https://dev.gentoo.org/~jlec/distfiles/${P}-patches-${PATCH_VER}.tar.lzma"
+	PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P}-patches-${PATCH_VER}.tar.lzma"
 
 DESCRIPTION="Kernel based automounter"
 HOMEPAGE="http://www.linux-consulting.com/Amd_AutoFS/autofs.html"
@@ -22,7 +22,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="-dmalloc hesiod ldap libtirpc mount-locking sasl"
+IUSE="-dmalloc hesiod ldap +libtirpc mount-locking sasl"
 
 # USE="sasl" adds SASL support to the LDAP module which will not be build. If
 # SASL support should be available, please add "ldap" to the USE flags.
@@ -46,10 +46,6 @@ DEPEND="${RDEPEND}
 	virtual/yacc"
 
 CONFIG_CHECK="~AUTOFS4_FS"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-5.0.7-sloppy-mount.patch #545258
-)
 
 src_prepare() {
 	# Upstream's patchset
