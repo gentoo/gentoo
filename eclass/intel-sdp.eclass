@@ -281,6 +281,7 @@ _isdp_version_test() {
 
 # @FUNCTION: _isdp_run-test
 # @INTERNAL
+# @DESCRIPTION:
 # Test if installed compiler is working
 _isdp_run-test() {
 	debug-print-function ${FUNCNAME} "${@}"
