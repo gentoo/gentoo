@@ -5052,7 +5052,7 @@ dev-ml/ocaml-expat 0.9.1: OCaml bindings for expat
 dev-ml/ocaml-expect 0.0.4 0.0.5: Ocaml implementation of expect to help building unitary testing
 dev-ml/ocaml-fileutils 0.4.5 0.5.0: Pure OCaml functions to manipulate real file (POSIX like) and filename
 dev-ml/ocaml-gettext 0.3.4 0.3.5: Provides support for internationalization of OCaml program
-dev-ml/ocaml-ipaddr 2.6.1: OCaml library for manipulation of IP (and MAC) address representations
+dev-ml/ocaml-ipaddr 2.6.1 2.7.0: OCaml library for manipulation of IP (and MAC) address representations
 dev-ml/ocaml-make 6.37.0: Generic O'Caml Makefile for GNU Make
 dev-ml/ocaml-mysql 1.1.1 1.2.0: A package for ocaml that provides access to mysql databases
 dev-ml/ocaml-pcap 0.3.3: Read and write pcap-formatted network packet traces.
