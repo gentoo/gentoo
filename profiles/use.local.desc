@@ -5408,13 +5408,18 @@ net-im/choqok:telepathy - Enable support for the real-time communication framewo
 net-im/climm:otr - Enable encrypted conversations
 net-im/corebird:glade - Install glade catalogs for corebird
 net-im/ejabberd:captcha - Support for CAPTCHA Forms (XEP-158)
-net-im/ejabberd:elixir - Enable Elixir language support (http://elixir-lang.org/)
+net-im/ejabberd:elixir - Enable Elixir language support (http://elixir-lang.org/). Use bundled plugin instead of dev-lang/elixir.
+net-im/ejabberd:lager - Use lager Erlang logging tool instead of standard error logger
 net-im/ejabberd:mod_bosh - Enable support for XMPP over BOSH (XEP-0206)
 net-im/ejabberd:mod_irc - Build irc gateway
 net-im/ejabberd:mod_muc - Build Multi User Chat module
 net-im/ejabberd:mod_proxy65 - Support for SOCKS5 Bytestreams (XEP-0065)
 net-im/ejabberd:mod_pubsub - Build Pubsub module
 net-im/ejabberd:mod_statsdx - Measures several statistics, and provides a new section in ejabberd Web Admin to view them.
+net-im/ejabberd:mssql - Build Microsoft SQL Server support
+net-im/ejabberd:mysql - Build Native MySQL support
+net-im/ejabberd:odbc - Build ODBC data storage support
+net-im/ejabberd:postgres - Build Native PostgreSQL support
 net-im/ejabberd:redis - Enable Redis support
 net-im/ejabberd:riak - Enable Riak support
 net-im/ejabberd:tools - Build development tools
