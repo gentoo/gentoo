@@ -17,11 +17,16 @@
 		<flag name="captcha">Support for CAPTCHA Forms (XEP-158)</flag>
 		<flag name="mod_proxy65">Support for SOCKS5 Bytestreams (XEP-0065)</flag>
 		<flag name="mod_statsdx">Measures several statistics, and provides a new section in ejabberd Web Admin to view them.</flag>
-		<flag name="elixir">Enable Elixir language support (http://elixir-lang.org/)</flag>
+		<flag name="elixir">Enable Elixir language support (http://elixir-lang.org/). Use bundled plugin instead of dev-lang/elixir.</flag>
+		<flag name="lager">Use lager Erlang logging tool instead of standard error logger</flag>
 		<flag name="mod_bosh">Enable support for XMPP over BOSH (XEP-0206)</flag>
 		<flag name="mod_irc">Build irc gateway</flag>
 		<flag name="mod_muc">Build Multi User Chat module</flag>
 		<flag name="mod_pubsub">Build Pubsub module</flag>
+		<flag name="mssql">Build Microsoft SQL Server support</flag>
+		<flag name="mysql">Build Native MySQL support</flag>
+		<flag name="odbc">Build ODBC data storage support</flag>
+		<flag name="postgres">Build Native PostgreSQL support</flag>
 		<flag name="redis">Enable Redis support</flag>
 		<flag name="riak">Enable Riak support</flag>
 		<flag name="tools">Build development tools</flag>

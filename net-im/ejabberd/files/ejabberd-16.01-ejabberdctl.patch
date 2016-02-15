@@ -1,0 +1,49 @@
+Set SHELL since the generic jabber user used on Gentoo for jabber servers
+doesn't have a valid shell set by default and fix EXEC_CMD otherwise it fails
+with "This account is currently not available" again due to jabber not having
+a valid shell.
+
+Also, workaround the assumption that jabber's $HOME is a directory when instead
+it defaults to /dev/null on Gentoo.
+
+--- ejabberdctl.template	2016-01-12 11:07:58.000000000 +0000
++++ ejabberdctl.template.new	2016-02-15 21:36:27.508297627 +0000
+@@ -16,6 +16,7 @@
+ EPMD={{bindir}}/epmd
+ INSTALLUSER={{installuser}}
+ ERL_LIBS={{libdir}}
++SHELL=/bin/sh
+ 
+ # check the proper system user is used if defined
+ if [ "$INSTALLUSER" != "" ] ; then
+@@ -23,11 +24,11 @@
+     for GID in `id -G`; do
+         if [ $GID -eq 0 ] ; then
+             INSTALLUSER_HOME=$(getent passwd "$INSTALLUSER" | cut -d: -f6)
+-            if [ -n "$INSTALLUSER_HOME" ] && [ ! -d "$INSTALLUSER_HOME" ] ; then
++            if [ -n "$INSTALLUSER_HOME" ] && [ ! -e "$INSTALLUSER_HOME" ] ; then
+                 mkdir -p "$INSTALLUSER_HOME"
+                 chown "$INSTALLUSER" "$INSTALLUSER_HOME"
+             fi
+-            EXEC_CMD="su $INSTALLUSER -c"
++            EXEC_CMD="su $INSTALLUSER -p -c"
+         fi
+     done
+     if [ `id -g` -eq `id -g $INSTALLUSER` ] ; then
+@@ -100,6 +101,7 @@
+ DATETIME=`date "+%Y%m%d-%H%M%S"`
+ ERL_CRASH_DUMP=$LOGS_DIR/erl_crash_$DATETIME.dump
+ ERL_INETRC=$ETC_DIR/inetrc
++HOME=$SPOOL_DIR
+ 
+ # define mnesia options
+ MNESIA_OPTS="-mnesia dir \"\\\"$SPOOL_DIR\\\"\" $MNESIA_OPTIONS"
+@@ -159,6 +161,8 @@
+ export CONTRIB_MODULES_PATH
+ export CONTRIB_MODULES_CONF_DIR
+ export ERL_LIBS
++export HOME
++export SHELL
+ 
+ shell_escape()
+ {
