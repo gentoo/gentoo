@@ -379,7 +379,7 @@ app-backup/mylvmbackup 0.14: mylvmbackup is a tool for quickly creating backups 
 app-backup/obnam 1.18.2-r1 1.18.2-r2 1.19: A backup program that supports encryption and deduplication
 app-backup/pdumpfs 1.3-r2: a daily backup system similar to Plan9's dumpfs
 app-backup/qt4-fsarchiver 0.6.19.6 0.6.19.7: Qt4 frontend for fsarchiver
-app-backup/rdiff-backup 1.3.3-r1: Local/remote mirroring+incremental backup
+app-backup/rdiff-backup 1.3.3-r1 1.3.3-r2: Local/remote mirroring+incremental backup
 app-backup/rdumpfs 0.1: a rsync-based dump file system backup tool
 app-backup/rear 1.15-r1 1.17.0 1.17.1: Fully automated disaster recovery, suppors broad variety of backup strategies and scenarios.
 app-backup/reoback 1.0_p3-r1: Reoback Backup Solution
@@ -8365,14 +8365,14 @@ dev-ros/rgbd_launch 2.1.0 2.1.1 2.2.0 9999: Launch files to open an RGBD device
 dev-ros/robot_pose_ekf 1.13.0 1.13.1 9999: Estimate the 3D pose of a robot, based on (partial) pose measurements coming from different sources
 dev-ros/robot_pose_publisher 0.2.3 9999: A Simple Node to Publish the Robot's Position Relative to the Map using TFs
 dev-ros/robot_state_publisher 1.10.4 1.12.0 9999: Package for publishing the state of a robot to tf
-dev-ros/rosapi 0.7.13 9999: Provides service calls for getting ros meta-information, like list of topics, services, params, etc.
+dev-ros/rosapi 0.7.13 0.7.14 9999: Provides service calls for getting ros meta-information, like list of topics, services, params, etc.
 dev-ros/rosauth 0.1.7 9999: Server Side tools for Authorization and Authentication of ROS Clients
 dev-ros/rosbag 1.11.14 1.11.15 1.11.16 9999: Set of tools for recording from and playing back to ROS topics
 dev-ros/rosbag_storage 1.11.14 1.11.15 1.11.16 9999: Set of tools for recording from and playing back ROS message
 dev-ros/rosbash 1.12.3 1.12.5 9999: Assorted shell commands for using ros with bash
 dev-ros/rosboost_cfg 1.12.3 1.12.5 9999: Tool for determining cflags/lflags/etc. of boost on your system
-dev-ros/rosbridge_library 0.7.13 9999: Core rosbridge package repsonsible for interpreting JSON and performing the appropriate ROS action
-dev-ros/rosbridge_server 0.7.13-r2 9999: A WebSocket interface to rosbridge
+dev-ros/rosbridge_library 0.7.13 0.7.14 9999: Core rosbridge package repsonsible for interpreting JSON and performing the appropriate ROS action
+dev-ros/rosbridge_server 0.7.13-r2 0.7.14 9999: A WebSocket interface to rosbridge
 dev-ros/rosbuild 1.12.3 1.12.5 9999: Scripts for managing the CMake-based build system for ROS
 dev-ros/rosclean 1.12.3 1.12.5 9999: Cleanup filesystem resources (e.g. log files)
 dev-ros/rosconsole 1.11.14 1.11.15 1.11.16 9999: ROS console output library
@@ -11030,7 +11030,7 @@ kde-apps/kdeedu-meta 4.14.3: KDE educational apps - merge this to pull in all kd
 kde-apps/kdegames-meta 4.14.3 15.08.3: kdegames - merge this to pull in all kdegames-derived packages
 kde-apps/kdegraphics-meta 4.14.3 15.08.3 15.12.1: kdegraphics - merge this to pull in all kdegraphics-derived packages
 kde-apps/kdegraphics-mobipocket 4.14.3 15.08.3 15.12.1: Library to support mobipocket ebooks
-kde-apps/kdemultimedia-meta 4.14.3 15.08.3 15.12.1: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
+kde-apps/kdemultimedia-meta 4.14.3 15.08.3-r1 15.12.1-r1: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
 kde-apps/kdenetwork-filesharing 4.14.3 15.08.3: kcontrol filesharing config module for SMB
 kde-apps/kdenetwork-meta 4.14.3 15.08.3-r1: kdenetwork - merge this to pull in all kdenetwork-derived packages
 kde-apps/kdenlive 0.9.8 0.9.10 15.08.3-r1 15.12.1: Non-linear video editing suite by KDE
@@ -15163,7 +15163,7 @@ ros-meta/ros_comm 1.11.14 1.11.15 1.11.16 9999: ROS communications-related packa
 ros-meta/ros_control 0.9.3 0.10.0 9999: Controller interfaces, controller managers, transmissions, hardware_interfaces, control_toolbox
 ros-meta/ros_core 1.2.0 9999: Metapackage to aggregate the packages required to use core ROS concepts
 ros-meta/ros_tutorials 0.6.1 9999: Demonstrates various features of ROS, as well as support packages which help demonstrate them
-ros-meta/rosbridge_suite 0.7.13 9999: JSON API to ROS functionality for non-ROS programs
+ros-meta/rosbridge_suite 0.7.13 0.7.14 9999: JSON API to ROS functionality for non-ROS programs
 ros-meta/roscpp_core 0.5.6 9999: Underlying data libraries for roscpp messages
 ros-meta/rosserial 0.7.1 9999: Metapackage for core of rosserial
 ros-meta/rqt 0.2.14 9999: Qt-based framework for GUI development for ROS
@@ -15607,7 +15607,7 @@ sci-geosciences/xtide 2.13 2.13.1 2.13.2: XTide provides tide and current predic
 sci-libs/Fiona 1.5.1 9999: OGR's neat, nimble, no-nonsense API
 sci-libs/Rtree 0.8.2: R-Tree spatial index for Python GIS
 sci-libs/Shapely 1.3.0 1.3.2 9999: Geometric objects, predicates, and operations
-sci-libs/ViSP 2.10.0-r1 3.0.0: Visual Servoing Platform: visual tracking and visual servoing library
+sci-libs/ViSP 3.0.0: Visual Servoing Platform: visual tracking and visual servoing library
 sci-libs/acml 4.1.0-r2: AMD Core Math Library for x86 and amd64 CPUs
 sci-libs/adolc 2.4.1 2.5.0 2.5.2: Automatic differentiation system for C/C++
 sci-libs/alglib 3.8.2-r1 3.10.0-r1: Numerical analysis and data processing library
