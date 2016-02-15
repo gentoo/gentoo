@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,6 +7,13 @@
 # Justin Lecher <jlec@gentoo.org>
 # Sci Team <sci@gentoo.org>
 # @BLURB: Handling of Intel's Software Development Products package management
+
+if [[ ! ${_INTEL_SDP_ECLASS_} ]]; then
+
+case "${EAPI:-0}" in
+	5) ;;
+	*) die "EAPI=${EAPI} is not supported" ;;
+esac
 
 # @ECLASS-VARIABLE: INTEL_DID
 # @DEFAULT_UNSET
@@ -42,7 +49,6 @@
 # Must be defined before inheriting the eclass
 
 # @ECLASS-VARIABLE: INTEL_TARX
-# @DEFAULT_UNSET
 # @DESCRIPTION:
 # The package extention.
 # To find out its value, see the links to download in
@@ -78,7 +84,6 @@
 : ${INTEL_X86:=i486}
 
 # @ECLASS-VARIABLE: INTEL_BIN_RPMS
-# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Functional name of rpm without any version/arch tag
 #
@@ -90,7 +95,6 @@
 # e.g. CLI_install/rpm/intel-vtune-amplifier-xe-cli
 
 # @ECLASS-VARIABLE: INTEL_DAT_RPMS
-# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Functional name of rpm of common data which are arch free
 # without any version tag
@@ -101,6 +105,7 @@
 # specify the full path
 #
 # e.g. CLI_install/rpm/intel-vtune-amplifier-xe-cli-common
+: ${INTEL_DAT_RPMS:=""}
 
 # @ECLASS-VARIABLE: INTEL_SINGLE_ARCH
 # @DESCRIPTION:
@@ -144,13 +149,11 @@ _INTEL_SDP_YEAR=${INTEL_DPV%_update*}
 _INTEL_SDP_YEAR=${INTEL_DPV%_sp*}
 
 # @ECLASS-VARIABLE: INTEL_SDP_DIR
-# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Full rootless path to installation dir
 INTEL_SDP_DIR="opt/intel/${INTEL_SUBDIR}-${_INTEL_SDP_YEAR:-${_INTEL_PV1}}.${_INTEL_PV3}.${_INTEL_PV4}"
 
 # @ECLASS-VARIABLE: INTEL_SDP_EDIR
-# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Full rooted path to installation dir
 INTEL_SDP_EDIR="${EROOT%/}/${INTEL_SDP_DIR}"
@@ -171,6 +174,8 @@ QA_PREBUILT="${INTEL_SDP_DIR}/*"
 # @DESCRIPTION:
 # Creating necessary links to use intel compiler with eclipse
 _isdp_link_eclipse_plugins() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	local c f
 	pushd ${INTEL_SDP_DIR}/eclipse_support > /dev/null || die
 		for c in cdt*; do
@@ -198,6 +203,8 @@ _isdp_link_eclipse_plugins() {
 # @DESCRIPTION:
 # warn user that we really require a license
 _isdp_big-warning() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	case ${1} in
 		pre-check )
 			echo ""
@@ -233,6 +240,8 @@ _isdp_big-warning() {
 # @DESCRIPTION:
 # Testing for valid license by asking for version information of the compiler
 _isdp_version_test() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	local comp comp_full arch warn
 	case ${PN} in
 		ifc )
@@ -272,8 +281,11 @@ _isdp_version_test() {
 
 # @FUNCTION: _isdp_run-test
 # @INTERNAL
+# @DESCRIPTION:
 # Test if installed compiler is working
 _isdp_run-test() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	if [[ -z ${INTEL_SKIP_LICENSE} ]]; then
 		case ${PN} in
 			ifc | icc )
@@ -292,6 +304,8 @@ _isdp_run-test() {
 # * Check for space requirements being fullfilled
 # @CODE
 intel-sdp_pkg_pretend() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	local warn=1 dir dirs ret arch a p
 
 	: ${CHECKREQS_DISK_BUILD:=256M}
@@ -333,6 +347,7 @@ intel-sdp_pkg_pretend() {
 # @DESCRIPTION:
 # Setting up and sorting some internal variables
 intel-sdp_pkg_setup() {
+	debug-print-function ${FUNCNAME} "${@}"
 	local arch a p
 
 	if use x86; then
@@ -416,6 +431,8 @@ intel-sdp_src_unpack() {
 # @DESCRIPTION:
 # Install everything
 intel-sdp_src_install() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	if path_exists "${INTEL_SDP_DIR}"/uninstall*; then
 		ebegin "Cleaning out uninstall information"
 		find "${INTEL_SDP_DIR}"/uninstall* -delete || die
@@ -478,6 +495,8 @@ intel-sdp_src_install() {
 # @DESCRIPTION:
 # Add things to intel database
 intel-sdp_pkg_postinst() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	# add product registry to intel "database"
 	local l r
 	for r in ${INTEL_RPMS}; do
@@ -497,6 +516,8 @@ intel-sdp_pkg_postinst() {
 # @DESCRIPTION:
 # Sanitize intel database
 intel-sdp_pkg_postrm() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	# remove from intel "database"
 	if [[ -e ${INTEL_SDP_DB} ]]; then
 		local r
@@ -514,8 +535,6 @@ intel-sdp_pkg_postrm() {
 }
 
 EXPORT_FUNCTIONS pkg_setup src_unpack src_install pkg_postinst pkg_postrm pkg_pretend
-case "${EAPI:-0}" in
-	0|1|2|3)die "EAPI=${EAPI} is not supported anymore" ;;
-	4|5) ;;
-	*) die "EAPI=${EAPI} is not supported" ;;
-esac
+
+_INTEL_SDP_ECLASS_=1
+fi

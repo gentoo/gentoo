@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils toolchain-funcs libtool multilib-minimal
+EAPI=6
+inherit flag-o-matic toolchain-funcs libtool multilib-minimal
 
 DESCRIPTION="a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3"
 HOMEPAGE="http://www.mpg123.org/"
@@ -33,7 +33,14 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog NEWS NEWS.libmpg123 README )
 
+pkg_setup() {
+	# Build fails without -D_GNU_SOURCE like this:
+	# error: ‘struct hostent’ has no member named ‘h_addr’
+	append-cflags -D_GNU_SOURCE
+}
+
 src_prepare() {
+	default
 	elibtoolize # for Darwin bundles
 }
 
@@ -45,7 +52,7 @@ multilib_src_configure() {
 	if $(multilib_is_native_abi) ; then
 		for flag in nas portaudio sdl oss jack alsa pulseaudio coreaudio; do
 			if use ${flag}; then
-				_audio="${_audio} ${flag/pulseaudio/pulse}"
+				_audio+=" ${flag/pulseaudio/pulse}"
 				_output=${flag/pulseaudio/pulse}
 			fi
 		done
