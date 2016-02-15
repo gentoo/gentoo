@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=5
+
 inherit versionator eutils autotools
 
 DESCRIPTION="Archiver that creates standard zips to create identical files over multiple systems"
@@ -30,6 +32,6 @@ src_unpack() {
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "install failed"
-	dodoc README AUTHORS
+	emake DESTDIR="${D}" install 
+	nonfatal dodoc README AUTHORS
 }
