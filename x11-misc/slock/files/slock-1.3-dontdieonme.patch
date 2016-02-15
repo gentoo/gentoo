@@ -1,10 +1,11 @@
 --- a/slock.c
 +++ b/slock.c
-@@ -55,7 +55,6 @@
- 	va_start(ap, errstr);
- 	vfprintf(stderr, errstr, ap);
- 	va_end(ap);
--	exit(1);
- }
+@@ -81,7 +81,7 @@
+ 		die("buffer too small\n");
  
- #ifdef __linux__
+ 	if (fd < 0 || write(fd, value, length) != length || close(fd) != 0)
+-		die("cannot disable the out-of-memory killer for this process (make sure to suid or sgid slock)\n");
++		fprintf(stderr, "cannot disable the out-of-memory killer for this process (make sure to suid or sgid slock)\n");
+ }
+ #endif
+ 
