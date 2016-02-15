@@ -20,6 +20,7 @@ HOMEPAGE="http://net-tools.sourceforge.net/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="+arp +hostname ipv6 nis nls plipconfig selinux slattach static"
+REQUIRED_USE="nis? ( hostname )"
 
 RDEPEND="selinux? ( sys-libs/libselinux )"
 DEPEND="${RDEPEND}
@@ -67,6 +68,11 @@ src_configure() {
 	set_opt HAVE_HWTR has_version '<sys-kernel/linux-headers-3.5'
 	set_opt HAVE_HWSTRIP has_version '<sys-kernel/linux-headers-3.6'
 	set_opt HAVE_SELINUX use selinux
+	set_opt HAVE_ARP_TOOLS use arp
+	set_opt HAVE_HOSTNAME_TOOLS use hostname
+	set_opt HAVE_HOSTNAME_SYMLINKS use nis
+	set_opt HAVE_PLIP_TOOLS use plipconfig
+	set_opt HAVE_SERIAL_TOOLS use slattach
 	if use static ; then
 		append-flags -static
 		append-ldflags -static
@@ -79,28 +85,4 @@ src_install() {
 	# We need to use emake by hand to pass ED. #567300
 	emake DESTDIR="${ED}" install
 	dodoc README THANKS TODO
-
-	# TODO: Make these into config knobs upstream.
-	if ! use arp ; then
-		rm "${ED}"/sbin/{,r}arp "${ED}"/usr/share/man/man8/{,r}arp.8* || die
-	fi
-	if ! use hostname ; then
-		if use nis ; then
-			# Since all the tools are symlinks, repoint them.
-			rm "${ED}"/bin/domainname || die
-			cp -p "${ED}"/bin/{host,domain}name || die
-			dosym domainname /bin/nisdomainname
-			dosym domainname /bin/ypdomainname
-		fi
-		rm "${ED}"/bin/{host,dnsdomain}name "${ED}"/usr/share/man/man1/{host,dnsdomain}name.1* || die
-	fi
-	if ! use nis ; then
-		rm "${ED}"/bin/{,nis,yp}domainname "${ED}"/usr/share/man/man1/{,nis,yp}domainname.1* || die
-	fi
-	if ! use plipconfig ; then
-		rm "${ED}"/sbin/plipconfig "${ED}"/usr/share/man/man8/plipconfig.8* || die
-	fi
-	if ! use slattach ; then
-		rm "${ED}"/sbin/slattach "${ED}"/usr/share/man/man8/slattach.8* || die
-	fi
 }
