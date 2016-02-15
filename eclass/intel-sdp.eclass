@@ -8,6 +8,13 @@
 # Sci Team <sci@gentoo.org>
 # @BLURB: Handling of Intel's Software Development Products package management
 
+if [[ ! ${_INTEL_SDP_ECLASS_} ]]; then
+
+case "${EAPI:-0}" in
+	5) ;;
+	*) die "EAPI=${EAPI} is not supported" ;;
+esac
+
 # @ECLASS-VARIABLE: INTEL_DID
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -514,8 +521,6 @@ intel-sdp_pkg_postrm() {
 }
 
 EXPORT_FUNCTIONS pkg_setup src_unpack src_install pkg_postinst pkg_postrm pkg_pretend
-case "${EAPI:-0}" in
-	0|1|2|3)die "EAPI=${EAPI} is not supported anymore" ;;
-	4|5) ;;
-	*) die "EAPI=${EAPI} is not supported" ;;
-esac
+
+_INTEL_SDP_ECLASS_=1
+fi
