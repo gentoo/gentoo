@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexis Ballier <aballier@gentoo.org> (15 Feb 2016)
+# Breaks some of its reverse dependencies.
+# Bug 574788
+>=media-video/ffmpeg-3.0
+
 # Mike Gilbert <floppym@gentoo.org> (02 Feb 2016)
 # Fails to build, will fix it later.
 =sys-libs/efivar-0.22

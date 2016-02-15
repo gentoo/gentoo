@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=5
 
-inherit eutils
+inherit autotools eutils
 
 DESCRIPTION="Linux quota tools"
 HOMEPAGE="http://sourceforge.net/projects/linuxquota/"
@@ -18,29 +18,32 @@ IUSE="ldap netlink nls rpc tcpd"
 RDEPEND="ldap? ( >=net-nds/openldap-2.3.35 )
 	netlink? (
 		sys-apps/dbus
-		dev-libs/libnl:1.1
+		dev-libs/libnl:3
 	)
 	rpc? ( net-nds/rpcbind )
 	tcpd? ( sys-apps/tcp-wrappers )"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
-S=${WORKDIR}/quota-tools
+PATCHES=(
+	# Patches from upstream
+	"${FILESDIR}/${P}-fix_build_without_ldap.patch"
+	"${FILESDIR}/${P}-distribute_ldap-scripts.patch"
+	"${FILESDIR}/${P}-explicitely_print_disabled_options.patch"
+	"${FILESDIR}/${P}-respect_docdir.patch"
+	"${FILESDIR}/${P}-dont_override_cflags.patch"
+	"${FILESDIR}/${P}-default_fpic_fpie.patch"
+	"${FILESDIR}/${P}-repqouta_F_option_arg.patch"
+	"${FILESDIR}/${P}-noldap_linking.patch"
+
+	# Patches not (yet) upstreamed
+	"${FILESDIR}/${P}-no_rpc.patch"
+)
 
 src_prepare() {
-	local args=(
-		-e '1iCC = @CC@' #446277
-	)
-	if ! use rpc ; then
-		args+=( #465810
-			-e '/^PROGS/s:rpc.rquotad::'
-			-e '/^RPCGEN/s:=.*:=false:'
-			-e '/^RPCCLNTOBJS/s:=.*:=:'
-		)
-	fi
-	sed -i "${args[@]}" Makefile.in || die
-	epatch "${FILESDIR}"/${PN}-4.01-mnt.patch \
-		"${FILESDIR}"/${PN}-4.01-cflags.patch
+	epatch "${PATCHES[@]}"
+
+	eautoreconf
 }
 
 src_configure() {
@@ -53,7 +56,7 @@ src_configure() {
 }
 
 src_install() {
-	emake STRIP="" ROOTDIR="${D}" install
+	emake DESTDIR="${D}" install
 	dodoc doc/* README.* Changelog
 	rm -r "${ED}"/usr/include || die #70938
 
