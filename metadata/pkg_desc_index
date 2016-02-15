@@ -16430,7 +16430,7 @@ sys-apps/msr-tools 1.2: Utilities allowing the read and write of CPU model-speci
 sys-apps/mtree 1.0 1.0.1: Directory hierarchy mapping tool from FreeBSD
 sys-apps/nawk 20121220-r2: Brian Kernighan's pattern scanning and processing language
 sys-apps/nca 0.9.0: Network Console on Acid
-sys-apps/net-tools 1.60_p20130513023548 1.60_p20130513023548-r1 1.60_p20130513023548-r2 1.60_p20141019041918 1.60_p20141019041918-r1 1.60_p20151124144947 9999: Standard Linux networking tools
+sys-apps/net-tools 1.60_p20141019041918-r1 1.60_p20151124144947 1.60_p20160215155418 9999: Standard Linux networking tools
 sys-apps/netboot-base 20050110: Baselayout for netboot systems
 sys-apps/netkit-base 0.17-r9: Old-style inetd
 sys-apps/netloc 0.5: Portable Network Locality (netloc)
