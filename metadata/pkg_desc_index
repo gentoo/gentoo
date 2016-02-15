@@ -17479,7 +17479,7 @@ www-apache/mod_pcgi2 2.0.2: An Apache module to talk to Zope Corporation's PCGI
 www-apache/mod_perl 2.0.8 2.0.8-r3 2.0.10_pre201601: An embedded Perl interpreter for Apache2
 www-apache/mod_proxy_fcgi 0_p816361: mod_proxy_fcgi is a FastCGI protocol handler for mod_proxy
 www-apache/mod_proxy_html 3.1.2: An Apache2 module to rewrite links in html pages behind a reverse proxy
-www-apache/mod_python 3.5.0: An Apache2 module providing an embedded Python interpreter
+www-apache/mod_python 3.5.0 3.5.0-r1: An Apache2 module providing an embedded Python interpreter
 www-apache/mod_qos 11.12: A QOS module for the apache webserver
 www-apache/mod_rpaf 0.6 0.6-r1: Reverse proxy add forward module
 www-apache/mod_scgi 1.14 1.14-r1: Apache module for a replacement of the CGI protocol, similar to FastCGI
