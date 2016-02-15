@@ -49,7 +49,6 @@ esac
 # Must be defined before inheriting the eclass
 
 # @ECLASS-VARIABLE: INTEL_TARX
-# @DEFAULT_UNSET
 # @DESCRIPTION:
 # The package extention.
 # To find out its value, see the links to download in
@@ -85,7 +84,6 @@ esac
 : ${INTEL_X86:=i486}
 
 # @ECLASS-VARIABLE: INTEL_BIN_RPMS
-# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Functional name of rpm without any version/arch tag
 #
@@ -97,7 +95,6 @@ esac
 # e.g. CLI_install/rpm/intel-vtune-amplifier-xe-cli
 
 # @ECLASS-VARIABLE: INTEL_DAT_RPMS
-# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Functional name of rpm of common data which are arch free
 # without any version tag
@@ -108,6 +105,7 @@ esac
 # specify the full path
 #
 # e.g. CLI_install/rpm/intel-vtune-amplifier-xe-cli-common
+: ${INTEL_DAT_RPMS:=""}
 
 # @ECLASS-VARIABLE: INTEL_SINGLE_ARCH
 # @DESCRIPTION:
@@ -151,13 +149,11 @@ _INTEL_SDP_YEAR=${INTEL_DPV%_update*}
 _INTEL_SDP_YEAR=${INTEL_DPV%_sp*}
 
 # @ECLASS-VARIABLE: INTEL_SDP_DIR
-# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Full rootless path to installation dir
 INTEL_SDP_DIR="opt/intel/${INTEL_SUBDIR}-${_INTEL_SDP_YEAR:-${_INTEL_PV1}}.${_INTEL_PV3}.${_INTEL_PV4}"
 
 # @ECLASS-VARIABLE: INTEL_SDP_EDIR
-# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Full rooted path to installation dir
 INTEL_SDP_EDIR="${EROOT%/}/${INTEL_SDP_DIR}"
