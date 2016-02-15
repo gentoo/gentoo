@@ -249,7 +249,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	>=sys-devel/make-3.81
-	doc? ( app-text/texi2html )
+	doc? ( sys-apps/texinfo )
 	fontconfig? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
 	gnutls? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
 	ieee1394? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
