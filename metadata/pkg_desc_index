@@ -13312,7 +13312,7 @@ media-video/emovix 0.9.0: Micro Linux distro to boot from a CD and play every vi
 media-video/episoder 0.4.7: episoder is a tool to tell you when new episodes of your favourite TV shows are airing
 media-video/ffcast 2.4.1: Record screencasts using ffmpeg
 media-video/ffdiaporama 2.1 2.1-r1: Movie creator from photos and video clips
-media-video/ffmpeg 2.6.3 2.6.4 2.8.5 2.8.6 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
+media-video/ffmpeg 2.6.3 2.6.4 2.8.5 2.8.6 3.0 9999: Complete solution to record, convert and stream audio and video. Includes libavcodec
 media-video/ffmpeg2theora 0.29-r1 0.29-r2 0.30: A simple converter to create Ogg Theora files
 media-video/ffmpegthumbnailer 2.0.8 2.0.10 2.1.0: Lightweight video thumbnailer that can be used by file managers
 media-video/flumotion 0.8.1 0.8.1-r1 0.10.1: Flumotion Streaming server
@@ -16965,7 +16965,7 @@ sys-fs/owfs 2.7_p21-r4: Access 1-Wire devices like a filesystem
 sys-fs/progsreiserfs 0.3.1_rc8: Library for accessing and manipulating reiserfs partitions
 sys-fs/pysize 0.2-r1: A graphical and console tool for exploring the size of directories
 sys-fs/pytagsfs 0.9.2_rc2 0.9.2: File system that arranges media files based their tags
-sys-fs/quota 3.17-r1 4.01 4.02: Linux quota tools
+sys-fs/quota 3.17-r1 4.02 4.03: Linux quota tools
 sys-fs/quotatool 1.4.6 1.4.11 1.4.12 1.4.13 1.5.0 1.6.0 1.6.1 1.6.2: command-line utility for filesystem quotas
 sys-fs/rar2fs 1.20.0 1.21.0 1.22.0: A FUSE based filesystem that can mount one or multiple RAR archive(s)
 sys-fs/rarfs 0.1.1: Fuse module to mount uncompressed RAR archives
