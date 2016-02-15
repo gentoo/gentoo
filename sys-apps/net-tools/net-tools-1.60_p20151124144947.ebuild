@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -76,7 +76,9 @@ src_configure() {
 }
 
 src_install() {
-	default
+	# We need to use emake by hand to pass ED. #567300
+	emake DESTDIR="${ED}" install
+	dodoc README THANKS TODO
 
 	# TODO: Make these into config knobs upstream.
 	if ! use arp ; then
