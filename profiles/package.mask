@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergey Popov <pinkbyte@gentoo.org> (15 Feb 2016)
+# Security mask, wrt bug #519730
+<app-emulation/ganeti-2.11.6-r2
+
 # Alexis Ballier <aballier@gentoo.org> (15 Feb 2016)
 # Breaks some of its reverse dependencies.
 # Bug 574788
