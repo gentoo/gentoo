@@ -1,8 +1,8 @@
-Index: ViSP-2.10.0/src/video/vpFFMPEG.cpp
+Index: visp-3.0.0/modules/io/src/video/vpFFMPEG.cpp
 ===================================================================
---- ViSP-2.10.0.orig/src/video/vpFFMPEG.cpp
-+++ ViSP-2.10.0/src/video/vpFFMPEG.cpp
-@@ -184,7 +184,7 @@ bool vpFFMPEG::openStream(const char *fi
+--- visp-3.0.0.orig/modules/io/src/video/vpFFMPEG.cpp
++++ visp-3.0.0/modules/io/src/video/vpFFMPEG.cpp
+@@ -180,7 +180,7 @@ bool vpFFMPEG::openStream(const char *fi
        if (pFrameRGB == NULL)
          return false;
        
@@ -11,7 +11,7 @@ Index: ViSP-2.10.0/src/video/vpFFMPEG.cpp
      }
      
      else if (color_type == vpFFMPEG::GRAY_SCALED)
-@@ -198,7 +198,7 @@ bool vpFFMPEG::openStream(const char *fi
+@@ -194,7 +194,7 @@ bool vpFFMPEG::openStream(const char *fi
        if (pFrameGRAY == NULL)
          return false;
        
@@ -20,7 +20,7 @@ Index: ViSP-2.10.0/src/video/vpFFMPEG.cpp
      }  
  
      /*
-@@ -215,10 +215,10 @@ bool vpFFMPEG::openStream(const char *fi
+@@ -211,10 +211,10 @@ bool vpFFMPEG::openStream(const char *fi
    }
    
    if (color_type == vpFFMPEG::COLORED)
@@ -33,7 +33,7 @@ Index: ViSP-2.10.0/src/video/vpFFMPEG.cpp
    
    streamWasOpen = true;
  
-@@ -235,10 +235,10 @@ bool vpFFMPEG::openStream(const char *fi
+@@ -231,10 +231,10 @@ bool vpFFMPEG::openStream(const char *fi
  bool vpFFMPEG::initStream()
  {
    if (color_type == vpFFMPEG::COLORED)
@@ -46,7 +46,7 @@ Index: ViSP-2.10.0/src/video/vpFFMPEG.cpp
  
    int ret = av_seek_frame(pFormatCtx, (int)videoStream, 0, AVSEEK_FLAG_ANY) ;
    if (ret < 0 )
-@@ -707,7 +707,7 @@ bool vpFFMPEG::openEncoder(const char *f
+@@ -703,7 +703,7 @@ bool vpFFMPEG::openEncoder(const char *f
    pCodecCtx->time_base.den = framerate_encoder;
    pCodecCtx->gop_size = 10; /* emit one intra frame every ten frames */
    pCodecCtx->max_b_frames=1;
@@ -55,7 +55,7 @@ Index: ViSP-2.10.0/src/video/vpFFMPEG.cpp
  
    /* open it */
  #if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(53,35,0) // libavcodec 53.35.0
-@@ -730,15 +730,15 @@ bool vpFFMPEG::openEncoder(const char *f
+@@ -726,15 +726,15 @@ bool vpFFMPEG::openEncoder(const char *f
    outbuf_size = 100000;
    outbuf = new uint8_t[outbuf_size];
  

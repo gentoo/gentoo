@@ -53,7 +53,7 @@ REQUIRED_USE="
 "
 
 S="${WORKDIR}/visp-${PV}"
-PATCHES=( "${FILESDIR}/${P}-opencv.patch" )
+PATCHES=( "${FILESDIR}/${P}-opencv.patch" "${FILESDIR}/${P}-ffmpeg3.patch" )
 
 src_configure() {
 	local mycmakeargs=(

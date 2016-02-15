@@ -12,8 +12,10 @@ HOMEPAGE="
 	https://multimedia.kde.org/
 "
 KEYWORDS=" ~amd64 ~x86"
-IUSE="+ffmpeg mplayer"
+IUSE="+ffmpeg"
 
+# Add back whenever it is ported - no change since 4.10
+# 	mplayer? ( $(add_kdeapps_dep mplayerthumbs) )
 RDEPEND="
 	$(add_kdeapps_dep audiocd-kio)
 	$(add_kdeapps_dep dragon)
@@ -23,6 +25,5 @@ RDEPEND="
 	$(add_kdeapps_dep kscd)
 	$(add_kdeapps_dep libkcddb)
 	$(add_kdeapps_dep libkcompactdisc)
-	mplayer? ( $(add_kdeapps_dep mplayerthumbs) )
 	ffmpeg? ( $(add_kdeapps_dep ffmpegthumbs) )
 "
