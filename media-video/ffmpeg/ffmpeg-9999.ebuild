@@ -247,16 +247,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=sys-devel/make-3.81
 	doc? ( sys-apps/texinfo )
-	fontconfig? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
-	gnutls? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
-	ieee1394? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
+	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	ladspa? ( >=media-libs/ladspa-sdk-1.13-r2[${MULTILIB_USEDEP}] )
-	libv4l? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
 	cpu_flags_x86_mmx? ( >=dev-lang/yasm-1.2 )
-	librtmp? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
-	schroedinger? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
 	test? ( net-misc/wget sys-devel/bc )
-	truetype? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
 	v4l? ( sys-kernel/linux-headers )
 "
 
