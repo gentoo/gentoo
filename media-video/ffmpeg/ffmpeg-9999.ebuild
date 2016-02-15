@@ -97,7 +97,7 @@ FFMPEG_ENCODER_FLAG_MAP=(
 )
 
 IUSE="
-	alsa doc +encode examples jack libressl oss pic static-libs test v4l
+	alsa doc +encode jack libressl oss pic static-libs test v4l
 	${FFMPEG_FLAG_MAP[@]%:*}
 	${FFMPEG_ENCODER_FLAG_MAP[@]%:*}
 "
@@ -461,10 +461,6 @@ multilib_src_install() {
 multilib_src_install_all() {
 	dodoc Changelog README.md CREDITS doc/*.txt doc/APIchanges
 	[ -f "RELEASE_NOTES" ] && dodoc "RELEASE_NOTES"
-	if use examples ; then
-		dodoc -r doc/examples
-		docompress -x /usr/share/doc/${PF}/examples
-	fi
 }
 
 multilib_src_test() {
