@@ -63,7 +63,7 @@ fi
 # or $(use_enable foo foo) if no :bar is set.
 # foo is added to IUSE.
 FFMPEG_FLAG_MAP=(
-		+bzip2:bzlib cpudetection:runtime-cpudetect debug doc gcrypt gnutls gmp
+		+bzip2:bzlib cpudetection:runtime-cpudetect debug gcrypt gnutls gmp
 		+gpl +hardcoded-tables +iconv lzma +network openssl +postproc
 		samba:libsmbclient sdl:ffplay sdl vaapi vdpau X:xlib xcb:libxcb
 		xcb:libxcb-shm xcb:libxcb-xfixes +zlib
@@ -97,7 +97,7 @@ FFMPEG_ENCODER_FLAG_MAP=(
 )
 
 IUSE="
-	alsa +encode examples jack libressl oss pic static-libs test v4l
+	alsa doc +encode jack libressl oss pic static-libs test v4l
 	${FFMPEG_FLAG_MAP[@]%:*}
 	${FFMPEG_ENCODER_FLAG_MAP[@]%:*}
 "
@@ -249,7 +249,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	>=sys-devel/make-3.81
-	doc? ( app-text/texi2html )
+	doc? ( sys-apps/texinfo )
 	fontconfig? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
 	gnutls? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
 	ieee1394? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
@@ -410,6 +410,13 @@ multilib_src_configure() {
 		esac
 	fi
 
+	# doc
+	myconf+=(
+		$(multilib_native_use_enable doc)
+		$(multilib_native_use_enable doc htmlpages)
+		$(multilib_native_enable manpages)
+	)
+
 	set -- "${S}/configure" \
 		--prefix="${EPREFIX}/usr" \
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
@@ -440,7 +447,7 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
-	emake V=1 DESTDIR="${D}" install install-man
+	emake V=1 DESTDIR="${D}" install install-doc
 
 	if multilib_is_native_abi; then
 		for i in "${FFTOOLS[@]}" ; do
@@ -454,10 +461,6 @@ multilib_src_install() {
 multilib_src_install_all() {
 	dodoc Changelog README.md CREDITS doc/*.txt doc/APIchanges
 	[ -f "RELEASE_NOTES" ] && dodoc "RELEASE_NOTES"
-	if use examples ; then
-		dodoc -r doc/examples
-		docompress -x /usr/share/doc/${PF}/examples
-	fi
 }
 
 multilib_src_test() {
