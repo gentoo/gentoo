@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -38,6 +38,7 @@ IUSE="kvm xen lxc drbd htools syslog ipv6 haskell-daemons rbd test"
 REQUIRED_USE="|| ( kvm xen lxc )"
 
 HASKELL_DEPS=">=dev-lang/ghc-6.12:0=
+	<dev-lang/ghc-7.8
 	dev-haskell/json:0=
 	dev-haskell/curl:0=
 	dev-haskell/network:0=
