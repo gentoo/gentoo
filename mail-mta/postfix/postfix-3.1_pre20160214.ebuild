@@ -8,8 +8,6 @@ inherit eutils flag-o-matic multilib pam systemd toolchain-funcs user versionato
 MY_PV="${PV/_pre/-}"
 MY_SRC="${PN}-${MY_PV}"
 MY_URI="ftp://ftp.porcupine.org/mirrors/postfix-release/experimental"
-#VDA_PV="2.10.0"
-#VDA_P="${PN}-vda-v13-${VDA_PV}"
 RC_VER="2.7"
 
 DESCRIPTION="A fast and secure drop-in replacement for sendmail"
@@ -289,17 +287,7 @@ src_install () {
 }
 
 pkg_postinst() {
-	# configure tls
-	if use ssl ; then
-		if postfix tls all-default-client ; then
-			elog "Configuring client side TLS settings"
-			postfix tls enable-client
-		fi
-		if postfix tls all-default-server ; then
-			elog "Configuring server side TLS settings"
-			postfix tls enable-server
-		fi
-	fi
+	[ "${EROOT}" == "/" ] && pkg_config
 
 	if [[ ! -e /etc/mail/aliases.db ]] ; then
 		ewarn
@@ -307,5 +295,19 @@ pkg_postinst() {
 		ewarn "and then run /usr/bin/newaliases. Postfix will not"
 		ewarn "work correctly without it."
 		ewarn
+	fi
+}
+
+pkg_config() {
+	# configure tls
+	if use ssl ; then
+		if "${EROOT}"usr/sbin/postfix tls all-default-client ; then
+			elog "Configuring client side TLS settings"
+			"${EROOT}"usr/sbin/postfix tls enable-client
+		fi
+		if "${EROOT}"usr/sbin/postfix tls all-default-server ; then
+			elog "Configuring server side TLS settings"
+			"${EROOT}"usr/sbin/postfix tls enable-server
+		fi
 	fi
 }

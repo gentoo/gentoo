@@ -11,7 +11,7 @@
 if [[ ! ${_INTEL_SDP_ECLASS_} ]]; then
 
 case "${EAPI:-0}" in
-	5) ;;
+	4|5) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
